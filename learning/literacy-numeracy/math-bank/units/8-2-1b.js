@@ -621,7 +621,31 @@
         explain: `내접원의 반지름의 길이를 ${V('r')} cm라 하면 2π${V('r')} = ${2 * r}π에서 ${V('r')} = ${r}이다. △ABC의 넓이는 ${HALF} × ${r} × ${per} = ${area}(cm²)이고 내접원의 넓이는 ${r * r}π cm²이므로 색칠한 부분의 넓이는 (${area} − ${r * r}π) cm²이다.`,
         facts: { truth: q.rows.map((row, i) => i === q.hit), want: true }
       });
-    }, { count: 2 })
+    }, { count: 2 }),
+    // 다시 실은 꼴(2026-10-13): 내심의 내심(②60의 변형 — 글만으로 그림이 정해진다), 둘레와 넓이의 비(심56 — 답이 식이라 뺐던 것을 고르기로).
+    T('in-nested', '이등변삼각형의 내심과 밑변이 이루는 삼각형의 내심', '②60', (d) => {
+      // 각의 이등분을 두 번 한다. 답이 자연수가 되게 180° − ∠A 를 8의 배수로 잡는다.
+      const a = 180 - 8 * d.int(10, 14), x = (180 - a) / 8, P0 = isoTri(a);
+      P0.I = inOf(P0.A, P0.B, P0.C); P0.i = inOf(P0.I, P0.B, P0.C);
+      const P = fitPts(P0, [240, 185]), S = scene(P);
+      S.poly('BCA').tick('AB AC').seg('IB IC iB iC').dot('Ii').ang('BAC', deg(a)).ang('iBC', '', { r: 48, square: false }).names({ I: 90 });
+      S.b.name(P.i, 'I′', 90, 11);
+      return degQ(`점 I는 ${eq('AB', 'AC')}인 이등변삼각형 ABC의 내심이고, 점 I′은 △IBC의 내심이다. ∠A = ${a}°일 때, ∠I′BC의 크기는?`, x, {
+        figure: S.svg(`삼각형 ABC와 그 내부의 두 점 I, I′. 변 AB와 변 AC에 길이가 같다는 표시가 있다. 선분 IB, IC와 선분 I′B, I′C가 그어져 있고 점 I′은 삼각형 IBC의 내부에 있다. ∠A = ${a}°이고 ∠I′BC에 각 표시가 있다`),
+        explain: `${eq('AB', 'AC')}이므로 ∠ABC = (180° − ${a}°) ÷ 2 = ${90 - a / 2}°이다. 점 I가 △ABC의 내심이므로 ∠IBC = ${90 - a / 2}° ÷ 2 = ${45 - a / 4}°이다. 점 I′이 △IBC의 내심이므로 ∠I′BC = ${45 - a / 4}° ÷ 2 = ${x}°이다.`,
+        facts: { calc: [[`(180-${a})/2/2/2`, 0]], unseen: [180, 2], rule: 'in-nested' }
+      });
+    }),
+    T('in-perimeter-area', '내접원의 반지름으로 나타낸 삼각형의 둘레와 넓이 사이의 관계', '심56', (d) => {
+      const r = V('r'), up = d.bool(), big = V('P'), area = V('Q');
+      // 보기의 참·거짓은 세 변이 9, 12, 15 인 삼각형(둘레 36, 넓이 54, 내접원의 반지름 3)으로 따진다.
+      const rows = d.shuffle([[B.kit.frac(2, r), (t) => 2 / t], [B.kit.frac(r, 2), (t) => t / 2], [B.kit.frac(1, r), (t) => 1 / t], ['2' + r, (t) => 2 * t]]), want = up ? 36 / 54 : 54 / 36;
+      const truth = rows.map((row) => Math.abs(row[1](3) - want) < 1e-9);
+      return C(`△ABC의 내접원의 반지름의 길이를 ${r}, △ABC의 둘레의 길이를 ${big}, 넓이를 ${area}라 할 때, ${up ? B.kit.frac(big, area) : B.kit.frac(area, big)}를 ${r}에 대한 식으로 나타낸 것은?`, rows.map((row) => row[0]), truth.indexOf(true), {
+        explain: `내심을 I라 하면 △ABC의 넓이는 △IAB, △IBC, △ICA의 넓이의 합이고, 세 삼각형의 높이는 모두 내접원의 반지름의 길이와 같다. 따라서 ${nb(`${area} = ${HALF} × ${r} × ${big}`)}이고 ${up ? B.kit.frac(big, area) : B.kit.frac(area, big)} = ${up ? B.kit.frac(2, r) : B.kit.frac(r, 2)}이다.`,
+        facts: { truth, want: true }
+      });
+    })
   ]);
 
   // ── 외심과 내심 ──

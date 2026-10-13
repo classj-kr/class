@@ -14,6 +14,8 @@
 // 실력에는 ① 문제의 그림·말·수에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제와 ② 세 단계 넘게 이어 생각해야 풀리는 문제(이웃한 이등변삼각형 세 겹, 접은 종이,
 // 합동으로 길이를 옮긴 다음 넓이 구하기, 넓이를 두 가지로 나타내기, 외접원과 내접원의 반지름을 모두 구하기, 외심과 내심이 만드는 각)만 실었다.
 // 밑각 하나 구하기, RHA·RHS 고르기, 외심·내심에서 각 하나 구하기처럼 한두 번에 끝나는 것은 기본에 있다.
+// 2026-10-13: 처음 지을 때 금·꼬임·보조선 여럿·답이 식·중1 셈이라는 까닭으로 뺐던 꼴 열둘을 다시 따져 실력 묶음의 끝에 덧붙였다(hard-chain-five ~ hard-trapezoid-mid, 모두 ②).
+// 같은 날 기본에 덧붙인 셋(bis-outer, in-nested, in-perimeter-area)은 8-2-1a.js·8-2-1b.js 의 묶음 끝에 있다.
 // 묻는 말: 수나 값은 「~은?/~는?」, 양은 「몇 ~인가?」. 각도는 수에 붙여 적고(56°) 길이는 띄어 적는다(6 cm).
 (function (root) {
   'use strict';
@@ -66,6 +68,20 @@
 
   // ∠C = 90°인 직각삼각형 ABC(BC = a, CA = b, AB = c)의 내접원 그림. 접점 D(AB), E(BC), F(CA)
   const rtIn = (a, b, c, size) => inPtsSides(a, b, c, { feet: true, size: size || (b / a > 0.9 ? [180, 170] : [225, 150]) });
+
+  // ── 다시 실은 꼴(처음 지을 때 뺐다가 2026-10-13에 덧붙인 것 — 실력 묶음의 끝에 있다)이 쓰는 도구 ──
+  const V = B.kit.mid.V, frac = B.kit.frac, Y = V('y'), Z = V('z');
+  const { scaled, angleAt } = K;
+  // ∠C 가 직각이 아닌 직각삼각형에서 L × cos C × tan(C/2) = k 가 되는 작은 쪽 ∠C(도). 빗변 L 위에 BC 와 같은 길이를 잡고 세운 수선의 길이가 k 이다.
+  // 각의 안쪽을 다른 선이 지나가 글을 넣을 자리가 없을 때 쓴다: 각 표시(호)는 안쪽에 긋고, 크기는 변 vq 의 바깥에 적어 호의 끝과 짧은 가는 선으로 잇는다. name: 'pvq'
+  const angOut = (S, name, label, r, far) => {
+    const v = S.P[name[1]], a = dirOf(v, S.P[name[0]]), c = dirOf(v, S.P[name[2]]), n = c + ((a - c + 360) % 360 < 180 ? -90 : 90), e = at(v, r, c), reach = far || 22;
+    const half = (B.kit.mgeo.textW(label) / 2) * Math.abs(Math.cos(n * RAD)) + 7 * Math.abs(Math.sin(n * RAD));
+    S.ang(name, '', { r, square: false });
+    S.b.seg(e, at(e, reach - half - 2, n), 'thin').text(at(e, reach, n), label, { blue: true });
+    return S;
+  };
+  const cutAngle = (L, k) => { let lo = 8, hi = 51.8; for (let i = 0; i < 60; i += 1) { const m = (lo + hi) / 2; if (L * Math.cos(m * RAD) * Math.tan(m * RAD / 2) < k) lo = m; else hi = m; } return (lo + hi) / 2; };
 
   B.addGroup(UNIT, {
     id: 'hard', title: '실력 문제', standard: ISO,
@@ -416,7 +432,179 @@
           explain: `${eq('AB', 'AC')}이므로 ∠ABC = (180° − ${a}°) ÷ 2 = ${90 - a / 2}°이다. 점 I가 내심이므로 ∠IBC = ${90 - a / 2}° ÷ 2 = ${45 - a / 4}°이다. 점 O가 외심이므로 ∠BOC = 2∠A = ${2 * a}°이고 ${eq('OB', 'OC')}이므로 ∠OBC = (180° − ${2 * a}°) ÷ 2 = ${90 - a}°이다. ∠OBI = ${90 - a}° − ${45 - a / 4}° = ${x}°이다.`,
           facts: { calc: [[`(180-2*${a})/2-(180-${a})/2/2`, 0]], unseen: [180, 2] }
         });
-      }, { standard: CEN })
+      }, { standard: CEN }),
+
+      // ── 다시 실은 꼴(2026-10-13) ──
+      // 처음 지을 때 「금·꼬임·보조선 여럿·답이 식·중1 셈이 주가 된다·그림을 모른다」는 까닭으로 뺐던 꼴을 다시 따져 실었다(꼴마다의 판정은 대조표에 있다).
+      // 모두 이 단원과 앞 단원·앞 학년의 내용만으로 풀린다: 접선과 반지름이 수직인 것은 이 단원(내심)에서, 호의 길이와 중심각은 중1에서, 연립방정식은 중2 1학기에 배운다.
+      H('hard-chain-five', '이웃한 이등변삼각형 다섯 겹', '심9', (d) => {
+        const ask = d.pick([['∠C', 20], ['∠B', 80]]), c = (v) => Math.cos(v * RAD), L = 1 / (2 * Math.sin(10 * RAD));
+        const S = scene(fitPts({ C: [0, 0], F: [1, 0], D: [1 + 2 * c(40), 0], B: [L, 0], E: at([0, 0], 2 * c(20), 20), A: at([0, 0], L, 20) }, [256, 100]));
+        S.poly('CBA').seg('FE ED DA').tick('CF FE ED DA AB').names();
+        return degQ(`${eq('CA', 'CB')}인 이등변삼각형 ABC에서 변 CB 위의 두 점 F, D와 변 CA 위의 점 E에 대하여 ${nb(`${sg('AB')} = ${sg('AD')} = ${sg('DE')} = ${sg('EF')} = ${sg('FC')}`)}일 때, ${ask[0]}의 크기는?`, ask[1], {
+          figure: S.svg('삼각형 ABC. 꼭짓점 C가 왼쪽에 있고 변 CB가 아래쪽에 가로로 놓여 있다. 변 CB 위에 점 C, F, D, B가 이 차례로 놓여 있고 점 E는 변 CA 위에 있다. 선분 FE, ED, DA가 그어져 있고 선분 CF, 선분 FE, 선분 ED, 선분 DA, 변 AB에 길이가 같다는 표시가 있다'),
+          explain: `∠C = ∠${X}라 하자. ${eq('FC', 'FE')}이므로 ∠FEC = ∠${X}이고 ∠EFD = 2∠${X}(△FCE의 외각)이다. ${eq('EF', 'ED')}이므로 ∠EDF = 2∠${X}이고 ∠DEA = ∠${X} + 2∠${X} = 3∠${X}(△ECD의 외각)이다. ${eq('DE', 'DA')}이므로 ∠DAE = 3∠${X}이고 ∠ADB = ∠${X} + 3∠${X} = 4∠${X}(△ACD의 외각)이다. ${eq('AD', 'AB')}이므로 ∠B = 4∠${X}이고, ${eq('CA', 'CB')}이므로 ∠CAB = ∠B = 4∠${X}이다. △ABC에서 ∠${X} + 4∠${X} + 4∠${X} = 180°이므로 ∠${X} = 20°이다.${ask[1] === 80 ? ' ∠B = 4 × 20° = 80°이다.' : ''}`,
+          facts: { calc: [[ask[1] === 20 ? '180/9' : '180/9*4', 0]], unseen: [180, 9, 4] }
+        });
+      }),
+      H('hard-inscribed-equi', '이등변삼각형의 세 변 위에 꼭짓점이 있는 정삼각형: 세 각 사이의 관계식', '심15', (d) => {
+        // ∠y, ∠z 를 정하면 밑각의 크기가 60° + ∠y − ∠z 로 정해진다. 점 B 를 중심으로 키워 점 F 가 변 CA 위에 오게 한다.
+        const build = (w) => {
+          const be = 60 + w.y - w.z, T = baseTri(be, be), E1 = [1, 0], D1 = meet(E1, at(E1, 1, 180 - w.y), T.B, T.A), F1 = at(E1, dist(E1, D1), 120 - w.y), F = meet(T.B, F1, T.C, T.A), e = F[0] / F1[0];
+          return Object.assign(T, { E: [e, 0], D: [D1[0] * e, D1[1] * e], F });
+        };
+        // 틀린 보기의 식이 이 그림에서 우연히 맞지 않게 ∠y, ∠z 를 고른다.
+        const v = d.until(() => ({ y: d.int(63, 84), z: d.int(46, 76) }), (w) => {
+          const be = 60 + w.y - w.z, x = 2 * w.y - w.z;
+          if (be < 62 || be > 76 || Math.abs(w.y - w.z) < 6 || x < 62 || x > 104 || Math.abs(w.y - 2 * w.z + 60) < 4) return false;
+          const Q = build(w), tD = dist(Q.B, Q.D) / dist(Q.B, Q.A), tF = dist(Q.C, Q.F) / dist(Q.C, Q.A);
+          return Q.E[0] > 30 && Q.E[0] < 70 && tD > 0.3 && tD < 0.72 && tF > 0.3 && tF < 0.72;
+        });
+        const P = fitPts(build(v), [200, 175]), S = scene(P), x = angleAt(P.D, P.A, P.F);
+        S.poly('BCA').poly('DEF').tick('AB', 1, dist(P.A, P.D) / dist(P.A, P.B) / 2).tick('AC', 1, dist(P.A, P.F) / dist(P.A, P.C) / 2).tick('DE EF FD', 2).ang('ADF', sv('x')).ang('DEB', sv('y')).ang('EFC', sv('z')).names();
+        const rows = d.shuffle([[`2∠${Y} − ∠${Z}`, 2 * v.y - v.z], [`2∠${Z} − ∠${Y}`, 2 * v.z - v.y], [`∠${Y} − ∠${Z} + 60°`, v.y - v.z + 60], [`∠${Y} + ∠${Z} − 60°`, v.y + v.z - 60]]), truth = rows.map((row) => Math.abs(row[1] - x) < 1e-6);
+        return C(`${eq('AB', 'AC')}인 이등변삼각형 ABC의 세 변 AB, BC, CA 위에 각각 점 D, E, F가 있고 △DEF는 정삼각형이다. ∠ADF = ∠${X}, ∠DEB = ∠${Y}, ∠EFC = ∠${Z}라 할 때, ∠${X}를 ∠${Y}, ∠${Z}에 대한 식으로 나타낸 것은?`, rows.map((row) => row[0]), truth.indexOf(true), {
+          figure: S.svg(`${ISO_SAY}점 D는 변 AB 위에, 점 E는 변 BC 위에, 점 F는 변 CA 위에 있고 삼각형 DEF가 그어져 있다. 삼각형 DEF의 세 변에 길이가 같다는 표시(두 줄)가 있다. ∠ADF = x, ∠DEB = y, ∠EFC = z`),
+          explain: `∠DEB + 60° + ∠FEC = 180°이므로 ∠FEC = 120° − ∠${Y}이고, △FEC에서 ∠C = 180° − ∠${Z} − (120° − ∠${Y}) = 60° + ∠${Y} − ∠${Z}이다. 같은 방법으로 ∠BDE = 120° − ∠${X}이고, △DBE에서 ∠B = 180° − ∠${Y} − (120° − ∠${X}) = 60° + ∠${X} − ∠${Y}이다. ${eq('AB', 'AC')}이므로 ∠B = ∠C이고 60° + ∠${X} − ∠${Y} = 60° + ∠${Y} − ∠${Z}에서 ∠${X} = 2∠${Y} − ∠${Z}이다.`,
+          facts: { truth, want: true }
+        });
+      }),
+      H('hard-turned-parallel', '삼각형을 돌려 생긴 평행선과 두 이등변삼각형', '심20', (d) => {
+        // 점 A 를 중심으로 ∠B 의 크기만큼 돌리면 AB ∥ DE 가 되고 선분 AD, DE 가 변 BC 와 만난다(∠B 가 60°보다 작을 때). ∠B 의 크기는 문제에 주지 않는다.
+        const [p, q] = d.pick([[11, 14], [9, 12], [10, 14], [8, 11], [12, 15], [10, 13], [9, 13], [12, 16], [8, 12], [11, 15]]), be = d.int(42, 52), pA = at([0, 0], p, be), pD = at(pA, p, 2 * be + 180);
+        const P0 = { B: [0, 0], C: [q, 0], A: pA, D: pD, E: at(pD, q, be) };
+        P0.F = meet(pA, pD, P0.B, P0.C); P0.G = meet(pD, P0.E, P0.B, P0.C);
+        const S = scene(fitPts(P0, [250, 160]));
+        S.poly('BCA').poly('ADE').arrow('BA', 0.42).arrow('DE', 0.72).len('AB', cm(p), 'C').dim('BC', cm(q), 'A', S.P.D[1] - S.P.B[1] + 13).names({ D: [205, 12] });
+        return cmQ(`△ADE는 △ABC를 점 A를 중심으로 ${nb(`${sg('AB')} ∥ ${sg('DE')}`)}가 될 때까지 돌린 것이다(두 점 B, C가 옮겨진 점이 각각 D, E이다). 변 BC가 두 선분 AD, DE와 만나는 점을 각각 F, G라 하자. ${nb(`${sg('AB')} = ${p} cm`)}, ${nb(`${sg('BC')} = ${q} cm`)}일 때, ${sg('CG')}의 길이는?`, q - p, {
+          figure: S.svg(`삼각형 ABC와 삼각형 ADE. 삼각형 ADE는 삼각형 ABC를 점 A를 중심으로 돌린 것이다. 변 BC가 아래쪽에 가로로 놓여 있고 꼭짓점 A는 변 BC의 위쪽에, 점 D는 변 BC의 아래쪽에 있다. 변 BC 위에 점 B, F, G, C가 이 차례로 놓여 있고 선분 AD는 점 F를, 선분 DE는 점 G를 지난다. 변 AB와 선분 DE에 평행하다는 표시가 있다. 변 AB의 길이는 ${p} cm, 변 BC의 길이는 ${q} cm`),
+          explain: `돌린 도형은 처음 도형과 합동이므로 ${eq('AD', 'AB')} = ${p} cm이고 ∠ADE = ∠B이다. ${sg('AB')} ∥ ${sg('DE')}이므로 ∠BAF = ∠ADE(엇각)이고 ∠BAF = ∠B이다. 따라서 △FAB는 ${eq('FA', 'FB')}인 이등변삼각형이다. 또 ∠FGD = ∠B(엇각)이므로 ∠FGD = ∠FDG이고 △FDG는 ${eq('FD', 'FG')}인 이등변삼각형이다. ${sg('BG')} = ${sg('BF')} + ${sg('FG')} = ${sg('AF')} + ${sg('FD')} = ${sg('AD')} = ${p} cm이므로 ${sg('CG')} = ${q} − ${p} = ${q - p}(cm)이다.`,
+          facts: { calc: [[`${q}-${p}`, 0]], rule: 'hard-turned' }
+        });
+      }),
+      H('hard-rhs-ratio', 'RHS 합동으로 옮긴 길이가 높이인 삼각형의 넓이와 선분의 길이의 비', '심27', (d) => {
+        // 원문의 수(DB = 5, △DCF = 10, 1 : 4)로는 직각삼각형이 그려지지 않는다. 그려지는 수만 쓴다. [DB, CF, AC ÷ CF]
+        const [db, cf, k] = d.pick([[3, 4, 3], [4, 5, 3], [4, 4, 4], [5, 6, 3], [5, 4, 5], [6, 5, 4], [6, 4, 5], [6, 7, 3], [6, 6, 4], [7, 6, 4], [8, 7, 4], [8, 6, 5], [8, 8, 4]]), L = k * cf, area = cf * db / 2, cc = cutAngle(L, db), a = L * Math.cos(cc * RAD);
+        const P0 = { B: [0, 0], C: [a, 0], A: [0, -L * Math.sin(cc * RAD)], D: [0, -db] };
+        P0.E = along(P0.C, P0.A, a); P0.F = along(P0.C, P0.A, cf);
+        const P = fitPts(P0, [232, 160]), S = scene(P);
+        S.b.poly([P.D, P.C, P.F], TINT);
+        S.poly('BCA').seg('DE DC DF').right('ABC DEA').len('DB', cm(db), 'C').names();
+        return cmQ(`∠B = 90°인 직각삼각형 ABC의 변 AC 위에 ${eq('BC', 'EC')}가 되도록 점 E를 잡고, 점 E를 지나고 변 AC에 수직인 직선이 변 AB와 만나는 점을 D라 하자. 변 AC 위의 점 F에 대하여 ${nb(`${sg('CF')} : ${sg('AC')} = 1 : ${k}`)}이고 △DCF의 넓이가 ${area} cm², ${nb(`${sg('DB')} = ${db} cm`)}일 때, ${sg('AF')}의 길이는?`, L - cf, {
+          figure: S.svg(`직각삼각형 ABC. ∠B에 직각 표시가 있다. 점 D는 변 AB 위에 있고, 변 AC 위에 점 C, F, E, A가 이 차례로 놓여 있다. 선분 DE, DC, DF가 그어져 있고 ∠DEA에 직각 표시가 있다. 삼각형 DCF가 색칠되어 있다. 선분 DB의 길이는 ${db} cm`),
+          explain: `△DBC와 △DEC에서 ∠DBC = ∠DEC = 90°, ${sg('DC')}는 공통, ${eq('BC', 'EC')}이므로 △DBC ≡ △DEC (RHS 합동)이고 ${eq('DE', 'DB')} = ${db} cm이다. △DCF에서 변 CF를 밑변으로 보면 높이는 ${sg('DE')}이므로 ${HALF} × ${sg('CF')} × ${db} = ${area}에서 ${sg('CF')} = ${cf} cm이다. ${nb(`${sg('CF')} : ${sg('AC')} = 1 : ${k}`)}이므로 ${sg('AC')} = ${cf} × ${k} = ${L}(cm)이고 ${sg('AF')} = ${L} − ${cf} = ${L - cf}(cm)이다.`,
+          facts: { calc: [[`${area}*2/${db}*${k}-${area}*2/${db}`, 0]], unseen: [2] }
+        });
+      }),
+      H('hard-square-bisectors', '정사각형의 두 변 위의 점과 각을 이등분하는 두 선분', '심31', (d) => {
+        // 원문 글에는 「□ABCD」뿐이지만 풀이는 정사각형으로 푼다. 정사각형이라고 밝혀 싣는다. [BE, BF, EF]
+        const [p, q, h] = d.pick([[3, 4, 5], [4, 3, 5], [6, 8, 10], [8, 6, 10], [5, 12, 13], [12, 5, 13], [9, 12, 15], [12, 9, 15], [8, 15, 17], [15, 8, 17]]), s = (p + q + h) / 2, u = 150 / s;
+        const S = scene({ A: [0, 0], B: [0, 150], C: [150, 150], D: [150, 0], E: [0, 150 - p * u], F: [q * u, 150] });
+        S.poly('ABCD').seg('DE DF EF').same('AED DEF', 'dot', 22).same('EFD DFC', 'x', 22).len('EB', cm(p), 'C').len('BF', cm(q), 'A').len('EF', cm(h), 'B', { gap: 3 }).names({ F: [295, 12] });
+        return cmQ(`정사각형 ABCD의 두 변 AB, BC 위에 각각 점 E, F가 있고 ∠AED = ∠DEF, ∠EFD = ∠DFC이다. ${nb(`${sg('BE')} = ${p} cm`)}, ${nb(`${sg('BF')} = ${q} cm`)}, ${nb(`${sg('EF')} = ${h} cm`)}일 때, 정사각형 ABCD의 한 변의 길이는?`, s, {
+          figure: S.svg(`정사각형 ABCD. 꼭짓점 A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위에 있다. 점 E는 변 AB 위에, 점 F는 변 BC 위에 있고 선분 DE, DF, EF가 그어져 있다. ∠AED와 ∠DEF에 크기가 같다는 표시가, ∠EFD와 ∠DFC에 크기가 같다는 표시가 있다. 선분 BE의 길이는 ${p} cm, 선분 BF의 길이는 ${q} cm, 선분 EF의 길이는 ${h} cm`),
+          explain: `점 D에서 선분 EF에 내린 수선의 발을 G라 하자. △DAE와 △DGE에서 ∠DAE = ∠DGE = 90°, ${sg('DE')}는 공통, ∠AED = ∠GED이므로 △DAE ≡ △DGE (RHA 합동)이고 ${eq('AE', 'GE')}이다. 같은 방법으로 △DCF ≡ △DGF (RHA 합동)이고 ${eq('CF', 'GF')}이다. ${sg('AE')} = ${V('a')} cm, ${sg('CF')} = ${V('b')} cm라 하면 ${sg('EF')} = ${sg('GE')} + ${sg('GF')}에서 ${V('a')} + ${V('b')} = ${h}이고, ${eq('AB', 'BC')}에서 ${p} + ${V('a')} = ${q} + ${V('b')}이다. 두 식을 연립하여 풀면 ${V('a')} = ${s - p}, ${V('b')} = ${s - q}이므로 한 변의 길이는 ${p} + ${s - p} = ${s}(cm)이다.`,
+          facts: { calc: [[`(${p}+${q}+${h})/2`, 0]], unseen: [2] }
+        });
+      }),
+      H('hard-two-altitudes', '두 수선이 만나는 점과 직각이등변삼각형으로 찾는 합동', '심33', (d) => {
+        // 직각삼각형이라고 RHA·RHS 부터 대면 막힌다. 길이가 같은 AE, BE 는 빗변이 아니므로 ASA 합동이다.
+        const [p, q] = d.pick([[6, 4], [5, 3], [7, 5], [8, 4], [9, 6], [7, 3], [8, 5], [6, 3], [7, 4], [9, 5]]), h = (p + q + Math.sqrt((p + q) * (p + q) + 4 * p * q)) / 2;
+        const P0 = { B: [0, 0], C: [p + q, 0], D: [p, 0], A: [p, -h] };
+        P0.E = foot(P0.B, P0.A, P0.C); P0.F = meet(P0.A, P0.D, P0.B, P0.E);
+        const S = scene(fitPts(P0, [165, 188]));
+        S.poly('BCA').seg('AD BE').right('ADB BEC').len('BD', cm(p), 'A', { t: 0.42 }).len('DC', cm(q), 'A', { t: 0.6 });
+        angOut(S, 'BAC', deg(45), 22, 24).names();
+        return cmQ(`△ABC의 두 꼭짓점 A, B에서 변 BC, AC에 내린 수선의 발을 각각 D, E라 하고, 두 선분 AD, BE가 만나는 점을 F라 하자. ∠BAC = 45°, ${nb(`${sg('BD')} = ${p} cm`)}, ${nb(`${sg('CD')} = ${q} cm`)}일 때, ${sg('AF')}의 길이는?`, p + q, {
+          figure: S.svg(`삼각형 ABC. 점 D는 변 BC 위에, 점 E는 변 AC 위에 있고 선분 AD와 선분 BE가 삼각형의 내부의 점 F에서 만난다. ∠ADB와 ∠BEC에 직각 표시가 있다. ∠BAC = 45°(각의 크기는 변 AC의 바깥쪽에 적혀 있다), 선분 BD의 길이는 ${p} cm, 선분 CD의 길이는 ${q} cm`),
+          explain: `△ABE에서 ∠AEB = 90°, ∠BAE = 45°이므로 ∠ABE = 45°이고 △ABE는 ${eq('AE', 'BE')}인 직각이등변삼각형이다. △ADC에서 ∠DAC = 90° − ∠C, △BEC에서 ∠EBC = 90° − ∠C이므로 ∠EAF = ∠EBC이다. △AEF와 △BEC에서 ${eq('AE', 'BE')}, ∠AEF = ∠BEC = 90°, ∠EAF = ∠EBC이므로 △AEF ≡ △BEC (ASA 합동)이다. ${sg('AF')} = ${sg('BC')} = ${p} + ${q} = ${p + q}(cm)이다.`,
+          facts: { calc: [[`${p}+${q}`, 0]], rule: 'hard-two-altitudes' }
+        });
+      }),
+      H('hard-arc-ratio', '외접원의 호의 길이의 비로 삼각형의 한 내각의 크기 구하기', '심41', (d) => {
+        // 호의 길이와 중심각의 정비례는 중1에서 배웠다(7-2-3 central-ratio 는 중심각까지만 묻는다). 여기서는 외접원의 중심이 외심임을 써서 내각까지 간다.
+        const [a, bq, c] = d.shuffle(d.pick([[3, 4, 5], [4, 5, 6], [5, 6, 7], [5, 7, 8], [9, 10, 11], [7, 11, 12], [11, 12, 13]])), u = 360 / (a + bq + c), aob = a * u, boc = bq * u, coa = c * u, x = boc / 2, R = 80;
+        const P = scaled(onCircle(boc / 2, coa / 2), R / 100), S = scene(P), far = [['A', 'B', aob], ['B', 'C', boc], ['C', 'A', coa]].sort((m, n) => n[2] - m[2])[0];
+        S.b.disk(P.O, R);
+        S.poly('BCA').dot('O').names({ O: [dirOf(mid(P[far[0]], P[far[1]]), P.O), 12] });
+        return degQ(`원 O가 △ABC에 외접한다. 호 AB, 호 BC, 호 CA의 길이의 비가 ${nb(`${a} : ${bq} : ${c}`)}일 때, ∠BAC의 크기는?`, x, {
+          figure: S.svg('원 O와 원 위에 세 꼭짓점이 있는 삼각형 ABC. 점 O는 삼각형의 내부에 있다'),
+          explain: `호의 길이는 중심각의 크기에 정비례하므로 ∠AOB : ∠BOC : ∠COA = ${a} : ${bq} : ${c}이고 ∠AOB = 360° × ${frac(a, `${a} + ${bq} + ${c}`)} = ${aob}°, ∠COA = 360° × ${frac(c, `${a} + ${bq} + ${c}`)} = ${coa}°이다. 원 O가 △ABC의 외접원이므로 ${nb(`${sg('OA')} = ${sg('OB')} = ${sg('OC')}`)}이고 △OAB, △OCA는 이등변삼각형이다. ∠OAB = (180° − ${aob}°) ÷ 2 = ${90 - aob / 2}°, ∠OAC = (180° − ${coa}°) ÷ 2 = ${90 - coa / 2}°이므로 ∠BAC = ${90 - aob / 2}° + ${90 - coa / 2}° = ${x}°이다.`,
+          facts: { calc: [[`(180-360*${a}/(${a}+${bq}+${c}))/2+(180-360*${c}/(${a}+${bq}+${c}))/2`, 0]], unseen: [180, 360, 2] }
+        });
+      }, { standard: CEN }),
+      H('hard-circum-nested', '외심과 두 꼭짓점이 이루는 삼각형의 외심', '심44 / 기본 ①60', (d) => {
+        // 원문 글에는 조건이 없지만 두 자료의 풀이가 모두 ∠AOC 를 △OAB 의 외각으로 셈한다(점 O 가 변 BC 위). 그 조건을 글에 밝혀 싣는다.
+        // 점 O′ 이 △AOC 의 안쪽에 넉넉히 들어오게 ∠B 는 38° 까지만 쓴다.
+        const be = d.int(31, 38), x = 180 - 2 * be, R = 125, co = Math.cos(be * RAD), si = Math.sin(be * RAD);
+        const P = { B: [0, 0], C: [2 * R, 0], O: [R, 0], A: [2 * R * co * co, -2 * R * co * si] };
+        P.o = circumOf(P.A, P.O, P.C);
+        const S = scene(P);
+        S.poly('BCA').seg('OA oO oC').dot('Oo').ang('ABC', deg(be)).ang('OoC', sv('x'), { square: false }).names({ O: 270 });
+        S.b.name(P.o, 'O′', dirOf(P.o, P.A), 13);
+        return degQ(`△ABC의 외심 O가 변 BC 위에 있고, 점 O′은 △AOC의 외심이다. ∠B = ${be}°일 때, ∠OO′C의 크기는?`, x, {
+          figure: S.svg(`삼각형 ABC. 점 O는 변 BC 위에 있고 선분 OA가 그어져 있다. 점 O′은 삼각형 AOC의 내부에 있고 선분 O′O, O′C가 그어져 있다. ∠B = ${be}°, ∠OO′C = x`),
+          explain: `점 O가 △ABC의 외심이므로 ${nb(`${sg('OA')} = ${sg('OB')} = ${sg('OC')}`)}이다. △OAB에서 ∠OAB = ∠B = ${be}°이므로 ∠AOC = ${be}° + ${be}° = ${2 * be}°(△OAB의 외각)이고, △OAC에서 ∠OAC = (180° − ${2 * be}°) ÷ 2 = ${90 - be}°이다. 점 O′이 △AOC의 외심이므로 선분 O′A를 그으면 △O′AO, △O′OC, △O′CA는 모두 이등변삼각형이고, △AOC의 세 내각의 크기의 합은 2 × (∠O′AO + ∠O′AC + ∠O′OC)이다. ∠O′AO + ∠O′AC = ∠OAC = ${90 - be}°이므로 ∠O′OC = ∠${X}라 하면 2 × (${90 - be}° + ∠${X}) = 180°, ∠${X} = ${be}°이다. △O′OC에서 ∠OO′C = 180° − ${be}° × 2 = ${x}°이다.`,
+          facts: { calc: [[`180-${be}*2`, 0]], unseen: [180, 2], rule: 'hard-circum-nested' }
+        });
+      }, { standard: CEN }),
+      H('hard-two-incenters', '이웃한 두 삼각형의 내심을 지나는 두 직선이 만나 이루는 각', '심51', (d) => {
+        const draw = (w) => {
+          const A = [0, 0], pB = [100, 0], pC = meet(A, at(A, 10, w.e / 2), pB, at(pB, 10, 180 - w.b)), D = [dist(A, pC) / (2 * Math.cos(w.e / 2 * RAD)), 0];
+          const P = fitPts({ A, B: pB, C: pC, D, I: inOf(D, pB, pC), i: inOf(A, D, pC), P: inOf(A, pB, pC) }, [244, 150]), S = scene(P);
+          S.poly('ABC').seg('CD AP BP').tick('DA').tick('DC', 1, 0.74).dot('IiP').ang('BDC', deg(w.e)).ang('IPi', '', { r: 10, square: false });
+          angOut(S, 'CBA', deg(w.b), 30, 17).names({ I: [dirOf(P.B, P.P) - 90, 11], P: 90 });
+          S.b.name(P.i, 'I′', dirOf(P.A, P.P) + 90, 12);
+          return S;
+        };
+        // 점 P 가 선분 CD 에서 넉넉히 떨어지게 고른다(∠C 의 이등분선과 선분 CD 사이의 각 90° − ¾∠BDC − ½∠ABC 가 11° 이상).
+        const v = d.until(() => ({ b: 2 * d.int(15, 22), e: 4 * d.int(18, 21) }), (w) => 90 - 0.75 * w.e - w.b / 2 >= 11 && !draw(w).clash()), x = 180 - v.b / 2 - v.e / 4, S = draw(v);
+        return degQ(`△ABC의 변 AB 위의 점 D에 대하여 ${eq('DA', 'DC')}이고 ∠ABC = ${v.b}°, ∠BDC = ${v.e}°이다. 두 점 I, I′은 각각 △DBC, △ADC의 내심이고, 선분 BI의 연장선과 선분 AI′의 연장선이 만나는 점을 P라 할 때, ∠IPI′의 크기는?`, x, {
+          figure: S.svg(`삼각형 ABC. 변 AB가 아래쪽에 가로로 놓여 있고 점 D는 변 AB 위에 있다. 선분 CD가 그어져 있고 선분 DA와 선분 DC에 길이가 같다는 표시가 있다. 점 I는 삼각형 DBC의 내부에, 점 I′은 삼각형 ADC의 내부에 있다. 점 B에서 점 I를 지나 그은 선분과 점 A에서 점 I′을 지나 그은 선분이 점 P에서 만난다. ∠ABC = ${v.b}°(각의 크기는 변 AB의 아래쪽에 적혀 있다), ∠BDC = ${v.e}°이고 ∠IPI′에 각 표시가 있다`),
+          explain: `점 I가 △DBC의 내심이므로 ∠IBD = ${v.b}° ÷ 2 = ${v.b / 2}°이다. ${eq('DA', 'DC')}이므로 ∠DAC = ∠DCA이고, ∠BDC는 △ADC의 외각이므로 ∠DAC = ${v.e}° ÷ 2 = ${v.e / 2}°이다. 점 I′이 △ADC의 내심이므로 ∠I′AD = ${v.e / 2}° ÷ 2 = ${v.e / 4}°이다. △ABP에서 ∠IPI′ = ∠APB = 180° − (${v.e / 4}° + ${v.b / 2}°) = ${x}°이다.`,
+          facts: { calc: [[`180-(${v.e}/2/2+${v.b}/2)`, 0]], unseen: [180, 2] }
+        });
+      }, { standard: CEN }),
+      H('hard-incircle-arc', '직각삼각형의 내심과 두 꼭짓점을 이은 선분이 내접원에서 자르는 호의 길이', '심54', (d) => {
+        // [BC, CA, AB]: ∠A = 90°. 호의 길이 (3r/4)π 를 분수 칸으로 받으므로 내접원의 반지름의 길이 r 가 4의 배수가 아닌 것만 쓴다.
+        const [a, b, c] = d.pick([[5, 3, 4], [5, 4, 3], [10, 6, 8], [10, 8, 6], [13, 5, 12], [13, 12, 5], [15, 9, 12], [15, 12, 9], [17, 8, 15], [17, 15, 8], [25, 15, 20], [25, 20, 15], [29, 20, 21], [29, 21, 20]]), r = (b + c - a) / 2, area = b * c / 2, g = K.gcd(3 * r, 4);
+        const P = inPtsSides(a, b, c, { size: [228, 150] });
+        Object.assign(P, { D: along(P.I, P.B, P.r), E: along(P.I, P.C, P.r) });
+        const S = scene(P), aB = dirOf(P.I, P.B), aC = dirOf(P.I, P.C);
+        S.b.disk(P.I, P.r).arc(P.I, P.r, aB, aC, 'bold');
+        S.poly('BCA').seg('IB IC').right('BAC').dot('IDE').len('AB', cm(c), 'C').len('CA', cm(b), 'B').len('BC', cm(a), 'A').names({ D: [aB + 220, 15.5], E: [aC + 140, 15.5], I: 90 });
+        return fracQ(`∠A = 90°인 직각삼각형 ABC의 내심을 I라 하고, 두 선분 IB, IC가 내접원과 만나는 점을 각각 D, E라 하자. ${nb(`${sg('AB')} = ${c} cm`)}, ${nb(`${sg('BC')} = ${a} cm`)}, ${nb(`${sg('CA')} = ${b} cm`)}일 때, 굵게 나타낸 호 DE의 길이는?`, 3 * r, 4, 'π cm', {
+          figure: S.svg(`직각삼각형 ABC와 그 내접원. ∠A에 직각 표시가 있고 내접원의 중심은 I이다. 선분 IB가 내접원과 만나는 점이 D, 선분 IC가 내접원과 만나는 점이 E이고, 내접원의 호 가운데 ∠BIC의 안쪽에 있는 호 DE가 굵게 그려져 있다. 변 AB의 길이는 ${c} cm, 변 BC의 길이는 ${a} cm, 변 CA의 길이는 ${b} cm`),
+          explain: `△ABC의 넓이는 ${HALF} × ${c} × ${b} = ${area}(cm²)이다. 내접원의 반지름의 길이를 ${V('r')} cm라 하면 ${HALF} × ${V('r')} × (${c} + ${a} + ${b}) = ${area}에서 ${V('r')} = ${r}이다. 점 I가 내심이므로 ∠IBC + ∠ICB = (180° − 90°) ÷ 2 = 45°이고 ∠BIC = 180° − 45° = 135°이다. 호 DE는 반지름의 길이가 ${r} cm이고 중심각의 크기가 135°인 부채꼴의 호이므로 그 길이는 2π × ${r} × ${frac(135, 360)} = ${frac(3 * r / g, 4 / g)}π(cm)이다.`,
+          facts: { value: `2*(${c}*${b}/(${c}+${a}+${b}))*(180-(180-90)/2)/360`, unseen: [2, 180, 360] }
+        });
+      }, { standard: CEN }),
+      H('hard-tangent-incenter', '원 밖의 한 점에서 그은 두 접선이 이루는 삼각형의 내심', '심62', (d) => {
+        // 접선이 그 접점을 지나는 반지름과 수직이라는 것은 이 단원(삼각형의 내심)에서 배운다. 내심이 원 위에 있음은 이등변삼각형이 되는 조건으로 밝힌다.
+        // 내심 I 는 그림에 찍지 않는다(찍으면 원 위에 있는 것이 보여 답이 드러난다).
+        const [a, r] = d.pick([[10, 4], [9, 4], [11, 4], [12, 5], [8, 3], [7, 3], [14, 5], [9, 3], [13, 6], [15, 6]]), R = 60, th = Math.acos(r / a) / RAD;
+        const P = { O: [0, 0], P: [a * R / r, 0], A: at([0, 0], R, th), B: at([0, 0], R, -th) }, S = scene(P);
+        S.b.disk(P.O, R);
+        S.seg('PA PB AB').seg('OA OB OP', 'thin').right('OAP OBP').dot('O').len('OA', cm(r), 'B', { gap: 3 }).dim('OP', cm(a), 'A', R + 26).names();
+        return cmQ(`원 O 밖의 한 점 P에서 원 O에 그은 두 접선의 접점을 각각 A, B라 하자. 원 O의 반지름의 길이가 ${r} cm이고 ${nb(`${sg('OP')} = ${a} cm`)}일 때, △PAB의 내심 I에 대하여 ${sg('PI')}의 길이는?`, a - r, {
+          figure: S.svg(`원 O와 원 밖의 점 P. 점 P에서 원 O에 그은 두 접선이 원과 만나는 점이 A, B이고 선분 PA, PB, AB가 그어져 있다. 반지름 OA, OB와 선분 OP가 가는 선으로 그어져 있고 ∠OAP와 ∠OBP에 직각 표시가 있다. 반지름 OA의 길이는 ${r} cm, 선분 OP의 길이는 ${a} cm`),
+          explain: `△PAO와 △PBO에서 ∠PAO = ∠PBO = 90°, ${sg('OP')}는 공통, ${eq('OA', 'OB')}이므로 △PAO ≡ △PBO (RHS 합동)이다. ${eq('PA', 'PB')}이고 ${sg('OP')}는 이등변삼각형 PAB의 꼭지각 ∠APB의 이등분선이므로 내심 I는 선분 OP 위에 있고 ${nb(`${sg('OP')} ⊥ ${sg('AB')}`)}이다. 두 선분 OP, AB가 만나는 점을 Q라 하면 ∠OAI = 90° − ∠PAI이고 △AQI에서 ∠OIA = 90° − ∠IAQ이다. ${sg('AI')}는 ∠PAB의 이등분선이므로 ∠PAI = ∠IAQ이고 ∠OAI = ∠OIA이다. 따라서 △OAI는 ${eq('OI', 'OA')} = ${r} cm인 이등변삼각형이고 ${sg('PI')} = ${a} − ${r} = ${a - r}(cm)이다.`,
+          facts: { calc: [[`${a}-${r}`, 0]], rule: 'hard-tangent-incenter' }
+        });
+      }, { standard: CEN }),
+      H('hard-trapezoid-mid', '사다리꼴의 한 변의 중점에서 내린 수선과 삼각형의 넓이', '기본 ①43', (d) => {
+        const [u, w, t] = d.pick([[20, 30, 10], [6, 10, 4], [5, 9, 4], [7, 11, 4], [8, 14, 5], [4, 8, 3], [6, 12, 5], [4, 10, 3], [6, 14, 4], [5, 11, 4], [8, 16, 5], [10, 18, 6], [12, 20, 7], [10, 16, 5]]), area = (u + w) * t / 2, xa = (w - u) * d.pick([0.22, 0.3]);
+        const P0 = { B: [0, 0], C: [w, 0], A: [xa, -2 * t], D: [xa + u, -2 * t] };
+        P0.P = mid(P0.D, P0.C); P0.H = [P0.P[0], 0];
+        const P = fitPts(P0, [222, 150]), S = scene(P);
+        S.b.poly([P.A, P.B, P.P], TINT);
+        S.poly('ABCD').seg('AP BP PH').right('PHC').tick('DP PC').arrow('AD', 0.76).arrow('BC', 0.3).len('AD', cm(u), 'B').dim('BC', cm(w), 'A', 24).len('PH', cm(t), 'C', { gap: 3 }).names();
+        return cm2Q(`${nb(`${sg('AD')} ∥ ${sg('BC')}`)}인 사다리꼴 ABCD에서 변 DC의 중점을 P라 하고, 점 P에서 변 BC에 내린 수선의 발을 H라 하자. ${nb(`${sg('AD')} = ${u} cm`)}, ${nb(`${sg('BC')} = ${w} cm`)}, ${nb(`${sg('PH')} = ${t} cm`)}일 때, △ABP의 넓이는?`, area, {
+          figure: S.svg(`사다리꼴 ABCD. 변 AD가 위쪽에, 변 BC가 아래쪽에 있고 두 변에 평행하다는 표시가 있다. 점 P는 변 DC 위에 있고 선분 DP와 선분 PC에 길이가 같다는 표시가 있다. 점 H는 변 BC 위에 있고 선분 PH가 그어져 있다. ∠PHC에 직각 표시가 있다. 선분 AP, BP가 그어져 있고 삼각형 ABP가 색칠되어 있다. 변 AD의 길이는 ${u} cm, 변 BC의 길이는 ${w} cm, 선분 PH의 길이는 ${t} cm`),
+          explain: `변 AD의 연장선과 선분 HP의 연장선이 만나는 점을 E라 하자. △DPE와 △CPH에서 ∠DEP = ∠CHP = 90°, ${eq('DP', 'CP')}, ∠DPE = ∠CPH(맞꼭지각)이므로 △DPE ≡ △CPH (RHA 합동)이고 ${eq('PE', 'PH')} = ${t} cm이다. 사다리꼴 ABCD의 높이는 ${t} + ${t} = ${2 * t}(cm)이므로 넓이는 ${HALF} × (${u} + ${w}) × ${2 * t} = ${(u + w) * t}(cm²)이다. △APD의 넓이는 ${HALF} × ${u} × ${t} = ${u * t / 2}(cm²), △PBC의 넓이는 ${HALF} × ${w} × ${t} = ${w * t / 2}(cm²)이므로 △ABP의 넓이는 ${(u + w) * t} − ${u * t / 2} − ${w * t / 2} = ${area}(cm²)이다.`,
+          facts: { calc: [[`(${u}+${w})*(${t}+${t})/2-${u}*${t}/2-${w}*${t}/2`, 0]], unseen: [2] }
+        });
+      })
     ]
   });
   // ── 기본 묶음에 덧붙이는 꼴 ──
