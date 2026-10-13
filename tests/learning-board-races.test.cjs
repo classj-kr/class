@@ -66,22 +66,29 @@ test('private submissions, synchronized rounds, immutable answers, restart, scor
       assert.equal(state.question.content, '비공개 문제 ' + i);
       if (i < 2) assert.equal(JSON.stringify(state).includes('비공개 문제 ' + (i + 1)), false);
       if (i === 0) {
-        assert.equal((await req(route, 'GET', undefined, alice)).me.spectator, true);
-        await req(route + '/answer', 'POST', { questionId: state.question.id, choice: 1 }, alice, 403);
         await req(route + '/answer', 'POST', { questionId: teacherQuestions[1].id, choice: 1 }, bob, 409);
-      } else await req(route + '/answer', 'POST', { questionId: state.question.id, choice: 1 }, alice);
+      }
+      const authorView = await req(route, 'GET', undefined, alice);
+      assert.equal(authorView.question.answer, undefined);
+      assert.equal(authorView.eligible, 2, 'authors count as answering participants');
+      await req(route + '/answer', 'POST', { questionId: state.question.id, choice: 1 }, alice);
       const accepted = await req(route + '/answer', 'POST', { questionId: state.question.id, choice: 1 }, bob);
       assert.deepEqual(Object.keys(accepted).filter(k => k !== 'cookie').sort(), ['accepted', 'choice']);
       assert.equal((await req(route + '/answer', 'POST', { questionId: state.question.id, choice: 0 }, bob)).choice, 1, 'first answer is final');
       assert.equal((await req(route, 'GET', undefined, bob)).question.answer, undefined, 'no immediate correctness oracle');
+      assert.equal((await req(route)).answered, 2);
       time += 10000;
       await req(route + '/answer', 'POST', { questionId: state.question.id, choice: 0 }, bob, 409);
       await h.initialize(); // restart cannot reset an in-progress race or its deadline
       state = await req(route);
       assert.equal(state.phase, 'reveal'); assert.equal(state.question.answer, 1);
       const a = state.racers.find(p => p.number === 1), b = state.racers.find(p => p.number === 2);
-      if (i === 0) assert.equal(a.delta, b.delta, 'author receives neutral average movement');
-      if (i === 2) { assert.equal(b.boost, true); assert.ok(b.delta >= 160); }
+      assert.equal(a.delta, b.delta, 'identical answers and timing earn identical movement regardless of authorship');
+      if (i === 2) {
+        assert.equal(a.boost, true); assert.equal(b.boost, true); assert.ok(b.delta >= 160);
+        const authorResult = (await req(route, 'GET', undefined, alice)).me;
+        assert.equal(authorResult.correctCount, 3); assert.equal(authorResult.attempts, 3);
+      }
       const score = b.score;
       assert.equal((await req(route)).racers.find(p => p.number === 2).score, score, 'grading is exactly once');
       assert.equal((await req(route + '/join', 'POST', {}, bob)).me.score, score, 'rejoin preserves score');
@@ -93,6 +100,15 @@ test('private submissions, synchronized rounds, immutable answers, restart, scor
     const again = await req(base + '/races', 'POST', { setId }, teacher, 201);
     assert.notEqual(again.id, raceId);
     assert.equal((await req(base + '/races/' + again.id + '/join', 'POST', {}, bob)).me.score, 0);
+    const replay = base + '/races/' + again.id;
+    await req(replay + '/join', 'POST', {}, alice);
+    await req(replay + '/control', 'POST', { action: 'start', phase: 'lobby', index: -1 });
+    time += 3100;
+    await req(replay + '/answer', 'POST', { questionId: teacherQuestions[0].id, choice: 0 }, alice);
+    await req(replay + '/answer', 'POST', { questionId: teacherQuestions[0].id, choice: 1 }, bob);
+    const replayResult = await req(replay + '/control', 'POST', { action: 'reveal', phase: 'question', index: 0 });
+    assert.equal(replayResult.racers.find(p => p.number === 1).delta, 0, 'incorrect own answer earns no average movement');
+    assert.ok(replayResult.racers.find(p => p.number === 2).delta >= 100);
     const other = (await req('/', 'POST', { title: '다른 방', layout: 'quiz' }, teacher, 201)).board;
     await req('/' + other.id + '/races/' + raceId, 'GET', undefined, teacher, 404);
     await req(route, 'GET', undefined, 'test_teacher=2', 401);

@@ -41,14 +41,14 @@ const { createHarness } = require('./learning-boards-harness.cjs');
     assert.equal(await alice.locator('#studentName').innerText(), '민서');
     await teacher.locator('#advance').click();
     await bob.locator('#choices button').first().waitFor();
-    await alice.waitForFunction(() => document.getElementById('studentStatus').textContent.includes('관전'));
-    assert.ok(await alice.locator('#choices button').first().isDisabled());
+    await alice.waitForFunction(() => document.getElementById('studentStatus').textContent === '답을 선택하세요');
+    await alice.locator('#choices button').first().click();
     assert.equal(await bob.locator('#feedback').innerText(), '');
     await bob.locator('#choices button').first().click();
-    await teacher.waitForFunction(() => document.getElementById('participation').textContent === '답변 1 / 1명');
+    await teacher.waitForFunction(() => document.getElementById('participation').textContent === '답변 2 / 2명');
     await teacher.locator('#advance').click();
     await bob.waitForFunction(() => document.getElementById('feedback').textContent.includes('정답'));
-    await alice.waitForFunction(() => document.getElementById('feedback').textContent.includes('평균'));
+    await alice.waitForFunction(() => document.getElementById('feedback').textContent.includes('정답'));
     const output = path.resolve('outputs/learning-board-races'); fs.mkdirSync(output, { recursive: true });
     async function capture(page, name) {
       const bytes = await page.screenshot({ fullPage: true });
@@ -72,6 +72,6 @@ const { createHarness } = require('./learning-boards-harness.cjs');
     for (const page of [teacher, alice, bob]) assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.equal(await bob.locator('#teacher').isVisible(), false);
     assert.deepEqual(errors, []);
-    console.log('PASS: teacher + two students, private board, automatic entry, author spectating, current question only, answer/reveal/race, reload, next round and final results.');
+    console.log('PASS: teacher + two students, private board, automatic entry, authors answer and score their own questions, current question only, answer/reveal/race, reload, next round and final results.');
   } finally { await browser?.close(); await h.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });
