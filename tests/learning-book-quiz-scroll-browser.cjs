@@ -29,7 +29,7 @@ async function main() {
   let next = 0;
   try {
     const context = await browser.newContext();
-    await context.route('https://**', route => route.abort());
+    await context.route(/^https:\/\//, route => route.abort());
     // 문제 쪽에는 그림·소리가 필요 없다. 막아야 책마다 빨리 열린다.
     await context.route(/\.(webp|png|jpe?g|gif|mp3|m4a|ogg|wav)(\?.*)?$/, route => route.abort());
     await context.route('**/api/learning-records/context', route => route.fulfill({ json: { mode: 'preview' } }));

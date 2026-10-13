@@ -8,7 +8,7 @@ async function main() {
   const errors = [];
   try {
     const context = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '1' }, viewport: { width: 1400, height: 1000 } });
-    await context.route('https://**', r => r.abort());
+    await context.route(/^https:\/\//, r => r.abort());
     const page = await context.newPage(); page.on('response', async r => { if(r.url().includes('/api/learning-records') && r.status() !== 200) console.error(r.status(), await r.text()); }); page.on('pageerror', e => { errors.push(e.message); console.error(e.message); });
     const saved = async action => {
       const response = page.waitForResponse(r => /\/api\/learning-records\/sessions\/[^/]+\/changes$/.test(r.url()) && r.status() === 200);

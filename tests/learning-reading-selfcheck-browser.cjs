@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict');
 const {chromium}=require('../game-hub-server/node_modules/playwright');
 const {harness}=require('./learning-records-integration.cjs');
-async function main(){const h=await harness(),b=await chromium.launch({channel:'msedge',headless:true});const c=await b.newContext({extraHTTPHeaders:{'x-test-user':'1'}});await c.route('https://**',r=>r.abort());const p=await c.newPage(),errors=[];p.on('pageerror',e=>{errors.push(e.message);console.error(e.message)});
+async function main(){const h=await harness(),b=await chromium.launch({channel:'msedge',headless:true});const c=await b.newContext({extraHTTPHeaders:{'x-test-user':'1'}});await c.route(/^https:\/\//,r=>r.abort());const p=await c.newPage(),errors=[];p.on('pageerror',e=>{errors.push(e.message);console.error(e.message)});
  const saved=async()=>{await p.waitForTimeout(180);await p.locator('learning-records .status').filter({hasText:'저장 완료'}).waitFor();};
  const detail=async a=>{const list=await(await c.request.get(h.base+'/api/learning-records/sessions?activity='+a)).json();return(await(await c.request.get(h.base+'/api/learning-records/sessions/'+list.sessions[0].id)).json()).session;};
  try{

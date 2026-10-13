@@ -22,7 +22,7 @@ async function main() {
   let next = 0;
   try {
     const context = await browser.newContext();
-    await context.route('https://**', route => route.abort());
+    await context.route(/^https:\/\//, route => route.abort());
     await context.route('**/api/learning-records/context', route => route.fulfill({ json: { mode: 'preview' } }));
     await Promise.all(Array.from({ length: 4 }, async () => {
       const page = await context.newPage(), errors = [];

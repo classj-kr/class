@@ -25,7 +25,7 @@ const MINUS = '−';
   if (SHOTS) fs.mkdirSync(OUT, { recursive: true });
   try {
     const context = await browser.newContext({ viewport: { width: 360, height: 760 } });
-    await context.route('https://**', (route) => route.abort());
+    await context.route(/^https:\/\//, (route) => route.abort());
     const page = await context.newPage();
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('dialog', (d) => d.accept());
