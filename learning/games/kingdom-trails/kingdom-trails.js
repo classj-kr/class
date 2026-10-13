@@ -34,16 +34,24 @@ function playSound(name) {
 
 function initMusic() {
   const audio = $("bgm");
-  let trackIndex = Math.floor(Math.random() * MUSIC_TRACKS.length);
-  const loadTrack = () => {
-    audio.src = MUSIC_TRACKS[trackIndex];
-    audio.load();
+  if (!audio) return;
+  const savedSource = sessionStorage.getItem("classMusicPlaybackSource") || "";
+  let trackIndex = MUSIC_TRACKS.findIndex(track => savedSource.endsWith(track));
+  if (trackIndex === -1) {
+    trackIndex = Math.floor(Math.random() * MUSIC_TRACKS.length);
+  }
+  const loadTrack = (shouldPlay = false) => {
+    const nextSrc = MUSIC_TRACKS[trackIndex];
+    if (audio.getAttribute("src") !== nextSrc && audio.src !== nextSrc && !audio.src.endsWith(nextSrc)) {
+      audio.src = nextSrc;
+      audio.load();
+    }
+    if (shouldPlay) audio.play().catch(() => {});
   };
   loadTrack();
   audio.addEventListener("ended", () => {
     trackIndex = (trackIndex + 1) % MUSIC_TRACKS.length;
-    loadTrack();
-    audio.play().catch(() => {});
+    loadTrack(true);
   });
   requestAnimationFrame(() => syncAudioControlDock(!$("gameScreen").classList.contains("hidden")));
 }
