@@ -35,6 +35,8 @@ async function harness() {
     teacherRegistrations, requireDatabase() {}, HttpError, asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next) });
   await feature.initialize(); await feature.initialize();
   const app = express(); app.use(express.json({ limit: '512kb' })); app.use('/api/learning-records', feature.router);
+  // Public URLs such as /classtools/ are served from apps/, as in site-paths.js.
+  app.use(express.static(require('node:path').resolve(__dirname, '..', 'apps')));
   app.use(express.static(require('node:path').resolve(__dirname, '..')));
   app.use((err, req, res, next) => { if (!err.status) console.error(err); res.status(err.status || 500).json({ code: err.code, message: err.message }); });
   const server = await new Promise(resolve => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
