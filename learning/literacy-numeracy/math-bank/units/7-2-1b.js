@@ -415,3 +415,86 @@
 
   Object.assign(K, { bendFig, bendSay, eightFig, LAYS, sameSpot, alternate, REL, RELS, sortOut, solidFig, cleanPick, relWord });
 })(typeof window !== 'undefined' ? window : globalThis);
+
+// ── 다시 실은 꼴(기본) ─────────────────────────────────────────
+// 처음 지을 때 「그림 모름」「공간 가르기」「거울 반사」로 뺀 꼴 가운데, 풀이의 얼개로 그림이 정해지고 두 단계 안팎에서 풀리는 것을 묶음 끝에 붙였다.
+//  - space-three-planes(심43): 서로 수직인 세 평면이 나누는 공간.
+//  - para-check-then(①68): 두 직선이 평행하다는 말이 없다. 한 직선 쪽의 엇각(동위각)이 같음을 보고 평행함을 안 다음, 다른 직선 쪽에서 평행선의 성질을 쓴다.
+//  - para-shape(①73 ②66 심55): 평행선에 걸친 정삼각형·정사각형. 꺾인 각의 크기를 도형에서 읽어 낸다(60°, 90°).
+//  - para-mirror(①79): 평행한 두 거울. 반사의 규칙은 문제 글이 알려 준다.
+(function (root) {
+  'use strict';
+  const B = root.MathBank;
+  const { N } = B.kit;
+  const { V } = B.kit.mid;
+  const K = B.kit.m721;
+  const { T, angV, deg, RAD, pol, wide, para, sector, sizeAt, SPOT, bendFig } = K;
+  const lv = (c) => V(c);
+
+  B.addTypes('7-2-1', 'space', [
+    T('space-three-planes', '서로 수직인 세 평면이 나누는 공간', '심43', (d) => {
+      const [p, q, r] = d.pick([['P', 'Q', 'R'], ['Q', 'R', 'P'], ['R', 'P', 'Q']]);
+      return N(`공간에서 서로 다른 세 평면 ${lv('P')}, ${lv('Q')}, ${lv('R')}가 ${lv(p)} ⊥ ${lv(q)}, ${lv(q)} ⊥ ${lv(r)}, ${lv(r)} ⊥ ${lv(p)}를 만족시킬 때, 공간은 이 세 평면에 의하여 몇 부분으로 나누어지는가?`, 8, { unit: '부분',
+        explain: `서로 수직인 두 평면 ${lv(p)}, ${lv(q)}는 한 직선에서 만나 공간을 4부분으로 나눈다. 평면 ${lv(r)}는 두 평면에 모두 수직이므로 이 4부분을 모두 둘로 나눈다. 공간은 4 × 2 = 8(부분)으로 나누어진다. 교실의 바닥과 이웃한 두 벽을 넓힌 세 평면을 생각하면 된다.`,
+        facts: { calc: [['4*2', 0]], unseen: [4, 2] } });
+    })
+  ]);
+
+  B.addTypes('7-2-1', 'para', [
+    T('para-check-then', '두 직선이 평행한지 가린 다음 각 구하기', '①68', (d) => {
+      const c = d.until(() => {
+        const ap = d.pick([55, 60, 65, 70, 110, 115, 120, 125]), aq = d.pick([80, 85, 95, 100]), kind = d.pick(['엇각', '동위각']), same = d.int(0, 3);
+        const [k1, k2] = kind === '엇각' ? d.pick([[2, 0], [3, 1]]) : [same, same], kg = d.int(0, 3), kx = d.int(0, 3);
+        return { ap, aq, kind, k1, k2, kg, kx, v: sizeAt(aq, k1), g: sizeAt(ap, kg), x: sizeAt(ap, kx) };
+      }, (o) => o.g !== o.v && 180 - o.g !== o.v);
+      const { ap, aq, kind, k1, k2, kg, kx, v, g, x } = c, gap = 76, S = para({ w: 250, gap });
+      const [P1, Q1] = S.cross(72 + gap / 2 / Math.tan(ap * RAD), ap, 22), [P2, Q2] = S.cross(180 + gap / 2 / Math.tan(aq * RAD), aq, 22);
+      S.text(pol(P1, ap, 33), '{p}').text(pol(P2, aq, 33), '{q}');
+      const mark = (at, a, k, t) => { const r = sector(a, k); S.angle(at, r[0], r[1], t, r[1] - r[0] > 76 ? { r: 13, d: 30 } : { r: 13 }); };
+      mark(P2, aq, k1, deg(v)); mark(Q2, aq, k2, deg(v)); mark(P1, ap, kg, deg(g)); mark(Q1, ap, kx, '{x}');
+      const tail = kx === kg ? '이므로' : (kx + 2) % 4 === kg ? '의 맞꼭지각이므로' : `과 합하여 평각을 이루므로 180° − ${g}° =`;
+      return N(`다음 그림과 같이 두 직선 ${lv('l')}, ${lv('m')}이 두 직선 ${lv('p')}, ${lv('q')}와 만날 때, ${angV('x')}의 크기는?`, x, { unit: '°',
+        figure: S.out(`두 직선 l(위), m(아래)을 두 직선 p(왼쪽), q(오른쪽)가 가로지른다. 두 직선 l, q의 교점의 ${SPOT[k1]} 각이 ${v}°, 두 직선 m, q의 교점의 ${SPOT[k2]} 각이 ${v}°이다. 두 직선 l, p의 교점의 ${SPOT[kg]} 각이 ${g}°, 두 직선 m, p의 교점의 ${SPOT[kx]} 각이 ∠x이다.`),
+        explain: `두 직선 ${lv('l')}, ${lv('m')}이 직선 ${lv('q')}와 만나서 생기는 ${kind}의 크기가 ${v}°로 같으므로 ${lv('l')} ∥ ${lv('m')}이다. 평행한 두 직선이 직선 ${lv('p')}와 만나서 생기는 동위각의 크기는 서로 같다. ${angV('x')}는 ${g}°인 각의 동위각${tail} ${x}°이다.`,
+        facts: { calc: [[x === g ? String(g) : `180-${g}`, 0]], unseen: [180] } });
+    }),
+    T('para-shape', '평행선에 걸친 정삼각형과 정사각형', '①73 ②66 심55', (d, n) => {
+      const left = d.bool(), side = left ? '왼쪽' : '오른쪽', head = `다음 그림에서 ${lv('l')} ∥ ${lv('m')}이고 `;
+      const aux = '점 B를 지나고 두 직선에 평행한 직선을 그으면 엇각의 크기가 같으므로 ';
+      const split = (a, b) => Math.sin(a * RAD) / (Math.sin(a * RAD) + Math.sin(b * RAD));   // 꺾인 점의 높이: 두 변의 길이가 같아지게
+      if (n === 0) {
+        const a = d.pick([20, 25, 35, 40]), b = 60 - a, top = d.bool(), given = top ? b : a, ans = 60 - given;
+        const S = bendFig(a, b, { left, split: split(a, b), p: top ? '{x}' : deg(a), q: top ? deg(b) : '{x}', names: ['A', 'B', 'C'] });
+        S.seg(S.P, S.Q);
+        return N(head + `삼각형 ABC가 정삼각형일 때, ${angV('x')}의 크기는?`, ans, { unit: '°',
+          figure: S.out(`평행한 두 직선 l(위), m(아래) 사이에 정삼각형 ABC가 걸쳐 있다. 꼭짓점 A는 직선 l 위에, 꼭짓점 C는 직선 m 위에 있고, 꼭짓점 B는 두 직선 사이에서 두 점 A, C보다 ${side}에 있다. 직선 l과 변 AB 사이의 각이 ${top ? '∠x' : a + '°'}, 직선 m과 변 BC 사이의 각이 ${top ? b + '°' : '∠x'}이다.`),
+          explain: aux + `∠ABC = ${given}° + ${angV('x')}이다. 정삼각형의 한 각의 크기는 60°이므로 ${given}° + ${angV('x')} = 60°에서 ${angV('x')} = ${ans}°이다.`,
+          facts: { calc: [[`60-${given}`, 0]], unseen: [60] } });
+      }
+      const [x, p, q, u, v] = d.until(() => { const xx = d.int(8, 24), pp = d.pick([2, 3]), qq = d.pick([1, 2]), uu = 5 * d.int(-5, 5); return [xx, pp, qq, uu, 90 - (pp + qq) * xx - uu]; },
+        ([xx, pp, qq, uu, vv]) => pp !== qq && uu !== 0 && vv !== 0 && vv % 5 === 0 && Math.abs(vv) <= 30 && pp * xx + uu >= 28 && pp * xx + uu <= 62);
+      const a = p * x + u, b = q * x + v, sg = (k) => (k > 0 ? `+ ${k}` : `− ${-k}`), co = (k) => (k === 1 ? '' : k), e1 = `(${p}{x} ${sg(u)})°`, e2 = `(${co(q)}{x} ${sg(v)})°`, plain = (s) => s.replace(/[{}]/g, '');
+      const S = bendFig(a, b, { left, split: split(a, b), pad: 88, p: e1, pAt: [28 + wide(e1, 12) / 2, -10], q: e2, qAt: [28 + wide(e2, 12) / 2, 10], names: ['A', 'B', 'C'] });
+      const Dp = [S.P[0] + S.Q[0] - S.K[0], S.P[1] + S.Q[1] - S.K[1]];
+      S.seg(S.P, Dp).seg(Dp, S.Q).dot(Dp).name(Dp, 'D', left ? 0 : 180, 12);
+      return N(head + `사각형 ABCD가 정사각형일 때, ${lv('x')}의 값은?`, x, {
+        figure: S.out(`평행한 두 직선 l(위), m(아래) 사이에 정사각형 ABCD가 비스듬히 걸쳐 있다. 꼭짓점 A는 직선 l 위에, 꼭짓점 C는 직선 m 위에 있고, 꼭짓점 B는 두 직선 사이에서 두 점 A, C보다 ${side}에, 꼭짓점 D는 그 반대쪽에 있다. 직선 l과 변 AB 사이의 각이 ${plain(e1)}, 직선 m과 변 BC 사이의 각이 ${plain(e2)}이다.`),
+        explain: aux + `∠ABC = (${p}${lv('x')} ${sg(u)})° + (${co(q)}${lv('x')} ${sg(v)})°이다. 정사각형의 한 각의 크기는 90°이므로 (${p}${lv('x')} ${sg(u)}) + (${co(q)}${lv('x')} ${sg(v)}) = 90이다. ${p + q}${lv('x')} = ${90 - u - v}에서 ${lv('x')} = ${x}이다.`,
+        facts: { calc: [[`(90-(${u})-(${v}))/(${p}+${q})`, 0]], unseen: [90, 1] } });
+    }, { count: 2 }),
+    T('para-mirror', '평행한 두 거울 사이에서 반사되는 빛', '①79', (d) => {
+      const t = d.until(() => d.int(32, 54), (k) => k !== 45), x = 180 - 2 * t, gap = 78, back = 42, on = 48;
+      const px = back * Math.cos(t * RAD) + 26, qx = px + gap / Math.tan(t * RAD), w = qx + on * Math.cos(t * RAD) + 34, S = para({ w, gap, names: ['', ''] });
+      const P = [px, gap], Q = [qx, 0], from = pol(P, 180 + t, back), to = pol(Q, t, on);
+      const head = (tip, dir) => S.poly([tip, pol(tip, dir + 157, 8), pol(tip, dir - 157, 8)], 'fill:#1f2933;stroke:none');
+      S.seg(from, P).seg(P, Q).seg(Q, to);
+      head(pol(from, t, back * 0.62), t); head(pol(P, 360 - t, gap / Math.sin(t * RAD) * 0.56), 360 - t); head(to, t);
+      S.angle(P, 360 - t, 360, deg(t)).angle(Q, t, 180 - t, '{x}');
+      S.text([w - 18, gap + 12], '거울').text([w - 18, -12], '거울');
+      return N(`빛이 거울에 반사될 때, 들어가는 빛이 거울과 이루는 각과 반사되어 나오는 빛이 거울과 이루는 각의 크기는 서로 같다. 다음 그림과 같이 서로 평행한 두 거울 사이에서 빛이 반사될 때, ${angV('x')}의 크기는?`, x, { unit: '°',
+        figure: S.out(`서로 평행한 두 거울(위, 아래) 사이에서 빛이 지나간 길. 빛이 왼쪽 아래에서 올라와 위쪽 거울에서 반사되어 오른쪽 아래로 내려가고, 아래쪽 거울에서 다시 반사되어 오른쪽 위로 올라간다. 위쪽 거울에서 반사되어 나오는 빛이 위쪽 거울과 이루는 각이 ${t}°이다. 아래쪽 거울 위의 점에서, 들어오는 빛과 반사되어 나가는 빛 사이의 각이 ∠x이다.`),
+        explain: `두 거울이 평행하므로 아래쪽 거울로 들어오는 빛이 아래쪽 거울과 이루는 각은 ${t}°인 각의 엇각이어서 ${t}°이다. 반사되어 나가는 빛이 아래쪽 거울과 이루는 각도 ${t}°이다. 아래쪽 거울 위의 점에서 세 각이 평각을 이루므로 ${angV('x')} = 180° − ${t}° − ${t}° = ${x}°이다.`,
+        facts: { calc: [[`180-${t}-${t}`, 0]], unseen: [180] } });
+    })
+  ]);
+})(typeof window !== 'undefined' ? window : globalThis);
