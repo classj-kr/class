@@ -1,15 +1,9 @@
 (() => {
     "use strict";
 
-    // Learning pages keep sound preferences only for the open page.
-    const learningPage = /^\/(?:learning\/literacy-numeracy\/|arithmetic(?:\/|$))/.test(location.pathname);
-    const soundMemory = new Map();
-    const soundStorage = learningPage ? {
-        getItem: key => soundMemory.get(key) ?? null,
-        setItem: (key, value) => soundMemory.set(key, String(value))
-    } : window.localStorage;
+    const soundStorage = window.localStorage;
     // 이어 듣기(어느 곡 어디까지 들었나)는 이 탭에서 쪽을 옮길 때만 뜻이 있다. 탭을 닫으면 사라지는 저장에 둔다.
-    const playbackStorage = learningPage ? soundStorage : window.sessionStorage;
+    const playbackStorage = window.sessionStorage;
 
     const MUSIC_LEVEL_KEY = "classMusicVolumeLevel";
     const MUSIC_VOLUME_KEY = "classMusicVolumeValue";
