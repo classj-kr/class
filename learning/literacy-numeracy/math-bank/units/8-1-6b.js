@@ -221,6 +221,18 @@
         explain: `세 그래프가 한 점에서 만나므로 두 그래프의 교점을 나머지 그래프도 지난다. 연립방정식 ${sys([std(l1), std(l2)])}${tl(l2.c, '을/를')} 풀면 ${X} = ${iq(x0)}, ${Y} = ${iq(y0)}이므로 교점의 좌표는 ${pt(x0, y0)}이다. ${e3}에 ${X} = ${iq(x0)}, ${Y} = ${iq(y0)}${tl(y0, '을/를')} 대입하면 ${A} = ${iq(al)}이다.`,
         facts: { value: onX ? `(${jn(c3)}-${jn(o)}*(${Y0(l1, l2)}))/(${X0(l1, l2)})` : `(${jn(c3)}-${jn(o)}*(${X0(l1, l2)}))/(${Y0(l1, l2)})`, unseen: un(l1.a, l1.b, l2.a, l2.b, o) }
       });
+    }),
+    T('meet-four-lines', '네 직선이 한 점에서 만날 때 수 구하기', '①49', (d) => {
+      // 수가 다 적힌 두 일차방정식을 골라 교점을 구하고, 그 좌표를 문자가 든 두 식에 하나씩 대입한다. 문자가 든 식과 수만 있는 식을 번갈아 적는다.
+      const v = d.until(() => Object.assign(twoThrough(d, 12), { al: nz(d, -5, 5), o1: nz(d, -3, 3), o2: nz(d, -3, 3), be: nz(d, -5, 5) }), (w) => {
+        const c3 = w.al * w.x0 + w.o1 * w.y0, c4 = w.o2 * w.x0 + w.be * w.y0, apart = (p, q) => p * w.l1.b !== w.l1.a * q && p * w.l2.b !== w.l2.a * q;
+        return c3 !== 0 && c4 !== 0 && Math.abs(c3) <= 20 && Math.abs(c4) <= 20 && apart(w.al, w.o1) && apart(w.o2, w.be) && w.al * w.be !== w.o1 * w.o2;
+      });
+      const { x0, y0, l1, l2, al, o1, o2, be } = v, c3 = al * x0 + o1 * y0, c4 = o2 * x0 + be * y0, e3 = eqR([Lt(A + X), [o1, Y]], c3), e4 = eqR([[o2, X], Lt(Bv + Y)], c4);
+      return M(`네 일차방정식 ${e3}, ${std(l1)}, ${e4}, ${std(l2)}의 그래프가 한 점에서 만날 때, 수 ${A}, ${Bv}의 값을 각각 구하시오.`, [{ label: `${A} =`, answer: al, signed: true }, { label: `${Bv} =`, answer: be, signed: true }], {
+        explain: `네 그래프가 한 점에서 만나므로, 수가 모두 주어진 두 일차방정식의 그래프의 교점을 나머지 두 그래프도 지난다. 연립방정식 ${sys([std(l1), std(l2)])}${tl(l2.c, '을/를')} 풀면 ${X} = ${iq(x0)}, ${Y} = ${iq(y0)}이므로 교점의 좌표는 ${pt(x0, y0)}이다. ${X} = ${iq(x0)}, ${Y} = ${iq(y0)}${tl(y0, '을/를')} ${e3}에 대입하면 ${A} = ${iq(al)}이고, ${e4}에 대입하면 ${Bv} = ${iq(be)}이다.`,
+        facts: { calc: [[`(${jn(c3)}-${jn(o1)}*(${Y0(l1, l2)}))/(${X0(l1, l2)})`, 0], [`(${jn(c4)}-${jn(o2)}*(${X0(l1, l2)}))/(${Y0(l1, l2)})`, 1]], unseen: un(l1.a, l1.b, l2.a, l2.b, o1, o2) }
+      });
     })
   ]);
 
