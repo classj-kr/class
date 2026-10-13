@@ -353,6 +353,27 @@ body {
   margin-top: 10px;
 }
 
+/* 틀린 문항 풀이 아래의 「다시 풀기」 단추 */
+.retry-question {
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.retry-question:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
