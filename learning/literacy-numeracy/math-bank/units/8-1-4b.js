@@ -440,6 +440,19 @@
         explain: setUp(`올라간 거리를 ${nb(`${X} km`)}, 내려온 거리를 ${nb(`${Y} km`)}라 하면 올라갈 때 걸린 시간은 ${frac(X, u)}시간, 내려올 때 걸린 시간은 ${frac(Y, w)}시간이다. ${hours}`.trim(), e1, e2, x0, y0),
         facts: { calc: [[`${dist}-${yJ}`, 0], [yJ, 1]], unseen: [60] }
       });
+    }),
+    // 처음 지을 때 「영양소(지나치게 복잡한 활용)」로 뺐다가 다시 실은 꼴(2026-10-13). 정해진 양을 먼저 빼고, 나머지를 채우는 두 가지 방법으로 식 둘을 세운다(word-bundles 보다 한 단계가 더 있다).
+    // 영양소의 열량(지방 9 kcal, 단백질 4 kcal)은 정해진 값이라 수를 바꿀 수 없으므로 식품 A, B, C 로 바꾸어 적었다.
+    T('word-energy', '정해진 양을 뺀 나머지를 두 가지 방법으로 채울 때 1 g의 열량', '심46', (d) => {
+      const m = d.until(() => {
+        const p = d.int(2, 9), q = d.int(2, 9), a1 = 5 * d.int(2, 30), b1 = 5 * d.int(2, 40), s = pm(d) * d.int(1, 3), a2 = a1 + 5 * q * s, b2 = b1 - 5 * p * s, c = d.int(2, 4), g = 50 * d.int(2, 8);
+        return { p, q, a1, b1, a2, b2, c, g, rest: a1 * p + b1 * q };
+      }, (r) => r.p !== r.q && r.a2 >= 10 && r.b2 >= 10 && r.rest % 100 === 0 && r.rest >= 400 && r.rest <= 2000 && (r.rest + r.c * r.g) % 100 === 0 && r.rest + r.c * r.g <= 3000);
+      const { p, q, a1, b1, a2, b2, c, g, rest } = m, total = rest + c * g, e1 = I(a1, b1, rest), e2 = I(a2, b2, rest), R = `(${total}-${c}*${g})`, [xj, yj] = cramerJ({ a: a1, b: b1, c: R }, { a: a2, b: b2, c: R });
+      return M(`어느 운동선수가 한 끼에 ${total} kcal의 열량을 얻으려고 한다. 1 g에 ${c} kcal의 열량을 내는 식품 C를 ${g} g 먹고, 나머지 열량은 식품 A ${a1} g과 식품 B ${b1} g을 먹어도, 식품 A ${a2} g과 식품 B ${b2} g을 먹어도 꼭 맞게 얻을 수 있다. 식품 A와 식품 B가 1 g에 내는 열량은 각각 ${nb('몇 kcal인가?')}`, [{ label: 'A', answer: p, unit: 'kcal' }, { label: 'B', answer: q, unit: 'kcal' }], {
+        explain: setUp(`식품 C ${g} g이 내는 열량은 ${nb(`${c} × ${g} = ${c * g}`)}(kcal)이므로 식품 A와 식품 B로 얻어야 하는 열량은 ${nb(`${total} ${MINUS} ${c * g} = ${rest}`)}(kcal)이다. 식품 A와 식품 B가 1 g에 내는 열량을 각각 ${nb(`${X} kcal`)}, ${nb(`${Y} kcal`)}라 하고`, e1, e2, p, q),
+        facts: { calc: [[xj, 0], [yj, 1]] }
+      });
     })
   ]);
 })(typeof window !== 'undefined' ? window : globalThis);
