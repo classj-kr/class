@@ -276,20 +276,6 @@
         facts: { calc: [[`(${AD}+${CD})*${CD}/${CE}-${CE}`, 0]] }
       });
     }),
-    T('len-para-bow', '평행한 두 선분과 엇갈린 두 선분이 만드는 두 삼각형에서 길이 구하기', '①34 ②37', (d) => {
-      const [v, f] = fitted(d, () => { const [m, k] = d.pick(RATIOS), t1 = d.int(2, 6), t2 = d.int(1, 5); return { m, k, DE: m * t1, BC: k * t1, AE: m * t2, AB: k * t2 }; },
-        (w) => { const s = w.DE * w.DE - w.AE * w.AE * 0.75; if (s <= 0 || w.DE === w.AE) return false; const AD = w.AE / 2 + Math.sqrt(s); return AD > 0.6 * w.AE && AD < 1.7 * w.AE && Math.max(w.BC, w.AB) <= 30 && w.AE >= 2; },
-        (w) => {
-          const AD = w.AE / 2 + Math.sqrt(w.DE * w.DE - w.AE * w.AE * 0.75), A0 = [0, 0];
-          const P = level({ A: A0, D: go(A0, AD, 120), E: go(A0, w.AE, 60), B: go(A0, w.AB, 240), C: go(A0, AD * w.k / w.m, 300) }, 'B', 'C');
-          return figs([{ P, order: '', segs: [['D', 'E'], ['B', 'C'], ['D', 'C'], ['E', 'B']], arrows: [['D', 'E', 0.5], ['B', 'C', 0.5]], sides: [['D', 'E', cm(w.DE), { in: 'A' }], ['B', 'C', cm(w.BC), { in: 'A' }], ['A', 'E', cm(w.AE), { in: 'D' }]], at: { A: 0 }, gapOf: { A: 13 } }], { w: 170, h: 140 });
-        });
-      return lenQ(`그림에서 두 선분 BE, CD가 점 A에서 만나고 ${SG('DE')} ${PAR} ${SG('BC')}이다. ${SG('DE')} = ${cm(v.DE)}, ${SG('BC')} = ${cm(v.BC)}, ${SG('AE')} = ${cm(v.AE)}일 때, ${SG('AB')}의 길이는?`, v.AB, {
-        figure: f.b.svg(`두 선분 BE, CD가 점 A에서 만나고, 선분 DE와 선분 BC가 그어져 있다. 선분 DE와 선분 BC에 평행 표시가 있다. 선분 DE = ${cm(v.DE)}, 선분 BC = ${cm(v.BC)}, 선분 AE = ${cm(v.AE)}`),
-        explain: `${SG('DE')} ${PAR} ${SG('BC')}이므로 ∠AED = ∠ABC(엇각), ∠ADE = ∠ACB(엇각)이다. 닮은 두 삼각형은 ${tri('AED')} ${SIM} ${tri('ABC')} (AA 닮음)이므로 ${SG('AE')} : ${SG('AB')} = ${SG('ED')} : ${SG('BC')}에서 ${v.AE} : ${SG('AB')} = ${v.DE} : ${v.BC}이다. ${SG('AB')} = ${cm(v.AB)}이다.`,
-        facts: { calc: [[`${v.AE}*${v.BC}/${v.DE}`, 0]] }
-      });
-    }),
     T('len-pgram', '평행사변형의 변의 연장선이 만드는 닮은 두 삼각형에서 길이 구하기', '①35 ②38', (d) => {
       const [v, f] = fitted(d, () => { const [m, k] = d.pick([[2, 1], [3, 1], [3, 2], [1, 1], [4, 3], [5, 2], [4, 1]]), t1 = d.int(1, 4), t2 = d.int(1, 4); return { m, k, DC: m * t1, ED: k * t1, BC: (m + k) * t2, AF: m * t2, th: d.pick([64, 70, 76]) }; },
         (w) => w.BC >= 6 && w.BC <= 24 && w.DC >= 3 && w.DC <= 16 && w.ED >= 2 && w.BC > w.DC && w.BC < 3 * w.DC,
