@@ -17,6 +17,7 @@
 // 실력에는 ① 문제의 수·식·말에 함정이 있어 뜻을 정확히 대야 풀리는 문제와 ② 두 번 넘게 생각해야 풀리는 문제(약수의 개수에서 거꾸로 지수 구하기,
 // 두 번째로 큰 약수, 홀수·짝수인 약수 세기, 곱하는 수와 제곱이 되는 수를 함께 구하기, 공배수 가운데 제곱인 수·가까운 수·몇 번째 수,
 // 최대공약수와 최소공배수에서 거꾸로 지수와 소인수 구하기)만 실었다. 기본에서 하는 일을 고르기로 바꾼 것, 수만 키운 계산은 싣지 않았다.
+// 처음 지을 때 경우 따지기·조건 여럿·요령이라는 까닭으로 뺀 꼴은 2026-10-13에 다시 보아 실력 묶음 끝에 덧붙였다(아래 「다시 실은 꼴」).
 // 묻는 말: 수나 값은 「~은?/~는?」, 양은 「몇 ~인가?」, 시키는 말은 「~하시오.」
 (function (root) {
   'use strict';
@@ -341,6 +342,205 @@
       }, { standard: STD2 })
     ]
   });
+
+  // ── 다시 실은 꼴 ──
+  // 처음 지을 때 「경우 따지기·조건 여럿·요령」이라는 까닭으로 뺀 꼴을 다시 보고, 이 단원에서 배운 성질만으로 풀리는 것을 실력 묶음 끝에 덧붙였다(2026-10-13).
+  // 모두 ② 두 번 넘게 생각해야 풀리는 문제이다: 후보를 빠짐없이 늘어놓고 하나씩 따지기, 되풀이되는 규칙 찾기, 개수에서 거꾸로 수의 꼴 찾기, 소인수마다 지수의 범위 정하기.
+  // hard-prime-digitsum(91, 49, 77은 합성수)과 hard-prime-tree(짝수인 소수는 2뿐)에는 ①의 함정도 들어 있다.
+  // 그대로 빼 둔 것: 활용(교육과정의 금, ①96~107 심51~62), 지수법칙(심41의 뒤쪽), 세 모임의 겹침(심49), 초등 내용 그대로(①43·51·52·61·62·77·82 심50),
+  //   뜻 없는 합(심23), 그림을 알 수 없는 것(①95), 작도(①8), 걷어 내면 이미 실린 유형과 같은 일(심14 — 큰 수의 소인수 구하기, 심46 — 소인수 구하기 두 번).
+  // 검사 근거: 답을 식 하나로 셈할 수 없는 꼴은 수를 하나씩 넣어 보는 틀(facts.digit)로 다시 찾는다. 약수의 개수는 1부터 차례로 나누어 본 「0**(a%j)」의 합으로 적는다.
+  // 새 낱말·기호는 쓰지 않았다: 심47의 약속 기호는 「공약수가 몇 개」로, 심48의 순서쌍은 「c가 될 수 있는 수」로 적었다.
+  const countJs = (x, top) => range(1, top).map((j) => `0**((${x})%${j})`).join('+');   // x의 약수의 개수(top 은 x보다 크거나 같은 수)
+  const sumOf = (list) => list.reduce((s, v) => s + v, 0);
+  const powTop = (f) => Math.max(...f.map(([p, e]) => p ** e));   // 소인수분해 한 식에서 가장 큰 거듭제곱(지수를 세는 틀의 위끝)
+  const primeList = (v) => fz(v).map(([p]) => p);
+  // 곱이 P인 서로소인 두 자연수의 짝(작은 수가 앞)
+  const coprimePairs = (P) => range(1, P).filter((s) => P % s === 0 && s * s < P && gcd(s, P / s) === 1).map((s) => [s, P / s]);
+  const twoDigit = (v) => v >= 10 && v <= 99;
+  // 가지 그림의 글자를 수식 글꼴의 기울인 글자로 바꾼다(그림 안의 문자).
+  const slant = (svg) => svg.replace(/>([A-E])<\/text>/g, '><tspan style="font-family:\'MB Math\',\'Times New Roman\',serif;font-style:italic;font-weight:400;font-size:17px">$1</tspan></text>');
+
+  B.addTypes(U, 'hard', [
+    H('hard-prime-digitsum', '각 자리의 숫자의 합이 정해진 두 자리 소수', '기본 ①13', (d) => {
+      // 후보를 빠짐없이 늘어놓는다 → 짝수와 5의 배수를 지운다 → 남은 수를 하나씩 따진다. 함정: 91 = 7 × 13, 49 = 7 × 7, 77 = 7 × 11을 소수로 세는 아이.
+      const s = d.pick([7, 11, 13, 14, 10]), cands = range(10, 99).filter((v) => Math.floor(v / 10) + v % 10 === s), ps = cands.filter(isPrime), top = ps[ps.length - 1];
+      const look = cands.filter((v) => v % 2 === 1 && v % 5 !== 0 && !isPrime(v));
+      return M(`각 자리의 숫자의 합이 ${s}인 두 자리 자연수 가운데 소수를 모두 찾을 때, 가장 큰 소수와 소수의 개수는?`, [{ label: '가장 큰 소수', answer: top }, { label: '소수의 개수', answer: ps.length, unit: '개' }], {
+        explain: `각 자리의 숫자의 합이 ${s}인 두 자리 자연수는 ${cands.join(', ')}이다. 짝수와 5의 배수는 소수가 아니다. ${look.length ? `${look.map(split).join(', ')}이므로 ${look.join(', ')}도 소수가 아니다. ` : ''}${ps.length === 1 ? `소수는 ${top} 하나뿐이다.` : `소수는 ${ps.join(', ')}의 ${ps.length}개이고, 가장 큰 소수는 ${top}이다.`}`,
+        facts: { digit: { template: `${s}-1<(□-□%10)/10+□%10+100*(${sieve('□')})<${s}+1`, lo: 10, hi: 99, ask: 'max' }, big: { countIf: { values: cands.map((v) => divs(v).length), test: 'below', target: 2.5, i: 1 } } }
+      });
+    }),
+    H('hard-prime-tree', '소인수분해 가지 그림에서 한 소수가 다른 두 소수의 합일 때', '심15', (d) => {
+      // 함정: 두 소수의 합이 다시 소수이려면 한 수는 2이어야 한다(2가 아닌 소수는 모두 홀수이고, 홀수끼리 더하면 2보다 큰 짝수이다). 2를 빼고 찾는 아이, 9나 15를 소수로 여기는 아이가 틀린다.
+      // 원문의 그림은 남아 있지 않다. 풀이에 적힌 얼개(A = B × D × E)대로 단원의 가지 그림 도구로 그렸다.
+      const top = d.pick([15, 20]), ps = PRIMES.filter((p) => p <= top), pairs = ps.reduce((all, x, i) => all.concat(ps.slice(i + 1).map((y) => [x, y])), []);
+      const flags = pairs.map(([x, y]) => x + y <= top && isPrime(x + y)), hits = pairs.filter((pair, i) => flags[i]), made = hits.map(([x, y]) => (x + y) * x * y), big = Math.max(...made), [x, y] = hits[made.indexOf(big)];
+      const A = V('A'), Bv = V('B'), Dv = V('D'), Ev = V('E');
+      return M(`자연수 ${A}를 소인수분해 하는 과정을 그림으로 나타낸 것이다. ${Bv}, ${Dv}, ${Ev}가 모두 ${top} 이하의 소수이고 ${nb(`${Bv} = ${Dv} + ${Ev}`)}일 때, ${A}가 될 수 있는 수의 개수와 그 가운데 가장 큰 수는?`, [{ label: '개수', answer: hits.length, unit: '개' }, { label: '가장 큰 수', answer: big }], {
+        figure: slant(K.factorTree('A', [['B', 'C'], ['D', 'E']])),
+        explain: `그림에서 ${A} = ${Bv} × ${Dv} × ${Ev}이다. 2가 아닌 소수는 모두 홀수이고, 홀수끼리 더하면 2보다 큰 짝수가 되어 소수가 아니다. 두 소수의 합이 소수이려면 한 수는 2이어야 한다. ${top} 이하의 소수 ${ps.join(', ')} 가운데 2를 더한 수도 ${top} 이하의 소수인 것을 찾으면 ${hits.map(([s, t]) => `${s} + ${t} = ${s + t}`).join(', ')}이다. 이때 ${A}는 ${hits.map(([s, t]) => `${s + t} × ${s} × ${t} = ${(s + t) * s * t}`).join(', ')}의 ${hits.length}개이고, 가장 큰 수는 ${big}이다.`,
+        facts: { count: flags, calc: [[`${x + y}*${x}*${y}`, 1]], unseen: [x + y, x, y] }
+      });
+    }),
+    H('hard-power-last', '큰 거듭제곱의 일의 자리의 숫자', '심45 / 기본 ①21', (d, n) => {
+      // 거듭제곱을 차례로 구해 일의 자리의 숫자가 되풀이되는 마디를 찾는다 → 지수를 마디의 길이로 나눈 나머지로 자리를 찾는다.
+      // 둘째는 밑이 여러 자리 수이다(일의 자리의 숫자는 밑의 일의 자리의 숫자로만 정해진다). 함정: 지수를 4로 나눈 나머지가 0일 때 첫째 숫자를 고르는 아이.
+      const b = d.pick([2, 3, 7, 8]), cyc = [1, 2, 3, 4].map((k) => b ** k % 10), e = n === 0 ? d.int(30, 150) : d.int(101, 999), base = n === 0 ? b : d.int(11, 209) * 10 + b;
+      const q = Math.floor((e - 1) / 4), r = e - 4 * q, last = cyc[r - 1], ORD = ['첫째', '둘째', '셋째', '넷째'];
+      return N(`${nb(base + sup(e))}의 일의 자리의 숫자는?`, last, {
+        explain: `${n === 1 ? `곱의 일의 자리의 숫자는 곱하는 수들의 일의 자리의 숫자로 정해지므로 ${base}${sup(e)}의 일의 자리의 숫자는 ${b}${sup(e)}의 일의 자리의 숫자와 같다. ` : ''}${b}, ${b}${sup(2)}, ${b}${sup(3)}, ${b}${sup(4)}, ${b}${sup(5)}, …의 일의 자리의 숫자는 차례로 ${cyc.join(', ')}, ${cyc[0]}, …이므로 ${cyc.join(', ')}의 네 숫자가 이 차례로 되풀이된다. ${r === 4 ? `${e} = 4 × ${q + 1}` : `${e} = 4 × ${q} + ${r}`}이므로 ${b}${sup(e)}의 일의 자리의 숫자는 되풀이되는 네 숫자 가운데 ${ORD[r - 1]}인 ${last}이다.`,
+        facts: { calc: [[`((${base}%10)**((${e}-1)%4+1))%10`, 0]], unseen: [1, 4, 10], rule: 'power-last-' + n }
+      });
+    }, { count: 2 }),
+    H('hard-factorial-zeros', '1부터 차례로 곱한 수를 10의 거듭제곱을 써서 나타내기', '심44', (d) => {
+      // 10 = 2 × 5 → 곱을 소인수분해 했을 때 2의 지수와 5의 지수 가운데 작은 쪽 → 5의 배수를 세고, 25의 배수에는 5가 한 번 더 들어 있다. 함정: 10의 배수만 세는 아이, 25의 배수를 한 번만 세는 아이.
+      const top = d.int(26, 98), c5 = Math.floor(top / 5), c25 = Math.floor(top / 25), a = V('a'), x = V('n');
+      return N(`1부터 ${top}까지의 자연수를 모두 곱한 수를 ${nb(`${a} × 10${sup(x)}`)} 꼴로 나타낼 때, 자연수 ${x}의 값은? (단, ${a}는 10의 배수가 아닌 자연수이다.)`, c5 + c25, {
+        explain: `10 = 2 × 5이므로 ${x}은 곱을 소인수분해 했을 때 2의 지수와 5의 지수 가운데 작은 것과 같다. 2의 배수가 5의 배수보다 많으므로 5의 지수를 구하면 된다. 1부터 ${top}까지의 자연수 가운데 5의 배수는 ${c5}개이고, 25 = 5${sup(2)}의 배수 ${c25}개에는 5가 한 번씩 더 곱해져 있다. 5의 지수는 ${c5} + ${c25} = ${c5 + c25}이므로 ${x} = ${c5 + c25}이다.`,
+        facts: { calc: [[`(${top}-${top}%5)/5+(${top}-${top}%25)/25`, 0]], unseen: [5, 25] }
+      });
+    }),
+    H('hard-divisor-three', '약수가 3개인 자연수 가운데 몇 번째로 작은 수', '기본 ①45', (d) => {
+      // 약수가 3개 → (지수 + 1)이 3 → 소수의 제곱 → 소수를 작은 것부터 → 제곱한다. 함정: 약수가 3개인 수를 하나씩 찾다가 놓치는 아이, 소수의 제곱이 아닌 수(6, 8)를 넣는 아이.
+      const k = d.pick([4, 6, 7]), ps = PRIMES.slice(0, k), p = ps[k - 1], prev = ps[k - 2];
+      return N(`약수가 3개인 자연수 가운데 ${k}번째로 작은 수는?`, p * p, {
+        explain: `약수의 개수는 각 소인수의 지수에 1을 더한 수를 모두 곱한 것과 같다. 3은 1보다 큰 두 자연수의 곱으로 나타낼 수 없으므로 약수가 3개인 수는 소인수가 하나이고 그 지수가 2인 수, 곧 소수의 제곱이다. 소수를 작은 것부터 쓰면 ${ps.join(', ')}, …이므로 ${k}번째로 작은 수는 ${p}${sup(2)} = ${p * p}이다.`,
+        facts: { digit: { template: `2<${countJs('□', p * p + 12)}<4`, lo: prev * prev + 1, hi: p * p + 12, ask: 'min' } }
+      });
+    }),
+    H('hard-divisor-exp-two', '약수의 개수를 알 때 두 지수의 합', '심24', (d) => {
+      // 약수의 개수를 알고 있는 (지수 + 1)로 나눈다 → 남은 수를 2 이상인 두 수의 곱으로 나타낸다(지수가 자연수이므로) → 두 지수의 합. 함정: 1 × 9로 갈라 지수 8을 넣는 아이(다른 지수가 0이 된다).
+      const [p, q, r] = asc(d.shuffle([2, 3, 5, 7]).slice(0, 3)), k = d.int(1, 3), total = d.pick([6, 8, 9, 10, 15]), n = (k + 1) * total, a = V('a'), b = V('b');
+      const s = range(2, total).find((v) => total % v === 0), t = total / s;   // total 을 2 이상인 두 수의 곱으로 나타내는 방법은 s × t 하나뿐이다.
+      return N(`${nb(`${pw(p, k)} × ${q}${sup(a)} × ${r}${sup(b)}`)}의 약수가 ${n}개일 때, 자연수 ${a}, ${b}에 대하여 ${nb(`${a} + ${b}`)}의 값은?`, s + t - 2, {
+        explain: `${k === 1 ? `${p}의 지수는 1이다. ` : ''}약수의 개수는 (${k} + 1) × (${a} + 1) × (${b} + 1) = ${n}이므로 (${a} + 1) × (${b} + 1) = ${total}이다. ${a}, ${b}는 자연수이므로 ${a} + 1, ${b} + 1은 모두 2 이상이다. ${josa(total, '을/를')} 2 이상인 두 자연수의 곱으로 나타내는 방법은 ${s} × ${t}뿐이므로 ${a} + 1, ${b} + 1은 ${s === t ? `모두 ${s}` : `${josa(s, '과/와')} ${t}`}이다. (${a} + 1) + (${b} + 1) = ${s + t}이므로 ${a} + ${b} = ${s + t - 2}이다.`,
+        facts: { digit: { template: `0<${range(1, total).map((i) => `0**(((${i}+1)*(□-${i}+1)-(${n}/(${k}+1)))**2)`).join('+')}`, lo: 2, hi: total - 2, ask: 'min' } }
+      });
+    }),
+    H('hard-divisor-least', '약수의 개수가 정해지도록 □에 넣을 가장 작은 수', '심26', (d) => {
+      // □에 이미 있는 소인수가 들 수도 있다 → 그 소인수의 지수마다 나머지 부분의 꼴을 정한다 → 꼴마다 가장 작은 □를 구해 비교한다.
+      // 함정: □를 새로운 소인수의 거듭제곱으로만 채우는 아이(2³ × □의 약수가 20개일 때 3⁴ = 81을 답하고 2 × 3 × 5 = 30을 놓친다).
+      const [p, k, n] = d.pick([[2, 2, 12], [2, 3, 16], [2, 3, 20], [2, 2, 15], [2, 4, 18], [3, 2, 12], [3, 2, 15], [3, 3, 20], [3, 1, 12], [5, 2, 12], [5, 1, 12], [2, 1, 12], [2, 1, 8], [2, 1, 10], [3, 2, 18], [2, 3, 18]]);
+      const rows = range(k, n - 1).filter((e) => n % (e + 1) === 0).map((e) => { const rest = n / (e + 1), m = range(1, 3000).find((w) => w % p !== 0 && nd(fz(w)) === rest); return { e, rest, f: sortF([[p, e]].concat(fz(m))), box: p ** (e - k) * m }; });
+      const ans = Math.min(...rows.map((row) => row.box)), near = rows.filter((row) => row.box <= 999), far = rows.filter((row) => row.box > 999);
+      return N(`${nb(`${pw(p, k)} × ${box()}`)}의 약수가 ${n}개일 때, □ 안에 들어갈 수 있는 가장 작은 자연수는?`, ans, {
+        explain: `□에 ${josa(p, '이/가')} 소인수로 들어 있을 수도 있다. ${pw(p, k)} × □를 소인수분해 한 식에서 ${p}의 지수는 ${k} 이상이고 그 지수에 1을 더한 수는 ${n}의 약수이어야 하므로, ${p}의 지수는 ${rows.map((row) => row.e).join(', ')} 가운데 하나이다. ${near.map((row) => `${p}의 지수가 ${row.e}이면 ${p}의 거듭제곱을 뺀 나머지 부분의 약수가 ${n} ÷ ${row.e + 1} = ${row.rest}개이어야 하므로 가장 작은 수는 ${fx(row.f)}이고 이때 □는 ${row.box}이다.`).join(' ')}${far.length ? ` ${p}의 지수가 ${far.map((row) => row.e).join(', ')}이면 □는 이보다 크다.` : ''} □ 안에 들어갈 수 있는 가장 작은 자연수는 ${ans}이다.`,
+        facts: { digit: { template: `${n}-1<${countJs(`${p}**${k}*□`, p ** k * (ans + 10))}<${n}+1`, lo: 1, hi: ans + 10, ask: 'min' } }
+      });
+    }),
+    H('hard-divisor-sum', '소인수분해를 이용하여 모든 약수의 합 구하기', '심28', (d) => {
+      // 소인수분해 → 약수를 표로 모두 구한다 → 한 줄씩 묶어 더한다. 함정: 1이나 자기 자신을 빼는 아이, 소인수의 거듭제곱만 더하고 서로 곱한 수를 빠뜨리는 아이.
+      const v = d.pick([72, 98, 100, 108, 144, 147, 196, 200, 242, 245, 324, 392, 400, 441, 500, 675]), f = fz(v), [[p, a], [q, b]] = f, total = sumOf(divs(v));
+      const left = range(0, a).map((i) => p ** i), right = range(0, b).map((j) => q ** j);
+      return N(`소인수분해를 이용하여 ${v}의 모든 약수의 합을 구하시오.`, total, {
+        explain: `${eqn(v)}이다. ${pw(p, a)}의 약수 ${left.join(', ')}${tail(left[a], '과/와')} ${pw(q, b)}의 약수 ${right.join(', ')}${tail(right[b], '을/를')} 하나씩 곱한 수가 ${v}의 약수이다. ${pw(p, a)}의 약수 하나에 ${pw(q, b)}의 약수를 차례로 곱하여 더한 합은 그 약수에 (${right.join(' + ')})을 곱한 수이므로, 모든 약수의 합은 (${left.join(' + ')}) × (${right.join(' + ')}) = ${sumOf(left)} × ${sumOf(right)} = ${total}이다.`,
+        facts: { calc: [[range(1, v).map((j) => `${j}*0**(${v}%${j})`).join('+'), 0]], unseen: range(0, v) }
+      });
+    }),
+    H('hard-square-common', '두 곱이 같은 자연수의 제곱이 될 때 그 자연수의 가장 작은 값', '심20', (d) => {
+      // c²이 두 수의 공배수임을 읽는다 → 최소공배수 → 홀수인 지수를 1씩 키운다 → 지수를 반으로 나눈 수가 c이다. 함정: 최소공배수를 그대로 답하는 아이, 제곱이 된 수(c²)를 답하는 아이.
+      const pool = range(12, 150).filter((v) => fz(v).every(([p]) => p <= 7) && fz(v).length >= 2);
+      const [m, k] = d.until(() => asc(d.shuffle(pool).slice(0, 2)), ([x, y]) => { const L = fz(lcm(x, y)); return y % x !== 0 && L.some(([, e]) => e % 2 === 1) && L.some(([, e]) => e >= 2) && num(L.map(([p, e]) => [p, (e + (e % 2)) / 2])) <= 420; });
+      const lF = fz(lcm(m, k)), done = lF.map(([p, e]) => [p, e + (e % 2)]), half = done.map(([p, e]) => [p, e / 2]), c = num(half), a = V('a'), b = V('b'), cv = V('c');
+      return N(`자연수 ${a}, ${b}, ${cv}에 대하여 ${nb(`${m} × ${a} = ${k} × ${b} = ${cv}${sup(2)}`)}일 때, ${cv}의 값 가운데 가장 작은 수는?`, c, {
+        explain: `${cv}${sup(2)}은 ${m}의 배수이면서 ${k}의 배수이므로 ${josa(m, '과/와')} ${k}의 공배수이다. ${eqn(m)}, ${eqn(k)}이므로 최소공배수는 ${fx(lF)}이다. 공배수는 최소공배수의 배수이고 어떤 자연수의 제곱인 수는 지수가 모두 짝수이므로, 가장 작은 ${cv}${sup(2)}은 홀수인 지수만 1씩 키운 ${fx(done)}이다. ${cv}는 지수를 모두 반으로 나눈 ${fx(half)}${fx(half) === String(c) ? '' : ' = ' + c}이다.`,
+        facts: { digit: { template: `(□*□)%${m}+(□*□)%${k}<1`, lo: 1, hi: c + 20, ask: 'min' } }
+      });
+    }, { standard: STD2 }),
+    H('hard-common-count-back', '공약수의 개수가 정해질 때 가장 작은 수', '심47', (d) => {
+      // 공약수의 개수 → 최대공약수의 약수의 개수 → 최대공약수는 주어진 수의 약수 → 그 가운데 약수의 개수가 맞는 가장 작은 수.
+      // 함정: 약수가 8개인 가장 작은 수(24)를 답하는 아이 — 24는 330의 약수가 아니어서 330과의 최대공약수가 될 수 없다.
+      const [v, k] = d.pick([[330, 8], [390, 8], [420, 8], [462, 8], [150, 6], [126, 6], [90, 6], [140, 6], [198, 6], [294, 6], [315, 6], [350, 6], [252, 12]]), x = V('x');
+      const hits = divs(v).filter((c) => nd(fz(c)) === k), ans = hits[0];
+      return N(`자연수 ${x}와 ${v}의 공약수가 ${k}개일 때, ${x}의 값 가운데 가장 작은 수는?`, ans, {
+        explain: `두 수의 공약수는 최대공약수의 약수이므로 ${x}와 ${v}의 최대공약수는 약수가 ${k}개인 수이다. 최대공약수는 ${v}의 약수이고, ${eqn(v)}의 약수 가운데 약수가 ${k}개인 수는 ${hits.map((h) => `${h} = ${fx(fz(h))}`).join(', ')}이다. ${x}는 최대공약수의 배수이므로 ${x}의 값 가운데 가장 작은 수는 ${ans}이다. 이때 ${josa(ans, '과/와')} ${v}의 최대공약수는 ${ans}이다.`,
+        facts: { digit: { template: `${k}-1<${range(1, v).map((j) => `0**(□%${j}+${v}%${j})`).join('+')}<${k}+1`, lo: 1, hi: ans + 12, ask: 'min' } }
+      });
+    }, { standard: STD2 }),
+    H('hard-lcm-least', '최소공배수와 크기 조건에 맞는 가장 작은 수', '기본 ①92', (d) => {
+      // 두 수를 소인수분해 → 최소공배수에서 지수가 더 큰 소인수는 구하는 수가 채워야 한다 → 될 수 있는 수를 작은 것부터 늘어놓는다 → 크기 조건.
+      // 함정: 최소공배수를 주어진 수로 나눈 몫(140 ÷ 20 = 7)의 배수를 아무것이나 고르는 아이(49는 140의 약수가 아니다).
+      const listOf = (L, key) => { const need = key ** expIn(L, key); return divs(num(L) / need).map((x) => x * need); };
+      const [aF, lF, key, lim] = d.until(() => {
+        const L = form(d, { ps: [2, 3, 5, 7], k: d.pick([2, 3]), lo: 60, hi: 900 }), q = d.pick(L.map(([p]) => p)), cut = d.int(1, expIn(L, q));
+        return [L.map(([p, e]) => [p, p === q ? e - cut : e]).filter(([, e]) => e > 0), L, q, d.pick([10, 20, 30, 40, 50])];
+      }, ([A, L, q, t]) => { const list = listOf(L, q); return A.length >= 1 && num(A) >= 12 && num(A) <= 99 && list.length >= 6 && list[0] <= t && list.filter((x) => x > t).length >= 2; });
+      const a = num(aF), l = num(lF), list = listOf(lF, key), ans = list.find((x) => x > lim), shown = list.slice(0, list.indexOf(ans) + 1), el = expIn(lF, key), ea = expIn(aF, key);
+      return N(`${josa(a, '과/와')}의 최소공배수가 ${l}인 자연수 가운데 ${lim}보다 큰 가장 작은 수는?`, ans, {
+        explain: `${eqn(a)}, ${eqn(l)}이다. 최소공배수의 지수는 두 수의 지수 가운데 같거나 큰 것이다. ${ea ? `${a}에서 ${key}의 지수 ${josa(ea, '은/는')} 최소공배수의 지수 ${el}보다 작으므로` : `${a}에는 소인수 ${josa(key, '이/가')} 없으므로`} 구하는 수는 ${pw(key, el)}의 배수이고, 최소공배수 ${l}의 약수이다. 이런 수를 작은 것부터 쓰면 ${shown.join(', ')}, …이므로 ${lim}보다 큰 가장 작은 수는 ${ans}이다.`,
+        facts: { digit: { template: `((${lcmJs([String(a), '□'], lF.map(([p]) => p), powTop(lF))})-${l})**2+${l}%□<1`, lo: lim + 1, hi: l, ask: 'min' } }
+      });
+    }, { standard: STD2 }),
+    H('hard-third-number', '세 수의 최대공약수와 최소공배수를 알 때 나머지 한 수의 가장 작은 값·가장 큰 값', '심39 / 기본 ①90', (d, n) => {
+      // 세 수를 소인수분해 → 소인수마다 가장 작은 지수가 최대공약수, 가장 큰 지수가 최소공배수 → 모르는 수의 지수가 될 수 있는 것 → 가장 작게(크게) 고른다.
+      // 첫째는 가장 작은 값(최소공배수에만 있는 지수는 모르는 수가 채워야 하므로 최대공약수를 답하면 틀린다),
+      // 둘째는 가장 큰 값(최대공약수의 지수보다 클 수 없는 소인수가 있으므로 최소공배수를 답하면 틀린다)을 묻는다.
+      const pool = range(12, 150).filter((v) => fz(v).every(([p]) => p <= 5) && fz(v).length >= 2), A = V('A');
+      const [a, b, g, l, sols] = d.until(() => {
+        const [x, y, z] = d.shuffle(pool), [s, t] = asc([x, y]), G = gcd(gcd(s, t), z), L = lcm(lcm(s, t), z);
+        return [s, t, G, L, L <= 900 ? divs(L).filter((w) => gcd(gcd(s, t), w) === G && lcm(lcm(s, t), w) === L) : []];
+      }, ([s, t, G, L, list]) => G >= 2 && L <= 900 && t % s !== 0 && list.length >= 3 && list.length <= 8 && (n === 0 ? lcm(s, t) < L : gcd(s, t) > G));
+      const ans = n === 0 ? sols[0] : sols[sols.length - 1], aF = fz(a), bF = fz(b), gF = fz(g), lF = fz(l), ps = lF.map(([p]) => p), top = powTop(lF);
+      const told = ps.map((p) => {
+        const fit = range(0, expIn(lF, p)).filter((e) => Math.min(expIn(aF, p), expIn(bF, p), e) === expIn(gF, p) && Math.max(expIn(aF, p), expIn(bF, p), e) === expIn(lF, p)), some = fit.filter(Boolean);
+        const said = some.length >= 3 ? `${some.join(', ')} 가운데 하나` : some.join(' 또는 ');
+        if (!some.length) return `${josa(p, '은/는')} ${A}의 소인수가 아니다.`;
+        return fit[0] === 0 ? `${josa(p, '은/는')} ${A}의 소인수가 아니거나 ${A}에서 지수가 ${said}이다.` : `${A}에서 ${p}의 지수는 ${said}이다.`;
+      }).join(' ');
+      const shownEq = [a, b, g, l].filter((v) => fx(fz(v)) !== String(v)).map(eqn).join(', ');   // 소수(3 = 3)는 적지 않는다.
+      return N(`세 자연수 ${a}, ${b}, ${A}의 최대공약수가 ${g}이고 최소공배수가 ${l}일 때, ${A}의 값 가운데 가장 ${n === 0 ? '작은' : '큰'} 수는?`, ans, {
+        explain: `${shownEq}이다. 소인수마다 세 수의 지수 가운데 가장 작은 것이 최대공약수의 지수이고 가장 큰 것이 최소공배수의 지수이다. 이에 맞추면 ${told} 지수를 가장 ${n === 0 ? '작게' : '크게'} 고르면 ${A} = ${fx(fz(ans))}${fx(fz(ans)) === String(ans) ? '' : ' = ' + ans}이다.`,
+        facts: { digit: { template: `((${gcdJs([String(a), String(b), '□'], ps, top)})-${g})**2+((${lcmJs([String(a), String(b), '□'], ps, top)})-${l})**2+${l}%□<1`, lo: 1, hi: l, ask: n === 0 ? 'min' : 'max' } }
+      });
+    }, { count: 2, standard: STD2 }),
+    H('hard-coprime-split', '최소공배수를 알 때 서로소인 두 자리 수 두 개 구하기', '기본 ①93', (d) => {
+      // 서로소인 두 수의 최소공배수는 두 수의 곱 → 같은 소인수는 모두 한 수에 들어간다 → 가르는 방법을 모두 따진다 → 두 수가 모두 두 자리 수인 것.
+      // 함정: 같은 소인수를 두 수에 나누어 넣는 아이(525 = 15 × 35 — 15와 35는 서로소가 아니다).
+      const [l, parts, small] = d.until(() => {
+        const f = asc(d.shuffle([2, 3, 5, 7, 11, 13]).slice(0, 3)).map((p) => [p, d.int(1, p === 2 ? 4 : p === 3 ? 3 : p <= 7 ? 2 : 1)]), L = num(f), fit = coprimePairs(L).filter(([s, t]) => twoDigit(s) && twoDigit(t));
+        return [L, f, fit.length === 1 ? fit[0][0] : 0];
+      }, ([L, f, s]) => s > 0 && L <= 3000 && f.some(([, e]) => e >= 2));
+      const big = l / small, pairs = coprimePairs(l);
+      return M(`서로소인 두 자연수가 모두 두 자리 수이고 최소공배수가 ${l}일 때, 두 수는?`, [{ label: '작은 수', answer: small }, { label: '큰 수', answer: big }], {
+        explain: `서로소인 두 수에는 공통인 소인수가 없으므로 최소공배수는 두 수의 곱과 같다. ${l} = ${fx(parts)}에서 같은 소인수는 모두 한 수에 들어가야 하므로, ${josa(l, '을/를')} 서로소인 두 수의 곱으로 나타내는 방법은 ${pairs.map(([s, t]) => `${s} × ${t}`).join(', ')}이다. 이 가운데 두 수가 모두 두 자리 수인 것은 ${small} × ${big}뿐이다.`,
+        facts: { digit: { template: `${l}/100<□*(1+1000*(${l}%□+((${gcdJs(['□', `${l}/□`], parts.map(([p]) => p), powTop(parts))})-1)**2))<${l}/9.99`, lo: 10, hi: 99, ask: 'min' }, calc: [[`${l}/${small}`, 1]], unseen: [small] }
+      });
+    }, { standard: STD2 }),
+    H('hard-gl-pair', '최대공약수·최소공배수와 다른 조건으로 두 수 구하기', '심42 / 기본 ①94', (d, n) => {
+      // 두 수를 (최대공약수) × a, (최대공약수) × b(a, b는 서로소)로 놓는다 → a × b = (최소공배수) ÷ (최대공약수) → 서로소인 짝을 모두 찾는다 → 남은 조건에 맞는 짝.
+      // 첫째는 두 수의 합, 둘째는 두 수가 모두 두 자리 수, 셋째는 십의 자리와 일의 자리의 숫자를 바꾼 두 수라는 조건이다.
+      // 함정: 서로소가 아닌 짝(30 = 2 × 15는 되지만 60 = 6 × 10은 안 된다)을 넣는 아이, 조건에 맞는 짝이 더 있는지 따지지 않는 아이.
+      let G, P, pick;
+      if (n === 0) [G, P, pick] = d.until(() => { const g = d.int(2, 12), p = d.pick([30, 42, 60, 66, 70, 84, 90]); return [g, p, d.pick(coprimePairs(p).slice(1))]; }, ([g, p]) => g * p <= 999);
+      else if (n === 1) [G, P, pick] = d.until(() => { const g = d.int(2, 15), p = d.pick([12, 15, 18, 20, 24, 28, 30, 35, 40, 42, 45, 56, 60, 63, 70, 72, 84, 90]), fit = coprimePairs(p).filter(([s, t]) => twoDigit(g * s) && twoDigit(g * t)); return [g, p, fit.length === 1 ? fit[0] : null]; }, ([g, p, hit]) => hit && g * p <= 999);
+      else { const [x, y] = d.pick([[12, 21], [15, 51], [24, 42], [26, 62], [36, 63], [48, 84], [18, 81], [27, 72]]); G = gcd(x, y); P = x * y / G / G; pick = [x / G, y / G]; }
+      const small = G * pick[0], big = G * pick[1], L = G * P, S = small + big, pairs = coprimePairs(P), av = V('a'), bv = V('b'), ps = primeList(G * L), top = powTop(fz(G * L)), flipped = '((□%10)*10+(□-□%10)/10)';
+      const text = [`최대공약수가 ${G}, 최소공배수가 ${L}이고 합이 ${S}인 두 자연수는?`, `최대공약수가 ${G}, 최소공배수가 ${L}인 두 자연수가 모두 두 자리 수일 때, 두 수는?`, `어떤 두 자리 자연수와 그 수의 십의 자리의 숫자와 일의 자리의 숫자를 바꾼 수의 최대공약수가 ${G}, 최소공배수가 ${L}일 때, 두 수는?`][n];
+      const last = [`이 가운데 합이 ${S}인 것은 ${josa(small, '과/와')} ${big}이다.`, `이 가운데 두 수가 모두 두 자리 수인 것은 ${josa(small, '과/와')} ${big}뿐이다.`, `이 가운데 십의 자리의 숫자와 일의 자리의 숫자를 바꾼 두 수는 ${josa(small, '과/와')} ${big}뿐이다.`][n];
+      const template = [`((□*(${S}-□))-(${G}*${L}))**2<1`, `(${G}*${L})/100<□*(1+1000*((${G}*${L})%□+((${gcdJs(['□', `(${G}*${L})/□`], ps, top)})-${G})**2))<(${G}*${L})/9.99`, `(□*${flipped}-${G}*${L})**2+((${gcdJs(['□', flipped], ps, top)})-${G})**2<1`][n];
+      return M(text, [{ label: '작은 수', answer: small }, { label: '큰 수', answer: big }], {
+        explain: `두 수를 ${G} × ${av}, ${G} × ${bv}(${av}, ${bv}는 서로소, ${av} &lt; ${bv})라 하면 최소공배수는 ${G} × ${av} × ${bv} = ${L}이므로 ${av} × ${bv} = ${P}이다. 곱이 ${P}인 서로소인 두 자연수는 ${pairs.map(([s, t]) => `${josa(s, '과/와')} ${t}`).join(', ')}이므로 두 수가 될 수 있는 것은 ${pairs.map(([s, t]) => `${josa(G * s, '과/와')} ${G * t}`).join(', ')}이다. ${last}`,
+        facts: { digit: { template, lo: n === 0 ? 1 : 10, hi: n === 0 ? S - 1 : 99, ask: 'min' }, calc: [[n === 0 ? `${S}-${small}` : `${G}*${L}/${small}`, 1]], unseen: [small] }
+      });
+    }, { count: 3, standard: STD2 }),
+    H('hard-chain-products', '이웃한 두 수의 곱이 주어진 다섯 자연수', '심48', (d) => {
+      // c는 둘째 곱과 셋째 곱의 공약수이다 → 후보마다 b, d를 구한다 → b가 첫째 곱의 약수인지, d가 넷째 곱의 약수인지 따진다.
+      // 함정: 공약수이면 다 된다고 여기는 아이(둘째 곱을 c로 나눈 b가 첫째 곱의 약수가 아닐 수 있다).
+      const [P, Q, R, S, cands, flags] = d.until(() => {
+        const a0 = d.int(2, 9), b0 = d.pick([6, 8, 9, 10, 12, 15, 18, 20, 24, 36]), c0 = d.pick([2, 3, 4, 5, 6, 8, 9, 10, 12]), d0 = d.pick([4, 5, 6, 8, 9, 10, 12, 15, 20]), e0 = d.pick([2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25]);
+        const p = a0 * b0, q = b0 * c0, r = c0 * d0, s = d0 * e0, list = divs(gcd(q, r));
+        return [p, q, r, s, list, list.map((c) => p % (q / c) === 0 && s % (r / c) === 0)];
+      }, ([p, q, r, s, list, ok]) => { const hit = ok.filter(Boolean).length; return new Set([p, q, r, s]).size === 4 && Math.max(p, q, r, s) <= 600 && list.length >= 5 && hit >= 2 && hit <= 4 && list.length - hit >= 2; });
+      const [a, b, c, dv, e] = ['a', 'b', 'c', 'd', 'e'].map(V), hits = cands.filter((x, i) => flags[i]), g = gcd(Q, R);
+      return N(`다섯 자연수 ${a}, ${b}, ${c}, ${dv}, ${e}가 다음을 모두 만족시킬 때, ${c}가 될 수 있는 수는 모두 몇 개인가?`, hits.length, {
+        unit: '개', figure: shelf([`${a} × ${b} = ${P}`, `${b} × ${c} = ${Q}`, `${c} × ${dv} = ${R}`, `${dv} × ${e} = ${S}`]),
+        explain: `${c}는 ${josa(Q, '과/와')} ${R}의 공약수이므로 두 수의 최대공약수 ${g}의 약수 ${cands.join(', ')} 가운데 하나이다. 이때 ${b} = ${Q} ÷ ${c}는 ${P}의 약수이어야 하고, ${dv} = ${R} ÷ ${c}는 ${S}의 약수이어야 한다. 두 조건에 모두 맞는 것은 ${hits.map((x) => `${c} = ${x}(${b} = ${Q / x}, ${dv} = ${R / x})`).join(', ')}의 ${hits.length}개이다.`,
+        facts: { count: flags }
+      });
+    }, { standard: STD2 })
+  ]);
+
   // ── 기본 묶음에 덧붙이는 꼴 ──
   // 받으면서 실력에서 기본으로 내린 꼴: 기본에서 하는 일을 다시 묻거나 한 번에 풀리는 것.
   const TB = (id, title, ref, make, more) => Object.assign({ id, level: '기본', title, source: '수집본 자료(' + ref + ')', make }, more || {});
