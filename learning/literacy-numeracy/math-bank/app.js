@@ -234,8 +234,10 @@
   const setSign = (button, sign) => { button.dataset.sign = sign; button.textContent = sign; button.setAttribute('aria-label', '부호 바꾸기(지금 ' + sign + ')'); };
   // 음수는 빼기표(−)로 적는다.
   const signedText = (n) => (n < 0 ? '−' + Math.abs(n) : String(n));
+  // 순환소수의 점은 글로 옮기면 사라지므로, 점이 든 보기는 화면의 답 줄에 그대로 보인다.
+  const choiceShown = (html) => (/class="mb-rdot"/.test(html) ? html : shownText(html));
   const answerText = (item, shown) => (item.shown ? (shown ? item.shown : plainText(item.shown)) : item.choice
-    ? (shown ? shownText : plainText)(item.choice.options[item.choice.answer])
+    ? (shown ? choiceShown : plainText)(item.choice.options[item.choice.answer])
     : item.fraction ? (item.negative ? '−' : '') + (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
     : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + signedText(input.answer) + (input.unit ? (/^([A-Za-z%:]|°C)/.test(input.unit.trim()) ? ' ' : '') + input.unit.trim() : ''))
       // 비(□ : □)는 쉼표 없이 잇는다.
