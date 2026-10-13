@@ -9,11 +9,14 @@
 //  - 짧은 두 변의 길이의 합이 가장 긴 변의 길이와 같아도 삼각형이 된다고 여긴다.
 //  - 뽑은 것을 다시 넣지 않을 때, 나중에 뽑는 사람의 확률을 앞사람의 결과 하나만 놓고 구한다(k/(n − 1) 또는 (k − 1)/(n − 1)). 앞사람이 당첨된 때와 아닌 때로 나누어 더해야 한다.
 //  - 확률은 세어 보아야만 알 수 있다고 여겨, 어느 경우에나 일어나는 사건(확률 1)을 알아채지 못한다.
+//  - 점이 두 직선 가운데 하나 위에 있는 경우를 셀 때, 두 직선이 만나는 점을 두 번 센다.
+//  - 「같은 것을 고른 사람이 있다」를 「모두 같은 것을 골랐다」로 읽는다. 모두 다를 확률을 구할 때 세 번째 사람이 한 사람하고만 다르면 된다고 센다.
 //
 // 실력에는 ① 문제의 상황에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제와 ② 세 단계 넘게 이어 생각해야 풀리는 문제만 실었다.
 //  ②에는 과제 글이 정한 「두 갈래로 나누어 곱하고 더하는 꼴」 넷(주머니를 고른 다음 공 꺼내기, 비가 오는지에 따라 달라지는 이길 확률, 이틀 이어지는 날씨, 세 번 가운데 두 번 넘게)을 한 유형씩,
 //  그리고 세 갈래를 더하는 것(세 사람 가운데 두 사람만), 확률 둘로 개수 둘을 거꾸로 구하는 것, 두 눈의 수의 조건을 도형·직선의 식으로 옮겨 세는 것, 수의 성질(홀짝, 유한소수)로 옮긴 뒤 구하는 것,
 //  곱으로 주어진 확률에서 한쪽을 되구하는 것, 세 번째 경기에서 우승이 정해지는 것, 세 사람의 가위바위보(27가지를 갈라 세기)를 실었다.
+//  처음 지을 때 꼬임·경우 따지기·「한 유형만」이라는 까닭으로 뺐다가 다시 본 꼴(움직이는 점과 말, 계단, 번갈아 하는 놀이, 줄 세우기, 옮겨 넣은 뒤 꺼내기 등)은 파일 끝의 「다시 싣기」에 있다.
 // 「동시에」를 한 번 곱하는 것, 일어나지 않을 확률을 한 번 쓰는 것, 두 사건을 한 번 더하는 것, 「한 사람만」「적어도 한 사람이」는 기본 묶음(8-2-7b.js)에 있다.
 // 묻는 말: 확률은 「~일 확률은?」, 시키는 말은 「~하시오.」
 (function (root) {
@@ -216,6 +219,213 @@
       return ansP(`${name(A, '과/와')} ${name(Bn, '이/가')} 가위바위보를 ${['두', '세'][n - 2]} 번 할 때, ${name(A, '이/가')} 적어도 한 번은 이길 확률은?`, ans, {
         explain: `가위바위보를 한 번 할 때 일어날 가능성이 같은 경우는 9가지이고 ${name(A, '이/가')} 이기는 경우는 3가지이므로 이길 확률은 ${frac(1, 3)}, 이기지 못할(비기거나 질) 확률은 ${lose}이다. ${n}번 모두 이기지 못할 확률은 ${Array(n).fill(lose).join(' × ')} = ${tx(none)}이므로 구하는 확률은 1 − ${tx(none)} = ${tx(ans)}이다.`,
         facts: { value: `1-${Array(n).fill('(6/9)').join('*')}`, unseen: [1, 6, 9] } });
+    })
+  ]);
+
+  // ══ 다시 싣기 ══
+  // 처음 지을 때 「점이나 말이 움직이는 놀이·계단」「세 번 넘게 이어지는 승부」「경우를 여럿 따져야 하는 세기」「과제 글이 정한 한 유형만」이라는 까닭으로 뺀 꼴을 다시 보고 덧붙였다.
+  // 수학 실력에 필요한 문제는 싣고, 상위 학년의 내용을 알아야 풀리는 것만 뺀다(꼴마다의 판정은 대조표에 있다).
+  //  실력 ① 뜻을 정확히 대야 풀리는 것: hard-two-lines(심11), hard-same-day(②74)
+  //  실력 ② 세 단계 넘게 잇는 것: hard-line(심23·24), hard-three-digit(심18), hard-walk-dice(①75), hard-vertex-walk(①76·77 ②68), hard-stairs-same(①78),
+  //    hard-first-wins(심54·55·56), hard-balls-system(심49), hard-move-then-draw(심50)
+  //  기본(두 단계 안팎): cases-coin-walk(②67 — 기본 문서 세 곳에 나온다), and-stairs(심52 — 「조건의 눈이 한 번만」으로 옮기면 한 번만 일어날 확률과 같은 셈이다)
+  // 그대로 뺀 것: 심41(다섯 번 가운데 꼭 두 번 — 독립시행의 확률은 고등학교의 내용이다), 심57(같은 것이 든 차례 세기이고 원문 문장의 뜻이 갈린다),
+  //  심42(상자를 고를 확률을 밝히면 hard-pick-bag 과 같은 일이다), ②73(끈 그림을 알 수 없는 실험 활동), ①27(hard-or-overlap 과 같은 일이다).
+  const { nick } = B.kit;
+  const { nline } = B.kit.mid;
+  const { T, sum, fact, mulSaid, mult, divOf, PRIME, EVEN, ODD, atLeast, atMost } = K;
+  const eyesOf = (c) => range(1, 6).filter(c.ok).length;
+  const perms = (list) => (list.length <= 1 ? [list] : list.flatMap((v, i) => perms(list.filter((_, j) => j !== i)).map((p) => [v].concat(p))));
+  // 자리 번호 0 … n − 1 가운데 k개를 고르는 묶음 모두(어느 묶음이나 일어날 가능성이 같다)
+  const subsets = (n, k) => (k === 0 ? [[]] : n < k ? [] : subsets(n - 1, k).concat(subsets(n - 1, k - 1).map((s) => s.concat([n - 1]))));
+  // 수직선 위의 수를 적는 글(음수는 빼기표)
+  const num = (v) => (v < 0 ? MINUS + -v : String(v));
+  // 곱하는 분수들을 적는 글: [분자, 분모]의 배열. 분자와 분모가 같으면 1로 적는다.
+  const chain = (steps) => steps.map(([a, b]) => (a === b ? '1' : frac(a, b))).join(' × ');
+  // 정다각형의 꼭짓점을 따라 움직이는 점·말의 그림. names: 꼭짓점의 이름(pts 의 차례, 화면에서 시계 반대 방향).
+  //  mark 'P': 꼭짓점 A 에 검은 점과 이름 P, 변 AB 바깥에 움직이는 방향의 화살표(쪽 그림: 2022 대단원 평가 문제 20). mark 'piece': 꼭짓점 A 에 말(색칠한 동그라미).
+  function ringFig(pts, names, mark, said) {
+    const b = G.Board(), n = pts.length, c = [sum(pts.map((p) => p[0])) / n, sum(pts.map((p) => p[1])) / n], A = pts[names.indexOf('A')], Bv = pts[names.indexOf('B')];
+    b.poly(pts, G.WHITE);
+    pts.forEach((p, i) => b.name(p, names[i], G.dirOf(c, p), mark === 'piece' && names[i] === 'A' ? 16 : 11));
+    if (mark === 'P') {
+      const out = G.dirOf(c, G.mid(A, Bv)), from = G.at(G.mid(A, Bv, 0.22), 10, out), to = G.at(G.mid(A, Bv, 0.62), 10, out), a = G.dirOf(from, to);
+      b.dot(A, 3.2); b.name(A, 'P', G.dirOf(A, c), n === 3 ? 23 : 15);
+      b.seg(from, to, 'thin'); b.poly([to, G.at(to, 7, a + 155), G.at(to, 7, a - 155)], 'fill:#1f2933');
+    } else b.disk(A, 6, 'fill:#b42318;stroke:#7f1d1d');
+    return b.svg(said);
+  }
+  const SQUARE = [[0, 0], [0, 84], [84, 84], [84, 0]];   // 정사각형 ABCD: 왼쪽 위 A, 왼쪽 아래 B, 오른쪽 아래 C, 오른쪽 위 D(쪽 그림: 2015 지도서 중단원 19)
+
+  B.addTypes('8-2-7', 'hard', [
+    // ── ① 뜻을 정확히 대야 풀리는 문제 ──
+    H('hard-two-lines', '점이 두 직선 가운데 하나 위에 있을 확률', '심11', (d) => {
+      // 함정: 「~이거나」라고 두 직선 위에 있는 경우의 수를 그대로 더하는 아이. 두 직선이 만나는 점은 두 직선 위에 모두 있으므로 한 번만 세어야 한다
+      //  (두 직선은 두 눈의 수로 된 점에서 꼭 한 번 만나게 골랐다).
+      const on = ([m, k]) => DICE.filter(([a, b]) => b === m * a + k), same = (p, q) => p[0] === q[0] && p[1] === q[1];
+      const [l1, l2] = d.until(() => [[d.pick([-1, 1]), d.int(-3, 10)], [d.pick([2, 3, -2]), d.int(-12, 14)]], ([u, v]) => on(u).length >= 3 && on(v).length >= 2 && on(u).filter((p) => on(v).some((q) => same(p, q))).length === 1);
+      const s1 = on(l1), s2 = on(l2), both = s1.find((p) => s2.some((q) => same(p, q))), hit = DICE.filter(([a, b]) => b === l1[0] * a + l1[1] || b === l2[0] * a + l2[1]).length;
+      const eq = ([m, k]) => nb(`${V('y')} = ${lin(m, k)}`), point = pt(V('a'), V('b'));
+      return ansP(`${AB}, 점 ${point}가 직선 ${eq(l1)} 위에 있거나 직선 ${eq(l2)} 위에 있을 확률은?`, P(hit, 36), {
+        explain: `점 ${point}가 직선 ${eq(l1)} 위에 있는 경우는 ${pairsSaid(s1)}, 직선 ${eq(l2)} 위에 있는 경우는 ${pairsSaid(s2)}이다. 이 가운데 (${both[0]}, ${both[1]})${tail(both[1], '은/는')} 두 직선 위에 모두 있으므로 한 번만 센다. 조건에 맞는 경우는 ${s1.length} + ${s2.length} − 1 = ${hit}(가지)이므로 구하는 확률은 ${red(hit, 36)}이다.`,
+        facts: kn(s1.length + s2.length - 1, 36) });
+    }),
+    H('hard-same-day', '세 사람 가운데 같은 것을 고른 사람이 있을 확률', '기본 ②74', (d) => {
+      // 함정: 「같은 요일에 태어난 사람이 있다」를 「세 사람이 모두 같은 요일에 태어났다」로 읽는 아이(1/7 × 1/7),
+      //  모두 다를 확률을 구하면서 세 번째 사람이 한 사람하고만 다르면 된다고 세는 아이(6/7 × 6/7).
+      //  「같은 사람이 있다」는 「모두 다르다」가 아닌 것이고, 모두 다르려면 세 번째 사람은 앞의 두 사람 모두와 달라야 한다.
+      const who = d.shuffle(NAMES).slice(0, 3).join(', '), k = d.int(0, 2), n = [7, 12, d.pick([5, 6, 8, 10])][k], what = ['태어난 요일이', '태어난 달이', '적은 수가'][k], some = ['태어난 요일이 같은 사람이', '태어난 달이 같은 사람이', '같은 수를 적은 사람이'][k];
+      const text = [`${who} 세 사람 중에 태어난 요일이 같은 사람이 있을 확률은? (단, 한 사람이 월요일부터 일요일까지 7개의 요일 중 어느 요일에 태어났을 가능성은 모두 같다.)`,
+        `${who} 세 사람 중에 태어난 달이 같은 사람이 있을 확률은? (단, 한 사람이 1월부터 12월까지 12개의 달 중 어느 달에 태어났을 가능성은 모두 같다.)`,
+        `${who} 세 사람이 1부터 ${n}까지의 자연수 중에서 하나씩을 각자 임의로 골라 종이에 적을 때, 세 사람 중에 같은 수를 적은 사람이 있을 확률은?`][k];
+      let diff = 0; for (let a = 1; a <= n; a += 1) for (let b = 1; b <= n; b += 1) for (let c = 1; c <= n; c += 1) if (a !== b && b !== c && a !== c) diff += 1;
+      const total = n * n * n, all = P(diff, total), ans = P(total - diff, total);
+      return ansP(text, ans, {
+        explain: `세 사람이 ${what} 모두 다른 경우가 아니면 ${some} 있다. 모두 다르려면 두 번째 사람은 첫 번째 사람과 달라야 하고(${n - 1}가지), 세 번째 사람은 앞의 두 사람 모두와 달라야 하므로(${n - 2}가지) 그 확률은 ${frac(n, n)} × ${frac(n - 1, n)} × ${frac(n - 2, n)} = ${tx(all)}이다. 따라서 구하는 확률은 1 − ${tx(all)} = ${tx(ans)}이다.`,
+        facts: vf(`1-(${n}*(${n}-1)*(${n}-2))/(${n}*${n}*${n})`, [2]) });
+    }),
+
+    // ── ② 세 단계 넘게 이어 생각해야 풀리는 문제 ──
+    H('hard-line', '한 줄로 설 때 이웃하지 않을·끼리끼리 이웃할 확률', '심23·24', (d, n) => {
+      if (n === 0) {
+        // ② 모든 경우의 수 → 두 사람을 한 묶음으로 세기 → 묶음 안에서 자리 바꾸기 → 이웃할 확률 → 1에서 뺀다.
+        const m = d.int(4, 5), who = d.shuffle(NAMES).slice(0, m), [x, y] = d.shuffle(who).slice(0, 2), all = perms(who), total = all.length, near = all.filter((r) => Math.abs(r.indexOf(x) - r.indexOf(y)) === 1).length, part = fact(m - 1);
+        return ansP(`${who.join(', ')} ${m}명이 한 줄로 설 때, ${name(x, '과/와')} ${name(y, '이/가')} 이웃하여 서지 않을 확률은?`, P(total - near, total), {
+          explain: `${m}명이 한 줄로 서는 경우의 수는 ${mulSaid(m)} = ${total}이다. ${name(x, '과/와')} ${name(y, '을/를')} 한 묶음으로 보고 한 줄로 세우는 경우의 수는 ${mulSaid(m - 1)} = ${part}이고, 묶음 안에서 두 사람이 자리를 바꾸는 경우가 2가지이므로 두 사람이 이웃하여 서는 경우의 수는 ${part} × 2 = ${part * 2}이다. 두 사람이 이웃하여 설 확률이 ${red(part * 2, total)}이므로 구하는 확률은 1 − ${tx(P(part * 2, total))} = ${tx(P(total - near, total))}이다.`,
+          facts: vf(`1-(${part}*2)/${total}`, [part, 2, total]) });
+      }
+      // ② 모든 경우의 수 → 두 무리를 저마다 한 묶음으로 → 묶음의 차례 2가지 → 무리 안에서 자리 바꾸기를 저마다 곱한다.
+      const [g1, g2] = d.pick([['남학생', '여학생'], ['초등학생', '중학생'], ['어른', '어린이']]), [a, b] = d.pick([[2, 2], [2, 3], [3, 2], [3, 3]]), m = a + b, kind = (i) => (i < a ? 0 : 1);
+      const all = perms(range(0, m - 1)), total = all.length, hit = all.filter((r) => range(1, m - 1).filter((i) => kind(r[i]) !== kind(r[i - 1])).length === 1).length;
+      return ansP(`${g1} ${a}명과 ${g2} ${b}명이 한 줄로 설 때, ${josa(g1, '은/는')} ${g1}끼리, ${josa(g2, '은/는')} ${g2}끼리 이웃하여 설 확률은?`, P(hit, total), {
+        explain: `${m}명이 한 줄로 서는 경우의 수는 ${mulSaid(m)} = ${total}이다. ${g1} ${a}명을 한 묶음, ${g2} ${b}명을 한 묶음으로 보면 두 묶음을 한 줄로 세우는 경우의 수는 2이다. 묶음 안에서 ${g1}끼리 자리를 바꾸는 경우의 수는 ${mulSaid(a)} = ${fact(a)}, ${g2}끼리 자리를 바꾸는 경우의 수는 ${mulSaid(b)} = ${fact(b)}이므로 끼리끼리 이웃하여 서는 경우의 수는 2 × ${fact(a)} × ${fact(b)} = ${hit}이다. 따라서 구하는 확률은 ${red(hit, total)}이다.`,
+        facts: kn(2 * fact(a) * fact(b), fact(m)) });
+    }, { count: 2 }),
+    H('hard-three-digit', '0이 낀 수 카드 세 장으로 만든 세 자리 수가 3의 배수일 확률', '심18', (d) => {
+      // ② 모든 경우의 수(백의 자리에 0이 올 수 없다) → 합이 3의 배수인 세 장의 묶음 찾기 → 0이 든 묶음과 없는 묶음으로 갈라 세기 → 확률.
+      const m = d.int(3, 5), digits = range(0, m), all = [];
+      for (const a of digits) for (const b of digits) for (const c of digits) if (a !== 0 && a !== b && b !== c && a !== c) all.push(100 * a + 10 * b + c);
+      const hit = all.filter((v) => v % 3 === 0).length, sets = subsets(m + 1, 3).map((s) => s.slice().sort((x, y) => x - y)).filter((s) => sum(s) % 3 === 0).sort((s, t) => s[0] - t[0] || s[1] - t[1] || s[2] - t[2]);
+      const zero = sets.filter((s) => s[0] === 0).length, rest = sets.length - zero;
+      return ansP(`${digits.join(', ')}${tail(m, '이/가')} 하나씩 적힌 ${m + 1}장의 카드 중에서 세 장을 뽑아 세 자리 자연수를 만들 때, 만든 수가 3의 배수일 확률은? (단, 각 자리의 숫자의 합이 3의 배수인 수는 3의 배수이다.)`, P(hit, all.length), {
+        explain: `백의 자리에는 0이 올 수 없으므로 만들 수 있는 세 자리 자연수는 ${m} × ${m} × ${m - 1} = ${all.length}(개)이다. 적힌 수의 합이 3의 배수인 세 장의 묶음은 ${sets.map((s) => `(${s.join(', ')})`).join(', ')}이다. 0이 든 묶음 ${zero}개로는 저마다 2 × 2 × 1 = 4(개), 0이 없는 묶음 ${rest}개로는 저마다 3 × 2 × 1 = 6(개)의 수를 만들 수 있으므로 3의 배수는 4 × ${zero} + 6 × ${rest} = ${hit}(개)이다. 따라서 구하는 확률은 ${red(hit, all.length)}이다.`,
+        facts: kn(4 * zero + 6 * rest, m * m * (m - 1)) });
+    }),
+    H('hard-walk-dice', '주사위의 눈만큼 수직선 위의 점을 옮길 때 제자리에 올 확률', '기본 ①75', (d) => {
+      // ② 「제자리」를 「홀수의 눈의 수의 합 = 짝수의 눈의 수의 합」으로 옮긴다 → 홀수의 눈이 두 번, 짝수의 눈이 한 번임을 알아낸다 → 눈의 묶음 찾기 → 묶음마다 나오는 차례 세기 → 확률.
+      const oddRight = d.bool(), [o, e] = oddRight ? ['오른쪽', '왼쪽'] : ['왼쪽', '오른쪽'], all = [];
+      for (let a = 1; a <= 6; a += 1) for (let b = 1; b <= 6; b += 1) for (let c = 1; c <= 6; c += 1) all.push([a, b, c]);
+      const hit = all.filter((t) => sum(t.map((v) => (v % 2 === 1 ? v : -v))) === 0), groups = new Map();
+      for (const t of hit) { const key = t.slice().sort((x, y) => x - y).join(', '); groups.set(key, (groups.get(key) || 0) + 1); }
+      return ansP(`수직선 위의 원점에 점 P가 있다. 주사위 한 개를 던져 홀수의 눈이 나오면 그 눈의 수만큼 점 P를 ${o}으로, 짝수의 눈이 나오면 그 눈의 수만큼 점 P를 ${e}으로 옮긴다. 주사위를 세 번 던진 뒤 점 P가 다시 원점에 있을 확률은?`, P(hit.length, 216), {
+        explain: `모든 경우의 수는 6 × 6 × 6 = 216이다. 점 P가 다시 원점에 있으려면 홀수의 눈의 수의 합과 짝수의 눈의 수의 합이 같아야 하므로, 홀수의 눈이 두 번 나오고 그 합과 같은 짝수의 눈이 한 번 나와야 한다. 세 눈의 수가 ${[...groups].map(([key, cnt]) => `(${key})인 경우는 나오는 차례에 따라 ${cnt}가지`).join(', ')}이므로 모두 ${[...groups.values()].join(' + ')} = ${hit.length}(가지)이다. 따라서 구하는 확률은 ${red(hit.length, 216)}이다.`,
+        // 다른 길: 합이 6 이하의 짝수인 홀수의 눈의 순서쌍 (1, 1), (1, 3), (3, 1), (1, 5), (5, 1), (3, 3)의 6가지 × 짝수의 눈이 나오는 차례 3가지
+        facts: { value: '(6*3)/(6*6*6)', unseen: [3, 6] } });
+    }),
+    H('hard-vertex-walk', '정다각형의 꼭짓점을 따라 움직이는 점·말', '기본 ①76·77 ②68', (d, n) => {
+      if (n === 0) {
+        // ② 놓이는 꼭짓점을 「합을 꼭짓점의 수로 나눈 나머지」로 옮긴다 → 그런 합을 모두 찾는다 → 합마다 순서쌍을 센다 → 더해 확률.
+        const m = d.pick([3, 4, 5]), shape = { 3: '정삼각형', 4: '정사각형', 5: '정오각형' }[m], pts = m === 4 ? SQUARE : G.regPts(m, m === 3 ? 104 : 64), names = m === 4 ? ['A', 'B', 'C', 'D'] : G.vnames(pts), letters = G.ALPHA.slice(0, m).split('');
+        const k = d.int(0, m - 1), sums = range(2, 12).filter((s) => s % m === k), hit = DICE.filter(([a, b]) => (a + b) % m === k).length, parts = sums.map((s) => 6 - Math.abs(7 - s));
+        return ansP(`다음 그림과 같이 ${shape} ${letters.join('')}의 꼭짓점 A에 점 P가 있다. 서로 다른 두 개의 주사위를 동시에 던져 나오는 두 눈의 수의 합만큼, 점 P를 ${letters.slice(0, 3).join(' → ')}의 방향으로 이웃한 꼭짓점으로 한 칸씩 옮긴다. 이때 점 P가 꼭짓점 ${letters[k]}에 놓일 확률은?`, P(hit, 36), {
+          figure: ringFig(pts, names, 'P', `${shape} ${letters.join('')}: 꼭짓점은 시계 반대 방향으로 ${letters.join(', ')}의 차례이다. 꼭짓점 A에 점 P가 있고, 변 AB의 바깥에 A에서 B 쪽을 가리키는 화살표가 있다.`),
+          explain: `점 P는 ${m}칸을 움직일 때마다 꼭짓점 A로 돌아오므로, 꼭짓점 ${letters[k]}에 놓이려면 두 눈의 수의 합이 ${k === 0 ? `${m}의 배수이어야 한다` : `${josa(m, '으로/로')} 나누었을 때 나머지가 ${k}인 수이어야 한다`}. 그런 합은 ${sums.join(', ')}이고, ${sums.map((s, i) => `합이 ${s}인 경우는 ${parts[i]}가지`).join(', ')}이므로 구하는 확률은 ${frac(parts.join(' + '), 36)} = ${tx(P(hit, 36))}이다.`,
+          facts: kn(sum(parts), 36) });
+      }
+      // ② 놓이는 꼭짓점을 「두 번의 방향이 같다(다르다)」로 옮긴다 → 조건의 눈이 나올 확률과 나오지 않을 확률 → 두 갈래를 곱해 더한다.
+      const c = d.pick([divOf(5), mult(3), atLeast(5), divOf(6), atMost(4), PRIME, EVEN, divOf(4)]), k = eyesOf(c), p = P(k, 6), q = non(p), far = d.bool(), hit = DICE.filter(([a, b]) => (c.ok(a) === c.ok(b)) === far).length;
+      const x = far ? qmul(p, p) : qmul(p, q), y = far ? qmul(q, q) : qmul(q, p);
+      const told = far ? `말이 꼭짓점 C에 놓이려면 두 번 모두 같은 방향으로 움직여야 한다. 두 번 모두 시계 방향으로 움직일 확률은 ${tx(p)} × ${tx(p)} = ${tx(x)}, 두 번 모두 시계 반대 방향으로 움직일 확률은 ${tx(q)} × ${tx(q)} = ${tx(y)}`
+        : `말이 꼭짓점 A로 돌아오려면 두 번을 서로 다른 방향으로 움직여야 한다. 시계 방향, 시계 반대 방향의 차례로 움직일 확률은 ${tx(p)} × ${tx(q)} = ${tx(x)}, 시계 반대 방향, 시계 방향의 차례로 움직일 확률은 ${tx(q)} × ${tx(p)} = ${tx(y)}`;
+      return ansP(`다음 그림과 같이 정사각형 ABCD의 꼭짓점 A에 말이 놓여 있다. 주사위 한 개를 던져 ${c.eye}이 나오면 말을 시계 방향(A → D의 방향)으로, 그 밖의 눈이 나오면 시계 반대 방향(A → B의 방향)으로 이웃한 꼭짓점으로 한 칸 옮긴다. 주사위를 두 번 던진 뒤 말이 꼭짓점 ${far ? 'C' : 'A'}에 놓여 있을 확률은?`, P(hit, 36), {
+        figure: ringFig(SQUARE, ['A', 'B', 'C', 'D'], 'piece', '정사각형 ABCD: 왼쪽 위 꼭짓점이 A이고 시계 반대 방향으로 B, C, D의 차례이다. 꼭짓점 A에 말이 놓여 있다.'),
+        explain: `${c.eye}이 나올 확률은 ${red(k, 6)}, 그 밖의 눈이 나올 확률은 ${tx(q)}이다. ${told}이므로 구하는 확률은 ${tx(x)} + ${tx(y)} = ${tx(P(hit, 36))}이다.`,
+        facts: { value: far ? `(${k}*${k}+(6-${k})*(6-${k}))/36` : `(2*${k}*(6-${k}))/36`, unseen: [2, k, 6, 36] } });
+    }, { count: 2 }),
+    H('hard-stairs-same', '두 사람이 계단을 오르내릴 때 같은 계단에 있을 확률', '기본 ①78', (d) => {
+      // ② 한 사람이 두 번 던진 뒤 서 있을 수 있는 세 곳과 그 확률 → 두 사람이 같은 곳에 있는 세 갈래를 저마다 곱해 더한다.
+      const [A, Bn] = two(d), coin = d.bool(), c = coin ? null : d.pick([mult(3), divOf(5), atLeast(5), divOf(6), atMost(4)]), k = coin ? 1 : eyesOf(c), sides = coin ? 2 : 6, p = P(k, sides), q = non(p);
+      const spots = [qmul(p, p), qmul(Q(2), qmul(p, q)), qmul(q, q)], ans = spots.reduce((s, v) => qadd(s, qmul(v, v)), Q(0));
+      const up = coin ? '앞면이 나오면' : `${c.eye}이 나오면`, down = coin ? '뒷면이 나오면' : '그 밖의 눈이 나오면', thing = coin ? '동전' : '주사위';
+      return ansP(`긴 계단의 중간에서 같은 계단에 서 있는 ${name(A, '과/와')} ${name(Bn, '이/가')} 저마다 ${thing} 한 개를 던져 ${up} 한 계단 올라가고, ${down} 한 계단 내려가기로 하였다. 두 사람이 ${josa(thing, '을/를')} 두 번씩 던진 뒤 서로 같은 계단에 서 있을 확률은?`, ans, {
+        explain: `한 번 던져 올라갈 확률은 ${coin ? frac(1, 2) : red(k, 6)}, 내려갈 확률은 ${tx(q)}이다. 한 사람이 두 번 던진 뒤 서 있는 곳은 처음보다 두 계단 위(두 번 모두 올라간다), 처음 계단(한 번 올라가고 한 번 내려간다), 두 계단 아래(두 번 모두 내려간다) 중 하나이고, 그 확률은 차례로 ${tx(p)} × ${tx(p)} = ${tx(spots[0])}, ${tx(p)} × ${tx(q)} × 2 = ${tx(spots[1])}, ${tx(q)} × ${tx(q)} = ${tx(spots[2])}이다. 두 사람이 같은 곳에 있을 확률은 ${spots.map((v) => `${tx(v)} × ${tx(v)}`).join(' + ')} = ${tx(ans)}이다.`,
+        facts: kn((k * k) ** 2 + (2 * k * (sides - k)) ** 2 + ((sides - k) * (sides - k)) ** 2, sides ** 4) });
+    }),
+    H('hard-first-wins', '번갈아 하여 먼저 해내는 사람이 이기는 놀이', '심54·55·56', (d, n) => {
+      const [A, Bn] = two(d), both = `${name(A, '과/와')} ${name(Bn, '이/가')}`;
+      if (n === 0) {
+        // ② 이기는 차례가 몇 번째인지 가린다 → 그 차례마다 「앞에서는 모두 나오지 않고 그때 처음 나온다」의 곱 → 더한다.
+        const c = d.pick([EVEN, ODD, PRIME, mult(3), atLeast(5), divOf(6)]), k = eyesOf(c), p = P(k, 6), q = non(p), later = d.bool(), who = later ? Bn : A, turns = later ? [2, 4] : [1, 3];
+        const parts = turns.map((t) => times(Array(t - 1).fill(q).concat([p]))), ans = qadd(parts[0], parts[1]), said = (t) => Array(t - 1).fill(tx(q)).concat([tx(p)]).join(' × ');
+        return ansP(`${both} ${nick(A)}부터 시작하여 번갈아 주사위를 한 번씩 던져, ${c.eye}이 먼저 나오는 사람이 이기는 놀이를 한다. 두 사람이 주사위를 던진 횟수를 모두 합하여 ${later ? 4 : 3}번 이내에 ${name(who, '이/가')} 이길 확률은?`, ans, {
+          explain: `${c.eye}이 나올 확률은 ${red(k, 6)}, 나오지 않을 확률은 ${tx(q)}이다. ${name(who, '은/는')} ${turns[0]}번째와 ${turns[1]}번째에 던지므로, ${turns[0]}번째에 ${c.eye}이 처음 나오거나 ${turns[1]}번째에 처음 나오면 이긴다. ${turns.map((t, i) => `${t}번째에 처음 나올 확률은 ${t === 1 ? tx(p) : `${said(t)} = ${tx(parts[i])}`}`).join(', ')}이므로 구하는 확률은 ${tx(parts[0])} + ${tx(parts[1])} = ${tx(ans)}이다.`,
+          facts: vf(turns.map((t) => Array(t - 1).fill(`(1-${k}/6)`).concat([`(${k}/6)`]).join('*')).join('+'), [k, 6]) });
+      }
+      if (n === 1) {
+        // ② 이기는 차례를 가린다 → 차례마다 「앞에서는 모두 파란 구슬」의 곱(꺼낼 때마다 남은 구슬이 줄어든다) → 더한다.
+        const [b, y] = d.pick([[4, 2], [3, 2], [2, 2], [3, 3], [4, 3]]), m = b + y, first = d.bool(), who = first ? A : Bn, turns = range(1, b + 1).filter((t) => (t % 2 === 1) === first);
+        const steps = (t) => range(1, t - 1).map((i) => [b - i + 1, m - i + 1]).concat([[y, m - t + 1]]), parts = turns.map((t) => times(steps(t).map(([u, v]) => P(u, v)))), ans = parts.reduce((s, v) => qadd(s, v), Q(0));
+        // 다른 길: 노란 구슬이 놓이는 자리의 묶음은 어느 것이나 가능성이 같다. 가장 앞의 노란 구슬이 홀수 번째에 있으면 먼저 꺼내는 사람이 이긴다.
+        const spots = subsets(m, y), wins = spots.filter((s) => (Math.min(...s) % 2 === 0) === first).length;
+        return ansP(`파란 구슬 ${b}개, 노란 구슬 ${y}개가 들어 있는 주머니에서 ${both} ${nick(A)}부터 시작하여 번갈아 구슬을 한 개씩 꺼내, 노란 구슬을 먼저 꺼내는 사람이 이기는 놀이를 한다. 이 놀이에서 ${name(who, '이/가')} 이길 확률은? (단, 꺼낸 구슬은 다시 넣지 않는다.)`, ans, {
+          explain: `${name(who, '은/는')} ${turns.map((t) => t + '번째').join(', ')}에 꺼내므로, 그때 노란 구슬이 처음 나오면 이긴다. ${turns.map((t, i) => `${t}번째에 처음 나올 확률은 ${steps(t).length === 1 ? tx(parts[i]) : `${chain(steps(t))} = ${tx(parts[i])}`}`).join(', ')}이다. 따라서 구하는 확률은 ${parts.length === 1 ? tx(ans) : `${parts.map(tx).join(' + ')} = ${tx(ans)}`}이다.`,
+          facts: kn(wins, spots.length) });
+      }
+      // ② 이기는 조건을 「상대가 홀수를 뽑기 전에 홀수 두 장을 뽑는다」로 옮긴다 → 그렇게 되는 차례를 모두 찾는다 → 갈래마다 줄어드는 분모로 곱한다 → 더한다.
+      const m = d.pick([6, 7]), first = d.pick(range(1, m).filter((v) => v % 2 === 1)), rest = range(1, m).filter((v) => v !== first), odd = rest.filter((v) => v % 2 === 1).length, even = rest.length - odd, paths = [];
+      // 남은 카드를 Bn 부터 번갈아 뽑는다(turn 이 짝수이면 Bn 의 차례). A 는 홀수를 한 장만 더 뽑으면 이긴다.
+      const walk = (o, e, got, turn, path) => {
+        if (o && turn % 2 === 0) { const step = path.concat([['홀', o, o + e]]); if (got === 1) paths.push(step); else walk(o - 1, e, got + 1, turn + 1, step); }
+        if (e) walk(o, e - 1, got, turn + 1, path.concat([['짝', e, o + e]]));
+      };
+      walk(odd, even, 0, 0, []);
+      const parts = paths.map((path) => times(path.map(([, u, v]) => P(u, v)))), ans = parts.reduce((s, v) => qadd(s, v), Q(0));
+      // 다른 길: 남은 카드에서 홀수가 놓이는 자리의 묶음은 어느 것이나 가능성이 같다. 차례대로 넘기며 누가 먼저 홀수 두 장을 채우는지 본다.
+      const spots = subsets(rest.length, odd), wins = spots.filter((s) => { let got = 0; for (let i = 0; i < rest.length; i += 1) if (s.includes(i)) { if (i % 2 === 1) return false; got += 1; if (got === 2) return true; } return false; }).length;
+      return ansP(`1부터 ${m}까지의 자연수가 하나씩 적힌 ${m}장의 카드를 ${both} 한 장씩 번갈아 뽑아, 홀수가 적힌 카드 2장을 먼저 뽑는 사람이 이기는 놀이를 한다. ${name(A, '이/가')} 맨 처음에 ${first}${tail(first, '이/가')} 적힌 카드를 뽑았을 때, 이 놀이에서 ${name(Bn, '이/가')} 이길 확률은? (단, 뽑은 카드는 다시 넣지 않는다.)`, ans, {
+        explain: `남은 카드는 홀수 ${odd}장, 짝수 ${even}장이고 ${nick(Bn)}부터 뽑는다. ${name(A, '은/는')} 홀수를 한 장만 더 뽑으면 이기므로, ${name(Bn, '이/가')} 이기려면 ${name(A, '이/가')} 홀수를 뽑기 전에 홀수 두 장을 뽑아야 한다. 그런 경우를 뽑는 차례대로 적으면 ${paths.map((path, i) => `(${path.map((s) => s[0]).join(', ')})일 확률은 ${chain(path.map(([, u, v]) => [u, v]))} = ${tx(parts[i])}`).join(', ')}이다. 따라서 구하는 확률은 ${parts.map(tx).join(' + ')} = ${tx(ans)}이다.`,
+        facts: kn(wins, spots.length) });
+    }, { count: 3 }),
+    H('hard-balls-system', '식을 세워 공의 개수를 구한 뒤 차례로 꺼내기', '심49', (d) => {
+      // ② 처음의 흰 공과 검은 공의 개수를 두 문자로 놓고 식 둘을 세운다 → 연립하여 푼다 → 다시 넣지 않고 세 번 꺼내는 곱(전체와 남은 개수가 줄어든다).
+      const [w, b, a, c] = d.until(() => [d.int(3, 9), d.int(2, 4), d.int(1, 6), d.int(1, 6)], ([w0, b0, a0, c0]) => { const p1 = Q(w0 + a0, w0 + b0 + a0), p2 = Q(b0 + c0, w0 + b0 + c0); return w0 > b0 && p1.q <= 8 && p2.q <= 6 && p1.q < w0 + b0 + a0 && p2.q < w0 + b0 + c0 && p1.p * p2.q + p2.p * p1.q !== p1.q * p2.q; });
+      const [n1, n2, n3] = d.shuffle(NAMES).slice(0, 3), p1 = Q(w + a, w + b + a), p2 = Q(b + c, w + b + c), all = w + b, X = V('x'), Y = V('y'), idx = range(0, all - 1), white = (i) => i < w;
+      let hit = 0; for (const i of idx) for (const j of idx) for (const k of idx) if (i !== j && j !== k && i !== k && white(i) && !white(j) && white(k)) hit += 1;
+      const total = all * (all - 1) * (all - 2), ans = P(hit, total);
+      return ansP(`흰 공과 검은 공이 들어 있는 상자가 있다. 이 상자에 흰 공 ${a}개를 더 넣으면 흰 공이 전체의 ${tx(p1)}${tail(p1.p, '이/가')} 되고, 흰 공을 넣는 대신 검은 공 ${c}개를 더 넣으면 검은 공이 전체의 ${tx(p2)}${tail(p2.p, '이/가')} 된다. 공을 더 넣지 않은 처음 상자에서 ${n1}, ${n2}, ${n3} 세 사람이 이 차례로 공을 한 개씩 꺼낼 때, 세 사람 중 ${nick(n2)}만 검은 공을 꺼낼 확률은? (단, 꺼낸 공은 다시 넣지 않는다.)`, ans, {
+        explain: `처음 상자의 흰 공을 ${X}개, 검은 공을 ${Y}개라 하면 ${nb(`${frac(`${X} + ${a}`, `${X} + ${Y} + ${a}`)} = ${tx(p1)}`)}, ${nb(`${frac(`${Y} + ${c}`, `${X} + ${Y} + ${c}`)} = ${tx(p2)}`)}이다. 두 식을 정리하면 ${nb(`${p1.q}(${X} + ${a}) = ${p1.p}(${X} + ${Y} + ${a})`)}, ${nb(`${p2.q}(${Y} + ${c}) = ${p2.p}(${X} + ${Y} + ${c})`)}이고, 연립하여 풀면 ${nb(`${X} = ${w}`)}, ${nb(`${Y} = ${b}`)}이다. 공 ${all}개 중에서 흰 공, 검은 공, 흰 공의 차례로 꺼낼 확률은 ${frac(w, all)} × ${frac(b, all - 1)} × ${frac(w - 1, all - 2)} = ${tx(ans)}이다.`,
+        facts: vf(`(${w}/${all})*(${b}/(${all}-1))*((${w}-1)/(${all}-2))`, [w, b, all, 2]) });
+    }),
+    H('hard-move-then-draw', '한 상자에서 꺼내 다른 상자에 넣은 뒤 꺼내기', '심50', (d) => {
+      // ② 옮긴 것이 무엇이냐에 따라 두 갈래로 나눈다 → 갈래마다 받은 상자의 개수가 달라진다(전체는 하나 늘고, 옮긴 맛만 하나 는다) → 곱해 더한다.
+      const v = d.until(() => [d.int(2, 6), d.int(2, 6), d.int(2, 6), d.int(2, 6)], (s) => s[0] !== s[1] && (s[0] !== s[2] || s[1] !== s[3])), TASTE = ['딸기 맛', '포도 맛'], i = d.int(0, 1), j = 1 - i;
+      const n1 = v[0] + v[1], n2 = v[2] + v[3] + 1, x = qmul(P(v[i], n1), P(v[2 + i] + 1, n2)), y = qmul(P(v[j], n1), P(v[2 + i], n2)), ans = qadd(x, y);
+      return ansP(`상자 A에는 딸기 맛 사탕 ${v[0]}개와 포도 맛 사탕 ${v[1]}개가 들어 있고, 상자 B에는 딸기 맛 사탕 ${v[2]}개와 포도 맛 사탕 ${v[3]}개가 들어 있다. 상자 A에서 사탕 한 개를 꺼내 상자 B에 넣은 다음 상자 B에서 사탕 한 개를 꺼낼 때, 상자 B에서 꺼낸 사탕이 ${TASTE[i]} 사탕일 확률은?`, ans, {
+        explain: `상자 A에서 ${TASTE[i]} 사탕을 꺼내 옮기면 상자 B에는 사탕 ${n2}개 중 ${TASTE[i]} 사탕이 ${v[2 + i] + 1}개이므로 그 확률은 ${frac(v[i], n1)} × ${frac(v[2 + i] + 1, n2)} = ${tx(x)}이다. 상자 A에서 ${TASTE[j]} 사탕을 꺼내 옮기면 상자 B에는 사탕 ${n2}개 중 ${TASTE[i]} 사탕이 ${v[2 + i]}개이므로 그 확률은 ${frac(v[j], n1)} × ${frac(v[2 + i], n2)} = ${tx(y)}이다. 따라서 구하는 확률은 ${tx(x)} + ${tx(y)} = ${tx(ans)}이다.`,
+        facts: vf(`(${v[i]}*(${v[2 + i]}+1)+${v[j]}*${v[2 + i]})/((${v[0]}+${v[1]})*(${v[2]}+${v[3]}+1))`) });
+    })
+  ]);
+
+  // 기본 묶음에 덧붙이는 꼴(두 단계 안팎)
+  B.addTypes('8-2-7', 'cases', [
+    T('cases-coin-walk', '동전을 던져 수직선 위의 점을 옮길 때의 확률', '②67', (d) => {
+      // 놓인 자리에서 앞면이 나온 횟수를 거꾸로 구한 다음, 앞면이 그만큼 나오는 경우를 센다.
+      const n = d.int(3, 4), s = d.int(-1, 1), h = d.int(1, n - 1), t = s + 2 * h - n, X = V('x'), total = 2 ** n;
+      const hit = range(0, total - 1).map((v) => range(0, n - 1).map((i) => (v >> i) & 1)).filter((seq) => sum(seq) === h);
+      return ansP(`다음 그림과 같이 수직선 위에서 ${num(s)}${tail(Math.abs(s), '을/를')} 나타내는 점에 점 P가 있다. 동전 한 개를 던져 앞면이 나오면 점 P를 오른쪽으로 1만큼, 뒷면이 나오면 왼쪽으로 1만큼 옮긴다. 동전을 ${n}번 던진 뒤 점 P가 ${num(t)}${tail(Math.abs(t), '을/를')} 나타내는 점에 있을 확률은?`, P(hit.length, total), {
+        figure: nline(-3, 3, { points: [{ at: Q(s), name: 'P' }] }),
+        explain: `앞면이 ${X}번 나오면 뒷면은 (${n} − ${X})번 나오므로 점 P는 처음보다 오른쪽으로 ${nb(`${X} − (${n} − ${X}) = 2${X} − ${n}`)}만큼 간 곳에 있다. ${nb(`${num(s)} + (2${X} − ${n}) = ${num(t)}`)}에서 ${nb(`${X} = ${h}`)}이다. 모든 경우의 수는 ${Array(n).fill(2).join(' × ')} = ${total}이고, 앞면이 ${h}번 나오는 경우는 ${hit.map((seq) => `(${seq.map((v) => (v ? '앞' : '뒤')).join(', ')})`).join(', ')}의 ${hit.length}가지이므로 구하는 확률은 ${red(hit.length, total)}이다.`,
+        facts: kn(fact(n) / (fact(h) * fact(n - h)), total) });
+    })
+  ]);
+  B.addTypes('8-2-7', 'and', [
+    T('and-stairs', '눈에 따라 오르는 칸이 다른 계단', '심52', (d) => {
+      // 서 있는 계단을 「조건의 눈이 한 번만 나온다」로 옮긴 다음, 차례 둘을 곱해 더한다.
+      // 조건: 눈 하나(확률 1/6), 눈 둘·넷(1/3, 2/3), 눈 셋(1/2)
+      const one = d.int(1, 6), who = d.pick(NAMES), c = d.pick([{ eye: `${one}의 눈`, ok: (v) => v === one }, { eye: `${one}의 눈`, ok: (v) => v === one }, mult(3), divOf(5), atLeast(5), divOf(6), atMost(4), PRIME, divOf(4)]), k = eyesOf(c), p = P(k, 6), q = non(p), [a, b] = d.pick([[1, 2], [2, 1], [1, 3], [3, 1], [2, 3], [3, 2]]), x = qmul(p, q), ans = qadd(x, x);
+      return ansP(`계단 아래의 바닥에 서 있는 ${name(who, '이/가')} 주사위 한 개를 던져 ${c.eye}이 나오면 계단을 ${a}칸, 그 밖의 눈이 나오면 계단을 ${b}칸 올라간다. 주사위를 두 번 던진 뒤 ${name(who, '이/가')} 바닥에서 ${a + b}번째 계단에 서 있을 확률은?`, ans, {
+        explain: `${a + b}번째 계단에 서 있으려면 한 번은 ${a}칸, 다른 한 번은 ${b}칸 올라가야 하므로 두 번 중 한 번만 ${c.eye}이 나와야 한다. ${c.eye}이 나올 확률은 ${red(k, 6)}, 나오지 않을 확률은 ${tx(q)}이다. 첫 번째에만 나올 확률은 ${tx(p)} × ${tx(q)} = ${tx(x)}, 두 번째에만 나올 확률은 ${tx(q)} × ${tx(p)} = ${tx(x)}이므로 구하는 확률은 ${tx(x)} + ${tx(x)} = ${tx(ans)}이다.`,
+        facts: vf(`2*(${k}/6)*(1-${k}/6)`, [2, k, 6]) });
     })
   ]);
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -241,4 +241,242 @@
     }),
     // ① 2를 n번 곱한 수: 어느 손전등이 켜졌는지까지 구별한 아이.
   ]);
+
+  // ── 다시 실은 꼴 ──
+  // 처음 지을 때 「경우의 수는 두 경우의 수를 합하거나 곱하는 정도」라는 선, 꼬임·경우 따지기·여러 갈래라는 까닭으로 뺐던 꼴 가운데,
+  // 하나씩 늘어놓거나 더하고 곱하여 중학교 2학년이 풀 수 있는 것을 다시 실었다(문제은행은 실력을 기르는 곳이므로 그런 문제도 싣는다).
+  // 계승·순열·조합의 기호와 식, 같은 것이 있는 순열의 식은 쓰지 않는다. 세 개를 뽑는 셈은 「차례로 뽑은 뒤, 뽑은 차례만 다른 6가지를 하나로 센다」로 푼다.
+  //  - ① 뜻: pay-three(쓰는 동전이 달라도 금액이 같으면 한 가지), split(주머니·더하는 차례를 구별하지 않는다), triangles(한 직선 위의 세 점으로는 삼각형이 되지 않는다)
+  //  - ② 세 단계 넘게: even-triple, road-add, grid-path, alternate, own-seat, size3, three-multiple, isosceles, arc-shapes, sticks, share3, coin-walk, dice-walk, before,
+  //    coprime, dice-intercepts, dice-cross, neighbors3
+  //  - 기본에 둔 것(두 단계 안팎): pick-leave-one(뽑히지 않을 한 명을 정한다), shape-diameter(지름 하나마다 나머지 점 하나)
+  //  - 그대로 뺀 것: 쌓기나무의 면 세기(①77 — 그림도 답도 모름), 네 자리 4의 배수(심37 — 4의 배수 판정법은 교육과정 밖), 둔각삼각형 세기(①70의 셋째 — 원주각은 3학년),
+  //    이웃 관계만 알고 모양을 모르는 네 영역(심48의 은1-11 — 실린 color4와 하는 일도 같다).
+  //  - 그림: 바둑판 모양의 길(①47 심27)은 쪽 그림이 없어, 풀이에 적힌 구간별 경우의 수(2, 3, 6)가 나오는 칸 수(가로 1~2칸, 세로 1~2칸)로 그렸다.
+  //    반원 위의 점(①71 심45), 격자 모양의 점(심46)은 글과 풀이대로 그렸다(반원은 지름의 양 끝에 점을 두지 않는다).
+  const { T, sg, pt, rowRoads } = B.kit.m826;
+  const { gcd, tx } = B.kit.mid, RQ = B.kit.mid.Q;
+  const { Board, at } = B.kit.mgeo;
+  const fact = (n) => (n <= 1 ? 1 : n * fact(n - 1));
+  const mulSaid = (n) => range(1, n).reverse().join(' × ');
+  const ORD = ['첫째', '둘째', '셋째', '넷째', '다섯째', '여섯째'];
+  const co = (k) => (k === 1 ? '' : k);
+  // 바둑판 모양의 길. w, h: 가로·세로 칸 수, via: 거쳐 갈 갈림목(A에서 오른쪽으로 몇 칸, 위쪽으로 몇 칸). A는 왼쪽 아래 모서리, C는 오른쪽 위 모서리이다.
+  function gridRoads(w, h, via) {
+    const b = Board(), s = 36, P = (x, y) => [x * s, (h - y) * s], pa = P(0, 0), pb = P(via[0], via[1]), pc = P(w, h);
+    for (let x = 0; x <= w; x += 1) b.seg(P(x, 0), P(x, h));
+    for (let y = 0; y <= h; y += 1) b.seg(P(0, y), P(w, y));
+    b.dot(pa, 3.6).dot(pb, 3.6).dot(pc, 3.6);
+    b.text([pa[0] - 13, pa[1] + 3], 'A', { plain: true }).text([pb[0] + 12, pb[1] + 13], 'B', { plain: true }).text([pc[0] + 13, pc[1] - 3], 'C', { plain: true });
+    return b.svg(`바둑판 모양의 길 그림: 가로 길 ${h + 1}개와 세로 길 ${w + 1}개가 같은 간격으로 만나, 정사각형 칸이 가로로 ${w}칸, 세로로 ${h}칸 있다. A 지점은 왼쪽 아래 모서리, C 지점은 오른쪽 위 모서리에 있다. B 지점은 A 지점에서 오른쪽으로 ${via[0]}칸, 위쪽으로 ${via[1]}칸 간 갈림목에 있다.`);
+  }
+  // 반원. onArc: 호 위의 점의 수, onDia: 지름 위의 점의 수. 지름의 양 끝에는 점을 두지 않는다. 이름은 호 위의 점부터 A, B, …
+  function halfCircle(onArc, onDia) {
+    const b = Board(), c = [0, 0], R = 80, names = 'ABCDEFGH'.split('');
+    b.arc(c, R, 0, 180).seg([-R, 0], [R, 0]);
+    for (let i = 0; i < onArc; i += 1) { const a = 180 - 180 * (i + 1) / (onArc + 1); b.dot(at(c, R, a), 3.2).text(at(c, R + 12, a), names[i], { plain: true }); }
+    for (let i = 0; i < onDia; i += 1) { const p = [-R + 2 * R * (i + 1) / (onDia + 1), 0]; b.dot(p, 3.2).text([p[0], 13], names[onArc + i], { plain: true }); }
+    return b.svg(onDia
+      ? `반원 그림: 반원의 호 위에 점 ${onArc}개(${names.slice(0, onArc).join(', ')}), 지름 위에 점 ${onDia}개(${names.slice(onArc, onArc + onDia).join(', ')})가 있다. 지름의 양 끝에는 점이 없다.`
+      : `반원 그림: 반원의 호 위에 서로 다른 점 ${onArc}개(${names.slice(0, onArc).join(', ')})가 있다. 지름 위에는 점이 없다.`);
+  }
+  // 가로·세로로 같은 간격으로 놓인 점. rows 줄, 한 줄에 cols 개.
+  function dotGrid(rows, cols) {
+    const b = Board(), s = 40;
+    for (let r = 0; r < rows; r += 1) for (let k = 0; k < cols; k += 1) b.dot([k * s, r * s], 3.6);
+    return b.svg(`점 그림: 점 ${rows * cols}개가 가로로 ${cols}개씩 ${rows}줄로 놓여 있다. 가로와 세로의 간격은 모두 같다.`);
+  }
+
+  B.addTypes(UNIT, 'hard', [
+    // ② 합과 한 수가 짝수(홀수)이므로 3의 배수 쪽의 짝·홀이 정해짐을 알아채고(1) 그런 3의 배수를 늘어놓아(2) 짝이 되는 수가 자연수인지 본다(3). 틀린 답: 3의 배수를 모두 센 것.
+    H('hard-even-triple', '합이 정해진 짝수와 3의 배수', '①11', (d) => {
+      const s = d.pick([25, 26, 28, 29, 31, 32, 34, 35, 37, 38, 40]), threes = range(1, Math.floor((s - 1) / 3)).map((k) => 3 * k), ok = (m) => (s - m) % 2 === 0 && s - m >= 2, got = threes.filter(ok), even = s % 2 === 0;
+      return Q(`짝수인 자연수 한 개와 3의 배수인 자연수 한 개를 골라 더하였더니 ${s}${tail(s, '이/가')} 되었다. 두 수를 고르는 경우의 수는?`, threes.map(ok),
+        { explain: `합 ${s}${tail(s, '이/가')} ${even ? '짝수' : '홀수'}이고 한 수가 짝수이므로 3의 배수는 ${even ? '짝수' : '홀수'}이어야 한다. ${s}보다 작은 3의 배수 가운데 ${even ? '짝수' : '홀수'}는 ${told(got)}이고, 이때 나머지 한 수는 차례로 ${told(got.map((m) => s - m))}의 짝수이다. 따라서 ${got.length}가지이다.` });
+    }),
+    // ①② (a + 1)(b + 1)(c + 1) − 1: 동전의 개수가 다르면 다른 금액으로 센 아이. 작은 동전으로 바꾸어 금액이 끊기지 않고 이어짐을 확인해야 한다.
+    H('hard-pay-three', '낼 수 있는 금액의 가짓수 — 세 종류의 동전', '①22 ①23', (d) => {
+      // 50원짜리가 2개 이상이어야 100원짜리 1개와 금액이 겹친다. 50원짜리와 100원짜리의 합이 450원 이상이어야 500원짜리를 섞어도 금액이 끊기지 않는다.
+      const [a, c, e] = d.until(() => [d.int(2, 3), d.int(3, 5), d.int(2, 4)], ([x, y]) => 50 * x + 100 * y >= 450);
+      const all = cart([range(0, e), range(0, c), range(0, a)]).filter((r) => sum(r) > 0), amounts = all.map(([k, j, i]) => 500 * k + 100 * j + 50 * i), small = 50 * a + 100 * c, top = small + 500 * e;
+      if (new Set(amounts).size !== top / 50 || new Set(amounts).size === amounts.length) throw new Error('금액이 50원씩 이어지지 않거나 겹치는 금액이 없다');
+      return Q(`50원짜리 동전 ${a}개, 100원짜리 동전 ${c}개, 500원짜리 동전 ${e}개가 있다. 이 동전을 한 개 이상 사용하여 거스름돈 없이 지불할 수 있는 금액은 모두 몇 가지인가?`, firstSeen(amounts),
+        { explain: `50원짜리 2개와 100원짜리 1개처럼 쓰는 동전이 달라도 금액이 같으면 한 가지이다. 50원짜리와 100원짜리 동전만으로 50원부터 ${small}원까지 50원씩 커지는 금액을 모두 지불할 수 있다. 여기에 500원짜리 동전 1개를 더하면 500원부터 ${small + 500}원까지를 지불할 수 있어 앞의 금액과 끊기지 않고 이어지고, 500원짜리 동전을 더 쓸 때도 마찬가지이다. 지불할 수 있는 금액은 50원부터 ${top}원까지 50원씩 커지는 금액이므로 ${top} ÷ 50 = ${top / 50}(가지)이다.` });
+    }),
+    // ② 지금의 경우의 수를 구하고(1) 곳마다 길을 늘렸을 때의 식을 세워(2) 목표가 되는지 따져(3) 센다. 틀린 답: 바로 잇는 길만 생각한 1.
+    H('hard-road-add', '길을 더 만들어 경우의 수 맞추기', '①46', (d) => {
+      const [a, c, t] = d.until(() => [d.int(2, 4), d.int(2, 4), d.int(6, 20)], ([x, y, v]) => v > x * y && v - x * y <= 6 && ((v % y === 0) || (v % x === 0)));
+      const made = [(k) => (a + k) * c, (k) => a * (c + k), (k) => a * c + k], cand = cart([[0, 1, 2], range(1, t)]), ok = ([s, k]) => made[s](k) === t;
+      const side = (mine, other, here) => (t % other === 0
+        ? `${here} 사이의 길을 ${t / other}가지로 늘리면 ${here === 'A와 B' ? `${t / other} × ${other}` : `${other} × ${t / other}`} = ${t}이므로 ${here} 사이에 ${t / other - mine}개를 만들면 된다.`
+        : `${here} 사이에만 길을 만들면 경우의 수는 ${other}의 배수가 되는데, ${t}${tail(t, '은/는')} ${other}의 배수가 아니므로 ${here} 사이에 만들어서는 맞출 수 없다.`);
+      return Q(`그림과 같이 A 지점에서 B 지점까지 가는 길이 ${a}가지, B 지점에서 C 지점까지 가는 길이 ${c}가지 있다. A 지점에서 C 지점까지 가는 경우의 수가 ${t}${tail(t, '이/가')} 되도록 A와 B 사이, B와 C 사이, A와 C 사이(B 지점을 거치지 않는 길) 가운데 한 곳에만 길을 더 만들려고 한다. 만들 곳과 만들 길의 수를 정하는 방법은 모두 몇 가지인가? (단, 한 번 지나간 지점은 다시 지나지 않는다.)`, cand.map(ok),
+        { figure: rowRoads(['A', 'B', 'C'], a, c, 0), explain: `지금은 A 지점에서 C 지점까지 가는 경우의 수가 ${a} × ${c} = ${a * c}이다. ${side(a, c, 'A와 B')} ${side(c, a, 'B와 C')} A와 C를 바로 잇는 길은 ${t - a * c}개를 만들면 ${a * c} + ${t - a * c} = ${t}이다. 따라서 ${hits(cand.map(ok))}가지이다.` });
+    }),
+    // ② 거쳐 갈 지점에서 길을 둘로 끊고(1) 구간마다 갈림목까지의 경우의 수를 더해 가며 세어(2, 3) 곱한다(4). 틀린 답: B를 거치지 않는 길까지 센 것.
+    H('hard-grid-path', '한 지점을 거쳐 최단 거리로 가기', '①47 심27', (d) => {
+      const SIZES = [[1, 1], [2, 1], [1, 2], [2, 2]];
+      const [[p, q], [r, s]] = d.until(() => [d.pick(SIZES), d.pick(SIZES)], ([x, y]) => x[0] + x[1] + y[0] + y[1] >= 5 && (x[0] !== y[0] || x[1] !== y[1]));
+      const w = p + r, h = q + s, all = combos(range(0, w + h - 1), w), ok = (rights) => rights.filter((i) => i < p + q).length === p;
+      const n1 = combos(range(0, p + q - 1), p).length, n2 = combos(range(0, r + s - 1), r).length;
+      return Q('그림과 같이 바둑판 모양의 길이 있다. A 지점에서 출발하여 B 지점을 거쳐 C 지점까지 최단 거리로 가는 경우의 수는?', all.map(ok),
+        { figure: gridRoads(w, h, [p, q]), explain: `최단 거리로 가려면 오른쪽과 위쪽으로만 가야 한다. A 지점에서 B 지점까지는 오른쪽으로 ${p}칸, 위쪽으로 ${q}칸을 가야 하고, 갈림목마다 그곳까지 가는 경우의 수(왼쪽 갈림목과 아래쪽 갈림목까지의 경우의 수의 합)를 적어 가면 ${n1}가지이다. 같은 방법으로 B 지점에서 C 지점까지는 오른쪽으로 ${r}칸, 위쪽으로 ${s}칸을 가는 ${n2}가지이다. 따라서 ${n1} × ${n2} = ${n1 * n2}(가지)이다.` });
+    }),
+    // ② 자리를 두 갈래로 가르고(1) 남학생끼리·여학생끼리 따로 세워 곱한 뒤(2, 3) 맨 앞에 설 수 있는 쪽을 따진다(4). 틀린 답: 수가 같을 때 2배를 빠뜨린 것, 수가 다를 때 2배를 한 것.
+    H('hard-alternate', '남학생과 여학생이 번갈아 서기', '①51', (d) => {
+      const [a, c] = d.pick([[3, 3], [3, 2], [2, 3]]), n = a + c, kind = (i) => (i < a ? 0 : 1), all = perms(range(0, n - 1), n), ok = (row) => row.every((v, i) => i === 0 || kind(v) !== kind(row[i - 1]));
+      const odd = range(0, n - 1).filter((i) => i % 2 === 0).map((i) => ORD[i]).join(', '), each = fact(a) * fact(c);
+      const more = a > c ? ['남학생', a, '여학생', c] : ['여학생', c, '남학생', a];
+      return Q(`남학생 ${a}명과 여학생 ${c}명을 한 줄로 세울 때, 남학생과 여학생이 번갈아 서는 경우의 수는?`, all.map(ok),
+        { explain: a === c
+          ? `남학생이 맨 앞에 서면 남학생은 ${odd} 자리에 서고 여학생은 그 사이사이에 선다. 남학생 ${a}명을 세우는 경우가 ${mulSaid(a)} = ${fact(a)}(가지), 여학생 ${c}명을 세우는 경우가 ${fact(c)}가지이므로 ${fact(a)} × ${fact(c)} = ${each}(가지)이다. 여학생이 맨 앞에 설 때도 ${each}가지이므로 ${each} + ${each} = ${2 * each}(가지)이다.`
+          : `${more[0]}이 ${more[2]}보다 한 명 많으므로 ${more[0]}이 ${odd} 자리에 서야 번갈아 설 수 있다. ${more[0]} ${more[1]}명을 세우는 경우가 ${mulSaid(more[1])} = ${fact(more[1])}(가지), ${more[2]} ${more[3]}명을 그 사이사이에 세우는 경우가 ${mulSaid(more[3])} = ${fact(more[3])}(가지)이므로 ${fact(more[1])} × ${fact(more[3])} = ${each}(가지)이다.` });
+    }),
+    // ② 제 번호에 앉을 사람을 정하고(1) 나머지가 모두 어긋나게 앉는 경우를 늘어놓아(2) 곱한다(3). 틀린 답: 나머지를 아무렇게나 앉힌 것(제 번호에 앉는 사람이 더 생긴다).
+    H('hard-own-seat', '제 번호의 의자에 몇 명만 앉기', '①52 심11', (d) => {
+      const [n, k] = d.pick([[5, 2], [4, 1], [4, 2], [5, 3]]), all = perms(range(1, n), n), ok = (row) => row.filter((v, i) => v === i + 1).length === k, rest = n - k;
+      const chosen = k === 1 ? n : n * (n - 1) / 2, wrong = rest === 2 ? 1 : 2;
+      const pickSaid = k === 1 ? `자기 번호의 의자에 앉는 1명을 정하는 경우는 ${n}가지이다.` : k === 2 ? `자기 번호의 의자에 앉는 2명을 정하는 경우는 ${n} × ${n - 1} ÷ 2 = ${chosen}(가지)이다.` : `자기 번호의 의자에 앉는 ${k}명을 정하는 것은 그렇지 않은 2명을 정하는 것과 같으므로 ${n} × ${n - 1} ÷ 2 = ${chosen}(가지)이다.`;
+      const restSaid = rest === 2 ? '나머지 2명이 모두 다른 번호의 의자에 앉는 경우는 서로 의자를 바꾸어 앉는 1가지이다.' : '나머지 3명이 모두 다른 번호의 의자에 앉는 경우는 2가지이다(1번, 2번, 3번 학생이 남았다면 차례로 2번, 3번, 1번 의자 또는 3번, 1번, 2번 의자에 앉는다).';
+      return Q(`1번부터 ${n}번까지의 번호가 하나씩 적힌 의자 ${n}개가 있다. 1번부터 ${n}번까지의 번호표를 하나씩 받은 학생 ${n}명이 의자에 한 명씩 앉을 때, 자기 번호표와 같은 번호의 의자에 앉는 학생이 ${k}명뿐인 경우의 수는?`, all.map(ok),
+        { explain: `${pickSaid} ${restSaid} 따라서 ${chosen} × ${wrong} = ${chosen * wrong}(가지)이다.` });
+    }),
+    // ② 백의 자리가 같은 수를 십의 자리로 다시 가르고(1, 2) 백의 자리가 큰(작은) 수를 통째로 세어(3) 더한다(4).
+    H('hard-size3', '크기 조건이 붙은 세 자리 수', '①59', (d) => {
+      const digits = d.pick([[1, 2, 3, 4, 5], [1, 2, 3, 4, 6], [2, 3, 4, 5, 7], [1, 3, 4, 5, 6]]), all = numbersOf(digits, 3), up = d.bool();
+      const parts = (m) => { const h0 = Math.floor(m / 100), t0 = Math.floor(m / 10) % 10, cmp = (v) => (up ? v > m : v < m); return { h0, t0, same: all.filter((v) => Math.floor(v / 10) === Math.floor(m / 10) && cmp(v)), tens: digits.filter((x) => x !== h0 && (up ? x > t0 : x < t0)), heads: digits.filter((x) => (up ? x > h0 : x < h0)) }; };
+      const m = d.until(() => d.pick(all), (v) => { const g = parts(v); return g.heads.length >= 1 && g.heads.length <= 3 && g.tens.length >= 1 && g.same.length + 3 * g.tens.length <= 9; });
+      const g = parts(m), ok = (v) => (up ? v > m : v < m), word = up ? '큰' : '작은', a = g.same.length, c = 3 * g.tens.length, e = 12 * g.heads.length;
+      return Q(`${cardsTold(digits)} 가운데 3장을 뽑아 세 자리 자연수를 만들 때, ${m}보다 ${word} 수의 개수는?`, all.map(ok),
+        { unit: '개', explain: `백의 자리 숫자가 ${g.h0}인 수부터 센다. 십의 자리 숫자가 ${g.t0}인 수 가운데 ${m}보다 ${word} 수는 ${a ? `${told(g.same)}의 ${a}개이다` : '없다'}. 십의 자리 숫자가 ${told(g.tens)}인 수는 일의 자리에 남은 3가지가 올 수 있으므로 ${g.tens.length > 1 ? `${g.tens.length} × 3 = ${c}(개)` : '3개'}이다. 백의 자리 숫자가 ${told(g.heads)}인 수는 모두 ${m}보다 ${up ? '크고' : '작고'}, 그 개수는 ${g.heads.length > 1 ? `${g.heads.length} × 4 × 3` : '4 × 3'} = ${e}(개)이다. 따라서 ${(a ? [a, c, e] : [c, e]).join(' + ')} = ${a + c + e}(개)이다.` });
+    }),
+    // ② 십의 자리 숫자마다 갈래를 나누어 3의 배수를 늘어놓고(여러 갈래) 더한다. 틀린 답: 33, 66처럼 같은 카드를 두 번 쓴 수까지 센 것.
+    H('hard-three-multiple', '카드 두 장으로 만든 두 자리 수가 3의 배수인 경우', '①60', (d) => {
+      const top = d.int(6, 9), digits = range(1, top), all = numbersOf(digits, 2), ok = (v) => v % 3 === 0, rows = digits.map((h0) => all.filter((v) => Math.floor(v / 10) === h0 && ok(v)));
+      return Q(`1부터 ${top}까지의 자연수가 하나씩 적힌 카드 ${top}장 가운데 2장을 뽑아 두 자리 자연수를 만들 때, 3의 배수의 개수는?`, all.map(ok),
+        { unit: '개', explain: `십의 자리 숫자마다 3의 배수를 적는다. ${rows.map((list, i) => `십의 자리 숫자가 ${i + 1}인 것은 ${told(list)}의 ${list.length}개`).join(', ')}이다. 33처럼 같은 숫자를 두 번 쓰는 수는 만들 수 없다. 따라서 ${rows.map((list) => list.length).join(' + ')} = ${hits(all.map(ok))}(개)이다.` });
+    }),
+    // ② 모양에 따라 갈래를 나누어(이웃한 세 점, 한 점씩 건너뛴 세 점 …) 빠짐없이, 겹치지 않게 센다. 틀린 답: 꼭짓점마다 센 것을 그대로 더해 정삼각형을 세 번 센 12.
+    H('hard-isosceles', '원 위의 점으로 만드는 이등변삼각형', '①70', (d) => {
+      const n = d.pick([6, 8]), all = combos(range(0, n - 1), 3), gap = (i, j) => Math.min(Math.abs(i - j), n - Math.abs(i - j)), ok = ([x, y, z]) => new Set([gap(x, y), gap(y, z), gap(x, z)]).size < 3;
+      return Q(`그림과 같이 원 위에 같은 간격으로 점 ${n}개가 있다. 이 가운데 세 점을 꼭짓점으로 하는 삼각형을 만들 때, 이등변삼각형의 개수는?${n === 6 ? ' (단, 정삼각형도 이등변삼각형이다.)' : ''}`, all.map(ok),
+        { unit: '개', figure: circlePoints(n), explain: n === 6
+          ? '점 사이의 간격이 같으므로 건너뛴 칸 수가 같은 두 점을 이은 선분의 길이는 같다. 이웃한 세 점을 이은 삼각형 ABC, BCD, CDE, DEF, EFA, FAB의 6개는 두 변의 길이가 같다. 한 점씩 건너뛴 세 점을 이은 삼각형 ACE, BDF의 2개는 정삼각형이다. 그 밖의 삼각형은 세 변의 길이가 모두 다르다. 따라서 6 + 2 = 8(개)이다.'
+          : '점 사이의 간격이 같으므로 건너뛴 칸 수가 같은 두 점을 이은 선분의 길이는 같다. 길이가 같은 두 변이 만나는 꼭짓점을 A로 하는 이등변삼각형은 A에서 같은 칸 수만큼 떨어진 두 점을 고른 삼각형 ABH, ACG, ADF의 3개이다. 점 8개마다 3개씩이고 정삼각형은 없어 겹쳐 센 것이 없으므로 8 × 3 = 24(개)이다.' });
+    }),
+    // ② 삼각형(세 점)과 사각형(네 점)을 따로 세어(1, 2) 더한다(3). 세 점·네 점을 고르는 셈은 「꼭짓점이 아닌 점」을 정하는 것으로 바꾸면 쉽다.
+    H('hard-arc-shapes', '반원 위의 점으로 삼각형 또는 사각형 만들기', '①71', (d) => {
+      const n = d.pick([5, 6]), all = cart(range(1, n).map(() => [0, 1])), ok = (row) => sum(row) === 3 || sum(row) === 4, tri = combos(range(1, n), 3).length, quad = combos(range(1, n), 4).length;
+      return Q(`그림과 같이 반원의 호 위에 서로 다른 점 ${n}개가 있다. 이 가운데 세 점을 꼭짓점으로 하는 삼각형 또는 네 점을 꼭짓점으로 하는 사각형을 만드는 경우의 수는?`, all.map(ok),
+        { figure: halfCircle(n, 0), explain: '호 위의 점은 어느 세 점도 한 직선 위에 있지 않으므로 세 점을 고르면 삼각형, 네 점을 고르면 사각형이 하나씩 정해진다. '
+          + (n === 5 ? '삼각형은 꼭짓점이 아닌 두 점을 정하는 것과 같으므로 5 × 4 ÷ 2 = 10(가지), 사각형은 꼭짓점이 아닌 한 점을 정하는 것과 같으므로 5가지이다.' : '세 점을 차례로 뽑는 경우는 6 × 5 × 4 = 120(가지)이고 뽑은 차례만 다른 3 × 2 × 1 = 6(가지)씩은 같은 삼각형이므로 삼각형은 120 ÷ 6 = 20(가지)이다. 사각형은 꼭짓점이 아닌 두 점을 정하는 것과 같으므로 6 × 5 ÷ 2 = 15(가지)이다.')
+          + ` 두 사건은 동시에 일어나지 않으므로 ${tri} + ${quad} = ${tri + quad}(가지)이다.` });
+    }),
+    // ① 세 점을 고르기만 하면 삼각형이라고 본 아이(한 직선 위의 세 점까지 센다). 차례 1: 반원의 지름 위의 점, 차례 2: 격자 모양으로 놓인 점(대각선 위의 세 점을 빠뜨리기 쉽다).
+    H('hard-triangles', '한 직선 위의 세 점을 빼고 삼각형 세기', '심45 심46', (d, n) => {
+      if (n === 0) {
+        const [a, c] = d.pick([[4, 3], [5, 3], [3, 3], [4, 2], [5, 2]]), pts = range(1, c).map(() => 0).concat(range(1, a).map(() => 1)), all = combos(range(0, a + c - 1), 3), ok = (row) => row.some((i) => pts[i] === 0);
+        const two = c * (c - 1) / 2, pair = a * (a - 1) / 2, list = (c >= 3 ? [1] : []).concat([two * a, c * pair]);
+        return Q(`그림과 같이 반원의 호 위에 점 ${c}개, 지름 위에 점 ${a}개가 있다. 이 ${a + c}개의 점 가운데 세 점을 꼭짓점으로 하는 삼각형의 개수는?`, all.map(ok),
+          { unit: '개', figure: halfCircle(c, a), explain: `한 직선 위에 있는 세 점으로는 삼각형을 만들 수 없으므로 지름 위의 점만 3개 고를 수는 없다. 호 위의 점을 몇 개 고르는가에 따라 나눈다. ${c >= 3 ? '호 위의 점 3개를 모두 고르는 경우는 1가지이다. ' : ''}호 위의 점 2개를 고르는 경우는 ${c === 3 ? '3 × 2 ÷ 2 = 3(가지)' : '1가지'}이고 그때마다 지름 위의 점 1개를 고르는 경우가 ${a}가지이므로 ${two} × ${a} = ${two * a}(가지)이다. 호 위의 점 1개를 고르는 경우는 ${c}가지이고 그때마다 지름 위의 점 2개를 고르는 경우가 ${a} × ${a - 1} ÷ 2 = ${pair}(가지)이므로 ${c} × ${pair} = ${c * pair}(가지)이다. 따라서 ${list.join(' + ')} = ${sum(list)}(개)이다.` });
+      }
+      const [rows, cols] = d.pick([[3, 3], [2, 3], [2, 4]]), k = rows * cols, pts = cart([range(0, rows - 1), range(0, cols - 1)]), all = combos(pts, 3), ok = ([p, q, r]) => (q[0] - p[0]) * (r[1] - p[1]) !== (q[1] - p[1]) * (r[0] - p[0]);
+      const total = k * (k - 1) * (k - 2) / 6, flat = total - hits(all.map(ok));
+      const lineSaid = rows === 3 ? '가로줄 3개, 세로줄 3개, 대각선 2개의 8가지' : cols === 3 ? '가로줄 2개의 2가지' : '가로줄마다 점 4개 가운데 빠질 한 점을 정하는 4가지씩, 모두 8가지';
+      return Q(`그림과 같이 점 ${k}개가 가로, 세로로 같은 간격으로 놓여 있다. 이 가운데 세 점을 꼭짓점으로 하는 삼각형의 개수는?`, all.map(ok),
+        { unit: '개', figure: dotGrid(rows, cols), explain: `세 점을 차례로 뽑는 경우는 ${k} × ${k - 1} × ${k - 2} = ${k * (k - 1) * (k - 2)}(가지)이고, 뽑은 차례만 다른 3 × 2 × 1 = 6(가지)씩은 같은 경우이므로 세 점을 고르는 경우는 ${k * (k - 1) * (k - 2)} ÷ 6 = ${total}(가지)이다. 이 가운데 세 점이 한 직선 위에 있는 경우는 ${lineSaid}이고, 이때는 삼각형이 만들어지지 않는다. 따라서 ${total} − ${flat} = ${total - flat}(개)이다.` });
+    }, { count: 2 }),
+    // ② 세 개를 고르는 10가지를 늘어놓고(1) 가장 긴 변과 나머지 두 변의 합을 견주어(2) 거른다(3). 틀린 답: 두 변의 합이 가장 긴 변과 같은 것까지 센 것.
+    H('hard-sticks', '막대 세 개로 삼각형 만들기', '①72', (d) => {
+      const L = d.until(() => d.shuffle(range(2, 9)).slice(0, 5).sort((x, y) => x - y), (v) => { const rows = combos(v, 3), k = rows.filter(([x, y, z]) => x + y > z).length; return k >= 5 && k <= 8 && rows.some(([x, y, z]) => x + y === z); });
+      const all = combos(L, 3), ok = ([x, y, z]) => x + y > z, bad = all.filter((r) => !ok(r));
+      return Q(`길이가 ${L.map((v) => v + ' cm').join(', ')}인 막대가 한 개씩 있다. 이 가운데 3개를 골라 삼각형을 만드는 경우의 수는? (단, 막대를 자르거나 구부리지 않는다.)`, all.map(ok),
+        { explain: `삼각형이 만들어지려면 가장 긴 변의 길이가 나머지 두 변의 길이의 합보다 작아야 한다. 막대 3개를 고르는 경우는 모두 10가지이고, 이 가운데 세 막대의 길이가 ${pairsTold(bad)}인 ${bad.length}가지는 삼각형이 만들어지지 않는다(두 변의 길이의 합이 가장 긴 변의 길이와 같아도 만들어지지 않는다). 따라서 10 − ${bad.length} = ${10 - bad.length}(가지)이다.` });
+    }),
+    // ② 한 사람이 받는 개수로 갈래를 나누어(여러 갈래) 나머지 두 사람의 개수를 늘어놓고 더한다. 틀린 답: 받는 사람을 구별하지 않고 개수의 묶음만 센 것.
+    H('hard-share3', '같은 물건을 세 사람에게 나누어 주기', '①75 심8', (d) => {
+      const n = d.int(5, 7), who = pickNames(d, 3), [thing, u] = d.pick([['사탕', '개'], ['연필', '자루'], ['공책', '권']]), all = cart([range(1, n - 2), range(1, n - 2)]), ok = ([x, y]) => n - x - y >= 1, per = range(1, n - 2).map((x) => n - 1 - x);
+      return Q(`모양과 크기가 같은 ${thing} ${n}${u}${pt(u, '을/를')} ${told(who)}의 세 명에게 남김없이 나누어 주려고 한다. 세 명 모두 한 ${u} 이상 받도록 나누어 주는 경우의 수는?`, all.map(ok),
+        { explain: `${josa(thing, '은/는')} 서로 구별하지 않으므로 세 명이 받는 수만 정하면 되고, 받는 사람이 다르면 다른 경우이다. ${name(who[0], '이/가')} 받는 수가 ${told(range(1, n - 2).map((x) => x + u))}일 때 나머지 두 명이 나누어 받는 경우는 차례로 ${told(per)}가지이다. 따라서 ${per.join(' + ')} = ${sum(per)}(가지)이다.` });
+    }),
+    // ① 주머니(더하는 차례)를 구별하여 (1, 2, 6)과 (2, 1, 6)을 따로 센 아이. 작은 수부터 적어 빠짐없이, 겹치지 않게 늘어놓는다.
+    H('hard-split', '구별하지 않는 묶음으로 나누기', '①76 심6', (d, n) => {
+      if (n === 0) {
+        const k = d.int(7, 10), all = cart([range(1, k), range(1, k)]), ok = ([x, y]) => x <= y && y <= k - x - y, got = all.filter(ok).map(([x, y]) => [x, y, k - x - y]);
+        return Q(`모양과 크기가 같은 구슬 ${k}개를 모양과 크기가 같은 주머니 3개에 남김없이 나누어 담으려고 한다. 주머니마다 한 개 이상 담는 경우의 수는?`, all.map(ok),
+          { explain: `구슬도 주머니도 서로 구별하지 않으므로 세 주머니에 담는 개수의 묶음만 정하면 된다. 담는 개수를 작은 것부터 적으면 ${pairsTold(got)}의 ${got.length}가지이다.` });
+      }
+      const k = d.pick([5, 6]), all = [];
+      (function grow(rest, row) { if (rest === 0) { if (row.length >= 2) all.push(row); return; } for (let v = 1; v <= rest; v += 1) grow(rest - v, row.concat([v])); })(k, []);
+      const ok = (row) => row.every((v, i) => i === 0 || row[i - 1] <= v), got = all.filter(ok), sizes = range(2, k).map((m) => got.filter((row) => row.length === m));
+      return Q(`${k}${tail(k, '을/를')} 2개 이상의 자연수의 합으로 나타내는 방법은 모두 몇 가지인가? (단, 1 + ${k - 1}${tail(k - 1, '과/와')} ${k - 1} + 1처럼 더하는 차례만 다른 것은 같은 방법으로 본다.)`, all.map(ok),
+        { explain: `더하는 수의 개수에 따라 나누고, 더하는 수를 작은 것부터 적는다. ${sizes.map((list, i) => `${i + 2}개의 합은 ${list.map((row) => row.join(' + ')).join(', ')}의 ${list.length}가지`).join(', ')}이다. 따라서 ${sizes.map((list) => list.length).join(' + ')} = ${got.length}(가지)이다.` });
+    }, { count: 2 }),
+    // ② 앞면이 나온 횟수를 식으로 구하고(1, 2) 그 횟수가 되는 차례를 늘어놓아(3) 센다. 틀린 답: 횟수만 구하고 1가지라고 한 것.
+    H('hard-coin-walk', '동전을 던져 수직선 위를 움직이는 점', '심28', (d) => {
+      const [p, q, n, x] = d.until(() => { const m = d.pick([4, 5]); return [d.int(1, 3), d.int(1, 3), m, d.int(1, m - 1)]; }, ([u, w, m, k]) => u !== w && u * k - w * (m - k) !== 0);
+      const t = p * x - q * (n - x), all = cart(range(1, n).map(() => ['앞', '뒤'])), ok = (row) => sum(row.map((f) => (f === '앞' ? p : -q))) === t, got = all.filter(ok);
+      return Q(`수직선 위의 원점에 점 P가 있다. 동전 한 개를 던져 앞면이 나오면 점 P를 양의 방향으로 ${p}만큼, 뒷면이 나오면 음의 방향으로 ${q}만큼 옮긴다. 동전을 ${n}번 던졌을 때, 점 P의 좌표가 ${sg(t)}인 경우의 수는?`, all.map(ok),
+        { explain: `앞면이 ${V('x')}번 나오면 뒷면은 ${nb(`(${n} ${MINUS} ${V('x')})`)}번 나오므로 ${nb(`${co(p)}${V('x')} ${MINUS} ${co(q)}(${n} ${MINUS} ${V('x')}) = ${sg(t)}`)}에서 ${nb(`${V('x')} = ${x}`)}이다. 앞면이 ${x}번, 뒷면이 ${n - x}번 나오는 경우를 던진 차례대로 적으면 ${pairsTold(got)}의 ${got.length}가지이다.` });
+    }),
+    // ② 짝수의 눈과 홀수의 눈을 따로 따져 나올 눈의 묶음을 찾고(1, 2) 묶음마다 눈이 나오는 차례를 세어(3) 더한다(4). 던지는 횟수가 정해져 있지 않다.
+    H('hard-dice-walk', '주사위의 눈만큼 좌표평면 위를 움직이는 점', '심29', (d) => {
+      const [gx, gy] = d.pick([[2, 3], [4, 1], [4, 2], [2, 4]]), ends = [];
+      // 눈을 하나씩 이어 붙여, 점에 꼭 맞게 닿은 것(참)과 지나친 것(거짓)을 모은다.
+      (function go(x, y, seq) { for (const v of DIE) { const nx = x + (v % 2 === 0 ? v : 0), ny = y + (v % 2 === 1 ? v : 0), next = seq.concat([v]); if (nx === gx && ny === gy) ends.push([next, true]); else if (nx > gx || ny > gy) ends.push([next, false]); else go(nx, ny, next); } })(0, 0, []);
+      const got = ends.filter((e) => e[1]).map((e) => e[0]), groups = new Map();
+      for (const seq of got) { const key = seq.slice().sort((x, y) => x - y).join(','); groups.set(key, (groups.get(key) || 0) + 1); }
+      const said = [...groups.entries()].map(([key, k]) => { const faces = key.split(',').map(Number); return [[...new Set(faces)].map((f) => `${f}의 눈이 ${faces.filter((v) => v === f).length}번`).join(', '), k]; });
+      return Q(`좌표평면 위의 원점에 점 P가 있다. 주사위 한 개를 던져 짝수의 눈이 나오면 점 P를 ${V('x')}축의 양의 방향으로 그 눈의 수만큼, 홀수의 눈이 나오면 ${V('y')}축의 양의 방향으로 그 눈의 수만큼 옮긴다. 주사위를 여러 번 던져 점 P가 점 ${nb(`(${gx}, ${gy})`)}에 오는 경우의 수는? (단, 눈이 나온 차례가 다르면 서로 다른 경우이다.)`, ends.map((e) => e[1]),
+        { explain: `짝수의 눈의 합이 ${gx}, 홀수의 눈의 합이 ${gy}이어야 한다. ${said.map(([w, k]) => `${w} 나오는 경우는 눈이 나오는 차례에 따라 ${k}가지`).join(', ')}이다. 따라서 ${said.map((r) => r[1]).join(' + ')} = ${got.length}(가지)이다.` });
+    }),
+    // ② 앞에 설 사람의 자리로 갈래를 나누어(여러 갈래) 뒤에 설 사람의 자리와 나머지 사람을 세우고 더한다. 차례 2: 두 사람이 모두 뽑혀야 한다.
+    H('hard-before', '한 사람이 다른 사람보다 앞에 서기', '심31', (d, n) => {
+      if (n === 0) {
+        const k = d.pick([4, 5]), who = pickNames(d, k), all = perms(who, k), ok = (row) => row.indexOf(who[0]) < row.indexOf(who[1]), per = range(1, k - 1).map((i) => (k - i) * fact(k - 2));
+        return Q(`${told(who)}의 ${k}명을 한 줄로 세울 때, ${name(who[0], '이/가')} ${who[1]}보다 앞에 서는 경우의 수는? (단, 두 사람이 이웃하지 않아도 된다.)`, all.map(ok),
+          { explain: `${name(who[0], '이/가')} 서는 자리를 정하면 ${name(who[1], '은/는')} 그 뒤의 자리 가운데 한 곳에 서고, 나머지 ${k - 2}명이 남은 자리에 서는 경우는 ${fact(k - 2)}가지이다. ${name(who[0], '이/가')} 앞에서 ${range(1, k - 1).map((i) => ORD[i - 1]).join(', ')} 자리에 설 때 차례로 ${range(1, k - 1).map((i) => `${k - i} × ${fact(k - 2)} = ${(k - i) * fact(k - 2)}`).join(', ')}(가지)이다. 따라서 ${per.join(' + ')} = ${sum(per)}(가지)이다.` });
+      }
+      const k = d.pick([4, 5]), who = pickNames(d, k), all = perms(who, 3), ok = (row) => row.includes(who[0]) && row.includes(who[1]) && row.indexOf(who[0]) < row.indexOf(who[1]);
+      return Q(`${told(who)}의 ${k}명 가운데 3명을 뽑아 한 줄로 세울 때, ${name(who[0], '과/와')} ${name(who[1], '이/가')} 모두 뽑히고 ${name(who[0], '이/가')} ${who[1]}보다 앞에 서는 경우의 수는?`, all.map(ok),
+        { explain: `두 사람과 함께 뽑힐 나머지 한 명을 정하는 경우가 ${k - 2}가지이다. 뽑힌 3명을 세울 때 ${name(who[0], '이/가')} ${who[1]}보다 앞에 서는 경우는, 나머지 한 명이 맨 앞, 가운데, 맨 뒤에 서는 3가지이다. 따라서 ${k - 2} × 3 = ${(k - 2) * 3}(가지)이다.` });
+    }, { count: 2 }),
+    // ② 소인수분해하고(1) 소인수마다 그 거듭제곱을 통째로 한쪽에 넣어야 함을 알아채(2) 곱하는 차례만 다른 것을 하나로 센다(3). 틀린 답: 약수의 짝을 모두 센 것.
+    H('hard-coprime', '서로소인 두 자연수의 곱으로 나타내기', '심47', (d) => {
+      const n = d.pick([60, 84, 90, 120, 126, 150, 180, 360, 420, 1260]), small = range(1, n).filter((a) => n % a === 0 && a * a < n), ok = (a) => gcd(a, n / a) === 1, got = small.filter(ok);
+      const primes = range(2, n).filter((p) => n % p === 0 && range(2, p - 1).every((k) => p % k !== 0)), power = (p) => { let k = 0, v = n; while (v % p === 0) { v /= p; k += 1; } return k; };
+      return Q(`6을 서로소인 두 자연수의 곱으로 나타내는 방법은 1 × 6, 2 × 3의 2가지이다. 이와 같이 ${n}${tail(n, '을/를')} 서로소인 두 자연수의 곱으로 나타내는 방법은 모두 몇 가지인가? (단, 곱하는 차례만 다른 것은 같은 방법으로 본다.)`, small.map(ok),
+        { explain: `${nb(`${n} = ${primes.map((p) => p + (power(p) > 1 ? `<sup>${power(p)}</sup>` : '')).join(' × ')}`)}이다. 두 수가 서로소이려면 같은 소인수가 두 수에 함께 들어가면 안 되므로, 소인수마다 그 거듭제곱 전체를 두 수 가운데 한 수에만 넣는다. 이렇게 나타낸 것은 ${got.map((a) => `${a} × ${n / a}`).join(', ')}의 ${got.length}가지이다.` });
+    }),
+    // ② 절편에서 두 점을 읽어(1) 기울기와 식을 구하고(2) 식에 맞는 순서쌍을 찾아(3) 센다.
+    H('hard-dice-intercepts', '눈의 순서쌍이 절편으로 정한 그래프 위의 점', '심16', (d) => {
+      const [xi, yi] = d.pick([[-2, 1], [-4, 2], [-6, 3], [-3, 1], [-6, 2], [-1, 2], [-3, 2], [-2, 2], [-3, 3], [8, 4], [10, 5], [4, 8], [9, 6], [3, 9], [5, 5]]), ok = ([a, e]) => xi * e + yi * a === xi * yi, got = PAIRS.filter(ok), slope = RQ(-yi, xi);
+      return Q(`한 개의 주사위를 두 번 던져서 처음에 나오는 눈의 수를 ${V('a')}, 나중에 나오는 눈의 수를 ${V('b')}라 할 때, 점 ${nb(`(${V('a')}, ${V('b')})`)}가 ${V('x')}절편이 ${sg(xi)}, ${V('y')}절편이 ${yi}인 일차함수의 그래프 위에 있는 경우의 수는?`, PAIRS.map(ok),
+        { explain: `이 그래프는 두 점 ${nb(`(${sg(xi)}, 0)`)}, ${nb(`(0, ${yi})`)}${tail(yi, '을/를')} 지나므로 기울기는 ${tx(slope)}이고, 일차함수의 식은 ${nb(`${V('y')} = ${poly([[slope, V('x')], [yi, '']])}`)}이다. 점 ${nb(`(${V('a')}, ${V('b')})`)}가 이 그래프 위에 있으려면 ${nb(`${V('b')} = ${poly([[slope, V('a')], [yi, '']])}`)}이어야 하고, 이를 만족시키는 (${V('a')}, ${V('b')})는 ${pairsTold(got)}의 ${got.length}가지이다.` });
+    }),
+    // ② 교점의 x좌표를 a, b의 식으로 나타내고(1) 그 값이 될 수 있는 수를 가려(2) 값마다 순서쌍을 세어(3) 더한다(4).
+    H('hard-dice-cross', '두 직선의 교점의 x좌표가 어떤 수의 배수인 경우', '심15', (d) => {
+      const [c1, c2, k] = d.pick([[1, 3, 3], [1, 3, 2], [2, 4, 3], [2, 4, 2], [1, 4, 2], [2, 5, 2]]), m = c2 - c1, ok = ([a, e]) => (a + e) % m === 0 && ((a + e) / m) % k === 0;
+      const xs = range(1, Math.floor(12 / m)).filter((x) => x % k === 0), per = xs.map((x) => PAIRS.filter(([a, e]) => a + e === x * m).length);
+      return Q(`서로 다른 두 개의 주사위 A, B를 동시에 던져서 나오는 눈의 수를 각각 ${V('a')}, ${V('b')}라 할 때, 두 일차함수 ${nb(`${V('y')} = ${poly([[c1, V('x')], [1, V('a')]])}`)}, ${nb(`${V('y')} = ${poly([[c2, V('x')], [-1, V('b')]])}`)}의 그래프의 교점의 ${V('x')}좌표가 ${k}의 배수인 경우의 수는?`, PAIRS.map(ok),
+        { explain: `교점에서는 두 함수의 ${V('y')}의 값이 같으므로 ${nb(`${poly([[c1, V('x')], [1, V('a')]])} = ${poly([[c2, V('x')], [-1, V('b')]])}`)}, 즉 ${nb(`${V('x')} = ${frac(`${V('a')} + ${V('b')}`, m)}`)}이다. ${nb(`${V('a')} + ${V('b')}`)}의 값은 2부터 12까지이므로 ${V('x')}좌표가 될 수 있는 ${k}의 배수는 ${told(xs)}이고, 이때 ${nb(`${V('a')} + ${V('b')}`)}의 값은 ${told(xs.map((x) => x * m))}이다. 그 경우의 수는 차례로 ${told(per)}이므로 ${per.join(' + ')} = ${sum(per)}(가지)이다.` });
+    }),
+    // ② 이웃할 세 명을 한 묶음으로 세우고(1) 묶음 안에서 세 명을 다시 한 줄로 세워(2) 곱한다(3). 틀린 답: 묶음 안을 2가지나 3가지로 센 것.
+  ]);
+
+  B.addTypes(UNIT, 'pick', [
+    T('pick-leave-one', '한 명만 빼고 모두 뽑기', '심42', (d) => {
+      const n = d.int(6, 9), [team, job] = d.pick([['배구 선수', '경기에 먼저 나갈 선수'], ['합창단 학생', '무대에 설 학생'], ['모둠 학생', '발표에 나설 학생']]), all = cart(range(1, n).map(() => [0, 1]));
+      return Q(`${team} ${n}명 가운데 ${job} ${n - 1}명을 뽑는 경우의 수는?`, all.map((row) => sum(row) === n - 1),
+        { explain: `${n}명 가운데 ${n - 1}명을 뽑는 것은 뽑히지 않을 1명을 정하는 것과 같다. 따라서 ${n}가지이다.` });
+    })
+  ]);
+
+  B.addTypes(UNIT, 'shape', [
+    T('shape-diameter', '원의 지름을 한 변으로 하는 삼각형', '①70', (d) => {
+      const n = d.pick([6, 8]), half = n / 2, names = 'ABCDEFGH', all = combos(range(0, n - 1), 3), ok = (row) => row.some((i) => row.includes(i + half));
+      return Q(`그림과 같이 원 위에 같은 간격으로 점 ${n}개가 있다. 이 가운데 세 점을 꼭짓점으로 하는 삼각형을 만들 때, 원의 지름을 한 변으로 하는 삼각형의 개수는?`, all.map(ok),
+        { unit: '개', figure: circlePoints(n), explain: `원의 지름이 되는 선분은 마주 보는 두 점을 이은 ${range(0, half - 1).map((i) => '선분 ' + names[i] + names[i + half]).join(', ')}의 ${half}개이다. 지름 하나마다 나머지 점 ${n - 2}개 가운데 하나를 골라 삼각형을 만들 수 있으므로 ${half} × ${n - 2} = ${half * (n - 2)}(개)이다.` });
+    })
+  ]);
 })(typeof window !== 'undefined' ? window : globalThis);

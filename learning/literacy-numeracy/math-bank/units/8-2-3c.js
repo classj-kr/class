@@ -14,6 +14,7 @@
 // 실력에는 ① 문제의 그림·말·수에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제와 ② 세 단계 넘게 이어 생각해야 풀리는 문제(그릇을 채우는 데 더 드는 물,
 // 닮음에서 얻은 각으로 방정식 세우기, 정삼각형 안의 60°, 세 각이 같게 그은 선분이 만드는 삼각형, 삼각형에 꼭 끼인 마름모, 직각삼각형에 수선을 거듭 긋기,
 // 직사각형의 대각선과 수선, 각의 이등분선과 수선, 한 번 접은 직사각형과 정삼각형)만 실었다. 「닮은 삼각형을 찾아 길이 하나 구하기」「닮음 조건 고르기」는 기본에 있다.
+// 처음 지을 때 뺐다가 다시 실은 ②(파일 끝의 묶음): 세 선분의 길이의 곱, 내심을 지나는 평행선, 대각선으로 접은 직사각형, 접은 직사각형에 다시 그은 수선, 접은 정사각형.
 // 묻는 말: 수나 값은 「~은?/~는?」, 양은 「몇 ~인가?」. 각도는 수에 붙여 적고(60°) 길이는 띄어 적는다(6 cm).
 (function (root) {
   'use strict';
@@ -261,6 +262,94 @@
       })
     ]
   });
+
+  // ── 처음 지을 때 뺐다가 다시 실은 꼴(실력 묶음 끝에 붙인다) ──
+  // 「한 번 접은 직사각형은 한 유형만」, 보조선 둘, 요령이 든다는 까닭으로 뺐던 꼴 가운데 이 단원과 앞 단원의 성질만으로 풀리고 이미 실린 유형과 하는 일이 다른 것:
+  //  그릇을 가득 채우는 데 더 드는 물(심8 — 받으면서 뺐던 것), 세 선분의 길이의 곱(①43), 내심을 지나는 평행선(②42), 직사각형을 대각선으로 접기(①45 ②51 심26),
+  //  접은 직사각형에 수선을 또 긋기(심27), 정사각형을 접어 한 꼭짓점이 종이 밖으로 나가는 꼴(심28).
+  const { sss, THIN } = K, { N } = B.kit;
+  // 풀이에 적는 수: 자연수이면 그대로, 아니면 기약분수
+  const fr = (p, q) => { const g = gcd(p, q); return q / g === 1 ? String(p / g) : frac(p / g, q / g); };
+  B.addTypes(UNIT, 'hard', [
+    H('hard-cup-more', '원뿔 모양의 그릇을 가득 채우려면 더 넣어야 하는 물의 부피', '심8', (d) => {
+      // 함정: 담긴 물의 부피를 답하는 아이, 남은 높이의 비(1 : 3)대로 부피를 나누는 아이. 더 넣을 물은 그릇의 부피에서 담긴 물의 부피를 뺀 것이다.
+      const [m, k] = d.pick([[2, 3], [1, 2], [3, 4], [1, 3], [3, 5], [2, 5], [4, 5]]), g = d.pick([2, 3, 4, 5]), t = d.int(2, 12), h = m * g, H0 = k * g, V = k ** 3 * t, W = m ** 3 * t, ans = V - W;
+      return volQ(`그림과 같이 높이가 ${cm(H0)}인 원뿔 모양의 그릇에 물을 높이가 ${cm(h)}가 되도록 넣었다. 그릇의 부피가 ${V} cm³일 때, 이 그릇에 물을 가득 채우려면 물을 몇 cm³ 더 넣어야 하는가? (단, 그릇의 두께는 생각하지 않는다.)`, ans, {
+        figure: cupFig(H0, h, `꼭짓점이 아래에 있는 원뿔 모양의 그릇에 물이 담겨 있다. 그릇의 높이 ${cm(H0)}, 물의 높이 ${cm(h)}`),
+        explain: `물이 담긴 부분과 그릇은 서로 닮은 원뿔이고 닮음비는 ${h} : ${H0} = ${m} : ${k}이다. 부피의 비는 ${m}${sup(3)} : ${k}${sup(3)} = ${m ** 3} : ${k ** 3}이므로 담긴 물의 부피는 ${V} × ${frac(m ** 3, k ** 3)} = ${W}(cm³)이다. 더 넣어야 하는 물의 부피는 ${V} − ${W} = ${ans}(cm³)이다.`,
+        facts: { calc: [[`${V}-${V}*${h}*${h}*${h}/(${H0}*${H0}*${H0})`, 0]] }
+      });
+    }, PLANE),
+    H('hard-alt-product', '직각삼각형의 수선과 빗변의 중점, 다시 그은 수선: 세 선분의 길이의 곱', '기본 ①43', (d) => {
+      // 세 길이를 따로 구하지 않는다: △AHD ∽ △ADM 에서 AM × AH = AD² 이다.
+      const [p, q] = d.pick([[4, 9], [12, 3], [3, 12], [8, 2], [2, 8], [16, 9], [9, 16], [16, 4], [4, 16], [18, 8], [8, 18], [20, 5], [5, 20]]), h = Math.sqrt(p * q), P = altTri(p, q);
+      P.M = [(p + q) / 2, 0]; P.H = foot(P.D, P.A, P.M);
+      const f = figs([{ P, order: 'ABC', segs: [['A', 'D'], ['A', 'M'], ['D', 'H']], right: [['A', 'B', 'C'], ['D', 'A', p < q ? 'B' : 'C'], ['H', 'D', 'A']], ticks: [['B', 'M', 2], ['M', 'C', 2]], dims: [['B', 'D', String(p), 25, 'A'], ['D', 'C', String(q), 25, 'A']], at: { D: 270, M: 270, H: deg(P.D, P.H) } }], { w: 200, h: 124 });
+      return N(`그림과 같이 ∠A = 90°인 직각삼각형 ABC에서 점 M은 변 BC의 중점이고, 꼭짓점 A에서 변 BC에 내린 수선의 발을 D, 점 D에서 선분 AM에 내린 수선의 발을 H라 하자. ${SG('BD')} = ${p}, ${SG('DC')} = ${q}일 때, ${SG('AD')} × ${SG('AM')} × ${SG('AH')}의 값은?`, h ** 3, {
+        figure: f.b.svg(`∠A가 직각인 삼각형 ABC. 점 M은 변 BC의 중점, 점 D는 꼭짓점 A에서 변 BC에 내린 수선의 발, 점 H는 점 D에서 선분 AM에 내린 수선의 발이다. 선분 BD의 길이 ${p}, 선분 DC의 길이 ${q}`),
+        explain: `${tri('ABD')} ${SIM} ${tri('CAD')}이므로 ${SG('AD')}${sup(2)} = ${SG('BD')} × ${SG('CD')} = ${p * q}, ${SG('AD')} = ${h}이다. ∠AHD = ∠ADM = 90°, ∠DAM은 공통이므로 ${tri('AHD')} ${SIM} ${tri('ADM')} (AA 닮음)이고 ${SG('AH')} : ${SG('AD')} = ${SG('AD')} : ${SG('AM')}에서 ${SG('AM')} × ${SG('AH')} = ${SG('AD')}${sup(2)} = ${p * q}이다. 따라서 ${SG('AD')} × ${SG('AM')} × ${SG('AH')} = ${h} × ${p * q} = ${h ** 3}이다.`,
+        facts: { calc: [[`(${p}*${q})**0.5*${p}*${q}`, 0]], unseen: [0.5] }
+      });
+    }),
+    H('hard-incenter-para', '내심을 지나고 한 변에 평행한 직선이 만드는 닮은 두 삼각형', '기본 ②42', (d) => {
+      // BC = a, CA = b, AB = c 인 삼각형에서 AD = bc ÷ (a + b + c), BE = ac ÷ (a + b + c) 이다. 길이가 모두 자연수가 되는 삼각형만 골랐다.
+      const [[a, b0, c], f] = fitted(d, () => d.pick([[12, 18, 15], [18, 12, 15], [9, 15, 12], [15, 9, 12], [15, 21, 18], [21, 15, 18], [16, 20, 12], [20, 16, 12], [20, 28, 16], [20, 25, 30], [25, 20, 30], [16, 24, 24], [14, 21, 14]]), () => true, ([a1, b1, c1]) => {
+        const s1 = a1 + b1 + c1, t = sss(a1, b1, c1), P = { A: t.A, B: t.B, C: t.C, D: lerp(t.A, t.C, c1 / s1), E: [a1 * c1 / s1, 0], I: [(a1 * t.A[0] + c1 * t.C[0]) / s1, a1 * t.A[1] / s1] };
+        const g = figs([{ P, order: 'ABC', segs: [['D', 'E']], arrows: [['B', 'A', 0.5], ['E', 'D', a1 / (a1 + b1) > 0.5 ? 0.22 : 0.8]], sides: [['A', 'D', cm(b1 * c1 / s1)], ['D', 'C', cm(b1 - b1 * c1 / s1)]], dims: [['B', 'E', cm(a1 * c1 / s1), 25, 'A'], ['E', 'C', cm(a1 - a1 * c1 / s1), 25, 'A']], at: { D: deg(t.B, foot(t.B, t.A, t.C)), E: 270 }, hide: 'I' }], { w: 190, h: 140 }), v = g.Q[0];
+        g.b.disk(v.I, v.B[1] - v.I[1], THIN).dot(v.I, 2.2).name(v.I, 'I', dirOf(v.E, v.D) - 90, 10);
+        return g;
+      });
+      const s = a + b0 + c, AD = b0 * c / s, DC = b0 - AD, BE = a * c / s, EC = a - BE, DE = AD + BE, g = gcd(DC, b0);
+      return lenQ(`그림과 같이 ${tri('ABC')}의 내심 I를 지나고 변 AB에 평행한 직선이 두 변 AC, BC와 만나는 점을 각각 D, E라 하자. ${SG('AD')} = ${cm(AD)}, ${SG('DC')} = ${cm(DC)}, ${SG('BE')} = ${cm(BE)}, ${SG('EC')} = ${cm(EC)}일 때, ${SG('AB')}의 길이는?`, c, {
+        figure: f.b.svg(`삼각형 ABC와 그 내접원. 내접원의 중심 I를 지나는 선분 DE의 끝 점 D는 변 AC 위에, 점 E는 변 BC 위에 있다. 변 AB와 선분 DE에 평행하다는 표시가 있다. 선분 AD = ${cm(AD)}, 선분 DC = ${cm(DC)}, 선분 BE = ${cm(BE)}, 선분 EC = ${cm(EC)}`),
+        explain: `점 I가 내심이므로 ∠DAI = ∠IAB이고, ${SG('DE')} ${PAR} ${SG('AB')}이므로 ∠DIA = ∠IAB(엇각)이다. ∠DAI = ∠DIA이므로 ${tri('DAI')}는 이등변삼각형이고 ${SG('DI')} = ${SG('DA')} = ${cm(AD)}이다. 같은 방법으로 ${SG('EI')} = ${SG('EB')} = ${cm(BE)}이므로 ${SG('DE')} = ${AD} + ${BE} = ${DE}(cm)이다. ∠C는 공통이고 ∠CDE = ∠CAB(동위각)이므로 ${tri('CDE')} ${SIM} ${tri('CAB')} (AA 닮음)이다. ${SG('CA')} = ${AD} + ${DC} = ${b0}(cm)이므로 ${SG('CD')} : ${SG('CA')} = ${DC} : ${b0} = ${DC / g} : ${b0 / g}이고, ${DE} : ${SG('AB')} = ${DC / g} : ${b0 / g}에서 ${SG('AB')} = ${cm(c)}이다.`,
+        facts: { calc: [[`(${AD}+${BE})*(${AD}+${DC})/${DC}`, 0]] }
+      });
+    }),
+    H('hard-fold-diag', '직사각형을 대각선으로 접어 생긴 이등변삼각형과 닮은 두 삼각형', '기본 ①45 ②51 심26', (d, n) => {
+      // 접은 각과 엇각이 같아 △PBD 는 이등변삼각형이고, 수선의 발 Q 는 대각선의 중점이다. △PBQ ∽ △DBC. 차례 1: 빗변끼리 견주어 PD(= PB), 차례 2: 높이 PQ 를 구해 넓이
+      // 두 차례의 수가 겹치지 않게 직사각형을 따로 고른다(수집본 문제에 나온 수는 쓰지 않는다). 대각선의 길이는 글에만 적는다.
+      const [h, w, dg] = d.pick(n === 0 ? [[10, 24, 26], [8, 15, 17], [30, 40, 50], [21, 28, 35]] : [[12, 16, 20], [18, 24, 30], [9, 12, 15]]), k = 2 * w * w / (dg * dg);
+      const P = { A: [0, h], B: [0, 0], C: [w, 0], D: [w, h], E: [k * w - w, k * h], Q: [w / 2, h / 2] };
+      P.P = meet(P.B, P.E, P.A, P.D);
+      const f = figs([{ P, order: '', fills: [['BED']], segs: [['A', 'B'], ['A', 'D'], ['B', 'D'], ['B', 'E'], ['E', 'D'], ['P', 'Q'], ['B', 'C', 'cut'], ['C', 'D', 'cut']], right: [['Q', 'P', 'D']], sides: [['A', 'B', cm(h), { in: 'C' }], ['B', 'C', cm(w), { in: 'A' }]], at: { A: 135, B: 225, C: 315, D: 0, E: 90, P: 122, Q: 300 } }], { w: 200, h: 160 });
+      const head = `그림은 직사각형 ABCD 모양의 종이를 대각선 BD를 접는 선으로 하여 꼭짓점 C가 점 E에 오도록 접은 것이다. 변 AD와 선분 BE의 교점을 P, 점 P에서 대각선 BD에 내린 수선의 발을 Q라 하자. ${SG('AB')} = ${cm(h)}, ${SG('BC')} = ${cm(w)}, ${SG('BD')} = ${cm(dg)}일 때, `;
+      const figure = f.b.svg(`직사각형 ABCD와 대각선 BD. 삼각형 BCD를 대각선 BD로 접어 옮긴 삼각형 BED가 색칠되어 있고, 접기 전의 변 BC와 변 CD는 점선이다. 점 P는 변 AD와 선분 BE의 교점, 점 Q는 점 P에서 대각선 BD에 내린 수선의 발이다. 변 AB = ${cm(h)}, 변 BC = ${cm(w)}, 대각선 BD = ${cm(dg)}`);
+      const why = `접은 각이므로 ∠PBD = ∠DBC이고, ${SG('AD')} ${PAR} ${SG('BC')}이므로 ∠PDB = ∠DBC(엇각)이다. ∠PBD = ∠PDB이므로 ${tri('PBD')}는 ${SG('PB')} = ${SG('PD')}인 이등변삼각형이고, 꼭짓점 P에서 밑변 BD에 내린 수선의 발 Q는 ${SG('BD')}의 중점이다. ${SG('BQ')} = ${fr(dg, 2)}(cm)이다. ∠PBQ = ∠DBC, ∠PQB = ∠DCB = 90°이므로 ${tri('PBQ')} ${SIM} ${tri('DBC')} (AA 닮음)이다.`;
+      if (n === 0) return fracQ(`${head}${SG('PD')}의 길이는?`, dg * dg, 2 * w, 'cm', {
+        figure, explain: `${why} ${SG('PB')} : ${SG('DB')} = ${SG('BQ')} : ${SG('BC')}에서 ${SG('PB')} : ${dg} = ${fr(dg, 2)} : ${w}, ${SG('PB')} = ${fr(dg * dg, 2 * w)}(cm)이다. ${SG('PD')} = ${SG('PB')} = ${fr(dg * dg, 2 * w)}(cm)이다.`,
+        facts: { value: `${dg}*${dg}/(2*${w})`, unseen: [2] }
+      });
+      return fracQ(`${head}${tri('PBQ')}의 넓이는?`, h * dg * dg, 8 * w, 'cm²', {
+        figure, explain: `${why} ${SG('DC')} = ${SG('AB')} = ${cm(h)}이므로 ${SG('PQ')} : ${SG('DC')} = ${SG('BQ')} : ${SG('BC')}에서 ${SG('PQ')} : ${h} = ${fr(dg, 2)} : ${w}, ${SG('PQ')} = ${fr(h * dg, 2 * w)}(cm)이다. ${tri('PBQ')}의 넓이는 ${frac(1, 2)} × ${fr(dg, 2)} × ${fr(h * dg, 2 * w)} = ${fr(h * dg * dg, 8 * w)}(cm²)이다.`,
+        facts: { value: `(${dg}/2)*(${h}*${dg}/(2*${w}))/2`, unseen: [2] }
+      });
+    }, { count: 2 }),
+    H('hard-fold-rect-alt', '직사각형을 접어 생긴 직각삼각형에 다시 그은 수선', '심27', (d) => {
+      // AB = h, AE = p, BC = BE = w. △ABE ∽ △DEF 로 DF, 접은 변 EF = FC = h − DF, 직각삼각형 DEF 의 빗변에 내린 수선에서 DF² = FG × FE
+      const [h, p, w] = d.pick([[8, 6, 10], [16, 12, 20], [20, 15, 25], [24, 18, 30]]), ED = w - p;
+      const P = { A: [0, h], B: [0, 0], C: [w, 0], D: [w, h], E: [p, h], F: [w, h - p * ED / h] };
+      P.G = foot(P.D, P.E, P.F);
+      const f = figs([{ P, order: '', fills: [['BEF']], segs: [['A', 'B'], ['A', 'D'], ['D', 'F'], ['B', 'E'], ['E', 'F'], ['B', 'F'], ['D', 'G'], ['B', 'C', 'cut'], ['C', 'F', 'cut']], right: [['E', 'B', 'F'], ['G', 'D', 'F']], sides: [['A', 'B', cm(h), { in: 'C' }], ['B', 'C', cm(w), { in: 'A' }], ['A', 'E', cm(p), { in: 'B' }]], at: { A: 135, B: 225, C: 315, D: 45, E: 90, F: 0, G: deg(P.D, P.G) } }], { w: 210, h: 160 });
+      return fracQ(`그림은 ${SG('AB')} = ${cm(h)}, ${SG('BC')} = ${cm(w)}인 직사각형 ABCD 모양의 종이를 선분 BF를 접는 선으로 하여 꼭짓점 C가 변 AD 위의 점 E에 오도록 접은 것이다. 점 D에서 선분 EF에 내린 수선의 발을 G라 하자. ${SG('AE')} = ${cm(p)}일 때, ${SG('FG')}의 길이는?`, p * p * ED, h * w, 'cm', {
+        figure: f.b.svg(`직사각형 ABCD. 점 E는 변 AD 위에, 점 F는 변 DC 위에 있다. 삼각형 BCF를 선분 BF로 접어 옮긴 삼각형 BEF가 색칠되어 있고, 접기 전의 변 BC와 선분 CF는 점선이다. 점 G는 점 D에서 선분 EF에 내린 수선의 발이다. 변 AB = ${cm(h)}, 변 BC = ${cm(w)}, 선분 AE = ${cm(p)}`),
+        explain: `접은 변과 접은 각은 같으므로 ${SG('EF')} = ${SG('CF')}, ∠BEF = ∠C = 90°이다. ∠AEB + ∠DEF = 90°이고 ${tri('ABE')}에서 ∠AEB + ∠ABE = 90°이므로 ∠ABE = ∠DEF이다. ∠A = ∠D = 90°이므로 ${tri('ABE')} ${SIM} ${tri('DEF')} (AA 닮음)이다. ${SG('ED')} = ${w} − ${p} = ${ED}(cm)이므로 ${SG('AB')} : ${SG('DE')} = ${SG('AE')} : ${SG('DF')}에서 ${h} : ${ED} = ${p} : ${SG('DF')}, ${SG('DF')} = ${fr(p * ED, h)}(cm)이다. ${SG('EF')} = ${SG('CF')} = ${h} − ${fr(p * ED, h)} = ${fr(h * h - p * ED, h)}(cm)이다. ∠F는 공통이고 ∠DGF = ∠EDF = 90°이므로 ${tri('DGF')} ${SIM} ${tri('EDF')} (AA 닮음)이고 ${SG('DF')}${sup(2)} = ${SG('FG')} × ${SG('FE')}이다. ${SG('FG')} = ${fr(p * p * ED * ED, h * h)} ÷ ${fr(h * h - p * ED, h)} = ${fr(p * p * ED, h * w)}(cm)이다.`,
+        facts: { value: `${p}*${p}*(${w}-${p})/(${h}*${w})` }
+      });
+    }),
+    H('hard-fold-square', '정사각형을 접어 한 꼭짓점이 변 위에 올 때 종이 밖으로 나간 변의 길이', '심28', (d) => {
+      // AE = a, AP = b, EP = EB = c 이고 한 변은 a + c. △AEP ∽ △DPG 로 PG 를 구하고, 접은 변 PQ = BC 에서 뺀다.
+      const [a, b, c] = d.pick([[24, 18, 30], [18, 24, 30], [9, 12, 15], [16, 12, 20]]), s = a + c, PG = (s - b) * c / a, ans = s - PG;
+      const P = { A: [0, s], B: [0, 0], C: [s, 0], D: [s, s], E: [0, c], F: [s, c - b], P: [b, s], Q: [b + s * a / c, s - s * b / c], G: [s, s - (s - b) * b / a] };
+      const f = figs([{ P, order: '', fills: [['EPQF']], segs: [['A', 'E'], ['A', 'D'], ['D', 'F'], ['E', 'P'], ['P', 'Q'], ['Q', 'F'], ['E', 'F'], ['E', 'B', 'cut'], ['B', 'C', 'cut'], ['C', 'F', 'cut']], right: [['P', 'E', 'Q']], sides: [['E', 'B', cm(c), { in: 'C' }], ['B', 'C', cm(s), { in: 'A' }], ['A', 'P', cm(b), { in: 'B' }]], at: { A: 135, B: 225, C: 315, D: 45, E: 180, P: 90, F: 338, G: 25, Q: 8 } }], { w: 200, h: 170 });
+      return lenQ(`그림은 한 변의 길이가 ${cm(s)}인 정사각형 ABCD 모양의 종이를 선분 EF를 접는 선으로 하여 꼭짓점 B가 변 AD 위의 점 P에 오도록 접은 것이다. 꼭짓점 C가 옮겨진 점을 Q, 선분 PQ와 변 CD의 교점을 G라 하자. ${SG('EB')} = ${cm(c)}, ${SG('AP')} = ${cm(b)}일 때, ${SG('GQ')}의 길이는?`, ans, {
+        figure: f.b.svg(`정사각형 ABCD. 점 E는 변 AB 위에, 점 F는 변 CD 위에, 점 P는 변 AD 위에 있다. 사각형 EBCF를 선분 EF로 접어 옮긴 사각형 EPQF가 색칠되어 있고, 접기 전의 선분 EB, 변 BC, 선분 CF는 점선이다. 점 Q는 정사각형의 바깥에 있고, 점 G는 선분 PQ와 변 CD의 교점이다. 변 BC = ${cm(s)}, 선분 EB = ${cm(c)}, 선분 AP = ${cm(b)}`),
+        explain: `접은 변과 접은 각은 같으므로 ${SG('EP')} = ${SG('EB')} = ${cm(c)}, ${SG('PQ')} = ${SG('BC')} = ${cm(s)}, ∠EPQ = ∠B = 90°이다. ${SG('AE')} = ${s} − ${c} = ${a}(cm), ${SG('PD')} = ${s} − ${b} = ${s - b}(cm)이다. ∠APE + ∠DPG = 90°이고 ${tri('AEP')}에서 ∠APE + ∠AEP = 90°이므로 ∠AEP = ∠DPG이다. ∠A = ∠D = 90°이므로 ${tri('AEP')} ${SIM} ${tri('DPG')} (AA 닮음)이다. ${SG('AE')} : ${SG('DP')} = ${SG('EP')} : ${SG('PG')}에서 ${a} : ${s - b} = ${c} : ${SG('PG')}, ${SG('PG')} = ${cm(PG)}이다. ${SG('GQ')} = ${SG('PQ')} − ${SG('PG')} = ${s} − ${PG} = ${ans}(cm)이다.`,
+        facts: { calc: [[`${s}-(${s}-${b})*${c}/(${s}-${c})`, 0]] }
+      });
+    })
+  ]);
+
   // ── 기본 묶음에 덧붙이는 꼴 ──
   // 받으면서 실력에서 기본으로 내린 꼴: 기본에서 하는 일을 다시 묻거나 한 번에 풀리는 것.
   const TB = (id, title, ref, make, more) => Object.assign({ id, level: '기본', title, source: '수집본 자료(' + ref + ')', make }, more || {});
