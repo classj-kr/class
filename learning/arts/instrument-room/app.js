@@ -424,6 +424,7 @@
         sampleCacheOpening: null,
         rangePreloadToken: 0,
         drumSamples: new Map(),
+        drumSampleOffsets: new Map(),
         drumSampleLoads: new Map(),
         openHatVoices: new Set(),
         koreanMetalVoices: new Map(),
@@ -1323,12 +1324,43 @@
         return DRUM_SAMPLE_SETS[state.currentModel.id] || KOREAN_PERCUSSION_SAMPLE_SETS[state.currentModel.id] || null;
     }
 
+    function findAttackOffset(buffer) {
+        if (!buffer || !buffer.numberOfChannels) return 0;
+        const channel0 = buffer.getChannelData(0);
+        const channel1 = buffer.numberOfChannels > 1 ? buffer.getChannelData(1) : null;
+        let peak = 0;
+        const scanLen = Math.min(channel0.length, Math.floor(buffer.sampleRate * 0.4));
+        for (let i = 0; i < scanLen; i++) {
+            const v0 = Math.abs(channel0[i]);
+            if (v0 > peak) peak = v0;
+            if (channel1) {
+                const v1 = Math.abs(channel1[i]);
+                if (v1 > peak) peak = v1;
+            }
+        }
+        if (peak < 0.005) return 0;
+        const threshold = Math.max(0.0015, peak * 0.02);
+        for (let i = 0; i < scanLen; i++) {
+            if (Math.abs(channel0[i]) >= threshold || (channel1 && Math.abs(channel1[i]) >= threshold)) {
+                const safeSample = Math.max(0, i - Math.floor(buffer.sampleRate * 0.001));
+                const sec = safeSample / buffer.sampleRate;
+                return sec > 0.003 ? sec : 0;
+            }
+        }
+        return 0;
+    }
+
     function loadDrumSample(id) {
         const context = ensureAudio();
         const config = drumSampleConfig();
         if (!context || !config) return Promise.reject(new Error("Drum sample unavailable"));
         const key = config.id + ":" + id;
-        if (state.drumSamples.has(key)) return Promise.resolve({ buffer: state.drumSamples.get(key), sampleSet: config.id, id });
+        if (state.drumSamples.has(key)) return Promise.resolve({
+            buffer: state.drumSamples.get(key),
+            offset: state.drumSampleOffsets.get(key) || 0,
+            sampleSet: config.id,
+            id
+        });
         if (state.drumSampleLoads.has(key)) return state.drumSampleLoads.get(key);
         const sampleRevision = "?v=" + encodeURIComponent(
             [AUDIO_SAMPLE_REVISION, config.id.startsWith("drums-") ? AD2_DRUM_SAMPLE_REVISION : ""].filter(Boolean).join("-")
@@ -1338,9 +1370,11 @@
             .then(function (buffer) {
                 decodedBufferPeak(buffer);
                 decodedBufferBodyRms(buffer);
+                const offset = findAttackOffset(buffer);
                 state.drumSamples.set(key, buffer);
+                state.drumSampleOffsets.set(key, offset);
                 state.drumSampleLoads.delete(key);
-                return { buffer, sampleSet: config.id, id };
+                return { buffer, offset, sampleSet: config.id, id };
             })
             .catch(function (error) { state.drumSampleLoads.delete(key); throw error; });
         state.drumSampleLoads.set(key, task);
@@ -1427,7 +1461,8 @@
                     if (previousOnEnded) previousOnEnded();
                 };
             }
-            source.start(context.currentTime);
+            const offset = (sample && sample.offset) || 0;
+            source.start(context.currentTime, offset);
         }).catch(function () {
             const current = drumSampleConfig();
             if (current && current.id === selected.id) triggerDrum(id, velocity);
@@ -2082,6 +2117,9 @@
                 strum("down");
                 renderChordPads();
             });
+            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            button.addEventListener("contextmenu", function (event) { event.preventDefault(); });
             elements.chordPads.appendChild(button);
         });
     }
@@ -2180,7 +2218,10 @@
                 button.style.setProperty("--pad-color", drum.color);
                 const visual = presentation.icon(modelId, drum);
                 button.setAttribute("aria-label", drum.name + (visual.tool ? " · " + visual.tool : "") + " · 키보드 " + drum.key);
-                button.innerHTML = visual.svg + "<span class=\"pad-tool\">" + (visual.tool || drum.family) + "</span><b>" + drum.name + "</b><small>키보드 " + drum.key + "</small>";
+                const gueumMarkup = drum.gueum
+                    ? "<b class=\"pad-gueum\">" + drum.gueum + "</b><span class=\"pad-subname\">" + drum.name + "</span>"
+                    : "<b>" + drum.name + "</b>";
+                button.innerHTML = visual.svg + "<span class=\"pad-tool\">" + (visual.tool || drum.family) + "</span>" + gueumMarkup + "<small>키보드 " + drum.key + "</small>";
                 const play = function (velocity) {
                     setDrumPadActive(button, true);
                     triggerDrumV2(drum.sound || drum.id, velocity);
@@ -2193,6 +2234,9 @@
                     // Layout and unmeasured touch pressure must not change strike volume.
                     play(event.pointerType === "pen" && event.pressure > .05 ? Math.max(.4, event.pressure) : .82);
                 });
+                button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+                button.addEventListener("dragstart", function (event) { event.preventDefault(); });
+                button.addEventListener("contextmenu", function (event) { event.preventDefault(); });
                 button.addEventListener("keydown", function (event) {
                     if (event.code !== "Space" && event.code !== "Enter") return;
                     event.preventDefault();
@@ -2478,7 +2522,12 @@
             return;
         }
         if (state.instrument === "drums" && !isPitchedPercussion()) {
-            const drum = activeDrums().find(function (item) { return item.code === event.code; });
+            const currentModelId = state.currentModel && state.currentModel.id;
+            const janggu = window.PAD_PRESENTATION && window.PAD_PRESENTATION.isJanggu(currentModelId);
+            let drum = activeDrums().find(function (item) { return item.code === event.code; });
+            if (!drum && janggu && (event.code === "Space" || event.code === "KeyB" || event.code === "KeyF")) {
+                drum = activeDrums().find(function (item) { return item.family === "양편"; });
+            }
             if (!drum) return;
             event.preventDefault();
             triggerDrumV2(drum.sound || drum.id, .82);
@@ -2555,6 +2604,8 @@
         });
         document.querySelectorAll("[data-strum]").forEach(function (button) {
             button.addEventListener("pointerdown", function (event) { event.preventDefault(); strum(button.dataset.strum); });
+            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
         });
         elements.sustainButton.addEventListener("click", function () { if (supportsPianoSustain()) setSustain(!state.sustain, !state.sustain); });
         [elements.toneSlider, elements.muteSlider, elements.pickSlider, elements.driveSlider, elements.drumResonanceSlider, elements.drumToneSlider]
@@ -2571,6 +2622,16 @@
         elements.octaveUp.addEventListener("click", function () { changeKeyboardOctave(1); });
         elements.keyboard.addEventListener("contextmenu", function (event) { event.preventDefault(); });
         elements.keyboard.addEventListener("dragstart", function (event) { event.preventDefault(); });
+        if (elements.drumPads) {
+            elements.drumPads.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+            elements.drumPads.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            elements.drumPads.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+        }
+        if (elements.chordSurface) {
+            elements.chordSurface.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+            elements.chordSurface.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            elements.chordSurface.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+        }
         document.addEventListener("keydown", handleComputerKeyDown);
         document.addEventListener("keyup", handleComputerKeyUp);
         window.addEventListener("blur", allNotesOff);
