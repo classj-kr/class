@@ -15,10 +15,17 @@
     };
     function pads(items) {
         return Object.freeze(items.map(function (item, index) {
-            const binding = BINDINGS[index];
+            const binding = BINDINGS[index] || ["", ""];
+            const hasGueum = item.length >= 5;
+            const id = item[0];
+            const match = typeof item[1] === "string" ? item[1].match(/\((.*?)\)/) : null;
+            const gueum = hasGueum ? item[1] : (match ? match[1] : item[1]);
+            const name = hasGueum ? item[2] : item[1];
+            const family = hasGueum ? item[3] : item[2];
+            const sourceName = hasGueum ? item[4] : item[3];
             return Object.freeze({
-                id: item[0], name: item[1], family: item[2], sourceName: item[3],
-                key: binding[0], code: binding[1], color: COLORS[item[2]] || "#8ef0c6"
+                id: id, gueum: gueum, name: name, family: family, sourceName: sourceName,
+                key: binding[0], code: binding[1], color: COLORS[family] || "#8ef0c6"
             });
         }));
     }
@@ -28,36 +35,36 @@
     // Keep the source articulation IDs/names for the recorded sample mapping.
     const PAD_SETS = Object.freeze({
         "janggu-samul": pads([
-            ["low-open", "궁편치기(궁)", "궁편", "Low Open"],
-            ["low-open-var", "궁편치기(궁) · 변형", "궁편", "Low Open Var"],
-            ["low-edge", "궁편치기(궁) · 가장자리", "궁편", "Low Edge"],
-            ["low-soft", "약궁(구)", "궁편", "Low Soft"],
-            ["low-ghost", "약궁(구) · 아주 여리게", "궁편", "Low Ghost"],
-            ["low-bounce", "궁편 굴림", "궁편", "Low Bounce"],
-            ["high-rim", "채편치기(덕) · 테두리", "채편", "High Rim"],
-            ["high-rim-var", "채편치기(덕) · 테두리 변형", "채편", "High Rim Var"],
-            ["high-center", "채편치기(덕) · 중앙", "채편", "High Center"],
-            ["high-mallet", "채편 궁채치기(쿵)", "채편", "High Mallet"],
-            ["high-flam", "겹채(기덕)", "채편", "High Flam"],
-            ["high-bounce", "채굴림(더러러러)", "채편", "High Bounce"],
-            ["compound", "합장단(덩)", "양편", "Compound"]
+            ["compound", "덩", "합장단(덩) · 양손", "양편", "Compound"],
+            ["low-open", "쿵", "궁편치기(쿵) · 복판 정타", "궁편", "Low Open"],
+            ["low-bounce", "구궁", "겹궁(구궁) · 궁편 굴림", "궁편", "Low Bounce"],
+            ["low-soft", "구", "약궁(구) · 여린소리", "궁편", "Low Soft"],
+            ["low-edge", "쿵(변)", "궁편치기(쿵) · 가장자리", "궁편", "Low Edge"],
+            ["low-open-var", "쿵(변형)", "궁편치기(쿵) · 변형", "궁편", "Low Open Var"],
+            ["low-ghost", "구(극소)", "약궁 · 아주 여리게", "궁편", "Low Ghost"],
+            ["high-center", "덕", "채편치기(덕) · 복판 정타", "채편", "High Center"],
+            ["high-flam", "기덕", "겹채(기덕) · 전타음", "채편", "High Flam"],
+            ["high-bounce", "더러러러", "채굴림(더러러러) · 롤", "채편", "High Bounce"],
+            ["high-rim", "딱", "채편치기(딱) · 테두리", "채편", "High Rim"],
+            ["high-rim-var", "따(변)", "채편 테두리 변형", "채편", "High Rim Var"],
+            ["high-mallet", "쿵(궁채)", "채편 궁채 넘겨치기", "채편", "High Mallet"]
         ]),
         "janggu-sanjo": pads([
-            ["low-open", "궁편치기(궁)", "궁편", "Low Open"],
-            ["low-open-var", "궁편치기(궁) · 변형", "궁편", "Low Open Var"],
-            ["low-muted", "궁편 치고 막기(국)", "궁편", "Low Muted"],
-            ["low-soft", "약궁(구)", "궁편", "Low Soft"],
-            ["low-ghost", "약궁(구) · 아주 여리게", "궁편", "Low Ghost"],
-            ["low-flam", "겹궁(구궁)", "궁편", "Low Flam"],
-            ["high-rim", "채편치기(덕) · 테두리", "채편", "High Rim"],
-            ["high-center", "채편치기(덕) · 중앙", "채편", "High Center"],
-            ["high-edge", "채편치기(덕) · 가장자리", "채편", "High Edge"],
-            ["high-edge-mute", "채편 가장자리 막음", "채편", "High EdgeMute"],
-            ["high-flam-rim", "겹채(기덕) · 테두리", "채편", "High FlamRim"],
-            ["high-flam-edge", "겹채(기덕) · 가장자리", "채편", "High FlamEdge"],
-            ["low-high-open", "합장단(덩) · 열어치기", "양편", "Low-High Open"],
-            ["low-high-ornament", "양편 꾸밈음", "양편", "Low-High Orna"],
-            ["low-high-bounce", "양편 굴림", "양편", "Low-High Bounce"]
+            ["low-high-open", "덩", "합장단(덩) · 열어치기", "양편", "Low-High Open"],
+            ["low-high-ornament", "덩(꾸밈)", "합장단 · 양편 꾸밈음", "양편", "Low-High Orna"],
+            ["low-high-bounce", "더러러러", "양편 굴림(더러러러)", "양편", "Low-High Bounce"],
+            ["low-open", "쿵", "궁편치기(쿵) · 손치기", "궁편", "Low Open"],
+            ["low-flam", "구궁", "겹궁(구궁)", "궁편", "Low Flam"],
+            ["low-muted", "국", "궁편 치고 막기(국)", "궁편", "Low Muted"],
+            ["low-soft", "구", "약궁(구)", "궁편", "Low Soft"],
+            ["low-open-var", "쿵(변)", "궁편 손치기 변형", "궁편", "Low Open Var"],
+            ["low-ghost", "구(극소)", "약궁 · 아주 여리게", "궁편", "Low Ghost"],
+            ["high-center", "덕", "채편치기(덕) · 복판 정타", "채편", "High Center"],
+            ["high-flam-rim", "기덕", "겹채(기덕) · 테두리", "채편", "High FlamRim"],
+            ["high-flam-edge", "기덕(변)", "겹채(기덕) · 가장자리", "채편", "High FlamEdge"],
+            ["high-rim", "딱", "채편치기(딱) · 테두리", "채편", "High Rim"],
+            ["high-edge", "따(가장)", "채편 가장자리", "채편", "High Edge"],
+            ["high-edge-mute", "딱(막음)", "채편 가장자리 막음", "채편", "High EdgeMute"]
         ]),
         "buk-samul": pads([
             ["main", "정타(둥)", "북면", "Main"],
