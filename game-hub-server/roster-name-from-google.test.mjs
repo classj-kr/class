@@ -16,6 +16,7 @@ const {
 } = require("./roster-names.js");
 
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
+const serverSource = await readFile(new URL("./server.js", import.meta.url), "utf8");
 const schoolRosterHtml = await readFile(new URL("../classtools/school-roster.html", import.meta.url), "utf8");
 const classRosterHtml = await readFile(new URL("../classtools/roster.html", import.meta.url), "utf8");
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
@@ -329,6 +330,30 @@ test("a Google name that collides with another teacher in the school leaves the 
     assert.equal(filled.teacher, 0);
     assert.deepEqual((await teachers())[2], { teacher_name: "dup@school.test", name_source: "pending", google_email: "dup@school.test", teacher_type: "담임" });
   });
+});
+
+// ─── 요청 크기: 전교생 명단은 기본 32kb 를 훌쩍 넘는다 ─────────────────────
+
+test("the roster save routes accept bodies far larger than the 32kb default, since a whole-school roster of account-only rows already exceeds it", () => {
+  // 화면이 보내는 모양 그대로 3~5학년 아홉 반, 반마다 28명(성명 없이 계정만).
+  const students = [];
+  for (const grade of [3, 4, 5]) for (const classNumber of [1, 2, 3]) {
+    for (const n of [...Array.from({ length: 14 }, (_, i) => i + 1), ...Array.from({ length: 14 }, (_, i) => i + 51)]) {
+      students.push({ grade, classNumber, studentNumber: String(n), rosterName: "", gender: n < 50 ? "여" : "남",
+        studentEmail: `ks26${grade}${classNumber}${String(n).padStart(2, "0")}@kyesang.sen.es.kr`, guardian1Email: null, guardian2Email: null, customFields: {} });
+    }
+  }
+  const bytes = Buffer.byteLength(JSON.stringify({ students, year: 2026 }));
+  assert.ok(bytes > 32 * 1024, `${students.length} rows are ${bytes} bytes, over the 32kb default`);
+  // 그래서 명단 저장 경로는 기본 제한 앞에서 따로, 넉넉하게 받는다.
+  const defaultLimit = serverSource.indexOf('app.use(express.json({ limit: "32kb" }));');
+  for (const [route, limit] of [["/api/school/students", "2mb"], ["/api/school/teachers", "512kb"], ["/api/teacher/class", "256kb"]]) {
+    const at = serverSource.indexOf(`app.use('${route}', express.json({ limit: '${limit}' }));`);
+    assert.ok(at !== -1 && at < defaultLimit, `${route} gets its own ${limit} limit before the default`);
+  }
+  // 화면은 JSON 이 아닌 오류도 번호로 보여 준다.
+  assert.match(schoolRosterHtml, /HTTP 413/);
+  assert.match(schoolRosterHtml, /서버 오류가 발생했습니다 \(HTTP \$\{res\.status\}\)/);
 });
 
 // ─── 소스 계약: 로그인·조회 라우트와 두 명단 화면 ───────────────────────────

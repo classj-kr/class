@@ -522,6 +522,11 @@ app.use('/api/learning-records', express.json({ limit: '512kb' }));
 app.use('/api/teacher-ai', express.json({ limit: '256kb' }));
 app.use('/api/me/storage', express.json({ limit: '1100kb' }));
 app.use('/api/teacher/assessment-plans', express.json({ limit: '512kb' }));   // 교과 하나의 계획(항목 수십 개·단계별 평가기준)
+// 명단 저장은 한 번에 전교생(최대 2000명)을 보낸다. 계정만 적은 224명만 해도 42kb 라 기본 32kb 에
+// 걸려 413 으로 돌아왔고, 화면에는 "서버 오류"로만 보였다. 교직원 명단과 학급 명단도 같은 이유로 넉넉히 둔다.
+app.use('/api/school/students', express.json({ limit: '2mb' }));
+app.use('/api/school/teachers', express.json({ limit: '512kb' }));
+app.use('/api/teacher/class', express.json({ limit: '256kb' }));
 app.use(express.json({ limit: "32kb" }));
 app.get("/api/weather", kmaWeather.handler);
 app.use("/api", (_req, res, next) => {
