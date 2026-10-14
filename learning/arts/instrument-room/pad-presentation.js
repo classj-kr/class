@@ -1,25 +1,25 @@
 (function () {
     "use strict";
 
-    const LEFT_KEYS = [["A", "KeyA"], ["S", "KeyS"], ["D", "KeyD"], ["F", "KeyF"], ["Q", "KeyQ"], ["W", "KeyW"]];
+    const LEFT_KEYS = [["A", "KeyA"], ["S", "KeyS"], ["D", "KeyD"], ["Q", "KeyQ"], ["W", "KeyW"], ["E", "KeyE"]];
     const RIGHT_KEYS = [["J", "KeyJ"], ["K", "KeyK"], ["L", "KeyL"], [";", "Semicolon"], ["U", "KeyU"], ["I", "KeyI"]];
-    const BOTH_KEYS = [["B", "KeyB"], ["N", "KeyN"], ["M", "KeyM"]];
+    const BOTH_KEYS = [["Space", "Space"], ["B", "KeyB"], ["N", "KeyN"]];
     function isJanggu(id) { return id === "janggu-samul" || id === "janggu-sanjo"; }
 
     function bindJanggu(pads) {
         const count = { "궁편": 0, "채편": 0, "양편": 0 };
         return pads.map(function (pad) {
             const keys = pad.family === "궁편" ? LEFT_KEYS : pad.family === "채편" ? RIGHT_KEYS : BOTH_KEYS;
-            const binding = keys[count[pad.family]++];
+            const binding = keys[count[pad.family]++] || ["", ""];
             return Object.assign({}, pad, { key: binding[0], code: binding[1] });
         });
     }
 
     function groups(modelId, pads, kit) {
         if (isJanggu(modelId)) return [
-            { id: "left", title: "왼쪽 · 궁편", hint: modelId === "janggu-sanjo" ? "왼손으로 치기" : "궁채로 치기", pads: pads.filter(p => p.family === "궁편") },
-            { id: "right", title: "오른쪽 · 채편", hint: modelId === "janggu-samul" ? "열채로 치기 · 궁채 주법은 별도 표시" : "열채로 치기", pads: pads.filter(p => p.family === "채편") },
-            { id: "both", title: "양편 함께", hint: "궁편과 채편의 합장단", pads: pads.filter(p => p.family === "양편") }
+            { id: "both", title: "양편 함께 · 합장단 (덩)", hint: "궁편과 채편 동시 타격 · 양손 또는 Space / B / F", pads: pads.filter(p => p.family === "양편") },
+            { id: "left", title: "왼쪽 · 궁편 (쿵)", hint: modelId === "janggu-sanjo" ? "왼손 손치기 · 쿵 / 구궁" : "왼손 궁채 · 쿵 / 구궁", pads: pads.filter(p => p.family === "궁편") },
+            { id: "right", title: "오른쪽 · 채편 (덕)", hint: "오른손 열채 · 덕 / 기덕 / 더러러러", pads: pads.filter(p => p.family === "채편") }
         ];
         if (kit) {
             const pick = ids => ids.map(id => pads.find(p => p.id === id)).filter(Boolean);

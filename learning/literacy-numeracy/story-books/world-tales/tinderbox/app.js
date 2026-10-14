@@ -75,7 +75,7 @@ const CHAPTERS = [
                 "art": "03-more-dogs.webp",
                 "emoji": "💰",
                 "left": [
-                    "두 번째 방에도 개가 앉아 있었습니다. 이번에는 덩치가 첫 번째 개보다 훨씬 컸지요. 병사는 이번에도 앞치마를 폈습니다.",
+                    "두 번째 방에도 개가 앉아 있었습니다. 이번에는 눈이 물레방아만 했지요. 병사는 이번에도 앞치마를 폈습니다.",
                     "개는 순순히 그 위에 올라앉았지요. 궤짝을 여니 은화가 가득했습니다.",
                     "\"동전은 이제 필요 없지.\""
                 ],
@@ -89,7 +89,7 @@ const CHAPTERS = [
                 "art": "03-more-dogs-2.webp",
                 "emoji": "💰",
                 "left": [
-                    "세 번째 방의 개는 어마어마했지요. 셋 가운데 덩치가 가장 컸습니다.",
+                    "세 번째 방의 개는 어마어마했지요. 눈이 탑만큼이나 컸습니다.",
                     "숨을 내쉴 때마다 방 안이 후끈했지요. 발톱이 돌바닥을 드르륵 긁었습니다.",
                     "병사는 다리가 후들거렸습니다. 그래도 앞치마를 펴서 개를 올려놓았지요."
                 ],
@@ -664,7 +664,7 @@ const EN = {
                     emoji: '🪙',
                     left: [
                         "There was a dog in the second room as well,",
-                        "and this one was far bigger than the first.",
+                        "and this one had eyes the size of millwheels.",
                         "The soldier spread the apron again,",
                         "and the dog got quietly onto it.",
                         "He opened the chest and it was full of silver.",
@@ -684,7 +684,7 @@ const EN = {
                     emoji: '🪙',
                     left: [
                         "The dog in the third room was tremendous.",
-                        "He was the biggest of the three.",
+                        "His eyes were the size of towers.",
                         "Every time he breathed out the room went hot,",
                         "and his claws scraped on the stone floor.",
                         "The soldier's legs shook under him.",
@@ -816,7 +816,7 @@ const EN = {
                     emoji: '✨',
                     left: [
                         "The soldier tried the box out this way and that.",
-                        "Strike it once, and the first dog came. Twice, and the second. Three times, and the biggest dog of all.",
+                        "Strike it once, and the first dog came. Twice, and the second. Three times, and the dog with eyes like towers.",
                         "The dogs brought him money from the chests in the cave.",
                         "Soon he moved back into a good room and had new clothes made."
                     ],
@@ -1014,7 +1014,7 @@ const EN = {
             { word: 'bulging', meaning: '두둑한', sentence: 'The soldier filled his pockets to bulging.' }
         ],
         '03-more-dogs.webp': [
-            { word: 'far bigger', meaning: '훨씬 큰', sentence: 'This one was far bigger than the first.' },
+            { word: 'millwheel', meaning: '물레방아 바퀴', sentence: 'Eyes the size of millwheels.' },
             { word: 'silver', meaning: '은화', sentence: 'The chest was full of silver.' },
             { word: 'have no use for', meaning: '필요 없다', sentence: 'I have no use for copper now.' },
             { word: 'tip out', meaning: '쏟아 버리다', sentence: 'He tipped out every copper coin.' },
@@ -1140,7 +1140,7 @@ const WORDS_KO = {
         { w: "어이쿠", k: "놀랐을 때 내는 소리.", s: "\"어이쿠, 정말이잖아.\"" }
     ],
     "03-more-dogs.webp": [
-        { w: "덩치", k: "몸의 크기.", s: "이번에는 덩치가 첫 번째 개보다 훨씬 컸지요." },
+        { w: "물레방아", k: "쏟아지는 물의 힘으로 바퀴를 돌려 방아를 찧는 기구.", s: "이번에는 눈이 물레방아만 했지요." },
         { w: "순순히", k: "고분고분 말을 잘 듣게.", s: "개는 순순히 그 위에 올라앉았지요." },
         { w: "몽땅", k: "하나도 남기지 않고 모두.", s: "병사는 동전을 몽땅 쏟아 버렸습니다." },
         { w: "묵직하다", k: "들기에 꽤 무겁다.", s: "주머니가 묵직해졌습니다." }
