@@ -50,6 +50,10 @@
 .matter-nav [hidden],.nav-tab[hidden],.school-level[hidden] { display:none!important; }
 .scene-btn[hidden],.hub-card[hidden] { display:none!important; }
 .space-school-picker { display:flex; justify-content:flex-end; margin-bottom:12px; }
+.hub-school-level { position:fixed; top:max(16px, env(safe-area-inset-top)); right:18px; z-index:100; }
+body.class-music-ready .hub-school-level,
+body:has(.unified-music-control) .hub-school-level { right:calc(max(12px, env(safe-area-inset-right)) + 58px); }
+@media (max-width:400px) { .hub-school-level .school-level button { min-width:36px; padding:4px 6px; } }
 .school-matter-content [hidden],.model-check[hidden],#modelFacts[hidden],.model-key[hidden] { display:none!important; }
 .school-matter-content .school-concepts { margin:0 0 12px; }
 .matter-main > .school-matter-content { margin-top:18px; }

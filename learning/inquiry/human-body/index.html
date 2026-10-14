@@ -109,7 +109,22 @@
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
         }
         .hub-card[hidden] { display: none !important; }
-        .hub-school-level { position: fixed; top: 14px; right: 18px; z-index: 100; }
+        .hub-school-level {
+            position: fixed;
+            top: max(16px, env(safe-area-inset-top));
+            right: 18px;
+            z-index: 100;
+        }
+        body.class-music-ready .hub-school-level,
+        body:has(.unified-music-control) .hub-school-level {
+            right: calc(max(12px, env(safe-area-inset-right)) + 58px);
+        }
+        @media (max-width: 400px) {
+            .hub-school-level .school-level button {
+                min-width: 36px;
+                padding: 4px 6px;
+            }
+        }
         @media (min-width: 1101px) {
             html[data-school-level="elementary"] .hub-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
         }
