@@ -2082,6 +2082,9 @@
                 strum("down");
                 renderChordPads();
             });
+            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            button.addEventListener("contextmenu", function (event) { event.preventDefault(); });
             elements.chordPads.appendChild(button);
         });
     }
@@ -2193,6 +2196,9 @@
                     // Layout and unmeasured touch pressure must not change strike volume.
                     play(event.pointerType === "pen" && event.pressure > .05 ? Math.max(.4, event.pressure) : .82);
                 });
+                button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+                button.addEventListener("dragstart", function (event) { event.preventDefault(); });
+                button.addEventListener("contextmenu", function (event) { event.preventDefault(); });
                 button.addEventListener("keydown", function (event) {
                     if (event.code !== "Space" && event.code !== "Enter") return;
                     event.preventDefault();
@@ -2555,6 +2561,8 @@
         });
         document.querySelectorAll("[data-strum]").forEach(function (button) {
             button.addEventListener("pointerdown", function (event) { event.preventDefault(); strum(button.dataset.strum); });
+            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
         });
         elements.sustainButton.addEventListener("click", function () { if (supportsPianoSustain()) setSustain(!state.sustain, !state.sustain); });
         [elements.toneSlider, elements.muteSlider, elements.pickSlider, elements.driveSlider, elements.drumResonanceSlider, elements.drumToneSlider]
@@ -2571,6 +2579,16 @@
         elements.octaveUp.addEventListener("click", function () { changeKeyboardOctave(1); });
         elements.keyboard.addEventListener("contextmenu", function (event) { event.preventDefault(); });
         elements.keyboard.addEventListener("dragstart", function (event) { event.preventDefault(); });
+        if (elements.drumPads) {
+            elements.drumPads.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+            elements.drumPads.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            elements.drumPads.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+        }
+        if (elements.chordSurface) {
+            elements.chordSurface.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+            elements.chordSurface.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            elements.chordSurface.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+        }
         document.addEventListener("keydown", handleComputerKeyDown);
         document.addEventListener("keyup", handleComputerKeyUp);
         window.addEventListener("blur", allNotesOff);
