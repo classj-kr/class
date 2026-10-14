@@ -16,6 +16,7 @@ const {
 } = require("./roster-names.js");
 
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
+const serverSource = await readFile(new URL("./server.js", import.meta.url), "utf8");
 const schoolRosterHtml = await readFile(new URL("../apps/classtools/school-roster.html", import.meta.url), "utf8");
 const classRosterHtml = await readFile(new URL("../apps/classtools/roster.html", import.meta.url), "utf8");
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
@@ -114,10 +115,10 @@ async function withDb(run) {
 const res = () => ({ json(value) { this.body = value; } });
 const asAdmin = [async () => ({ id: 1 }), async () => ({ school_id: 1, teacher_type: "관리자" })];
 
-async function putStudents(pool, list) {
+async function putStudents(pool, list, extra = {}) {
   const r = res();
   await saveStudents(
-    { body: { students: list, year: 2026 } }, r, ...asAdmin, HttpError, pool,
+    { body: { students: list, year: 2026, ...extra } }, r, ...asAdmin, HttpError, pool,
     () => 10, () => "animal-cat.webp", pendingStudentName, NAME_SOURCE_PENDING
   );
   return r.body;
@@ -263,6 +264,30 @@ test("PUT /school/students refuses the same student Google account on two rows (
   });
 });
 
+test("PUT /school/students never drops existing students silently: a shorter list is refused until the removal is confirmed", async () => {
+  await withDb(async ({ pool, students }) => {
+    await putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", ""), student("3", "박민수", "")]);
+
+    // 한 반만 붙여넣고 저장한 것처럼 두 명만 보내면, 확인 없이는 아무것도 바꾸지 않는다.
+    await assert.rejects(
+      () => putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", "")]),
+      (error) => error.code === "ROSTER_REMOVAL_NEEDS_CONFIRM" && error.status === 409
+        && /1명이 2026년도 명단에서 빠집니다: 3학년 1반 3번 박민수/.test(error.message)
+        && error.details.removed.length === 1
+    );
+    assert.equal((await students()).length, 3, "거부되면 명단은 그대로다");
+
+    // 같은 학생들을 다시 보내는 것(아무도 빠지지 않음)은 확인이 필요 없다.
+    await putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", ""), student("3", "박민수", "")]);
+    assert.equal((await students()).length, 3);
+
+    // 사람이 확인하면 지운다.
+    const body = await putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", "")], { confirmRemoval: true });
+    assert.equal(body.saved, 2);
+    assert.deepEqual((await students()).map((r) => r.student_number), ["1", "2"]);
+  });
+});
+
 // ─── 교직원 명단 저장 + 첫 로그인 ────────────────────────────────────────
 
 test("PUT /school/teachers accepts a blank name with a Google account (placeholder = the account) and still drops a row with neither", async () => {
@@ -308,6 +333,30 @@ test("a Google name that collides with another teacher in the school leaves the 
   });
 });
 
+// ─── 요청 크기: 전교생 명단은 기본 32kb 를 훌쩍 넘는다 ─────────────────────
+
+test("the roster save routes accept bodies far larger than the 32kb default, since a whole-school roster of account-only rows already exceeds it", () => {
+  // 화면이 보내는 모양 그대로 3~5학년 아홉 반, 반마다 28명(성명 없이 계정만).
+  const students = [];
+  for (const grade of [3, 4, 5]) for (const classNumber of [1, 2, 3]) {
+    for (const n of [...Array.from({ length: 14 }, (_, i) => i + 1), ...Array.from({ length: 14 }, (_, i) => i + 51)]) {
+      students.push({ grade, classNumber, studentNumber: String(n), rosterName: "", gender: n < 50 ? "여" : "남",
+        studentEmail: `ks26${grade}${classNumber}${String(n).padStart(2, "0")}@kyesang.sen.es.kr`, guardian1Email: null, guardian2Email: null, customFields: {} });
+    }
+  }
+  const bytes = Buffer.byteLength(JSON.stringify({ students, year: 2026 }));
+  assert.ok(bytes > 32 * 1024, `${students.length} rows are ${bytes} bytes, over the 32kb default`);
+  // 그래서 명단 저장 경로는 기본 제한 앞에서 따로, 넉넉하게 받는다.
+  const defaultLimit = serverSource.indexOf('app.use(express.json({ limit: "32kb" }));');
+  for (const [route, limit] of [["/api/school/students", "2mb"], ["/api/school/teachers", "512kb"], ["/api/teacher/class", "256kb"]]) {
+    const at = serverSource.indexOf(`app.use('${route}', express.json({ limit: '${limit}' }));`);
+    assert.ok(at !== -1 && at < defaultLimit, `${route} gets its own ${limit} limit before the default`);
+  }
+  // 화면은 JSON 이 아닌 오류도 번호로 보여 준다.
+  assert.match(schoolRosterHtml, /HTTP 413/);
+  assert.match(schoolRosterHtml, /서버 오류가 발생했습니다 \(HTTP \$\{res\.status\}\)/);
+});
+
 // ─── 소스 계약: 로그인·조회 라우트와 두 명단 화면 ───────────────────────────
 
 test("every roster table gained name_source, and Google sign-in fills pending names after linking the account", () => {
@@ -348,6 +397,10 @@ test("the school roster editor sends pending rows back with an empty name so the
   // 붙여넣기: 성명 열이 없어도 학생구글계정 열이 있으면 받는다. 교직원은 계정부터 적은 줄을 받는다.
   assert.match(schoolRosterHtml, /\(nameI === -1 && seI === -1\)/);
   assert.match(schoolRosterHtml, /if \(parts\[0\]\.includes\("@"\)\) parts = \["", \.\.\.parts\]/);
+  // 붙여넣기는 더하거나 같은 학년·반·번호를 고칠 뿐 아무도 지우지 않고, 저장하면 빠지는 학생은 이름을 보여 주고 확인을 받는다.
+  assert.match(schoolRosterHtml, /const addedRows = previewRows\.filter\(\(row\) => !existingKeys\.has\(rosterKeyOf\(row\)\)\)/);
+  assert.match(schoolRosterHtml, /return pasted \? \{ \.\.\.pasted, id: existing\.id, user_id: existing\.user_id \} : existing;/);
+  assert.match(schoolRosterHtml, /confirmRemoval: removedRows\.length > 0/);
   // 같은 학생구글계정이 두 줄에 있으면 저장을 막고 두 칸을 붉게 표시한다.
   assert.match(schoolRosterHtml, /const accountOwners = new Map\(\)/);
   assert.match(schoolRosterHtml, /function markDuplicateAccounts\(\)/);
