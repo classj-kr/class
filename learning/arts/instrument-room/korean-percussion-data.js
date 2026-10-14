@@ -50,9 +50,8 @@
             ["high-mallet", "쿵(궁채)", "채편 궁채 넘겨치기", "채편", "High Mallet"]
         ]),
         "janggu-sanjo": pads([
-            ["low-high-open", "덩", "합장단(덩) · 열어치기", "양편", "Low-High Open"],
-            ["low-high-ornament", "덩(꾸밈)", "합장단 · 양편 꾸밈음", "양편", "Low-High Orna"],
-            ["low-high-bounce", "더러러러", "양편 굴림(더러러러)", "양편", "Low-High Bounce"],
+            ["low-high-open", "덩", "합장단(덩) · 기본 정타", "양편", "Low-High Open"],
+            ["low-high-ornament", "기덩", "겹합장단(기덩) · 꾸밈 전타음", "양편", "Low-High Orna"],
             ["low-open", "쿵", "궁편치기(쿵) · 손치기", "궁편", "Low Open"],
             ["low-flam", "구궁", "겹궁(구궁)", "궁편", "Low Flam"],
             ["low-muted", "국", "궁편 치고 막기(국)", "궁편", "Low Muted"],
@@ -61,8 +60,9 @@
             ["low-ghost", "구(극소)", "약궁 · 아주 여리게", "궁편", "Low Ghost"],
             ["high-center", "덕", "채편치기(덕) · 복판 정타", "채편", "High Center"],
             ["high-flam-rim", "기덕", "겹채(기덕) · 테두리", "채편", "High FlamRim"],
-            ["high-flam-edge", "기덕(변)", "겹채(기덕) · 가장자리", "채편", "High FlamEdge"],
+            ["low-high-bounce", "더러러러", "채굴림(더러러러) · 롤", "채편", "Low-High Bounce"],
             ["high-rim", "딱", "채편치기(딱) · 테두리", "채편", "High Rim"],
+            ["high-flam-edge", "기덕(변)", "겹채(기덕) · 가장자리", "채편", "High FlamEdge"],
             ["high-edge", "따(가장)", "채편 가장자리", "채편", "High Edge"],
             ["high-edge-mute", "딱(막음)", "채편 가장자리 막음", "채편", "High EdgeMute"]
         ]),
