@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sesame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="https://vizier.cds.unistra.fr/xml/sesame_4x.xsd">
+<Target option="SNV">
+  <name>M44</name>
+  <!-- Q10259727 #1 -->
+  <Resolver name="Sc=Simbad (CDS, via client/server)"><!--delay: 0ms [0] -->
+    <INFO>from cache</INFO>
+    <oid>1110595</oid>
+    <otype>OpC</otype>
+    <jpos>08:40:13.00 +19:37:15.9</jpos>
+    <jradeg>130.05416667</jradeg>
+    <jdedeg>19.62111111</jdedeg>
+    <refPos>2021A&amp;A...647A..19T</refPos>
+    <pm>
+      <v>38.291</v><e>0.128</e><q>B</q><r>2018A&amp;A...616A..10G</r>
+      <pa>250.3</pa>
+      <pmRA>-36.047</pmRA><epmRA>0.110</epmRA>
+      <pmDE>-12.917</pmDE><epmDE>0.066</epmDE>
+    </pm>
+    <Vel><v>34.94</v><e>0.08</e><q>A</q><r>2021A&amp;A...647A..19T</r></Vel>
+    <plx><v>5.371</v><e>0.003</e><q>B</q><r>2018A&amp;A...616A..10G</r></plx>
+    <oname>NGC  2632</oname>
+    <nrefs>1769</nrefs>
+  </Resolver>
+</Target>
+</Sesame>
+<!--- ====Done (2026-Oct-12,20:04:36z)==== -->

@@ -1,0 +1,39 @@
+✔ DNA complement conserves base pairing, nucleotide count and hydrogen bonds (0.9827ms)
+✔ paper protein overlap is counted once; folding never creates peptide bonds (0.1636ms)
+✔ organelle topology and ATP-facing compartments distinguish envelope and energy membranes (0.1195ms)
+✔ 24-hour budget scales time and food labels, with no duplicate basal term (0.2255ms)
+✖ fuel comparisons preserve enthalpy sign, mass/volume conversions and efficiency separation (2.9442ms)
+✔ boiling data preserve source values and ammonia exception without forcing global rank (0.1066ms)
+✔ chromium: six source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (39212.0659ms)
+✔ webkit: six source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (51220.9594ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 90495.3868
+
+✖ failing tests:
+
+test at tests\science-structure-labs.test.cjs:26:1
+✖ fuel comparisons preserve enthalpy sign, mass/volume conversions and efficiency separation (2.9442ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(Math.abs(v[2].heat-11.61834)<1e-8)
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-structure-labs.test.cjs:27:170)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,42 @@
+Combined regression command:
+node --test tests/science-assessment.test.cjs tests/science-catalog-classification.test.cjs tests/science-experiment-scope.test.cjs tests/science-required-experiments.test.cjs tests/science-docking.test.cjs tests/science-sunspot.test.cjs tests/science-telescope.test.cjs tests/science-annulus.test.cjs
+
+Initial output: first 3 annulus checks passed; subsequent output follows.
+✔ webkit: tank preparation, moving tracers, fair comparison, reset and diagnosis (9000.0224ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.7422ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7819ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1204ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (89.004ms)
+chromium: 148 apps / 150 course routes / 600 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (22440.2785ms)
+webkit: 148 apps / 150 course routes / 600 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (27829.7379ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (684.841ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5654.8852ms)
+✔ all 360 source poses retain finite atom coordinates, existing bond endpoints and exact target-specific minima (9.5913ms)
+✔ chromium: actual structure rotation, all target/candidate scores, reset and six diagnostic questions (7265.9823ms)
+✔ webkit: actual structure rotation, all target/candidate scores, reset and six diagnostic questions (12589.1465ms)
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (5.9476ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (3.8764ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1404ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (34.8294ms)
+294 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (19.3692ms)
+294 browser conditions, 882 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (51858.6474ms)
+✔ solar surface coordinates round-trip with observer tilt and perspective, and reject invalid comparisons (1.284ms)
+✔ archived observations keep the exact dates, hashes, attribution and calibrated limb outside student prose (6.7971ms)
+✔ chromium: measure actual sunspots, compare frames, persist diagnostic answers and fit mobile (7497.5957ms)
+✔ webkit: measure actual sunspots, compare frames, persist diagnostic answers and fit mobile (8355.3421ms)
+✔ instrument assembly, field of view, focus and sky availability have independent causes (1.3336ms)
+✔ course routes retain separate evidence and plausible answer lengths (0.1596ms)
+✔ chromium: complete telescope operation and course diagnosis (8332.9525ms)
+✔ webkit: complete telescope operation and course diagnosis (11906.9285ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52063.4799

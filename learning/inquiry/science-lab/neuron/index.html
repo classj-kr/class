@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="신경 세포막에 세기와 시간이 다른 자극을 주어 활동 전위가 생기는지, 몇 번 생기는지, 크기는 늘 같은지를 실제 이온 통로 방정식(호지킨–헉슬리)으로 계산하고, 말이집과 굵기가 다른 축삭에서 흥분이 1 m를 가는 시간을 재고, 시냅스에 약물이 끼어들 때 다음 세포의 반응이 어떻게 달라지는지 확인하는 고등학교 생명과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=7">
-    <link rel="stylesheet" href="neuron-visual.css?v=8">
-    <link rel="stylesheet" href="quiz.css?v=5">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="neuron-visual.css?v=79ccae3e5f82">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -100,62 +100,61 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>문턱을 넘긴 자극을 두 배 세게 주면 활동 전위는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 크기가 두 배가 된다</label>
-                        <label><input type="radio" name="q1" value="b"> 크기가 두 배, 횟수도 두 배가 된다</label>
-                        <label><input type="radio" name="q1" value="c"> 크기는 같고, 오래 주면 횟수가 늘어난다</label>
-                        <label><input type="radio" name="q1" value="d"> 세포가 다쳐 생기지 않는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>활동 전위의 크기는 Na⁺·K⁺ 통로가 정하므로 자극 세기와 상관없이 같습니다(실무율). 센 자극은 문턱에 더 빨리 다시 이르게 해 횟수를 늘립니다.</p>
-                </article>
+<h3>같은 뉴런에 문턱 이상의 자극을 더 강하게 주었다. 포화 전 범위에서 활동 전위의 크기와 발생 빈도는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 크기 증가 · 빈도 비슷</label>
+<label><input type="radio" name="q1" value="b"> 크기 감소 · 빈도 증가</label>
+<label><input type="radio" name="q1" value="c"> 크기 비슷 · 빈도 증가</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>활동 전위 하나의 크기는 실무율에 따라 거의 같고 자극 세기는 발생 빈도 등에 반영됩니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>말이집이 있는 축삭에서 흥분이 훨씬 빨리 전달되는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 말이집 사이의 마디에서만 활동 전위가 생겨 건너뛰듯 나아가기 때문에</label>
-                        <label><input type="radio" name="q2" value="b"> 말이집이 전기를 잘 통하기 때문에</label>
-                        <label><input type="radio" name="q2" value="c"> 말이집 속에 Na⁺ 통로가 더 많기 때문에</label>
-                        <label><input type="radio" name="q2" value="d"> 말이집이 축삭을 뜨겁게 하기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>말이집은 절연체여서 그 아래 막에서는 활동 전위가 생기지 않고, 전류가 다음 마디까지 흘러가 그곳에서 새 활동 전위가 생깁니다. 마디마다 건너뛰므로 초속 100 m까지 빠릅니다.</p>
-                </article>
+<h3>말이집이 있는 축삭에서 랑비에 결절과 말이집으로 덮인 부분을 비교한다. 활동 전위가 재생되는 곳은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 랑비에 결절</label>
+<label><input type="radio" name="q2" value="b"> 말이집 바깥 표면</label>
+<label><input type="radio" name="q2" value="c"> 말이집 안 모든 지점</label>
+<label><input type="radio" name="q2" value="d"> 축삭 전체에서 동시에</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>활동 전위는 전압 개폐성 통로가 집중된 결절에서 재생됩니다. 결절 사이 전류 전달과 각 지점의 활동 전위 발생을 구별합니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>시냅스에서 신호가 한쪽으로만 전달되는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 전기가 한쪽으로만 흐르기 때문에</label>
-                        <label><input type="radio" name="q3" value="b"> 틈이 너무 좁기 때문에</label>
-                        <label><input type="radio" name="q3" value="c"> 뒤 세포가 앞 세포보다 크기 때문에</label>
-                        <label><input type="radio" name="q3" value="d"> 신경 전달 물질은 앞 세포 끝에서만 나오고 수용체는 뒤 세포에만 있기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>전달 물질이 든 소포는 앞 세포의 끝에만 있고, 그것을 받는 수용체는 뒤 세포의 막에만 있습니다. 그래서 신호는 앞에서 뒤로만 건너갑니다.</p>
-                </article>
+<h3>일반적인 화학 시냅스의 앞·뒤 세포에 있는 구조를 짝 지은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 앞: 수용체 / 뒤: 전달물질 소낭</label>
+<label><input type="radio" name="q3" value="b"> 앞: 전달물질 소낭 / 뒤: 말이집</label>
+<label><input type="radio" name="q3" value="c"> 앞: 말이집 / 뒤: 전달물질 소낭</label>
+<label><input type="radio" name="q3" value="d"> 앞: 전달물질 소낭 / 뒤: 수용체</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>시냅스 이전 말단에서 전달물질이 방출되어 이후 막의 수용체에 결합하는 구조적 비대칭이 전달 방향과 관련됩니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>어떤 살충제는 신경 전달 물질을 분해하는 효소를 못 쓰게 합니다. 시냅스에서는 무슨 일이 생길까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 전달 물질이 나오지 않아 신호가 끊긴다</label>
-                        <label><input type="radio" name="q4" value="b"> 전달 물질이 틈에 오래 남아 다음 세포가 계속 자극된다</label>
-                        <label><input type="radio" name="q4" value="c"> 아무 변화가 없다</label>
-                        <label><input type="radio" name="q4" value="d"> 신호가 반대 방향으로 간다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>효소가 전달 물질을 치우지 못하면 수용체가 계속 자극되어 근육이 떨리거나 굳습니다. 신경 가스도 같은 원리이고, 치료약으로 쓰이는 것도 있습니다.</p>
-                </article>
+<h3>한 번 자극한 뒤 시냅스의 전달 물질이 분해되는 시간이 길어졌다. 다른 조건이 같을 때, 자극 직후 예상되는 변화는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 전달 물질 잔류 감소 · 수용체 자극 지속</label>
+<label><input type="radio" name="q4" value="b"> 전달 물질 잔류 증가 · 수용체 자극 지속</label>
+<label><input type="radio" name="q4" value="c"> 전달 물질 잔류 증가 · 수용체 자극 단축</label>
+<label><input type="radio" name="q4" value="d"> 전달 물질 잔류 감소 · 수용체 자극 단축</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>전달 물질이 제거되는 속도가 느려지면 시냅스 틈에 더 오래 남아 수용체를 자극할 수 있다. 전달 물질의 분비가 차단된 경우와 구별한다.</p>
+</article>
             </div>
         </details>
     </main>
     <script src="app.js?v=2e1cbc797c5e"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

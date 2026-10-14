@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 종이컵 스피커 만들기</title><meta name="description" content="2022 교육과정 · 종이컵 스피커 만들기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>종이컵 스피커 만들기</h1><div class="grade-tags"><span>고(선택)</span><span>물리학</span></div></header><p class="intro">종이컵과 자석, 코일을 연결해 소리를 만들어 보세요. 연결 상태와 신호를 바꾸며 진동판을 관찰합니다.</p><section class="experiment-layout physics-lab" data-physics="speaker-lab"><div class="control-panel"><h2>스피커 조립</h2><div class="toolbar"><button id="magnet">① 자석 붙이기</button><button id="stripped">② 전선 끝 피복 벗기기</button><button id="connected">③ 오디오 출력 연결</button></div><label for="turns">코일 감은 수 <output id="turnsValue">30회</output><input id="turns" type="range" min="10" max="50" step="10" value="30" data-unit="회"></label><label for="frequency">신호 주파수 <output id="frequencyValue">220 Hz</output><input id="frequency" type="range" min="110" max="880" step="110" value="220" data-unit=" Hz"></label><div class="toolbar"><button id="playSignal" class="primary">신호 보내기</button><button id="referenceSound">참고음 듣기</button></div></div><div id="physicsScene" class="scene light"></div><div id="physicsReadout" class="physics-readout"></div><p id="physicsStatus" class="status" aria-live="polite"></p><div class="toolbar"><button id="resetExperiment">처음부터</button></div><p class="model-note">코일과 진동판은 단면으로 나타냅니다. 진동은 느리게 확대하며 실제 공명과 음량을 예측하지 않습니다. 참고음은 선택한 주파수의 합성음입니다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>자석의 방향은 고정하고 코일 전류의 방향만 반대로 바꿨다. 코일에 작용하는 자기력의 방향은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 반대 방향</label>
+<label><input type="radio" name="q1" value="b"> 같은 방향</label>
+<label><input type="radio" name="q1" value="c"> 두 방향의 중간</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>자기장 방향이 같을 때 전류 방향을 반대로 바꾸면 전류가 흐르는 도선이 받는 자기력도 반대가 됩니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>코일 양 끝의 에나멜을 벗기기 전에는 전류가 흐르지 않았고 벗긴 뒤에는 흘렀다. 바뀐 조건은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 코일 전체의 감은 횟수</label>
+<label><input type="radio" name="q2" value="b"> 접촉 부위의 전기적 연결</label>
+<label><input type="radio" name="q2" value="c"> 자석이 만드는 자기장 방향</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>에나멜은 절연체이므로 접촉 부분의 피복을 제거하면 금속끼리 연결될 수 있습니다. 감은 수와 자석 방향을 바꾼 실험은 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>진폭을 유지한 채 입력 주파수를 220 Hz에서 440 Hz로 바꿨다. 진동판이 입력을 따라 움직인다면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 초당 진동 수 절반 · 음 낮아짐</label>
+<label><input type="radio" name="q3" value="b"> 초당 진동 수 두 배 · 음 낮아짐</label>
+<label><input type="radio" name="q3" value="c"> 초당 진동 수 두 배 · 음 높아짐</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>주파수가 두 배이면 초당 진동 수도 두 배가 되고 음이 높아집니다. 소리의 세기와 음의 높이를 구별합니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>같은 교류 신호에서 자석을 빼자 종이컵 진동이 크게 줄었다. 확인할 수 있는 역할은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 코일 전류에 자기력을 작용시킴</label>
+<label><input type="radio" name="q4" value="b"> 입력 신호의 주파수를 만들어 냄</label>
+<label><input type="radio" name="q4" value="c"> 코일 양 끝을 전기적으로 연결함</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>이 장치의 자석은 전류가 흐르는 코일에 힘이 작용할 자기장을 제공합니다. 입력 주파수는 신호원에서 정합니다.</p>
+</article></details></main><script src="../physics-models.js?v=9af4f7009d95"></script><script src="../physics-labs.js?v=66fe0c5b6c1d"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

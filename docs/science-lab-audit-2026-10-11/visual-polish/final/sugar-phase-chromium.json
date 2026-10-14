@@ -1,0 +1,18 @@
+{
+  "slug": "sugar-phase",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 6,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

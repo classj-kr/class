@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-12T16:26:19.131Z",
+  "engine": "chromium",
+  "routes": 184,
+  "states": 2800,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review.",
+  "findings": [],
+  "errors": []
+}

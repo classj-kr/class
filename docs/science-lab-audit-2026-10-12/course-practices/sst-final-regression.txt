@@ -1,0 +1,11 @@
+✔ SST snapshot source hashes, sign, land masks, same coordinate and all month coverage (13.3835ms)
+✔ chromium: all regions and dates, maps, touch/keys, playback, load recovery and diagnosis (15373.2506ms)
+✔ webkit: all regions and dates, maps, touch/keys, playback, load recovery and diagnosis (22150.397ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37626.5123

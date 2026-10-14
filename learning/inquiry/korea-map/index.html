@@ -6,11 +6,17 @@
   <meta name="theme-color" content="#123c46">
   <title>국내 지도</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260927-4">
-  <link rel="stylesheet" href="study.css?v=20260927-6">
-  <link rel="stylesheet" href="reading.css?v=20260927-1">
+  <link rel="stylesheet" href="styles.css?v=20261012-quality1">
+  <link rel="stylesheet" href="study.css?v=20261012-remaster8">
+  <link rel="stylesheet" href="reading.css?v=20261011-analysis1">
   <link rel="stylesheet" href="scene.css?v=20260920-1">
-  <link rel="stylesheet" href="history.css?v=20260922-type-1">
+  <link rel="stylesheet" href="history.css?v=20261012-imjin1">
+  <link rel="stylesheet" href="../curriculum/school-level.css?v=20261011-floating5">
+  <script src="../curriculum/school-level.js?v=20261011-question-map"></script>
+  <script src="../curriculum/map-content.js?v=20261012-transport2"></script>
+  <script src="../curriculum/map-advanced.js?v=20261011-analysis1"></script>
+  <script src="../curriculum/map-practice.js?v=20261012-transport2"></script>
+  <link rel="stylesheet" href="../curriculum/reading-surfaces.css?v=20261011-paper5">
 </head>
 <body>
   <div class="app-shell">
@@ -37,18 +43,16 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19l5-8 4 4 3-6 6 10"/><circle cx="3" cy="19" r="1.4"/><circle cx="21" cy="19" r="1.4"/></svg>단면도
         </button>
         <div class="map-key" id="mapKey" aria-live="polite"></div>
-        <button class="map-credit" id="creditButton" type="button" aria-label="지도 자료 출처" aria-expanded="false" aria-controls="creditText">i</button>
-        <p class="map-credit-text" id="creditText" hidden>지도 자료: Copernicus DEM(© DLR, © Airbus, EU·ESA) · Mapzen · © OpenStreetMap 기여자 · Natural Earth · geoBoundaries</p>
         <section class="profile-panel" id="profilePanel" hidden aria-label="단면도">
           <button type="button" class="profile-close" id="profileClose" aria-label="단면도 닫기">×</button>
           <p class="profile-hint" id="profileHint"></p>
-          <svg id="profileChart" role="img" aria-label="두 점 사이의 높이 변화"></svg>
+          <svg id="profileChart" role="img" aria-label="두 점 사이의 높이와 수심 변화"></svg>
         </section>
       </section>
 
       <aside class="study-panel">
         <section id="studyWorkspace" aria-label="개념별 시각 학습"></section>
-        <details id="studyReference" class="study-reference"><summary>더 보기</summary>
+        <details id="studyReference" class="study-reference"><summary>주제 전체 설명·지점</summary>
         <section class="concept-card" aria-labelledby="conceptTitle">
           <h1 class="visually-hidden" id="conceptTitle"></h1>
           <aside class="feature-focus" id="featureFocus" aria-live="polite" hidden>
@@ -129,7 +133,6 @@
       <figure class="place-photo">
         <img id="placePhoto" alt="" hidden>
         <span class="place-photo-fallback" id="placePhotoFallback" aria-hidden="true"></span>
-        <figcaption id="placeCredit"></figcaption>
       </figure>
       <div class="place-route">
         <p class="route-ends"><span class="route-dot is-school"></span>우리 학교 <span class="route-arrow" aria-hidden="true">→</span> <span class="route-dot is-place"></span>이곳</p>
@@ -181,33 +184,50 @@
 
   <script src="vendor/leaflet/leaflet.js"></script>
   <script src="data/terrain-data.js?v=20260920-28"></script>
+  <script src="data/regional-rivers.js?v=20261012-rivers1"></script>
   <script src="data/borders.js?v=20260920-28"></script>
   <script src="data/relief-tiles.js?v=20260920-28"></script>
   <script src="data/transport-lines.js?v=20260920-28"></script>
-  <script src="data/regions.js?v=20260920-28"></script>
-  <script src="data/geo-data.js?v=20260927-4"></script>
-  <script src="data/questions.js?v=20260927-4"></script>
+  <script src="data/regions.js?v=20261011-county2"></script>
+  <script src="data/geo-data.js?v=20261012-rivers1"></script>
+  <script src="data/questions.js?v=20261012-transport2"></script>
   <script src="data/principles.js?v=20260927-4"></script>
   <script src="data/heritage-data.js?v=20261006-1"></script>
   <script src="heritage.js?v=20260927-4"></script>
   <script src="data/travel-data.js?v=20260920-32"></script>
-  <script src="travel.js?v=20260920-32"></script>
-  <script src="data/history-data.js?v=20260927-7"></script>
+  <script src="travel.js?v=20261012-nocredit"></script>
+  <script src="data/history-data.js?v=20261011-boundary-2"></script>
   <script src="data/history-bronze.js?v=20260921-1"></script>
-  <script src="data/history-territories.js?v=20260927-7"></script>
+  <script src="data/history-school.js?v=20261012-imjin1"></script>
+  <script src="data/history-additions.js?v=20261011-1"></script>
+  <script src="data/history-atlas.js?v=20261012-assessment6"></script>
+  <script src="data/history-questions.js?v=20261011-map-questions"></script>
+  <script src="data/history-questions-modern.js?v=20261011-atlas4"></script>
+  <script src="data/history-reading-questions.js?v=20261011-completion1"></script>
+  <script src="data/history-map-questions.js?v=20261012-quality1"></script>
+  <script src="data/history-local-maps.js?v=20261012-assessment6"></script>
+  <script src="history-local-map.js?v=20261012-assessment6"></script>
+  <script src="history-practice.js?v=20261012-assessment6"></script>
+  <script src="data/history-territories.js?v=20261012-ming-1"></script>
   <script src="data/history-war.js?v=20260921-fill-2"></script>
-  <script src="history-order.js?v=20260921-war-1"></script>
-  <script src="history-bronze.js?v=20260921-1"></script>
-  <script src="history.js?v=20260927-7"></script>
-  <script src="climate-graph.js?v=20260920-31"></script>
-  <script src="data/study-lessons.js?v=20260927-6"></script>
-  <script src="study-visuals.js?v=20260927-6"></script>
-  <script src="study.js?v=20260927-1"></script>
+  <script src="data/history-imjin.js?v=20261012-imjin1"></script>
+  <script src="history-order.js?v=20261011-retry1"></script>
+  <script src="history-bronze.js?v=20261011-retry1"></script>
+  <script src="data/history-point-lessons.js?v=20261012-imjin1"></script>
+  <script src="history-point.js?v=20261011-point1"></script>
+  <script src="history.js?v=20261012-remaster8"></script>
+  <script src="climate-graph.js?v=20261012-quality1"></script>
+  <script src="data/study-lessons.js?v=20261012-transport2"></script>
+  <script src="data/exam-lessons.js?v=20261012-transport2"></script>
+  <script src="data/exam-questions.js?v=20261012-transport2"></script>
+  <script src="exam-figures.js?v=20261012-quality1"></script>
+  <script src="study-visuals.js?v=20261012-transport2"></script>
+  <script src="study.js?v=20261012-remaster8"></script>
   <script src="data/flow-data.js?v=20260920-1"></script>
   <script src="data/scene-climate.js?v=20260920-1"></script>
   <script src="flow-layer.js?v=20260920-1"></script>
-  <script src="scene-controller.js?v=20260927-4"></script>
+  <script src="scene-controller.js?v=20261012-remaster8"></script>
   <script src="/assets/site-storage.js?v=20261006-1"></script>
-  <script src="app.js?v=20261006-server-store"></script>
+  <script src="app.js?v=20261012-rivers1"></script>
 </body>
 </html>

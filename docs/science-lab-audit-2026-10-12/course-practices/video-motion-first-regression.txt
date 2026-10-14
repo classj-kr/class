@@ -1,0 +1,21 @@
+✔ time, metric calibration, rotated axes, interval velocities and energy are consistent (1.2172ms)
+✔ chromium: touch tracking, real video decoding, graphs and retained diagnostic responses (14949.068ms)
+✖ webkit: touch tracking, real video decoding, graphs and retained diagnostic responses (45157.2962ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 60170.5697
+
+✖ failing tests:
+
+test at tests\science-video-motion.test.cjs:13:43
+✖ webkit: touch tracking, real video decoding, graphs and retained diagnostic responses (45157.2962ms)
+  page.waitForFunction: Timeout 30000ms exceeded.
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-video-motion.test.cjs:25:130) {
+    name: 'TimeoutError',
+    log: []
+  }

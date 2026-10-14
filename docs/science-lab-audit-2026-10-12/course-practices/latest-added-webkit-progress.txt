@@ -1,0 +1,5 @@
+webkit: opening polarized-thin-sections
+webkit: polarized-thin-sections / 50 screen states
+webkit: opening crust-thickness
+webkit: crust-thickness / 95 screen states
+{"engine":"webkit","deviceProfile":"ipad","routes":2,"scenarios":95,"flagged":0,"fontFlags":0,"canvasFlags":0,"liveWebFonts":true,"loadedFontFamilies":["Noto Serif KR"],"errors":[]}

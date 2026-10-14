@@ -75,7 +75,7 @@ const CHAPTERS = [
                 "art": "03-more-dogs.webp",
                 "emoji": "💰",
                 "left": [
-                    "두 번째 방에도 개가 앉아 있었습니다. 이번에는 덩치가 첫 번째 개보다 훨씬 컸지요. 병사는 이번에도 앞치마를 폈습니다.",
+                    "두 번째 방에도 개가 앉아 있었습니다. 이번에는 눈이 물레방아만 했지요. 병사는 이번에도 앞치마를 폈습니다.",
                     "개는 순순히 그 위에 올라앉았지요. 궤짝을 여니 은화가 가득했습니다.",
                     "\"동전은 이제 필요 없지.\""
                 ],
@@ -89,7 +89,7 @@ const CHAPTERS = [
                 "art": "03-more-dogs-2.webp",
                 "emoji": "💰",
                 "left": [
-                    "세 번째 방의 개는 어마어마했지요. 셋 가운데 덩치가 가장 컸습니다.",
+                    "세 번째 방의 개는 어마어마했지요. 눈이 탑만큼이나 컸습니다.",
                     "숨을 내쉴 때마다 방 안이 후끈했지요. 발톱이 돌바닥을 드르륵 긁었습니다.",
                     "병사는 다리가 후들거렸습니다. 그래도 앞치마를 펴서 개를 올려놓았지요."
                 ],
@@ -115,10 +115,10 @@ const CHAPTERS = [
                     "노파의 얼굴이 굳어졌습니다."
                 ],
                 "right": [
-                    "\"그건 자네가 알 바 아니네. 어서 이리 내놓기나 하게.\"",
+                    "\"그건 자네가 알 바 아니네. 어서 내놓게.\"",
                     "병사는 통을 뒤로 감췄지요. 노파의 손이 부들부들 떨렸습니다. \"내놓게, 어서!\"",
-                    "병사도 버텼습니다. \"말해 주지 않으면 드릴 수 없습니다.\"",
-                    "두 사람은 한참을 실랑이했습니다."
+                    "병사도 버텼습니다. \"말해 주지 않으면 드릴 수 없습니다. 나쁜 데 쓰려는지 어떻게 압니까.\"",
+                    "둘은 한참 실랑이했습니다."
                 ]
             },
             {
@@ -204,7 +204,7 @@ const CHAPTERS = [
                 "right": [
                     "\"자네를 얼마나 찾았는지 아나! 자네가 그렇게 훌륭한 줄 알았지!\"",
                     "병사는 그 말을 듣고 속으로 웃었지요.",
-                    "그러던 어느 날 소문 하나를 들었습니다. 이 나라 공주가 구리 성에 갇혀 살아서 아무도 얼굴을 본 적이 없다는 이야기였지요."
+                    "어느 날 소문을 들었습니다. 공주가 보통 병사와 결혼할 거라는 점쟁이 말 때문에 구리 성에 갇혀 살아서, 아무도 얼굴을 본 적이 없다는 이야기였지요."
                 ]
             }
         ]
@@ -223,7 +223,7 @@ const CHAPTERS = [
                     "개가 창문을 훌쩍 뛰어넘었지요. 발소리가 지붕 위에서 우당탕 났습니다."
                 ],
                 "right": [
-                    "개는 지붕을 넘어 성으로 달려갔습니다. 그러고는 잠든 공주를 등에 태우고 돌아왔지요. 공주는 눈을 비비며 깨어나 병사와 밤새 이야기를 나누었습니다.",
+                    "개는 지붕을 넘어 성으로 달려갔습니다. 그러고는 잠든 공주를 등에 태우고 돌아왔지요. 공주는 잠이 덜 깬 채로 병사와 이야기를 나누었습니다.",
                     "새벽이 되자 개가 공주를 다시 데려다주었지요. 공주는 잠결에 겪은 일이라 꿈인 줄만 알았습니다."
                 ]
             },
@@ -271,7 +271,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "개 세 마리가 한꺼번에 나타났지요. 어찌나 크고 요란한지 사람들이 나자빠졌습니다.",
-                    "그런데 개들은 병사 곁에서 꼬리만 살랑살랑 흔들었지요. 다들 그만 웃음보를 터뜨렸습니다. 임금님도 껄껄 웃으며 병사를 풀어 주었지요.",
+                    "그런데 개들은 꼬리만 살랑살랑 흔들었지요. 임금님도 껄껄 웃었지요. \"이런 개를 부리는 사람을 벌줄 수야 없지.\" 병사는 풀려났습니다.",
                     "그날 병사는 벌 대신 잔치를 대접받았답니다."
                 ]
             }
@@ -664,7 +664,7 @@ const EN = {
                     emoji: '🪙',
                     left: [
                         "There was a dog in the second room as well,",
-                        "and this one was far bigger than the first.",
+                        "and this one had eyes the size of millwheels.",
                         "The soldier spread the apron again,",
                         "and the dog got quietly onto it.",
                         "He opened the chest and it was full of silver.",
@@ -684,7 +684,7 @@ const EN = {
                     emoji: '🪙',
                     left: [
                         "The dog in the third room was tremendous.",
-                        "He was the biggest of the three.",
+                        "His eyes were the size of towers.",
                         "Every time he breathed out the room went hot,",
                         "and his claws scraped on the stone floor.",
                         "The soldier's legs shook under him.",
@@ -715,10 +715,10 @@ const EN = {
                         "The old woman's face went hard."
                     ],
                     right: [
-                        "\"That is no business of yours. Hand it over and be quick.\"",
+                        "\"That is no business of yours. Hand it over.\"",
                         "The soldier put the box behind his back.",
                         "The old woman's hands began to shake. \"Give it to me, now!\"",
-                        "But the soldier stood firm. \"Not unless you tell me what it's for.\"",
+                        "But the soldier stood firm. \"Not unless you tell me what it's for. How do I know you don't mean to use it for something bad?\"",
                         "The two of them argued a long while."
                     ]
                 },
@@ -816,7 +816,7 @@ const EN = {
                     emoji: '✨',
                     left: [
                         "The soldier tried the box out this way and that.",
-                        "Strike it once, and the first dog came. Twice, and the second. Three times, and the biggest dog of all.",
+                        "Strike it once, and the first dog came. Twice, and the second. Three times, and the dog with eyes like towers.",
                         "The dogs brought him money from the chests in the cave.",
                         "Soon he moved back into a good room and had new clothes made."
                     ],
@@ -825,7 +825,7 @@ const EN = {
                         "\"We looked everywhere for you! We knew you were a fine fellow!\"",
                         "The soldier laughed to himself.",
                         "Then one day he heard some news.",
-                        "The princess lived shut up in a copper castle. No one had seen her face."
+                        "A fortune-teller had said the princess would marry a common soldier, so she lived shut up in a copper castle. No one had seen her face."
                     ]
                 }
             ]
@@ -847,7 +847,7 @@ const EN = {
                     right: [
                         "The dog ran over the roofs to the castle",
                         "and came back with the sleeping princess on his back.",
-                        "She woke up, rubbing her eyes, and talked with the soldier all night.",
+                        "Still half asleep, she talked with the soldier for a while.",
                         "At dawn the dog carried her back again.",
                         "She was half asleep, so she believed she had dreamed it."
                     ]
@@ -905,7 +905,7 @@ const EN = {
                     right: [
                         "All three dogs appeared at once, and people fell over backwards.",
                         "But the dogs just wagged their tails by the soldier.",
-                        "Everyone burst out laughing. The king laughed and set him free.",
+                        "Everyone burst out laughing. The king laughed too. \"I cannot punish a man who commands dogs like these.\" And he set the soldier free.",
                         "He got a feast instead of a punishment."
                     ]
                 }
@@ -1014,7 +1014,7 @@ const EN = {
             { word: 'bulging', meaning: '두둑한', sentence: 'The soldier filled his pockets to bulging.' }
         ],
         '03-more-dogs.webp': [
-            { word: 'far bigger', meaning: '훨씬 큰', sentence: 'This one was far bigger than the first.' },
+            { word: 'millwheel', meaning: '물레방아 바퀴', sentence: 'Eyes the size of millwheels.' },
             { word: 'silver', meaning: '은화', sentence: 'The chest was full of silver.' },
             { word: 'have no use for', meaning: '필요 없다', sentence: 'I have no use for copper now.' },
             { word: 'tip out', meaning: '쏟아 버리다', sentence: 'He tipped out every copper coin.' },
@@ -1031,7 +1031,7 @@ const EN = {
             { word: 'dazzle', meaning: '눈부시게 하다', sentence: 'The daylight dazzled him.' },
             { word: 'I take it', meaning: '~이겠지', sentence: 'You have the tinderbox, I take it?' },
             { word: 'no business of yours', meaning: '알 바 아닌', sentence: 'That is no business of yours.' },
-            { word: 'hand over', meaning: '내놓다', sentence: 'Hand it over and be quick.' },
+            { word: 'hand over', meaning: '내놓다', sentence: 'Hand it over.' },
             { word: 'argue', meaning: '실랑이하다', sentence: 'The two of them argued a long while.' }
         ],
         '04-quarrel-2.webp': [
@@ -1124,7 +1124,8 @@ const WORDS_KO = {
         { w: "텅", k: "속에 아무것도 없이.", s: "이 나무 속은 텅 비어 있다네." },
         { w: "밧줄", k: "굵고 튼튼한 줄.", s: "밧줄을 타고 내려가면 방이 셋 있지." },
         { w: "히죽", k: "슬쩍 소리 없이 웃는 모양.", s: "노파가 히죽 웃었습니다." },
-        { w: "귀가 솔깃해지다", k: "들은 말에 마음이 끌리다.", s: "병사는 귀가 솔깃해졌습니다." }
+        { w: "귀가 솔깃해지다", k: "들은 말에 마음이 끌리다.", s: "병사는 귀가 솔깃해졌습니다." },
+        { w: "궤짝", k: "물건을 넣어 두려고 나무로 짠 크고 네모난 상자. 위에 여닫는 뚜껑이 달려 있다.", s: "방마다 돈이 궤짝으로 가득하다네." }
     ],
     "02-first-dog.webp": [
         { w: "매다", k: "끈을 묶어 이어 붙이다.", s: "노파는 병사의 허리에 밧줄을 매어 주었습니다." },
@@ -1139,7 +1140,7 @@ const WORDS_KO = {
         { w: "어이쿠", k: "놀랐을 때 내는 소리.", s: "\"어이쿠, 정말이잖아.\"" }
     ],
     "03-more-dogs.webp": [
-        { w: "덩치", k: "몸의 크기.", s: "이번에는 덩치가 첫 번째 개보다 훨씬 컸지요." },
+        { w: "물레방아", k: "쏟아지는 물의 힘으로 바퀴를 돌려 방아를 찧는 기구.", s: "이번에는 눈이 물레방아만 했지요." },
         { w: "순순히", k: "고분고분 말을 잘 듣게.", s: "개는 순순히 그 위에 올라앉았지요." },
         { w: "몽땅", k: "하나도 남기지 않고 모두.", s: "병사는 동전을 몽땅 쏟아 버렸습니다." },
         { w: "묵직하다", k: "들기에 꽤 무겁다.", s: "주머니가 묵직해졌습니다." }
@@ -1160,7 +1161,8 @@ const WORDS_KO = {
         { w: "입을 열다", k: "말을 하기 시작하다.", s: "노파는 끝내 입을 열지 않았습니다." },
         { w: "이만", k: "이 정도로 하고.", s: "\"그럼 저는 이만 가 보겠습니다.\"" },
         { w: "해가 기울다", k: "해가 서쪽으로 넘어가다.", s: "해가 기울 무렵 큰 마을에 닿았습니다." },
-        { w: "북적이다", k: "사람이 많이 모여 붐비다.", s: "거리에는 사람이 북적였지요." }
+        { w: "북적이다", k: "사람이 많이 모여 붐비다.", s: "거리에는 사람이 북적였지요." },
+        { w: "여관", k: "먼 길 가는 나그네가 돈을 내고 밥을 먹고 잠을 자던 집. 오늘날의 호텔과 비슷하다.", s: "병사는 제일 좋은 여관 앞에 섰습니다." }
     ],
     "05-town.webp": [
         { w: "순식간에", k: "아주 짧은 사이에.", s: "친구가 순식간에 늘었습니다." },
@@ -1175,18 +1177,20 @@ const WORDS_KO = {
     "06-summon.webp": [
         { w: "성큼", k: "발을 크게 내디디는 모양.", s: "커다란 개 한 마리가 성큼 들어왔지요." },
         { w: "상을 차리다", k: "밥과 반찬을 차려 놓다.", s: "개는 눈 깜짝할 사이에 상을 차려 왔지요." },
-        { w: "그제야", k: "그때에 이르러 비로소.", s: "병사는 그제야 통의 비밀을 알았습니다." }
+        { w: "그제야", k: "그때에 이르러 비로소.", s: "병사는 그제야 통의 비밀을 알았습니다." },
+        { w: "부싯돌", k: "쇳조각에 세게 부딪치면 불꽃이 튀는 단단한 돌. 성냥이 없던 옛날에 불을 붙일 때 썼다.", s: "병사는 부싯돌을 탁 쳤습니다." }
     ],
     "06-summon-2.webp": [
         { w: "탑", k: "높다랗게 쌓아 올린 건물.", s: "세 번 치면 눈이 탑만 한 셋째 개가 왔습니다." },
         { w: "나르다", k: "물건을 옮겨 가져다주다.", s: "개들은 굴 속 궤짝에서 돈을 날라다 주었지요." },
         { w: "굴다", k: "그렇게 행동하다.", s: "다들 어제 만난 사이처럼 굴었지요." },
-        { w: "소문", k: "사람들 사이에 퍼져 도는 말.", s: "그러던 어느 날 소문 하나를 들었습니다." }
+        { w: "소문", k: "사람들 사이에 퍼져 도는 말.", s: "어느 날 소문을 들었습니다." },
+        { w: "점쟁이", k: "앞으로 일어날 일을 미리 알아맞힌다며 점을 쳐 주는 사람.", s: "공주가 보통 병사와 결혼할 거라는 점쟁이 말 때문에 구리 성에 갇혀 살아서, 아무도 얼굴을 본 적이 없다는 이야기였지요." }
     ],
     "07-flour.webp": [
         { w: "모시다", k: "윗사람을 받들어 데려가다.", s: "\"공주님을 잠깐만 모셔다 주게.\"" },
         { w: "훌쩍", k: "가볍게 뛰어넘는 모양.", s: "개가 창문을 훌쩍 뛰어넘었지요." },
-        { w: "밤새", k: "밤이 새도록 내내.", s: "공주는 눈을 비비며 깨어나 병사와 밤새 이야기를 나누었습니다." },
+        { w: "우당탕", k: "무엇이 세게 부딪히며 나는 큰 소리.", s: "발소리가 지붕 위에서 우당탕 났습니다." },
         { w: "잠결", k: "잠을 자면서 어렴풋이 아는 사이.", s: "공주는 잠결에 겪은 일이라 꿈인 줄만 알았습니다." }
     ],
     "07-flour-2.webp": [
@@ -1203,7 +1207,7 @@ const WORDS_KO = {
     ],
     "08-ending-2.webp": [
         { w: "요란하다", k: "소리가 크고 시끄럽다.", s: "어찌나 크고 요란한지 사람들이 나자빠졌습니다." },
-        { w: "껄껄", k: "크게 소리 내어 웃는 모양.", s: "임금님도 껄껄 웃으며 병사를 풀어 주었지요." },
+        { w: "껄껄", k: "크게 소리 내어 웃는 모양.", s: "임금님도 껄껄 웃었지요." },
         { w: "대접받다", k: "잘 차려 준 것을 받다.", s: "그날 병사는 벌 대신 잔치를 대접받았답니다." }
     ],
     "end.webp": [

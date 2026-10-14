@@ -1,183 +1,49 @@
 <!doctype html>
-<html lang="ko">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f1f5f9">
-    <title>과학 실험실</title>
-    <meta name="description" content="판 경계의 종류에 따라 판이 어떻게 움직이고 지진이 어느 깊이에서 일어나는지 확인하는 중학교 과학 모의실험">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="plate-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
-</head>
-<body>
-    <main>
-        <header class="page-header">
-            <div class="title-row">
-                <a href="../">← 과학 실험실</a>
-                <h1>지진과 판의 이동</h1>
-            </div>
-            <div class="grade-tags"><span>중학교 2학년</span><span>과학</span></div>
-        </header>
-
-        <ol class="method-steps" aria-label="실험 방법">
-            <li>판 경계의 종류를 고릅니다.</li>
-            <li>판이 움직이는 빠르기를 정합니다.</li>
-            <li>시간을 보내며 판이 얼마나 움직이는지 봅니다.</li>
-            <li>지진이 어느 깊이에서 일어나는지 확인합니다.</li>
-        </ol>
-
-        <div class="experiment-layout">
-            <section class="panel control-panel" aria-labelledby="control-title">
-                <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">판은 1년에 몇 cm씩, 아주 오랫동안 움직입니다</p>
-
-                <fieldset class="pick-field">
-                    <legend>판 경계의 종류</legend>
-                    <div class="pick-buttons">
-                        <button type="button" data-kind="diverge">발산형 경계<small>해령 — 서로 멀어짐</small></button>
-                        <button type="button" data-kind="converge">수렴형 경계<small>해구 — 서로 가까워짐</small></button>
-                        <button type="button" data-kind="transform">보존형 경계<small>변환 단층 — 어긋남</small></button>
-                        <button type="button" data-kind="inside">판의 내부<small>경계가 아닌 곳</small></button>
-                    </div>
-                </fieldset>
-
-                <div class="range-heading">
-                    <label for="speedRange">판의 이동 속도</label>
-                    <output id="speedOutput" for="speedRange">5 cm/년</output>
-                </div>
-                <input id="speedRange" type="range" min="1" max="10" step="1" value="5">
-                <div class="range-scale" aria-hidden="true"><span>1</span><span>5</span><span>10</span></div>
-
-                <div class="range-heading amount-heading">
-                    <label for="timeRange">지난 시간</label>
-                    <output id="timeOutput" for="timeRange">0 만년</output>
-                </div>
-                <input id="timeRange" type="range" min="0" max="1000" step="10" value="0">
-                <div class="range-scale" aria-hidden="true"><span>0</span><span>500만년</span><span>1000만년</span></div>
-
-                <fieldset class="prediction-field">
-                    <legend>이곳의 지진은 어떨까요?</legend>
-                    <div class="prediction-buttons three">
-                        <button type="button" data-prediction="shallow">얕은 지진만</button>
-                        <button type="button" data-prediction="deep">깊은 지진까지</button>
-                        <button type="button" data-prediction="none">지진이 거의 없다</button>
-                    </div>
-                </fieldset>
-
-                <div class="run-row">
-                    <button class="run-button" id="checkBtn" type="button">시간 보내기</button>
-                    <button class="reset-button" id="resetBtn" type="button">처음으로</button>
-                </div>
-
-                <section class="result-box" aria-labelledby="result-title" aria-live="polite">
-                    <h3 id="result-title">관찰 결과</h3>
-                    <p id="resultEmpty">경계를 고르고 시간을 보내 보세요.</p>
-                    <div id="resultContent" hidden>
-                        <div class="result-numbers">
-                            <article><span>움직인 거리</span><strong id="valueA">-</strong></article>
-                            <article><span>가장 깊은 지진</span><strong id="valueB">-</strong></article>
-                        </div>
-                        <p class="prediction-result" id="predictionResult"></p>
-                        <p class="explanation" id="elementaryExplanation"></p>
-                    </div>
-                </section>
-            </section>
-
-            <section class="panel plate-stage" aria-label="관찰 화면">
-                <div class="stage-heading"><h2>관찰</h2><span id="stageBadge">-</span></div>
-                <p class="stage-verdict" id="stageVerdict"></p>
-
-                <div class="stage-views">
-                    <svg class="main-svg" viewBox="0 0 460 214" aria-hidden="true">
-                        <defs><clipPath id="sectionClip"><rect x="30" y="26" width="400" height="166"/></clipPath></defs>
-                        <g id="mainGroup"></g>
-                    </svg>
-                    <svg class="graph-svg" viewBox="0 0 460 196" aria-hidden="true">
-                        <g id="graphGroup"></g>
-                    </svg>
-                </div>
-
-                <div class="stage-readout" id="stageReadout"></div>
-                <p class="stage-note" id="stageNote"></p>
-                <p class="stage-caption" id="stageCaption">지진이 일어난 곳에 점을 찍었습니다. 깊이가 어떻게 다른지 보세요.</p>
-                <div class="data-note" id="dataNote"></div>
-            </section>
-        </div>
-
-        <section class="panel meaning-panel">
-            <h2>실험 결과의 의미</h2>
-            <div class="meaning-body">
-                <p><strong>판 경계</strong> 지진과 화산은 판의 경계에 몰려 있습니다. 판 안쪽에서는 지진이 거의 일어나지 않습니다.</p>
-                <p><strong>수렴형 경계</strong> 한 판이 다른 판 아래로 비스듬히 들어가기 때문에, 들어간 판을 따라 깊은 곳에서도 지진이 일어납니다.</p>
-                <p><strong>발산형·보존형 경계</strong> 판이 서로 멀어지거나 어긋나기만 하므로 얕은 곳에서만 지진이 일어납니다.</p>
-            </div>
-        </section>
-
-        <details class="quiz-section" aria-labelledby="quiz-title">
-            <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
-            <div class="quiz-grid">
-                <article class="quiz-card" data-answer="c">
-                    <h3>깊은 곳에서도 지진이 일어나는 경계는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 발산형 경계</label>
-                        <label><input type="radio" name="q1" value="b"> 보존형 경계</label>
-                        <label><input type="radio" name="q1" value="c"> 수렴형 경계</label>
-                        <label><input type="radio" name="q1" value="d"> 판의 내부</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>수렴형 경계에서는 한 판이 다른 판 아래로 비스듬히 들어갑니다. 들어간 판을 따라 깊은 곳까지 지진이 일어납니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="b">
-                    <h3>해령에서 새로 만들어진 바다 밑바닥은 멀어질수록?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 나이가 어려진다</label>
-                        <label><input type="radio" name="q2" value="b"> 나이가 많아진다</label>
-                        <label><input type="radio" name="q2" value="c"> 나이가 같다</label>
-                        <label><input type="radio" name="q2" value="d"> 나이를 알 수 없다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>해령에서 새 지각이 만들어져 양옆으로 밀려나므로, 멀리 있을수록 먼저 만들어진 오래된 지각입니다. 해령 양쪽이 좌우 대칭인 것도 이 때문입니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="c">
-<h3>세계의 지진과 화산 분포를 판 경계와 비교한 설명으로 알맞은 것은?</h3>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>중2 화산·지진 분포와 판의 경계</title><meta name="description" content="2022 교육과정 · 화산·지진 분포와 판의 경계의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="map.css?v=42c697c4d0bf"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=중2">← 중2 과학 실험</a><h1>화산·지진 분포와 판의 경계</h1><div class="grade-tags"><span>중2</span><span>과학</span></div></header><section id="tdLab" class="td-lab"><h2>세 자료를 겹쳐 분포 비교하기</h2><p>지진, 화산, 판의 경계를 하나씩 켜고 겹치는 곳과 다른 곳을 찾아보세요.</p><p id="tdLoading" role="status">지도 자료를 불러오는 중입니다.</p><button id="tdRetry" hidden>다시 불러오기</button><div id="tdReady" hidden><div class="td-layers" role="group" aria-label="지도에 표시할 자료"><button data-td-layer="earthquakes" aria-pressed="true"><i class="td-key td-quake"></i>지진</button><button data-td-layer="volcanoes" aria-pressed="false"><i class="td-key td-volcano"></i>화산 위치</button><button data-td-layer="boundaries" aria-pressed="false"><i class="td-key td-boundary"></i>판의 경계</button></div><div class="td-filters"><label>지진 시작 연도<select id="tdStart"></select></label><label>지진 끝 연도<select id="tdEnd"></select></label><label>최소 규모<select id="tdMagnitude"><option value="6">6.0</option><option value="6.5">6.5</option><option value="7">7.0</option><option value="7.5">7.5</option><option value="8">8.0</option></select></label></div><div class="td-regions" role="group" aria-label="살펴볼 지역"><button data-td-region="world" aria-pressed="true">세계</button><button data-td-region="japan" aria-pressed="false">한반도·일본</button><button data-td-region="indonesia" aria-pressed="false">인도네시아</button><button data-td-region="andes" aria-pressed="false">안데스</button><button data-td-region="atlantic" aria-pressed="false">대서양</button><button data-td-region="hawaii" aria-pressed="false">하와이</button></div><div class="td-map-frame"><canvas id="tdMap" tabindex="0" role="img" aria-label="화산·지진 위치와 판의 경계 지도. 방향키로 이동하고 아래 목록에서 지점을 선택할 수 있습니다."></canvas><div class="td-map-tools"><button id="tdZoomIn" aria-label="지도 확대">＋</button><button id="tdZoomOut" aria-label="지도 축소">−</button><button id="tdWorld">전체</button></div></div><p class="td-note">지도를 끌거나 방향키로 이동할 수 있습니다. 원은 지진, 삼각형은 화산 위치, 선은 판의 경계입니다.</p><div class="td-time"><button id="tdPlay" aria-pressed="false">지진 연도 재생</button><label for="tdYear">표시 연도</label><input id="tdYear" type="range" min="1980" max="2025" value="2025" step="1"><output id="tdYearValue">2025년까지</output></div><p class="td-note">지진은 1980~2025년의 규모 6.0 이상 자료입니다. 화산 기호는 분화 시기와 관계없는 위치이며, 지진 연도를 바꿔도 유지됩니다.</p><p id="tdCounts" class="td-counts" aria-live="polite"></p><section class="td-selection"><h3>지점 살펴보기</h3><p id="tdDetail" aria-live="polite">지도에서 기호를 누르거나 아래 목록에서 지점을 선택하세요.</p><div class="td-list-toolbar"><label>목록<select id="tdListKind"><option value="earthquakes">지진</option><option value="volcanoes">화산 위치</option></select></label><span>현재 지도 안의 지점</span><button id="tdPrev">이전</button><span id="tdPage"></span><button id="tdNext">다음</button></div><div id="tdList" class="td-list"></div></section><button id="tdReset">처음 조건으로</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>지진·화산 위치를 판 경계와 겹쳤다. 태평양 가장자리와 대서양 중앙에 모인 띠를 함께 설명하는 비교는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q3" value="a"> 모든 판 경계에서 반드시 화산이 생긴다</label>
-<label><input type="radio" name="q3" value="b"> 판 내부에서는 어떤 지진도 생기지 않는다</label>
-<label><input type="radio" name="q3" value="c"> 많은 지진과 화산이 판 경계 부근에 분포하지만 경계 종류에 따라 양상이 다르다</label>
-<label><input type="radio" name="q3" value="d"> 판 경계와 전혀 관련이 없다</label>
+<label><input type="radio" name="q1" value="a"> 지진·화산의 띠 ↔ 대륙 해안선</label>
+<label><input type="radio" name="q1" value="b"> 지진·화산의 띠 ↔ 판의 경계선</label>
+<label><input type="radio" name="q1" value="c"> 지진·화산의 띠 ↔ 위도 0° 선</label>
+<label><input type="radio" name="q1" value="d"> 지진·화산의 띠 ↔ 국가 경계선</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>많은 지진과 화산이 판 경계 부근에 분포합니다. 보존형 경계에서는 지진이 활발하지만 화산 활동은 일반적으로 나타나지 않는 등 경계 유형에 따라 차이가 있습니다.</p>
+<p class="answer-explanation" hidden>바다 가운데에도 판의 경계가 있습니다. 분포가 해안선이나 국가 경계와 항상 일치하는 것이 아니며, 지진대·화산대는 판의 경계와 대체로 일치합니다.</p>
 </article>
-
-                <article class="quiz-card" data-answer="a">
-                    <h3>1년에 5 cm씩 움직이는 판은 100만 년 동안 얼마나 갈까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 50 km</label>
-                        <label><input type="radio" name="q4" value="b"> 5 km</label>
-                        <label><input type="radio" name="q4" value="c"> 500 km</label>
-                        <label><input type="radio" name="q4" value="d"> 5 m</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>5 cm × 100만 = 500만 cm입니다. 100 cm가 1 m이고 1000 m가 1 km이므로 5만 m, 곧 50 km입니다.</p>
-                </article>
-            </div>
-        </details>
-    </main>
-    <script src="app.js?v=2fb95feed750"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
-</body>
-</html>
+<article class="quiz-card" data-answer="d">
+<h3>판 경계 부근에 지진이 많은 곳 A와, 판 내부에 화산이 있는 곳 B를 찾았다. 두 관찰을 함께 반영한 해석은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> A는 판 경계와 관련 / B는 지도 오류</label>
+<label><input type="radio" name="q2" value="b"> A는 판 경계와 무관 / B는 내부 화산</label>
+<label><input type="radio" name="q2" value="c"> A는 판 경계와 무관 / B는 지도 오류</label>
+<label><input type="radio" name="q2" value="d"> A는 판 경계와 관련 / B는 내부 화산</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>지진·화산은 판의 경계에 많이 분포하지만 판 내부에서도 발생할 수 있습니다. 판 내부의 화산을 찾았다고 전체적인 분포 관계가 없어지거나 그 점이 오류가 되는 것은 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>규모 6.0 이상만 표시한 지도에서 어떤 지역에 지진 기호가 없다. ㄱ. 그 지역에는 작은 지진도 없었다. ㄴ. 더 작은 규모를 확인하려면 다른 규모 범위의 자료가 필요하다. 옳은 판단은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> ㄱ 맞음 · ㄴ 틀림</label>
+<label><input type="radio" name="q3" value="b"> ㄱ 맞음 · ㄴ 맞음</label>
+<label><input type="radio" name="q3" value="c"> ㄱ 틀림 · ㄴ 맞음</label>
+<label><input type="radio" name="q3" value="d"> ㄱ 틀림 · ㄴ 틀림</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>규모 조건으로 제외된 지진은 이 지도에서 확인할 수 없습니다. 표시가 없다는 이유로 작은 지진이나 앞으로의 지진 가능성까지 없다고 결론 내릴 수는 없습니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>같은 지역에서 1980~2025년 규모 6.0 이상 지진을 보다가 2010~2025년 규모 7.0 이상으로 바꾸니 점이 줄었다. 감소 원인을 구별하려면 어떤 비교가 먼저 필요한가?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 지역·규모 고정 → 기간만 변경</label>
+<label><input type="radio" name="q4" value="b"> 기간·규모 변경 → 지역도 변경</label>
+<label><input type="radio" name="q4" value="c"> 지역·기간 변경 → 규모도 변경</label>
+<label><input type="radio" name="q4" value="d"> 기간·규모 고정 → 지역만 변경</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>기간과 최소 규모를 동시에 바꾸면 어느 조건 때문에 점이 줄었는지 분리할 수 없습니다. 같은 지역·규모에서 기간만 바꾸고, 다시 기간을 고정하여 규모 조건만 비교합니다.</p>
+</article></details></main><script src="model.js?v=5c8c320f550e"></script><script src="app.js?v=292150742143"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

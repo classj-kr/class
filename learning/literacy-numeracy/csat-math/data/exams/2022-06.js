@@ -23,7 +23,7 @@
         모든 \(n\)의 값의 합은?`,
       choices: [R`\(30\)`, R`\(35\)`, R`\(40\)`, R`\(45\)`, R`\(50\)`],
       answer: 2,
-      help: R`두 식을 같게 놓고 로그를 한쪽으로 모으면 \(\log_{n}\bigl(x(x+3)\bigr)=1\), 곧 \(x(x+3)=n\)이 된다. 그러니 \(1<x<2\)를 \(x(x+3)\)의 범위로 옮기기만 하면 \(n\)의 범위가 그대로 나온다.`
+      help: R`두 식을 같게 놓고 로그를 한쪽으로 모으면 \(\log_{n}\bigl(x(x+3)\bigr)=1\), 곧 \(x(x+3)=n\)이 된다. 그러니 \(1&lt;x&lt;2\)를 \(x(x+3)\)의 범위로 옮기기만 하면 \(n\)의 범위가 그대로 나온다.`
     },
 {
       id: "2022-06-11", exam: "2022-06", no: 11, score: 4,
@@ -33,12 +33,12 @@
         을 만족시킨다. 실수 전체의 집합에서 정의된 함수 \(g(x)\)가
         다음 조건을 만족시킬 때, \(\displaystyle\int_{-3}^{2}g(x)\,dx\)의 값은?`,
       note: [
-        R`(가) \(g(x)=\begin{cases}-f(x+1)+1 &amp; (-1<x<0)\\ f(x) &amp; (0\le x\le 1)\end{cases}\)`,
+        R`(가) \(g(x)=\begin{cases}-f(x+1)+1 &amp; (-1&lt;x&lt;0)\\ f(x) &amp; (0\le x\le 1)\end{cases}\)`,
         R`(나) 모든 실수 \(x\)에 대하여 \(g(x+2)=g(x)\)이다.`
       ],
       choices: [R`\(\dfrac{5}{2}\)`, R`\(\dfrac{17}{6}\)`, R`\(\dfrac{19}{6}\)`, R`\(\dfrac{7}{2}\)`, R`\(\dfrac{23}{6}\)`],
       answer: 2,
-      help: R`(나)는 주기가 \(2\)라는 뜻이라 \(\int_{-3}^{2}\)를 길이 \(2\)짜리 구간 여럿과 나머지로 쪼갤 수 있다. 그리고 (가)의 \(-1<x<0\)쪽 식은 \(f\)를 뒤집어 옮긴 것이라, 그 구간의 적분이 \(\int_{0}^{1}f\)로 바뀐다.`
+      help: R`(나)는 주기가 \(2\)라는 뜻이라 \(\int_{-3}^{2}\)를 길이 \(2\)짜리 구간 여럿과 나머지로 쪼갤 수 있다. 그리고 (가)의 \(-1&lt;x&lt;0\)쪽 식은 \(f\)를 뒤집어 옮긴 것이라, 그 구간의 적분이 \(\int_{0}^{1}f\)로 바뀐다.`
     },
 {
       id: "2022-06-12", exam: "2022-06", no: 12, score: 4,
@@ -57,7 +57,7 @@
       id: "2022-06-13", exam: "2022-06", no: 13, score: 4,
       units: ["m1-seq"], memo: "제곱수에서만 값이 달라지는 합",
       body: R`실수 전체의 집합에서 정의된 함수 \(f(x)\)가 구간 \((0,\,1]\)에서
-        \[f(x)=\begin{cases}3 &amp; (0<x<1)\\ 1 &amp; (x=1)\end{cases}\]
+        \[f(x)=\begin{cases}3 &amp; (0&lt;x&lt;1)\\ 1 &amp; (x=1)\end{cases}\]
         이고, 모든 실수 \(x\)에 대하여 \(f(x+1)=f(x)\)를 만족시킨다.
         \(\displaystyle\sum_{k=1}^{20}\frac{k\times f\bigl(\sqrt{k}\,\bigr)}{3}\)의 값은?`,
       choices: [R`\(150\)`, R`\(160\)`, R`\(170\)`, R`\(180\)`, R`\(190\)`],
@@ -76,19 +76,19 @@
       ],
       choices: [R`\(6\)`, R`\(7\)`, R`\(8\)`, R`\(9\)`, R`\(10\)`],
       answer: 3,
-      help: R`오른쪽을 \(\bigl|x\bigr|\times\bigl|f(x-p)+q\bigr|\)로 묶으면, \(x>0\)에서는 \(g(x)=\bigl|f(x-p)+q\bigr|\)이지만 \(x<0\)에서는 부호가 뒤집혀 \(g(x)=-\bigl|f(x-p)+q\bigr|\)가 된다. \(g\)가 \(x=0\)에서 연속이려면 좌우 극한이 같아야 하므로 그 자리의 값이 \(0\), 곧 \(f(-p)+q=0\)이어야 한다.`
+      help: R`오른쪽을 \(\bigl|x\bigr|\times\bigl|f(x-p)+q\bigr|\)로 묶으면, \(x>0\)에서는 \(g(x)=\bigl|f(x-p)+q\bigr|\)이지만 \(x&lt;0\)에서는 부호가 뒤집혀 \(g(x)=-\bigl|f(x-p)+q\bigr|\)가 된다. \(g\)가 \(x=0\)에서 연속이려면 좌우 극한이 같아야 하므로 그 자리의 값이 \(0\), 곧 \(f(-p)+q=0\)이어야 한다.`
     },
 {
       id: "2022-06-15", exam: "2022-06", no: 15, score: 4,
       units: ["m1-trig"], memo: "사인과 코사인의 근을 합쳐 양 끝 고르기",
       body: R`\(-1\le t\le 1\)인 실수 \(t\)에 대하여 \(x\)에 대한 방정식
         \[\left(\sin\frac{\pi x}{2}-t\right)\left(\cos\frac{\pi x}{2}-t\right)=0\]
-        의 실근 중에서 집합 \(\{x\mid 0\le x<4\}\)에 속하는 가장 작은 값을
+        의 실근 중에서 집합 \(\{x\mid 0\le x&lt;4\}\)에 속하는 가장 작은 값을
         \(\alpha(t)\), 가장 큰 값을 \(\beta(t)\)라 하자. &lt;보기&gt;에서 옳은 것만을
         있는 대로 고른 것은?`,
       noteTitle: "보 기",
       note: [
-        R`ㄱ. \(-1\le t<0\)인 모든 실수 \(t\)에 대하여 \(\alpha(t)+\beta(t)=5\)이다.`,
+        R`ㄱ. \(-1\le t&lt;0\)인 모든 실수 \(t\)에 대하여 \(\alpha(t)+\beta(t)=5\)이다.`,
         R`ㄴ. \(\bigl\{t\mid\beta(t)-\alpha(t)=\beta(0)-\alpha(0)\bigr\}=\left\{t\ \middle|\ 0\le t\le\dfrac{\sqrt{2}}{2}\right\}\)`,
         R`ㄷ. \(\alpha(t_{1})=\alpha(t_{2})\)인 두 실수 \(t_{1}\), \(t_{2}\)에 대하여 \(t_{2}-t_{1}=\dfrac{1}{2}\)이면 \(t_{1}\times t_{2}=\dfrac{1}{3}\)이다.`
       ],
@@ -161,7 +161,7 @@
 {
       id: "2022-06-calc-28", exam: "2022-06", no: 28, score: 4,
       units: ["calc-diff"], memo: "삼각함수의 극한과 부채꼴",
-      body: R`그림과 같이 길이가 \(2\)인 선분 \(\mathrm{AB}\)를 지름으로 하는 반원의 호 \(\mathrm{AB}\) 위에 점 \(\mathrm{P}\)가 있다. 선분 \(\mathrm{AB}\)의 중점을 \(\mathrm{O}\)라 할 때, 점 \(\mathrm{B}\)를 지나고 선분 \(\mathrm{AB}\)에 수직인 직선이 직선 \(\mathrm{OP}\)와 만나는 점을 \(\mathrm{Q}\)라 하고, \(\angle\mathrm{OQB}\)의 이등분선이 직선 \(\mathrm{AP}\)와 만나는 점을 \(\mathrm{R}\)라 하자. \(\angle\mathrm{OAP}=\theta\)일 때, 삼각형 \(\mathrm{OAP}\)의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{PQR}\)의 넓이를 \(g(\theta)\)라 하자. \[\lim_{\theta\to 0+}\dfrac{g(\theta)}{\theta^{4}\times f(\theta)}\]의 값은? (단, \(0<\theta<\dfrac{\pi}{4}\))`,
+      body: R`그림과 같이 길이가 \(2\)인 선분 \(\mathrm{AB}\)를 지름으로 하는 반원의 호 \(\mathrm{AB}\) 위에 점 \(\mathrm{P}\)가 있다. 선분 \(\mathrm{AB}\)의 중점을 \(\mathrm{O}\)라 할 때, 점 \(\mathrm{B}\)를 지나고 선분 \(\mathrm{AB}\)에 수직인 직선이 직선 \(\mathrm{OP}\)와 만나는 점을 \(\mathrm{Q}\)라 하고, \(\angle\mathrm{OQB}\)의 이등분선이 직선 \(\mathrm{AP}\)와 만나는 점을 \(\mathrm{R}\)라 하자. \(\angle\mathrm{OAP}=\theta\)일 때, 삼각형 \(\mathrm{OAP}\)의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{PQR}\)의 넓이를 \(g(\theta)\)라 하자. \[\lim_{\theta\to 0+}\dfrac{g(\theta)}{\theta^{4}\times f(\theta)}\]의 값은? (단, \(0&lt;\theta&lt;\dfrac{\pi}{4}\))`,
       figure: "2022-06-calc-28.webp",
       choices: [R`\(2\)`, R`\(\dfrac{5}{2}\)`, R`\(3\)`, R`\(\dfrac{7}{2}\)`, R`\(4\)`],
       answer: 1,

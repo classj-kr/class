@@ -21,7 +21,7 @@
       body: R`두 곡선 \(y=x^{3}+x^{2}\), \(y=-x^{2}+k\)와 \(y\)축으로 둘러싸인
         부분의 넓이를 \(A\), 두 곡선 \(y=x^{3}+x^{2}\), \(y=-x^{2}+k\)와
         직선 \(x=2\)로 둘러싸인 부분의 넓이를 \(B\)라 하자.
-        \(A=B\)일 때, 상수 \(k\)의 값은? (단, \(4<k<5\))`,
+        \(A=B\)일 때, 상수 \(k\)의 값은? (단, \(4&lt;k&lt;5\))`,
       figure: "2023-suneung-10.webp",
       choices: [R`\(\dfrac{25}{6}\)`, R`\(\dfrac{13}{3}\)`, R`\(\dfrac{9}{2}\)`, R`\(\dfrac{14}{3}\)`, R`\(\dfrac{29}{6}\)`],
       answer: 4,
@@ -44,7 +44,7 @@
       body: R`실수 전체의 집합에서 연속인 함수 \(f(x)\)가 다음 조건을
         만족시킨다.`,
       note: [
-        R`\(n-1\le x<n\)일 때, \(\bigl|f(x)\bigr|=\bigl|6(x-n+1)(x-n)\bigr|\)이다. (단, \(n\)은 자연수이다.)`
+        R`\(n-1\le x&lt;n\)일 때, \(\bigl|f(x)\bigr|=\bigl|6(x-n+1)(x-n)\bigr|\)이다. (단, \(n\)은 자연수이다.)`
       ],
       bodyAfter: R`열린구간 \((0,\,4)\)에서 정의된 함수
         \[g(x)=\int_{0}^{x}f(t)\,dt-\int_{x}^{4}f(t)\,dt\]
@@ -67,7 +67,7 @@
       id: "2023-suneung-14", exam: "2023-suneung", no: 14, score: 4,
       units: ["m2-limit"], memo: "두 자리의 오른쪽 극한을 곱한 함수",
       body: R`다항함수 \(f(x)\)에 대하여 함수 \(g(x)\)를 다음과 같이 정의한다.
-        \[g(x)=\begin{cases}x &amp; (x<-1 \text{ 또는 } x>1)\\ f(x) &amp; (-1\le x\le 1)\end{cases}\]
+        \[g(x)=\begin{cases}x &amp; (x&lt;-1 \text{ 또는 } x>1)\\ f(x) &amp; (-1\le x\le 1)\end{cases}\]
         함수 \(h(x)=\displaystyle\lim_{t\to 0+}g(x+t)\times\lim_{t\to 2+}g(x+t)\)에 대하여
         &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은?`,
       noteTitle: "보 기",
@@ -112,7 +112,7 @@
       id: "2023-suneung-21", exam: "2023-suneung", no: 21, score: 4,
       units: ["m1-explog"], memo: "절댓값으로 꺾인 지수·로그 그래프",
       body: R`자연수 \(n\)에 대하여 함수 \(f(x)\)를
-        \[f(x)=\begin{cases}\left|3^{\,x+2}-n\right| &amp; (x<0)\\ \left|\log_{2}(x+4)-n\right| &amp; (x\ge 0)\end{cases}\]
+        \[f(x)=\begin{cases}\left|3^{\,x+2}-n\right| &amp; (x&lt;0)\\ \left|\log_{2}(x+4)-n\right| &amp; (x\ge 0)\end{cases}\]
         이라 하자. 실수 \(t\)에 대하여 \(x\)에 대한 방정식 \(f(x)=t\)의 서로
         다른 실근의 개수를 \(g(t)\)라 할 때, 함수 \(g(t)\)의 최댓값이 \(4\)가
         되도록 하는 모든 자연수 \(n\)의 값의 합을 구하시오.`,

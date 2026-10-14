@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="빛 세기와 이산화 탄소 농도, 온도를 바꾸며 잎의 순광합성과 광보상점을 재고, 포도당 한 분자가 만드는 ATP를 결산하는 고등학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=7">
-    <link rel="stylesheet" href="metabolism-visual.css?v=7">
-    <link rel="stylesheet" href="quiz.css?v=6">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="metabolism-visual.css?v=b46bcb25af5c">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -82,10 +82,10 @@
                     </fieldset>
 
                     <fieldset class="pick-field">
-                        <legend>세포질 NADH 셔틀</legend>
+                        <legend>세포질 NADH의 전자 전달</legend>
                         <div class="pick-buttons cols2">
-                            <button type="button" data-shuttle="malate">말산·아스파르트산<small>NADH로 전달</small></button>
-                            <button type="button" data-shuttle="g3p">글리세롤 인산<small>FADH₂로 전달</small></button>
+                            <button type="button" data-shuttle="malate">말산·아스파르트산<small>NADH 경로</small></button>
+                            <button type="button" data-shuttle="g3p">글리세롤 인산<small>FAD 경로</small></button>
                         </div>
                     </fieldset>
                 </div>
@@ -161,49 +161,49 @@
                 </article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>광보상점에서 잎을 보면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 광합성만 일어난다</label>
-                        <label><input type="radio" name="q2" value="b"> 겉보기 기체 출입이 0이다</label>
-                        <label><input type="radio" name="q2" value="c"> 호흡이 멈춘다</label>
-                        <label><input type="radio" name="q2" value="d"> 광합성이 가장 빠르다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>두 과정이 모두 일어나지만 크기가 같아 서로 상쇄됩니다. 밖에서 재면 드나드는 기체가 없는 것처럼 보입니다.</p>
-                </article>
+<h3>한 잎이 빛을 받을 때 광합성으로 소비하는 이산화 탄소와 호흡으로 내놓는 이산화 탄소가 모두 분당 6단위이다. 잎 전체의 순이동은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 0단위 · 두 과정 모두 중단</label>
+<label><input type="radio" name="q2" value="b"> 0단위 · 두 과정 모두 진행</label>
+<label><input type="radio" name="q2" value="c"> 6단위 흡수 · 광합성만 진행</label>
+<label><input type="radio" name="q2" value="d"> 6단위 방출 · 호흡만 진행</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>광합성의 소비량과 호흡의 방출량이 같아 순이동은 6−6=0이다. 순이동이 0이라는 관찰이 광합성이나 호흡의 중단을 뜻하지 않는다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>포도당 한 분자를 산소로 호흡하면 ATP가 대략 몇 개 만들어질까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 2개</label>
-                        <label><input type="radio" name="q3" value="b"> 4개</label>
-                        <label><input type="radio" name="q3" value="c"> 12개</label>
-                        <label><input type="radio" name="q3" value="d"> 30~32개</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>기질 수준 인산화로 4개, 전자전달계에서 26~28개가 만들어집니다. 세포질의 NADH를 어느 셔틀로 들여보내느냐에 따라 30개나 32개가 됩니다.</p>
-                </article>
+<h3>포도당 1분자에서 젖산 발효 A와 산소를 이용한 세포 호흡 B의 ATP 순생성량을 비교한다. 대략적인 값은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> A 30~32개 / B 2개</label>
+<label><input type="radio" name="q3" value="b"> A 2개 / B 2개</label>
+<label><input type="radio" name="q3" value="c"> A 4개 / B 4개</label>
+<label><input type="radio" name="q3" value="d"> A 2개 / B 30~32개</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>젖산 발효는 해당 과정의 순생성 2 ATP에 의존합니다. 산소 호흡에서는 전자 전달과 산화적 인산화로 더 많은 ATP를 얻습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>발효가 ATP를 아주 조금밖에 못 만드는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 포도당이 끝까지 분해되지 않아 에너지가 젖산에 남아서</label>
-                        <label><input type="radio" name="q4" value="b"> 해당 과정이 일어나지 않아서</label>
-                        <label><input type="radio" name="q4" value="c"> 포도당을 절반만 써서</label>
-                        <label><input type="radio" name="q4" value="d"> ATP가 곧바로 분해되어서</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>발효에서도 해당 과정은 그대로 일어납니다. 다만 산소가 없어 전자전달계를 돌리지 못하므로 피루브산을 젖산으로 바꿔 NAD⁺를 재생할 뿐이고, 에너지 대부분은 젖산 속에 그대로 남습니다.</p>
-                </article>
+<h3>젖산 발효에서 포도당의 탄소가 젖산에 남았다. 산소 호흡보다 ATP 수율이 낮은 이유와 관련된 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 유기물에 화학 에너지가 더 남음</label>
+<label><input type="radio" name="q4" value="b"> 해당 과정이 시작되지 않음</label>
+<label><input type="radio" name="q4" value="c"> 포도당 탄소의 절반만 반응함</label>
+<label><input type="radio" name="q4" value="d"> 만든 ATP가 모두 즉시 분해됨</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>젖산은 유기물로 상당한 에너지를 갖고 있습니다. 포도당을 CO₂까지 산화하는 경우보다 ATP로 회수하는 에너지가 적습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=81ae3cc4a482"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="app.js?v=5c578b374255"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

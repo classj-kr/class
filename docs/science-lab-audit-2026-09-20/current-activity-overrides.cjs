@@ -17,7 +17,7 @@ module.exports=`
 6과07#1|heat-transfer|모의활동|처음 온도가 다른 두 물체를 접촉시켜 온도 변화를 비교한다. 가상 측정값이다.
 6과07#2|heat-transfer|모의활동|전도·물의 대류·빛에 의한 복사·단열 비교를 제공한다.
 6과09#1|acid-base|모의활동|지시약 색으로 산성/염기성을 분류한다. 중성·pH 평가는 제외했다.
-6과09#2|acid-base|부분|혼합에 따른 양배추 지시약 색 변화 모형이다. 실제 묽은 염산/수산화 나트륨의 농도·시약 실험은 별도이다.
+6과09#2|acid-mixing|모의활동|두 지시약·용기, 산/염기 양방향, 물 대조, 넣은 양과 색의 연속 비교, 주입·혼합 애니메이션 및 네 문항의 첫 오답 진단. 동일 농도0.05 mol/L의 HCl/NaOH,25℃·물의 이온곱1e−14를 사용한 강산/강염기 물질량 수지 모형이다. 농도는 교과서 측정값이 아니라 독립적인 앱 조건이며 학생 화면에는 pH/몰농도 계산을 표시하지 않는다. 지시약의 부피·산염기 완충능, 활동도·CO₂흡수·혼합 발열은 생략한다. 양배추 색은 대표 색 범위의 정성 표현이며 추출액 품종·농도별 실제 색이나 색도 측정값이 아니다. 페놀프탈레인 변색 구간8.2~10 부근의 색과 중화 당량점을 구별한다.0.1/0.5 mL 단위는 조작 조건이며 한 방울의 실제 부피라고 표시하지 않는다. 원문 실물 촬영·시약 취급, 추가 달걀 껍데기 반응 실험은 완료한 것으로 세지 않는다. 물 대조는 인과 비교를 위해 별도로 추가했다.
 6과11#1|microscope|모의활동|색소 물에 꽂은 줄기에서 물 이동을 관찰하는 모형을 추가했다.
 6과11#2|microscope|부분|전처리된 잎의 아이오딘 반응 비교 모형을 추가했다. 전처리와 실제 산물 확인 절차 전체는 별도이다.
 6과11#3|microscope|부분|잎을 감싼 봉지의 물방울을 비교한다. 실제 대조군 관찰·기록은 별도이다.
@@ -28,7 +28,7 @@ module.exports=`
 9과09#2|minerals-rocks|부분|암석의 생성 과정·순환 비교를 추가했다. 실물 암석 관찰은 별도이다.
 9과12#1|photosynthesis|부분|환경요인별 기포와 빛을 가린 잎의 녹말 반응을 비교한다. 실제 CO₂ 대조 실험·시약 처리 전체는 별도이다.
 9과14#1|ohms-law|모의활동|전압/저항에 따른 전류와 직렬·병렬을 비교한다. 합성저항 정량 평가는 제거했다.
-9과15#2|stars-universe|부분|우리은하·성운·성단의 특징 모형을 추가했다. 실제 천체 관측 프로그램은 아니다.
+9과15#2|galactic-objects,stars-universe|부분|미래엔 지정 다섯 천체의 실제 관측 사진 검색·확대·비교·분류와 관측 위치·별자리 경계를 구현했다. 다른 판본의 전체 천체 목록 및 실제 야외 관측 완료는 아니다.
 9과20#2|reflex-nerve,senses|부분|중3 의식 반응/반사의 경로와 감각 전달을 비교한다. 실제 자 떨어뜨리기 반응시간 측정은 아니다.
 10통과1-03#4|cell-membrane|모의활동|통합과학의 정성적 확산/삼투. 의료용 용액과 정량 삼투 계산은 제거했다.
 10통과2-01#3|neutralization-common|모의활동|고1 같은 농도·전체 부피의 혼합 비율별 가상 온도와 그래프 신설. 실측 자료와 구별한다.
@@ -65,3 +65,48 @@ module.exports=`
 for(const r of require('./required-gap-review.cjs'))for(const id of r.activities){const entry={id,slugs:[r.slug],status:r.status,note:r.note};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(entry);else module.exports[i]=entry;}
 
 for(const r of require('./digital-inquiry-review.cjs')){const i=module.exports.findIndex(x=>x.id===r.id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+
+for(const app of require('../../scripts/science-restored-experiments.cjs'))for(const id of app.activities){const r={id,slugs:[app.slug],status:'모의활동',note:app.current+' '+app.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+
+// The textbook lets learners select a reaction; no separate science-magic app.
+const circuit=require('../../scripts/science-circuit-course.cjs');
+const weighing=require('../../scripts/science-mole-weighing-course.cjs');
+const rocks=require('../../scripts/science-rock-specimens-course.cjs');
+for(const id of rocks.activities){const r={id,slugs:[rocks.slug],status:'모의활동',note:rocks.current+' '+rocks.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+for(const id of weighing.activities){const r={id,slugs:[weighing.slug],status:'모의활동',note:weighing.current+' '+weighing.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+for(const id of circuit.activities){const r={id,slugs:[circuit.slug],status:'모의활동',note:circuit.current+' '+circuit.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+module.exports.push({id:'10과탐1-02#4',slugs:['neutralization-common'],status:'모의활동',note:'동아 2022 과학탐구실험1 28177f9b69b984c7 PDF 3~4쪽은 산·염기·산화 환원·흡열 발열 반응에서 하나를 선정해 시연한다. 기존 중화 반응에서 혼합 비율·열 이동·온도 비교를 연습한다. 특정 시약 조합을 필수로 지정한 활동이 아니며 시나리오·대본·발표 기능과 실물 시연 완료 판정은 제외한다.'});
+
+const fork=require('../../scripts/science-tuning-fork-course.cjs');for(const id of fork.activities){const r={id,slugs:[fork.slug],status:'모의활동',note:fork.current+' '+fork.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+
+// Three control variables share a curriculum activity; two new procedures do not complete all publisher variants.
+module.exports.push({id:'12화학03#2',slugs:['rate-equilibrium','equilibrium-colour'],status:'부분 구현',note:'농도: 네 시험관의 크로뮴산 평형 비교, 온도: 코발트 용액의 조제·중탕·냉각을 정성 모형으로 추가. 기존 NO₂/N₂O₄의 온도·부피 조작은 이상 기체 평형 모형이다. 압축 직후와 새 평형의 입자 수·상대 농도·색 비교를 추가했다. 실물 측정·다른 출판사 조제 변형까지 완료한 것은 아니다.'});
+
+const strata=require('../../scripts/science-strata-correlation-experiment.cjs');module.exports.push({id:'12지구02#1',slugs:['strata-correlation','rock-age'],status:'모의활동',note:strata.current+' '+strata.boundary});
+
+const video=require('../../scripts/science-video-motion-experiment.cjs');for(const id of video.activities)module.exports.push({id,slugs:[video.slug],status:'직접측정',note:video.current+' '+video.boundary});
+
+const hr=require('../../scripts/science-hr-diagram-experiment.cjs');module.exports.push({id:'12지구03#2',slugs:[hr.slug,'stars'],status:'모의활동',note:hr.current+' '+hr.boundary});
+
+const kepler=require('../../scripts/science-kepler-data-experiment.cjs');module.exports.push({id:'12역학01#3',slugs:[kepler.slug],status:'모의활동',note:kepler.current+' '+kepler.boundary});
+
+const elementOrigin=require('../../scripts/science-element-origin-experiment.cjs');module.exports.push({id:'10통과1-02#2',slugs:[elementOrigin.slug],status:'모의활동',note:elementOrigin.current+' '+elementOrigin.boundary});
+
+const dnaCommon=require('../../scripts/science-structure-experiments.cjs').find(r=>r.slug==='dna-structure');module.exports.push({id:'10통과1-02#5',slugs:[dnaCommon.slug],status:'모의활동',note:dnaCommon.current+' '+dnaCommon.boundary});
+
+const seasonalSky=require('../../scripts/science-seasonal-sky-experiment.cjs');module.exports.push({id:'6과12#2',slugs:[seasonalSky.slug],status:'모의활동',note:seasonalSky.current+' '+seasonalSky.boundary});
+
+const equilibriumData=require('../../scripts/science-equilibrium-data-experiment.cjs');module.exports.push({id:'12화학03#1',slugs:[equilibriumData.slug],status:'모의활동',note:equilibriumData.current+' '+equilibriumData.boundary});
+
+const argo=require('../../scripts/science-argo-experiment.cjs');module.exports.push({id:'12지구01#1',slugs:[argo.slug,'ocean-layers','seawater'],status:'부분',note:argo.current+' '+argo.boundary});
+
+const sst=require('../../scripts/science-sst-experiment.cjs');module.exports.push({id:'12지구01#1',slugs:[argo.slug,sst.slug,'ocean-layers','seawater'],status:'부분',note:argo.current+' '+sst.current+' 여러 해역의 ARGO·원문 특정 위성 합성물·실시간 검색 완료로 확대하지 않는다.'});
+
+const galactic=require('../../scripts/science-galactic-experiment.cjs');module.exports.push({id:'9과15#2',slugs:[galactic.slug,'stars-universe'],status:'부분',note:galactic.current+' '+galactic.boundary});
+const phaseCurves=require('../../scripts/science-phase-curves-experiment.cjs');module.exports.push({id:'9과04#3',slugs:[phaseCurves.slug,'diffusion'],status:'부분',note:phaseCurves.current+' '+phaseCurves.boundary});
+
+module.exports.push({id:'12생과03#2',slugs:['cell-division'],status:'부분',note:'세 출판사의 2022 원문 모형 절차를 대조. 염색체 기원·분체의 동일성을 분열 내내 보존하며 쌍별 극 방향과 한 쌍의 교차 조건을 비교한다. S기 말·각 분열과 세포질 분열 전후의 한 세포 DNA 및 염색체 수를 구별하며 4개 객관식의 첫 오답과 원인 해설을 보존한다. 학습자의 자유 모형 제작·촬영·영상 편집·공유와 실물 표본 관찰의 완료가 아니다.'});
+
+module.exports.push({id:'9과20#2',slugs:['reflex-nerve','senses'],status:'부분',note:'2022 동아 중3의 23~25쪽 힘 센서·근전도 실험과 반응 경로 대조. 같은 다리의 반사/의식적 반응과 동공 반사를 비교하고 감각·운동 신호 차단을 구별한다. 24쪽의 B−A 해석을 객관식에서 평가한다. 실물 센서 부착과 반응 시간 실측·촬영 완료 아님.'});
+
+module.exports.push({id:'9과04#1',slugs:['diffusion'],status:'모의활동',note:'2022 미래엔 116~117쪽의 물속 잉크, 중앙 식초·떨어진 BTB 방울·덮개를 구현한 정성 관찰. 임의 NH3/HCl 5초 전선 계산 제거. 실제 영상 촬영·실측 시간 및 다른 출판사의 초콜릿/팝콘 실험 수행 완료는 아님.'});

@@ -1,0 +1,257 @@
+{
+  "routes": 181,
+  "states": 555,
+  "findings": [
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": null,
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"kind\"][data-value=\"coil\"]",
+        "name": "코일과 자석"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"kind\"][data-value=\"static\"]",
+        "name": "정전기 유도"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"kind\"][data-value=\"rub\"]",
+        "name": "마찰 전기"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"current\"][data-value=\"off\"]",
+        "name": "전류 없음"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"current\"][data-value=\"forward\"]",
+        "name": "방향 1"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"current\"][data-value=\"reverse\"]",
+        "name": "방향 반대"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"strength\"][data-value=\"weak\"]",
+        "name": "약함"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"strength\"][data-value=\"strong\"]",
+        "name": "강함"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"pole\"][data-value=\"N\"]",
+        "name": "N극"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "mode": {
+        "selector": "[data-supplement-choice=\"pole\"][data-value=\"S\"]",
+        "name": "S극"
+      },
+      "duplicates": [],
+      "brokenRefs": [
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        },
+        {
+          "tag": "g",
+          "attribute": "filter",
+          "ref": "compDrop",
+          "reason": "another-svg"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

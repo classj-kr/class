@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const RX = 330;
         out += `<text class="gen-text" x="${RX}" y="52">${g === 0 ? '처음 무리' : `${g}세대`}${culled && g < GENS ? ' · 살아남기' : ''}</text>`;
         const alive = gen.alive.filter(Boolean).length;
-        out += `<text class="trait-text" x="${RX}" y="74">${a.kind === 'beak' ? `평균 부리 ${gen.mean.toFixed(1)}` : `평균 밝기 ${(1 - gen.mean).toFixed(2)}`}</text>`;
+        out += `<text class="trait-text" x="${RX}" y="74">${a.kind === 'beak' ? `평균 부리 ${gen.mean.toFixed(1)}` : `털 색 평균 ${gen.mean.toFixed(2)}`}</text>`;
         out += `<text class="trait-text" x="${RX}" y="90">${culled ? `${alive}마리 살아남음` : `${N}마리`}</text>`;
         if (a.kind === 'coat') out += `<text class="trait-text" x="${RX}" y="112">배경: ${groundAt(g).label}${state.flip === 'flip' && g >= FLIP_GEN ? ' (바뀜)' : ''}</text>`;
         else out += `<text class="trait-text" x="${RX}" y="112">먹이: ${SEEDS[state.seeds].label}</text>`;

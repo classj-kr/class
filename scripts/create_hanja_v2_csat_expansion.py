@@ -10,8 +10,8 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_DIR = ROOT / 'scripts'
-GRADE_CSV = ROOT / 'tmp' / 'hanja-grade-dataset' / 'hanja.csv'
-KRDICT_DIR = ROOT / 'tmp' / 'korean-dict-nikl-sparse' / 'krdict'
+GRADE_CSV = ROOT / 'references/dictionaries/hanja-grade-dataset' / 'hanja.csv'
+KRDICT_DIR = ROOT / 'references/dictionaries/korean-dict-nikl-sparse' / 'krdict'
 CANDIDATE_OUT = SCRIPT_DIR / 'hanja-csat-expansion-candidates.json'
 LESSON_OUT = SCRIPT_DIR / 'hanja-v2-lessons-06.json'
 STANDARD_OUT = SCRIPT_DIR / 'hanja-csat-expansion-selection.json'

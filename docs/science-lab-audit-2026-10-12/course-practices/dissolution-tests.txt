@@ -1,0 +1,11 @@
+✔ whole mass conserved during dissolution; omitted equipment, transfer and tare change measured system (0.7185ms)
+✔ chromium: whole apparatus weighing, salt/sugar, corrections, motion and diagnostic questions (15748.8463ms)
+✔ webkit: whole apparatus weighing, salt/sugar, corrections, motion and diagnostic questions (17059.251ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32862.168

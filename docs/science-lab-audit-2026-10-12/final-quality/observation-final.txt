@@ -1,0 +1,11 @@
+✔ combustion separates collection and reagent observation, with a relevant common-phenomenon question (0.9097ms)
+✔ insulation preserves the initial condition and approaches ambient more slowly (0.4014ms)
+✔ sound conditions change amplitude with unchanged pitch; galaxy contains observable bar and arms (1.0354ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.7186

@@ -1,0 +1,10 @@
+{
+  "engine": "webkit",
+  "readyState": 0,
+  "errorCode": 4,
+  "errorMessage": null,
+  "actualVideoDecoded": false,
+  "physicalIPadTested": false,
+  "scope": "Windows Playwright WebKit cannot decode the MP4 and separately probed WebM fixture. Error handling verified; native Safari playback remains unverified.",
+  "documentation": "https://playwright.dev/docs/browsers#webkit"
+}

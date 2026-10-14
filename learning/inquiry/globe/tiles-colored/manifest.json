@@ -1,15 +1,14 @@
 {
-  "version": "20260927-color85",
-  "strength": 85,
+  "version": "20261012-sea4",
   "count": 1365,
   "tileSize": 512,
   "minZoom": 0,
   "maxZoom": 5,
   "format": "WebP",
-  "quality": 0.95,
-  "textureSource": "../tiles",
-  "colorSource": "Natural Earth HYP_LR_SR_W_DR v3.2.0",
-  "sourceUrl": "https://naturalearth.s3.amazonaws.com/10m_raster/HYP_LR_SR_W_DR.zip",
-  "license": "Public domain",
-  "method": "Low-frequency RGB gain transfer with green-land and water masks. Not an elevation classification."
+  "quality": 92,
+  "baseSource": "2026-09-27 tiles-colored (Natural Earth III texture with the 85% colour correction)",
+  "heightSource": "NOAA ETOPO1 Ice Surface, grid-registered, 1 arc-minute (public domain)",
+  "heightUrl": "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip",
+  "climateSource": "Peel, Finlayson & McMahon (2007) Koppen-Geiger 0.1 degree raster: desert, tundra and ice-cap cells (CC BY-NC-SA 2.5)",
+  "method": "Base picture kept. Mountains tinted brown by their rise above the surrounding lowland with north-west hillshade; flat desert plateaus keep their sand colour. Ocean: shelf slightly lighter, trenches darker, the rest as in the base; lakes, rivers, ice and snow untouched."
 }

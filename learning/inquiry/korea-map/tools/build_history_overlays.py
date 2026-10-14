@@ -58,7 +58,7 @@ def build(land_path):
         height = (top - bottom) * factor
 
         def path(points):
-            return "M" + "L".join(f"{math.radians(lon-west)*factor:.2f},{(top-merc(lat))*factor:.2f}" for lon, lat in points) + "Z"
+            return "M" + "L".join(f"{math.radians(lon-west)*factor:.4f},{(top-merc(lat))*factor:.4f}" for lon, lat in points) + "Z"
 
         def region_path(points):
             # Round sub-pixel raster steps; retain the digitized boundary's course.
@@ -77,7 +77,13 @@ def build(land_path):
         for area in geometry["areas"]:
             fill = "url(#northern-expansion)" if area.get("pattern") else colors[area["color"]]
             dash = "4 3" if area.get("pattern") else "none"
-            paths.append(f'<path d="{region_path(area["ring"])}" fill="{fill}" stroke="#526858" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="{dash}"><title>{escape(area["name"])}</title></path>')
+            if area.get('geometry'):
+                geometry = area['geometry']
+                parts = [geometry['coordinates']] if geometry['type'] == 'Polygon' else geometry['coordinates']
+                d = ''.join(path(ring) for part in parts for ring in part)
+            else:
+                d = region_path(area['ring'])
+            paths.append(f'<path d="{d}" fill="{fill}" fill-rule="evenodd" stroke="#526858" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="{dash}"><title>{escape(area["name"])}</title></path>')
         areas = "".join(paths)
         hatch = '<pattern id="northern-expansion" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="8" height="8" fill="#f4f6df"/><path d="M0 0V8" stroke="#739851" stroke-width="3"/></pattern>'
         svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height:.2f}" viewBox="0 0 {width} {height:.2f}"><!-- Source-registered textbook region outlines; not surveyed borders. Land: Natural Earth via world-atlas 2.0.2. --><metadata>{escape(boundaries["source"])}</metadata><defs><clipPath id="land">{clip}</clipPath>{hatch}</defs><g clip-path="url(#land)">{areas}</g></svg>\n'

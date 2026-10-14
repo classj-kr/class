@@ -1,11 +1,13 @@
 const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert/strict'),pp=require('puppeteer-core');
-const root=path.resolve(__dirname,'..'),prefix='/learning/inquiry/information-computing/computer-fundamentals/',dir=path.join(root,'docs/computer-analogies');
-const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.webp':'image/webp','.woff2':'font/woff2'})[path.extname(file)]||'application/octet-stream'}).end(data);});});
+const root=path.resolve(__dirname,'..'),prefix='/learning/inquiry/information-computing/computer-fundamentals/',dir=path.resolve(root,process.env.ANALOGY_OUTPUT||'docs/computer-analogies');
+// This visual-only fixture acknowledges progress writes; real persistence is covered by the edition harness.
+const server=http.createServer((req,res)=>{const requestPath=new URL(req.url,'http://localhost').pathname;if(requestPath.startsWith('/api/me/storage/computer-literacy')){res.writeHead(200,{'Content-Type':'application/json'}).end(JSON.stringify(req.method==='GET'?{items:{}}:{ok:true}));return;}let file=path.resolve(root,'.'+requestPath);if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.webp':'image/webp','.woff2':'font/woff2'})[path.extname(file)]||'application/octet-stream'}).end(data);});});
 (async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;const report=[];
 try{fs.mkdirSync(dir,{recursive:true});browser=await pp.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--no-first-run']});
 const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url())});
 for(const [id,type,url] of [['a01','stamp','textbook/a01.html#read'],['b01','workshop','lessons/?lesson=b01#read'],['e04','bookmark','lessons/?lesson=e04#read']]){
  await page.setViewport({width:1440,height:1050});await page.goto('http://127.0.0.1:'+server.address().port+prefix+url,{waitUntil:'networkidle0'});await page.waitForSelector('.picture-analogy svg');
+ await page.click(id==='a01'?'.analogy-real-example > summary':'.study-analogy > summary');
  const keys=await page.$$eval('[data-analogy-part]',els=>els.map(e=>e.dataset.analogyPart));
  const rows=[];
  for(const width of [1440,768,390,320]){await page.setViewport({width,height:1000});

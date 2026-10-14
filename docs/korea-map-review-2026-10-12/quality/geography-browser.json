@@ -1,0 +1,782 @@
+[
+  {
+    "id": "korea-exam-relief-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B 하천의 일반적 특징을 바르게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-relief-2",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "한반도 동서 단면에서 A·B를 비교한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-river-2",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "곡류 하천의 A·B와 비교한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-river-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B의 지형 발달에 대한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-floodplain-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "같은 범람원의 두 지점 중 자연 제방에 해당하는 곳과 판단 근거는?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-floodplain-1",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "범람원 단면의 A와 비교한 B의 특징은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-coast-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A~C의 해안 특징을 옳게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-coast-2",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "그림 A·B에서 자연적인 변화가 계속될 때의 설명은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-volcano-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B에서 관찰되는 지형의 형성 순서가 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-volcano-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A의 산록부와 B의 화산체를 비교한 설명은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-karst-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "A·B 지역에 공통으로 적용하기 좋은 자원·산업의 연결은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-karst-1",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "그림의 A·B에 대한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-basin-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "침식 분지의 조사 자료를 옳게 해석한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-basin-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "A·B 지점의 지형과 토지 이용을 바르게 연결한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-temperature-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": true,
+    "title": "지도 A·B에 해당하는 자료와 기온 차의 배경을 연결한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-temperature-2",
+    "figure": false,
+    "graph": true,
+    "map": false,
+    "table": false,
+    "title": "위도가 비슷한 두 지점의 그래프이다. (가)와 비교한 (나)의 특징으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-monsoon-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "같은 기간의 강수 자료를 옳게 해석한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-monsoon-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "겨울에 A·B 모두 많은 눈이 내릴 수 있는 공통 과정은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-foehn-1",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "그림에서 B의 기온과 A→B 과정에 대한 설명은? (그림의 조건만 적용)",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-foehn-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "동풍이 태백산맥을 넘는 상황에서 고온 건조해지기 쉬운 지점은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-local-climate-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "새벽의 고도별 기온 자료이다. 기온 역전층과 그 영향을 바르게 설명한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-local-climate-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "폭염·열대야 자료의 해석으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-waters-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "표의 A~C 수역을 옳게 해석한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-waters-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A와 B 부근의 영해 기선에 관한 일반적인 연결은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-location-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B의 상대 위치에서 판단할 수 있는 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-location-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "북위 37°, 동경 127°와 북위 37°, 동경 130°의 지방시 차는?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-oldmaps-2",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "대동여지도의 도로에서 10리 간격 방점 5개가 양 끝을 포함해 연속으로 나타난다. 읽어 낼 수 있는 내용은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-oldmaps-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "자료 ㉠·㉡을 옳게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-map-data-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "1:50,000 지도를 가로·세로 각각 두 배로 확대 출력하면?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-map-data-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "경사 10° 이하, 도로 거리 1 km 이하, 하천 거리 0.5 km 초과를 모두 만족하는 곳은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-distribution-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "인구를 점으로 나타내는 지도에서 점 1개가 5만 명이다. A에 10개, B에 4개가 있고 면적은 A가 B의 2배라면?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-distribution-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "표에서 인구밀도가 가장 높은 곳과 총인구가 가장 많은 곳을 순서대로 고르면?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-age-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "표의 두 지역에 대한 해석으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-age-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "갑과 비교한 을의 노령화 지수와 총부양비는?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-city-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "주간 인구 지수(주간÷상주×100)가 가장 높은 곳과 예상 기능은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-city-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "두 구역의 주간 인구에 대한 해석으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-village-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "촌락 A의 변화로 가장 직접적으로 읽을 수 있는 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-village-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B의 전통 촌락 입지와 배경을 옳게 연결한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-port-industry-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "A·B·C의 대표 제조업 연결로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-port-industry-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "지역 내 제철업의 비중과 실제 종사자 수를 옳게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-tech-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "기준년=100인 지수만으로 확실히 알 수 있는 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-tech-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "같은 생산량을 가정할 때 연구 인력이 필요한 기업의 후보지로 적합한 곳은? (표의 비용만 고려)",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-farming-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "두 지역의 경지율과 농가당 경지 면적을 옳게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-farming-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B의 농업을 옳게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-energy-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": true,
+    "title": "발전소의 입지 조건을 지도 A~C에 대응한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-energy-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "자료에 대한 해석으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-transport-mode-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "같은 화물을 100km와 500km 운송할 때 가장 저렴한 수단을 차례로 고르면?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-transport-mode-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "거리 x에 따른 운송비가 도로 20+2x, 철도 100+x라면 철도가 더 저렴해지는 조건은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-transport-axis-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A~D를 이용한 두 교통축의 연결로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-transport-axis-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "교통 개선 뒤 일어난 변화에서 주변 지역의 소비 유출을 보여 주는 자료는?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-regions-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "권역 내 도시 인구 자료를 옳게 해석한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-regions-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": true,
+    "title": "두 지역의 특성을 지도 A~C에 대응한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-division-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "A를 중심지로 볼 때 B·C의 기능적 연결을 옳게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-division-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "지역 간 통근 자료로 확실히 알 수 있는 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-north-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B의 자연환경과 연결한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-north-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": true,
+    "title": "지도 A~D 중 다음 두 도시를 순서대로 고르면?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-seafloor-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "A·B의 수심 분포로 추론할 수 있는 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-seafloor-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": true,
+    "title": "연안 조사선의 위치와 해저 경사를 바르게 연결한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-rocks-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A·B의 대표 기반암과 형성을 연결한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-rocks-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "자료의 암석 ㉠~㉢에 대한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-glacial-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "최종 빙기에서 후빙기로 바뀔 때 A·B 해안에서 예상되는 변화는?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-glacial-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": true,
+    "title": "표의 갑 시기와 비교한 을 시기의 환경으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-soils-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "토양 조사에서 갑·을의 형성 요인을 바르게 구별한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-soils-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A~C의 토양에 대한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-development-2",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "A에서 B·C로 이전한 대표 기능을 바르게 연결한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-development-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "자료에서 주변 지역의 일자리 변화와 소비 유출을 옳게 읽은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-migration-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "갑·을의 자연 증감과 사회적 증감을 옳게 해석한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-migration-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "외국인 주민 수와 지역 내 비율을 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-hazards-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": true,
+    "title": "지도 A·B와 표를 함께 읽은 해석으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-hazards-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "표의 태풍 피해액을 비교한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-climate-change-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "두 기간의 무상 기간을 비교한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-climate-change-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "한 산지에서 30년 동안 같은 식생대의 하한 고도가 600 m에서 800 m로 이동했다. 기온 상승과 연결한 해석은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-vegetation-2",
+    "figure": true,
+    "graph": false,
+    "map": false,
+    "table": false,
+    "title": "같은 산의 식생 경계가 그림처럼 바뀌었다. 자료로 판단할 수 있는 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-vegetation-1",
+    "figure": false,
+    "graph": false,
+    "map": true,
+    "table": false,
+    "title": "지도 A~C에 나타나는 자연 식생의 일반적인 배열은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-services-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "백화점 A와 편의점 B의 일반적 특징을 바르게 비교한 것은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-services-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "인구밀도가 균일한 원형 상권에서 성립할 수 있는 상점은? (최소 고객 1,200명)",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-renewal-1",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "재개발 뒤 원거주 가구의 재정착률과 전체 입주 가구 중 비중은?",
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "korea-exam-renewal-2",
+    "figure": false,
+    "graph": false,
+    "map": false,
+    "table": true,
+    "title": "두 재개발 구역을 비교한 설명으로 옳은 것은?",
+    "retry": true,
+    "correct": true
+  }
+]

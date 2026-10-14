@@ -20,6 +20,9 @@ class CoastRegistrationTest(unittest.TestCase):
         self.assertTrue(result[0].covers(Point(126.04, 36)))
         self.assertTrue(result[1].covers(Point(129.96, 36)))
         self.assertFalse(painted.covers(Point(128, 36)), 'Unknown inland gap must stay unchanged')
+        self.assertTrue(result[0].covers(Point(127.9999, 34.01)))
+        self.assertTrue(result[1].covers(Point(128.0001, 34.01)),
+                        'Coastal near ties must follow the nearest region, not alternating growth rings')
         self.assertFalse(painted.intersects(distant_island), 'Do not assign distant islands')
         self.assertLess(painted.difference(land).area, 1e-8, 'Never colour sea')
         self.assertLess(result[0].intersection(result[1]).area, 1e-8, 'Shared shores have one owner')

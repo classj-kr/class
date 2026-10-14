@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -6,10 +7,12 @@ const { test } = require('node:test');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '../learning/inquiry/science-lab');
 const catalog = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const slugs = [...catalog.matchAll(/href="([^"/]+)\/"/g)].map(m => m[1]);
+const slugs = [...new Set([...catalog.matchAll(/href="([^"/?]+)\/(?:\?[^"]*)?"/g)].map(m => m[1]))];
 
 test('every catalog app loads, every question has a working correct answer, mobile layout', { timeout: 900000 }, async () => {
-  assert.equal(new Set(slugs).size, 104);
+  const registered = Object.keys(require(path.join(root, 'curriculum-map.js'))).sort();
+  assert(registered.length > 0, 'The app catalog must not be empty');
+  assert.deepEqual([...slugs].sort(), registered, 'Test every registered app exactly once, without a fixed app-count target');
   const server = http.createServer((req, res) => {
     let file = path.resolve(root, '.' + new URL(req.url, 'http://localhost').pathname);
     if (file !== root && !file.startsWith(root + path.sep)) { res.writeHead(403); res.end(); return; }
@@ -28,7 +31,8 @@ test('every catalog app loads, every question has a working correct answer, mobi
     const catalogPage=await browser.newPage({viewport:{width:390,height:844}});
     await catalogPage.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
     await catalogPage.goto(`http://127.0.0.1:${server.address().port}/`);
-    for(const grade of ['전체','초3','초4','초5','초6','중1','중2','중3','고1','고2','고3']){
+    for(const grade of ['초3','초4','초5','초6','중1','중2','중3']){
+      await catalogPage.locator(`[data-school-filter="${grade.startsWith('초')?'elementary':'middle'}"]`).click();
       await catalogPage.locator(`[data-grade="${grade}"]`).click();
       const state=await catalogPage.evaluate(grade=>{
         const visible=[...document.querySelectorAll('.level-entry')].filter(e=>!e.hidden);
@@ -40,10 +44,10 @@ test('every catalog app loads, every question has a working correct answer, mobi
     assert.equal(await catalogPage.locator('#courseSelect,#gradeCount,.placement-note,.grade-navigation h1').count(),0);
     await catalogPage.goto(`http://127.0.0.1:${server.address().port}/?grade=고1&course=세포와%20물질대사`);
     assert.equal(new URL(catalogPage.url()).searchParams.has('course'),false);
-    const highOneCount=await catalogPage.evaluate(()=>Object.values(window.scienceCurriculum).filter(m=>m.grades.includes('고1')).length);
+    const highOneCount=await catalogPage.evaluate(()=>Object.values(window.scienceCurriculum).filter(m=>m.courseContexts?.['high-common']||m.codes.every(c=>c.startsWith('10'))).length);
     assert.equal(await catalogPage.locator('.level-entry:not([hidden])').count(),highOneCount);
     assert(highOneCount>0);
-    if(process.env.SCIENCE_CAPTURE){await catalogPage.locator('[data-grade="초6"]').click();fs.mkdirSync(path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots'),{recursive:true});await catalogPage.screenshot({path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/catalog-mobile.png'),fullPage:true});}
+    if(process.env.SCIENCE_CAPTURE){await catalogPage.locator('[data-school-filter="elementary"]').click();await catalogPage.locator('[data-grade="초6"]').click();fs.mkdirSync(path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots'),{recursive:true});await screenshotWebp(catalogPage, {path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/catalog-mobile.webp'),fullPage:true});}
     await catalogPage.close();
     for (const slug of slugs) {
       const page = await browser.newPage({ viewport: { width: 1365, height: 980 } });
@@ -98,20 +102,20 @@ test('every catalog app loads, every question has a working correct answer, mobi
             const feedback = card.querySelector('.answer-result')?.textContent || '';
             if (!/맞|정답/.test(feedback)) errors.push(`q${index + 1}: correct answer feedback ${feedback}`);
             const explanation = card.querySelector('.answer-explanation');
-            if (explanation?.hidden) errors.push(`q${index + 1}: correct explanation hidden`);
+            if (explanation && !feedback.includes(explanation.textContent.trim()) && explanation.hidden) errors.push(`q${index + 1}: correct explanation missing`);
           }
           const ids = [...document.querySelectorAll('[id]')].map(e => e.id);
           const duplicateIds = ids.filter((id, i) => ids.indexOf(id) !== i);
           return { count: cards.length, errors, duplicateIds, heading: document.querySelector('h1')?.textContent };
         });
-        if(process.env.SCIENCE_CAPTURE&&await page.locator('.curriculum-supplement').count())await page.locator('.curriculum-supplement').screenshot({path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/'+slug+'-desktop.png')});
+        if(process.env.SCIENCE_CAPTURE&&await page.locator('.curriculum-supplement').count())await screenshotWebp(page.locator('.curriculum-supplement'), {path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/'+slug+'-desktop.webp')});
         if (result.count !== 4) errors.push(`expected 4 questions, got ${result.count}`);
         errors.push(...result.errors);
         if (!result.heading) errors.push('missing heading');
         await page.setViewportSize({ width: 390, height: 844 });
         const dimensions = await page.evaluate(() => ({ width: innerWidth, scroll: document.documentElement.scrollWidth }));
         if (dimensions.scroll > dimensions.width + 1) errors.push(`mobile overflow ${dimensions.scroll}/${dimensions.width}`);
-        if(process.env.SCIENCE_CAPTURE&&await page.locator('.curriculum-supplement').count())await page.locator('.curriculum-supplement').screenshot({path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/'+slug+'-mobile.png')});
+        if(process.env.SCIENCE_CAPTURE&&await page.locator('.curriculum-supplement').count())await screenshotWebp(page.locator('.curriculum-supplement'), {path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/'+slug+'-mobile.webp')});
         questions += result.count;
         if (errors.length) failures.push({ slug, errors: [...new Set(errors)] });
         console.log(`${slug}: ${errors.length ? 'FAIL ' + [...new Set(errors)].join('; ') : 'OK'} (${result.count} questions)`);

@@ -1,0 +1,86 @@
+{
+  "slug": "rock-age",
+  "engine": "chromium",
+  "modes": [
+    "decay",
+    "strata"
+  ],
+  "cases": 17,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rockModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "fracAfter",
+        "fracAtAge",
+        "windowFor",
+        "datable",
+        "koYears",
+        "ISO",
+        "TARGETS",
+        "ORDERED",
+        "HIDDEN_B",
+        "ATOMS",
+        "setMode",
+        "setIso",
+        "setTarget",
+        "setHl",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "decay",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 50% 초과였지만 결과는 3% 미만입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 3~50%였지만 결과는 3% 미만입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 3% 미만."
+        }
+      ]
+    },
+    {
+      "mode": "strata",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 가정 아래 계산 가능였지만 결과는 시료 근거 부족입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 모원소 비율 너무 작음였지만 결과는 시료 근거 부족입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 모원소 비율 너무 큼였지만 결과는 시료 근거 부족입니다."
+        },
+        {
+          "choice": "p4",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 시료 근거 부족."
+        }
+      ]
+    }
+  ]
+}

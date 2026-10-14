@@ -1,0 +1,2156 @@
+{
+  "scope": "Authored questions reviewed against listed textbook procedures and available assessment explanations; browser tests are not independent content review",
+  "questions": [
+    {
+      "id": "pasteur#q1",
+      "sha256": "9dbcb4b879033d49aa4dc6b68d621ee5db314f1698c0b3acd230f6b0f21d8d0f",
+      "slug": "pasteur"
+    },
+    {
+      "id": "pasteur#q2",
+      "sha256": "2258e7a90a4dd6f34c699365863fe93ea38d314b2f49d0931deb457bd2cd4db0",
+      "slug": "pasteur"
+    },
+    {
+      "id": "pasteur#q3",
+      "sha256": "00502e47a4407caf87e4dfccc6d940362dd2524cf6d4b1b08b69f82d6a54ec6e",
+      "slug": "pasteur"
+    },
+    {
+      "id": "pasteur#q4",
+      "sha256": "415589d5d2cb797d6b1800090331ff590d6fabfd1dedb555f99ee922237c1e3f",
+      "slug": "pasteur"
+    },
+    {
+      "id": "newton-prism#q1",
+      "sha256": "9b362c644feaaf0349db2a7202e521f5e486a6cb1ecf6957ade6a2b96adc683b",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "newton-prism#q2",
+      "sha256": "c55e6d82c0f74b0cd9d7fc30145e26356e7f73c5fad282f9d81bb127f50b33c9",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "newton-prism#q3",
+      "sha256": "d04863160b5a3a5b46e2ff472d11345b44549868f20b4afce3bf01942d8667a2",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "newton-prism#q4",
+      "sha256": "4413f7a1035cbf01a8ca81e35e3296dd2fb39df166030f17d412cfbfccdf2554",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "infection-prevention#q1",
+      "sha256": "95d2f08cf10b076f0bbe9958babdb559b611f7083b780bf3d2d0fdbe5a75cc33",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "infection-prevention#q2",
+      "sha256": "6f7dabd24ebd95b215182b50c08b698ede8e89d49410dabb37b32c9d51392dee",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "infection-prevention#q3",
+      "sha256": "758683544ecd9b5e1e187936aa7f7ec64baf43b5b70b90d38ab6a6687c5eb665",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "infection-prevention#q4",
+      "sha256": "fd7be955da4b2d510859b1b21f06c453875256aefdb9d9d80535ff22756a401b",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "mendeleev#q1",
+      "sha256": "00468eb3e2fcef0889fd61d3b62bea56e631535174187c1808449ff57cd28a83",
+      "slug": "mendeleev"
+    },
+    {
+      "id": "mendeleev#q2",
+      "sha256": "7041fea30dc5b6bbc5113fb797912bd8f81f5a3e56dd67cf0a67b693c3eac370",
+      "slug": "mendeleev"
+    },
+    {
+      "id": "mendeleev#q3",
+      "sha256": "6f611458e187f8101d8a3bd915a4eb83e1a9a64f6f4d0e23a0df57804b1045fa",
+      "slug": "mendeleev"
+    },
+    {
+      "id": "mendeleev#q4",
+      "sha256": "3c0e591d1299d8191c27cf471809f65e4f7140cca97809b6ce54eb63e4eed5e5",
+      "slug": "mendeleev"
+    },
+    {
+      "id": "speaker-lab#q1",
+      "sha256": "d62de8fc183636406563ca243286b2126e26cab2451ef3c5a028fb43473f6eaf",
+      "slug": "speaker-lab"
+    },
+    {
+      "id": "speaker-lab#q2",
+      "sha256": "076439cc6fa468a252eab99235193e9b2e239028a753b6e02fd06261b51bb6cb",
+      "slug": "speaker-lab"
+    },
+    {
+      "id": "speaker-lab#q3",
+      "sha256": "755f9ca0fc0dfcee7fe1c38c54d8bb65c80a3530ec130f3b21d2608260e2d3e0",
+      "slug": "speaker-lab"
+    },
+    {
+      "id": "speaker-lab#q4",
+      "sha256": "5d2479a6c5799560cfdf39ae068654d29029b7148c9c7ce9486b8b4fcd2ed023",
+      "slug": "speaker-lab"
+    },
+    {
+      "id": "wireless-power#q1",
+      "sha256": "349c15640d0a59ba923ad93b193595c6e8ae0f2dc6fe6907c821ca7ac917ce79",
+      "slug": "wireless-power"
+    },
+    {
+      "id": "wireless-power#q2",
+      "sha256": "762d2042d6b336dd5c7f4d2312aaad4deb604af5fd39a082bc091c1a8eac8a14",
+      "slug": "wireless-power"
+    },
+    {
+      "id": "wireless-power#q3",
+      "sha256": "9833ed60b569bb271bba0e2ecb7cf78654a19b78cbcc010c26b7bc56c9fc7541",
+      "slug": "wireless-power"
+    },
+    {
+      "id": "wireless-power#q4",
+      "sha256": "9f6adf81696cea96b3fe4e0747a214f3ee86c5f26e0abcc96e322b1905d6b167",
+      "slug": "wireless-power"
+    },
+    {
+      "id": "magnetic-brake#q1",
+      "sha256": "b1cf0a86b93747aed6150106b410000fb0e2b597921435ae37838dbb36a8a713",
+      "slug": "magnetic-brake"
+    },
+    {
+      "id": "magnetic-brake#q2",
+      "sha256": "5e282d68c0e0d0dc70d36736092f83e54411cd50fd8d5c9cdb049d777334d0d0",
+      "slug": "magnetic-brake"
+    },
+    {
+      "id": "magnetic-brake#q3",
+      "sha256": "e5bb6aa724d3395bdbf63a911c7e6a1ac021ab63af0a6ddd27bfd4ef5bf5111a",
+      "slug": "magnetic-brake"
+    },
+    {
+      "id": "magnetic-brake#q4",
+      "sha256": "24ec5ed0489e0d0b355a69f2ffbf5cff0c51dbdffd4c1c0bc53bcd244ce8b845",
+      "slug": "magnetic-brake"
+    },
+    {
+      "id": "transistor-speaker#q1",
+      "sha256": "431a01195782db81b47db7428c7df0abc7998c28132b12b2c72ebdeeb00cc1e9",
+      "slug": "transistor-speaker"
+    },
+    {
+      "id": "transistor-speaker#q2",
+      "sha256": "3ab287569c986a2bd9f9df51ac98819454d9338f412dd6f64822f40f10af1dbe",
+      "slug": "transistor-speaker"
+    },
+    {
+      "id": "transistor-speaker#q3",
+      "sha256": "43c520105b16ce40cf86d4ec6e973ca97274232755159319e6a1da44bfcc8d61",
+      "slug": "transistor-speaker"
+    },
+    {
+      "id": "transistor-speaker#q4",
+      "sha256": "7ebb312b3a816f5f7eada4347d293dd36257c1022372494dda1e487d0b58f36a",
+      "slug": "transistor-speaker"
+    },
+    {
+      "id": "soap-film#q1",
+      "sha256": "eebb60e27c69fe1c4195b402ff078619baa5b5224c70975efbb7c470d102c0ba",
+      "slug": "soap-film"
+    },
+    {
+      "id": "soap-film#q2",
+      "sha256": "70832deee5489f2f115887fa6f85300e338b6673bd7862e4c75e75c302d9007b",
+      "slug": "soap-film"
+    },
+    {
+      "id": "soap-film#q3",
+      "sha256": "517c6fb03c6e8603c1eefde312925fc424e5fef2af03da0b81e57ec680490204",
+      "slug": "soap-film"
+    },
+    {
+      "id": "soap-film#q4",
+      "sha256": "249987ef03d8b457d02f056a9f9a9af2f6bcebf59a659a229794f8a32ef779ad",
+      "slug": "soap-film"
+    },
+    {
+      "id": "polarization#q1",
+      "sha256": "0140b63f732515ed7b2159b3f4373bb38e8a0f62cf419546669cee826b01be78",
+      "slug": "polarization"
+    },
+    {
+      "id": "polarization#q2",
+      "sha256": "42240f66995a8a065fc1b2685153cc1b773809c6210cf37a7262e358d555ef46",
+      "slug": "polarization"
+    },
+    {
+      "id": "polarization#q3",
+      "sha256": "46c1ed5f61ce7f90e2d5bbfc99f921f6cfd88268164142f69d8aa4ef1cc598bd",
+      "slug": "polarization"
+    },
+    {
+      "id": "polarization#q4",
+      "sha256": "a0f54005664a6cb1b8d3cfcf9eb94b1819c20a158a29b352b10c60dfb48f4e1e",
+      "slug": "polarization"
+    },
+    {
+      "id": "electron-slits#q1",
+      "sha256": "83fb90294b7e0415d31ab4b64d411f9a0e6dc9d5a54bb1a4dc1d7430934c741b",
+      "slug": "electron-slits"
+    },
+    {
+      "id": "electron-slits#q2",
+      "sha256": "5037dca15ed6d75e6963fb9069afa4361e67328525da48dbc3fe8593a10c0cca",
+      "slug": "electron-slits"
+    },
+    {
+      "id": "electron-slits#q3",
+      "sha256": "70e46b5362939de31049430aa0aca2aa718a62145fae6aaa8d5cfd9e6fe635e1",
+      "slug": "electron-slits"
+    },
+    {
+      "id": "electron-slits#q4",
+      "sha256": "569b3df0c4008cc95949c1f43e9338cd4b4d28e2de9ccefd8021d9c4855a167f",
+      "slug": "electron-slits"
+    },
+    {
+      "id": "gas-identification#q1",
+      "sha256": "6c8c90d551915790b0c17e9385e728a45656af4ed1e0a0e6abf98ed02da9513a",
+      "slug": "gas-identification"
+    },
+    {
+      "id": "gas-identification#q2",
+      "sha256": "f3bf2d58ba7d361982978d625b93e8bfabb3ba6c7cb4d624c84fe299812d383e",
+      "slug": "gas-identification"
+    },
+    {
+      "id": "gas-identification#q3",
+      "sha256": "0d4426989b8ec2b269e574fa5fbb76987757ee6b411cce76a2bae7301065963a",
+      "slug": "gas-identification"
+    },
+    {
+      "id": "gas-identification#q4",
+      "sha256": "a889c30daedb4664cad6f12f349d8315ca04b3cf8fdcc1545a15907b920f351b",
+      "slug": "gas-identification"
+    },
+    {
+      "id": "sugar-phase#q1",
+      "sha256": "9de304c519f404d4a42bcc58948e5326bd10935335e81d3736e9bba33d2d6be5",
+      "slug": "sugar-phase"
+    },
+    {
+      "id": "sugar-phase#q2",
+      "sha256": "5b10aec4c74d603e405db09774033c6eaa98a58ab11513591459696b0c520783",
+      "slug": "sugar-phase"
+    },
+    {
+      "id": "sugar-phase#q3",
+      "sha256": "55664f68ca8a367f02751dc0c2a334d009c6eceb9302543d16e8ff190f38f464",
+      "slug": "sugar-phase"
+    },
+    {
+      "id": "sugar-phase#q4",
+      "sha256": "318b5182fee7e092afd9438d4c5f4d673f7ada8c35b243bdb51a0b2a96f93d74",
+      "slug": "sugar-phase"
+    },
+    {
+      "id": "hess-calorimetry#q1",
+      "sha256": "24413c8b642cde0270e8b3de3e4d48deb1df105102552337aceaaeebd7111b10",
+      "slug": "hess-calorimetry"
+    },
+    {
+      "id": "hess-calorimetry#q2",
+      "sha256": "96377f3a5a10107a031f52571a11970e000a386eecc65f07d8829f9019ffe73a",
+      "slug": "hess-calorimetry"
+    },
+    {
+      "id": "hess-calorimetry#q3",
+      "sha256": "7dbdb3f66f5dc61bc24b5da29fd4aa21ac9b56b0ce6bf367d8117b8d90a22da3",
+      "slug": "hess-calorimetry"
+    },
+    {
+      "id": "hess-calorimetry#q4",
+      "sha256": "f1faa2c6038003484444a5e1f8c335fa28da8f7f3f7d44501d291e4ec3f339ae",
+      "slug": "hess-calorimetry"
+    },
+    {
+      "id": "buffer-solution#q1",
+      "sha256": "43ea4ebedaf8c4e7a7be289d59285bf913042ed967e3b39cd14c202c45cfb76a",
+      "slug": "buffer-solution"
+    },
+    {
+      "id": "buffer-solution#q2",
+      "sha256": "0e2c486b68c6fb59867f0241c3a80eb94d49d76a241643a4d615b1bfa95e066f",
+      "slug": "buffer-solution"
+    },
+    {
+      "id": "buffer-solution#q3",
+      "sha256": "4ba1acf37403e8d6e7d91b3898e217acd75f308fb1f065040090b6eeab3b1014",
+      "slug": "buffer-solution"
+    },
+    {
+      "id": "buffer-solution#q4",
+      "sha256": "e6bb85b9351455459e253830a8f7f560b0818bf5715a8d92eb280b59598cf423",
+      "slug": "buffer-solution"
+    },
+    {
+      "id": "salt-hydrolysis#q1",
+      "sha256": "72ed385cadad016ae1c0d7dca647a1d7e9b71d0a21054fb470e6a4827e4ae135",
+      "slug": "salt-hydrolysis"
+    },
+    {
+      "id": "salt-hydrolysis#q2",
+      "sha256": "b9a57e37361de204a3af086ab4bc94556fe322b0778f5d2d059d11d5f2b74efb",
+      "slug": "salt-hydrolysis"
+    },
+    {
+      "id": "salt-hydrolysis#q3",
+      "sha256": "b37441c8fd5449c083d4ac34321b6c1e4958dbaa390570fc45c073aade84aa2f",
+      "slug": "salt-hydrolysis"
+    },
+    {
+      "id": "salt-hydrolysis#q4",
+      "sha256": "d399892745331b14013cf20ab69e70fd937e158c76d120c83a42952d0ce1419e",
+      "slug": "salt-hydrolysis"
+    },
+    {
+      "id": "bean-respiration#q1",
+      "sha256": "b1b139348caec56dcbd453d2e55769d51bb00066e47733fb2bc402dd839e7594",
+      "slug": "bean-respiration"
+    },
+    {
+      "id": "bean-respiration#q2",
+      "sha256": "661ed90b57a518b91394f4215773eef522bdde12b6296f5d58b1a67ce30ca95d",
+      "slug": "bean-respiration"
+    },
+    {
+      "id": "bean-respiration#q3",
+      "sha256": "9db0979239944e259bd2a0da2e3103e23661bc8a378293acc43bf3827072473b",
+      "slug": "bean-respiration"
+    },
+    {
+      "id": "bean-respiration#q4",
+      "sha256": "861a24d6dae6dc9948f4062ffb218457787917b3ea095e2ecb910dcb87f3092b",
+      "slug": "bean-respiration"
+    },
+    {
+      "id": "insulation-lab#q1",
+      "sha256": "408addc380fd129f599f135fe93681d1b89cb9929b4e0876ff58c5e27acc8771",
+      "slug": "insulation-lab"
+    },
+    {
+      "id": "insulation-lab#q2",
+      "sha256": "c907277d56b57b59e9aa833da31814ba17cba55e5996ff800c946f80859a3ee9",
+      "slug": "insulation-lab"
+    },
+    {
+      "id": "insulation-lab#q3",
+      "sha256": "87dd650935837d6cfaee636096765498de9760fd0d63de30c34312edd40c81eb",
+      "slug": "insulation-lab"
+    },
+    {
+      "id": "insulation-lab#q4",
+      "sha256": "4a3050a9464061e4885dabcc1b8c8a5be97a92e64a9cd2734c9e27cff4d434b0",
+      "slug": "insulation-lab"
+    },
+    {
+      "id": "doppler-lab#q1",
+      "sha256": "b39e1ad4ad1e4e95e519c7781001dc0447573e939dca89004bb78004b429d1b4",
+      "slug": "doppler-lab"
+    },
+    {
+      "id": "doppler-lab#q2",
+      "sha256": "a5f48bb5e9b8f92a41f7d8ceb11c3e460ed80091b05d99448bd9c13822b43938",
+      "slug": "doppler-lab"
+    },
+    {
+      "id": "doppler-lab#q3",
+      "sha256": "e69a5b84705145d7a3f8c982e7808bc17d874f93f63a0bf9abd7b6c0b849c079",
+      "slug": "doppler-lab"
+    },
+    {
+      "id": "doppler-lab#q4",
+      "sha256": "a8831b9d3c0d1a55b9d84e21cfda4fc24031b1625ce60799c6a82987d8130f50",
+      "slug": "doppler-lab"
+    },
+    {
+      "id": "ride-acceleration#q1",
+      "sha256": "172f5b76c1a2654bc15ef736617360471e2197675607b34a52db640cbbc83e4a",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q2",
+      "sha256": "28800f115832af736f320320d82277c327d3f0ca922f9c2506cb9fa7754656a8",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q3",
+      "sha256": "9d0f240ac2574ca4231b7e923c7d81b7eb857ef19840f032527effeb3f767e9f",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q4",
+      "sha256": "13e039a377a24eb27fc9dbdc91cb00f6f9ef7fabb7977b57d262de7ddecf57c6",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q5",
+      "sha256": "4fefca124f3fcc7900687ea7ee6cd17d506ce9d4586dbe5af35c37a90294e2b2",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q6",
+      "sha256": "318a786a557bb717895c25defc4b762f0ba8909ff5879796d23cf57a272256bb",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q7",
+      "sha256": "0e3240acda9b96d87be06eb59e1b228432cdc3c7f4356ec745cf897a0b0f77f2",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q8",
+      "sha256": "ac9648d189da0b719d083dc621d635ca137fc45a948e62acf01f63011d1c1db4",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "dna-replication#q1",
+      "sha256": "def2db8c789fee94fb4f4a04f574110c1e27e994ff6fde5f4308b375b62e0ded",
+      "slug": "dna-replication"
+    },
+    {
+      "id": "dna-replication#q2",
+      "sha256": "81db797469a89d98bd747d54f3c815aa33ca2fc3f6162b92c9afb2e96438197f",
+      "slug": "dna-replication"
+    },
+    {
+      "id": "dna-replication#q3",
+      "sha256": "9ed3de9a78d757aea5e019a6dbaabd6dccdfaed3d0a09fd907931d5d64b5478e",
+      "slug": "dna-replication"
+    },
+    {
+      "id": "dna-replication#q4",
+      "sha256": "fa16403fed8d42ff4fbfa0eabc945a202ad6278e7ce2cef200a3da96a19511c3",
+      "slug": "dna-replication"
+    },
+    {
+      "id": "protein-synthesis#q1",
+      "sha256": "3d6276e2847ed1be81c1a3cc60beceef758c1e647091018b0b846c467c9aa074",
+      "slug": "protein-synthesis"
+    },
+    {
+      "id": "protein-synthesis#q2",
+      "sha256": "43098b8810755bde8bb04798d7eca770e383e37004bb995305a7848459cf1685",
+      "slug": "protein-synthesis"
+    },
+    {
+      "id": "protein-synthesis#q3",
+      "sha256": "952078b4076ed4bc7f52db345b73be20040836e9c7f41c832c6423d189f0dd08",
+      "slug": "protein-synthesis"
+    },
+    {
+      "id": "protein-synthesis#q4",
+      "sha256": "f1ed698292c4cc7e556cdf2f0684f5cb7134ba842db572a7b00e57aee24c08d2",
+      "slug": "protein-synthesis"
+    },
+    {
+      "id": "pedigree-lab#q1",
+      "sha256": "76e77f8648f445b9213ddcf976fb7d8e4de5999311367bb258f7830e0d4bbea4",
+      "slug": "pedigree-lab"
+    },
+    {
+      "id": "pedigree-lab#q2",
+      "sha256": "01f3736a6c4c0145f2c77aafae5faa5987dce7a411cd5823ed3dfbe109a34e75",
+      "slug": "pedigree-lab"
+    },
+    {
+      "id": "pedigree-lab#q3",
+      "sha256": "f7818b2852e3496e1a9493eb0c614daebc90a5902b8fd70a6b5b2aec49f5301d",
+      "slug": "pedigree-lab"
+    },
+    {
+      "id": "pedigree-lab#q4",
+      "sha256": "4005700505426906d4897a2806214a991fc656c57a7d6b049b1336a07640d5b9",
+      "slug": "pedigree-lab"
+    },
+    {
+      "id": "karyotype-lab#q1",
+      "sha256": "36a53f717dfb8b4565e99fe5b49a57246f915d8c19f3033c81ac3ade57a8a347",
+      "slug": "karyotype-lab"
+    },
+    {
+      "id": "karyotype-lab#q2",
+      "sha256": "512f5d4052cc577d3905cf5ad8b48fc4a061ce041ed0db039c21ef8ff65c7abc",
+      "slug": "karyotype-lab"
+    },
+    {
+      "id": "karyotype-lab#q3",
+      "sha256": "2ace9b940edc8c4024af43e46fe533c938a6c5fd1cb9ad7cb6c96094e1cf164b",
+      "slug": "karyotype-lab"
+    },
+    {
+      "id": "karyotype-lab#q4",
+      "sha256": "5871c1b648e5ef3fc96b83e82c1c5ae677f2d515e592fe93baf441dc85509da1",
+      "slug": "karyotype-lab"
+    },
+    {
+      "id": "antibiotic-disc#q1",
+      "sha256": "a67a97c3d9af5d5a43e57d8a5338c60f8ba104545f7c1cbc37dcc1ae713e4201",
+      "slug": "antibiotic-disc"
+    },
+    {
+      "id": "antibiotic-disc#q2",
+      "sha256": "e05a7489cd6ad3dc459fdfa6368f64b77273dc00a77f9c4e27559f9be7f6b762",
+      "slug": "antibiotic-disc"
+    },
+    {
+      "id": "antibiotic-disc#q3",
+      "sha256": "068899b7c0adc7fedca8c60b21025689dbb74c4de1669436d7e175a3d0818e17",
+      "slug": "antibiotic-disc"
+    },
+    {
+      "id": "antibiotic-disc#q4",
+      "sha256": "e7fa37583caf4e3342d3d316ed4b072f13ce1f7865c2c4045967812c9c330437",
+      "slug": "antibiotic-disc"
+    },
+    {
+      "id": "water-wave-tank#q1",
+      "sha256": "e85e452dff3634d17995b0fb8d11691dd22d033ab4fc06fc225dc7296a03e9db",
+      "slug": "water-wave-tank"
+    },
+    {
+      "id": "water-wave-tank#q2",
+      "sha256": "5890867c9259a6c6708625bb9a4a625fcfdb41477e3314a7d6f80caa7af88ecf",
+      "slug": "water-wave-tank"
+    },
+    {
+      "id": "water-wave-tank#q3",
+      "sha256": "3d8c44e04ee52885ad791f579cc8b1cc79abf3ae94b02df59cef8dfdc8a8417c",
+      "slug": "water-wave-tank"
+    },
+    {
+      "id": "water-wave-tank#q4",
+      "sha256": "f49bf3170b88a23ce641662489190adc069002b45baf5cae941d708e714416f4",
+      "slug": "water-wave-tank"
+    },
+    {
+      "id": "silver-mirror#q1",
+      "sha256": "39bebdfefe9774beb190ff7610feec63569b3611c704eca8a0482c55800e6cb8",
+      "slug": "silver-mirror"
+    },
+    {
+      "id": "silver-mirror#q2",
+      "sha256": "f263d1b5994540ede4362d352c75e7967cf8042fecf23b69063f6dadeb72b80c",
+      "slug": "silver-mirror"
+    },
+    {
+      "id": "silver-mirror#q3",
+      "sha256": "dedbbd448997a645a0e5f94d9b61f8c53f27e8e0cb79aa595beb4b6404a88e8e",
+      "slug": "silver-mirror"
+    },
+    {
+      "id": "silver-mirror#q4",
+      "sha256": "a4431c0a29273646f80b8596569fe8162a9da7af19b776270d631b9dcdb0aeb8",
+      "slug": "silver-mirror"
+    },
+    {
+      "id": "nylon-interface#q1",
+      "sha256": "684d8d1c75b3dc16c74d1bb345e7cf8644036b7aae9b0a59c3dee8d6e4837dee",
+      "slug": "nylon-interface"
+    },
+    {
+      "id": "nylon-interface#q2",
+      "sha256": "1ef14d3250b35f28b09ad25fcdb2a31fc4d01411d6536fd43b134993f504ad46",
+      "slug": "nylon-interface"
+    },
+    {
+      "id": "nylon-interface#q3",
+      "sha256": "29d14b7ebc131289bff237a34e4b1d9e163254870c5ffb168bfcc5faa5ff0b46",
+      "slug": "nylon-interface"
+    },
+    {
+      "id": "nylon-interface#q4",
+      "sha256": "5b62c1a6486ec5691e68858e4d05fbab97d977ec13ddaf16e8a83501a268e617",
+      "slug": "nylon-interface"
+    },
+    {
+      "id": "stellar-mass-data#q1",
+      "sha256": "53133bcbf17bcdd99a80e02326585a4587d1f427fa40f4a6a094af5d775be5fa",
+      "slug": "stellar-mass-data"
+    },
+    {
+      "id": "stellar-mass-data#q2",
+      "sha256": "b19c33c2a816f0dd0190d984d9c2daada16b0e70257fdcaba00e01926cd33b8e",
+      "slug": "stellar-mass-data"
+    },
+    {
+      "id": "stellar-mass-data#q3",
+      "sha256": "4eb0a708ce803ce6d60043cdb885e941b9fee070f3535a416f0877d7ed4be98d",
+      "slug": "stellar-mass-data"
+    },
+    {
+      "id": "stellar-mass-data#q4",
+      "sha256": "cb11488f7c3181da98822ebb9a580e5271a1e6bfda9cd97f0e345d103f92733b",
+      "slug": "stellar-mass-data"
+    },
+    {
+      "id": "cluster-fitting#q1",
+      "sha256": "b56205ff6c23aa4d638f524cfea7beaf019ab8ce40695271242772a997a30853",
+      "slug": "cluster-fitting"
+    },
+    {
+      "id": "cluster-fitting#q2",
+      "sha256": "65bf04b88fd26385a2e481cb1b54cabbbd0c3619fa84fb56eeefc05cc357aaf9",
+      "slug": "cluster-fitting"
+    },
+    {
+      "id": "cluster-fitting#q3",
+      "sha256": "289b0a53bc6bf85f8583ed3b06f9874793ed1d5e973e2989b433704a703362e2",
+      "slug": "cluster-fitting"
+    },
+    {
+      "id": "cluster-fitting#q4",
+      "sha256": "2125dfcb173f0a66f641ea1b9a160935457d3aa2b6afade82b08c10a9b982d3c",
+      "slug": "cluster-fitting"
+    },
+    {
+      "id": "habitable-orbits#q1",
+      "sha256": "395d7d83e80a895cc8a022078d3faca0b3d2b36ca5699fcdaa0c8c1d152a17da",
+      "slug": "habitable-orbits"
+    },
+    {
+      "id": "habitable-orbits#q2",
+      "sha256": "bc3fa428ac96c2a00055bdb1ed7cc470ced6177f1056fd07b2841415f1e5ba75",
+      "slug": "habitable-orbits"
+    },
+    {
+      "id": "habitable-orbits#q3",
+      "sha256": "66d487db8a5e3022642b66bb0b4bae0133ea7d904a12b7faf5d1d13aac18edbb",
+      "slug": "habitable-orbits"
+    },
+    {
+      "id": "habitable-orbits#q4",
+      "sha256": "93a53200cb41953b686388dd02dec36f69a911d5b42bdf194711ce06270fc333",
+      "slug": "habitable-orbits"
+    },
+    {
+      "id": "centrifuge-design#q1",
+      "sha256": "0e0d29a23c68be45440f029acb9d022d36abc3049b94f4be98b9d61f70e43995",
+      "slug": "centrifuge-design"
+    },
+    {
+      "id": "centrifuge-design#q2",
+      "sha256": "46678bf055a492ea75bc500f20a5775c15ecdaf24bd0029cd162367229f96213",
+      "slug": "centrifuge-design"
+    },
+    {
+      "id": "centrifuge-design#q3",
+      "sha256": "26c0e6ad731ed09fd159c386f36db451d7378e60056d9ababff8294b2422cc68",
+      "slug": "centrifuge-design"
+    },
+    {
+      "id": "centrifuge-design#q4",
+      "sha256": "d79ba7317da9d882ec0ea3abd1d92941e1e9fb1a92397b1f30d8cce9319e9607",
+      "slug": "centrifuge-design"
+    },
+    {
+      "id": "organic-builder#q1",
+      "sha256": "2cf9cf24b8b3f4df6e78ddcff74501ad3d5f7d8adcb0ec0971c903517e88fc24",
+      "slug": "organic-builder"
+    },
+    {
+      "id": "organic-builder#q2",
+      "sha256": "e080b88a4eb41e5574e4d083b2bfbbc9b40de8be9e1b1a4bfcc1513451f57cd6",
+      "slug": "organic-builder"
+    },
+    {
+      "id": "organic-builder#q3",
+      "sha256": "071cb3736926206636f54d217bd2dd056418294db36fb0d9669bce4aa88d1949",
+      "slug": "organic-builder"
+    },
+    {
+      "id": "organic-builder#q4",
+      "sha256": "581d24833c0c13d034a23fcc4a6faa8c6a6824b7a5efd6653c39c865897c8ac7",
+      "slug": "organic-builder"
+    },
+    {
+      "id": "dna-structure#q1",
+      "sha256": "528763aaedbbfc049fe793b7ce7d44db63e194cf8a9f0a425e29b7bd4db4c6fc",
+      "slug": "dna-structure"
+    },
+    {
+      "id": "dna-structure#q2",
+      "sha256": "ec17555894d73c158545900d42cfd565c29aa6ef1ed9009d7d0f53f1d6a292da",
+      "slug": "dna-structure"
+    },
+    {
+      "id": "dna-structure#q3",
+      "sha256": "f95d2ca28fbcec5192ade1f3098bfe3c3502e54462a166cc4770da0751b0d22f",
+      "slug": "dna-structure"
+    },
+    {
+      "id": "dna-structure#q4",
+      "sha256": "0c4d42854e2f676f30ce8b7afe906889e89c91a7a34401a3b06b4c30faee4e2c",
+      "slug": "dna-structure"
+    },
+    {
+      "id": "protein-folding#q1",
+      "sha256": "f112f1756352f41acc154ed51266b66c6ef60e452dcf9d3d4527d18000a91243",
+      "slug": "protein-folding"
+    },
+    {
+      "id": "protein-folding#q2",
+      "sha256": "c369b3dfcfa11a98799fbcb9c068d33daffd41f43b6c5fe74e5c287aeca57356",
+      "slug": "protein-folding"
+    },
+    {
+      "id": "protein-folding#q3",
+      "sha256": "6b372d5906dcc5868642a0981d2c5beee9a6d9113ce62bf4d2736bd47bebb1a4",
+      "slug": "protein-folding"
+    },
+    {
+      "id": "protein-folding#q4",
+      "sha256": "8b8478259e27fa470f92c22bbc0d11b72baf2472582bc536b9157226a52b70bc",
+      "slug": "protein-folding"
+    },
+    {
+      "id": "organelle-builder#q1",
+      "sha256": "a0682acaca871818f14b143f01abec46d38be2aa8be718040a71e99352532f5d",
+      "slug": "organelle-builder"
+    },
+    {
+      "id": "organelle-builder#q2",
+      "sha256": "37839e15f06feba5ed00433a4682b5d817421312075cad037226158cd3d1d07f",
+      "slug": "organelle-builder"
+    },
+    {
+      "id": "organelle-builder#q3",
+      "sha256": "b032caf1cf15bc8fb32eac1259730032f5fa55d8ed067224a1789010b8d59781",
+      "slug": "organelle-builder"
+    },
+    {
+      "id": "organelle-builder#q4",
+      "sha256": "581f4fee8a2d3b33ab1d821021643ff47c6df21156a6e44060c87961ac45eda1",
+      "slug": "organelle-builder"
+    },
+    {
+      "id": "hydride-boiling#q1",
+      "sha256": "71ea3c8e2ecae6b4c359650722b4291607b8ae401c665a620a09b3fcd677da0e",
+      "slug": "hydride-boiling"
+    },
+    {
+      "id": "hydride-boiling#q2",
+      "sha256": "920b4777319be28fd275ab155d3e450f228115cf335aba093f046aca8f3b4fb5",
+      "slug": "hydride-boiling"
+    },
+    {
+      "id": "hydride-boiling#q3",
+      "sha256": "5708b01ad5b18d05e3e993ca93b87b5e6e32b5f10c3848b06f3cf6f5efef2cd7",
+      "slug": "hydride-boiling"
+    },
+    {
+      "id": "hydride-boiling#q4",
+      "sha256": "4abe097b88756d7678bd9e1054de984af557b7f8058041a60d187c82ce1b6233",
+      "slug": "hydride-boiling"
+    },
+    {
+      "id": "fuel-comparison#q1",
+      "sha256": "942423a1b4d2dd7173baade6a18bc6f95f98dbb810dc83363d0e5870d0969944",
+      "slug": "fuel-comparison"
+    },
+    {
+      "id": "fuel-comparison#q2",
+      "sha256": "80d2fffcbf0ce0a3fe9431a8a5a92045b03faed39fb0b0c23a68c4714b74648c",
+      "slug": "fuel-comparison"
+    },
+    {
+      "id": "fuel-comparison#q3",
+      "sha256": "9bc313eec293abfdbbd10b55f01864805bf6ba520f3e77dfbcf0b3b5ca1d05db",
+      "slug": "fuel-comparison"
+    },
+    {
+      "id": "fuel-comparison#q4",
+      "sha256": "95cda660ced7b04d9219162393bd753004fa0015c29ad45a5690735d3e480372",
+      "slug": "fuel-comparison"
+    },
+    {
+      "id": "mcu-sampling#q1",
+      "sha256": "2bdca75240183bf605ce7302c27e3a89cf95eeb47b396cf81989e0d3781ec788",
+      "slug": "mcu-sampling"
+    },
+    {
+      "id": "mcu-sampling#q2",
+      "sha256": "c8f8f13f625a9c7931a9cbcbc249b59514bcabf68605ea88f69d33c84db4fb39",
+      "slug": "mcu-sampling"
+    },
+    {
+      "id": "mcu-sampling#q3",
+      "sha256": "47b3309316ef5d6ba5f7e611b1b5741d85abba4e4486043b6b66bd003f3e3cc5",
+      "slug": "mcu-sampling"
+    },
+    {
+      "id": "mcu-sampling#q4",
+      "sha256": "b0d262fccf103278b883ae80def6e7b12c2238148d4fd40d82ecb078bd1e5d70",
+      "slug": "mcu-sampling"
+    },
+    {
+      "id": "smart-pot#q1",
+      "sha256": "ac394cd5e05b3e0a2086c263520b4cbf3b5296a2c4e9f2fb3984b45658c9813c",
+      "slug": "smart-pot"
+    },
+    {
+      "id": "smart-pot#q2",
+      "sha256": "650850dbcacedd5bc71597d03136cfc5175134fcea10dbdc5444e26cd665f307",
+      "slug": "smart-pot"
+    },
+    {
+      "id": "smart-pot#q3",
+      "sha256": "04b62dcc493a1fba4fa4f5840a7347633dee5fb453a59bd04344767bfe5a6cef",
+      "slug": "smart-pot"
+    },
+    {
+      "id": "smart-pot#q4",
+      "sha256": "972d3048dc6ead888f59e534deaaf3d1e32f33e346e039aaca2159c4b4ab6c39",
+      "slug": "smart-pot"
+    }
+  ],
+  "followups": [
+    {
+      "id": "mendeleev@formula-transfer",
+      "sha256": "e1fed36d79ef0a1063064283db66131782c44065032f9446470a33c05316af43"
+    },
+    {
+      "id": "mendeleev@evidence-transfer",
+      "sha256": "d10e825c300b4abffbe0d1ac456c39e74961f4b9ad0c6909ef315d374aa44f83"
+    },
+    {
+      "id": "mendeleev@identify-evidence",
+      "sha256": "c6e8e4e6951c05a1eb2fc3de2a2fa481a5ec96e77dce7386e9391f450eb5300c"
+    },
+    {
+      "id": "mendeleev@hydrogen-comparison",
+      "sha256": "3a55513c9b16912fcb70ad251601099e8c611def4e610d893ec7aa333cd92a81"
+    },
+    {
+      "id": "pasteur@sealed-transfer",
+      "sha256": "dcd7dd9e1e94f1b51a3cbdcce4f907190f67e4ff7844123cce9eb1ecee633b78"
+    },
+    {
+      "id": "pasteur@air-transfer",
+      "sha256": "838034853a230f82581993b93b25c516ac5385e2dc25635fb2632c02c9c76f8c"
+    },
+    {
+      "id": "newton-prism@fixed-path",
+      "sha256": "f3ab99bd094ab44aeba996acf78e3dec38e250d3c97420cf8710ad9fdd3c6763"
+    },
+    {
+      "id": "newton-prism@green-transfer",
+      "sha256": "80f0e1817ac32c608b8d8d866bd24d5904c2ea6169eb0bc5c73638305668ddf5"
+    },
+    {
+      "id": "newton-prism@screen-transfer",
+      "sha256": "52f6b693f6707f5b783975b79d63865b11eee88a3e18f998c7123663e2e35baf"
+    },
+    {
+      "id": "newton-prism@source-transfer",
+      "sha256": "cc1d0aec516c8103d5f1424c5a42e380aeb4ddfcc3b9fd2f3bfb265e89e2f379"
+    },
+    {
+      "id": "infection-prevention@control-transfer",
+      "sha256": "4e77ab2fcc789f79fd298ada56d3b14f60f6c1f015b0e3cdc49962c0d97b9e51"
+    },
+    {
+      "id": "infection-prevention@route-transfer",
+      "sha256": "9344ea3f9fd6aa6f1153706dcc1ef82181263a798c5349c9f8bf37167e93b085"
+    },
+    {
+      "id": "speaker-lab@dc",
+      "sha256": "08cc736c8fef425a8b1c2fa69f035505ce4dead17af70b58324ab8145d918eb1"
+    },
+    {
+      "id": "speaker-lab@control",
+      "sha256": "dc705c8930d33c2f3918d7266ab9d3bc976c390166b620da09d6d746d336bcef"
+    },
+    {
+      "id": "wireless-power@transient",
+      "sha256": "03d3f447fd07b7a18aff4024e64d7c12374794b9cb1c91f0d3fb916c054d3e38"
+    },
+    {
+      "id": "wireless-power@distance",
+      "sha256": "166b86845aae75c59d7887f23aa04f12a744cb136fb0ec292e284f0a6903385d"
+    },
+    {
+      "id": "magnetic-brake@insulator",
+      "sha256": "9790fa2b9606e38266e3960e00093f78ecd07291e8d2d296f8f2c0e7e892ed43"
+    },
+    {
+      "id": "magnetic-brake@upward",
+      "sha256": "4478ddc3f5cd0c1cfd6516e28cdafc9cf33352d94947b97eddfc0ea172832e14"
+    },
+    {
+      "id": "transistor-speaker@repair",
+      "sha256": "835d02f738716d391025595546ff9d494ce448de36f72dd05df3baf967849b0b"
+    },
+    {
+      "id": "transistor-speaker@frequency",
+      "sha256": "5bbaa36d0932f13bc7a693cb12734572957624c3d6aa11739b04d8452a338df4"
+    },
+    {
+      "id": "soap-film@wavelength",
+      "sha256": "1993d018e67ea8f9735e81d9e5d3975456fc79844d5d2b6bc2ba1a703d775fe7"
+    },
+    {
+      "id": "soap-film@height",
+      "sha256": "139b27390f0f04895f530c5de832ef29c1f31d507489088ea5b67d55131521fd"
+    },
+    {
+      "id": "polarization@axis",
+      "sha256": "eab44b1890c976a6b43d0dcfef0f2a333a72532baeb7e15edb5a36fc1017b5e1"
+    },
+    {
+      "id": "polarization@unknown",
+      "sha256": "3085965335d3428ab24a4e116be4e7dd490b292246ce0be1d66134910c620c7f"
+    },
+    {
+      "id": "electron-slits@spacing",
+      "sha256": "9a5acc4430f35996bbd0d5b1c60d4b29e62e61798d0fd9b82bd7aaff7adeaf02"
+    },
+    {
+      "id": "electron-slits@path",
+      "sha256": "cbd14b06dadccb984c5428fb877795d3840e32913256dd7c746025568c72e29a"
+    },
+    {
+      "id": "gas-identification@pressure-error",
+      "sha256": "4971027148a02776b05758676000f8e147f9961aa791dc65b9558904a9ab4ce9"
+    },
+    {
+      "id": "gas-identification@head",
+      "sha256": "7441c5ed751d3fbd2434ce26191ecdff37ff10c24add1f46393274d5a2b58cba"
+    },
+    {
+      "id": "sugar-phase@dilute",
+      "sha256": "6df1f1ee9b69bb98a93a5205c3c2679c6a2cd062ebd4002be1703dbfc4a12717"
+    },
+    {
+      "id": "sugar-phase@mass",
+      "sha256": "d020d97920820d0979d5ba0300fd96447bc50bea28ff5bfd6fe04616057f0954"
+    },
+    {
+      "id": "hess-calorimetry@subtract",
+      "sha256": "b57d8f21c1fdc6be862cbf8802e115d3fb2096b74482cc5f74f3f781a54abce8"
+    },
+    {
+      "id": "hess-calorimetry@heat-loss",
+      "sha256": "c0236b0a25357fbf3d4e7626dbf64283d9d9a545d2dd3613ca77ddc4f0432755"
+    },
+    {
+      "id": "buffer-solution@equal",
+      "sha256": "a077117adb6eadb890910571136337499389f531fa55d847a793f3f2601325fb"
+    },
+    {
+      "id": "buffer-solution@not-seven",
+      "sha256": "53090c91a939f71dc2d89bd712517a3724f71be235150230aad989d3ea4fb713"
+    },
+    {
+      "id": "salt-hydrolysis@dilution",
+      "sha256": "0e82319954c54cc9322cbc0bb10567d2a1074dd8abfd7651c857104e30636382"
+    },
+    {
+      "id": "salt-hydrolysis@new-salt",
+      "sha256": "1374880b710d7b04dc7a0e15f4ac1e44f1e1add9072d6739a1ab427e9b3805c1"
+    },
+    {
+      "id": "bean-respiration@no-koh",
+      "sha256": "4e446ab7317cd4b765a439ab1bd2d28c9a0ad48555b63e66d53a23057bf20ff9"
+    },
+    {
+      "id": "bean-respiration@amount",
+      "sha256": "553aae1b8ba906275c68a019025e221c70fb24a141e860cade5f886ae57fdf18"
+    },
+    {
+      "id": "insulation-lab@cold",
+      "sha256": "2ba3a2d7826ae31ad65311b2e1fb343715844ba0444951702ab42b2e119a398b"
+    },
+    {
+      "id": "insulation-lab@fair",
+      "sha256": "d8b299b60bcb694a832d1afaa96dbac5ca62c715ca88ca4265e56b6a8f42dbb7"
+    },
+    {
+      "id": "doppler-lab@inverse",
+      "sha256": "0e3dddf7e5e0aaec8966090dcde7bdd1daeebef06236875456f04a4f3cbc26c7"
+    },
+    {
+      "id": "doppler-lab@same-ratio",
+      "sha256": "b7e2ddf415a8380102d2c839d523afd8d49c7dd058ca31f09eedbe393082ff60"
+    },
+    {
+      "id": "ride-acceleration@double",
+      "sha256": "928ed7ec78d9e34af8a0799f3b5a01e6cf9c6f3aad4e5d4d9c52fd2fd9ff31c0"
+    },
+    {
+      "id": "ride-acceleration@descending",
+      "sha256": "d5db47c2efc4372cf702dfe88a856d01a3c87f3715bea7b39b19580344f2b258"
+    },
+    {
+      "id": "ride-acceleration@swing-support",
+      "sha256": "3cc33931396249e5dd5f152ebf4de32d6b6691ea0c8f8695648fc5e6dd1439dc"
+    },
+    {
+      "id": "ride-acceleration@mount-sign",
+      "sha256": "56aa213d481386538d61a302700580d38c18fadba479128b272d28942f5fc4e6"
+    },
+    {
+      "id": "dna-replication@new-template",
+      "sha256": "cbaed8be4549ac295dc1c69025ac47bccbf26877c282da16debf1163685b8999"
+    },
+    {
+      "id": "dna-replication@third",
+      "sha256": "db4ead1fa85ee2a7a52a1ce4f4ccff6bafb416e9e08d8a9f2d5548b3382f7986"
+    },
+    {
+      "id": "protein-synthesis@stop",
+      "sha256": "2fc539e660ce8a598f1b1634f6a14ba3285f36314db46ae88580ccb0146233f8"
+    },
+    {
+      "id": "protein-synthesis@three",
+      "sha256": "af66c1450d77fe1f9c5b00452707a0f40b536b8b6cb3319f69d8b33129e0c1a9"
+    },
+    {
+      "id": "pedigree-lab@daughter",
+      "sha256": "2dabae3d142927645c700a67e43031450e7791951ff01794ed69d01df83a9b9e"
+    },
+    {
+      "id": "pedigree-lab@all",
+      "sha256": "7cb8a8ffc5a8f21a22c00f9ad472528de7f571446449ff96d6194aaaa1719be7"
+    },
+    {
+      "id": "karyotype-lab@sex",
+      "sha256": "86f2f40a2a9cdf16e38c6cf27613a949d2da2bb17c914849e64ae53029eaf52f"
+    },
+    {
+      "id": "karyotype-lab@sequence",
+      "sha256": "d794f1af35d74bcdf527093c30c57a3e39b2dc92710ef75a20fad66a8e3fd09b"
+    },
+    {
+      "id": "antibiotic-disc@radius",
+      "sha256": "99374003acf7e593aeeff5b83fda7eea104ebc731a287d5ae22b86f8ee8ecd14"
+    },
+    {
+      "id": "antibiotic-disc@dose",
+      "sha256": "a9c0a96b17aacc39c3e7e1e40ee3b410d5d738fc6111c685a3ee7bcad86dd144"
+    },
+    {
+      "id": "water-wave-tank@deep",
+      "sha256": "62c23adc67aca2a842d53c1a166dcf2c8a19f924b84d981e664860f9c22eb30c"
+    },
+    {
+      "id": "water-wave-tank@bottom",
+      "sha256": "47238111ca33e92e367a61b34c9f73a22401adfc89f8f0542bdb0bb619a97155"
+    },
+    {
+      "id": "silver-mirror@electrons",
+      "sha256": "4a89b1be8246abf981ddcff6ecaa9c280f21696b6a95fa5201ce535d387024c8"
+    },
+    {
+      "id": "silver-mirror@control",
+      "sha256": "e6f89315b643cc8f270dd1c8c0c08cfe7be15ba2ee5a206b04bec7b7ed6a4ebb"
+    },
+    {
+      "id": "nylon-interface@eight",
+      "sha256": "9d538ba85244109b91bb0a7c6e6483b8a244b1106c141f1107c537369ed32134"
+    },
+    {
+      "id": "nylon-interface@pull",
+      "sha256": "fe3b407e3d38f8d187ecc6077972746747faac806d745c0763bb2d53c2347ad1"
+    },
+    {
+      "id": "stellar-mass-data@five",
+      "sha256": "31288dca7bb6f10bf343e75f6e77646f223ce40de2372c57d45b7f9f6c9fe674"
+    },
+    {
+      "id": "stellar-mass-data@inverse",
+      "sha256": "f5cae45edc640daa0ee9c58577cde46b8aa8feac36ac09714af8bffd3880db7f"
+    },
+    {
+      "id": "cluster-fitting@ratio",
+      "sha256": "5732b3e825147eb039072d36c2444e705939cd9fb1116628c62398952b170ef2"
+    },
+    {
+      "id": "cluster-fitting@match",
+      "sha256": "78ade2c099246f8e222ee8dec0b9f38d28e76ebb1471a656f029ce40426ad18f"
+    },
+    {
+      "id": "habitable-orbits@cooler",
+      "sha256": "159ee941ee2f46263ac642ca927e4db490a36b29f549a656d606df918688f5f5"
+    },
+    {
+      "id": "habitable-orbits@flux",
+      "sha256": "da8ba4d1ec6e15ad3d4763d0598430a30ce7f3f221b21822386127cdd6f876b3"
+    },
+    {
+      "id": "centrifuge-design@rotor",
+      "sha256": "ad2cc1fb50244efc88c5702644057bd73bfb4dc2db95fa812cd85281e11933a4"
+    },
+    {
+      "id": "centrifuge-design@tube",
+      "sha256": "6226c1b285c928c3d0cad4d60ae4eda252092b3006cd3215b52a85139c3cd59a"
+    },
+    {
+      "id": "organic-builder@methane",
+      "sha256": "443a023fb375545e1a5a43cb7b62563991d51a4d9c2ba1d2dcf92a0379d904d9"
+    },
+    {
+      "id": "organic-builder@acid",
+      "sha256": "d3ae570e75223caf4ba128f5479f023963015858932d002c716f1339b42d26d2"
+    },
+    {
+      "id": "dna-structure@fraction",
+      "sha256": "dcd60efd4fda5543f968b74a0ef1392933a6085ab13579efe187f3f9835453f5"
+    },
+    {
+      "id": "dna-structure@replace",
+      "sha256": "6b00cce3c8ebdb3a2732400a634c4f11f1660832a50f170596c5677bf49c0e23"
+    },
+    {
+      "id": "protein-folding@three",
+      "sha256": "fd9e36c94072ff9d67178592e941f729004b8da21b97118eee7a254a2bac2492"
+    },
+    {
+      "id": "protein-folding@cut",
+      "sha256": "3e4c8e30e1453d4dc3e8a4ffd257fc6101a7e9b111ab1984c8a8ac82bb8e31b8"
+    },
+    {
+      "id": "organelle-builder@cross",
+      "sha256": "a04873f4cd5b1f34c73a67b9f470cf0a7d86bcb82bfcec12c19e016ddba83283"
+    },
+    {
+      "id": "organelle-builder@artificial",
+      "sha256": "c63925af3b984a3fd81f742e38a16d91e96ec9a073033da8321bbeece21186d7"
+    },
+    {
+      "id": "hydride-boiling@ranking",
+      "sha256": "aa44b8d098e9329e164afff1d4b5a2dc40fbc89949007deab0de398d05091f5e"
+    },
+    {
+      "id": "hydride-boiling@both",
+      "sha256": "fede0c80462cae9f4315d19275666d153352a7d22f00183a1371390ae5be180c"
+    },
+    {
+      "id": "fuel-comparison@mass",
+      "sha256": "7714e4136e325256cc0589f49787b4379d364deed36ad34d58d521c8a1bf7c46"
+    },
+    {
+      "id": "fuel-comparison@carbon",
+      "sha256": "18bc067faa509b2002b10923a14f1cdead4c69be4e74856f418477e306996ae4"
+    },
+    {
+      "id": "mcu-sampling@rate",
+      "sha256": "0cf302de2e02430a905e43ab6d0c7178f1577ec3e0ec54c51a1f2607b8e8cd21"
+    },
+    {
+      "id": "mcu-sampling@period",
+      "sha256": "2c4dd2b602e8e40e500cdd35bafbe823ea1c5d9ac82d97a44828986a0dc30432"
+    },
+    {
+      "id": "smart-pot@raw",
+      "sha256": "be42acc28de9b502f5e855e6c0db019595253c285bd447f6272dbc99d4b24e36"
+    },
+    {
+      "id": "smart-pot@threshold",
+      "sha256": "38d440f3a1a6fb54b594905c4fcdb4a4157d227a51500f024074151d91cabdff"
+    }
+  ],
+  "sources": [
+    {
+      "slug": "mendeleev",
+      "source": {
+        "id": "764c91a83f8bf462",
+        "pages": [
+          27,
+          28,
+          75,
+          77
+        ],
+        "printedPages": [
+          27,
+          28,
+          75,
+          77
+        ]
+      },
+      "variantSources": [
+        {
+          "id": "ee3ee343af97cac2",
+          "pages": [
+            21,
+            22,
+            79
+          ],
+          "part": "17장 카드의 성질로 원소 기호 확인·원문 형태의 배열판·현대 주기율표의 첫 20개 원소 비교"
+        }
+      ],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "764c91a83f8bf462",
+          "pages": [
+            31,
+            70
+          ],
+          "part": "PDF 31쪽 07·08번과 70쪽 해설: 원자량과 화학식에 따른 배열, 빈칸의 의미. 기본·전이 문항의 판단 근거 대조"
+        }
+      ],
+      "boundary": "기재한 두 출판사의 부분 배열이다. 수소의 1족 위치를 알칼리 금속과 같은 성질이라는 근거로 사용하지 않는다. 현대 주기율표 전체, 모든 출판사 카드 활동, 모둠별 자유 배열·토론·외부 검색의 수행 완료가 아니다."
+    },
+    {
+      "slug": "pasteur",
+      "source": {
+        "id": "43ac53e9e01adbcc",
+        "pages": [
+          8,
+          9,
+          10
+        ],
+        "printedPages": [
+          33,
+          34,
+          35
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "교과서의 역사적 배양액 실험을 정성적으로 재현한다. 우유 100 mL·끓인 뒤 4일 관찰의 실제 재연, 미생물 배양 속도와 냄새 측정은 제공하지 않는다."
+    },
+    {
+      "slug": "newton-prism",
+      "source": {
+        "id": "43ac53e9e01adbcc",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          30,
+          31
+        ]
+      },
+      "variantSources": [
+        {
+          "id": "ee3ee343af97cac2",
+          "pages": [
+            47,
+            48,
+            49
+          ],
+          "part": "백색광 분산·물을 채운 둥근 컵의 합성·빨간 빛 재통과"
+        },
+        {
+          "id": "764c91a83f8bf462",
+          "pages": [
+            45,
+            46,
+            65
+          ],
+          "part": "백열전구·볼록 렌즈의 합성 및 고정된 두 번째 프리즘 변형 절차"
+        }
+      ],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "764c91a83f8bf462",
+          "pages": [
+            65,
+            71
+          ],
+          "part": "PDF 65쪽 07번과 71쪽 정답: 백열전구와 RGB LED의 스펙트럼 비교"
+        }
+      ],
+      "boundary": "대표 색 광선과 이상적인 합성 위치를 쓰는 모식도. 실제 광원별 방출 스펙트럼·색수차·정량 분광 측정은 제공하지 않는다. 한 색 재통과와 고정 경로 비교를 구별한다. 고정 경로에서 첫 프리즘 회전은 정렬 절차를 나타낸 모식도이며 각도 측정·실제 장치 정렬은 제외한다. 두 번째 프리즘은 동일 입사 조건에서 두 면의 스넬 법칙을 적용한다."
+    },
+    {
+      "slug": "infection-prevention",
+      "source": {
+        "id": "98fd4b1d24cbec64",
+        "pages": [
+          11,
+          12,
+          17,
+          18
+        ],
+        "printedPages": [
+          94,
+          95,
+          100,
+          101
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "6ed679a59c21c7a0",
+          "part": "형성평가 기본·보충·심화와 정답·해설"
+        },
+        {
+          "id": "c645186ae5280481",
+          "part": "형성평가 심화 손 씻기 비교와 정답·해설"
+        }
+      ],
+      "boundary": "물방울과 형광 로션의 정성 모형이다. 모형 자국은 실측값·감염 확률·예방 효과의 수치가 아니다. 접촉 놀이는 한 차례에 각 사람 한 번의 접촉으로 단순화했다."
+    },
+    {
+      "slug": "speaker-lab",
+      "source": {
+        "id": "6969a20462cfe732",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          102,
+          103
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "제작 절차를 재현한 단면 모형이다. 진동은 느리게 확대하며 실제 종이컵의 공명·효율·재료별 음량은 계산하지 않는다. 듣기 기능은 선택한 주파수의 참고음이며 제작품의 녹음이 아니다."
+    },
+    {
+      "slug": "wireless-power",
+      "source": {
+        "id": "22578837da73a2b3",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          110,
+          111
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "10 kHz 교류와 이상적인 결합 계수를 사용한 모형이다. 발광 여부는 모형의 문턱 전압으로 판단한다. 실제 충전 회로의 공진·정류·충전 제어는 구현하지 않으며 직류 전환 순간의 과도 현상도 별도이다."
+    },
+    {
+      "slug": "magnetic-brake",
+      "source": {
+        "id": "000c068a0397ecb8",
+        "pages": [
+          32
+        ],
+        "printedPages": [
+          38
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "자석의 감속을 속도에 비례하는 저항력으로 근사한다. 형상·틈·자석 세기에 따른 실제 낙하 시간은 예측하지 않는다. 알루미늄 조각은 외부 자기장이 없는 비교 물체로 취급한다."
+    },
+    {
+      "slug": "transistor-speaker",
+      "source": {
+        "id": "000c068a0397ecb8",
+        "pages": [
+          39
+        ],
+        "printedPages": [
+          45
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "교과서의 회로 제작 목적에 맞춘 기능 모형이다. 전압 이득 10과 전원에 따른 출력 제한을 가정하며 실제 C1815 바이어스·부품값으로 계산한 회로 시뮬레이터는 아니다."
+    },
+    {
+      "slug": "soap-film",
+      "source": {
+        "id": "428056f4452acd59",
+        "pages": [
+          6,
+          7
+        ],
+        "printedPages": [
+          60,
+          61
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "수직 입사와 막 굴절률 1.33의 두 광선 근사다. 배수 과정은 가정한 두께 변화이며 실제 시간별 두께나 정확한 백색광 색상을 예측하지 않는다."
+    },
+    {
+      "slug": "polarization",
+      "source": {
+        "id": "428056f4452acd59",
+        "pages": [
+          21,
+          22
+        ],
+        "printedPages": [
+          75,
+          76
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "A·B는 서로 다른 방향의 선편광, C는 무편광, D는 원편광인 이상 광원이다. 실제 제품별 디스플레이 측정값이 아니다. 한 장의 편광판과 세기만으로 무편광과 원편광을 구별할 수 없음을 포함한다."
+    },
+    {
+      "slug": "electron-slits",
+      "source": {
+        "id": "110fa0ab76336b3c",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          99,
+          100
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "단색 전자의 원거리 확률 분포를 사용하는 모형이다. 검출 전 특정 궤적을 그리지 않는다. 경로 측정은 완전한 결어긋남으로 단순화하며 수치 눈금은 실제 장치 길이가 아니다."
+    },
+    {
+      "slug": "gas-identification",
+      "source": {
+        "id": "f0a490bc4a299711",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          14,
+          15
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "25 ℃, 101.3 kPa의 이상 기체 모형이며 수증기압 3.17 kPa를 사용한다. 기체의 물에 대한 용해·누출·실제 기체 오차는 구현하지 않는다. 특히 이산화 탄소의 실제 수상 치환에서는 용해 영향을 별도로 고려해야 한다."
+    },
+    {
+      "slug": "sugar-phase",
+      "source": {
+        "id": "dd8c8169d8e6fbec",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          56,
+          57
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "1기압 묽은 비전해질 용액의 근사다. 끓는점 오름 상수 0.512, 어는점 내림 상수 1.86 K·kg/mol을 사용한다. 과냉각은 생략하고 상변화가 진행되며 남은 용액의 농도가 증가하는 방향을 반영한다."
+    },
+    {
+      "slug": "hess-calorimetry",
+      "source": {
+        "id": "31afcde4eb7f7e27",
+        "pages": [
+          3,
+          4
+        ],
+        "printedPages": [
+          82,
+          83
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "같은 시작·끝 상태의 이상 열량계 모형이다. 용해·중화 엔탈피 −44.5·−57.3 kJ/mol과 용액 비열 4.2 J/(g·℃)를 가정하며 열손실·희석열·열량계 열용량은 생략한다."
+    },
+    {
+      "slug": "buffer-solution",
+      "source": {
+        "id": "ae885f31c6b75cd2",
+        "pages": [
+          1,
+          2
+        ],
+        "printedPages": [
+          30,
+          31
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "각 10 mL, 초기 pH 7의 이상적인 인산 완충계 한 평형을 사용한다. pKa 7.21, 총농도 0.1 M, 한 방울 0.05 mL로 가정한다. 실제 완충액의 조성·활동도·다단 해리는 생략한다."
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "source": {
+        "id": "e0f6072944407ce9",
+        "pages": [
+          4
+        ],
+        "printedPages": [
+          29
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "25 ℃의 가상 시료에서 물의 자동 이온화까지 포함하여 전하 균형을 계산한다. 활동도와 실제 전극 오차는 생략한다. 제공된 교과서의 HCN 상수 표기 Kb는 문맥상 Ka로 해석하고 6.2×10⁻¹⁰을 사용했다."
+    },
+    {
+      "slug": "bean-respiration",
+      "source": {
+        "id": "88b3398d0063221f",
+        "pages": [
+          3,
+          4
+        ],
+        "printedPages": [
+          54,
+          55
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "같은 초기 조건에서 호흡의 방향과 대조군 역할을 비교하는 정성 모형이다. 표시한 센서 값·변화율·잉크 이동은 측정 자료가 아니다. 호흡계는 온도·압력 일정, 호흡 지수 1, CO₂ 완전 흡수를 가정한다."
+    },
+    {
+      "slug": "insulation-lab",
+      "source": {
+        "id": "a09d07688dc197a9",
+        "pages": [
+          6
+        ],
+        "printedPages": [
+          56
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "집중 열용량 모형이다. 열전도율은 비교용 가정값(솜 0.04, 종이 0.10, 마른 모래 0.30 W/(m·K))이며 교과서의 실측 결과가 아니다. 재료의 밀도·습도·충전 방식과 자연 대류 변화는 생략한다."
+    },
+    {
+      "slug": "doppler-lab",
+      "source": {
+        "id": "55ff1f88dea3080a",
+        "pages": [
+          17
+        ],
+        "printedPages": [
+          107
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "공기가 정지한 1차원 음원 이동 모형, 음속 343 m/s를 사용한다. 수신기는 정지한다. 상대적인 파면 간격은 느리게 표시하며 실제 음파 진동을 화면 재생 속도와 같게 표시하지 않는다."
+    },
+    {
+      "slug": "ride-acceleration",
+      "source": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          12,
+          13
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [
+        {
+          "id": "e7caa9f0f741ad37",
+          "pages": [
+            17
+          ],
+          "part": "그네·시소·미끄럼틀의 부착 위치·측정 방향과 시간별 가속도 비교"
+        }
+      ],
+      "assessmentSources": [
+        {
+          "id": "a97d3120332ca071",
+          "pages": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "part": "04번 경사면의 힘 분해, 11~15번 원운동·진자의 가속도와 해설"
+        }
+      ],
+      "defaultContext": "high-common",
+      "courseContexts": {
+        "high-common": {
+          "subjects": [
+            "과학탐구실험2"
+          ],
+          "codes": [
+            "10과탐2-01-01",
+            "10과탐2-01-02"
+          ],
+          "grades": [
+            "고1"
+          ],
+          "defaultMotion": "circle",
+          "questionNumbers": [
+            1,
+            3,
+            4,
+            8
+          ],
+          "followupIds": [
+            "ride-acceleration@descending",
+            "ride-acceleration@mount-sign"
+          ],
+          "intro": "운동 모습과 가상 센서값을 비교하세요. 센서의 방향을 바꾸고, 원시값과 중력 보정값이 어떻게 다른지 확인해 보세요."
+        },
+        "high-elective": {
+          "subjects": [
+            "역학과 에너지"
+          ],
+          "codes": [
+            "12역학01-01",
+            "12역학01-03"
+          ],
+          "grades": [
+            "고2",
+            "고3"
+          ],
+          "defaultMotion": "swing",
+          "questionNumbers": [
+            2,
+            5,
+            6,
+            7
+          ],
+          "followupIds": [
+            "ride-acceleration@double",
+            "ride-acceleration@swing-support"
+          ],
+          "intro": "그네·시소·미끄럼틀의 운동을 가상 센서로 측정하세요. 부착 위치·방향과 운동 조건을 바꾸고, 힘과 가속도의 관계로 그래프를 해석해 보세요."
+        }
+      },
+      "boundary": "계산한 가상 센서값이며 실제 기기에서 수집한 자료가 아닙니다. 그네는 마찰 없는 진자, 시소는 설정한 각도·주기로 구동하는 막대, 미끄럼틀은 마찰 없는 경사면입니다. 경사면 끝의 충돌은 제외합니다. 원시 센서는 지지 효과를 포함하고, 중력 보정값은 장치 축으로 읽은 운동 가속도입니다. 기기 잡음·진동은 생략합니다."
+    },
+    {
+      "slug": "dna-replication",
+      "source": {
+        "id": "de0c1acaeaa2453a",
+        "pages": [
+          8,
+          9
+        ],
+        "printedPages": [
+          35,
+          36
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "35ddba87be4c287d",
+          "part": "DNA 복제 1~4번 및 해설: 반보존성, 3′ 말단, 프라이머, 연결효소"
+        }
+      ],
+      "boundary": "오른쪽으로 진행하는 복제분기점 하나를 12염기쌍·짧은 프라이머로 축소한 모형이다. 염기 수·조각 수는 실제 길이를 뜻하지 않는다. 교과서의 스톱 모션 촬영·공유 수행은 포함하지 않는다."
+    },
+    {
+      "slug": "protein-synthesis",
+      "source": {
+        "id": "3efaa8d5b5bd911f",
+        "pages": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "printedPages": [
+          57,
+          58,
+          59,
+          60,
+          61
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "한 유전자의 짧은 서열과 표준 유전부호를 사용하는 모형이다. RNA 가공·번역 후 변형은 생략한다. 무세포 반복 RNA는 개시 조건을 달리한 역사적 실험 모형이며 일반 세포의 AUG 개시와 구별한다."
+    },
+    {
+      "slug": "pedigree-lab",
+      "source": {
+        "id": "cb057c78a9819273",
+        "pages": [
+          6
+        ],
+        "printedPages": [
+          15
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "X 염색체 열성 형질 하나를 다룬 7인 가상 가계도이며 원문의 14인 가계도를 복제한 것은 아니다. 완전 침투·돌연변이 없음·성별 확률 1/2를 가정한다. 실제 개인의 건강 진단을 제공하지 않는다."
+    },
+    {
+      "slug": "karyotype-lab",
+      "source": {
+        "id": "588b1a480be9f824",
+        "pages": [
+          3,
+          4
+        ],
+        "printedPages": [
+          136,
+          137
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "4ffbb14ab2d71905",
+          "part": "사람의 유전병 1번·4번·6번과 해설: 염색체 수, 핵형의 해상도와 유전자 변화 구별"
+        }
+      ],
+      "boundary": "실제 현미경 사진 대신 같은 특징끼리 짝짓는 모식도를 사용한다. 길이·띠 위치는 실제 인간 염색체의 계측값이 아니다. 가상 자료의 염색체 수 비교이며 개인의 의학적 진단을 제공하지 않는다."
+    },
+    {
+      "slug": "antibiotic-disc",
+      "source": {
+        "id": "28177f9b69b984c7",
+        "pages": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "printedPages": [
+          50,
+          51,
+          52,
+          53
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "A~D는 실제 식물 이름과 대응하지 않는 가상 추출액이다. 표시된 억제 폭은 비교 학습용 합성 자료이며 교과서 실측치·식품 효능·치료 효과가 아니다. 농도·확산 특성이 다른 실제 물질의 항균 효과를 억제 폭만으로 순위화할 수 없다."
+    },
+    {
+      "slug": "water-wave-tank",
+      "source": {
+        "id": "b5e30308f3b900f9",
+        "pages": [
+          10,
+          11,
+          12,
+          13
+        ],
+        "printedPages": [
+          58,
+          59,
+          60,
+          61
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "작은 진폭의 선형 중력파 모형이다. 일반 분산식 ω²=gk tanh(kh)를 사용하며 입자 궤도는 모든 깊이에 같은 배율을 적용해 확대한다. 쇄파·반사·마찰·표면장력·스톡스 표류는 생략한다. 수조 제작과 현장 측정을 완료한 것으로 세지 않는다."
+    },
+    {
+      "slug": "silver-mirror",
+      "source": {
+        "id": "d395204181f8b5da",
+        "pages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "printedPages": [
+          94,
+          95,
+          96,
+          97
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "원문의 시약 준비·관찰 순서를 단계화한 가상 실험이며 방울 수나 반응 시간을 실측값으로 제시하지 않는다. 포도당은 열린 사슬의 알데하이드 형태를 통해 반응한다. 염기성 반응 용액의 유기 생성물은 카복실산염으로 표시한다. 실제 시약 제조·보관·폐기는 다루지 않는다."
+    },
+    {
+      "slug": "nylon-interface",
+      "source": {
+        "id": "0dad0a95c5350609",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          102,
+          103
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "계면의 막 공급과 당기는 속력은 정성 모형이며 실제 속력·수율·강도 예측이 아니다. 짧은 한 사슬의 연결 수를 세며 실제 고분자의 분자량 분포는 생략한다. 다이클로로메테인층이 물보다 아래에 있는 원문 장치를 따른다. 의약품·인공 향 합성과 실물 제작은 포함하지 않는다."
+    },
+    {
+      "slug": "stellar-mass-data",
+      "source": {
+        "id": "7e5723f0cbf775d1",
+        "pages": [
+          75,
+          137
+        ],
+        "printedPages": [
+          75,
+          137
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "bd95bbf067b48aaa",
+          "pages": [
+            68,
+            69,
+            70,
+            76,
+            77
+          ],
+          "part": "13·15번 해설의 절대등급–광도 변환, 질량과 수명 비교"
+        }
+      ],
+      "boundary": "천재교육 2022 교과서 137쪽의 1–86번 자료를 사용한다. 광도 변환은 같은 책 75쪽의 태양 절대등급 4.74 기준이다. 관측 표본의 회귀식이며 모든 별·모든 질량 범위에 같은 지수를 적용하지 않는다. 138–140쪽 나머지 표본은 포함하지 않았다."
+    },
+    {
+      "slug": "cluster-fitting",
+      "source": {
+        "id": "cd2d1ced86d442d1",
+        "pages": [
+          85,
+          122
+        ],
+        "printedPages": [
+          83,
+          120
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "05050bb38391fb02",
+          "pages": [
+            22,
+            23,
+            24,
+            26,
+            59
+          ],
+          "part": "3·4번 주계열 맞추기·거리지수와 10번 색초과 해설"
+        }
+      ],
+      "boundary": "두 성단의 각 24개 관측값은 원문 표를 옮겼다. 표준 주계열은 83쪽 그림에서 읽은 근삿값을 선형 보간한다. 성간 소광·적색화 보정은 적용하지 않으므로 정밀 거리 측정이 아니다. 주계열 밖 점을 제외하는 기능은 별의 실제 분류를 확정하지 않는다."
+    },
+    {
+      "slug": "habitable-orbits",
+      "source": {
+        "id": "35d817a99ea28582",
+        "pages": [
+          32,
+          33
+        ],
+        "printedPages": [
+          38,
+          39
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "광도는 L/L☉=(R/R☉)²(T/5772 K)⁴이다. 경계는 태양 기준 0.95–1.67 AU를 √L로 확대하는 비교 모형이며 별의 스펙트럼에 따른 경계 이동·행성 대기·구름은 계산하지 않는다. 지정한 반지름·온도 조합이 모두 주계열성이라는 뜻이 아니며 지대 안에 있다고 생명 존재를 판정하지 않는다."
+    },
+    {
+      "slug": "centrifuge-design",
+      "source": {
+        "id": "fbf365923abce545",
+        "pages": [
+          28,
+          29
+        ],
+        "printedPages": [
+          26,
+          27
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "교과서의 대칭 배치·고정·파쇄액 분리를 참고한 가상 장치다. 실제 간이 기구 제작과 시금치 분리의 재현 완료로 세지 않는다. 입자는 반지름 8·3·1 μm, 밀도차 50 kg/m³, 점도 0.002 Pa·s인 가상 구이다. 일정 회전의 낮은 레이놀즈수 침강 모형이며 실제 세포소기관의 분리 시간·순도를 뜻하지 않는다."
+    },
+    {
+      "slug": "organic-builder",
+      "source": {
+        "id": "e29dd9e46390ff6b",
+        "pages": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "printedPages": [
+          90,
+          91,
+          92,
+          93
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "원자 연결과 결합 수를 다루는 2차원 구조 모형이다. 원자의 화면 위치는 실제 결합각·입체 구조가 아니다. 액성은 메탄올·에탄올·폼알데하이드·아세트알데하이드·폼산·아세트산에 한정한 정성 비교이며 실제 시약 혼합·냄새·맛 측정을 제공하지 않는다."
+    },
+    {
+      "slug": "dna-structure",
+      "source": {
+        "id": "fbf365923abce545",
+        "pages": [
+          16,
+          18,
+          19,
+          131
+        ],
+        "printedPages": [
+          14,
+          16,
+          17,
+          129
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "d5f4c581c737cd5b",
+          "pages": [
+            25,
+            377
+          ],
+          "part": "03번 상보적 염기쌍·수소 결합 해설. 해설의 타이민을 단당류로 부른 오기는 채택하지 않음"
+        }
+      ],
+      "boundary": "미래엔 2022의 종이 DNA 제작을 화면의 8쌍 모형으로 바꿨다. 당·인산 골격과 상보적 결합을 구별하며, 화면 나선의 길이·각도는 실제 분자 치수가 아니다. 염기 수가 같아도 서열이 다르면 정보가 달라질 수 있다."
+    },
+    {
+      "slug": "protein-folding",
+      "source": {
+        "id": "fbf365923abce545",
+        "pages": [
+          17,
+          18,
+          19,
+          133
+        ],
+        "printedPages": [
+          15,
+          16,
+          17,
+          131
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "d5f4c581c737cd5b",
+          "pages": [
+            60,
+            408
+          ],
+          "part": "펩타이드 결합과 라이보솜에서의 형성 구별"
+        }
+      ],
+      "boundary": "교과서 부록의 두 사슬 길이와 접는 구간을 반영한 구조 도식이다. 종이 (가)의 11번 겹침은 한 잔기로 세며 화면에서는 두 번째 조각을 12–21로 표시한다. 원자 좌표·실제 접힘 에너지·인슐린 활성은 계산하지 않는다. 접힘 해제 비교에서는 펩타이드 결합의 가수분해를 가정하지 않는다."
+    },
+    {
+      "slug": "organelle-builder",
+      "source": {
+        "id": "fbf365923abce545",
+        "pages": [
+          87,
+          107,
+          108,
+          118,
+          119
+        ],
+        "printedPages": [
+          85,
+          105,
+          106,
+          116,
+          117
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "5449a6b6cb158a69",
+          "pages": [
+            494,
+            495,
+            507,
+            549,
+            552,
+            641
+          ],
+          "part": "03번 세포소기관 구획, 05번 농도 기울기와 화학삼투, 전자전달계 해설"
+        }
+      ],
+      "boundary": "두 소기관의 단면과 막 위상을 조작하는 구조 모형이다. 실제 3차원 제작·영상 발표를 완료한 것으로 세지 않는다. 수소 이온 이동은 정성 비교이며 농도·막전위·ATP 생성량을 정량 계산하지 않는다. 엽록체의 내막과 타이라코이드 막은 별개의 막이다."
+    },
+    {
+      "slug": "hydride-boiling",
+      "source": {
+        "id": "1be99a8dde753097",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          26,
+          27
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "2bade83c530ddb24",
+          "pages": [
+            168,
+            191,
+            201,
+            242,
+            243
+          ],
+          "part": "09번 끓는점·분산력·쌍극자 힘·수소 결합 비교. HWP 수식 유실 부분의 물질명은 추정하지 않음"
+        }
+      ],
+      "boundary": "동아 2022의 6개 표 값을 사용하고 CH₄·NH₃는 NIST·NOAA의 1기압 자료를 정수 °C로 반올림했다. 선은 같은 족 자료의 연결선이며 모든 물질의 끓는점 예측식이 아니다. 가열 실험이나 상전이 동역학을 재현하지 않는다."
+    },
+    {
+      "slug": "fuel-comparison",
+      "source": {
+        "id": "965f45ec469d480f",
+        "pages": [
+          76,
+          77
+        ],
+        "printedPages": [
+          74,
+          75
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [
+        {
+          "id": "2cc14cc644bd6459",
+          "pages": [
+            12,
+            22,
+            28,
+            222,
+            224,
+            237
+          ],
+          "part": "01번 발열 반응의 부호와 반응식 계수·몰당 엔탈피 해석"
+        }
+      ],
+      "boundary": "미래엔 2022의 몰질량·연소 엔탈피·25°C 1기압 밀도 표를 사용한다. 생성물 물은 액체이다. 휘발유는 순수 옥테인으로 대표한 비교이며 장치 효율은 사용자가 정한 가상 조건이다. CO₂는 연소 단계만 계산하고 생산·저장·운송의 배출량이나 비용은 계산하지 않는다."
+    },
+    {
+      "slug": "mcu-sampling",
+      "source": {
+        "id": "bb3048667d79ef51",
+        "pages": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "printedPages": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "동아 2022의 생명적·물리적 현상 수집 절차를 가상 장치로 구현했다. 맥파는 정해진 주기의 합성 광학 신호이며 심전도나 실제 개인의 심장 측정이 아니다. 소음은 자유음장 거리 효과·지정한 차음값·40 dB 배경을 합한 예시로, 실제 교실이나 특정 재료의 성능을 뜻하지 않는다. 현장 측정·실물 보드 제작은 별도이다."
+    },
+    {
+      "slug": "smart-pot",
+      "source": {
+        "id": "bb3048667d79ef51",
+        "pages": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "printedPages": [
+          36,
+          37,
+          38,
+          39
+        ]
+      },
+      "variantSources": [],
+      "additionalSources": [],
+      "assessmentSources": [],
+      "boundary": "교과서의 스마트 화분을 조건을 바꿔 시험하는 가상 시제품으로 구현했다. 건조 850·젖음 350, 매 단계 증발 1·급수 5는 비교용 가정이며 식물별 적정 수분이나 실제 센서 보정값이 아니다. 표시값은 두 기준 사이의 상대 척도로 실제 토양 수분 함량(%)이 아니다. 실제 제작·모둠 발표 수행 완료로 세지 않는다."
+    }
+  ]
+}

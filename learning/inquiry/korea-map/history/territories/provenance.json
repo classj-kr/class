@@ -724,59 +724,59 @@
   },
   "coastalRegistration": {
     "goguryeo-fifth": {
-      "method": "Nearest existing region fills only unpainted coastal land; inland borders retained.",
+      "method": "Continuous Voronoi partition of unpainted coastal land; original inland borders retained.",
       "maximumMercatorMetres": 32000,
-      "stepMercatorMetres": 1000,
-      "coastalLandAddedMercatorKm2": 31697.269,
-      "remainingEligibleMercatorKm2": 0,
+      "boundarySampleMercatorMetres": 1000,
+      "coastalLandAddedMercatorKm2": 28201.916,
+      "remainingEligibleMercatorKm2": 0.0,
       "regions": [
         {
-          "addedMercatorKm2": 22241.359
+          "addedMercatorKm2": 21338.536
         },
         {
-          "addedMercatorKm2": 4632.596
+          "addedMercatorKm2": 4122.459
         },
         {
-          "addedMercatorKm2": 1553.803
+          "addedMercatorKm2": 419.597
         },
         {
-          "addedMercatorKm2": 3269.51
+          "addedMercatorKm2": 2321.323
         }
       ]
     },
     "silla-sixth": {
-      "method": "Nearest existing region fills only unpainted coastal land; inland borders retained.",
+      "method": "Continuous Voronoi partition of unpainted coastal land; original inland borders retained.",
       "maximumMercatorMetres": 32000,
-      "stepMercatorMetres": 1000,
-      "coastalLandAddedMercatorKm2": 10742.736,
-      "remainingEligibleMercatorKm2": 0,
+      "boundarySampleMercatorMetres": 1000,
+      "coastalLandAddedMercatorKm2": 10459.524,
+      "remainingEligibleMercatorKm2": 0.0,
       "regions": [
         {
-          "addedMercatorKm2": 5066.595
+          "addedMercatorKm2": 4944.888
         },
         {
-          "addedMercatorKm2": 5676.141
+          "addedMercatorKm2": 5514.636
         }
       ]
     },
     "baekje-fourth": {
-      "method": "Nearest existing region fills only unpainted coastal land; inland borders retained.",
+      "method": "Continuous Voronoi partition of unpainted coastal land; original inland borders retained.",
       "maximumMercatorMetres": 32000,
-      "stepMercatorMetres": 1000,
-      "coastalLandAddedMercatorKm2": 43849.425,
-      "remainingEligibleMercatorKm2": 0,
+      "boundarySampleMercatorMetres": 1000,
+      "coastalLandAddedMercatorKm2": 41602.509,
+      "remainingEligibleMercatorKm2": 0.0,
       "regions": [
         {
-          "addedMercatorKm2": 32798.142
+          "addedMercatorKm2": 31484.43
         },
         {
-          "addedMercatorKm2": 2991.96
+          "addedMercatorKm2": 2733.097
         },
         {
-          "addedMercatorKm2": 5792.522
+          "addedMercatorKm2": 5741.388
         },
         {
-          "addedMercatorKm2": 2266.801
+          "addedMercatorKm2": 1643.594
         }
       ]
     }
@@ -802,23 +802,23 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 32.5268,
-            "visibleArea": 17.7514
+            "area": 32.649,
+            "visibleArea": 17.8995
           },
           {
             "name": "백제",
-            "area": 4.836,
-            "visibleArea": 4.836
+            "area": 5.0708,
+            "visibleArea": 5.0708
           },
           {
             "name": "신라",
-            "area": 3.1336,
-            "visibleArea": 3.1336
+            "area": 3.2324,
+            "visibleArea": 3.2324
           },
           {
             "name": "가야",
-            "area": 0.7693,
-            "visibleArea": 0.7693
+            "area": 0.8216,
+            "visibleArea": 0.8216
           }
         ]
       }
@@ -829,23 +829,23 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 36.8824,
-            "visibleArea": 36.8824
+            "area": 36.7145,
+            "visibleArea": 36.7145
           },
           {
             "name": "백제",
-            "area": 1.9796,
-            "visibleArea": 1.9796
+            "area": 2.1453,
+            "visibleArea": 2.1453
           },
           {
             "name": "신라",
-            "area": 2.7361,
-            "visibleArea": 2.7361
+            "area": 2.8979,
+            "visibleArea": 2.8979
           },
           {
             "name": "가야",
-            "area": 1.4708,
-            "visibleArea": 1.4708
+            "area": 1.5565,
+            "visibleArea": 1.5565
           }
         ]
       }
@@ -856,23 +856,23 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 36.8824,
-            "visibleArea": 1.2638
+            "area": 36.7145,
+            "visibleArea": 1.281
           },
           {
             "name": "백제",
-            "area": 1.9796,
-            "visibleArea": 0.8077
+            "area": 2.1453,
+            "visibleArea": 0.9304
           },
           {
             "name": "신라",
-            "area": 2.7361,
-            "visibleArea": 0.0855
+            "area": 2.8979,
+            "visibleArea": 0.1196
           },
           {
             "name": "가야",
-            "area": 1.4708,
-            "visibleArea": 0.0166
+            "area": 1.5565,
+            "visibleArea": 0.0363
           }
         ]
       },
@@ -881,23 +881,23 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 31.021,
-            "visibleArea": 0.0154
+            "area": 31.0141,
+            "visibleArea": 0.0168
           },
           {
             "name": "백제",
-            "area": 2.7561,
-            "visibleArea": 0.9486
+            "area": 2.7613,
+            "visibleArea": 0.9512
           },
           {
             "name": "신라",
-            "area": 9.5477,
-            "visibleArea": 1.3887
+            "area": 9.5534,
+            "visibleArea": 1.3993
           },
           {
             "name": "진흥왕 때 진출했다가 이후 상실한 북방",
-            "area": 1.2919,
-            "visibleArea": 0
+            "area": 1.2765,
+            "visibleArea": 0.0
           }
         ]
       }
@@ -908,23 +908,23 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 31.021,
-            "visibleArea": 11.9691
+            "area": 31.0141,
+            "visibleArea": 11.9846
           },
           {
             "name": "백제",
-            "area": 2.7561,
-            "visibleArea": 2.7561
+            "area": 2.7613,
+            "visibleArea": 2.7613
           },
           {
             "name": "신라",
-            "area": 9.5477,
-            "visibleArea": 9.5477
+            "area": 9.5534,
+            "visibleArea": 9.5534
           },
           {
             "name": "진흥왕 때 진출했다가 이후 상실한 북방",
-            "area": 1.2919,
-            "visibleArea": 1.2919
+            "area": 1.2765,
+            "visibleArea": 1.2765
           }
         ]
       }
@@ -935,18 +935,18 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 32.3128,
-            "visibleArea": 9.486
+            "area": 32.2906,
+            "visibleArea": 9.4844
           },
           {
             "name": "백제",
-            "area": 2.7561,
-            "visibleArea": 2.7197
+            "area": 2.7613,
+            "visibleArea": 2.7249
           },
           {
             "name": "신라",
-            "area": 8.2683,
-            "visibleArea": 8.2683
+            "area": 8.2769,
+            "visibleArea": 8.2769
           }
         ]
       },
@@ -1241,7 +1241,7 @@
     ],
     "imjin": [
       {
-        "date": "1592년 · 전쟁 전 국가 영역",
+        "date": "1592년 · 임진왜란 발발",
         "regions": [
           {
             "name": "조선",
@@ -1250,8 +1250,8 @@
           },
           {
             "name": "명",
-            "area": 917.1639,
-            "visibleArea": 0.1303
+            "area": 346.0197,
+            "visibleArea": 0.0002
           },
           {
             "name": "일본",
@@ -1630,5 +1630,124 @@
         ]
       }
     ]
+  },
+  "pixelTopology": {
+    "baekje-fourth": {
+      "method": "source-pixel shared topology; half-pixel nearest-edge seams; shared-line rounding",
+      "maxSeamDistancePixels": 3,
+      "lineSimplificationPixels": 1.2,
+      "filledSeamPixels2": 539.522,
+      "filledSeamPinholePixels2": 26.495,
+      "reviewedSourceAnnotations": [],
+      "reviewedCoastalAnnotations": [],
+      "coastalAnnotationPixels2": 0.0,
+      "overlapPriority": [],
+      "reviewedConnectedRegions": [],
+      "resolvedOverlapPixels2": 0.0,
+      "countryCount": 4,
+      "sharedEdgePixels": [
+        108.644,
+        17.707,
+        0.0,
+        54.139,
+        38.399,
+        36.596
+      ]
+    },
+    "goguryeo-fifth": {
+      "method": "source-pixel shared topology; half-pixel nearest-edge seams; shared-line rounding",
+      "maxSeamDistancePixels": 3,
+      "lineSimplificationPixels": 1.2,
+      "filledSeamPixels2": 1164.214,
+      "filledSeamPinholePixels2": 316.342,
+      "reviewedSourceAnnotations": [
+        {
+          "name": "웅진 기호가 가린 색면",
+          "center": [
+            246.7,
+            402.5
+          ],
+          "radius": 12
+        },
+        {
+          "name": "백제·신라·가야 접경의 화살표",
+          "center": [
+            261.8,
+            421.4
+          ],
+          "radius": 14
+        },
+        {
+          "name": "신라 남부의 붉은 화살촉",
+          "center": [
+            314,
+            443
+          ],
+          "radius": 10
+        }
+      ],
+      "reviewedCoastalAnnotations": [
+        {
+          "name": "실직의 도시 기호",
+          "center": [
+            315,
+            351
+          ],
+          "radius": 7
+        },
+        {
+          "name": "금관가야의 도시 기호와 화살표",
+          "center": [
+            307,
+            455
+          ],
+          "radius": 10
+        }
+      ],
+      "coastalAnnotationPixels2": 300.23,
+      "overlapPriority": [
+        2,
+        1,
+        3,
+        0
+      ],
+      "reviewedConnectedRegions": [
+        0
+      ],
+      "resolvedOverlapPixels2": 250.958,
+      "countryCount": 4,
+      "sharedEdgePixels": [
+        41.626,
+        114.666,
+        0.0,
+        22.879,
+        74.672,
+        74.436
+      ]
+    },
+    "silla-sixth": {
+      "method": "source-pixel shared topology; half-pixel nearest-edge seams; shared-line rounding",
+      "maxSeamDistancePixels": 3,
+      "lineSimplificationPixels": 1.2,
+      "filledSeamPixels2": 89.936,
+      "filledSeamPinholePixels2": 0.0,
+      "reviewedSourceAnnotations": [],
+      "reviewedCoastalAnnotations": [],
+      "coastalAnnotationPixels2": 0.0,
+      "overlapPriority": [],
+      "reviewedConnectedRegions": [],
+      "resolvedOverlapPixels2": 7.139,
+      "countryCount": 2,
+      "sharedEdgePixels": [
+        150.908
+      ]
+    }
+  },
+  "lateMing": {
+    "source": "https://littrup.sites.ku.dk/files/2015/05/Kin-ter.pdf",
+    "title": "F. W. Mote, Imperial China 900–1800 (1999), p. 640, The 15 Provinces of Ming China about 1580; Leif Littrup teaching compilation, PDF p. 5",
+    "registrationMaxKm": 46.27,
+    "registrationRmsKm": 25.37,
+    "referenceFile": "tools/ming-1580-reference.json"
   }
 }

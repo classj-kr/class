@@ -69,10 +69,10 @@
 {
       id: "2026-09-14", exam: "2026-09", no: 14, score: 4,
       units: ["m1-trig"], memo: "탄젠트 곡선의 주기와 삼각형 넓이",
-      body: R`양수 \(k\)에 대하여 집합 \(\left\{x\ \middle|\ 0\le x<\dfrac{3k\pi}{2},\ x\ne\dfrac{k\pi}{2}\right\}\)에서
+      body: R`양수 \(k\)에 대하여 집합 \(\left\{x\ \middle|\ 0\le x&lt;\dfrac{3k\pi}{2},\ x\ne\dfrac{k\pi}{2}\right\}\)에서
         정의된 함수 \(f(x)=\tan\dfrac{x}{k}\)가 있다. 점 \(\mathrm{P}(0,\,p)\,(p>0)\)을 지나며
         \(x\)축에 평행한 직선이 함수 \(y=f(x)\)의 그래프와 만나는
-        두 점을 \(\mathrm{A}\), \(\mathrm{B}\,\left(\overline{\mathrm{PA}}<\overline{\mathrm{PB}}\right)\)라 하고,
+        두 점을 \(\mathrm{A}\), \(\mathrm{B}\,\left(\overline{\mathrm{PA}}&lt;\overline{\mathrm{PB}}\right)\)라 하고,
         직선 \(y=-p\)가 함수 \(y=f(x)\)의 그래프와 만나는 점을 \(\mathrm{C}\)라
         하자. \(\overline{\mathrm{AB}}=3\overline{\mathrm{PA}}\)이고 삼각형 \(\mathrm{OCB}\)의 넓이가
         \(\dfrac{5\pi}{3}\)일 때, \(k+p\)의 값은? (단, \(\mathrm{O}\)는 원점이다.)`,
@@ -92,7 +92,7 @@
         R`(가) 방정식 \(g'(x)=0\)의 서로 다른 실근의 개수는 \(4\)이다.`,
         R`(나) 함수 \(g(x)\)는 \(x=2\), \(x=6\)에서 극값을 갖는다.`
       ],
-      bodyAfter: R`\(f(6)\times g(2)<0\)일 때, \(f(8)\)의 값은?`,
+      bodyAfter: R`\(f(6)\times g(2)&lt;0\)일 때, \(f(8)\)의 값은?`,
       choices: [R`\(16\)`, R`\(22\)`, R`\(28\)`, R`\(34\)`, R`\(40\)`],
       answer: 5,
       help: R`\(g'(x)=|f(x)|-|x|\)이므로 \(g'(x)=0\)은 \(|f(x)|=|x|\), 곧 \(f(x)=x\)와 \(f(x)=-x\)의 근을 모두 모은 것이다. 실근이 넷인데 극값은 \(x=2\), \(x=6\) 둘뿐이니, 나머지 두 근에서는 \(g'\)의 부호가 바뀌지 않는다.`
@@ -101,7 +101,7 @@
       id: "2026-09-20", exam: "2026-09", no: 20, score: 4,
       units: ["m1-trig"], memo: "원에 내접하는 사각형과 닮은 두 삼각형",
       body: R`그림과 같이 사각형 \(\mathrm{ABCD}\)가 한 원에 내접하고
-        \(\overline{\mathrm{AB}}:\overline{\mathrm{CD}}=1:3\), \(\overline{\mathrm{BC}}<\overline{\mathrm{AD}}\)일 때, 직선 \(\mathrm{AB}\)와 직선 \(\mathrm{CD}\)가
+        \(\overline{\mathrm{AB}}:\overline{\mathrm{CD}}=1:3\), \(\overline{\mathrm{BC}}&lt;\overline{\mathrm{AD}}\)일 때, 직선 \(\mathrm{AB}\)와 직선 \(\mathrm{CD}\)가
         만나는 점을 \(\mathrm{P}\)라 하자.`,
       figure: "2026-09-20.webp",
       bodyAfter: R`다음은 \(\overline{\mathrm{PB}}:\overline{\mathrm{PC}}:\overline{\mathrm{BC}}=7:5:\sqrt{14}\)이고 \(\overline{\mathrm{AD}}=4\sqrt{13}\)일 때,

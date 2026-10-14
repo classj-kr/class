@@ -19,7 +19,8 @@ body :is(
   .question-body, .exam-question, .page-quiz, .mission-card,
   .lesson-quiz-panel, .game-panel, .sim-quiz-container, .atlas-quiz,
   .edition-question, .mini-quiz-question, .finale-question,
-  .supplement-check, .required-check, .prediction-field, .prediction-options
+  .supplement-check, .required-check, .prediction-field, .prediction-options,
+  .school-question, .school-feedback, .school-table, .model-check
 ) {
   font-family: var(--class-exam-font) !important;
   font-synthesis: weight;
@@ -34,8 +35,9 @@ body :is(
   .question-body, .exam-question, .page-quiz, .mission-card,
   .lesson-quiz-panel, .game-panel, .sim-quiz-container, .atlas-quiz,
   .edition-question, .mini-quiz-question, .finale-question,
-  .supplement-check, .required-check, .prediction-field, .prediction-options
-) :is(h1, h2, h3, h4, p, button, label, textarea, input, legend, li, td, th, dt, dd) {
+  .supplement-check, .required-check, .prediction-field, .prediction-options,
+  .school-question, .school-feedback, .school-table, .model-check
+) :is(h1, h2, h3, h4, p, button, label, textarea, input, legend, li, caption, td, th, dt, dd) {
   font-family: var(--class-exam-font) !important;
 }
 
@@ -55,7 +57,7 @@ body :is(
   .choices button, .choices label, .answer-options button,
   .quiz-options button, .quiz-options label, .question-options button,
   .exam-answers button, .mini-quiz-choices button, .quiz-choices button,
-  .model-answers button, .bronze-choices button, .history-order-choices button,
+  .model-answers button, .school-options button, .bronze-choices button, .history-order-choices button,
   .sound-choice-label, .quiz-meaning, .game-instruction,
   .feedback, #feedback, .answer-feedback, #answerFeedback,
   .answer-explanation, .answer-result, .explanation, .explanation-panel,

@@ -87,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mediumLabel.textContent = m.name;
         angleOutput.textContent = `${s.theta1}°`;
         stageBadge.textContent = dir === 'in' ? `공기 → ${m.name}` : `${m.name} → 공기`;
+        stageCaption.textContent = s.total ? '전반사가 일어나 굴절 광선은 나오지 않습니다.' : s.theta1 === 0
+            ? '수직으로 입사하면 꺾이지 않고 나아갑니다.'
+            : dir === 'in' ? `공기에서 ${m.name}로 들어가며 법선 쪽으로 꺾입니다.` : `${m.name}에서 공기로 나가며 법선에서 멀어집니다.`;
 
         const sinI = Math.sin(rad(s.theta1)), cosI = Math.cos(rad(s.theta1));
         const start = { x: P.x - L * sinI, y: P.y + inSgn * L * cosI };
@@ -144,11 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
             : prediction === actual ? '예상이 맞았습니다.'
             : (s.theta1 === 0 ? '입사각이 0°이면 꺾이지 않고 그대로 지나갑니다.' : '예상과 다른 결과입니다.');
 
-        if (s.theta1 === 0) {
-            stageCaption.textContent = '수직으로 입사하면 꺾이지 않고 나아갑니다.';
-        } else {
-            stageCaption.textContent = dir === 'in' ? '공기에서 물질로 들어가며 법선 쪽으로 꺾입니다.' : '물질에서 공기로 나가며 법선에서 멀어집니다.';
-        }
         explanation.textContent = '반사각은 입사각과 같습니다. 굴절은 서로 다른 물질의 경계에서 빛의 진행 방향이 달라지는 현상입니다.';
     }
 

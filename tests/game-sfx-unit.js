@@ -13,7 +13,6 @@ const fruitBellPath = path.join(root, "learning", "games", "fruitbell", "fruitbe
 const voyagePath = path.join(root, "learning", "inquiry", "age-of-exploration", "public", "index.html");
 const earTrainingPath = path.join(root, "learning", "arts", "music-theory", "ear-training", "index.html");
 const arithmeticLayoutPath = path.join(root, "learning", "literacy-numeracy", "arithmetics", "app", "layout.tsx");
-const sfxVersion = "20260912-feedback-scope-1";
 
 for (const filePath of [sfxPath, musicControlPath, musicControlCssPath, hubPath, fruitBellPath, voyagePath]) {
     assert.ok(fs.existsSync(filePath), `Missing sound effect file: ${filePath}`);
@@ -36,7 +35,7 @@ for (const soundName of ["click", "bell", "card", "stone", "capture", "success",
 assert.ok(sfxSource.includes("const soundUrls"), "Shared effects should resolve OGG asset URLs.");
 assert.ok(sfxSource.includes("template.cloneNode()"), "Concurrent effects should use independent audio elements.");
 assert.ok(sfxSource.includes("playSynth(soundName)"), "File playback failures should retain synthesized fallbacks.");
-assert.ok(sfxSource.includes('if (soundName === "click") return playSynth(soundName);'), "Generic clicks should use the short synthesized tap sound.");
+assert.ok(sfxSource.includes('if (!FILE_SOUND_NAMES.has(soundName)) return playSynth(soundName);'), "Generic clicks should use the short synthesized tap sound.");
 assert.ok(sfxSource.includes('element.matches("[data-midi]")'), "Playable MIDI keys should not add a generic click over their instrument sound.");
 assert.ok(sfxSource.includes("[data-sfx-clicks='none']"), "Music interfaces should be able to suppress generic clicks without suppressing answer feedback.");
 assert.ok(sfxSource.includes('latencyHint: "interactive"'), "Sound effects should request an interactive low-latency audio context.");
@@ -54,7 +53,7 @@ assert.ok(sfxSource.includes('DEFAULT_VOLUME = 0.65;'), "Default SFX volume shou
 const musicControlSource = fs.readFileSync(musicControlPath, "utf8");
 new vm.Script(musicControlSource, { filename: musicControlPath });
 assert.ok(musicControlSource.includes('new URL("game-sfx.js", currentScript.src)'), "Music-enabled games should load the shared effect module.");
-assert.ok(musicControlSource.includes('sfxScriptUrl.searchParams.set("v", "20261006-capture")'), "Music-enabled games should cache-bust the current shared effect module.");
+assert.ok(musicControlSource.includes('sfxScriptUrl.searchParams.set("v", "20261009-explosion-file")'), "Music-enabled games should cache-bust the current shared effect module.");
 assert.ok(musicControlSource.includes("classmusicchange"), "Music controls should publish the shared mute and volume state.");
 assert.ok(musicControlSource.includes('id="musicVolumeSlider"'), "Shared music volume should use the compact linear slider.");
 assert.ok(musicControlSource.includes('id="sfxVolumeSlider"'), "Shared effect volume should use the compact linear slider.");
@@ -75,21 +74,25 @@ assert.ok(voyage.includes('window.ClassMusicController=backgroundMusic'), "Share
 assert.ok(!voyage.includes('id="bgmVolume"'), "World Voyage should not keep its old oversized volume slider.");
 
 const hub = fs.readFileSync(hubPath, "utf8");
+const routeSource = fs.readFileSync(path.join(root, "game-hub-server/server.js"), "utf8");
+const friendlyGameFiles = new Map([...routeSource.matchAll(/\["(\/learning\/games\/[^"\n]+)", "\/learning\/games\/[^"\n]+", "([^"]+\.html)"\]/g)].map(match => [match[1].slice(1), match[2]]));
 assert.ok(hub.includes('<audio id="bgm" preload="none"></audio>'), "The hub should keep the shared music control without loading a track.");
 assert.ok(!hub.includes("`assets/sound/${currentMonth}.ogg`"), "The hub should not load monthly background music.");
 const gameLinks = [...hub.matchAll(/href="(learning\/games\/[^"]+)"/g)].map((match) => {
     const href = match[1].split(/[?#]/, 1)[0];
+    if (friendlyGameFiles.has(href)) return friendlyGameFiles.get(href);
     return href.endsWith("/") ? `${href}index.html` : `${href}.html`;
 });
 assert.ok(gameLinks.length >= 15, "Expected the local game catalog in the hub.");
 for (const relativePath of gameLinks) {
     const gameHtml = fs.readFileSync(path.join(root, ...relativePath.split("/")), "utf8");
     const hasSharedEffects = gameHtml.includes("assets/sound/game-sfx.js") || gameHtml.includes("assets/sound/music-control.js");
-    assert.ok(hasSharedEffects, `${relativePath} does not load shared button effects.`);
+    const serverInjectsEffects = routeSource.includes('const SITE_SFX_SCRIPT_TAG') && routeSource.includes('htmlWithBackNavigation.includes("/assets/sound/game-sfx.js")');
+    assert.ok(hasSharedEffects || serverInjectsEffects, `${relativePath} does not load shared button effects directly or through the server.`);
 }
 for (const relativePath of ["learning/games/drawrelay/drawrelay.html", "learning/games/lastcard/lastcard.html"]) {
     const gameHtml = fs.readFileSync(path.join(root, ...relativePath.split("/")), "utf8");
-    assert.ok(gameHtml.includes(`game-sfx.js?v=${sfxVersion}`), `${relativePath} should cache-bust the shared effects.`);
+    assert.match(gameHtml, /game-sfx\.js\?v=\d{8}-[\w-]+/, `${relativePath} should cache-bust the shared effects.`);
 }
 
 const earTraining = fs.readFileSync(earTrainingPath, "utf8");
@@ -97,8 +100,8 @@ const arithmeticLayout = fs.readFileSync(arithmeticLayoutPath, "utf8");
 assert.ok(earTraining.includes('data-sfx-clicks="none"'), "Ear training should not mix generic button clicks into musical playback.");
 assert.match(earTraining, /piano-engine\.js\?v=\d{8}-[\w-]+/, "Ear training audio changes should use a versioned script URL.");
 // Count-in audibility is measured through the mixer in ear-training-countin-browser.cjs.
-assert.ok(arithmeticLayout.includes(`/assets/sound/game-sfx.js?v=${sfxVersion}`), "The proxied arithmetic and fraction app should load shared button effects directly.");
-assert.ok(voyage.includes(`/assets/sound/game-sfx.js?v=${sfxVersion}`), "The proxied voyage app should load shared button effects directly.");
+assert.match(arithmeticLayout, /\/assets\/sound\/game-sfx\.js\?v=\d{8}-[\w-]+/, "The proxied arithmetic and fraction app should load versioned shared button effects directly.");
+assert.match(voyage, /\/assets\/sound\/game-sfx\.js\?v=\d{8}-[\w-]+/, "The proxied voyage app should load versioned shared button effects directly.");
 
 const fruitBell = fs.readFileSync(fruitBellPath, "utf8");
 assert.ok(fruitBell.includes('id="bellBtn" class="bell" type="button" data-sfx="none"'), "The bell should not also play a generic click.");

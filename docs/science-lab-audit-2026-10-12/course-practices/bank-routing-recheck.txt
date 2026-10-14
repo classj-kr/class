@@ -1,0 +1,40 @@
+✔ official 2022 areas and courses, and one auditable primary placement per app (263.7593ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4874.6542ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.3676ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (67148.1267ms)
+202 JavaScript files parsed
+✖ all app grades, standards, quizzes and local script cache versions agree (17.3578ms)
+✔ every science lab JavaScript file parses (93.6415ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8849ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67516.8728
+
+✖ failing tests:
+
+test at tests\science-scope-metadata.test.cjs:8:1
+✖ all app grades, standards, quizzes and local script cache versions agree (17.3578ms)
+  AssertionError [ERR_ASSERTION]: refraction: ../exam-scope.js
+  + actual - expected
+  
+  + '9f54f0d867d8'
+  - '70d16f731589'
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-scope-metadata.test.cjs:25:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '9f54f0d867d8',
+    expected: '70d16f731589',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

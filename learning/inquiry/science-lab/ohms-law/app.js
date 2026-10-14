@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if(window.scienceAppContext?.school==='high-elective')return;
     const wiringButtons = [...document.querySelectorAll('[data-wiring]')];
     const predictionButtons = [...document.querySelectorAll('[data-prediction]')];
     const voltRange = document.getElementById('voltRange');
@@ -215,8 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- LCD Screen Bezel & Display -->
             <rect x="${cx - w / 2 + 8}" y="${cy - h / 2 + 6}" width="${w - 16}" height="${h - 12}" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
             <rect x="${cx - w / 2 + 10}" y="${cy - h / 2 + 8}" width="${w - 20}" height="${h - 16}" rx="3" fill="url(#dmmLcd)"/>
-            <text x="${cx - w / 2 + 13}" y="${cy + 4}" fill="#34d399" font-size="10" font-weight="900" font-family="Pretendard, sans-serif">전류계</text>
-            <text x="${cx + 12}" y="${cy + 6}" text-anchor="middle" fill="#4ade80" font-size="14.5" font-weight="900" font-family="'Pretendard', monospace" filter="url(#glowGreen)">${currentVal.toFixed(2)} A</text>
+            <text x="${cx}" y="${cy - h / 2 - 9}" text-anchor="middle" fill="#245265" font-size="14" font-weight="700" font-family="system-ui, sans-serif">전류계</text>
+            <text x="${cx}" y="${cy + 6}" text-anchor="middle" fill="#4ade80" font-size="14.5" font-weight="900" font-family="system-ui, monospace" filter="url(#glowGreen)">${currentVal.toFixed(2)} A</text>
             ${isH ? `
             <!-- Binding Terminal Jacks -->
             <circle cx="${cx - w / 2}" cy="${cy}" r="3" fill="#dc2626"/>
@@ -374,7 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <text x="${bw / 2}" y="15" text-anchor="middle" fill="#c2410c" font-size="12.5" font-weight="900" font-family="Pretendard, monospace">${V().toFixed(1)} V, ${a.I.toFixed(2)} A</text>
         </g>`;
 
-        graphGroup.innerHTML = out;
+        const graphShadow='<defs><filter id="ohmsGraphDrop" x="-15%" y="-15%" width="130%" height="130%"><feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.12"/></filter></defs>';
+        graphGroup.innerHTML = graphShadow + out.replaceAll('url(#compDrop)','url(#ohmsGraphDrop)');
     }
 
     function render() {

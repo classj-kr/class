@@ -17,6 +17,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
   ] }));
   app.put('/api/school/teachers', (req, res) => { saved.push(req.body); res.json({ saved: req.body.teachers.length }); });
   app.use('/api', (_req, res) => res.status(404).json({ error: 'NOT_IN_TEST' }));
+  app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise((resolve) => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
   const base = `http://127.0.0.1:${server.address().port}`;

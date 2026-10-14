@@ -1,0 +1,14 @@
+{
+  "changedScenes": [
+    "baekje-fourth",
+    "goguryeo-fifth",
+    "baekje-capitals",
+    "silla-sixth",
+    "unification"
+  ],
+  "unrelatedScenesPreserved": 23,
+  "parsedSVGs": 47,
+  "maxBrowserZoom": 12,
+  "browserErrors": [],
+  "deployment": "not performed by this task"
+}

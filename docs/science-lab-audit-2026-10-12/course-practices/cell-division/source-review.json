@@ -1,0 +1,113 @@
+{
+  "scope": "2022 only; listed pages reviewed, not a complete textbook census.",
+  "sources": [
+    {
+      "id": "7ad5e2bf06acaec3",
+      "pages": [
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147
+      ],
+      "path": "references/textbooks/중고등/T셀파/고등/과학/생명과학(이준규)/교과서_생명과학__0924b36605.pdf",
+      "sha256": "7ad5e2bf06acaec3b4adde01cb276670313c0f5eab1d37a9241b17435252990d"
+    },
+    {
+      "id": "7a62b784013f63ec",
+      "pages": [
+        142,
+        143,
+        144,
+        145,
+        146,
+        147
+      ],
+      "path": "references/textbooks/중고등/T셀파/고등/과학/생명과학(이준규)/교사용 교과서_생명과학__e996d60c60.pdf",
+      "sha256": "7a62b784013f63ecf3deccd0f8405162d862193501ab641cdb99166137db26d2"
+    },
+    {
+      "id": "ada6483ae9f3eafd",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "path": "references/textbooks/중고등/두클래스/고등/과학/생명과학 (임혁)_2022/교과서/Ⅲ-02단원 교과서 PDF.pdf",
+      "sha256": "ada6483ae9f3eafdef5d9240a29a9e5dffbe3f5a60c54da5364653a9bd126a3a"
+    },
+    {
+      "id": "f0744f7198a25194",
+      "pages": [
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160
+      ],
+      "path": "references/textbooks/중고등/미래엔/고등/과학/생명과학 (오현선)_2022/교과서/생명과학 (오현선)_2022_[생명과학] 교과서.pdf",
+      "sha256": "f0744f7198a25194cf28b937e3f1f4e1cf6775c2db05db68e37afb2ccfc42ff3"
+    }
+  ],
+  "candidateIds": [
+    "book-a9df7eb2a6321d01",
+    "book-95794e1f7d2ae2c1",
+    "book-742c94baae1a5c02",
+    "book-15a55b502b0dc669"
+  ],
+  "boundary": "세포 하나의 전체 염색체 수와 핵상을 구분한다. S기 값은 복제 종료 시점, 말기 값은 세포질 분열 완료 전이다. 간기의 염색체는 풀어진 가닥을 기원별로 분리하여 세기 쉽게 나타낸 개념 모형이며 현미경 영상이 아니다. 동물 세포의 대칭 세포질 분열 모형이다. 실제 정자/난자의 성숙·난자 형성의 비대칭 분열을 모두 재현하지 않는다. 교차 없음은 독립 분리를 분리해 보는 비교 조건이며, 교차 조건은 1번 쌍의 비자매 염색 분체 두 개에서 한 번 일어난 상호교환이다. 실제 모든 교차 지점·유전자 지도를 나타내지 않는다. 교과서 자유 모형 제작·촬영·영상 편집·공유 활동 완료가 아니다.",
+  "assessmentSources": [
+    {
+      "id": "7a62b784013f63ec",
+      "pages": [
+        147
+      ],
+      "part": "3번의 2n=6 감수 I 중기 판별과 2³=8가지; 1번 정답 표의 감수 핵분열 1회 표기는 142~143쪽 두 번 분열과 모순되어 배제."
+    },
+    {
+      "id": "f0744f7198a25194",
+      "pages": [
+        160
+      ],
+      "part": "모세포에서 한 번 분열한 결과와 여러 방향의 배열에서 얻는 전체 조합의 구분."
+    },
+    {
+      "path": "references/textbooks/중고등/T셀파/고등/과학/생명과학(이준규)/평가 예시_생명과학__ba1c339fcd.hwp",
+      "sha256": "ba6915e26b193fac05728b6a1ebfbdbe4f9f7d97b89289c57c68a0246ad407ac",
+      "paragraphs": [
+        1207,
+        1236,
+        1237,
+        1238,
+        1318,
+        1319,
+        1321
+      ],
+      "part": "2022 평가 예시 생명과학-10: 교차·돌연변이를 고려하지 않는 체세포/생식세포 분열 비교와 무작위 배향. 문항과 해설의 인식 목표를 대조. HWP 그림을 새로 추측하거나 전용하지 않음."
+    }
+  ],
+  "methodSources": [
+    {
+      "url": "https://openstax.org/books/biology-2e/pages/10-2-the-cell-cycle",
+      "part": "S기의 복제, 분리된 자매 염색 분체의 독립 염색체 계수, 전기/말기의 핵막 변화."
+    },
+    {
+      "url": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+      "part": "쌍별 독립 배향과 I분열의 상동 염색체 분리, II분열의 자매 분체 분리. 두 비자매 염색 분체의 상호 교차."
+    }
+  ],
+  "corrections": [
+    "Removed contradictory post-separation statement that chromosome count is unchanged.",
+    "S state explicitly means the end of S phase, not the entire replication interval.",
+    "Distinct homolog pairs orient independently; each chromatid retains lineage to daughter cells.",
+    "A reciprocal crossover affects exactly two nonsister chromatids, not an entire chromosome recolored purple.",
+    "One meiosis without crossover yields two distinct combinations among four cells, not all 2^n possibilities.",
+    "Teacher answer table at 7a62b784 PDF147 wrongly prints one meiotic nuclear division; neighboring textbook diagrams explicitly show two."
+  ]
+}

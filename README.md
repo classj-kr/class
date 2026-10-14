@@ -8,8 +8,12 @@ Node 서버가 정적 수업 자료와 두 개의 학습 앱을 한 주소에서
 ```text
 class/
 ├─ index.html                  메인 수업 포털
-├─ admin/                      관리자 화면
-├─ classtools/                 교사용 학급 도구
+├─ apps/                       학급·학교 운영 기능
+│  ├─ classtools/              명단·출결·교육과정·평가·생기부·사무 도구
+│  ├─ admin/, schooladmin/     사이트·학교 관리
+│  ├─ site/                    개인정보·약관·문의·학교 설정 안내
+│  ├─ notice/, teacher/, parent/ 알림장·가정통신문·보호자 화면
+│  └─ boards/, classboard/, room/, vote/, school-election/ 참여 기능
 ├─ assets/                     공통 이미지·음원·네트워크 코드
 ├─ learning/
 │  ├─ literacy-numeracy/       문해·수리 학습(읽기·맞춤법·연산·이야기책)
@@ -20,17 +24,43 @@ class/
 ├─ scripts/                    운영 데이터 생성 스크립트
 ├─ tests/                      포털 계약 테스트
 ├─ tools/                      배포와 무관한 분석 도구
+├─ references/                 수집 원본·교과서·지도·이미지 학습 자료
+├─ outputs/                    검수·보고서·내보내기 등 로컬 산출물
+├─ docs/                       프로젝트 문서와 연구 근거 자료
 └─ render.yaml                 운영 서버 배포 설정
 ```
 
-`/arithmetic`와 `/hanguksa`는 별도 프로젝트가 아니라 포털의 하위 기능입니다.
-통합 서버가 각 앱을 실행하고 같은 사이트 경로로 연결합니다.
+`/arithmetic`와 `/learn/world-voyage/`는 포털의 하위 기능입니다.
+통합 서버가 연산·세계 항해 앱을 실행하고 같은 사이트 경로로 연결합니다.
+`/hanguksa`는 정적 한국사 화면 `/learning/inquiry/korean-history/`로 연결합니다.
+
+학급·학교 운영 화면의 소스는 `apps/`에 모았습니다. 서버의 `site-paths.js`가
+기존 `/classtools/`, `/schooladmin/`, `/boards/` 등의 주소를 새 파일 위치에 연결하므로
+화면 메뉴·공유 링크·서비스 워커의 주소는 유지됩니다.
+
+수집 원본은 `references/`에, 임시 산출물은 `outputs/`에 모읍니다.
+교과서는 `references/textbooks/`, 지도 원본은 `references/geography/`,
+이미지 학습 자료는 `references/image-training/`을 사용합니다.
+수능 문제지 원본은 `references/exams/`, 동화 스캔 원본은
+`references/story-books/`, 사용하지 않는 그림 원본은 `references/game-art/`에 둡니다.
+음원 원본은 `references/audio/`에 보존하고, 파닉스 재생 파일은 OGG를 사용합니다.
+로컬 연구 문서는 `docs/research/`, 과거 수정 스크립트는 `scripts/archive/`에 보관합니다.
+이 로컬 자료와 `tools/.cache/`는 운영 배포 대상에 포함하지 않습니다.
+
+구조 점검은 `npm run audit:repository`로 실행합니다. 중복 배포 프로젝트,
+서비스 폴더의 임시 파일·WAV·대용량 PNG/JPG, Git에 남은 로컬 첨부파일을 찾아냅니다.
+수학 OX와 파닉스는 `learning/literacy-numeracy/`의 운영본만 유지합니다.
+`npm run audit:links`는 HTML·CSS의 정적 연결을 웹 주소 기준으로 검사합니다.
+앱 폴더 이동, 안내 페이지, 세계 항해 프록시와 서버 별칭을 반영하며,
+실행 중 JavaScript가 만드는 주소는 별도 브라우저 검사가 필요합니다.
 
 ## 게시판
 
 교사 도구의 **게시판** 또는 `/boards/?mode=teacher`에서 개설합니다.
-교사는 기존 교사 로그인이 필요하고, 학생은 `/boards/`에서 6자리 방번호·번호·이름으로
-참여합니다. 기존 `/room/`도 보드의 6자리 번호를 받으며, 4자리 활동방은 그대로 유지됩니다.
+교사는 기존 교사 로그인이 필요합니다. 로그인한 학생은 방번호만 입력하며 등록된 번호·이름을
+서버에서 가져옵니다. 초대 링크는 바로 입장하고, 사이트 게스트도 기존 이름을 사용합니다.
+사이트에 로그인하지 않은 방문자에게만 번호·이름을 받습니다. 새 방번호는 4자리이며, 기존 게시판의 6자리 번호도 직접 입력하거나 링크로
+참여할 수 있습니다. 사이트 로그인 후 이용하는 공통 `/room/` 입구도 두 길이를 받습니다.
 
 - 자유형: 글·링크 공유. 모둠형: 2~8개 열. 번호형: 번호별 한 글.
 - 문제출제형: 학생이 OX·객관식의 문제·보기·정답·해설을 제출합니다. 미승인 문항과
@@ -52,7 +82,7 @@ class/
 `game-hub-server/migrations/006-learning-boards.sql`을 멱등적으로 적용합니다.
 별도 파일 저장소는 필요하지 않습니다. QR은 서버의 `qrcode`로 생성합니다.
 
-검증: `npm run test:learning-boards`, `npm run test:learning-boards:ui`.
+검증: `npm run test:learning-boards`, `npm run test:learning-boards:entry`, `npm run test:learning-boards:ui`.
 테스트는 PGlite 임시 DB와 테스트 전용 교사 세션을 사용하고 운영 DB를 건드리지 않습니다.
 
 ## 로컬 실행
@@ -62,4 +92,17 @@ npm.cmd --prefix game-hub-server install
 npm.cmd --prefix game-hub-server start
 ```
 
-서버 설치 과정에서 산수 앱과 한국사 앱도 함께 빌드됩니다.
+서버 설치 과정에서 연산 앱을 빌드하고 세계 항해 앱의 의존성을 설치합니다.
+
+## 배포 시간 줄이기
+
+Render에서는 연산·세계 항해의 `node_modules` 캐시가 정상적으로 복원되고
+패키지 목록·잠금 파일·Node 버전·설치 옵션이 같으면 재설치를 건너뜁니다.
+첫 배포, 의존성 변경, 캐시 누락·손상 때는 기존처럼 `npm ci`를 실행합니다.
+연산 소스가 같으면 빌드 결과도 기존 캐시에서 복원합니다.
+
+`render.yaml`의 메인 서버 필터는 문서·수집 원본·검수 자료·테스트만 바뀐
+커밋의 자동 배포를 제외합니다. Blueprint로 관리하는 서비스는 동기화해야
+적용되고, 개별 생성한 서비스는 Render의 Build Filters에 같은 제외 경로를
+설정해야 합니다. 앱 코드·실행 자산·의존성·배포 스크립트 변경은 배포됩니다.
+이 필터는 배포 횟수를 줄이며 Git 다운로드 크기를 줄이는 설정은 아닙니다.

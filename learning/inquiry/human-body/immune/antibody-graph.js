@@ -119,18 +119,22 @@
     function watchControls() {
         var first = document.getElementById('firstInfectBtn');
         var second = document.getElementById('secondaryInfectBtn');
+        if(second)second.disabled=true;
         if (first) first.addEventListener('click', function () { addEvent('first'); });
         if (second) second.addEventListener('click', function () { addEvent('second'); });
     }
 
     function addEvent(kind) {
         if (layer && layer.hidden) return;
-        // 한 판이 끝까지 갔으면 처음부터 다시 그린다
-        if (t >= 0.98) running = false;
-        if (!running) { running = true; t = 0.05; events = []; }   // 세로축에 딱 붙지 않게 조금 띄운다
-        if (kind === 'second' && !events.length) kind = 'first';
-        // 두 번째 침입은 첫 침입에서 충분히 떨어진 뒤에만
-        if (kind === 'second' && t < 0.45) t = 0.45;
+        var second=document.getElementById('secondaryInfectBtn');
+        if(kind==='first'){
+            t=.05;events=[];if(second)second.disabled=false;
+        }else{
+            if(!events.length || events.some(function(e){return e.kind==='second';}))return;
+            // Keep the primary curve even after its playback reached the end.
+            t=Math.max(.45,Math.min(.6,t));if(second)second.disabled=true;
+        }
+        running=true;
         events.push({ at: t, kind: kind });
         drawMarks();
     }
@@ -148,8 +152,9 @@
                 var fall = Math.exp(-Math.max(0, d - 0.20) * 4.5);
                 sum += 0.28 * rise * fall;
             } else {
-                // 기억 세포가 있어 곧바로, 크게, 오래
-                var rise2 = Math.min(1, d / 0.025);
+                // A shorter lag is not zero biological latency.
+                if(d<.015)return;
+                var rise2 = Math.min(1, (d-.015) / 0.035);
                 var fall2 = Math.exp(-Math.max(0, d - 0.10) * 1.6);
                 sum += 1.0 * rise2 * fall2;
             }
@@ -196,10 +201,10 @@
             noteText.textContent = '옆의 [1차 침입] 을 눌러 1차 반응을 시작해 보세요.';
             noteText.style.color = '#cbd5e1';
         } else if (!hasSecond) {
-            noteText.textContent = '1차 반응 — 항체가 나오기까지 시간이 걸리고(잠복기), 양도 적습니다. 이제 옆의 [2차 감염 유발] 을 눌러 보세요.';
+            noteText.textContent = '1차 반응 — 항체가 증가하기까지 지연이 있습니다. [같은 항원에 2차 노출]을 눌러 이후의 반응과 비교하세요.';
             noteText.style.color = '#fca5a5';
         } else {
-            noteText.textContent = '2차 반응 — 기억 세포 덕분에 잠복기 없이 곧바로, 훨씬 많이, 더 오래 나옵니다. 백신은 이것을 미리 만들어 두는 것입니다.';
+            noteText.textContent = '2차 반응 — 기억 세포 덕분에 첫 반응보다 빠르고 크게 반응합니다. 지연이 완전히 없어지는 것은 아닙니다. 백신은 면역 기억을 형성하도록 돕습니다.';
             noteText.style.color = '#a5b4fc';
         }
     }

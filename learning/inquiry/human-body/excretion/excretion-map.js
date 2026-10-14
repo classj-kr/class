@@ -50,8 +50,8 @@
             desc: '대동맥에서 갈라져 콩팥으로 <strong>들어가는</strong> 핏줄입니다. 온몸에서 모은 <strong>요소가 가장 많은</strong> 피가 흐릅니다.'
         },
         {
-            id: 'renalVein', text: '콩팥정맥 — 가장 깨끗함', ax: 596, ay: 330,
-            desc: '콩팥에서 <strong>나오는</strong> 핏줄입니다. 요소를 걸러 낸 뒤라 <strong>온몸에서 가장 깨끗한</strong> 피가 흐릅니다. 시험에서 콩팥동맥과 바꿔 냅니다.'
+            id: 'renalVein', text: '콩팥정맥 — 요소가 줄어듦', ax: 596, ay: 330,
+            desc: '콩팥에서 <strong>나오는</strong> 혈관입니다. 콩팥동맥으로 들어온 혈액과 비교하면 <strong>요소의 양이 줄어듭니다</strong>. 혈액에는 여전히 몸에 필요한 여러 물질과 노폐물이 들어 있습니다.'
         },
         {
             id: 'ureterR', text: '오줌관', ax: 128, ay: 470,
@@ -71,12 +71,16 @@
         }
     ];
 
-    var wrap, layer, svg, labelBox, leaderGroup;
+    var wrap, layer, svg, labelBox, leaderGroup, selectedItem;
 
     function init() {
         wrap = document.querySelector('.excretion-viewport');
         if (!wrap) return;
         buildLayer();
+        if(window.SchoolLevel)window.SchoolLevel.subscribe(function(){
+            placeLabels();
+            if(selectedItem)show(selectedItem);
+        });
         requestAnimationFrame(loop);
     }
 
@@ -136,6 +140,12 @@
     }
 
     function show(item) {
+        item=PARTS.find(function(part){return part.id===item.id;})||item;
+        selectedItem=item;
+        if(window.ExcretionLearning){
+            item=window.ExcretionLearning.part(item);
+            if(!item)item=window.ExcretionLearning.part(PARTS[0]);
+        }
         // 누른 조각에 노란 테를 두른다
         if (typeof SimEngine !== 'undefined' && SimEngine.litPart) {
             SimEngine.litPart(svg, PARTS.map(function (x) { return x.id; }), item.id);
@@ -153,7 +163,15 @@
     }
 
     function placeLabels() {
-        BodyDiagramLabels.render(svg, labelBox, PARTS, {
+        var parts=window.ExcretionLearning?PARTS.map(window.ExcretionLearning.part).filter(Boolean):PARTS;
+        if(svg)PARTS.forEach(function(item){
+            if(parts.some(function(part){return part.id===item.id;}))return;
+            var target=svg.querySelector('#'+item.id);
+            if(!target)return;
+            ['role','tabindex','aria-label','aria-pressed'].forEach(function(name){target.removeAttribute(name);});
+            target.onkeydown=null;
+        });
+        BodyDiagramLabels.render(svg, labelBox, parts, {
             leaders: leaderGroup,
             className: 'excretion-map-tag',
             select: function (item) { show(item); }

@@ -1,10 +1,11 @@
 import {EXTRA_QUESTIONS} from './question-bank.mjs?v=20260920-38';
+import {extendWorldLessons} from './world-study.mjs?v=20261012-remaster1';
 // 2022 개정 교육과정 원문과 대조한 학습 경로. 위치는 비교를 위한 대표 사례이며 분포의 전부가 아니다.
 export const GROUPS = [
   ['map','지도 읽기','◎'], ['terrain','지형과 생활','△'], ['climate','기후와 바람','≋'], ['ocean','바다와 물','≈'],
   ['population','인구와 도시','◉'], ['culture','지역과 문화','◇'], ['economy','자원과 환경','◈'], ['earth','움직이는 지구','◌'],
 ].map(([id,title,icon])=>({id,title,icon}));
-export const LEVELS = {elementary:'초(기초)',middle:'중(핵심)',high:'고(심화)'};
+export const LEVELS = {elementary:'초',middle:'중',high:'고'};
 export const SOURCES = {
   curriculum: {title:'교육부 고시 제2022-33호 · 사회과·과학과 교육과정',url:'https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0'},
   density: {title:'World Bank · 인구밀도, 2023년 · 명/육지 km²',url:'https://data.worldbank.org/indicator/EN.POP.DNST'},
@@ -100,10 +101,10 @@ export const LESSONS = [
 {id:'climate-change',group:'economy',title:'기후변화와 지속가능성',level:'middle',standards:['9사(지리)06-02','9사(지리)12-02','12세지04-02'],layers:['sea','country','grid'],center:[165,0],
  core:['기후변화의 영향과 대응 능력은 지역에 따라 다르다.','온실가스 배출을 줄이는 완화와 피해에 대비하는 적응을 구분한다.','개인 실천·지역 정책·국제 협력을 함께 살피고 효과와 형평성을 비교한다.'],trap:"지구 온난화는 여러 지역에서 오랫동안 관측한 기온의 변화로 확인한다.",task:'낮은 섬 지역과 큰 도시에서 필요한 적응 대책을 비교하자.',spots:[S('태평양 도서 지역',179,-8,'해수면 변화에 취약한 낮은 섬들'),S('서울',127,37.57,'폭염·침수 등에 대비하는 도시')],
  quiz:[Q('온실가스 배출 감소를 목적으로 한 대책은?',['완화','적응만','풍화','퇴적'],0,'완화는 원인을 줄이는 대응이다. 적응은 이미 나타나거나 예상되는 피해에 대비한다.'),Q('폭염 쉼터 설치의 주된 성격은?',['기후변화 적응','지구 자전 변화','판 경계 이동','온실가스를 직접 모두 제거'],0,'폭염에 따른 피해를 줄이는 적응 대책이다.')]},
-{id:'earthquakes',group:'earth',title:'판 경계·지진·화산 분포',level:'middle',standards:['9과09-05'],layers:['mountain','sea'],overlay:'plates',center:[145,25],sources:['plates','tectonics'],
+{id:'earthquakes',group:'earth',title:'판 경계·지진·화산 분포',level:'middle',standards:['9과09-05'],layers:['plate','quake','volcano'],center:[145,25],sources:['plates','tectonics'],
  core:["판은 지구 표면을 이루는 거대한 암석층이다. 여러 판이 서로 다른 방향으로 천천히 움직인다.","판들이 만나는 경계 부근에는 지진과 화산 활동이 집중되는 경향이 있다.","태평양 가장자리와 대서양 중앙에서 판 경계와 지진·화산의 분포를 겹쳐 살펴보자."],trap:"하와이는 판 내부에서 나타나는 화산 활동의 사례다.",task:'태평양 가장자리의 경계와 대서양 중앙의 경계를 비교하자.',spots:[S('일본 부근',142,36,'태평양 가장자리 판 경계'),S('대서양 중앙',-30,20,'해양 가운데의 판 경계'),S('하와이',-155,20,'판 내부 화산의 사례')],
  quiz:[Q('지진·화산의 분포에 대한 적절한 설명은?',['대체로 판 경계와 관련된다','전 세계에 똑같이 분포','모두 적도에만 발생','나라 경계와 항상 일치'],0,'많은 지진·화산이 판 경계 부근에 집중된다.'),Q('판 내부는 지진·화산이 전혀 없는가?',['그렇다','아니다. 판 내부에서도 발생할 수 있다','항상 경계보다 많다','위도 0°에서만 발생한다'],1,'판 경계 집중은 일반적 경향이며 예외도 있다.')]},
-{id:'plate-motion',group:'earth',title:'발산·수렴·보존 경계',level:'high',standards:['10통과1-03-02'],layers:['mountain','sea'],overlay:'plates',center:[0,20],visual:'plates',sources:['plates','tectonics'],
+{id:'plate-motion',group:'earth',title:'발산·수렴·보존 경계',level:'high',standards:['10통과1-03-02'],layers:['plate','quake','volcano'],center:[0,20],visual:'plates',sources:['plates','tectonics'],
  core:['발산 경계에서는 판이 벌어지며 해령 등에서 새로운 해양 지각이 만들어진다.','수렴 경계에서는 판이 가까워진다. 섭입대의 해구·화산과 대륙 충돌의 산맥을 구별한다.','보존 경계에서는 판이 옆으로 어긋나며 주로 지진이 나타난다.'],trap:"히말라야는 두 대륙이 충돌해 만들어진 산맥이다. 해양판이 다른 판 아래로 들어가는 섭입대와 형성 과정을 비교해 보자.",task:'아이슬란드·히말라야·산안드레아스를 차례로 선택하고 모형의 움직임을 비교하자.',spots:[S('아이슬란드',-19,65,'발산 경계의 사례'),S('히말라야',85,29,'대륙과 대륙이 충돌'),S('산안드레아스 단층',-120,36,'보존 경계의 사례')],
  quiz:[Q('해령에서 새로운 해양 지각이 만들어지는 경계는?',['발산','보존','대륙 충돌만','국경'],0,'발산 경계에서 판이 벌어지고 마그마가 올라와 해양 지각이 만들어진다.'),Q('히말라야의 형성과 가장 관계 깊은 것은?',['대륙판의 충돌','대서양 해령의 발산','하천 퇴적만','보존 경계의 수평 이동만'],0,'인도판과 유라시아판의 대륙 부분이 충돌하면서 산맥이 형성되었다.')]},
 {id:'seasons',group:'earth',title:'자전·공전과 계절',level:'elementary',standards:['6과12-02','6과12-03','6과13-02','6과13-03'],layers:['grid'],center:[125,15],
@@ -120,6 +121,6 @@ export const QUESTIONS = LESSONS.flatMap(l=>[
 ]);
 
 // 국내 전용 내용은 세계 지리의 목록·검색·문제 출제에서 제외한다.
-export const WORLD_LESSONS = LESSONS.filter(l=>!['korea','reference-only'].includes(l.scope));
+export const WORLD_LESSONS = extendWorldLessons(LESSONS.filter(l=>!['korea','reference-only'].includes(l.scope)));
 const worldLessonIds = new Set(WORLD_LESSONS.map(l=>l.id));
 export const WORLD_QUESTIONS = QUESTIONS.filter(q=>worldLessonIds.has(q.lesson));

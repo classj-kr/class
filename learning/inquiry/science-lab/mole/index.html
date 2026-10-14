@@ -7,12 +7,13 @@
     <title>과학 실험실</title>
     <meta name="description" content="물·소금·설탕·철·산소를 저울에 올려 몰수와 입자 수, 기체의 부피를 계산하고, 수소 연소·메테인 연소·마그네슘과 염산 반응에서 두 반응물의 양을 정해 한계 반응물과 생성물·남는 물질을 화학 반응식의 계수로 구하고, 용질 양과 용액 부피로 몰 농도를 구해 묽힐 때의 변화를 확인하는 고등학교 화학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=6">
-    <link rel="stylesheet" href="mole-visual.css?v=7">
-    <link rel="stylesheet" href="quiz.css?v=4">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="mole-visual.css?v=6f36ec39be06">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
+<link rel="stylesheet" href="weighing.css?v=dd5f34482f68">
 </head>
 <body>
     <main>
@@ -25,24 +26,29 @@
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
-            <li>몰 세기, 반응식과 양적 관계, 몰 농도 가운데 하나를 고릅니다.</li>
-            <li>물질과 양, 반응과 두 반응물의 몰수, 용질 양·용액 부피·묽히기를 정합니다.</li>
-            <li>1몰보다 많을지, 무엇이 남을지, 농도가 얼마쯤일지 예상합니다.</li>
-            <li>시작해서 저울의 눈금, 입자 상자의 변화, 비커의 입자 수와 색을 확인합니다.</li>
+            <li>물질과 목표 몰수를 고르고, 필요한 질량을 구합니다.</li>
+            <li>저울을 켜고 수평을 맞춘 뒤 빈 용기를 올려 영점을 맞춥니다.</li>
+            <li>시료를 조금씩 넣거나 덜어내어 목표 몰수의 질량을 맞춥니다.</li>
+            <li>같은 몰수인 여러 물질의 질량을 비교하고 확인 문제를 풉니다.</li>
         </ol>
 
-        <div class="experiment-layout">
-            <section class="panel control-panel" aria-labelledby="control-title">
-                <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard" id="methodHint">1몰 = 6.02×10²³개, 몰 질량의 단위는 g/mol입니다</p>
-                <fieldset class="mode-field">
+                <fieldset class="mode-field mole-mode">
                     <legend>실험 종류</legend>
-                    <div class="mode-buttons three">
+                    <div class="mode-buttons">
+                        <button type="button" data-mode="weigh">질량 측정<small>덜어 재고 비교</small></button>
                         <button type="button" data-mode="count">몰 세기<small>몇 몰, 몇 개</small></button>
                         <button type="button" data-mode="react">반응식과 양<small>무엇이 남을까</small></button>
                         <button type="button" data-mode="molar">몰 농도<small>묽히면 얼마</small></button>
                     </div>
                 </fieldset>
+<!-- mole-weighing:start -->
+<section id="mwLab" class="mw-lab" aria-labelledby="mwTitle"><h2 id="mwTitle">몰질량을 구하고 직접 덜어 재기</h2><div id="mwSamples" class="mw-choices" role="group" aria-label="측정할 물질"></div><div class="mw-target"><div><h3 id="mwTarget"></h3><p id="mwFormula"></p></div><div id="mwGoals" class="mw-choices" role="group" aria-label="목표 몰수"></div></div><button id="mwShowCalculation">목표 질량 계산 보기</button><p id="mwCalculation" hidden></p><div class="mw-workspace"><section class="mw-stage" aria-label="전자저울"><div class="mw-scene"><svg viewBox="0 80 460 270" role="img" aria-label="수평계, 시료 용기와 전자저울"><defs><linearGradient id="mwBodyPaint" x2="0" y2="1"><stop stop-color="#f8fbfc"/><stop offset=".6" stop-color="#cbdce5"/><stop offset="1" stop-color="#a4bac8"/></linearGradient><linearGradient id="mwPanPaint" x2="0" y2="1"><stop stop-color="#e1eaf0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#9babb8"/></linearGradient><linearGradient id="mwGlassPaint"><stop stop-color="#cee2ec" stop-opacity=".6"/><stop offset=".45" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#a3c6d8" stop-opacity=".5"/></linearGradient></defs><ellipse cx="230" cy="325" rx="174" ry="15" fill="#8faab9" opacity=".2"/><path d="M105 234H350L371 309Q371 320 357 320H92Q80 320 82 308Z" fill="url(#mwBodyPaint)" stroke="#7897ab" stroke-width="2"/><path d="M111 224H343L351 247H104Z" fill="url(#mwPanPaint)" stroke="#8b9daa" stroke-width="2"/><path d="M97 312v11h22v-8m211 0v8h22v-11" fill="#617787"/><rect x="119" y="262" width="201" height="50" rx="8" fill="#4c6470"/><rect x="128" y="268" width="181" height="35" rx="4" fill="#d5e5d4"/><circle cx="341" cy="282" r="8" fill="#267887"/><g id="mwVessel"><g id="mwBeaker"><path d="M160 112H305L300 124V222Q300 233 289 233H171Q160 233 160 222Z" fill="url(#mwGlassPaint)" stroke="#789db0" stroke-width="2"/><path id="mwLiquid" fill="#b0d6df"/><path d="M168 129v89m122-85h-12m12 25h-20m20 25h-12m12 25h-20" stroke="#7b9aab" stroke-width="2"/></g><g id="mwDish"><path d="M127 219Q145 239 172 239H286Q313 239 333 219L319 229H143Z" fill="#dfe9ee" stroke="#8aa0ae" stroke-width="2"/><path id="mwSolid" stroke="#8ea0aa" stroke-width="1"/><path id="mwMetal" d="M177 224l12-20 40 5-12 16Zm57-7 14-17 28 10-10 17Z" stroke="#758a96" stroke-width="1.5"/></g></g><g transform="translate(60 185) scale(.5)"><rect x="55" y="190" width="58" height="19" rx="9" fill="#e7edc5" stroke="#81958b"/><path d="M78 190v19m12-19v19" stroke="#81958b"/><circle id="mwBubble" cx="102" cy="199.5" r="5" fill="#87b889" stroke="#507b60"/></g></svg><div class="mw-display"><output id="mwDisplay">꺼짐</output><span id="mwUnit" hidden>g</span></div></div><p id="mwContainer"></p><p id="mwReadState"></p></section><section class="mw-controls" aria-label="저울과 시료 조작"><div class="mw-row"><button id="mwPower" aria-pressed="false">전원 켜기</button><button id="mwLevel">수평 맞추기</button></div><div class="mw-row"><button id="mwPlace">빈 용기 올리기</button><button id="mwTare">영점 맞추기</button></div><h3>한 번에 덜어 넣거나 빼는 양</h3><div id="mwSteps" class="mw-choices" role="group" aria-label="시료 조절량"></div><div class="mw-row"><button id="mwAdd">시료 더 넣기</button><button id="mwRemove">시료 덜어내기</button></div><button id="mwCheck" class="mw-primary">맞춘 양 확인</button><button id="mwEmpty">시료 비우기</button></section></div><p id="mwStatus" class="mw-status" aria-live="polite"></p><section id="mwResults" class="mw-results"><h3>같은 몰수의 질량 비교</h3><table><caption id="mwTableCaption"></caption><thead><tr><th scope="col">물질</th><th scope="col">시료의 질량</th><th scope="col">물질의 양</th></tr></thead><tbody id="mwRows"></tbody></table></section><div class="mw-footer"><p>실물에서는 시료마다 도구를 구분하고, 에탄올을 화기에서 멀리합니다.</p><button id="mwReset">측정 처음부터</button></div></section>
+<!-- mole-weighing:end -->
+        <div class="experiment-layout">
+            <section class="panel control-panel" aria-labelledby="control-title">
+                <h2 id="control-title">실험 조건</h2>
+                <p class="water-standard" id="methodHint">1몰 = 6.02×10²³개, 몰 질량의 단위는 g/mol입니다</p>
+
                 <div id="controlArea"></div>
                 <fieldset class="prediction-field">
                     <legend id="predictionLegend">어떻게 될까요?</legend>
@@ -89,10 +95,9 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>몰</strong> 원자와 분자는 너무 작아 낱개로 다룰 수 없으므로 6.02×10²³개를 한 묶음으로 세고, 그 묶음을 1몰이라 합니다. 몰 질량은 질량을 물질량으로 나눈 값이며 보통 g/mol로 나타냅니다. 물 H₂O는 18 g, 소금 NaCl은 58.5 g, 철 Fe는 55.8 g이 각각 1몰이고 그 안에 6.02×10²³개의 분자·이온 쌍·원자가 들어 있습니다. 이상 기체 모형에서 0 ℃, 1기압인 기체 1몰의 부피는 약 22.4 L입니다.</p>
+                <p><strong>몰</strong> 원자와 분자는 너무 작아 낱개로 다룰 수 없으므로 6.02×10²³개를 한 묶음으로 세고, 그 묶음을 1몰이라 합니다. 몰 질량은 질량을 물질량으로 나눈 값이며 보통 g/mol로 나타냅니다. 물 H₂O는 18 g, 소금 NaCl은 58.5 g, 철 Fe는 55.8 g이 각각 1몰이고 그 안에 6.02×10²³개의 분자·화학식 단위·원자가 들어 있습니다. 이상 기체 모형에서 0 ℃, 1기압인 기체 1몰의 부피는 약 22.4 L입니다.</p>
                 <p><strong>반응식과 양적 관계</strong> 화학 반응식의 계수는 반응하는 입자 수의 비, 곧 몰수의 비입니다. 2H₂ + O₂ → 2H₂O는 수소 2몰과 산소 1몰이 만나 물 2몰이 된다는 뜻이므로, 수소 4몰에 산소 1몰을 넣으면 산소가 먼저 다 쓰이고 수소 2몰이 남습니다. 먼저 바닥나는 쪽을 한계 반응물이라 하고, 생성물의 양은 한계 반응물이 정합니다. 반응 전후에 원자는 없어지거나 생기지 않으므로 질량의 합은 언제나 같습니다.</p>
-                <p><strong>몰 농도</strong> 용액 1 L에 녹아 있는 용질의 몰수를 몰 농도(M = mol/L)라 합니다. 소금 0.5몰(29.2 g)을 물에 녹여 전체 500 mL로 만들면 1 M입니다. 물을 더 넣어 묽혀도 용질의 몰수는 그대로이므로 M₁V₁ = M₂V₂가 성립하고, 부피를 두 배로 하면 농도는 절반이 됩니다. 농도에는 여러 표시 방법이 있으며 몰 농도는 그중 하나입니다.</p>
-                <p><strong>양의 감각</strong> 물 한 컵(180 g)이 10몰, 곧 6×10²⁴개의 분자입니다. 우주의 별 수(10²²개쯤)보다 많습니다. 반대로 12 g의 탄소 속 원자 6.02×10²³개를 한 줄로 세우면 지구에서 달까지 몇백 번을 오갑니다. 몰은 이 어마어마한 수를 손에 잡히는 저울 눈금으로 바꾸어 주는 단위입니다.</p>
+                <p><strong>몰 농도</strong> 용액 1 L에 녹아 있는 용질의 몰수를 몰 농도(M = mol/L)라 합니다. 소금 0.5몰(29.25 g)을 물에 녹여 전체 500 mL로 만들면 1 M입니다. 물을 더 넣어 묽혀도 용질의 몰수는 그대로이므로 M₁V₁ = M₂V₂가 성립하고, 부피를 두 배로 하면 농도는 절반이 됩니다. 농도에는 여러 표시 방법이 있으며 몰 농도는 그중 하나입니다.</p>
             </div>
         </section>
 
@@ -100,30 +105,30 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="b">
-                    <h3>물 18 g에 들어 있는 물 분자는 몇 개일까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 18개</label>
-                        <label><input type="radio" name="q1" value="b"> 6.02×10²³개 (1몰)</label>
-                        <label><input type="radio" name="q1" value="c"> 1,800만 개</label>
-                        <label><input type="radio" name="q1" value="d"> 세어 볼 수 없다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>물의 분자량이 18이므로 18 g이 1몰이고, 1몰은 언제나 6.02×10²³개입니다. 무게를 재는 것이 곧 개수를 세는 것입니다.</p>
-                </article>
+<h3>물의 몰 질량은 18 g/mol이다. 물 9 g에 들어 있는 물 분자의 수는? (Nₐ: 아보가드로수)</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> Nₐ</label>
+<label><input type="radio" name="q1" value="b"> 0.5Nₐ</label>
+<label><input type="radio" name="q1" value="c"> 2Nₐ</label>
+<label><input type="radio" name="q1" value="d"> 9Nₐ</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>9 g은 0.5 mol이므로 분자 수는 아보가드로수의 절반입니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="c">
-                    <h3>2H₂ + O₂ → 2H₂O에서 수소 4몰과 산소 1몰을 반응시키면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 물 4몰이 생긴다</label>
-                        <label><input type="radio" name="q2" value="b"> 수소가 다 쓰이고 산소가 남는다</label>
-                        <label><input type="radio" name="q2" value="c"> 산소가 다 쓰이고 수소 2몰이 남으며 물 2몰이 생긴다</label>
-                        <label><input type="radio" name="q2" value="d"> 둘 다 딱 맞게 다 쓰인다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>계수 비 2:1이므로 산소 1몰에는 수소 2몰만 반응합니다. 산소가 한계 반응물이고 물은 산소의 두 배인 2몰, 수소는 4 − 2 = 2몰이 남습니다.</p>
-                </article>
+<h3>2H₂ + O₂ → 2H₂O에서 H₂ 4 mol과 O₂ 1 mol을 반응시킨다. 생긴 물과 남은 수소는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 물 4 mol / 수소 0 mol</label>
+<label><input type="radio" name="q2" value="b"> 물 1 mol / 수소 3 mol</label>
+<label><input type="radio" name="q2" value="c"> 물 2 mol / 수소 2 mol</label>
+<label><input type="radio" name="q2" value="d"> 물 2 mol / 수소 0 mol</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>산소 1 mol이 수소 2 mol과 반응해 물 2 mol을 만듭니다. 산소가 제한 반응물이고 수소 2 mol이 남습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>1 M 소금물 500 mL에 물을 부어 전체 2 L로 만들면 농도는?</h3>
@@ -139,23 +144,25 @@
                 </article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>몰 농도 2 M이 뜻하는 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 물 1 kg에 용질 2 g이 녹아 있다</label>
-                        <label><input type="radio" name="q4" value="b"> 용질이 용액의 2 %다</label>
-                        <label><input type="radio" name="q4" value="c"> 용액 1 L에 용질 2 g이 녹아 있다</label>
-                        <label><input type="radio" name="q4" value="d"> 용액 1 L에 용질 2몰이 녹아 있다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>몰 농도는 용액 1 L 속 용질의 몰수입니다. 물의 질량이 아니라 용액 전체의 부피가 기준이고, g이 아니라 몰로 셉니다.</p>
-                </article>
+<h3>빈 접시는 8.00 g이다. 영점을 맞추지 않고 접시와 NaCl을 함께 쟀더니 37.25 g이었다. NaCl의 양은? (몰질량 58.5 g/mol)</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 0.137 mol</label>
+<label><input type="radio" name="q4" value="b"> 0.637 mol</label>
+<label><input type="radio" name="q4" value="c"> 2.000 mol</label>
+<label><input type="radio" name="q4" value="d"> 0.500 mol</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>NaCl의 질량은 37.25−8.00=29.25 g입니다. 물질의 양은 29.25÷58.5=0.500 mol입니다. 용기 질량은 시료의 질량에 포함하지 않습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=0f8b1a0379ab"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="weighing-model.js?v=db690f8ea504"></script>
+    <script src="weighing.js?v=d421fd8c6c75"></script>
+    <script src="app.js?v=8f4196a89ce3"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

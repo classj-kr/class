@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-12T18:01:51.538Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "dna-structure",
+      "school": "high-common",
+      "scenarios": 40
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-elective",
+      "scenarios": 40
+    }
+  ],
+  "scenarios": 80,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

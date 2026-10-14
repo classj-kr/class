@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="시소에서 받침점 위치와 물체의 무게·거리를 바꾸어 돌림힘으로 어느 쪽이 내려가는지 계산하고, 경사면 위 상자가 무게중심 높이와 바닥 너비, 마찰에 따라 버티는지·미끄러지는지·넘어지는지 판정하고, 두 받침대 위 판에 물건을 어디에 놓느냐로 각 받침대가 받는 힘과 뒤집히는 조건을 확인하는 고등학교 물리학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="torque-visual.css?v=6">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="torque-visual.css?v=152682b9c883">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -100,62 +100,60 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>시소에서 가벼운 아이가 무거운 아이와 균형을 맞추려면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 받침점에 더 가까이 앉는다</label>
-                        <label><input type="radio" name="q1" value="b"> 더 세게 눌러 앉는다</label>
-                        <label><input type="radio" name="q1" value="c"> 받침점에서 더 멀리 앉는다</label>
-                        <label><input type="radio" name="q1" value="d"> 무거운 아이 쪽으로 옮겨 앉는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>돌림힘은 힘 × 거리입니다. 무게가 절반이면 거리를 두 배로 하면 돌림힘이 같아집니다. 10 kg이 2 m에 앉으면 20 kg이 1 m에 앉은 것과 똑같이 196 N·m입니다.</p>
-                </article>
+<h3>시소 한쪽에 40 kg 아이가 받침점에서 1 m 떨어져 앉았다. 20 kg 아이가 반대쪽에서 균형을 맞출 거리는? 시소 무게는 무시한다.</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 1 m</label>
+<label><input type="radio" name="q1" value="b"> 0.5 m</label>
+<label><input type="radio" name="q1" value="c"> 2 m</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>돌림힘이 같아야 하므로 40×1=20×거리이며 거리는 2 m입니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>높고 좁은 물체가 조금만 기울여도 넘어지는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 무게중심이 높고 바닥이 좁아 무게중심의 수직선이 금방 바닥면 밖으로 나가기 때문에</label>
-                        <label><input type="radio" name="q2" value="b"> 무거워서 중력이 크기 때문에</label>
-                        <label><input type="radio" name="q2" value="c"> 공기의 저항을 많이 받기 때문에</label>
-                        <label><input type="radio" name="q2" value="d"> 마찰이 커서 미끄러지지 못하기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>넘어지는 문턱 각은 폭÷높이의 탄젠트로 정해집니다. 높이가 폭의 3배면 18°만 기울어도 무게중심의 수직선이 바닥 모서리를 넘어가 무게가 물체를 넘기는 쪽으로 돌립니다.</p>
-                </article>
+<h3>폭은 같고 높이만 다른 균일한 상자 A·B를 미끄러지지 않게 기울였다. B가 더 높다면 먼저 넘어지는 것과 그 조건은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> B / 무게중심 수직선이 바닥 밖</label>
+<label><input type="radio" name="q2" value="b"> A / 무게중심 수직선이 바닥 밖</label>
+<label><input type="radio" name="q2" value="c"> B / 무게중심 수직선이 바닥 중앙</label>
+<label><input type="radio" name="q2" value="d"> A / 무게중심 수직선이 바닥 중앙</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>높은 상자는 더 작은 기울기에서 무게중심의 수직선이 지지면 바깥으로 나가 넘어집니다.</p>
+</article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>경사면을 천천히 세울 때 상자가 넘어지지 않고 미끄러지는 조건은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 상자가 가벼울 때</label>
-                        <label><input type="radio" name="q3" value="b"> 상자가 높고 좁을 때</label>
-                        <label><input type="radio" name="q3" value="c"> 마찰 계수가 폭÷높이보다 클 때</label>
-                        <label><input type="radio" name="q3" value="d"> 마찰 계수가 폭÷높이보다 작을 때</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>미끄러짐은 기울기의 탄젠트가 마찰 계수를 넘을 때, 넘어짐은 폭÷높이를 넘을 때 시작됩니다. 마찰 계수가 더 작으면 미끄러지는 문턱에 먼저 이릅니다. 무게는 두 문턱 어디에도 들어가지 않습니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>균일한 상자의 밑면 폭은 높이의 절반이고 정지 마찰 계수는 0.3이다. 경사를 천천히 높이면 먼저 생기는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 넘어짐</label>
+<label><input type="radio" name="q3" value="b"> 둘이 동시에 발생</label>
+<label><input type="radio" name="q3" value="c"> 미끄러짐</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>미끄러짐의 한계는 tanθ=0.3, 넘어짐의 한계는 tanθ=폭/높이=0.5입니다. 더 작은 각도에서 미끄러짐이 먼저 일어납니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>두 받침대 위의 판에서 물건을 오른쪽 받침대 바깥쪽으로 옮기면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 두 받침대가 받는 힘이 똑같이 늘어난다</label>
-                        <label><input type="radio" name="q4" value="b"> 오른쪽 받침대가 받는 힘이 늘고 왼쪽은 줄어들며, 0이 되면 판이 뒤집힌다</label>
-                        <label><input type="radio" name="q4" value="c"> 왼쪽 받침대가 받는 힘이 늘어난다</label>
-                        <label><input type="radio" name="q4" value="d"> 어디에 놓든 받침대가 받는 힘은 같다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>오른쪽 받침대를 축으로 돌림힘을 재면, 바깥쪽의 물건은 판의 왼쪽을 들어 올리는 쪽으로 돌립니다. 왼쪽 받침대는 판을 아래로 붙잡을 수 없으므로 받는 힘이 0이 되는 순간 판이 뒤집힙니다.</p>
-                </article>
+<h3>두 받침대 위 판에서 물건을 오른쪽으로 천천히 옮긴다. 판이 아직 수평일 때 왼쪽·오른쪽 받침힘은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 왼쪽 증가 / 오른쪽 감소</label>
+<label><input type="radio" name="q4" value="b"> 왼쪽 감소 / 오른쪽 증가</label>
+<label><input type="radio" name="q4" value="c"> 왼쪽 증가 / 오른쪽 증가</label>
+<label><input type="radio" name="q4" value="d"> 왼쪽 감소 / 오른쪽 감소</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>전체 무게를 지탱하는 힘의 합은 같지만 돌림힘 평형에 따라 오른쪽 받침힘의 몫이 커집니다. 왼쪽 힘이 0인 한계를 넘으면 기울 수 있습니다.</p>
+</article>
             </div>
         </details>
     </main>
     <script src="app.js?v=20711e8ff0d5"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

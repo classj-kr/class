@@ -1,0 +1,646 @@
+[
+  {
+    "id": "gojoseon-distribution",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 129
+  },
+  {
+    "id": "gaya-federation",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 107
+  },
+  {
+    "id": "baekje-fourth",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 119
+  },
+  {
+    "id": "goguryeo-fifth",
+    "markers": 4,
+    "places": 4,
+    "school": "elementary",
+    "text": 114
+  },
+  {
+    "id": "baekje-capitals",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 89
+  },
+  {
+    "id": "silla-sixth",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 111
+  },
+  {
+    "id": "unification",
+    "markers": 6,
+    "places": 6,
+    "school": "elementary",
+    "text": 103
+  },
+  {
+    "id": "balhae",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 123
+  },
+  {
+    "id": "silla-trade",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 94
+  },
+  {
+    "id": "later-three",
+    "markers": 4,
+    "places": 4,
+    "school": "elementary",
+    "text": 101
+  },
+  {
+    "id": "gangdong",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 109
+  },
+  {
+    "id": "gwiju",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 107
+  },
+  {
+    "id": "nine-forts",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 115
+  },
+  {
+    "id": "sambyeolcho",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 101
+  },
+  {
+    "id": "four-six",
+    "markers": 4,
+    "places": 4,
+    "school": "elementary",
+    "text": 108
+  },
+  {
+    "id": "imjin",
+    "markers": 4,
+    "places": 4,
+    "school": "elementary",
+    "text": 107
+  },
+  {
+    "id": "foreign-incursions",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 108
+  },
+  {
+    "id": "ports",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 115
+  },
+  {
+    "id": "donghak",
+    "markers": 6,
+    "places": 6,
+    "school": "elementary",
+    "text": 112
+  },
+  {
+    "id": "an-jung-geun",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 107
+  },
+  {
+    "id": "independence-bases",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 119
+  },
+  {
+    "id": "march-first",
+    "markers": 5,
+    "places": 5,
+    "school": "elementary",
+    "text": 135
+  },
+  {
+    "id": "provisional-government",
+    "markers": 1,
+    "places": 1,
+    "school": "elementary",
+    "text": 113
+  },
+  {
+    "id": "provisional-route",
+    "markers": 8,
+    "places": 8,
+    "school": "elementary",
+    "text": 112
+  },
+  {
+    "id": "bongo-cheongsan",
+    "markers": 5,
+    "places": 5,
+    "school": "elementary",
+    "text": 100
+  },
+  {
+    "id": "patriotic-corps",
+    "markers": 2,
+    "places": 2,
+    "school": "elementary",
+    "text": 111
+  },
+  {
+    "id": "liberation-army",
+    "markers": 1,
+    "places": 1,
+    "school": "elementary",
+    "text": 111
+  },
+  {
+    "id": "korean-war",
+    "markers": 3,
+    "places": 3,
+    "school": "elementary",
+    "text": 115
+  },
+  {
+    "id": "gojoseon-distribution",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 124
+  },
+  {
+    "id": "early-states",
+    "markers": 7,
+    "places": 7,
+    "school": "middle",
+    "text": 129
+  },
+  {
+    "id": "gaya-federation",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 121
+  },
+  {
+    "id": "baekje-fourth",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 86
+  },
+  {
+    "id": "goguryeo-fifth",
+    "markers": 5,
+    "places": 5,
+    "school": "middle",
+    "text": 114
+  },
+  {
+    "id": "baekje-capitals",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 113
+  },
+  {
+    "id": "silla-sixth",
+    "markers": 7,
+    "places": 7,
+    "school": "middle",
+    "text": 105
+  },
+  {
+    "id": "unification",
+    "markers": 6,
+    "places": 6,
+    "school": "middle",
+    "text": 118
+  },
+  {
+    "id": "balhae",
+    "markers": 8,
+    "places": 8,
+    "school": "middle",
+    "text": 110
+  },
+  {
+    "id": "silla-trade",
+    "markers": 5,
+    "places": 5,
+    "school": "middle",
+    "text": 101
+  },
+  {
+    "id": "later-three",
+    "markers": 4,
+    "places": 4,
+    "school": "middle",
+    "text": 102
+  },
+  {
+    "id": "gangdong",
+    "markers": 2,
+    "places": 2,
+    "school": "middle",
+    "text": 113
+  },
+  {
+    "id": "gwiju",
+    "markers": 2,
+    "places": 2,
+    "school": "middle",
+    "text": 94
+  },
+  {
+    "id": "nine-forts",
+    "markers": 2,
+    "places": 2,
+    "school": "middle",
+    "text": 100
+  },
+  {
+    "id": "sambyeolcho",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 113
+  },
+  {
+    "id": "ssangseong",
+    "markers": 2,
+    "places": 2,
+    "school": "middle",
+    "text": 96
+  },
+  {
+    "id": "four-six",
+    "markers": 4,
+    "places": 4,
+    "school": "middle",
+    "text": 109
+  },
+  {
+    "id": "imjin",
+    "markers": 8,
+    "places": 8,
+    "school": "middle",
+    "text": 108
+  },
+  {
+    "id": "foreign-incursions",
+    "markers": 2,
+    "places": 2,
+    "school": "middle",
+    "text": 118
+  },
+  {
+    "id": "ports",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 109
+  },
+  {
+    "id": "donghak",
+    "markers": 6,
+    "places": 6,
+    "school": "middle",
+    "text": 127
+  },
+  {
+    "id": "an-jung-geun",
+    "markers": 2,
+    "places": 2,
+    "school": "middle",
+    "text": 106
+  },
+  {
+    "id": "independence-bases",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 104
+  },
+  {
+    "id": "march-first",
+    "markers": 5,
+    "places": 5,
+    "school": "middle",
+    "text": 147
+  },
+  {
+    "id": "provisional-government",
+    "markers": 1,
+    "places": 1,
+    "school": "middle",
+    "text": 114
+  },
+  {
+    "id": "provisional-route",
+    "markers": 8,
+    "places": 8,
+    "school": "middle",
+    "text": 118
+  },
+  {
+    "id": "bongo-cheongsan",
+    "markers": 5,
+    "places": 5,
+    "school": "middle",
+    "text": 104
+  },
+  {
+    "id": "patriotic-corps",
+    "markers": 2,
+    "places": 2,
+    "school": "middle",
+    "text": 96
+  },
+  {
+    "id": "allied-operations",
+    "markers": 4,
+    "places": 4,
+    "school": "middle",
+    "text": 98
+  },
+  {
+    "id": "korean-volunteer-corps",
+    "markers": 1,
+    "places": 1,
+    "school": "middle",
+    "text": 95
+  },
+  {
+    "id": "liberation-army",
+    "markers": 1,
+    "places": 1,
+    "school": "middle",
+    "text": 95
+  },
+  {
+    "id": "korean-war",
+    "markers": 3,
+    "places": 3,
+    "school": "middle",
+    "text": 123
+  },
+  {
+    "id": "gojoseon-distribution",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 227
+  },
+  {
+    "id": "early-states",
+    "markers": 7,
+    "places": 7,
+    "school": "high",
+    "text": 259
+  },
+  {
+    "id": "gaya-federation",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 231
+  },
+  {
+    "id": "baekje-fourth",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 197
+  },
+  {
+    "id": "goguryeo-fifth",
+    "markers": 5,
+    "places": 5,
+    "school": "high",
+    "text": 230
+  },
+  {
+    "id": "baekje-capitals",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 229
+  },
+  {
+    "id": "silla-sixth",
+    "markers": 7,
+    "places": 7,
+    "school": "high",
+    "text": 224
+  },
+  {
+    "id": "unification",
+    "markers": 6,
+    "places": 6,
+    "school": "high",
+    "text": 240
+  },
+  {
+    "id": "balhae",
+    "markers": 8,
+    "places": 8,
+    "school": "high",
+    "text": 216
+  },
+  {
+    "id": "silla-trade",
+    "markers": 5,
+    "places": 5,
+    "school": "high",
+    "text": 213
+  },
+  {
+    "id": "later-three",
+    "markers": 4,
+    "places": 4,
+    "school": "high",
+    "text": 224
+  },
+  {
+    "id": "gangdong",
+    "markers": 2,
+    "places": 2,
+    "school": "high",
+    "text": 228
+  },
+  {
+    "id": "gwiju",
+    "markers": 2,
+    "places": 2,
+    "school": "high",
+    "text": 196
+  },
+  {
+    "id": "nine-forts",
+    "markers": 2,
+    "places": 2,
+    "school": "high",
+    "text": 226
+  },
+  {
+    "id": "sambyeolcho",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 237
+  },
+  {
+    "id": "ssangseong",
+    "markers": 2,
+    "places": 2,
+    "school": "high",
+    "text": 211
+  },
+  {
+    "id": "four-six",
+    "markers": 4,
+    "places": 4,
+    "school": "high",
+    "text": 203
+  },
+  {
+    "id": "imjin",
+    "markers": 8,
+    "places": 8,
+    "school": "high",
+    "text": 221
+  },
+  {
+    "id": "foreign-incursions",
+    "markers": 2,
+    "places": 2,
+    "school": "high",
+    "text": 226
+  },
+  {
+    "id": "ports",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 217
+  },
+  {
+    "id": "donghak",
+    "markers": 6,
+    "places": 6,
+    "school": "high",
+    "text": 230
+  },
+  {
+    "id": "an-jung-geun",
+    "markers": 2,
+    "places": 2,
+    "school": "high",
+    "text": 214
+  },
+  {
+    "id": "independence-bases",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 210
+  },
+  {
+    "id": "march-first",
+    "markers": 5,
+    "places": 5,
+    "school": "high",
+    "text": 277
+  },
+  {
+    "id": "provisional-government",
+    "markers": 1,
+    "places": 1,
+    "school": "high",
+    "text": 217
+  },
+  {
+    "id": "provisional-route",
+    "markers": 8,
+    "places": 8,
+    "school": "high",
+    "text": 254
+  },
+  {
+    "id": "bongo-cheongsan",
+    "markers": 5,
+    "places": 5,
+    "school": "high",
+    "text": 209
+  },
+  {
+    "id": "patriotic-corps",
+    "markers": 2,
+    "places": 2,
+    "school": "high",
+    "text": 205
+  },
+  {
+    "id": "allied-operations",
+    "markers": 4,
+    "places": 4,
+    "school": "high",
+    "text": 210
+  },
+  {
+    "id": "korean-volunteer-corps",
+    "markers": 1,
+    "places": 1,
+    "school": "high",
+    "text": 204
+  },
+  {
+    "id": "liberation-army",
+    "markers": 1,
+    "places": 1,
+    "school": "high",
+    "text": 201
+  },
+  {
+    "id": "korean-war",
+    "markers": 3,
+    "places": 3,
+    "school": "high",
+    "text": 239
+  }
+]

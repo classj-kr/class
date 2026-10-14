@@ -6,6 +6,8 @@
   "rows": 8,
   "format": "webp",
   "quality": 96,
-  "sourceFile": "source/3_no_ice_clouds_16k.jpg",
+  "sourceFile": "references/geography/natural-earth-v58/3_no_ice_clouds_16k.jpg",
+  "sourceRoot": "repository",
+  "sourceSha256": "d7ddfc354aff542a4e33de587aff97a0fc0277e84e2d974fb86c0442f9baf720",
   "sourceBytes": 30041042
 }

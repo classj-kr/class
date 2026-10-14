@@ -1,10 +1,10 @@
 """설명 창 자료(data/info.json)와 사진(photos/<id>.webp)을 만든다.
 
-    python tools/build_info.py                 # art-source/photos 의 원본으로 사진만 다시 만든다
+    python tools/build_info.py                 # references/geography/globe/photos 원본으로 사진만 다시 만든다
     python tools/build_info.py --merge <폴더>   # <폴더>/out-*.json 의 글을 info.json 에 합치고(check-*.json 의 고친 글을 그 위에 덮고) 사진을 만든다
 
 info.json 이 설명 글의 원본이다(글을 고칠 땐 이 파일을 고친다).
-사진 원본은 위키미디어 공용에서 받은 것으로, 앱 폴더 art-source/photos/<id>.jpg|png 에 둔다(저장소에는 올리지 않음).
+사진 원본은 위키미디어 공용에서 받은 것으로, 저장소 루트의 references/geography/globe/photos/<id>.jpg|png 에 둔다(저장소에는 올리지 않음).
 설명 창 사진 틀은 3:2. 가로로 넓은 사진은 3:2로 자르되 위쪽 1/3에 무게를 두고,
 가로세로 비가 1.2보다 좁은 사진은 자르지 않고 통째로 담은 뒤 남는 자리를 흐린 같은 사진으로 메운다.
 """
@@ -18,7 +18,7 @@ from PIL import Image, ImageFilter, ImageOps
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 INFO = ROOT / "data/info.json"
-SOURCE = ROOT / "art-source/photos"
+SOURCE = ROOT.parents[2] / "references/geography/globe/photos"
 PHOTOS = ROOT / "photos"
 SIZE = (720, 480)
 QUALITY = 72

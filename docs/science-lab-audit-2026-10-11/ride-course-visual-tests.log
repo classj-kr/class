@@ -1,0 +1,41 @@
+✔ heat transfer: approach ambient from either side, with volume and thickness controlled (0.8256ms)
+✔ moving source: wavelength times observed frequency remains the medium sound speed (0.2106ms)
+✔ motion acceleration agrees with finite differences and sensor support (0.2975ms)
+✔ DNA construction preserves templates, antiparallel synthesis, primers and ligation order (1.7484ms)
+✔ translation: reading frame, synonymous substitution, termination, cell-free exception (0.3069ms)
+✔ pedigree: X inheritance and conditioning are independent of child order (0.219ms)
+✔ karyotype: all cards conserved when moving, X/Y pairing, extra autosome is retained (2.6253ms)
+✔ disc assay: control stays zero, geometry detects overlap, preincubation shows no inhibition (0.4208ms)
+✔ water waves: dispersion limits, bottom boundary and closed linear particle orbits (0.2707ms)
+✔ silver mirror: precipitation is distinct from metal reduction, with a water control (0.2632ms)
+✔ interfacial polymer model: alternating functional groups conserve chain ends and HCl (0.2294ms)
+✖ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (3197.8246ms)
+✔ webkit: source-backed actions, wrong choices, reset, diagnosis and mobile (32184.799ms)
+✔ course scopes partition authored questions and preserve scoped transfer evidence (20.6509ms)
+✔ pendulum conserves energy and acceleration matches position and velocity derivatives (12.9341ms)
+✔ seesaw attachment distance scales linear acceleration but not gravity; axis rotation preserves magnitude (1.5439ms)
+✔ frictionless slide distinguishes raw and corrected axes and ends at the end of the ramp (0.6414ms)
+✔ browser: apparatus, course routes, isolated diagnostics, reload and narrow screens (6251.4659ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35473.4985
+
+✖ failing tests:
+
+test at tests\science-inquiry-labs.test.cjs:75:43
+✖ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (3197.8246ms)
+  Error: E:\webprojects\class\docs\science-lab-audit-2026-10-11\inquiry-implementation\ride-acceleration-chromium-390.webp: unable to open for write
+  system error: Invalid argument
+  E:\webprojects\class\docs\science-lab-audit-2026-10-11\inquiry-implementation\ride-acceleration-chromium-390.webp: write error
+  system error: Invalid argument
+      at Sharp.toFile (C:\Users\A\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\sharp\dist\output.cjs:90:19)
+      at screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:8:56)
+      at async shot (E:\webprojects\class\tests\science-inquiry-labs.test.cjs:79:213)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-inquiry-labs.test.cjs:100:4)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)

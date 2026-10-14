@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-12T22:43:43.564Z",
+  "engine": "chromium",
+  "catalog": true,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "",
+      "scenarios": 25
+    }
+  ],
+  "scenarios": 25,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": false,
+  "loadedFontFamilies": []
+}

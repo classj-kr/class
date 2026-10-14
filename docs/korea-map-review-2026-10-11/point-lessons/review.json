@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-11",
+  "request": "역사 지도 지점을 눌렀을 때 이름만 표시되거나 위치만 확대되는 누락 수정",
+  "changes": [
+    "지도 숫자, 지도 이름표, 오른쪽 지점 목록을 동일한 지점 설명창에 연결",
+    "37개 지도 기본 지점 143개 및 6개 전쟁 시점의 지점 18개 설명 정의. 실제 전쟁 지도는 시점별 설명 사용",
+    "초는 쉬운 핵심 설명, 중·고는 사건·정책·지리적 위치의 연결 설명 추가. 기존 학교급 지점 제한 유지",
+    "충주 고구려비 실제 WebP 사진 및 평양·한성·충주의 남북 위치 비교 포함",
+    "고구려 고등 2번을 비문의 매금과 충주 위치를 남진 정책에 연결하는 문항으로 교체. ID 유지, revision 3",
+    "지점을 눌러도 지도 확대율을 강제로 바꾸지 않음",
+    "Enter·Space로 지도 표지 설명 열기, Esc로 닫기, 이전 초점 복구, 배경 스크롤 잠금"
+  ],
+  "sources": [
+    {
+      "name": "제공된 천재 2022 한국사1(정요근)",
+      "file": "고_한국사1(정요근)_교과서_천재교과서__710b5dc809.pdf",
+      "pdfPage": 14,
+      "review": "고구려 5세기 영토 확장 지도에 표시된 충주 고구려비 및 한강 유역 경쟁 대조"
+    },
+    {
+      "name": "국사편찬위원회, 충주 고구려비와 중원 지역",
+      "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_009_0060",
+      "review": "신라 매금 관련 비문, 남한강 유역 진출과 신라 관계. 비석의 정확한 건립 연도를 단정하지 않음"
+    },
+    {
+      "name": "기존 역사 설명 및 문항 교과서 검토 기록",
+      "file": "../questions/README.md"
+    }
+  ],
+  "verification": {
+    "tests": {
+      "passed": 10,
+      "failed": 0,
+      "files": [
+        "tests/history-point-lessons.test.cjs",
+        "tests/history-map-questions.test.cjs",
+        "tests/model-scope-history.test.cjs"
+      ]
+    },
+    "browser": [
+      "1280×720: 충주 지도 숫자·이름표·지점 목록에서 동일한 사진·설명·위치 관계 표시",
+      "390×844: dialog clientWidth=scrollWidth=350, document width=390, Class Exam Batang, 사진 정상 로드, 배경 overflow hidden",
+      "설명에서 문제 진입, 새 비문 문항의 세 지도 표지, 오답 시 재시도만 표시",
+      "초 평양 천도 지점의 쉬운 설명 및 고급 지점 미표시",
+      "낙동강 방어 시점 서울과 정전 시점 서울의 서로 다른 설명",
+      "지도 이름표 Enter와 숫자 Space로 열기, Esc 닫기 및 이름표 초점 복구",
+      "브라우저 콘솔 오류 없음; 임시 viewport 해제"
+    ]
+  },
+  "production": {
+    "status": "verified",
+    "commit": "69cf51f199287c94443e544f64b9336e8890fd71",
+    "url": "https://classj.kr/learning/inquiry/korea-map/?school=high&historyScene=goguryeo-fifth#history",
+    "checks": [
+      "Chrome: right list, numeric marker, and map label each open Chungju point dialog",
+      "Photo loaded; Batang font applied; dialog width equals scrollWidth (758px)",
+      "Point dialog links to map quiz; second question displays Chungju stele and maegum interpretation with 3 map points",
+      "No browser console errors"
+    ]
+  },
+  "screenshots": [
+    "desktop.webp",
+    "mobile.webp",
+    "production.webp"
+  ]
+}

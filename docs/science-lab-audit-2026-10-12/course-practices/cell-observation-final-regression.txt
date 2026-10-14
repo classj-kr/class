@@ -1,0 +1,54 @@
+✔ display permutation is stable, preserves identities, and varies keyed positions across questions (1.8323ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.7368ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7262ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1692ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1048ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (61.0681ms)
+chromium: 178 apps / 182 course routes / 728 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (30389.5682ms)
+webkit: 178 apps / 182 course routes / 728 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (48827.611ms)
+✔ three original cell micrographs retain identity and optical magnification (232.5955ms)
+✔ chromium: cell preparation, observation, touch navigation and retained diagnosis (8855.7016ms)
+✔ webkit: cell preparation, observation, touch navigation and retained diagnosis (21072.7763ms)
+✔ five micrographs retain source identity, nominal magnification and lossless decoding (96.4946ms)
+✔ chromium: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (11600.4259ms)
+✔ webkit: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (14764.4513ms)
+✔ chromium: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (3093.56ms)
+✔ webkit: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (4030.8103ms)
+613 core state/observation/check combinations verified
+33 live observation questions, 66 incorrect choices have stable authored feedback
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (17.4731ms)
+✔ every live supplementary observation has choice-specific misconception feedback after rotation (6.0626ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.8361ms)
+solubility: 16 browser states, all 3 answers + reset verified
+acid-base: 4 browser states, all 3 answers + reset verified
+state-change: 6 browser states, all 3 answers + reset verified
+light-shadow: 5 browser states, all 3 answers + reset verified
+refraction: 10 browser states, all 3 answers + reset verified
+weight-compare: 12 browser states, all 3 answers + reset verified
+volcano-model: 6 browser states, all 3 answers + reset verified
+lever-balance: 4 browser states, all 3 answers + reset verified
+seasons: 120 browser states, all 3 answers + reset verified
+diffusion: 216 browser states, all 3 answers + reset verified
+weather-front: 6 browser states, all 3 answers + reset verified
+motion-energy: 8 browser states, all 3 answers + reset verified
+ohms-law: 72 browser states, all 3 answers + reset verified
+burning-conditions: 6 browser states, all 3 answers + reset verified
+energy-conversion: 24 browser states, all 3 answers + reset verified
+mass-ratio: 6 browser states, all 3 answers + reset verified
+pea-genetics: 6 browser states, all 3 answers + reset verified
+cell-membrane: 6 browser states, all 3 answers + reset verified
+flame-ions: 4 browser states, all 3 answers + reset verified
+neutralization-common: 10 browser states, all 3 answers + reset verified
+density-buoyancy: 24 browser states, all 3 answers + reset verified
+571 browser state cases, 1713 answer checks
+✔ all required observation controls, wrong/correct answers and resets work in the browser (10364.4579ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 153919.2326

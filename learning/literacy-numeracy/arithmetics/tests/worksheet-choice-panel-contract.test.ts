@@ -73,6 +73,24 @@ test("legacy high-school answer panels use the same modal, question preview, and
   }
 });
 
+test("legacy high-school answer choices use the shared visible button style", () => {
+  const routes = [
+    "complex-numbers",
+    "equation-transformations",
+    "exponents-radicals",
+    "factorization-rational",
+    "polynomial-add-subtract",
+    "trigonometric-derivatives",
+  ];
+  for (const route of routes) {
+    const source = fs.readFileSync(
+      path.join(process.cwd(), "app", "arithmetic", "high-school", route, "page.tsx"),
+      "utf8",
+    );
+    assert.match(source, /<button\s+className=\{`trig-derivative-choice/, route);
+  }
+});
+
 test("worksheet toolbars do not expose layout-breaking review additions", () => {
   const roots = [
     path.join(process.cwd(), "app", "arithmetic", "middle-school"),

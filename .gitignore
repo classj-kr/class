@@ -1,20 +1,28 @@
 # Local-only Claude Code permission state (differs per machine/session)
 .claude/settings.local.json
 
+# Conversation attachments can contain personal information; keep them local.
+/.codex-remote-attachments/
+
 # Dependency and package-manager caches
 node_modules/
 .pnpm-store/
 .npm-cache/
+/tools/.cache/
 dist/
 .vinext/
 .next/
 .wrangler/
+*.tsbuildinfo
 
 # Python caches
 __pycache__/
 *.py[cod]
 
 # Locally generated reports and previews
+/.tmp/
+/output/
+/.render-assets/
 /outputs/
 /tmp/
 /game-hub-server/.runtime/
@@ -25,6 +33,7 @@ __pycache__/
 
 # Former standalone deployment metadata kept only as a local backup.
 /learning/basics/arithmetics/.sites-git-backup/
+/learning/literacy-numeracy/arithmetics/.sites-git-backup/
 
 # Deployment artifacts
 .deploy-worktree/
@@ -36,6 +45,7 @@ __pycache__/
 /.github-render-deploy/
 /.site-deploy-worktree/
 /research/
+/docs/research/
 /learning/academics/space - 복사본/
 /screenshot_*.png
 /recovered_*.txt
@@ -46,6 +56,8 @@ __pycache__/
 /insert_*.js
 /update_*.js
 /references/*
+# All textbook collections, extracted information and receipts stay local.
+/references/textbooks/
 !/references/moe/
 /references/moe/*
 !/references/moe/2022-revised-curriculum/

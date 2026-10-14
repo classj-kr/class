@@ -83,12 +83,12 @@
         "lessonQuizQuestionPanel", "lessonQuizWord", "lessonQuizSpeakButton", "lessonQuizChoices", "lessonQuizFeedback", "lessonQuizNextButton",
         "lessonQuizResultPanel", "lessonQuizResultTitle", "lessonQuizResultScore", "lessonQuizResultAccuracy",
         "lessonQuizResultBestStreak", "lessonQuizWrongList", "lessonQuizRetryWrongButton", "lessonQuizContinueButton",
-        "gameStartButton", "gameWordCount", "gameScreen", "backFromGame", "gameLevelButtons",
+        "gameScreen", "backFromGame", "gameLevelButtons",
         "gameQuestionNumber", "gameScore", "gameStreak", "gameTimer", "gameTimerBar",
         "gameWord", "gameSpeakButton", "gameChoices", "gameFeedback", "gameNextButton", "gameResetButton",
         "gameQuestionPanel", "gameResultPanel", "gameResultScore", "gameResultAccuracy",
         "gameResultBestStreak", "gameWrongList", "gameRetryWrongButton", "gamePlayAgainButton",
-        "spellingGameStartButton", "spellingWordCount", "spellingScreen", "backFromSpelling",
+        "spellingGameStartButton", "spellingScreen", "backFromSpelling",
         "spellingResetButton", "spellingLevelSelect", "spellingQuestionNumber", "spellingScore",
         "spellingStreak", "spellingQuestionPanel", "spellingClueCard", "spellingImage", "spellingMeaning", "spellingHint", "spellingInput", "spellingBuiltWord", "spellingTileRack",
         "spellingHintButton", "spellingSpeakButton", "spellingCheckButton", "spellingFeedback",
@@ -300,6 +300,7 @@
             english.lang = "en";
             const wordLabel = document.createElement("span");
             wordLabel.textContent = word.word;
+            enableEnglishSpeech(wordLabel);
             const pronunciationButton = document.createElement("button");
             pronunciationButton.type = "button";
             pronunciationButton.className = "sheet-speak-button";
@@ -402,6 +403,7 @@
         elements.studyScreen.hidden = false;
         window.scrollTo({ top: 0, behavior: "smooth" });
         renderStudyCard();
+        renderStoredSpellingWrong();
     }
 
     function backFromLessons() {
@@ -487,6 +489,45 @@
         return section;
     }
 
+    function enableEnglishSpeech(node, getText = () => node.textContent) {
+        node.classList.add("english-speech");
+        node.setAttribute("role", "button");
+        node.tabIndex = 0;
+        node.title = "영어 듣기";
+        const play = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            speakText(getText());
+        };
+        node.addEventListener("click", play);
+        node.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") play(event);
+        });
+    }
+
+    function enableDetailEnglishSpeech(root) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach((node) => {
+            const pattern = /[A-Za-z]+(?:[0-9A-Za-z .,!?;:'’‘“”()\-]*[A-Za-z0-9.!?])?/g;
+            const matches = [...node.textContent.matchAll(pattern)];
+            if (!matches.length) return;
+            const fragment = document.createDocumentFragment();
+            let offset = 0;
+            matches.forEach((match) => {
+                fragment.append(document.createTextNode(node.textContent.slice(offset, match.index)));
+                const english = document.createElement("span");
+                english.textContent = match[0];
+                enableEnglishSpeech(english);
+                fragment.append(english);
+                offset = match.index + match[0].length;
+            });
+            fragment.append(document.createTextNode(node.textContent.slice(offset)));
+            node.replaceWith(fragment);
+        });
+    }
+
     function appendPair(li, en, ko) {
         if (en) {
             const enNode = document.createElement("span");
@@ -536,6 +577,7 @@
             if (section.querySelector("h3").textContent === "다른 쉬운 표현") section.classList.add("detail-easy");
         });
         sections.forEach((section) => fragment.append(section));
+        enableDetailEnglishSpeech(fragment);
         return fragment;
     }
 
@@ -607,6 +649,7 @@
             chip.className = "related-word";
             const label = document.createElement("strong");
             label.textContent = relatedWord.word;
+            enableEnglishSpeech(label);
             const meaning = document.createElement("span");
             meaning.className = "related-meaning";
             meaning.textContent = relatedWord.meaning;
@@ -1051,7 +1094,7 @@
 
     function storedSpellingWrongWords() {
         if (!state.data) return [];
-        const wordsById = new Map(state.data.words.map((word) => [String(word.id), word]));
+        const wordsById = new Map(currentLessonWords().map((word) => [String(word.id), word]));
         return Object.keys(state.spellingWrongProgress)
             .filter((id) => state.spellingIds.has(id) && wordsById.has(id))
             .map((id) => wordsById.get(id));
@@ -1060,7 +1103,7 @@
     function renderStoredSpellingWrong() {
         const validIds = new Set(storedSpellingWrongWords().map((word) => String(word.id)));
         Object.keys(state.spellingWrongProgress).forEach((id) => {
-            if (!validIds.has(id)) delete state.spellingWrongProgress[id];
+            if (!state.spellingIds.has(id)) delete state.spellingWrongProgress[id];
         });
         const count = validIds.size;
         elements.spellingStoredWrongCount.textContent = count.toLocaleString("ko-KR");
@@ -1071,7 +1114,7 @@
     function setSpellingReviewMode(isReview) {
         state.spellingReviewMode = isReview;
         elements.spellingModeLabel.textContent = isReview ? "틀린 단어를 다시 풀어 봐요." : "뜻을 보고 영어 단어를 완성해요.";
-        elements.spellingTitle.textContent = isReview ? "틀린 단어 다시 풀기" : "철자 완성하기";
+        elements.spellingTitle.textContent = `${levelName(state.currentLevel)} · ${state.currentLesson + 1}차시 · ${isReview ? "철자 오답 복습" : "철자 완성하기"}`;
         if (isReview) {
             elements.spellingLevelSelect.disabled = true;
         }
@@ -1234,7 +1277,7 @@
 
     function startSpellingRound(targetPool = state.spellingPool) {
         state.spellingTargetPool = [...targetPool];
-        state.spellingRoundLength = Math.min(10, state.spellingTargetPool.length);
+        state.spellingRoundLength = state.spellingTargetPool.length;
         state.spellingTarget = null;
         state.spellingAskedIds = new Set();
         state.spellingWrongEntries = [];
@@ -1266,16 +1309,12 @@
         selectSpellingLevel(state.spellingLevel);
     }
 
-    function selectSpellingLevel(level) {
+    function selectSpellingLevel() {
         setSpellingReviewMode(false);
-        state.spellingLevel = Number(level);
-        state.spellingPool = core.spellingGamePool(
-            state.data.words,
-            state.spellingIds,
-            state.spellingLevel,
-        );
-        elements.spellingLevelSelect.disabled = false;
-        elements.spellingLevelSelect.value = String(state.spellingLevel);
+        state.spellingLevel = state.currentLevel;
+        state.spellingPool = core.spellingGamePool(currentLessonWords(), state.spellingIds, state.currentLevel);
+        elements.spellingLevelSelect.disabled = true;
+        elements.spellingLevelSelect.value = String(state.currentLevel);
         startSpellingRound(state.spellingPool);
     }
 
@@ -1308,10 +1347,9 @@
 
     function backFromSpelling() {
         elements.spellingScreen.hidden = true;
-        elements.levelScreen.hidden = false;
+        elements.studyScreen.hidden = false;
         renderStoredSpellingWrong();
-        renderLevelGroups();
-        renderOverallProgress();
+        renderStudyCard();
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -1323,6 +1361,8 @@
         elements.viewAllWordsButton.addEventListener("click", openBandList);
         elements.backFromBandList.addEventListener("click", backFromBandList);
         elements.bandSearchInput.addEventListener("input", () => renderBandList(elements.bandSearchInput.value));
+        enableEnglishSpeech(elements.wordText, () => currentWord()?.word);
+        enableEnglishSpeech(elements.exampleText, () => currentWord()?.example?.en);
         elements.flashcard.addEventListener("click", toggleMeaning);
         elements.detailToggle.addEventListener("click", toggleDetailPanel);
         elements.previousButton.addEventListener("click", () => moveCard(-1));
@@ -1349,7 +1389,7 @@
             startLessonQuiz(retryWords);
         });
         elements.lessonQuizContinueButton.addEventListener("click", continueAfterLessonQuiz);
-        elements.gameStartButton.addEventListener("click", openGame);
+
         elements.backFromGame.addEventListener("click", backFromGame);
         elements.gameNextButton.addEventListener("click", continueGame);
         elements.gameResetButton.addEventListener("click", () => startGameRound(state.gamePool));
@@ -1498,9 +1538,6 @@
             state.spellingIds = new Set(state.data.words
                 .filter((word) => /^[a-z -]+$/i.test(word.word || "") && word.meanings?.some((meaning) => String(meaning || "").trim()))
                 .map((word) => String(word.id)));
-            const gamePool = core.pictureGamePool(state.data.words, new Set(state.imageMap.keys()));
-            elements.gameWordCount.textContent = gamePool.length.toLocaleString("ko-KR");
-            elements.gameStartButton.hidden = gamePool.length < 4;
             elements.gameLevelButtons.querySelectorAll("[data-level]").forEach((button) => {
                 const levelPool = core.pictureGamePool(
                     state.data.words,
@@ -1510,7 +1547,7 @@
                 button.disabled = levelPool.length < 4;
             });
             const spellingPool = core.spellingGamePool(state.data.words, state.spellingIds);
-            elements.spellingWordCount.textContent = spellingPool.length.toLocaleString("ko-KR");
+
             elements.spellingGameStartButton.hidden = spellingPool.length === 0;
             elements.spellingLevelSelect.disabled = spellingPool.length === 0;
             renderStoredSpellingWrong();
@@ -1613,9 +1650,9 @@
             clearGameTimer();
             if(beginMode) {
                 const level=recordMode==='game'?state.gameLevel:recordMode==='spelling'?state.spellingLevel:state.currentLevel;
-                const key=recordMode+':'+level+':'+(recordMode==='study'||recordMode==='quiz'?state.currentLesson:state.spellingReviewMode?'review':'all');
+                const key=recordMode+':'+level+':'+(recordMode==='study'||recordMode==='quiz'||recordMode==='spelling'?state.currentLesson+(recordMode==='spelling'&&state.spellingReviewMode?':review':''): 'all');
                 const label={study:'단어 익히기',quiz:'뜻 퀴즈',game:'그림 퀴즈',spelling:'철자 퀴즈'}[recordMode];
-                const session=await records.start({contentKey:key,title:`영단어 · ${label} · ${levelName(level)}${recordMode==='study'||recordMode==='quiz'?' · '+(state.currentLesson+1)+'차시':''}`,version:'20261002',checkpoint:recordCheckpoint()});
+                const session=await records.start({contentKey:key,title:`영단어 · ${label} · ${levelName(level)}${recordMode==='study'||recordMode==='quiz'||recordMode==='spelling'?' · '+(state.currentLesson+1)+'차시':''}`,version:'20261002',checkpoint:recordCheckpoint()});
                 if(session.revision>0)restoreRecord(session.checkpoint);
             }
             await records.save({checkpoint:recordCheckpoint(),progress:recordProgress(),events:pendingEvents,complete:completeRequested});
@@ -1657,7 +1694,7 @@
             if(mode==='study')await openLesson(Number(level),Number(lesson));
             else if(mode==='quiz'){state.currentLevel=Number(level);state.currentLesson=Number(lesson);await startLessonQuiz();}
             else if(mode==='game'){state.gameLevel=Number(level);state.gamePool=core.pictureGamePool(state.data.words,new Set(state.imageMap.keys()),state.gameLevel);await startGameRound();}
-            else if(mode==='spelling'){state.spellingLevel=Number(level);state.spellingReviewMode=lesson==='review';state.spellingPool=core.spellingGamePool(state.data.words,state.spellingIds,state.spellingLevel);await startSpellingRound();}
+            else if(mode==='spelling' && /^\d+$/.test(lesson)){state.currentLevel=Number(level);state.currentLesson=Number(lesson);state.currentWords=[...currentLessonWords()];state.spellingLevel=state.currentLevel;setSpellingReviewMode(key.split(':')[3]==='review');state.spellingPool=core.spellingGamePool(currentLessonWords(),state.spellingIds,state.currentLevel);await startSpellingRound(state.spellingReviewMode?storedSpellingWrongWords():state.spellingPool);}
         }
     }
 

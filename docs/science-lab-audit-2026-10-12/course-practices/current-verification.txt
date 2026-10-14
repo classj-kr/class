@@ -1,0 +1,25 @@
+✔ sound resonance: adjacent peaks/nodes, end correction, frequency invariance and skipped positions (0.7837ms)
+✔ chromium: two sound apparatuses, measurement correction, independent diagnostic questions and five viewports (13157.9383ms)
+✔ webkit: two sound apparatuses, measurement correction, independent diagnostic questions and five viewports (11817.7237ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.1932ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7712ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.119ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (79.2954ms)
+chromium: 161 apps / 165 course routes / 660 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (27287.3291ms)
+webkit: 161 apps / 165 course routes / 660 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (31049.2286ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (415.1811ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (6182.0016ms)
+192 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (189.8607ms)
+✔ every science lab JavaScript file parses (104.3557ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0067ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58583.6396

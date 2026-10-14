@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T22:40:20.538Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "acid-mixing",
+      "scenarios": 225
+    }
+  ],
+  "scenarios": 225,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

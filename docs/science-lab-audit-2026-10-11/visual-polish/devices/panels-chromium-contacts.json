@@ -1,0 +1,1090 @@
+[
+  {
+    "file": "panels-chromium-01.webp",
+    "items": [
+      {
+        "slug": "light-shadow",
+        "id": "390px",
+        "variant": "initial",
+        "file": "light-shadow-mobile.webp",
+        "label": "light-shadow / 390px / initial"
+      },
+      {
+        "slug": "refraction",
+        "id": "390px",
+        "variant": "initial",
+        "file": "refraction-mobile.webp",
+        "label": "refraction / 390px / initial"
+      },
+      {
+        "slug": "lens-image",
+        "id": "390px",
+        "variant": "initial",
+        "file": "lens-image-mobile.webp",
+        "label": "lens-image / 390px / initial"
+      },
+      {
+        "slug": "photoelectric",
+        "id": "390px",
+        "variant": "initial",
+        "file": "photoelectric-mobile.webp",
+        "label": "photoelectric / 390px / initial"
+      },
+      {
+        "slug": "sound-vibration",
+        "id": "390px",
+        "variant": "initial",
+        "file": "sound-vibration-mobile.webp",
+        "label": "sound-vibration / 390px / initial"
+      },
+      {
+        "slug": "wave-transfer",
+        "id": "390px",
+        "variant": "initial",
+        "file": "wave-transfer-mobile.webp",
+        "label": "wave-transfer / 390px / initial"
+      },
+      {
+        "slug": "interference",
+        "id": "390px",
+        "variant": "initial",
+        "file": "interference-mobile.webp",
+        "label": "interference / 390px / initial"
+      },
+      {
+        "slug": "lever-balance",
+        "id": "390px",
+        "variant": "initial",
+        "file": "lever-balance-mobile.webp",
+        "label": "lever-balance / 390px / initial"
+      },
+      {
+        "slug": "speed",
+        "id": "390px",
+        "variant": "initial",
+        "file": "speed-mobile.webp",
+        "label": "speed / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-02.webp",
+    "items": [
+      {
+        "slug": "force-motion",
+        "id": "390px",
+        "variant": "initial",
+        "file": "force-motion-mobile.webp",
+        "label": "force-motion / 390px / initial"
+      },
+      {
+        "slug": "motion-energy",
+        "id": "390px",
+        "variant": "initial",
+        "file": "motion-energy-mobile.webp",
+        "label": "motion-energy / 390px / initial"
+      },
+      {
+        "slug": "gravity-motion",
+        "id": "390px",
+        "variant": "initial",
+        "file": "gravity-motion-mobile.webp",
+        "label": "gravity-motion / 390px / initial"
+      },
+      {
+        "slug": "torque",
+        "id": "390px",
+        "variant": "initial",
+        "file": "torque-mobile.webp",
+        "label": "torque / 390px / initial"
+      },
+      {
+        "slug": "collision",
+        "id": "390px",
+        "variant": "initial",
+        "file": "collision-mobile.webp",
+        "label": "collision / 390px / initial"
+      },
+      {
+        "slug": "magnets",
+        "id": "390px",
+        "variant": "initial",
+        "file": "magnets-mobile.webp",
+        "label": "magnets / 390px / initial"
+      },
+      {
+        "slug": "circuit-bulbs",
+        "id": "390px",
+        "variant": "initial",
+        "file": "circuit-bulbs-mobile.webp",
+        "label": "circuit-bulbs / 390px / initial"
+      },
+      {
+        "slug": "ohms-law",
+        "id": "390px",
+        "variant": "initial",
+        "file": "ohms-law-mobile.webp",
+        "label": "ohms-law / 390px / initial"
+      },
+      {
+        "slug": "electric-field",
+        "id": "390px",
+        "variant": "initial",
+        "file": "electric-field-mobile.webp",
+        "label": "electric-field / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-03.webp",
+    "items": [
+      {
+        "slug": "induction",
+        "id": "390px",
+        "variant": "initial",
+        "file": "induction-mobile.webp",
+        "label": "induction / 390px / initial"
+      },
+      {
+        "slug": "semiconductor-relativity",
+        "id": "390px",
+        "variant": "initial",
+        "file": "semiconductor-relativity-mobile.webp",
+        "label": "semiconductor-relativity / 390px / initial"
+      },
+      {
+        "slug": "motor-magnet",
+        "id": "390px",
+        "variant": "initial",
+        "file": "motor-magnet-mobile.webp",
+        "label": "motor-magnet / 390px / initial"
+      },
+      {
+        "slug": "heat-transfer",
+        "id": "390px",
+        "variant": "initial",
+        "file": "heat-transfer-mobile.webp",
+        "label": "heat-transfer / 390px / initial"
+      },
+      {
+        "slug": "specific-heat",
+        "id": "390px",
+        "variant": "initial",
+        "file": "specific-heat-mobile.webp",
+        "label": "specific-heat / 390px / initial"
+      },
+      {
+        "slug": "energy-heat",
+        "id": "390px",
+        "variant": "initial",
+        "file": "energy-heat-mobile.webp",
+        "label": "energy-heat / 390px / initial"
+      },
+      {
+        "slug": "heat-engine",
+        "id": "390px",
+        "variant": "initial",
+        "file": "heat-engine-mobile.webp",
+        "label": "heat-engine / 390px / initial"
+      },
+      {
+        "slug": "energy-conversion",
+        "id": "390px",
+        "variant": "initial",
+        "file": "energy-conversion-mobile.webp",
+        "label": "energy-conversion / 390px / initial"
+      },
+      {
+        "slug": "weight-compare",
+        "id": "390px",
+        "variant": "initial",
+        "file": "weight-compare-mobile.webp",
+        "label": "weight-compare / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-04.webp",
+    "items": [
+      {
+        "slug": "density-buoyancy",
+        "id": "390px",
+        "variant": "initial",
+        "file": "density-buoyancy-mobile.webp",
+        "label": "density-buoyancy / 390px / initial"
+      },
+      {
+        "slug": "measurement",
+        "id": "390px",
+        "variant": "initial",
+        "file": "measurement-mobile.webp",
+        "label": "measurement / 390px / initial"
+      },
+      {
+        "slug": "mixture-separation",
+        "id": "390px",
+        "variant": "initial",
+        "file": "mixture-separation-mobile.webp",
+        "label": "mixture-separation / 390px / initial"
+      },
+      {
+        "slug": "separation-methods",
+        "id": "390px",
+        "variant": "initial",
+        "file": "separation-methods-mobile.webp",
+        "label": "separation-methods / 390px / initial"
+      },
+      {
+        "slug": "state-change",
+        "id": "390px",
+        "variant": "initial",
+        "file": "state-change-mobile.webp",
+        "label": "state-change / 390px / initial"
+      },
+      {
+        "slug": "gases",
+        "id": "390px",
+        "variant": "initial",
+        "file": "gases-mobile.webp",
+        "label": "gases / 390px / initial"
+      },
+      {
+        "slug": "diffusion",
+        "id": "390px",
+        "variant": "initial",
+        "file": "diffusion-mobile.webp",
+        "label": "diffusion / 390px / initial"
+      },
+      {
+        "slug": "solubility",
+        "id": "390px",
+        "variant": "initial",
+        "file": "solubility-mobile.webp",
+        "label": "solubility / 390px / initial"
+      },
+      {
+        "slug": "solubility-curve",
+        "id": "390px",
+        "variant": "initial",
+        "file": "solubility-curve-mobile.webp",
+        "label": "solubility-curve / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-05.webp",
+    "items": [
+      {
+        "slug": "recrystallise",
+        "id": "390px",
+        "variant": "initial",
+        "file": "recrystallise-mobile.webp",
+        "label": "recrystallise / 390px / initial"
+      },
+      {
+        "slug": "flame-ions",
+        "id": "390px",
+        "variant": "initial",
+        "file": "flame-ions-mobile.webp",
+        "label": "flame-ions / 390px / initial"
+      },
+      {
+        "slug": "periodic-bonding",
+        "id": "390px",
+        "variant": "initial",
+        "file": "periodic-bonding-mobile.webp",
+        "label": "periodic-bonding / 390px / initial"
+      },
+      {
+        "slug": "molecule-shape",
+        "id": "390px",
+        "variant": "initial",
+        "file": "molecule-shape-mobile.webp",
+        "label": "molecule-shape / 390px / initial"
+      },
+      {
+        "slug": "acid-base",
+        "id": "390px",
+        "variant": "initial",
+        "file": "acid-base-mobile.webp",
+        "label": "acid-base / 390px / initial"
+      },
+      {
+        "slug": "neutralization",
+        "id": "390px",
+        "variant": "initial",
+        "file": "neutralization-mobile.webp",
+        "label": "neutralization / 390px / initial"
+      },
+      {
+        "slug": "titration",
+        "id": "390px",
+        "variant": "initial",
+        "file": "titration-mobile.webp",
+        "label": "titration / 390px / initial"
+      },
+      {
+        "slug": "mass-ratio",
+        "id": "390px",
+        "variant": "initial",
+        "file": "mass-ratio-mobile.webp",
+        "label": "mass-ratio / 390px / initial"
+      },
+      {
+        "slug": "mole",
+        "id": "390px",
+        "variant": "initial",
+        "file": "mole-mobile.webp",
+        "label": "mole / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-06.webp",
+    "items": [
+      {
+        "slug": "rate-equilibrium",
+        "id": "390px",
+        "variant": "initial",
+        "file": "rate-equilibrium-mobile.webp",
+        "label": "rate-equilibrium / 390px / initial"
+      },
+      {
+        "slug": "burning-conditions",
+        "id": "390px",
+        "variant": "initial",
+        "file": "burning-conditions-mobile.webp",
+        "label": "burning-conditions / 390px / initial"
+      },
+      {
+        "slug": "combustion",
+        "id": "390px",
+        "variant": "initial",
+        "file": "combustion-mobile.webp",
+        "label": "combustion / 390px / initial"
+      },
+      {
+        "slug": "redox",
+        "id": "390px",
+        "variant": "initial",
+        "file": "redox-mobile.webp",
+        "label": "redox / 390px / initial"
+      },
+      {
+        "slug": "living-things",
+        "id": "390px",
+        "variant": "initial",
+        "file": "living-things-mobile.webp",
+        "label": "living-things / 390px / initial"
+      },
+      {
+        "slug": "microbes",
+        "id": "390px",
+        "variant": "initial",
+        "file": "microbes-mobile.webp",
+        "label": "microbes / 390px / initial"
+      },
+      {
+        "slug": "microscope",
+        "id": "390px",
+        "variant": "initial",
+        "file": "microscope-mobile.webp",
+        "label": "microscope / 390px / initial"
+      },
+      {
+        "slug": "cell-osmosis",
+        "id": "390px",
+        "variant": "initial",
+        "file": "cell-osmosis-mobile.webp",
+        "label": "cell-osmosis / 390px / initial"
+      },
+      {
+        "slug": "cell-membrane",
+        "id": "390px",
+        "variant": "initial",
+        "file": "cell-membrane-mobile.webp",
+        "label": "cell-membrane / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-07.webp",
+    "items": [
+      {
+        "slug": "cell-division",
+        "id": "390px",
+        "variant": "initial",
+        "file": "cell-division-mobile.webp",
+        "label": "cell-division / 390px / initial"
+      },
+      {
+        "slug": "seed-germination",
+        "id": "390px",
+        "variant": "initial",
+        "file": "seed-germination-mobile.webp",
+        "label": "seed-germination / 390px / initial"
+      },
+      {
+        "slug": "photosynthesis",
+        "id": "390px",
+        "variant": "initial",
+        "file": "photosynthesis-mobile.webp",
+        "label": "photosynthesis / 390px / initial"
+      },
+      {
+        "slug": "energy-metabolism",
+        "id": "390px",
+        "variant": "initial",
+        "file": "energy-metabolism-mobile.webp",
+        "label": "energy-metabolism / 390px / initial"
+      },
+      {
+        "slug": "body-organs",
+        "id": "390px",
+        "variant": "initial",
+        "file": "body-organs-mobile.webp",
+        "label": "body-organs / 390px / initial"
+      },
+      {
+        "slug": "body-systems",
+        "id": "390px",
+        "variant": "initial",
+        "file": "body-systems-mobile.webp",
+        "label": "body-systems / 390px / initial"
+      },
+      {
+        "slug": "nutrient-detection",
+        "id": "390px",
+        "variant": "initial",
+        "file": "nutrient-detection-mobile.webp",
+        "label": "nutrient-detection / 390px / initial"
+      },
+      {
+        "slug": "homeostasis",
+        "id": "390px",
+        "variant": "initial",
+        "file": "homeostasis-mobile.webp",
+        "label": "homeostasis / 390px / initial"
+      },
+      {
+        "slug": "immune",
+        "id": "390px",
+        "variant": "initial",
+        "file": "immune-mobile.webp",
+        "label": "immune / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-08.webp",
+    "items": [
+      {
+        "slug": "enzyme",
+        "id": "390px",
+        "variant": "initial",
+        "file": "enzyme-mobile.webp",
+        "label": "enzyme / 390px / initial"
+      },
+      {
+        "slug": "senses",
+        "id": "390px",
+        "variant": "initial",
+        "file": "senses-mobile.webp",
+        "label": "senses / 390px / initial"
+      },
+      {
+        "slug": "reflex-nerve",
+        "id": "390px",
+        "variant": "initial",
+        "file": "reflex-nerve-mobile.webp",
+        "label": "reflex-nerve / 390px / initial"
+      },
+      {
+        "slug": "neuron",
+        "id": "390px",
+        "variant": "initial",
+        "file": "neuron-mobile.webp",
+        "label": "neuron / 390px / initial"
+      },
+      {
+        "slug": "pea-genetics",
+        "id": "390px",
+        "variant": "initial",
+        "file": "pea-genetics-mobile.webp",
+        "label": "pea-genetics / 390px / initial"
+      },
+      {
+        "slug": "dna-gel",
+        "id": "390px",
+        "variant": "initial",
+        "file": "dna-gel-mobile.webp",
+        "label": "dna-gel / 390px / initial"
+      },
+      {
+        "slug": "natural-selection",
+        "id": "390px",
+        "variant": "initial",
+        "file": "natural-selection-mobile.webp",
+        "label": "natural-selection / 390px / initial"
+      },
+      {
+        "slug": "phylogeny",
+        "id": "390px",
+        "variant": "initial",
+        "file": "phylogeny-mobile.webp",
+        "label": "phylogeny / 390px / initial"
+      },
+      {
+        "slug": "life-cycle",
+        "id": "390px",
+        "variant": "initial",
+        "file": "life-cycle-mobile.webp",
+        "label": "life-cycle / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-09.webp",
+    "items": [
+      {
+        "slug": "living-environment",
+        "id": "390px",
+        "variant": "initial",
+        "file": "living-environment-mobile.webp",
+        "label": "living-environment / 390px / initial"
+      },
+      {
+        "slug": "population",
+        "id": "390px",
+        "variant": "initial",
+        "file": "population-mobile.webp",
+        "label": "population / 390px / initial"
+      },
+      {
+        "slug": "rock-layers",
+        "id": "390px",
+        "variant": "initial",
+        "file": "rock-layers-mobile.webp",
+        "label": "rock-layers / 390px / initial"
+      },
+      {
+        "slug": "minerals-rocks",
+        "id": "390px",
+        "variant": "initial",
+        "file": "minerals-rocks-mobile.webp",
+        "label": "minerals-rocks / 390px / initial"
+      },
+      {
+        "slug": "geologic-time",
+        "id": "390px",
+        "variant": "initial",
+        "file": "geologic-time-mobile.webp",
+        "label": "geologic-time / 390px / initial"
+      },
+      {
+        "slug": "rock-age",
+        "id": "390px",
+        "variant": "initial",
+        "file": "rock-age-mobile.webp",
+        "label": "rock-age / 390px / initial"
+      },
+      {
+        "slug": "metamorphism",
+        "id": "390px",
+        "variant": "initial",
+        "file": "metamorphism-mobile.webp",
+        "label": "metamorphism / 390px / initial"
+      },
+      {
+        "slug": "volcano-model",
+        "id": "390px",
+        "variant": "initial",
+        "file": "volcano-model-mobile.webp",
+        "label": "volcano-model / 390px / initial"
+      },
+      {
+        "slug": "magma",
+        "id": "390px",
+        "variant": "initial",
+        "file": "magma-mobile.webp",
+        "label": "magma / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-10.webp",
+    "items": [
+      {
+        "slug": "plate-tectonics",
+        "id": "390px",
+        "variant": "initial",
+        "file": "plate-tectonics-mobile.webp",
+        "label": "plate-tectonics / 390px / initial"
+      },
+      {
+        "slug": "earthquake",
+        "id": "390px",
+        "variant": "initial",
+        "file": "earthquake-mobile.webp",
+        "label": "earthquake / 390px / initial"
+      },
+      {
+        "slug": "earth-system",
+        "id": "390px",
+        "variant": "initial",
+        "file": "earth-system-mobile.webp",
+        "label": "earth-system / 390px / initial"
+      },
+      {
+        "slug": "weather-watch",
+        "id": "390px",
+        "variant": "initial",
+        "file": "weather-watch-mobile.webp",
+        "label": "weather-watch / 390px / initial"
+      },
+      {
+        "slug": "weather-front",
+        "id": "390px",
+        "variant": "initial",
+        "file": "weather-front-mobile.webp",
+        "label": "weather-front / 390px / initial"
+      },
+      {
+        "slug": "air-stability",
+        "id": "390px",
+        "variant": "initial",
+        "file": "air-stability-mobile.webp",
+        "label": "air-stability / 390px / initial"
+      },
+      {
+        "slug": "typhoon",
+        "id": "390px",
+        "variant": "initial",
+        "file": "typhoon-mobile.webp",
+        "label": "typhoon / 390px / initial"
+      },
+      {
+        "slug": "land-sea",
+        "id": "390px",
+        "variant": "initial",
+        "file": "land-sea-mobile.webp",
+        "label": "land-sea / 390px / initial"
+      },
+      {
+        "slug": "water-cycle",
+        "id": "390px",
+        "variant": "initial",
+        "file": "water-cycle-mobile.webp",
+        "label": "water-cycle / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-11.webp",
+    "items": [
+      {
+        "slug": "seawater",
+        "id": "390px",
+        "variant": "initial",
+        "file": "seawater-mobile.webp",
+        "label": "seawater / 390px / initial"
+      },
+      {
+        "slug": "ocean-circulation",
+        "id": "390px",
+        "variant": "initial",
+        "file": "ocean-circulation-mobile.webp",
+        "label": "ocean-circulation / 390px / initial"
+      },
+      {
+        "slug": "ocean-layers",
+        "id": "390px",
+        "variant": "initial",
+        "file": "ocean-layers-mobile.webp",
+        "label": "ocean-layers / 390px / initial"
+      },
+      {
+        "slug": "night-sky",
+        "id": "390px",
+        "variant": "initial",
+        "file": "night-sky-mobile.webp",
+        "label": "night-sky / 390px / initial"
+      },
+      {
+        "slug": "seasons",
+        "id": "390px",
+        "variant": "initial",
+        "file": "seasons-mobile.webp",
+        "label": "seasons / 390px / initial"
+      },
+      {
+        "slug": "moon-phases",
+        "id": "390px",
+        "variant": "initial",
+        "file": "moon-phases-mobile.webp",
+        "label": "moon-phases / 390px / initial"
+      },
+      {
+        "slug": "apparent-motion",
+        "id": "390px",
+        "variant": "initial",
+        "file": "apparent-motion-mobile.webp",
+        "label": "apparent-motion / 390px / initial"
+      },
+      {
+        "slug": "planet-motion",
+        "id": "390px",
+        "variant": "initial",
+        "file": "planet-motion-mobile.webp",
+        "label": "planet-motion / 390px / initial"
+      },
+      {
+        "slug": "stars-universe",
+        "id": "390px",
+        "variant": "initial",
+        "file": "stars-universe-mobile.webp",
+        "label": "stars-universe / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-12.webp",
+    "items": [
+      {
+        "slug": "star-elements",
+        "id": "390px",
+        "variant": "initial",
+        "file": "star-elements-mobile.webp",
+        "label": "star-elements / 390px / initial"
+      },
+      {
+        "slug": "stars",
+        "id": "390px",
+        "variant": "initial",
+        "file": "stars-mobile.webp",
+        "label": "stars / 390px / initial"
+      },
+      {
+        "slug": "galaxy-hubble",
+        "id": "390px",
+        "variant": "initial",
+        "file": "galaxy-hubble-mobile.webp",
+        "label": "galaxy-hubble / 390px / initial"
+      },
+      {
+        "slug": "cell-structure",
+        "id": "390px",
+        "variant": "initial",
+        "file": "cell-structure-mobile.webp",
+        "label": "cell-structure / 390px / initial"
+      },
+      {
+        "slug": "neutralization-common",
+        "id": "390px",
+        "variant": "initial",
+        "file": "neutralization-common-mobile.webp",
+        "label": "neutralization-common / 390px / initial"
+      },
+      {
+        "slug": "pasteur",
+        "id": "390px",
+        "variant": "initial",
+        "file": "pasteur-mobile.webp",
+        "label": "pasteur / 390px / initial"
+      },
+      {
+        "slug": "newton-prism",
+        "id": "390px",
+        "variant": "initial",
+        "file": "newton-prism-mobile.webp",
+        "label": "newton-prism / 390px / initial"
+      },
+      {
+        "slug": "infection-prevention",
+        "id": "390px",
+        "variant": "initial",
+        "file": "infection-prevention-mobile.webp",
+        "label": "infection-prevention / 390px / initial"
+      },
+      {
+        "slug": "mendeleev",
+        "id": "390px",
+        "variant": "initial",
+        "file": "mendeleev-mobile.webp",
+        "label": "mendeleev / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-13.webp",
+    "items": [
+      {
+        "slug": "speaker-lab",
+        "id": "390px",
+        "variant": "initial",
+        "file": "speaker-lab-mobile.webp",
+        "label": "speaker-lab / 390px / initial"
+      },
+      {
+        "slug": "wireless-power",
+        "id": "390px",
+        "variant": "initial",
+        "file": "wireless-power-mobile.webp",
+        "label": "wireless-power / 390px / initial"
+      },
+      {
+        "slug": "magnetic-brake",
+        "id": "390px",
+        "variant": "initial",
+        "file": "magnetic-brake-mobile.webp",
+        "label": "magnetic-brake / 390px / initial"
+      },
+      {
+        "slug": "transistor-speaker",
+        "id": "390px",
+        "variant": "initial",
+        "file": "transistor-speaker-mobile.webp",
+        "label": "transistor-speaker / 390px / initial"
+      },
+      {
+        "slug": "soap-film",
+        "id": "390px",
+        "variant": "initial",
+        "file": "soap-film-mobile.webp",
+        "label": "soap-film / 390px / initial"
+      },
+      {
+        "slug": "polarization",
+        "id": "390px",
+        "variant": "initial",
+        "file": "polarization-mobile.webp",
+        "label": "polarization / 390px / initial"
+      },
+      {
+        "slug": "electron-slits",
+        "id": "390px",
+        "variant": "initial",
+        "file": "electron-slits-mobile.webp",
+        "label": "electron-slits / 390px / initial"
+      },
+      {
+        "slug": "gas-identification",
+        "id": "390px",
+        "variant": "initial",
+        "file": "gas-identification-mobile.webp",
+        "label": "gas-identification / 390px / initial"
+      },
+      {
+        "slug": "sugar-phase",
+        "id": "390px",
+        "variant": "initial",
+        "file": "sugar-phase-mobile.webp",
+        "label": "sugar-phase / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-14.webp",
+    "items": [
+      {
+        "slug": "hess-calorimetry",
+        "id": "390px",
+        "variant": "initial",
+        "file": "hess-calorimetry-mobile.webp",
+        "label": "hess-calorimetry / 390px / initial"
+      },
+      {
+        "slug": "buffer-solution",
+        "id": "390px",
+        "variant": "initial",
+        "file": "buffer-solution-mobile.webp",
+        "label": "buffer-solution / 390px / initial"
+      },
+      {
+        "slug": "salt-hydrolysis",
+        "id": "390px",
+        "variant": "initial",
+        "file": "salt-hydrolysis-mobile.webp",
+        "label": "salt-hydrolysis / 390px / initial"
+      },
+      {
+        "slug": "bean-respiration",
+        "id": "390px",
+        "variant": "initial",
+        "file": "bean-respiration-mobile.webp",
+        "label": "bean-respiration / 390px / initial"
+      },
+      {
+        "slug": "insulation-lab",
+        "id": "390px",
+        "variant": "initial",
+        "file": "insulation-lab-mobile.webp",
+        "label": "insulation-lab / 390px / initial"
+      },
+      {
+        "slug": "doppler-lab",
+        "id": "390px",
+        "variant": "initial",
+        "file": "doppler-lab-mobile.webp",
+        "label": "doppler-lab / 390px / initial"
+      },
+      {
+        "slug": "ride-acceleration",
+        "id": "390px",
+        "variant": "initial",
+        "file": "ride-acceleration-mobile.webp",
+        "label": "ride-acceleration / 390px / initial"
+      },
+      {
+        "slug": "dna-replication",
+        "id": "390px",
+        "variant": "initial",
+        "file": "dna-replication-mobile.webp",
+        "label": "dna-replication / 390px / initial"
+      },
+      {
+        "slug": "protein-synthesis",
+        "id": "390px",
+        "variant": "initial",
+        "file": "protein-synthesis-mobile.webp",
+        "label": "protein-synthesis / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-15.webp",
+    "items": [
+      {
+        "slug": "pedigree-lab",
+        "id": "390px",
+        "variant": "initial",
+        "file": "pedigree-lab-mobile.webp",
+        "label": "pedigree-lab / 390px / initial"
+      },
+      {
+        "slug": "karyotype-lab",
+        "id": "390px",
+        "variant": "initial",
+        "file": "karyotype-lab-mobile.webp",
+        "label": "karyotype-lab / 390px / initial"
+      },
+      {
+        "slug": "antibiotic-disc",
+        "id": "390px",
+        "variant": "initial",
+        "file": "antibiotic-disc-mobile.webp",
+        "label": "antibiotic-disc / 390px / initial"
+      },
+      {
+        "slug": "water-wave-tank",
+        "id": "390px",
+        "variant": "initial",
+        "file": "water-wave-tank-mobile.webp",
+        "label": "water-wave-tank / 390px / initial"
+      },
+      {
+        "slug": "silver-mirror",
+        "id": "390px",
+        "variant": "initial",
+        "file": "silver-mirror-mobile.webp",
+        "label": "silver-mirror / 390px / initial"
+      },
+      {
+        "slug": "nylon-interface",
+        "id": "390px",
+        "variant": "initial",
+        "file": "nylon-interface-mobile.webp",
+        "label": "nylon-interface / 390px / initial"
+      },
+      {
+        "slug": "stellar-mass-data",
+        "id": "390px",
+        "variant": "initial",
+        "file": "stellar-mass-data-mobile.webp",
+        "label": "stellar-mass-data / 390px / initial"
+      },
+      {
+        "slug": "cluster-fitting",
+        "id": "390px",
+        "variant": "initial",
+        "file": "cluster-fitting-mobile.webp",
+        "label": "cluster-fitting / 390px / initial"
+      },
+      {
+        "slug": "habitable-orbits",
+        "id": "390px",
+        "variant": "initial",
+        "file": "habitable-orbits-mobile.webp",
+        "label": "habitable-orbits / 390px / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-16.webp",
+    "items": [
+      {
+        "slug": "centrifuge-design",
+        "id": "390px",
+        "variant": "initial",
+        "file": "centrifuge-design-mobile.webp",
+        "label": "centrifuge-design / 390px / initial"
+      },
+      {
+        "slug": "organic-builder",
+        "id": "390px",
+        "variant": "initial",
+        "file": "organic-builder-mobile.webp",
+        "label": "organic-builder / 390px / initial"
+      },
+      {
+        "slug": "dna-structure",
+        "id": "390px",
+        "variant": "initial",
+        "file": "dna-structure-mobile.webp",
+        "label": "dna-structure / 390px / initial"
+      },
+      {
+        "slug": "protein-folding",
+        "id": "390px",
+        "variant": "initial",
+        "file": "protein-folding-mobile.webp",
+        "label": "protein-folding / 390px / initial"
+      },
+      {
+        "slug": "organelle-builder",
+        "id": "390px",
+        "variant": "initial",
+        "file": "organelle-builder-mobile.webp",
+        "label": "organelle-builder / 390px / initial"
+      },
+      {
+        "slug": "hydride-boiling",
+        "id": "390px",
+        "variant": "initial",
+        "file": "hydride-boiling-mobile.webp",
+        "label": "hydride-boiling / 390px / initial"
+      },
+      {
+        "slug": "fuel-comparison",
+        "id": "390px",
+        "variant": "initial",
+        "file": "fuel-comparison-mobile.webp",
+        "label": "fuel-comparison / 390px / initial"
+      },
+      {
+        "slug": "mcu-sampling",
+        "id": "390px",
+        "variant": "initial",
+        "file": "mcu-sampling-mobile.webp",
+        "label": "mcu-sampling / 390px / initial"
+      },
+      {
+        "slug": "smart-pot",
+        "id": "390px",
+        "variant": "initial",
+        "file": "smart-pot-mobile.webp",
+        "label": "smart-pot / 390px / initial"
+      }
+    ]
+  }
+]

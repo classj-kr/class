@@ -1,0 +1,12 @@
+✔ chromium: height annotation and comparison-curve labels remain fully visible (2293.4636ms)
+✔ webkit: height annotation and comparison-curve labels remain fully visible (2868.4425ms)
+✔ chromium: reaction energy, equilibrium mass balance, conserved particle diagrams and temperature feedback (1424.8678ms)
+✔ webkit: reaction energy, equilibrium mass balance, conserved particle diagrams and temperature feedback (1031.0351ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7800.8036

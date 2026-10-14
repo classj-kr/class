@@ -1,0 +1,16 @@
+✔ pH values satisfy ionization equilibrium, water product and acid/base symmetry (0.512ms)
+✔ uncalibrated, unstable and unwashed probes cannot add comparison readings; valid sequences work in all sample orders (1.5036ms)
+✔ chromium: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (14472.1862ms)
+✔ webkit: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (21081.8628ms)
+226 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (197.8194ms)
+✔ every science lab JavaScript file parses (131.3838ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9604ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36039.9055

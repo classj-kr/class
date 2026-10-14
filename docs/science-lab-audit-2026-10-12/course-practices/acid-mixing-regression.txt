@@ -1,0 +1,14 @@
+✔ source identity and independent strong acid/base balance at and around equivalence (82.3018ms)
+chromium: 264 screen states, 12 misconception choices, actual drop motion, pause/reset and colourless-reagent control
+✔ chromium: mixing, water control, interruption, tablet controls and all first errors (9748.486ms)
+webkit: 264 screen states, 12 misconception choices, actual drop motion, pause/reset and colourless-reagent control
+✔ webkit: mixing, water control, interruption, tablet controls and all first errors (23234.6938ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33175.3534
+

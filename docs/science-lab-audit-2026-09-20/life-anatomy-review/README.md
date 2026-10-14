@@ -23,7 +23,7 @@
 
 `tests/science-observation-motion.test.cjs`로 기존 14단계, 일시정지·재생, 동작 줄이기, 단계 전환과 다른 관찰 실험의 회귀를 함께 확인한다. 화면 캡처는 자동 검사 결과와 별개로 직접 검토한다.
 
-검수 그림: [Chrome](review-chromium.jpg), [WebKit](review-webkit.jpg). 같은 폴더의 개별 PNG는 설명 영역 포함 화면, 생물 도형, 애벌레 이동 종료 상태와 나비의 최소 날개 폭 상태다.
+검수 그림: [Chrome](review-chromium-jpg.webp), [WebKit](review-webkit-jpg.webp). 같은 폴더의 개별 PNG는 설명 영역 포함 화면, 생물 도형, 애벌레 이동 종료 상태와 나비의 최소 날개 폭 상태다.
 
 ## 근거와 한계
 

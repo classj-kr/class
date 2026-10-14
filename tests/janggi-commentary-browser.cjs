@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const {chromium}=require('../game-hub-server/node_modules/playwright');
 const R=require('../learning/games/board-coach/janggi-rules.js');
-const root=path.resolve(__dirname,'..'),output=path.join(root,'tmp/janggi-commentary');
+const root=path.resolve(__dirname,'..'),output=path.join(root,'outputs/qa/janggi-commentary');
 const board=Array(90).fill(null);
 for(const[p,x,y]of [
   ['hR',0,0],['hE',2,0],['hA',3,0],['hA',5,0],['hE',6,0],['hR',8,0],

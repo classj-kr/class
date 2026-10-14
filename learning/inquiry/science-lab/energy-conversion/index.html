@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="계절과 날씨에 따라 태양광 판의 기울기별 하루 전기를 견주고, 풍속과 날개 길이를 바꾼 풍력 발전기의 전력을 기준 발전기와 비교하고, 발전소에서 전등까지 100 J의 에너지가 어디로 가는지 따라가 보는 고등학교 통합과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="energy-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="energy-visual.css?v=12312b3bdf5a">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -100,62 +100,61 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="a">
-<h3>자석과 코일을 이용한 발전기에서 전류를 유도하는 기본 원리는?</h3>
+<h3>코일 안에서 자석을 멈춘 A, 코일 쪽으로 움직인 B, 반대로 움직인 C를 비교했다. B·C의 유도 전류 방향은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q1" value="a"> 자석과 코일의 상대 운동으로 코일을 지나는 자기장이 변한다</label>
-<label><input type="radio" name="q1" value="b"> 코일이 빛을 저장한다</label>
-<label><input type="radio" name="q1" value="c"> 자석을 가만히 두면 언제나 전류가 계속 흐른다</label>
-<label><input type="radio" name="q1" value="d"> 전선의 색만 바꾸면 전류가 생긴다</label>
+<label><input type="radio" name="q1" value="a"> A는 0 / B·C는 서로 반대</label>
+<label><input type="radio" name="q1" value="b"> A는 0 / B·C는 서로 같음</label>
+<label><input type="radio" name="q1" value="c"> A는 B와 같음 / C만 0</label>
+<label><input type="radio" name="q1" value="d"> A는 C와 같음 / B만 0</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>자석과 코일의 상대 운동으로 코일을 지나는 자기장이 변하면 전자기 유도로 전류가 흐를 수 있습니다. 발전기는 이를 이용해 운동 에너지를 전기 에너지로 전환합니다.</p>
+<p class="answer-explanation" hidden>자기 선속이 변하는 B·C에서 전류가 유도됩니다. 상대 운동의 방향이 반대이면 선속 변화의 방향과 유도 전류도 반대입니다.</p>
 </article>
 
-                <article class="quiz-card" data-answer="d">
-<h3>다른 조건이 같을 때 태양 전지판이 빛을 효과적으로 받도록 방향을 조절하는 방법은?</h3>
+                <article class="quiz-card" data-answer="c">
+<h3>같은 태양 전지판에 같은 세기의 빛을 비췄다. 빛이 판에 수직인 A와 비스듬한 B의 단위 면적당 입사 에너지는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q2" value="a"> 언제나 지면과 90°로 고정한다</label>
-<label><input type="radio" name="q2" value="b"> 항상 북쪽만 향하게 한다</label>
-<label><input type="radio" name="q2" value="c"> 그늘로 옮긴다</label>
-<label><input type="radio" name="q2" value="d"> 빛이 전지판에 수직에 가깝게 들어오도록 한다</label>
+<label><input type="radio" name="q2" value="a"> B가 더 크다</label>
+<label><input type="radio" name="q2" value="b"> 두 경우가 같다</label>
+<label><input type="radio" name="q2" value="c"> A가 더 크다</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>빛이 전지판에 수직에 가깝게 들어오면 같은 넓이에 더 많은 빛을 받을 수 있습니다. 적절한 설치 각도는 지역·계절·시간 등에 따라 달라집니다.</p>
+<p class="answer-explanation" hidden>비스듬한 빛은 같은 빛다발이 더 넓은 면적에 퍼집니다. 따라서 수직일 때 단위 면적당 입사 에너지가 더 큽니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>효율 40 %인 화력 발전소의 전기로 효율 5 %인 백열등을 켭니다. 연료 100 J은 어떻게 될까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 40 J이 빛이 된다</label>
-                        <label><input type="radio" name="q3" value="b"> 5 J이 빛이 되고 나머지는 사라진다</label>
-                        <label><input type="radio" name="q3" value="c"> 45 J이 빛이 된다</label>
-                        <label><input type="radio" name="q3" value="d"> 2 J쯤만 빛이 되고 나머지는 모두 열로 흩어진다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>단계의 효율은 곱해집니다. 100 J × 0.4 = 40 J이 전기가 되고, 그 가운데 5 %인 2 J만 빛이 됩니다. 나머지 98 J은 사라진 것이 아니라 발전소와 전등에서 열로 흩어졌습니다.</p>
-                </article>
+<h3>발전 효율 40%, 전등의 전기→빛 효율 5%이다. 연료 100 J 중 빛으로 전환되는 에너지는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 5 J</label>
+<label><input type="radio" name="q3" value="b"> 40 J</label>
+<label><input type="radio" name="q3" value="c"> 45 J</label>
+<label><input type="radio" name="q3" value="d"> 2 J</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>발전 후 전기 에너지는 40 J이고 그 5%인 2 J이 빛으로 전환됩니다. 두 효율을 더하지 않고 곱해야 합니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>화력·수력·풍력 발전의 공통점으로 알맞은 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 모두 연료를 태운다</label>
-                        <label><input type="radio" name="q4" value="b"> 무엇으로 돌리느냐만 다를 뿐, 터빈이 발전기를 돌려 전자기 유도로 전류를 만든다</label>
-                        <label><input type="radio" name="q4" value="c"> 모두 빛을 곧바로 전기로 바꾼다</label>
-                        <label><input type="radio" name="q4" value="d"> 모두 효율이 100 %이다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>증기, 떨어지는 물, 바람 가운데 무엇으로 터빈을 돌리느냐가 다를 뿐, 터빈이 발전기 속 자석과 코일을 서로 돌려 전류를 만드는 원리는 같습니다. 빛을 곧바로 전기로 바꾸는 것은 태양광 발전입니다.</p>
-                </article>
+<h3>화력·수력·풍력 발전에서 에너지원은 달라도 발전기 안에서 공통으로 일어나는 과정은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 빛의 흡수에 따른 전자 방출</label>
+<label><input type="radio" name="q4" value="b"> 코일을 지나는 자기 선속 변화</label>
+<label><input type="radio" name="q4" value="c"> 화학 반응에 따른 전하 분리</label>
+<label><input type="radio" name="q4" value="d"> 열원 사이의 직접 전하 이동</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>터빈의 회전이 발전기에 전달되고 코일을 지나는 자기 선속이 변하여 전류가 유도됩니다.</p>
+</article>
             </div>
         </details>
     </main>
     <script src="app.js?v=6d97adcfedb4"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

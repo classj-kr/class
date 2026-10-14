@@ -1,0 +1,14 @@
+(function(root,factory){const api=factory();if(typeof module==='object')module.exports=api;else root.ScienceSensors=api;})(typeof window==='undefined'?globalThis:window,function(){
+ 'use strict';
+ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+ function connection({power,ground,wiredPin,programPin,uploaded}){return power&&ground&&wiredPin===programPin&&uploaded;}
+ // A synthetic optical waveform, not an ECG, personal measurement or health model.
+ function pulseSignal(t,bpm,artifact=false){const phase=2*Math.PI*bpm/60*t;return .7+.32*Math.sin(phase)+.08*Math.sin(2*phase-.5)+(artifact?.28*Math.sin(2*Math.PI*.7*t):0);}
+ function pulse({bpm=72,hz=20,seconds=60,artifact=false}={}){if(hz<=0||seconds<=0||bpm<=0)throw Error('Invalid sampling');const samples=Array.from({length:Math.floor(seconds*hz)},(_,i)=>[i/hz,pulseSignal(i/hz,bpm,artifact)]),peaks=[];for(let i=1;i<samples.length-1;i++)if(samples[i][1]>.86&&samples[i][1]>samples[i-1][1]+1e-9&&samples[i][1]>=samples[i+1][1]-1e-9&&(!peaks.length||samples[i][0]-peaks.at(-1)>.28))peaks.push(samples[i][0]);return{samples,peaks,estimated:peaks.length>=2?60*(peaks.length-1)/(peaks.at(-1)-peaks[0]):null,count:peaks.length,hz,seconds,bpm,artifact};}
+ function sound({attenuation=0,distance=1,source=70,seconds=300,interval=1}={}){if(distance<=0||interval<=0)throw Error('Invalid sound condition');const samples=Array.from({length:Math.ceil(seconds/interval)},(_,i)=>{const t=i*interval,sourceLevel=source+3*Math.sin(2*Math.PI*t/60)+(t%90<10?5:0),direct=sourceLevel-attenuation-20*Math.log10(distance),level=10*Math.log10(10**(direct/10)+10**(40/10));return[t,level];});return{samples,leq:10*Math.log10(samples.reduce((s,p)=>s+10**(p[1]/10),0)/samples.length),arithmetic:samples.reduce((s,p)=>s+p[1],0)/samples.length,attenuation,distance,source,seconds,interval};}
+ const dryRaw=850,wetRaw=350;
+ function moisture(raw,dry,wet){if(!Number.isFinite(dry)||!Number.isFinite(wet)||Math.abs(wet-dry)<10)return null;return clamp(100*(raw-dry)/(wet-dry),0,100);}
+ function potStart(){return{water:45,t:0,reservoir:100,on:false,command:false,switches:0,history:[],dry:null,wet:null};}
+ function potStep(previous,{sensor='soil',relay=true,low=30,high=60,mode='band',noise=false,calibrated=true}={}){const s={...previous,history:previous.history.slice()},raw=dryRaw-5*s.water+(noise?15*Math.sin(s.t*2.1):0),reading=calibrated?moisture(raw,s.dry,s.wet):null;let command=false;if(sensor==='soil'&&reading!==null){if(mode==='single')command=reading<low;else command=s.command?reading<high:reading<low;}s.command=command;const on=command&&relay&&s.reservoir>0;if(on!==s.on)s.switches++;s.on=on;s.history.push({t:s.t,raw,reading,command,on,water:s.water,reservoir:s.reservoir});s.water=clamp(s.water-1+(on?5:0),0,100);if(on)s.reservoir=Math.max(0,s.reservoir-5);if(s.on&&s.reservoir===0){s.on=false;s.switches++;}s.t++;return s;}
+ return{connection,pulseSignal,pulse,sound,moisture,potStart,potStep,dryRaw,wetRaw};
+});

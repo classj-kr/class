@@ -145,8 +145,7 @@ const CHAPTERS = [
                     "그러자 할머니가 껄껄 웃었지요. 웃는 얼굴은 하나도 무섭지 않았습니다."
                 ],
                 "right": [
-                    "\"무서워하지 마라. 나는 홀레라고 한단다. 우리 집에서 일해 주지 않겠니?\"",
-                    "\"이불을 잘 털어 주면 된단다. 깃털이 날려야 아래 세상에 눈이 오거든.\"",
+                    "\"무서워하지 마라. 나는 홀레라고 한단다. 우리 집에서 일해 주지 않겠니? 이불을 잘 털어 주면 된단다. 깃털이 날려야 아래 세상에 눈이 오거든.\"",
                     "아이는 눈이 그렇게 오는 줄은 몰랐습니다."
                 ]
             },
@@ -209,7 +208,7 @@ const CHAPTERS = [
                 "art": "07-lazy.webp",
                 "emoji": "😏",
                 "left": [
-                    "금빛 아이가 집에 들어서자 온 집이 뒤집혔습니다. 새어머니의 눈이 번쩍했지요.",
+                    "마당의 수탉이 크게 울었지요. \"꼬끼오, 금빛 아이가 왔네!\" 금빛 아이가 집에 들어서자 온 집이 뒤집혔습니다. 새어머니의 눈이 번쩍했지요.",
                     "아이가 있었던 일을 이야기했습니다. 새어머니는 제 딸을 돌아보았지요.",
                     "\"너도 어서 우물에 들어가 보아라!\""
                 ],
@@ -440,7 +439,7 @@ const QUIZ = [
         "choices": [
             "사과나무",
             "홀레 할머니",
-            "빵 가마"
+            "빵 화덕"
         ],
         "answer": 2
     },
@@ -476,7 +475,7 @@ const QUIZ = [
         "choices": [
             "빵을 꺼내 먹어 버렸다",
             "코를 막고 지나쳤다",
-            "가마 문을 닫아 버렸다"
+            "화덕 문을 닫아 버렸다"
         ],
         "answer": 1
     },
@@ -815,7 +814,7 @@ const EN = {
                     art: '07-lazy.webp',
                     emoji: '😒',
                     left: [
-                        "The whole house was in an uproar at the sight of the golden girl,",
+                        "The cockerel in the yard crowed, \"Our golden girl is home!\" The whole house was in an uproar at the sight of her,",
                         "and the stepmother's eyes lit up.",
                         "The girl told them everything that had happened,",
                         "and the stepmother turned to her own daughter.",
@@ -990,7 +989,7 @@ const EN = {
         ],
         '03-bread.webp': [
             { word: 'cinder', meaning: '숯덩이', sentence: 'I shall burn to a cinder!' },
-            { word: 'oven', meaning: '가마', sentence: 'Beside the road was an oven.' },
+            { word: 'oven', meaning: '화덕', sentence: 'Beside the road was an oven.' },
             { word: 'loaf', meaning: '빵 덩이', sentence: 'She lifted the loaves out one by one.' },
             { word: 'paddle', meaning: '주걱', sentence: 'The girl found a paddle.' },
             { word: 'billow', meaning: '확 올라오다', sentence: 'Hot steam came billowing out.' }
@@ -1176,7 +1175,8 @@ const WORDS_KO = {
     "08-ending-2.webp": [
         { w: "차례", k: "돌아오는 순서.", s: "이제 금이 쏟아질 차례라고 생각했지요." },
         { w: "시커멓다", k: "매우 검다.", s: "시커먼 송진이 주르륵 흘렀지요." },
-        { w: "수탉", k: "닭의 수컷.", s: "수탉이 그 꼴을 보고 크게 울었지요." }
+        { w: "수탉", k: "닭의 수컷.", s: "수탉이 그 꼴을 보고 크게 울었지요." },
+        { w: "송진", k: "소나무에서 흘러나오는 끈적끈적한 진. 한번 묻으면 잘 떨어지지 않는다.", s: "시커먼 송진이 주르륵 흘렀지요." }
     ],
     "end.webp": [
         { w: "물레가락", k: "실을 감을 때 쓰는 뾰족한 막대.", s: "부지런한 아이는 우물에 빠진 물레가락을 주우러 뛰어듭니다." },

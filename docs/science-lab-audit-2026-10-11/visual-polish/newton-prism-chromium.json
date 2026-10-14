@@ -1,0 +1,28 @@
+{
+  "slug": "newton-prism",
+  "engine": "chromium",
+  "modes": [
+    "dispersion",
+    "single",
+    "combine"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "dispersion",
+      "results": []
+    },
+    {
+      "mode": "single",
+      "results": []
+    },
+    {
+      "mode": "combine",
+      "results": []
+    }
+  ]
+}

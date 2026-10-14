@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const teacherIndexSource = await readFile(new URL("../teacher/index.html", import.meta.url), "utf8");
-const noticeIndexSource = await readFile(new URL("../notice/index.html", import.meta.url), "utf8");
+const teacherIndexSource = await readFile(new URL("../apps/teacher/index.html", import.meta.url), "utf8");
+const noticeIndexSource = await readFile(new URL("../apps/notice/index.html", import.meta.url), "utf8");
 
 test("the notice composer no longer offers a PDF attachment option that silently discarded the actual file and kept only its filename", () => {
   assert.doesNotMatch(teacherIndexSource, /id="nContentType"/);

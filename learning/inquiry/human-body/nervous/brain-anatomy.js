@@ -38,10 +38,10 @@
         { id: 'diencephalon', text: '간뇌', ax: 852, ay: 300, sx: 590, sy: 344 },
         { id: 'midbrain', text: '중간뇌', ax: 852, ay: 398, sx: 562, sy: 418 },
         { id: 'pituitary', text: '뇌하수체', ax: 158, ay: 428, sx: 404, sy: 424 },
-        { id: 'pons', text: '다리뇌', ax: 158, ay: 508, sx: 446, sy: 476 },
-        { id: 'medulla', text: '연수', ax: 158, ay: 580, sx: 468, sy: 542 },
-        { id: 'cerebellum', text: '소뇌', ax: 862, ay: 566, sx: 790, sy: 540 },
-        { id: 'spinalCord', text: '척수', ax: 158, ay: 656, sx: 470, sy: 636 }
+        { id: 'pons', text: '다리뇌', ax: 158, ay: 508, sx: 495, sy: 476 },
+        { id: 'medulla', text: '연수', ax: 158, ay: 580, sx: 495, sy: 542 },
+        { id: 'cerebellum', text: '소뇌', ax: 862, ay: 566, sx: 638, sy: 500 },
+        { id: 'spinalCord', text: '척수', ax: 158, ay: 656, sx: 510, sy: 636 }
     ];
 
     // 알약 단추가 없는 셋. 이 셋을 누르면 여기서 설명을 넣는다.

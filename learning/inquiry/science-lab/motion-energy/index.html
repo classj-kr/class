@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="빗면을 내려오는 수레를 일정한 시간마다 찍어 속력이 일정하게 늘어나는 등가속도 운동을 보고, 언덕 궤도 위 공의 위치 에너지와 운동 에너지가 서로 바뀌며 합은 그대로인 것을 확인하는 중학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="motion-visual.css?v=6">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="motion-visual.css?v=8a61b299b5e5">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -96,16 +96,15 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-<h3>빗면을 내려오는 수레를 같은 시간 간격으로 찍었더니 점 사이가 점점 벌어졌습니다. 알 수 있는 것은?</h3>
+<h3>같은 시간 간격으로 찍은 수레의 연속 위치 사이 거리가 2 cm, 4 cm, 6 cm이다. 각 구간의 평균 속력은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q1" value="a"> 속력이 감소한다.</label>
-<label><input type="radio" name="q1" value="b"> 멈춰 있다.</label>
-<label><input type="radio" name="q1" value="c"> 속력이 증가한다.</label>
-<label><input type="radio" name="q1" value="d"> 질량이 증가한다.</label>
+<label><input type="radio" name="q1" value="a"> 차례로 감소</label>
+<label><input type="radio" name="q1" value="b"> 모두 같음</label>
+<label><input type="radio" name="q1" value="c"> 차례로 증가</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>같은 시간 동안 이동한 거리가 길어지므로 속력이 증가한 것입니다.</p>
+<p class="answer-explanation" hidden>같은 시간 동안 간 거리가 늘었으므로 각 구간의 평균 속력이 커집니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="c">
@@ -122,7 +121,7 @@
                 </article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>높이 2 m에서 놓은 1 kg 공이 가장 낮은 곳(높이 0)을 지날 때 운동 에너지는 약 얼마일까요?</h3>
+                    <h3>공기 저항을 무시하고 높이 2 m에서 정지 상태로 놓은 1 kg 공이 높이 0을 지날 때 운동 에너지는? (g = 9.8 m/s²)</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q3" value="a"> 약 19.6 J</label>
                         <label><input type="radio" name="q3" value="b"> 약 9.8 J</label>
@@ -134,24 +133,23 @@
                     <p class="answer-explanation" hidden>처음 위치 에너지는 9.8 × 1 × 2 = 19.6 J입니다. 가장 낮은 곳에서 위치 에너지는 0이므로, 마찰이 없으면 19.6 J이 모두 운동 에너지가 됩니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>높이 1 m에서 놓은 공이 높이 1.5 m인 언덕을 넘지 못했습니다. 2 kg 공으로 바꾸면 어떻게 될까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 무거워서 넘어간다</label>
-                        <label><input type="radio" name="q4" value="b"> 무거워서 더 낮은 곳에서 되돌아온다</label>
-                        <label><input type="radio" name="q4" value="c"> 꼭대기에서 딱 멈춘다</label>
-                        <label><input type="radio" name="q4" value="d"> 여전히 1 m 높이까지만 오르고 되돌아온다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>오를 수 있는 높이는 처음 높이로 정해집니다. 질량이 두 배면 위치 에너지도 운동 에너지도 두 배가 되어 서로 상쇄되므로, 여전히 1 m까지만 오릅니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>마찰 없는 길에서 높이 1 m에 정지해 있던 공을 놓았다. 질량을 두 배로 바꿔도 반대편에서 도달할 최대 높이는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 0.5 m</label>
+<label><input type="radio" name="q4" value="b"> 2 m</label>
+<label><input type="radio" name="q4" value="c"> 1 m</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>퍼텐셜 에너지와 운동 에너지에 질량이 함께 곱해지므로 같은 출발 높이에서 도달하는 최대 높이는 질량과 무관합니다.</p>
+</article>
             </div>
         </details>
     </main>
     <script src="app.js?v=6d8b22466575"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

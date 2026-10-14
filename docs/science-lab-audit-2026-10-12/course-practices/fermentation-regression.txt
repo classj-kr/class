@@ -1,0 +1,17 @@
+✔ official 2022 areas and courses, and one auditable primary placement per app (288.372ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4612.9893ms)
+✔ fermentation separates trapped air, glucose controls and detector chemistry (0.747ms)
+✔ chromium: fermentation sequence, controls, animation and first-answer diagnosis (26363.0269ms)
+✔ webkit: fermentation sequence, controls, animation and first-answer diagnosis (20037.5712ms)
+204 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (192.0701ms)
+✔ every science lab JavaScript file parses (93.6831ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8377ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46467.5389

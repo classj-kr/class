@@ -1,0 +1,34 @@
+{
+  "scope": "Corrections to the rendered first-20-element model and its existing nine-compound comparison. No new melting-point measurements or independent verification of all tabulated phase-change temperatures is claimed.",
+  "findings": [
+    {
+      "before": "The explanatory paragraph mentioned the helium exception, while the diagram, same-group data row and final result still said all same-group elements have the same outer-shell electron count.",
+      "after": "He has two outer-shell electrons; Ne and Ar have eight. The table, chart and final explanation agree. The graph identifies the first-period two-electron limit separately from the second/third-period eight-electron pattern."
+    },
+    {
+      "before": "The negative-temperature segment used 12 pixels per 300 degrees while the positive segment used 86 pixels per 3000 degrees.",
+      "after": "Both signs use one linear scale, 86 pixels per 3000 degrees. Water at zero is a horizontal marker rather than an artificial nonzero-height bar."
+    },
+    {
+      "before": "The chart contained CO2 at -78.5 degrees in every selection, but its sublimation exception was shown only when CO2 itself was selected.",
+      "after": "The chart names phase-change temperature and always distinguishes CO2 sublimation from the other substances' melting points at one atmosphere."
+    },
+    {
+      "before": "The comparison trace was translucent and unselected bars were faded. Light category colors were also used for small element labels.",
+      "after": "Opaque comparison lines and bars, dark outlines, readable labels and a distinct selected outline retain the comparisons without fading their data."
+    },
+    {
+      "before": "Bottom chart conditions were relabeled as x-axis names; selected CO2 still used a melting-point heading; the generic shared-electron note incorrectly said four electrons for H and B.",
+      "after": "Preserve captions without an inferred axis prefix. CO2 diagram, data and explanation name sublimation at 1 atm; H/B notes no longer assert four outer electrons. A low melting point alone is not used to infer the room-temperature phase."
+    }
+  ],
+  "verification": [
+    "periodic-consistency-final.txt",
+    "periodic-consistency-readability/extended-chromium.json",
+    "periodic-consistency-readability/extended-webkit.json",
+    "caption-consistency-regression.txt",
+    "post-caption-readability/extended-chromium.json",
+    "post-caption-readability/extended-webkit.json"
+  ],
+  "earlierHarnessFailure": "periodic-consistency-regression.txt retained: the newly written harness expected eight compounds instead of the nine actually present. Its two electron-animation tests passed. The corrected harness checks all nine explicit IDs."
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 농도·압력·온도와 평형의 색</title><meta name="description" content="2022 교육과정 · 농도·압력·온도와 평형의 색의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="colour.css?v=21f6f0415c18"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>농도·압력·온도와 평형의 색</h1><div class="grade-tags"><span>고(선택)</span><span>화학</span></div></header><p class="intro">시약을 넣거나 온도를 바꾸면 평형 상태의 색이 어떻게 달라질까요? 처음 상태와 비교하며 확인하세요.</p>
+<section class="ec-lab"><div class="ec-tabs" role="group" aria-label="실험 선택"><button data-mode="concentration" aria-pressed="true">농도 변화</button><button data-mode="pressure" aria-pressed="false">압력 변화</button><button data-mode="temperature" aria-pressed="false">온도 변화</button></div>
+<section id="ecConcentration"><header class="ec-heading"><span>크로뮴산 이온과 다이크로뮴산 이온</span><h2>시약을 넣고 네 시험관 비교하기</h2><p>각 시험관의 시료는 0.1 M · 5 mL, 온도는 일정합니다.</p></header>
+<div class="ec-equation"><span>Cr₂O₇²⁻ + H₂O</span><b>⇌</b><span>2CrO₄²⁻ + 2H⁺</span></div><div class="ec-key"><span><i style="--swatch:#dd641e"></i>Cr₂O₇²⁻ · 주황색</span><span><i style="--swatch:#edc633"></i>CrO₄²⁻ · 노란색</span></div>
+<div class="ec-controls"><button id="ecPrepare" class="primary">두 종류의 시료를 5 mL씩 담기</button><div class="ec-reagents" role="group" aria-label="첨가할 시약"><button data-ec-reagent="acid" aria-pressed="true">1 M 염산</button><button data-ec-reagent="base" aria-pressed="false">1 M 수산화 나트륨</button></div><button id="ecAdd" disabled>선택한 시험관에 조금씩 넣기</button></div>
+<p class="ec-guide">A·B에는 염산을, C·D에는 수산화 나트륨을 넣어 비교해 보세요. 시험관을 누르면 선택할 수 있습니다.</p><div id="ecTubes" class="ec-tubes"></div>
+<p id="ecConcentrationStatus" class="ec-status" aria-live="polite"></p><p class="ec-note">색의 변화 방향을 나타냅니다. 색의 진하기와 변화 시간으로 농도나 반응 속도를 측정할 수는 없습니다.</p></section>
+<section id="ecPressure" hidden><header class="ec-heading"><span>이산화 질소와 사산화 이질소</span><h2>압축 직후와 새 평형 비교하기</h2><p>온도를 일정하게 유지하며 기체의 부피를 절반으로 줄입니다.</p></header><div class="ec-equation"><span>2NO₂ · 갈색</span><b>⇌</b><span>N₂O₄ · 무색</span></div><div class="ec-pressure-workspace"><div class="ec-cylinder-stage"><div id="ecCylinder" class="ec-cylinder"><div class="ec-piston"><i></i></div><div id="ecGas" class="ec-gas"></div></div><p id="ecVolume"></p></div><div class="ec-pressure-readout"><h3 id="ecPressurePhase">처음 평형</h3><p>NO₂ 상대 농도 <strong id="ecDensity">1.00</strong></p><p id="ecPressureCount"></p><div class="ec-pressure-controls"><button id="ecCompress" class="primary">부피를 절반으로 압축</button><button id="ecEquilibrate" disabled>새 평형까지 관찰</button></div></div></div><p id="ecPressureStatus" class="ec-status" aria-live="polite"></p><div id="ecPressureSequence" class="ec-colour-sequence" aria-label="압축 전후의 관찰 비교"></div><p class="ec-note">입자 수와 상대 농도로 반응비를 나타낸 모형입니다. 온도·빛이 통과하는 두께는 같고, 기체의 액화는 다루지 않습니다.</p></section>
+<section id="ecTemperature" hidden><header class="ec-heading"><span>코발트 착이온의 가역 반응</span><h2>같은 용액을 데우고 식히기</h2><p>염화 코발트(Ⅱ) 수용액 0.1 M · 5 mL</p></header><div class="ec-equation"><span>Co(H₂O)₆²⁺ + 4Cl⁻</span><b>⇌</b><span>CoCl₄²⁻ + 6H₂O</span></div><div class="ec-key"><span><i style="--swatch:#d96493"></i>Co(H₂O)₆²⁺ · 분홍색</span><span><i style="--swatch:#3978b8"></i>CoCl₄²⁻ · 파란색</span></div>
+<div class="ec-controls"><button id="ecFill" class="primary">염화 코발트 수용액 담기</button><button id="ecChloride" disabled>진한 염산을 넣어 보라색 만들기</button></div>
+<div class="ec-bath-scene"><div class="ec-bath ec-hot"><div class="ec-water"></div><span>뜨거운 물</span></div><div class="ec-bath ec-cold"><div class="ec-water"></div><span>차가운 물</span></div><div id="ecCobaltTube" class="ec-cobalt-tube"><div class="ec-glass"><div class="ec-liquid"></div><div class="ec-shine"></div></div></div></div>
+<div class="ec-bath-buttons"><button data-ec-bath="hot" disabled>뜨거운 물에 넣기</button><button data-ec-bath="cold" disabled>차가운 물에 넣기</button></div><p id="ecTemperatureStatus" class="ec-status" aria-live="polite"></p>
+<div id="ecColourSequence" class="ec-colour-sequence" aria-label="관찰한 색 비교"></div><p class="ec-note">물을 용액에 붓지 않고 시험관 바깥에서 데우고 식힙니다. 색 변화는 정성 모형이며 재생 시간은 실제 반응 시간이 아닙니다.</p></section>
+<div class="ec-footer"><p class="ec-safety">실물에서는 교사 지도 아래 보안경·장갑을 착용하고, 진한 염산은 후드 안에서 다룹니다. 폐액은 지정된 용기에 모읍니다.</p><button id="ecReset">처음부터 다시</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="d">
+<h3>Cr₂O₇²⁻ + H₂O ⇌ 2CrO₄²⁻ + 2H⁺가 평형이다. 온도와 다른 이온 농도는 그대로 두고 [H⁺]만 순간적으로 2배가 되었다. 반응 직후 Q와 우세한 반응은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> Q = 2K · 정반응</label>
+<label><input type="radio" name="q1" value="b"> Q = 2K · 역반응</label>
+<label><input type="radio" name="q1" value="c"> Q = 4K · 정반응</label>
+<label><input type="radio" name="q1" value="d"> Q = 4K · 역반응</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>Q=[CrO₄²⁻]²[H⁺]²/[Cr₂O₇²⁻]이므로 Q는 4K입니다. Q&gt;K이면 역반응이 우세하여 주황색 이온이 늘어나는 방향입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>같은 온도에서 주황색 다이크로뮴산 수용액에 NaOH 수용액을 조금씩 넣어 노란색이 되었다. H⁺ 농도 변화의 원인과 평형 상수 K의 변화는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> H⁺ 소비 · K 일정</label>
+<label><input type="radio" name="q2" value="b"> H⁺ 소비 · K 증가</label>
+<label><input type="radio" name="q2" value="c"> H⁺ 생성 · K 일정</label>
+<label><input type="radio" name="q2" value="d"> H⁺ 생성 · K 감소</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>OH⁻가 H⁺를 소비하면 제시한 반응의 Q가 작아져 정반응이 우세해집니다. 온도를 유지했으므로 K는 변하지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>Co(H₂O)₆²⁺ + 4Cl⁻ ⇌ CoCl₄²⁻ + 6H₂O의 정반응은 흡열 반응이다. 보라색 용액을 가열해 파란색이 되었을 때, 증가하는 착이온과 K의 변화는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> Co(H₂O)₆²⁺ · K 증가</label>
+<label><input type="radio" name="q3" value="b"> CoCl₄²⁻ · K 감소</label>
+<label><input type="radio" name="q3" value="c"> CoCl₄²⁻ · K 증가</label>
+<label><input type="radio" name="q3" value="d"> Co(H₂O)₆²⁺ · K 감소</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>온도가 높아지면 흡열 방향인 정반응이 유리해집니다. 파란색 CoCl₄²⁻가 증가하고 이 반응의 K도 커집니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>2NO₂(g) ⇌ N₂O₄(g)가 평형이다. 같은 온도에서 부피를 절반으로 줄인 직후, 반응이 진행되기 전의 Q와 이후 우세한 반응은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> Q = 2K · 정반응</label>
+<label><input type="radio" name="q4" value="b"> Q = K/2 · 정반응</label>
+<label><input type="radio" name="q4" value="c"> Q = 2K · 역반응</label>
+<label><input type="radio" name="q4" value="d"> Q = K/2 · 역반응</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>두 기체의 농도가 각각 2배가 되므로 Q=[N₂O₄]/[NO₂]²은 K/2입니다. 이후 정반응이 우세하여 NO₂가 줄지만, 새 평형의 NO₂ 농도가 압축 전보다 낮아진다는 뜻은 아닙니다.</p>
+</article></details></main><script src="model.js?v=71e7f0f74673"></script><script src="app.js?v=7f200797948c"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

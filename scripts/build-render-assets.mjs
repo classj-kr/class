@@ -12,6 +12,7 @@ const ASSET_EXTENSIONS = new Set([
   ".webm", ".webp", ".woff", ".woff2",
 ]);
 const EXCLUDED_PREFIXES = [
+  "learning/literacy-numeracy/phonics-site/",
   "learning/inquiry/age-of-exploration/public/assets/currents/source/",
   "learning/inquiry/age-of-exploration/public/assets/maps/natural-earth-v58/source/",
   "learning/inquiry/information-computing/computer-fundamentals/assets/source/",
@@ -23,11 +24,14 @@ function normalize(relativePath) {
 
 export function assetDestinations(relativePath) {
   const normalized = normalize(relativePath);
+  // Source preparation and local verification files are never runtime media.
+  if (normalized.split("/").some((part) =>
+    ["tools", "_tools", "_check", "scratch", "node_modules", ".git", ".openai", ".wrangler", "tests"].includes(part))) return [];
   if (EXCLUDED_PREFIXES.some((prefix) => normalized.startsWith(prefix))) return [];
   if (!ASSET_EXTENSIONS.has(path.posix.extname(normalized).toLowerCase())) return [];
 
-  if (normalized.startsWith("classtools/assets/avatars/")) {
-    return [`assets/avatars/${normalized.slice("classtools/assets/avatars/".length)}`];
+  if (normalized.startsWith("apps/classtools/assets/avatars/")) {
+    return [`assets/avatars/${normalized.slice("apps/classtools/assets/avatars/".length)}`];
   }
   if (!normalized.startsWith("learning/")) return [];
 

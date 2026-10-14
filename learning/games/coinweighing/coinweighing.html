@@ -1072,7 +1072,7 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
 <script src="../../../assets/network/finisher-board.js?v=20260727"></script>
-<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261009-sound-bus" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 /* The beam and pillar share the original 290px scale coordinate system. */
@@ -1231,7 +1231,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-si
     let coinCount = 12;
     let fakeCoinIndex, fakeCoinWeight, currentTurn;
     let isDecideMode = false;
-    let audioCtx = null;
+
     let currentVolume = 0.6; 
     let selectedCoin = null; // 현재 선택된 동전 추적 변수
 
@@ -1359,13 +1359,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-si
             bgm.play().catch(e => console.log("BGM 재생 차단:", e));
         }
 
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext && !audioCtx) {
-            audioCtx = new AudioContext();
-        }
-        if (audioCtx && audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
+        window.ClassGameSfx?.unlock();
 
         document.getElementById('start-screen').style.display = 'none';
         document.getElementById('game-board').style.display = 'block';
@@ -1374,7 +1368,9 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-si
 
     function playCoinSound() {
         try {
-            if (!audioCtx) return;
+            const bus = window.ClassGameSfx?.getAudioBus();
+            if (!bus) return;
+            const audioCtx = bus.context;
 
             const osc1 = audioCtx.createOscillator();
             const osc2 = audioCtx.createOscillator();
@@ -1391,7 +1387,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-si
 
             osc1.connect(gainNode);
             osc2.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
+            gainNode.connect(bus.output);
 
             osc1.start();
             osc2.start();

@@ -1,0 +1,71 @@
+{
+  "sourceId": "3630e303237d192e",
+  "sourcePath": "references/textbooks/중고등/미래엔/중학/과학/과학1 (김태일)_2022/미래엔_과학1_교사용교과서__5dc10b5933.pdf",
+  "sourceSha256": "3630e303237d192e89d335e62eb7d7308719ae9a73e4a23358dbb6b9b32ab706",
+  "method": "Original PDF image, clipping paths, graphics state and colour rendered in isolation; transparent bounds trimmed; no added or removed specimen detail.",
+  "specimens": [
+    {
+      "id": "cheek-stained",
+      "file": "learning/inquiry/science-lab/assets/cell-observation/cheek-stained.webp",
+      "pdfPage": 42,
+      "printedPage": 42,
+      "sourceMagnification": 400,
+      "imageObject": "/Im15",
+      "renderScale": 4,
+      "alphaBounds": [
+        1606,
+        2503,
+        1856,
+        2754
+      ],
+      "width": 250,
+      "height": 251,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "f72bfde6f621d18bdf8fa18bd5164ba9740752146daf272fecb64aa291e8c8e6"
+    },
+    {
+      "id": "leaf-unstained",
+      "file": "learning/inquiry/science-lab/assets/cell-observation/leaf-unstained.webp",
+      "pdfPage": 43,
+      "printedPage": 43,
+      "sourceMagnification": 400,
+      "imageObject": "/Im13",
+      "renderScale": 4,
+      "alphaBounds": [
+        1758,
+        294,
+        2008,
+        544
+      ],
+      "width": 250,
+      "height": 250,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "1c90eaafcafcdfba552a8f44ef513511df1116e2c96c935e4daeaf5b388d7297"
+    },
+    {
+      "id": "leaf-stained",
+      "file": "learning/inquiry/science-lab/assets/cell-observation/leaf-stained.webp",
+      "pdfPage": 43,
+      "printedPage": 43,
+      "sourceMagnification": 400,
+      "imageObject": "/Im14",
+      "renderScale": 4,
+      "alphaBounds": [
+        2047,
+        294,
+        2297,
+        544
+      ],
+      "width": 250,
+      "height": 250,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "c15774ca1a50d6a0a1f755421863c9ccc1adb857561cd830f8759cda625ace63"
+    }
+  ]
+}

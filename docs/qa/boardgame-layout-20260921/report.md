@@ -27,38 +27,38 @@
 
 | 게임 | 최소/최대 인원 | 상태 | 레이아웃 | 동작 별도 검사 |
 |---|---:|---|---|---|
-| [원정대 추리](avalon-layout-check.png) · [세로](avalon-portrait-check.png) · [최대 인원](max-players/avalon-layout-check.png) | 5/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [바둑](baduk-layout-check.png) · [세로](baduk-portrait-check.png) · [최대 인원](max-players/baduk-layout-check.png) | 2/2 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
-| [블로커스](blokus-layout-check.png) · [세로](blokus-portrait-check.png) · [최대 인원](max-players/blokus-layout-check.png) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [77 폭탄](bomb77-layout-check.png) · [세로](bomb77-portrait-check.png) · [최대 인원](max-players/bomb77-layout-check.png) | 2/8 | 초기 플레이 | 검사 통과 | 카드 내기·뽑기, 중복 시계, 정리 |
-| [체스](chess-layout-check.png) · [세로](chess-portrait-check.png) · [최대 인원](max-players/chess-layout-check.png) | 2/2 | 진행·종료 | 검사 통과 | 일반·상대·포획·특수 이동, 중복 상태, 정리, 이동 감소 |
-| [경찰과 도둑](citychase-layout-check.png) · [세로](citychase-portrait-check.png) · [최대 인원](max-players/citychase-layout-check.png) | 2/6 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [클루](clue-layout-check.png) · [세로](clue-portrait-check.png) · [최대 인원](max-players/clue-layout-check.png) | 3/6 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [코드네임](codenames-layout-check.png) · [세로](codenames-portrait-check.png) · [최대 인원](max-players/codenames-layout-check.png) | 4/5 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [동전 무게 찾기](coinweighing-layout-check.png) · [세로](coinweighing-portrait-check.png) · [최대 인원](max-players/coinweighing-layout-check.png) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [육목](connect6-layout-check.png) · [세로](connect6-portrait-check.png) · [최대 인원](max-players/connect6-layout-check.png) | 2/2 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
-| [숫자 암호](davincicode-layout-check.png) · [세로](davincicode-portrait-check.png) · [최대 인원](max-players/davincicode-layout-check.png) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [다이아몬드](diamondgame-layout-check.png) · [세로](diamondgame-portrait-check.png) · [최대 인원](max-players/diamondgame-layout-check.png) | 2/3 | 진행·종료 | 검사 통과 | 격자·별 기하 검증 (이동 실플레이는 별도 미검증) |
-| [도블](dobble-layout-check.png) · [세로](dobble-portrait-check.png) · [최대 인원](max-players/dobble-layout-check.png) | 2/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [그림 릴레이](drawrelay-layout-check.png) · [세로](drawrelay-portrait-check.png) · [최대 인원](max-players/drawrelay-layout-check.png) | 4/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [탐사대](expedition-layout-check.png) · [세로](expedition-portrait-check.png) · [최대 인원](max-players/expedition-layout-check.png) | 3/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [과일 종](fruitbell-layout-check.png) · [세로](fruitbell-portrait-check.png) · [최대 인원](max-players/fruitbell-layout-check.png) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [보석 상단](gemguild-layout-check.png) · [세로](gemguild-portrait-check.png) · [최대 인원](max-players/gemguild-layout-check.png) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [하노이탑](hanoitower-layout-check.png) · [세로](hanoitower-portrait-check.png) · [최대 인원](max-players/hanoitower-layout-check.png) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [벌집 블록](honeycomb-layout-check.png) · [세로](honeycomb-portrait-check.png) · [최대 인원](max-players/honeycomb-layout-check.png) | 2/6 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
-| [장기](janggi-layout-check.png) · [세로](janggi-portrait-check.png) · [최대 인원](max-players/janggi-layout-check.png) | 2/2 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [왕국의 길](kingdom-trails-layout-check.png) · [세로](kingdom-trails-portrait-check.png) · [최대 인원](max-players/kingdom-trails-layout-check.png) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [라스트 카드](lastcard-layout-check.png) · [세로](lastcard-portrait-check.png) · [최대 인원](max-players/lastcard-layout-check.png) | 2/4 | 초기 플레이 | 검사 통과 | 카드 내기·뽑기, 중복 시계, 정리 |
-| [러브레터](loveletter-layout-check.png) · [세로](loveletter-portrait-check.png) · [최대 인원](max-players/loveletter-layout-check.png) | 3/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [님](nimgame-layout-check.png) · [세로](nimgame-portrait-check.png) · [최대 인원](max-players/nimgame-layout-check.png) | 2/2 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [노노그램](nonogram-layout-check.png) · [세로](nonogram-portrait-check.png) · [최대 인원](max-players/nonogram-layout-check.png) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [오목](omok-layout-check.png) · [세로](omok-portrait-check.png) · [최대 인원](max-players/omok-layout-check.png) | 2/2 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
-| [리버시](reversi-layout-check.png) · [세로](reversi-portrait-check.png) · [최대 인원](max-players/reversi-layout-check.png) | 2/2 | 초기 플레이 | 검사 통과 | 양면 뒤집기, 반복 렌더, 정리 |
-| [숫자 타일](rummikub-layout-check.png) · [세로](rummikub-portrait-check.png) · [최대 인원](max-players/rummikub-layout-check.png) | 2/4 | 초기 플레이 | 검사 통과 | 받침대→판 이동, 정리 |
-| [패턴 트리오](setgame-layout-check.png) · [세로](setgame-portrait-check.png) · [최대 인원](max-players/setgame-layout-check.png) | 1/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [슬라이딩 퍼즐](sliding-puzzle-layout-check.png) · [세로](sliding-puzzle-portrait-check.png) · [최대 인원](max-players/sliding-puzzle-layout-check.png) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [스핑크스](sphinx-layout-check.png) · [세로](sphinx-portrait-check.png) · [최대 인원](max-players/sphinx-layout-check.png) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
-| [트래버스](traverse-layout-check.png) · [세로](traverse-portrait-check.png) · [최대 인원](max-players/traverse-layout-check.png) | 2/4 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
+| [원정대 추리](avalon-layout-check.webp) · [세로](avalon-portrait-check.webp) · [최대 인원](max-players/avalon-layout-check.webp) | 5/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [바둑](baduk-layout-check.webp) · [세로](baduk-portrait-check.webp) · [최대 인원](max-players/baduk-layout-check.webp) | 2/2 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
+| [블로커스](blokus-layout-check.webp) · [세로](blokus-portrait-check.webp) · [최대 인원](max-players/blokus-layout-check.webp) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [77 폭탄](bomb77-layout-check.webp) · [세로](bomb77-portrait-check.webp) · [최대 인원](max-players/bomb77-layout-check.webp) | 2/8 | 초기 플레이 | 검사 통과 | 카드 내기·뽑기, 중복 시계, 정리 |
+| [체스](chess-layout-check.webp) · [세로](chess-portrait-check.webp) · [최대 인원](max-players/chess-layout-check.webp) | 2/2 | 진행·종료 | 검사 통과 | 일반·상대·포획·특수 이동, 중복 상태, 정리, 이동 감소 |
+| [경찰과 도둑](citychase-layout-check.webp) · [세로](citychase-portrait-check.webp) · [최대 인원](max-players/citychase-layout-check.webp) | 2/6 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [클루](clue-layout-check.webp) · [세로](clue-portrait-check.webp) · [최대 인원](max-players/clue-layout-check.webp) | 3/6 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [코드네임](codenames-layout-check.webp) · [세로](codenames-portrait-check.webp) · [최대 인원](max-players/codenames-layout-check.webp) | 4/5 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [동전 무게 찾기](coinweighing-layout-check.webp) · [세로](coinweighing-portrait-check.webp) · [최대 인원](max-players/coinweighing-layout-check.webp) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [육목](connect6-layout-check.webp) · [세로](connect6-portrait-check.webp) · [최대 인원](max-players/connect6-layout-check.webp) | 2/2 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
+| [숫자 암호](davincicode-layout-check.webp) · [세로](davincicode-portrait-check.webp) · [최대 인원](max-players/davincicode-layout-check.webp) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [다이아몬드](diamondgame-layout-check.webp) · [세로](diamondgame-portrait-check.webp) · [최대 인원](max-players/diamondgame-layout-check.webp) | 2/3 | 진행·종료 | 검사 통과 | 격자·별 기하 검증 (이동 실플레이는 별도 미검증) |
+| [도블](dobble-layout-check.webp) · [세로](dobble-portrait-check.webp) · [최대 인원](max-players/dobble-layout-check.webp) | 2/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [그림 릴레이](drawrelay-layout-check.webp) · [세로](drawrelay-portrait-check.webp) · [최대 인원](max-players/drawrelay-layout-check.webp) | 4/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [탐사대](expedition-layout-check.webp) · [세로](expedition-portrait-check.webp) · [최대 인원](max-players/expedition-layout-check.webp) | 3/8 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [과일 종](fruitbell-layout-check.webp) · [세로](fruitbell-portrait-check.webp) · [최대 인원](max-players/fruitbell-layout-check.webp) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [보석 상단](gemguild-layout-check.webp) · [세로](gemguild-portrait-check.webp) · [최대 인원](max-players/gemguild-layout-check.webp) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [하노이탑](hanoitower-layout-check.webp) · [세로](hanoitower-portrait-check.webp) · [최대 인원](max-players/hanoitower-layout-check.webp) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [벌집 블록](honeycomb-layout-check.webp) · [세로](honeycomb-portrait-check.webp) · [최대 인원](max-players/honeycomb-layout-check.webp) | 2/6 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
+| [장기](janggi-layout-check.webp) · [세로](janggi-portrait-check.webp) · [최대 인원](max-players/janggi-layout-check.webp) | 2/2 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [왕국의 길](kingdom-trails-layout-check.webp) · [세로](kingdom-trails-portrait-check.webp) · [최대 인원](max-players/kingdom-trails-layout-check.webp) | 2/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [라스트 카드](lastcard-layout-check.webp) · [세로](lastcard-portrait-check.webp) · [최대 인원](max-players/lastcard-layout-check.webp) | 2/4 | 초기 플레이 | 검사 통과 | 카드 내기·뽑기, 중복 시계, 정리 |
+| [러브레터](loveletter-layout-check.webp) · [세로](loveletter-portrait-check.webp) · [최대 인원](max-players/loveletter-layout-check.webp) | 3/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [님](nimgame-layout-check.webp) · [세로](nimgame-portrait-check.webp) · [최대 인원](max-players/nimgame-layout-check.webp) | 2/2 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [노노그램](nonogram-layout-check.webp) · [세로](nonogram-portrait-check.webp) · [최대 인원](max-players/nonogram-layout-check.webp) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [오목](omok-layout-check.webp) · [세로](omok-portrait-check.webp) · [최대 인원](max-players/omok-layout-check.webp) | 2/2 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
+| [리버시](reversi-layout-check.webp) · [세로](reversi-portrait-check.webp) · [최대 인원](max-players/reversi-layout-check.webp) | 2/2 | 초기 플레이 | 검사 통과 | 양면 뒤집기, 반복 렌더, 정리 |
+| [숫자 타일](rummikub-layout-check.webp) · [세로](rummikub-portrait-check.webp) · [최대 인원](max-players/rummikub-layout-check.webp) | 2/4 | 초기 플레이 | 검사 통과 | 받침대→판 이동, 정리 |
+| [패턴 트리오](setgame-layout-check.webp) · [세로](setgame-portrait-check.webp) · [최대 인원](max-players/setgame-layout-check.webp) | 1/4 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [슬라이딩 퍼즐](sliding-puzzle-layout-check.webp) · [세로](sliding-puzzle-portrait-check.webp) · [최대 인원](max-players/sliding-puzzle-layout-check.webp) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [스핑크스](sphinx-layout-check.webp) · [세로](sphinx-portrait-check.webp) · [최대 인원](max-players/sphinx-layout-check.webp) | 1인 | 초기 플레이 | 검사 통과 | 별도 동작 테스트 없음 |
+| [트래버스](traverse-layout-check.webp) · [세로](traverse-portrait-check.webp) · [최대 인원](max-players/traverse-layout-check.webp) | 2/4 | 진행·종료 | 검사 통과 | 별도 동작 테스트 없음 |
 
 ## 실행 및 결과
 

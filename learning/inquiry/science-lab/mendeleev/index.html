@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 멘델레예프의 원소 카드 배열</title><meta name="description" content="2022 교육과정 · 멘델레예프의 원소 카드 배열의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="cards.css?v=6a858bc217ed"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>멘델레예프의 원소 카드 배열</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험1</span></div></header><p class="intro">원자량과 화학적 성질로 원소를 배열해 보세요. 카드 구성이 다른 두 활동을 비교할 수 있습니다.</p>
+<div class="tabs card-decks" role="group" aria-label="원소 카드 활동"><button type="button" data-deck="classic" aria-pressed="true">빈칸 원소 예측 · 19장</button><button type="button" data-deck="identity" aria-pressed="false">성질로 원소 찾기 · 17장</button></div>
+<div id="classicExperiment"><section class="experiment-layout"><h2>원소 카드 배열하기</h2><p class="instruction">카드를 고르고 놓을 칸을 누르세요. 배치한 카드를 고르면 다시 옮기거나 다른 카드와 자리를 바꿀 수 있습니다. 원자량은 왼쪽에서 오른쪽, 위에서 아래로 커지게 하고, 성질이 비슷한 원소는 같은 세로줄에 놓아 보세요.</p><div id="elementBoard" class="element-board" role="group" aria-label="원소 카드 배열판, 세 줄 일곱 칸"></div><div class="toolbar"><button id="checkArrangement" class="primary">배열 확인</button><button id="removeElement" disabled>선택 카드 꺼내기</button><button id="resetExperiment">처음부터</button></div><p id="arrangementStatus" class="status" aria-live="polite">카드의 화학식과 반응성을 비교해 보세요.</p><section id="selectedElement" class="selected-element" aria-live="polite"></section><div class="toolbar"><h3 id="poolCount"></h3><button id="sortCards" aria-pressed="false">남은 카드 원자량순</button></div><div id="elementPool" class="element-pool" role="group" aria-label="아직 배치하지 않은 카드"></div><p class="model-note">카드의 원자량과 물질의 성질을 함께 비교하세요.</p></section></div>
+<section id="identityExperiment" class="experiment-layout" hidden>
+ <h2>성질에서 원소를 찾아 배열하기</h2>
+ <p class="instruction">카드를 골라 주요 화합물과 원자량으로 원소 기호를 확인하세요. 확인한 카드를 배열판에 놓고, 비슷한 성질의 원소는 같은 세로줄로 묶어 보세요.</p>
+ <div class="identity-header"><h3 id="identityCount"></h3><button id="identitySort" type="button" aria-pressed="false">남은 카드 원자량순</button></div>
+ <div id="identityPool" class="element-pool" role="group" aria-label="성질을 확인할 원소 카드"></div>
+ <section id="identityDetail" class="selected-element" aria-live="polite"></section>
+ <form id="identityForm" hidden><label>원소 기호 <select id="identitySymbol" required></select></label><button type="submit" class="primary">기호 확인</button></form>
+ <div id="identityBoard" class="element-board" role="group" aria-label="수소 한 칸과 아래 세 줄의 원소 카드 배열판"></div>
+ <div class="toolbar"><button id="identityCheck" class="primary" type="button">배열 확인</button><button id="identityRemove" type="button" disabled>선택 카드 꺼내기</button><button id="identityReset" type="button">처음부터</button></div>
+ <p id="identityStatus" class="status" aria-live="polite">기호를 확인한 카드를 배열판에 놓으세요.</p>
+ <button id="compareModern" type="button" aria-expanded="false" aria-controls="modernComparison">현대 주기율표와 비교</button>
+ <section id="modernComparison" class="modern-comparison" hidden><h3>현대 주기율표 · 수소부터 칼슘까지</h3>
+  <p>카드 배열은 원자량과 성질을 비교했습니다. 현대 주기율표는 <b>원자번호</b> 순서로 배열합니다. 아래 작은 숫자가 원자번호입니다.</p>
+  <div id="modernElements" class="modern-elements" role="group" aria-label="원자번호 1번부터 20번까지의 현대 주기율표 일부"></div>
+  <p>초록 칸의 He·Ne·Ar는 17장 카드에 없던 18족 원소입니다. 수소는 1족 위치에 표시하지만 알칼리 금속은 아닙니다.</p>
+  <p class="model-note">현대 주기율표의 처음 20개 원소만 표시합니다. 칼슘 뒤의 원소와 3~12족은 이 비교에서 생략했습니다.</p>
+ </section>
+ <p class="model-note">카드에 적힌 반응성과 화학식을 함께 살펴 같은 세로줄의 원소를 찾아보세요.</p>
+</section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="c">
+<h3>Na는 Na₂O·NaCl, Mg는 MgO·MgCl₂, K는 K₂O·KCl을 만든다. 결합 비율이 반복되는 세로줄로 묶을 두 원소는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> Na와 Mg</label>
+<label><input type="radio" name="q1" value="b"> Mg와 K</label>
+<label><input type="radio" name="q1" value="c"> Na와 K</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>산화물과 염화물의 결합 비율이 같은 Na와 K를 같은 세로줄에 놓을 수 있습니다. 원자량이 같아서 묶는 것은 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>원자량 순서와 성질의 반복에 맞추어 배열하니 빈칸이 남았다. 미발견 원소의 자리인지 검토할 때 가장 유용한 자료는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 같은 세로줄 원소의 화합물 조성</label>
+<label><input type="radio" name="q2" value="b"> 바로 앞 원소 기호의 글자 수</label>
+<label><input type="radio" name="q2" value="c"> 같은 가로줄 원소의 발견 연도</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 세로줄에서 반복되는 화합물 조성과 다른 성질을 이용해 미지 원소의 성질을 예측하고 새 원소의 관찰 자료와 대조할 수 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>원자량이 증가하는 한 가로줄에서 40과 75 사이에 빈칸이 있다. 후보 A·B·C의 원자량은 각각 35·70·80이다. 순서만으로 남는 후보는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> A</label>
+<label><input type="radio" name="q3" value="b"> B</label>
+<label><input type="radio" name="q3" value="c"> C</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>40보다 크고 75보다 작은 원자량은 70입니다. 이것은 후보를 줄이는 조건이며 같은 세로줄의 화학적 성질도 확인해야 합니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>SiO₂·SiH₄를 만드는 Si와 XO₂·XH₄를 만드는 X 사이의 빈칸에 미지 원소 ㉠을 놓습니다. 예상 화학식으로 알맞은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> ㉠O₂·㉠H₄</label>
+<label><input type="radio" name="q4" value="b"> ㉠₂O·㉠Cl</label>
+<label><input type="radio" name="q4" value="c"> ㉠O·㉠Cl₂</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 세로줄에서 나타나는 결합 비율을 근거로 산화물은 ㉠O₂, 수소와의 화합물은 ㉠H₄로 예측합니다. 임의 기호 ㉠은 아직 이름을 정하지 않은 원소를 뜻합니다.</p>
+</article></details></main><script src="model.js?v=03530c06623c"></script><script src="app.js?v=f00d29be3b7e"></script><script src="identity-model.js?v=689344c002c3"></script><script src="identity.js?v=6438abd82113"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

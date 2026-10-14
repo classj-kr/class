@@ -6,7 +6,7 @@
     'use strict';
     var NS = 'http://www.w3.org/2000/svg';
     var layer, body, jar, phaseText, summary, autoButton, lastTime = 0;
-    var streams = [], travel = 0, previousPhase = '', previousFocus;
+    var streams = [], travel = 0, previousPhase = '', previousFocus, previousSchool = '';
     var blue = '#79d9f2', gold = '#f7c76b';
 
     function el(name, attrs, parent) {
@@ -24,7 +24,7 @@
         var dot = el('circle', { r: 3, fill: color }, g);
         var t = el('text', { x: x, y: y, fill: color, 'text-anchor': side === 'left' ? 'start' : 'end' }, g);
         t.textContent = text;
-        var c = { line: line, dot: dot, x: x, y: y, side: side };
+        var c = { line: line, dot: dot, text: t, x: x, y: y, side: side };
         return c;
     }
     function pointLabel(c, x, y) {
@@ -67,7 +67,7 @@
         return stream;
     }
     function buildBody() {
-        var svg = makeFigure('body', '몸속의 호흡 운동', '갈비뼈와 횡격막이 움직이면 폐의 크기가 바뀝니다.');
+        var svg = makeFigure('body', '몸속의 호흡 운동', '갈비뼈와 가로막이 움직이면 폐의 크기가 바뀝니다.');
         var chest = path(svg, '', { fill: '#132e40', stroke: '#5a8193', 'stroke-width': 2 });
         var lungs = el('g', { fill: 'url(#breath-body-lung)', stroke: '#f9c5cf', 'stroke-width': 1.8 }, svg);
         var left = path(lungs, '', {}), right = path(lungs, '', {});
@@ -198,13 +198,22 @@
         var phase = s.running ? s.phase : 'paused';
         layer.dataset.phase = phase;
         layer.dataset.position = s.position.toFixed(2);
-        if (previousPhase !== phase) {
+        var school = window.SchoolLevel?.value || 'middle';
+        if (previousPhase !== phase || previousSchool !== school) {
             previousPhase = phase;
+            previousSchool = school;
             phaseText.textContent = phase === 'in' ? '들숨 · 공기가 들어오는 중' : phase === 'out' ? '날숨 · 공기가 나가는 중' :
                 phase === 'paused' ? '일시정지 · 움직임 관찰' : '공기 흐름 없음';
             summary.innerHTML = phase === 'in' ? '<span>횡격막 <b>수축 · 하강</b></span><span>흉강 부피 <b>증가</b></span><span>폐 속 압력 <b>대기압보다 낮음</b></span>' :
                 phase === 'out' ? '<span>횡격막 <b>이완 · 상승</b></span><span>흉강 부피 <b>감소</b></span><span>폐 속 압력 <b>대기압보다 높음</b></span>' :
                 '<span>' + (phase === 'paused' ? '현재 위치에서 멈췄습니다. 자동 호흡으로 움직임을 이어서 관찰하세요.' : '움직임이 멎으면 폐 속 압력은 대기압과 같아집니다.') + '</span>';
+            if (school === 'elementary') summary.innerHTML = phase === 'in'
+                ? '<span>가로막이 <b>내려갑니다</b></span><span>폐가 <b>커집니다</b></span><span>공기가 <b>들어옵니다</b></span>'
+                : phase === 'out' ? '<span>가로막이 <b>올라갑니다</b></span><span>폐가 <b>작아집니다</b></span><span>공기가 <b>나갑니다</b></span>'
+                : '<span>들이쉬기·내쉬기를 눌러 폐와 풍선의 크기를 비교하세요.</span>';
+            body.chestLabel.text.textContent = school === 'elementary' ? '가슴 속 공간' : '흉강';
+            body.diaphragmLabel.text.textContent = '가로막';
+            layer.querySelector('.breath-correspondence').innerHTML = '<span><i class="lung-key"></i>풍선 ↔ 폐</span><span><i class="membrane-key"></i>고무막 ↔ 가로막</span><span><i class="space-key"></i>종 안의 공간 ↔ ' + (school === 'elementary' ? '가슴 속 공간' : '흉강') + '</span>';
         }
         autoButton.setAttribute('aria-pressed', s.automatic ? 'true' : 'false');
         autoButton.textContent = s.automatic ? '자동 호흡 중' : '자동 호흡';

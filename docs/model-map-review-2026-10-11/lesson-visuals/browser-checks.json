@@ -1,0 +1,837 @@
+{
+  "layout": [
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-zodiac / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-zodiac / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-zodiac / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-north-sky / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-north-sky / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-north-sky / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-motion / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-motion / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-motion / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-celestial-sphere / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-properties / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-properties / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-stellar-life / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-earth-motion / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-earth-motion / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-earth-motion / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-sun-path / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-sun-path / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-sun-path / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-eclipses / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-eclipses / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-digestion / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-digestion / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-digestion / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-circulation / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-circulation / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-circulation / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-respiration / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-respiration / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-respiration / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-excretion / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-excretion / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-excretion / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-nervous / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-nervous / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-homeostasis / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-homeostasis / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-immune / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-skeleton / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-states / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-states / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-states / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-phase / elementary",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-phase / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-phase / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-gas / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-gas / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-atom / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-atom / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-orbital / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-config / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-bond / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-classify / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-classify / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-reaction / middle",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-reaction / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-solution / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-equilibrium / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-acid / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-redox / high",
+      "width": 740
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-zodiac / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-zodiac / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-zodiac / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-north-sky / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-north-sky / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-north-sky / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-motion / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-motion / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-motion / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-celestial-sphere / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-properties / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-star-properties / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-stellar-life / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-earth-motion / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-earth-motion / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-earth-motion / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-sun-path / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-sun-path / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-sun-path / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-eclipses / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "space-eclipses / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-digestion / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-digestion / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-digestion / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-circulation / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-circulation / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-circulation / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-respiration / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-respiration / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-respiration / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-excretion / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-excretion / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-excretion / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-nervous / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-nervous / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-homeostasis / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-homeostasis / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-immune / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "body-skeleton / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-states / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-states / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-states / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-phase / elementary",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-phase / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-phase / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-gas / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-gas / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-atom / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-atom / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-orbital / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-config / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-bond / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-classify / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-classify / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-reaction / middle",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-reaction / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-solution / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-equilibrium / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-acid / high",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "overflow": [],
+      "topic": "matter-redox / high",
+      "width": 320
+    }
+  ],
+  "threeColumnRechecks": [
+    {
+      "overflow": [],
+      "topic": "body-skeleton / elementary",
+      "width": 740
+    },
+    {
+      "overflow": [],
+      "topic": "matter-states / elementary",
+      "width": 740
+    },
+    {
+      "overflow": [],
+      "topic": "matter-states / middle",
+      "width": 740
+    },
+    {
+      "overflow": [],
+      "topic": "matter-states / high",
+      "width": 740
+    },
+    {
+      "overflow": [],
+      "topic": "matter-classify / middle",
+      "width": 740
+    },
+    {
+      "overflow": [],
+      "topic": "matter-classify / high",
+      "width": 740
+    },
+    {
+      "overflow": [],
+      "topic": "body-skeleton / elementary",
+      "width": 320
+    },
+    {
+      "overflow": [],
+      "topic": "matter-states / elementary",
+      "width": 320
+    },
+    {
+      "overflow": [],
+      "topic": "matter-states / middle",
+      "width": 320
+    },
+    {
+      "overflow": [],
+      "topic": "matter-states / high",
+      "width": 320
+    },
+    {
+      "overflow": [],
+      "topic": "matter-classify / middle",
+      "width": 320
+    },
+    {
+      "overflow": [],
+      "topic": "matter-classify / high",
+      "width": 320
+    }
+  ],
+  "bodyDialogs": [
+    {
+      "figures": 2,
+      "heading": "구조와 기능",
+      "open": true,
+      "overflow": false,
+      "url": "http://127.0.0.1:8876/learning/inquiry/human-body/digestion/?school=elementary"
+    },
+    {
+      "figures": 2,
+      "heading": "구조와 기능",
+      "open": true,
+      "overflow": false,
+      "url": "http://127.0.0.1:8876/learning/inquiry/human-body/excretion/?school=middle"
+    },
+    {
+      "figures": 2,
+      "heading": "구조와 기능",
+      "open": true,
+      "overflow": false,
+      "url": "http://127.0.0.1:8876/learning/inquiry/human-body/respiration/?school=middle"
+    },
+    {
+      "figures": 2,
+      "heading": "구조와 기능",
+      "open": true,
+      "overflow": false,
+      "url": "http://127.0.0.1:8876/learning/inquiry/human-body/nervous/?school=high"
+    },
+    {
+      "figures": 2,
+      "heading": "구조와 기능",
+      "open": true,
+      "overflow": false,
+      "url": "http://127.0.0.1:8876/learning/inquiry/human-body/homeostasis/?school=high"
+    },
+    {
+      "figures": 2,
+      "heading": "구조와 기능",
+      "open": true,
+      "overflow": false,
+      "url": "http://127.0.0.1:8876/learning/inquiry/human-body/immune/?school=high"
+    },
+    {
+      "figures": 1,
+      "heading": "구조와 기능",
+      "open": true,
+      "overflow": false,
+      "url": "http://127.0.0.1:8876/learning/inquiry/human-body/skeleton/?school=elementary"
+    }
+  ]
+}

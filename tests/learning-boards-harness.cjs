@@ -1,15 +1,18 @@
 const express = require('../game-hub-server/node_modules/express');
 const { PGlite } = require('../game-hub-server/node_modules/@electric-sql/pglite');
 const { createLearningBoards } = require('../game-hub-server/learning-boards');
+const { createRoomCodes } = require('../game-hub-server/room-codes');
+const { createRoomEntry } = require('../game-hub-server/room-entry');
 const path = require('node:path');
+const { createAccessGate } = require('./classroom-site-access-harness.cjs');
 
 class HttpError extends Error {
   constructor(status, code, message) { super(message); this.status = status; this.code = code; }
 }
 
-async function createHarness() {
+async function createHarness({ studentSiteAccess = false, now = Date.now } = {}) {
   const db = new PGlite();
-  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2);');
+  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2),(3),(4),(5);');
   // PGlite has one connection: lease it for a whole transaction, as pg.Pool does.
   let tail = Promise.resolve();
   async function lease() {
@@ -28,22 +31,35 @@ async function createHarness() {
   };
   const sessionUser = async req => {
     const match = /(?:^|;\s*)test_teacher=(1|2)(?:;|$)/.exec(req.headers.cookie || '');
-    return match ? { id: Number(match[1]), role: 'teacher' } : null;
+    if (match) return { id: Number(match[1]), role: 'teacher', name: '선생님' };
+    const student = /(?:^|;\s*)test_student=(3|4|5)(?:;|$)/.exec(req.headers.cookie || '');
+    return student ? { id: Number(student[1]), role: 'student', name: `학생${student[1]}` } : null;
   };
   const failures = new Map();
-  const feature = createLearningBoards({ pool, sessionUser,
-    requireTeacher: async req => { const user = await sessionUser(req); if (!user) throw new HttpError(401, 'AUTH_REQUIRED', '선생님 로그인이 필요해요.'); return user; },
+  const roomCodes = createRoomCodes({ pool, legacyTaken: async (code, client) =>
+    (await client.query('SELECT 1 FROM learning_boards WHERE code=$1', [code])).rows.length > 0 });
+  await roomCodes.initialize();
+  const feature = createLearningBoards({ pool, sessionUser, now,
+    async joinIdentity(req, user) {
+      if (user) return { name: user.name, number: user.role === 'student' ? 7 : undefined };
+      return /(?:^|;\s*)test_guest=1(?:;|$)/.test(req.headers.cookie || '') ? { name: '게스트' } : null;
+    },
+    allocateRoomCode: client => roomCodes.allocate('board', client),
+    requireTeacher: async req => { const user = await sessionUser(req); if (user?.role !== 'teacher') throw new HttpError(401, 'AUTH_REQUIRED', '선생님 로그인이 필요해요.'); return user; },
     requireDatabase() {}, HttpError, asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res)).catch(next),
     failureLimiter: { enforce(req) { if ((failures.get(req.ip) || 0) >= 30) throw new HttpError(429, 'RATE_LIMIT', '잠시 후 다시 시도해 주세요.'); }, recordFailure(req) { failures.set(req.ip, (failures.get(req.ip) || 0) + 1); } }
   });
   await feature.initialize();
   await feature.initialize(); // repeat boot is safe
   const app = express(); app.use(express.json({ limit: '32kb' }));
+  if (studentSiteAccess) app.use(['/room', '/api/room-entry'], createAccessGate());
+  app.use('/api/room-entry', createRoomEntry({ roomCodes }));
   app.use('/api/boards', feature.router);
   app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
+  app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise(resolve => { const instance = app.listen(0, '127.0.0.1', () => resolve(instance)); });
-  return { db, pool, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise(resolve => server.close(resolve)); await db.close(); } };
+  return { app, db, pool, roomCodes, initialize: feature.initialize, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise(resolve => server.close(resolve)); await db.close(); } };
 }
 module.exports = { createHarness };
 

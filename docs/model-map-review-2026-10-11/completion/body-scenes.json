@@ -1,0 +1,432 @@
+[
+  {
+    "topic": "circulation",
+    "scene": "blood",
+    "active": "🩸 1. 혈액의 구성 (원심분리)",
+    "modelButtons": [
+      {
+        "id": "wbc",
+        "label": "백혈구 (가장 크다·핵 있다)"
+      },
+      {
+        "id": "rbc",
+        "label": "적혈구 (핵 없다)"
+      },
+      {
+        "id": "platelet",
+        "label": "혈소판 (가장 작다)"
+      },
+      {
+        "id": "",
+        "label": "백혈구 (가장 크다·핵 있다)"
+      },
+      {
+        "id": "",
+        "label": "적혈구 (핵 없다)"
+      },
+      {
+        "id": "",
+        "label": "혈소판 (가장 작다)"
+      }
+    ],
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "circulation",
+    "scene": "heart",
+    "active": "🫀 2. 심장과 순환 경로",
+    "modelButtons": [
+      {
+        "id": "bodyCapillaries",
+        "label": "온몸 (모세혈관)"
+      },
+      {
+        "id": "lungs",
+        "label": "폐 (허파)"
+      },
+      {
+        "id": "vesselVenaCava",
+        "label": "대정맥"
+      },
+      {
+        "id": "vesselAorta",
+        "label": "대동맥"
+      },
+      {
+        "id": "vesselPulmonaryArtery",
+        "label": "폐동맥"
+      },
+      {
+        "id": "vesselPulmonaryVein",
+        "label": "폐정맥"
+      },
+      {
+        "id": "rightAtrium",
+        "label": "우심방"
+      },
+      {
+        "id": "leftAtrium",
+        "label": "좌심방"
+      },
+      {
+        "id": "rightVentricle",
+        "label": "우심실"
+      },
+      {
+        "id": "leftVentricle",
+        "label": "좌심실"
+      },
+      {
+        "id": "septum",
+        "label": "심실 사이막"
+      },
+      {
+        "id": "valveTricuspid",
+        "label": "삼첨판"
+      },
+      {
+        "id": "valveMitral",
+        "label": "이첨판"
+      },
+      {
+        "id": "valvePulmonary",
+        "label": "폐동맥판"
+      },
+      {
+        "id": "valveAortic",
+        "label": "대동맥판"
+      },
+      {
+        "id": "",
+        "label": "우심방"
+      },
+      {
+        "id": "",
+        "label": "우심실"
+      },
+      {
+        "id": "",
+        "label": "좌심방"
+      },
+      {
+        "id": "",
+        "label": "좌심실"
+      },
+      {
+        "id": "",
+        "label": "심실 사이막"
+      },
+      {
+        "id": "",
+        "label": "삼첨판"
+      },
+      {
+        "id": "",
+        "label": "이첨판"
+      },
+      {
+        "id": "",
+        "label": "폐동맥판"
+      },
+      {
+        "id": "",
+        "label": "대동맥판"
+      },
+      {
+        "id": "",
+        "label": "대정맥"
+      },
+      {
+        "id": "",
+        "label": "폐동맥"
+      },
+      {
+        "id": "",
+        "label": "폐정맥"
+      },
+      {
+        "id": "",
+        "label": "대동맥"
+      },
+      {
+        "id": "",
+        "label": "폐 (허파)"
+      },
+      {
+        "id": "",
+        "label": "온몸 (모세혈관)"
+      }
+    ],
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "respiration",
+    "scene": "alveoli",
+    "active": "🫁 1. 폐포 기체 교환 (확산)",
+    "modelButtons": [
+      {
+        "id": "bronchiole",
+        "label": "세기관지"
+      },
+      {
+        "id": "alveolusCluster",
+        "label": "폐포 송이 — 수억 개"
+      },
+      {
+        "id": "capillaryNet",
+        "label": "모세혈관 그물"
+      },
+      {
+        "id": "alveolus",
+        "label": "폐포"
+      },
+      {
+        "id": "alveolusWall",
+        "label": "폐포 벽 (한 겹)"
+      },
+      {
+        "id": "capillary",
+        "label": "모세혈관"
+      },
+      {
+        "id": "bloodIn",
+        "label": "들어오는 피 — 산소 적음"
+      },
+      {
+        "id": "bloodOut",
+        "label": "나가는 피 — 산소 많음"
+      },
+      {
+        "id": "",
+        "label": "세기관지"
+      },
+      {
+        "id": "",
+        "label": "폐포 송이 — 수억 개"
+      },
+      {
+        "id": "",
+        "label": "모세혈관 그물"
+      },
+      {
+        "id": "",
+        "label": "폐포"
+      },
+      {
+        "id": "",
+        "label": "폐포 벽 (한 겹)"
+      },
+      {
+        "id": "",
+        "label": "모세혈관"
+      },
+      {
+        "id": "",
+        "label": "들어오는 피 — 산소 적음"
+      },
+      {
+        "id": "",
+        "label": "나가는 피 — 산소 많음"
+      }
+    ],
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "respiration",
+    "scene": "twoplaces",
+    "active": "🔁 2. 기체 교환 두 곳 (폐와 조직)",
+    "modelButtons": [
+      {
+        "id": "alveolus",
+        "label": "폐포"
+      },
+      {
+        "id": "lungCapillary",
+        "label": "폐 모세혈관"
+      },
+      {
+        "id": "arteryToBody",
+        "label": "산소가 많은 피 (동맥혈)"
+      },
+      {
+        "id": "veinToLung",
+        "label": "산소가 적은 피 (정맥혈)"
+      },
+      {
+        "id": "tissueCell",
+        "label": "온몸 세포"
+      },
+      {
+        "id": "tissueCapillary",
+        "label": "조직 모세혈관"
+      },
+      {
+        "id": "",
+        "label": "폐포"
+      },
+      {
+        "id": "",
+        "label": "폐 모세혈관"
+      },
+      {
+        "id": "",
+        "label": "산소가 많은 피 (동맥혈)"
+      },
+      {
+        "id": "",
+        "label": "산소가 적은 피 (정맥혈)"
+      },
+      {
+        "id": "",
+        "label": "온몸 세포"
+      },
+      {
+        "id": "",
+        "label": "조직 모세혈관"
+      }
+    ],
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "respiration",
+    "scene": "breath",
+    "active": "3. 호흡 운동과 종 모형",
+    "modelButtons": [],
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "excretion",
+    "scene": "torso",
+    "active": "👤 1. 전신 배설계 (콩팥·오줌관·방광)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "excretion",
+    "scene": "urine",
+    "active": "🚰 2. 오줌이 만들어져 나가는 길",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "excretion",
+    "scene": "nephron",
+    "active": "💧 3. 여과·재흡수·분비 (네프론)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "nervous",
+    "scene": "brain",
+    "active": "🧠 1. 뇌의 구조와 기능",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "nervous",
+    "scene": "response",
+    "active": "🎯 2. 반사의 중추 (어디서 처리하나)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "nervous",
+    "scene": "autonomic",
+    "active": "⚖️ 3. 자율신경계 길항 작용",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "nervous",
+    "scene": "reflex",
+    "active": "🔁 4. 반사궁 — 자극에서 반응까지",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "nervous",
+    "scene": "sensory",
+    "active": "👁️ 5. 감각 기관 (눈)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "nervous",
+    "scene": "ear",
+    "active": "👂 6. 감각 기관 (귀)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "nervous",
+    "scene": "pupil",
+    "active": "🔦 7. 동공 반사 (홍채 근육)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "homeostasis",
+    "scene": "skin",
+    "active": "🧴 1. 피부에서 일어나는 일",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "homeostasis",
+    "scene": "glucose",
+    "active": "🍯 2. 혈당 조절 (인슐린·글루카곤)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "immune",
+    "scene": "defense",
+    "active": "🛡️ 1. 몸의 방어 작용 (항원에서 항체까지)",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "immune",
+    "scene": "graph",
+    "active": "📈 2. 1차·2차 반응 그래프",
+    "overflow": false,
+    "svgErrors": 0
+  },
+  {
+    "topic": "skeleton",
+    "scene": "joint",
+    "level": "elementary",
+    "singleScene": true,
+    "active": "🦾 1. 관절과 길항근 (거시)",
+    "overflow": false
+  },
+  {
+    "topic": "digestion",
+    "scene": "torso",
+    "active": "👤 1. 전신 소화관 해부도",
+    "overflow": false
+  },
+  {
+    "topic": "digestion",
+    "scene": "stomach",
+    "active": "🫀 2. 위 내부 소화 (펩신·염산)",
+    "overflow": false
+  },
+  {
+    "topic": "digestion",
+    "scene": "villi",
+    "active": "🌱 3. 소장 융털 흡수",
+    "overflow": false
+  },
+  {
+    "topic": "digestion",
+    "scene": "lab",
+    "active": "🧪 4. 영양소 검출 실험",
+    "overflow": false
+  }
+]

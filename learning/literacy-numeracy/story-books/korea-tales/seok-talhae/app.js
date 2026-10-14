@@ -840,7 +840,6 @@ const AFTERWORD = {
 const WORDS_KO = {
     "cover": [
         { w: "궤", k: "물건을 넣어 두는 나무 상자.", s: "탈해는 궤를 풀고 나왔다 해서 붙은 이름이라고 전해져요." },
-        { w: "번갈아", k: "차례를 바꾸어 가며.", s: "박씨, 석씨, 김씨 세 집안이 번갈아 임금을 냈어요." },
         { w: "학자", k: "한 가지를 깊이 공부하는 사람.", s: "그렇게 기억한 것으로 보는 학자들이 많지요." }
     ],
     "01-sea.webp": [
@@ -877,6 +876,7 @@ const WORDS_KO = {
     ],
     "06-grow.webp": [
         { w: "깁다", k: "해진 데를 꿰매어 고치다.", s: "탈해는 자라면서 고기를 잡고 그물을 깁고 나무를 했어요." },
+        { w: "나무하다", k: "불 땔 나뭇가지를 산에서 베어 모으다.", s: "탈해는 자라면서 고기를 잡고 그물을 깁고 나무를 했어요." },
         { w: "등잔", k: "기름을 태워 불을 켜던 그릇.", s: "등잔 기름이 아까워 마당에서 달빛에 책을 읽기도 했답니다." },
         { w: "야무지다", k: "하는 일이 빈틈없고 단단하다.", s: "저 아이는 손도 야무진데 머리도 좋구나." },
         { w: "혀를 내두르다", k: "몹시 놀라 감탄하다.", s: "마을 사람들이 저마다 혀를 내둘렀습니다." },
@@ -889,6 +889,7 @@ const WORDS_KO = {
     ],
     "08-house.webp": [
         { w: "번듯하다", k: "반듯하고 훤칠하다.", s: "기와가 번듯하고 담이 높은 집이었지요." },
+        { w: "기와", k: "흙을 구워 지붕에 덮는 넓적한 조각.", s: "기와가 번듯하고 담이 높은 집이었지요." },
         { w: "서성이다", k: "한자리에서 왔다 갔다 하다.", s: "탈해는 며칠을 두고 그 집 앞을 서성였어요." },
         { w: "꾀를 내다", k: "좋은 수를 생각해 내다.", s: "그러다 그만 꾀를 하나 내고 말았지요." },
         { w: "뒤척이다", k: "잠 못 들고 몸을 이리저리 굴리다.", s: "그날 밤 탈해는 뒤척이며 잠을 이루지 못했어요." }
@@ -904,10 +905,10 @@ const WORDS_KO = {
     "10-court.webp": [
         { w: "증명하다", k: "사실임을 밝혀 보이다.", s: "무엇으로 증명하겠느냐?" },
         { w: "대장장이", k: "쇠를 두들겨 연장을 만드는 사람.", s: "저희 조상은 대장장이였습니다." },
-        { w: "갸웃하다", k: "고개를 조금 기울이다.", s: "관리가 고개를 갸웃했답니다." },
         { w: "포졸", k: "옛날에 죄인을 잡던 군사.", s: "포졸들이 삽을 들고 담 밑을 파냈어요." },
-        { w: "질리다", k: "놀라 얼굴빛이 하얗게 변하다.", s: "호공의 얼굴이 하얗게 질렸습니다." },
-        { w: "도리", k: "할 수 있는 방법.", s: "호공은 억울해도 어쩔 도리가 없었답니다." }
+        { w: "도리", k: "할 수 있는 방법.", s: "호공은 억울해도 어쩔 도리가 없었답니다." },
+        { w: "번갈아", k: "차례를 바꾸어 가며.", s: "관리가 두 사람을 번갈아 보며 물었어요." },
+        { w: "관리", k: "나라의 일을 맡아보던 사람.", s: "관리가 두 사람을 번갈아 보며 물었어요." }
     ],
     "11-return.webp": [
         { w: "보따리", k: "물건을 싸서 꾸린 꾸러미.", s: "마당에 보따리가 여기저기 널브러져 있었습니다." },
@@ -1205,7 +1206,7 @@ function paint() {
 
     // 읽는 중일 때만 문단을 눌러 그 자리로 옮긴다.
     // 그냥 눌렀다고 소리가 나면 곤란하니, 스피커 단추를 누른 뒤에만 먹는다.
-    if (canRead()) {
+    if (LANG === 'en' && CAN_SPEAK) {
         spreadEl.querySelectorAll('[data-say]').forEach(el => {
             el.addEventListener('click', () => {
                 if (!reading) return;
@@ -1315,7 +1316,7 @@ const textOf = p => (typeof p === 'string' ? p : p.t);
 
 /* 읽기 단추 — 표지·펼침면·읽고 나서에 똑같이 붙는다. 영어일 때만 나온다. */
 function readBtnHtml() {
-    return canRead()
+    return (LANG === 'en' && CAN_SPEAK)
         ? `<button type="button" class="read-btn" id="readBtn">${reading ? '■' : '▶'}</button>`
         : '';
 }
@@ -1383,7 +1384,6 @@ function stopReading() {
     if (typeof spreadEl !== 'undefined' && spreadEl) spreadEl.classList.remove('is-reading');
     readToken++;
     if (CAN_SPEAK) { try { speechSynthesis.cancel(); } catch (e) {} }
-    stopKoAudio();
     document.querySelectorAll('.saying').forEach(el => el.classList.remove('saying'));
     const b = document.getElementById('readBtn');
     if (b) b.textContent = '▶';
@@ -1391,7 +1391,6 @@ function stopReading() {
 
 function readPage(from) {
     const page = PAGES[current];
-    if (LANG === 'ko') { readPageKo(from); return; }
     if (!CAN_SPEAK || !page) return;
     const parts = pageParts(page);
     if (!parts.length) return;
@@ -1421,106 +1420,6 @@ function readPage(from) {
         try { speechSynthesis.speak(u); } catch (e) { stopReading(); }
     };
     step(Math.max(0, Math.min(from | 0, parts.length - 1)));
-}
-
-/* ── 우리말 읽어 주기 ──────────────────────────────────────────
-   기기에 든 한국어 목소리는 쓸 만한 것이 없어서, 우리말은 미리 만들어 둔 소리를 튼다.
-   audio/ko.json 에 쪽마다 소리 파일과 문단 시작 시각이 적혀 있다(_tools/say-build.py).
-   영어와 같은 단추·같은 표시를 쓴다. 파일이 없는 책에는 단추가 안 생긴다. */
-const KO_AUDIO_V = '0';
-let KO_AUDIO = null;
-let koAudio = null;
-let koAudioKey = '';
-
-if (typeof fetch === 'function') {
-    fetch(`audio/ko.json?v=${KO_AUDIO_V}`)
-        .then(r => (r && r.ok && typeof r.json === 'function') ? r.json() : null)
-        .then(j => {
-            if (!j || !j.pages) return;
-            KO_AUDIO = j;
-            if (LANG === 'ko' && !reading && typeof paint === 'function') paint();
-        })
-        .catch(() => {});
-}
-
-function koPageKey(page) {
-    if (!page) return '';
-    if (page.kind === 'spread') return page.beat.art;
-    if (page.kind === 'cover') return 'cover';
-    if (page.kind === 'after') return 'after:' + (page.spread.art || String(PAGES.indexOf(page)));
-    return '';
-}
-
-function koAudioFor(page) {
-    if (!KO_AUDIO) return null;
-    return KO_AUDIO.pages[koPageKey(page)] || null;
-}
-
-function canRead() {
-    if (LANG === 'en') return CAN_SPEAK;
-    return !!koAudioFor(PAGES[current]);
-}
-
-function stopKoAudio() {
-    if (!koAudio) return;
-    try { koAudio.pause(); } catch (e) {}
-    koAudio.removeAttribute('src');
-    koAudio = null;
-    koAudioKey = '';
-}
-
-function readPageKo(from) {
-    const page = PAGES[current];
-    const entry = koAudioFor(page);
-    if (!entry || typeof Audio === 'undefined') return;
-    const cues = entry.c;
-    const start = Math.max(0, Math.min(from | 0, cues.length - 1));
-    const key = koPageKey(page);
-
-    const mark = (i) => {
-        document.querySelectorAll('.saying').forEach(el => el.classList.remove('saying'));
-        const here = document.querySelector(`[data-say="${i}"]`);
-        if (here) {
-            here.classList.add('saying');
-            here.scrollIntoView({ block: 'nearest' });
-        }
-    };
-
-    // 같은 쪽을 읽는 중이면 그 자리로 건너뛰기만 한다.
-    if (reading && koAudio && koAudioKey === key) {
-        koAudio.currentTime = cues[start];
-        mark(start);
-        return;
-    }
-
-    stopReading();
-    reading = true;
-    if (spreadEl) spreadEl.classList.add('is-reading');
-    const mine = ++readToken;
-    const btn = document.getElementById('readBtn');
-    if (btn) btn.textContent = '■';
-
-    const a = new Audio(`audio/ko/${entry.f}`);
-    a.preload = 'auto';
-    koAudio = a;
-    koAudioKey = key;
-    let cur = -1;
-    a.addEventListener('timeupdate', () => {
-        if (mine !== readToken) return;
-        const t = a.currentTime;
-        let i = 0;
-        while (i + 1 < cues.length && t >= cues[i + 1] - 0.05) i++;
-        if (i !== cur) { cur = i; mark(i); }
-    });
-    a.addEventListener('ended', () => { if (mine === readToken) stopReading(); });
-    a.addEventListener('error', () => { if (mine === readToken) stopReading(); });
-    a.addEventListener('loadedmetadata', () => {
-        if (mine !== readToken) return;
-        if (start > 0) a.currentTime = cues[start];
-        a.play().catch(() => { if (mine === readToken) stopReading(); });
-    });
-    mark(start);
-    a.load();
 }
 
 /* ── 단어장 ────────────────────────────────────────────────────

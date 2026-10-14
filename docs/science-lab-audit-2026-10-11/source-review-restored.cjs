@@ -1,0 +1,31 @@
+module.exports=[
+ ['764c91a83f8bf462',[27,28,31,70,75,77],['mendeleev'],'멘델레예프 원소 카드 19개의 원자량·화학식·반응성을 이용한 배열과 빈칸 예측','27~28쪽 절차·정리와 75·77쪽 카드 원문 및 그림, 평가 31쪽 07·08번 및 70쪽 해설 대조. 활동용 수치·임의 기호를 유지하고 자유 서술 대신 배열 조작·객관식 추론 제공. 정렬과 세로줄 화학적 유사성을 각각 검사'],
+ ['ee3ee343af97cac2',[21,22,79],['mendeleev'],'원소의 성질로 기호를 찾는 카드와 역사적/현대 주기율표 비교','해당 쪽 텍스트 대조. 천재 17장과 미래엔 19장은 카드 구성이 다르므로 전자를 구현 완료로 간주하지 않음. 현재 미래엔 카드 배열만 제공'],
+ ['43ac53e9e01adbcc',[5,6],['newton-prism'],'슬릿·분산·선택한 단색광 재통과·반원 모양 유리·스크린 위치를 바꾸는 합성','PDF 두 쪽의 원문과 장치 그림을 직접 확인. 첫 프리즘은 스넬 법칙과 경계 교점을 독립 검사. 합성은 이상 모형이며 정량 측정 주장은 하지 않음'],
+ ['ee3ee343af97cac2',[47,48,49],['newton-prism'],'빛 분해·물을 담은 둥근 컵으로 빛 모으기·빨강만 두 번째 프리즘에 통과','세 쪽 절차와 48쪽 물컵 장치 그림 대조. 같은 세 탐구의 도구 변형으로 묶고 독립 실험 수를 추가하지 않음. 컵의 빛 모으기는 이상 모형'],
+ ['764c91a83f8bf462',[45,46,65,71],['newton-prism'],'백열전구·볼록 렌즈, 평가 07번의 RGB LED 스펙트럼 비교','45~46쪽 절차, 46·65쪽 장치 그림 및 71쪽 07번 해설 대조. 광원 선택과 렌즈 변형 및 새 객관식 문항 반영. 세 슬릿·고정 두 번째 프리즘의 동일 입사 조건 비교는 현재 미구현으로 명시. 08번 해설의 같은/다른 경로 문구는 모순되어 그대로 복제하지 않음'],
+ ['43ac53e9e01adbcc',[8,9,10],['pasteur'],'역사적 배양액 실험의 공기 출입·먼지 유입·목 절단·기울임. 교과서 재연의 우유 100 mL와 4일 관찰은 구별','PDF 33쪽 그림과 34~35쪽 절차 대조. 역사적 배양액 모형만 구현했으며 우유 실물 재연은 완료로 세지 않음'],
+ ['98fd4b1d24cbec64',[11,12,17,18],['infection-prevention'],'같은 세기로 두 번 분무·50 cm 간격·새 도화지, 접촉 놀이 네 차례, 같은 시간 30초 물/비누 세척·형광 로션','텍스트와 분무·손 씻기 원문 그림 대조. 접촉은 한 차례 한 사람 한 번으로 단순화. 실측 수치나 감염 진단으로 제공하지 않음'],
+ ['7ef50ee5847f660e',[17,18],['infection-prevention'],'형광 로션·자외선 관찰의 비누 손 씻기 전후 비교','두 쪽 텍스트 절차 대조. 미래엔의 같은 시간 물/비누 비교와 같은 목적의 활동으로 묶되 천재에는 물 세척 대조가 명시되지 않은 차이를 기록. 손 씻기 여섯 동작의 수행은 구현 완료로 판정하지 않음'],
+ ['6ed679a59c21c7a0',[116,139,160],['infection-prevention'],'평가자료의 침방울·접촉 경로와 정답 해설','형성평가 본문·정답·해설을 읽고 접촉 경로를 묻는 객관식과 새 경로 전이 문항을 새로 작성'],
+ ['c645186ae5280481',[175,182,184,190,192,193],['infection-prevention'],'동일한 30초 동안 물/비누 세척 뒤 남은 형광 로션 비교','평가자료의 심화 문항과 채점 기준 대조. 로션 제거 관찰을 실제 미생물 전멸로 확대 해석하는 오답을 구분']
+];
+// Bounded review of these pages, not approval of all textbook content.
+for(const r of [...require('../../scripts/science-physics-experiments.cjs'),...require('../../scripts/science-chemistry-experiments.cjs')])module.exports.push([
+ r.source.id,r.source.pages,[r.slug],r.current,
+ '해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. '+r.boundary
+]);
+for(const r of require('../../scripts/science-inquiry-experiments.cjs')){
+ module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 교과서 쪽의 절차·도식과 새 모형·객관식의 적용 범위를 대조했다. 장치·분자 방향·가계도·핵형 그림은 gap-source-pages의 WebP로 확인했다. '+r.boundary]);
+ for(const a of r.additionalSources||[])module.exports.push([a.id,a.pages,[r.slug],a.part,'지정 PDF 쪽의 절차와 장치 그림을 ride-source-pages의 WebP로 확인했다. 가상 측정 구현이며 현장 센서 수집 완료는 아니다.']);
+ for(const a of r.assessmentSources||[])module.exports.push([a.id,a.pages||(a.id==='35ddba87be4c287d'?[66,67,68,69]:[45,72,112,132]),[r.slug],a.part,a.id==='a97d3120332ca071'?'PDF 1·3·4·5쪽 문항·그림·해설을 WebP로 대조했다. 축의 부호와 가속도 크기를 구별하고 수치·조건을 바꾼 새 문항을 작성했다.':'HWP의 문항·해설 텍스트를 읽고 개념 구별과 오답 피드백에 반영했다. 원문 그림 전체의 육안 대조나 문항 복제를 주장하지 않는다.']);
+}
+for(const r of require('../../scripts/science-evidence-experiments.cjs')){
+ module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 원문 표·그림·절차를 WebP로 대조했다. 수치 표와 그림에서 읽은 근삿값을 구분한다. '+r.boundary]);
+ for(const a of r.assessmentSources||[])module.exports.push([a.id,a.pages,[r.slug],a.part,'HWP 문항 해설의 지정 문단을 읽고 수치·판단 조건을 바꾼 새 문항과 선택지별 오개념 피드백에 반영했다. 도식 전체의 복제나 문항 전수 검토는 아님.']);
+}
+for(const r of require('../../scripts/science-structure-experiments.cjs')){
+ module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 교과서 본문·활동 절차를 대조했다. structure-source-pages에 보존한 DNA·단백질 부록, 막 단면, 활동 계수와 연료 표 그림도 확인했다. '+r.boundary]);
+ for(const a of r.assessmentSources||[])module.exports.push([a.id,a.pages,[r.slug],a.part,'지정 문단의 문제·해설 개념을 대조하고 새 조건의 문항을 작성했다. 추출 과정에서 빠진 수식·그림은 추정하여 복원하지 않았다.']);
+}
+for(const r of require('../../scripts/science-sensor-experiments.cjs'))module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'동아 2022 원문의 MCU·센서 연결, 광학 맥파 1분 수집, 같은 위치의 소음 5분 비교, 스마트 화분의 수분 센서·릴레이·펌프 그림과 절차를 확인했다. 센서 모형의 수치 가정과 실제 현장 측정은 구별한다. '+r.boundary]);

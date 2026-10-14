@@ -1,0 +1,29 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.0873ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.8478ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1103ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (62.856ms)
+chromium: 137 apps / 548 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (17267.3941ms)
+webkit: 137 apps / 548 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (21801.795ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (9.4742ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4915.7546ms)
+✔ published data retain numeric rows and outliers; regression does not prescribe exponent (0.6553ms)
+✔ cluster fitting preserves inverted magnitude axis mathematics and selected-point residuals (0.1957ms)
+✔ habitable distances scale with luminosity square root, with radius and temperature distinct (0.1019ms)
+✔ centrifuge uses two-axis mass balance and time-dependent radial sedimentation (0.4602ms)
+✔ atom construction supports both six-compound pathways and rejects impossible valence (1.3685ms)
+✔ chromium: evidence selection, graph changes, all atom pathways, assessment and mobile (8909.2506ms)
+✔ webkit: evidence selection, graph changes, all atom pathways, assessment and mobile (20623.3293ms)
+159 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (131.7028ms)
+✔ every science lab JavaScript file parses (79.9161ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8956ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39254.0333

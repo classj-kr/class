@@ -8,7 +8,7 @@
         <aside class="sl-explanation"><p data-sl-description></p><dl><dt>에너지와 중심부</dt><dd data-sl-energy></dd><dt>관찰할 변화</dt><dd data-sl-change></dd></dl><div class="sl-remnant" hidden><span>마지막 잔해 비교</span><div role="group" aria-label="큰 질량 별의 마지막 잔해"><button type="button" data-sl-remnant="neutron" aria-pressed="true">중성자별</button><button type="button" data-sl-remnant="black-hole" aria-pressed="false">블랙홀</button></div><small>남은 중심핵의 질량 등에 따라 달라지는 대표 경로입니다.</small></div></aside></div>
         <div class="sl-player"><button type="button" data-sl-play>일시정지</button><button type="button" data-sl-reset>처음부터</button><input type="range" min="0" max="1" step=".001" value="0" aria-label="별의 진화 과정" data-sl-progress><label>재생 속도 <select data-sl-speed><option value="0.5">0.5배</option><option value="1" selected>1배</option><option value="2">2배</option></select></label></div>
         <div class="sl-stages" role="group" aria-label="진화 단계로 이동"></div>
-        <p class="sl-note">단계를 비교하도록 시간을 압축했습니다. 재생 시간과 그림의 크기는 실제 수명·크기 비율이 아닙니다.</p>`;
+`;
         const canvas=pane.querySelector('canvas'),ctx=canvas.getContext('2d');
         const progress=pane.querySelector('[data-sl-progress]'),play=pane.querySelector('[data-sl-play]');
         const content=document.createElement('div');content.className='sl-content';

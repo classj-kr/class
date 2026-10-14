@@ -9,13 +9,30 @@ const key = "classj:textbook:" + id + ":v1";
 const store = await SiteStorage.open("computer-literacy");
 store.adopt([{ localKey: key, item: key }]);
 const questions = [data.labCheck, ...data.apply.fields, ...data.checks];
-const fresh = () => ({version:1, labUsed:false, answers:questions.map(() => ({selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
+const fresh = () => ({version:1, answers:questions.map(q => ({revision:q.revision||1, selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
 let progress = fresh();
+let questionsChanged = false;
+let previousEdition = false;
 try {
  const saved = store.get(key) ?? null;
  if (saved?.version === 1 && Array.isArray(saved.answers) && saved.answers.length === questions.length) {
-  progress.labUsed = saved.labUsed === true;
-  progress.answers = saved.answers.map((a,i) => ({
+  // Preserve earlier student writing without displaying it or using it to block answers.
+  progress.investigation = saved.investigation;
+  questionsChanged = saved.answers.some((a,i)=>(a?.revision||1)!==(questions[i].revision||1));
+  if(questionsChanged){
+   const choiceArchiveKey=key+":before-choice-review-20261011";
+   if(!store.has(choiceArchiveKey))store.set(choiceArchiveKey,JSON.parse(JSON.stringify(saved)));
+   const archiveKey=key+":before-review-20261010";
+   if(!store.has(archiveKey))store.set(archiveKey,JSON.parse(JSON.stringify(saved)));
+   previousEdition=true;
+  }
+  if(questionsChanged&&saved.investigation?.revision!==2){
+   const archiveKey=key+":before-teaching-20261009";
+   if(!store.has(archiveKey))store.set(archiveKey,JSON.parse(JSON.stringify(saved)));
+   previousEdition=true;
+  }
+  progress.answers = saved.answers.map((a,i) => (a?.revision||1)!==(questions[i].revision||1) ? fresh().answers[i] : ({
+   revision:questions[i].revision||1,
    selected: Number.isInteger(a?.selected) && a.selected >= 0 && a.selected < questions[i].options.length ? a.selected : null,
    attempts: Number.isInteger(a?.attempts) && a.attempts > 0 ? a.attempts : 0,
    solved: a?.solved === true && a.attempts > 0,
@@ -68,10 +85,21 @@ function bilingual(text) {
 }
 const reading=node("article","edition-reading");
 reading.append(node("h2","",data.case));
-const analogyType={b01:"workshop",e04:"bookmark"}[id];
-if(analogyType)window.COMPUTER_PICTURE_ANALOGIES?.render(reading,analogyType);
-else window.COMPUTER_LIFE_FIGURES?.render(reading,id);
-data.body.forEach((text,index)=>{if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));const p=node("p");p.append(bilingual(text));reading.append(p);});
+if(data.goal)reading.append(node("p","study-goal",data.goal));
+if(previousEdition)reading.append(node("p","edition-note","문항이 개정되었습니다. 이전 답 기록은 보관했으며, 바뀐 문항은 다시 풀 수 있습니다."));
+data.body.forEach((text,index)=>{
+ if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));
+ const p=node("p");p.append(bilingual(text));reading.append(p);
+ // 첫 개념 설명에 이어 비유와 실제 개념의 대응 관계를 함께 읽는다.
+ if(index===1)window.COMPUTER_EXPLANATIONS?.render(reading,id);
+});
+if(data.worked){
+ const example=node("section","study-worked");example.append(node("h3","",data.worked.title));
+ const table=node("table","study-table");const caption=node("caption","",data.worked.title);table.append(caption);
+ const head=node("thead"),row=node("tr");data.worked.headers.forEach(text=>{const th=node("th","",text);th.scope="col";row.append(th);});head.append(row);table.append(head);
+ const body=node("tbody");data.worked.rows.forEach(values=>{const tr=node("tr");values.forEach(text=>tr.append(node("td","",text)));body.append(tr);});table.append(body);
+ example.append(table,node("p","",data.worked.explanation));reading.append(example);
+}
 const glossary=node("dl","edition-glossary");
 data.terms.forEach(([ko,en,definition])=>{
  const row=node("div"); const dt=node("dt","",ko);dt.append(node("span","",en));row.append(dt,node("dd","",definition));glossary.append(row);
@@ -82,28 +110,31 @@ function nextButton(page,target,text){
  const wrap=node("div","edition-page-end");const button=node("button","",text);button.type="button";button.addEventListener("click",()=>location.hash=target);wrap.append(button);page.append(wrap);
 }
 nextButton(pages.read,"lab","실습으로");
-pages.lab.append(node("h2","","실습"),node("p","edition-task",data.lab));
+pages.lab.append(node("h2","","실습"));
+if(data.labSteps?.length){
+ const steps=node("ol","study-steps");
+ data.labSteps.forEach(text=>steps.append(node("li","",text)));
+ pages.lab.append(steps);
+}else pages.lab.append(node("p","edition-task",data.lab));
 const lab=node("div","edition-lab");lab.id="editionLab";
 ["conceptParts","conceptVisual","conceptDiagram"].forEach(name=>{
  const existing=document.getElementById(name);
  if(existing?.childNodes.length)lab.append(existing);
 });
 if(id==="g01")buildBinaryLab(lab);
+window.COMPUTER_TEACHING_LABS?.mount(id,lab);
 pages.lab.append(lab);
 const labNote=node("p","edition-note","화면 속 기기와 기록은 실습 모형입니다. 실습 조작 상태는 다시 열면 초기화되고, 답 확인 기록은 "+(store.persistent?"내 계정에 저장됩니다.":"로그인했을 때만 저장됩니다."));
 pages.lab.append(labNote);
 if(!store.persistent){notice.hidden=false;notice.textContent="로그인하지 않아 답 확인 기록이 남지 않습니다. 실습과 답 확인은 계속할 수 있습니다.";}
-const recordLab=event=>{
- if(!event.target.closest("button,input,select,[role=button],[draggable=true],canvas"))return;
- if(!progress.labUsed){progress.labUsed=true;save();}
-};
-["click","input","change","pointerup","keydown"].forEach(event=>lab.addEventListener(event,recordLab));
 pages.apply.append(node("h2","","새 상황에 적용하기"),node("p","edition-scenario",data.apply.scenario));
+if(data.apply.rows.length){
 const table=node("table","edition-evidence");
 const caption=node("caption","","상황 기록");table.append(caption);
 const tbody=node("tbody");
 data.apply.rows.forEach(([label,evidence])=>{const tr=node("tr");const th=node("th","",label);th.scope="row";tr.append(th,node("td","",evidence));tbody.append(tr);});
 table.append(tbody);pages.apply.append(table);
+}
 pages.check.append(node("h2","","확인 문제"));
 const feedbacks=[];
 function orderFor(index,length){
@@ -134,7 +165,6 @@ function question(q,index,parent,label){
   event.preventDefault();
   const a=progress.answers[index];
   if(a.selected===null){feedback.textContent="답을 하나 선택하세요.";return;}
-  if(index===0&&!progress.labUsed){feedback.textContent="위 실습에서 조건을 바꾸거나 실행한 뒤 답을 확인하세요.";return;}
   const correct=a.selected===q.answer;
   if(a.attempts===0)a.firstCorrect=correct;
   a.attempts++;
@@ -167,7 +197,7 @@ const next=(window.COMPUTER_LESSON_INDEX||[])[index+1];
 const link=node("a","edition-next",next?"다음 차시 →":"차시 목록 →");link.href=next?"?lesson="+next.id:"../";footer.append(link);
 pages.check.append(footer);
 function completedGroups(){
- return [progress.labUsed&&progress.answers[0].solved,progress.answers.slice(1,3).every(a=>a.solved),progress.answers.slice(3).every(a=>a.solved)];
+ return [progress.answers[0].solved,progress.answers.slice(1,3).every(a=>a.solved),progress.answers.slice(3).every(a=>a.solved)];
 }
 function save(){
  progress.completed=completedGroups().every(Boolean);
@@ -231,4 +261,5 @@ function buildBinaryLab(mount){
 
 window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
 update();show(location.hash.slice(1));
+if(questionsChanged)save();
 })();

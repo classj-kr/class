@@ -21,7 +21,7 @@ export async function installAtlasLayers(map, onPick) {
       if(!response.ok)throw Error('지도 자료를 불러오지 못했습니다.');
       const json=await response.json();
       if(id==='climate') {
-        map.addSource('atlas-climate',{type:'raster',tiles:[new URL('climate-tiles/{z}/{x}/{y}.png',BASE).href.replaceAll('%7B','{').replaceAll('%7D','}')+'?v=20261001-climate-palette'],tileSize:json.tiles.tileSize,minzoom:0,maxzoom:json.tiles.maxzoom,attribution:'Peel et al. (2007) · CC BY-NC-SA 2.5'});
+        map.addSource('atlas-climate',{type:'raster',tiles:[new URL('climate-tiles/{z}/{x}/{y}.webp',BASE).href.replaceAll('%7B','{').replaceAll('%7D','}')+'?v=20261011-webp'],tileSize:json.tiles.tileSize,minzoom:0,maxzoom:json.tiles.maxzoom,attribution:'Peel et al. (2007) · CC BY-NC-SA 2.5'});
         map.addLayer({id:'atlas-climate-fill',type:'raster',source:'atlas-climate',layout:{visibility:'none'},paint:{'raster-opacity':.7,'raster-resampling':'linear','raster-fade-duration':0}},before);
       } else map.getSource(id==='density'?'atlas-countries':'atlas-plates').setData(json);
     })().catch(error=>{cached.delete(id);throw error;}));

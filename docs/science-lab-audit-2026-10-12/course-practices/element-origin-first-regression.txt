@@ -1,0 +1,61 @@
+✔ two source tables stay separate, total 100%, distinguish unlisted from zero (7.8842ms)
+✖ chromium: composition, conserved nuclei, touch, first errors and responsive labels (4153.5035ms)
+✖ webkit: composition, conserved nuclei, touch, first errors and responsive labels (6862.5578ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11092.5436
+
+✖ failing tests:
+
+test at tests\science-element-origin.test.cjs:6:43
+✖ chromium: composition, conserved nuclei, touch, first errors and responsive labels (4153.5035ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /35%p|시료 질량/. Input:
+  
+  '자료 A에서 지구 전체의 산소 질량비는 30%, 사람은 65%이다. 각각 200 g에 포함된 산소 질량의 차이(사람−지구)는?\n' +
+    '130 g\n' +
+    '60 g\n' +
+    '70 g\n' +
+    '35 g\n' +
+    '정답 확인\n' +
+    '\n' +
+    '다시 생각하고 다른 답을 골라보세요.'
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-element-origin.test.cjs:11:328)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '자료 A에서 지구 전체의 산소 질량비는 30%, 사람은 65%이다. 각각 200 g에 포함된 산소 질량의 차이(사람−지구)는?\n130 g\n60 g\n70 g\n35 g\n정답 확인\n\n다시 생각하고 다른 답을 골라보세요.',
+    expected: /35%p|시료 질량/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\science-element-origin.test.cjs:6:43
+✖ webkit: composition, conserved nuclei, touch, first errors and responsive labels (6862.5578ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /35%p|시료 질량/. Input:
+  
+  '자료 A에서 지구 전체의 산소 질량비는 30%, 사람은 65%이다. 각각 200 g에 포함된 산소 질량의 차이(사람−지구)는?\n' +
+    '130 g\n' +
+    '60 g\n' +
+    '70 g\n' +
+    '35 g\n' +
+    '정답 확인\n' +
+    '\n' +
+    '다시 생각하고 다른 답을 골라보세요.'
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-element-origin.test.cjs:11:328)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '자료 A에서 지구 전체의 산소 질량비는 30%, 사람은 65%이다. 각각 200 g에 포함된 산소 질량의 차이(사람−지구)는?\n130 g\n60 g\n70 g\n35 g\n정답 확인\n\n다시 생각하고 다른 답을 골라보세요.',
+    expected: /35%p|시료 질량/,
+    operator: 'match',
+    diff: 'simple'
+  }

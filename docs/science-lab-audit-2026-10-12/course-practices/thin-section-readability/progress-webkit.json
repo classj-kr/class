@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T16:21:05.922Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "polarized-thin-sections",
+      "scenarios": 50
+    }
+  ],
+  "scenarios": 50,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "slug": "energy-heat",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__energyModel",
+      "methods": [
+        "MASS",
+        "G",
+        "analyse",
+        "at",
+        "freshSim",
+        "step",
+        "render",
+        "check",
+        "setHeight",
+        "setAngle",
+        "setMu",
+        "runToEnd",
+        "getSim",
+        "tick"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "little",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "half",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "most",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

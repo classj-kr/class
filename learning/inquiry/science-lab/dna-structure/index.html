@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) DNA 모형 조립과 구조 비교</title><meta name="description" content="2022 교육과정 · DNA 모형 조립과 구조 비교의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="dna.css?v=750aa213d702"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>DNA 모형 조립과 구조 비교</h1><div class="grade-tags"><span>고(선택)</span><span>세포와 물질대사</span></div></header><section class="dna-lab" id="dnaLab"><h2>뉴클레오타이드에서 이중나선까지</h2><p id="dnaIntro"></p><div class="dna-toolbar"><button id="checkPairs">염기쌍 확인</button><button id="twistDNA">나선 모형 만들기</button><button id="dnaFlat">펼쳐서 보기</button><button id="dnaRotate" aria-pressed="false" disabled>천천히 돌려 보기</button></div><div class="dna-workspace"><section class="dna-visual"><h3 id="dnaViewLabel">펼친 두 가닥</h3><svg id="dnaPlot" role="img" aria-label="당·인산 골격과 상보적 염기쌍으로 조립하는 DNA 모형"></svg><p class="dna-legend"><span><i class="dna-sugar"></i>당</span><span><i class="dna-phosphate"></i>인산</span><span>가운데 A·T·G·C: 염기</span></p><label for="dnaAngle">관찰 방향 <output id="dnaAngleValue">0°</output><input type="range" id="dnaAngle" min="0" max="360" step="1" value="0" disabled></label></section><section class="dna-assembly"><h3>상보적 가닥 조립</h3><p id="dnaAssemblyNote"></p><div id="dnaRows"></div></section></div><div id="structureReadout" class="dna-readout"></div><p id="structureStatus" class="dna-status" aria-live="polite"></p><div class="dna-toolbar"><button id="newSequence">같은 조성·다른 서열</button><button id="resetExperiment">처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>8문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>한 가닥이 5′–ACGTTA–3′이다. 마주 보는 가닥을 왼쪽부터 적은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 5′–TGCAAT–3′</label>
+<label><input type="radio" name="q1" value="b"> 3′–TGCAAT–5′</label>
+<label><input type="radio" name="q1" value="c"> 3′–ACGTTA–5′</label>
+<label><input type="radio" name="q1" value="d"> 3′–UGCAAU–5′</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>서열은 A–T, G–C가 마주 보고 두 가닥의 방향은 반대입니다. 따라서 3′–TGCAAT–5′입니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>DNA 20쌍 중 G–C가 12쌍이다. A–T는 수소 결합 2개, G–C는 3개일 때 총수는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 32개</label>
+<label><input type="radio" name="q2" value="b"> 40개</label>
+<label><input type="radio" name="q2" value="c"> 52개</label>
+<label><input type="radio" name="q2" value="d"> 60개</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>G–C 12쌍과 A–T 8쌍이므로 12×3+8×2=52개입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>DNA 모형에서 두 가닥 사이의 수소 결합만 끊었다. 유지되는 구조는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 각 가닥의 당–인산 골격</label>
+<label><input type="radio" name="q3" value="b"> 두 가닥 사이의 염기쌍</label>
+<label><input type="radio" name="q3" value="c"> 모든 뉴클레오타이드의 분리</label>
+<label><input type="radio" name="q3" value="d"> 각 가닥의 염기 제거</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>가닥 내부의 당–인산 공유 결합과 가닥 사이의 수소 결합은 다릅니다. 수소 결합만 끊으면 각 가닥의 골격은 유지됩니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>같은 방향으로 읽은 두 DNA의 한 가닥이 AAGC와 AGAC이다. 옳은 비교는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 염기 수 같음·서열 같음</label>
+<label><input type="radio" name="q4" value="b"> 염기 수 같음·서열 다름</label>
+<label><input type="radio" name="q4" value="c"> 염기 수 다름·서열 같음</label>
+<label><input type="radio" name="q4" value="d"> 염기 수 다름·서열 다름</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>두 서열은 A 두 개, G와 C 한 개씩이지만 순서가 다릅니다. 조성만으로 유전정보의 동일성을 판정할 수 없습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>DNA 12쌍 모형을 만들었다. 뉴클레오타이드 하나에 당·인산·염기가 하나씩 들어간다면 세 부품의 총수는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q5" value="a"> 당 12 · 인산 12 · 염기 12</label>
+<label><input type="radio" name="q5" value="b"> 당 24 · 인산 24 · 염기 12</label>
+<label><input type="radio" name="q5" value="c"> 당 24 · 인산 24 · 염기 24</label>
+<label><input type="radio" name="q5" value="d"> 당 12 · 인산 12 · 염기 24</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>12쌍에는 뉴클레오타이드가 24개 있습니다. 각 뉴클레오타이드의 당·인산·염기를 각각 세면 모두 24개입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>한 가닥에 위에서 아래로 A–G–T–C가 놓였다. 같은 높이에서 마주 보는 가닥을 위에서 아래로 쓴 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q6" value="a"> A–G–T–C</label>
+<label><input type="radio" name="q6" value="b"> T–C–A–G</label>
+<label><input type="radio" name="q6" value="c"> T–G–A–C</label>
+<label><input type="radio" name="q6" value="d"> U–C–A–G</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>A–T, G–C가 서로 짝을 이룹니다. 위아래 위치를 그대로 맞추면 T–C–A–G입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>모형을 만들 때 당·인산·염기의 연결 방식으로 알맞은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q7" value="a"> 바깥쪽 당–인산 반복 · 안쪽 염기쌍</label>
+<label><input type="radio" name="q7" value="b"> 바깥쪽 염기–인산 반복 · 안쪽 당쌍</label>
+<label><input type="radio" name="q7" value="c"> 바깥쪽 당–염기 반복 · 안쪽 인산쌍</label>
+<label><input type="radio" name="q7" value="d"> 바깥쪽 인산만 반복 · 안쪽 당–염기쌍</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>각 가닥 바깥쪽에서 당과 인산이 번갈아 이어지고, 안쪽에서 두 가닥의 염기가 짝을 이룹니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>두 DNA의 한 가닥을 같은 방향으로 읽으면 AAGC와 AGAC이다. 두 모형을 비교한 결과는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q8" value="a"> 종류별 개수 같음 · 배열 순서 같음</label>
+<label><input type="radio" name="q8" value="b"> 종류별 개수 다름 · 배열 순서 같음</label>
+<label><input type="radio" name="q8" value="c"> 종류별 개수 다름 · 배열 순서 다름</label>
+<label><input type="radio" name="q8" value="d"> 종류별 개수 같음 · 배열 순서 다름</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>두 서열은 A 2개, G 1개, C 1개로 조성은 같지만 위치 순서가 다릅니다. 같은 네 종류의 단위체로도 다양한 정보를 나타낼 수 있습니다.</p>
+</article></details></main><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../app-context.js?v=e709427ff17a"></script><script src="../structure-models.js?v=772f38432d49"></script><script src="dna.js?v=0db40f409a73"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

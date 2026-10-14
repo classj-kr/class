@@ -1,0 +1,291 @@
+{
+  "date": "2026-10-12",
+  "scope": "2022 회전 수조 원문 절차·평가 자료 대조와 정성 운동 모형",
+  "requiredExperimentTotal": null,
+  "sources": [
+    {
+      "sourceId": "5b0ce08b8c0b10eb",
+      "pages": [
+        32
+      ],
+      "basis": "동아 회전 원통의 가열·냉각·표면 표지와 정지/회전 비교",
+      "path": "references/textbooks/중고등/두클래스/고등/과학/지구시스템과학 (권오성)_2022/교과서/Ⅲ단원 교과서 PDF.pdf",
+      "sha256": "5b0ce08b8c0b10eba2391caa6039d7b93bfb21714123fd3d28247fcef47d82df",
+      "revisionEvidence": {
+        "kind": "explicit-2022-path"
+      },
+      "reviewedPagesOnly": true
+    },
+    {
+      "sourceId": "cdbacd1f7e6522b8",
+      "pages": [
+        121
+      ],
+      "difference": "천재: 약 5분 뒤 잉크를 넣고 회전 전후 비교",
+      "implementation": "관찰용 표지를 잉크로 바꾸는 선택과 회전 전후 비교에 반영; 실제 대기 시간 측정은 제외",
+      "path": "references/textbooks/중고등/T셀파/고등/과학/지구시스템과학(오필석)/교과서_지구시스템과학__f8588200cf.pdf",
+      "sha256": "cdbacd1f7e6522b8f51fb75d02bc06b4385b6dfdd97df5dcffe7a222efdb8e4d",
+      "revisionEvidence": {
+        "receipt": "references/textbooks/중고등/T셀파/고등/과학/지구시스템과학(오필석)/수집기록.json",
+        "source": {
+          "publisher": "T셀파",
+          "level": "고등",
+          "subject": "과학",
+          "title": "지구시스템과학(오필석)",
+          "url": "https://cdata.chunjae.co.kr/tsherpabigfile/popup/2022/H/EB2022JC3Etc_17_10O.zip"
+        }
+      },
+      "reviewedPagesOnly": true
+    },
+    {
+      "sourceId": "d41737876b631070",
+      "pages": [
+        113
+      ],
+      "difference": "미래엔: 잉크·송홧가루와 느린 회전/빠른 회전 비교",
+      "implementation": "표지 선택 및 회전 세기에 따른 대표 흐름 비교",
+      "path": "references/textbooks/중고등/미래엔/고등/과학/지구시스템과학 (김연귀)_2022/교과서/지구시스템과학 (김연귀)_2022_[지구시스템과학] 교과서.pdf",
+      "sha256": "d41737876b63107060412bc756c82674baaf32ebd95b842a1a2a3801695c41b7",
+      "revisionEvidence": {
+        "kind": "explicit-2022-path"
+      },
+      "reviewedPagesOnly": true
+    },
+    {
+      "sourceId": "d8e0d7966df3a400",
+      "pages": [
+        201,
+        314,
+        315
+      ],
+      "basis": "각 원통의 대응, 정지/회전 비교, 회전 세기별 흐름, 위도에 따른 전향력의 한계",
+      "path": "references/textbooks/중고등/T셀파/고등/과학/지구시스템과학(오필석)/지도서_지구시스템과학__d26ea957c0.pdf",
+      "sha256": "d8e0d7966df3a4000cb87c8a80ba84ba62d8d4d501229bfe5cdcdcceddad28df",
+      "revisionEvidence": {
+        "receipt": "references/textbooks/중고등/T셀파/고등/과학/지구시스템과학(오필석)/수집기록.json",
+        "source": {
+          "publisher": "T셀파",
+          "level": "고등",
+          "subject": "과학",
+          "title": "지구시스템과학(오필석)",
+          "url": "https://cdata.chunjae.co.kr/tsherpabigfile/popup/2022/H/EB2022JC3Etc_17_10O.zip"
+        }
+      },
+      "reviewedPagesOnly": true
+    }
+  ],
+  "supplementarySources": [
+    {
+      "url": "https://weathertank.mit.edu/links/projects/general-circulation-an-introduction/general-circulation-tank-hadley",
+      "basis": "냉각 쪽 침강과 바닥의 바깥쪽 흐름, 상층의 안쪽 흐름"
+    },
+    {
+      "url": "https://weathertank.mit.edu/links/projects/rossby-waves-introduction",
+      "basis": "깊이 차이를 가진 베타 평면 실험과 평평한 회전 원통 실험 구별"
+    }
+  ],
+  "implementation": {
+    "slug": "rotating-annulus",
+    "classification": {
+      "school": "high-elective",
+      "course": "지구시스템과학",
+      "domain": "강수 과정과 대기의 운동",
+      "standards": [
+        "12지시03-06"
+      ]
+    },
+    "controls": [
+      "물 채우기",
+      "얼음 유무",
+      "바깥쪽 가열 여부",
+      "수면 송홧가루·상층 잉크",
+      "회전 없음·느림·중간·빠름",
+      "관찰 시작·정지·한 단계",
+      "같은 온도 조건의 비회전 대조",
+      "옆면의 기본 순환 개념도"
+    ],
+    "model": "속도장의 수치해가 아니라 원문에서 확인한 대표 흐름을 재현하는 정성 운동 경로. 파동 개수·발달 시간은 표시용이고 측정값으로 제공하지 않음.",
+    "boundary": "교과서의 관찰 결과를 설명하는 정성 운동 모형이다. 유체 방정식의 수치해가 아니며 회전수·온도·발달 시간·파동 개수의 정량 예측을 제공하지 않는다. 화면은 수조와 함께 도는 좌표에서 안정화된 대표 흐름을 보여 준다. 잉크는 상층 흐름의 표지로 한정하며 확산·침강 전체를 재현하지 않는다. 평평한 수조에는 위도에 따른 전향력 변화가 없어 실제 대기 로스비파와 발생 원리가 같다고 판정하지 않는다. 현장 가열·유체 관찰은 별도이다."
+  },
+  "assessment": {
+    "base": [
+      {
+        "id": "rotating-annulus#q1",
+        "concept": "실험 장치와 지구의 대응",
+        "q": "안쪽 원통은 얼음물, 바깥쪽은 가열한 물이다. 중간 원통에서 흐름을 관찰한다. 안쪽→중간→바깥쪽의 대응은?",
+        "choices": [
+          "극 지역 → 중위도 → 열대 지역",
+          "열대 지역 → 중위도 → 극 지역",
+          "중위도 → 극 지역 → 열대 지역",
+          "극 지역 → 열대 지역 → 중위도"
+        ],
+        "answer": 0,
+        "why": "온도가 낮은 안쪽은 극 지역, 두 경계 사이의 물은 중위도, 온도가 높은 바깥쪽은 열대 지역에 대응합니다.",
+        "feedback": {
+          "b": "안팎의 온도 조건과 지구의 남북 온도 분포를 뒤집었습니다.",
+          "c": "중간 원통과 안쪽 원통의 온도·위치 대응을 혼동했습니다.",
+          "d": "중간의 관찰 영역과 바깥쪽 가열 영역을 혼동했습니다."
+        }
+      },
+      {
+        "id": "rotating-annulus#q2",
+        "concept": "회전의 효과를 분리한 비교",
+        "q": "회전하지 않을 때와 회전할 때 흐름이 달라지는지 조사한다. 나머지 조건은 같게 할 때 알맞은 두 실험은?",
+        "choices": [
+          "A 온도차 없음·정지 / B 온도차 있음·회전",
+          "A 온도차 있음·정지 / B 같은 온도차·회전",
+          "A 온도차 있음·회전 / B 온도차 없음·같은 회전",
+          "A 온도차 있음·정지 / B 같은 온도차·정지"
+        ],
+        "answer": 1,
+        "why": "안팎 온도차·물의 양·관찰 위치를 같게 두고 회전 여부만 바꿔야 회전 효과를 비교할 수 있습니다.",
+        "feedback": {
+          "a": "온도차와 회전을 함께 바꾸면 어느 조건 때문에 달라졌는지 분리하기 어렵습니다.",
+          "c": "회전이 같으므로 온도차의 효과를 비교하는 조건입니다.",
+          "d": "회전 여부가 같아 회전에 따른 차이를 비교하지 못합니다."
+        }
+      },
+      {
+        "id": "rotating-annulus#q3",
+        "concept": "표면과 바닥의 순환 방향",
+        "q": "수조가 정지한 상태에서 안쪽을 냉각하고 바깥쪽을 가열했다. 옆면에서 본 중간 원통 물의 대표 순환은?",
+        "choices": [
+          "표면 안→밖 · 바닥 안→밖",
+          "표면 밖→안 · 바닥 밖→안",
+          "표면 밖→안 · 바닥 안→밖",
+          "표면 안→밖 · 바닥 밖→안"
+        ],
+        "answer": 2,
+        "why": "차가운 안쪽 벽 부근의 물은 내려가 바닥을 따라 바깥쪽으로 흐르고, 바깥쪽에서 올라온 물은 표면을 따라 안쪽으로 흐릅니다.",
+        "feedback": {
+          "a": "표면과 바닥이 모두 같은 방향으로 계속 흐르는 순환으로 판단했습니다.",
+          "b": "표면의 움직임을 물속 모든 깊이의 움직임으로 일반화했습니다.",
+          "d": "차가운 쪽에서 내려가고 따뜻한 쪽에서 올라가는 방향을 뒤집었습니다."
+        }
+      },
+      {
+        "id": "rotating-annulus#q4",
+        "concept": "평평한 회전 수조의 한계",
+        "q": "수조의 굽이치는 흐름을 실제 중위도 편서풍 파동과 비교한다. 평평한 수조가 직접 재현하지 못한 조건은?",
+        "choices": [
+          "안팎의 온도 차에 의한 에너지 차이",
+          "따뜻한 쪽과 찬 쪽 사이의 물 이동",
+          "회전하는 좌표에서 나타나는 전향 효과",
+          "지구에서 위도에 따라 달라지는 전향력"
+        ],
+        "answer": 3,
+        "why": "회전 수조에는 회전에 의한 효과와 안팎 온도차가 있지만, 평평한 바닥에서 위도별 전향력 변화까지 재현하지 않습니다. 파동 모양이 비슷해도 발생 원리를 같다고 단정할 수 없습니다.",
+        "feedback": {
+          "a": "이 실험은 안쪽 냉각과 바깥쪽 가열로 온도 차를 실제 비교 조건에 포함합니다.",
+          "b": "표지의 움직임을 통해 안팎의 물 이동을 관찰하는 장치입니다.",
+          "c": "수조가 회전하므로 회전 좌표에서의 전향 효과 자체가 빠진 것은 아닙니다."
+        }
+      }
+    ],
+    "followups": [
+      {
+        "id": "rotating-annulus@control",
+        "topic": "다른 조건의 흐름 해석",
+        "question": "A에서는 온도차를 작게 하고 느리게 돌렸다. B에서는 온도차와 회전 세기를 모두 높여 굽이가 달라졌다. 회전 세기의 영향만 확인하려면?",
+        "choices": [
+          "A의 온도 조건에서 회전 세기만 높여 재관찰",
+          "A의 회전 조건에서 온도차만 높여 재관찰",
+          "A의 온도차와 회전 세기를 함께 낮춰 재관찰",
+          "B의 조건을 유지한 채 표지의 색만 바꿔 재관찰"
+        ],
+        "answer": 0,
+        "why": "회전 세기의 영향만 알아보려면 온도차를 A와 같게 유지하고 회전만 바꿉니다. 두 변인을 함께 바꾼 A·B 비교로는 원인을 분리할 수 없습니다.",
+        "checks": [
+          "rotating-annulus#q2"
+        ]
+      },
+      {
+        "id": "rotating-annulus@tracer",
+        "topic": "다른 조건의 흐름 해석",
+        "question": "수면에 띄운 송홧가루가 안쪽으로 이동했다. 이 관찰과 옆면의 물 순환을 함께 해석한 것은?",
+        "choices": [
+          "표면은 안쪽, 바닥은 바깥쪽으로 흐를 수 있다",
+          "표면과 바닥이 모두 안쪽으로 흐른다고 볼 수 있다",
+          "표면은 안쪽, 안쪽 벽에서는 물이 올라간다",
+          "표면은 안쪽, 바깥쪽 벽에서는 물이 내려간다"
+        ],
+        "answer": 0,
+        "why": "떠 있는 표지는 표면 흐름을 보여 줍니다. 안쪽에서 내려간 물이 바닥을 따라 바깥쪽으로 이동하므로 표면 표지 하나로 모든 깊이의 흐름을 판단할 수 없습니다.",
+        "checks": [
+          "rotating-annulus#q3"
+        ]
+      }
+    ],
+    "authorship": "수집 원문의 개념·통제 조건·한계를 토대로 새로 작성; 원문 문항 복제 아님"
+  },
+  "verification": {
+    "targeted": {
+      "log": "targeted-tests.log",
+      "passed": 9
+    },
+    "final": {
+      "log": "final-tests.log",
+      "passed": 14,
+      "engines": [
+        "Chromium",
+        "WebKit"
+      ],
+      "apps": 146,
+      "courseRoutes": 148,
+      "baseQuestionsPerEngine": 592
+    },
+    "viewports": [
+      1280,
+      820,
+      390,
+      320
+    ],
+    "screenshots": [
+      {
+        "file": "side-1280.webp",
+        "width": 1232,
+        "height": 1104,
+        "alpha": false,
+        "format": "lossless WebP",
+        "decoded": true
+      },
+      {
+        "file": "side-390.webp",
+        "width": 366,
+        "height": 1413,
+        "alpha": false,
+        "format": "lossless WebP",
+        "decoded": true
+      },
+      {
+        "file": "top-1280.webp",
+        "width": 1232,
+        "height": 898,
+        "alpha": false,
+        "format": "lossless WebP",
+        "decoded": true
+      },
+      {
+        "file": "top-390.webp",
+        "width": 366,
+        "height": 1779,
+        "alpha": false,
+        "format": "lossless WebP",
+        "decoded": true
+      }
+    ],
+    "visualReview": "위·옆면과 모바일 캡처 직접 검토; 옆면의 공통 개념도는 수평 흐름의 대조 화면과 구분",
+    "wholeTextbookCensusComplete": false,
+    "layoutFinal": {
+      "log": "layout-final-tests.log",
+      "passed": 4
+    }
+  },
+  "implementationHashes": {
+    "learning/inquiry/science-lab/annulus-model.js": "91c4778839583149e80ec65e164c40d6b4e9ec633e3358171c2a321ae187d194",
+    "learning/inquiry/science-lab/annulus-lab.js": "3146fe89e69b524b726e0de972148f4aaa806ef3aa5f646c7885275bacffd3ca",
+    "learning/inquiry/science-lab/annulus-lab.css": "f10fe50f2e6caa5a40359be94e2d929e094f654576795cb445af5d3d971e831b",
+    "scripts/science-annulus-experiment.cjs": "5e42798427c5abaed8cb8617a1e818bf14ea311bd5ba09255b0104b5ae9ba6f8",
+    "scripts/science-annulus-stage.cjs": "18971923ed7794413fd9e5ec786817f9d71a41d9d4e7072e84ffa72a1ed66036"
+  }
+}

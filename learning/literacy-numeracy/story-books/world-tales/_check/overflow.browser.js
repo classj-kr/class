@@ -31,7 +31,9 @@ async function overflowScan(books) {
         await w.document.fonts.ready;
         const res = {};
         for (const lang of ['ko', 'en']) {
-            if (w.eval('LANG') !== lang) w.eval('langBtn.click()');
+            // 기록 연결이 끝나기 전에는 책이 잠겨 말 바꾸기 단추가 꺼져 있다. 재는 동안만 켠다.
+            if (w.eval('LANG') !== lang) { w.eval('langBtn.disabled = false; langBtn.click()'); }
+            if (w.eval('LANG') !== lang) { res[lang] = '말을 바꾸지 못함'; continue; }
             const n = w.eval('PAGES.length');
             const bad = [];
             let cols = 0;
@@ -49,7 +51,7 @@ async function overflowScan(books) {
             }
             res[lang] = bad.length ? bad : 'ok (' + n + '쪽, 칸 ' + cols + ')';
         }
-        if (w.eval('LANG') !== 'ko') w.eval('langBtn.click()');
+        if (w.eval('LANG') !== 'ko') w.eval('langBtn.disabled = false; langBtn.click()');
         out[b] = res;
         f.remove();
     }

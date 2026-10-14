@@ -31,16 +31,6 @@
             key.dataset.midi = String(midi);
             key.dataset.sfx = "none";
             key.setAttribute("aria-label", noteLabel(midi));
-            const label = document.createElement("span");
-            label.className = "key-label";
-            label.setAttribute("aria-hidden", "true");
-            label.textContent = noteLabel(midi).split(" ")[0];
-            if (midi % 12 === 0) {
-                const octave = document.createElement("small");
-                octave.textContent = "C" + (Math.floor(midi / 12) - 1);
-                label.append(octave);
-            }
-            key.append(label);
             key.append(markLayer());
             whiteRow.append(key);
             keys.set(midi, key);
@@ -157,9 +147,10 @@
     }
 
     function noteLabel(midi) {
-        const names = ["도", "도♯", "레", "레♯", "미", "파", "파♯", "솔", "솔♯", "라", "라♯", "시"];
+        // Accessible names identify absolute pitches, never key-dependent solfege.
+        const names = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"];
         const semitone = ((midi % 12) + 12) % 12;
-        return names[semitone] + " " + (Math.floor(midi / 12) - 1) + "옥타브";
+        return names[semitone] + (Math.floor(midi / 12) - 1);
     }
 
     window.Keyboard = { build: build };

@@ -1,0 +1,132 @@
+{
+  "emulationOnly": true,
+  "scope": "Seven rewritten observation questions in their apparatus context, with retained first-error interpretation and loaded fonts. Capture generation does not itself assert manual visual review.",
+  "captures": [
+    {
+      "engine": "chromium",
+      "slug": "state-change",
+      "question": "젖은 빨래가 마르는 증발과 냄비 속 물이 끓는 현상에 공통으로 일어나는 변화는?",
+      "firstChoice": "물의 표면과 내부에서 기포가 생긴다",
+      "firstChoiceFeedback": "물속의 기포는 끓음의 특징입니다. 상온에서 마르는 빨래에서도 같은 기포가 생기는 것은 아닙니다.",
+      "file": "core-choice-final/chromium-state-change-0-768.webp",
+      "sha256": "eb4a71809c364e4236a57cafe99bd52c3a588cd77e8d9286361c1046974af5fe"
+    },
+    {
+      "engine": "chromium",
+      "slug": "state-change",
+      "question": "새지 않는 유리컵에 파란색 물과 얼음을 넣었더니 컵 바깥에 무색 물방울이 맺혔습니다. 바깥 물방울이 되기 전 물은 어디에 있었을까요?",
+      "firstChoice": "컵 안의 파란색 물",
+      "firstChoiceFeedback": "새지 않는 컵의 벽을 안쪽 물이 통과한 것이 아닙니다. 바깥 물방울의 색과 위치도 살펴보세요.",
+      "file": "core-choice-final/chromium-state-change-1-768.webp",
+      "sha256": "f77807a7c8fdbebeb70c0510658cfd46483f305b6870e6331ea77ae0b2a9872b"
+    },
+    {
+      "engine": "chromium",
+      "slug": "acid-base",
+      "question": "묽은 산성 용액·묽은 염기성 용액·물에 달걀 껍데기를 넣어 비교합니다. 탄산 칼슘과 반응해 기포가 계속 생기는 것은?",
+      "firstChoice": "물",
+      "firstChoiceFeedback": "물에 넣기만 한 대조 조건과 산성 용액에서 계속 기포가 생기는 조건을 구별하세요.",
+      "file": "core-choice-final/chromium-acid-base-2-768.webp",
+      "sha256": "c5d732e23097665f7c40a2c824ce0fed39144ab27bed59d996bd2c925d8dfadc"
+    },
+    {
+      "engine": "chromium",
+      "slug": "acid-base",
+      "question": "용액의 성질을 비교할 때 달걀 껍데기와 익힌 흰자를 따로 사용합니다. 익힌 흰자로 알아보려는 성질은?",
+      "firstChoice": "탄산 칼슘에 대한 반응",
+      "firstChoiceFeedback": "탄산 칼슘은 껍데기의 주성분입니다. 익힌 흰자의 주성분인 단백질과 구별하세요.",
+      "file": "core-choice-final/chromium-acid-base-3-768.webp",
+      "sha256": "5f43babedd306211bfdfbe953501cad440c7e3d99e5753235305a44e1ed02824"
+    },
+    {
+      "engine": "chromium",
+      "slug": "diffusion",
+      "question": "기체의 온도만 바꾸면서 부피가 어떻게 달라지는지 비교합니다. 일정하게 유지할 두 조건은?",
+      "firstChoice": "기체의 양 · 온도",
+      "firstChoiceFeedback": "온도는 바꾸어 보는 조건입니다. 온도를 고정하면 온도와 부피의 관계를 비교할 수 없습니다.",
+      "file": "core-choice-final/chromium-diffusion-4-768.webp",
+      "sha256": "4ccdfd3e62dcbdc844e7e4b59a278f58a02959a66245c1f405f68461afc03da3"
+    },
+    {
+      "engine": "chromium",
+      "slug": "diffusion",
+      "question": "기체가 새지 않는 주사기의 온도를 일정하게 유지하며 부피를 줄였습니다. 입자 모형에서 달라지는 것은?",
+      "firstChoice": "주사기 속 전체 입자 수",
+      "firstChoiceFeedback": "기체가 새지 않는 조건이므로 전체 입자 수는 유지됩니다.",
+      "file": "core-choice-final/chromium-diffusion-5-768.webp",
+      "sha256": "a17c057eb59ecddf7eeb23265faec493043b886c14cf6ebe5133c155c854c45a"
+    },
+    {
+      "engine": "chromium",
+      "slug": "ohms-law",
+      "question": "음전하를 띤 막대를 중성 금속구에 가까이 댔습니다. 접촉하거나 접지하지 않았을 때 금속구의 가까운 쪽과 먼 쪽은?",
+      "firstChoice": "가까운 쪽 음전하 · 먼 쪽 음전하",
+      "firstChoiceFeedback": "접촉하거나 접지하지 않았으므로 금속구 전체 전하량은 그대로입니다. 전자가 한쪽으로 재배치되는 현상입니다.",
+      "file": "core-choice-final/chromium-ohms-law-6-768.webp",
+      "sha256": "a55f1538129fdb3f0d0e96ec0351885cc9fe2964ed29e49286900fe947d3d594"
+    },
+    {
+      "engine": "webkit",
+      "slug": "state-change",
+      "question": "젖은 빨래가 마르는 증발과 냄비 속 물이 끓는 현상에 공통으로 일어나는 변화는?",
+      "firstChoice": "물의 표면과 내부에서 기포가 생긴다",
+      "firstChoiceFeedback": "물속의 기포는 끓음의 특징입니다. 상온에서 마르는 빨래에서도 같은 기포가 생기는 것은 아닙니다.",
+      "file": "core-choice-final/webkit-state-change-0-768.webp",
+      "sha256": "23a8cb6c67d146905e0df098d8cda6cc2a95328f363ab78b4cc2a3a05e7becc7"
+    },
+    {
+      "engine": "webkit",
+      "slug": "state-change",
+      "question": "새지 않는 유리컵에 파란색 물과 얼음을 넣었더니 컵 바깥에 무색 물방울이 맺혔습니다. 바깥 물방울이 되기 전 물은 어디에 있었을까요?",
+      "firstChoice": "컵 안의 파란색 물",
+      "firstChoiceFeedback": "새지 않는 컵의 벽을 안쪽 물이 통과한 것이 아닙니다. 바깥 물방울의 색과 위치도 살펴보세요.",
+      "file": "core-choice-final/webkit-state-change-1-768.webp",
+      "sha256": "0ab53a5e3602beac2a4e01baa11bbf56cbc385da3883d27bb83af7d9e832234c"
+    },
+    {
+      "engine": "webkit",
+      "slug": "acid-base",
+      "question": "묽은 산성 용액·묽은 염기성 용액·물에 달걀 껍데기를 넣어 비교합니다. 탄산 칼슘과 반응해 기포가 계속 생기는 것은?",
+      "firstChoice": "물",
+      "firstChoiceFeedback": "물에 넣기만 한 대조 조건과 산성 용액에서 계속 기포가 생기는 조건을 구별하세요.",
+      "file": "core-choice-final/webkit-acid-base-2-768.webp",
+      "sha256": "9c12527f54cbe6a7286a58c95874cc5ae818b9e4b2a54bebed4ea4dfcf421f2c"
+    },
+    {
+      "engine": "webkit",
+      "slug": "acid-base",
+      "question": "용액의 성질을 비교할 때 달걀 껍데기와 익힌 흰자를 따로 사용합니다. 익힌 흰자로 알아보려는 성질은?",
+      "firstChoice": "탄산 칼슘에 대한 반응",
+      "firstChoiceFeedback": "탄산 칼슘은 껍데기의 주성분입니다. 익힌 흰자의 주성분인 단백질과 구별하세요.",
+      "file": "core-choice-final/webkit-acid-base-3-768.webp",
+      "sha256": "6438196e4962bed24476f16bd78f1d8c25afe7893a0cb9c3523facaf7c25acbe"
+    },
+    {
+      "engine": "webkit",
+      "slug": "diffusion",
+      "question": "기체의 온도만 바꾸면서 부피가 어떻게 달라지는지 비교합니다. 일정하게 유지할 두 조건은?",
+      "firstChoice": "기체의 양 · 온도",
+      "firstChoiceFeedback": "온도는 바꾸어 보는 조건입니다. 온도를 고정하면 온도와 부피의 관계를 비교할 수 없습니다.",
+      "file": "core-choice-final/webkit-diffusion-4-768.webp",
+      "sha256": "2bd7834a7507208c2d93fe3f5f113fcce9cb06ca642dcb77cb9e25b5d010d45f"
+    },
+    {
+      "engine": "webkit",
+      "slug": "diffusion",
+      "question": "기체가 새지 않는 주사기의 온도를 일정하게 유지하며 부피를 줄였습니다. 입자 모형에서 달라지는 것은?",
+      "firstChoice": "주사기 속 전체 입자 수",
+      "firstChoiceFeedback": "기체가 새지 않는 조건이므로 전체 입자 수는 유지됩니다.",
+      "file": "core-choice-final/webkit-diffusion-5-768.webp",
+      "sha256": "cb19e5ae7b085d6f95f96910f9eb1af8826bd6b7cedb06dc3cdd74c821f076b3"
+    },
+    {
+      "engine": "webkit",
+      "slug": "ohms-law",
+      "question": "음전하를 띤 막대를 중성 금속구에 가까이 댔습니다. 접촉하거나 접지하지 않았을 때 금속구의 가까운 쪽과 먼 쪽은?",
+      "firstChoice": "가까운 쪽 음전하 · 먼 쪽 음전하",
+      "firstChoiceFeedback": "접촉하거나 접지하지 않았으므로 금속구 전체 전하량은 그대로입니다. 전자가 한쪽으로 재배치되는 현상입니다.",
+      "file": "core-choice-final/webkit-ohms-law-6-768.webp",
+      "sha256": "3aeb693d542edc6c007d249485a6161fe280ced65d694b5e414057fe2295c845"
+    }
+  ]
+}

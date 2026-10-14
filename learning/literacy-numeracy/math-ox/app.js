@@ -43,29 +43,32 @@
     const history = await records.history();
     const recent = history.sessions.find(s => s.status === 'active');
     if (CURRICULUM_UNITS[resume || recent?.contentKey]) currentSubject = resume || recent.contentKey;
-    await openSubject(currentSubject);
+    await openSubject(currentSubject, new URLSearchParams(location.search).get('unit'));
   }
 
-  async function openSubject(subject) {
+  async function openSubject(subject, unit) {
     if (recordBusy) return;
     recordBusy = true;
     filterNav.inert = unitNav.inert = questionsList.inert = true;
     const session = await records.start({ contentKey: subject, title: `수학 기초 OX · ${subject}`, version: '20261001', checkpoint: { answered: {}, unit: ALL_UNITS } });
     currentSubject = subject;
-    currentUnit = session.checkpoint.unit || ALL_UNITS;
+    currentUnit = unit === ALL_UNITS || unitsOf(subject).includes(unit) ? unit : session.checkpoint.unit || ALL_UNITS;
+    const url = new URL(location.href); url.searchParams.set('unit', currentUnit); history.replaceState(history.state, '', url);
     answeredState = session.checkpoint.answered || {};
     renderFilters();
     renderUnitNav();
     renderQuestions();
+    if (unit && unit === currentUnit && unit !== session.checkpoint.unit) await saveRecord();
     filterNav.inert = unitNav.inert = questionsList.inert = false;
     recordBusy = false;
   }
 
   async function saveRecord(events = []) {
     const total = mathOxData.filter(q => q.subject === currentSubject).length;
-    const current = Object.keys(answeredState).length;
-    const session = await records.save({ checkpoint: { answered: answeredState, unit: currentUnit }, progress: { current, total }, events, complete: current === total });
-    if (session.status === 'completed') records.showResult();
+    const current = mathOxData.filter(q => q.subject === currentSubject && answeredState[q.id]).length;
+    // Keep the course checkpoint open for other units and retries. Saved answer
+    // events determine each unit's completion independently on the server.
+    await records.save({ checkpoint: { answered: answeredState, unit: currentUnit }, progress: { current, total }, events });
   }
 
   function renderFilters() {
@@ -104,9 +107,10 @@
     unitNav.innerHTML = units
       .map((u) => {
         const { total, solved, right } = unitScore(u);
-        const count = solved > 0 ? `${solved}/${total} 풀이` : `${total}문제`;
+        const done = records.session.units?.find(row => row.unit === u)?.status === 'completed' || solved === total && total > 0;
+        const count = done ? `완료 · ${total}/${total}` : solved > 0 ? `${solved}/${total} 풀이` : `${total}문제`;
         return `<button type="button" class="unit-btn ${u === currentUnit ? "active" : ""} ${
-          solved === total && total > 0 ? "done" : ""
+          done ? "done" : ""
         }" data-unit="${u}">${u}<span class="unit-count">${count}</span></button>`;
       })
       .join("");
@@ -114,10 +118,15 @@
     unitNav.querySelectorAll(".unit-btn").forEach((btn) => {
       btn.addEventListener("click", async () => {
         if (recordBusy) return;
+        recordBusy = true;
+        filterNav.inert = unitNav.inert = questionsList.inert = true;
         currentUnit = btn.dataset.unit;
         renderUnitNav();
         renderQuestions();
         if (records.session.status === 'active') await saveRecord();
+        const url = new URL(location.href); url.searchParams.set('unit', currentUnit); history.replaceState(history.state, '', url);
+        filterNav.inert = unitNav.inert = questionsList.inert = false;
+        recordBusy = false;
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });

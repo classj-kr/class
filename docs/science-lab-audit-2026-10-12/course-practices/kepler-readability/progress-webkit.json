@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T17:31:55.206Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "kepler-data",
+      "scenarios": 50
+    }
+  ],
+  "scenarios": 50,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

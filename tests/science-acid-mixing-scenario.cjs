@@ -1,0 +1,1 @@
+module.exports=function(value){const[mode,start,titrant,volume,without]=value.split(':');const a=window.__acidMixing;a.setMode(mode);a.setStart(start);a.setTitrant(titrant);if(without==='bare')return;a.indicator();const step=mode==='cabbage'?5:.5;for(let v=step;v<=+volume;v+=step)a.setVolume(v);a.setVolume(+volume);};

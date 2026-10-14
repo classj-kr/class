@@ -7,12 +7,13 @@
     <title>과학 실험실</title>
     <meta name="description" content="전압과 저항을 바꾸며 옴의 법칙과 저항의 직렬·병렬 연결을 확인하는 중학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="ohm-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="ohm-visual.css?v=28068e3d11ff">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../circuit-measurement.css?v=aad5dac6c038">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -156,19 +157,91 @@
                     <p class="answer-explanation" hidden>병렬연결은 전류가 흐를 길이 늘어나므로 합성 저항이 각각의 저항보다 작아집니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d"><h3>가로축이 전압, 세로축이 전류인 그래프에서 같은 전압일 때 전류가 더 큰 저항은?</h3>
-    <div class="quiz-options"><label><input type="radio" name="q4" value="a"> 저항이 더 크다.</label>
-<label><input type="radio" name="q4" value="b"> 저항은 언제나 같다.</label>
-<label><input type="radio" name="q4" value="c"> 전류만으로 비교할 수 없다.</label>
-<label><input type="radio" name="q4" value="d"> 저항이 더 작다.</label></div>
-    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
-    <p class="answer-explanation" hidden>같은 전압에서 저항이 작을수록 전류가 큽니다. 같은 눈금의 그래프에서 저항이 작을수록 선이 더 가파릅니다.</p></article>
+                <article class="quiz-card" data-answer="d">
+<h3>같은 6 V를 걸었더니 저항 A에는 2 A, B에는 3 A가 흘렀다. A·B의 저항은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> A: 2 Ω / B: 3 Ω</label>
+<label><input type="radio" name="q4" value="b"> A: 12 Ω / B: 18 Ω</label>
+<label><input type="radio" name="q4" value="c"> A: 18 Ω / B: 12 Ω</label>
+<label><input type="radio" name="q4" value="d"> A: 3 Ω / B: 2 Ω</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>R=V/I이므로 A는 6/2=3 Ω, B는 6/3=2 Ω입니다. 같은 전압에서 전류가 클수록 저항은 작습니다.</p>
+</article>
+<!-- circuit-course-questions -->
+<article class="quiz-card" data-answer="c">
+<h3>200 Ω과 100 Ω을 직렬로 연결하고 전체에 6.0 V를 걸었다. 200 Ω에 걸리는 전압과 흐르는 전류는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q5" value="a"> 2.0 V · 20 mA</label>
+<label><input type="radio" name="q5" value="b"> 4.0 V · 40 mA</label>
+<label><input type="radio" name="q5" value="c"> 4.0 V · 20 mA</label>
+<label><input type="radio" name="q5" value="d"> 6.0 V · 30 mA</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>전체 저항은 300 Ω이므로 전류는 6/300=0.020 A입니다. 200 Ω의 전압은 0.020×200=4.0 V입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>6.0 V 전원에 200 Ω과 100 Ω을 병렬로 연결했다. 200 Ω의 전류와 전체 전류는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q6" value="a"> 30 mA · 90 mA</label>
+<label><input type="radio" name="q6" value="b"> 30 mA · 30 mA</label>
+<label><input type="radio" name="q6" value="c"> 20 mA · 20 mA</label>
+<label><input type="radio" name="q6" value="d"> 60 mA · 90 mA</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>각 저항에는 6.0 V가 걸립니다. 가지 전류는 각각 30 mA와 60 mA이며 전체는 90 mA입니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>전류계 모드의 계기를 200 Ω 저항 양 끝에 병렬로 연결하려 한다. 회로를 닫기 전에 어떻게 바꾸어야 하는가?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q7" value="a"> 계기를 그대로 두고 전원 전압만 높인다</label>
+<label><input type="radio" name="q7" value="b"> 계기를 그대로 두고 다른 저항값만 높인다</label>
+<label><input type="radio" name="q7" value="c"> 계기를 떼어 저항과 직렬로 연결한다</label>
+<label><input type="radio" name="q7" value="d"> 계기를 떼어 전원 양 끝에 병렬로 연결한다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>전류계는 측정할 전류가 지나가는 길에 직렬로 넣습니다. 내부 저항이 작은 전류계를 병렬로 연결하면 저항을 우회하는 경로가 생깁니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>두 저항을 직렬로 연결했다. 전류는 15 mA, 각 저항의 전압은 3.0 V와 1.5 V였다. 두 저항을 같은 4.5 V 전원에 병렬로 바꾸면 전체 전류는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q8" value="a"> 15.0 mA</label>
+<label><input type="radio" name="q8" value="b"> 22.5 mA</label>
+<label><input type="radio" name="q8" value="c"> 45.0 mA</label>
+<label><input type="radio" name="q8" value="d"> 67.5 mA</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>R₁=3.0/0.015=200 Ω, R₂=1.5/0.015=100 Ω입니다. 병렬에서는 22.5 mA와 45.0 mA가 흘러 합계 67.5 mA입니다.</p>
+</article>
+<!-- /circuit-course-questions -->
             </div>
         </details>
+<template id="circuitCourseStage"><p class="intro">각 저항과 전체 회로에 계기를 옮겨 전압·전류를 측정하세요. 같은 조건의 직렬·병렬 회로를 비교하세요.</p>
+<section class="circuit-measurement experiment-layout"><div class="cm-controls"><h2>회로 구성</h2>
+<fieldset><legend>저항 연결</legend><div class="cm-buttons"><button data-cm-wiring="series" aria-pressed="true">직렬</button><button data-cm-wiring="parallel" aria-pressed="false">병렬</button></div></fieldset>
+<label for="cmVolts">전원 전압 <output id="cmVoltsValue"></output></label><input id="cmVolts" type="range" min="1.5" max="12" step="0.5" value="6">
+<label for="cmR1">저항 R₁ <select id="cmR1"><option>100</option><option selected>200</option><option>300</option><option>400</option></select> Ω</label>
+<label for="cmR2">저항 R₂ <select id="cmR2"><option selected>100</option><option>200</option><option>300</option><option>400</option></select> Ω</label>
+<h2>계기 연결</h2><fieldset><legend>측정량</legend><div class="cm-buttons"><button data-cm-meter="voltage" aria-pressed="true">전압</button><button data-cm-meter="current" aria-pressed="false">전류</button></div></fieldset>
+<fieldset><legend>측정할 부분</legend><div class="cm-buttons"><button data-cm-target="r1" aria-pressed="true">R₁</button><button data-cm-target="r2" aria-pressed="false">R₂</button><button data-cm-target="whole" aria-pressed="false">전체</button></div></fieldset>
+<fieldset><legend>선택한 부분에 계기 연결</legend><div class="cm-buttons"><button data-cm-connection="series" aria-pressed="false">직렬로</button><button data-cm-connection="parallel" aria-pressed="true">병렬로</button></div></fieldset>
+<div class="cm-buttons"><button id="cmSwitch" class="primary" aria-pressed="false">회로 닫기</button><button id="cmRead">측정값 읽기</button></div><button id="cmReset">처음부터</button></div>
+<div class="cm-observation"><h2>회로와 측정</h2><p class="cm-key">청록색: 회로 전선 · 주황색: 계기 연결선</p><svg id="cmScene" viewBox="0 0 540 350" role="img" aria-label="계기의 연결 위치가 표시된 전기 회로"></svg>
+<div class="cm-reading"><span id="cmReadingLabel"></span><output id="cmReading">—</output></div><p id="cmStatus" class="status" role="status"></p>
+<div class="cm-table-wrap"><table><caption id="cmTableTitle">측정값 비교</caption><thead><tr><th scope="col">측정 부분</th><th scope="col">전압 (V)</th><th scope="col">전류 (mA)</th></tr></thead><tbody id="cmTable"></tbody></table></div>
+<p id="cmConclusion"></p><p class="cm-note">전선·전류계의 저항은 0, 전압계의 저항은 매우 크다고 봅니다. 연결을 바꿀 때 회로가 열립니다.</p></div></section></template>
     </main>
-    <script src="app.js?v=e5463847daff"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../app-context.js?v=e709427ff17a"></script>
+    <script src="../circuit-measurement-model.js?v=f9effa54d827"></script>
+    <script src="../circuit-measurement-lab.js?v=2758981a535d"></script>
+    <script src="app.js?v=43a8a920c6d1"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

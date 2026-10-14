@@ -1,0 +1,18 @@
+{
+  "slug": "silver-mirror",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 3,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

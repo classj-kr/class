@@ -7,7 +7,7 @@
 
 const ISO = {
     c14: { name: '¹⁴C', full: '탄소-14', half: 5730, daughter: '¹⁴N', dfull: '질소-14', use: '나무·뼈·조개껍데기' },
-    k40: { name: '⁴⁰K', full: '칼륨-40', half: 1.25e9, daughter: '⁴⁰Ar', dfull: '아르곤-40', use: '화산암·변성암' },
+    k40: { name: '⁴⁰K', full: '칼륨-40', half: 1.25e9, daughter: '⁴⁰Ar + ⁴⁰Ca', dfull: '아르곤-40과 칼슘-40', use: '칼륨을 포함한 적절한 광물; 실제 K–Ar법은 붕괴 분기를 반영' },
     u238: { name: '²³⁸U', full: '우라늄-238', half: 4.47e9, daughter: '²⁰⁶Pb', dfull: '납-206', use: '아주 오래된 암석' },
 };
 // Outside these fractions there is either too little daughter or too little
@@ -72,10 +72,17 @@ function decayVerdict() {
     return f > 0.5 ? 'p1' : (f >= 0.03 ? 'p2' : 'p3');
 }
 function strataVerdict() {
+    if (sampleProblem()) return 'p4';
     const d = datable(TARGETS[state.target].age, iso().half);
     return d === 'ok' ? 'p1' : (d === 'old' ? 'p2' : 'p3');
 }
 function verdict() { return state.mode === 'decay' ? decayVerdict() : strataVerdict(); }
+function sampleProblem(target=state.target,isotope=state.iso) {
+    if (target === 'fault') return '단층은 하나의 연대 측정 시료가 아닙니다. 운동과 관련된 광물·퇴적층 등 추가 증거가 필요합니다.';
+    if (['A', 'C', 'D'].includes(target)) return '퇴적층의 쇄설성 광물 나이는 퇴적 시기와 다를 수 있습니다. 협재 화산재나 위아래 지층의 연대 등으로 범위를 제한해야 합니다.';
+    if (isotope === 'c14' && target === 'dyke') return '관입암 자체는 탄소-14로 생성 연대를 재는 시료가 아닙니다. 적절한 방사성 원소를 포함하고 닫힌계를 유지한 광물이 필요합니다.';
+    return '';
+}
 
 function analyse() {
     const T = iso().half;
@@ -90,7 +97,7 @@ function analyse() {
     const f = fracAtAge(t.age, T);
     return {
         target: t, age: t.age, frac: f, daughter: 1 - f,
-        halves: halvesForAge(t.age, T), state: datable(t.age, T),
+        halves: halvesForAge(t.age, T), state: sampleProblem() ? 'sample' : datable(t.age, T), sampleProblem: sampleProblem(),
         window: windowFor(T), verdict: verdict(),
     };
 }
@@ -233,7 +240,7 @@ function drawSection(g) {
     g.appendChild(el('text', { x: 62, y: 72, class: 'layer-tag' }, '화산재'));
     g.appendChild(el('text', { x: 240, y: 196, class: 'small-label' }, '관입암'));
     g.appendChild(el('text', { x: 96, y: 210, 'text-anchor': 'middle', class: 'small-label' }, '단층'));
-    g.appendChild(el('text', { x: 232, y: 58, class: 'tiny-label' }, '물결선은 부정합면'));
+    g.appendChild(el('text', { x: 300, y: 58, 'text-anchor': 'end', class: 'tiny-label' }, '물결선은 부정합면'));
 
     g.appendChild(el('text', { x: 316, y: 26, class: 'small-label' }, '고른 곳'));
     g.appendChild(el('text', { x: 316, y: 46, class: 'read-text' }, a.target.name));
@@ -243,13 +250,14 @@ function drawSection(g) {
         g.appendChild(el('text', { x: 316, y: 108, class: 'note-text' }, `반감기 ${fmt(a.halves, 2)}번`));
         g.appendChild(el('text', { x: 316, y: 138, class: 'small-label' }, '절대 연령'));
         g.appendChild(el('text', { x: 316, y: 160, class: 'big-count' }, koYears(a.age)));
+    } else if (a.state === 'sample') {
+        g.appendChild(el('text', { x: 316, y: 96, class: 'warn-text' }, '시료 근거 부족'));
+        g.appendChild(el('text', { x: 316, y: 122, class: 'note-text' }, '원소를 고르는 것만으로'));
+        g.appendChild(el('text', { x: 316, y: 140, class: 'note-text' }, '연대를 정할 수 없음'));
     } else {
-        g.appendChild(el('text', { x: 316, y: 92, class: 'warn-text' }, a.state === 'old' ? '너무 오래되어' : '너무 젊어'));
-        g.appendChild(el('text', { x: 316, y: 108, class: 'warn-text' }, '잴 수 없습니다'));
-        g.appendChild(el('text', { x: 316, y: 132, class: 'note-text' }, a.state === 'old' ? '모원소가 남지' : '딸원소가 쌓이지'));
-        g.appendChild(el('text', { x: 316, y: 146, class: 'note-text' }, '않았습니다'));
-        g.appendChild(el('text', { x: 316, y: 172, class: 'small-label' }, '다른 동위 원소로'));
-        g.appendChild(el('text', { x: 316, y: 186, class: 'small-label' }, '바꿔 보세요'));
+        g.appendChild(el('text', { x: 316, y: 96, class: 'warn-text' }, '모형 감도 범위 밖'));
+        g.appendChild(el('text', { x: 316, y: 122, class: 'note-text' }, a.state === 'old' ? '모원소 비율이 너무 작음' : '모원소 비율이 너무 큼'));
+        g.appendChild(el('text', { x: 316, y: 148, class: 'small-label' }, '실제 장비 한계와 구별'));
     }
 }
 
@@ -271,21 +279,22 @@ function drawStrataGraph(g) {
     const bx0 = Math.max(x0, X(lo)), bx1 = Math.min(x1, X(hi));
     g.appendChild(el('rect', { x: bx0, y: bandTop, width: Math.max(2, bx1 - bx0), height: bandBot - bandTop, rx: 4, class: 'window-band' }));
     g.appendChild(el('text', { x: (bx0 + bx1) / 2, y: bandTop - 7, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#059669' },
-        `${iso().name}로 잴 수 있는 범위`));
+        `${iso().name} 감도 비교 모형`));
 
     Object.entries(TARGETS).forEach(([k, t]) => {
+        if (sampleProblem(k)) return;
         const x = X(t.age), on = k === state.target;
         g.appendChild(el('line', { x1: x, y1: axisY - 20, x2: x, y2: axisY, class: `age-tick${on ? ' picked' : ''}` }));
         if (on) {
             g.appendChild(el('circle', { cx: x, cy: axisY - 24, r: 4.5, class: 'trace-dot', style: 'fill:#d97706' }));
             const anchor = x > x1 - 70 ? 'end' : (x < x0 + 70 ? 'start' : 'middle');
             g.appendChild(el('text', { x: clamp(x, x0, x1), y: axisY - 32, 'text-anchor': anchor, class: 'axis-text', style: 'fill:#d97706' },
-                `${t.name} ${koYears(t.age)}`));
+                `${t.name} 가상값 ${koYears(t.age)}`));
         }
     });
 
     g.appendChild(el('text', { x: (x0 + x1) / 2, y: 168, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#475569' },
-        '눈금 하나가 10배입니다 · 세로 막대는 이 단면에 있는 여섯 곳의 나이'));
+        '눈금 하나가 10배 · 적합한 시료를 가정한 연대만 표시'));
     g.appendChild(el('text', { x: (x0 + x1) / 2, y: 189, 'text-anchor': 'middle', class: 'axis-title' }, '몇 년 전인가 (로그 눈금)'));
 }
 
@@ -319,17 +328,17 @@ function updateReadout() {
             `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
     } else {
         $('stageBadge').textContent = `${a.target.name} · ${iso().full}`;
-        $('labelA').textContent = '절대 연령';
+        $('labelA').textContent = '가상 시료 연대';
         $('valueA').textContent = a.state === 'ok' ? koYears(a.age) : '잴 수 없음';
         $('labelB').textContent = '남은 모원소';
-        $('valueB').textContent = a.state === 'ok' ? `${fmt(a.frac * 100, 1)}%` : (a.state === 'old' ? '거의 0' : '거의 100');
+        $('valueB').textContent = a.state === 'sample' ? '시료 확인 필요' : `${fmt(a.frac * 100, 1)}%`;
         const rows = [
             ['상대 연령 근거', a.target.why, false],
             ['반감기 몇 번', a.halves < 0.001 ? '0.001번 미만' : `${fmt(a.halves, 3)}번`, a.state === 'ok'],
-            [`${iso().name}로 잴 수 있는 범위`, `${koYears(a.window[0])} ~ ${koYears(a.window[1])}`, false],
-            ['오래된 차례', ORDERED.slice().reverse().map(k => TARGETS[k].name).join(' → '), false],
-            ['지층 B', `${koYears(HIDDEN_B)} · A와 C 사이`, false],
-            ['단층과 관입암', '서로 만나지 않아 상대 연령만으로는 순서를 알 수 없음', false],
+            ['감도 비교용 범위', `${koYears(a.window[0])} ~ ${koYears(a.window[1])} · 모원소 0.1~99.9%라는 임의의 기준; 실제 장비의 연대 한계가 아님`, false],
+            ['시료·해석 조건', a.sampleProblem || (state.target === 'ash' && state.iso === 'c14' ? '화산재 자체가 아닌, 분출 때 묻힌 목탄을 가정합니다. 오래된 목재·재퇴적·보정 문제는 생략합니다.' : '그 사건과 동시 형성되고 닫힌계를 유지한 적절한 광물을 가정합니다.'), false],
+            ['단면의 상대 순서', 'A → B → C → (단층·관입암: 서로 순서 미정) → D → 화산재층', false],
+            ['자료 성격', '연대와 원자 비율은 계산용 가상값입니다. 실제 측정 자료가 아닙니다.', false],
         ];
         $('dataNote').innerHTML = rows.map(([n, v, m]) =>
             `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
@@ -337,8 +346,8 @@ function updateReadout() {
     if (state.checked) explain(a);
 }
 
-const DECAY_WORDS = { p1: '절반 이상', p2: '절반 이하', p3: '거의 없음' };
-const STRATA_WORDS = { p1: '잴 수 있다', p2: '너무 오래됨', p3: '너무 젊음' };
+const DECAY_WORDS = { p1: '50% 초과', p2: '3~50%', p3: '3% 미만' };
+const STRATA_WORDS = { p1: '가정 아래 계산 가능', p2: '모원소 비율 너무 작음', p3: '모원소 비율 너무 큼', p4: '시료 근거 부족' };
 
 function explain(a) {
     $('resultEmpty').hidden = true;
@@ -356,24 +365,21 @@ function explain(a) {
     }
 
     if (state.mode === 'decay') {
-        let s = `${iso().full}의 반감기는 ${koYears(iso().half)}입니다. 반감기가 ${fmt(state.hl, 2)}번 지났으므로 남은 모원소는 2를 ${fmt(state.hl, 2)}번 나눈 만큼, 곧 ${fmt(a.frac * 100, 2)}%입니다. `;
-        s += `사라진 것이 아니라 ${fmt(a.daughter * 100, 2)}%가 ${iso().dfull}(${iso().daughter})${roParticle(iso().dfull)} 바뀌어 암석 속에 그대로 남아 있고, 그래서 둘의 비를 재면 지난 시간을 알 수 있습니다. `;
-        s += `지금 딸원소는 모원소의 ${a.frac > 0 ? `${fmt(a.ratio, 2)}배` : '헤아릴 수 없을 만큼 여러 배'}이고, 실제로 흐른 시간은 ${koYears(a.years)}입니다. `;
-        s += `여기서 중요한 것은 반감기가 온도나 압력에 아무런 영향을 받지 않는다는 점입니다. 그래서 땅속 깊이 묻혔던 암석도 같은 시계로 잴 수 있습니다.`;
-        $('elementaryExplanation').textContent = s;
+        let text = iso().full + '의 반감기는 ' + koYears(iso().half) + '입니다. 반감기가 ' + fmt(state.hl, 2) + '번 지나 처음 모원소의 ' + fmt(a.frac * 100, 2) + '%가 남고 ' + fmt(a.daughter * 100, 2) + '%가 붕괴했습니다. ';
+        text += '그림의 딸원소는 붕괴 생성물의 합계입니다. 초기 딸원소가 없고 외부 출입이 없는 이상적인 계를 가정합니다. 일반적인 지질 조건에서는 반감기를 일정하게 다루지만 가열 등으로 원소가 이동하면 닫힌계 조건이 깨집니다. ';
+        if (state.iso === 'k40') text += '칼륨-40은 아르곤-40과 칼슘-40으로 갈라져 붕괴합니다. 전체 붕괴량을 아르곤 양으로 대입하면 안 되며 실제 K–Ar 연대식은 붕괴 분기를 반영합니다.';
+        if (state.iso === 'c14') text += '실제 탄소 연대 측정은 유기물에 남은 탄소-14와 기준 비율을 비교하고 보정합니다. 시료의 질소-14 전부를 붕괴 생성물로 보지 않습니다.';
+        $('elementaryExplanation').textContent = text;
     } else {
-        let s = `${a.target.name}은 ${a.target.why}. `;
-        if (a.state === 'ok') {
-            s += `${iso().full}로 재면 모원소가 ${fmt(a.frac * 100, 1)}% 남아 있으니 반감기가 ${fmt(a.halves, 2)}번 지난 셈이고, 나이는 ${koYears(a.age)}입니다. `;
-        } else if (a.state === 'old') {
-            s += `그런데 ${iso().full}로는 잴 수 없습니다. 반감기가 ${koYears(iso().half)}뿐이라 ${koYears(a.age)} 동안 반감기가 ${a.halves > 1000 ? Math.round(a.halves).toLocaleString('ko-KR') : fmt(a.halves, 1)}번이나 지났고, 모원소가 하나도 남지 않아 잴 것이 없습니다. `;
-            s += `이럴 때는 반감기가 훨씬 긴 ⁴⁰K나 ²³⁸U를 씁니다. `;
-        } else {
-            s += `그런데 ${iso().full}로는 잴 수 없습니다. 반감기가 ${koYears(iso().half)}이나 되는데 겨우 ${koYears(a.age)}밖에 지나지 않아, 딸원소가 잴 수 있을 만큼 쌓이지 않았습니다. `;
-            s += `이렇게 젊은 것에는 반감기가 짧은 ¹⁴C를 씁니다. `;
+        let text = a.target.name + '은 ' + a.target.why + '. ';
+        if (a.state === 'sample') text += a.sampleProblem + ' ';
+        else {
+            text += '사건과 시료 연대가 일치한다고 가정한 계산용 가상 자료입니다. 모원소 비율은 ' + fmt(a.frac * 100, 2) + '%이며 ';
+            text += a.state === 'ok' ? '반감기로 계산한 연대는 ' + koYears(a.age) + '입니다. ' : '설정한 모형 감도 범위 밖입니다. 이것이 실제 장비의 측정 한계라는 뜻은 아닙니다. ';
+            if (state.target === 'ash' && state.iso === 'c14') text += '탄소-14 시료는 화산재 자체가 아니라 분출 때 묻힌 목탄을 가정합니다. ';
         }
-        s += `이 단면에서 오래된 것부터 늘어놓으면 ${ORDERED.slice().reverse().map(k => TARGETS[k].name).join(', ')} 차례입니다. 다만 단층과 관입암은 서로 자르지도 얹히지도 않아 상대 연령만으로는 순서를 정할 수 없고, 각각의 절대 연령을 재고 나서야 단층이 ${koYears(TARGETS.fault.age)}, 관입암이 ${koYears(TARGETS.dyke.age)}으로 단층이 더 오래되었음을 알게 됩니다.`;
-        $('elementaryExplanation').textContent = s;
+        text += '이 그림만으로 단층과 관입암의 선후는 정해지지 않습니다. 다른 지층과의 절단 관계나 사건과 관련된 시료의 연대 등 독립적인 증거가 필요합니다.';
+        $('elementaryExplanation').textContent = text;
     }
 }
 
@@ -429,10 +435,10 @@ function applyMode() {
     const dc = state.mode === 'decay';
     $('predictionLegend').textContent = dc ? '지금 남아 있는 모원소는?' : '이 동위 원소로 여기 나이를 잴 수 있을까요?';
     const words = dc ? DECAY_WORDS : STRATA_WORDS;
-    document.querySelectorAll('[data-prediction]').forEach(b => { b.textContent = words[b.dataset.prediction]; });
+    document.querySelectorAll('[data-prediction]').forEach(b => { b.hidden = !words[b.dataset.prediction]; b.textContent = words[b.dataset.prediction] || ''; });
     $('runBtn').textContent = dc ? '시간 흘려보내기' : '차례로 훑기';
-    $('unitNote').textContent = dc ? '암석이 굳을 때 딸원소는 0이었다고 봅니다'
-        : '단면은 아래가 오래된 것, 위가 젊은 것입니다';
+    $('unitNote').textContent = dc ? '초기 딸원소 0·닫힌계의 이상적인 붕괴 모형'
+        : '시료 적합성과 모형 감도를 함께 확인합니다';
     $('stageCaption').textContent = dc
         ? '반감기가 한 번 지날 때마다 남은 모원소는 절반이 됩니다. 줄어든 만큼이 딸원소로 바뀌어 쌓입니다.'
         : '노란 테두리가 지금 고른 곳입니다. 단층은 부정합면에서 끊겨 있고, 관입암도 그 위로는 올라가지 못했습니다.';

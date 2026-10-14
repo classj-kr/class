@@ -1,0 +1,12 @@
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.9984ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (2.1092ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1494ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (16.1587ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.3272

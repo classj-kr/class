@@ -6,14 +6,14 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const root = path.join(__dirname, "..");
-const htmlPath = path.join(root, "admin", "reading", "index.html");
-const appPath = path.join(root, "admin", "reading", "app.js");
-const cssPath = path.join(root, "admin", "reading", "style.css");
+const htmlPath = path.join(root, "apps/admin", "reading", "index.html");
+const appPath = path.join(root, "apps/admin", "reading", "app.js");
+const cssPath = path.join(root, "apps/admin", "reading", "style.css");
 const migrationPath = path.join(root, "game-hub-server", "migrations", "001-reading-bank.sql");
 const reviewMigrationPath = path.join(root, "game-hub-server", "migrations", "002-reading-reviews.sql");
 const platformPath = path.join(root, "game-hub-server", "classroom-platform.js");
 const backendPath = path.join(root, "game-hub-server", "reading-bank.js");
-const mainAdminPath = path.join(root, "admin", "index.html");
+const mainAdminPath = path.join(root, "apps/admin", "index.html");
 
 const html = fs.readFileSync(htmlPath, "utf8");
 const app = fs.readFileSync(appPath, "utf8");

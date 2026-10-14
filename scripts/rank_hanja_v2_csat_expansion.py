@@ -11,7 +11,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / 'tmp' / 'pydeps'))
+sys.path.insert(0, str(ROOT / 'tools/.cache/pydeps'))
 from wordfreq import get_frequency_dict
 
 LEVELS = {'8급','7급Ⅱ','7급','6급Ⅱ','6급','5급Ⅱ','5급','4급Ⅱ','4급','3급Ⅱ','3급'}
@@ -27,7 +27,7 @@ for number in range(1, 6):
     current.update(norm(character['character']) for lesson in lessons for character in lesson['characters'])
 
 metadata = {}
-with (ROOT / 'tmp' / 'hanja-grade-dataset' / 'hanja.csv').open(encoding='utf-8-sig', newline='') as stream:
+with (ROOT / 'references/dictionaries/hanja-grade-dataset' / 'hanja.csv').open(encoding='utf-8-sig', newline='') as stream:
     for row in csv.DictReader(stream):
         if row['level'] not in LEVELS:
             continue
@@ -56,7 +56,7 @@ def feat_value(element, att):
 prominence = defaultdict(int)
 term_prominence = defaultdict(int)
 invalid_xml = re.compile(rb'[\x00-\x08\x0b\x0c\x0e-\x1f]')
-for xml_path in sorted((ROOT / 'tmp' / 'korean-dict-nikl-sparse' / 'krdict').glob('*.xml')):
+for xml_path in sorted((ROOT / 'references/dictionaries/korean-dict-nikl-sparse' / 'krdict').glob('*.xml')):
     clean_xml = invalid_xml.sub(b'', xml_path.read_bytes())
     for _event, entry in ET.iterparse(io.BytesIO(clean_xml), events=('end',)):
         if entry.tag != 'LexicalEntry':
@@ -72,7 +72,7 @@ for xml_path in sorted((ROOT / 'tmp' / 'korean-dict-nikl-sparse' / 'krdict').glo
 
 frequency = get_frequency_dict('ko')
 words = defaultdict(dict)
-with (ROOT / 'tmp' / 'kengdic' / 'kengdic.tsv').open(encoding='utf-8', newline='') as stream:
+with (ROOT / 'references/dictionaries/kengdic' / 'kengdic.tsv').open(encoding='utf-8', newline='') as stream:
     for row in csv.DictReader(stream, delimiter='\t'):
         term = (row.get('surface') or '').strip().replace(' ', '')
         hanja = norm((row.get('hanja') or '').strip())

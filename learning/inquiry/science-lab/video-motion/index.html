@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 동영상으로 운동 분석하기</title><meta name="description" content="2022 교육과정 · 동영상으로 운동 분석하기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="motion.css?v=79848d80bc79"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>동영상으로 운동 분석하기</h1><div class="grade-tags"><span>고(선택)</span><span>물리학 · 역학과 에너지</span></div></header><section class="vm-lab" id="vmLab"><h2>영상에서 위치와 속도 측정</h2><div class="vm-tabs" role="group" aria-label="연습 장면"><button data-vm-demo="cart" aria-pressed="true">수레 연습 모형</button><button data-vm-demo="projectile" aria-pressed="false">포물선 연습 모형</button><label class="vm-file">운동 영상 불러오기<input id="vmFile" type="file" accept="video/*"></label></div><p class="vm-note">촬영할 때 카메라를 수평으로 고정하고, 기준 자와 물체가 같은 평면에 보이게 하세요. 연습 모형은 마찰·공기 저항·바퀴의 회전 에너지를 생략합니다.</p><div class="vm-workspace"><section class="vm-monitor"><div class="vm-viewhead"><strong id="vmSourceName">수레 연습 모형</strong><span id="vmTime">0.000초 · 0프레임</span></div><div class="vm-viewer" id="vmViewer"><canvas id="vmCanvas" width="800" height="450" tabindex="0" aria-label="영상 분석 화면. 위치를 누르거나 방향키로 십자선을 옮긴 뒤 Enter를 눌러 표시"></canvas></div><video id="vmVideo" muted playsinline preload="metadata" hidden></video><label for="vmFrame">영상 위치<input id="vmFrame" type="range" min="0" max="27" value="0" step="1"></label><div class="vm-frame-tools"><button id="vmPlay" aria-pressed="false">느리게 재생</button><button id="vmPrevious">이전 구간</button><button id="vmNext">다음 구간</button><button id="vmUndo">마지막 표시 취소</button></div></section><section class="vm-controls"><h3>측정 준비</h3><div class="vm-number-grid"><label for="vmFPS">프레임 속도 (fps)<input id="vmFPS" type="number" min="1" max="240" value="30" step="0.01" inputmode="decimal" disabled></label><label for="vmStep">표시 간격 (프레임)<input id="vmStep" type="number" min="1" max="60" value="3" step="1" inputmode="numeric"></label><label for="vmLength">기준 길이 (m)<input id="vmLength" type="number" min="0.001" max="100" value="1" step="0.001" inputmode="decimal"></label><label for="vmMass">물체 질량 (kg)<input id="vmMass" type="number" min="0.001" max="100" value="0.1" step="0.001" inputmode="decimal"></label><label for="vmAngle">x축 방향 (°)<input id="vmAngle" type="number" min="-180" max="180" step="0.1" value="0" inputmode="decimal"></label></div><p class="vm-note">영상은 일정한 프레임 간격으로 촬영하고, 촬영 정보의 fps를 입력하세요.</p><div class="vm-actions" role="group" aria-label="화면에 표시할 항목"><button data-vm-tool="scale" aria-pressed="true">① 기준 길이 두 점</button><button data-vm-tool="origin" aria-pressed="false">② 원점 한 점</button><button data-vm-tool="track" aria-pressed="false">③ 물체 위치 표시</button></div><p id="vmCalibration" class="vm-note">기준 길이: 설정 전 · 원점: 설정 전</p><p class="vm-note">같은 시간의 위치를 다시 누르면 그 점을 수정합니다. 0°일 때 x는 오른쪽, y는 위쪽이 (+)입니다. 빗면을 따라 x축을 돌리려면 방향을 바꾸세요. 반시계 방향이 (+)입니다.</p></section></div><p id="vmStatus" class="vm-status" aria-live="polite">화면 속 1 m 막대의 양 끝을 차례로 누르세요.</p><div class="vm-cursor-tools"><span>십자선 이동</span><button data-vm-nudge="left" aria-label="십자선 왼쪽">←</button><button data-vm-nudge="up" aria-label="십자선 위쪽">↑</button><button data-vm-nudge="down" aria-label="십자선 아래쪽">↓</button><button data-vm-nudge="right" aria-label="십자선 오른쪽">→</button><button id="vmMarkCursor">십자선 위치 표시</button></div><section id="vmAnalysis" hidden><h3>측정한 운동</h3><div class="vm-plots"><section><h4 id="vmPositionTitle">위치 (m)</h4><svg id="vmPositionPlot" role="img" aria-label="시간에 따른 측정 위치"></svg><p>시간 (초)</p></section><section><h4 id="vmVelocityTitle">구간 속도 (m/s)</h4><svg id="vmVelocityPlot" role="img" aria-label="시간에 따른 구간 속도"></svg><p>구간 중간 시각 (초)</p></section><section class="vm-acceleration"><h4>가속도 (m/s²)</h4><svg id="vmAccelerationPlot" role="img" aria-label="시간에 따른 가속도"></svg><p>시간 (초)</p></section></div><div class="vm-legend"><span><i></i>x 성분</span><span><i class="vm-y"></i>y 성분</span></div><p id="vmAnalysisText"></p><details class="vm-data"><summary>측정값과 구간 계산</summary><div class="vm-table-scroll"><table><caption>측정 위치</caption><thead><tr><th>시간 (초)</th><th>x (m)</th><th>y (m)</th></tr></thead><tbody id="vmPositions"></tbody></table></div><div class="vm-table-scroll"><table><caption>구간 속도 · 변위 ÷ 시간 간격</caption><thead><tr><th>중간 시각 (초)</th><th>시간 간격 (초)</th><th>vₓ (m/s)</th><th>vᵧ (m/s)</th></tr></thead><tbody id="vmIntervals"></tbody></table></div></details><details class="vm-energy"><summary>역학적 에너지 비교</summary><p>중력 위치 에너지는 원점 위의 연직 높이로 계산합니다. 축을 돌려도 같은 높이의 값은 같습니다. 물체의 질량을 확인하세요.</p><svg id="vmEnergyPlot" role="img" aria-label="시간에 따른 운동 에너지와 위치 에너지 및 합"></svg><div class="vm-legend"><span><i></i>운동 에너지</span><span><i class="vm-y"></i>위치 에너지</span><span><i class="vm-total"></i>합</span></div><p>에너지 (J) · 가로축: 구간 중간 시각 (초)</p><p class="vm-note">구간 속도와 양 끝 높이의 평균으로 근사합니다. 촬영 각도·시간 간격·위치 표시 오차도 결과에 영향을 줍니다.</p></details></section><button id="vmReset">표시 모두 지우기</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>6문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>30 fps 영상의 6프레임에서 x=0.12 m, 9프레임에서 x=0.18 m였다. 이 구간의 x방향 평균 속도는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 0.02 m/s</label>
+<label><input type="radio" name="q1" value="b"> 0.60 m/s</label>
+<label><input type="radio" name="q1" value="c"> 1.80 m/s</label>
+<label><input type="radio" name="q1" value="d"> 6.00 m/s</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>시간 간격은 (9−6)/30=0.10초, 변위는 0.06 m입니다. 평균 속도는 0.06/0.10=0.60 m/s입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>실제 30 fps 영상을 60 fps로 입력했다. 표시한 위치와 기준 길이가 같을 때 계산된 속력과 가속도 크기는 실제의 몇 배인가?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 속력 ½배 · 가속도 ¼배</label>
+<label><input type="radio" name="q2" value="b"> 속력 2배 · 가속도 2배</label>
+<label><input type="radio" name="q2" value="c"> 속력 ½배 · 가속도 ½배</label>
+<label><input type="radio" name="q2" value="d"> 속력 2배 · 가속도 4배</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>시간 간격을 절반으로 계산하므로 속력은 2배입니다. 속도 변화도 2배이고 그 변화에 걸린 시간도 절반이므로 가속도는 4배입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>등가속도 운동의 0.20초와 0.40초 위치로 구간 속도를 구했다. 이 값을 순간 속도와 비교할 대표 시각은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 0.30초</label>
+<label><input type="radio" name="q3" value="b"> 0.20초</label>
+<label><input type="radio" name="q3" value="c"> 0.40초</label>
+<label><input type="radio" name="q3" value="d"> 0.60초</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>등가속도 운동에서는 두 시각 사이 평균 속도가 중간 시각의 순간 속도와 같습니다. (0.20+0.40)/2=0.30초입니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>x방향 속도가 0.10초에 0.30 m/s, 0.30초에 0.50 m/s였다. 이 사이 평균 가속도는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 0.04 m/s²</label>
+<label><input type="radio" name="q4" value="b"> 0.20 m/s²</label>
+<label><input type="radio" name="q4" value="c"> 1.00 m/s²</label>
+<label><input type="radio" name="q4" value="d"> 2.00 m/s²</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>속도 변화 0.20 m/s를 시간 간격 0.20초로 나누면 1.00 m/s²입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>공기 저항을 무시한 포물선 운동에서 최고점의 수평·연직 속도는? x는 수평, y는 위쪽이다.</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q5" value="a"> vₓ=0 · vᵧ=0</label>
+<label><input type="radio" name="q5" value="b"> vₓ≠0 · vᵧ=0</label>
+<label><input type="radio" name="q5" value="c"> vₓ=0 · vᵧ≠0</label>
+<label><input type="radio" name="q5" value="d"> vₓ≠0 · vᵧ≠0</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>최고점에서도 수평 운동은 계속됩니다. 위로 가던 운동이 아래로 바뀌는 순간 연직 속도만 0입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>질량 0.20 kg인 공의 vₓ=3 m/s, vᵧ=4 m/s이다. 이 순간의 운동 에너지는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q6" value="a"> 0.9 J</label>
+<label><input type="radio" name="q6" value="b"> 1.6 J</label>
+<label><input type="radio" name="q6" value="c"> 5.0 J</label>
+<label><input type="radio" name="q6" value="d"> 2.5 J</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>속력의 제곱은 3²+4²=25입니다. 운동 에너지는 ½×0.20×25=2.5 J입니다.</p>
+</article></details></main><script src="model.js?v=4455a47f7cb7"></script><script src="app.js?v=0b7825b3c906"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

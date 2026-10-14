@@ -7,7 +7,7 @@
  * 시험에 나오는 대목:
  *   밝을 때  - 부교감신경 ➔ 원형근(동공조임근) 수축, 방사근 이완 ➔ 동공 축소
  *   어두울 때 - 교감신경   ➔ 방사근(동공확대근) 수축, 원형근 이완 ➔ 동공 확대
- *   중추는 중간뇌. 대뇌를 거치지 않는 무조건 반사다.
+ *   밝은 빛에 대한 동공 축소 반사의 중추는 중간뇌이며, 대뇌의 의식적 판단을 거치지 않는다.
  */
 
 (function () {
@@ -20,7 +20,7 @@
 
     var wrap, layer, svg, tagLayer;
     var pupil, irisRing, circularMuscle, radialMuscles = [], glare;
-    var pupilLabel, muscleNote;
+    var pupilLabel, muscleNote, pathNote;
     var steps = [], stepBoxes = [];
     var raf, displayedBrightness = 50, lastFrame = 0;
 
@@ -185,7 +185,7 @@
             }
         }
 
-        htmlTag(590, 506, '빛에 대한 축동 반사의 중추: 중간뇌', 'warm', 'start');
+        pathNote = htmlTag(590, 506, '', 'warm', 'start');
         htmlTag(590, 560, '대뇌를 거치지 않아 나도 모르게 일어납니다 (무조건 반사).', 'warm', 'start');
     }
 
@@ -212,7 +212,6 @@
 
         // 동공: 밝으면 작아지고 어두우면 커진다 (지름 약 2 ~ 8 mm)
         var r = 78 - t * 54;               // 78 ~ 24
-        var mm = (r / 78 * 8).toFixed(1);
         pupil.setAttribute('r', r.toFixed(1));
         layer.dataset.pupilRadius = r.toFixed(1);
 
@@ -234,7 +233,8 @@
         irisRing.setAttribute('fill', bright ? '#0e7490' : '#155e75');
         glare.setAttribute('opacity', (0.15 + t * 0.75).toFixed(2));
 
-        setTagText(pupilLabel, '동공 지름 약 ' + mm + ' mm', bright ? '#38bdf8' : '#fbbf24');
+        setTagText(pupilLabel, '동공', bright ? '#38bdf8' : '#fbbf24');
+        pathNote.textContent = bright ? '밝은 빛 → 중간뇌 → 부교감신경 → 동공 축소' : '어두움 → 교감신경 작용 → 동공 확대';
         muscleNote.textContent = bright
             ? '원형근 수축 (두꺼워짐) · 방사근 이완 ➔ 동공이 작아집니다'
             : '방사근 수축 (두꺼워짐) · 원형근 이완 ➔ 동공이 커집니다';
@@ -264,15 +264,15 @@
     /** 그림 위 딱지: 테두리 상자는 그림에, 글씨는 이름표로 */
     function tag(x, y, str, color) {
         var g = el('g');
-        g.appendChild(el('rect', { x: x - 70, y: y - 14, width: 140, height: 26, rx: 8, fill: 'rgba(6,10,24,0.86)', stroke: color, 'stroke-width': 1.4 }));
         g._text = htmlTag(x, y, str, 'pin');
+        g._text.style.borderColor = color;
         return g;
     }
 
     function setTagText(g, str, color) {
         if (!g || !g._text) return;
         g._text.textContent = str;
-        g.firstChild.setAttribute('stroke', color);
+        g._text.style.borderColor = color;
     }
 
     /* ── 이름표 (HTML) ───────────────────────────────────── */

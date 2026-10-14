@@ -6,7 +6,7 @@ const path = require('node:path');
 const http = require('node:http');
 const puppeteer = require('puppeteer-core');
 const root=path.resolve(__dirname,'..'), room='/learning/arts/instrument-room/';
-const output=path.join(root,'tmp','drum-balance');
+const output=path.join(root,"outputs/qa/drum-balance");
 fs.mkdirSync(output,{recursive:true});
 const server=http.createServer((req,res)=>{
   let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);

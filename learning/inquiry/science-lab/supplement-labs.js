@@ -4,7 +4,17 @@
  const line=(x1,y1,x2,y2,color='#64748b',width=4)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
  const label=(text,x,y,color='#173f50',size=16)=>`<text x="${x}" y="${y}" fill="${color}" font-size="${size}" text-anchor="middle">${text}</text>`;
  const rect=(x,y,w,h,fill)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${fill}"/>`;
- const jar=(x,height,color)=>rect(x,60,110,180,'#edf4f8')+rect(x+6,230-height,98,height,color)+line(x,55,x,235)+line(x,235,x+110,235)+line(x+110,235,x+110,55);
+ const jar=(x,height,color)=>{
+  const top=230-height,glass='observationGlass'+String(x).replace('.','_'),liquid='observationLiquid'+String(x).replace('.','_');
+  const marks=[95,120,145,170,195].map((y,i)=>`<path d="M${x+83} ${y} h${i%2?9:15}" stroke="#698695" stroke-width="1.2" opacity=".65"/>`).join('');
+  return `<g data-observation-beaker><defs><linearGradient id="${glass}"><stop stop-color="#c2d7e1" stop-opacity=".35"/><stop offset=".22" stop-color="#fff" stop-opacity=".15"/><stop offset=".72" stop-color="#dce9ee" stop-opacity=".16"/><stop offset="1" stop-color="#85a8ba" stop-opacity=".32"/></linearGradient><linearGradient id="${liquid}" x1="0" y1="0" x2="1" y2="0"><stop stop-color="${color}"/><stop offset=".42" stop-color="${color}" stop-opacity=".78"/><stop offset="1" stop-color="${color}"/></linearGradient></defs>`+
+   `<ellipse cx="${x+55}" cy="243" rx="63" ry="7" fill="#254754" fill-opacity=".08"/>`+
+   `<path d="M${x} 59 L${x+3} 227 Q${x+3} 237 ${x+14} 237 H${x+96} Q${x+107} 237 ${x+107} 227 L${x+110} 59" fill="url(#${glass})" stroke="#7896a5" stroke-width="2"/>`+
+   `<path data-observation-liquid d="M${x+6} ${top} Q${x+55} ${top+9} ${x+104} ${top} L${x+101} 225 Q${x+101} 231 ${x+94} 231 H${x+16} Q${x+9} 231 ${x+9} 225 Z" fill="url(#${liquid})"/>`+
+   `<ellipse cx="${x+55}" cy="${top}" rx="49" ry="5" fill="${color}" fill-opacity=".7" stroke="#6595a7" stroke-opacity=".65" stroke-width="1"/>`+
+   marks+`<path d="M${x+12} 74 L${x+15} 217" stroke="#fff" stroke-opacity=".72" stroke-width="4" stroke-linecap="round"/>`+
+   `<ellipse cx="${x+55}" cy="59" rx="55" ry="7" fill="none" stroke="#7e9daa" stroke-width="1.5"/><path d="M${x+16} 234 H${x+94}" stroke="#668c9e" stroke-opacity=".55" stroke-width="1.5"/></g>`;
+ };
  const field=(key,title,items)=>({key,title,items:items.map(([value,text])=>({value,text}))});
  const steps=field('stage','관찰 시점',[['before','처음'],['after','변화 뒤']]);
 
@@ -58,12 +68,12 @@
     return{svg,text:{mixed:'소금과 모래는 서로 섞여도 각각의 성질이 남아 있습니다.',dissolve:'소금은 물에 녹고 모래는 녹지 않습니다. 물에 녹는 성질의 차이를 이용합니다.',filter:'거름종이에는 모래가 남고 소금물은 통과합니다. 소금은 아직 물에 녹아 있으므로 소금 회수가 끝난 것이 아닙니다.',evaporate:'거른 소금물에서 물을 증발시키면 소금이 남습니다. 용해 → 거르기 → 증발 순서로 두 고체를 회수합니다.'}[s.stage]||'물에 녹는 성질의 차이를 이용합니다.',note:'증발과 가열 실험은 교사의 지도 아래 진행하세요.'};}
   },
   'heat-transfer':{
-   title:'접촉·대류·복사와 단열',codes:['6과07-02','6과07-03','6과07-04'],initial:{kind:'contact',stage:'before',hot:'80',cold:'20'},
-   fields:s=>[field('kind','관찰할 현상',[['contact','두 물체의 접촉'],['convection','물의 대류'],['radiation','빛에 의한 열 이동'],['insulation','단열 비교']]),steps,...(s.kind==='contact'?[field('hot','따뜻한 물의 처음 온도',[['60','60 ℃'],['80','80 ℃']]),field('cold','차가운 물의 처음 온도',[['20','20 ℃'],['40','40 ℃']])]:[])],
+   title:'접촉·대류·복사와 단열',codes:['6과07-02','6과07-03','6과07-04'],initial:{kind:'contact',stage:'before',hot:'80',cold:'20',minutes:'15'},
+   fields:s=>[field('kind','관찰할 현상',[['contact','두 물체의 접촉'],['convection','물의 대류'],['radiation','빛에 의한 열 이동'],['insulation','단열 비교']]),steps,...(s.kind==='contact'?[field('hot','따뜻한 물의 처음 온도',[['60','60 ℃'],['80','80 ℃']]),field('cold','차가운 물의 처음 온도',[['20','20 ℃'],['40','40 ℃']])]:s.kind==='insulation'?[field('minutes','비교 시간',[['5','5분'],['15','15분'],['30','30분']])]:[])],
    view(s){const after=s.stage==='after';if(s.kind==='contact'){const mean=(+s.hot + +s.cold)/2;return{svg:jar(75,120,'#f7a78e')+jar(280,120,'#82bce4')+label((after?mean:s.hot)+' ℃',130,35)+label((after?mean:s.cold)+' ℃',335,35)+line(185,180,280,180,'#64748b',6)+label(after?'충분한 시간 뒤 같은 온도':'접촉하여 열이 이동',230,265),text:after?'따뜻한 물의 온도는 내려가고 차가운 물의 온도는 올라갑니다. 열이 온도가 높은 쪽에서 낮은 쪽으로 이동하기 때문입니다.':'온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.',note:'같은 양의 물과 같은 용기를 사용하며, 주변으로 열이 빠져나가지 않는 조건입니다.'};}
     if(s.kind==='convection')return{svg:jar(175,150,'#9bceeb')+rect(190,247,80,12,after?'#ef8b44':'#9ca3af')+(after?label('↑',205,150,'#c94d29',48)+label('↓',255,150,'#3577a2',48):label('가열 전',230,35)),text:after?'아래쪽에서 데워진 물이 올라가고 다른 쪽 물이 내려오며 물이 움직여 열을 옮깁니다. 이런 열 이동을 대류라고 합니다.':'물의 아래쪽을 가열하기 전과 후를 비교합니다. 색과 화살표는 물의 움직임을 보기 쉽게 한 표시입니다.',note:''};
     if(s.kind==='radiation')return{svg:'<circle cx="85" cy="130" r="35" fill="'+(after?'#fbbf24':'#cbd5e1')+'"/>'+rect(295,95,70,80,'#4b5563')+(after?[110,130,150].map(y=>line(128,y,282,y,'#d97706',3)).join(''):'')+label(after?'빛을 비춤':'빛을 비추기 전',100,215)+label(after?'온도가 올라감':'처음 온도',330,215),text:after?'빛을 받은 물체의 온도가 올라갈 수 있습니다. 빛을 통해 열이 이동하는 것을 복사라고 합니다.':'빛을 비추기 전의 물체 온도를 기록하고, 빛을 받은 뒤와 비교합니다.',note:'강한 광원을 직접 바라보지 마세요.'};
-    return{svg:jar(75,110,'#f5b58f')+jar(280,110,'#f5b58f')+rect(65,170,130,65,'#c9b99d')+label('단열재로 감쌈',130,35)+label('감싸지 않음',335,35)+label(after?'더 따뜻하게 유지':'같은 처음 온도',130,275)+label(after?'더 빨리 식음':'같은 처음 온도',335,275),text:after?'다른 조건을 같게 하면 단열재로 감싼 용기는 주변과의 열 이동이 줄어 더 오래 따뜻하게 유지될 수 있습니다.':'같은 물의 양과 처음 온도, 같은 용기를 사용하고 단열재 유무만 다르게 합니다.',note:'단열재는 열 이동을 줄여 줍니다. 열 이동을 완전히 막지는 못합니다.'};}
+    return window.scienceObservationScenes.insulation(s);}
   },
   'light-shadow':{
    title:'빛의 반사와 굴절 관찰',codes:['6과02-02'],initial:{kind:'mirror',setting:'one'},
@@ -76,11 +86,6 @@
    fields:[field('light','빛을 받은 부분',[['all','잎 전체'],['half','잎 절반만'],['none','빛을 받지 않음']]),field('stage','아이오딘 반응 관찰',[['before','처리 전'],['after','준비된 잎의 반응 확인']])],
    view(s){const tested=s.stage==='after',left=tested?(s.light==='none'?'#c8a46e':'#293e68'):'#7dab64',right=tested?(s.light==='all'?'#293e68':'#c8a46e'):'#7dab64';return{svg:'<defs><clipPath id="starchLeaf"><ellipse cx="230" cy="145" rx="85" ry="110"/></clipPath></defs><g clip-path="url(#starchLeaf)">'+rect(135,25,95,240,left)+rect(230,25,95,240,right)+'</g>'+line(230,45,230,260,'#607550',3)+label(tested?'청람색 부분: 녹말 검출':'빛을 가린 부분과 받은 부분 비교',230,285),text:tested?'빛을 받아 녹말이 만들어진 부분은 아이오딘 용액과 반응하여 청람색을 띱니다. 가린 부분과 비교하여 빛의 필요성을 알아봅니다.':'먼저 잎에 남아 있던 녹말을 없앤 식물을 사용하며, 물·이산화 탄소를 충분히 공급하고 빛 이외의 조건은 같게 합니다. 필요한 전처리를 마친 잎의 반응을 비교하는 모형입니다.',note:'교사가 준비한 잎을 사용하고 알코올을 직접 가열하지 마세요. 식물은 낮과 밤 모두 호흡합니다.'};}
   },
-  'living-environment':{
-   title:'한 줄 먹이사슬을 먹이그물로 연결하기',codes:['4과14-02'],initial:{missing:'none'},
-   fields:[field('missing','모형에서 줄어든 생물',[['none','모두 있음'],['rabbit','토끼가 줄어듦'],['mouse','쥐가 줄어듦']])],
-   view(s){const nodes={grass:[70,240,'풀'],seed:[360,240,'씨앗'],rabbit:[65,135,'토끼'],mouse:[225,135,'쥐'],bird:[375,135,'새'],fox:[110,40,'여우'],hawk:[345,40,'매']};const links=[['grass','rabbit'],['grass','mouse'],['seed','mouse'],['seed','bird'],['rabbit','fox'],['mouse','fox'],['mouse','hawk'],['bird','hawk']];let svg='<defs><marker id="foodArrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#628174"/></marker></defs>';for(const [from,to]of links){if([from,to].includes(s.missing))continue;const a=nodes[from],b=nodes[to];svg+=`<line x1="${a[0]}" y1="${a[1]-15}" x2="${b[0]}" y2="${b[1]+18}" stroke="#628174" stroke-width="2" marker-end="url(#foodArrow)"/>`;}for(const [key,[x,y,name]]of Object.entries(nodes))svg+=rect(x-32,y-17,64,32,key===s.missing?'#e5e7eb':'#d6e8cf')+label(name,x,y+5,key===s.missing?'#9ca3af':'#173f50');return{svg,text:s.missing==='none'?'한 생물은 여러 먹이를 먹거나 여러 생물에게 먹힐 수 있습니다. 여러 먹이사슬이 서로 연결되면 먹이그물이 됩니다.':s.missing==='rabbit'?'토끼가 줄어도 여우는 쥐를 먹을 수 있습니다. 먹이 관계가 여러 갈래이면 다른 먹이를 이용할 가능성이 있습니다.':'쥐가 줄면 여우와 매의 먹이 관계에 영향을 줍니다. 여우에게는 토끼, 매에게는 새와의 관계가 남아 있습니다.',note:'화살표는 먹이가 되는 생물에서 먹는 생물로 향합니다.'};}
-  },
   'acid-base':{
    title:'산성 용액과 염기성 용액을 섞을 때',codes:['6과09-02'],initial:{drops:'0'},
    fields:[field('drops','지시약을 넣은 산성 용액에 염기성 용액 더하기',[['0','더하기 전'],['2','조금 더함'],['4','더 더함'],['6','충분히 더함']])],
@@ -90,26 +95,82 @@
  Object.assign(specs,window.scienceSupplementExtensions?.({line,label,rect,jar,field})||{});
  Object.assign(specs,window.scienceCoreExtensions?.({line,label,rect,jar,field},specs)||{});
  const path=location.pathname.split('/').filter(Boolean);const slug=path.at(-1)==='index.html'?path.at(-2):path.at(-1),spec=specs[slug];
- if(!spec)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=6',document.currentScript.src);document.head.append(css);
+ if(!spec||document.getElementById('mbLab')||document.getElementById('rsLab'))return;
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=e266796934a5',document.currentScript.src);document.head.append(css);
  const assetBase=new URL('.',document.currentScript.src);
  const section=document.createElement('section');section.className='panel curriculum-supplement';section.setAttribute('aria-label',spec.title);
  const h=document.createElement('h2');h.textContent=spec.title;const controls=document.createElement('div');controls.className='supplement-controls';
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 460 310');svg.setAttribute('role','img');svg.setAttribute('aria-label',spec.title+' 관찰 모형');
  const observation=document.createElement('p');observation.className='supplement-observation';observation.setAttribute('aria-live','polite');
  const note=document.createElement('p');note.className='supplement-guidance';
+ const soundControls=document.createElement('div');soundControls.className='supplement-audio';soundControls.hidden=true;
+ const listen=document.createElement('button');listen.type='button';listen.className='supplement-listen';listen.textContent='이 조건의 소리 듣기';
+ const soundStatus=document.createElement('span');soundStatus.setAttribute('role','status');soundControls.append(listen,soundStatus);
+ let audioContext,oscillator,currentGain,audioModel,audioGeneration=0;
+ function stopSound(){audioGeneration++;if(oscillator){oscillator.onended=null;try{oscillator.stop();}catch{}oscillator.disconnect();oscillator=null;}currentGain?.disconnect();currentGain=null;listen.disabled=false;soundStatus.textContent='';}
+ listen.addEventListener('click',async()=>{
+  stopSound();const generation=audioGeneration,model=audioModel;listen.disabled=true;
+  try{
+   const Context=window.AudioContext||window.webkitAudioContext;if(!Context)throw Error('Audio unavailable');
+   audioContext??=new Context();let resumeTimer;
+   try{await Promise.race([audioContext.resume(),new Promise((_,reject)=>{resumeTimer=setTimeout(()=>reject(Error('Audio did not start')),2500);})]);}finally{clearTimeout(resumeTimer);}
+   if(generation!==audioGeneration)return;if(audioContext.state!=='running')throw Error('Audio is not running');
+   const tone=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;oscillator=tone;currentGain=gain;
+   tone.frequency.value=model.frequency;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.05*model.amplitude,now+.03);gain.gain.setValueAtTime(.05*model.amplitude,now+.5);gain.gain.linearRampToValueAtTime(0,now+.6);
+   tone.connect(gain);gain.connect(audioContext.destination);soundStatus.textContent=' 비교음 재생 중';
+   tone.onended=()=>{tone.disconnect();gain.disconnect();if(generation===audioGeneration){oscillator=null;currentGain=null;listen.disabled=false;soundStatus.textContent=' 재생 끝';}};
+   tone.start(now);tone.stop(now+.61);
+  }catch{if(generation===audioGeneration){stopSound();audioContext?.close().catch(()=>{});audioContext=null;soundStatus.textContent=' 소리를 재생할 수 없습니다. 파형으로 비교해 주세요.';}}
+ });
+ window.addEventListener('pagehide',()=>{stopSound();audioContext?.close();audioContext=null;});
  const reset=document.createElement('button');reset.type='button';reset.className='supplement-reset';reset.textContent='이 탐구 처음으로';
  const checkpoint=document.createElement('div');checkpoint.className='supplement-check';checkpoint.setAttribute('aria-label','관찰 확인 문제');
  const body=document.createElement('div');body.className='supplement-body';
  const visual=document.createElement('div');visual.className='supplement-visual';visual.append(svg);
  const reading=document.createElement('div');reading.className='supplement-reading';
  const observationHeading=document.createElement('h3');observationHeading.textContent='관찰해 보세요';
- reading.append(observationHeading,observation,note,checkpoint);body.append(visual,reading);
+ reading.append(observationHeading,observation,soundControls,note,checkpoint);body.append(visual,reading);
  const sources=document.createElement('details');sources.className='supplement-sources';
  const sourceTitle=document.createElement('summary');sourceTitle.textContent='사진 정보';sources.append(sourceTitle);
  section.append(h,controls,body,sources,reset);const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(section);else document.querySelector('main').append(section);
  let state={...spec.initial};
+ const questionStates=new Map();
+ const assessment=()=>document.querySelector('.quiz-section')?.scienceAssessment;
+ // Preserve response identity when apparatus controls redraw the same item.
+ function observationQuestion(check){
+  const identity=JSON.stringify([check.question,check.choices]);let a=2166136261,b=5381;
+  for(const ch of identity){a=Math.imul(a^ch.charCodeAt(0),16777619)>>>0;b=(Math.imul(b,33)^ch.charCodeAt(0))>>>0;}
+  return{id:slug+'#observation-'+a.toString(16)+'-'+b.toString(16),question:check.question,choices:check.choices.map((text,i)=>({id:String(i),text})),answer:String(check.answer),why:check.why,feedback:check.feedback};
+ }
+ let observationBank=null,connectedAssessment=null;
+ function connectObservations(controller){
+  if(!controller||connectedAssessment===controller)return;
+  if(!observationBank){
+   const seen=new Set(),pending=[{...spec.initial}],questions=new Map();
+   while(pending.length){
+    const sample=pending.pop(),fields=typeof spec.fields==='function'?spec.fields(sample):spec.fields;
+    for(const f of fields)if(!f.items.some(o=>o.value===sample[f.key]))sample[f.key]=f.items[0].value;
+    const key=JSON.stringify(sample);if(seen.has(key))continue;seen.add(key);
+    const check=spec.view(sample).check;
+    if(check){const q=observationQuestion(check);questions.set(q.id,q);if(!questionStates.has(q.id))questionStates.set(q.id,{...sample});}
+    for(const f of fields)for(const o of f.items)pending.push({...sample,[f.key]:o.value});
+   }
+   observationBank=[...questions.values()];
+  }
+  // Register every condition's question so a reload also restores responses
+  // to modes other than the initially displayed one.
+  controller.register(observationBank);connectedAssessment=controller;
+ }
+ document.addEventListener('science-assessment-ready',()=>render(),{once:true});
+ document.querySelector('.quiz-section')?.addEventListener('science-assessment-reset',()=>render());
+ document.querySelector('.quiz-section')?.addEventListener('science-review-question',event=>{
+  const previous=questionStates.get(event.detail);if(!previous)return;
+  state={...previous};render();checkpoint.scrollIntoView({block:'center'});
+  const heading=checkpoint.querySelector('h3');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+ });
  function render(){
+  stopSound();
+  connectObservations(assessment());
   const fields=typeof spec.fields==='function'?spec.fields(state):spec.fields;
   for(const f of fields)if(!f.items.some(o=>o.value===state[f.key]))state[f.key]=f.items[0].value;
   controls.replaceChildren();for(const f of fields){const set=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=f.title;set.append(legend);for(const o of f.items){const b=document.createElement('button');b.type='button';b.textContent=o.text;b.dataset.supplementChoice=f.key;b.dataset.value=o.value;b.setAttribute('aria-pressed',String(state[f.key]===o.value));b.addEventListener('click',()=>{state[f.key]=o.value;render();controls.querySelector(`[data-supplement-choice="${f.key}"][data-value="${o.value}"]`)?.focus({preventScroll:true});});set.append(b);}controls.append(set);}
@@ -133,11 +194,22 @@
    const photoInfo=document.createElement('p');photoInfo.textContent=result.media.info||'두 표본의 실제 크기 비율과 화면의 크기는 다릅니다. 확대는 사진의 일부를 크게 보여 줍니다. 숫자와 색칠한 부분은 표본 관리 표시입니다.';sources.append(photoInfo);
   }else{svg.innerHTML=result.svg;visual.append(svg);}
   observation.textContent=result.text;note.textContent=result.note;note.hidden=!result.note;
-  checkpoint.replaceChildren();if(result.check){const q=result.check;const heading=document.createElement('h3');heading.textContent=q.question;const feedback=document.createElement('p');feedback.className='supplement-check-feedback';feedback.setAttribute('aria-live','polite');checkpoint.append(heading);q.choices.forEach((choice,i)=>{const button=document.createElement('button');button.type='button';button.dataset.checkAnswer=String(i);button.textContent=choice;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{const correct=String(i)===q.answer;
-    button.setAttribute('aria-pressed','true');button.dataset.correct=String(correct);button.disabled=true;
-    if(correct){checkpoint.querySelectorAll('button').forEach(b=>{b.disabled=true;});feedback.textContent='정답입니다. '+q.why;}
-    else{feedback.textContent='다시 관찰하고 다른 답을 골라 보세요.';}
-    feedback.dataset.correct=String(correct);});checkpoint.append(button);});checkpoint.append(feedback);}
+  audioModel=result.audio;soundControls.hidden=!audioModel;
+  checkpoint.replaceChildren();if(result.check){
+   const q=observationQuestion(result.check),controller=assessment();
+   checkpoint.dataset.questionId=q.id;questionStates.set(q.id,{...state});controller?.register([q]);
+   const heading=document.createElement('h3');heading.textContent=q.question;const feedback=document.createElement('p');feedback.className='supplement-check-feedback';feedback.setAttribute('aria-live','polite');checkpoint.append(heading);
+   function show(record){
+    feedback.textContent=record?window.scienceAssessment.feedback(q,record)+(record.correct&&!record.firstCorrect&&q.feedback?.[record.first]?' 처음 선택을 돌아보면: '+q.feedback[record.first]:''):'';
+    if(record)feedback.dataset.correct=String(record.correct);else delete feedback.dataset.correct;
+    for(const b of checkpoint.querySelectorAll('button')){
+     const choice=b.dataset.checkAnswer;b.disabled=!controller||!!record?.correct||!!record?.attempts.includes(choice);
+     b.setAttribute('aria-pressed',String(record?.last===choice));
+     if(record?.attempts.includes(choice))b.dataset.correct=String(choice===q.answer);else delete b.dataset.correct;
+    }
+   }
+   q.choices.forEach(choice=>{const button=document.createElement('button');button.type='button';button.dataset.checkAnswer=choice.id;button.textContent=choice.text;button.addEventListener('click',()=>{if(!button.disabled&&controller)show(controller.submit(q.id,choice.id));});checkpoint.append(button);});checkpoint.append(feedback);show(controller?.store.evidence(q.id));
+  }else delete checkpoint.dataset.questionId;
   checkpoint.hidden=!result.check;
  }
  reset.addEventListener('click',()=>{state={...spec.initial};render();});render();

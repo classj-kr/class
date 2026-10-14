@@ -1,0 +1,18 @@
+163 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (133.5823ms)
+✔ every science lab JavaScript file parses (81.1763ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9051ms)
+✔ wiring gate requires shared ground, power, matching input and uploaded program (0.8316ms)
+✔ optical sample count and period estimates expose coherent undersampling (1.9325ms)
+✔ sound adds intensities; distance and attenuation are separate; sampling follows setting (1.3963ms)
+✔ two-point calibration and stateful control distinguish command from actual pumping (0.4061ms)
+✔ chromium: sensor acquisition and closed-loop design, feedback, reset and mobile (4479.4116ms)
+✔ webkit: sensor acquisition and closed-loop design, feedback, reset and mobile (9381.2678ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13945.2228

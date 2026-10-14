@@ -80,17 +80,17 @@ const CHAPTERS = [
                     "이반은 새벽에 그것을 알았지요. \"어떡하지! 다 빼앗겼어!\""
                 ],
                 "right": [
-                    "그때 조랑말이 귀를 쫑긋 세웠습니다. \"내 등에 올라타.\"",
-                    "이반은 긴가민가하면서 올라탔지요. 그런데 조랑말은 바람처럼 달렸습니다. 작은데도 어찌나 빠른지 몰랐지요.",
-                    "금세 형들을 따라잡았습니다. 형들은 눈이 휘둥그레졌지요."
+                    "조랑말이 귀를 쫑긋 세웠습니다. \"내 등에 올라타.\"",
+                    "이반은 얼른 올라탔지요. 조랑말은 바람처럼 달렸습니다.",
+                    "금세 형들을 따라잡았습니다. 형들은 눈이 휘둥그레졌지요. 그러고는 머리를 긁적였습니다. \"미안하다, 이반. 집이 너무 가난해서 그랬다.\""
                 ]
             },
             {
                 "art": "03-palace-2.webp",
                 "emoji": "🏰",
                 "left": [
-                    "세 형제는 함께 도시로 갔습니다. 양파 모양 지붕이 즐비한 도시였지요. 시장에 말을 세우자 사람들이 몰려들었습니다.",
-                    "마침 임금님이 지나가던 참이었지요. 임금님은 걸음을 딱 멈췄습니다.",
+                    "이반은 형들을 용서하고 말을 팔아 돈을 나누기로 했습니다. 셋은 함께 도시로 갔습니다. 양파 모양 지붕이 즐비한 도시였지요. 시장에 말을 세우자 사람들이 몰려들었습니다.",
+                    "마침 임금님이 지나가다 걸음을 딱 멈췄습니다.",
                     "\"이런 말은 처음 보는구나!\""
                 ],
                 "right": [
@@ -669,14 +669,14 @@ const EN = {
                         "And the little horse ran like the wind.",
                         "Small as he was, there was no keeping up with him.",
                         "He caught the brothers in no time.",
-                        "Their eyes went round at the sight."
+                        "Their eyes went round at the sight. Then they scratched their heads. \"We're sorry, Ivan. We only did it because home is so poor.\""
                     ]
                 },
                 {
                     art: '03-palace-2.webp',
                     emoji: '🏰',
                     left: [
-                        "The three brothers went on to the city together.",
+                        "Ivan forgave them, and they agreed to sell the horses and share the money. The three brothers went on to the city together.",
                         "It was a city of onion-shaped domes.",
                         "When they stood the horses in the market, a crowd gathered.",
                         "And the Tsar happened to be passing.",
@@ -1140,12 +1140,14 @@ const WORDS_KO = {
         { w: "한숨을 쉬다", k: "걱정스러워 숨을 크게 내쉬다.", s: "조랑말은 한숨을 쉬었지요." },
         { w: "소문", k: "사람들 사이에 퍼진 말.", s: "소문은 금세 퍼졌지요." },
         { w: "귀에 들어가다", k: "어떤 말이 남에게 알려지다.", s: "아니나 다를까 임금님 귀에도 들어갔습니다." },
-        { w: "번쩍이다", k: "빛이 갑자기 세게 나다.", s: "임금님의 눈이 욕심으로 번쩍였지요." }
+        { w: "번쩍이다", k: "빛이 갑자기 세게 나다.", s: "임금님의 눈이 욕심으로 번쩍였지요." },
+        { w: "하인", k: "옛날에 남의 집이나 궁궐에 살면서 청소, 심부름 같은 일을 해 주던 사람.", s: "다른 하인들이 그것을 보았습니다." }
     ],
     "05-firebird.webp": [
         { w: "수염", k: "입 주변과 턱에 난 털.", s: "임금님은 수염을 쓰다듬었습니다." },
         { w: "사흘", k: "세 날. 삼 일.", s: "\"깃털을 주웠으니 새도 잡아 오너라. 사흘 안에 못 잡으면 큰일 날 줄 알아라.\"" },
-        { w: "마구간", k: "말을 기르는 칸.", s: "마구간으로 돌아와 주저앉았습니다." }
+        { w: "마구간", k: "말을 기르는 칸.", s: "마구간으로 돌아와 주저앉았습니다." },
+        { w: "자루", k: "곡식이나 물건을 담는, 천으로 만든 크고 길쭉한 주머니. 입구를 끈으로 묶는다.", s: "밀 한 자루와 포도주를 챙겨." }
     ],
     "05-firebird-2.webp": [
         { w: "골고루", k: "빠짐없이 고르게.", s: "포도주도 그릇에 골고루 부었지요." },

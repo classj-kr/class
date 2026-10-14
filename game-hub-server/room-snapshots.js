@@ -19,8 +19,7 @@ const TRANSIENT_ROOM_KEYS = new Set([
   "rummikubTimer",
   "gemguildTimer",
   "beantradingTimer",
-  "kingdomtrailsTimer",
-  "quizraceBroadcastTimer"
+  "kingdomtrailsTimer"
 ]);
 
 function hashClientToken(value) {

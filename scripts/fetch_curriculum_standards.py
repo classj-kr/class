@@ -1,4 +1,4 @@
-"""고등 사회·과학 성취기준·성취수준 원문을 내려받아 글만 뽑아 tmp/curriculum에 둔다.
+"""고등 사회·과학 성취기준·성취수준 원문을 내려받아 글만 뽑아 references/moe/local-source에 둔다.
 
 출처: 국가교육과정정보센터(NCIC) 성취수준 자료실. 2022 개정 교육과정의
 성취기준 문장과 성취수준 서술이 그대로 담겨 있어, 교과서에서 실제로 쓰는
@@ -12,7 +12,7 @@ import urllib.request
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, 'tmp/curriculum')
+OUT = os.path.join(ROOT, 'references/moe/local-source')
 
 # 글번호와 파일이름은 NCIC 성취수준 게시판(/bbs/standard/)에서 딴 것이다
 DOCUMENTS = [

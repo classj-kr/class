@@ -79,7 +79,7 @@ const CHAPTERS = [
                 "left": [
                     "이튿날 아침이었습니다. 임금님은 늘 하던 대로 거울 앞에 앉았지요.",
                     "그런데 무언가 이상했습니다. 머리 위로 길쭉한 것이 솟아 있었지요.",
-                    "임금님은 손을 뻗어 만져 보았습니다. 털이 보송보송했지요."
+                    "임금님은 손을 뻗어 만져 보았습니다. 털이 보송보송했지요. 그제야 어제 아폴론이 한 말이 떠올랐지요."
                 ],
                 "right": [
                     "틀림없는 당나귀 귀였습니다.",
@@ -669,7 +669,7 @@ const EN = {
                         "And something was wrong.",
                         "Two long things stood up above his head.",
                         "The king reached up and felt them.",
-                        "They were covered in soft fur."
+                        "They were covered in soft fur. Only then did he remember what Apollo had said the day before."
                     ],
                     right: [
                         "They were donkey's ears, and no mistake.",
@@ -1137,7 +1137,8 @@ const WORDS_KO = {
     "03-ears-2.webp": [
         { w: "겨우", k: "힘들게 가까스로.", s: "귀가 겨우 감춰졌지요." },
         { w: "고개를 갸웃하다", k: "이상해서 고개를 한쪽으로 기울이다.", s: "신하들이 고개를 갸웃하며 수군거렸습니다." },
-        { w: "까닭", k: "그렇게 된 이유.", s: "아무도 까닭을 알지 못했지요." }
+        { w: "까닭", k: "그렇게 된 이유.", s: "아무도 까닭을 알지 못했지요." },
+        { w: "신하", k: "임금 곁에서 임금이 시키는 일을 하고 나랏일을 돕는 사람.", s: "신하들이 고개를 갸웃하며 수군거렸습니다." }
     ],
     "04-barber.webp": [
         { w: "걸어 잠그다", k: "문을 닫고 걸쇠를 걸다.", s: "문을 걸어 잠그고 둘만 남았지요." },

@@ -1,0 +1,80 @@
+{
+  "slug": "interference",
+  "engine": "chromium",
+  "modes": [
+    "superpose",
+    "standing"
+  ],
+  "cases": 16,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__interfModel",
+      "methods": [
+        "X0",
+        "X1",
+        "LAM",
+        "AMP",
+        "ROW1",
+        "ROW2",
+        "ROW3",
+        "STRING_Y",
+        "STRING_A",
+        "SLOW",
+        "BENCH",
+        "state",
+        "analyseSuper",
+        "analyseStanding",
+        "analyse",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "superpose",
+      "results": [
+        {
+          "choice": "constructive",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "partial",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "destructive",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "standing",
+      "results": [
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "near",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "low",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}

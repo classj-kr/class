@@ -1,0 +1,17 @@
+{
+  "source": "NOAA ETOPO1 Ice Surface, grid registered, 1 arc-minute",
+  "sourceSha256": "e4c4d8a98aba483012ebafd304942d09e4b880e1e596016573493c1b9536ddb3",
+  "bounds": [
+    105,
+    20,
+    150,
+    50
+  ],
+  "shape": [
+    1801,
+    2701
+  ],
+  "encoding": "R*256+G-32768 metres; B=0; land clamped to sea level",
+  "bytes": 1986596,
+  "allPixelsVerified": true
+}

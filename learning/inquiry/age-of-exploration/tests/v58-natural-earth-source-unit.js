@@ -7,9 +7,12 @@ const base=path.join(root,'public/assets/maps/natural-earth-v58');
 const manifest=JSON.parse(fs.readFileSync(path.join(base,'manifest.json'),'utf8'));
 assert.deepEqual({width:manifest.width,height:manifest.height,tileSize:manifest.tileSize,cols:manifest.cols,rows:manifest.rows,format:manifest.format},
   {width:16200,height:8100,tileSize:1024,cols:16,rows:8,format:'webp'});
-const source=path.join(base,manifest.sourceFile);
+assert.equal(manifest.sourceRoot,'repository');
+assert.equal(manifest.sourceFile,'references/geography/natural-earth-v58/3_no_ice_clouds_16k.jpg');
+const source=path.resolve(root,'../../..',manifest.sourceFile);
 assert.ok(fs.existsSync(source),'16K source image missing');
 assert.equal(fs.statSync(source).size,manifest.sourceBytes);
+assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(source)).digest('hex'),manifest.sourceSha256);
 assert.ok(manifest.sourceBytes>25_000_000,'source must be the full 16K file, not a preview');
 const tiles=fs.readdirSync(path.join(base,'tiles')).filter(f=>/^tile_\d+_\d+\.webp$/.test(f));
 assert.equal(tiles.length,128);

@@ -1,0 +1,10 @@
+✔ official 2022 areas and courses, and one auditable primary placement per app (217.6969ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4501.7892ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4973.1091

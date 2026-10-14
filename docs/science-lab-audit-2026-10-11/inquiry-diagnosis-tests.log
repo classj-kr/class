@@ -1,0 +1,45 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (14.4962ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (1.0277ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1281ms)
+✖ all supplied existing questions and new transfer items have valid assessment feedback (63.7554ms)
+chromium: 132 apps / 528 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (18869.6798ms)
+webkit: 132 apps / 528 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (22344.2823ms)
+✔ Mendeleev: textbook 19-card set, mass order and chemical grouping are independent constraints (1.1382ms)
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.1522ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.5968ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.2889ms)
+✔ chromium: source-specific controls, full question flow and mobile scenes (37824.3883ms)
+✔ webkit: source-specific controls, full question flow and mobile scenes (99572.2559ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137497.1854
+
+✖ failing tests:
+
+test at tests\science-assessment.test.cjs:23:1
+✖ all supplied existing questions and new transfer items have valid assessment feedback (63.7554ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(item.why.length>20)
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-assessment.test.cjs:26:238)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

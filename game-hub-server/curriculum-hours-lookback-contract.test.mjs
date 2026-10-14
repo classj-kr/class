@@ -3,8 +3,8 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const schoolAdminAppSource = await readFile(new URL("../schooladmin/app.js", import.meta.url), "utf8");
-const schoolAdminIndexSource = await readFile(new URL("../schooladmin/index.html", import.meta.url), "utf8");
+const schoolAdminAppSource = await readFile(new URL("../apps/schooladmin/app.js", import.meta.url), "utf8");
+const schoolAdminIndexSource = await readFile(new URL("../apps/schooladmin/index.html", import.meta.url), "utf8");
 
 function handlerBody(source, routeSignature) {
   const start = source.indexOf(routeSignature);

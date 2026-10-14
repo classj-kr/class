@@ -1,0 +1,11 @@
+✔ sound resonance: adjacent peaks/nodes, end correction, frequency invariance and skipped positions (0.722ms)
+✔ chromium: two sound apparatuses, measurement correction, independent diagnostic questions and five viewports (10362.1312ms)
+✔ webkit: two sound apparatuses, measurement correction, independent diagnostic questions and five viewports (8739.9313ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19167.1935

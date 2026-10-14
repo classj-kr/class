@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 회전 원판과 구슬의 전향 효과</title><meta name="description" content="2022 교육과정 · 회전 원판과 구슬의 전향 효과의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../rotating-disc.css?v=46ad9c9cfe55"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>회전 원판과 구슬의 전향 효과</h1><div class="grade-tags"><span>고(선택)</span><span>지구시스템과학</span></div></header><p class="intro">같은 방향으로 굴린 구슬이 종이에는 어떤 흔적을 남길까요? 원판의 회전만 바꾸어 비교하세요.</p><section class="rd-lab"><header><span>회전과 관찰 기준</span><h2>구슬은 곧게, 흔적은 휘어질까?</h2></header><ol class="rd-steps"><li>원판의 회전 조건을 고릅니다.</li><li>새 종이를 놓고 중심에 구슬을 준비합니다.</li><li>같은 방향·속력으로 굴려 흔적을 비교합니다.</li></ol><fieldset><legend>원판의 회전</legend><div class="rd-choices"><button data-rd-trial="still" aria-pressed="true">정지</button><button data-rd-trial="ccw-slow" aria-pressed="false">반시계 · 느리게</button><button data-rd-trial="ccw-fast" aria-pressed="false">반시계 · 빠르게</button><button data-rd-trial="cw-slow" aria-pressed="false">시계 · 느리게</button><button data-rd-trial="cw-fast" aria-pressed="false">시계 · 빠르게</button></div></fieldset><div class="rd-actions"><button id="rdPrepare">새 종이 · 구슬 준비</button><button id="rdPlay" class="primary">구슬 굴리기</button><button id="rdStep">1초씩 보기</button><output id="rdTime" aria-label="이동 시간">0.0 / 4.0초</output></div><div class="rd-scenes"><section class="rd-view"><h3>실험대에서 본 이동</h3><p>회전하지 않는 위치에서 관찰</p><div id="rdLabView"></div><div class="rd-key"><i class="space"></i>공간에 고정한 이동 경로</div></section><section class="rd-view"><h3>종이에 남은 흔적</h3><p>종이의 기준선을 고정해 비교</p><div id="rdPaperView"></div><div class="rd-key"><i></i>종이에 찍힌 잉크 자국</div></section></div><p id="rdStatus" class="rd-status" aria-live="polite"></p><section class="rd-comparison"><h3>다섯 조건의 흔적 비교</h3><div id="rdResults" class="rd-results"></div></section><p class="rd-condition">중심에서 같은 방향·속력으로 출발합니다. 구슬과 원판 사이의 마찰은 무시합니다.</p><button id="rdReset">전체 다시 시작</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>마찰을 무시하고 원판 중심에서 구슬을 곧게 굴렸다. 원판이 반시계 방향으로 돌 때, 고정된 실험대에서 본 이동 / 종이에 남은 흔적은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 직선 / 진행 방향 오른쪽으로 휨</label>
+<label><input type="radio" name="q1" value="b"> 직선 / 진행 방향 왼쪽으로 휨</label>
+<label><input type="radio" name="q1" value="c"> 오른쪽으로 휨 / 직선</label>
+<label><input type="radio" name="q1" value="d"> 왼쪽으로 휨 / 직선</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>구슬은 고정된 실험대 기준으로 곧게 이동합니다. 구슬 아래의 종이가 반시계 방향으로 돌아가므로 종이에는 진행 방향 오른쪽으로 휜 흔적이 남습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>중심에서 같은 방향·속력으로 구슬을 굴렸다. 반시계 회전이 느린 A보다 빠른 B에서 종이에 남는 흔적은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 왼쪽으로 더 많이 휜다.</label>
+<label><input type="radio" name="q2" value="b"> 왼쪽으로 더 적게 휜다.</label>
+<label><input type="radio" name="q2" value="c"> 오른쪽으로 더 많이 휜다.</label>
+<label><input type="radio" name="q2" value="d"> 오른쪽으로 더 적게 휜다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 이동 시간 동안 B의 종이가 더 큰 각도만큼 회전하므로 오른쪽으로 휘어지는 정도가 더 큽니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>회전 속도에 따른 흔적의 차이를 비교한다. 두 실험의 구슬을 같은 출발점에서 굴릴 때 추가로 같게 유지해야 하는 조건은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 원판의 회전 속도와 흔적 모양</label>
+<label><input type="radio" name="q3" value="b"> 구슬의 출발 방향과 처음 속력</label>
+<label><input type="radio" name="q3" value="c"> 구슬의 질량과 마지막 도착 방향</label>
+<label><input type="radio" name="q3" value="d"> 원판의 회전 속도와 구슬의 색</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>구슬의 출발 방향과 속력을 같게 유지하고 원판의 회전 속도만 바꾸어야 흔적 차이를 회전 속도와 연결할 수 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>지구의 서로 다른 위도에서 같은 속력으로 수평 이동하는 공기를 비교한다. 고위도에서 전향 효과가 더 큰 까닭은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 지표의 자전 선속력이 고위도에서 더 크다.</label>
+<label><input type="radio" name="q4" value="b"> 지구가 한 바퀴 도는 시간이 고위도에서 더 짧다.</label>
+<label><input type="radio" name="q4" value="c"> 같은 부피의 공기 질량이 고위도에서 항상 더 크다.</label>
+<label><input type="radio" name="q4" value="d"> 지역 연직축 방향의 자전 성분이 고위도에서 더 크다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>지구 자전 각속도는 같지만 지역 연직축 방향의 성분 Ωsinφ는 위도의 절댓값이 커질수록 커집니다. 같은 수평 속력에서 전향 효과도 커집니다.</p>
+</article></details></main><script src="../rotating-disc-model.js?v=a9ebd7310b7d"></script><script src="../rotating-disc.js?v=bb6d5609d5f6"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

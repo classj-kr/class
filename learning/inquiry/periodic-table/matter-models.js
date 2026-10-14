@@ -30,14 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const $ = id => document.getElementById(id);
     const fmt = (n, places=1) => Number(n).toFixed(places);
     root.innerHTML = `<div class="matter-layout"><nav class="matter-nav" aria-label="물질 모형 주제">${modules.map((m,i)=>`${i===0||modules[i-1].group!==m.group?`<h2>${m.group}</h2>`:''}<button type="button" data-model="${m.id}" aria-pressed="${m.id===active}"><span class="model-index">${String(i+1).padStart(2,'0')}</span><span>${m.name}</span></button>`).join('')}</nav><div class="matter-main"><div class="model-layout"><section class="model-stage-panel"><div class="model-stage-top"><h1 id="modelTitle">물질의 세 가지 상태</h1><div class="model-actions"><button type="button" id="modelPause" aria-pressed="false">Ⅱ 일시 정지</button><button type="button" class="model-reset" id="modelReset">↺ 초기화</button></div></div><div id="modelStage" class="model-stage" tabindex="0" role="region" aria-label="모형 관찰 영역"></div><div id="modelLegend" class="model-legend"></div></section><section class="model-controls" id="modelControls" aria-label="모형 조건 조절"></section><aside class="model-inspector" aria-label="관찰 결과"><div id="modelFacts" aria-live="polite"></div><div class="model-key"><span>핵심</span><p id="modelKey"></p></div></aside></div><section class="model-check"><div class="check-heading"><h3 id="modelQuestion"></h3></div><div id="modelAnswers" class="model-answers"></div><p id="modelFeedback" aria-live="polite"></p></section></div></div>`;
+    // Keep the topic as an accessible name; playback belongs beside navigation.
+    $('modelTitle').hidden=true;
+    root.querySelector('.matter-nav').prepend(root.querySelector('.model-actions'));
+    $('modelStage').before($('modelTitle'));
+    root.querySelector('.model-stage-top').remove();
     const range = (key,label,min,max,step,unit='') => `<label class="model-control"><span>${label}<output id="read-${key}">${values[key]}${unit}</output></span><input type="range" data-key="${key}" id="control-${key}" min="${min}" max="${max}" step="${step}" value="${values[key]}" aria-label="${label}" data-unit="${unit}"></label>`;
     const select = (key,label,options) => `<label class="model-control"><span>${label}</span><select data-key="${key}" id="control-${key}">${options.map(([v,t])=>`<option value="${v}" ${String(values[key])===String(v)?'selected':''}>${t}</option>`).join('')}</select></label>`;
     function controls() {
+        const primary=window.SchoolLevel?.value==='elementary';
+        const middle=window.SchoolLevel?.value==='middle';
+        if(primary && active==='states')return range('width','그릇의 너비',55,95,1,'%');
         switch(active) {
             case 'states': return select('focus','관찰 범위',[['all','세 상태 비교'],['solid','고체 확대'],['liquid','액체 확대'],['gas','기체 확대']])+range('warmth','입자 운동 세기',10,90,1,'')+range('width','용기 너비',55,95,1,'%');
             case 'phase': return select('direction','열의 이동',[['heat','가열 · 열 흡수'],['cool','냉각 · 열 방출']])+range('progress','변화 진행',0,100,1,'%');
-            case 'gas': return range('volume','부피 V',1,4,0.1,' L')+range('temperature','절대 온도 T',200,600,10,' K')+range('amount','기체의 양 n',0.05,0.3,0.01,' mol');
-            case 'atom': return select('isotope','원자 선택',C.atoms.map((a,i)=>[i,a.label]))+select('ion','전하 상태',[['neutral','중성 원자'],['ion','대표 이온']]);
+            case 'gas': return middle ? range('volume','부피',1,4,0.1,' L')+select('temperature','온도',[[273.15,'0 °C'],[293.15,'20 °C'],[313.15,'40 °C'],[333.15,'60 °C'],[353.15,'80 °C'],[373.15,'100 °C']]) : range('volume','부피 V',1,4,0.1,' L')+range('temperature','절대 온도 T',200,600,10,' K')+range('amount','기체의 양 n',0.05,0.3,0.01,' mol');
+            case 'atom': return select('isotope','원자 선택',C.atoms.flatMap((a,i)=>window.SchoolLevel?.value==='middle' ? (C.atoms.findIndex(b=>b.z===a.z)===i?[[i,a.label.replace(/^[^ ·]+ · /,'')]]:[]) : [[i,a.label]]))+select('ion','전하 상태',[['neutral','중성 원자'],['ion','대표 이온']]);
             case 'orbital': return select('orbital','오비탈',C.orbitals.map((o,i)=>[i,o.id]))+select('phase','점구름 색',[['density','확률 밀도'],['sign','파동 함수의 부호']])+select('slice','관찰 영역',[['all','전체 공간'],['slice','중앙 단면 (z ≈ 0)']]);
             case 'config': return select('z','중성 원자',window.ELEMENTS_DATA.filter(e=>e.number<=20||e.number===24||e.number===29).map(e=>[e.number,`${e.number} · ${e.symbol} ${e.name}`]));
             case 'bond': return select('compound','물질 선택',[['H2','H₂ · 수소'],['CO2','CO₂ · 이산화 탄소'],['H2O','H₂O · 물'],['NH3','NH₃ · 암모니아'],['CH4','CH₄ · 메테인'],['BF3','BF₃ · 삼플루오린화 붕소'],['NaCl','NaCl · 염화 나트륨'],['metal','금속 결합']])+select('view','표현 방식',[['shape','공간 구조'],['lewis','전자쌍 / 전하 표시']]);
@@ -87,16 +95,70 @@ document.addEventListener('DOMContentLoaded', () => {
         particles.forEach(p=>{p.x+=p.vx*dt*speed;p.y+=p.vy*dt*speed;if(p.x<x+p.r){p.x=x+p.r;p.vx=Math.abs(p.vx);}if(p.x>x+w-p.r){p.x=x+w-p.r;p.vx=-Math.abs(p.vx);}if(p.y<y+p.r){p.y=y+p.r;p.vy=Math.abs(p.vy);}if(p.y>y+h-p.r){p.y=y+h-p.r;p.vy=-Math.abs(p.vy);}});
         for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++) {const a=particles[i],b=particles[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),r=a.r+b.r;if(d>0&&d<r){const nx=dx/d,ny=dy/d,overlap=(r-d)/2;a.x-=nx*overlap;a.y-=ny*overlap;b.x+=nx*overlap;b.y+=ny*overlap;const relative=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;if(relative>0){a.vx-=relative*nx;a.vy-=relative*ny;b.vx+=relative*nx;b.vy+=relative*ny;}}}
     }
+    function drawPrimaryStates() {
+        const narrow=matchMedia('(max-width:600px)').matches;
+        const w=values.width*1.9, bottom=305;
+        let s='';
+        ['고체 · 돌','액체 · 물','기체 · 공기'].forEach((name,i)=>{
+            const cx=135+i*265,x=cx-w/2;
+            s+=`<g transform="translate(${narrow?15-i*265:0},${narrow?i*375:0})">`;
+            s+=text(cx,55,name,25,'#e6f2f5');
+            if(i===1)s+=`<rect x="${x+2}" y="${bottom-16000/(w-4)}" width="${w-4}" height="${16000/(w-4)}" fill="#389ecc99"/>`;
+            s+=`<path d="M${x} 100 V${bottom} H${x+w} V100" fill="none" stroke="#8baebd" stroke-width="3"/>`;
+            if(i===0)s+=`<path d="M${cx-42} 291 Q${cx-48} 247 ${cx-13} 245 Q${cx+32} 236 ${cx+42} 272 Q${cx+47} 299 ${cx+12} 302 L${cx-23} 302 Z" fill="#a1aeb9" stroke="#d3dfe5" stroke-width="2"/>`;
+            if(i===2)s+=text(cx,211,'눈에 보이지 않음',19,'#b8d5e3');
+            s+=text(cx,350,['모양과 부피가 유지됨','모양이 바뀌고 부피는 유지됨','그릇 전체를 채움'][i],18,'#b7d6df');
+            s+='</g>';
+        });
+        s+=narrow?text(150,1145,'그릇의 너비를 바꾸어',20,'#6bdad6')+text(150,1175,'세 물질을 비교하세요.',20,'#6bdad6'):text(400,408,'그릇의 너비를 바꾸며 모양과 차지하는 공간을 비교하세요.',20,'#6bdad6');
+        stageSVG(s,'그릇의 너비에 따른 돌, 물, 공기의 모습 비교');
+        primaryView(narrow?'0 0 300 1200':'0 0 800 440');
+        info([], '', '', '');
+    }
+    function drawPrimaryPhase() {
+        const narrow=matchMedia('(max-width:600px)').matches;
+        const p=values.direction==='heat'?values.progress:100-values.progress;
+        const segment=p<25?0:p<40?1:p<65?2:p<85?3:4;
+        const names=['얼음 · 고체','물 · 액체','수증기 · 기체'];
+        let s='';
+        names.forEach((name,i)=>{
+            const x=35+i*265,lit=i===0?segment<=1:i===1?segment>=1&&segment<=3:segment>=3;
+            s+=`<g transform="translate(${narrow?10-i*265:0},${narrow?i*315:0})">`;
+            s+=`<rect x="${x}" y="75" width="210" height="265" rx="18" fill="${lit?'#173c4b':'#10222e'}" stroke="${lit?'#65d9d1':'#304b5c'}" stroke-width="${lit?3:1}"/>`;
+            s+=text(x+105,118,name,23,lit?'#e4fbff':'#99b6c5');
+            if(i===0)s+=`<path d="M${x+60} 190 l60 -20 30 25 v65 l-60 20 -30 -25 Z M${x+60} 190 l30 25 60 -20 M${x+90} 215 v65" fill="#b5e9f877" stroke="#b8e9f6" stroke-width="2"/>`;
+            if(i===1)s+=`<path d="M${x+49} 175 V285 H${x+161} V175" fill="none" stroke="#accdd8" stroke-width="3"/><path d="M${x+51} 230 Q${x+81} 222 ${x+111} 230 T${x+159} 230 V283 H${x+51} Z" fill="#389eccaa"/>`;
+            if(i===2)s+=text(x+105,217,'눈에 보이지 않음',18,'#c5e0e9')+text(x+105,255,'주변으로 퍼짐',18,'#c5e0e9');
+            s+='</g>';
+        });
+        s+=narrow?text(150,371,values.direction==='heat'?'↓':'↑',26,'#ffd28a')+text(150,686,values.direction==='heat'?'↓':'↑',26,'#ffd28a'):text(268,216,values.direction==='heat'?'→':'←',26,'#ffd28a')+text(533,216,values.direction==='heat'?'→':'←',26,'#ffd28a');
+        const heating=['얼음을 데웁니다','얼음이 녹아 물이 됩니다','물을 데웁니다','물이 끓어 수증기가 됩니다','수증기는 기체 상태의 물입니다'];
+        const cooling=['물이 얼어 얼음이 되었습니다','물이 얼어 얼음이 됩니다','물이 식습니다','수증기가 물로 변합니다','수증기가 차가워집니다'];
+        const caption=(values.direction==='heat'?heating:cooling)[segment];
+        if(narrow){
+            const split=caption.lastIndexOf(' ',Math.ceil(caption.length/2));
+            s+=text(150,1010,caption.slice(0,split),21,'#f4d290')+text(150,1040,caption.slice(split+1),21,'#f4d290');
+        }else s+=text(400,400,caption,24,'#f4d290');
+        stageSVG(s,'가열하거나 차갑게 할 때 물의 상태 변화');
+        primaryView(narrow?'0 0 300 1070':'0 0 800 440');
+        info([], '', '', '');
+    }
+    function primaryView(viewBox){
+        const diagram=$('modelStage').querySelector('svg');
+        diagram.dataset.primary='true';diagram.setAttribute('viewBox',viewBox);
+    }
     function drawStates() {
+        if(window.SchoolLevel?.value==='elementary'){drawPrimaryStates();return;}
         const focused=['solid','liquid','gas'].indexOf(values.focus);
         const {ctx}=canvasStage('고체·액체·기체의 입자 배열과 운동 비교',focused<0?800:260);
         const labels=['고체','액체','기체'],w=values.width*2.2,liquidH=16000/w;
         const regions=labels.map((_,i)=>({x:27+i*260+(220-w)/2,y:80,w,h:280}));
         const particles=regions.map((b,i)=>particleSystem(36,i===0?b.x+w/2-52:b.x,i===0?b.y+b.h-114:i===1?b.y+b.h-liquidH:b.y,i===0?104:b.w,i===0?104:i===1?liquidH:b.h,6));
         draw=(dt,time)=>{ctx.clearRect(0,0,800,440);regions.forEach((b,i)=>{if(focused>=0&&focused!==i)return;ctx.save();if(focused>=0)ctx.translate(-i*260,0);ctx.fillStyle='#e6f2f5';ctx.font='600 22px sans-serif';ctx.textAlign='center';ctx.fillText(labels[i],b.x+b.w/2,43);vessel(ctx,b.x,b.y,b.w,b.h);if(i===1){ctx.fillStyle='#5acaca12';ctx.fillRect(b.x,b.y+b.h-liquidH,b.w,liquidH);}const speed=Math.sqrt(values.warmth/45);if(i>0)moveParticles(particles[i],dt,i===1?{...b,y:b.y+b.h-liquidH,h:liquidH}:b,speed*(i===2?1.7:.55));particles[i].forEach((p,j)=>{const x=i===0?p.homeX+Math.sin(time*4+j)*values.warmth/35:p.x,y=i===0?p.homeY+Math.cos(time*4+j*2)*values.warmth/35:p.y;ball(ctx,x,y,6,['#76bfef','#62d7c4','#f4c481'][i]);});ctx.fillStyle='#9bb3c6';ctx.font='16px sans-serif';ctx.fillText(['제자리에서 진동','가까이서 자리 이동','공간 전체로 운동'][i],b.x+b.w/2,398);ctx.restore();});};
-        info([['입자 수','36개씩','세 모형에서 입자의 수·크기를 같게 표시'],['고체 / 액체','부피 일정','고체는 모양 유지 · 액체는 용기 모양에 맞춤'],['기체','용기 전체로','쉽게 압축 · 용기 모양과 부피를 따름']], '상태가 바뀌어도 입자의 종류와 크기는 유지됩니다. 고체에서도 입자는 운동합니다.', '배열·운동을 비교하는 2차원 개념 모형입니다. 실제 크기·속도·밀도 비율은 아니며, 액체·고체의 부피 변화는 작다고 가정합니다. 운동 세기 조절은 상태를 자동으로 바꾸지 않습니다.', swatch('#76bfef','고체')+swatch('#62d7c4','액체')+swatch('#f4c481','기체'));
+        info([['고체','제자리에서 진동','입자가 가까이 모여 있고, 모양과 부피가 일정함'],['액체','서로 자리를 바꾸며 이동','입자가 가까이 모여 있고, 부피는 일정하지만 모양은 용기에 따라 달라짐'],['기체','멀리 떨어져 자유롭게 운동','입자 사이 공간이 커 쉽게 압축되며, 용기 전체로 퍼짐']], '상태가 바뀌어도 입자의 종류와 크기는 유지됩니다. 고체에서도 입자는 운동합니다.', '배열·운동을 비교하는 2차원 개념 모형입니다. 실제 크기·속도·밀도 비율은 아니며, 액체·고체의 부피 변화는 작다고 가정합니다. 운동 세기 조절은 상태를 자동으로 바꾸지 않습니다.', swatch('#76bfef','고체')+swatch('#62d7c4','액체')+swatch('#f4c481','기체'));
     }
     function drawPhase() {
+        if(window.SchoolLevel?.value==='elementary'){drawPrimaryPhase();return;}
         const progress=values.direction==='heat'?values.progress:100-values.progress, h=C.heating(progress);
         const points=[[90,325],[214,285],[338,285],[462,85],[586,85],[710,45]];
         let s=''; for(let t=0;t<=100;t+=20)s+=line(90,285-t*2,710,285-t*2,'#243a47',1);
@@ -115,17 +177,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const particles=particleSystem(Math.round(values.amount*200),b.x,b.y,b.w,b.h,5);
         draw=(dt)=>{ctx.clearRect(0,0,800,440);vessel(ctx,170,45,440,330);ctx.fillStyle='#97b9c4';ctx.fillRect(162,b.y-10,456,12);ctx.fillStyle='#7894a1';ctx.fillRect(385,20,12,Math.max(0,b.y-30));moveParticles(particles,dt,b,Math.sqrt(values.temperature/300));particles.forEach(p=>ball(ctx,p.x,p.y,5));ctx.fillStyle='#a3bcc9';ctx.font='18px sans-serif';ctx.textAlign='center';ctx.fillText(`V = ${fmt(values.volume)} L`,390,409);};
         const pressure=C.gasPressure(values.amount,values.temperature,values.volume);
+        if(window.SchoolLevel?.value==='middle'){
+            const reference=C.gasPressure(0.1,293.15,2);
+            info([['부피',`${fmt(values.volume)} L`,'기체의 양은 일정'],['온도',`${fmt(values.temperature-273.15,0)} °C`],['압력 비교',`${fmt(pressure/reference,2)}배`,'20 °C·2 L일 때를 1로 비교']], '온도를 고정하고 부피를 줄이면 압력이 커집니다. 부피를 고정하고 온도를 높여도 압력이 커집니다.', '',swatch('#64d8e7','같은 종류의 기체 입자'));
+            return;
+        }
         info([['압력 P',`${fmt(pressure)} kPa`],['절대 온도 T',`${values.temperature} K`,`${fmt(values.temperature-273.15)} °C`],['PV / nT', '8.314', 'kPa·L·mol⁻¹·K⁻¹']], '온도는 K로 계산합니다. 온도와 몰수를 고정하면 P ∝ 1/V, 부피와 몰수를 고정하면 P ∝ T입니다.', '이상 기체 근사입니다. 화면의 점 하나는 많은 분자를 대표하며, 실제 충돌로 압력을 계산하는 대신 PV = nRT로 수치를 구합니다. 입자 운동은 온도의 제곱근에 비례해 빨라집니다.',swatch('#64d8e7','같은 종류의 기체 입자'));
     }
     function drawAtom() {
         const a=C.atomCounts(Number(values.isotope),values.ion==='ion');
+        const middle=window.SchoolLevel?.value==='middle';
         const ionSelect=$('control-ion'); ionSelect.disabled=a.ion===null;
         if(a.ion===null&&values.ion!=='neutral'){values.ion='neutral';ionSelect.value='neutral';}
         let s='';const cx=365,cy=220;
         a.shells.forEach((count,i)=>{const r=83+i*42;s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${['#76bfef','#ba9fea','#f4c481','#62d7c4'][i]}66" stroke-width="2"/>`;for(let j=0;j<count;j++){const angle=j/count*Math.PI*2-Math.PI/2;s+=sphere(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r,6,['#76bfef','#ba9fea','#f4c481','#62d7c4'][i]);}});
-        s+=sphere(cx,cy,49,'blue')+text(cx,cy+8,a.symbol,30,'#0b2736')+text(cx,cy+27,`${a.protons}p · ${a.neutrons}n`,12,'#0b2736');
-        s+=text(650,135,`${a.a}`,29,'#d9e9ef')+text(650,177,`${a.z}`,29,'#8da8ba')+text(706,159,a.symbol,48,'#e4f5f5')+text(746,130,a.charge?`${Math.abs(a.charge)===1?'':Math.abs(a.charge)}${a.charge>0?'+':'−'}`:'',23,'#f3c58c');
+        s+=sphere(cx,cy,49,'blue')+text(cx,cy+8,a.symbol,30,'#0b2736')+text(cx,cy+27,middle?`원자핵 +${a.protons}`:`${a.protons}p · ${a.neutrons}n`,12,'#0b2736');
+        s+=(middle?'':text(650,135,`${a.a}`,29,'#d9e9ef')+text(650,177,`${a.z}`,29,'#8da8ba'))+text(706,159,a.symbol,48,'#e4f5f5')+text(746,130,a.charge?`${Math.abs(a.charge)===1?'':Math.abs(a.charge)}${a.charge>0?'+':'−'}`:'',23,'#f3c58c');
         stageSVG(s,'원자핵과 전자껍질의 개념 모형');
+        if(middle){
+            info([['원자핵의 구성',`양성자 ${a.protons}개 · 중성자 ${a.neutrons}개`,'양성자는 양전하, 중성자는 전하 없음'],['전자 수',`${a.electrons}개`,'전자는 음전하를 띰'],['전체 전하',a.charge>0?`+${a.charge}`:String(a.charge),a.charge===0?'중성 원자':a.charge>0?'전자를 잃은 양이온':'전자를 얻은 음이온']], '원자가 전자를 잃으면 양이온, 얻으면 음이온이 됩니다. 이온이 되어도 원자핵의 구성은 같습니다.', '',swatch('#76bfef','전자'));
+            return;
+        }
         info([['양성자 / 중성자',`${a.protons} / ${a.neutrons}`,`질량수 A = ${a.a}`],['전자 수 / 전하',`${a.electrons}개 / ${a.charge>0?'+':''}${a.charge}`,`전하 = 양성자 수 − 전자 수`],['전자껍질별 전자 수',a.shells.join(' · ')||'전자 없음']], '동위 원소는 양성자 수가 같고 중성자 수가 다릅니다. 이온은 전자를 얻거나 잃으며, 원자핵은 바뀌지 않습니다.', '전자 수를 세기 위한 보어식 껍질 모형입니다. 원과 점의 위치는 실제 전자 궤도·크기 비율이 아닙니다. 공간적 확률 분포는 오비탈 모형에서 관찰하세요.',swatch('#76bfef','1껍질')+swatch('#ba9fea','2껍질')+swatch('#f4c481','3껍질'));
     }
     function drawOrbital() {
@@ -160,6 +232,16 @@ document.addEventListener('DOMContentLoaded', () => {
         CH4:{ formula:'CH₄', shape:'정사면체형', angle:'약 109.5°', polar:'무극성', center:'C', outer:'H', pairs:4, lone:0, positions:[[0,-145,0],[-130,62,55],[130,62,55],[0,62,-140]], en:'대칭적인 구조에서 결합 쌍극자가 상쇄' },
         BF3:{ formula:'BF₃', shape:'평면 삼각형', angle:'120°', polar:'무극성', center:'B', outer:'F', pairs:3, lone:0, positions:[[0,-145,0],[-126,73,0],[126,73,0]], en:'B는 옥텟을 채우지 않는 대표적 예외' }
     };
+    // Both molecular views use the same validated 3D coordinates.
+    ['H2O','NH3','CH4','BF3','CO2'].forEach(key=>{
+        const spec=bonds[key],model=window.MOLECULE_MODELS_3D[spec.formula];
+        const center=model.atoms.find(atom=>atom.symbol===spec.center);
+        spec.positions=model.atoms.filter(atom=>atom!==center).map(atom=>{
+            const vector=[atom.x-center.x,atom.y-center.y,atom.z-center.z];
+            const scale=150/Math.hypot(...vector);
+            return vector.map(v=>v*scale);
+        });
+    });
     function drawBond() {
         const type=values.compound, lewis=values.view==='lewis';
         if(type==='NaCl'||type==='metal') {
@@ -198,6 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
         left.forEach((kind,i)=>s+=molecule(kind,90+i%4*82,150+Math.floor(i/4)*47,.85));right.forEach((kind,i)=>s+=molecule(kind,460+i%4*82,150+Math.floor(i/4)*47,.85));
         s+=text(595,95,'현재',18)+text(400,412,`H 원자 ${2*h}개 · O 원자 ${2*o}개  →  반응 전후 동일`,18,'#62d7c4');
         stageSVG(s,'화학 반응 전후 원자 수 비교');
+        if(window.SchoolLevel?.value==='middle'){
+            info([['생성된 물',`${now.water}분자`,`끝까지 반응하면 ${r.water}분자`],['남은 반응물',`H₂ ${now.hydrogen} · O₂ ${now.oxygen}`],['반응하는 분자 수의 비','2 : 1 : 2','H₂ : O₂ : H₂O']], '반응 전후 원자의 종류와 수는 같습니다. 반응식의 계수로 반응에 참여하는 분자 수의 비를 나타냅니다.', '',swatch('#d7e6ef','H')+swatch('#ff967e','O'));
+            return;
+        }
         info([['생성된 물',`${now.water}분자`,`끝까지 반응하면 ${r.water}분자`],['남은 반응물',`H₂ ${now.hydrogen} · O₂ ${now.oxygen}`],['계수비 = 몰수비','2 : 1 : 2','질량비는 H₂ : O₂ : H₂O ≈ 1 : 8 : 9']], '반응물의 양이 달라도 반응하는 비율은 일정합니다. 먼저 소모되는 한계 반응물이 생성물의 최대량을 결정합니다.', '반응물과 생성물의 개수를 세는 개념 모형이며 실제 반응 경로나 반응 속도를 재현하지 않습니다. 분자 수를 mol로 바꾸어 읽어도 같은 계수비를 적용합니다.',swatch('#d7e6ef','H')+swatch('#ff967e','O'));
     }
     function drawSolution() {
@@ -239,8 +325,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function stop(){if(raf)cancelAnimationFrame(raf);raf=0;previousTime=0;}
     function frame(timestamp){raf=0;if(!visible()||!draw)return;const dt=previousTime?Math.min((timestamp-previousTime)/1000,.04):0;previousTime=timestamp;if(!paused)tick+=dt;draw(paused?0:dt,tick);if(!paused&&active!=='orbital')raf=requestAnimationFrame(frame);}
     function start(){stop();if(visible()&&draw)raf=requestAnimationFrame(frame);}
-    function render(){stop();draw=null;renderers[active]();const moving=['states','gas'].includes(active);$('modelPause').hidden=!moving;$('modelPause').textContent=paused?'▶ 재생':'Ⅱ 일시 정지';$('modelPause').setAttribute('aria-pressed',String(paused));if(draw)draw(0,tick);start();}
-    function changeModel(id){active=id;values={...defaults[id]};tick=0;yaw=.5;pitch=-.25;const index=modules.findIndex(m=>m.id===id),m=modules[index];root.querySelectorAll('[data-model]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.model===id)));$('modelTitle').textContent=m.name;$('modelControls').innerHTML=controls();$('modelQuestion').textContent=m.question;const choices=m.choices.map((label,index)=>({label,index}));for(let i=choices.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[choices[i],choices[j]]=[choices[j],choices[i]];}$('modelAnswers').innerHTML=choices.map((choice,i)=>`<button type="button" data-answer="${choice.index}"><span>${i+1}</span>${choice.label}</button>`).join('');$('modelFeedback').textContent='';render();}
+    function render(){stop();draw=null;renderers[active]();const moving=!!draw&&['states','gas'].includes(active);$('modelPause').hidden=!moving;$('modelPause').textContent=paused?'▶ 재생':'Ⅱ 일시 정지';$('modelPause').setAttribute('aria-pressed',String(paused));if(draw)draw(0,tick);start();}
+    function changeModel(id){active=id;values={...defaults[id]};if(id==='gas'&&window.SchoolLevel?.value==='middle')values.temperature=293.15;tick=0;yaw=.5;pitch=-.25;const index=modules.findIndex(m=>m.id===id),m=modules[index];root.querySelectorAll('[data-model]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.model===id)));$('modelTitle').textContent=m.name;$('modelControls').innerHTML=controls();$('modelQuestion').textContent=m.question;const choices=m.choices.map((label,index)=>({label,index}));for(let i=choices.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[choices[i],choices[j]]=[choices[j],choices[i]];}$('modelAnswers').innerHTML=choices.map((choice,i)=>`<button type="button" data-answer="${choice.index}"><span>${i+1}</span>${choice.label}</button>`).join('');$('modelFeedback').textContent='';render();}
     root.querySelector('.matter-nav').addEventListener('click',e=>{const button=e.target.closest('[data-model]');if(button)changeModel(button.dataset.model);});
     $('modelControls').addEventListener('input',e=>{const key=e.target.dataset.key;if(!key)return;values[key]=e.target.type==='range'?Number(e.target.value):e.target.value;const output=$(`read-${key}`);if(output)output.textContent=e.target.value+(e.target.dataset.unit||'');render();});
     $('modelReset').addEventListener('click',()=>changeModel(active));
@@ -248,5 +334,17 @@ document.addEventListener('DOMContentLoaded', () => {
     $('modelAnswers').addEventListener('click',e=>{const button=e.target.closest('[data-answer]');if(!button||button.disabled)return;const m=modules.find(m=>m.id===active);if(Number(button.dataset.answer)===m.answer){button.classList.add('answer-correct');$('modelFeedback').textContent=`정답입니다. ${m.why}`;$('modelAnswers').querySelectorAll('button').forEach(b=>b.disabled=true);}else{button.classList.add('answer-wrong');button.disabled=true;$('modelFeedback').textContent='모형에서 변하는 것과 유지되는 것을 확인하고 다시 골라보세요.';}});
     new MutationObserver(()=>{if(visible())start();else stop();}).observe(document.getElementById('tab-models'),{attributes:true,attributeFilter:['class']});
     document.addEventListener('visibilitychange',()=>{if(visible())start();else stop();});
+    const primaryMedia=matchMedia('(max-width:600px)');
+    primaryMedia.addEventListener('change',()=>{if(window.SchoolLevel?.value==='elementary')render();});
     changeModel(active);
+    function updateSchoolModels(){
+        const label=root.querySelector('[data-model="atom"] > span:last-child');
+        label.textContent=window.SchoolLevel.value==='middle'?'원자와 이온':'원자·동위 원소·이온';
+        root.querySelector('[data-model="reaction"] > span:last-child').textContent=window.SchoolLevel.value==='middle'?'화학 반응과 질량 보존':'반응식·몰비·질량 보존';
+        root.querySelector('[data-model="phase"] > span:last-child').textContent=window.SchoolLevel.value==='elementary'?'물의 상태 변화':'상태 변화와 열에너지';
+        root.querySelector('.matter-nav h2').textContent=window.SchoolLevel.value==='elementary'?'물질의 상태':'물질을 입자로 보기';
+        changeModel(active);
+    }
+    window.SchoolLevel?.subscribe(updateSchoolModels);
+    if(window.SchoolLevel)updateSchoolModels();
 });

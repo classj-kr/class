@@ -12,7 +12,7 @@
         이 있다. 곡선 \(y=f(x)\)와 직선 \(y=k\)가 만나는 두 점의
         \(x\)좌표를 \(\alpha_{1}\), \(\alpha_{2}\)라 할 때, \(\bigl|\alpha_{1}-\alpha_{2}\bigr|=8\)이다. 곡선 \(y=g(x)\)와
         직선 \(y=k\)가 만나는 두 점의 \(x\)좌표를 \(\beta_{1}\), \(\beta_{2}\)라 할 때,
-        \(\bigl|\beta_{1}-\beta_{2}\bigr|\)의 값은? (단, \(k\)는 \(-1<k<1\)인 상수이다.)`,
+        \(\bigl|\beta_{1}-\beta_{2}\bigr|\)의 값은? (단, \(k\)는 \(-1&lt;k&lt;1\)인 상수이다.)`,
       choices: [R`\(3\)`, R`\(\dfrac{7}{2}\)`, R`\(4\)`, R`\(\dfrac{9}{2}\)`, R`\(5\)`],
       answer: 3,
       help: R`두 함수는 주기가 \(12\)로 같고 \([0,\,12]\)에서 \(x=6\)에 대하여 대칭이다. 그래서 가로선이 만나는 두 점은 \(6\)을 가운데 두고 같은 거리만큼 떨어져 있고, \(\bigl|\alpha_{1}-\alpha_{2}\bigr|=8\)에서 \(k\)가 곧바로 정해진다.`
@@ -77,9 +77,9 @@
         라 할 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은?`,
       noteTitle: "보 기",
       note: [
-        R`ㄱ. \(g(0)=0\)이면 \(g(-1)<0\)이다.`,
-        R`ㄴ. \(g(-1)>0\)이면 \(f(k)=0\)을 만족시키는 \(k<-1\)인 실수 \(k\)가 존재한다.`,
-        R`ㄷ. \(g(-1)>1\)이면 \(g(0)<-1\)이다.`
+        R`ㄱ. \(g(0)=0\)이면 \(g(-1)&lt;0\)이다.`,
+        R`ㄴ. \(g(-1)>0\)이면 \(f(k)=0\)을 만족시키는 \(k&lt;-1\)인 실수 \(k\)가 존재한다.`,
+        R`ㄷ. \(g(-1)>1\)이면 \(g(0)&lt;-1\)이다.`
       ],
       choices: [R`ㄱ`, R`ㄱ, ㄴ`, R`ㄱ, ㄷ`, R`ㄴ, ㄷ`, R`ㄱ, ㄴ, ㄷ`],
       answer: 5,
@@ -90,19 +90,19 @@
       units: ["m1-seq"], memo: "네 걸음마다 제자리로 오는 수열",
       body: R`수열 \(\{a_{n}\}\)이 다음 조건을 만족시킨다.`,
       note: [
-        R`(가) 모든 자연수 \(k\)에 대하여 \(a_{4k}=r^{k}\)이다. (단, \(r\)는 \(0<|r|<1\)인 상수이다.)`,
-        R`(나) \(a_{1}<0\)이고, 모든 자연수 \(n\)에 대하여 \(a_{n+1}=\begin{cases}a_{n}+3 &amp; \left(|a_{n}|<5\right)\\[4pt] -\dfrac{1}{2}a_{n} &amp; \left(|a_{n}|\ge 5\right)\end{cases}\)이다.`
+        R`(가) 모든 자연수 \(k\)에 대하여 \(a_{4k}=r^{k}\)이다. (단, \(r\)는 \(0&lt;|r|&lt;1\)인 상수이다.)`,
+        R`(나) \(a_{1}&lt;0\)이고, 모든 자연수 \(n\)에 대하여 \(a_{n+1}=\begin{cases}a_{n}+3 &amp; \left(|a_{n}|&lt;5\right)\\[4pt] -\dfrac{1}{2}a_{n} &amp; \left(|a_{n}|\ge 5\right)\end{cases}\)이다.`
       ],
       bodyAfter: R`\(|a_{m}|\ge 5\)를 만족시키는 \(100\) 이하의 자연수 \(m\)의 개수를 \(p\)라
         할 때, \(p+a_{1}\)의 값은?`,
       choices: [R`\(8\)`, R`\(10\)`, R`\(12\)`, R`\(14\)`, R`\(16\)`],
       answer: 3,
-      help: R`(가)는 \(a_{4}=r\), \(a_{8}=r^{2}\), \(a_{12}=r^{3}\)이라는 뜻이고 \(0<|r|<1\)이라 이 값들의 크기가 \(1\)보다 작다. 그런데 (나)의 규칙은 \(|a_{n}|<5\)일 때 \(+3\)씩 키우기만 하므로, 네 걸음 만에 다시 작은 값으로 돌아오려면 그 사이에 \(|a_{n}|\ge 5\)를 만나 반으로 줄어드는 일이 있어야 한다.`
+      help: R`(가)는 \(a_{4}=r\), \(a_{8}=r^{2}\), \(a_{12}=r^{3}\)이라는 뜻이고 \(0&lt;|r|&lt;1\)이라 이 값들의 크기가 \(1\)보다 작다. 그런데 (나)의 규칙은 \(|a_{n}|&lt;5\)일 때 \(+3\)씩 키우기만 하므로, 네 걸음 만에 다시 작은 값으로 돌아오려면 그 사이에 \(|a_{n}|\ge 5\)를 만나 반으로 줄어드는 일이 있어야 한다.`
     },
 {
       id: "2023-09-20", exam: "2023-09", no: 20, score: 4,
       units: ["m2-integ", "m2-diff"], memo: "V자 그래프와 삼차곡선이 두 점에서 만남",
-      body: R`상수 \(k\,(k<0)\)에 대하여 두 함수
+      body: R`상수 \(k\,(k&lt;0)\)에 대하여 두 함수
         \[f(x)=x^{3}+x^{2}-x,\qquad g(x)=4|x|+k\]
         의 그래프가 만나는 점의 개수가 \(2\)일 때,
         두 함수의 그래프로 둘러싸인 부분의 넓이를 \(S\)라 하자.
@@ -120,7 +120,7 @@
         \(\mathrm{A}\), \(\mathrm{B}\)라 하고, 점 \(\mathrm{Q}\)를 지나며 기울기가 \(-m\)인 직선이
         \(x\)축과 만나는 점을 \(\mathrm{C}\)라 하자.
         \[\overline{\mathrm{AB}}=4\overline{\mathrm{PB}},\qquad \overline{\mathrm{CQ}}=3\overline{\mathrm{AB}}\]
-        일 때, \(90\times(a+b)\)의 값을 구하시오. (단, \(0<a<b\))`,
+        일 때, \(90\times(a+b)\)의 값을 구하시오. (단, \(0&lt;a&lt;b\))`,
       figure: "2023-09-21.webp",
       short: true,
       answer: 220,
@@ -131,13 +131,13 @@
       units: ["m2-diff"], memo: "한쪽을 점대칭으로 뒤집은 함수",
       body: R`최고차항의 계수가 \(1\)이고 \(x=3\)에서 극댓값 \(8\)을 갖는
         삼차함수 \(f(x)\)가 있다. 실수 \(t\)에 대하여 함수 \(g(x)\)를
-        \[g(x)=\begin{cases}f(x) &amp; (x\ge t)\\ -f(x)+2f(t) &amp; (x<t)\end{cases}\]
+        \[g(x)=\begin{cases}f(x) &amp; (x\ge t)\\ -f(x)+2f(t) &amp; (x&lt;t)\end{cases}\]
         라 할 때, 방정식 \(g(x)=0\)의 서로 다른 실근의 개수를 \(h(t)\)라
         하자. 함수 \(h(t)\)가 \(t=a\)에서 불연속인 \(a\)의 값이 두 개일 때,
         \(f(8)\)의 값을 구하시오.`,
       short: true,
       answer: 58,
-      help: R`\(x<t\)에서의 \(-f(x)+2f(t)\)는 \(f\)를 점 \(\bigl(t,\,f(t)\bigr)\)에 대하여 점대칭으로 뒤집은 것이다. 곧 \(g\)의 그래프는 \(x=t\)를 경계로 오른쪽은 \(f\) 그대로, 왼쪽은 그 점을 중심으로 돌린 모양이라 \(x=t\)에서 매끄럽게 이어진다.`
+      help: R`\(x&lt;t\)에서의 \(-f(x)+2f(t)\)는 \(f\)를 점 \(\bigl(t,\,f(t)\bigr)\)에 대하여 점대칭으로 뒤집은 것이다. 곧 \(g\)의 그래프는 \(x=t\)를 경계로 오른쪽은 \(f\) 그대로, 왼쪽은 그 점을 중심으로 돌린 모양이라 \(x=t\)에서 매끄럽게 이어진다.`
     },
 {
       id: "2023-09-prob-28", exam: "2023-09", no: 28, score: 4,
@@ -172,7 +172,7 @@
 {
       id: "2023-09-calc-28", exam: "2023-09", no: 28, score: 4,
       units: ["calc-seq", "calc-diff"], memo: "삼각함수의 극한과 도형의 넓이",
-      body: R`그림과 같이 반지름의 길이가 \(1\)이고 중심각의 크기가 \(\dfrac{\pi}{2}\)인 부채꼴 \(\mathrm{OAB}\)가 있다. 호 \(\mathrm{AB}\) 위의 점 \(\mathrm{P}\)에 대하여 \(\overline{\mathrm{PA}}=\overline{\mathrm{PC}}=\overline{\mathrm{PD}}\)가 되도록 호 \(\mathrm{PB}\) 위에 점 \(\mathrm{C}\)와 선분 \(\mathrm{OA}\) 위에 점 \(\mathrm{D}\)를 잡는다. 점 \(\mathrm{D}\)를 지나고 선분 \(\mathrm{OP}\)와 평행한 직선이 선분 \(\mathrm{PA}\)와 만나는 점을 \(\mathrm{E}\)라 하자. \(\angle\mathrm{POA}=\theta\)일 때, 삼각형 \(\mathrm{CDP}\)의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{EDA}\)의 넓이를 \(g(\theta)\)라 하자. \[\lim_{\theta\to 0+}\dfrac{g(\theta)}{\theta^{2}\times f(\theta)}\]의 값은? (단, \(0<\theta<\dfrac{\pi}{4}\))`,
+      body: R`그림과 같이 반지름의 길이가 \(1\)이고 중심각의 크기가 \(\dfrac{\pi}{2}\)인 부채꼴 \(\mathrm{OAB}\)가 있다. 호 \(\mathrm{AB}\) 위의 점 \(\mathrm{P}\)에 대하여 \(\overline{\mathrm{PA}}=\overline{\mathrm{PC}}=\overline{\mathrm{PD}}\)가 되도록 호 \(\mathrm{PB}\) 위에 점 \(\mathrm{C}\)와 선분 \(\mathrm{OA}\) 위에 점 \(\mathrm{D}\)를 잡는다. 점 \(\mathrm{D}\)를 지나고 선분 \(\mathrm{OP}\)와 평행한 직선이 선분 \(\mathrm{PA}\)와 만나는 점을 \(\mathrm{E}\)라 하자. \(\angle\mathrm{POA}=\theta\)일 때, 삼각형 \(\mathrm{CDP}\)의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{EDA}\)의 넓이를 \(g(\theta)\)라 하자. \[\lim_{\theta\to 0+}\dfrac{g(\theta)}{\theta^{2}\times f(\theta)}\]의 값은? (단, \(0&lt;\theta&lt;\dfrac{\pi}{4}\))`,
       figure: "2023-09-calc-28.webp",
       choices: [R`\(\dfrac{1}{8}\)`, R`\(\dfrac{1}{4}\)`, R`\(\dfrac{3}{8}\)`, R`\(\dfrac{1}{2}\)`, R`\(\dfrac{5}{8}\)`],
       answer: 3,

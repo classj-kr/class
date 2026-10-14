@@ -1,0 +1,40 @@
+{
+  "source": "https://littrup.sites.ku.dk/files/2015/05/Kin-ter.pdf",
+  "title": "F. W. Mote, Imperial China 900–1800 (1999), p. 640, The 15 Provinces of Ming China about 1580; Leif Littrup teaching compilation, PDF p. 5",
+  "page": 5,
+  "renderScale": 2,
+  "imageSize": [1190, 1682],
+  "projection": "+proj=lcc +lat_1=25 +lat_2=47 +lat_0=35 +lon_0=105 +datum=WGS84 +units=m",
+  "controls": [
+    [708,827,116.4074,39.9042,"Beijing"],
+    [799,1080,118.7969,32.0603,"Nanjing"],
+    [652,1383,113.2644,23.1291,"Guangzhou"],
+    [372,1139,104.0665,30.5723,"Chengdu"],
+    [382,969,103.8343,36.0611,"Lanzhou"],
+    [831,1133,120.1551,30.2741,"Hangzhou"],
+    [826,1274,119.2965,26.0745,"Fuzhou"],
+    [308,1321,102.7123,25.0406,"Kunming"],
+    [612,905,112.5492,37.857,"Taiyuan"],
+    [503,1028,108.9398,34.3416,"Xi'an"],
+    [458,877,106.2309,38.4872,"Yinchuan"],
+    [733,938,117.1201,36.6512,"Jinan"]
+  ],
+  "frontierPixels": [
+    [249,829],[278,827],[294,844],[313,855],[334,869],[345,861],[359,870],[370,858],
+    [380,866],[369,885],[372,905],[391,912],[400,927],[423,924],[437,910],[445,887],
+    [458,884],[466,856],[475,875],[468,897],[496,914],[508,918],[524,902],[547,894],
+    [568,878],[586,863],[601,832],[619,820],[637,820],[650,790],[671,800],[682,780],
+    [700,803],[720,811],[739,814],[751,810],[775,814],[793,816],[807,798],[817,773],
+    [830,758],[849,759],[858,773],[871,771],[875,749],[885,733],[888,714],[900,712],
+    [908,729],[908,757],[912,784],[925,793],
+    [947,821],[969,894],[1015,966],[1010,1539],[518,1557],[454,1465],[407,1403],
+    [335,1398],[275,1406],[235,1410],[195,1406],[190,1361],[188,1319],[202,1284],
+    [222,1255],[230,1212],[269,1177],[285,1150],[299,1109],[324,1061],[339,1029],
+    [319,998],[303,978],[279,937],[276,909],[253,875],[242,848],[249,829]
+  ],
+  "method": "Digitized schematic provincial and frontier extent. North follows the source's Great Wall/Liaodong line; west and southwest follow its outer dashed provincial limits. Offshore closure vertices only enclose the coast and are clipped to the land mask. This is not a surveyed international boundary or a map of every tributary relationship. Taiwan and distant islands are excluded.",
+  "crossChecks": [
+    "https://tile.loc.gov/storage-services/master/frd/frdcstdy/ch/chinacountrystud00word/chinacountrystud00word.pdf#page=60",
+    "Collected MiraeN Historical Atlas (Han Cheol-ho, 2015), world history chapter 2, printed p. 141: Ming and Qing extents are distinct. The maximum Ming extent there is not used as the 1592 boundary."
+  ]
+}

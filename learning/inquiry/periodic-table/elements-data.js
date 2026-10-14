@@ -652,7 +652,7 @@ window.ELEMENTS_DATA = [
     {
         number: 62, symbol: 'Sm', name: '사마륨', enName: 'Samarium', mass: 150.36,
         category: 'lanthanide', group: 3, period: 6, state: 'solid',
-        shells: [2, 8, 18, 25, 8, 2], valency: 3, block: 'f',
+        shells: [2, 8, 18, 24, 8, 2], valency: 3, block: 'f',
         desc: '고온에서도 자성을 잃지 않는 사마륨-코발트 자석에 이용됩니다.',
         uses: ['고온 자석', '암 치료제'],
         discovery: '1879년 (부아보드랑)'
@@ -660,7 +660,7 @@ window.ELEMENTS_DATA = [
     {
         number: 63, symbol: 'Eu', name: '유로퓸', enName: 'Europium', mass: 151.96,
         category: 'lanthanide', group: 3, period: 6, state: 'solid',
-        shells: [2, 8, 18, 25, 9, 2], valency: 3, block: 'f',
+        shells: [2, 8, 18, 25, 8, 2], valency: 3, block: 'f',
         desc: '유럽 대륙에서 이름을 가져왔으며 위조지폐 방지 형광 잉크로 쓰입니다.',
         uses: ['유로화 지폐 위조 방지 잉크', 'TV 붉은 형광체'],
         discovery: '1901년 (드마르세)'

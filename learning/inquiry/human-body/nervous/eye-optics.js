@@ -29,11 +29,11 @@
         { id: 'pupil', text: '동공', sx: 648, sy: 350, ax: 880, ay: 354 },
         { id: 'lens', text: '수정체', sx: 625, sy: 400, ax: 880, ay: 422 },
         { id: 'zonule', text: '진대', sx: 628, sy: 452, ax: 880, ay: 490 },
-        { id: 'retina', text: '망막', ax: 470, ay: 120 },
+        { id: 'retina', text: '망막', sx: 470, sy: 167, ax: 470, ay: 120 },
         { id: 'vitreous', text: '유리체', ax: 470, ay: 350 },
         { id: 'fovea', text: '황반', ax: 210, ay: 300 },
         { id: 'blindSpot', text: '맹점', ax: 210, ay: 560 },
-        { id: 'opticNerve', text: '시각 신경', ax: 150, ay: 640 }
+        { id: 'opticNerve', text: '시각 신경', sx: 230, sy: 488, ax: 150, ay: 640 }
     ];
 
     var DETAIL = {
@@ -42,16 +42,16 @@
         pupil: ['동공', '빛이 지나가는 구멍입니다. 밝은 곳에서는 작아지고 어두운 곳에서는 커집니다.'],
         lens: ['수정체', '볼록렌즈처럼 빛을 꺾어 망막에 상을 맺습니다. 가까운 곳을 볼 때 <strong>두꺼워지고</strong> 먼 곳을 볼 때 <strong>얇아집니다</strong>.'],
         ciliaryBody: ['섬모체', '수정체를 잡고 있는 근육입니다. 가까운 곳을 볼 때 <strong>수축</strong>합니다.'],
-        blindSpot: ['맹점', '시각 신경이 망막을 뚫고 나가는 자리입니다. 여기에는 <strong>시각 세포가 없어서</strong> 상이 맺혀도 보이지 않습니다. 황반과 헷갈리기 쉬운데, 황반은 시각 세포가 가장 빽빽해 <strong>가장 잘 보이는</strong> 자리입니다.'],
+        blindSpot: ['맹점', '시각 신경이 망막에서 나가는 자리에는 <strong>시각 세포가 없어</strong> 빛을 감지하지 못합니다. 황반의 중심오목은 원뿔세포가 밀집해 자세한 모습을 잘 구별하는 자리입니다.'],
         zonule: ['진대 (걸이인대)', '섬모체와 수정체를 잇는 가는 끈입니다. 섬모체가 수축하면 <strong>느슨해지고</strong>, 그래서 수정체가 두꺼워집니다.'],
         retina: ['망막', '상이 맺히는 눈 속 스크린입니다. 시각 세포가 빛을 신호로 바꿉니다.'],
-        fovea: ['황반', '시각 세포가 가장 빽빽하게 모인 곳입니다. 여기에 상이 맺힐 때 가장 뚜렷하게 보입니다.'],
+        fovea: ['황반', '망막에서 자세한 모습을 구별하는 데 중요한 부분입니다. 특히 중심오목에는 원뿔세포가 밀집해 있어 가장 뚜렷하게 볼 수 있습니다.'],
         opticNerve: ['시각 신경', '망막이 만든 신호를 <strong>대뇌 시각 영역</strong>으로 보냅니다.'],
         vitreous: ['유리체', '눈알 속을 채운 투명한 젤리로, 눈 모양을 지탱합니다.']
     };
 
     var wrap, layer, svg, labelBox, capBox, capNear, capLight;
-    var lens, pupil, ciliary, zonule, rayGroup, leaderGroup, focusDot;
+    var lens, pupil, iris, ciliary, zonule, rayGroup, leaderGroup, focusDot;
     var foveaPt = { x: 0, y: 0 }, lensPt = { x: 0, y: 0 };
 
     function init() {
@@ -125,6 +125,8 @@
     function setupDiagram() {
         lens = svg.querySelector('#lens');
         pupil = svg.querySelector('#pupil');
+        iris = svg.querySelector('#iris');
+        if(iris)iris.innerHTML='<path fill="#3f7fa6" stroke="#8fc0d8" stroke-width="1.6"/><path fill="#3f7fa6" stroke="#8fc0d8" stroke-width="1.6"/>';
         ciliary = svg.querySelector('#ciliaryBody');
         zonule = svg.querySelector('#zonule');
 
@@ -140,11 +142,11 @@
         if (!svg.querySelector('#blindSpot')) {
             var onb = svg.querySelector('#opticNerve');
             if (onb) {
-                var ob = onb.getBBox();
                 var bs = document.createElementNS(SVG_NS, 'ellipse');
                 bs.setAttribute('id', 'blindSpot');
-                bs.setAttribute('cx', (ob.x + ob.width - 8).toFixed(1));
-                bs.setAttribute('cy', (ob.y + ob.height / 2).toFixed(1));
+                // Optic disc in the source SVG. Hidden SVG getBBox() can be zero.
+                bs.setAttribute('cx', '361');
+                bs.setAttribute('cy', '434');
                 bs.setAttribute('rx', 9);
                 bs.setAttribute('ry', 22);
                 bs.setAttribute('fill', '#8a7a5c');
@@ -156,11 +158,13 @@
 
         rayGroup = document.createElementNS(SVG_NS, 'g');
         rayGroup.setAttribute('id', 'eyeRays');
+        rayGroup.style.pointerEvents='none';
         svg.appendChild(rayGroup);
 
         focusDot = document.createElementNS(SVG_NS, 'circle');
         focusDot.setAttribute('r', 7);
         focusDot.setAttribute('fill', '#facc15');
+        focusDot.style.pointerEvents='none';
         svg.appendChild(focusDot);
 
         Object.keys(DETAIL).forEach(function (id) {
@@ -218,17 +222,6 @@
                 c.setAttribute('r', on ? 6.5 : 4.5);
                 // 끝점도 조각과 같은 가락으로 숨 쉬게 한다
                 [].slice.call(c.querySelectorAll('animate')).forEach(function (a) { a.remove(); });
-                if (on) {
-                    var an = document.createElementNS(SVG_NS, 'animate');
-                    an.setAttribute('attributeName', 'r');
-                    an.setAttribute('values', '6.5;9;6.5');
-                    an.setAttribute('dur', '1.6s');
-                    an.setAttribute('repeatCount', 'indefinite');
-                    an.setAttribute('calcMode', 'spline');
-                    an.setAttribute('keyTimes', '0;0.5;1');
-                    an.setAttribute('keySplines', '0.4 0 0.6 1;0.4 0 0.6 1');
-                    c.appendChild(an);
-                }
             });
         }
         if (labelBox) {
@@ -243,14 +236,7 @@
         if (!d) return;
         lightUp(id);
 
-        // 누른 자리 바로 아래에 보여 준다.
-        // 옆칸 설명 카드는 다른 갈피에 있어서, 눈 장면을 보는 동안에는 감춰져 있다.
-        var box = layer.querySelector('#eyeDetail');
-        if (box) {
-            box.hidden = false;
-            layer.querySelector('#eyeDetailTitle').textContent = d[0];
-            layer.querySelector('#eyeDetailText').innerHTML = d[1];
-        }
+        // The common detail card stays visible beside the current scene's controls.
         var t = document.getElementById('organTitle');
         var p = document.getElementById('organDesc');
         if (t) t.textContent = d[0];
@@ -297,7 +283,12 @@
 
         // 어두울수록 동공이 커진다
         var pup = 1.75 - ((light - 10) / 90) * 1.15;   // 1.75 ~ 0.6
-        if (pupil) pupil.setAttribute('transform', 'scale(' + pup.toFixed(3) + ')');
+        if (pupil) pupil.setAttribute('transform', 'scale(1 ' + pup.toFixed(3) + ')');
+        if(iris){
+            var gap=45*pup, leaves=iris.querySelectorAll('path');
+            leaves[0].setAttribute('d','M632 228 Q650 242 660 '+(350-gap)+' L648 '+(350-gap)+' Q638 265 628 238 Z');
+            leaves[1].setAttribute('d','M632 472 Q650 458 660 '+(350+gap)+' L648 '+(350+gap)+' Q638 435 628 462 Z');
+        }
 
         // 섬모체는 가까운 곳을 볼 때 수축하고, 그러면 진대가 느슨해진다.
         // 투명도만 바꾸면 「수축」도 「느슨해짐」도 눈에 안 보인다. 실제로 움직인다.
@@ -308,7 +299,7 @@
         scaleAbout(zonule, 1 - pull * 0.22, 1 - pull * 0.20);
         if (zonule) zonule.setAttribute('opacity', 1 - pull * 0.45);
 
-        drawRays(light, thick);
+        drawRays(light, dist);
 
         if (capNear) {
             capNear.innerHTML = near
@@ -322,7 +313,7 @@
         }
     }
 
-    function drawRays(light, thick) {
+    function drawRays(light, distance) {
         // 그림이 다 놓이기 전에는 크기를 재도 0 이 나온다. 제대로 잴 수 있을 때까지 다시 잰다.
         if (!lensPt.x || !foveaPt.x) {
             lensPt = centerOf('lens', lensPt);
@@ -332,12 +323,14 @@
 
         while (rayGroup.firstChild) rayGroup.removeChild(rayGroup.firstChild);
 
-        var spread = (14 + (100 - light) * 0.55);   // 어두우면 넓게 들어온다
+        var spread = 45*(1.75-((light-10)/90)*1.15)*.72;
+        var objectX=860+distance*8;
         for (var i = -2; i <= 2; i++) {
             var off = i * spread / 2;
+            var incoming=off*(objectX-830)/(objectX-lensPt.x);
             var p = document.createElementNS(SVG_NS, 'path');
             p.setAttribute('d',
-                'M990 ' + (lensPt.y + off * 1.25) +
+                'M830 ' + (lensPt.y + incoming) +
                 ' L' + lensPt.x + ' ' + (lensPt.y + off) +
                 ' L' + foveaPt.x + ' ' + foveaPt.y);
             p.setAttribute('fill', 'none');

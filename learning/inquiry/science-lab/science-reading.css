@@ -10,3 +10,14 @@ body :is(.meaning-body p,.explanation,.supplement-observation,.required-observat
 body .figure-notes p{font-family:var(--science-reading-font)!important}
 
 body :is(.prediction-field legend,.prediction-options label,.prediction-options button,#predictionLegend,.prediction-result,.supplement-check label){font-family:var(--science-reading-font)!important}
+
+/* Completed steps and unavailable actions still carry instructions students
+   must be able to read. Distinguish the state with a muted surface, not opacity. */
+body main :is(button,select,input[type=number],input[type=text]):disabled{
+ opacity:1!important;background:#edf3f6!important;color:#435d6b!important;
+ -webkit-text-fill-color:currentColor;border-color:#bdcdd5!important;cursor:default;
+}
+body main button:disabled :is(span,strong,small){color:inherit!important}
+body main .exam-answers button:disabled[aria-pressed=true]{
+ color:#164f56!important;background:#e2f0f1!important;border-color:#246b75!important;
+}

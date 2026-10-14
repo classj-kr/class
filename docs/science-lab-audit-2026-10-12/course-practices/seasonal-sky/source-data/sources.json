@@ -1,0 +1,32 @@
+[
+  {
+    "file": "iau-stars.html",
+    "url": "https://iauarchive.eso.org/public/themes/naming_stars/",
+    "sha256": "67392808893e0d45fc7e5ded7cdb4eb12987fed62b0d03e8d89d631181f7646d"
+  },
+  {
+    "file": "sidereal.html",
+    "url": "https://aa.usno.navy.mil/faq/GAST",
+    "sha256": "c0a6256702ca71af496015b73f7a61be4c07cb2816dbc438d775a08e08d02371"
+  },
+  {
+    "file": "horizon.html",
+    "url": "https://aa.usno.navy.mil/faq/alt_az",
+    "sha256": "0e59308ec8ac3f79edbb32ffc1ccb5bf07a18bef95117f669cb894bcaf76fa0a"
+  },
+  {
+    "file": "sun.html",
+    "url": "https://aa.usno.navy.mil/faq/sun_approx",
+    "sha256": "711f5e9270e1565df80248d952ef387266fce06425dbd61cdc8ddef3423fab03"
+  },
+  {
+    "file": "bsc-readme.txt",
+    "url": "https://cdsarc.cds.unistra.fr/ftp/V/50/ReadMe",
+    "sha256": "44fd9c73e2eecad0beb47bdfa3f01c60fd43f93d6964198e31fcd48732de5b33"
+  },
+  {
+    "file": "bsc-catalog.tsv",
+    "url": "https://vizier.cfa.harvard.edu/viz-bin/asu-tsv?-source=V%2F50%2Fcatalog&-out=HR,Name,RAJ2000,DEJ2000,Vmag,B-V&Vmag=%3C5.5&-out.max=5000",
+    "sha256": "b3f15564e7b17d74366d473849da15722edecdb901a2d5ec360466f50e0d7ee8"
+  }
+]

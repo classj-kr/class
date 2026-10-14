@@ -1,0 +1,21 @@
+{
+  "engine": "webkit",
+  "catalog": true,
+  "routes": 1,
+  "scenarios": 25,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "deviceProfile": null,
+  "emulationOnly": false,
+  "deviceScaleFactor": 1,
+  "liveWebFonts": false,
+  "loadedFontFamilies": [],
+  "issues": [],
+  "errors": []
+}

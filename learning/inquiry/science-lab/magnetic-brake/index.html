@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 구리판 사이의 자기 브레이크</title><meta name="description" content="2022 교육과정 · 구리판 사이의 자기 브레이크의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>구리판 사이의 자기 브레이크</h1><div class="grade-tags"><span>고(선택)</span><span>전자기와 양자</span></div></header><p class="intro">같은 높이에서 두 물체를 놓아 보세요. 구리판 사이에서 자석과 알루미늄 조각의 낙하가 어떻게 다른지 비교합니다.</p><section class="experiment-layout physics-lab" data-physics="magnetic-brake"><div class="control-panel"><h2>동시에 떨어뜨리기</h2><label>두 물체 양옆의 판<select id="plate"><option value="copper">구리판</option><option value="insulator">절연판</option></select></label><label for="height">출발 높이 <output id="heightValue">1 m</output><input id="height" type="range" min="0.5" max="2" step="0.5" value="1" data-unit=" m"></label><div class="toolbar"><button id="drop" class="primary">두 물체 놓기</button><button id="pauseDrop">일시 정지</button></div></div><div id="physicsScene" class="scene light"></div><div id="physicsReadout" class="physics-readout"></div><p id="physicsStatus" class="status" aria-live="polite"></p><div class="toolbar"><button id="resetExperiment">처음부터</button></div><p class="model-note">같은 중력 가속도를 적용합니다. 자석에 작용하는 제동력은 속도에 비례한다고 근사했으며, 표시 시간은 실제 장치의 측정값이 아닙니다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>자석을 도체 판 사이로 떨어뜨리면 늦게 떨어진다. 판에 긴 틈을 내어 맴돌이 전류의 경로를 끊으면 예상되는 변화는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 제동이 강해져 느려짐</label>
+<label><input type="radio" name="q1" value="b"> 제동이 약해져 빨라짐</label>
+<label><input type="radio" name="q1" value="c"> 제동이 같아 속력도 같음</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>전류가 순환하는 경로가 제한되면 유도 전류와 그에 따른 제동 효과가 약해집니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>모양과 질량이 같은 자석과 비자성 조각을 구리판 사이로 떨어뜨렸다. 자석만 크게 감속했다. 가장 직접적으로 비교된 차이는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 낙하 물체에 작용하는 중력</label>
+<label><input type="radio" name="q2" value="b"> 낙하를 시작한 지점의 높이</label>
+<label><input type="radio" name="q2" value="c"> 낙하 물체가 만드는 자기장</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>다른 조건을 같게 한 비교에서 자석이 만드는 자기장과 선속 변화가 주요 차이입니다. 모양과 질량, 출발 높이는 통제합니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>자석을 구리판 사이에서 아래로 움직인 뒤 위로 움직였다. 각 경우 운동을 방해하는 자기력 방향은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 아래로 움직일 때 위 · 위로 움직일 때 아래</label>
+<label><input type="radio" name="q3" value="b"> 아래로 움직일 때 아래 · 위로 움직일 때 위</label>
+<label><input type="radio" name="q3" value="c"> 아래로 움직일 때 위 · 위로 움직일 때 위</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>유도 전류의 자기적 효과는 선속 변화를 방해합니다. 이 제동 상황에서는 각각 상대 운동과 반대 방향의 힘이 작용합니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>자석의 중력 퍼텐셜 에너지가 10 J 줄었지만 운동 에너지는 3 J만 늘었다. 다른 손실을 무시하면 구리판 등에 전달된 열은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 13 J</label>
+<label><input type="radio" name="q4" value="b"> 7 J</label>
+<label><input type="radio" name="q4" value="c"> 3 J</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>감소한 퍼텐셜 에너지는 운동 에너지 증가와 유도 전류에 따른 열 등으로 전환됩니다. 10−3=7 J입니다.</p>
+</article></details></main><script src="../physics-models.js?v=9af4f7009d95"></script><script src="../physics-labs.js?v=66fe0c5b6c1d"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

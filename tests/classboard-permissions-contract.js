@@ -33,7 +33,7 @@ function assertPlaceholderArity(sql, params) {
 // user 4: homeroom teacher whose class is recorded ONLY as a '담임 학급' group
 //         (no grade/class on classroom_teachers) -- the dashboard opens by groupId
 const TEACHERS = {
-  1: { school_id: 5, teacher_type: "homeroom", subject_name: null, teacher_name: "담임" },
+  1: { school_id: 5, teacher_type: "homeroom", subject_name: null, teacher_name: "담임", academic_year: 2026, grade: 3, class_number: 2 },
   2: { school_id: 5, teacher_type: "전담", subject_name: "음악", teacher_name: "음악쌤" },
   4: { school_id: 5, teacher_type: "homeroom", subject_name: null, teacher_name: "새담임" }
 };
@@ -74,7 +74,8 @@ function answer(sql, params) {
 
   // requireTeacher's registration probe
   if (text.includes("classroom_teachers t") && text.includes("sc.enabled = TRUE")) {
-    return { rows: TEACHERS[Number(params?.[0])] ? [{ ok: 1 }] : [] };
+    const registration = TEACHERS[Number(params?.[0])];
+    return { rows: registration ? [registration] : [] };
   }
   // classboardScope's teacher lookup (by user id or registered google email)
   if (text.includes("FROM classroom_teachers t") && text.includes("LOWER(t.google_email)")) {
@@ -84,7 +85,7 @@ function answer(sql, params) {
   // classIdFromHomeroomGroup: a homeroom assignment that lives only in teacher_groups
   // (the student membership predicate also mentions group_type = 'homeroom', so key
   //  on the teacher_user_id clause that only this lookup has)
-  if (text.includes("teacher_user_id = $1 AND group_type = 'homeroom'")) {
+  if (text.includes("g.teacher_user_id = $1 AND g.group_type = 'homeroom'")) {
     return { rows: Number(params?.[0]) === 4 ? homeroomGroupRows : [] };
   }
   if (text.includes("SELECT id FROM classroom_classes") && text.includes("academic_year = $2 AND grade = $3")) {
@@ -384,7 +385,7 @@ const asGroupOnlyHomeroom = () => { sessionRows = [{ id: 4, email: "new@x.kr", r
 
     // 14. 명단 화면이 보내는 유형도 그 목록 안에 있어야 한다.
     const rosterHtml = fs.readFileSync(
-      path.join(__dirname, "..", "classtools", "school-roster.html"), "utf8");
+      path.join(__dirname, "..", "apps", "classtools", "school-roster.html"), "utf8");
     const typeSelect = rosterHtml.match(/id="newGroupType"[\s\S]*?<\/select>/)[0];
     const offered = [...typeSelect.matchAll(/value="([a-z]+)"/g)].map(m => m[1]);
     assert.ok(offered.length > 0, "The roster must offer group types to pick from.");
@@ -401,7 +402,7 @@ const asGroupOnlyHomeroom = () => { sessionRows = [{ id: 4, email: "new@x.kr", r
     // 명단의 열이 다르므로, 그 학교에 실제로 있는 열에서 목록을 만든다.
     // 다만 서버로 보내는 갈래 이름은 데이터베이스가 받는 것이어야 한다.
     const hubHtml = fs.readFileSync(
-      path.join(__dirname, "..", "classtools", "index.html"), "utf8");
+      path.join(__dirname, "..", "apps", "classtools", "index.html"), "utf8");
     const hubSelect = hubHtml.match(/id="modal-group-type"[\s\S]*?<\/select>/)[0];
     assert.doesNotMatch(hubSelect, /<option/,
       "교실 도구가 갈래를 박아 두면 그 학교에 없는 열이 목록에 뜬다.");

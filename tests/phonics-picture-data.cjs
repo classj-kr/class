@@ -1,8 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-let previous;
-for (const site of ['phonics', 'phonics-site/public/phonics']) {
+for (const site of ['phonics']) {
   const root = 'learning/literacy-numeracy/' + site;
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(root + '/curriculum.js', 'utf8'), context);
@@ -28,8 +27,5 @@ for (const site of ['phonics', 'phonics-site/public/phonics']) {
   assert.equal(bank.top.pictureMeaning, '팽이');
   assert.equal(bank.fan.pictureMeaning, '부채');
   for (const word of ['am','at','yet','though']) assert.ok(bank[word].pictureNote);
-  const serialized = JSON.stringify(bank);
-  if (previous) assert.equal(serialized, previous, 'Both deployed copies must use identical reviewed data');
-  previous = serialized;
   console.log(site + ': all 706 picture bounds, meanings, examples, plural and replacement artwork passed');
 }

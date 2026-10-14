@@ -1,10 +1,7 @@
 'use strict';
 
-/* Three facts about a microscope, all of them arithmetic a child can do.
-   Magnification is the two lens powers multiplied. The width you can see is
-   the eyepiece's field number divided by the objective, so raising the power
-   narrows the view in exact proportion. And the light you started with is
-   spread over that magnified image, so brightness falls as the square. */
+/* Magnification is the product of lens powers. Field width uses the model's
+   eyepiece field number. Brightness is illustrative, not a photometric law. */
 
 const SPECIMENS = {
     onion: { name: '양파 표피', mm: 0.35, wide: 0.09, kind: 'brick', tint: 'rgba(214,226,190,.55)', back: 'rgba(60,72,52,.35)', note: '세포벽이 있어 벽돌처럼 반듯합니다' },
@@ -29,7 +26,6 @@ const fmt = (v, d) => v.toFixed(d).replace('-', '−');
 
 function power(eye, obj) { return eye * obj; }
 function fieldMm(eye, obj) { return EYEPIECES[eye].fn / obj; }
-// Against the widest, dimmest-free setting: brightness falls as 1/power².
 function brightness(eye, obj) { return ({4:1,10:0.8,40:0.6})[obj]; } // Illustrative shading, not a photometric law.
 
 function share(spec, eye, obj) { return SPECIMENS[spec].mm / fieldMm(eye, obj); }
@@ -65,18 +61,19 @@ function drawScope(g) {
 
     g.appendChild(el('rect', { x: 44, y: 178, width: 116, height: 12, rx: 4, class: 'scope-body' }));
     g.appendChild(el('rect', { x: 132, y: 40, width: 16, height: 140, rx: 5, class: 'scope-body' }));
-    g.appendChild(el('rect', { x: 82, y: 26, width: 22, height: 30, rx: 6, class: 'scope-tube' }));
-    g.appendChild(el('rect', { x: 86, y: 20, width: 14, height: 10, rx: 3, class: 'lens-barrel on' }));
+    g.appendChild(el('rect', { x: 90.5, y: 26, width: 22, height: 30, rx: 6, class: 'scope-tube' }));
+    g.appendChild(el('rect', { x: 94.5, y: 20, width: 14, height: 10, rx: 3, class: 'lens-barrel on' }));
     g.appendChild(el('text', { x: 108, y: 28, class: 'tiny-label' }, `접안렌즈 ${state.eye}배`));
-    g.appendChild(el('rect', { x: 88, y: 54, width: 46, height: 42, rx: 6, class: 'scope-tube' }));
+    g.appendChild(el('rect', { x: 88, y: 54, width: 27, height: 42, rx: 6, class: 'scope-tube' }));
 
     // The three objectives on their turret; the one in use swings under the
     // tube. Their labels share one line, because staggering them by barrel
     // length ran the numbers into each other.
     OBJECTIVES.forEach((o, i) => {
         const on = o === state.obj;
-        const bx = 74 + i * 20, len = 12 + i * 7;
-        g.appendChild(el('rect', { x: bx, y: 96, width: 15, height: len, rx: 3, class: `lens-barrel${on ? ' on' : ''}` }));
+        const slot = (i - OBJECTIVES.indexOf(state.obj) + 1 + OBJECTIVES.length) % OBJECTIVES.length;
+        const bx = 74 + slot * 20, len = 12 + i * 7;
+        g.appendChild(el('rect', { x: bx, y: 96, width: 15, height: len, rx: 3, 'data-objective': o, class: `lens-barrel${on ? ' on' : ''}` }));
         g.appendChild(el('text', { x: bx + 7.5, y: 131, 'text-anchor': 'middle', class: 'tiny-label', style: on ? 'fill:#059669' : '' }, String(o)));
     });
     g.appendChild(el('text', { x: 66, y: 131, 'text-anchor': 'end', class: 'tiny-label' }, '대물'));
@@ -151,9 +148,13 @@ function drawField(g) {
         const n = Math.ceil((FIELD.r * 2) / step) + 2;
         for (let r = 0; r < n; r += 1) for (let c = 0; c < n; c += 1) {
             const x = FIELD.cx - FIELD.r + (c + ((r % 2) ? 0.5 : 0)) * step, y = FIELD.cy - FIELD.r + r * step;
-            holder.appendChild(el('ellipse', { cx: x - w * 0.28, cy: y, rx: w * 0.3, ry: w * 0.55, class: 'guard-cell', style: `fill:${s.tint}` }));
-            holder.appendChild(el('ellipse', { cx: x + w * 0.28, cy: y, rx: w * 0.3, ry: w * 0.55, class: 'guard-cell', style: `fill:${s.tint}` }));
-            if (w > 10) holder.appendChild(el('ellipse', { cx: x, cy: y, rx: w * 0.11, ry: w * 0.4, class: 'pore' }));
+            const pair = el('g', { 'data-specimen': 'stoma', transform: `translate(${x} ${y}) scale(${w})` });
+            for (const side of [-1, 1]) {
+                pair.appendChild(el('path', { d: 'M.12,-.45 C.58,-.64 .66,.64 .12,.45 C.29,.23 .29,-.23 .12,-.45 Z', transform: `scale(${side} 1)`, class: 'guard-cell', style: `fill:${s.tint};stroke-width:.025` }));
+                for (const cy of [-.3, -.1, .1, .3]) pair.appendChild(el('circle', { cx: side * (.36 + (.3 - Math.abs(cy)) * .22), cy, r: .045, class: 'chloroplast', fill: '#3b8c46' }));
+            }
+            pair.appendChild(el('ellipse', { cx: 0, cy: 0, rx: .11, ry: .36, class: 'pore', style: 'stroke-width:.02' }));
+            holder.appendChild(pair);
         }
     } else {
         const step = w * 1.5;
@@ -220,9 +221,9 @@ function drawGraph(g) {
         g.appendChild(el('text', { x: cx, y: yBot + 14, 'text-anchor': 'middle', class: 'axis-text', style: on ? 'fill:#059669' : '' }, `${mag}배`));
     });
 
-    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 172, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#475569' },
-        `막대 위의 숫자는 ${a.spec.name}가 가로로 몇 개 들어가는지입니다`));
-    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, '배율 — 세로는 한눈에 보이는 너비 (mm)'));
+    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 185, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#475569' },
+        '막대 위 숫자: 시야 너비 ÷ 표본 한 개의 크기'));
+    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 211, 'text-anchor': 'middle', class: 'axis-title' }, '배율 — 세로는 한눈에 보이는 너비 (mm)'));
 }
 
 function render() {
@@ -241,10 +242,10 @@ function updateReadout() {
     $('valueB').textContent = a.field >= 1 ? `${fmt(a.field, 2)} mm` : `${Math.round(a.field * 1000)} μm`;
     const rows = [
         ['배율 계산', `접안 ${state.eye} × 대물 ${state.obj} = ${a.mag}배`, false],
-        ['모형의 세포 크기', `${fmt(a.spec.mm, 2)} mm · ${Math.round(a.spec.mm * 1000)} μm`, false],
+        ['모형의 표본 크기', `${fmt(a.spec.mm, 2)} mm · ${Math.round(a.spec.mm * 1000)} μm`, false],
         ['눈에 보이는 크기', `${fmt(a.apparent, 1)} mm`, false],
-        ['가로로 몇 개', a.overflows ? '한 개도 다 안 들어옵니다' : `${fmt(a.across, a.across < 10 ? 1 : 0)}개`, false],
-        ['이 세포의 특징', a.spec.note, false],
+        ['빈틈없이 나란히 놓으면', a.overflows ? '한 개도 다 안 들어옵니다' : `${fmt(a.across, a.across < 10 ? 1 : 0)}개`, false],
+        ['이 표본의 특징', a.spec.note, false],
     ];
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
@@ -270,7 +271,7 @@ function explain(a) {
     s += `이 배율에서 한눈에 들어오는 너비는 ${a.field >= 1 ? `${fmt(a.field, 2)} mm` : `${Math.round(a.field * 1000)} μm`}이므로, `;
     s += a.overflows
         ? `${a.spec.name} 한 개도 다 담기지 않습니다. 너무 크게 본 셈입니다. `
-        : `${a.spec.name}가 가로로 ${fmt(a.across, a.across < 10 ? 1 : 0)}개쯤 들어갑니다. `;
+        : `같은 크기의 표본을 빈틈없이 나란히 놓으면 가로로 ${fmt(a.across, a.across < 10 ? 1 : 0)}개쯤 들어갑니다. 실제로 보이는 개수는 표본 사이 간격에 따라 달라집니다. `;
 
     if (v === 'p1') {
         s += `화면을 꽤 차지하므로 모양을 또렷이 살펴볼 수 있습니다. `;

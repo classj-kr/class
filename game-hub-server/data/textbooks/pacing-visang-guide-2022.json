@@ -1,0 +1,4330 @@
+{
+  "schemaVersion": 1,
+  "plans": [
+    {
+      "id": "visang-math52-guide",
+      "editionId": "tb-356b1adeeeece7d3",
+      "curriculum": "2022",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "visang-math52-guide",
+      "sourceUrl": "https://ibook.vivasam.com/CBS_iBook/11150/contents/index.html?skin=basic01",
+      "sourceFile": "visang-math52-guide-transcription.json",
+      "sha256": "19fc3b8b29ebb05a5de7b68d1acdf6559beb491a4ff1457605fdc8c8f3e2787e",
+      "exhibitionUrl": "https://text.vivasam.com/detail/83",
+      "format": "official-guide-semester-table",
+      "curriculumVerification": "official-2022-exhibition-and-guide-title",
+      "lessons": [
+        {
+          "id": "visang-math52-guide-g1-r1",
+          "sourceRow": 1,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/0/rows/0",
+          "sourceCells": [
+            "1",
+            "수학자와 2학기를 시작해요!",
+            "6~7",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 1,
+          "semester": 2,
+          "unit": "학기 초",
+          "sourceUnit": "학기 초",
+          "topic": "수학자와 2학기를 시작해요!",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "6~7",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math52-guide-g2-r1",
+          "sourceRow": 1,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "8~9",
+            "5",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 2,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "8~9",
+          "supplementaryPages": "5",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r2",
+          "sourceRow": 2,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/1",
+          "sourceCells": [
+            "2",
+            "이상과 이하를 알아볼까요",
+            "10~11",
+            "6~7",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 3,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "이상과 이하를 알아볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "10~11",
+          "supplementaryPages": "6~7",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r3",
+          "sourceRow": 3,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/2",
+          "sourceCells": [
+            "3",
+            "초과와 미만을 알아볼까요",
+            "12~13",
+            "8~9",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 4,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "초과와 미만을 알아볼까요",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "12~13",
+          "supplementaryPages": "8~9",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r4",
+          "sourceRow": 4,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/3",
+          "sourceCells": [
+            "4",
+            "수의 범위를 활용해 볼까요",
+            "14~15",
+            "10~11",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 5,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "수의 범위를 활용해 볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "14~15",
+          "supplementaryPages": "10~11",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r5",
+          "sourceRow": 5,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/4",
+          "sourceCells": [
+            "5",
+            "올림을 알아보고 활용해 볼까요",
+            "16~17",
+            "12~13",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 6,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "올림을 알아보고 활용해 볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "16~17",
+          "supplementaryPages": "12~13",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r6",
+          "sourceRow": 6,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/5",
+          "sourceCells": [
+            "6",
+            "버림을 알아보고 활용해 볼까요",
+            "18~19",
+            "14~15",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 7,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "버림을 알아보고 활용해 볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "18~19",
+          "supplementaryPages": "14~15",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r7",
+          "sourceRow": 7,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/6",
+          "sourceCells": [
+            "7",
+            "반올림을 알아보고 활용해 볼까요",
+            "20~23",
+            "16~17",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 8,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "반올림을 알아보고 활용해 볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "20~23",
+          "supplementaryPages": "16~17",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r8",
+          "sourceRow": 8,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/7",
+          "sourceCells": [
+            "8",
+            "[창의가 반짝 역량이 쑥쑥] 체육 대회를 준비해 볼까요?",
+            "24~25",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 9,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 체육 대회를 준비해 볼까요?",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "24~25",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g2-r9",
+          "sourceRow": 9,
+          "sourcePage": 158,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/8",
+          "sourceCells": [
+            "9",
+            "[스스로 마무리하기]",
+            "26~29",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 10,
+          "semester": 2,
+          "unit": "1. 수의 범위와 올림, 버림, 반올림",
+          "sourceUnit": "1. 수의 범위와 올림, 버림, 반올림",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "26~29",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-02",
+            "6수01-03"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r1",
+          "sourceRow": 1,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "30~31",
+            "19",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 11,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "30~31",
+          "supplementaryPages": "19",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r2",
+          "sourceRow": 2,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/1",
+          "sourceCells": [
+            "2",
+            "(진분수)×(자연수)를 구해 볼까요",
+            "32~33",
+            "20~21",
+            "색연필"
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 12,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "(진분수)×(자연수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "32~33",
+          "supplementaryPages": "20~21",
+          "materials": "색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r3",
+          "sourceRow": 3,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/2",
+          "sourceCells": [
+            "3",
+            "(대분수)×(자연수)를 구해 볼까요",
+            "34~35",
+            "22~23",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 13,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "(대분수)×(자연수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "34~35",
+          "supplementaryPages": "22~23",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r4",
+          "sourceRow": 4,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/3",
+          "sourceCells": [
+            "4",
+            "(자연수)×(진분수)를 구해 볼까요",
+            "36~37",
+            "24~25",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 14,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "(자연수)×(진분수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "36~37",
+          "supplementaryPages": "24~25",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r5",
+          "sourceRow": 5,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/4",
+          "sourceCells": [
+            "5",
+            "(자연수)×(대분수)를 구해 볼까요",
+            "38~39",
+            "26~27",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 15,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "(자연수)×(대분수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "38~39",
+          "supplementaryPages": "26~27",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r6",
+          "sourceRow": 6,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/5",
+          "sourceCells": [
+            "6~7",
+            "진분수의 곱셈을 해 볼까요",
+            "40~43",
+            "28~29",
+            "주사위"
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 16,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "진분수의 곱셈을 해 볼까요",
+          "subunit": null,
+          "periodText": "6~7",
+          "periodNumbers": [
+            6,
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "40~43",
+          "supplementaryPages": "28~29",
+          "materials": "주사위",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r7",
+          "sourceRow": 7,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/6",
+          "sourceCells": [
+            "8",
+            "대분수의 곱셈을 해 볼까요",
+            "44~45",
+            "30~31",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 17,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "대분수의 곱셈을 해 볼까요",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "44~45",
+          "supplementaryPages": "30~31",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r8",
+          "sourceRow": 8,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/7",
+          "sourceCells": [
+            "9",
+            "[창의가 반짝 역량이 쑥쑥] 어느 행성에 갈까요?",
+            "46~47",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 18,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 어느 행성에 갈까요?",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "46~47",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g3-r9",
+          "sourceRow": 9,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/8",
+          "sourceCells": [
+            "10",
+            "[스스로 마무리하기]",
+            "48~51",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 19,
+          "semester": 2,
+          "unit": "2. 분수의 곱셈",
+          "sourceUnit": "2. 분수의 곱셈",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "10",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "48~51",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-09"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g4-r1",
+          "sourceRow": 1,
+          "sourcePage": 159,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/3/rows/0",
+          "sourceCells": [
+            "1~2",
+            "나는 여행 상품 개발자! 현장 체험 학습 계획을 세워요.",
+            "52~55",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-export.pdf",
+          "originalSha256": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+          "sequence": 20,
+          "semester": 2,
+          "unit": "수학을 잇기 1",
+          "sourceUnit": "수학을 잇기",
+          "topic": "나는 여행 상품 개발자! 현장 체험 학습 계획을 세워요.",
+          "subunit": null,
+          "periodText": "1~2",
+          "periodNumbers": [
+            1,
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "52~55",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math52-guide-g5-r1",
+          "sourceRow": 1,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "56~57",
+            "33",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 21,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "56~57",
+          "supplementaryPages": "33",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g5-r2",
+          "sourceRow": 2,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/1",
+          "sourceCells": [
+            "2~3",
+            "서로 합동인 도형과 그 성질을 알아볼까요",
+            "58~61",
+            "34~35",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 22,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "서로 합동인 도형과 그 성질을 알아볼까요",
+          "subunit": null,
+          "periodText": "2~3",
+          "periodNumbers": [
+            2,
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "58~61",
+          "supplementaryPages": "34~35",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g5-r3",
+          "sourceRow": 3,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/2",
+          "sourceCells": [
+            "4",
+            "선대칭도형에 대해 알아볼까요",
+            "62~63",
+            "36~37",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 23,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "선대칭도형에 대해 알아볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "62~63",
+          "supplementaryPages": "36~37",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g5-r4",
+          "sourceRow": 4,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/3",
+          "sourceCells": [
+            "5",
+            "선대칭도형의 성질을 알고, 그려볼까요",
+            "64~67",
+            "38~39",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 24,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "선대칭도형의 성질을 알고, 그려볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "64~67",
+          "supplementaryPages": "38~39",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g5-r5",
+          "sourceRow": 5,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/4",
+          "sourceCells": [
+            "6",
+            "점대칭도형에 대해 알아볼까요",
+            "68~69",
+            "40~41",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 25,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "점대칭도형에 대해 알아볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "68~69",
+          "supplementaryPages": "40~41",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g5-r6",
+          "sourceRow": 6,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/5",
+          "sourceCells": [
+            "7",
+            "점대칭도형의 성질을 알고, 그려볼까요",
+            "70~73",
+            "42~43",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 26,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "점대칭도형의 성질을 알고, 그려볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "70~73",
+          "supplementaryPages": "42~43",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g5-r7",
+          "sourceRow": 7,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/6",
+          "sourceCells": [
+            "8",
+            "[창의가 반짝 역량이 쑥쑥] 그림으로 나를 표현해 볼까요?",
+            "74~75",
+            null,
+            "색연필"
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 27,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 그림으로 나를 표현해 볼까요?",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "74~75",
+          "supplementaryPages": null,
+          "materials": "색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g5-r8",
+          "sourceRow": 8,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/7",
+          "sourceCells": [
+            "9",
+            "[스스로 마무리하기]",
+            "76~79",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 28,
+          "semester": 2,
+          "unit": "3. 합동과 대칭",
+          "sourceUnit": "3. 합동과 대칭",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "76~79",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-01",
+            "6수03-02"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r1",
+          "sourceRow": 1,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "80~81",
+            "45",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 29,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "80~81",
+          "supplementaryPages": "45",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r2",
+          "sourceRow": 2,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/1",
+          "sourceCells": [
+            "2",
+            "(소수)×(자연수)를 구해 볼까요(1)",
+            "82~83",
+            "46~47",
+            "수 모형"
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 30,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "(소수)×(자연수)를 구해 볼까요(1)",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "82~83",
+          "supplementaryPages": "46~47",
+          "materials": "수 모형",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r3",
+          "sourceRow": 3,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/2",
+          "sourceCells": [
+            "3",
+            "(소수)×(자연수)를 구해 볼까요(2)",
+            "84~85",
+            "48~49",
+            "수 모형"
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 31,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "(소수)×(자연수)를 구해 볼까요(2)",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "84~85",
+          "supplementaryPages": "48~49",
+          "materials": "수 모형",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r4",
+          "sourceRow": 4,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/3",
+          "sourceCells": [
+            "4",
+            "(자연수)×(소수)를 구해 볼까요(1)",
+            "86~87",
+            "50~51",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 32,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "(자연수)×(소수)를 구해 볼까요(1)",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "86~87",
+          "supplementaryPages": "50~51",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r5",
+          "sourceRow": 5,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/4",
+          "sourceCells": [
+            "5",
+            "(자연수)×(소수)를 구해 볼까요(2)",
+            "88~89",
+            "52~53",
+            "주사위"
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 33,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "(자연수)×(소수)를 구해 볼까요(2)",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "88~89",
+          "supplementaryPages": "52~53",
+          "materials": "주사위",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r6",
+          "sourceRow": 6,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/5",
+          "sourceCells": [
+            "6",
+            "(소수)×(소수)를 구해 볼까요",
+            "90~91",
+            "54~55",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 34,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "(소수)×(소수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "90~91",
+          "supplementaryPages": "54~55",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r7",
+          "sourceRow": 7,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/6",
+          "sourceCells": [
+            "7",
+            "곱의 소수점 위치를 알아볼까요",
+            "92~93",
+            "56~57",
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 35,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "곱의 소수점 위치를 알아볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "92~93",
+          "supplementaryPages": "56~57",
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r8",
+          "sourceRow": 8,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/7",
+          "sourceCells": [
+            "8",
+            "어림해 볼까요",
+            "94~95",
+            "58~59",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 36,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "어림해 볼까요",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "94~95",
+          "supplementaryPages": "58~59",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r9",
+          "sourceRow": 9,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/8",
+          "sourceCells": [
+            "9",
+            "[창의가 반짝 역량이 쑥쑥] 챗봇과 소수의 곱셈을 해 볼까요?",
+            "96~97",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 37,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 챗봇과 소수의 곱셈을 해 볼까요?",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "96~97",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g6-r10",
+          "sourceRow": 10,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/9",
+          "sourceCells": [
+            "10",
+            "[스스로 마무리하기]",
+            "98~101",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 38,
+          "semester": 2,
+          "unit": "4. 소수의 곱셈",
+          "sourceUnit": "4. 소수의 곱셈",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "10",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "98~101",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-13"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g7-r1",
+          "sourceRow": 1,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/6/rows/0",
+          "sourceCells": [
+            "1~2",
+            "나는 게임 기획자! 게임을 만들어 봐요.",
+            "102~105",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p160-161.pdf",
+          "originalSha256": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+          "sequence": 39,
+          "semester": 2,
+          "unit": "수학을 잇기 2",
+          "sourceUnit": "수학을 잇기",
+          "topic": "나는 게임 기획자! 게임을 만들어 봐요.",
+          "subunit": null,
+          "periodText": "1~2",
+          "periodNumbers": [
+            1,
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "102~105",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math52-guide-g8-r1",
+          "sourceRow": 1,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "106~107",
+            "61",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 40,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "106~107",
+          "supplementaryPages": "61",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g8-r2",
+          "sourceRow": 2,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/1",
+          "sourceCells": [
+            "2",
+            "직육면체와 정육면체를 알아볼까요",
+            "108~111",
+            "62~63",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 41,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "직육면체와 정육면체를 알아볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "108~111",
+          "supplementaryPages": "62~63",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g8-r3",
+          "sourceRow": 3,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/2",
+          "sourceCells": [
+            "3",
+            "직육면체의 성질을 알아볼까요",
+            "112~113",
+            "64~65",
+            "두꺼운 종이 2장"
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 42,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "직육면체의 성질을 알아볼까요",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "112~113",
+          "supplementaryPages": "64~65",
+          "materials": "두꺼운 종이 2장",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g8-r4",
+          "sourceRow": 4,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/3",
+          "sourceCells": [
+            "4",
+            "직육면체의 겨냥도를 알아볼까요",
+            "114~115",
+            "66~67",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 43,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "직육면체의 겨냥도를 알아볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "114~115",
+          "supplementaryPages": "66~67",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g8-r5",
+          "sourceRow": 5,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/4",
+          "sourceCells": [
+            "5",
+            "정육면체의 전개도를 알아볼까요",
+            "116~119",
+            "68~69",
+            "정육면체 모양의 상자"
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 44,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "정육면체의 전개도를 알아볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "116~119",
+          "supplementaryPages": "68~69",
+          "materials": "정육면체 모양의 상자",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g8-r6",
+          "sourceRow": 6,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/5",
+          "sourceCells": [
+            "6",
+            "직육면체의 전개도를 알아볼까요",
+            "120~123",
+            "70~71",
+            "직육면체 모양의 상자, 색연필"
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 45,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "직육면체의 전개도를 알아볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "120~123",
+          "supplementaryPages": "70~71",
+          "materials": "직육면체 모양의 상자, 색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g8-r7",
+          "sourceRow": 7,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/6",
+          "sourceCells": [
+            "7",
+            "[창의가 반짝 역량이 쑥쑥] 감정 주사위를 만들어 볼까요?",
+            "124~125",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 46,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 감정 주사위를 만들어 볼까요?",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "124~125",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g8-r8",
+          "sourceRow": 8,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/7",
+          "sourceCells": [
+            "8",
+            "[스스로 마무리하기]",
+            "126~129",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 47,
+          "semester": 2,
+          "unit": "5. 직육면체와 정육면체",
+          "sourceUnit": "5. 직육면체와 정육면체",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "126~129",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-03",
+            "6수03-04"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r1",
+          "sourceRow": 1,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "130~131",
+            "73",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 48,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "130~131",
+          "supplementaryPages": "73",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r2",
+          "sourceRow": 2,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/1",
+          "sourceCells": [
+            "2",
+            "평균을 알아볼까요",
+            "132~133",
+            "74~75",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 49,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "평균을 알아볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "132~133",
+          "supplementaryPages": "74~75",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r3",
+          "sourceRow": 3,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/2",
+          "sourceCells": [
+            "3~4",
+            "평균을 구하고 비교해 볼까요",
+            "134~137",
+            "76~77",
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 50,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "평균을 구하고 비교해 볼까요",
+          "subunit": null,
+          "periodText": "3~4",
+          "periodNumbers": [
+            3,
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "134~137",
+          "supplementaryPages": "76~77",
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r4",
+          "sourceRow": 4,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/3",
+          "sourceCells": [
+            "5",
+            "자료를 수집하여 평균을 구하고 해석해 볼까요",
+            "138~139",
+            "78~79",
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 51,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "자료를 수집하여 평균을 구하고 해석해 볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "138~139",
+          "supplementaryPages": "78~79",
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r5",
+          "sourceRow": 5,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/4",
+          "sourceCells": [
+            "6",
+            "가능성을 말로 표현하고 비교해 볼까요",
+            "140~142",
+            "80~81",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 52,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "가능성을 말로 표현하고 비교해 볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "140~142",
+          "supplementaryPages": "80~81",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r6",
+          "sourceRow": 6,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/5",
+          "sourceCells": [
+            "7",
+            "가능성을 수로 나타내어 볼까요",
+            "143~145",
+            "82~83",
+            "색연필"
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 53,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "가능성을 수로 나타내어 볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "143~145",
+          "supplementaryPages": "82~83",
+          "materials": "색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r7",
+          "sourceRow": 7,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/6",
+          "sourceCells": [
+            "8",
+            "가능성을 예상하고 판단해 볼까요",
+            "146~147",
+            "84~85",
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 54,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "가능성을 예상하고 판단해 볼까요",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "146~147",
+          "supplementaryPages": "84~85",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r8",
+          "sourceRow": 8,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/7",
+          "sourceCells": [
+            "9",
+            "[창의가 반짝 역량이 쑥쑥] 운동 계획표를 만들어 볼까요?",
+            "148~149",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 55,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 운동 계획표를 만들어 볼까요?",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "148~149",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g9-r9",
+          "sourceRow": 9,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/8",
+          "sourceCells": [
+            "10",
+            "[스스로 마무리하기]",
+            "150~153",
+            null,
+            "색연필"
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 56,
+          "semester": 2,
+          "unit": "6. 평균과 가능성",
+          "sourceUnit": "6. 평균과 가능성",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "10",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "150~153",
+          "supplementaryPages": null,
+          "materials": "색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수04-01",
+            "6수04-04",
+            "6수04-05",
+            "6수04-06"
+          ]
+        },
+        {
+          "id": "visang-math52-guide-g10-r1",
+          "sourceRow": 1,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/9/rows/0",
+          "sourceCells": [
+            "1~2",
+            "나는 데이터 분석가! 학교 행사 만족도를 분석해요.",
+            "154~157",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 57,
+          "semester": 2,
+          "unit": "수학을 잇기 3",
+          "sourceUnit": "수학을 잇기",
+          "topic": "나는 데이터 분석가! 학교 행사 만족도를 분석해요.",
+          "subunit": null,
+          "periodText": "1~2",
+          "periodNumbers": [
+            1,
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "154~157",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math52-guide-g11-r1",
+          "sourceRow": 1,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/10/rows/0",
+          "sourceCells": [
+            "1",
+            "나와 수학을 잇다!",
+            "158~159",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math52-guide-p162-163.pdf",
+          "originalSha256": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671",
+          "sequence": 58,
+          "semester": 2,
+          "unit": "학기 말",
+          "sourceUnit": "학기 말",
+          "topic": "나와 수학을 잇다!",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "158~159",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        }
+      ]
+    },
+    {
+      "id": "visang-math62-guide",
+      "editionId": "tb-356b1adeeeece7d3",
+      "curriculum": "2022",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "visang-math62-guide",
+      "sourceUrl": "https://ibook.vivasam.com/CBS_iBook/11152/contents/index.html?skin=basic01",
+      "sourceFile": "visang-math62-guide-transcription.json",
+      "sha256": "5d1976fc4524aea6792c61c56f2707f873253d2a5575f317d04341447b29023d",
+      "exhibitionUrl": "https://text.vivasam.com/detail/83",
+      "format": "official-guide-semester-table",
+      "curriculumVerification": "official-2022-exhibition-and-guide-title",
+      "lessons": [
+        {
+          "id": "visang-math62-guide-g1-r1",
+          "sourceRow": 1,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/0/rows/0",
+          "sourceCells": [
+            "1",
+            "수학자와 2학기를 시작해요!",
+            "6~7",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 1,
+          "semester": 2,
+          "unit": "학기 초",
+          "sourceUnit": "학기 초",
+          "topic": "수학자와 2학기를 시작해요!",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "6~7",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math62-guide-g2-r1",
+          "sourceRow": 1,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "8~9",
+            "5",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 2,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "8~9",
+          "supplementaryPages": "5",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r2",
+          "sourceRow": 2,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/1",
+          "sourceCells": [
+            "2",
+            "(분수)÷(분수)를 구해 볼까요(1)",
+            "10~11",
+            "6~7",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 3,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "(분수)÷(분수)를 구해 볼까요(1)",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "10~11",
+          "supplementaryPages": "6~7",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r3",
+          "sourceRow": 3,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/2",
+          "sourceCells": [
+            "3",
+            "(분수)÷(분수)를 구해 볼까요(2)",
+            "12~13",
+            "8~9",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 4,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "(분수)÷(분수)를 구해 볼까요(2)",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "12~13",
+          "supplementaryPages": "8~9",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r4",
+          "sourceRow": 4,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/3",
+          "sourceCells": [
+            "4",
+            "(분수)÷(분수)를 구해 볼까요(3)",
+            "14~15",
+            "10~11",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 5,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "(분수)÷(분수)를 구해 볼까요(3)",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "14~15",
+          "supplementaryPages": "10~11",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r5",
+          "sourceRow": 5,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/4",
+          "sourceCells": [
+            "5",
+            "(자연수)÷(단위분수)를 구해 볼까요",
+            "16~17",
+            "12~13",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 6,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "(자연수)÷(단위분수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "16~17",
+          "supplementaryPages": "12~13",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r6",
+          "sourceRow": 6,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/5",
+          "sourceCells": [
+            "6",
+            "(자연수)÷(분수)를 구해 볼까요",
+            "18~19",
+            "14~15",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 7,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "(자연수)÷(분수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "18~19",
+          "supplementaryPages": "14~15",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r7",
+          "sourceRow": 7,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/6",
+          "sourceCells": [
+            "7",
+            "(분수)÷(분수)를 분수의 곱셈으로 나타내어 볼까요",
+            "20~21",
+            "16~17",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 8,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "(분수)÷(분수)를 분수의 곱셈으로 나타내어 볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "20~21",
+          "supplementaryPages": "16~17",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r8",
+          "sourceRow": 8,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/7",
+          "sourceCells": [
+            "8",
+            "여러 가지 분수의 나눗셈을 해 볼까요",
+            "22~25",
+            "18~19",
+            "주사위"
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 9,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "여러 가지 분수의 나눗셈을 해 볼까요",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "22~25",
+          "supplementaryPages": "18~19",
+          "materials": "주사위",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r9",
+          "sourceRow": 9,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/8",
+          "sourceCells": [
+            "9",
+            "[창의가 반짝 역량이 쑥쑥] 어느 농작물에 물을 더 준 것일까요?",
+            "26~27",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 10,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 어느 농작물에 물을 더 준 것일까요?",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "26~27",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g2-r10",
+          "sourceRow": 10,
+          "sourcePage": 160,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/1/rows/9",
+          "sourceCells": [
+            "10",
+            "[스스로 마무리하기]",
+            "28~31",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 11,
+          "semester": 2,
+          "unit": "1. 분수의 나눗셈",
+          "sourceUnit": "1. 분수의 나눗셈",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "10",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "28~31",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-11"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r1",
+          "sourceRow": 1,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "32~33",
+            "21",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 12,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "32~33",
+          "supplementaryPages": "21",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r2",
+          "sourceRow": 2,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/1",
+          "sourceCells": [
+            "2",
+            "어느 방향에서 보았는지 알아볼까요",
+            "34~37",
+            "22~23",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 13,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "어느 방향에서 보았는지 알아볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "34~37",
+          "supplementaryPages": "22~23",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r3",
+          "sourceRow": 3,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/2",
+          "sourceCells": [
+            "3",
+            "쌓은 모양과 위에서 본 모양을 알아볼까요",
+            "38~39",
+            "24~25",
+            "쌓기나무"
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 14,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "쌓은 모양과 위에서 본 모양을 알아볼까요",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "38~39",
+          "supplementaryPages": "24~25",
+          "materials": "쌓기나무",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r4",
+          "sourceRow": 4,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/3",
+          "sourceCells": [
+            "4",
+            "쌓은 모양과 위, 앞, 옆에서 본 모양을 알아볼까요",
+            "40~42",
+            "26~27",
+            "쌓기나무, 스마트 기기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 15,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "쌓은 모양과 위, 앞, 옆에서 본 모양을 알아볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "40~42",
+          "supplementaryPages": "26~27",
+          "materials": "쌓기나무, 스마트 기기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r5",
+          "sourceRow": 5,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/4",
+          "sourceCells": [
+            "5~6",
+            "쌓은 모양과 쌓기나무의 개수를 알아볼까요",
+            "43~47",
+            "28~31",
+            "쌓기나무"
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 16,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "쌓은 모양과 쌓기나무의 개수를 알아볼까요",
+          "subunit": null,
+          "periodText": "5~6",
+          "periodNumbers": [
+            5,
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "43~47",
+          "supplementaryPages": "28~31",
+          "materials": "쌓기나무",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r6",
+          "sourceRow": 6,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/5",
+          "sourceCells": [
+            "7",
+            "여러 가지 모양을 만들어 볼까요",
+            "48~49",
+            "32~33",
+            "쌓기나무, 색연필"
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 17,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "여러 가지 모양을 만들어 볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "48~49",
+          "supplementaryPages": "32~33",
+          "materials": "쌓기나무, 색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r7",
+          "sourceRow": 7,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/6",
+          "sourceCells": [
+            "8",
+            "[창의가 반짝 역량이 쑥쑥] 어떤 모양을 만들었는지 알아볼까요?",
+            "50~51",
+            null,
+            "쌓기나무 또는 연결 큐브, 색연필"
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 18,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 어떤 모양을 만들었는지 알아볼까요?",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "50~51",
+          "supplementaryPages": null,
+          "materials": "쌓기나무 또는 연결 큐브, 색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g3-r8",
+          "sourceRow": 8,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/2/rows/7",
+          "sourceCells": [
+            "9",
+            "[스스로 마무리하기]",
+            "52~55",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 19,
+          "semester": 2,
+          "unit": "2. 공간과 입체",
+          "sourceUnit": "2. 공간과 입체",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "52~55",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-09",
+            "6수03-10"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g4-r1",
+          "sourceRow": 1,
+          "sourcePage": 161,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/3/rows/0",
+          "sourceCells": [
+            "1~2",
+            "나는 전시 디자이너! 전시 공간을 디자인해요.",
+            "56~59",
+            null,
+            "쌓기나무, 색연필"
+          ],
+          "originalSourceFile": "visang-math62-guide-p160-161.pdf",
+          "originalSha256": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+          "sequence": 20,
+          "semester": 2,
+          "unit": "수학을 잇기 1",
+          "sourceUnit": "수학을 잇기",
+          "topic": "나는 전시 디자이너! 전시 공간을 디자인해요.",
+          "subunit": null,
+          "periodText": "1~2",
+          "periodNumbers": [
+            1,
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "56~59",
+          "supplementaryPages": null,
+          "materials": "쌓기나무, 색연필",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math62-guide-g5-r1",
+          "sourceRow": 1,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "60~61",
+            "35",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 21,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "60~61",
+          "supplementaryPages": "35",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r2",
+          "sourceRow": 2,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/1",
+          "sourceCells": [
+            "2",
+            "몫을 어림해 볼까요",
+            "62~63",
+            "36~37",
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 22,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "몫을 어림해 볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "62~63",
+          "supplementaryPages": "36~37",
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r3",
+          "sourceRow": 3,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/2",
+          "sourceCells": [
+            "3",
+            "소수 한 자리 수의 나눗셈을 해 볼까요",
+            "64~65",
+            "38~39",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 23,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "소수 한 자리 수의 나눗셈을 해 볼까요",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "64~65",
+          "supplementaryPages": "38~39",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r4",
+          "sourceRow": 4,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/3",
+          "sourceCells": [
+            "4",
+            "소수 두 자리 수의 나눗셈을 해 볼까요",
+            "66~67",
+            "40~41",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 24,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "소수 두 자리 수의 나눗셈을 해 볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "66~67",
+          "supplementaryPages": "40~41",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r5",
+          "sourceRow": 5,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/4",
+          "sourceCells": [
+            "5",
+            "자릿수가 다른 소수의 나눗셈을 해 볼까요",
+            "68~69",
+            "42~43",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 25,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "자릿수가 다른 소수의 나눗셈을 해 볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "68~69",
+          "supplementaryPages": "42~43",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r6",
+          "sourceRow": 6,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/5",
+          "sourceCells": [
+            "6",
+            "(자연수)÷(소수)를 구해 볼까요",
+            "70~71",
+            "44~45",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 26,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "(자연수)÷(소수)를 구해 볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "70~71",
+          "supplementaryPages": "44~45",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r7",
+          "sourceRow": 7,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/6",
+          "sourceCells": [
+            "7",
+            "몫을 반올림하여 나타내어 볼까요",
+            "72~73",
+            "46~47",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 27,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "몫을 반올림하여 나타내어 볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "72~73",
+          "supplementaryPages": "46~47",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r8",
+          "sourceRow": 8,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/7",
+          "sourceCells": [
+            "8",
+            "나누어 주고 남는 양을 알아볼까요",
+            "74~75",
+            "48~49",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 28,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "나누어 주고 남는 양을 알아볼까요",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "74~75",
+          "supplementaryPages": "48~49",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r9",
+          "sourceRow": 9,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/8",
+          "sourceCells": [
+            "9",
+            "[창의가 반짝 역량이 쑥쑥] 공룡의 키는 내 키의 몇 배일까요?",
+            "76~77",
+            null,
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 29,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 공룡의 키는 내 키의 몇 배일까요?",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "76~77",
+          "supplementaryPages": null,
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g5-r10",
+          "sourceRow": 10,
+          "sourcePage": 162,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/4/rows/9",
+          "sourceCells": [
+            "10",
+            "[스스로 마무리하기]",
+            "78~81",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 30,
+          "semester": 2,
+          "unit": "3. 소수의 나눗셈",
+          "sourceUnit": "3. 소수의 나눗셈",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "10",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "78~81",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수01-15"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r1",
+          "sourceRow": 1,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "82~83",
+            "51",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 31,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "82~83",
+          "supplementaryPages": "51",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r2",
+          "sourceRow": 2,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/1",
+          "sourceCells": [
+            "2",
+            "비의 성질을 알아볼까요",
+            "84~85",
+            "52~53",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 32,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "비의 성질을 알아볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "84~85",
+          "supplementaryPages": "52~53",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r3",
+          "sourceRow": 3,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/2",
+          "sourceCells": [
+            "3",
+            "간단한 자연수의 비로 나타내어 볼까요",
+            "86~87",
+            "54~55",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 33,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "간단한 자연수의 비로 나타내어 볼까요",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "86~87",
+          "supplementaryPages": "54~55",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r4",
+          "sourceRow": 4,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/3",
+          "sourceCells": [
+            "4",
+            "비례식을 알아볼까요",
+            "88~89",
+            "56~57",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 34,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "비례식을 알아볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "88~89",
+          "supplementaryPages": "56~57",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r5",
+          "sourceRow": 5,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/4",
+          "sourceCells": [
+            "5",
+            "비례식의 성질을 알아볼까요",
+            "90~91",
+            "58~59",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 35,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "비례식의 성질을 알아볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "90~91",
+          "supplementaryPages": "58~59",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r6",
+          "sourceRow": 6,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/5",
+          "sourceCells": [
+            "6",
+            "비례식을 활용해 볼까요",
+            "92~93",
+            "60~61",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 36,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "비례식을 활용해 볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "92~93",
+          "supplementaryPages": "60~61",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r7",
+          "sourceRow": 7,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/6",
+          "sourceCells": [
+            "7~8",
+            "비례배분을 알아볼까요",
+            "94~97",
+            "62~63",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 37,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "비례배분을 알아볼까요",
+          "subunit": null,
+          "periodText": "7~8",
+          "periodNumbers": [
+            7,
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "94~97",
+          "supplementaryPages": "62~63",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r8",
+          "sourceRow": 8,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/7",
+          "sourceCells": [
+            "9",
+            "[창의가 반짝 역량이 쑥쑥] 광고를 바르게 고쳐 볼까요?",
+            "98~99",
+            null,
+            "색연필, 사인펜"
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 38,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 광고를 바르게 고쳐 볼까요?",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "98~99",
+          "supplementaryPages": null,
+          "materials": "색연필, 사인펜",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g6-r9",
+          "sourceRow": 9,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/5/rows/8",
+          "sourceCells": [
+            "10",
+            "[스스로 마무리하기]",
+            "100~103",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 39,
+          "semester": 2,
+          "unit": "4. 비례식과 비례배분",
+          "sourceUnit": "4. 비례식과 비례배분",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "10",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "100~103",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수02-04",
+            "6수02-05"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g7-r1",
+          "sourceRow": 1,
+          "sourcePage": 163,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/6/rows/0",
+          "sourceCells": [
+            "1~2",
+            "나는 문화 관광 해설사! 문화유산을 소개해 보아요.",
+            "104~107",
+            null,
+            "스마트 기기, 계산기, 색연필, 사인펜"
+          ],
+          "originalSourceFile": "visang-math62-guide-p162-163.pdf",
+          "originalSha256": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+          "sequence": 40,
+          "semester": 2,
+          "unit": "수학을 잇기 2",
+          "sourceUnit": "수학을 잇기",
+          "topic": "나는 문화 관광 해설사! 문화유산을 소개해 보아요.",
+          "subunit": null,
+          "periodText": "1~2",
+          "periodNumbers": [
+            1,
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "104~107",
+          "supplementaryPages": null,
+          "materials": "스마트 기기, 계산기, 색연필, 사인펜",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math62-guide-g8-r1",
+          "sourceRow": 1,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "108~109",
+            "65",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 41,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "108~109",
+          "supplementaryPages": "65",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r2",
+          "sourceRow": 2,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/1",
+          "sourceCells": [
+            "2",
+            "원주와 지름의 관계를 알아볼까요",
+            "110~111",
+            "66~67",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 42,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "원주와 지름의 관계를 알아볼까요",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "110~111",
+          "supplementaryPages": "66~67",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r3",
+          "sourceRow": 3,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/2",
+          "sourceCells": [
+            "3",
+            "원주율을 구해 볼까요",
+            "112~113",
+            "68~69",
+            "줄자, 스마트 기기, 계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 43,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "원주율을 구해 볼까요",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "112~113",
+          "supplementaryPages": "68~69",
+          "materials": "줄자, 스마트 기기, 계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r4",
+          "sourceRow": 4,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/3",
+          "sourceCells": [
+            "4",
+            "원주와 지름을 구해 볼까요",
+            "114~115",
+            "70~71",
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 44,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "원주와 지름을 구해 볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "114~115",
+          "supplementaryPages": "70~71",
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r5",
+          "sourceRow": 5,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/4",
+          "sourceCells": [
+            "5",
+            "원의 넓이를 어림해 볼까요",
+            "116~118",
+            "72~73",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 45,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "원의 넓이를 어림해 볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "116~118",
+          "supplementaryPages": "72~73",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r6",
+          "sourceRow": 6,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/5",
+          "sourceCells": [
+            "6",
+            "원의 넓이를 구하는 방법을 알아볼까요",
+            "119~121",
+            "74~75",
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 46,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "원의 넓이를 구하는 방법을 알아볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "119~121",
+          "supplementaryPages": "74~75",
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r7",
+          "sourceRow": 7,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/6",
+          "sourceCells": [
+            "7",
+            "원의 넓이를 활용해 볼까요",
+            "122~123",
+            "76~77",
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 47,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "원의 넓이를 활용해 볼까요",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "122~123",
+          "supplementaryPages": "76~77",
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r8",
+          "sourceRow": 8,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/7",
+          "sourceCells": [
+            "8",
+            "[창의가 반짝 역량이 쑥쑥] 앵무조개의 나선형 곡선을 살펴볼까요?",
+            "124~125",
+            null,
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 48,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 앵무조개의 나선형 곡선을 살펴볼까요?",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "124~125",
+          "supplementaryPages": null,
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g8-r9",
+          "sourceRow": 9,
+          "sourcePage": 164,
+          "sourcePdfPage": 1,
+          "sourcePointer": "/groups/7/rows/8",
+          "sourceCells": [
+            "9",
+            "[스스로 마무리하기]",
+            "126~129",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 49,
+          "semester": 2,
+          "unit": "5. 원의 둘레와 넓이",
+          "sourceUnit": "5. 원의 둘레와 넓이",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "9",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "126~129",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-15",
+            "6수03-16"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r1",
+          "sourceRow": 1,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/0",
+          "sourceCells": [
+            "1",
+            "단원 도입",
+            "130~131",
+            "79",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 50,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "단원 도입",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "130~131",
+          "supplementaryPages": "79",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r2",
+          "sourceRow": 2,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/1",
+          "sourceCells": [
+            "2",
+            "원기둥과 원뿔을 알아볼까요(1)",
+            "132~133",
+            "80~81",
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 51,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "원기둥과 원뿔을 알아볼까요(1)",
+          "subunit": null,
+          "periodText": "2",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "132~133",
+          "supplementaryPages": "80~81",
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r3",
+          "sourceRow": 3,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/2",
+          "sourceCells": [
+            "3",
+            "원기둥과 원뿔을 알아볼까요(2)",
+            "134~137",
+            "82~83",
+            "막대, 양면 접착 테이프"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 52,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "원기둥과 원뿔을 알아볼까요(2)",
+          "subunit": null,
+          "periodText": "3",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "134~137",
+          "supplementaryPages": "82~83",
+          "materials": "막대, 양면 접착 테이프",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r4",
+          "sourceRow": 4,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/3",
+          "sourceCells": [
+            "4",
+            "원기둥의 전개도를 알아볼까요",
+            "138~141",
+            "84~85",
+            "컴퍼스, 스마트 기기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 53,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "원기둥의 전개도를 알아볼까요",
+          "subunit": null,
+          "periodText": "4",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "138~141",
+          "supplementaryPages": "84~85",
+          "materials": "컴퍼스, 스마트 기기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r5",
+          "sourceRow": 5,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/4",
+          "sourceCells": [
+            "5",
+            "구를 알아볼까요",
+            "142~145",
+            "86~87",
+            "원기둥 모형, 원뿔 모형, 구 모형, 막대, 양면 접착 테이프"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 54,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "구를 알아볼까요",
+          "subunit": null,
+          "periodText": "5",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "142~145",
+          "supplementaryPages": "86~87",
+          "materials": "원기둥 모형, 원뿔 모형, 구 모형, 막대, 양면 접착 테이프",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r6",
+          "sourceRow": 6,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/5",
+          "sourceCells": [
+            "6",
+            "여러 가지 모양을 만들어 볼까요",
+            "146~147",
+            "88~89",
+            "스마트 기기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 55,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "여러 가지 모양을 만들어 볼까요",
+          "subunit": null,
+          "periodText": "6",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "146~147",
+          "supplementaryPages": "88~89",
+          "materials": "스마트 기기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r7",
+          "sourceRow": 7,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/6",
+          "sourceCells": [
+            "7",
+            "[창의가 반짝 역량이 쑥쑥] 상자에 담을 수 있는 음료수 캔 모형은 몇 개일까요?",
+            "148~149",
+            null,
+            "계산기"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 56,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "[창의가 반짝 역량이 쑥쑥] 상자에 담을 수 있는 음료수 캔 모형은 몇 개일까요?",
+          "subunit": null,
+          "periodText": "7",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "148~149",
+          "supplementaryPages": null,
+          "materials": "계산기",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g9-r8",
+          "sourceRow": 8,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/8/rows/7",
+          "sourceCells": [
+            "8",
+            "[스스로 마무리하기]",
+            "150~153",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 57,
+          "semester": 2,
+          "unit": "6. 원기둥, 원뿔, 구",
+          "sourceUnit": "6. 원기둥, 원뿔, 구",
+          "topic": "[스스로 마무리하기]",
+          "subunit": null,
+          "periodText": "8",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "150~153",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": [
+            "6수03-07",
+            "6수03-08"
+          ]
+        },
+        {
+          "id": "visang-math62-guide-g10-r1",
+          "sourceRow": 1,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/9/rows/0",
+          "sourceCells": [
+            "1~2",
+            "나는 팬 플루트 연주가! 빨대 팬 플루트로 연주해 보아요.",
+            "154~157",
+            null,
+            "친환경 굵은 빨대 8개, 아이스크림 막대 2개, 가위, 자, 양면 접착 테이프, 고무찰흙"
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 58,
+          "semester": 2,
+          "unit": "수학을 잇기 3",
+          "sourceUnit": "수학을 잇기",
+          "topic": "나는 팬 플루트 연주가! 빨대 팬 플루트로 연주해 보아요.",
+          "subunit": null,
+          "periodText": "1~2",
+          "periodNumbers": [
+            1,
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "154~157",
+          "supplementaryPages": null,
+          "materials": "친환경 굵은 빨대 8개, 아이스크림 막대 2개, 가위, 자, 양면 접착 테이프, 고무찰흙",
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        },
+        {
+          "id": "visang-math62-guide-g11-r1",
+          "sourceRow": 1,
+          "sourcePage": 165,
+          "sourcePdfPage": 2,
+          "sourcePointer": "/groups/10/rows/0",
+          "sourceCells": [
+            "1",
+            "나와 수학을 잇다!",
+            "158~159",
+            null,
+            null
+          ],
+          "originalSourceFile": "visang-math62-guide-p164-165.pdf",
+          "originalSha256": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b",
+          "sequence": 59,
+          "semester": 2,
+          "unit": "학기 말",
+          "sourceUnit": "학기 말",
+          "topic": "나와 수학을 잇다!",
+          "subunit": null,
+          "periodText": "1",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "158~159",
+          "supplementaryPages": null,
+          "materials": null,
+          "activities": null,
+          "standardCodes": [],
+          "unitStandardCodes": []
+        }
+      ]
+    }
+  ]
+}

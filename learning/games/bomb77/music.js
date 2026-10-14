@@ -8,6 +8,8 @@
     const INDEX_KEY = "bomb77MusicIndex";
     const audio = document.createElement("audio");
     audio.id = "bgm";
+    // Leave room for the explosion when both sliders are at maximum.
+    audio.dataset.musicGain = "0.7";
     audio.preload = "metadata";
     audio.playsInline = true;
     audio.setAttribute("aria-hidden", "true");

@@ -19,7 +19,7 @@
       units: ["m2-integ"], memo: "x축 위와 아래의 두 넓이의 차",
       body: R`양수 \(k\)에 대하여 함수 \(f(x)\)는
         \[f(x)=kx(x-2)(x-3)\]
-        이다. 곡선 \(y=f(x)\)와 \(x\)축이 원점 \(\mathrm{O}\)와 두 점 \(\mathrm{P}\), \(\mathrm{Q}\,\bigl(\overline{\mathrm{OP}}<\overline{\mathrm{OQ}}\bigr)\)
+        이다. 곡선 \(y=f(x)\)와 \(x\)축이 원점 \(\mathrm{O}\)와 두 점 \(\mathrm{P}\), \(\mathrm{Q}\,\bigl(\overline{\mathrm{OP}}&lt;\overline{\mathrm{OQ}}\bigr)\)
         에서 만난다. 곡선 \(y=f(x)\)와 선분 \(\mathrm{OP}\)로 둘러싸인 영역을 \(A\),
         곡선 \(y=f(x)\)와 선분 \(\mathrm{PQ}\)로 둘러싸인 영역을 \(B\)라 하자.
         \[(A\text{의 넓이})-(B\text{의 넓이})=3\]
@@ -32,7 +32,7 @@
 {
       id: "2024-06-11", exam: "2024-06", no: 11, score: 4,
       units: ["m2-diff"], memo: "직선과 가장 가까운 곡선 위의 점",
-      body: R`그림과 같이 실수 \(t\,(0<t<1)\)에 대하여 곡선 \(y=x^{2}\) 위의
+      body: R`그림과 같이 실수 \(t\,(0&lt;t&lt;1)\)에 대하여 곡선 \(y=x^{2}\) 위의
         점 중에서 직선 \(y=2tx-1\)과의 거리가 최소인 점을 \(\mathrm{P}\)라 하고,
         직선 \(\mathrm{OP}\)가 직선 \(y=2tx-1\)과 만나는 점을 \(\mathrm{Q}\)라 할 때,
         \(\displaystyle\lim_{t\to 1-}\frac{\overline{\mathrm{PQ}}}{1-t}\)의 값은? (단, \(\mathrm{O}\)는 원점이다.)`,
@@ -92,7 +92,7 @@
       note: [
         R`\(a_{1}=k\)이고, 모든 자연수 \(n\)에 대하여 \(a_{n+1}=\begin{cases}a_{n}+2n-k &amp; \left(a_{n}\le 0\right)\\ a_{n}-2n-k &amp; \left(a_{n}>0\right)\end{cases}\)이다.`
       ],
-      bodyAfter: R`\(a_{3}\times a_{4}\times a_{5}\times a_{6}<0\)이 되도록 하는 모든 \(k\)의 값의 합은?`,
+      bodyAfter: R`\(a_{3}\times a_{4}\times a_{5}\times a_{6}&lt;0\)이 되도록 하는 모든 \(k\)의 값의 합은?`,
       choices: [R`\(10\)`, R`\(14\)`, R`\(18\)`, R`\(22\)`, R`\(26\)`],
       answer: 2,
       help: R`\(a_{n}\)이 \(0\) 이하면 \(+2n-k\), 양수면 \(-2n-k\)를 더한다. 곧 부호에 따라 방향이 갈린다. 네 항의 곱이 음수라는 것은 그 넷 가운데 음수가 홀수 개라는 뜻이므로, \(k\)를 작은 값부터 넣어 부호가 어떻게 갈리는지 직접 따라가는 편이 빠르다.`
@@ -140,7 +140,7 @@
         이라 하자. 다음 조건을 만족시키는 모든 정수 \(k\)의 값의 곱이
         \(-12\)가 되도록 하는 \(a\)에 대하여 \(f'(10)\)의 값을 구하시오.`,
       note: [
-        R`함수 \(f(x)\)에 대하여 \(\left\{\dfrac{f(x_{1})-f(x_{2})}{x_{1}-x_{2}}\right\}\times\left\{\dfrac{f(x_{2})-f(x_{3})}{x_{2}-x_{3}}\right\}<0\)을 만족시키는 세 실수 \(x_{1}\), \(x_{2}\), \(x_{3}\)이 열린구간 \(\left(k,\,k+\dfrac{3}{2}\right)\)에 존재한다.`
+        R`함수 \(f(x)\)에 대하여 \(\left\{\dfrac{f(x_{1})-f(x_{2})}{x_{1}-x_{2}}\right\}\times\left\{\dfrac{f(x_{2})-f(x_{3})}{x_{2}-x_{3}}\right\}&lt;0\)을 만족시키는 세 실수 \(x_{1}\), \(x_{2}\), \(x_{3}\)이 열린구간 \(\left(k,\,k+\dfrac{3}{2}\right)\)에 존재한다.`
       ],
       short: true,
       answer: 380,

@@ -61,7 +61,7 @@ async function main(){
       await page.locator('#newGame').click();
       assert.equal(await page.locator('input[name=level]:checked').inputValue(),'advanced');
       if(game==='janggi'){
-        const output=path.join(root,'tmp/coach-levels');fs.mkdirSync(output,{recursive:true});
+        const output=path.join(root,'outputs/qa/coach-levels');fs.mkdirSync(output,{recursive:true});
         await page.locator('#setup').evaluate(dialog=>dialog.scrollTop=0);
         await page.screenshot({path:path.join(output,'janggi-levels-mobile.png')});
         await page.setViewportSize({width:1280,height:850});

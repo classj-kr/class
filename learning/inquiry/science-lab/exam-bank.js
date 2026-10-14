@@ -12,7 +12,7 @@ const questions=[...raw,extra.rows].flatMap(s=>s.split('\n')).map(line=>{
  for(let i=choices.length-1;i>0;i--){const j=random()%(i+1);[choices[i],choices[j]]=[choices[j],choices[i]];}
  return{id,code,unit,grade:meta.grade,host:meta.host,question,choices,answer:choices.indexOf(correct),why,data:extra.data[id]||null};
 });
-function forApp(slug,map){const app=map[slug];if(!app)return[];return questions.filter(q=>app.grades.includes(q.grade)&&(q.host===slug||app.codes.includes(q.code)));}
+function forApp(slug,map){const app=map[slug];if(!app)return[];return questions.filter(q=>app.grades.includes(q.grade)&&app.codes.includes(q.code));}
 const api={units,questions,forApp,grades:['초3','초4','초5','초6','중1','중2','중3','고1']};
 if(node)module.exports=api;else window.scienceExamBank=api;
 })();

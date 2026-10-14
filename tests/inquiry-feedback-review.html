@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><title>문제 응답 동작 검증</title>
+<link rel="stylesheet" href="../learning/inquiry/curriculum/school-level.css">
+<link rel="stylesheet" href="../learning/inquiry/space/quiz-board.css">
+<link rel="stylesheet" href="../learning/inquiry/korea-map/history.css">
+<style>body{background:#101c2a;color:#eee;font:18px sans-serif;padding:24px}section{margin:24px 0}button{padding:12px}pre{white-space:pre-wrap}.quiz-card{max-width:800px}</style>
+<h1>문제 응답 동작 검증</h1>
+<section id="school"></section>
+<section><h2>우주 공통 문항</h2><div id="tabs"></div><div id="grid"></div></section>
+<section id="body"></section>
+<section id="bronze"></section>
+<button id="order">역사 지도 순서 문제 열기</button>
+<h2>최초 응답 이벤트 / 인체 완료 콜백</h2><pre id="events">[]</pre>
+<script src="../learning/inquiry/curriculum/school-level.js"></script>
+<script src="../learning/inquiry/space/quiz-board.js"></script>
+<script src="../learning/inquiry/human-body/shared/engine-core.js"></script>
+<script src="../learning/inquiry/korea-map/data/history-bronze.js"></script>
+<script src="../learning/inquiry/korea-map/history-bronze.js"></script>
+<script src="../learning/inquiry/korea-map/data/history-war.js"></script>
+<script src="../learning/inquiry/korea-map/history-order.js"></script>
+<script>
+const mapBase='/learning/inquiry/korea-map/';
+KOREA_HISTORY_BRONZE.artifacts.forEach(item=>item.photo=mapBase+item.photo);
+KOREA_HISTORY_WAR.stages.forEach(item=>{if(item.card)item.card=mapBase+item.card;});
+const events=[];
+function record(detail){events.push(detail);document.getElementById('events').textContent=JSON.stringify(events,null,2);}
+document.addEventListener('learning:answer',e=>record(e.detail));
+SchoolLevel.practice(document.getElementById('school'),[{id:'school-retry',question:'공통 문항: 2 + 2는?',options:['3','4','5'],answer:1,explanation:'공통 해설: 2와 2를 더하면 4입니다.'}],'retry');
+SpaceQuizBoard.mount({ids:{tabs:'tabs',grid:'grid'},questions:[{id:'space-retry',cat:'시험',q:'우주 문항: 3 + 3은?',opts:['5','6','7'],ans:1,exp:'우주 해설: 3과 3을 더하면 6입니다.'}],topics:[]});
+SimEngine.renderQuiz(document.getElementById('body'),{question:'인체 공통 문항: 4 + 4는?',options:['7','8','9'],answer:1,explanation:'인체 해설: 4와 4를 더하면 8입니다.'},(correct,selected)=>record({kind:'body-first-answer',correct,selected}));
+document.getElementById('bronze').append(KoreaHistoryBronze.panel());
+document.getElementById('order').onclick=()=>KoreaHistoryOrder.open();
+</script></html>

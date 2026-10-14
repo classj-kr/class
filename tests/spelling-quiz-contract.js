@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 
-// 한글 맞춤법 앱 검사. 학급 모드는 2026-09-05부터 공용 학급 순위전(learning/class-race)으로 옮겨 갔다.
+// 한글 맞춤법 앱의 개인 학습 화면 검사.
 const root = path.resolve(__dirname, "..");
 const spellingDir = path.join(root, "learning", "literacy-numeracy", "spelling");
 const htmlPath = path.join(spellingDir, "index.html");
@@ -20,7 +20,7 @@ for (const filePath of [htmlPath, questionsPath, extraQuestionsPath, lessonsPath
     assert.ok(fs.existsSync(filePath), `Missing spelling quiz file: ${filePath}`);
 }
 for (const removed of ["teacher.html", "teacher.js", "teacher.css"]) {
-    assert.ok(!fs.existsSync(path.join(spellingDir, removed)), `${removed} should be gone: class mode lives in learning/class-race now.`);
+    assert.ok(!fs.existsSync(path.join(spellingDir, removed)), `${removed} should be gone: the app uses its own learning screen.`);
 }
 assert.ok(fs.statSync(bgmPath).size > 0, "Spelling background music must not be empty.");
 
@@ -68,7 +68,6 @@ for (const question of questions) {
 
 const html = fs.readFileSync(htmlPath, "utf8");
 for (const requiredId of [
-    "classRaceLink",
     "lessonScreen",
     "lessonList",
     "quizScreen",
@@ -83,7 +82,7 @@ for (const requiredId of [
     assert.ok(html.includes(`id="${requiredId}"`), `Missing required element #${requiredId}`);
 }
 for (const removedId of [
-    "classModeButton", "lobbyScreen", "joinCode", "classRankArea", "classRankingList",
+    "classRaceLink", "classModeButton", "lobbyScreen", "joinCode", "classRankArea", "classRankingList",
     "modeScreen", "lessonModeButton", "personalModeButton", "personalScreen", "studyScreen"
 ]) {
     assert.ok(!html.includes(`id="${removedId}"`), `#${removedId} belongs to the shared class race page, or to a removed screen, not the spelling app.`);
@@ -96,14 +95,14 @@ assert.ok(/href="styles\.css\?v=[^"]+"/.test(html), "Quiz stylesheet must carry 
 assert.ok(/src="questions\.js\?v=[^"]+"/.test(html), "Question bank must carry a cache-busting version.");
 assert.ok(/src="questions-extra\.js\?v=[^"]+"/.test(html), "Expanded question bank must carry a cache-busting version.");
 assert.ok(/src="lessons\.js\?v=[^"]+"/.test(html), "Lesson table must carry a cache-busting version.");
-assert.ok(/src="question-deck\.js\?v=[^"]+"/.test(html), "No-repeat question deck must carry a cache-busting version.");
+assert.ok(/src="\/assets\/learning-records\.js\?v=[^"]+"/.test(html), "Shared learning records must carry a cache-busting version.");
 assert.ok(/src="\.\.\/\.\.\/\.\.\/assets\/sound\/music-control\.js(\?[^"]*)?"/.test(html), "Shared MUSIC/SFX control is not linked.");
 assert.ok(/src="app\.js\?v=[^"]+"/.test(html), "Quiz app must carry a cache-busting version.");
 assert.ok(html.includes('src="/learning/literacy-numeracy/spelling/assets/sound/bgm.ogg"'), "Personal mode background music is not linked.");
 assert.ok(html.includes("loop preload=\"auto\""), "Spelling background music should loop.");
-assert.ok(!html.includes("game-network.js"), "The spelling app no longer talks to the classroom network; the class race page does.");
+assert.ok(!html.includes("game-network.js"), "The spelling app no longer talks to the classroom network; personal learning has no shared quiz player.");
 assert.ok(!html.includes("multiplayer-lobby.js"), "The spelling app no longer hosts a lobby; the class race page does.");
-assert.ok(html.includes('href="../../class-race/"'), "The class race link must send students to the shared class race.");
+assert.ok(!html.includes("class-race"), "The retired shared quiz player must not be linked.");
 assert.ok(html.includes("나의 오답노트"), "Personal wrong-answer notebook is missing.");
 assert.ok(html.includes('id="lessonScreen"'), "The lesson list should be the primary first-screen content.");
 assert.ok(!html.includes('class="title-block"'), "The advertising-style title hero should be removed.");
@@ -117,10 +116,9 @@ assert.ok(html.includes("표준국어대사전"), "Standard dictionary source sh
 const appSource = fs.readFileSync(appPath, "utf8");
 new vm.Script(appSource, { filename: appPath });
 assert.ok(appSource.includes("SESSION_SIZE = 10"), "A random round should contain 10 questions.");
-assert.ok(appSource.includes("classPlayerName"), "Player name handoff should be supported.");
-assert.ok(appSource.includes("localStorage"), "Best score should be stored locally.");
-assert.ok(appSource.includes("PERSONAL_DECK_KEY"), "Personal mode should avoid repeats until the question deck is exhausted.");
-assert.ok(appSource.includes("LESSON_PROGRESS_KEY"), "Lesson completion should be stored locally.");
+assert.ok(appSource.includes("LearningRecords.create('spelling'") && appSource.includes("await records.ready"), "Spelling should initialize shared learning records before use.");
+assert.ok(appSource.includes("records.start(") && appSource.includes("records.save("), "Learning sessions and answers should use shared storage.");
+assert.ok(appSource.includes("records.history(") && appSource.includes("row.status === 'completed'"), "Completed lessons should be restored from shared learning history.");
 assert.ok(!appSource.includes("SPELLING_ACTION"), "Class ranking traffic must not live in the spelling app any more.");
 assert.ok(!appSource.includes("ClassroomMultiplayerLobby"), "The spelling app must not create a lobby any more.");
 assert.ok(!appSource.includes("bgmToggle"), "Spelling must not keep a separate legacy music toggle.");
@@ -131,6 +129,6 @@ const hub = fs.readFileSync(hubPath, "utf8");
 assert.ok(/href="learning\/literacy-numeracy\/spelling\/(?:index\.html)?"/.test(hub), "Hub is missing the spelling quiz link.");
 assert.ok(hub.includes("한글 맞춤법"), "Hub is missing the Korean orthography title.");
 assert.ok(hub.includes("(Korean Spelling)"), "Hub is missing the English subtitle.");
-assert.ok(hub.includes('href="learning/class-race/"'), "Hub is missing the shared class race link.");
+assert.ok(hub.includes('href="/room/"'), "Hub is missing the room-number entry.");
 
 console.log(`Spelling quiz contract passed (${questions.length} questions).`);

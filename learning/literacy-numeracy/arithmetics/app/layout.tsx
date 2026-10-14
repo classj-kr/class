@@ -5,6 +5,7 @@ import "./globals.css";
 import ArithmeticRaceController from "./components/arithmetic-race-controller";
 import ElementaryFocusScroll from "./components/elementary-focus-scroll";
 import LearningRecordBoundary from "./components/learning-record-state";
+import WorksheetEnterNavigation from "./components/worksheet-enter-navigation";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -40,7 +41,7 @@ export default function RootLayout({
       <head>
         <script src="/assets/sound/game-sfx.js?v=20261006-capture" defer />
       </head>
-      <body><LearningRecordBoundary>{children}</LearningRecordBoundary><ElementaryFocusScroll /><ArithmeticRaceController /></body>
+      <body><LearningRecordBoundary>{children}</LearningRecordBoundary><ElementaryFocusScroll /><WorksheetEnterNavigation /><ArithmeticRaceController /></body>
     </html>
   );
 }

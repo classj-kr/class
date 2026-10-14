@@ -1,10 +1,38 @@
 [hidden]{display:none!important}
 .grade-navigation{margin:20px 0;padding:20px;border:1px solid #cbd5e1;border-radius:14px;background:#fff;color:#172f3b}
-.grade-choices{display:flex;flex-wrap:wrap;gap:8px}
-.grade-choices button{font:inherit;padding:8px 12px;border:1px solid #a8bcc6;border-radius:8px;background:white;color:#172f3b;cursor:pointer}
-.grade-choices button[aria-pressed=true]{background:#174f60;color:white;border-color:#174f60}
-.grade-choices button:focus-visible{outline:3px solid #db8600;outline-offset:3px}
+.school-choices,.grade-choices{display:flex;flex-wrap:wrap;gap:8px}
+.grade-choices{margin-top:12px;padding-top:12px;border-top:1px solid #e2e8f0}
+.grade-navigation button{font:inherit;min-height:44px;padding:8px 14px;border:1px solid #a8bcc6;border-radius:8px;background:white;color:#172f3b;cursor:pointer}
+.grade-navigation button[aria-pressed=true]{background:#174f60;color:white;border-color:#174f60}
+.grade-navigation button:focus-visible{outline:3px solid #db8600;outline-offset:3px}
 .course-label{display:block;margin-top:4px;font-size:11px;line-height:1.5;color:#53636e;font-weight:500;white-space:normal}
-.grade-filtered .level-matrix{grid-template-columns:1fr}
-.grade-filtered .column-labels{display:none}
-.grade-filtered .level-cell{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
+.school-filtered .column-labels{display:none}
+.school-filtered .level-cell{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr))}
+.school-filtered .cell-label{display:none}
+.school-section{display:grid;gap:16px;min-width:0}
+.school-section > h2{font-size:20px;margin:8px 0 0;color:#172f3b}
+.school-section > h2 small{font-size:14px;font-weight:500;color:#53636e}
+.classification-note{margin:-6px 0 0;font-size:13px;line-height:1.5;color:#53636e}
+.catalog-empty{margin:0;padding:12px;font-size:13px;line-height:1.6;color:#526371;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:9px;word-break:keep-all;overflow-wrap:anywhere}
+.course-apps > .catalog-empty{grid-column:1/-1}
+.catalog .subject-heading,.catalog .topic-row{grid-template-columns:180px minmax(0,1fr)}
+.catalog .column-labels,.catalog .level-matrix{grid-template-columns:repeat(2,minmax(0,1fr))}
+.catalog.school-filtered .level-matrix{grid-template-columns:1fr}
+.catalog .level-entry{align-items:flex-start;min-height:46px}
+.catalog .level-entry > span{white-space:normal;overflow:visible;line-height:1.55;word-break:keep-all;overflow-wrap:anywhere}
+.catalog .level-entry b{margin-top:3px}
+.catalog .level-entry::after{display:none}
+.course-apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:8px;min-width:0}
+.catalog .course-section .subject-heading{grid-template-columns:1fr auto}
+.course-kind{font-size:12px;color:var(--subject-text);padding:4px 8px;border-radius:6px;background:white;border:1px solid var(--subject-border)}
+.cell-label{display:none}
+.society{--subject:#0f766e;--subject-bg:#f0fdfa;--subject-border:#99f6e4;--subject-text:#115e59;--subject-glow:rgba(15,118,110,.12)}
+.level-entry[data-school="high-common"] b{background:#f0fdfa;color:#115e59;border-color:#99f6e4}
+@media(max-width:768px){
+ .grade-navigation{padding:14px}
+ .catalog .subject-heading,.catalog .topic-row{grid-template-columns:1fr}
+ .catalog .level-matrix{grid-template-columns:1fr}
+ .cell-label{display:block;font-size:12px;font-weight:700;color:#53636e;padding-top:4px}
+ .catalog .topic-row h4{line-height:1.5}
+ .course-apps{grid-template-columns:1fr}
+}

@@ -107,15 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
     };
 
-    // Fill colour for the rod itself — a large block, so saturated tones read
-    // clearly against the dark stage.
+    // Rod colours encode the temperature across its length.
     const tempColor = t => mixRamp(t, [74, 127, 214], [255, 204, 102], [255, 90, 74]);
 
-    // The probe labels are small 12 px text, where that same saturated blue
-    // only reaches 4.14:1 against the panel — under the 4.5:1 minimum, and
-    // cold is the default state every student sees first. This lighter ramp
-    // clears the threshold across the whole temperature range.
-    const tempTextColor = t => mixRamp(t, [140, 190, 255], [255, 214, 130], [255, 138, 122]);
+    // The current stage is light. Keep blue → amber → red, with readable ink
+    // across the full temperature range, separately from the rod's fill.
+    const tempTextColor = t => mixRamp(t, [40, 84, 144], [132, 89, 17], [170, 52, 40]);
 
     function buildStatics() {
         probeGroup.innerHTML = PROBE_CM.map(cm => {

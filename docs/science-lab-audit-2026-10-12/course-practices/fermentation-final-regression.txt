@@ -1,0 +1,51 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9849ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7746ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.2824ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1334ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (84.6847ms)
+chromium: 166 apps / 170 course routes / 680 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (28612.0307ms)
+webkit: 166 apps / 170 course routes / 680 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (31024.5488ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (561.9393ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (6691.0091ms)
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (76.7658ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (3131.9561ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (2.6374ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (68029.8445ms)
+✔ fermentation separates trapped air, glucose controls and detector chemistry (0.7558ms)
+✔ chromium: fermentation sequence, controls, animation and first-answer diagnosis (31433.7864ms)
+✔ webkit: fermentation sequence, controls, animation and first-answer diagnosis (21123.5228ms)
+chromium 20/166
+chromium 40/166
+chromium 60/166
+chromium 80/166
+chromium 100/166
+chromium 120/166
+chromium 140/166
+chromium 160/166
+{"engine":"chromium","apps":166,"predictions":99,"quizzes":664,"rebuilt":30,"failures":[]}
+✔ chromium: every app clears obsolete predictions and quiz verdicts (12652.0815ms)
+webkit 20/166
+webkit 40/166
+webkit 60/166
+webkit 80/166
+webkit 100/166
+webkit 120/166
+webkit 140/166
+webkit 160/166
+{"engine":"webkit","apps":166,"predictions":99,"quizzes":664,"rebuilt":30,"failures":[]}
+✔ webkit: every app clears obsolete predictions and quiz verdicts (16450.2735ms)
+204 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (245.1355ms)
+✔ every science lab JavaScript file parses (211.7393ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9736ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 68609.4913

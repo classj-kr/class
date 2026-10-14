@@ -1,14 +1,16 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-for (const site of ['phonics', 'phonics-site/public/phonics']) {
+async function main() {
+for (const site of ['phonics']) {
   const root = 'learning/literacy-numeracy/' + site;
-  const context = vm.createContext({ window: {}, document: {} });
+  const context = vm.createContext({ window: {}, document: {},
+    LearningRecords: { create: () => ({ ready: Promise.resolve() }) } });
   vm.runInContext(fs.readFileSync(root + '/curriculum.js', 'utf8'), context);
   const app = fs.readFileSync(root + '/app.js', 'utf8');
   const prefix = app.slice(0, app.indexOf('  const emptyState'));
   const shuffle = app.slice(app.indexOf('  function shuffle('), app.indexOf('  function renderSoundGameRound('));
-  vm.runInContext(prefix + shuffle + '\nwindow.test = { buildLessonSoundRounds, listeningFamily, soundsAlike };})();', context);
+  await vm.runInContext(prefix + shuffle + '\nwindow.test = { buildLessonSoundRounds, listeningFamily, soundsAlike };})();', context);
   const { buildLessonSoundRounds, listeningFamily, soundsAlike } = context.window.test;
   const data = context.window.PHONICS_CURRICULUM;
   const learned = new Set();
@@ -38,3 +40,5 @@ for (const site of ['phonics', 'phonics-site/public/phonics']) {
   }
   console.log(site + ': all 128 lessons, ' + total + ' generated questions passed');
 }
+}
+main().catch(error => { console.error(error); process.exitCode = 1; });

@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // the page isn't being composited, so a frame-based check would prove
     // nothing about whether the model itself is right.
     window.__soundModel = {
-        BARS, SLOWDOWN, T_WIN, TAU, REFERENCE, displacementAt, envelopeAt, ringDuration,
+        BARS, SLOWDOWN, T_WIN, TAU, REFERENCE, displacementAt, envelopeAt, ringDuration, silence,
         state: () => ({ selectedBar, ringAmp, ringHz, strikeAt, running: rafId !== null }),
         // Render the scope and bars exactly `elapsed` display-seconds after a
         // strike, with no dependence on the animation clock.

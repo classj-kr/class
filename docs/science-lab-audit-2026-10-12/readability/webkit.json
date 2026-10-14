@@ -1,0 +1,30 @@
+{
+  "engine": "webkit",
+  "routes": 150,
+  "scenarios": 1155,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "issues": [
+    {
+      "slug": "sugar-phase",
+      "width": 768,
+      "mode": "initial",
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "온도 / ℃",
+          "100"
+        ]
+      ],
+      "canvas": []
+    }
+  ],
+  "errors": []
+}

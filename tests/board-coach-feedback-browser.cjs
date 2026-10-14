@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict'),{spawn}=require('node:child_process');
 const {chromium}=require('../game-hub-server/node_modules/playwright');
 const C=require('../learning/games/chess/chess-rules.js'),R=require('../learning/games/board-coach/rules.js');
-const root=path.resolve(__dirname,'..'),output=path.join(root,'tmp/coach-feedback');
+const root=path.resolve(__dirname,'..'),output=path.join(root,'outputs/qa/coach-feedback');
 async function main(){
   const server=http.createServer((req,res)=>{
     let file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));

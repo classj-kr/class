@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-12T12:53:52.802Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "wave-transfer",
+      "scenarios": 10
+    },
+    {
+      "slug": "solubility-curve",
+      "scenarios": 5
+    },
+    {
+      "slug": "energy-heat",
+      "scenarios": 5
+    },
+    {
+      "slug": "recrystallise",
+      "scenarios": 5
+    },
+    {
+      "slug": "photosynthesis",
+      "scenarios": 40
+    }
+  ],
+  "scenarios": 65,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

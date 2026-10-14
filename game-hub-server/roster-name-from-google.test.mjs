@@ -17,8 +17,8 @@ const {
 
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
 const serverSource = await readFile(new URL("./server.js", import.meta.url), "utf8");
-const schoolRosterHtml = await readFile(new URL("../classtools/school-roster.html", import.meta.url), "utf8");
-const classRosterHtml = await readFile(new URL("../classtools/roster.html", import.meta.url), "utf8");
+const schoolRosterHtml = await readFile(new URL("../apps/classtools/school-roster.html", import.meta.url), "utf8");
+const classRosterHtml = await readFile(new URL("../apps/classtools/roster.html", import.meta.url), "utf8");
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 
 function routeBody(signature) {
@@ -65,6 +65,7 @@ const SCHEMA = `
   CREATE TABLE classroom_students (
     id BIGSERIAL PRIMARY KEY, class_id BIGINT NOT NULL, student_number TEXT NOT NULL,
     roster_name TEXT NOT NULL, student_email TEXT, name_source TEXT,
+    roster_active BOOLEAN NOT NULL DEFAULT TRUE,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     UNIQUE (class_id, student_number)
   );

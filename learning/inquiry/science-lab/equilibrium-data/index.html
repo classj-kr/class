@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 평형 농도에서 규칙 찾기</title><meta name="description" content="2022 교육과정 · 평형 농도에서 규칙 찾기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="data.css?v=a083fa3ff7fa"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>평형 농도에서 규칙 찾기</h1><div class="grade-tags"><span>고(선택)</span><span>화학</span></div></header><section class="ed-lab" id="edLab"><h2>세 실험에서 일정한 값 찾기</h2><p>초기 농도가 달라도 평형에 도달하면 어떤 농도비가 거의 일정할까요?</p><div class="ed-toolbar" role="group" aria-label="비교 자료"><button data-ed-set="a" aria-pressed="true">자료 A</button><button data-ed-set="b" aria-pressed="false">자료 B</button><span id="edTemperature">25 ℃</span></div><div class="ed-reaction">2NO₂(g) ⇌ N₂O₄(g)</div><div id="edSamples" class="ed-samples"></div><div class="ed-analysis"><section class="ed-controls"><h3>계산 조건</h3><fieldset><legend>대입할 농도</legend><div class="ed-toolbar"><button data-ed-basis="initial" aria-pressed="false">초기 농도</button><button data-ed-basis="eq" aria-pressed="true">평형 농도</button></div></fieldset><fieldset><legend>비교할 식</legend><div class="ed-formulas"><button data-ed-formula="simple" aria-pressed="true">[N₂O₄] / [NO₂]</button><button data-ed-formula="coefficient" aria-pressed="false">[N₂O₄] / (2[NO₂])</button><button data-ed-formula="square" aria-pressed="false">[N₂O₄] / [NO₂]²</button></div></fieldset><button id="edCalculate" class="ed-primary">계산하여 비교</button><p class="ed-note">농도는 M 단위의 수치로 대입합니다. 표의 농도는 반올림되어 있습니다.</p></section><section class="ed-results"><h3 id="edPlotTitle">계산값 비교</h3><p id="edEmpty">식을 고르고 세 실험의 값을 비교하세요.</p><div id="edComputed" hidden><svg id="edPlot" role="img" aria-label="세 실험의 농도비 계산값"></svg><div id="edValues" class="ed-values"></div><p id="edRange" class="ed-note"></p><button id="edConclude">이 식의 규칙 확인</button></div><p id="edStatus" class="ed-status" aria-live="polite"></p></section></div><button id="edReset">처음 조건으로</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="c">
+<h3>2NO₂(g) ⇌ N₂O₄(g)에서 초기 농도는 각각 0.080 M, 0 M이다. 평형 농도는 각각 0.020 M, 0.030 M일 때 농도로 나타낸 평형 상수 K는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 0</label>
+<label><input type="radio" name="q1" value="b"> 1.5</label>
+<label><input type="radio" name="q1" value="c"> 75</label>
+<label><input type="radio" name="q1" value="d"> 0.75</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>평형 농도를 대입하면 K=[N₂O₄]/[NO₂]²=0.030/(0.020)²=75입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>같은 온도의 2NO₂(g) ⇌ N₂O₄(g)를 두 용기에서 비교한다. B의 평형 [NO₂]가 A의 2배라면 B의 평형 [N₂O₄]는 A의 몇 배인가?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 2배</label>
+<label><input type="radio" name="q2" value="b"> 4배</label>
+<label><input type="radio" name="q2" value="c"> 1/2배</label>
+<label><input type="radio" name="q2" value="d"> 1/4배</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 온도에서 [N₂O₄]/[NO₂]²가 일정하므로 평형 [NO₂]가 2배이면 평형 [N₂O₄]는 4배입니다. 압축 직후의 농도 변화와 구분합니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>일정 부피에서 2NO₂(g) ⇌ N₂O₄(g)가 진행되었다. [NO₂]가 0.060 M에서 0.020 M로, [N₂O₄]가 0.010 M에서 0.030 M로 변했다. 반응식의 2:1에 해당하는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 평형 농도 0.020 : 0.030</label>
+<label><input type="radio" name="q3" value="b"> 초기 농도 0.060 : 0.010</label>
+<label><input type="radio" name="q3" value="c"> NO₂의 초기 : 평형 농도</label>
+<label><input type="radio" name="q3" value="d"> NO₂ 감소량 : N₂O₄ 증가량</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>농도 변화량은 NO₂ 0.040 M 감소, N₂O₄ 0.020 M 증가로 2:1입니다. 반응 계수비는 평형에 남은 농도비가 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>어떤 온도에서 2A(g) ⇌ B(g)의 농도 평형 상수는 100이다. 같은 온도에서 반응식을 B(g) ⇌ 2A(g)로 쓰면 평형 상수는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 0.01</label>
+<label><input type="radio" name="q4" value="b"> 0.1</label>
+<label><input type="radio" name="q4" value="c"> 100</label>
+<label><input type="radio" name="q4" value="d"> 10000</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>반응식의 방향을 뒤집으면 농도비의 분자와 분모가 바뀌므로 평형 상수는 1/100=0.01입니다.</p>
+</article></details></main><script src="model.js?v=72670566298e"></script><script src="app.js?v=b99bfe709369"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

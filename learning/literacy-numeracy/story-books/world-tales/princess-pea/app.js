@@ -114,7 +114,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "아주 작고 동그란 콩이었지요. 왕비는 그것을 나무판 한가운데에 놓았습니다.",
-                    "\"진짜 공주라면 이걸 느낄 테지.\"",
+                    "\"진짜 공주는 살결이 여려서 이 작은 콩도 느낄 테지.\"",
                     "왕비는 하인들을 불렀지요. \"요를 스무 장 가져오너라.\"",
                     "하인들은 서로 얼굴을 쳐다보았습니다. 잘못 들은 줄 알았거든요."
                 ]
@@ -688,7 +688,7 @@ const EN = {
                     ],
                     right: [
                         "It was a very small, round pea. The queen put it in the middle of the bare boards.",
-                        "\"A real princess will feel that.\"",
+                        "\"A real princess has such tender skin that she will feel even this little pea.\"",
                         "Then she called the servants. \"Bring me twenty mattresses.\"",
                         "The servants looked at each other. They thought they had misheard her."
                     ]
@@ -1070,7 +1070,8 @@ const WORDS_KO = {
         { w: "폭풍우", k: "센 바람과 함께 쏟아지는 큰비.", s: "그날 밤 무서운 폭풍우가 몰아쳤습니다." },
         { w: "가르다", k: "둘로 쪼개듯 나누다.", s: "번개가 하늘을 쩍쩍 갈랐지요." },
         { w: "잠자리에 들다", k: "잠을 자려고 자리에 눕다.", s: "성 안 사람들은 모두 잠자리에 들었습니다." },
-        { w: "빗줄기", k: "굵게 이어져 내리는 비.", s: "빗줄기가 안으로 들이쳤습니다." }
+        { w: "빗줄기", k: "굵게 이어져 내리는 비.", s: "빗줄기가 안으로 들이쳤습니다." },
+        { w: "등불", k: "옛날에 기름이나 초에 불을 붙이고 종이나 유리로 둘러싸 밝히던 등의 불빛.", s: "등불도 하나둘 꺼졌지요." }
     ],
     "02-storm-2.webp": [
         { w: "웬", k: "어떤, 알 수 없는.", s: "문밖에는 웬 아가씨가 서 있었습니다." },

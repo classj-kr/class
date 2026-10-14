@@ -1,0 +1,278 @@
+✖ every catalog app loads, every question has a working correct answer, mobile layout (5408.614ms)
+✖ chromium: battery prediction, apparatus continuity and electromagnet controls (6185.0081ms)
+✖ webkit: battery prediction, apparatus continuity and electromagnet controls (3.492ms)
+✖ chromium: scientific content and boundary regressions (5472.8309ms)
+✖ webkit: scientific content and boundary regressions (3.6778ms)
+✖ device tools: calibrated length, timer, waveform, opt-in capture, stop, denial, records and tablet layout (5467.1918ms)
+✔ 30 reviewed original questions preserve correct choices, conditions and explanations (4.6593ms)
+✔ all 194 editorial revisions match the bank and retain distinct misconception choices (12.661ms)
+✖ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (5468.2231ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.3729ms)
+✖ all exam answers, filters, persistence, charts, app integration and tablet screens (5473.5807ms)
+✔ final comparisons: spectral evidence, controlled design, ecology, validity and thermal scale (1.6886ms)
+✖ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (5268.7295ms)
+✖ chromium: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (5472.6305ms)
+✖ webkit: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (4.0518ms)
+✖ independent checks: current/voltage, friction, collision conservation, survival proportions (5441.8865ms)
+✖ chromium: every app clears obsolete predictions and quiz verdicts (5474.5048ms)
+✖ webkit: every app clears obsolete predictions and quiz verdicts (3.3651ms)
+613 core state/observation/check combinations verified
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (15.2619ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.8813ms)
+✖ all required observation controls, wrong/correct answers and resets work in the browser (5445.8534ms)
+206 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (7.6504ms)
+✖ new experiments: controls, records, all answers, reset and Chromebook/iPad layout (5448.5901ms)
+128 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (72.079ms)
+✔ every science lab JavaScript file parses (82.4754ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9637ms)
+state-change: 36 valid states
+gases: 3 valid states
+mixture-separation: 7 valid states
+heat-transfer: 32 valid states
+light-shadow: 10 valid states
+photosynthesis: 6 valid states
+living-environment: 3 valid states
+acid-base: 32 valid states
+immune: 40 valid states
+stars-universe: 24 valid states
+microscope: 24 valid states
+weather-watch: 8 valid states
+land-sea: 2 valid states
+sound-vibration: 4 valid states
+rock-layers: 4 valid states
+minerals-rocks: 4 valid states
+microbes: 10 valid states
+solubility: 16 valid states
+refraction: 10 valid states
+weight-compare: 12 valid states
+volcano-model: 6 valid states
+lever-balance: 4 valid states
+seasons: 120 valid states
+diffusion: 216 valid states
+weather-front: 6 valid states
+motion-energy: 8 valid states
+ohms-law: 72 valid states
+burning-conditions: 6 valid states
+cell-structure: 32 valid states
+energy-conversion: 24 valid states
+mass-ratio: 6 valid states
+pea-genetics: 6 valid states
+cell-membrane: 6 valid states
+flame-ions: 4 valid states
+neutralization-common: 10 valid states
+density-buoyancy: 24 valid states
+✔ all supplement choices return finite, curriculum-referenced observations (20.7829ms)
+✔ ABO both-reagent truth table and student judgement (0.5535ms)
+✔ freezing mass, gas mass, heat contact, separation and starch (0.2375ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 13
+ℹ fail 16
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34100.4939
+
+✖ failing tests:
+
+test at tests\science-all-apps.test.cjs:11:1
+✖ every catalog app loads, every question has a working correct answer, mobile layout (5408.614ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:62711/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:62711/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-all-apps.test.cjs:30:23) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:62711/", waiting until "load"' ]
+  }
+
+test at tests\science-circuit-behavior.test.cjs:3:43
+✖ chromium: battery prediction, apparatus continuity and electromagnet controls (6185.0081ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:62710/circuit-bulbs/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:62710/circuit-bulbs/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-circuit-behavior.test.cjs:9:14) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:62710/circuit-bulbs/", waiting until "load"' ]
+  }
+
+test at tests\science-circuit-behavior.test.cjs:3:43
+✖ webkit: battery prediction, apparatus continuity and electromagnet controls (3.492ms)
+  browserType.launch: Executable doesn't exist at C:\Users\A\AppData\Local\Packages\sandbox.{58acf3ef-5285-428a-bb03-ab45031d4320}\AC\ms-playwright\webkit-2336\Playwright.exe
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-circuit-behavior.test.cjs:7:28) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests\science-content-regressions.test.cjs:5:43
+✖ chromium: scientific content and boundary regressions (5472.8309ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:59724/land-sea/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:59724/land-sea/", waiting until "load"[22m
+  
+      at go (E:\webprojects\class\tests\science-content-regressions.test.cjs:7:495)
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-content-regressions.test.cjs:9:8) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:59724/land-sea/", waiting until "load"' ]
+  }
+
+test at tests\science-content-regressions.test.cjs:5:43
+✖ webkit: scientific content and boundary regressions (3.6778ms)
+  browserType.launch: Executable doesn't exist at C:\Users\A\AppData\Local\Packages\sandbox.{58acf3ef-5285-428a-bb03-ab45031d4320}\AC\ms-playwright\webkit-2336\Playwright.exe
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-content-regressions.test.cjs:7:50) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests\science-digital-inquiry.test.cjs:3:1
+✖ device tools: calibrated length, timer, waveform, opt-in capture, stop, denial, records and tablet layout (5467.1918ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:59725/measurement/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:59725/measurement/", waiting until "load"[22m
+  
+      at load (E:\webprojects\class\tests\science-digital-inquiry.test.cjs:10:38)
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-digital-inquiry.test.cjs:11:9) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:59725/measurement/", waiting until "load"' ]
+  }
+
+test at tests\science-exam-editorial.test.cjs:10:1
+✖ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (5468.2231ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:52099/exam-review.html
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:52099/exam-review.html", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-exam-editorial.test.cjs:13:14) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:52099/exam-review.html", waiting until "load"' ]
+  }
+
+test at tests\science-exam-review.test.cjs:11:1
+✖ all exam answers, filters, persistence, charts, app integration and tablet screens (5473.5807ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:52100/exam-review.html?grade=%EC%97%86%EB%8A%94%ED%95%99%EB%85%84&unit=%EC%97%86%EB%8A%94%EB%8B%A8%EC%9B%90
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:52100/exam-review.html?grade=%EC%97%86%EB%8A%94%ED%95%99%EB%85%84&unit=%EC%97%86%EB%8A%94%EB%8B%A8%EC%9B%90", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-exam-review.test.cjs:15:14) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:52100/exam-review.html?grade=%EC%97%86%EB%8A%94%ED%95%99%EB%85%84&unit=%EC%97%86%EB%8A%94%EB%8B%A8%EC%9B%90", waiting until "load"' ]
+  }
+
+test at tests\science-grade-scope.test.cjs:11:1
+✖ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (5268.7295ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:65400/lever-balance/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:65400/lever-balance/", waiting until "networkidle"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-grade-scope.test.cjs:41:18) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:65400/lever-balance/", waiting until "networkidle"' ]
+  }
+
+test at tests\science-mixture-fractions.test.cjs:3:43
+✖ chromium: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (5472.6305ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:65399/mixture-separation/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:65399/mixture-separation/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-mixture-fractions.test.cjs:6:13) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:65399/mixture-separation/", waiting until "load"' ]
+  }
+
+test at tests\science-mixture-fractions.test.cjs:3:43
+✖ webkit: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (4.0518ms)
+  browserType.launch: Executable doesn't exist at C:\Users\A\AppData\Local\Packages\sandbox.{58acf3ef-5285-428a-bb03-ab45031d4320}\AC\ms-playwright\webkit-2336\Playwright.exe
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-mixture-fractions.test.cjs:5:50) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests\science-physical-invariants.test.cjs:3:1
+✖ independent checks: current/voltage, friction, collision conservation, survival proportions (5441.8865ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:57716/ohms-law/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:57716/ohms-law/", waiting until "load"[22m
+  
+      at go (E:\webprojects\class\tests\science-physical-invariants.test.cjs:5:412)
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-physical-invariants.test.cjs:6:8) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:57716/ohms-law/", waiting until "load"' ]
+  }
+
+test at tests\science-prediction-lifecycle.test.cjs:4:43
+✖ chromium: every app clears obsolete predictions and quiz verdicts (5474.5048ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:57718/light-shadow/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:57718/light-shadow/", waiting until "load"[22m
+  
+      at E:\webprojects\class\tests\science-prediction-lifecycle.test.cjs:10:67
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-prediction-lifecycle.test.cjs:9:2) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:57718/light-shadow/", waiting until "load"' ]
+  }
+
+test at tests\science-prediction-lifecycle.test.cjs:4:43
+✖ webkit: every app clears obsolete predictions and quiz verdicts (3.3651ms)
+  browserType.launch: Executable doesn't exist at C:\Users\A\AppData\Local\Packages\sandbox.{58acf3ef-5285-428a-bb03-ab45031d4320}\AC\ms-playwright\webkit-2336\Playwright.exe
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-prediction-lifecycle.test.cjs:7:50) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests\science-required-core.test.cjs:49:1
+✖ all required observation controls, wrong/correct answers and resets work in the browser (5445.8534ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:65130/microbes/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:65130/microbes/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-required-core.test.cjs:57:19) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:65130/microbes/", waiting until "load"' ]
+  }
+
+test at tests\science-required-experiments.test.cjs:31:1
+✖ new experiments: controls, records, all answers, reset and Chromebook/iPad layout (5448.5901ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:65131/force-motion/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:65131/force-motion/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-required-experiments.test.cjs:35:288) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:65131/force-motion/", waiting until "load"' ]
+  }

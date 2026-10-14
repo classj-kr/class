@@ -1,0 +1,5 @@
+chromium: opening polarized-thin-sections
+chromium: opening crust-thickness
+chromium: crust-thickness / 88 screen states
+chromium: polarized-thin-sections / 95 screen states
+{"engine":"chromium","deviceProfile":"chromebook-scale","routes":2,"scenarios":95,"flagged":0,"fontFlags":0,"canvasFlags":0,"liveWebFonts":true,"loadedFontFamilies":["Noto Serif KR"],"errors":[]}

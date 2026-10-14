@@ -14,12 +14,20 @@
     const lessons = () => config.lessons[language];
     const text = item => item.expression || item.proverb;
     const itemsFor = index => deck().filter(item => config.lessonFor(item, language) === index);
+    function setLessonMusicPaused(paused) {
+      if (!config.pauseMusicDuringLesson) return;
+      document.body.dataset.musicPausedForReading = String(paused);
+      const audio = $('bgm');
+      if (paused) audio?.pause();
+      else if (audio?.paused) audio.play().catch(() => {});
+    }
     async function refreshStatuses() {
       let offset = 0; statuses = new Map();
       do { const page = await records.history(`&offset=${offset}`); for (const s of page.sessions) if (!statuses.has(s.contentKey)) statuses.set(s.contentKey, s.status); offset = page.nextOffset; } while (offset != null);
     }
     function overview() {
       document.body.classList.remove('learning-active'); $('learningShell').hidden = true; $('lessonOverview').hidden = false;
+      setLessonMusicPaused(false);
       if ($('lessonToolbar')) $('lessonToolbar').hidden = false;
       $('lessonList').replaceChildren(...lessons().map((lesson, index) => {
         const items = itemsFor(index), button = node('button', '', 'lesson-item'); button.type = 'button';
@@ -40,6 +48,7 @@
     }
     async function open(index) {
       if (busy) return; setBusy(true); lessonIndex = index;
+      setLessonMusicPaused(true);
       const session = await records.start({ contentKey: key(), title: `${config.label} · ${lessons()[index].title}`, version: '20261001', checkpoint: initial(itemsFor(index)) });
       state = session.checkpoint;
       $('lessonOverview').hidden = true; if ($('lessonToolbar')) $('lessonToolbar').hidden = true;

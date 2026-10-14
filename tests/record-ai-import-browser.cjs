@@ -47,12 +47,16 @@ const fetchImpl = async (url, options = {}) => {
     await context.addCookies([{ name: 'test_user', value: '1', url: h.base }]);
     const page = await context.newPage();
     const errors = []; page.on('pageerror', (e) => errors.push(e.message));
+    const dialogs = [];
+    page.on('dialog', (d) => { dialogs.push({ type: d.type(), message: d.message() }); return d.accept(); });
     await page.goto(h.base + '/classtools/record-ai.html');
     await page.locator('#import-plan-btn').waitFor();
 
     // 키가 없으면 안내만 한다.
-    await page.locator('#import-plan-btn').click();
-    await page.locator('#import-plan-status').filter({ hasText: 'API 키를 먼저 등록' }).waitFor({ timeout: 10000 });
+    assert.deepEqual(dialogs, []);
+    await Promise.all([page.waitForEvent('dialog'), page.locator('#import-plan-btn').click()]);
+    assert.deepEqual(dialogs, [{ type: 'alert', message: 'API 키가 등록되어 있지 않습니다. 내 정보 → AI 설정에서 API 키를 등록해 주세요.' }]);
+    assert.equal(google.length, 0, '키가 없으면 파일 읽기 AI를 호출하지 않는다');
 
     // 키를 등록한 뒤 파일을 올린다(파일 고르기 창 대신 입력칸에 바로 넣는다).
     const put = await page.evaluate(async (key) => (await fetch('/api/teacher-ai/key', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key }) })).status, VALID_KEY);

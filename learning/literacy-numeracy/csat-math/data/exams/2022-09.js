@@ -85,7 +85,7 @@
       id: "2022-09-15", exam: "2022-09", no: 15, score: 4,
       units: ["m1-seq"], memo: "구간마다 기울기가 갈리는 점화식",
       body: R`수열 \(\{a_{n}\}\)은 \(\bigl|a_{1}\bigr|\le 1\)이고, 모든 자연수 \(n\)에 대하여
-        \[a_{n+1}=\begin{cases}-2a_{n}-2 &amp; \left(-1\le a_{n}<-\dfrac{1}{2}\right)\\[6pt] 2a_{n} &amp; \left(-\dfrac{1}{2}\le a_{n}\le\dfrac{1}{2}\right)\\[6pt] -2a_{n}+2 &amp; \left(\dfrac{1}{2}<a_{n}\le 1\right)\end{cases}\]
+        \[a_{n+1}=\begin{cases}-2a_{n}-2 &amp; \left(-1\le a_{n}&lt;-\dfrac{1}{2}\right)\\[6pt] 2a_{n} &amp; \left(-\dfrac{1}{2}\le a_{n}\le\dfrac{1}{2}\right)\\[6pt] -2a_{n}+2 &amp; \left(\dfrac{1}{2}&lt;a_{n}\le 1\right)\end{cases}\]
         을 만족시킨다. \(a_{5}+a_{6}=0\)이고 \(\displaystyle\sum_{k=1}^{5}a_{k}>0\)이 되도록 하는
         모든 \(a_{1}\)의 값의 합은?`,
       choices: [R`\(\dfrac{9}{2}\)`, R`\(5\)`, R`\(\dfrac{11}{2}\)`, R`\(6\)`, R`\(\dfrac{13}{2}\)`],
@@ -101,7 +101,7 @@
         값의 합을 구하시오.`,
       short: true,
       answer: 21,
-      help: R`절댓값을 벗기면 \(f(x)+x\ge 0\)일 때는 \(2f(x)+x=6x+k\), 곧 \(2f(x)=5x+k\)이고, \(f(x)+x<0\)일 때는 \(-x=6x+k\), 곧 \(x=-\frac{k}{7}\)로 값이 하나뿐이다. 두 경우를 갈라 각각 몇 개의 근이 나오는지 세면 된다.`
+      help: R`절댓값을 벗기면 \(f(x)+x\ge 0\)일 때는 \(2f(x)+x=6x+k\), 곧 \(2f(x)=5x+k\)이고, \(f(x)+x&lt;0\)일 때는 \(-x=6x+k\), 곧 \(x=-\frac{k}{7}\)로 값이 하나뿐이다. 두 경우를 갈라 각각 몇 개의 근이 나오는지 세면 된다.`
     },
 {
       id: "2022-09-21", exam: "2022-09", no: 21, score: 4,
@@ -198,7 +198,7 @@ short: true,
         R`\(\displaystyle\lim_{x\to 0}\dfrac{\sin(\pi\times f(x))}{x}=0\)`,
         R`\(f(x)\)의 극댓값과 극솟값의 곱은 \(5\)이다.`
       ],
-            bodyAfter: R`함수 \(g(x)\)는 \(0\le x<1\)일 때 \(g(x)=f(x)\)이고 모든 실수 \(x\)에 대하여 \(g(x+1)=g(x)\)이다. \(g(x)\)가 실수 전체의 집합에서 연속일 때, \(\displaystyle\int_{0}^{5}xg(x)\,dx=\dfrac{q}{p}\)이다. \(p+q\)의 값을 구하시오. (단, \(p\)와 \(q\)는 서로소인 자연수이다.)`,
+            bodyAfter: R`함수 \(g(x)\)는 \(0\le x&lt;1\)일 때 \(g(x)=f(x)\)이고 모든 실수 \(x\)에 대하여 \(g(x+1)=g(x)\)이다. \(g(x)\)가 실수 전체의 집합에서 연속일 때, \(\displaystyle\int_{0}^{5}xg(x)\,dx=\dfrac{q}{p}\)이다. \(p+q\)의 값을 구하시오. (단, \(p\)와 \(q\)는 서로소인 자연수이다.)`,
 short: true,
       answer: 107,
       help: R`조건 (가)의 극한에서 \(f(0)\)이 정수이고 \(f'(0)=0\)임을 유도합니다. 연속 조건 \(f(0)=f(1)\) 및 극값의 곱 조건을 조합하여 삼차함수 \(f(x)\)를 구하고, 주기성을 활용하여 \(\int_0^5 xg(x)\,dx\)를 계산합니다.`

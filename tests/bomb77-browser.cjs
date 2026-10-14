@@ -17,6 +17,19 @@ async function open(browser, name) {
   page.on("pageerror", error => errors.push(error.message));
   await page.evaluateOnNewDocument(name => {
     localStorage.setItem("classPlayerName", name);
+    Object.defineProperty(window, "CLASS_PLAYER_NAME", { get: () => name, set: () => {} });
+    window.__state = null;
+    window.__explosions = [];
+    window.__expectedExplosions = [];
+    window.__audibleExplosions = 0;
+    const mediaPlay = HTMLMediaElement.prototype.play;
+    HTMLMediaElement.prototype.play = function () {
+      if (this.src.includes('/sfx/explosion.ogg')) {
+        window.__explosions.push(window.__state?.actionNumber);
+        this.addEventListener('playing', () => { window.__audibleExplosions++; }, { once: true });
+      }
+      return mediaPlay.call(this);
+    };
     window.__messages = [];
     const NativeSocket = window.WebSocket;
     window.WebSocket = class extends NativeSocket {
@@ -27,7 +40,10 @@ async function open(browser, name) {
       api = { ...value, create(options) {
         const handler = options.onServerMessage;
         const instance = value.create({ ...options, onServerMessage(message) {
-          if (message.type === "BOMB77_STATE") window.__state = message.state;
+          if (message.type === "BOMB77_STATE") {
+            if (window.__state && window.__state.actionNumber !== message.state.actionNumber && message.state.lastEvent?.exploded) window.__expectedExplosions.push(message.state.actionNumber);
+            window.__state = message.state;
+          }
           if (message.type === "BOMB77_ERROR") window.__lastError = message.message;
           handler?.(message);
         } });
@@ -57,7 +73,7 @@ async function play(page, card, action) {
   assert.ok(hint.includes(`${before.total} → ${total}`));
   assert.equal(await page.$eval("#selectionHint", el => el.classList.contains("is-risk")), penalty(total));
   await page.click("#playButton");
-  await page.waitForFunction(action => __state.actionNumber > action, {}, action);
+  await page.waitForFunction(action => window.__state.actionNumber > action, {}, action);
 }
 (async () => {
  const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
@@ -70,10 +86,10 @@ async function play(page, card, action) {
     const guest = await open(browser, name);await click(guest.page, "joinTab");await guest.page.type("#joinCode", code);await click(guest.page, "joinButton");
     await guest.page.waitForFunction(() => __lobby.connected);
   }
-  await host.page.waitForFunction(() => __state?.players.length === 3);
+  await host.page.waitForFunction(() => window.__state?.players.length === 3);
   await click(host.page, "startButton");
   for (const p of players) {
-    await p.page.waitForFunction(() => __state?.phase === "playing");
+    await p.page.waitForFunction(() => window.__state?.phase === "playing");
     p.id = await p.page.evaluate(() => __lobby.snapshot().myId);
   }
   for (const [width, height] of [[1024,768],[768,1024],[720,900],[390,844]]) {
@@ -94,7 +110,7 @@ async function play(page, card, action) {
     const beforeReload=await state(p.page),oldId=p.id;
     await p.page.bringToFront();
     await p.page.reload({waitUntil:"domcontentloaded"});
-    await p.page.waitForFunction(()=>__state?.phase==="playing",{timeout:7000});
+    await p.page.waitForFunction(()=>window.__state?.phase==="playing",{timeout:7000});
     assert.equal(await p.page.evaluate(()=>__lobby.snapshot().myId),oldId);
     assert.deepEqual((await state(p.page)).hand,beforeReload.hand);
   }
@@ -108,11 +124,11 @@ async function play(page, card, action) {
       seen.add("explosion");
       assert.ok(current.total>=77);assert.equal(current.turnDeadline,null);
       if(!seen.has("explosion-shot")) {await host.page.screenshot({path:path.join(output,"explosion.png")});seen.add("explosion-shot");}
-      await host.page.waitForFunction(round=>__state.phase==="playing"&&__state.round===round+1,{timeout:6000},current.round);
+      await host.page.waitForFunction(round=>window.__state.phase==="playing"&&window.__state.round===round+1,{timeout:6000},current.round);
       const next=await state(host.page);assert.equal(next.total,0);assert.ok(next.players.filter(p=>!p.eliminated).every(p=>p.handCount===5));seen.add("redeal");continue;
     }
     const actor=players.find(p=>p.id===current.turnPlayerId);
-    await actor.page.waitForFunction(action=>__state.actionNumber===action,{},current.actionNumber);
+    await actor.page.waitForFunction(action=>window.__state.actionNumber===action,{},current.actionNumber);
     const own=await state(actor.page);
     assert.equal(own.hand.length,own.turnCardsPlayed===1?4:5);
     if(own.turnCardsRemaining===2) {
@@ -127,7 +143,7 @@ async function play(page, card, action) {
     }
     if(own.turnCardsPlayed===1) {seen.add("second-card");
       if(!seen.has("forced-turn-reconnect")) {
-        await actor.page.reload({waitUntil:"domcontentloaded"});await actor.page.waitForFunction(action=>__state?.actionNumber===action,{timeout:7000},own.actionNumber);
+        await actor.page.reload({waitUntil:"domcontentloaded"});await actor.page.waitForFunction(action=>window.__state?.actionNumber===action,{timeout:7000},own.actionNumber);
         assert.equal((await state(actor.page)).turnCardsPlayed,1);assert.equal((await state(actor.page)).hand.length,4);seen.add("forced-turn-reconnect");
       }
       assert.match(await actor.page.$eval("#turnBanner",el=>el.textContent),/한 장 더/);}
@@ -136,6 +152,8 @@ async function play(page, card, action) {
     const legal=own.hand.filter(c=>own.legalCardIds.includes(c.id));
     const score=c=>{
       const total=own.total+(c.kind==="number"?c.value:0);
+      // Exercise the second forced card before deliberately choosing penalties.
+      if(own.turnCardsRemaining===2 && penalty(total))return -1000;
       if(c.kind==="double"&&!seen.has("second-card"))return 10000;
       if(c.kind==="reverse"&&!seen.has("reverse"))return 9000;
       return penalty(total)?2000+total:total;
@@ -143,29 +161,34 @@ async function play(page, card, action) {
     legal.sort((a,b)=>score(b)-score(a));const card=legal[0];
     if(card.kind==="reverse")seen.add("reverse");
     await play(actor.page,card,own.actionNumber);
-    await host.page.waitForFunction(action=>__state.actionNumber>action,{},own.actionNumber);
+    await host.page.waitForFunction(action=>window.__state.actionNumber>action,{},own.actionNumber);
     const next=await state(host.page);
     if(next.lastEvent?.penalty&&!next.lastEvent.exploded)seen.add("double-number-penalty");
     for(const p of players) {
-      await p.page.waitForFunction(action=>__state.actionNumber===action,{},next.actionNumber);
+      await p.page.waitForFunction(action=>window.__state.actionNumber===action,{},next.actionNumber);
       const snapshot=await state(p.page);assert.equal(snapshot.total,next.total);assert.equal(snapshot.turnPlayerId,next.turnPlayerId);
       assert.deepEqual(snapshot.players,next.players);
+      const audio = await p.page.evaluate(() => ({ expected: window.__expectedExplosions, played: window.__explosions }));
+      assert.deepEqual(audio.played, audio.expected, 'One file explosion per new event; reconnects stay silent');
     }
   }
   assert.ok(steps<350,"Match must finish");
+  const audioPlayback = await Promise.all(players.map(p => p.page.evaluate(() => ({ calls: window.__explosions.length, playing: window.__audibleExplosions }))));
+  assert.ok(audioPlayback.every(p => p.playing > 0), 'Explosion file must enter playing state on every player browser');
+  seen.add('explosion-file-playback-all-players');
   for(const required of ["double","second-card","reverse","swimming","elimination","explosion","redeal","winner","reconnect"])assert.ok(seen.has(required),`Missing real-play coverage: ${required}`);
   await host.page.screenshot({path:path.join(output,"winner.png")});
   await host.page.click("#finishActions .primary-button");
-  await host.page.waitForFunction(()=>__state.phase==="playing"&&__state.round===1);
+  await host.page.waitForFunction(()=>window.__state.phase==="playing"&&window.__state.round===1);
   assert.ok((await state(host.page)).players.every(p=>p.fuses===3&&!p.eliminated));seen.add("rematch");
   const timeoutAction=(await state(host.page)).actionNumber;
-  await host.page.waitForFunction(action=>__state.actionNumber>action,{timeout:29000},timeoutAction);
+  await host.page.waitForFunction(action=>window.__state.actionNumber>action,{timeout:29000},timeoutAction);
   assert.match((await state(host.page)).lastAction,/시간 초과 자동 선택/);seen.add("server-timeout");
   await host.page.evaluate(()=>__lobby.sendServer({type:"BOMB77_ACTION",action:"RETURN_LOBBY"}));
   for(const p of [host,players[1]]) {
-    await p.page.waitForFunction(()=>__state.phase==="lobby");
+    await p.page.waitForFunction(()=>window.__state.phase==="lobby");
     await p.page.reload({waitUntil:"domcontentloaded"});
-    await p.page.waitForFunction(()=>__state?.phase==="lobby"&&Object.keys(__lobby.snapshot().players).length===3,{timeout:7000});
+    await p.page.waitForFunction(()=>window.__state?.phase==="lobby"&&Object.keys(__lobby.snapshot().players).length===3,{timeout:7000});
   }
   assert.equal(await host.page.$eval("#startBtn",el=>el.disabled),false);seen.add("lobby-reconnect");
   // An expired saved room must not trap CREATE ROOM in resume-only mode.
@@ -174,7 +197,7 @@ async function play(page, card, action) {
   await host.page.reload({waitUntil:"domcontentloaded"});
   await host.page.waitForFunction(()=>__messages.some(m=>m.type==="ROOM_NOT_FOUND"),{timeout:7000});
   await click(host.page,"hostTab");
-  await host.page.waitForFunction(()=>__lobby.connected&&__state?.phase==="lobby",{timeout:7000});
+  await host.page.waitForFunction(()=>__lobby.connected&&window.__state?.phase==="lobby",{timeout:7000});
   seen.add("expired-room-create");
   assert.deepEqual(errors,[]);
   const report={ok:true,steps,coverage:[...seen],errors};fs.writeFileSync(path.join(output,"report.json"),JSON.stringify(report,null,2));console.log(JSON.stringify(report));

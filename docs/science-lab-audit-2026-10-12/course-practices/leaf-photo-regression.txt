@@ -1,0 +1,15 @@
+✔ Leaf classification keeps one criterion, covers every specimen and preserves first mistakes after corrections (2.9777ms)
+✔ chromium: manual leaf classification, repeat criteria, zoom and diagnostic feedback (23487.9473ms)
+✔ webkit: manual leaf classification, repeat criteria, zoom and diagnostic feedback (30079.3077ms)
+224 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (173.223ms)
+✔ every science lab JavaScript file parses (94.5158ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.853ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53983.0404

@@ -7,58 +7,39 @@
     <title>과학 실험실</title>
     <meta name="description" content="중학교 3학년 자극의 전달 경로와 의식적 반응·무조건 반사를 비교하는 모형">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="reflex-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-<style>
-  .experiment-layout{grid-template-columns:minmax(260px,360px) minmax(0,1fr)}
-  .scope-choices{display:grid;gap:8px;margin:12px 0}.scope-choices button,.step-button{padding:12px;border:1px solid #94a3b8;border-radius:10px;background:#fff;color:#0f172a;font:inherit;cursor:pointer;min-height:44px}
-  .scope-choices button[aria-pressed="true"]{background:#e0f2fe;border-color:#0284c7;font-weight:700}
-  .scope-svg{display:block;width:100%;max-width:620px;margin:auto}.scope-note{line-height:1.7;color:#475569}.scope-route{padding-left:26px;line-height:2}.scope-route li[aria-current="step"]{background:#e0f2fe;font-weight:700}.run-row{display:flex;gap:8px;flex-wrap:wrap}.run-row button{flex:1}.step-button:disabled{opacity:.5;cursor:default}
-  @media(max-width:820px){.experiment-layout{grid-template-columns:1fr}}
-  </style>
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="reflex-visual.css?v=748a3a803c5e">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body><main data-curriculum-standards="9과20-02">
     <header class="page-header"><div class="title-row"><a href="../">← 과학 실험실</a><h1>자극의 전달과 반사</h1></div><div class="grade-tags"><span>중학교 3학년</span><span>과학</span></div></header>
-    <ol class="method-steps" aria-label="실험 방법"><li>반응의 종류를 고릅니다.</li><li>판단에 대뇌가 관여하는지 예상합니다.</li><li>자극이 전달되는 경로를 차례로 확인합니다.</li><li>반응의 중추와 결과를 비교합니다.</li></ol>
-    <div class="experiment-layout"><section class="panel control-panel" aria-labelledby="control-title"><h2 id="control-title">실험 조건</h2><fieldset><legend>반응의 종류</legend><div class="scope-choices"><button data-path="conscious" type="button">신호를 보고 손 들기</button><button data-path="pupil" type="button">밝은 빛에 동공 작아지기</button><button data-path="knee" type="button">무릎 반사</button></div></fieldset>
-  <fieldset><legend>이 반응을 일으킬 때 대뇌의 판단이 필요한가요?</legend><div class="scope-choices"><button data-prediction="yes" type="button">필요하다</button><button data-prediction="no" type="button">필요하지 않다</button></div></fieldset>
-  <div class="run-row"><button class="run-button" id="checkBtn" type="button">자극 주기</button><button class="step-button" id="nextBtn" type="button" disabled>다음 단계</button><button class="step-button" id="resetBtn" type="button">처음으로</button></div>
-      <section class="result-box" aria-live="polite"><h3>관찰 결과</h3><p id="resultEmpty">조건을 정하고 확인해 보세요.</p><div id="resultContent" hidden><p id="predictionResult" class="prediction-result"></p><p id="elementaryExplanation" class="explanation"></p></div></section>
-    </section><section class="panel" aria-label="관찰 화면"><div class="stage-heading"><h2>관찰</h2><span id="stageBadge"></span></div><svg class="scope-svg" viewBox="0 0 480 180" role="img" aria-label="선택한 반응의 자극과 결과"><g id="mainGroup"></g></svg><ol class="scope-route" id="routeList"></ol><p class="scope-note">전달 순서를 살펴보는 모형입니다. 단계 수나 화면 진행 속도는 실제 신경 수·반응 시간을 나타내지 않습니다.</p><p class="stage-caption" id="stageCaption" aria-live="polite"></p></section></div>
-    <section class="panel meaning-panel"><h2>실험 결과의 의미</h2><div class="meaning-body"><p><strong>의식적 반응</strong> 대뇌가 자극을 판단한 뒤 명령을 내립니다.</p><p><strong>무조건 반사</strong> 대뇌의 의식적인 판단 없이 일어납니다. 무릎 반사의 중추는 척수, 동공 반사의 중추는 중간뇌입니다.</p><p>대뇌의 판단 없이 반응한다고 해서 자극에 관한 정보가 대뇌에 전혀 전달되지 않는 것은 아닙니다.</p></div></section>
-    <details class="quiz-section" aria-labelledby="quiz-title"><summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary><div class="quiz-grid"><article class="quiz-card" data-answer="a"><h3>무조건 반사의 특징은?</h3>
-    <div class="quiz-options"><label><input type="radio" name="q1" value="a"> 대뇌의 의식적인 판단 없이 일어난다.</label>
-<label><input type="radio" name="q1" value="b"> 매번 생각하고 결정해야 한다.</label>
-<label><input type="radio" name="q1" value="c"> 감각 신경이 필요 없다.</label>
-<label><input type="radio" name="q1" value="d"> 반응 기관이 없다.</label></div>
-    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
-    <p class="answer-explanation" hidden>무조건 반사는 대뇌의 의식적인 판단 없이 일어나며, 반응에 따라 척수나 뇌의 다른 부분이 중추가 됩니다.</p></article>
-<article class="quiz-card" data-answer="c"><h3>자극이 전달되는 순서로 알맞은 것은?</h3>
-    <div class="quiz-options"><label><input type="radio" name="q2" value="a"> 운동 신경 → 감각 기관 → 중추</label>
-<label><input type="radio" name="q2" value="b"> 반응 기관 → 중추 → 감각 기관</label>
-<label><input type="radio" name="q2" value="c"> 감각 기관 → 감각 신경 → 중추 → 운동 신경 → 반응 기관</label>
-<label><input type="radio" name="q2" value="d"> 감각 기관 → 운동 신경 → 중추 → 감각 신경</label></div>
-    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
-    <p class="answer-explanation" hidden>감각 신경은 자극을 중추로, 운동 신경은 중추의 명령을 반응 기관으로 전달합니다.</p></article>
-<article class="quiz-card" data-answer="b"><h3>무릎 반사의 중추는?</h3>
-    <div class="quiz-options"><label><input type="radio" name="q3" value="a"> 대뇌</label>
-<label><input type="radio" name="q3" value="b"> 척수</label>
-<label><input type="radio" name="q3" value="c"> 홍채</label>
-<label><input type="radio" name="q3" value="d"> 망막</label></div>
-    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
-    <p class="answer-explanation" hidden>무릎 반사의 중추는 척수입니다. 동공 반사의 중추인 중간뇌와 구별합니다.</p></article>
-<article class="quiz-card" data-answer="d"><h3>의식적 반응의 예는?</h3>
-    <div class="quiz-options"><label><input type="radio" name="q4" value="a"> 밝은 곳에서 동공이 작아진다.</label>
-<label><input type="radio" name="q4" value="b"> 뜨거운 물체에 닿은 손을 움츠린다.</label>
-<label><input type="radio" name="q4" value="c"> 무릎 아래를 두드리면 다리가 올라간다.</label>
-<label><input type="radio" name="q4" value="d"> 신호를 보고 판단하여 손을 든다.</label></div>
-    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
-    <p class="answer-explanation" hidden>신호를 보고 판단하여 손을 드는 것은 대뇌가 관여하는 의식적 반응입니다.</p></article></div></details>
-    </main><script src="../grade-quiz.js?v=995b4f99e27e"></script><script src="app.js?v=a0e2413ed1e2"></script>    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <ol class="method-steps" aria-label="실험 방법"><li>반응의 종류를 고릅니다.</li><li>자극을 주고 신호의 이동과 근육을 관찰합니다.</li><li>감각·운동 신경의 전달을 각각 막아 비교합니다.</li><li>의식적 반응과 반사의 중추를 구별합니다.</li></ol>
+<section id="rfLab" class="panel" aria-label="자극과 반응 실험"><div class="rf-top"><fieldset><legend>반응의 종류</legend><div class="rf-modes"><button type="button" data-path="knee">무릎 반사</button><button type="button" data-path="leg">느끼고 다리 들기</button><button type="button" data-path="pupil">동공 반사</button><button type="button" data-path="conscious">보고 손 들기</button></div></fieldset><div class="rf-condition"><label for="rfBlock">신호 전달 조건</label><select id="rfBlock"><option value="none">정상 전달</option><option value="sensory">감각 신경에서 차단</option><option value="motor">운동 신경에서 차단</option></select></div></div>
+<p id="rfStimulus" class="rf-stimulus"></p><div class="rf-layout"><section class="rf-scene-box"><h2 id="stageBadge">무릎 반사</h2><svg id="rfScene" role="img"></svg><p id="rfSceneKey" class="rf-key"></p></section><section class="rf-route-box"><h2>신호의 전달 경로</h2><div class="rf-legend"><span>감각 신호</span><span>운동 신호</span></div><ol id="routeList" class="rf-route"></ol><p id="stageCaption" aria-live="polite"></p></section></div>
+<div class="rf-actions"><button id="checkBtn" type="button">자극 주기</button><button id="rfPause" type="button" disabled>계속 관찰</button><button id="nextBtn" type="button">다음 단계</button><button id="resetBtn" type="button">처음으로</button></div><label class="rf-range-label" for="rfProgress"><span>전달 순서</span><span>자극 → 반응</span></label><input id="rfProgress" type="range" min="0" max="100" step="1" value="0" aria-label="전달 과정 이동">
+<p class="rf-note">전달 순서를 느리게 관찰합니다. 화면의 진행 속도는 실제 반응 시간이 아닙니다.</p><div class="rf-results"><p><span>신호가 도달한 중추</span><strong id="rfCentreValue"></strong></p><p><span>운동 신호</span><strong id="rfMotorValue"></strong></p></div><p id="rfObservation" class="rf-observation" aria-live="polite"></p></section>
+<section class="panel meaning-panel rf-meaning"><h2>반응을 비교해 보세요</h2><p><strong>무릎 반사</strong> 늘어난 근육의 감각 수용기에서 시작한 신호가 척수로 전달됩니다. 대뇌의 의식적 판단을 기다리지 않고 다리 근육이 반응합니다.</p><p><strong>느끼고 다리 들기</strong> 피부에 닿은 느낌을 대뇌에서 인식하고 다리를 들기로 판단합니다. 신호와 명령은 척수를 거칩니다.</p><p><strong>동공 반사</strong> 중간뇌가 조절하며, 홍채의 근육이 동공의 크기를 바꿉니다.</p><p>대뇌의 판단 없이 반응해도 감각 정보는 대뇌에 전달될 수 있습니다. 반사의 경로와 자극을 느끼는 경로를 구별하세요.</p></section>
+<details class="quiz-section" aria-labelledby="quiz-title"><summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary><div class="quiz-grid"><article class="quiz-card" data-answer="a"><h3>무릎 반사 모형에서 운동 신경의 전달만 막았다. 감각 신경과 척수의 연결은 그대로일 때, 자극 신호와 근육 반응의 조합은?</h3><div class="quiz-options"><label><input type="radio" name="q1" value="a"> 척수에 도달 · 근육 수축 없음</label>
+<label><input type="radio" name="q1" value="b"> 척수에 도달 · 근육 수축 있음</label>
+<label><input type="radio" name="q1" value="c"> 척수에 미도달 · 근육 수축 없음</label>
+<label><input type="radio" name="q1" value="d"> 척수에 미도달 · 근육 수축 있음</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>감각 신경은 정상이라 신호가 척수에 도달합니다. 그러나 운동 신경의 출력이 막혔으므로 이 경로로 근육 수축을 일으킬 수 없습니다.</p></article>
+<article class="quiz-card" data-answer="b"><h3>무릎뼈 아래를 두드렸을 때 다리가 먼저 들리고, 닿았다는 느낌도 인식했다. 이 결과에 대한 해석으로 알맞은 것은?</h3><div class="quiz-options"><label><input type="radio" name="q2" value="a"> 감각 신경이 근육 수축을 명령하고 대뇌는 자극만 느낀다.</label>
+<label><input type="radio" name="q2" value="b"> 척수가 근육 수축을 명령하고 대뇌도 자극 정보를 받는다.</label>
+<label><input type="radio" name="q2" value="c"> 대뇌가 자극을 인식한 뒤에야 척수가 근육 수축을 명령한다.</label>
+<label><input type="radio" name="q2" value="d"> 대뇌가 근육 수축을 명령한 뒤에 그 신호를 척수에 보낸다.</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>무릎 반사는 척수에서 조절되어 대뇌의 의식적 판단을 기다리지 않습니다. 감각 정보가 대뇌에도 전달되므로 자극을 느낄 수 있습니다.</p></article>
+<article class="quiz-card" data-answer="c"><h3>같은 거리의 물체를 보던 중 주변이 밝아져 동공이 작아졌다. 이 반사의 중추와 직접 움직이는 반응 기관은?</h3><div class="quiz-options"><label><input type="radio" name="q3" value="a"> 대뇌 · 홍채의 근육</label>
+<label><input type="radio" name="q3" value="b"> 중간뇌 · 수정체</label>
+<label><input type="radio" name="q3" value="c"> 중간뇌 · 홍채의 근육</label>
+<label><input type="radio" name="q3" value="d"> 대뇌 · 수정체</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>빛의 밝기에 따른 동공 반사는 중간뇌에서 조절하며 홍채의 근육이 동공 크기를 바꿉니다. 수정체 두께는 주로 초점 조절과 관련됩니다.</p></article>
+<article class="quiz-card" data-answer="d"><h3>힘·근전도 그래프의 최고점 시각이 무릎 반사에서는 1.20초·1.26초, 의식적 반응에서는 3.70초·3.94초였다. 각 반응의 두 최고점 사이 시간을 비교하면 어느 쪽이 얼마나 짧은가?</h3><div class="quiz-options"><label><input type="radio" name="q4" value="a"> 무릎 반사 · 2.50초</label>
+<label><input type="radio" name="q4" value="b"> 의식적 반응 · 0.18초</label>
+<label><input type="radio" name="q4" value="c"> 의식적 반응 · 2.68초</label>
+<label><input type="radio" name="q4" value="d"> 무릎 반사 · 0.18초</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>각 자극 뒤의 차이를 따로 구합니다. 무릎 반사는 1.26−1.20=0.06초, 의식적 반응은 3.94−3.70=0.24초이므로 무릎 반사가 0.18초 짧습니다.</p></article></div></details>
+    </main><script src="../grade-quiz.js?v=995b4f99e27e"></script><script src="model.js?v=7cd76b6296e8"></script><script src="app.js?v=1f311baf8eb4"></script>    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body></html>

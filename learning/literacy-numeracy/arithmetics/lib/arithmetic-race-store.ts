@@ -145,6 +145,7 @@ export function memoryRaceStore(clock: () => number = Date.now): RaceStore {
 
   return {
     async race(code) {
+      forget();
       const found = races.get(code);
       return found ? { ...found } : null;
     },

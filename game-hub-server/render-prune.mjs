@@ -12,6 +12,7 @@ export const RENDER_PRUNE_TARGETS = Object.freeze([
   ".agents",
   ".claude",
   ".codex",
+  ".codex-remote-attachments",
   ".github",
   ".openai",
   "audit_report.json",
@@ -24,6 +25,10 @@ export const RENDER_PRUNE_TARGETS = Object.freeze([
   "docs",
   // Review screenshots and audit pages written by local tooling; nothing serves them.
   "output",
+  "outputs",
+  "tmp",
+  "scratch",
+  "research",
   "pisa-reference.jpg",
   "references",
   "scratch_all_poems_text.txt",
@@ -41,6 +46,8 @@ export const RENDER_PRUNE_TARGETS = Object.freeze([
   "learning/inquiry/information-computing/computer-fundamentals/assets/source",
   "learning/literacy-numeracy/arithmetics/docs",
   "learning/literacy-numeracy/arithmetics/tests",
+  // Retired standalone copy; kept here to discard stale build inputs as well.
+  "learning/literacy-numeracy/phonics-site",
 ]);
 
 function byteSize(target) {

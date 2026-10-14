@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs');const path=require('node:path');const http=require('node:http');const puppeteer=require('puppeteer-core');
 const root=path.resolve(__dirname,'..'), route='/learning/inquiry/periodic-table/';
-const dir=path.join(root,'tmp/periodic-app-validation');fs.mkdirSync(dir,{recursive:true});
+const dir=path.join(root,'outputs/qa/periodic-app-validation');fs.mkdirSync(dir,{recursive:true});
 const report={passed:[],failed:[],errors:[],badResources:[],viewports:[],controlCases:0};
 async function check(name,fn){try{await fn();report.passed.push(name);}catch(e){report.failed.push({name,message:e.message});}}
 const answers={states:1,phase:2,gas:0,atom:1,orbital:2,config:0,bond:1,classify:1,reaction:2,solution:0,equilibrium:1,acid:0,redox:1};

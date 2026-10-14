@@ -2,7 +2,7 @@
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path");
 const {chromium}=require("../game-hub-server/node_modules/playwright");
 const base=process.env.BOARD_COACH_TEST_URL||"http://127.0.0.1:8936";
-const output=path.resolve(__dirname,"../tmp/board-coach-usability");fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,"../outputs/qa/board-coach-usability");fs.mkdirSync(output,{recursive:true});
 const games=["reversi","omok","chess","janggi"];
 const workers={reversi:"ai-worker.js",omok:"ai-worker.js",chess:"chess-worker.js",janggi:"janggi-worker.js"};
 async function start(page,game,color="1"){

@@ -1,0 +1,59 @@
+{
+  "sourcePath": "references/textbooks/중고등/미래엔/고등/과학/지구시스템과학 (김연귀)_2022/교과서/지구시스템과학 (김연귀)_2022_[지구시스템과학] 교과서.pdf",
+  "sourceSHA256": "d41737876b63107060412bc756c82674baaf32ebd95b842a1a2a3801695c41b7",
+  "extraction": "Original PDF image pixels, lossless WebP. Original vector scale length divided by image width becomes a responsive HTML bar, not resized raster text. Images are not recoloured or used as paired PPL/XPL views.",
+  "images": [
+    {
+      "file": "learning/inquiry/science-lab/assets/thin-sections/fine.webp",
+      "sourceId": "d41737876b631070",
+      "page": 37,
+      "xObject": "/Im1",
+      "width": 728,
+      "height": 533,
+      "lossless": true,
+      "sha256": "a4d6f3bf0b0d7945d3fa166b7ff1f4909c933c3db6b28197b6a473dccf45b4b1",
+      "scaleBarPDFPoints": 28.222,
+      "imagePDFWidthPoints": 171.5027045,
+      "scaleMM": 1
+    },
+    {
+      "file": "learning/inquiry/science-lab/assets/thin-sections/glass.webp",
+      "sourceId": "d41737876b631070",
+      "page": 37,
+      "xObject": "/Im2",
+      "width": 728,
+      "height": 533,
+      "lossless": true,
+      "sha256": "11567f78e69f9e27a263ac7e8b88e04d8145b50c36298272f6887783aed611ce",
+      "scaleBarPDFPoints": 50.161,
+      "imagePDFWidthPoints": 171.5027045,
+      "scaleMM": 0.5
+    },
+    {
+      "file": "learning/inquiry/science-lab/assets/thin-sections/porphyritic.webp",
+      "sourceId": "d41737876b631070",
+      "page": 37,
+      "xObject": "/Im3",
+      "width": 728,
+      "height": 533,
+      "lossless": true,
+      "sha256": "3cf91f1d331d88e59f559960c5cd66477186ade951f1c66d7783f0338ac02c7a",
+      "scaleBarPDFPoints": 28.222,
+      "imagePDFWidthPoints": 171.5027045,
+      "scaleMM": 1
+    },
+    {
+      "file": "learning/inquiry/science-lab/assets/thin-sections/coarse.webp",
+      "sourceId": "d41737876b631070",
+      "page": 37,
+      "xObject": "/Im4",
+      "width": 728,
+      "height": 533,
+      "lossless": true,
+      "sha256": "487942e3249be768643c784f8d227730cd96edd1f7b9735b0babfcc7ed808a76",
+      "scaleBarPDFPoints": 28.223,
+      "imagePDFWidthPoints": 171.5027045,
+      "scaleMM": 1
+    }
+  ]
+}

@@ -1,0 +1,1256 @@
+{
+  "verifiedAt": "2026-10-12T22:43:49.997Z",
+  "scope": "2022 only; observed implementation and regression checkpoint, not a completed census of required experiments.",
+  "allRequestedWorkComplete": false,
+  "physicalDeviceTested": false,
+  "apps": 191,
+  "routes": 196,
+  "engines": [
+    "Chromium/Chrome",
+    "Playwright WebKit"
+  ],
+  "screens": [
+    [
+      1366,
+      768
+    ],
+    [
+      1180,
+      820
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      820,
+      1180
+    ],
+    [
+      768,
+      1024
+    ]
+  ],
+  "readability": [
+    {
+      "report": null,
+      "engine": "chromium",
+      "catalog": false,
+      "routes": 196,
+      "scenarios": 5895,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "extended": true,
+      "supplementDiagnosisChecked": true,
+      "deviceProfile": "chromebook-scale",
+      "emulationOnly": true,
+      "deviceScaleFactor": 1.25,
+      "liveWebFonts": true,
+      "loadedFontFamilies": [
+        "Noto Serif KR"
+      ],
+      "issues": [],
+      "errors": [],
+      "components": [
+        "post-caption-readability/extended-chromium.json",
+        "post-cell-readability/extended-chromium.json",
+        "strata-readability/extended-chromium.json",
+        "latest-added-readability/extended-chromium.json",
+        "video-motion-readability/extended-chromium.json",
+        "hr-readability/extended-chromium.json",
+        "kepler-readability/extended-chromium.json",
+        "element-origin-readability/extended-chromium.json",
+        "dna-readability/extended-chromium.json",
+        "seasonal-sky-readability/extended-chromium.json",
+        "equilibrium-data-readability/extended-chromium.json",
+        "middle-rocks-readability/extended-chromium.json",
+        "tectonic-feedback-readability/extended-chromium.json",
+        "argo-readability/extended-chromium.json",
+        "sst-readability/extended-chromium.json",
+        "galactic-readability/extended-chromium.json",
+        "phase-curves-readability/extended-chromium.json",
+        "cell-division-readability/extended-chromium.json",
+        "reflex-readability/extended-chromium.json",
+        "diffusion-readability/extended-chromium.json",
+        "optics-readability/extended-chromium.json",
+        "acid-mixing-readability/extended-chromium.json"
+      ],
+      "scope": "Full existing-route scan after caption correction; Chromium replaces the two changed specimen workflows with final focused checks. Focused runs add strata correlation, polarized thin sections and crust thickness in both engines. Each route is counted once, from its latest completed run. All five viewport sizes use actual loaded web fonts. Emulation only; no physical-device claim."
+    },
+    {
+      "report": null,
+      "engine": "webkit",
+      "catalog": false,
+      "routes": 196,
+      "scenarios": 5895,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "extended": true,
+      "supplementDiagnosisChecked": true,
+      "deviceProfile": "ipad",
+      "emulationOnly": true,
+      "deviceScaleFactor": 2,
+      "liveWebFonts": true,
+      "loadedFontFamilies": [
+        "Noto Serif KR"
+      ],
+      "issues": [],
+      "errors": [],
+      "components": [
+        "post-cell-full-readability/extended-webkit.json",
+        "strata-readability/extended-webkit.json",
+        "latest-added-readability/extended-webkit.json",
+        "video-motion-readability/extended-webkit.json",
+        "hr-readability/extended-webkit.json",
+        "kepler-readability/extended-webkit.json",
+        "element-origin-readability/extended-webkit.json",
+        "dna-readability/extended-webkit.json",
+        "seasonal-sky-readability/extended-webkit.json",
+        "equilibrium-data-readability/extended-webkit.json",
+        "middle-rocks-readability/extended-webkit.json",
+        "tectonic-feedback-readability/extended-webkit.json",
+        "argo-readability/extended-webkit.json",
+        "sst-readability/extended-webkit.json",
+        "galactic-readability/extended-webkit.json",
+        "phase-curves-readability/extended-webkit.json",
+        "cell-division-readability/extended-webkit.json",
+        "reflex-readability/extended-webkit.json",
+        "diffusion-readability/extended-webkit.json",
+        "optics-readability/extended-webkit.json",
+        "acid-mixing-readability/extended-webkit.json"
+      ],
+      "scope": "Full existing-route scan after caption correction; Chromium replaces the two changed specimen workflows with final focused checks. Focused runs add strata correlation, polarized thin sections and crust thickness in both engines. Each route is counted once, from its latest completed run. All five viewport sizes use actual loaded web fonts. Emulation only; no physical-device claim."
+    }
+  ],
+  "readabilityTotals": [
+    {
+      "engine": "chromium",
+      "routes": 196,
+      "scenarios": 5895,
+      "deviceProfile": "chromebook-scale",
+      "liveWebFonts": true
+    },
+    {
+      "engine": "webkit",
+      "routes": 196,
+      "scenarios": 5895,
+      "deviceProfile": "ipad",
+      "liveWebFonts": true
+    }
+  ],
+  "catalog": [
+    {
+      "report": "final-current-readability/catalog-chromium.json",
+      "engine": "chromium",
+      "catalog": true,
+      "routes": 1,
+      "scenarios": 25,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "extended": false,
+      "supplementDiagnosisChecked": true,
+      "deviceProfile": null,
+      "emulationOnly": false,
+      "deviceScaleFactor": 1,
+      "liveWebFonts": false,
+      "loadedFontFamilies": [],
+      "issues": [],
+      "errors": []
+    },
+    {
+      "report": "final-current-readability/catalog-webkit.json",
+      "engine": "webkit",
+      "catalog": true,
+      "routes": 1,
+      "scenarios": 25,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "extended": false,
+      "supplementDiagnosisChecked": true,
+      "deviceProfile": null,
+      "emulationOnly": false,
+      "deviceScaleFactor": 1,
+      "liveWebFonts": false,
+      "loadedFontFamilies": [],
+      "issues": [],
+      "errors": []
+    }
+  ],
+  "bankReadability": [
+    {
+      "report": "bank-device-readability-chromium.json",
+      "engine": "chromium",
+      "deviceProfile": "chromebook-scale",
+      "emulationOnly": true,
+      "questions": 241,
+      "scenarios": 1205,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "liveFonts": [
+        "Noto Serif KR"
+      ],
+      "scope": "All 241 bank questions with their correct-answer feedback open, at five viewport sizes. Text size, clipping, touch height and chart label overlap are checked; this is not physical-device testing.",
+      "issues": [],
+      "errors": []
+    },
+    {
+      "report": "bank-device-readability-webkit.json",
+      "engine": "webkit",
+      "deviceProfile": "ipad",
+      "emulationOnly": true,
+      "questions": 241,
+      "scenarios": 1205,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "liveFonts": [
+        "Noto Serif KR"
+      ],
+      "scope": "All 241 bank questions with their correct-answer feedback open, at five viewport sizes. Text size, clipping, touch height and chart label overlap are checked; this is not physical-device testing.",
+      "issues": [],
+      "errors": []
+    }
+  ],
+  "tests": {
+    "fullSuite": {
+      "report": "latest-complete-suite.txt",
+      "tests": 273,
+      "passed": 271,
+      "failed": 2
+    },
+    "affectedRegression": {
+      "report": "final-affected-regression.txt",
+      "tests": 14,
+      "passed": 13,
+      "failed": 1
+    },
+    "diagnosisRegression": {
+      "report": "cell-observation-final-regression.txt",
+      "tests": 20,
+      "passed": 20,
+      "failed": 0
+    },
+    "firstErrorsRetainedPerEngine": 786,
+    "firstErrorScope": {
+      "existingRouteReport": "cell-observation-final-regression.txt",
+      "existingRoutes": 182,
+      "responses": 728,
+      "newRouteReports": [
+        "strata-correlation-regression.txt",
+        "thin-section-regression.txt",
+        "crust-thickness-regression.txt",
+        "video-motion-regression.txt",
+        "hr-diagram-regression.txt",
+        "kepler-data-first-regression.txt",
+        "dna-course-regression.txt",
+        "seasonal-sky-regression.txt",
+        "equilibrium-data-first-regression.txt",
+        "argo-regression.txt",
+        "sst-final-regression.txt",
+        "galactic-final-regression.txt",
+        "phase-curves-final-regression.txt",
+        "acid-mixing-regression.txt"
+      ],
+      "newRoutes": 14,
+      "newResponses": 58,
+      "replacedRouteReports": [
+        {
+          "report": "element-origin-regression.txt",
+          "slug": "star-elements",
+          "questions": 4,
+          "note": "The four replaced questions were rechecked; they replace the four earlier responses rather than increasing the total."
+        },
+        {
+          "report": "optics-regression.txt",
+          "slug": "refraction",
+          "questions": 4,
+          "note": "All twelve distractors rechecked after correction and reload; the four IDs already existed."
+        },
+        {
+          "report": "diffusion-regression.txt",
+          "slug": "diffusion",
+          "questions": 4,
+          "note": "Four replacement items, all twelve wrong options after correction and reload. IDs unchanged."
+        },
+        {
+          "report": "reflex-first-regression.txt",
+          "slug": "reflex-nerve",
+          "questions": 4,
+          "note": "Four replaced items and all 12 distinct wrong choices tested after correction and reload; unique question IDs unchanged."
+        },
+        {
+          "report": "cell-division-final-regression.txt",
+          "slug": "cell-division",
+          "questions": 4,
+          "note": "Four revised items and all twelve wrong choices rechecked after correction and reload; no increase to the number of unique question IDs."
+        },
+        {
+          "report": "dna-course-regression.txt",
+          "slug": "dna-structure",
+          "school": "high-elective",
+          "questions": 4,
+          "note": "Existing four elective answers were rechecked; four new common-course answers are counted as added responses."
+        },
+        {
+          "report": "middle-rocks-first-regression.txt",
+          "slug": "minerals-rocks",
+          "questions": 4,
+          "note": "Four replacement questions plus independent specimen classification errors rechecked; no increase to the existing route question count."
+        },
+        {
+          "report": "tectonic-data-final-regression.txt",
+          "slug": "plate-tectonics",
+          "questions": 4,
+          "note": "Existing four questions replaced and their first errors rechecked. No addition to route count."
+        }
+      ]
+    },
+    "energyRegression": {
+      "report": "rate-energy-final-regression.txt",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "equilibriumColourRegression": {
+      "report": "equilibrium-colour-final-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "scopeRegression": {
+      "report": "equilibrium-scope-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "knownUnresolvedTestFailures": 0,
+    "resolutions": [
+      {
+        "failedReport": "equilibrium-colour-regression.txt",
+        "test": "Transfer-widget wait while quiz details remained closed after reload",
+        "recheck": "equilibrium-colour-final-regression.txt",
+        "evidence": "Open the quiz after reload, then wait for the visible transfer widget; three model/Chromium/WebKit tests pass."
+      },
+      {
+        "failedReport": "latest-complete-suite.txt",
+        "test": "WebKit internal draft-model harness capture timeout",
+        "recheck": {
+          "report": "draft-model-recheck.txt",
+          "tests": 1,
+          "passed": 1,
+          "failed": 0
+        }
+      },
+      {
+        "failedReport": "latest-complete-suite.txt",
+        "test": "Obsolete .curriculum-supplement wait on replaced microbes/rock-layers workflows",
+        "recheck": "final-affected-regression.txt",
+        "evidence": "603 core states and 1809 answer checks; source-photo workflow tests cover the replacement controls."
+      },
+      {
+        "failedReport": "final-affected-regression.txt",
+        "test": "Windows UNKNOWN opening an existing Chromium apparatus capture for overwrite",
+        "recheck": {
+          "report": "apparatus-final-recheck.txt",
+          "tests": 1,
+          "passed": 1,
+          "failed": 0
+        }
+      },
+      {
+        "failedReport": "optics-zero-width-harness.txt",
+        "test": "Visibility wait treated the zero-width vertical plane-mirror SVG group as hidden",
+        "recheck": "optics-regression.txt",
+        "evidence": "Wait for the group to be attached; scientific state, device presence and viewport checks remain asserted. Three tests pass in the corrected harness."
+      },
+      {
+        "failedReport": "reflex-shared-obsolete-selector.txt",
+        "test": "Legacy live-results test expected a removed cell-observation supplement wrapper",
+        "recheck": "reflex-shared-regression.txt",
+        "evidence": "The current microscope root and specimen-placement control replace that selector. Six grade-scope lessons and both engines of the animation/grade regression pass; no app code was changed to satisfy this old selector."
+      },
+      {
+        "failedReport": "reflex-contrast-before.json",
+        "test": "Intermediate button colour fade dropped text contrast in four quick mode changes",
+        "recheck": [
+          "reflex-readability/reading-contrast-chromium-selected.json",
+          "reflex-readability/reading-contrast-webkit-selected.json"
+        ],
+        "evidence": "Mode selection colours now change immediately while the anatomical animation remains smooth. The scene caption has an opaque light background so it is checked rather than skipped as gradient-backed text."
+      },
+      {
+        "failedReport": "periodic-consistency-regression.txt",
+        "test": "New graph harness assumed eight compounds; the existing chart has nine, including nitrogen",
+        "recheck": "periodic-consistency-final.txt",
+        "evidence": "Explicitly checks all nine compound IDs and their positions, the uniform positive/negative temperature scale, the CO2 note, He/Ne/Ar explanations and contrast in both engines. The two electron-motion tests passed in the earlier report."
+      },
+      {
+        "failedReport": "core-choice-diagnosis-regression.txt",
+        "test": "Old total-count expectation and missing capture directory",
+        "recheck": "cell-observation-final-regression.txt",
+        "evidence": "The total explicitly includes observation questions; the capture directory is created before writing. Both engines also verify retained first-choice feedback after reload."
+      },
+      {
+        "failedReport": "strata-correlation-first-regression.txt",
+        "test": "Text glyphs used for boundary lines overflowed narrow columns",
+        "recheck": "strata-correlation-regression.txt",
+        "evidence": "Replaced line characters with responsive vector paths. A further manual inspection found sticky feedback covering the diagram; feedback now stays in document flow and tests check for overlap while scrolling."
+      },
+      {
+        "failedReport": "argo-first-regression.txt",
+        "test": "Nearest-depth probe selected a row with both temperature and salinity invalid",
+        "recheck": "argo-regression.txt",
+        "evidence": "Probe selects the nearest row with at least one usable temperature/salinity measurement; plots still preserve all gaps. Original 2814 sample positions independently compared to NetCDF and GSW."
+      },
+      {
+        "failedReport": "sst-first-regression.txt",
+        "test": "Fixed screen-pixel touch coordinate fell outside the latitude-adjusted map",
+        "recheck": "sst-final-regression.txt",
+        "evidence": "Touch harness now taps the projected coordinates of a real sea grid cell. Both engines verify changed selection, keyboard movement, monthly playback, all 44 regional dates, recovery and first-error retention."
+      },
+      {
+        "failedReport": "feedback-consistency-first-regression.txt",
+        "test": "Harness cleared local storage before page unload rewrote saved solved answers",
+        "recheck": "feedback-consistency-regression.txt",
+        "evidence": "Each wrong-option case uses a new browser context, then reloads inside it to verify persistence. All authored feedback maps match effective assessment content; 20 distinct wrong choices per engine show their own feedback."
+      },
+      {
+        "failedReport": "dna-structure-first-regression.txt",
+        "test": "The old structure test captured a wrapper removed by the new DNA page",
+        "recheck": "dna-structure-regression.txt",
+        "evidence": "Capture the new DNA root and keep course-filtered question counts and reset expectations. Eight shared-model and browser regression tests pass."
+      },
+      {
+        "failedReport": "element-origin-first-regression.txt",
+        "test": "Test expected misconception feedback before the learner corrected an answer",
+        "recheck": "element-origin-regression.txt",
+        "evidence": "The UI intentionally withholds the explanation until correction. The final test checks the retained first-choice explanation after correcting, and again checks saved first-error status after reload."
+      },
+      {
+        "failedReport": "video-motion-first-regression.txt",
+        "test": "Waiting for decoded media in Windows WebKit timed out",
+        "recheck": "video-motion-regression.txt",
+        "evidence": "Actual H264 decoding and frame pixels verified in Chrome. WebKit codec failure and recovery recorded separately; native Safari video verification remains pending, not counted as passed."
+      },
+      {
+        "failedReport": "thin-section-first-regression.txt",
+        "test": "Zoomed source image enlarged the scale label through the shared type rules",
+        "recheck": "thin-section-regression.txt",
+        "evidence": "Moved the calibrated scale outside the image transform. The bar tracks zoom while label size remains 14–16 screen pixels; original classification and question mistakes survive reload."
+      },
+      {
+        "failedReport": "crust-thickness-first-regression.txt",
+        "test": "Immediate post-resize test inspected detached or pre-resize SVG text nodes",
+        "recheck": "crust-thickness-regression.txt",
+        "evidence": "Wait for two rendered frames after fonts and viewport settle; current graph labels pass all six test widths in both engines."
+      },
+      {
+        "failedReport": "cell-observation-regression.txt",
+        "test": "Unregistered cell follow-up route and hidden shared specimen selector",
+        "recheck": "cell-observation-final-regression.txt",
+        "evidence": "Registered the source-reviewed cell route metadata and limited single-view hiding to cell configuration. Final 20-test regression passes both specimen workflows and whole-route first responses."
+      },
+      {
+        "failedReport": "strata-static-regression.txt",
+        "test": "Extra closing parenthesis in new strata scene; separate source-evidence test lacked the configured library path",
+        "recheck": [
+          "strata-static-final.txt",
+          "strata-correlation-regression.txt",
+          "source-evidence-final.txt"
+        ],
+        "evidence": "Corrected JavaScript syntax and used the bundled NODE_PATH for source-evidence browser checks."
+      }
+    ],
+    "earlierAuditFailures": [
+      {
+        "report": "webkit-readability-progress.txt",
+        "reason": "Background WebKit page stopped delivering animation frames during concurrent browser runs.",
+        "resolution": "Single-page visible sequential run, bounded paint wait and per-route progress capture; final-current-readability replaces the interrupted run."
+      },
+      {
+        "report": "catalog-font-expectation-failure.json",
+        "reason": "Catalog intentionally uses system fonts; audit incorrectly expected external fonts.",
+        "resolution": "Both catalog audits run with external-font expectation disabled."
+      },
+      {
+        "report": "cell-division-init-timeout.txt",
+        "reason": "One fresh Chromium quiz context did not finish assessment initialization within 30 seconds; other Chrome layout and WebKit checks passed.",
+        "resolution": "Unchanged quiz code passed the subsequent complete three-test run, including all 12 wrong choices in new contexts. Recorded as an intermittent initialization timeout rather than a proven scientific or layout failure."
+      },
+      {
+        "report": "Current contrast, SVG and student-copy parallel-page attempts (console output)",
+        "reason": "Concurrent Chromium pages timed out waiting for assessment initialization; isolated pages showed no application exceptions.",
+        "resolution": "The auditors now visit one page at a time, matching the existing WebKit strategy. The final current reports are from sequential runs."
+      },
+      {
+        "report": "element-origin extended runs before the final completed report",
+        "reason": "A generic ec-lab class was also used by the equilibrium-colour audit branch, which waited for an unrelated reset control.",
+        "resolution": "The composition panel now uses elementComposition and element-composition-lab. Final 75-state runs pass separately in both engines."
+      },
+      {
+        "report": "tmp/phase-curves-source/readability-chromium.txt",
+        "reason": "The new pc-lab class matched the existing pH-comparison audit branch.",
+        "resolution": "Renamed all new scene IDs and classes to hc; final 110-state runs in each engine pass."
+      },
+      {
+        "report": "post-caption-webkit-progress.txt",
+        "reason": "Deliberately stopped when the cell page replaced the legacy drawing and required a dedicated audit branch.",
+        "resolution": "The complete post-cell-full-readability WebKit run uses the new cell preparation and comparison controls."
+      }
+    ],
+    "acidMixing": {
+      "report": "acid-mixing-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "acidMixingStatic": {
+      "report": "acid-mixing-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "optics": {
+      "report": "optics-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "opticsShared": {
+      "report": "optics-shared-regression.txt",
+      "tests": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "opticsStatic": {
+      "report": "optics-static.txt",
+      "tests": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "diffusion": {
+      "report": "diffusion-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "diffusionStatic": {
+      "report": "diffusion-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "reflex": {
+      "report": "reflex-first-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "reflexShared": {
+      "report": "reflex-shared-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "reflexStatic": {
+      "report": "reflex-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "cellDivision": {
+      "report": "cell-division-final-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "cellDivisionStatic": {
+      "report": "cell-division-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "postApparatusRegression": {
+      "report": "post-apparatus-regression.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "periodicConsistency": {
+      "report": "periodic-consistency-final.txt",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    "captionConsistency": {
+      "report": "caption-consistency-regression.txt",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "strataCorrelation": {
+      "report": "strata-correlation-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "thinSections": {
+      "report": "thin-section-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "crustThickness": {
+      "report": "crust-thickness-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "videoMotion": {
+      "report": "video-motion-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "hrDiagram": {
+      "report": "hr-diagram-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "keplerData": {
+      "report": "kepler-data-first-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "elementOrigin": {
+      "report": "element-origin-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "dnaCourses": {
+      "report": "dna-course-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "seasonalSky": {
+      "report": "seasonal-sky-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "equilibriumData": {
+      "report": "equilibrium-data-first-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "middleRockSpecimens": {
+      "report": "middle-rocks-first-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "middleRockSharedRegression": {
+      "report": "middle-rocks-shared-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "tectonicData": {
+      "report": "tectonic-data-final-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "feedbackConsistency": {
+      "report": "feedback-consistency-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "argoObservation": {
+      "report": "argo-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "satelliteSST": {
+      "report": "sst-final-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "structureRegression": {
+      "report": "dna-structure-regression.txt",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0
+    },
+    "latestAddedStatic": {
+      "report": "phase-curves-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "phaseCurves": {
+      "report": "phase-curves-final-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "galacticObservation": {
+      "report": "galactic-final-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "strataStatic": {
+      "report": "strata-static-final.txt",
+      "tests": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "sourceEvidence": {
+      "report": "source-evidence-final.txt",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0
+    }
+  },
+  "questionContents": 1023,
+  "reviewedNewQuestions": {
+    "base": 222,
+    "transfer": 103,
+    "scope": "222 base and 103 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census."
+  },
+  "bankExplanationReview": {
+    "report": "bank-explanation-review.json",
+    "questions": 241,
+    "explanations": 103,
+    "stems": 2
+  },
+  "contrast": [
+    {
+      "report": null,
+      "engine": "chromium",
+      "viewport": [
+        768,
+        1024
+      ],
+      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 196 unique routes, including the source-reviewed acid-mixing procedure. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "routes": 196,
+      "checked": 42604,
+      "gradientSkipped": 255,
+      "errors": [],
+      "flagged": [],
+      "components": [
+        "post-thin-section-readability/reading-contrast-chromium.json",
+        "tectonic-feedback-readability/reading-contrast-chromium-selected.json",
+        "argo-readability/reading-contrast-chromium-selected.json",
+        "sst-readability/reading-contrast-chromium-selected.json",
+        "galactic-readability/reading-contrast-chromium-selected.json",
+        "phase-curves-readability/reading-contrast-chromium-selected.json",
+        "cell-division-readability/reading-contrast-chromium-selected.json",
+        "reflex-readability/reading-contrast-chromium-selected.json",
+        "diffusion-readability/reading-contrast-chromium-selected.json",
+        "optics-readability/reading-contrast-chromium-selected.json",
+        "acid-mixing-readability/reading-contrast-chromium-selected.json"
+      ]
+    },
+    {
+      "report": null,
+      "engine": "webkit",
+      "viewport": [
+        768,
+        1024
+      ],
+      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 196 unique routes, including the source-reviewed acid-mixing procedure. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "routes": 196,
+      "checked": 42599,
+      "gradientSkipped": 255,
+      "errors": [],
+      "flagged": [],
+      "components": [
+        "post-thin-section-readability/reading-contrast-webkit.json",
+        "tectonic-feedback-readability/reading-contrast-webkit-selected.json",
+        "argo-readability/reading-contrast-webkit-selected.json",
+        "sst-readability/reading-contrast-webkit-selected.json",
+        "galactic-readability/reading-contrast-webkit-selected.json",
+        "phase-curves-readability/reading-contrast-webkit-selected.json",
+        "cell-division-readability/reading-contrast-webkit-selected.json",
+        "reflex-readability/reading-contrast-webkit-selected.json",
+        "diffusion-readability/reading-contrast-webkit-selected.json",
+        "optics-readability/reading-contrast-webkit-selected.json",
+        "acid-mixing-readability/reading-contrast-webkit-selected.json"
+      ]
+    }
+  ],
+  "svgResourceAudit": [
+    {
+      "report": null,
+      "checkedAt": "2026-10-12T16:26:19.131Z",
+      "engine": "chromium",
+      "routes": 196,
+      "states": 4470,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 196 unique routes, including the source-reviewed acid-mixing procedure. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "findings": [],
+      "errors": [],
+      "components": [
+        "runtime-svg-resources-chromium.json",
+        "runtime-svg-resources-chromium-selected.json",
+        "argo-readability/runtime-svg-resources-chromium-selected.json",
+        "sst-readability/runtime-svg-resources-chromium-selected.json",
+        "galactic-readability/runtime-svg-resources-chromium-selected.json",
+        "phase-curves-readability/runtime-svg-resources-chromium-selected.json",
+        "cell-division-readability/runtime-svg-resources-chromium-selected.json",
+        "reflex-readability/runtime-svg-resources-chromium-selected.json",
+        "diffusion-readability/runtime-svg-resources-chromium-selected.json",
+        "optics-readability/runtime-svg-resources-chromium-selected.json",
+        "acid-mixing-readability/runtime-svg-resources-chromium-selected.json"
+      ]
+    },
+    {
+      "report": null,
+      "checkedAt": "2026-10-12T16:29:09.609Z",
+      "engine": "webkit",
+      "routes": 196,
+      "states": 4470,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 196 unique routes, including the source-reviewed acid-mixing procedure. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "findings": [],
+      "errors": [],
+      "components": [
+        "runtime-svg-resources-webkit.json",
+        "runtime-svg-resources-webkit-selected.json",
+        "argo-readability/runtime-svg-resources-webkit-selected.json",
+        "sst-readability/runtime-svg-resources-webkit-selected.json",
+        "galactic-readability/runtime-svg-resources-webkit-selected.json",
+        "phase-curves-readability/runtime-svg-resources-webkit-selected.json",
+        "cell-division-readability/runtime-svg-resources-webkit-selected.json",
+        "reflex-readability/runtime-svg-resources-webkit-selected.json",
+        "diffusion-readability/runtime-svg-resources-webkit-selected.json",
+        "optics-readability/runtime-svg-resources-webkit-selected.json",
+        "acid-mixing-readability/runtime-svg-resources-webkit-selected.json"
+      ]
+    }
+  ],
+  "studentCopyAudit": {
+    "report": "student-copy-audit.json",
+    "routes": 196,
+    "flagged": 0
+  },
+  "manualVisualReview": {
+    "report": "current-manual-visual-review.json",
+    "images": 177,
+    "hashesMatch": true
+  },
+  "activityScope": {
+    "officialRows": 261,
+    "statuses": {
+      "모의활동": 183,
+      "실험실 대상 제외": 34,
+      "부분": 32,
+      "직접측정": 5,
+      "원문 절차 확인 대기 · 구현 목록에 넣지 않음": 1,
+      "자료 해석 참고 · 독립 실험 구현 대상 아님": 5,
+      "부분 구현": 1
+    },
+    "requiredExperimentTotal": null
+  },
+  "sourceCensus": {
+    "scope": "2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님",
+    "indexedUniqueSources": 3582,
+    "textbookPDFs": 400,
+    "activitySheets": 409,
+    "titleCandidates": 5033,
+    "activitySheetCandidates": 408,
+    "primaryDocumentsWithoutCandidates": 22,
+    "completedActivityVerdicts": 0,
+    "receiptClassifiedSources": 2287,
+    "experimentWorkbookPDFs": 98,
+    "supplementalDocuments": 28,
+    "headingRecoveryReviewedDocuments": 24,
+    "zeroCandidateDocumentsWithPageReview": 22,
+    "manuallyReviewedCandidates": 230,
+    "sourceReviewedExperimentUnits": 126,
+    "sourceReviewedPendingUnits": 0,
+    "manualAdditionsOutsideHeadingExtraction": 5,
+    "requiredExperimentTotal": null
+  },
+  "plotVisibilityRegression": {
+    "report": "plot-visibility-final-regression.txt",
+    "tests": 2,
+    "passed": 2,
+    "failed": 0
+  },
+  "liveAssetCount": 914,
+  "rasterCount": 4029,
+  "remainingWork": [
+    "Complete source-page census and publisher deduplication before claiming a required-experiment total.",
+    "33 official activity mappings remain partial; source-specific procedures, original observations and actual-device tasks are not marked completed by a related simulation.",
+    "Physical Chromebook/iPad validation has not been performed.",
+    "Native video decoding on a physical iPad/Safari remains unverified: Windows Playwright WebKit returned MEDIA_ERR_SRC_NOT_SUPPORTED for MP4 and WebM. Error handling and recovery were tested; no decoded-video claim for that engine."
+  ],
+  "acidMixingReview": {
+    "source": "acid-mixing/source-review.json",
+    "readabilityStatesPerEngine": 225,
+    "screenStatesPerEngine": 264,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Two indicator/vessel variants, both mixing directions, water dilution control, pause and reset, clear-reagent control; physical handling and separate shell procedure remain outside this app."
+  },
+  "opticsReview": {
+    "source": "optics/source-review.json",
+    "readabilityStatesPerEngine": 220,
+    "screenStatesPerEngine": 90,
+    "refractionBoundaryCasesPerEngine": 20,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Five devices at three distances, paraxial image/ray checks, reflection/refraction boundaries, all revised distractors and observation error retained after correction/reset/reload."
+  },
+  "opticsVisualFollowup": {
+    "before": [
+      "optics/before-focus-label.webp",
+      "optics/before-range-label.webp"
+    ],
+    "correction": "Focus captions no longer intersect the outgoing rays; the two angle-scale captions use two columns. Final screenshots were reopened after the complete focused checks."
+  },
+  "diffusionReview": {
+    "source": "diffusion/source-review.json",
+    "screenStatesPerEngine": 96,
+    "readabilityStatesPerEngine": 115,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Two source procedures: still-water ink diffusion and covered vinegar/BTB observation with water control. Conservative dimensionless dye field, persistent particle motion, no fabricated measured seconds or pH values."
+  },
+  "reflexReview": {
+    "source": "reflex-nerve/source-review.json",
+    "screenStatesPerEngine": 168,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Four pathways and independent afferent/efferent blocks with actual paused/moving signal and muscle states. No fabricated sensor traces or actual reaction-time measurements."
+  },
+  "cellDivisionReview": {
+    "source": "cell-division/source-review.json",
+    "readabilityStatesPerEngine": 125,
+    "modelLayoutStatesPerEngine": 144,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Chromatid identities and parental chromosome segments conserved through every stage; all independent orientations and one reciprocal nonsister exchange tested. Counts refer to a whole cell; S is sampled at the end and telophase before completed cytokinesis. This does not complete creative video production or actual microscopy."
+  },
+  "observationQuestionReview": {
+    "report": "core-choice-quality-review.json",
+    "rewrittenQuestions": 28,
+    "liveQuestions": 33,
+    "incorrectChoicesWithFeedback": 66,
+    "contentHashMatches": true
+  },
+  "svgResourceFollowup": [
+    {
+      "report": "runtime-svg-resources-chromium-selected.json",
+      "checkedAt": "2026-10-12T19:30:43.554Z",
+      "engine": "chromium",
+      "routes": 12,
+      "states": 550,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review.",
+      "findings": [],
+      "errors": []
+    },
+    {
+      "report": "runtime-svg-resources-webkit-selected.json",
+      "checkedAt": "2026-10-12T19:31:15.918Z",
+      "engine": "webkit",
+      "routes": 12,
+      "states": 550,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review.",
+      "findings": [],
+      "errors": []
+    }
+  ],
+  "oceanSourceVerification": [
+    {
+      "report": "argo-source-verification.txt",
+      "tests": 3,
+      "passed": 3
+    },
+    {
+      "report": "sst-source-verification.txt",
+      "tests": 3,
+      "passed": 3
+    }
+  ],
+  "oceanVisualCorrections": {
+    "argo": [
+      "Merged detailed coastline with latitude-adjusted projection",
+      "Switching from shallow profile to T-S plot restores full depth selection"
+    ],
+    "sst": [
+      "Render gridded temperature to a pixel layer without subpixel seams",
+      "Small nonzero differences retain meaningful digits instead of negative zero"
+    ]
+  },
+  "seasonalSkyVisualReview": {
+    "issue": "The initial equirectangular sky stretched constellations near the zenith.",
+    "correction": "Stereographic projection with adjustable elevation and viewport clipping; five final captures manually inspected.",
+    "report": "seasonal-sky-regression.txt"
+  },
+  "gradientContrastSupplement": {
+    "scope": "Actual computed text colors against both endpoints of the RGB-monotone chart gradient; all text is lighter than both backgrounds. Shared checker handles solid-background buttons.",
+    "backgroundEndpoints": [
+      [
+        19,
+        44,
+        66
+      ],
+      [
+        33,
+        62,
+        80
+      ]
+    ],
+    "checks": [
+      {
+        "text": "H-R도",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "30 / 30개 별",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "절대 등급 · 위쪽이 밝음",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "-10",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "-5",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "5",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "10",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "15",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "20",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "O0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "B0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "A0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "F0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "G0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "K0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "M0",
+        "color": "rgb(237, 245, 250)",
+        "opacity": "1",
+        "minimumRatio": 10.18547508082
+      },
+      {
+        "text": "태양",
+        "color": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "minimumRatio": 11.232626751334314
+      },
+      {
+        "text": "분광형 · 왼쪽이 높은 표면 온도",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "태양 · G2 · 절대 등급 4.8 · 주계열성",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "주계열성",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "거성",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "초거성",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      },
+      {
+        "text": "백색왜성",
+        "color": "rgb(239, 247, 251)",
+        "opacity": "1",
+        "minimumRatio": 10.35940081350588
+      }
+    ]
+  },
+  "nativeVideoPlayback": {
+    "chromium": {
+      "engine": "chromium",
+      "readyState": 4,
+      "errorCode": null,
+      "errorMessage": null,
+      "actualVideoDecoded": true,
+      "physicalIPadTested": false,
+      "scope": "Actual H264 MP4 blob import, frame seeking, canvas pixels and measurements tested.",
+      "documentation": "https://playwright.dev/docs/browsers#webkit"
+    },
+    "webkit": {
+      "engine": "webkit",
+      "readyState": 0,
+      "errorCode": 4,
+      "errorMessage": null,
+      "actualVideoDecoded": false,
+      "physicalIPadTested": false,
+      "scope": "Windows Playwright WebKit cannot decode the MP4 and separately probed WebM fixture. Error handling verified; native Safari playback remains unverified.",
+      "documentation": "https://playwright.dev/docs/browsers#webkit"
+    }
+  },
+  "videoMotionPhysicsReview": {
+    "issue": "Initial cart demo acceleration did not match its incline when energy was compared",
+    "correction": "Horizontal acceleration g*slope/(1+slope²); shortened recorded interval to keep cart on track; model tests verify along-slope g*sin(theta) and constant interval energy sum.",
+    "evidence": "Final model tests and manually viewed chromium-cart-1366.webp"
+  },
+  "phaseCurveSourceReview": {
+    "report": "phase-curves/source-data/provenance.json",
+    "originalNumericCells": 34,
+    "procedures": 3,
+    "firstIntervalMistakeRetained": true,
+    "independentEnergyIntegration": true,
+    "scope": "Published heating and melting tables; separate authored water and lauric cooling models, not sensor measurements."
+  },
+  "galacticSourceReview": {
+    "report": "galactic-objects/source-data/provenance.json",
+    "objects": 5,
+    "sourceReviewedPDFs": 6,
+    "firstClassificationErrorsRetainedPerEngine": 5,
+    "positionCases": 360,
+    "methods": "Source hashes and lossless WebP dimensions; independent trigonometric horizon positions across four dates, six times and three sites; ordered B1875 boundaries. Original incorrect answer-key and object-classification fields were not imported."
+  }
+}

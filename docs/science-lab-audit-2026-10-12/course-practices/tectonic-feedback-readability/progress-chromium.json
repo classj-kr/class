@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-12T19:21:17.361Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "plate-tectonics",
+      "scenarios": 75
+    },
+    {
+      "slug": "cell-structure",
+      "scenarios": 90
+    }
+  ],
+  "scenarios": 165,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

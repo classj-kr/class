@@ -1,0 +1,104 @@
+✔ data parsing rejects missing cells; regression retains known slope and intercept (0.8125ms)
+✔ independent physical limiting cases and analytical results (12.556ms)
+✔ standard genetic code and biological model boundary cases (0.4329ms)
+✔ new source-based analysis has correct units, limits and incomplete-work behavior (1.3692ms)
+✔ chromosome pairing distinguishes homologues, duplicate cards and sex chromosome composition (1.246ms)
+✔ planet groups follow the learner criterion, including the exact boundary and invalid data (0.4485ms)
+✔ three-axis acceleration uses vector magnitude and time weighting without guessing invalid intervals (0.6279ms)
+✔ every activity model supports declared numeric endpoints without non-finite output (30.7977ms)
+✔ chromium: internal draft-model harness, edit, persist and invalid data (32934.8155ms)
+✔ webkit: internal draft-model harness, edit, persist and invalid data (52123.9215ms)
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.7317ms)
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (11568.1617ms)
+✖ webkit: apparatus states, labels, fallback panels and responsive drawings (4926.7341ms)
+✖ 30 reviewed question positions preserve the latest reviewed choices, conditions and explanations (1.6794ms)
+✔ magnetic braking: Newton limit, terminal velocity, ground and force direction (0.5406ms)
+✔ speaker, induction and amplification: missing connections, DC, orientation and finite power (0.229ms)
+✔ optical boundaries: reflection phase, Malus law and indistinguishable states (0.1216ms)
+✔ electron interference: nodes, loss of cross term and stable event accumulation (4.4633ms)
+✔ chromium: apparatus operations, clearing, mobile and diagnostics (7552.7502ms)
+✔ webkit: apparatus operations, clearing, mobile and diagnostics (14884.0189ms)
+✔ root comparison preserves initial marks, controls, symmetry and qualitative limits (2.3747ms)
+✔ transpiration compares real control branches and never draws invisible vapor as droplets (0.4264ms)
+✔ stem observations distinguish the water control, time and section directions (1.0562ms)
+✔ source-derived diagnostic items retain first mistakes and test transfer separately (10.2516ms)
+✔ wet indicator paper cannot produce a valid new positive result (0.2355ms)
+29 WebKit experiment flows passed
+✔ WebKit tablet: all embedded experiments, touch answers/reset, rotation (23583.5479ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 23
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 148054.2034
+
+✖ failing tests:
+
+test at tests\science-apparatus-scenes.test.cjs:30:43
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (11568.1617ms)
+  AssertionError [ERR_ASSERTION]: combustion-products initial 320
+  + actual - expected
+  
+    {
+  +   bad: [
+  +     '푸른색 염화 코발트 종이'
+  +   ],
+  -   bad: [],
+      overflow: false
+    }
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-apparatus-scenes.test.cjs:64:13)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { bad: [ '푸른색 염화 코발트 종이' ], overflow: false },
+    expected: { bad: [], overflow: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-apparatus-scenes.test.cjs:30:43
+✖ webkit: apparatus states, labels, fallback panels and responsive drawings (4926.7341ms)
+  AssertionError [ERR_ASSERTION]: combustion-products initial 320
+  + actual - expected
+  
+    {
+  +   bad: [
+  +     '푸른색 염화 코발트 종이'
+  +   ],
+  -   bad: [],
+      overflow: false
+    }
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-apparatus-scenes.test.cjs:64:13)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { bad: [ '푸른색 염화 코발트 종이' ], overflow: false },
+    expected: { bad: [], overflow: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-exam-corrections.test.cjs:4:1
+✖ 30 reviewed question positions preserve the latest reviewed choices, conditions and explanations (1.6794ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 4
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-exam-corrections.test.cjs:12:111)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

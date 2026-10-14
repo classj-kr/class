@@ -249,7 +249,8 @@
     function activeDrums() {
         const defaultParts = ["kick", "snare", "hat", "openhat", "hightom", "lowtom", "crash", "ride"];
         const modelId = state.currentModel && state.currentModel.id;
-        if (KOREAN_PERCUSSION_PADS[modelId]) return KOREAN_PERCUSSION_PADS[modelId];
+        if (KOREAN_PERCUSSION_PADS[modelId]) return window.PAD_PRESENTATION.isJanggu(modelId)
+            ? window.PAD_PRESENTATION.bindJanggu(KOREAN_PERCUSSION_PADS[modelId]) : KOREAN_PERCUSSION_PADS[modelId];
         if (STATION_DRUMS[modelId]) return STATION_DRUMS[modelId];
         const parts = DRUM_KIT_PARTS[modelId] || defaultParts;
         return parts.map(function (id) { return DRUMS.find(function (drum) { return drum.id === id; }); }).filter(Boolean);
@@ -374,7 +375,7 @@
         { id: "buk-sori", room: "folk", name: "소리북", tag: "21 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-buk-sori.webp", badge: "21-HIT OGG", model: "소리북 · 판소리북", description: "가죽을 쇠못으로 고정한 소리북의 왼손·오른손·가장자리·복합 주법 21가지를 연주해요." },
         { id: "sogo", detailId: "sogo", room: "folk", name: "소고", tag: "17 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-sogo.webp", badge: "17-HIT OGG", model: "소고", description: "소고의 기본 타격·가장자리·강세·막음·여린 주법 17가지를 실제 원샷으로 연주해요." },
         { id: "kkwaenggwari", detailId: "kkwaenggwari", room: "folk", name: "꽹과리", tag: "9 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-kkwaenggwari.webp", badge: "9-HIT OGG", model: "꽹과리", description: "꽹과리의 열어치기·막기·가장자리·굴림 주법 9가지를 실제 원샷으로 연주해요." },
-        { id: "jing", detailId: "jing", room: "folk", name: "징", tag: "6 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-jing.webp", badge: "6-HIT OGG", model: "징", description: "징의 열어치기·느리거나 빠르게 막기·고스트·막아치기 주법 6가지를 실제 원샷으로 연주해요." },
+        { id: "jing", detailId: "jing", room: "folk", name: "징", tag: "6 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-jing.webp", badge: "6-HIT OGG", model: "징", description: "징의 열어치기·느리거나 빠르게 막기·아주 여린 타격·막아치기 주법 6가지를 실제 원샷으로 연주해요." },
         { id: "pyeonjong", room: "court", name: "편종", tag: "COURT BELL CHIME", engine: "drums", stage: "metal", art: "assets/instruments/korean-pyeonjong.webp", pitched: true, toneMarkers: true, range: [60, 75], size: "전체 너비 약 210 cm", visualScale: .92, scalePercent: 82, badge: "16-NOTE OGG", model: "16 BRONZE BELLS", description: "편종 원음 C4–D♯5를 열여섯 건반으로 연주하고, 울린 종을 빛으로 확인해요." },
         { id: "pyeongyeong", room: "court", name: "편경", tag: "COURT STONE CHIME", engine: "drums", stage: "metal", art: "assets/instruments/korean-pyeongyeong.webp", pitched: true, toneMarkers: true, range: [72, 87], size: "전체 너비 약 210 cm", visualScale: .92, scalePercent: 82, badge: "16-NOTE OGG", model: "16 STONE CHIMES", description: "편경 원음 C5–D♯6을 열여섯 건반으로 연주합니다. 정면 크기는 같고 두께가 다르며 두꺼울수록 높은음이 나요." },
         { id: "ritual-signals", room: "court", name: "의식 신호 악기", tag: "박 · 축 · 어", engine: "drums", stage: "korean-station", station: "ritual", size: "제례악 지휘·신호 악기 구성", scalePercent: 70, badge: "COURT SIGNALS", model: "박 · 축 · 어", parts: [
@@ -1483,11 +1484,11 @@
     }
 
     const DETAIL_SECTIONS = [
-        ["overview", "AT A GLANCE", "한눈에 보는 악기"],
-        ["mechanism", "HOW IT WORKS", "구조와 소리의 원리"],
-        ["technique", "HOW TO PLAY", "연주법과 표현"],
-        ["role", "IN THE MUSIC", "음악 속 역할"],
-        ["history", "CONTEXT", "역사와 다른 악기 비교"]
+        ["overview", "소개"],
+        ["mechanism", "구조와 소리"],
+        ["technique", "연주법"],
+        ["role", "음악 속 역할"],
+        ["history", "역사와 특징"]
     ];
 
     function instrumentDetails() {
@@ -1601,11 +1602,9 @@
         DETAIL_SECTIONS.forEach(function (sectionCopy) {
             const section = document.createElement("section");
             section.className = "detail-section";
-            const eyebrow = document.createElement("span");
             const title = document.createElement("h3");
-            eyebrow.textContent = sectionCopy[1];
-            title.textContent = sectionCopy[2];
-            section.append(eyebrow, title);
+            title.textContent = sectionCopy[1];
+            section.appendChild(title);
             String(entry.sections[sectionCopy[0]] || "").split(/\n\s*\n/).filter(Boolean).forEach(function (paragraph) {
                 const item = document.createElement("p");
                 item.textContent = paragraph;
@@ -2083,6 +2082,9 @@
                 strum("down");
                 renderChordPads();
             });
+            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            button.addEventListener("contextmenu", function (event) { event.preventDefault(); });
             elements.chordPads.appendChild(button);
         });
     }
@@ -2135,32 +2137,82 @@
     function renderDrumPads() {
         elements.drumPads.innerHTML = "";
         const drums = activeDrums();
+        const presentation = window.PAD_PRESENTATION;
+        const modelId = state.currentModel && state.currentModel.id;
+        const janggu = presentation.isJanggu(modelId);
+        const kit = Boolean(DRUM_KIT_PARTS[modelId]);
+        elements.drumPads.classList.toggle("spatial-pads", janggu || kit);
+        elements.drumPads.classList.toggle("janggu-pads", janggu);
+        elements.drumPads.classList.toggle("kit-pads", kit);
+        elements.drumPads.setAttribute("aria-label", janggu ? "장구 패드 · 연주자 기준 왼쪽 궁편, 오른쪽 채편" : "타악기 연주 패드");
         elements.drumPads.classList.toggle("extended", drums.length >= 9);
         elements.drumPads.classList.toggle("korean-articulations", Boolean(state.currentModel && KOREAN_PERCUSSION_PADS[state.currentModel.id]));
-        drums.forEach(function (drum) {
-            const button = document.createElement("button");
-            button.type = "button";
-            button.className = "drum-pad";
-            button.dataset.drum = drum.id;
-            if (drum.sourceName) button.title = drum.sourceName;
-            button.style.setProperty("--pad-color", drum.color);
-            button.innerHTML = "<span>" + drum.family + "</span><b>" + drum.name + "</b><small>키보드 " + drum.key + "</small>";
-            button.addEventListener("pointerdown", function (event) {
-                event.preventDefault();
-                setDrumPadActive(button, true);
-                const rect = button.getBoundingClientRect();
-                const config = drumSampleConfig();
-                const kit = config && config.id.startsWith("drums-");
-                // Mouse / ordinary touch pressure is not a measured strike.
-                // Match the computer-keyboard hit; retain expressive pen input.
-                const velocity = kit
-                    ? (event.pointerType === "pen" && event.pressure > .05 ? Math.max(.4, event.pressure) : .82)
-                    : (event.pressure > .05 ? Math.max(.4, event.pressure) : core.pointerVelocity((event.clientY - rect.top) / rect.height));
-                triggerDrumV2(drum.sound || drum.id, velocity);
-                pulseInstrumentPart(drum.id);
+        if (janggu) {
+            const guide = document.createElement("p");
+            guide.className = "janggu-guide";
+            guide.textContent = "연주자 기준 · 왼쪽은 궁편, 오른쪽은 채편";
+            elements.drumPads.appendChild(guide);
+        }
+        presentation.groups(modelId, drums, kit).forEach(function (group) {
+            let container = elements.drumPads;
+            if (group.title) {
+                const section = document.createElement("section");
+                section.className = "pad-group pad-group-" + group.id;
+                section.dataset.padGroup = group.id;
+                const heading = document.createElement("h3");
+                heading.textContent = group.title;
+                section.appendChild(heading);
+                if (group.hint) {
+                    const hint = document.createElement("p");
+                    hint.textContent = group.hint;
+                    section.appendChild(hint);
+                }
+                container = document.createElement("div");
+                container.className = "pad-group-grid";
+                section.appendChild(container);
+                elements.drumPads.appendChild(section);
+            }
+            group.pads.forEach(function (drum, index) {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "drum-pad";
+                if ((janggu && index === 0) || group.id === "core") button.classList.add("primary-pad");
+                button.dataset.drum = drum.id;
+                button.dataset.code = drum.code;
+                if (drum.sourceName) button.title = drum.name;
+                button.style.setProperty("--pad-color", drum.color);
+                const visual = presentation.icon(modelId, drum);
+                button.setAttribute("aria-label", drum.name + (visual.tool ? " · " + visual.tool : "") + " · 키보드 " + drum.key);
+                button.innerHTML = visual.svg + "<span class=\"pad-tool\">" + (visual.tool || drum.family) + "</span><b>" + drum.name + "</b><small>키보드 " + drum.key + "</small>";
+                const play = function (velocity) {
+                    setDrumPadActive(button, true);
+                    triggerDrumV2(drum.sound || drum.id, velocity);
+                    pulseInstrumentPart(drum.id);
+                };
+                button.addEventListener("pointerdown", function (event) {
+                    if (event.button !== 0) return;
+                    event.preventDefault();
+                    button.setPointerCapture(event.pointerId);
+                    // Layout and unmeasured touch pressure must not change strike volume.
+                    play(event.pointerType === "pen" && event.pressure > .05 ? Math.max(.4, event.pressure) : .82);
+                });
+                button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+                button.addEventListener("dragstart", function (event) { event.preventDefault(); });
+                button.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+                button.addEventListener("keydown", function (event) {
+                    if (event.code !== "Space" && event.code !== "Enter") return;
+                    event.preventDefault();
+                    if (!event.repeat) play(.82);
+                });
+                button.addEventListener("keyup", function (event) {
+                    if (event.code === "Space" || event.code === "Enter") { event.preventDefault(); setDrumPadActive(button, false); }
+                });
+                button.addEventListener("click", function (event) {
+                    if (event.detail === 0) { play(.82); setDrumPadActive(button, false); }
+                });
+                ["pointerup", "pointercancel", "lostpointercapture", "blur"].forEach(function (type) { button.addEventListener(type, function () { setDrumPadActive(button, false); }); });
+                container.appendChild(button);
             });
-            ["pointerup", "pointercancel", "pointerleave"].forEach(function (type) { button.addEventListener(type, function () { setDrumPadActive(button, false); }); });
-            elements.drumPads.appendChild(button);
         });
     }
 
@@ -2509,6 +2561,8 @@
         });
         document.querySelectorAll("[data-strum]").forEach(function (button) {
             button.addEventListener("pointerdown", function (event) { event.preventDefault(); strum(button.dataset.strum); });
+            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
         });
         elements.sustainButton.addEventListener("click", function () { if (supportsPianoSustain()) setSustain(!state.sustain, !state.sustain); });
         [elements.toneSlider, elements.muteSlider, elements.pickSlider, elements.driveSlider, elements.drumResonanceSlider, elements.drumToneSlider]
@@ -2525,6 +2579,16 @@
         elements.octaveUp.addEventListener("click", function () { changeKeyboardOctave(1); });
         elements.keyboard.addEventListener("contextmenu", function (event) { event.preventDefault(); });
         elements.keyboard.addEventListener("dragstart", function (event) { event.preventDefault(); });
+        if (elements.drumPads) {
+            elements.drumPads.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+            elements.drumPads.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            elements.drumPads.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+        }
+        if (elements.chordSurface) {
+            elements.chordSurface.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+            elements.chordSurface.addEventListener("dragstart", function (event) { event.preventDefault(); });
+            elements.chordSurface.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+        }
         document.addEventListener("keydown", handleComputerKeyDown);
         document.addEventListener("keyup", handleComputerKeyUp);
         window.addEventListener("blur", allNotesOff);

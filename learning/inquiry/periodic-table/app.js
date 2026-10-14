@@ -1174,7 +1174,11 @@ document.addEventListener('DOMContentLoaded', () => {
             context.stroke();
         };
 
-        if (bond.type === 'double') {
+        if (bond.type === 'resonance') {
+            drawLine(offsetX, offsetY);
+            context.setLineDash([4, 6]);
+            drawLine(-offsetX, -offsetY);
+        } else if (bond.type === 'double') {
             drawLine(offsetX, offsetY);
             drawLine(-offsetX, -offsetY);
         } else if (bond.type === 'triple') {
