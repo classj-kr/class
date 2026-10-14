@@ -1,0 +1,47 @@
+✔ heat transfer: approach ambient from either side, with volume and thickness controlled (0.6631ms)
+✔ moving source: wavelength times observed frequency remains the medium sound speed (0.1895ms)
+✔ motion acceleration agrees with finite differences and sensor support (0.3161ms)
+✔ DNA construction preserves templates, antiparallel synthesis, primers and ligation order (1.4534ms)
+✔ translation: reading frame, synonymous substitution, termination, cell-free exception (0.2796ms)
+✔ pedigree: X inheritance and conditioning are independent of child order (0.2112ms)
+✔ karyotype: all cards conserved when moving, X/Y pairing, extra autosome is retained (2.3451ms)
+✔ disc assay: control stays zero, geometry detects overlap, preincubation shows no inhibition (0.2988ms)
+✖ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (5526.721ms)
+✖ webkit: source-backed actions, wrong choices, reset, diagnosis and mobile (3.5999ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5611.193
+
+✖ failing tests:
+
+test at tests\science-inquiry-labs.test.cjs:62:43
+✖ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (5526.721ms)
+  page.goto: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:50209/insulation-lab/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:50209/insulation-lab/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-inquiry-labs.test.cjs:67:34) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:50209/insulation-lab/", waiting until "load"' ]
+  }
+
+test at tests\science-inquiry-labs.test.cjs:62:43
+✖ webkit: source-backed actions, wrong choices, reset, diagnosis and mobile (3.5999ms)
+  browserType.launch: Executable doesn't exist at C:\Users\A\AppData\Local\Packages\sandbox.{8f2b8155-95fb-4b3b-af4d-a18b7b7d8d28}\AC\ms-playwright\webkit-2336\Playwright.exe
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-inquiry-labs.test.cjs:64:50) {
+    name: 'Error',
+    log: []
+  }

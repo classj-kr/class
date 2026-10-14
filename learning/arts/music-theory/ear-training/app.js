@@ -1651,7 +1651,7 @@
     }
 
     function playTick() {
-        if (window.PianoEngine) window.PianoEngine.playRhythm([0], BEAT_SECONDS, { countIn: 0 });
+        if (window.PianoEngine) window.PianoEngine.tapRhythm();
     }
 
     function buildBarChoices(list) {
@@ -1919,7 +1919,8 @@
                             : chordExample(entry)
         ));
         /* 근음을 옮겨도 오선과 건반 안에 머무는 차시에서만 근음을 고르게 한다. */
-        const pickable = exampleBlocks.length > 0
+        els.lessonKeys.hidden = course.id === "rhythm";
+        const pickable = !els.lessonKeys.hidden && exampleBlocks.length > 0
             && exampleBlocks.every(block => block.span <= 12);
         setExampleRoot(N.natural(4 * 7), false);
         els.lessonKeysLabel.textContent = label("Root", "근음");
@@ -3046,6 +3047,14 @@
     function bindKeys() {
         document.addEventListener("keydown", event => {
             if (session.screen !== "drill") return;
+            if (session.current && session.current.tap &&
+                (event.key === " " || (event.key === "Enter" && event.target === els.tapPad))) {
+                event.preventDefault();
+                if (event.repeat || session.answered) return;
+                if (session.tapZero === null) startTapRound();
+                else onTap();
+                return;
+            }
             // Focused piano / range buttons retain native Enter and Space activation.
             if (event.target.closest && event.target.closest(".key, .keyboard-navigation button")) return;
             if (event.key === " ") { event.preventDefault(); play(); return; }

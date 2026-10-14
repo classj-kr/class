@@ -36,7 +36,7 @@ def build_climate(original, archive, destination):
                 'source': 'Peel et al. (2007), original 0.1 degree raster',
                 'method': 'Native 0.1 degree cells retained; 30 classes grouped into A/B/C/D/E; no-data preserved',
                 'downloaded': date.today().isoformat(), 'sourceSha256': hashlib.sha256(archive).hexdigest(),
-                'tiles': {'path': 'climate-tiles/{z}/{x}/{y}.png', 'tileSize': 256, 'maxzoom': MAX_ZOOM}}
+                'tiles': {'path': 'climate-tiles/{z}/{x}/{y}.webp', 'tileSize': 256, 'maxzoom': MAX_ZOOM}}
     (destination / 'atlas-climate.json').write_text(json.dumps(metadata, separators=(',', ':')), encoding='utf-8')
     colors = np.zeros((256, 4), dtype=np.uint8)
     for key, value in PALETTE.items():
@@ -53,7 +53,7 @@ def build_climate(original, archive, destination):
             directory = destination / 'climate-tiles' / str(zoom) / str(x)
             directory.mkdir(parents=True, exist_ok=True)
             for y in range(2 ** zoom):
-                image.crop((x * 256, y * 256, (x+1) * 256, (y+1) * 256)).save(directory / f'{y}.png', optimize=True)
+                image.crop((x * 256, y * 256, (x+1) * 256, (y+1) * 256)).save(directory / f'{y}.webp', lossless=True, exact=True)
                 count += 1
         if zoom:
             image = image.resize((image.width // 2, image.height // 2), Image.Resampling.LANCZOS)

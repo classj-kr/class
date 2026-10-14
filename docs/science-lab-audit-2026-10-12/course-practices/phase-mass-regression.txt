@@ -1,0 +1,11 @@
+✔ closed-bottle freezing preserves dry mass; zero and external water affect the reading, not the oil mass (0.5158ms)
+✔ chromium: compare freezing mass, control zero and water, preserve first errors (23054.9319ms)
+✔ webkit: compare freezing mass, control zero and water, preserve first errors (21289.5172ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44407.8529

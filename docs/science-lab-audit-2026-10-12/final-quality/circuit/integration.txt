@@ -1,0 +1,26 @@
+✔ official 2022 areas and courses, and one auditable primary placement per app (111.1155ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4448.4913ms)
+✔ meter topology, Kirchhoff relations and measurements keep their physical conditions (2.8204ms)
+✔ chromium: move meters, reject wrong connections, compare six readings and separate course diagnosis (7726.7444ms)
+✔ webkit: move meters, reject wrong connections, compare six readings and separate course diagnosis (9231.4096ms)
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.2765ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.3786ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1324ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (16.4121ms)
+lever-balance: interactions, four quizzes, 390px layout passed
+reflex-nerve: interactions, four quizzes, 390px layout passed
+solubility: interactions, four quizzes, 390px layout passed
+acid-base: interactions, four quizzes, 390px layout passed
+ohms-law: interactions, four quizzes, 390px layout passed
+seasons: interactions, four quizzes, 390px layout passed
+✔ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (20609.5186ms)
+{ circuits: 54, forces: 72, collisions: 81, survival: 4 }
+✔ independent checks: current/voltage, friction, collision conservation, survival proportions (1510.3458ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25736.3431

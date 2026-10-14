@@ -1,0 +1,93 @@
+/* Map fills the viewport. Catalog and concise study card float over it. */
+.atlas{--catalog:0px;--lesson:0px;--top:0px}
+.atlas:has(site-back-navigation){--back-slot:44px}
+.atlas #globe{inset:0}
+.atlas .atlas-header:has(.school-level) #catalogToggle{display:block;z-index:30;left:calc(10px + var(--back-slot,0px));top:12px;width:40px;padding:0}
+.atlas .atlas-catalog{width:280px;transform:translateX(-100%);transition:transform .15s;z-index:25;top:0}
+.atlas.catalog-open .atlas-catalog{transform:translateX(0)}
+.atlas .catalog-tabs{padding-left:calc(58px + var(--back-slot,0px));padding-top:12px}
+.atlas .atlas-header:has(.school-level) .projection-toggle{left:calc(60px + var(--back-slot,0px));right:auto;transform:none;top:12px}
+.atlas .atlas-header>.school-level{top:12px;right:12px}
+.atlas:has(.unified-music-control) .atlas-header>.school-level{right:72px}
+.atlas .atlas-lesson{inset:68px 12px auto auto;width:310px;height:auto;max-height:calc(100dvh - 150px);border:1px solid #b5c3bb;border-radius:12px;box-shadow:0 8px 25px #0003}
+.atlas .lesson-heading{padding:18px 44px 10px 18px}
+.atlas .lesson-heading h1{font-size:18px;line-height:1.45;letter-spacing:0}
+.atlas .lesson-scroll{padding:0 18px;flex:initial}
+.atlas .study-cue{font:15px/1.7 var(--interface-font);color:#365353;margin:0 0 14px;text-wrap:pretty}
+.atlas .lesson-scroll>.spot-list{margin:0 0 12px;gap:6px}
+.atlas .spot-list button{min-height:36px}
+.atlas .spot-detail{font-size:15px;margin:0 0 12px;line-height:1.7}
+.atlas .spot-detail:empty{display:none}
+.atlas .lesson-footer{padding:0 18px 16px;gap:8px;justify-content:stretch}
+.atlas .lesson-footer button{flex:1;min-height:40px;border-radius:7px}
+.atlas #lessonExplanation{color:#205f60;background:#fffefb;border:1px solid #8ba69a}
+.atlas #lessonReopen{top:68px;right:12px;bottom:auto;left:auto}
+.atlas .atlas-legend{left:12px;right:auto;bottom:12px;max-width:calc(100vw - 370px)}
+.atlas .map-caption{top:auto;bottom:74px;left:16px;right:350px}
+.atlas .map-tools{bottom:12px;right:12px;left:auto}
+.atlas:has(.school-level) .view-controls{right:14px;top:auto;bottom:78px;height:max-content}
+.atlas .info-panel{width:min(570px,calc(100vw - 24px));max-height:calc(100dvh - 140px);top:68px;right:12px;bottom:auto;z-index:15}
+.atlas-explanation{width:min(900px,calc(100vw - 24px));max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px);padding:0;border:1px solid #c5cdc5;border-radius:14px;background:#f8f6f0;color:#222c2c;color-scheme:light;overflow:auto}
+.atlas-explanation::backdrop{background:#03131bc9}
+.explanation-heading{position:sticky;top:0;z-index:2;background:#f8f6f0;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 24px;border-bottom:1px solid #d1d9d2}
+.explanation-heading h2{font:600 20px/1.5 var(--interface-font);color:#205f60;margin:0}
+.explanation-heading button{flex:none;border:1px solid #9db1a5;border-radius:7px;background:#f8f6f0;color:#205f60;min-height:40px;padding:0 12px}
+#explanationBody{padding:22px 28px 28px;font:18px/1.85 var(--reading-font)}
+.study-section{margin:24px 0 0}.study-section h3{font:600 17px/1.5 var(--interface-font);color:#205f60;margin:0 0 10px}
+.study-section p,.study-prose p{margin:0 0 18px;text-wrap:pretty}
+.study-compare{border-collapse:collapse;width:100%;font-size:17px;line-height:1.75}
+.study-compare th,.study-compare td{border-bottom:1px solid #d4dbd2;padding:11px 12px;text-align:left}
+.study-compare th{width:29%;background:#eaf0e7;font-weight:400;color:#234c4d}
+.study-charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,225px),1fr));gap:12px}
+.study-climate,.study-map,.study-diagram{margin:0 0 12px;background:#fffefa;border:1px solid #d5ddd5;border-radius:8px;padding:8px}
+.study-climate svg,.study-map svg,.study-diagram svg{display:block;width:100%;height:auto;font-family:var(--interface-font);fill:#263e3b}
+.study-climate svg{font-size:17px}.study-map svg{font-size:17px}.study-diagram svg{font-size:17px}
+.study-map .map-letter{font-size:22px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+.study-map{max-width:670px;margin:0 auto 14px}
+.study-diagram{max-width:640px;margin:0 auto 14px}
+.study-climate figcaption,.study-map figcaption,.study-diagram figcaption{font:14px/1.6 var(--interface-font);text-align:center;color:#3c5b56}
+.study-note{font:13px/1.6 var(--interface-font);color:#65746a;margin:8px 0 18px}
+.chart-values{overflow-x:auto;font:12px/1.6 var(--interface-font);margin-top:8px;color:#3c5b56}
+.chart-values summary{cursor:pointer}.chart-values table{white-space:nowrap;border-collapse:collapse;width:100%}.chart-values td,.chart-values th{padding:3px;border:1px solid #d1d9d2}
+.study-photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px;margin-top:24px}
+.study-photos figure{margin:0}.study-photos img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:8px}.study-photos figcaption{font-size:15px;line-height:1.7}.study-photos small{display:block;font:11px/1.6 var(--interface-font)}.study-photos a{color:#516960}
+.atlas #quizBody .study-climate{margin-bottom:0}.atlas #quizBody .study-charts{max-width:700px;margin:auto}
+.atlas #quizBody .study-map svg{max-height:260px}
+.atlas #quizBody .quiz-evidence:has(.study-charts) .study-map svg{max-height:200px}
+.atlas #quizBody .study-climate svg{max-height:180px}
+.atlas .atlas-quiz{width:min(1120px,calc(100vw - 24px));scrollbar-color:#899b97 #efede6}
+.quiz-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:start}
+.quiz-evidence:empty{display:none}.quiz-layout:has(.quiz-evidence:empty){display:block}
+.atlas #quizBody .quiz-response .quiz-options{gap:8px}
+.atlas #quizBody .quiz-response .quiz-options button{font-size:17px;line-height:1.6}
+.quiz-evidence .study-charts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.atlas .atlas-quiz .quiz-close{position:sticky;float:right;top:0;right:0;z-index:3;background:#f7f5ef}
+@media(max-width:860px){
+ .quiz-layout{display:block}.quiz-response{margin-top:18px}
+ .study-map svg{font-size:22px}.study-map .map-letter{font-size:29px}
+ .quiz-evidence .study-charts{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+ .atlas .atlas-lesson{top:auto;bottom:12px;right:12px;left:12px;width:auto;max-height:33dvh}
+ .atlas .lesson-heading{padding:12px 45px 5px 14px}.atlas .lesson-heading h1{font-size:16px}
+ .atlas .lesson-scroll{padding:0 14px}.atlas .study-cue{font-size:14px;margin-bottom:8px}
+ .atlas .lesson-footer{padding:4px 14px 12px}.atlas .lesson-scroll>.spot-list{margin-bottom:8px}
+ .atlas .atlas-legend{bottom:auto;top:64px;max-width:calc(100vw - 80px);font-size:11px}
+ .atlas.lesson-closed .atlas-legend{bottom:auto}
+ .atlas .map-caption{left:12px;right:12px;bottom:calc(var(--study-card-height,0px) + 68px)}
+ .atlas .map-tools{bottom:calc(var(--study-card-height,0px) + 24px)}
+ .atlas:has(.school-level) .view-controls{bottom:auto;top:126px}
+ .atlas:has(.unified-music-control) .atlas-header>.school-level{right:12px}
+ .atlas .unified-music-control{top:64px}
+ .atlas.lesson-closed .map-tools{bottom:12px}
+ .atlas .atlas-header .projection-toggle button{min-height:36px;padding:0 9px}
+ .atlas .info-panel{max-height:65dvh;top:68px;bottom:auto}
+ .explanation-heading{padding:12px 16px}.explanation-heading h2{font-size:18px}
+ #explanationBody{padding:16px;font-size:17px;line-height:1.8}
+ .study-compare{font-size:15px}.study-compare th,.study-compare td{padding:9px 8px}
+ .atlas .atlas-quiz{padding:16px}.atlas #quizBody .quiz-options button{font-size:17px}
+}
+@media(max-width:374px){
+ .atlas .atlas-header:has(.school-level) #catalogToggle{left:calc(6px + var(--back-slot,0px));width:32px}
+ .atlas .atlas-header:has(.school-level) .projection-toggle{left:calc(46px + var(--back-slot,0px))}
+ .atlas .atlas-header .projection-toggle button{padding:0 5px}
+ .atlas .atlas-header .school-level button{min-width:28px;padding:4px}
+}

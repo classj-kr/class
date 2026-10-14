@@ -1,0 +1,44 @@
+✔ DNA complement conserves base pairing, nucleotide count and hydrogen bonds (0.9718ms)
+✔ paper protein overlap is counted once; folding never creates peptide bonds (0.1734ms)
+✔ organelle topology and ATP-facing compartments distinguish envelope and energy membranes (0.1262ms)
+✔ 24-hour budget scales time and food labels, with no duplicate basal term (0.251ms)
+✔ fuel comparisons preserve enthalpy sign, mass/volume conversions and efficiency separation (0.1864ms)
+✔ boiling data preserve source values and ammonia exception without forcing global rank (0.0813ms)
+✖ chromium: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (30993.6073ms)
+✖ webkit: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (30824.2742ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 6
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 62101.1955
+
+✖ failing tests:
+
+test at tests\science-structure-labs.test.cjs:35:43
+✖ chromium: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (30993.6073ms)
+  locator.screenshot: Timeout 30000ms exceeded.
+  Call log:
+  [2m  - waiting for locator('.experiment-layout')[22m
+  
+      at screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:18:30)
+      at shot (E:\webprojects\class\tests\science-structure-labs.test.cjs:38:259)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-structure-labs.test.cjs:40:550) {
+    name: 'TimeoutError',
+    log: [ "  - waiting for locator('.experiment-layout')" ]
+  }
+
+test at tests\science-structure-labs.test.cjs:35:43
+✖ webkit: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (30824.2742ms)
+  locator.screenshot: Timeout 30000ms exceeded.
+  Call log:
+  [2m  - waiting for locator('.experiment-layout')[22m
+  
+      at screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:18:30)
+      at shot (E:\webprojects\class\tests\science-structure-labs.test.cjs:38:259)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-structure-labs.test.cjs:40:550) {
+    name: 'TimeoutError',
+    log: [ "  - waiting for locator('.experiment-layout')" ]
+  }

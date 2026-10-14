@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const pts = s.table.map(([T, S]) => `${gx(T).toFixed(1)},${gy(S).toFixed(1)}`);
             out += `<path class="curve ${k}${on ? '' : ' dim'}" d="M${pts.join('L')}"/>`;
             const last = s.table[s.table.length - 1];
-            out += `<text class="curve-tag" fill="${s.colour}" opacity="${on ? 1 : 0.45}" x="${(gx(last[0]) - 4).toFixed(1)}" ` +
+            out += `<text class="curve-tag" fill="${s.colour}" x="${(gx(last[0]) - 4).toFixed(1)}" ` +
                    `y="${(gy(last[1]) - 7).toFixed(1)}" text-anchor="end">${s.formula}</text>`;
         });
         // A solubility decrease is per 100 g water; scale it by the selected water mass.

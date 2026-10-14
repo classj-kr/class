@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "KoPubWorld Batang";
+    src: url("../../arithmetics/public/fonts/KoPubWorld-Batang-Medium.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
 :root {
     --night: #1b0f10;
     --night-soft: #2a1512;
@@ -727,8 +735,8 @@ a {
     margin-top: 6px;
     font-family: "Noto Serif KR", "Apple SD Gothic Neo", Georgia, serif !important;
     font-weight: 500;
-    font-size: clamp(14px, 2.5cqh, 22px);
-    line-height: 1.9;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    line-height: 1.85;
     color: var(--ink);
     word-break: keep-all;
 }
@@ -849,11 +857,12 @@ a {
 
 .quiz-question {
     margin: 0 0 8px;
-    font-family: "Noto Serif KR", Georgia, serif !important;
-    font-weight: 700;
-    font-size: clamp(14px, 2.315cqh, 24px);
+    font-family: "KoPubWorld Batang", "Batang", "BatangChe", "Shin Myeongjo", "신명조", "Noto Serif KR", serif !important;
+    font-weight: 600;
+    font-size: clamp(13.5px, 2.1cqh, 20px);
     color: var(--ink);
-    line-height: 1.45;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
 }
 
 .quiz-choices {
@@ -868,10 +877,12 @@ a {
     background: #fffaf0;
     color: var(--ink);
     font: inherit;
-    font-family: "Noto Serif KR", Georgia, serif !important;
-    font-size: clamp(12px, 2.026cqh, 21px);
+    font-family: "KoPubWorld Batang", "Batang", "BatangChe", "Shin Myeongjo", "신명조", "Noto Serif KR", serif !important;
+    font-size: clamp(12.5px, 1.95cqh, 18px);
+    font-weight: 400;
     text-align: left;
-    line-height: 1.5;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
     cursor: pointer;
     transition: all 0.15s ease;
 }
@@ -951,6 +962,52 @@ a {
     font-weight: 500;
     color: #4a3420;
     line-height: 1.7;
+}
+
+/* ── 작품 해설 화보 모드 (Note Spread Art Frame) ─────────────── */
+.note-page-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(14px, 3.5cqh, 36px);
+    overflow: hidden;
+}
+
+.note-art-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.note-art-img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 82%;
+    object-fit: contain;
+    border-radius: 8px;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 4px 14px rgba(92, 58, 34, 0.16));
+    transition: transform 0.25s ease;
+}
+
+.note-art-img:hover {
+    transform: scale(1.02);
+}
+
+.note-art-caption {
+    margin-top: clamp(8px, 1.8cqh, 16px);
+    font-family: "Gowun Batang", "Noto Serif KR", serif;
+    font-size: clamp(12.5px, 2.1cqh, 15px);
+    font-weight: 700;
+    color: rgba(92, 58, 34, 0.72);
+    letter-spacing: -0.01em;
 }
 
 /* ── 4. 좁은 화면 및 세로 방향 (Responsive Layout) ─────────────── */

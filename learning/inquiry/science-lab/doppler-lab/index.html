@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 움직이는 음원의 도플러 효과</title><meta name="description" content="2022 교육과정 · 움직이는 음원의 도플러 효과의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../inquiry-labs.css?v=f6cb60487942"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>움직이는 음원의 도플러 효과</h1><div class="grade-tags"><span>고(선택)</span><span>역학과 에너지</span></div></header><p class="intro">음원의 속력과 진동수를 바꾸며 파면 간격과 수신 진동수를 비교하세요.</p><section class="experiment-layout inquiry-lab" data-inquiry="doppler-lab"><h2>조건을 바꾸고 관찰하기</h2><div class="control-panel"><label>음원 이동<select id="direction"><option value="toward">수신기로 접근</option><option value="away">수신기에서 후퇴</option><option value="still">정지</option></select></label><label for="frequency">음원 진동수 <output id="frequencyValue">440 Hz</output><input id="frequency" type="range" min="200" max="1000" step="20" value="440" data-unit="Hz"></label><label for="speed">음원 속력 <output id="speedValue">10 m/s</output><input id="speed" type="range" min="0" max="40" step="1" value="10" data-unit="m/s"></label></div><div id="inquiryScene" class="inquiry-scene"></div><div id="inquiryReadout" class="inquiry-readout" aria-live="polite"></div><div id="inquiryExtra"></div><p id="inquiryStatus" class="status" role="status"></p><div class="toolbar"><button id="resetExperiment">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>음원이 정지한 수신기에 다가온다. 공기의 상태가 같을 때 수신 위치에서 변하는 조합은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 음속 증가·파장 일정</label>
+<label><input type="radio" name="q1" value="b"> 음속 일정·파장 감소</label>
+<label><input type="radio" name="q1" value="c"> 음속 증가·파장 감소</label>
+<label><input type="radio" name="q1" value="d"> 음속 일정·파장 증가</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>앞쪽 파면 간격이 좁아집니다. 매질에서의 음속은 그대로이므로 도달하는 진동수가 커집니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>음속 340 m/s, 음원 600 Hz, 접근 속력 20 m/s이다. 정지 수신기가 측정하는 진동수는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 566.7 Hz</label>
+<label><input type="radio" name="q2" value="b"> 600.0 Hz</label>
+<label><input type="radio" name="q2" value="c"> 637.5 Hz</label>
+<label><input type="radio" name="q2" value="d"> 675.0 Hz</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>f′=600×340/(340−20)=637.5 Hz입니다. 파면을 만드는 음원의 이동 때문에 분모가 작아집니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>600 Hz 음원이 일정한 속력으로 멀어진다. 음원 옆에 고정한 진동수 설정값과 정지 수신기의 측정값은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 설정값 600·수신값 600 미만</label>
+<label><input type="radio" name="q3" value="b"> 설정값 600 미만·수신값 600</label>
+<label><input type="radio" name="q3" value="c"> 설정값 600 초과·수신값 600</label>
+<label><input type="radio" name="q3" value="d"> 설정값 600·수신값 600 초과</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>도플러 효과는 수신 진동수의 변화입니다. 발생시키는 진동수 설정은 그대로입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>같은 음원이 수신기에 10 m/s 또는 20 m/s로 접근한다. 다른 조건은 같다. 20 m/s일 때의 수신 진동수와 파장은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 둘 다 증가</label>
+<label><input type="radio" name="q4" value="b"> 둘 다 감소</label>
+<label><input type="radio" name="q4" value="c"> 진동수 감소·파장 증가</label>
+<label><input type="radio" name="q4" value="d"> 진동수 증가·파장 감소</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>앞쪽 파면이 더 촘촘해지고 같은 음속으로 지나가므로 진동수가 더 커집니다.</p>
+</article></details></main><script src="../inquiry-models.js?v=291c80edd0fb"></script><script src="../inquiry-labs.js?v=ebdfd82692f9"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

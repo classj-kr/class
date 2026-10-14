@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 단열재의 보온·보냉 비교</title><meta name="description" content="2022 교육과정 · 단열재의 보온·보냉 비교의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../inquiry-labs.css?v=f6cb60487942"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>단열재의 보온·보냉 비교</h1><div class="grade-tags"><span>고(선택)</span><span>역학과 에너지</span></div></header><p class="intro">물의 처음 온도와 양을 같게 하고, 단열재와 두께를 바꾸며 온도 변화를 비교하세요.</p><section class="experiment-layout inquiry-lab" data-inquiry="insulation-lab"><h2>조건을 바꾸고 관찰하기</h2><div class="control-panel"><label>물의 시작 온도<select id="mode"><option value="hot">뜨거운 물 70 ℃</option><option value="cold">찬물 5 ℃</option></select></label><label for="thickness">단열층 두께 <output id="thicknessValue">2 cm</output><input id="thickness" type="range" min="0.5" max="5" step="0.5" value="2" data-unit="cm"></label><label for="volume">물의 부피 <output id="volumeValue">50 mL</output><input id="volume" type="range" min="10" max="100" step="10" value="50" data-unit="mL"></label><label for="time">관찰 시각 <output id="timeValue">0 분</output><input id="time" type="range" min="0" max="60" step="1" value="0" data-unit="분"></label><button id="step">1분 진행</button></div><div id="inquiryScene" class="inquiry-scene"></div><div id="inquiryReadout" class="inquiry-readout" aria-live="polite"></div><div id="inquiryExtra"></div><p id="inquiryStatus" class="status" role="status"></p><div class="toolbar"><button id="resetExperiment">실험 처음부터</button></div><p class="model-note">같은 재료라도 두께·습도·채우는 방법에 따라 단열 효과가 달라집니다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>실온 20 ℃에서 A는 70→52 ℃, B는 70→35 ℃로 변했다. 같은 시간·장치라면, 5 ℃ 물의 온도 상승이 더 느릴 것으로 예상되는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> A, 열의 출입을 더 억제하므로</label>
+<label><input type="radio" name="q1" value="b"> A, 내부에 열을 더 생성하므로</label>
+<label><input type="radio" name="q1" value="c"> B, 외부 열을 더 흡수하므로</label>
+<label><input type="radio" name="q1" value="d"> B, 내부 열을 더 방출하므로</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>뜨거운 물에서 온도 변화가 작은 A는 같은 조건에서 열의 이동을 더 억제합니다. 찬물에서도 외부에서 들어오는 열을 줄입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>솜 80→60 ℃, 종이 60→45 ℃를 같은 시간에 관찰했다. 단열 성능을 비교할 다음 실험은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 물의 양만 두 배로 바꾼다</label>
+<label><input type="radio" name="q2" value="b"> 초기 온도를 같게 맞춘다</label>
+<label><input type="radio" name="q2" value="c"> 측정 시간을 서로 바꾼다</label>
+<label><input type="radio" name="q2" value="d"> 주변 온도를 각각 낮춘다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>주변과의 초기 온도차가 다르면 같은 단열 성능에서도 온도 변화량이 달라집니다. 같은 양·장치에 더해 초기 온도도 통제해야 합니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>실온 20 ℃, 처음 70 ℃인 물의 측정값이 10분 50 ℃, 20분 38 ℃였다. 같은 모형의 30분 값으로 타당한 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 18 ℃</label>
+<label><input type="radio" name="q3" value="b"> 26 ℃</label>
+<label><input type="radio" name="q3" value="c"> 30.8 ℃</label>
+<label><input type="radio" name="q3" value="d"> 38 ℃</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>매 10분마다 실온과의 차이가 30/50=0.6배가 됩니다. 다음 온도는 20+(38−20)×0.6=30.8 ℃입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>동일한 단열재에서 물 50 mL보다 100 mL의 온도가 천천히 변했다. 직접 뒷받침되는 설명은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 단열재의 열전도율이 작아졌다</label>
+<label><input type="radio" name="q4" value="b"> 단열재의 두께가 두 배가 됐다</label>
+<label><input type="radio" name="q4" value="c"> 주변과 물의 온도차가 줄었다</label>
+<label><input type="radio" name="q4" value="d"> 물의 전체 열용량이 커졌다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 물의 양을 늘리면 전체 열용량이 커집니다. 온도 변화 속도만으로 단열재의 열전도율이 달라졌다고 판단할 수 없습니다.</p>
+</article></details></main><script src="../inquiry-models.js?v=291c80edd0fb"></script><script src="../inquiry-labs.js?v=ebdfd82692f9"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

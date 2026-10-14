@@ -18,7 +18,7 @@ async function main() {
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const url = `http://127.0.0.1:${server.address().port}/learning/games/board-coach/coach.html`, errors = [];
-  const output = path.join(root, 'tmp/coach-loading');
+  const output = path.join(root, 'outputs/qa/coach-loading');
   let browser;
   async function ready(page) {
     await page.waitForFunction(() => document.documentElement.dataset.coachState === 'ready' && document.querySelector('#setup')?.open);

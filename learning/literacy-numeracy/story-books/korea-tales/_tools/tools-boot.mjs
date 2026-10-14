@@ -61,6 +61,8 @@ function boot(book) {
         IntersectionObserver: class { observe() {} unobserve() {} disconnect() {} },
         Image: class { set src(v) {} },
         fetch: () => Promise.resolve({ ok: true, text: () => Promise.resolve('') }),
+        // 책 끝에서 부르는 공용 기록 연결(/assets/learning-book.js). 여기서는 빈 것으로 둔다.
+        connectBookRecords: () => Promise.resolve(),
         Math, JSON, Date, Array, Object, String, Number, Boolean, Set, Map, Promise,
         RegExp, Error, parseInt, parseFloat, isNaN, encodeURIComponent, decodeURIComponent,
     };

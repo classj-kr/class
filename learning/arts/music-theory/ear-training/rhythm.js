@@ -283,7 +283,10 @@
         const settings = options || {};
         bar = notate(bar);
         const beats = barBeats(bar);
-        const width = LEFT + beats * BEAT_W + Math.max(0, Math.ceil(beats) - 1) * BEAT_GAP + 26;
+        const left = settings.left ?? LEFT;
+        const beatWidth = settings.beatWidth ?? BEAT_W;
+        const beatGap = settings.beatGap ?? BEAT_GAP;
+        const width = left + beats * beatWidth + Math.max(0, Math.ceil(beats) - 1) * beatGap + 26;
         const svg = make("svg", {
             class: "rhythm",
             style: "width:" + Math.round(width * (settings.zoom || 1.6)) + "px",
@@ -311,8 +314,8 @@
         let position = 0;
         bar.forEach(event => {
             const whole = bar.length === 1 && event.rest;
-            xs.push(whole ? (LEFT + width - 26) / 2
-                : LEFT + position * BEAT_W + Math.floor(position + .000001) * BEAT_GAP + ONSET_PAD);
+            xs.push(whole ? (left + width - 26) / 2
+                : left + position * beatWidth + Math.floor(position + .000001) * beatGap + ONSET_PAD);
             position += VALUES[event.v].beats;
         });
 

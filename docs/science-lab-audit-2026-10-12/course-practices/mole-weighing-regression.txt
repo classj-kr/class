@@ -1,0 +1,11 @@
+✔ all seven substances at three amounts use textbook molar masses; weighing excludes the container and loaded tare (1.7306ms)
+✔ chromium: tactile weighing, incorrect tare recovery, all substances and four modes at device widths (18533.7456ms)
+✔ webkit: tactile weighing, incorrect tare recovery, all substances and four modes at device widths (16414.4811ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35008.6059

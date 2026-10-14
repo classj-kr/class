@@ -1,0 +1,26 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9407ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.8202ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1913ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.0966ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (33.6485ms)
+chromium: 165 apps / 169 course routes / 676 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (22122.4465ms)
+webkit: 165 apps / 169 course routes / 676 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (30207.8221ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (181.9582ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5723.0713ms)
+✔ classification and directed food paths remain distinct; removal never invents a shortcut (1.6705ms)
+✔ chromium: classify, build, correct, remove and compare food relationships with touch and keyboard (13175.6405ms)
+✔ webkit: classify, build, correct, remove and compare food relationships with touch and keyboard (11467.1494ms)
+200 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (131.5736ms)
+✔ every science lab JavaScript file parses (99.3374ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8477ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52570.8652

@@ -1,0 +1,11 @@
+✔ catalog hashes, observed events, filtering and longitude wrap preserve source facts (32.3134ms)
+✔ chromium: data loading, touch map, layers, year replay and retained diagnostic responses (18682.8966ms)
+✔ webkit: data loading, touch map, layers, year replay and retained diagnostic responses (51011.0444ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69822.9922

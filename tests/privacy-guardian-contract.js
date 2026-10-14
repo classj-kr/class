@@ -4,9 +4,9 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const root = path.join(__dirname, '..');
-const support = fs.readFileSync(path.join(root, 'support.html'), 'utf8');
-const policy = fs.readFileSync(path.join(root, 'privacy.html'), 'utf8');
-const admin = fs.readFileSync(path.join(root, 'admin', 'privacy.html'), 'utf8');
+const support = fs.readFileSync(path.join(root, 'apps/site/support.html'), 'utf8');
+const policy = fs.readFileSync(path.join(root, 'apps/site/privacy.html'), 'utf8');
+const admin = fs.readFileSync(path.join(root, 'apps/admin', 'privacy.html'), 'utf8');
 const platform = fs.readFileSync(path.join(root, 'game-hub-server', 'classroom-platform.js'), 'utf8');
 
 for (const [name, html] of [['support', support], ['admin privacy', admin]]) {

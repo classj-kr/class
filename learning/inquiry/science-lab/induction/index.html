@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="자기장 속을 움직이는 도선의 유도 기전력과 렌츠 법칙을 확인하고, 내부 저항이 있는 전지에서 소비 전력이 최대가 되는 조건을 찾는 고등학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="induction-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="induction-visual.css?v=5f0d769f6524">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -101,7 +101,7 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>도선의 속력을 2배로 하면 유도 기전력은?</h3>
+                    <h3>균일한 자기장에 수직으로 움직이는 직선 도선의 길이와 방향을 고정한다. 속력만 2배로 하면 운동 기전력은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q1" value="a"> 그대로이다</label>
                         <label><input type="radio" name="q1" value="b"> 절반이 된다</label>
@@ -114,7 +114,7 @@
                 </article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>유도 전류가 만드는 힘의 방향은?</h3>
+                    <h3>외부 자기장 속에서 도선을 움직여 닫힌 회로에 전류가 유도된다. 이 모형에서 유도 전류에 의한 자기력은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q2" value="a"> 도선의 운동 방향과 같다</label>
                         <label><input type="radio" name="q2" value="b"> 도선의 운동을 방해하는 쪽이다</label>
@@ -127,12 +127,12 @@
                 </article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>외부 저항이 소비하는 전력이 가장 클 때는?</h3>
+                    <h3>기전력 ε와 양의 내부 저항 r이 일정한 전원에서 외부 저항 R만 바꾼다. 외부 저항의 소비 전력이 최대인 조건은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q3" value="a"> 외부 저항이 내부 저항과 같을 때</label>
                         <label><input type="radio" name="q3" value="b"> 외부 저항이 0일 때</label>
                         <label><input type="radio" name="q3" value="c"> 외부 저항이 아주 클 때</label>
-                        <label><input type="radio" name="q3" value="d"> 내부 저항이 0일 때</label>
+                        <label><input type="radio" name="q3" value="d"> 외부 저항이 내부 저항의 두 배일 때</label>
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
@@ -140,23 +140,23 @@
                 </article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>전지의 단자 전압이 기전력보다 낮은 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 전선이 길어서</label>
-                        <label><input type="radio" name="q4" value="b"> 전류가 사라져서</label>
-                        <label><input type="radio" name="q4" value="c"> 전압계가 부정확해서</label>
-                        <label><input type="radio" name="q4" value="d"> 내부 저항에서 전압이 걸리기 때문</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>단자 전압은 V = ε − Ir 입니다. 전류가 흐르면 내부 저항에서 Ir 만큼 전압이 걸려 그만큼 낮아집니다.</p>
-                </article>
+<h3>기전력 6 V, 내부 저항 1 Ω인 전지가 2 A를 공급한다. 전지의 단자 전압은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 2 V</label>
+<label><input type="radio" name="q4" value="b"> 6 V</label>
+<label><input type="radio" name="q4" value="c"> 8 V</label>
+<label><input type="radio" name="q4" value="d"> 4 V</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>방전 중 단자 전압은 ε−Ir입니다. 내부 저항의 전압 강하 2 V를 빼면 4 V입니다.</p>
+</article>
             </div>
         </details>
     </main>
     <script src="app.js?v=d9a8792883fa"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

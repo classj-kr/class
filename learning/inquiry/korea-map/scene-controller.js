@@ -26,7 +26,7 @@
     document.querySelectorAll("dialog").forEach(dialog => observer.observe(dialog,{attributes:true,attributeFilter:["open"]}));
     observer.observe(map.getContainer(),{attributes:true,attributeFilter:["class"]});
     function active() {
-      return state.theme === "terrain" || (state.theme === "climate" && (!state.lesson || ["temperature", "monsoon"].includes(state.lesson.id)));
+      return (state.theme === "terrain" && (!state.lesson || ["relief","river","floodplain"].includes(state.lesson.id))) || (state.theme === "climate" && (!state.lesson || ["temperature", "monsoon"].includes(state.lesson.id)));
     }
     function updateFlow() {
       let visibleTracks = [];

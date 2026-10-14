@@ -7,7 +7,7 @@ import { assetDestinations, buildRenderAssets } from "./build-render-assets.mjs"
 
 test("asset routing includes runtime media and excludes source originals", () => {
   assert.deepEqual(assetDestinations("learning/books/images/page.webp"), ["learning/books/images/page.webp"]);
-  assert.deepEqual(assetDestinations("classtools/assets/avatars/cat.webp"), ["assets/avatars/cat.webp"]);
+  assert.deepEqual(assetDestinations("apps/classtools/assets/avatars/cat.webp"), ["assets/avatars/cat.webp"]);
   assert.deepEqual(
     assetDestinations("learning/inquiry/age-of-exploration/public/assets/city.webp"),
     [
@@ -20,6 +20,13 @@ test("asset routing includes runtime media and excludes source originals", () =>
     [],
   );
   assert.deepEqual(assetDestinations("learning/books/app.js"), []);
+  for (const file of [
+    "learning/literacy-numeracy/phonics-site/public/phonics/image.webp",
+    "learning/literacy-numeracy/csat-math/tools/scratch/crop.png",
+    "learning/books/_tools/preview.webp",
+    "learning/books/tests/screenshot.png",
+    "learning/books/node_modules/library/logo.svg",
+  ]) assert.deepEqual(assetDestinations(file), [], file);
 });
 
 test("asset build preserves public paths and writes a deployment manifest", () => {
@@ -27,7 +34,7 @@ test("asset build preserves public paths and writes a deployment manifest", () =
   const output = path.join(root, "output");
   try {
     const runtimeAsset = "learning/books/images/page.webp";
-    const avatar = "classtools/assets/avatars/cat.webp";
+    const avatar = "apps/classtools/assets/avatars/cat.webp";
     for (const file of [runtimeAsset, avatar]) {
       const absolute = path.join(root, file);
       mkdirSync(path.dirname(absolute), { recursive: true });

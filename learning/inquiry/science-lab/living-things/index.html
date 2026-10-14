@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="동물과 식물 카드 열두 장을 다리·날개·사는 곳 같은 기준으로 두 무리로 나누어 보고, 낙타·북극곰·붕어 같은 생물을 사막·극지방·물속에 놓아 몸의 특징이 사는 곳과 맞는지 살펴보는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="living-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="living-visual.css?v=a1b7869c61a3">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -86,7 +86,7 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>나누는 기준</strong> 생물은 다리가 있는지, 날 수 있는지, 어디에 사는지 같은 기준으로 무리 지을 수 있습니다. 기준은 누가 보아도 똑같이 가를 수 있는 것이어야 하고, 기준이 달라지면 같은 생물도 다른 무리에 들어갑니다.</p>
-                <p><strong>동물과 식물</strong> 스스로 움직여 먹이를 먹는 것이 동물, 한자리에서 햇빛으로 양분을 만드는 것이 식물입니다. 다리가 없는 동물도 있으므로 다리로는 동물과 식물을 가를 수 없습니다.</p>
+                <p><strong>동물과 식물</strong> 다리가 없거나 한곳에 붙어 사는 동물도 있습니다. 움직이는 모습이나 다리 유무 하나만으로 동물과 식물을 나눌 수는 없습니다. 생김새와 양분을 얻는 방법 등 여러 특징을 함께 살펴봅니다.</p>
                 <p><strong>사는 곳에 맞는 몸</strong> 사막의 낙타는 두꺼운 발바닥과 긴 속눈썹, 물을 오래 참는 몸을 가졌고, 극지방의 북극곰은 두꺼운 털과 지방, 물속의 붕어는 아가미와 지느러미를 가졌습니다. 몸의 특징이 사는 곳에 맞기 때문에 그곳에서 살 수 있습니다.</p>
                 <p><strong>식물도 마찬가지</strong> 사막의 선인장은 잎이 가시로 바뀌고 줄기에 물을 저장하며, 물속 수련은 잎이 넓고 줄기 속에 공기가 들어 있습니다. 사는 곳이 다르면 몸의 생김새도 다릅니다.</p>
             </div>
@@ -96,62 +96,60 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>생물을 나누는 기준으로 알맞은 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 예쁜가, 예쁘지 않은가</label>
-                        <label><input type="radio" name="q1" value="b"> 내가 좋아하는가, 싫어하는가</label>
-                        <label><input type="radio" name="q1" value="c"> 다리가 있는가, 없는가</label>
-                        <label><input type="radio" name="q1" value="d"> 이름이 긴가, 짧은가</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>기준은 누가 보아도 똑같이 가를 수 있어야 합니다. 예쁘다·좋아한다는 사람마다 달라 기준이 될 수 없습니다.</p>
-                </article>
+<h3>개미·거미·달팽이를 다리 수로 나눕니다. 다리가 가장 많은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 개미</label>
+<label><input type="radio" name="q1" value="b"> 달팽이</label>
+<label><input type="radio" name="q1" value="c"> 거미</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>거미는 다리 8개, 개미는 6개이며 달팽이는 이 기준에서 다리가 없습니다. 관찰 가능한 특징으로 분류합니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>'다리가 있는가'로 나누면 붕어·뱀·지렁이와 소나무·민들레가 한 무리가 됩니다. 이것으로 알 수 있는 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 붕어·뱀·지렁이는 식물이다</label>
-                        <label><input type="radio" name="q2" value="b"> 다리가 없으면 모두 식물이다</label>
-                        <label><input type="radio" name="q2" value="c"> 이 기준은 잘못된 기준이다</label>
-                        <label><input type="radio" name="q2" value="d"> 다리로는 동물과 식물을 가를 수 없다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>다리가 없는 동물도 있으므로 다리는 동물·식물을 가르는 기준이 못 됩니다. 기준 자체는 또박또박 나눌 수 있으니 잘못된 것은 아닙니다. 무엇을 알아보려는지에 따라 알맞은 기준이 다릅니다.</p>
-                </article>
+<h3>붕어·지렁이·소나무를 '다리가 있는가'로 분류하면 모두 '없음'에 들어간다. 이 무리의 생물 구성은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 동물만 있고 식물은 없음</label>
+<label><input type="radio" name="q2" value="b"> 식물만 있고 동물은 없음</label>
+<label><input type="radio" name="q2" value="c"> 동물과 식물이 모두 없음</label>
+<label><input type="radio" name="q2" value="d"> 동물과 식물이 함께 있음</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>붕어와 지렁이는 동물이고 소나무는 식물이다. 다리 유무로 분류할 수는 있지만 이 기준만으로 동물과 식물을 나눌 수는 없다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>낙타가 사막에서 잘 살 수 있는 몸의 특징이 아닌 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 모래에 빠지지 않는 넓고 두꺼운 발바닥</label>
-                        <label><input type="radio" name="q3" value="b"> 물속에서 숨 쉬는 아가미</label>
-                        <label><input type="radio" name="q3" value="c"> 모래바람을 막는 긴 속눈썹</label>
-                        <label><input type="radio" name="q3" value="d"> 물을 오래 참는 몸</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>아가미는 물속에 사는 붕어의 특징입니다. 낙타는 뜨겁고 건조한 사막에 맞게 발바닥·속눈썹·혹·물 참기를 갖추었습니다.</p>
-                </article>
+<h3>낙타의 넓은 발바닥이 모래 위를 걷는 데 주는 도움은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 몸무게가 한곳에 모여 덜 빠짐</label>
+<label><input type="radio" name="q3" value="b"> 몸무게가 넓게 퍼져 덜 빠짐</label>
+<label><input type="radio" name="q3" value="c"> 몸무게 자체가 줄어 덜 빠짐</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 무게를 더 넓은 면적으로 지탱하면 모래 속으로 깊이 빠지는 것을 줄일 수 있습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>극지방의 북극곰을 사막에 데려가면 어떻게 될까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 두꺼운 털과 지방 때문에 너무 더워 힘들어한다</label>
-                        <label><input type="radio" name="q4" value="b"> 털이 빠져 금방 적응한다</label>
-                        <label><input type="radio" name="q4" value="c"> 사막에서도 똑같이 잘 산다</label>
-                        <label><input type="radio" name="q4" value="d"> 모래를 먹으며 산다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>북극곰의 두꺼운 털과 지방은 추위를 막는 데는 좋지만 뜨거운 사막에서는 열을 내보내지 못해 힘듭니다. 몸의 특징은 원래 사는 곳에 맞추어져 있습니다.</p>
-                </article>
+<h3>추운 곳에 사는 동물의 두꺼운 털과 지방을 살폈다. 이 특징이 추운 환경에서 하는 역할은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 몸의 열이 빠져나가는 것을 줄인다</label>
+<label><input type="radio" name="q4" value="b"> 몸의 열이 빠져나가는 것을 늘린다</label>
+<label><input type="radio" name="q4" value="c"> 주변 공기에서 열을 새로 만들어 낸다</label>
+<label><input type="radio" name="q4" value="d"> 몸의 온도를 주변과 빨리 같게 한다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>털과 지방은 몸의 열이 밖으로 빠져나가는 것을 줄여 추운 환경에서 체온을 유지하는 데 도움이 됩니다.</p>
+</article>
             </div>
         </details>
     </main>
     <script src="app.js?v=d29caa280e2e"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

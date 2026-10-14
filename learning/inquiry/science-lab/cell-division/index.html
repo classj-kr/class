@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="체세포 분열과 감수 분열의 각 시기에서 DNA 양과 염색체 수가 어떻게 달라지는지, 딸세포가 몇 개 생기는지 확인하는 고등학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="division-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="division-visual.css?v=5139b9dc845d">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -31,150 +31,52 @@
             <li>DNA 양과 염색체 수의 변화를 확인합니다.</li>
         </ol>
 
-        <div class="experiment-layout">
-            <section class="panel control-panel" aria-labelledby="control-title">
-                <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">DNA 양은 G₁기의 세포 하나를 1로 놓고 견줍니다</p>
-
-                <fieldset class="pick-field">
-                    <legend>분열의 종류</legend>
-                    <div class="pick-buttons cols2">
-                        <button type="button" data-kind="mitosis">체세포 분열<small>2n → 2n · 2개</small></button>
-                        <button type="button" data-kind="meiosis">감수 분열<small>2n → n · 4개</small></button>
-                    </div>
-                </fieldset>
-
-                <fieldset class="pick-field">
-                    <legend>염색체 수 2n</legend>
-                    <div class="pick-buttons cols3">
-                        <button type="button" data-chrom="4">4<small>n = 2</small></button>
-                        <button type="button" data-chrom="6">6<small>n = 3</small></button>
-                        <button type="button" data-chrom="8">8<small>n = 4</small></button>
-                    </div>
-                </fieldset>
-
-                <div class="range-heading">
-                    <label for="stageRange">시기</label>
-                    <output id="stageOutput" for="stageRange">G₁기</output>
-                </div>
-                <input id="stageRange" type="range" min="0" max="7" step="1" value="0">
-                <div class="range-scale" aria-hidden="true"><span>간기</span><span>분열기</span><span>딸세포</span></div>
-
-                <fieldset class="prediction-field">
-                    <legend>지금 세포 하나의 DNA 양은 G₁기와 비교해?</legend>
-                    <div class="prediction-buttons three">
-                        <button type="button" data-prediction="double">두 배</button>
-                        <button type="button" data-prediction="same">같다</button>
-                        <button type="button" data-prediction="half">절반</button>
-                    </div>
-                </fieldset>
-
-                <div class="run-row">
-                    <button class="run-button" id="checkBtn" type="button">분열 진행</button>
-                    <button class="reset-button" id="resetBtn" type="button">처음으로</button>
-                </div>
-
-                <section class="result-box" aria-labelledby="result-title" aria-live="polite">
-                    <h3 id="result-title">관찰 결과</h3>
-                    <p id="resultEmpty">종류와 시기를 골라 관찰해 보세요.</p>
-                    <div id="resultContent" hidden>
-                        <div class="result-numbers">
-                            <article><span>세포 하나의 DNA</span><strong id="valueA">-</strong></article>
-                            <article><span>염색체 수</span><strong id="valueB">-</strong></article>
-                        </div>
-                        <p class="prediction-result" id="predictionResult"></p>
-                        <p class="explanation" id="elementaryExplanation"></p>
-                    </div>
-                </section>
-            </section>
-
-            <section class="panel division-stage" aria-label="관찰 화면">
-                <div class="stage-heading"><h2>관찰</h2><span id="stageBadge">-</span></div>
-
-                <div class="stage-views">
-                    <svg class="main-svg" viewBox="0 0 460 214" aria-hidden="true">
-                        <defs><clipPath id="fieldClip"><rect x="20" y="16" width="420" height="184"/></clipPath></defs>
-                        <g id="mainGroup"></g>
-                    </svg>
-                    <svg class="graph-svg" viewBox="0 0 460 196" aria-hidden="true">
-                        <g id="graphGroup"></g>
-                    </svg>
-                </div>
-
-                <p class="stage-caption" id="stageCaption">색이 다른 염색체는 아버지와 어머니에게서 온 상동 염색체입니다.</p>
-                <div class="data-note" id="dataNote"></div>
-            </section>
-        </div>
-
-        <section class="panel meaning-panel">
-            <h2>실험 결과의 의미</h2>
-            <div class="meaning-body">
-                <p><strong>S기의 복제</strong> 분열 전 간기의 S기에서 DNA가 두 배로 늘어납니다. 이때 염색체 수는 그대로이고 염색 분체만 두 개가 됩니다.</p>
-                <p><strong>체세포 분열</strong> 한 번만 나뉘어 딸세포 2개가 생기고, 각각 어버이와 똑같은 2n을 가집니다. 몸이 자라거나 상처가 아물 때 일어납니다.</p>
-                <p><strong>감수 분열</strong> 복제는 한 번인데 두 번 나뉘므로 딸세포 4개가 각각 n을 가집니다. 상동 염색체가 무작위로 갈라져 다양한 생식세포가 만들어집니다.</p>
-            </div>
-        </section>
-
+<section class="panel" id="cdLab" aria-label="세포 분열 모형">
+ <div class="cd-controls">
+ <fieldset><legend>분열의 종류</legend><div class="cd-buttons"><button type="button" data-kind="mitosis">체세포 분열</button><button type="button" data-kind="meiosis">감수 분열</button></div></fieldset>
+ <fieldset><legend>모세포의 염색체 수</legend><div class="cd-buttons"><button type="button" data-chrom="4">2n = 4</button><button type="button" data-chrom="6">2n = 6</button><button type="button" data-chrom="8">2n = 8</button></div></fieldset>
+ </div>
+ <section id="cdMeiosisControls" hidden><h2>상동 염색체 쌍의 방향</h2><p>버튼을 눌러 중기 I에서 각 쌍이 향할 극을 정하세요.</p><div class="cd-buttons cd-pairs"><button type="button" data-cd-pair="0"></button><button type="button" data-cd-pair="1"></button><button type="button" data-cd-pair="2"></button><button type="button" data-cd-pair="3"></button></div><label class="cd-cross"><input type="checkbox" id="cdCross">1번 쌍의 교차도 비교</label></section>
+ <p id="cdDesc"></p>
+ <div class="cd-observation"><div class="cd-stage-title"><h2 id="cdStageName"></h2><div class="cd-key"><span><i class="cd-maternal"></i>모계</span><span><i class="cd-paternal"></i>부계</span></div></div>
+ <svg id="cdScene" role="img"></svg><p id="cdWhy" aria-live="polite"></p></div>
+ <div class="cd-buttons cd-playback"><button type="button" id="cdPlay" aria-pressed="false">자동 관찰</button><button type="button" id="cdNext">다음 시기</button><button type="button" id="cdReset">처음부터</button></div>
+ <div class="cd-range-label"><label for="stageRange">관찰 시기</label><output id="stageOutput" for="stageRange"></output></div><input id="stageRange" type="range" min="0" max="7" value="0" step="1">
+ <p class="cd-small">시기를 옮겨 염색체의 이동을 비교하세요. 간기의 풀어진 염색체도 기원과 개수를 구별하도록 펼쳐 나타냈습니다.</p>
+ <div class="cd-readings"><article><span>세포 수</span><strong id="cdCellCount"></strong></article><article><span>한 세포의 염색체</span><strong id="cdChromCount"></strong></article><article><span>한 세포의 DNA 상대량</span><strong id="cdDNA"></strong></article><article><span>한 세포의 DNA 분자</span><strong id="cdMolecules"></strong></article></div>
+ <p class="cd-small">DNA 상대량은 G₁기 모세포 하나를 1로 봅니다. 말기는 세포질 분열이 끝나기 전의 한 세포 전체를 셉니다.</p><p id="cdTotal"></p><p id="cdTotalNote"></p>
+ <section class="cd-chart"><h2>시기에 따른 변화</h2><div class="cd-key"><span><i class="cd-dna-key"></i>DNA 상대량</span><span><i class="cd-count-key"></i>염색체 수 상대값</span></div><p class="cd-small">두 값 모두 G₁기 모세포 하나의 값을 1로 둡니다.</p><svg id="cdGraph" role="img" aria-label="시기별 한 세포의 DNA 양과 염색체 수 상대값"></svg><p class="cd-small">점은 각 시기의 값을 나타냅니다. 가로 간격은 실제 소요 시간이 아니며, S기는 복제가 끝난 때입니다.</p></section>
+ <section id="cdProducts" hidden><h2>딸세포 비교</h2><div id="cdProductCells"></div><p class="cd-small">번호는 상동 염색체의 쌍, 모·부는 기원을 뜻합니다.</p><p id="cdDiversity"></p></section>
+ </section>
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="c">
-                    <h3>감수 분열로 만들어지는 딸세포의 수와 염색체 수는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 2개, 2n</label>
-                        <label><input type="radio" name="q1" value="b"> 2개, n</label>
-                        <label><input type="radio" name="q1" value="c"> 4개, n</label>
-                        <label><input type="radio" name="q1" value="d"> 4개, 2n</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>복제는 한 번인데 분열은 두 번 일어나므로 딸세포가 4개 생기고, 염색체 수는 절반인 n이 됩니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c"><h3>어떤 동물의 G₁기 세포에는 염색체 6개와 DNA 6 pg이 있다. 감수 I분열과 세포질 분열을 마친 직후, 딸세포 하나의 염색체 수와 DNA 양은?</h3><div class="quiz-options"><label><input type="radio" name="q1" value="a"> 3개 · 3 pg</label>
+<label><input type="radio" name="q1" value="b"> 6개 · 6 pg</label>
+<label><input type="radio" name="q1" value="c"> 3개 · 6 pg</label>
+<label><input type="radio" name="q1" value="d"> 6개 · 3 pg</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>먼저 S기에서 DNA가 12 pg으로 복제됩니다. I분열에서 상동 염색체가 나뉘어 딸세포 하나에는 복제된 염색체 3개와 DNA 6 pg이 있습니다. 자매 염색 분체는 II분열에서 분리됩니다.</p></article>
 
-                <article class="quiz-card" data-answer="b">
-                    <h3>S기에서 DNA가 두 배가 될 때 염색체 수는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 두 배가 된다</label>
-                        <label><input type="radio" name="q2" value="b"> 변하지 않는다</label>
-                        <label><input type="radio" name="q2" value="c"> 절반이 된다</label>
-                        <label><input type="radio" name="q2" value="d"> 4배가 된다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>복제된 두 가닥이 동원체에 붙어 있는 동안은 하나의 염색체로 셉니다. 염색 분체가 2개가 될 뿐 염색체 수는 그대로입니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b"><h3>G₁기 세포에 염색체 4개와 DNA 4 pg이 있었다. S기가 끝났고 아직 분열하지 않았다. 염색체 수와 DNA 양은?</h3><div class="quiz-options"><label><input type="radio" name="q2" value="a"> 8개 · 8 pg</label>
+<label><input type="radio" name="q2" value="b"> 4개 · 8 pg</label>
+<label><input type="radio" name="q2" value="c"> 4개 · 4 pg</label>
+<label><input type="radio" name="q2" value="d"> 8개 · 4 pg</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>DNA는 복제되어 8 pg이지만 자매 염색 분체가 붙어 있는 동안 하나의 염색체로 셉니다. 염색체는 4개이고 각 염색체는 두 염색 분체로 이루어집니다.</p></article>
 
-                <article class="quiz-card" data-answer="a">
-                    <h3>체세포 분열 후기에 염색체 수를 세면 일시적으로?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 4n으로 늘어난다</label>
-                        <label><input type="radio" name="q3" value="b"> n으로 줄어든다</label>
-                        <label><input type="radio" name="q3" value="c"> 2n 그대로이다</label>
-                        <label><input type="radio" name="q3" value="d"> 셀 수 없다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>후기에 염색 분체가 갈라지면 각각이 독립된 염색체가 됩니다. 세포가 아직 나뉘지 않았으므로 한 세포 안의 염색체 수가 잠시 4n이 됩니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="a"><h3>염색체 수가 4개인 체세포가 분열한다. 후기에 자매 염색 분체가 분리됐지만 아직 세포질 분열 전이다. 한 세포 안의 염색체 수는?</h3><div class="quiz-options"><label><input type="radio" name="q3" value="a"> 8개</label>
+<label><input type="radio" name="q3" value="b"> 2개</label>
+<label><input type="radio" name="q3" value="c"> 4개</label>
+<label><input type="radio" name="q3" value="d"> 16개</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>분리된 자매 염색 분체는 각각 독립된 염색체로 셉니다. 한 세포 안에서는 일시적으로 8개가 되고 분열 뒤 각 딸세포는 4개입니다.</p></article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>감수 분열이 유전적 다양성을 만드는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> DNA가 두 번 복제되어서</label>
-                        <label><input type="radio" name="q4" value="b"> 딸세포가 많아서</label>
-                        <label><input type="radio" name="q4" value="c"> 염색체가 사라져서</label>
-                        <label><input type="radio" name="q4" value="d"> 상동 염색체가 무작위로 갈라지고 교차가 일어나서</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>상동 염색체 쌍마다 어느 쪽이 어느 극으로 갈지가 독립적으로 정해집니다. n쌍이면 2ⁿ가지 조합이 나오고, 교차까지 더해지면 훨씬 다양해집니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="d"><h3>2n=6인 동물에서 상동 염색체 세 쌍의 모계·부계 조합만 비교한다. 교차 없이 한 번 감수 분열했을 때의 서로 다른 조합 수와, 여러 번 분열하여 가능한 최대 조합 수는?</h3><div class="quiz-options"><label><input type="radio" name="q4" value="a"> 4가지 · 8가지</label>
+<label><input type="radio" name="q4" value="b"> 2가지 · 4가지</label>
+<label><input type="radio" name="q4" value="c"> 4가지 · 4가지</label>
+<label><input type="radio" name="q4" value="d"> 2가지 · 8가지</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>한 번의 분열에서는 I분열 때 정해진 두 조합을 II분열로 나누어, 같은 조합이 두 세포씩 생깁니다. 여러 번 분열하면서 세 쌍의 방향이 독립적으로 바뀌면 2³=8가지 조합이 가능합니다.</p></article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=1f46ad20c4d5"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="model.js?v=b1bd7b966c5f"></script>
+    <script src="app.js?v=6807b996c1f8"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

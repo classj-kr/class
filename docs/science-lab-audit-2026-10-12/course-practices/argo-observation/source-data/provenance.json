@@ -1,0 +1,515 @@
+{
+  "source": {
+    "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/source-data/2901806_prof.nc",
+    "sha256": "c19c4b518d9dac0772c9a6a258753f693752266169db7ac8270d2ef132ebb79e",
+    "url": "https://data-argo.ifremer.fr/dac/kma/2901806/2901806_prof.nc"
+  },
+  "mapSource": {
+    "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/source-data/ne_10m_land.zip",
+    "sha256": "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc",
+    "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip",
+    "description": "Natural Earth 10m land 5.1.1, clipped to 123.9–137.1 E and 32.9–43.1 N, tile seams merged, topology-preserving 0.001-degree simplification. Context map only."
+  },
+  "outputSha256": "b66ce0abf786a8c9184c44a8d1193fd62538fa46ce1679920ff28b2e4212e39c",
+  "gswVersion": "3.6.23",
+  "selection": "All 52 profiles dated 2023 UTC. Core DATA_MODE D; adjusted fields only. Time and position QC 1; each plotted pressure, temperature and practical salinity must independently have adjusted QC 1. Missing values remain gaps; no interpolation, rounding or smoothing of observations.",
+  "derived": "Depth = -gsw.z_from_p(PRES_ADJUSTED, latitude). In-situ density = gsw.rho_t_exact(gsw.SA_from_SP(PSAL_ADJUSTED, pressure, longitude, latitude), TEMP_ADJUSTED, pressure). Density is calculated, not a measured sensor variable; it is not potential density or a T-S isopycnal.",
+  "qualitySources": [
+    "https://argo.ucsd.edu/data/how-to-use-argo-files/",
+    "https://www.teos-10.org/pubs/gsw/html/gsw_SA_from_SP.html",
+    "https://www.teos-10.org/pubs/gsw/html/gsw_rho_t_exact.html",
+    "https://www.teos-10.org/pubs/gsw/html/gsw_z_from_p.html"
+  ],
+  "profiles": [
+    {
+      "id": "64",
+      "sourceProfileIndex": 63,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "65",
+      "sourceProfileIndex": 64,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "66",
+      "sourceProfileIndex": 65,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "67",
+      "sourceProfileIndex": 66,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "68",
+      "sourceProfileIndex": 67,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "69",
+      "sourceProfileIndex": 68,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "70",
+      "sourceProfileIndex": 69,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "71",
+      "sourceProfileIndex": 70,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "72",
+      "sourceProfileIndex": 71,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "73",
+      "sourceProfileIndex": 72,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "74",
+      "sourceProfileIndex": 73,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "75",
+      "sourceProfileIndex": 74,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "76",
+      "sourceProfileIndex": 75,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "77",
+      "sourceProfileIndex": 76,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "78",
+      "sourceProfileIndex": 77,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "79",
+      "sourceProfileIndex": 78,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 54,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "sourceProfileIndex": 79,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "81",
+      "sourceProfileIndex": 80,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "82",
+      "sourceProfileIndex": 81,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "83",
+      "sourceProfileIndex": 82,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "84",
+      "sourceProfileIndex": 83,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "85",
+      "sourceProfileIndex": 84,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 53,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "sourceProfileIndex": 85,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "87",
+      "sourceProfileIndex": 86,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 53,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "88",
+      "sourceProfileIndex": 87,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "89",
+      "sourceProfileIndex": 88,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "90",
+      "sourceProfileIndex": 89,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "91",
+      "sourceProfileIndex": 90,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 0,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 1,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 2,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 3,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 4,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 5,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 6,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 7,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 8,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 9,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "92",
+      "sourceProfileIndex": 91,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 0,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "93",
+      "sourceProfileIndex": 92,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "94",
+      "sourceProfileIndex": 93,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "95",
+      "sourceProfileIndex": 94,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 0,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        },
+        {
+          "sourceIndex": 1,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "4"
+          }
+        },
+        {
+          "sourceIndex": 3,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        },
+        {
+          "sourceIndex": 53,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "96",
+      "sourceProfileIndex": 95,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "97",
+      "sourceProfileIndex": 96,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 0,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 1,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 2,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 3,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "3"
+          }
+        },
+        {
+          "sourceIndex": 54,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "98",
+      "sourceProfileIndex": 97,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "99",
+      "sourceProfileIndex": 98,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "100",
+      "sourceProfileIndex": 99,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "101",
+      "sourceProfileIndex": 100,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "102",
+      "sourceProfileIndex": 101,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "103",
+      "sourceProfileIndex": 102,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "104",
+      "sourceProfileIndex": 103,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "105",
+      "sourceProfileIndex": 104,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "106",
+      "sourceProfileIndex": 105,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "107",
+      "sourceProfileIndex": 106,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "108",
+      "sourceProfileIndex": 107,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "109",
+      "sourceProfileIndex": 108,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "110",
+      "sourceProfileIndex": 109,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "111",
+      "sourceProfileIndex": 110,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "112",
+      "sourceProfileIndex": 111,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 16,
+          "flags": {
+            "p": "1",
+            "t": "4",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "113",
+      "sourceProfileIndex": 112,
+      "excludedOrPartial": []
+    },
+    {
+      "id": "114",
+      "sourceProfileIndex": 113,
+      "excludedOrPartial": [
+        {
+          "sourceIndex": 17,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "4"
+          }
+        },
+        {
+          "sourceIndex": 18,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "4"
+          }
+        },
+        {
+          "sourceIndex": 19,
+          "flags": {
+            "p": "1",
+            "t": "1",
+            "s": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "115",
+      "sourceProfileIndex": 114,
+      "excludedOrPartial": []
+    }
+  ],
+  "limitations": [
+    "One drifting float in the East Sea; its changing location prevents a pure seasonal causal comparison.",
+    "No oxygen sensor, satellite surface temperature map, Yellow Sea float or real-time retrieval is represented.",
+    "The archive is a later delayed-mode revision; the textbook screenshot may reflect earlier values."
+  ]
+}

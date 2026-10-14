@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 
 // Windows working copies check this file out with CRLF; the multi-line checks below use "\n".
-const adminHtml = fs.readFileSync(new URL("../admin/index.html", import.meta.url), "utf8").replace(/\r\n/g, "\n");
+const adminHtml = fs.readFileSync(new URL("../apps/admin/index.html", import.meta.url), "utf8").replace(/\r\n/g, "\n");
 const serverSource = fs.readFileSync(new URL("./classroom-platform.js", import.meta.url), "utf8");
 
 assert.match(

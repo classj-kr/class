@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-12T15:16:13.718Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "microbes",
+      "scenarios": 55
+    },
+    {
+      "slug": "cell-structure",
+      "scenarios": 90
+    }
+  ],
+  "scenarios": 145,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

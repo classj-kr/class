@@ -1,20 +1,21 @@
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path"),http=require("node:http"),vm=require("node:vm"),pp=require("puppeteer-core");
-const root=path.resolve(__dirname,".."),course="learning/inquiry/information-computing/computer-fundamentals",out=path.join(root,"docs/computer-edition");
+const root=path.resolve(__dirname,".."),course="learning/inquiry/information-computing/computer-fundamentals",out=path.resolve(root,process.env.EDITION_OUTPUT||"docs/computer-edition");
 const { startHarness } = require("./site-storage-harness.cjs");
+const screenshotWebp = require("./screenshot-webp.cjs");
 const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,course,"lessons/index-data.js"),"utf8"),context);
 const index=context.window.COMPUTER_LESSON_INDEX;
 const data={};for(const group of ["abc","de","fg","h","ij"]){const c={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,course,"textbook/edition-"+group+".js"),"utf8"),c);Object.assign(data,c.window.COMPUTER_EDITION_DATA);}
 assert.equal(index.length,36);assert.equal(Object.keys(data).length,35);
 const plans={
-a02:{click:['[data-a02-run]','[data-a02-presence=hardware]','[data-a02-run]'],observe:'[data-a02-lab]'},
+a02:{click:['[data-study-action=cell-1]','[data-study-action=piano]','[data-study-action=cell-1]','[data-study-action=sound]','[data-study-action=cell-1]'],observe:'.study-workbench .study-status'},
 a03:{click:['[data-a03-device=ipad]','[data-a03-run]','[data-a03-os=ipados]','[data-a03-app=ipad-sketch]','[data-a03-run]'],observe:'[data-a03-preview-title]',expect:'앱 실행 성공'},
 a04:{steps:[['value','[data-a04-slider]','2011'],['click','[data-a04-capture]'],['value','[data-a04-slider]','2014'],['click','[data-a04-capture]']],observe:'[data-a04-status]'},
-a05:{click:['[data-a05-record]','[data-a05-save=a]','[data-a05-rate="8"]','[data-a05-record]','[data-a05-save=b]'],observe:'[data-a05-comparison]',expect:'측정'},
-b01:{click:['#componentTab1','#componentTab3'],observe:'#componentPartPanel',expect:'SSD'},
+a05:{click:['[data-a05-record]','[data-a05-save=a]','[data-a05-rate="8"]','[data-a05-record]','[data-a05-save=b]','[data-a05-bits="3"]','[data-a05-record]','[data-a05-save=a]'],observe:'[data-a05-comparison]',expect:'비트 깊이'},
+b01:{custom:'memory',observe:'#studyMemoryStored',expect:'여름'},
 b02:{click:['[data-device-choice=tablet]','[data-mobile-part=camera]'],observe:'#editionLab',expect:'카메라'},
 b03:{click:['[data-port-connect]','[data-port-cable-choice=video]','[data-port-connect]'],observe:'[data-port-status]'},
-c01:{click:['[data-relay-permission]','[data-relay-run]'],wait:['[data-request-relay]','data-relay-state','blocked'],observe:'[data-relay-status]',expect:'권한'},
-c02:{click:['[data-os-choice=ios]','[data-os-open-location]'],observe:'#editionLab'},
+c01:{custom:'relay',observe:'[data-relay-status]',expect:'권한'},
+c02:{click:['[data-os-open-location]','[data-os-choice=ios]','[data-os-open-location]'],observe:'#editionLab'},
 c03:{click:['[data-program-action=run]','[data-program-action=new]','[data-program-action=background]'],observe:'[data-program-status]'},
 c04:{click:['[data-permission-toggle]','[data-settings-choice=update]','[data-update-check]'],observe:'[data-update-result]',expect:'확인 완료'},
 d01:{steps:[['type','[data-demo-text]',' 입력 위치 확인']],observe:'[data-demo-text]'},
@@ -22,7 +23,7 @@ d02:{custom:'gesture',click:['[data-gesture-choice=long]'],observe:'[data-gestur
 d03:{click:['[data-select-text=고양이]','[data-clipboard-action=copy]','[data-clipboard-action=paste]'],observe:'#editionLab'},
 e01:{click:['[data-path-choice=user]','[data-path-choice=pictures]','[data-path-choice=trip]','[data-path-choice=file]'],observe:'[data-path-output]',expect:'바다.jpg'},
 e02:{click:['[data-format-action=rename]','[data-format-action=convert]'],observe:'[data-app-result]',expect:'PNG'},
-e03:{click:['[data-file-operation=copy]','[data-file-operation=move]'],observe:'[data-file-operation-status]',expect:'이동'},
+e03:{custom:'files',observe:'.study-workbench .study-status'},
 e04:{click:['[data-reference-action=open]','[data-reference-action=change]','[data-reference-action=open]'],observe:'#editionLab'},
 e05:{click:['[data-storage-mode-choice=sync]','[data-storage-action]','[data-storage-action]','[data-storage-action]'],observe:'[data-storage-status]'},
 f01:{click:['[data-display-mode=same-resolution]','[data-ui-scale-choice="200"]'],observe:'#editionLab'},
@@ -33,12 +34,12 @@ g02:{steps:[['click','[data-bit-index="7"]'],['click','[data-unit-index="1"]'],[
 g03:{steps:[['value','[data-utf8-input]','가나'],['click','[data-utf8-run]'],['value','[data-compression-quality]','25'],['value','[data-transfer-speed]','4']],observe:'#editionLab'},
 h01:{click:['[data-network-link=internet]','[data-network-send]','[data-network-send]'],observe:'#editionLab'},
 h02:{repeat:['[data-request-action]',5],observe:'[data-request-status]'},
-h03:{click:['[data-browser-new-tab]','[data-browser-suggestion=달]'],observe:'#editionLab'},
+h03:{custom:'sources',observe:'[data-page-body]',expect:'2026년'},
 h04:{click:['[data-stack-answer="3"]','[data-stack-start]'],repeat:['[data-stack-next]',5],observe:'[data-stack-screen-score]'},
 h05:{click:['#transfer-tab-deploy'],repeat:['[data-transfer-panel=deploy] [data-transfer-action]',2],observe:'[data-transfer-panel=deploy]'},
-i01:{steps:[['value','[data-account-name]','student01'],['value','[data-account-secret]','cedar27'],['click','[data-account-next]'],['value','[data-account-code]','482169'],['click','[data-account-next]'],['click','[data-permission-attempt=grades]']],observe:'[data-permission-result]',expect:'거부'},
+i01:{steps:[['value','[data-account-name]','student01'],['value','[data-account-secret]','cedar27'],['click','[data-account-next]'],['value','[data-account-code]','482169'],['click','[data-account-next]'],['click','[data-permission-attempt=assignment]'],['click','[data-permission-attempt=edit]']],observe:'[data-permission-result]',expect:'거부'},
 i02:{click:['[data-evidence-choice=urgency]','[data-evidence-choice=secret]','[data-evidence-choice=link]','[data-evidence-check]'],observe:'#editionLab'},
-j01:{click:['[data-algo-location=downloads]','[data-file-source]','[data-algo-location=assignment]','[data-algo-move]','[data-algo-verify]'],observe:'[data-algo-status]'},
+j01:{custom:'algorithm',observe:'.study-workbench .study-status'},
 j02:{custom:'robot',observe:'[data-control-score]',expect:'3'},
 j03:{steps:[['click','[data-debug-run]'],['value','[data-debug-code]','/pictures/'],['click','[data-debug-run]'],['click','[data-debug-case=dog]'],['click','[data-debug-case=missing]']],observe:'[data-debug-lab]'}
 };
@@ -48,35 +49,75 @@ let browser;const results=[],failures=[];try{
  browser=await pp.launch({executablePath:process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe",headless:true,args:["--no-first-run","--no-default-browser-check"]});
  const page=await browser.newPage();page.setDefaultTimeout(5000);await page.setCookie({name:"test_user",value:"1",url:h.base});let errors=[];
  page.on("pageerror",e=>errors.push(e.message));page.on("response",r=>{if(r.status()>=400)errors.push(r.status()+" "+r.url());});
- const screenshot=async options=>{for(let attempt=0;;attempt++){try{return await page.screenshot(options);}catch(error){if(attempt>=2)throw error;await new Promise(resolve=>setTimeout(resolve,200));}}};
+ const screenshot=async options=>{for(let attempt=0;;attempt++){try{return await screenshotWebp(page,options);}catch(error){if(attempt>=2)throw error;await new Promise(resolve=>setTimeout(resolve,200));}}};
  const go=async view=>{await page.click('.edition-nav [data-page="'+view+'"]');await page.waitForFunction(v=>!document.getElementById("edition-"+v).hidden,{},view);};
- const click=async selector=>{const handles=await page.$$(selector);for(const handle of handles){if(await handle.evaluate(e=>!!e.getBoundingClientRect().width&&!e.disabled)){await handle.click();return;}}throw Error("No enabled visible control: "+selector);};
+ const click=async selector=>{const handles=await page.$$(selector);for(const handle of handles){if(await handle.evaluate(e=>!!e.getBoundingClientRect().width&&!e.disabled)){await handle.click();if(await handle.evaluate(e=>!!e.closest('#editionLab'))){await new Promise(resolve=>setTimeout(resolve,40));}return;}}throw Error("No enabled visible control: "+selector);};
  const value=async(selector,text)=>page.$eval(selector,(el,text)=>{el.value=text;el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}));},text);
  const read=selector=>page.$eval(selector,e=>e.value??e.innerText);
  fs.mkdirSync(out,{recursive:true});
  for(const entry of entries){const id=entry.id;errors=[];const record={id,layouts:[],fontChecks:[]};try{
   await page.setViewport({width:1440,height:1000});await page.goto(base+"lessons/?lesson="+id,{waitUntil:"networkidle0"});await page.waitForSelector("#edition");
   assert.equal(await read(".edition-header h1"),entry.number+"차시. "+entry.title);
+  assert.equal(await read('.edition-reading>h2'),data[id].case);
+  assert.equal(await page.$$('.study-analogy,.life-figure,.picture-analogy').then(x=>x.length),0,'retired illustration blocks must not appear');
   const key="classj:textbook:"+id+":v1";
   assert.equal(await read("#editionProgress"),"0 / 3");
   const qlist=[data[id].labCheck,...data[id].apply.fields,...data[id].checks];
   for(const q of qlist){assert.ok(q.options.length>=2);assert.equal(new Set(q.options.map(x=>x[0])).size,q.options.length);assert.ok(q.options.every(x=>x[0]&&x[1]));}
+  await go("apply");
+  assert.equal(await page.$$("#edition-apply .edition-evidence").then(rows=>rows.length),data[id].apply.rows.length?1:0,"선택지를 옮긴 뒤에는 빈 상황 표를 남기지 않는다");
+  const optionTexts=await page.$$eval("#edition-apply .edition-option span",els=>els.map(el=>el.textContent));
+  assert.ok(optionTexts.every(text=>!/^[A-Z]$/.test(text)),"선택지에는 기호만 표시하지 않는다");
+  assert.deepEqual([...optionTexts].sort(),Array.from(data[id].apply.fields,q=>Array.from(q.options,o=>o[0])).flat().sort(),"섞인 선지에서도 내용이 빠지지 않는다");
   await go("lab");
+  assert.equal(await page.$$('.study-notebook,#studyCapture,#studyPrediction,#studyExplanation').then(x=>x.length),0,'공통 관찰 기록과 서술 입력란은 없어야 한다');
+  await click('[data-question="0"] input[value="1"]');await click('[data-question="0"] .edition-submit');
+  assert.ok((await read('[data-question="0"] .edition-feedback')).includes(qlist[0].options[1][1]));
   await click('[data-question="0"] input[value="0"]');await click('[data-question="0"] .edition-submit');
-  assert.match(await read('[data-question="0"] .edition-feedback'),/실습/);
+  assert.equal(await page.$eval('[data-question="0"]',e=>e.dataset.solved),'true','실습 전에도 답과 해설을 확인할 수 있다');
+  assert.ok((await read('[data-question="0"] .edition-feedback')).includes(qlist[0].options[0][1]));
+  
   const plan=plans[id],before=await read(plan.observe);
   for(const selector of plan.click||[])await click(selector);
   for(const [kind,selector,text] of plan.steps||[]){if(kind==="click")await click(selector);else if(kind==="type"){await page.focus(selector);await page.keyboard.press("End");await page.keyboard.type(text);}else await value(selector,text);}
   if(plan.repeat){for(let i=0;i<plan.repeat[1];i++){const enabled=await page.$eval(plan.repeat[0],e=>!e.disabled);if(!enabled)break;await click(plan.repeat[0]);}}
   if(plan.wait)await page.waitForFunction(([s,a,v])=>document.querySelector(s)?.getAttribute(a)===v,{},plan.wait);
+  if(plan.custom==='relay'){
+   await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='complete');
+   await click('[data-relay-permission]');await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='blocked');
+  }
+  if(plan.custom==='files'){
+   await value('#studyFileEditor','봄과 여름 관찰 기록');await click('[data-study-action=save-as]');
+   await page.select('#studyFileDestination','homework');await click('[data-study-action=move]');
+   assert.match(await read('[data-study-folder=documents]'),/봄 관찰 기록/);
+   assert.match(await read('[data-study-folder=homework]'),/봄과 여름 관찰 기록/);
+  }
+  if(plan.custom==='memory'){
+   await click('[data-study-action=memory-open]');await value('#studyMemoryEditor','봄, 여름');await click('[data-study-action=memory-power]');await click('[data-study-action=memory-open]');
+   assert.equal(await read('#studyMemoryEditor'),'봄');
+   await value('#studyMemoryEditor','봄, 여름');await click('[data-study-action=memory-save]');await click('[data-study-action=memory-power]');await click('[data-study-action=memory-open]');
+   assert.equal(await read('#studyMemoryEditor'),'봄, 여름');
+  }
+  if(plan.custom==='sources'){
+   await click('[data-browser-suggestion=도서관]');await click('[data-result-card=libraryArchive]>button');
+   await click('[data-page-related-link]');
+  }
+  if(plan.custom==='algorithm'){
+   await click('[data-study-action=case-negative]');await click('[data-study-action=run]');
+   assert.match(await read('.study-workbench .study-status'),/목표와 다릅니다/);
+   await page.select('#studyInitial','first');await page.select('#studyEmpty','message');
+   for(const sample of ['positive','negative','equal','single','empty']){await click('[data-study-action=case-'+sample+']');await click('[data-study-action=run]');assert.match(await read('.study-workbench .study-status'),/목표와 일치/);}
+  }
   if(plan.custom==="gesture"){await page.focus("[data-gesture-surface]");await page.keyboard.press("Enter");assert.equal(await page.$eval("[data-gesture-menu]",e=>e.hidden),false);await click("[data-gesture-menu-action=rename]");assert.equal(await page.$eval("[data-gesture-surface]",e=>e.dataset.menuAction),"rename");await page.focus("[data-gesture-menu-action=share]");await page.keyboard.press("Enter");assert.equal(await page.$eval("[data-gesture-surface]",e=>e.dataset.menuAction),"share");await page.focus("[data-gesture-menu-action=rename]");await page.keyboard.press("Enter");}
   if(plan.custom==="binary"){
+   await click('#binaryRecord');await click('[data-binary-bit="0"]');await click('#binaryRecord');
    await page.select("#binaryLength","2");
    for(const sequence of [[],[1],[0],[1]]){for(const bit of sequence)await click('[data-binary-bit="'+bit+'"]');await click("#binaryRecord");}
    assert.equal(await page.$$eval("#binaryRecords li",els=>els.map(x=>x.textContent).join(",")),"00,01,10,11");
    await click("#binaryRecord");assert.equal(await page.$$eval("#binaryRecords li",els=>els.length),4);
   }
-  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false||document.querySelector("[data-control-score]").textContent==="3");}}
+  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false||document.querySelector('[data-control-score]').textContent==='3');}}
+  
   const after=await read(plan.observe);assert.notEqual(after,before,"real lab observation must change");if(plan.expect)assert.ok(after.includes(plan.expect),"expected "+plan.expect+" in "+after);
   if(id==="a03")assert.doesNotMatch(await read("#editionLab"),/API|펌웨어/);
   for(let i=0;i<qlist.length;i++){
@@ -97,8 +138,9 @@ let browser;const results=[],failures=[];try{
    for(const view of ["read","lab","apply","check"]){await go(view);
     const layout=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,top:document.querySelector(".edition-page:not([hidden])").getBoundingClientRect().top}));
     record.layouts.push({view,...layout});if(id==="j02"&&view==="lab")assert.equal(await page.$eval(".program-flow .flow-branch",e=>getComputedStyle(e).transform),"none","branch text stays upright");assert.ok(layout.scrollWidth<=width+1,"overflow "+width+" "+view);
-    if(width===1440&&view==="read"){await screenshot({path:path.join(out,id+"-read-1440.png"),fullPage:true});assert.ok(layout.top<160,"compact header");}
-    if(width===390&&view==="lab")await screenshot({path:path.join(out,id+"-lab-390.png"),fullPage:true});
+    if(width===1440&&view==="read"){await screenshot({path:path.join(out,id+"-read-1440.webp"),fullPage:true});assert.ok(layout.top<160,"compact header");}
+    if(width===390&&view==="lab")await screenshot({path:path.join(out,id+"-lab-390.webp"),fullPage:true});
+    if((width===1440||width===390)&&view==="apply")await screenshot({path:path.join(out,id+"-apply-"+width+".webp"),fullPage:true});
    }
   }
   await page.setViewport({width:1440,height:1000});
@@ -109,7 +151,7 @@ let browser;const results=[],failures=[];try{
    const {fonts}=await cdp.send("CSS.getPlatformFontsForNode",{nodeId});assert.ok(fonts.some(f=>f.isCustomFont&&/KoPub/.test(f.familyName)),"actual KoPub font "+selector);record.fontChecks.push(selector);
   }
   await cdp.detach();assert.deepEqual(errors,[]);record.passed=true;console.log("PASS "+id);
- }catch(e){record.passed=false;record.error=e.message;record.errors=[...errors];failures.push({id,error:e.message});console.log("FAIL "+id+": "+e.message);}results.push(record);}
+ }catch(e){record.passed=false;record.error=e.message;record.errors=[...errors];failures.push({id,error:e.message});console.log("FAIL "+id+": "+e.stack);}results.push(record);}
  // The canonical first-lesson URL must open the finished first chapter.
  await page.goto(base+"lessons/?lesson=a01",{waitUntil:"networkidle0"});assert.ok(page.url().includes("/textbook/a01.html"));await page.waitForSelector("#progressText");
  if(!failures.length){await page.goto(base,{waitUntil:"networkidle0"});assert.equal(await page.$$eval(".lesson-link-list li.is-complete",els=>els.length),entries.length);}
@@ -130,6 +172,26 @@ assert.equal(await read("#editionProgress"),"0 / 3");
  // 로그인하지 않은(게스트) 창: 읽기와 답하기는 되고, 어디에도 기록이 남지 않는다.
  const guestContext=await browser.createBrowserContext();const blocked=await guestContext.newPage();
  await blocked.goto(base+"lessons/?lesson=a02",{waitUntil:"networkidle0"});await blocked.waitForSelector("#edition");await blocked.click('.edition-nav [data-page="check"]');await blocked.waitForFunction(()=>!document.querySelector("#edition-check").hidden);await blocked.click('[data-question="3"] input[value="0"]');await blocked.click('[data-question="3"] .edition-submit');assert.equal(await blocked.$eval('[data-question="3"]',e=>e.dataset.solved),"true");assert.equal(await blocked.$eval(".edition-save-note",e=>e.hidden),false);assert.deepEqual(await blocked.evaluate(()=>Object.keys(localStorage).filter(k=>/computer-literacy|classj:textbook/.test(k))),[]);await guestContext.close();
+ // 새 개념을 묻는 문항은 예전 정답 기록으로 풀린 상태가 되면 안 된다. 나머지 기록은 보존한다.
+ if(entries.some(entry=>entry.id==="e02")&&!failures.length){
+  const legacy={version:1,labUsed:true,completed:true,answers:Array.from({length:5},()=>({selected:0,attempts:1,solved:true,firstCorrect:true}))};
+  const status=await page.evaluate(async value=>(await fetch('/api/me/storage/computer-literacy/classj:textbook:e02:v1',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({value})})).status,legacy);
+  assert.equal(status,200);
+  await page.goto(base+"lessons/?lesson=e02#apply",{waitUntil:"networkidle0"});await page.waitForSelector("#edition");
+  assert.equal(await read("#editionProgress"),"0 / 3");
+  assert.equal(await page.$eval('[data-question="1"]',e=>e.dataset.solved),"true");
+  assert.equal(await page.$eval('[data-question="3"]',e=>e.dataset.solved),"false");
+  assert.equal(await page.$eval('[data-question="0"]',e=>e.dataset.solved),"false","새 실습 해석 문항은 이전 판의 정답을 물려받지 않는다");
+  assert.equal(await page.$eval('[data-question="2"]',e=>e.dataset.solved),"false");
+  assert.equal(await page.$eval('[data-question="4"]',e=>e.dataset.solved),"false","새 확장자 판단 문항도 이전 정답을 물려받지 않는다");
+  assert.equal(await page.$$eval('[data-question="2"] input:checked',els=>els.length),0);
+  await page.waitForFunction(async()=>{const data=await(await fetch('/api/me/storage/computer-literacy')).json();return data.items['classj:textbook:e02:v1']?.answers[2]?.revision===2;},{polling:100,timeout:10000});
+  const migrated=(await h.items("computer-literacy"))["classj:textbook:e02:v1"];
+  assert.equal(migrated.completed,false);assert.equal(migrated.answers[2].attempts,0);
+  assert.equal(migrated.answers[1].attempts,1);
+  assert.equal(migrated.answers[3].attempts,0);
+  assert.equal(migrated.answers[4].attempts,0);
+ }
  fs.writeFileSync(path.join(out,selectedIds?"verification-"+selectedIds.join("-")+".json":"verification.json"),JSON.stringify({date:new Date().toISOString(),results,failures,firstLessonRoute:true,storageChecks:true},null,2));
  assert.deepEqual(failures,[]);console.log("Verified "+results.length+" chapters, retained A01 route, and storage recovery.");
 }finally{await browser?.close();await h.close();}})().catch(e=>{console.error(e.message);process.exitCode=1;});

@@ -1,0 +1,32 @@
+✖ ARGO snapshot provenance, missing values, actual sample selection and no gap interpolation (3.8878ms)
+✔ chromium: original observations, responsive plots, touch/keyboard and first errors (6217.7543ms)
+✔ webkit: original observations, responsive plots, touch/keyboard and first errors (12775.6743ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19075.2114
+
+✖ failing tests:
+
+test at tests\science-argo.test.cjs:3:1
+✖ ARGO snapshot provenance, missing values, actual sample selection and no gap interpolation (3.8878ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 3
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-argo.test.cjs:5:229)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

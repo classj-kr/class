@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-12T14:37:47.527Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "periodic-bonding",
+      "scenarios": 30
+    }
+  ],
+  "scenarios": 30,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

@@ -1,0 +1,11 @@
+✔ equilibrium procedures require preparation, preserve independent samples and permit reversible thermal observations (1.0369ms)
+✔ chromium: touch procedures, tablet layouts, first-error diagnosis and transfer questions (9441.8051ms)
+✔ webkit: touch procedures, tablet layouts, first-error diagnosis and transfer questions (12764.7856ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22275.4383

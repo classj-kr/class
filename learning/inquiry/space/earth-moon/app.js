@@ -43,7 +43,7 @@
         // Heliocentric 3D Engine
         (function() {
             const container = document.getElementById('emCanvasContainer');
-            const spacePane = document.getElementById('emMoonSpacePane');
+            const spacePane = document.getElementById('emMoonStage');
             const canvas = document.getElementById('em3DCanvas');
             const seasonLabelsOverlay = document.getElementById('emSeasonLabelsOverlay');
             const observerView = document.getElementById('emMoonMyView');
@@ -93,6 +93,23 @@
             const SOLAR_OVERVIEW_CAMERA_POSITION = new THREE.Vector3(0, 190 + OVERVIEW_FRAMING_Y, 300);
             const SOLAR_OVERVIEW_TARGET = new THREE.Vector3(0, OVERVIEW_FRAMING_Y, 0);
             const EARTH_TRACK_CAMERA_OFFSET = new THREE.Vector3(0, 64, 112);
+            // Zooming in on the overview slides the orbit pivot from the
+            // Sun-centred framing to Earth, fully on Earth by this distance.
+            let OVERVIEW_ZOOM_DISTANCE = SOLAR_OVERVIEW_CAMERA_POSITION.distanceTo(SOLAR_OVERVIEW_TARGET);
+            const EARTH_FOCUS_ZOOM_DISTANCE = 130;
+            const overviewFocusTarget = new THREE.Vector3();
+            const overviewFocusShift = new THREE.Vector3();
+            function fitOverviewFraming(force) {
+                const atOverview = force || (viewMode === 'solarOverview' && controls && camera.position.distanceTo(controls.target) >= OVERVIEW_ZOOM_DISTANCE * .98);
+                const scale = Math.max(1, 1.5 / camera.aspect);
+                SOLAR_OVERVIEW_CAMERA_POSITION.copy(SOLAR_OVERVIEW_TARGET).add(new THREE.Vector3(0,190,300).multiplyScalar(scale));
+                OVERVIEW_ZOOM_DISTANCE = SOLAR_OVERVIEW_CAMERA_POSITION.distanceTo(SOLAR_OVERVIEW_TARGET);
+                if (controls) controls.maxDistance = Math.max(450, OVERVIEW_ZOOM_DISTANCE * 1.3);
+                if (atOverview) {
+                    camera.position.copy(SOLAR_OVERVIEW_CAMERA_POSITION);
+                    if (controls) controls.target.copy(SOLAR_OVERVIEW_TARGET);
+                }
+            }
             // Negative Z rotation makes the north end lean 23.44 degrees to screen-right.
             const EARTH_AXIAL_TILT_RAD = -23.44 * (Math.PI / 180);
 
@@ -120,11 +137,11 @@
             const phases = [
                 { angleDeg: 0, name: "🌑 삭 (New Moon)", info: "남중: 정오 (12:00) | 관측 불가 (태양과 함께 이동)", calendar: "음력 1일 경 (삭)" },
                 { angleDeg: 45, name: "🌒 초승달 (Waxing Crescent)", info: "남중: 오후 3시 (15:00) | 초저녁 서쪽 관측", calendar: "음력 3~4일 경 (초승)" },
-                { angleDeg: 90, name: "🌓 상현달 (First Quarter)", info: "남중: 오후 6시 (18:00) | 초저녁 서쪽 관측", calendar: "음력 7~8일 경 (상현)" },
+                { angleDeg: 90, name: "🌓 상현달 (First Quarter)", info: "가장 높음: 해 질 무렵 (약 18시) | 해 질 무렵 높이 보이고 자정 무렵 짐", calendar: "음력 7~8일 경 (상현)" },
                 { angleDeg: 135, name: "🌔 팽대달 (Waxing Gibbous)", info: "남중: 밤 9시 (21:00) | 저녁~한밤중 관측", calendar: "음력 10~11일 경" },
                 { angleDeg: 180, name: "🌕 망 / 보름달 (Full Moon)", info: "남중: 자정 (00:00) | 밤새도록 관측 가능", calendar: "음력 15일 경 (망)" },
                 { angleDeg: 225, name: "🌖 팽대달 (Waning Gibbous)", info: "남중: 새벽 3시 (03:00) | 한밤중~새벽 관측", calendar: "음력 18~19일 경" },
-                { angleDeg: 270, name: "🌗 하현달 (Third Quarter)", info: "남중: 새벽 6시 (06:00) | 새벽 동쪽 관측", calendar: "음력 22~23일 경 (하현)" },
+                { angleDeg: 270, name: "🌗 하현달 (Third Quarter)", info: "가장 높음: 해 뜰 무렵 (약 6시) | 자정 무렵 떠서 해 뜰 무렵 높이 보임", calendar: "음력 22~23일 경 (하현)" },
                 { angleDeg: 315, name: "🌘 그믐달 (Waning Crescent)", info: "남중: 오전 9시 (09:00) | 새벽녘 동쪽 관측", calendar: "음력 27~28일 경 (그믐)" }
             ];
 
@@ -136,7 +153,7 @@
                 camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 1500);
                 // Start far enough back to keep the Sun, Earth and the Moon's
                 // complete orbit visible on the first visit.
-                camera.position.copy(SOLAR_OVERVIEW_CAMERA_POSITION);
+                fitOverviewFraming(true);
 
                 renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
                 renderer.setSize(w, h);
@@ -148,7 +165,7 @@
                     controls.enableDamping = true;
                     controls.dampingFactor = 0.05;
                     controls.target.copy(SOLAR_OVERVIEW_TARGET);
-                    controls.maxDistance = 450;
+                    controls.maxDistance = Math.max(450, OVERVIEW_ZOOM_DISTANCE * 1.3);
                     controls.minDistance = 20;
                 }
 
@@ -313,6 +330,7 @@
                     const nw = spacePane.clientWidth || 900;
                     const nh = spacePane.clientHeight || 520;
                     camera.aspect = nw / nh;
+                    fitOverviewFraming(false);
                     camera.updateProjectionMatrix();
                     renderer.setSize(nw, nh);
                     drawMoonObserverSky();
@@ -854,44 +872,9 @@
                 disk.renderOrder = 20;
                 marker.add(disk);
 
-                const bodyMat = new THREE.MeshBasicMaterial({ color: 0xf97316 });
-                const skinMat = new THREE.MeshBasicMaterial({ color: 0xffb35c });
-                const hatMat = new THREE.MeshBasicMaterial({ color: 0xfacc15 });
-                const hatBandMat = new THREE.MeshBasicMaterial({ color: 0x7c2d12 });
-
-                const leftLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.75, 10), bodyMat);
-                const rightLeg = leftLeg.clone();
-                leftLeg.position.set(-0.22, 0.43, 0);
-                rightLeg.position.set(0.22, 0.43, 0);
-                marker.add(leftLeg, rightLeg);
-
-                const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.46, 0.9, 12), bodyMat);
-                torso.position.y = 1.15;
-                marker.add(torso);
-
-                const leftArm = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.72, 10), bodyMat);
-                const rightArm = leftArm.clone();
-                leftArm.position.set(-0.48, 1.2, 0);
-                rightArm.position.set(0.48, 1.2, 0);
-                leftArm.rotation.z = -0.42;
-                rightArm.rotation.z = 0.42;
-                marker.add(leftArm, rightArm);
-
-                const head = new THREE.Mesh(new THREE.SphereGeometry(0.42, 18, 18), skinMat);
-                head.position.y = 1.92;
-                marker.add(head);
-
-                const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.7, 0.12, 24), hatMat);
-                brim.position.y = 2.22;
-                marker.add(brim);
-
-                const band = new THREE.Mesh(new THREE.CylinderGeometry(0.44, 0.44, 0.12, 24), hatBandMat);
-                band.position.y = 2.34;
-                marker.add(band);
-
-                const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.45, 0.48, 24), hatMat);
-                crown.position.y = 2.55;
-                marker.add(crown);
+                const figure = window.EarthObserver.create();
+                marker.add(figure);
+                marker.userData.figure = figure;
 
                 return marker;
             }
@@ -923,16 +906,8 @@
                     currentObserverKey === 'equator' ? '적도' :
                     currentObserverKey === 'north' ? '북극' : '한국';
                 currentObserverLatitude = location.latitude;
-                const latitudeRad = location.latitude * (Math.PI / 180);
-                const surfaceRadius = 10.3;
-                const surfaceNormal = new THREE.Vector3(
-                    0,
-                    Math.sin(latitudeRad),
-                    Math.cos(latitudeRad)
-                ).normalize();
-
-                observerMarker.position.copy(surfaceNormal.clone().multiplyScalar(surfaceRadius));
-                observerMarker.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), surfaceNormal);
+                window.EarthObserver.place(observerMarker, observerMarker.userData.figure,
+                    location.latitude, Math.PI / 2, 10.3);
 
                 if (observerDiskMaterial && observerDiskTextures[locationKey]) {
                     observerDiskMaterial.map = observerDiskTextures[locationKey];
@@ -1021,8 +996,17 @@
 
                 const dayIndex = Math.max(0, Math.min(CALENDAR_DAYS_PER_YEAR - 1, Number(moonDaySlider.value) - 1));
                 const hour = Math.max(0, Math.min(23, Number(moonTimeSlider.value)));
-                elapsedSimulationHours = dayIndex * 24 + hour;
+                setSimulationHours(Math.floor(elapsedSimulationHours / HOURS_PER_YEAR) * HOURS_PER_YEAR + dayIndex * 24 + hour);
+                isPlaying = false;
+                const playButton = document.getElementById('emPlayBtn');
+                if (playButton) playButton.textContent = '▶ 재생';
+                updateDynamicSunRays();
+                updatePhasesUI();
+                updateSimulationClock();
+            }
 
+            function setSimulationHours(hours) {
+                elapsedSimulationHours = hours;
                 const yearProgress = elapsedSimulationHours / HOURS_PER_YEAR;
                 earthOrbitAngle = normalizeRadians(JANUARY_FIRST_ORBIT_ANGLE + yearProgress * Math.PI * 2);
                 moonRelAngle = normalizeRadians(yearProgress * Math.PI * 2 * LUNAR_SYNODIC_CYCLES_PER_YEAR);
@@ -1032,12 +1016,6 @@
                     + yearProgress * Math.PI * 2 * EARTH_ROTATIONS_PER_YEAR
                 );
 
-                isPlaying = false;
-                const playButton = document.getElementById('emPlayBtn');
-                if (playButton) playButton.textContent = '▶ 재생';
-                updateDynamicSunRays();
-                updatePhasesUI();
-                updateSimulationClock();
             }
 
             function equatorialFromEcliptic(longitude) {
@@ -1296,7 +1274,8 @@
                     observerSkyLunarClock.textContent = '음력 ' + lunar.month + '월 ' + lunar.day + '일 ' + lunar.hour + '시';
                 }
                 if (observerSkyPhase) {
-                    observerSkyPhase.textContent = lunar.phase;
+                    observerSkyPhase.textContent = window.SchoolLevel?.value === 'elementary'
+                        ? lunar.phase.replace('삭', '달이 거의 보이지 않음').replace(/망\s*\/\s*보름달/g, '보름달') : lunar.phase;
                 }
                 if (observerSkyCaption) {
                     if (polarView) {
@@ -1311,7 +1290,7 @@
                 if (observerSkyStatus) {
                     const sunState = sunPosition.altitude > 0 ? '태양은 지평선 위' : '태양은 지평선 아래';
                     const moonState = elongationDegrees <= 8
-                        ? '달은 태양과 같은 방향이라 관측 불가'
+                        ? (window.SchoolLevel?.value === 'elementary' ? '달을 보기 어려움' : '달은 태양과 같은 방향이라 관측 불가')
                         : (moonPosition.altitude > 0 ? '달은 지평선 위' : '달은 지평선 아래');
                     observerSkyStatus.textContent = sunState + ' · ' + moonState;
                 }
@@ -1338,10 +1317,12 @@
                 const synodicMonthDays = 29.530588;
                 const lunarAgeDays = (a / (Math.PI * 2)) * synodicMonthDays;
                 const lunarDay = Math.min(30, Math.floor(lunarAgeDays) + 1);
-                const shortPhaseName = pData.name.split(' (')[0];
+                const phaseName = pData.name.split(' (')[0];
+                const shortPhaseName = window.SchoolLevel?.value === 'elementary'
+                    ? phaseName.replace('삭', '달이 거의 보이지 않음').replace(/망\s*\/\s*보름달/g, '보름달') : phaseName;
                 document.getElementById('moonPhaseTitle').textContent = pData.name;
                 document.getElementById('moonObsInfo').innerHTML =
-                    pData.info.replace(' | ', '<br>관측 방향: ');
+                    pData.info.replace(' | ', '<br>') + '<br><small>중위도의 대표적인 관측 시각 · 계절에 따라 달라짐</small>';
                 document.getElementById('emOrbitProgressText').textContent =
                     `음력 약 ${lunarDay}일 · ${shortPhaseName}`;
 
@@ -1519,6 +1500,21 @@
                 });
             }
 
+            function updateOverviewZoomFocus() {
+                const distance = camera.position.distanceTo(controls.target);
+                const zoomProgress = THREE.MathUtils.clamp(
+                    (OVERVIEW_ZOOM_DISTANCE - distance) / (OVERVIEW_ZOOM_DISTANCE - EARTH_FOCUS_ZOOM_DISTANCE),
+                    0,
+                    1
+                );
+                const earthFocus = zoomProgress * zoomProgress * (3 - 2 * zoomProgress);
+                overviewFocusTarget.copy(SOLAR_OVERVIEW_TARGET).lerp(earthSystemGroup.position, earthFocus);
+                // Move the camera with the pivot so zoom distance and viewing angle stay put.
+                overviewFocusShift.subVectors(overviewFocusTarget, controls.target);
+                controls.target.add(overviewFocusShift);
+                camera.position.add(overviewFocusShift);
+            }
+
             function animate() {
                 requestAnimationFrame(animate);
 
@@ -1540,7 +1536,6 @@
                     if (earthOrbitAngle >= Math.PI * 2) earthOrbitAngle -= Math.PI * 2;
                     if (moonRelAngle >= Math.PI * 2) moonRelAngle -= Math.PI * 2;
                     if (earthSpinAngle >= Math.PI * 2) earthSpinAngle %= Math.PI * 2;
-                    if (elapsedSimulationHours >= HOURS_PER_YEAR) elapsedSimulationHours %= HOURS_PER_YEAR;
                 }
 
                 // 1. Move Earth-Moon System counter-clockwise as seen from the north
@@ -1582,7 +1577,7 @@
                             targetPos.z + EARTH_TRACK_CAMERA_OFFSET.z
                         );
                     } else {
-                        controls.target.copy(SOLAR_OVERVIEW_TARGET); // Solar System Overview
+                        updateOverviewZoomFocus(); // Solar System Overview
                     }
                     controls.update();
                 }
@@ -1626,6 +1621,7 @@
                     container.classList.remove('earth-view-mode');
                     observerView.hidden = false;
                     camera.position.copy(SOLAR_OVERVIEW_CAMERA_POSITION);
+                    if (controls) controls.target.copy(SOLAR_OVERVIEW_TARGET);
                 } else {
                     viewMode = 'trackEarth';
                     this.textContent = '태양계 시선 (Solar System View)';
@@ -1643,7 +1639,8 @@
             chips.forEach(chip => {
                 chip.onclick = function() {
                     const deg = parseFloat(this.dataset.angle);
-                    moonRelAngle = deg * (Math.PI / 180);
+                    const lunarCycle = Math.floor(elapsedSimulationHours / (24 * SYNODIC_MONTH_DAYS));
+                    setSimulationHours((lunarCycle + deg / 360) * SYNODIC_MONTH_DAYS * 24);
                     isPlaying = false;
                     document.getElementById('emPlayBtn').textContent = '▶ 재생';
 
@@ -1656,6 +1653,7 @@
                     }
                     updateDynamicSunRays();
                     updatePhasesUI();
+                    updateSimulationClock();
 
                     if (renderer && scene && camera) {
                         renderer.render(scene, camera);
@@ -1703,9 +1701,12 @@
                 showRays: true
             };
             let lastFrame = performance.now();
-            let spaceViewRotation = 0;
-            let orbitDragState = null;
-            let suppressOrbitPointClick = false;
+            const spaceView = window.createSeasonalSpaceView(orbitCanvas, seasonPoints, point => {
+                state.day = point.day;
+                state.hour = 12;
+                pause();
+                render();
+            });
 
             function toRadians(degrees) {
                 return degrees * Math.PI / 180;
@@ -1781,375 +1782,6 @@
                 const ctx = canvas.getContext('2d');
                 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
                 return { ctx, width, height };
-            }
-
-            function drawBackdrop(ctx, width, height, topColor, bottomColor) {
-                const gradient = ctx.createLinearGradient(0, 0, 0, height);
-                gradient.addColorStop(0, topColor);
-                gradient.addColorStop(1, bottomColor);
-                ctx.fillStyle = gradient;
-                ctx.fillRect(0, 0, width, height);
-                ctx.fillStyle = 'rgba(255,255,255,0.28)';
-                for (let i = 0; i < 42; i += 1) {
-                    const x = (i * 83 + 19) % Math.max(width, 1);
-                    const y = (i * 47 + 31) % Math.max(height * 0.82, 1);
-                    const r = i % 9 === 0 ? 1.15 : 0.65;
-                    ctx.beginPath();
-                    ctx.arc(x, y, r, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            function orbitPoint(day, cx, cy, rx, ry) {
-                // Keep the fixed north-axis tilt visually meaningful:
-                // June solstice at left (north pole toward the Sun),
-                // December solstice at right (north pole away from the Sun).
-                const angle = (Math.PI * 2 * (day - 356)) / 365;
-                return {
-                    x: cx + Math.cos(angle) * rx,
-                    y: cy - Math.sin(angle) * ry,
-                    angle
-                };
-            }
-
-            function viewOrbitPoint(day, cx, cy, rx, ry) {
-                const point = orbitPoint(day, cx, cy, rx, ry);
-                // Keep the projected ellipse horizontal, as in the zodiac view.
-                // Dragging changes the orbital phase shown around that fixed frame
-                // instead of tilting the entire diagram across the canvas.
-                const viewAngle = point.angle - spaceViewRotation;
-                return {
-                    x: cx + Math.cos(viewAngle) * rx,
-                    y: cy - Math.sin(viewAngle) * ry,
-                    angle: viewAngle
-                };
-            }
-
-            function drawSpaceView() {
-                const prepared = prepareCanvas(orbitCanvas);
-                const ctx = prepared.ctx;
-                const width = prepared.width;
-                const height = prepared.height;
-                drawBackdrop(ctx, width, height, '#071226', '#020617');
-
-                const cx = width * 0.5;
-                const cy = height * 0.54;
-                const rx = Math.max(90, width * 0.35);
-                const ry = Math.max(55, Math.min(height * 0.29, rx * 0.52));
-
-                if (state.showOrbit) {
-                    ctx.save();
-                    ctx.strokeStyle = 'rgba(148,163,184,0.42)';
-                    ctx.lineWidth = 1.2;
-                    ctx.setLineDash([7, 6]);
-                    ctx.beginPath();
-                    ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
-                    ctx.stroke();
-                    ctx.restore();
-                }
-
-                // A calendar day identifies noon; add the fractional offset from
-                // noon so Earth's orbit advances continuously between dates.
-                const continuousOrbitDay = state.day + (state.hour - 12) / 24;
-                const currentOrbitPosition = viewOrbitPoint(continuousOrbitDay, cx, cy, rx, ry);
-                seasonPoints.forEach(point => {
-                    const position = viewOrbitPoint(point.day, cx, cy, rx, ry);
-                    ctx.save();
-                    ctx.shadowColor = point.color;
-                    ctx.shadowBlur = 12;
-                    ctx.font = '22px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-                    ctx.fillText(point.icon, position.x, position.y + 1);
-                    ctx.restore();
-
-                    const outwardLength = Math.max(1, Math.hypot(position.x - cx, position.y - cy));
-                    const outwardX = (position.x - cx) / outwardLength;
-                    const outwardY = (position.y - cy) / outwardLength;
-                    const overlapsEarth =
-                        Math.hypot(
-                            position.x - currentOrbitPosition.x,
-                            position.y - currentOrbitPosition.y
-                        ) < 36;
-                    const labelX = overlapsEarth
-                        ? position.x - outwardY * 40
-                        : position.x + outwardX * 14;
-                    const labelY = overlapsEarth
-                        ? position.y + outwardX * 40
-                        : position.y + outwardY * 14;
-                    ctx.fillStyle = point.color;
-                    ctx.font = `900 ${Math.max(15, Math.min(18, width * 0.018))}px Pretendard, sans-serif`;
-                    ctx.textAlign = overlapsEarth
-                        ? (outwardY < 0 ? 'left' : 'right')
-                        : (outwardX > 0.35 ? 'left' : outwardX < -0.35 ? 'right' : 'center');
-                    ctx.textBaseline = overlapsEarth ? 'middle' : (outwardY > 0 ? 'top' : 'bottom');
-                    ctx.lineWidth = 4;
-                    ctx.lineJoin = 'round';
-                    ctx.strokeStyle = 'rgba(2, 6, 23, 0.9)';
-                    ctx.strokeText(
-                        `${point.label} ${point.date}`,
-                        labelX,
-                        labelY
-                    );
-                    ctx.fillText(
-                        `${point.label} ${point.date}`,
-                        labelX,
-                        labelY
-                    );
-                });
-
-                const sunRadius = clamp(Math.min(width, height) * 0.075, 18, 34);
-                const sunGradient = ctx.createRadialGradient(cx - sunRadius * 0.25, cy - sunRadius * 0.25, 2, cx, cy, sunRadius * 1.45);
-                sunGradient.addColorStop(0, '#fff7ae');
-                sunGradient.addColorStop(0.42, '#facc15');
-                sunGradient.addColorStop(1, 'rgba(245,158,11,0)');
-                ctx.fillStyle = sunGradient;
-                ctx.beginPath();
-                ctx.arc(cx, cy, sunRadius * 1.45, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#facc15';
-                ctx.beginPath();
-                ctx.arc(cx, cy, sunRadius * 0.75, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#713f12';
-                ctx.font = '900 10px Pretendard, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('태양', cx, cy + sunRadius + 10);
-
-                const earthPosition = currentOrbitPosition;
-                const vx = earthPosition.x - cx;
-                const vy = earthPosition.y - cy;
-                const distance = Math.max(1, Math.hypot(vx, vy));
-                const ux = vx / distance;
-                const uy = vy / distance;
-                const px = -uy;
-                const py = ux;
-                const earthRadius = clamp(Math.min(width, height) * 0.042, 11, 19);
-
-                if (state.showRays) {
-                    ctx.save();
-                    ctx.strokeStyle = 'rgba(250,204,21,0.7)';
-                    ctx.lineWidth = 1.15;
-                    ctx.setLineDash([3, 4]);
-                    for (let offset = -7; offset <= 7; offset += 7) {
-                        ctx.beginPath();
-                        ctx.moveTo(
-                            cx + ux * sunRadius * 0.85 + px * offset,
-                            cy + uy * sunRadius * 0.85 + py * offset
-                        );
-                        ctx.lineTo(
-                            earthPosition.x - ux * earthRadius + px * offset * 0.45,
-                            earthPosition.y - uy * earthRadius + py * offset * 0.45
-                        );
-                        ctx.stroke();
-                    }
-                    ctx.restore();
-                }
-
-                ctx.save();
-                ctx.shadowColor = '#38bdf8';
-                ctx.shadowBlur = 13;
-                const earthGradient = ctx.createRadialGradient(
-                    earthPosition.x - earthRadius * 0.35,
-                    earthPosition.y - earthRadius * 0.35,
-                    1,
-                    earthPosition.x,
-                    earthPosition.y,
-                    earthRadius
-                );
-                earthGradient.addColorStop(0, '#7dd3fc');
-                earthGradient.addColorStop(0.48, '#0ea5e9');
-                earthGradient.addColorStop(1, '#075985');
-                ctx.fillStyle = earthGradient;
-                ctx.beginPath();
-                ctx.arc(earthPosition.x, earthPosition.y, earthRadius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.clip();
-                ctx.fillStyle = '#4ade80';
-                ctx.beginPath();
-                ctx.ellipse(
-                    earthPosition.x - earthRadius * 0.18,
-                    earthPosition.y - earthRadius * 0.12,
-                    earthRadius * 0.34,
-                    earthRadius * 0.21,
-                    0.35,
-                    0,
-                    Math.PI * 2
-                );
-                ctx.fill();
-                ctx.beginPath();
-                ctx.ellipse(
-                    earthPosition.x + earthRadius * 0.34,
-                    earthPosition.y + earthRadius * 0.28,
-                    earthRadius * 0.2,
-                    earthRadius * 0.12,
-                    -0.45,
-                    0,
-                    Math.PI * 2
-                );
-                ctx.fill();
-                ctx.restore();
-
-                const tilt = toRadians(23.44);
-                const viewCos = Math.cos(spaceViewRotation);
-                const viewSin = Math.sin(spaceViewRotation);
-
-                // Treat the ellipse as an inclined circular orbit. This projection
-                // is shared by the axial line, equator, sunlight direction and
-                // observer, so all four agree about latitude and local time.
-                const orbitPlaneCos = clamp(ry / rx, 0.05, 0.98);
-                const orbitPlaneSin = Math.sqrt(1 - orbitPlaneCos * orbitPlaneCos);
-                const projectWorldVector = (vector) => ({
-                    x: vector.x,
-                    y: -vector.y * orbitPlaneCos - vector.z * orbitPlaneSin,
-                    z: -vector.y * orbitPlaneSin + vector.z * orbitPlaneCos
-                });
-                const northAxis = projectWorldVector({
-                    x: Math.sin(tilt) * viewCos,
-                    y: -Math.sin(tilt) * viewSin,
-                    z: Math.cos(tilt)
-                });
-                const axisScreenLength = Math.max(
-                    0.0001,
-                    Math.hypot(northAxis.x, northAxis.y)
-                );
-                const axisX = northAxis.x / axisScreenLength;
-                const axisY = northAxis.y / axisScreenLength;
-                ctx.save();
-                ctx.strokeStyle = '#7dd3fc';
-                ctx.lineWidth = 1.4;
-                ctx.setLineDash([5, 4]);
-                ctx.beginPath();
-                ctx.moveTo(
-                    earthPosition.x - axisX * earthRadius * 1.75,
-                    earthPosition.y - axisY * earthRadius * 1.75
-                );
-                ctx.lineTo(
-                    earthPosition.x + axisX * earthRadius * 1.75,
-                    earthPosition.y + axisY * earthRadius * 1.75
-                );
-                ctx.stroke();
-                ctx.restore();
-
-                // Project the observer's true spherical position onto this space view.
-                // At local noon the observer's meridian faces the Sun; the hour angle
-                // then carries that fixed latitude around Earth's tilted rotation axis.
-                const sunward = projectWorldVector({
-                    x: -Math.cos(earthPosition.angle),
-                    y: -Math.sin(earthPosition.angle),
-                    z: 0
-                });
-                const sunAxisDot =
-                    sunward.x * northAxis.x +
-                    sunward.y * northAxis.y +
-                    sunward.z * northAxis.z;
-                const equatorSunLength = Math.max(
-                    0.0001,
-                    Math.sqrt(1 - sunAxisDot * sunAxisDot)
-                );
-                const equatorSun = {
-                    x: (sunward.x - northAxis.x * sunAxisDot) / equatorSunLength,
-                    y: (sunward.y - northAxis.y * sunAxisDot) / equatorSunLength,
-                    z: (sunward.z - northAxis.z * sunAxisDot) / equatorSunLength
-                };
-                const equatorEast = {
-                    x: northAxis.y * equatorSun.z - northAxis.z * equatorSun.y,
-                    y: northAxis.z * equatorSun.x - northAxis.x * equatorSun.z,
-                    z: northAxis.x * equatorSun.y - northAxis.y * equatorSun.x
-                };
-
-                // Draw the equator from the same orthonormal basis used for the
-                // observer. The dim dashed half is behind Earth; the solid red half
-                // is the visible side of the globe.
-                const drawEquatorHalf = (frontSide) => {
-                    ctx.beginPath();
-                    let drawing = false;
-                    for (let step = 0; step <= 128; step += 1) {
-                        const angle = (step / 128) * Math.PI * 2;
-                        const cosAngle = Math.cos(angle);
-                        const sinAngle = Math.sin(angle);
-                        const equatorPoint = {
-                            x: equatorSun.x * cosAngle + equatorEast.x * sinAngle,
-                            y: equatorSun.y * cosAngle + equatorEast.y * sinAngle,
-                            z: equatorSun.z * cosAngle + equatorEast.z * sinAngle
-                        };
-                        const onRequestedHalf = frontSide
-                            ? equatorPoint.z >= 0
-                            : equatorPoint.z < 0;
-                        if (!onRequestedHalf) {
-                            drawing = false;
-                            continue;
-                        }
-                        const pointX = earthPosition.x + equatorPoint.x * earthRadius;
-                        const pointY = earthPosition.y + equatorPoint.y * earthRadius;
-                        if (!drawing) {
-                            ctx.moveTo(pointX, pointY);
-                            drawing = true;
-                        } else {
-                            ctx.lineTo(pointX, pointY);
-                        }
-                    }
-                    ctx.stroke();
-                };
-
-                ctx.save();
-                ctx.lineCap = 'round';
-                ctx.lineWidth = 1.25;
-                ctx.strokeStyle = 'rgba(248, 113, 113, 0.42)';
-                ctx.setLineDash([2.5, 2.5]);
-                drawEquatorHalf(false);
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = '#ef4444';
-                ctx.setLineDash([]);
-                drawEquatorHalf(true);
-                ctx.restore();
-
-                const latitudeRad = toRadians(state.latitude);
-                // Earth rotates west-to-east: counter-clockwise when viewed from
-                // above the North Pole. Canvas time therefore advances with a
-                // negative mathematical hour angle in this projection.
-                const hourAngle = -toRadians((state.hour - 12) * 15);
-                const latitudeScale = Math.cos(latitudeRad);
-                const observerNormal = {
-                    x:
-                        northAxis.x * Math.sin(latitudeRad) +
-                        latitudeScale * (
-                            equatorSun.x * Math.cos(hourAngle) +
-                            equatorEast.x * Math.sin(hourAngle)
-                        ),
-                    y:
-                        northAxis.y * Math.sin(latitudeRad) +
-                        latitudeScale * (
-                            equatorSun.y * Math.cos(hourAngle) +
-                            equatorEast.y * Math.sin(hourAngle)
-                        ),
-                    z:
-                        northAxis.z * Math.sin(latitudeRad) +
-                        latitudeScale * (
-                            equatorSun.z * Math.cos(hourAngle) +
-                            equatorEast.z * Math.sin(hourAngle)
-                        )
-                };
-                const observerX = earthPosition.x + observerNormal.x * earthRadius;
-                const observerY = earthPosition.y + observerNormal.y * earthRadius;
-                const observerOnFarSide = observerNormal.z < -0.01;
-
-                ctx.save();
-                ctx.globalAlpha = observerOnFarSide ? 0.45 : 1;
-                ctx.fillStyle = '#fb923c';
-                ctx.strokeStyle = '#fff7ed';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.arc(observerX, observerY, 2.8, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.stroke();
-                ctx.restore();
-
-                const date = dayToDate(state.day);
-                ctx.fillStyle = '#f8fafc';
-                ctx.font = '900 12px Pretendard, sans-serif';
-                ctx.textAlign = 'left';
-                ctx.fillText(`${date.month}월 ${date.date}일 지구 위치`, 14, height - 17);
             }
 
             function pathPoint(hour, declination, width, height) {
@@ -2595,35 +2227,9 @@
 
             }
 
-            function pickSpaceSeasonPoint(event) {
-                const rect = orbitCanvas.getBoundingClientRect();
-                if (!rect.width || !rect.height) return null;
-                const pointerX = event.clientX - rect.left;
-                const pointerY = event.clientY - rect.top;
-                const cx = rect.width * 0.5;
-                const cy = rect.height * 0.54;
-                const rx = Math.max(90, rect.width * 0.35);
-                const ry = Math.max(55, Math.min(rect.height * 0.29, rx * 0.52));
-
-                let nearest = null;
-                let nearestDistance = 34;
-                seasonPoints.forEach(point => {
-                    const position = viewOrbitPoint(point.day, cx, cy, rx, ry);
-                    const distance = Math.hypot(
-                        pointerX - position.x,
-                        pointerY - position.y
-                    );
-                    if (distance < nearestDistance) {
-                        nearest = point;
-                        nearestDistance = distance;
-                    }
-                });
-                return nearest;
-            }
-
             function render() {
                 syncControls();
-                drawSpaceView();
+                spaceView.render(state);
                 drawObserver();
             }
 
@@ -2666,72 +2272,6 @@
 
             timeSlider.addEventListener('input', () => {
                 state.hour = Number(timeSlider.value) / 4;
-                pause();
-                render();
-            });
-
-            orbitCanvas.addEventListener('pointerdown', event => {
-                orbitDragState = {
-                    pointerId: event.pointerId,
-                    startX: event.clientX,
-                    startY: event.clientY,
-                    startRotation: spaceViewRotation,
-                    moved: false
-                };
-                suppressOrbitPointClick = false;
-                if (orbitCanvas.setPointerCapture) {
-                    orbitCanvas.setPointerCapture(event.pointerId);
-                }
-                orbitCanvas.style.cursor = 'grabbing';
-            });
-            orbitCanvas.addEventListener('pointermove', event => {
-                if (orbitDragState && orbitDragState.pointerId === event.pointerId) {
-                    const deltaX = event.clientX - orbitDragState.startX;
-                    const deltaY = event.clientY - orbitDragState.startY;
-                    if (Math.hypot(deltaX, deltaY) > 5) {
-                        orbitDragState.moved = true;
-                    }
-                    if (orbitDragState.moved) {
-                        const rect = orbitCanvas.getBoundingClientRect();
-                        const nextRotation =
-                            orbitDragState.startRotation +
-                            (deltaX / Math.max(rect.width, 1)) * Math.PI * 2;
-                        spaceViewRotation = Math.atan2(
-                            Math.sin(nextRotation),
-                            Math.cos(nextRotation)
-                        );
-                        render();
-                    }
-                    return;
-                }
-                orbitCanvas.style.cursor = pickSpaceSeasonPoint(event) ? 'pointer' : 'grab';
-            });
-            function finishOrbitDrag(event) {
-                if (!orbitDragState || orbitDragState.pointerId !== event.pointerId) return;
-                suppressOrbitPointClick = orbitDragState.moved;
-                if (
-                    orbitCanvas.releasePointerCapture &&
-                    (!orbitCanvas.hasPointerCapture || orbitCanvas.hasPointerCapture(event.pointerId))
-                ) {
-                    orbitCanvas.releasePointerCapture(event.pointerId);
-                }
-                orbitDragState = null;
-                orbitCanvas.style.cursor = 'grab';
-            }
-            orbitCanvas.addEventListener('pointerup', finishOrbitDrag);
-            orbitCanvas.addEventListener('pointercancel', finishOrbitDrag);
-            orbitCanvas.addEventListener('pointerleave', () => {
-                if (!orbitDragState) orbitCanvas.style.cursor = 'grab';
-            });
-            orbitCanvas.addEventListener('click', event => {
-                if (suppressOrbitPointClick) {
-                    suppressOrbitPointClick = false;
-                    return;
-                }
-                const point = pickSpaceSeasonPoint(event);
-                if (!point) return;
-                state.day = point.day;
-                state.hour = 12;
                 pause();
                 render();
             });
@@ -2787,54 +2327,54 @@
         // Dedicated Earth & Moon Quiz Engine
         (function() {
             const quizData = [
-                { cat: "지구의 자전", q: "지구의 자전 방향으로 옳은 것은?", ans: 0, opts: ["서쪽에서 동쪽, 북극 위에서 보면 시계 반대 방향", "동쪽에서 서쪽, 북극 위에서 보면 시계 반대 방향", "서쪽에서 동쪽, 북극 위에서 보면 시계 방향", "동쪽에서 서쪽, 북극 위에서 보면 시계 방향"], exp: "해설: 지구는 서쪽에서 동쪽으로, 북극 위에서 내려다보면 시계 반대 방향으로 자전합니다. 그래서 태양과 별은 그 반대인 동쪽에서 떠서 서쪽으로 지는 것처럼 보입니다." },
-                { cat: "낮과 밤", q: "낮과 밤이 반복되는 직접적인 원인은 무엇인가?", ans: 1, opts: ["지구의 공전", "지구의 자전", "달의 공전", "태양의 자전"], exp: "해설: 지구가 약 24시간에 한 바퀴 자전하면서 태양을 향하는 쪽과 등지는 쪽이 바뀌어 낮과 밤이 반복됩니다." },
-                { cat: "지구의 공전", q: "지구가 태양 주위를 한 바퀴 공전하는 데 걸리는 시간에 가장 가까운 것은?", ans: 2, opts: ["약 24시간", "약 29.5일", "약 365.24일", "약 27.3일"], exp: "해설: 지구의 공전 주기는 약 365.24일이며, 달력은 이를 보정하기 위해 윤년을 둡니다." },
-                { cat: "계절 변화", q: "지구에서 계절이 생기는 가장 중요한 두 조건의 조합은?", ans: 3, opts: ["기울어진 자전축과 지구의 자전", "지구-태양 거리 변화와 지구의 공전", "지구-태양 거리 변화와 지구의 자전", "기울어진 자전축과 지구의 공전"], exp: "해설: 지구는 자전축이 약 23.5° 기울어진 채 태양 주위를 공전하므로 계절에 따라 태양 고도와 낮의 길이가 달라집니다. 지구와 태양 사이의 거리 변화는 계절의 주된 원인이 아닙니다." },
-                { cat: "계절 변화", q: "북반구가 여름일 때 남반구의 계절은 무엇인가?", ans: 1, opts: ["여름", "겨울", "봄", "가을"], exp: "해설: 한쪽 반구가 태양 쪽으로 기울 때 반대쪽 반구는 태양에서 멀어지는 방향으로 기울므로 두 반구의 계절은 반대입니다." },
-                { cat: "태양의 남중 고도", q: "한국에서 태양의 남중 고도가 가장 높은 때는 언제인가?", ans: 0, opts: ["하지 무렵", "춘분 무렵", "추분 무렵", "동지 무렵"], exp: "해설: 북반구의 하지 무렵에는 태양의 적위가 가장 북쪽에 있어 한국에서 남중 고도가 가장 높습니다." },
-                { cat: "태양의 남중 고도", q: "같은 장소에서 태양의 남중 고도가 높아질 때 일반적으로 나타나는 변화는?", ans: 2, opts: ["정오 무렵 그림자가 길어진다", "밤의 길이가 길어진다", "정오 무렵 그림자가 짧아진다", "같은 면적이 받는 햇빛 에너지가 줄어든다"], exp: "해설: 태양이 높이 떠 있을수록 햇빛이 더 수직에 가깝게 비쳐 같은 물체의 그림자는 짧아집니다. 이때 낮은 길어지고 밤은 짧아지며, 같은 면적이 받는 햇빛 에너지는 많아집니다." },
-                { cat: "춘분·추분", q: "춘분과 추분 무렵에 공통으로 나타나는 현상은?", ans: 1, opts: ["태양이 북동쪽에서 뜬다", "낮과 밤의 길이가 거의 같다", "태양의 남중 고도가 1년 중 가장 높다", "정오의 그림자가 1년 중 가장 길다"], exp: "해설: 춘분과 추분에는 태양이 천구의 적도 부근에 있어 전 지구적으로 낮과 밤의 길이가 거의 같습니다. 태양이 북동쪽에서 뜨고 남중 고도가 가장 높은 때는 하지, 정오의 그림자가 가장 긴 때는 동지 무렵입니다." },
-                { cat: "달의 공전", q: "달의 자전 주기와 공전 주기가 같아서 나타나는 현상은?", ans: 0, opts: ["지구에서는 달의 거의 같은 면만 보인다", "달의 위상이 한 달 내내 변하지 않는다", "달의 뒷면은 늘 햇빛을 받지 못한다", "달이 실제로는 자전하지 않는다"], exp: "해설: 달은 약 27.3일을 주기로 자전과 공전을 하므로 지구를 향하는 면이 거의 일정합니다. 이를 동주기 자전이라고 합니다. 달의 뒷면도 삭 무렵에는 햇빛을 받으며, 달은 공전하는 동안 실제로 한 바퀴 자전합니다." },
-                { cat: "달의 위상", q: "달의 위상이 변하는 까닭은 무엇인가?", ans: 2, opts: ["달이 스스로 내는 빛의 밝기가 바뀌기 때문에", "지구 그림자가 달의 일부를 가리기 때문에", "달이 공전하며 밝은 면을 보는 각도가 달라지기 때문에", "달이 자전하며 밝은 면이 조금씩 돌아가기 때문에"], exp: "해설: 달의 절반은 항상 태양빛을 받지만 달의 공전에 따라 지구에서 보이는 밝은 부분의 비율이 달라집니다. 지구 그림자가 달을 가리는 것은 월식입니다." },
-                { cat: "달의 위상", q: "위상의 변화 순서로 옳은 것은?", ans: 3, opts: ["삭→보름달→상현달→하현달", "상현달→삭→보름달→초승달", "보름달→상현달→삭→하현달", "삭→상현달→보름달→하현달"], exp: "해설: 대표 위상은 삭, 상현달, 보름달(망), 하현달의 순서로 반복됩니다." },
-                { cat: "달의 위상", q: "음력 7~8일 무렵 오른쪽 반쪽이 밝게 보이는 달은?", ans: 1, opts: ["초승달", "상현달", "보름달", "하현달"], exp: "해설: 음력 7~8일 무렵에는 오른쪽 절반이 밝은 상현달을 볼 수 있습니다." },
-                { cat: "달의 위상", q: "태양-지구-달이 이 순서로 거의 일직선에 놓일 때 보이는 달의 위상은?", ans: 2, opts: ["삭", "상현달", "보름달", "하현달"], exp: "해설: 달이 태양의 반대편에 놓이면 지구 쪽을 향한 면 대부분이 밝게 보여 보름달이 됩니다." },
-                { cat: "달의 관측", q: "보름달이 남쪽 하늘에서 가장 높이 보이는 때는 대략 언제인가?", ans: 3, opts: ["해 뜰 무렵", "정오", "해 질 무렵", "자정 무렵"], exp: "해설: 보름달은 해 질 무렵 동쪽에서 떠서 자정 무렵 남중하고 해 뜰 무렵 서쪽으로 집니다." },
-                { cat: "달의 관측", q: "상현달을 관측하기 가장 알맞은 시각과 방향은?", ans: 0, opts: ["해 질 무렵 남쪽 하늘", "자정 무렵 동쪽 하늘", "해 뜰 무렵 남쪽 하늘", "정오 무렵 서쪽 하늘"], exp: "해설: 상현달은 정오 무렵 떠서 해 질 무렵 남중하며 자정 무렵 서쪽으로 집니다." },
-                { cat: "달의 관측", q: "하현달이 남쪽 하늘에서 가장 높이 보이는 때는 대략 언제인가?", ans: 1, opts: ["해 질 무렵", "해 뜰 무렵", "정오", "자정"], exp: "해설: 하현달은 자정 무렵 떠서 해 뜰 무렵 남중하고 정오 무렵 집니다." },
-                { cat: "달의 주기", q: "삭에서 다음 삭까지 걸리는 시간(약 29.5일)이 달의 공전 주기(약 27.3일)보다 긴 까닭은?", ans: 2, opts: ["달이 공전하는 동안 지구가 계속 자전하기 때문에", "달이 공전하는 동안 스스로도 자전하기 때문에", "달이 공전하는 동안 지구도 태양 주위를 돌기 때문에", "달의 공전 궤도면이 약 5° 기울어져 있기 때문에"], exp: "해설: 달이 별을 기준으로 한 바퀴 도는 동안 지구도 공전하므로 같은 태양-지구-달 배치로 돌아오려면 더 이동해야 합니다." },
-                {"cat":"본그림자와 반그림자","q":"태양빛을 가리는 천체 뒤에서 태양 전체가 가려져 직접 오는 태양빛이 도달하지 않는 영역은?","ans":0,"opts":["본그림자","반그림자","태양의 밝은 면","지구의 낮인 면"],"exp":"본그림자에서는 태양 전체가 가려집니다. 반그림자에는 태양빛의 일부가 도달합니다."},
-                {"cat":"본그림자와 반그림자","q":"태양의 일부만 가려져 태양빛의 일부가 도달하는 영역에 대한 설명으로 옳은 것은?","ans":1,"opts":["본그림자이며 항상 개기일식이 보인다","반그림자이며 태양빛이 완전히 차단되지는 않는다","본그림자이며 태양 전체가 보인다","반그림자이며 태양빛이 전혀 도달하지 않는다"],"exp":"반그림자는 크기가 있는 광원인 태양의 일부만 가려지는 영역입니다. 본그림자와 구분해야 합니다."},
-                {"cat":"일식의 종류와 관측","diagram":"solar-observers","q":"그림에서 A와 B는 지구의 서로 다른 관측 위치이다. 두 관측자가 보는 현상을 바르게 짝지은 것은?","ans":2,"opts":["A: 부분일식, B: 개기일식","A: 개기월식, B: 부분월식","A: 개기일식, B: 부분일식","A와 B 모두 같은 모양의 개기일식"],"exp":"A에서는 태양 전체가, B에서는 태양 일부가 가려집니다. 일식의 보이는 모습은 지구의 관측 위치에 따라 달라집니다."},
-                {"cat":"월식의 종류와 관측","q":"달 전체가 지구의 본그림자 안에 들어간 상태를 무엇이라고 하는가?","ans":0,"opts":["개기월식","부분월식","부분일식","반영월식"],"exp":"개기월식은 달 전체가 지구의 본그림자 안에 들어간 경우입니다. 달 전체가 단순히 반그림자 안에 있는 것과는 다릅니다."},
-                {"cat":"월식의 종류와 관측","q":"달의 일부가 지구의 본그림자 안에 들어가고 나머지는 본그림자 밖에 있다. 이 현상은?","ans":1,"opts":["개기월식","부분월식","개기일식","달의 위상인 상현달"],"exp":"부분월식은 달 일부만 본그림자에 들어간 상태입니다. 상현달처럼 달의 공전에 따라 밝은 면을 절반만 보는 위상 변화와 구분합니다."},
-                {"cat":"월식의 종류와 관측","q":"달이 지구의 반그림자만 통과하고 본그림자에는 들어가지 않았다. 이에 대한 설명으로 옳은 것은?","ans":3,"opts":["부분월식이므로 달 일부가 본그림자에 들어갔다","개기월식이므로 태양빛이 직접 도달하지 않는다","일식이므로 달이 태양과 지구 사이에 있다","반영월식이며 달이 조금 어두워질 수 있다"],"exp":"반그림자만 통과하면 반영월식입니다. 부분월식은 달의 일부가 본그림자에 들어가야 하므로 서로 다른 현상입니다."},
-                {"cat":"식의 배열과 위상","q":"일식과 월식이 일어날 수 있는 달의 위상을 바르게 짝지은 것은?","ans":2,"opts":["일식: 보름, 월식: 삭","일식: 상현, 월식: 하현","일식: 삭, 월식: 보름","일식과 월식 모두 상현"],"exp":"일식 때는 태양과 지구 사이에 달이 있는 삭, 월식 때는 태양 반대편에 달이 있는 보름입니다. 삭과 보름이 될 때마다 식이 생기는 것은 아닙니다."},
-                {"cat":"일식의 종류와 관측","q":"일식과 월식을 관측할 수 있는 지역에 대한 설명으로 옳은 것은?","ans":0,"opts":["일식은 달의 그림자가 닿는 일부 지역, 월식은 달이 보이는 밤인 지역에서 관측한다","일식과 월식 모두 지구 어디서나 동시에 보인다","월식은 달의 그림자가 지구에 닿는 지역에서만 보인다","일식은 밤인 지역, 월식은 낮인 지역에서 보인다"],"exp":"일식은 지구에 생긴 달 그림자 안에서 관측합니다. 월식은 지구 그림자에 들어간 달을 보는 현상이므로 달이 지평선 위에 있는 밤인 지역에서 관측할 수 있습니다."},
-                { cat: "식의 배열과 위상", q: "태양-달-지구 순서로 거의 일직선이 될 때 일어날 수 있는 현상은?", ans: 0, opts: ["일식", "월식", "보름달", "상현달"], exp: "해설: 달이 태양과 지구 사이에서 태양빛을 가릴 때 일식이 일어납니다." },
-                { cat: "식의 배열과 위상", q: "태양-지구-달 순서로 거의 일직선이 될 때 일어날 수 있는 현상은?", ans: 1, opts: ["일식", "월식", "삭", "상현달"], exp: "해설: 보름달 무렵 달이 지구의 그림자에 들어가면 월식이 일어납니다. 본그림자에 들어가는 정도에 따라 개기월식과 부분월식으로 구분합니다." },
-                { cat: "식이 일어나는 조건", q: "일식과 월식이 매달 일어나지 않는 주된 이유는?", ans: 3, opts: ["달의 자전 주기와 공전 주기가 같아서", "달의 공전 궤도가 원이 아니라 타원이어서", "지구의 자전축이 약 23.5° 기울어져 있어서", "달의 공전 궤도면이 황도면과 약 5° 기울어져 있어서"], exp: "해설: 달의 공전 궤도면은 황도면에 대해 약 5° 기울어져 있어 대부분의 삭과 망에는 세 천체가 정확히 일직선이 되지 않습니다." },
-                { cat: "태양의 일주 운동", q: "우리나라에서 태양이 하루 동안 움직이는 것처럼 보이는 일반적인 방향은?", ans: 0, opts: ["동쪽에서 떠서 남쪽 하늘을 지나 서쪽으로 진다", "서쪽에서 떠서 남쪽 하늘을 지나 동쪽으로 진다", "동쪽에서 떠서 북쪽 하늘을 지나 서쪽으로 진다", "서쪽에서 떠서 북쪽 하늘을 지나 동쪽으로 진다"], exp: "해설: 지구가 서쪽에서 동쪽으로 자전하기 때문에 태양은 동쪽에서 떠서 남쪽 하늘을 지나 서쪽으로 지는 것처럼 보입니다. 북쪽 하늘을 지나는 경로는 남반구 중위도에서 볼 수 있습니다." },
-                { cat: "태양의 남중", q: "태양이 남중한다는 말의 뜻으로 가장 알맞은 것은?", ans: 2, opts: ["태양이 머리 바로 위의 천정을 지나는 때", "태양이 1년 중 가장 남쪽에서 떠오르는 때", "태양이 정남쪽을 지나며 하루 중 가장 높이 뜬 때", "태양이 정남쪽 지평선 가까이 낮게 뜬 때"], exp: "해설: 태양은 정남쪽 자오선을 지날 때 하루 중 고도가 가장 높으며 이를 남중이라고 합니다. 우리나라에서는 남중할 때도 태양이 천정까지 올라가지는 않습니다." },
-                { cat: "태양의 남중 고도", q: "위도 37.5°인 곳에서 춘분·추분의 태양 남중 고도에 가장 가까운 것은?", ans: 1, opts: ["약 37.5°", "약 52.5°", "약 66.5°", "약 90°"], exp: "해설: 춘분·추분에는 태양 적위가 0°이므로 남중 고도는 90°-위도=약 52.5°입니다." },
-                { cat: "일출·일몰", q: "우리나라에서 춘분과 추분 무렵 태양이 뜨고 지는 방향은?", ans: 3, opts: ["북동쪽에서 떠서 북서쪽으로 진다", "남동쪽에서 떠서 남서쪽으로 진다", "정남쪽에서 떠서 정북쪽으로 진다", "정동쪽에서 떠서 정서쪽으로 진다"], exp: "해설: 춘분과 추분 무렵 태양은 정동쪽 부근에서 떠서 정서쪽 부근으로 집니다." },
-                { cat: "하지", q: "우리나라에서 하지 무렵 태양의 일주 경로를 바르게 설명한 것은?", ans: 1, opts: ["남동쪽에서 떠서 낮고 짧은 경로로 남서쪽에 진다", "북동쪽에서 떠서 높고 긴 경로로 북서쪽에 진다", "북동쪽에서 떠서 낮고 짧은 경로로 북서쪽에 진다", "남동쪽에서 떠서 높고 긴 경로로 남서쪽에 진다"], exp: "해설: 하지 무렵에는 태양이 북동쪽에서 일찍 떠서 높은 경로를 길게 지나 북서쪽으로 늦게 집니다." },
-                { cat: "동지", q: "우리나라에서 동지 무렵 태양의 일주 경로를 바르게 설명한 것은?", ans: 2, opts: ["북동쪽에서 떠서 높고 긴 경로로 북서쪽에 진다", "남동쪽에서 떠서 높고 긴 경로로 남서쪽에 진다", "남동쪽에서 떠서 낮고 짧은 경로로 남서쪽에 진다", "북동쪽에서 떠서 낮고 짧은 경로로 북서쪽에 진다"], exp: "해설: 동지 무렵에는 태양이 남동쪽에서 늦게 떠서 낮고 짧은 경로를 지난 뒤 남서쪽으로 일찍 집니다." },
-                { cat: "계절과 낮의 길이", q: "우리나라에서 낮의 길이가 가장 긴 때와 가장 짧은 때를 바르게 짝지은 것은?", ans: 0, opts: ["하지-가장 김, 동지-가장 짧음", "춘분-가장 김, 추분-가장 짧음", "동지-가장 김, 하지-가장 짧음", "하지-가장 김, 추분-가장 짧음"], exp: "해설: 태양의 일주 경로가 가장 길고 높은 하지는 낮이 가장 길며, 경로가 가장 짧고 낮은 동지는 낮이 가장 짧습니다." },
-                { cat: "태양 고도와 그림자", q: "같은 막대의 그림자가 하루 중 가장 짧아지는 때는 언제인가?", ans: 1, opts: ["해 뜰 무렵", "태양이 남중할 무렵", "해 질 무렵", "오전 9시 무렵"], exp: "해설: 태양이 남중할 때 고도가 가장 높으므로 물체의 그림자는 하루 중 가장 짧습니다." },
-                { cat: "태양 고도와 그림자", q: "막대 그림자의 방향은 태양이 있는 방향과 어떤 관계인가?", ans: 3, opts: ["태양과 같은 쪽", "태양 방향에서 90° 옆쪽", "오전에는 같은 쪽, 오후에는 반대쪽", "태양과 반대쪽"], exp: "해설: 빛은 태양 쪽에서 오므로 불투명한 물체의 그림자는 태양 반대쪽에 생깁니다." },
-                { cat: "위도와 태양 고도", q: "같은 날짜의 정오에 한국보다 더 북쪽으로 이동하면 태양의 남중 고도는 일반적으로 어떻게 변하는가?", ans: 2, opts: ["높아진다", "거의 변하지 않는다", "낮아진다", "위도가 아니라 경도에 따라 달라진다"], exp: "해설: 같은 태양 적위에서 북위가 커질수록 태양의 남중 고도는 낮아집니다. 경도가 달라지면 남중 시각이 달라질 뿐 남중 고도는 거의 같습니다." },
-                { cat: "적도의 태양 경로", q: "적도 부근에서 연중 낮과 밤의 길이에 대한 설명으로 가장 알맞은 것은?", ans: 0, opts: ["대체로 각각 12시간에 가깝다", "여름에는 낮이 24시간이다", "겨울에는 밤이 24시간이다", "하지에는 낮이 14시간을 넘는다"], exp: "해설: 적도 부근에서는 태양의 일주 경로가 연중 지평선 위와 아래를 거의 같은 길이로 지나 낮과 밤이 약 12시간에 가깝습니다. 낮이나 밤이 24시간 이어지는 것은 극지방, 하지에 낮이 14시간을 넘는 것은 우리나라 같은 중위도 지방의 일입니다." },
-                { cat: "계절의 원인", q: "지구가 공전하는 동안 자전축에 대해 옳은 설명은?", ans: 1, opts: ["계절마다 기울기 방향이 반대로 뒤집힌다", "약 23.5° 기울어진 방향을 거의 일정하게 유지한다", "하지에는 기울기가 0°가 된다", "태양을 향하도록 계속 방향을 바꾼다"], exp: "해설: 지구는 자전축이 약 23.5° 기울어진 채 거의 같은 방향을 유지하며 태양 주위를 공전합니다." },
-                { cat: "계절의 원인", q: "북반구의 여름이 지구가 태양에 가까워져서 생긴다는 설명이 틀린 근거는?", ans: 2, opts: ["태양이 내는 빛의 세기가 계절에 따라 크게 달라진다", "지구의 공전 궤도가 완전한 원이라 거리가 변하지 않는다", "같은 때 남반구는 겨울이라 거리로는 반대 계절을 설명할 수 없다", "지구가 태양에 가까울수록 공전 속도가 느려진다"], exp: "해설: 지구 전체의 태양 거리는 두 반구에 같지만 북반구와 남반구의 계절은 반대이므로 계절의 주원인은 거리 변화가 아닙니다. 실제로 지구는 북반구가 겨울인 1월 초에 태양과 가장 가깝습니다." },
-                { cat: "계절과 에너지", q: "태양의 남중 고도가 높을수록 지표가 더 잘 데워지는 주된 까닭은?", ans: 0, opts: ["같은 양의 햇빛이 더 좁은 면적에 모이기 때문에", "태양과 지표 사이의 거리가 가까워지기 때문에", "같은 양의 햇빛이 더 넓은 면적에 퍼지기 때문에", "햇빛이 지나는 대기의 두께가 두꺼워지기 때문에"], exp: "해설: 태양 고도가 높으면 햇빛이 지표에 더 수직으로 들어와 같은 에너지가 좁은 면적에 집중됩니다. 이때 햇빛이 지나는 대기의 두께는 오히려 얇아집니다." },
-                { cat: "삭의 관측", q: "삭 무렵 달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 1, opts: ["해 질 무렵 떠서 해 뜰 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다", "정오 무렵 떠서 자정 무렵 진다", "자정 무렵 떠서 정오 무렵 진다"], exp: "해설: 삭 무렵 달은 태양과 거의 같은 방향에 있어 해 뜰 무렵 뜨고 해 질 무렵 지며 밝은 낮하늘에 가려 관측하기 어렵습니다." },
-                { cat: "상현달의 관측", q: "상현달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 2, opts: ["해 질 무렵 떠서 해 뜰 무렵 진다", "자정 무렵 떠서 정오 무렵 진다", "정오 무렵 떠서 자정 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다"], exp: "해설: 상현달은 정오 무렵 떠서 해 질 무렵 남중하고 자정 무렵 집니다." },
-                { cat: "보름달의 관측", q: "보름달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 0, opts: ["해 질 무렵 떠서 해 뜰 무렵 진다", "정오 무렵 떠서 자정 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다", "자정 무렵 떠서 정오 무렵 진다"], exp: "해설: 보름달은 태양 반대 방향에 있어 해 질 무렵 동쪽에서 떠서 자정에 남중하고 해 뜰 무렵 서쪽으로 집니다." },
-                { cat: "하현달의 관측", q: "하현달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 3, opts: ["정오 무렵 떠서 자정 무렵 진다", "해 질 무렵 떠서 해 뜰 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다", "자정 무렵 떠서 정오 무렵 진다"], exp: "해설: 하현달은 자정 무렵 떠서 해 뜰 무렵 남중하고 정오 무렵 집니다." },
-                { cat: "달의 위상과 위치", q: "초승달은 해가 진 직후 어느 하늘에서 관측하기 가장 좋은가?", ans: 1, opts: ["동쪽 하늘", "서쪽 하늘", "남쪽 하늘", "남동쪽 하늘"], exp: "해설: 초승달은 태양에서 동쪽으로 조금 떨어져 있어 해가 진 직후 서쪽 하늘에서 잠시 보입니다. 해가 진 직후 남쪽 하늘에는 상현달, 동쪽 하늘에는 보름달이 보입니다." },
-                { cat: "위도와 낮의 길이", q: "북극 지방의 여름에 태양이 지평선 아래로 지지 않는 현상을 무엇이라 하는가?", ans: 2, opts: ["오로라", "극야", "백야", "하지"], exp: "해설: 자전축이 기울어진 지구에서 북극 지방의 여름에는 태양이 하루 종일 지평선 위에 머무는 백야가 나타날 수 있습니다. 겨울에 해가 하루 종일 뜨지 않는 극야와 반대되는 현상입니다." }
+                { id: "space-earth-001", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "지구의 자전", q: "지구의 자전 방향으로 옳은 것은?", ans: 0, opts: ["서쪽에서 동쪽, 북극 위에서 보면 시계 반대 방향", "동쪽에서 서쪽, 북극 위에서 보면 시계 반대 방향", "서쪽에서 동쪽, 북극 위에서 보면 시계 방향", "동쪽에서 서쪽, 북극 위에서 보면 시계 방향"], exp: "해설: 지구는 서쪽에서 동쪽으로, 북극 위에서 내려다보면 시계 반대 방향으로 자전합니다. 그래서 태양과 별은 그 반대인 동쪽에서 떠서 서쪽으로 지는 것처럼 보입니다." },
+                { id: "space-earth-002", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "낮과 밤", q: "낮과 밤이 반복되는 직접적인 원인은 무엇인가?", ans: 1, opts: ["지구의 공전", "지구의 자전", "달의 공전", "태양의 자전"], exp: "해설: 지구가 약 24시간에 한 바퀴 자전하면서 태양을 향하는 쪽과 등지는 쪽이 바뀌어 낮과 밤이 반복됩니다." },
+                { id: "space-earth-003", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "지구의 공전", q: "지구가 태양 주위를 한 바퀴 공전하는 데 걸리는 시간에 가장 가까운 것은?", ans: 2, opts: ["약 24시간", "약 29.5일", "약 365.24일", "약 27.3일"], exp: "해설: 지구의 공전 주기는 약 365.24일이며, 달력은 이를 보정하기 위해 윤년을 둡니다." },
+                { id: "space-earth-004", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "계절 변화", q: "지구에서 계절이 생기는 가장 중요한 두 조건의 조합은?", ans: 3, opts: ["기울어진 자전축과 지구의 자전", "지구-태양 거리 변화와 지구의 공전", "지구-태양 거리 변화와 지구의 자전", "기울어진 자전축과 지구의 공전"], exp: "해설: 지구는 자전축이 약 23.5° 기울어진 채 태양 주위를 공전하므로 계절에 따라 태양 고도와 낮의 길이가 달라집니다. 지구와 태양 사이의 거리 변화는 계절의 주된 원인이 아닙니다." },
+                { id: "space-earth-005", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "계절 변화", q: "북반구가 여름일 때 남반구의 계절은 무엇인가?", ans: 1, opts: ["여름", "겨울", "봄", "가을"], exp: "해설: 한쪽 반구가 태양 쪽으로 기울 때 반대쪽 반구는 태양에서 멀어지는 방향으로 기울므로 두 반구의 계절은 반대입니다." },
+                { id: "space-earth-006", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "태양의 남중 고도", q: "한국에서 태양의 남중 고도가 가장 높은 때는 언제인가?", ans: 0, opts: ["하지 무렵", "춘분 무렵", "추분 무렵", "동지 무렵"], exp: "해설: 북반구의 하지 무렵에는 태양의 적위가 가장 북쪽에 있어 한국에서 남중 고도가 가장 높습니다." },
+                { id: "space-earth-007", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "태양의 남중 고도", q: "같은 장소에서 태양의 남중 고도가 높아질 때 일반적으로 나타나는 변화는?", ans: 2, opts: ["정오 무렵 그림자가 길어진다", "밤의 길이가 길어진다", "정오 무렵 그림자가 짧아진다", "같은 면적이 받는 햇빛 에너지가 줄어든다"], exp: "해설: 태양이 높이 떠 있을수록 햇빛이 더 수직에 가깝게 비쳐 같은 물체의 그림자는 짧아집니다. 이때 낮은 길어지고 밤은 짧아지며, 같은 면적이 받는 햇빛 에너지는 많아집니다." },
+                { id: "space-earth-008", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "춘분·추분", q: "춘분과 추분 무렵에 공통으로 나타나는 현상은?", ans: 1, opts: ["태양이 북동쪽에서 뜬다", "낮과 밤의 길이가 거의 같다", "태양의 남중 고도가 1년 중 가장 높다", "정오의 그림자가 1년 중 가장 길다"], exp: "해설: 춘분과 추분에는 태양이 천구의 적도 부근에 있어 전 지구적으로 낮과 밤의 길이가 거의 같습니다. 태양이 북동쪽에서 뜨고 남중 고도가 가장 높은 때는 하지, 정오의 그림자가 가장 긴 때는 동지 무렵입니다." },
+                { id: "space-earth-009", revision: 1, schoolLevels: ["middle","high"], cat: "달의 공전", q: "달의 자전 주기와 공전 주기가 같아서 나타나는 현상은?", ans: 0, opts: ["지구에서는 달의 거의 같은 면만 보인다", "달의 위상이 한 달 내내 변하지 않는다", "달의 뒷면은 늘 햇빛을 받지 못한다", "달이 실제로는 자전하지 않는다"], exp: "해설: 달은 약 27.3일을 주기로 자전과 공전을 하므로 지구를 향하는 면이 거의 일정합니다. 이를 동주기 자전이라고 합니다. 달의 뒷면도 삭 무렵에는 햇빛을 받으며, 달은 공전하는 동안 실제로 한 바퀴 자전합니다." },
+                { id: "space-earth-010", revision: 1, schoolLevels: ["middle","high"], cat: "달의 위상", q: "달의 위상이 변하는 까닭은 무엇인가?", ans: 2, opts: ["달이 스스로 내는 빛의 밝기가 바뀌기 때문에", "지구 그림자가 달의 일부를 가리기 때문에", "달이 공전하며 밝은 면을 보는 각도가 달라지기 때문에", "달이 자전하며 밝은 면이 조금씩 돌아가기 때문에"], exp: "해설: 달의 절반은 항상 태양빛을 받지만 달의 공전에 따라 지구에서 보이는 밝은 부분의 비율이 달라집니다. 지구 그림자가 달을 가리는 것은 월식입니다." },
+                { id: "space-earth-011", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "달의 위상", q: "위상의 변화 순서로 옳은 것은?", ans: 3, opts: ["삭→보름달→상현달→하현달", "상현달→삭→보름달→초승달", "보름달→상현달→삭→하현달", "삭→상현달→보름달→하현달"], exp: "해설: 대표 위상은 삭, 상현달, 보름달(망), 하현달의 순서로 반복됩니다." },
+                { id: "space-earth-012", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "달의 위상", q: "음력 7~8일 무렵 오른쪽 반쪽이 밝게 보이는 달은?", ans: 1, opts: ["초승달", "상현달", "보름달", "하현달"], exp: "해설: 음력 7~8일 무렵에는 오른쪽 절반이 밝은 상현달을 볼 수 있습니다." },
+                { id: "space-earth-013", revision: 1, schoolLevels: ["middle","high"], cat: "달의 위상", q: "태양-지구-달이 이 순서로 거의 일직선에 놓일 때 보이는 달의 위상은?", ans: 2, opts: ["삭", "상현달", "보름달", "하현달"], exp: "해설: 달이 태양의 반대편에 놓이면 지구 쪽을 향한 면 대부분이 밝게 보여 보름달이 됩니다." },
+                { id: "space-earth-014", revision: 1, schoolLevels: ["middle","high"], cat: "달의 관측", q: "보름달이 남쪽 하늘에서 가장 높이 보이는 때는 대략 언제인가?", ans: 3, opts: ["해 뜰 무렵", "정오", "해 질 무렵", "자정 무렵"], exp: "해설: 보름달은 해 질 무렵 동쪽에서 떠서 자정 무렵 남중하고 해 뜰 무렵 서쪽으로 집니다." },
+                { id: "space-earth-015", revision: 1, schoolLevels: ["middle","high"], cat: "달의 관측", q: "상현달을 관측하기 가장 알맞은 시각과 방향은?", ans: 0, opts: ["해 질 무렵 남쪽 하늘", "자정 무렵 동쪽 하늘", "해 뜰 무렵 남쪽 하늘", "정오 무렵 서쪽 하늘"], exp: "해설: 상현달은 정오 무렵 떠서 해 질 무렵 남중하며 자정 무렵 서쪽으로 집니다." },
+                { id: "space-earth-016", revision: 1, schoolLevels: ["middle","high"], cat: "달의 관측", q: "하현달이 남쪽 하늘에서 가장 높이 보이는 때는 대략 언제인가?", ans: 1, opts: ["해 질 무렵", "해 뜰 무렵", "정오", "자정"], exp: "해설: 하현달은 자정 무렵 떠서 해 뜰 무렵 남중하고 정오 무렵 집니다." },
+                { id: "space-earth-017", revision: 1, schoolLevels: ["high"], cat: "달의 주기", q: "삭에서 다음 삭까지 걸리는 시간(약 29.5일)이 달의 공전 주기(약 27.3일)보다 긴 까닭은?", ans: 2, opts: ["달이 공전하는 동안 지구가 계속 자전하기 때문에", "달이 공전하는 동안 스스로도 자전하기 때문에", "달이 공전하는 동안 지구도 태양 주위를 돌기 때문에", "달의 공전 궤도면이 약 5° 기울어져 있기 때문에"], exp: "해설: 달이 별을 기준으로 한 바퀴 도는 동안 지구도 공전하므로 같은 태양-지구-달 배치로 돌아오려면 더 이동해야 합니다." },
+                { id: "space-earth-018", revision: 1, schoolLevels: ["middle","high"],"cat":"본그림자와 반그림자","q":"태양빛을 가리는 천체 뒤에서 태양 전체가 가려져 직접 오는 태양빛이 도달하지 않는 영역은?","ans":0,"opts":["본그림자","반그림자","태양의 밝은 면","지구의 낮인 면"],"exp":"본그림자에서는 태양 전체가 가려집니다. 반그림자에는 태양빛의 일부가 도달합니다."},
+                { id: "space-earth-019", revision: 1, schoolLevels: ["middle","high"],"cat":"본그림자와 반그림자","q":"태양의 일부만 가려져 태양빛의 일부가 도달하는 영역에 대한 설명으로 옳은 것은?","ans":1,"opts":["본그림자이며 항상 개기일식이 보인다","반그림자이며 태양빛이 완전히 차단되지는 않는다","본그림자이며 태양 전체가 보인다","반그림자이며 태양빛이 전혀 도달하지 않는다"],"exp":"반그림자는 크기가 있는 광원인 태양의 일부만 가려지는 영역입니다. 본그림자와 구분해야 합니다."},
+                { id: "space-earth-020", revision: 1, schoolLevels: ["middle","high"],"cat":"일식의 종류와 관측","diagram":"solar-observers","q":"그림에서 A와 B는 지구의 서로 다른 관측 위치이다. 두 관측자가 보는 현상을 바르게 짝지은 것은?","ans":2,"opts":["A: 부분일식, B: 개기일식","A: 개기월식, B: 부분월식","A: 개기일식, B: 부분일식","A와 B 모두 같은 모양의 개기일식"],"exp":"A에서는 태양 전체가, B에서는 태양 일부가 가려집니다. 일식의 보이는 모습은 지구의 관측 위치에 따라 달라집니다."},
+                { id: "space-earth-021", revision: 1, schoolLevels: ["middle","high"],"cat":"월식의 종류와 관측","q":"달 전체가 지구의 본그림자 안에 들어간 상태를 무엇이라고 하는가?","ans":0,"opts":["개기월식","부분월식","부분일식","반영월식"],"exp":"개기월식은 달 전체가 지구의 본그림자 안에 들어간 경우입니다. 달 전체가 단순히 반그림자 안에 있는 것과는 다릅니다."},
+                { id: "space-earth-022", revision: 1, schoolLevels: ["middle","high"],"cat":"월식의 종류와 관측","q":"달의 일부가 지구의 본그림자 안에 들어가고 나머지는 본그림자 밖에 있다. 이 현상은?","ans":1,"opts":["개기월식","부분월식","개기일식","달의 위상인 상현달"],"exp":"부분월식은 달 일부만 본그림자에 들어간 상태입니다. 상현달처럼 달의 공전에 따라 밝은 면을 절반만 보는 위상 변화와 구분합니다."},
+                { id: "space-earth-023", revision: 1, schoolLevels: ["middle","high"],"cat":"월식의 종류와 관측","q":"달이 지구의 반그림자만 통과하고 본그림자에는 들어가지 않았다. 이에 대한 설명으로 옳은 것은?","ans":3,"opts":["부분월식이므로 달 일부가 본그림자에 들어갔다","개기월식이므로 태양빛이 직접 도달하지 않는다","일식이므로 달이 태양과 지구 사이에 있다","반영월식이며 달이 조금 어두워질 수 있다"],"exp":"반그림자만 통과하면 반영월식입니다. 부분월식은 달의 일부가 본그림자에 들어가야 하므로 서로 다른 현상입니다."},
+                { id: "space-earth-024", revision: 1, schoolLevels: ["middle","high"],"cat":"식의 배열과 위상","q":"일식과 월식이 일어날 수 있는 달의 위상을 바르게 짝지은 것은?","ans":2,"opts":["일식: 보름, 월식: 삭","일식: 상현, 월식: 하현","일식: 삭, 월식: 보름","일식과 월식 모두 상현"],"exp":"일식 때는 태양과 지구 사이에 달이 있는 삭, 월식 때는 태양 반대편에 달이 있는 보름입니다. 삭과 보름이 될 때마다 식이 생기는 것은 아닙니다."},
+                { id: "space-earth-025", revision: 1, schoolLevels: ["middle","high"],"cat":"일식의 종류와 관측","q":"일식과 월식을 관측할 수 있는 지역에 대한 설명으로 옳은 것은?","ans":0,"opts":["일식은 달의 그림자가 닿는 일부 지역, 월식은 달이 보이는 밤인 지역에서 관측한다","일식과 월식 모두 지구 어디서나 동시에 보인다","월식은 달의 그림자가 지구에 닿는 지역에서만 보인다","일식은 밤인 지역, 월식은 낮인 지역에서 보인다"],"exp":"일식은 지구에 생긴 달 그림자 안에서 관측합니다. 월식은 지구 그림자에 들어간 달을 보는 현상이므로 달이 지평선 위에 있는 밤인 지역에서 관측할 수 있습니다."},
+                { id: "space-earth-026", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "식의 배열과 위상", q: "태양-달-지구 순서로 거의 일직선이 될 때 일어날 수 있는 현상은?", ans: 0, opts: ["일식", "월식", "보름달", "상현달"], exp: "해설: 달이 태양과 지구 사이에서 태양빛을 가릴 때 일식이 일어납니다." },
+                { id: "space-earth-027", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "식의 배열과 위상", q: "태양-지구-달 순서로 거의 일직선이 될 때 일어날 수 있는 현상은?", ans: 1, opts: ["일식", "월식", "삭", "상현달"], exp: "해설: 보름달 무렵 달이 지구의 그림자에 들어가면 월식이 일어납니다. 본그림자에 들어가는 정도에 따라 개기월식과 부분월식으로 구분합니다." },
+                { id: "space-earth-028", revision: 1, schoolLevels: ["middle","high"], cat: "식이 일어나는 조건", q: "일식과 월식이 매달 일어나지 않는 주된 이유는?", ans: 3, opts: ["달의 자전 주기와 공전 주기가 같아서", "달의 공전 궤도가 원이 아니라 타원이어서", "지구의 자전축이 약 23.5° 기울어져 있어서", "달의 공전 궤도면이 황도면과 약 5° 기울어져 있어서"], exp: "해설: 달의 공전 궤도면은 황도면에 대해 약 5° 기울어져 있어 대부분의 삭과 망에는 세 천체가 정확히 일직선이 되지 않습니다." },
+                { id: "space-earth-029", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "태양의 일주 운동", q: "우리나라에서 태양이 하루 동안 움직이는 것처럼 보이는 일반적인 방향은?", ans: 0, opts: ["동쪽에서 떠서 남쪽 하늘을 지나 서쪽으로 진다", "서쪽에서 떠서 남쪽 하늘을 지나 동쪽으로 진다", "동쪽에서 떠서 북쪽 하늘을 지나 서쪽으로 진다", "서쪽에서 떠서 북쪽 하늘을 지나 동쪽으로 진다"], exp: "해설: 지구가 서쪽에서 동쪽으로 자전하기 때문에 태양은 동쪽에서 떠서 남쪽 하늘을 지나 서쪽으로 지는 것처럼 보입니다. 북쪽 하늘을 지나는 경로는 남반구 중위도에서 볼 수 있습니다." },
+                { id: "space-earth-030", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "태양의 남중", q: "태양이 남중한다는 말의 뜻으로 가장 알맞은 것은?", ans: 2, opts: ["태양이 머리 바로 위의 천정을 지나는 때", "태양이 1년 중 가장 남쪽에서 떠오르는 때", "태양이 정남쪽을 지나며 하루 중 가장 높이 뜬 때", "태양이 정남쪽 지평선 가까이 낮게 뜬 때"], exp: "해설: 태양은 정남쪽 자오선을 지날 때 하루 중 고도가 가장 높으며 이를 남중이라고 합니다. 우리나라에서는 남중할 때도 태양이 천정까지 올라가지는 않습니다." },
+                { id: "space-earth-031", revision: 1, schoolLevels: ["high"], cat: "태양의 남중 고도", q: "위도 37.5°인 곳에서 춘분·추분의 태양 남중 고도에 가장 가까운 것은?", ans: 1, opts: ["약 37.5°", "약 52.5°", "약 66.5°", "약 90°"], exp: "해설: 춘분·추분에는 태양 적위가 0°이므로 남중 고도는 90°-위도=약 52.5°입니다." },
+                { id: "space-earth-032", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "일출·일몰", q: "우리나라에서 춘분과 추분 무렵 태양이 뜨고 지는 방향은?", ans: 3, opts: ["북동쪽에서 떠서 북서쪽으로 진다", "남동쪽에서 떠서 남서쪽으로 진다", "정남쪽에서 떠서 정북쪽으로 진다", "정동쪽에서 떠서 정서쪽으로 진다"], exp: "해설: 춘분과 추분 무렵 태양은 정동쪽 부근에서 떠서 정서쪽 부근으로 집니다." },
+                { id: "space-earth-033", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "하지", q: "우리나라에서 하지 무렵 태양의 일주 경로를 바르게 설명한 것은?", ans: 1, opts: ["남동쪽에서 떠서 낮고 짧은 경로로 남서쪽에 진다", "북동쪽에서 떠서 높고 긴 경로로 북서쪽에 진다", "북동쪽에서 떠서 낮고 짧은 경로로 북서쪽에 진다", "남동쪽에서 떠서 높고 긴 경로로 남서쪽에 진다"], exp: "해설: 하지 무렵에는 태양이 북동쪽에서 일찍 떠서 높은 경로를 길게 지나 북서쪽으로 늦게 집니다." },
+                { id: "space-earth-034", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "동지", q: "우리나라에서 동지 무렵 태양의 일주 경로를 바르게 설명한 것은?", ans: 2, opts: ["북동쪽에서 떠서 높고 긴 경로로 북서쪽에 진다", "남동쪽에서 떠서 높고 긴 경로로 남서쪽에 진다", "남동쪽에서 떠서 낮고 짧은 경로로 남서쪽에 진다", "북동쪽에서 떠서 낮고 짧은 경로로 북서쪽에 진다"], exp: "해설: 동지 무렵에는 태양이 남동쪽에서 늦게 떠서 낮고 짧은 경로를 지난 뒤 남서쪽으로 일찍 집니다." },
+                { id: "space-earth-035", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "계절과 낮의 길이", q: "우리나라에서 낮의 길이가 가장 긴 때와 가장 짧은 때를 바르게 짝지은 것은?", ans: 0, opts: ["하지-가장 김, 동지-가장 짧음", "춘분-가장 김, 추분-가장 짧음", "동지-가장 김, 하지-가장 짧음", "하지-가장 김, 추분-가장 짧음"], exp: "해설: 태양의 일주 경로가 가장 길고 높은 하지는 낮이 가장 길며, 경로가 가장 짧고 낮은 동지는 낮이 가장 짧습니다." },
+                { id: "space-earth-036", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "태양 고도와 그림자", q: "같은 막대의 그림자가 하루 중 가장 짧아지는 때는 언제인가?", ans: 1, opts: ["해 뜰 무렵", "태양이 남중할 무렵", "해 질 무렵", "오전 9시 무렵"], exp: "해설: 태양이 남중할 때 고도가 가장 높으므로 물체의 그림자는 하루 중 가장 짧습니다." },
+                { id: "space-earth-037", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "태양 고도와 그림자", q: "막대 그림자의 방향은 태양이 있는 방향과 어떤 관계인가?", ans: 3, opts: ["태양과 같은 쪽", "태양 방향에서 90° 옆쪽", "오전에는 같은 쪽, 오후에는 반대쪽", "태양과 반대쪽"], exp: "해설: 빛은 태양 쪽에서 오므로 불투명한 물체의 그림자는 태양 반대쪽에 생깁니다." },
+                { id: "space-earth-038", revision: 1, schoolLevels: ["high"], cat: "위도와 태양 고도", q: "같은 날짜의 정오에 한국보다 더 북쪽으로 이동하면 태양의 남중 고도는 일반적으로 어떻게 변하는가?", ans: 2, opts: ["높아진다", "거의 변하지 않는다", "낮아진다", "위도가 아니라 경도에 따라 달라진다"], exp: "해설: 같은 태양 적위에서 북위가 커질수록 태양의 남중 고도는 낮아집니다. 경도가 달라지면 남중 시각이 달라질 뿐 남중 고도는 거의 같습니다." },
+                { id: "space-earth-039", revision: 1, schoolLevels: ["high"], cat: "적도의 태양 경로", q: "적도 부근에서 연중 낮과 밤의 길이에 대한 설명으로 가장 알맞은 것은?", ans: 0, opts: ["대체로 각각 12시간에 가깝다", "여름에는 낮이 24시간이다", "겨울에는 밤이 24시간이다", "하지에는 낮이 14시간을 넘는다"], exp: "해설: 적도 부근에서는 태양의 일주 경로가 연중 지평선 위와 아래를 거의 같은 길이로 지나 낮과 밤이 약 12시간에 가깝습니다. 낮이나 밤이 24시간 이어지는 것은 극지방, 하지에 낮이 14시간을 넘는 것은 우리나라 같은 중위도 지방의 일입니다." },
+                { id: "space-earth-040", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "계절의 원인", q: "지구가 공전하는 동안 자전축에 대해 옳은 설명은?", ans: 1, opts: ["계절마다 기울기 방향이 반대로 뒤집힌다", "약 23.5° 기울어진 방향을 거의 일정하게 유지한다", "하지에는 기울기가 0°가 된다", "태양을 향하도록 계속 방향을 바꾼다"], exp: "해설: 지구는 자전축이 약 23.5° 기울어진 채 거의 같은 방향을 유지하며 태양 주위를 공전합니다." },
+                { id: "space-earth-041", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "계절의 원인", q: "북반구의 여름이 지구가 태양에 가까워져서 생긴다는 설명이 틀린 근거는?", ans: 2, opts: ["태양이 내는 빛의 세기가 계절에 따라 크게 달라진다", "지구의 공전 궤도가 완전한 원이라 거리가 변하지 않는다", "같은 때 남반구는 겨울이라 거리로는 반대 계절을 설명할 수 없다", "지구가 태양에 가까울수록 공전 속도가 느려진다"], exp: "해설: 지구 전체의 태양 거리는 두 반구에 같지만 북반구와 남반구의 계절은 반대이므로 계절의 주원인은 거리 변화가 아닙니다. 실제로 지구는 북반구가 겨울인 1월 초에 태양과 가장 가깝습니다." },
+                { id: "space-earth-042", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "계절과 에너지", q: "태양의 남중 고도가 높을수록 지표가 더 잘 데워지는 주된 까닭은?", ans: 0, opts: ["같은 양의 햇빛이 더 좁은 면적에 모이기 때문에", "태양과 지표 사이의 거리가 가까워지기 때문에", "같은 양의 햇빛이 더 넓은 면적에 퍼지기 때문에", "햇빛이 지나는 대기의 두께가 두꺼워지기 때문에"], exp: "해설: 태양 고도가 높으면 햇빛이 지표에 더 수직으로 들어와 같은 에너지가 좁은 면적에 집중됩니다. 이때 햇빛이 지나는 대기의 두께는 오히려 얇아집니다." },
+                { id: "space-earth-043", revision: 1, schoolLevels: ["middle","high"], cat: "삭의 관측", q: "삭 무렵 달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 1, opts: ["해 질 무렵 떠서 해 뜰 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다", "정오 무렵 떠서 자정 무렵 진다", "자정 무렵 떠서 정오 무렵 진다"], exp: "해설: 삭 무렵 달은 태양과 거의 같은 방향에 있어 해 뜰 무렵 뜨고 해 질 무렵 지며 밝은 낮하늘에 가려 관측하기 어렵습니다." },
+                { id: "space-earth-044", revision: 1, schoolLevels: ["middle","high"], cat: "상현달의 관측", q: "상현달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 2, opts: ["해 질 무렵 떠서 해 뜰 무렵 진다", "자정 무렵 떠서 정오 무렵 진다", "정오 무렵 떠서 자정 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다"], exp: "해설: 상현달은 정오 무렵 떠서 해 질 무렵 남중하고 자정 무렵 집니다." },
+                { id: "space-earth-045", revision: 1, schoolLevels: ["middle","high"], cat: "보름달의 관측", q: "보름달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 0, opts: ["해 질 무렵 떠서 해 뜰 무렵 진다", "정오 무렵 떠서 자정 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다", "자정 무렵 떠서 정오 무렵 진다"], exp: "해설: 보름달은 태양 반대 방향에 있어 해 질 무렵 동쪽에서 떠서 자정에 남중하고 해 뜰 무렵 서쪽으로 집니다." },
+                { id: "space-earth-046", revision: 1, schoolLevels: ["middle","high"], cat: "하현달의 관측", q: "하현달의 뜨는 시각과 지는 시각으로 가장 알맞은 것은?", ans: 3, opts: ["정오 무렵 떠서 자정 무렵 진다", "해 질 무렵 떠서 해 뜰 무렵 진다", "해 뜰 무렵 떠서 해 질 무렵 진다", "자정 무렵 떠서 정오 무렵 진다"], exp: "해설: 하현달은 자정 무렵 떠서 해 뜰 무렵 남중하고 정오 무렵 집니다." },
+                { id: "space-earth-047", revision: 1, schoolLevels: ["elementary","middle","high"], cat: "달의 위상과 위치", q: "초승달은 해가 진 직후 어느 하늘에서 관측하기 가장 좋은가?", ans: 1, opts: ["동쪽 하늘", "서쪽 하늘", "남쪽 하늘", "남동쪽 하늘"], exp: "해설: 초승달은 태양에서 동쪽으로 조금 떨어져 있어 해가 진 직후 서쪽 하늘에서 잠시 보입니다. 해가 진 직후 남쪽 하늘에는 상현달, 동쪽 하늘에는 보름달이 보입니다." },
+                { id: "space-earth-048", revision: 1, schoolLevels: ["high"], cat: "위도와 낮의 길이", q: "북극 지방의 여름에 태양이 지평선 아래로 지지 않는 현상을 무엇이라 하는가?", ans: 2, opts: ["오로라", "극야", "백야", "하지"], exp: "해설: 자전축이 기울어진 지구에서 북극 지방의 여름에는 태양이 하루 종일 지평선 위에 머무는 백야가 나타날 수 있습니다. 겨울에 해가 하루 종일 뜨지 않는 극야와 반대되는 현상입니다." }
             ];
 
             const quizTopics = [

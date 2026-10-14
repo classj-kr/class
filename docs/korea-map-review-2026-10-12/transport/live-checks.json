@@ -1,0 +1,71 @@
+{
+  "commit": "47ec6146a",
+  "url": "https://classj.kr/learning/inquiry/korea-map/",
+  "checks": [
+    {
+      "id": "korea-exam-transport-mode-1",
+      "school": "high",
+      "prompt": "자료 ㉠·㉡에 해당하는 항만을 지도에서 차례로 고르면?"
+    },
+    {
+      "id": "korea-exam-transport-mode-2",
+      "school": "high",
+      "prompt": "A에서 B·C로 같은 화물을 운송한다. 철도가 도로보다 저렴한 구간의 도착 도시는?"
+    },
+    {
+      "id": "korea-exam-transport-axis-2",
+      "school": "high",
+      "prompt": "개선 후 A까지 60분 이내 통근권에 새로 포함된 도시와, A에서의 쇼핑 비중 증가폭이 더 큰 도시는 차례로?"
+    },
+    {
+      "id": "korea-exam-transport-axis-1",
+      "school": "high",
+      "prompt": "경부·호남 고속 철도의 분기 지점과, 그곳에서 호남권으로 향하는 방향을 바르게 연결한 것은?"
+    },
+    {
+      "id": "transport-01",
+      "school": "middle",
+      "prompt": "지도의 A~E 중 경부 고속 철도가 지나고, 호남 고속 철도가 갈라져 나가는 역이 있는 곳은?"
+    },
+    {
+      "id": "visual-transport-axis-02",
+      "school": "middle",
+      "prompt": "자료의 이동 시간이 줄어도 그대로인 것은?"
+    },
+    {
+      "id": "visual-transport-axis-01",
+      "school": "middle",
+      "prompt": "고속 철도 연결도에서 A의 남서쪽과 남동쪽으로 이어지는 도시는 차례로?"
+    },
+    {
+      "id": "visual-transport-mode-01",
+      "school": "middle",
+      "prompt": "A·B 중 정해진 노선을 따라 두 화물 터미널 사이로 대량의 화물을 나르는 데 적합한 수단과 그 특징은?"
+    },
+    {
+      "id": "transport-06",
+      "school": "middle",
+      "prompt": "지도 A 서울에서 B 제주도로 갈 때 바다를 건너는 구간에서 이용할 수 있는 교통수단끼리 묶은 것은?"
+    },
+    {
+      "id": "transport-03",
+      "school": "middle",
+      "prompt": "지도에서 서해안의 큰 조차에 대응하여 내항에 갑문을 설치한 항만은?"
+    },
+    {
+      "id": "visual-transport-mode-02",
+      "school": "middle",
+      "prompt": "국내 물류 창고에서 주변의 여러 상점 문 앞까지 물건을 직접 배달하려 한다. 적합한 수단과 이유는?"
+    },
+    {
+      "id": "map-korea-transport-mode-elementary-01",
+      "school": "elementary",
+      "prompt": "지도의 A·B·C 중 도로만 이용해 서로 오갈 수 있는 두 곳은?"
+    },
+    {
+      "id": "transport-06",
+      "school": "elementary",
+      "prompt": "지도 A 서울에서 B 제주도로 갈 때 바다를 건너는 구간에서 이용할 수 있는 교통수단끼리 묶은 것은?"
+    }
+  ]
+}

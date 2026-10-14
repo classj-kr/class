@@ -35,10 +35,17 @@
 .concept-visual svg, .question-graph svg, .focus-graph svg { font-family: var(--reading-font); font-weight: 400; }
 .place-description p + p { margin-top: 1em; }
 .place-description { margin-bottom: 20px; }
+.question-body.without-map { grid-template-columns:minmax(0,1fr); }
+.question-map-wrap[hidden] { display:none; }
+.practice-dialog { max-width:calc(100vw - 24px); }
+html:has(.practice-dialog[open]), body:has(>.practice-dialog[open]) { overflow:hidden!important; }
+.practice-dialog:has(.question-body.without-map) { width:min(900px,calc(100vw - 24px)); }
+.practice-dialog .question-body { max-height:none; }
 
 @media (max-width: 600px) {
   :is(.place-description, .place-mission, #relicDocent, #relicContext,
     #focusBody, .reading-steps li, .concept-point, .concept-trap,
     .visual-evidence p, .answer-button, .answer-feedback p) { font-size: 15px; }
   #questionTitle { font-size: 19px; }
+  #answerOptions .answer-button, #answerFeedback p { font-size:18px; line-height:1.65; }
 }

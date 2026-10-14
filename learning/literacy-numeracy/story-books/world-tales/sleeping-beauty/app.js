@@ -95,7 +95,7 @@ const CHAPTERS = [
                 "right": [
                     "그사이 공주는 무럭무럭 자랐지요. 요정들이 준 선물 그대로였습니다.",
                     "곱고, 다정하고, 노래를 잘했지요. 누구나 공주를 좋아했습니다.",
-                    "그렇게 열다섯 해가 흘렀지요. 그래도 아무도 그날을 잊지 않았습니다."
+                    "그렇게 열다섯 해가 흘렀지요. 물레를 다 없앴으니 이제 괜찮다고 다들 마음을 놓았습니다."
                 ]
             }
         ]
@@ -122,10 +122,10 @@ const CHAPTERS = [
                 "art": "04-spindle-2.webp",
                 "emoji": "🧵",
                 "left": [
-                    "방 안에 할머니가 앉아 있었습니다. 무언가를 빙글빙글 돌리고 있었지요.",
+                    "방 안에 할머니가 앉아 있었습니다. 성 안의 누구도 본 적 없는 낯선 할머니였지요. 무언가를 빙글빙글 돌리고 있었습니다.",
                     "\"할머니, 그게 뭐예요?\"",
                     "\"물레란다. 실을 뽑는 기계지.\"",
-                    "나라 안의 물레를 다 태웠으니, 공주는 난생처음 보는 물건이었지요. 실이 손끝에서 술술 뽑혀 나왔습니다."
+                    "나라 안의 물레를 다 태웠으니, 공주는 난생처음 보는 물건이었지요. 실이 술술 뽑혀 나왔습니다."
                 ],
                 "right": [
                     "\"저도 해 봐도 될까요?\"",
@@ -640,7 +640,7 @@ const EN = {
                         "All that while the princess was growing up, exactly as the fairies had promised.",
                         "She was lovely, she was kind, and she sang beautifully. Everybody adored her.",
                         "So fifteen years went by.",
-                        "And still nobody had forgotten that day."
+                        "Every spinning wheel was gone, so everyone felt safe at last."
                     ]
                 }
             ]
@@ -668,7 +668,7 @@ const EN = {
                     art: '04-spindle-2.webp',
                     emoji: '🧵',
                     left: [
-                        "An old woman was sitting in the room, turning something round and round.",
+                        "An old woman was sitting in the room, turning something round and round. Nobody in the castle had ever seen her before.",
                         "\"What is that, grandmother?\" asked the princess.",
                         "\"A spinning wheel, my dear. It spins the thread.\"",
                         "The wheels had all been burnt, so she had never seen one. The thread came running out from under her fingers."
@@ -986,7 +986,8 @@ const WORDS_KO = {
         { w: "찬바람", k: "차갑게 불어오는 바람.", s: "찬바람이 홀을 훑고 지나갔지요." },
         { w: "한꺼번에", k: "한 번에 모두.", s: "촛불이 한꺼번에 흔들렸습니다." },
         { w: "똑바로", k: "비뚤지 않고 바르게.", s: "요정이 임금님을 똑바로 쳐다보았습니다." },
-        { w: "쥐 죽은 듯", k: "아무 소리도 없이 아주 조용하게.", s: "홀이 쥐 죽은 듯 조용해졌습니다." }
+        { w: "쥐 죽은 듯", k: "아무 소리도 없이 아주 조용하게.", s: "홀이 쥐 죽은 듯 조용해졌습니다." },
+        { w: "요람", k: "아기를 눕혀 재우는 작은 침대. 앞뒤로 살살 흔들어서 아기를 달랠 수 있다.", s: "요정이 천천히 걸어와 요람 앞에 섰습니다." }
     ],
     "02-curse-2.webp": [
         { w: "서늘하다", k: "찬 느낌이 들어 으스스하다.", s: "요정이 서늘한 목소리로 말했습니다." },
@@ -1001,7 +1002,8 @@ const WORDS_KO = {
     "03-softened-2.webp": [
         { w: "병사", k: "싸움터에서 싸우는 군인.", s: "병사들이 집집마다 다녔지요." },
         { w: "광장", k: "여러 사람이 모일 수 있는 넓은 빈 땅.", s: "광장에 모아 놓고 모두 태웠지요." },
-        { w: "무럭무럭", k: "잘 자라나는 모습으로.", s: "그사이 공주는 무럭무럭 자랐지요." }
+        { w: "무럭무럭", k: "잘 자라나는 모습으로.", s: "그사이 공주는 무럭무럭 자랐지요." },
+        { w: "수레", k: "바퀴를 달아 사람이 밀거나 소나 말이 끌어서 짐을 실어 나르던 것.", s: "물레가 수레에 실려 나갔습니다." }
     ],
     "04-spindle.webp": [
         { w: "그날따라", k: "다른 날과 달리 그날만.", s: "그날따라 임금님과 왕비는 성을 비웠지요." },
@@ -1034,7 +1036,8 @@ const WORDS_KO = {
     ],
     "06-prince-2.webp": [
         { w: "발소리를 죽이다", k: "걸을 때 소리가 나지 않게 하다.", s: "왕자는 발소리를 죽이고 방마다 문을 열어 봤지요." },
-        { w: "나지막이", k: "소리를 조금 낮게.", s: "왕자가 나지막이 중얼거렸습니다." }
+        { w: "나지막이", k: "소리를 조금 낮게.", s: "왕자가 나지막이 중얼거렸습니다." },
+        { w: "촛대", k: "초를 꽂아 세워 두는 받침. 쇠나 은으로 만들고, 가지처럼 여러 개를 꽂는 것도 있다.", s: "거미줄이 촛대마다 걸려 있었습니다." }
     ],
     "07-wake.webp": [
         { w: "햇살", k: "해에서 뻗어 나오는 빛.", s: "창문으로 아침 햇살이 비스듬히 들어왔습니다." },

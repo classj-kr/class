@@ -46,12 +46,12 @@
       body: R`공차가 \(3\)인 등차수열 \(\{a_{n}\}\)이 다음 조건을 만족시킬 때,
         \(a_{10}\)의 값은?`,
       note: [
-        R`(가) \(a_{5}\times a_{7}<0\)`,
+        R`(가) \(a_{5}\times a_{7}&lt;0\)`,
         R`(나) \(\displaystyle\sum_{k=1}^{6}\bigl|a_{k+6}\bigr|=6+\sum_{k=1}^{6}\bigl|a_{2k}\bigr|\)`
       ],
       choices: [R`\(\dfrac{21}{2}\)`, R`\(11\)`, R`\(\dfrac{23}{2}\)`, R`\(12\)`, R`\(\dfrac{25}{2}\)`],
       answer: 3,
-      help: R`공차가 \(3\)으로 양수이고 \(a_{5}a_{7}<0\)이니 수열이 음수에서 양수로 바뀌는 자리가 \(a_{5}\)와 \(a_{7}\) 사이다. 절댓값이 붙어 있으므로 어느 항까지 음수인지를 먼저 못박아야 (나)의 두 합을 식으로 쓸 수 있다.`
+      help: R`공차가 \(3\)으로 양수이고 \(a_{5}a_{7}&lt;0\)이니 수열이 음수에서 양수로 바뀌는 자리가 \(a_{5}\)와 \(a_{7}\) 사이다. 절댓값이 붙어 있으므로 어느 항까지 음수인지를 먼저 못박아야 (나)의 두 합을 식으로 쓸 수 있다.`
     },
 {
       id: "2023-06-13", exam: "2023-06", no: 13, score: 4,
@@ -65,7 +65,7 @@
         곡선 \(y=2^{x}\)과 만나는 점을 \(\mathrm{Q}_{2}\)라 하자.
         이와 같은 과정을 계속하여 \(n\)번째 얻은 두 점을 각각
         \(\mathrm{P}_{n}\), \(\mathrm{Q}_{n}\)이라 하고 점 \(\mathrm{Q}_{n}\)의 \(x\)좌표를 \(x_{n}\)이라 할 때,
-        \(x_{n}<\dfrac{1}{k}\)을 만족시키는 \(n\)의 최솟값이 \(6\)이 되도록 하는
+        \(x_{n}&lt;\dfrac{1}{k}\)을 만족시키는 \(n\)의 최솟값이 \(6\)이 되도록 하는
         자연수 \(k\)의 개수는?`,
       figure: "2023-06-13.webp",
       choices: [R`\(48\)`, R`\(51\)`, R`\(54\)`, R`\(57\)`, R`\(60\)`],
@@ -77,18 +77,18 @@
       units: ["m2-integ"], memo: "부호를 뒤집어 이어 붙인 적분함수",
       body: R`실수 전체의 집합에서 연속인 함수 \(f(x)\)와 최고차항의
         계수가 \(1\)인 삼차함수 \(g(x)\)가
-        \[g(x)=\begin{cases}-\displaystyle\int_{0}^{x}f(t)\,dt &amp; (x<0)\\[8pt] \displaystyle\int_{0}^{x}f(t)\,dt &amp; (x\ge 0)\end{cases}\]
+        \[g(x)=\begin{cases}-\displaystyle\int_{0}^{x}f(t)\,dt &amp; (x&lt;0)\\[8pt] \displaystyle\int_{0}^{x}f(t)\,dt &amp; (x\ge 0)\end{cases}\]
         을 만족시킬 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른
         것은?`,
       noteTitle: "보 기",
       note: [
         R`ㄱ. \(f(0)=0\)`,
         R`ㄴ. 함수 \(f(x)\)는 극댓값을 갖는다.`,
-        R`ㄷ. \(2<f(1)<4\)일 때, 방정식 \(f(x)=x\)의 서로 다른 실근의 개수는 \(3\)이다.`
+        R`ㄷ. \(2&lt;f(1)&lt;4\)일 때, 방정식 \(f(x)=x\)의 서로 다른 실근의 개수는 \(3\)이다.`
       ],
       choices: [R`ㄱ`, R`ㄷ`, R`ㄱ, ㄴ`, R`ㄱ, ㄷ`, R`ㄱ, ㄴ, ㄷ`],
       answer: 4,
-      help: R`\(F(x)=\int_{0}^{x}f\)라 하면 \(g\)는 \(x\ge 0\)에서 \(F\), \(x<0\)에서 \(-F\)다. 그런데 \(g\)가 하나의 삼차함수이므로 \(x<0\)에서도 \(g=F\)여야 하고, 곧 \(x<0\)에서 \(F(x)=-F(x)\), 즉 \(F\)가 그 구간에서 \(0\)이 아니면 모순이 생긴다. 이 어긋남이 \(f\)의 모양을 크게 좁힌다.`
+      help: R`\(F(x)=\int_{0}^{x}f\)라 하면 \(g\)는 \(x\ge 0\)에서 \(F\), \(x&lt;0\)에서 \(-F\)다. 그런데 \(g\)가 하나의 삼차함수이므로 \(x&lt;0\)에서도 \(g=F\)여야 하고, 곧 \(x&lt;0\)에서 \(F(x)=-F(x)\), 즉 \(F\)가 그 구간에서 \(0\)이 아니면 모순이 생긴다. 이 어긋남이 \(f\)의 모양을 크게 좁힌다.`
     },
 {
       id: "2023-06-15", exam: "2023-06", no: 15, score: 4,
@@ -127,7 +127,7 @@
       units: ["m2-limit"], memo: "분자가 0으로 가야만 살아남는 극한",
       body: R`두 양수 \(a\), \(b\,(b>3)\)과 최고차항의 계수가 \(1\)인 이차함수
         \(f(x)\)에 대하여 함수
-        \[g(x)=\begin{cases}(x+3)f(x) &amp; (x<0)\\ (x+a)f(x-b) &amp; (x\ge 0)\end{cases}\]
+        \[g(x)=\begin{cases}(x+3)f(x) &amp; (x&lt;0)\\ (x+a)f(x-b) &amp; (x\ge 0)\end{cases}\]
         이 실수 전체의 집합에서 연속이고 다음 조건을 만족시킬 때,
         \(g(4)\)의 값을 구하시오.`,
       note: [
@@ -182,7 +182,7 @@
 {
       id: "2023-06-calc-29", exam: "2023-06", no: 29, score: 4,
       units: ["calc-diff"], memo: "삼각함수의 극한과 각의 이등분선",
-      body: R`그림과 같이 반지름의 길이가 \(1\)이고 중심각의 크기가 \(\dfrac{\pi}{2}\)인 부채꼴 \(\mathrm{OAB}\)가 있다. 호 \(\mathrm{AB}\) 위의 점 \(\mathrm{P}\)에서 선분 \(\mathrm{OA}\)에 내린 수선의 발을 \(\mathrm{H}\)라 하고, \(\angle\mathrm{OAP}\)를 이등분하는 직선과 세 선분 \(\mathrm{HP}\), \(\mathrm{OP}\), \(\mathrm{OB}\)의 교점을 각각 \(\mathrm{Q}\), \(\mathrm{R}\), \(\mathrm{S}\)라 하자. \(\angle\mathrm{APH}=\theta\)일 때, 삼각형 \(\mathrm{AQH}\)의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{PSR}\)의 넓이를 \(g(\theta)\)라 하자. \[\lim_{\theta\to 0+}\dfrac{\theta^{3}\times g(\theta)}{f(\theta)}=k\]일 때, \(100k\)의 값을 구하시오. (단, \(0<\theta<\dfrac{\pi}{4}\))`,
+      body: R`그림과 같이 반지름의 길이가 \(1\)이고 중심각의 크기가 \(\dfrac{\pi}{2}\)인 부채꼴 \(\mathrm{OAB}\)가 있다. 호 \(\mathrm{AB}\) 위의 점 \(\mathrm{P}\)에서 선분 \(\mathrm{OA}\)에 내린 수선의 발을 \(\mathrm{H}\)라 하고, \(\angle\mathrm{OAP}\)를 이등분하는 직선과 세 선분 \(\mathrm{HP}\), \(\mathrm{OP}\), \(\mathrm{OB}\)의 교점을 각각 \(\mathrm{Q}\), \(\mathrm{R}\), \(\mathrm{S}\)라 하자. \(\angle\mathrm{APH}=\theta\)일 때, 삼각형 \(\mathrm{AQH}\)의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{PSR}\)의 넓이를 \(g(\theta)\)라 하자. \[\lim_{\theta\to 0+}\dfrac{\theta^{3}\times g(\theta)}{f(\theta)}=k\]일 때, \(100k\)의 값을 구하시오. (단, \(0&lt;\theta&lt;\dfrac{\pi}{4}\))`,
       figure: "2023-06-calc-29.webp",
       short: true,
       answer: 50,
@@ -191,7 +191,7 @@
 {
       id: "2023-06-calc-30", exam: "2023-06", no: 30, score: 4,
       units: ["calc-diff"], memo: "접선의 개수와 변곡점",
-      body: R`양수 \(a\)에 대하여 함수 \(f(x)\)는 \[f(x)=\dfrac{x^{2}-ax}{e^{x}}\]이다. 실수 \(t\)에 대하여 \(x\에 대한 방정식 \[f(x)=f'(t)(x-t)+f(t)\]의 서로 다른 실근의 개수를 \(g(t)\)라 하자. \(g(5)+\displaystyle\lim_{t\to 5}g(t)=5\)일 때, \(\displaystyle\lim_{t\to k-}g(t)\ne\lim_{t\to k+}g(t)\)를 만족시키는 모든 실수 \(k\)의 값의 합은 \(\dfrac{q}{p}\)이다. \(p+q\)의 값을 구하시오. (단, \(p\)와 \(q\)는 서로소인 자연수이다.)`,
+      body: R`양수 \(a\)에 대하여 함수 \(f(x)\)는 \[f(x)=\dfrac{x^{2}-ax}{e^{x}}\]이다. 실수 \(t\)에 대하여 \(x\)에 대한 방정식 \[f(x)=f'(t)(x-t)+f(t)\]의 서로 다른 실근의 개수를 \(g(t)\)라 하자. \(g(5)+\displaystyle\lim_{t\to 5}g(t)=5\)일 때, \(\displaystyle\lim_{t\to k-}g(t)\ne\lim_{t\to k+}g(t)\)를 만족시키는 모든 실수 \(k\)의 값의 합은 \(\dfrac{q}{p}\)이다. \(p+q\)의 값을 구하시오. (단, \(p\)와 \(q\)는 서로소인 자연수이다.)`,
       short: true,
       answer: 16,
       help: R`방정식의 실근 개수 \(g(t)\)는 곡선 위의 점 \((t, f(t))\)에서의 접선과 곡선 \(y=f(x)\)의 교점 개수입니다. 교점 개수가 바뀌는 경계는 접선이 변곡접선이 되는 점(\(f''(t)=0\))이므로, 변곡점 조건에서 \(a\)의 값을 구합니다.`

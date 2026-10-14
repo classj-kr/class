@@ -1,0 +1,15 @@
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.5115ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.7658ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1439ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (24.7225ms)
+✔ Galileo: mass independence, rolling inertia, equal-time displacement and delayed release (1.3117ms)
+✔ chromium: Galileo two-ball controls, motion, equal-time traces and diagnostic retention (11456.1193ms)
+✔ webkit: Galileo two-ball controls, motion, equal-time traces and diagnostic retention (18799.5253ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30324.4806

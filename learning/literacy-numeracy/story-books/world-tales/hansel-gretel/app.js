@@ -44,9 +44,9 @@ const CHAPTERS = [
                     "사실은 조약돌을 떨어뜨리고 있었습니다. 몇 걸음마다 하나씩, 톡, 톡."
                 ],
                 "right": [
-                    "이윽고 숲 깊은 곳에 이르렀습니다. 어른들이 마른 가지를 모아 불을 피워 주었지요.",
-                    "새어머니가 말했습니다. \"여기서 잠깐 기다리렴. 곧 데리러 오마.\"",
-                    "저 멀리서 도끼 소리가 들려왔습니다. 남매는 아버지가 나무를 하는 줄 알고 그 소리를 들으며 잠이 들었지요."
+                    "숲 깊은 곳에 닿았습니다. 어른들이 불을 피웠습니다.",
+                    "새어머니가 말했지요. \"여기서 기다리렴. 곧 데리러 오마.\"",
+                    "멀리서 도끼 소리 같은 것이 났습니다. 사실은 바람에 마른 가지가 부딪히는 소리였지만, 남매는 아버지가 나무를 하는 줄 알고 잠이 들었지요."
                 ]
             },
             {
@@ -144,12 +144,12 @@ const CHAPTERS = [
                 "art": "05-cage.webp",
                 "emoji": "🦴",
                 "left": [
-                    "할머니는 상에 맛있는 것을 잔뜩 차려 주었습니다. 우유와 과자와 사과가 놓였지요. 남매는 배가 부르도록 실컷 먹었습니다.",
-                    "잠자리로는 푹신한 침대까지 내주었지요. 남매는 오랜만에 편히 잠들었습니다.",
-                    "그런데 새벽에 일이 벌어졌지요."
+                    "할머니는 우유와 과자와 사과를 잔뜩 차려 주었습니다. 남매는 배가 부르도록 실컷 먹었습니다.",
+                    "잠자리로는 푹신한 침대까지 내주었지요. 남매는 편히 잠들었습니다.",
+                    "사실 할머니는 아이를 잡아먹는 마녀였습니다. 과자 집도 아이들을 꾀려고 지은 것이었지요."
                 ],
                 "right": [
-                    "할머니가 자고 있던 헨젤을 거칠게 끌어내 마당의 우리에 가두었습니다. 그러고는 입맛을 쩝쩝 다셨지요. \"살이 통통하게 오르면 그때 보자꾸나.\"",
+                    "새벽이 되자 할머니는 자고 있던 헨젤을 끌어내 마당의 우리에 가두었습니다. 그러고는 입맛을 쩝쩝 다셨지요. \"살이 통통하게 오르면 그때 보자꾸나.\"",
                     "그레텔에게는 일을 시켰지요. \"물을 긷고 밥을 지어라. 네 오빠를 잘 먹여 살찌워야 하니까.\""
                 ]
             },
@@ -216,7 +216,7 @@ const CHAPTERS = [
                     "남매는 주머니에 담을 수 있는 만큼 담았습니다."
                 ],
                 "right": [
-                    "그러고는 과자 집을 나섰지요. 뒤는 한 번도 돌아보지 않았습니다.",
+                    "부엌에서는 할머니가 문을 두드리며 소리만 질렀지요. 남매는 뒤도 돌아보지 않고 과자 집을 나섰습니다.",
                     "둘은 숲길을 걷고 또 걸었지요. 반나절쯤 갔을 때였습니다.",
                     "앞에 큰 강이 나타났지요. 건널 다리가 어디에도 없었습니다."
                 ]
@@ -580,7 +580,7 @@ const EN = {
                     right: [
                         "At last they came deep into the forest. The grown-ups built the children a fire of dry branches.",
                         "\"Wait here a little while,\" said the stepmother. \"We shall come back for you soon.\"",
-                        "Far off they could hear an axe at work. They thought it was their father, and fell asleep listening."
+                        "Far off came a sound like an axe at work. It was only the wind knocking a dead branch against a tree, but they thought it was their father, and fell asleep."
                     ]
                 },
                 {
@@ -683,10 +683,10 @@ const EN = {
                     left: [
                         "The old woman laid out a whole table for them — milk and cakes and apples. The two ate until they could eat no more.",
                         "She gave them soft beds to sleep in, and for the first time in a long while they slept easy.",
-                        "But something happened before dawn."
+                        "The truth was, the old woman was a witch who ate children, and she had built the house of sweets to lure them in."
                     ],
                     right: [
-                        "The old woman dragged Hansel roughly out of his bed and shut him in the cage in the yard.",
+                        "Before dawn she dragged Hansel out of his bed and shut him in the cage in the yard.",
                         "She licked her lips. \"When you are nice and plump, we shall see.\"",
                         "Gretel she set to work. \"Fetch the water and cook the meals. Your brother must be fed and fattened.\""
                     ]
@@ -760,7 +760,7 @@ const EN = {
                         "They filled their pockets with as much as they could carry."
                     ],
                     right: [
-                        "Then they walked out of the house of sweets, and they never once looked back.",
+                        "In the kitchen the old woman only banged on the door and shouted. The two walked out of the house of sweets without once looking back.",
                         "On and on through the forest they went. About half a day later a wide river appeared in front of them.",
                         "There was no bridge anywhere."
                     ]
@@ -876,7 +876,7 @@ const EN = {
         '02-back-home.webp': [
             { word: 'fall behind', meaning: '뒤처지다', sentence: 'But Hansel kept falling behind.' },
             { word: 'dawdle', meaning: '꾸물거리다', sentence: 'What are you dawdling for?' },
-            { word: 'axe', meaning: '도끼', sentence: 'Far off they could hear an axe at work.' }
+            { word: 'axe', meaning: '도끼', sentence: 'Far off came a sound like an axe at work.' }
         ],
         '02-back-home-2.webp': [
             { word: 'pitch dark', meaning: '캄캄한', sentence: 'When they opened their eyes it was pitch dark.' },
@@ -911,7 +911,7 @@ const EN = {
         ],
         '05-cage.webp': [
             { word: 'lay out', meaning: '상을 차리다', sentence: 'The old woman laid out a whole table for them.' },
-            { word: 'drag', meaning: '끌어내다', sentence: 'She dragged Hansel roughly out of his bed.' },
+            { word: 'drag', meaning: '끌어내다', sentence: 'She dragged Hansel out of his bed.' },
             { word: 'cage', meaning: '우리', sentence: 'She shut him in the cage in the yard.' },
             { word: 'plump', meaning: '살이 오른', sentence: "When you are nice and plump, we shall see." },
             { word: 'fetch', meaning: '길어 오다, 가져오다', sentence: 'Fetch the water and cook the meals.' }
@@ -939,7 +939,7 @@ const EN = {
             { word: 'chest', meaning: '궤짝', sentence: 'In a corner stood several chests.' },
             { word: 'lid', meaning: '뚜껑', sentence: 'They lifted one of the lids.' },
             { word: 'pearl', meaning: '진주', sentence: 'Inside were pearls and precious stones.' },
-            { word: 'look back', meaning: '뒤를 돌아보다', sentence: 'They never once looked back.' }
+            { word: 'look back', meaning: '뒤를 돌아보다', sentence: 'The two walked out of the house of sweets without once looking back.' }
         ],
         '07-home-2.webp': [
             { word: 'duck', meaning: '오리', sentence: 'Just then a white duck came swimming up.' },
@@ -984,7 +984,7 @@ const WORDS_KO = {
     "02-back-home.webp": [
         { w: "꾸짖다", k: "잘못을 따지며 크게 나무라다.", s: "새어머니가 돌아보며 꾸짖었습니다." },
         { w: "둘러대다", k: "그럴듯하게 꾸며 말하다.", s: "헨젤이 둘러댔지요." },
-        { w: "나무를 하다", k: "불을 땔 나무를 베어 모으다.", s: "남매는 아버지가 나무를 하는 줄 알고 그 소리를 들으며 잠이 들었지요." }
+        { w: "나무를 하다", k: "불을 땔 나무를 베어 모으다.", s: "남매는 아버지가 나무를 하는 줄 알고 잠이 들었지요." }
     ],
     "02-back-home-2.webp": [
         { w: "주위", k: "둘레의 가까운 곳.", s: "눈을 뜨니 주위가 온통 캄캄했습니다." },
@@ -1012,13 +1012,15 @@ const WORDS_KO = {
         { w: "입을 떡 벌리다", k: "몹시 놀라 입을 크게 벌리다.", s: "그레텔이 입을 떡 벌렸습니다." },
         { w: "창틀", k: "창문을 끼우는 네모난 테.", s: "그레텔은 창틀을 살짝 핥아 봤지요." },
         { w: "정신이 없다", k: "다른 데 마음 쓸 틈이 없다.", s: "둘은 사흘 굶은 배를 채우느라 정신이 없었습니다." },
-        { w: "등이 굽다", k: "나이가 들어 등이 앞으로 휘다.", s: "작고 등이 굽은 할머니가 나왔습니다." }
+        { w: "등이 굽다", k: "나이가 들어 등이 앞으로 휘다.", s: "작고 등이 굽은 할머니가 나왔습니다." },
+        { w: "엿", k: "쌀이나 보리를 오래 졸여 만든 달고 끈적한 과자. 굳으면 딱딱하고 반들반들하다.", s: "지붕은 새하얀 설탕이고 창문은 반짝이는 엿이었지요." }
     ],
     "05-cage.webp": [
         { w: "실컷", k: "하고 싶은 만큼 마음껏.", s: "남매는 배가 부르도록 실컷 먹었습니다." },
         { w: "내주다", k: "자기 것을 남에게 주다.", s: "잠자리로는 푹신한 침대까지 내주었지요." },
         { w: "입맛을 다시다", k: "먹고 싶어 입을 쩝쩝거리다.", s: "그러고는 입맛을 쩝쩝 다셨지요." },
-        { w: "밥을 짓다", k: "쌀로 밥을 만들다.", s: "\"물을 긷고 밥을 지어라. 네 오빠를 잘 먹여 살찌워야 하니까.\"" }
+        { w: "밥을 짓다", k: "쌀로 밥을 만들다.", s: "\"물을 긷고 밥을 지어라. 네 오빠를 잘 먹여 살찌워야 하니까.\"" },
+        { w: "우리", k: "짐승을 가두어 기르려고 나무나 쇠막대로 둘레를 막아 놓은 곳.", s: "새벽이 되자 할머니는 자고 있던 헨젤을 끌어내 마당의 우리에 가두었습니다." }
     ],
     "05-cage-2.webp": [
         { w: "눈이 어둡다", k: "눈이 잘 보이지 않다.", s: "그런데 할머니는 눈이 몹시 어두웠지요." },
@@ -1030,18 +1032,21 @@ const WORDS_KO = {
         { w: "지피다", k: "불을 붙여 타오르게 하다.", s: "커다란 화덕에 장작을 잔뜩 넣고 불을 지폈습니다." },
         { w: "불길", k: "타오르는 불꽃의 줄기.", s: "불길이 활활 타올랐지요." },
         { w: "시치미를 떼다", k: "알고도 모르는 척하다.", s: "그레텔은 시치미를 뚝 뗐습니다." },
-        { w: "화덕", k: "불을 피워 빵이나 음식을 굽는 아궁이.", s: "커다란 화덕에 장작을 잔뜩 넣고 불을 지폈습니다." }
+        { w: "화덕", k: "불을 피워 빵이나 음식을 굽는 아궁이.", s: "커다란 화덕에 장작을 잔뜩 넣고 불을 지폈습니다." },
+        { w: "장작", k: "불을 때려고 통나무를 알맞은 길이로 잘라 쪼갠 나무토막.", s: "커다란 화덕에 장작을 잔뜩 넣고 불을 지폈습니다." }
     ],
     "06-oven-2.webp": [
         { w: "버럭", k: "갑자기 소리를 크게 지르는 모습.", s: "할머니가 버럭 화를 냈습니다." },
         { w: "쭈그리다", k: "몸을 웅크려 앉다.", s: "할머니가 쭈그리고 앉아 화덕 쪽으로 몸을 숙였습니다." },
         { w: "시커멓다", k: "아주 검다.", s: "그 순간 시커먼 연기가 확 뿜어져 나왔지요." },
-        { w: "열어젖히다", k: "문을 힘차게 활짝 열다.", s: "그러고는 마당으로 달려가 우리 문을 열어젖혔지요." }
+        { w: "열어젖히다", k: "문을 힘차게 활짝 열다.", s: "그러고는 마당으로 달려가 우리 문을 열어젖혔지요." },
+        { w: "빗장", k: "문을 잠그려고 문짝에 가로질러 끼우는 긴 나무나 쇠막대.", s: "할머니가 눈을 비비는 사이 그레텔은 빗장을 붙잡고 부엌 밖으로 빠져나와 문을 걸어 잠갔습니다." }
     ],
     "07-home.webp": [
         { w: "찬찬히", k: "서두르지 않고 꼼꼼히.", s: "남매는 집 안을 찬찬히 둘러봤습니다." },
         { w: "겨울을 나다", k: "겨울을 지내어 넘기다.", s: "\"이거면 아버지랑 겨울을 날 수 있겠다.\"" },
-        { w: "반나절", k: "하루 낮의 반쯤 되는 동안.", s: "반나절쯤 갔을 때였습니다." }
+        { w: "반나절", k: "하루 낮의 반쯤 되는 동안.", s: "반나절쯤 갔을 때였습니다." },
+        { w: "궤짝", k: "나무로 네모나게 짜서 뚜껑을 단 큰 상자. 옷이나 귀한 물건을 넣어 둔다.", s: "구석에 궤짝이 여럿 놓여 있었지요." }
     ],
     "07-home-2.webp": [
         { w: "물가", k: "물이 닿는 가장자리.", s: "그레텔이 물가에 앉아 살며시 물었지요." },

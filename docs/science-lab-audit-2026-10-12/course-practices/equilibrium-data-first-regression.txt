@@ -1,0 +1,11 @@
+✔ original rounded tables conserve atoms, distinguish exponents and reject zero denominators (5.4451ms)
+✔ chromium: source tables, undefined values, retained diagnosis and responsive comparisons (5667.2996ms)
+✔ webkit: source tables, undefined values, retained diagnosis and responsive comparisons (11369.673ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17139.1111

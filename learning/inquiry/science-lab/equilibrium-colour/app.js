@@ -1,0 +1,54 @@
+(() => {
+ 'use strict';
+ const M=window.EquilibriumColour,$=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)];
+ const colours={empty:'transparent',orange:'#dd641e',yellow:'#edc633',pink:'#d96493',purple:'#8b66ac',blue:'#3978b8'};
+ let state=M.initial(),timer=null;
+ const reagentName=r=>r==='acid'?'염산':'수산화 나트륨';
+ const tubes=$('#ecTubes');
+ tubes.innerHTML=[0,1,2,3].map(i=>`<button class="ec-tube" data-ec-tube="${i}" aria-pressed="${i===0}"><strong>시험관 ${'ABCD'[i]}</strong><span class="ec-formula">${i%2===0?'K₂Cr₂O₇':'K₂CrO₄'}</span><div class="ec-glass" aria-hidden="true"><div class="ec-liquid"></div><div class="ec-shine"></div></div><i class="ec-drop" aria-hidden="true"></i><span class="ec-before"></span><span class="ec-after"></span></button>`).join('');
+ function render(){
+  const busy=!!state.pending;
+  $('.ec-lab').setAttribute('aria-busy',String(busy));
+  all('[data-mode]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.mode===state.mode));b.disabled=busy;});
+  $('#ecConcentration').hidden=state.mode!=='concentration';$('#ecTemperature').hidden=state.mode!=='temperature';
+  $('#ecPressure').hidden=state.mode!=='pressure';
+  all('[data-ec-reagent]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.ecReagent===state.reagent));b.disabled=busy;});
+  $('#ecPrepare').disabled=state.prepared||busy;$('#ecAdd').disabled=!state.prepared||!!state.tubes[state.selected]||busy;
+  all('[data-ec-tube]').forEach((b,i)=>{const t=state.tubes[i],pending=state.pending?.action==='add'&&state.pending.index===i;
+   b.disabled=busy;b.setAttribute('aria-pressed',String(i===state.selected));b.classList.toggle('is-pouring',pending);
+   const colour=pending?(state.pending.reagent==='acid'?'orange':'yellow'):t?.colour||M.initialColour(i);
+   b.style.setProperty('--liquid',state.prepared?colours[colour]:'transparent');
+   b.querySelector('.ec-before').textContent=state.prepared?'처음 · '+M.colourName[M.initialColour(i)]:'시료를 담기 전';
+   b.querySelector('.ec-after').textContent=pending?'조금씩 넣으며 관찰 중':t?reagentName(t.reagent)+' → '+M.colourName[t.colour]:'시약 첨가 전';
+  });
+  const observed=state.tubes.filter(Boolean).length,selected=state.tubes[state.selected];
+  $('#ecConcentrationStatus').textContent=!state.prepared?'먼저 네 시험관에 시료를 담으세요.':busy&&state.pending.action==='add'?`시험관 ${'ABCD'[state.pending.index]}에 ${reagentName(state.pending.reagent)}을 조금씩 넣고 있습니다.`:selected?`시험관 ${'ABCD'[state.selected]} · ${reagentName(selected.reagent)} 첨가 후 ${M.colourName[selected.colour]}. ${observed}개 시험관의 관찰을 마쳤습니다.`:`시험관 ${'ABCD'[state.selected]}을 선택했습니다. 넣을 시약을 고르세요.`;
+  $('#ecFill').disabled=state.cobalt!=='empty'||busy;$('#ecChloride').disabled=state.cobalt==='empty'||!!state.seen.prepared||busy;
+  all('[data-ec-bath]').forEach(b=>{b.disabled=!state.seen.prepared||busy||state.bath===b.dataset.ecBath;b.setAttribute('aria-pressed',String(state.bath===b.dataset.ecBath));});
+  const target=state.pending?.action==='chloride'?'purple':state.pending?.action==='bath'?(state.bath==='hot'?'blue':'pink'):state.cobalt;
+  $('#ecCobaltTube').dataset.bath=state.bath;$('#ecCobaltTube').style.setProperty('--liquid',colours[target]);
+  $('#ecTemperatureStatus').textContent=state.pending?.action==='chloride'?'염산을 조금씩 넣어 보라색 용액을 준비하고 있습니다.':state.pending?.action==='bath'?'같은 시험관을 옮겨 색의 변화를 관찰하고 있습니다.':state.cobalt==='empty'?'먼저 시험관에 염화 코발트 수용액을 담으세요.':!state.seen.prepared?'처음 용액은 분홍색입니다. 염산을 넣어 염화 이온을 공급하세요.':state.bath==='bench'?'보라색 용액이 준비되었습니다. 시험관을 물이 담긴 비커로 옮기세요.':`${state.bath==='hot'?'뜨거운 물':'차가운 물'}에서 ${M.colourName[state.cobalt]}으로 관찰됩니다. 반대쪽 비커로 옮겨 비교해 보세요.`;
+  $('#ecColourSequence').innerHTML=[['prepared','조제 후'],['hot','뜨거운 물'],['cold','차가운 물']].map(([key,title])=>`<div><b>${title}</b><span>${state.seen[key]?`<i class="ec-sequence-chip" style="--swatch:${colours[state.seen[key]]}" aria-hidden="true"></i>${M.colourName[state.seen[key]]}`:'관찰 전'}</span></div>`).join('');
+  const phase=state.pending?.action==='compress'?'compressed':state.pending?.action==='equilibrate'?'equilibrated':state.pressure;
+  const gas=M.pressureData(phase),phaseNames={initial:'처음 평형',compressed:'압축 직후',equilibrated:'새 평형'};
+  $('#ecCylinder').style.setProperty('--gas-height',gas.V===1?'192px':'96px');
+  $('#ecGas').style.backgroundColor=`rgba(157, 71, 28, ${gas.cNO2*.24})`;
+  $('#ecGas').innerHTML=Array.from({length:gas.no2+gas.n2o4},(_,i)=>`<span class="ec-molecule ${i<gas.no2?'ec-no2':'ec-n2o4'}" aria-hidden="true"><i></i>${i<gas.no2?'':'<i></i>'}</span>`).join('');
+  $('#ecPressurePhase').textContent=state.pending?.action==='compress'?'압축 중':state.pending?.action==='equilibrate'?'평형으로 이동 중':phaseNames[state.pressure];
+  $('#ecVolume').textContent='기체 부피 · '+(gas.V===1?'처음 부피':'처음의 1/2');
+  $('#ecDensity').textContent=busy&&['compress','equilibrate'].includes(state.pending.action)?'관찰 중':gas.cNO2.toFixed(2);
+  $('#ecPressureCount').textContent=busy&&['compress','equilibrate'].includes(state.pending.action)?'관찰이 끝나면 입자 수를 비교하세요.':`NO₂ ${gas.no2}개 · N₂O₄ ${gas.n2o4}개`;
+  $('#ecCompress').disabled=busy||state.pressure!=='initial';$('#ecEquilibrate').disabled=busy||state.pressure!=='compressed';
+  $('#ecPressureStatus').textContent=state.pending?.action==='compress'?'피스톤을 눌러 부피를 절반으로 줄이고 있습니다.':state.pending?.action==='equilibrate'?'줄어든 부피를 유지하며 입자 수와 색 변화를 관찰하고 있습니다.':state.pressure==='initial'?'처음 평형의 색을 확인한 뒤 압축하세요.':state.pressure==='compressed'?'입자 수는 그대로이고 부피만 절반이 되어 NO₂ 농도는 2배입니다. 반응이 진행되기 전의 상태를 비교하세요.':'NO₂ 일부가 N₂O₄로 바뀌었습니다. 갈색은 압축 직후보다 옅지만, 처음 평형보다는 진합니다.';
+  $('#ecPressureSequence').innerHTML=['initial','compressed','equilibrated'].map(key=>{const seen=key==='initial'||state.pressureSeen.includes(key),d=M.pressureData(key);return `<div><b>${phaseNames[key]}</b><span>${seen?'NO₂ 상대 농도 '+d.cNO2.toFixed(2):'관찰 전'}</span></div>`;}).join('');
+ }
+ function act(action,value){if(!M.request(state,action,value))return;render();if(state.pending){timer=setTimeout(()=>{M.finish(state);timer=null;render();},matchMedia('(prefers-reduced-motion:reduce)').matches?30:1800);}}
+ all('[data-mode]').forEach(b=>b.addEventListener('click',()=>act('mode',b.dataset.mode)));
+ all('[data-ec-reagent]').forEach(b=>b.addEventListener('click',()=>act('reagent',b.dataset.ecReagent)));
+ all('[data-ec-tube]').forEach(b=>b.addEventListener('click',()=>act('select',Number(b.dataset.ecTube))));
+ all('[data-ec-bath]').forEach(b=>b.addEventListener('click',()=>act('bath',b.dataset.ecBath)));
+  for(const [id,action]of [['ecPrepare','prepare'],['ecAdd','add'],['ecFill','fill'],['ecChloride','chloride'],['ecCompress','compress'],['ecEquilibrate','equilibrate']])$('#'+id).addEventListener('click',()=>act(action));
+ $('#ecReset').addEventListener('click',()=>{clearTimeout(timer);timer=null;const mode=state.mode;state=M.initial();state.mode=mode;render();});
+ window.__equilibriumColour={getState:()=>structuredClone(state)};
+ render();
+})();

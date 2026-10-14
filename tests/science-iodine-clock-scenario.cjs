@@ -1,0 +1,1 @@
+module.exports=function(value){const[mode,part,chart]=value.split(':');const a=window.__iodineClock;a.setMode(mode);if(part==='bare')return;if(part==='wrong'){a.prepare(0,0);return;}const count=mode==='concentration'?4:3;for(let i=0;i<count;i++)a.prepare(i);if(part==='ready')return;a.start();a.setTime(+part);if(chart)a.setChart(chart);};

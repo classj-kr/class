@@ -1,0 +1,46 @@
+✔ chromium: electrons rotate slowly without changing shells, transfer, labels or motion preferences (13232.5457ms)
+✔ webkit: electrons rotate slowly without changing shells, transfer, labels or motion preferences (13361.1641ms)
+✖ chromium: figure ink follows its painted background and moving the result preserves its live node (870.4134ms)
+✖ webkit: figure ink follows its painted background and moving the result preserves its live node (430.3173ms)
+218 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (15.301ms)
+218 browser conditions, 654 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (33041.1379ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 4
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33167.4011
+
+✖ failing tests:
+
+test at tests\science-presentation.test.cjs:3:43
+✖ chromium: figure ink follows its painted background and moving the result preserves its live node (870.4134ms)
+  AssertionError [ERR_ASSERTION]: whole diagram fits the phone
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-presentation.test.cjs:20:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\science-presentation.test.cjs:3:43
+✖ webkit: figure ink follows its painted background and moving the result preserves its live node (430.3173ms)
+  AssertionError [ERR_ASSERTION]: whole diagram fits the phone
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-presentation.test.cjs:20:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

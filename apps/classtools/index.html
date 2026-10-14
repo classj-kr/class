@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#173f45">
+    <title>교사 전용 메인 포털 · Teacher Dashboard</title>
+    <link rel="stylesheet" href="../assets/device-game.css">
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #172033;
+            --muted: #5b6770;
+            --paper: #fffdf7;
+            --canvas: #f3eee3;
+            --line: #dcd5c7;
+            --brand: #173f45;
+            --brand-light: #2ec4b6;
+            --brand-dark: #0e292d;
+            --accent: #e79437;
+            --coral: #ef476f;
+            --shadow: 0 20px 60px rgba(23, 32, 51, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            min-height: 100vh;
+            color: var(--ink);
+            background: var(--canvas);
+            font-family: Pretendard, "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+            isolation: isolate;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(180deg, rgba(255, 253, 247, 0.12), rgba(255, 253, 247, 0.30)),
+                url("../assets/images/teacher-main-bg.webp") center center / cover no-repeat;
+            pointer-events: none;
+        }
+
+        /* 위쪽은 사이트 공용 뒤로 가기(왼쪽 위 고정, 아래 끝 50px) 자리를 비운다.
+           화면이 넓어 본문이 버튼 오른쪽에 떨어져 있으면 비울 필요가 없다. */
+        main {
+            width: min(100% - 32px, 1040px);
+            margin: 0 auto;
+            padding: 60px 0 80px;
+        }
+
+        @media (min-width: 1160px) {
+            main {
+                padding-top: 28px;
+            }
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #f1f7f6;
+            font-size: 0.92rem;
+            font-weight: 800;
+            backdrop-filter: blur(8px);
+        }
+
+        /* 묶음은 카드 색이 보여 주므로 제목은 화면 읽기 프로그램에만 남긴다.
+           대신 묶음 사이는 카드 사이보다 넓게 띄운다. */
+        .section-title {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        .groups-grid + .section-title + .tools-grid,
+        .tools-grid + .section-title + .tools-grid {
+            margin-top: 28px;
+        }
+
+        /* 카드 색은 섹션이 정한다. 배경 그림이 밝으므로 카드는 불투명한 진한 색에
+           흰 글씨로 둔다(반투명이면 배경과 섞여 글씨가 흐려진다). */
+        .tools-grid,
+        .groups-grid {
+            --tone: #173f45;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+            gap: 12px;
+        }
+
+        .daily-tools-grid { --tone: #0f766e; }
+        .admin-tools-grid { --tone: #54478f; }
+        .teaching-tools-grid { --tone: #b4532a; }
+        .groups-grid { --tone: #151c18; }
+
+        .tool-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            min-height: 64px;
+            padding: 12px 14px;
+            border: 0;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--tone), color-mix(in srgb, var(--tone) 78%, black));
+            box-shadow: 0 8px 22px color-mix(in srgb, var(--tone) 28%, transparent);
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px color-mix(in srgb, var(--tone) 38%, transparent);
+        }
+
+        .tool-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 36px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.18);
+            font-size: 1.15rem;
+        }
+
+        .tool-name {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.4;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+
+        .group-card {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .group-type,
+        .group-meta {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .group-add {
+            justify-content: center;
+            border: 2px dashed color-mix(in srgb, var(--tone) 55%, transparent);
+            background: rgba(255, 253, 247, 0.7);
+            box-shadow: none;
+            color: var(--tone);
+            font-weight: 800;
+        }
+
+        .status-bar {
+            margin-top: 36px;
+            padding: 16px 20px;
+            border-radius: 14px;
+            background: rgba(23, 32, 51, 0.04);
+            border: 1px dashed var(--line);
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 60px 0 50px;
+            }
+            .tools-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .tools-grid .tool-card {
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+                min-height: 104px;
+                padding: 12px 8px;
+                text-align: center;
+            }
+            .tools-grid .tool-name {
+                font-size: 0.92rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 머리줄(제목·계정·메인으로·로그아웃)과 '○학년 ○반 · 이름' 큰 띠는 없다.
+         누구인지는 첫 화면 프로필 카드가, 나가기는 사이트 공용 뒤로 가기가, 로그아웃은
+         첫 화면이 맡는다. -->
+    <main>
+        <!-- 내 학급 · 동아리 · 전담 그룹 관리 섹션 (개별 대시보드 바로가기) -->
+        <h2 class="section-title">내 학급 · 그룹</h2>
+        <div class="groups-grid" id="main-groups-grid">
+            <!-- Dynamically rendered group cards -->
+        </div>
+
+        <!-- 학급 대시보드는 위 '내 학급·그룹' 카드에서 그룹별로 연다. 여기 따로 두면
+             같은 화면으로 가는 입구가 둘이 된다. 아이콘은 aria-hidden이라 링크 이름은
+             글자만 남는다. -->
+        <h2 class="section-title">자주 쓰는 것</h2>
+        <div class="tools-grid daily-tools-grid">
+            <a class="tool-card" href="/classboard/"><span class="tool-icon" aria-hidden="true">📢</span><h3 class="tool-name">알림장</h3></a>
+            <a class="tool-card" href="/teacher/"><span class="tool-icon" aria-hidden="true">📬</span><h3 class="tool-name">가정통신문</h3></a>
+            <a class="tool-card" href="attendance-dashboard.html"><span class="tool-icon" aria-hidden="true">📋</span><h3 class="tool-name">출결 현황</h3></a>
+        </div>
+
+        <h2 class="section-title">학교 행정</h2>
+        <div class="tools-grid admin-tools-grid">
+            <a class="tool-card" href="/schooladmin/"><span class="tool-icon" aria-hidden="true">📅</span><h3 class="tool-name">학사일정·교육과정</h3></a>
+            <a class="tool-card" href="school-events.html"><span class="tool-icon" aria-hidden="true">📌</span><h3 class="tool-name">월중 행사</h3></a>
+            <a class="tool-card" href="school-roster"><span class="tool-icon" aria-hidden="true">👥</span><h3 class="tool-name">전체 명단</h3></a>
+            <a class="tool-card" href="learning-reports"><span class="tool-icon" aria-hidden="true">📊</span><h3 class="tool-name">문해·수리 보고서</h3></a>
+            <a class="tool-card" href="record-ai"><span class="tool-icon" aria-hidden="true">📝</span><h3 class="tool-name">생활기록부</h3></a>
+            <a class="tool-card" href="/classtools/assessment-plan/plan.html"><span class="tool-icon" aria-hidden="true">📐</span><h3 class="tool-name">수행평가 계획</h3></a>
+            <a class="tool-card" href="/classtools/office-tools/"><span class="tool-icon" aria-hidden="true">🗂️</span><h3 class="tool-name">사무용 도구</h3></a>
+            <a class="tool-card" href="privacy.html"><span class="tool-icon" aria-hidden="true">🔒</span><h3 class="tool-name">개인정보 요청 관리</h3></a>
+        </div>
+
+        <h2 class="section-title">수업 도구</h2>
+        <div class="tools-grid teaching-tools-grid">
+            <a class="tool-card" href="/boards/?mode=teacher"><span class="tool-icon" aria-hidden="true">💬</span><h3 class="tool-name">게시판</h3></a>
+            <a class="tool-card" href="/vote/?mode=teacher"><span class="tool-icon" aria-hidden="true">🗳️</span><h3 class="tool-name">투표</h3></a>
+            <a class="tool-card" href="/school-election/?mode=teacher"><span class="tool-icon" aria-hidden="true">🏅</span><h3 class="tool-name">전교 임원선거</h3></a>
+            <a class="tool-card" href="/learning/literacy-numeracy/graph-studio/"><span class="tool-icon" aria-hidden="true">📊</span><h3 class="tool-name">그래프 그리기</h3></a>
+        </div>
+
+        <div class="status-bar">
+            <a href="/classtools/profile" style="color:var(--brand, #75d69f);">내 정보 · AI 설정</a>
+            <span id="status-info"></span>
+            <span id="student-count-info"></span>
+        </div>
+    </main>
+
+    <!-- 새 학급·그룹 개설 드롭다운 모달 -->
+    <div id="create-group-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(6px);">
+        <div style="background:var(--paper, #1a221e); border:1px solid rgba(117,214,159,0.4); border-radius:24px; width:min(92%, 480px); padding:32px; box-shadow:0 20px 50px rgba(0,0,0,0.6); color:#fff;">
+            <h3 style="margin:0 0 8px; font-size:1.4rem; font-weight:900; color:#75d69f;">학급 · 그룹 가져오기</h3>
+            <p style="margin:0 0 24px; font-size:0.9rem; color:var(--text-muted, #a0aec0);">학생·학부모 명단에 있는 학급과 항목만 가져올 수 있습니다.</p>
+            
+            <div style="margin-bottom:18px;">
+                <label style="display:block; font-size:0.88rem; font-weight:800; margin-bottom:6px; color:#75d69f;">1. 어디에서 가져올까요</label>
+                <!-- 유형은 학생·학부모 명단에 실제로 있는 열에서 만든다. -->
+                <select id="modal-group-type" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.2); background:#111512; color:#fff; font-size:1rem; font-weight:700; outline:none;"></select>
+            </div>
+
+            <div style="margin-bottom:24px;">
+                <label style="display:block; font-size:0.88rem; font-weight:800; margin-bottom:6px; color:#75d69f;">2. 무엇을 가져올까요</label>
+                <select id="modal-group-name-select" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.2); background:#111512; color:#fff; font-size:1rem; font-weight:700; outline:none;">
+                    <!-- Populated dynamically via JS -->
+                </select>
+                <p id="modal-group-notice" style="display:none; margin:10px 0 0; font-size:0.85rem; line-height:1.5; color:#ffd166;"></p>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:12px;">
+                <button type="button" onclick="closeCreateGroupModal()" style="padding:10px 20px; border-radius:12px; border:1px solid rgba(255,255,255,0.2); background:transparent; color:#ccc; font-weight:700; cursor:pointer;">취소</button>
+                <button type="button" id="btn-modal-submit-group" style="padding:10px 24px; border-radius:12px; border:none; background:#75d69f; color:#0b0f0c; font-weight:900; cursor:pointer;">가져오기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            'use strict';
+
+            const statusInfo = document.getElementById('status-info');
+            const studentCountInfo = document.getElementById('student-count-info');
+
+            async function api(path, options = {}) {
+                const response = await fetch(path, {
+                    ...options,
+                    headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+                });
+                const payload = await response.json().catch(() => ({}));
+                if (!response.ok) throw new Error(payload.message || '요청을 처리할 수 없습니다.');
+                return payload;
+            }
+
+            // 학생·학부모 명단과 그룹 개설이 서로 다른 해를 보면, 명단에 학생이 있는데도
+            // 고를 학급이 없는 것처럼 보인다. 교사 프로필의 학년도를 함께 쓴다.
+            let portalYear = new Date().getFullYear();
+
+            // 이름·학급을 보이던 큰 띠는 없앴다. 여기서는 학년도만 이어받는다.
+            function applyProfileData(data) {
+                portalYear = data.academicYear || portalYear;
+            }
+
+            const activeGroupSelect = document.getElementById('active-group-select');
+            const btnCreateGroup = document.getElementById('btn-create-group');
+
+            async function loadTeacherGroups() {
+                const mainGrid = document.getElementById('main-groups-grid');
+                try {
+                    const res = await api(`/api/teacher/groups?year=${portalYear}`);
+                    const groups = res.groups || [];
+                    const savedGroupId = sessionStorage.getItem('active_group_id');
+                    if (savedGroupId && savedGroupId !== 'homeroom' && !groups.some(g => String(g.id) === savedGroupId)) {
+                        sessionStorage.removeItem('active_group_id');
+                    }
+                    
+                    const groupTypeIcons = {
+                        homeroom: '🏫',
+                        subject: '📖',
+                        club: '🎯',
+                        afterschool: '⚽',
+                        care: '🧸',
+                        shuttle: '🚌',
+                        other: '📌'
+                    };
+
+                    // 학급 그룹은 '6-4' 라는 이름으로 저장된다. 화면에서는 읽는 대로 적는다.
+                    const groupLabel = (g) => (g.group_type === 'homeroom' && g.grade && g.class_number)
+                        ? `${g.grade}학년 ${g.class_number}반`
+                        : g.group_name;
+
+                    const typeLabels = {
+                        homeroom: '담임 학급',
+                        subject: '전담 교과',
+                        club: '동아리',
+                        afterschool: '방과후부',
+                        care: '돌봄반',
+                        shuttle: '통학버스',
+                        other: '기타'
+                    };
+
+                    if (activeGroupSelect) {
+                        activeGroupSelect.innerHTML = `<option value="homeroom" style="color:#000;">🏫 담임 학급</option>`;
+                        groups.forEach(g => {
+                            const icon = groupTypeIcons[g.group_type] || '📌';
+                            const opt = document.createElement('option');
+                            opt.value = g.id;
+                            opt.style.color = '#000';
+                            opt.textContent = `${icon} ${groupLabel(g)} (${g.student_count || 0}명)`;
+                            activeGroupSelect.appendChild(opt);
+                        });
+
+                        const savedActiveId = sessionStorage.getItem('active_group_id');
+                        if (savedActiveId && Array.from(activeGroupSelect.options).some(o => o.value === savedActiveId)) {
+                            activeGroupSelect.value = savedActiveId;
+                        } else {
+                            sessionStorage.removeItem('active_group_id');
+                        }
+                    }
+
+                    if (mainGrid) {
+                        mainGrid.innerHTML = groups.map(g => {
+                            const icon = groupTypeIcons[g.group_type] || '📌';
+                            const label = typeLabels[g.group_type] || g.group_type;
+                            return `
+                                <div class="tool-card group-card" onclick="openGroupDashboard(${g.id})">
+                                    <span class="group-type">${icon} ${label}</span>
+                                    <h3 class="tool-name">${groupLabel(g)}</h3>
+                                    <span class="group-meta">학생 ${g.student_count || 0}명</span>
+                                </div>
+                            `;
+                        }).join('') + `
+                            <div class="tool-card group-add" onclick="handleCreateGroupClick()">+ 명단에서 가져오기</div>
+                        `;
+                    }
+                } catch (error) {
+                    sessionStorage.removeItem('active_group_id');
+                    if (activeGroupSelect) activeGroupSelect.replaceChildren();
+                    if (mainGrid) {
+                        mainGrid.replaceChildren();
+                        const message = document.createElement('p');
+                        message.textContent = error.message || '학급·그룹 목록을 불러오지 못했습니다.';
+                        mainGrid.appendChild(message);
+                    }
+                }
+            }
+
+            window.openGroupDashboard = function(groupId) {
+                sessionStorage.setItem('active_group_id', groupId);
+                location.href = `/classtools/dashboard.html?groupId=${groupId}`;
+            };
+
+            let availableData = { homerooms: [], columns: [] };
+
+            let availableError = '';
+
+            window.handleCreateGroupClick = async function() {
+                availableError = '';
+                try {
+                    availableData = await api(`/api/teacher/available-groups?year=${portalYear}`);
+                } catch (err) {
+                    // 여기서 삼키면 화면에는 '고를 것이 없음'으로만 보인다. 까닭을 남긴다.
+                    availableData = { homerooms: [], columns: [] };
+                    availableError = err.message || '후보 목록을 불러오지 못했습니다.';
+                }
+                populateTypeOptions();
+                populateModalDropdown();
+                const modal = document.getElementById('create-group-modal');
+                if (modal) modal.style.display = 'flex';
+            };
+
+            window.closeCreateGroupModal = function() {
+                const modal = document.getElementById('create-group-modal');
+                if (modal) modal.style.display = 'none';
+            };
+
+            // 학교마다 명단의 열이 다르다. 동아리가 없는 학교도 있고, 방과후 대신
+            // 다른 이름을 쓰는 학교도 있다. 그래서 유형은 미리 적어 두지 않고
+            // 그 학교 명단에 실제로 있는 열에서 만든다.
+            const COLUMN_TYPE_MAP = [
+                [/동아리|클럽/, 'club'],
+                [/방과\s*후|늘봄/, 'afterschool'],
+                [/돌봄/, 'care'],
+                [/버스|통학|차량/, 'shuttle'],
+                [/전담|교과/, 'subject']
+            ];
+
+            function groupTypeForColumn(name) {
+                const hit = COLUMN_TYPE_MAP.find(([pattern]) => pattern.test(name));
+                return hit ? hit[1] : 'other';
+            }
+
+            function populateTypeOptions() {
+                const typeSelect = document.getElementById('modal-group-type');
+                if (!typeSelect) return;
+                const previous = typeSelect.value;
+                typeSelect.replaceChildren();
+
+                const homeroom = document.createElement('option');
+                homeroom.value = 'homeroom';
+                homeroom.textContent = '🏫 담임 학급';
+                typeSelect.appendChild(homeroom);
+
+                (availableData.columns || []).forEach((col, index) => {
+                    const opt = document.createElement('option');
+                    opt.value = `col:${index}`;
+                    opt.textContent = col.name;
+                    typeSelect.appendChild(opt);
+                });
+
+                if ([...typeSelect.options].some((opt) => opt.value === previous)) typeSelect.value = previous;
+            }
+
+            function selectedColumn() {
+                const typeSelect = document.getElementById('modal-group-type');
+                const match = /^col:(\d+)$/.exec(typeSelect ? typeSelect.value : '');
+                if (!match) return null;
+                return (availableData.columns || [])[Number(match[1])] || null;
+            }
+
+            function populateModalDropdown() {
+                const typeSelect = document.getElementById('modal-group-type');
+                const nameSelect = document.getElementById('modal-group-name-select');
+                const customInput = document.getElementById('modal-group-custom-input');
+                if (!typeSelect || !nameSelect) return;
+
+                const type = typeSelect.value;
+                nameSelect.innerHTML = '';
+                if (customInput) customInput.style.display = 'none';
+
+                if (type === 'homeroom') {
+                    (availableData.homerooms || []).forEach(h => {
+                        const opt = document.createElement('option');
+                        opt.value = h.name;
+                        opt.textContent = h.label;
+                        nameSelect.appendChild(opt);
+                    });
+                } else {
+                    // 고른 열에 적힌 항목이 그대로 후보다.
+                    const column = selectedColumn();
+                    (column?.options || []).forEach(o => {
+                        const opt = document.createElement('option');
+                        opt.value = o;
+                        opt.textContent = o;
+                        nameSelect.appendChild(opt);
+                    });
+                }
+
+                // 고를 것이 직접 입력뿐이면 왜 그런지 알려 준다.
+                const notice = document.getElementById('modal-group-notice');
+                if (!notice) return;
+                let message = '';
+                const column = selectedColumn();
+                if (availableError) {
+                    message = availableError;
+                } else if (type === 'homeroom' && !(availableData.homerooms || []).length) {
+                    message = `${portalYear}년도 학생·학부모 명단에 학생이 없어 고를 학급이 없습니다. 학교 관리자가 학생·학부모 명단을 먼저 채워야 합니다.`;
+                } else if (column && !(column.options || []).length) {
+                    message = `'${column.name}' 열에 적힌 항목이 없습니다. 학교 관리자가 학생·학부모 명단에서 이 열의 항목을 채우면 여기에 나옵니다.`;
+                } else if (type === 'homeroom' || column) {
+                    message = '';
+                } else if (!(availableData.columns || []).length) {
+                    message = `${portalYear}년도 학생·학부모 명단에 만들어 둔 열이 없습니다. 학교 관리자가 열을 만들면 그 이름이 위 목록에 나옵니다.`;
+                }
+                notice.textContent = message;
+                notice.style.display = message ? 'block' : 'none';
+            }
+
+            document.getElementById('modal-group-type')?.addEventListener('change', populateModalDropdown);
+            document.getElementById('btn-modal-submit-group')?.addEventListener('click', async () => {
+                const typeSelect = document.getElementById('modal-group-type');
+                const nameSelect = document.getElementById('modal-group-name-select');
+
+                const groupName = nameSelect ? nameSelect.value : '';
+                if (!groupName) {
+                    alert('명단에서 가져올 학급이나 항목을 골라 주세요.');
+                    return;
+                }
+
+                const type = typeSelect ? typeSelect.value : 'other';
+                const column = selectedColumn();
+                // 서버가 받는 갈래 이름은 정해져 있다. 열 이름을 그 가운데 하나로 옮긴다.
+                const groupType = type === 'homeroom' ? 'homeroom' : (column ? groupTypeForColumn(column.name) : 'other');
+                // 담임 학급이면 이름이 '6-4' 모양이다. 학년·반을 함께 보내야 그 반
+                // 학생이 붙는다. 학년도도 보내야 목록에 뜨는 해와 어긋나지 않는다.
+                const homeroomMatch = type === 'homeroom' ? /^(\d+)-(\d+)$/.exec(groupName) : null;
+
+                try {
+                    const res = await api('/api/teacher/groups', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            groupName,
+                            groupType,
+                            grade: homeroomMatch ? Number(homeroomMatch[1]) : null,
+                            classNumber: homeroomMatch ? Number(homeroomMatch[2]) : null,
+                            year: portalYear
+                        })
+                    });
+                    alert(`'${groupName}' 을(를) 내 목록에 넣었습니다.`);
+                    closeCreateGroupModal();
+                    sessionStorage.setItem('active_group_id', res.groupId);
+                    location.href = `/classtools/dashboard.html?groupId=${res.groupId}`;
+                } catch (err) {
+                    alert(err.message || '그룹 개설에 실패했습니다.');
+                }
+            });
+
+            if (activeGroupSelect) {
+                activeGroupSelect.addEventListener('change', (e) => {
+                    sessionStorage.setItem('active_group_id', e.target.value);
+                });
+            }
+
+            if (btnCreateGroup) {
+                btnCreateGroup.addEventListener('click', handleCreateGroupClick);
+            }
+
+            async function init() {
+                try {
+                    const session = await api('/api/auth/me').catch(() => ({ signedIn: false }));
+                    if (!session.signedIn || !(session.user?.role === 'teacher' || session.isTeacher)) {
+                        location.replace('/');
+                        return;
+                    }
+                    // 관리자 설정 교사 프로필 조회
+                    const teacherProfile = await api('/api/teacher/profile').catch(() => null);
+
+                    if (teacherProfile && teacherProfile.profile) {
+                        applyProfileData(teacherProfile.profile);
+                    } else {
+                        // 학급 정보 API 조회 시도
+                        const classData = await api('/api/teacher/class').catch(() => null);
+                        if (classData && classData.classroom) {
+                            applyProfileData(classData.classroom);
+                            if (studentCountInfo) studentCountInfo.textContent = `학생 수: ${classData.classroom.students?.length || 0}명`;
+                        } else {
+                            applyProfileData({});
+                        }
+                    }
+
+                    // 동아리/방과후/전담 그룹 불러오기
+                    await loadTeacherGroups();
+
+                    // 학급 학생 수 추가 업데이트
+                    const classRes = await api('/api/teacher/class').catch(() => null);
+                    if (classRes && classRes.classroom) {
+                        if (studentCountInfo) studentCountInfo.textContent = `등록된 학생 수: ${classRes.classroom.students?.length || 0}명`;
+                    }
+                } catch (error) {
+                    if (statusInfo) statusInfo.textContent = `⚠️ 정보 로드 중 오류: ${error.message}`;
+                }
+            }
+
+            // 교사 도구의 첫 화면이다. 아래 도구들은 여기로 링크를 타고 돌아오므로
+            // 뒤로 가기가 history.back()이면 방금 나온 도구로 되돌아가 왕복한다.
+            // 가져오기 창이 열려 있으면 그 창만 닫고, 아니면 사이트 첫 화면으로 간다.
+            window.addEventListener('sitebackrequest', (event) => {
+                event.preventDefault();
+                const modal = document.getElementById('create-group-modal');
+                if (modal && modal.style.display !== 'none') {
+                    closeCreateGroupModal();
+                    return;
+                }
+                location.assign('/');
+            });
+
+
+            init();
+        })();
+    </script>
+</body>
+</html>

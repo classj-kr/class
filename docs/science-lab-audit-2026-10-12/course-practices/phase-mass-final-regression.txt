@@ -1,0 +1,25 @@
+✔ display permutation is stable, preserves identities, and varies keyed positions across questions (1.8076ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.7147ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.75ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.2048ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1096ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (44.9881ms)
+chromium: 174 apps / 178 course routes / 712 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (32153.4416ms)
+webkit: 174 apps / 178 course routes / 712 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (54125.5167ms)
+✔ closed-bottle freezing preserves dry mass; zero and external water affect the reading, not the oil mass (0.5105ms)
+✔ chromium: compare freezing mass, control zero and water, preserve first errors (23436.2727ms)
+✔ webkit: compare freezing mass, control zero and water, preserve first errors (21192.8475ms)
+220 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (127.6974ms)
+✔ every science lab JavaScript file parses (92.9204ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8635ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 131516.9185

@@ -1,0 +1,12 @@
+✔ chromium: helium exception, phase-change axes and chart contrast remain consistent (1985.9093ms)
+✔ webkit: helium exception, phase-change axes and chart contrast remain consistent (1834.4408ms)
+✔ chromium: figure ink follows its painted background and moving the result preserves its live node (879.4981ms)
+✔ webkit: figure ink follows its painted background and moving the result preserves its live node (670.2483ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5519.6867

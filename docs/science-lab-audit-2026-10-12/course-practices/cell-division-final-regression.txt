@@ -1,0 +1,16 @@
+✔ chromatid lineage, independent assortment and reciprocal exchange conserve every chromosome segment (454.7771ms)
+chromium: 144 model/layout states; smooth motion; 4 first errors retained after reload
+chromium: all 12 incorrect options retain their specific explanation after reload
+✔ chromium: model matches visible chromatids, smooth movement, touch and keyboard controls, first mistakes retained (26352.4746ms)
+webkit: 144 model/layout states; smooth motion; 4 first errors retained after reload
+webkit: all 12 incorrect options retain their specific explanation after reload
+✔ webkit: model matches visible chromatids, smooth movement, touch and keyboard controls, first mistakes retained (42139.6252ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69050.7662
+

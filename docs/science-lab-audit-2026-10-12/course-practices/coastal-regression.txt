@@ -1,0 +1,76 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.8064ms)
+✔ chromium: apparatus states, labels, fallback panels and responsive drawings (43407.6237ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (26781.7298ms)
+✔ gas stoichiometry, calibration invariance, chromatography ratios and selective digestion remain physically distinct (1.2027ms)
+✖ chromium: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (59352.8822ms)
+✖ webkit: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (62351.6321ms)
+✖ required experiment source evidence, all valid choices and independent invariants (3.3151ms)
+290 browser conditions, 870 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (60286.7491ms)
+188 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (172.3368ms)
+✔ every science lab JavaScript file parses (156.8227ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (3.046ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 8
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121768.3996
+
+✖ failing tests:
+
+test at tests\science-course-practices.test.cjs:11:43
+✖ chromium: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (59352.8822ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'false' !== 'true'
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-course-practices.test.cjs:23:689)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'false',
+    expected: 'true',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-course-practices.test.cjs:11:43
+✖ webkit: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (62351.6321ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'false' !== 'true'
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-course-practices.test.cjs:23:689)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'false',
+    expected: 'true',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-required-experiments.test.cjs:6:1
+✖ required experiment source evidence, all valid choices and independent invariants (3.3151ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  28 !== 29
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-required-experiments.test.cjs:8:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 28,
+    expected: 29,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

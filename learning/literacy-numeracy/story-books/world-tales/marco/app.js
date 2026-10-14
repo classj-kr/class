@@ -125,7 +125,7 @@ const CHAPTERS = [
                 "emoji": "🏚️",
                 "left": [
                     "마르코는 겨우 어머니의 이름을 댔습니다. 그 사람은 고개를 저었지요.",
-                    "\"네 어머니가 일하던 집 식구들은 벌써 이사 갔단다. 로사리오라는 도시로 갔지.\"",
+                    "\"네 어머니가 일하던 집 식구들은 벌써 이사 갔단다. 로사리오라는 도시로 갔지. 새 주소는 여기 적어 주마.\"",
                     "마르코는 다리에서 힘이 쭉 빠졌습니다. \"거기가 어딘가요?\""
                 ],
                 "right": [
@@ -226,7 +226,7 @@ const CHAPTERS = [
                 "art": "07-final-2.webp",
                 "emoji": "🚶",
                 "left": [
-                    "이윽고 흙집 몇 채가 보였습니다. 작은 마을이었지요. 마르코는 마지막 힘을 다해 걸었습니다.",
+                    "이윽고 투쿠만에 닿았습니다. 마르코는 물어물어 그 집을 찾아갔지요.",
                     "마당에서 빨래를 널던 아주머니가 돌아보았지요. 마르코는 말없이 어머니의 사진을 내밀었습니다.",
                     "아주머니가 사진과 마르코를 번갈아 보았지요. \"너…… 혹시 이 사람 아들이니?\""
                 ],
@@ -688,7 +688,7 @@ const EN = {
                     emoji: '🏘️',
                     left: [
                         "At last Marco said his mother's name. The man shook his head.",
-                        "\"The family she worked for moved away. They went to a city called Rosario.\"",
+                        "\"The family she worked for moved away. They went to a city called Rosario. Here, I'll write the new address down for you.\"",
                         "The strength went out of Marco's legs. \"Where is that?\""
                     ],
                     right: [
@@ -802,7 +802,7 @@ const EN = {
                     art: '07-final-2.webp',
                     emoji: '⛰️',
                     left: [
-                        "At last a few earth houses came into view. Marco walked on with the last of his strength.",
+                        "At last he reached Tucumán. Marco asked his way from one person to the next until he found the house.",
                         "A woman hanging out washing turned round. Without a word, Marco held out his mother's photograph.",
                         "The woman looked from the photograph to Marco. \"You… are you this woman's son?\""
                     ],
@@ -1009,7 +1009,7 @@ const EN = {
             { word: 'take heart', meaning: '힘을 내다', sentence: 'Marco took heart at the sight.' }
         ],
         '07-final-2.webp': [
-            { word: 'come into view', meaning: '보이다', sentence: 'A few earth houses came into view.' },
+            { word: 'ask one\'s way', meaning: '길을 물어 가다', sentence: 'Marco asked his way from one person to the next.' },
             { word: 'hang out washing', meaning: '빨래를 널다', sentence: 'A woman hanging out washing turned round.' },
             { word: 'hammer', meaning: '쿵쾅거리다', sentence: "Marco's heart hammered." },
             { word: 'out of breath', meaning: '숨이 가쁜', sentence: 'Marco was out of breath.' }
@@ -1061,9 +1061,10 @@ const WORDS_KO = {
     ],
     "02-harbor.webp": [
         { w: "끝내", k: "끝에 가서 마침내.", s: "끝내 아버지가 허락했습니다." },
-        { w: "마련하다", k: "애써서 만들어 갖추다.", s: "아는 사람에게 부탁해 겨우 뱃삯을 마련했지요." },
         { w: "뱃고동", k: "배가 떠날 때 크게 울리는 소리.", s: "커다란 배가 뱃고동을 울렸습니다." },
-        { w: "갑판", k: "배 위의 넓고 평평한 바닥.", s: "마르코도 갑판에 올라섰습니다." }
+        { w: "갑판", k: "배 위의 넓고 평평한 바닥.", s: "마르코도 갑판에 올라섰습니다." },
+        { w: "보따리", k: "보자기에 물건을 싸서 귀퉁이를 묶은 꾸러미. 옛날에는 가방 대신 들고 다녔다.", s: "마르코는 작은 보따리 하나만 챙겼습니다." },
+        { w: "부두", k: "배가 와서 닿고 사람이 타고 내리거나 짐을 싣도록 바닷가에 튼튼하게 쌓아 만든 곳.", s: "부두에서는 다들 울며 손을 흔들었지요." }
     ],
     "02-harbor-2.webp": [
         { w: "목청껏", k: "목소리를 낼 수 있는 데까지 크게.", s: "마르코는 목청껏 소리쳤습니다." },
@@ -1078,7 +1079,8 @@ const WORDS_KO = {
     "03-voyage-2.webp": [
         { w: "이런저런", k: "이러하고 저러한 여러.", s: "배에는 이런저런 사람이 많았습니다." },
         { w: "안타까워하다", k: "남의 어려움을 보고 마음 아파하다.", s: "사람들은 마르코의 사정을 듣고 안타까워했지요." },
-        { w: "쓰다듬다", k: "손으로 가볍게 쓸어 주다.", s: "아주머니가 마르코의 머리를 쓰다듬었습니다." }
+        { w: "쓰다듬다", k: "손으로 가볍게 쓸어 주다.", s: "아주머니가 마르코의 머리를 쓰다듬었습니다." },
+        { w: "목수", k: "나무를 자르고 다듬어서 집이나 가구, 문 같은 것을 만드는 사람.", s: "농부도 있고 목수도 있었지요." }
     ],
     "04-moved.webp": [
         { w: "물어물어", k: "여러 사람에게 자꾸 물어서.", s: "사람들에게 물어물어 길을 찾았습니다." },
@@ -1093,7 +1095,8 @@ const WORDS_KO = {
     "05-help.webp": [
         { w: "어른거리다", k: "멀리서 흔들리듯 보이다.", s: "풀밭에 소 떼가 어른거렸습니다." },
         { w: "고향", k: "태어나 자란 곳.", s: "\"우리도 고향을 떠나온 사람이란다.\"" },
-        { w: "저마다", k: "사람마다 모두 제 나름대로.", s: "저마다 두고 온 가족이 있었으니까요." }
+        { w: "저마다", k: "사람마다 모두 제 나름대로.", s: "저마다 두고 온 가족이 있었으니까요." },
+        { w: "수레", k: "바퀴를 달아 사람이나 말이 끌고 다니며 짐이나 사람을 실어 나르는 탈것.", s: "걷다가 지나가는 수레를 얻어 타고, 내려서 또 걸었지요." }
     ],
     "05-help-2.webp": [
         { w: "쥐여 주다", k: "손에 들려 주다.", s: "어떤 이는 빵을 쥐여 주었습니다." },
@@ -1118,7 +1121,7 @@ const WORDS_KO = {
         { w: "해가 기울다", k: "해가 서쪽으로 넘어가다.", s: "해가 기울 무렵이었지요." }
     ],
     "07-final-2.webp": [
-        { w: "채", k: "집을 세는 말.", s: "이윽고 흙집 몇 채가 보였습니다." },
+        { w: "빨래를 널다", k: "빤 옷을 마르라고 펼쳐 걸다.", s: "마당에서 빨래를 널던 아주머니가 돌아보았지요." },
         { w: "번갈아", k: "이쪽저쪽을 차례로 바꾸어.", s: "아주머니가 사진과 마르코를 번갈아 보았지요." },
         { w: "심장", k: "가슴에서 피를 뿜어 주는 곳.", s: "마르코의 심장이 쿵쾅거렸습니다." }
     ],

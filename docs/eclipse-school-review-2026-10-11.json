@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-11",
+  "scope": "Eclipse school-level content correction and unified observation/explanation navigation for 10 space topics",
+  "sources": [
+    {
+      "file": "references/textbooks/중고등/미래엔/중학/과학/과학1 (김태일)_2022/미래엔_과학1_교과서__ad9173d70a.pdf",
+      "pages": [252, 253],
+      "review": "Middle-school explanation of eclipse arrangements, total/partial phenomena and observation areas; source text was consulted, not reproduced."
+    },
+    {
+      "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000030224/BBS_202503100438420580.pdf",
+      "pdfPage": 123,
+      "standard": "9과07-04",
+      "review": "Eclipse explanation belongs to the middle-school achievement standard. The elementary view is explicitly classified as an extension activity in content data, not a required elementary eclipse unit."
+    }
+  ],
+  "schoolScopes": {
+    "elementary": "Observe blocking light, shadows, and the relative positions of the Sun, Moon and Earth. No shadow subdivisions, conjunction terminology, orbit inclinations or eclipse subtype names in observation text or assessments.",
+    "middle": "Science 1: eclipse arrangements, total/partial types, lunar phase conditions and observation locations. Dedicated question bank without advanced shadow terminology.",
+    "high": "Retains detailed shadow terminology, penumbral eclipse preset, ray paths and angular-size explanations."
+  },
+  "changes": [
+    "Removed separate concept tab; models and school-level explanations share the study view, with assessment remaining separate.",
+    "School selection updates model labels, result explanations, presets, canvas accessible descriptions and questions.",
+    "Moved the stellar comparison diagrams below the model at full width.",
+    "Corrected clipped Sun viewBox and narrow-screen diagram overflow."
+  ],
+  "verification": [
+    "All 10 space-topic routes opened through the browser; the one observed stellar-study overflow was corrected and rechecked.",
+    "Elementary partial-eclipse preset changes result; advanced words absent from visible model and explanation.",
+    "High penumbral-lunar preset and high-to-middle switching checked; labels update without navigation.",
+    "Elementary multiple-choice answer selected and graded correctly in the browser.",
+    "390px viewport: document scroll width 375px after correction; 1600px viewport: model and explanation appear side by side.",
+    "7 content/load tests passed; eclipse geometry checks and 10-topic routing contract passed."
+  ],
+  "limitations": [
+    "This review does not certify all model content or every school-specific control across unrelated science topics."
+  ]
+}

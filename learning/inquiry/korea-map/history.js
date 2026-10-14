@@ -5,6 +5,10 @@
   const geography = window.KOREA_GEOGRAPHY;
   if (!data || !geography) return;
   const scenes = data.scenes;
+  const curriculum = window.KoreaHistorySchool;
+  const school = () => window.SchoolLevel?.value || 'middle';
+  const available = () => scenes.filter(scene => !curriculum || curriculum.available(scene, school()));
+  const sceneFor = (base, state) => curriculum?.scene({ ...base, ...(state.lesson || {}) }, school()) || { ...base, ...(state.lesson || {}) };
   const territories = window.KOREA_HISTORY_TERRITORIES?.scenes || {};
   const territorySelection = {};
   function territory(scene) {
@@ -19,6 +23,17 @@
   let selected = Math.max(0, scenes.findIndex(scene => scene.id === new URLSearchParams(location.search).get("historyScene")));
   let panelHost;
   let panelApi;
+  let explanationDialog;
+  window.SchoolLevel?.subscribe(() => {
+    if (!panelHost?.isConnected) return;
+    renderPanel();
+    const url = new URL(location.href);
+    url.searchParams.set('historyScene', scenes[selected].id);
+    window.history.replaceState(null, '', url);
+    panelApi.map.closePopup();
+    panelApi.refresh();
+    fit(panelApi);
+  });
 
   function el(tag, className, text) {
     const node = document.createElement(tag);
@@ -36,13 +51,32 @@
   const latLng = xy => [xy[1], xy[0]];
   const bounds = scene => [[scene.bounds[1], scene.bounds[0]], [scene.bounds[3], scene.bounds[2]]];
 
+  function pointAction(marker, scene, mark, state, label) {
+    const open = () => window.KoreaHistoryPoint.open(scene, mark, panelApi, state.id);
+    marker.on('click', open);
+    marker.on('add', () => {
+      const icon = marker.getElement();
+      icon.setAttribute('aria-label', label);
+      icon.setAttribute('aria-haspopup', 'dialog');
+      icon.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.stopPropagation();
+        open();
+      });
+    });
+    return marker;
+  }
+
   function fit(api) {
+    const scene = sceneFor(scenes[selected], territory(scenes[selected]));
     api.map.invalidateSize({ pan: false });
-    api.map.fitBounds(bounds(scenes[selected]), { padding: [18, 18], animate: false, maxZoom: scenes[selected].maxZoom || 10 });
+    api.map.setMaxZoom(Math.max(12, scene.maxZoom || 12));
+    api.map.fitBounds(bounds(scene), { padding: [18, 18], animate: false, maxZoom: scene.maxZoom || 10 });
   }
 
   function select(index, api) {
-    if (index < 0 || index >= scenes.length) return;
+    if (index < 0 || index >= scenes.length || !available().includes(scenes[index])) return;
     selected = index;
     const url = new URL(location.href);
     url.searchParams.set("historyScene", scenes[selected].id);
@@ -53,46 +87,26 @@
     fit(api);
   }
 
-  function sourceLink(label, url) {
-    const node = el("a", "", label);
-    node.href = url;
-    node.target = "_blank";
-    node.rel = "noopener noreferrer";
-    return node;
-  }
-
   function panel(api) {
     panelApi = api;
     panelHost = el("section", "history-panel");
     panelHost.setAttribute("aria-label", "시대순 한국사 지도");
     const eraNav = el("nav", "history-eras");
     eraNav.setAttribute("aria-label", "역사 시대 바로 가기");
-    [...new Set(scenes.map(s => s.era))].forEach(era => {
-      const tab = button(era, null, () => select(scenes.findIndex(s => s.era === era), api));
-      tab.dataset.era = era;
-      eraNav.append(tab);
-    });
     const picker = el("select", "history-select");
     picker.id = "historyScene";
     picker.setAttribute("aria-label", "역사 지도 선택");
-    let optgroup;
-    scenes.forEach(scene => {
-      if (!optgroup || optgroup.label !== scene.era) {
-        optgroup = document.createElement("optgroup");
-        optgroup.label = scene.era;
-        picker.append(optgroup);
-      }
-      const option = el("option", "", `${scene.period} · ${scene.title}`);
-      option.value = scene.id;
-      optgroup.append(option);
-    });
     picker.addEventListener("change", () => select(scenes.findIndex(s => s.id === picker.value), api));
     const nav = el("div", "history-navigation");
-    const prev = button("← 이전 지도", "연대순 이전 지도", () => select(selected - 1, api));
+    const move = direction => {
+      const list = available(), target = list[list.indexOf(scenes[selected]) + direction];
+      if (target) select(scenes.indexOf(target), api);
+    };
+    const prev = button("← 이전 지도", "연대순 이전 지도", () => move(-1));
     prev.id = "historyPrevious";
     const position = el("span", "history-position");
     position.id = "historyPosition";
-    const next = button("다음 지도 →", "연대순 다음 지도", () => select(selected + 1, api));
+    const next = button("다음 지도 →", "연대순 다음 지도", () => move(1));
     next.id = "historyNext";
     nav.append(prev, position, next);
     const content = el("div", "history-content");
@@ -107,28 +121,64 @@
 
   function renderPanel() {
     if (!panelHost) return;
+    explanationDialog?.close();
+    const visibleScenes = available();
+    if (!visibleScenes.includes(scenes[selected])) {
+      const next = visibleScenes.find(scene => scene.startYear >= scenes[selected].startYear) || visibleScenes[visibleScenes.length-1];
+      selected = scenes.indexOf(next);
+      const url = new URL(location.href);
+      url.searchParams.set('historyScene', next.id);
+      window.history.replaceState(null, '', url);
+    }
     const base = scenes[selected];
     const state = territory(base);
-    const scene = { ...base, ...(state.lesson || {}) };
+    const scene = sceneFor(base, state);
+    const grade = curriculum?.profile(scene, school());
+    const eraNav = panelHost.querySelector('.history-eras');
+    eraNav.replaceChildren(...[...new Set(visibleScenes.map(s => s.era))].map(era => {
+      const tab = button(era, null, () => select(scenes.indexOf(available().find(s => s.era === era)), panelApi));
+      tab.dataset.era = era;
+      return tab;
+    }));
+    const picker = panelHost.querySelector('#historyScene');
+    picker.replaceChildren();
+    let optgroup;
+    visibleScenes.forEach(item => {
+      if (!optgroup || optgroup.label !== item.era) {
+        optgroup = document.createElement('optgroup'); optgroup.label = item.era; picker.append(optgroup);
+      }
+      const period = item.period.split(' · ')[0];
+      const option = el('option', '', item.title.startsWith(period) ? item.title : `${period} · ${item.title}`);
+      option.value = item.id; optgroup.append(option);
+    });
+    const position = visibleScenes.indexOf(base);
     panelHost.querySelector("#historyScene").value = scene.id;
-    panelHost.querySelector("#historyPrevious").disabled = selected === 0;
-    panelHost.querySelector("#historyNext").disabled = selected === scenes.length - 1;
-    panelHost.querySelector("#historyPosition").textContent = `${selected + 1} / ${scenes.length}`;
+    panelHost.querySelector("#historyPrevious").disabled = position === 0;
+    panelHost.querySelector("#historyNext").disabled = position === visibleScenes.length - 1;
+    panelHost.querySelector("#historyPosition").textContent = `${position + 1} / ${visibleScenes.length}`;
     panelHost.querySelector("#historyStatus").textContent = `${scene.period}, ${scene.title}`;
     panelHost.querySelectorAll("[data-era]").forEach(node => node.setAttribute("aria-pressed", String(node.dataset.era === scene.era)));
+    requestAnimationFrame(() => {
+      const active = eraNav.querySelector('[aria-pressed="true"]');
+      if (active) eraNav.scrollLeft = active.offsetLeft - eraNav.offsetLeft - (eraNav.clientWidth - active.offsetWidth) / 2;
+    });
     const content = panelHost.querySelector("#historyContent");
-    const title = el("header", "history-scene-heading");
-    title.append(el("p", "history-period", scene.period), el("h3", "", scene.title));
+    const title = el("header", "visually-hidden");
+    title.append(el("h3", "", scene.title));
+    if (grade) title.append(el('span', 'history-subject', grade.subject));
+    const explanation = el('section', 'history-explanation');
+    explanation.setAttribute('aria-label', '지도 설명');
+    (grade?.paragraphs || []).filter(Boolean).forEach(text => explanation.append(el('p', '', text)));
     const territoryNav = el("div", "history-territory-dates");
     territoryNav.setAttribute("role", "group");
-    territoryNav.setAttribute("aria-label", scene.id === "korean-war" ? "전쟁 전개 시점" : "영토 기준 시점");
+    territoryNav.setAttribute("aria-label", state.timeline || scene.id === "korean-war" ? "전쟁 전개 시점" : "영토 기준 시점");
     const variants = territories[scene.id] || [];
     if (variants.length > 1) variants.forEach((variant, index) => {
       const node = button(variant.date, null, () => {
         territorySelection[scene.id] = index;
         renderPanel();
         panelApi.refresh();
-        if (state.lesson) fit(panelApi);
+        if (state.lesson || variant.lesson) fit(panelApi);
         panelHost.querySelector('[data-territory][aria-pressed="true"]')?.focus({ preventScroll: true });
       });
       node.setAttribute("aria-pressed", String(variant === state));
@@ -141,17 +191,14 @@
       row.append(el("dt", "", heading), el("dd", "", text));
       cues.append(row);
     });
-    const trap = el("p", "history-trap", scene.trap);
     const places = el("section", "history-places");
     places.setAttribute("aria-label", "지도 지점");
     const list = el("ol");
     scene.marks.forEach((mark, index) => {
       const li = el("li");
-      li.append(button(`${index + 1}. ${mark.label}`, `${mark.label} 위치 확대`, () => {
-        panelApi.map.setView(latLng(mark.xy), Math.max(panelApi.map.getZoom(), 8), { animate: false });
-        L.popup().setLatLng(latLng(mark.xy)).setContent(el("strong", "", mark.label)).openOn(panelApi.map);
-        if (matchMedia("(max-width: 1050px)").matches) document.querySelector(".map-stage").scrollIntoView({ block: "start" });
-      }));
+      const detail = button(`${index + 1}. ${mark.label}`, `${mark.label} 설명 보기`, () => window.KoreaHistoryPoint.open(scene, mark, panelApi, state.id));
+      detail.setAttribute('aria-haspopup', 'dialog');
+      li.append(detail);
       if (mark.relicId) {
         const photo = button("사진·설명", `${mark.label} 사진과 설명 보기`, () => window.KoreaHeritage?.open(mark.relicId));
         photo.dataset.historyRelic = mark.relicId;
@@ -160,55 +207,60 @@
       list.append(li);
     });
     places.append(list, button("지도 전체 보기", null, () => fit(panelApi)));
-    // Keep provenance available without placing editorial notes in the lesson.
-    const resourceDialog = el("dialog", "history-resource-dialog");
-    resourceDialog.setAttribute("aria-labelledby", "historyResourceTitle");
-    const resourceHeading = el("header", "history-resource-heading");
-    const resourceTitle = el("h3", "", "자료 정보");
-    resourceTitle.id = "historyResourceTitle";
-    const closeResource = button("닫기", "자료 정보 닫기", () => resourceDialog.close());
-    resourceHeading.append(resourceTitle, closeResource);
-    const sources = el("div", "history-sources");
-    sources.append(sourceLink("역사 자료 ↗", scene.source));
-    if (scene.mapSource) sources.append(sourceLink(`영역선 원본 · ${scene.mapSource[0]} ↗`, scene.mapSource[1]));
-    (state.sources || []).forEach(([label, url]) => {
-      if (url !== scene.source && url !== scene.mapSource?.[1]) sources.append(sourceLink(`${label} ↗`, url));
-    });
-    if (scene.exam) sources.append(sourceLink(`관련 기출 · ${scene.exam[0]} ↗`, scene.exam[1]));
-    const notes = [...new Set([scene.note, state.note].filter(Boolean))];
-    if (notes.length) {
-      sources.append(el("h4", "", "지도 참고"));
-      notes.forEach(note => sources.append(el("p", "", note)));
-    }
-    resourceDialog.append(resourceHeading, sources);
-    const resourceButton = button("자료 정보", null, () => {
-      resourceDialog.showModal();
-      closeResource.focus();
-    });
-    resourceButton.classList.add("history-resource-trigger");
-    resourceButton.setAttribute("aria-haspopup", "dialog");
-    resourceDialog.addEventListener("close", () => resourceButton.focus({ preventScroll: true }));
     const quiz = scene.id === "korean-war" && window.KoreaHistoryOrder
       ? button("지도 순서 문제", null, () => window.KoreaHistoryOrder.open()) : null;
     if (quiz) quiz.classList.add("history-order-launch");
-    const study = scene.distribution && window.KoreaHistoryBronze
-      ? [window.KoreaHistoryBronze.panel()] : [cues, trap];
-    content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), ...study, places, resourceButton, resourceDialog);
+    const tools = el('div', 'history-study-tools');
+    const explain = button('설명', '역사 지도 설명 보기', () => {
+      if (!explanationDialog) {
+        explanationDialog = el('dialog', 'lesson-explanation history-reading-dialog');
+        explanationDialog.setAttribute('aria-labelledby', 'historyExplanationTitle');
+        explanationDialog.addEventListener('click', e => { if(e.target === explanationDialog) explanationDialog.close(); });
+        document.body.append(explanationDialog);
+      }
+      const header = el('header');
+      const heading = el('h2', '', scene.title);
+      heading.id = 'historyExplanationTitle';
+      header.append(heading, button('닫기 ×', '역사 설명 닫기', () => explanationDialog.close()));
+      const body = el('div', 'explanation-body');
+      body.append(el('p', 'history-reading-period', scene.period));
+      if (school() !== 'elementary') body.append(cues.cloneNode(true));
+      body.append(explanation.cloneNode(true));
+      explanationDialog.replaceChildren(header, body);
+      explanationDialog.showModal();
+    });
+    explain.classList.add('lesson-explain-button');
+    explain.setAttribute('aria-haspopup', 'dialog');
+    tools.append(explain);
+    const summary = el('p', 'history-map-summary', (grade?.paragraphs?.[0] || '').split(/(?<=[.!?])\s+/)[0]);
+    const study = [tools, school() === 'elementary' || !scene.cues.length ? summary : cues];
+    if(window.HistoryQuestions?.forLevel(scene.id,school()).length) {
+      const practice=button('문제',null,()=>window.KoreaHistoryPractice.open(scene,panelApi));
+      practice.classList.add('history-practice-launch');practice.setAttribute('aria-haspopup','dialog');
+      tools.append(practice);
+    }
+    if (scene.distribution && window.KoreaHistoryBronze) study.push(window.KoreaHistoryBronze.panel());
+    content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), ...study, places);
   }
 
   function draw(map, group) {
     const base = scenes[selected];
     const state = territory(base);
-    const scene = { ...base, ...(state.lesson || {}) };
+    const scene = sceneFor(base, state);
     const countryLabels = state.labels || scene.labels;
     // Keep these vector renderers in the scene group so cleanup is self-contained.
     const zoneRenderer = L.svg({pane:"themeZones"}).addTo(group);
     const lineRenderer = L.svg({pane:"themeLines"}).addTo(group);
+    const contextLabels = scene.localDetail
+      ? window.KoreaHistoryLocalMap.draw(map, group, scene.id) : [];
     const caption = document.querySelector("#historyMapCaption");
     caption.replaceChildren(el("strong", "", state.date || scene.period), el("span", "", state.stageTitle || scene.title));
+    if (state.dateNote) caption.append(el('small', '', state.dateNote));
+    if (scene.localDetail) caption.append(el('small','history-north','↑ 북'));
     const legend = document.querySelector("#mapKey");
-    legend.hidden = !!state.locationOnly;
-    legend.replaceChildren(...(state.legend || []).map(item => {
+    legend.hidden = !!state.locationOnly && !scene.localDetail;
+    const localLegend = scene.localDetail ? [{label:'한양도성',color:'#80633f'},{label:'개천(청계천)',color:'#4e9cb7'}] : null;
+    legend.replaceChildren(...(localLegend || state.legend || []).map(item => {
       const row = el("span", "key-item");
       const swatch = el("span", `key-swatch${item.pattern ? " history-hatch" : ""}`);
       swatch.style.setProperty("--swatch", item.color || "#739851");
@@ -229,9 +281,17 @@
       row.style.setProperty("--history-line-style", solid ? "solid" : "dashed");
       legend.append(row);
     });
+    const routeKeys = new Set();
     scene.routes.forEach(route => {
       const coords = route.coords.map(latLng);
       const color = colors[route.color] || colors[0];
+      if (route.label && !routeKeys.has(route.label)) {
+        routeKeys.add(route.label);
+        const row = el('span', 'key-item history-line-key history-route-key', route.label);
+        row.style.setProperty('--history-line-color', color);
+        row.style.setProperty('--history-line-style', route.dash ? 'dashed' : 'solid');
+        legend.append(row);
+      }
       L.polyline(coords, { renderer:lineRenderer, pane: "themeLines", color: "#fffdf7", weight: 6, opacity: 0.9, interactive: false }).addTo(group);
       L.polyline(coords, { renderer:lineRenderer, pane: "themeLines", color, weight: 3, dashArray: route.dash ? "7 6" : null, interactive: false }).addTo(group);
       // The arrow angle follows Web Mercator, matching Leaflet's line projection.
@@ -254,9 +314,7 @@
     scene.marks.forEach((mark, index) => {
       if (mark.kind === "area" && scene.id !== "early-states") L.circle(latLng(mark.xy), { renderer:zoneRenderer, pane: "themeZones", radius: 28000, color: "#74592f", weight: 1.5, dashArray: "5 5", fillColor: "#e8b65d", fillOpacity: 0.16, interactive: false }).addTo(group);
       const marker = L.marker(latLng(mark.xy), { pane: "studyMarkers", title: mark.label, riseOnHover: true, icon: L.divIcon({ className: "history-point-wrap", html: el("span", "history-point", index + 1), iconSize: [22, 22], iconAnchor: [11, 11] }) });
-      if (mark.relicId) marker.on("click", () => window.KoreaHeritage?.open(mark.relicId));
-      else marker.bindPopup(el("strong", "", mark.label));
-      marker.addTo(group);
+      pointAction(marker, scene, mark, state, `${index + 1}. ${mark.label} 설명 보기`).addTo(group);
       pointMarkers.push(marker);
     });
     // Overlapping pins are offset with a leader; their stored coordinates stay unchanged.
@@ -278,21 +336,44 @@
         pins.push(placed);
       });
       const occupied = pins.map(p => ({ x: p.x - 12, y: p.y - 12, w: 24, h: 24 }));
+      const mapRect = map.getContainer().getBoundingClientRect();
+      for (const selector of ['#historyMapCaption','#mapKey','#progressButton','.leaflet-control-zoom','#mapOverview']) {
+        const control = document.querySelector(selector);
+        if (!control || control.hidden || !control.getClientRects().length) continue;
+        const rect = control.getBoundingClientRect();
+        occupied.push({x:rect.left-mapRect.left,y:rect.top-mapRect.top,w:rect.width,h:rect.height});
+      }
       countryLabels.forEach(label => {
         const p = map.latLngToContainerPoint(latLng(label.xy));
         occupied.push({ x: p.x - 50, y: p.y - 25, w: 100, h: label.name.length > 6 ? 50 : 30 });
+      });
+      contextLabels.forEach(label => {
+        const p = map.latLngToContainerPoint(latLng(label.xy));
+        occupied.push({ x: p.x - 56, y: p.y - 12, w: 112, h: 24 });
       });
       const overlaps = (a, b) => a.x < b.x + b.w + 4 && a.x + a.w + 4 > b.x && a.y < b.y + b.h + 3 && a.y + a.h + 3 > b.y;
       scene.marks.forEach((mark, index) => {
         const p = pins[index];
         if (p.x < 0 || p.x > size.x || p.y < 0 || p.y > size.y) return;
-        const labelText = `${index + 1} ${mark.label}`;
+        const displayName = scene.localDetail && size.x < 520 ? mark.label.split(' · ')[0] : mark.label;
+        const labelText = `${index + 1} ${displayName}`;
         const width = Math.min(174, Math.max(65, labelText.length * 12 + 16));
-        const height = labelText.length * 12 + 16 > width ? 44 : 27;
+        const text = el("span", "history-map-label", labelText);
+        text.style.width = `${width}px`;
+        // Measure the actual wrapped text: counting all digits as full-width
+        // characters overestimated labels and pushed them underneath controls.
+        text.style.position = 'absolute';
+        text.style.visibility = 'hidden';
+        map.getContainer().append(text);
+        const height = text.getBoundingClientRect().height || 27;
+        text.remove();
+        text.style.removeProperty('position');
+        text.style.removeProperty('visibility');
         let best;
         let bestScore = Infinity;
         const sides = mark.side === "left" ? [-1, 1] : [1, -1];
-        for (const dy of [0, -35, 35, -70, 70, -105, 105, -140, 140]) {
+        const offsets = [0, ...Array.from({length:12}, (_,i) => [-(i+1)*15,(i+1)*15]).flat()];
+        for (const dy of offsets) {
           for (const side of sides) {
             const rect = { x: Math.max(6, Math.min(size.x - width - 6, p.x + (side > 0 ? 16 : -16 - width))), y: Math.max(58, Math.min(size.y - height - 20, p.y - height / 2 + dy)), w: width, h: height };
             const score = occupied.filter(other => overlaps(rect, other)).length * 10000 + Math.abs(dy) + (side !== sides[0] ? 12 : 0);
@@ -302,9 +383,8 @@
         occupied.push(best);
         const edge = L.point(Math.max(best.x, Math.min(best.x + best.w, p.x)), Math.max(best.y, Math.min(best.y + best.h, p.y)));
         L.polyline([map.containerPointToLatLng(p), map.containerPointToLatLng(edge)], { renderer:lineRenderer, pane: "themeLines", color: "#665b46", weight: 1, opacity: 0.65, interactive: false }).addTo(labels);
-        const text = el("span", "history-map-label", labelText);
-        text.style.width = `${width}px`;
-        L.marker(map.containerPointToLatLng([best.x, best.y]), { pane: "themeLabels", interactive: false, keyboard: false, icon: L.divIcon({ className: "history-label-wrap", html: text, iconSize: [width, height], iconAnchor: [0, 0] }) }).addTo(labels);
+        const label = L.marker(map.containerPointToLatLng([best.x, best.y]), { pane: "themeLabels", title: `${mark.label} 설명 보기`, keyboard: true, icon: L.divIcon({ className: "history-label-wrap", html: text, iconSize: [width, height], iconAnchor: [0, 0] }) });
+        pointAction(label, scene, mark, state, `${mark.label} 지도 이름표 설명 보기`).addTo(labels);
       });
     }
     map.on("zoomend moveend resize", layoutLabels);
@@ -315,7 +395,8 @@
   geography.themes.history = {
     label: "역사", historical: true, minZoom: 3, practice: false,
     points: [], features: [], principles: [], legend: [],
-    get bounds() { return bounds(scenes[selected]); },
+    get bounds() { return bounds(sceneFor(scenes[selected], territory(scenes[selected]))); },
+    get maxZoom() { return Math.max(12, scenes[selected].maxZoom || 12); },
     panel, draw
   };
 })();

@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildPrediction();
         checkBtn.textContent = state.mode === 'diode' ? '전압 걸기' : state.mode === 'muon' ? '뮤온 떨어뜨리기' : '우주선 보내기';
         stageCaption.textContent = state.mode === 'diode' ? '왼쪽은 전원·저항·다이오드 회로, 오른쪽은 다이오드 속 p-n 접합입니다. 가운데 점선 띠가 전하 운반자가 없는 공핍층입니다.'
-            : state.mode === 'muon' ? '왼쪽은 시간 지연이 없을 때, 오른쪽은 있을 때 같은 뮤온 무리가 떨어지는 모습입니다. 흐려진 점은 붕괴한 뮤온이고, 가운데 두 시계가 지상과 뮤온의 시간입니다.'
+            : state.mode === 'muon' ? '지상 관측자의 관점에서 두 시계의 시간 흐름을 비교합니다. 같은 지상 시간 동안 움직이는 뮤온의 시계는 더 적게 갑니다. 바늘은 시간 간격을 비교하는 모형입니다.'
                 : '정지 관측자가 측정한 운동 방향 길이와 고유 길이를 비교하는 모형입니다. 사진의 모습과는 다릅니다.';
         settingsChanged();
     }));

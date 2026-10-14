@@ -11,6 +11,7 @@ Object.assign(additions,{'night-sky':['4과13-02'],'star-elements':['10통과1-0
 Object.assign(titles,{'star-elements':'원소의 기원과 스펙트럼','earth-system':'지구 시스템·개체군과 열수지','measurement':'길이·시간과 디지털 측정','wave-transfer':'파동과 소리 파형 분석','cell-membrane':'세포막·DNA·효소와 검출 원리'});
 for(const slug of ['measurement','cell-membrane'])map[slug].subjects=[...new Set([...map[slug].subjects,'통합과학2'])];
 for(const [slug,codes]of Object.entries(additions))map[slug].codes=[...new Set([...map[slug].codes,...codes])].sort();
+titles.microscope='현미경·식물의 구조와 기능';
 for(const [slug,title]of Object.entries(titles))map[slug].title=title;
 const source=fs.readFileSync('references/moe/2022-revised-curriculum/extracted/09-science.txt','utf8');
 for(const [slug,m]of Object.entries(map))for(const code of m.codes)if(!source.includes('['+code+']'))throw Error(slug+' missing code '+code);
@@ -21,13 +22,11 @@ function cache(s,dir){s=s.replace(/(href=")([^"?]*science-reading\.css)(?:\?[^" 
  if(/^(?:https?:)?\/\//.test(url))return all;const target=path.resolve(dir,url);if(!fs.existsSync(target))throw Error('Missing script '+target);
  return start+url+'?v='+hash(target===path.resolve(lab+'curriculum-map.js')?mapText:fs.readFileSync(target,'utf8'))+end;
 });}
-edit(lab+'index.html',s=>cache(s.replace(/<a class="level-entry available"[^>]*href="([^"/]+)\/"[^>]*>[\s\S]*?<\/a>/g,(all,slug)=>{
- const m=map[slug];if(!m)throw Error('Unknown '+slug);
- return `<a class="level-entry available" data-level="${m.level}" data-grades="${m.grades.join(' ')}" data-standards="${m.codes.join(' ')}" href="${slug}/"><b>${m.grade}</b><span>${m.title}${m.level==='high'?`<small class="course-label">${m.subjects.join(' · ')}</small>`:''}</span></a>`;
-}),lab));
+// The catalog builder owns school/course classification and all card markup.
 for(const [slug,m]of Object.entries(map))edit(lab+slug+'/index.html',s=>{
  if(titles[slug])s=s.replace(/<h1>.*?<\/h1>/,`<h1>${m.title}</h1>`);
  return cache(s,lab+slug);
 });
 edit(lab+'exam-review.html',s=>cache(s,lab));
 apply();
+if(process.argv.includes('--apply'))require('./build-science-catalog.cjs').build({map});

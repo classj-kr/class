@@ -1,0 +1,89 @@
+✔ source correlation separates repeated rocks, key beds, fossils and hiatuses (0.7937ms)
+✖ chromium: correlation, boundaries, touch controls and persisted question diagnosis (3214.7492ms)
+✖ webkit: correlation, boundaries, touch controls and persisted question diagnosis (3293.4673ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6597.6315
+
+✖ failing tests:
+
+test at tests\science-strata-correlation.test.cjs:13:43
+✖ chromium: correlation, boundaries, touch controls and persisted question diagnosis (3214.7492ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-strata-correlation.test.cjs:31:230)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+      '────────', '────────',
+      '────────', '────────',
+      '────────', '────────',
+      '────────', '────────',
+      '────────', '────────',
+      '────────'
+    ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-strata-correlation.test.cjs:13:43
+✖ webkit: correlation, boundaries, touch controls and persisted question diagnosis (3293.4673ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────',
+  +   '────────'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-strata-correlation.test.cjs:31:230)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+      '────────', '────────',
+      '────────', '────────',
+      '────────', '────────',
+      '────────', '────────',
+      '────────', '────────',
+      '────────'
+    ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

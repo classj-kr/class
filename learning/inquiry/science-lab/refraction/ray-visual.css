@@ -10,7 +10,8 @@
 .medium-buttons button.selected small { color: #0369a1; }
 
 .prediction-buttons.three { grid-template-columns: repeat(3, 1fr); }
-.range-scale { grid-template-columns: repeat(4, 1fr); }
+.range-scale { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.range-scale > :last-child { text-align: right; }
 
 .ray-stage {
     display: flex;

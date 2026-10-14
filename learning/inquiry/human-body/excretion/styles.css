@@ -134,6 +134,27 @@
     background: rgba(52, 211, 153, 0.15);
 }
 
+.excretion-page #excretionComparison { padding: 14px; }
+.excretion-page #excretionComparison h2 { font-size: 17px; line-height: 1.6; color: #e2f3ff; margin: 0 0 16px; word-break: keep-all; }
+.excretion-study-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 14px; line-height: 1.65; }
+.excretion-study-table th, .excretion-study-table td { padding: 10px 5px; border-bottom: 1px solid #405168; word-break: keep-all; overflow-wrap: break-word; text-align: center; color: #e4edf6; }
+.excretion-study-table th { font-weight: 700; background: #24354a; }
+.excretion-page .sidebar-body .excretion-study-note { font-size: 15px; line-height: 1.8; color: #dcebf8; margin: 16px 0 0; }
+.excretion-route { list-style: none; counter-reset: route; margin: 0; padding: 0; }
+.excretion-route li { counter-increment: route; position: relative; padding: 0 0 18px 34px; }
+.excretion-route li:last-child { padding-bottom: 0; }
+.excretion-route li::before { content: counter(route); position: absolute; left: 0; top: 0; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; color: #071c26; background: #7dd9e5; font-size: 14px; font-weight: 800; }
+.excretion-route strong { font-size: 16px; color: #c5efff; }
+.excretion-page .sidebar-body p { font-size: 15px; line-height: 1.75; }
+.excretion-route p { margin: 4px 0 0; color: #e0eaf4; }
+.excretion-page #conceptList { font-size: 15px; line-height: 1.75; }
+html:not([data-school-level="high"]) .excretion-page .excretion-high-control,
+html[data-school-level="elementary"] .excretion-page .excretion-color-detail,
+html[data-school-level="elementary"] .excretion-page .excretion-map-stage #nephronZoom {
+    display: none !important;
+}
+.excretion-page .sim-sidebar:has([data-tab="table"].active) :is(.model-reading,.model-selected-detail,.sim-header-right) { display: none !important; }
+
 /* 오줌 색 띠 — 수분 섭취량과 항이뇨호르몬에 따라 색이 바뀐다 */
 .urine-swatch {
     width: 100%;
@@ -169,6 +190,12 @@
     line-height: 1.5;
 }
 
+.nephron-diagram {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
 .nephron-stage {
     position: relative;
     flex: 1;
@@ -199,8 +226,7 @@
 
 .nephron-table {
     margin: 8px 12px 10px;
-    max-height: 168px;
-    overflow-y: auto;
+    flex: 0 0 auto;
 }
 
 .nephron-table table {
@@ -235,6 +261,25 @@
 .nephron-table .yes { color: #6ee7b7; }
 .nephron-table .no { color: #94a3b8; }
 .nephron-table .warn { color: #fbbf24; }
+
+/* On small screens the page grows with the table; only the diagram can pan. */
+@media (max-width: 900px) {
+    .model-compact-layout .sim-app-container:has(.nephron-layer:not([hidden])) {
+        grid-template-rows: auto auto auto;
+    }
+    .sim-stage-area:has(.nephron-layer:not([hidden])),
+    .sim-stage-area .excretion-viewport:has(.nephron-layer:not([hidden])) {
+        height: auto;
+    }
+    .sim-stage-area .excretion-viewport .nephron-layer {
+        position: relative; inset: auto; height: auto; min-width: 0; width: 100%;
+    }
+    .nephron-diagram { flex: none; height: 360px; overflow-x: auto; }
+    .nephron-diagram .nephron-stage { min-width: 626px; }
+    .nephron-table { margin-inline: 8px; }
+    .nephron-table table { table-layout: fixed; }
+    .nephron-table th, .nephron-table td { overflow-wrap: anywhere; word-break: keep-all; padding-inline: 5px; }
+}
 
 .nephron-error {
     position: absolute; inset: 0;

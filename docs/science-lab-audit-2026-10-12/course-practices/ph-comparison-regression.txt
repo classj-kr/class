@@ -1,0 +1,12 @@
+✔ pH values satisfy ionization equilibrium, water product and acid/base symmetry (0.5006ms)
+✔ uncalibrated, unstable and unwashed probes cannot add comparison readings; valid sequences work in all sample orders (1.4085ms)
+✔ chromium: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (14238.6464ms)
+✔ webkit: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (19326.2379ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33627.4448

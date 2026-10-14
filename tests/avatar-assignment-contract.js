@@ -4,9 +4,9 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const root = path.join(__dirname, '..');
-const source = fs.readFileSync(path.join(root, 'classtools', 'avatar-assignment.js'), 'utf8');
-const dashboard = fs.readFileSync(path.join(root, 'classtools', 'dashboard.html'), 'utf8');
-const seating = fs.readFileSync(path.join(root, 'classtools', 'seating.html'), 'utf8');
+const source = fs.readFileSync(path.join(root, 'apps/classtools', 'avatar-assignment.js'), 'utf8');
+const dashboard = fs.readFileSync(path.join(root, 'apps/classtools', 'dashboard.html'), 'utf8');
+const seating = fs.readFileSync(path.join(root, 'apps/classtools', 'seating.html'), 'utf8');
 const context = { window: {} };
 vm.createContext(context);
 new vm.Script(source, { filename: 'avatar-assignment.js' }).runInContext(context);

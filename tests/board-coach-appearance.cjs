@@ -2,7 +2,7 @@
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path");
 const {chromium}=require("../game-hub-server/node_modules/playwright");
 const base=process.env.BOARD_COACH_TEST_URL||"http://127.0.0.1:8936";
-const output=path.resolve(__dirname,"../tmp/board-coach-appearance");fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,"../outputs/qa/board-coach-appearance");fs.mkdirSync(output,{recursive:true});
 const dimensions=[];
 const artwork=(page,game)=>page.evaluate(game=>{
   const style=(selector,keys)=>{const css=getComputedStyle(document.querySelector(selector));return Object.fromEntries(keys.map(key=>[key,css[key]]));};

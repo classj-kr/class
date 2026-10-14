@@ -21,10 +21,14 @@ const Expedition = require("./expedition");
 const Clue = require("./clue");
 const Codenames = require("./codenames");
 const Dobble = require("./dobble");
-const Quizrace = require("./quizrace");
+const { createRhythmTraining } = require("./rhythm-training");
+const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
+const { hideUnpublishedLessons } = require("./unpublished-lessons");
 const { createKmaWeather } = require("./kma-weather");
+const { registerSiteIcons } = require("./site-icons");
+const { APP_DIRECTORIES, SITE_PAGES, resolveSitePath } = require("./site-paths");
 const {
   clientMatchesToken,
   restoreRoom,
@@ -43,7 +47,8 @@ const classroomPlatform = createClassroomPlatform({
   teacherEmails: process.env.TEACHER_EMAILS,
   adminEmails: process.env.ADMIN_EMAILS,
   nodeEnv: process.env.NODE_ENV,
-  isLiveQuizRaceCode: (code) => rooms.has(`quizrace:${code}`)
+  isRoomCodeActive: (entry) => isRuntimeRoomCodeActive(entry),
+  isLegacyRoomCodeTaken: (code) => [...rooms.values()].some(room => room.roomCode === code) || legacyVoyageRoomExists(code)
 });
 const kmaWeather = createKmaWeather({ serviceKey: process.env.KMA_API_KEY });
 
@@ -55,11 +60,32 @@ const ROOM_SNAPSHOT_TTL_SECONDS = Math.max(900, Number(process.env.ROOM_SNAPSHOT
 const ROOM_SNAPSHOT_INTERVAL_MS = 2000;
 const SITE_ROOT = path.resolve(__dirname, "..");
 const WORLD_VOYAGE_PREFIX = "/learn/world-voyage";
+const roomCodeSecret = crypto.randomBytes(32).toString('hex');
+const roomCodeEnv = { SITE_ROOM_CODE_KEY: roomCodeSecret, SITE_ROOM_CODE_URL: `http://127.0.0.1:${PORT}/internal/room-codes` };
 // 세계 항해 하위 서버는 저장 위치를 안 주면 제 작업 폴더의 runtime/ 에 반 저장 파일
 // (방 번호·학생 이름·진도)을 쓴다. 그 자리는 /learning 정적 경로 안이라 주소로 열린다.
 const WORLD_VOYAGE_DATA_DIR = process.env.WORLD_VOYAGE_DATA_DIR
   || process.env.DATA_DIR
   || path.join(__dirname, ".runtime", "world-voyage");
+
+function legacyVoyageRoomExists(code) {
+  try {
+    const saved = JSON.parse(fs.readFileSync(path.join(WORLD_VOYAGE_DATA_DIR, 'classroom-state.json'), 'utf8'));
+    return Boolean(saved.rooms?.[code]?.host?.tokenHash);
+  } catch (error) {
+    if (error.code === 'ENOENT') return false;
+    throw error; // Do not reuse a possibly live number if persistence is unreadable.
+  }
+}
+async function isRuntimeRoomCodeActive({ activity, code }) {
+  if (activity.startsWith('game:')) return rooms.has(roomKey(activity.slice(5), code));
+  if (activity === 'rhythm') return rhythmTraining.hasRoomCode(code);
+  const target = activity === 'arithmetic' ? `http://127.0.0.1:${ARITHMETIC_PORT}/api/arithmetic-race/entry?room=${code}`
+    : activity === 'voyage' ? `http://127.0.0.1:${WORLD_VOYAGE_PORT}/api/room-entry/${code}` : null;
+  if (!target) return false;
+  try { return (await fetch(target, { signal: AbortSignal.timeout(3000), redirect: 'error' })).status !== 404; }
+  catch { return true; } // An outage must not hand a live room's number to another app.
+}
 // 제 서버 코드를 가진 하위 앱 폴더. 사이트가 주소로 가져다 쓰는 것은 public/ 뿐이다
 // (그래프·문장 만들기가 연산 앱의 public/fonts 글꼴을 쓴다).
 const SUB_APP_STATIC_ROOTS = [
@@ -117,6 +143,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// Keep withdrawn lessons unavailable before login redirects and static serving.
+app.use(hideUnpublishedLessons);
+
 function startLearningApp(relativeDirectory, port, label) {
   const appDirectory = path.join(SITE_ROOT, relativeDirectory);
   const cliPath = path.join(appDirectory, "node_modules", "vinext", "dist", "cli.js");
@@ -125,7 +154,7 @@ function startLearningApp(relativeDirectory, port, label) {
     [cliPath, "start", "--hostname", "127.0.0.1", "--port", String(port)],
     {
       cwd: appDirectory,
-      env: { ...process.env, PORT: String(port) },
+      env: { ...process.env, PORT: String(port), ...roomCodeEnv },
       stdio: ["ignore", "inherit", "inherit"],
     },
   );
@@ -143,7 +172,7 @@ function startNodeLearningApp(relativeDirectory, port, label, extraEnv = {}) {
     ["server.js"],
     {
       cwd: appDirectory,
-      env: { ...process.env, PORT: String(port), ...extraEnv },
+      env: { ...process.env, PORT: String(port), ...roomCodeEnv, ...extraEnv },
       stdio: ["ignore", "inherit", "inherit"],
     },
   );
@@ -243,8 +272,8 @@ const staticAssetOptions = {
 const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/index.html"].includes(location.pathname))document.documentElement.classList.add("site-back-pending")</script>'
   + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back,a.back-btn){visibility:hidden!important}</style>';
 const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>`;
-const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261006-capture" defer></script>';
-const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20260926-reading-prose">';
+const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>';
+const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20261011-school-questions">';
 
 // 쪽마다 로그인(또는 게스트 입장)에서 나온 이름을 맨 앞에 박아 넣는다. 게임·학습 화면은 이 값을
 // 읽고, 브라우저 저장소에는 이름을 두지 않는다(2026-10-06).
@@ -264,7 +293,14 @@ function sendSiteHtml(req, res, filepath, next) {
   fs.readFile(filepath, "utf8", (error, source) => {
     if (error) return next(error);
     classroomPlatform.displayNameFor(req).catch(() => ({ name: "", kind: "" })).then((identity) => {
-    const htmlSource = withSiteIdentity(source, identity);
+    // Refresh shared scripts even when an older page still names an old cache version.
+    const htmlSource = withSiteIdentity(source, identity).replace(
+      /(\/assets\/network\/multiplayer-lobby\.js)(?:\?[^"'<>\s]*)?/g,
+      "$1?v=20261009-visible-timer"
+    ).replace(
+      /(\/assets\/sound\/(?:game-sfx|music-control)\.js)(?:\?[^"'<>\s]*)?/g,
+      "$1?v=20261009-explosion-file"
+    );
 
     const htmlWithBackNavigation = htmlSource.includes("/assets/site-back-navigation.js")
       ? htmlSource
@@ -292,7 +328,8 @@ function sendSiteHtml(req, res, filepath, next) {
   });
 }
 
-app.use("/assets/avatars", express.static(path.join(SITE_ROOT, "classtools", "assets", "avatars"), staticAssetOptions));
+registerSiteIcons(app, SITE_ROOT);
+app.use("/assets/avatars", express.static(path.join(SITE_ROOT, "apps", "classtools", "assets", "avatars"), staticAssetOptions));
 app.use("/assets", express.static(path.join(SITE_ROOT, "assets"), staticAssetOptions));
 app.get("/robots.txt", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
@@ -302,43 +339,6 @@ app.get("/sitemap.xml", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("application/xml").sendFile(path.join(SITE_ROOT, "sitemap.xml"));
 });
-app.get("/favicon.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "no-cache, must-revalidate");
-  res.sendFile(path.join(SITE_ROOT, "favicon.webp"));
-});
-app.get("/favicon-20260824.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824.webp"));
-});
-app.get("/favicon-20260824-v2.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v2.webp"));
-});
-app.get("/favicon-20260824-v3.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v3.webp"));
-});
-app.get("/favicon-20260824-v5.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v5.webp"));
-});
-app.get("/favicon-20260824-v6.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v6.webp"));
-});
-for (const legacyFavicon of ["/favicon.ico", "/favicon-20260824.ico", "/favicon-20260824-v2.ico", "/favicon-20260824-v3.ico", "/favicon-20260824-v5.ico", "/favicon-20260824-v6.ico", "/favicon.png"]) {
-  app.get(legacyFavicon, (_req, res) => {
-    res.setHeader("Cache-Control", "no-cache, must-revalidate");
-    res.redirect(302, "/favicon.webp");
-  });
-}
-// index.html 과 학부모 화면이 부르는 크기별 아이콘. 버전 물음표 없이도 불리므로 하루만 둔다.
-for (const sizedIcon of ["favicon-32x32.webp", "favicon-48x48.webp", "favicon-192x192.webp", "apple-touch-icon.webp"]) {
-  app.get(`/${sizedIcon}`, (_req, res) => {
-    res.setHeader("Cache-Control", "public, max-age=86400");
-    res.sendFile(path.join(SITE_ROOT, sizedIcon));
-  });
-}
 app.get("/naverc953171c2ff3a730580e7ed2be00700d.html", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("text/plain").send("naver-site-verification: naverc953171c2ff3a730580e7ed2be00700d.html\n");
@@ -391,6 +391,7 @@ for (const [oldFolder, tab] of [["korean-museum", "#heritage"], ["korea-travel-m
   app.use(`/learning/inquiry/${oldFolder}`, (_req, res) => res.redirect(301, `/learning/inquiry/korea-map/${tab}`));
 }
 const MAX_ROOM_PLAYERS = {
+  "solar-system-ufo-flight": 40,
   setgame: 4,
   nimgame: 2,
   janggi: 2,
@@ -406,6 +407,7 @@ const MAX_ROOM_PLAYERS = {
   gemguild: 4,
   beantrading: 5,
   citychase: 6,
+  "citychase-realtime": 5,
   kingdomtrails: 4,
   blokus: 4,
   honeycomb: 6,
@@ -416,7 +418,6 @@ const MAX_ROOM_PLAYERS = {
   codenames: 5,
   dobble: 8,
   spelling: 61,
-  quizrace: 61,
   circulation: 61,
   digestion: 61,
   respiration: 61,
@@ -443,6 +444,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   gemguild: "/learning/games/gemguild/gemguild",
   beantrading: "/learning/games/beantrading/beantrading",
   citychase: "/learning/games/citychase/citychase",
+  "citychase-realtime": "/learning/games/citychase/realtime",
   kingdomtrails: "/learning/games/kingdom-trails/kingdom-trails",
   blokus: "/learning/games/blokus/blokus",
   honeycomb: "/learning/games/honeycomb/honeycomb",
@@ -453,7 +455,6 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   codenames: "/learning/games/codenames/codenames",
   dobble: "/learning/games/dobble/dobble",
   spelling: "/learning/literacy-numeracy/spelling",
-  quizrace: "/learning/class-race",
   circulation: "/learning/inquiry/human-body/circulation",
   digestion: "/learning/inquiry/human-body/digestion",
   respiration: "/learning/inquiry/human-body/respiration",
@@ -472,8 +473,13 @@ app.use("/fraction", (req, res) => {
   res.redirect(301, "/arithmetic/grade-3-fraction-2" + (query >= 0 ? req.originalUrl.slice(query) : ""));
 });
 app.use(["/admin", "/schooladmin", "/arithmetic", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote", "/school-election"], classroomPlatform.requireSiteAccess);
+app.use("/learning/class-race", (_req, res) => res.status(410).type('text').send('종료된 활동입니다.'));
 app.use("/arithmetic", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
+app.use("/api/room-entry", classroomPlatform.requireSiteAccess, createRoomEntry({
+  roomCodes: classroomPlatform.roomCodes, arithmeticPort: ARITHMETIC_PORT, voyagePort: WORLD_VOYAGE_PORT,
+  legacyVoyageRoomExists, rhythmExists: code => rhythmTraining.hasRoomCode(code)
+}));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
 app.use("/hanguksa", (req, res) => res.redirect(301, "/learning/inquiry/korean-history/"));
 app.get(WORLD_VOYAGE_PREFIX, (req, res, next) => {
@@ -528,20 +534,35 @@ app.use('/api/school/students', express.json({ limit: '2mb' }));
 app.use('/api/school/teachers', express.json({ limit: '512kb' }));
 app.use('/api/teacher/class', express.json({ limit: '256kb' }));
 app.use(express.json({ limit: "32kb" }));
+app.post('/internal/room-codes', async (req, res) => {
+  const key = Buffer.from(String(req.get('X-Room-Code-Key') || ''));
+  const expected = Buffer.from(roomCodeSecret);
+  if (key.length !== expected.length || !crypto.timingSafeEqual(key, expected)) return res.sendStatus(404);
+  if (!['arithmetic', 'voyage'].includes(req.body?.activity)) return res.sendStatus(400);
+  try { res.json({ code: await classroomPlatform.roomCodes.allocate(req.body.activity) }); }
+  catch { res.status(503).json({ message: '방번호를 만들지 못했습니다.' }); }
+});
 app.get("/api/weather", kmaWeather.handler);
 app.use("/api", (_req, res, next) => {
   res.setHeader("Cache-Control", "no-store");
   next();
 }, classroomPlatform.router);
 
-for (const [route, file] of [
-  ["/privacy", "privacy.html"],
-  ["/school-setup", "school-setup.html"],
-  ["/student-privacy", "student-privacy.html"],
-  ["/support", "support.html"],
-  ["/terms", "terms.html"],
-]) {
-  app.get(route, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
+const rhythmTraining = createRhythmTraining({ platform: classroomPlatform });
+app.use('/api/rhythm-training', classroomPlatform.requireSiteAccess, rhythmTraining.router);
+
+// Reuse notation under this activity's access grant, even when ear training is closed.
+for (const [alias, source] of [['notation.js', 'notation.js'], ['rhythm-notation.js', 'rhythm.js']]) {
+  app.get(`/learning/arts/music-theory/rhythm-training/${alias}`, (_req, res) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.sendFile(path.join(SITE_ROOT, 'learning/arts/music-theory/ear-training', source));
+  });
+}
+
+for (const file of SITE_PAGES) {
+  const route = `/${file.slice(0, -'.html'.length)}`;
+  app.get(route, (req, res, next) => sendSiteHtml(req, res, resolveSitePath(SITE_ROOT, `/${file}`), next));
+  app.get(`/${file}`, (req, res) => res.redirect(308, `${route}${req.url.slice(file.length + 1)}`));
 }
 
 for (const [friendlyPath, legacyPath, file] of [
@@ -571,6 +592,11 @@ app.use((req, res, next) => {
     return res.status(400).send("잘못된 주소입니다.");
   }
   const normalized = path.posix.normalize(pathname.replace(/\\/g, "/")).toLowerCase();
+  // Preparation scripts and review artifacts belong to local tooling, not lessons.
+  if (normalized.startsWith("/learning/") && normalized.split("/").some(part =>
+    ["tools", "_tools", "_check", "scratch", "node_modules"].includes(part))) {
+    return res.sendStatus(404);
+  }
   if ((req.method === "GET" || req.method === "HEAD") && LEARNING_GROUP_ROOTS.has(normalized.replace(/\/$/, ""))) {
     return res.redirect(302, "/");
   }
@@ -581,7 +607,7 @@ app.use((req, res, next) => {
   res.sendStatus(404);
 });
 
-const CLEAN_HTML_ROOTS = ["/admin", "/boards", "/classboard", "/parent", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote", "/school-election"];
+const CLEAN_HTML_ROOTS = [...APP_DIRECTORIES.map(directory => `/${directory}`), "/learning"];
 app.use((req, res, next) => {
   if (req.method !== "GET" && req.method !== "HEAD") return next();
 
@@ -608,7 +634,8 @@ app.use((req, res, next) => {
   }
 
   if (!path.extname(pathname) && !pathname.endsWith("/")) {
-    const dirCandidate = path.resolve(SITE_ROOT, `.${pathname}`);
+    const dirCandidate = resolveSitePath(SITE_ROOT, pathname);
+    if (!dirCandidate) return res.sendStatus(400);
     if (dirCandidate.startsWith(`${SITE_ROOT}${path.sep}`) && fs.existsSync(dirCandidate) && fs.statSync(dirCandidate).isDirectory()) {
       const query = req.originalUrl.includes("?") ? req.originalUrl.slice(req.originalUrl.indexOf("?")) : "";
       return res.redirect(308, `${pathname}/${query}`);
@@ -616,7 +643,8 @@ app.use((req, res, next) => {
   }
 
   if (pathname.endsWith("/")) {
-    const indexCandidate = path.resolve(SITE_ROOT, `.${pathname}index.html`);
+    const indexCandidate = resolveSitePath(SITE_ROOT, `${pathname}index.html`);
+    if (!indexCandidate) return res.sendStatus(400);
     if (!indexCandidate.startsWith(`${SITE_ROOT}${path.sep}`)) return res.sendStatus(400);
     return fs.stat(indexCandidate, (error, stats) => {
       if (error || !stats.isFile()) return next();
@@ -625,7 +653,8 @@ app.use((req, res, next) => {
   }
 
   if (path.extname(pathname)) return next();
-  const candidate = path.resolve(SITE_ROOT, `.${pathname}.html`);
+  const candidate = resolveSitePath(SITE_ROOT, `${pathname}.html`);
+  if (!candidate) return res.sendStatus(400);
   if (!candidate.startsWith(`${SITE_ROOT}${path.sep}`)) return res.sendStatus(400);
   fs.stat(candidate, (error, stats) => {
     if (error || !stats.isFile()) return next();
@@ -633,8 +662,8 @@ app.use((req, res, next) => {
   });
 });
 
-for (const directory of ["admin", "boards", "classboard", "parent", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher", "room", "vote", "school-election"]) {
-  app.use(`/${directory}`, express.static(path.join(SITE_ROOT, directory), staticAssetOptions));
+for (const directory of [...APP_DIRECTORIES, "css", "js", "learning"]) {
+  app.use(`/${directory}`, express.static(resolveSitePath(SITE_ROOT, `/${directory}`), staticAssetOptions));
 }
 
 const museumClasses = new Map();
@@ -1287,59 +1316,6 @@ function spellingError(socket, message) {
   safeSend(socket, { type: "SPELLING_ERROR", message });
 }
 
-// 공용 학급 순위전. 어느 앱이든 교사가 문제 묶음을 통째로 보내고, 서버는 점수와 시간만 매긴다.
-// 학급 순위전의 채점·모둠·순위는 quizrace.js 가 맡는다.
-const avatarFileCache = new Map();
-function quizraceAvatarExists(key) {
-  if (!avatarFileCache.has(key)) {
-    avatarFileCache.set(key, fs.existsSync(path.join(SITE_ROOT, "classtools", "assets", "avatars", key)));
-  }
-  return avatarFileCache.get(key);
-}
-
-function quizracePublicState(room) {
-  return room?.quizrace ? Quizrace.publicState(room.quizrace) : null;
-}
-
-function quizraceSendQuestions(room, playerId) {
-  const socket = room.clients.get(playerId);
-  if (socket) safeSend(socket, Quizrace.questionsPayload(room.quizrace, playerId));
-}
-
-function quizraceBroadcast(room) {
-  if (room.quizraceBroadcastTimer) {
-    clearTimeout(room.quizraceBroadcastTimer);
-    room.quizraceBroadcastTimer = null;
-  }
-  room.quizraceBroadcastAt = Date.now();
-  const state = quizracePublicState(room);
-  if (!state) return;
-  // 서른 명에게 같은 글을 보내므로 한 번만 글자로 바꾼다.
-  const text = JSON.stringify({ type: "QUIZRACE_STATE", state });
-  for (const client of room.clients.values()) {
-    if (client && client.readyState === WebSocket.OPEN) client.send(text);
-  }
-}
-
-// 경기 중에는 답이 한꺼번에 몰린다. 0.15초 안에 들어온 답은 한 번의 알림으로 묶는다.
-const QUIZRACE_BROADCAST_GAP_MS = 150;
-function quizraceBroadcastSoon(room) {
-  if (room.quizraceBroadcastTimer) return;
-  const wait = QUIZRACE_BROADCAST_GAP_MS - (Date.now() - (room.quizraceBroadcastAt || 0));
-  if (wait <= 0) {
-    quizraceBroadcast(room);
-    return;
-  }
-  room.quizraceBroadcastTimer = setTimeout(() => {
-    room.quizraceBroadcastTimer = null;
-    quizraceBroadcast(room);
-  }, wait);
-}
-
-function quizraceError(socket, message) {
-  safeSend(socket, { type: "QUIZRACE_ERROR", message });
-}
-
 function circulationPublicState(room) {
   const game = room?.circulation;
   if (!game) return null;
@@ -1964,6 +1940,7 @@ app.get("/health", (req, res) => {
   for (const room of rooms.values()) connections += room.clients.size;
   res.json({
     status: "ok",
+    commit: process.env.RENDER_GIT_COMMIT || null,
     rooms: rooms.size,
     connections
   });
@@ -2027,11 +2004,6 @@ wss.on("connection", (socket, request) => {
     console.error("Failed to resolve WebSocket content-lock bypass:", error);
     return false;
   });
-  // 연결할 때 한 번만 물어보고, 방을 만들 때 이 답을 쓴다.
-  const teacherSession = classroomPlatform.isTeacherRequest(request).catch(error => {
-    console.error("Failed to resolve WebSocket teacher session:", error);
-    return false;
-  });
   // Only Avalon needs this lookup. Cache it for this authenticated connection.
   let avalonCharacterStylePromise;
   const getAvalonCharacterStyle = () => avalonCharacterStylePromise ||= classroomPlatform
@@ -2069,6 +2041,10 @@ wss.on("connection", (socket, request) => {
     const requestedGameId = type === "CREATE_ROOM" || type === "JOIN_ROOM"
       ? cleanToken(message.gameId, 30)
       : cleanToken(String(socket.meta.roomKey || "").split(":", 1)[0], 30);
+    if (requestedGameId === "quizrace") {
+      safeSend(socket, { type: "ERROR", code: "ACTIVITY_RETIRED", message: "종료된 활동입니다." });
+      return;
+    }
     const requestedContentPath = MULTIPLAYER_CONTENT_PATHS[requestedGameId];
     if (requestedContentPath && !await globalContentLockBypass) {
       try {
@@ -2138,15 +2114,8 @@ wss.on("connection", (socket, request) => {
       const roomCode = cleanToken(message.roomCode, 10);
       const clientToken = cleanToken(message.clientToken, 80);
       const resumeOnly = message.resumeOnly === true;
-      if (!gameId || !roomCode) {
+      if (!gameId || !/^\d{4}$/.test(roomCode)) {
         safeSend(socket, { type: "ERROR", message: "방 정보가 올바르지 않습니다." });
-        return;
-      }
-
-      // 학급 순위전은 교사가 여는 판이다. 화면에서 단추를 숨기는 것만으로는
-      // 주소를 아는 사람을 못 막으므로 서버에서 한 번 더 본다.
-      if (gameId === "quizrace" && !(await teacherSession)) {
-        safeSend(socket, { type: "ERROR", message: "학급 순위전은 교사 계정으로만 만들 수 있습니다." });
         return;
       }
 
@@ -2190,7 +2159,6 @@ wss.on("connection", (socket, request) => {
         if (existingRoom.codenames) codenamesBroadcast(existingRoom);
         if (existingRoom.dobble) dobbleBroadcast(existingRoom);
         if (existingRoom.spelling) spellingBroadcast(existingRoom);
-        if (existingRoom.quizrace) quizraceBroadcast(existingRoom);
         if (existingRoom.circulation) circulationBroadcast(existingRoom);
         if (existingRoom.digestion) digestionBroadcast(existingRoom);
         if (existingRoom.respiration) respirationBroadcast(existingRoom);
@@ -2209,9 +2177,7 @@ wss.on("connection", (socket, request) => {
         safeSend(socket, { type: "ROOM_EXISTS", gameId, roomCode });
         return;
       }
-      if (gameId === "quizrace" && (await classroomPlatform.hasVotingRoomCode(roomCode)
-        || await classroomPlatform.hasSchoolElectionRoomCode(roomCode)
-        || await classroomPlatform.hasSeatingRoomCode(roomCode))) {
+      if (!await classroomPlatform.roomCodes.claim(`game:${gameId}`, roomCode)) {
         safeSend(socket, { type: "ROOM_EXISTS", gameId, roomCode });
         return;
       }
@@ -2293,9 +2259,6 @@ wss.on("connection", (socket, request) => {
           results: {}
         };
       }
-      if (gameId === "quizrace") {
-        room.quizrace = Quizrace.createGame();
-      }
       if (gameId === "circulation") {
         room.circulation = createBodyExplorerGame();
       }
@@ -2350,7 +2313,6 @@ wss.on("connection", (socket, request) => {
       if (room.codenames) codenamesBroadcast(room);
       if (room.dobble) dobbleBroadcast(room);
       if (room.spelling) spellingBroadcast(room);
-      if (room.quizrace) quizraceBroadcast(room);
       if (room.circulation) circulationBroadcast(room);
       if (room.digestion) digestionBroadcast(room);
       if (room.respiration) respirationBroadcast(room);
@@ -2416,10 +2378,6 @@ wss.on("connection", (socket, request) => {
         if (room.codenames) codenamesBroadcast(room);
         if (room.dobble) dobbleBroadcast(room);
         if (room.spelling) spellingBroadcast(room);
-        if (room.quizrace) {
-          quizraceBroadcast(room);
-          if (room.quizrace.phase === "running" && room.quizrace.players.some(player => player.id === playerId)) quizraceSendQuestions(room, playerId);
-        }
         if (room.circulation) circulationBroadcast(room);
         if (room.digestion) digestionBroadcast(room);
         if (room.respiration) respirationBroadcast(room);
@@ -2637,25 +2595,6 @@ wss.on("connection", (socket, request) => {
         }
         room.spelling.players.push({ id: playerId, name });
       }
-      if (room.quizrace) {
-        const name = cleanToken(message.name, 12);
-        if (!/^[가-힣]{2,6}$/.test(name)) {
-          room.clients.delete(playerId);
-          socket.meta.roomKey = null;
-          socket.meta.role = null;
-          safeSend(socket, { type: "ERROR", message: "메인 화면에서 한글 이름을 먼저 저장하세요." });
-          return;
-        }
-        const joined = Quizrace.addPlayer(room.quizrace, playerId, name);
-        if (!joined.ok) {
-          room.clients.delete(playerId);
-          socket.meta.roomKey = null;
-          socket.meta.role = null;
-          safeSend(socket, { type: "ERROR", message: joined.error });
-          return;
-        }
-        socket.meta.quizraceResume = Boolean(joined.resumed);
-      }
       if (room.circulation) {
         if (room.circulation.phase !== "lobby") {
           room.clients.delete(playerId);
@@ -2832,11 +2771,6 @@ wss.on("connection", (socket, request) => {
       if (room.codenames) codenamesBroadcast(room);
       if (room.dobble) dobbleBroadcast(room);
       if (room.spelling) spellingBroadcast(room);
-      if (room.quizrace) {
-        quizraceBroadcast(room);
-        if (socket.meta.quizraceResume) quizraceSendQuestions(room, playerId);
-        socket.meta.quizraceResume = false;
-      }
       if (room.circulation) circulationBroadcast(room);
       if (room.digestion) digestionBroadcast(room);
       if (room.respiration) respirationBroadcast(room);
@@ -2934,38 +2868,6 @@ wss.on("connection", (socket, request) => {
       }
 
       spellingError(socket, "알 수 없는 학급 순위전 요청입니다.");
-      return;
-    }
-
-    if (type === "QUIZRACE_ACTION") {
-      const room = socket.meta.roomKey ? rooms.get(socket.meta.roomKey) : null;
-      const game = room?.quizrace;
-      if (!room || !game) {
-        quizraceError(socket, "학급 순위전 방에 참가하지 않았습니다.");
-        return;
-      }
-      const result = Quizrace.handleAction(game, {
-        playerId,
-        isHost: playerId === room.hostId,
-        message,
-        avatarExists: quizraceAvatarExists
-      });
-      if (result.error) {
-        quizraceError(socket, result.error);
-        return;
-      }
-      if (result.reply) safeSend(socket, result.reply);
-      if (result.sendQuestions) game.players.forEach(player => quizraceSendQuestions(room, player.id));
-      if (result.sendReviews) {
-        game.players.forEach(player => {
-          const client = room.clients.get(player.id);
-          if (client) safeSend(client, Quizrace.reviewPayload(game, player.id));
-        });
-      }
-      if (result.broadcast) {
-        if (result.throttle) quizraceBroadcastSoon(room);
-        else quizraceBroadcast(room);
-      }
       return;
     }
 
@@ -4615,7 +4517,6 @@ wss.on("connection", (socket, request) => {
           spelling.phase = "ended";
         }
       }
-      if (currentRoom.quizrace) Quizrace.removePlayer(currentRoom.quizrace, playerId);
       if (currentRoom.circulation) {
         const circulation = currentRoom.circulation;
         if (circulation.phase === "lobby" || !circulation.results[playerId]) {
@@ -4711,7 +4612,6 @@ wss.on("connection", (socket, request) => {
       if (currentRoom.codenames) codenamesBroadcast(currentRoom);
       if (currentRoom.dobble) dobbleBroadcast(currentRoom);
       if (currentRoom.spelling) spellingBroadcast(currentRoom);
-      if (currentRoom.quizrace) quizraceBroadcast(currentRoom);
       if (currentRoom.circulation) circulationBroadcast(currentRoom);
       if (currentRoom.digestion) digestionBroadcast(currentRoom);
       if (currentRoom.respiration) respirationBroadcast(currentRoom);

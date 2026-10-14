@@ -5,14 +5,18 @@
 ```text
 메인 인덱스
 └─ 음악 이론
+   ├─ 리듬 트레이닝 → learning/arts/music-theory/rhythm-training/
    ├─ 청음  → learning/arts/music-theory/ear-training/
    └─ 피아노 스케일·보이싱 → learning/arts/music-theory/piano-skills/
 ```
 
 ## 디렉터리 책임
 
+- `rhythm-training/`: 직접 만든 4/4박자 패턴을 한 번씩 두드리는 연습과 교사 개설 학급 순위전. 음 길이와 손을 떼는 시점은 채점하지 않는다. 악보 렌더러는 `ear-training/`을 공유한다. 모든 학생은 같은 판·속도를 사용하며 자기 기기의 네 박 준비 후 연주한다. 서버는 타격 기록을 재채점한다. 교사가 결과 화면에서 다음 판을 시작하려면 학생들이 다시 준비해야 한다. 방과 순위는 서버 메모리에 최대 2시간 보관되며 재시작 시 종료된다. 클라이언트 입력 시간을 검증 가능한 점수로 환산하지만 조작된 클라이언트까지 막는 시험용 시스템은 아니다.
 - `ear-training/`: 음정·화음·음계·화음 진행·리듬·가락을 소리로 판별하는 훈련. 피아노 음원과 재생 엔진을 여기서 갖는다. 리듬은 악보를 보고 두드리기와 받아쓰기로 나뉘고, 받아쓰기는 8·16칸 정간보식 칸에서 시작해 셋잇단음표부터 악보 고르기로 넘어간다.
 - `piano-skills/`: 스케일과 보이싱 연습
+
+리듬 트레이닝의 `notation.js`와 `rhythm-notation.js` 요청은 게임 허브 서버가 청음의 공통 렌더러 파일로 연결한다. 학생에게 청음 메뉴를 열지 않아도 리듬 트레이닝의 공개 설정으로 악보 자원을 읽을 수 있다. 검증은 `node --test tests/rhythm-training.test.cjs`, `node tests/rhythm-training-browser.cjs`로 실행한다.
 
 ## 악보 고르기 보기 만드는 법
 

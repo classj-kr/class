@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 이중 슬릿과 빛의 간섭무늬</title><meta name="description" content="2022 교육과정 · 이중 슬릿과 빛의 간섭무늬의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../light-interference.css?v=680d6e136f31"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>이중 슬릿과 빛의 간섭무늬</h1><div class="grade-tags"><span>고(선택)</span><span>물리학</span></div></header><p class="intro">레이저와 이중 슬릿을 정렬하고, 스크린에 나타나는 밝고 어두운 무늬를 비교하세요.</p><section class="li-lab"><header class="li-heading"><span>빛의 간섭</span><h2>두 틈을 지난 빛은 어떤 무늬를 만들까?</h2></header><div class="li-workspace"><aside class="li-controls"><label>레이저<select id="liColor"><option value="532">녹색 · 532 nm</option><option value="650">적색 · 650 nm</option></select></label><label>슬릿 사이 간격<select id="liSeparation"><option value="0.1">0.10 mm</option><option value="0.2" selected>0.20 mm</option><option value="0.3">0.30 mm</option></select></label><label>슬릿에서 스크린까지<select id="liDistance"><option value="0.5">0.50 m</option><option value="1" selected>1.00 m</option><option value="1.5">1.50 m</option><option value="2">2.00 m</option></select></label><label>레이저 정렬<select id="liAlignment"><option value="both">두 틈에 모두 비춤</option><option value="one">한 틈에만 비춤</option><option value="blocked">슬릿판에 가로막힘</option></select></label><button id="liSlit" aria-pressed="false">이중 슬릿 설치</button><button id="liPower" class="primary" aria-pressed="false">레이저 켜기</button><p>색·간격·거리·정렬을 바꿀 때는 레이저를 끕니다. 다시 켜서 비교하세요.</p></aside><div class="li-view"><div id="liBench" class="li-bench"></div><div class="li-apparatus-labels"><span>레이저</span><span id="liSlitLabel">슬릿 없음</span><span>스크린</span></div><div class="li-screen-heading"><h3>스크린 정면</h3><label>보이는 범위<select id="liSpan"><option value="10">−10~10 mm</option><option value="20" selected>−20~20 mm</option><option value="40">−40~40 mm</option></select></label></div><div class="li-screen-wrap"><canvas id="liScreen" aria-label="스크린의 빛 무늬"></canvas><div id="liMarkA" class="li-marker li-marker-a"><span>A</span></div><div id="liMarkB" class="li-marker li-marker-b"><span>B</span></div></div><div id="liTicks" class="li-ticks"></div><p class="li-axis">스크린 중심에서의 위치 (mm)</p><p id="liObservation" class="li-observation" aria-live="polite"></p></div></div><section class="li-measure"><h3>밝은 무늬 사이 간격 재기</h3><p>두 표시선을 밝은 무늬의 중심에 놓고, 그 사이의 간격 수를 세어 보세요.</p><div class="li-ranges"><label>A 위치 <output id="liAValue">0.0 mm</output><input id="liA" type="range" min="-20" max="20" step="0.1" value="0"></label><label>B 위치 <output id="liBValue">5.3 mm</output><input id="liB" type="range" min="-20" max="20" step="0.1" value="5.3"></label></div><div class="li-measure-actions"><label>두 표시선 사이의 간격 수<select id="liIntervals"><option value="1">1칸</option><option value="2" selected>2칸</option><option value="3">3칸</option><option value="4">4칸</option><option value="5">5칸</option></select></label><button id="liMeasure">무늬 한 간격 계산</button></div><p id="liResult" class="li-result" aria-live="polite"></p></section><p class="li-safety">실물 실험에서는 레이저를 스크린으로 향하게 하고 눈에 직접 들어가지 않게 합니다.</p><button id="liReset">처음부터</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>같은 이중 슬릿과 스크린 위치에서 녹색(532 nm)을 적색(650 nm)으로 바꾸었다. 중심 부근의 밝은 무늬 사이 간격은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 좁아진다.</label>
+<label><input type="radio" name="q1" value="b"> 넓어진다.</label>
+<label><input type="radio" name="q1" value="c"> 변하지 않는다.</label>
+<label><input type="radio" name="q1" value="d"> 두 줄만 남는다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 슬릿 간격과 스크린 거리에서는 파장이 길어질수록 인접한 밝은 무늬 사이 간격이 넓어집니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>파장과 스크린 거리를 그대로 두고 슬릿 사이 간격을 0.10 mm에서 0.20 mm로 바꾸었다. 처음 무늬 간격이 2.4 mm였다면 바뀐 간격은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 0.6 mm</label>
+<label><input type="radio" name="q2" value="b"> 2.4 mm</label>
+<label><input type="radio" name="q2" value="c"> 1.2 mm</label>
+<label><input type="radio" name="q2" value="d"> 4.8 mm</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>중심 부근에서 무늬 간격은 슬릿 사이 간격에 반비례합니다. 슬릿 사이 간격이 2배이므로 무늬 간격은 절반인 1.2 mm입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>연속한 밝은 무늬 여섯 개의 첫 중심은 2.0 mm, 마지막 중심은 17.0 mm이다. 인접한 밝은 무늬 사이의 평균 간격은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 2.5 mm</label>
+<label><input type="radio" name="q3" value="b"> 3.0 mm</label>
+<label><input type="radio" name="q3" value="c"> 15.0 mm</label>
+<label><input type="radio" name="q3" value="d"> 17.0 mm</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>밝은 무늬 여섯 개 사이에는 간격이 다섯 칸 있습니다. 따라서 (17.0−2.0)÷5=3.0 mm입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>두 틈을 모두 비추면 중앙 P는 밝고 바로 옆 Q는 어둡다. 한 틈을 가리고 나머지 빛은 그대로 두면, P와 Q의 밝기는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> P 증가 · Q 증가</label>
+<label><input type="radio" name="q4" value="b"> P 증가 · Q 감소</label>
+<label><input type="radio" name="q4" value="c"> P 감소 · Q 감소</label>
+<label><input type="radio" name="q4" value="d"> P 감소 · Q 증가</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>P는 두 빛의 보강이 사라져 어두워지고, Q는 두 빛의 상쇄가 사라져 밝아집니다. 한 틈을 가린다고 스크린 전체가 같은 비율로 어두워지는 것은 아닙니다.</p>
+</article></details></main><script src="../light-interference-model.js?v=6fc735d3b6bf"></script><script src="../light-interference.js?v=633eab68b6f1"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

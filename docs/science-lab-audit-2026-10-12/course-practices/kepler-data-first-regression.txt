@@ -1,0 +1,11 @@
+✔ source rows, unit-invariant law, focus distances and equal swept areas (3.983ms)
+✔ chromium: source data, transformations, animation, touch and retained first errors (5456.4763ms)
+✔ webkit: source data, transformations, animation, touch and retained first errors (10007.685ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15523.5708

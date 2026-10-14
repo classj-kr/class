@@ -1,0 +1,24 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.8447ms)
+✔ chromium: apparatus states, labels, fallback panels and responsive drawings (33945.104ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (15429.4947ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9048ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.9466ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1302ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (66.5461ms)
+chromium: 144 apps / 145 course routes / 580 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (19347.2226ms)
+webkit: 144 apps / 145 course routes / 580 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (26561.6545ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (331.277ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5009.3131ms)
+✔ combustion separates collection and reagent observation, with a relevant common-phenomenon question (0.8804ms)
+✔ insulation preserves the initial condition and approaches ambient more slowly (0.3657ms)
+✔ sound conditions change amplitude with unchanged pitch; galaxy contains observable bar and arms (1.0361ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49457.2836

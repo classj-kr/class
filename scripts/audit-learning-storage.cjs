@@ -1,10 +1,10 @@
-// Read-only source inventory. Writes findings under output/, never student data.
+// Read-only source inventory. Writes findings under outputs/, never student data.
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const root = path.resolve(__dirname, '..');
 const base = 'learning/literacy-numeracy/';
-const output = path.join(root, 'output', 'learning-report-audit-20261001');
+const output = path.join(root, 'outputs', 'learning-report-audit-20261001');
 const rows = [
   ['story-books/korea-tales', '한국 전래 동화', '읽기', 'memory', '페이지·문제 응답은 화면 메모리, 언어 설정은 기기 저장', '작품·언어·읽던 위치와 문항별 시도 기록이 필요', ['story-books/korea-tales/heungbujeon/app.js']],
   ['story-books/world-tales', '세계 명작 동화', '읽기', 'memory', '페이지·퀴즈 상태는 화면 메모리, 언어 설정은 기기 저장', '작품·언어·읽던 위치와 문항별 시도 기록이 필요', ['story-books/world-tales/red-hood/app.js']],
@@ -25,8 +25,7 @@ const rows = [
   ['metacognition', '학습 자기점검', '자기점검', 'mixed', '완료 결과는 PostgreSQL. 진행 중 응답·문항/선택지 순서와 최근 20결과는 기기에도 저장', '중간 저장·서버 이어하기·중복 제출 방지 필요. 기기 저장/다운로드 의존 제거', ['metacognition/app.js']]
 ];
 const extras = [
-  ['graph-studio', '그래프 스튜디오', '교사 수업 도구', 'supplement', '칠판 상태와 보관함을 기기에 저장', '문해·수리 학생 진입 17항목에는 없음. 학생 활동으로 사용할 경우 서버 작품 저장 대상으로 포함', ['graph-studio/app.js']],
-  ['phonics-site', '독립 배포용 파닉스 사본', '배포 사본', 'supplement', 'public/phonics/app.js도 기기 저장', '현재 홈의 활성 경로는 phonics/. 사본을 배포한다면 같은 서버 저장 변경 반영 필요', ['phonics-site/public/phonics/app.js']]
+  ['graph-studio', '그래프 스튜디오', '교사 수업 도구', 'supplement', '칠판 상태와 보관함을 기기에 저장', '문해·수리 학생 진입 17항목에는 없음. 학생 활동으로 사용할 경우 서버 작품 저장 대상으로 포함', ['graph-studio/app.js']]
 ];
 const skipDirs = new Set(['node_modules', '.git', '.next', 'dist', 'assets', 'vendor', 'tests', 'tools', 'data', 'images', 'fonts']);
 function walk(directory) {

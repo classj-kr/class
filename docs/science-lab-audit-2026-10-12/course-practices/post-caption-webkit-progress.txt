@@ -1,0 +1,53 @@
+webkit: opening light-shadow
+webkit: light-shadow / 40 screen states
+webkit: opening refraction
+webkit: refraction / 80 screen states
+webkit: opening lens-image
+webkit: lens-image / 85 screen states
+webkit: opening photoelectric
+webkit: photoelectric / 100 screen states
+webkit: opening sound-vibration
+webkit: sound-vibration / 170 screen states
+webkit: opening wave-transfer
+webkit: wave-transfer / 180 screen states
+webkit: opening interference
+webkit: interference / 190 screen states
+webkit: opening lever-balance
+webkit: lever-balance / 225 screen states
+webkit: opening speed
+webkit: speed / 235 screen states
+webkit: opening force-motion
+webkit: force-motion / 260 screen states
+webkit: opening motion-energy
+webkit: motion-energy / 300 screen states
+webkit: opening gravity-motion
+webkit: gravity-motion / 310 screen states
+webkit: opening torque
+webkit: torque / 325 screen states
+webkit: opening collision
+webkit: collision / 330 screen states
+webkit: opening magnets
+webkit: magnets / 340 screen states
+webkit: opening circuit-bulbs
+webkit: circuit-bulbs / 350 screen states
+webkit: opening ohms-law
+webkit: ohms-law (middle) / 405 screen states
+webkit: opening ohms-law
+webkit: ohms-law (high-elective) / 530 screen states
+webkit: opening electric-field
+webkit: electric-field / 545 screen states
+webkit: opening induction
+webkit: induction / 555 screen states
+webkit: opening semiconductor-relativity
+webkit: semiconductor-relativity / 570 screen states
+webkit: opening motor-magnet
+webkit: motor-magnet / 585 screen states
+webkit: opening heat-transfer
+webkit: heat-transfer / 650 screen states
+webkit: opening specific-heat
+webkit: specific-heat / 670 screen states
+webkit: opening energy-heat
+webkit: energy-heat / 675 screen states
+webkit: opening heat-engine
+webkit: heat-engine / 690 screen states
+webkit: opening energy-conversion

@@ -3,9 +3,9 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const schoolAdminAppSource = await readFile(new URL("../schooladmin/app.js", import.meta.url), "utf8");
-const schoolAdminIndexSource = await readFile(new URL("../schooladmin/index.html", import.meta.url), "utf8");
-const schoolAdminCssSource = await readFile(new URL("../schooladmin/style.css", import.meta.url), "utf8");
+const schoolAdminAppSource = await readFile(new URL("../apps/schooladmin/app.js", import.meta.url), "utf8");
+const schoolAdminIndexSource = await readFile(new URL("../apps/schooladmin/index.html", import.meta.url), "utf8");
+const schoolAdminCssSource = await readFile(new URL("../apps/schooladmin/style.css", import.meta.url), "utf8");
 
 function fnBody(source, startMarker, endMarker) {
   const start = source.indexOf(startMarker);

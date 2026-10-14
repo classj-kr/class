@@ -2,7 +2,7 @@
 const assert=require("node:assert/strict"), fs=require("node:fs"), path=require("node:path");
 const {chromium}=require("../game-hub-server/node_modules/playwright");
 const base=process.env.BOARD_COACH_TEST_URL||"http://127.0.0.1:8936", url=base+"/learning/games/board-coach/coach.html?game=chess";
-const output=path.resolve(__dirname,"../tmp/chess-coach");fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,"../outputs/qa/chess-coach");fs.mkdirSync(output,{recursive:true});
 const square=s=>(Number(s[1])-1)*8+s.charCodeAt(0)-97;
 const at=(p,s)=>p.locator(`[data-square='${square(s)}']`);
 const errors=[];

@@ -274,6 +274,13 @@
         playSynthetic(RHYTHM_MIDI, when, .45, strong ? .075 : .055);
     }
 
+    function tapRhythm() {
+        const context = ensureAudio();
+        if (!context) return;
+        // Live feedback must not inherit playRhythm's 180 ms scheduling lead.
+        rhythmNote(context.currentTime, true);
+    }
+
     /*
      * 리듬을 울린다. beats는 4분음표 하나를 1로 센 치는 자리이며
      * countIn만큼 미리 박을 세어 준다. 첫 박이 울리는 시각을 돌려준다.
@@ -311,6 +318,7 @@
         playNotes: playNotes,
         playSequence: playSequence,
         playRhythm: playRhythm,
+        tapRhythm: tapRhythm,
         metronome: metronome,
         now: audioNow,
         preload: loadSamples

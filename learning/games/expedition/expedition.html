@@ -314,8 +314,8 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<script src="expedition-sfx.js" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261009-sound-bus" defer></script>
+<script src="expedition-sfx.js?v=20261009-sound-bus" defer></script>
 <style>
 
 @media(min-width:700px){
@@ -501,7 +501,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 </section>
 
 <!-- 아직 전용 BGM이 없어 src를 비워 둔다(원정대 추리와 같은 형태). assets/sound/bgm.ogg 를 넣고 src만 채우면 된다. -->
-<audio id="bgm" loop preload="auto"></audio>
+<audio id="bgm" src="/learning/games/expedition/assets/sound/lobby.ogg" loop preload="auto"></audio>
 <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
 <script>
@@ -581,7 +581,7 @@ function renderThemePicker(){
 
 
 const BGM_DIR="/learning/games/expedition/assets/sound";
-let currentTrack="";
+let currentTrack=`${BGM_DIR}/lobby.ogg`;
 
 function setTrack(name){
   const audio=$("bgm");

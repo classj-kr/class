@@ -1,0 +1,14 @@
+✔ wiring gate requires shared ground, power, matching input and uploaded program (0.8399ms)
+✔ optical sample count and period estimates expose coherent undersampling (1.7274ms)
+✔ sound adds intensities; distance and attenuation are separate; sampling follows setting (1.4668ms)
+✔ two-point calibration and stateful control distinguish command from actual pumping (0.4068ms)
+✔ chromium: sensor acquisition and closed-loop design, feedback, reset and mobile (4464.6364ms)
+✔ webkit: sensor acquisition and closed-loop design, feedback, reset and mobile (9069.896ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13615.8878

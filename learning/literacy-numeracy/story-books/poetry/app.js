@@ -244,6 +244,33 @@
         return leftHtml + rightHtml;
     }
 
+    // 시화 배치 스마트 판별:
+    // 시어 사전이 길거나(고등 단계 전편 및 중3·밀도 높은 시) 본문이 길어 우측 하단에서 글자와 그림이 겹치는 시는
+    // 시 읽기 펼침면에서는 그림을 숨겨 글자 가독성을 100% 확보하고, 작품 해설 펼침면 우측에 대형 화보로 단독 배치함.
+    function shouldShowArtInNote(s) {
+        if (!s || !s.poem || !s.poem.illustration) return false;
+        const poem = s.poem;
+        const book = s.book;
+        const words = poem.words || [];
+        const wordsTextLen = words.reduce((acc, w) => acc + (w.word ? w.word.length : 0) + (w.mean ? w.mean.length : 0), 0);
+        const isHighSchool = Boolean(book?.id?.startsWith("h"));
+        const isMiddleSchool3 = Boolean(book?.id?.startsWith("m3"));
+
+        // 1. 고등 단계 전체: 시어 사전 및 본문 밀도가 높아 해설 페이지 우측 대형 화보로 배치
+        if (isHighSchool) return true;
+
+        // 2. 중3 단계이면서 시어 사전이 1개 이상 있는 경우
+        if (isMiddleSchool3 && words.length >= 1) return true;
+
+        // 3. 학년 무관하게 시어 개수가 4개 이상이거나 시어 설명 총 글자 수가 80자 이상인 경우
+        if (words.length >= 4 || wordsTextLen >= 80) return true;
+
+        // 4. 본문 행 수가 18행 이상으로 긴 시이면서 낱말이 2개 이상인 경우
+        if ((poem.lines || []).length >= 18 && words.length >= 2) return true;
+
+        return false;
+    }
+
     // 2. 시 읽기
     function renderReadSpread(s) {
         const { poem } = s;
@@ -282,10 +309,11 @@
         `;
 
         let artHtml = "";
-        if (poem.illustration) {
+        // 스마트 판별: 해설 페이지로 이동하는 시는 시 읽기 펼침면에서 그림을 제외하여 글자 겹침 방지
+        if (poem.illustration && !shouldShowArtInNote(s)) {
             artHtml = `
                 <div class="read-spread-art" aria-hidden="true">
-                    <img class="read-spread-art-img" src="${escapeHtml(poem.illustration)}?v=20260910-rightcorner" alt="" />
+                    <img class="read-spread-art-img" src="${escapeHtml(poem.illustration)}?v=20261006-smartart" alt="" />
                 </div>
             `;
         }
@@ -352,11 +380,38 @@
         return leftHtml + rightHtml;
     }
 
-    // 4. 작품 해설 (왼쪽 전반부, 오른쪽 후반부)
+    // 4. 작품 해설 (왼쪽 전반부, 오른쪽 후반부 혹은 해설 화보 모드)
     function renderNoteSpread(s) {
         const { poem } = s;
         const notes = Array.isArray(poem.note) ? poem.note : (poem.note ? [poem.note] : []);
+        const hasArt = shouldShowArtInNote(s);
 
+        if (hasArt) {
+            // [스마트 레이아웃: 해설 화보 모드]
+            // 왼쪽 페이지: 작품 해설 전문
+            // 오른쪽 페이지: 대형 수채화 시화 단독 감상
+            const leftHtml = `
+                <div class="story-page-left note-page-text">
+                    <h3 class="note-head-title">작품 해설</h3>
+                    <div class="note-paras">
+                        ${notes.map(p => `<p class="note-p">${escapeHtml(p)}</p>`).join("") || '<p class="note-p">해설을 준비하고 있습니다.</p>'}
+                    </div>
+                </div>
+            `;
+
+            const rightHtml = `
+                <div class="story-page-right note-page-art">
+                    <div class="note-art-frame">
+                        <img class="note-art-img" src="${escapeHtml(poem.illustration)}?v=20261006-smartart" alt="${escapeHtml(poem.title)} 시화" />
+                        <div class="note-art-caption">「${escapeHtml(poem.title)}」 시화</div>
+                    </div>
+                </div>
+            `;
+
+            return leftHtml + rightHtml;
+        }
+
+        // [기본 모드: 짧은 시]
         const half = Math.ceil(notes.length / 2);
         const leftParas = notes.slice(0, half);
         const rightParas = notes.slice(half);

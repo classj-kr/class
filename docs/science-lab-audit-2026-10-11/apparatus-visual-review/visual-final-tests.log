@@ -1,0 +1,15 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.8117ms)
+✔ chromium: apparatus states, labels, fallback panels and responsive drawings (26481.2057ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (13452.7235ms)
+167 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (132.8699ms)
+✔ every science lab JavaScript file parses (79.8348ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0829ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40004.0846

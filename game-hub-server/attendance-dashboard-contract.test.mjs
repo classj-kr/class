@@ -3,11 +3,11 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const dashboardSource = await readFile(new URL("../classtools/dashboard.html", import.meta.url), "utf8");
+const dashboardSource = await readFile(new URL("../apps/classtools/dashboard.html", import.meta.url), "utf8");
 // The schoolwide attendance board used to be a tab inside schooladmin/app.js;
 // it now lives in its own page, linked from classtools/index.html.
-const attendanceDashboardSource = await readFile(new URL("../classtools/attendance-dashboard.html", import.meta.url), "utf8");
-const noticeIndexSource = await readFile(new URL("../notice/index.html", import.meta.url), "utf8");
+const attendanceDashboardSource = await readFile(new URL("../apps/classtools/attendance-dashboard.html", import.meta.url), "utf8");
+const noticeIndexSource = await readFile(new URL("../apps/notice/index.html", import.meta.url), "utf8");
 
 function handlerBody(source, routeSignature) {
   const start = source.indexOf(routeSignature);
@@ -91,6 +91,7 @@ test("GET /school-admin/dashboard lists this year's students once and each atten
         (2,2026,6,2,'1','남의학교');
       INSERT INTO classroom_classes VALUES (11,1,2026,6,3),(12,1,2025,6,3);
       INSERT INTO classroom_students VALUES (11,'1','마학생(옛명단)'),(11,'2','바학생'),(12,'5','작년옛명단');
+      ALTER TABLE classroom_students ADD COLUMN roster_active BOOLEAN NOT NULL DEFAULT TRUE;
       INSERT INTO classroom_absence_notices VALUES
         (1,6,2,'2','나학생','결석','2026-09-28','감기'),
         (1,6,2,'1','가학생','결석','2026-09-27','지난날'),

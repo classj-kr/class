@@ -265,7 +265,11 @@ body:has(#playArea:not(.hidden)) { padding: 60px 16px 16px; }
   ];
   const audio = document.getElementById("bgm");
   if (!audio) return;
-  let index = Math.floor(Math.random() * TRACKS.length);
+  const savedSource = sessionStorage.getItem("classMusicPlaybackSource") || "";
+  let index = TRACKS.findIndex(track => savedSource.endsWith(track));
+  if (index === -1) {
+    index = Math.floor(Math.random() * TRACKS.length);
+  }
   audio.src = TRACKS[index];
   audio.addEventListener("ended", () => {
     index = (index + 1) % TRACKS.length;

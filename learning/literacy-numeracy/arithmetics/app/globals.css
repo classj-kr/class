@@ -6278,7 +6278,7 @@ button.division-option {
 }
 
 .high-school-header {
-  min-height: 315px;
+  min-height: 210px;
   display: grid;
   grid-template-columns: 150px minmax(0, 1fr);
   align-items: start;
@@ -6301,10 +6301,10 @@ button.division-option {
 }
 
 .high-school-heading h1 {
-  margin: 16px 0 15px;
-  font-size: clamp(54px, 9vw, 98px);
-  line-height: 0.92;
-  letter-spacing: -0.08em;
+  margin: 10px 0 12px;
+  font-size: clamp(30px, 3.4vw, 42px);
+  line-height: 1.16;
+  letter-spacing: -0.045em;
 }
 
 .high-school-heading p {
@@ -6422,7 +6422,7 @@ button.division-option {
 @media (max-width: 600px) {
   .high-school-shell { width: calc(100% - 24px); }
   .high-school-header { min-height: 0; grid-template-columns: 1fr; padding-bottom: 38px; }
-  .high-school-heading h1 { font-size: 58px; }
+  .high-school-heading h1 { font-size: clamp(28px, 8vw, 34px); }
   .high-school-section-title { align-items: start; flex-direction: column; gap: 10px; }
 }
 

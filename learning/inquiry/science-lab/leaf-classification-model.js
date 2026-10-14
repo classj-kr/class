@@ -1,0 +1,12 @@
+(function(root){'use strict';
+ const specimens=[{id:'pine',name:'소나무',long:true,pointed:true,lobed:false},{id:'grass',name:'강아지풀',long:true,pointed:true,lobed:false},{id:'cherry',name:'벚나무',long:false,pointed:true,lobed:false},{id:'maple',name:'단풍나무',long:false,pointed:true,lobed:true},{id:'euonymus',name:'사철나무',long:false,pointed:false,lobed:false},{id:'clover',name:'토끼풀',long:false,pointed:false,lobed:false}];
+ const feedback={pine:['소나무의 두 가늘고 긴 잎을 각각 살펴보세요.','잎 끝은 잎자루 반대쪽의 뾰족한 부분입니다.','두 잎이 나란히 붙어 있습니다. 한 잎몸이 갈라진 것은 아닙니다.'],grass:['강아지풀은 폭에 비해 길이가 긴 잎입니다.','아래쪽으로 가늘어지는 잎 끝을 확대해 보세요.','가늘고 긴 한 잎몸이며 손바닥 모양의 갈래는 없습니다.'],cherry:['벚나무 잎은 가운데 폭이 넓습니다. 끝만 뾰족한 것과 길쭉한 전체 모양을 구별하세요.','가장자리의 작은 톱니와 맨 위의 뾰족한 잎 끝을 구별해 보세요.','가장자리의 작은 톱니는 손바닥처럼 깊게 갈라진 모습과 다릅니다.'],maple:['단풍나무의 한 갈래만 보지 말고 잎 전체의 폭을 살펴보세요.','단풍나무 잎의 갈래는 끝이 뾰족합니다.','갈래들이 아래쪽에서 하나의 잎몸으로 이어져 있습니다.'],euonymus:['사철나무 잎은 폭이 넓고 둥근 모양입니다.','가느다란 잎자루와 반대쪽의 둥근 잎 끝을 구별해 보세요.','이 잎몸은 여러 갈래로 깊게 갈라져 있지 않습니다.'],clover:['토끼풀의 작은 잎은 폭이 넓고 둥근 편입니다.','작은 잎의 둥근 끝을 확대해 보세요.','작은 잎 세 장이 달린 모습과 한 잎몸의 갈라짐을 구별하세요.']};
+ for(const p of specimens)p.detail=Object.fromEntries(['long','pointed','lobed'].map((rule,i)=>[rule,feedback[p.id][i]]));
+ const rules={long:{question:'전체적인 모양이 길쭉한가?',hint:'잎 전체의 폭과 길이를 함께 살펴보세요.'},pointed:{question:'잎의 끝이 뾰족한가?',hint:'가장자리의 작은 톱니와 잎 끝을 구별해 보세요.'},lobed:{question:'손바닥처럼 여러 갈래로 갈라졌는가?',hint:'한 잎몸이 여러 갈래로 갈라진 것과 작은 잎이 여럿 달린 것을 구별하세요.'}};
+ const create=()=>({rule:'long',selected:'pine',answers:{},first:{},checked:false});
+ function setRule(s,rule){if(!rules[rule])return false;s.rule=rule;s.answers={};s.checked=false;return true;}
+ function select(s,id){if(!specimens.some(p=>p.id===id))return false;s.selected=id;return true;}
+ function answer(s,id,value){if(!specimens.some(p=>p.id===id)||typeof value!=='boolean')return false;s.answers[id]=value;s.checked=false;return true;}
+ function check(s){const missing=specimens.filter(p=>!(p.id in s.answers)).map(p=>p.id);if(missing.length)return{complete:false,missing};const wrong=specimens.filter(p=>s.answers[p.id]!==p[s.rule]).map(p=>p.id);if(!(s.rule in s.first))s.first[s.rule]={wrong:[...wrong],answers:{...s.answers}};s.checked=true;return{complete:true,wrong};}
+ const api={specimens,rules,create,setRule,select,answer,check};if(typeof module!=='undefined')module.exports=api;else root.LeafClassificationModel=api;
+})(typeof window==='undefined'?globalThis:window);

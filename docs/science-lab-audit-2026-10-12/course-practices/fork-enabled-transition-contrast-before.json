@@ -1,0 +1,100 @@
+{
+  "engine": "chromium",
+  "viewport": [
+    768,
+    1024
+  ],
+  "scope": "Visible HTML text in initial experiment state and opened/graded questions, plus completed rock/fossil and tuning-fork comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.",
+  "routes": 181,
+  "checked": 16317,
+  "gradientSkipped": 168,
+  "errors": [],
+  "flagged": [
+    {
+      "slug": "sound-vibration",
+      "state": "observed-comparison",
+      "checked": 69,
+      "gradientSkipped": 2,
+      "issues": [
+        {
+          "text": "약하게 치기",
+          "ratio": 4.23,
+          "color": "rgb(22, 68, 88)",
+          "background": [
+            247,
+            250,
+            252
+          ],
+          "opacity": 0.688984,
+          "tag": "BUTTON",
+          "css": ""
+        },
+        {
+          "text": "세게 치기",
+          "ratio": 4.23,
+          "color": "rgb(22, 68, 88)",
+          "background": [
+            247,
+            250,
+            252
+          ],
+          "opacity": 0.688984,
+          "tag": "BUTTON",
+          "css": ""
+        },
+        {
+          "text": "종이 대기",
+          "ratio": 4.23,
+          "color": "rgb(22, 68, 88)",
+          "background": [
+            247,
+            250,
+            252
+          ],
+          "opacity": 0.688984,
+          "tag": "BUTTON",
+          "css": ""
+        },
+        {
+          "text": "물 표면에 대기",
+          "ratio": 4.23,
+          "color": "rgb(22, 68, 88)",
+          "background": [
+            247,
+            250,
+            252
+          ],
+          "opacity": 0.688984,
+          "tag": "BUTTON",
+          "css": ""
+        },
+        {
+          "text": "갈래를 손으로 잡기",
+          "ratio": 4.23,
+          "color": "rgb(22, 68, 88)",
+          "background": [
+            247,
+            250,
+            252
+          ],
+          "opacity": 0.688984,
+          "tag": "BUTTON",
+          "css": ""
+        },
+        {
+          "text": "닿은 물체 떼기",
+          "ratio": 4.04,
+          "color": "rgb(22, 68, 88)",
+          "background": [
+            228,
+            243,
+            247
+          ],
+          "opacity": 0.688984,
+          "tag": "BUTTON",
+          "css": ""
+        }
+      ]
+    }
+  ]
+}

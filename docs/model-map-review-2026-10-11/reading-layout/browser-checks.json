@@ -1,0 +1,249 @@
+{
+  "audioChecks": [
+    {
+      "width": 1280,
+      "rects": [
+        {
+          "name": "school-level",
+          "rect": {
+            "bottom": 50,
+            "height": 40,
+            "left": 1066,
+            "right": 1218,
+            "top": 10,
+            "width": 152,
+            "x": 1066,
+            "y": 10
+          }
+        },
+        {
+          "name": "unified-audio-menu-toggle",
+          "rect": {
+            "bottom": 50,
+            "height": 40,
+            "left": 1226,
+            "right": 1266,
+            "top": 10,
+            "width": 40,
+            "x": 1226,
+            "y": 10
+          }
+        }
+      ],
+      "overlap": false,
+      "outside": false
+    },
+    {
+      "width": 1024,
+      "rects": [
+        {
+          "name": "school-level",
+          "rect": {
+            "bottom": 50,
+            "height": 40,
+            "left": 810,
+            "right": 962,
+            "top": 10,
+            "width": 152,
+            "x": 810,
+            "y": 10
+          }
+        },
+        {
+          "name": "unified-audio-menu-toggle",
+          "rect": {
+            "bottom": 50,
+            "height": 40,
+            "left": 970,
+            "right": 1010,
+            "top": 10,
+            "width": 40,
+            "x": 970,
+            "y": 10
+          }
+        }
+      ],
+      "overlap": false,
+      "outside": false
+    },
+    {
+      "width": 390,
+      "rects": [
+        {
+          "name": "school-level",
+          "rect": {
+            "bottom": 46,
+            "height": 40,
+            "left": 190,
+            "right": 330,
+            "top": 6,
+            "width": 140,
+            "x": 190,
+            "y": 6
+          }
+        },
+        {
+          "name": "unified-audio-menu-toggle",
+          "rect": {
+            "bottom": 46,
+            "height": 40,
+            "left": 338,
+            "right": 378,
+            "top": 6,
+            "width": 40,
+            "x": 338,
+            "y": 6
+          }
+        }
+      ],
+      "overlap": false,
+      "outside": false
+    }
+  ],
+  "bodyLayoutChecks": [
+    {
+      "app": "digestion",
+      "school": "middle",
+      "hint": "음식물을 삼킨 뒤 소장과 대장을 지나는 길을 따라가세요.",
+      "lessonInSidebar": false,
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "figures": 2,
+        "open": true,
+        "recap": false,
+        "width": 820
+      },
+      "quizWidth": 845
+    },
+    {
+      "app": "circulation",
+      "school": "elementary",
+      "hint": "심장 박동을 바꾸며 혈액이 이동하는 빠르기를 비교하세요.",
+      "lessonInSidebar": false,
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "figures": 2,
+        "open": true,
+        "recap": false,
+        "width": 820
+      },
+      "quizWidth": 860
+    },
+    {
+      "app": "respiration",
+      "school": "middle",
+      "hint": "산소와 이산화 탄소가 각각 어느 쪽에서 어느 쪽으로 이동하는지 설명하세요.",
+      "lessonInSidebar": false,
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "figures": 2,
+        "open": true,
+        "recap": false,
+        "width": 820
+      },
+      "quizWidth": 860
+    },
+    {
+      "app": "excretion",
+      "school": "elementary",
+      "hint": "이름표를 눌러 오줌이 만들어지는 곳과 모이는 곳을 찾아보세요.",
+      "lessonInSidebar": false,
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "figures": 1,
+        "open": true,
+        "recap": false,
+        "width": 820
+      },
+      "quizWidth": 860
+    },
+    {
+      "app": "nervous",
+      "school": "middle",
+      "hint": "",
+      "lessonInSidebar": false,
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "figures": 1,
+        "open": true,
+        "recap": false,
+        "width": 820
+      },
+      "quizWidth": 860
+    },
+    {
+      "app": "homeostasis",
+      "school": "high",
+      "hint": "",
+      "lessonInSidebar": false,
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "figures": 2,
+        "open": true,
+        "recap": false,
+        "width": 820
+      },
+      "quizWidth": 860
+    },
+    {
+      "app": "immune",
+      "school": "high",
+      "hint": "단계를 바꾸며 대식세포, 보조 T세포, B세포와 형질세포의 역할을 연결하세요.",
+      "lessonInSidebar": false,
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "figures": 2,
+        "open": true,
+        "recap": false,
+        "width": 820
+      },
+      "quizWidth": 860
+    },
+    {
+      "app": "skeleton",
+      "school": "elementary",
+      "tabs": [
+        "모형",
+        "문제"
+      ],
+      "dialog": {
+        "open": true,
+        "width": 820,
+        "figures": 1,
+        "recap": false
+      },
+      "quizWidth": 860
+    }
+  ],
+  "statePreserved": {
+    "before": "73",
+    "after": "73"
+  },
+  "wrongAnswer": "다시 생각하고 다른 답을 골라보세요.",
+  "controls": {
+    "digestion": "아이오딘 선택: 녹말물 청람색",
+    "nervous": "부교감신경 전환, 밝기 100% 입력 정상"
+  },
+  "unitTestsPassed": 19
+}

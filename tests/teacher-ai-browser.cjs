@@ -42,6 +42,7 @@ async function startHarness() {
   app.use('/api/teacher-ai', feature.router);
   app.use('/api', (_req, res) => res.status(404).json({ error: 'NOT_IN_HARNESS' }));
   app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
+  app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise((resolve) => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
   return { db, google, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise((r) => server.close(r)); await db.close(); } };

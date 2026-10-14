@@ -1,0 +1,98 @@
+{
+  "engine": "chromium",
+  "viewport": [
+    768,
+    1024
+  ],
+  "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.",
+  "routes": 1,
+  "checked": 2755,
+  "gradientSkipped": 29,
+  "errors": [],
+  "flagged": [
+    {
+      "slug": "reflex-nerve",
+      "state": "conscious:none:3.5",
+      "checked": 95,
+      "gradientSkipped": 1,
+      "issues": [
+        {
+          "text": "무릎 반사",
+          "ratio": 3.2,
+          "color": "rgb(248, 249, 250)",
+          "background": [
+            112,
+            145,
+            158
+          ],
+          "opacity": 1,
+          "tag": "BUTTON",
+          "css": ""
+        }
+      ]
+    },
+    {
+      "slug": "reflex-nerve",
+      "state": "conscious:none:5",
+      "checked": 95,
+      "gradientSkipped": 1,
+      "issues": [
+        {
+          "text": "무릎 반사",
+          "ratio": 3.12,
+          "color": "rgb(248, 249, 249)",
+          "background": [
+            114,
+            147,
+            159
+          ],
+          "opacity": 1,
+          "tag": "BUTTON",
+          "css": ""
+        }
+      ]
+    },
+    {
+      "slug": "reflex-nerve",
+      "state": "conscious:sensory:5",
+      "checked": 95,
+      "gradientSkipped": 1,
+      "issues": [
+        {
+          "text": "무릎 반사",
+          "ratio": 3.12,
+          "color": "rgb(248, 249, 249)",
+          "background": [
+            114,
+            147,
+            159
+          ],
+          "opacity": 1,
+          "tag": "BUTTON",
+          "css": ""
+        }
+      ]
+    },
+    {
+      "slug": "reflex-nerve",
+      "state": "conscious:motor:5",
+      "checked": 95,
+      "gradientSkipped": 1,
+      "issues": [
+        {
+          "text": "무릎 반사",
+          "ratio": 3.12,
+          "color": "rgb(248, 249, 249)",
+          "background": [
+            114,
+            147,
+            159
+          ],
+          "opacity": 1,
+          "tag": "BUTTON",
+          "css": ""
+        }
+      ]
+    }
+  ]
+}

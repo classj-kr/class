@@ -537,8 +537,6 @@
     document.getElementById('modal-docent').textContent = zone.docent;
     document.getElementById('modal-caution').textContent = zone.caution;
     document.getElementById('modal-look').textContent = zone.look;
-    document.getElementById('modal-rights').textContent = zone.rights;
-    document.getElementById('modal-source').href = zone.source;
     detailModal.showModal();
   }
   function shuffledCopy(items) {

@@ -1,0 +1,86 @@
+[
+  {
+    "file": "climate-graph.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "coast.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "floodplain.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "foehn.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "history-steles.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "karst.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "meander.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "mobile-climate.webp",
+    "width": 390,
+    "height": 844,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "mobile-history.webp",
+    "width": 390,
+    "height": 844,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "oldmap.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "relief.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  },
+  {
+    "file": "vegetation.webp",
+    "width": 1280,
+    "height": 720,
+    "lossless": true,
+    "pixelMatch": true
+  }
+]

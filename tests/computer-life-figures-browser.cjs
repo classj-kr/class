@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict'),vm=require('node:vm'),pp=require('puppeteer-core');
-const root=path.resolve(__dirname,'..'),prefix='/learning/inquiry/information-computing/computer-fundamentals/',dir=path.join(root,'docs/computer-analogies');
+const root=path.resolve(__dirname,'..'),prefix='/learning/inquiry/information-computing/computer-fundamentals/',dir=path.resolve(root,process.env.LIFE_OUTPUT||'docs/computer-analogies');
 const data={window:{}};
 vm.runInNewContext(fs.readFileSync(path.join(root,prefix,'textbook/life-figures.js'),'utf8'),data);
 const ids=Array.from(data.window.COMPUTER_LIFE_FIGURES.ids);
@@ -10,6 +10,10 @@ const selected=process.env.LIFE_IDS?.split(',').filter(Boolean);
 if(selected)assert.ok(selected.every(id=>ids.includes(id)));
 const testIds=selected||ids;
 const server=http.createServer((req,res)=>{
+ // 그림 검사용 서버에는 실제 계정이 없으므로 빈 학습 저장 공간을 제공한다.
+ if(req.method==='GET'&&new URL(req.url,'http://localhost').pathname==='/api/me/storage/computer-literacy'){
+  res.writeHead(200,{'Content-Type':'application/json'}).end(JSON.stringify({items:{}}));return;
+ }
  let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);
  if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
  if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');
@@ -27,6 +31,7 @@ const server=http.createServer((req,res)=>{
    await page.setViewport({width:1440,height:1050});
    await page.goto('http://127.0.0.1:'+server.address().port+prefix+'lessons/?lesson='+id+'#read',{waitUntil:'networkidle0'});
    await page.waitForSelector('[data-life-figure="'+id+'"] svg');
+   await page.click('.study-analogy > summary');
    const states=await page.$$eval('[data-life-state]',els=>els.map(e=>e.dataset.lifeState));
    const rows=[],clipping=[],drawings=[];
    for(const width of [1440,768,390,320]){

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sesame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="https://vizier.cds.unistra.fr/xml/sesame_4x.xsd">
+<Target option="SNV">
+  <name>M5</name>
+  <!-- Q10259731 #1 -->
+  <Resolver name="Sc=Simbad (CDS, via client/server)"><!--delay: 139ms [2] -->
+    <oid>2648987</oid>
+    <otype>GlC</otype>
+    <jpos>15:18:33.22 +02:04:51.7</jpos>
+    <jradeg>229.63841667</jradeg>
+    <jdedeg>2.08102778</jdedeg>
+    <refPos>2010AJ....140.1830G</refPos>
+    <pm>
+      <v>10.69</v><e>0.01</e><q>C</q><r>2019MNRAS.482.5138B</r>
+      <pa>157.7</pa>
+      <pmRA>4.06</pmRA><epmRA>0.01</epmRA>
+      <pmDE>-9.89</pmDE><epmDE>0.01</epmDE>
+    </pm>
+    <Vel><v>53.8</v><e>0.2</e><q>A</q><r>2018MNRAS.478.1520B</r></Vel>
+    <plx><v>0.141</v><e>0.010</e><q>C</q><r>2021MNRAS.505.5978V</r></plx>
+    <oname>M   5</oname>
+    <nrefs>2115</nrefs>
+  </Resolver>
+</Target>
+</Sesame>
+<!--- ****Total of 1 crashes -->
+<!-- Configuration tested: /run/sesame.conf -->

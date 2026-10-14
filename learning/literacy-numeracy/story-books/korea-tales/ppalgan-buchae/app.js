@@ -824,7 +824,7 @@ const WORDS_KO = {
     "01-nap.webp": [
         { w: "첨지", k: "옛날에 나이 든 남자를 부르던 말.", s: "김 첨지는 일보다 낮잠을 좋아하는 사람이었습니다." },
         { w: "지게", k: "등에 지고 짐을 나르는 나무 틀.", s: "지게를 지고 산에 올라가서는 나무는 안 하고 그늘부터 찾았지요." },
-        { w: "벌렁", k: "뒤로 눕거나 자빠지는 모양.", s: "그날도 커다란 나무 그늘에 벌렁 드러누웠어요." },
+        { w: "나무하다", k: "불 땔 나뭇가지를 산에서 베어 모으다.", s: "지게를 지고 산에 올라가서는 나무는 안 하고 그늘부터 찾았지요." },
         { w: "솔바람", k: "소나무 사이로 부는 바람.", s: "솔바람이 얼굴을 간질이자 곧 코를 골았답니다." },
         { w: "늘어지게", k: "아주 편하게 실컷.", s: "한숨 늘어지게 자고 일어나 보니" },
         { w: "사방", k: "온 둘레.", s: "김 첨지는 사방을 둘러보았지만 아무도 없었답니다." }
@@ -848,6 +848,7 @@ const WORDS_KO = {
     "04-feast.webp": [
         { w: "진동하다", k: "냄새가 확 퍼지다.", s: "대문 밖까지 고기 냄새가 진동했지요." },
         { w: "윗자리", k: "웃어른이 앉는 높은 자리.", s: "윗자리에 앉은 주인 영감이 배를 두드리며 껄껄 웃고 있었어요." },
+        { w: "영감", k: "나이 많은 남자 어른을 높여 부르던 말.", s: "윗자리에 앉은 주인 영감이 배를 두드리며 껄껄 웃고 있었어요." },
         { w: "슬금슬금", k: "남몰래 슬며시 움직이는 모양.", s: "김 첨지는 슬금슬금 기둥 뒤로 물러났습니다." },
         { w: "눈여겨보다", k: "주의 깊게 살펴보다.", s: "아무도 기둥 뒤의 김 첨지를 눈여겨보지 않았어요." }
     ],
@@ -883,6 +884,7 @@ const WORDS_KO = {
         { w: "울상", k: "울 것 같은 얼굴.", s: "식구들은 울상이 되어 줄줄이 걸어 나갔답니다." }
     ],
     "09-play.webp": [
+        { w: "자리", k: "짚이나 풀을 엮어 만든 깔개.", s: "이사 간 집 마당에 들어서자마자, 영감은 자리를 깔고 앉았어요." },
         { w: "살랑살랑", k: "가볍게 자꾸 흔드는 모양.", s: "영감은 빨간 부채를 살랑살랑 부쳤습니다." },
         { w: "쭉쭉", k: "자꾸 길게 뻗는 모양.", s: "그러자 제 코가 쭉쭉 뻗어 올라갔어요." }
     ],
@@ -1194,7 +1196,7 @@ function paint() {
 
     // 읽는 중일 때만 문단을 눌러 그 자리로 옮긴다.
     // 그냥 눌렀다고 소리가 나면 곤란하니, 스피커 단추를 누른 뒤에만 먹는다.
-    if (canRead()) {
+    if (LANG === 'en' && CAN_SPEAK) {
         spreadEl.querySelectorAll('[data-say]').forEach(el => {
             el.addEventListener('click', () => {
                 if (!reading) return;
@@ -1304,7 +1306,7 @@ const textOf = p => (typeof p === 'string' ? p : p.t);
 
 /* 읽기 단추 — 표지·펼침면·읽고 나서에 똑같이 붙는다. 영어일 때만 나온다. */
 function readBtnHtml() {
-    return canRead()
+    return (LANG === 'en' && CAN_SPEAK)
         ? `<button type="button" class="read-btn" id="readBtn">${reading ? '■' : '▶'}</button>`
         : '';
 }
@@ -1372,7 +1374,6 @@ function stopReading() {
     if (typeof spreadEl !== 'undefined' && spreadEl) spreadEl.classList.remove('is-reading');
     readToken++;
     if (CAN_SPEAK) { try { speechSynthesis.cancel(); } catch (e) {} }
-    stopKoAudio();
     document.querySelectorAll('.saying').forEach(el => el.classList.remove('saying'));
     const b = document.getElementById('readBtn');
     if (b) b.textContent = '▶';
@@ -1380,7 +1381,6 @@ function stopReading() {
 
 function readPage(from) {
     const page = PAGES[current];
-    if (LANG === 'ko') { readPageKo(from); return; }
     if (!CAN_SPEAK || !page) return;
     const parts = pageParts(page);
     if (!parts.length) return;
@@ -1410,106 +1410,6 @@ function readPage(from) {
         try { speechSynthesis.speak(u); } catch (e) { stopReading(); }
     };
     step(Math.max(0, Math.min(from | 0, parts.length - 1)));
-}
-
-/* ── 우리말 읽어 주기 ──────────────────────────────────────────
-   기기에 든 한국어 목소리는 쓸 만한 것이 없어서, 우리말은 미리 만들어 둔 소리를 튼다.
-   audio/ko.json 에 쪽마다 소리 파일과 문단 시작 시각이 적혀 있다(_tools/say-build.py).
-   영어와 같은 단추·같은 표시를 쓴다. 파일이 없는 책에는 단추가 안 생긴다. */
-const KO_AUDIO_V = '0';
-let KO_AUDIO = null;
-let koAudio = null;
-let koAudioKey = '';
-
-if (typeof fetch === 'function') {
-    fetch(`audio/ko.json?v=${KO_AUDIO_V}`)
-        .then(r => (r && r.ok && typeof r.json === 'function') ? r.json() : null)
-        .then(j => {
-            if (!j || !j.pages) return;
-            KO_AUDIO = j;
-            if (LANG === 'ko' && !reading && typeof paint === 'function') paint();
-        })
-        .catch(() => {});
-}
-
-function koPageKey(page) {
-    if (!page) return '';
-    if (page.kind === 'spread') return page.beat.art;
-    if (page.kind === 'cover') return 'cover';
-    if (page.kind === 'after') return 'after:' + (page.spread.art || String(PAGES.indexOf(page)));
-    return '';
-}
-
-function koAudioFor(page) {
-    if (!KO_AUDIO) return null;
-    return KO_AUDIO.pages[koPageKey(page)] || null;
-}
-
-function canRead() {
-    if (LANG === 'en') return CAN_SPEAK;
-    return !!koAudioFor(PAGES[current]);
-}
-
-function stopKoAudio() {
-    if (!koAudio) return;
-    try { koAudio.pause(); } catch (e) {}
-    koAudio.removeAttribute('src');
-    koAudio = null;
-    koAudioKey = '';
-}
-
-function readPageKo(from) {
-    const page = PAGES[current];
-    const entry = koAudioFor(page);
-    if (!entry || typeof Audio === 'undefined') return;
-    const cues = entry.c;
-    const start = Math.max(0, Math.min(from | 0, cues.length - 1));
-    const key = koPageKey(page);
-
-    const mark = (i) => {
-        document.querySelectorAll('.saying').forEach(el => el.classList.remove('saying'));
-        const here = document.querySelector(`[data-say="${i}"]`);
-        if (here) {
-            here.classList.add('saying');
-            here.scrollIntoView({ block: 'nearest' });
-        }
-    };
-
-    // 같은 쪽을 읽는 중이면 그 자리로 건너뛰기만 한다.
-    if (reading && koAudio && koAudioKey === key) {
-        koAudio.currentTime = cues[start];
-        mark(start);
-        return;
-    }
-
-    stopReading();
-    reading = true;
-    if (spreadEl) spreadEl.classList.add('is-reading');
-    const mine = ++readToken;
-    const btn = document.getElementById('readBtn');
-    if (btn) btn.textContent = '■';
-
-    const a = new Audio(`audio/ko/${entry.f}`);
-    a.preload = 'auto';
-    koAudio = a;
-    koAudioKey = key;
-    let cur = -1;
-    a.addEventListener('timeupdate', () => {
-        if (mine !== readToken) return;
-        const t = a.currentTime;
-        let i = 0;
-        while (i + 1 < cues.length && t >= cues[i + 1] - 0.05) i++;
-        if (i !== cur) { cur = i; mark(i); }
-    });
-    a.addEventListener('ended', () => { if (mine === readToken) stopReading(); });
-    a.addEventListener('error', () => { if (mine === readToken) stopReading(); });
-    a.addEventListener('loadedmetadata', () => {
-        if (mine !== readToken) return;
-        if (start > 0) a.currentTime = cues[start];
-        a.play().catch(() => { if (mine === readToken) stopReading(); });
-    });
-    mark(start);
-    a.load();
 }
 
 /* ── 단어장 ────────────────────────────────────────────────────

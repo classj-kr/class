@@ -12,6 +12,7 @@
   const regionOfProvince = dataset.regionOfProvince || [];
   const borders = window.KOREA_BORDERS || { mdl: [], national: [] };
   const terrainRivers = (window.TERRAIN_DATA && window.TERRAIN_DATA.rivers) || { features: [] };
+  const regionalRivers = window.KOREA_REGIONAL_RIVERS || { features: [] };
   // 북한 도 경계(data/regions.js). 남한 시·도 경계(provinces-topo.json)와 함께 그린다.
   const northFeatures = ((window.KOREA_REGIONS && window.KOREA_REGIONS.north) || []).map((province) => ({
     type: "Feature", properties: { name: province.name, north: true },
@@ -112,7 +113,7 @@
   function createBaseMap(elementId, options) {
     const map = L.map(elementId, {
       center: [38.05, 127.65], zoom: 6, minZoom: 5, maxZoom: 12,
-      zoomControl: true, attributionControl: false, preferCanvas: true, ...options,
+      zoomControl: true, attributionControl: false, preferCanvas: true, fadeAnimation: false, ...options,
       maxBounds: NAVIGATION_BOUNDS, maxBoundsViscosity: 1, bounceAtZoomLimits: false
     });
     const minimumZoom = map.options.minZoom;
@@ -125,9 +126,16 @@
     };
     map.on("resize", updateNavigationLimits);
     updateNavigationLimits();
-    L.tileLayer(RELIEF_URL, { minNativeZoom: 3, maxNativeZoom: 6 }).addTo(map);
-    L.tileLayer(RELIEF_URL, { minZoom: 7, minNativeZoom: 7, maxNativeZoom: 9, bounds: DETAIL_BOUNDS }).addTo(map);
-    new SparseTileLayer(RELIEF_URL, { minZoom: 10, minNativeZoom: 10, maxNativeZoom: 11, bounds: DETAIL_BOUNDS }).addTo(map);
+    const seaUrl = 'bathymetry/{z}/{x}/{y}.webp?v=20261012-3bands';
+    [
+      [L.TileLayer, { minNativeZoom: 3, maxNativeZoom: 6 }],
+      [L.TileLayer, { minZoom: 7, minNativeZoom: 7, maxNativeZoom: 9, bounds: DETAIL_BOUNDS }],
+      [SparseTileLayer, { minZoom: 10, minNativeZoom: 10, maxNativeZoom: 11, bounds: DETAIL_BOUNDS }]
+    ].forEach(([Layer, settings], i) => {
+      new Layer(RELIEF_URL, {...settings, zIndex: i*2+1}).addTo(map);
+      // Pair each overlay with its relief resolution, so a coarse coast cannot cover finer land.
+      new Layer(seaUrl, {...settings, zIndex: i*2+2, className: 'korea-bathymetry'}).addTo(map);
+    });
     [["themeZones", 420, true], ["borderLines", 430, false], ["themeLines", 450, true], ["themeLabels", 580, false],
       ["studyMarkers", 610, true], ["adminLabels", 640, false]].forEach(([name, z, events]) => {
       map.createPane(name);
@@ -203,6 +211,7 @@
     if (map === mainMap) {
       map.options.themeMinZoom = theme && theme.minZoom !== undefined ? theme.minZoom : 5;
       map.options.zoomSnap = theme && theme.historical ? 0.25 : 1;
+      map.setMaxZoom(theme?.maxZoom || 12);
       setNavigationMinimum(map, map.options.themeMinZoom);
     }
     const bounds = theme && theme.bounds ? L.latLngBounds(theme.bounds) : KOREA_BOUNDS;
@@ -219,12 +228,6 @@
     $("#reviewWrong").addEventListener("click", reviewWrongQuestions);
     $("#focusClose").addEventListener("click", clearFeatureFocus);
     $("#labelToggle").addEventListener("click", toggleMapDetails);
-    // 지도 자료 출처는 자료를 쓰는 조건이라 없앨 수 없어 ⓘ 단추 안에 접어 둔다.
-    $("#creditButton").addEventListener("click", () => {
-      const open = $("#creditText").hidden;
-      $("#creditText").hidden = !open;
-      $("#creditButton").setAttribute("aria-expanded", String(open));
-    });
     $("#profileButton").addEventListener("click", () => (profile.active ? stopProfile() : startProfile()));
     $("#profileClose").addEventListener("click", stopProfile);
     mainMap.on("click", (event) => { if (profile.active) addProfilePoint(event); });
@@ -248,6 +251,18 @@
       questionFocusLayer.clearLayers();
       session.answered = false;
     });
+    // 화면 폭이 바뀌어 문제 지도가 세로 배치되어도 모든 표식이 보이게 한다.
+    let questionResizeFrame;
+    new ResizeObserver(() => {
+      cancelAnimationFrame(questionResizeFrame);
+      questionResizeFrame = requestAnimationFrame(() => {
+        if (!$("#practiceDialog").open || $("#questionMap").hidden) return;
+        const question = session.questions[session.index];
+        if (!question) return;
+        questionMap.invalidateSize({ pan: false });
+        fitQuestionMap(question);
+      });
+    }).observe($("#questionMap"));
     window.addEventListener("hashchange", () => {
       const key = (location.hash || "").replace("#", "");
       if (themes[key] && key !== currentTheme) renderTheme(key);
@@ -385,6 +400,7 @@
     // 행정구역 탭은 시·도 이름이 늘 보이므로 지역명 단추가 필요 없다.
     $("#labelToggle").hidden = !!theme.provinceNames || !!theme.historical;
     $("#historyMapCaption").hidden = !theme.historical;
+    $("#progressButton").hidden = !!theme.historical || !readProgress().total;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -406,12 +422,15 @@
   function focusLesson(lesson) {
     mainMap.invalidateSize({ pan: false });
     lessonMapLayer.clearLayers();
+    $("#labelToggle").hidden=!!lesson || !!themes[currentTheme].provinceNames || !!themes[currentTheme].historical;
     if (!lesson) { scene.setContext(currentTheme, null); return; }
     renderLegend(themes[currentTheme].legend || []);
-    drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, excludeFeatures: lesson.spots });
+    drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true });
     // 학습 지도에는 주제 정보와 이름표를 유지한다. 정답을 가리는 바탕 전용 지도는 문제 창에서만 쓴다.
     const theme = themes[currentTheme];
-    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.annotations || [] });
+    const annotations=(theme.annotations||[]).filter(a=>
+      ['sea','range'].includes(a.kind) || (['relief','river','floodplain'].includes(lesson.id)&&a.kind==='river'));
+    drawLabels(mainMap, mainLabelLayer, { admin: false, city: false, annotations });
     lesson.spots.forEach((spot, index) => {
       // The temperature scene already places A/B at the observed stations; do not stack duplicate pins.
       if (currentTheme === "climate" && lesson.id === "temperature") return;
@@ -420,13 +439,30 @@
       marker.on("click", () => focusStudySpot(spot));
       marker.addTo(lessonMapLayer);
     });
-    if (lesson.spots.length > 1) mainMap.fitBounds(L.latLngBounds(lesson.spots.map(s=>[s.lat,s.lng])), {padding:[65,65],maxZoom:8,animate:false});
+    if (['seafloor','glacial'].includes(lesson.id)) mainMap.fitBounds([[32,123],[40,134]],{padding:[35,55],animate:false});
+    else if (lesson.spots.length > 1) mainMap.fitBounds(L.latLngBounds(lesson.spots.map(s=>[s.lat,s.lng])), {padding:[85,85],maxZoom:8,animate:false});
     else mainMap.setView([lesson.spots[0].lat,lesson.spots[0].lng],7,{animate:false});
     scene.setContext(currentTheme, lesson);
   }
 
   function focusStudySpot(spot) {
     mainMap.setView([spot.lat,spot.lng],8,{animate:false});
+    const lesson=study?.current, high=window.SchoolLevel?.value==='high';
+    const note=high&&window.KoreaExam?.notes[lesson?.id];
+    const index=lesson?.spots.indexOf(spot);
+    const profile=lesson&&window.SchoolMaps.profile('korea',lesson,window.SchoolLevel.value);
+    const content=note?.spotNotes?.[index]||note?.paragraphs[0]||profile?.concepts[0];
+    if(content){
+      const box=document.createElement('div');box.className='study-spot-explanation';
+      const title=document.createElement('strong');title.textContent=spot.name;
+      const station=lesson.topic==='climate'&&stations[spot.name];
+      const text=document.createElement('div');text.textContent=station?station.note:content;
+      const button=document.createElement('button');button.textContent='개념 설명';button.onclick=()=>{mainMap.closePopup();study.explain();};
+      box.append(title);
+      if(station){const graph=document.createElement('div');window.ClimateGraph.render(graph,station,{showName:true});box.append(graph);}
+      box.append(text,button);
+      L.popup({maxWidth:station?420:330,autoPan:true}).setLatLng([spot.lat,spot.lng]).setContent(box).openOn(mainMap);
+    }
     if (matchMedia("(max-width: 1050px)").matches) $(".map-stage").scrollIntoView({block:"start",behavior:"smooth"});
   }
 
@@ -476,19 +512,30 @@
       const node = document.createElement("span");
       if (item.type === "relief") {
         node.className = "key-item key-relief";
-        node.setAttribute("aria-label", "높이별 색: 바다, 0·200·500·1000·1500·2000m");
-        node.innerHTML = '<span class="relief-sea">바다</span><span class="relief-scale" aria-hidden="true"><span class="relief-bar"></span>'
+        node.setAttribute("aria-label", "육지 높이: 0·200·500·1000·1500·2000m");
+        node.innerHTML = '<span class="relief-label">높이</span><span class="relief-scale" aria-hidden="true"><span class="relief-bar"></span>'
           + '<span class="relief-ticks"><span>0</span><span>200</span><span>500</span><span>1000</span><span>1500</span><span>2000m</span></span></span>';
+        return node;
+      }
+      if (item.type === 'depth') {
+        node.className = 'key-item key-depth';
+        node.setAttribute('aria-label', '바다 수심: 200m 미만, 200–2000m, 2000m 이상');
+        node.innerHTML = '<span class="relief-label">수심(m)</span><span class="depth-scale" aria-hidden="true"><span class="depth-bar"></span><span class="depth-ticks"><span>200 미만</span><span>200–2,000</span><span>2,000 이상</span></span></span>';
         return node;
       }
       node.className = "key-item";
       node.innerHTML = `<span class="key-swatch${item.shape ? ` key-swatch--${item.shape}` : ""}" style="--swatch:${item.color}" aria-hidden="true"></span>${item.label}`;
       return node;
     }));
+    if (currentTheme === 'population') {
+      const note = element('span', 'population-source-note', '원 넓이는 인구에 비례 · 남북의 조사 시점과 집계 범위가 다름');
+      $("#mapKey").append(note);
+    }
   }
 
   // 지형이 주제가 아닌 탭에서는 바탕 색을 옅게 해 주제 표지가 잘 보이게 한다.
   function setReliefTone(map, theme) {
+    map.getContainer().classList.toggle('show-bathymetry', !!theme.bathymetry);
     map.getContainer().classList.toggle("relief-muted", !theme.relief);
     map.getContainer().classList.toggle("history-map", !!theme.historical);
     map.getContainer().classList.toggle("transport-map", !!theme.network);
@@ -501,7 +548,9 @@
     const box = document.createElement("div");
     box.append(element("span", "note-kind", KIND_LABELS[annotation.kind] || "지형"), element("strong", "", annotation.text || annotation.name));
     if (annotation.note) box.append(element("p", "", annotation.note));
-    notePopup = L.popup({ className: "note-popup", maxWidth: 280, offset: [0, -8], autoPanPadding: [16, 16] })
+    // Keep the reading balloon clear of zoom/profile controls and the bottom legend.
+    notePopup = L.popup({ className: "note-popup", maxWidth: Math.min(280, mainMap.getSize().x - 106), offset: [0, -8],
+      autoPanPaddingTopLeft: [56, 128], autoPanPaddingBottomRight: [18, 150] })
       .setLatLng([annotation.lat, annotation.lng]).setContent(box).openOn(mainMap);
   }
 
@@ -664,6 +713,27 @@
     });
   }
 
+  // 주변국 하천은 지형 비교용이다. 한반도 하천의 유수 모형 대신 위치 설명을 연다.
+  function drawRegionalRivers(map, group, interactive) {
+    const strokes = regionalRivers.features.map(({ properties: p, geometry }) => {
+      const latLngs = riverCoordinateLines(geometry).map(line => line.map(([lng, lat]) => [lat, lng]));
+      const options = { pane: "themeLines", lineCap: "round", lineJoin: "round", smoothFactor: 0.6 };
+      const casing = L.polyline(latLngs, { ...options, color: "#fff", opacity: 0.7, interactive: false });
+      const path = L.polyline(latLngs, { ...options, color: "#087eaf", opacity: 0.96, interactive, className: "regional-river-path" });
+      if (interactive) path.bindTooltip(p.name, { sticky: true, className: "river-tooltip" });
+      if (interactive && map === mainMap) path.on("click", event => {
+        if (!profile.active) showAnnotationNote({ ...p, kind: "river", lat: event.latlng.lat, lng: event.latlng.lng });
+      });
+      return { casing, path };
+    });
+    strokes.forEach(({ casing }) => casing.addTo(group));
+    strokes.forEach(({ path }) => path.addTo(group));
+    setZoomSync(map, "regionalRivers", () => {
+      const weight = map.getZoom() <= 4 ? 1.4 : map.getZoom() <= 6 ? 1.9 : 2.5;
+      strokes.forEach(({ casing, path }) => { casing.setStyle({ weight: weight + 1.5 }); path.setStyle({ weight }); });
+    });
+  }
+
   // 교통 탭의 실제 노선(data/transport-lines.js). 일반 철도는 검은 선에 흰 점선(철도 기호), 고속 국도는 주황(간선은 굵게), 고속 철도는 진홍.
   // 노선이 여러 토막이라 테두리를 한꺼번에 먼저 깔고 색선을 나중에 그린다(토막마다 번갈아 그리면 이음매를 테두리가 덮는다).
   function drawTransportNetwork(group, interactive) {
@@ -697,6 +767,7 @@
     const interactive = !!opts.interactive;
     clearZoomSync(map, "minorRivers");
     clearZoomSync(map, "riverWidth");
+    clearZoomSync(map, "regionalRivers");
     clearZoomSync(map, "markers");
     clearZoomSync(map, "heritage");
     clearZoomSync(map, "travel");
@@ -705,6 +776,7 @@
     // 문제 지도는 답하기 전에는 바탕(지형·하천)만 그린다. 구역·등온선·교통축이 답을 드러내기 때문이다.
     if ((theme.rivers || theme === themes.climate || opts.baseOnly) && majorRivers) drawMajorRivers(map, group, interactive);
     if (theme.minorRivers && !opts.baseOnly) drawMinorRivers(map, group, interactive);
+    if (theme === themes.terrain && !opts.baseOnly) drawRegionalRivers(map, group, interactive);
     if (theme.network && !opts.baseOnly) drawTransportNetwork(group, interactive);
     if (opts.baseOnly) return;
 
@@ -734,9 +806,9 @@
     });
 
     (theme.circles || []).forEach((city) => {
-      const radius = 3 + Math.sqrt(city.pop) * 0.8;
-      const circle = L.circleMarker([city.lat, city.lng], { pane: "themeZones", radius, color: "#3d4f5b", weight: 1.2, fillColor: "#5f7482", fillOpacity: 0.42, interactive }).addTo(group);
-      if (interactive) circle.bindTooltip(`${city.name} 약 ${city.pop}만 명`, { sticky: true, className: "study-tooltip" });
+      const radius = Math.sqrt(city.pop) * 0.9;
+      const circle = L.circleMarker([city.lat, city.lng], { pane: "themeZones", radius, color: "#3d4f5b", weight: 1.2, fillColor: city.region === 'north' ? '#a9773f' : '#5f7482', fillOpacity: 0.42, interactive }).addTo(group);
+      if (interactive) circle.bindTooltip(`${city.name} · ${city.population.toLocaleString('ko-KR')}명<br>${city.period} · ${city.basis}`, { sticky: true, className: "study-tooltip" });
     });
 
     // 시설·자원 표지는 확대했을 때(7단부터, 교통 탭은 6단부터) 보인다. 문제 지도에서는 정답 공개 뒤에 보인다.
@@ -913,6 +985,38 @@
   }
 
   const demTiles = new Map();
+  let seafloorData;
+  function loadSeafloor() {
+    if (!seafloorData) seafloorData = new Promise(resolve => {
+      const image = new Image();
+      image.crossOrigin = 'anonymous';
+      image.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = image.width; canvas.height = image.height;
+          const context = canvas.getContext('2d', {willReadFrequently:true});
+          context.drawImage(image, 0, 0);
+          resolve(context.getImageData(0, 0, image.width, image.height));
+        } catch { seafloorData = null; resolve(null); }
+      };
+      image.onerror = () => { seafloorData = null; resolve(null); };
+      image.src = 'data/seafloor-elevation.webp?v=20261012-1';
+    });
+    return seafloorData;
+  }
+  async function seaElevationAt(latlng) {
+    // ETOPO1 region: 105–150°E, 20–50°N, one-minute grid points.
+    if (latlng.lng < 105 || latlng.lng > 150 || latlng.lat < 20 || latlng.lat > 50) return NaN;
+    const tile = await loadSeafloor();
+    if (!tile) return NaN;
+    const fx = (latlng.lng-105)*60, fy = (50-latlng.lat)*60;
+    const x = Math.floor(fx), y = Math.floor(fy), dx = fx-x, dy = fy-y;
+    const at = (px,py) => {
+      const i = (Math.min(py,tile.height-1)*tile.width+Math.min(px,tile.width-1))*4;
+      return tile.data[i]*256+tile.data[i+1]-32768;
+    };
+    return (at(x,y)*(1-dx)+at(x+1,y)*dx)*(1-dy)+(at(x,y+1)*(1-dx)+at(x+1,y+1)*dx)*dy;
+  }
   function demTile(z, x, y) {
     const key = `${z}/${x}/${y}`;
     if (!demTiles.has(key)) {
@@ -944,11 +1048,12 @@
     const y = Math.floor(fy);
     if (z === 10 && !hasSparseTile(10, x, y)) return elevationAt(latlng, 9);
     const tile = await demTile(z, x, y);
-    if (!tile) return z === 6 ? 0 : elevationAt(latlng, z > 8 ? z - 1 : 6);
+    if (!tile) return z === 6 ? NaN : elevationAt(latlng, z > 8 ? z - 1 : 6);
     const px = Math.min(tile.width - 1, Math.floor((fx - x) * tile.width));
     const py = Math.min(tile.height - 1, Math.floor((fy - y) * tile.height));
     const i = (py * tile.width + px) * 4;
-    return tile.data[i] * 256 + tile.data[i + 1] + tile.data[i + 2] / 256 - 32768;
+    const height = tile.data[i] * 256 + tile.data[i + 1] + tile.data[i + 2] / 256 - 32768;
+    return height < 0 ? seaElevationAt(latlng) : height;
   }
 
   async function drawProfile(a, b) {
@@ -960,21 +1065,29 @@
       return elevationAt(L.latLng(a.lat + (b.lat - a.lat) * t, a.lng + (b.lng - a.lng) * t), zoom);
     }));
     if (profile.points[0] !== a || profile.points[1] !== b) return; // 그 사이 다른 점을 찍었다
+    if (heights.some(h => !Number.isFinite(h))) {
+      $('#profileHint').textContent = '이 구간의 높이·수심 자료를 불러오지 못했습니다. 두 지점을 다시 선택해 주세요.';
+      $('#profileChart').classList.remove('drawn');
+      return;
+    }
 
     const svg = $("#profileChart");
     svg.classList.add("drawn");
     const width = svg.clientWidth || 700;
     const height = 170;
     const margin = { left: 46, right: 12, top: 18, bottom: 22 };
-    const top = Math.max(100, ...heights);
-    const step = [100, 200, 500, 1000].find((s) => top / s <= 5) || 1000;
+    const top = Math.max(0, ...heights), bottom = Math.min(0, ...heights);
+    const range = Math.max(100, top-bottom);
+    const step = [100, 200, 500, 1000, 2000].find((s) => range / s <= 5) || 5000;
     const yMax = Math.ceil(top / step) * step;
+    const yMin = Math.min(yMax-step, Math.floor(bottom / step) * step);
     const sx = (i) => margin.left + (i / count) * (width - margin.left - margin.right);
-    const sy = (h) => margin.top + (1 - Math.max(0, h) / yMax) * (height - margin.top - margin.bottom);
+    const sy = (h) => margin.top + (yMax-h)/(yMax-yMin) * (height - margin.top - margin.bottom);
     const base = sy(0);
 
     const parts = [];
-    for (let h = 0; h <= yMax; h += step) {
+    if (bottom < 0) parts.push(`<rect class="sea" x="${margin.left}" y="${base}" width="${width-margin.left-margin.right}" height="${sy(yMin)-base}"/>`);
+    for (let h = yMin; h <= yMax; h += step) {
       parts.push(`<line class="axis" x1="${margin.left}" x2="${width - margin.right}" y1="${sy(h)}" y2="${sy(h)}"/>`);
       parts.push(`<text x="${margin.left - 6}" y="${sy(h) + 4}" text-anchor="end">${h.toLocaleString("en-US")}</text>`);
     }
@@ -983,20 +1096,20 @@
       const x = margin.left + (km / total) * (width - margin.left - margin.right);
       parts.push(`<text x="${x}" y="${height - 5}" text-anchor="middle">${km}${km === 0 ? "" : "km"}</text>`);
     }
-    // 바다 구간은 파랗게
-    heights.forEach((h, i) => {
-      if (h <= 0 && i < count) parts.push(`<rect class="sea" x="${sx(i)}" y="${base - 4}" width="${sx(i + 1) - sx(i) + 0.5}" height="4"/>`);
-    });
     const line = heights.map((h, i) => `${sx(i).toFixed(1)},${sy(h).toFixed(1)}`).join(" ");
-    parts.push(`<polygon class="ground" points="${sx(0)},${base} ${line} ${sx(count)},${base}"/>`);
+    parts.push(`<polygon class="ground" points="${sx(0)},${sy(yMin)} ${line} ${sx(count)},${sy(yMin)}"/>`);
+    parts.push(`<line class="sea-level" x1="${margin.left}" x2="${width-margin.right}" y1="${base}" y2="${base}"/>`);
     const peak = heights.indexOf(Math.max(...heights));
     if (heights[peak] > 0) {
       parts.push(`<text x="${sx(peak)}" y="${sy(heights[peak]) - 5}" text-anchor="middle">${Math.round(heights[peak]).toLocaleString("en-US")}m</text>`);
     }
+    const deepest = heights.indexOf(Math.min(...heights));
+    if (heights[deepest] < -100) parts.push(`<text x="${Math.max(margin.left+35,Math.min(width-margin.right-35,sx(deepest)))}" y="${Math.min(height-margin.bottom-4,sy(heights[deepest])-5)}" text-anchor="middle">${Math.round(heights[deepest]).toLocaleString('en-US')}m</text>`);
     parts.push(`<text class="end" x="${margin.left}" y="12">A</text>`);
     parts.push(`<text class="end" x="${width - margin.right}" y="12" text-anchor="end">B</text>`);
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
     svg.innerHTML = parts.join("");
+    $('#profileHint').textContent = bottom < 0 ? '해수면 0m · 해저는 음수로 표시' : '';
   }
 
   function element(tag, className, text) {
@@ -1015,11 +1128,14 @@
     }
     const theme = themes[currentTheme];
     if (theme && theme.buildQuestions) return theme.buildQuestions();
-    return questions.filter((question) => question.topic === currentTheme);
+    return allQuestions().filter((question) => question.topic === currentTheme);
   }
 
-  function allQuestions() {
-    return questions.concat(...Object.values(themes).filter((theme) => theme.buildQuestions).map((theme) => theme.buildQuestions("all")));
+  function allQuestions(allSchools=false) {
+    const schools=allSchools?['elementary','middle','high']:[window.SchoolLevel?.value||'middle'];
+    const lessonQuestions=schools.flatMap(school=>dataset.lessons.filter(l=>window.SchoolMaps.available('korea',l.id,school)).flatMap(l=>window.MapPractice.pool('korea',l,questions,school)));
+    const bank=allSchools?questions.concat(lessonQuestions):lessonQuestions;
+    return [...new Map(bank.concat(...Object.values(themes).filter((theme) => theme.buildQuestions).map((theme) => theme.buildQuestions("all"))).map(q=>[q.id,q])).values()];
   }
 
   function updatePracticeButton() {
@@ -1057,6 +1173,8 @@
     const question = session.questions[session.index];
     if (!question) return;
     session.answered = false;
+    const card=$('#practiceDialog');card.dataset.questionId=question.id;card.dataset.schoolLevel=window.SchoolLevel?.value||'middle';
+    delete card.dataset.selectedOptionId;delete card.dataset.state;
     ["#questionDiagram", "#questionGraph", ".question-body", ".question-copy"].forEach(id=>$(id).scrollTop=0);
     const theme = themes[question.topic] || {};
     $("#questionProgress").textContent = `${session.index + 1} / ${session.questions.length}`;
@@ -1069,14 +1187,28 @@
     $("#nextQuestion").disabled = true;
     $("#nextQuestion").textContent = session.index === session.questions.length - 1 ? "결과 보기" : "다음 문제";
     $("#showHint").disabled = !question.hint;
+    $("#showHint").hidden = !question.hint;
     $("#showHint").textContent = "단서 보기";
     const caption = $("#questionMapCaption");
     caption.classList.remove("is-hint");
     renderAnswerOptions(question);
+    const visualKind = window.KoreaExamFigures.visualKind(question);
+    $(".question-body").classList.toggle("with-graph", visualKind === 'graph');
+    const hasMap = visualKind !== 'none';
+    $(".question-map-wrap").hidden = !hasMap;
+    $(".question-body").classList.toggle("without-map", !hasMap);
+    if (!hasMap) return;
 
     const diagram = dataset.lessons.find(l => l.id === question.diagram);
-    $("#questionDiagram").hidden = !diagram;
-    $(".question-map-wrap").classList.toggle("has-diagram", !!diagram);
+    $("#questionDiagram").hidden = !diagram && !question.figure;
+    $(".question-map-wrap").classList.toggle("has-diagram", !!diagram || !!question.figure);
+    if (question.figure) {
+      $("#questionMap").hidden = true;
+      $("#questionGraph").hidden = true;
+      window.KoreaExamFigures.render($("#questionDiagram"), question.figure);
+      caption.textContent = question.mapCaption || '';
+      return;
+    }
     if (diagram) {
       $("#questionMap").hidden = true;
       $("#questionGraph").hidden = true;
@@ -1093,7 +1225,7 @@
       caption.textContent = "기온은 꺾은선(왼쪽 눈금 ℃), 강수량은 막대(오른쪽 눈금 mm)입니다.";
       return;
     }
-    caption.textContent = "";
+    caption.textContent = question.mapCaption || "";
     setReliefTone(questionMap, theme);
     drawThemeOnMap(questionMap, questionThemeLayer, theme, { interactive: false, skipFeatures: true, baseOnly: true });
     drawQuestionLabels(question, theme, false);
@@ -1268,7 +1400,11 @@
     const firstTry = !session.answers[session.index];
     if (firstTry) {
       session.answers[session.index] = { selectedIndex, correct };
+      const detail={questionId:question.id,questionRevision:question.revision||1,schoolLevel:window.SchoolLevel?.value||'middle',selectedOptionId:question.optionIds[selectedIndex],correctOptionId:question.optionIds[question.answer],correct};
+      $('#practiceDialog').dataset.selectedOptionId=detail.selectedOptionId;$('#practiceDialog').dataset.state=correct?'correct':'incorrect';
+      $('#practiceDialog').dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail}));
       recordAnswer(question, correct);
+      study.refresh();
     }
     const buttons = $$("#answerOptions .answer-button");
     if (!correct) {
@@ -1293,7 +1429,6 @@
     $("#showHint").disabled = true;
     $("#questionProgressBar").style.width = `${((session.index + 1) / session.questions.length) * 100}%`;
     showAnswerLocation(question);
-    study.refresh();
     $("#nextQuestion").focus();
   }
 
@@ -1309,6 +1444,8 @@
   }
 
   function showAnswerLocation(question) {
+    if (window.KoreaExamFigures.visualKind(question) === 'none') return;
+    if (question.figure) return;
     if (question.diagram) {
       window.KoreaVisuals.render($("#questionDiagram"), dataset.lessons.find(l=>l.id===question.diagram), { quiz:true, revealed:true, evidence:question.explanation, area:question.evidenceArea });
       $("#questionMapCaption").textContent = "개념 이름과 정답 근거를 같은 그림에서 확인하세요.";
@@ -1382,9 +1519,10 @@
 
   // 보기 순서를 섞는다. 지도 위 A~E 고르기는 글자 순서를 그대로 둔다.
   function shuffleQuestionOptions(question) {
-    if (question.marks) return { ...question };
-    const shuffled = shuffle(question.options.map((text, index) => ({ text, correct: index === question.answer })));
-    return { ...question, options: shuffled.map((option) => option.text), answer: shuffled.findIndex((option) => option.correct) };
+    const optionIds=question.optionIds||question.options.map((_,i)=>'option-'+(i+1));
+    if (question.marks) return { ...question,optionIds };
+    const shuffled = shuffle(question.options.map((text, index) => ({ text,id:optionIds[index], correct: index === question.answer })));
+    return { ...question, options: shuffled.map((option) => option.text),optionIds:shuffled.map(option=>option.id), answer: shuffled.findIndex((option) => option.correct) };
   }
 
   // ───────────── 기록 ─────────────
@@ -1431,6 +1569,7 @@
 
   function renderProgress() {
     const progress = readProgress();
+    $("#progressButton").hidden = !progress.total || !!themes[currentTheme]?.historical;
     $("#progressScore").textContent = `${progress.correct} / ${progress.total}`;
   }
 
@@ -1441,8 +1580,9 @@
 
   function fillRecord() {
     const progress = readProgress();
+    const bank=allQuestions(true);
     const rows = THEME_ORDER.filter((key) => themes[key] && themes[key].practice !== false).map((key) => {
-      const ids = themes[key].questionIds ? themes[key].questionIds() : questions.filter((question) => question.topic === key).map((question) => question.id);
+      const ids = themes[key].questionIds ? themes[key].questionIds() : bank.filter((question) => question.topic === key).map((question) => question.id);
       const stats = ids.reduce((acc, id) => {
         const item = progress.items[id];
         if (!item) return acc;
@@ -1461,6 +1601,6 @@
       tr.innerHTML = `<th scope="row">${row.label}</th><td>${row.n}</td><td>${row.c}</td><td>${rate}<small> · 문제은행 ${row.bank}개 중 ${row.seen}개 봄</small></td>`;
       return tr;
     }));
-    $("#retryWrong").disabled = wrongTotal === 0;
+    $("#retryWrong").disabled = !poolFor('review').length;
   }
 })();

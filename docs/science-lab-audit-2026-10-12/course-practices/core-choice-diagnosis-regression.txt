@@ -1,0 +1,117 @@
+✔ display permutation is stable, preserves identities, and varies keyed positions across questions (1.8572ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.8911ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7134ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1517ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1179ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (69.8707ms)
+✖ chromium: all registered apps preserve first responses and integrate diagnostics (1683.6046ms)
+✖ webkit: all registered apps preserve first responses and integrate diagnostics (1130.053ms)
+✖ chromium: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (1873.6209ms)
+✖ webkit: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (1763.7615ms)
+613 core state/observation/check combinations verified
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (15.9718ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.8177ms)
+solubility: 16 browser states, all 3 answers + reset verified
+acid-base: 4 browser states, all 3 answers + reset verified
+state-change: 6 browser states, all 3 answers + reset verified
+light-shadow: 5 browser states, all 3 answers + reset verified
+refraction: 10 browser states, all 3 answers + reset verified
+weight-compare: 12 browser states, all 3 answers + reset verified
+volcano-model: 6 browser states, all 3 answers + reset verified
+lever-balance: 4 browser states, all 3 answers + reset verified
+seasons: 120 browser states, all 3 answers + reset verified
+diffusion: 216 browser states, all 3 answers + reset verified
+weather-front: 6 browser states, all 3 answers + reset verified
+motion-energy: 8 browser states, all 3 answers + reset verified
+ohms-law: 72 browser states, all 3 answers + reset verified
+burning-conditions: 6 browser states, all 3 answers + reset verified
+cell-structure: 32 browser states, all 3 answers + reset verified
+energy-conversion: 24 browser states, all 3 answers + reset verified
+mass-ratio: 6 browser states, all 3 answers + reset verified
+pea-genetics: 6 browser states, all 3 answers + reset verified
+cell-membrane: 6 browser states, all 3 answers + reset verified
+flame-ions: 4 browser states, all 3 answers + reset verified
+neutralization-common: 10 browser states, all 3 answers + reset verified
+density-buoyancy: 24 browser states, all 3 answers + reset verified
+603 browser state cases, 1809 answer checks
+✔ all required observation controls, wrong/correct answers and resets work in the browser (10008.9218ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 9
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16805.4223
+
+✖ failing tests:
+
+test at tests\science-assessment.test.cjs:49:43
+✖ chromium: all registered apps preserve first responses and integrate diagnostics (1683.6046ms)
+  AssertionError [ERR_ASSERTION]: bank joins the same session even when loaded before DOMContentLoaded
+  
+  10 !== 9
+  
+      at E:\webprojects\class\tests\science-assessment.test.cjs:71:283
+      at async Promise.all (index 1)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-assessment.test.cjs:53:2)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 10,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-assessment.test.cjs:49:43
+✖ webkit: all registered apps preserve first responses and integrate diagnostics (1130.053ms)
+  AssertionError [ERR_ASSERTION]: bank joins the same session even when loaded before DOMContentLoaded
+  
+  10 !== 9
+  
+      at E:\webprojects\class\tests\science-assessment.test.cjs:71:283
+      at async Promise.all (index 1)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-assessment.test.cjs:53:2)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 10,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-observation-diagnosis.test.cjs:2:43
+✖ chromium: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (1873.6209ms)
+  Error: ENOENT: no such file or directory, open 'E:\webprojects\class\docs\science-lab-audit-2026-10-12\course-practices\core-choice\chromium-optics-correction-768.webp'
+      at async open (node:internal/fs/promises:640:25)
+      at async Object.writeFile (node:internal/fs/promises:1260:14)
+      at async writeArtifact (E:\webprojects\class\tests\science-screenshot.cjs:7:11)
+      at async screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:22:3)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-observation-diagnosis.test.cjs:18:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'E:\\webprojects\\class\\docs\\science-lab-audit-2026-10-12\\course-practices\\core-choice\\chromium-optics-correction-768.webp'
+  }
+
+test at tests\science-observation-diagnosis.test.cjs:2:43
+✖ webkit: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (1763.7615ms)
+  Error: ENOENT: no such file or directory, open 'E:\webprojects\class\docs\science-lab-audit-2026-10-12\course-practices\core-choice\webkit-optics-correction-768.webp'
+      at async open (node:internal/fs/promises:640:25)
+      at async Object.writeFile (node:internal/fs/promises:1260:14)
+      at async writeArtifact (E:\webprojects\class\tests\science-screenshot.cjs:7:11)
+      at async screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:22:3)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-observation-diagnosis.test.cjs:18:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'E:\\webprojects\\class\\docs\\science-lab-audit-2026-10-12\\course-practices\\core-choice\\webkit-optics-correction-768.webp'
+  }

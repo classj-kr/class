@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {test}=require('node:test');
 const base=path.resolve(__dirname,'../learning/inquiry/science-lab');
@@ -16,6 +17,19 @@ test('23 repaired common-curriculum paths have source evidence and observation c
  }
  console.log(count+' core state/observation/check combinations verified');
 });
+test('every live supplementary observation has choice-specific misconception feedback after rotation',()=>{
+ const live=Object.entries(specs).filter(([slug])=>!['microbes','rock-layers','cell-structure'].includes(slug)),unique=new Map();
+ for(const[slug,spec]of live)for(const{state}of states(spec)){
+  const q=spec.view(state).check;if(!q)continue;
+  assert.equal(q.feedback?.[q.answer],undefined,slug+': feedback must not label the correct choice a misconception');
+  const wrong=q.choices.map((_,i)=>String(i)).filter(i=>i!==q.answer);
+  assert.deepEqual(Object.keys(q.feedback||{}).sort(),wrong.sort(),slug+': missing interpretation of an incorrect choice');
+  for(const id of wrong){assert(q.feedback[id].length>=20,slug);assert(!q.feedback[id].includes('undefined'));}
+  const key=JSON.stringify([slug,q.question,q.choices]);if(unique.has(key))assert.deepEqual(q,unique.get(key));else unique.set(key,q);
+ }
+ assert.equal(live.length,21);assert.equal(unique.size,33);
+ console.log('33 live observation questions, 66 incorrect choices have stable authored feedback');
+});
 test('independent science invariants: controls, conservation, optics, division and neutralization',()=>{
  const view=(slug,s)=>specs[slug].view({...specs[slug].initial,...s});
  assert.match(view('solubility',{kind:'solute',dose:'small'}).text,/판단할 수 없습니다/);
@@ -24,8 +38,8 @@ test('independent science invariants: controls, conservation, optics, division a
  assert.match(view('acid-base',{material:'shell',stage:'after'}).text,/기포/);
  assert.doesNotMatch(view('acid-base',{material:'protein',stage:'after'}).text,/기포가 생/);
  assert.match(view('state-change',{kind:'condensation',stage:'after'}).text,/공기 중의 수증기/);
- for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','far']){
-  const r=view('refraction',{optic,distance});const expected=['concaveMirror','convexLens'].includes(optic)&&distance==='far';assert.equal(r.text.includes('거꾸로'),expected,optic+distance);
+ for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','middle','far']){
+  const r=view('refraction',{optic,distance});const expected=['concaveMirror','convexLens'].includes(optic)&&distance!=='near';assert.equal(r.text.includes('거꾸로 된'),expected,optic+distance);
  }
  for(const kind of ['melt','boil'])for(const sample of ['A','B']){const a=view('density-buoyancy',{kind,sample,amount:'one',step:'during'}),b=view('density-buoyancy',{kind,sample,amount:'two',step:'during'});assert.equal(a.text,b.text);assert.match(a.text,/온도가 .*일정한 구간/);}
  const numberOfParticles=r=>(r.svg.match(/<circle /g)||[]).length;
@@ -51,18 +65,24 @@ test('all required observation controls, wrong/correct answers and resets work i
  const server=http.createServer((req,res)=>{let file=path.resolve(base,'.'+new URL(req.url,'http://localhost').pathname);if(file!==base&&!file.startsWith(base+path.sep)){res.writeHead(403);res.end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css'}[path.extname(file)]||'application/octet-stream');res.end(data);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser,total=0;
  try{browser=await chromium.launch({headless:true,executablePath:process.env.SCIENCE_BROWSER||chromium.executablePath()});
-  for(const[slug,spec]of Object.entries(specs)){
+  // These old extension galleries were replaced by the source-photo workflows.
+  // Their interactions and diagnosis are covered by science-microbe-observation
+  // and science-rock-specimens, rather than exercising removed controls.
+  for(const[slug,spec]of Object.entries(specs).filter(([slug])=>!['microbes','rock-layers','cell-structure'].includes(slug))){
    const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
    page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
-   try{await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`,{waitUntil:'load'});await page.locator('.curriculum-supplement').waitFor();
+   try{await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`,{waitUntil:'load'});await page.locator('.curriculum-supplement').waitFor();await page.waitForSelector('[data-assessment-ready]',{state:'attached'});
     const cases=states(spec).map(({state,fields})=>({state,fields:fields.map(f=>f.key),expected:spec.view(state)}));
-    const checks=await page.evaluate(cases=>{const errors=[];let n=0;const section=document.querySelector('.curriculum-supplement');for(const c of cases){for(const key of c.fields){const b=section.querySelector(`[data-supplement-choice="${key}"][data-value="${c.state[key]}"]`);if(!b){errors.push('Missing '+key+':'+c.state[key]);continue;}b.click();}
+    const checks=await page.evaluate(cases=>{const errors=[];let n=0;const section=document.querySelector('.curriculum-supplement');for(const c of cases){
+      // Independent exhaustive grading cases use fresh evidence; apparatus changes no longer erase first responses.
+      document.querySelector('.quiz-section').scienceAssessment.store.reset();
+      for(const key of c.fields){const b=section.querySelector(`[data-supplement-choice="${key}"][data-value="${c.state[key]}"]`);if(!b){errors.push('Missing '+key+':'+c.state[key]);continue;}b.click();}
       if(section.querySelector('.supplement-observation').textContent!==c.expected.text)errors.push('Observation mismatch '+JSON.stringify(c.state));
       for(const i of ['0','1','2'].filter(i=>i!==c.expected.check.answer).concat(c.expected.check.answer)){section.querySelector(`[data-check-answer="${i}"]`).click();const feedback=section.querySelector('.supplement-check-feedback');const correct=i===c.expected.check.answer;if(feedback.dataset.correct!==String(correct))errors.push('Wrong grading '+i);if(feedback.textContent.includes(c.expected.check.why)!==correct)errors.push('Explanation must appear only after correct answer');if(!correct&&section.querySelector(`[data-check-answer="${c.expected.check.answer}"]`).disabled)errors.push('Correct retry was locked');}
       if(/NaN|undefined/.test(section.textContent))errors.push('Invalid number');n++;
      }section.querySelector('.supplement-reset').click();return{errors,n,state:window.__scienceSupplement.getState(),overflow:document.documentElement.scrollWidth>innerWidth+1};},cases);
     assert.deepEqual(checks.errors,[],slug);assert.equal(checks.overflow,false,slug);for(const[key,value]of Object.entries(spec.initial))assert.equal(checks.state[key],value,slug+' reset '+key);assert.deepEqual(errors,[],slug);total+=checks.n;
-    if(process.env.SCIENCE_CAPTURE){const dir=path.resolve(base,'../../../docs/science-lab-audit-2026-09-20/required-core-screenshots');fs.mkdirSync(dir,{recursive:true});await page.locator('.curriculum-supplement').screenshot({path:path.join(dir,slug+'-mobile.png')});}
+    if(process.env.SCIENCE_CAPTURE){const dir=path.resolve(base,'../../../docs/science-lab-audit-2026-09-20/required-core-screenshots');fs.mkdirSync(dir,{recursive:true});await screenshotWebp(page.locator('.curriculum-supplement'), {path:path.join(dir,slug+'-mobile.webp')});}
     console.log(slug+': '+checks.n+' browser states, all 3 answers + reset verified');
    }finally{await page.close();}
   }

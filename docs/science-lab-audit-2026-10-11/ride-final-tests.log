@@ -1,0 +1,24 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (13.0497ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.9447ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.126ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (65.0471ms)
+chromium: 144 apps / 580 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (16851.2296ms)
+webkit: 144 apps / 580 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (22970.1078ms)
+✔ pendulum conserves energy and acceleration matches position and velocity derivatives (16.3424ms)
+✔ seesaw attachment distance scales linear acceleration but not gravity; axis rotation preserves magnitude (1.3017ms)
+✔ frictionless slide distinguishes raw and corrected axes and ends at the end of the ramp (0.9185ms)
+✔ browser: all apparatus controls, sampling, eight diagnostic questions, reset and narrow screens (5102.6016ms)
+165 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (137.5821ms)
+✔ every science lab JavaScript file parses (78.6725ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0277ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40051.289

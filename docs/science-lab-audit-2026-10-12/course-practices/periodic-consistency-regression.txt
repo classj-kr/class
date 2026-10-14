@@ -1,0 +1,48 @@
+✔ chromium: electrons rotate slowly without changing shells, transfer, labels or motion preferences (13380.4341ms)
+✔ webkit: electrons rotate slowly without changing shells, transfer, labels or motion preferences (13598.5194ms)
+✖ chromium: helium exception, phase-change axes and chart contrast remain consistent (1195.4464ms)
+✖ webkit: helium exception, phase-change axes and chart contrast remain consistent (765.9225ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29121.9031
+
+✖ failing tests:
+
+test at tests\science-periodic-consistency.test.cjs:5:43
+✖ chromium: helium exception, phase-change axes and chart contrast remain consistent (1195.4464ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  9 !== 8
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-periodic-consistency.test.cjs:33:11)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 9,
+    expected: 8,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-periodic-consistency.test.cjs:5:43
+✖ webkit: helium exception, phase-change axes and chart contrast remain consistent (765.9225ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  9 !== 8
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-periodic-consistency.test.cjs:33:11)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 9,
+    expected: 8,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

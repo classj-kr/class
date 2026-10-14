@@ -1,15 +1,9 @@
 (() => {
     "use strict";
 
-    // Learning pages keep sound preferences only for the open page.
-    const learningPage = /^\/(?:learning\/literacy-numeracy\/|arithmetic(?:\/|$))/.test(location.pathname);
-    const soundMemory = new Map();
-    const soundStorage = learningPage ? {
-        getItem: key => soundMemory.get(key) ?? null,
-        setItem: (key, value) => soundMemory.set(key, String(value))
-    } : window.localStorage;
+    const soundStorage = window.localStorage;
     // 이어 듣기(어느 곡 어디까지 들었나)는 이 탭에서 쪽을 옮길 때만 뜻이 있다. 탭을 닫으면 사라지는 저장에 둔다.
-    const playbackStorage = learningPage ? soundStorage : window.sessionStorage;
+    const playbackStorage = window.sessionStorage;
 
     const MUSIC_LEVEL_KEY = "classMusicVolumeLevel";
     const MUSIC_VOLUME_KEY = "classMusicVolumeValue";
@@ -46,7 +40,7 @@
         const sfxScriptUrl = currentScript
             ? new URL("game-sfx.js", currentScript.src)
             : new URL("../../assets/sound/game-sfx.js", location.href);
-        sfxScriptUrl.searchParams.set("v", "20261006-capture");
+        sfxScriptUrl.searchParams.set("v", "20261009-explosion-file");
         sfxScript.src = sfxScriptUrl.href;
         document.head.appendChild(sfxScript);
     }
@@ -88,8 +82,9 @@
 
     // Load SFX State
     const savedSfxLevel = Number(soundStorage.getItem(SFX_LEVEL_KEY));
-    const savedSfxVolume = Number(soundStorage.getItem(SFX_VOLUME_KEY));
-    let sfxVolume = Number.isFinite(savedSfxVolume) && savedSfxVolume > 0 && savedSfxVolume <= 1
+    const savedSfxRaw = soundStorage.getItem(SFX_VOLUME_KEY);
+    const savedSfxVolume = Number(savedSfxRaw);
+    let sfxVolume = savedSfxRaw !== null && savedSfxRaw !== "" && Number.isFinite(savedSfxVolume) && savedSfxVolume >= 0 && savedSfxVolume <= 1
         ? savedSfxVolume
         : (Number.isInteger(savedSfxLevel) && savedSfxLevel >= 1 && savedSfxLevel <= 5
             ? savedSfxLevel / 5
@@ -239,8 +234,9 @@
         musicMuted = reloadedMusicMuted === null ? DEFAULT_MUSIC_MUTED : ["1", "true"].includes(reloadedMusicMuted);
 
         const storedSfxLevel = Number(soundStorage.getItem(SFX_LEVEL_KEY));
-        const storedSfxVolume = Number(soundStorage.getItem(SFX_VOLUME_KEY));
-        if (Number.isFinite(storedSfxVolume) && storedSfxVolume > 0 && storedSfxVolume <= 1) {
+        const storedSfxRaw = soundStorage.getItem(SFX_VOLUME_KEY);
+        const storedSfxVolume = Number(storedSfxRaw);
+        if (storedSfxRaw !== null && storedSfxRaw !== "" && Number.isFinite(storedSfxVolume) && storedSfxVolume >= 0 && storedSfxVolume <= 1) {
             sfxVolume = storedSfxVolume;
             sfxLevel = Math.max(1, Math.round(sfxVolume * 5));
         } else if (Number.isInteger(storedSfxLevel) && storedSfxLevel >= 1 && storedSfxLevel <= 5) {
@@ -281,7 +277,8 @@
         }
         if (!audio || applyingAudioState) return;
         applyingAudioState = true;
-        const targetVolume = musicVolume;
+        const trackGain = Number(audio.dataset.musicGain);
+        const targetVolume = musicVolume * (Number.isFinite(trackGain) && trackGain > 0 && trackGain <= 1 ? trackGain : 1);
         if (Math.abs(audio.volume - targetVolume) > 0.001) audio.volume = targetVolume;
         if (audio.muted !== musicMuted) audio.muted = musicMuted;
         audio.preload = "auto";

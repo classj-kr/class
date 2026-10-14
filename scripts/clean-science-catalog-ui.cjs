@@ -1,4 +1,9 @@
 // Remove only the user-marked catalog chrome; preserve lessons and grade filtering.
+// Historical migration: do not overwrite the later official curriculum navigation.
+if(require('node:fs').readFileSync('learning/inquiry/science-lab/index.html','utf8').includes('data-school-filter=')) {
+ console.log('School/course catalog is current; legacy chrome migration skipped.');
+ process.exit(0);
+}
 const {edit,replace,apply,lab}=require('./science-scope-patch.cjs');
 edit(lab+'index.html',s=>s.split('\n').filter(line=>!line.includes('<h1>과학 실험 · 학년별 시험 대비</h1>')&&!line.includes('class="course-choice"')&&!line.includes('id="gradeCount"')&&!line.includes('class="placement-note"')).join('\n').replace('grade-navigation.css?v=1','grade-navigation.css?v=2'));
 edit(lab+'grade-navigation.js',()=>`(() => {

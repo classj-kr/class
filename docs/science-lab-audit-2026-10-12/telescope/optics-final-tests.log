@@ -1,0 +1,12 @@
+✔ instrument assembly, field of view, focus and sky availability have independent causes (1.1836ms)
+✔ course routes retain separate evidence and plausible answer lengths (0.1344ms)
+✔ chromium: complete telescope operation and course diagnosis (8390.9984ms)
+✔ webkit: complete telescope operation and course diagnosis (11357.4654ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19832.1953

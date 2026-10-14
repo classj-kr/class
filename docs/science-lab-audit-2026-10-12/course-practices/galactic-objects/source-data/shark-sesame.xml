@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sesame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="https://vizier.cds.unistra.fr/xml/sesame_4x.xsd">
+<Target option="SNV">
+  <name>LDN1235</name>
+  <!-- Q10259749 #1 -->
+  <Resolver name="Sc=Simbad (CDS, via client/server)"><!--delay: 66ms [1] -->
+    <oid>252070</oid>
+    <otype>DNe</otype>
+    <jpos>22:14:55.00 +73:25:00.0</jpos>
+    <jradeg>333.72916667</jradeg>
+    <jdedeg>73.41666667</jdedeg>
+    <oname>LDN 1235</oname>
+    <nrefs>27</nrefs>
+  </Resolver>
+</Target>
+</Sesame>
+<!--- ****Total of 1 crashes -->
+<!-- Configuration tested: /run/sesame.conf -->

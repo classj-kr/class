@@ -1,0 +1,101 @@
+{
+  "slug": "electric-field",
+  "engine": "chromium",
+  "modes": [
+    "field",
+    "accel",
+    "cap"
+  ],
+  "cases": 19,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__efieldModel",
+      "methods": [
+        "LEFTS",
+        "RIGHTS",
+        "SPOTS",
+        "VOLTS",
+        "PARTS",
+        "AREAS",
+        "GAPS",
+        "DIELS",
+        "state",
+        "analyse",
+        "render",
+        "fieldOnAxis",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "field",
+      "results": [
+        {
+          "choice": "left",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "zero",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "right",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "accel",
+      "results": [
+        {
+          "choice": "slow",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "fast",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    },
+    {
+      "mode": "cap",
+      "results": [
+        {
+          "choice": "store",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "release",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

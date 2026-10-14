@@ -1,0 +1,67 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.9006ms)
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (41182.4861ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (63700.016ms)
+✔ chromium: sound playback, lunar dates and atmospheric boundary conditions (10021.7045ms)
+webkit: audio unavailable (resume timeout); verified recovery and waveform fallback
+✔ webkit: sound playback, lunar dates and atmospheric boundary conditions (14893.2961ms)
+613 core state/observation/check combinations verified
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (21.1921ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.8922ms)
+solubility: 16 browser states, all 3 answers + reset verified
+acid-base: 4 browser states, all 3 answers + reset verified
+state-change: 6 browser states, all 3 answers + reset verified
+light-shadow: 5 browser states, all 3 answers + reset verified
+refraction: 10 browser states, all 3 answers + reset verified
+weight-compare: 12 browser states, all 3 answers + reset verified
+volcano-model: 6 browser states, all 3 answers + reset verified
+lever-balance: 4 browser states, all 3 answers + reset verified
+seasons: 120 browser states, all 3 answers + reset verified
+diffusion: 216 browser states, all 3 answers + reset verified
+weather-front: 6 browser states, all 3 answers + reset verified
+motion-energy: 8 browser states, all 3 answers + reset verified
+ohms-law: 72 browser states, all 3 answers + reset verified
+burning-conditions: 6 browser states, all 3 answers + reset verified
+cell-structure: 32 browser states, all 3 answers + reset verified
+energy-conversion: 24 browser states, all 3 answers + reset verified
+mass-ratio: 6 browser states, all 3 answers + reset verified
+pea-genetics: 6 browser states, all 3 answers + reset verified
+cell-membrane: 6 browser states, all 3 answers + reset verified
+flame-ions: 4 browser states, all 3 answers + reset verified
+neutralization-common: 10 browser states, all 3 answers + reset verified
+density-buoyancy: 24 browser states, all 3 answers + reset verified
+603 browser state cases, 1809 answer checks
+✔ all required observation controls, wrong/correct answers and resets work in the browser (13513.1875ms)
+284 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (21.6428ms)
+284 browser conditions, 852 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (96870.8317ms)
+✔ fork contact: no spontaneous vibration, no skipped preparation, conserved comparison evidence and damping ordering (1.4948ms)
+✔ fork review retains exact textbook and assessment sources without turning synthetic audio into measurements (9.7254ms)
+✔ chromium: fork actions, real animation, optional sound, stopped contact, touch widths and retained diagnosis (12626.9095ms)
+✔ webkit: fork actions, real animation, optional sound, stopped contact, touch widths and retained diagnosis (9426.2463ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 263003.5547
+
+✖ failing tests:
+
+test at tests\science-apparatus-scenes.test.cjs:30:43
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (41182.4861ms)
+  Error: UNKNOWN: unknown error, open 'E:\webprojects\class\docs\science-lab-audit-2026-10-11\apparatus-visual-review\thermal-image-initial-1100.webp'
+      at async open (node:internal/fs/promises:640:25)
+      at async Object.writeFile (node:internal/fs/promises:1260:14)
+      at async writeArtifact (E:\webprojects\class\tests\science-screenshot.cjs:7:11)
+      at async screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:22:3)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-apparatus-scenes.test.cjs:59:56)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    errno: -4094,
+    code: 'UNKNOWN',
+    syscall: 'open',
+    path: 'E:\\webprojects\\class\\docs\\science-lab-audit-2026-10-11\\apparatus-visual-review\\thermal-image-initial-1100.webp'
+  }

@@ -1,0 +1,27 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (2.183ms)
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (5455.8012ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (19560.6845ms)
+✔ chromium: figure ink follows its painted background and moving the result preserves its live node (951.9466ms)
+✔ webkit: figure ink follows its painted background and moving the result preserves its live node (708.9878ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25103.6423
+
+✖ failing tests:
+
+test at tests\science-apparatus-scenes.test.cjs:30:43
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (5455.8012ms)
+  Error: E:\webprojects\class\docs\science-lab-audit-2026-10-11\visual-polish\apparatus\erosion-changed-1100.webp: unable to open for write
+  system error: Invalid argument
+  E:\webprojects\class\docs\science-lab-audit-2026-10-11\visual-polish\apparatus\erosion-changed-1100.webp: write error
+  system error: Invalid argument
+      at Sharp.toFile (C:\Users\A\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\sharp\dist\output.cjs:90:19)
+      at screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:8:56)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-apparatus-scenes.test.cjs:65:56)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)

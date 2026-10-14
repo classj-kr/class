@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="두 수레의 충돌에서 외부에서 작용한 충격량이 무시되는 두 수레계에서 운동량이 보존되고 운동 에너지는 충돌의 종류에 따라 달라지는 것을 확인하는 고등학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=6">
-    <link rel="stylesheet" href="collision-visual.css?v=6">
-    <link rel="stylesheet" href="quiz.css?v=4">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="collision-visual.css?v=8c5b8ea2ce53">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -125,7 +125,7 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>완전비탄성 충돌에서 보존되는 것은?</h3>
+                    <h3>외부 충격량을 무시할 수 있는 두 수레계의 완전비탄성 충돌에서, 운동량과 운동 에너지 중 보존되는 것은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q1" value="a"> 운동 에너지만</label>
                         <label><input type="radio" name="q1" value="b"> 운동량과 운동 에너지 둘 다</label>
@@ -138,7 +138,7 @@
                 </article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>같은 질량의 두 수레가 탄성 충돌하면 (하나는 정지)?</h3>
+                    <h3>외부 충격량이 없고 같은 질량의 두 수레가 일직선에서 정면 탄성 충돌한다. 한 수레는 처음 정지해 있다. 충돌 뒤에는?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q2" value="a"> 둘 다 함께 움직인다</label>
                         <label><input type="radio" name="q2" value="b"> 속도를 서로 맞바꾼다</label>
@@ -150,37 +150,36 @@
                     <p class="answer-explanation" hidden>질량이 같고 탄성 충돌이면 앞 수레가 멈추고 뒤 수레가 그 속도로 나아갑니다. 당구공에서 볼 수 있는 모습입니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>가벼운 수레가 무거운 정지한 수레에 탄성 충돌하면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 그대로 뚫고 지나간다</label>
-                        <label><input type="radio" name="q3" value="b"> 그 자리에 멈춘다</label>
-                        <label><input type="radio" name="q3" value="c"> 더 빨라진다</label>
-                        <label><input type="radio" name="q3" value="d"> 뒤로 튕겨 나온다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>m₁이 m₂보다 작으면 충돌 뒤 속도가 음수가 되어 되돌아옵니다. 벽에 공을 던지면 튕겨 나오는 것과 같은 까닭입니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>가벼운 수레가 정지한 무거운 수레에 정면 탄성 충돌했다. 외부 충격량이 없을 때 가벼운 수레의 충돌 뒤 방향은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 처음과 같음</label>
+<label><input type="radio" name="q3" value="b"> 정지하여 방향 없음</label>
+<label><input type="radio" name="q3" value="c"> 처음과 반대</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>일차원 탄성 충돌에서 처음 움직인 수레가 상대보다 가벼우면 되튕깁니다. 같은 질량인 경우에는 처음 움직인 수레가 멈춥니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>충돌에서 줄어든 운동 에너지는 어디로 갔을까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 소리와 열, 변형으로 바뀌었다</label>
-                        <label><input type="radio" name="q4" value="b"> 그냥 사라졌다</label>
-                        <label><input type="radio" name="q4" value="c"> 운동량으로 바뀌었다</label>
-                        <label><input type="radio" name="q4" value="d"> 질량으로 바뀌었다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>에너지는 사라지지 않고 형태만 바뀝니다. 충돌 소리, 수레가 뜨거워지는 것, 찌그러지는 것 모두 에너지가 옮겨 간 결과입니다.</p>
-                </article>
+<h3>충돌 뒤 수레의 운동 에너지는 줄었지만 전체 운동량은 보존되었다. 줄어든 운동 에너지에 대한 해석은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 변형·열·소리 에너지로 전환</label>
+<label><input type="radio" name="q4" value="b"> 두 수레의 운동량으로 전환</label>
+<label><input type="radio" name="q4" value="c"> 수레가 멈춘 만큼 외부로 소멸</label>
+<label><input type="radio" name="q4" value="d"> 항상 중력 위치 에너지로 전환</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>비탄성 충돌에서는 운동 에너지 일부가 변형과 내부 에너지, 소리 등으로 전환됩니다. 운동량 보존은 운동 에너지 보존과 다른 조건입니다.</p>
+</article>
             </div>
         </details>
     </main>
     <script src="app.js?v=d3be2346a07b"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

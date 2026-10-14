@@ -1,0 +1,265 @@
+{
+  "retrieved": "2026-10-11",
+  "note": "남한은 행정구역 주민등록인구(외국인 제외), 북한은 UNdata City proper(2008 인구총조사). 조사 시점과 공간 집계 기준이 다름. 동시기 남북 비교용 아님.",
+  "cities": [
+    {
+      "name": "서울",
+      "population": 9299548,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "부산",
+      "population": 3241600,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "인천",
+      "population": 3051961,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "대구",
+      "population": 2353032,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "대전",
+      "population": 1440729,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "광주",
+      "population": 1392013,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "울산",
+      "population": 1091948,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "수원",
+      "population": 1186515,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "용인",
+      "population": 1091186,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "고양",
+      "population": 1060081,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "창원",
+      "population": 990898,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "성남",
+      "population": 905794,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "화성",
+      "population": 989969,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "청주",
+      "population": 856152,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "천안",
+      "population": 664322,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "전주",
+      "population": 625437,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "김해",
+      "population": 533035,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "평택",
+      "population": 610402,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "포항",
+      "population": 488707,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "제주",
+      "population": 485182,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "세종",
+      "population": 391965,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "구미",
+      "population": 403883,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "원주",
+      "population": 363194,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "춘천",
+      "population": 285234,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "순천",
+      "population": 275492,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "여수",
+      "population": 263284,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "거제",
+      "population": 231178,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "강릉",
+      "population": 206237,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "목포",
+      "population": 202003,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "안동",
+      "population": 152610,
+      "period": "2025-12",
+      "basis": "행정안전부 · 주민등록인구",
+      "source": "https://jumin.mois.go.kr/statMonth.do"
+    },
+    {
+      "name": "평양",
+      "population": 2581076,
+      "period": "2008",
+      "basis": "UNdata City proper · 인구총조사",
+      "source": "https://data.un.org/Data.aspx?d=POP&f=tableCode%3A240%3BcountryCode%3A408"
+    },
+    {
+      "name": "남포",
+      "population": 310864,
+      "period": "2008",
+      "basis": "UNdata City proper · 인구총조사",
+      "source": "https://data.un.org/Data.aspx?d=POP&f=tableCode%3A240%3BcountryCode%3A408"
+    },
+    {
+      "name": "함흥",
+      "population": 614198,
+      "period": "2008",
+      "basis": "UNdata City proper · 인구총조사",
+      "source": "https://data.un.org/Data.aspx?d=POP&f=tableCode%3A240%3BcountryCode%3A408"
+    },
+    {
+      "name": "청진",
+      "population": 614892,
+      "period": "2008",
+      "basis": "UNdata City proper · 인구총조사",
+      "source": "https://data.un.org/Data.aspx?d=POP&f=tableCode%3A240%3BcountryCode%3A408"
+    },
+    {
+      "name": "원산",
+      "population": 328467,
+      "period": "2008",
+      "basis": "UNdata City proper · 인구총조사",
+      "source": "https://data.un.org/Data.aspx?d=POP&f=tableCode%3A240%3BcountryCode%3A408"
+    },
+    {
+      "name": "신의주",
+      "population": 334031,
+      "period": "2008",
+      "basis": "UNdata City proper · 인구총조사",
+      "source": "https://data.un.org/Data.aspx?d=POP&f=tableCode%3A240%3BcountryCode%3A408"
+    },
+    {
+      "name": "개성",
+      "population": 192578,
+      "period": "2008",
+      "basis": "UNdata City proper · 인구총조사",
+      "source": "https://data.un.org/Data.aspx?d=POP&f=tableCode%3A240%3BcountryCode%3A408"
+    }
+  ]
+}

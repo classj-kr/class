@@ -1,0 +1,3177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학급</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b0f0c;
+            --card-bg: rgba(21, 28, 24, 0.88);
+            --card-border: rgba(117, 214, 159, 0.18);
+            --card-hover-border: rgba(117, 214, 159, 0.4);
+            --accent-green: #75d69f;
+            --accent-green-dark: #163826;
+            --accent-amber: #f0bd64;
+            --accent-blue: #64c2f0;
+            --accent-danger: #ff8b82;
+            --text-main: #f0f5f2;
+            --text-muted: #9aa8a0;
+            --text-sub: #6c7d73;
+            --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+            --weekday-panel-image: none;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #000;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Clock, current weather, and today's forecast. */
+        header.dashboard-header { display: grid; grid-template-columns: 218px 205px minmax(0, 1fr); gap: 12px; align-items: stretch; }
+        .clock-card, .weather-card, .forecast-card { min-width: 0; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 12px 16px; }
+        .clock-card { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+        .weather-card { display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+        .weather-condition { font-size: 0.95rem; color: var(--accent-amber); font-weight: 700; }
+        #weatherHumidity { font-size: 0.85rem; color: #7ce4ff; }
+        #dustBadge { align-self: flex-start; font-size: 0.72rem; padding: 3px 7px; border-radius: 5px; }
+        .forecast-card { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+        .hourly-forecast { display: grid; grid-template-columns: repeat(var(--forecast-columns, 1), minmax(0, 1fr)); gap: 2px; min-width: 0; }
+        .forecast-hour { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 4px 1px; min-width: 0; border-radius: 7px; }
+        .forecast-hour.is-current { background: rgba(117,214,159,0.14); outline: 1px solid rgba(117,214,159,0.3); outline-offset: -1px; }
+        .forecast-time { color: var(--text-muted); font-size: 0.73rem; }
+        .forecast-icon { font-size: 1.25rem; line-height: 1.2; }
+        .forecast-temperature { font-size: 1.05rem; font-weight: 800; }
+        /* 강수확률은 높을수록 진하게: 30% 미만은 흐리게, 60% 이상은 파란 바탕으로 띄운다. */
+        .forecast-rain { color: var(--text-sub); font-size: 0.7rem; white-space: nowrap; padding: 1px 5px; border-radius: 6px; }
+        .forecast-rain.rain-some { color: #7ce4ff; font-weight: 700; }
+        .forecast-rain.rain-high { color: #04141c; background: #4fc3f7; font-weight: 800; }
+        .forecast-hour.next-day { box-shadow: inset 1px 0 0 rgba(255,255,255,0.18); }
+        .forecast-message { grid-column: 1 / -1; padding: 18px 0; font-size: 0.85rem; color: var(--text-muted); }
+        #forecastRetry { align-self: flex-start; color: var(--accent-green); border: 0; background: none; font: inherit; font-size: 0.8rem; cursor: pointer; text-decoration: underline; }
+
+        .clock-time {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .clock-seconds {
+            font-size: 1.25rem;
+            color: var(--accent-green);
+            margin-left: 4px;
+            font-weight: 700;
+        }
+
+        /* 영어 노출용이라 약어 없이 요일/월 이름을 전부 쓰고, 나무 배경 위에서도 읽히게 밝게 둔다. */
+        .clock-date {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .clock-weekday {
+            font-size: 1.1rem;
+            color: var(--accent-green);
+        }
+
+        .clock-month-day {
+            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        /* Main Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* Grid rows default to stretch, so a card with light content
+               (e.g. no upcoming events) was forced to match its tallest
+               sibling (the period timetable) and ended up as mostly empty
+               card -- align to each card's own content height instead. */
+            align-items: start;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .widget-card {
+            min-height: 320px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 22px;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--glass-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .clock-card,
+        .widget-card {
+            background-color: #101010;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.34)),
+                var(--weekday-panel-image);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .widget-card.dragging {
+            opacity: 0.4;
+            transform: scale(0.98);
+        }
+
+        .widget-card:hover {
+            border-color: var(--card-hover-border);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .widget-header:active {
+            cursor: grabbing;
+        }
+
+        .widget-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+        }
+
+        .widget-icon {
+            font-size: 1.3rem;
+        }
+
+        .widget-badge {
+            background: rgba(117, 214, 159, 0.15);
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(117, 214, 159, 0.3);
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 44px;
+            min-height: 58px;
+        }
+
+        .roster-student-copy {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            min-width: 0;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .roster-student-number {
+            color: var(--text-sub);
+            font-size: 0.68rem;
+            font-weight: 700;
+        }
+
+        .roster-student-name {
+            font-size: 0.84rem;
+            font-weight: 800;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .icon-btn:hover {
+            background: var(--accent-green-dark);
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        #widget-timetable,
+        #widget-boards {
+            min-height: 0;
+            padding: 16px;
+            gap: 12px;
+        }
+
+        .widget-edit {
+            align-self: flex-end;
+            min-height: 30px;
+            padding: 3px 6px;
+            background: transparent;
+            border: 0;
+            border-radius: 5px;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .widget-edit:hover { background: rgba(255, 255, 255, 0.07); color: var(--text-main); }
+        .widget-edit:focus-visible { outline: 2px solid var(--accent-green); outline-offset: 2px; }
+
+        .checklist-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .checklist-controls select { min-width: 0; max-width: 100%; }
+        .checklist-status { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+
+        /* 1. Timetable Widget */
+        .today-events-banner[hidden],
+        .today-events-banner:empty { display: none; }
+
+        .today-events-banner {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 8px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: rgba(251, 191, 36, 0.12);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+        .today-events-banner .today-event-line {
+            font-size: 12px;
+            color: var(--text-main, #eee);
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+        .today-events-banner .today-event-meta {
+            color: var(--text-muted, #999);
+            font-size: 11px;
+        }
+        .timetable-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            max-height: none;
+            overflow-y: visible;
+        }
+
+        .timetable-item {
+            display: grid;
+            grid-template-columns: 60px minmax(110px, 1.1fr) 1fr;
+            gap: 8px;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.2s ease;
+        }
+
+        .timetable-item.active {
+            background: linear-gradient(135deg, rgba(240, 189, 100, 0.25) 0%, rgba(240, 189, 100, 0.05) 100%);
+            border-color: var(--accent-amber);
+            transform: scale(1.01);
+            box-shadow: 0 4px 15px rgba(240, 189, 100, 0.15);
+        }
+
+        .period-col-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .period-label {
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+        }
+
+        .period-time-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.7rem;
+            color: var(--text-sub);
+            line-height: 1.1;
+            margin-top: 1px;
+        }
+
+        .period-time-stack .wave {
+            font-size: 0.65rem;
+            opacity: 0.5;
+            margin: -1px 0;
+        }
+
+        .period-col-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        .period-subject-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1px;
+            min-width: 0;
+        }
+
+        .period-subject-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .period-col-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+            min-width: 0;
+        }
+
+        .prep-active-badge {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ff4d4d;
+            box-shadow: 0 0 6px rgba(255, 77, 77, 0.8);
+            flex-shrink: 0;
+            display: inline-block;
+            margin-right: 2px;
+        }
+
+        .period-subject {
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: #ffffff;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .period-subject-icon {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            flex: 0 0 30px;
+            font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+            font-size: 23px;
+            line-height: 1;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.65));
+        }
+
+        .period-place {
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .period-place.default { color: rgba(255, 255, 255, 0.55); }
+        .period-place.highlight { color: #7ce4ff; font-weight: 800; }
+
+        .prep-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 5px 8px;
+            color: #b0c0ca;
+            font-size: 0.85rem;
+            font-weight: 600;
+            outline: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            min-height: 44px;
+        }
+
+        .prep-input.has-value {
+            background: rgba(255, 77, 77, 0.10);
+            border-color: rgba(255, 77, 77, 0.45);
+            color: #7ce4ff;
+            font-weight: 700;
+        }
+
+        .prep-input::placeholder {
+            color: rgba(255, 255, 255, 0.22);
+        }
+
+        .prep-input:focus {
+            border-color: var(--accent-green);
+            background: rgba(0, 0, 0, 0.55);
+            box-shadow: 0 0 0 2px rgba(117, 214, 159, 0.25);
+        }
+
+        .timetable-item.active .period-subject {
+            color: var(--accent-amber);
+        }
+
+        /* 2. Student Checklist Widget */
+        #widget-checklist {
+            min-height: 0;
+            padding: 16px;
+            gap: 12px;
+        }
+
+        #widget-checklist .icon-btn {
+            min-height: 38px;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 5px;
+        }
+
+        .num-chip {
+            width: 100%;
+            min-width: 0;
+            min-height: 43px;
+            padding: 4px 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            font: inherit;
+            border-radius: 8px;
+            background: rgba(117, 214, 159, 0.12);
+            color: var(--accent-green);
+            border: 1px solid rgba(117, 214, 159, 0.25);
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            position: relative;
+            text-align: center;
+        }
+
+        .num-chip.missing {
+            background: rgba(255, 139, 130, 0.15);
+            color: var(--accent-danger);
+            border-color: rgba(255, 139, 130, 0.35);
+        }
+
+        .num-chip:hover,
+        .num-chip:focus-visible {
+            border-color: var(--accent-green);
+            outline: 2px solid transparent;
+            background: rgba(117, 214, 159, 0.21);
+        }
+
+        .attendance-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        #attendanceStatus, #attendanceConnectionStatus { color: #ffe3a1; font-size: 0.75rem; }
+        #attendanceSound { padding: 4px 8px; margin-left: auto; }
+        #attendanceArrival { padding: 8px; border-radius: 8px; background: #244b3a; color: #d4ffe4; font-size: 0.85rem; }
+        #attendanceRetry { color: inherit; background: transparent; border: 0; text-decoration: underline; cursor: pointer; }
+
+        .attendance-tag {
+            display: inline-block;
+            max-width: 100%;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-size: 0.63rem;
+            font-weight: 800;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .attendance-tag[data-kind="결석"] { background: #69312e; color: #ffd0cb; }
+        .attendance-tag[data-kind="지각"] { background: #604522; color: #ffe3a1; }
+        .attendance-tag[data-kind="조퇴"] { background: #263f65; color: #cde5ff; }
+        .attendance-tag[data-kind="체험학습"] { background: #245247; color: #c7f5df; }
+
+        .bday-tag {
+            position: absolute;
+            top: -5px;
+            right: -3px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 420px) {
+            .checklist-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+
+        /* 3. Important schedule */
+        .card-item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .board-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .board-item.schedule-today {
+            border-color: var(--accent-green);
+            background: rgba(76, 201, 140, 0.13);
+        }
+
+        .board-item.schedule-this-week:not(.schedule-today) {
+            border-color: rgba(255, 193, 92, 0.45);
+        }
+
+        .schedule-empty {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 28px 12px;
+            line-height: 1.6;
+        }
+
+        .schedule-date {
+            min-width: 54px;
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+
+        .schedule-date.this-week { color: var(--accent-amber); }
+
+        .schedule-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .schedule-badge.scope-holiday { background: rgba(255, 139, 130, 0.15); color: var(--accent-danger); }
+        .schedule-badge.scope-vacation { background: rgba(196, 181, 253, 0.15); color: #c4b5fd; }
+        .schedule-date-range { display: block; margin-top: 3px; font-size: 0.68rem; color: var(--text-muted); white-space: nowrap; }
+        .schedule-badge.scope-all { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .schedule-badge.scope-grade { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+
+        #widget-info {
+            min-height: 0;
+            padding: 16px;
+            gap: 12px;
+        }
+
+        .calendar-header {
+            gap: 10px;
+        }
+
+        .calendar-header .widget-title {
+            font-size: 1.2rem;
+            white-space: nowrap;
+            gap: 6px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 9px;
+        }
+
+        .calendar-nav .icon-btn {
+            display: grid;
+            place-items: center;
+            min-width: 38px;
+            min-height: 40px;
+            padding: 0 9px;
+            border: 0;
+            border-radius: 0;
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        .calendar-nav .icon-btn + .icon-btn {
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .calendar-nav #todayMonthBtn {
+            font-size: 0.85rem;
+        }
+
+        .calendar-nav .icon-btn:focus-visible,
+        .cal-day:focus-visible {
+            outline: 2px solid var(--accent-green);
+            outline-offset: -2px;
+        }
+
+        .cal-day {
+            min-height: 40px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cal-day.selected {
+            outline: 2px solid var(--accent-green);
+            outline-offset: -2px;
+        }
+
+        .schedule-editor {
+            display: grid;
+            grid-template-columns: 132px minmax(200px, 1fr) 52px max-content;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .schedule-editor[hidden] {
+            display: none;
+        }
+
+        .schedule-date-input {
+            color-scheme: dark;
+        }
+
+        .schedule-details-input {
+            grid-column: 1 / -1;
+        }
+
+        .schedule-copy {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .schedule-detail {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+
+        .board-item-del {
+            background: none;
+            border: none;
+            color: var(--text-sub);
+            cursor: pointer;
+            font-size: 1.1rem;
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0 8px;
+            transition: color 0.15s;
+        }
+
+        .board-item-del:hover {
+            color: var(--accent-danger);
+        }
+
+        .board-item-edit:hover { color: var(--accent-green); }
+        .schedule-actions { display: flex; align-items: center; gap: 2px; }
+
+        .board-add-box {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .board-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 8px 12px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            min-height: 44px;
+        }
+
+        .board-input:focus {
+            border-color: var(--accent-green);
+        }
+
+        .add-btn {
+            background: var(--accent-green-dark);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            border-radius: 10px;
+            padding: 0 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .add-btn:hover {
+            background: var(--accent-green);
+            color: #101512;
+        }
+
+        /* 4. Calendar & Weather & Meals */
+        .calendar-mini {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 3px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cal-head {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 24px;
+            color: var(--text-muted);
+            padding-bottom: 3px;
+        }
+
+        .cal-day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            height: 44px;
+            padding: 3px 1px;
+            border-radius: 7px;
+            font-size: 1.35rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .cal-day-number { line-height: 25px; flex: none; }
+
+        .cal-day:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .cal-event-label {
+            display: block;
+            width: 100%;
+            height: 12px;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 0.62rem;
+            line-height: 1.2;
+            color: var(--accent-amber);
+        }
+        .cal-day.holiday, .cal-day.holiday .cal-event-label { color: var(--accent-danger); }
+        .cal-day.other-month { opacity: 0.3; font-weight: 600; cursor: pointer; }
+        .cal-day.today .cal-event-label { color: #0b0f0c; }
+        .calendar-status { color: var(--text-muted); font-size: 0.78rem; }
+        .calendar-status button { margin-left: 6px; color: var(--accent-green); background: none; border: 0; cursor: pointer; text-decoration: underline; }
+        .calendar-agenda { border-top: 1px solid var(--card-border); padding-top: 8px; font-size: 0.82rem; }
+        .calendar-agenda-date { font-weight: 800; margin-bottom: 5px; }
+        .calendar-agenda-item { padding: 3px 0; overflow-wrap: anywhere; }
+        .calendar-agenda-kind { color: var(--accent-green); font-size: 0.7rem; margin-right: 6px; }
+        .calendar-agenda-meta { color: var(--text-muted); font-size: 0.74rem; margin-top: 2px; }
+
+        .cal-day.sun, .cal-head.sun { color: var(--accent-danger); }
+        .cal-day.sat, .cal-head.sat { color: var(--accent-blue); }
+
+        .cal-day.holiday { color: var(--accent-danger); }
+
+        .cal-day.today {
+            background: var(--accent-blue);
+            color: #0b0f0c;
+            font-weight: 800;
+        }
+
+        @media (max-width: 380px) {
+            .calendar-header .widget-title { font-size: 1.05rem; }
+            .calendar-header .widget-icon { display: none; }
+            .calendar-nav .icon-btn { min-width: 34px; padding: 0 7px; }
+        }
+
+        .dday-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .weather-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(100, 194, 240, 0.1);
+            border: 1px solid rgba(100, 194, 240, 0.25);
+            border-radius: 14px;
+            padding: 12px 16px;
+        }
+
+        .weather-temp {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .dust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(117, 214, 159, 0.2);
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .meal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #e2ece6;
+            max-height: 140px;
+            overflow-y: auto;
+        }
+
+        .meal-dish-item {
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meal-dish-item:last-child { border-bottom: none; }
+
+        /* Opaque notice items stay separate from the textured board. */
+        .timetable-item,
+        .timetable-item.active,
+        .num-chip,
+        .num-chip.missing,
+        .board-item,
+        .board-item.schedule-today,
+        .weather-box,
+        .meal-dish-item {
+            background: #050505;
+        }
+
+        /* Toolbar Bottom */
+        footer.toolbar {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            backdrop-filter: blur(16px);
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tool-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 44px;
+        }
+
+        .tool-btn:hover {
+            background: var(--accent-green-dark);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .tool-btn.active {
+            background: var(--accent-green);
+            color: #0b0f0c;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay[hidden] {
+            display: none !important;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box {
+            background: #141b17;
+            border: 1px solid var(--accent-green);
+            border-radius: 20px;
+            width: min(92vw, 620px);
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-sub);
+            font-size: 1.5rem;
+            cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .modal-close:hover { color: #fff; }
+
+        .day-tabs {
+            display: flex;
+            gap: 6px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 8px;
+        }
+
+        .day-tab {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--text-muted);
+            min-height: 44px;
+        }
+
+        .day-tab.active {
+            background: var(--accent-green-dark);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .edit-period-row {
+            display: grid;
+            grid-template-columns: 50px 1.1fr 0.9fr 1.2fr;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .modal-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            color: #fff;
+            font-size: 0.9rem;
+            min-height: 44px;
+        }
+
+        /* Timer */
+        .timer-display {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: var(--accent-green);
+            background: rgba(117, 214, 159, 0.1);
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        /* Fit the full class into the available picker area. */
+        #multiPickerModal .modal-box {
+            width: min(96vw, 1400px);
+            height: min(94vh, 960px);
+            height: min(94dvh, 960px);
+            max-height: none;
+            min-height: 0;
+            overflow: hidden;
+            padding: clamp(12px, 2vw, 20px);
+            gap: 10px;
+            background: #000000;
+            border: 2px solid #2ec4b6;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+        }
+
+        #multiPickerModal .modal-title {
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .student-picker-title { font-size: 1.2rem; font-weight: 800; color: #7ce4ff; }
+        .student-picker-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+        .student-picker-actions .btn { min-height: 36px; padding: 6px 10px; font-size: 0.85rem; font-weight: 800; border-radius: 9px; }
+        #shuffleBubblesBtn { background: #ffe600; color: #111; border: none; }
+        #resetBubblesBtn { background: rgba(255,255,255,0.12); color: #fff; border: none; }
+        #closeMultiPickerModal { width: 34px; min-height: 36px; font-size: 1.8rem; background: none; border: none; color: #fff; }
+
+        .bubble-picker-grid {
+            --bubble-size: 100px;
+            --bubble-columns: 6;
+            --bubble-rows: 4;
+            --bubble-gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(var(--bubble-columns), minmax(0, 1fr));
+            grid-template-rows: repeat(var(--bubble-rows), minmax(0, 1fr));
+            gap: var(--bubble-gap);
+            padding: 8px;
+            flex: 1;
+            min-width: 0;
+            min-height: 0;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .bubble-card {
+            position: relative;
+            width: var(--bubble-size);
+            height: var(--bubble-size);
+            min-width: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #4a5863 0%, #22292f 70%, #151a1e 100%);
+            border: 3px solid #5a6a77;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.35), inset 0 3px 6px rgba(255,255,255,0.2);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            user-select: none;
+        }
+
+        .bubble-card:hover:not(.revealed) {
+            transform: scale(1.04);
+            border-color: #2ec4b6;
+        }
+
+        .bubble-question { font-size: calc(var(--bubble-size) * 0.27); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+
+        .bubble-card.revealed {
+            background: none;
+            border-color: transparent;
+            box-shadow: none;
+            animation: pop-bounce 0.35s ease-out forwards;
+            cursor: default;
+        }
+
+        @keyframes pop-bounce {
+            0% { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+            65% { transform: scale(1.04) rotate(4deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .bubble-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: calc(var(--bubble-size) * 0.43);
+            line-height: 1;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
+        }
+
+        .bubble-name {
+            max-width: 100%;
+            font-size: clamp(10px, calc(var(--bubble-size) * 0.14), 20px);
+            font-weight: 800;
+            line-height: 1.2;
+            color: #fff;
+            margin-top: 3px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 1280px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header.dashboard-header { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+            .forecast-card { grid-column: 1 / -1; }
+            .clock-card, .weather-card { padding: 10px; }
+            .clock-time { font-size: clamp(1.9rem, 6vw, 2.8rem); }
+            .clock-seconds { font-size: 1rem; }
+            .clock-weekday { font-size: 0.9rem; }
+            .clock-month-day { font-size: 0.82rem; }
+            .weather-card .weather-temp { font-size: 1.35rem; }
+            .weather-condition { font-size: 0.8rem; }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="clock-card">
+            <div class="clock-time"><span id="clockHM">--:--</span><span class="clock-seconds" id="clockSec">:--</span></div>
+            <div class="clock-date" lang="en">
+                <span class="clock-weekday" id="clockWeekday"></span>
+                <span class="clock-month-day" id="clockMonthDay"></span>
+            </div>
+        </div>
+        <div class="weather-card" aria-label="현재 날씨">
+            <div class="weather-temp" id="weatherTemp">--°</div>
+            <div id="weatherHumidity">습도 --%</div>
+            <div id="dustBadge" class="dust-pill">미세먼지 불러오는 중</div>
+        </div>
+        <div class="forecast-card" id="forecastCard" aria-label="시간대별 일기예보">
+            <div class="hourly-forecast" id="hourlyForecast"><span class="forecast-message">시간대별 예보 불러오는 중...</span></div>
+            <button id="forecastRetry" type="button" hidden>다시 불러오기</button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Grid (Draggable Cards) -->
+    <main class="dashboard-grid" id="dashboardGrid">
+
+        <!-- Widget 1: Timetable -->
+        <section class="widget-card" id="widget-timetable" draggable="true" aria-label="오늘의 시간표">
+            <span id="currentDayLabel" hidden></span>
+            <div class="today-events-banner" id="todayEventsBanner" hidden></div>
+            <div class="timetable-list" id="timetableList">
+                <!-- 1 ~ 8 periods loaded by JS -->
+            </div>
+            <button class="widget-edit" id="editTimetableBtn" type="button">시간표 수정</button>
+        </section>
+
+        <!-- Widget 2: Student Checklist (Linked with Roster) -->
+        <section class="widget-card" id="widget-checklist" draggable="true" aria-label="학생 명단 점검">
+            <div class="checklist-controls">
+                    <select id="classSwitcherSelect" aria-label="학급 선택" class="icon-btn" style="background: rgba(117,214,159,0.15); border-color: rgba(117,214,159,0.3); color: var(--accent-green); font-weight: 700; cursor: pointer; outline: none; padding: 4px 8px;" hidden>
+                        <option value="">학급 선택...</option>
+                    </select>
+                    <button type="button" id="attendanceSound" class="icon-btn" aria-label="학부모 알림 소리">🔔</button>
+                    <span class="checklist-status" id="missingBadge">미완료: 0명</span>
+            </div>
+            <div id="attendanceConnectionStatus" role="status" hidden>학부모 알림 연결 중…</div>
+            <div id="attendanceArrival" role="status" hidden></div>
+            <div id="attendanceStatus" role="status" hidden>출결 표시를 불러오지 못했습니다. <button type="button" id="attendanceRetry">다시 확인</button></div>
+            <div class="checklist-grid" id="checklistGrid">
+                <!-- Roster student chips generated by JS -->
+            </div>
+        </section>
+
+        <!-- Widget 3: Important schedule -->
+        <section class="widget-card" id="widget-boards" draggable="true" aria-label="주요일정">
+            <span id="scheduleCountBadge" hidden></span>
+            <div class="calendar-status" id="scheduleLoadStatus" role="status" hidden></div>
+            <div class="card-item-list" id="scheduleList"></div>
+            <div class="schedule-editor" id="scheduleEditor" hidden>
+                <input class="board-input schedule-date-input" id="scheduleDateInput" type="date" aria-label="일정 날짜">
+                <input class="board-input" id="scheduleTitleInput" maxlength="60" placeholder="선택한 날짜의 일정 입력..." aria-label="일정 내용">
+                <button class="add-btn" id="addScheduleBtn" aria-label="주요일정 추가">+</button>
+                <button class="add-btn" id="cancelScheduleEditBtn" aria-label="일정 수정 취소" hidden>×</button>
+                <input class="board-input schedule-details-input" id="scheduleDetailsInput" maxlength="160" placeholder="준비물·추가 안내 (선택)" aria-label="준비물 및 추가 안내">
+            </div>
+        </section>
+
+        <!-- Widget 4: Calendar, Weather & Meal -->
+        <section class="widget-card" id="widget-info" draggable="true">
+            <div class="widget-header calendar-header">
+                <h2 class="widget-title"><span class="widget-icon">🗓</span> <span id="calMonthTitle" aria-live="polite">2026년 5월</span></h2>
+                <div class="calendar-nav">
+                    <button class="icon-btn" id="prevMonthBtn" type="button" aria-label="이전 달">‹</button>
+                    <button class="icon-btn" id="todayMonthBtn" type="button">오늘</button>
+                    <button class="icon-btn" id="nextMonthBtn" type="button" aria-label="다음 달">›</button>
+                </div>
+            </div>
+            <div class="calendar-mini" id="calendarMini"></div>
+            <div class="calendar-status" id="calendarStatus" role="status" hidden></div>
+            <div class="calendar-agenda" id="calendarAgenda" aria-live="polite" hidden></div>
+
+            <div class="widget-header" style="margin-top: 6px;">
+                <h2 class="widget-title" style="font-size: 1.05rem;"><span class="widget-icon">🍱</span> 오늘의 급식</h2>
+            </div>
+            <div class="meal-list" id="mealList">
+                <div style="color: var(--text-muted); font-size: 0.9rem;">급식 메뉴 불러오는 중...</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toolbar Footer -->
+    <footer class="toolbar">
+        <div class="toolbar-group">
+            <button class="tool-btn" id="multiPickerModalBtn" style="background: rgba(46, 196, 182, 0.18); border-color: var(--brand-light); color: #7ce4ff; font-weight: 800;">🎯 학생 추첨</button>
+            <button class="tool-btn" id="timerModalBtn">⏱️ 집중 타이머</button>
+            <a class="tool-btn" id="blackboardLink" href="/classtools/blackboard.html">🖌️ 칠판</a>
+            <a class="tool-btn" href="/classboard/">📢 알림장</a>
+            <a class="tool-btn" href="seating">🪑 자리 배치</a>
+            <button class="tool-btn" id="resetBtn">배치 초기화</button>
+        </div>
+    </footer>
+    <script>document.getElementById("blackboardLink").search = location.search;</script>
+
+    <!-- Modal 1: Timetable Customizer -->
+    <div class="modal-overlay" id="timetableModal" hidden>
+        <div class="modal-box">
+            <div class="modal-title">
+                <span>📅 요일별 시간표 설정 (최대 8교시)</span>
+                <button class="modal-close" id="closeTimetableModal">&times;</button>
+            </div>
+            <div class="day-tabs" id="dayTabs">
+                <div class="day-tab active" data-day="월">월요일</div>
+                <div class="day-tab" data-day="화">화요일</div>
+                <div class="day-tab" data-day="수">수요일</div>
+                <div class="day-tab" data-day="목">목요일</div>
+                <div class="day-tab" data-day="금">금요일</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;" id="periodEditForm"></div>
+            <div style="margin-top: 16px; text-align: right;">
+                <button class="btn btn-primary" id="saveTimetableBtn" style="width: 100%; padding: 12px; font-weight: 800;">시간표 저장하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Presenter Picker Modal -->
+    <div class="modal-overlay" id="multiPickerModal" hidden>
+        <div class="modal-box">
+            <div class="modal-title">
+                <span class="student-picker-title">🎯 학생 추첨</span>
+                <div class="student-picker-actions">
+                    <button class="btn" id="shuffleBubblesBtn" type="button">🎲 학생 섞기</button>
+                    <button class="btn" id="resetBubblesBtn" type="button">🔄 전부 뒤집기</button>
+                    <button class="modal-close" id="closeMultiPickerModal" type="button" aria-label="학생 추첨 닫기">&times;</button>
+                </div>
+            </div>
+
+            <!-- 동그라미 그리드 캔버스 -->
+            <div class="bubble-picker-grid" id="bubblePickerGrid"></div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Focus Timer Modal -->
+    <div class="modal-overlay" id="timerModal" hidden>
+        <div class="modal-box">
+            <div class="modal-title">
+                <span>⏱️ 집중 타이머 & 스톱워치</span>
+                <button class="modal-close" id="closeTimerModal">&times;</button>
+            </div>
+            <div class="timer-display" id="timerDisplay">05:00</div>
+            <div style="display: flex; gap: 8px; justify-content: center;">
+                <button class="tool-btn" onclick="setTimerSec(60)">1분</button>
+                <button class="tool-btn" onclick="setTimerSec(180)">3분</button>
+                <button class="tool-btn" onclick="setTimerSec(300)">5분</button>
+                <button class="tool-btn" onclick="setTimerSec(600)">10분</button>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button class="tool-btn active" id="startTimerBtn" style="flex: 1; padding: 12px;">시작</button>
+                <button class="tool-btn" id="resetTimerBtn" style="flex: 1; padding: 12px;">초기화</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./avatar-assignment.js"></script>
+    <script src="./dashboard-attendance-live.js"></script>
+    <script src="/assets/site-storage.js?v=20261006-1"></script>
+    <script>
+        // State & LocalStorage
+        let schedules = [];
+        let schoolSchedules = [];
+        let schedulesLoading = true;
+        let scheduleLoadErrors = [];
+        let scheduleLoadVersion = 0;
+        let activeScheduleClassId = null;
+        let canEditSchedules = false;
+        // 결원 학생·교시 준비물은 계정별 서버 저장 공간에 둔다(아래 loadDashboardSettingsFromDB 에서 받는다).
+        let dashboardStore = null;
+        const PREP_DAY_ITEM = { "월": "preps-mon", "화": "preps-tue", "수": "preps-wed", "목": "preps-thu", "금": "preps-fri" };
+        const prepItem = (day) => PREP_DAY_ITEM[day] || ("preps-" + day);
+        let missingStudents = new Set();
+        let rosterStudents = [];
+        let rosterLoadMessage = "";
+
+        // Timetable Default Data (월~금, 1~8교시)
+        const defaultTimetable = {
+            "월": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"수학", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"사회", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"과학", place:"과학실", s:"11:30", e:"12:10"}, {p:5, sub:"음악", place:"음악실", s:"13:10", e:"13:50"}, {p:6, sub:"체육", place:"운동장", s:"14:00", e:"14:40"} ],
+            "화": [ {p:1, sub:"수학", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"국어", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"영어", place:"영어실", s:"10:40", e:"11:20"}, {p:4, sub:"미술", place:"미술실", s:"11:30", e:"12:10"}, {p:5, sub:"미술", place:"미술실", s:"13:10", e:"13:50"}, {p:6, sub:"창체", place:"교실", s:"14:00", e:"14:40"} ],
+            "수": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"사회", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"수학", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"체육", place:"강당", s:"11:30", e:"12:10"}, {p:5, sub:"동아리", place:"교실", s:"13:10", e:"13:50"} ],
+            "목": [ {p:1, sub:"과학", place:"과학실", s:"09:00", e:"09:40"}, {p:2, sub:"과학", place:"과학실", s:"09:50", e:"10:30"}, {p:3, sub:"체육", place:"강당", s:"10:40", e:"11:20"}, {p:4, sub:"영어", place:"영어실", s:"11:30", e:"12:10"}, {p:5, sub:"수학", place:"교실", s:"13:10", e:"13:50"}, {p:6, sub:"실과", place:"실과실", s:"14:00", e:"14:40"} ],
+            "금": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"수학", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"도덕", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"음악", place:"음악실", s:"11:30", e:"12:10"}, {p:5, sub:"실과", place:"실과실", s:"13:10", e:"13:50"}, {p:6, sub:"자율", place:"교실", s:"14:00", e:"14:40"} ]
+        };
+        let customTimetable = JSON.parse(JSON.stringify(defaultTimetable));
+        let selectedDayTab = "목";
+
+        // Elements
+        const resetBtn = document.getElementById("resetBtn");
+
+        const clockHM = document.getElementById("clockHM");
+        const clockSec = document.getElementById("clockSec");
+        const clockWeekday = document.getElementById("clockWeekday");
+        const clockMonthDay = document.getElementById("clockMonthDay");
+        const englishWeekdayFormatter = new Intl.DateTimeFormat("en-US", { weekday: "long" });
+        const englishMonthDayFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric" });
+        const currentDayLabel = document.getElementById("currentDayLabel");
+
+        const checklistGrid = document.getElementById("checklistGrid");
+        const missingBadge = document.getElementById("missingBadge");
+
+        const scheduleList = document.getElementById("scheduleList");
+        const scheduleDateInput = document.getElementById("scheduleDateInput");
+        const scheduleTitleInput = document.getElementById("scheduleTitleInput");
+        const scheduleDetailsInput = document.getElementById("scheduleDetailsInput");
+        const addScheduleBtn = document.getElementById("addScheduleBtn");
+        const scheduleCountBadge = document.getElementById("scheduleCountBadge");
+        const scheduleEditor = document.getElementById("scheduleEditor");
+        const cancelScheduleEditBtn = document.getElementById("cancelScheduleEditBtn");
+        let editingScheduleId = null;
+
+        const mealList = document.getElementById("mealList");
+
+        // 1. Clock & Timetable
+        let lastRenderedMin = -1;
+        let lastRenderedDay = "";
+        let lastPanelThemeDay = -1;
+
+        const weekdayPanelImages = {
+            1: "url('./assets/dashboard-panels/monday.webp')",
+            2: "url('./assets/dashboard-panels/tuesday.webp')",
+            3: "url('./assets/dashboard-panels/wednesday.webp')",
+            4: "url('./assets/dashboard-panels/thursday.webp')",
+            5: "url('./assets/dashboard-panels/friday.webp')"
+        };
+
+        function applyWeekdayPanelTheme(date) {
+            const day = date.getDay();
+            if (day === lastPanelThemeDay) return;
+            lastPanelThemeDay = day;
+            document.documentElement.style.setProperty(
+                "--weekday-panel-image",
+                weekdayPanelImages[day] || "none"
+            );
+        }
+
+        function updateClock() {
+            const now = new Date();
+            applyWeekdayPanelTheme(now);
+            const hours = String(now.getHours()).padStart(2, '0');
+            const mins = String(now.getMinutes()).padStart(2, '0');
+            const secs = String(now.getSeconds()).padStart(2, '0');
+            
+            clockHM.textContent = `${hours}:${mins}`;
+            clockSec.textContent = `:${secs}`;
+
+            const days = ["일", "월", "화", "수", "목", "금", "토"];
+            const dayName = days[now.getDay()];
+
+            clockWeekday.textContent = englishWeekdayFormatter.format(now);
+            clockMonthDay.textContent = englishMonthDayFormatter.format(now);
+            currentDayLabel.textContent = `${dayName}요일`;
+            selectedDayTab = (["월","화","수","목","금"].includes(dayName)) ? dayName : "월";
+
+            const currentTotalMin = now.getHours() * 60 + now.getMinutes();
+            const isInputActive = document.activeElement && document.activeElement.classList.contains("prep-input");
+
+            if (!isInputActive && (currentTotalMin !== lastRenderedMin || selectedDayTab !== lastRenderedDay)) {
+                lastRenderedMin = currentTotalMin;
+                lastRenderedDay = selectedDayTab;
+                renderTimetable(selectedDayTab, now);
+            }
+        }
+
+
+        function getSubjectIcon(subject = "") {
+            const icons = [
+                { name: "수학", icon: "🧮" },
+                { name: "국어", icon: "📖" },
+                { name: "독서", icon: "📚" },
+                { name: "영어", icon: "🔤" },
+                { name: "미술", icon: "🎨" },
+                { name: "과학", icon: "🧪" },
+                { name: "체육", icon: "⚽" },
+                { name: "국악", icon: "🥁" },
+                { name: "음악", icon: "🎵" },
+                { name: "사회", icon: "🏙️" },
+                { name: "중국어", icon: "🏮" },
+                { name: "컴퓨터", icon: "💻" },
+                { name: "자치", icon: "🗣️" },
+                { name: "창체", icon: "✨" },
+                { name: "도덕", icon: "💗" },
+                { name: "실과", icon: "🛠️" },
+                { name: "동아리", icon: "👥" },
+                { name: "자율", icon: "🧭" }
+            ];
+            const match = icons.find(({ name }) => subject.includes(name));
+            return '<span class="period-subject-icon" aria-hidden="true">' + (match?.icon || "📘") + '</span>';
+        }
+
+        function renderTimetable(dayName, now = new Date()) {
+            const listEl = document.getElementById("timetableList");
+            if (!listEl) return;
+            listEl.replaceChildren();
+
+            const periods = customTimetable[dayName] || defaultTimetable["월"];
+            const currentMins = now.getHours() * 60 + now.getMinutes();
+
+            // 요일별 저장된 그날만의 준비물 데이터
+            const savedPreps = (dashboardStore && dashboardStore.get(prepItem(dayName))) || {};
+
+            periods.forEach((item) => {
+                const div = document.createElement("div");
+                div.className = "timetable-item";
+                
+                const [sH, sM] = (item.s || "09:00").split(":").map(Number);
+                const [eH, eM] = (item.e || "09:40").split(":").map(Number);
+                const startMins = sH * 60 + sM;
+                const endMins = eH * 60 + eM;
+
+                if (currentMins >= startMins && currentMins <= endMins) {
+                    div.classList.add("active");
+                }
+
+                let placeTag = '';
+                if (item.place) {
+                    const isNormalClassroom = (item.place === '교실' || item.place === '우리교실');
+                    placeTag = `<span class="period-place ${isNormalClassroom ? 'default' : 'highlight'}">${item.place}</span>`;
+                }
+                const prepVal = savedPreps[item.p] || "";
+                const hasVal = prepVal.trim().length > 0;
+                const prepBadge = `<span class="prep-active-badge" id="prepBadge_${dayName}_${item.p}" style="${hasVal ? '' : 'display:none;'}"></span>`;
+
+                div.innerHTML = `
+                    <div class="period-col-left">
+                        <span class="period-label">${item.p}교시</span>
+                        <div class="period-time-stack">
+                            <span>${item.s || ""}</span>
+                            <span class="wave">~</span>
+                            <span>${item.e || ""}</span>
+                        </div>
+                    </div>
+                    <div class="period-col-center">
+                        <div class="period-subject-copy">
+                            <div class="period-subject-row">
+                                <span class="period-subject">${item.sub || "과목"}</span>
+                                ${getSubjectIcon(item.sub)}
+                            </div>
+                            ${placeTag}
+                        </div>
+                    </div>
+                    <div class="period-col-right">
+                        ${prepBadge}
+                        <input class="prep-input${hasVal ? ' has-value' : ''}" data-day="${dayName}" data-p="${item.p}" value="${prepVal}" placeholder="준비물 입력..." draggable="false" autocomplete="off">
+                    </div>
+                `;
+                listEl.append(div);
+            });
+
+            // 준비물 입력 및 드래그 간섭 방지 이벤트 리스너
+            listEl.querySelectorAll(".prep-input").forEach(input => {
+                input.addEventListener("mousedown", (e) => e.stopPropagation());
+                input.addEventListener("dragstart", (e) => e.stopPropagation());
+                input.addEventListener("input", (e) => {
+                    const p = e.target.dataset.p;
+                    const day = e.target.dataset.day;
+                    const val = e.target.value;
+                    const isFilled = val.trim().length > 0;
+                    
+                    e.target.classList.toggle("has-value", isFilled);
+                    const badgeEl = document.getElementById(`prepBadge_${day}_${p}`);
+                    if (badgeEl) badgeEl.style.display = isFilled ? "inline-block" : "none";
+
+                    if (!dashboardStore) return;
+                    const preps = { ...(dashboardStore.get(prepItem(day)) || {}) };
+                    preps[p] = val;
+                    dashboardStore.set(prepItem(day), preps);
+                });
+            });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // 2. Timetable Modal Customizer
+        const editTimetableBtn = document.getElementById("editTimetableBtn");
+        const timetableModal = document.getElementById("timetableModal");
+        const closeTimetableModal = document.getElementById("closeTimetableModal");
+        const dayTabs = document.getElementById("dayTabs");
+        const periodEditForm = document.getElementById("periodEditForm");
+        const saveTimetableBtn = document.getElementById("saveTimetableBtn");
+
+        let modalActiveDay = "월";
+
+        function renderTimetableEditForm(day) {
+            modalActiveDay = day;
+            document.querySelectorAll(".day-tab").forEach(tab => {
+                tab.classList.toggle("active", tab.dataset.day === day);
+            });
+            periodEditForm.replaceChildren();
+
+            const periods = customTimetable[day] || [];
+            for (let p = 1; p <= 8; p++) {
+                const existing = periods.find(item => item.p === p) || { p, sub: "", place: "", s: p <= 4 ? `0${8+p}:00` : `1${p-1}:00`, e: p <= 4 ? `0${8+p}:40` : `1${p-1}:40` };
+                
+                const row = document.createElement("div");
+                row.className = "edit-period-row";
+                row.innerHTML = `
+                    <strong style="color: var(--accent-green);">${p}교시</strong>
+                    <input class="modal-input period-sub-input" data-p="${p}" value="${existing.sub || ''}" placeholder="과목 (예: 체육)">
+                    <input class="modal-input period-place-input" data-p="${p}" value="${existing.place || ''}" placeholder="장소 (예: 강당)">
+                    <div style="display: flex; gap: 4px; align-items: center;">
+                        <input class="modal-input period-start-input" data-p="${p}" value="${existing.s || ''}" style="width: 58px; text-align: center;">
+                        <span>~</span>
+                        <input class="modal-input period-end-input" data-p="${p}" value="${existing.e || ''}" style="width: 58px; text-align: center;">
+                    </div>
+                `;
+                periodEditForm.append(row);
+            }
+        }
+
+        editTimetableBtn.addEventListener("click", () => {
+            timetableModal.hidden = false;
+            renderTimetableEditForm(selectedDayTab);
+        });
+
+        closeTimetableModal.addEventListener("click", () => { timetableModal.hidden = true; });
+
+        dayTabs.addEventListener("click", (e) => {
+            const tab = e.target.closest(".day-tab");
+            if (tab) renderTimetableEditForm(tab.dataset.day);
+        });
+
+        saveTimetableBtn.addEventListener("click", () => {
+            const subInputs = Array.from(periodEditForm.querySelectorAll(".period-sub-input"));
+            const placeInputs = Array.from(periodEditForm.querySelectorAll(".period-place-input"));
+            const startInputs = Array.from(periodEditForm.querySelectorAll(".period-start-input"));
+            const endInputs = Array.from(periodEditForm.querySelectorAll(".period-end-input"));
+
+            const newPeriods = [];
+            subInputs.forEach((subEl, idx) => {
+                const sub = subEl.value.trim();
+                const place = placeInputs[idx].value.trim();
+                if (sub || place) {
+                    newPeriods.push({
+                        p: idx + 1,
+                        sub: sub || "과목",
+                        place,
+                        s: startInputs[idx].value.trim(),
+                        e: endInputs[idx].value.trim()
+                    });
+                }
+            });
+
+            customTimetable[modalActiveDay] = newPeriods;
+            timetableModal.hidden = true;
+            renderTimetable(selectedDayTab);
+            syncDashboardSettingsToDB();
+        });
+
+        // ── DB Synchronization Helpers (Server-Side 100% Single Source of Truth) ──
+        async function syncDashboardSettingsToDB() {
+            try {
+                const grid = document.getElementById("dashboardGrid");
+                const cardOrder = grid ? Array.from(grid.querySelectorAll(".widget-card")).map(c => c.id) : [];
+                await fetch("/api/teacher/dashboard-settings", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        timetable: customTimetable,
+                        cardOrder: cardOrder
+                    }),
+                    credentials: "include"
+                });
+            } catch (e) {}
+        }
+
+        async function loadDashboardSettingsFromDB() {
+            try {
+                dashboardStore = await SiteStorage.open("dashboard");
+                // 예전에 브라우저에 두던 것을 한 번 옮기고 지운다. 시간표·카드 순서는 서버 설정이 이미 맡는다.
+                dashboardStore.adopt([
+                    { localKey: "dashboardMissingStudents", item: "missing-students" },
+                    ...Object.entries(PREP_DAY_ITEM).map(([day, item]) => ({ localKey: `dashboardPreps_${day}`, item })),
+                    { localKey: "dashboardTimetable", item: "legacy-timetable", parse: () => undefined },
+                    { localKey: "dashboardCardOrder", item: "legacy-card-order", parse: () => undefined },
+                ]);
+                missingStudents = new Set(Array.isArray(dashboardStore.get("missing-students")) ? dashboardStore.get("missing-students") : []);
+                renderChecklist();
+                renderTimetable(selectedDayTab);
+            } catch (e) {}
+            try {
+                const res = await fetch("/api/teacher/dashboard-settings", { credentials: "include" });
+                const data = await res.json().catch(() => ({}));
+                if (data.settings) {
+                    const s = data.settings;
+                    if (s.timetable && Object.keys(s.timetable).length > 0) {
+                        customTimetable = s.timetable;
+                    }
+                    if (Array.isArray(s.cardOrder) && s.cardOrder.length > 0) {
+                        const grid = document.getElementById("dashboardGrid");
+                        if (grid) {
+                            s.cardOrder.forEach(id => {
+                                const el = document.getElementById(id);
+                                if (el) grid.appendChild(el);
+                            });
+                        }
+                    }
+                    renderTimetable(selectedDayTab);
+                }
+            } catch (e) {}
+        }
+        loadDashboardSettingsFromDB();
+
+        resetBtn.addEventListener("click", async () => {
+            if (confirm("대시보드 설정을 초기화하시겠습니까?")) {
+                try {
+                    await fetch("/api/teacher/dashboard-settings", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            timetable: {},
+                            cardOrder: []
+                        }),
+                        credentials: "include"
+                    });
+                } catch (e) {}
+                location.reload();
+            }
+        });
+
+        function getAvatarForStudent(num) {
+            const student = rosterStudents.find((item) => String(item.number) === String(num));
+            return ClassroomAvatars.getAvatarForStudentRecord(student || { number: num }, activeScheduleClassId || 'dashboard-demo');
+        }
+
+        function escHtmlLocal(str) {
+            return String(str ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        // 오늘 날짜 + 우리 학급(전교 포함) 대상 일반 행사를 배너로만 보여준다.
+        // 기존 시간표 위젯의 과목/장소는 절대 건드리지 않는다.
+        async function loadTodayEvents(grade) {
+            const banner = document.getElementById("todayEventsBanner");
+            if (!banner) return;
+            try {
+                const now = new Date();
+                const month = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+                const todayStr = `${month}-${String(now.getDate()).padStart(2, "0")}`;
+                const res = await fetch(`/api/teacher/general-events?month=${month}`);
+                const data = await res.json();
+                const events = (data.events || []).filter(ev => {
+                    const inRange = ev.event_date <= todayStr && (ev.end_date || ev.event_date) >= todayStr;
+                    const matchesGrade = ev.target_scope === "ALL" || (Array.isArray(ev.target_grades) && grade && ev.target_grades.includes(grade));
+                    return inRange && matchesGrade;
+                });
+
+                banner.replaceChildren();
+                if (events.length === 0) {
+                    banner.hidden = true;
+                    return;
+                }
+                events.forEach(ev => {
+                    const line = document.createElement("div");
+                    line.className = "today-event-line";
+                    const metaParts = [ev.event_time, ev.period, ev.location].filter(Boolean).join(", ");
+                    line.innerHTML = `<span>📌 ${escHtmlLocal(ev.title)}</span>${metaParts ? `<span class="today-event-meta">(${escHtmlLocal(metaParts)})</span>` : ""}`;
+                    banner.appendChild(line);
+                });
+                banner.hidden = false;
+            } catch (err) {
+                banner.hidden = true;
+            }
+        }
+
+        // 4. Student Roster Checklist & Birthday Check & Class Switcher
+        let rosterLoadVersion = 0;
+        async function fetchRosterAndRenderChecklist(classId = null) {
+            const version = ++rosterLoadVersion;
+            activeScheduleClassId = null;
+            canEditSchedules = false;
+            try {
+                const classSwitcherSelect = document.getElementById("classSwitcherSelect");
+                
+                // Fetch available classes for switcher
+                const availableRes = await fetch("/api/teacher/available-classes");
+                const availableData = await availableRes.json();
+                if (version !== rosterLoadVersion) return;
+                if (!availableRes.ok) throw new Error(availableData.message || "학급 목록을 불러오지 못했습니다.");
+                const prevVal = classSwitcherSelect?.value;
+                if (classSwitcherSelect) {
+                    classSwitcherSelect.replaceChildren();
+                    classSwitcherSelect.hidden = true;
+                }
+                
+                if (availableData.classes && availableData.classes.length > 0 && classSwitcherSelect) {
+                    classSwitcherSelect.hidden = false;
+                    // 이 계정 자신의 담임 학급이 아직 정해지지 않은 상태(관리자 등)에서
+                    // <select>가 아무것도 선택 안 된 채로 남으면 브라우저가 그냥 목록의
+                    // 첫 번째 학급(다른 담임의 반)을 자동으로 보여준다 -- 마치 그게 내
+                    // 학급인 것처럼 보이므로, 명시적인 빈 선택지를 기본값으로 둔다.
+                    const placeholderOpt = document.createElement("option");
+                    placeholderOpt.value = "";
+                    placeholderOpt.textContent = "학급을 선택하세요";
+                    classSwitcherSelect.appendChild(placeholderOpt);
+                    // 전담교사별 시간표에서 내가 배정된 반(내 수업)을 먼저, ★ 표시와 과목명을 붙여서 보여준다.
+                    const sortedClasses = availableData.classes.slice().sort((a, b) => {
+                        if (Boolean(b.isMyTeaching) !== Boolean(a.isMyTeaching)) return b.isMyTeaching ? 1 : -1;
+                        if (a.grade !== b.grade) return a.grade - b.grade;
+                        return a.classNumber - b.classNumber;
+                    });
+                    sortedClasses.forEach(c => {
+                        const opt = document.createElement("option");
+                        opt.value = c.id;
+                        const subjects = Array.isArray(c.myTeachingSubjects) && c.myTeachingSubjects.length ? ` · ${c.myTeachingSubjects.join(",")}` : "";
+                        opt.textContent = c.isMyTeaching
+                            ? `★ ${c.grade}학년 ${c.classNumber}반 (내 수업${subjects})`
+                            : `${c.grade}학년 ${c.classNumber}반 (${c.teacherName})`;
+                        classSwitcherSelect.appendChild(opt);
+                    });
+                    if (classId) classSwitcherSelect.value = classId;
+                    else if (prevVal) classSwitcherSelect.value = prevVal;
+                    else classSwitcherSelect.value = "";
+                }
+
+                const fetchUrl = classId ? `/api/teacher/class?classId=${classId}` : "/api/teacher/class";
+                const res = await fetch(fetchUrl);
+                const data = await res.json();
+                if (version !== rosterLoadVersion) return;
+                if (!res.ok) {
+                    throw new Error(data?.message || "학급 정보를 불러오지 못했습니다.");
+                }
+                if (data?.classroom) {
+                    fetchRealtimeWeatherAndAirQuality(data.classroom.schoolName, data.classroom.locationName);
+                    rosterStudents = data.classroom.students || [];
+                    activeRosterClass = data.classroom;
+                    loadMeals(data.classroom);
+                    activeScheduleClassId = data.classroom.id;
+                    canEditSchedules = !data.classroom.isReadOnly;
+                    if (data.classroom.id && classSwitcherSelect) {
+                        classSwitcherSelect.value = data.classroom.id;
+                    }
+                    rosterLoadMessage = rosterStudents.length ? "" : "등록된 학생이 없습니다.";
+                    loadTodayEvents(data.classroom.grade);
+                } else {
+                    rosterStudents = [];
+                    activeRosterClass = null;
+                    loadMeals(null);
+                    rosterLoadMessage = data?.message || "담임 학급 정보를 불러오지 못했습니다. 학교 관리자에게 학급 배정을 확인해 주세요.";
+                    fetchRealtimeWeatherAndAirQuality();
+                }
+            } catch (err) {
+                if (version !== rosterLoadVersion) return;
+                console.error("/api/teacher/class request threw:", err);
+                const select = document.getElementById("classSwitcherSelect");
+                if (select) { select.replaceChildren(); select.hidden = true; }
+                rosterStudents = [];
+                activeRosterClass = null;
+                loadMeals(null);
+                rosterLoadMessage = err.message || "담임 학급 정보를 불러오지 못했습니다. 학교 관리자에게 학급 배정을 확인해 주세요.";
+                fetchRealtimeWeatherAndAirQuality();
+            }
+            document.title = activeRosterClass?.grade && activeRosterClass?.classNumber
+                ? String(activeRosterClass.grade) + "학년 " + String(activeRosterClass.classNumber) + "반"
+                : "학급";
+            fetchQuickAlertsForDashboard();
+            document.getElementById("attendanceArrival").hidden = true;
+            attendanceLive.selectClass(activeRosterClass?.id);
+            await loadSchedules(activeScheduleClassId);
+            await loadCalendarData();
+        }
+
+        const classSwitcherSelectEl = document.getElementById("classSwitcherSelect");
+        if (classSwitcherSelectEl) {
+            classSwitcherSelectEl.addEventListener("change", (e) => {
+                const selectedClassId = e.target.value;
+                if (selectedClassId) fetchRosterAndRenderChecklist(selectedClassId);
+            });
+        }
+
+        function isTodayBirthday(student) {
+            const birthdayMmdd = student?.birthdayMmdd || "";
+            if (!student?.birthdayVisible || birthdayMmdd.length !== 4) return false;
+            const now = new Date();
+            const mm = String(now.getMonth() + 1).padStart(2, '0');
+            const dd = String(now.getDate()).padStart(2, '0');
+            return birthdayMmdd === (mm + dd);
+        }
+
+        let todayQuickAlerts = new Map();
+        let activeRosterClass = null;
+        let attendanceRequestVersion = 0;
+        let attendanceSnapshotKey = "";
+        let attendanceLoadFailed = false;
+
+        function attendanceKey(grade, classNumber, studentNumber) {
+            return [grade, classNumber, studentNumber].map(String).join(":");
+        }
+
+        async function fetchQuickAlertsForDashboard() {
+            const requestVersion = ++attendanceRequestVersion;
+            const classroom = activeRosterClass;
+            const today = koreanWeatherClock().date;
+            const snapshotKey = classroom ? classroom.id + ":" + today : "";
+            if (snapshotKey !== attendanceSnapshotKey) {
+                todayQuickAlerts = new Map();
+                attendanceSnapshotKey = snapshotKey;
+            }
+            attendanceLoadFailed = false;
+            renderChecklist();
+            if (!classroom?.id) return;
+            try {
+                const res = await fetch("/api/teacher/class-attendance?classId=" + encodeURIComponent(classroom.id), {
+                    cache: "no-store",
+                    signal: AbortSignal.timeout(10000)
+                });
+                if (!res.ok) throw new Error("Attendance fetch failed");
+                const data = await res.json();
+                if (requestVersion !== attendanceRequestVersion || activeRosterClass?.id !== classroom.id) return;
+                if (String(data.classId) !== String(classroom.id) || data.date !== koreanWeatherClock().date
+                    || !Array.isArray(data.alerts)) throw new Error("Attendance response does not match the class/date");
+                const nextAlerts = new Map();
+                for (const row of data.alerts) {
+                    if (row.studentNumber == null || !["결석", "지각", "조퇴", "체험학습"].includes(row.noticeType)) continue;
+                    const key = attendanceKey(classroom.grade, classroom.classNumber, row.studentNumber);
+                    const alerts = nextAlerts.get(key) || [];
+                    if (!alerts.some(alert => alert.noticeType === row.noticeType)) {
+                        alerts.push({ noticeType: row.noticeType, source: row.source });
+                    }
+                    nextAlerts.set(key, alerts);
+                }
+                todayQuickAlerts = nextAlerts;
+                attendanceSnapshotKey = classroom.id + ":" + data.date;
+            } catch (error) {
+                if (requestVersion !== attendanceRequestVersion || activeRosterClass?.id !== classroom.id) return;
+                attendanceLoadFailed = true;
+            }
+            renderChecklist();
+        }
+
+        function renderChecklist() {
+            document.getElementById("attendanceStatus").hidden = !attendanceLoadFailed;
+            checklistGrid.replaceChildren();
+            if (rosterStudents.length === 0) {
+                const notice = document.createElement("div");
+                notice.className = "roster-empty-notice";
+                notice.style.cssText = "grid-column: 1 / -1; color: var(--muted, #6b7280); font-size: 13px; padding: 8px 4px;";
+                notice.textContent = rosterLoadMessage || "등록된 학생이 없습니다.";
+                checklistGrid.append(notice);
+                missingBadge.textContent = "미완료: " + missingStudents.size + "명";
+                return;
+            }
+            rosterStudents.forEach((student) => {
+                const num = String(student.number);
+                const chip = document.createElement("button");
+                chip.type = "button";
+                chip.className = "num-chip";
+                const isMissing = missingStudents.has(num);
+                if (isMissing) chip.classList.add("missing");
+                chip.setAttribute("aria-pressed", String(isMissing));
+
+                const alerts = activeRosterClass
+                    ? todayQuickAlerts.get(attendanceKey(activeRosterClass.grade, activeRosterClass.classNumber, num)) || []
+                    : [];
+                const attendanceLabel = alerts.map(alert => alert.source + " " + alert.noticeType).join(", ");
+                const name = document.createElement("span");
+                name.className = "roster-student-copy";
+                const numberLabel = document.createElement("span");
+                numberLabel.className = "roster-student-number";
+                numberLabel.textContent = num + "번";
+                const studentName = document.createElement("span");
+                studentName.className = "roster-student-name";
+                studentName.textContent = student.name || "";
+                name.append(numberLabel, studentName);
+                chip.append(name);
+
+                if (alerts.length) {
+                    const tags = document.createElement("span");
+                    tags.className = "attendance-tags";
+                    for (const alert of alerts) {
+                        const tag = document.createElement("span");
+                        tag.className = "attendance-tag";
+                        tag.dataset.kind = alert.noticeType;
+                        tag.textContent = alert.noticeType;
+                        tags.append(tag);
+                    }
+                    chip.append(tags);
+                    chip.title = attendanceLabel;
+                }
+                if (isTodayBirthday(student)) {
+                    const birthday = document.createElement("span");
+                    birthday.className = "bday-tag";
+                    birthday.textContent = "🎂";
+                    chip.append(birthday);
+                }
+                chip.setAttribute("aria-label", num + "번 " + (student.name || "")
+                    + (attendanceLabel ? ", " + attendanceLabel : "")
+                    + (isMissing ? ", 미완료" : ", 완료"));
+
+                chip.addEventListener("click", () => {
+                    const nextMissing = !missingStudents.has(num);
+                    if (nextMissing) missingStudents.add(num);
+                    else missingStudents.delete(num);
+                    if (dashboardStore) dashboardStore.set("missing-students", Array.from(missingStudents));
+                    chip.classList.toggle("missing", nextMissing);
+                    chip.setAttribute("aria-pressed", String(nextMissing));
+                    chip.setAttribute("aria-label", num + "번 " + (student.name || "")
+                        + (attendanceLabel ? ", " + attendanceLabel : "")
+                        + (nextMissing ? ", 미완료" : ", 완료"));
+                    missingBadge.textContent = "미완료: " + missingStudents.size + "명";
+                });
+                checklistGrid.append(chip);
+            });
+            missingBadge.textContent = "미완료: " + missingStudents.size + "명";
+        }
+
+        let attendanceArrivalTimer;
+        const attendanceLive = createDashboardAttendanceLive({
+            soundButton: document.getElementById("attendanceSound"),
+            onChange: fetchQuickAlertsForDashboard,
+            onConnectionChange: failed => {
+                document.getElementById("attendanceConnectionStatus").hidden = !failed;
+            },
+            onArrival: (event, soundNeedsInteraction) => {
+                const notice = document.getElementById("attendanceArrival");
+                const student = rosterStudents.find(row => String(row.number) === String(event.studentNumber));
+                notice.textContent = (student?.name || event.studentNumber + "번") + " · " + event.noticeType + " 알림 도착"
+                    + (soundNeedsInteraction ? " · 소리를 켜려면 화면을 눌러 주세요" : "");
+                notice.hidden = false;
+                clearTimeout(attendanceArrivalTimer);
+                attendanceArrivalTimer = setTimeout(() => { notice.hidden = true; }, 8000);
+            }
+        });
+        document.getElementById("attendanceRetry").addEventListener("click", fetchQuickAlertsForDashboard);
+        // One rollover refresh per day; attendance itself is updated by incoming events.
+        let attendanceMidnightTimer;
+        function scheduleAttendanceRollover() {
+            clearTimeout(attendanceMidnightTimer);
+            const nextMidnight = new Date(koreanWeatherClock().date + "T00:00:00+09:00").getTime() + 86400000;
+            attendanceMidnightTimer = setTimeout(() => {
+                fetchQuickAlertsForDashboard();
+                scheduleAttendanceRollover();
+            }, Math.max(1000, nextMidnight - Date.now() + 100));
+        }
+        scheduleAttendanceRollover();
+        document.addEventListener("visibilitychange", () => {
+            if (!document.hidden && attendanceSnapshotKey
+                && !attendanceSnapshotKey.endsWith(":" + koreanWeatherClock().date)) {
+                fetchQuickAlertsForDashboard();
+                scheduleAttendanceRollover();
+            }
+        });
+        fetchRosterAndRenderChecklist();
+
+        // 5. Important schedules
+        function localDateKey(date = new Date()) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const day = String(date.getDate()).padStart(2, "0");
+            return `${year}-${month}-${day}`;
+        }
+
+        scheduleDateInput.value = localDateKey();
+
+        async function scheduleApi(path, options = {}) {
+            const response = await fetch(path, {
+                ...options,
+                headers: { "Content-Type": "application/json", ...(options.headers || {}) }
+            });
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok) throw new Error(payload.message || "일정을 불러오지 못했습니다.");
+            return payload;
+        }
+
+        function upcomingDateWindow() {
+            const today = localDateKey();
+            const end = new Date(today + "T00:00:00");
+            end.setDate(end.getDate() + 30);
+            return { today, end: localDateKey(end) };
+        }
+
+        function schoolEventMatchesGrade(event, grade) {
+            return event.target_scope === "ALL" || (event.target_scope === "GRADE"
+                && (event.target_grades || []).some(value => Number(value) === Number(grade)));
+        }
+
+        async function loadUpcomingSchoolSchedules(grade) {
+            const window = upcomingDateWindow();
+            const cursor = new Date(window.today.slice(0, 7) + "-01T00:00:00");
+            const months = [];
+            while (localDateKey(cursor) <= window.end) {
+                months.push(localDateKey(cursor).slice(0, 7));
+                cursor.setMonth(cursor.getMonth() + 1);
+            }
+            const years = [...new Set(months.map(month => Number(month.slice(0, 4))))];
+            const academicYears = [...new Set(months.map(month =>
+                Number(month.slice(0, 4)) - (Number(month.slice(5, 7)) < 3 ? 1 : 0)))];
+            const sources = [
+                ...months.map(month => ({ kind: "events", label: "학교 행사", path: "/api/teacher/general-events?month=" + month })),
+                ...years.map(year => ({ kind: "holidays", label: "공휴일", path: "/api/teacher/public-holidays?year=" + year })),
+                ...academicYears.map(year => ({ kind: "vacation", label: "방학·학사일정", path: "/api/teacher/vacation-settings?academicYear=" + year }))
+            ];
+            const results = await Promise.allSettled(sources.map(source => scheduleApi(source.path)));
+            const items = [];
+            const errors = [];
+            results.forEach((result, index) => {
+                const source = sources[index];
+                if (result.status === "rejected") {
+                    errors.push(source.label);
+                    return;
+                }
+                const data = result.value;
+                if (source.kind === "events") {
+                    (data.events || []).filter(event => schoolEventMatchesGrade(event, grade)).forEach(event =>
+                        items.push({
+                            id: "school_event_" + event.id, date: event.event_date,
+                            endDate: event.end_date || event.event_date, title: event.title,
+                            details: [event.event_time, event.period, event.location].filter(Boolean).join(" · "),
+                            scope: event.target_scope, type: "school_event", canDelete: false
+                        }));
+                } else if (source.kind === "holidays") {
+                    (data.holidays || []).forEach(holiday => items.push({
+                        id: "holiday_" + holiday.date + "_" + holiday.name, date: holiday.date,
+                        title: holiday.name, type: "public_holiday", canDelete: false
+                    }));
+                } else if (data.settings) {
+                    const settings = data.settings;
+                    [
+                        ["summer", "여름방학", settings.summer_start, settings.summer_end],
+                        ["winter", settings.is_integrated ? "겨울/학년말방학" : "겨울방학", settings.winter_start, settings.winter_end],
+                        ...(!settings.is_integrated ? [["spring", "학년말방학", settings.spring_start, settings.spring_end]] : [])
+                    ].forEach(([kind, title, start, end]) => {
+                        if (start && end) items.push({
+                            id: "vacation_" + kind + "_" + start, date: start, endDate: end,
+                            title, type: "vacation", canDelete: false
+                        });
+                    });
+                    [[settings.entrance_ceremony_date, "입학식"], [settings.graduation_ceremony_date, "졸업식"]]
+                        .forEach(([date, title]) => {
+                            if (date) items.push({ id: "ceremony_" + date + title, date, title,
+                                type: "annual_schedule", scope: "ALL", canDelete: false });
+                        });
+                }
+            });
+            return { items, errors: [...new Set(errors)] };
+        }
+
+        async function loadSchedules(classId = null) {
+            const version = ++scheduleLoadVersion;
+            schedules = [];
+            schoolSchedules = [];
+            schedulesLoading = true;
+            scheduleLoadErrors = [];
+            renderSchedules();
+            if (!classId) {
+                activeScheduleClassId = null;
+                canEditSchedules = false;
+                scheduleEditor.hidden = true;
+                schedulesLoading = false;
+                renderSchedules();
+                renderCalendar();
+                return;
+            }
+            const query = classId ? "?classId=" + encodeURIComponent(classId) : "";
+            const grade = activeRosterClass?.grade;
+            const results = await Promise.allSettled([
+                scheduleApi("/api/class/schedules" + query),
+                loadUpcomingSchoolSchedules(grade)
+            ]);
+            if (version !== scheduleLoadVersion) return;
+            if (results[0].status === "fulfilled") {
+                const data = results[0].value;
+                activeScheduleClassId = data.classId;
+                canEditSchedules = Boolean(data.canEdit);
+                schedules = Array.isArray(data.schedules) ? data.schedules : [];
+                scheduleEditor.hidden = !canEditSchedules;
+                try {
+                    await migrateLocalSchedules();
+                } catch (migrationError) {
+                    console.warn("기기 저장 일정을 아직 이전하지 못했습니다.", migrationError);
+                }
+            } else {
+                canEditSchedules = false;
+                scheduleEditor.hidden = true;
+                scheduleLoadErrors.push("학급·학사일정");
+            }
+            if (version !== scheduleLoadVersion) return;
+            if (results[1].status === "fulfilled") {
+                schoolSchedules = results[1].value.items;
+                scheduleLoadErrors.push(...results[1].value.errors);
+            } else {
+                scheduleLoadErrors.push("학교 일정·공휴일");
+            }
+            schedulesLoading = false;
+            renderSchedules();
+            renderCalendar();
+        }
+
+        // 예전에 브라우저에 두던 일정을 서버로 옮긴다. 옮기면 브라우저에서 지우므로 표시가 따로 필요 없다.
+        async function migrateLocalSchedules() {
+            if (!canEditSchedules || !activeScheduleClassId) return;
+            let localSchedules = [];
+            try {
+                const saved = JSON.parse(localStorage.getItem("dashboardSchedules") || "[]");
+                localSchedules = Array.isArray(saved) ? saved : [];
+            } catch (_) {
+                localSchedules = [];
+            }
+            try {
+                for (const key of Object.keys(localStorage)) if (key.startsWith("dashboardSchedulesMigrated_")) localStorage.removeItem(key);
+            } catch (_) {}
+            if (localSchedules.length === 0) return;
+            for (const item of localSchedules) {
+                if (!item?.date || !item?.title) continue;
+                const data = await scheduleApi("/api/teacher/schedules", {
+                    method: "POST",
+                    body: JSON.stringify({ classId: activeScheduleClassId, date: item.date, title: item.title, details: item.details || "" })
+                });
+                schedules.push(data.schedule);
+            }
+            localStorage.removeItem("dashboardSchedules");
+        }
+
+        function renderSchedules() {
+            scheduleList.replaceChildren();
+            const today = localDateKey();
+            const now = new Date(`${today}T00:00:00`);
+            const weekEnd = new Date(now);
+            weekEnd.setDate(now.getDate() + (7 - now.getDay()) % 7);
+            const weekEndKey = localDateKey(weekEnd);
+            const scheduleWindowEnd = new Date(now);
+            scheduleWindowEnd.setDate(now.getDate() + 30);
+            const scheduleWindowEndKey = localDateKey(scheduleWindowEnd);
+            const seen = new Set();
+            const upcoming = [...schedules, ...schoolSchedules]
+                .filter(item => {
+                    if (item.date > scheduleWindowEndKey || (item.endDate || item.date) < today) return false;
+                    // Overlapping month queries return a multi-day school event more than once.
+                    const key = item.canDelete === false
+                        ? [item.date, item.endDate || item.date, item.title].join("|")
+                        : [item.type, item.id].join("|");
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                    return true;
+                })
+                .sort((a, b) => (a.date < today ? today : a.date).localeCompare(b.date < today ? today : b.date)
+                    || a.title.localeCompare(b.title));
+            scheduleCountBadge.textContent = schedulesLoading ? "불러오는 중"
+                : scheduleLoadErrors.length ? "확인된 " + upcoming.length + "개"
+                : "예정 " + upcoming.length + "개";
+            const status = document.getElementById("scheduleLoadStatus");
+            status.replaceChildren();
+            status.hidden = scheduleLoadErrors.length === 0;
+            if (scheduleLoadErrors.length) {
+                status.textContent = scheduleLoadErrors.join("·") + " 정보를 불러오지 못했습니다.";
+                const retry = document.createElement("button");
+                retry.type = "button";
+                retry.textContent = "다시 불러오기";
+                retry.addEventListener("click", () => loadSchedules(activeScheduleClassId));
+                status.append(retry);
+            }
+
+            if (!upcoming.length) {
+                const empty = document.createElement("div");
+                empty.className = "schedule-empty";
+                empty.textContent = schedulesLoading ? "학교 일정과 공휴일을 불러오는 중입니다."
+                    : scheduleLoadErrors.length ? "일정을 모두 확인하지 못했습니다. 다시 불러와 주세요."
+                    : "오늘부터 30일 이내에 예정된 주요일정이 없습니다.";
+                scheduleList.append(empty);
+                return;
+            }
+
+            upcoming.forEach((item) => {
+                const div = document.createElement("div");
+                div.className = "board-item";
+                const displayDate = item.date < today ? today : item.date;
+                if (displayDate === today) div.classList.add("schedule-today");
+                else if (displayDate <= weekEndKey) div.classList.add("schedule-this-week");
+                const date = new Date(`${item.date}T00:00:00`);
+                const isThisWeek = item.date > today && item.date <= weekEndKey;
+                const weekday = ["일", "월", "화", "수", "목", "금", "토"][date.getDay()];
+                const label = item.date === today ? "오늘" : isThisWeek ? `${weekday}요일` : `${date.getMonth() + 1}/${date.getDate()}`;
+                const dateSpan = document.createElement("span");
+                dateSpan.className = "schedule-date";
+                if (isThisWeek) dateSpan.classList.add("this-week");
+                dateSpan.textContent = item.date < today ? "진행 중" : label;
+                if (item.endDate && item.endDate !== item.date) {
+                    const range = document.createElement("span");
+                    range.className = "schedule-date-range";
+                    range.textContent = Number(item.date.slice(5, 7)) + "/" + Number(item.date.slice(8, 10))
+                        + "–" + Number(item.endDate.slice(5, 7)) + "/" + Number(item.endDate.slice(8, 10));
+                    dateSpan.append(range);
+                }
+                const copy = document.createElement("span");
+                copy.className = "schedule-copy";
+                if (item.type === "public_holiday" || item.type === "vacation") {
+                    const badge = document.createElement("span");
+                    badge.className = "schedule-badge " + (item.type === "public_holiday" ? "scope-holiday" : "scope-vacation");
+                    badge.textContent = item.type === "public_holiday" ? "공휴일" : "방학";
+                    copy.append(badge);
+                } else if (item.scope === "ALL") {
+                    const badge = document.createElement("span");
+                    badge.className = "schedule-badge scope-all";
+                    badge.textContent = "전교";
+                    copy.append(badge);
+                } else if (item.scope === "GRADE") {
+                    const badge = document.createElement("span");
+                    badge.className = "schedule-badge scope-grade";
+                    badge.textContent = "학년";
+                    copy.append(badge);
+                }
+                const titleSpan = document.createElement("span");
+                titleSpan.textContent = item.title;
+                copy.append(titleSpan);
+                if (item.details) {
+                    const detailSpan = document.createElement("span");
+                    detailSpan.className = "schedule-detail";
+                    detailSpan.textContent = item.details;
+                    copy.append(detailSpan);
+                }
+                div.append(dateSpan, copy);
+                if (canEditSchedules && item.type !== "birthday" && item.canDelete !== false) {
+                    const actions = document.createElement("span");
+                    actions.className = "schedule-actions";
+                    const edit = document.createElement("button");
+                    edit.className = "board-item-del board-item-edit";
+                    edit.textContent = "✎";
+                    edit.setAttribute("aria-label", `${item.title} 일정 수정`);
+                    edit.addEventListener("click", () => {
+                        editingScheduleId = item.id;
+                        scheduleDateInput.value = item.date;
+                        scheduleTitleInput.value = item.title;
+                        scheduleDetailsInput.value = item.details || "";
+                        addScheduleBtn.textContent = "✓";
+                        addScheduleBtn.setAttribute("aria-label", "주요일정 수정 저장");
+                        cancelScheduleEditBtn.hidden = false;
+                        renderCalendar();
+                        scheduleTitleInput.focus();
+                        scheduleTitleInput.select();
+                    });
+                    const del = document.createElement("button");
+                    del.className = "board-item-del";
+                    del.innerHTML = "&times;";
+                    del.setAttribute("aria-label", `${item.title} 일정 삭제`);
+                    del.addEventListener("click", async () => {
+                        try {
+                            await scheduleApi(`/api/teacher/schedules/${encodeURIComponent(item.id)}`, { method: "DELETE" });
+                            schedules = schedules.filter((schedule) => schedule.id !== item.id);
+                            if (editingScheduleId === item.id) resetScheduleEditor();
+                            renderSchedules();
+                            await loadCalendarData();
+                        } catch (error) {
+                            alert(error.message);
+                        }
+                    });
+                    actions.append(edit, del);
+                    div.append(actions);
+                }
+                scheduleList.append(div);
+            });
+        }
+
+        async function addSchedule() {
+            const date = scheduleDateInput.value;
+            const title = scheduleTitleInput.value.trim();
+            const details = scheduleDetailsInput.value.trim();
+            if (!canEditSchedules || !activeScheduleClassId || !date || !title) return;
+            addScheduleBtn.disabled = true;
+            try {
+                const data = await scheduleApi(editingScheduleId
+                    ? `/api/teacher/schedules/${encodeURIComponent(editingScheduleId)}`
+                    : "/api/teacher/schedules", {
+                    method: editingScheduleId ? "PATCH" : "POST",
+                    body: JSON.stringify({ classId: activeScheduleClassId, date, title, details })
+                });
+                if (editingScheduleId) {
+                    schedules = schedules.map((item) => item.id === editingScheduleId ? data.schedule : item);
+                } else {
+                    schedules.push(data.schedule);
+                }
+                resetScheduleEditor();
+                renderSchedules();
+                await loadCalendarData();
+                scheduleTitleInput.focus();
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                addScheduleBtn.disabled = false;
+            }
+        }
+
+        function resetScheduleEditor() {
+            editingScheduleId = null;
+            scheduleTitleInput.value = "";
+            scheduleDetailsInput.value = "";
+            addScheduleBtn.textContent = "+";
+            addScheduleBtn.setAttribute("aria-label", "주요일정 추가");
+            cancelScheduleEditBtn.hidden = true;
+        }
+
+        addScheduleBtn.addEventListener("click", addSchedule);
+        cancelScheduleEditBtn.addEventListener("click", () => {
+            resetScheduleEditor();
+            renderCalendar();
+        });
+        scheduleTitleInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") addSchedule();
+            if (event.key === "Escape" && editingScheduleId) {
+                resetScheduleEditor();
+                renderCalendar();
+            }
+        });
+        scheduleDetailsInput.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && editingScheduleId) {
+                resetScheduleEditor();
+                renderCalendar();
+            }
+        });
+
+        renderSchedules();
+
+        // 6. Mini Calendar
+        let calendarCursor = new Date();
+        calendarCursor.setDate(1);
+        let calendarRequestVersion = 0;
+        let calendarData = { schedules: [], events: [], holidays: [], vacation: null };
+
+        async function loadCalendarData() {
+            const version = ++calendarRequestVersion;
+            const status = document.getElementById("calendarStatus");
+            calendarData = { schedules: [], events: [], holidays: [], vacation: null };
+            renderCalendar();
+            if (!activeRosterClass) {
+                status.hidden = false;
+                status.textContent = "학급을 선택하면 학교 일정이 표시됩니다.";
+                return;
+            }
+            status.hidden = false;
+            status.textContent = "학교 일정 불러오는 중...";
+            const year = calendarCursor.getFullYear();
+            const month = localDateKey(calendarCursor).slice(0, 7);
+            const academicYear = calendarCursor.getMonth() >= 2 ? year : year - 1;
+            const grade = Number(activeRosterClass.grade);
+            const classId = activeRosterClass.id;
+            const results = await Promise.allSettled([
+                scheduleApi("/api/class/schedules?" + new URLSearchParams({ classId, month })),
+                scheduleApi("/api/teacher/general-events?month=" + month),
+                scheduleApi("/api/teacher/public-holidays?year=" + year),
+                scheduleApi("/api/teacher/vacation-settings?academicYear=" + academicYear)
+            ]);
+            if (version !== calendarRequestVersion) return;
+            const values = results.map(result => result.status === "fulfilled" ? result.value : {});
+            calendarData = {
+                schedules: values[0].schedules || [],
+                events: (values[1].events || []).filter(event => schoolEventMatchesGrade(event, grade)),
+                holidays: values[2].holidays || [],
+                vacation: values[3].settings || null
+            };
+            const failed = results.map((result, index) => result.status === "rejected"
+                ? ["학사·학급 일정", "학교 행사", "공휴일", "방학"][index] : "").filter(Boolean);
+            status.replaceChildren();
+            status.hidden = failed.length === 0;
+            if (failed.length) {
+                status.textContent = failed.join("·") + " 정보를 불러오지 못했습니다.";
+                const retry = document.createElement("button");
+                retry.type = "button";
+                retry.textContent = "다시 불러오기";
+                retry.addEventListener("click", loadCalendarData);
+                status.append(retry);
+            }
+            renderCalendar();
+        }
+
+        function calendarEntries(dateKey) {
+            const entries = [];
+            calendarData.holidays.filter(item => item.date === dateKey).forEach(item =>
+                entries.push({ title: item.name, kind: "공휴일", holiday: true }));
+            calendarData.schedules.filter(item => item.date === dateKey).forEach(item =>
+                entries.push({ title: item.title, details: item.details,
+                    kind: item.type === "annual_schedule" ? "학사" : item.type === "birthday" ? "생일" : "학급",
+                    holiday: ["HOLIDAY", "DISCRETIONARY"].includes(item.category) }));
+            calendarData.events.filter(item => item.event_date <= dateKey && (item.end_date || item.event_date) >= dateKey)
+                .forEach(item => entries.push({ title: item.title, kind: "학교",
+                    details: [item.event_time, item.period, item.location].filter(Boolean).join(" · ") }));
+            const settings = calendarData.vacation;
+            if (settings) {
+                const periods = [
+                    [settings.summer_start, settings.summer_end, "여름방학"],
+                    [settings.winter_start, settings.winter_end, settings.is_integrated ? "겨울/학년말방학" : "겨울방학"],
+                    ...(!settings.is_integrated ? [[settings.spring_start, settings.spring_end, "학년말방학"]] : [])
+                ];
+                periods.forEach(([start, end, title]) => {
+                    if (start && end && start <= dateKey && end >= dateKey) entries.push({ title, kind: "방학" });
+                });
+                if (settings.entrance_ceremony_date === dateKey && !entries.some(item => item.title === "입학식"))
+                    entries.push({ title: "입학식", kind: "학사" });
+                if (settings.graduation_ceremony_date === dateKey && !entries.some(item => item.title === "졸업식"))
+                    entries.push({ title: "졸업식", kind: "학사" });
+            }
+            return entries;
+        }
+
+        function renderCalendarAgenda() {
+            const agenda = document.getElementById("calendarAgenda");
+            const dateKey = scheduleDateInput.value;
+            const entries = dateKey.startsWith(localDateKey(calendarCursor).slice(0, 7)) ? calendarEntries(dateKey) : [];
+            agenda.replaceChildren();
+            agenda.hidden = entries.length === 0;
+            if (!entries.length) return;
+            const heading = document.createElement("div");
+            heading.className = "calendar-agenda-date";
+            heading.textContent = Number(dateKey.slice(5, 7)) + "월 " + Number(dateKey.slice(8, 10)) + "일";
+            agenda.append(heading);
+            entries.forEach(entry => {
+                const row = document.createElement("div");
+                row.className = "calendar-agenda-item";
+                const kind = document.createElement("span");
+                kind.className = "calendar-agenda-kind";
+                kind.textContent = entry.kind;
+                row.append(kind, document.createTextNode(entry.title));
+                if (entry.details) {
+                    const detail = document.createElement("div");
+                    detail.className = "calendar-agenda-meta";
+                    detail.textContent = entry.details;
+                    row.append(detail);
+                }
+                agenda.append(row);
+            });
+        }
+
+        function renderCalendar() {
+            const calendarMini = document.getElementById("calendarMini");
+            const calMonthTitle = document.getElementById("calMonthTitle");
+            const now = new Date();
+            const year = calendarCursor.getFullYear();
+            const month = calendarCursor.getMonth();
+
+            const englishMonthName = new Date(year, month, 1).toLocaleDateString("en-US", { month: "long" });
+            calMonthTitle.textContent = `${year}년 ${month + 1}월 · ${englishMonthName} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+
+            calendarMini.replaceChildren();
+            const daysHeader = ["일", "월", "화", "수", "목", "금", "토"];
+            daysHeader.forEach((d, i) => {
+                const h = document.createElement("div");
+                h.className = "cal-head";
+                if (i === 0) h.classList.add("sun");
+                if (i === 6) h.classList.add("sat");
+                h.textContent = d;
+                calendarMini.append(h);
+            });
+
+            // 다른 달력들처럼 첫 주·마지막 주의 빈칸은 앞뒤 달 날짜로 흐리게 채운다.
+            // 누르면 그 달로 넘어가며 그 날을 고른다(일정은 보고 있는 달 것만 불러온다).
+            const appendOtherMonthDay = (dayDate) => {
+                const dayEl = document.createElement("div");
+                dayEl.className = "cal-day other-month";
+                if (dayDate.getDay() === 0) dayEl.classList.add("sun");
+                if (dayDate.getDay() === 6) dayEl.classList.add("sat");
+                const number = document.createElement("span");
+                number.className = "cal-day-number";
+                number.textContent = dayDate.getDate();
+                dayEl.append(number);
+                dayEl.setAttribute("role", "button");
+                dayEl.setAttribute("aria-label", `${dayDate.getFullYear()}년 ${dayDate.getMonth() + 1}월 ${dayDate.getDate()}일로 이동`);
+                dayEl.addEventListener("click", () => {
+                    calendarCursor = new Date(dayDate.getFullYear(), dayDate.getMonth(), 1);
+                    scheduleDateInput.value = localDateKey(dayDate);
+                    loadCalendarData();
+                });
+                calendarMini.append(dayEl);
+            };
+            for (let i = firstDay; i > 0; i--) appendOtherMonthDay(new Date(year, month, 1 - i));
+
+            for (let date = 1; date <= lastDate; date++) {
+                const dayEl = document.createElement("div");
+                dayEl.className = "cal-day";
+                const dayOfWeek = (firstDay + date - 1) % 7;
+                if (dayOfWeek === 0) dayEl.classList.add("sun");
+                if (dayOfWeek === 6) dayEl.classList.add("sat");
+                const dateKey = localDateKey(new Date(year, month, date));
+                if (dateKey === localDateKey(now)) {
+                    dayEl.classList.add("today");
+                    dayEl.setAttribute("aria-current", "date");
+                }
+                const isSelected = dateKey === scheduleDateInput.value;
+                if (isSelected) dayEl.classList.add("selected");
+                dayEl.setAttribute("aria-pressed", String(isSelected));
+                const entries = calendarEntries(dateKey);
+                if (entries.some(entry => entry.holiday)) dayEl.classList.add("holiday");
+                const number = document.createElement("span");
+                number.className = "cal-day-number";
+                number.textContent = date;
+                dayEl.append(number);
+                if (entries.length) {
+                    const label = document.createElement("span");
+                    label.className = "cal-event-label";
+                    const primaryEntry = entries.find(entry => entry.holiday)
+                        || entries.find(entry => entry.kind === "방학") || entries[0];
+                    label.textContent = primaryEntry.kind === "방학"
+                        ? (primaryEntry.title.includes("여름") ? "여름방학"
+                            : primaryEntry.title.includes("겨울") ? "겨울방학" : "학년말")
+                        : primaryEntry.title.includes("추석") ? "추석"
+                        : primaryEntry.title;
+                    dayEl.append(label);
+                    dayEl.title = entries.map(entry => entry.title).join(" · ");
+                }
+                dayEl.tabIndex = 0;
+                dayEl.setAttribute("role", "button");
+                dayEl.setAttribute("aria-label", `${year}년 ${month + 1}월 ${date}일 일정 선택`);
+                const selectDate = () => {
+                    scheduleDateInput.value = dateKey;
+                    renderCalendar();
+                    calendarMini.querySelector(".cal-day.selected")?.focus({ preventScroll: true });
+                };
+                if (entries.length) dayEl.setAttribute("aria-label", dayEl.getAttribute("aria-label") + ": " + dayEl.title);
+                dayEl.addEventListener("click", selectDate);
+                dayEl.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        selectDate();
+                    }
+                });
+                calendarMini.append(dayEl);
+            }
+            const trailing = (7 - (firstDay + lastDate) % 7) % 7;
+            for (let i = 1; i <= trailing; i++) appendOtherMonthDay(new Date(year, month + 1, i));
+            renderCalendarAgenda();
+        }
+        document.getElementById("prevMonthBtn").addEventListener("click", () => {
+            calendarCursor.setMonth(calendarCursor.getMonth() - 1);
+            loadCalendarData();
+        });
+        document.getElementById("nextMonthBtn").addEventListener("click", () => {
+            calendarCursor.setMonth(calendarCursor.getMonth() + 1);
+            loadCalendarData();
+        });
+        document.getElementById("todayMonthBtn").addEventListener("click", () => {
+            calendarCursor = new Date();
+            calendarCursor.setDate(1);
+            scheduleDateInput.value = localDateKey();
+            loadCalendarData();
+        });
+        renderCalendar();
+
+        // 7. NEIS Meals — use the school attached to the selected classroom.
+        let mealRequestVersion = 0;
+
+        function showMealMessage(message, retrySchool = null) {
+            const notice = document.createElement("div");
+            notice.style.cssText = "color: var(--text-muted); font-size: 0.88rem; padding: 12px 4px; text-align: center;";
+            notice.textContent = message;
+            mealList.replaceChildren(notice);
+            if (retrySchool) {
+                const retry = document.createElement("button");
+                retry.type = "button";
+                retry.className = "btn";
+                retry.textContent = "다시 불러오기";
+                retry.addEventListener("click", () => loadMeals(retrySchool));
+                mealList.append(retry);
+            }
+        }
+
+        async function loadMeals(school) {
+            const requestVersion = ++mealRequestVersion;
+            if (!school) {
+                showMealMessage("학급의 학교 정보를 불러오지 못했습니다.");
+                return;
+            }
+            const officeCode = school.officeCode;
+            const schoolCode = school.schoolCode;
+            if (!officeCode || !schoolCode) {
+                showMealMessage("연결된 학교의 급식 조회 코드가 없습니다. 학교 관리자에게 확인해 주세요.");
+                return;
+            }
+
+            showMealMessage("급식 메뉴 불러오는 중...");
+            try {
+                const query = new URLSearchParams({
+                    officeCode,
+                    schoolCode,
+                    date: localDateKey().replace(/-/g, "")
+                });
+                const mealRes = await fetch("/api/school/meal?" + query.toString());
+                if (!mealRes.ok) throw new Error("Meal request failed");
+                const mealData = await mealRes.json();
+                if (!Array.isArray(mealData.meals)) throw new Error("Invalid meal response");
+                if (requestVersion !== mealRequestVersion) return;
+
+                const meal = mealData.meals.find(item => item.mealType === "중식" || item.mealType === "점심")
+                    || mealData.meals[0];
+                if (Array.isArray(meal?.dishes) && meal.dishes.length > 0) {
+                    mealList.replaceChildren();
+                    meal.dishes.forEach((dish) => {
+                        const item = document.createElement("div");
+                        item.className = "meal-dish-item";
+                        const bullet = document.createElement("span");
+                        bullet.style.color = "var(--accent-green)";
+                        bullet.textContent = "•";
+                        const text = document.createElement("span");
+                        text.textContent = dish;
+                        item.append(bullet, text);
+                        mealList.append(item);
+                    });
+                } else {
+                    showMealMessage("오늘 등록된 급식 정보가 없습니다.");
+                }
+            } catch (err) {
+                if (requestVersion !== mealRequestVersion) return;
+                showMealMessage("급식 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.", school);
+            }
+        }
+
+        // 7-2. Realtime Weather, Humidity & Air Quality (PM10) Dynamic Geocoding Integration
+        //
+        // open-meteo's own /v1/search geocoder barely matches Korean-language
+        // queries at all (confirmed: even "서울" and "강남구" return zero
+        // results there, while the English "Seoul" works) -- it's an
+        // English/romanized gazetteer, not a Korean address geocoder. Use
+        // OSM Nominatim instead, which indexes Korean school names directly
+        // (e.g. "계상초등학교" resolves to the exact real campus) and only
+        // fetch the weather itself from open-meteo once we have real coords.
+        async function geocode(query) {
+            const cleaned = String(query || "").trim();
+            if (cleaned.length < 2) return null;
+            try {
+                const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cleaned)}&format=json&limit=1&accept-language=ko&countrycodes=kr`);
+                const geoData = await geoRes.json();
+                const first = geoData?.[0];
+                if (first?.lat && first?.lon) return { lat: Number(first.lat), lon: Number(first.lon) };
+            } catch (_) {}
+            return null;
+        }
+
+        async function fetchRealtimeWeatherAndAirQuality(schoolName = "", locationName = "") {
+            try {
+                let lat = 37.65;
+                let lon = 127.06;
+                let geoFound = false;
+
+                // The school's own name is the most precise query (an exact
+                // campus, not just a city); fall back to the broader
+                // location/district name if that specific lookup finds
+                // nothing.
+                const match = (await geocode(schoolName)) || (await geocode(locationName));
+                if (match) {
+                    ({ lat, lon } = match);
+                    geoFound = true;
+                }
+
+                if (!geoFound && navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (pos) => fetchWeatherWithCoords(pos.coords.latitude, pos.coords.longitude, false),
+                        () => fetchWeatherWithCoords(lat, lon, true),
+                        { timeout: 3000 }
+                    );
+                    return;
+                }
+
+                fetchWeatherWithCoords(lat, lon, !geoFound);
+            } catch (err) {
+                console.error("날씨/미세먼지 API 호출 오류:", err);
+            }
+        }
+
+        let hourlyWeather = [];
+        let forecastDate = "";
+        let latestWeatherCoordinates = null;
+        let forecastRequestVersion = 0;
+        let weatherLastRequestedAt = 0;
+
+        function koreanWeatherClock() {
+            const parts = new Intl.DateTimeFormat("en-GB", {
+                timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23"
+            }).formatToParts(new Date());
+            const value = type => parts.find(part => part.type === type).value;
+            return { date: value("year") + "-" + value("month") + "-" + value("day"), hour: Number(value("hour")) };
+        }
+
+        function describeWeather(code, isDay = 1) {
+            if (code === 0) return { icon: isDay ? "☀️" : "🌙", name: "맑음" };
+            if (code === 1 || code === 2) return { icon: isDay ? "🌤️" : "☁️", name: "구름조금" };
+            if (code === 3) return { icon: "☁️", name: "흐림" };
+            if ([45, 48].includes(code)) return { icon: "🌫️", name: "안개" };
+            if ([51, 53, 55, 56, 57].includes(code)) return { icon: "🌦️", name: "이슬비" };
+            if ([61, 63, 65, 66, 67].includes(code)) return { icon: "🌧️", name: "비" };
+            if ([71, 73, 75, 77, 85, 86].includes(code)) return { icon: "🌨️", name: "눈" };
+            if ([80, 81, 82].includes(code)) return { icon: "🌦️", name: "소나기" };
+            if ([95, 96, 97, 99].includes(code)) return { icon: "⛈️", name: "뇌우" };
+            return { icon: "—", name: "날씨 정보 없음" };
+        }
+
+        function showForecastMessage(message, retry = false) {
+            const grid = document.getElementById("hourlyForecast");
+            grid.replaceChildren();
+            const text = document.createElement("span");
+            text.className = "forecast-message";
+            text.textContent = message;
+            grid.append(text);
+            document.getElementById("forecastRetry").hidden = !retry;
+        }
+
+        function renderHourlyForecast() {
+            // 지난 시간은 빼고 지금 시간대부터 24시간을 보여 준다.
+            const now = koreanWeatherClock();
+            const nowKey = now.date + "T" + String(now.hour).padStart(2, "0");
+            const upcoming = hourlyWeather.filter(item => item.time.slice(0, 13) >= nowKey).slice(0, 24);
+            if (!upcoming.length) return;
+            const grid = document.getElementById("hourlyForecast");
+            const capacity = Math.max(1, Math.floor(grid.clientWidth / 48));
+            const step = [1, 2, 3, 4, 6, 12, 24].find(value => Math.ceil(upcoming.length / value) <= capacity) || 24;
+            // 몇 시간씩 건너뛸 때도 사이에 낀 비 소식을 놓치지 않게 강수확률은 그 구간의 최댓값을 쓴다.
+            const hours = upcoming.filter((_, index) => index % step === 0).map((item, index) => {
+                const span = upcoming.slice(index * step, index * step + step).map(slot => slot.rain).filter(Number.isFinite);
+                return { ...item, rain: span.length ? Math.max(...span) : item.rain };
+            });
+            grid.style.setProperty("--forecast-columns", hours.length);
+            grid.replaceChildren();
+            let markedNextDay = false;
+            hours.forEach((item, index) => {
+                const condition = describeWeatherItem(item);
+                const cell = document.createElement("div");
+                cell.className = "forecast-hour";
+                if (index === 0) cell.classList.add("is-current");
+                const isNextDay = !item.time.startsWith(now.date);
+                if (isNextDay && !markedNextDay) {
+                    cell.classList.add("next-day");
+                    markedNextDay = true;
+                }
+                const temperature = Number.isFinite(item.temperature) ? Math.round(item.temperature) + "°" : "--°";
+                const rain = Number.isFinite(item.rain) ? Math.round(item.rain) : null;
+                const probability = rain === null ? "--%" : rain + "%";
+                cell.title = (isNextDay ? "내일 " : "") + item.hour + "시 · " + condition.name + " · " + temperature + " · 강수확률 " + probability;
+                cell.setAttribute("aria-label", cell.title);
+                const rainClass = rain >= 60 ? " rain-high" : rain >= 30 ? " rain-some" : "";
+                [["forecast-time", String(item.hour).padStart(2, "0") + "시"], ["forecast-icon", condition.icon],
+                 ["forecast-temperature", temperature], ["forecast-rain" + rainClass, (rain >= 30 ? "💧" : "") + probability]].forEach(([className, value]) => {
+                    const span = document.createElement("span");
+                    span.className = className;
+                    span.textContent = value;
+                    cell.append(span);
+                });
+                grid.append(cell);
+            });
+        }
+
+        const forecastResizeObserver = new ResizeObserver(renderHourlyForecast);
+        forecastResizeObserver.observe(document.getElementById("hourlyForecast"));
+
+        async function weatherJson(url) {
+            const response = await fetch(url, { signal: AbortSignal.timeout(10000) });
+            if (!response.ok) throw new Error("Weather request failed");
+            return response.json();
+        }
+
+        // 기상청 자료(서버의 /api/weather)가 네이버 등과 같은 값이라 우선 쓰고,
+        // 서버에 인증키가 없거나 기상청이 응답하지 않으면 Open-Meteo로 대신한다.
+        async function loadKmaWeather(lat, lon) {
+            const data = await weatherJson("/api/weather?" + new URLSearchParams({ lat, lon }));
+            return { source: "kma", current: data.current || {}, hourly: data.hourly || [] };
+        }
+
+        async function loadOpenMeteoWeather(lat, lon) {
+            const query = new URLSearchParams({
+                latitude: lat, longitude: lon, timezone: "Asia/Seoul", forecast_days: "2",
+                current: "temperature_2m,relative_humidity_2m,weather_code,is_day",
+                hourly: "temperature_2m,relative_humidity_2m,precipitation_probability,weather_code,is_day"
+            });
+            const data = await weatherJson("https://api.open-meteo.com/v1/forecast?" + query);
+            const current = data.current || {};
+            const hourly = data.hourly || {};
+            return {
+                source: "open-meteo",
+                current: {
+                    temperature: current.temperature_2m, humidity: current.relative_humidity_2m,
+                    code: current.weather_code, isDay: current.is_day
+                },
+                hourly: (hourly.time || []).map((time, index) => ({
+                    time, hour: Number(time.slice(11, 13)), temperature: hourly.temperature_2m?.[index],
+                    rain: hourly.precipitation_probability?.[index], code: hourly.weather_code?.[index], isDay: hourly.is_day?.[index]
+                }))
+            };
+        }
+
+        function describeWeatherItem(item) {
+            const condition = describeWeather(item.code, item.isDay);
+            if (item.label) condition.name = item.label;
+            return condition;
+        }
+
+        // Reuse the same coordinates and providers as the current-weather request.
+        async function fetchWeatherWithCoords(lat, lon, isEstimated = false) {
+            const version = ++forecastRequestVersion;
+            latestWeatherCoordinates = { lat, lon, isEstimated };
+            weatherLastRequestedAt = Date.now();
+            hourlyWeather = [];
+            showForecastMessage("시간대별 예보 불러오는 중...");
+            document.getElementById("weatherTemp").textContent = "--°";
+            document.getElementById("weatherHumidity").textContent = "습도 --%";
+            const dust = document.getElementById("dustBadge");
+            dust.textContent = "미세먼지 불러오는 중";
+            dust.style.background = "";
+            dust.style.color = "";
+            const airQuery = new URLSearchParams({ latitude: lat, longitude: lon, current: "pm10" });
+            const results = await Promise.allSettled([
+                loadKmaWeather(lat, lon).catch(() => loadOpenMeteoWeather(lat, lon)),
+                weatherJson("https://air-quality-api.open-meteo.com/v1/air-quality?" + airQuery)
+            ]);
+            if (version !== forecastRequestVersion) return;
+            if (results[0].status === "fulfilled") {
+                const { source, current, hourly } = results[0].value;
+                document.getElementById("forecastCard").title = "자료: " + (source === "kma" ? "기상청" : "Open-Meteo");
+                const condition = describeWeatherItem(current);
+                const temp = document.getElementById("weatherTemp");
+                temp.textContent = Number.isFinite(current.temperature) ? Math.round(current.temperature) + "° " : "--° ";
+                const conditionText = document.createElement("span");
+                conditionText.className = "weather-condition";
+                conditionText.textContent = condition.icon + " " + condition.name + (isEstimated ? " (위치 추정)" : "");
+                temp.append(conditionText);
+                const humidity = current.humidity;
+                document.getElementById("weatherHumidity").textContent = "습도 " + (Number.isFinite(humidity) ? Math.round(humidity) + "%" : "--%");
+                forecastDate = koreanWeatherClock().date;
+                hourlyWeather = hourly;
+                if (hourlyWeather.length) {
+                    document.getElementById("forecastRetry").hidden = true;
+                    renderHourlyForecast();
+                } else showForecastMessage("시간대별 예보를 불러오지 못했습니다.", true);
+            } else showForecastMessage("일기예보를 불러오지 못했습니다.", true);
+
+            const pm10 = results[1].status === "fulfilled" ? results[1].value.current?.pm10 : null;
+            if (Number.isFinite(pm10)) {
+                const value = Math.round(pm10);
+                const [label, color] = value > 150 ? ["매우나쁨", "#ff8b82"]
+                    : value > 80 ? ["나쁨", "#f0bd64"] : value > 30 ? ["보통", "#75d69f"] : ["좋음", "#7ce4ff"];
+                dust.textContent = "미세먼지 " + label + " " + value + "㎍/㎥";
+                dust.style.background = "rgba(255,255,255,0.05)";
+                dust.style.color = color;
+            } else dust.textContent = "미세먼지 조회 실패";
+        }
+
+        function refreshWeather() {
+            if (!latestWeatherCoordinates) return;
+            const { lat, lon, isEstimated } = latestWeatherCoordinates;
+            fetchWeatherWithCoords(lat, lon, isEstimated);
+        }
+        document.getElementById("forecastRetry").addEventListener("click", refreshWeather);
+        setInterval(() => {
+            if (!latestWeatherCoordinates) return;
+            if (Date.now() - weatherLastRequestedAt >= 30 * 60 * 1000
+                || (forecastDate && forecastDate !== koreanWeatherClock().date)) refreshWeather();
+            else renderHourlyForecast();
+        }, 60000);
+
+        // 8. Presenter Picker & Web Audio Feedback
+        const multiPickerModalBtn = document.getElementById("multiPickerModalBtn");
+        const multiPickerModal = document.getElementById("multiPickerModal");
+        const closeMultiPickerModal = document.getElementById("closeMultiPickerModal");
+        const shuffleBubblesBtn = document.getElementById("shuffleBubblesBtn");
+        const resetBubblesBtn = document.getElementById("resetBubblesBtn");
+        const bubblePickerGrid = document.getElementById("bubblePickerGrid");
+
+        let bubbleList = [];
+
+        function fitBubblePicker() {
+            if (multiPickerModal.hidden || !bubblePickerGrid.children.length) return;
+            const count = bubblePickerGrid.children.length;
+            const width = bubblePickerGrid.clientWidth - 16;
+            const height = bubblePickerGrid.clientHeight - 16;
+            if (width <= 0 || height <= 0) return;
+            const gap = width < 600 ? 6 : 10;
+            let best = { size: 0, columns: 1, rows: count };
+            for (let columns = 1; columns <= count; columns++) {
+                const rows = Math.ceil(count / columns);
+                const size = Math.min((width - gap * (columns - 1)) / columns,
+                    (height - gap * (rows - 1)) / rows);
+                if (size > best.size) best = { size, columns, rows };
+            }
+            bubblePickerGrid.style.setProperty("--bubble-columns", best.columns);
+            bubblePickerGrid.style.setProperty("--bubble-rows", best.rows);
+            bubblePickerGrid.style.setProperty("--bubble-gap", gap + "px");
+            bubblePickerGrid.style.setProperty("--bubble-size", Math.max(1, Math.floor(Math.min(146, best.size))) + "px");
+        }
+
+        const bubbleResizeObserver = new ResizeObserver(fitBubblePicker);
+        bubbleResizeObserver.observe(bubblePickerGrid);
+
+        function playTingSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                
+                const osc1 = ctx.createOscillator();
+                const osc2 = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc1.type = 'sine';
+                osc1.frequency.setValueAtTime(1046.50, ctx.currentTime); // C6 맑은 띵 소리
+                osc1.frequency.exponentialRampToValueAtTime(2093.00, ctx.currentTime + 0.15); // C7
+
+                osc2.type = 'triangle';
+                osc2.frequency.setValueAtTime(1318.51, ctx.currentTime); // E6
+                osc2.frequency.exponentialRampToValueAtTime(2637.02, ctx.currentTime + 0.15); // E7
+
+                gain.gain.setValueAtTime(0.6, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+
+                osc1.connect(gain);
+                osc2.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc1.start();
+                osc2.start();
+                osc1.stop(ctx.currentTime + 0.45);
+                osc2.stop(ctx.currentTime + 0.45);
+            } catch(err) {
+                console.error("Audio error:", err);
+            }
+        }
+
+        function renderBubblePicker(shouldShuffle = true) {
+            if (!bubblePickerGrid) return;
+            bubblePickerGrid.replaceChildren();
+
+            let targetStudents = [...rosterStudents];
+            if (targetStudents.length === 0) {
+                for (let i = 1; i <= 20; i++) {
+                    targetStudents.push({ number: String(i), name: `${i}번` });
+                }
+            }
+
+            if (shouldShuffle) {
+                for (let i = targetStudents.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [targetStudents[i], targetStudents[j]] = [targetStudents[j], targetStudents[i]];
+                }
+            }
+
+            bubbleList = targetStudents;
+
+            bubbleList.forEach((student) => {
+                const avatar = getAvatarForStudent(student.number);
+                const card = document.createElement("div");
+                card.className = "bubble-card";
+                card.title = "터치하여 학생을 추첨하세요!";
+                card.innerHTML = '<span class="bubble-question">❓</span>';
+
+                card.addEventListener("click", () => {
+                    if (card.classList.contains("revealed")) return;
+                    playTingSound();
+                    card.classList.add("revealed");
+                    card.innerHTML = `
+                        <div class="bubble-avatar">${avatar.icon}</div>
+                        <div class="bubble-name">${student.name}</div>
+                    `;
+                });
+
+                bubblePickerGrid.append(card);
+            });
+            fitBubblePicker();
+        }
+
+        multiPickerModalBtn.addEventListener("click", () => {
+            multiPickerModal.hidden = false;
+            renderBubblePicker(true);
+        });
+
+        closeMultiPickerModal.addEventListener("click", () => {
+            multiPickerModal.hidden = true;
+        });
+
+        shuffleBubblesBtn.addEventListener("click", () => {
+            renderBubblePicker(true);
+        });
+
+        resetBubblesBtn.addEventListener("click", () => {
+            renderBubblePicker(false);
+        });
+
+        // 9. Focus Timer Modal
+        const timerModalBtn = document.getElementById("timerModalBtn");
+        const timerModal = document.getElementById("timerModal");
+        const closeTimerModal = document.getElementById("closeTimerModal");
+        const timerDisplay = document.getElementById("timerDisplay");
+        const startTimerBtn = document.getElementById("startTimerBtn");
+        const resetTimerBtn = document.getElementById("resetTimerBtn");
+
+        let timerSeconds = 300;
+        let timerInterval = null;
+        let isTimerRunning = false;
+
+        function updateTimerDisplay() {
+            const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const s = String(timerSeconds % 60).padStart(2, '0');
+            timerDisplay.textContent = `${m}:${s}`;
+        }
+
+        window.setTimerSec = function(sec) {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            startTimerBtn.textContent = "시작";
+            timerSeconds = sec;
+            updateTimerDisplay();
+        };
+
+        timerModalBtn.addEventListener("click", () => { timerModal.hidden = false; });
+        closeTimerModal.addEventListener("click", () => { timerModal.hidden = true; });
+
+        startTimerBtn.addEventListener("click", () => {
+            if (isTimerRunning) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                startTimerBtn.textContent = "시작";
+            } else {
+                isTimerRunning = true;
+                startTimerBtn.textContent = "일시정지";
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        startTimerBtn.textContent = "시작";
+                        alert("⏰ 타이머 시간이 완료되었습니다!");
+                    }
+                }, 1000);
+            }
+        });
+
+        resetTimerBtn.addEventListener("click", () => {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            startTimerBtn.textContent = "시작";
+            timerSeconds = 300;
+            updateTimerDisplay();
+        });
+
+        // 10. Drag & Drop Card Reordering
+        const grid = document.getElementById("dashboardGrid");
+        let draggedItem = null;
+
+        // 카드 순서는 서버 설정(loadDashboardSettingsFromDB)에서 받아 적용한다.
+
+        grid.addEventListener("dragstart", (e) => {
+            const card = e.target.closest(".widget-card");
+            if (card) {
+                draggedItem = card;
+                card.classList.add("dragging");
+                e.dataTransfer.effectAllowed = "move";
+            }
+        });
+
+        grid.addEventListener("dragend", (e) => {
+            const card = e.target.closest(".widget-card");
+            if (card) {
+                card.classList.remove("dragging");
+                draggedItem = null;
+                // Save order
+                syncDashboardSettingsToDB();
+            }
+        });
+
+        grid.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            const afterElement = getDragAfterElement(grid, e.clientX, e.clientY);
+            if (draggedItem) {
+                if (afterElement == null) {
+                    grid.appendChild(draggedItem);
+                } else {
+                    grid.insertBefore(draggedItem, afterElement);
+                }
+            }
+        });
+
+        function getDragAfterElement(container, x, y) {
+            const draggableElements = [...container.querySelectorAll('.widget-card:not(.dragging)')];
+            let closest = null;
+            let closestDistance = Number.POSITIVE_INFINITY;
+            for (const child of draggableElements) {
+                const box = child.getBoundingClientRect();
+                const centerX = box.left + box.width / 2;
+                const centerY = box.top + box.height / 2;
+                const distance = Math.hypot(x - centerX, y - centerY);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closest = { element: child, centerX, centerY };
+                }
+            }
+            if (!closest) return null;
+            const isBeforeClosest = x < closest.centerX || (x === closest.centerX && y < closest.centerY);
+            return isBeforeClosest ? closest.element : closest.element.nextElementSibling;
+        }
+    </script>
+</body>
+</html>

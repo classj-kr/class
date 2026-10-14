@@ -19,6 +19,17 @@
     },
     {
       "id": "goguryeo-fifth", "page": 16, "crop": [1100,748,1540,1310],
+      "overlapPriority": ["신라", "백제", "가야", "고구려"],
+      "connectedRegions": ["고구려"],
+      "annotationSeams": [
+        {"name":"실직의 도시 기호", "center":[315,351], "radius":7},
+        {"name":"금관가야의 도시 기호와 화살표", "center":[307,455], "radius":10}
+      ],
+      "annotationHoles": [
+        {"name":"웅진 기호가 가린 색면", "center":[246.7,402.5], "radius":12},
+        {"name":"백제·신라·가야 접경의 화살표", "center":[261.8,421.4], "radius":14},
+        {"name":"신라 남부의 붉은 화살촉", "center":[314,443], "radius":10}
+      ],
       "controls": [
         {"name":"국내성", "pixel":[210,178], "xy":[126.19455,41.12818]},
         {"name":"백두산", "pixel":[276,146], "xy":[128.055,41.993]},

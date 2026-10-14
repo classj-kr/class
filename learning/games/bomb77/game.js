@@ -23,7 +23,6 @@
     let actionPending = false;
     let lastActionNumber = -1;
     let toastTimer = null;
-    let audioContext = null;
 
     function myId() { return lobby?.snapshot().myId || "preview-me"; }
     function myTurn() { return gameState?.phase === "playing" && gameState.turnPlayerId === myId(); }
@@ -53,24 +52,6 @@
         $("toast").textContent = message;
         $("toast").classList.remove("hidden");
         toastTimer = setTimeout(() => $("toast").classList.add("hidden"), 2600);
-    }
-
-    function tone(kind) {
-        try {
-            audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            const oscillator = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            oscillator.connect(gain).connect(audioContext.destination);
-            oscillator.type = kind === "explosion" ? "sawtooth" : "square";
-            oscillator.frequency.setValueAtTime(kind === "explosion" ? 130 : 520, now);
-            oscillator.frequency.exponentialRampToValueAtTime(kind === "explosion" ? 42 : 760, now + (kind === "explosion" ? .45 : .12));
-            gain.gain.setValueAtTime(.0001, now);
-            gain.gain.exponentialRampToValueAtTime(kind === "explosion" ? .16 : .045, now + .015);
-            gain.gain.exponentialRampToValueAtTime(.0001, now + (kind === "explosion" ? .52 : .16));
-            oscillator.start(now);
-            oscillator.stop(now + (kind === "explosion" ? .55 : .18));
-        } catch (_) {}
     }
 
     function renderPlayers() {
@@ -175,7 +156,7 @@
         selectedCardId = selectedCardId === cardId ? null : cardId;
         renderHand();
         renderControls();
-        tone("select");
+        window.ClassGameSfx?.play("card");
     }
 
     function renderHand() {
@@ -185,6 +166,7 @@
             button.type = "button";
             button.className = "hand-option";
             button.dataset.cardId = card.id;
+            button.dataset.sfx = "none";
             button.classList.toggle("is-selected", selectedCardId === card.id);
             button.disabled = !canAct || !legalCard(card);
             button.setAttribute("aria-label", `${cardLabel(card)} 카드 선택${myTurn() && !legalCard(card) ? " · 첫 장에는 ×2 불가" : ""}`);
@@ -265,7 +247,7 @@
         if(previous && withoutClock(previous) === withoutClock(state)) { gameState=state; renderTurnClock(); return; }
         const before = window.ClassGameMotion?.captureCards();
         const changed = state.actionNumber !== lastActionNumber;
-        const exploded = changed && state.lastEvent?.exploded;
+        const exploded = Boolean(previous && changed && state.lastEvent?.exploded);
         gameState = state;
         actionPending = false;
         if (changed) {
@@ -293,7 +275,7 @@
             document.body.classList.remove("explosion-flash");
             requestAnimationFrame(() => document.body.classList.add("explosion-flash"));
             setTimeout(() => document.body.classList.remove("explosion-flash"), 620);
-            tone("explosion");
+            window.ClassGameSfx?.play("explosion");
         }
     }
 

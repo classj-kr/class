@@ -19,14 +19,15 @@
                 </div>
                 <main class="browser-state-viewport" id="browser-state-viewport" data-browser-viewport>
                     <section class="browser-search-home" data-browser-page="home" data-search-service>
-                        <header><strong>교실 검색 <small>Class Search</small></strong><p>검색어와 관련된 로컬 웹페이지를 찾아 결과 목록으로 보여 주는 검색 서비스입니다.</p></header>
+                        <header><strong>교실 검색 <small>Class Search</small></strong><p>아래 기관·글·날짜는 출처 비교를 위한 가상 자료입니다. ‘2026년 10월 12일 새봄도서관이 문을 여는가’를 확인해 보세요.</p></header>
                         <form data-browser-search-form>
                             <label for="browserSearchInput">찾고 싶은 내용 <small>Search Query</small></label>
-                            <div><input id="browserSearchInput" data-browser-search-input value="혜성의 꼬리는 왜 생길까?" autocomplete="off"><button type="submit">검색 <small>Search</small></button></div>
+                            <div><input id="browserSearchInput" data-browser-search-input value="새봄도서관 휴관일" autocomplete="off"><button type="submit">검색 <small>Search</small></button></div>
                         </form>
                         <div class="browser-search-topics" aria-label="이 검색 모형에 들어 있는 자료 주제">
                             <span>검색 가능한 자료 <small>Available Topics</small></span>
                             <div>
+                                <button type="button" data-browser-suggestion="도서관">도서관 운영일</button>
                                 <button type="button" data-browser-suggestion="혜성">혜성 <small>Comet</small></button>
                                 <button type="button" data-browser-suggestion="수달">수달 <small>Otter</small></button>
                                 <button type="button" data-browser-suggestion="강">강 <small>River</small></button>
@@ -93,6 +94,20 @@
         const suggestionButtons = Array.from(lab.querySelectorAll("[data-browser-suggestion]"));
         const pageViews = Array.from(lab.querySelectorAll("[data-browser-page]"));
         const catalog = {
+            libraryArchive: {
+                site: "새봄도서관", domain: "saebom.example", url: "https://saebom.example/notices/2025-hours",
+                title: "2025년 도서관 이용 안내", summary: "월요일은 정기 휴관일입니다. 방문 전 운영 시간을 확인해 주세요.",
+                body: "이 안내의 적용 기간은 2025년 1월 1일부터 12월 31일까지입니다. 새봄도서관은 매주 월요일 휴관합니다. 특별 운영일은 해당 연도의 별도 공지를 확인해 주세요.",
+                publisher: "새봄도서관", author: "운영팀", date: "2025-01-02 게시", evidence: "2025년 운영 계획 · 적용 기간 명시",
+                keywords: ["도서관", "새봄", "휴관", "운영"], related: "libraryCurrent"
+            },
+            libraryCurrent: {
+                site: "새봄도서관", domain: "saebom.example", url: "https://saebom.example/notices/2026-special",
+                title: "2026년 10월 특별 운영 안내", summary: "일부 정기 휴관일에 특별 운영합니다. 대상 날짜와 지점을 확인해 주세요.",
+                body: "새봄도서관은 2026년 10월 12일 월요일에 독서 행사를 위해 오전 9시부터 오후 6시까지 운영합니다. 이 공지는 새봄도서관 본관에만 적용됩니다. 다른 지점은 각 지점의 공지를 확인해 주세요.",
+                publisher: "새봄도서관", author: "운영팀", date: "2026-10-01 게시", evidence: "2026년 10월 특별 운영 일정 · 적용 지점 명시",
+                keywords: ["도서관", "새봄", "휴관", "운영"], related: "libraryArchive"
+            },
             comet: {
                 site: "어린이 천문 관측소", domain: "astro.local", url: "https://astro.local/comets/tail",
                 title: "혜성의 꼬리는 어떻게 생길까?", summary: "혜성이 태양 가까이 갈 때 얼음과 먼지가 어떻게 꼬리를 만드는지 관측 자료로 설명합니다.",
@@ -267,6 +282,11 @@
         function renderCurrentPage() {
             const tab = activeTab();
             const page = currentPage();
+            lab.dataset.browserPage=page.type;
+            if(page.type==='page'){
+                const visited=new Set((lab.dataset.visitedSources||'').split(',').filter(Boolean));
+                visited.add(page.pageId);lab.dataset.visitedSources=[...visited].join(',');
+            }
             tab.title = page.title;
             pageViews.forEach((view) => { view.hidden = view.dataset.browserPage !== page.type; });
             urlOutput.textContent = page.url;

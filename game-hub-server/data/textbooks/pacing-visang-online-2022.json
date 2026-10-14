@@ -1,0 +1,4145 @@
+{
+  "schemaVersion": 1,
+  "plans": [
+    {
+      "id": "visang-online-2473",
+      "editionId": "tb-5492996c1e1fcd32",
+      "curriculum": "2022",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "2473",
+      "sourceUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/intro/intro.html",
+      "sourceFile": "visang-browser-outlines/2473.json",
+      "sha256": "d75cc26c14e72a5b03395dcf192b78149a3617c3d6a2cc1caa8d8dfdffc1a2c6",
+      "exhibitionUrl": "https://text.vivasam.com/detail/87",
+      "format": "official-ebook-outline",
+      "curriculumVerification": "official-2022-exhibition-link",
+      "coverageScope": "all-numbered-ebook-lessons",
+      "scheduleCompleteness": "original-plan-comparison-pending",
+      "additionalResources": [
+        {
+          "sourcePointer": "/groups/0/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=30",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "혼합물의 분리를 이용한 우리 조상의 지혜"
+          },
+          "unit": "혼합물의 분리",
+          "reason": "reading-without-assigned-period"
+        },
+        {
+          "sourcePointer": "/groups/1/lessons/10",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=58",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "흰개미의 냉방 기술"
+          },
+          "unit": "열과 우리 생활",
+          "reason": "reading-without-assigned-period"
+        },
+        {
+          "sourcePointer": "/groups/2/lessons/10",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=86",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "인공지능(AI)을 활용한 일기 예보"
+          },
+          "unit": "날씨와 우리 생활",
+          "reason": "reading-without-assigned-period"
+        },
+        {
+          "sourcePointer": "/groups/3/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=112",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "지속가능하게 에너지를 이용하는 에너지 자립 마을"
+          },
+          "unit": "자원과 에너지",
+          "reason": "reading-without-assigned-period"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "visang-online-2473-g1-r1",
+          "sequence": 1,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/0/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=12",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "혼합물의 분리"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "혼합물의 분리",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "12",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g1-r2",
+          "sequence": 2,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/0/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=16",
+            "period": "2 차시",
+            "subunit": null,
+            "topic": "1. 혼합물을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "1. 혼합물을 알아볼까요?",
+          "periodText": "2 차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "16",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g1-r3",
+          "sequence": 3,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/0/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=18",
+            "period": "3 차시",
+            "subunit": null,
+            "topic": "2. 알갱이의 크기가 다른 고체 혼합물은 어떻게 분리할까요?"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "2. 알갱이의 크기가 다른 고체 혼합물은 어떻게 분리할까요?",
+          "periodText": "3 차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "18",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g1-r4",
+          "sequence": 4,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/0/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=20",
+            "period": "4 차시",
+            "subunit": null,
+            "topic": "3. 골고루 섞이지 않는 액체 혼합물은 어떻게 분리할까요?"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "3. 골고루 섞이지 않는 액체 혼합물은 어떻게 분리할까요?",
+          "periodText": "4 차시",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "20",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g1-r5",
+          "sequence": 5,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/0/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=22",
+            "period": "5~6 차시",
+            "subunit": null,
+            "topic": "4. 물에 용해되는 성질이 다른 고체 혼합물은 어떻게 분리할까요?"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "4. 물에 용해되는 성질이 다른 고체 혼합물은 어떻게 분리할까요?",
+          "periodText": "5~6 차시",
+          "periodNumbers": [
+            5,
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "22",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g1-r6",
+          "sequence": 6,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/0/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=26",
+            "period": "7 차시",
+            "subunit": null,
+            "topic": "5. 혼합물의 분리를 이용한 장치에는 어떤 것이 있을까요?"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "5. 혼합물의 분리를 이용한 장치에는 어떤 것이 있을까요?",
+          "periodText": "7 차시",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "26",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g1-r7",
+          "sequence": 7,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/0/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=28",
+            "period": "8~9 차시",
+            "subunit": null,
+            "topic": "6. 혼합물의 분리를 이용한 장치를 소개해 보자!"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "6. 혼합물의 분리를 이용한 장치를 소개해 보자!",
+          "periodText": "8~9 차시",
+          "periodNumbers": [
+            8,
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "28",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g1-r9",
+          "sequence": 8,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/0/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=32",
+            "period": "10 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "혼합물의 분리",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "10 차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "32",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r1",
+          "sequence": 9,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/1/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=34",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "열과 우리 생활"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "열과 우리 생활",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "34",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r2",
+          "sequence": 10,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/1/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=38",
+            "period": "2 차시",
+            "subunit": null,
+            "topic": "1. 따뜻하고 차가운 정도를 어떻게 표현할까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "1. 따뜻하고 차가운 정도를 어떻게 표현할까요?",
+          "periodText": "2 차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "38",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r3",
+          "sequence": 11,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/1/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=40",
+            "period": "3 차시",
+            "subunit": null,
+            "topic": "2. 온도계를 사용하여 온도를 측정해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "2. 온도계를 사용하여 온도를 측정해 볼까요?",
+          "periodText": "3 차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "40",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r4",
+          "sequence": 12,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/1/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=42",
+            "period": "4 차시",
+            "subunit": null,
+            "topic": "3. 온도가 다른 두 물체가 접촉하면 온도는 각각 어떻게 변할까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "3. 온도가 다른 두 물체가 접촉하면 온도는 각각 어떻게 변할까요?",
+          "periodText": "4 차시",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "42",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r5",
+          "sequence": 13,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/1/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=44",
+            "period": "5 차시",
+            "subunit": null,
+            "topic": "4. 고체에서 열은 어떻게 이동할까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "4. 고체에서 열은 어떻게 이동할까요?",
+          "periodText": "5 차시",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "44",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r6",
+          "sequence": 14,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/1/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=46",
+            "period": "6~7 차시",
+            "subunit": null,
+            "topic": "5. 액체와 기체에서 열은 어떻게 이동할까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "5. 액체와 기체에서 열은 어떻게 이동할까요?",
+          "periodText": "6~7 차시",
+          "periodNumbers": [
+            6,
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "46",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r7",
+          "sequence": 15,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/1/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=50",
+            "period": "8 차시",
+            "subunit": null,
+            "topic": "6. 빛에 의한 열의 이동을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "6. 빛에 의한 열의 이동을 알아볼까요?",
+          "periodText": "8 차시",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "50",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r8",
+          "sequence": 16,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/1/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=52",
+            "period": "9 차시",
+            "subunit": null,
+            "topic": "7. 열의 이동 방식이 다양함을 설명해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "7. 열의 이동 방식이 다양함을 설명해 볼까요?",
+          "periodText": "9 차시",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "52",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r9",
+          "sequence": 17,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/1/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=54",
+            "period": "10 차시",
+            "subunit": null,
+            "topic": "8. 일상생활에서 단열을 어떻게 이용할까요?"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "8. 일상생활에서 단열을 어떻게 이용할까요?",
+          "periodText": "10 차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "54",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r10",
+          "sequence": 18,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/1/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=56",
+            "period": "11~12 차시",
+            "subunit": null,
+            "topic": "9. 온도를 오랫동안 일정하게 유지할 수 있는 장치를 만들어 보자!"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "9. 온도를 오랫동안 일정하게 유지할 수 있는 장치를 만들어 보자!",
+          "periodText": "11~12 차시",
+          "periodNumbers": [
+            11,
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "56",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g2-r12",
+          "sequence": 19,
+          "sourceRow": 12,
+          "sourcePointer": "/groups/1/lessons/11",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=60",
+            "period": "13 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "열과 우리 생활",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "13 차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "60",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r1",
+          "sequence": 20,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/2/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=62",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "날씨와 우리 생활"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "날씨와 우리 생활",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "62",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r2",
+          "sequence": 21,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/2/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=66",
+            "period": "2 차시",
+            "subunit": null,
+            "topic": "1. 기상 요소를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "1. 기상 요소를 알아볼까요?",
+          "periodText": "2 차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "66",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r3",
+          "sequence": 22,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/2/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=68",
+            "period": "3 차시",
+            "subunit": null,
+            "topic": "2. 기상 자료에서 규칙성을 찾아볼까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "2. 기상 자료에서 규칙성을 찾아볼까요?",
+          "periodText": "3 차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "68",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r4",
+          "sequence": 23,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/2/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=70",
+            "period": "4 차시",
+            "subunit": null,
+            "topic": "3. 날씨는 우리 생활에 어떤 영향을 줄까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "3. 날씨는 우리 생활에 어떤 영향을 줄까요?",
+          "periodText": "4 차시",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "70",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r5",
+          "sequence": 24,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/2/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=72",
+            "period": "5~6 차시",
+            "subunit": null,
+            "topic": "4. 이슬과 안개는 어떻게 생길까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "4. 이슬과 안개는 어떻게 생길까요?",
+          "periodText": "5~6 차시",
+          "periodNumbers": [
+            5,
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "72",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r6",
+          "sequence": 25,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/2/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=74",
+            "period": "7 차시",
+            "subunit": null,
+            "topic": "5. 이슬, 안개, 구름을 비교해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "5. 이슬, 안개, 구름을 비교해 볼까요?",
+          "periodText": "7 차시",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "74",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r7",
+          "sequence": 26,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/2/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=76",
+            "period": "8 차시",
+            "subunit": null,
+            "topic": "6. 고기압과 저기압을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "6. 고기압과 저기압을 알아볼까요?",
+          "periodText": "8 차시",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "76",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r8",
+          "sequence": 27,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/2/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=78",
+            "period": "9 차시",
+            "subunit": null,
+            "topic": "7. 바닷가에서 바람은 어떻게 불까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "7. 바닷가에서 바람은 어떻게 불까요?",
+          "periodText": "9 차시",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "78",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r9",
+          "sequence": 28,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/2/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=82",
+            "period": "10 차시",
+            "subunit": null,
+            "topic": "8. 날씨의 특징을 기상 요소로 표현해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "8. 날씨의 특징을 기상 요소로 표현해 볼까요?",
+          "periodText": "10 차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "82",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r10",
+          "sequence": 29,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/2/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=84",
+            "period": "11~12 차시",
+            "subunit": null,
+            "topic": "9. 날씨 알림 띄움 창을 만들어 보자!"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "9. 날씨 알림 띄움 창을 만들어 보자!",
+          "periodText": "11~12 차시",
+          "periodNumbers": [
+            11,
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "84",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g3-r12",
+          "sequence": 30,
+          "sourceRow": 12,
+          "sourcePointer": "/groups/2/lessons/11",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=88",
+            "period": "13 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "날씨와 우리 생활",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "13 차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "88",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r1",
+          "sequence": 31,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/3/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=90",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "자원과 에너지"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "자원과 에너지",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "90",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r2",
+          "sequence": 32,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/3/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=94",
+            "period": "2 차시",
+            "subunit": null,
+            "topic": "1. 우리는 생활에서 어떤 자원을 이용할까요?"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "1. 우리는 생활에서 어떤 자원을 이용할까요?",
+          "periodText": "2 차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "94",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r3",
+          "sequence": 33,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/3/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=96",
+            "period": "3 차시",
+            "subunit": null,
+            "topic": "2. 자원을 계속 쓰면 어떻게 될까요?"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "2. 자원을 계속 쓰면 어떻게 될까요?",
+          "periodText": "3 차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "96",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r4",
+          "sequence": 34,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/3/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=98",
+            "period": "4~5 차시",
+            "subunit": null,
+            "topic": "3. 재생에너지에는 어떤 것이 있을까요?"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "3. 재생에너지에는 어떤 것이 있을까요?",
+          "periodText": "4~5 차시",
+          "periodNumbers": [
+            4,
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "98",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r5",
+          "sequence": 35,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/3/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=102",
+            "period": "6 차시",
+            "subunit": null,
+            "topic": "4. 에너지를 지속가능하게 이용하려면 어떻게 해야 할까요?"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "4. 에너지를 지속가능하게 이용하려면 어떻게 해야 할까요?",
+          "periodText": "6 차시",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "102",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r6",
+          "sequence": 36,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/3/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=104",
+            "period": "7~8 차시",
+            "subunit": null,
+            "topic": "5. 자원과 에너지를 효율적으로 이용하려면 어떻게 해야 할까요?"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "5. 자원과 에너지를 효율적으로 이용하려면 어떻게 해야 할까요?",
+          "periodText": "7~8 차시",
+          "periodNumbers": [
+            7,
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "104",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r7",
+          "sequence": 37,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/3/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=108",
+            "period": "9 차시",
+            "subunit": null,
+            "topic": "6. 자원과 에너지를 생활 속에서 어떻게 효율적으로 이용할까요?"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "6. 자원과 에너지를 생활 속에서 어떻게 효율적으로 이용할까요?",
+          "periodText": "9 차시",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "108",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r8",
+          "sequence": 38,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/3/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=110",
+            "period": "10~11 차시",
+            "subunit": null,
+            "topic": "7. 자원과 에너지의 효율적 이용을 주제로 한 공익 광고를 만들어 공유해 보자!"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "7. 자원과 에너지의 효율적 이용을 주제로 한 공익 광고를 만들어 공유해 보자!",
+          "periodText": "10~11 차시",
+          "periodNumbers": [
+            10,
+            11
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "110",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2473-g4-r10",
+          "sequence": 39,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/3/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=114",
+            "period": "12 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "자원과 에너지",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "12 차시",
+          "periodNumbers": [
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "114",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        }
+      ]
+    },
+    {
+      "id": "visang-online-2477",
+      "editionId": "tb-5492996c1e1fcd32",
+      "curriculum": "2022",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "2477",
+      "sourceUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/intro/intro.html",
+      "sourceFile": "visang-browser-outlines/2477.json",
+      "sha256": "4edf282df77b522f066f61754567bdca6807546b4178cc3e32fc8a0992d1bcc7",
+      "exhibitionUrl": "https://text.vivasam.com/detail/87",
+      "format": "official-ebook-outline",
+      "curriculumVerification": "official-2022-exhibition-link",
+      "coverageScope": "all-numbered-ebook-lessons",
+      "scheduleCompleteness": "original-plan-comparison-pending",
+      "additionalResources": [
+        {
+          "sourcePointer": "/groups/0/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=34",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "명화 속 사계절"
+          },
+          "unit": "계절의 변화",
+          "reason": "reading-without-assigned-period"
+        },
+        {
+          "sourcePointer": "/groups/1/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=56",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "생태계를 살리는 ‘디지털 탄소 발자국 줄이기’"
+          },
+          "unit": "물질의 연소",
+          "reason": "reading-without-assigned-period"
+        },
+        {
+          "sourcePointer": "/groups/2/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=82",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "우리나라 최초의 전깃불"
+          },
+          "unit": "전기의 이용",
+          "reason": "reading-without-assigned-period"
+        },
+        {
+          "sourcePointer": "/groups/3/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=102",
+            "period": "세상 속 과학 이야기",
+            "subunit": null,
+            "topic": "과학이 바꾸는 미래 직업"
+          },
+          "unit": "과학과 나의 진로",
+          "reason": "reading-without-assigned-period"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "visang-online-2477-g1-r1",
+          "sequence": 1,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/0/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=12",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "계절의 변화"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "계절의 변화",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "12",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r2",
+          "sequence": 2,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/0/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=16",
+            "period": "2~3 차시",
+            "subunit": null,
+            "topic": "1. 태양 고도는 어떻게 측정할까요?"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "1. 태양 고도는 어떻게 측정할까요?",
+          "periodText": "2~3 차시",
+          "periodNumbers": [
+            2,
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "16",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r3",
+          "sequence": 3,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/0/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=18",
+            "period": "4~5 차시",
+            "subunit": null,
+            "topic": "2. 하루 동안 태양 고도, 그림자 길이, 기온을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "2. 하루 동안 태양 고도, 그림자 길이, 기온을 알아볼까요?",
+          "periodText": "4~5 차시",
+          "periodNumbers": [
+            4,
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "18",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r4",
+          "sequence": 4,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/0/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=22",
+            "period": "6 차시",
+            "subunit": null,
+            "topic": "3. 계절에 따른 태양의 남중 고도와 낮의 길이를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "3. 계절에 따른 태양의 남중 고도와 낮의 길이를 알아볼까요?",
+          "periodText": "6 차시",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "22",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r5",
+          "sequence": 5,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/0/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=24",
+            "period": "7 차시",
+            "subunit": null,
+            "topic": "4. 계절에 따라 지표면이 받는 태양 에너지양을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "4. 계절에 따라 지표면이 받는 태양 에너지양을 알아볼까요?",
+          "periodText": "7 차시",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "24",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r6",
+          "sequence": 6,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/0/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=26",
+            "period": "8~9 차시",
+            "subunit": null,
+            "topic": "5. 계절 변화의 원인은 무엇일까요?"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "5. 계절 변화의 원인은 무엇일까요?",
+          "periodText": "8~9 차시",
+          "periodNumbers": [
+            8,
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "26",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r7",
+          "sequence": 7,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/0/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=30",
+            "period": "10 차시",
+            "subunit": null,
+            "topic": "6. 태양 고도의 변화와 관련된 예를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "6. 태양 고도의 변화와 관련된 예를 알아볼까요?",
+          "periodText": "10 차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "30",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r8",
+          "sequence": 8,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/0/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=32",
+            "period": "11~12 차시",
+            "subunit": null,
+            "topic": "7. 태양 고도의 변화와 관련된 발명품을 설계해 보자!"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "7. 태양 고도의 변화와 관련된 발명품을 설계해 보자!",
+          "periodText": "11~12 차시",
+          "periodNumbers": [
+            11,
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "32",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g1-r10",
+          "sequence": 9,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/0/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=36",
+            "period": "13 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "계절의 변화",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "13 차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "36",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r1",
+          "sequence": 10,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/1/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=38",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "물질의 연소"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "물질의 연소",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "38",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r2",
+          "sequence": 11,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/1/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=42",
+            "period": "2~3 차시",
+            "subunit": null,
+            "topic": "1. 서로 다른 물질을 섞었을 때 물질의 성질은 어떻게 될까요?"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "1. 서로 다른 물질을 섞었을 때 물질의 성질은 어떻게 될까요?",
+          "periodText": "2~3 차시",
+          "periodNumbers": [
+            2,
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "42",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r3",
+          "sequence": 12,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/1/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=44",
+            "period": "4 차시",
+            "subunit": null,
+            "topic": "2. 물질이 탈 때 어떤 현상이 나타날까요?"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "2. 물질이 탈 때 어떤 현상이 나타날까요?",
+          "periodText": "4 차시",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "44",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r4",
+          "sequence": 13,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/1/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=46",
+            "period": "5~7 차시",
+            "subunit": null,
+            "topic": "3. 물질이 타려면 어떤 조건이 필요할까요?"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "3. 물질이 타려면 어떤 조건이 필요할까요?",
+          "periodText": "5~7 차시",
+          "periodNumbers": [
+            5,
+            6,
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 3,
+          "pages": "46",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r5",
+          "sequence": 14,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/1/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=50",
+            "period": "8~9 차시",
+            "subunit": null,
+            "topic": "4. 연소 과정에서 물질의 성질은 어떻게 될까요?"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "4. 연소 과정에서 물질의 성질은 어떻게 될까요?",
+          "periodText": "8~9 차시",
+          "periodNumbers": [
+            8,
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "50",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r6",
+          "sequence": 15,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/1/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=52",
+            "period": "10 차시",
+            "subunit": null,
+            "topic": "5. 연소 생성물은 생태계에 어떤 피해를 줄까요?"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "5. 연소 생성물은 생태계에 어떤 피해를 줄까요?",
+          "periodText": "10 차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "52",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r7",
+          "sequence": 16,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/1/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=54",
+            "period": "11~12 차시",
+            "subunit": null,
+            "topic": "6. 연소 생성물이 생태계에 주는 피해의 해결책을 제안하고 공유해 보자!"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "6. 연소 생성물이 생태계에 주는 피해의 해결책을 제안하고 공유해 보자!",
+          "periodText": "11~12 차시",
+          "periodNumbers": [
+            11,
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "54",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g2-r9",
+          "sequence": 17,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/1/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=58",
+            "period": "13 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "물질의 연소",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "13 차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "58",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r1",
+          "sequence": 18,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/2/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=60",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "전기의 이용"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "전기의 이용",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "60",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r2",
+          "sequence": 19,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/2/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=64",
+            "period": "2 차시",
+            "subunit": null,
+            "topic": "1. 전구에 불을 켜 볼까요?"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "1. 전구에 불을 켜 볼까요?",
+          "periodText": "2 차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "64",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r3",
+          "sequence": 20,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/2/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=66",
+            "period": "3 차시",
+            "subunit": null,
+            "topic": "2. 전구에 불이 켜지는 전기 회로는 어떤 특징이 있을까요?"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "2. 전구에 불이 켜지는 전기 회로는 어떤 특징이 있을까요?",
+          "periodText": "3 차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "66",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r4",
+          "sequence": 21,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/2/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=70",
+            "period": "4 차시",
+            "subunit": null,
+            "topic": "3. 전지의 개수에 따른 전기 회로의 특징을 비교해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "3. 전지의 개수에 따른 전기 회로의 특징을 비교해 볼까요?",
+          "periodText": "4 차시",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "70",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r5",
+          "sequence": 22,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/2/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=72",
+            "period": "5 차시",
+            "subunit": null,
+            "topic": "4. 전자석은 무엇일까요?"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "4. 전자석은 무엇일까요?",
+          "periodText": "5 차시",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "72",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r6",
+          "sequence": 23,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/2/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=74",
+            "period": "6~7 차시",
+            "subunit": null,
+            "topic": "5. 전자석의 성질을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "5. 전자석의 성질을 알아볼까요?",
+          "periodText": "6~7 차시",
+          "periodNumbers": [
+            6,
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "74",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r7",
+          "sequence": 24,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/2/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=76",
+            "period": "8 차시",
+            "subunit": null,
+            "topic": "6. 전자석은 어디에 사용할까요?"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "6. 전자석은 어디에 사용할까요?",
+          "periodText": "8 차시",
+          "periodNumbers": [
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "76",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r8",
+          "sequence": 25,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/2/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=78",
+            "period": "9 차시",
+            "subunit": null,
+            "topic": "7. 전기를 효율적이고 안전하게 사용하는 방법을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "7. 전기를 효율적이고 안전하게 사용하는 방법을 알아볼까요?",
+          "periodText": "9 차시",
+          "periodNumbers": [
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "78",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r9",
+          "sequence": 26,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/2/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=80",
+            "period": "10~11 차시",
+            "subunit": null,
+            "topic": "8. 전기를 효율적이고 안전하게 사용하는 방법을 실천해 보자!"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "8. 전기를 효율적이고 안전하게 사용하는 방법을 실천해 보자!",
+          "periodText": "10~11 차시",
+          "periodNumbers": [
+            10,
+            11
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "80",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g3-r11",
+          "sequence": 27,
+          "sourceRow": 11,
+          "sourcePointer": "/groups/2/lessons/10",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=84",
+            "period": "12 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "전기의 이용",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "12 차시",
+          "periodNumbers": [
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "84",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g4-r1",
+          "sequence": 28,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/3/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=86",
+            "period": "1 차시",
+            "subunit": null,
+            "topic": "과학과 나의 진로"
+          },
+          "semester": 2,
+          "unit": "과학과 나의 진로",
+          "subunit": null,
+          "topic": "과학과 나의 진로",
+          "periodText": "1 차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "86",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g4-r2",
+          "sequence": 29,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/3/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=90",
+            "period": "2 차시",
+            "subunit": null,
+            "topic": "1. 미래 사회에 어떤 문제가 일어날 수 있을까요?"
+          },
+          "semester": 2,
+          "unit": "과학과 나의 진로",
+          "subunit": null,
+          "topic": "1. 미래 사회에 어떤 문제가 일어날 수 있을까요?",
+          "periodText": "2 차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "90",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g4-r3",
+          "sequence": 30,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/3/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=92",
+            "period": "3~4 차시",
+            "subunit": null,
+            "topic": "2. 미래 사회의 문제 해결에 과학은 어떤 도움을 줄까요?"
+          },
+          "semester": 2,
+          "unit": "과학과 나의 진로",
+          "subunit": null,
+          "topic": "2. 미래 사회의 문제 해결에 과학은 어떤 도움을 줄까요?",
+          "periodText": "3~4 차시",
+          "periodNumbers": [
+            3,
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "92",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g4-r4",
+          "sequence": 31,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/3/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=94",
+            "period": "5~6 차시",
+            "subunit": null,
+            "topic": "3. 다양한 진로는 과학과 어떤 관련이 있을까요?"
+          },
+          "semester": 2,
+          "unit": "과학과 나의 진로",
+          "subunit": null,
+          "topic": "3. 다양한 진로는 과학과 어떤 관련이 있을까요?",
+          "periodText": "5~6 차시",
+          "periodNumbers": [
+            5,
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "94",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g4-r5",
+          "sequence": 32,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/3/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=98",
+            "period": "7 차시",
+            "subunit": null,
+            "topic": "4. 나의 진로는 과학과 어떤 관련이 있을까요?"
+          },
+          "semester": 2,
+          "unit": "과학과 나의 진로",
+          "subunit": null,
+          "topic": "4. 나의 진로는 과학과 어떤 관련이 있을까요?",
+          "periodText": "7 차시",
+          "periodNumbers": [
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "98",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g4-r6",
+          "sequence": 33,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/3/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=100",
+            "period": "8~9 차시",
+            "subunit": null,
+            "topic": "5. 나의 진로 계획을 세우고 소개해 보자!"
+          },
+          "semester": 2,
+          "unit": "과학과 나의 진로",
+          "subunit": null,
+          "topic": "5. 나의 진로 계획을 세우고 소개해 보자!",
+          "periodText": "8~9 차시",
+          "periodNumbers": [
+            8,
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "100",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2477-g4-r8",
+          "sequence": 34,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/3/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2477/contents/index.html?skin=e-usb&page=104",
+            "period": "10 차시",
+            "subunit": null,
+            "topic": "스스로 정리해요"
+          },
+          "semester": 2,
+          "unit": "과학과 나의 진로",
+          "subunit": null,
+          "topic": "스스로 정리해요",
+          "periodText": "10 차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "104",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        }
+      ]
+    },
+    {
+      "id": "visang-online-2493",
+      "editionId": "tb-d9462fc32338dca8",
+      "curriculum": "2022",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "2493",
+      "sourceUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/intro/intro.html",
+      "sourceFile": "visang-browser-outlines/2493.json",
+      "sha256": "0c1e3dc1dfa057834902bf5eea2fa2e7a5dd731adf8aada97a9543e0bf909973",
+      "exhibitionUrl": "https://text.vivasam.com/detail/85",
+      "format": "official-ebook-outline",
+      "curriculumVerification": "official-2022-exhibition-link",
+      "coverageScope": "all-numbered-ebook-lessons",
+      "scheduleCompleteness": "original-plan-comparison-pending",
+      "additionalResources": [],
+      "lessons": [
+        {
+          "id": "visang-online-2493-g1-r1",
+          "sequence": 1,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/0/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=6",
+            "period": "1차시",
+            "subunit": "단원 도입",
+            "topic": "단원 도입"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "단원 도입",
+          "topic": "단원 도입",
+          "periodText": "1차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "6",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r2",
+          "sequence": 2,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/0/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=10",
+            "period": "2차시",
+            "subunit": "선사 시대와 고조선 사람들의 생활 모습",
+            "topic": "구석기 시대 사람들은 어떻게 살았을까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "선사 시대와 고조선 사람들의 생활 모습",
+          "topic": "구석기 시대 사람들은 어떻게 살았을까요?",
+          "periodText": "2차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "10",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r3",
+          "sequence": 3,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/0/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=12",
+            "period": "3차시",
+            "subunit": "선사 시대와 고조선 사람들의 생활 모습",
+            "topic": "신석기 시대 사람들은 어떻게 살았을까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "선사 시대와 고조선 사람들의 생활 모습",
+          "topic": "신석기 시대 사람들은 어떻게 살았을까요?",
+          "periodText": "3차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "12",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r4",
+          "sequence": 4,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/0/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=14",
+            "period": "4~5차시",
+            "subunit": "선사 시대와 고조선 사람들의 생활 모습",
+            "topic": "청동기를 바탕으로 성립한 고조선의 사회 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "선사 시대와 고조선 사람들의 생활 모습",
+          "topic": "청동기를 바탕으로 성립한 고조선의 사회 모습을 살펴볼까요?",
+          "periodText": "4~5차시",
+          "periodNumbers": [
+            4,
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "14",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r5",
+          "sequence": 5,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/0/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=20",
+            "period": "6~7차시",
+            "subunit": "고대 사람들의 생활 모습",
+            "topic": "삼국과 가야의 성립과 발전 과정을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고대 사람들의 생활 모습",
+          "topic": "삼국과 가야의 성립과 발전 과정을 알아볼까요?",
+          "periodText": "6~7차시",
+          "periodNumbers": [
+            6,
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "20",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r6",
+          "sequence": 6,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/0/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=26",
+            "period": "8~9차시",
+            "subunit": "고대 사람들의 생활 모습",
+            "topic": "삼국과 가야 사람들은 어떻게 살았을까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고대 사람들의 생활 모습",
+          "topic": "삼국과 가야 사람들은 어떻게 살았을까요?",
+          "periodText": "8~9차시",
+          "periodNumbers": [
+            8,
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "26",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r7",
+          "sequence": 7,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/0/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=32",
+            "period": "10차시",
+            "subunit": "고대 사람들의 생활 모습",
+            "topic": "통일 이후 신라 사람들은 어떻게 살았을까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고대 사람들의 생활 모습",
+          "topic": "통일 이후 신라 사람들은 어떻게 살았을까요?",
+          "periodText": "10차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "32",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r8",
+          "sequence": 8,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/0/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=36",
+            "period": "11차시",
+            "subunit": "고대 사람들의 생활 모습",
+            "topic": "발해 사람들의 생활 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고대 사람들의 생활 모습",
+          "topic": "발해 사람들의 생활 모습을 살펴볼까요?",
+          "periodText": "11차시",
+          "periodNumbers": [
+            11
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "36",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r9",
+          "sequence": 9,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/0/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=40",
+            "period": "12차시",
+            "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+            "topic": "고려가 세워지고 나라의 기틀을 다지는 과정을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+          "topic": "고려가 세워지고 나라의 기틀을 다지는 과정을 살펴볼까요?",
+          "periodText": "12차시",
+          "periodNumbers": [
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "40",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r10",
+          "sequence": 10,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/0/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=45",
+            "period": "13~14차시",
+            "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+            "topic": "주변 나라와의 전쟁과 교류는 고려에 어떤 영향을 미쳤을까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+          "topic": "주변 나라와의 전쟁과 교류는 고려에 어떤 영향을 미쳤을까요?",
+          "periodText": "13~14차시",
+          "periodNumbers": [
+            13,
+            14
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "45",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r11",
+          "sequence": 11,
+          "sourceRow": 11,
+          "sourcePointer": "/groups/0/lessons/10",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=50",
+            "period": "15차시",
+            "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+            "topic": "신분과 성별에 따른 고려 사람들의 생활 모습은 어떠하였을까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+          "topic": "신분과 성별에 따른 고려 사람들의 생활 모습은 어떠하였을까요?",
+          "periodText": "15차시",
+          "periodNumbers": [
+            15
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "50",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r12",
+          "sequence": 12,
+          "sourceRow": 12,
+          "sourcePointer": "/groups/0/lessons/11",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=53",
+            "period": "16~17차시",
+            "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+            "topic": "불교가 고려 사회에 미친 영향을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "고려 시대 사회 모습과 사람들의 생활 모습",
+          "topic": "불교가 고려 사회에 미친 영향을 알아볼까요?",
+          "periodText": "16~17차시",
+          "periodNumbers": [
+            16,
+            17
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "53",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g1-r13",
+          "sequence": 13,
+          "sourceRow": 13,
+          "sourcePointer": "/groups/0/lessons/12",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=58",
+            "period": "18차시",
+            "subunit": "단원 마무리",
+            "topic": "단원 되돌아보기"
+          },
+          "semester": 2,
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "subunit": "단원 마무리",
+          "topic": "단원 되돌아보기",
+          "periodText": "18차시",
+          "periodNumbers": [
+            18
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "58",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r1",
+          "sequence": 14,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/1/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=62",
+            "period": "1차시",
+            "subunit": "단원 도입",
+            "topic": "단원 도입"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "단원 도입",
+          "topic": "단원 도입",
+          "periodText": "1차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "62",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r2",
+          "sequence": 15,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/1/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=66",
+            "period": "2차시",
+            "subunit": "조선 시대의 유교 문화",
+            "topic": "조선이 세워지고 나라의 기틀을 다지는 과정을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 시대의 유교 문화",
+          "topic": "조선이 세워지고 나라의 기틀을 다지는 과정을 살펴볼까요?",
+          "periodText": "2차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "66",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r3",
+          "sequence": 16,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/1/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=70",
+            "period": "3~4차시",
+            "subunit": "조선 시대의 유교 문화",
+            "topic": "유교 질서에 따른 조선의 사회 모습은 어떠하였을까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 시대의 유교 문화",
+          "topic": "유교 질서에 따른 조선의 사회 모습은 어떠하였을까요?",
+          "periodText": "3~4차시",
+          "periodNumbers": [
+            3,
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "70",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r4",
+          "sequence": 17,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/1/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=76",
+            "period": "5차시",
+            "subunit": "조선 시대의 유교 문화",
+            "topic": "조선 전기에는 어떤 문화가 발전하였을까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 시대의 유교 문화",
+          "topic": "조선 전기에는 어떤 문화가 발전하였을까요?",
+          "periodText": "5차시",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "76",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r5",
+          "sequence": 18,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/1/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=81",
+            "period": "6차시",
+            "subunit": "조선 시대의 유교 문화",
+            "topic": "임진왜란과 병자호란의 전개 과정을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 시대의 유교 문화",
+          "topic": "임진왜란과 병자호란의 전개 과정을 살펴볼까요?",
+          "periodText": "6차시",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "81",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r6",
+          "sequence": 19,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/1/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=86",
+            "period": "7~8차시",
+            "subunit": "조선 후기의 변화와 달라진 생활 모습",
+            "topic": "조선 후기 사회는 어떻게 바뀌었을까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 후기의 변화와 달라진 생활 모습",
+          "topic": "조선 후기 사회는 어떻게 바뀌었을까요?",
+          "periodText": "7~8차시",
+          "periodNumbers": [
+            7,
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "86",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r7",
+          "sequence": 20,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/1/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=94",
+            "period": "9~10차시",
+            "subunit": "조선 후기의 변화와 달라진 생활 모습",
+            "topic": "조선 후기에는 어떤 문화가 발전하였을까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 후기의 변화와 달라진 생활 모습",
+          "topic": "조선 후기에는 어떤 문화가 발전하였을까요?",
+          "periodText": "9~10차시",
+          "periodNumbers": [
+            9,
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "94",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r8",
+          "sequence": 21,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/1/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=98",
+            "period": "11~12차시",
+            "subunit": "조선 후기의 변화와 달라진 생활 모습",
+            "topic": "근대 국가를 수립하고자 어떤 노력을 하였을까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 후기의 변화와 달라진 생활 모습",
+          "topic": "근대 국가를 수립하고자 어떤 노력을 하였을까요?",
+          "periodText": "11~12차시",
+          "periodNumbers": [
+            11,
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "98",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r9",
+          "sequence": 22,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/1/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=103",
+            "period": "13차시",
+            "subunit": "조선 후기의 변화와 달라진 생활 모습",
+            "topic": "근대 문물의 수용으로 사람들의 생활 모습은 어떻게 달라졌을까요?"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "조선 후기의 변화와 달라진 생활 모습",
+          "topic": "근대 문물의 수용으로 사람들의 생활 모습은 어떻게 달라졌을까요?",
+          "periodText": "13차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "103",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g2-r10",
+          "sequence": 23,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/1/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=106",
+            "period": "14차시",
+            "subunit": "단원 마무리",
+            "topic": "단원 되돌아보기"
+          },
+          "semester": 2,
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "subunit": "단원 마무리",
+          "topic": "단원 되돌아보기",
+          "periodText": "14차시",
+          "periodNumbers": [
+            14
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "106",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r1",
+          "sequence": 24,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/2/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=110",
+            "period": "1차시",
+            "subunit": "단원 도입",
+            "topic": "단원 도입"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "단원 도입",
+          "topic": "단원 도입",
+          "periodText": "1차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "110",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r2",
+          "sequence": 25,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/2/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=114",
+            "period": "2차시",
+            "subunit": "일제 식민 통치와 우리 민족의 저항",
+            "topic": "일제의 침략에 맞서 나라를 지키고자 어떤 노력을 하였을까요?"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "일제 식민 통치와 우리 민족의 저항",
+          "topic": "일제의 침략에 맞서 나라를 지키고자 어떤 노력을 하였을까요?",
+          "periodText": "2차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "114",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r3",
+          "sequence": 26,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/2/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=117",
+            "period": "3~4차시",
+            "subunit": "일제 식민 통치와 우리 민족의 저항",
+            "topic": "일제 식민 통치 시기에 우리나라 사람들은 어떤 일을 겪었을까요?"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "일제 식민 통치와 우리 민족의 저항",
+          "topic": "일제 식민 통치 시기에 우리나라 사람들은 어떤 일을 겪었을까요?",
+          "periodText": "3~4차시",
+          "periodNumbers": [
+            3,
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "117",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r4",
+          "sequence": 27,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/2/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=122",
+            "period": "5차시",
+            "subunit": "일제 식민 통치와 우리 민족의 저항",
+            "topic": "3 · 1 운동과 대한민국 임시 정부의 활동을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "일제 식민 통치와 우리 민족의 저항",
+          "topic": "3 · 1 운동과 대한민국 임시 정부의 활동을 알아볼까요?",
+          "periodText": "5차시",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "122",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r5",
+          "sequence": 28,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/2/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=126",
+            "period": "6~7차시",
+            "subunit": "일제 식민 통치와 우리 민족의 저항",
+            "topic": "나라를 되찾으려는 노력에는 어떤 것들이 있었을까요?"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "일제 식민 통치와 우리 민족의 저항",
+          "topic": "나라를 되찾으려는 노력에는 어떤 것들이 있었을까요?",
+          "periodText": "6~7차시",
+          "periodNumbers": [
+            6,
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "126",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r6",
+          "sequence": 29,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/2/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=132",
+            "period": "8~9차시",
+            "subunit": "8 · 15 광복과 6 · 25 전쟁",
+            "topic": "8 · 15 광복 이후 우리나라의 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "8 · 15 광복과 6 · 25 전쟁",
+          "topic": "8 · 15 광복 이후 우리나라의 모습을 살펴볼까요?",
+          "periodText": "8~9차시",
+          "periodNumbers": [
+            8,
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "132",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r7",
+          "sequence": 30,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/2/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=138",
+            "period": "10차시",
+            "subunit": "8 · 15 광복과 6 · 25 전쟁",
+            "topic": "대한민국 정부의 수립 과정을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "8 · 15 광복과 6 · 25 전쟁",
+          "topic": "대한민국 정부의 수립 과정을 알아볼까요?",
+          "periodText": "10차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "138",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r8",
+          "sequence": 31,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/2/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=141",
+            "period": "11~12차시",
+            "subunit": "8 · 15 광복과 6 · 25 전쟁",
+            "topic": "6 · 25 전쟁의 과정과 영향을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "8 · 15 광복과 6 · 25 전쟁",
+          "topic": "6 · 25 전쟁의 과정과 영향을 알아볼까요?",
+          "periodText": "11~12차시",
+          "periodNumbers": [
+            11,
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "141",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2493-g3-r9",
+          "sequence": 32,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/2/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2493/contents/index.html?skin=e-usb&page=148",
+            "period": "13차시",
+            "subunit": "단원 마무리",
+            "topic": "단원 되돌아보기"
+          },
+          "semester": 2,
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "subunit": "단원 마무리",
+          "topic": "단원 되돌아보기",
+          "periodText": "13차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "148",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        }
+      ]
+    },
+    {
+      "id": "visang-online-2495",
+      "editionId": "tb-d9462fc32338dca8",
+      "curriculum": "2022",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "2495",
+      "sourceUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/intro/intro.html",
+      "sourceFile": "visang-browser-outlines/2495.json",
+      "sha256": "ca20d2fbe3ea2dd0378575191f40ca2ebf008b80552fdd50f8364915621b99f9",
+      "exhibitionUrl": "https://text.vivasam.com/detail/85",
+      "format": "official-ebook-outline",
+      "curriculumVerification": "official-2022-exhibition-link",
+      "coverageScope": "all-numbered-ebook-lessons",
+      "scheduleCompleteness": "original-plan-comparison-pending",
+      "additionalResources": [],
+      "lessons": [
+        {
+          "id": "visang-online-2495-g1-r1",
+          "sequence": 1,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/0/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=6",
+            "period": "1차시",
+            "subunit": "단원 도입",
+            "topic": "단원 도입"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "단원 도입",
+          "topic": "단원 도입",
+          "periodText": "1차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "6",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r2",
+          "sequence": 2,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/0/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=10",
+            "period": "2차시",
+            "subunit": "세계의 다양한 지형",
+            "topic": "세계의 다양한 지형을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 지형",
+          "topic": "세계의 다양한 지형을 알아볼까요?",
+          "periodText": "2차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "10",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r3",
+          "sequence": 3,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/0/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=12",
+            "period": "3차시",
+            "subunit": "세계의 다양한 지형",
+            "topic": "세계의 다양한 산지 지역과 사람들의 생활 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 지형",
+          "topic": "세계의 다양한 산지 지역과 사람들의 생활 모습을 살펴볼까요?",
+          "periodText": "3차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "12",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r4",
+          "sequence": 4,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/0/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=16",
+            "period": "4차시",
+            "subunit": "세계의 다양한 지형",
+            "topic": "세계의 다양한 하천 지역과 사람들의 생활 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 지형",
+          "topic": "세계의 다양한 하천 지역과 사람들의 생활 모습을 살펴볼까요?",
+          "periodText": "4차시",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "16",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r5",
+          "sequence": 5,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/0/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=20",
+            "period": "5차시",
+            "subunit": "세계의 다양한 지형",
+            "topic": "세계의 다양한 해안 지역과 사람들의 생활 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 지형",
+          "topic": "세계의 다양한 해안 지역과 사람들의 생활 모습을 살펴볼까요?",
+          "periodText": "5차시",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "20",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r6",
+          "sequence": 6,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/0/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=24",
+            "period": "6~7차시",
+            "subunit": "세계의 다양한 지형",
+            "topic": "세계의 지형 관광지를 여행해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 지형",
+          "topic": "세계의 지형 관광지를 여행해 볼까요?",
+          "periodText": "6~7차시",
+          "periodNumbers": [
+            6,
+            7
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "24",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r7",
+          "sequence": 7,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/0/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=30",
+            "period": "8~9차시",
+            "subunit": "세계의 다양한 기후",
+            "topic": "세계의 다양한 기후를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 기후",
+          "topic": "세계의 다양한 기후를 알아볼까요?",
+          "periodText": "8~9차시",
+          "periodNumbers": [
+            8,
+            9
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "30",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r8",
+          "sequence": 8,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/0/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=36",
+            "period": "10차시",
+            "subunit": "세계의 다양한 기후",
+            "topic": "열대 기후와 건조 기후 지역 사람들의 생활 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 기후",
+          "topic": "열대 기후와 건조 기후 지역 사람들의 생활 모습을 살펴볼까요?",
+          "periodText": "10차시",
+          "periodNumbers": [
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "36",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r9",
+          "sequence": 9,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/0/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=40",
+            "period": "11차시",
+            "subunit": "세계의 다양한 기후",
+            "topic": "온대 기후와 냉대 기후 지역 사람들의 생활 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 기후",
+          "topic": "온대 기후와 냉대 기후 지역 사람들의 생활 모습을 살펴볼까요?",
+          "periodText": "11차시",
+          "periodNumbers": [
+            11
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "40",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r10",
+          "sequence": 10,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/0/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=44",
+            "period": "12차시",
+            "subunit": "세계의 다양한 기후",
+            "topic": "한대 기후와 고산 기후 지역 사람들의 생활 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 기후",
+          "topic": "한대 기후와 고산 기후 지역 사람들의 생활 모습을 살펴볼까요?",
+          "periodText": "12차시",
+          "periodNumbers": [
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "44",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r11",
+          "sequence": 11,
+          "sourceRow": 11,
+          "sourcePointer": "/groups/0/lessons/10",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=47",
+            "period": "13~14차시",
+            "subunit": "세계의 다양한 기후",
+            "topic": "기후는 인간 생활과 어떤 관계가 있을까요?"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "세계의 다양한 기후",
+          "topic": "기후는 인간 생활과 어떤 관계가 있을까요?",
+          "periodText": "13~14차시",
+          "periodNumbers": [
+            13,
+            14
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "47",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g1-r12",
+          "sequence": 12,
+          "sourceRow": 12,
+          "sourcePointer": "/groups/0/lessons/11",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=50",
+            "period": "15차시",
+            "subunit": "단원 마무리",
+            "topic": "단원 되돌아보기"
+          },
+          "semester": 2,
+          "unit": "세계의 자연환경",
+          "subunit": "단원 마무리",
+          "topic": "단원 되돌아보기",
+          "periodText": "15차시",
+          "periodNumbers": [
+            15
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "50",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r1",
+          "sequence": 13,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/1/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=54",
+            "period": "1차시",
+            "subunit": "단원 도입",
+            "topic": "단원 도입"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "단원 도입",
+          "topic": "단원 도입",
+          "periodText": "1차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "54",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r2",
+          "sequence": 14,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/1/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=58",
+            "period": "2차시",
+            "subunit": "가계와 기업의 역할",
+            "topic": "시장경제의 특징은 무엇일까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "가계와 기업의 역할",
+          "topic": "시장경제의 특징은 무엇일까요?",
+          "periodText": "2차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "58",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r3",
+          "sequence": 15,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/1/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=61",
+            "period": "3~4차시",
+            "subunit": "가계와 기업의 역할",
+            "topic": "가계와 기업의 역할은 무엇일까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "가계와 기업의 역할",
+          "topic": "가계와 기업의 역할은 무엇일까요?",
+          "periodText": "3~4차시",
+          "periodNumbers": [
+            3,
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "61",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r4",
+          "sequence": 16,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/1/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=66",
+            "period": "5차시",
+            "subunit": "가계와 기업의 역할",
+            "topic": "근로자의 권리를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "가계와 기업의 역할",
+          "topic": "근로자의 권리를 알아볼까요?",
+          "periodText": "5차시",
+          "periodNumbers": [
+            5
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "66",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r5",
+          "sequence": 17,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/1/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=69",
+            "period": "6차시",
+            "subunit": "가계와 기업의 역할",
+            "topic": "기업에는 어떤 자유와 사회적 책임이 있을까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "가계와 기업의 역할",
+          "topic": "기업에는 어떤 자유와 사회적 책임이 있을까요?",
+          "periodText": "6차시",
+          "periodNumbers": [
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "69",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r6",
+          "sequence": 18,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/1/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=74",
+            "period": "7~8차시",
+            "subunit": "우리나라의 경제 성장",
+            "topic": "경제 성장으로 우리 생활은 어떻게 달라졌을까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "우리나라의 경제 성장",
+          "topic": "경제 성장으로 우리 생활은 어떻게 달라졌을까요?",
+          "periodText": "7~8차시",
+          "periodNumbers": [
+            7,
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "74",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r7",
+          "sequence": 19,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/1/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=81",
+            "period": "9~10차시",
+            "subunit": "우리나라의 경제 성장",
+            "topic": "빠른 경제 성장으로 발생한 문제와 해결하려는 노력을 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "우리나라의 경제 성장",
+          "topic": "빠른 경제 성장으로 발생한 문제와 해결하려는 노력을 알아볼까요?",
+          "periodText": "9~10차시",
+          "periodNumbers": [
+            9,
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "81",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r8",
+          "sequence": 20,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/1/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=87",
+            "period": "11차시",
+            "subunit": "우리나라의 경제 성장",
+            "topic": "빠른 경제 성장으로 발생한 문제의 해결 방안을 찾아볼까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "우리나라의 경제 성장",
+          "topic": "빠른 경제 성장으로 발생한 문제의 해결 방안을 찾아볼까요?",
+          "periodText": "11차시",
+          "periodNumbers": [
+            11
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "87",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r9",
+          "sequence": 21,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/1/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=92",
+            "period": "12차시",
+            "subunit": "세계의 무역",
+            "topic": "무역이란 무엇일까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "세계의 무역",
+          "topic": "무역이란 무엇일까요?",
+          "periodText": "12차시",
+          "periodNumbers": [
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "92",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r10",
+          "sequence": 22,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/1/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=96",
+            "period": "13차시",
+            "subunit": "세계의 무역",
+            "topic": "나라와 나라 사이에 무역이 발생하는 이유를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "세계의 무역",
+          "topic": "나라와 나라 사이에 무역이 발생하는 이유를 알아볼까요?",
+          "periodText": "13차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "96",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r11",
+          "sequence": 23,
+          "sourceRow": 11,
+          "sourcePointer": "/groups/1/lessons/10",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=99",
+            "period": "14차시",
+            "subunit": "세계의 무역",
+            "topic": "세계 여러 나라의 무역 모습을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "세계의 무역",
+          "topic": "세계 여러 나라의 무역 모습을 살펴볼까요?",
+          "periodText": "14차시",
+          "periodNumbers": [
+            14
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "99",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r12",
+          "sequence": 24,
+          "sourceRow": 12,
+          "sourcePointer": "/groups/1/lessons/11",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=102",
+            "period": "15~16차시",
+            "subunit": "세계의 무역",
+            "topic": "세계 여러 나라는 무역을 하며 어떤 관계를 맺을까요?"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "세계의 무역",
+          "topic": "세계 여러 나라는 무역을 하며 어떤 관계를 맺을까요?",
+          "periodText": "15~16차시",
+          "periodNumbers": [
+            15,
+            16
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "102",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g2-r13",
+          "sequence": 25,
+          "sourceRow": 13,
+          "sourcePointer": "/groups/1/lessons/12",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=108",
+            "period": "17차시",
+            "subunit": "단원 마무리",
+            "topic": "단원 되돌아보기"
+          },
+          "semester": 2,
+          "unit": "시장경제와 국가 간 거래",
+          "subunit": "단원 마무리",
+          "topic": "단원 되돌아보기",
+          "periodText": "17차시",
+          "periodNumbers": [
+            17
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "108",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r1",
+          "sequence": 26,
+          "sourceRow": 1,
+          "sourcePointer": "/groups/2/lessons/0",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=112",
+            "period": "1차시",
+            "subunit": "단원 도입",
+            "topic": "단원 도입"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "단원 도입",
+          "topic": "단원 도입",
+          "periodText": "1차시",
+          "periodNumbers": [
+            1
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "112",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r2",
+          "sequence": 27,
+          "sourceRow": 2,
+          "sourcePointer": "/groups/2/lessons/1",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=116",
+            "period": "2차시",
+            "subunit": "세계의 인구",
+            "topic": "전 세계 사람들은 어디에 모여 살고 있을까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "세계의 인구",
+          "topic": "전 세계 사람들은 어디에 모여 살고 있을까요?",
+          "periodText": "2차시",
+          "periodNumbers": [
+            2
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "116",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r3",
+          "sequence": 28,
+          "sourceRow": 3,
+          "sourcePointer": "/groups/2/lessons/2",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=120",
+            "period": "3차시",
+            "subunit": "세계의 인구",
+            "topic": "세계의 인구는 어떻게 성장해 왔고, 어떻게 변화할까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "세계의 인구",
+          "topic": "세계의 인구는 어떻게 성장해 왔고, 어떻게 변화할까요?",
+          "periodText": "3차시",
+          "periodNumbers": [
+            3
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "120",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r4",
+          "sequence": 29,
+          "sourceRow": 4,
+          "sourcePointer": "/groups/2/lessons/3",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=124",
+            "period": "4차시",
+            "subunit": "세계의 인구",
+            "topic": "세계의 인구 구조를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "세계의 인구",
+          "topic": "세계의 인구 구조를 알아볼까요?",
+          "periodText": "4차시",
+          "periodNumbers": [
+            4
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "124",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r5",
+          "sequence": 30,
+          "sourceRow": 5,
+          "sourcePointer": "/groups/2/lessons/4",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=127",
+            "period": "5~6차시",
+            "subunit": "세계의 인구",
+            "topic": "세계 여러 나라의 인구 특징을 조사해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "세계의 인구",
+          "topic": "세계 여러 나라의 인구 특징을 조사해 볼까요?",
+          "periodText": "5~6차시",
+          "periodNumbers": [
+            5,
+            6
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "127",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r6",
+          "sequence": 31,
+          "sourceRow": 6,
+          "sourcePointer": "/groups/2/lessons/5",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=130",
+            "period": "7~8차시",
+            "subunit": "평화로운 지구촌과 지속가능한 미래",
+            "topic": "지구촌의 평화와 발전을 위협하는 문제를 알아볼까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "평화로운 지구촌과 지속가능한 미래",
+          "topic": "지구촌의 평화와 발전을 위협하는 문제를 알아볼까요?",
+          "periodText": "7~8차시",
+          "periodNumbers": [
+            7,
+            8
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "130",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r7",
+          "sequence": 32,
+          "sourceRow": 7,
+          "sourcePointer": "/groups/2/lessons/6",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=136",
+            "period": "9~10차시",
+            "subunit": "평화로운 지구촌과 지속가능한 미래",
+            "topic": "지구촌 문제를 해결하기 위한 다양한 노력을 살펴볼까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "평화로운 지구촌과 지속가능한 미래",
+          "topic": "지구촌 문제를 해결하기 위한 다양한 노력을 살펴볼까요?",
+          "periodText": "9~10차시",
+          "periodNumbers": [
+            9,
+            10
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 2,
+          "pages": "136",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r8",
+          "sequence": 33,
+          "sourceRow": 8,
+          "sourcePointer": "/groups/2/lessons/7",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=142",
+            "period": "11차시",
+            "subunit": "평화로운 지구촌과 지속가능한 미래",
+            "topic": "지속가능한 미래를 위한 방안에는 무엇이 있을까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "평화로운 지구촌과 지속가능한 미래",
+          "topic": "지속가능한 미래를 위한 방안에는 무엇이 있을까요?",
+          "periodText": "11차시",
+          "periodNumbers": [
+            11
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "142",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r9",
+          "sequence": 34,
+          "sourceRow": 9,
+          "sourcePointer": "/groups/2/lessons/8",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=145",
+            "period": "12차시",
+            "subunit": "평화로운 지구촌과 지속가능한 미래",
+            "topic": "세계시민으로서 우리가 할 수 있는 일을 실천해 볼까요?"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "평화로운 지구촌과 지속가능한 미래",
+          "topic": "세계시민으로서 우리가 할 수 있는 일을 실천해 볼까요?",
+          "periodText": "12차시",
+          "periodNumbers": [
+            12
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "145",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        },
+        {
+          "id": "visang-online-2495-g3-r10",
+          "sequence": 35,
+          "sourceRow": 10,
+          "sourcePointer": "/groups/2/lessons/9",
+          "sourceCells": {
+            "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2495/contents/index.html?skin=e-usb&page=148",
+            "period": "13차시",
+            "subunit": "단원 마무리",
+            "topic": "단원 되돌아보기"
+          },
+          "semester": 2,
+          "unit": "지구촌 사람들",
+          "subunit": "단원 마무리",
+          "topic": "단원 되돌아보기",
+          "periodText": "13차시",
+          "periodNumbers": [
+            13
+          ],
+          "periodBasis": "unit",
+          "suggestedPeriods": 1,
+          "pages": "148",
+          "pageMapping": "ebook-start-page-only",
+          "supplementaryPages": null,
+          "standardCodes": [],
+          "materials": null,
+          "activities": null
+        }
+      ]
+    }
+  ]
+}

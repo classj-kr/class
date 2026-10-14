@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 잎의 광합성 색소 추출과 분리</title><meta name="description" content="2022 교육과정 · 잎의 광합성 색소 추출과 분리의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../course-practices.css?v=c5372b302833"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>잎의 광합성 색소 추출과 분리</h1><div class="grade-tags"><span>고(선택)</span><span>세포와 물질대사</span></div></header><p class="intro">시금치에서 색소를 추출하고, 출발선에서 각 색소와 용매가 이동한 거리를 비교하세요.</p><section class="cp-lab" data-practice="leaf-pigments"><header class="cp-heading"><span>크로마토그래피 · 색소 분리</span><h2>초록 잎에 들어 있는 여러 색소</h2></header><div class="cp-layout"><aside class="cp-controls"><h3>추출과 전개</h3><button id="pgExtract">시금치·아세톤 섞고 10분 추출</button><button id="pgSpot">출발점에 추출액 찍기</button><button id="pgDry">출발점 말리기</button><label>전개액 높이<select id="pgLevel"><option value="1">바닥에서 1 cm</option><option value="3">바닥에서 3 cm</option></select></label><label>전개 용기<select id="pgCap"><option value="closed">마개 닫음</option><option value="open">마개 열림</option></select></label><button id="pgStart" class="primary">TLC 판 넣고 전개하기</button><button id="pgRemove">판 꺼내기</button><button id="pgMark">용매 전선 표시하기</button><p class="cp-note">출발선은 바닥에서 2 cm, 전개액은 석유 에터 : 아세톤 = 7 : 3입니다. 실제 용매는 화기 없이 환기 장치 안에서 다룹니다.</p></aside><div class="cp-view"><div id="pgSteps" class="cp-step"></div><div id="cpScene" class="cp-scene"></div><div class="cp-live"><div><span>추출액을 찍고 말린 횟수</span><strong id="cpReadA">—</strong></div><div><span>용매 전선의 이동 거리</span><strong id="cpReadB">—</strong></div></div><div id="pgLegend" class="cp-legend"></div><p id="cpStatus" class="cp-status" role="status"></p></div></div><section class="cp-footer"><h3>전개율 계산</h3><p>출발선부터 색 띠의 중심과 표시한 용매 전선까지 자로 읽으세요.</p><div class="cp-measures"><label>측정할 색소<select id="pgBand"><option value="0">카로틴</option><option value="1">잔토필</option><option value="2">엽록소 a</option><option value="3">엽록소 b</option></select></label><label>색소 이동 거리 (cm)<input id="pgDistance" type="number" min="0" step="0.1" value="0"></label><label>용매 이동 거리 (cm)<input id="pgFront" type="number" min="0" step="0.1" value="0"></label></div><button id="pgCalculate" class="primary">전개율 확인</button><p id="pgResult" class="cp-status">전개가 끝나면 거리를 측정하세요.</p><p class="cp-note">전개율은 색소 거리 ÷ 용매 거리입니다. 용매 조성과 TLC 판이 달라지면 값도 달라집니다.</p></section><div class="cp-footer"><button id="cpReset">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>판 바닥에서 출발선은 2 cm, 색소 중심은 5 cm, 용매 전선은 8 cm에 있다. 전개율은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 0.38</label>
+<label><input type="radio" name="q1" value="b"> 0.50</label>
+<label><input type="radio" name="q1" value="c"> 0.63</label>
+<label><input type="radio" name="q1" value="d"> 0.83</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>두 거리 모두 출발선부터 읽습니다. (5−2)/(8−2)=0.50입니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>출발선이 2 cm인 판을 전개액 높이 3 cm인 용기에 넣었다. 작은 점으로 분리되지 않는 원인은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 용매가 판 위쪽에 도달하지 못해서</label>
+<label><input type="radio" name="q2" value="b"> 색소가 용매보다 먼저 끝까지 가서</label>
+<label><input type="radio" name="q2" value="c"> 찍은 색소가 전개액에 직접 풀려서</label>
+<label><input type="radio" name="q2" value="d"> 색소의 원래 분자량이 작아져서</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>출발점이 용매에 잠기면 색소가 전개액에 풀립니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>같은 추출액 총량을 A는 한 번에 큰 방울로, B는 작게 찍고 말리기를 반복해 올렸다. 분리에 유리한 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> A · 출발점을 넓게 퍼뜨릴 수 있어서</label>
+<label><input type="radio" name="q3" value="b"> A · 색소의 분자량을 줄일 수 있어서</label>
+<label><input type="radio" name="q3" value="c"> B · 용매의 이동 거리를 없앨 수 있어서</label>
+<label><input type="radio" name="q3" value="d"> B · 좁은 출발점에 색소를 모을 수 있어서</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>작게 찍고 말려야 시작점을 넓히지 않고 농축하여 띠를 구별하기 좋습니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>같은 색소가 용매 A에서 Rf=0.52, B에서 Rf=0.61이었다. 해석으로 적절한 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 용매 조건에 따라 상대 이동이 달라진다</label>
+<label><input type="radio" name="q4" value="b"> 두 값 중 하나는 반드시 측정 오류이다</label>
+<label><input type="radio" name="q4" value="c"> 분자량이 0.52에서 0.61로 증가하였다</label>
+<label><input type="radio" name="q4" value="d"> B 용매에서만 새 색소가 합성되었다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>전개율은 색소와 고정상·이동상의 상호작용에 따라 달라집니다.</p>
+</article></details></main><script src="../course-practice-models.js?v=2b291b02b6a7"></script><script src="../course-practice-labs.js?v=33961e8ff883"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

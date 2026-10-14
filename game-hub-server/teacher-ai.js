@@ -17,7 +17,7 @@ const GENERATE_LIMIT_PER_MINUTE = 120;
 const KEY_PATTERN = /^[A-Za-z0-9._-]{20,200}$/;
 const MAX_PLAN_FILE_BYTES = 20 * 1024 * 1024;
 const MAX_TOPICS = 40;
-const STANDARDS_DIR = path.join(__dirname, '..', 'classtools', 'assessment-plan', 'data');
+const STANDARDS_DIR = path.join(__dirname, '..', 'apps', 'classtools', 'assessment-plan', 'data');
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -319,6 +319,7 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     const labels = context.labels;
     return [
       '너는 초·중학교 교사를 돕는 보조자다. 나이스 수행평가 계획의 「단계별 평가결과」 문장을 쓴다.',
+      '아래 성취기준과 평가요소에 근거하여 평가기준 문장을 독립적으로 새로 작성한다. 출판사 평가기준을 검색·인용하거나 기억한 문구를 재현하지 않는다. 관찰 가능한 수행의 정확성·완성도·도움의 정도로 단계를 구분한다.',
       '조건: ' + [context.grade ? context.grade + '학년' : '', context.subject ? '교과 ' + context.subject : ''].filter(Boolean).join(', ') + '.',
       '성취기준:\n' + context.standards.map((s) => '[' + s.code + '] ' + s.text).join('\n'),
       context.element ? '평가요소: ' + context.element : '',
@@ -505,8 +506,10 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     const labels = (Array.isArray(body.labels) && body.labels.length === levels ? body.labels : LEVEL_LABELS[levels]).map((label) => String(label || '').trim().slice(0, 20) || '단계');
     const standards = (Array.isArray(body.standards) ? body.standards : []).slice(0, 8)
       .map((s) => ({ code: String(s?.code || '').slice(0, 16), text: String(s?.text || '').slice(0, 600) })).filter((s) => s.text);
-    const element = String(body.element || '').slice(0, 400);
-    if (standards.length === 0 && !element) fail('AI_PLAN_CONTEXT_REQUIRED', '성취기준이나 평가요소를 먼저 적어 주세요.');
+    const element = typeof body.element === 'string' ? body.element.trim().slice(0, 400) : '';
+    if (!element.replace(/[\s\u200B-\u200D\u2060\uFEFF]/g, '')) {
+      fail('AI_ASSESSMENT_ELEMENT_REQUIRED', '평가요소를 먼저 적어 주세요.');
+    }
     countGenerate(user.id);
     const stored = await storedKey(user.id);
     if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);

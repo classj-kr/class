@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T21:00:45.015Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "phase-curves",
+      "scenarios": 110
+    }
+  ],
+  "scenarios": 110,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

@@ -1,0 +1,31 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.0495ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (1.3298ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1837ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (60.2113ms)
+chromium: 121 apps / 484 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (16776.4026ms)
+webkit: 121 apps / 484 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (20392.789ms)
+✔ wet gas collection: hydrostatic and vapor corrections conserve mass and moles (0.5512ms)
+✔ colligative phase onset and changing solvent fraction, not a false solution plateau (0.1739ms)
+✔ calorimetry: reaction amounts, mass and heat sum independently agree (0.1032ms)
+✔ buffer and hydrolysis: water equilibrium, electroneutrality and finite capacity (0.3841ms)
+✔ bean controls: equal starts, separate gas absorption and heat control (0.8069ms)
+✔ chromium: source procedure, control isolation, questions and mobile (7814.7484ms)
+✔ webkit: source procedure, control isolation, questions and mobile (16851.391ms)
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (54.2995ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (2598.0281ms)
+✔ Mendeleev: textbook 19-card set, mass order and chemical grouping are independent constraints (1.1522ms)
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.1452ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.4037ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.2816ms)
+✔ chromium: source-specific controls, full question flow and mobile scenes (27155.8448ms)
+✔ webkit: source-specific controls, full question flow and mobile scenes (68137.6769ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 95394.5133

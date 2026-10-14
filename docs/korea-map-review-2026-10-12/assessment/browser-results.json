@@ -1,0 +1,668 @@
+[
+  {
+    "scene": "prehistoric-sites",
+    "questions": [
+      {
+        "id": "history-prehistoric-sites-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-prehistoric-sites-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "gojoseon-distribution",
+    "questions": [
+      {
+        "id": "history-gojoseon-distribution-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-gojoseon-distribution-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "early-states",
+    "questions": [
+      {
+        "id": "history-early-states-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-early-states-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "gaya-federation",
+    "questions": [
+      {
+        "id": "history-gaya-federation-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-gaya-federation-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "baekje-fourth",
+    "questions": [
+      {
+        "id": "history-baekje-fourth-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-baekje-fourth-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "goguryeo-fifth",
+    "questions": [
+      {
+        "id": "history-goguryeo-fifth-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-goguryeo-fifth-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "baekje-capitals",
+    "questions": [
+      {
+        "id": "history-baekje-capitals-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-baekje-capitals-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "silla-sixth",
+    "questions": [
+      {
+        "id": "history-silla-sixth-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-silla-sixth-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "unification",
+    "questions": [
+      {
+        "id": "history-unification-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-unification-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "balhae",
+    "questions": [
+      {
+        "id": "history-balhae-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-balhae-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "silla-trade",
+    "questions": [
+      {
+        "id": "history-silla-trade-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-silla-trade-high-02",
+        "revision": 5,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "later-three",
+    "questions": [
+      {
+        "id": "history-later-three-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-later-three-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "gangdong",
+    "questions": [
+      {
+        "id": "history-gangdong-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-gangdong-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "gwiju",
+    "questions": [
+      {
+        "id": "history-gwiju-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-gwiju-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "nine-forts",
+    "questions": [
+      {
+        "id": "history-nine-forts-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-nine-forts-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "sambyeolcho",
+    "questions": [
+      {
+        "id": "history-sambyeolcho-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-sambyeolcho-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "ssangseong",
+    "questions": [
+      {
+        "id": "history-ssangseong-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-ssangseong-high-02",
+        "revision": 5,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "hanyang-capital",
+    "questions": [
+      {
+        "id": "history-hanyang-capital-high-01",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-hanyang-capital-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "four-six",
+    "questions": [
+      {
+        "id": "history-four-six-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-four-six-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "imjin",
+    "questions": [
+      {
+        "id": "history-imjin-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-imjin-high-02",
+        "revision": 5,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "byeongja-war",
+    "questions": [
+      {
+        "id": "history-byeongja-war-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-byeongja-war-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "foreign-incursions",
+    "questions": [
+      {
+        "id": "history-foreign-incursions-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-foreign-incursions-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "ports",
+    "questions": [
+      {
+        "id": "history-ports-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-ports-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "donghak",
+    "questions": [
+      {
+        "id": "history-donghak-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-donghak-high-02",
+        "revision": 5,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "an-jung-geun",
+    "questions": [
+      {
+        "id": "history-an-jung-geun-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-an-jung-geun-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "independence-bases",
+    "questions": [
+      {
+        "id": "history-independence-bases-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-independence-bases-high-02",
+        "revision": 5,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "march-first",
+    "questions": [
+      {
+        "id": "history-march-first-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-march-first-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "provisional-government",
+    "questions": [
+      {
+        "id": "history-provisional-government-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-provisional-government-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "provisional-route",
+    "questions": [
+      {
+        "id": "history-provisional-route-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-provisional-route-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "bongo-cheongsan",
+    "questions": [
+      {
+        "id": "history-bongo-cheongsan-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-bongo-cheongsan-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "patriotic-corps",
+    "questions": [
+      {
+        "id": "history-patriotic-corps-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-patriotic-corps-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "allied-operations",
+    "questions": [
+      {
+        "id": "history-allied-operations-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-allied-operations-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "korean-volunteer-corps",
+    "questions": [
+      {
+        "id": "history-korean-volunteer-corps-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-korean-volunteer-corps-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "liberation-army",
+    "questions": [
+      {
+        "id": "history-liberation-army-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-liberation-army-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "liberation-division",
+    "questions": [
+      {
+        "id": "history-liberation-division-high-01",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-liberation-division-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "korean-war",
+    "questions": [
+      {
+        "id": "history-korean-war-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-korean-war-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  },
+  {
+    "scene": "democracy-movements",
+    "questions": [
+      {
+        "id": "history-democracy-movements-high-01",
+        "revision": 2,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      },
+      {
+        "id": "history-democracy-movements-high-02",
+        "revision": 4,
+        "wrongAnswerHidden": true,
+        "correctExplanation": true
+      }
+    ],
+    "result": "0 / 2 after both first responses incorrect"
+  }
+]

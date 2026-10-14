@@ -1,0 +1,59 @@
+✔ SST snapshot source hashes, sign, land masks, same coordinate and all month coverage (14.0076ms)
+✖ chromium: all regions and dates, maps, touch/keys, playback, load recovery and diagnosis (13350.225ms)
+✖ webkit: all regions and dates, maps, touch/keys, playback, load recovery and diagnosis (16565.1812ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30024.1488
+
+✖ failing tests:
+
+test at tests\science-sst.test.cjs:8:43
+✖ chromium: all regions and dates, maps, touch/keys, playback, load recovery and diagnosis (13350.225ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" not to be strictly deep-equal to:
+  
+  {
+    index: 1317,
+    lat: 32.875,
+    lon: 126.375,
+    x: 25,
+    y: 19
+  }
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-sst.test.cjs:13:289)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { x: 25, y: 19, index: 1317, lon: 126.375, lat: 32.875 },
+    expected: { x: 25, y: 19, index: 1317, lon: 126.375, lat: 32.875 },
+    operator: 'notDeepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-sst.test.cjs:8:43
+✖ webkit: all regions and dates, maps, touch/keys, playback, load recovery and diagnosis (16565.1812ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" not to be strictly deep-equal to:
+  
+  {
+    index: 1317,
+    lat: 32.875,
+    lon: 126.375,
+    x: 25,
+    y: 19
+  }
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-sst.test.cjs:13:289)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { x: 25, y: 19, index: 1317, lon: 126.375, lat: 32.875 },
+    expected: { x: 25, y: 19, index: 1317, lon: 126.375, lat: 32.875 },
+    operator: 'notDeepStrictEqual',
+    diff: 'simple'
+  }

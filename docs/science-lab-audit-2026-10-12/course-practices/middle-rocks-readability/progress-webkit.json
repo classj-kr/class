@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T18:51:30.859Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "minerals-rocks",
+      "scenarios": 95
+    }
+  ],
+  "scenarios": 95,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

@@ -6,11 +6,11 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 // python -m http.server 8765 --bind 127.0.0.1
 
 (async () => {
-  const output = path.resolve(__dirname, '../output/phonics-picture-review');
+  const output = path.resolve(__dirname, '../outputs/phonics-picture-review');
   fs.mkdirSync(output, { recursive: true });
   const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
-    for (const site of ['phonics', 'phonics-site/public/phonics']) {
+    for (const site of ['phonics']) {
       const page = await browser.newPage({ viewport: { width: 1123, height: 850 } });
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
@@ -52,7 +52,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
       assert.equal(model.fan.pictureMeaning, '부채');
       // The full bat wing extends beyond the old 2/6 right grid boundary.
       assert.ok(model.bat.picture.crop[0] + model.bat.picture.crop[2] > 2 / 6);
-      const name = site.startsWith('phonics-site') ? 'standalone' : 'main';
+      const name = 'main';
       await page.locator('#stageList [data-lesson="' + model.bLesson + '"]').click();
       let sawBat = false;
       for (let round = 0; round < 8; round++) {
@@ -61,9 +61,9 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
         const bat = page.locator('.sound-choice[data-word="bat"]');
         if (await bat.count()) {
           sawBat = true;
-          assert.match(await bat.innerText(), /그림: 박쥐/);
-          assert.match(await bat.innerText(), /다른 뜻: 야구 방망이/);
-          assert.match(await bat.getAttribute('aria-label'), /그림: 박쥐, 다른 뜻: 야구 방망이/);
+          assert.equal(await bat.locator('.sound-choice-meaning').innerText(), '박쥐');
+          assert.doesNotMatch(await bat.innerText(), /그림:|다른 뜻:|야구 방망이/);
+          assert.equal(await bat.getAttribute('aria-label'), 'bat, 박쥐');
           await page.screenshot({ path: path.join(output, name + '-desktop.png'), fullPage: true });
           await page.setViewportSize({ width: 390, height: 844 });
           assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);

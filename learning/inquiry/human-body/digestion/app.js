@@ -520,7 +520,7 @@
         }
 
         reagentResultEl.textContent = nutrientName + ' + ' + r.name + ' ➔ 색 변화 없음. ' +
-            r.name + ' ➔ ' + NUTRIENT_NAMES[r.target] + '에만 반응합니다.';
+            (activeReagent === 'benedict' ? '베네딕트 용액은 포도당·엿당 등과 가열하면 반응합니다.' : r.name + '은 ' + NUTRIENT_NAMES[r.target] + ' 검출에 사용합니다.');
         reagentResultEl.style.background = 'rgba(0, 0, 0, 0.35)';
         reagentResultEl.style.color = '#cbd5e1';
         reagentResultEl.style.borderColor = 'rgba(255, 255, 255, 0.18)';

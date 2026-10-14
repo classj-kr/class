@@ -1,0 +1,43 @@
+✔ chromium: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (3111.5193ms)
+✔ webkit: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (4028.4297ms)
+613 core state/observation/check combinations verified
+34 live observation questions, 68 incorrect choices have stable authored feedback
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (18.321ms)
+✔ every live supplementary observation has choice-specific misconception feedback after rotation (6.4666ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.9936ms)
+solubility: 16 browser states, all 3 answers + reset verified
+acid-base: 4 browser states, all 3 answers + reset verified
+state-change: 6 browser states, all 3 answers + reset verified
+light-shadow: 5 browser states, all 3 answers + reset verified
+refraction: 10 browser states, all 3 answers + reset verified
+weight-compare: 12 browser states, all 3 answers + reset verified
+volcano-model: 6 browser states, all 3 answers + reset verified
+lever-balance: 4 browser states, all 3 answers + reset verified
+seasons: 120 browser states, all 3 answers + reset verified
+diffusion: 216 browser states, all 3 answers + reset verified
+weather-front: 6 browser states, all 3 answers + reset verified
+motion-energy: 8 browser states, all 3 answers + reset verified
+ohms-law: 72 browser states, all 3 answers + reset verified
+burning-conditions: 6 browser states, all 3 answers + reset verified
+cell-structure: 32 browser states, all 3 answers + reset verified
+energy-conversion: 24 browser states, all 3 answers + reset verified
+mass-ratio: 6 browser states, all 3 answers + reset verified
+pea-genetics: 6 browser states, all 3 answers + reset verified
+cell-membrane: 6 browser states, all 3 answers + reset verified
+flame-ions: 4 browser states, all 3 answers + reset verified
+neutralization-common: 10 browser states, all 3 answers + reset verified
+density-buoyancy: 24 browser states, all 3 answers + reset verified
+603 browser state cases, 1809 answer checks
+✔ all required observation controls, wrong/correct answers and resets work in the browser (10297.332ms)
+235 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (202.6064ms)
+✔ every science lab JavaScript file parses (102.2696ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8572ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17999.9597

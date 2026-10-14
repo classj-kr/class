@@ -19,7 +19,7 @@ except ImportError:  # The slower PIL fallback still supports a plain Python set
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF_DIR = ROOT / "tmp" / "pdfs"
+PDF_DIR = ROOT / 'references/source-documents'
 QUESTION_DIR = ROOT / "questions"
 DATA_FILE = ROOT / "data" / "questions.json"
 OFFICIAL_ORIGIN = "https://www.historyexam.go.kr"

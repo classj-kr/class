@@ -1,0 +1,11 @@
+✔ two-liquid heating conserves the imposed heat, distinguishes comparison controls and never invents invalid sensor values (4.8507ms)
+✔ chromium: prepare, connect, measure, reject misplaced sensors, compare controls and interpret (19219.1067ms)
+✔ webkit: prepare, connect, measure, reject misplaced sensors, compare controls and interpret (20648.491ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39926.3817

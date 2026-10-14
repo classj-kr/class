@@ -1,0 +1,48 @@
+{
+  "engine": "chromium",
+  "viewport": [
+    768,
+    1024
+  ],
+  "scope": "Visible HTML text in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.",
+  "routes": 182,
+  "checked": 16852,
+  "gradientSkipped": 209,
+  "errors": [],
+  "flagged": [
+    {
+      "slug": "equilibrium-colour",
+      "state": "pressure-initial",
+      "checked": 69,
+      "gradientSkipped": 1,
+      "issues": [
+        {
+          "text": "농도 변화",
+          "ratio": 1.73,
+          "color": "rgb(25, 61, 80)",
+          "background": [
+            24,
+            101,
+            118
+          ],
+          "opacity": 1,
+          "tag": "BUTTON",
+          "css": ""
+        },
+        {
+          "text": "압력 변화",
+          "ratio": 1,
+          "color": "rgb(255, 255, 255)",
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "opacity": 1,
+          "tag": "BUTTON",
+          "css": ""
+        }
+      ]
+    }
+  ]
+}

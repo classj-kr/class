@@ -1,0 +1,46 @@
+state-change: 36 valid states
+gases: 3 valid states
+mixture-separation: 7 valid states
+heat-transfer: 96 valid states
+light-shadow: 10 valid states
+photosynthesis: 6 valid states
+acid-base: 32 valid states
+immune: 40 valid states
+stars-universe: 24 valid states
+microscope: 18 valid states
+weather-watch: 8 valid states
+land-sea: 2 valid states
+sound-vibration: 4 valid states
+rock-layers: 4 valid states
+minerals-rocks: 4 valid states
+microbes: 10 valid states
+solubility: 16 valid states
+refraction: 10 valid states
+weight-compare: 12 valid states
+volcano-model: 6 valid states
+lever-balance: 4 valid states
+seasons: 120 valid states
+diffusion: 216 valid states
+weather-front: 6 valid states
+motion-energy: 8 valid states
+ohms-law: 72 valid states
+burning-conditions: 6 valid states
+cell-structure: 32 valid states
+energy-conversion: 24 valid states
+mass-ratio: 6 valid states
+pea-genetics: 6 valid states
+cell-membrane: 6 valid states
+flame-ions: 4 valid states
+neutralization-common: 10 valid states
+density-buoyancy: 24 valid states
+✔ all supplement choices return finite, curriculum-referenced observations (25.3549ms)
+✔ ABO both-reagent truth table and student judgement (0.5361ms)
+✔ freezing mass, gas mass, heat contact, separation and starch (0.249ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.2787

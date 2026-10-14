@@ -4,9 +4,9 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const root = path.join(__dirname, "..");
-const roster = fs.readFileSync(path.join(root, "classtools", "roster.html"), "utf8");
-const dashboard = fs.readFileSync(path.join(root, "classtools", "dashboard.html"), "utf8");
-const profile = fs.readFileSync(path.join(root, "classtools", "profile.html"), "utf8");
+const roster = fs.readFileSync(path.join(root, "apps/classtools", "roster.html"), "utf8");
+const dashboard = fs.readFileSync(path.join(root, "apps/classtools", "dashboard.html"), "utf8");
+const profile = fs.readFileSync(path.join(root, "apps/classtools", "profile.html"), "utf8");
 const platform = fs.readFileSync(path.join(root, "game-hub-server", "classroom-platform.js"), "utf8");
 
 for (const [name, html] of [["roster", roster], ["dashboard", dashboard], ["profile", profile]]) {

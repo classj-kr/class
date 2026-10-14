@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-12",
+  "defects": [
+    {
+      "slug": "energy-heat",
+      "issue": "Height label was partly clipped by the apparatus clip path.",
+      "fix": "Keep the height annotation outside the cropped apparatus group."
+    },
+    {
+      "slug": "sound-vibration",
+      "issue": "Newly enabled controls temporarily inherited intermediate disabled opacity, giving 4.04 to 4.23 text contrast.",
+      "fix": "Transition only background, border and shadow; enabled text becomes fully opaque immediately."
+    },
+    {
+      "slugs": [
+        "wave-transfer",
+        "solubility-curve",
+        "photosynthesis",
+        "recrystallise"
+      ],
+      "issue": "Comparison curve labels and lines were faded until difficult to read.",
+      "fix": "Keep labels opaque and distinguish comparison curves with dashes instead of low opacity."
+    },
+    {
+      "slug": "rate-equilibrium",
+      "issue": "Dimers and comparison curves had low visual contrast.",
+      "fix": "Use outlined colourless dimers, a visible vessel boundary and opaque distinct curves."
+    }
+  ],
+  "auditChange": "Inspect partial text clipping inside an ancestor clip path, as well as the outer SVG boundary. Completely clipped microscope reticle labels outside the eyepiece are not visible and are excluded; the initial 0/100 reticle reports were false positives.",
+  "failedEvidence": [
+    "svg-clip-before-repair.json",
+    "fork-enabled-transition-contrast-before.json",
+    "plot-pastel-contrast-before.txt"
+  ],
+  "validation": {
+    "status": "Passed: both engines, 2810 structural diagram states each; final 65 focused reading states each; label contrast at least 4.45:1 and curve contrast at least 3:1 in the five-app regression; completed comparison controls also passed the full HTML contrast scan.",
+    "tests": "plot-visibility-final-regression.txt",
+    "readability": "plot-visibility-readability/extended-*.json",
+    "svgResources": "runtime-svg-resources-*.json"
+  }
+}

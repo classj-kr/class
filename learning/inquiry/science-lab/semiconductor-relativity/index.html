@@ -7,12 +7,12 @@
     <title>과학 실험실</title>
     <meta name="description" content="p-n 접합 다이오드에 순방향·역방향 전압을 걸어 쇼클리 식으로 전류를 구하고 공핍층과 전자·양공의 움직임을 보고, 광속에 가까운 뮤온이 시간 지연 덕분에 지표까지 닿는지 확인하고, 길이 수축과 상대론적 운동 에너지를 뉴턴 식과 견주는 고등학교 물리학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="semi-visual.css?v=7">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="semi-visual.css?v=3a5a840de378">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
+<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
     <main>
@@ -100,62 +100,61 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="b">
-                    <h3>다이오드에 순방향 전압을 걸면 전류가 흐르는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 다이오드가 저항이 0인 도선이 되기 때문에</label>
-                        <label><input type="radio" name="q1" value="b"> 공핍층이 얇아져 전자와 양공이 경계를 건너기 때문에</label>
-                        <label><input type="radio" name="q1" value="c"> 다이오드가 뜨거워지기 때문에</label>
-                        <label><input type="radio" name="q1" value="d"> n형에 양공이 새로 생기기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>p쪽에 +극을 걸면 접합의 전위 장벽이 낮아지고 공핍층이 얇아져 n형의 전자와 p형의 양공이 경계를 건너 재결합하며 전류가 흐릅니다. 역방향에서는 장벽이 높아지고 공핍층이 두꺼워져 거의 흐르지 않습니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="a">
-<h3>빠르게 움직이는 뮤온을 지상에서 관측하는 경우, 시간 지연으로 설명할 수 있는 것은?</h3>
+<h3>p–n 접합 다이오드의 순방향 전압을 높였다. 접합 장벽과 전류 변화의 짝은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q2" value="a"> 뮤온에 대한 수명이 더 길게 측정된다.</label>
-<label><input type="radio" name="q2" value="b"> 뮤온이 빛보다 빨라진다.</label>
-<label><input type="radio" name="q2" value="c"> 모든 관측자의 시간이 없어진다.</label>
-<label><input type="radio" name="q2" value="d"> 뮤온의 고유 수명이 무한대이다.</label>
+<label><input type="radio" name="q1" value="a"> 장벽 높아짐 · 전류 감소</label>
+<label><input type="radio" name="q1" value="b"> 장벽 낮아짐 · 전류 증가</label>
+<label><input type="radio" name="q1" value="c"> 장벽 낮아짐 · 전류 감소</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>지상 관측자는 움직이는 뮤온의 수명을 고유 수명보다 길게 측정합니다. 뮤온과 함께 움직이는 관측자가 잰 고유 수명 자체가 바뀌는 것은 아닙니다.</p>
+<p class="answer-explanation" hidden>순방향 전압은 접합의 전위 장벽을 낮추어 전자와 양공이 경계를 건너기 쉽게 합니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="a">
+<h3>뮤온의 고유 수명이 τ₀이고 지상계에 대한 로런츠 인자가 2이다. 지상계에서 측정한 평균 수명은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 2τ₀</label>
+<label><input type="radio" name="q2" value="b"> τ₀/2</label>
+<label><input type="radio" name="q2" value="c"> τ₀</label>
+<label><input type="radio" name="q2" value="d"> 4τ₀</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>뮤온과 함께 움직이는 계의 고유 시간에 비해 지상계에서 측정하는 시간 간격은 γ배 길어집니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="b">
-<h3>관측자에 대해 빠르게 움직이는 우주선의 길이는 어떻게 측정될까요?</h3>
+<h3>고유 길이가 가로 L, 세로 L인 우주선이 가로 방향으로 움직인다. 로런츠 인자가 2일 때 관측한 가로·세로 길이는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q3" value="a"> 모든 방향이 똑같이 줄어든다.</label>
-<label><input type="radio" name="q3" value="b"> 운동 방향만 짧아진다.</label>
-<label><input type="radio" name="q3" value="c"> 운동에 수직인 방향만 짧아진다.</label>
-<label><input type="radio" name="q3" value="d"> 항상 길어진다.</label>
+<label><input type="radio" name="q3" value="a"> L / L/2</label>
+<label><input type="radio" name="q3" value="b"> L/2 / L</label>
+<label><input type="radio" name="q3" value="c"> L/2 / L/2</label>
+<label><input type="radio" name="q3" value="d"> 2L / L</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>길이 수축은 운동 방향에서 나타납니다. 우주선과 함께 움직이는 관측자가 잰 고유 길이와 비교하는 것입니다.</p>
+<p class="answer-explanation" hidden>운동 방향의 길이만 1/γ로 수축하고 그에 수직인 길이는 변하지 않습니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="c">
-<h3>특수 상대성 이론의 빛에 대한 설명으로 옳은 것은?</h3>
+<h3>진공에서 광원이 관측자에게 다가오는 경우 A와 멀어지는 경우 B를 비교한다. 관성계에서 측정한 광속은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q4" value="a"> 광원이 움직이면 진공 광속이 달라진다.</label>
-<label><input type="radio" name="q4" value="b"> 모든 물체가 쉽게 광속을 넘는다.</label>
-<label><input type="radio" name="q4" value="c"> 진공 광속은 관성계에 관계없이 같다.</label>
-<label><input type="radio" name="q4" value="d"> 빛은 질량 있는 공과 같은 방식으로 속력이 더해진다.</label>
+<label><input type="radio" name="q4" value="a"> A: c+v / B: c−v</label>
+<label><input type="radio" name="q4" value="b"> A: c−v / B: c+v</label>
+<label><input type="radio" name="q4" value="c"> A: c / B: c</label>
+<label><input type="radio" name="q4" value="d"> A: c+v / B: c+v</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>진공에서 빛의 속력은 광원의 운동이나 관성계에 관계없이 일정하다는 광속 불변 원리를 따릅니다.</p>
+<p class="answer-explanation" hidden>특수 상대성 이론에서 진공 광속은 광원과 관측자의 상대 운동에 관계없이 c입니다. 도플러 효과에 따른 진동수 변화와 구별합니다.</p>
 </article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=d165aac1c7bb"></script>
-    <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
-    <script src="../lab-ui.js?v=c295eda1bdab"></script>
+    <script src="app.js?v=f3808ea11af0"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
+    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

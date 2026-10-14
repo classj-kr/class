@@ -1,0 +1,12 @@
+235 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (233.0112ms)
+✔ every science lab JavaScript file parses (191.6843ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8914ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 547.1502

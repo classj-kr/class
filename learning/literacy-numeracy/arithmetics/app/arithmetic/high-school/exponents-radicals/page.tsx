@@ -195,7 +195,7 @@ export default function ExponentsRadicalsPage() {
                     {createExponentRadicalChoices(problem).map((choice, choiceIndex) => {
                       const selected = selectedChoices[problem.id] === choiceIndex;
                       return (
-                      <button className={`${selected ? "is-selected" : ""}${graded && choice.correct ? " is-correct-answer" : ""}${graded && selected && !choice.correct ? " is-wrong-answer" : ""}`} type="button" key={choiceIndex} onClick={() => selectChoice(problem, choiceIndex)}>
+                      <button className={`trig-derivative-choice${selected ? " is-selected" : ""}${graded && choice.correct ? " is-correct-answer" : ""}${graded && selected && !choice.correct ? " is-wrong-answer" : ""}`} type="button" key={choiceIndex} aria-pressed={selected} onClick={() => selectChoice(problem, choiceIndex)}>
                         <span>{choiceIndex + 1}</span><MathFormula latex={answerLatex(choice.answer)} />
                       </button>
                     )})}

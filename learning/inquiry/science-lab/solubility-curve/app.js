@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (names[names.length - 1].y + nShift > GRAPH.y0 - 2) nShift = (GRAPH.y0 - 2) - names[names.length - 1].y;
         names.forEach(n => { n.y += nShift; });
         names.forEach(n => {
-            out += `<text class="curve-name" fill="${n.sol.color}" opacity="${n.key === solute ? 1 : 0.5}" ` +
+            out += `<text class="curve-name" fill="${n.sol.color}" ` +
                    `x="${GRAPH.x1 - 4}" y="${n.y.toFixed(1)}" text-anchor="end">${n.sol.formula}</text>`;
         });
 

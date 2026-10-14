@@ -34,22 +34,22 @@
 
     // 시험관 속 액체가 차지하는 자리 (제미나이 그림에서 잰 값)
     var TUBE_TOP = 180, TUBE_H = 400;
-    var PLASMA_H = 220, BUFFY_H = 12;
+    var PLASMA_H = 220, BUFFY_H = 2;
 
     // ax, ay = 이름표가 놓일 자리 (그림 좌표 1000x700)
     var LABELS = [
         { id: 'plasmaLayer', text: '혈장 55%', ax: 356, ay: 250, layered: true },
         { id: 'buffyLayer', text: '백혈구·혈소판 1% 미만', ax: 372, ay: 406, layered: true },
-        { id: 'rbcLayer', text: '적혈구 44%', ax: 356, ay: 500, layered: true },
+        { id: 'rbcLayer', text: '적혈구 약 45%', ax: 356, ay: 500, layered: true },
         { id: 'wbc', text: '백혈구 (가장 크다·핵 있다)', ax: 525, ay: 466 },
         { id: 'rbc', text: '적혈구 (핵 없다)', ax: 710, ay: 444 },
         { id: 'platelet', text: '혈소판 (가장 작다)', ax: 868, ay: 438 }
     ];
 
     var DETAIL = {
-        plasmaLayer: ['혈장', '혈액의 <strong>약 55%</strong>를 차지하는 액체입니다. <strong>90%가 넘게 물</strong>이고, 영양소·노폐물·이산화탄소를 녹여서 나릅니다. 원심분리하면 위쪽에 <strong>연노란색</strong>으로 뜹니다.'],
+        plasmaLayer: ['혈장', '혈액의 <strong>약 55%</strong>를 차지하는 액체입니다. <strong>약 90%가 물</strong>이고, 영양소·노폐물·이산화탄소를 녹여서 나릅니다. 원심분리하면 위쪽에 <strong>연노란색</strong>으로 뜹니다.'],
         buffyLayer: ['백혈구와 혈소판 층', '원심분리하면 혈장과 적혈구 <strong>사이에 아주 얇게</strong> 낍니다. 둘을 합쳐도 혈액의 1%가 안 됩니다.'],
-        rbcLayer: ['적혈구 층', '혈구의 대부분이 적혈구입니다. 무거워서 <strong>맨 아래에 가라앉습니다</strong>. 혈액 전체의 약 44%입니다.'],
+        rbcLayer: ['적혈구 층', '혈구의 대부분이 적혈구입니다. 무거워서 <strong>맨 아래에 가라앉습니다</strong>. 혈액 전체의 대략 45%를 차지하며 비율은 사람과 상태에 따라 달라집니다.'],
         wbc: ['백혈구', '세 혈구 가운데 <strong>가장 큽니다</strong>. 셋 중 <strong>혼자만 핵이 있습니다</strong>. 몸에 들어온 세균을 잡아먹습니다(식균 작용). 수가 가장 적습니다.'],
         rbc: ['적혈구', '가운데가 <strong>오목한 원반</strong> 모양이고 <strong>핵이 없습니다</strong>. 붉은색 헤모글로빈이 <strong>산소를 나릅니다</strong>. 혈구 가운데 수가 가장 많습니다.'],
         platelet: ['혈소판', '세 혈구 가운데 <strong>가장 작고</strong>, 모양이 일정하지 않은 조각입니다. <strong>핵이 없습니다</strong>. 상처가 나면 <strong>피를 굳게 해</strong> 피가 멎게 합니다.'],
@@ -244,7 +244,7 @@
         }
 
         // sep = 0 이면 적혈구가 시험관을 가득 채운다 (섞인 피)
-        // sep = 1 이면 혈장 220 / 얇은 층 12 / 적혈구 168 로 갈라진다
+        // Fully separated: plasma 55%, buffy coat 0.5%, red cells 44.5%.
         var pH = PLASMA_H * sep;
         var bH = BUFFY_H * sep;
         if (plasma) {
@@ -284,7 +284,7 @@
         if (!capBox) return;
         capBox.innerHTML = sep > 0.9
             ? '<span class="blood-lab-lead">층이 갈라졌습니다</span>' +
-              '<span>위에서부터 <b>혈장 55%</b> · 백혈구와 혈소판(1% 미만) · <b>적혈구 44%</b> 차례입니다. ' +
+              '<span>위에서부터 <b>혈장 55%</b> · 백혈구와 혈소판(1% 미만) · <b>적혈구 약 45%</b> 차례입니다. ' +
               '무거운 적혈구가 아래로 가라앉습니다.</span>' +
               '<span class="blood-lab-note">셋 가운데 <b>백혈구만 핵이 있습니다.</b> 크기는 백혈구 &gt; 적혈구 &gt; 혈소판, 수는 적혈구가 가장 많습니다.</span>'
             : (sep < 0.1

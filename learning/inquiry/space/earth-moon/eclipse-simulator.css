@@ -2,14 +2,14 @@
 body[data-space-topic="eclipses"] .view-container { padding-left: 0; padding-right: 0; }
 html:has(body[data-space-topic="eclipses"]) { background: #030712; }
 .ecl-content { min-width: 0; }
-.ecl-controls { display: flex; align-items: center; gap: 28px; min-height: 44px; padding: 0 340px 0 44px; }
+.ecl-controls { display: flex; align-items: center; justify-content:space-between; gap: 16px; min-height: 44px; padding: 0 8px; flex-wrap:wrap; }
 .ecl-time-note { font-size: 12px; color: #a5b3c7; white-space: nowrap; }
 .ecl-options { display: flex; gap: 16px; font-size: 12px; color: #b7c8df; white-space: nowrap; }
 .ecl-options label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
 .eclipse-lab button { cursor: pointer; border: 1px solid #34445f; border-radius: 6px; background: #111d30; color: #cbd5e1; font: inherit; font-weight: 600; }
 .eclipse-lab button[aria-pressed="true"] { background: #075e82; border-color: #38bdf8; color: #fff; }
 .eclipse-lab button:focus-visible, .eclipse-lab input:focus-visible, .eclipse-lab summary:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
-.ecl-diagram-panel { height: clamp(290px,47dvh,540px); min-width: 0; overflow: hidden; border: 1px solid #26354b; border-radius: 12px; background: radial-gradient(ellipse at 47% 50%,#101f34,#050b16 75%); }
+.ecl-diagram-panel { width:100%; height: clamp(290px,47dvh,540px); min-width: 0; overflow: hidden; border: 1px solid #26354b; border-radius: 12px; background: radial-gradient(ellipse at 47% 50%,#101f34,#050b16 75%); }
 .ecl-diagram { display: block; width: 100%; height: 100%; }
 .eclipse-lab svg text { fill: #d7e5f5; font-family: inherit; font-size: 20px; font-weight: 600; paint-order: stroke; stroke: #07101e; stroke-width: 3px; stroke-linejoin: round; }
 .eclipse-lab svg .ecl-sub-label { font-size: 15px; fill: #99adc7; }
@@ -53,6 +53,19 @@ body:not([data-topic-view="observe"]) .ecl-rays line, .ecl-rays[visibility="hidd
 .ecl-info-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px 24px; padding: 8px 10px; line-height: 1.8; }
 .ecl-info-grid p { margin: 0; }
 .ecl-info-grid b { color: #d0def1; }
+.ecl-result p { font-size:15px; line-height:1.65; }
+.ecl-time-note,.ecl-options,.ecl-position label { font-size:14px; }
+.ecl-sky-caption { font-size:13px; }
+.ecl-play,.ecl-presets button { font-size:13px!important; min-height:36px; }
+.ecl-result { flex-wrap:wrap; gap:4px 12px; }
+.eclipse-lab [hidden] { display:none!important; }
+.space-topic-page .topic-study-layout > #tab-eclipse { padding:0; }
+.topic-study-layout .ecl-diagram-panel { height:clamp(240px,36dvh,420px); }
+.topic-study-layout .ecl-sky { height:clamp(150px,22dvh,270px); }
+@media(min-width:1101px) and (max-width:1499px) {
+    .ecl-position { grid-template-columns:max-content max-content minmax(0,1fr); }
+    .ecl-presets { grid-column:1/-1; justify-content:flex-end; }
+}
 .ecl-quiz-figure { margin: 16px 0; padding: 12px; border-radius: 10px; background: #071120; }
 .ecl-quiz-figure svg { display: block; width: 100%; }
 .ecl-quiz-figure figcaption { margin-top: 6px; color: #8fa6c2; font-size: 11px; }
@@ -65,16 +78,16 @@ body:not([data-topic-view="observe"]) .ecl-rays line, .ecl-rays[visibility="hidd
     .ecl-diagram-panel { height: clamp(280px,43dvh,470px); }
 }
 @media(max-width: 760px) {
-    .space-topic-page .tab-pane#tab-eclipse { padding: 48px 8px 8px; }
+    .space-topic-page .tab-pane#tab-eclipse { padding: 0; }
     .ecl-controls { min-height: 34px; padding: 0 2px; gap: 8px; justify-content: space-between; }
     .ecl-time-note { font-size: 10px; }
     .ecl-options { font-size: 10px; gap: 8px; }
-    .ecl-diagram-panel { height: auto; aspect-ratio: 1120 / 440; }
+    .topic-study-layout .ecl-diagram-panel { height:180px; aspect-ratio:auto; }
     .ecl-comparison { grid-template-columns: minmax(0,1fr); }
     .ecl-sky { height: 210px; }
     .ecl-result { display: block; }
     .ecl-result strong { font-size: 17px; }
-    .ecl-result p { font-size: 12px; }
+    .ecl-result p { font-size: 15px; }
     .ecl-card-heading { padding: 10px 12px 0; }
     .ecl-position { grid-template-columns: max-content max-content minmax(0,1fr); }
     .ecl-presets { grid-column: 1 / -1; justify-content: center; }

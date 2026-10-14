@@ -1,4 +1,5 @@
 import pymupdf, re, json, glob, os, sys
+from source_paths import PAPERS_DIR
 sys.stdout.reconfigure(encoding='utf-8')
 
 CIRC = {'①': 1, '②': 2, '③': 3, '④': 4, '⑤': 5}
@@ -26,7 +27,7 @@ manual_2025_suneung = {
 
 all_electives = {}
 
-for p in sorted(glob.glob('papers/*-answers.pdf')):
+for p in sorted(PAPERS_DIR.glob('*-answers.pdf')):
     key = os.path.basename(p).replace('-answers.pdf', '')
     if key == '2025-suneung':
         all_electives[key] = manual_2025_suneung

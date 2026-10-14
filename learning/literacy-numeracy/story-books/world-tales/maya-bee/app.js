@@ -232,8 +232,8 @@ const CHAPTERS = [
                 "art": "07-hornets.webp",
                 "emoji": "⚠️",
                 "left": [
-                    "며칠이 지났습니다. 마야는 낡은 나무 곁을 지나고 있었지요. 나무에 커다란 구멍이 뚫려 있었습니다.",
-                    "그 안에서 낮은 소리가 들렸지요. 마야는 나무껍질에 몸을 붙였습니다. 안을 들여다보니 말벌들이 모여 있었지요.",
+                    "며칠이 지났습니다. 마야는 집으로 가는 길을 찾아 헤매다 낡은 나무 곁을 지났지요. 나무에 큰 구멍이 나 있었습니다.",
+                    "안에서 소리가 났지요. 마야는 나무껍질에 몸을 붙였습니다. 들여다보니 말벌들이 모여 있었지요.",
                     "턱이 억세고 허리가 잘록한 벌들이었지요."
                 ],
                 "right": [
@@ -865,7 +865,7 @@ const EN = {
                     art: '07-hornets.webp',
                     emoji: '⚡',
                     left: [
-                        "A few days went by. Maya was passing an old tree.",
+                        "A few days went by. Maya was still searching for the way home when she passed an old tree.",
                         "There was a great hole in the trunk, and low voices came out of it.",
                         "Maya pressed herself against the bark and looked in.",
                         "Hornets were gathered inside! They had hard jaws and narrow waists."
@@ -1177,7 +1177,8 @@ const WORDS_KO = {
         { w: "얼어붙다", k: "놀라서 몸이 굳어 움직이지 못하다.", s: "그러고는 그대로 얼어붙었습니다." },
         { w: "수레국화", k: "여름에 파란 꽃이 피는 들꽃.", s: "양귀비도 있고 수레국화도 있었지요." },
         { w: "풍기다", k: "냄새가 퍼져 나오다.", s: "저마다 다른 냄새를 풍겼습니다." },
-        { w: "저도 모르게", k: "자기도 알지 못하는 사이에.", s: "마야는 저도 모르게 소리를 냈습니다." }
+        { w: "저도 모르게", k: "자기도 알지 못하는 사이에.", s: "마야는 저도 모르게 소리를 냈습니다." },
+        { w: "양귀비", k: "들에 피는 꽃. 얇은 꽃잎이 종이처럼 하늘거리고, 새빨간 빛에 가운데가 까맣다.", s: "양귀비도 있고 수레국화도 있었지요." }
     ],
     "02-meadow-2.webp": [
         { w: "중천", k: "하늘의 한가운데.", s: "어느새 해가 중천에 떴지요." },

@@ -143,8 +143,8 @@
         var glucagonLevel = Math.max(5, Math.round((140 - bloodGlucose) * 1.5));
 
         if (glucoseValEl) glucoseValEl.textContent = Math.round(bloodGlucose) + ' mg/dL';
-        if (insulinValEl) insulinValEl.textContent = insulinLevel + ' μU/mL';
-        if (glucagonValEl) glucagonValEl.textContent = glucagonLevel + ' pg/mL';
+        if (insulinValEl) insulinValEl.textContent = insulinLevel + ' (상대값)';
+        if (glucagonValEl) glucagonValEl.textContent = glucagonLevel + ' (상대값)';
     }
 
     function updateGraph(dt) {

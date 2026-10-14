@@ -34,7 +34,7 @@
 
 ## 결과 파일과 재현
 
-- [수정 화면 모음](observation-fixes/review-webkit.jpg)
+- [수정 화면 모음](observation-fixes/review-webkit.webp)
 - [Chromium 검사 집계](final/summary-chromium.json), [WebKit 검사 집계](final/summary-webkit.json)
 - [추가 관찰 60개 패널의 전후 목록](supplements-baseline/inventory.json)
 - [현미경·미생물 Chromium 검사](observation-fixes/chromium-checks.json), [WebKit 검사](observation-fixes/webkit-checks.json)

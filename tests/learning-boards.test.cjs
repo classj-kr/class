@@ -15,7 +15,8 @@ test('student authorship, teacher review, immutable approved sets, grading and a
   try {
     await request('/mine', 'GET', undefined, '', 401);
     const { board: b } = await make(); const route = '/' + b.id;
-    assert.match(b.code, /^\d{6}$/);
+    assert.match(b.code, /^\d{4}$/);
+    assert.equal((await h.roomCodes.lookup(b.code)).activity, 'board');
     await request(route, 'GET', undefined, '', 401);
     await request(route, 'PATCH', { closed: true }, other, 403);
     const alice = (await request('/join', 'POST', { code: b.code, number: 1, name: '하나' }, '')).cookie;
@@ -39,28 +40,25 @@ test('student authorship, teacher review, immutable approved sets, grading and a
     await request(route + '/posts/' + qId + '/review', 'POST', { status: 'approved', revision: 2 }, teacher, 409);
     await request(route + '/posts/' + qId + '/review', 'POST', { status: 'approved', revision: 3 });
     let peer = await request(route, 'GET', undefined, bob);
-    assert.equal(peer.posts.length, 1); assert.equal(peer.posts[0].answer, undefined); assert.equal(peer.posts[0].explanation, undefined);
+    assert.equal(peer.posts.length, 0, 'approved peer questions remain private');
     const { id: setId } = await request(route + '/sets', 'POST', { title: '승인 세트', posts: [{ id: qId, revision: 4 }] }, teacher, 201);
     const setPath = route + '/sets/' + setId;
-    assert.equal((await request(setPath, 'GET', undefined, bob)).questions.length, 0);
+    await request(setPath, 'GET', undefined, bob, 401);
     await request(setPath, 'PATCH', { status: 'open' }, bob, 401);
     await request(setPath, 'PATCH', { status: 'open' });
-    let active = await request(setPath, 'GET', undefined, bob);
-    const question = active.questions[0]; assert.equal(question.answer, undefined);
-    await request(setPath + '/answer', 'POST', { questionId: question.id, choice: 9 }, bob, 400);
-    await request(setPath + '/answer', 'POST', { questionId: question.id, choice: 0 }, bob);
-    await request(setPath + '/answer', 'POST', { questionId: question.id, choice: 1 }, bob);
-    active = await request(setPath); assert.equal(active.questions[0].results.total, 1); assert.equal(active.questions[0].results.correct, 1);
-    assert.equal((await request(setPath, 'GET', undefined, alice)).questions[0].myChoice, undefined);
+    await request(setPath, 'GET', undefined, bob, 401);
+    let active = await request(setPath);
+    const question = active.questions[0];
+    await request(setPath + '/answer', 'POST', { questionId: question.id, choice: 1 }, bob, 410);
     // Editing an approved source revokes its approval, but cannot mutate an existing set.
     await request(route + '/posts/' + qId, 'PATCH', { ...qBody, content: '다른 문제', answer: 0, revision: 4 }, alice);
     assert.equal((await request(route, 'GET', undefined, alice)).posts[0].reviewStatus, 'pending');
     assert.equal((await request(setPath)).questions[0].content, '2 + 3은?');
     await request(route + '/sets', 'POST', { title: '낡은 승인', posts: [{ id: qId, revision: 4 }] }, teacher, 409);
     await request(setPath, 'PATCH', { status: 'closed' });
-    await request(setPath + '/answer', 'POST', { questionId: question.id, choice: 0 }, bob, 403);
+    await request(setPath + '/answer', 'POST', { questionId: question.id, choice: 0 }, bob, 410);
     await request(setPath, 'PATCH', { status: 'revealed' });
-    active = await request(setPath, 'GET', undefined, bob); assert.equal(active.questions[0].answer, 1); assert.equal(active.questions[0].myChoice, 1);
+    await request(setPath, 'GET', undefined, bob, 401); active = await request(setPath); assert.equal(active.questions[0].answer, 1);
     await request(setPath, 'PATCH', { status: 'open' }, teacher, 409);
     const { id: oxId } = await request(route + '/posts', 'POST', { kind: 'ox', content: '지구는 둥글다.', answer: 0 }, bob, 201);
     assert.deepEqual((await request(route, 'GET', undefined, bob)).posts.find(p => p.id === oxId).choices, ['O', 'X']);
@@ -69,6 +67,7 @@ test('student authorship, teacher review, immutable approved sets, grading and a
     await request('/join', 'POST', { code: b.code, number: 3, name: '셋' }, '', 403);
     await request(route, 'GET', undefined, alice); // locks block new joins, not existing reads
     const rotated = await request(route + '/rotate-code', 'POST'); assert.notEqual(rotated.code, b.code);
+    assert.match(rotated.code, /^\d{4}$/);
     await request('/join', 'POST', { code: b.code, number: 3, name: '셋' }, '', 404);
     const qr = await fetch(h.base + '/api/boards' + route + '/qr', { headers: { Cookie: teacher } });
     assert.equal(qr.status, 200); assert.match(await qr.text(), /<svg/);
@@ -96,5 +95,24 @@ test('student authorship, teacher review, immutable approved sets, grading and a
       assert.ok(visible.posts.every(row => row.id !== p.id));
       await request(base + '/posts/' + p.id, 'DELETE', undefined, student, 403);
     }
+  } finally { await h.close(); }
+});
+
+test('existing six-digit board invitations survive restart and rotate to four digits', async () => {
+  const h = await createHarness();
+  async function request(path, body, teacher = true) {
+    const response = await fetch(h.base + '/api/boards' + path, { method: 'POST',
+      headers: { 'Content-Type': 'application/json', Cookie: teacher ? 'test_teacher=1' : '' }, body: JSON.stringify(body) });
+    assert.ok(response.ok, await response.clone().text());
+    return response.json();
+  }
+  try {
+    const { board } = await request('/', { title: '기존 게시판', layout: 'wall' });
+    await h.pool.query("UPDATE learning_boards SET code='123456' WHERE id=$1", [board.id]);
+    await h.initialize();
+    await request('/join', { code: '123456', number: 1, name: '학생' }, false);
+    const rotated = await request('/' + board.id + '/rotate-code', {});
+    assert.match(rotated.code, /^\d{4}$/);
+    await request('/join', { code: rotated.code, number: 2, name: '학생둘' }, false);
   } finally { await h.close(); }
 });

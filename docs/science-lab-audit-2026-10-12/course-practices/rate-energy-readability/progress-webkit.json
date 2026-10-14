@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-12T12:46:08.506Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "rate-equilibrium",
+      "scenarios": 75
+    }
+  ],
+  "scenarios": 75,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

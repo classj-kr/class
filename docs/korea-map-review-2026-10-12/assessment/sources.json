@@ -1,0 +1,86 @@
+{
+  "inventory": {
+    "tcelpaUnitFiles": 6,
+    "objectiveItemsExtracted": 240,
+    "tcelpaCombinedAnswerFiles": 2,
+    "ebsKoreanHistoryQuestionPdfs": 272,
+    "ebsKoreanHistoryExplanationPdfs": 272,
+    "ebsUniqueQuestionHashes": 272
+  },
+  "reviewedKicePapers": 2,
+  "reviewedKiceItems": 40,
+  "sources": [
+    {
+      "id": "history1-1단원",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사1(정요근)\\고_한국사1(정요근)_1단원_단원 평가_천재교과서__d2137111d4.hwp",
+      "bytes": 3284992,
+      "sha256": "fcd2e278e81c62a0d4eef4fcfd04dc8a7114a8c822315c5a318fb54657aaa26b",
+      "chars": 13249
+    },
+    {
+      "id": "history1-2단원",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사1(정요근)\\고_한국사1(정요근)_2단원_단원 평가_천재교과서__f9dfb6425f.hwp",
+      "bytes": 5479936,
+      "sha256": "193dbf7c9ea12b1feb47e8f056030501d33456c1b45fb8b05650ec55f164d242",
+      "chars": 11046
+    },
+    {
+      "id": "history1-3단원",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사1(정요근)\\고_한국사1(정요근)_3단원_단원 평가_천재교과서__3014636f10.hwp",
+      "bytes": 5492736,
+      "sha256": "466bde5906b812d9c9e8079d5ccd8bea6d28b90803c528a072a50d5fae5089bd",
+      "chars": 12873
+    },
+    {
+      "id": "history1-answers",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사1(정요근)\\고_한국사1(정요근)_단원 평가 및 서술형 평가_정답과 해설_천재교과서__0615244fa9.hwp",
+      "bytes": 176640,
+      "sha256": "8905bf9ec2db44c247d31ac2c7ec661c1774b89be3ec8ccabae50abe00c7138e",
+      "chars": 29223
+    },
+    {
+      "id": "history2-1단원",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사2(정요근)\\고_한국사2(정요근)_1단원_단원 평가_천재교과서__3a36e41805.hwp",
+      "bytes": 3513344,
+      "sha256": "791df63a5f2172253cee01771f377af1d204591f827981b2a8c84801dd60b8a2",
+      "chars": 13010
+    },
+    {
+      "id": "history2-2단원",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사2(정요근)\\고_한국사2(정요근)_2단원_단원 평가_천재교과서__009ee97b3e.hwp",
+      "bytes": 3614208,
+      "sha256": "5dd5bb22076aaa3858dd1dd67e92e4770a89ffa49dbb29d96fb39d066dfb2ce4",
+      "chars": 12404
+    },
+    {
+      "id": "history2-3단원",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사2(정요근)\\고_한국사2(정요근)_3단원_단원 평가_천재교과서__19b6c8e8fd.hwp",
+      "bytes": 2925056,
+      "sha256": "d445c1bb6b4301de8f6add12ce5a8cf11c2baed949b8a9090dc875b0b377ce34",
+      "chars": 12201
+    },
+    {
+      "id": "history2-answers",
+      "path": "references\\textbooks\\중고등\\T셀파\\고등\\사회\\한국사2(정요근)\\고_한국사2(정요근)_단원 평가 및 서술형 평가_정답과 해설_천재교과서__5306e4d078.hwp",
+      "bytes": 197120,
+      "sha256": "083c4f036b65063cf1199c641c760bd9903e19ff52e0d7e4393a6bef77aa564c",
+      "chars": 34104
+    },
+    {
+      "file": "references\\textbooks\\EBS\\기출\\2026\\고3 6월 모평(평가원) 한국사_문제_9f892d6b3e.pdf",
+      "sha256": "d7ca55bd7dd2d9f00f5c26a979a62085593c07559195f6cc1561e13897b45bb6"
+    },
+    {
+      "file": "references\\textbooks\\EBS\\기출\\2026\\고3 9월 모평(평가원) 한국사_문제_2f0aa7a102.pdf",
+      "sha256": "63139e9cd044661de0092acd07766b9e3d6c4ac7b9c0a15d8dfc2b221e30f058"
+    },
+    {
+      "file": "references\\textbooks\\EBS\\기출\\2026\\고3 6월 모평(평가원) 한국사_해설_2fcc72a419.pdf",
+      "sha256": "527fe7750fbf76b9e67a79ea2f585ec0634051a1e78563c292b6e9438456f4b9"
+    },
+    {
+      "file": "references\\textbooks\\EBS\\기출\\2026\\고3 9월 모평(평가원) 한국사_해설_4fec145f99.pdf",
+      "sha256": "f5fa8f30618fb6c74129136136a205497003e9b151446818a92976f6478df972"
+    }
+  ]
+}

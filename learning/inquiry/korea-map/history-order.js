@@ -1,4 +1,4 @@
-// Four dated war states, shown without dates until the learner answers.
+// Four dated war states, shown without dates until the learner solves the item.
 (function () {
   "use strict";
   const data = window.KOREA_HISTORY_WAR;
@@ -58,20 +58,28 @@
     let answered = false;
     options.forEach((order, index) => {
       const choice = button(`${numbers[index]} ${orderText(order)}`, () => {
-        if (answered) return;
-        answered = true;
+        if (answered || choice.disabled) return;
         const correctIndex = options.indexOf(correct);
         const right = order === correct;
+        if (!right) {
+          choice.disabled = true;
+          choice.classList.add("is-wrong");
+          feedback.replaceChildren(el("p", "history-order-result", "다시 생각하고 다른 답을 골라보세요."));
+          feedback.hidden = false;
+          feedback.scrollIntoView({ block: "nearest" });
+          return;
+        }
+        answered = true;
         [...choices.children].forEach((node, i) => {
           node.disabled = true;
           if (i === correctIndex) node.classList.add("is-correct");
         });
-        choice.classList.add(right ? "is-correct" : "is-wrong");
+        choice.classList.add("is-correct");
         captions.forEach((caption, i) => {
           caption.append(el("span", "history-order-date", cards[i].date));
           grid.children[i].querySelector("img").alt = `지도 (${letters[i]}) · ${cards[i].date}: ${cards[i].cardDescription}`;
         });
-        const heading = el("p", "history-order-result", `${right ? "정답입니다." : "오답입니다."} 정답 ${numbers[correctIndex]} ${orderText(correct)}`);
+        const heading = el("p", "history-order-result", `정답입니다. ${numbers[correctIndex]} ${orderText(correct)}`);
         const explanation = el("ol", "history-order-explanation");
         correct.forEach(i => {
           const stage = cards[i];

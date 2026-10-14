@@ -37,7 +37,7 @@ export default function ArithmeticCatalog() {
         <header className="catalog-header">
           <button className="catalog-back" type="button" onClick={goBack} aria-label="메인 화면으로 돌아가기">←</button>
           <div className="catalog-header-copy">
-            <a className="catalog-race-link" href="/arithmetic/race">순위 모드 <span aria-hidden="true">→</span></a>
+            <a className="catalog-race-link" href="/arithmetic/race">순위전 열기 <span aria-hidden="true">→</span></a>
             <nav className="catalog-stage-nav" aria-label="수학 과정">
                 {(Object.keys(stageMeta) as LearningStage[]).map((stage) => {
                   const meta = stageMeta[stage];

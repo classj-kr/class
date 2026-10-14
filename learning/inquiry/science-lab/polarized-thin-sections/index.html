@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 편광 현미경으로 화성암 조직 비교</title><meta name="description" content="2022 교육과정 · 편광 현미경으로 화성암 조직 비교의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="thin-section.css?v=bae4c1f30c9d"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>편광 현미경으로 화성암 조직 비교</h1><div class="grade-tags"><span>고(선택)</span><span>지구시스템과학</span></div></header><section class="ts-lab" id="tsLab"><h2>박편의 조직 관찰하기</h2><div class="ts-tabs" role="group" aria-label="관찰 방법"><button data-ts-mode="scope" aria-pressed="true">편광 현미경</button><button data-ts-mode="photos" aria-pressed="false">실제 박편 비교</button></div>
+<section id="tsScope"><div class="ts-samples" role="group" aria-label="암석 박편"><button data-ts-sample="basalt" aria-pressed="true">현무암</button><button data-ts-sample="granite" aria-pressed="false">화강암</button></div><div class="ts-workspace"><div class="ts-monitor"><div class="ts-viewhead"><strong id="tsSpecimenName">현무암</strong><span id="tsNicol">개방 니콜</span></div><div class="ts-eyepiece"><canvas id="tsCanvas" width="700" height="700" aria-label="현미경으로 본 박편의 조직 모형"></canvas><div class="ts-crosshair" aria-hidden="true"></div><p id="tsCover">박편을 재물대에 올리세요.</p></div><div class="ts-viewfoot"><span>시야 지름 6 mm · 조직 모형</span><span class="ts-scale"><i></i>1 mm</span></div><p class="ts-note">두 박편의 시야 크기는 같습니다. 입자의 크기와 배열을 비교하세요.</p></div><div class="ts-controls"><button id="tsMount" class="primary">박편 올리기</button><label for="tsLight">조명 <output id="tsLightValue">70</output><input id="tsLight" type="range" min="0" max="100" value="70"></label><label for="tsFocus">초점 <output id="tsFocusValue">조절 전</output><input id="tsFocus" type="range" min="0" max="100" value="20"></label><button id="tsAnalyzer" aria-pressed="false">상부 편광판 넣기</button><label for="tsAngle">재물대 회전 <output id="tsAngleValue">0°</output><input id="tsAngle" type="range" min="0" max="360" step="1" value="0"></label><div class="ts-actions"><button id="tsTurn">15° 돌리기</button><button id="tsPlay" aria-pressed="false">천천히 회전</button></div><button id="tsObserve">현재 조직 확인</button></div></div><p id="tsStatus" class="ts-status" aria-live="polite">초점을 맞추고 편광판을 넣고 빼며 같은 박편을 살펴보세요.</p><div id="tsProgress" class="ts-progress"></div><section id="tsComparison" class="ts-comparison" hidden><h3>같은 시야 크기로 비교</h3><div class="ts-compare-grid"><div><strong>현무암 · 세립질</strong><p>대부분의 입자가 작습니다.<br>지표 부근에서 빠르게 냉각됩니다.</p></div><div><strong>화강암 · 조립질</strong><p>서로 맞물린 큰 입자가 보입니다.<br>지하 깊은 곳에서 느리게 냉각됩니다.</p></div></div><button id="tsToPhotos">실제 박편에서 비교하기</button></section></section>
+<section id="tsPhotos" hidden><p>각 사진의 눈금을 기준으로 입자 크기를 비교하고 조직을 골라 보세요.</p><div class="ts-photo-grid" id="tsPhotoGrid"></div><button id="tsCheckPhotos" class="primary">분류 확인</button><p id="tsPhotoStatus" class="ts-status" aria-live="polite"></p><section class="ts-photo-detail" id="tsPhotoDetail" hidden><h3 id="tsPhotoTitle"></h3><div id="tsPhotoViewer" class="ts-photo-viewer" tabindex="0" aria-label="박편 확대 사진. 확대한 뒤 방향키 또는 손가락으로 이동"><div id="tsPhotoSurface"><img id="tsPhotoImage" alt=""></div><span id="tsPhotoScale" class="ts-image-scale"><i></i><b></b></span></div><label for="tsPhotoZoom">사진 확대 <output id="tsPhotoZoomValue">1배</output><input id="tsPhotoZoom" type="range" min="1" max="2" step="0.1" value="1"></label><p class="ts-note">확대한 사진은 끌거나 방향키로 이동할 수 있습니다.</p></section></section><div class="ts-footer"><button id="tsReset">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>사진 X의 1 mm 눈금은 화면에서 40 px, 사진 Y의 1 mm 눈금은 80 px이다. 두 사진에서 입자 길이가 모두 40 px라면 실제 길이는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> X 1 mm · Y 0.5 mm</label>
+<label><input type="radio" name="q1" value="b"> X 0.5 mm · Y 1 mm</label>
+<label><input type="radio" name="q1" value="c"> X 1 mm · Y 1 mm</label>
+<label><input type="radio" name="q1" value="d"> X 0.5 mm · Y 0.5 mm</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>X는 입자가 1 mm 눈금과 같고, Y는 1 mm 눈금의 절반입니다. 화면의 같은 길이가 항상 같은 실제 길이는 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>같은 시야 크기에서 X는 대부분 작은 입자, Y는 서로 맞물린 큰 입자가 보였다. 냉각 과정과의 연결은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> X 느린 냉각 · Y 빠른 냉각</label>
+<label><input type="radio" name="q2" value="b"> X 빠른 냉각 · Y 빠른 냉각</label>
+<label><input type="radio" name="q2" value="c"> X 빠른 냉각 · Y 느린 냉각</label>
+<label><input type="radio" name="q2" value="d"> X 느린 냉각 · Y 느린 냉각</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>결정이 자랄 시간이 짧으면 작은 입자, 길면 큰 입자가 나타납니다. 이 관찰의 X는 세립질 화산암, Y는 조립질 심성암의 특징입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>큰 반정이 매우 작은 입자의 석기에 둘러싸인 박편을 관찰했다. 두 크기의 결정이 생긴 과정을 가장 잘 설명하는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 빠른 냉각으로 반정 형성 → 빠른 냉각으로 석기 형성</label>
+<label><input type="radio" name="q3" value="b"> 빠른 냉각으로 석기 형성 → 압력 증가로 반정 형성</label>
+<label><input type="radio" name="q3" value="c"> 빠른 냉각으로 반정 형성 → 느린 냉각으로 석기 형성</label>
+<label><input type="radio" name="q3" value="d"> 느린 냉각으로 반정 형성 → 빠른 냉각으로 석기 형성</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>반상 조직에서는 일부 결정이 먼저 크게 자란 뒤, 남은 마그마가 빠르게 냉각되어 작은 결정이나 유리질 바탕을 만듭니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>X에는 작은 결정의 경계가 촘촘히 보이지만, Y의 대부분은 결정 경계가 없는 유리 같은 바탕이다. 알맞은 분류는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> X 유리질 · Y 세립질</label>
+<label><input type="radio" name="q4" value="b"> X 세립질 · Y 유리질</label>
+<label><input type="radio" name="q4" value="c"> X 조립질 · Y 반상</label>
+<label><input type="radio" name="q4" value="d"> X 반상 · Y 조립질</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>작은 결정이 모인 X는 세립질, 대부분의 결정이 자라지 못한 Y는 유리질입니다. 두 조직을 단순히 입자가 작다는 이유로 같게 분류하지 않습니다.</p>
+</article></details></main><script src="model.js?v=c82d8c75433d"></script><script src="app.js?v=c83ac8466a77"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

@@ -3,11 +3,11 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const dashboardSource = await readFile(new URL("../classtools/dashboard.html", import.meta.url), "utf8");
-const seatingSource = await readFile(new URL("../classtools/seating.html", import.meta.url), "utf8");
-const indexSource = await readFile(new URL("../classtools/index.html", import.meta.url), "utf8");
-const adminIndexSource = await readFile(new URL("../admin/index.html", import.meta.url), "utf8");
-const recordAiSource = await readFile(new URL("../classtools/record-ai.html", import.meta.url), "utf8");
+const dashboardSource = await readFile(new URL("../apps/classtools/dashboard.html", import.meta.url), "utf8");
+const seatingSource = await readFile(new URL("../apps/classtools/seating.html", import.meta.url), "utf8");
+const indexSource = await readFile(new URL("../apps/classtools/index.html", import.meta.url), "utf8");
+const adminIndexSource = await readFile(new URL("../apps/admin/index.html", import.meta.url), "utf8");
+const recordAiSource = await readFile(new URL("../apps/classtools/record-ai.html", import.meta.url), "utf8");
 
 function handlerBody(source, routeSignature) {
   const start = source.indexOf(routeSignature);
@@ -30,7 +30,7 @@ test("GET /teacher/available-classes auto-provisions the requesting teacher's ow
 
 test("the teacher/class roster query never shows a student twice when they exist in both school_students and classroom_students", () => {
   const body = handlerBody(serverSource, `router.get("/teacher/class"`);
-  assert.match(body, /FROM classroom_students s\s+WHERE s\.class_id = \$5\s+AND NOT EXISTS/);
+  assert.match(body, /FROM classroom_students s\s+WHERE s\.class_id = \$5\s+AND s\.roster_active = TRUE\s+AND NOT EXISTS/);
 });
 
 test("userClassId provisions classroom_classes with the teacher's real name, not a placeholder label", () => {

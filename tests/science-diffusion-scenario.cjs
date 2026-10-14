@@ -1,0 +1,1 @@
+module.exports=function(value){const[mode,condition,p,view='observation']=value.split(':');__diffusionModel.setMode(mode);if(mode==='ink')__diffusionModel.setPosition(condition);else __diffusionModel.setSubstance(condition);__diffusionModel.setView(view);__diffusionModel.setProgress(+p);};

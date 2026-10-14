@@ -1,0 +1,21 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9619ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.778ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.106ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (50.6912ms)
+chromium: 107 apps / 428 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (14052.5245ms)
+webkit: 107 apps / 428 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (17941.338ms)
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.5658ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.7843ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.3138ms)
+✔ chromium: source-specific controls, full question flow and mobile scenes (8428.5496ms)
+✔ webkit: source-specific controls, full question flow and mobile scenes (19351.0139ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32200.7965

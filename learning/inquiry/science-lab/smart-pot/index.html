@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 수분 센서와 펌프로 자동 급수 설계하기</title><meta name="description" content="2022 교육과정 · 수분 센서와 펌프로 자동 급수 설계하기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="../structure-labs.css?v=b129068f7162"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>수분 센서와 펌프로 자동 급수 설계하기</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험2</span></div></header><p class="intro">수분 센서를 보정하고 자동 급수 장치를 연결하세요. 켜짐·꺼짐 기준을 바꾸며 작동을 확인해 보세요.</p><section class="experiment-layout structure-lab" data-sensor="smart-pot"><h2>장치를 구성하고 측정하기</h2><div class="structure-controls"><label>입력 장치<select id="potSensor"><option value="soil">토양 수분 센서</option><option value="light">빛 센서</option></select></label><div class="toolbar"><button id="dryCalibration">건조 기준에서 원시값 읽기</button><button id="wetCalibration">젖은 기준에서 원시값 읽기</button></div><label class="inline"><input id="potRelay" type="checkbox">제어기 출력 → 릴레이 → 펌프 연결</label><label>제어 규칙<select id="potRule"><option value="band">켜짐·꺼짐 기준을 나눔</option><option value="single">한 기준에서 켜고 끔</option></select></label><label>켜짐 기준 미만 <output id="potLowValue"></output><input id="potLow" type="range" min="10" max="50" step="1" value="30" data-unit="상대 척도"></label><label>꺼짐 기준 이상 <output id="potHighValue"></output><input id="potHigh" type="range" min="51" max="90" step="1" value="60" data-unit="상대 척도"></label><label class="inline"><input id="potNoise" type="checkbox">센서 원시값에 흔들림 추가</label><div class="toolbar"><button id="potStep">한 단계 실행</button><button id="potTen">10단계 실행</button><button id="refillPot">물통 다시 채우기</button><button id="restartPot">같은 초기 화분으로 재시험</button></div><p>한 단계에서 수분 척도가 1 감소하고, 펌프가 작동하면 5 증가하는 가정입니다. 규칙을 바꾼 뒤 같은 초기 화분으로 재시험하여 비교하세요.</p></div><div id="sensorScene" class="structure-scene"></div><div id="sensorReadout" class="structure-readout" aria-live="polite"></div><p id="sensorStatus" class="status" role="status"></p><div id="sensorExtra"></div><div class="toolbar"><button id="resetExperiment">처음부터</button></div><p class="model-note">수분값은 건조·젖은 기준 사이의 상대 척도입니다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>건조 기준 850, 젖은 기준 350인 센서에서 현재 원시값은 600이다. 두 기준 사이의 상대 수분 척도는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 25</label>
+<label><input type="radio" name="q1" value="b"> 50</label>
+<label><input type="radio" name="q1" value="c"> 60</label>
+<label><input type="radio" name="q1" value="d"> 75</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>(600−850)/(350−850)×100=50입니다. 원시값 자체가 수분 함량의 백분율은 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>펌프는 30 미만에서 켜지고 60 이상에서 꺼진다. 이미 켜진 상태에서 측정값이 45가 됐다. 다음 출력은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 계속 켜짐</label>
+<label><input type="radio" name="q2" value="b"> 즉시 꺼짐</label>
+<label><input type="radio" name="q2" value="c"> 매번 반대로 바뀜</label>
+<label><input type="radio" name="q2" value="d"> 센서 전원 차단</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>켜진 상태에서는 꺼짐 기준 60에 이를 때까지 유지됩니다. 상태에 따라 다른 기준을 쓰면 경계 부근의 잦은 전환을 줄일 수 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>건조함을 감지해 물을 공급하는 흐름으로 맞는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 센서 → 제어기 → 릴레이·펌프</label>
+<label><input type="radio" name="q3" value="b"> 펌프 → 제어기 → 수분 센서</label>
+<label><input type="radio" name="q3" value="c"> 제어기 → 펌프 → 센서 전원</label>
+<label><input type="radio" name="q3" value="d"> 릴레이 → 수분 센서 → 제어기</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>센서가 입력을 만들고 제어기가 조건을 판단하며 릴레이가 펌프 회로를 제어합니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>수분값이 켜짐 기준보다 낮고 제어기는 켜짐 명령을 냈다. 물통은 차 있지만 릴레이와 펌프 사이 회로가 끊겼다. 예상되는 관측은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 켜짐 명령 유지·실제 급수 없음</label>
+<label><input type="radio" name="q4" value="b"> 켜짐 명령 유지·실제 급수 진행</label>
+<label><input type="radio" name="q4" value="c"> 꺼짐 명령 전환·실제 급수 없음</label>
+<label><input type="radio" name="q4" value="d"> 꺼짐 명령 전환·실제 급수 진행</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>제어기의 조건 판단은 유지되지만 펌프 회로가 끊겨 물을 공급하지 못합니다. 명령과 실제 작동을 구분해야 합니다.</p>
+</article></details></main><script src="../sensor-models.js?v=2e03b7a08b9b"></script><script src="../sensor-labs.js?v=d492f5217f41"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

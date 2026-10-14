@@ -1,0 +1,24 @@
+✔ tank setup, thermal contrast and rotation are independent experimental conditions (3.9507ms)
+✔ source registry preserves variants, model limits and 2022 elective classification (0.1783ms)
+✔ chromium: tank preparation, moving tracers, fair comparison, reset and diagnosis (6175.2781ms)
+✔ webkit: tank preparation, moving tracers, fair comparison, reset and diagnosis (9009.6304ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.0138ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7738ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1162ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (57.7543ms)
+chromium: 146 apps / 148 course routes / 592 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (21681.7744ms)
+webkit: 146 apps / 148 course routes / 592 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (26050.4185ms)
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.674ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.3041ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1459ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (13.8702ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47987.6656

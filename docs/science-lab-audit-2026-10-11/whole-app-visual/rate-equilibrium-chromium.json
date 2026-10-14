@@ -1,0 +1,79 @@
+{
+  "slug": "rate-equilibrium",
+  "engine": "chromium",
+  "modes": [
+    "rate",
+    "eq"
+  ],
+  "cases": 15,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rateModel",
+      "methods": [
+        "R",
+        "T_REF",
+        "EA_PLAIN",
+        "EA_CAT",
+        "DH",
+        "K_REF",
+        "DH_EQ",
+        "N_TOTAL",
+        "state",
+        "analyseRate",
+        "analyseEq",
+        "refEq",
+        "Kof",
+        "analyse",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "rate",
+      "results": [
+        {
+          "choice": "faster",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "similar",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "slower",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "eq",
+      "results": [
+        {
+          "choice": "darker",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "lighter",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

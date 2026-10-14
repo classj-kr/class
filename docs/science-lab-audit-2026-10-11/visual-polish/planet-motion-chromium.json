@@ -1,0 +1,111 @@
+{
+  "slug": "planet-motion",
+  "engine": "chromium",
+  "modes": [
+    "retro",
+    "phase",
+    "eclipse"
+  ],
+  "cases": 23,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__planetModel",
+      "methods": [
+        "PLANETS",
+        "PHASE_PLANETS",
+        "POS_INNER",
+        "POS_OUTER",
+        "KINDS",
+        "NODES",
+        "DISTS",
+        "state",
+        "analyse",
+        "render",
+        "geom",
+        "eclipseType",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "retro",
+      "results": [
+        {
+          "choice": "short",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "long",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "phase",
+      "results": [
+        {
+          "choice": "crescent",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "half",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "fullFar",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "fullNear",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "eclipse",
+      "results": [
+        {
+          "choice": "total",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "annular",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "partial",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

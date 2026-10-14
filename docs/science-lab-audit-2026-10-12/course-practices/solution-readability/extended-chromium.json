@@ -1,0 +1,16 @@
+{
+  "engine": "chromium",
+  "catalog": false,
+  "routes": 3,
+  "scenarios": 75,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "issues": [],
+  "errors": []
+}

@@ -1,0 +1,11 @@
+✔ catalogue, KST rollover, precession and independent USNO horizon relation (26.5969ms)
+✔ chromium: calendar and direction controls, real movement, first-error diagnosis and five screen sizes (9245.599ms)
+✔ webkit: calendar and direction controls, real movement, first-error diagnosis and five screen sizes (12637.6765ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21980.1198

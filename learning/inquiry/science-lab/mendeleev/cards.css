@@ -1,0 +1,30 @@
+.card-decks{display:grid;grid-template-columns:1fr 1fr;margin-bottom:20px}
+.identity-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.identity-header h3{margin:0}
+#identityPool button{display:grid;gap:3px;min-width:62px}
+#identityPool b{font-size:22px}
+#identityBoard button:has(b){border-style:solid;background:#f3f8f9;box-shadow:0 2px 4px #17465608}
+#identityBoard button[aria-pressed=true]{background:var(--teal)}
+#identityDetail dl{display:grid;gap:10px;margin:0}
+#identityDetail dl div{display:grid;grid-template-columns:110px 1fr;gap:8px}
+#identityDetail dt{font-size:14px;color:var(--muted)}
+#identityDetail dd{margin:0;font-weight:650}
+#identityForm{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}
+#identityForm label{display:flex;align-items:center;gap:12px}
+#identityForm select{min-width:140px}
+.modern-comparison{margin-top:20px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f9fa}
+.modern-elements{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;max-width:720px;margin:16px auto}
+.modern-element{display:grid;min-height:66px;padding:6px 8px;border:1px solid #bbced2;border-radius:7px;background:white}
+.modern-element b{text-align:center;font-size:23px}
+.modern-element small{font-size:12px;color:#526d77}
+.modern-element.noble{background:#e0f3ed;border-color:#70a793}
+.modern-group{text-align:center;font-size:13px}
+.board-gap{pointer-events:none}
+@media(max-width:600px){
+ .card-decks button{padding:10px 6px;font-size:13px;line-height:1.6}
+ .modern-comparison{padding:12px}
+ .modern-elements{gap:3px}
+ .modern-element{min-height:55px;padding:4px 2px}
+ .modern-element b{font-size:19px}
+ #identityDetail dl div{grid-template-columns:1fr;gap:0}
+}

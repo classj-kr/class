@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>수학 기초 OX</title>
   
-  <!-- KaTeX CSS & JS CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-  
-  <link rel="stylesheet" href="styles.css?v=20260926-clear-fractions">
+  <!-- 수식은 vendor/ 에 둔 KaTeX 0.16.11 로 그린다(바깥 서버에서 받지 않는다). katex.min.css 는 woff2 글꼴만 가리키게 줄였다. -->
+  <link rel="stylesheet" href="vendor/katex.min.css?v=0.16.11">
+  <script defer src="vendor/katex.min.js?v=0.16.11"></script>
+  <script defer src="vendor/auto-render.min.js?v=0.16.11"></script>
+
+  <link rel="stylesheet" href="styles.css?v=20261013-retry-button">
 </head>
 <body>
 
@@ -33,8 +33,8 @@
     </main>
   </div>
 
-  <script src="data.js?v=20261002-subtraction-method"></script>
-  <script src="/assets/learning-records.js?v=20261001-1"></script>
-  <script src="app.js?v=20261001-common-records"></script>
+  <script src="data.js?v=20261013-no-stars"></script>
+  <script src="/assets/learning-records.js?v=20261007-units"></script>
+  <script src="app.js?v=20261007-units"></script>
 </body>
 </html>

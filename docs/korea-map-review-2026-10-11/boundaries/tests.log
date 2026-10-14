@@ -1,0 +1,7 @@
+E:\webprojects\class\learning\inquiry\korea-map\tools\history_coast.py:21: DeprecationWarning: The 'shapely.ops.transform()' function is deprecated. Use 'shapely.transform()' or 'shapely.transform_coordseq()' instead. See https://shapely.readthedocs.io/en/latest/manual.html#shapely.ops.transform for more details.
+  return transform(convert, g)
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.334s
+
+OK

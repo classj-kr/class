@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T19:43:14.303Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "argo-observation",
+      "scenarios": 50
+    }
+  ],
+  "scenarios": 50,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

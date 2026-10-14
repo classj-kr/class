@@ -1,0 +1,116 @@
+{
+  "engine": "chromium",
+  "apps": 3,
+  "layouts": 9,
+  "failures": [],
+  "reports": [
+    {
+      "slug": "sound-vibration",
+      "errors": [],
+      "layouts": [
+        {
+          "width": 1024,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        },
+        {
+          "width": 320,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        }
+      ],
+      "shots": [
+        "sound-vibration-mobile.webp"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "errors": [],
+      "layouts": [
+        {
+          "width": 1024,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        },
+        {
+          "width": 320,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        }
+      ],
+      "shots": [
+        "heat-transfer-mobile.webp"
+      ]
+    },
+    {
+      "slug": "periodic-bonding",
+      "errors": [],
+      "layouts": [
+        {
+          "width": 1024,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        },
+        {
+          "width": 320,
+          "overflow": false,
+          "sharedStyle": true,
+          "sharedScript": true,
+          "resultInControls": false,
+          "smallControls": [],
+          "invalid": false
+        }
+      ],
+      "shots": [
+        "periodic-bonding-mobile.webp"
+      ]
+    }
+  ]
+}

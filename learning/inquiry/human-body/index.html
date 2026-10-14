@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>인체 모형</title>
+    <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+    <script src="../curriculum/body-availability.js?v=20261011-picker1"></script>
     <link rel="stylesheet" href="styles.css?v=20260907ak">
+    <link rel="stylesheet" href="../curriculum/school-level.css?v=20261011-picker1">
     <style>
         html, body.hub-page {
             width: 100%;
@@ -71,7 +74,7 @@
             width: 100%;
             max-width: 1280px;
             margin: auto;
-            padding: 24px 16px;
+            padding: 72px 16px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -104,6 +107,11 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        }
+        .hub-card[hidden] { display: none !important; }
+        .hub-school-level { position: fixed; top: 14px; right: 18px; z-index: 100; }
+        @media (min-width: 1101px) {
+            html[data-school-level="elementary"] .hub-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
         }
 
         .hub-card::before {
@@ -188,6 +196,8 @@
     </style>
 </head>
 <body class="hub-page">
+    <audio id="bgm" src="assets/audio/night-on-the-board.ogg" preload="metadata" loop></audio>
+    <nav class="hub-school-level" aria-label="학교급 선택"></nav>
 
     <!-- Floating Back Button -->
     <a href="../../" class="floating-back-btn back-link" aria-label="이전 목록으로">
@@ -282,5 +292,6 @@
 
     </main>
 
+    <script src="../curriculum/school-level.js?v=20261011-picker1"></script>
 </body>
 </html>

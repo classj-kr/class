@@ -1,0 +1,36 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.885ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7652ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1185ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (60.6051ms)
+chromium: 148 apps / 150 course routes / 600 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (17786.6367ms)
+webkit: 148 apps / 150 course routes / 600 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (28628.0675ms)
+✖ chromium: plant procedures, responsive figures and nine first-response diagnostics (3106.3981ms)
+✔ webkit: plant procedures, responsive figures and nine first-response diagnostics (17181.3721ms)
+✔ solar surface coordinates round-trip with observer tilt and perspective, and reject invalid comparisons (1.2044ms)
+✔ archived observations keep the exact dates, hashes, attribution and calibrated limb outside student prose (4.9361ms)
+✔ chromium: measure actual sunspots, compare frames, persist diagnostic answers and fit mobile (5844.7289ms)
+✔ webkit: measure actual sunspots, compare frames, persist diagnostic answers and fit mobile (7339.7289ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80327.4876
+
+✖ failing tests:
+
+test at tests\science-plant-browser.test.cjs:5:43
+✖ chromium: plant procedures, responsive figures and nine first-response diagnostics (3106.3981ms)
+  Error: E:\webprojects\class\docs\science-lab-audit-2026-10-11\textbook-procedure-review\leaf-transpiration-desktop.webp: unable to open for write
+  system error: Invalid argument
+  E:\webprojects\class\docs\science-lab-audit-2026-10-11\textbook-procedure-review\leaf-transpiration-desktop.webp: write error
+  system error: Invalid argument
+      at Sharp.toFile (C:\Users\A\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\sharp\dist\output.cjs:90:19)
+      at screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:8:56)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-plant-browser.test.cjs:13:703)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)

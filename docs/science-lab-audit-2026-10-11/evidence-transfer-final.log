@@ -1,0 +1,14 @@
+✔ Mendeleev: textbook 19-card set, mass order and chemical grouping are independent constraints (1.105ms)
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.1405ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.3785ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.2756ms)
+✔ chromium: source-specific controls, full question flow and mobile scenes (38776.1331ms)
+✔ webkit: source-specific controls, full question flow and mobile scenes (114358.7612ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 153210.8166

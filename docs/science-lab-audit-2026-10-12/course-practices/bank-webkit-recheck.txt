@@ -1,0 +1,19 @@
+✖ webkit: all exam answers, filters, persistence, charts, app integration and tablet screens (218787.5582ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 219106.7661
+
+✖ failing tests:
+
+test at tests\science-exam-review.test.cjs:12:43
+✖ webkit: all exam answers, filters, persistence, charts, app integration and tablet screens (218787.5582ms)
+  page.waitForFunction: Timeout 30000ms exceeded.
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-exam-review.test.cjs:21:67) {
+    name: 'TimeoutError',
+    log: []
+  }

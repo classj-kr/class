@@ -1,0 +1,14 @@
+✔ chromium: specimen anatomy, growth wording and 27 parameter combinations (2911.7493ms)
+✔ webkit: specimen anatomy, growth wording and 27 parameter combinations (3370.7392ms)
+128 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (56.1507ms)
+✔ every science lab JavaScript file parses (60.0792ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9044ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6339.0904

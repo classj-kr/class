@@ -161,9 +161,9 @@ const CHAPTERS = [
                     "세 자매는 밤새 낑낑거렸습니다. 막내는 아무것도 모르고 잘 잤지요."
                 ],
                 "right": [
-                    "이튿날 아침 막내가 눈을 떴습니다. 거위를 안고 방을 나섰지요. 뒤에 무엇이 딸려 오는지도 몰랐습니다.",
-                    "세 자매는 종종걸음으로 끌려갔습니다. 치맛자락이 문지방에 걸렸지요. 셋은 우르르 넘어질 뻔했습니다.",
-                    "세 자매가 소리쳤습니다. \"저기요! 좀 서 봐요!\" 하지만 막내에게는 들리지 않았지요."
+                    "이튿날 막내는 거위를 안고 나섰습니다. 뒤에 매달린 셋을 보았지만, 떼어 줄 재주가 없어 그냥 걸었지요.",
+                    "종종걸음으로 끌려가다 치맛자락이 문지방에 걸렸지요. 셋은 우르르 넘어질 뻔했습니다.",
+                    "\"좀 서 봐요!\" 자매들이 소리쳤지만 막내는 어깨만 으쓱했지요."
                 ]
             }
         ]
@@ -194,9 +194,9 @@ const CHAPTERS = [
                     "두 사람도 그대로 붙고 말았지요. 이제 줄이 마을 길만큼 길어졌습니다. 앞에서 막내가 걸으면 뒤가 우르르 따라갔지요."
                 ],
                 "right": [
-                    "줄 뒤에서는 저마다 아우성이었습니다. \"오른쪽! 오른쪽으로 돌아요!\" \"발 좀 맞춰요!\"",
-                    "사람들은 서로 발이 엉켜 넘어졌습니다. 넘어져도 손은 떨어지지 않았지요.",
-                    "막내는 뒤가 어떻게 되는지도 모르고 성큼성큼 걸었습니다. 품 안에서 거위가 꽥 하고 울자 막내는 씩 웃었지요."
+                    "줄 뒤에서는 저마다 아우성이었습니다. \"오른쪽으로 돌아요!\" \"발 좀 맞춰요!\"",
+                    "사람들은 발이 엉켜 넘어졌습니다. 넘어져도 손은 떨어지지 않았지요.",
+                    "막내는 뒤를 한 번 돌아보고는 성큼성큼 걸었습니다. 품 안에서 거위가 꽥 하고 울자 막내는 씩 웃었지요."
                 ]
             }
         ]
@@ -222,7 +222,7 @@ const CHAPTERS = [
                 "art": "07-princess-2.webp",
                 "emoji": "👸",
                 "left": [
-                    "막내는 걷고 또 걸어 그 나라까지 왔습니다. 그날 성 앞 큰길로 그 이상한 행렬이 지나갔지요. 앞에서는 젊은이가 금빛 거위를 안고 걸었지요. 뒤에는 사람들이 줄줄이 매달려 있었습니다.",
+                    "막내는 거위를 안고 큰길을 따라 걷고 또 걸었습니다. 그러다 이웃 나라 성 앞까지 오게 되었지요. 뒤에는 사람들이 줄줄이 매달려 있었습니다.",
                     "팔은 이쪽으로, 다리는 저쪽으로 뻗었지요. 누가 봐도 우스운 모습이었습니다.",
                     "마침 공주가 창가에 서 있었습니다."
                 ],
@@ -259,7 +259,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "막내가 대답했습니다. \"성에서 일하게 해 주십시오. 이 거위는 숲으로 돌려보내겠습니다. 제 것이 아니니까요.\"",
-                    "임금님은 껄껄 웃으며 고개를 끄덕였지요. 막내는 숲으로 가서 거위를 놓아주고, 그 뒤로 성에서 잘 지냈답니다."
+                    "임금님은 껄껄 웃으며 고개를 끄덕였지요. 막내는 숲으로 가서 거위를 놓아주고, 어머니와 형들도 성 가까이로 불러 함께 잘 지냈답니다."
                 ]
             }
         ],
@@ -488,7 +488,7 @@ const QUIZ = [
         "choices": [
                 "막내가 딱딱한 빵과 신 맥주뿐인데도 노인에게 자리를 내어 준 것을 보면, 나누는 데에 넉넉함이 필요한 것은 아니었구나.",
                 "세 자매가 저마다 하나씩만 손을 댔는데 줄줄이 붙어 버린 것을 보면, 남이 붙든 것을 잡아당기다 저도 붙은 거지.",
-                "막내가 뒤에 무엇이 딸려 오는지도 모르고 걸어간 것을 보면, 공주를 웃기려고 한 일이 아니었어.",
+                "막내가 떼어 줄 재주가 없어 그냥 걸어간 것을 보면, 공주를 웃기려고 한 일이 아니었어.",
                 "막내가 주막 앞에서 거위를 품에 꼭 안은 것을 보면, 사람들이 탐낼 줄 미리 짐작했구나."
             ],
         "answer": 3
@@ -763,11 +763,11 @@ const EN = {
                         "but the youngest slept soundly and knew nothing."
                     ],
                     right: [
-                        "Next morning the youngest went out with the goose in his arms,",
-                        "with no idea what was trailing behind him.",
+                        "Next morning the youngest went out with the goose in his arms.",
+                        "He saw the three sisters hanging on behind him, but he had no way to pull them loose, so he simply walked on.",
                         "The sisters were dragged along at a trot.",
                         "Their skirts caught on the threshold, and they nearly fell over.",
-                        "\"Hey! Stop a moment!\" they cried, but he did not hear."
+                        "\"Hey! Stop a moment!\" they cried, but he only shrugged."
                     ]
                 }
             ]
@@ -809,7 +809,7 @@ const EN = {
                         "\"Right! Turn right!\" \"Keep in step, will you!\"",
                         "Feet got tangled and people fell down,",
                         "but even then their hands did not come loose.",
-                        "The youngest strode on, knowing nothing.",
+                        "The youngest glanced back once and strode on.",
                         "When the goose squawked in his arms, he grinned."
                     ]
                 }
@@ -841,7 +841,7 @@ const EN = {
                     art: '07-princess-2.webp',
                     emoji: '😐',
                     left: [
-                        "The youngest walked on and on until he reached that land.",
+                        "The youngest walked on and on along the high road with the goose in his arms, until he came to the castle of the next kingdom.",
                         "The strange procession came along the high road in front of the castle.",
                         "A young man with a golden goose walked in front, and people trailed behind.",
                         "The princess happened to be standing at her window."
@@ -891,7 +891,7 @@ const EN = {
                     right: [
                         "\"Let me work at the castle. This goose must go back to the wood — she is not mine.\"",
                         "The king laughed and nodded.",
-                        "He let the goose go in the wood and lived happily at the castle.",
+                        "He let the goose go in the wood, brought his mother and brothers to live near the castle, and they were all happy together.",
                         "His brothers came to see him differently."
                     ]
                 }
@@ -940,7 +940,7 @@ const EN = {
             choices: [
                 "With only hard bread and sour beer he still made room for the old man — sharing does not wait until you have plenty.",
                 "Each sister touched the goose just once and all three were stuck fast — they were caught pulling at what someone else was caught on.",
-                "He walked on without knowing what was trailing behind him — he was not trying to make anybody laugh.",
+                "He only walked on because he had no way to pull them loose — he was not trying to make anybody laugh.",
                 "The youngest held the goose tight against him outside the inn — he had guessed that people would covet it."
             ],
             answer: 3
@@ -1037,7 +1037,7 @@ const EN = {
             { word: 'guess the rest', meaning: '뻔한 결과', sentence: 'And you can guess the rest.' },
             { word: 'in a row', meaning: '줄줄이', sentence: 'The three of them hung there in a row.' },
             { word: 'struggle', meaning: '낑낑거리다', sentence: 'The three sisters struggled all night.' },
-            { word: 'trail behind', meaning: '뒤에 딸려 오다', sentence: 'With no idea what was trailing behind him.' },
+            { word: 'pull loose', meaning: '떼어 내다', sentence: 'He had no way to pull them loose.' },
             { word: 'at a trot', meaning: '종종걸음으로', sentence: 'They were dragged along at a trot.' }
         ],
         '06-parade.webp': [
@@ -1138,7 +1138,8 @@ const WORDS_KO = {
         { w: "그루", k: "나무를 셀 때 쓰는 말.", s: "노인이 늙은 나무 한 그루를 가리켰습니다." },
         { w: "우지끈", k: "단단한 것이 세게 부러지는 소리.", s: "한참 만에 나무가 우지끈 넘어갔지요." },
         { w: "훤히", k: "가리는 것 없이 시원하게.", s: "밑동이 훤히 드러났습니다." },
-        { w: "허리를 굽히다", k: "허리를 앞으로 숙이다.", s: "막내는 허리를 굽혀 들여다보았습니다." }
+        { w: "허리를 굽히다", k: "허리를 앞으로 숙이다.", s: "막내는 허리를 굽혀 들여다보았습니다." },
+        { w: "밑동", k: "나무줄기에서 땅에 가장 가까운 맨 아랫부분. 뿌리 바로 위쪽이다.", s: "밑동에 좋은 것이 있을 겁니다." }
     ],
     "04-goose-2.webp": [
         { w: "깃털", k: "새의 몸을 덮고 있는 털.", s: "깃털이 온통 금빛으로 빛났지요." },
@@ -1163,19 +1164,21 @@ const WORDS_KO = {
         { w: "배를 잡고 웃다", k: "너무 우스워서 몸을 굽히고 웃다.", s: "길가 사람들이 배를 잡고 웃었습니다." },
         { w: "광경", k: "눈앞에 펼쳐진 모습.", s: "그때 신부님이 그 광경을 보고 소리쳤지요." },
         { w: "꼴", k: "보기에 딱하고 우스운 모습.", s: "\"얘들아, 그게 무슨 꼴이냐!\"" },
-        { w: "울상을 짓다", k: "울 것 같은 얼굴을 하다.", s: "빵집 아저씨가 울상을 지었지요." }
+        { w: "울상을 짓다", k: "울 것 같은 얼굴을 하다.", s: "빵집 아저씨가 울상을 지었지요." },
+        { w: "신부님", k: "성당에서 미사를 이끌고 사람들을 돌보는 사람. 결혼하는 신부와는 다른 말이다.", s: "그때 신부님이 그 광경을 보고 소리쳤지요." }
     ],
     "06-parade-2.webp": [
         { w: "농부", k: "논밭에서 농사짓는 사람.", s: "밭에서 일하던 농부 둘도 달려왔습니다." },
         { w: "아우성", k: "여럿이 시끄럽게 외치는 소리.", s: "줄 뒤에서는 저마다 아우성이었습니다." },
-        { w: "성큼성큼", k: "다리를 크게 떼어 걷는 모습.", s: "막내는 뒤가 어떻게 되는지도 모르고 성큼성큼 걸었습니다." },
+        { w: "성큼성큼", k: "다리를 크게 떼어 걷는 모습.", s: "막내는 뒤를 한 번 돌아보고는 성큼성큼 걸었습니다." },
         { w: "품", k: "두 팔로 안은 가슴 안쪽.", s: "품 안에서 거위가 꽥 하고 울자 막내는 씩 웃었지요." }
     ],
     "07-princess.webp": [
         { w: "광대", k: "사람들 앞에서 재주를 보여 웃기던 사람.", s: "광대도 오고 곡예사도 왔지요." },
         { w: "눈썹 하나 움직이지 않다", k: "아무렇지 않은 듯 얼굴이 그대로다.", s: "그래도 공주는 눈썹 하나 움직이지 않았습니다." },
         { w: "재주를 부리다", k: "남 앞에서 잘하는 솜씨를 보이다.", s: "우스운 옷을 입고 재주를 부렸습니다." },
-        { w: "한숨을 쉬다", k: "걱정스러워 숨을 크게 내쉬다.", s: "임금님은 날마다 한숨을 쉬었습니다." }
+        { w: "한숨을 쉬다", k: "걱정스러워 숨을 크게 내쉬다.", s: "임금님은 날마다 한숨을 쉬었습니다." },
+        { w: "곡예사", k: "줄타기나 공중돌기처럼 몸으로 아슬아슬한 재주를 부려 보이는 사람.", s: "광대도 오고 곡예사도 왔지요." }
     ],
     "07-princess-2.webp": [
         { w: "창가", k: "창문이 있는 쪽 자리.", s: "마침 공주가 창가에 서 있었습니다." },

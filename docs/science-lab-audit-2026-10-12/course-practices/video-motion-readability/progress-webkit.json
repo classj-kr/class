@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T17:01:16.513Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "video-motion",
+      "scenarios": 35
+    }
+  ],
+  "scenarios": 35,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

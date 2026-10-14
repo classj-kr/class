@@ -1,0 +1,13 @@
+✔ every current authored misconception matches the actual choice letters after revisions and overlays (63.2751ms)
+chromium: 20 distinct wrong choices, corrections and reload feedback verified
+✔ chromium: every incorrect cell and tectonic option displays its own retained misconception (9202.0622ms)
+webkit: 20 distinct wrong choices, corrections and reload feedback verified
+✔ webkit: every incorrect cell and tectonic option displays its own retained misconception (26223.1718ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35590.3486

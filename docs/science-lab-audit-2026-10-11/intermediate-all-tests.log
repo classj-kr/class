@@ -1,0 +1,369 @@
+light-shadow: OK (4 questions)
+refraction: OK (4 questions)
+lens-image: OK (4 questions)
+photoelectric: OK (4 questions)
+sound-vibration: OK (4 questions)
+wave-transfer: OK (4 questions)
+interference: OK (4 questions)
+lever-balance: OK (4 questions)
+speed: OK (4 questions)
+force-motion: OK (4 questions)
+motion-energy: OK (4 questions)
+gravity-motion: OK (4 questions)
+torque: OK (4 questions)
+collision: OK (4 questions)
+magnets: OK (4 questions)
+circuit-bulbs: OK (4 questions)
+ohms-law: OK (4 questions)
+electric-field: OK (4 questions)
+induction: OK (4 questions)
+semiconductor-relativity: OK (4 questions)
+motor-magnet: OK (4 questions)
+heat-transfer: OK (4 questions)
+specific-heat: OK (4 questions)
+energy-heat: OK (4 questions)
+heat-engine: OK (4 questions)
+energy-conversion: OK (4 questions)
+weight-compare: OK (4 questions)
+density-buoyancy: OK (4 questions)
+measurement: OK (4 questions)
+mixture-separation: OK (4 questions)
+separation-methods: OK (4 questions)
+state-change: OK (4 questions)
+gases: OK (4 questions)
+diffusion: OK (4 questions)
+solubility: OK (4 questions)
+solubility-curve: OK (4 questions)
+recrystallise: OK (4 questions)
+flame-ions: OK (4 questions)
+periodic-bonding: OK (4 questions)
+molecule-shape: OK (4 questions)
+acid-base: OK (4 questions)
+neutralization-common: OK (4 questions)
+neutralization: OK (4 questions)
+titration: OK (4 questions)
+mass-ratio: OK (4 questions)
+mole: OK (4 questions)
+rate-equilibrium: OK (4 questions)
+burning-conditions: OK (4 questions)
+combustion: OK (4 questions)
+redox: OK (4 questions)
+living-things: OK (4 questions)
+microbes: OK (4 questions)
+microscope: OK (4 questions)
+cell-structure: OK (4 questions)
+cell-osmosis: OK (4 questions)
+cell-membrane: OK (4 questions)
+cell-division: OK (4 questions)
+seed-germination: OK (4 questions)
+photosynthesis: OK (4 questions)
+energy-metabolism: OK (4 questions)
+body-organs: OK (4 questions)
+body-systems: OK (4 questions)
+nutrient-detection: OK (4 questions)
+homeostasis: OK (4 questions)
+immune: OK (4 questions)
+enzyme: OK (4 questions)
+senses: OK (4 questions)
+reflex-nerve: OK (4 questions)
+neuron: OK (4 questions)
+pea-genetics: OK (4 questions)
+dna-gel: OK (4 questions)
+natural-selection: OK (4 questions)
+phylogeny: OK (4 questions)
+life-cycle: OK (4 questions)
+living-environment: OK (4 questions)
+population: OK (4 questions)
+rock-layers: OK (4 questions)
+minerals-rocks: OK (4 questions)
+geologic-time: OK (4 questions)
+rock-age: OK (4 questions)
+metamorphism: OK (4 questions)
+volcano-model: OK (4 questions)
+magma: OK (4 questions)
+plate-tectonics: OK (4 questions)
+earthquake: OK (4 questions)
+earth-system: OK (4 questions)
+weather-watch: OK (4 questions)
+weather-front: OK (4 questions)
+air-stability: OK (4 questions)
+typhoon: OK (4 questions)
+land-sea: OK (4 questions)
+water-cycle: OK (4 questions)
+seawater: OK (4 questions)
+ocean-circulation: OK (4 questions)
+ocean-layers: OK (4 questions)
+night-sky: OK (4 questions)
+seasons: OK (4 questions)
+moon-phases: OK (4 questions)
+apparent-motion: OK (4 questions)
+planet-motion: OK (4 questions)
+stars-universe: OK (4 questions)
+star-elements: OK (4 questions)
+stars: OK (4 questions)
+galaxy-hubble: OK (4 questions)
+Inspected 104 apps / 416 questions
+✔ every catalog app loads, every question has a working correct answer, mobile layout (60163.9519ms)
+✔ chromium: battery prediction, apparatus continuity and electromagnet controls (4398.802ms)
+✔ webkit: battery prediction, apparatus continuity and electromagnet controls (4718.4613ms)
+{
+  engine: 'chromium',
+  evaporation: 6,
+  samples: 2000,
+  recrystallization: 288,
+  respiration: 4,
+  impacts: 12,
+  massBalance: 121,
+  seawater: 36,
+  moon: 5
+}
+✔ chromium: scientific content and boundary regressions (5574.2493ms)
+{
+  engine: 'webkit',
+  evaporation: 6,
+  samples: 2000,
+  recrystallization: 288,
+  respiration: 4,
+  impacts: 12,
+  massBalance: 121,
+  seawater: 36,
+  moon: 5
+}
+✔ webkit: scientific content and boundary regressions (6801.7017ms)
+1331 temperature/fraction states verified against independent phase rules
+✔ water phases: coexistence, mass balance and latent heat plateaus (1.6964ms)
+✔ chromium: corrected phase grades and non-numeric food chains (10821.5273ms)
+✔ webkit: corrected phase grades and non-numeric food chains (24894.2215ms)
+chromium: 28 control layouts and six current question data resources passed
+✔ chromium: readable tablet controls and current exam-bank cache (5317.4817ms)
+webkit: 28 control layouts and six current question data resources passed
+✔ webkit: readable tablet controls and current exam-bank cache (6302.7773ms)
+✔ device tools: calibrated length, timer, waveform, opt-in capture, stop, denial, records and tablet layout (2379.2501ms)
+✔ 30 reviewed original questions preserve correct choices, conditions and explanations (15.2626ms)
+✔ all 194 editorial revisions match the bank and retain distinct misconception choices (39.8504ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (2109.2738ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.4079ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (41187.8459ms)
+✔ final comparisons: spectral evidence, controlled design, ecology, validity and thermal scale (1.9071ms)
+lever-balance: interactions, four quizzes, 390px layout passed
+reflex-nerve: interactions, four quizzes, 390px layout passed
+solubility: interactions, four quizzes, 390px layout passed
+acid-base: interactions, four quizzes, 390px layout passed
+ohms-law: interactions, four quizzes, 390px layout passed
+seasons: interactions, four quizzes, 390px layout passed
+✔ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (24605.6686ms)
+chromium: 7 corrected stages; 28 layouts × 4 motion phases; anatomy anchors, digits, forward-only crawling and SVG paints passed
+✔ chromium: life anatomy, forward crawling and visible attachments (6333.1142ms)
+webkit: 7 corrected stages; 28 layouts × 4 motion phases; anatomy anchors, digits, forward-only crawling and SVG paints passed
+✔ webkit: life anatomy, forward crawling and visible attachments (7635.3251ms)
+✔ chromium: real animation frames keep observations and grades synchronized (14283.9819ms)
+✔ webkit: real animation frames keep observations and grades synchronized (32584.6026ms)
+chromium: sieve groups at six mesh sizes; full re-separation and salt recovery; 16 seed states passed
+✔ chromium: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (5957.2316ms)
+webkit: sieve groups at six mesh sizes; full re-separation and salt recovery; 16 seed states passed
+✔ webkit: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (7857.0151ms)
+✔ chromium: sound playback, lunar dates and atmospheric boundary conditions (11481.3561ms)
+webkit: audio unavailable (resume timeout); verified recovery and waveform fallback
+✖ webkit: sound playback, lunar dates and atmospheric boundary conditions (9697.4243ms)
+✔ chromium: specimen anatomy, growth wording and 27 parameter combinations (5130.6652ms)
+✔ webkit: specimen anatomy, growth wording and 27 parameter combinations (5699.3044ms)
+✔ plant types: surviving individual is not confused with a new generation (1.0393ms)
+chromium: 14 stages, 56 layouts, motion/pause/reduced-motion, plant identity, heat, 4 litmus and 6 flame colours verified
+✔ chromium: biological movement, meaningful observation states and tablet layout (18969.9936ms)
+webkit: 14 stages, 56 layouts, motion/pause/reduced-motion, plant identity, heat, 4 litmus and 6 flame colours verified
+✔ webkit: biological movement, meaningful observation states and tablet layout (22279.6327ms)
+✖ rebuilt observations: real media, apparatus, state changes and tablet layout (2861.2057ms)
+✔ combustion separates collection and reagent observation, with a relevant common-phenomenon question (0.7844ms)
+✔ insulation preserves the initial condition and approaches ambient more slowly (0.3772ms)
+✔ sound conditions change amplitude with unchanged pitch; galaxy contains observable bar and arms (1.0096ms)
+{ circuits: 54, forces: 72, collisions: 81, survival: 4 }
+✔ independent checks: current/voltage, friction, collision conservation, survival proportions (1439.9859ms)
+chromium 20/104
+chromium 40/104
+chromium 60/104
+chromium 80/104
+chromium 100/104
+{"engine":"chromium","apps":104,"predictions":100,"quizzes":416,"rebuilt":30,"failures":[]}
+✔ chromium: every app clears obsolete predictions and quiz verdicts (5072.9682ms)
+webkit 20/104
+webkit 40/104
+webkit 60/104
+webkit 80/104
+webkit 100/104
+{"engine":"webkit","apps":104,"predictions":100,"quizzes":416,"rebuilt":30,"failures":[]}
+✔ webkit: every app clears obsolete predictions and quiz verdicts (6478.9486ms)
+613 core state/observation/check combinations verified
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (15.8745ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.7991ms)
+✖ all required observation controls, wrong/correct answers and resets work in the browser (925.1079ms)
+✖ required experiment source evidence, all valid choices and independent invariants (9.5286ms)
+212 browser conditions, 636 answers checked
+✔ new experiments: controls, records, all answers, reset and Chromebook/iPad layout (43360.6366ms)
+✔ water residence model retains original water after one mean residence time (1074.5047ms)
+WebKit checked: light-shadow
+WebKit checked: motor-magnet
+WebKit checked: acid-base
+WebKit checked: nutrient-detection
+WebKit checked: magma
+WebKit checked: stars
+WebKit touch: 104 app loads and 104 original answer interactions passed
+✔ WebKit touch: all 104 apps load and original questions respond (79843.2733ms)
+chromebook: input, answer state, resized viewport, reset and focus passed
+tablet-webkit: input, answer state, resized viewport, reset and focus passed
+✔ Chromebook keyboard and WebKit tablet touch: filtering, answers, rotation and focus (1540.5099ms)
+130 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (108.5299ms)
+✔ every science lab JavaScript file parses (60.3148ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.1308ms)
+✔ chromium: six refined scenes preserve controls, process direction and visible state (8452.4255ms)
+✔ webkit: six refined scenes preserve controls, process direction and visible state (8121.4082ms)
+✖ real specimen comparison, enlarged surfaces and retry rule on desktop and mobile (1430.706ms)
+state-change: 36 valid states
+gases: 3 valid states
+mixture-separation: 7 valid states
+heat-transfer: 96 valid states
+light-shadow: 10 valid states
+photosynthesis: 6 valid states
+living-environment: 3 valid states
+acid-base: 32 valid states
+immune: 40 valid states
+stars-universe: 24 valid states
+microscope: 24 valid states
+weather-watch: 8 valid states
+land-sea: 2 valid states
+sound-vibration: 4 valid states
+rock-layers: 4 valid states
+minerals-rocks: 4 valid states
+microbes: 10 valid states
+solubility: 16 valid states
+refraction: 10 valid states
+weight-compare: 12 valid states
+volcano-model: 6 valid states
+lever-balance: 4 valid states
+seasons: 120 valid states
+diffusion: 216 valid states
+weather-front: 6 valid states
+motion-energy: 8 valid states
+ohms-law: 72 valid states
+burning-conditions: 6 valid states
+cell-structure: 32 valid states
+energy-conversion: 24 valid states
+mass-ratio: 6 valid states
+pea-genetics: 6 valid states
+cell-membrane: 6 valid states
+flame-ions: 4 valid states
+neutralization-common: 10 valid states
+density-buoyancy: 24 valid states
+✔ all supplement choices return finite, curriculum-referenced observations (24.8997ms)
+✔ ABO both-reagent truth table and student judgement (0.6793ms)
+✔ freezing mass, gas mass, heat contact, separation and starch (0.2752ms)
+25 WebKit experiment flows passed
+✔ WebKit tablet: 25 required experiments, touch answers/records/reset, rotation (20657.9208ms)
+chromium 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ chromium: textbook causal relationships and every photosynthesis control combination (8207.627ms)
+webkit 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ webkit: textbook causal relationships and every photosynthesis control combination (21414.9719ms)
+✔ all science lessons share the same reading scale and layout module (31.8128ms)
+✔ visual regressions: Chromebook and iPad landscape/portrait (10367.9245ms)
+✔ all science entry pages and dynamic resources carry their current content hash (140.0178ms)
+✔ all ten optical diagrams satisfy imaging equations and ray intersections (0.7066ms)
+✔ a changed child invalidates its dynamic loader and HTML entry; rerun is stable (8.5782ms)
+✔ chromium: corrected observations, charge conservation and complete electrical apparatus (9980.523ms)
+✔ webkit: corrected observations, charge conservation and complete electrical apparatus (12345.5505ms)
+ℹ tests 65
+ℹ suites 0
+ℹ pass 60
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 306607.7783
+
+✖ failing tests:
+
+test at tests\science-observation-browser.test.cjs:5:43
+✖ webkit: sound playback, lunar dates and atmospheric boundary conditions (9697.4243ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'The superclass is not a constructor.',
+  +   'The superclass is not a constructor.',
+  +   'The superclass is not a constructor.',
+  +   'The superclass is not a constructor.'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-observation-browser.test.cjs:56:45)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'The superclass is not a constructor.', 'The superclass is not a constructor.', 'The superclass is not a constructor.', 'The superclass is not a constructor.' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-observation-rebuild.test.cjs:16:1
+✖ rebuilt observations: real media, apparatus, state changes and tablet layout (2861.2057ms)
+  locator.click: Error: strict mode violation: locator('.supplement-reset') resolved to 2 elements:
+      1) <button type="button" class="supplement-reset">이 조건의 소리 듣기</button> aka getByText('이 조건의 소리 듣기')
+      2) <button type="button" class="supplement-reset">이 탐구 처음으로</button> aka getByRole('button', { name: '이 탐구 처음으로' })
+  
+  Call log:
+  [2m  - waiting for locator('.supplement-reset')[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-observation-rebuild.test.cjs:83:72) {
+    log: [ "  - waiting for locator('.supplement-reset')" ]
+  }
+
+test at tests\science-required-core.test.cjs:50:1
+✖ all required observation controls, wrong/correct answers and resets work in the browser (925.1079ms)
+  AssertionError [ERR_ASSERTION]: microbes reset sample
+  
+  'mold' !== 'mushroom'
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-required-core.test.cjs:65:145)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'mold',
+    expected: 'mushroom',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-required-experiments.test.cjs:6:1
+✖ required experiment source evidence, all valid choices and independent invariants (9.5286ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(view('combustion-products',{fuel,step:'1'}).metrics.water)
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-required-experiments.test.cjs:23:42)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\science-specimen-viewer.test.cjs:4:1
+✖ real specimen comparison, enlarged surfaces and retry rule on desktop and mobile (1430.706ms)
+  locator.click: Error: strict mode violation: locator('.curriculum-supplement').locator('.supplement-reset') resolved to 2 elements:
+      1) <button type="button" class="supplement-reset">이 조건의 소리 듣기</button> aka getByText('이 조건의 소리 듣기')
+      2) <button type="button" class="supplement-reset">이 탐구 처음으로</button> aka getByRole('button', { name: '이 탐구 처음으로' })
+  
+  Call log:
+  [2m  - waiting for locator('.curriculum-supplement').locator('.supplement-reset')[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-specimen-viewer.test.cjs:26:43) {
+    log: [ "  - waiting for locator('.curriculum-supplement').locator('.supplement-reset')" ]
+  }

@@ -1,0 +1,28 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9835ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7458ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1114ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (77.4225ms)
+chromium: 162 apps / 166 course routes / 664 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (24920.8533ms)
+webkit: 162 apps / 166 course routes / 664 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (33372.6894ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (408.4657ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5817.0502ms)
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (66.8618ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (2630.3521ms)
+194 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (186.3364ms)
+✔ every science lab JavaScript file parses (99.3718ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0433ms)
+chromium 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ chromium: textbook causal relationships and every photosynthesis control combination (6967.6231ms)
+webkit 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ webkit: textbook causal relationships and every photosynthesis control combination (12026.8205ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58519.728

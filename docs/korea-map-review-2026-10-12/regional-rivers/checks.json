@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-12",
+  "scope": "국내 지도 지형 탭의 주변국 주요 하천 추가",
+  "rivers": [
+    "황하(황허강)",
+    "장강(창장강)",
+    "송화강(쑹화강)",
+    "요하(랴오허강)",
+    "흑룡강(아무르강)",
+    "우수리강"
+  ],
+  "geometry": {
+    "source": "Natural Earth v5.1.2 1:10m rivers and lake centerlines",
+    "url": "https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/",
+    "generator": "scripts/build-korea-regional-rivers.mjs",
+    "rebuild": "node scripts/build-korea-regional-rivers.mjs .tmp/regional-rivers",
+    "processing": "Source segments retained separately; coordinates rounded to five decimals. Labels snap to source vertices. No straight bridges between detached source lines.",
+    "yangtzeEstuary": "Natural Earth cuts off at 119.606°E. OSM relation 9392345 downstream runs east of 119.59°E supply the estuary to 122.368°E. OSM ODbL attribution and source hashes are embedded in the asset.",
+    "songhua": "Includes Songhua and upper Di’er Songhua rivernum 646. Excludes rivernum 967, the differently named continuation of the Nen tributary.",
+    "limitations": "Natural Earth is generalized regional geography, not surveyed channel boundaries or historical river positions. It does not include every tributary."
+  },
+  "explanationSources": [
+    "https://science.nasa.gov/earth/earth-observatory/songhua-river-6139/",
+    "https://science.nasa.gov/earth/earth-observatory/building-up-the-yellow-river-delta-148145/",
+    "https://science.nasa.gov/earth/earth-observatory/heavy-sediment-from-the-yangtze-river-9428/",
+    "https://documents1.worldbank.org/curated/en/478651468023355793/pdf/multi0page.pdf",
+    "https://wwfeu.awsassets.panda.org/downloads/ahrbr.pdf"
+  ],
+  "automated": {
+    "command": "node --test tests/korea-regional-rivers.test.cjs tests/korea-transport.test.cjs tests/korea-remaster.test.cjs",
+    "passed": 13,
+    "failed": 0,
+    "coverage": [
+      "required paths and on-path labels",
+      "upper-course aliases",
+      "receiving seas and confluences",
+      "Yangtze estuary",
+      "no artificial segment bridges",
+      "terrain-only scope",
+      "domestic flow selector remains separate"
+    ]
+  },
+  "browser": {
+    "local": "http://127.0.0.1:8766/learning/inquiry/korea-map/?school=high#terrain",
+    "desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "screenshot": "desktop.webp",
+      "fourRequestedLabelsVisibleTogether": true,
+      "fourLabelPopupsOpened": true,
+      "huangPathClickOpenedPopup": true,
+      "transportRegionalLabels": 0,
+      "returnToTerrainAndSelectHanRiver": "passed"
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "screenshot": "mobile.webp",
+      "pageScrollWidth": 375,
+      "liaoPopupBounds": {
+        "left": 56,
+        "right": 356,
+        "top": 195,
+        "bottom": 323
+      },
+      "consoleErrors": [],
+      "overlappingControls": [],
+      "captureSize": [
+        375,
+        812
+      ]
+    },
+    "images": "Lossless WebP, original dimensions and decoded RGBA pixel equality verified.",
+    "live": {
+      "url": "https://classj.kr/learning/inquiry/korea-map/?school=high#terrain",
+      "asset": "data/regional-rivers.js?v=20261012-rivers1",
+      "sixRiverLabelsPresent": true,
+      "liaoPopupOpened": true,
+      "consoleErrors": [],
+      "deployedAppCommit": "cf5431229"
+    }
+  }
+}

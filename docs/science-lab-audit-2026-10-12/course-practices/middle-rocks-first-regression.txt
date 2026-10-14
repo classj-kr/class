@@ -1,0 +1,11 @@
+✔ source photos retain exact hashes and teaching models distinguish mineral streak, scratch and rock class (43.1178ms)
+✔ chromium: original specimens, controls, persistent classification errors and four diagnostic questions (12754.4208ms)
+✔ webkit: original specimens, controls, persistent classification errors and four diagnostic questions (16992.3338ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29854.007

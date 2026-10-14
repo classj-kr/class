@@ -52,7 +52,7 @@
 - 기존 태양·지구 이미지와 NASA LRO 달 표면 이미지를 사용한다. 개기일식의 코로나는 캔버스로 그리며, 월식의 어두운 붉은 영역에서도 달 표면 무늬가 유지된다. 모형과 관측 화면의 가려지는 방향을 맞췄다. 크기·거리·밝기는 원리 설명을 위한 표현이다.
 - `node tests/eclipse-geometry.cjs`: 기존 모형 및 공통 비교 모형의 접선, 관측 위치별 식 분류, 월식 접촉 경계 검증 통과.
 - `node tests/eclipse-comparison-browser.cjs`: 모든 프리셋, 독립 조작, 코로나 표시, 월식 색·밝기, 재생/정지, 기존 문제 그림, 1532/1366/1920/900/390px 화면 검증 통과. 데스크톱 세 해상도에서는 두 관측 화면의 조작부가 화면 안에 들어온다.
-- 검토 이미지: `tmp/space-topic-review/eclipse-comparison-desktop.png`, `eclipse-comparison-partial.png`, `eclipse-comparison-390.png`.
+- 검토 이미지: `outputs/qa/space-topic-review/eclipse-comparison-desktop.png`, `eclipse-comparison-partial.png`, `eclipse-comparison-390.png`.
 - 로컬 반영이며 배포는 수행하지 않았다.
 
 ### 배포

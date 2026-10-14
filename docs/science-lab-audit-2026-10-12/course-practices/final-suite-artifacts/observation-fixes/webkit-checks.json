@@ -1,0 +1,133 @@
+{
+  "lensCases": [
+    {
+      "spec": "onion",
+      "eye": 10,
+      "obj": 4,
+      "mag": 40,
+      "field": 4.5,
+      "x": 94
+    },
+    {
+      "spec": "onion",
+      "eye": 10,
+      "obj": 10,
+      "mag": 100,
+      "field": 1.8,
+      "x": 94
+    },
+    {
+      "spec": "onion",
+      "eye": 10,
+      "obj": 40,
+      "mag": 400,
+      "field": 0.45,
+      "x": 94
+    },
+    {
+      "spec": "onion",
+      "eye": 15,
+      "obj": 4,
+      "mag": 60,
+      "field": 3,
+      "x": 94
+    },
+    {
+      "spec": "onion",
+      "eye": 15,
+      "obj": 10,
+      "mag": 150,
+      "field": 1.2,
+      "x": 94
+    },
+    {
+      "spec": "onion",
+      "eye": 15,
+      "obj": 40,
+      "mag": 600,
+      "field": 0.3,
+      "x": 94
+    },
+    {
+      "spec": "stoma",
+      "eye": 10,
+      "obj": 4,
+      "mag": 40,
+      "field": 4.5,
+      "x": 94
+    },
+    {
+      "spec": "stoma",
+      "eye": 10,
+      "obj": 10,
+      "mag": 100,
+      "field": 1.8,
+      "x": 94
+    },
+    {
+      "spec": "stoma",
+      "eye": 10,
+      "obj": 40,
+      "mag": 400,
+      "field": 0.45,
+      "x": 94
+    },
+    {
+      "spec": "stoma",
+      "eye": 15,
+      "obj": 4,
+      "mag": 60,
+      "field": 3,
+      "x": 94
+    },
+    {
+      "spec": "stoma",
+      "eye": 15,
+      "obj": 10,
+      "mag": 150,
+      "field": 1.2,
+      "x": 94
+    },
+    {
+      "spec": "stoma",
+      "eye": 15,
+      "obj": 40,
+      "mag": 600,
+      "field": 0.3,
+      "x": 94
+    }
+  ],
+  "observations": [
+    {
+      "sample": "mushroom",
+      "view": 0,
+      "src": "../assets/microbe-observation/mushroom-gills.webp",
+      "caption": "20배로 관찰한 표본 사진"
+    },
+    {
+      "sample": "mushroom",
+      "view": 1,
+      "src": "../assets/microbe-observation/mushroom-hyphae.webp",
+      "caption": "40배로 관찰한 표본 사진"
+    },
+    {
+      "sample": "mold",
+      "view": 0,
+      "src": "../assets/microbe-observation/mold.webp",
+      "caption": "20배로 관찰한 표본 사진"
+    },
+    {
+      "sample": "algae",
+      "view": 0,
+      "src": "../assets/microbe-observation/spirogyra.webp",
+      "caption": "150배로 관찰한 표본 사진"
+    },
+    {
+      "sample": "paramecium",
+      "view": 0,
+      "src": "../assets/microbe-observation/paramecium.webp",
+      "caption": "100배로 관찰한 표본 사진"
+    }
+  ],
+  "errors": []
+}

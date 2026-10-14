@@ -1,0 +1,47 @@
+webkit: opening light-shadow
+webkit: light-shadow / 40 screen states
+webkit: opening refraction
+webkit: refraction / 80 screen states
+webkit: opening lever-balance
+webkit: lever-balance / 115 screen states
+webkit: opening motion-energy
+webkit: motion-energy / 155 screen states
+webkit: opening ohms-law
+webkit: ohms-law (middle) / 210 screen states
+webkit: opening ohms-law
+webkit: ohms-law (high-elective) / 335 screen states
+webkit: opening energy-conversion
+webkit: energy-conversion / 395 screen states
+webkit: opening weight-compare
+webkit: weight-compare / 425 screen states
+webkit: opening density-buoyancy
+webkit: density-buoyancy / 480 screen states
+webkit: opening state-change
+webkit: state-change / 520 screen states
+webkit: opening diffusion
+webkit: diffusion / 555 screen states
+webkit: opening solubility
+webkit: solubility / 580 screen states
+webkit: opening flame-ions
+webkit: flame-ions / 610 screen states
+webkit: opening acid-base
+webkit: acid-base / 645 screen states
+webkit: opening mass-ratio
+webkit: mass-ratio / 680 screen states
+webkit: opening burning-conditions
+webkit: burning-conditions / 730 screen states
+webkit: opening cell-membrane
+webkit: cell-membrane / 785 screen states
+webkit: opening pea-genetics
+webkit: pea-genetics / 820 screen states
+webkit: opening volcano-model
+webkit: volcano-model / 860 screen states
+webkit: opening weather-front
+webkit: weather-front / 895 screen states
+webkit: opening seasons
+webkit: seasons / 955 screen states
+webkit: opening cell-structure
+webkit: cell-structure / 1010 screen states
+webkit: opening neutralization-common
+webkit: neutralization-common / 1060 screen states
+{"engine":"webkit","deviceProfile":"ipad","routes":23,"scenarios":1060,"flagged":0,"fontFlags":0,"canvasFlags":0,"liveWebFonts":true,"loadedFontFamilies":["Noto Serif KR","Pretendard"],"errors":[]}

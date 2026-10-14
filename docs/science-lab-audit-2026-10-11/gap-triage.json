@@ -1,0 +1,877 @@
+{
+  "scope": "2022 교과서의 실험·직접 관찰·측정과 그 결과 해석을 대상으로 한다. 진로·사례 조사, 토의, 홍보·콘텐츠 제작, 일반 계획서와 아이디어 제안은 독립 실험으로 만들거나 미구현 필수실험에 합산하지 않는다. 관측 자료 분석·모형·장치 설계는 실제 탐구 절차를 확인한 뒤 판단하며 제목만으로 일괄 제외하지 않는다.",
+  "requiredExperimentTotal": null,
+  "apps": 177,
+  "remainingCandidates": 6,
+  "excludedNonExperiments": 34,
+  "retiredApps": {
+    "energy-budget": {
+      "activity": "12세포02#1",
+      "reason": "식사·생활 기록의 조사와 계산",
+      "source": {
+        "id": "fbf365923abce545",
+        "pages": [
+          60,
+          61
+        ],
+        "printedPages": [
+          58,
+          59
+        ]
+      }
+    }
+  },
+  "methodCounts": {
+    "실측 자료 분석": 1,
+    "관측 자료 해석 (직접 실험과 별도)": 5
+  },
+  "procedureReview": {
+    "reviewedCandidates": 21,
+    "textbookProceduresReviewed": 20,
+    "excluded": 5,
+    "experimentMeasurementObservation": 10,
+    "dataAnalysis": 5,
+    "unresolved": 1,
+    "requiredExperimentTotal": null
+  },
+  "workSummary": {
+    "experimentActivityRows": 0,
+    "experimentReviewGroups": 0,
+    "referenceOnly": 5,
+    "sourceUnresolved": 1,
+    "newAppCount": null,
+    "sourceReviewedVirtualPracticeRows": 4,
+    "sourceReviewedLinkedAppGaps": 1,
+    "sourceOnlyProcedureCandidates": 6
+  },
+  "workGroups": [],
+  "linkedAppGaps": [
+    {
+      "id": "12물에02#2",
+      "title": "농도와 삼투현상의 관계를 찾기 위한 실험 설계하고 수행하기",
+      "relatedApps": [
+        "osmosis-mass"
+      ],
+      "source": {
+        "id": "279be25ef56d430f",
+        "pages": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "missingProcedure": "PDF 3~4쪽의 두 채소·0.2~0.5 M 설탕물·같은 크기/처음 질량·전후 질량 측정은 실제 실험 설계 절차. 기존 세포 삼투 그림만으로 충족 판정할 수 없음. osmosis-mass에서 포도당·무의 전후 저울 측정을 추가했지만 이 판본의 두 채소·설탕물 결과로 대체하지 않음.",
+      "status": "원문에서 확인한 기존 연결 앱의 절차 누락 · 구현 보완 필요"
+    }
+  ],
+  "sourceOnlyProcedures": [
+    {
+      "pages": [
+        1
+      ],
+      "title": "필기도구의 관찰과 기준별 분류",
+      "kind": "observation",
+      "sourceId": "dac431898e5527b4",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        2
+      ],
+      "title": "같은 컵을 1~3층 쌓아 높이를 측정하고 4층 높이 예상",
+      "kind": "measurement",
+      "sourceId": "dac431898e5527b4",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        3
+      ],
+      "title": "검은 천으로 가린 물건의 모양·소리·촉감으로 추리",
+      "kind": "observation",
+      "sourceId": "dac431898e5527b4",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        1
+      ],
+      "title": "음료수의 색·투명도·알갱이·거품을 관찰해 분류",
+      "kind": "observation",
+      "sourceId": "a01ba11c558ae902",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        2
+      ],
+      "title": "물 10 mL에 바둑알 1~3개를 넣어 눈금 측정하고 4개 값 예상",
+      "kind": "measurement",
+      "sourceId": "a01ba11c558ae902",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        3
+      ],
+      "title": "물체의 용도·색·모양을 질문하고 정체 추리",
+      "kind": "observation",
+      "sourceId": "a01ba11c558ae902",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    }
+  ],
+  "resolvedGroups": [
+    {
+      "id": "local-biology",
+      "title": "주변 생물 관찰·동정",
+      "activities": [
+        "10과탐2-01#2",
+        "12기환01#1"
+      ],
+      "approach": "공통·선택 경로에서 가상 관찰·동정 구현",
+      "relatedApps": [
+        "local-biodiversity"
+      ],
+      "sharedProcedure": "학교·지역의 생물 관찰, 촬영, 특징에 따른 동정",
+      "remaining": "구역·시각·관찰 노력과 다섯 표본 조건을 구분한다. 작성된 표본 그림의 가상 연습이며 실제 현장 관찰·촬영·지도 게시 완료는 아니다.",
+      "implementationStatus": "virtual-practice",
+      "mandatoryStatus": "unconfirmed",
+      "sourceActivities": [
+        {
+          "id": "10과탐2-01#2",
+          "source": {
+            "id": "f3119695e8a726b3",
+            "path": "references/textbooks/중고등/두클래스/고등/과학/과학탐구실험 2 (김호련)_2022/교과서/PDF_압축해제/교과서 본문 PDF 묶음/(동아출판) 22개정_고등_과학탐구실험2_1단원_교과서.pdf",
+            "pages": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "pageTextHashes": [
+              {
+                "page": 7,
+                "sha256": "d2cc200dcea4688a170f05496ef9c0bc60fda48f8b7dcb3785bc4545aee956fe"
+              },
+              {
+                "page": 8,
+                "sha256": "475bd6316595ed9cb8a1ccb7f35c0bc3ed2ba43957ba8a544d370be1cae8d07b"
+              },
+              {
+                "page": 9,
+                "sha256": "34b18055ad20ca29fde924e079fa17f7fddf11a083f2c93881ff0c6ae87f5090"
+              },
+              {
+                "page": 10,
+                "sha256": "177f8b8a98d45f92597b10103da3a1929e53885c4442198b5be187b36e937999"
+              }
+            ]
+          }
+        },
+        {
+          "id": "12기환01#1",
+          "source": {
+            "id": "d7367226ffe975c8",
+            "path": "references/textbooks/중고등/T셀파/고등/과학/기후변화와환경생태(황의욱)/교과서_기후변화와 환경생태__f25f51ad88.pdf",
+            "pages": [
+              50,
+              51
+            ],
+            "pageTextHashes": [
+              {
+                "page": 50,
+                "sha256": "07b2c32c327890e4aa34b986b66fda388a7f5a0a2bd2a5f92dbc139a2ce0a5fb"
+              },
+              {
+                "page": 51,
+                "sha256": "80fdcfbc3218166e4b62335ca158350484f108179d2692d45934d7a845f66de8"
+              }
+            ]
+          }
+        }
+      ],
+      "boundary": "구역·시각·관찰 노력과 다섯 표본 조건을 구분한다. 작성된 표본 그림의 가상 연습이며 실제 현장 관찰·촬영·지도 게시 완료는 아니다."
+    },
+    {
+      "id": "reaction-demonstration",
+      "title": "화학 반응 시연",
+      "activities": [
+        "10과탐1-02#4"
+      ],
+      "approach": "중화 반응의 혼합 비율·온도 비교로 연결",
+      "relatedApps": [
+        "neutralization-common"
+      ],
+      "sharedProcedure": "교과서가 제시한 산·염기, 산화·환원 등의 반응에서 하나를 골라 시연",
+      "remaining": "특정 반응을 의무 지정한 활동이 아니다. 과학마술 전용 앱은 만들지 않고, 선택한 반응의 조건과 결과를 기존 실험에서 확인한다. 대본·발표 활동의 완료로 세지 않는다.",
+      "implementationStatus": "virtual-practice",
+      "mandatoryStatus": "unconfirmed",
+      "sourceActivities": [
+        {
+          "id": "10과탐1-02#4",
+          "source": {
+            "id": "28177f9b69b984c7",
+            "path": "references/textbooks/중고등/두클래스/고등/과학/과학탐구실험 1 (김호련)_2022/교과서/PDF_압축해제/교과서 본문 PDF 묶음/(동아출판) 22개정_고등_과학탐구실험1_3단원_교과서.pdf",
+            "pages": [
+              3,
+              4
+            ],
+            "pageTextHashes": [
+              {
+                "page": 3,
+                "sha256": "0569076f368bb7c4cb545fd749f0aca3191b80f82fcd4bb7ee56cb6cc6e62adf"
+              },
+              {
+                "page": 4,
+                "sha256": "6234b1f283121ee494d1c0b8900300e9334b6dd4693e4d6dce0699729ff47ba2"
+              }
+            ]
+          }
+        }
+      ],
+      "boundary": "특정 반응을 의무 지정한 활동이 아니다. 과학마술 전용 앱은 만들지 않고, 선택한 반응의 조건과 결과를 기존 실험에서 확인한다. 대본·발표 활동의 완료로 세지 않는다."
+    },
+    {
+      "id": "environment-measurement",
+      "title": "주변 오염물질 측정",
+      "activities": [
+        "10과탐2-01#5"
+      ],
+      "approach": "공기질 센서의 영점·포집·농도 비교 구현",
+      "relatedApps": [
+        "air-sampling"
+      ],
+      "sharedProcedure": "오염물질·측정 장소·장치 선택, 현장 측정과 지역 자료 비교",
+      "remaining": "단위 밀도 구형 입자의 작성된 분포로 PM2.5·PM10의 농도를 계산한다. 실제 현장 측정·센서 교정·공개 지역 자료의 대조 완료는 아니다.",
+      "implementationStatus": "virtual-practice",
+      "mandatoryStatus": "unconfirmed",
+      "sourceActivities": [
+        {
+          "id": "10과탐2-01#5",
+          "source": {
+            "id": "f3119695e8a726b3",
+            "path": "references/textbooks/중고등/두클래스/고등/과학/과학탐구실험 2 (김호련)_2022/교과서/PDF_압축해제/교과서 본문 PDF 묶음/(동아출판) 22개정_고등_과학탐구실험2_1단원_교과서.pdf",
+            "pages": [
+              13,
+              14
+            ],
+            "pageTextHashes": [
+              {
+                "page": 13,
+                "sha256": "51315d21212280dc91f947ea0fc6a6a2245d7dc6d41f4ade7219d42eb4bbd380"
+              },
+              {
+                "page": 14,
+                "sha256": "bdecd674c512624a5139e718b99af68456ba96967ee6051dcf224bfa2279fc5a"
+              }
+            ]
+          }
+        }
+      ],
+      "boundary": "단위 밀도 구형 입자의 작성된 분포로 PM2.5·PM10의 농도를 계산한다. 실제 현장 측정·센서 교정·공개 지역 자료의 대조 완료는 아니다."
+    }
+  ],
+  "referenceActivities": [
+    "10과탐1-02#3",
+    "12지시02#2",
+    "12지시03#3",
+    "12행우03#2",
+    "12행우03#3"
+  ],
+  "unresolvedActivities": [
+    "9과18#2"
+  ],
+  "rows": [
+    {
+      "id": "9과18#2",
+      "title": "실시간 데이터를 활용하여 우리나라 주변 해양 정보(수온, 염분) 분석하기",
+      "sourceLine": 2409,
+      "method": "실측 자료 분석",
+      "next": "원문 위치를 확인할 후보로만 보존. 제외: 고교 해양 자료를 중학교 원문 근거로 대체하거나 가상 자료를 실측으로 제시.",
+      "queue": "source-unresolved",
+      "workGroup": null,
+      "sourceCandidate": null,
+      "procedureKind": "unresolved",
+      "status": "해당 교과서 절차 미확인 · 구현 목록에 넣지 않음"
+    },
+    {
+      "id": "10과탐1-02#3",
+      "title": "관측 자료(빅데이터)를 활용하여 한반도의 기후변화 경향성 파악하기",
+      "sourceLine": 3459,
+      "method": "관측 자료 해석 (직접 실험과 별도)",
+      "next": "관측 자료 해석 대상으로 구분; 직접 실험 수에는 합산하지 않음. 제외: 발표·소감 양식과 임의 자료로 실관측 대체.",
+      "queue": "reference-only",
+      "workGroup": null,
+      "sourceCandidate": {
+        "id": "43ac53e9e01adbcc",
+        "path": "references/textbooks/중고등/두클래스/고등/과학/과학탐구실험 1 (김호련)_2022/교과서/PDF_압축해제/교과서 본문 PDF 묶음/(동아출판) 22개정_고등_과학탐구실험1_2단원_교과서.pdf",
+        "pages": [
+          11,
+          12,
+          13
+        ],
+        "pageTextHashes": [
+          {
+            "page": 11,
+            "sha256": "c36fff27ecf0f240fd5951291d3d81f69647f7ecb637e4403555fde4ed46a3f9"
+          },
+          {
+            "page": 12,
+            "sha256": "4a3fb16a22f91bdaba3e65323e1670721061f8ddc94bd347e27248932d1f9279"
+          },
+          {
+            "page": 13,
+            "sha256": "b5af4ac69a395800c004ce35ef3386d3bb8ebc4ad8a7ac983a9212fac0702d05"
+          }
+        ]
+      },
+      "procedureKind": "data-analysis",
+      "status": "자료 해석 참고 · 독립 실험 구현 목록에서 제외"
+    },
+    {
+      "id": "12지시02#2",
+      "title": "실시간 자료를 이용한 조석 현상의 패턴 추론하기",
+      "sourceLine": 7575,
+      "method": "관측 자료 해석 (직접 실험과 별도)",
+      "next": "조석 자료 해석 대상으로 구분; 예보와 관측을 표시. 제외: 예보표를 실시간 실측 자료라고 표시.",
+      "queue": "reference-only",
+      "workGroup": null,
+      "sourceCandidate": {
+        "id": "b5e30308f3b900f9",
+        "path": "references/textbooks/중고등/두클래스/고등/과학/지구시스템과학 (권오성)_2022/교과서/Ⅱ단원 교과서 PDF.pdf",
+        "pages": [
+          21
+        ],
+        "pageTextHashes": [
+          {
+            "page": 21,
+            "sha256": "776d362dfa37b83f87c44e228fe95e987d3ee01d1b3a2e7c1df7bb2d3566f78b"
+          }
+        ]
+      },
+      "procedureKind": "data-analysis",
+      "status": "자료 해석 참고 · 독립 실험 구현 목록에서 제외"
+    },
+    {
+      "id": "12지시03#3",
+      "title": "편서풍 파동 및 제트류와 관련지어 상층 일기도 해석하기",
+      "sourceLine": 7613,
+      "method": "관측 자료 해석 (직접 실험과 별도)",
+      "next": "관측 자료 해석 대상으로 구분; 직접 실험 수에는 합산하지 않음. 제외: 임의 기압 도식을 실제 날짜의 일기도로 제시.",
+      "queue": "reference-only",
+      "workGroup": null,
+      "sourceCandidate": {
+        "id": "5b0ce08b8c0b10eb",
+        "path": "references/textbooks/중고등/두클래스/고등/과학/지구시스템과학 (권오성)_2022/교과서/Ⅲ단원 교과서 PDF.pdf",
+        "pages": [
+          36,
+          37
+        ],
+        "pageTextHashes": [
+          {
+            "page": 36,
+            "sha256": "fd9d688ae5efcb7f265db017220d9890ee4b41fb59fa30872700a8c18e9fa469"
+          },
+          {
+            "page": 37,
+            "sha256": "588daa132e844419737c738bef0e72cc1da165066db20166668af027e7cb34e7"
+          }
+        ]
+      },
+      "procedureKind": "data-analysis",
+      "status": "자료 해석 참고 · 독립 실험 구현 목록에서 제외"
+    },
+    {
+      "id": "12행우03#2",
+      "title": "세페이드 변광성을 이용하여 우리은하의 중심 찾기와 크기 구하기",
+      "sourceLine": 7989,
+      "method": "관측 자료 해석 (직접 실험과 별도)",
+      "next": "관측 자료 해석 대상으로 구분; 두 자료의 출처와 역할 보존. 제외: 자체 관측한 변광성 자료로 제시.",
+      "queue": "reference-only",
+      "workGroup": null,
+      "sourceCandidate": {
+        "id": "483ae860103368b0",
+        "path": "references/textbooks/중고등/두클래스/고등/과학/행성우주과학 (권오성)_2022/교과서/Ⅲ단원 교과서 PDF.pdf",
+        "pages": [
+          8,
+          9
+        ],
+        "pageTextHashes": [
+          {
+            "page": 8,
+            "sha256": "6fb1f1e92bb3cfbc8654ba321b96ce52342b33bd7c90503aa8efc527f639ea90"
+          },
+          {
+            "page": 9,
+            "sha256": "7bec856a503c0393f4cfc6319406d6ed5f01a71045b03f083d61067aaaaae13a"
+          }
+        ]
+      },
+      "procedureKind": "data-analysis",
+      "status": "자료 해석 참고 · 독립 실험 구현 목록에서 제외"
+    },
+    {
+      "id": "12행우03#3",
+      "title": "전천 탐사를 통해 얻은 은하의 공간 분포 자료에서 은하단, 보이드 등 다양한 구조 식별하기",
+      "sourceLine": 7991,
+      "method": "관측 자료 해석 (직접 실험과 별도)",
+      "next": "관측 자료 해석 대상으로 구분; 직접 실험 수에는 합산하지 않음. 제외: 무작위 점 분포를 실제 전천 탐사 자료로 표시.",
+      "queue": "reference-only",
+      "workGroup": null,
+      "sourceCandidate": {
+        "id": "7e5723f0cbf775d1",
+        "path": "references/textbooks/중고등/T셀파/고등/과학/행성우주과학(오필석)/고_행성우주과학(오필석)_교과서__44d7452f65.pdf",
+        "pages": [
+          116,
+          117
+        ],
+        "pageTextHashes": [
+          {
+            "page": 116,
+            "sha256": "058ebd7c2112bd46d7b6b04ce167f99eede2716bb2761f86e345d3e19f868785"
+          },
+          {
+            "page": 117,
+            "sha256": "cb80e53a5d76e38bc4808fab523936a57817ae8311611d1a3d5fbe306dee0384"
+          }
+        ]
+      },
+      "procedureKind": "data-analysis",
+      "status": "자료 해석 참고 · 독립 실험 구현 목록에서 제외"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "4과11#2",
+      "title": "지진의 피해 사례를 조사하고 대처 방법 탐구하기",
+      "sourceLine": 1181,
+      "reason": "재난 사례 조사와 대처 방안",
+      "sourceCandidate": {
+        "id": "295e8a991fecc12f",
+        "pages": [
+          20
+        ],
+        "label": "미래엔 과학4-1 · 2022 · PDF 20쪽"
+      }
+    },
+    {
+      "id": "6과16#1",
+      "title": "우리의 진로에 영향을 미치는 과학적 요소 탐구하기",
+      "sourceLine": 1827,
+      "reason": "진로 조사와 공유",
+      "sourceCandidate": {
+        "id": "93e187516a26ca28",
+        "pages": [
+          13
+        ],
+        "label": "천재교육 과학6-2 · 2022 · PDF 13쪽"
+      }
+    },
+    {
+      "id": "9과01#1",
+      "title": "주변에서 탐구할 문제를 발견하고 탐구 계획서 작성하기",
+      "sourceLine": 1855,
+      "reason": "특정 실험 수행이 없는 일반 계획서 작성",
+      "sourceCandidate": {
+        "id": "348d649ab4184852",
+        "pages": [
+          1,
+          2
+        ],
+        "label": "동아출판 중학 과학1 · 2022 · PDF 1, 2쪽"
+      }
+    },
+    {
+      "id": "9과02#2",
+      "title": "생물다양성 보전 놀이 활동하기",
+      "sourceLine": 1889,
+      "reason": "보전 방안을 다루는 모둠 놀이",
+      "sourceCandidate": {
+        "id": "3f7e3699924e680f",
+        "pages": [
+          33
+        ],
+        "label": "동아출판 중학 과학1 · 2022 · PDF 33쪽"
+      }
+    },
+    {
+      "id": "9과07#2",
+      "title": "태양계 천체 자료 수집 및 분석하기",
+      "sourceLine": 2047,
+      "reason": "행성 정보 검색·카드 작성·분류 발표. 독립 실험 앱에서 제외하며 실제 망원경 관측은 유지",
+      "sourceCandidate": {
+        "id": "81ce1d0e81902b80",
+        "path": "references/textbooks/중고등/T셀파/중학/과학/과학1(임성숙)/교과서_과학1__534d97f622.pdf",
+        "pages": [
+          230,
+          231,
+          232,
+          233
+        ],
+        "pageTextHashes": [
+          {
+            "page": 230,
+            "sha256": "40e38cce1fbfcfa1cd9765412317fb1721032b72797eeead1d7c3656a6f6c450"
+          },
+          {
+            "page": 231,
+            "sha256": "b56b064f26622ff4dc8efc95a6783e596daa4d62f642f52a94f82c5a96b2d4e7"
+          },
+          {
+            "page": 232,
+            "sha256": "ec9f54f068e0a72cca4428a8c8a07a602e170b5eb6ad55a162dab43b06f2f643"
+          },
+          {
+            "page": 233,
+            "sha256": "0b9582bf90383b5f841bebc27a4259b4013aed7c037bc06e0475f7cfdd02ed40"
+          }
+        ]
+      }
+    },
+    {
+      "id": "9과15#3",
+      "title": "우주탐사 계획 세우기",
+      "sourceLine": 2305,
+      "reason": "탐사 계획서 작성",
+      "sourceCandidate": {
+        "id": "ee0ca1f85b082fef",
+        "pages": [
+          22
+        ],
+        "label": "동아출판 중학 과학2 · 2022 · PDF 22쪽"
+      }
+    },
+    {
+      "id": "9과22#1",
+      "title": "빅데이터를 이용하여 재해⋅재난 사례 분석하기",
+      "sourceLine": 2533,
+      "reason": "재난 사례 조사",
+      "sourceCandidate": null
+    },
+    {
+      "id": "9과22#2",
+      "title": "재해⋅재난의 피해를 줄이기 위한 홍보자료 제작하기",
+      "sourceLine": 2535,
+      "reason": "홍보자료 제작",
+      "sourceCandidate": null
+    },
+    {
+      "id": "9과23#1",
+      "title": "다양한 직업 속 과학 탐색하기",
+      "sourceLine": 2559,
+      "reason": "직업 조사",
+      "sourceCandidate": null
+    },
+    {
+      "id": "9과23#2",
+      "title": "미래 사회에서 과학의 역할과 새로운 과학 직업 토의하기",
+      "sourceLine": 2561,
+      "reason": "미래 직업 토의",
+      "sourceCandidate": null
+    },
+    {
+      "id": "10통과1-01#2",
+      "title": "일상생활에서 측정 표준이 활용되는 사례 탐색하기",
+      "sourceLine": 2861,
+      "reason": "세 출판사의 확인한 절차는 생활 속 측정 표준 사례 검색·토의·발표이다. 독립 실험에서 제외하며 실제 길이·시간·온도 측정은 유지",
+      "sourceCandidate": null
+    },
+    {
+      "id": "10통과1-03#1",
+      "title": "화산 분출로 인한 환경⋅사회경제적 피해의 종류를 조사하고, 지구와 생명 시스템 측면에서 피해를 줄이기 위한 대책 수립하기",
+      "sourceLine": 2945,
+      "reason": "피해 사례 조사와 대책 수립",
+      "sourceCandidate": null
+    },
+    {
+      "id": "10통과2-03#3",
+      "title": "일상생활에 활용되는 로봇의 특징 분석 및 개선방안 고안하기",
+      "sourceLine": 3165,
+      "reason": "생활 로봇 조사와 개선안 제안",
+      "sourceCandidate": {
+        "id": "7edd546b32175655",
+        "pages": [
+          12
+        ],
+        "label": "동아출판 통합과학2 · 2022 · PDF 12쪽"
+      }
+    },
+    {
+      "id": "10과탐1-01#2",
+      "title": "크기, 시간, 온도 등 과학의 단위 및 도량형 발견의 역사 추적하기",
+      "sourceLine": 3425,
+      "reason": "세 출판사의 확인한 절차는 단위 정의의 역사 조사·연대표·카드 뉴스·발표이다. 실제 측정 장치의 조작 실험과 구별하여 제외",
+      "sourceCandidate": null
+    },
+    {
+      "id": "10과탐2-01#1",
+      "title": "미디어나 생활 속의 과학 원리와 유사과학 탐색⋅비평하기",
+      "sourceLine": 3559,
+      "reason": "미디어 주장 비평",
+      "sourceCandidate": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 과학탐구실험2 · 2022 · PDF 3, 4쪽"
+      }
+    },
+    {
+      "id": "10과탐2-02#3",
+      "title": "희토류 등 자원탐사 및 정주 공간 확보를 위한 우주개발 사례 조사를 통해 과학기술의 발전 방향 평가하기",
+      "sourceLine": 3597,
+      "reason": "우주개발 사례 조사와 평가",
+      "sourceCandidate": {
+        "id": "471c52d672d197ef",
+        "pages": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "label": "동아출판 과학탐구실험2 · 2022 · PDF 7, 8, 9, 10쪽"
+      }
+    },
+    {
+      "id": "12생과02#1",
+      "title": "실감형 콘텐츠를 활용한 뇌 구조 탐구하기",
+      "sourceLine": 4677,
+      "reason": "뇌 구조 콘텐츠·연구 영상 시청과 모형에 특징 표현. 직접 실험 앱에서 제외하며 기존 신경계 실험은 유지",
+      "sourceCandidate": {
+        "id": "7ad5e2bf06acaec3",
+        "path": "references/textbooks/중고등/T셀파/고등/과학/생명과학(이준규)/교과서_생명과학__0924b36605.pdf",
+        "pages": [
+          83
+        ],
+        "pageTextHashes": [
+          {
+            "page": 83,
+            "sha256": "b1e3471bece3e3f34b3785ac9f5e916b0317decf73fd6ee30115e2bd98c175a6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "12생과03#3",
+      "title": "온라인 식물도감 만들기",
+      "sourceLine": 4719,
+      "reason": "도감 콘텐츠 제작; 표본 관찰·동정 실험은 별도 검토",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12지구02#2",
+      "title": "고기후 연구 방법 비교⋅평가하기",
+      "sourceLine": 5057,
+      "reason": "연구 방법 조사와 평가",
+      "sourceCandidate": {
+        "id": "5cd391fde1912cc3",
+        "pages": [
+          18
+        ],
+        "label": "동아출판 지구과학 · 2022 · PDF 18쪽"
+      }
+    },
+    {
+      "id": "12지구02#3",
+      "title": "한반도에서 산출되는 화석 분포 지도 그리기",
+      "sourceLine": 5059,
+      "reason": "문헌 자료로 분포 지도 작성",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12지구02#4",
+      "title": "한반도 지질 명소(국가지질공원)에서 관찰 가능한 암석과 지질 구조 탐구하기",
+      "sourceLine": 5061,
+      "reason": "확인한 교과서는 웹 자료 조사·지질 명소 소개 콘텐츠 제작. 암석 표본 관찰·분류 실험은 유지",
+      "sourceCandidate": {
+        "id": "5cd391fde1912cc3",
+        "path": "references/textbooks/중고등/두클래스/고등/과학/지구과학 (권오성)_2022/교과서/Ⅱ단원 교과서 PDF.pdf",
+        "pages": [
+          46,
+          47
+        ],
+        "pageTextHashes": [
+          {
+            "page": 46,
+            "sha256": "a82dbe5e1474cd491c7e1bff18972892e4a7b972cbb656aacd10300d7d69e786"
+          },
+          {
+            "page": 47,
+            "sha256": "11162fc6d74464a0b52aa81d720ee423a730694dd59810b79e21e7e10ba3a34f"
+          }
+        ]
+      }
+    },
+    {
+      "id": "12반응02#3",
+      "title": "지속가능한 발전을 위한 미래 전지 설계하기",
+      "sourceLine": 6515,
+      "reason": "전지 사례 조사·토의·설계안 작성; 전극·전해질 실험은 유지",
+      "sourceCandidate": {
+        "id": "b9398e96ee86c188",
+        "pages": [
+          5
+        ],
+        "label": "동아출판 화학 반응의 세계 · 2022 · PDF 5쪽"
+      }
+    },
+    {
+      "id": "12세포02#1",
+      "title": "1일 칼로리 섭취량과 소비량 조사하여 에너지 섭취량과 소비량 비교하기",
+      "sourceLine": 6859,
+      "reason": "식사·생활 기록의 조사와 계산",
+      "sourceCandidate": {
+        "id": "88b3398d0063221f",
+        "pages": [
+          6
+        ],
+        "label": "동아출판 세포와 물질대사 · 2022 · PDF 6쪽"
+      }
+    },
+    {
+      "id": "12지시01#1",
+      "title": "지구가 역동적 행성으로 진화한 이유를 다른 고체 행성의 진화 과정과 비교하기",
+      "sourceLine": 7533,
+      "reason": "행성 진화 과정의 문헌 비교",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12지시01#2",
+      "title": "관측 기기의 발달과 관련지어 판구조론 정립의 역사 추적하기",
+      "sourceLine": 7535,
+      "reason": "과학사 조사",
+      "sourceCandidate": {
+        "id": "c50c90b0d29a7655",
+        "pages": [
+          20
+        ],
+        "label": "동아출판 지구시스템과학 · 2022 · PDF 20쪽"
+      }
+    },
+    {
+      "id": "12행우01#1",
+      "title": "태양 활동 감시 시스템의 실생활 관련성 조사하기",
+      "sourceLine": 7901,
+      "reason": "감시 체계의 활용 사례 조사; 태양 관측은 유지",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12과사01#1",
+      "title": "르네상스와 과학혁명 시기의 예술 작품에 포함된 과학적 원리 분석하기",
+      "sourceLine": 8309,
+      "reason": "예술 작품 분석",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12과사02#1",
+      "title": "상대성 이론의 관점에서 미래주의 예술 작품 분석하기",
+      "sourceLine": 8339,
+      "reason": "예술 작품 분석",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12과사03#1",
+      "title": "가상 현실이나 증강 현실을 이용한 과학문화 콘텐츠 제작하기",
+      "sourceLine": 8367,
+      "reason": "과학문화 콘텐츠 제작",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12기환02#1",
+      "title": "기후변화 시나리오에 따른 미래 한반도 생물의 분포 변화 시각화 자료 작성하기",
+      "sourceLine": 8679,
+      "reason": "시나리오별 제공 그래프 수집·비교 후 글쓰기와 공유. 독립 실험 앱 제작에서 제외",
+      "sourceCandidate": {
+        "id": "d7367226ffe975c8",
+        "path": "references/textbooks/중고등/T셀파/고등/과학/기후변화와환경생태(황의욱)/교과서_기후변화와 환경생태__f25f51ad88.pdf",
+        "pages": [
+          90,
+          91,
+          94,
+          95
+        ],
+        "pageTextHashes": [
+          {
+            "page": 90,
+            "sha256": "bde8ad85c9d8fdd3f8d9974cada8808d856393508719bdfc0003069e05a1589a"
+          },
+          {
+            "page": 91,
+            "sha256": "6ff8835728444b07348b66985b0d3566efb38abf722841c3a64d8d083a66958f"
+          },
+          {
+            "page": 94,
+            "sha256": "3922d1348e7b7fb4fab8db6110df9ad8c146fa76c8ec4c6862d1fcdd7a69cdb2"
+          },
+          {
+            "page": 95,
+            "sha256": "5ef3c9ed574abead980dc9990eeb6fbe9c8f521c22294ce78544cf0f715d032d"
+          }
+        ]
+      }
+    },
+    {
+      "id": "12기환03#1",
+      "title": "탄소 저감 과학기술 고안하기",
+      "sourceLine": 8703,
+      "reason": "기술 아이디어 제안",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12융탐02#1",
+      "title": "공개 데이터셋을 활용하여 데이터를 수집하고 시각화하기",
+      "sourceLine": 9011,
+      "reason": "특정 실험과 독립된 일반 데이터 시각화 프로젝트",
+      "sourceCandidate": null
+    },
+    {
+      "id": "12융탐02#2",
+      "title": "인공지능을 활용하여 미세먼지 농도 예측하기",
+      "sourceLine": 9013,
+      "reason": "미세먼지 자료를 선형 회귀 도구에 넣고 미래값을 출력하는 코딩 과제. 직접 오염물질 측정 실험은 유지",
+      "sourceCandidate": {
+        "id": "7d8fa571b4eea4d6",
+        "path": "references/textbooks/중고등/T셀파/고등/과학/융합과학탐구(신영준)/교과서_융합과학 탐구__7449e1cf6d.pdf",
+        "pages": [
+          130,
+          131,
+          132,
+          133
+        ],
+        "pageTextHashes": [
+          {
+            "page": 130,
+            "sha256": "093b74128eccb136e764fd9e8cdb346d43b7640a7da1eee9008d6ca1acfc6eda"
+          },
+          {
+            "page": 131,
+            "sha256": "6343c96e2255eef79c0a5db2faf3e6984983bc8e6d02dfb382ef20a5c049bcce"
+          },
+          {
+            "page": 132,
+            "sha256": "5646127f54399109f9f9eeae87e74e6377893a54bcfa19764751f8c017c9bc56"
+          },
+          {
+            "page": 133,
+            "sha256": "54df8f1f8d85c731ff73136f83d3124450a5930b592be79b66936872153d2b42"
+          }
+        ]
+      }
+    },
+    {
+      "id": "12융탐03#1",
+      "title": "식량자원 부족 및 대기오염 문제해결을 위한 융합과학기술 고안하기",
+      "sourceLine": 9045,
+      "reason": "융합 기술 아이디어 제안",
+      "sourceCandidate": null
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-12",
+  "slug": "rate-equilibrium",
+  "defects": [
+    "The +40 kJ/mol illustrative product level exceeded the 30 kJ/mol catalytic transition state.",
+    "The longer kJ/mol label crossed the stage clip despite fitting within the outer SVG.",
+    "Kc used an undocumented reference and applied the pressure-constant van’t Hoff formula without the temperature conversion factor.",
+    "Fixed molecule count changed the number of represented nitrogen atoms between conditions.",
+    "A slower rate used the fractional multiplier, and 95/100 C feedback always claimed a further 10 C comparison."
+  ],
+  "changes": [
+    "Use +20 kJ/mol; positive forward and reverse barriers. Move the reaction-heat label left of its arrow; keep screen text size.",
+    "Derive Kc(298.15 K)=167.0144 from JANAF standard formation free energies at 1 bar. Use constant reaction enthalpy -57.111 kJ/mol and T/Tref conversion.",
+    "Maintain 24 NO2 units in single/double molecular groupings and make cylinder height proportional to volume.",
+    "Use inverse multiplier for slower rates, equality wording at the reference, a 5 C comparison at 95 C, and omit the increase at the upper bound."
+  ],
+  "sources": [
+    {
+      "url": "https://janaf.nist.gov/tables/N-007.html",
+      "species": "NO2(g)",
+      "temperatureK": 298.15,
+      "standardPressureBar": 1,
+      "formationGibbsKJMol": 51.258,
+      "formationEnthalpyKJMol": 33.095
+    },
+    {
+      "url": "https://janaf.nist.gov/tables/N-032.html",
+      "species": "N2O4(g)",
+      "temperatureK": 298.15,
+      "standardPressureBar": 1,
+      "formationGibbsKJMol": 97.787,
+      "formationEnthalpyKJMol": 9.079
+    },
+    {
+      "id": "4417457f97abb418",
+      "pdfPages": [
+        128,
+        129
+      ],
+      "finding": "Compression first doubles concentrations; re-equilibration lowers NO2 relative to that immediate state. No claim of being paler than the original equilibrium."
+    },
+    {
+      "id": "ee8cbb3b4ab047e7",
+      "pdfPages": [
+        25,
+        26
+      ],
+      "finding": "Initial, immediately compressed and re-equilibrated gas are distinguished."
+    }
+  ],
+  "boundary": "Ideal gas, constant reaction enthalpy, no condensation; dot proportions rounded to whole molecules while preserving represented atoms. At 350 K the approximation differs by about 0.67% from the independent JANAF table. Displayed gas concentrations are model calculations, not measured classroom data. No added chromate concentration or cobalt temperature experiment.",
+  "tests": "rate-energy-final-regression.txt",
+  "readability": [
+    "rate-energy-readability/extended-chromium.json",
+    "rate-energy-readability/extended-webkit.json"
+  ],
+  "status": "Passed: 84 reaction-rate and 336 equilibrium cases per engine; final 75 rendered states per engine; latest screenshots manually inspected."
+}

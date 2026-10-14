@@ -1,0 +1,40 @@
+✔ optical source files, symmetric plane image and the three convergence regimes (1002.707ms)
+✖ chromium: all optical conditions, direction arrows and twelve retained misconception responses (30984.1468ms)
+✖ webkit: all optical conditions, direction arrows and twelve retained misconception responses (30492.1627ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 62728.9951
+
+✖ failing tests:
+
+test at tests\science-optics.test.cjs:19:43
+✖ chromium: all optical conditions, direction arrows and twelve retained misconception responses (30984.1468ms)
+  page.waitForSelector: Timeout 30000ms exceeded.
+  Call log:
+  [2m  - waiting for locator('[data-optics-part=device]') to be visible[22m
+  [2m    62 × locator resolved to hidden <g fill="none" stroke="#547b8a" stroke-width="4" fill-opacity=".65" data-optics-part="device">…</g>[22m
+  
+      at open (E:\webprojects\class\tests\science-optics.test.cjs:22:511)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-optics.test.cjs:24:21) {
+    name: 'TimeoutError',
+    log: [ "  - waiting for locator('[data-optics-part=device]') to be visible", '    62 × locator resolved to hidden <g fill="none" stroke="#547b8a" stroke-width="4" fill-opacity=".65" data-optics-part="device">…</g>' ]
+  }
+
+test at tests\science-optics.test.cjs:19:43
+✖ webkit: all optical conditions, direction arrows and twelve retained misconception responses (30492.1627ms)
+  page.waitForSelector: Timeout 30000ms exceeded.
+  Call log:
+  [2m  - waiting for locator('[data-optics-part=device]') to be visible[22m
+  [2m    62 × locator resolved to hidden <g fill="none" stroke="#547b8a" stroke-width="4" fill-opacity=".65" data-optics-part="device">…</g>[22m
+  
+      at open (E:\webprojects\class\tests\science-optics.test.cjs:22:511)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-optics.test.cjs:24:21) {
+    name: 'TimeoutError',
+    log: [ "  - waiting for locator('[data-optics-part=device]') to be visible", '    62 × locator resolved to hidden <g fill="none" stroke="#547b8a" stroke-width="4" fill-opacity=".65" data-optics-part="device">…</g>' ]
+  }
+

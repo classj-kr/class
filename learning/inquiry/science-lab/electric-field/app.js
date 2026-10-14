@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildControls() {
         if (state.mode === 'field') controlArea.innerHTML = pickRow('왼쪽 전하', 'left', opts(LEFTS), state.left, 2) + pickRow('오른쪽 전하', 'right', opts(RIGHTS), state.right, 3) + pickRow('+1 nC 시험 전하 자리', 'spot', opts(SPOTS), state.spot, 3);
         else if (state.mode === 'accel') controlArea.innerHTML = pickRow('두 판 사이 전압 (간격 2 cm)', 'volt', opts(VOLTS), state.volt, 3) + pickRow('입자', 'part', opts(PARTS), state.part, 3);
-        else controlArea.innerHTML = pickRow('에너지 관찰', 'charge', [{value:'store',label:'전원으로 충전'},{value:'release',label:'충전된 축전기로 플래시 작동'}], state.charge, 2);
+        else controlArea.innerHTML = pickRow('에너지 관찰', 'charge', [{value:'store',label:'전원으로 충전'},{value:'release',label:'저장 에너지로 전구 켜기'}], state.charge, 2);
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
                 state[group.dataset.pick] = button.dataset.value;
@@ -242,9 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dir) { const L = clamp((Math.abs(a.E) / 2e5) * 40, 10, 60); out += arrow(tx, ty - 14, tx + dir * L, ty - 14, 'force force-e', 'arrow-e'); }
         out += `<text class="small-label" x="${tx0.toFixed(1)}" y="${CY - 22}" text-anchor="middle">시험 전하 ${SPOTS[state.spot].label}</text>`;
         // readouts
-        out += `<text class="trait-text" style="fill:#dc2626" x="20" y="40">왼쪽 전하가 만드는 전기장 ${fmtE(a.eL)} ${a.eL > 0 ? '→' : '←'}</text>`;
-        out += `<text class="trait-text" style="fill:#0284c7" x="20" y="56">오른쪽 전하가 만드는 전기장 ${fmtE(a.eR)} ${a.eR > 0 ? '→' : '←'}</text>`;
-        out += `<text class="trait-text" style="fill:#d97706" x="20" y="72">합친 전기장 ${a.verdict === 'zero' ? '0' : `${fmtE(a.E)} ${a.E > 0 ? '→' : '←'}`} · +1 nC이 받는 힘 ${a.verdict === 'zero' ? '0' : fmtF(a.F)}</text>`;
+        out += `<text class="trait-text figure-caption" style="fill:#dc2626" x="20" y="40">왼쪽 전하가 만드는 전기장 ${fmtE(a.eL)} ${a.eL > 0 ? '→' : '←'}</text>`;
+        out += `<text class="trait-text figure-caption" style="fill:#0284c7" x="20" y="56">오른쪽 전하가 만드는 전기장 ${fmtE(a.eR)} ${a.eR > 0 ? '→' : '←'}</text>`;
+        out += `<text class="trait-text figure-caption" style="fill:#d97706" x="20" y="72">합친 전기장 ${a.verdict === 'zero' ? '0' : `${fmtE(a.E)} ${a.E > 0 ? '→' : '←'}`} · +1 nC이 받는 힘 ${a.verdict === 'zero' ? '0' : fmtF(a.F)}</text>`;
         const VERD = { left: '왼쪽으로 밀림', zero: '두 전기장이 상쇄되어 힘 0', right: '오른쪽으로 밀림' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · ${SPOTS[state.spot].label}: ${VERD[a.verdict]}` : `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · 시험 전하 ${SPOTS[state.spot].label}`}</text>`;
         out += `<text class="note-text" x="20" y="208">전기장 E = kQ/r² (k = 9.0×10⁹). 선이 빽빽한 곳이 센 곳, + 시험 전하는 화살표 방향으로 힘을 받습니다</text>`;
@@ -325,11 +325,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderCap(a) {
-        const p=ease(state.progress),stored=a.phase==='store'?p:1-p;
-        let out='<rect x="115" y="60" width="12" height="125" fill="#8aa7b5"/><rect x="225" y="60" width="12" height="125" fill="#8aa7b5"/>';
-        for(let i=0;i<Math.round(stored*5);i++)out+='<text x="93" y="'+(85+i*22)+'" fill="#c54b50">+</text><text x="247" y="'+(85+i*22)+'" fill="#317cb0">−</text>';
-        out+='<text class="part-label" x="20" y="25">'+(a.phase==='store'?'충전: 에너지를 저장':'방전: 저장 에너지를 이용')+'</text>';
-        out+='<circle cx="350" cy="120" r="28" fill="'+(a.phase==='release'&&p>.1?'#f7cc63':'#cbd5e1')+'"/><text class="note-text" x="312" y="178">플래시 모형</text>';return out;
+        const p=ease(state.progress),stored=a.phase==='store'?p:1-p,charging=a.phase==='store';
+        const glowing=!charging&&p>0&&p<1;
+        let out='<path data-capacitor-wire d="M212 110 H60 V184 H'+(charging?200:188)+' M'+(charging?220:232)+' 184 H395 V110 H228" fill="none" stroke="#6f8b98" stroke-width="3"/>';
+        out+='<g data-capacitor-plates stroke="#547a8b" stroke-width="7"><path d="M212 65 V145 M228 65 V145"/></g>';
+        for(let i=0;i<Math.round(stored*4);i++)out+='<text x="192" y="'+(80+i*18)+'" fill="#c54b50">+</text><text x="239" y="'+(80+i*18)+'" fill="#317cb0">−</text>';
+        if(charging)out+='<g data-capacitor-source stroke="#b78437" stroke-width="4"><path d="M200 169 V199 M220 176 V192"/></g><text x="155" y="175" fill="#c54b50">+</text><text x="244" y="175" fill="#317cb0">−</text>';
+        else out+='<circle data-capacitor-lamp cx="210" cy="184" r="22" fill="'+(glowing?'#f7cc63':'#e3ebee')+'" stroke="#6f8b98" stroke-width="2"/><path d="M196 170 L224 198 M224 170 L196 198" stroke="#927b50" stroke-width="2"/>';
+        out+='<text class="part-label" x="20" y="25">'+(charging?'충전: 외부 전원에서 에너지를 받음':'방전: 저장 에너지를 빛·열로 전환')+'</text><text x="255" y="155" fill="#35586a">축전기</text>';
+        out+='<text class="note-text figure-caption" x="20" y="216">'+(charging?'전원과 축전기를 도선으로 연결한 닫힌 회로입니다.':'외부 전원을 분리하고 전구를 연결한 회로입니다. 방전이 끝나면 전구가 꺼집니다.')+'</text>';return out;
     }
 
     function graphCap(a) {
@@ -354,10 +358,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
+        if (a.kind === 'cap') checkBtn.textContent = a.phase === 'store' ? '전지에 연결하기' : '전구에 연결하기';
         mainGroup.innerHTML = a.kind === 'field' ? renderField(a) : a.kind === 'accel' ? renderAccel(a) : renderCap(a);
         graphGroup.innerHTML = a.kind === 'field' ? graphField(a) : a.kind === 'accel' ? graphAccel(a) : graphCap(a);
         liftProse();
-        stageBadge.textContent = a.kind === 'field' ? `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · ${SPOTS[state.spot].label}` : a.kind === 'accel' ? `${PARTS[state.part].label} · ${VOLTS[state.volt].label}` : `${AREAS[state.area].label} · ${GAPS[state.gap].label} · ${DIELS[state.diel].label}`;
+        stageBadge.textContent = a.kind === 'field' ? `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · ${SPOTS[state.spot].label}` : a.kind === 'accel' ? `${PARTS[state.part].label} · ${VOLTS[state.volt].label}` : (a.phase === 'store' ? '충전 회로' : '방전 회로');
         methodHint.textContent = a.kind === 'field' ? '전기장은 + 전하에서 나와 − 전하로 들어가고, 세기는 거리의 제곱에 반비례합니다'
             : a.kind === 'accel' ? '전위차 V를 지난 전하 q는 qV만큼의 운동 에너지를 얻습니다'
                 : '축전기는 에너지를 저장하고 방전할 때 다른 형태로 전환합니다';
@@ -432,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkBtn.textContent = state.mode === 'field' ? '시험 전하 놓기' : state.mode === 'accel' ? '입자 쏘기' : '전지에 잇기';
         stageCaption.textContent = state.mode === 'field' ? '두 전하가 0.6 m 떨어져 있습니다. 옅은 선이 전기력선, 노란 점이 +1 nC 시험 전하이고 노란 화살표가 받는 힘입니다.'
             : state.mode === 'accel' ? '왼쪽 판이 입자를 밀어내는 쪽입니다. 판 사이 화살표는 전기장(+에서 −로), 노란 화살표는 입자가 받는 힘입니다.'
-                : '왼쪽 전지가 두 판에 9 V를 겁니다. 판의 점이 쌓인 전하, 판 사이 화살표가 전기장이고 색 칠한 곳이 사이 물질입니다.';
+                : '충전할 때는 전지에, 방전할 때는 전구에 연결된 회로를 비교합니다. 판 옆의 +와 − 부호는 쌓인 전하를 나타냅니다.';
         settingsChanged();
     }));
     checkBtn.addEventListener('click', startRun);

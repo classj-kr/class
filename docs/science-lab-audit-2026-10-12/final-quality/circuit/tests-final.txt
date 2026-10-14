@@ -1,0 +1,11 @@
+✔ meter topology, Kirchhoff relations and measurements keep their physical conditions (2.799ms)
+✔ chromium: move meters, reject wrong connections, compare six readings and separate course diagnosis (7447.7058ms)
+✔ webkit: move meters, reject wrong connections, compare six readings and separate course diagnosis (9125.8434ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16648.2605

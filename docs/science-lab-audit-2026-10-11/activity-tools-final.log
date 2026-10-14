@@ -1,0 +1,21 @@
+✔ data parsing rejects missing cells; regression retains known slope and intercept (0.7917ms)
+✔ independent physical limiting cases and analytical results (12.8502ms)
+✔ standard genetic code and biological model boundary cases (0.4579ms)
+✔ new source-based analysis has correct units, limits and incomplete-work behavior (1.404ms)
+✔ chromosome pairing distinguishes homologues, duplicate cards and sex chromosome composition (1.2474ms)
+✔ planet groups follow the learner criterion, including the exact boundary and invalid data (0.4605ms)
+✔ three-axis acceleration uses vector magnitude and time weighting without guessing invalid intervals (0.6321ms)
+✔ every activity model supports declared numeric endpoints without non-finite output (32.7369ms)
+✔ chromium: registered tools, edit, persist and invalid data (34790.6419ms)
+✔ webkit: registered tools, edit, persist and invalid data (53305.1758ms)
+✔ activity models: controls, counterexamples, ordering and numerical optics (1.0376ms)
+✔ chromium: new activities, persistence, mobile layout and dating evidence (3955.8252ms)
+✔ webkit: new activities, persistence, mobile layout and dating evidence (4415.0983ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 88260.0688

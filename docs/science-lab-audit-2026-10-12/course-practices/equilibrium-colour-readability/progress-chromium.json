@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T13:20:29.648Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "equilibrium-colour",
+      "scenarios": 70
+    }
+  ],
+  "scenarios": 70,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}
