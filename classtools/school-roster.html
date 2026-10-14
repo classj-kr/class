@@ -704,7 +704,13 @@
             headers: { "Content-Type": "application/json", ...(opts.headers || {}) }
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data.message || "서버 오류가 발생했습니다.");
+        if (!res.ok) {
+            // JSON 이 아닌 오류(너무 큰 요청의 413, 게이트웨이의 502 따위)도 무엇이 문제인지 번호로 알 수 있게 한다.
+            const fallback = res.status === 413
+                ? "보낸 내용이 너무 커서 서버가 받지 않았습니다 (HTTP 413). 명단을 나눠서 붙여넣어 주세요."
+                : `서버 오류가 발생했습니다 (HTTP ${res.status}).`;
+            throw new Error(data.message || fallback);
+        }
         return data;
     }
 
