@@ -362,7 +362,7 @@
         const out = Object.assign(below ? opt(a, -1, '0.01') : opt(b, 1, '0.1'), { out: true });
         const rows = d.shuffle(ins.concat([out])), at2 = rows.indexOf(out);
         return C(`${R(a)} = ${Math.sqrt(a).toFixed(3)}…, ${R(b)} = ${Math.sqrt(b).toFixed(3)}…일 때, 다음 중 두 수 ${R(a)}${tail(a, '과/와')} ${R(b)} 사이에 있지 않은 수는?`, rows.map((r) => r.h), at2, {
-          explain: `${out.h}${below ? `${tail(1, '은/는')} ${R(a)}보다 작다` : `${tail(1, '은/는')} ${R(b)}보다 크다`}. ${frac(`${R(a)} + ${R(b)}`, 2)}는 두 수의 한가운데에 있는 수이고, 나머지도 두 수 사이에 있다.`,
+          explain: `${out.h}${below ? `${tail(1, '은/는')} ${R(a)}보다 작다` : `${tail(1, '은/는')} ${R(b)}보다 크다`}. ${frac(`${R(a)} + ${R(b)}`, 2)}${tail(b, '은/는')} 두 수의 한가운데에 있는 수이고, 나머지도 두 수 사이에 있다.`,
           facts: { choose: { exprs: rows.map((r) => r.js), rule: below ? 'onlyBelow' : 'onlyAbove', target: below ? Math.sqrt(a) : Math.sqrt(b) }, unseen: U5 }
         });
       }),

@@ -345,7 +345,7 @@
   const FINE_DECIMAL = true;   // 검사의 FINE_DECIMAL_UNITS 에 9-1-2 가 들어가면 true 로 바꾼다(근삿값을 소수 칸으로 받는다).
 
   B.addUnit({
-    id: '9-1-2', grade: 9, semester: 1, no: 2, title: '근호를 포함한 식의 계산', version: 1,
+    id: '9-1-2', grade: 9, semester: 1, no: 2, title: '근호를 포함한 식의 계산', version: 2,
     groups: [
       {
         id: 'mul', title: '제곱근의 곱셈', standard: STD,
@@ -699,7 +699,7 @@
             const nth = d.int(2, 4), sorted = rows.slice().sort((x, y) => x.v - y.v), hit = sorted[nth - 1];
             if (new Set(rows.map((r) => r.v.toFixed(9))).size !== 5) throw new Error('같은 값');
             return seal(C(`다음 수를 작은 것부터 차례로 놓을 때 ${['', '첫', '두', '세', '네'][nth]} 번째에 오는 수는?`, rows.map((r) => r.h), rows.indexOf(hit), {
-              explain: `분모를 ${q}로 맞추어 ${frac(rt(V('N')), q)} 꼴로 고치면 ${rows.map((r) => r.t).join(', ')}이다. 근호 안의 수를 견주면 ${['', '첫', '두', '세', '네'][nth]} 번째는 ${hit.h}이다.`,
+              explain: `분모를 ${q}${tail(q, '으로/로')} 맞추어 ${frac(rt(V('N')), q)} 꼴로 고치면 ${rows.map((r) => r.t).join(', ')}이다. 근호 안의 수를 견주면 ${['', '첫', '두', '세', '네'][nth]} 번째는 ${hit.h}이다.`,
               facts: { rank: { values: rows.map((r) => r.v), nth: 6 - nth } }
             }));
           })

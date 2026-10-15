@@ -20,7 +20,7 @@
   const SIGNS = ['&gt;', '=', '&lt;'];
 
   B.addUnit({
-    id: '3-1-3', grade: 3, semester: 1, no: 3, title: '나눗셈', version: 8,
+    id: '3-1-3', grade: 3, semester: 1, no: 3, title: '나눗셈', version: 9,
     groups: [
       {
         id: 'share', title: '똑같이 나누기', standard: MEAN,
@@ -156,7 +156,7 @@
             const odd = d.until(() => d.int(2, 9), (v) => v !== b && v !== q && v !== a && v * b !== q && v * b !== a && v * q !== a && b * q !== v);
             const list = d.shuffle([a, b, q, odd]);
             return N('수 카드 4장 중 3장을 골라 곱셈식과 나눗셈식을 만들려고 한다. 사용하지 않는 수는?', odd, {
-              figure: numbers(list), explain: `${expr(b, '*', q, '=', a)}, ${expr(a, '/', b, '=', q)}를 만들 수 있다. ${josa(odd, '은/는')} 사용하지 않는다.`, facts: { triple: list }
+              figure: numbers(list), explain: `${expr(b, '*', q, '=', a)}, ${expr(a, '/', b, '=', q)}${josa(q, '을/를').slice(String(q).length)} 만들 수 있다. ${josa(odd, '은/는')} 사용하지 않는다.`, facts: { triple: list }
             });
           })
         ]

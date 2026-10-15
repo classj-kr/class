@@ -503,7 +503,7 @@
   ];
 
   B.addUnit({
-    id: '8-2-7', grade: 8, semester: 2, no: 7, title: '확률', version: 2,
+    id: '8-2-7', grade: 8, semester: 2, no: 7, title: '확률', version: 3,
     groups: [
       { id: 'mean', title: '확률의 뜻', standard: STD, types: MEAN },
       { id: 'cases', title: '여러 가지 상황에서의 확률', standard: STD, types: CASES },

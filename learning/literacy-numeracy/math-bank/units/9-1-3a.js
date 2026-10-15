@@ -718,7 +718,7 @@
       if (n === 0) {
         const [shown, at, why] = d.pick(kinds);
         return C(`다음 중 ${ej(shown, '을/를')} 계산할 때 이용하면 가장 편리한 곱셈 공식은?`, FORMULA_NAMES, at, {
-          explain: `${nb(why)}로 볼 수 있으므로 ${ej(FORMULA_NAMES[at], '을/를')} 이용한다.`, facts: { truth: FORMULA_NAMES.map((_, i) => i === at), want: true, rule: 'formula-for-number' }
+          explain: `${nb(why)}${/<\/sup>$/.test(why) ? '으로' : josa(Number(why.match(/(\d+)\)$/)[1]), '으로/로').slice(why.match(/(\d+)\)$/)[1].length)} 볼 수 있으므로 ${ej(FORMULA_NAMES[at], '을/를')} 이용한다.`, facts: { truth: FORMULA_NAMES.map((_, i) => i === at), want: true, rule: 'formula-for-number' }
         });
       }
       // 주어진 공식 (x + a)(x + b) 를 쓰면 편리한 것 하나
@@ -854,7 +854,7 @@
   };
 
   B.addUnit({
-    id: '9-1-3', grade: 9, semester: 1, no: 3, title: '다항식의 곱셈과 인수분해', version: 1,
+    id: '9-1-3', grade: 9, semester: 1, no: 3, title: '다항식의 곱셈과 인수분해', version: 2,
     groups: [
       { id: 'expand', title: '다항식의 곱셈', standard: STD, types: expandTypes },
       { id: 'formula', title: '곱셈 공식', standard: STD, types: formulaTypes },

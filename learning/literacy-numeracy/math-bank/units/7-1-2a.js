@@ -130,7 +130,7 @@
   ];
 
   B.addUnit({
-    id: '7-1-2', grade: 7, semester: 1, no: 2, title: '정수와 유리수', version: 2,
+    id: '7-1-2', grade: 7, semester: 1, no: 2, title: '정수와 유리수', version: 3,
     groups: [
       {
         id: 'kinds', title: '양수와 음수, 정수와 유리수', standard: STD3,

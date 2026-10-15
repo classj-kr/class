@@ -275,7 +275,7 @@
   const WIDE = RATIOS.filter(([m, k]) => m / (m + k) >= 0.4);
 
   B.addUnit({
-    id: '8-2-4', grade: 8, semester: 2, no: 4, title: '평행선과 선분의 길이의 비', version: 2,
+    id: '8-2-4', grade: 8, semester: 2, no: 4, title: '평행선과 선분의 길이의 비', version: 3,
     groups: [
       {
         id: 'tri', title: '삼각형에서 평행선과 선분의 길이의 비', standard: STD,
@@ -417,7 +417,7 @@
             const html = ({ r, whole: wh }) => (wh ? `${eq('AB', r[0] + r[1])}, ${eq('AD', r[0])}, ${eq('AC', r[2] + r[3])}, ${eq('AE', r[2])}` : `${eq('AD', r[0])}, ${eq('DB', r[1])}, ${eq('AE', r[2])}, ${eq('EC', r[3])}`);
             const hit = rows.findIndex(({ r }) => r[0] * r[3] === r[1] * r[2]), R = rows[hit].r;
             return C(`△ABC에서 두 점 D, E가 각각 변 AB, AC 위에 있을 때, 다음 중 ${par('BC', 'DE')}인 것은?`, rows.map(html), hit, {
-              explain: `${SG('AD')} : ${SG('DB')} = ${SG('AE')} : ${SG('EC')}이면 ${par('BC', 'DE')}이다. ${rows[hit].whole ? `${SG('DB')} = ${R[0] + R[1]} − ${R[0]} = ${R[1]}(cm), ${SG('EC')} = ${R[2] + R[3]} − ${R[2]} = ${R[3]}(cm)이므로 ` : ''}${SG('AD')} : ${SG('DB')} = ${simple(R[0], R[1])}, ${SG('AE')} : ${SG('EC')} = ${simple(R[2], R[3])}로 두 비가 같다. 나머지는 두 비가 같지 않다.`,
+              explain: `${SG('AD')} : ${SG('DB')} = ${SG('AE')} : ${SG('EC')}이면 ${par('BC', 'DE')}이다. ${rows[hit].whole ? `${SG('DB')} = ${R[0] + R[1]} − ${R[0]} = ${R[1]}(cm), ${SG('EC')} = ${R[2] + R[3]} − ${R[2]} = ${R[3]}(cm)이므로 ` : ''}${SG('AD')} : ${SG('DB')} = ${simple(R[0], R[1])}, ${SG('AE')} : ${SG('EC')} = ${simple(R[2], R[3])}${B.kit.mid.tail(R[3] / gcd(R[2], R[3]), '으로/로')} 두 비가 같다. 나머지는 두 비가 같지 않다.`,
               facts: { claimed: rows.map(({ r }) => [`${r[0]}*${r[3]}`, r[1] * r[2]]), claimedWant: true }
             });
           }),

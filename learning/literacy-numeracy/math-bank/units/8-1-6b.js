@@ -267,7 +267,7 @@
       const [p, q] = d.pick(FRS), s = pm(d), k = nz(d, -4, 4), m = Q(s * p, q), t = d.pick([2, 3]), c0 = d.until(() => nz(d, -7, 7), (v) => v !== s * q * k), base = { a: p, b: -s * q, c: s * q * k };
       const cands = [{ a: p, b: -s * q, c: c0 }, times(base, t), { a: p, b: s * q, c: nz(d, -7, 7) }, { a: q, b: -s * p, c: nz(d, -7, 7) }];
       return pick1(d, `다음 일차방정식 중 그 그래프가 일차함수 ${fn(m, k)}의 그래프와 만나지 않는 것은?`, cands.map((l) => [gen(l), relOf(l, base) === 'none']), {
-        explain: `기울기가 같고 ${Y}절편이 다른 두 직선은 서로 평행하여 만나지 않는다. ${gen(cands[0])}에서 ${fn(m, yint(cands[0]))}이므로 기울기는 같고 ${Y}절편은 다르다. ${gen(cands[1])}${tl(0, '은/는')} ${fn(m, k)}로 정리되어 두 그래프가 일치하므로 무수히 많은 점에서 만난다.`
+        explain: `기울기가 같고 ${Y}절편이 다른 두 직선은 서로 평행하여 만나지 않는다. ${gen(cands[0])}에서 ${fn(m, yint(cands[0]))}이므로 기울기는 같고 ${Y}절편은 다르다. ${gen(cands[1])}${tl(0, '은/는')} ${fn(m, k)}${tl(k, '으로/로')} 정리되어 두 그래프가 일치하므로 무수히 많은 점에서 만난다.`
       });
     }),
     T('count-none-coef', '해가 없을 때 수 구하기', '①53 · 8-1-4 ①37 · 8-1-4 심35', (d, n) => {

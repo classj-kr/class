@@ -361,7 +361,7 @@
         const a = d.int(1, 9), c = d.int(1, 9), v = d.int(2, 7), same = d.bool(), target = toNum([a, v, same ? c : 0]);
         const fits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => toNum([a, x, c])).filter((n) => n > target);
         return N(`백의 자리 숫자가 ${a}, 일의 자리 숫자가 ${c}인 세 자리 수가 있다. 이 가운데 ${target}보다 큰 수는 모두 몇 개인가?`, fits.length, {
-          unit: '개', explain: `${a}□${c}로 나타낼 수 있는 수 중에서 ${target}보다 큰 수는 ${listTo(fits)} ${fits.length}개이다.`, facts: { digit: { template: `${a}□${c}>${target}`, lo: 0, hi: 9, ask: 'count' } }
+          unit: '개', explain: `${a}□${josa(c, '으로/로')} 나타낼 수 있는 수 중에서 ${target}보다 큰 수는 ${listTo(fits)} ${fits.length}개이다.`, facts: { digit: { template: `${a}□${c}>${target}`, lo: 0, hi: 9, ask: 'count' } }
         });
       }, { standard: ORDER }),
       H('h-three-forms', '다르게 나타낸 세 수의 차례', '38 기본 ①66', (d) => {

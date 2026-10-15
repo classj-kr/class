@@ -503,7 +503,7 @@
         const c = d.pick([6, 8, 10, 12, 14, 15, 18, 20, 21, 22, 26, 27]), k = d.int(2, 6), minus = d.bool(), L = ts([1, 'ax'], [minus ? -c : c, '']), R = ts([k, 'a']), divs = divisors(c);
         return N(`${x}에 대한 일차방정식 ${eqB(L, R)}의 해가 정수가 되게 하는 ${many}`, divs.length, {
           unit: '개',
-          explain: `${iq(minus ? -c : c)}${tail(c, '을/를')} 이항하면 ${nb(`${va}${x} = ${k}${va} ${minus ? '+' : MINUS} ${c}`)}이다. ${va}는 0이 아니므로 양변을 ${va}로 나누면 ${nb(`${x} = ${k} ${minus ? '+' : MINUS} ${frac(c, va)}`)}이다. ${x}가 정수이려면 ${nb(frac(c, va) + '가')} 정수이어야 하므로 ${va}는 ${c}의 약수이다. ${c}의 약수는 ${divs.join(', ')}의 ${divs.length}개이다.`,
+          explain: `${iq(minus ? -c : c)}${tail(c, '을/를')} 이항하면 ${nb(`${va}${x} = ${k}${va} ${minus ? '+' : MINUS} ${c}`)}이다. ${va}는 0이 아니므로 양변을 ${va}로 나누면 ${nb(`${x} = ${k} ${minus ? '+' : MINUS} ${frac(c, va)}`)}이다. ${x}가 정수이려면 ${nb(frac(c, va) + tail(c, '이/가'))} 정수이어야 하므로 ${va}는 ${c}의 약수이다. ${c}의 약수는 ${divs.join(', ')}의 ${divs.length}개이다.`,
           facts: { value: upTo(c).map((t) => divJ(String(c), t)).join('+'), unseen: upTo(c), rule: 'natural-5' }
         });
       }, { count: 6 }),

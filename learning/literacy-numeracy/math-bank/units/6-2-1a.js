@@ -260,7 +260,7 @@
   const quot = (num, den) => `(${num}-${num}%${den})/${den}`, rest = (num, den) => `${num}%${den}`;
 
   B.addUnit({
-    id: '6-2-1', grade: 6, semester: 2, no: 1, title: '분수의 나눗셈', version: 1,
+    id: '6-2-1', grade: 6, semester: 2, no: 1, title: '분수의 나눗셈', version: 2,
     groups: [
       {
         id: 'same', title: '분모가 같은 (분수)÷(분수)', standard: STD,
@@ -329,7 +329,7 @@
             const [a, b] = samePick(d, d.bool() ? 'over' : 'under'), x = a.n, y = b.n, den = a.d;
             const rows = d.shuffle([[eq(x, '/', y), `${x}/${y}`, true], [eq(y, '/', x), `${y}/${x}`], [eq(x, '*', y), `${x}*${y}`], [eq(x, '/', den), `${x}/${den}`]]);
             return C(`${show(a)} ÷ ${vj(b, '과/와')} 계산 결과가 같은 것은?`, rows.map((row) => row[0]), rows.findIndex((row) => row[2]), {
-              explain: `${show(a)}에는 ${frac(1, den)}이 ${x}개, ${show(b)}에는 ${frac(1, den)}이 ${y}개 있으므로 ${x} ÷ ${y}로 계산한다. ${toldSame(a, b)}이다.`,
+              explain: `${show(a)}에는 ${frac(1, den)}이 ${x}개, ${show(b)}에는 ${frac(1, den)}이 ${y}개 있으므로 ${x} ÷ ${josa(y, '으로/로')} 계산한다. ${toldSame(a, b)}이다.`,
               facts: { choose: { exprs: rows.map((row) => row[1]), rule: 'equals', target: x / y } }
             });
           }),

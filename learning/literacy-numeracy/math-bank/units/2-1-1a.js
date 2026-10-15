@@ -125,7 +125,7 @@
   const marked = (n, marks) => `<div style="display:inline-grid;grid-template-columns:repeat(3,1.9em);justify-items:center;row-gap:2px;font-size:1.5rem;font-weight:600;font-variant-numeric:tabular-nums">${String(n).split('').map((ch) => `<span>${ch}</span>`).join('')}${marks.map((m) => `<span style="font-size:1rem;font-weight:700;color:#1d4ed8">${m}</span>`).join('')}</div>`;
 
   B.addUnit({
-    id: '2-1-1', grade: 2, semester: 1, no: 1, title: '세 자리 수', version: 1,
+    id: '2-1-1', grade: 2, semester: 1, no: 1, title: '세 자리 수', version: 2,
     groups: [
       {
         id: 'hundred', title: '백', standard: NUM,

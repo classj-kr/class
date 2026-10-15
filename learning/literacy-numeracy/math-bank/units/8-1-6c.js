@@ -353,7 +353,7 @@
       return pick1(d, `일차방정식 ${eq}의 그래프가 그림과 같을 때, 다음 중 옳은 것은?`, [row('a', 1), row('a', -1), row('b', 1), row('b', -1)], {
         fixed: true,
         figure: pl({ x: [-3, 3], y: [-3, 3], grid: false, lines: [vert ? { x: 2 * sv } : { a: 0, b: 2 * sv }], label: `좌표평면: 눈금 없는 그림. 직선이 ${vert ? 'y' : 'x'}축에 평행하고 ${vert ? `y축의 ${sv > 0 ? '오른쪽' : '왼쪽'}` : `x축의 ${sv > 0 ? '위쪽' : '아래쪽'}`}에 있다.` }),
-        explain: `그래프가 ${vert ? Y : X}축에 평행하므로 직선의 방정식은 ${nb(`${own} = ${V(vert ? 'p' : 'q')}`)} 꼴이다. ${vert ? Y : X}의 계수가 0이어야 하므로 ${nb((vert ? Bv : A) + ' = 0')}이다. ${eq0(Lt(live + own), [c, ''])}에서 ${nb(`${own} = ${c > 0 ? MINUS : ''}${frac(Math.abs(c), live)}`)}이고, 그래프가 ${vert ? `${Y}축의 ${sv > 0 ? '오른쪽' : '왼쪽'}` : `${X}축의 ${sv > 0 ? '위쪽' : '아래쪽'}`}에 있으므로 ${nb(`${c > 0 ? MINUS : ''}${frac(Math.abs(c), live)}`)}는 ${word(sv)}이다. 따라서 ${nb(`${live} ${rel(sLive)} 0`)}이다.`
+        explain: `그래프가 ${vert ? Y : X}축에 평행하므로 직선의 방정식은 ${nb(`${own} = ${V(vert ? 'p' : 'q')}`)} 꼴이다. ${vert ? Y : X}의 계수가 0이어야 하므로 ${nb((vert ? Bv : A) + ' = 0')}이다. ${eq0(Lt(live + own), [c, ''])}에서 ${nb(`${own} = ${c > 0 ? MINUS : ''}${frac(Math.abs(c), live)}`)}이고, 그래프가 ${vert ? `${Y}축의 ${sv > 0 ? '오른쪽' : '왼쪽'}` : `${X}축의 ${sv > 0 ? '위쪽' : '아래쪽'}`}에 있으므로 ${nb(`${c > 0 ? MINUS : ''}${frac(Math.abs(c), live)}`)}${B.kit.mid.tail(Math.abs(c), '은/는')} ${word(sv)}이다. 따라서 ${nb(`${live} ${rel(sLive)} 0`)}이다.`
       });
     }, { standard: STD1 })
   ]);

@@ -307,7 +307,7 @@
   const LIN_STORY = ['pens', 'pages', 'change', 'rect', 'square', 'drive', 'truck'], NON_STORY = ['area', 'circle', 'trip', 'cake', 'outer', 'cube'];
 
   B.addUnit({
-    id: '8-1-5', grade: 8, semester: 1, no: 5, title: '일차함수와 그 그래프', version: 2,
+    id: '8-1-5', grade: 8, semester: 1, no: 5, title: '일차함수와 그 그래프', version: 3,
     groups: [
       {
         id: 'func', title: '함수의 뜻', standard: S14,
@@ -742,7 +742,7 @@
       // 지나는 점으로 상수항을 구하고, 평행이동한 그래프가 다른 그래프와 일치한다.
       const m = pm(d) * d.int(2, 5), [av, c2] = d.until(() => [nz(d, -6, 6), nz(d, -7, 7)], ([u, v]) => u !== v), x1 = nz(d, -3, 3), y1 = m * x1 + av, h1 = eqT(tm(m, X), lt(A)), h2 = eqT(lt(K + X), tm(c2));
       return vals(`일차함수 ${h1}의 그래프가 점 ${ptj(x1, y1, '을/를')} 지난다. 이 그래프를 ${YA}의 방향으로 ${BB}만큼 평행이동하면 일차함수 ${h2}의 그래프와 일치할 때, 수 ${A}, ${BB}, ${K}의 값은?`, [[A, av], [BB, c2 - av], [K, m]], {
-        explain: `${h1}에 ${is(X, x1)}, ${is(Y, y1)}${tail(Math.abs(y1), '을/를')} 대입하면 ${is(A, av)}이다. 평행이동한 그래프의 식 ${eqT(tm(m, X), tm(av), lt(BB))}이 ${h2}와 같으므로 ${is(K, m)}이고, ${ex(tm(av), lt(BB))} = ${iq(c2)}에서 ${is(BB, c2 - av)}이다.`,
+        explain: `${h1}에 ${is(X, x1)}, ${is(Y, y1)}${tail(Math.abs(y1), '을/를')} 대입하면 ${is(A, av)}이다. 평행이동한 그래프의 식 ${eqT(tm(m, X), tm(av), lt(BB))}이 ${h2}${tail(Math.abs(c2), '과/와')} 같으므로 ${is(K, m)}이고, ${ex(tm(av), lt(BB))} = ${iq(c2)}에서 ${is(BB, c2 - av)}이다.`,
         facts: { calc: [[`${jn(y1)}-${jn(m)}*${jn(x1)}`, 0], [`${jn(c2)}-(${jn(y1)}-${jn(m)}*${jn(x1)})`, 1], [jn(m), 2]], rule: 'then-match' }
       });
     }, { count: 2 }),

@@ -104,7 +104,7 @@
         const rows = d.shuffle(pick.map((r) => ({ h: r[0], ok: !r[1], why: r[1] })));
         const at2 = rows.findIndex((r) => r.ok === wantAlways);
         return C(`${a}가 유리수이고 ${b}, ${c}가 무리수일 때, 다음 중 ${wantAlways ? '항상 무리수인 것은' : '항상 무리수라고 할 수 없는 것은'}?`, rows.map((r) => r.h), at2, {
-          explain: `유리수와 무리수의 합·차는 항상 무리수이다. 그러나 ${rows.filter((r) => !r.ok).map((r) => `${r.h}는 ${r.why}`).join(', ')}이므로 항상 무리수라고 할 수 없다.`,
+          explain: `유리수와 무리수의 합·차는 항상 무리수이다. 그러나 ${rows.filter((r) => !r.ok).map((r) => `${r.h}${/<\/sup>$/.test(r.h) ? '은' : '는'} ${r.why}`).join(', ')}이므로 항상 무리수라고 할 수 없다.`,
           facts: { truth: rows.map((r) => r.ok === wantAlways), want: true }
         });
       }, { standard: STD8 }),

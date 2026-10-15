@@ -106,7 +106,7 @@
         const bad = d.pick(['x^3', `x${sg(-p)}`, `x${sg(p + q)}`, `x^2(x${sg(p)})`].filter((s) => !uDivides(PV, xv(s))));
         const rows = d.shuffle(goods.concat([bad])), truth = rows.map((s) => !uDivides(PV, xv(s))), at = truth.indexOf(true);
         return C(`다음 중 ${xh(P)}의 인수가 아닌 것은?`, rows.map(xh), at, {
-          explain: `${xh(P)}의 인수는 1, ${xh('x')}, ${xh(`x${sg(p)}`)}, ${xh(`x${sg(q)}`)}와 이들끼리의 곱이다. ${xj(rows[at], '은/는')} 인수가 아니다.`,
+          explain: `${xh(P)}의 인수는 1, ${xh('x')}, ${xh(`x${sg(p)}`)}, ${xh(`x${sg(q)}`)}${tail(Math.abs(q), '과/와')} 이들끼리의 곱이다. ${xj(rows[at], '은/는')} 인수가 아니다.`,
           facts: { truth, want: true, rule: 'not-factor-given' }
         });
       }
@@ -507,7 +507,7 @@
       const [r, a, s, q, t] = d.until(() => [d.pick([1, 2, -1, -2, 3]), nz(d, -4, 4), nz(d, -6, 6), d.int(2, 4), nz(d, -6, 6)], ([rr, aa, ss, qq, tt]) => ss - aa * rr !== 0 && tt - qq * rr !== 0 && rr * aa !== -ss && aa !== qq);
       const p = s - a * r, c = -r * s, e = -r * t, b = t - q * r, P1 = `ax^2${sg(p, 'x')}${sg(c)}`, P2 = `${q}x^2+bx${sg(e)}`;
       return slots(`두 이차식 ${xh(P1)}, ${xh(P2)}의 공통인수가 ${xh(`x${sg(-r)}`)}일 때, 두 수 ${V('a')}, ${V('b')}의 값은?`, [[eqLabel('a'), a, `(-${jn(c)}/${jn(r)}-${jn(p)})/${jn(r)}`], [eqLabel('b'), b, `-${jn(e)}/${jn(r)}-${q}*${jn(r)}`]], {
-        unseen: [1], explain: `${nb(`${ph(xv(`x${sg(-r)}`))}`)}이 인수이므로 ${nb(`${V('a')}${V('x')}${sup(2)} ${p < 0 ? MINUS : '+'} ${Math.abs(p) === 1 ? '' : Math.abs(p)}${V('x')} ${c < 0 ? MINUS : '+'} ${Math.abs(c)} = (${ph(xv(`x${sg(-r)}`))})(${V('a')}${V('x')} ${s < 0 ? MINUS : '+'} ${Math.abs(s)})`)}에서 ${V('a')} = ${tx(Q(a))}, ${nb(`${q}${V('x')}${sup(2)} + ${V('b')}${V('x')} ${e < 0 ? MINUS : '+'} ${Math.abs(e)} = (${ph(xv(`x${sg(-r)}`))})(${q}${V('x')} ${t < 0 ? MINUS : '+'} ${Math.abs(t)})`)}에서 ${V('b')} = ${tx(Q(b))}이다.`
+        unseen: [1], explain: `${nb(`${ph(xv(`x${sg(-r)}`))}`)}${tail(Math.abs(r), '이/가')} 인수이므로 ${nb(`${V('a')}${V('x')}${sup(2)} ${p < 0 ? MINUS : '+'} ${Math.abs(p) === 1 ? '' : Math.abs(p)}${V('x')} ${c < 0 ? MINUS : '+'} ${Math.abs(c)} = (${ph(xv(`x${sg(-r)}`))})(${V('a')}${V('x')} ${s < 0 ? MINUS : '+'} ${Math.abs(s)})`)}에서 ${V('a')} = ${tx(Q(a))}, ${nb(`${q}${V('x')}${sup(2)} + ${V('b')}${V('x')} ${e < 0 ? MINUS : '+'} ${Math.abs(e)} = (${ph(xv(`x${sg(-r)}`))})(${q}${V('x')} ${t < 0 ? MINUS : '+'} ${Math.abs(t)})`)}에서 ${V('b')} = ${tx(Q(b))}이다.`
       });
     }),
     T('rel-wrong', '잘못 보고 인수분해한 두 결과로 바르게 인수분해하기', '①70 심16', (d) => {
