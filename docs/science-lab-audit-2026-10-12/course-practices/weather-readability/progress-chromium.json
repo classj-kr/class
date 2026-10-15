@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-15T17:03:30.088Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "weather-analysis",
+      "scenarios": 135
+    }
+  ],
+  "scenarios": 135,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

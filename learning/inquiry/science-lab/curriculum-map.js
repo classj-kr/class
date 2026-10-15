@@ -3488,6 +3488,23 @@ const scienceCurriculum = {
     ],
     "diagnostic": true,
     "bankQuestionIds": []
+  },
+  "weather-analysis": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "일기도·위성·레이더로 날씨 분석",
+    "subjects": [
+      "지구과학"
+    ],
+    "codes": [
+      "12지구01-03"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;
