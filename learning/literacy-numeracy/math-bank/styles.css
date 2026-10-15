@@ -268,6 +268,10 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 .mb-rad > svg { position: absolute; left: 0; top: 0; width: 0.6em; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linejoin: round; stroke-linecap: round; }
 .mb-rad > svg path { vector-effect: non-scaling-stroke; }
 .mb-rad-in { display: inline-block; border-top: 1.2px solid currentColor; padding: 0.1em 0.08em 0 0.06em; }
+/* 제목과 단추는 고딕. 사이트가 끼우는 공용 읽기 글꼴(assets/exam-typography.css)이 li·p 를 바탕체로 덮으므로(!important, 명시도 0,2,2)
+   묶음 목록·회차 제목·마침 글은 그보다 높은 명시도로 되돌린다. 문항 글·보기·풀이(.mb-item 안의 글)는 바탕체 그대로 둔다. */
+html body li.mb-group.mb-group, html body p.mb-round-title.mb-round-title, html body #finish > p, html body p.mb-empty.mb-empty { font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif !important; }
+.mb-level, .mb-primary, .mb-sign, .mb-chip { font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif; }
 .mb-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .mb-frac > span:last-child { padding: 1px 4px 0; }
 .mb-frac .mb-frac-bar { font-size: 0; line-height: 0; height: 0; padding: 0; border: 0; overflow: hidden; }
