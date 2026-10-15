@@ -497,8 +497,8 @@
   // ── 중3에서 더한 것 ──
   // 근호: rt('12') → √12. 근호 안의 글 위에 줄을 긋고, √ 기호는 작은 그림으로 그려 안의 글 높이에 맞춘다(글꼴마다 √ 글자의 높이가 달라 줄과 이어지지 않는다).
   // 보이지 않는 √ 글자를 함께 넣어, 글로 옮기거나(기록·검사) 소리 내어 읽을 때 근호가 남는다. 안에는 식이나 답 칸 자리('{1}')를 넣어도 된다.
-  // 그림(svg) 속 글에는 쓸 수 없다 — 그림의 길이 글에 근호가 필요하면 문제 글로 길이를 알려 준다.
-  const rt = (inner) => '<span class="mb-rad"><span class="mb-sr">√</span><svg aria-hidden="true" viewBox="0 0 10 20" preserveAspectRatio="none"><path d="M0.6 12.4L2.8 11.2L5.7 19.3L9.7 0.6"/></svg><span class="mb-rad-in">' + inner + '</span></span>';
+  // √ 그림에는 mb-inline 을 붙인다(그림 칸 안의 근호를 화면 검사가 찌그러진 그림으로 세지 않게). 그림(svg) 속 글에는 쓸 수 없다 — 그림의 길이 글에 근호가 필요하면 문제 글로 길이를 알려 준다.
+  const rt = (inner) => '<span class="mb-rad"><span class="mb-sr">√</span><svg class="mb-inline" aria-hidden="true" viewBox="0 0 10 20" preserveAspectRatio="none"><path d="M0.6 12.4L2.8 11.2L5.7 19.3L9.7 0.6"/></svg><span class="mb-rad-in">' + inner + '</span></span>';
   // 답 칸 틀(template)에서 한 덩어리로 붙어 있어야 할 부분(인수분해한 괄호 하나)을 묶는다. 좁은 화면에서 괄호 가운데서 줄이 갈리지 않는다.
   const grp = (html) => '<span class="mb-nw">' + html + '</span>';
   // n = a² × b (b 는 제곱인 수를 인수로 갖지 않는다)로 가른다: sqParts(12) → [2, 3], 곧 √12 = 2√3.
