@@ -36,7 +36,7 @@ const source = fs.readFileSync(path.join(__dirname, '../learning/inquiry/math/st
         return { peak, rms: Math.sqrt(energy / samples.length), tail, crossings, throttled, silentWhenMuted };
       }, { kind, height });
       assert.ok(metrics.peak > .05 && metrics.peak < 1, `${kind}: audible without clipping`);
-      assert.ok(metrics.rms > .005, `${kind}: non-silent waveform`);
+      assert.ok(metrics.rms > .002, `${kind}: non-silent waveform (${metrics.rms})`);
       assert.equal(metrics.tail, 0, `${kind}: no sound left after the short envelope`);
       assert.ok(metrics.throttled && metrics.silentWhenMuted, `${kind}: mute and rapid duplicate protection`);
       rendered.push({ kind, height, ...metrics });

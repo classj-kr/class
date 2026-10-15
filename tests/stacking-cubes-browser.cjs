@@ -8,6 +8,7 @@ const activities = require('../learning/inquiry/math/stacking-cubes/activities.j
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'outputs/stacking-cubes-review');
 const shots = process.argv.includes('--shots');
+const onlyViewport = process.argv.find(arg => arg.startsWith('--viewport='))?.split('=')[1];
 const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert('RGBA');im.save(sys.argv[1],format='WEBP',lossless=True);out=Image.open(sys.argv[1]).convert('RGBA');assert im.size==out.size and im.tobytes()==out.tobytes()";
 
 (async () => {
@@ -26,6 +27,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
     if (shots) fs.mkdirSync(output, { recursive: true });
     for (const [name, width, height, touch] of [['desktop', 1440, 1000, false], ['tablet', 820, 1180, true], ['phone', 390, 844, true], ['landscape', 844, 390, true]]) {
+      if (onlyViewport && onlyViewport !== name) continue;
       const context = await browser.newContext({ viewport: { width, height }, hasTouch: touch });
       await context.addInitScript(() => {
         const NativeAudioContext = window.AudioContext;
@@ -205,6 +207,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /서로 다른 두/);
       await snap('many-success');
+      assert.equal(await page.locator('#target-panel').evaluate(panel => panel.scrollHeight <= panel.clientHeight + 1), true, 'goal and success message fit without scrolling');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight), true, 'activity fits viewport');
       for (const button of await page.locator('#target-views button, #check-shape').all()) {
         const rect = await button.boundingBox(); assert.ok(rect.width >= 44 && rect.height >= 44, 'activity touch targets');
