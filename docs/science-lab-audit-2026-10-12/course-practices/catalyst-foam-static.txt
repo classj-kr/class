@@ -1,0 +1,19 @@
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.7609ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (2.0112ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1407ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (39.1724ms)
+276 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (134.1412ms)
+✔ every science lab JavaScript file parses (115.5445ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8795ms)
+✔ publisher textbook and experiment workbook names are included without the word 교과서 (0.7234ms)
+✔ metadata and assessments do not become textbooks even under a textbook directory; aliases retain source identity (0.1878ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 344.7679
+
