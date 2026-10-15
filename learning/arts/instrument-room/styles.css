@@ -387,7 +387,7 @@ body.key-size-open { overflow: hidden; }
 .browser-title { display: none; }
 .browser-title span { color: var(--accent); font-size: 8px; font-weight: 900; letter-spacing: .16em; }
 .browser-title b { margin-top: 3px; font-size: 13px; }
-.korean-room-switch { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 4px; border: 1px solid rgba(229,255,117,.24); border-radius: 10px; background: #091012; }
+.korean-room-switch { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; padding: 4px; border: 1px solid rgba(229,255,117,.24); border-radius: 10px; background: #091012; }
 .korean-room-switch button { min-width: 84px; min-height: 44px; padding: 5px 9px; border: 0; border-radius: 7px; background: transparent; color: #8b9995; font-size: 10px; font-weight: 900; cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
 .korean-room-switch button.active { background: var(--accent-2); color: #1b2008; box-shadow: 0 0 16px rgba(229,255,117,.13); }
 .model-chooser { display: flex; gap: 7px; overflow-x: auto; padding: 2px 1px 4px; scrollbar-width: thin; scrollbar-color: #3d514c transparent; }
@@ -396,9 +396,14 @@ body.key-size-open { overflow: hidden; }
 .model-chooser button b { font-size: 11px; }
 .model-chooser button.active { border-color: var(--accent); background: linear-gradient(145deg, rgba(142,240,198,.19), rgba(142,240,198,.055)); box-shadow: inset 0 0 0 1px rgba(142,240,198,.14); }
 .model-chooser button.active span { color: var(--accent); }
+.station-source { margin: 8px 2px 0; color: #9eada8; font-size: 11px; }
+.station-source a { color: #b9edcc; text-decoration: underline; text-underline-offset: 2px; }
+.station-source.hidden { display: none; }
 
 .console-body { min-height: 180px; grid-template-columns: minmax(0, 1.7fr) minmax(280px, .62fr); }
 .instrument-visual { min-height: 180px; display: grid; grid-template-rows: minmax(0, 1fr) 36px; background: radial-gradient(circle at 50% 45%, rgba(104,139,132,.18), transparent 42%), linear-gradient(145deg, #172124, #080d0f); isolation: isolate; }
+.instrument-visual.stage-korean-station[data-model="daechwita-station"] { min-height: 330px; }
+.instrument-visual.stage-orchestral[data-model="orchestral-percussion"] { min-height: 240px; }
 .instrument-visual::after { display: none; }
 .studio-stage { position: relative; min-height: 144px; overflow: hidden; background: radial-gradient(ellipse at 50% 85%, rgba(255,255,255,.08), transparent 43%), linear-gradient(180deg, rgba(255,255,255,.025), transparent 65%); }
 .studio-stage::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, transparent, rgba(142,240,198,.025), transparent); }
@@ -409,13 +414,20 @@ body.key-size-open { overflow: hidden; }
 .instrument-layers[data-layout="samul"] { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .instrument-layers[data-layout="ritual"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .instrument-layers[data-layout="daechwita"] { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 700px) {
+    .instrument-visual.stage-korean-station[data-model="daechwita-station"] { min-height: 420px; }
+    .instrument-layers[data-layout="daechwita"] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+}
 .instrument-layer { position: relative; min-width: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) 20px; place-items: center; border-radius: 12px; transition: background .12s, transform .12s; }
 .instrument-layer img { width: 100%; height: 100%; object-fit: contain; transform: scale(var(--part-scale, 1)); filter: drop-shadow(0 10px 12px rgba(0,0,0,.48)); transition: filter .1s, transform .1s; }
 .instrument-layer span { align-self: end; padding: 2px 7px; border-radius: 999px; background: rgba(5,10,11,.7); color: #aab8b4; font-size: 9px; font-weight: 900; white-space: nowrap; }
 .instrument-layer.active { background: radial-gradient(circle, rgba(142,240,198,.2), transparent 70%); transform: translateY(-2px); }
 .instrument-layer.active img { filter: brightness(1.35) saturate(1.2) drop-shadow(0 0 9px #8ef0c6) drop-shadow(0 0 20px rgba(142,240,198,.85)); animation: instrument-flash .24s ease-out; }
-.instrument-layers[data-layout="daechwita"] .instrument-layer[data-part="nabal"] { grid-column: span 2; }
 .instrument-layers[data-layout="orchestral"] { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 700px) {
+    .instrument-visual.stage-orchestral[data-model="orchestral-percussion"] { min-height: 390px; }
+    .instrument-layers[data-layout="orchestral"] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+}
 .instrument-layers.tone-markers { z-index: 4; inset: 18% 20% 14%; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(2, 1fr); gap: 8% 1%; }
 .tone-marker { align-self: center; justify-self: center; width: 72%; height: 62%; border-radius: 45%; opacity: 0; background: rgba(142,240,198,.52); filter: blur(7px); transition: opacity .08s; }
 .tone-marker.active { opacity: 1; box-shadow: 0 0 16px 7px rgba(142,240,198,.88); animation: tone-flash .26s ease-out; }
@@ -425,12 +437,6 @@ body.key-size-open { overflow: hidden; }
 .stage-bass .instrument-artwork, .stage-guitar .instrument-artwork { mix-blend-mode: screen; scale: -1 1; }
 .stage-drums .instrument-artwork { inset: 0 2%; width: 96%; height: 100%; object-fit: contain; mix-blend-mode: normal; transform: scale(var(--object-scale, 1)); }
 .stage-orchestral .instrument-artwork, .stage-timpani .instrument-artwork, .stage-mallet .instrument-artwork, .stage-metal .instrument-artwork { inset: 4px 7% 0; width: 86%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(var(--object-scale, 1)); }
-.scale-guide { position: absolute; z-index: 7; right: 13px; top: 13px; width: 178px; padding: 9px 10px; border: 1px solid rgba(142,240,198,.24); border-radius: 9px; display: grid; gap: 4px; background: rgba(5,10,11,.78); box-shadow: 0 8px 18px rgba(0,0,0,.25); backdrop-filter: blur(6px); }
-.scale-guide > span { color: #81918d; font-size: 7px; font-weight: 900; letter-spacing: .12em; }
-.scale-guide > b { color: #e7efec; font-size: 10px; }
-.scale-guide > small { color: #7f8d89; font-size: 7px; line-height: 1.35; }
-.scale-track { height: 6px; border-left: 1px solid #64746f; border-right: 1px solid #64746f; background: linear-gradient(180deg,transparent 45%,#42524d 46% 58%,transparent 59%); }
-.scale-track i { display: block; height: 100%; min-width: 4px; background: linear-gradient(90deg,var(--accent),var(--accent-2)); box-shadow: 0 0 8px rgba(142,240,198,.3); }
 .stage-shadow { position: absolute; z-index: 1; left: 20%; right: 20%; bottom: 6px; height: 18px; border-radius: 50%; background: rgba(0,0,0,.65); filter: blur(10px); }
 #stringCanvas { z-index: 5; pointer-events: none; }
 .performance-rail { position: relative; z-index: 7; min-height: 42px; padding: 0 15px; border-top: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; background: rgba(5,9,10,.72); }
@@ -786,4 +792,3 @@ body.detail-open { overflow: hidden; }
 }
 
 .console-head { gap: 6px; }
-.instrument-console .scale-guide { top: 62px; }

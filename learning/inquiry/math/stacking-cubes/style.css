@@ -1,7 +1,7 @@
 :root { color-scheme: light; font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif; color: #333d39; background: #f6f4ee; --ink: #2d5c51; --border: #dedfd7; }
 * { box-sizing: border-box; }
 body { margin: 0; }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 button { cursor: pointer; color: inherit; border: 0; background: transparent; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 button:disabled { cursor: default; opacity: .35; }
 button:focus-visible, summary:focus-visible, input:focus-visible { outline: 3px solid #377b69; outline-offset: 3px; }
@@ -10,6 +10,8 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .workspace { height: 100vh; height: 100dvh; min-height: 350px; display: grid; grid-template-rows: 64px minmax(0, 1fr) auto; position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 44%, #fffefa 0%, #f6f4ee 74%); }
 .top-controls { display: flex; align-items: center; padding: max(10px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) 8px 64px; gap: 12px; }
+.activity-button { min-height: 44px; padding: 8px 13px; font-size: 14px; font-weight: 600; border-radius: 12px; }
+.activity-button:hover { background: #e9ece4; }
 .view-button { display: flex; align-items: center; justify-content: center; gap: 8px; margin-left: auto; min-height: 44px; padding: 9px 16px; border: 1px solid var(--border); border-radius: 13px; background: #fffefa; font-size: 15px; font-weight: 600; }
 .view-button[aria-expanded="true"] { border-color: var(--ink); color: var(--ink); }
 .total { font-size: 16px; font-weight: 650; font-variant-numeric: tabular-nums; }
@@ -21,6 +23,9 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .view-choices button[aria-pressed="true"] { background: #e8eeE8; border-color: #7e9c8e; color: #214c40; font-weight: 700; }
 .check-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 46px; font-size: 14px; cursor: pointer; }
 .check-row input { width: 20px; height: 20px; accent-color: var(--ink); cursor: pointer; }
+.sound-settings { border-top: 1px solid #e7e6df; margin-top: 8px; padding-top: 5px; }
+.volume-row { display: flex; gap: 18px; align-items: center; min-height: 44px; color: #677166; font-size: 13px; }
+.volume-row input { min-width: 0; width: 100%; height: 30px; accent-color: var(--ink); }
 .panel-actions { border-top: 1px solid #e7e6df; margin-top: 9px; padding-top: 8px; display: flex; flex-direction: column; }
 .panel-actions button { min-height: 44px; text-align: left; font-size: 14px; padding: 8px 0; }
 .panel-actions button:hover:not(:disabled), .help summary:hover { color: var(--ink); }
@@ -28,7 +33,8 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .help { border-top: 1px solid #e7e6df; margin-top: 8px; font-size: 12px; color: #677166; }
 .help summary { padding: 15px 0 8px; min-height: 44px; cursor: pointer; font-size: 13px; }
 .help p { line-height: 1.8; margin: 10px 0; }
-.scene-wrap { min-height: 0; min-width: 0; position: relative; overflow: hidden; }
+.scene-wrap { min-height: 0; min-width: 0; position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); }
+.scene-board { min-width: 0; min-height: 0; overflow: hidden; }
 #scene { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; overflow: visible; outline: none; cursor: crosshair; }
 #scene:focus-visible { outline: 2px solid #8cae9c; outline-offset: -8px; border-radius: 22px; }
 #scene.is-dragging { cursor: grabbing; }
@@ -46,9 +52,62 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .tools button:hover:not(:disabled):not([aria-pressed="true"]) { background: #f0f1e9; }
 .tool-divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
 .return-solid { background: var(--ink); color: white; padding: 14px 26px; min-height: 54px; border-radius: 15px; font-size: 15px; }
+.workspace.is-practice .scene-wrap { grid-template-columns: minmax(0, 1fr) 260px; gap: 16px; padding-right: 26px; }
+.target-panel { align-self: center; padding: 18px; border: 1px solid var(--border); border-radius: 19px; background: #fffefa; display: flex; flex-direction: column; gap: 14px; }
+.practice-copy h2 { margin: 0; font-size: 15px; font-weight: 650; }
+.practice-copy p { margin: 8px 0 0; font-size: 12px; color: #72766d; line-height: 1.7; }
+#target-scene { width: 100%; height: 205px; overflow: hidden; pointer-events: none; }
+.target-views { display: flex; gap: 5px; }
+.target-views button { flex: 1; min-height: 44px; border: 1px solid var(--border); border-radius: 9px; font-size: 13px; }
+.target-views [aria-pressed="true"] { background: #e8eee8; color: var(--ink); border-color: #8aa697; }
+.primary-button { min-height: 44px; border-radius: 11px; background: var(--ink); color: white; padding: 10px 15px; font-size: 14px; font-weight: 600; }
+.challenge-result { margin: 0; min-height: 35px; font-size: 12px; line-height: 1.6; color: #7c6249; }
+.challenge-result.is-success { color: #2b7157; }
+dialog { width: min(590px, calc(100vw - 28px)); max-height: calc(100dvh - 32px); padding: 24px; border: 1px solid var(--border); border-radius: 22px; color: #333d39; background: #fffefa; overscroll-behavior: contain; box-shadow: 0 20px 80px #24372c26; }
+dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
+.dialog-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 10px; }
+.dialog-heading h2 { margin: 0; font-size: 20px; }
+.close-dialog { min-width: 44px; min-height: 44px; font-size: 27px; color: #737a70; }
+.activity-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.activity-choices button { text-align: left; padding: 18px 15px; border: 1px solid var(--border); border-radius: 13px; }
+.activity-choices button:hover { background: #f0f3eb; border-color: #829d8e; }
+.activity-choices strong, .activity-choices span { display: block; }
+.activity-choices strong { font-size: 15px; }
+.activity-choices span { color: #73796d; font-size: 12px; margin-top: 9px; line-height: 1.6; }
+.saved-section { margin-top: 26px; }
+.saved-section h3 { font-size: 15px; margin: 0; }
+.subtle { color: #757b71; font-size: 12px; line-height: 1.7; }
+#saved-list { display: grid; gap: 6px; }
+.saved-row { display: flex; gap: 6px; align-items: center; padding: 5px 6px; border: 1px solid #e6e7df; border-radius: 11px; }
+.saved-open { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; text-align: left; min-height: 48px; }
+.saved-open span { overflow-wrap: anywhere; font-size: 14px; }
+.saved-open svg { width: 42px; height: 42px; flex-shrink: 0; }
+.saved-delete { min-width: 44px; min-height: 44px; color: #8e7768; font-size: 23px; }
+.keep-options { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 5px; }
+.keep-options summary { cursor: pointer; min-height: 48px; padding: 14px 0; font-size: 14px; font-weight: 600; }
+#save-form, .share-row { display: flex; gap: 8px; margin: 12px 0; }
+#shape-name, #share-mode, #share-link { min-width: 0; min-height: 44px; padding: 10px; flex: 1; border: 1px solid #cdd3c7; border-radius: 9px; background: #fff; color: #333d39; font-size: 14px; }
+#share-link { width: 100%; font-size: 12px; }
+.share-row button { padding: 8px 12px; border: 1px solid var(--border); border-radius: 9px; font-size: 13px; }
+.file-actions { display: flex; gap: 14px; }
+.file-actions button, .text-button { min-height: 44px; font-size: 13px; color: var(--ink); padding: 8px 0; }
+.library-status { margin: 8px 0 0; color: #536e5a; font-size: 13px; line-height: 1.7; }
+@media (max-width: 800px) and (min-height: 501px) {
+  .workspace.is-practice .scene-wrap { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); padding: 4px 12px 0; gap: 0; }
+  .target-panel { order: -1; align-self: stretch; display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 6px 12px; padding: 12px; }
+  #target-scene { grid-column: 1; grid-row: 1 / 4; height: 154px; }
+  .practice-copy { grid-column: 2; }
+  .practice-copy h2 { font-size: 13px; }
+  .practice-copy p { font-size: 11px; margin-top: 3px; }
+  .target-views, #check-shape { grid-column: 2; }
+  .challenge-result { grid-column: 1 / -1; min-height: 0; font-size: 11px; }
+}
 @media (max-width: 600px) {
   .workspace { grid-template-rows: 62px minmax(0, 1fr) auto; }
-  .top-controls { padding-right: 12px; }
+  .top-controls { padding-right: 12px; padding-left: 54px; gap: 7px; }
+  .view-label { display: none; }
+  .view-label:not([hidden]) + .view-button { margin-left: auto; }
+  .activity-button { padding: 8px; }
   .view-panel { right: 12px; width: min(284px, calc(100vw - 24px)); }
   .tools button { gap: 6px; padding: 12px 13px; font-size: 14px; }
   .tools { gap: 2px; padding: 6px; border-radius: 17px; }
@@ -57,6 +116,12 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
   .hint { font-size: 12px; }
   .total { font-size: 14px; }
   .view-label { font-size: 12px; }
+  dialog { padding: 18px; }
+  .dialog-heading h2 { font-size: 18px; }
+  .activity-choices { gap: 7px; }
+  .activity-choices button { padding: 14px 10px; }
+  .activity-choices strong { font-size: 14px; }
+  .activity-choices span { font-size: 11px; }
 }
 @media (max-height: 500px) and (orientation: landscape) {
   .workspace { grid-template-rows: 54px minmax(0, 1fr); }
@@ -68,4 +133,11 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
   .hint { position: fixed; left: 52px; right: 142px; bottom: 11px; font-size: 11px; }
   .return-solid { padding: 13px 10px; line-height: 1.6; font-size: 13px; }
   .view-panel { top: 57px; max-height: calc(100dvh - 67px); }
+  .workspace.is-practice .scene-wrap { grid-template-columns: minmax(0, 1fr) 210px; gap: 5px; padding-right: 5px; }
+  .target-panel { padding: 9px; gap: 5px; max-height: 100%; overflow: auto; }
+  #target-scene { height: 100px; flex-shrink: 0; }
+  .practice-copy h2 { font-size: 12px; }
+  .practice-copy p { font-size: 10px; margin-top: 2px; }
+  .challenge-result { min-height: 0; font-size: 11px; }
+  .target-views button, #check-shape { min-height: 44px; font-size: 12px; }
 }

@@ -17,7 +17,7 @@ async function drag(from,to) { await page.mouse.move(from.x,from.y);await page.m
 async function graphPoint(x,y) { const box=await page.locator('#graphCanvas').boundingBox();const state=await saved()||{view:{x:0,y:0,range:6}}; const scale=Math.min(box.width,box.height)/(2*state.view.range);return {x:box.x+box.width/2+(x-state.view.x)*scale,y:box.y+box.height/2-(y-state.view.y)*scale}; }
 test.before(async()=>{
   await fs.mkdir(output,{recursive:true});
-  h=await startHarness();url=`${h.base}/learning/literacy-numeracy/graph-studio/`;
+  h=await startHarness();url=`${h.base}/learning/inquiry/math/graph-studio/`;
   browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:process.platform==='win32'?{channel:'msedge'}:{})});
 });
 // 서버 저장 공간은 검사 사이에도 남으므로 매 검사 전에 비워 처음 상태에서 시작한다.

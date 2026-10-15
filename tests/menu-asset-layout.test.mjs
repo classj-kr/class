@@ -26,6 +26,8 @@ test("learning menus use the four top-level domains", () => {
     "learning/literacy-numeracy/classical-chinese-idioms/",
     "learning/literacy-numeracy/story-books/korea-tales/",
     "learning/inquiry/human-body/",
+    "learning/inquiry/math/graph-studio/",
+    "learning/inquiry/math/fraction-board/",
     "learning/arts/music-listening/",
     "learning/arts/art-appreciation/museum/",
     "learning/arts/instrument-room/",
@@ -35,10 +37,16 @@ test("learning menus use the four top-level domains", () => {
     assert.equal(fs.existsSync(path.join(root, href)), true, href);
   }
   assert.doesNotMatch(menu, /href="learning\/literacy-numeracy\/graph-studio\/"/);
+  const mathematics = menu.match(/<details[^>]*data-access-group="mathematics">[\s\S]*?<\/details>/)?.[0];
+  assert.ok(mathematics, "The math accordion must exist.");
+  assert.match(mathematics, /href="learning\/inquiry\/math\/graph-studio\/"[^>]*data-access-parent="mathematics"/);
+  assert.match(mathematics, /data-content-paths="[^"]*learning\/inquiry\/math\/graph-studio\//);
+  assert.match(mathematics, /<strong>그래프 그리기<\/strong>/);
+  assert.match(mathematics, /href="learning\/inquiry\/math\/fraction-board\/"[^>]*data-access-parent="mathematics"/);
+  assert.match(mathematics, /data-content-paths="[^"]*learning\/inquiry\/math\/fraction-board\//);
 
   const teacherMenu = read("apps/classtools/index.html");
-  assert.match(teacherMenu, /href="\/learning\/literacy-numeracy\/graph-studio\/"/);
-  assert.match(teacherMenu, /<h3 class="tool-name">그래프 그리기<\/h3>/);
+  assert.doesNotMatch(teacherMenu, /graph-studio|<h3 class="tool-name">그래프 그리기<\/h3>/);
   // 학급 대시보드는 따로 둔 카드가 아니라 「내 학급 · 그룹」 카드에서 그룹별로 연다.
   assert.match(teacherMenu, /id="main-groups-grid"/);
   assert.match(teacherMenu, /class="tool-card group-card" onclick="openGroupDashboard\(/);

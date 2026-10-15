@@ -41,7 +41,26 @@
     function icon(modelId, pad) {
         const id = pad.id;
         let drawing, tool = "";
-        if (isJanggu(modelId)) {
+        if (modelId === "orchestral-percussion") {
+            tool = "소리 듣기";
+            if (id === "orchestral-snare") drawing = '<ellipse cx="28" cy="15" rx="19" ry="7"/><path d="M9 15v17c0 10 38 10 38 0V15M12 33q16 9 32 0m-33 9 33-12M13 8 7 3m44 0-6 5"/>';
+            else if (id === "orchestral-bass-drum") drawing = '<circle cx="31" cy="23" r="18"/><circle cx="31" cy="23" r="14"/><path d="m18 37-5 8m36-8 5 8M49 7 61 32"/><circle cx="31" cy="23" r="3" fill="currentColor"/>';
+            else if (id === "orchestral-suspended-cymbal") drawing = '<ellipse cx="30" cy="20" rx="24" ry="7"/><path d="M30 13V5m0 22v15m-13 2h26M10 9l12 10"/><circle cx="30" cy="19" r="3"/>';
+            else if (id === "orchestral-tamtam") drawing = '<circle cx="30" cy="24" r="18"/><circle cx="30" cy="24" r="12"/><path d="M12 9 8 4h44l-4 5M30 4v2m23 37 11-29"/><circle cx="30" cy="24" r="3"/>';
+            else drawing = '<path d="M31 7 8 40h45L31 7m2-3v5m-8 31h6M56 10 65 39"/>';
+        } else if (modelId === "ritual-signals") {
+            tool = "소리 듣기";
+            if (id === "bak") drawing = '<path d="M9 7 20 5 24 40 13 42ZM24 6 35 5 36 40 25 41ZM39 7 51 10 47 41 37 40ZM53 11 63 15 55 43 48 41Z"/>';
+            else if (id === "chuk") drawing = '<path d="M11 14 36 7 60 14 36 21ZM11 14v26l25 5V21m24-7v26l-24 5M15 8 33 2m-4 2 4 30"/>';
+            else drawing = '<path d="M5 33 13 21 22 25 29 11 39 18 46 8 55 15 64 9v25H5Z M8 34q25 11 53 0M14 43h43"/><circle cx="50" cy="21" r="2" fill="currentColor"/>';
+        } else if (modelId === "daechwita-station") {
+            tool = "소리 듣기";
+            if (id === "nabal") drawing = '<path d="M7 24h33l20-13v26L40 24M10 19v10m30-11v12"/>';
+            else if (id === "nagak") drawing = '<path d="M8 33q8-22 29-20 17 2 23 18-12-10-20-3-9 12-23 8Z M8 33l-3 5m54-7 6 4"/>';
+            else if (id === "yonggo") drawing = '<ellipse cx="30" cy="24" rx="19" ry="17"/><ellipse cx="30" cy="24" rx="14" ry="12"/><path d="M50 7 63 37m-8-31-14 32M19 42l-4 4m30-4 4 4"/>';
+            else if (id === "jabara") drawing = '<ellipse cx="23" cy="25" rx="16" ry="10"/><ellipse cx="48" cy="22" rx="16" ry="10"/><circle cx="23" cy="25" r="3"/><circle cx="48" cy="22" r="3"/>';
+            else drawing = '<circle cx="29" cy="24" r="19"/><circle cx="29" cy="24" r="14"/><circle cx="29" cy="24" r="4"/><path d="M49 41 62 8"/>';
+        } else if (isJanggu(modelId)) {
             const hand = modelId === "janggu-sanjo";
             const both = pad.family === "양편";
             tool = both ? (hand ? "손 + 열채" : "궁채 + 열채")
