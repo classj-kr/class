@@ -1,0 +1,14 @@
+✔ source amounts, limiting reagent, gas-space and residual mass remain conserved with and without venting (50.2159ms)
+chromium: 108 viewport states, 12 retained distractors, residual magnesium, pressure/volume, touch and background pause
+✔ chromium: both recipes, visible residue, invalid sensor data, touch playback and retained diagnosis (7415.5775ms)
+webkit: 108 viewport states, 12 retained distractors, residual magnesium, pressure/volume, touch and background pause
+✔ webkit: both recipes, visible residue, invalid sensor data, touch playback and retained diagnosis (16487.1106ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24008.3602
+

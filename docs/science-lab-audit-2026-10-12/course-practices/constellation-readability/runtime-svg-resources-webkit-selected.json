@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-15T18:25:02.644Z",
+  "engine": "webkit",
+  "routes": 1,
+  "states": 70,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review.",
+  "findings": [],
+  "errors": []
+}

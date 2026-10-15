@@ -3505,6 +3505,40 @@ const scienceCurriculum = {
     ],
     "diagnostic": true,
     "bankQuestionIds": []
+  },
+  "temperature-clouding": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "온도에 따른 침전 생성 관찰",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에04-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "constellation-space": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "별자리의 입체 분포",
+    "subjects": [
+      "행성우주과학"
+    ],
+    "codes": [
+      "12행우02-03"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;

@@ -116,3 +116,7 @@ const iodineClock=require('../../scripts/science-iodine-clock-experiment.cjs');m
 const catalystFoam=require('../../scripts/science-catalyst-foam-experiment.cjs');module.exports.push({id:'12물에04#2',slugs:[iodineClock.slug,catalystFoam.slug,'rate-equilibrium','enzyme'],status:'부분',note:iodineClock.current+' '+catalystFoam.current+' '+iodineClock.boundary+' '+catalystFoam.boundary});
 
 const weatherAnalysis=require('../../scripts/science-weather-analysis-experiment.cjs');module.exports.push({id:'12지구01#2',slugs:[weatherAnalysis.slug,'weather-front'],status:'부분',note:weatherAnalysis.current+' '+weatherAnalysis.boundary});
+
+const temperatureClouding=require('../../scripts/science-temperature-clouding-experiment.cjs');module.exports.push({id:'12물에04#2',slugs:[iodineClock.slug,catalystFoam.slug,temperatureClouding.slug,'rate-equilibrium','enzyme'],status:'부분',note:iodineClock.current+' '+catalystFoam.current+' '+temperatureClouding.current+' '+temperatureClouding.boundary});
+
+const constellationSpace=require('../../scripts/science-constellation-space-experiment.cjs');module.exports.push({id:'12행우02#2',slugs:[constellationSpace.slug,'stars'],status:'부분',note:constellationSpace.current+' '+constellationSpace.boundary});

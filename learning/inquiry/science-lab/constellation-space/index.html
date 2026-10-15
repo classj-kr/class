@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 별자리의 입체 분포</title><meta name="description" content="2022 교육과정 · 별자리의 입체 분포의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="space.css?v=1d84c905cef2"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>별자리의 입체 분포</h1><div class="grade-tags"><span>고(선택)</span><span>행성우주과학</span></div></header><p class="intro">별의 좌표를 입체 공간에 배치하고, 지구와 다른 위치에서 보이는 모양을 비교하세요.</p><section id="csLab" class="cs-lab"><header><span class="cs-eyebrow">북두칠성 · 위치와 거리</span><h2>같은 방향의 별들은 서로 가까이 있을까?</h2></header><div class="cs-views" role="group" aria-label="관찰 시점"><button data-cs-view="earth" aria-pressed="true">지구에서 보기</button><button data-cs-view="space" aria-pressed="false">입체로 보기</button><button data-cs-view="side" aria-pressed="false">옆에서 보기</button><button data-cs-view="top" aria-pressed="false">위에서 보기</button></div><div class="cs-canvas-wrap"><div class="cs-view-title"><strong id="csViewTitle">지구에서 본 방향</strong><span id="csViewHint">별을 짚어 좌표와 거리를 확인하세요.</span></div><canvas id="csCanvas" role="img" tabindex="0" aria-label="북두칠성의 입체 위치. 방향키로 관찰 시점을 움직이며 아래 별 선택 버튼으로 각 별의 정보를 확인할 수 있습니다."></canvas><div id="csSceneNote" class="cs-scene-note">지구가 좌표의 원점입니다.</div></div><div class="cs-controls"><button id="csFocus">지구까지 전체 보기</button><button id="csRotate" aria-pressed="false">시점 천천히 회전</button><label><input id="csRays" type="checkbox" checked>지구와 잇는 선</label><label><input id="csEqual" type="checkbox">모든 별을 30 pc에 놓기</label></div><p id="csStatus" role="status">같은 방향의 별도 지구에서의 거리는 다를 수 있습니다.</p><div class="cs-star-tabs" role="group" aria-label="별 선택"><button data-cs-star="0" aria-pressed="true">1 알카이드</button><button data-cs-star="1" aria-pressed="false">2 미자르</button><button data-cs-star="2" aria-pressed="false">3 알리오즈</button><button data-cs-star="3" aria-pressed="false">4 메그레즈</button><button data-cs-star="4" aria-pressed="false">5 페크다</button><button data-cs-star="5" aria-pressed="false">6 메라크</button><button data-cs-star="6" aria-pressed="false">7 두베</button></div><section class="cs-editor"><div><h3 id="csSelected">1 알카이드</h3><p id="csDistance"></p><p id="csPair"></p></div><form id="csForm"><div class="cs-inputs"><label>x (pc)<input id="csX" type="number" min="-50" max="50" step=".01" required></label><label>y (pc)<input id="csY" type="number" min="-50" max="50" step=".01" required></label><label>z (pc)<input id="csZ" type="number" min="-50" max="50" step=".01" required></label></div><button type="submit">좌표 적용</button><button type="button" id="csRestore">이 별의 자료 좌표</button></form><p id="csInputStatus" role="status"></p></section><details class="cs-data"><summary>별의 좌표 자료</summary><div class="cs-table-wrap"><table><caption>지구를 원점으로 한 위치 (pc)</caption><thead><tr><th>별</th><th>x</th><th>y</th><th>z</th><th>거리</th></tr></thead><tbody><tr><th>1 알카이드</th><td>-18.55</td><td>-9.40</td><td>24.19</td><td>31.9</td></tr><tr><th>2 미자르</th><td>-13.63</td><td>-5.23</td><td>20.79</td><td>25.4</td></tr><tr><th>3 알리오즈</th><td>-13.77</td><td>-3.31</td><td>20.96</td><td>25.3</td></tr><tr><th>4 메그레즈</th><td>-13.40</td><td>-0.90</td><td>20.71</td><td>24.7</td></tr><tr><th>5 페크다</th><td>-15.09</td><td>0.41</td><td>20.55</td><td>25.5</td></tr><tr><th>6 메라크</th><td>-13.10</td><td>3.40</td><td>20.36</td><td>24.4</td></tr><tr><th>7 두베</th><td>-17.31</td><td>4.34</td><td>33.21</td><td>37.7</td></tr></tbody></table></div><p>거리 = √(x² + y² + z²). 두 별 사이의 거리는 각 좌표의 차이로 구합니다.</p></details><div class="cs-reset"><button id="csReset">자료 좌표로 처음부터</button><button id="csClear">모든 별 지우기</button><button id="csLoad">7개 별 배치</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>지구가 원점일 때 A의 좌표는 (3, 4, 12) pc, B는 (6, 8, 24) pc이다. (지구에서 보이는 방향, 지구로부터의 거리)의 비교는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 같다 · B가 A의 2배</label>
+<label><input type="radio" name="q1" value="b"> 같다 · B가 A와 같다</label>
+<label><input type="radio" name="q1" value="c"> 다르다 · B가 A의 2배</label>
+<label><input type="radio" name="q1" value="d"> 다르다 · B가 A와 같다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>B의 세 좌표는 모두 A의 2배라 같은 시선 위에 있습니다. 거리는 A가 √169=13 pc, B가 26 pc입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>북두칠성의 별들을 지구에서의 시선 방향은 유지한 채 모두 30 pc에 놓았다. (지구에서 보이는 모양, 별들 사이의 실제 거리)의 변화는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 바뀐다 · 모두 유지된다</label>
+<label><input type="radio" name="q2" value="b"> 유지된다 · 일부 바뀐다</label>
+<label><input type="radio" name="q2" value="c"> 유지된다 · 모두 유지된다</label>
+<label><input type="radio" name="q2" value="d"> 바뀐다 · 일부 바뀐다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 시선 위에서 거리만 바꾸면 지구에서의 투영 위치는 유지됩니다. 공간 좌표가 달라지므로 별들 사이의 거리는 바뀔 수 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>A(−12, 0, 16) pc와 B(−12, 3, 20) pc가 있다. 지구에서 각각 20 pc와 약 23.5 pc 떨어져 있다. 두 별 사이의 거리는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 약 3.5 pc</label>
+<label><input type="radio" name="q3" value="b"> 약 43.5 pc</label>
+<label><input type="radio" name="q3" value="c"> 5.0 pc</label>
+<label><input type="radio" name="q3" value="d"> 7.0 pc</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>두 별 사이의 좌표 차이는 (0, 3, 4) pc입니다. 따라서 거리는 √(0²+3²+4²)=5 pc이며, 지구에서의 거리 차이와 일반적으로 같지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>3차원 화면을 옆으로 돌리자 국자 모양이 달라졌지만, 각 별의 x·y·z 좌표는 그대로였다. (바뀐 것, 유지된 것)의 조합은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 별의 위치 · 관찰 방향</label>
+<label><input type="radio" name="q4" value="b"> 별의 속도 · 별 사이 거리</label>
+<label><input type="radio" name="q4" value="c"> 별 사이 거리 · 별의 위치</label>
+<label><input type="radio" name="q4" value="d"> 관찰 방향 · 별 사이 거리</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>관찰자가 보는 방향을 바꾸어 투영된 모양이 달라졌습니다. 별들의 좌표가 고정되어 있으므로 위치와 별 사이의 거리는 유지됩니다.</p>
+</article></details></main><script src="model.js?v=28458fef6d9f"></script><script src="app.js?v=1a6c418557dd"></script><script src="../curriculum-map.js?v=67544e683f59"></script><script src="../exam-scope.js?v=3615e3a9058d"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-15T17:37:24.706Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "mendeleev",
+      "scenarios": 5
+    }
+  ],
+  "scenarios": 5,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

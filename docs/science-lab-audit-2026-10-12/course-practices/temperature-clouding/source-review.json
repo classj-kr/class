@@ -1,0 +1,237 @@
+{
+  "checkedAt": "2026-10-15T17:17:49.197Z",
+  "sources": [
+    {
+      "id": "10a5b297fa1b961f",
+      "path": "references/textbooks/중고등/두클래스/고등/과학/물질과 에너지 (오정숙)_2022/교과서/Ⅳ-04단원_교과서.pdf",
+      "sha256": "10a5b297fa1b961fc4d3b34d865dc7b34fb5cc3ddcb8a7a6b939497f5b494db2",
+      "pages": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "965f45ec469d480f",
+      "path": "references/textbooks/중고등/미래엔/고등/과학/물질과 에너지 (정대홍)_2022/교과서/물질과 에너지 (정대홍)_2022_교과서 PDF.pdf",
+      "sha256": "965f45ec469d480f879cf981d00ef6f835ea7104b7cd71cefa3a0a769ace3a3e",
+      "pages": [
+        114,
+        115
+      ]
+    },
+    {
+      "id": "f71f44ac4b",
+      "path": "references/textbooks/중고등/T셀파/고등/과학/물질과에너지(임희준)/중단원학업성취수준평가_Ⅳ_2 농도, 온도, 촉매와 반응 속도(교)__f71f44ac4b.hwp",
+      "sha256": "25e1953922bd93cb8ff5137d9e837f041c131d73623eeb667cc323d296b4103a",
+      "paragraphs": [
+        12,
+        23,
+        69,
+        203,
+        211,
+        220,
+        229,
+        234,
+        236,
+        247,
+        249,
+        252,
+        254
+      ]
+    }
+  ],
+  "course": {
+    "slug": "temperature-clouding",
+    "title": "온도에 따른 침전 생성 관찰",
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에04-04"
+    ],
+    "activities": [
+      "12물에04#2"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": [],
+    "scripts": [
+      "model.js",
+      "app.js"
+    ],
+    "styles": [
+      "clouding.css"
+    ],
+    "source": {
+      "id": "10a5b297fa1b961f",
+      "pages": [
+        4,
+        5
+      ],
+      "printedPages": [
+        121,
+        122
+      ]
+    },
+    "candidateIds": [
+      "book-3f8904d3a0e892fd",
+      "book-5aeed22a9ea72f45"
+    ],
+    "publisherVariants": [
+      {
+        "sourceId": "965f45ec469d480f",
+        "pages": [
+          114,
+          115
+        ],
+        "difference": "황 탁도와 다른 탄산 칼슘 침전·레이저 투과 실험",
+        "implementation": "다른 시약·양·빛 경로·페트리 접시와 관찰 기준을 갖는 별도 모드. 하나의 화학 반응으로 합치지 않음."
+      }
+    ],
+    "assessmentSources": [
+      {
+        "id": "f71f44ac4b",
+        "paragraphs": [
+          12,
+          23,
+          69,
+          203,
+          211,
+          220,
+          229,
+          234,
+          236,
+          247,
+          249,
+          252,
+          254
+        ],
+        "part": "온도 변화와 활성화 에너지·반응 속도 상수·최종 생성량의 구별. 손상된 수식·원본 미확인 숫자를 차용하지 않음."
+      }
+    ],
+    "procedureSources": {
+      "sulfur": {
+        "id": "10a5b297fa1b961f",
+        "pages": [
+          4,
+          5
+        ]
+      },
+      "laser": {
+        "id": "965f45ec469d480f",
+        "pages": [
+          114,
+          115
+        ]
+      }
+    },
+    "procedures": [
+      [
+        "sulfur",
+        "0.1 M Na₂S₂O₃ 50 mL와 0.5 M HCl 10 mL를 각 물에 함께 담가 온도를 맞추고 혼합 후 바닥 ×표 관찰",
+        [
+          4
+        ]
+      ],
+      [
+        "laser",
+        "0.1 M CaCl₂·NaHCO₃ 각 20 mL를 함께 온도 조절, 물기를 닦고 뒤집은 페트리 접시와 흰 종이 위에서 혼합 후 레이저 투과 관찰",
+        [
+          114,
+          115
+        ]
+      ]
+    ],
+    "current": "서로 다른 두 침전 반응의 원문 시약·양·장치와 광학적 관찰 기준을 구현. 두 반응물의 온도를 맞추는 준비, 용액 이동·혼합 후 흐려지는 순서, 되감기·정지 및 네 객관식 진단.",
+    "boundary": "두 원문 표에는 실제 온도와 시간이 채워져 있지 않다. 정성 장면은 더운 조건에서 먼저 흐려지는 경향을 보여 주며 진행도를 실제 초, 온도 수치, 투과율 측정치 또는 속도 상수로 표시하지 않는다. 아이오딘 시계의 변색 시간이나 다른 반응의 실측값을 이식하지 않는다. SVG의 흐림과 관찰 임계점은 차원 없는 표현이며 반응별 정량 속도식/입도/산란/열전달 모형이 아니다. 1/s 비교값 측정, 시료 온도 실측, 동영상 촬영·분석, 실제 시약 취급 완료는 남아 있다. SO₂·CO₂ 생성은 반응식에 유지하되 기체량을 시각적으로 정량화하지 않는다. 미래엔 준비 단계의 시험관 1 mL씩 예비 혼합은 별도 조작으로 제공하지 않는다.",
+    "questions": [
+      {
+        "concept": "혼합 직후 농도와 제한 반응물",
+        "q": "0.1 M CaCl₂와 0.1 M NaHCO₃를 각각 20 mL씩 섞는다. 부피는 더해지고, CaCl₂ + 2NaHCO₃ → 2NaCl + CaCO₃ + CO₂ + H₂O만 완결된다고 할 때 (반응 전 혼합 직후 CaCl₂ 농도, 최대 CaCO₃ 양)은?",
+        "choices": [
+          "(0.05 M, 1 mmol)",
+          "(0.10 M, 1 mmol)",
+          "(0.05 M, 2 mmol)",
+          "(0.10 M, 2 mmol)"
+        ],
+        "answer": 0,
+        "why": "CaCl₂는 2 mmol을 전체 40 mL로 나누어 0.05 M입니다. NaHCO₃ 2 mmol이 2:1로 반응하므로 CaCO₃는 최대 1 mmol입니다.",
+        "feedback": {
+          "b": "생성량은 맞지만 혼합으로 전체 부피가 40 mL가 된 것을 빠뜨렸습니다.",
+          "c": "희석은 맞지만 NaHCO₃ 2 mol당 CaCO₃ 1 mol이 생기는 계수비를 적용하지 않았습니다.",
+          "d": "두 용액을 섞어 생긴 희석과 NaHCO₃의 2:1 계수비를 모두 빠뜨렸습니다."
+        }
+      },
+      {
+        "concept": "황 생성량과 온도",
+        "q": "0.1 M Na₂S₂O₃ 50 mL와 0.5 M HCl 10 mL를 섞는다. Na₂S₂O₃ + 2HCl → 2NaCl + H₂O + SO₂ + S만 완결된다고 할 때, 얼음물·더운물 조건의 최대 황 생성량은?",
+        "choices": [
+          "(5.0, 5.0) mmol",
+          "(2.5, 2.5) mmol",
+          "(2.5, 5.0) mmol",
+          "(5.0, 2.5) mmol"
+        ],
+        "answer": 1,
+        "why": "Na₂S₂O₃와 HCl은 각각 5 mmol입니다. HCl 2 mmol당 황 1 mmol이므로 HCl이 제한 반응물이며 두 조건 모두 최대 2.5 mmol입니다. 온도에 따른 빠르기와 이 조건의 최대량을 구별합니다.",
+        "feedback": {
+          "a": "HCl의 계수 2를 빠뜨렸습니다. HCl 5 mmol은 황 2.5 mmol을 만들 수 있습니다.",
+          "c": "더 빠르게 흐려지는 것을 최대 생성량이 늘어나는 것으로 해석했습니다. 주어진 반응식과 초기 몰수는 같습니다.",
+          "d": "차가운 조건의 생성량에 HCl의 제한을 적용하지 않았습니다. 두 조건의 초기 반응물 양은 같습니다."
+        }
+      },
+      {
+        "concept": "온도와 활성화 장벽",
+        "q": "같은 반응물·농도에서 촉매를 넣지 않고 온도를 높였다. 반응 경로는 같다고 할 때 (활성화 에너지, 그 이상의 에너지를 가진 분자의 비율)의 변화는?",
+        "choices": [
+          "감소 · 증가",
+          "일정 · 감소",
+          "일정 · 증가",
+          "증가 · 일정"
+        ],
+        "answer": 2,
+        "why": "온도를 높이면 같은 활성화 장벽을 넘을 수 있는 에너지의 분자 비율이 증가합니다. 이 조건에서는 촉매처럼 다른 반응 경로를 제공해 장벽을 낮춘 것이 아닙니다.",
+        "feedback": {
+          "a": "가열과 촉매의 역할을 혼동했습니다. 주어진 조건은 반응 경로가 같으며 에너지 분포가 바뀝니다.",
+          "b": "온도가 높아지면 큰 에너지를 가진 분자의 비율은 증가합니다.",
+          "d": "분자의 평균 운동 에너지가 커지는 것과 반응의 활성화 장벽이 높아지는 것을 혼동했습니다."
+        }
+      },
+      {
+        "concept": "광학 종말점의 통제",
+        "q": "반응물의 종류·농도는 같지만 찬 용액의 깊이는 2 cm, 따뜻한 용액은 1 cm이다. 위에서 ×표가 사라지는 시각으로 반응 속도를 비교하려 한다. (같은 침전 농도에서 ×표가 사라진다고 단정, 먼저 맞출 조건)의 조합은?",
+        "choices": [
+          "가능 · 사라지는 시간을 같게 조절",
+          "가능 · 용액 깊이를 같게 조절",
+          "불가능 · 사라지는 시간을 같게 조절",
+          "불가능 · 용액 깊이를 같게 조절"
+        ],
+        "answer": 3,
+        "why": "빛이 통과하는 깊이가 다르면 같은 침전 농도에서도 ×표의 선명도가 달라집니다. 깊이·표시·조명·관찰 방향을 같게 한 뒤 사라지는 시간을 결과로 비교합니다.",
+        "feedback": {
+          "a": "깊이가 다른 두 용액의 관찰 종말점을 같은 침전 농도로 단정할 수 없습니다. 사라지는 시간도 통제 조건이 아니라 비교할 결과입니다.",
+          "b": "깊이를 맞추는 조치는 옳지만, 원래 깊이가 다른 두 조건에서 같은 침전 농도일 때 사라진다는 단정은 성립하지 않습니다.",
+          "c": "관찰 기준이 같지 않다는 판단은 맞습니다. 그러나 사라지는 시간을 같게 강제하면 온도에 따른 결과를 비교할 수 없습니다."
+        }
+      }
+    ],
+    "followups": []
+  },
+  "visualPagesRead": [
+    "10a5b297fa1b961f:4",
+    "965f45ec469d480f:114",
+    "965f45ec469d480f:115"
+  ],
+  "quantitativeEndpointTimesAvailable": false,
+  "simulationOnly": true,
+  "doNotInferRequiredExperimentCompletion": true,
+  "visualCorrections": [
+    "Precipitate stays inside the flask; the transmitted spot is observed on a separate white paper surface.",
+    "Pouring stream reaches the current liquid surface, and the full transferred volume is reached exactly at the mix boundary.",
+    "Optical endpoint question now diagnoses depth confounding and treating response time as a control; irrelevant cosmetic distractors removed."
+  ]
+}

@@ -1,7 +1,11 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
-const lab=path.resolve(__dirname,'../learning/inquiry/science-lab'),entries=require('./science-question-quality.cjs'),reader=require('./review-science-questions.cjs'),before=reader.read(),check=process.argv.includes('--check');
+const lab=path.resolve(__dirname,'../learning/inquiry/science-lab'),allEntries=require('./science-question-quality.cjs'),reader=require('./review-science-questions.cjs'),before=reader.read(),check=process.argv.includes('--check');
+const selection=process.argv.find(a=>a.startsWith('--ids=')),ids=selection?new Set(selection.slice(6).split(',').filter(Boolean)):null;
+if(ids){assert(ids.size,'--ids requires at least one base/bank question');for(const id of ids)assert(allEntries.some(e=>e.id===id),'Unknown question '+id);}
+const entries=ids?allEntries.filter(e=>ids.has(e.id)):allEntries;
 const {revise,reviseTransfer,renderQuiz}=require('./science-question-revision-utils.cjs');
-const metadata={misconceptions:{},followups:{}};
+// A focused revision must preserve other independently revised questions and followups.
+const metadata=ids?structuredClone(require(path.join(lab,'question-quality-content.js'))):{misconceptions:{},followups:{}};
 const authoredAssessments=require(path.join(lab,'experiment-questions.js'));
 function write(file,text){if(check)assert.equal(fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n'),text.replace(/\r\n/g,'\n'),file);else if(fs.readFileSync(file,'utf8')!==text)fs.writeFileSync(file,text);}
 for(const e of entries){const old=before.find(q=>q.id===e.id);assert(old,e.id);const next=revise({answer:old.choices.findIndex(c=>c.id===old.answer),concept:authoredAssessments.misconceptions[e.id]?.concept},e),{answer:index,choices}=next;
@@ -20,7 +24,7 @@ for(const e of entries){const old=before.find(q=>q.id===e.id);assert(old,e.id);c
 // Otherwise changing checks (or deleting an old transfer item) silently keeps
 // the stale generated version through assessment-content's runtime merge.
 const authoredFollowups=authoredAssessments.followups;
-for(const [slug,qs]of Object.entries(require(path.join(lab,'assessment-content.js')).followups))metadata.followups[slug]=(authoredFollowups[slug]||qs).map(reviseTransfer);
+if(!ids)for(const [slug,qs]of Object.entries(require(path.join(lab,'assessment-content.js')).followups))metadata.followups[slug]=(authoredFollowups[slug]||qs).map(reviseTransfer);
 const file=path.join(lab,'question-quality-content.js'),content=`/* Editorial feedback for revised choices; interpreted only after correction. */\n(function(root){const data=${JSON.stringify(metadata,null,2)};if(typeof module!=='undefined')module.exports=data;else root.scienceQualityContent=data;})(typeof window==='undefined'?globalThis:window);\n`;
 if(check)assert.equal(fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n'),content);else fs.writeFileSync(file,content);
 console.log(JSON.stringify({revised:entries.length,check}));

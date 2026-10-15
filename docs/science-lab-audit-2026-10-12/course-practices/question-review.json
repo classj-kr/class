@@ -1,6 +1,6 @@
 {
   "date": "2026-10-12",
-  "scope": "234 base and 103 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
+  "scope": "246 base and 107 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
   "questions": [
     {
       "id": "refraction#q1",
@@ -1424,6 +1424,110 @@
         ],
         "answer": "b",
         "why": "양파 비늘줄기 표피는 식물 세포이지만 보통 엽록체가 관찰되지 않습니다. 식물의 모든 부위 세포가 같은 구조를 갖는 것은 아닙니다."
+      }
+    },
+    {
+      "id": "mendeleev#q1",
+      "slug": "mendeleev",
+      "sha256": "00468eb3e2fcef0889fd61d3b62bea56e631535174187c1808449ff57cd28a83",
+      "after": {
+        "id": "mendeleev#q1",
+        "slug": "mendeleev",
+        "question": "Na는 Na₂O·NaCl, Mg는 MgO·MgCl₂, K는 K₂O·KCl을 만든다. 결합 비율이 반복되는 세로줄로 묶을 두 원소는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Na와 Mg"
+          },
+          {
+            "id": "b",
+            "text": "Mg와 K"
+          },
+          {
+            "id": "c",
+            "text": "Na와 K"
+          }
+        ],
+        "answer": "c",
+        "why": "산화물과 염화물의 결합 비율이 같은 Na와 K를 같은 세로줄에 놓을 수 있습니다. 원자량이 같아서 묶는 것은 아닙니다."
+      }
+    },
+    {
+      "id": "mendeleev#q2",
+      "slug": "mendeleev",
+      "sha256": "df7ddf9a08d59fab787ee323514b2d7553698f6ae86ce3c0c5469aead5254db3",
+      "after": {
+        "id": "mendeleev#q2",
+        "slug": "mendeleev",
+        "question": "P(원자량 31)는 PH₃·PCl₃, Cl(35)은 HCl·NaCl, X(35보다 큼)는 HX·NaX를 만든다. P와 Cl을 같은 가로줄에 두고 원자량 증가와 성질의 반복을 함께 적용할 때 (P의 위치, X의 위치)는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Cl 왼쪽 · Cl 아래"
+          },
+          {
+            "id": "b",
+            "text": "Cl 오른쪽 · Cl 아래"
+          },
+          {
+            "id": "c",
+            "text": "Cl 왼쪽 · P 아래"
+          }
+        ],
+        "answer": "a",
+        "why": "P는 Cl보다 원자량이 작아 왼쪽에 놓습니다. X는 Cl과 화합물의 결합 비율이 같고 원자량이 더 크므로 Cl의 아래에 놓습니다. 가로줄의 순서와 세로줄의 성질을 함께 적용합니다."
+      }
+    },
+    {
+      "id": "mendeleev#q3",
+      "slug": "mendeleev",
+      "sha256": "c740d4a5e708a90bc6168dc5b25a833d0bfcd5150f8ddfa5e7e1db7e3760830d",
+      "after": {
+        "id": "mendeleev#q3",
+        "slug": "mendeleev",
+        "question": "원자량 40과 75 사이의 빈칸이 Si·X와 같은 세로줄에 있다. Si의 산화물은 SiO₂, X의 산화물은 XO₂이다. 원자량 순서와 화학적 성질을 함께 만족하는 후보 R은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "원자량 58 · 산화물 RO"
+          },
+          {
+            "id": "b",
+            "text": "원자량 70 · 산화물 RO₂"
+          },
+          {
+            "id": "c",
+            "text": "원자량 80 · 산화물 RO₂"
+          }
+        ],
+        "answer": "b",
+        "why": "원자량 70은 40과 75 사이이고, RO₂는 같은 세로줄의 산화물과 결합 비율이 같습니다. 58은 순서만, 80은 산화물 비율만 만족합니다. 후보를 좁힌 결과이며 정확한 원자량의 측정은 아닙니다."
+      }
+    },
+    {
+      "id": "mendeleev#q4",
+      "slug": "mendeleev",
+      "sha256": "3c0e591d1299d8191c27cf471809f65e4f7140cca97809b6ce54eb63e4eed5e5",
+      "after": {
+        "id": "mendeleev#q4",
+        "slug": "mendeleev",
+        "question": "SiO₂·SiH₄를 만드는 Si와 XO₂·XH₄를 만드는 X 사이의 빈칸에 미지 원소 ㉠을 놓습니다. 예상 화학식으로 알맞은 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "㉠O₂·㉠H₄"
+          },
+          {
+            "id": "b",
+            "text": "㉠₂O·㉠Cl"
+          },
+          {
+            "id": "c",
+            "text": "㉠O·㉠Cl₂"
+          }
+        ],
+        "answer": "a",
+        "why": "같은 세로줄에서 나타나는 결합 비율을 근거로 산화물은 ㉠O₂, 수소와의 화합물은 ㉠H₄로 예측합니다. 임의 기호 ㉠은 아직 이름을 정하지 않은 원소를 뜻합니다."
       }
     },
     {
@@ -3889,31 +3993,31 @@
     {
       "id": "reaction-pressure#q3",
       "slug": "reaction-pressure",
-      "sha256": "ee3fc58e9f155e8a3d0e07db692b72285fdda014fd383251d1c8c34269e0fe6d",
+      "sha256": "bbbdd1814b0c23061e40974cf3066754514c8309cc357fe7bf2c923d8cc0a593",
       "after": {
         "id": "reaction-pressure#q3",
         "slug": "reaction-pressure",
-        "question": "기포가 계속 생기는데 압력은 처음과 거의 같았다. 밸브가 외부로 열려 있었다. 이 결과의 적절한 해석은?",
+        "question": "Mg 0.40 g에 0.2 M HCl 50 mL를 넣었다. Mg + 2HCl → MgCl₂ + H₂만 완결되고 Mg의 몰질량이 24.3 g/mol일 때 (생성 H₂, 남은 Mg)는?",
         "choices": [
           {
             "id": "a",
-            "text": "반응이 이미 끝났다."
+            "text": "10 mmol · 약 0.16 g"
           },
           {
             "id": "b",
-            "text": "수소가 모두 액화됐다."
+            "text": "약 16.5 mmol · 0 g"
           },
           {
             "id": "c",
-            "text": "생성 기체가 빠져나갔다."
+            "text": "5.0 mmol · 약 0.28 g"
           },
           {
             "id": "d",
-            "text": "반응물의 양이 늘어났다."
+            "text": "5.0 mmol · 0 g"
           }
         ],
         "answer": "c",
-        "why": "열린 밸브로 생성 기체가 빠져나가면 압력이 축적되지 않습니다. 일정한 압력만으로 기체 발생 속도가 0이라고 판단할 수 없습니다."
+        "why": "HCl은 10 mmol이고 Mg 1 mol에 HCl 2 mol이 필요하므로 H₂는 5.0 mmol입니다. Mg는 0.005×24.3=0.1215 g이 반응하여 약 0.28 g이 남습니다."
       }
     },
     {
@@ -6859,7 +6963,7 @@
     {
       "id": "catalyst-foam#q4",
       "slug": "catalyst-foam",
-      "sha256": "24bae974449af32b98172c4401630ae326deaed50e7d6a65aa2ad6471693d1f0",
+      "sha256": "20e531a7d660708a2fd1036dcf3d3d4eebc1618b8fc34110cc6c45d56867af75",
       "after": {
         "id": "catalyst-foam#q4",
         "slug": "catalyst-foam",
@@ -6867,15 +6971,15 @@
         "choices": [
           {
             "id": "a",
-            "text": "같은 시점에 남은 거품 층의 높이"
+            "text": "같은 시간 동안 쌓인 거품의 높이"
           },
           {
             "id": "b",
-            "text": "같은 시점에 남은 KI 결정의 크기"
+            "text": "반응이 끝난 뒤 모은 산소의 부피"
           },
           {
             "id": "c",
-            "text": "반응 전후 실린더 안 용액의 색깔"
+            "text": "반응이 끝난 뒤 용액의 최종 온도"
           },
           {
             "id": "d",
@@ -6919,11 +7023,11 @@
     {
       "id": "weather-analysis#q2",
       "slug": "weather-analysis",
-      "sha256": "42ca6df9c51dfd8958bda8cb28b9b2bf6d9aa37a5959268f525ec53cfc55dea4",
+      "sha256": "6af068110007e1f144d8b4b54405db3500a8ae9b2b2a2e9b0a5e7774a5ab4ea4",
       "after": {
         "id": "weather-analysis#q2",
         "slug": "weather-analysis",
-        "question": "2023년 9월 20일 09시와 21일 09시의 위성·레이더를 비교한다. 마지막에 위성 영상에는 구름이 남고 레이더의 넓은 강수 구역은 줄었다. 이에 맞는 해석은?",
+        "question": "2023년 9월 20일 09시와 21일 09시의 위성·레이더 영상을 비교했다. 마지막 시각의 구름과, 첫 시각에 비한 강수 구역의 변화에 맞는 해석은?",
         "choices": [
           {
             "id": "a",
@@ -7004,6 +7108,246 @@
         ],
         "answer": "d",
         "why": "5×(20/60)+20×(40/60)=15 mm입니다. mm/h는 단위 시간당 강수량이므로 각 강도가 지속된 시간을 곱한 뒤 더합니다."
+      }
+    },
+    {
+      "id": "temperature-clouding#q1",
+      "slug": "temperature-clouding",
+      "sha256": "997f5f0bb839ab0893411b16b3880facd9ae42b84e23b482aed693439d65cb2f",
+      "after": {
+        "id": "temperature-clouding#q1",
+        "slug": "temperature-clouding",
+        "question": "0.1 M CaCl₂와 0.1 M NaHCO₃를 각각 20 mL씩 섞는다. 부피는 더해지고, CaCl₂ + 2NaHCO₃ → 2NaCl + CaCO₃ + CO₂ + H₂O만 완결된다고 할 때 (반응 전 혼합 직후 CaCl₂ 농도, 최대 CaCO₃ 양)은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "(0.05 M, 1 mmol)"
+          },
+          {
+            "id": "b",
+            "text": "(0.10 M, 1 mmol)"
+          },
+          {
+            "id": "c",
+            "text": "(0.05 M, 2 mmol)"
+          },
+          {
+            "id": "d",
+            "text": "(0.10 M, 2 mmol)"
+          }
+        ],
+        "answer": "a",
+        "why": "CaCl₂는 2 mmol을 전체 40 mL로 나누어 0.05 M입니다. NaHCO₃ 2 mmol이 2:1로 반응하므로 CaCO₃는 최대 1 mmol입니다."
+      }
+    },
+    {
+      "id": "temperature-clouding#q2",
+      "slug": "temperature-clouding",
+      "sha256": "706dcb69ec861ee233da47e4276a29f6b04af003870f6b8dcf90d2ccc2c8e529",
+      "after": {
+        "id": "temperature-clouding#q2",
+        "slug": "temperature-clouding",
+        "question": "0.1 M Na₂S₂O₃ 50 mL와 0.5 M HCl 10 mL를 섞는다. Na₂S₂O₃ + 2HCl → 2NaCl + H₂O + SO₂ + S만 완결된다고 할 때, 얼음물·더운물 조건의 최대 황 생성량은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "(5.0, 5.0) mmol"
+          },
+          {
+            "id": "b",
+            "text": "(2.5, 2.5) mmol"
+          },
+          {
+            "id": "c",
+            "text": "(2.5, 5.0) mmol"
+          },
+          {
+            "id": "d",
+            "text": "(5.0, 2.5) mmol"
+          }
+        ],
+        "answer": "b",
+        "why": "Na₂S₂O₃와 HCl은 각각 5 mmol입니다. HCl 2 mmol당 황 1 mmol이므로 HCl이 제한 반응물이며 두 조건 모두 최대 2.5 mmol입니다. 온도에 따른 빠르기와 이 조건의 최대량을 구별합니다."
+      }
+    },
+    {
+      "id": "temperature-clouding#q3",
+      "slug": "temperature-clouding",
+      "sha256": "39f291596a201d98f50684d0715aa69265e7fa52be2d8ccc77a2d55d200423c4",
+      "after": {
+        "id": "temperature-clouding#q3",
+        "slug": "temperature-clouding",
+        "question": "같은 반응물·농도에서 촉매를 넣지 않고 온도를 높였다. 반응 경로는 같다고 할 때 (활성화 에너지, 그 이상의 에너지를 가진 분자의 비율)의 변화는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "감소 · 증가"
+          },
+          {
+            "id": "b",
+            "text": "일정 · 감소"
+          },
+          {
+            "id": "c",
+            "text": "일정 · 증가"
+          },
+          {
+            "id": "d",
+            "text": "증가 · 일정"
+          }
+        ],
+        "answer": "c",
+        "why": "온도를 높이면 같은 활성화 장벽을 넘을 수 있는 에너지의 분자 비율이 증가합니다. 이 조건에서는 촉매처럼 다른 반응 경로를 제공해 장벽을 낮춘 것이 아닙니다."
+      }
+    },
+    {
+      "id": "temperature-clouding#q4",
+      "slug": "temperature-clouding",
+      "sha256": "82c635933d672ad4d5978f63016dccc8918916f0327b32ab6b18aae9fc338e44",
+      "after": {
+        "id": "temperature-clouding#q4",
+        "slug": "temperature-clouding",
+        "question": "반응물의 종류·농도는 같지만 찬 용액의 깊이는 2 cm, 따뜻한 용액은 1 cm이다. 위에서 ×표가 사라지는 시각으로 반응 속도를 비교하려 한다. (같은 침전 농도에서 ×표가 사라진다고 단정, 먼저 맞출 조건)의 조합은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "가능 · 사라지는 시간을 같게 조절"
+          },
+          {
+            "id": "b",
+            "text": "가능 · 용액 깊이를 같게 조절"
+          },
+          {
+            "id": "c",
+            "text": "불가능 · 사라지는 시간을 같게 조절"
+          },
+          {
+            "id": "d",
+            "text": "불가능 · 용액 깊이를 같게 조절"
+          }
+        ],
+        "answer": "d",
+        "why": "빛이 통과하는 깊이가 다르면 같은 침전 농도에서도 ×표의 선명도가 달라집니다. 깊이·표시·조명·관찰 방향을 같게 한 뒤 사라지는 시간을 결과로 비교합니다."
+      }
+    },
+    {
+      "id": "constellation-space#q1",
+      "slug": "constellation-space",
+      "sha256": "aabd1e21220b3923bd55f649b41530dd8f2a8f93afa9ccdd5a5922ccb138414b",
+      "after": {
+        "id": "constellation-space#q1",
+        "slug": "constellation-space",
+        "question": "지구가 원점일 때 A의 좌표는 (3, 4, 12) pc, B는 (6, 8, 24) pc이다. (지구에서 보이는 방향, 지구로부터의 거리)의 비교는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "같다 · B가 A의 2배"
+          },
+          {
+            "id": "b",
+            "text": "같다 · B가 A와 같다"
+          },
+          {
+            "id": "c",
+            "text": "다르다 · B가 A의 2배"
+          },
+          {
+            "id": "d",
+            "text": "다르다 · B가 A와 같다"
+          }
+        ],
+        "answer": "a",
+        "why": "B의 세 좌표는 모두 A의 2배라 같은 시선 위에 있습니다. 거리는 A가 √169=13 pc, B가 26 pc입니다."
+      }
+    },
+    {
+      "id": "constellation-space#q2",
+      "slug": "constellation-space",
+      "sha256": "90b3681aee46269490d57b0b41d2e684e4e4f0e71af6a3bc05a2d9ff894d4887",
+      "after": {
+        "id": "constellation-space#q2",
+        "slug": "constellation-space",
+        "question": "북두칠성의 별들을 지구에서의 시선 방향은 유지한 채 모두 30 pc에 놓았다. (지구에서 보이는 모양, 별들 사이의 실제 거리)의 변화는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "바뀐다 · 모두 유지된다"
+          },
+          {
+            "id": "b",
+            "text": "유지된다 · 일부 바뀐다"
+          },
+          {
+            "id": "c",
+            "text": "유지된다 · 모두 유지된다"
+          },
+          {
+            "id": "d",
+            "text": "바뀐다 · 일부 바뀐다"
+          }
+        ],
+        "answer": "b",
+        "why": "같은 시선 위에서 거리만 바꾸면 지구에서의 투영 위치는 유지됩니다. 공간 좌표가 달라지므로 별들 사이의 거리는 바뀔 수 있습니다."
+      }
+    },
+    {
+      "id": "constellation-space#q3",
+      "slug": "constellation-space",
+      "sha256": "0cf136ebbd33186b4a8605b349f140e4d893c08363594574c05b4cbbb3caabe2",
+      "after": {
+        "id": "constellation-space#q3",
+        "slug": "constellation-space",
+        "question": "A(−12, 0, 16) pc와 B(−12, 3, 20) pc가 있다. 지구에서 각각 20 pc와 약 23.5 pc 떨어져 있다. 두 별 사이의 거리는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "약 3.5 pc"
+          },
+          {
+            "id": "b",
+            "text": "약 43.5 pc"
+          },
+          {
+            "id": "c",
+            "text": "5.0 pc"
+          },
+          {
+            "id": "d",
+            "text": "7.0 pc"
+          }
+        ],
+        "answer": "c",
+        "why": "두 별 사이의 좌표 차이는 (0, 3, 4) pc입니다. 따라서 거리는 √(0²+3²+4²)=5 pc이며, 지구에서의 거리 차이와 일반적으로 같지 않습니다."
+      }
+    },
+    {
+      "id": "constellation-space#q4",
+      "slug": "constellation-space",
+      "sha256": "ddbc9eb61a434388fd1cdc874c6ef60573d20ec0f75c1811c0ef21e210d155a9",
+      "after": {
+        "id": "constellation-space#q4",
+        "slug": "constellation-space",
+        "question": "3차원 화면을 옆으로 돌리자 국자 모양이 달라졌지만, 각 별의 x·y·z 좌표는 그대로였다. (바뀐 것, 유지된 것)의 조합은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "별의 위치 · 관찰 방향"
+          },
+          {
+            "id": "b",
+            "text": "별의 속도 · 별 사이 거리"
+          },
+          {
+            "id": "c",
+            "text": "별 사이 거리 · 별의 위치"
+          },
+          {
+            "id": "d",
+            "text": "관찰 방향 · 별 사이 거리"
+          }
+        ],
+        "answer": "d",
+        "why": "관찰자가 보는 방향을 바꾸어 투영된 모양이 달라졌습니다. 별들의 좌표가 고정되어 있으므로 위치와 별 사이의 거리는 유지됩니다."
       }
     }
   ],
@@ -9133,6 +9477,89 @@
           "dna-structure#q8"
         ]
       }
+    },
+    {
+      "id": "mendeleev@formula-transfer",
+      "sha256": "e1fed36d79ef0a1063064283db66131782c44065032f9446470a33c05316af43",
+      "after": {
+        "id": "mendeleev@formula-transfer",
+        "topic": "다른 빈칸 예측",
+        "question": "M₂O₃·MCl₃와 T₂O₃·TCl₃가 같은 세로줄에 있습니다. 그 사이 미지 원소 ㉠이 만드는 물질은 어떻게 예측할까요?",
+        "choices": [
+          "㉠O₂·㉠H₄",
+          "㉠₂O₃·㉠Cl₃",
+          "㉠₂O·㉠Cl"
+        ],
+        "answer": 1,
+        "why": "원소 이름이 달라져도 같은 세로줄에서 반복되는 원자 수의 비를 이용합니다.",
+        "checks": [
+          "mendeleev#q1",
+          "mendeleev#q4"
+        ]
+      }
+    },
+    {
+      "id": "mendeleev@evidence-transfer",
+      "sha256": "d10e825c300b4abffbe0d1ac456c39e74961f4b9ad0c6909ef315d374aa44f83",
+      "after": {
+        "id": "mendeleev@evidence-transfer",
+        "topic": "예측과 새 증거",
+        "question": "미지 원소 M의 산화물을 M₂O₃로 예측했다. 발견된 원소의 산화물에서 확인할 원자 수 비 M:O는?",
+        "choices": [
+          "2 : 3",
+          "3 : 2",
+          "1 : 3"
+        ],
+        "answer": 0,
+        "why": "예측한 화학식과 실제 화합물의 조성을 비교해야 합니다. M₂O₃는 M 원자 두 개에 O 원자 세 개의 비입니다.",
+        "checks": [
+          "mendeleev#q1",
+          "mendeleev#q4"
+        ],
+        "q": "미지 원소 M의 산화물을 M₂O₃로 예측했다. 발견된 원소의 산화물에서 확인할 원자 수 비 M:O는?",
+        "feedback": {
+          "1": "첫 선택에서는 “3 : 2”로 판단했습니다.",
+          "2": "첫 선택에서는 “1 : 3”로 판단했습니다."
+        }
+      }
+    },
+    {
+      "id": "mendeleev@identify-evidence",
+      "sha256": "c6e8e4e6951c05a1eb2fc3de2a2fa481a5ec96e77dce7386e9391f450eb5300c",
+      "after": {
+        "id": "mendeleev@identify-evidence",
+        "topic": "두 화합물로 원소 찾기",
+        "question": "원자량 16.0인 기체 카드에는 주요 화합물이 CO₂와 H₂O로 적혀 있다. 두 화합물에 공통으로 들어 있는 원소를 찾은 것은?",
+        "choices": [
+          "C — 탄소",
+          "H — 수소",
+          "O — 산소"
+        ],
+        "answer": 2,
+        "why": "두 화합물 모두에 들어 있는 원소는 O입니다. C는 H₂O에, H는 CO₂에 들어 있지 않습니다. 원자량과 기체라는 조건도 함께 확인합니다.",
+        "checks": [
+          "mendeleev#q1"
+        ]
+      }
+    },
+    {
+      "id": "mendeleev@hydrogen-comparison",
+      "sha256": "3a55513c9b16912fcb70ad251601099e8c611def4e610d893ec7aa333cd92a81",
+      "after": {
+        "id": "mendeleev@hydrogen-comparison",
+        "topic": "위치와 성질의 구별",
+        "question": "17장 카드의 배열판에서 H는 Li·Na·K 위에 놓였다. H 카드는 기체·비금속이고 나머지는 고체·금속이다. 이 자료에 맞는 해석은?",
+        "choices": [
+          "같은 세로줄에 있으므로 H도 금속이다",
+          "H는 그 위치에 놓이지만 알칼리 금속은 아니다",
+          "금속이 아니므로 H는 주기율표에서 제외한다"
+        ],
+        "answer": 1,
+        "why": "배열판의 위치만으로 모든 성질이 같다고 판단할 수 없습니다. 수소는 현대 주기율표의 1족 위치에 표시되지만 알칼리 금속으로 분류하지 않습니다.",
+        "checks": [
+          "mendeleev#q1"
+        ]
+      }
     }
   ],
   "checks": [
@@ -10135,6 +10562,14 @@
       },
       "assessmentSources": [
         {
+          "id": "965f45ec469d480f",
+          "pages": [
+            100,
+            101
+          ],
+          "part": "Mg·HCl의 양과 플라스크 조건. 제한 반응물과 잔량 문항은 이 조건에서 독립 계산하여 작성"
+        },
+        {
           "id": "ddcc57290fbbe04a",
           "pages": [
             3,
@@ -10174,11 +10609,11 @@
             100,
             101
           ],
-          "difference": "Mg 0.4 g, 0.2 M HCl 50 mL, 250 mL 플라스크, 산화 피막 제거",
-          "implementation": "다른 제한 반응물 조건과 표면 전처리 미구현. 이 별도 후보는 완료로 판정하지 않음"
+          "difference": "Mg 0.4 g, 0.2 M HCl 50 mL, 250 mL 플라스크, 준비물에 사포 포함",
+          "implementation": "Mg 0.40 g·0.2 M HCl 50 mL·250 mL 플라스크를 별도 조건으로 선택. HCl 제한에 따른 최대 수소량·Mg 잔량·액량에 따른 기체 공간을 반영한다. 산화 피막 제거와 실제 센서 시간 자료 수집은 완료로 판정하지 않음"
         }
       ],
-      "boundary": "25°C 일정 온도와 고정 기체 부피에서 이상 기체 상태방정식 및 Mg+2HCl→MgCl₂+H₂의 양론을 적용한 비교 모형이다. 반응 진행률은 60초에서 끝나는 1−(1−t/60)^3의 저작 곡선이며 실제 Mg 반응의 측정 자료나 검증된 속도식이 아니다. 생성량 상한은 Mg와 HCl의 제한 반응물로 별도 계산한다. 시작 압력은 101.325 kPa, 액체 주입 중 외부로 열린 밸브가 공기 치환을 허용하고 주입 직후부터 닫는 장치를 가정한다. 센서·관의 사강, 수증기압, 온도 상승, 산화 피막, 누출 과도 응답은 제외한다. 400 mL는 같은 반응량에서 기체 공간의 영향을 비교하는 추가 조건이다. 교과서의 다른 질량·농도·실측 그래프와 동일하다고 주장하지 않는다. 교사용 자료에 잘못 섞인 염소 발생 문구는 재현하지 않는다."
+      "boundary": "25°C 일정 온도와 고정 기체 부피에서 이상 기체 상태방정식 및 Mg+2HCl→MgCl₂+H₂의 양론을 적용한 비교 모형이다. 반응 진행률은 60초에서 끝나는 1−(1−t/60)^3의 저작 곡선이며 실제 Mg 반응의 측정 자료나 검증된 속도식이 아니다. 생성량 상한은 Mg와 HCl의 제한 반응물로 별도 계산하며 남은 Mg도 따로 보존한다. 두 조건은 동일한 60초 정규화 진행 곡선을 쓰며 실제 농도별 속도 비교나 출판사별 측정 시간을 재현하지 않는다. 학생 화면의 시간·압력에는 모형이라고 표시한다. 시작 압력은 101.325 kPa, 액체 주입 중 외부로 열린 밸브가 공기 치환을 허용하고 주입 직후부터 닫는 장치를 가정한다. 센서·관의 사강, 수증기압, 온도 상승, 산화 피막, 누출 과도 응답은 제외한다. 400 mL는 같은 반응량에서 기체 공간의 영향을 비교하는 추가 조건이다. 교과서의 두 조건의 실제 속도 곡선·열전달·표면 전처리를 구현한 것으로 주장하지 않는다. 교사용 자료에 잘못 섞인 염소 발생 문구는 재현하지 않는다."
     },
     {
       "slug": "osmosis-mass",
@@ -12253,6 +12688,110 @@
       "boundary": "동일 농도0.05 mol/L의 HCl/NaOH,25℃·물의 이온곱1e−14를 사용한 강산/강염기 물질량 수지 모형이다. 농도는 교과서 측정값이 아니라 독립적인 앱 조건이며 학생 화면에는 pH/몰농도 계산을 표시하지 않는다. 지시약의 부피·산염기 완충능, 활동도·CO₂흡수·혼합 발열은 생략한다. 양배추 색은 대표 색 범위의 정성 표현이며 추출액 품종·농도별 실제 색이나 색도 측정값이 아니다. 페놀프탈레인 변색 구간8.2~10 부근의 색과 중화 당량점을 구별한다.0.1/0.5 mL 단위는 조작 조건이며 한 방울의 실제 부피라고 표시하지 않는다. 원문 실물 촬영·시약 취급, 추가 달걀 껍데기 반응 실험은 완료한 것으로 세지 않는다. 물 대조는 인과 비교를 위해 별도로 추가했다."
     },
     {
+      "slug": "constellation-space",
+      "source": {
+        "id": "7e5723f0cbf775d1",
+        "pages": [
+          70
+        ],
+        "printedPages": [
+          70
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "96782de5f0edc905",
+          "pages": [
+            70,
+            71
+          ],
+          "part": "좌표·거리와 시선 방향, 관찰 방향 비교. 원문의 정리 질문을 그대로 객관식으로 옮기지 않고 독립 수치 조건과 개념 오답으로 구성."
+        },
+        {
+          "id": "cd2d1ced86d442d1",
+          "pages": [
+            62,
+            63
+          ],
+          "part": "거리 비율과 관찰 위치에 따른 모양 비교. 원문에서 모든 별의 물리적 관련성을 부정하는 일반화는 채택하지 않음."
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "96782de5f0edc905",
+          "pages": [
+            70
+          ],
+          "difference": "동일 21개 좌표와 별 거리 참고값·투영 모형",
+          "implementation": "좌표는 학생용과 대조하여 동일함을 확인. 교사용 별도 광년 근삿값과 좌표 계산값을 혼합하지 않음."
+        },
+        {
+          "sourceId": "83a281f014c6a235",
+          "pages": [
+            18
+          ],
+          "difference": "프로그램으로 거리 등을 조사하고 자유 재료로 입체 모형 제작",
+          "implementation": "북두칠성 자료 좌표 입력·공간 회전·지구 시점 비교. 자유 천체 검색·실물 재료 제작은 완료로 판정하지 않음."
+        },
+        {
+          "sourceId": "cd2d1ced86d442d1",
+          "pages": [
+            62
+          ],
+          "difference": "오리온자리 7개 거리와 낚싯줄 축척·투명 상자 제작",
+          "implementation": "원문 절차를 별도로 확인. 이 북두칠성 좌표 앱이 오리온자리 낚싯줄 제작 전체를 구현한 것은 아님."
+        }
+      ],
+      "boundary": "입력된 좌표의 위치·거리 모형이다. 관찰 시점 회전은 별의 고유 운동이나 시간 경과를 뜻하지 않는다. 지구 시점은 방향의 중심 투영, 외부 시점은 공간 구조를 보여 주는 직교 투영이며 실제 우주선의 사진이 아니다. 점 크기·색은 천체의 반지름·밝기 측정값이 아니다. 좌표로 계산한 거리는 교과서의 반올림 좌표에 해당하며 최신 정밀 천체 측정으로 표시하지 않는다. 별들의 위치만으로 중력 결합·공통 기원·운동을 판정하지 않는다. 북두칠성 구성원 다섯은 큰곰자리 운동성군과 관련되므로 모든 별이 서로 무관하다는 원문의 일반화를 그대로 재현하지 않는다. 다른 별자리의 자유 자료 검색, 실물 모형 제작 및 미래엔 오리온자리 축척 절차는 별도이다."
+    },
+    {
+      "slug": "temperature-clouding",
+      "source": {
+        "id": "10a5b297fa1b961f",
+        "pages": [
+          4,
+          5
+        ],
+        "printedPages": [
+          121,
+          122
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "f71f44ac4b",
+          "paragraphs": [
+            12,
+            23,
+            69,
+            203,
+            211,
+            220,
+            229,
+            234,
+            236,
+            247,
+            249,
+            252,
+            254
+          ],
+          "part": "온도 변화와 활성화 에너지·반응 속도 상수·최종 생성량의 구별. 손상된 수식·원본 미확인 숫자를 차용하지 않음."
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "965f45ec469d480f",
+          "pages": [
+            114,
+            115
+          ],
+          "difference": "황 탁도와 다른 탄산 칼슘 침전·레이저 투과 실험",
+          "implementation": "다른 시약·양·빛 경로·페트리 접시와 관찰 기준을 갖는 별도 모드. 하나의 화학 반응으로 합치지 않음."
+        }
+      ],
+      "boundary": "두 원문 표에는 실제 온도와 시간이 채워져 있지 않다. 정성 장면은 더운 조건에서 먼저 흐려지는 경향을 보여 주며 진행도를 실제 초, 온도 수치, 투과율 측정치 또는 속도 상수로 표시하지 않는다. 아이오딘 시계의 변색 시간이나 다른 반응의 실측값을 이식하지 않는다. SVG의 흐림과 관찰 임계점은 차원 없는 표현이며 반응별 정량 속도식/입도/산란/열전달 모형이 아니다. 1/s 비교값 측정, 시료 온도 실측, 동영상 촬영·분석, 실제 시약 취급 완료는 남아 있다. SO₂·CO₂ 생성은 반응식에 유지하되 기체량을 시각적으로 정량화하지 않는다. 미래엔 준비 단계의 시험관 1 mL씩 예비 혼합은 별도 조작으로 제공하지 않는다."
+    },
+    {
       "slug": "weather-analysis",
       "source": {
         "id": "b01d77c896a31d93",
@@ -12608,6 +13147,35 @@
         }
       ],
       "boundary": "미래엔 2022의 종이 DNA 제작을 화면의 8쌍 모형으로 바꿨다. 당·인산 골격과 상보적 결합을 구별하며, 화면 나선의 길이·각도는 실제 분자 치수가 아니다. 염기 수가 같아도 서열이 다르면 정보가 달라질 수 있다. 공통 과정은 추가로 읽은 천재·동아 2022 통합과학1 절차를 따르는 12쌍 조립 모형이다. 실제 종이·빨대 제작 완료는 아니며, 모형의 색·크기·축·정확한 홈 구조를 실제 분자의 성질로 해석하지 않는다. 두 학년의 같은 모형 목적은 중복 필수실험으로 늘려 세지 않는다."
+    },
+    {
+      "slug": "mendeleev",
+      "source": {
+        "id": "764c91a83f8bf462",
+        "pages": [
+          27,
+          28,
+          75,
+          77
+        ],
+        "printedPages": [
+          27,
+          28,
+          75,
+          77
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "764c91a83f8bf462",
+          "pages": [
+            31,
+            70
+          ],
+          "part": "PDF 31쪽 07·08번과 70쪽 해설: 원자량과 화학식에 따른 배열, 빈칸의 의미. 기본·전이 문항의 판단 근거 대조"
+        }
+      ],
+      "boundary": "기재한 두 출판사의 부분 배열이다. 수소의 1족 위치를 알칼리 금속과 같은 성질이라는 근거로 사용하지 않는다. 현대 주기율표 전체, 모든 출판사 카드 활동, 모둠별 자유 배열·토론·외부 검색의 수행 완료가 아니다."
     }
   ]
 }

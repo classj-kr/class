@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-15T18:00:22.582Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "reaction-pressure",
+      "scenarios": 95
+    }
+  ],
+  "scenarios": 95,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

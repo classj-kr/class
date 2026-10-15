@@ -207,7 +207,7 @@
       },
       {
         "concept": "구름과 강수 구별",
-        "q": "2023년 9월 20일 09시와 21일 09시의 위성·레이더를 비교한다. 마지막에 위성 영상에는 구름이 남고 레이더의 넓은 강수 구역은 줄었다. 이에 맞는 해석은?",
+        "q": "2023년 9월 20일 09시와 21일 09시의 위성·레이더 영상을 비교했다. 마지막 시각의 구름과, 첫 시각에 비한 강수 구역의 변화에 맞는 해석은?",
         "choices": [
           "구름 완전 소멸 · 강수 구역 축소",
           "구름 일부 잔존 · 강수 구역 축소",
@@ -593,5 +593,6 @@
     },
     "minimumComputedChartBodyPx": 15
   },
-  "assessmentAdaptation": "Original HWP is a constructed-response instrument. Its goals and image-interpretation distinctions inform newly authored multiple-choice questions; it is not represented as a supplied MCQ."
+  "assessmentAdaptation": "Original HWP is a constructed-response instrument. Its goals and image-interpretation distinctions inform newly authored multiple-choice questions; it is not represented as a supplied MCQ.",
+  "assetsVisuallyReviewed": "All 18 final images inspected in the three kind-specific contact sheets; source charts also inspected individually. No dates or observations were interpolated."
 }

@@ -1,0 +1,12 @@
+✔ source assessment and the two independent arrangement constraints (39.6272ms)
+✔ chromium: both reasoning errors persist after correction, reload and view changes (3728.986ms)
+✔ webkit: both reasoning errors persist after correction, reload and view changes (6481.6556ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10338.1531
+

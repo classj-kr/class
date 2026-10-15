@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-15T18:24:46.460Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "constellation-space",
+      "scenarios": 70
+    }
+  ],
+  "scenarios": 70,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

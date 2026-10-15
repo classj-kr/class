@@ -1,0 +1,14 @@
+✔ original procedures, conserved transfer, independent stoichiometry and no invented measured endpoints (92.8268ms)
+chromium: 108 viewport states, 12 retained distractors, conserved pouring and pause/reset/background stop
+✔ chromium: reagent transfer, isolated observation planes, touch playback and retained diagnosis (5786.1702ms)
+webkit: 108 viewport states, 12 retained distractors, conserved pouring and pause/reset/background stop
+✔ webkit: reagent transfer, isolated observation planes, touch playback and retained diagnosis (13450.1211ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19392.9685
+
