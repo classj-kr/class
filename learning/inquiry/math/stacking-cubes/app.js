@@ -105,12 +105,12 @@
     const rawProject = ([x, y, z]) => [cosY * x - sinY * z, sinP * (sinY * x + cosY * z) - cosP * y];
     const depth = ([x, y, z]) => cosP * (sinY * x + cosY * z) + sinP * y;
     const tallest = Math.max(2, ...board.snapshot());
-    const reference = [-2.8, 2.8].flatMap(x => [-.2, tallest].flatMap(y => [-2.8, 2.8].map(z => rawProject([x, y, z]))));
-    const minX = Math.min(...reference.map(p => p[0])), maxX = Math.max(...reference.map(p => p[0]));
-    const minY = Math.min(...reference.map(p => p[1])), maxY = Math.max(...reference.map(p => p[1]));
-    const scale = Math.max(1, Math.min((width - (isTarget ? 30 : 48)) / (maxX - minX), (height - (isTarget ? 35 : 50)) / (maxY - minY), 124)) * (isTarget ? 1 : zoom);
-    const cx = width / 2 - (minX + maxX) * scale / 2;
-    const cy = height / 2 - (minY + maxY) * scale / 2;
+    // Fit every orientation once: rotating must not silently zoom the model.
+    const horizontalRadius = Math.SQRT2 * 2.8;
+    const verticalRadius = Math.hypot(horizontalRadius, (tallest + .2) / 2);
+    const scale = Math.max(1, Math.min((width - (isTarget ? 30 : 48)) / (2 * horizontalRadius), (height - (isTarget ? 35 : 50)) / (2 * verticalRadius), 124)) * (isTarget ? 1 : zoom);
+    const cx = width / 2;
+    const cy = height / 2 + (tallest - .2) / 2 * cosP * scale;
     const project = point => { const p = rawProject(point); return [cx + p[0] * scale, cy + p[1] * scale]; };
     const face = (points, attributes) => polygon(points.map(project), attributes);
     const pieces = [];
@@ -415,7 +415,7 @@
     const dx = event.clientX - targetGesture.x, dy = event.clientY - targetGesture.y;
     if (Math.hypot(dx, dy) > 5) targetGesture.moved = true;
     if (!targetGesture.moved) return;
-    yaw = targetGesture.yaw + dx * .012;
+    yaw = targetGesture.yaw - dx * .012;
     pitch = clamp(targetGesture.pitch + dy * .012, .22, 1.22);
     targetScene.classList.add('is-dragging');
     hovered = null; schedule();
@@ -428,7 +428,7 @@
   });
   targetScene.addEventListener('keydown', event => {
     if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || event.ctrlKey || event.metaKey || event.altKey) return;
-    const turns = { ArrowLeft: [-Math.PI / 8, 0], ArrowRight: [Math.PI / 8, 0], ArrowUp: [0, .12], ArrowDown: [0, -.12] };
+    const turns = { ArrowLeft: [Math.PI / 8, 0], ArrowRight: [-Math.PI / 8, 0], ArrowUp: [0, -.12], ArrowDown: [0, .12] };
     if (!turns[event.key] && event.key !== 'Home') return;
     event.preventDefault(); stopTargetRotation();
     if (event.key === 'Home') { yaw = DEFAULT_YAW; pitch = DEFAULT_PITCH; }
@@ -467,7 +467,8 @@
       const dx = event.clientX - gesture.start.x, dy = event.clientY - gesture.start.y;
       if (Math.hypot(dx, dy) > 7) gesture.moved = true;
       if (gesture.moved) {
-        yaw = gesture.yaw + dx * .008;
+        // Decreasing yaw carries the near side toward a rightward drag.
+        yaw = gesture.yaw - dx * .008;
         pitch = clamp(gesture.pitch + dy * .006, .22, 1.22);
         scene.classList.add('is-dragging');
       }
