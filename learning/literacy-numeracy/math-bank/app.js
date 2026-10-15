@@ -55,6 +55,9 @@
     node.querySelectorAll('span.mb-rad').forEach(glue);
     return node;
   };
+  // 중학교 묶음 제목 속 수식의 문자(x, y, a, n …)는 문항 글처럼 수식 글꼴로 적는다. 사건 A·B 같은 대문자 이름은 문항 글처럼 세워 두고,
+  // 초등 제목의 영문자는 단위(cm, kg, mL)라 그대로 둔다. 드롭다운의 단원 이름은 글꼴을 바꿀 수 없어 그대로다.
+  const titleOf = (title) => (unit && unit.grade >= 7 ? String(title).replace(/[a-z]/g, (ch) => '<i class="mb-var">' + ch + '</i>') : title);
   const el = (tag, className, html) => { const node = document.createElement(tag); if (className) node.className = className; if (html != null) { node.innerHTML = html; tie(node); } return node; };
   // 기록에 남길 글: 그림은 그림 이름으로 바꾼다.
   // 위첨자(거듭제곱의 지수)는 글로 바꾸며 잃지 않게 표를 해 두었다가, 기록에는 (−2)^3 꼴로, 화면의 답 줄에는 위첨자로 되살린다.
@@ -115,7 +118,7 @@
     const list = el('ol', 'mb-groups');
     for (const group of unit.groups) {
       const row = el('li', 'mb-group');
-      row.append(el('span', 'mb-group-title', group.title));
+      row.append(el('span', 'mb-group-title', titleOf(group.title)));
       const levels = el('div', 'mb-levels');
       for (const level of B.LEVELS) {
         const rounds = B.roundCount(unit, group.id, level);
@@ -153,7 +156,7 @@
   }
 
   function showRound() {
-    const head = el('p', 'mb-round-title', round.group.title + '<span class="mb-chip' + (round.level === '실력' ? ' is-hard' : '') + '">' + round.level + (round.rounds > 1 ? ' ' + round.no + '회' : '') + '</span>');
+    const head = el('p', 'mb-round-title', titleOf(round.group.title) + '<span class="mb-chip' + (round.level === '실력' ? ' is-hard' : '') + '">' + round.level + (round.rounds > 1 ? ' ' + round.no + '회' : '') + '</span>');
     const list = el('ol', 'mb-items');
     // 여섯 자리를 넘는 답이 있는 회차는 칸을 모두 넓힌다(문항마다 넓히면 칸 너비가 답의 크기를 알려 준다).
     const roomy = round.items.some((item) => (item.inputs || []).some((input) => !input.decimal && input.answer > 99999));
