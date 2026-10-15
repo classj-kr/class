@@ -51,6 +51,39 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       const openPanel = async () => { if (!(await page.locator('#view-panel').isVisible())) await activate(page.locator('#view-button')); };
       const setView = async view => { await openPanel(); await activate(page.locator(`[data-view="${view}"]`)); };
       const choose = async mode => { await activate(page.locator('#activity-button')); await activate(page.locator(`[data-mode="${mode}"]`)); };
+      const frontPosition = selector => page.locator(`${selector} .direction-label`).first().evaluate(label => ({ x: Number(label.getAttribute('x')), y: Number(label.getAttribute('y')) }));
+      const cubeEdgeHeight = selector => page.locator(`${selector} [data-surface="side"]`).evaluateAll(faces => Math.max(...faces.flatMap(face => {
+        const points = [...face.points];
+        return points.map((a, i) => { const b = points[(i + 1) % points.length]; return Math.abs(a.x - b.x) < .02 ? Math.abs(a.y - b.y) : 0; });
+      })));
+      const dragSurface = async (selector, dx, dy) => {
+        const box = await page.locator(selector).boundingBox();
+        const x = box.x + box.width * .55, y = box.y + box.height * .55;
+        if (touch) {
+          const cdp = await context.newCDPSession(page);
+          await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y, id: 1 }] });
+          await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: x + dx, y: y + dy, id: 1 }] });
+          await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+          await cdp.detach();
+        } else {
+          await page.mouse.move(x, y); await page.mouse.down();
+          await page.mouse.move(x + dx, y + dy, { steps: 6 }); await page.mouse.up();
+        }
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      };
+      const checkDragDirections = async selector => {
+        const start = await frontPosition(selector);
+        const edge = await cubeEdgeHeight(selector);
+        await dragSurface(selector, 40, 0);
+        assert.ok((await frontPosition(selector)).x > start.x + 1, `${selector}: the front of the model follows a rightward drag`);
+        assert.ok(Math.abs(await cubeEdgeHeight(selector) - edge) < .1, `${selector}: horizontal rotation keeps cube scale stable`);
+        await dragSurface(selector, -40, 0);
+        assert.ok(Math.abs((await frontPosition(selector)).x - start.x) < 1, `${selector}: reversing the drag restores the heading`);
+        await dragSurface(selector, 0, 25);
+        assert.ok((await frontPosition(selector)).y > start.y + 1, `${selector}: the front follows a downward drag`);
+        await dragSurface(selector, 0, -25);
+        assert.ok(Math.abs((await frontPosition(selector)).y - start.y) < 1, `${selector}: reversing the drag restores the tilt`);
+      };
       const fill = async heights => {
         await page.locator('#scene').focus();
         for (let i = 0; i < 5; i++) { await page.keyboard.press('ArrowUp'); await page.keyboard.press('ArrowLeft'); }
@@ -111,6 +144,9 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('#undo'));
       await total(11);
       await activate(page.locator('[data-tool="add"]'));
+
+      await checkDragDirections('#scene');
+      await total(11);
 
       // A rotation and a two-finger pinch must never add a cube on release.
       const box = await page.locator('#scene').boundingBox();
@@ -181,6 +217,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.waitForFunction(() => document.querySelector('#target-scene.is-rotatable .floor-cell'));
       const initialGoalPoints = await goal.locator('.floor-cell').first().getAttribute('points');
       const initialBoardPoints = await page.locator('#scene .floor-cell').first().getAttribute('points');
+      await checkDragDirections('#target-scene');
       await activate(goal);
       await total(0);
       const goalBox = await goal.boundingBox();
@@ -201,8 +238,15 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       assert.equal(await page.locator('#undo').isDisabled(), true, 'goal rotation never changes the construction');
       await goal.focus(); await page.keyboard.press('Home');
       await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') === points, initialGoalPoints);
+      const initialGoalFront = await frontPosition('#target-scene');
       await page.keyboard.press('ArrowRight');
       await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') !== points, initialGoalPoints);
+      assert.ok((await frontPosition('#target-scene')).x > initialGoalFront.x, 'right arrow rotates in the same direction as a rightward drag');
+      await page.keyboard.press('Home');
+      await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') === points, initialGoalPoints);
+      await page.keyboard.press('ArrowUp');
+      await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') !== points, initialGoalPoints);
+      assert.ok((await frontPosition('#target-scene')).y < initialGoalFront.y, 'up arrow rotates in the same direction as an upward drag');
       await page.keyboard.press('Home');
       await openPanel(); await page.locator('#show-heights').uncheck(); await activate(page.locator('#view-button'));
       await activate(page.locator('[data-target-view="top"]'));
