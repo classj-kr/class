@@ -35,7 +35,7 @@ class/
 `/hanguksa`는 정적 한국사 화면 `/learning/inquiry/korean-history/`로 연결합니다.
 
 수학 탐구 교구는 `learning/inquiry/math/`에 모읍니다. 쌓기나무는 `stacking-cubes/`,
-분수 그림판은 `fraction-board/`, 그래프 그리기는 `graph-studio/`이며,
+분수 모형은 `fraction-board/`, 그래프 그리기는 `graph-studio/`이며,
 홈의 **교과 탐구 → 수학**에서 엽니다.
 
 학급·학교 운영 화면의 소스는 `apps/`에 모았습니다. 서버의 `site-paths.js`가

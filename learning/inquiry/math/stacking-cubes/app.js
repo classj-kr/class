@@ -8,6 +8,7 @@
   const sound = (kind, height, column) => window.StackingSounds.play(kind, height, column);
   const $ = id => document.getElementById(id);
   const scene = $('scene');
+  const targetScene = $('target-scene');
   const viewButton = $('view-button');
   const panel = $('view-panel');
   const dialog = $('activity-dialog');
@@ -25,6 +26,7 @@
   let feedbackTimer;
   const pointers = new Map();
   let gesture = null;
+  let targetGesture = null;
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   const sameCell = (a, b) => a === b || Boolean(a && b && a.x === b.x && a.z === b.z);
   const pointText = points => points.map(point => `${point[0].toFixed(2)},${point[1].toFixed(2)}`).join(' ');
@@ -89,12 +91,11 @@
     scene.setAttribute('viewBox', `0 0 ${width} ${height}`);
     scene.innerHTML = view === 'solid' ? renderSolid(width, height) : renderProjection(width, height);
     if (challenge) {
-      const target = $('target-scene');
-      const w = target.clientWidth, h = target.clientHeight;
-      target.setAttribute('viewBox', `0 0 ${w} ${h}`);
-      target.innerHTML = challenge.mode === 'copy'
+      const w = targetScene.clientWidth, h = targetScene.clientHeight;
+      targetScene.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      targetScene.innerHTML = challenge.view === 'solid'
         ? renderSolid(w, h, challenge.target, true)
-        : renderProjection(w, h, challenge.view, challenge.target, false);
+        : renderProjection(w, h, challenge.view, challenge.target, challenge.mode === 'copy');
     }
   }
 
@@ -168,20 +169,24 @@
     const top = direction === 'top';
     const projection = board.projection(direction);
     const rows = top ? SIZE : Math.max(3, ...projection);
-    const cell = Math.max(1, Math.min((width - (board === model ? 70 : 52)) / SIZE, (height - (board === model ? 70 : 50)) / rows, 91));
+    const numberedTarget = board !== model && top && showNumbers;
+    const paddingX = numberedTarget ? 36 : board === model ? 70 : 52;
+    const paddingY = numberedTarget ? 28 : board === model ? 70 : 50;
+    const cell = Math.max(1, Math.min((width - paddingX) / SIZE, (height - paddingY) / rows, 91));
     const left = (width - SIZE * cell) / 2, upper = (height - rows * cell) / 2 - 5;
     const boardBottom = upper + rows * cell;
     for (let row = 0; row < rows; row++) for (let col = 0; col < SIZE; col++) {
       const filled = top ? projection[row * SIZE + col] > 0 : projection[col] >= rows - row;
       pieces.push(`<rect x="${left + col * cell}" y="${upper + row * cell}" width="${cell}" height="${cell}" fill="${filled ? '#edc583' : '#eeece3'}" stroke="${filled ? '#a4814d' : '#d5d3c6'}" stroke-width="1.3" data-projection-cell="${col},${row}" data-filled="${filled}"/>`);
       if (top && filled && showNumbers) {
-        pieces.push(`<text x="${left + (col + .5) * cell}" y="${upper + (row + .5) * cell}" class="cell-number" font-size="${Math.min(28, cell * .4)}">${board.height(col, row)}</text>`);
+        const fontSize = numberedTarget ? Math.max(12, Math.min(28, cell * .5)) : Math.min(28, cell * .4);
+        pieces.push(`<text x="${left + (col + .5) * cell}" y="${upper + (row + .5) * cell}" class="cell-number" font-size="${fontSize}">${board.height(col, row)}</text>`);
       }
     }
     if (top) {
       pieces.push(`<path d="M${width / 2 - 16} ${boardBottom + 1}h32" stroke="#477968" stroke-width="4" stroke-linecap="round"/>`);
-      pieces.push(`<text x="${width / 2}" y="${boardBottom + 28}" class="direction-label">앞</text>`);
-      pieces.push(`<text x="${left + SIZE * cell + (board === model ? 23 : 18)}" y="${height / 2}" class="direction-label secondary" style="writing-mode:vertical-rl${board === model ? '' : ';font-size:11px'}">오른쪽</text>`);
+      pieces.push(`<text x="${width / 2}" y="${boardBottom + (numberedTarget ? 16 : 28)}" class="direction-label"${numberedTarget ? ' style="font-size:12px"' : ''}>앞</text>`);
+      pieces.push(`<text x="${left + SIZE * cell + (numberedTarget ? 13 : board === model ? 23 : 18)}" y="${height / 2}" class="direction-label secondary" style="writing-mode:vertical-rl${board === model ? '' : ';font-size:11px'}">오른쪽</text>`);
     } else if (direction === 'right') {
       pieces.push(`<text x="${left + cell / 2}" y="${boardBottom + 28}" class="direction-label">앞쪽</text>`);
     }
@@ -200,26 +205,43 @@
     if (!challenge) return;
     const { mode, index, questions, state, found } = challenge;
     $('challenge-title').textContent = `${activities.names[mode]} · ${index + 1}/${questions.length}`;
-    $('challenge-prompt').textContent = mode === 'copy' ? '앞 방향과 칸 위치를 맞춰 쌓아요. 쌓기판을 돌리면 목표도 함께 돌아요.'
+    $('challenge-prompt').textContent = mode === 'copy' ? '목표를 돌려 뒤쪽을 살펴봐요. 위·층수로 가려진 칸의 높이를 확인해요.'
       : mode === 'views' ? '위·앞·옆 그림을 모두 살펴보고 쌓아요.' : `세 그림에 맞는 서로 다른 두 모양을 찾아요. (${Math.min(2, found.size)}/2)`;
-    $('target-views').hidden = mode === 'copy';
+    $('target-views').hidden = false;
     $('check-shape').textContent = state === 'found' ? '다른 모양 만들기'
       : state === 'solved' ? (index + 1 < questions.length ? '다음 모양' : '활동 선택') : '확인하기';
     const names = { top: '위에서', front: '앞에서', right: '오른쪽에서' };
-    $('target-scene').setAttribute('aria-label', mode === 'copy' ? '따라 쌓을 목표 모양' : `목표를 ${names[challenge.view]} 본 그림`);
-    document.querySelectorAll('[data-target-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.targetView === challenge.view)));
+    const rotatable = mode === 'copy' && challenge.view === 'solid';
+    targetScene.classList.toggle('is-rotatable', rotatable);
+    targetScene.tabIndex = rotatable ? 0 : -1;
+    targetScene.setAttribute('aria-label', rotatable ? '따라 쌓을 목표 모양, 드래그로 돌려 보기'
+      : mode === 'copy' ? '목표를 위에서 본 그림, 숫자는 각 칸의 층수' : `목표를 ${names[challenge.view]} 본 그림`);
+    if (rotatable) {
+      targetScene.setAttribute('aria-describedby', 'target-keyboard-help');
+      targetScene.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight ArrowUp ArrowDown Home');
+    } else { targetScene.removeAttribute('aria-describedby'); targetScene.removeAttribute('aria-keyshortcuts'); }
+    document.querySelectorAll('[data-target-view]').forEach(button => {
+      const direction = button.dataset.targetView;
+      button.hidden = mode === 'copy' ? !['solid', 'top'].includes(direction) : direction === 'solid';
+      button.setAttribute('aria-pressed', String(direction === challenge.view));
+      if (direction === 'top') {
+        button.textContent = mode === 'copy' ? '위·층수' : '위';
+        button.setAttribute('aria-label', mode === 'copy' ? '위에서 보기 · 각 칸의 층수' : '위에서 본 모습');
+      }
+    });
   }
 
   function startActivity(mode, questions = activities.questions(mode), index = 0, keepHash = false) {
     dialog.close();
     closePanel();
+    stopTargetRotation();
     if (!keepHash && location.hash) history.replaceState(null, '', location.pathname + location.search);
     if (mode === 'free') { model = freeModel; challenge = null; }
     else {
       model = createModel();
       const target = createModel();
       target.replace(questions[index]);
-      challenge = { mode, questions, index, target, view: 'top', found: new Set(), state: 'ready' };
+      challenge = { mode, questions, index, target, view: mode === 'copy' ? 'solid' : 'top', found: new Set(), state: 'ready' };
       resetAnswer();
     }
     document.querySelector('.workspace').classList.toggle('is-practice', Boolean(challenge));
@@ -244,6 +266,7 @@
   document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => { startActivity(button.dataset.mode); sound('view'); }));
   document.querySelectorAll('[data-target-view]').forEach(button => button.addEventListener('click', () => {
     if (!challenge) return;
+    stopTargetRotation();
     challenge.view = button.dataset.targetView;
     updatePractice(); schedule(); sound('view');
   }));
@@ -373,8 +396,48 @@
     return points.length >= 2 ? Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y) : 0;
   }
 
+  // Both models keep the same orientation, whichever picture the learner rotates.
+  function stopTargetRotation() {
+    const pointerId = targetGesture?.pointerId;
+    targetGesture = null;
+    if (pointerId !== undefined && targetScene.hasPointerCapture(pointerId)) targetScene.releasePointerCapture(pointerId);
+    targetScene.classList.remove('is-dragging');
+  }
+  targetScene.addEventListener('pointerdown', event => {
+    if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || event.button !== 0 || targetGesture || pointers.size) return;
+    event.preventDefault();
+    targetScene.focus({ preventScroll: true });
+    targetGesture = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, yaw, pitch, moved: false };
+    targetScene.setPointerCapture(event.pointerId);
+  });
+  targetScene.addEventListener('pointermove', event => {
+    if (targetGesture?.pointerId !== event.pointerId) return;
+    const dx = event.clientX - targetGesture.x, dy = event.clientY - targetGesture.y;
+    if (Math.hypot(dx, dy) > 5) targetGesture.moved = true;
+    if (!targetGesture.moved) return;
+    yaw = targetGesture.yaw + dx * .012;
+    pitch = clamp(targetGesture.pitch + dy * .012, .22, 1.22);
+    targetScene.classList.add('is-dragging');
+    hovered = null; schedule();
+  });
+  for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) targetScene.addEventListener(name, event => {
+    if (targetGesture?.pointerId !== event.pointerId) return;
+    const moved = targetGesture.moved;
+    stopTargetRotation();
+    if (moved && name === 'pointerup') sound('view');
+  });
+  targetScene.addEventListener('keydown', event => {
+    if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || event.ctrlKey || event.metaKey || event.altKey) return;
+    const turns = { ArrowLeft: [-Math.PI / 8, 0], ArrowRight: [Math.PI / 8, 0], ArrowUp: [0, .12], ArrowDown: [0, -.12] };
+    if (!turns[event.key] && event.key !== 'Home') return;
+    event.preventDefault(); stopTargetRotation();
+    if (event.key === 'Home') { yaw = DEFAULT_YAW; pitch = DEFAULT_PITCH; }
+    else { yaw += turns[event.key][0]; pitch = clamp(pitch + turns[event.key][1], .22, 1.22); }
+    hovered = null; schedule(); sound('view');
+  });
+
   scene.addEventListener('pointerdown', event => {
-    if (view !== 'solid' || event.button !== 0) return;
+    if (view !== 'solid' || event.button !== 0 || targetGesture) return;
     event.preventDefault();
     scene.focus({ preventScroll: true });
     keyboardCell = null;

@@ -175,6 +175,51 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-title').textContent(), /2\/6/);
       await total(0);
+      // The rear column of the second copy task is occluded in its initial view.
+      // Learners can inspect the goal itself without placing or erasing any cubes.
+      const goal = page.locator('#target-scene');
+      await page.waitForFunction(() => document.querySelector('#target-scene.is-rotatable .floor-cell'));
+      const initialGoalPoints = await goal.locator('.floor-cell').first().getAttribute('points');
+      const initialBoardPoints = await page.locator('#scene .floor-cell').first().getAttribute('points');
+      await activate(goal);
+      await total(0);
+      const goalBox = await goal.boundingBox();
+      const gx = goalBox.x + goalBox.width * .65, gy = goalBox.y + goalBox.height * .55;
+      if (touch) {
+        const cdp = await context.newCDPSession(page);
+        await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: gx, y: gy, id: 1 }] });
+        await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: gx - 65, y: gy + 12, id: 1 }] });
+        await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+        await cdp.detach();
+      } else {
+        await page.mouse.move(gx, gy); await page.mouse.down();
+        await page.mouse.move(gx - 65, gy + 12, { steps: 8 }); await page.mouse.up();
+      }
+      await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') !== points, initialGoalPoints);
+      assert.notEqual(await page.locator('#scene .floor-cell').first().getAttribute('points'), initialBoardPoints, 'goal and board stay aligned');
+      await total(0);
+      assert.equal(await page.locator('#undo').isDisabled(), true, 'goal rotation never changes the construction');
+      await goal.focus(); await page.keyboard.press('Home');
+      await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') === points, initialGoalPoints);
+      await page.keyboard.press('ArrowRight');
+      await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') !== points, initialGoalPoints);
+      await page.keyboard.press('Home');
+      await openPanel(); await page.locator('#show-heights').uncheck(); await activate(page.locator('#view-button'));
+      await activate(page.locator('[data-target-view="top"]'));
+      await page.waitForFunction(() => document.querySelectorAll('#target-scene .cell-number').length === 4);
+      assert.deepEqual(await goal.locator('.cell-number').allTextContents(), ['1', '2', '2', '1'], 'all goal heights are available, including the hidden rear cell');
+      assert.equal(await goal.getAttribute('tabindex'), '-1');
+      for (const number of await goal.locator('.cell-number').all()) assert.ok(await number.evaluate(node => parseFloat(getComputedStyle(node).fontSize)) >= 12, 'goal heights stay legible');
+      for (const button of await page.locator('#target-views button:visible').all()) {
+        const rect = await button.boundingBox(); assert.ok(rect.width >= 44 && rect.height >= 44, 'copy inspection touch targets');
+      }
+      await snap('copy-hidden-heights');
+      await fill(activities.questions('copy')[1]);
+      await activate(page.locator('#check-shape'));
+      assert.match(await page.locator('#challenge-result').textContent(), /성공/);
+      await activate(page.locator('[data-target-view="solid"]'));
+      await page.waitForFunction(() => document.querySelector('#target-scene .block-face'));
+      assert.equal(await goal.locator('.cell-number').count(), 0);
       await choose('free');
       await total(11);
 
@@ -209,7 +254,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await snap('many-success');
       assert.equal(await page.locator('#target-panel').evaluate(panel => panel.scrollHeight <= panel.clientHeight + 1), true, 'goal and success message fit without scrolling');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight), true, 'activity fits viewport');
-      for (const button of await page.locator('#target-views button, #check-shape').all()) {
+      for (const button of await page.locator('#target-views button:visible, #check-shape').all()) {
         const rect = await button.boundingBox(); assert.ok(rect.width >= 44 && rect.height >= 44, 'activity touch targets');
       }
       await choose('free');

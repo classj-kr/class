@@ -297,7 +297,9 @@ input[type="range"] { width: 100%; height: 20px; margin: 0; accent-color: var(--
 .drum-pad .pad-icon { width: 40px; height: 26px; max-width: 100%; color: var(--pad-color); pointer-events: none; }
 .drum-pad b { overflow-wrap: anywhere; word-break: keep-all; }
 .drum-pad:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
-.drum-pad .pad-tool { letter-spacing: 0; line-height: 1.25; overflow-wrap: anywhere; }
+.drum-pad .pad-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 4px; color: var(--pad-color); letter-spacing: 0; }
+.drum-pad .pad-key { display: grid; place-items: center; min-width: 31px; height: 29px; padding: 0 6px; border: 1px solid currentColor; border-radius: 7px; background: color-mix(in srgb, var(--pad-color) 18%, #10191b); color: #fff; font: 900 17px/1 system-ui, sans-serif; box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--pad-color) 55%, transparent); }
+.drum-pad .pad-link-action { color: var(--pad-color); font-size: 11px; letter-spacing: 0; }
 /* 2-column balanced layout so full drum kit fits in a single screen without scrolling */
 .drum-pads.spatial-pads.kit-pads { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; overflow: visible; align-items: stretch; }
 .drum-pads.spatial-pads.janggu-pads { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -604,6 +606,7 @@ body.key-size-open { overflow: hidden; }
     .drum-pad b { font-size: 11px; }
     .drum-pad span { font-size: 7.5px; }
     .drum-pad small { font-size: 7px; }
+    .drum-pad .pad-key { min-width: 27px; height: 25px; font-size: 15px; }
     .drum-pads.spatial-pads .drum-pad { min-height: 50px; padding: 4px 6px; }
     .drum-pads.spatial-pads .primary-pad { min-height: 58px; }
     .pad-group { padding: 4px 6px; border-radius: 9px; }
