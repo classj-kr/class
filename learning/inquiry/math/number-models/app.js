@@ -93,6 +93,7 @@
     try { nextScene = C.exchange(s, index, direction, mode); }
     catch (error) { message(error.message, true); return; }
     const removed = direction === 'bundle' ? 10 : 1, added = direction === 'bundle' ? 1 : 10, target = direction === 'bundle' ? index-1 : index+1;
+    const restoreFocus = document.activeElement?.closest(`[data-index="${index}"] [data-action="${direction}"]`);
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     busy = true; edited = true;
     const controls = [...document.querySelectorAll('button,input,select')].map(el => [el, el.disabled]);
@@ -110,6 +111,10 @@
     column.classList.add('is-exchanged');
     [...column.querySelectorAll('.block')].slice(-added).forEach(el => el.classList.add('is-arriving'));
     const cloud = column.querySelector('.block-cloud'); cloud.scrollTop = cloud.scrollHeight;
+    if (restoreFocus) {
+      const button = document.querySelector(`[data-index="${index}"] [data-action="${direction}"]`);
+      (button.disabled ? button.closest('.place-column').querySelector('.place-heading') : button).focus({ preventScroll: true });
+    }
   }
   document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => {
     if (busy || state.mode === button.dataset.mode) return;

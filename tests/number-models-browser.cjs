@@ -64,6 +64,7 @@ test('carrying, borrowing, subtraction and keyboard undo show each step accurate
   await button(3, 'bundle').click();
   await page.waitForFunction(() => document.querySelector('[data-index="3"] .count b').textContent === '5');
   assert.deepEqual(await counts(), [0, 0, 3, 5]); assert.equal(await total(), '35');
+  assert.equal(await page.evaluate(() => document.activeElement.closest('[data-index]')?.dataset.index), '3');
   assert.match(await page.locator('#message').textContent(), /전체 값은 35 그대로/);
   await page.keyboard.press('Control+z'); assert.deepEqual(await counts(), [0, 0, 2, 15]);
   await page.keyboard.press('Control+Shift+z'); assert.deepEqual(await counts(), [0, 0, 3, 5]);
