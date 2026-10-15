@@ -18,7 +18,7 @@
     <div class="header-actions"><button id="fullscreen" type="button" aria-pressed="false">전체 화면</button><button id="export-open" type="button" class="primary">그림 저장 <span aria-hidden="true">↓</span></button></div>
   </header>
   <main class="workspace">
-    <aside class="inspector" aria-label="선택한 그림 설정">
+    <aside id="inspector" class="inspector" aria-label="선택한 그림 설정">
       <div class="inspector-heading"><h2>그림 설정</h2><span id="editing-label">그림 A</span></div>
       <div class="shape-choices" role="group" aria-label="도형 선택">
         <button type="button" data-shape="bar" aria-pressed="true"><svg viewBox="0 0 48 32" aria-hidden="true"><path class="tint" d="M4 9h20v14H4z"/><path d="M4 9h40v14H4zM14 9v14m10-14v14m10-14v14"/></svg>사각막대</button>
@@ -43,7 +43,7 @@
       <details class="help"><summary>수업에 이렇게 써 보세요</summary><p>빈 그림으로 시작해 한 칸씩 눌러 색칠해요. 수직선은 눈금을 누르면 그 위치를 표시해요.</p><p>그림을 복제한 뒤 <b>양 유지</b>를 켜고 등분 수를 바꿔 보세요. 1/2, 2/4, 4/8을 같은 크기로 비교할 수 있어요.</p><p>색칠한 칸이 분모보다 많으면 전체가 자동으로 늘어나요. 그림은 6개, 전체는 그림마다 4개까지 놓을 수 있어요.</p><p>키보드: 그림에서 방향키로 칸을 옮기고 Enter 또는 Space로 색칠해요. Ctrl/⌘+Z로 되돌릴 수 있어요.</p></details>
     </aside>
     <section class="board" aria-label="분수 그림 모음">
-      <div class="board-toolbar"><p>칸을 눌러 색칠해 보세요.</p><div><button type="button" id="undo" aria-label="되돌리기" title="되돌리기 (Ctrl/⌘+Z)" disabled>↶</button><button type="button" id="redo" aria-label="다시 하기" title="다시 하기 (Ctrl/⌘+Shift+Z)" disabled>↷</button><button type="button" id="add-card">＋ 빈 그림</button></div></div>
+      <div class="board-toolbar"><p>칸을 눌러 색칠해 보세요.</p><div><button type="button" id="toggle-settings" aria-expanded="true" aria-controls="inspector">설정 접기</button><button type="button" id="undo" aria-label="되돌리기" title="되돌리기 (Ctrl/⌘+Z)" disabled>↶</button><button type="button" id="redo" aria-label="다시 하기" title="다시 하기 (Ctrl/⌘+Shift+Z)" disabled>↷</button><button type="button" id="add-card">＋ 빈 그림</button></div></div>
       <div id="cards" class="cards"></div>
       <div class="board-footer"><span>같은 모양의 전체 크기는 서로 같아요.</span><span id="save-status" role="status">저장 상태 확인 중</span></div>
     </section>

@@ -159,6 +159,13 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       // 식 속에 끼워 넣는 칸(template): 자리 표시가 칸마다 꼭 하나씩 있고, 틀렸을 때 보일 답 글(shown)이 있다.
       if (item.template) { item.inputs.forEach((input, i) => assert.equal(item.template.split('{' + i + '}').length, 2, 'template 의 {' + i + '} 자리: ' + label)); assert.ok(item.shown, 'shown 이 없다: ' + label); }
       if (item.unordered) assert.equal(B.isCorrect(item, answers.slice().reverse()), true, label);
+      // 칸 묶음(blocks, 인수분해한 괄호 따위): 묶음의 크기가 같고, 첫 두 묶음을 통째로 바꾸어 적어도 맞다.
+      if (item.blocks) {
+        assert.ok(item.blocks.length >= 2 && item.blocks.every((block) => block.length === item.blocks[0].length), '칸 묶음의 크기가 같아야 한다: ' + label);
+        const swapped = answers.slice();
+        item.blocks[0].forEach((i, j) => { swapped[i] = answers[item.blocks[1][j]]; swapped[item.blocks[1][j]] = answers[i]; });
+        assert.equal(B.isCorrect(item, swapped), true, '묶음째 바꾼 답: ' + label);
+      }
       // 크기가 같은 다른 분수(분자·분모를 두 배 한 것)는 anyForm 인 문항만 받는다.
       if (item.fraction) assert.equal(B.isCorrect(item, answers.map((v, i) => (i >= answers.length - 2 ? String(Number(v) * 2) : v))), Boolean(item.anyForm), '같은 크기의 다른 분수: ' + label);
     }

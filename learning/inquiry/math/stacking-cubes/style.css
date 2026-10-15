@@ -4,7 +4,7 @@ body { margin: 0; }
 button, input, select { font: inherit; }
 button { cursor: pointer; color: inherit; border: 0; background: transparent; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 button:disabled { cursor: default; opacity: .35; }
-button:focus-visible, summary:focus-visible, input:focus-visible { outline: 3px solid #377b69; outline-offset: 3px; }
+button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #377b69; outline-offset: 3px; }
 button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 [hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
@@ -12,6 +12,7 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .top-controls { display: flex; align-items: center; padding: max(10px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) 8px 64px; gap: 12px; }
 .activity-button { min-height: 44px; padding: 8px 13px; font-size: 14px; font-weight: 600; border-radius: 12px; }
 .activity-button:hover { background: #e9ece4; }
+.activity-button::after { content: '⌄'; padding-left: 7px; color: #80897b; }
 .view-button { display: flex; align-items: center; justify-content: center; gap: 8px; margin-left: auto; min-height: 44px; padding: 9px 16px; border: 1px solid var(--border); border-radius: 13px; background: #fffefa; font-size: 15px; font-weight: 600; }
 .view-button[aria-expanded="true"] { border-color: var(--ink); color: var(--ink); }
 .total { font-size: 16px; font-weight: 650; font-variant-numeric: tabular-nums; }
@@ -71,6 +72,7 @@ dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
 .activity-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .activity-choices button { text-align: left; padding: 18px 15px; border: 1px solid var(--border); border-radius: 13px; }
 .activity-choices button:hover { background: #f0f3eb; border-color: #829d8e; }
+.activity-choices [aria-pressed="true"] { border-color: #829d8e; background: #eff3eb; }
 .activity-choices strong, .activity-choices span { display: block; }
 .activity-choices strong { font-size: 15px; }
 .activity-choices span { color: #73796d; font-size: 12px; margin-top: 9px; line-height: 1.6; }
@@ -135,7 +137,7 @@ dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
   .view-panel { top: 57px; max-height: calc(100dvh - 67px); }
   .workspace.is-practice .scene-wrap { grid-template-columns: minmax(0, 1fr) 210px; gap: 5px; padding-right: 5px; }
   .target-panel { padding: 9px; gap: 5px; max-height: 100%; overflow: auto; }
-  #target-scene { height: 100px; flex-shrink: 0; }
+  #target-scene { height: 120px; flex-shrink: 0; }
   .practice-copy h2 { font-size: 12px; }
   .practice-copy p { font-size: 10px; margin-top: 2px; }
   .challenge-result { min-height: 0; font-size: 11px; }

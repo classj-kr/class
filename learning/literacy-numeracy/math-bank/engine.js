@@ -498,7 +498,8 @@
   // 분수 답은 o.signed: true 로 부호 단추를 붙이고, 음수이면 o.negative: true 를 적는다(분자·분모·자연수 칸의 수는 늘 양수로 적는다).
   const N = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, signed: Boolean(o.signed) }], explain: o.explain || '', facts: o.facts || {} });
   // o.shown: 틀렸을 때 답 줄에 보일 글(답이 식일 때 「3x − 2」처럼 식 그대로 보인다). 주지 않으면 칸마다의 답을 쉼표로 이어 보인다.
-  const M = (text, inputs, o) => ({ text, figure: o.figure, inputs, unordered: o.unordered || false, shown: o.shown || '', explain: o.explain || '', facts: o.facts || {} });
+  // o.blocks: [[0, 1], [2, 3]]처럼 칸을 묶어 주면 묶음째 차례를 바꾸어 적어도 맞게 본다(인수분해한 두 괄호의 차례 따위). 묶음 안의 차례와 묶음 밖의 칸은 그대로 견준다.
+  const M = (text, inputs, o) => Object.assign({ text, figure: o.figure, inputs, unordered: o.unordered || false, shown: o.shown || '', explain: o.explain || '', facts: o.facts || {} }, o.blocks ? { blocks: o.blocks } : {});
   // 답 칸을 식 속에 끼워 넣는 문항(중학교): template 의 {0}, {1}, … 자리에 inputs 의 칸이 그 번호대로 들어간다(지수 칸은 「x<sup>{1}</sup>」처럼 적는다).
   // 칸은 M 과 같은 수 칸({ answer, signed })이거나 부등호 칸({ rel: true, answer: '<' | '<=' | '>' | '>=' })이다. 틀렸을 때 보일 답 글 o.shown 을 꼭 준다.
   const inline = (text, template, inputs, o) => {
@@ -681,6 +682,11 @@
     // 자연수 칸은 수 그대로 견준다(열몇 자리 수는 곱하면 어긋난다). 소수 칸만 1000배 하여 견준다. (끝의 + 0 은 −0을 0으로 만든다.)
     const want = item.inputs.map((input) => (input.decimal ? Math.round(input.answer * 1000) : input.answer)), got = given.map((text, i) => signs[i] * (item.inputs[i].decimal ? Math.round(Number(text) * 1000) : Number(text)) + 0);
     if (item.unordered) { want.sort((a, b) => a - b); got.sort((a, b) => a - b); }
+    if (item.blocks) {
+      const order = (list) => item.blocks.map((block) => block.map((i) => list[i]).join(',')).sort().join('|');
+      const rest = (list) => list.filter((v, i) => !item.blocks.some((block) => block.includes(i))).join(',');
+      return order(want) === order(got) && rest(want) === rest(got);
+    }
     // anyForm 인 분수 문항은 크기가 같은 분수를 모두 받는다(교육과정: 기약분수로 나타내라고 하지 않았으면 기약분수가 아닌 분수도 허용한다).
     // 대분수는 자연수 칸이 같고 분수 부분이 진분수여야 한다. 가분수를 받지 않는 문항은 가분수로 적은 답을 받지 않는다.
     if (item.fraction && item.anyForm) {

@@ -182,13 +182,40 @@
       renderAnswers('all');
     } catch (error) { if (current === detailGeneration) body.replaceChildren(node('p', error.message, 'empty')); }
   }
+  function updateClasses(context, preferred) {
+    const select = $('classSelect');
+    select.replaceChildren(...context.classes.map(c => { const option = node('option', c.label); option.value = c.id; return option; }));
+    if (context.classes.some(c => c.id === preferred)) select.value = preferred;
+    if (!context.classes.length) {
+      const empty = node('option', '등록된 학급 없음'); empty.value = ''; select.append(empty);
+    }
+    select.disabled = !context.classes.length;
+    if (select.value !== preferred) { selected = null; $('detailDialog').close(); }
+    if (!catalog.length) {
+      catalog = context.catalog;
+      for (const domain of new Set(catalog.map(row => row.domain))) {
+        const group = node('optgroup'); group.label = domain;
+        for (const row of catalog.filter(row => row.domain === domain)) { const option = node('option', row.label); option.value = row.id; group.append(option); }
+        $('activitySelect').append(group);
+      }
+    }
+  }
   async function load() {
     const current = ++generation; $('load').disabled = true; status('불러오는 중…');
     updatePeriodButtons();
-    const query = new URLSearchParams({ classId: $('classSelect').value });
-    if (allPeriod) query.set('period', 'all');
-    else { query.set('from', $('fromDate').value); query.set('to', $('toDate').value); }
+    const preferred = $('classSelect').value;
     try {
+      // Roster edits can remove a class while this report stays open.
+      const context = await request('/teacher/classes');
+      if (current !== generation) return;
+      updateClasses(context, preferred);
+      if (!context.classes.length) {
+        data = { roster: [], sessions: [] }; render();
+        status('현재 학생 명단에 등록된 담당 학급이 없어요.'); return;
+      }
+      const query = new URLSearchParams({ classId: $('classSelect').value });
+      if (allPeriod) query.set('period', 'all');
+      else { query.set('from', $('fromDate').value); query.set('to', $('toDate').value); }
       const sessions = [];
       let result;
       do {
@@ -212,15 +239,13 @@
   $('week').onclick = () => { allPeriod = false; $('toDate').value = LearningRecords.today(); $('fromDate').value = daysBefore($('toDate').value, 6); load(); };
   $('allPeriod').onclick = () => { allPeriod = true; load(); };
   $('fromDate').oninput = $('toDate').oninput = updatePeriodButtons;
-  try {
-    const context = await request('/teacher/classes'); catalog = context.catalog;
-    $('classSelect').replaceChildren(...context.classes.map(c => { const o = node('option', c.label); o.value = c.id; return o; }));
-    for (const domain of new Set(catalog.map(row => row.domain))) {
-      const group = node('optgroup'); group.label = domain;
-      for (const row of catalog.filter(row => row.domain === domain)) { const option = node('option', row.label); option.value = row.id; group.append(option); }
-      $('activitySelect').append(group);
-    }
-    if (!context.classes.length) { status('등록된 담당 학급이 없어요. 학교의 교사 등록 정보를 확인해 주세요.'); $('load').disabled = true; render(); }
-    else await load();
-  } catch (error) { status(error.message, true); $('load').disabled = true; render(); }
+  let returnTimer;
+  const refreshOnReturn = () => {
+    if (document.visibilityState !== 'visible' || $('load').disabled) return;
+    clearTimeout(returnTimer);
+    returnTimer = setTimeout(() => { if (document.visibilityState === 'visible' && !$('load').disabled) load(); }, 100);
+  };
+  window.addEventListener('focus', refreshOnReturn);
+  document.addEventListener('visibilitychange', refreshOnReturn);
+  await load();
 })();

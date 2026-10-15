@@ -2,9 +2,10 @@
   const api = factory(typeof module === 'object' && module.exports ? require('./model.js') : root.StackingCubes);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.StackingActivities = api;
-})(typeof globalThis === 'object' ? globalThis : this, function ({ SIZE, validBoard, project }) {
+})(typeof globalThis === 'object' ? globalThis : this, function (model) {
   'use strict';
-  const MODES = ['free', 'copy', 'views', 'many'];
+  const { SIZE, validBoard, project } = model;
+  const MODES = ['free', 'copy', 'views'];
   function centered(rows) {
     const board = Array(SIZE * SIZE).fill(0);
     const left = Math.floor((SIZE - rows[0].length) / 2), back = Math.floor((SIZE - rows.length) / 2);
@@ -30,7 +31,7 @@
   const names = { free: '자유 쌓기', copy: '따라 쌓기', views: '그림 보고 쌓기', many: '여러 답 찾기' };
   const equal = (a, b) => a.length === b.length && a.every((n, i) => n === b[i]);
   function check(heights, target, mode) {
-    if (!validBoard(heights) || !validBoard(target)) return { correct: false, mismatches: [] };
+    if (!validBoard(heights) || !validBoard(target) || !['copy', 'views', 'many'].includes(mode)) return { correct: false, mismatches: [] };
     if (mode === 'copy') return { correct: equal(heights, target), mismatches: [] };
     const mismatches = ['top', 'front', 'right'].filter(view => !equal(project(heights, view), project(target, view)));
     return { correct: mismatches.length === 0, mismatches };

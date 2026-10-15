@@ -4,6 +4,7 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const express = require('../game-hub-server/node_modules/express');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
+const activities = require('../learning/inquiry/math/stacking-cubes/activities.js');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'outputs/stacking-cubes-review');
 const shots = process.argv.includes('--shots');
@@ -26,6 +27,13 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     if (shots) fs.mkdirSync(output, { recursive: true });
     for (const [name, width, height, touch] of [['desktop', 1440, 1000, false], ['tablet', 820, 1180, true], ['phone', 390, 844, true], ['landscape', 844, 390, true]]) {
       const context = await browser.newContext({ viewport: { width, height }, hasTouch: touch });
+      await context.addInitScript(() => {
+        const NativeAudioContext = window.AudioContext;
+        window.audioContextCount = 0;
+        window.AudioContext = class extends NativeAudioContext {
+          constructor(...args) { super(...args); window.audioContextCount++; }
+        };
+      });
       const page = await context.newPage();
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
@@ -40,6 +48,20 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       };
       const openPanel = async () => { if (!(await page.locator('#view-panel').isVisible())) await activate(page.locator('#view-button')); };
       const setView = async view => { await openPanel(); await activate(page.locator(`[data-view="${view}"]`)); };
+      const choose = async mode => { await activate(page.locator('#activity-button')); await activate(page.locator(`[data-mode="${mode}"]`)); };
+      const fill = async heights => {
+        await page.locator('#scene').focus();
+        for (let i = 0; i < 5; i++) { await page.keyboard.press('ArrowUp'); await page.keyboard.press('ArrowLeft'); }
+        let x = 0, z = 0;
+        for (let i = 0; i < heights.length; i++) {
+          if (!heights[i]) continue;
+          const nextX = i % 5, nextZ = Math.floor(i / 5);
+          while (x !== nextX) { await page.keyboard.press(x < nextX ? 'ArrowRight' : 'ArrowLeft'); x += x < nextX ? 1 : -1; }
+          while (z !== nextZ) { await page.keyboard.press(z < nextZ ? 'ArrowDown' : 'ArrowUp'); z += z < nextZ ? 1 : -1; }
+          for (let h = 0; h < heights[i]; h++) await page.keyboard.press('Enter');
+        }
+        await total(heights.reduce((sum, h) => sum + h, 0));
+      };
 
       await page.goto(base + '/');
       await page.locator('#category-exploration-toggle').waitFor({ state: 'visible' });
@@ -48,6 +70,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('a[href="learning/inquiry/math/stacking-cubes/"]'));
       await page.waitForURL('**/learning/inquiry/math/stacking-cubes/**');
       await page.locator('#scene .floor-cell').first().waitFor({ state: 'visible' });
+      assert.equal(await page.evaluate(() => window.audioContextCount), 0, 'audio waits for an interaction');
       assert.equal(await page.locator('#total').isVisible(), false);
       assert.equal(await page.locator('#view-panel').isVisible(), false);
       assert.equal(await page.locator('#tools button:visible').count(), 3);
@@ -57,6 +80,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.locator('#scene').focus();
       await page.keyboard.press('Enter');
       await total(1);
+      assert.equal(await page.evaluate(() => ClassGameSfx.getAudioBus().context.state), 'running', 'interaction unlocks audio');
       await page.keyboard.press('Delete');
       await total(0);
       await page.keyboard.press('Control+z');
@@ -132,6 +156,114 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         const rect = await button.boundingBox();
         assert.ok(rect.width >= 44 && rect.height >= 44, 'controls retain touch target size');
       }
+
+      await page.evaluate(() => {
+        window.playedSounds = [];
+        const play = StackingSounds.play;
+        StackingSounds.play = (...args) => { window.playedSounds.push(args[0]); return play(...args); };
+      });
+      await choose('copy');
+      await total(0);
+      await activate(page.locator('#check-shape'));
+      assert.match(await page.locator('#challenge-result').textContent(), /다시/);
+      await fill(activities.questions('copy')[0]);
+      await activate(page.locator('#check-shape'));
+      assert.equal(await page.locator('#check-shape').textContent(), '다음 모양');
+      await snap('copy-success');
+      await activate(page.locator('#check-shape'));
+      assert.match(await page.locator('#challenge-title').textContent(), /2\/6/);
+      await total(0);
+      await choose('free');
+      await total(11);
+
+      const target = activities.questions('many')[0];
+      const alternative = target.map(h => h === 1 ? 2 : h);
+      await page.evaluate(hash => { location.hash = hash; }, activities.encode(target, 'views'));
+      await page.waitForFunction(() => document.getElementById('challenge-title').textContent === '그림 보고 쌓기 · 1/1');
+      await total(0);
+      for (const direction of ['front', 'right', 'top']) {
+        await activate(page.locator(`[data-target-view="${direction}"]`));
+        assert.equal(await page.locator('#target-scene .cell-number').count(), 0, 'target never reveals column heights');
+      }
+      await fill(alternative);
+      await activate(page.locator('#check-shape'));
+      assert.match(await page.locator('#challenge-result').textContent(), /성공/);
+      await snap('views-success');
+
+      await choose('many');
+      await fill(target);
+      await activate(page.locator('#check-shape'));
+      assert.equal(await page.locator('#check-shape').textContent(), '다른 모양 만들기');
+      await activate(page.locator('#check-shape'));
+      await total(0);
+      await activate(page.locator('#undo'));
+      await total(7);
+      await activate(page.locator('#check-shape'));
+      assert.match(await page.locator('#challenge-result').textContent(), /이미 찾은/);
+      await openPanel(); await activate(page.locator('#clear-board'));
+      await fill(alternative);
+      await activate(page.locator('#check-shape'));
+      assert.match(await page.locator('#challenge-result').textContent(), /서로 다른 두/);
+      await snap('many-success');
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight), true, 'activity fits viewport');
+      for (const button of await page.locator('#target-views button, #check-shape').all()) {
+        const rect = await button.boundingBox(); assert.ok(rect.width >= 44 && rect.height >= 44, 'activity touch targets');
+      }
+      await choose('free');
+      await total(11);
+      const played = await page.evaluate(() => window.playedSounds);
+      assert.equal(new URL(page.url()).hash, '', 'switching activities clears the old shared challenge');
+      for (const kind of ['add', 'retry', 'success', 'found', 'undo', 'clear', 'view']) assert.ok(played.includes(kind), `wired sound: ${kind}`);
+
+      await activate(page.locator('#activity-button'));
+      await activate(page.locator('#keep-options summary'));
+      await page.locator('#shape-name').fill('<b>내 성</b>');
+      await activate(page.locator('#save-shape'));
+      assert.equal(await page.locator('.saved-open span').textContent(), '<b>내 성</b>');
+      assert.equal(await page.locator('.saved-open b').count(), 0, 'saved labels are text, not HTML');
+      await activate(page.locator('.saved-delete'));
+      assert.equal(await page.locator('.saved-open').count(), 0);
+      await activate(page.locator('#undo-saved-delete'));
+      assert.equal(await page.locator('.saved-open').count(), 1);
+      await snap('library');
+
+      const downloaded = page.waitForEvent('download');
+      await activate(page.locator('#export-shape'));
+      const download = await downloaded;
+      const chunks = []; for await (const chunk of await download.createReadStream()) chunks.push(chunk);
+      const exported = activities.parseFile(Buffer.concat(chunks).toString());
+      assert.equal(exported.reduce((sum, h) => sum + h, 0), 11);
+      await page.locator('#shape-file').setInputFiles({ name: 'invalid.json', mimeType: 'application/json', buffer: Buffer.from('{}') });
+      await page.waitForFunction(() => document.getElementById('library-status').textContent.includes('올바른'));
+      await total(11);
+      await page.locator('#shape-file').setInputFiles({ name: 'shape.json', mimeType: 'application/json', buffer: Buffer.from(activities.file(activities.questions('copy')[0])) });
+      await total(4);
+      await activate(page.locator('#undo'));
+      await total(11);
+
+      await activate(page.locator('#activity-button'));
+      await page.locator('#share-mode').selectOption('views');
+      await activate(page.locator('#share-shape'));
+      const shared = await page.locator('#share-link').inputValue();
+      assert.deepEqual(activities.decode(new URL(shared).hash), { mode: 'views', heights: exported });
+      await activate(page.locator('#close-activities'));
+      await openPanel();
+      await page.locator('#sound-enabled').uncheck();
+      assert.equal(await page.evaluate(() => StackingSounds.play('add', 1)), false);
+      await page.evaluate(() => history.replaceState(null, '', location.pathname));
+      await page.reload();
+      await page.locator('#scene .floor-cell').first().waitFor();
+      await openPanel();
+      assert.equal(await page.locator('#sound-enabled').isChecked(), false, 'mute persists');
+      await page.locator('#sound-enabled').check();
+      await page.locator('#sound-volume').fill('35');
+      await page.locator('#sound-volume').dispatchEvent('change');
+      assert.equal(await page.evaluate(() => StackingSounds.volume()), .35);
+      await activate(page.locator('#view-button'));
+      await activate(page.locator('#activity-button'));
+      await activate(page.locator('.saved-open'));
+      await total(11);
+
       assert.deepEqual(errors, []);
       console.log(JSON.stringify({ name, width, height, touch, ok: true }));
       await context.close();

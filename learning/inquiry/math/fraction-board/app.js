@@ -25,6 +25,7 @@
   function render() {
     const c = current(), active = document.activeElement?.closest('[data-cell]');
     const focus = active ? { card: active.closest('[data-card]').dataset.card, cell: active.dataset.cell } : null;
+    $('cards').dataset.count = state.cards.length;
     $('cards').innerHTML = state.cards.map((card, i) => {
       const letter = String.fromCharCode(65 + i), n = C.count(card), mixed = C.mixed(card);
       return `<article class="fraction-card${card.id === state.selectedId ? ' selected' : ''}" data-card="${card.id}" aria-label="그림 ${letter}, ${C.SHAPES[card.shape]}">
@@ -93,6 +94,17 @@
   $('add-card').addEventListener('click', () => add(true));
   $('undo').addEventListener('click', () => history('undo'));
   $('redo').addEventListener('click', () => history('redo'));
+  function showSettings(show) {
+    $('inspector').hidden = !show;
+    document.querySelector('.workspace').classList.toggle('settings-hidden', !show);
+    $('toggle-settings').setAttribute('aria-expanded', String(show));
+    $('toggle-settings').textContent = show ? '설정 접기' : '그림 설정';
+  }
+  $('toggle-settings').addEventListener('click', () => {
+    showSettings($('inspector').hidden);
+    if ($('inspector').hidden) $('toggle-settings').scrollIntoView({ block: 'nearest' });
+    else if (innerWidth <= 600) $('inspector').scrollIntoView({ block: 'start' });
+  });
   $('cards').addEventListener('click', event => {
     const article = event.target.closest('[data-card]');
     if (!article) return;
@@ -131,7 +143,13 @@
     try { if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); }
     catch (_) { message('이 브라우저에서 전체 화면을 열지 못했어요.'); }
   });
-  document.addEventListener('fullscreenchange', () => { $('fullscreen').setAttribute('aria-pressed', String(!!document.fullscreenElement)); $('fullscreen').textContent = document.fullscreenElement ? '전체 화면 닫기' : '전체 화면'; });
+  let settingsBeforeFullscreen = true;
+  document.addEventListener('fullscreenchange', () => {
+    const full = !!document.fullscreenElement;
+    $('fullscreen').setAttribute('aria-pressed', String(full)); $('fullscreen').textContent = full ? '전체 화면 닫기' : '전체 화면';
+    if (full) { settingsBeforeFullscreen = !$('inspector').hidden; showSettings(false); }
+    else showSettings(settingsBeforeFullscreen);
+  });
   $('export-open').addEventListener('click', () => { $('export-status').textContent = ''; $('export-dialog').showModal(); });
   function encodeWebP(image) {
     return new Promise((resolve, reject) => {

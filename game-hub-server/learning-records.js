@@ -207,7 +207,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     } catch (error) { await db.query('ROLLBACK'); throw error; } finally { db.release(); }
   }));
 
-  async function scopes(req) {
+  async function scopes(req, currentOnly = false) {
     requireDatabase();
     const user = await requireTeacher(req), registrations = await teacherRegistrations(user);
     const result = [];
@@ -215,10 +215,13 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       const schoolwide = ['관리자', '교장', '교감'].includes(t.teacher_type);
       const rows = (await pool.query(`SELECT DISTINCT school_id, academic_year, grade, class_number FROM (
         SELECT school_id, academic_year, grade, class_number FROM school_students
-        UNION SELECT school_id, academic_year, grade, class_number FROM classroom_classes) c
+        UNION SELECT c.school_id, c.academic_year, c.grade, c.class_number FROM classroom_classes c
+          WHERE NOT $5::boolean OR EXISTS (
+            SELECT 1 FROM classroom_students s WHERE s.class_id = c.id AND s.roster_active = TRUE
+          )) c
         WHERE school_id = $1 AND ($2::int IS NULL OR academic_year = $2)
           AND ($3::int IS NULL OR grade = $3) AND ($4::int IS NULL OR class_number = $4)
-        ORDER BY academic_year DESC, grade, class_number`, [t.school_id, t.academic_year || null, schoolwide ? null : t.grade || -1, schoolwide ? null : t.class_number || -1])).rows;
+        ORDER BY academic_year DESC, grade, class_number`, [t.school_id, t.academic_year || null, schoolwide ? null : t.grade || -1, schoolwide ? null : t.class_number || -1, currentOnly])).rows;
       for (const row of rows) {
         const id = [row.school_id, row.academic_year, row.grade, row.class_number].join(':');
         if (!result.some(x => x.id === id)) result.push({ id, label: `${t.school_name} ${row.academic_year} · ${row.grade}학년 ${row.class_number}반`, ...row });
@@ -247,7 +250,10 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       WHERE u.id=ANY($5::bigint[]) AND m.school_id=$1 AND m.academic_year=$2 AND m.grade=$3 AND m.class_number=$4`,
     [scope.school_id, scope.academic_year, scope.grade, scope.class_number, candidates])).rows.map(row => row.user_id);
   }
-  router.get('/teacher/classes', asyncRoute(async (req, res) => res.json({ classes: await scopes(req), catalog })));
+  // Retained classroom rows authorize historical records; they are not a roster.
+  // The picker lists only classes that still have registered pupils (including
+  // pupils who have never logged in and active legacy-only rosters).
+  router.get('/teacher/classes', asyncRoute(async (req, res) => res.json({ classes: await scopes(req, true), catalog })));
   router.get('/teacher/report', asyncRoute(async (req, res) => {
     const scope = (await scopes(req)).find(s => s.id === req.query.classId);
     if (!scope) fail('CLASS_FORBIDDEN', '담당 학급의 기록만 볼 수 있어요.', 403);

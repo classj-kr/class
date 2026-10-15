@@ -86,9 +86,13 @@
   window.StackingSounds = {
     play,
     muted: () => window.ClassGameSfx?.isMuted() ?? false,
-    volume: () => { const value = stored('classSfxVolumeValue'); return value !== null && Number.isFinite(Number(value)) ? Math.max(0, Math.min(1, Number(value))) : .65; },
+    volume: () => {
+      const value = stored('classSfxVolumeValue'), level = Number(stored('classSfxVolumeLevel'));
+      if (value !== null && value !== '' && Number.isFinite(Number(value)) && Number(value) >= 0 && Number(value) <= 1) return Number(value);
+      return Number.isInteger(level) && level >= 1 && level <= 5 ? level / 5 : .65;
+    },
     setMuted(value) { save('classSfxMuted', value ? '1' : '0'); window.ClassGameSfx?.setMuted(value); if (value) [...voices].forEach(stop => stop()); },
-    setVolume(value) { const volume = Math.max(0, Math.min(1, Number(value))); save('classSfxVolumeValue', volume); window.ClassGameSfx?.setVolume(volume); }
+    setVolume(value) { if (!Number.isFinite(Number(value))) return; const volume = Math.max(0, Math.min(1, Number(value))); save('classSfxVolumeValue', volume); window.ClassGameSfx?.setVolume(volume); }
   };
   document.addEventListener('visibilitychange', () => { if (document.hidden) [...voices].forEach(stop => stop()); });
 })();

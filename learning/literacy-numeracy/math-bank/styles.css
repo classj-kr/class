@@ -154,7 +154,8 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 /* 식 속에 끼워 넣는 답 칸(중학교): 「[±][ ] x [±][ ]」, 「x [부등호] [ ]」, 지수 칸은 위로 올린다. */
 .mb-tpl { font-size: 1.25rem; line-height: 2.75; }
 .mb-tpl .mb-field { gap: 4px; margin: 0 2px; vertical-align: middle; line-height: 1.2; }
-.mb-tpl .mb-field input { width: 3.3em; padding: 6px 4px; }
+.mb-tpl .mb-field input { width: 2.8em; padding: 6px 4px; }
+.mb-nw { white-space: nowrap; }
 .mb-tpl sup.mb-tpl-up { font-size: 1em; line-height: 1; vertical-align: 1em; margin-left: -1px; }
 .mb-tpl sup.mb-tpl-up .mb-field input { width: 2.5em; min-height: 36px; padding: 2px; font-size: 1rem; border-radius: 8px; }
 .mb-rel { min-width: 58px; min-height: 44px; padding: 0 4px; border: 2px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font-family: "MB Rel", "Times New Roman", serif; font-size: 1.3rem; font-weight: 700; text-align: center; text-align-last: center; cursor: pointer; }
@@ -262,6 +263,12 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 /* 분수와 소수: 분수 글, 분수 답 칸, 나눈 도형 */
 .mb-frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1.12; font-variant-numeric: tabular-nums; margin: 0 1px; font-size: 1em; font-weight: 600; }
 .mb-frac > span:first-child { border-bottom: 1.5px solid currentColor; padding: 0 4px 1px; }
+/* 근호(중3): √ 기호는 안의 글 높이에 맞춘 작은 그림, 안의 글 위에 줄. 보이지 않는 √ 글자(mb-sr)는 글로 옮길 때 쓴다. */
+.mb-rad { position: relative; display: inline-block; padding-left: 0.6em; margin-left: 0.04em; white-space: nowrap; line-height: 1.2; }
+.mb-rad > svg { position: absolute; left: 0; top: 0; width: 0.6em; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linejoin: round; stroke-linecap: round; }
+.mb-rad > svg path { vector-effect: non-scaling-stroke; }
+.mb-rad-in { display: inline-block; border-top: 1.2px solid currentColor; padding: 0.1em 0.08em 0 0.06em; }
+.mb-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .mb-frac > span:last-child { padding: 1px 4px 0; }
 .mb-frac .mb-frac-bar { font-size: 0; line-height: 0; height: 0; padding: 0; border: 0; overflow: hidden; }
 .mb-fracfield { display: inline-flex; flex-direction: column; align-items: stretch; gap: 6px; }
