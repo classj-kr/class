@@ -42,14 +42,15 @@ def main(argv):
     old = re.search(r'\?v=([0-9-]+)', html).group(1)
     assert old != version, '번호가 그대로다: ' + old
     html = html.replace('?v=' + old, '?v=' + version)
-    line = '  <script src="units/%s.js?v=' + version + '"></script>\n'
+    # 단원 줄은 type="text/plain" data-unit — 브라우저가 받지 않는 목록이고, app.js 가 고른 학기의 파일만 불러온다.
+    line = '  <script src="units/%s.js?v=' + version + '" type="text/plain" data-unit></script>\n'
     for part in parts:
         name = unit + part
         if 'units/%s.js' % name in html:
             continue
         assert os.path.exists(os.path.join(APP, 'units', name + '.js')), name + '.js 가 없다'
         # 같은 단원의 앞 갈래 뒤에, 없으면 이름 차례로 바로 앞 단원 줄 뒤에 넣는다. 가장 앞선 단원이면 첫 단원 줄 앞에 넣는다.
-        lines = list(re.finditer(r'  <script src="units/([0-9-]+[a-z])\.js\?v=[0-9-]+"></script>\n', html))
+        lines = list(re.finditer(r'  <script src="units/([0-9-]+[a-z])\.js\?v=[0-9-]+"[^>]*></script>\n', html))
         assert lines, '단원 줄을 찾지 못했다'
         before = [m for m in lines if m.group(1) < name]
         at = before[-1].end() if before else lines[0].start()

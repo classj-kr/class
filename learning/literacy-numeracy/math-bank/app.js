@@ -71,18 +71,45 @@
   // 드롭다운의 항목 이름과 맨 밑의 기출 항목(terms.js). 기출 화면의 자리.
   const T = window.MathBankTerms, PAST_URL = '../csat-math/';
 
+  // ── 단원 파일은 고른 학기의 것만 불러온다 ──────────────────────
+  // 모든 학기를 한꺼번에 받으면 16 MB가 넘어 느린 망에서 첫 화면이 십몇 초 걸린다. index.html 의 단원 줄은 type="text/plain"이라
+  // 브라우저가 받지 않고 목록 노릇만 한다. 학기를 고르면 그 학기의 파일을 index.html 차례대로 붙인다(async = false 라 차례대로 실행된다).
+  const UNIT_FILES = [...document.querySelectorAll('script[data-unit]')].map((node) => {
+    const src = node.getAttribute('src'), file = src.split('/').pop().split('?')[0].replace(/\.js$/, '');
+    return { src, file, term: file.split('-').slice(0, 2).join('-') };
+  });
+  // 학기를 넘어 빌려 쓰는 도구: 6-1-6(각기둥과 각뿔)은 5-2-5a.js 의 직육면체 그림 도구(B.kit.box525)를 쓴다.
+  const NEEDS = { '6-1': ['5-2-5a'] };
+  const loading = new Map();
+  const loadFile = (entry) => {
+    if (!loading.has(entry.file)) loading.set(entry.file, new Promise((resolve, reject) => {
+      const node = document.createElement('script');
+      node.src = entry.src; node.async = false;
+      node.onload = resolve; node.onerror = () => reject(new Error(entry.src + ' 을 불러오지 못했습니다'));
+      document.body.append(node);
+    }));
+    return loading.get(entry.file);
+  };
+  const loadTerm = (term) => Promise.all(UNIT_FILES.filter((e) => (NEEDS[term] || []).includes(e.file)).concat(UNIT_FILES.filter((e) => e.term === term)).map(loadFile));
+  const TERM_LIST = [...new Set(UNIT_FILES.map((e) => e.term))];
+  // 화면 검사가 쓴다: 실린 단원 번호 전부(아직 안 불러온 학기 것까지)와 학기 불러오기.
+  B.lazy = { ids: () => [...new Set(UNIT_FILES.map((e) => e.file.slice(0, -1)))], terms: () => TERM_LIST.slice(), loadTerm };
+  const unitsOf = (term) => B.units().filter((u) => termOf(u) === term).sort((a, b) => a.no - b.no);
+
   // ── 단원 고르기 ──────────────────────────────────────────────
-  function fillSelects(preferred) {
-    const units = B.units();
-    const terms = [...new Set(units.map(termOf))];
-    // preferred 는 단원 번호(3-1-2)이거나 학기(3-1)다. 학기이면 그 학기의 첫 단원을 연다.
-    unit = units.find((u) => u.id === preferred) || units.find((u) => termOf(u) === preferred) || units[0];
+  async function fillSelects(preferred) {
+    // preferred 는 단원 번호(3-1-2)이거나 학기(3-1)다. 학기이면 그 학기의 첫 단원을 연다. 없으면 맨 앞 학기.
+    const want = String(preferred || '');
+    const term = TERM_LIST.includes(want) ? want : TERM_LIST.find((t) => want.startsWith(t + '-')) || TERM_LIST[0];
+    await loadTerm(term);
+    const list = unitsOf(term);
+    unit = list.find((u) => u.id === want) || list[0];
     // 학기들 아래 맨 밑에 「평가원·수능 기출」이 붙는다(terms.js).
-    T.fill(termSelect, termOf(unit), terms);
+    T.fill(termSelect, term, TERM_LIST);
     fillUnits();
   }
   function fillUnits() {
-    const list = B.units().filter((u) => termOf(u) === termSelect.value);
+    const list = unitsOf(termSelect.value);
     unitSelect.replaceChildren(...list.map((u) => new Option(u.no + '. ' + u.title, u.id)));
     if (!list.includes(unit)) unit = list[0];
     unitSelect.value = unit.id;
@@ -90,7 +117,7 @@
   termSelect.addEventListener('change', async () => {
     // 맨 밑의 「평가원·수능 기출」은 따로 있는 기출 화면으로 간다. 뒤로 돌아왔을 때 드롭다운이 기출에 머물러 있지 않게 먼저 되돌려 둔다.
     if (termSelect.value === T.PAST.value) { termSelect.value = termOf(unit); location.href = PAST_URL; return; }
-    fillUnits(); await loadFinished(); showGroups();
+    await loadTerm(termSelect.value); fillUnits(); await loadFinished(); showGroups();
   });
   unitSelect.addEventListener('change', async () => { unit = B.findUnit(unitSelect.value); await loadFinished(); showGroups(); });
 
@@ -342,7 +369,7 @@
     await records.ready;
     const params = new URLSearchParams(location.search);
     const record = (params.get('record') || '').split(':');   // 풀던 회차: 단원:묶음:수준:회차
-    fillSelects(record.length >= 3 ? record[0] : params.get('unit') || params.get('term'));
+    await fillSelects(record.length >= 3 ? record[0] : params.get('unit') || params.get('term'));
     await loadFinished();
     if (record.length >= 3 && unit.id === record[0] && B.findGroup(unit, record[1]) && B.LEVELS.includes(record[2])) await openRound(record[1], record[2], Number(record[3]) || 1);
     else showGroups();
