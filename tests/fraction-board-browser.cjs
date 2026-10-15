@@ -147,12 +147,10 @@ test('visibility controls and phone touch targets stay usable for all shapes', a
   assert.equal(await page.locator('#inspector').isVisible(), true);
 });
 
-test('fullscreen and six-picture limit retain controls and undo', async () => {
-  await page.locator('#fullscreen').click();
-  await page.waitForFunction(() => !!document.fullscreenElement && document.getElementById('inspector').hidden);
+test('collapsing settings and six-picture limit retain controls and undo', async () => {
+  await page.locator('#toggle-settings').click();
   assert.equal(await page.locator('#inspector').isVisible(), false);
-  await page.locator('#fullscreen').click();
-  await page.waitForFunction(() => !document.fullscreenElement && !document.getElementById('inspector').hidden);
+  await page.locator('#toggle-settings').click();
   assert.equal(await page.locator('#inspector').isVisible(), true);
   for (let i = 0; i < 5; i++) await page.locator('#add-card').click();
   assert.equal(await page.locator('.fraction-card').count(), 6);

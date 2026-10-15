@@ -16,7 +16,7 @@ assert.ok(
   'Story books must remain in the literacy and numeracy section.',
 );
 
-// 역사와 지도는 사회, 실험과 모형은 과학에서 바로 고른다.
+// 역사와 지도는 역사·지리, 실험과 모형은 과학 모형에서 바로 고른다.
 assert.ok(!groupByName.has('korea-maps'), 'The domestic-map tools are one app now, not a disclosure menu.');
 assert.match(html, /<a href="learning\/inquiry\/korea-map\/" data-requires-player="true" data-access-parent="social-studies"[^>]*>\s*<span class="worksheet-copy"><strong>국내 지도<\/strong>/);
 assert.doesNotMatch(html, /href="learning\/inquiry\/(?:korean-museum|korea-travel-map|korea-geography|korea-terrain)\//);
@@ -27,7 +27,7 @@ assert.ok(
 
 const socialStudies = groupByName.get('social-studies') || '';
 assert.ok(socialStudies, 'History and maps must be grouped in the social-studies menu.');
-assert.match(socialStudies, /<strong>사회<\/strong><small>\(Social Studies\)<\/small>/);
+assert.match(socialStudies, /<strong>역사·지리<\/strong><small>\(History &amp; Geography\)<\/small>/);
 assert.match(socialStudies, /href="learning\/inquiry\/korean-history\/"[^>]*data-access-parent="social-studies"[\s\S]*?<strong>한능검\(기본\) 기출<\/strong>/);
 assert.ok(!groupByName.has('world-maps') && !groupByName.has('science-models'), 'Subject menus must link to apps without another map or model submenu.');
 assert.match(socialStudies, /data-content-paths="learning\/inquiry\/korean-history\/\|learning\/inquiry\/korea-map\/\|learning\/inquiry\/world-geography\/\|learning\/inquiry\/globe\/\|\/learn\/world-voyage\/"/);
@@ -63,7 +63,7 @@ assert.doesNotMatch(grammar, /<strong>문장 만들기<\/strong>/);
 
 const science = groupByName.get('science') || '';
 assert.ok(science, 'Science experiments and models must share one subject menu.');
-assert.match(science, /<strong>과학<\/strong><small>\(Science\)<\/small>/);
+assert.match(science, /<strong>과학 모형<\/strong><small>\(Science Models\)<\/small>/);
 assert.match(science, /data-content-paths="learning\/inquiry\/science-lab\/\|learning\/inquiry\/human-body\/\|learning\/inquiry\/space\/\|learning\/inquiry\/periodic-table\/"/);
 const orderedScienceItems = [
   ['learning/inquiry/science-lab/', '과학 실험'],

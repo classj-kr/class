@@ -6,8 +6,8 @@
   let store, edited = false, generation = 0, failed = false, saveQueue = Promise.resolve();
   const scene = () => state.scenes[state.mode];
   const allowed = action => { try { action(); return true; } catch (_) { return false; } };
-  const message = (text, error = false) => { $('message').textContent = text; $('message').dataset.error = String(error); };
-  const saveStatus = (text, error = false) => { $('save-status').textContent = text; $('save-status').dataset.error = String(error); };
+  const message = (text, error = false) => { $('message').textContent = text; $('message').dataset.error = String(error); $('message').hidden = !error; };
+  const saveStatus = (text, error = false) => { $('save-status').textContent = text; $('save-status').dataset.error = String(error); $('save-status').hidden = !error; };
   function persist() {
     edited = true;
     if (!store) return;
@@ -25,12 +25,11 @@
     const focused = document.activeElement?.closest('#columns [data-action]');
     const focus = focused ? { index: focused.closest('[data-index]').dataset.index, action: focused.dataset.action } : null;
     document.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
-    $('total').textContent = state.showTotal ? C.format(C.total(s.counts), mode) : '얼마일까요?';
+    $('total').textContent = state.showTotal ? C.format(C.total(s.counts), mode) : '?';
     $('total').classList.toggle('hidden-total', !state.showTotal);
-    $('expression').textContent = state.showTotal ? C.expression(s, mode) : '모형을 세어 수를 말해 보세요.';
+    $('expression').textContent = state.showTotal ? C.expression(s, mode) : '';
     $('unit-model').innerHTML = C.blockSVG(mode === 'whole' ? 3 : 0);
     $('unit-label').textContent = mode === 'whole' ? '작은 정육면체 1개 = 1' : '큰 정육면체 1개 = 1';
-    $('unit-note').textContent = mode === 'whole' ? '작은 정육면체 10개 = 막대 1개' : '판 10개 = 큰 정육면체 1개';
     $('number-input').value = C.format(C.total(s.counts), mode);
     $('number-form').hidden = !state.showTotal;
     $('number-input').inputMode = mode === 'whole' ? 'numeric' : 'decimal';
@@ -45,6 +44,7 @@
       $('lesson-title').textContent = example.title + (s.done && state.showTotal ? ' = ' + C.format(C.total(s.counts), mode) : '');
       const ready = example.subtract && allowed(() => C.subtract(s, mode));
       $('lesson-hint').textContent = s.done ? '모형을 빼고 남은 수를 확인해 보세요.' : ready ? '각 자리의 모형이 준비됐어요. 이제 빼 보세요.' : example.hint;
+      $('subtract').title = $('lesson-hint').textContent;
       $('subtract').disabled = !ready;
       if (example.subtract) $('subtract').textContent = C.format(C.total(example.subtract), mode) + ' 빼기';
     }
@@ -53,9 +53,9 @@
       const n = s.counts[i], bundle = allowed(() => C.exchange(s, i, 'bundle', mode)), split = allowed(() => C.exchange(s, i, 'split', mode));
       return `<article class="place-column" data-index="${i}" aria-label="${info.values[i]} 모형 ${n}개">
         <div class="place-heading" tabindex="-1"><div><h2>${info.values[i]}</h2><span class="place-name">${info.labels[i]}</span></div><span class="count"><b>${n}</b>개</span></div>
-        <div class="block-cloud" data-shape="${i}" role="img" aria-label="${info.values[i]} 모형 ${n}개">${n ? Array.from({ length: n }, () => `<span class="block" aria-hidden="true">${C.blockSVG(i)}</span>`).join('') : '<p class="empty">아직 모형이 없어요<br>＋를 눌러 놓아 보세요</p>'}</div>
+        <div class="block-cloud" data-shape="${i}" role="img" aria-label="${info.values[i]} 모형 ${n}개">${Array.from({ length: n }, () => `<span class="block" aria-hidden="true">${C.blockSVG(i)}</span>`).join('')}</div>
         <div class="place-controls"><div class="counter-buttons"><button type="button" data-action="remove" aria-label="${info.values[i]} 모형 1개 지우기" ${n ? '' : 'disabled'}>−</button><button type="button" data-action="add" aria-label="${info.values[i]} 모형 1개 놓기" ${allowed(() => C.add(s, i, 1, mode)) ? '' : 'disabled'}>＋</button></div>
-        <div class="exchange-buttons"><button type="button" data-action="bundle" ${bundle ? '' : 'disabled'}>← 10개 묶기<small>${indexes.includes(i-1) ? info.values[i-1] + ' 모형 1개로' : '가장 큰 자리'}</small></button><button type="button" data-action="split" ${split ? '' : 'disabled'}>1개 풀기 →<small>${indexes.includes(i+1) ? info.values[i+1] + ' 모형 10개로' : '가장 작은 자리'}</small></button></div></div>
+        <div class="exchange-buttons"><button type="button" data-action="bundle" title="${indexes.includes(i-1) ? info.values[i-1] + ' 모형 1개로 묶기' : '가장 큰 자리'}" ${bundle ? '' : 'disabled'}>← 10개 묶기</button><button type="button" data-action="split" title="${indexes.includes(i+1) ? info.values[i+1] + ' 모형 10개로 풀기' : '가장 작은 자리'}" ${split ? '' : 'disabled'}>1개 풀기 →</button></div></div>
       </article>`;
     }).join('');
     $('clear').disabled = !C.total(s.counts);
@@ -150,22 +150,14 @@
   });
   function showSettings(show) {
     $('settings').hidden = !show; document.querySelector('.workspace').classList.toggle('settings-hidden', !show);
-    $('toggle-settings').setAttribute('aria-expanded', String(show)); $('toggle-settings').textContent = show ? '설정 접기' : '설정';
+    $('toggle-settings').setAttribute('aria-expanded', String(show)); $('toggle-settings').title = show ? '설정 접기' : '설정 펼치기';
   }
   $('toggle-settings').addEventListener('click', () => showSettings($('settings').hidden));
   showSettings(innerWidth > 800);
-  $('fullscreen').hidden = !document.fullscreenEnabled;
-  $('fullscreen').addEventListener('click', async () => {
-    try { if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); }
-    catch (_) { message('이 브라우저에서는 전체 화면을 열지 못했어요.', true); }
-  });
-  let previousSettings = true;
-  document.addEventListener('fullscreenchange', () => {
-    const full = !!document.fullscreenElement;
-    $('fullscreen').textContent = full ? '전체 화면 닫기' : '전체 화면'; $('fullscreen').setAttribute('aria-pressed', String(full));
-    if (full) { previousSettings = !$('settings').hidden; showSettings(false); }
-    else showSettings(previousSettings);
-  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const back = document.querySelector('site-back-navigation');
+    if (back) { $('back-slot').append(back); $('back-slot').hidden = false; }
+  }, { once: true });
   render();
   window.SiteStorage.open('number-models').then(opened => {
     store = opened;
