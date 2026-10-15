@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-15T16:40:34.665Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "catalyst-foam",
+      "scenarios": 145
+    }
+  ],
+  "scenarios": 145,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}
