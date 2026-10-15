@@ -10,6 +10,7 @@ function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRo
       const entry = await roomCodes.lookup(code);
       const activity = entry?.activity || (legacyVoyageRoomExists(code) ? 'voyage' : 'legacy');
       if (activity === 'board') return res.json({ type: activity, href: `/boards/?code=${code}` });
+      if (activity === 'exam') return res.json({ type: activity, href: `/exams/?code=${code}` });
       if (activity === 'rhythm') {
         if (!rhythmExists(code)) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });
         return res.json({ type: activity, href: `/learning/arts/music-theory/rhythm-training/?room=${code}&entry=main` });

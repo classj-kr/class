@@ -110,3 +110,7 @@ module.exports.push({id:'12생과03#2',slugs:['cell-division'],status:'부분',n
 module.exports.push({id:'9과20#2',slugs:['reflex-nerve','senses'],status:'부분',note:'2022 동아 중3의 23~25쪽 힘 센서·근전도 실험과 반응 경로 대조. 같은 다리의 반사/의식적 반응과 동공 반사를 비교하고 감각·운동 신호 차단을 구별한다. 24쪽의 B−A 해석을 객관식에서 평가한다. 실물 센서 부착과 반응 시간 실측·촬영 완료 아님.'});
 
 module.exports.push({id:'9과04#1',slugs:['diffusion'],status:'모의활동',note:'2022 미래엔 116~117쪽의 물속 잉크, 중앙 식초·떨어진 BTB 방울·덮개를 구현한 정성 관찰. 임의 NH3/HCl 5초 전선 계산 제거. 실제 영상 촬영·실측 시간 및 다른 출판사의 초콜릿/팝콘 실험 수행 완료는 아님.'});
+
+const iodineClock=require('../../scripts/science-iodine-clock-experiment.cjs');module.exports.push({id:'12물에04#2',slugs:[iodineClock.slug,'rate-equilibrium','enzyme'],status:'부분',note:iodineClock.current+' '+iodineClock.boundary});
+
+const catalystFoam=require('../../scripts/science-catalyst-foam-experiment.cjs');module.exports.push({id:'12물에04#2',slugs:[iodineClock.slug,catalystFoam.slug,'rate-equilibrium','enzyme'],status:'부분',note:iodineClock.current+' '+catalystFoam.current+' '+iodineClock.boundary+' '+catalystFoam.boundary});

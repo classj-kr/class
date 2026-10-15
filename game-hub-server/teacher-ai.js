@@ -8,6 +8,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { readPlanDocument } = require('./plan-document');
 const { cleanItems, LEVEL_LABELS } = require('./assessment-plans');
+const { normalizeQuestions } = require('./exams');
 
 const API_ROOT = 'https://generativelanguage.googleapis.com/v1beta';
 // 429·500·502·503·504 는 구글 쪽 사정이다. 곧 풀리는 경우가 많다.
@@ -244,9 +245,9 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     return { subject: clean(parsed.subject, 60), semester: clean(parsed.semester, 20), topics, note: clean(parsed.note, 300) };
   }
 
-  async function callGeminiWithParts(model, apiKey, parts) {
+  async function callGeminiWithParts(model, apiKey, parts, maxOutputTokens = 4096) {
     const url = API_ROOT + '/models/' + model + ':generateContent';
-    const body = { contents: [{ parts }], generationConfig: { maxOutputTokens: 4096, temperature: 0.2 } };
+    const body = { contents: [{ parts }], generationConfig: { maxOutputTokens, temperature: 0.2 } };
     const result = await callWithRetry(url, apiKey, body);
     if (result.data) return result.data;
     failForStatus(result.status, result.why);
@@ -337,17 +338,17 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     try { return JSON.parse(body.slice(start, end + 1)); } catch (_) { fail(code, message, 502); }
   }
 
-  async function askJson(userId, stored, parts) {
+  async function askJson(userId, stored, parts, maxOutputTokens = 4096) {
     let model = await pickModel(userId, stored.apiKey, stored.model);
     let data;
     try {
-      data = await callGeminiWithParts(model, stored.apiKey, parts);
+      data = await callGeminiWithParts(model, stored.apiKey, parts, maxOutputTokens);
     } catch (error) {
       if (error.code !== 'AI_UPSTREAM_BUSY' && error.code !== 'AI_UPSTREAM_ERROR') throw error;
       const other = await pickModel(userId, stored.apiKey, null, model);
       if (other === model) throw error;
       model = other;
-      data = await callGeminiWithParts(model, stored.apiKey, parts);
+      data = await callGeminiWithParts(model, stored.apiKey, parts, maxOutputTokens);
     }
     const answer = extractText(data);
     if (!answer.trim()) {
@@ -457,6 +458,35 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
     const result = await askForTopics(user.id, stored, document, context);
     res.json({ subject: result.subject, semester: result.semester, topics: result.topics, note: result.note, source: document.kind === 'text' ? 'text' : document.mime });
+  }));
+
+  // PDF 시험지에서 객관식·OX·단답형 문항 초안을 추출한다. 정답이 확실하지 않으면 비워서 교사가 검수한다.
+  router.post('/extract-exam', express.raw({ type: () => true, limit: MAX_PLAN_FILE_BYTES }), asyncRoute(async (req, res) => {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    if (!Buffer.isBuffer(req.body) || !req.body.length || req.body.subarray(0, 4).toString('latin1') !== '%PDF') {
+      fail('AI_PDF_REQUIRED', 'PDF 시험지를 올려 주세요.', 415);
+    }
+    countGenerate(user.id);
+    const stored = await storedKey(user.id);
+    if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
+    const prompt = [
+      '이 PDF는 학생용 시험지다. 객관식, OX, 단답형 문제를 문항 순서대로 옮겨라. 최대 50문항.',
+      '문제와 선택지의 원문을 충실히 옮기고 새 문제를 만들지 마라. 지문이 여러 문항에 공통이면 각 문항 내용 앞에 필요한 지문을 포함하라.',
+      '표·그림·수식 등 텍스트만으로 정확히 재현하기 어려운 문항은 제외하고 note에 문항 번호와 이유를 써라.',
+      '문서에 정답표가 있으면 그 정답만 사용한다. 정답표가 없거나 대응이 불명확하면 객관식·OX의 answer는 null, 단답형의 answer는 빈 문자열로 둔다. 정답을 추측하지 마라.',
+      '객관식 kind는 choice, OX는 ox. 이 둘의 answer는 0부터 시작하는 보기 번호다. OX의 choices는 ["O","X"]로 고정한다.',
+      '단답형 kind는 short, choices는 빈 배열, answer는 정답표에 있는 정답 문자열이다. 여러 정답이 명시되면 aliases에 다른 허용 정답을 적는다. 정답표가 없으면 answer는 빈 문자열이다.',
+      'JSON 객체 한 개만 답하라. 예: {"questions":[{"kind":"short","content":"문제","choices":[],"answer":"","aliases":[],"explanation":""}],"note":""}'
+    ].join('\n');
+    const data = readPlanDocument(req.body, 'exam.pdf');
+    const parsed = parseJsonAnswer(await askJson(user.id, stored,
+      [{ inline_data: { mime_type: data.mime, data: data.base64 } }, { text: prompt }], 16384),
+    'AI_EXAM_UNREADABLE', '시험지에서 문항을 읽지 못했습니다. PDF를 확인해 주세요.');
+    let questions;
+    try { questions = normalizeQuestions(Array.isArray(parsed.questions) ? parsed.questions : []); }
+    catch (_) { fail('AI_EXAM_UNREADABLE', '추출한 문항 형식을 읽지 못했습니다. 다시 시도해 주세요.', 502); }
+    res.json({ questions, note: String(parsed.note || '').slice(0, 1000) });
   }));
 
   // 수행평가 계획서 파일 → 나이스 틀의 항목 목록. 성취기준 코드는 그 교과·학년군 목록에서만 고른다.

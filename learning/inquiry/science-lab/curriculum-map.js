@@ -3471,6 +3471,23 @@ const scienceCurriculum = {
     ],
     "diagnostic": true,
     "bankQuestionIds": []
+  },
+  "catalyst-foam": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "촉매에 따른 과산화 수소 분해",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에04-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;

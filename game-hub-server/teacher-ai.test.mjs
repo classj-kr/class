@@ -44,7 +44,7 @@ async function startServer(fetchImpl) {
     });
     return { status: response.status, body: await response.json() };
   };
-  return { call, db, warnings, close: async () => { server.close(); await db.close(); } };
+  return { call, base, db, warnings, close: async () => { server.close(); await db.close(); } };
 }
 
 // 구글 흉내: 키 하나만 받아 주고, 어떤 키로 왔는지 기록한다.
@@ -127,5 +127,31 @@ test("empty or oversized prompts are rejected before touching Google", async () 
     assert.equal((await s.call("POST", "/generate", "teacher-a", { prompt: "   " })).body.error, "AI_PROMPT_REQUIRED");
     assert.equal((await s.call("POST", "/generate", "teacher-a", { prompt: "가".repeat(60001) })).body.error, "AI_PROMPT_TOO_LONG");
     assert.equal(google.seen.length, calls);
+  } finally { await s.close(); }
+});
+
+test('PDF exam extraction uses the teacher key and keeps uncertain answers empty', async () => {
+  const google = fakeGoogle();
+  const original = google.fetchImpl;
+  google.fetchImpl = async (url, options) => {
+    if (String(url).endsWith(':generateContent')) return { ok: true, status: 200, json: async () => ({
+      candidates: [{ content: { parts: [{ text: JSON.stringify({ questions: [
+        { kind: 'short', content: '빈칸에 알맞은 말은?', choices: [], answer: '', aliases: [] },
+        { kind: 'choice', content: '2+3은?', choices: ['4', '5'], answer: 1 }
+      ], note: '단답형 정답표가 없음' }) }] } }]
+    }) };
+    return original(url, options);
+  };
+  const s = await startServer(google.fetchImpl);
+  try {
+    await s.call('PUT', '/key', 'teacher-a', { key: google.validKey });
+    const response = await fetch(s.base + '/extract-exam', { method: 'POST',
+      headers: { 'content-type': 'application/pdf', 'x-test-user': 'teacher-a' }, body: Buffer.from('%PDF-1.4\nmock') });
+    const data = await response.json();
+    assert.equal(response.status, 200, JSON.stringify(data));
+    assert.equal(data.questions.length, 2);
+    assert.equal(data.questions[0].answer, '');
+    assert.equal(data.questions[1].answer, 1);
+    assert.match(data.note, /정답표/);
   } finally { await s.close(); }
 });

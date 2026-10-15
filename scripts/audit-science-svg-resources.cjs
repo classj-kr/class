@@ -19,6 +19,8 @@ async function paint(p){await p.bringToFront();await p.evaluate(()=>new Promise(
    const selectors=await p.evaluate(()=>['button[data-mode]','[data-sc-mode]','[data-experiment]','[data-supplement-choice]','[data-rs-mode]','[data-rs-action]','[data-tf-mode]','[data-tf-contact]'].flatMap(sel=>[...document.querySelectorAll(sel)].map(e=>({selector:[...e.attributes].filter(a=>['data-mode','data-sc-mode','data-experiment','data-supplement-choice','data-value','data-rs-mode','data-rs-action','data-tf-mode','data-tf-contact'].includes(a.name)).map(a=>'['+a.name+'='+JSON.stringify(a.value)+']').join(''),name:e.textContent.trim().slice(0,50)}))));
    if(route.slug==='rate-equilibrium')selectors.push(...['exo','endo'].flatMap(heat=>['off','on'].map(cat=>({rate:{heat,cat}}))));
    if(route.slug==='refraction')selectors.push(...[['plane','convexMirror','concaveMirror','convexLens','concaveLens'].flatMap(o=>['near','middle','far'].map(d=>o+':'+d)),['water','glass'].flatMap(m=>['in','out'].flatMap(d=>(d==='in'?[0,1,30,60,85]:[0,1,20,30,40]).map(a=>'ray:'+m+':'+d+':'+a)))].flat().map(optics=>({optics})));
+   if(route.slug==='catalyst-foam')selectors.push(...['ki','control','no-soap'].flatMap(m=>['bare','ready',0,.03,.3,.65,1].map(p=>m+':'+p)).map(catalystFoam=>({catalystFoam})));
+   if(route.slug==='iodine-clock')selectors.push(...['concentration:bare','concentration:wrong','concentration:ready',...[14.9,15,20.9,21,27.9,28,46.9,47].map(t=>'concentration:'+t),'concentration:47:inverse','temperature:bare','temperature:ready',...[5.9,6,23.9,24,35.9,36].map(t=>'temperature:'+t),'temperature:36:inverse'].map(iodineClock=>({iodineClock})));
    if(route.slug==='acid-mixing')selectors.push(...['cabbage','phenol'].flatMap(mode=>['acid','base'].flatMap(start=>['opposite','water'].flatMap(titrant=>(mode==='cabbage'?[0,5,15,20,25,30]:[0,1,2,2.5,5]).map(v=>[mode,start,titrant,v].join(':'))))).map(acidMixing=>({acidMixing})));
    if(route.slug==='diffusion'){await p.waitForFunction(()=>!!window.__diffusionModel);selectors.push(...['ink:centre:0','ink:centre:0.15','ink:centre:0.5','ink:centre:1','ink:left:0.15','ink:right:0.15','ink:centre:0:particles','ink:centre:0.5:particles','ink:centre:1:particles','btb:vinegar:0','btb:vinegar:0.4','btb:vinegar:0.65','btb:vinegar:1','btb:water:1','btb:vinegar:0.5:particles','btb:water:1:particles'].map(diffusion=>({diffusion})));}
    if(route.slug==='reflex-nerve'){await p.waitForFunction(()=>!!window.__reflexModel);selectors.push(...['knee','leg','pupil','conscious'].flatMap(m=>['none:-1','none:1.5','none:2.5','none:3.5','none:5','sensory:5','motor:5'].map(s=>({reflex:m+':'+s}))));}
@@ -39,6 +41,8 @@ async function paint(p){await p.bringToFront();await p.evaluate(()=>new Promise(
    for(const mode of [null,...selectors]){
     if(mode?.tectonic)await p.evaluate(require('../tests/science-tectonic-data-scenario.cjs'),mode.tectonic);
     if(mode?.optics)await p.evaluate(require('../tests/science-optics-scenario.cjs'),mode.optics);
+    if(mode?.catalystFoam)await p.evaluate(require('../tests/science-catalyst-foam-scenario.cjs'),mode.catalystFoam);
+    if(mode?.iodineClock)await p.evaluate(require('../tests/science-iodine-clock-scenario.cjs'),mode.iodineClock);
     if(mode?.acidMixing)await p.evaluate(require('../tests/science-acid-mixing-scenario.cjs'),mode.acidMixing);
     if(mode?.diffusion)await p.evaluate(require('../tests/science-diffusion-scenario.cjs'),mode.diffusion);
      if(mode?.reflex)await p.evaluate(require('../tests/science-reflex-scenario.cjs'),mode.reflex);

@@ -1,7 +1,7 @@
 const path = require('node:path');
 
 const APP_DIRECTORIES = Object.freeze([
-  'admin', 'boards', 'classboard', 'classtools', 'notice', 'parent',
+  'admin', 'boards', 'classboard', 'classtools', 'exams', 'notice', 'parent',
   'room', 'schooladmin', 'school-election', 'teacher', 'vote',
 ]);
 const SITE_PAGES = Object.freeze([

@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-15T16:19:26.456Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "iodine-clock",
+      "scenarios": 110
+    }
+  ],
+  "scenarios": 110,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

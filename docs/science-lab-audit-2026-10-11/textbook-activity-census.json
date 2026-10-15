@@ -13,9 +13,9 @@
     "supplementalDocuments": 28,
     "headingRecoveryReviewedDocuments": 24,
     "zeroCandidateDocumentsWithPageReview": 22,
-    "manuallyReviewedCandidates": 230,
-    "sourceReviewedExperimentUnits": 126,
-    "sourceReviewedPendingUnits": 0,
+    "manuallyReviewedCandidates": 242,
+    "sourceReviewedExperimentUnits": 129,
+    "sourceReviewedPendingUnits": 2,
     "manualAdditionsOutsideHeadingExtraction": 5,
     "requiredExperimentTotal": null
   },
@@ -5561,6 +5561,355 @@
           }
         ],
         "boundary": "동일 농도0.05 mol/L의 HCl/NaOH,25℃·물의 이온곱1e−14를 사용한 강산/강염기 물질량 수지 모형이다. 농도는 교과서 측정값이 아니라 독립적인 앱 조건이며 학생 화면에는 pH/몰농도 계산을 표시하지 않는다. 지시약의 부피·산염기 완충능, 활동도·CO₂흡수·혼합 발열은 생략한다. 양배추 색은 대표 색 범위의 정성 표현이며 추출액 품종·농도별 실제 색이나 색도 측정값이 아니다. 페놀프탈레인 변색 구간8.2~10 부근의 색과 중화 당량점을 구별한다.0.1/0.5 mL 단위는 조작 조건이며 한 방울의 실제 부피라고 표시하지 않는다. 원문 실물 촬영·시약 취급, 추가 달걀 껍데기 반응 실험은 완료한 것으로 세지 않는다. 물 대조는 인과 비교를 위해 별도로 추가했다."
+      },
+      {
+        "id": "iodine-clock-concentration",
+        "slug": "iodine-clock",
+        "mode": "concentration",
+        "title": "아이오딘 시계 반응의 농도와 변색 시간 비교",
+        "sourceId": "d8e1bf3dd039c88a",
+        "pages": [
+          116
+        ],
+        "conditions": [
+          "0.05 M KIO₃ 1/1.5/2/2.5 mL와 물로2.5 mL 맞추기; NaHSO₃·녹말 혼합액2.5 mL 첨가; 변색47/28/21/15초 비교"
+        ],
+        "verdict": "2022 원문 절차와 교사용 제시 수치를 대조한 가상 절차·자료 비교. 실제 측정 완료 아님.",
+        "publisherDeduplication": "조건별 부피/온도와 학생·교사용 동일 절차는 각각 새 실험으로 합산하지 않음. 다른 반응을 쓰는 온도 탐구는 구현 대기로 분리.",
+        "publisherVariants": [
+          {
+            "sourceId": "03978ccd926f8cfc",
+            "pages": [
+              118,
+              120
+            ],
+            "difference": "동일 출판사의 학생용 본문은 결과 수치를 채우는 양식",
+            "implementation": "교사용 PDF의 실제 제시값 47/28/21/15초 및 4/25/65℃의 36/24/6초를 보존."
+          },
+          {
+            "sourceId": "10a5b297fa1b961f",
+            "pages": [
+              1,
+              2,
+              4,
+              5
+            ],
+            "difference": "농도는 50 mL 비커·4개 동시 혼합, 온도는 싸이오황산 나트륨과 염산의 황 탁도 관찰",
+            "implementation": "다른 부피 및 다른 화학 반응 절차로 기록. 이 앱의 숫자를 이 판본에 이식하거나 해당 실험 완료로 판정하지 않음."
+          },
+          {
+            "sourceId": "965f45ec469d480f",
+            "pages": [
+              110,
+              111,
+              114,
+              115
+            ],
+            "difference": "농도는 0.1 M 원액·최종 4 mL, 온도는 염화 칼슘/탄산수소 나트륨과 레이저 투과 관찰",
+            "implementation": "상이한 원액·지시 반응의 변형으로 기록하며 별도 절차 구현은 미완료."
+          }
+        ],
+        "assessmentSources": [
+          {
+            "id": "00781f053870eafa",
+            "paragraphs": [
+              18,
+              19,
+              21,
+              45,
+              58,
+              59,
+              60,
+              61,
+              95,
+              96,
+              97,
+              98
+            ],
+            "part": "농도 통제, 시간 비교 및 유효 충돌 설명. 수식·숫자는 HWP 추출에서 누락되어 PDF로 별도 대조."
+          },
+          {
+            "id": "6d2a7ee877a338c5",
+            "paragraphs": [
+              45,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              69,
+              70,
+              71,
+              72
+            ],
+            "part": "두 용액의 온도를 맞춘 뒤 혼합, 온도와 활성화 에너지 이상의 분자 비율 해석."
+          },
+          {
+            "id": "0429c36f4e",
+            "paragraphs": [
+              8,
+              19,
+              26,
+              27,
+              28,
+              32,
+              33,
+              67,
+              74,
+              83,
+              85,
+              86,
+              87,
+              89,
+              90,
+              99,
+              101,
+              102,
+              103,
+              104,
+              106,
+              107,
+              127,
+              128,
+              129,
+              134,
+              135
+            ],
+            "part": "2022 최소성취수준 평가의 농도/온도/촉매 구별과 활성화 에너지 오개념 대조. 원본 문항을 복제하지 않고 부피 계산·비율·변색 해석을 새로 출제."
+          }
+        ],
+        "boundary": "교사용 2022 원문에 제시된 일곱 변색 시간을 재생하는 절차·자료 모형이다. 새로운 실측 결과나 범용 반응 속도 예측 함수가 아니다. 농도 비교의 온도는 원문에 수치로 지정되어 있지 않아 25℃라고 임의 표기하지 않는다. 농도 비교의 혼합 전0.02/0.03/0.04/0.05 M과 혼합 후0.010/0.015/0.020/0.025 M을 구분한다. 온도 비교의 총부피4 mL와 농도 비교의5 mL는 다른 절차이므로 두 모드의 시간을 서로 동일 조건으로 취급하지 않는다. 1/t는 같은 관찰 기준의 비교량으로 표시하며 mol/(L·s) 단위의 순간 속도나 속도 상수로 표시하지 않는다. 변색은 유도 기간 뒤 아이오딘-녹말 색이 나타나는 사건으로, 모든 반응물의 완전 소모라고 설명하지 않는다. 농도 조건은 동일 시작 시각에 나란히 재생하지만 원문 실물 절차는 홈마다 반복한다. 온도 평형을 이루는 데 필요한 실제 시간·혼합 유동·촉매 실험·다른 출판사 황 탁도/레이저 탐구는 구현 완료로 세지 않는다."
+      },
+      {
+        "id": "iodine-clock-temperature",
+        "slug": "iodine-clock",
+        "mode": "temperature",
+        "title": "아이오딘 시계 반응의 온도와 변색 시간 비교",
+        "sourceId": "d8e1bf3dd039c88a",
+        "pages": [
+          118
+        ],
+        "conditions": [
+          "KIO₃와 NaHSO₃·녹말 혼합액 각2 mL를4/25/65℃로 맞춘 뒤 변색36/24/6초 비교"
+        ],
+        "verdict": "2022 원문 절차와 교사용 제시 수치를 대조한 가상 절차·자료 비교. 실제 측정 완료 아님.",
+        "publisherDeduplication": "조건별 부피/온도와 학생·교사용 동일 절차는 각각 새 실험으로 합산하지 않음. 다른 반응을 쓰는 온도 탐구는 구현 대기로 분리.",
+        "publisherVariants": [
+          {
+            "sourceId": "03978ccd926f8cfc",
+            "pages": [
+              118,
+              120
+            ],
+            "difference": "동일 출판사의 학생용 본문은 결과 수치를 채우는 양식",
+            "implementation": "교사용 PDF의 실제 제시값 47/28/21/15초 및 4/25/65℃의 36/24/6초를 보존."
+          },
+          {
+            "sourceId": "10a5b297fa1b961f",
+            "pages": [
+              1,
+              2,
+              4,
+              5
+            ],
+            "difference": "농도는 50 mL 비커·4개 동시 혼합, 온도는 싸이오황산 나트륨과 염산의 황 탁도 관찰",
+            "implementation": "다른 부피 및 다른 화학 반응 절차로 기록. 이 앱의 숫자를 이 판본에 이식하거나 해당 실험 완료로 판정하지 않음."
+          },
+          {
+            "sourceId": "965f45ec469d480f",
+            "pages": [
+              110,
+              111,
+              114,
+              115
+            ],
+            "difference": "농도는 0.1 M 원액·최종 4 mL, 온도는 염화 칼슘/탄산수소 나트륨과 레이저 투과 관찰",
+            "implementation": "상이한 원액·지시 반응의 변형으로 기록하며 별도 절차 구현은 미완료."
+          }
+        ],
+        "assessmentSources": [
+          {
+            "id": "00781f053870eafa",
+            "paragraphs": [
+              18,
+              19,
+              21,
+              45,
+              58,
+              59,
+              60,
+              61,
+              95,
+              96,
+              97,
+              98
+            ],
+            "part": "농도 통제, 시간 비교 및 유효 충돌 설명. 수식·숫자는 HWP 추출에서 누락되어 PDF로 별도 대조."
+          },
+          {
+            "id": "6d2a7ee877a338c5",
+            "paragraphs": [
+              45,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              69,
+              70,
+              71,
+              72
+            ],
+            "part": "두 용액의 온도를 맞춘 뒤 혼합, 온도와 활성화 에너지 이상의 분자 비율 해석."
+          },
+          {
+            "id": "0429c36f4e",
+            "paragraphs": [
+              8,
+              19,
+              26,
+              27,
+              28,
+              32,
+              33,
+              67,
+              74,
+              83,
+              85,
+              86,
+              87,
+              89,
+              90,
+              99,
+              101,
+              102,
+              103,
+              104,
+              106,
+              107,
+              127,
+              128,
+              129,
+              134,
+              135
+            ],
+            "part": "2022 최소성취수준 평가의 농도/온도/촉매 구별과 활성화 에너지 오개념 대조. 원본 문항을 복제하지 않고 부피 계산·비율·변색 해석을 새로 출제."
+          }
+        ],
+        "boundary": "교사용 2022 원문에 제시된 일곱 변색 시간을 재생하는 절차·자료 모형이다. 새로운 실측 결과나 범용 반응 속도 예측 함수가 아니다. 농도 비교의 온도는 원문에 수치로 지정되어 있지 않아 25℃라고 임의 표기하지 않는다. 농도 비교의 혼합 전0.02/0.03/0.04/0.05 M과 혼합 후0.010/0.015/0.020/0.025 M을 구분한다. 온도 비교의 총부피4 mL와 농도 비교의5 mL는 다른 절차이므로 두 모드의 시간을 서로 동일 조건으로 취급하지 않는다. 1/t는 같은 관찰 기준의 비교량으로 표시하며 mol/(L·s) 단위의 순간 속도나 속도 상수로 표시하지 않는다. 변색은 유도 기간 뒤 아이오딘-녹말 색이 나타나는 사건으로, 모든 반응물의 완전 소모라고 설명하지 않는다. 농도 조건은 동일 시작 시각에 나란히 재생하지만 원문 실물 절차는 홈마다 반복한다. 온도 평형을 이루는 데 필요한 실제 시간·혼합 유동·촉매 실험·다른 출판사 황 탁도/레이저 탐구는 구현 완료로 세지 않는다."
+      },
+      {
+        "id": "catalyst-foam",
+        "slug": "catalyst-foam",
+        "title": "촉매에 따른 과산화 수소 분해",
+        "sourceId": "d8e1bf3dd039c88a",
+        "pages": [
+          120,
+          121
+        ],
+        "conditions": [
+          "같은 10% 과산화 수소수 10 mL·세제 1 mL를 준비하고 B에만 소량 KI를 넣어 거품 발생 비교"
+        ],
+        "verdict": "원문 두 실린더의 정성 촉매 비교와 평가 오개념 대조. 실물 수행·정량 측정 완료 아님",
+        "publisherDeduplication": "세 출판사의 같은 무첨가/KI 비교를 하나로 통합. 세제 양·용기 용량·대조 조건을 새 실험으로 합산하지 않음.",
+        "publisherVariants": [
+          {
+            "sourceId": "03978ccd926f8cfc",
+            "pages": [
+              122
+            ],
+            "difference": "같은 학생용 120쪽",
+            "implementation": "과산화 수소 10 mL·세제 1 mL와 B에 소량 KI 절차 일치."
+          },
+          {
+            "sourceId": "965f45ec469d480f",
+            "pages": [
+              118,
+              119
+            ],
+            "difference": "세제는 2~3방울, 두 실린더의 기포 발생 정도 비교",
+            "implementation": "같은 촉매 비교로 통합하며 방울 부피를 1 mL로 환산하지 않음."
+          },
+          {
+            "sourceId": "10a5b297fa1b961f",
+            "pages": [
+              6,
+              7
+            ],
+            "difference": "200 mL 실린더 세 개, KI 0.1 g과 별도 인산 첨가군 포함",
+            "implementation": "무첨가/KI 비교를 대조. 인산 억제제 비교는 이 두 실린더 앱으로 완료 처리하지 않음."
+          }
+        ],
+        "assessmentSources": [
+          {
+            "id": "f4e9f97ec1",
+            "paragraphs": [
+              49,
+              50,
+              53,
+              54,
+              55,
+              68,
+              69,
+              70,
+              73,
+              75,
+              76,
+              77,
+              78
+            ],
+            "part": "같은 시간의 거품 비교, 촉매 역할, 반응 엔탈피. 손상된 HWP 화학식·수치는 교과서 PDF와 대조."
+          },
+          {
+            "id": "12b7676a80",
+            "paragraphs": [
+              20,
+              21,
+              22,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              42,
+              127,
+              142,
+              144,
+              191
+            ],
+            "part": "산소가 세제 거품에 갇히는 관찰, 정촉매와 반응 경로·엔탈피 구별."
+          },
+          {
+            "id": "f71f44ac4b",
+            "paragraphs": [
+              22,
+              23,
+              24,
+              28,
+              29,
+              161,
+              180,
+              181,
+              182,
+              186,
+              220,
+              249,
+              250
+            ],
+            "part": "속도/최종 생성량, 정촉매의 활성화 에너지/질량/평형 상수 오개념 대조. 누락 수식의 수치는 추정하지 않음."
+          }
+        ],
+        "boundary": "원문은 일정 시간의 거품 발생 정도를 비교하는 정성 실험이다. 애니메이션 진행도와 거품 높이는 정성 장면이며 초·mL·속도 상수·실측값으로 표시하지 않는다. 거품 부피를 산소 몰수나 최종 수율로 환산하지 않는다. 발열에 의한 자기 가속, 열 전달, 부반응·아이오딘 착색·기포 합체와 배출의 정량 모형은 아니다. 세제 없는 대조에서는 세제 대신 물 1 mL로 부피를 맞춘다. 세제 없는 대조와 두 군 모두 KI를 넣지 않는 비교는 인과 해석을 위해 추가한 조건이다. 식용 색소는 양쪽에 같은 양을 넣는 원문 선택 요소이나 흰 거품·무색 용액으로 표현해 별도의 색소 조작은 생략했다. 다른 출판사의 인산 억제제, 실물 촬영·시약 취급 및 측정 완료는 아님. 객관식 최종 산소량은 제시한 단일 반응식만 완결되는 이상 조건이다.",
+        "pendingVariants": [
+          "동아의 인산 억제제 첨가군 비교"
+        ]
       }
     ],
     "candidates": {
@@ -6942,9 +7291,104 @@
         "experiments": [
           "acid-mixing"
         ]
+      },
+      "book-ac267cfcc9644a28": {
+        "verdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+        "experiments": [
+          "iodine-clock-concentration"
+        ]
+      },
+      "book-1f6c14ad0ab4f313": {
+        "verdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+        "experiments": [
+          "iodine-clock-concentration"
+        ]
+      },
+      "book-d131e242eeb5d29a": {
+        "verdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+        "experiments": [
+          "iodine-clock-concentration"
+        ]
+      },
+      "book-f350301f8da46acf": {
+        "verdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+        "experiments": [
+          "iodine-clock-temperature"
+        ]
+      },
+      "book-18b0acaa9735ca23": {
+        "verdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+        "experiments": [
+          "iodine-clock-temperature"
+        ]
+      },
+      "book-18d4e8ca4981450e": {
+        "verdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+        "experiments": [
+          "iodine-clock-temperature"
+        ]
+      },
+      "book-3f8904d3a0e892fd": {
+        "verdict": "원문 절차 대조. 다른 반응·관찰 기준이므로 아이오딘 시계 반응과 구별해 구현 대기.",
+        "experiments": [],
+        "pendingExperiments": [
+          "temperature-sulfur-clouding"
+        ]
+      },
+      "book-5aeed22a9ea72f45": {
+        "verdict": "원문 절차 대조. 다른 반응·관찰 기준이므로 아이오딘 시계 반응과 구별해 구현 대기.",
+        "experiments": [],
+        "pendingExperiments": [
+          "temperature-laser-precipitate"
+        ]
+      },
+      "book-6b1b39c5cd23d9f4": {
+        "verdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+        "experiments": [
+          "catalyst-foam"
+        ]
+      },
+      "book-32d6a1d9cc9baa39": {
+        "verdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+        "experiments": [
+          "catalyst-foam"
+        ]
+      },
+      "book-287107823d45168f": {
+        "verdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+        "experiments": [
+          "catalyst-foam"
+        ]
+      },
+      "book-f1d9164b0b9b1fc8": {
+        "verdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+        "experiments": [
+          "catalyst-foam"
+        ]
       }
     },
-    "pendingExperiments": [],
+    "pendingExperiments": [
+      {
+        "id": "temperature-sulfur-clouding",
+        "title": "싸이오황산 나트륨과 염산의 온도별 황 탁도 비교",
+        "sourceId": "10a5b297fa1b961f",
+        "pages": [
+          4,
+          5
+        ],
+        "reason": "삼각 플라스크 바닥의 ×표가 보이지 않을 때까지 측정. 아이오딘 변색과 다른 반응이므로 그 앱으로 완료 판정하지 않음."
+      },
+      {
+        "id": "temperature-laser-precipitate",
+        "title": "염화 칼슘·탄산수소 나트륨의 온도별 레이저 투과 비교",
+        "sourceId": "965f45ec469d480f",
+        "pages": [
+          114,
+          115
+        ],
+        "reason": "침전 생성으로 레이저 빛이 보이지 않을 때까지 관찰. 실제 온도별 원본 수치는 확인되지 않았으며 아이오딘 시간을 대입하지 않음."
+      }
+    ],
     "missedByHeadingExtractor": [
       "pasteur-broth",
       "contact-game",
@@ -27267,7 +27711,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-ac267cfcc9644a28",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+      "manualExperimentIds": [
+        "iodine-clock-concentration"
+      ]
     },
     {
       "sourceId": "03978ccd926f8cfc",
@@ -27278,7 +27725,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-f350301f8da46acf",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+      "manualExperimentIds": [
+        "iodine-clock-temperature"
+      ]
     },
     {
       "sourceId": "03978ccd926f8cfc",
@@ -27289,7 +27739,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-32d6a1d9cc9baa39",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+      "manualExperimentIds": [
+        "catalyst-foam"
+      ]
     },
     {
       "sourceId": "03978ccd926f8cfc",
@@ -27825,7 +28278,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-1f6c14ad0ab4f313",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+      "manualExperimentIds": [
+        "iodine-clock-concentration"
+      ]
     },
     {
       "sourceId": "d8e1bf3dd039c88a",
@@ -27836,7 +28292,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-18b0acaa9735ca23",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+      "manualExperimentIds": [
+        "iodine-clock-temperature"
+      ]
     },
     {
       "sourceId": "d8e1bf3dd039c88a",
@@ -27858,7 +28317,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-6b1b39c5cd23d9f4",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+      "manualExperimentIds": [
+        "catalyst-foam"
+      ]
     },
     {
       "sourceId": "d8e1bf3dd039c88a",
@@ -41390,7 +41852,11 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-3f8904d3a0e892fd",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문 절차 대조. 다른 반응·관찰 기준이므로 아이오딘 시계 반응과 구별해 구현 대기.",
+      "manualExperimentIds": [],
+      "pendingExperimentIds": [
+        "temperature-sulfur-clouding"
+      ]
     },
     {
       "sourceId": "10a5b297fa1b961f",
@@ -41401,7 +41867,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-f1d9164b0b9b1fc8",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+      "manualExperimentIds": [
+        "catalyst-foam"
+      ]
     },
     {
       "sourceId": "10a5b297fa1b961f",
@@ -47543,7 +48012,11 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-5aeed22a9ea72f45",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문 절차 대조. 다른 반응·관찰 기준이므로 아이오딘 시계 반응과 구별해 구현 대기.",
+      "manualExperimentIds": [],
+      "pendingExperimentIds": [
+        "temperature-laser-precipitate"
+      ]
     },
     {
       "sourceId": "965f45ec469d480f",
@@ -47554,7 +48027,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-287107823d45168f",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "과산화 수소·KI·세제의 정성 비교 원문을 대조. 동아의 인산 첨가군은 미구현으로 남김. 시계 반응과 다른 기체 생성 관찰.",
+      "manualExperimentIds": [
+        "catalyst-foam"
+      ]
     },
     {
       "sourceId": "965f45ec469d480f",
@@ -83352,7 +83828,10 @@
       "status": "활동지 파일 · 본문 단계 수동 대조 필요",
       "id": "book-d131e242eeb5d29a",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+      "manualExperimentIds": [
+        "iodine-clock-concentration"
+      ]
     },
     {
       "sourceId": "6b584647ece34a8b",
@@ -83370,7 +83849,10 @@
       "status": "활동지 파일 · 본문 단계 수동 대조 필요",
       "id": "book-18d4e8ca4981450e",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "명시한 원문·교사용·활동지의 같은 절차를 대조. 교사용 일곱 변색 시간과 실제 측정을 구별.",
+      "manualExperimentIds": [
+        "iodine-clock-temperature"
+      ]
     },
     {
       "sourceId": "402e0a68800cb10b",
