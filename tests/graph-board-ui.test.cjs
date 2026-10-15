@@ -25,6 +25,36 @@ test.beforeEach(async()=>{await h.db.query('DELETE FROM user_storage');context=a
 test.afterEach(async()=>{try{assert.deepEqual(errors,[]);}finally{await context.close();}});
 test.after(async()=>{await browser?.close();if(h)await h.close();});
 
+test('math variables and UI copy keep their fonts after shared prose styles load',async()=>{
+  // Production appends the shared reading stylesheet after the tool's own CSS.
+  await page.addStyleTag({url:`${h.base}/assets/exam-typography.css`});
+  await openPreset('일차함수');await settled();
+  await page.locator('#keyboardDrawer').evaluate(el=>el.open=true);
+  await page.evaluate(()=>document.fonts.ready);
+  const client=await context.newCDPSession(page);
+  await client.send('DOM.enable');await client.send('CSS.enable');
+  async function fonts(selector) {
+    const {root}=await client.send('DOM.getDocument');
+    const {nodeId}=await client.send('DOM.querySelector',{nodeId:root.nodeId,selector});
+    return (await client.send('CSS.getPlatformFontsForNode',{nodeId})).fonts.map(font=>font.postScriptName);
+  }
+  for(const selector of ['#handleHelp','#compareHelp','.sidebar-note']) {
+    assert.match(await page.locator(selector).evaluate(el=>getComputedStyle(el).fontFamily),/sans-serif/);
+    assert.doesNotMatch((await fonts(selector)).join(','),/Batang/);
+  }
+  for(const selector of ['.slider-line label .mathnormal','.function-name .mathnormal','[data-insert="x"] .mathnormal','[data-insert="^2"] .mathnormal']) {
+    assert.deepEqual(await fonts(selector),['KaTeX_Math-Italic']);
+  }
+  assert.equal(await page.locator('.function-name annotation').textContent(),'y_{1}');
+  assert.equal(await page.locator('[data-wrap="sin"] annotation').textContent(),'\\sin');
+  assert.deepEqual(await fonts('[data-wrap="sin"] .mop'),['KaTeX_Main-Regular']);
+  assert.equal(await page.locator('#param-a').evaluate(el=>getComputedStyle(el).fontStyle),'normal');
+  await page.locator('label[for="param-a"] .mathnormal').click();
+  assert.equal(await page.locator('#param-a').evaluate(el=>el===document.activeElement),true);
+  assert.equal(await page.locator('.katex-error').count(),0);
+  await client.detach();
+});
+
 test('desktop layout, vertex drag, immutable comparison, undo and redo',async()=>{
   assert.equal(await page.title(),'그래프 칠판');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   await page.screenshot({path:path.join(output,'desktop-initial.png')});

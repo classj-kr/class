@@ -11,7 +11,8 @@
   --line:#dde5df;
   --paper:#f7f9f6;
   --math-font:"STIX Two Math","Cambria Math",serif;
-  font-family:Pretendard,"Malgun Gothic",sans-serif;
+  --ui-font:Pretendard,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-family:var(--ui-font);
   color:var(--ink);
   background:var(--paper);
   font-synthesis:none
@@ -23,6 +24,12 @@
 
 body {
   margin:0
+}
+
+/* This tool's instructions are UI copy. Keep the shared reading-prose face
+   from overriding them, including when that stylesheet is injected last. */
+html body#graphBoard p {
+  font-family:var(--ui-font) !important
 }
 
 button,input,summary {
@@ -258,6 +265,10 @@ site-back-navigation { top:auto; bottom:8px; left:296px; }
   cursor:pointer
 }
 
+.function-name .katex,.slider-line label .katex,.math-keyboard .katex {
+  font-size:1em
+}
+
 .function-preview .katex {
   font-size:1em;
   white-space:nowrap
@@ -377,6 +388,10 @@ site-back-navigation { top:auto; bottom:8px; left:296px; }
   font:16px var(--math-font)
 }
 
+.math-keyboard button[data-action] {
+  font-family:var(--ui-font)
+}
+
 .help {
   font-size:12px;
   line-height:1.7;
@@ -407,7 +422,7 @@ site-back-navigation { top:auto; bottom:8px; left:296px; }
 }
 
 .slider-line label {
-  font:italic 20px var(--math-font)
+  font-size:20px
 }
 
 .slider-line input {
