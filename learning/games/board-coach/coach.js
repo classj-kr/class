@@ -117,6 +117,7 @@
     animateMove(before,index);
   }
   function animateMove(before,index) {
+    window.ClassGameSfx?.play("stone");
     moving=true;render();
     const animations=[ClassGameMotion.appear($('board').querySelector(`[data-index="${index}"] .stone`))];
     for(const i of state.flipped||[])animations.push(ClassGameMotion.flip($('board').querySelector(`[data-index="${i}"] .stone`),'stone disc '+(before.board[i]===1?'black':'white')));

@@ -17,15 +17,21 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
       mode: 'open', enabledPaths: ['/learning/literacy-numeracy/story-books', '/learning/literacy-numeracy/reading'], ownEnabledPaths: [],
       openedBySubjectTeachers: { '/learning/literacy-numeracy/story-books': ['다전담'], '/learning/literacy-numeracy/reading': ['다전담'] },
       globallyDisabledPaths: [], hasClassAccess: true, canManage: true, manageScope: 'homeroom', managedClasses: ['3-1'], canManageGlobally: false
+    },
+    student: {
+      mode: 'open', enabledPaths: ['/learning/inquiry/korean-history', '/learning/inquiry/science-lab'],
+      openedBySubjectTeachers: {}, globallyDisabledPaths: [], hasClassAccess: true, canManage: false, canManageGlobally: false
     }
   };
   const me = {
     subject: { signedIn: true, user: { id: 4, name: '다전담', email: 'music@school.test', role: 'teacher' } },
-    homeroom: { signedIn: true, user: { id: 2, name: '가교사', email: 'a@school.test', role: 'teacher' } }
+    homeroom: { signedIn: true, user: { id: 2, name: '가교사', email: 'a@school.test', role: 'teacher' } },
+    student: { signedIn: true, user: { id: 5, name: '나학생', role: 'student' } }
   };
   const profiles = {
     subject: [{ name: '다전담', schoolName: '시험학교', teacherType: '전담', grade: null, classNumber: null }],
-    homeroom: [{ name: '가교사', schoolName: '시험학교', teacherType: '담임', grade: 3, classNumber: 1 }]
+    homeroom: [{ name: '가교사', schoolName: '시험학교', teacherType: '담임', grade: 3, classNumber: 1 }],
+    student: []
   };
   const app = express();
   app.use(express.json());
@@ -96,6 +102,55 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await waitText(page, /우리 반 공개는 껐지만 전담 다전담 선생님이 오늘 열어 두어 학생에게는 오늘까지 열려 있습니다/);
     assert.equal(await control.getAttribute('data-class-locked'), 'false', '전담이 열어 둔 묶음은 담임이 꺼도 잠기지 않는다');
     assert.match(await control.getAttribute('title'), /전담 다전담 선생님이 오늘 열어 둠/);
+
+    // 과목으로 합치기 전에 역사·실험만 열었던 반도 계속 이용한다.
+    // 열지 않은 지도·모형까지 함께 공개되거나, 반대로 과목 전체가 잠기면 안 된다.
+    scenario = 'student';
+    await page.goto(base + '/');
+    const science = '[data-access-group="science"]';
+    const social = '[data-access-group="social-studies"]';
+    await waitLocked(page, science + ' > summary', 'false');
+    await page.locator('#category-exploration-toggle').click();
+    for (const [group, openPath, lockedPath] of [
+      [social, 'korean-history', 'korea-map'],
+      [science, 'science-lab', 'human-body']
+    ]) {
+      await page.locator(group + ' > summary').click();
+      const openLink = `${group} a[href="learning/inquiry/${openPath}/"]`;
+      const lockedLink = `${group} a[href="learning/inquiry/${lockedPath}/"]`;
+      assert.equal(await page.locator(openLink).isVisible(), true);
+      await waitLocked(page, openLink, 'false');
+      await waitLocked(page, lockedLink, 'true');
+      await page.locator(lockedLink).focus();
+      await page.locator(lockedLink).press('Enter');
+      assert.equal(page.url(), base + '/');
+      await waitText(page, /선생님이 열어 주시면 이용할 수 있습니다/);
+    }
+    // 전체관리자 잠금은 반 공개보다 우선하며, 과목 안 다른 앱의 공개에는 영향이 없다.
+    access.student.globallyDisabledPaths = ['/learning/inquiry/science-lab'];
+    await page.reload();
+    await page.locator(`${science} a[data-global-locked="true"]`).waitFor({ state: 'attached' });
+    await page.locator('#category-exploration-toggle').click();
+    await page.locator(science + ' > summary').click();
+    await page.locator(science + ' a[href="learning/inquiry/science-lab/"]').focus();
+    await page.locator(science + ' a[href="learning/inquiry/science-lab/"]').press('Enter');
+    assert.equal(page.url(), base + '/');
+    await waitText(page, /전체관리자가 준비 중인 메뉴로 사용 중지했습니다/);
+
+    // 새 과목 버튼의 공개 설정은 그 안에 합친 모든 기존 경로를 저장한다.
+    scenario = 'subject';
+    puts.length = 0;
+    await page.goto(base + '/');
+    await button.waitFor({ state: 'visible' });
+    await button.click();
+    await page.locator('#category-exploration-toggle').click();
+    await page.locator(science + ' > summary').click();
+    await waitFor(page, 4);
+    assert.deepEqual(puts.map((item) => item.path).sort(), [
+      '/learning/inquiry/human-body', '/learning/inquiry/periodic-table',
+      '/learning/inquiry/science-lab', '/learning/inquiry/space'
+    ]);
+    assert.ok(puts.every((item) => item.enabled === true));
 
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ ok: true }));
