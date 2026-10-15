@@ -173,7 +173,7 @@
       const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0);
       const buffer = await encodeWebP(ctx.getImageData(0, 0, canvas.width, canvas.height));
       downloadUrl = URL.createObjectURL(new Blob([buffer], { type: 'image/webp' }));
-      const link = document.createElement('a'); link.href = downloadUrl; link.download = '분수-그림판.webp'; document.body.append(link); link.click(); link.remove();
+      const link = document.createElement('a'); link.href = downloadUrl; link.download = '분수-모형.webp'; document.body.append(link); link.click(); link.remove();
       $('export-status').textContent = '저장했어요. 다운로드한 그림을 학습지에 넣어 보세요.';
     } catch (error) { $('export-status').textContent = error.message || '그림을 저장하지 못했어요. 다시 시도해 주세요.'; }
     finally { if (sourceUrl) URL.revokeObjectURL(sourceUrl); if (downloadUrl) { const url = downloadUrl; setTimeout(() => URL.revokeObjectURL(url), 30000); } button.disabled = false; }

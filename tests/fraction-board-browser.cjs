@@ -52,7 +52,7 @@ test('home math accordion opens the fraction board on desktop and phone', async 
     await page.locator(`a[href="${url.slice(1)}"]`).click();
     await page.waitForURL('**' + url);
     await page.locator('.fraction-drawing').waitFor();
-    assert.equal(await page.title(), '분수 그림판 · 수학 교구');
+    assert.equal(await page.title(), '분수 모형 · 수학 교구');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     await shot(width === 390 ? 'phone-initial' : 'desktop-initial');
   }
@@ -131,7 +131,8 @@ test('visibility controls and phone touch targets stay usable for all shapes', a
     assert.equal(await active().locator('.fraction-number').count(), 0);
     await page.locator('#show-labels').check();
     await page.locator('#show-shading').uncheck();
-    assert.equal(await active().locator('.fraction-drawing [fill="#287f71"]').count(), 0);
+    const color = await page.evaluate(() => window.FractionBoard.COLORS[0]);
+    assert.equal(await active().locator(`.fraction-drawing [fill="${color}"]`).count(), 0);
     await page.locator('#show-shading').check();
     await page.locator('#show-lines').uncheck(); await page.locator('#show-lines').check();
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
@@ -214,7 +215,7 @@ test('WebP export preserves dimensions, alpha, pixels and chosen scope', async (
     const downloadPromise = page.waitForEvent('download');
     await page.locator('#export-webp').click();
     const download = await downloadPromise;
-    assert.equal(download.suggestedFilename(), '분수-그림판.webp');
+    assert.equal(download.suggestedFilename(), '분수-모형.webp');
     const file = path.join(output, `export-${scope}.webp`); await download.saveAs(file);
     const buffer = fs.readFileSync(file); assert.equal(buffer.subarray(8,12).toString(), 'WEBP');
     const check = spawnSync('python', ['-c', "from PIL import Image;import sys;im=Image.open(sys.argv[1]).convert('RGBA');assert im.size==(1600,int(sys.argv[2]));assert im.getpixel((0,0))[3]==int(sys.argv[3]);assert len(im.getcolors(im.width*im.height))>10", file, String(height), transparent ? '0' : '255']);

@@ -44,6 +44,10 @@ test('shrinking cannot discard colored pieces and all input boundaries are enfor
 test('saved scenes validate bounds, IDs, colors and duplicate cells before rendering', () => {
   const valid = { version: 1, cards: [C.makeCard('a')], selectedId: 'a' };
   assert.deepEqual(C.validate(valid), valid);
+  ['#287f71', '#d98343', '#5e78b4', '#ac5d7b', '#8068a8'].forEach((color, i) => {
+    const restored = C.validate({ ...valid, cards: [{ ...valid.cards[0], color }] });
+    assert.deepEqual(restored.cards[0], { ...valid.cards[0], color: C.COLORS[i] });
+  });
   for (const delta of [{ id: '\"><img>' }, { denominator: 0 }, { units: 8 }, { rows: 3 }, { cells: [0, 0] }, { cells: [-1] }, { color: 'url(x)' }, { labels: 'false' }]) {
     assert.throws(() => C.validate({ ...valid, cards: [{ ...valid.cards[0], ...delta }] }));
   }
@@ -65,7 +69,8 @@ test('circle edge cases render complete wholes and comparison units keep the sam
 test('export follows visibility and transparent background without interactive UI', () => {
   const card = { ...C.makeCard('a', 'grid'), labels: false, shading: false, lines: false };
   const svg = C.exportSVG([card]);
-  assert.doesNotMatch(svg, /<text|data-cell|tabindex|fill="#287f71"|fill="#ffffff"/);
+  assert.doesNotMatch(svg, /<text|data-cell|tabindex|fill="#ffffff"/);
+  assert.ok(!svg.includes(`fill="${card.color}"`));
   assert.match(C.exportSVG([card], false), /fill="#ffffff"/);
   assert.match(C.exportSVG([card]), /width="1600" height="402"/);
 });

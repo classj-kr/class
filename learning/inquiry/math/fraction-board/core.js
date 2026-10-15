@@ -6,7 +6,9 @@
   'use strict';
   const MAX_DENOMINATOR = 24, MAX_UNITS = 4, MAX_CARDS = 6;
   const SHAPES = { bar: '사각막대', grid: '사각형', line: '수직선', circle: '원판' };
-  const COLORS = ['#287f71', '#d98343', '#5e78b4', '#ac5d7b', '#8068a8'];
+  const COLORS = ['#a8dccb', '#ffd0a3', '#b6d5f4', '#f3bfd2', '#d4c5ef'];
+  const LEGACY_COLORS = ['#287f71', '#d98343', '#5e78b4', '#ac5d7b', '#8068a8'];
+  const normalizeColor = color => COLORS.includes(color) ? color : COLORS[LEGACY_COLORS.indexOf(color)];
   const integer = (value, low, high) => Number.isInteger(value) && value >= low && value <= high;
   const range = count => Array.from({ length: count }, (_, i) => i);
   const count = card => card.cells.length;
@@ -53,15 +55,17 @@
     if (!value || value.version !== 1 || !Array.isArray(value.cards) || !integer(value.cards.length, 1, MAX_CARDS)) throw Error('그림 자료를 읽을 수 없어요.');
     const ids = new Set();
     const cards = value.cards.map(c => {
-      if (!c || typeof c.id !== 'string' || !/^[a-z0-9-]{1,50}$/.test(c.id) || ids.has(c.id) || !SHAPES[c.shape] || !integer(c.denominator, 1, MAX_DENOMINATOR) || !integer(c.units, 1, MAX_UNITS) || !integer(c.rows, 1, c.denominator) || c.denominator % c.rows || !COLORS.includes(c.color) || !Array.isArray(c.cells) || c.cells.length > c.units * c.denominator || c.cells.some(i => !integer(i, 0, c.units * c.denominator - 1)) || new Set(c.cells).size !== c.cells.length || ['lines', 'shading', 'labels'].some(key => typeof c[key] !== 'boolean')) throw Error('그림 자료를 읽을 수 없어요.');
+      const color = normalizeColor(c?.color);
+      if (!c || typeof c.id !== 'string' || !/^[a-z0-9-]{1,50}$/.test(c.id) || ids.has(c.id) || !SHAPES[c.shape] || !integer(c.denominator, 1, MAX_DENOMINATOR) || !integer(c.units, 1, MAX_UNITS) || !integer(c.rows, 1, c.denominator) || c.denominator % c.rows || !color || !Array.isArray(c.cells) || c.cells.length > c.units * c.denominator || c.cells.some(i => !integer(i, 0, c.units * c.denominator - 1)) || new Set(c.cells).size !== c.cells.length || ['lines', 'shading', 'labels'].some(key => typeof c[key] !== 'boolean')) throw Error('그림 자료를 읽을 수 없어요.');
       ids.add(c.id);
-      return { ...makeCard(c.id), shape: c.shape, denominator: c.denominator, units: c.units, rows: c.rows, color: c.color, cells: c.shape === 'line' ? range(c.cells.length) : [...c.cells].sort((a,b) => a-b), lines: c.lines, shading: c.shading, labels: c.labels };
+      return { ...makeCard(c.id), shape: c.shape, denominator: c.denominator, units: c.units, rows: c.rows, color, cells: c.shape === 'line' ? range(c.cells.length) : [...c.cells].sort((a,b) => a-b), lines: c.lines, shading: c.shading, labels: c.labels };
     });
     return { version: 1, cards, selectedId: ids.has(value.selectedId) ? value.selectedId : cards[0].id };
   }
   const esc = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]);
   const text = (x, y, content, size = 18, extra = '') => `<text x="${x}" y="${y}" font-size="${size}" text-anchor="middle" fill="#354b46" font-family="Malgun Gothic, sans-serif" ${extra}>${esc(content)}</text>`;
   const stroke = 'stroke="#536b63" stroke-width="1.5"';
+  const divisionStroke = 'stroke="#23332b" stroke-width="1.75" stroke-dasharray="5 4"';
   const round = n => Number(n.toFixed(4));
   function geometry(card, maxUnits = card.units, interactive = false) {
     const d = card.denominator, n = count(card), selected = new Set(card.cells);
@@ -84,7 +88,7 @@
         if (card.labels && whole) body += text(x, 134, i / d, 22);
         body += piece(i, `${i}/${d} 위치 표시`, `<rect class="hit" x="${x - unit / d / 2}" y="50" width="${unit / d}" height="66" fill="transparent"/>`);
       }
-      if (card.shading) body += `<circle cx="${24 + unit * n / d}" cy="${y}" r="9" fill="${card.color}" stroke="#fff" stroke-width="3" pointer-events="none"/>`;
+      if (card.shading) body += `<circle cx="${24 + unit * n / d}" cy="${y}" r="9" fill="${card.color}" stroke="#23332b" stroke-width="2" pointer-events="none"/>`;
     } else {
       for (let u = 0; u < card.units; u++) {
         const x = 24 + u * (unit + gap);
@@ -96,19 +100,21 @@
             body += piece(index, `전체 ${u + 1}의 ${i + 1}번째 칸 색칠`, `<rect class="hit" x="${x + (i % cols) * unit / cols}" y="${y + Math.floor(i / cols) * h / rows}" width="${unit / cols}" height="${h / rows}" fill="${fill(index)}"/>`);
           }
           if (card.lines) {
-            for (let i = 1; i < cols; i++) body += `<path d="M${x + unit * i / cols} ${y}v${h}" ${stroke} pointer-events="none"/>`;
-            for (let i = 1; i < rows; i++) body += `<path d="M${x} ${y + h * i / rows}h${unit}" ${stroke} pointer-events="none"/>`;
+            for (let i = 1; i < cols; i++) body += `<path d="M${x + unit * i / cols} ${y}v${h}" ${divisionStroke} pointer-events="none"/>`;
+            for (let i = 1; i < rows; i++) body += `<path d="M${x} ${y + h * i / rows}h${unit}" ${divisionStroke} pointer-events="none"/>`;
           }
           body += `<rect x="${x}" y="${y}" width="${unit}" height="${h}" fill="none" ${stroke} pointer-events="none"/>`;
         } else {
           const cx = x + 100, cy = 146, r = 98;
+          let boundaries = '';
           for (let i = 0; i < d; i++) {
             const start = i * 2 * Math.PI / d - Math.PI / 2, end = (i + 1) * 2 * Math.PI / d - Math.PI / 2;
             const point = a => `${round(cx + r * Math.cos(a))} ${round(cy + r * Math.sin(a))}`;
             const content = d === 1 ? `<circle class="hit" cx="${cx}" cy="${cy}" r="${r}" fill="${fill(u*d+i)}"/>` : `<path class="hit" d="M${cx} ${cy}L${point(start)}A${r} ${r} 0 ${d === 1 ? 1 : 0} 1 ${point(end)}Z" fill="${fill(u*d+i)}"/>`;
             body += piece(u*d+i, `전체 ${u + 1}의 ${i + 1}번째 조각 색칠`, content);
-            if (card.lines && d > 1) body += `<path d="M${cx} ${cy}L${point(start)}" ${stroke} pointer-events="none"/>`;
+            if (card.lines && d > 1) boundaries += `<path d="M${cx} ${cy}L${point(start)}" ${divisionStroke} pointer-events="none"/>`;
           }
+          body += boundaries;
           body += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" ${stroke} pointer-events="none"/>`;
         }
       }

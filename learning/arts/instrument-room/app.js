@@ -2252,7 +2252,7 @@
                 if (drum.openModelId) {
                     button.classList.add("model-link-pad");
                     button.setAttribute("aria-label", drum.name + " 건반 악기로 이동");
-                    button.innerHTML = "<span class=\"pad-tool\">" + drum.family + "</span><b>" + drum.name + "</b><small>건반으로 연주 →</small>";
+                    button.innerHTML = "<b>" + drum.name + "</b><span class=\"pad-link-action\">건반 연주 →</span>";
                     button.addEventListener("click", function () {
                         selectKoreanRoom("melody");
                         selectModel(drum.openModelId);
@@ -2261,11 +2261,11 @@
                     return;
                 }
                 const visual = presentation.icon(modelId, drum);
-                button.setAttribute("aria-label", drum.name + (visual.tool ? " · " + visual.tool : "") + " · 키보드 " + drum.key);
+                button.setAttribute("aria-label", drum.name + " · 키보드 " + drum.key + " 키");
                 const gueumMarkup = drum.gueum
                     ? "<b class=\"pad-gueum\">" + drum.gueum + "</b><span class=\"pad-subname\">" + drum.name + "</span>"
                     : "<b>" + drum.name + "</b>";
-                button.innerHTML = visual.svg + "<span class=\"pad-tool\">" + (visual.tool || drum.family) + "</span>" + gueumMarkup + "<small>키보드 " + drum.key + "</small>";
+                button.innerHTML = "<span class=\"pad-top\">" + visual.svg + "<kbd class=\"pad-key\" aria-hidden=\"true\">" + drum.key + "</kbd></span>" + gueumMarkup;
                 const play = function (velocity) {
                     setDrumPadActive(button, true);
                     triggerDrumV2(drum.sound || drum.id, velocity);
