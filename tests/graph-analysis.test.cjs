@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const A = require('../learning/literacy-numeracy/graph-studio/graph-analysis');
-const C = require('../learning/literacy-numeracy/graph-studio/graph-core');
+const A = require('../learning/inquiry/math/graph-studio/graph-analysis');
+const C = require('../learning/inquiry/math/graph-studio/graph-core');
 const near = (a,b,t=1e-6) => assert.ok(Math.abs(a-b)<t,`${a} != ${b}`);
 test('tangent agrees with known derivatives and moves with its point',()=>{
   for(const [f,x,y,slope] of [[x=>x*x,2,4,4],[Math.sin,0,0,1],[Math.exp,1,Math.E,Math.E],[Math.log,1,0,1],[x=>3*x+2,-4,-10,3],[x=>x*x*x,0,0,0]]) {

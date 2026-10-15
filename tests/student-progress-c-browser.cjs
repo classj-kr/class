@@ -116,7 +116,7 @@ const LEGACY_GRAPH_STATE = { version: 1, title: '옛 수업', functions: [{ id: 
 
     // ── 그래프 칠판: 옛 현재 장면은 옮겨지고, 수업을 보관하면 보관함과 현재 장면이 서버에 남는다.
     {
-      const { context, page } = await open('/learning/literacy-numeracy/graph-studio/', { signedIn: true, legacy: { 'graph-board:current:v1': LEGACY_GRAPH_STATE } });
+      const { context, page } = await open('/learning/inquiry/math/graph-studio/', { signedIn: true, legacy: { 'graph-board:current:v1': LEGACY_GRAPH_STATE } });
       await graphReady(page);
       assert.deepEqual(await legacyKeys(page), [], '그래프 칠판: 옮긴 뒤 브라우저에 남으면 안 된다');
       assert.equal(await page.locator('#lessonTitle').inputValue(), '옛 수업');
@@ -128,7 +128,7 @@ const LEGACY_GRAPH_STATE = { version: 1, title: '옛 수업', functions: [{ id: 
       assert.equal(items.scenes.length, 1); assert.equal(items.scenes[0].state.title, '검증 수업'); assert.equal(items.current.title, '검증 수업');
       assert.deepEqual(await legacyKeys(page), []);
       await context.close();
-      const other = await open('/learning/literacy-numeracy/graph-studio/', { signedIn: true });
+      const other = await open('/learning/inquiry/math/graph-studio/', { signedIn: true });
       await graphReady(other.page);
       assert.equal(await other.page.locator('#lessonTitle').inputValue(), '검증 수업', '그래프 칠판: 다른 브라우저에서 현재 장면이 이어져야 한다');
       await other.page.locator('#menuButton').click(); await other.page.locator('#scenesButton').click();
@@ -150,7 +150,7 @@ const LEGACY_GRAPH_STATE = { version: 1, title: '옛 수업', functions: [{ id: 
       await context.close();
     }
     {
-      const { context, page } = await open('/learning/literacy-numeracy/graph-studio/', { signedIn: false });
+      const { context, page } = await open('/learning/inquiry/math/graph-studio/', { signedIn: false });
       await graphReady(page);
       assert.equal(await page.locator('#saveStatus').textContent(), '로그인하면 자동 저장돼요');
       await page.locator('#menuButton').click(); await page.locator('#scenesButton').click();

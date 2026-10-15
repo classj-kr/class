@@ -500,6 +500,7 @@ app.use(
 );
 
 const LEGACY_LEARNING_PATHS = new Map([
+  ["/learning/literacy-numeracy/graph-studio", "/learning/inquiry/math/graph-studio"],
   ["/learning/reading", "/learning/literacy-numeracy/reading"],
   ["/learning/basics/idioms", "/learning/literacy-numeracy/classical-chinese-idioms"],
   ["/learning/academics/classical-chinese-idioms", "/learning/literacy-numeracy/classical-chinese-idioms"],

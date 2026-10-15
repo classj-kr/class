@@ -49,15 +49,15 @@ function inspect(file) {
   });
   return { path: path.relative(root, file).replaceAll('\\', '/'), sha256: crypto.createHash('sha256').update(source).digest('hex'), evidence };
 }
-function inspectArea(row) {
+function inspectArea(row, sourceBase = base) {
   const [directory, label, area, storage, current, gap, keyFiles] = row;
-  const files = walk(path.join(root, base, directory)).map(inspect);
-  return { directory: base + directory, label, area, storage, current, gap, crossDeviceResume: false,
+  const files = walk(path.join(root, sourceBase, directory)).map(inspect);
+  return { directory: sourceBase + directory, label, area, storage, current, gap, crossDeviceResume: false,
     scannedSourceFiles: files.length,
     htmlPages: files.filter(file => file.path.endsWith('.html')).length,
     sourceFilesWithDeviceStorage: files.filter(file => file.evidence.some(e => e.kinds.includes('device-storage'))).length,
-    keyFiles: keyFiles.map(file => base + file),
-    evidenceFiles: files.filter(file => file.evidence.length || keyFiles.some(key => base + key === file.path)) };
+    keyFiles: keyFiles.map(file => sourceBase + file),
+    evidenceFiles: files.filter(file => file.evidence.length || keyFiles.some(key => sourceBase + key === file.path)) };
 }
 const report = {
   title: '문해·수리 학습 기록 점검',
@@ -71,8 +71,8 @@ const report = {
     reporting: '학생별·영역별, 기본 오늘, 주간·기간 조회. 인쇄 기능 불필요.',
     future: '학부모는 자기 자녀의 저장된 사실 기록 조회. AI 의견은 교사가 확인·공개한 뒤 제공.'
   },
-  activities: rows.map(inspectArea),
-  supplemental: extras.map(inspectArea),
+  activities: rows.map(row => inspectArea(row)),
+  supplemental: extras.map(row => inspectArea(row, 'learning/inquiry/math/')),
   importantFindings: [
     '현재 활성 활동 중 문항·진행 순서를 계정에서 읽어 기기간 이어가는 공통 구현은 확인되지 않음.',
     '비문학 reading-bank에는 pilot start/responses/submit와 응답 조회 구현이 별도로 있지만 현재 자습 app.js는 self-study GET만 사용. 기존 파일럿 API를 현재 자습 기록으로 오인하면 안 됨.',

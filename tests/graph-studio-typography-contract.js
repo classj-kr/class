@@ -1,8 +1,8 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const C = require('../learning/literacy-numeracy/graph-studio/graph-core');
-const katex = require('../learning/literacy-numeracy/graph-studio/vendor/katex.min.js');
-const html = fs.readFileSync('learning/literacy-numeracy/graph-studio/index.html', 'utf8');
+const C = require('../learning/inquiry/math/graph-studio/graph-core');
+const katex = require('../learning/inquiry/math/graph-studio/vendor/katex.min.js');
+const html = fs.readFileSync('learning/inquiry/math/graph-studio/index.html', 'utf8');
 for (const source of ['-x^2','(-x)^2','2^-2','x^(x+1)','sqrt(abs(x))','ln(x^2+1)','(x+1)/(x-1)','sin(pi*x)','a(x-h)^2+k']) {
   const c = C.compile(source);
   for (const params of [undefined,{a:-2,b:1,c:0,h:-3,k:2}]) {
@@ -17,11 +17,11 @@ assert.equal(C.latex(C.compile('x^2^3').ast),'x^{2^{3}}');
 assert.match(html, /vendor\/katex.min.css/);
 assert.match(html, /vendor\/katex.min.js/);
 assert.match(html, /graph-core.js/);
-const css = fs.readFileSync('learning/literacy-numeracy/graph-studio/vendor/katex.min.css', 'utf8');
+const css = fs.readFileSync('learning/inquiry/math/graph-studio/vendor/katex.min.css', 'utf8');
 const fonts = [...css.matchAll(/url\((fonts\/[^)]+)\)/g)].map(match => match[1]);
 assert.equal(fonts.length, 20);
 for (const font of fonts) {
-  assert.ok(fs.existsSync('learning/literacy-numeracy/graph-studio/vendor/' + font), font);
+  assert.ok(fs.existsSync('learning/inquiry/math/graph-studio/vendor/' + font), font);
 }
 console.log('graph board math typography passed');
 

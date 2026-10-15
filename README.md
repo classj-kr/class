@@ -17,7 +17,7 @@ class/
 ├─ assets/                     공통 이미지·음원·네트워크 코드
 ├─ learning/
 │  ├─ literacy-numeracy/       문해·수리 학습(읽기·맞춤법·연산·이야기책)
-│  ├─ inquiry/                 교과·탐구 학습(역사·과학·지도·정보)
+│  ├─ inquiry/                 교과·탐구 학습(수학·역사·과학·지도·정보)
 │  ├─ games/                   보드게임과 사고력 활동
 │  └─ arts/                    음악·미술 학습
 ├─ game-hub-server/            인증·학급·게임·학습 앱 통합 서버
@@ -33,6 +33,10 @@ class/
 `/arithmetic`와 `/learn/world-voyage/`는 포털의 하위 기능입니다.
 통합 서버가 연산·세계 항해 앱을 실행하고 같은 사이트 경로로 연결합니다.
 `/hanguksa`는 정적 한국사 화면 `/learning/inquiry/korean-history/`로 연결합니다.
+
+수학 탐구 교구는 `learning/inquiry/math/`에 모읍니다. 쌓기나무는 `stacking-cubes/`,
+분수 그림판은 `fraction-board/`, 그래프 그리기는 `graph-studio/`이며,
+홈의 **교과 탐구 → 수학**에서 엽니다.
 
 학급·학교 운영 화면의 소스는 `apps/`에 모았습니다. 서버의 `site-paths.js`가
 기존 `/classtools/`, `/schooladmin/`, `/boards/` 등의 주소를 새 파일 위치에 연결하므로

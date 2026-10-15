@@ -6,15 +6,19 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261015-1">
-  <script src="model.js?v=20261015-1" defer></script>
-  <script src="app.js?v=20261015-1" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261015-2">
+  <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
+  <script src="model.js?v=20261015-2" defer></script>
+  <script src="activities.js?v=20261015-2" defer></script>
+  <script src="sound.js?v=20261015-2" defer></script>
+  <script src="app.js?v=20261015-2" defer></script>
   <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
 </head>
-<body>
+<body data-sfx-clicks="none" data-sfx-feedback="none">
   <main class="workspace" aria-label="쌓기나무 교구">
     <h1 class="sr-only">쌓기나무</h1>
     <div class="top-controls">
+      <button id="activity-button" class="activity-button" type="button" aria-haspopup="dialog">활동</button>
       <output id="total" class="total" aria-live="polite" hidden>전체 0개</output>
       <span id="view-label" class="view-label" hidden></span>
       <button id="view-button" class="view-button" type="button" aria-expanded="false" aria-controls="view-panel">
@@ -32,6 +36,10 @@
       </div>
       <label class="check-row"><span>전체 개수</span><input id="show-total" type="checkbox"></label>
       <label class="check-row"><span>위 보기의 층수</span><input id="show-heights" type="checkbox"></label>
+      <div class="sound-settings">
+        <label class="check-row"><span>효과음</span><input id="sound-enabled" type="checkbox" checked></label>
+        <label class="volume-row" for="sound-volume"><span>음량</span><input id="sound-volume" type="range" min="0" max="100" step="5" value="65"></label>
+      </div>
       <div class="panel-actions">
         <button id="reset-camera" type="button">시점 되돌리기</button>
         <button id="clear-board" type="button" disabled>모두 지우기</button>
@@ -46,7 +54,20 @@
     </section>
 
     <div class="scene-wrap">
+      <div class="scene-board">
       <svg id="scene" xmlns="http://www.w3.org/2000/svg" tabindex="0" role="group" aria-label="쌓기판" aria-describedby="hint keyboard-help" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Enter Delete"></svg>
+      </div>
+      <aside id="target-panel" class="target-panel" aria-label="활동 목표" hidden>
+        <div class="practice-copy"><h2 id="challenge-title"></h2><p id="challenge-prompt"></p></div>
+        <svg id="target-scene" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="목표 모양"></svg>
+        <div id="target-views" class="target-views" role="group" aria-label="목표 그림 방향" hidden>
+          <button type="button" data-target-view="top" aria-pressed="true">위</button>
+          <button type="button" data-target-view="front" aria-pressed="false">앞</button>
+          <button type="button" data-target-view="right" aria-pressed="false">옆</button>
+        </div>
+        <button id="check-shape" class="primary-button" type="button">확인하기</button>
+        <p id="challenge-result" class="challenge-result" role="status"></p>
+      </aside>
     </div>
 
     <footer class="bottom-controls">
@@ -68,5 +89,30 @@
     <p id="keyboard-help" class="sr-only">쌓기판에서 방향키로 칸을 고르고 Enter로 쌓거나 Delete로 지우세요.</p>
     <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
   </main>
+
+  <dialog id="activity-dialog" aria-labelledby="activity-heading">
+    <div class="dialog-heading"><h2 id="activity-heading">어떻게 쌓아 볼까요?</h2><button id="close-activities" class="close-dialog" type="button" aria-label="활동 선택 닫기">×</button></div>
+    <div class="activity-choices">
+      <button type="button" data-mode="free"><strong>자유 쌓기</strong><span>내 마음대로 쌓고 관찰해요</span></button>
+      <button type="button" data-mode="copy"><strong>따라 쌓기</strong><span>목표 모양과 똑같이 쌓아요</span></button>
+      <button type="button" data-mode="views"><strong>그림 보고 쌓기</strong><span>위·앞·옆 모습을 보고 만들어요</span></button>
+      <button type="button" data-mode="many"><strong>여러 답 찾기</strong><span>같은 그림에 맞는 두 모양을 찾아요</span></button>
+    </div>
+    <section class="saved-section" aria-labelledby="saved-heading">
+      <h3 id="saved-heading">저장한 모양</h3>
+      <p class="subtle">이 기기에 보관해요. 다른 기기에서는 링크나 파일로 열 수 있어요.</p>
+      <div id="saved-list"></div>
+      <button id="undo-saved-delete" class="text-button" type="button" hidden>삭제 되돌리기</button>
+    </section>
+    <details id="keep-options" class="keep-options">
+      <summary>지금 모양 저장·공유</summary>
+      <form id="save-form"><label class="sr-only" for="shape-name">모양 이름</label><input id="shape-name" type="text" maxlength="32" placeholder="모양 이름" autocomplete="off"><button id="save-shape" class="primary-button" type="submit">저장</button></form>
+      <div class="share-row"><label class="sr-only" for="share-mode">공유할 활동</label><select id="share-mode"><option value="free">자유롭게 열기</option><option value="copy">따라 쌓기로 열기</option><option value="views">그림 보고 쌓기로 열기</option></select><button id="share-shape" type="button">링크 복사</button></div>
+      <input id="share-link" type="url" readonly aria-label="공유 링크, 복사해서 사용하세요" hidden>
+      <div class="file-actions"><button id="export-shape" type="button">파일로 저장</button><button id="import-shape" type="button">파일 열기</button></div>
+      <input id="shape-file" type="file" accept=".json,application/json" hidden>
+    </details>
+    <p id="library-status" class="library-status" role="status"></p>
+  </dialog>
 </body>
 </html>

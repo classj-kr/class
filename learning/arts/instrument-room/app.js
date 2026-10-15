@@ -218,31 +218,35 @@
         "funk-kit": Object.freeze({ id: "drums-funk", root: "assets/audio/drums-funk/", gainDb: DRUM_KIT_GAIN_DB["drums-funk"], pieceBoostDb: DRUM_PIECE_BOOST_DB["drums-funk"] }),
         "linn-machine": Object.freeze({ id: "drums-linn", root: "assets/audio/drums-linn/", gainDb: DRUM_KIT_GAIN_DB["drums-linn"], pieceBoostDb: DRUM_PIECE_BOOST_DB["drums-linn"] }),
         "drum-808": Object.freeze({ id: "drums-808", root: "assets/audio/drums-808/", gainDb: DRUM_KIT_GAIN_DB["drums-808"] }),
-        "orchestral-percussion": Object.freeze({ id: "orchestral-percussion", root: "assets/audio/orchestral-percussion/", available: Object.freeze(["ride"]), gainDb: Object.freeze({ ride: 3 }) })
+        "orchestral-percussion": Object.freeze({ id: "orchestral-percussion", root: "assets/audio/orchestral-percussion/", available: Object.freeze(["orchestral-snare", "orchestral-bass-drum", "orchestral-suspended-cymbal", "orchestral-tamtam", "orchestral-triangle"]) })
     });
     const KOREAN_PERCUSSION_PADS = window.KOREAN_PERCUSSION_DATA ? window.KOREAN_PERCUSSION_DATA.pads : Object.freeze({});
     const KOREAN_PERCUSSION_SAMPLE_SETS = window.KOREAN_PERCUSSION_DATA ? window.KOREAN_PERCUSSION_DATA.samples : Object.freeze({});
+    const STATION_SAMPLE_SETS = Object.freeze({
+        "ritual-signals": Object.freeze({ id: "korean-ritual-signals", root: "assets/audio/ritual-signals/", available: Object.freeze(["bak", "chuk", "eo"]) }),
+        "daechwita-station": Object.freeze({ id: "korean-daechwita", root: "assets/audio/daechwita/", available: Object.freeze(["nabal", "nagak", "yonggo", "jabara", "jing"]) })
+    });
 
     const STATION_DRUMS = {
         "orchestral-percussion": [
-            { id: "orchestral-snare", sound: "snare", name: "스네어드럼", family: "CONCERT SNARE", key: "A", code: "KeyA", color: "#ff9d66" },
-            { id: "orchestral-bass-drum", sound: "kick", name: "베이스드럼", family: "CONCERT BASS DRUM", key: "S", code: "KeyS", color: "#8ef0c6" },
-            { id: "orchestral-suspended-cymbal", sound: "crash", name: "서스펜디드 심벌", family: "SUSPENDED CYMBAL", key: "D", code: "KeyD", color: "#e5ff75" },
-            { id: "orchestral-tamtam", sound: "ride", name: "탐탐", family: "TAM-TAM", key: "F", code: "KeyF", color: "#ffcf5c" },
-            { id: "orchestral-triangle", sound: "hat", name: "트라이앵글", family: "TRIANGLE", key: "G", code: "KeyG", color: "#9c91ff" }
+            { id: "orchestral-snare", name: "스네어드럼", family: "작은북", key: "A", code: "KeyA", color: "#ff9d66" },
+            { id: "orchestral-bass-drum", name: "베이스드럼", family: "큰북", key: "S", code: "KeyS", color: "#8ef0c6" },
+            { id: "orchestral-suspended-cymbal", name: "서스펜디드 심벌", family: "매단 심벌", key: "D", code: "KeyD", color: "#e5ff75" },
+            { id: "orchestral-tamtam", name: "탐탐", family: "큰 징", key: "F", code: "KeyF", color: "#ffcf5c" },
+            { id: "orchestral-triangle", name: "트라이앵글", family: "금속 타악기", key: "G", code: "KeyG", color: "#9c91ff" }
         ],
         "ritual-signals": [
-            { id: "bak", sound: "snare", name: "박", family: "WOOD CLAPPER", key: "A", code: "KeyA", color: "#ff9d66" },
-            { id: "chuk", sound: "lowtom", name: "축", family: "WOOD BOX", key: "S", code: "KeyS", color: "#8ef0c6" },
-            { id: "eo", sound: "hightom", name: "어", family: "TIGER SCRAPER", key: "D", code: "KeyD", color: "#e5ff75" }
+            { id: "bak", name: "박", family: "나무판", key: "A", code: "KeyA", color: "#ff9d66" },
+            { id: "chuk", name: "축", family: "나무 상자", key: "S", code: "KeyS", color: "#8ef0c6" },
+            { id: "eo", name: "어", family: "호랑이 모양 나무 악기", key: "D", code: "KeyD", color: "#e5ff75" }
         ],
         "daechwita-station": [
-            { id: "nabal", sound: "ride", name: "나발", family: "BRASS HORN", key: "A", code: "KeyA", color: "#ffcf5c" },
-            { id: "nagak", sound: "lowtom", name: "나각", family: "CONCH HORN", key: "S", code: "KeyS", color: "#f09cff" },
-            { id: "yonggo", sound: "kick", name: "용고", family: "MARCH DRUM", key: "D", code: "KeyD", color: "#8ef0c6" },
-            { id: "jabara", sound: "crash", name: "자바라", family: "BRASS CYMBALS", key: "F", code: "KeyF", color: "#e5ff75" },
-            { id: "jing", sound: "ride", name: "징", family: "LARGE GONG", key: "G", code: "KeyG", color: "#ff9d66" },
-            { id: "taepyeongso", sound: "hat", name: "태평소", family: "DOUBLE REED", key: "H", code: "KeyH", color: "#9c91ff" }
+            { id: "nabal", name: "나발", family: "금속 나팔", key: "A", code: "KeyA", color: "#ffcf5c" },
+            { id: "nagak", name: "나각", family: "소라 나팔", key: "S", code: "KeyS", color: "#f09cff" },
+            { id: "yonggo", name: "용고", family: "큰 북", key: "D", code: "KeyD", color: "#8ef0c6" },
+            { id: "jabara", name: "자바라", family: "금속 타악기", key: "F", code: "KeyF", color: "#e5ff75" },
+            { id: "jing", name: "징", family: "금속 타악기", key: "G", code: "KeyG", color: "#ff9d66" },
+            { id: "taepyeongso", name: "태평소", family: "겹서 관악기", openModelId: "taepyeongso", color: "#9c91ff" }
         ]
     };
 
@@ -264,7 +268,7 @@
 
     const FAMILY_COPY = {
         keyboard: ["KEYBOARD", "건반방"], guitar: ["GUITAR", "기타방"], bass: ["BASS", "베이스방"], drums: ["DRUMS", "드럼방"],
-        strings: ["STRINGS", "현악방"], woodwind: ["WOODWIND", "목관방"], brass: ["BRASS", "금관방"], percussion: ["PERCUSSION", "타악방"], korean: ["KOREAN", "국악방"]
+        strings: ["STRINGS", "현악방"], woodwind: ["WOODWIND", "목관방"], brass: ["BRASS", "금관방"], percussion: ["타악기", "타악방"], korean: ["KOREAN", "국악방"]
     };
     const MODEL_LIBRARY = {
         keyboard: [
@@ -333,18 +337,18 @@
             { id: "pop-kit", name: "Pop Kit", tag: "DRUM SET", engine: "drums", stage: "drums", art: "assets/instruments/drum-pop-kit.webp", badge: "15-PAD", model: "POP", description: "Pop 킷의 고스트노트·사이드스틱·림샷·풋/오픈 하이햇과 3개의 탐까지 실제 원샷으로 연주해요." },
             { id: "jazz-kit", name: "Jazz Kit", tag: "DRUM SET", engine: "drums", stage: "drums", art: "assets/instruments/drum-jazz-kit.webp", badge: "15-PAD", model: "JAZZ", description: "Jazz 킷의 고스트노트·사이드스틱·림샷·풋/오픈 하이햇과 2개의 탐까지 실제 원샷으로 연주해요." },
             { id: "funk-kit", name: "Funk Kit", tag: "DRUM SET", engine: "drums", stage: "drums", art: "assets/instruments/drum-funk-kit.webp", badge: "15-PAD", model: "FUNK", description: "Funk 킷의 고스트노트·사이드스틱·림샷·풋/오픈 하이햇과 3개의 탐까지 실제 원샷으로 연주해요." },
-            { id: "timpani", name: "팀파니", tag: "ORCHESTRAL", engine: "drums", stage: "timpani", art: "assets/instruments/timpani-bank.webp", pitched: true, range: [36, 53], size: "4대 배치 너비 약 290 cm", visualScale: .94, scalePercent: 83, badge: "18-NOTE OGG", model: "TIMPANI", description: "실제 팀파니 타격 원음 C2–F3을 건반으로 연주해요." },
-            { id: "glockenspiel", name: "글로켄슈필", tag: "KEYBOARD PERC.", engine: "drums", stage: "metal", art: "assets/instruments/glockenspiel-concert.webp", pitched: true, range: [79, 108], size: "본체 너비 약 80 cm", visualScale: .54, scalePercent: 23, badge: "17-NOTE SOURCE · EXTENDED", model: "GLOCKENSPIEL", description: "글로켄슈필 원음 G5–B6을 바탕으로 악기의 높은 음역까지 확장해 연주해요." },
-            { id: "marimba", name: "마림바", tag: "KEYBOARD PERC.", engine: "drums", stage: "mallet", art: "assets/instruments/marimba-concert.webp", pitched: true, range: [36, 96], size: "본체 너비 약 250 cm", visualScale: .9, scalePercent: 71, badge: "61-NOTE OGG", model: "MARIMBA", description: "마림바 원음 C2–C7을 반음마다 연주해요." },
-            { id: "vibraphone", name: "비브라폰", tag: "KEYBOARD PERC.", engine: "drums", stage: "metal", art: "assets/instruments/vibraphone-concert.webp", pitched: true, range: [53, 89], size: "본체 너비 약 140 cm", visualScale: .72, scalePercent: 40, badge: "37-NOTE OGG", model: "VIBRAPHONE", description: "비브라폰 원음 F3–F6을 반음마다 연주해요." },
-            { id: "xylophone", name: "실로폰", tag: "KEYBOARD PERC.", engine: "drums", stage: "mallet", art: "assets/instruments/xylophone-compact-concert.webp", pitched: true, range: [48, 89], size: "본체 너비 약 140 cm", visualScale: .72, scalePercent: 40, badge: "42-NOTE OGG", model: "XYLOPHONE", description: "실로폰 원음 C3–F6을 반음마다 연주해요." },
-            { id: "orchestral-percussion", name: "오케스트라 타악 스테이션", tag: "ORCHESTRAL", engine: "drums", stage: "orchestral", station: "orchestral", size: "전체 배치 너비 약 350 cm", scalePercent: 100, badge: "ORCHESTRAL PERCUSSION", model: "SNARE · BASS DRUM · CYMBAL · TAM-TAM · TRIANGLE", parts: [
+            { id: "timpani", name: "팀파니", tag: "조율하는 북", engine: "drums", stage: "timpani", art: "assets/instruments/timpani-bank.webp", pitched: true, range: [36, 53], size: "4대 배치 너비 약 290 cm", visualScale: .94, scalePercent: 83, badge: "18-NOTE OGG", model: "TIMPANI", description: "실제 팀파니 타격 원음 C2–F3을 건반으로 연주해요." },
+            { id: "glockenspiel", name: "글로켄슈필", tag: "건반 타악기", engine: "drums", stage: "metal", art: "assets/instruments/glockenspiel-concert.webp", pitched: true, range: [79, 108], size: "본체 너비 약 80 cm", visualScale: .54, scalePercent: 23, badge: "17-NOTE SOURCE · EXTENDED", model: "GLOCKENSPIEL", description: "글로켄슈필 원음 G5–B6을 바탕으로 악기의 높은 음역까지 확장해 연주해요." },
+            { id: "marimba", name: "마림바", tag: "건반 타악기", engine: "drums", stage: "mallet", art: "assets/instruments/marimba-concert.webp", pitched: true, range: [36, 96], size: "본체 너비 약 250 cm", visualScale: .9, scalePercent: 71, badge: "61-NOTE OGG", model: "MARIMBA", description: "마림바 원음 C2–C7을 반음마다 연주해요." },
+            { id: "vibraphone", name: "비브라폰", tag: "건반 타악기", engine: "drums", stage: "metal", art: "assets/instruments/vibraphone-concert.webp", pitched: true, range: [53, 89], size: "본체 너비 약 140 cm", visualScale: .72, scalePercent: 40, badge: "37-NOTE OGG", model: "VIBRAPHONE", description: "비브라폰 원음 F3–F6을 반음마다 연주해요." },
+            { id: "xylophone", name: "실로폰", tag: "건반 타악기", engine: "drums", stage: "mallet", art: "assets/instruments/xylophone-compact-concert.webp", pitched: true, range: [48, 89], size: "본체 너비 약 140 cm", visualScale: .72, scalePercent: 40, badge: "42-NOTE OGG", model: "XYLOPHONE", description: "실로폰 원음 C3–F6을 반음마다 연주해요." },
+            { id: "orchestral-percussion", name: "오케스트라 타악 편성", tag: "오케스트라 타악", engine: "drums", stage: "orchestral", station: "orchestral", badge: "다섯 악기의 실제 소리", model: "스네어드럼 · 베이스드럼 · 서스펜디드 심벌 · 탐탐 · 트라이앵글", parts: [
                 { id: "orchestral-snare", name: "스네어드럼", art: "assets/instruments/orchestral-snare.webp", scale: .88 },
                 { id: "orchestral-bass-drum", name: "베이스드럼", art: "assets/instruments/orchestral-bass-drum.webp", scale: 1.04 },
                 { id: "orchestral-suspended-cymbal", name: "서스펜디드 심벌", art: "assets/instruments/orchestral-suspended-cymbal.webp", scale: .94 },
                 { id: "orchestral-tamtam", name: "탐탐", art: "assets/instruments/orchestral-tamtam.webp", scale: 1 },
                 { id: "orchestral-triangle", name: "트라이앵글", art: "assets/instruments/orchestral-triangle.webp", scale: .86 }
-            ], description: "오케스트라 타악기를 개별 레이어로 배치해, 연주되는 악기만 빛으로 확인해요." },
+            ], description: "다섯 타악기의 소리를 패드로 듣고, 연주한 악기가 그림에서 빛나는 것을 확인해요." },
             { id: "drum-808", name: "808 Machine", tag: "ELECTRONIC", engine: "drums", stage: "machine", art: "assets/instruments/drum-808-machine.webp", badge: "15-PAD", model: "808 STYLE", description: "808 킷의 림샷·클랩·풋/오픈 하이햇까지 실제 원샷으로 분리해 연주해요." },
             { id: "linn-machine", name: "Linn Machine", tag: "ELECTRONIC", engine: "drums", stage: "linn", art: "assets/instruments/drum-linn-machine.webp", badge: "15-PAD", model: "LINN STYLE", description: "Linn 계열 킷의 림샷·클랩·풋/오픈 하이햇까지 실제 원샷으로 분리해 연주해요." },
         ]
@@ -369,8 +373,8 @@
         { id: "sogeum", room: "melody", name: "소금", tag: "가로로 부는 관악기", engine: "guitar", stage: "korean-wind", art: "assets/instruments/korean-sogeum-v1.webp", expressive: true, range: [70, 93], size: "전체 길이 약 38 cm", visualScale: .44, scalePercent: 21, badge: "작고 높은 대나무 피리", model: "소금", expression: "호흡 압력", description: "작은 대나무 피리를 옆으로 불어 맑고 높은 소리를 내요." },
         { id: "danso", room: "melody", name: "단소", tag: "세로로 부는 관악기", engine: "guitar", stage: "korean-wind", art: "assets/instruments/korean-danso-v1.webp", expressive: true, range: [66, 92], size: "전체 길이 약 40 cm", visualScale: .45, scalePercent: 22, badge: "부드러운 대나무 소리", model: "단소", expression: "호흡 압력", description: "대나무 피리의 윗부분에 입김을 불어 부드러운 선율을 연주해요." },
         { id: "hun", room: "melody", name: "훈", tag: "흙으로 만든 관악기", engine: "guitar", stage: "korean-wind", art: "assets/instruments/korean-hun-v1.webp", expressive: true, range: [60, 71], size: "본체 높이 약 12 cm", visualScale: .34, scalePercent: 7, badge: "둥글고 깊은 울림", model: "훈", expression: "호흡 압력", description: "흙으로 빚은 악기에 입김을 불어 둥글고 깊은 소리를 내요." },
-        { id: "hyangpiri", room: "melody", name: "향피리", tag: "겹서로 부는 관악기", engine: "guitar", stage: "korean-wind", art: "assets/instruments/korean-hyangpiri.webp", expressive: true, range: [59, 77], size: "전체 길이 약 27 cm", visualScale: .4, scalePercent: 15, badge: "힘찬 피리 소리", model: "향피리", expression: "호흡 압력", description: "겹서를 입에 물고 불어 힘찬 선율을 연주해요." },
-        { id: "taepyeongso", room: "melody", name: "태평소", tag: "겹서로 부는 관악기", engine: "guitar", stage: "korean-wind", art: "assets/instruments/korean-taepyeongso.webp", expressive: true, range: [68, 89], size: "전체 길이 약 40 cm", visualScale: .48, scalePercent: 22, badge: "멀리 퍼지는 큰 소리", model: "태평소", expression: "호흡 압력", description: "겹서에 입김을 불어 풍물과 행진에 어울리는 크고 힘찬 소리를 내요." },
+        { id: "hyangpiri", room: "melody", name: "향피리", tag: "겹서 관악기", engine: "guitar", stage: "korean-wind", art: "assets/instruments/korean-hyangpiri.webp", expressive: true, range: [59, 77], size: "전체 길이 약 27 cm", visualScale: .4, scalePercent: 15, badge: "힘찬 피리 소리", model: "향피리", expression: "호흡 압력", description: "겹서를 입에 물고 불어 힘찬 선율을 연주해요." },
+        { id: "taepyeongso", room: "melody", name: "태평소", tag: "겹서 관악기", engine: "guitar", stage: "korean-wind", art: "assets/instruments/korean-taepyeongso.webp", expressive: true, range: [68, 89], size: "전체 길이 약 40 cm", visualScale: .48, scalePercent: 22, badge: "멀리 퍼지는 큰 소리", model: "태평소", expression: "호흡 압력", description: "겹서에 입김을 불어 풍물과 행진에 어울리는 크고 힘찬 소리를 내요." },
         { id: "janggu-sanjo", room: "folk", name: "산조장구", tag: "산조 반주", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-janggu-sanjo.webp", badge: "맨손·열채 연주", model: "산조장구", description: "왼손과 열채로 양쪽 가죽을 치며 산조 선율의 흐름을 받쳐요." },
         { id: "janggu-samul", room: "folk", name: "사물장구", tag: "풍물·사물놀이", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-janggu-samul.webp", badge: "궁채·열채 연주", model: "사물장구", description: "궁채와 열채로 양쪽 가죽을 번갈아 치며 빠르고 힘찬 장단을 만들어요." },
         { id: "buk-samul", room: "folk", name: "사물북", tag: "풍물·사물놀이", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-buk-samul.webp", badge: "큰 박을 받치는 북", model: "사물북", description: "북면과 가장자리 등을 채로 치며 풍물과 사물놀이의 큰 박을 받쳐요." },
@@ -380,12 +384,12 @@
         { id: "jing", detailId: "jing", room: "folk", name: "징", tag: "금속 타악기", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-jing.webp", badge: "긴 울림을 내는 큰 쇠", model: "징", description: "채로 쳐서 길게 울리고 손으로 울림을 조절하며 장단의 큰 흐름을 받쳐요." },
         { id: "pyeonjong", room: "court", name: "편종", tag: "궁중 금속 타악기", engine: "drums", stage: "metal", art: "assets/instruments/korean-pyeonjong.webp", pitched: true, toneMarkers: true, range: [60, 75], size: "전체 너비 약 210 cm", visualScale: .92, scalePercent: 82, badge: "음높이가 다른 열여섯 종", model: "열여섯 청동 종", description: "크기와 두께가 다른 종을 쳐서 정해진 음높이로 궁중 음악을 연주해요." },
         { id: "pyeongyeong", room: "court", name: "편경", tag: "궁중 돌 타악기", engine: "drums", stage: "metal", art: "assets/instruments/korean-pyeongyeong.webp", pitched: true, toneMarkers: true, range: [72, 87], size: "전체 너비 약 210 cm", visualScale: .92, scalePercent: 82, badge: "음높이가 다른 열여섯 돌", model: "열여섯 돌 악기", description: "두께가 다른 돌을 쳐서 정해진 음높이로 궁중 음악을 연주해요." },
-        { id: "ritual-signals", room: "court", name: "의식 신호 악기", tag: "박·축·어", engine: "drums", stage: "korean-station", station: "ritual", size: "제례악 지휘·신호 악기 구성", scalePercent: 70, badge: "음악의 시작과 마침", model: "박 · 축 · 어", parts: [
+        { id: "ritual-signals", room: "ensemble", name: "박·축·어", tag: "의식 신호 악기", engine: "drums", stage: "korean-station", station: "ritual", badge: "음악의 시작과 마침", model: "박 · 축 · 어", parts: [
             { id: "bak", name: "박", art: "assets/instruments/korean-bak.webp", scale: .82 },
             { id: "chuk", name: "축", art: "assets/instruments/korean-chuk.webp", scale: .95 },
             { id: "eo", name: "어", art: "assets/instruments/korean-eo.webp", scale: 1.08 }
         ], description: "박·축·어의 소리로 궁중 의식 음악의 시작과 마침을 알려요." },
-        { id: "daechwita-station", room: "court", name: "대취타 악기", tag: "궁중 행진 음악", engine: "drums", stage: "korean-station", station: "daechwita", size: "행진 편성 기준", scalePercent: 100, badge: "나발·나각·용고 등", model: "나발 · 나각 · 용고 · 자바라 · 징 · 태평소", parts: [
+        { id: "daechwita-station", room: "ensemble", name: "대취타 편성", tag: "궁중 행진 음악", engine: "drums", stage: "korean-station", station: "daechwita", badge: "나발·나각·용고 등", model: "나발 · 나각 · 용고 · 자바라 · 징 · 태평소", parts: [
             { id: "nabal", name: "나발", art: "assets/instruments/korean-nabal.webp", scale: 1.12 },
             { id: "nagak", name: "나각", art: "assets/instruments/korean-nagak.webp", scale: .82 },
             { id: "yonggo", name: "용고", art: "assets/instruments/korean-yonggo.webp", scale: 1 },
@@ -463,8 +467,8 @@
 
     function cacheElements() {
         [
-            "audioButton", "modelBadge", "instrumentName", "instrumentDescription", "guitarModeSwitch", "instrumentVisual", "familyEyebrow", "familyName", "modelChooser", "koreanRoomSwitch",
-            "visualFamily", "visualModel", "studioStage", "instrumentArtwork", "instrumentLayers", "scaleGuide", "scaleBar", "scaleValue", "scaleNote", "classicalRender", "machineDeck", "malletRender", "stringCanvas", "pianoControls", "keyboardPatchControls", "stringControls", "classicalControls", "classicalArticulationButtons", "classicalArticulationHint", "guitarFxControls", "drumControls", "drumSystemLabel", "drumSystemDescription", "drumResonanceLabel", "drumToneLabel", "sustainButton",
+            "audioButton", "modelBadge", "instrumentName", "instrumentDescription", "guitarModeSwitch", "instrumentVisual", "familyEyebrow", "familyName", "modelChooser", "koreanRoomSwitch", "stationSource", "orchestralSource",
+            "visualFamily", "visualModel", "studioStage", "instrumentArtwork", "instrumentLayers", "classicalRender", "machineDeck", "malletRender", "stringCanvas", "pianoControls", "keyboardPatchControls", "stringControls", "classicalControls", "classicalArticulationButtons", "classicalArticulationHint", "guitarFxControls", "drumControls", "drumSystemLabel", "drumSystemDescription", "drumResonanceLabel", "drumToneLabel", "sustainButton",
             "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
@@ -1323,7 +1327,7 @@
 
     function drumSampleConfig() {
         if (!state.currentModel) return null;
-        return DRUM_SAMPLE_SETS[state.currentModel.id] || KOREAN_PERCUSSION_SAMPLE_SETS[state.currentModel.id] || null;
+        return DRUM_SAMPLE_SETS[state.currentModel.id] || KOREAN_PERCUSSION_SAMPLE_SETS[state.currentModel.id] || STATION_SAMPLE_SETS[state.currentModel.id] || null;
     }
 
     function findAttackOffset(buffer) {
@@ -1386,7 +1390,7 @@
     function preloadDrumSamples() {
         if (!drumSampleConfig()) return Promise.resolve([]);
         const config = drumSampleConfig();
-        const ids = new Set(activeDrums().map(function (drum) { return drum.sound || drum.id; }).filter(function (id) {
+        const ids = new Set(activeDrums().filter(function (drum) { return !drum.openModelId; }).map(function (drum) { return drum.sound || drum.id; }).filter(function (id) {
             return !config.available || config.available.includes(id);
         }));
         return Promise.allSettled(Array.from(ids).map(loadDrumSample));
@@ -1436,7 +1440,7 @@
             const context = ensureAudio();
             const source = context.createBufferSource();
             const gain = context.createGain();
-            const baseGainDb = typeof current.gainDb === "number" ? current.gainDb : Number(current.gainDb[id] || 0);
+            const baseGainDb = typeof current.gainDb === "number" ? current.gainDb : Number((current.gainDb && current.gainDb[id]) || 0);
             const gainDb = baseGainDb + Number((current.pieceBoostDb && current.pieceBoostDb[id]) || 0);
             source.buffer = sample.buffer;
             const sampledVelocity = Math.max(.08, Math.min(1.2, velocity));
@@ -1467,7 +1471,10 @@
             source.start(context.currentTime, offset);
         }).catch(function () {
             const current = drumSampleConfig();
-            if (current && current.id === selected.id) triggerDrum(id, velocity);
+            if (current && current.id === selected.id) {
+                if (state.currentModel && state.currentModel.station) elements.noteReadout.textContent = "음원을 불러오지 못했어요";
+                else triggerDrum(id, velocity);
+            }
         });
         return true;
     }
@@ -1732,7 +1739,7 @@
     function renderModelBrowser() {
         const familyCopy = FAMILY_COPY[state.family];
         elements.familyEyebrow.textContent = familyCopy[0];
-        const koreanRoomNames = { melody: "국악 선율악기방", folk: "풍물·민속 타악기방", court: "궁중·의식 악기방" };
+        const koreanRoomNames = { melody: "국악 선율악기방", folk: "풍물·민속 타악기방", court: "궁중 타악기방", ensemble: "의식·행진 악기 묶음" };
         elements.familyName.textContent = state.family === "korean" ? koreanRoomNames[state.koreanRoom] : familyCopy[1];
         elements.koreanRoomSwitch.classList.toggle("hidden", state.family !== "korean");
         elements.koreanRoomSwitch.parentElement.classList.toggle("korean-open", state.family === "korean");
@@ -1843,9 +1850,6 @@
         }
         renderInstrumentLayers(model);
         elements.instrumentLayers.classList.toggle("hidden", !hasLayers);
-        elements.scaleGuide.classList.toggle("hidden", !model.size);
-        elements.scaleValue.textContent = model.size || "";
-        elements.scaleBar.style.width = (model.scalePercent || 100) + "%";
         elements.classicalRender.className = "classical-render hidden";
         elements.machineDeck.classList.add("hidden");
         elements.malletRender.classList.add("hidden");
@@ -1886,18 +1890,18 @@
     function renderDrumControlCopy(model) {
         if (model.engine !== "drums") return;
         const koreanSampled = Boolean(KOREAN_PERCUSSION_SAMPLE_SETS[model.id]);
-        const sampled = Boolean(DRUM_SAMPLE_SETS[model.id]) || koreanSampled;
+        const sampled = Boolean(DRUM_SAMPLE_SETS[model.id] || KOREAN_PERCUSSION_SAMPLE_SETS[model.id] || STATION_SAMPLE_SETS[model.id]);
         const machine = model.stage === "machine" || model.stage === "linn";
         const mallet = model.stage === "mallet" || model.stage === "metal";
         const copy = koreanSampled ? ["풍물·민속 타악기", "", "", ""]
-            : model.station === "orchestral" ? ["ORCHESTRAL PERCUSSION", "", "", ""]
+            : model.station === "orchestral" ? ["오케스트라 타악", "다섯 악기의 실제 소리를 들어 보세요.", "", ""]
+            : model.station === "ritual" ? ["의식 신호 악기", "박·축·어의 실제 소리를 들어 보세요.", "", ""]
+            : model.station === "daechwita" ? ["궁중 행진 음악", "악기별 소리를 듣고 태평소는 건반으로 연주해 보세요.", "", ""]
             : machine ? [model.stage === "linn" ? "12-BIT DRUM COMPUTER" : "ANALOG RHYTHM", "", "디케이", "톤"]
             : sampled ? ["ACOUSTIC DRUM KIT", "", "", ""]
             : model.stage === "timpani" ? ["TUNED MEMBRANE", "음높이와 헤드의 감쇠를 조절해요.", "댐핑", "말렛 경도"]
 
             : model.station === "samul" ? ["KOREAN FOLK PERCUSSION", "풍물·사물놀이 악기를 패드로 연주해요.", "울림", "채 경도"]
-            : model.station === "ritual" ? ["의식 신호 악기", "박·축·어의 시작과 마침 신호를 살펴봐요.", "울림", "채 경도"]
-            : model.station === "daechwita" ? ["궁중 행진 음악", "대취타 편성의 대표 악기를 패드로 살펴봐요.", "울림", "밝기"]
             : mallet ? [state.family === "korean" ? "궁중 타악기" : "KEYBOARD PERCUSSION", "음판 구조를 살펴보고 건반으로 연주해요.", "댐핑", "말렛 경도"]
             : ["ACOUSTIC DRUM KIT", "세트 구성을 살펴보고 아래 패드로 연주해요.", "공명", "밝기"];
         elements.drumControls.classList.toggle("sampled-kit", sampled);
@@ -1918,9 +1922,11 @@
         elements.modelBadge.textContent = model.badge;
         elements.instrumentName.textContent = model.name;
         elements.instrumentDescription.textContent = model.description;
+        elements.stationSource.classList.toggle("hidden", !STATION_SAMPLE_SETS[model.id]);
+        elements.orchestralSource.classList.toggle("hidden", model.id !== "orchestral-percussion");
         elements.instrumentInfoButton.setAttribute("aria-label", model.name + " 자세한 설명 열기");
         elements.visualFamily.textContent = state.family === "korean"
-            ? { melody: "국악 · 선율악기", folk: "국악 · 풍물·민속", court: "국악 · 궁중·의식" }[state.koreanRoom]
+            ? { melody: "국악 · 선율악기", folk: "국악 · 풍물·민속", court: "국악 · 궁중 타악", ensemble: "국악 · 악기 묶음" }[state.koreanRoom]
             : FAMILY_COPY[state.family][0];
         elements.visualModel.textContent = model.model;
         const expressive = Boolean(model.expressive) || model.stage === "classical" || model.stage === "wind" || model.stage === "brass";
@@ -1955,7 +1961,7 @@
     }
 
     function selectKoreanRoom(room) {
-        if (!["melody", "folk", "court"].includes(room)) return;
+        if (!["melody", "folk", "court", "ensemble"].includes(room)) return;
         allNotesOff();
         state.koreanRoom = room;
         document.querySelectorAll("[data-korean-room]").forEach(function (button) {
@@ -2217,9 +2223,20 @@
                 button.className = "drum-pad";
                 if ((janggu && index === 0) || group.id === "core") button.classList.add("primary-pad");
                 button.dataset.drum = drum.id;
-                button.dataset.code = drum.code;
+                if (drum.code) button.dataset.code = drum.code;
                 if (drum.sourceName) button.title = drum.name;
                 button.style.setProperty("--pad-color", drum.color);
+                if (drum.openModelId) {
+                    button.classList.add("model-link-pad");
+                    button.setAttribute("aria-label", drum.name + " 건반 악기로 이동");
+                    button.innerHTML = "<span class=\"pad-tool\">" + drum.family + "</span><b>" + drum.name + "</b><small>건반으로 연주 →</small>";
+                    button.addEventListener("click", function () {
+                        selectKoreanRoom("melody");
+                        selectModel(drum.openModelId);
+                    });
+                    container.appendChild(button);
+                    return;
+                }
                 const visual = presentation.icon(modelId, drum);
                 button.setAttribute("aria-label", drum.name + (visual.tool ? " · " + visual.tool : "") + " · 키보드 " + drum.key);
                 const gueumMarkup = drum.gueum
