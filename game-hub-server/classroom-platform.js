@@ -15,6 +15,7 @@ const { createSchoolTextbooks } = require("./school-textbooks");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
 const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
 const { createLearningBoards } = require("./learning-boards");
+const { createExams } = require("./exams");
 const { createVoting } = require("./voting");
 const { createRoomCodes } = require("./room-codes");
 const { NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE, pendingStudentName, pendingTeacherName, fillPendingNamesFromGoogle, namesLookDifferent } = require("./roster-names");
@@ -317,6 +318,7 @@ function createClassroomPlatform(options = {}) {
         UNION ALL SELECT room_code::text FROM school_elections
         UNION ALL SELECT room_code::text FROM seating_rooms
         UNION ALL SELECT code FROM learning_boards
+        UNION ALL SELECT code FROM classroom_exams
         UNION ALL SELECT room_code FROM multiplayer_room_snapshots WHERE expires_at > NOW()
       ) occupied WHERE BTRIM(code)=$1 LIMIT 1`, [code]);
       return result.rows.length > 0;
@@ -1409,6 +1411,7 @@ function createClassroomPlatform(options = {}) {
       await metacognition.initialize();
       await learningRecords.initialize();
       await learningBoards.initialize();
+      await exams.initialize();
       await teacherAi.initialize();
       await userStorage.initialize();
       await assessmentPlans.initialize();
@@ -1645,6 +1648,21 @@ function createClassroomPlatform(options = {}) {
     failureLimiter: createAuthenticationFailureLimiter()
   });
   router.use("/boards", learningBoards.router);
+
+  const exams = createExams({
+    pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute,
+    allocateRoomCode: db => roomCodes.allocate('exam', db),
+    failureLimiter: createAuthenticationFailureLimiter(),
+    async joinIdentity(req, user) {
+      if (user) {
+        const membership = await studentMembership(user.id);
+        return { name: membership?.studentName || user.name || user.displayName, number: membership?.studentNumber };
+      }
+      const guest = guestAccess(req);
+      return guest ? { name: guest.name } : null;
+    }
+  });
+  router.use('/exams', exams.router);
 
   const learningRecords = createLearningRecords({
     pool, requireUser, requireTeacher, requireDatabase, teacherRegistrations, HttpError, asyncRoute
@@ -2071,6 +2089,7 @@ function createClassroomPlatform(options = {}) {
           // The room lookup belongs to the always-open entrance, not the lesson catalog.
           || /^\/api\/room-entry\/resolve\/\d{4}$/.test(requestPath)
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
+          || requestPath === "/exams" || requestPath.startsWith("/exams/")
           || requestPath === "/school-election" || requestPath.startsWith("/school-election/");
         if (classId && requestPath && !isAlwaysAllowed) {
           // 담임이 연 메뉴든 전담이 오늘 연 메뉴든 하나면 열린다.

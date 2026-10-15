@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-12T22:49:06.797Z",
+  "checkedAt": "2026-10-15T16:18:32.184Z",
   "sources": [
     {
       "id": "d8e1bf3dd039c88a",
@@ -112,6 +112,19 @@
         129,
         134,
         135
+      ]
+    },
+    {
+      "id": "03978ccd926f8cfc",
+      "path": "references/textbooks/중고등/T셀파/고등/과학/물질과에너지(임희준)/고_물질과 에너지(임희준)_교과서__7e49f3419a.pdf",
+      "sha256": "03978ccd926f8cfcd5e3f8273f11e10733c309195c13ec7305d3bbecc95da6af",
+      "pages": [
+        118,
+        120
+      ],
+      "printedPages": [
+        116,
+        118
       ]
     }
   ],

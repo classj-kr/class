@@ -1,0 +1,1 @@
+module.exports=function(value){const[mode,part]=value.split(':');const a=window.__catalystFoam;a.setMode(mode);if(part==='bare')return;a.prepare();if(part==='ready')return;a.start();a.setProgress(+part);};

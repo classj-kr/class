@@ -472,7 +472,7 @@ app.use("/fraction", (req, res) => {
   const query = req.originalUrl.indexOf("?");
   res.redirect(301, "/arithmetic/grade-3-fraction-2" + (query >= 0 ? req.originalUrl.slice(query) : ""));
 });
-app.use(["/admin", "/schooladmin", "/arithmetic", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote", "/school-election"], classroomPlatform.requireSiteAccess);
+app.use(["/admin", "/schooladmin", "/arithmetic", "/api/arithmetic-race", "/classtools", "/exams", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote", "/school-election"], classroomPlatform.requireSiteAccess);
 app.use("/learning/class-race", (_req, res) => res.status(410).type('text').send('종료된 활동입니다.'));
 app.use("/arithmetic", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
@@ -527,6 +527,7 @@ for (const [legacyPath, currentPath] of LEGACY_LEARNING_PATHS) {
 app.use('/api/learning-records', express.json({ limit: '512kb' }));
 // 교사용 AI 요청 글은 32kb 를 넘는다(생활기록부 한 반 분량).
 app.use('/api/teacher-ai', express.json({ limit: '256kb' }));
+app.use('/api/exams', express.json({ limit: '512kb' }));
 app.use('/api/me/storage', express.json({ limit: '1100kb' }));
 app.use('/api/teacher/assessment-plans', express.json({ limit: '512kb' }));   // 교과 하나의 계획(항목 수십 개·단계별 평가기준)
 // 명단 저장은 한 번에 전교생(최대 2000명)을 보낸다. 계정만 적은 224명만 해도 42kb 라 기본 32kb 에

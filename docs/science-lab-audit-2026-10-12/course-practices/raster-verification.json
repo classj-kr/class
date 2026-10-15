@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-12T22:43:49.834Z",
-  "count": 4029,
+  "checkedAt": "2026-10-15T16:23:55.665Z",
+  "count": 4041,
   "allDecoded": true,
   "allLossless": false,
   "redundantRasters": [],
@@ -26084,6 +26084,102 @@
       "alpha": false,
       "lossless": true,
       "sha256": "70e0b49ba4eb913f1a5f73953bdc339ec0e8808190bd2d35f22bc40d6cc954b2"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/chromium-live-concentration-28.webp",
+      "sha256": "569cbc5ae943a3f21cb5f6f111de6d03b39714f25ec52e29cc30d3addc7b7dd9",
+      "width": 1600,
+      "height": 2548,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/chromium-live-concentration-ready.webp",
+      "sha256": "d974783ace7fdbd676e4456f1d62c90659fcbfffc0ccf4103ffc1099abc1d564",
+      "width": 1600,
+      "height": 2548,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/chromium-live-q1.webp",
+      "sha256": "6ef709bf5ecafb296991540615934fc049190b5b6736f20c02fcca3865447a09",
+      "width": 1538,
+      "height": 594,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/chromium-live-q3.webp",
+      "sha256": "548c4922813d6e96c3c61507d7fb56a9087ba26c78beccec4a9e7357fc255b88",
+      "width": 1538,
+      "height": 558,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/chromium-live-temperature-36-inverse.webp",
+      "sha256": "75fcf0934509ef66bcdd6289c4af6bfe8f6f5fd97f454ff1bef6e7373da6223a",
+      "width": 1600,
+      "height": 2388,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/chromium-live-temperature-ready.webp",
+      "sha256": "a8636e1322cff4e6d6775b6434050f3d12422f933733917c7f5f438e01c9464a",
+      "width": 1600,
+      "height": 2388,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/webkit-live-concentration-15.webp",
+      "sha256": "8d8a5f861560d3f423891dbbc83416437ca7214e039bf202d18816eb8a437c67",
+      "width": 1440,
+      "height": 5412,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/webkit-live-concentration-390.webp",
+      "sha256": "a474e2ce3758ea0c58454ccf935eea5c9b991548857f97658bff28b7441d3066",
+      "width": 732,
+      "height": 8286,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/webkit-live-q1.webp",
+      "sha256": "f0252bf0384d6eeb573d0284585d2a7b397be69c61fa4fa02bf2fceb19874d6b",
+      "width": 1340,
+      "height": 1006,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/webkit-live-q3.webp",
+      "sha256": "5d059f8bef2a651388481b4a978a29b2795afc7df2705f14a43fb47b815b133a",
+      "width": 1340,
+      "height": 1066,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/webkit-live-temperature-36-inverse.webp",
+      "sha256": "d8241f817825ac0d2ba426ac26b47c86481706168c86c9af7d37ac9c11c6d8cb",
+      "width": 1440,
+      "height": 3890,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/iodine-clock/webkit-live-temperature-ready.webp",
+      "sha256": "8c1326856ada6af4c9be7e5a290fa6fdedbd8b1c67c9ccaabe0eb4ce22d05a1a",
+      "width": 1440,
+      "height": 3890,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/karyotype-chromium-1024.webp",

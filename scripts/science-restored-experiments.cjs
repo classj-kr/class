@@ -133,3 +133,5 @@ module.exports.push(require('./science-phase-curves-experiment.cjs'));
 module.exports.push(require('./science-acid-mixing-experiment.cjs'));
 
 module.exports.push(require('./science-iodine-clock-experiment.cjs'));
+
+module.exports.push(require('./science-catalyst-foam-experiment.cjs'));

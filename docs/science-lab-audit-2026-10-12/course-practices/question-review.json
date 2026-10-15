@@ -1,6 +1,6 @@
 {
   "date": "2026-10-12",
-  "scope": "226 base and 103 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
+  "scope": "230 base and 103 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
   "questions": [
     {
       "id": "refraction#q1",
@@ -6765,6 +6765,126 @@
         "answer": "d",
         "why": "색이 나타나기 전에도 반응은 진행됩니다. 생성된 아이오딘이 계속 소모되다가 축적되면 녹말과 함께 청람색을 나타냅니다."
       }
+    },
+    {
+      "id": "catalyst-foam#q1",
+      "slug": "catalyst-foam",
+      "sha256": "2b0558df460543b2e6f31bb266795dd93d6a728d09a9add8a814b5f0afdcf646",
+      "after": {
+        "id": "catalyst-foam#q1",
+        "slug": "catalyst-foam",
+        "question": "같은 농도·부피의 과산화 수소를 넣은 A, B 중 B에만 KI를 넣었다. 같은 시간 동안 B의 거품이 더 빨리 쌓였다. 이 관찰이 직접 뒷받침하는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "B에서 산소가 생성되는 속도가 더 빠르다."
+          },
+          {
+            "id": "b",
+            "text": "B에서 최종적으로 생성될 산소량이 더 많다."
+          },
+          {
+            "id": "c",
+            "text": "B에서 과산화 수소의 초기 몰수가 더 많다."
+          },
+          {
+            "id": "d",
+            "text": "B에서 산소 한 분자의 질량이 더 크다."
+          }
+        ],
+        "answer": "a",
+        "why": "같은 관찰 시간의 차이는 산소가 생기는 속도 차이를 보여 줍니다. 거품 높이로 최종 생성량을 결정하지 않습니다."
+      }
+    },
+    {
+      "id": "catalyst-foam#q2",
+      "slug": "catalyst-foam",
+      "sha256": "8deee6b2bdf379924b653805fdbac080ad174d29ce1e71a76671a42c7c102957",
+      "after": {
+        "id": "catalyst-foam#q2",
+        "slug": "catalyst-foam",
+        "question": "A와 B에 H₂O₂가 각각 8 mmol 있다. B에만 KI를 넣었다. 두 군에서 2H₂O₂ → 2H₂O + O₂ 반응만 완결될 때 산소의 양 (A, B)은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "(4, 8) mmol"
+          },
+          {
+            "id": "b",
+            "text": "(4, 4) mmol"
+          },
+          {
+            "id": "c",
+            "text": "(8, 8) mmol"
+          },
+          {
+            "id": "d",
+            "text": "(0, 4) mmol"
+          }
+        ],
+        "answer": "b",
+        "why": "H₂O₂ 2 mol에서 O₂ 1 mol이 생기므로 두 군 모두 4 mmol입니다. 촉매는 같은 반응의 완결 생성량을 두 배로 만들지 않습니다."
+      }
+    },
+    {
+      "id": "catalyst-foam#q3",
+      "slug": "catalyst-foam",
+      "sha256": "00ad6c8cbf77ea26608f68c7e0623a2239f259d5e38a429f522fc542e47d60a1",
+      "after": {
+        "id": "catalyst-foam#q3",
+        "slug": "catalyst-foam",
+        "question": "어떤 반응의 반응물, 생성물, 전이 상태의 에너지가 각각 0, −20, 60 kJ/mol이다. 촉매를 쓰는 경로의 전이 상태는 35 kJ/mol이다. 촉매 사용 시 (정반응 활성화 에너지, 반응 엔탈피)는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "(35, −45) kJ/mol"
+          },
+          {
+            "id": "b",
+            "text": "(15, −20) kJ/mol"
+          },
+          {
+            "id": "c",
+            "text": "(35, −20) kJ/mol"
+          },
+          {
+            "id": "d",
+            "text": "(55, +20) kJ/mol"
+          }
+        ],
+        "answer": "c",
+        "why": "활성화 에너지는 35−0=35, 반응 엔탈피는 −20−0=−20 kJ/mol입니다. 촉매는 출발점과 도착점의 에너지를 바꾸지 않습니다."
+      }
+    },
+    {
+      "id": "catalyst-foam#q4",
+      "slug": "catalyst-foam",
+      "sha256": "24bae974449af32b98172c4401630ae326deaed50e7d6a65aa2ad6471693d1f0",
+      "after": {
+        "id": "catalyst-foam#q4",
+        "slug": "catalyst-foam",
+        "question": "두 용액에 KI를 같은 양 넣되 B에는 세제를 넣지 않았다. B에서 기포는 올라오지만 거품 층이 거의 남지 않았다. 산소 생성 속도를 직접 비교할 추가 측정은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "같은 시점에 남은 거품 층의 높이"
+          },
+          {
+            "id": "b",
+            "text": "같은 시점에 남은 KI 결정의 크기"
+          },
+          {
+            "id": "c",
+            "text": "반응 전후 실린더 안 용액의 색깔"
+          },
+          {
+            "id": "d",
+            "text": "같은 시간 동안 모은 산소의 부피"
+          }
+        ],
+        "answer": "d",
+        "why": "온도·압력을 같게 하고 같은 시간 동안 발생한 산소를 모아 비교합니다. 세제 유무에 따라 기포가 거품으로 머무는 정도가 달라집니다."
+      }
     }
   ],
   "transferQuestions": [
@@ -12011,6 +12131,109 @@
         }
       ],
       "boundary": "동일 농도0.05 mol/L의 HCl/NaOH,25℃·물의 이온곱1e−14를 사용한 강산/강염기 물질량 수지 모형이다. 농도는 교과서 측정값이 아니라 독립적인 앱 조건이며 학생 화면에는 pH/몰농도 계산을 표시하지 않는다. 지시약의 부피·산염기 완충능, 활동도·CO₂흡수·혼합 발열은 생략한다. 양배추 색은 대표 색 범위의 정성 표현이며 추출액 품종·농도별 실제 색이나 색도 측정값이 아니다. 페놀프탈레인 변색 구간8.2~10 부근의 색과 중화 당량점을 구별한다.0.1/0.5 mL 단위는 조작 조건이며 한 방울의 실제 부피라고 표시하지 않는다. 원문 실물 촬영·시약 취급, 추가 달걀 껍데기 반응 실험은 완료한 것으로 세지 않는다. 물 대조는 인과 비교를 위해 별도로 추가했다."
+    },
+    {
+      "slug": "catalyst-foam",
+      "source": {
+        "id": "d8e1bf3dd039c88a",
+        "pages": [
+          120,
+          121
+        ],
+        "printedPages": [
+          120,
+          121
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "f4e9f97ec1",
+          "paragraphs": [
+            49,
+            50,
+            53,
+            54,
+            55,
+            68,
+            69,
+            70,
+            73,
+            75,
+            76,
+            77,
+            78
+          ],
+          "part": "같은 시간의 거품 비교, 촉매 역할, 반응 엔탈피. 손상된 HWP 화학식·수치는 교과서 PDF와 대조."
+        },
+        {
+          "id": "12b7676a80",
+          "paragraphs": [
+            20,
+            21,
+            22,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            42,
+            127,
+            142,
+            144,
+            191
+          ],
+          "part": "산소가 세제 거품에 갇히는 관찰, 정촉매와 반응 경로·엔탈피 구별."
+        },
+        {
+          "id": "f71f44ac4b",
+          "paragraphs": [
+            22,
+            23,
+            24,
+            28,
+            29,
+            161,
+            180,
+            181,
+            182,
+            186,
+            220,
+            249,
+            250
+          ],
+          "part": "속도/최종 생성량, 정촉매의 활성화 에너지/질량/평형 상수 오개념 대조. 누락 수식의 수치는 추정하지 않음."
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "03978ccd926f8cfc",
+          "pages": [
+            122
+          ],
+          "difference": "같은 학생용 120쪽",
+          "implementation": "과산화 수소 10 mL·세제 1 mL와 B에 소량 KI 절차 일치."
+        },
+        {
+          "sourceId": "965f45ec469d480f",
+          "pages": [
+            118,
+            119
+          ],
+          "difference": "세제는 2~3방울, 두 실린더의 기포 발생 정도 비교",
+          "implementation": "같은 촉매 비교로 통합하며 방울 부피를 1 mL로 환산하지 않음."
+        },
+        {
+          "sourceId": "10a5b297fa1b961f",
+          "pages": [
+            6,
+            7
+          ],
+          "difference": "200 mL 실린더 세 개, KI 0.1 g과 별도 인산 첨가군 포함",
+          "implementation": "무첨가/KI 비교를 대조. 인산 억제제 비교는 이 두 실린더 앱으로 완료 처리하지 않음."
+        }
+      ],
+      "boundary": "원문은 일정 시간의 거품 발생 정도를 비교하는 정성 실험이다. 애니메이션 진행도와 거품 높이는 정성 장면이며 초·mL·속도 상수·실측값으로 표시하지 않는다. 거품 부피를 산소 몰수나 최종 수율로 환산하지 않는다. 발열에 의한 자기 가속, 열 전달, 부반응·아이오딘 착색·기포 합체와 배출의 정량 모형은 아니다. 세제 없는 대조에서는 세제 대신 물 1 mL로 부피를 맞춘다. 세제 없는 대조와 두 군 모두 KI를 넣지 않는 비교는 인과 해석을 위해 추가한 조건이다. 식용 색소는 양쪽에 같은 양을 넣는 원문 선택 요소이나 흰 거품·무색 용액으로 표현해 별도의 색소 조작은 생략했다. 다른 출판사의 인산 억제제, 실물 촬영·시약 취급 및 측정 완료는 아님. 객관식 최종 산소량은 제시한 단일 반응식만 완결되는 이상 조건이다."
     },
     {
       "slug": "iodine-clock",
