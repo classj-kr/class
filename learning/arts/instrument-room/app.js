@@ -12,6 +12,8 @@
     const GRAND_SAMPLE_STEP = 1;
     const KEYBOARD_SAMPLE_CACHE_LIMIT = 112;
     const RANGE_PRELOAD_CONCURRENCY = 3;
+    const BASS_PLUCK_MIN_RING_SECONDS = .9;
+    const BASS_PLUCK_RELEASE_SECONDS = .36;
     // Each decoded file gets its own onset measurement.
     // Keep a generous lead-in so breath, bow and pick transients are not shaved.
     const SAMPLED_NOTE_ATTACK_LEAD = .012;
@@ -789,8 +791,14 @@
     function releasePianoVoice(voice, quick) {
         if (!voice || voice.released || !state.audioContext) return;
         voice.released = true;
+        if (voice.pendingReleaseTimer) {
+            window.clearTimeout(voice.pendingReleaseTimer);
+            voice.pendingReleaseTimer = 0;
+        }
         const now = state.audioContext.currentTime;
-        const release = quick ? (voice.sampledPiano ? .035 : .08) : (voice.sampledPiano ? .16 : .86);
+        const release = quick ? (voice.sampledPiano ? .035 : .08)
+            : isElectricBassPluckSample(voice.sampleSet) ? BASS_PLUCK_RELEASE_SECONDS
+            : (voice.sampledPiano ? .16 : .86);
         if (typeof voice.gain.gain.cancelAndHoldAtTime === "function") voice.gain.gain.cancelAndHoldAtTime(now);
         else voice.gain.gain.cancelScheduledValues(now);
         voice.gain.gain.setTargetAtTime(.0001, now, release / 5);
@@ -864,9 +872,13 @@
             }
             loadConcertGrandSample(midi).then(function (sample) {
                 if (!sampledPianoConfig() || sampledPianoConfig().id !== sample.sampleSet) return;
-                if (!state.activeNotes.has(midi) && !state.sustain) return;
+                const bassPluck = isElectricBassPluckSample(sample.sampleSet);
+                if (!state.activeNotes.has(midi) && !state.sustain && !bassPluck) return;
                 const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet);
-                if (voice && !state.activeNotes.has(midi)) voice.held = true;
+                if (voice && !state.activeNotes.has(midi)) {
+                    if (bassPluck) pianoNoteOff(midi);
+                    else voice.held = true;
+                }
             }).catch(function () { showToast("건반 음색을 불러오지 못했어요. iPadOS 18.4 이상인지 확인하세요."); });
             return;
         }
@@ -879,6 +891,13 @@
         const voice = state.pianoVoices.get(midi);
         if (!voice) return;
         if (ONE_SHOT_SAMPLE_SETS.has(voice.sampleSet)) return;
+        if (isElectricBassPluckSample(voice.sampleSet)) {
+            const remaining = Math.max(0, voice.startedAt + BASS_PLUCK_MIN_RING_SECONDS - state.audioContext.currentTime);
+            if (voice.pendingReleaseTimer) window.clearTimeout(voice.pendingReleaseTimer);
+            if (remaining > 0) voice.pendingReleaseTimer = window.setTimeout(function () { releasePianoVoice(voice, false); }, remaining * 1000);
+            else releasePianoVoice(voice, false);
+            return;
+        }
         if (state.sustain) voice.held = true;
         else releasePianoVoice(voice, false);
     }
@@ -1090,6 +1109,10 @@
         return 0;
     }
 
+    function isElectricBassPluckSample(sampleSet) {
+        return /^(?:p-bass|j-bass|active-bass|fretless-bass)-(?:finger|pick)$/.test(sampleSet || "");
+    }
+
     function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet) {
         const context = ensureAudio();
         if (!context || !buffer) return;
@@ -1122,7 +1145,7 @@
         // Preserve the dry sample's level and tone, add the original short room,
         // and leave only peak protection after the upward-only calibration.
         connectFastToMix(gain, .035);
-        const voice = { source, gain, anchor, sampleSet, sampleKey: sampleSet + ":" + anchor, sampledPiano: true, released: false, held: false, percussiveDecay: decay };
+        const voice = { source, gain, anchor, sampleSet, sampleKey: sampleSet + ":" + anchor, sampledPiano: true, released: false, held: false, percussiveDecay: decay, startedAt: now, pendingReleaseTimer: 0 };
         state.pianoVoices.set(midi, voice);
         source.onended = function () { if (state.pianoVoices.get(midi) === voice) state.pianoVoices.delete(midi); };
         const configuredOffset = sampleConfig && Number.isFinite(sampleConfig.startOffset) ? Math.max(0, sampleConfig.startOffset) : null;

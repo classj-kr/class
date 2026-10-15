@@ -309,6 +309,7 @@
   //  o.points [{ x, y, name, side, guide }] 점(수나 유리수). side: 이름 자리 'ur'(기본)·'ul'·'dr'·'dl'. guide: 두 축으로 점선을 내린다.
   //  o.poly [[x, y], …] 꼭짓점을 차례로 이은 도형(옅게 칠한다). o.segs [[x1, y1, x2, y2], …] 선분.
   //  o.lines [{ a, name }] 정비례 관계 y = ax 의 그래프(a 는 수나 유리수). o.curves [{ a, name }] 반비례 관계 y = a/x 의 그래프.
+  //  o.parabolas [{ a, p, q, name, dash }] 이차함수 y = a(x − p)² + q 의 그래프(포물선, p·q 는 주지 않으면 0). 상자 안에 드는 부분만 그린다.
   //  o.ticks: 'all'(기본, 정수 눈금마다 수) · 'none'(O, x, y 만) · 수의 배열(두 축에 적을 수). o.grid: false 이면 모눈을 긋지 않는다. o.say: 그림 설명에 덧붙일 말.
   // 그림 설명: 점은 원점에서 간 칸 수로, 직선은 「오른쪽으로 1칸 갈 때 위로 몇 칸」으로, 곡선은 지나는 모눈 점으로 적는다(검사와 화면 읽기가 이 글로 그림을 읽는다).
   function plane(o) {
@@ -364,6 +365,27 @@
       for (let x = xlo; x <= xhi; x += 1) if (x !== 0 && Number.isInteger(a / x) && a / x >= ylo && a / x <= yhi) lattice.push(`(${signedText(x)}, ${signedText(a / x)})`);
       if (curve.name) { const x = a > 0 ? Math.min(xhi, Math.abs(a) / Math.max(0.6, yhi - 0.8)) : Math.max(xlo, -Math.abs(a) / Math.max(0.6, yhi - 0.8)); out += `<text x="${X(x) + (a > 0 ? 6 : -6)}" y="${Y(a / x) + 4}" text-anchor="${a > 0 ? 'start' : 'end'}" style="font-size:12px;font-weight:700;fill:${color}">${curve.name}</text>`; }
       said.push(`곡선${curve.name ? ' ' + curve.name : ''}: 원점에 대하여 대칭인 한 쌍의 매끄러운 곡선이고 두 축과 만나지 않는다. 지나는 모눈 점은 ${lattice.join(', ')}이다.`);
+    });
+    (opt.parabolas || []).forEach((para, k) => {
+      const a = num(para.a), p = num(para.p || 0), q = num(para.q || 0), f = (x) => a * (x - p) * (x - p) + q;
+      const color = COLORS[(k + (opt.lines || []).length + (opt.curves || []).length) % COLORS.length], dash = para.dash ? ';stroke-dasharray:5 3' : '';
+      // 상자의 위·아래 변과 만나는 x 를 풀어 구간을 나누고, 상자 안에 드는 구간만 촘촘히 잇는다(끝이 상자 변에 꼭 닿는다).
+      const cuts = [xlo, xhi];
+      for (const c of [ylo, yhi]) { const r = (c - q) / a; if (r >= 0) cuts.push(p - Math.sqrt(r), p + Math.sqrt(r)); }
+      const xs = cuts.filter((x) => x >= xlo && x <= xhi).sort((s, t) => s - t);
+      let last = null;
+      for (let i = 0; i + 1 < xs.length; i += 1) {
+        const s = xs[i], t = xs[i + 1], mid = f((s + t) / 2);
+        if (t - s < 1e-9 || mid < ylo || mid > yhi) continue;
+        const pts = [];
+        for (let j = 0; j <= 160; j += 1) { const x = s + (t - s) * j / 160; pts.push(X(x) + ' ' + Y(Math.min(yhi, Math.max(ylo, f(x))))); }
+        out += `<path d="M${pts.join('L')}" style="fill:none;stroke:${color};stroke-width:1.8${dash}"/>`;
+        last = t;
+      }
+      if (para.name && last != null) { const y = f(last), right = last > p; out += `<text x="${X(last) + (right ? -6 : 6)}" y="${Y(y) + (y >= yhi - 0.01 ? 13 : -5)}" text-anchor="${right ? 'end' : 'start'}" style="font-size:12px;font-weight:700;fill:${color}">${para.name}</text>`; }
+      const lattice = [];
+      for (let x = Math.ceil(xlo); x <= xhi; x += 1) { const y = f(x); if (Math.abs(y - Math.round(y)) < 1e-9 && y >= ylo && y <= yhi) lattice.push(`(${signedText(x)}, ${signedText(Math.round(y))})`); }
+      said.push(`포물선${para.name ? ' ' + para.name : ''}: 꼭짓점은 ${whereOnPlane(p, q)}이고 ${a > 0 ? '아래로' : '위로'} 볼록하다. ${lattice.length ? '지나는 모눈 점은 ' + lattice.join(', ') + '이다.' : '지나는 모눈 점은 없다.'}`);
     });
     for (const p of opt.points || []) {
       const x = num(p.x), y = num(p.y), side = p.side || 'ur', dx = side[1] === 'r' ? 6 : -6, dy = side[0] === 'u' ? -6 : 14;
@@ -472,6 +494,29 @@
     return inline(text, terms.map(([, name], i) => '{' + i + '}' + name).join(' '), terms.map(([k]) => ({ answer: k, signed: true })), Object.assign({}, o, { shown: poly(terms) }));
   }
 
+  // ── 중3에서 더한 것 ──
+  // 근호: rt('12') → √12. 근호 안의 글 위에 줄을 긋고, √ 기호는 작은 그림으로 그려 안의 글 높이에 맞춘다(글꼴마다 √ 글자의 높이가 달라 줄과 이어지지 않는다).
+  // 보이지 않는 √ 글자를 함께 넣어, 글로 옮기거나(기록·검사) 소리 내어 읽을 때 근호가 남는다. 안에는 식이나 답 칸 자리('{1}')를 넣어도 된다.
+  // 그림(svg) 속 글에는 쓸 수 없다 — 그림의 길이 글에 근호가 필요하면 문제 글로 길이를 알려 준다.
+  const rt = (inner) => '<span class="mb-rad"><span class="mb-sr">√</span><svg aria-hidden="true" viewBox="0 0 10 20" preserveAspectRatio="none"><path d="M0.6 12.4L2.8 11.2L5.7 19.3L9.7 0.6"/></svg><span class="mb-rad-in">' + inner + '</span></span>';
+  // 답 칸 틀(template)에서 한 덩어리로 붙어 있어야 할 부분(인수분해한 괄호 하나)을 묶는다. 좁은 화면에서 괄호 가운데서 줄이 갈리지 않는다.
+  const grp = (html) => '<span class="mb-nw">' + html + '</span>';
+  // n = a² × b (b 는 제곱인 수를 인수로 갖지 않는다)로 가른다: sqParts(12) → [2, 3], 곧 √12 = 2√3.
+  function sqParts(n) {
+    let a = 1, b = n;
+    for (let k = 2; k * k <= b; k += 1) while (b % (k * k) === 0) { a *= k; b /= k * k; }
+    return [a, b];
+  }
+  // a√b 의 글: radText(−2, 3) → −2√3, radText(1, 5) → √5, 근호 안이 1이면 수만(radText(4, 1) → 4).
+  const radText = (coef, n) => (n === 1 ? signedText(coef) : (coef < 0 ? MINUS : '') + (Math.abs(coef) === 1 ? '' : Math.abs(coef)) + rt(n));
+  // 답이 a√b 인 문항: 「[±][ ]√[ ]」(a 가 1이면 「√[ ]」 한 칸). a 는 0, −1이 아닌 정수(−√b 가 답이면 고르기나 다른 꼴로), b 는 2 이상이고 제곱인 수를 인수로 갖지 않는 자연수.
+  // 틀렸을 때 보이는 답은 근호 그대로(−2√3)이다. facts 에는 계수와 근호 안의 수를 셈하는 식을 calc 로 적는다.
+  function radAns(text, coef, n, o) {
+    if (!Number.isInteger(coef) || coef === 0 || coef === -1 || !Number.isInteger(n) || n < 2 || sqParts(n)[0] !== 1) throw new Error('근호 답: 계수는 0, −1이 아닌 정수, 근호 안은 2 이상이고 제곱인 수를 인수로 갖지 않는 자연수여야 한다');
+    const opts = Object.assign({}, o, { shown: radText(coef, n) });
+    return coef === 1 ? inline(text, rt('{0}'), [{ answer: n }], opts) : inline(text, '{0}' + rt('{1}'), [{ answer: coef, signed: true }, { answer: n }], opts);
+  }
+
   B.kit.mid = {
     LAB, MINUS, GT, LT, GE, LE, range, gcd, lcm, Q, dc, dc2, plainQ, qadd, qsub, qmul, qdiv, keepD, qneg, qabs, qpow, qcmp, isInt, fl, asDec, U, mag, tx,
     sx, px, digits, nb, isFrac, glue, plain, tail, lastOf, tj, sj, pj, js, V, sup, P, G, W, WN, MN, A, isNum, valT, val, OPS, BR, htmlT, html, inl, jsT,
@@ -480,7 +525,8 @@
     uniq, addTold, subTold, mulTold, divTold, commonTold, un, sv, claimQ,
     asQ, mono, poly, lin, linAns, pointAns, whereOnPlane, plane, graph,
     over, LN, RY, SG,
-    rep, repQ, repDigit, sys, ineqAns, monoAns, polyAns
+    rep, repQ, repDigit, sys, ineqAns, monoAns, polyAns,
+    rt, grp, sqParts, radText, radAns
   };
 })(typeof window !== 'undefined' ? window : globalThis);
 

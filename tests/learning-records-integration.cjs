@@ -5,7 +5,7 @@ const { PGlite } = require('../game-hub-server/node_modules/@electric-sql/pglite
 const express = require('../game-hub-server/node_modules/express');
 const { createLearningRecords } = require('../game-hub-server/learning-records');
 
-async function harness() {
+async function harness({ teacherRegistrations: registrations } = {}) {
   const db = new PGlite();
   // Windows supplies the local KST zone to PGlite by default. Use UTC so that
   // date filters cannot accidentally depend on the database session time zone.
@@ -30,11 +30,12 @@ async function harness() {
   const pool = { query, async connect() { const previous = queue; let release; queue = new Promise(r => release = r); await previous; return { query, release }; } };
   class HttpError extends Error { constructor(status, code, message) { super(message); Object.assign(this, { status, code }); } }
   const requireUser = async req => { const id = Number(req.headers['x-test-user']); const user = (await query('SELECT * FROM classroom_users WHERE id=$1', [id || 0])).rows[0]; if (!user) throw new HttpError(401, 'LOGIN_REQUIRED', '로그인 필요'); return user; };
-  const teacherRegistrations = async user => [3, 4, 10].includes(Number(user.id)) ? [{ school_id: Number(user.id) === 4 ? 20 : 10, school_name: '테스트학교', teacher_type: '담임', academic_year: 2026, grade: Number(user.id) === 10 ? 3 : 4, class_number: 1 }] : [];
+  const teacherRegistrations = registrations || (async user => [3, 4, 10].includes(Number(user.id)) ? [{ school_id: Number(user.id) === 4 ? 20 : 10, school_name: '테스트학교', teacher_type: '담임', academic_year: 2026, grade: Number(user.id) === 10 ? 3 : 4, class_number: 1 }] : []);
   const feature = createLearningRecords({ pool, requireUser, requireTeacher: async req => { const u = await requireUser(req); if (!(await teacherRegistrations(u)).length) throw new HttpError(403, 'TEACHER_REQUIRED', '교사만 조회'); return u; },
     teacherRegistrations, requireDatabase() {}, HttpError, asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next) });
   await feature.initialize(); await feature.initialize();
   const app = express(); app.use(express.json({ limit: '512kb' })); app.use('/api/learning-records', feature.router);
+  app.use(express.static(require('node:path').resolve(__dirname, '../apps')));
   app.use(express.static(require('node:path').resolve(__dirname, '..')));
   app.use((err, req, res, next) => { if (!err.status) console.error(err); res.status(err.status || 500).json({ code: err.code, message: err.message }); });
   const server = await new Promise(resolve => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
