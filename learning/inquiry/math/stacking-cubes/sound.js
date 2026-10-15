@@ -57,7 +57,8 @@
       source.start(start); source.stop(start + .045);
       nodes.push(source, filter, gain); sources.push(source);
     }
-    if (kind === 'add') knock(0, [330, 392, 440, 523, 587, 659][Math.max(0, Math.min(5, height - 1))]);
+    // One C-major scale step per layer: C4, D4, E4, F4, G4, A4.
+    if (kind === 'add') knock(0, [261.63, 293.66, 329.63, 349.23, 392, 440][Math.max(0, Math.min(5, height - 1))]);
     else if (kind === 'erase') { tone(750, 0, .12, .34, 'triangle', 220); knock(.018, 240, .3); }
     else if (kind === 'undo') { knock(0, 520, .65); knock(.07, 350, .65); }
     else if (kind === 'clear') [500, 390, 310, 240].forEach((note, i) => knock(i * .045, note, .55));
