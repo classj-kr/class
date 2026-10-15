@@ -37,7 +37,9 @@
     "test:graph-board": "node --test tests/graph-board-core.test.cjs tests/graph-analysis.test.cjs && node tests/graph-studio-typography-contract.js",
     "test:graph-board:ui": "node --test tests/graph-board-ui.test.cjs",
     "test:fraction-board": "node --test tests/fraction-board.test.cjs",
-    "test:fraction-board:ui": "node --test tests/fraction-board-browser.cjs"
+    "test:fraction-board:ui": "node --test tests/fraction-board-browser.cjs",
+    "test:number-models": "node --test tests/number-models.test.cjs",
+    "test:number-models:ui": "node --test tests/number-models-browser.cjs"
   },
   "engines": {
     "node": ">=20"
