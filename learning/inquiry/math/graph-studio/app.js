@@ -70,7 +70,8 @@
       const top = element('div', 'function-top'), visibility = element('label', 'visibility');
       const check = document.createElement('input'); check.type = 'checkbox'; check.checked = fn.visible; check.setAttribute('aria-label', `${index + 1}번 그래프 표시`);
       check.onchange = () => { checkpoint(); fn.visible = check.checked; renderFormula(); changed(); };
-      visibility.append(check, element('span', 'function-name', `y${index + 1}`));
+      const name = element('span', 'function-name'); math(name, `y_{${index + 1}}`);
+      visibility.append(check, name);
       const preview = button('', `${index + 1}번 함수 선택`, () => choose(fn.id)); preview.className = 'function-preview'; preview.title = '이 함수 선택';
       const remove = button('×', `${index + 1}번 함수 삭제`, () => { checkpoint(); state.functions = state.functions.filter(f => f.id !== fn.id); if (state.activeId === fn.id) state.activeId = state.functions[0].id; if (state.trace?.id === fn.id) state.trace = null; if (state.analysis.otherId === fn.id) state.analysis.otherId = null; renderAll(); changed(); });
       remove.className = 'remove-function'; remove.disabled = state.functions.length === 1; top.append(visibility, preview, remove);
@@ -98,7 +99,7 @@
   function renderSliders() {
     const fn = active(), data = compiled(fn), root = $('sliders'); root.replaceChildren(); const names = data.parameters || [];
     names.forEach(name => {
-      const wrap = element('div', 'slider'), line = element('div', 'slider-line'), label = element('label', '', name);
+      const wrap = element('div', 'slider'), line = element('div', 'slider-line'), label = element('label'); math(label, name);
       const number = document.createElement('input'); number.id = `param-${name}`; number.type = 'number'; number.step = 'any'; number.min = '-1000000'; number.max = '1000000'; number.value = fn.params[name]; number.setAttribute('aria-label', `${name} 값`); label.htmlFor = number.id;
       const range = document.createElement('input'); range.type = 'range'; range.step = '.1'; range.setAttribute('aria-label', `${name} 슬라이더`);
       const setRange = () => { const limit = Math.max(5, Math.ceil(Math.abs(fn.params[name]))); range.min = -limit; range.max = limit; range.value = fn.params[name]; }; setRange();
@@ -268,7 +269,7 @@
     for (let i = Math.ceil(v.xMin / tick); i <= Math.floor(v.xMax / tick); i++) { if (i === 0) continue; context.textAlign = 'center'; context.fillText(C.format(i * tick, 5), v.px(i * tick), axisY + 17); }
     for (let i = Math.ceil(v.yMin / tick); i <= Math.floor(v.yMax / tick); i++) { if (i === 0) continue; context.textAlign = 'right'; context.fillText(C.format(i * tick, 5), axisX - 8, v.py(i * tick) + 4); }
     context.textAlign = 'left'; if (v.xMin <= 0 && v.xMax >= 0 && v.yMin <= 0 && v.yMax >= 0) context.fillText('0', v.px(0) + 7, v.py(0) + 17);
-    context.font = 'italic 15px "STIX Two Math", serif'; context.fillText('x', width - 18, axisY - 9); context.fillText('y', axisX + 9, 18);
+    context.font = 'italic 15px KaTeX_Math, serif'; context.fillText('x', width - 18, axisY - 9); context.fillText('y', axisX + 9, 18);
     if (options.blank) return v;
     paintAnalysis(context, v, true);
     function curve(fn, ghost) {
@@ -345,6 +346,10 @@
     if (event.key === 'Home') { event.preventDefault(); home(); }
     else if (['+', '=', '-'].includes(event.key)) { event.preventDefault(); checkpoint(); zoom(event.key === '-' ? 1.25 : .8); }
     else if (event.key.startsWith('Arrow')) { event.preventDefault(); if (!event.repeat) checkpoint(); const step = 35 / vp.scale; state.view.x = C.clamp(state.view.x + (event.key === 'ArrowRight' ? step : event.key === 'ArrowLeft' ? -step : 0), -1e7, 1e7); state.view.y = C.clamp(state.view.y + (event.key === 'ArrowUp' ? step : event.key === 'ArrowDown' ? -step : 0), -1e7, 1e7); changed(); }
+  });
+  const keyMath = { x: 'x', '^2': 'x^{2}', '^': 'x^{n}', '(': '(', ')': ')', '+': '+', '-': '-', '*': '\\times', '/': '\\div', pi: '\\pi', sqrt: '\\surd', abs: '\\lvert x\\rvert', sin: '\\sin', cos: '\\cos', tan: '\\tan', ln: '\\ln', log10: '\\log', exp: 'e^{x}' };
+  $('mathKeyboard').querySelectorAll('[data-insert], [data-wrap]').forEach(key => {
+    key.setAttribute('aria-label', key.textContent); math(key, keyMath[key.dataset.insert || key.dataset.wrap]);
   });
   $('mathKeyboard').addEventListener('pointerdown', event => { if (event.target.closest('button')) event.preventDefault(); });
   $('mathKeyboard').addEventListener('click', event => {
@@ -455,5 +460,7 @@
   window.addEventListener('pagehide', flushSave); document.addEventListener('visibilitychange', () => { if (document.hidden) flushSave(); });
   if (!store.persistent) $('saveStatus').textContent = GUEST_STATUS;
   renderLibrary(); renderAll(); setSidebar(window.innerWidth > 760); new ResizeObserver(requestDraw).observe($('canvasWrap'));
-  document.fonts.ready.then(requestDraw); if (restoreWarning) notify(restoreWarning);
+  // Canvas labels need an explicit load even when the matching HTML is hidden.
+  Promise.allSettled([document.fonts.load('italic 15px KaTeX_Math', 'xy'), document.fonts.load('12px "STIX Two Math"', '0123456789')]).then(() => document.fonts.ready).then(requestDraw);
+  if (restoreWarning) notify(restoreWarning);
 })();
