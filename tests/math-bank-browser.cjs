@@ -166,13 +166,14 @@ const UNIT = '1-1-1';
     await guestCard.locator('.mb-result:not([hidden])').waitFor();
 
     // ── 모든 단원의 모든 회차를 열어 본다: 휴대폰 너비에서 가로로 넘치지 않고, 그림이 제 크기로 그려진다 ──
-    const unitIds = await page.evaluate(() => window.MathBank.units().map((u) => u.id));
+    // 단원 파일은 고른 학기의 것만 불러오므로, 단원 번호는 index.html 의 목록에서 얻는다.
+    const unitIds = await page.evaluate(() => window.MathBank.lazy.ids());
     for (const [name, viewport] of [['phone', { width: 360, height: 760 }], ['wide', { width: 1100, height: 900 }]]) {
       const view = await open(0, viewport);
       await view.page.goto(h.base + URL_PATH);
       await view.page.locator('.mb-group').first().waitFor();
       for (const unitId of unitIds) {
-        const termOf = await view.page.evaluate((id) => { const u = window.MathBank.findUnit(id); return u.grade + '-' + u.semester; }, unitId);
+        const termOf = unitId.split('-').slice(0, 2).join('-');
         await view.page.selectOption('#termSelect', termOf);
         await view.page.selectOption('#unitSelect', unitId);
         await view.page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group').length > 0, unitId);
