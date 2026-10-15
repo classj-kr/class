@@ -206,7 +206,7 @@
   }
 
   B.addUnit({
-    id: '6-1-3', grade: 6, semester: 1, no: 3, title: '소수의 나눗셈', version: 1,
+    id: '6-1-3', grade: 6, semester: 1, no: 3, title: '소수의 나눗셈', version: 2,
     groups: [
       {
         id: 'prin', title: '(소수)÷(자연수)의 계산 원리', standard: DEC,

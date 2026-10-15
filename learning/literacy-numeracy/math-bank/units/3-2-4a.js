@@ -39,7 +39,7 @@
   const shapesOf = (w, n, den) => '<div class="mb-lines"><div>' + Array.from({ length: w + 1 }, (_, i) => pieces('circle', den, { shaded: i < w ? den : n, scale: 1.05 })).join(' ') + '</div></div>';
 
   B.addUnit({
-    id: '3-2-4', grade: 3, semester: 2, no: 4, title: '분수', version: 3,
+    id: '3-2-4', grade: 3, semester: 2, no: 4, title: '분수', version: 4,
     groups: [
       {
         id: 'part', title: '부분은 전체의 얼마인지 분수로 나타내기', standard: PART,
@@ -155,7 +155,7 @@
           T('kind-natural', '자연수를 분수로 나타내기', '①40·41 ②? ③47 심35', (d) => {
             const w = d.int(2, 5), den = d.int(3, 8);
             return N('□ 안에 알맞은 수는?', w * den, {
-              figure: `<span class="mb-expr">${w} <i>=</i> ${frac(box(), den)}</span>`, explain: `1은 ${frac(den, den)}과 같다. ${w}는 ${frac(1, den)}이 ${den} × ${w} = ${w * den}(개)인 수이다.`.replace(`${w}는`, josa(w, '은/는')), facts: { calc: [[`${w}*${den}`, 0]] }
+              figure: `<span class="mb-expr">${w} <i>=</i> ${frac(box(), den)}</span>`, explain: `1은 ${frac(den, den)}${tail(den, '과/와')} 같다. ${w}는 ${frac(1, den)}이 ${den} × ${w} = ${w * den}(개)인 수이다.`.replace(`${w}는`, josa(w, '은/는')), facts: { calc: [[`${w}*${den}`, 0]] }
             });
           }),
           T('kind-all', '분모가 정해진 진분수의 수', '①45 ③48 심39', (d) => {
@@ -198,7 +198,7 @@
           T('conv-mixed', '가분수를 대분수로 나타내기', '①67 ②54 ③76 심49', (d) => {
             const [w, n, den] = mixedOf(d), top = w * den + n;
             return M('가분수를 대분수로 나타내려고 한다. ㉠, ㉡에 알맞은 수는?', labelled([w, n]), {
-              figure: `<span class="mb-expr">${frac(top, den)} <i>=</i> ${mixed(box(LABELS[0]), box(LABELS[1]), den)}</span>`, explain: `${top} ÷ ${den} = ${w} … ${n}이다. ${frac(den, den)}이 ${w}개 있고 ${frac(n, den)}이 남으므로 ${mixed(w, n, den)}이다.`,
+              figure: `<span class="mb-expr">${frac(top, den)} <i>=</i> ${mixed(box(LABELS[0]), box(LABELS[1]), den)}</span>`, explain: `${top} ÷ ${den} = ${w} … ${n}이다. ${frac(den, den)}${tail(den, '이/가')} ${w}개 있고 ${frac(n, den)}${tail(n, '이/가')} 남으므로 ${mixed(w, n, den)}이다.`,
               facts: { calc: [[`(${top}-${top}%${den})/${den}`, 0], [`${top}%${den}`, 1]] }
             });
           }),
@@ -262,7 +262,7 @@
           T('comp-natural', '가분수와 자연수 비교하기', '①82 ③103', (d) => {
             const w = d.int(2, 5), den = d.int(3, 8), top = w * den + d.pick([-3, -2, -1, 1, 2, 3]);
             return C('두 수의 크기를 비교할 때, ○ 안에 알맞은 것은?', SIGNS, sign(top, w * den), {
-              figure: versus(frac(top, den), String(w)), explain: `${w}는 ${frac(w * den, den)}과 같다. 분자의 크기를 비교한다.`.replace(`${w}는`, josa(w, '은/는')), facts: { choose: { exprs: [`${top}/${den}`, String(w)], rule: 'compare' } }
+              figure: versus(frac(top, den), String(w)), explain: `${w}는 ${frac(w * den, den)}${tail(w * den, '과/와')} 같다. 분자의 크기를 비교한다.`.replace(`${w}는`, josa(w, '은/는')), facts: { choose: { exprs: [`${top}/${den}`, String(w)], rule: 'compare' } }
             });
           }),
           T('comp-max', '가장 큰 분수 찾기', '①86 ②68 ③100 심65', (d) => {

@@ -296,7 +296,7 @@
         const [p, q, u] = d.until(() => [d.pick([2, 3]), d.pick([2, 3]), d.int(1, 3)], ([x, y]) => x !== y || x === 2), AD = (1 + p) * (1 + q) * u, AB = (1 + q) * u, BD = p * (1 + q) * u, BC = p * u, CD = p * q * u;
         return N(`다음 그림에서 ${SG('AB')} : ${SG('BD')} = 1 : ${p}이고 ${SG('BC')} : ${SG('CD')} = 1 : ${q}이다. ${SG('AD')} = ${AD} cm일 때, ${SG('CD')}의 길이는 몇 cm인가?`, CD, { unit: 'cm',
           figure: onLine(['A', 'B', 'C', 'D'], [0, AB, AB + BC, AD], { ends: 'seg', spans: [[0, 3, AD + ' cm']] }),
-          explain: `${SG('BD')} = ${AD} × ${frac(p, 1 + p)} = ${BD}(cm)이다. 선분 BD를 다시 1 : ${q}로 나누었으므로 ${SG('CD')} = ${BD} × ${frac(q, 1 + q)} = ${CD}(cm)이다.`, facts: { calc: [[`${AD}/(1+${p})*${p}/(1+${q})*${q}`, 0]] } });
+          explain: `${SG('BD')} = ${AD} × ${frac(p, 1 + p)} = ${BD}(cm)이다. 선분 BD를 다시 1 : ${q}${B.kit.mid.tail(q, '으로/로')} 나누었으므로 ${SG('CD')} = ${BD} × ${frac(q, 1 + q)} = ${CD}(cm)이다.`, facts: { calc: [[`${AD}/(1+${p})*${p}/(1+${q})*${q}`, 0]] } });
       }, { count: 2 }),
       H('hard-angle-times', '직각·등분과 몇 배 조건으로 차례로 정해지는 각', '심16·17 / 기본 ①28', (d, n) => {
         if (n === 0) {

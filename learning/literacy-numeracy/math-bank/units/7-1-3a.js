@@ -361,7 +361,7 @@
   }
 
   B.addUnit({
-    id: '7-1-3', grade: 7, semester: 1, no: 3, title: '문자의 사용과 식', version: 2,
+    id: '7-1-3', grade: 7, semester: 1, no: 3, title: '문자의 사용과 식', version: 3,
     groups: [
       {
         // 곱셈 기호와 나눗셈 기호를 생략하는 법을 배우기 전이므로 식은 ×, ÷를 써서 적는다.

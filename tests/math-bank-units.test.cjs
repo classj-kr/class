@@ -34,6 +34,31 @@ function evaluate(text) {
   return Function('"use strict"; return (' + text + ');')();
 }
 const strip = (html) => String(html || '').replace(/<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/\s+/g, ' ').trim();
+// 토씨를 볼 글: 글 안에 끼는 태그(span·i·sup …)는 빈칸 없이 걷어 낸다(「99</span>이」의 토씨도 본다). 블록 태그(표 칸·줄 바꿈 …)는 빈칸으로 바꾼다.
+// 분수는 분자의 끝소리로 읽고(사분의 삼 — 분모는 태그 짝을 세어 지운다), 거듭제곱(위첨자)은 「제곱」, 넓이·부피 단위(cm², m³)는 단위로 읽는다.
+// 연립방정식 묶음은 「방정식」으로 읽는다(「연립방정식 {…}을 푸시오」의 토씨는 낱말에 붙는다). 글줄 속 작은 그림(근호의 √ 따위)은 빈칸 없이 지운다.
+const spanEnd = (html, from) => { const re = /<span\b[^>]*>|<\/span>/g; re.lastIndex = from; let depth = 0, m; while ((m = re.exec(html))) { if (m[0][1] === '/') { depth -= 1; if (depth === 0) return m.index + m[0].length; } else depth += 1; } return -1; };
+function cutSpans(html, start, word, keepStart) {
+  let out = html, at;
+  while ((at = out.indexOf(start)) >= 0) { const end = spanEnd(out, keepStart ? at + start.length : at); if (end < 0) break; out = out.slice(0, at) + word + out.slice(end); }
+  return out;
+}
+const tight = (html) => cutSpans(cutSpans(String(html || ''), '<span class="mb-sys">', '방정식', false), '<span class="mb-frac-bar">/</span>', '', true)
+  .replace(/<svg\b[^>]*class="mb-inline"[\s\S]*?<\/svg>/g, '').replace(/<svg[\s\S]*?<\/svg>/g, ' ')
+  .replace(/((?:c|m|k)?m)<sup>[23]<\/sup>/g, '$1²').replace(/<sup\b[^>]*>[\s\S]*?<\/sup>/g, '제곱')
+  .replace(/<\/?(?:td|th|tr|table|tbody|thead|li|ul|ol|div|p|br|hr|h\d)\b[^>]*>/gi, ' ').replace(/<[^>]+>/g, '')
+  .replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+// 수의 끝소리: 받침이 있는가, 그 받침이 ㄹ인가(일·칠·팔). 0으로 끝나면 십·백·천·만(받침), 몇 조로 끝나면 받침이 없다.
+const joEnd = (digits) => Number(digits) >= 1e12 && Number(digits) % 1e12 === 0;
+const batchimOf = (digits) => !joEnd(digits) && [true, true, false, true, false, false, true, true, true, false][Number(digits) % 10];
+const rieulOf = (digits) => !joEnd(digits) && [false, true, false, false, false, false, false, true, true, false][Number(digits) % 10];
+function badParticles(html) {
+  const said = tight(html), out = [];
+  for (const m of said.matchAll(/(\d+)(을|를|은|는|이|가|과|와)(?=[\s,.)])/g)) if ('을은이과'.includes(m[2]) !== batchimOf(m[1])) out.push(m[0]);
+  for (const m of said.matchAll(/(\d+)(으로|로)(?=[\s,.)])/g)) if (m[2] !== (batchimOf(m[1]) && !rieulOf(m[1]) ? '으로' : '로')) out.push(m[0]);
+  for (const m of said.matchAll(/제곱(를|는|가|와|로)(?=[\s,.)])/g)) out.push(m[0]);
+  return out;
+}
 const pairsOf = (list) => { const out = []; for (let i = 0; i < list.length; i += 1) for (let j = i + 1; j < list.length; j += 1) out.push([list[i], list[j]]); return out; };
 const hundred = (n) => Math.round(n / 100) * 100;
 // 나눗셈 세로셈의 과정에 적히는 수를 엔진과 따로 밟아 본다: 앞에서부터 한 자리씩 붙여 가다 나눌 수 있으면 빼는 수를 적고,
@@ -107,12 +132,8 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
     assert.ok(typeof item.text === 'string' && strip(item.text).length >= 4, label);
     const whole = strip(item.text + ' ' + (item.figure || '') + ' ' + (item.explain || '') + ' ' + (item.choice ? item.choice.options.join(' ') : ''));
     for (const part of [item.text, item.figure, item.explain]) assert.doesNotMatch(String(part || ''), /undefined|NaN|null|\[object/, label);
-    // 잘못 붙은 토씨: 받침 없는 수 뒤의 을·은·이·과, 받침 있는 수 뒤의 를·는·가·와 를 수 읽기로 따진다.
-    for (const m of whole.matchAll(/(\d+)(을|를|은|는|이|가|과|와)(?=[\s,.])/g)) {
-      // 몇 조로 끝나는 수(삼조)만 0으로 끝나도 받침이 없다.
-      const batchim = !(Number(m[1]) >= 1e12 && Number(m[1]) % 1e12 === 0) && [true, true, false, true, false, false, true, true, true, false][Number(m[1]) % 10];
-      assert.equal('을은이과'.includes(m[2]), batchim, `토씨 "${m[0]}" — ${label}`);
-    }
+    // 잘못 붙은 토씨: 수 뒤의 을·를, 은·는, 이·가, 과·와, 으로·로를 수 읽기로 따진다(태그 뒤에 붙은 토씨까지 — 위의 tight 참고).
+    for (const part of [item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : [])) assert.deepEqual(badParticles(part), [], `토씨 — ${label}`);
     // 낱말 뒤 토씨가 겹쳐 붙은 것(사과을, 배추은 …)
     assert.doesNotMatch(whole, /[가-힣](을를|를을|은는|는은)(?=[\s,.])/, label);
     assert.ok(/^\d수\d\d-\d\d$/.test(item.standard), label);

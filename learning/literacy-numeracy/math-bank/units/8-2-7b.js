@@ -246,7 +246,7 @@
     T('draw-together', '동시에 두 개를 꺼낼 때 둘 다 지정한 것', '①63 심21', (d) => {
       const [m, k] = d.until(() => [d.pick([8, 9, 10, 12]), d.int(3, 5)], ([m0, k0]) => k0 * 2 <= m0), total = m * (m - 1) / 2, hit = k * (k - 1) / 2;
       return ansP(`${m}개의 제품 중에 불량품이 ${k}개 섞여 있다. 이 중에서 제품 2개를 동시에 꺼낼 때, 2개 모두 불량품일 확률은?`, P(hit, total), {
-        explain: `${m}개 중에서 2개를 꺼내는 경우의 수는 ${m} × ${m - 1} ÷ 2 = ${total}이고, 불량품 ${k}개 중에서 2개를 꺼내는 경우의 수는 ${k} × ${k - 1} ÷ 2 = ${hit}이므로 구하는 확률은 ${red(hit, total)}이다. 한 개씩 차례로 꺼낸다고 보고 ${frac(k, m)} × ${frac(k - 1, m - 1)}로 구해도 같다.`, facts: vf(`(${k}/${m})*((${k}-1)/(${m}-1))`) });
+        explain: `${m}개 중에서 2개를 꺼내는 경우의 수는 ${m} × ${m - 1} ÷ 2 = ${total}이고, 불량품 ${k}개 중에서 2개를 꺼내는 경우의 수는 ${k} × ${k - 1} ÷ 2 = ${hit}이므로 구하는 확률은 ${red(hit, total)}이다. 한 개씩 차례로 꺼낸다고 보고 ${frac(k, m)} × ${frac(k - 1, m - 1)}${josa(k - 1, '으로/로').slice(String(k - 1).length)} 구해도 같다.`, facts: vf(`(${k}/${m})*((${k}-1)/(${m}-1))`) });
     }),
     T('draw-remaining', '이미 뽑힌 카드를 뺀 나머지에서 뽑아 이길 확률', '②20', (d) => {
       const m = d.pick([15, 20, 25]), small = d.bool(), win = (v) => (small ? Math.min(...v) - 1 : m - Math.max(...v)), three = d.until(() => d.shuffle(range(1, m)).slice(0, 3), (v) => win(v) >= 2 && win(v) <= m - 6), k = win(three), edge = small ? Math.min(...three) : Math.max(...three);

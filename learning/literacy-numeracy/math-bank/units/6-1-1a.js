@@ -247,7 +247,7 @@
   const quot = (num, den) => `(${num}-${num}%${den})/${den}`, rest = (num, den) => `${num}%${den}`;
 
   B.addUnit({
-    id: '6-1-1', grade: 6, semester: 1, no: 1, title: '분수의 나눗셈', version: 1,
+    id: '6-1-1', grade: 6, semester: 1, no: 1, title: '분수의 나눗셈', version: 2,
     groups: [
       {
         id: 'nn', title: '(자연수)÷(자연수)의 몫을 분수로 나타내기', standard: STD_NN,

@@ -178,7 +178,7 @@
   const OPH = { '+': '+', '-': MINUS, '*': '×' };
 
   B.addUnit({
-    id: '9-1-1', grade: 9, semester: 1, no: 1, title: '제곱근과 실수', version: 1,
+    id: '9-1-1', grade: 9, semester: 1, no: 1, title: '제곱근과 실수', version: 2,
     groups: [
       {
         id: 'root', title: '제곱근의 뜻', standard: STD7,

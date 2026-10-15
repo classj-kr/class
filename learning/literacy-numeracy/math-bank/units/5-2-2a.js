@@ -223,7 +223,7 @@
   const quot = (num, den) => `(${num}-${num}%${den})/${den}`, rest = (num, den) => `${num}%${den}`;
 
   B.addUnit({
-    id: '5-2-2', grade: 5, semester: 2, no: 2, title: '분수의 곱셈', version: 1,
+    id: '5-2-2', grade: 5, semester: 2, no: 2, title: '분수의 곱셈', version: 2,
     groups: [
       {
         id: 'fn', title: '(분수)×(자연수)', standard: STD,
@@ -483,7 +483,7 @@
             const [f, g] = d.until(() => ffPick(d, 'plain'), ([x, y]) => x.d <= 7 && y.d <= 7 && x.d !== y.d), a = f.n, b = f.d, c = g.n, e = g.d;
             return M(`전체를 똑같이 ${josa(b, '으로/로')} 나눈 것 중의 ${josa(a, '을/를')} 다시 똑같이 ${josa(e, '으로/로')} 나눈 것 중의 ${josa(c, '은/는')}, 전체를 똑같이 ㉠으로 나눈 것 중의 ㉡이다. ㉠, ㉡에 알맞은 수는?`, labelled([b * e, a * c]), {
               figure: eq(show(f), '*', show(g)),
-              explain: `전체는 똑같이 ${b} × ${e} = ${b * e}로 나누어지고, 그 가운데 ${a} × ${c} = ${a * c}이다. ${show(f)} × ${show(g)} = ${frac(a * c, b * e)}이다.`,
+              explain: `전체는 똑같이 ${b} × ${e} = ${josa(b * e, '으로/로')} 나누어지고, 그 가운데 ${a} × ${c} = ${a * c}이다. ${show(f)} × ${show(g)} = ${frac(a * c, b * e)}이다.`,
               facts: { calc: [[`${b}*${e}`, 0], [`${a}*${c}`, 1]] }
             });
           }),

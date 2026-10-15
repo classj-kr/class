@@ -288,7 +288,7 @@
       }
       const a = n === 1 ? d.int(2, 5) : d.int(2, 9), k = n === 1 ? (a === 2 ? d.pick([3, 5]) : 3) : a <= 3 ? d.pick([2, 4]) : 2, x = Q(-a);
       const list = n === 2 ? [WN(Q(a), k)] : [W(x, k)];
-      const why = n === 2 ? `${inl(list)}${tail(k, '은/는')} ${a}${sup(k)}에 −를 붙인 수이다. ${inl(list)} = −(${Array(k).fill(a).join(' × ')}) = ${tx(val(list))}이다.`
+      const why = n === 2 ? `${inl(list)}은 ${a}${sup(k)}에 −를 붙인 수이다. ${inl(list)} = −(${Array(k).fill(a).join(' × ')}) = ${tx(val(list))}이다.`
         : `${inl(list)} = ${Array(k).fill(px(x)).join(' × ')} = ${tx(val(list))}이다. 음수를 ${k % 2 ? '홀수' : '짝수'} 번 곱하면 ${k % 2 ? '음수' : '양수'}이다.`;
       return calcQ(list, 'int', { rule: 'pow-' + n, explain: why });
     }, { count: 4 }),

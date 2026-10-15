@@ -53,7 +53,7 @@
         }, (x) => x.u !== x.w && x.a !== x.b && x.rows.every((row) => Math.max(row.r[0] + row.r[1], row.r[2] + row.r[3]) <= 24) && x.rows.filter((row) => row.r[0] * row.r[3] === row.r[1] * row.r[2]).length === 1);
         const rows = d.shuffle(v.rows), hit = rows.findIndex((row) => row.r[0] * row.r[3] === row.r[1] * row.r[2]), R = rows[hit].r;
         return C(`△ABC에서 두 점 D, E가 각각 변 AB, AC 위에 있다. 다음은 네 경우의 선분의 길이이다. 이 가운데 ${par('BC', 'DE')}인 것은?`, rows.map((row) => row.html(row.r)), hit, {
-          explain: `${nb(`${SG('AD')} : ${SG('DB')} = ${SG('AE')} : ${SG('EC')}`)}일 때에만 ${par('BC', 'DE')}이다. 정답인 경우는 ${SG('DB')} = ${R[0] + R[1]} − ${R[0]} = ${R[1]}(cm)이므로 ${SG('AD')} : ${SG('DB')} = ${K.simple(R[0], R[1])}, ${SG('AE')} : ${SG('EC')} = ${K.simple(R[2], R[3])}로 두 비가 같다. 나머지는 자리가 엇갈린 비(${SG('AD')} : ${SG('DB')}와 ${SG('EC')} : ${SG('AE')})나 전체와 부분을 섞은 비가 같을 뿐이고, 조각끼리의 비 ${SG('AD')} : ${SG('DB')}와 ${SG('AE')} : ${SG('EC')}는 같지 않다.`,
+          explain: `${nb(`${SG('AD')} : ${SG('DB')} = ${SG('AE')} : ${SG('EC')}`)}일 때에만 ${par('BC', 'DE')}이다. 정답인 경우는 ${SG('DB')} = ${R[0] + R[1]} − ${R[0]} = ${R[1]}(cm)이므로 ${SG('AD')} : ${SG('DB')} = ${K.simple(R[0], R[1])}, ${SG('AE')} : ${SG('EC')} = ${K.simple(R[2], R[3])}${B.kit.mid.tail(R[3] / B.kit.mid.gcd(R[2], R[3]), '으로/로')} 두 비가 같다. 나머지는 자리가 엇갈린 비(${SG('AD')} : ${SG('DB')}와 ${SG('EC')} : ${SG('AE')})나 전체와 부분을 섞은 비가 같을 뿐이고, 조각끼리의 비 ${SG('AD')} : ${SG('DB')}와 ${SG('AE')} : ${SG('EC')}는 같지 않다.`,
           facts: { claimed: rows.map((row) => [`${row.r[0]}*${row.r[3]}`, row.r[1] * row.r[2]]), claimedWant: true }
         });
       }),

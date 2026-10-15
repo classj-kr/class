@@ -356,7 +356,7 @@
       const [a, b, c] = d.until(() => [d.int(2, 9), d.int(2, 9), d.int(2, 9)], ([x, y, z]) => new Set([x, y, z]).size === 3 && gcd(x, y) === 1 && gcd(y, z) === 1 && gcd(x, z) === 1 && x < y);
       const rows = d.shuffle([[eq(a, '/', b, '/', c), `${a}/(${b}*${c})`], [eq(frac(a, b), '/', c), `${a}/(${b}*${c})`], [eq(a, '/', c, '/', b), `${a}/(${c}*${b})`], [eq(frac(b, c), '/', a), `${b}/(${c}*${a})`, true]]);
       return C('계산 결과가 나머지와 다른 하나는?', rows.map((row) => row[0]), rows.findIndex((row) => row[2]), {
-        explain: `${a} ÷ ${b} = ${frac(a, b)}이므로 ${a} ÷ ${b} ÷ ${c} = ${frac(a, b)} ÷ ${c} = ${frac(a, b * c)}이다. ${a} ÷ ${c} ÷ ${b} = ${frac(a, c)} ÷ ${b} = ${frac(a, b * c)}로 같다. ${frac(b, c)} ÷ ${a} = ${frac(b, c * a)}만 다르다.`,
+        explain: `${a} ÷ ${b} = ${frac(a, b)}이므로 ${a} ÷ ${b} ÷ ${c} = ${frac(a, b)} ÷ ${c} = ${frac(a, b * c)}이다. ${a} ÷ ${c} ÷ ${b} = ${frac(a, c)} ÷ ${b} = ${frac(a, b * c)}${tail(a, '으로/로')} 같다. ${frac(b, c)} ÷ ${a} = ${frac(b, c * a)}만 다르다.`,
         facts: { choose: { exprs: rows.map((row) => row[1]), rule: 'odd' } }
       });
     }),

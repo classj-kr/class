@@ -156,7 +156,7 @@
   const fenceFig = (list) => rowsFig(list.map((n) => [n + '개', fenceRow(n)]), '기둥과 기둥 사이에 건 줄: ' + list.map((n) => `기둥 ${n}개에 줄 ${n - 1}개`).join(', '));
 
   B.addUnit({
-    id: '5-1-3', grade: 5, semester: 1, no: 3, title: '대응 관계', version: 1,
+    id: '5-1-3', grade: 5, semester: 1, no: 3, title: '대응 관계', version: 2,
     groups: [
       {
         id: 'pair', title: '두 양 사이의 대응 관계', standard: STD,
@@ -547,7 +547,7 @@
             const [g, k] = d.pick([[3, 5], [3, 7], [2, 5], [2, 7], [4, 6], [4, 9]]), s = d.pick(SYMS), pairs = pairsOf('+', k, range(4, 1).map((i) => g * i));
             return choose(d, `윗줄의 수를 ${g}씩 건너뛰어 적은 표이다. ${jo(s[0], '과/와')} ${s[1]} 사이의 대응 관계를 식으로 바르게 나타낸 것은?`, [[0, '+', k, 1], [0, '+', g, 1], [0, '*', g, 1], [1, '+', k, 0]].map((e) => ({ text: eq(e, s), e })), pairs, true, {
               figure: tableOf([[s[0]].concat(pairs.map((p) => p[0])), [s[1]].concat(pairs.map((p) => p[1]))]),
-              explain: `위아래로 짝 지은 두 수의 차가 ${pairs.slice(0, 3).map((p) => `${p[1]} − ${p[0]} = ${k}`).join(', ')}로 늘 같다. ${josa(g, '은/는')} 옆 칸과의 차이지 두 양 사이의 관계가 아니다.`
+              explain: `위아래로 짝 지은 두 수의 차가 ${pairs.slice(0, 3).map((p) => `${p[1]} − ${p[0]} = ${k}`).join(', ')}${josa(k, '으로/로').slice(String(k).length)} 늘 같다. ${josa(g, '은/는')} 옆 칸과의 차이지 두 양 사이의 관계가 아니다.`
             });
           }),
           T('ex-num-blank', '기호 식의 빈칸에 알맞은 수', '①23 ②30 ③46 심21', (d) => {

@@ -293,7 +293,7 @@
     }),
     T('apply-ratio', 'a + 1/a는 a의 몇 배인가', '①53', (d) => {
       const n0 = pickSqf(d, [2, 3, 5, 6, 7, 10]), a = V('a');
-      return fA(`${a} = ${rt(n0)}일 때, ${a} + ${frac(1, a)}는 ${a}의 몇 배인가?`, [{ q: Q(n0 + 1, n0), m: 1, n: `(${n0}+1)`, d: String(n0), nv: n0 + 1, dv: n0 }], {
+      return fA(`${a} = ${rt(n0)}일 때, ${a} + ${frac(1, a)}은 ${a}의 몇 배인가?`, [{ q: Q(n0 + 1, n0), m: 1, n: `(${n0}+1)`, d: String(n0), nv: n0 + 1, dv: n0 }], {
         unit: '배', explain: `${a} + ${frac(1, a)} = ${rt(n0)} + ${frac(rt(n0), n0)} = ${frac(`${n0 + 1}${rt(n0)}`, n0)} = ${frac(n0 + 1, n0)}${a}이므로 ${frac(n0 + 1, n0)}배이다.`
       });
     }),

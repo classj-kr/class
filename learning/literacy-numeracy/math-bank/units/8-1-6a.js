@@ -246,7 +246,7 @@
   const intLine = (m, k, t) => { const b = m > 0 ? -t : t; return { a: -m * b, b, c: -k * b }; };
 
   B.addUnit({
-    id: '8-1-6', grade: 8, semester: 1, no: 6, title: '일차함수와 일차방정식의 관계', version: 2,
+    id: '8-1-6', grade: 8, semester: 1, no: 6, title: '일차함수와 일차방정식의 관계', version: 3,
     groups: [
       {
         id: 'eq', title: '일차방정식과 일차함수', standard: STD1,
@@ -576,7 +576,7 @@
               // 보기가 정리되지 않은 식이다: kx = k·x0, jy − j·y0 = 0
               const r = ans(ax), k = d.pick([2, 3, 5]), j = d.pick([2, 3, 4]), xf = (w) => eqR([[k, X]], k * w), yf = (w) => eq0([j, Y], [-j * w, '']), mk = (letter, w) => (letter === 'x' ? xf(w) : yf(w)), other = r[0] === 'x' ? y0 : x0;
               return pick1(d, `다음 일차방정식 중 그 그래프가 점 ${ptj(x0, y0, '을/를')} 지나고 ${ax === 'x' ? X : Y}축에 수직인 직선인 것은?`, [[mk(r[0], r[1]), true], [mk(flip, r[1]), false], [mk(r[0], other), false], [mk(flip, other), false]], {
-                explain: `${ax === 'x' ? X : Y}축에 수직이고 점 ${ptj(x0, y0, '을/를')} 지나는 직선의 방정식은 ${told(r)}이다. ${mk(r[0], r[1])}을 정리하면 ${told(r)}이다.`, facts: { rule: 'through-forms' }
+                explain: `${ax === 'x' ? X : Y}축에 수직이고 점 ${ptj(x0, y0, '을/를')} 지나는 직선의 방정식은 ${told(r)}이다. ${mk(r[0], r[1])}${r[0] === 'x' ? tl(k * r[1], '을/를') : '을'} 정리하면 ${told(r)}이다.`, facts: { rule: 'through-forms' }
               });
             }
             // 축 대신 축에 평행한 직선을 기준으로 준다.

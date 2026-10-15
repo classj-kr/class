@@ -333,7 +333,7 @@
   const SPOT = ['오른쪽 위', '왼쪽 위', '왼쪽 아래', '오른쪽 아래'];
 
   B.addUnit({
-    id: '7-2-1', grade: 7, semester: 2, no: 1, title: '기본 도형', version: 2,
+    id: '7-2-1', grade: 7, semester: 2, no: 1, title: '기본 도형', version: 3,
     groups: [
       { id: 'point', title: '점·선·면, 교점과 교선', standard: STD1, types: [
         T('point-claims', '점, 선, 면과 교점, 교선에 대한 설명', '①1 ②4', (d) => claimQ(d, '다음 가운데 옳지 않은 것은?', [

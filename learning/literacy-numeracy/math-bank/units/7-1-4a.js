@@ -218,7 +218,7 @@
   });
 
   B.addUnit({
-    id: '7-1-4', grade: 7, semester: 1, no: 4, title: '일차방정식', version: 2,
+    id: '7-1-4', grade: 7, semester: 1, no: 4, title: '일차방정식', version: 3,
     groups: [
       {
         id: 'eq', title: '등식, 방정식, 항등식', standard: STD3,
@@ -558,7 +558,7 @@
             const withDiv = sols.slice(1).map((v, i) => { const a = d.int(2, 6), b = i === 0 ? 0 : nz(d, -9, 9); return [ts([a, 'x'], [b, '']), ts([a * v + b, ''])]; });
             const { rows, at } = mix(d, plain, withDiv), solved = (eq) => solQ(eq[0], eq[1]);
             return C(`다음은 방정식을 풀어 해를 구한 것이다. 등식의 성질 「${nb(`${va} = ${vb}`)}이면 ${nb(`${frac(va, vc)} = ${frac(vb, vc)}`)}이다(단, ${nb(`${vc} ≠ 0`)}).」를 이용하지 않고 푼 것은?`, rows.map((eq) => `${eqB(eq[0], eq[1])} ⇨ ${nb(`${x} = ${tx(solved(eq))}`)}`), at, {
-              explain: `${eqB(plain[0], plain[1])}은 ${b0 > 0 ? `양변에서 ${b0}${tail(b0, '을/를')} 빼면` : `양변에 ${-b0}${tail(-b0, '을/를')} 더하면`} 바로 풀린다. 나머지 방정식은 ${x}의 계수가 1이 아니므로 마지막에 양변을 ${x}의 계수로 나누어야 한다.`,
+              explain: `${eqB(plain[0], plain[1])}${tail(Math.abs(sols[0] + b0), '은/는')} ${b0 > 0 ? `양변에서 ${b0}${tail(b0, '을/를')} 빼면` : `양변에 ${-b0}${tail(-b0, '을/를')} 더하면`} 바로 풀린다. 나머지 방정식은 ${x}의 계수가 1이 아니므로 마지막에 양변을 ${x}의 계수로 나누어야 한다.`,
               facts: { truth: rows.map((eq) => gather(eq[0], 'x').a.p === 1), want: true }
             });
           }),

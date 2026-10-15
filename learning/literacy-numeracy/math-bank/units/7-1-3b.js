@@ -367,7 +367,7 @@
     T('like-pair', '동류항끼리 짝 지은 것 고르기', '①74 심40', (d) => {
       const p = d.int(2, 9), q = d.int(2, 9), wantLike = d.bool();
       const LIKES = [[`${p}a`, '-a'], ['-x', '[1|10]x'], [String(p), '-[3|2]'], [`${p}x^2`, `-${q}x^2`], ['[1|2]y', `${q}y`], ['ab', `-${p}ab`]];
-      const NOT = [['a', 'a^2', '문자는 같지만 차수가 다르다'], ['x^2', 'y^2', '차수는 같지만 문자가 다르다'], [`${p}a`, `${p}b`, '계수는 같지만 문자가 다르다'], ['x^2y', 'xy^2', '문자마다의 차수가 다르다'], [`[${p}|x]`, `[x|${p}]`, `${xh(`[${p}|x]`)}는 분모에 문자가 있어 다항식의 항이 아니다`], [`${p}x`, String(p), '문자가 있는 항과 상수항이다'], ['x^2', '2x', '문자는 같지만 차수가 다르다']];
+      const NOT = [['a', 'a^2', '문자는 같지만 차수가 다르다'], ['x^2', 'y^2', '차수는 같지만 문자가 다르다'], [`${p}a`, `${p}b`, '계수는 같지만 문자가 다르다'], ['x^2y', 'xy^2', '문자마다의 차수가 다르다'], [`[${p}|x]`, `[x|${p}]`, `${xh(`[${p}|x]`)}${tail(p, '은/는')} 분모에 문자가 있어 다항식의 항이 아니다`], [`${p}x`, String(p), '문자가 있는 항과 상수항이다'], ['x^2', '2x', '문자는 같지만 차수가 다르다']];
       const rows = d.shuffle(wantLike ? d.shuffle(LIKES).slice(0, 1).concat(d.shuffle(NOT).slice(0, 3)) : d.shuffle(LIKES).slice(0, 3).concat([d.pick(NOT)])), truth = rows.map((r) => LIKES.includes(r));
       const odd = rows.filter((r) => !LIKES.includes(r));
       return C(`다음 중 동류항끼리 짝 지은 것${wantLike ? '은' : '이 아닌 것은'}?`, rows.map((r) => `${xh(r[0])}, ${xh(r[1])}`), truth.indexOf(wantLike), {

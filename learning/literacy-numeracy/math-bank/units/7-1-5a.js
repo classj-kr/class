@@ -219,7 +219,7 @@
   ];
 
   B.addUnit({
-    id: '7-1-5', grade: 7, semester: 1, no: 5, title: '좌표평면과 그래프', version: 2,
+    id: '7-1-5', grade: 7, semester: 1, no: 5, title: '좌표평면과 그래프', version: 3,
     groups: [
       {
         id: 'line', title: '수직선 위의 점의 좌표', standard: STD5,
