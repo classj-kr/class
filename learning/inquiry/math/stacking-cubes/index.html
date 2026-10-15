@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f4ee">
+  <title>쌓기나무 · 수학 교구</title>
+  <link rel="icon" href="/assets/icons/favicon.webp">
+  <link rel="stylesheet" href="style.css?v=20261015-1">
+  <script src="model.js?v=20261015-1" defer></script>
+  <script src="app.js?v=20261015-1" defer></script>
+  <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
+</head>
+<body>
+  <main class="workspace" aria-label="쌓기나무 교구">
+    <h1 class="sr-only">쌓기나무</h1>
+    <div class="top-controls">
+      <output id="total" class="total" aria-live="polite" hidden>전체 0개</output>
+      <span id="view-label" class="view-label" hidden></span>
+      <button id="view-button" class="view-button" type="button" aria-expanded="false" aria-controls="view-panel">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+        보기
+      </button>
+    </div>
+
+    <section id="view-panel" class="view-panel" aria-label="보기와 쌓기판 설정" hidden>
+      <div class="view-choices" role="group" aria-label="관찰 방향">
+        <button type="button" data-view="solid" aria-pressed="true">입체</button>
+        <button type="button" data-view="top" aria-pressed="false">위</button>
+        <button type="button" data-view="front" aria-pressed="false">앞</button>
+        <button type="button" data-view="right" aria-pressed="false">오른쪽 옆</button>
+      </div>
+      <label class="check-row"><span>전체 개수</span><input id="show-total" type="checkbox"></label>
+      <label class="check-row"><span>위 보기의 층수</span><input id="show-heights" type="checkbox"></label>
+      <div class="panel-actions">
+        <button id="reset-camera" type="button">시점 되돌리기</button>
+        <button id="clear-board" type="button" disabled>모두 지우기</button>
+      </div>
+      <details class="help">
+        <summary>조작 방법</summary>
+        <p>칸이나 블록을 누르면 한 층씩 쌓아요.<br>지우기는 맨 위 블록부터 지워요.</p>
+        <p>드래그하면 돌려 볼 수 있어요.<br>두 손가락이나 마우스 휠로 확대해요.</p>
+        <p>키보드: 방향키로 칸 선택, Enter로 쌓기,<br>Delete로 지우기, Ctrl/⌘ + Z로 되돌리기.</p>
+        <p>5 × 5칸 · 최대 6층<br>모두 지운 뒤에도 되돌릴 수 있어요.</p>
+      </details>
+    </section>
+
+    <div class="scene-wrap">
+      <svg id="scene" xmlns="http://www.w3.org/2000/svg" tabindex="0" role="group" aria-label="쌓기판" aria-describedby="hint keyboard-help" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Enter Delete"></svg>
+    </div>
+
+    <footer class="bottom-controls">
+      <p id="hint" class="hint">빈칸을 눌러 쌓아요 · 드래그해서 돌려요</p>
+      <div id="tools" class="tools" role="group" aria-label="쌓기 도구">
+        <button type="button" data-tool="add" aria-pressed="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Zm0 9 8-4.5M12 12 4 7.5M12 12v9"/></svg><span>쌓기</span>
+        </button>
+        <button type="button" data-tool="erase" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 3 7 7-10 10H6l-4-4L14 3Zm-7 7 7 7M11 20h11"/></svg><span>지우기</span>
+        </button>
+        <span class="tool-divider" aria-hidden="true"></span>
+        <button id="undo" type="button" aria-label="되돌리기" title="되돌리기 (Ctrl/⌘ + Z)" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 3 11l6 6M3 11h11a6 6 0 0 1 0 12" transform="translate(0 -3)"/></svg><span>되돌리기</span>
+        </button>
+      </div>
+      <button id="return-solid" class="return-solid" type="button" hidden>입체로 돌아가기</button>
+    </footer>
+    <p id="keyboard-help" class="sr-only">쌓기판에서 방향키로 칸을 고르고 Enter로 쌓거나 Delete로 지우세요.</p>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>
