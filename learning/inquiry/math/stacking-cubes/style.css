@@ -137,9 +137,9 @@ dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
   .view-panel { top: 57px; max-height: calc(100dvh - 67px); }
   .workspace.is-practice .scene-wrap { grid-template-columns: minmax(0, 1fr) 210px; gap: 5px; padding-right: 5px; }
   .target-panel { padding: 9px; gap: 5px; max-height: 100%; overflow: auto; }
-  #target-scene { height: 120px; flex-shrink: 0; }
+  #target-scene { height: 100px; flex-shrink: 0; }
   .practice-copy h2 { font-size: 12px; }
-  .practice-copy p { font-size: 10px; margin-top: 2px; }
-  .challenge-result { min-height: 0; font-size: 11px; }
+  .practice-copy p { font-size: 10px; margin-top: 2px; line-height: 1.5; }
+  .challenge-result { min-height: 0; font-size: 11px; line-height: 1.4; }
   .target-views button, #check-shape { min-height: 44px; font-size: 12px; }
 }
