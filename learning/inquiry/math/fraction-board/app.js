@@ -7,7 +7,7 @@
   const current = () => state.cards.find(c => c.id === state.selectedId);
   const maxUnits = () => Math.max(...state.cards.map(c => c.units));
   const message = value => { $('edit-message').textContent = value; };
-  const saveStatus = (value, error = false) => { $('save-status').textContent = value; $('save-status').dataset.error = String(error); };
+  const saveStatus = (value, error = false) => { $('save-status').textContent = value; $('save-status').dataset.error = String(error); $('save-status').hidden = !error; };
   function persist() {
     edited = true;
     if (!store) return;
@@ -29,12 +29,13 @@
     $('cards').innerHTML = state.cards.map((card, i) => {
       const letter = String.fromCharCode(65 + i), n = C.count(card), mixed = C.mixed(card);
       return `<article class="fraction-card${card.id === state.selectedId ? ' selected' : ''}" data-card="${card.id}" aria-label="그림 ${letter}, ${C.SHAPES[card.shape]}">
-        <div class="card-heading"><button type="button" class="card-title" data-action="select" aria-label="그림 ${letter} 설정" aria-pressed="${card.id === state.selectedId}"><span class="card-letter">${letter}</span><span class="card-name">${C.SHAPES[card.shape]}</span></button>
-        <div class="card-value">${card.labels ? `<span class="fraction-number" aria-label="${card.denominator}분의 ${n}"><span>${n}</span><span>${card.denominator}</span></span>${mixed ? `<span class="mixed-number">= ${mixed}</span>` : ''}` : '<span class="hidden-value">분수 숨김</span>'}</div>
+        <div class="card-heading"><button type="button" class="card-title" data-action="select" aria-label="그림 ${letter} 설정" aria-pressed="${card.id === state.selectedId}" ${state.cards.length === 1 ? 'hidden' : ''}><span class="card-letter">${letter}</span></button>
+        <div class="card-value">${card.labels ? `<span class="fraction-number" aria-label="${card.denominator}분의 ${n}"><span>${n}</span><span>${card.denominator}</span></span>${mixed ? `<span class="mixed-number">= ${mixed}</span>` : ''}` : ''}</div>
         <div class="card-actions"><button type="button" data-action="duplicate" aria-label="그림 ${letter} 복제" ${state.cards.length >= C.MAX_CARDS ? 'disabled' : ''}>복제</button><button type="button" class="remove" data-action="remove" aria-label="그림 ${letter} 삭제" ${state.cards.length === 1 ? 'disabled' : ''}>×</button></div></div>
-        ${C.drawing(card, maxUnits())}<p class="card-caption">${card.shape === 'line' ? '눈금을 눌러 위치를 표시해요' : card.shading ? '한 번 누르면 색칠 · 다시 누르면 지우기' : '색칠을 숨겨 두었어요'}</p></article>`;
+        ${C.drawing(card, maxUnits())}</article>`;
     }).join('');
     $('editing-label').textContent = '그림 ' + String.fromCharCode(65 + state.cards.indexOf(c));
+    $('editing-label').hidden = state.cards.length === 1;
     document.querySelectorAll('[data-shape]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.shape === c.shape)));
     $('numerator').value = C.count(c); $('numerator').max = c.denominator * C.MAX_UNITS;
     $('denominator').value = c.denominator; $('units').value = c.units;
@@ -98,7 +99,7 @@
     $('inspector').hidden = !show;
     document.querySelector('.workspace').classList.toggle('settings-hidden', !show);
     $('toggle-settings').setAttribute('aria-expanded', String(show));
-    $('toggle-settings').textContent = show ? '설정 접기' : '그림 설정';
+    $('toggle-settings').title = show ? '설정 접기' : '설정 펼치기';
   }
   $('toggle-settings').addEventListener('click', () => {
     showSettings($('inspector').hidden);
@@ -138,18 +139,6 @@
     if (event.key.toLowerCase() === 'z') { event.preventDefault(); history(event.shiftKey ? 'redo' : 'undo'); }
     if (event.key.toLowerCase() === 'y') { event.preventDefault(); history('redo'); }
   });
-  $('fullscreen').hidden = !document.fullscreenEnabled;
-  $('fullscreen').addEventListener('click', async () => {
-    try { if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); }
-    catch (_) { message('이 브라우저에서 전체 화면을 열지 못했어요.'); }
-  });
-  let settingsBeforeFullscreen = true;
-  document.addEventListener('fullscreenchange', () => {
-    const full = !!document.fullscreenElement;
-    $('fullscreen').setAttribute('aria-pressed', String(full)); $('fullscreen').textContent = full ? '전체 화면 닫기' : '전체 화면';
-    if (full) { settingsBeforeFullscreen = !$('inspector').hidden; showSettings(false); }
-    else showSettings(settingsBeforeFullscreen);
-  });
   $('export-open').addEventListener('click', () => { $('export-status').textContent = ''; $('export-dialog').showModal(); });
   function encodeWebP(image) {
     return new Promise((resolve, reject) => {
@@ -179,6 +168,10 @@
     finally { if (sourceUrl) URL.revokeObjectURL(sourceUrl); if (downloadUrl) { const url = downloadUrl; setTimeout(() => URL.revokeObjectURL(url), 30000); } button.disabled = false; }
   });
   render();
+  document.addEventListener('DOMContentLoaded', () => {
+    const back = document.querySelector('site-back-navigation');
+    if (back) { $('back-slot').append(back); $('back-slot').hidden = false; }
+  }, { once: true });
   window.SiteStorage.open('fraction-board').then(opened => {
     store = opened;
     store.onError(() => { saveFailed = true; saveStatus('저장하지 못했어요. 그림 저장을 이용해 주세요.', true); });

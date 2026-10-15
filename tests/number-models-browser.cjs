@@ -110,7 +110,7 @@ test('invalid numbers and hidden populated places are rejected; hide value and c
   await number('100'); assert.equal(await total(), '42');
   await page.locator('[data-mode=decimal]').click(); await number('0.0001');
   assert.equal(await total(), '1.23'); assert.match(await page.locator('#message').textContent(), /소수 셋째/);
-  await page.locator('#show-total').uncheck(); assert.equal(await total(), '얼마일까요?');
+  await page.locator('#show-total').uncheck(); assert.equal(await total(), '?');
   assert.equal(await page.locator('#number-input').isVisible(), false);
   await button(1, 'split').click();
   await page.waitForFunction(() => document.querySelector('[data-index="2"] .count b').textContent === '13');
@@ -136,7 +136,7 @@ test('account data restores in another context and guest changes stay in memory'
   await guest.close();
 });
 
-test('small phone touch, settings, and fullscreen keep the board accessible', async () => {
+test('small phone touch and settings keep the board accessible', async () => {
   const phone = await browser.newContext({ viewport: { width: 320, height: 800 }, isMobile: true, hasTouch: true, reducedMotion: 'reduce' });
   const mobile = await phone.newPage(); await mobile.goto(h.base + url);
   await mobile.locator('#columns .place-column').first().waitFor();
@@ -150,12 +150,10 @@ test('small phone touch, settings, and fullscreen keep the board accessible', as
   await mobile.locator('#toggle-settings').tap(); assert.equal(await mobile.locator('#total').textContent(), '9999');
   assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
   await phone.close();
-  if (await page.evaluate(() => document.fullscreenEnabled)) {
-    await page.locator('#fullscreen').click(); await page.locator('#fullscreen[aria-pressed=true]').waitFor();
-    assert.equal(await page.locator('#settings').isVisible(), false);
-    await page.locator('#fullscreen').click(); await page.locator('#fullscreen[aria-pressed=false]').waitFor();
-    assert.equal(await page.locator('#settings').isVisible(), true);
-  }
+  await page.locator('#toggle-settings').click();
+  assert.equal(await page.locator('#settings').isVisible(), false);
+  await page.locator('#toggle-settings').click();
+  assert.equal(await page.locator('#settings').isVisible(), true);
 });
 
 test('failed saves are visible while the model remains usable', async () => {
