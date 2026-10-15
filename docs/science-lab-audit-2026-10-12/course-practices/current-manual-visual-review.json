@@ -1074,6 +1074,84 @@
       "sha256": "5d059f8bef2a651388481b4a978a29b2795afc7df2705f14a43fb47b815b133a",
       "observation": "iPad answer choices and first-error explanation wrap naturally at consistent text sizes.",
       "recheckedAt": "2026-10-15T16:23:22.653Z"
+    },
+    {
+      "file": "catalyst-foam/chromium-live-ki-ready.webp",
+      "sha256": "c796fc896506cffcf1d3aade6a7db1a281e817db7a26bca75902fcf2189ff710",
+      "observation": "Equal liquid preparations, readable condition labels and disabled observation state; both cylinders align.",
+      "recheckedAt": "2026-10-15T16:53:02.002Z"
+    },
+    {
+      "file": "catalyst-foam/chromium-live-ki-0.03.webp",
+      "sha256": "3a70b551a9671a3970ed788c94b231e3bb1680226f71ae8c57ff28a6dbb9b138",
+      "observation": "Falling KI has not reached the solution; both vessels retain the same initial reaction appearance.",
+      "recheckedAt": "2026-10-15T16:53:02.003Z"
+    },
+    {
+      "file": "catalyst-foam/chromium-live-ki-1.webp",
+      "sha256": "ef191e09bc517d7aa9bc85b7ad9a84476217e3773bae01ec73cc6e7a2aaa426f",
+      "observation": "Foam remains in the KI vessel with bubbles rising within the liquid; the control remains visibly different.",
+      "recheckedAt": "2026-10-15T16:53:02.003Z"
+    },
+    {
+      "file": "catalyst-foam/chromium-live-inhibitor-1.webp",
+      "sha256": "c1c16e236614a5fa03615145f3f82cc52fc045af11ff4f64e77f9e33ded9ba12",
+      "observation": "Three aligned conditions retain common initial reagent quantities and visibly distinct outcomes.",
+      "recheckedAt": "2026-10-15T16:53:02.004Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-live-ki-1.webp",
+      "sha256": "7f1228586d16fbd941db6035358933d63fe9ef7ca1d4bd5dc74344a81922feae",
+      "observation": "Two-column tablet scene keeps preparation labels, reaction and controls readable.",
+      "recheckedAt": "2026-10-15T16:53:02.004Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-live-no-soap-0.65.webp",
+      "sha256": "4bd335dd601f2fb04ebed7fddf2c130cbfb3a1ccb3ac7ce4459a02bc463e5621",
+      "observation": "Soap-free oxygen bubbles stay inside the liquid and burst at its surface without accumulating foam.",
+      "recheckedAt": "2026-10-15T16:53:02.004Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-live-control-1.webp",
+      "sha256": "b14fdbb351357735003772d318ddf357ae5b9d5b36954966fe2b4c91836d7098",
+      "observation": "The two equal controls display equal qualitative outcomes with no false catalyst difference.",
+      "recheckedAt": "2026-10-15T16:53:02.004Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-live-inhibitor-1.webp",
+      "sha256": "c12cc90156593ed88d6b1e3fed654d2cca27eefb8c540d4404cfe90112ed4266",
+      "observation": "Three tablet columns fit with readable wrapped descriptions, equal glass sizes and unobscured fluid levels.",
+      "recheckedAt": "2026-10-15T16:53:02.005Z"
+    },
+    {
+      "file": "catalyst-foam/chromium-live-q2.webp",
+      "sha256": "6aa55b0f3048c099928004fcef22a57c474271c76c46592e9e64499d92483e3c",
+      "observation": "Equal-format numeric options and the retained rate-versus-yield misconception are legible.",
+      "recheckedAt": "2026-10-15T16:53:02.005Z"
+    },
+    {
+      "file": "catalyst-foam/chromium-live-q3.webp",
+      "sha256": "c12b67059b2137660391ab9a216d7d100e0329ab4d1df0b7f16cb58d01938be9",
+      "observation": "Energy calculation choices, units and retained first error fit without clipping.",
+      "recheckedAt": "2026-10-15T16:53:02.005Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-live-q2.webp",
+      "sha256": "cc9f80fda646cfd85c01c149972b6dfbacb4ab8f410bf968c33b9c42eddb7c7c",
+      "observation": "Tablet numeric choices and first-error explanation wrap naturally.",
+      "recheckedAt": "2026-10-15T16:53:02.005Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-live-q3.webp",
+      "sha256": "aa36221e847bcad8341a723c74e67398c4d9e48fa8c61911316eb8c7b38a02bd",
+      "observation": "Tablet activation-energy and enthalpy calculation retains readable minus signs and feedback.",
+      "recheckedAt": "2026-10-15T16:53:02.005Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-live-no-soap-390.webp",
+      "sha256": "7ad3385a5cb0f45a969a77a84ff783c5e9d3ab9bba2beb50579ec48e3e83480c",
+      "observation": "Narrow single-column layout preserves controls and visible liquid bubbles without horizontal overflow.",
+      "recheckedAt": "2026-10-15T16:53:02.005Z"
     }
   ],
   "superseded": [

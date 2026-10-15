@@ -1,10 +1,10 @@
 {
-  "verifiedAt": "2026-10-15T16:23:55.859Z",
+  "verifiedAt": "2026-10-15T16:53:03.895Z",
   "scope": "2022 only; observed implementation and regression checkpoint, not a completed census of required experiments.",
   "allRequestedWorkComplete": false,
   "physicalDeviceTested": false,
-  "apps": 192,
-  "routes": 197,
+  "apps": 193,
+  "routes": 198,
   "engines": [
     "Chromium/Chrome",
     "Playwright WebKit"
@@ -36,8 +36,8 @@
       "report": null,
       "engine": "chromium",
       "catalog": false,
-      "routes": 197,
-      "scenarios": 6005,
+      "routes": 198,
+      "scenarios": 6150,
       "widths": [
         1366,
         1180,
@@ -79,7 +79,8 @@
         "diffusion-readability/extended-chromium.json",
         "optics-readability/extended-chromium.json",
         "acid-mixing-readability/extended-chromium.json",
-        "iodine-clock-readability/extended-chromium.json"
+        "iodine-clock-readability/extended-chromium.json",
+        "catalyst-foam-readability/extended-chromium.json"
       ],
       "scope": "Full existing-route scan after caption correction; Chromium replaces the two changed specimen workflows with final focused checks. Focused runs add strata correlation, polarized thin sections and crust thickness in both engines. Each route is counted once, from its latest completed run. All five viewport sizes use actual loaded web fonts. Emulation only; no physical-device claim."
     },
@@ -87,8 +88,8 @@
       "report": null,
       "engine": "webkit",
       "catalog": false,
-      "routes": 197,
-      "scenarios": 6005,
+      "routes": 198,
+      "scenarios": 6150,
       "widths": [
         1366,
         1180,
@@ -129,7 +130,8 @@
         "diffusion-readability/extended-webkit.json",
         "optics-readability/extended-webkit.json",
         "acid-mixing-readability/extended-webkit.json",
-        "iodine-clock-readability/extended-webkit.json"
+        "iodine-clock-readability/extended-webkit.json",
+        "catalyst-foam-readability/extended-webkit.json"
       ],
       "scope": "Full existing-route scan after caption correction; Chromium replaces the two changed specimen workflows with final focused checks. Focused runs add strata correlation, polarized thin sections and crust thickness in both engines. Each route is counted once, from its latest completed run. All five viewport sizes use actual loaded web fonts. Emulation only; no physical-device claim."
     }
@@ -137,15 +139,15 @@
   "readabilityTotals": [
     {
       "engine": "chromium",
-      "routes": 197,
-      "scenarios": 6005,
+      "routes": 198,
+      "scenarios": 6150,
       "deviceProfile": "chromebook-scale",
       "liveWebFonts": true
     },
     {
       "engine": "webkit",
-      "routes": 197,
-      "scenarios": 6005,
+      "routes": 198,
+      "scenarios": 6150,
       "deviceProfile": "ipad",
       "liveWebFonts": true
     }
@@ -261,7 +263,7 @@
       "passed": 20,
       "failed": 0
     },
-    "firstErrorsRetainedPerEngine": 790,
+    "firstErrorsRetainedPerEngine": 794,
     "firstErrorScope": {
       "existingRouteReport": "cell-observation-final-regression.txt",
       "existingRoutes": 182,
@@ -281,10 +283,11 @@
         "galactic-final-regression.txt",
         "phase-curves-final-regression.txt",
         "acid-mixing-regression.txt",
-        "iodine-clock-regression.txt"
+        "iodine-clock-regression.txt",
+        "catalyst-foam-regression.txt"
       ],
-      "newRoutes": 15,
-      "newResponses": 62,
+      "newRoutes": 16,
+      "newResponses": 66,
       "replacedRouteReports": [
         {
           "report": "element-origin-regression.txt",
@@ -388,6 +391,18 @@
           "passed": 1,
           "failed": 0
         }
+      },
+      {
+        "failedReport": "../../../../tmp/catalyst-source/unicode-minus-test-failure.txt",
+        "test": "Expected ASCII minus differed from the correct Unicode mathematical minus",
+        "recheck": "catalyst-foam-regression.txt",
+        "evidence": "Numeric assertion normalizes the minus character; chemical answers remain unchanged."
+      },
+      {
+        "failedReport": "../../../../tmp/catalyst-source/initial-foam-test-failure.txt",
+        "test": "Early thin foam is a continuous SVG path before individual decorative circles appear",
+        "recheck": "catalyst-foam-regression.txt",
+        "evidence": "Checks the actual foam path and independently checks reaction contact timing."
       },
       {
         "failedReport": "optics-zero-width-harness.txt",
@@ -530,6 +545,18 @@
         "resolution": "The complete post-cell-full-readability WebKit run uses the new cell preparation and comparison controls."
       }
     ],
+    "catalystFoam": {
+      "report": "catalyst-foam-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "catalystFoamStatic": {
+      "report": "catalyst-foam-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
     "iodineClock": {
       "report": "iodine-clock-regression.txt",
       "tests": 3,
@@ -765,11 +792,11 @@
       "failed": 0
     }
   },
-  "questionContents": 1027,
+  "questionContents": 1031,
   "reviewedNewQuestions": {
-    "base": 226,
+    "base": 230,
     "transfer": 103,
-    "scope": "226 base and 103 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census."
+    "scope": "230 base and 103 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census."
   },
   "bankExplanationReview": {
     "report": "bank-explanation-review.json",
@@ -785,9 +812,9 @@
         768,
         1024
       ],
-      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 197 unique routes, including the source-reviewed acid-mixing and iodine-clock procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
-      "routes": 197,
-      "checked": 44926,
+      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "routes": 198,
+      "checked": 46832,
       "gradientSkipped": 255,
       "errors": [],
       "flagged": [],
@@ -803,7 +830,8 @@
         "diffusion-readability/reading-contrast-chromium-selected.json",
         "optics-readability/reading-contrast-chromium-selected.json",
         "acid-mixing-readability/reading-contrast-chromium-selected.json",
-        "iodine-clock-readability/reading-contrast-chromium-selected.json"
+        "iodine-clock-readability/reading-contrast-chromium-selected.json",
+        "catalyst-foam-readability/reading-contrast-chromium-selected.json"
       ]
     },
     {
@@ -813,9 +841,9 @@
         768,
         1024
       ],
-      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 197 unique routes, including the source-reviewed acid-mixing and iodine-clock procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
-      "routes": 197,
-      "checked": 44921,
+      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "routes": 198,
+      "checked": 46827,
       "gradientSkipped": 255,
       "errors": [],
       "flagged": [],
@@ -831,7 +859,8 @@
         "diffusion-readability/reading-contrast-webkit-selected.json",
         "optics-readability/reading-contrast-webkit-selected.json",
         "acid-mixing-readability/reading-contrast-webkit-selected.json",
-        "iodine-clock-readability/reading-contrast-webkit-selected.json"
+        "iodine-clock-readability/reading-contrast-webkit-selected.json",
+        "catalyst-foam-readability/reading-contrast-webkit-selected.json"
       ]
     }
   ],
@@ -840,8 +869,8 @@
       "report": null,
       "checkedAt": "2026-10-12T16:26:19.131Z",
       "engine": "chromium",
-      "routes": 197,
-      "states": 4580,
+      "routes": 198,
+      "states": 4725,
       "widths": [
         1366,
         1180,
@@ -849,7 +878,7 @@
         820,
         768
       ],
-      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 197 unique routes, including the source-reviewed acid-mixing and iodine-clock procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
       "findings": [],
       "errors": [],
       "components": [
@@ -864,15 +893,16 @@
         "diffusion-readability/runtime-svg-resources-chromium-selected.json",
         "optics-readability/runtime-svg-resources-chromium-selected.json",
         "acid-mixing-readability/runtime-svg-resources-chromium-selected.json",
-        "iodine-clock-readability/runtime-svg-resources-chromium-selected.json"
+        "iodine-clock-readability/runtime-svg-resources-chromium-selected.json",
+        "catalyst-foam-readability/runtime-svg-resources-chromium-selected.json"
       ]
     },
     {
       "report": null,
       "checkedAt": "2026-10-12T16:29:09.609Z",
       "engine": "webkit",
-      "routes": 197,
-      "states": 4580,
+      "routes": 198,
+      "states": 4725,
       "widths": [
         1366,
         1180,
@@ -880,7 +910,7 @@
         820,
         768
       ],
-      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 197 unique routes, including the source-reviewed acid-mixing and iodine-clock procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
       "findings": [],
       "errors": [],
       "components": [
@@ -895,18 +925,19 @@
         "diffusion-readability/runtime-svg-resources-webkit-selected.json",
         "optics-readability/runtime-svg-resources-webkit-selected.json",
         "acid-mixing-readability/runtime-svg-resources-webkit-selected.json",
-        "iodine-clock-readability/runtime-svg-resources-webkit-selected.json"
+        "iodine-clock-readability/runtime-svg-resources-webkit-selected.json",
+        "catalyst-foam-readability/runtime-svg-resources-webkit-selected.json"
       ]
     }
   ],
   "studentCopyAudit": {
     "report": "student-copy-audit.json",
-    "routes": 197,
+    "routes": 198,
     "flagged": 0
   },
   "manualVisualReview": {
     "report": "current-manual-visual-review.json",
-    "images": 189,
+    "images": 202,
     "hashesMatch": true
   },
   "activityScope": {
@@ -936,8 +967,8 @@
     "supplementalDocuments": 28,
     "headingRecoveryReviewedDocuments": 24,
     "zeroCandidateDocumentsWithPageReview": 22,
-    "manuallyReviewedCandidates": 238,
-    "sourceReviewedExperimentUnits": 128,
+    "manuallyReviewedCandidates": 242,
+    "sourceReviewedExperimentUnits": 129,
     "sourceReviewedPendingUnits": 2,
     "manualAdditionsOutsideHeadingExtraction": 5,
     "requiredExperimentTotal": null
@@ -948,14 +979,21 @@
     "passed": 2,
     "failed": 0
   },
-  "liveAssetCount": 918,
-  "rasterCount": 4041,
+  "liveAssetCount": 922,
+  "rasterCount": 4054,
   "remainingWork": [
     "Complete source-page census and publisher deduplication before claiming a required-experiment total.",
     "33 official activity mappings remain partial; source-specific procedures, original observations and actual-device tasks are not marked completed by a related simulation.",
     "Physical Chromebook/iPad validation has not been performed.",
     "Native video decoding on a physical iPad/Safari remains unverified: Windows Playwright WebKit returned MEDIA_ERR_SRC_NOT_SUPPORTED for MP4 and WebM. Error handling and recovery were tested; no decoded-video claim for that engine."
   ],
+  "catalystFoamReview": {
+    "source": "catalyst-foam/source-review.json",
+    "readabilityStatesPerEngine": 145,
+    "screenStatesPerEngine": 168,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Four source-informed conditions including KI, equal controls, soap removal with equal starting volume, and phosphoric-acid inhibition. Additive contact precedes its effect. Qualitative scene only; no fabricated reaction times, gas volumes or measured foam heights."
+  },
   "iodineClockReview": {
     "source": "iodine-clock/source-review.json",
     "readabilityStatesPerEngine": 110,

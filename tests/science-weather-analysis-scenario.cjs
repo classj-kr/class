@@ -1,0 +1,1 @@
+module.exports=async function(value){const[caseId,index,kind,part]=value.split(':');await window.__weatherAnalysis.set({caseId,index:+index,kind,zoom:part==='zoom'?2:1,compare:part==='compare',explain:part==='explain'});};

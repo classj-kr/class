@@ -114,3 +114,5 @@ module.exports.push({id:'9과04#1',slugs:['diffusion'],status:'모의활동',not
 const iodineClock=require('../../scripts/science-iodine-clock-experiment.cjs');module.exports.push({id:'12물에04#2',slugs:[iodineClock.slug,'rate-equilibrium','enzyme'],status:'부분',note:iodineClock.current+' '+iodineClock.boundary});
 
 const catalystFoam=require('../../scripts/science-catalyst-foam-experiment.cjs');module.exports.push({id:'12물에04#2',slugs:[iodineClock.slug,catalystFoam.slug,'rate-equilibrium','enzyme'],status:'부분',note:iodineClock.current+' '+catalystFoam.current+' '+iodineClock.boundary+' '+catalystFoam.boundary});
+
+const weatherAnalysis=require('../../scripts/science-weather-analysis-experiment.cjs');module.exports.push({id:'12지구01#2',slugs:[weatherAnalysis.slug,'weather-front'],status:'부분',note:weatherAnalysis.current+' '+weatherAnalysis.boundary});

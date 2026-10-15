@@ -1,0 +1,14 @@
+✔ source identities, preserved image provenance, coherent times and independently calculated questions (967.1758ms)
+chromium: 156 states, 18 authentic images, 12 retained distractors and discrete playback
+✔ chromium: every dated observation, comparison, touch controls, discrete playback and retained diagnosis (11306.7371ms)
+webkit: 156 states, 18 authentic images, 12 retained distractors and discrete playback
+✔ webkit: every dated observation, comparison, touch controls, discrete playback and retained diagnosis (20103.7824ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32436.5519
+
