@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-15T17:31:31.849Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "temperature-clouding",
+      "scenarios": 95
+    }
+  ],
+  "scenarios": 95,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

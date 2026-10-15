@@ -1,8 +1,8 @@
-✔ source identity, controlled comparisons and independent diagnostic arithmetic (133.7274ms)
+✔ source identity, controlled comparisons and independent diagnostic arithmetic (130.9467ms)
 chromium: 168 viewport states, 12 retained distractors, actual animated bubbles and pause/reset/background stop
-✔ chromium: preparation, continuous bubbles, isolated controls and retained diagnosis (5891.3852ms)
+✔ chromium: preparation, continuous bubbles, isolated controls and retained diagnosis (6015.742ms)
 webkit: 168 viewport states, 12 retained distractors, actual animated bubbles and pause/reset/background stop
-✔ webkit: preparation, continuous bubbles, isolated controls and retained diagnosis (14495.8072ms)
+✔ webkit: preparation, continuous bubbles, isolated controls and retained diagnosis (14340.1731ms)
 ℹ tests 3
 ℹ suites 0
 ℹ pass 3
@@ -10,5 +10,5 @@ webkit: 168 viewport states, 12 retained distractors, actual animated bubbles an
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 20583.3833
+ℹ duration_ms 20545.345
 

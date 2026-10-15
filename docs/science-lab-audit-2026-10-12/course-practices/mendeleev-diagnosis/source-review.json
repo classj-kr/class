@@ -1,0 +1,125 @@
+{
+  "checkedAt": "2026-10-15T17:34:31.599Z",
+  "source": {
+    "path": "references/textbooks/중고등/미래엔/고등/과학/과학탐구실험1 (오현선)_2022/교과서/과학탐구실험1 (오현선)_2022_과학탐구실험1 교과서.pdf",
+    "sha256": "764c91a83f8bf462f03490744239f67817ab1a9f02907bf811c13d8e9b118665",
+    "pagesRead": [
+      27,
+      28,
+      31,
+      70,
+      75,
+      77
+    ],
+    "pagesVisuallyRead": [
+      31,
+      75
+    ]
+  },
+  "scope": "Two authored multiple-choice revisions grounded in the 2022 source card activity and constructed-response assessment 07. Original source is not mislabeled as multiple choice. No change to the required-experiment count.",
+  "derivations": [
+    "Q2 uses the original P/Cl/X composition and relative mass constraints; source answer on page 70 confirms P left of Cl and X below Cl.",
+    "Q3 uses the source blank between 40 and 75 and SiO2/XO2 family. Candidate masses 58,70,80 are authored distractor conditions, not measured or published elemental masses."
+  ],
+  "rejectedDistractors": [
+    "symbol character count",
+    "discovery year"
+  ],
+  "before": [
+    {
+      "id": "mendeleev#q2",
+      "slug": "mendeleev",
+      "question": "원자량 순서와 성질의 반복에 맞추어 배열하니 빈칸이 남았다. 미발견 원소의 자리인지 검토할 때 가장 유용한 자료는?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "같은 세로줄 원소의 화합물 조성"
+        },
+        {
+          "id": "b",
+          "text": "바로 앞 원소 기호의 글자 수"
+        },
+        {
+          "id": "c",
+          "text": "같은 가로줄 원소의 발견 연도"
+        }
+      ],
+      "answer": "a",
+      "why": "같은 세로줄에서 반복되는 화합물 조성과 다른 성질을 이용해 미지 원소의 성질을 예측하고 새 원소의 관찰 자료와 대조할 수 있습니다."
+    },
+    {
+      "id": "mendeleev#q3",
+      "slug": "mendeleev",
+      "question": "원자량이 증가하는 한 가로줄에서 40과 75 사이에 빈칸이 있다. 후보 A·B·C의 원자량은 각각 35·70·80이다. 순서만으로 남는 후보는?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A"
+        },
+        {
+          "id": "b",
+          "text": "B"
+        },
+        {
+          "id": "c",
+          "text": "C"
+        }
+      ],
+      "answer": "b",
+      "why": "40보다 크고 75보다 작은 원자량은 70입니다. 이것은 후보를 줄이는 조건이며 같은 세로줄의 화학적 성질도 확인해야 합니다."
+    }
+  ],
+  "after": [
+    {
+      "sha256": "df7ddf9a08d59fab787ee323514b2d7553698f6ae86ce3c0c5469aead5254db3",
+      "id": "mendeleev#q2",
+      "slug": "mendeleev",
+      "question": "P(원자량 31)는 PH₃·PCl₃, Cl(35)은 HCl·NaCl, X(35보다 큼)는 HX·NaX를 만든다. P와 Cl을 같은 가로줄에 두고 원자량 증가와 성질의 반복을 함께 적용할 때 (P의 위치, X의 위치)는?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Cl 왼쪽 · Cl 아래"
+        },
+        {
+          "id": "b",
+          "text": "Cl 오른쪽 · Cl 아래"
+        },
+        {
+          "id": "c",
+          "text": "Cl 왼쪽 · P 아래"
+        }
+      ],
+      "answer": "a",
+      "why": "P는 Cl보다 원자량이 작아 왼쪽에 놓습니다. X는 Cl과 화합물의 결합 비율이 같고 원자량이 더 크므로 Cl의 아래에 놓습니다. 가로줄의 순서와 세로줄의 성질을 함께 적용합니다."
+    },
+    {
+      "sha256": "c740d4a5e708a90bc6168dc5b25a833d0bfcd5150f8ddfa5e7e1db7e3760830d",
+      "id": "mendeleev#q3",
+      "slug": "mendeleev",
+      "question": "원자량 40과 75 사이의 빈칸이 Si·X와 같은 세로줄에 있다. Si의 산화물은 SiO₂, X의 산화물은 XO₂이다. 원자량 순서와 화학적 성질을 함께 만족하는 후보 R은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "원자량 58 · 산화물 RO"
+        },
+        {
+          "id": "b",
+          "text": "원자량 70 · 산화물 RO₂"
+        },
+        {
+          "id": "c",
+          "text": "원자량 80 · 산화물 RO₂"
+        }
+      ],
+      "answer": "b",
+      "why": "원자량 70은 40과 75 사이이고, RO₂는 같은 세로줄의 산화물과 결합 비율이 같습니다. 58은 순서만, 80은 산화물 비율만 만족합니다. 후보를 좁힌 결과이며 정확한 원자량의 측정은 아닙니다."
+    }
+  ],
+  "verification": {
+    "browserReport": "../mendeleev-diagnosis-regression.txt",
+    "readabilityStatesPerEngine": 5,
+    "allDistinctWrongOptionsRetained": 4,
+    "oldFeedbackOverlayFixed": true,
+    "physicalDeviceTested": false
+  }
+}

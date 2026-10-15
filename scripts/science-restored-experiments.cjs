@@ -137,3 +137,7 @@ module.exports.push(require('./science-iodine-clock-experiment.cjs'));
 module.exports.push(require('./science-catalyst-foam-experiment.cjs'));
 
 module.exports.push(require('./science-weather-analysis-experiment.cjs'));
+
+module.exports.push(require('./science-temperature-clouding-experiment.cjs'));
+
+module.exports.push(require('./science-constellation-space-experiment.cjs'));

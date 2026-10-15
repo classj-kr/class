@@ -330,17 +330,17 @@
         "concept": "관찰 지표와 반응",
         "q": "두 용액에 KI를 같은 양 넣되 B에는 세제를 넣지 않았다. B에서 기포는 올라오지만 거품 층이 거의 남지 않았다. 산소 생성 속도를 직접 비교할 추가 측정은?",
         "choices": [
-          "같은 시점에 남은 거품 층의 높이",
-          "같은 시점에 남은 KI 결정의 크기",
-          "반응 전후 실린더 안 용액의 색깔",
+          "같은 시간 동안 쌓인 거품의 높이",
+          "반응이 끝난 뒤 모은 산소의 부피",
+          "반응이 끝난 뒤 용액의 최종 온도",
           "같은 시간 동안 모은 산소의 부피"
         ],
         "answer": 3,
         "why": "온도·압력을 같게 하고 같은 시간 동안 발생한 산소를 모아 비교합니다. 세제 유무에 따라 기포가 거품으로 머무는 정도가 달라집니다.",
         "feedback": {
           "a": "세제 유무가 다르면 같은 산소량도 거품 높이가 달라집니다. 높이만으로 생성 속도를 비교할 수 없습니다.",
-          "b": "결정의 용해와 기체 생성은 다른 과정입니다. 촉매 결정 크기가 산소량을 직접 나타내지 않습니다.",
-          "c": "용액의 색깔은 발생한 산소의 부피를 직접 측정하는 지표가 아닙니다."
+          "b": "반응이 모두 끝난 뒤의 기체량은 최종 생성량입니다. 그 양이 같아도 같은 시간 동안의 생성 속도는 다를 수 있습니다.",
+          "c": "최종 온도에는 열 손실과 반응 시간이 함께 영향을 줍니다. 일정 시간에 생긴 산소량을 직접 읽은 값이 아닙니다."
         }
       }
     ],
@@ -352,5 +352,10 @@
     "10a5b297fa1b961f:6",
     "965f45ec469d480f:118"
   ],
-  "quantitativeFoamDataAvailable": false
+  "quantitativeFoamDataAvailable": false,
+  "diagnosticRefinement": {
+    "checkedAt": "2026-10-15T17:38:58.131Z",
+    "question": 4,
+    "reason": "Replace cosmetic/remaining-crystal options with plausible but non-equivalent measurements: retained foam, completed gas yield and final solution temperature. Equal-duration collected gas at equal temperature/pressure tests rate."
+  }
 }

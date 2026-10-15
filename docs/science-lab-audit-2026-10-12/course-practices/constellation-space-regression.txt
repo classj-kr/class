@@ -1,0 +1,14 @@
+✔ all 21 published coordinates and independent direction/distance geometry (432.9426ms)
+chromium: 78 viewport states, 12 retained errors, 21 coordinates, touch/keyboard/rotation/reset
+✔ chromium: placement, equal-distance projection, orbit, clear/reset and retained diagnosis (5980.1814ms)
+webkit: 78 viewport states, 12 retained errors, 21 coordinates, touch/keyboard/rotation/reset
+✔ webkit: placement, equal-distance projection, orbit, clear/reset and retained diagnosis (14344.6608ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20816.9423
+

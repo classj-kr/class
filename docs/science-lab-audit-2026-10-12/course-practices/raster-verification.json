@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-15T16:53:03.689Z",
-  "count": 4054,
+  "checkedAt": "2026-10-15T18:26:59.791Z",
+  "count": 4129,
   "allDecoded": true,
   "allLossless": false,
   "redundantRasters": [],
@@ -11502,6 +11502,14 @@
       "lossless": true
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/catalyst-foam/chromium-rate-yield-q4.webp",
+      "sha256": "35ad1b5c4e396bccdd9ac4d6c9b5490d54e96888b4152006172f18fcda0b9933",
+      "width": 838,
+      "height": 665,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/catalyst-foam/webkit-live-control-1.webp",
       "sha256": "b14fdbb351357735003772d318ddf357ae5b9d5b36954966fe2b4c91836d7098",
       "width": 1440,
@@ -11554,6 +11562,14 @@
       "sha256": "aa36221e847bcad8341a723c74e67398c4d9e48fa8c61911316eb8c7b38a02bd",
       "width": 1340,
       "height": 1124,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/catalyst-foam/webkit-rate-yield-q4.webp",
+      "sha256": "de3f4d74de2f58e1712bb3194a99654536275c61c9efec239ecea7ef6e541e12",
+      "width": 1340,
+      "height": 1064,
       "alpha": false,
       "lossless": true
     },
@@ -12508,6 +12524,118 @@
       "alpha": false,
       "lossless": true,
       "sha256": "75c666daaf37d93d61b74aa5c80106d92721f42c8915e13399531cfae58093e1"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/chromium-context.webp",
+      "sha256": "5542a5648717895a46e4dce9bc076957c87be61d90c6f81d2e0c9e86e075f042",
+      "width": 1600,
+      "height": 1651,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/chromium-coordinates.webp",
+      "sha256": "90773430cf21e1dd2f2af19c435111a77d8e55f532b433a64323aec8aab9fd9e",
+      "width": 1538,
+      "height": 639,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/chromium-earth.webp",
+      "sha256": "9488adebfcdc3668763f08e1536058be16a0a04ef965de903f604bd96ab3a0c5",
+      "width": 1600,
+      "height": 1651,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/chromium-q2.webp",
+      "sha256": "5490d48e67f3ff67e65535eb6a68cc2a68049609166423bcbeb40b90c7b358d7",
+      "width": 1538,
+      "height": 558,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/chromium-side.webp",
+      "sha256": "06374e30a67e6c7e8c5169ea67b1936252f79886e56dc486180fba37fa011b8f",
+      "width": 1600,
+      "height": 1651,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/chromium-space-equal.webp",
+      "sha256": "73e4156ab860cc0c856c8279a1643d3e0b7dc3c1d1263e9c59b5335973098de2",
+      "width": 1600,
+      "height": 1651,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/chromium-space.webp",
+      "sha256": "ca3d90039d4a2d7fce226ccde68a8e0505a25ea6cc0400dc4cf40f25baad8900",
+      "width": 1600,
+      "height": 1651,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/webkit-coordinates.webp",
+      "sha256": "cf11ee92718fcb9e24368cbb15c644c6b15407e550661b7a92909c09ce11dbb9",
+      "width": 1340,
+      "height": 1022,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/webkit-earth.webp",
+      "sha256": "3e3132cc30ee79c1f46ac0774cf809fe2e93f5b09d45d23b1d56463f3b26f5c4",
+      "width": 1440,
+      "height": 3014,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/webkit-edited.webp",
+      "sha256": "ddc779408987dbd7ad690c356ea203d8b5eff308f8b8844f2e774b2cbe89af1b",
+      "width": 1440,
+      "height": 3072,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/webkit-empty.webp",
+      "sha256": "4ae09a8edcbc73117960544ea8b9e2d933199ba0827e49ce9c6b82587ec3dd33",
+      "width": 1440,
+      "height": 2950,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/webkit-q2.webp",
+      "sha256": "acb96267e9bd7bb4a8e8329a9e2f38ac3296b41824960c35e7d87d742ef47fb3",
+      "width": 1340,
+      "height": 1008,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/webkit-side-390.webp",
+      "sha256": "4da97530644efdad532cda8cafaedf20ff2065b247c9d63efed87ea9ea41e60e",
+      "width": 732,
+      "height": 3716,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/constellation-space/webkit-top.webp",
+      "sha256": "615cbf84c748ed32495afae4afa6617b1040e3451b76d977d5d0c3ec66343727",
+      "width": 1440,
+      "height": 3014,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/content-validity/biuret-blue-control-chromium.webp",
@@ -26662,6 +26790,38 @@
       "sha256": "ecc96a200c47352a589bec1e71ededecf6bda7823bd3f06a99d62ecec45edf06"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/mendeleev-diagnosis/chromium-q2.webp",
+      "sha256": "1484f83b19d376821486af7cefa8ce7b1d052e2bf9fd77dec073f15b51354cbd",
+      "width": 838,
+      "height": 626,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/mendeleev-diagnosis/chromium-q3.webp",
+      "sha256": "515e97b2d930eff5f4dfa61b5c047f53d3223c98b0c3103dc356ecc9d654fb8d",
+      "width": 838,
+      "height": 590,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/mendeleev-diagnosis/webkit-q2.webp",
+      "sha256": "7d1f27bda4d0c4934ed86e387bb1a53d96c27917c782e5c34580d1d6c1a1ca58",
+      "width": 1340,
+      "height": 1002,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/mendeleev-diagnosis/webkit-q3.webp",
+      "sha256": "6cbf7622f49578957c3f703145818d3cee07654c5074e4c3dec0aefe282754eb",
+      "width": 1340,
+      "height": 944,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/microbe-sources/contact.webp",
       "width": 950,
       "height": 1320,
@@ -28982,6 +29142,94 @@
       "sha256": "3079dbf66dfdc282962cb57eeab7bbedde5e4c6e75676869c5d338cfb3fbcbfe"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/chromium-acid-before.webp",
+      "sha256": "aaf6613089250882d54d4bbf79259135d0e20b4cb4a0685f4270dcff3843b246",
+      "width": 1600,
+      "height": 2121,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/chromium-acid-complete.webp",
+      "sha256": "5b75e25855b829380b3fca640affbcd0320a5d3be9457cd811f944fdccb2944f",
+      "width": 1600,
+      "height": 2169,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/chromium-acid-moving.webp",
+      "sha256": "945516049ab531b7ff2ff51997377024c796409dee1f74522dfc27d3e3a4bae4",
+      "width": 1600,
+      "height": 2121,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/chromium-magnesium-complete.webp",
+      "sha256": "f07b9cb109a412a6dc4f3a5b0e36e155575e1d86c906dc81f6cbd292e920b621",
+      "width": 1600,
+      "height": 2169,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/chromium-q3.webp",
+      "sha256": "dfcff2a229f7279e3ecd872bbd59d215b94fe9106062d7492797033d937e9cc7",
+      "width": 1538,
+      "height": 558,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/webkit-acid-390.webp",
+      "sha256": "670c52565b95ae74f534ace12c3e275b3521a8612024b22bfe2177ec04e45e98",
+      "width": 732,
+      "height": 4578,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/webkit-acid-complete.webp",
+      "sha256": "28675a84175a16f4b25a63a63dfeaaa13e4733d65afbd55fe034fc042f220793",
+      "width": 1440,
+      "height": 3642,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/webkit-acid-larger.webp",
+      "sha256": "ee5c1361efa0aa2ab0f5484bde4829cc74c95182aa1f86b151de92f71568df9f",
+      "width": 1440,
+      "height": 3642,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/webkit-acid-leak.webp",
+      "sha256": "12288aa2ee025b8b5be5a902ad9a099a7be974e9be46d2ed10da1cea15e43c42",
+      "width": 1440,
+      "height": 3698,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/webkit-acid-range.webp",
+      "sha256": "e27337ce6a811872cfa2a483983d08d8a5506c4e5d3567a9420bef7f86099919",
+      "width": 1440,
+      "height": 3642,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/pressure-variant/webkit-q3.webp",
+      "sha256": "9b3a114c5df0ab54cfa5c42be28a982bf27d2647aa5e594e6018c60ffed279e0",
+      "width": 1340,
+      "height": 1064,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/prism-chromium-1024.webp",
       "width": 980,
       "height": 1634,
@@ -30926,6 +31174,110 @@
       "lossless": true
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/chromium-live-laser-0.42.webp",
+      "sha256": "56d34f7b121445cd60858ccc085be251b85fc499664c0d7bfaf583099bbbe1dc",
+      "width": 1600,
+      "height": 1651,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/chromium-live-q1.webp",
+      "sha256": "82590989c37ef0d19113ab55f42f704600afb21a7e8dc6d89be708c7668e2e4f",
+      "width": 1538,
+      "height": 594,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/chromium-live-q4.webp",
+      "sha256": "89f9185d975a33d703876028359a9e48275b4fae4e9d2c3b49cd8495cb3e3bbf",
+      "width": 1538,
+      "height": 630,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/chromium-live-sulfur-0.08.webp",
+      "sha256": "d9d3a58c1d03166c364cbf9e37d83a872fdd20238b6f9a4b80eab5eca37d3f80",
+      "width": 1600,
+      "height": 1618,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/chromium-live-sulfur-0.42.webp",
+      "sha256": "b5626ef8a04b15fe04c909305b204e0a8d571a013f3d5846a068d13fdaa3cce6",
+      "width": 1600,
+      "height": 1618,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/chromium-live-sulfur-ready.webp",
+      "sha256": "f4c3ce016385cb7df818d333a5a7bc4ca71b7b55c4fcc73d39bf68913c1ab418",
+      "width": 1600,
+      "height": 1618,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/webkit-live-laser-0.08.webp",
+      "sha256": "f71c4114e539ed1704cee5b18d87e131383eebcc314f25a7a6abd6687eeace31",
+      "width": 1440,
+      "height": 2800,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/webkit-live-laser-0.7.webp",
+      "sha256": "c1df251edf71048be18b9fb29e1f25936c17253e1803306495a5d81230dbe839",
+      "width": 1440,
+      "height": 2800,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/webkit-live-laser-390.webp",
+      "sha256": "8ce3442133f3525b3ae20438c879b9a813851bb8133b930c6c87383d55e5c739",
+      "width": 732,
+      "height": 5930,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/webkit-live-laser-ready.webp",
+      "sha256": "3cd6670c1d36d17d34041758ee3099f0810bed474199b45352ed7aeb520a3cbf",
+      "width": 1440,
+      "height": 2800,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/webkit-live-q1.webp",
+      "sha256": "aac3b55ee8e000eb2b757ba3fc5e61290be8b663401a4007d430b284dc17065d",
+      "width": 1340,
+      "height": 1064,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/webkit-live-q4.webp",
+      "sha256": "5bb059b2f15c807dc56bc6aed67f33847322b24d73a5ea9c02f2036f2615fd6e",
+      "width": 1340,
+      "height": 1124,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/temperature-clouding/webkit-live-sulfur-1.webp",
+      "sha256": "42a6677e3950be4d1de6f4a0bda5dbe22269a59627ac4ecb820f8d1c081ad78a",
+      "width": 1440,
+      "height": 2748,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-basalt-1366.webp",
       "sha256": "59ecdd256ccee3cdfb501a979d0e7ac5110a42c25ff36b2a6b93330ec377286a",
       "width": 1538,
@@ -31332,6 +31684,110 @@
       "alpha": false,
       "lossless": true,
       "sha256": "4a59ea146a8bae3fbee729c6d5a5b2ea36739e85014b668396aba360f748af0d"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/chromium-live-autumn-0-chart.webp",
+      "sha256": "b80bbda0cba3b53410230bf788c873db00a2405f1a2a1e2c82a0b332ca18f458",
+      "width": 1600,
+      "height": 1179,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/chromium-live-autumn-2-radar-compare.webp",
+      "sha256": "08b5cf68867014485adf5ceb3fd7952a31981d93bdccf6e1d29016385023f625",
+      "width": 1600,
+      "height": 1333,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/chromium-live-q2.webp",
+      "sha256": "71c696935994ed9d79d89d22ff600fc0ec04e6e36f9af94ae95058f30dda1725",
+      "width": 1538,
+      "height": 558,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/chromium-live-q4.webp",
+      "sha256": "a889e4993be00922d6785e21c59720b377bbc6f86944f00cf641d3281aa74a20",
+      "width": 1538,
+      "height": 558,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/chromium-live-summer-1-chart-explain.webp",
+      "sha256": "5170104da936384b62b9452eb635436ff43731eff1133dcee751142eadb2c924",
+      "width": 1600,
+      "height": 1308,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/chromium-live-summer-2-satellite.webp",
+      "sha256": "83d2a754db9bb90e0aebb98b223a08303f6c9d8551e083d38983b690cb031ecc",
+      "width": 1600,
+      "height": 1406,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/webkit-live-autumn-0-chart.webp",
+      "sha256": "1b823a9caebb2cb0210aed3b34586546686809ffebfd6e628261f006fbb0b305",
+      "width": 1440,
+      "height": 1880,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/webkit-live-autumn-2-radar-compare.webp",
+      "sha256": "8997fa820b998350b5bd7b0251e92e1df37b567103279cb7ebbd47d25c0e21d7",
+      "width": 1440,
+      "height": 3202,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/webkit-live-q2.webp",
+      "sha256": "8f787607ffbc8d55ed2b7f788d4fafbfcb22e42e6b7a12313d00690971e899ea",
+      "width": 1340,
+      "height": 1064,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/webkit-live-q4.webp",
+      "sha256": "9726b6d34f3eac5bc37b856bb17d0e67fc9f11f4deb015cdfca9dd3c0e8c8dfc",
+      "width": 1340,
+      "height": 1066,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/webkit-live-radar-390.webp",
+      "sha256": "66de50bfaa3de1a73da9de22977a502528111875c30063a0eff0b69c394fa606",
+      "width": 732,
+      "height": 3028,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/webkit-live-summer-1-chart-zoom.webp",
+      "sha256": "dd50547dedf9a3a9821ce84ac033e1ee3ce725b1ffd2c3ea7885f51a9ffee871",
+      "width": 1440,
+      "height": 2570,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/weather-analysis/webkit-live-summer-2-satellite.webp",
+      "sha256": "56770272bdfd2ffb3528e5ce53dfa53e008a50dc5005f367eaa12e0097b74ea8",
+      "width": 1440,
+      "height": 2296,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/webkit-acoustic-microphone-1024.webp",
@@ -32436,6 +32892,150 @@
       "alpha": false,
       "lossless": true,
       "sha256": "fe2871bc29cb310e758d947f8065bee55aa8631308a9f3e5ba610318665b73f4"
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-chart-0.webp",
+      "sha256": "34d014a1cfb12ab524734c127f01d8e114cc2e81be27c7b766c795236db573e0",
+      "width": 662,
+      "height": 569,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-chart-1.webp",
+      "sha256": "5ff063f8b930e41e21a5f6c43bbc186bf7e4f3ea62a173227e91b52e218221ff",
+      "width": 661,
+      "height": 570,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-chart-2.webp",
+      "sha256": "763839b45cac8ba97092d9d82a8ac7ecd7f465bfeccc53dd497457f4f04913dc",
+      "width": 661,
+      "height": 569,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-radar-0.webp",
+      "sha256": "acd8d1466ba05699d1873ae7d1f909397eed31e9378e1fa3c04bc5f18e6d99bf",
+      "width": 609,
+      "height": 514,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-radar-1.webp",
+      "sha256": "f75ba5445ad22355976046e37811b28c2c2869abdcf94d8f89f7c43b4281feee",
+      "width": 608,
+      "height": 518,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-radar-2.webp",
+      "sha256": "684494ef0841087ce1299c4d65cd5f5853f93527dd58d023a946232418ba1627",
+      "width": 609,
+      "height": 517,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-satellite-0.webp",
+      "sha256": "a165c15f2c0e1e96bb19f03641d40721e923903c8b6fe6690ef2b55d078704d3",
+      "width": 509,
+      "height": 429,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-satellite-1.webp",
+      "sha256": "24ab4ec7a24d1bd6739539a6797e734f03c8bf3c53af6eb2dae75f53f6c8d785",
+      "width": 509,
+      "height": 433,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/autumn-satellite-2.webp",
+      "sha256": "33b03165f4b9d4a317a19884d6a54b341b721b38cfd97730c8c5bfb579eb459e",
+      "width": 509,
+      "height": 431,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-chart-0.webp",
+      "sha256": "86220bea621d555117964bad0a411f01c75e21ee8a51223badd7480a343401ee",
+      "width": 769,
+      "height": 632,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-chart-1.webp",
+      "sha256": "d975b4f7300f17a78100ad590a41b427cb01f73a79cd71077e13f366bde40580",
+      "width": 768,
+      "height": 632,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-chart-2.webp",
+      "sha256": "c841017d7edee8613765fca80db4982db03ed564791500d3437786568fbb7112",
+      "width": 768,
+      "height": 632,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-radar-0.webp",
+      "sha256": "e87622ca052f75b748540c04b56bc7ab3cbdb6cae9891ff42a31403f425c53b2",
+      "width": 246,
+      "height": 261,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-radar-1.webp",
+      "sha256": "45f2059256e169e2dff593e360968f05ef2a88b8228b3546a6e45b4f19f708d6",
+      "width": 246,
+      "height": 261,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-radar-2.webp",
+      "sha256": "ed099a54a45d9623fab18436f50b74167bedb5436315d98b74bfe294fd5e2721",
+      "width": 246,
+      "height": 261,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-satellite-0.webp",
+      "sha256": "642977cb9d65bf491b1f9a26b0f4ddf347ecc34c2444171d5856d952a394fbfb",
+      "width": 266,
+      "height": 259,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-satellite-1.webp",
+      "sha256": "526f7b2c6e0678be1d35310498d9d9c70e18acb0ce106ef7a903bfcb62c489de",
+      "width": 266,
+      "height": 258,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/weather-analysis/assets/summer-satellite-2.webp",
+      "sha256": "025b16e7236216d715f111e7a5b836281f9f06540ed5a56be4dd60b0d4f2429c",
+      "width": 266,
+      "height": 258,
+      "alpha": false,
+      "lossless": true
     }
   ]
 }

@@ -1152,6 +1152,348 @@
       "sha256": "7ad3385a5cb0f45a969a77a84ff783c5e9d3ab9bba2beb50579ec48e3e83480c",
       "observation": "Narrow single-column layout preserves controls and visible liquid bubbles without horizontal overflow.",
       "recheckedAt": "2026-10-15T16:53:02.005Z"
+    },
+    {
+      "file": "weather-analysis/chromium-live-autumn-0-chart.webp",
+      "sha256": "b80bbda0cba3b53410230bf788c873db00a2405f1a2a1e2c82a0b332ca18f458",
+      "observation": "Compact original pressure map, unclipped front symbols and matched clock selection; no giant graph labels.",
+      "recheckedAt": "2026-10-15T17:10:31.030Z"
+    },
+    {
+      "file": "weather-analysis/chromium-live-autumn-2-radar-compare.webp",
+      "sha256": "08b5cf68867014485adf5ceb3fd7952a31981d93bdccf6e1d29016385023f625",
+      "observation": "First observation appears on the left and later observation on the right. Coastlines, coverage masks and declining precipitation extent stay visible.",
+      "recheckedAt": "2026-10-15T17:10:31.031Z"
+    },
+    {
+      "file": "weather-analysis/chromium-live-summer-1-chart-explain.webp",
+      "sha256": "5170104da936384b62b9452eb635436ff43731eff1133dcee751142eadb2c924",
+      "observation": "Summer pressure map, timestamp and interpretation correspond; the separate low centres remain distinguishable.",
+      "recheckedAt": "2026-10-15T17:10:31.031Z"
+    },
+    {
+      "file": "weather-analysis/chromium-live-summer-2-satellite.webp",
+      "sha256": "83d2a754db9bb90e0aebb98b223a08303f6c9d8551e083d38983b690cb031ecc",
+      "observation": "Original low-resolution satellite pixels retained without fabricated cloud detail; readable external labels.",
+      "recheckedAt": "2026-10-15T17:10:31.031Z"
+    },
+    {
+      "file": "weather-analysis/webkit-live-autumn-0-chart.webp",
+      "sha256": "1b823a9caebb2cb0210aed3b34586546686809ffebfd6e628261f006fbb0b305",
+      "observation": "Tablet map caption and pressure numbers fit at their intentional reading size with less unused vertical space.",
+      "recheckedAt": "2026-10-15T17:10:31.031Z"
+    },
+    {
+      "file": "weather-analysis/webkit-live-autumn-2-radar-compare.webp",
+      "sha256": "8997fa820b998350b5bd7b0251e92e1df37b567103279cb7ebbd47d25c0e21d7",
+      "observation": "Tablet comparison stacks first then later, with clear dates and complete radar frames at basic size.",
+      "recheckedAt": "2026-10-15T17:10:31.032Z"
+    },
+    {
+      "file": "weather-analysis/webkit-live-summer-1-chart-zoom.webp",
+      "sha256": "dd50547dedf9a3a9821ce84ac033e1ee3ce725b1ffd2c3ea7885f51a9ffee871",
+      "observation": "Intentional two-times zoom enlarges the original map inside a panning viewport, while all surrounding text remains fixed size.",
+      "recheckedAt": "2026-10-15T17:10:31.032Z"
+    },
+    {
+      "file": "weather-analysis/webkit-live-summer-2-satellite.webp",
+      "sha256": "56770272bdfd2ffb3528e5ce53dfa53e008a50dc5005f367eaa12e0097b74ea8",
+      "observation": "Tablet satellite image and text fit without clipping or page overflow.",
+      "recheckedAt": "2026-10-15T17:10:31.033Z"
+    },
+    {
+      "file": "weather-analysis/chromium-live-q2.webp",
+      "sha256": "71c696935994ed9d79d89d22ff600fc0ec04e6e36f9af94ae95058f30dda1725",
+      "observation": "The stem no longer states the answer; balanced paired choices require comparison of the actual dated observations.",
+      "recheckedAt": "2026-10-15T17:10:31.033Z"
+    },
+    {
+      "file": "weather-analysis/webkit-live-q2.webp",
+      "sha256": "8f787607ffbc8d55ed2b7f788d4fafbfcb22e42e6b7a12313d00690971e899ea",
+      "observation": "The revised source-image interpretation choices and retained first error wrap naturally on iPad width.",
+      "recheckedAt": "2026-10-15T17:10:31.033Z"
+    },
+    {
+      "file": "weather-analysis/chromium-live-q4.webp",
+      "sha256": "a889e4993be00922d6785e21c59720b377bbc6f86944f00cf641d3281aa74a20",
+      "observation": "Equal-format numeric choices, time-weighted integration and specific simple-average error fit clearly.",
+      "recheckedAt": "2026-10-15T17:10:31.033Z"
+    },
+    {
+      "file": "weather-analysis/webkit-live-q4.webp",
+      "sha256": "9726b6d34f3eac5bc37b856bb17d0e67fc9f11f4deb015cdfca9dd3c0e8c8dfc",
+      "observation": "Tablet calculation feedback remains legible with consistent units and 20/40-minute weights.",
+      "recheckedAt": "2026-10-15T17:10:31.033Z"
+    },
+    {
+      "file": "weather-analysis/webkit-live-radar-390.webp",
+      "sha256": "66de50bfaa3de1a73da9de22977a502528111875c30063a0eff0b69c394fa606",
+      "observation": "Narrow controls wrap; the image pans within its region, and captions/help remain readable without page overflow.",
+      "recheckedAt": "2026-10-15T17:10:31.033Z"
+    },
+    {
+      "file": "temperature-clouding/chromium-live-sulfur-ready.webp",
+      "sha256": "f4c3ce016385cb7df818d333a5a7bc4ca71b7b55c4fcc73d39bf68913c1ab418",
+      "observation": "Both reagents are immersed in each water bath. The shortened test tube has its mouth above the water, and the flask cross is clear before mixing.",
+      "recheckedAt": "2026-10-15T17:33:25.313Z"
+    },
+    {
+      "file": "temperature-clouding/chromium-live-sulfur-0.08.webp",
+      "sha256": "d9d3a58c1d03166c364cbf9e37d83a872fdd20238b6f9a4b80eab5eca37d3f80",
+      "observation": "The same-size tube tilts within the scene and the pour reaches the actual liquid surface through the flask mouth; no precipitate before mixing finishes.",
+      "recheckedAt": "2026-10-15T17:33:25.315Z"
+    },
+    {
+      "file": "temperature-clouding/chromium-live-sulfur-0.42.webp",
+      "sha256": "b5626ef8a04b15fe04c909305b204e0a8d571a013f3d5846a068d13fdaa3cce6",
+      "observation": "Three equal-volume flasks show distinct clarity; the warm flask reaches the optical endpoint first, with its cross hidden.",
+      "recheckedAt": "2026-10-15T17:33:25.315Z"
+    },
+    {
+      "file": "temperature-clouding/chromium-live-laser-0.42.webp",
+      "sha256": "56d34f7b121445cd60858ccc085be251b85fc499664c0d7bfaf583099bbbe1dc",
+      "observation": "Separate white paper planes show a fading red spot. Precipitate remains in the flasks; all three downward beam paths align with the paper.",
+      "recheckedAt": "2026-10-15T17:33:25.315Z"
+    },
+    {
+      "file": "temperature-clouding/webkit-live-laser-ready.webp",
+      "sha256": "3cd6670c1d36d17d34041758ee3099f0810bed474199b45352ed7aeb520a3cbf",
+      "observation": "Tablet preparation shows both liquids in water baths and no premature laser result. Labels wrap at consistent size.",
+      "recheckedAt": "2026-10-15T17:33:25.315Z"
+    },
+    {
+      "file": "temperature-clouding/webkit-live-laser-0.08.webp",
+      "sha256": "f71c4114e539ed1704cee5b18d87e131383eebcc314f25a7a6abd6687eeace31",
+      "observation": "Tablet pour stays within the apparatus canvas and reaches the fluid. Flask moves out of the bath onto the inverted dish and paper.",
+      "recheckedAt": "2026-10-15T17:33:25.315Z"
+    },
+    {
+      "file": "temperature-clouding/webkit-live-sulfur-1.webp",
+      "sha256": "42a6677e3950be4d1de6f4a0bda5dbe22269a59627ac4ecb820f8d1c081ad78a",
+      "observation": "All three cross marks disappear at the final scene; controls and the wrapped equation fit on iPad width.",
+      "recheckedAt": "2026-10-15T17:33:25.316Z"
+    },
+    {
+      "file": "temperature-clouding/webkit-live-laser-0.7.webp",
+      "sha256": "c1df251edf71048be18b9fb29e1f25936c17253e1803306495a5d81230dbe839",
+      "observation": "Tablet laser scene has a remaining cold-condition spot and two blank paper planes; local gradients render without cross-SVG references.",
+      "recheckedAt": "2026-10-15T17:33:25.316Z"
+    },
+    {
+      "file": "temperature-clouding/chromium-live-q1.webp",
+      "sha256": "82590989c37ef0d19113ab55f42f704600afb21a7e8dc6d89be708c7668e2e4f",
+      "observation": "Four balanced concentration/yield pairs and retained dilution error display legibly with independently checked limiting-reagent arithmetic.",
+      "recheckedAt": "2026-10-15T17:33:25.316Z"
+    },
+    {
+      "file": "temperature-clouding/webkit-live-q1.webp",
+      "sha256": "aac3b55ee8e000eb2b757ba3fc5e61290be8b663401a4007d430b284dc17065d",
+      "observation": "Tablet stoichiometry question wraps without clipped formulas and keeps readable answer feedback.",
+      "recheckedAt": "2026-10-15T17:33:25.316Z"
+    },
+    {
+      "file": "temperature-clouding/chromium-live-q4.webp",
+      "sha256": "89f9185d975a33d703876028359a9e48275b4fae4e9d2c3b49cd8495cb3e3bbf",
+      "observation": "All four choices combine optical-threshold judgment and experimental control; irrelevant colour distractors are gone.",
+      "recheckedAt": "2026-10-15T17:33:25.316Z"
+    },
+    {
+      "file": "temperature-clouding/webkit-live-q4.webp",
+      "sha256": "5bb059b2f15c807dc56bc6aed67f33847322b24d73a5ea9c02f2036f2615fd6e",
+      "observation": "Tablet depth-confound question and retained result-versus-control error stay readable with equal-format choices.",
+      "recheckedAt": "2026-10-15T17:33:25.316Z"
+    },
+    {
+      "file": "temperature-clouding/webkit-live-laser-390.webp",
+      "sha256": "8ce3442133f3525b3ae20438c879b9a813851bb8133b930c6c87383d55e5c739",
+      "observation": "Narrow layout stacks all three cards; buttons wrap, and the equation stays within the page.",
+      "recheckedAt": "2026-10-15T17:33:25.317Z"
+    },
+    {
+      "file": "mendeleev-diagnosis/chromium-q2.webp",
+      "sha256": "1484f83b19d376821486af7cefa8ce7b1d052e2bf9fd77dec073f15b51354cbd",
+      "observation": "Source P/Cl/X composition and relative mass constraints are shown in one readable stem. All three paired-location options have comparable length, and the retained wrong-order feedback matches the chosen option.",
+      "recheckedAt": "2026-10-15T17:39:58.206Z"
+    },
+    {
+      "file": "mendeleev-diagnosis/chromium-q3.webp",
+      "sha256": "515e97b2d930eff5f4dfa61b5c047f53d3223c98b0c3103dc356ecc9d654fb8d",
+      "observation": "Both mass interval and oxide ratio are needed; neither numerical order alone nor formula pattern alone identifies the answer. Tablet/Chromebook text and corrected feedback wrap without clipping.",
+      "recheckedAt": "2026-10-15T17:39:58.207Z"
+    },
+    {
+      "file": "mendeleev-diagnosis/webkit-q2.webp",
+      "sha256": "7d1f27bda4d0c4934ed86e387bb1a53d96c27917c782e5c34580d1d6c1a1ca58",
+      "observation": "Source P/Cl/X composition and relative mass constraints are shown in one readable stem. All three paired-location options have comparable length, and the retained wrong-order feedback matches the chosen option.",
+      "recheckedAt": "2026-10-15T17:39:58.207Z"
+    },
+    {
+      "file": "mendeleev-diagnosis/webkit-q3.webp",
+      "sha256": "6cbf7622f49578957c3f703145818d3cee07654c5074e4c3dec0aefe282754eb",
+      "observation": "Both mass interval and oxide ratio are needed; neither numerical order alone nor formula pattern alone identifies the answer. Tablet/Chromebook text and corrected feedback wrap without clipping.",
+      "recheckedAt": "2026-10-15T17:39:58.208Z"
+    },
+    {
+      "file": "catalyst-foam/chromium-rate-yield-q4.webp",
+      "sha256": "35ad1b5c4e396bccdd9ac4d6c9b5490d54e96888b4152006172f18fcda0b9933",
+      "observation": "Four plausible measurements distinguish gas production rate, final yield, retained foam and final temperature. The equal-duration gas-volume answer and the retained yield-versus-rate error are readable at tablet width.",
+      "recheckedAt": "2026-10-15T17:41:17.944Z"
+    },
+    {
+      "file": "catalyst-foam/webkit-rate-yield-q4.webp",
+      "sha256": "de3f4d74de2f58e1712bb3194a99654536275c61c9efec239ecea7ef6e541e12",
+      "observation": "Four plausible measurements distinguish gas production rate, final yield, retained foam and final temperature. The equal-duration gas-volume answer and the retained yield-versus-rate error are readable at tablet width.",
+      "recheckedAt": "2026-10-15T17:41:17.946Z"
+    },
+    {
+      "file": "pressure-variant/chromium-acid-before.webp",
+      "sha256": "aaf6613089250882d54d4bbf79259135d0e20b4cb4a0685f4270dcff3843b246",
+      "observation": "No liquid is visible in the flask before injection; prepared syringe, controls, empty graph and uniform labels are visible.",
+      "recheckedAt": "2026-10-15T18:03:22.981Z"
+    },
+    {
+      "file": "pressure-variant/chromium-acid-moving.webp",
+      "sha256": "945516049ab531b7ff2ff51997377024c796409dee1f74522dfc27d3e3a4bae4",
+      "observation": "Gas bubbles stay in the liquid and magnesium is partly consumed. An unfinished time interval asks to continue rather than falsely implying a sensor fault.",
+      "recheckedAt": "2026-10-15T18:03:22.982Z"
+    },
+    {
+      "file": "pressure-variant/chromium-acid-complete.webp",
+      "sha256": "5b75e25855b829380b3fca640affbcd0320a5d3be9457cd811f944fdccb2944f",
+      "observation": "The acid-limited recipe leaves magnesium and reaches the independently calculated 163.3 kPa. Labels no longer overlay the flask.",
+      "recheckedAt": "2026-10-15T18:03:22.983Z"
+    },
+    {
+      "file": "pressure-variant/chromium-magnesium-complete.webp",
+      "sha256": "f07b9cb109a412a6dc4f3a5b0e36e155575e1d86c906dc81f6cbd292e920b621",
+      "observation": "The magnesium-limited recipe removes all magnesium and retains the original 158.0 kPa endpoint.",
+      "recheckedAt": "2026-10-15T18:03:22.983Z"
+    },
+    {
+      "file": "pressure-variant/webkit-acid-complete.webp",
+      "sha256": "28675a84175a16f4b25a63a63dfeaaa13e4733d65afbd55fe034fc042f220793",
+      "observation": "iPad-width apparatus, graph, residual-magnesium explanation and touch controls remain readable without overflowing.",
+      "recheckedAt": "2026-10-15T18:03:22.983Z"
+    },
+    {
+      "file": "pressure-variant/webkit-acid-range.webp",
+      "sha256": "e27337ce6a811872cfa2a483983d08d8a5506c4e5d3567a9420bef7f86099919",
+      "observation": "Out-of-range sensor values leave a gap and a dash rather than zero or a false plateau.",
+      "recheckedAt": "2026-10-15T18:03:22.983Z"
+    },
+    {
+      "file": "pressure-variant/webkit-acid-leak.webp",
+      "sha256": "12288aa2ee025b8b5be5a902ad9a099a7be974e9be46d2ed10da1cea15e43c42",
+      "observation": "Open valve preserves ambient pressure while reagent consumption continues; rate is explicitly invalidated.",
+      "recheckedAt": "2026-10-15T18:03:22.983Z"
+    },
+    {
+      "file": "pressure-variant/webkit-acid-larger.webp",
+      "sha256": "ee5c1361efa0aa2ab0f5484bde4829cc74c95182aa1f86b151de92f71568df9f",
+      "observation": "Larger gas space produces a smaller pressure rise with the same remaining magnesium; graph scale remains consistent.",
+      "recheckedAt": "2026-10-15T18:03:22.983Z"
+    },
+    {
+      "file": "pressure-variant/webkit-acid-390.webp",
+      "sha256": "670c52565b95ae74f534ace12c3e275b3521a8612024b22bfe2177ec04e45e98",
+      "observation": "Narrow layout keeps apparatus labels in a separate row, clear of the flask; readouts and controls wrap without clipped text.",
+      "recheckedAt": "2026-10-15T18:03:22.984Z"
+    },
+    {
+      "file": "pressure-variant/chromium-q3.webp",
+      "sha256": "dfcff2a229f7279e3ecd872bbd59d215b94fe9106062d7492797033d937e9cc7",
+      "observation": "Four comparable amount/residue pairs require both stoichiometric coefficients and limiting reagent; initial misconception retained after correction.",
+      "recheckedAt": "2026-10-15T18:03:22.984Z"
+    },
+    {
+      "file": "pressure-variant/webkit-q3.webp",
+      "sha256": "9b3a114c5df0ab54cfa5c42be28a982bf27d2647aa5e594e6018c60ffed279e0",
+      "observation": "Tablet question and diagnostic explanation wrap at consistent readable size; correct answer is not a uniquely long explanatory sentence.",
+      "recheckedAt": "2026-10-15T18:03:22.984Z"
+    },
+    {
+      "file": "constellation-space/chromium-earth.webp",
+      "sha256": "9488adebfcdc3668763f08e1536058be16a0a04ef965de903f604bd96ab3a0c5",
+      "observation": "Seven original positions project into the familiar angular pattern; numbered markers, coordinates and distance are readable.",
+      "recheckedAt": "2026-10-15T18:26:36.059Z"
+    },
+    {
+      "file": "constellation-space/chromium-space.webp",
+      "sha256": "ca3d90039d4a2d7fce226ccde68a8e0505a25ea6cc0400dc4cf40f25baad8900",
+      "observation": "Star-focused view separates nearby positions; coordinate direction labels stay separate and slow rotation is available.",
+      "recheckedAt": "2026-10-15T18:26:36.060Z"
+    },
+    {
+      "file": "constellation-space/chromium-context.webp",
+      "sha256": "5542a5648717895a46e4dce9bc076957c87be61d90c6f81d2e0c9e86e075f042",
+      "observation": "Earth, all seven stars and the full 15 pc coordinate axes fit inside the canvas after correcting the clipped x-axis label.",
+      "recheckedAt": "2026-10-15T18:26:36.060Z"
+    },
+    {
+      "file": "constellation-space/chromium-side.webp",
+      "sha256": "06374e30a67e6c7e8c5169ea67b1936252f79886e56dc486180fba37fa011b8f",
+      "observation": "Changing observation direction reveals depth; crowded stars keep distinct numbered labels with leader lines.",
+      "recheckedAt": "2026-10-15T18:26:36.060Z"
+    },
+    {
+      "file": "constellation-space/chromium-space-equal.webp",
+      "sha256": "73e4156ab860cc0c856c8279a1643d3e0b7dc3c1d1263e9c59b5335973098de2",
+      "observation": "Every star is 30 pc from Earth; disabled coordinate fields show the effective rescaled position, not the original coordinates.",
+      "recheckedAt": "2026-10-15T18:26:36.060Z"
+    },
+    {
+      "file": "constellation-space/webkit-earth.webp",
+      "sha256": "3e3132cc30ee79c1f46ac0774cf809fe2e93f5b09d45d23b1d56463f3b26f5c4",
+      "observation": "iPad-width controls wrap cleanly; all seven star selectors, distances and coordinate fields remain legible.",
+      "recheckedAt": "2026-10-15T18:26:36.061Z"
+    },
+    {
+      "file": "constellation-space/webkit-top.webp",
+      "sha256": "615cbf84c748ed32495afae4afa6617b1040e3451b76d977d5d0c3ec66343727",
+      "observation": "Top-view geometry, star labels and coordinate directions remain clear with constant screen font size.",
+      "recheckedAt": "2026-10-15T18:26:36.061Z"
+    },
+    {
+      "file": "constellation-space/webkit-edited.webp",
+      "sha256": "ddc779408987dbd7ad690c356ea203d8b5eff308f8b8844f2e774b2cbe89af1b",
+      "observation": "Changing one star to (-12,0,16) updates its position and reports the independent 20.0 pc distance.",
+      "recheckedAt": "2026-10-15T18:26:36.061Z"
+    },
+    {
+      "file": "constellation-space/webkit-empty.webp",
+      "sha256": "4ae09a8edcbc73117960544ea8b9e2d933199ba0827e49ce9c6b82587ec3dd33",
+      "observation": "Cleared geometry presents a short placement instruction and leaves coordinate entry and reload controls usable.",
+      "recheckedAt": "2026-10-15T18:26:36.061Z"
+    },
+    {
+      "file": "constellation-space/chromium-coordinates.webp",
+      "sha256": "90773430cf21e1dd2f2af19c435111a77d8e55f532b433a64323aec8aab9fd9e",
+      "observation": "All 21 published coordinates and seven derived distances fit the table with consistent text size.",
+      "recheckedAt": "2026-10-15T18:26:36.061Z"
+    },
+    {
+      "file": "constellation-space/webkit-coordinates.webp",
+      "sha256": "cf11ee92718fcb9e24368cbb15c644c6b15407e550661b7a92909c09ce11dbb9",
+      "observation": "Tablet coordinate table is fully readable without truncating negative signs, decimals or star names.",
+      "recheckedAt": "2026-10-15T18:26:36.061Z"
+    },
+    {
+      "file": "constellation-space/chromium-q2.webp",
+      "sha256": "5490d48e67f3ff67e65535eb6a68cc2a68049609166423bcbeb40b90c7b358d7",
+      "observation": "Balanced combinations distinguish angular projection from spatial distances; the initial misconception persists after correction.",
+      "recheckedAt": "2026-10-15T18:26:36.061Z"
+    },
+    {
+      "file": "constellation-space/webkit-q2.webp",
+      "sha256": "acb96267e9bd7bb4a8e8329a9e2f38ac3296b41824960c35e7d87d742ef47fb3",
+      "observation": "Question, four answers and feedback wrap at consistent readable sizes; the correct answer is not a uniquely long sentence.",
+      "recheckedAt": "2026-10-15T18:26:36.062Z"
+    },
+    {
+      "file": "constellation-space/webkit-side-390.webp",
+      "sha256": "4da97530644efdad532cda8cafaedf20ff2065b247c9d63efed87ea9ea41e60e",
+      "observation": "Narrow view keeps numbered stars, axes, controls and three coordinate inputs within the page; no clipped text.",
+      "recheckedAt": "2026-10-15T18:26:36.062Z"
     }
   ],
   "superseded": [

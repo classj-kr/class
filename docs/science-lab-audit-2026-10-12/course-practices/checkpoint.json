@@ -1,10 +1,10 @@
 {
-  "verifiedAt": "2026-10-15T16:53:03.895Z",
+  "verifiedAt": "2026-10-15T18:26:59.999Z",
   "scope": "2022 only; observed implementation and regression checkpoint, not a completed census of required experiments.",
   "allRequestedWorkComplete": false,
   "physicalDeviceTested": false,
-  "apps": 193,
-  "routes": 198,
+  "apps": 196,
+  "routes": 201,
   "engines": [
     "Chromium/Chrome",
     "Playwright WebKit"
@@ -36,8 +36,8 @@
       "report": null,
       "engine": "chromium",
       "catalog": false,
-      "routes": 198,
-      "scenarios": 6150,
+      "routes": 201,
+      "scenarios": 6500,
       "widths": [
         1366,
         1180,
@@ -80,7 +80,12 @@
         "optics-readability/extended-chromium.json",
         "acid-mixing-readability/extended-chromium.json",
         "iodine-clock-readability/extended-chromium.json",
-        "catalyst-foam-readability/extended-chromium.json"
+        "catalyst-foam-readability/extended-chromium.json",
+        "weather-readability/extended-chromium.json",
+        "temperature-readability/extended-chromium.json",
+        "mendeleev-diagnosis-readability/extended-chromium.json",
+        "pressure-variant-readability/extended-chromium.json",
+        "constellation-readability/extended-chromium.json"
       ],
       "scope": "Full existing-route scan after caption correction; Chromium replaces the two changed specimen workflows with final focused checks. Focused runs add strata correlation, polarized thin sections and crust thickness in both engines. Each route is counted once, from its latest completed run. All five viewport sizes use actual loaded web fonts. Emulation only; no physical-device claim."
     },
@@ -88,8 +93,8 @@
       "report": null,
       "engine": "webkit",
       "catalog": false,
-      "routes": 198,
-      "scenarios": 6150,
+      "routes": 201,
+      "scenarios": 6500,
       "widths": [
         1366,
         1180,
@@ -131,7 +136,12 @@
         "optics-readability/extended-webkit.json",
         "acid-mixing-readability/extended-webkit.json",
         "iodine-clock-readability/extended-webkit.json",
-        "catalyst-foam-readability/extended-webkit.json"
+        "catalyst-foam-readability/extended-webkit.json",
+        "weather-readability/extended-webkit.json",
+        "temperature-readability/extended-webkit.json",
+        "mendeleev-diagnosis-readability/extended-webkit.json",
+        "pressure-variant-readability/extended-webkit.json",
+        "constellation-readability/extended-webkit.json"
       ],
       "scope": "Full existing-route scan after caption correction; Chromium replaces the two changed specimen workflows with final focused checks. Focused runs add strata correlation, polarized thin sections and crust thickness in both engines. Each route is counted once, from its latest completed run. All five viewport sizes use actual loaded web fonts. Emulation only; no physical-device claim."
     }
@@ -139,15 +149,15 @@
   "readabilityTotals": [
     {
       "engine": "chromium",
-      "routes": 198,
-      "scenarios": 6150,
+      "routes": 201,
+      "scenarios": 6500,
       "deviceProfile": "chromebook-scale",
       "liveWebFonts": true
     },
     {
       "engine": "webkit",
-      "routes": 198,
-      "scenarios": 6150,
+      "routes": 201,
+      "scenarios": 6500,
       "deviceProfile": "ipad",
       "liveWebFonts": true
     }
@@ -168,9 +178,9 @@
       ],
       "extended": false,
       "supplementDiagnosisChecked": true,
-      "deviceProfile": null,
-      "emulationOnly": false,
-      "deviceScaleFactor": 1,
+      "deviceProfile": "chromebook-scale",
+      "emulationOnly": true,
+      "deviceScaleFactor": 1.25,
       "liveWebFonts": false,
       "loadedFontFamilies": [],
       "issues": [],
@@ -191,9 +201,9 @@
       ],
       "extended": false,
       "supplementDiagnosisChecked": true,
-      "deviceProfile": null,
-      "emulationOnly": false,
-      "deviceScaleFactor": 1,
+      "deviceProfile": "ipad",
+      "emulationOnly": true,
+      "deviceScaleFactor": 2,
       "liveWebFonts": false,
       "loadedFontFamilies": [],
       "issues": [],
@@ -263,7 +273,7 @@
       "passed": 20,
       "failed": 0
     },
-    "firstErrorsRetainedPerEngine": 794,
+    "firstErrorsRetainedPerEngine": 806,
     "firstErrorScope": {
       "existingRouteReport": "cell-observation-final-regression.txt",
       "existingRoutes": 182,
@@ -284,16 +294,31 @@
         "phase-curves-final-regression.txt",
         "acid-mixing-regression.txt",
         "iodine-clock-regression.txt",
-        "catalyst-foam-regression.txt"
+        "catalyst-foam-regression.txt",
+        "weather-analysis-regression.txt",
+        "temperature-clouding-regression.txt",
+        "constellation-space-regression.txt"
       ],
-      "newRoutes": 16,
-      "newResponses": 66,
+      "newRoutes": 19,
+      "newResponses": 78,
       "replacedRouteReports": [
         {
           "report": "element-origin-regression.txt",
           "slug": "star-elements",
           "questions": 4,
           "note": "The four replaced questions were rechecked; they replace the four earlier responses rather than increasing the total."
+        },
+        {
+          "report": "pressure-variant-regression.txt",
+          "slug": "reaction-pressure",
+          "questions": 4,
+          "note": "All twelve distractors rechecked after correction/reset/reload. One question revised, existing four IDs unchanged."
+        },
+        {
+          "report": "mendeleev-diagnosis-regression.txt",
+          "slug": "mendeleev",
+          "questions": 2,
+          "note": "Two revised questions; all four distractors rechecked after correction and reload. Existing IDs do not increase the aggregate count."
         },
         {
           "report": "optics-regression.txt",
@@ -391,6 +416,18 @@
           "passed": 1,
           "failed": 0
         }
+      },
+      {
+        "failedReport": "../../../../tmp/mendeleev-diagnosis/stale-feedback-failure.txt",
+        "test": "Previously generated editorial feedback overrode the revised authored questions",
+        "recheck": "mendeleev-diagnosis-regression.txt",
+        "evidence": "Focused --ids regeneration updates both the questions and effective diagnostic feedback while preserving unrelated questions and all transfer items. Both engines retain each of the four incorrect answers after correction, deck changes, reset and reload."
+      },
+      {
+        "failedReport": "../../../../tmp/temperature-source/svg-before-local-gradients.json",
+        "test": "The laser observation SVG referred to a spot gradient in another SVG",
+        "recheck": "temperature-readability/runtime-svg-resources-chromium-selected.json",
+        "evidence": "Each observation owns a uniquely named local gradient. Both engines pass all 95 SVG states, and the final laser captures were manually reopened."
       },
       {
         "failedReport": "../../../../tmp/catalyst-source/unicode-minus-test-failure.txt",
@@ -543,8 +580,73 @@
         "report": "post-caption-webkit-progress.txt",
         "reason": "Deliberately stopped when the cell page replaced the legacy drawing and required a dedicated audit branch.",
         "resolution": "The complete post-cell-full-readability WebKit run uses the new cell preparation and comparison controls."
+      },
+      {
+        "report": "../../../../tmp/temperature-source/student-copy-log.txt",
+        "reason": "One whole-route run timed out waiting for density-buoyancy assessment initialization, with no page exception reported.",
+        "resolution": "Ten alternating weight-compare/density-buoyancy initializations then passed with no local request failure; the unchanged complete 200-route rendered-content recheck passed. This is an unreproduced delay, not a proven app fault or a claim that every possible timing issue is fixed."
       }
     ],
+    "constellationSpace": {
+      "report": "constellation-space-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "constellationStatic": {
+      "report": "constellation-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "pressureVariant": {
+      "report": "pressure-variant-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "pressureVariantStatic": {
+      "report": "pressure-variant-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "mendeleevDiagnosis": {
+      "report": "mendeleev-diagnosis-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "mendeleevDiagnosisStatic": {
+      "report": "mendeleev-diagnosis-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "temperatureClouding": {
+      "report": "temperature-clouding-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "temperatureStatic": {
+      "report": "temperature-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "weatherAnalysis": {
+      "report": "weather-analysis-regression.txt",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "weatherStatic": {
+      "report": "weather-static.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
     "catalystFoam": {
       "report": "catalyst-foam-regression.txt",
       "tests": 3,
@@ -792,11 +894,11 @@
       "failed": 0
     }
   },
-  "questionContents": 1031,
+  "questionContents": 1043,
   "reviewedNewQuestions": {
-    "base": 230,
-    "transfer": 103,
-    "scope": "230 base and 103 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census."
+    "base": 246,
+    "transfer": 107,
+    "scope": "246 base and 107 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census."
   },
   "bankExplanationReview": {
     "report": "bank-explanation-review.json",
@@ -812,9 +914,9 @@
         768,
         1024
       ],
-      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
-      "routes": 198,
-      "checked": 46832,
+      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 201 unique routes, including the source-coordinate constellation model, source-reviewed chemistry procedures and authentic dated weather observations. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "routes": 201,
+      "checked": 53045,
       "gradientSkipped": 255,
       "errors": [],
       "flagged": [],
@@ -831,7 +933,12 @@
         "optics-readability/reading-contrast-chromium-selected.json",
         "acid-mixing-readability/reading-contrast-chromium-selected.json",
         "iodine-clock-readability/reading-contrast-chromium-selected.json",
-        "catalyst-foam-readability/reading-contrast-chromium-selected.json"
+        "catalyst-foam-readability/reading-contrast-chromium-selected.json",
+        "weather-readability/reading-contrast-chromium-selected.json",
+        "temperature-readability/reading-contrast-chromium-selected.json",
+        "mendeleev-diagnosis-readability/reading-contrast-chromium-selected.json",
+        "pressure-variant-readability/reading-contrast-chromium-selected.json",
+        "constellation-readability/reading-contrast-chromium-selected.json"
       ]
     },
     {
@@ -841,9 +948,9 @@
         768,
         1024
       ],
-      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
-      "routes": 198,
-      "checked": 46827,
+      "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 201 unique routes, including the source-coordinate constellation model, source-reviewed chemistry procedures and authentic dated weather observations. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "routes": 201,
+      "checked": 53040,
       "gradientSkipped": 255,
       "errors": [],
       "flagged": [],
@@ -860,7 +967,12 @@
         "optics-readability/reading-contrast-webkit-selected.json",
         "acid-mixing-readability/reading-contrast-webkit-selected.json",
         "iodine-clock-readability/reading-contrast-webkit-selected.json",
-        "catalyst-foam-readability/reading-contrast-webkit-selected.json"
+        "catalyst-foam-readability/reading-contrast-webkit-selected.json",
+        "weather-readability/reading-contrast-webkit-selected.json",
+        "temperature-readability/reading-contrast-webkit-selected.json",
+        "mendeleev-diagnosis-readability/reading-contrast-webkit-selected.json",
+        "pressure-variant-readability/reading-contrast-webkit-selected.json",
+        "constellation-readability/reading-contrast-webkit-selected.json"
       ]
     }
   ],
@@ -869,8 +981,8 @@
       "report": null,
       "checkedAt": "2026-10-12T16:26:19.131Z",
       "engine": "chromium",
-      "routes": 198,
-      "states": 4725,
+      "routes": 201,
+      "states": 5125,
       "widths": [
         1366,
         1180,
@@ -878,7 +990,7 @@
         820,
         768
       ],
-      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 201 unique routes, including the source-coordinate constellation model, source-reviewed chemistry procedures and authentic dated weather observations. Totals include rechecked states from replaced routes; latest reports take precedence.",
       "findings": [],
       "errors": [],
       "components": [
@@ -894,15 +1006,20 @@
         "optics-readability/runtime-svg-resources-chromium-selected.json",
         "acid-mixing-readability/runtime-svg-resources-chromium-selected.json",
         "iodine-clock-readability/runtime-svg-resources-chromium-selected.json",
-        "catalyst-foam-readability/runtime-svg-resources-chromium-selected.json"
+        "catalyst-foam-readability/runtime-svg-resources-chromium-selected.json",
+        "weather-readability/runtime-svg-resources-chromium-selected.json",
+        "temperature-readability/runtime-svg-resources-chromium-selected.json",
+        "mendeleev-diagnosis-readability/runtime-svg-resources-chromium-selected.json",
+        "pressure-variant-readability/runtime-svg-resources-chromium-selected.json",
+        "constellation-readability/runtime-svg-resources-chromium-selected.json"
       ]
     },
     {
       "report": null,
       "checkedAt": "2026-10-12T16:29:09.609Z",
       "engine": "webkit",
-      "routes": 198,
-      "states": 4725,
+      "routes": 201,
+      "states": 5125,
       "widths": [
         1366,
         1180,
@@ -910,7 +1027,7 @@
         820,
         768
       ],
-      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 198 unique routes, including the source-reviewed acid-mixing, iodine-clock and catalyst-foam procedures. Totals include rechecked states from replaced routes; latest reports take precedence.",
+      "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review. Full 184-route baseline, selected twelve-route follow-up (seven added routes and five replacements), then the four new ARGO, SST, galactic and phase-curve routes plus replacement cell-division, reflex and diffusion audits: 201 unique routes, including the source-coordinate constellation model, source-reviewed chemistry procedures and authentic dated weather observations. Totals include rechecked states from replaced routes; latest reports take precedence.",
       "findings": [],
       "errors": [],
       "components": [
@@ -926,18 +1043,23 @@
         "optics-readability/runtime-svg-resources-webkit-selected.json",
         "acid-mixing-readability/runtime-svg-resources-webkit-selected.json",
         "iodine-clock-readability/runtime-svg-resources-webkit-selected.json",
-        "catalyst-foam-readability/runtime-svg-resources-webkit-selected.json"
+        "catalyst-foam-readability/runtime-svg-resources-webkit-selected.json",
+        "weather-readability/runtime-svg-resources-webkit-selected.json",
+        "temperature-readability/runtime-svg-resources-webkit-selected.json",
+        "mendeleev-diagnosis-readability/runtime-svg-resources-webkit-selected.json",
+        "pressure-variant-readability/runtime-svg-resources-webkit-selected.json",
+        "constellation-readability/runtime-svg-resources-webkit-selected.json"
       ]
     }
   ],
   "studentCopyAudit": {
     "report": "student-copy-audit.json",
-    "routes": 198,
+    "routes": 201,
     "flagged": 0
   },
   "manualVisualReview": {
     "report": "current-manual-visual-review.json",
-    "images": 202,
+    "images": 259,
     "hashesMatch": true
   },
   "activityScope": {
@@ -967,9 +1089,9 @@
     "supplementalDocuments": 28,
     "headingRecoveryReviewedDocuments": 24,
     "zeroCandidateDocumentsWithPageReview": 22,
-    "manuallyReviewedCandidates": 242,
-    "sourceReviewedExperimentUnits": 129,
-    "sourceReviewedPendingUnits": 2,
+    "manuallyReviewedCandidates": 248,
+    "sourceReviewedExperimentUnits": 133,
+    "sourceReviewedPendingUnits": 1,
     "manualAdditionsOutsideHeadingExtraction": 5,
     "requiredExperimentTotal": null
   },
@@ -979,14 +1101,49 @@
     "passed": 2,
     "failed": 0
   },
-  "liveAssetCount": 922,
-  "rasterCount": 4054,
+  "liveAssetCount": 952,
+  "rasterCount": 4129,
   "remainingWork": [
     "Complete source-page census and publisher deduplication before claiming a required-experiment total.",
     "33 official activity mappings remain partial; source-specific procedures, original observations and actual-device tasks are not marked completed by a related simulation.",
     "Physical Chromebook/iPad validation has not been performed.",
     "Native video decoding on a physical iPad/Safari remains unverified: Windows Playwright WebKit returned MEDIA_ERR_SRC_NOT_SUPPORTED for MP4 and WebM. Error handling and recovery were tested; no decoded-video claim for that engine."
   ],
+  "constellationSpaceReview": {
+    "source": "constellation-space/source-review.json",
+    "functionalStatesPerEngine": 78,
+    "readabilityStatesPerEngine": 70,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "All 21 published Cartesian coordinates checked against student and teacher sources. Independent distance and projection geometry, equal-radius comparison, touch/keyboard/slow rotation, axis-label bounds, and diagnosis retention. Source-specific Orion string construction remains separate and incomplete."
+  },
+  "pressureVariantReview": {
+    "source": "pressure-variant/source-review.json",
+    "readabilityStatesPerEngine": 95,
+    "screenStatesPerEngine": 108,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Two source reagent recipes; limiting reagent, residual Mg and gas volume are independently conserved. Same authored 60-second curve is labeled model, not measured kinetics or evidence of relative experimental rates. Source surface preparation and physical sensor collection remain incomplete."
+  },
+  "mendeleevDiagnosisReview": {
+    "source": "mendeleev-diagnosis/source-review.json",
+    "changedQuestions": 2,
+    "distinctWrongOptionsPerEngine": 4,
+    "scope": "Source card and constructed-response assessment constraints converted into balanced multiple-choice items. The same question IDs replace two prior questions; no new app or required experiment counted."
+  },
+  "temperatureReview": {
+    "source": "temperature-clouding/source-review.json",
+    "readabilityStatesPerEngine": 95,
+    "screenStatesPerEngine": 108,
+    "distinctWrongOptionsPerEngine": 12,
+    "scope": "Two separate source procedures: sulfur cross disappearance and calcium-carbonate laser transmission. Conserved fluid transfer, fixed vessel size during lifting, separate paper observation, pause/seek/reset and retained diagnosis. Qualitative animation only; source tables provide no measured temperatures or times. No completed physical timing or quantitative kinetics claim."
+  },
+  "weatherReview": {
+    "source": "weather-analysis/source-review.json",
+    "readabilityStatesPerEngine": 135,
+    "screenStatesPerEngine": 156,
+    "distinctWrongOptionsPerEngine": 12,
+    "authenticImages": 18,
+    "scope": "Two dated cases and six synchronized observation times. Discrete playback, zoom, first-observation comparison and diagnosis; no invented live data, missing timestamps or interpolated clouds. The separately worded middle-school real-time task remains unfulfilled."
+  },
   "catalystFoamReview": {
     "source": "catalyst-foam/source-review.json",
     "readabilityStatesPerEngine": 145,
@@ -1316,5 +1473,65 @@
     "firstClassificationErrorsRetainedPerEngine": 5,
     "positionCases": 360,
     "methods": "Source hashes and lossless WebP dimensions; independent trigonometric horizon positions across four dates, six times and three sites; ordered B1875 boundaries. Original incorrect answer-key and object-classification fields were not imported."
+  },
+  "lastCompletedWork": {
+    "completedAt": "2026-10-15T18:27:00.078Z",
+    "resumedFrom": "Weather observation review was complete; temperature-clouding implementation still needed runtime and manual visual verification.",
+    "implemented": [
+      "temperature-clouding: sulfur/cross procedure",
+      "temperature-clouding: calcium-carbonate/laser procedure"
+    ],
+    "corrected": [
+      "Fluid transfer reaches the liquid surface and conserves volume",
+      "Test-tube movement preserves size and stays inside the canvas",
+      "Paper observation contains only the transmitted light spot, not precipitate",
+      "Local SVG gradients prevent cross-SVG reference errors",
+      "Temperature optical-control question uses scientifically relevant distractors",
+      "Mendeleev q2/q3 require both mass order and chemical-family constraints",
+      "Focused editorial generation updates effective feedback without replacing unrelated authored questions",
+      "Catalyst q4 distinguishes gas production rate from final yield and foam retention"
+    ],
+    "verification": {
+      "temperatureStatesPerEngine": 108,
+      "temperatureReadabilityStatesPerEngine": 95,
+      "mendeleevDistinctWrongOptionsPerEngine": 4,
+      "catalystStatesPerEngine": 168,
+      "wholeRenderedRoutes": 201
+    },
+    "limitations": [
+      "Chromebook/iPad dimensions and browser engines were emulated; physical devices were not tested.",
+      "Blank source timing tables were not filled with invented observations.",
+      "Required-experiment source census and all source-specific procedural variants remain incomplete."
+    ],
+    "pressureVariant": {
+      "source": "pressure-variant/source-review.json",
+      "corrections": [
+        "Source Mg 0.40 g and 0.2 M HCl 50 mL recipe",
+        "Limiting-reagent residual magnesium and variable gas space",
+        "No liquid before injection",
+        "Apparatus labels in independent rows",
+        "Pending time interval distinguished from failed measurement",
+        "Balanced stoichiometry and residue diagnosis"
+      ],
+      "functionalStatesPerEngine": 108,
+      "readabilityStatesPerEngine": 95
+    },
+    "constellationSpace": {
+      "source": "constellation-space/source-review.json",
+      "implemented": [
+        "21-coordinate placement and editing",
+        "Earth projection and external rotation",
+        "Star focus and Earth-context views",
+        "Equal-radius control",
+        "Four balanced diagnostic questions"
+      ],
+      "corrected": [
+        "Coordinate-axis clipping and label collisions",
+        "Displayed coordinates match equal-radius model",
+        "Star number labels are selectable"
+      ],
+      "functionalStatesPerEngine": 78,
+      "readabilityStatesPerEngine": 70
+    }
   }
 }
