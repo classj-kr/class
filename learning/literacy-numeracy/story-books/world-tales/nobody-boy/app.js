@@ -186,7 +186,7 @@ const CHAPTERS = [
                     "물에서 시원한 바람이 불어왔지요. 레미는 물가에 앉아 하프를 연주했습니다."
                 ],
                 "right": [
-                    "거기 배 한 척이 매여 있었습니다. 창가에 꽃 화분이 놓인 배였지요. 부인 한 사람이 갑판에 나와 있었습니다.",
+                    "거기에 배 한 척이 매여 있었습니다. 창가에 꽃 화분이 놓인 배였지요. 부인 한 사람이 갑판에 나와 있었습니다.",
                     "곁에는 창백한 아이가 누워 있었지요. 오래 앓고 있는 아이였습니다. 하프 소리를 들은 부인이 레미를 불렀지요.",
                     "\"괜찮다면 우리 배에서 지내지 않겠니?\" 레미는 고개를 꾸벅 숙였습니다."
                 ]
@@ -197,7 +197,7 @@ const CHAPTERS = [
                 "left": [
                     "레미는 배에 올랐습니다. 오랜만에 지붕 아래에서 잤지요.",
                     "아침이면 뱃머리나 강둑에 앉아 하프를 연주했습니다. 강물이 천천히 흘러갔지요. 아픈 아이가 그 소리를 좋아했습니다.",
-                    "아이는 담요 밖으로 손을 내밀며 졸랐지요. \"한 번만 더 해 줘.\""
+                    "아이는 담요 밖으로 손을 내밀며 졸랐지요. \"한 번만 더 해 줘!\""
                 ],
                 "right": [
                     "어느 날 그 아이가 처음으로 웃었지요. 부인이 눈물을 글썽였습니다.",
@@ -265,7 +265,7 @@ const CHAPTERS = [
                 "art": "08-ending-2.webp",
                 "emoji": "💗",
                 "left": [
-                    "레미는 어머니와 동생과 함께 살게 되었습니다.",
+                    "이제 레미는 어머니와 동생과 함께 살게 되었습니다.",
                     "그런데 가장 먼저 한 일이 있었지요. 바르브랭 아주머니를 모셔 온 것이었습니다. 아주머니는 레미를 보고 한참을 울었지요.",
                     "아주머니는 구리 냄비도 챙겨 왔습니다. \"오늘은 하나 더 먹으렴.\""
                 ],
@@ -863,11 +863,9 @@ const EN = {
                         "Rémi stayed in that town a while. It took days to wash the coal dust off."
                     ],
                     right: [
-                        "The story of the boy saved from the mine spread far.",
-                        "A few days later a carriage stopped in the mining town. Two gentlemen got out with papers and asked for Rémi.",
-                        "\"The lady you met on the river boat heard about you and sent us. The day you were found by the road is the very day her eldest boy was lost. She is your mother.\"",
-                        "The sick boy on the boat was Rémi's little brother.",
-                        "He could hardly believe it."
+                        "The story of the boy saved from the mine spread far. A few days later two gentlemen came by carriage and asked for Rémi.",
+                        "\"The lady from the river boat sent us. You were found by the road the day she lost her eldest boy. She is your mother.\"",
+                        "The sick boy on the boat was Rémi's little brother. Rémi could hardly believe it."
                     ]
                 },
                 {
@@ -1058,7 +1056,7 @@ const EN = {
             { word: 'rescuer', meaning: '구조대', sentence: 'The rescuers broke through the wall.' },
             { word: 'coal dust', meaning: '검댕', sentence: 'It took days to wash the coal dust off.' },
             { word: 'lick', meaning: '핥다', sentence: 'Capi kept licking his cheek.' },
-            { word: 'carriage', meaning: '마차', sentence: 'A carriage stopped in the mining town.' }
+            { word: 'carriage', meaning: '마차', sentence: 'Two gentlemen came by carriage.' }
         ],
         '08-ending-2.webp': [
             { word: 'go to live with', meaning: '함께 지내다', sentence: 'Rémi went to live with his mother and brother.' },
@@ -1140,7 +1138,7 @@ const WORDS_KO = {
         { w: "돌아가시다", k: "'죽다'를 높여 이르는 말.", s: "할아버지는 그렇게 돌아가셨지요." }
     ],
     "06-barge.webp": [
-        { w: "척", k: "배를 셀 때 쓰는 말.", s: "거기 배 한 척이 매여 있었습니다." },
+        { w: "척", k: "배를 셀 때 쓰는 말.", s: "거기에 배 한 척이 매여 있었습니다." },
         { w: "갑판", k: "배 위쪽의 넓고 평평한 바닥.", s: "부인 한 사람이 갑판에 나와 있었습니다." },
         { w: "꾸벅", k: "고개를 한 번 숙이는 모습.", s: "레미는 고개를 꾸벅 숙였습니다." }
     ],
