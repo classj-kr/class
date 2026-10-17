@@ -28,7 +28,7 @@ const CHAPTERS = [
                 "right": [
                     "남편은 손을 떨며 나물을 한 줌 뜯었습니다. 잎에서 서늘한 풀 냄새가 났지요.",
                     "그러고는 서둘러 돌아서려 했습니다. 바로 그때 등 뒤에서 목소리가 났지요.",
-                    "\"남의 밭에서 무얼 하는 게냐.\"",
+                    "\"남의 밭에서 무얼 하는 게냐?\"",
                     "돌아보니 자줏빛 망토를 두른 마녀가 서 있었습니다."
                 ]
             }
@@ -129,7 +129,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "그러자 꼭대기 창에서 금빛 머리카락이 늘어져 내려왔습니다. 여인은 그것을 붙잡고 올라갔지요.",
-                    "\"저렇게 올라가는 거로구나.\" 왕자는 여인이 돌아갈 때까지 숨죽이고 기다렸습니다.",
+                    "'저렇게 올라가는 거로구나.' 왕자는 여인이 돌아갈 때까지 숨죽이고 기다렸습니다.",
                     "이튿날 저녁, 왕자는 여인이 다녀간 뒤에 탑 아래로 갔지요. 그러고는 목소리를 낮추어 똑같이 외쳐 보았습니다."
                 ]
             }
@@ -199,7 +199,7 @@ const CHAPTERS = [
                 "right": [
                     "나무 한 그루 없는 벌판이었지요. 바람만 휑하니 지나갔습니다.",
                     "마녀는 라푼젤을 두고 돌아서며 말했지요. \"여기서 혼자 지내거라.\"",
-                    "마녀는 라푼젤을 들판에 두고 혼자 탑으로 돌아와, 매어 둔 머리카락을 타고 올라가 저녁이 오기를 기다렸지요. \"어디 한번 와 보아라.\""
+                    "마녀는 혼자 탑으로 돌아와, 매어 둔 머리카락을 타고 올라가 저녁이 오기를 기다렸지요. '어디 한번 와 보아라.'"
                 ]
             }
         ]
@@ -431,7 +431,7 @@ const QUIZ = [
     {
         "q": "남편이 마녀의 밭에 들어간 까닭은 무엇인가요?",
         "choices": [
-            "아내가 그 나물을 못 먹어 앓아누워서",
+            "아내가 라푼젤 나물을 못 먹어 앓아누워서",
             "마녀가 나물을 가져가도 좋다고 해서",
             "요람을 만들 나무가 필요해서"
         ],
@@ -467,7 +467,7 @@ const QUIZ = [
     {
         "q": "왕자가 올 때마다 비단실을 가져온 까닭은 무엇인가요?",
         "choices": [
-            "라푼젤이 사다리를 엮어 내려오려고",
+            "라푼젤이 사다리를 엮어 내려올 수 있게",
             "라푼젤의 옷을 지으려고",
             "머리카락을 묶으려고"
         ],
@@ -781,8 +781,7 @@ const EN = {
                     right: [
                         "It was a plain without one tree on it. Only the wind blew across it.",
                         "As she turned to go, the witch said, \"You will live here alone.\"",
-                        "She left Rapunzel on the plain, went back to the tower alone, and climbed up by the hair she had tied there.",
-                        "Then she waited for evening. \"Let him come, then,\" she said."
+                        "She went back to the tower alone. She climbed up by the hair she had tied there and waited for evening. \"Let him come, then,\" she thought."
                     ]
                 }
             ]
