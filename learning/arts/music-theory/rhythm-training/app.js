@@ -2,12 +2,16 @@
     'use strict';
     const C = window.RhythmTrainer, $ = id => document.getElementById(id);
     const storageKey = 'rhythm-training-room-v1';
+    const syncCheck = new URLSearchParams(location.search).get('syncCheck') === '1';
+    let syncMode = 'sound';
+    const syncResults = new Map();
     let audio, chart, run = null, raf = 0, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
     let room = null, credentials = null, pendingResult = null, polling = false, starting = false, loading = false;
     let lastRound = '', streak = 0, pressedTimer = 0;
     let question = null, answered = false, selectedCells = new Set();
-    const listening = () => mode === 'solo' && $('activity').value !== 'tap';
+    const listening = () => !syncCheck && mode === 'solo' && $('activity').value !== 'tap';
     const nodes = new Set();
+    const linePositions = new WeakMap();
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const feedbackColors = { perfect: '#8ce4c4', miss: '#ffa0a6', wrong: '#ffa0a6' };
     function resetFeedback() {
@@ -38,6 +42,7 @@
         });
     }
     function feedback(kind, event) {
+        if (syncCheck) return;
         const messages = { perfect: '맞았어요!', miss: '놓쳤어요', wrong: '틀렸어요' };
         $('feedback').textContent = messages[kind]; $('feedback').dataset.judgment = kind;
         $('pad').dataset.judgment = kind;
@@ -140,6 +145,15 @@
             const line = document.createElementNS(ns, 'line');
             line.setAttribute('class', 'playhead'); line.setAttribute('y1', '16'); line.setAttribute('y2', '82'); line.style.display = 'none';
             line.dataset.onset = String(left + 12);
+            let position = 0;
+            const anchors = RhythmNotation.notate(bar).map(note => {
+                const point = [position, left + 12 + position * 52 + Math.floor(position + .000001) * 6];
+                position += RhythmNotation.VALUES[note.v].beats;
+                return point;
+            });
+            const nextOnThisLine = index + 1 < chart.bars.length && (index + 1) % scoreColumns !== 0;
+            anchors.push([4, nextOnThisLine ? width - 21 + 30 : width - 11]);
+            linePositions.set(line, anchors);
             measure.append(line); system.append(measure); lines.push(line);
             offset += width - 21;
             system.setAttribute('viewBox', `0 11 ${offset + 21} 75`);
@@ -262,7 +276,12 @@
     }
     function fresh() {
         resetFeedback();
-        if (listening()) {
+        if (syncCheck) {
+            question = null;
+            chart = C.fromBars({ level: 0, bpm: 80 }, syncMode === 'subdivision'
+                ? Array.from({ length: 2 }, () => Array.from({ length: 16 }, () => ({ v: 's' })))
+                : Array.from({ length: 4 }, () => Array.from({ length: 4 }, () => ({ v: 'q' }))));
+        } else if (listening()) {
             question = RhythmQuestions.make(config().level, $('activity').value);
             chart = C.fromBars(config(), [question.rhythm.bar], seed());
             buildListening();
@@ -296,6 +315,12 @@
         $('start').hidden = listening() && Boolean(question?.bars) && !answered;
         $('start').textContent = listening() ? (answered ? '다음 문제' : '정답 확인') : '연습 시작';
         $('shuffle').textContent = listening() ? '새 문제' : '새 리듬';
+        if (syncCheck) {
+            $('configFields').hidden = true; $('listen').hidden = true; $('shuffle').hidden = true; $('lessonDetails').hidden = true;
+            document.querySelector('.topbar nav').hidden = true;
+            for (const id of ['syncSound', 'syncVisual', 'syncSubdivide']) $(id).disabled = busy;
+            $('start').textContent = syncMode === 'sound' ? '소리 확인 시작' : syncMode === 'visual' ? '화면 확인 시작' : '16분 입력 확인 시작';
+        }
         document.body.classList.toggle('playing', busy);
     }
     function setMode(next) {
@@ -310,11 +335,11 @@
         $('retry').hidden = mode !== 'solo'; controls();
     }
     function showPractice(visible) {
-        $('score').hidden = !visible || listening();
-        $('beats').hidden = !visible;
+        $('score').hidden = !visible || listening() || syncCheck && syncMode !== 'visual';
+        $('beats').hidden = !visible || syncCheck && syncMode !== 'visual';
         $('pad').hidden = !visible || listening();
         $('listeningPanel').hidden = !visible || !listening();
-        document.querySelector('.feedback-row').hidden = !visible || listening();
+        document.querySelector('.feedback-row').hidden = !visible || listening() || syncCheck;
     }
     async function play(demo = false, roundId = '') {
         if (run || starting) return;
@@ -326,7 +351,7 @@
                 input: { keydowns: 0, keyups: 0, repeats: 0, ignoredFocus: 0, outside: 0 }, clocks: [], queue: [], audioPlan: [] };
             // Queue the entire short exercise on the audio rendering thread before
             // drawing. A slow or hidden page must never drop a metronome click.
-            for (let click = -4; click < chart.bars.length * 4; click++) {
+            for (let click = -4; (!syncCheck || syncMode !== 'visual') && click < chart.bars.length * 4; click += syncCheck && syncMode === 'subdivision' && click >= 0 ? .25 : 1) {
                 const at = startAt + click * beat;
                 sound(at, click % 4 === 0);
                 run.audioPlan.push({ kind: 'metronome', beat: click, time: at - startAt });
@@ -364,7 +389,7 @@
             $('barCount').textContent = `${bar + 1} / ${chart.bars.length}마디`;
             $('score').querySelectorAll('.score-measure').forEach((node, index) => node.classList.toggle('active', index === bar));
             lines.forEach((line, index) => { line.style.display = index === bar ? '' : 'none'; });
-            const within = time / beat % 4, x = Number(lines[bar].dataset.onset) + within * 52 + Math.floor(within) * 6;
+            const within = time / beat % 4, x = C.playheadX(linePositions.get(lines[bar]), within);
             lines[bar].setAttribute('x1', String(x)); lines[bar].setAttribute('x2', String(x));
             paintMarks(time);
         }
@@ -372,6 +397,7 @@
         raf = requestAnimationFrame(frame);
     }
     function paintMarks(time) {
+        if (syncCheck) return;
         const result = run.result;
         for (const head of heads) {
             const mark = result.marks.find(m => Math.abs(m.time - head.time) < .001);
@@ -428,7 +454,7 @@
         controls();
         $('phase').textContent = interrupted ? '연주를 멈췄어요' : ended.demo ? '듣기 완료' : '연습 완료';
         $('feedback').textContent = ''; $('combo').textContent = '';
-        if (!ended.demo && !interrupted) {
+        if (!ended.demo && !interrupted && !syncCheck) {
             const result = C.judge(chart, ended.taps);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('hitRate').textContent = `음표 적중률 ${(100 * result.hits / result.marks.length).toFixed(1)}%`;
@@ -442,13 +468,32 @@
         const result = C.judge(chart, ended.taps), beat = 60 / chart.bpm;
         const inputs = C.trace(chart, ended.taps);
         const nearestErrors = inputs.map(input => [input.nearest, Math.round(input.error / beat * 1000) / 1000]);
-        const report = { version: '20261018-audio-schedule-v7', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+        const report = { version: '20261018-subdivision-check-v10', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+            syncMode: syncCheck ? syncMode : null,
             targets: chart.targets.length, taps: ended.taps.length, input: ended.input,
             accuracy: result.accuracy, hits: result.hits, misses: result.misses, extras: result.extras,
             targetBeats: chart.targets.map(time => Math.round(time / beat * 1000) / 1000),
             tapBeats: ended.taps.map(time => Math.round(time / beat * 1000) / 1000), nearestErrors,
             tapJudgments: inputs.map((input, index) => ({ input: index + 1, target: input.nearest + 1, accepted: input.accepted, reason: input.reason })),
             queueMs: ended.queue, clocks: ended.clocks, audioPlan: ended.audioPlan };
+        if (syncCheck && !interrupted) {
+            // A comparison of observed timing, never an automatic latency correction.
+            // Ignore the first four exercise beats to let the player settle into tempo.
+            const errors = inputs.filter(input => chart.targets[input.nearest] >= beat * 4).map(input => input.error / beat).sort((a, b) => a - b);
+            const percentile = fraction => errors.length ? errors[Math.round((errors.length - 1) * fraction)] : null;
+            const median = errors.length >= 8 ? (errors[Math.floor((errors.length - 1) / 2)] + errors[Math.ceil((errors.length - 1) / 2)]) / 2 : null;
+            report.syncTiming = { inputs: inputs.length, expected: chart.targets.length, measured: errors.length, medianBeats: median,
+                spreadBeats: median === null ? null : percentile(.9) - percentile(.1) };
+            syncResults.set(syncMode, report.syncTiming);
+            $('syncResults').replaceChildren();
+            for (const [kind, values] of syncResults) {
+                const line = document.createElement('p');
+                const shift = values.medianBeats === null ? '측정할 입력이 부족해요' : `${values.medianBeats < 0 ? '빠름' : '늦음'} ${Math.abs(values.medianBeats).toFixed(3)}박 · 흔들림 ${values.spreadBeats.toFixed(3)}박`;
+                line.textContent = `${kind === 'sound' ? '소리만' : kind === 'visual' ? '화면만' : '16분 입력'}: ${values.inputs}/${values.expected}회 입력 · ${shift}`;
+                $('syncResults').append(line);
+            }
+            $('phase').textContent = '동기 확인 완료';
+        }
         console.info('RHYTHM_TIMING_REPORT ' + JSON.stringify(report));
         $('timingSummary').textContent = `음표 ${report.targets}개 · 기록된 타격 ${report.taps}개 · 스페이스 누름 ${report.input.keydowns}회 · 키를 누르고 있는 동안의 반복 ${report.input.repeats}회`;
         $('timingSummary').textContent += `\n점수는 (맞음 − 틀림 × 0.5) ÷ 음표 수로 계산합니다. 한 입력이 다음 음에 배정되면 앞 음의 놓침과 이후 입력의 틀림이 함께 생길 수 있습니다.`;
@@ -546,6 +591,17 @@
         saveRoom(); updateRoom(data.state);
     }
     action('soloTab', () => setMode('solo')); action('classTab', () => setMode('class'));
+    for (const [id, kind] of [['syncSound', 'sound'], ['syncVisual', 'visual'], ['syncSubdivide', 'subdivision']]) action(id, () => {
+        if (!syncCheck || run || starting) return;
+        syncMode = kind;
+        document.body.classList.toggle('sync-sound', kind !== 'visual');
+        for (const [button, value] of [['syncSound', 'sound'], ['syncVisual', 'visual'], ['syncSubdivide', 'subdivision']]) $(button).setAttribute('aria-pressed', String(kind === value));
+        $('syncInstruction').textContent = kind === 'sound'
+            ? '소리만 듣습니다. 준비 소리 4번 뒤, 다섯 번째 소리부터 매 박마다 스페이스바를 16번 눌러 주세요. 맞음·틀림 표시는 나오지 않습니다.'
+            : kind === 'visual' ? '소리가 나오지 않습니다. 준비 표시 4번 뒤, 움직이는 선이 각 음표의 중심에 올 때마다 스페이스바를 16번 눌러 주세요.'
+                : '준비 소리 4번 뒤 빠른 16분음표 소리 32번이 나옵니다. 빠른 소리가 날 때마다 스페이스바를 한 번씩 눌러 주세요. 악보와 맞음·틀림 표시는 나오지 않습니다.';
+        fresh();
+    });
     action('start', () => listening() ? (answered ? fresh() : submitListening()) : play());
     action('retry', () => play()); action('listen', () => play(true));
     action('showAnswer', () => { if (listening() && !answered && !run && !starting) revealListening(false, -1, true); });
@@ -588,12 +644,17 @@
     $('ranking').before(submitButton); action('submitRetry', submitResult);
     $('name').value = window.CLASS_PLAYER_NAME || '';
     for (let i = 0; i < 8; i++) { const spark = document.createElement('i'); spark.className = 'tap-spark'; $('tapEffects').append(spark); }
+    if (syncCheck) {
+        document.body.classList.add('sync-check', 'sync-sound');
+        $('syncPanel').hidden = false;
+        $('syncInstruction').textContent = '소리만 듣습니다. 준비 소리 4번 뒤, 다섯 번째 소리부터 매 박마다 스페이스바를 16번 눌러 주세요. 맞음·틀림 표시는 나오지 않습니다.';
+    }
     renderLessons(); fresh();
-    const code = new URLSearchParams(location.search).get('room');
+    const code = syncCheck ? null : new URLSearchParams(location.search).get('room');
     if (code && /^\d{4}$|^\d{6}$/.test(code)) { $('code').value = code; if(code.length===6){$('code').maxLength=6;$('code').pattern='[0-9]{6}';} setMode('class'); }
     try {
         const saved = JSON.parse(sessionStorage.getItem(storageKey));
-        if (saved?.token && /^\d{4}$|^\d{6}$/.test(saved.code) && (!code || saved.code === code)) {
+        if (!syncCheck && saved?.token && /^\d{4}$|^\d{6}$/.test(saved.code) && (!code || saved.code === code)) {
             credentials = { token: saved.token, code: saved.code }; pendingResult = saved.pendingResult || null;
             setMode('class'); if (pendingResult) void submitResult(); void poll();
         }

@@ -88,6 +88,17 @@
         const neighbor = side === 'early' ? previous : side === 'late' ? next : Math.min(previous, next);
         return neighbor - 60 / chart.bpm * 1e-9;
     }
+    // The notation adds spacing at beat and measure boundaries. Interpolate
+    // between its actual written positions so the cursor cannot jump that space.
+    function playheadX(anchors, beat) {
+        if (beat <= anchors[0][0]) return anchors[0][1];
+        for (let i = 1; i < anchors.length; i++) {
+            if (beat > anchors[i][0]) continue;
+            const [fromBeat, fromX] = anchors[i - 1], [toBeat, toX] = anchors[i];
+            return fromX + (toX - fromX) * (beat - fromBeat) / (toBeat - fromBeat);
+        }
+        return anchors[anchors.length - 1][1];
+    }
     function judge(chart, taps) {
         const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
         const { errorSum, ...result } = match(chart, clean);
@@ -125,5 +136,5 @@
             misses: marks.length - hits.length, extras, wrong: extras + hits.filter(m => m.points === 0).length, marks,
             errorMs: hits.length ? Math.round(errorSum * 1000 / hits.length) : null, lagMs: 0, errorSum };
     }
-    return { LEVELS, VALUES, settings, chart, fromBars, judge, trace, hitWindow, noteWindow };
+    return { LEVELS, VALUES, settings, chart, fromBars, judge, trace, hitWindow, noteWindow, playheadX };
 });
