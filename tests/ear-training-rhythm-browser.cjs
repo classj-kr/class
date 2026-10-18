@@ -1,8 +1,9 @@
+const screenshotWebp = require('./screenshot-webp.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
-const {chromium,webkit} = require('playwright');
+const {chromium,webkit} = require('../game-hub-server/node_modules/playwright');
 const root=path.resolve(__dirname,'..'), output=path.join(root,"outputs/qa/ear-training-rhythm");
 fs.mkdirSync(output,{recursive:true});
 const server=http.createServer((req,res)=>{
@@ -27,7 +28,7 @@ const server=http.createServer((req,res)=>{
         const base='http://127.0.0.1:'+server.address().port+'/learning/arts/music-theory/ear-training/';
         await page.setContent('<meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="'+base+'styles.css"><main id="gallery" style="padding:16px;display:grid;gap:16px;max-width:940px;margin:auto"></main>');
         await page.addScriptTag({url:base+'notation.js'});
-        await page.addScriptTag({url:base+'rhythm.js'});
+        await page.addScriptTag({url:'http://127.0.0.1:'+server.address().port+'/learning/arts/music-theory/rhythm-training/rhythm.js'});
         const shapes=await page.evaluate(()=>{
           const R=RhythmNotation;
           const cases=[
@@ -64,7 +65,7 @@ const server=http.createServer((req,res)=>{
         assert.equal(shapes[5].triplets,4);
         for(const row of shapes) for(const tie of row.ties) assert.ok(tie.width>10&&tie.height>4&&tie.inside,'Tie must be visible and unclipped');
         assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No horizontal page overflow');
-        await page.screenshot({path:path.join(output,engine+'-'+width+'.png'),fullPage:true});
+        await screenshotWebp(page, {path:path.join(output,engine+'-'+width+'.webp'),fullPage:true});
         assert.deepEqual(errors,[]);
         console.log(engine+' '+width+': ties, beat groups, tuplets and bounds passed');
         await page.close();

@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#111827">
     <title>리듬 트레이닝</title>
-    <link rel="stylesheet" href="styles.css?v=20261008-minimal-copy">
+    <link rel="stylesheet" href="styles.css?v=20261018-unified-rhythm-v2">
     <script src="notation.js?v=20261006-vector-notation" defer></script>
-    <script src="rhythm-notation.js?v=20261007-connected-score" defer></script>
-    <script src="core.js?v=20261018-note-midpoints" defer></script>
-    <script src="app.js?v=20261018-note-midpoints" defer></script>
+    <script src="rhythm.js?v=20261018-unified-rhythm-v2" defer></script>
+    <script src="core.js?v=20261018-unified-rhythm-v2" defer></script>
+    <script src="questions.js?v=20261018-unified-rhythm-v2" defer></script>
+    <script src="lessons.js?v=20261018-unified-rhythm-v2" defer></script>
+    <script src="app.js?v=20261018-unified-rhythm-v2" defer></script>
 </head>
 <body data-sfx-clicks="none">
 <main class="shell" aria-label="리듬 트레이닝">
@@ -18,12 +20,25 @@
         <nav aria-label="연습 방식"><button id="soloTab" class="selected" aria-pressed="true">혼자 연습</button><button id="classTab" aria-pressed="false">학급 순위전</button></nav>
     </header>
     <p id="notice" class="notice" role="status" hidden></p>
+    <details id="lessonDetails" class="lesson-guide">
+        <summary>단계별 설명과 예시</summary>
+        <p class="lesson-intro">두드리기는 음이 시작하는 자리에서 한 번씩 칩니다. 붙임줄로 이어진 음은 다시 치지 않습니다.</p>
+        <div id="lessonList" class="lesson-list"></div>
+    </details>
     <div class="workspace">
         <aside class="settings" id="settings">
             <fieldset id="configFields">
                 <legend>연습 설정</legend>
+                <div id="activityFields">
+                    <label for="activity">활동</label>
+                    <select id="activity"><option value="tap">악보 보고 치기</option><option value="grid">듣고 받아쓰기</option><option value="choice">듣고 악보 고르기</option></select>
+                </div>
                 <label for="level">리듬</label>
-                <select id="level"><option value="0">기본 박자</option><option value="1" selected>쉼표 섞기</option><option value="2">8분음표</option><option value="3">16분음표</option></select>
+                <select id="level"><option value="0">기본 박자</option><option value="2">8분음표</option><option value="1" selected>쉼표 섞기</option><option value="4">당김음·긴 음표</option><option value="5">점음표</option><option value="3">16분음표</option><option value="6">셋잇단음표</option><option value="7">모두 섞기</option></select>
+                <div id="lengthFields">
+                    <label for="length">길이</label>
+                    <select id="length"><option value="1">1마디</option><option value="4">4마디</option><option value="8" selected>8마디</option></select>
+                </div>
                 <label for="bpm">속도 <output id="bpmValue">100</output></label>
                 <input id="bpm" type="range" min="70" max="140" step="5" value="100">
                 <div class="range-labels"><span>느리게</span><span>빠르게</span></div>
@@ -55,6 +70,13 @@
             <div class="session-bar"><span id="phase"></span><span id="barCount">8마디 · 4/4박자</span></div>
             <div class="beat-dots" id="beats" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
             <div id="score" class="score" aria-label="리듬 악보"></div>
+            <section id="listeningPanel" class="listening-panel" hidden aria-label="듣고 답하기">
+                <p id="listeningPrompt">리듬을 듣고 치는 자리를 골라 주세요.</p>
+                <div id="beatGrid" class="answer-grid" role="group" aria-label="치는 자리 고르기"></div>
+                <div id="barChoices" class="bar-choices" role="group" aria-label="악보 고르기"></div>
+                <p id="listeningFeedback" class="listening-feedback" role="status"></p>
+                <div id="listeningAnswer" class="listening-answer" hidden></div>
+            </section>
             <div class="feedback-row"><strong id="feedback" aria-live="polite"></strong><span id="combo"></span></div>
             <button id="pad" class="pad" aria-label="리듬 치기"><span>두드리기</span><kbd>SPACE</kbd><i id="tapEffects" class="tap-effects" aria-hidden="true"><i class="tap-ring"></i><i class="tap-ring echo"></i></i></button>
             <button id="stop" class="quiet stop" hidden>그만하기</button>

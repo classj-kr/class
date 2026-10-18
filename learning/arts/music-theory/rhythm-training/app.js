@@ -5,6 +5,8 @@
     let audio, chart, run = null, raf = 0, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
     let room = null, credentials = null, pendingResult = null, polling = false, starting = false, loading = false;
     let lastRound = '', streak = 0, pressedTimer = 0;
+    let question = null, answered = false, selectedCells = new Set();
+    const listening = () => mode === 'solo' && $('activity').value !== 'tap';
     const nodes = new Set();
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const feedbackColors = { perfect: '#8ce4c4', miss: '#ffa0a6', wrong: '#ffa0a6' };
@@ -78,7 +80,11 @@
         });
     }
     async function unlock() {
-        if (!audio) audio = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'interactive' });
+        if (!audio) {
+            const Context = window.AudioContext || window.webkitAudioContext;
+            if (!Context) throw new Error('이 브라우저에서 소리를 재생할 수 없어요. 다른 브라우저로 열어 주세요.');
+            audio = new Context({ latencyHint: 'interactive' });
+        }
         await audio.resume();
         if (audio.state !== 'running') throw new Error('화면의 소리 켜기 버튼을 다시 눌러 주세요.');
     }
@@ -104,7 +110,7 @@
         $('score').replaceChildren();
         scoreColumns = $('score').clientWidth >= 620 ? 4 : 2;
         const ns = 'http://www.w3.org/2000/svg';
-        let system, offset = 0;
+        let system, offset = 0, targetIndex = 0;
         chart.bars.forEach((bar, index) => {
             const firstInLine = index % scoreColumns === 0;
             if (firstInLine) {
@@ -137,19 +143,124 @@
             measure.append(line); system.append(measure); lines.push(line);
             offset += width - 21;
             system.setAttribute('viewBox', `0 11 ${offset + 21} 75`);
-            let beat = index * 4;
+            let cells = index * 48, attackTime = 0, attackIndex = 0;
             const noteHeads = [...measure.querySelectorAll('.rhythm-head')]; let headIndex = 0;
-            bar.forEach(note => {
-                if (!note.rest) heads.push({ node: noteHeads[headIndex++], time: beat * 60 / chart.bpm });
-                beat += C.VALUES[note.v];
+            RhythmNotation.notate(bar).forEach((note, noteIndex, written) => {
+                if (!note.rest) {
+                    const node = noteHeads[headIndex++];
+                    if (!(noteIndex && written[noteIndex - 1].tie && !written[noteIndex - 1].rest)) {
+                        attackTime = cells / 12 * 60 / chart.bpm; attackIndex = targetIndex++;
+                    }
+                    heads.push({ node, time: attackTime, index: attackIndex });
+                }
+                cells += RhythmNotation.VALUES[note.v].cells;
             });
         });
     }
+    function buildListening() {
+        answered = false; selectedCells = new Set();
+        $('beatGrid').replaceChildren(); $('barChoices').replaceChildren();
+        $('listeningFeedback').textContent = '';
+        $('listeningFeedback').removeAttribute('data-correct');
+        $('listeningAnswer').replaceChildren(); $('listeningAnswer').hidden = true;
+        $('beatGrid').hidden = !question.grid; $('barChoices').hidden = !question.bars;
+        $('listeningPrompt').textContent = question.grid
+            ? '리듬을 듣고, 소리가 시작하는 자리를 모두 골라 주세요.'
+            : '리듬을 듣고, 같은 리듬의 악보를 골라 주세요.';
+        if (question.grid) {
+            const cells = question.grid.cells, perBeat = cells / 4;
+            $('beatGrid').style.setProperty('--cells', String(cells));
+            for (let cell = 0; cell < cells; cell++) {
+                const button = document.createElement('button');
+                button.type = 'button'; button.dataset.cell = String(cell);
+                button.className = 'beat-cell' + (cell % perBeat === 0 ? ' is-beat' : '');
+                button.textContent = cell % perBeat === 0 ? String(cell / perBeat + 1) : '·';
+                button.setAttribute('aria-label', `${Math.floor(cell / perBeat) + 1}박의 ${cell % perBeat + 1}번째 자리`);
+                button.setAttribute('aria-pressed', 'false');
+                button.addEventListener('click', () => {
+                    if (run || starting || answered) return;
+                    if (selectedCells.has(cell)) selectedCells.delete(cell); else selectedCells.add(cell);
+                    button.setAttribute('aria-pressed', String(selectedCells.has(cell)));
+                });
+                $('beatGrid').append(button);
+            }
+        }
+        if (question.bars) question.bars.list.forEach((bar, index) => {
+            const button = document.createElement('button');
+            button.type = 'button'; button.className = 'bar-choice'; button.dataset.index = String(index);
+            button.setAttribute('aria-label', `${index + 1}번 악보`);
+            const number = document.createElement('span'); number.textContent = String(index + 1);
+            button.append(number, RhythmNotation.render(bar, { meter: '4/4' }));
+            button.addEventListener('click', () => { if (!run && !starting && !answered) revealListening(index === question.bars.answer, index); });
+            $('barChoices').append(button);
+        });
+    }
+    function submitListening() {
+        if (!question?.grid || answered || run || starting) return;
+        const want = question.grid.answer;
+        revealListening(want.length === selectedCells.size && want.every(cell => selectedCells.has(cell)));
+    }
+    function revealListening(correct, picked = -1) {
+        answered = true;
+        if (question.grid) for (const button of $('beatGrid').children) {
+            const cell = Number(button.dataset.cell), want = question.grid.answer.includes(cell);
+            button.classList.add(want ? selectedCells.has(cell) ? 'right' : 'missed' : selectedCells.has(cell) ? 'wrong' : 'empty');
+        }
+        if (question.bars) for (const [index, button] of [...$('barChoices').children].entries()) {
+            button.classList.add(index === question.bars.answer ? 'right' : index === picked ? 'wrong' : 'dim');
+        }
+        $('listeningFeedback').textContent = correct ? '맞았어요!' : '아래 정답 악보와 비교해 보세요.';
+        $('listeningFeedback').dataset.correct = String(correct);
+        const caption = document.createElement('p'); caption.textContent = '정답';
+        $('listeningAnswer').replaceChildren(caption, RhythmNotation.render(question.rhythm.bar, { meter: '4/4' }));
+        $('listeningAnswer').hidden = false; controls();
+    }
+    function renderLessons() {
+        for (const [index, lesson] of RhythmLessons.lessons.filter(lesson => lesson.body).entries()) {
+            const card = document.createElement('details'); card.className = 'lesson-card';
+            const title = document.createElement('summary'); title.textContent = `${index + 1}. ${lesson.title}`; card.append(title);
+            for (const text of lesson.body) { const p = document.createElement('p'); p.textContent = text; card.append(p); }
+            const examples = document.createElement('div'); examples.className = 'lesson-examples';
+            for (const example of lesson.examples || []) {
+                const bar = example.pattern.split(/\s+/).map(token => ({ v: token.replace('-', ''), rest: token.startsWith('-') }));
+                const button = document.createElement('button'); button.type = 'button';
+                const label = document.createElement('span'); label.textContent = `${example.caption} · 듣기`;
+                button.append(label, RhythmNotation.render(bar, { meter: '4/4' }));
+                button.addEventListener('click', () => void previewBar(bar)); examples.append(button);
+            }
+            card.append(examples);
+            const actions = document.createElement('div'); actions.className = 'lesson-actions';
+            for (const [activity, text] of [['tap', '악보 보고 치기'], ['grid', '듣고 맞히기']]) {
+                const button = document.createElement('button'); button.type = 'button'; button.textContent = text;
+                button.addEventListener('click', () => {
+                    $('activity').value = activity; $('level').value = String(lesson.level); $('length').value = '1';
+                    $('lessonDetails').open = false; fresh();
+                }); actions.append(button);
+            }
+            card.append(actions); $('lessonList').append(card);
+        }
+    }
+    async function previewBar(bar) {
+        if (run || starting) return;
+        const previous = chart;
+        chart = C.fromBars(config(), [bar]); renderScore();
+        try { await play(true); if (run) run.restoreChart = previous; }
+        catch (error) { chart = previous; renderScore(); notice(error.message); }
+    }
     function fresh() {
         resetFeedback();
-        chart = C.chart(config(), seed()); renderScore(); $('result').hidden = true;
+        if (listening()) {
+            question = RhythmQuestions.make(config().level, $('activity').value);
+            chart = C.fromBars(config(), [question.rhythm.bar], seed());
+            buildListening();
+        } else {
+            question = null;
+            chart = C.chart(config(), seed(), mode === 'class' ? 8 : Number($('length').value));
+        }
+        renderScore(); $('result').hidden = true;
         $('feedback').textContent = ''; $('combo').textContent = '';
-        $('phase').textContent = ''; $('barCount').textContent = '8마디 · 4/4박자';
+        $('phase').textContent = ''; $('barCount').textContent = `${chart.bars.length}마디 · 4/4박자`;
+        showPractice(true); controls();
     }
     function controls() {
         const busy = Boolean(run || starting);
@@ -161,6 +272,15 @@
         $('leave').disabled = busy;
         $('ready').disabled = busy || room?.phase === 'running' || Boolean(pendingResult);
         $('roomStart').disabled = busy || room?.phase === 'running' || !room?.participants.length || room.participants.some(p => !p.ready);
+        $('activityFields').hidden = mode !== 'solo';
+        $('lengthFields').hidden = mode !== 'solo' || listening();
+        $('lessonDetails').hidden = mode !== 'solo';
+        $('lessonDetails').querySelectorAll('button').forEach(button => { button.disabled = busy; });
+        $('listeningPanel').querySelectorAll('button').forEach(button => { button.disabled = busy || answered; });
+        $('listen').textContent = listening() ? '리듬 듣기' : '먼저 듣기';
+        $('start').hidden = listening() && Boolean(question?.bars) && !answered;
+        $('start').textContent = listening() ? (answered ? '다음 문제' : '정답 확인') : '연습 시작';
+        $('shuffle').textContent = listening() ? '새 문제' : '새 리듬';
         document.body.classList.toggle('playing', busy);
     }
     function setMode(next) {
@@ -170,12 +290,16 @@
         }
         $('soloControls').hidden = mode !== 'solo'; $('roomEntry').hidden = mode !== 'class' || Boolean(room);
         $('roomControls').hidden = !room; $('ranking').hidden = !room;
+        if (!room) fresh();
         showPractice(!room?.me.host);
         $('retry').hidden = mode !== 'solo'; controls();
     }
     function showPractice(visible) {
-        for (const id of ['score', 'beats', 'pad']) $(id).hidden = !visible;
-        document.querySelector('.feedback-row').hidden = !visible;
+        $('score').hidden = !visible || listening();
+        $('beats').hidden = !visible;
+        $('pad').hidden = !visible || listening();
+        $('listeningPanel').hidden = !visible || !listening();
+        document.querySelector('.feedback-row').hidden = !visible || listening();
     }
     async function play(demo = false, roundId = '') {
         if (run || starting) return;
@@ -187,7 +311,7 @@
             resetFeedback();
             streak = 0; renderScore(); $('result').hidden = true; $('combo').textContent = '';
             $('feedback').textContent = '4';
-            $('pad').focus({ preventScroll: true });
+            (listening() ? $('stop') : $('pad')).focus({ preventScroll: true });
             if (innerWidth <= 620) document.querySelector('.play-area').scrollIntoView({ block: 'start' });
             raf = requestAnimationFrame(frame);
         } finally { starting = false; controls(); }
@@ -198,7 +322,7 @@
         const beat = 60 / chart.bpm;
         const time = heardTime() - run.startAt;
         // Schedule from the audio clock; rendering never determines sound timing.
-        while (run.nextClick < 32 && run.startAt + run.nextClick * beat < audio.currentTime + .15) {
+        while (run.nextClick < chart.bars.length * 4 && run.startAt + run.nextClick * beat < audio.currentTime + .15) {
             const at = run.startAt + run.nextClick * beat;
             if (at >= audio.currentTime) sound(at, run.nextClick % 4 === 0);
             run.nextClick++;
@@ -217,7 +341,7 @@
         if (!run.demo) expireMisses(time);
         if (time >= 0 && time < chart.duration) {
             const bar = Math.floor(time / beat / 4);
-            $('barCount').textContent = `${bar + 1} / 8마디`;
+            $('barCount').textContent = `${bar + 1} / ${chart.bars.length}마디`;
             $('score').querySelectorAll('.score-measure').forEach((node, index) => node.classList.toggle('active', index === bar));
             lines.forEach((line, index) => { line.style.display = index === bar ? '' : 'none'; });
             const within = time / beat % 4, x = Number(lines[bar].dataset.onset) + within * 52 + Math.floor(within) * 6;
@@ -229,10 +353,10 @@
     }
     function paintMarks(time) {
         const result = run.result;
-        for (const [index, head] of heads.entries()) {
+        for (const head of heads) {
             const mark = result.marks.find(m => Math.abs(m.time - head.time) < .001);
             head.node?.classList.toggle('hit', run.demo ? time >= head.time : mark?.points === 1);
-            head.node?.classList.toggle('missed', !run.demo && (mark?.hit && mark.points === 0 || !mark?.hit && time > head.time + C.noteWindow(chart, index)));
+            head.node?.classList.toggle('missed', !run.demo && (mark?.hit && mark.points === 0 || !mark?.hit && time > head.time + C.noteWindow(chart, head.index)));
         }
     }
     function expireMisses(time) {
@@ -251,7 +375,7 @@
         const time = run ? heardTime(inputTime) - run.startAt : 0;
         $('pad').classList.add('pressed'); clearTimeout(pressedTimer);
         pressedTimer = setTimeout(() => $('pad').classList.remove('pressed'), 100);
-        if (!run || run.demo) { burst(event); return; }
+        if (!run || run.demo || listening()) { if (!listening()) burst(event); return; }
         if (time < -.14 || time > chart.duration + .14 || run.taps.length >= 512) return;
         expireMisses(time);
         const before = run.result;
@@ -288,6 +412,7 @@
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('misses').textContent = result.misses; $('extras').textContent = result.wrong; $('result').hidden = false;
         }
+        if (ended.restoreChart) { chart = ended.restoreChart; renderScore(); $('barCount').textContent = `${chart.bars.length}마디 · 4/4박자`; }
         if (ended.roundId && credentials) { pendingResult = { roundId: ended.roundId, taps: ended.taps, interrupted }; saveRoom(); await submitResult(); }
     }
     function updateRoom(state) {
@@ -358,15 +483,20 @@
         saveRoom(); updateRoom(data.state);
     }
     action('soloTab', () => setMode('solo')); action('classTab', () => setMode('class'));
-    action('start', () => play()); action('retry', () => play()); action('listen', () => play(true));
+    action('start', () => listening() ? (answered ? fresh() : submitListening()) : play());
+    action('retry', () => play()); action('listen', () => play(true));
     action('shuffle', fresh); action('stop', () => finish(true));
-    for (const id of ['level', 'bpm']) $(id).addEventListener('input', () => { $('bpmValue').value = $('bpm').value; if (!room) fresh(); });
+    for (const id of ['level', 'bpm', 'activity', 'length']) $(id).addEventListener('input', () => { $('bpmValue').value = $('bpm').value; if (!room) fresh(); });
     $('pad').addEventListener('pointerdown', event => { if (!event.isPrimary || event.button !== 0) return; event.preventDefault(); tap(event); });
     $('pad').addEventListener('click', event => { if (event.detail === 0) tap(event); });
     document.addEventListener('keydown', event => {
         if (event.code !== 'Space' || event.altKey || event.ctrlKey || event.metaKey) return;
         if (event.target.closest('input,select,textarea,a,button:not(#pad),[contenteditable=true]')) return;
         event.preventDefault();
+        if (listening()) {
+            if (!event.repeat && !run && !starting) void play(true).catch(error => notice(error.message));
+            return;
+        }
         if (!event.repeat) tap(event);
     });
     document.addEventListener('visibilitychange', () => { if (document.hidden && run) { void finish(true); notice('다른 화면으로 이동해 연주를 멈췄어요.'); } });
@@ -389,7 +519,7 @@
     $('ranking').before(submitButton); action('submitRetry', submitResult);
     $('name').value = window.CLASS_PLAYER_NAME || '';
     for (let i = 0; i < 8; i++) { const spark = document.createElement('i'); spark.className = 'tap-spark'; $('tapEffects').append(spark); }
-    fresh();
+    renderLessons(); fresh();
     const code = new URLSearchParams(location.search).get('room');
     if (code && /^\d{4}$|^\d{6}$/.test(code)) { $('code').value = code; if(code.length===6){$('code').maxLength=6;$('code').pattern='[0-9]{6}';} setMode('class'); }
     try {
@@ -406,8 +536,12 @@
             .catch(error => notice(error.message)).finally(() => { $('join').disabled = false; });
     }
     void api('/session').then(data => { $('create').hidden = !data.isTeacher; $('teacherHint').hidden = data.isTeacher; }).catch(() => {});
+    let resizeFrame = 0;
     new ResizeObserver(() => {
-        if ($('score').clientWidth > 0 && ($('score').clientWidth >= 620 ? 4 : 2) !== scoreColumns) renderScore();
+        if ($('score').clientWidth > 0 && ($('score').clientWidth >= 620 ? 4 : 2) !== scoreColumns) {
+            cancelAnimationFrame(resizeFrame);
+            resizeFrame = requestAnimationFrame(renderScore);
+        }
     }).observe($('score'));
     setInterval(poll, 1200);
 })();

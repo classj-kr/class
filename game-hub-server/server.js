@@ -554,7 +554,7 @@ const rhythmTraining = createRhythmTraining({ platform: classroomPlatform });
 app.use('/api/rhythm-training', classroomPlatform.requireSiteAccess, rhythmTraining.router);
 
 // Reuse notation under this activity's access grant, even when ear training is closed.
-for (const [alias, source] of [['notation.js', 'notation.js'], ['rhythm-notation.js', 'rhythm.js']]) {
+for (const [alias, source] of [['notation.js', 'notation.js']]) {
   app.get(`/learning/arts/music-theory/rhythm-training/${alias}`, (_req, res) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.sendFile(path.join(SITE_ROOT, 'learning/arts/music-theory/ear-training', source));
