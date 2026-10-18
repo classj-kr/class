@@ -20,6 +20,13 @@
     "tests": {"passed": 19, "failed": 0, "command": "node --test tests/world-history-routing.test.mjs tests/world-history.test.mjs tests/world-history-storage.test.mjs tests/deployment-links.test.mjs"},
     "browser": "Legacy history.html opened canonical history/ through the production routing harness; mobile 390x844 map and question rendered successfully.",
     "screenshot": "route-fix-mobile.webp",
-    "productionStatus": "Pending deployment"
+    "productionStatus": "Deployed",
+    "productionVerifiedAt": "2026-10-19T08:27:08+09:00",
+    "expectedCommit": "efc4a6de6b4b04a8b9e90735f8faa21f8aac7372",
+    "healthCommit": "efc4a6de6b4b04a8b9e90735f8faa21f8aac7372",
+    "healthStatus": "ok",
+    "homeCanonicalLinkPresent": true,
+    "homeLegacyLinkPresent": false,
+    "productionAuthenticatedInteraction": "Not run: no signed-in production browser session. The exact production clean-URL middleware was tested locally, including the legacy redirect chain, assets, and mobile map/question rendering. Deployment is verified separately by the live health commit and updated home HTML."
   }
 }
