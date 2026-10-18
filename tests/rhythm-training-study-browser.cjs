@@ -22,6 +22,14 @@ app.use(express.static(root));
 const server = app.listen(0, '127.0.0.1');
 function mockAudio() {
     crypto.getRandomValues = values => { values.fill(123); return values; };
+    window.answerSounds = [];
+    window.Audio = class {
+        constructor(src) { this.src = src; }
+        cloneNode() { return new Audio(this.src); }
+        addEventListener() {}
+        play() { answerSounds.push(this.src); return Promise.resolve(); }
+        pause() {}
+    };
     class AudioContext {
         constructor() { this.time = 1; this.state = 'running'; this.destination = {}; window.testAudio = this; }
         get currentTime() { return this.time; }
@@ -59,6 +67,14 @@ function mockAudio() {
                     counts: lastQuestion.bars?.list.map(bar => RhythmNotation.onsets(bar).length) }));
                 if (question.grid) {
                     assert.equal(await page.locator('#beatGrid button').count(), question.grid.cells);
+                    if (level === '0') {
+                        await page.click('#start');
+                        assert.equal(await page.locator('#listeningAnswer').isVisible(), false);
+                        assert.equal(await page.locator('#beatGrid .right, #beatGrid .missed').count(), 0);
+                        assert.equal(await page.locator('#beatGrid button:disabled').count(), 0);
+                        assert.match(await page.locator('#listeningFeedback').textContent(), /다시 듣고/);
+                        assert.ok((await page.evaluate(() => answerSounds.at(-1))).endsWith('/error.ogg'));
+                    }
                     for (const cell of question.grid.answer) await page.locator(`#beatGrid [data-cell="${cell}"]`).click();
                     await page.click('#listen'); await page.locator('#stop').waitFor({ state: 'visible' });
                     assert.equal(await page.locator('#beatGrid button').first().isDisabled(), true, 'answers disabled during playback');
@@ -78,13 +94,33 @@ function mockAudio() {
                 assert.equal(await page.locator('#listeningFeedback').textContent(), '');
             }
             await page.selectOption('#activity', 'choice'); await page.selectOption('#level', '3');
-            const wrong = await page.evaluate(() => (lastQuestion.bars.answer + 1) % 4);
+            const correct = await page.evaluate(() => lastQuestion.bars.answer), wrong = (correct + 1) % 4;
+            const soundCount = await page.evaluate(() => answerSounds.length);
             await page.locator(`#barChoices [data-index="${wrong}"]`).click();
-            assert.equal(await page.locator('#barChoices .right').count(), 1);
+            assert.equal(await page.locator('#barChoices .right').count(), 0);
             assert.equal(await page.locator('#barChoices .wrong').count(), 1);
-            assert.equal(await page.locator('#barChoices button:disabled').count(), 4);
+            assert.equal(await page.locator('#barChoices button:disabled').count(), 0);
+            assert.equal(await page.locator('#listeningAnswer').isVisible(), false);
+            assert.match(await page.locator('#listeningFeedback').textContent(), /다시 듣고/);
+            await page.locator(`#barChoices [data-index="${wrong}"]`).click();
+            assert.deepEqual(await page.evaluate(start => answerSounds.slice(start).map(url => url.split('/').at(-1)), soundCount), ['error.ogg', 'error.ogg']);
+            await page.click('#listen'); await page.locator('#stop').waitFor({ state: 'visible' }); await page.click('#stop');
+            assert.equal(await page.locator('#listeningAnswer').isVisible(), false, 'replaying after a wrong answer does not reveal it');
             assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-            await capture(page, { path: path.join(output, `${name}-choice.webp`), fullPage: true });
+            await capture(page, { path: path.join(output, `${name}-choice-retry.webp`), fullPage: true });
+            await page.locator(`#barChoices [data-index="${correct}"]`).click();
+            assert.equal(await page.locator('#barChoices .right').count(), 1);
+            assert.equal(await page.locator('#barChoices .wrong').count(), 0);
+            assert.equal(await page.locator('#barChoices button:disabled').count(), 4);
+            assert.equal(await page.locator('#listeningAnswer').isVisible(), true);
+            assert.deepEqual(await page.evaluate(start => answerSounds.slice(start).map(url => url.split('/').at(-1)), soundCount), ['error.ogg', 'error.ogg', 'success.ogg']);
+            await page.click('#start');
+            const beforeReveal = await page.evaluate(() => answerSounds.length);
+            await page.click('#showAnswer');
+            assert.equal(await page.locator('#listeningAnswer').isVisible(), true);
+            assert.equal(await page.locator('#showAnswer').isVisible(), false);
+            assert.equal(await page.locator('#start').textContent(), '다음 문제');
+            assert.equal(await page.evaluate(() => answerSounds.length), beforeReveal, 'manual answer reveal has no grading cue');
             await page.selectOption('#activity', 'tap'); await page.selectOption('#level', '4'); await page.selectOption('#length', '1');
             assert.equal(await page.locator('.score-measure').count(), 1);
             assert.ok(await page.locator('.rhythm-tie').count() > 0, 'syncopation retains visible ties');

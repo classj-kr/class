@@ -191,26 +191,39 @@
             button.setAttribute('aria-label', `${index + 1}번 악보`);
             const number = document.createElement('span'); number.textContent = String(index + 1);
             button.append(number, RhythmNotation.render(bar, { meter: '4/4' }));
-            button.addEventListener('click', () => { if (!run && !starting && !answered) revealListening(index === question.bars.answer, index); });
+            button.addEventListener('click', () => { if (!run && !starting && !answered) gradeListening(index === question.bars.answer, index); });
             $('barChoices').append(button);
         });
     }
     function submitListening() {
         if (!question?.grid || answered || run || starting) return;
         const want = question.grid.answer;
-        revealListening(want.length === selectedCells.size && want.every(cell => selectedCells.has(cell)));
+        gradeListening(want.length === selectedCells.size && want.every(cell => selectedCells.has(cell)));
     }
-    function revealListening(correct, picked = -1) {
+    function gradeListening(correct, picked = -1) {
+        // Explicit cues work for every attempt, including repeated wrong answers.
+        window.ClassGameSfx?.play(correct ? 'success' : 'error');
+        if (!correct) {
+            if (question.bars && picked >= 0) $('barChoices').children[picked].classList.add('wrong');
+            $('listeningFeedback').textContent = '아직 아니에요. 다시 듣고 답해 보세요.';
+            $('listeningFeedback').dataset.correct = 'false';
+            controls(); return;
+        }
+        revealListening(true, picked);
+    }
+    function revealListening(correct, picked = -1, manual = false) {
         answered = true;
         if (question.grid) for (const button of $('beatGrid').children) {
             const cell = Number(button.dataset.cell), want = question.grid.answer.includes(cell);
             button.classList.add(want ? selectedCells.has(cell) ? 'right' : 'missed' : selectedCells.has(cell) ? 'wrong' : 'empty');
         }
         if (question.bars) for (const [index, button] of [...$('barChoices').children].entries()) {
+            button.classList.remove('right', 'wrong', 'dim');
             button.classList.add(index === question.bars.answer ? 'right' : index === picked ? 'wrong' : 'dim');
         }
-        $('listeningFeedback').textContent = correct ? '맞았어요!' : '아래 정답 악보와 비교해 보세요.';
-        $('listeningFeedback').dataset.correct = String(correct);
+        $('listeningFeedback').textContent = manual ? '정답을 확인하고 다음 문제에 도전해 보세요.' : '맞았어요!';
+        if (manual) $('listeningFeedback').removeAttribute('data-correct');
+        else $('listeningFeedback').dataset.correct = String(correct);
         const caption = document.createElement('p'); caption.textContent = '정답';
         $('listeningAnswer').replaceChildren(caption, RhythmNotation.render(question.rhythm.bar, { meter: '4/4' }));
         $('listeningAnswer').hidden = false; controls();
@@ -278,6 +291,7 @@
         $('lessonDetails').hidden = mode !== 'solo';
         $('lessonDetails').querySelectorAll('button').forEach(button => { button.disabled = busy; });
         $('listeningPanel').querySelectorAll('button').forEach(button => { button.disabled = busy || answered; });
+        $('showAnswer').hidden = answered;
         $('listen').textContent = listening() ? '리듬 듣기' : '먼저 듣기';
         $('start').hidden = listening() && Boolean(question?.bars) && !answered;
         $('start').textContent = listening() ? (answered ? '다음 문제' : '정답 확인') : '연습 시작';
@@ -521,6 +535,7 @@
     action('soloTab', () => setMode('solo')); action('classTab', () => setMode('class'));
     action('start', () => listening() ? (answered ? fresh() : submitListening()) : play());
     action('retry', () => play()); action('listen', () => play(true));
+    action('showAnswer', () => { if (listening() && !answered && !run && !starting) revealListening(false, -1, true); });
     action('shuffle', fresh); action('stop', () => finish(true));
     for (const id of ['level', 'bpm', 'activity', 'length']) $(id).addEventListener('input', () => { $('bpmValue').value = $('bpm').value; if (!room) fresh(); });
     $('pad').addEventListener('pointerdown', event => { if (!event.isPrimary || event.button !== 0) return; event.preventDefault(); tap(event); });
