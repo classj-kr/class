@@ -42,10 +42,15 @@
         }
         return order.map(index => pool[index]);
     }
+    function tempoRange(level) {
+        return { min: 40, max: level === 3 || level === 7 ? 100 : level === 6 ? 120 : 140,
+            initial: level === 3 || level === 7 ? 60 : 80 };
+    }
     function settings(input = {}) {
         const level = Number(input.level), bpm = Number(input.bpm);
-        return { level: Number.isInteger(level) && level >= 0 && level < LEVELS.length ? level : 1,
-            bpm: Number.isFinite(bpm) ? Math.max(70, Math.min(140, Math.round(bpm / 5) * 5)) : 100 };
+        const validLevel = Number.isInteger(level) && level >= 0 && level < LEVELS.length ? level : 1;
+        const range = tempoRange(validLevel);
+        return { level: validLevel, bpm: Number.isFinite(bpm) ? Math.max(range.min, Math.min(range.max, Math.round(bpm / 5) * 5)) : range.initial };
     }
     function chart(input, seed = 1, barCount = 8) {
         const config = settings(input);
@@ -100,41 +105,58 @@
         return anchors[anchors.length - 1][1];
     }
     function judge(chart, taps) {
-        const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
-        const { errorSum, ...result } = match(chart, clean);
-        return result;
+        return analyze(chart, taps).result;
     }
     function trace(chart, taps) {
-        const inputs = [];
-        match(chart, taps.filter(Number.isFinite).slice().sort((a, b) => a - b), inputs);
-        return inputs;
+        return analyze(chart, taps).inputs;
     }
-    function match(chart, clean, inputs) {
-        const marks = chart.targets.map(time => ({ time, hit: false, error: null, points: 0 }));
-        let extras = 0;
+    // Keep a small error band outside the correct half-interval. It records a
+    // mistimed strike against its current note without counting it as correct.
+    const connectionWindow = (chart, index, side) => noteWindow(chart, index, side) * 1.5;
+    function analyze(chart, taps) {
+        const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
+        const targets = chart.targets, marks = targets.map(time => ({ time, hit: false, error: null, points: 0, input: null })), inputs = [];
+        let cursor = 0, last = -1;
         for (const raw of clean) {
             let nearest = -1, gap = Infinity;
-            marks.forEach((mark, index) => {
-                const distance = Math.abs(raw - mark.time);
-                if (distance < gap) { nearest = index; gap = distance; }
+            targets.forEach((time, target) => {
+                const distance = Math.abs(raw - time);
+                if (distance < gap) { nearest = target; gap = distance; }
             });
-            const error = nearest < 0 ? 0 : raw - marks[nearest].time;
-            const best = nearest >= 0 && !marks[nearest].hit
-                && Math.abs(error) <= noteWindow(chart, nearest, error < 0 ? 'early' : 'late') ? nearest : -1;
-            if (inputs) inputs.push({ time: raw, nearest, error, accepted: best >= 0,
-                reason: best >= 0 ? 'hit' : nearest < 0 ? 'no-target' : marks[nearest].hit ? 'duplicate' : 'boundary' });
-            if (best < 0) { extras++; continue; }
-            const mark = marks[best];
-            mark.hit = true;
-            mark.error = raw - mark.time;
-            mark.points = 1;
+            const input = { time: raw, nearest, target: -1, error: nearest < 0 ? 0 : raw - targets[nearest], accepted: false, reason: 'extra' };
+            inputs.push(input);
+            // Before a sequence has started there is no current-note ownership.
+            // A player who starts later can still hit that nearest note early.
+            if (last < 0 && nearest >= 0) cursor = nearest;
+            const previous = marks[last], previousError = previous ? raw - previous.time : 0;
+            // Repair a premature extra tap when the actual strike for that note
+            // arrives. It cannot shift the rest of the performance forward.
+            if (previous?.hit && !previous.points && Math.abs(previousError) < Math.abs(previous.error)
+                && Math.abs(previousError) <= noteWindow(chart, last, previousError < 0 ? 'early' : 'late')) {
+                const replaced = inputs[previous.input];
+                Object.assign(replaced, { target: -1, error: replaced.nearest < 0 ? 0 : replaced.time - targets[replaced.nearest], accepted: false, reason: 'extra' });
+                Object.assign(previous, { error: previousError, points: 1, input: inputs.length - 1 });
+                Object.assign(input, { target: last, error: previousError, accepted: true, reason: 'hit' });
+                continue;
+            }
+            // Only the next unresolved note can receive this strike. Truly passed
+            // notes are skipped; an early extra does not advance the note cursor.
+            while (cursor < marks.length && raw > marks[cursor].time + connectionWindow(chart, cursor, 'late')) cursor++;
+            if (cursor === marks.length || raw < marks[cursor].time - connectionWindow(chart, cursor, 'early')) continue;
+            const error = raw - marks[cursor].time;
+            const accepted = Math.abs(error) <= noteWindow(chart, cursor, error < 0 ? 'early' : 'late');
+            Object.assign(marks[cursor], { hit: true, error, points: accepted ? 1 : 0, input: inputs.length - 1 });
+            Object.assign(input, { target: cursor, error, accepted, reason: accepted ? 'hit' : 'timing' });
+            last = cursor++;
         }
-        const hits = marks.filter(mark => mark.hit);
-        const errorSum = hits.reduce((sum, m) => sum + Math.abs(m.error), 0);
-        const accuracy = Math.max(0, Math.round(1000 * (hits.reduce((sum, m) => sum + m.points, 0) - extras * .5) / marks.length) / 10);
-        return { accuracy, perfect: hits.filter(m => m.points === 1).length, hits: hits.length,
-            misses: marks.length - hits.length, extras, wrong: extras + hits.filter(m => m.points === 0).length, marks,
-            errorMs: hits.length ? Math.round(errorSum * 1000 / hits.length) : null, lagMs: 0, errorSum };
+        const played = marks.filter(mark => mark.hit), correct = played.filter(mark => mark.points === 1);
+        const extras = clean.length - played.length, timingWrong = played.length - correct.length;
+        const errorSum = played.reduce((sum, mark) => sum + Math.abs(mark.error), 0);
+        const accuracy = marks.length ? Math.max(0, Math.round(1000 * (correct.length - extras * .5) / marks.length) / 10) : 0;
+        const result = { accuracy, perfect: correct.length, hits: correct.length, played: played.length,
+            misses: marks.length - played.length, extras, timingWrong, wrong: extras + timingWrong, marks,
+            errorMs: played.length ? Math.round(errorSum * 1000 / played.length) : null, lagMs: 0 };
+        return { result, inputs };
     }
-    return { LEVELS, VALUES, settings, chart, fromBars, judge, trace, hitWindow, noteWindow, playheadX };
+    return { LEVELS, VALUES, settings, tempoRange, chart, fromBars, judge, trace, analyze, hitWindow, noteWindow, connectionWindow, playheadX };
 });
