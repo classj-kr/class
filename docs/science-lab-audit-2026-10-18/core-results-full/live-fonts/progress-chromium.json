@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-18T10:55:04.837Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "interference",
+      "scenarios": 10
+    },
+    {
+      "slug": "solubility",
+      "scenarios": 25
+    },
+    {
+      "slug": "neutralization-common",
+      "scenarios": 50
+    },
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    },
+    {
+      "slug": "equilibrium-colour",
+      "scenarios": 70
+    }
+  ],
+  "scenarios": 280,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "scope": {
+    "apps": 196,
+    "routes": 201,
+    "outcomes": 882,
+    "addedQuestions": 94,
+    "changedApps": 74,
+    "outcomesNeedingNewQuestions": 96,
+    "missingReferences": 0,
+    "missingApplicableRoutes": 0
+  },
+  "engines": [
+    {
+      "engine": "chromium",
+      "emulationOnly": true,
+      "courseRoutes": 201,
+      "routedQuestionDefinitionsChecked": 1305,
+      "addedQuestionsAnswered": 94,
+      "addedQuestionCourseInstances": 96,
+      "questionLayoutsChecked": 480,
+      "inExperimentChecksAnswered": 41,
+      "fullReadabilityStates": 6735,
+      "initialReadabilityFlags": 5,
+      "finalReadabilityFlags": 0,
+      "liveFontRoutes": 5,
+      "liveFontStates": 280,
+      "loadedFontFamilies": [
+        "Noto Serif KR",
+        "Pretendard"
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "emulationOnly": true,
+      "courseRoutes": 201,
+      "routedQuestionDefinitionsChecked": 1305,
+      "addedQuestionsAnswered": 94,
+      "addedQuestionCourseInstances": 96,
+      "questionLayoutsChecked": 480,
+      "inExperimentChecksAnswered": 41,
+      "fullReadabilityStates": 6735,
+      "initialReadabilityFlags": 0,
+      "finalReadabilityFlags": 0,
+      "liveFontRoutes": 5,
+      "liveFontStates": 280,
+      "loadedFontFamilies": [
+        "Noto Serif KR",
+        "Pretendard"
+      ],
+      "errors": []
+    }
+  ],
+  "regression": {
+    "assessmentTestsPassed": 8,
+    "baseQuestionCourseInstancesPerEngine": 806,
+    "canonicalCoreQuestionTestPassed": 1,
+    "reviewedBaseAndBankDefinitions": 1043
+  },
+  "resolved": [
+    {
+      "issue": "neutralization-common registered bank questions never mounted on a non-collapsible quiz section",
+      "fix": "Initialize immediately for section elements; retain lazy loading for closed details elements",
+      "verification": "Actual definitions and answer interactions verified on all 201 routes in both engines"
+    },
+    {
+      "issue": "rock-layers final-layer explanation exceeded the SVG boundary at five widths",
+      "fix": "Use a wrapping HTML paragraph below the diagram",
+      "verification": "Focused extended audit and live-font audits passed"
+    },
+    {
+      "issue": "rock-layers layer numbers had very low contrast against the white background",
+      "fix": "Use #334155 for the layer labels",
+      "verification": "Final live-font capture visually inspected and Chrome focused audit passed"
+    }
+  ],
+  "limitations": [
+    "Device checks use Chrome at DPR 1.25 and WebKit at DPR 2 with touch and five screen sizes, not physical Chromebook/iPad hardware.",
+    "196 is the implemented-app inventory, not the total required-experiment count in the 2022 curriculum.",
+    "Outcome wording and question demands were reviewed explicitly; automated reference and rendering checks alone do not establish scientific correctness."
+  ],
+  "sourceFingerprint": "source-fingerprint.json"
+}

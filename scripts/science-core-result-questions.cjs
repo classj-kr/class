@@ -96,3 +96,8 @@ module.exports.followups = {
     feedback: {1:'화살표를 먹는 생물에서 먹이 쪽으로 그렸습니다.',2:'화살표 방향은 맞지만 애벌레와 어른벌레의 먹이를 바꾸었습니다.',3:'두 단계의 먹이를 바꾸고 화살표도 반대로 그렸습니다.'}, checks: [],
   }],
 };
+
+// Outcome coverage from the complete 196-apparatus review.
+for(const [slug,questions]of Object.entries(require('./science-outcome-question-additions.cjs'))){
+ module.exports.followups[slug]=[...(module.exports.followups[slug]||[]),...questions];
+}

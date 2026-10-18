@@ -1,0 +1,26 @@
+{
+  "engine": "chromium",
+  "catalog": false,
+  "orientationSequence": true,
+  "routes": 1,
+  "scenarios": 125,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "supplementDiagnosisChecked": true,
+  "deviceProfile": "chromebook-scale",
+  "emulationOnly": true,
+  "deviceScaleFactor": 1.25,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR",
+    "Pretendard"
+  ],
+  "issues": [],
+  "errors": []
+}

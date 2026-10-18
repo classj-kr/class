@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderOrder() {
         const X0 = 18, W = 424, TOP = 30, H = 24, GAP = 3;
         const n = layers.length;
+        document.getElementById('layerOrderNote').hidden = n === 0;
         let out = `<text class="ord-title" x="${X0}" y="18">쌓인 순서 — 아래가 먼저입니다</text>`;
         if (!n) {
             out += `<text class="ord-empty" x="${X0}" y="${TOP + 22}">아직 부은 것이 없습니다. 퇴적물을 부으면 층이 하나씩 늘어납니다.</text>`;
@@ -148,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="ord-name" x="${X0 + 122}" y="${y + 16}">${MIXES[L.mix].label}${L.fossil ? ' · 화석 있음' : ''}</text>`;
             out += `<text class="ord-when" x="${X0 + W - 12}" y="${y + 16}" text-anchor="end">${newest ? '가장 나중에 쌓임' : i === 0 ? '가장 먼저 쌓임' : `${i + 1}번째로 쌓임`}</text>`;
         }
-        out += `<text class="ord-note" x="${X0}" y="${TOP + n * (H + GAP) + 15}">한 번 부을 때마다 큰 알갱이가 먼저 가라앉아, 한 층 안에서도 자갈이 아래·진흙이 위에 놓입니다.</text>`;
         window.scienceScene.render(graphGroup,out);
     }
 

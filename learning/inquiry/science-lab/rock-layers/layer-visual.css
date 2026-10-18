@@ -50,7 +50,7 @@
 .tank-water { fill: rgba(110, 200, 235, .13); }
 .sub-layer { stroke: rgba(0, 0, 0, .22); stroke-width: .6; }
 .layer-divider { stroke: rgba(255, 255, 255, .38); stroke-width: 1.2; stroke-dasharray: 5 4; }
-.layer-tag { fill: #e8f3f6; font-size: 14px; font-weight: 900; }
+.layer-tag { fill: #334155; font-size: 14px; font-weight: 900; }
 .layer-age { fill: #334155; font-size: 14px; font-weight: 800; }
 .fossil { fill: #f0e2b8; stroke: #7a6236; stroke-width: 1; }
 .falling { opacity: .95; }

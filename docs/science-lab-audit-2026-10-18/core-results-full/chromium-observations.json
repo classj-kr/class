@@ -1,0 +1,282 @@
+{
+  "engine": "chromium",
+  "apps": [
+    "light-shadow",
+    "refraction",
+    "lever-balance",
+    "force-motion",
+    "motion-energy",
+    "ohms-law",
+    "energy-conversion",
+    "weight-compare",
+    "density-buoyancy",
+    "state-change",
+    "diffusion",
+    "solubility",
+    "flame-ions",
+    "periodic-bonding",
+    "acid-base",
+    "mass-ratio",
+    "burning-conditions",
+    "cell-membrane",
+    "senses",
+    "pea-genetics",
+    "life-cycle",
+    "volcano-model",
+    "earth-system",
+    "weather-watch",
+    "weather-front",
+    "night-sky",
+    "seasons",
+    "neutralization-common"
+  ],
+  "checks": [
+    {
+      "slug": "light-shadow",
+      "id": "light-shadow#observation-f4e59bcb-a9fed333",
+      "question": "불을 켜자 어둠상자 속 인형이 보였습니다. 인형이 보일 때 눈에 들어오는 빛의 경로는?",
+      "answer": "광원 → 인형 → 눈"
+    },
+    {
+      "slug": "light-shadow",
+      "id": "light-shadow#observation-51e0881a-4b9836ce",
+      "question": "공기에서 렌즈 안으로 비스듬히 들어간 빛의 진행 방향이 경계에서 바뀌었습니다. 이 현상은?",
+      "answer": "굴절"
+    },
+    {
+      "slug": "refraction",
+      "id": "refraction#observation-8e8d59a5-10000725",
+      "question": "물체를 초점보다 가까이 두었을 때, 크고 바로 선 상을 볼 수 있는 조합은?",
+      "answer": "오목거울 · 볼록렌즈"
+    },
+    {
+      "slug": "lever-balance",
+      "id": "lever-balance#observation-17e22199-3565dad3",
+      "question": "멈춘 상자를 오른쪽으로 밀었더니 오른쪽으로 움직였습니다. 다시 멈춘 같은 상자를 왼쪽으로 당겨 움직였다면, 두 실험의 이동 방향은?",
+      "answer": "밀기: 오른쪽 · 당기기: 왼쪽"
+    },
+    {
+      "slug": "force-motion",
+      "id": "force-motion#required-spring",
+      "question": "늘어난 길이를 구하는 방법은?",
+      "answer": "나중 길이 − 처음 길이"
+    },
+    {
+      "slug": "motion-energy",
+      "id": "motion-energy#observation-39e5245c-4a3d27e2",
+      "question": "공기 저항이 없는 곳에서 100 g과 200 g 물체를 같은 높이에서 동시에 가만히 놓았습니다. 바닥에 닿기 전 같은 시각의 속력비는?",
+      "answer": "100 g : 200 g = 1 : 1"
+    },
+    {
+      "slug": "ohms-law",
+      "id": "ohms-law#observation-7224baf8-1bb4b568",
+      "question": "음전하를 띤 막대를 중성 금속구에 가까이 댔습니다. 접촉하거나 접지하지 않았을 때 금속구의 가까운 쪽과 먼 쪽은?",
+      "answer": "가까운 쪽 양전하 · 먼 쪽 음전하"
+    },
+    {
+      "slug": "ohms-law",
+      "id": "ohms-law#observation-f209d5e4-60de1522",
+      "question": "전류가 흐르는 코일의 왼쪽 끝은 N극, 오른쪽 끝은 S극입니다. 전류의 세기는 그대로 두고 방향만 반대로 바꾸면?",
+      "answer": "왼쪽 S극 · 오른쪽 N극"
+    },
+    {
+      "slug": "energy-conversion",
+      "id": "energy-conversion#observation-da1cd899-260c935f",
+      "question": "자석을 코일 안으로 밀어 넣다가 멈추었습니다. 자석과 코일을 모두 고정한 뒤 검류계 바늘의 최종 상태는?",
+      "answer": "0으로 돌아온다"
+    },
+    {
+      "slug": "weight-compare",
+      "id": "weight-compare#observation-3833ac9-b5d4a28b",
+      "question": "물을 흘리지 않고 좁은 컵에서 넓은 컵으로 모두 옮겼습니다. 물의 높이가 낮아졌을 때 모양과 부피의 변화는?",
+      "answer": "모양은 다르고 부피는 같다"
+    },
+    {
+      "slug": "weight-compare",
+      "id": "weight-compare#observation-861bb7f7-75eb9f39",
+      "question": "물속에 거꾸로 넣은 컵을 기울이자 거품이 올라오고 컵 안으로 물이 들어왔습니다. 거품과 물의 이동을 연결한 설명은?",
+      "answer": "공기가 컵 밖으로 나가고 그 자리를 물이 채웠다"
+    },
+    {
+      "slug": "density-buoyancy",
+      "id": "density-buoyancy#observation-2ed1a9e4-eaab6aee",
+      "question": "같은 압력에서 같은 순수한 고체의 양만 늘려 같은 세기로 가열합니다. 녹는 온도와 완전히 녹는 데 걸리는 시간의 비교로 알맞은 것은?",
+      "answer": "녹는 온도 같음 · 시간 길어짐"
+    },
+    {
+      "slug": "state-change",
+      "id": "state-change#observation-dfd593a4-2d2d70ea",
+      "question": "새지 않는 유리컵에 파란색 물과 얼음을 넣었더니 컵 바깥에 무색 물방울이 맺혔습니다. 바깥 물방울이 되기 전 물은 어디에 있었을까요?",
+      "answer": "주변 공기 중 수증기"
+    },
+    {
+      "slug": "state-change",
+      "id": "state-change#observation-6b967cc5-71b04b91",
+      "question": "젖은 빨래가 마르는 증발과 냄비 속 물이 끓는 현상에 공통으로 일어나는 변화는?",
+      "answer": "액체인 물이 기체로 바뀐다"
+    },
+    {
+      "slug": "diffusion",
+      "id": "diffusion#observation-423006cc-1c73cd8e",
+      "question": "상태 변화에서 변하지 않는 것은?",
+      "answer": "입자 자체의 종류와 크기"
+    },
+    {
+      "slug": "diffusion",
+      "id": "diffusion#observation-e87d5146-6a4728c8",
+      "question": "기체가 새지 않는 주사기의 온도를 일정하게 유지하며 부피를 줄였습니다. 입자 모형에서 달라지는 것은?",
+      "answer": "입자 사이의 평균 거리"
+    },
+    {
+      "slug": "diffusion",
+      "id": "diffusion#observation-609876a6-da63c488",
+      "question": "압력이 일정할 때 순수한 물이 끓기 시작했습니다. 같은 세기로 계속 가열하는 동안 온도와 액체인 물의 양은?",
+      "answer": "온도 일정 · 액체 양 감소"
+    },
+    {
+      "slug": "solubility",
+      "id": "solubility#observation-f8c6123f-3b93c0c7",
+      "question": "같은 설탕물을 두 컵에 나누었습니다. A에는 설탕을 더 넣어 모두 녹이고, B에는 물을 더 넣었습니다. 처음보다 진해진 것은?",
+      "answer": "A만"
+    },
+    {
+      "slug": "flame-ions",
+      "id": "flame-ions#observation-31f1d0f3-b10218d7",
+      "question": "리튬·나트륨·칼륨이 모두 물과 반응해 수소를 만들었지만 반응의 세기는 달랐습니다. 비슷한 화학적 성질을 뒷받침하는 관찰은?",
+      "answer": "물과 반응하여 수소가 생김"
+    },
+    {
+      "slug": "periodic-bonding",
+      "id": "periodic-bonding#required-compound-conductivity",
+      "question": "같은 장치에서 염화 나트륨은 고체일 때 표시가 꺼지고 물에 녹인 뒤 켜졌다. 이를 설명하는 입자 상태는?",
+      "answer": "고체에도 이온이 있고, 수용액에서는 이온이 이동한다"
+    },
+    {
+      "slug": "acid-base",
+      "id": "acid-base#observation-4e80dc7d-fe43aded",
+      "question": "묽은 산성 용액·묽은 염기성 용액·물에 달걀 껍데기를 넣어 비교합니다. 탄산 칼슘과 반응해 기포가 계속 생기는 것은?",
+      "answer": "산성 용액"
+    },
+    {
+      "slug": "mass-ratio",
+      "id": "mass-ratio#observation-a2b9b7d2-3c94de0e",
+      "question": "같은 조건에서 완전히 반응한 수소·산소·생성 수증기의 부피비는?",
+      "answer": "2 : 1 : 2"
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "burning-conditions#observation-1ee4cc47-b7e4e17",
+      "question": "새로운 물질이 생기는 변화의 예는?",
+      "answer": "종이가 타서 재와 기체가 생김"
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "burning-conditions#required-mix-change",
+      "question": "새 물질이 생기는 변화를 보여 주는 관찰은?",
+      "answer": "섞은 뒤 새 기체가 생긴다"
+    },
+    {
+      "slug": "cell-membrane",
+      "id": "cell-membrane#required-dna-model",
+      "question": "DNA의 염기쌍 규칙은?",
+      "answer": "A–T, G–C"
+    },
+    {
+      "slug": "cell-membrane",
+      "id": "cell-membrane#required-diagnostic-principle",
+      "question": "작동 대조가 실패한 경우 옳은 판단은?",
+      "answer": "검사가 무효이므로 결과를 판독할 수 없다"
+    },
+    {
+      "slug": "senses",
+      "id": "senses#required-blind-spot",
+      "question": "한 위치에서 점이 안 보이는 까닭과 관련된 것은?",
+      "answer": "시각 신경이 나가는 곳에는 시각 세포가 없다"
+    },
+    {
+      "slug": "pea-genetics",
+      "id": "pea-genetics#observation-ed3af864-95a3d3a4",
+      "question": "사람의 체세포에는 염색체가 46개 있습니다. 정상적인 체세포분열 후 딸세포 하나와 감수분열로 형성된 생식세포 하나의 염색체 수는?",
+      "answer": "딸세포 46개 · 생식세포 23개"
+    },
+    {
+      "slug": "life-cycle",
+      "id": "life-cycle#required-plant-life-types",
+      "question": "다음 해 다시 자란 두 식물을 구별할 근거는?",
+      "answer": "새 씨앗의 새 개체인지, 살아남은 같은 개체인지"
+    },
+    {
+      "slug": "volcano-model",
+      "id": "volcano-model#observation-a6309069-e93b586b",
+      "question": "사진 속 두 표본을 비교한 관찰 기록으로 알맞은 것은?",
+      "answer": "화강암에서 여러 색의 알갱이 경계가 더 뚜렷하게 보인다."
+    },
+    {
+      "slug": "volcano-model",
+      "id": "volcano-model#required-erosion",
+      "question": "흙 언덕에서 물이 아래로 흐른 뒤의 변화는?",
+      "answer": "위쪽에서 깎인 흙이 아래쪽에 쌓인다"
+    },
+    {
+      "slug": "earth-system",
+      "id": "earth-system#required-energy-budget",
+      "question": "에너지 출입이 같은 두 평형 상태는 반드시 무엇이 같을까요?",
+      "answer": "흡수량과 방출량의 차가 0이다"
+    },
+    {
+      "slug": "weather-watch",
+      "id": "weather-watch#required-dew-fog",
+      "question": "이슬과 안개의 공통적인 생성 과정은?",
+      "answer": "수증기가 식어 작은 물방울로 변한다"
+    },
+    {
+      "slug": "weather-watch",
+      "id": "weather-watch#required-wind-chamber",
+      "question": "이 모형에서 아래쪽 공기는 어떻게 움직일까요?",
+      "answer": "차가운 쪽에서 따뜻한 쪽으로"
+    },
+    {
+      "slug": "weather-front",
+      "id": "weather-front#observation-e02b0f34-2276bf54",
+      "question": "수증기를 포함한 공기가 상승하여 이슬점에 도달했습니다. 구름이 생기는 과정의 순서는?",
+      "answer": "팽창 → 온도 하강 → 응결"
+    },
+    {
+      "slug": "night-sky",
+      "id": "night-sky#required-planet-model",
+      "question": "이 모형에서 스스로 빛을 내는 천체는?",
+      "answer": "태양"
+    },
+    {
+      "slug": "seasons",
+      "id": "seasons#required-altitude-meter",
+      "question": "같은 막대에서 그림자가 가장 짧을 때는?",
+      "answer": "태양 고도가 가장 높을 때"
+    },
+    {
+      "slug": "seasons",
+      "id": "seasons#observation-f0ca2c7b-19926525",
+      "question": "우리나라에서 아침부터 저녁까지 태양의 위치를 관찰했습니다. 대체적인 이동 경로는?",
+      "answer": "동쪽 → 남쪽 하늘 → 서쪽"
+    },
+    {
+      "slug": "seasons",
+      "id": "seasons#observation-30113c1a-a7414254",
+      "question": "같은 장소에서 낮과 밤이 하루를 주기로 반복되는 주된 까닭은?",
+      "answer": "지구의 자전"
+    },
+    {
+      "slug": "seasons",
+      "id": "seasons#observation-f0bb865b-7e0280f5",
+      "question": "같은 장소에서 같은 저녁 시각에 관찰했는데 계절에 따라 보이는 별자리가 달랐습니다. 이 차이와 직접 관련된 운동은?",
+      "answer": "지구의 공전"
+    },
+    {
+      "slug": "neutralization-common",
+      "id": "neutralization-common#required-heating-device",
+      "question": "이 장치에서 음식 쪽으로 전달되는 에너지의 근원은?",
+      "answer": "반응에서 방출되는 에너지"
+    }
+  ],
+  "errors": []
+}

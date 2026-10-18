@@ -1,0 +1,13 @@
+{
+  "viewport": {
+    "width": 820,
+    "height": 1180
+  },
+  "fonts": [
+    "Noto Serif KR"
+  ],
+  "files": [
+    "live-font-rock-layers.webp",
+    "live-font-neutralization-common.webp"
+  ]
+}

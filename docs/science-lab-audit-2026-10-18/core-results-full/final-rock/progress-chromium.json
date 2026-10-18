@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-18T10:56:48.885Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    }
+  ],
+  "scenarios": 125,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

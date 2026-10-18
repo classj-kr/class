@@ -1,0 +1,22 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../docs/science-lab-audit-2026-10-18/core-results-full'),read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const coverage=read('coverage.json'),engines=[];
+for(const engine of ['chromium','webkit']){
+ const questions=read(engine+'-questions.json'),observations=read(engine+'-observations.json'),full=read('readability/extended-'+engine+'.json'),fonts=read('live-fonts/extended-'+engine+'.json');
+ assert.equal(questions.routes.length,201);assert.equal(new Set(questions.newAnswers.map(q=>q.id)).size,94);assert.equal(questions.layouts.length,480);assert.deepEqual(questions.errors,[]);
+ assert.equal(observations.checks.length,41);assert.deepEqual(observations.errors,[]);assert.equal(full.routes,201);assert.deepEqual(full.errors,[]);assert.equal(fonts.routes,5);assert.equal(fonts.liveWebFonts,true);assert(fonts.loadedFontFamilies.includes('Noto Serif KR'));assert.deepEqual(fonts.issues,[]);assert.deepEqual(fonts.errors,[]);
+ let remaining=full.issues;
+ if(engine==='chromium'){
+  const recheck=read('readability-recheck/extended-chromium.json'),finalRock=read('final-rock/extended-chromium.json');
+  assert.equal(recheck.routes,3);assert.deepEqual(recheck.issues,[]);assert.deepEqual(recheck.errors,[]);assert.deepEqual(finalRock.issues,[]);assert.deepEqual(finalRock.errors,[]);
+  remaining=remaining.filter(i=>i.slug!=='rock-layers');
+ }
+ assert.deepEqual(remaining,[]);
+ engines.push({engine,emulationOnly:true,courseRoutes:201,routedQuestionDefinitionsChecked:questions.routes.reduce((n,r)=>n+r.questions,0),addedQuestionsAnswered:94,addedQuestionCourseInstances:questions.newAnswers.length,questionLayoutsChecked:questions.layouts.length,inExperimentChecksAnswered:41,fullReadabilityStates:full.scenarios,initialReadabilityFlags:full.issues.length,finalReadabilityFlags:remaining.length,liveFontRoutes:fonts.routes,liveFontStates:fonts.scenarios,loadedFontFamilies:fonts.loadedFontFamilies,errors:[]});
+}
+const result={scope:coverage.scope,engines,regression:{assessmentTestsPassed:8,baseQuestionCourseInstancesPerEngine:806,canonicalCoreQuestionTestPassed:1,reviewedBaseAndBankDefinitions:1043},resolved:[{issue:'neutralization-common registered bank questions never mounted on a non-collapsible quiz section',fix:'Initialize immediately for section elements; retain lazy loading for closed details elements',verification:'Actual definitions and answer interactions verified on all 201 routes in both engines'},{issue:'rock-layers final-layer explanation exceeded the SVG boundary at five widths',fix:'Use a wrapping HTML paragraph below the diagram',verification:'Focused extended audit and live-font audits passed'},{issue:'rock-layers layer numbers had very low contrast against the white background',fix:'Use #334155 for the layer labels',verification:'Final live-font capture visually inspected and Chrome focused audit passed'}],limitations:['Device checks use Chrome at DPR 1.25 and WebKit at DPR 2 with touch and five screen sizes, not physical Chromebook/iPad hardware.','196 is the implemented-app inventory, not the total required-experiment count in the 2022 curriculum.','Outcome wording and question demands were reviewed explicitly; automated reference and rendering checks alone do not establish scientific correctness.'],sourceFingerprint:'source-fingerprint.json'};
+fs.writeFileSync(path.join(root,'validation.json'),JSON.stringify(result,null,2)+'\n');
+let html=fs.readFileSync(path.join(root,'index.html'),'utf8');html=html.replace(/<section id="validation">[\s\S]*?<\/section>/,'');
+const block='<section id="validation"><h2>최종 확인</h2><p>Chrome·WebKit 각각 201개 학교급 경로에서 실제 문항을 대조하고, 추가한 94개 문제를 오답 후 정답으로 풀었다. 실험 중 확인 문제 41개도 양쪽에서 접근·채점했다. 보완 문제는 브라우저별 480개 화면 크기 조합을 검사했다.</p><p>전체 가독성은 브라우저별 6,735개 상태를 검사했다. 지층 설명 잘림과 낮은 대비를 수정했고, 실제 웹글꼴을 불러온 5개 실험도 추가 확인했다. 기기 검증은 화면 크기·터치·화면 배율을 모사한 검사다.</p><p><a href="validation.json">검사 결과</a> · <a href="addition-review.json">94개 보완 문항과 오개념</a> · <a href="source-fingerprint.json">검사한 소스 버전</a></p></section>';
+html=html.replace('<details>',block+'<details>');html=html.replace('보완 전 문항과 관찰 결과','보완 전 등록 문항과 관찰 결과');fs.writeFileSync(path.join(root,'index.html'),html);
+console.log(JSON.stringify({scope:coverage.scope,engines:engines.map(e=>({engine:e.engine,routes:e.courseRoutes,finalReadabilityFlags:e.finalReadabilityFlags}))}));

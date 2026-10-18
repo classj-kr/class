@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-18T10:45:57.338Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "telescope-observation",
+      "school": "high-elective",
+      "scenarios": 5
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "middle",
+      "scenarios": 5
+    },
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    }
+  ],
+  "scenarios": 135,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": false,
+  "loadedFontFamilies": []
+}
