@@ -63,12 +63,10 @@
         return { ...config, seed: Number(seed) >>> 0, bars, targets, duration: 32 * 60 / config.bpm };
     }
     // One onset is one tap. Release times and key-hold duration never enter scoring.
-    const hitWindow = chart => Math.min(.14, 60 / chart.bpm * .22);
-    // At level 3, classify the closest of the four sixteenth slots in each beat,
-    // including silent slots. A tap closer to a rest must never hit a nearby note.
-    const sixteenthSlot = chart => 60 / chart.bpm / 4;
+    const hitWindow = chart => 60 / chart.bpm * .22;
+    // Compare only the written attacks. Empty sixteenth subdivisions are not
+    // timing targets: the boundary between two attacks is their BPM-based midpoint.
     function noteWindow(chart, index) {
-        if (chart.level === 3) return sixteenthSlot(chart) / 2 - .000001;
         const targets = chart.targets, time = targets[index];
         const previous = index ? (time - targets[index - 1]) / 2 : Infinity;
         const next = index + 1 < targets.length ? (targets[index + 1] - time) / 2 : Infinity;
@@ -83,10 +81,7 @@
         const marks = chart.targets.map(time => ({ time, hit: false, error: null, points: 0 }));
         let extras = 0;
         for (const raw of clean) {
-            const slot = chart.level === 3 ? sixteenthSlot(chart) : null;
-            const nearest = slot === null ? null : Math.round(raw / slot);
             const best = marks.findIndex((mark, index) => !mark.hit
-                && (nearest === null || Math.round(mark.time / slot) === nearest)
                 && Math.abs(raw - mark.time) <= noteWindow(chart, index));
             if (best < 0) { extras++; continue; }
             const mark = marks[best];
