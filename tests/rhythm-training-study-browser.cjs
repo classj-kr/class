@@ -220,6 +220,7 @@ function mockAudio() {
         await page.locator('#courseList button').first().waitFor();
         assert.equal(await page.locator('#courseList button').count(), 4);
         assert.equal(await page.getByRole('button', { name: /리듬/ }).count(), 0);
+        assert.equal(await page.getByRole('link', { name: '리듬 (Rhythm)', exact: true }).getAttribute('href'), '../rhythm-training/');
         assert.equal(await page.locator('#tapWrap, #gridWrap, #barsWrap').count(), 0);
         await purged;
         assert.equal(cleaned.progress.rhythm, undefined); assert.equal(cleaned.stats.rhythmRead, undefined);
@@ -230,6 +231,6 @@ function mockAudio() {
         await page.locator('.row-act.is-read').first().click();
         await page.locator('#staff svg').waitFor();
         assert.deepEqual(errors, []);
-        console.log('Ear training: rhythm removed, obsolete rhythm records discarded, interval course still works');
+        console.log('Ear training: unified rhythm menu linked, obsolete rhythm records discarded, interval course still works');
     } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(() => server.close());

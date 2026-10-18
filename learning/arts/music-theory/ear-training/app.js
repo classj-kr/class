@@ -1238,6 +1238,12 @@
             <text x="41" y="30.5" fill="currentColor" font-size="7" font-weight="900" text-anchor="middle" dominant-baseline="middle">V</text>
             <path d="M35 34 C25 40 18 36 14 30" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round"/>
         </svg>`,
+        rhythm: `<svg class="genre-icon" viewBox="0 0 48 48" fill="none">
+            <path d="M15 31V11H37V27M15 16H37M26 29V11M26 21H37" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <ellipse cx="10.5" cy="32" rx="5.5" ry="4" fill="currentColor" transform="rotate(-18 10.5 32)"/>
+            <ellipse cx="21.5" cy="30" rx="5.5" ry="4" fill="currentColor" transform="rotate(-18 21.5 30)"/>
+            <ellipse cx="32.5" cy="28" rx="5.5" ry="4" fill="currentColor" transform="rotate(-18 32.5 28)"/>
+        </svg>`,
         course: `<svg class="genre-icon" viewBox="0 0 48 48" fill="none">
             <path d="M24 16 C20 12 12 12 8 14 L8 36 C12 34 20 34 24 38 C28 34 36 34 40 36 L40 14 C36 12 28 12 24 16 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
             <line x1="24" y1="16" x2="24" y2="38" stroke="currentColor" stroke-width="2"/>
@@ -1262,8 +1268,9 @@
     };
 
     function createGlassCard(meta, onOpen) {
-        const button = document.createElement("button");
-        button.type = "button";
+        const button = document.createElement(meta.href ? "a" : "button");
+        if (meta.href) button.href = meta.href;
+        else button.type = "button";
         button.className = "genre-card card-" + (meta.theme || "gold");
         button.setAttribute("aria-label", meta.ko + " (" + meta.en + ")");
 
@@ -1289,7 +1296,7 @@
 
         body.append(en, ko);
         button.append(glow, iconWrap, body);
-        button.addEventListener("click", onOpen);
+        if (onOpen) button.addEventListener("click", onOpen);
         return button;
     }
 
@@ -1301,6 +1308,10 @@
             const meta = COURSE_META[course.id] || { en: "Music Theory", ko: course.name, theme: "gold", icon: "course" };
             els.courseList.append(createGlassCard(meta, () => openCourse(course.id)));
         });
+        els.courseList.append(createGlassCard({
+            en: "Rhythm", ko: "리듬", theme: "rhythm", icon: "rhythm",
+            href: "../rhythm-training/"
+        }));
 
         els.toolList.innerHTML = "";
         els.toolList.append(createGlassCard({
