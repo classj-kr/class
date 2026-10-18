@@ -132,7 +132,7 @@ function mockAudio() {
             testAudio.getOutputTimestamp = () => ({ contextTime: testAudio.time - .12, performanceTime: performance.now() });
             RhythmTrainer.chart({ level: 3, bpm: 100 }, 123).targets.forEach((target, index) => {
                 const queueDelay = index === 0 ? .2 : 0;
-                testAudio.time = start + target + .12 + (index === 0 ? 0 : .08) + queueDelay;
+                testAudio.time = start + target + .12 + (index === 0 ? 0 : .04) + queueDelay;
                 const event = new PointerEvent('pointerdown', { isPrimary: true, button: 0, bubbles: true });
                 if (queueDelay) Object.defineProperty(event, 'timeStamp', { value: performance.now() - queueDelay * 1000 });
                 document.getElementById('pad').dispatchEvent(event);

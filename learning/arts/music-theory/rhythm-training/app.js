@@ -1,10 +1,7 @@
 (() => {
     'use strict';
     const C = window.RhythmTrainer, $ = id => document.getElementById(id);
-    const storageKey = 'rhythm-training-room-v1', lagKey = 'rhythm-training-lag-v1';
-    // Device delay learned from earlier rounds, applied to taps so feedback is right from the first note.
-    let deviceLag = 0;
-    try { deviceLag = Math.max(-.25, Math.min(.25, Number(localStorage.getItem(lagKey)) || 0)); } catch (_) {}
+    const storageKey = 'rhythm-training-room-v1';
     let audio, chart, run = null, raf = 0, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
     let room = null, credentials = null, pendingResult = null, polling = false, starting = false, loading = false;
     let lastRound = '', streak = 0, pressedTimer = 0;
@@ -232,15 +229,15 @@
     }
     function paintMarks(time) {
         const result = run.result;
-        for (const head of heads) {
+        for (const [index, head] of heads.entries()) {
             const mark = result.marks.find(m => Math.abs(m.time - head.time) < .001);
             head.node?.classList.toggle('hit', run.demo ? time >= head.time : mark?.points === 1);
-            head.node?.classList.toggle('missed', !run.demo && (mark?.hit && mark.points === 0 || !mark?.hit && time > head.time + C.hitWindow(chart)));
+            head.node?.classList.toggle('missed', !run.demo && (mark?.hit && mark.points === 0 || !mark?.hit && time > head.time + C.noteWindow(chart, index)));
         }
     }
     function expireMisses(time) {
         let missed = false;
-        while (run.nextMiss < chart.targets.length && chart.targets[run.nextMiss] + C.hitWindow(chart) < time) {
+        while (run.nextMiss < chart.targets.length && chart.targets[run.nextMiss] + C.noteWindow(chart, run.nextMiss) < time) {
             if (!run.result.marks[run.nextMiss].hit) missed = true;
             run.nextMiss++;
         }
@@ -251,7 +248,7 @@
         // speaker/Bluetooth output delay must not produce a second, late tapping beat.
         const now = performance.now(), eventTime = Number(event?.timeStamp);
         const inputTime = eventTime > 0 && eventTime <= now && now - eventTime < 1000 ? eventTime : now;
-        const time = run ? heardTime(inputTime) - run.startAt - deviceLag : 0;
+        const time = run ? heardTime(inputTime) - run.startAt : 0;
         $('pad').classList.add('pressed'); clearTimeout(pressedTimer);
         pressedTimer = setTimeout(() => $('pad').classList.remove('pressed'), 100);
         if (!run || run.demo) { burst(event); return; }
@@ -290,10 +287,6 @@
             const result = C.judge(chart, ended.taps);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('misses').textContent = result.misses; $('extras').textContent = result.wrong; $('result').hidden = false;
-            if (result.hits >= 8 && result.lagMs) {
-                deviceLag = Math.max(-.25, Math.min(.25, deviceLag + result.lagMs / 1000));
-                try { localStorage.setItem(lagKey, String(deviceLag)); } catch (_) {}
-            }
         }
         if (ended.roundId && credentials) { pendingResult = { roundId: ended.roundId, taps: ended.taps, interrupted }; saveRoom(); await submitResult(); }
     }
