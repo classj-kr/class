@@ -4,6 +4,22 @@ const Core = require('../learning/arts/music-theory/rhythm-training/core');
 const express = require('../game-hub-server/node_modules/express');
 const { createRhythmTraining } = require('../game-hub-server/rhythm-training');
 
+test('visual cursor crosses every written onset and interpolates through beat and measure spacing', () => {
+    for (const beats of [[0, 1, 2, 3], [0, .25, .5, .75, 1, 1.75, 2, 2 + 1 / 3, 2 + 2 / 3, 3]]) {
+        const anchors = beats.map(beat => [beat, 56 + beat * 52 + Math.floor(beat + .000001) * 6]);
+        anchors.push([4, 44 + 4 * 52 + 18 + 35]); // Continue through the next measure's left margin.
+        for (const [beat, x] of anchors) {
+            assert.ok(Math.abs(Core.playheadX(anchors, beat) - x) < 1e-9);
+            if (beat > 0 && beat < 4) assert.ok(Core.playheadX(anchors, beat + 1e-6) - Core.playheadX(anchors, beat - 1e-6) < .001, 'no jump at a written onset');
+        }
+        let previous = -Infinity;
+        for (let beat = 0; beat <= 4; beat += .01) {
+            const x = Core.playheadX(anchors, beat);
+            assert.ok(x > previous); previous = x;
+        }
+    }
+});
+
 test('generated bars have exactly four beats; seeds and settings are reproducible', () => {
     for (let level = 0; level < Core.LEVELS.length; level++) for (let seed = 0; seed < 200; seed++) {
         const c = Core.chart({ level, bpm: 100 }, seed);
