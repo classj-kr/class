@@ -58,12 +58,12 @@ for(const engine of ['chromium','webkit'])test(engine+': complete telescope oper
    for(const card of await page.locator('.quiz-card').all()){
     const id=await card.getAttribute('data-question-id'),q=registry.questions[Number(id.split('#q')[1])-1];
     await card.locator(`input[value="${'abcd'[(q.answer+1)%4]}"]`).check();await card.locator('.answer-button').click();assert.equal(await card.locator('.answer-result').textContent(),'다시 생각하고 다른 답을 골라보세요.');
-    await card.locator(`input[value="${'abcd'[q.answer]}"]`).check();await card.locator('.answer-button').click();assert.match(await card.locator('.answer-result').textContent(),/첫 응답은 오답/);
+    await card.locator(`input[value="${'abcd'[q.answer]}"]`).check();await card.locator('.answer-button').click();assert.match(await card.locator('.answer-result').textContent(),/정답입니다\./);
    }
    for(let i=0;i<2;i++){
     const id=await page.locator('.exam-question').getAttribute('data-exam-id'),q=id.includes('#q')?registry.questions[Number(id.split('#q')[1])-1]:registry.followups.find(q=>q.id===id);
     await page.locator(`[data-exam-answer="${(q.answer+1)%4}"]`).click();await page.locator('.exam-submit').click();assert.equal(await page.locator('.exam-feedback').getAttribute('data-correct'),'false');assert(!(await page.locator('.exam-feedback').textContent()).includes(q.why));
-    await page.locator(`[data-exam-answer="${q.answer}"]`).click();await page.locator('.exam-submit').click();assert.match(await page.locator('.exam-feedback').textContent(),/첫 응답은 오답/);if(i<1)await page.locator('[data-exam-next]').click();
+    await page.locator(`[data-exam-answer="${q.answer}"]`).click();await page.locator('.exam-submit').click();assert.match(await page.locator('.exam-feedback').textContent(),/정답입니다\./);if(i<1)await page.locator('[data-exam-next]').click();
    }
    await page.reload();await page.waitForFunction(()=>!!document.querySelector('.quiz-section').scienceAssessment);await page.evaluate(()=>document.querySelector('.quiz-section').open=true);await page.waitForFunction(()=>!!document.querySelector('.exam-integrated')?.examController);const evidence=await page.evaluate(ids=>ids.map(id=>document.querySelector('.quiz-section').scienceAssessment.store.evidence(id)),expected);assert(evidence.every(e=>e?.firstCorrect===false&&e.status==='corrected'));
    const other=school==='middle'?'high-elective':'middle';

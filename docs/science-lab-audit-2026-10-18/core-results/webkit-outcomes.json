@@ -1,0 +1,682 @@
+{
+  "engine": "webkit",
+  "outcomes": {
+    "weight": [
+      {
+        "mat": "cork",
+        "size": 1,
+        "weight": 0.24,
+        "floats": true,
+        "sunk": 0.24,
+        "explanation": "코르크 덩어리는 0.24 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "cork",
+        "size": 2,
+        "weight": 1.92,
+        "floats": true,
+        "sunk": 0.24,
+        "explanation": "코르크 덩어리는 1.92 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "cork",
+        "size": 3,
+        "weight": 6.48,
+        "floats": true,
+        "sunk": 0.24,
+        "explanation": "코르크 덩어리는 6.48 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "cork",
+        "size": 4,
+        "weight": 15.36,
+        "floats": true,
+        "sunk": 0.24,
+        "explanation": "코르크 덩어리는 15.4 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "wood",
+        "size": 1,
+        "weight": 0.5,
+        "floats": true,
+        "sunk": 0.5,
+        "explanation": "나무 덩어리는 0.50 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "wood",
+        "size": 2,
+        "weight": 4,
+        "floats": true,
+        "sunk": 0.5,
+        "explanation": "나무 덩어리는 4.00 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "wood",
+        "size": 3,
+        "weight": 13.5,
+        "floats": true,
+        "sunk": 0.5,
+        "explanation": "나무 덩어리는 13.5 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "wood",
+        "size": 4,
+        "weight": 32,
+        "floats": true,
+        "sunk": 0.5,
+        "explanation": "나무 덩어리는 32.0 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "plastic",
+        "size": 1,
+        "weight": 0.95,
+        "floats": true,
+        "sunk": 0.95,
+        "explanation": "플라스틱 덩어리는 0.95 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "plastic",
+        "size": 2,
+        "weight": 7.6,
+        "floats": true,
+        "sunk": 0.95,
+        "explanation": "플라스틱 덩어리는 7.60 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "plastic",
+        "size": 3,
+        "weight": 25.65,
+        "floats": true,
+        "sunk": 0.95,
+        "explanation": "플라스틱 덩어리는 25.6 g이고 물에 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "plastic",
+        "size": 4,
+        "weight": 60.8,
+        "floats": true,
+        "sunk": 0.95,
+        "explanation": "플라스틱 덩어리는 60.8 g이고 물에 뜹니다. 비교할 나무보다 무겁지만 이 덩어리도 뜹니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "alu",
+        "size": 1,
+        "weight": 2.7,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "알루미늄 덩어리는 2.70 g이고 물에 가라앉습니다. 비교할 나무보다 가볍지만 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "alu",
+        "size": 2,
+        "weight": 21.6,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "알루미늄 덩어리는 21.6 g이고 물에 가라앉습니다. 비교할 나무보다 가볍지만 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "alu",
+        "size": 3,
+        "weight": 72.9,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "알루미늄 덩어리는 72.9 g이고 물에 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "alu",
+        "size": 4,
+        "weight": 172.8,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "알루미늄 덩어리는 173 g이고 물에 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "iron",
+        "size": 1,
+        "weight": 7.9,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "철 덩어리는 7.90 g이고 물에 가라앉습니다. 비교할 나무보다 가볍지만 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "iron",
+        "size": 2,
+        "weight": 63.2,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "철 덩어리는 63.2 g이고 물에 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "iron",
+        "size": 3,
+        "weight": 213.3,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "철 덩어리는 213 g이고 물에 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      },
+      {
+        "mat": "iron",
+        "size": 4,
+        "weight": 505.6,
+        "floats": false,
+        "sunk": 1,
+        "explanation": "철 덩어리는 506 g이고 물에 가라앉습니다. 같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다."
+      }
+    ],
+    "force": [
+      {
+        "F": 7,
+        "m": 2,
+        "v0": 0,
+        "mu": 0.05,
+        "weight": 20,
+        "fMax": 1,
+        "friction": 1,
+        "net": 6,
+        "accel": 3,
+        "motion": "faster",
+        "endTime": 2.7080128015453204,
+        "stopTime": null,
+        "reachedEnd": true,
+        "floorName": "얼음"
+      },
+      {
+        "F": 8,
+        "m": 4,
+        "v0": 0,
+        "mu": 0.05,
+        "weight": 40,
+        "fMax": 2,
+        "friction": 2,
+        "net": 6,
+        "accel": 1.5,
+        "motion": "faster",
+        "endTime": 3.8297084310253524,
+        "stopTime": null,
+        "reachedEnd": true,
+        "floorName": "얼음"
+      }
+    ],
+    "magnet": [
+      {
+        "batteries": 1,
+        "turns": 100,
+        "power": true,
+        "direction": "forward",
+        "strength": 2,
+        "clips": 2,
+        "leftPole": "S",
+        "rightPole": "N"
+      },
+      {
+        "batteries": 2,
+        "turns": 100,
+        "power": true,
+        "direction": "forward",
+        "strength": 4,
+        "clips": 4,
+        "leftPole": "S",
+        "rightPole": "N"
+      }
+    ],
+    "wind": [
+      {
+        "kind": "wind",
+        "v": 6,
+        "r": 20,
+        "P": 65144.06526483795,
+        "Pref": 65144.06526483795,
+        "ratio": 1,
+        "verdict": "same"
+      },
+      {
+        "kind": "wind",
+        "v": 12,
+        "r": 20,
+        "P": 521152.5221187036,
+        "Pref": 65144.06526483795,
+        "ratio": 8,
+        "verdict": "huge"
+      }
+    ],
+    "seed": [
+      {
+        "c": {
+          "water": true,
+          "warm": true
+        },
+        "germinates": true
+      },
+      {
+        "c": {
+          "water": false,
+          "warm": true
+        },
+        "germinates": false
+      },
+      {
+        "c": {
+          "water": true,
+          "warm": false
+        },
+        "germinates": false
+      }
+    ],
+    "mixture": {
+      "separated": [
+        {
+          "id": "salt",
+          "method": "소금물로 받음",
+          "group": 1,
+          "dissolved": true
+        },
+        {
+          "id": "foam",
+          "method": "물 위에서 건짐",
+          "group": 2,
+          "dissolved": false
+        }
+      ],
+      "groups": [
+        {
+          "key": 1,
+          "method": "소금물로 받음",
+          "dissolved": true,
+          "ids": [
+            "salt"
+          ]
+        },
+        {
+          "key": 2,
+          "method": "물 위에서 건짐",
+          "dissolved": false,
+          "ids": [
+            "foam"
+          ]
+        }
+      ],
+      "remaining": [
+        {
+          "id": "iron",
+          "name": "철가루",
+          "mm": 0.3,
+          "density": 7.9,
+          "magnetic": true,
+          "soluble": false,
+          "color": "#8a8f98"
+        },
+        {
+          "id": "sand",
+          "name": "모래",
+          "mm": 0.5,
+          "density": 2.6,
+          "magnetic": false,
+          "soluble": false,
+          "color": "#c8a97a"
+        },
+        {
+          "id": "bean",
+          "name": "콩",
+          "mm": 8,
+          "density": 1.3,
+          "magnetic": false,
+          "soluble": false,
+          "color": "#d5b25e"
+        }
+      ]
+    },
+    "nutrients": [
+      {
+        "reagent": "biuret",
+        "colour": "보라색",
+        "positive": [
+          "protein"
+        ]
+      },
+      {
+        "reagent": "sudan",
+        "colour": "선홍색",
+        "positive": [
+          "fat"
+        ]
+      }
+    ],
+    "stars": {
+      "ratio": 9999.999999999998
+    },
+    "wave": [
+      {
+        "v": 20,
+        "f": 1,
+        "lambda": 20,
+        "period": 1,
+        "verdict": "same",
+        "lambdaPx": 194
+      },
+      {
+        "v": 20,
+        "f": 2,
+        "lambda": 10,
+        "period": 0.5,
+        "verdict": "shorter",
+        "lambdaPx": 97
+      }
+    ],
+    "pea": [
+      {
+        "key": "RY",
+        "p": 0.5625
+      },
+      {
+        "key": "Ry",
+        "p": 0.1875
+      },
+      {
+        "key": "rY",
+        "p": 0.1875
+      },
+      {
+        "key": "ry",
+        "p": 0.0625
+      }
+    ],
+    "life": [
+      "배춧잎",
+      "꽃의 꿀"
+    ]
+  },
+  "quiz": [
+    "force-motion#q4",
+    "circuit-bulbs#q2",
+    "energy-conversion#q1",
+    "mixture-separation#q4",
+    "seed-germination#q3",
+    "nutrient-detection#q4",
+    "stars#q4",
+    "weight-compare#q3",
+    "weight-compare#q4"
+  ],
+  "followups": [
+    "wave-transfer@frequency-spacing",
+    "pea-genetics@two-traits",
+    "life-cycle@stage-food"
+  ],
+  "viewports": [
+    {
+      "slug": "force-motion",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "force-motion",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "force-motion",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "force-motion",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "force-motion",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "circuit-bulbs",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "circuit-bulbs",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "circuit-bulbs",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "circuit-bulbs",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "circuit-bulbs",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "energy-conversion",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "energy-conversion",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "energy-conversion",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "energy-conversion",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "energy-conversion",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "mixture-separation",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "mixture-separation",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "mixture-separation",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "mixture-separation",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "mixture-separation",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "seed-germination",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "seed-germination",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "seed-germination",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "seed-germination",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "seed-germination",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "nutrient-detection",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "nutrient-detection",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "nutrient-detection",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "nutrient-detection",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "nutrient-detection",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "stars",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "stars",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "stars",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "stars",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "stars",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "weight-compare",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "weight-compare",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "weight-compare",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "weight-compare",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "weight-compare",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "wave-transfer",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "wave-transfer",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "wave-transfer",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "wave-transfer",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "wave-transfer",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "pea-genetics",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "pea-genetics",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "pea-genetics",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "pea-genetics",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "pea-genetics",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "life-cycle",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "life-cycle",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "life-cycle",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "life-cycle",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "life-cycle",
+      "width": 768,
+      "height": 1024
+    }
+  ],
+  "errors": []
+}

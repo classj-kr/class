@@ -1,0 +1,202 @@
+{
+  "completedAt": "2026-10-18T09:13:44.543Z",
+  "passed": true,
+  "change": "Student feedback now presents the current correct result and explanation. Removed scoring-history warnings from the shared assessment and eight individual experiments, plus a generic summary disclaimer. First-response evidence and misconception-specific explanations are preserved.",
+  "registeredApps": 196,
+  "courseRoutes": 201,
+  "questionsAcrossCourseRoutes": 806,
+  "engines": [
+    "Chrome on Windows",
+    "Playwright WebKit on Windows"
+  ],
+  "physicalDevicesTested": false,
+  "tests": 34,
+  "passes": 34,
+  "failures": 0,
+  "readability": [
+    {
+      "engine": "chromium",
+      "routes": 11,
+      "states": 790,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "engine": "webkit",
+      "routes": 11,
+      "states": 790,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "issues": 0,
+      "errors": 0
+    }
+  ],
+  "sourceUnchanged": true,
+  "sourceFiles": 953,
+  "captures": [
+    {
+      "file": "lens-image-diagnosis-chromium-1024.webp",
+      "width": 930,
+      "height": 497,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "lens-image-diagnosis-chromium-390.webp",
+      "width": 320,
+      "height": 713,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "lens-image-diagnosis-webkit-1024.webp",
+      "width": 930,
+      "height": 497,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "lens-image-diagnosis-webkit-390.webp",
+      "width": 320,
+      "height": 713,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "lens-image-question-chromium-1024.webp",
+      "width": 930,
+      "height": 299,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "lens-image-question-chromium-390.webp",
+      "width": 320,
+      "height": 671,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "lens-image-question-webkit-1024.webp",
+      "width": 930,
+      "height": 299,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "lens-image-question-webkit-390.webp",
+      "width": 320,
+      "height": 671,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-diagnosis-chromium-1024.webp",
+      "width": 930,
+      "height": 496,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-diagnosis-chromium-390.webp",
+      "width": 320,
+      "height": 685,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-diagnosis-webkit-1024.webp",
+      "width": 930,
+      "height": 496,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-diagnosis-webkit-390.webp",
+      "width": 320,
+      "height": 685,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-question-chromium-1024.webp",
+      "width": 930,
+      "height": 266,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-question-chromium-390.webp",
+      "width": 320,
+      "height": 449,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-question-webkit-1024.webp",
+      "width": 930,
+      "height": 266,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "file": "refraction-question-webkit-390.webp",
+      "width": 320,
+      "height": 449,
+      "alpha": false,
+      "lossless": true
+    }
+  ],
+  "manualReview": [
+    "refraction-question-webkit-1024.webp",
+    "lens-image-question-chromium-390.webp"
+  ],
+  "provenance": {
+    "initial": "results.json",
+    "allAssessment": "all-assessment.log",
+    "localRecheck": {
+      "file": "local-recheck.log",
+      "tests": 26,
+      "passes": 22,
+      "failures": 4
+    },
+    "galacticRecheck": {
+      "file": "galactic-recheck.log",
+      "tests": 3,
+      "passes": 3,
+      "failures": 0
+    },
+    "phaseRecheck": {
+      "file": "phase-recheck.log",
+      "tests": 3,
+      "passes": 3,
+      "failures": 0
+    },
+    "notes": [
+      "Initial local-only browser checks could not connect because the preview server was stopped. Restarted it on the same loopback port and reran those checks.",
+      "Two older control-size tests counted intentionally hidden native selects after their visible-button replacement. Corrected their visibility filter without changing size thresholds; reran both full test files."
+    ]
+  },
+  "references": [
+    {
+      "title": "IXL: feedback and recovery from mistakes",
+      "url": "https://blog.ixl.com/2021/04/20/how-ixl-helps-kids-bounce-back-from-mistakes/"
+    },
+    {
+      "title": "Khan Academy: exercise, quiz and unit-test retakes",
+      "url": "https://support.khanacademy.org/hc/en-us/articles/35941807811213-Can-a-student-restart-an-exercise-quiz-or-unit-test"
+    }
+  ]
+}

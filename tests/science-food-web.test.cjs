@@ -35,7 +35,7 @@ for(const engine of ['chromium','webkit'])test(engine+': classify, build, correc
   }
  }
  await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);await page.locator('#fwReset').tap();assert.deepEqual(await snapshot(),M.create());
- await page.locator('.quiz-section>summary').tap();for(const card of await page.locator('.quiz-card').all()){const answer=await card.getAttribute('data-answer'),wrong=answer==='a'?'b':'a';await card.locator('input[value="'+wrong+'"]').check();await card.locator('.answer-button').click();await card.locator('input[value="'+answer+'"]').check();await card.locator('.answer-button').click();assert.match(await card.textContent(),/첫 응답은 오답/);}
+ await page.locator('.quiz-section>summary').tap();for(const card of await page.locator('.quiz-card').all()){const answer=await card.getAttribute('data-answer'),wrong=answer==='a'?'b':'a';await card.locator('input[value="'+wrong+'"]').check();await card.locator('.answer-button').click();await card.locator('input[value="'+answer+'"]').check();await card.locator('.answer-button').click();assert.match(await card.textContent(),/정답입니다\./);}
  await page.waitForFunction(()=>!!document.querySelector('.exam-widget')?.examController);assert.deepEqual(await page.locator('.exam-widget').evaluate(w=>w.examController.ids()),['food-web@decomposer','food-web@remaining-path']);assert.deepEqual(errors,[]);
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
 });

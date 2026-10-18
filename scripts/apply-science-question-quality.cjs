@@ -25,6 +25,13 @@ for(const e of entries){const old=before.find(q=>q.id===e.id);assert(old,e.id);c
 // the stale generated version through assessment-content's runtime merge.
 const authoredFollowups=authoredAssessments.followups;
 if(!ids)for(const [slug,qs]of Object.entries(require(path.join(lab,'assessment-content.js')).followups))metadata.followups[slug]=(authoredFollowups[slug]||qs).map(reviseTransfer);
+// Keep the new outcome questions in the canonical authoring path as well as
+// focused core-result revisions; unrelated focused revisions stay untouched.
+if(!ids||process.argv.includes('--core-results'))for(const [slug,qs]of Object.entries(require('./science-core-result-questions.cjs').followups)){
+ const byId=new Map((metadata.followups[slug]||[]).map(q=>[q.id,q]));
+ for(const q of qs)byId.set(q.id,q);
+ metadata.followups[slug]=[...byId.values()];
+}
 const file=path.join(lab,'question-quality-content.js'),content=`/* Editorial feedback for revised choices; interpreted only after correction. */\n(function(root){const data=${JSON.stringify(metadata,null,2)};if(typeof module!=='undefined')module.exports=data;else root.scienceQualityContent=data;})(typeof window==='undefined'?globalThis:window);\n`;
 if(check)assert.equal(fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n'),content);else fs.writeFileSync(file,content);
 console.log(JSON.stringify({revised:entries.length,check}));

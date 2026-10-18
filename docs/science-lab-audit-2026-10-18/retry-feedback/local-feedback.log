@@ -1,0 +1,236 @@
+✔ source tables, printed trend equations and thickness formula are numerically consistent (0.9804ms)
+✖ chromium: source-data analysis, calculation feedback, responsive graph and retained first answers (1376.3293ms)
+✖ webkit: source-data analysis, calculation feedback, responsive graph and retained first answers (2807.5246ms)
+✔ common and elective courses have separate questions and source scope (0.9804ms)
+✖ chromium: both DNA courses, twelve positions, first answers, slow rotation and responsive text (879.404ms)
+✖ webkit: both DNA courses, twelve positions, first answers, slow rotation and responsive text (2265.3956ms)
+✔ original rounded tables conserve atoms, distinguish exponents and reject zero denominators (14.1178ms)
+✖ chromium: source tables, undefined values, retained diagnosis and responsive comparisons (851.0676ms)
+✖ webkit: source tables, undefined values, retained diagnosis and responsive comparisons (2286.2061ms)
+✔ five observed images and ordered boundaries retain source hashes; independent horizon formula and photo angular scale (188.3637ms)
+✖ chromium: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (845.8664ms)
+✖ webkit: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (2264.3725ms)
+✔ source table spectral coordinates and same-band magnitude ratios (0.7852ms)
+✖ chromium: graph construction, retained first errors, comparison and tablet layouts (695.4135ms)
+✖ webkit: graph construction, retained first errors, comparison and tablet layouts (2271.0125ms)
+✔ source rows, unit-invariant law, focus distances and equal swept areas (4.1267ms)
+✖ chromium: source data, transformations, animation, touch and retained first errors (732.6609ms)
+✖ webkit: source data, transformations, animation, touch and retained first errors (2277.0432ms)
+✔ source photos retain exact hashes and teaching models distinguish mineral streak, scratch and rock class (65.3408ms)
+✖ chromium: original specimens, controls, persistent classification errors and four diagnostic questions (712.0674ms)
+✖ webkit: original specimens, controls, persistent classification errors and four diagnostic questions (2273.7105ms)
+✖ chromium: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (825.985ms)
+✖ webkit: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (2279.8977ms)
+✔ original table values and independent enthalpy integration, bath equilibrium and phase transitions (4725.9688ms)
+✖ chromium: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (858.5601ms)
+✖ webkit: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (2305.0622ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 8
+ℹ fail 18
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34361.7575
+
+✖ failing tests:
+
+test at tests\science-crust-thickness.test.cjs:8:43
+✖ chromium: source-data analysis, calculation feedback, responsive graph and retained first answers (1376.3293ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/crust-thickness/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/crust-thickness/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-crust-thickness.test.cjs:10:242) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/crust-thickness/", waiting until "load"' ]
+  }
+
+test at tests\science-crust-thickness.test.cjs:8:43
+✖ webkit: source-data analysis, calculation feedback, responsive graph and retained first answers (2807.5246ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/crust-thickness/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-crust-thickness.test.cjs:10:242) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/crust-thickness/", waiting until "load"' ]
+  }
+
+test at tests\science-dna-course.test.cjs:3:43
+✖ chromium: both DNA courses, twelve positions, first answers, slow rotation and responsive text (879.404ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/dna-structure/?school=high-common
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/dna-structure/?school=high-common", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-dna-course.test.cjs:6:63) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/dna-structure/?school=high-common", waiting until "load"' ]
+  }
+
+test at tests\science-dna-course.test.cjs:3:43
+✖ webkit: both DNA courses, twelve positions, first answers, slow rotation and responsive text (2265.3956ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/dna-structure/?school=high-common", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-dna-course.test.cjs:6:63) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/dna-structure/?school=high-common", waiting until "load"' ]
+  }
+
+test at tests\science-equilibrium-data.test.cjs:11:43
+✖ chromium: source tables, undefined values, retained diagnosis and responsive comparisons (851.0676ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/equilibrium-data/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/equilibrium-data/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-equilibrium-data.test.cjs:13:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/equilibrium-data/", waiting until "load"' ]
+  }
+
+test at tests\science-equilibrium-data.test.cjs:11:43
+✖ webkit: source tables, undefined values, retained diagnosis and responsive comparisons (2286.2061ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/equilibrium-data/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-equilibrium-data.test.cjs:13:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/equilibrium-data/", waiting until "load"' ]
+  }
+
+test at tests\science-galactic.test.cjs:10:43
+✖ chromium: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (845.8664ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/galactic-objects/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/galactic-objects/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-galactic.test.cjs:11:568) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/galactic-objects/", waiting until "load"' ]
+  }
+
+test at tests\science-galactic.test.cjs:10:43
+✖ webkit: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (2264.3725ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/galactic-objects/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-galactic.test.cjs:11:568) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/galactic-objects/", waiting until "load"' ]
+  }
+
+test at tests\science-hr-diagram.test.cjs:5:43
+✖ chromium: graph construction, retained first errors, comparison and tablet layouts (695.4135ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/hr-diagram/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/hr-diagram/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-hr-diagram.test.cjs:7:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/hr-diagram/", waiting until "load"' ]
+  }
+
+test at tests\science-hr-diagram.test.cjs:5:43
+✖ webkit: graph construction, retained first errors, comparison and tablet layouts (2271.0125ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/hr-diagram/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-hr-diagram.test.cjs:7:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/hr-diagram/", waiting until "load"' ]
+  }
+
+test at tests\science-kepler-data.test.cjs:8:43
+✖ chromium: source data, transformations, animation, touch and retained first errors (732.6609ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/kepler-data/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/kepler-data/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-kepler-data.test.cjs:10:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/kepler-data/", waiting until "load"' ]
+  }
+
+test at tests\science-kepler-data.test.cjs:8:43
+✖ webkit: source data, transformations, animation, touch and retained first errors (2277.0432ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/kepler-data/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-kepler-data.test.cjs:10:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/kepler-data/", waiting until "load"' ]
+  }
+
+test at tests\science-middle-rocks.test.cjs:3:43
+✖ chromium: original specimens, controls, persistent classification errors and four diagnostic questions (712.0674ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/minerals-rocks/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/minerals-rocks/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-middle-rocks.test.cjs:5:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/minerals-rocks/", waiting until "load"' ]
+  }
+
+test at tests\science-middle-rocks.test.cjs:3:43
+✖ webkit: original specimens, controls, persistent classification errors and four diagnostic questions (2273.7105ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/minerals-rocks/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-middle-rocks.test.cjs:5:223) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/minerals-rocks/", waiting until "load"' ]
+  }
+
+test at tests\science-observation-diagnosis.test.cjs:3:43
+✖ chromium: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (825.985ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/refraction/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/refraction/", waiting until "load"[22m
+  
+      at go (E:\webprojects\class\tests\science-observation-diagnosis.test.cjs:9:33)
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-observation-diagnosis.test.cjs:13:9) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/refraction/", waiting until "load"' ]
+  }
+
+test at tests\science-observation-diagnosis.test.cjs:3:43
+✖ webkit: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (2279.8977ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/refraction/", waiting until "load"[22m
+  
+      at go (E:\webprojects\class\tests\science-observation-diagnosis.test.cjs:9:33)
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-observation-diagnosis.test.cjs:13:9) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/refraction/", waiting until "load"' ]
+  }
+
+test at tests\science-phase-curves.test.cjs:12:43
+✖ chromium: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (858.5601ms)
+  page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:18765/learning/inquiry/science-lab/phase-curves/
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/phase-curves/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-phase-curves.test.cjs:13:458) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/phase-curves/", waiting until "load"' ]
+  }
+
+test at tests\science-phase-curves.test.cjs:12:43
+✖ webkit: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (2305.0622ms)
+  page.goto: Could not connect to server
+  Call log:
+  [2m  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/phase-curves/", waiting until "load"[22m
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-phase-curves.test.cjs:13:458) {
+    name: 'Error',
+    log: [ '  - navigating to "http://127.0.0.1:18765/learning/inquiry/science-lab/phase-curves/", waiting until "load"' ]
+  }

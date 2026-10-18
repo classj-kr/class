@@ -1,0 +1,122 @@
+✔ source tables, printed trend equations and thickness formula are numerically consistent (0.9183ms)
+✔ chromium: source-data analysis, calculation feedback, responsive graph and retained first answers (4618.2063ms)
+✔ webkit: source-data analysis, calculation feedback, responsive graph and retained first answers (8402.4053ms)
+✔ common and elective courses have separate questions and source scope (0.8004ms)
+✔ chromium: both DNA courses, twelve positions, first answers, slow rotation and responsive text (7522.6754ms)
+✔ webkit: both DNA courses, twelve positions, first answers, slow rotation and responsive text (14318.5659ms)
+✔ original rounded tables conserve atoms, distinguish exponents and reject zero denominators (6.2579ms)
+✔ chromium: source tables, undefined values, retained diagnosis and responsive comparisons (5612.8561ms)
+✔ webkit: source tables, undefined values, retained diagnosis and responsive comparisons (8885.9467ms)
+✔ five observed images and ordered boundaries retain source hashes; independent horizon formula and photo angular scale (152.5344ms)
+✖ chromium: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (1044.0372ms)
+✖ webkit: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (743.9183ms)
+✔ source table spectral coordinates and same-band magnitude ratios (0.8255ms)
+✔ chromium: graph construction, retained first errors, comparison and tablet layouts (7455.7007ms)
+✔ webkit: graph construction, retained first errors, comparison and tablet layouts (8184.1792ms)
+✔ source rows, unit-invariant law, focus distances and equal swept areas (3.7806ms)
+✔ chromium: source data, transformations, animation, touch and retained first errors (5660.8601ms)
+✔ webkit: source data, transformations, animation, touch and retained first errors (9737.4013ms)
+✔ source photos retain exact hashes and teaching models distinguish mineral streak, scratch and rock class (61.6039ms)
+✔ chromium: original specimens, controls, persistent classification errors and four diagnostic questions (10251.9009ms)
+✔ webkit: original specimens, controls, persistent classification errors and four diagnostic questions (15301.395ms)
+✔ chromium: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (3305.6754ms)
+✔ webkit: observation errors survive apparatus changes, correction and reload; diagnosis returns to the relevant condition (4252.1337ms)
+✔ original table values and independent enthalpy integration, bath equilibrium and phase transitions (1192.8609ms)
+✖ chromium: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (871.7794ms)
+✖ webkit: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (533.0453ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 22
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118673.3413
+
+✖ failing tests:
+
+test at tests\science-galactic.test.cjs:10:43
+✖ chromium: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (1044.0372ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'M44 · 벌집 성단M5초승달 성운 · NGC6888마귀할멈 성운 · IC2118흑상어 성운 · LDN1235'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-galactic.test.cjs:12:703)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'M44 · 벌집 성단M5초승달 성운 · NGC6888마귀할멈 성운 · IC2118흑상어 성운 · LDN1235' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-galactic.test.cjs:10:43
+✖ webkit: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (743.9183ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'M44 · 벌집 성단M5초승달 성운 · NGC6888마귀할멈 성운 · IC2118흑상어 성운 · LDN1235'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-galactic.test.cjs:12:703)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'M44 · 벌집 성단M5초승달 성운 · NGC6888마귀할멈 성운 · IC2118흑상어 성운 · LDN1235' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-phase-curves.test.cjs:12:43
+✖ chromium: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (871.7794ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '0분1분2분3분4분5분6분7분8분9분10분11분12분13분',
+  +   '0분1분2분3분4분5분6분7분8분9분10분11분12분13분'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-phase-curves.test.cjs:14:471)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '0분1분2분3분4분5분6분7분8분9분10분11분12분13분', '0분1분2분3분4분5분6분7분8분9분10분11분12분13분' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-phase-curves.test.cjs:12:43
+✖ webkit: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (533.0453ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '0분1분2분3분4분5분6분7분8분9분10분11분12분13분',
+  +   '0분1분2분3분4분5분6분7분8분9분10분11분12분13분'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-phase-curves.test.cjs:14:471)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '0분1분2분3분4분5분6분7분8분9분10분11분12분13분', '0분1분2분3분4분5분6분7분8분9분10분11분12분13분' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

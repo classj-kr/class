@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-18T09:36:40.904Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "weight-compare",
+      "scenarios": 30
+    }
+  ],
+  "scenarios": 30,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

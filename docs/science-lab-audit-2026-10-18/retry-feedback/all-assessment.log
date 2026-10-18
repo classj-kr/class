@@ -1,0 +1,18 @@
+✔ display permutation is stable, preserves identities, and varies keyed positions across questions (1.9276ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.5006ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7099ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1513ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1817ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (92.9589ms)
+chromium: 196 apps / 201 course routes / 806 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (28941.5778ms)
+webkit: 196 apps / 201 course routes / 806 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (37048.6466ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66268.4882
