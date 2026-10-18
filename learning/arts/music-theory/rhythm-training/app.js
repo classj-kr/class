@@ -258,6 +258,7 @@
             chart = C.chart(config(), seed(), mode === 'class' ? 8 : Number($('length').value));
         }
         renderScore(); $('result').hidden = true;
+        $('timingDetails').hidden = true;
         $('feedback').textContent = ''; $('combo').textContent = '';
         $('phase').textContent = ''; $('barCount').textContent = `${chart.bars.length}마디 · 4/4박자`;
         showPractice(true); controls();
@@ -307,7 +308,9 @@
         try {
             await unlock(); silence();
             const beat = 60 / chart.bpm, startAt = audio.currentTime + .18 + beat * 4;
-            run = { demo, roundId, startAt, taps: [], result: C.judge(chart, []), nextMiss: 0, nextClick: -4, nextTarget: 0, lastBeat: -99 };
+            run = { demo, roundId, startAt, taps: [], result: C.judge(chart, []), nextMiss: 0, nextClick: -4, nextTarget: 0, lastBeat: -99,
+                input: { keydowns: 0, keyups: 0, repeats: 0, ignoredFocus: 0, outside: 0 }, clocks: [], queue: [] };
+            $('timingDetails').hidden = true;
             resetFeedback();
             streak = 0; renderScore(); $('result').hidden = true; $('combo').textContent = '';
             $('feedback').textContent = '4';
@@ -333,6 +336,8 @@
         }
         const currentBeat = Math.floor(time / beat);
         if (currentBeat !== run.lastBeat) {
+            run.clocks.push({ beat: currentBeat, outputGapMs: Math.round((audio.currentTime - heardTime()) * 1000),
+                outputLatencyMs: Math.round((audio.outputLatency || 0) * 1000), baseLatencyMs: Math.round((audio.baseLatency || 0) * 1000) });
             [...$('beats').children].forEach((dot, i) => dot.classList.toggle('active', i === ((currentBeat % 4) + 4) % 4));
             run.lastBeat = currentBeat;
             if (time < 0) { $('phase').textContent = '준비 박자'; $('feedback').textContent = String(Math.min(4, -currentBeat)); }
@@ -348,7 +353,7 @@
             lines[bar].setAttribute('x1', String(x)); lines[bar].setAttribute('x2', String(x));
             paintMarks(time);
         }
-        if (time > chart.duration + .15) { void finish(false); return; }
+        if (time > chart.duration + beat / 4) { void finish(false); return; }
         raf = requestAnimationFrame(frame);
     }
     function paintMarks(time) {
@@ -356,12 +361,12 @@
         for (const head of heads) {
             const mark = result.marks.find(m => Math.abs(m.time - head.time) < .001);
             head.node?.classList.toggle('hit', run.demo ? time >= head.time : mark?.points === 1);
-            head.node?.classList.toggle('missed', !run.demo && (mark?.hit && mark.points === 0 || !mark?.hit && time > head.time + C.noteWindow(chart, head.index)));
+            head.node?.classList.toggle('missed', !run.demo && (mark?.hit && mark.points === 0 || !mark?.hit && time > head.time + C.noteWindow(chart, head.index, 'late')));
         }
     }
     function expireMisses(time) {
         let missed = false;
-        while (run.nextMiss < chart.targets.length && chart.targets[run.nextMiss] + C.noteWindow(chart, run.nextMiss) < time) {
+        while (run.nextMiss < chart.targets.length && chart.targets[run.nextMiss] + C.noteWindow(chart, run.nextMiss, 'late') < time) {
             if (!run.result.marks[run.nextMiss].hit) missed = true;
             run.nextMiss++;
         }
@@ -376,7 +381,8 @@
         $('pad').classList.add('pressed'); clearTimeout(pressedTimer);
         pressedTimer = setTimeout(() => $('pad').classList.remove('pressed'), 100);
         if (!run || run.demo || listening()) { if (!listening()) burst(event); return; }
-        if (time < -.14 || time > chart.duration + .14 || run.taps.length >= 512) return;
+        if (time < -C.noteWindow(chart, 0, 'early') || time > chart.duration + 60 / chart.bpm / 4 || run.taps.length >= 512) { run.input.outside++; return; }
+        run.queue.push(Math.round((now - inputTime) * 1000) / 1000);
         expireMisses(time);
         const before = run.result;
         run.taps.push(time);
@@ -412,8 +418,38 @@
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('misses').textContent = result.misses; $('extras').textContent = result.wrong; $('result').hidden = false;
         }
+        if (!ended.demo) timingReport(ended, interrupted);
         if (ended.restoreChart) { chart = ended.restoreChart; renderScore(); $('barCount').textContent = `${chart.bars.length}마디 · 4/4박자`; }
         if (ended.roundId && credentials) { pendingResult = { roundId: ended.roundId, taps: ended.taps, interrupted }; saveRoom(); await submitResult(); }
+    }
+    function timingReport(ended, interrupted) {
+        const result = C.judge(chart, ended.taps), beat = 60 / chart.bpm;
+        const nearestErrors = ended.taps.map(tap => {
+            let index = -1, distance = Infinity;
+            chart.targets.forEach((target, i) => { if (Math.abs(tap - target) < distance) { index = i; distance = Math.abs(tap - target); } });
+            return [index, Math.round((tap - chart.targets[index]) / beat * 1000) / 1000];
+        });
+        const report = { version: '20261018-nearest-attack-v4', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+            targets: chart.targets.length, taps: ended.taps.length, input: ended.input,
+            accuracy: result.accuracy, hits: result.hits, misses: result.misses, extras: result.extras,
+            targetBeats: chart.targets.map(time => Math.round(time / beat * 1000) / 1000),
+            tapBeats: ended.taps.map(time => Math.round(time / beat * 1000) / 1000), nearestErrors,
+            queueMs: ended.queue, clocks: ended.clocks };
+        console.info('RHYTHM_TIMING_REPORT ' + JSON.stringify(report));
+        $('timingSummary').textContent = `음표 ${report.targets}개 · 기록된 타격 ${report.taps}개 · 스페이스 누름 ${report.input.keydowns}회 · 키를 누르고 있는 동안의 반복 ${report.input.repeats}회`;
+        $('timingRows').replaceChildren();
+        const position = time => { const value = time / beat; return value < 0 ? `시작 ${(-value).toFixed(3)}박 전` : `${Math.floor(value / 4) + 1}마디 ${(value % 4 + 1).toFixed(2)}박`; };
+        result.marks.forEach(mark => {
+            const closest = mark.hit ? mark.time + mark.error : ended.taps.reduce((best, tap) => best === null || Math.abs(tap - mark.time) < Math.abs(best - mark.time) ? tap : best, null);
+            const difference = closest === null ? null : (closest - mark.time) / beat;
+            const row = document.createElement('tr');
+            for (const value of [position(mark.time), closest === null ? '없음' : position(closest),
+                difference === null ? '—' : `${difference < 0 ? '빠름' : '늦음'} ${Math.abs(difference).toFixed(3)}박`, mark.hit ? '맞음' : '놓침']) {
+                const cell = document.createElement('td'); cell.textContent = value; row.append(cell);
+            }
+            $('timingRows').append(row);
+        });
+        $('timingDetails').hidden = false;
     }
     function updateRoom(state) {
         room = state; $('roomCode').textContent = state.code;
@@ -491,7 +527,11 @@
     $('pad').addEventListener('click', event => { if (event.detail === 0) tap(event); });
     document.addEventListener('keydown', event => {
         if (event.code !== 'Space' || event.altKey || event.ctrlKey || event.metaKey) return;
-        if (event.target.closest('input,select,textarea,a,button:not(#pad),[contenteditable=true]')) return;
+        if (run && !run.demo) { run.input.keydowns++; if (event.repeat) run.input.repeats++; }
+        if (event.target.closest('input,select,textarea,a,button:not(#pad),[contenteditable=true]')) {
+            if (run && !run.demo) run.input.ignoredFocus++;
+            return;
+        }
         event.preventDefault();
         if (listening()) {
             if (!event.repeat && !run && !starting) void play(true).catch(error => notice(error.message));
@@ -499,6 +539,7 @@
         }
         if (!event.repeat) tap(event);
     });
+    document.addEventListener('keyup', event => { if (event.code === 'Space' && run && !run.demo) run.input.keyups++; });
     document.addEventListener('visibilitychange', () => { if (document.hidden && run) { void finish(true); notice('다른 화면으로 이동해 연주를 멈췄어요.'); } });
     $('joinForm').addEventListener('submit', async event => {
         event.preventDefault(); if (loading) return; loading = true; $('join').disabled = true;

@@ -52,7 +52,7 @@ test('a long note has one onset; misses and extra taps reduce scores; rest attac
     assert.equal(Core.judge(c, [0, .6, 1.2, 2.4]).accuracy, 83.3);
     assert.equal(Core.judge(c, [.06, 1.26, 2.46]).accuracy, 100);
     assert.equal(Core.judge(c, [.06, 1.26, 2.46]).wrong, 0);
-    assert.equal(Core.judge(c, [.3, 1.5, 2.7]).accuracy, 0);
+    assert.equal(Core.judge(c, [.3, 1.5, 2.69]).accuracy, 100, 'each tap is inside its own attack boundaries');
     assert.equal(Core.judge(c, [0]).misses, 2);
     assert.equal(Core.judge(c, [0, 1.2, 2.4, ...Array(20).fill(.6)]).accuracy, 0);
 });
@@ -90,11 +90,10 @@ test('sixteenth taps are compared with written attacks, not empty subdivisions',
         const slot = 60 / bpm / 4;
         const chart = { level: 3, bpm, targets: [0, 2 * slot, 4 * slot], duration: 4 * 60 / bpm };
         for (const direction of [-1, 1]) {
-            const near = Core.judge(chart, [2 * slot + direction * slot * .87]);
-            const far = Core.judge(chart, [2 * slot + direction * slot * .9]);
+            const near = Core.judge(chart, [2 * slot + direction * slot * .99]);
+            const far = Core.judge(chart, [2 * slot + direction * slot * 1.01]);
             assert.equal(near.hits, 1, JSON.stringify({ bpm, direction, kind: 'near' }));
-            assert.equal(far.hits, 0, JSON.stringify({ bpm, direction, kind: 'far' }));
-            assert.equal(far.extras, 1);
+            assert.equal(far.marks[1].hit, false, JSON.stringify({ bpm, direction, kind: 'far' }));
         }
         assert.equal(Core.judge(chart, [2 * slot - slot * .51]).hits, 1, 'an empty subdivision does not cut off the note window');
         assert.equal(Core.judge(chart, [2 * slot - 1e-9]).hits, 1, 'a tap just before the written attack is correct');
@@ -102,6 +101,31 @@ test('sixteenth taps are compared with written attacks, not empty subdivisions',
         const dense = { level: 3, bpm, targets: [0, slot, 2 * slot], duration: 4 * 60 / bpm };
         assert.equal(Core.judge(dense, [slot - slot * .49]).hits, 1);
         assert.equal(Core.judge(dense, [slot - slot * .51]).marks[1].hit, false, 'a tap closer to the previous attack cannot hit this one');
+    }
+});
+
+test('unequal neighboring gaps have separate early and late midpoint boundaries', () => {
+    for (const bpm of [70, 100, 140]) {
+        const slot = 60 / bpm / 4;
+        const forward = { bpm, targets: [0, slot, 4 * slot] };
+        const reverse = { bpm, targets: [0, 3 * slot, 4 * slot] };
+        const late = Core.judge(forward, [slot * 1.65]);
+        const early = Core.judge(reverse, [slot * 2.35]);
+        assert.equal(late.marks[1].hit, true, 'the short preceding gap must not narrow the late boundary');
+        assert.equal(early.marks[1].hit, true, 'the short following gap must not narrow the early boundary');
+        assert.equal(Core.judge(forward, [slot * .49]).marks[1].hit, false);
+        assert.equal(Core.judge(reverse, [slot * 3.51]).marks[1].hit, false);
+        assert.equal(Core.noteWindow(forward, 1, 'early') < Core.noteWindow(forward, 1, 'late'), true);
+    }
+});
+
+test('the captured 0.242-beat late input stays correct when it is nearest to that attack', () => {
+    for (const bpm of [70, 80, 100, 140]) {
+        const beat = 60 / bpm;
+        const chart = { bpm, targets: [24, 24.25, 25.25].map(time => time * beat) };
+        const result = Core.judge(chart, [24, 24.492, 25.25].map(time => time * beat));
+        assert.equal(result.accuracy, 100);
+        assert.equal(result.marks[1].hit, true);
     }
 });
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
