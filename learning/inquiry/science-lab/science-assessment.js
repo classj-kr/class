@@ -47,7 +47,7 @@
  }
  function feedback(q,r){
   if(!r)return '';
-  if(r.correct)return (r.firstCorrect?'정답입니다. ':'다시 풀어 맞혔습니다. 첫 응답은 오답으로 남습니다. ')+q.why;
+  if(r.correct)return '정답입니다. '+q.why;
   return '다시 생각하고 다른 답을 골라보세요.';
  }
  const api={session,feedback,fingerprint,choiceOrder};
@@ -69,7 +69,6 @@
    diagnosis.append(el('h3','응답 결과'),el('p',`${s.total}문제 중 ${s.answered}문제 응답 · 처음부터 정답 ${s.firstCorrect} · 다시 풀어 정답 ${s.corrected} · 다시 확인 ${s.review}`));
    const pending=s.responses.filter(r=>r.status!=='first-correct');
    if(pending.length){const list=el('ul');for(const r of pending){const q=store.questions.get(r.id),li=el('li'),b=el('button',q.concept||q.question);b.type='button';b.onclick=()=>{const card=cards.get(r.id);if(card){card.scrollIntoView({block:'center'});card.querySelector('h3').tabIndex=-1;card.querySelector('h3').focus({preventScroll:true});}else section.dispatchEvent(new CustomEvent('science-review-question',{detail:r.id}));};li.append(b,el('span',r.status==='corrected'?(r.transferVerified?' — 다른 조건의 문제에서도 첫 응답 정답':' — 다시 풀어 정답'):' — 다시 확인'));list.append(li);}diagnosis.append(list);}
-   diagnosis.append(el('p','이 결과는 지금 푼 문항에 대한 응답입니다. 다시 풀어 맞힌 문항은 새로운 문제에서도 확인해 보세요.'));
    const again=el('button','실험 다시 보기');again.type='button';again.onclick=revisit;
    const reset=el('button','새로 풀기');reset.type='button';reset.onclick=()=>{store.reset();for(const card of cards.values()){card.querySelectorAll('input').forEach(i=>{i.checked=false;i.disabled=false;});delete card.dataset.state;card.querySelector('.answer-button').disabled=false;card.querySelector('.answer-result').textContent='';card.querySelector('.answer-explanation').hidden=true;}section.dispatchEvent(new CustomEvent('science-assessment-reset'));renderSummary();};diagnosis.append(again,reset);
   }

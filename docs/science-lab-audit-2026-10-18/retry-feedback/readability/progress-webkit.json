@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-18T09:11:26.547Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "refraction",
+      "scenarios": 220
+    },
+    {
+      "slug": "lens-image",
+      "scenarios": 5
+    },
+    {
+      "slug": "minerals-rocks",
+      "scenarios": 95
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-common",
+      "scenarios": 40
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-elective",
+      "scenarios": 40
+    },
+    {
+      "slug": "crust-thickness",
+      "scenarios": 45
+    },
+    {
+      "slug": "hr-diagram",
+      "scenarios": 45
+    },
+    {
+      "slug": "kepler-data",
+      "scenarios": 50
+    },
+    {
+      "slug": "equilibrium-data",
+      "scenarios": 65
+    },
+    {
+      "slug": "galactic-objects",
+      "scenarios": 75
+    },
+    {
+      "slug": "phase-curves",
+      "scenarios": 110
+    }
+  ],
+  "scenarios": 790,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

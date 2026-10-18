@@ -34,7 +34,7 @@ for(const engine of ['chromium','webkit'])test(engine+': correlation, boundaries
     if([1366,768,390].includes(width))await require('./science-screenshot.cjs')(p.locator('#scLab'),path.join(out,engine+'-'+mode+'-'+width+'.webp'));
    }
   }
-  await p.setViewportSize({width:768,height:1024});await p.locator('.quiz-section>summary').tap();for(const card of await p.locator('.quiz-card').all()){const correct=await card.getAttribute('data-answer');await card.locator('input[value="'+(correct==='a'?'b':'a')+'"]').check();await card.locator('.answer-button').tap();await card.locator('input[value="'+correct+'"]').check();await card.locator('.answer-button').tap();assert.match(await card.innerText(),/첫 응답은 오답/);}
-  await p.reload();await p.waitForSelector('[data-assessment-ready]',{state:'attached'});await p.locator('.quiz-section>summary').tap();for(const card of await p.locator('.quiz-card').all())assert.match(await card.innerText(),/첫 응답은 오답/);assert.deepEqual(errors,[]);
+  await p.setViewportSize({width:768,height:1024});await p.locator('.quiz-section>summary').tap();for(const card of await p.locator('.quiz-card').all()){const correct=await card.getAttribute('data-answer');await card.locator('input[value="'+(correct==='a'?'b':'a')+'"]').check();await card.locator('.answer-button').tap();await card.locator('input[value="'+correct+'"]').check();await card.locator('.answer-button').tap();assert.match(await card.innerText(),/정답입니다\./);}
+  await p.reload();await p.waitForSelector('[data-assessment-ready]',{state:'attached'});await p.locator('.quiz-section>summary').tap();for(const card of await p.locator('.quiz-card').all())assert.match(await card.innerText(),/정답입니다\./);assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });

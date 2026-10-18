@@ -7,7 +7,7 @@
  const modeBath=()=>id==='lauric'?(removed?20:70):bath;
  const data=()=>M.dataset(id,modeBath()),valid=()=>id==='lauric'?prepared&&probe==='water':id!=='freeze'||probe==='water',answerKey=()=>id==='freeze'?id+':'+bath:id==='lauric'?id+':'+modeBath():id;
  const stop=()=>{clearInterval(timer);timer=null;};
- function feedback(){const a=answers[answerKey()];$('hcFeedback').textContent=seen<data().points.length-1?'끝까지 관찰한 뒤 구간을 확인할 수 있습니다.':a?.last?.text?(a.last.correct?'구간을 바르게 찾았습니다. ':'다시 살펴보세요. ')+a.last.text+(a.first?.correct===false&&a.last.correct?' 첫 응답은 오답으로 남습니다.':''):'온도뿐 아니라 물질의 상태도 함께 살펴보세요.';}
+ function feedback(){const a=answers[answerKey()];$('hcFeedback').textContent=seen<data().points.length-1?'끝까지 관찰한 뒤 구간을 확인할 수 있습니다.':a?.last?.text?(a.last.correct?'구간을 바르게 찾았습니다. ':'다시 살펴보세요. ')+a.last.text:'온도뿐 아니라 물질의 상태도 함께 살펴보세요.';}
  function reset(){stop();seen=read=0;$('hcStatus').textContent=id==='lauric'&&!prepared?'먼저 로르산을 중탕하여 모두 녹이세요.':valid()?'시간을 보내며 온도와 상태를 관찰하세요.':'센서 끝을 시료 속에 두되 시험관 벽과 바닥에서 떨어뜨리세요. 이 위치의 값은 시료의 온도로 사용할 수 없습니다.';render();}
  function choose(value){if(!['boil','melt','boil2','freeze','lauric'].includes(value))return;id=value;if(id==='lauric')prepared=removed=false;reset();}
  function scene(){

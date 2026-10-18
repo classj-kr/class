@@ -207,6 +207,7 @@ function explain(a) {
     $('resultEmpty').hidden = true;
     $('resultContent').hidden = false;
     const v = a.verdict;
+    $('predictionResult').hidden = !state.prediction;
     if (state.prediction) {
         const ok = state.prediction === v;
         $('predictionResult').textContent = ok ? `예상이 맞았습니다 — ${WORDS[v]}.`
@@ -217,7 +218,11 @@ function explain(a) {
         $('predictionResult').className = 'prediction-result';
     }
 
-    const s = '같은 크기라도 재료에 따라 무게가 다릅니다. 같은 재료는 크기가 커질수록 무거워집니다. 저울의 표시를 비교하고 g 단위로 읽어 보세요.';
+    const result = a.floats ? '뜹니다' : '가라앉습니다';
+    const comparison = !a.floats && a.diff < 0
+        ? '비교할 나무보다 가볍지만 가라앉습니다. '
+        : a.floats && a.diff > 0 ? '비교할 나무보다 무겁지만 이 덩어리도 뜹니다. ' : '';
+    const s = `${a.mat.name} 덩어리는 ${grams(a.weight)} g이고 물에 ${result}. ${comparison}같은 재료의 속이 찬 덩어리는 크기를 바꾸면 무게가 달라져도 같은 물에서 뜨고 가라앉는 결과는 같습니다.`;
     $('elementaryExplanation').textContent = s;
 }
 

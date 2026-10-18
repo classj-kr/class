@@ -60,6 +60,8 @@ for(const engine of ['chromium','webkit'])test(engine+': all registered apps pre
    wrong.click();if(a.store.evidence(card.dataset.questionId))issues.push('selection graded before submit');button.click();if(!wrong.checked||!wrong.disabled||right.disabled)issues.push('wrong answer must leave the other options available');
    if(card.querySelector('.answer-result').textContent!=='다시 생각하고 다른 답을 골라보세요.'||!card.querySelector('.answer-explanation').hidden)issues.push('wrong answer leaked feedback');right.click();button.click();
    const r=a.store.evidence(card.dataset.questionId);if(r.first!==wrong.value||!r.correct||r.firstCorrect)issues.push('first error overwritten');
+   const feedback=card.querySelector('.answer-result').textContent,q=a.store.questions.get(card.dataset.questionId);
+   if(!feedback.startsWith('정답입니다. ')||!feedback.includes(q.why)||/오답으로 남|첫 응답의 혼동|다시 풀어 맞혔습니다/.test(feedback))issues.push('student feedback must explain the correct result without scoring-history boilerplate');
   }return{issues,summary:a.store.summary()};});
   assert.deepEqual(result.issues,[],slug);assert.equal(result.summary.answered,questionCount,slug);assert.equal(result.summary.corrected,questionCount,slug);assert.equal(result.summary.firstCorrect,0,slug);count+=questionCount;
   const order=await page.locator('.quiz-card').evaluateAll(cards=>cards.map(card=>({id:card.dataset.questionId,choices:[...card.querySelectorAll('input[type=radio]')].map(i=>i.value)})));

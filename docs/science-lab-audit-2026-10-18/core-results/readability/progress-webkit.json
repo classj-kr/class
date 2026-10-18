@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-18T09:32:21.339Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "wave-transfer",
+      "scenarios": 10
+    },
+    {
+      "slug": "force-motion",
+      "scenarios": 25
+    },
+    {
+      "slug": "circuit-bulbs",
+      "scenarios": 10
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    },
+    {
+      "slug": "weight-compare",
+      "scenarios": 30
+    },
+    {
+      "slug": "mixture-separation",
+      "scenarios": 30
+    },
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    },
+    {
+      "slug": "nutrient-detection",
+      "scenarios": 15
+    },
+    {
+      "slug": "pea-genetics",
+      "scenarios": 35
+    },
+    {
+      "slug": "life-cycle",
+      "scenarios": 35
+    },
+    {
+      "slug": "stars",
+      "scenarios": 5
+    }
+  ],
+  "scenarios": 260,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

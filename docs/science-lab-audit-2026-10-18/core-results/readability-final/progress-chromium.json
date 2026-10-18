@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-18T09:34:24.681Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    }
+  ],
+  "scenarios": 65,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "checkedAt": "2026-10-18T09:37:48.665Z",
+  "mainOutcomeScreen": {
+    "apps": 196,
+    "scope": "196 apps: side-by-side editorial screen of main outcome paragraphs or registered procedure summaries, base questions and authored followups. Same-app routed banks checked for candidate gaps. This is not a complete publisher-by-publisher textbook inventory or a certification of every supplementary activity outcome."
+  },
+  "changes": {
+    "apps": 11,
+    "revisedBaseItems": 9,
+    "additionalItems": 3
+  },
+  "outcomes": [
+    {
+      "file": "chromium-outcomes.json",
+      "engine": "chromium",
+      "weightConditions": 20,
+      "baseItems": 9,
+      "additionalItems": 3,
+      "viewports": 55
+    },
+    {
+      "file": "webkit-outcomes.json",
+      "engine": "webkit",
+      "weightConditions": 20,
+      "baseItems": 9,
+      "additionalItems": 3,
+      "viewports": 55
+    }
+  ],
+  "assessment": {
+    "apps": 196,
+    "courseRoutes": 201,
+    "baseItemsPerEngine": 806,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "tests": 8,
+    "failures": 0
+  },
+  "readability": [
+    {
+      "file": "readability/extended-chromium.json",
+      "engine": "chromium",
+      "routes": 11,
+      "screenStates": 260,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "device": "chromebook-scale",
+      "emulationOnly": true,
+      "liveWebFonts": true
+    },
+    {
+      "file": "readability/extended-webkit.json",
+      "engine": "webkit",
+      "routes": 11,
+      "screenStates": 260,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "device": "ipad",
+      "emulationOnly": true,
+      "liveWebFonts": true
+    },
+    {
+      "file": "readability-final/extended-chromium.json",
+      "engine": "chromium",
+      "routes": 2,
+      "screenStates": 65,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "device": "chromebook-scale",
+      "emulationOnly": true,
+      "liveWebFonts": true
+    },
+    {
+      "file": "readability-final/extended-webkit.json",
+      "engine": "webkit",
+      "routes": 2,
+      "screenStates": 65,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "device": "ipad",
+      "emulationOnly": true,
+      "liveWebFonts": true
+    },
+    {
+      "file": "readability-weight-final/extended-chromium.json",
+      "engine": "chromium",
+      "routes": 1,
+      "screenStates": 30,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "device": "chromebook-scale",
+      "emulationOnly": true,
+      "liveWebFonts": true
+    },
+    {
+      "file": "readability-weight-final/extended-webkit.json",
+      "engine": "webkit",
+      "routes": 1,
+      "screenStates": 30,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "device": "ipad",
+      "emulationOnly": true,
+      "liveWebFonts": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "assessment/lens-image-diagnosis-chromium-1024.webp",
+      "width": 930,
+      "height": 497,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/lens-image-diagnosis-chromium-390.webp",
+      "width": 320,
+      "height": 713,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/lens-image-diagnosis-webkit-1024.webp",
+      "width": 930,
+      "height": 497,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/lens-image-diagnosis-webkit-390.webp",
+      "width": 320,
+      "height": 713,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/lens-image-question-chromium-1024.webp",
+      "width": 930,
+      "height": 299,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/lens-image-question-chromium-390.webp",
+      "width": 320,
+      "height": 671,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/lens-image-question-webkit-1024.webp",
+      "width": 930,
+      "height": 299,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/lens-image-question-webkit-390.webp",
+      "width": 320,
+      "height": 671,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-diagnosis-chromium-1024.webp",
+      "width": 930,
+      "height": 496,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-diagnosis-chromium-390.webp",
+      "width": 320,
+      "height": 685,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-diagnosis-webkit-1024.webp",
+      "width": 930,
+      "height": 496,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-diagnosis-webkit-390.webp",
+      "width": 320,
+      "height": 685,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-question-chromium-1024.webp",
+      "width": 930,
+      "height": 266,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-question-chromium-390.webp",
+      "width": 320,
+      "height": 449,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-question-webkit-1024.webp",
+      "width": 930,
+      "height": 266,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "assessment/refraction-question-webkit-390.webp",
+      "width": 320,
+      "height": 449,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "chromium-large-wood.webp",
+      "width": 850,
+      "height": 1525,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "chromium-weight-questions-1366.webp",
+      "width": 1600,
+      "height": 2386,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "chromium-weight-questions-768.webp",
+      "width": 900,
+      "height": 2894,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "webkit-large-wood.webp",
+      "width": 1360,
+      "height": 2440,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "webkit-weight-questions-1366.webp",
+      "width": 2560,
+      "height": 3752,
+      "alpha": false,
+      "decoded": true
+    },
+    {
+      "file": "webkit-weight-questions-768.webp",
+      "width": 1440,
+      "height": 4572,
+      "alpha": false,
+      "decoded": true
+    }
+  ],
+  "limits": [
+    "화면·터치·배율을 재현한 Windows Chrome 및 WebKit 검사이며 실제 크롬북·아이패드 하드웨어 검사는 아니다.",
+    "196은 현재 앱 수이며 전체 필수실험 수가 아니다. 이번 문항 점검은 교과서 전체의 필수실험 목록 확정과 구별한다.",
+    "추가 탐구의 모든 조작 조합·모든 출판사 활동 결과까지 전수 대응 완료로 판정하지 않는다."
+  ],
+  "sourceSnapshot": "source-snapshot.json"
+}

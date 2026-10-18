@@ -1,0 +1,37 @@
+{
+  "completedAt": "2026-10-18T09:09:02.596Z",
+  "sourceFiles": [
+    "learning/inquiry/science-lab/science-assessment.js",
+    "learning/inquiry/science-lab/crust-thickness/app.js",
+    "learning/inquiry/science-lab/dna-structure/dna.js",
+    "learning/inquiry/science-lab/equilibrium-data/app.js",
+    "learning/inquiry/science-lab/hr-diagram/app.js",
+    "learning/inquiry/science-lab/kepler-data/app.js",
+    "learning/inquiry/science-lab/minerals-rocks/specimens.js",
+    "learning/inquiry/science-lab/phase-curves/app.js",
+    "learning/inquiry/science-lab/galactic-objects/model.js"
+  ],
+  "syntaxChecked": 135,
+  "results": [
+    {
+      "name": "all-assessment",
+      "passed": true,
+      "exitCode": 0,
+      "tests": 8,
+      "passes": 8,
+      "failures": 0,
+      "durationMs": 66314,
+      "log": "all-assessment.log"
+    },
+    {
+      "name": "local-feedback",
+      "passed": false,
+      "exitCode": 1,
+      "tests": 26,
+      "passes": 8,
+      "failures": 18,
+      "durationMs": 34405,
+      "log": "local-feedback.log"
+    }
+  ]
+}

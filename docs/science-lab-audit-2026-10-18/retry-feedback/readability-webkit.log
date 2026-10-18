@@ -1,0 +1,23 @@
+webkit: opening refraction
+webkit: refraction / 220 screen states
+webkit: opening lens-image
+webkit: lens-image / 225 screen states
+webkit: opening minerals-rocks
+webkit: minerals-rocks / 320 screen states
+webkit: opening dna-structure
+webkit: dna-structure (high-common) / 360 screen states
+webkit: opening dna-structure
+webkit: dna-structure (high-elective) / 400 screen states
+webkit: opening crust-thickness
+webkit: crust-thickness / 445 screen states
+webkit: opening hr-diagram
+webkit: hr-diagram / 490 screen states
+webkit: opening kepler-data
+webkit: kepler-data / 540 screen states
+webkit: opening equilibrium-data
+webkit: equilibrium-data / 605 screen states
+webkit: opening galactic-objects
+webkit: galactic-objects / 680 screen states
+webkit: opening phase-curves
+webkit: phase-curves / 790 screen states
+{"engine":"webkit","deviceProfile":"ipad","routes":11,"scenarios":790,"flagged":0,"fontFlags":0,"canvasFlags":0,"liveWebFonts":true,"loadedFontFamilies":["Noto Serif KR","Pretendard"],"errors":[]}

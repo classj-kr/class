@@ -2,12 +2,12 @@
  const slug=location.pathname.split('/').filter(Boolean).at(-1)==='index.html'?location.pathname.split('/').filter(Boolean).at(-2):location.pathname.split('/').filter(Boolean).at(-1);
  const m=window.scienceCurriculum?.[slug];if(!m)return;
  const assessmentBase=document.currentScript.src;
- const assessment=document.createElement('script');assessment.src=new URL('science-assessment.js?v=b6ee3e7b462b',assessmentBase);
+ const assessment=document.createElement('script');assessment.src=new URL('science-assessment.js?v=924433ac08a4',assessmentBase);
  const loadReview=()=>{const review=document.createElement('script');review.src=new URL('exam-review.js?v=b196572a02ab',assessmentBase);document.body.append(review);};
  assessment.onload=()=>{if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadReview,{once:true});else loadReview();};
  const assessmentContent=document.createElement('script');assessmentContent.src=new URL('assessment-content.js?v=e04d3903a843',assessmentBase);
  assessmentContent.onload=assessmentContent.onerror=()=>document.body.append(assessment);
- const loadContent=()=>{const quality=document.createElement('script');quality.src=new URL('question-quality-content.js?v=c3e1a72d58df',assessmentBase);quality.onload=quality.onerror=()=>document.body.append(assessmentContent);document.body.append(quality);};
+ const loadContent=()=>{const quality=document.createElement('script');quality.src=new URL('question-quality-content.js?v=3b8691e92602',assessmentBase);quality.onload=quality.onerror=()=>document.body.append(assessmentContent);document.body.append(quality);};
  if(m.diagnostic){
   const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=7b4b614042a8',assessmentBase);
   questions.onload=questions.onerror=loadContent;document.body.append(questions);
