@@ -2,7 +2,7 @@
  'use strict';const lab=document.querySelector('.acoustic-lab');if(!lab)return;const M=window.ScienceAcoustic,$=id=>document.getElementById(id);let s=M.create(),last=0;
  const text=(x,y,t,anchor='start')=>`<text x="${x}" y="${y}" text-anchor="${anchor}">${t}</text>`;
  const line=(x,y,x2,y2,color='#94afba',width=1)=>`<line x1="${x}" y1="${y}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}"/>`;
- function fit(){for(const svg of lab.querySelectorAll('svg')){const scale=svg.getBoundingClientRect().width/680;if(scale)for(const t of svg.querySelectorAll('text'))t.style.fontSize=15/scale+'px';}}
+ function fit(){if(window.scienceNormalizeFigure)return;for(const svg of lab.querySelectorAll('svg')){const scale=svg.getBoundingClientRect().width/680;if(scale)for(const t of svg.querySelectorAll('text'))t.style.fontSize=15/scale+'px';}}
  function scene(){const tube=s.mode==='tube',max=tube?.65:.3,x=v=>90+v/max*500,end=tube?x(s.position):590,k=2*Math.PI/M.wavelength(s),a=M.amplitude(s);let body=`<defs><linearGradient id="acGlass" x2="0" y2="1"><stop stop-color="#e4f3f8" stop-opacity=".8"/><stop offset=".45" stop-color="white" stop-opacity=".25"/><stop offset="1" stop-color="#b9d7e0" stop-opacity=".65"/></linearGradient></defs>`;
  // Only the apparatus position is drawn to scale; the housing and supports are schematic.
  body+=text(35,35,tube?'버저 → 마개 사이의 공기':'스피커와 반사판 사이 · 30 cm');
@@ -38,5 +38,5 @@
  $('acRecords').onclick=e=>{const button=e.target.closest('[data-remove]');if(button){s.records.splice(Number(button.dataset.remove),1);invalidate();render();status('선택한 값을 지웠습니다. 위치를 다시 측정하세요.');}};
  $('acCalculate').onclick=()=>{const r=M.result(s);if(r.error){$('acResult').textContent=r.error;return;}const wavelength=Number($('acWave').value),speed=Number($('acSpeed').value);if(Math.abs(wavelength-r.wavelength)>.0011){$('acResult').textContent='이웃한 같은 종류의 지점 사이 간격은 반 파장입니다. cm를 m로 바꾸고 파장을 다시 구하세요.';return;}if(Math.abs(speed-r.speed)>1.1){$('acResult').textContent='측정한 진동수에 파장(m)을 곱해 m/s로 계산하세요.';return;}$('acResult').textContent=`파장 ${r.wavelength.toFixed(3)} m, 음속 ${r.speed.toFixed(1)} m/s입니다. 다른 진동수나 측정 방법에서도 비교해 보세요.`;};
  $('acReset').onclick=()=>reset();new ResizeObserver(fit).observe($('acScene'));window.__acousticResonance={getState:()=>structuredClone(s)};
- function frame(t){if(t-last>45){if(s.powered&&!document.hidden&&!matchMedia('(prefers-reduced-motion: reduce)').matches){s.phase+=Math.min((t-last)/1000,.08)*3;animateParticles();}last=t;}requestAnimationFrame(frame);}reset();requestAnimationFrame(frame);
+ function frame(t){const dt=last?Math.min((t-last)/1000,.08):0;last=t;if(s.powered&&!document.hidden&&!matchMedia('(prefers-reduced-motion: reduce)').matches){s.phase+=dt*3;animateParticles();}requestAnimationFrame(frame);}reset();requestAnimationFrame(frame);
 })();

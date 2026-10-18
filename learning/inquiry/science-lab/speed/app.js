@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="lane-name" x="${X0 - 40}" y="${y - 30}">${i + 1}번 ${M.name}</text>`;
             const tOwn = a.kind === 'distance' ? Math.min(t, COURSE_M / M.speed) : t;
             const d = M.speed * tOwn;
-            out += `<text class="mover" x="${px(d).toFixed(1)}" y="${y + 8}" text-anchor="middle">${M.icon}</text>`;
+            out += window.scienceScene.art.traveller(i===0?state.a:state.b,px(d),y+8,tOwn*(M===MOVERS.runner?10:6));
             // stopwatch for this lane
             const wx = 420, wy = y - 8;
             out += `<rect class="watch" x="${wx - 4}" y="${wy - 12}" width="42" height="34" rx="6"/>`;
@@ -190,13 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = renderMain(a);
-        graphGroup.innerHTML = graph(a);
+        window.scienceScene.render(mainGroup,renderMain(a));
+        window.scienceScene.render(graphGroup,graph(a));
         stageBadge.textContent = `${a.A.icon} ${a.A.name} · ${a.B.icon} ${a.B.name}`;
         methodHint.textContent = state.mode === 'distance'
             ? '같은 거리를 가는 데 걸린 시간이 짧을수록 빠릅니다'
             : '같은 시간에 간 거리가 길수록 빠릅니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

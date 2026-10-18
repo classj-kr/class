@@ -53,7 +53,7 @@
   return s+'</svg>';
  }
  function render(message){
-  const m=api.observe(state);$('scopeApparatus').innerHTML=apparatus(m);$('scopeScene').innerHTML=scene(m);
+  const m=api.observe(state);$('scopeApparatus').innerHTML=apparatus(m);window.scienceScene.render($('scopeScene'),scene(m));
   for(const b of document.querySelectorAll('[data-part]'))b.disabled=state.parts.includes(b.dataset.part);
   for(const b of document.querySelectorAll('[data-view]'))b.setAttribute('aria-pressed',String(b.dataset.view===state.view));
   $('scopeBalanceValue').textContent=state.balance===0?'가운데':state.balance<0?'안쪽으로':'바깥쪽으로';
@@ -62,7 +62,7 @@
   $('scopeFocus').disabled=state.view!=='eyepiece';$('scopeX').disabled=$('scopeY').disabled=state.view==='eye';
   $('scopeReadings').innerHTML=[['대상 고도',m.altitude+'°'],['앞쪽 장애물',m.obstruction+'°'],['접안렌즈 배율',m.mag+'배']].map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('');
   $('scopeSceneNote').textContent=state.view==='eye'?'먼저 하늘에서 대상이 보이는지 확인하세요.':state.view==='finder'?'대상을 십자 중심으로 옮기세요. 접안렌즈는 이보다 좁은 범위를 보여 줍니다.':'방향을 유지하고 초점을 맞추세요. 높은 배율에서는 같은 방향 오차도 시야에서 크게 보입니다.';
-  $('scopeDetail').hidden=!m.details;$('scopeDetail').innerHTML=m.details?`<svg viewBox="0 0 140 140" role="img" aria-label="${m.target.name}의 대표 특징 확대"><rect width="140" height="140" rx="14" fill="#0a1726"/><g transform="translate(70 70)">${object(state.target,state.target==='moon'||state.target==='venus'?44:29,true,'detail')}</g></svg><div><strong>특징 확대 · ${m.target.name}</strong><p>${m.target.feature}</p></div>`:'';
+  $('scopeDetail').hidden=!m.details;window.scienceScene.render($('scopeDetail'),m.details?`<svg viewBox="0 0 140 140" role="img" aria-label="${m.target.name}의 대표 특징 확대"><rect width="140" height="140" rx="14" fill="#0a1726"/><g transform="translate(70 70)">${object(state.target,state.target==='moon'||state.target==='venus'?44:29,true,'detail')}</g></svg><div><strong>특징 확대 · ${m.target.name}</strong><p>${m.target.feature}</p></div>`:'');
   $('scopeStatus').textContent=message||m.message;
  }
  function reset(){state=api.initial(school);for(const [id,key]of [['scopeTarget','target'],['scopeSky','sky'],['scopeEyepiece','eyepiece'],['scopeBalance','balance'],['scopeX','x'],['scopeY','y'],['scopeFocus','focus'],['scopeFinder','finderOffset']])$(id).value=state[key];render();}

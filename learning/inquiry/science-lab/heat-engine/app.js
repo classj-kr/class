@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="gas${st.T < (a.Th + a.Tc) / 2 ? ' cold' : ''}" x="${CX0 + 1}" y="${gasTop.toFixed(1)}" width="${CW - 2}" height="${(CB - gasTop - 1).toFixed(1)}"/>`;
         out += `<rect class="piston" x="${CX0 + 2}" y="${(gasTop - 7).toFixed(1)}" width="${CW - 4}" height="7"/><line class="rod" x1="${CX0 + CW / 2}" y1="${(gasTop - 7).toFixed(1)}" x2="${CX0 + CW / 2}" y2="${Math.max(18, gasTop - 30).toFixed(1)}"/>`;
         // gas particles, faster when hot
-        for (let i = 0; i < 18; i += 1) { const gx = CX0 + 6 + ((i * 37 + Math.floor(p * 300 * (st.T / a.Tc))) % (CW - 12)), gy = gasTop + 6 + ((i * 53 + Math.floor(p * 200 * (st.T / a.Tc))) % Math.max(4, CB - gasTop - 12)); out += `<circle fill="#d97706" opacity=".8" cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" r="1.6"/>`; }
+        for (let i = 0; i < 18; i += 1) { const gx = CX0 + 6 + ((i * 37 + p * 300 * (st.T / a.Tc)) % (CW - 12)), gy = gasTop + 6 + ((i * 53 + p * 200 * (st.T / a.Tc)) % Math.max(4, CB - gasTop - 12)); out += `<circle fill="#d97706" opacity=".8" cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" r="1.6"/>`; }
         // reservoir in contact below the cylinder
         const leg = on ? st.leg : -1;
         if (leg === 0) out += `<rect class="hot-block" x="${CX0 - 8}" y="${CB + 4}" width="${CW + 16}" height="16" rx="3"/><text class="small-label" x="${CX0 + CW / 2}" y="${CB + 33}" text-anchor="middle">뜨거운 곳 ${fmtN(a.Th - 273.15)} ℃</text>` + arrow(CX0 + CW / 2, CB + 2, CX0 + CW / 2, CB - 16, 'heat-in', 'heat-in-head', 4);
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderPump(a) {
         const p = state.progress, e = ease(p), PX = 214, PY = 104, PW = 64, PH = 52, SC = 14 / Math.max(a.cop, 1);
         let out = `<rect class="outside" x="20" y="40" width="130" height="130" rx="6"/><text class="trait-text" x="85" y="60" text-anchor="middle">바깥 ${OUTS[state.out].label}</text>`;
-        for (let i = 0; i < 14; i += 1) out += `<circle class="snow" cx="${(30 + (i * 37) % 110).toFixed(1)}" cy="${(70 + ((i * 53 + Math.floor(p * 60)) % 90)).toFixed(1)}" r="1.6"/>`;
+        for (let i = 0; i < 14; i += 1) out += `<circle class="snow" cx="${(30 + (i * 37) % 110).toFixed(1)}" cy="${(70 + ((i * 53 + p * 60) % 90)).toFixed(1)}" r="1.6"/>`;
         out += `<path class="house" d="M300,84 L360,44 L420,84 L420,170 L300,170 Z"/><text class="trait-text" x="360" y="104" text-anchor="middle">실내 ${INS[state.inn].label}</text>`;
         out += `<rect class="pump" x="${PX - PW / 2}" y="${PY - PH / 2}" width="${PW}" height="${PH}" rx="6"/><text class="gen-text" x="${PX}" y="${PY - 2}" text-anchor="middle">열펌프</text><text class="small-label" x="${PX}" y="${PY + 14}" text-anchor="middle">거꾸로 도는 기관</text>`;
         // Qc from outside, W from the plug, Qh into the house; widths scale with energy per 1 J of work
@@ -323,11 +323,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse(), pump = a.kind === 'pump', invalid = a.kind === 'flow' && a.verdict !== 'ok';
         const cycle = a.kind === 'carnot' ? carnotState(a, state.progress >= 1 ? 1 - 1e-9 : state.progress) : null;
-        mainGroup.innerHTML = window.ScienceScenes.engine(a, state, cycle);
-        graphGroup.innerHTML = window.ScienceScenes.engineGraph(a, state);
+        window.scienceScene.render(mainGroup,window.ScienceScenes.engine(a, state, cycle));
+        window.scienceScene.render(graphGroup,window.ScienceScenes.engineGraph(a, state));
         stageBadge.textContent = a.kind === 'carnot' ? HOTS[state.hot].label + ' / ' + COLDS[state.cold].label : pump ? OUTS[state.out].label + ' → ' + INS[state.inn].label : invalid ? '배출 열 없음 · 불가능' : '열의 일부를 일로';
         methodHint.textContent = pump ? '열을 옮기는 데 외부의 일이 필요합니다.' : '받은 열의 일부는 일로, 나머지는 저온 열원으로 이동합니다.';
-        dataNote.innerHTML = '<p>' + (pump ? '실내로 전달한 열 = 바깥에서 가져온 열 + 공급한 일' : invalid ? '하나의 열원에서 받은 열을 전부 일로 바꾸는 순환 기관은 만들 수 없습니다.' : '고온에서 받은 열 = 한 일 + 저온으로 배출한 열') + '</p><p>' + (pump ? '막대는 선택한 두 온도에서의 이상적 열펌프를 비교한 값입니다. 실제 기기의 성능을 예측한 값이 아닙니다.' : a.kind === 'carnot' ? '막대는 한 주기의 에너지 배분입니다. 고온 열원을 높이거나 저온 열원을 낮추면 한계 효율이 증가합니다.' : '막대는 선택한 기관이 내세우는 에너지 배분입니다. 에너지의 합이 같더라도 모두 실현 가능한 것은 아닙니다.') + '</p>';
+        window.scienceScene.render(dataNote,'<p>' + (pump ? '실내로 전달한 열 = 바깥에서 가져온 열 + 공급한 일' : invalid ? '하나의 열원에서 받은 열을 전부 일로 바꾸는 순환 기관은 만들 수 없습니다.' : '고온에서 받은 열 = 한 일 + 저온으로 배출한 열') + '</p><p>' + (pump ? '막대는 선택한 두 온도에서의 이상적 열펌프를 비교한 값입니다. 실제 기기의 성능을 예측한 값이 아닙니다.' : a.kind === 'carnot' ? '막대는 한 주기의 에너지 배분입니다. 고온 열원을 높이거나 저온 열원을 낮추면 한계 효율이 증가합니다.' : '막대는 선택한 기관이 내세우는 에너지 배분입니다. 에너지의 합이 같더라도 모두 실현 가능한 것은 아닙니다.') + '</p>');
         liftProse();
         return a;
     }

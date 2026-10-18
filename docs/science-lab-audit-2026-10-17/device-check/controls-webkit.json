@@ -1,0 +1,66 @@
+{
+  "engine": "webkit",
+  "emulationOnly": true,
+  "rows": [
+    {
+      "slug": "stellar-mass-data",
+      "width": 78.890625,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "cluster-fitting",
+      "width": 234.28125,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "centrifuge-design",
+      "width": 268.203125,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "organelle-builder",
+      "width": 926,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "hydride-boiling",
+      "width": 926,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "mcu-sampling",
+      "width": 926,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "smart-pot",
+      "width": 926,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "rotating-annulus",
+      "width": 192,
+      "height": 48,
+      "paddingActive": true
+    },
+    {
+      "slug": "sunspot-observation",
+      "width": 129.125,
+      "height": 44,
+      "paddingActive": true
+    },
+    {
+      "slug": "video-motion",
+      "height": 50,
+      "fileChooserOpened": true
+    }
+  ],
+  "errors": []
+}

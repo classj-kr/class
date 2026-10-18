@@ -127,12 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
             drawing='<circle cx="200" cy="100" r="60" fill="#dbeafe"/><text x="200" y="112" text-anchor="middle" fill="#334155" font-size="32">'+a.el.sym+'</text>';
             text=a.el.origin==='bigbang'?'초기 우주에서 주로 수소·헬륨 생성':a.el.origin==='star'?'별 내부와 진화 과정 등에서 생성':'중성자별 충돌 등 무거운 원소의 생성 과정';label=a.el.name+'의 기원';
         }
-        mainGroup.innerHTML=drawing+(a.kind==='fusion'?'':'<text x="20" y="28" fill="#334155">'+label+'</text>');
-        graphGroup.innerHTML='<text x="20" y="45" fill="#334155">초기 우주 → 별의 형성과 진화 → 원소가 우주로 퍼짐</text><text x="20" y="95" fill="#334155">이 물질들이 모여 태양계와 우리 몸의 재료가 됩니다.</text>';
-        if(a.kind==='fusion') graphGroup.innerHTML=window.ScienceScenes.fusionGraph(a);
+        window.scienceScene.render(mainGroup,drawing+(a.kind==='fusion'?'':'<text x="20" y="28" fill="#334155">'+label+'</text>'));
+        window.scienceScene.render(graphGroup,'<text x="20" y="45" fill="#334155">초기 우주 → 별의 형성과 진화 → 원소가 우주로 퍼짐</text><text x="20" y="95" fill="#334155">이 물질들이 모여 태양계와 우리 몸의 재료가 됩니다.</text>');
+        if(a.kind==='fusion') window.scienceScene.render(graphGroup,window.ScienceScenes.fusionGraph(a));
         stageBadge.textContent=label;methodHint.textContent='태양의 수소 핵융합과 원소의 생성 과정을 연결합니다.';
-        dataNote.innerHTML='<p>'+text+'</p><p>단계와 원자핵 그림은 개념을 나타내는 모형입니다. 그림의 크기·시간으로 실제 핵반응량이나 별의 수명을 계산하지 않습니다.</p>';
-        if(a.kind==='fusion') dataNote.innerHTML='<p>'+text+'</p><p>'+(state.step==='h'?'여러 반응 단계를 합친 개념 모형입니다. 수소 핵융합 중 일부 양성자가 중성자로 바뀝니다. 양전자·중성미자 등은 그림에서 생략했습니다.':'헬륨 원자핵 세 개가 여러 단계를 거쳐 탄소 원자핵 하나를 만듭니다.')+' 핵자 수는 보존되며, 질량 차이에 해당하는 에너지가 방출됩니다.</p>';
+        window.scienceScene.render(dataNote,'<p>'+text+'</p><p>단계와 원자핵 그림은 개념을 나타내는 모형입니다. 그림의 크기·시간으로 실제 핵반응량이나 별의 수명을 계산하지 않습니다.</p>');
+        if(a.kind==='fusion') window.scienceScene.render(dataNote,'<p>'+text+'</p><p>'+(state.step==='h'?'여러 반응 단계를 합친 개념 모형입니다. 수소 핵융합 중 일부 양성자가 중성자로 바뀝니다. 양전자·중성미자 등은 그림에서 생략했습니다.':'헬륨 원자핵 세 개가 여러 단계를 거쳐 탄소 원자핵 하나를 만듭니다.')+' 핵자 수는 보존되며, 질량 차이에 해당하는 에너지가 방출됩니다.</p>');
         return a;
     }
 

@@ -1,0 +1,27 @@
+{
+  "engine": "chromium",
+  "catalog": true,
+  "orientationSequence": true,
+  "routes": 1,
+  "scenarios": 25,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "supplementDiagnosisChecked": true,
+  "deviceProfile": "chromebook-scale",
+  "emulationOnly": true,
+  "deviceScaleFactor": 1.25,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [],
+  "issues": [],
+  "errors": [
+    {
+      "error": "Live-font run did not load any web font"
+    }
+  ]
+}

@@ -1,0 +1,3058 @@
+{
+  "engine": "webkit",
+  "complete": true,
+  "physicalDeviceTested": false,
+  "routes": 12,
+  "rows": [
+    {
+      "slug": "motion-energy",
+      "states": [
+        {
+          "mode": "incline",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 77,
+            "changes": 77,
+            "seconds": 1.217,
+            "distinctPerSecond": 63.27033689400164,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 22,
+            "activeUpdatesPerSecond": 62.76150627615063,
+            "firstChangeMs": 22,
+            "lastChangeMs": 1217,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 303,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 77,
+              "changes": 77,
+              "seconds": 1.217,
+              "distinctPerSecond": 63.27033689400164,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 22,
+              "activeUpdatesPerSecond": 62.76150627615063,
+              "firstChangeMs": 22,
+              "lastChangeMs": 1217,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 303,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "energy",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 51,
+            "changes": 51,
+            "seconds": 1.213,
+            "distinctPerSecond": 42.04451772464962,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 41.245791245791246,
+            "firstChangeMs": 25,
+            "lastChangeMs": 1213,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 484,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 15,
+                "ratio": 0.29411764705882354
+              },
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 15,
+                "ratio": 0.29411764705882354
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 51,
+              "changes": 51,
+              "seconds": 1.213,
+              "distinctPerSecond": 42.04451772464962,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 41.245791245791246,
+              "firstChangeMs": 25,
+              "lastChangeMs": 1213,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 484,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 15,
+                  "ratio": 0.29411764705882354
+                },
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 15,
+                  "ratio": 0.29411764705882354
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "torque",
+      "states": [
+        {
+          "mode": "seesaw",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 52,
+            "changes": 16,
+            "seconds": 1.206,
+            "distinctPerSecond": 13.266998341625207,
+            "changedFrameRatio": 0.3076923076923077,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 41.666666666666664,
+            "firstChangeMs": 22,
+            "lastChangeMs": 358,
+            "maxChangeGapMs": 30,
+            "geometryMutations": 48,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "g",
+                "id": "",
+                "css": null,
+                "updates": 16,
+                "ratio": 0.3076923076923077
+              },
+              {
+                "tag": "polygon",
+                "id": "",
+                "css": "arrow-w",
+                "updates": 16,
+                "ratio": 0.3076923076923077
+              },
+              {
+                "tag": "polygon",
+                "id": "",
+                "css": "arrow-w",
+                "updates": 16,
+                "ratio": 0.3076923076923077
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 52,
+              "changes": 16,
+              "seconds": 1.206,
+              "distinctPerSecond": 13.266998341625207,
+              "changedFrameRatio": 0.3076923076923077,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 41.666666666666664,
+              "firstChangeMs": 22,
+              "lastChangeMs": 358,
+              "maxChangeGapMs": 30,
+              "geometryMutations": 48,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "g",
+                  "id": "",
+                  "css": null,
+                  "updates": 16,
+                  "ratio": 0.3076923076923077
+                },
+                {
+                  "tag": "polygon",
+                  "id": "",
+                  "css": "arrow-w",
+                  "updates": 16,
+                  "ratio": 0.3076923076923077
+                },
+                {
+                  "tag": "polygon",
+                  "id": "",
+                  "css": "arrow-w",
+                  "updates": 16,
+                  "ratio": 0.3076923076923077
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "tip",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 49,
+            "changes": 49,
+            "seconds": 1.201,
+            "distinctPerSecond": 40.79933388842631,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 39.83050847457627,
+            "firstChangeMs": 21,
+            "lastChangeMs": 1201,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 380,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "polygon",
+                "id": "",
+                "css": "arrow-f",
+                "updates": 26,
+                "ratio": 0.5306122448979592
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 49,
+              "changes": 49,
+              "seconds": 1.201,
+              "distinctPerSecond": 40.79933388842631,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 39.83050847457627,
+              "firstChangeMs": 21,
+              "lastChangeMs": 1201,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 380,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "polygon",
+                  "id": "",
+                  "css": "arrow-f",
+                  "updates": 26,
+                  "ratio": 0.5306122448979592
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "plank",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 49,
+            "changes": 49,
+            "seconds": 1.204,
+            "distinctPerSecond": 40.697674418604656,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 40,
+            "firstChangeMs": 29,
+            "lastChangeMs": 1204,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 49,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 49,
+              "changes": 49,
+              "seconds": 1.204,
+              "distinctPerSecond": 40.697674418604656,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 40,
+              "firstChangeMs": 29,
+              "lastChangeMs": 1204,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 49,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "diffusion",
+      "states": [
+        {
+          "mode": "ink",
+          "actions": [
+            {
+              "selector": "#playBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 33,
+            "changes": 33,
+            "seconds": 1.2,
+            "distinctPerSecond": 27.5,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 56,
+            "activeUpdatesPerSecond": 26.701119724375538,
+            "firstChangeMs": 39,
+            "lastChangeMs": 1200,
+            "maxChangeGapMs": 63,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 33,
+              "changes": 33,
+              "seconds": 1.2,
+              "distinctPerSecond": 27.5,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 56,
+              "activeUpdatesPerSecond": 26.701119724375538,
+              "firstChangeMs": 39,
+              "lastChangeMs": 1200,
+              "maxChangeGapMs": 63,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "btb",
+          "actions": [
+            {
+              "selector": "#playBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 49,
+            "changes": 45,
+            "seconds": 1.206,
+            "distinctPerSecond": 37.3134328358209,
+            "changedFrameRatio": 0.9183673469387755,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 39.667896678966784,
+            "firstChangeMs": 122,
+            "lastChangeMs": 1206,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 49,
+              "changes": 45,
+              "seconds": 1.206,
+              "distinctPerSecond": 37.3134328358209,
+              "changedFrameRatio": 0.9183673469387755,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 39.667896678966784,
+              "firstChangeMs": 122,
+              "lastChangeMs": 1206,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "periodic-bonding",
+      "states": [
+        {
+          "mode": "elements",
+          "actions": [],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.212,
+            "distinctPerSecond": 66.83168316831683,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 66.05351170568562,
+            "firstChangeMs": 16,
+            "lastChangeMs": 1212,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 243,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.212,
+              "distinctPerSecond": 66.83168316831683,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 66.05351170568562,
+              "firstChangeMs": 16,
+              "lastChangeMs": 1212,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 243,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "bonds",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.21,
+            "distinctPerSecond": 66.94214876033058,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 66.10878661087865,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1210,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 81,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 81,
+              "changes": 2,
+              "seconds": 1.211,
+              "distinctPerSecond": 1.6515276630883566,
+              "changedFrameRatio": 0.024691358024691357,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 0,
+              "firstChangeMs": 121,
+              "lastChangeMs": 121,
+              "maxChangeGapMs": null,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            },
+            {
+              "phase": "after-initial-hold",
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.21,
+              "distinctPerSecond": 66.94214876033058,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 66.10878661087865,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1210,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 81,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "homeostasis",
+      "states": [
+        {
+          "mode": "glucose",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 77,
+            "changes": 77,
+            "seconds": 1.213,
+            "distinctPerSecond": 63.47897774113767,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 23,
+            "activeUpdatesPerSecond": 63.39814032121724,
+            "firstChangeMs": 30,
+            "lastChangeMs": 1213,
+            "maxChangeGapMs": 30,
+            "geometryMutations": 1798,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 32,
+                "ratio": 0.4155844155844156
+              },
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 32,
+                "ratio": 0.4155844155844156
+              },
+              {
+                "tag": "circle",
+                "id": "",
+                "css": "sugar",
+                "updates": 47,
+                "ratio": 0.6103896103896104
+              },
+              {
+                "tag": "circle",
+                "id": "",
+                "css": "sugar",
+                "updates": 42,
+                "ratio": 0.5454545454545454
+              },
+              {
+                "tag": "circle",
+                "id": "",
+                "css": "sugar",
+                "updates": 35,
+                "ratio": 0.45454545454545453
+              },
+              {
+                "tag": "circle",
+                "id": "",
+                "css": "sugar",
+                "updates": 28,
+                "ratio": 0.36363636363636365
+              },
+              {
+                "tag": "circle",
+                "id": "",
+                "css": "sugar",
+                "updates": 19,
+                "ratio": 0.24675324675324675
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 77,
+              "changes": 77,
+              "seconds": 1.213,
+              "distinctPerSecond": 63.47897774113767,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 23,
+              "activeUpdatesPerSecond": 63.39814032121724,
+              "firstChangeMs": 30,
+              "lastChangeMs": 1213,
+              "maxChangeGapMs": 30,
+              "geometryMutations": 1798,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 32,
+                  "ratio": 0.4155844155844156
+                },
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 32,
+                  "ratio": 0.4155844155844156
+                },
+                {
+                  "tag": "circle",
+                  "id": "",
+                  "css": "sugar",
+                  "updates": 47,
+                  "ratio": 0.6103896103896104
+                },
+                {
+                  "tag": "circle",
+                  "id": "",
+                  "css": "sugar",
+                  "updates": 42,
+                  "ratio": 0.5454545454545454
+                },
+                {
+                  "tag": "circle",
+                  "id": "",
+                  "css": "sugar",
+                  "updates": 35,
+                  "ratio": 0.45454545454545453
+                },
+                {
+                  "tag": "circle",
+                  "id": "",
+                  "css": "sugar",
+                  "updates": 28,
+                  "ratio": 0.36363636363636365
+                },
+                {
+                  "tag": "circle",
+                  "id": "",
+                  "css": "sugar",
+                  "updates": 19,
+                  "ratio": 0.24675324675324675
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "temp",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 80,
+            "changes": 80,
+            "seconds": 1.201,
+            "distinctPerSecond": 66.61115736885928,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 65.7672849915683,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1201,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 405,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 11,
+                "ratio": 0.1375
+              },
+              {
+                "tag": "circle",
+                "id": "",
+                "css": "sweat",
+                "updates": 49,
+                "ratio": 0.6125
+              },
+              {
+                "tag": "circle",
+                "id": "",
+                "css": "sweat",
+                "updates": 26,
+                "ratio": 0.325
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 80,
+              "changes": 80,
+              "seconds": 1.201,
+              "distinctPerSecond": 66.61115736885928,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 65.7672849915683,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1201,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 405,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 11,
+                  "ratio": 0.1375
+                },
+                {
+                  "tag": "circle",
+                  "id": "",
+                  "css": "sweat",
+                  "updates": 49,
+                  "ratio": 0.6125
+                },
+                {
+                  "tag": "circle",
+                  "id": "",
+                  "css": "sweat",
+                  "updates": 26,
+                  "ratio": 0.325
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "water",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 79,
+            "changes": 79,
+            "seconds": 1.21,
+            "distinctPerSecond": 65.2892561983471,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 64.38127090301003,
+            "firstChangeMs": 14,
+            "lastChangeMs": 1210,
+            "maxChangeGapMs": 30,
+            "geometryMutations": 260,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "rect",
+                "id": "",
+                "css": null,
+                "updates": 21,
+                "ratio": 0.26582278481012656
+              },
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 31,
+                "ratio": 0.3924050632911392
+              },
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 31,
+                "ratio": 0.3924050632911392
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 79,
+              "changes": 79,
+              "seconds": 1.21,
+              "distinctPerSecond": 65.2892561983471,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 64.38127090301003,
+              "firstChangeMs": 14,
+              "lastChangeMs": 1210,
+              "maxChangeGapMs": 30,
+              "geometryMutations": 260,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": null,
+                  "updates": 21,
+                  "ratio": 0.26582278481012656
+                },
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 31,
+                  "ratio": 0.3924050632911392
+                },
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 31,
+                  "ratio": 0.3924050632911392
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "reflex-nerve",
+      "states": [
+        {
+          "mode": "knee",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 75,
+            "changes": 19,
+            "seconds": 1.2,
+            "distinctPerSecond": 15.833333333333334,
+            "changedFrameRatio": 0.25333333333333335,
+            "p95FrameMs": 28,
+            "activeUpdatesPerSecond": 14.345991561181433,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1200,
+            "maxChangeGapMs": 879,
+            "geometryMutations": 33,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "circle",
+                "id": "rfPulse",
+                "css": null,
+                "updates": 15,
+                "ratio": 0.2
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 75,
+              "changes": 19,
+              "seconds": 1.2,
+              "distinctPerSecond": 15.833333333333334,
+              "changedFrameRatio": 0.25333333333333335,
+              "p95FrameMs": 28,
+              "activeUpdatesPerSecond": 14.345991561181433,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1200,
+              "maxChangeGapMs": 879,
+              "geometryMutations": 33,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "circle",
+                  "id": "rfPulse",
+                  "css": null,
+                  "updates": 15,
+                  "ratio": 0.2
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "leg",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 51,
+            "changes": 15,
+            "seconds": 1.222,
+            "distinctPerSecond": 12.274959083469723,
+            "changedFrameRatio": 0.29411764705882354,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 10.878661087866108,
+            "firstChangeMs": 27,
+            "lastChangeMs": 1222,
+            "maxChangeGapMs": 850,
+            "geometryMutations": 27,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "circle",
+                "id": "rfPulse",
+                "css": null,
+                "updates": 12,
+                "ratio": 0.23529411764705882
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 51,
+              "changes": 15,
+              "seconds": 1.222,
+              "distinctPerSecond": 12.274959083469723,
+              "changedFrameRatio": 0.29411764705882354,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 10.878661087866108,
+              "firstChangeMs": 27,
+              "lastChangeMs": 1222,
+              "maxChangeGapMs": 850,
+              "geometryMutations": 27,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "circle",
+                  "id": "rfPulse",
+                  "css": null,
+                  "updates": 12,
+                  "ratio": 0.23529411764705882
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "pupil",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 57,
+            "changes": 16,
+            "seconds": 1.221,
+            "distinctPerSecond": 13.104013104013102,
+            "changedFrameRatio": 0.2807017543859649,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 11.618257261410788,
+            "firstChangeMs": 16,
+            "lastChangeMs": 1221,
+            "maxChangeGapMs": 879,
+            "geometryMutations": 24,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "circle",
+                "id": "rfPulse",
+                "css": null,
+                "updates": 11,
+                "ratio": 0.19298245614035087
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 57,
+              "changes": 16,
+              "seconds": 1.221,
+              "distinctPerSecond": 13.104013104013102,
+              "changedFrameRatio": 0.2807017543859649,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 11.618257261410788,
+              "firstChangeMs": 16,
+              "lastChangeMs": 1221,
+              "maxChangeGapMs": 879,
+              "geometryMutations": 24,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "circle",
+                  "id": "rfPulse",
+                  "css": null,
+                  "updates": 11,
+                  "ratio": 0.19298245614035087
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "conscious",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 71,
+            "changes": 71,
+            "seconds": 1.226,
+            "distinctPerSecond": 57.91190864600326,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 30,
+            "activeUpdatesPerSecond": 56.9777043765483,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1226,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 99,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "circle",
+                "id": "rfPulse",
+                "css": null,
+                "updates": 13,
+                "ratio": 0.18309859154929578
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 71,
+              "changes": 71,
+              "seconds": 1.226,
+              "distinctPerSecond": 57.91190864600326,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 30,
+              "activeUpdatesPerSecond": 56.9777043765483,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1226,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 99,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "circle",
+                  "id": "rfPulse",
+                  "css": null,
+                  "updates": 13,
+                  "ratio": 0.18309859154929578
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "neuron",
+      "states": [
+        {
+          "mode": "spike",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 70,
+            "changes": 70,
+            "seconds": 1.209,
+            "distinctPerSecond": 57.89909015715467,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 30,
+            "activeUpdatesPerSecond": 56.95142378559464,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1209,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 1012,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "meter-fill",
+                "updates": 28,
+                "ratio": 0.4
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel na",
+                "updates": 17,
+                "ratio": 0.24285714285714285
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              },
+              {
+                "tag": "rect",
+                "id": "",
+                "css": "channel k",
+                "updates": 11,
+                "ratio": 0.15714285714285714
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 70,
+              "changes": 70,
+              "seconds": 1.209,
+              "distinctPerSecond": 57.89909015715467,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 30,
+              "activeUpdatesPerSecond": 56.95142378559464,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1209,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 1012,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "meter-fill",
+                  "updates": 28,
+                  "ratio": 0.4
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel na",
+                  "updates": 17,
+                  "ratio": 0.24285714285714285
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                },
+                {
+                  "tag": "rect",
+                  "id": "",
+                  "css": "channel k",
+                  "updates": 11,
+                  "ratio": 0.15714285714285714
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "conduct",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 76,
+            "changes": 76,
+            "seconds": 1.206,
+            "distinctPerSecond": 63.018242122719734,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 28,
+            "activeUpdatesPerSecond": 62.13266162888329,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1206,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 232,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 76,
+              "changes": 76,
+              "seconds": 1.206,
+              "distinctPerSecond": 63.018242122719734,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 28,
+              "activeUpdatesPerSecond": 62.13266162888329,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1206,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 232,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "synapse",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 77,
+            "changes": 50,
+            "seconds": 1.205,
+            "distinctPerSecond": 41.49377593360995,
+            "changedFrameRatio": 0.6493506493506493,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 40.33613445378151,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1205,
+            "maxChangeGapMs": 32,
+            "geometryMutations": 429,
+            "retained": 0.5714285714285714,
+            "sparseGeometry": [
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 49,
+                "ratio": 0.6363636363636364
+              },
+              {
+                "tag": "path",
+                "id": "",
+                "css": "trace",
+                "updates": 49,
+                "ratio": 0.6363636363636364
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 77,
+              "changes": 50,
+              "seconds": 1.205,
+              "distinctPerSecond": 41.49377593360995,
+              "changedFrameRatio": 0.6493506493506493,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 40.33613445378151,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1205,
+              "maxChangeGapMs": 32,
+              "geometryMutations": 429,
+              "retained": 0.5714285714285714,
+              "sparseGeometry": [
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 49,
+                  "ratio": 0.6363636363636364
+                },
+                {
+                  "tag": "path",
+                  "id": "",
+                  "css": "trace",
+                  "updates": 49,
+                  "ratio": 0.6363636363636364
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "air-stability",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#runBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 79,
+            "changes": 79,
+            "seconds": 1.209,
+            "distinctPerSecond": 65.34325889164599,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 64.48911222780569,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1209,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 1784,
+            "retained": 1,
+            "sparseGeometry": [
+              {
+                "tag": "line",
+                "id": "",
+                "css": "rain-drop",
+                "updates": 50,
+                "ratio": 0.6329113924050633
+              },
+              {
+                "tag": "line",
+                "id": "",
+                "css": "rain-drop",
+                "updates": 50,
+                "ratio": 0.6329113924050633
+              }
+            ]
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 79,
+              "changes": 79,
+              "seconds": 1.209,
+              "distinctPerSecond": 65.34325889164599,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 64.48911222780569,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1209,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 1784,
+              "retained": 1,
+              "sparseGeometry": [
+                {
+                  "tag": "line",
+                  "id": "",
+                  "css": "rain-drop",
+                  "updates": 50,
+                  "ratio": 0.6329113924050633
+                },
+                {
+                  "tag": "line",
+                  "id": "",
+                  "css": "rain-drop",
+                  "updates": 50,
+                  "ratio": 0.6329113924050633
+                }
+              ]
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "planet-motion",
+      "states": [
+        {
+          "mode": "retro",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 68,
+            "changes": 68,
+            "seconds": 1.211,
+            "distinctPerSecond": 56.15194054500412,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 30,
+            "activeUpdatesPerSecond": 55.415617128463474,
+            "firstChangeMs": 20,
+            "lastChangeMs": 1211,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 515,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 68,
+              "changes": 68,
+              "seconds": 1.211,
+              "distinctPerSecond": 56.15194054500412,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 30,
+              "activeUpdatesPerSecond": 55.415617128463474,
+              "firstChangeMs": 20,
+              "lastChangeMs": 1211,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 515,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "phase",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 70,
+            "changes": 70,
+            "seconds": 1.204,
+            "distinctPerSecond": 58.139534883720934,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 30,
+            "activeUpdatesPerSecond": 57.142857142857146,
+            "firstChangeMs": 14,
+            "lastChangeMs": 1204,
+            "maxChangeGapMs": 31,
+            "geometryMutations": 645,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 70,
+              "changes": 70,
+              "seconds": 1.204,
+              "distinctPerSecond": 58.139534883720934,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 30,
+              "activeUpdatesPerSecond": 57.142857142857146,
+              "firstChangeMs": 14,
+              "lastChangeMs": 1204,
+              "maxChangeGapMs": 31,
+              "geometryMutations": 645,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "eclipse",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 76,
+            "changes": 61,
+            "seconds": 1.228,
+            "distinctPerSecond": 49.6742671009772,
+            "changedFrameRatio": 0.8026315789473685,
+            "p95FrameMs": 29,
+            "activeUpdatesPerSecond": 49.91539763113367,
+            "firstChangeMs": 46,
+            "lastChangeMs": 1228,
+            "maxChangeGapMs": 47,
+            "geometryMutations": 59,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 76,
+              "changes": 61,
+              "seconds": 1.228,
+              "distinctPerSecond": 49.6742671009772,
+              "changedFrameRatio": 0.8026315789473685,
+              "p95FrameMs": 29,
+              "activeUpdatesPerSecond": 49.91539763113367,
+              "firstChangeMs": 46,
+              "lastChangeMs": 1228,
+              "maxChangeGapMs": 47,
+              "geometryMutations": 59,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "liquid-heat",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#lhPrepare",
+              "clicked": true
+            },
+            {
+              "selector": "#lhConnect",
+              "clicked": true
+            },
+            {
+              "selector": "#lhStart",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 79,
+            "changes": 79,
+            "seconds": 1.209,
+            "distinctPerSecond": 65.34325889164599,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 64.86941870261163,
+            "firstChangeMs": 22,
+            "lastChangeMs": 1209,
+            "maxChangeGapMs": 30,
+            "geometryMutations": 0,
+            "retained": null,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 79,
+              "changes": 79,
+              "seconds": 1.209,
+              "distinctPerSecond": 65.34325889164599,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 64.86941870261163,
+              "firstChangeMs": 22,
+              "lastChangeMs": 1209,
+              "maxChangeGapMs": 30,
+              "geometryMutations": 0,
+              "retained": null,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "phase-mass",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#pmZero",
+              "clicked": true
+            },
+            {
+              "selector": "#pmPrepare",
+              "clicked": true
+            },
+            {
+              "selector": "#pmMark",
+              "clicked": true
+            },
+            {
+              "selector": "#pmWeigh",
+              "clicked": true
+            },
+            {
+              "selector": "#pmRemove",
+              "clicked": true
+            },
+            {
+              "selector": "#pmCool",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 49,
+            "changes": 49,
+            "seconds": 1.203,
+            "distinctPerSecond": 40.73150457190357,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 40.1023890784983,
+            "firstChangeMs": 31,
+            "lastChangeMs": 1203,
+            "maxChangeGapMs": 34,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 49,
+              "changes": 49,
+              "seconds": 1.203,
+              "distinctPerSecond": 40.73150457190357,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 40.1023890784983,
+              "firstChangeMs": 31,
+              "lastChangeMs": 1203,
+              "maxChangeGapMs": 34,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "video-motion",
+      "states": [
+        {
+          "mode": "cart",
+          "actions": [
+            {
+              "selector": "#vmPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "frames": 78,
+            "changes": 1,
+            "seconds": 1.208,
+            "distinctPerSecond": 0.8278145695364238,
+            "changedFrameRatio": 0.01282051282051282,
+            "p95FrameMs": 19,
+            "activeUpdatesPerSecond": 0,
+            "firstChangeMs": null,
+            "lastChangeMs": null,
+            "maxChangeGapMs": null,
+            "geometryMutations": 0,
+            "retained": null,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 78,
+              "changes": 1,
+              "seconds": 1.208,
+              "distinctPerSecond": 0.8278145695364238,
+              "changedFrameRatio": 0.01282051282051282,
+              "p95FrameMs": 19,
+              "activeUpdatesPerSecond": 0,
+              "firstChangeMs": null,
+              "lastChangeMs": null,
+              "maxChangeGapMs": null,
+              "geometryMutations": 0,
+              "retained": null,
+              "sparseGeometry": []
+            },
+            {
+              "phase": "after-initial-hold",
+              "frames": 76,
+              "changes": 1,
+              "seconds": 1.21,
+              "distinctPerSecond": 0.8264462809917356,
+              "changedFrameRatio": 0.013157894736842105,
+              "p95FrameMs": 23,
+              "activeUpdatesPerSecond": 0,
+              "firstChangeMs": null,
+              "lastChangeMs": null,
+              "maxChangeGapMs": null,
+              "geometryMutations": 0,
+              "retained": null,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": []
+        },
+        {
+          "mode": "projectile",
+          "actions": [
+            {
+              "selector": "#vmPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "frames": 77,
+            "changes": 77,
+            "seconds": 1.209,
+            "distinctPerSecond": 63.68899917287013,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 21,
+            "activeUpdatesPerSecond": 62.814070351758794,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1209,
+            "maxChangeGapMs": 30,
+            "geometryMutations": 0,
+            "retained": null,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "frames": 77,
+              "changes": 77,
+              "seconds": 1.209,
+              "distinctPerSecond": 63.68899917287013,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 21,
+              "activeUpdatesPerSecond": 62.814070351758794,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1209,
+              "maxChangeGapMs": 30,
+              "geometryMutations": 0,
+              "retained": null,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    }
+  ],
+  "errors": []
+}

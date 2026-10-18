@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="360" y="${(yP + (a.dh > 0 ? -8 : 16)).toFixed(1)}" text-anchor="middle">생성물</text>`;
         out += `<text class="part-label" x="20" y="24">${a.heat === 'exo' ? '발열' : '흡열'} 반응 · ${a.T} ℃ · 촉매 ${a.cat === 'on' ? '있음' : '없음'}</text>`;
         out += `<text class="read-text" x="20" y="200">${rateSentence(a.rel)}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const fmtRate = r => (r >= 100 ? r.toFixed(0) : r >= 10 ? r.toFixed(1) : r.toFixed(2));
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tone = a.verdict === 'darker' ? '#c8703c' : a.verdict === 'lighter' ? '#0284c7' : '#059669';
         out += `<text class="verdict-text" fill="${tone}" x="240" y="162">기준의 ${a.ratio.toFixed(2)}배 — ${EQ_WORD[a.verdict]}</text>`;
         out += `<text class="note-text" x="20" y="206">K는 온도만이 바꿉니다. 부피를 바꾸면 K는 그대로이고 농도만 달라집니다.</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const EQ_WORD = { darker: '갈색이 진합니다', same: '기준과 비슷합니다', lighter: '갈색이 옅습니다' };
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const l = Math.max(LO, Math.min(HI, Math.log10(a.rel)));
         out += `<circle class="trace-dot" cx="${gx(a.T).toFixed(1)}" cy="${gy(l).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     const sup = n => String(n).replace('-', '⁻').replace(/[0-9]/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[Number(d)]);
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<path class="trace cat" d="M${pts.join('L')}"/>`;
         }
         out += `<circle class="trace-dot" cx="${gx(a.T).toFixed(1)}" cy="${gy(a.fracN2O4).toFixed(1)}" r="5" fill="#059669"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     /* ------------------------------------------------------------ render */
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'rate'
             ? Math.abs(a.rel - 1) < 1e-9 ? '기준과 같음' : `${fmtRate(a.rel >= 1 ? a.rel : 1 / a.rel)}배 ${a.rel >= 1 ? '빠름' : '느림'}`
             : `K ${a.K.toFixed(1)} · ${EQ_WORD[a.verdict]}`;
-        dataNote.innerHTML = a.kind === 'rate'
+        window.scienceScene.render(dataNote,a.kind === 'rate'
             ? `<div class="data-row"><span class="data-name">활성화 에너지</span><span class="data-val">${a.peak} kJ/mol ${a.cat === 'on' ? '(촉매가 50 → 30으로 낮춤)' : ''}</span></div>` +
               `<div class="data-row"><span class="data-name">반응열</span><span class="data-val">ΔH = ${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol — 촉매를 넣어도 그대로</span></div>` +
               `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${a.T} ℃ = ${a.K.toFixed(1)} K</span></div>` +
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
               `<div class="data-row"><span class="data-name">농도</span><span class="data-val">[NO₂] ${a.no2.toFixed(4)} M · [N₂O₄] ${a.n2o4.toFixed(4)} M</span></div>` +
               `<div class="data-row"><span class="data-name">K 확인</span><span class="data-val">[N₂O₄] ÷ [NO₂]² = ${(a.n2o4 / (a.no2 * a.no2)).toFixed(1)}</span></div>` +
               `<div class="data-row"><span class="data-name">N₂O₄ 비율</span><span class="data-val">${(a.fracN2O4 * 100).toFixed(1)}% (기준 ${(a.ref.fracN2O4 * 100).toFixed(1)}%)</span></div>` +
-              `<div class="data-row match"><span class="data-name">색</span><span class="data-val">기준의 ${a.ratio.toFixed(2)}배 — ${EQ_WORD[a.verdict]}</span></div>`;
+              `<div class="data-row match"><span class="data-name">색</span><span class="data-val">기준의 ${a.ratio.toFixed(2)}배 — ${EQ_WORD[a.verdict]}</span></div>`);
         return a;
     }
 

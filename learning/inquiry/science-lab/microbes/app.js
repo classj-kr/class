@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'mould' ? renderMould(a, state.progress) : renderGerm(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'mould' ? renderMould(a, state.progress) : renderGerm(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -287,12 +287,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'mould' ? graphMould(a) : graphGerm(a);
+        window.scienceScene.render(graphGroup,a.kind === 'mould' ? graphMould(a) : graphGerm(a));
         stageBadge.textContent = a.kind === 'mould' ? `${a.t.temp} ℃ · ${a.m.label}` : `${a.t.temp} ℃ · ${a.hours}시간`;
         methodHint.textContent = state.mode === 'mould'
             ? '곰팡이는 따뜻하고 축축한 곳에서 잘 자랍니다'
             : '세균은 둘로 나뉘어 늘어나고, 따뜻할수록 빨리 나뉩니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

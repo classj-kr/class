@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<text class="recede-text" x="${((from + to) / 2).toFixed(1)}" y="${ay - 4}" text-anchor="middle">${(r.d0 * (S - 1)).toFixed(1)}칸</text>`;
                             }
             out += `<circle class="galaxy${r.i === a.home ? ' home' : ''}" cx="${x.toFixed(1)}" cy="${Y}" r="${r.i === a.home ? 7 : 5.5}"/>`;
-            out += `<text class="galaxy-text" x="${x.toFixed(1)}" y="${Y - 14}" text-anchor="middle">${r.name}${r.i === a.home ? ' (여기)' : ''}</text>`;
+            out += `<text class="galaxy-text" x="${x.toFixed(1)}" y="${Y - 14}" text-anchor="middle">${r.name}</text>`;
         });
         out += `<text class="verdict-text" fill="#0f172a" x="20" y="28">고무줄 ${S.toFixed(2)}배 · ${GALAXIES[a.home]} 은하에서 본 모습</text>`;
         out += `<text class="small-label" style="fill:#cbd5e1" x="20" y="164">눈금 한 칸 = 처음 은하 사이 거리 · 화살표 = 나에게서 멀어진 거리</text>`;
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'bright' ? renderBright(a, state.progress) : renderExpand(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'bright' ? renderBright(a, state.progress) : renderExpand(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -237,12 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'bright' ? graphBright(a) : graphExpand(a);
+        window.scienceScene.render(graphGroup,a.kind === 'bright' ? graphBright(a) : graphExpand(a));
         stageBadge.textContent = a.kind === 'bright' ? `${a.star.name} · ${a.d} pc` : `${a.S}배 · ${GALAXIES[a.home]} 은하에서`;
         methodHint.textContent = state.mode === 'bright'
             ? '같은 별을 더 멀리에서 보면 어둡게 보입니다'
             : '고무줄이 늘어나면 점들 사이 거리가 커집니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

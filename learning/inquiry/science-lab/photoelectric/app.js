@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -370,14 +370,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'photo' ? renderPhoto(a) : a.kind === 'hydrogen' ? renderHydrogen(a) : renderMatter(a);
-        graphGroup.innerHTML = a.kind === 'photo' ? graphPhoto(a) : a.kind === 'hydrogen' ? graphHydrogen(a) : graphMatter(a);
+        window.scienceScene.render(mainGroup,a.kind === 'photo' ? renderPhoto(a) : a.kind === 'hydrogen' ? renderHydrogen(a) : renderMatter(a));
+        window.scienceScene.render(graphGroup,a.kind === 'photo' ? graphPhoto(a) : a.kind === 'hydrogen' ? graphHydrogen(a) : graphMatter(a));
         liftProse();
         stageBadge.textContent = a.kind === 'photo' ? `${a.metal.label} · ${a.light.label} · ${a.br.label}` : a.kind === 'hydrogen' ? `n = ${a.ni} → n = ${a.nf}` : a.o.label;
         methodHint.textContent = a.kind === 'photo' ? '광자 하나의 에너지 hf가 일함수를 넘어야 전자가 나옵니다. 밝기는 개수만 바꿉니다'
             : a.kind === 'hydrogen' ? '전자가 내려올 때 두 준위의 에너지 차이가 광자 하나가 됩니다'
                 : '움직이는 것은 무엇이든 파장 h/p의 파동이기도 합니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(hand)svg+=`<path d="M410 190Q381 192 362 220L342 213Q333 211 329 220L346 232Q322 224 320 235Q321 245 345 245L367 251Q385 225 421 228Z" fill="#f0c6a5" stroke="#bd8b6b" stroke-width="2"/>`;
   if(!state.held)svg+=`<path d="M456 139L386 206" stroke="#b38554" stroke-width="12" stroke-linecap="round"/><rect x="360" y="194" width="65" height="28" rx="10" transform="rotate(-42 391 208)" fill="#465562" stroke="#2c3d48" stroke-width="2"/>`;
   if(moving&&reduced.matches)svg+=`<path d="M228 212V242M362 212V242" stroke="#3a809a" stroke-width="2" stroke-dasharray="3 4"/>`;
-  $('tfScene').innerHTML=svg;
+  window.scienceScene.render($('tfScene'),svg);
  }
  function render(){
   for(const b of lab.querySelectorAll('[data-tf-strike]'))b.disabled=!state.held||state.contact!=='none';

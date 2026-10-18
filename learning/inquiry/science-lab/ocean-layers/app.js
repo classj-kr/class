@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -247,8 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 35; i += 1) { const x = BX + 8 + ((i * 7919) % 997) / 997 * (BW - 16), y = top + 6 + ((i * 104729) % 991) / 991 * Math.max(8, level - 12); out += `<circle class="salt" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/>`; }
         if (ev.ice === 'form') { const h = 22 * t; out += `<rect class="ice" x="${BX + 6}" y="${(top - h + 2).toFixed(1)}" width="${BW - 12}" height="${h.toFixed(1)}" rx="4"/>`; if (t > 0.1) out += `<text class="small-label" style="fill:#bae6fd" x="${BX + BW / 2}" y="${(top - h - 4).toFixed(1)}" text-anchor="middle">얼음 ${fmtN(200 * t)} g — 소금은 못 들어감</text>`; }
         if (ev.ice === 'melt') { const h = 22 * (1 - t); if (h > 0.5) out += `<rect class="ice" x="${BX + 6}" y="${(top - h + 2).toFixed(1)}" width="${BW - 12}" height="${h.toFixed(1)}" rx="4"/>`; out += `<text class="small-label" style="fill:#bae6fd" x="${BX + BW / 2}" y="${(top - h - 4).toFixed(1)}" text-anchor="middle">빙하 ${fmtN(200 * (1 - t))} g 남음</text>`; }
-        if (state.event === 'evap' && t < 1) for (let k = 0; k < 4; k += 1) { const x = BX + 24 + k * 28, y0 = top - 4, y1 = top - 22 - ((k * 7 + Math.floor(p * 40)) % 12); out += arrow(x, y0, x, y1, 'evap', 'evap-head', 2.5); }
-        if (state.event === 'rain' && t < 1) for (let k = 0; k < 8; k += 1) { const x = BX + 10 + k * 15, y = 26 + ((k * 23 + Math.floor(p * 200)) % Math.max(10, top - 30)); out += `<line class="rain" x1="${x}" y1="${y}" x2="${x - 2}" y2="${y + 8}"/>`; }
+        if (state.event === 'evap' && t < 1) for (let k = 0; k < 4; k += 1) { const x = BX + 24 + k * 28, y0 = top - 4, y1 = top - 22 - ((k * 7 + p * 40) % 12); out += arrow(x, y0, x, y1, 'evap', 'evap-head', 2.5); }
+        if (state.event === 'rain' && t < 1) for (let k = 0; k < 8; k += 1) { const x = BX + 10 + k * 15, y = 26 + ((k * 23 + p * 200) % Math.max(10, top - 30)); out += `<line class="rain" x1="${x}" y1="${y}" x2="${x - 2}" y2="${y + 8}"/>`; }
         if (state.event === 'river' && t < 1) out += arrow(BX - 34, top - 10, BX - 2, top - 2, 'wind', 'wind-head', 3) + `<text class="small-label" x="${BX - 36}" y="${top - 16}" text-anchor="start">강물</text>`;
         if (state.event === 'stir') for (let k = 0; k < 2; k += 1) out += arrow(BX + 20, top - 10 - k * 8, BX + BW - 20, top - 10 - k * 8, 'wind', 'wind-head', 2.5);
         const Snow = 35 / (965 + ev.water * t + 35) * 1000;
@@ -351,14 +351,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'profile' ? renderProfile(a) : a.kind === 'salinity' ? renderSalinity(a) : renderDensity(a);
-        graphGroup.innerHTML = a.kind === 'profile' ? graphProfile(a) : a.kind === 'salinity' ? graphSalinity(a) : graphDensity(a);
+        window.scienceScene.render(mainGroup,a.kind === 'profile' ? renderProfile(a) : a.kind === 'salinity' ? renderSalinity(a) : renderDensity(a));
+        window.scienceScene.render(graphGroup,a.kind === 'profile' ? graphProfile(a) : a.kind === 'salinity' ? graphSalinity(a) : graphDensity(a));
         liftProse();
         stageBadge.textContent = a.kind === 'profile' ? `${REGIONS[state.region].label} · ${SEASONS[state.season].label}` : a.kind === 'salinity' ? EVENTS[state.event].label : `${TEMPS[state.temp].label} · ${SALTS[state.salt].label}`;
         methodHint.textContent = a.kind === 'profile' ? '햇볕은 표층만 데우고, 바람은 그 열을 아래로 섞습니다'
             : a.kind === 'salinity' ? '염류는 그대로, 물만 드나듭니다 — 이온 비율은 늘 같습니다'
                 : '차고 짤수록 무겁습니다. 무거운 물이 가라앉으며 층과 순환이 생깁니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

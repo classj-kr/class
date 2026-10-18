@@ -85,12 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function cart(x, w, cls, label) {
         const x0 = px(x), width = w * PX_PER_M;
-        let out = `<rect class="cart ${cls}" x="${x0.toFixed(1)}" y="${TRACK_Y - CART_H}" width="${width.toFixed(1)}" height="${CART_H}" rx="4"/>`;
-        out += `<text class="cart-text" x="${(x0 + width / 2).toFixed(1)}" y="${TRACK_Y - CART_H / 2 + 4}" text-anchor="middle">${label}</text>`;
-        [0.25, 0.75].forEach(f => {
-            out += `<circle class="wheel" cx="${(x0 + width * f).toFixed(1)}" cy="${TRACK_Y + 4}" r="4.4"/>`;
-        });
-        return out;
+        return window.scienceScene.art.cart(x0,TRACK_Y-CART_H,width,CART_H,cls==='one'?'#297c9c':'#bd7138',x0*5,label);
     }
 
     function arrow(cx, y, v, cls) {
@@ -120,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tone = s.hit ? '#059669' : '#d97706';
         out += `<text class="phase-text" fill="${tone}" x="20" y="176">${s.hit ? '충돌 뒤' : '충돌 전'} · ${s.t.toFixed(2)} 초</text>`;
         out += `<text class="read-text" x="20" y="196">수레 1 ${s.v1.toFixed(2)} m/s · 수레 2 ${s.v2.toFixed(2)} m/s</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     function bar(y, label, value, max, colour, unit) {
@@ -152,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             out += `<text class="keep-text" x="${GRAPH.x1}" y="126" text-anchor="end">줄어든 에너지가 없습니다</text>`;
         }
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -164,12 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
         m2Output.textContent = `${a.m2} kg`;
         v1Output.textContent = `${a.v1.toFixed(1)} m/s`;
         stageBadge.textContent = `${KIND_NAME[a.kind]} · ${VERDICT[a.verdict]}`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">충돌 뒤 속도</span><span class="data-val">수레 1 ${a.after1.toFixed(2)} m/s · 수레 2 ${a.after2.toFixed(2)} m/s</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">충돌 뒤 속도</span><span class="data-val">수레 1 ${a.after1.toFixed(2)} m/s · 수레 2 ${a.after2.toFixed(2)} m/s</span></div>` +
             `<div class="data-row"><span class="data-name">운동량</span><span class="data-val">${a.pBefore.toFixed(2)} → ${a.pAfter.toFixed(2)} kg·m/s (차이 ${Math.abs(a.pAfter - a.pBefore).toExponential(1)})</span></div>` +
             `<div class="data-row"><span class="data-name">운동 에너지</span><span class="data-val">${a.kBefore.toFixed(2)} → ${a.kAfter.toFixed(2)} J</span></div>` +
             `<div class="data-row"><span class="data-name">반발 계수</span><span class="data-val">(${a.after2.toFixed(2)} − ${sn(a.after1)}) ÷ ${a.v1.toFixed(1)} = ${a.e}</span></div>` +
-            `<div class="data-row match"><span class="data-name">수레 1</span><span class="data-val">${VERDICT[a.verdict]}</span></div>`;
+            `<div class="data-row match"><span class="data-name">수레 1</span><span class="data-val">${VERDICT[a.verdict]}</span></div>`);
         return a;
     }
 

@@ -1,0 +1,210 @@
+{
+  "checkedAt": "2026-10-17T18:30:10.792Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": false,
+  "completedRoutes": [
+    {
+      "slug": "light-shadow",
+      "scenarios": 40
+    },
+    {
+      "slug": "lens-image",
+      "scenarios": 5
+    },
+    {
+      "slug": "photoelectric",
+      "scenarios": 15
+    },
+    {
+      "slug": "wave-transfer",
+      "scenarios": 10
+    },
+    {
+      "slug": "interference",
+      "scenarios": 10
+    },
+    {
+      "slug": "speed",
+      "scenarios": 10
+    },
+    {
+      "slug": "force-motion",
+      "scenarios": 25
+    },
+    {
+      "slug": "motion-energy",
+      "scenarios": 40
+    },
+    {
+      "slug": "gravity-motion",
+      "scenarios": 10
+    },
+    {
+      "slug": "torque",
+      "scenarios": 15
+    },
+    {
+      "slug": "collision",
+      "scenarios": 5
+    },
+    {
+      "slug": "magnets",
+      "scenarios": 10
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "scenarios": 55
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "scenarios": 125
+    },
+    {
+      "slug": "electric-field",
+      "scenarios": 15
+    },
+    {
+      "slug": "induction",
+      "scenarios": 10
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "scenarios": 15
+    },
+    {
+      "slug": "motor-magnet",
+      "scenarios": 15
+    },
+    {
+      "slug": "specific-heat",
+      "scenarios": 20
+    },
+    {
+      "slug": "energy-heat",
+      "scenarios": 5
+    },
+    {
+      "slug": "heat-engine",
+      "scenarios": 15
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    },
+    {
+      "slug": "density-buoyancy",
+      "scenarios": 55
+    },
+    {
+      "slug": "measurement",
+      "scenarios": 15
+    },
+    {
+      "slug": "mixture-separation",
+      "scenarios": 30
+    },
+    {
+      "slug": "separation-methods",
+      "scenarios": 15
+    },
+    {
+      "slug": "state-change",
+      "scenarios": 40
+    },
+    {
+      "slug": "gases",
+      "scenarios": 25
+    },
+    {
+      "slug": "solubility",
+      "scenarios": 25
+    },
+    {
+      "slug": "solubility-curve",
+      "scenarios": 5
+    },
+    {
+      "slug": "recrystallise",
+      "scenarios": 5
+    },
+    {
+      "slug": "flame-ions",
+      "scenarios": 30
+    },
+    {
+      "slug": "periodic-bonding",
+      "scenarios": 30
+    },
+    {
+      "slug": "molecule-shape",
+      "scenarios": 15
+    },
+    {
+      "slug": "acid-base",
+      "scenarios": 35
+    },
+    {
+      "slug": "neutralization",
+      "scenarios": 5
+    },
+    {
+      "slug": "titration",
+      "scenarios": 5
+    },
+    {
+      "slug": "mass-ratio",
+      "scenarios": 35
+    },
+    {
+      "slug": "mole",
+      "scenarios": 55
+    },
+    {
+      "slug": "rate-equilibrium",
+      "scenarios": 75
+    },
+    {
+      "slug": "burning-conditions",
+      "scenarios": 50
+    },
+    {
+      "slug": "combustion",
+      "scenarios": 5
+    },
+    {
+      "slug": "redox",
+      "scenarios": 10
+    },
+    {
+      "slug": "living-things",
+      "scenarios": 10
+    },
+    {
+      "slug": "microbes",
+      "scenarios": 55
+    },
+    {
+      "slug": "cell-osmosis",
+      "scenarios": 5
+    },
+    {
+      "slug": "cell-membrane",
+      "scenarios": 55
+    },
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    }
+  ],
+  "scenarios": 1225,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -397,14 +397,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'shape' ? renderShape(a) : a.kind === 'polar' ? renderPolar(a) : renderMix(a);
-        graphGroup.innerHTML = a.kind === 'shape' ? graphShape(a) : a.kind === 'polar' ? graphPolar(a) : graphMix(a);
+        window.scienceScene.render(mainGroup,a.kind === 'shape' ? renderShape(a) : a.kind === 'polar' ? renderPolar(a) : renderMix(a));
+        window.scienceScene.render(graphGroup,a.kind === 'shape' ? graphShape(a) : a.kind === 'polar' ? graphPolar(a) : graphMix(a));
         liftProse();
         stageBadge.textContent = a.kind === 'mix' ? `${a.sv.label} + ${a.su.label}` : `${a.m.name} ${a.m.formula}`;
         methodHint.textContent = a.kind === 'shape' ? '중심 원자의 전자쌍들은 서로 밀어내며 가장 멀리 떨어진 자리를 잡습니다'
             : a.kind === 'polar' ? '결합의 쌍극자를 화살표로 더해 남으면 극성, 상쇄되면 무극성입니다'
                 : '비슷한 것끼리 녹습니다 — 극성은 극성끼리, 무극성은 무극성끼리';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

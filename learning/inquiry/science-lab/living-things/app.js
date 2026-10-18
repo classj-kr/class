@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
             controlArea.innerHTML = pickRow('나누는 기준', 'rule', Object.entries(RULES).map(([k, v]) => ({ value: k, label: v.label })), state.rule, 2);
         } else {
             controlArea.innerHTML =
-                pickRow('사는 곳', 'habitat', Object.entries(HABITATS).map(([k, v]) => ({ value: k, label: `${v.icon} ${v.label}`, hint: v.hint })), state.habitat, 4) +
-                pickRow('생물', 'being', Object.entries(BEINGS).map(([k, v]) => ({ value: k, label: `${v.icon} ${v.name}` })), state.being, 3);
+                pickRow('사는 곳', 'habitat', Object.entries(HABITATS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.habitat, 4) +
+                pickRow('생물', 'being', Object.entries(BEINGS).map(([k, v]) => ({ value: k, label: v.name })), state.being, 3);
         }
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
@@ -172,6 +172,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /* ----------------------------------------------------------- visuals */
+    // The same specimen drawing appears in the scene and comparison cards.
+    // Platform emoji can change species, colour and proportions across devices.
+    function beingArt(key, x, y, scale=1) {
+        const drawings = {
+            camel: '<path d="M17 53Q13 45 14 33L10 26Q9 20 17 18L29 22 28 34 35 48Q39 21 48 30L55 46Q62 20 70 31L78 49 88 55 87 69 80 70 78 91 72 91 71 68 47 68 40 91 34 91 36 65 27 57Z" fill="#c39b6d" stroke="#8e714e" stroke-width="1.6"/><path d="M39 53Q57 62 77 53M18 35L28 40M42 69L38 89M75 69L76 88" fill="none" stroke="#e1c5a0" stroke-width="2"/><path d="M86 56Q97 63 92 75" fill="none" stroke="#8e714e" stroke-width="2"/><circle cx="19" cy="24" r="1.5" fill="#3a3b31"/><path d="M25 21l2-7 4 7M10 29h8" fill="#b38b60" stroke="#8e714e"/>',
+            bear: '<path d="M17 51Q28 25 60 31Q77 34 79 47L92 51 97 57 92 64 79 65 73 76 72 89 62 89 59 70 42 70 34 88 24 88 25 67 18 64Z" fill="#f6f3e9" stroke="#8d9da2" stroke-width="1.6"/><path d="M23 60Q40 69 60 60M68 61L64 84M28 68L28 83" fill="none" stroke="#d9dedb" stroke-width="3"/><circle cx="77" cy="44" r="5" fill="#edece3" stroke="#8d9da2"/><circle cx="78" cy="44" r="2" fill="#c6cfcf"/><circle cx="86" cy="54" r="1.6" fill="#334752"/><path d="M93 53l4 3-2 4-4-2Z" fill="#334752"/><path d="M18 52q-8-9-9 2" fill="none" stroke="#a2afb2" stroke-width="3"/>',
+            fish: '<path d="M12 51Q32 27 66 40L88 27 83 51 88 75 66 62Q32 75 12 51Z" fill="#b8ac86" stroke="#6d796e" stroke-width="1.5"/><path d="M35 37L47 24 62 38M37 65L48 77 57 64" fill="#a99b79" stroke="#6d796e"/><path d="M32 39Q42 52 32 65M44 49L60 56 44 61M70 43L81 34M70 58L81 69" fill="none" stroke="#7c846e" stroke-width="1.6"/><circle cx="23" cy="47" r="3.6" fill="#e4dfc4"/><circle cx="23" cy="47" r="1.8" fill="#2f474a"/><path d="M46 42q4 4 0 8m10-7q4 4 0 8m-7 4q4 4 0 8m11-8q4 4 0 8" fill="none" stroke="#d2c9aa"/>',
+            squirrel: '<path d="M58 68C91 73 91 40 69 31C49 21 63 7 78 19C99 36 98 74 66 85Z" fill="#b58357" stroke="#805d43" stroke-width="1.6"/><path d="M70 76C89 65 82 43 69 35" fill="none" stroke="#d3af81" stroke-width="4"/><path d="M36 44Q51 42 58 60L63 82 47 89 26 88 30 80 39 77 33 60 21 50 16 43 23 35 27 19 34 35Z" fill="#bc8b5a" stroke="#805d43" stroke-width="1.6"/><path d="M36 54Q47 55 49 73L42 79 35 65" fill="#e3cba5"/><path d="M32 58L21 63 28 69M48 84L29 87" fill="none" stroke="#805d43" stroke-width="2"/><circle cx="26" cy="42" r="2" fill="#2c3b35"/><circle cx="17" cy="46" r="2" fill="#495448"/>',
+            cactus: '<path d="M43 91V22C43 9 59 9 59 22V45H72V31C72 23 82 23 82 31V48Q82 58 72 58H59V91Z" fill="#729b75" stroke="#497458" stroke-width="1.6"/><path d="M43 65H27Q17 65 17 55V42C17 34 27 34 27 42V53H43" fill="#729b75" stroke="#497458" stroke-width="1.6"/><path d="M50 19V89M55 20V89M22 41V54Q22 59 29 59H41M76 31V47Q76 51 62 51" fill="none" stroke="#a7bf91" stroke-width="2"/><path d="M42 31l-5-2m7 17-5 1m19-17 5-3m-5 38 5 2m-20 9-4 2" stroke="#d2d5b1" stroke-width="1.2"/>',
+            lily: '<ellipse cx="50" cy="73" rx="42" ry="17" fill="#86aa82" stroke="#507b61" stroke-width="1.5"/><path d="M50 73L13 80M50 73L32 58M50 73L73 61M50 73L86 77" stroke="#b9cc9c" fill="none"/><path d="M50 66Q17 65 17 40Q40 38 50 66M50 66Q83 65 83 40Q60 38 50 66M50 66Q25 42 37 25Q52 38 50 66M50 66Q75 42 63 25Q48 38 50 66M50 66Q37 43 50 17Q63 43 50 66Z" fill="#e1b8be" stroke="#b68396" stroke-width="1.3"/><ellipse cx="50" cy="64" rx="10" ry="4" fill="#d9bd67"/>'
+        };
+        return `<g data-specimen="${key}" transform="translate(${x} ${y}) scale(${scale})">${drawings[key]}</g>`;
+    }
     function card(x, y, c, hit) {
         const d = CARD_PATHS[c.name];
         const iconSvg = d
@@ -218,8 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderHabitat(a, p) {
         const shown = shownTraits(a, p);
         let out = `<rect class="scene ${a.habitat.cls}" x="12" y="30" width="200" height="160" rx="8"/>`;
-        out += `<text class="box-title" x="22" y="48">${a.habitat.icon} ${a.habitat.label} — ${a.habitat.hint}</text>`;
-        out += `<text style="font-size:56px" x="112" y="140" text-anchor="middle">${a.being.icon}</text>`;
+        out += `<text class="box-title" x="22" y="48">${a.habitat.label} — ${a.habitat.hint}</text>`;
+        out += beingArt(state.being,57,57,1.1);
         out += `<text class="box-title" x="112" y="176" text-anchor="middle">${a.being.name}</text>`;
         // the body's features, listed one by one, marked for this place
         out += `<text class="box-title" x="226" y="48">${a.being.name}의 몸</text>`;
@@ -237,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'sort' ? renderSort(a, state.progress) : renderHabitat(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'sort' ? renderSort(a, state.progress) : renderHabitat(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -267,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = 20 + col * 146, y = 40 + row * 66;
             const ok = b.home === state.habitat, mine = k === state.being;
             out += `<rect class="card${mine ? ' hit' : ''}" x="${x}" y="${y}" width="134" height="56" rx="6"/>`;
-            out += `<text style="font-size:22px" x="${x + 22}" y="${y + 36}" text-anchor="middle">${b.icon}</text>`;
+            out += beingArt(k,x+2,y+7,.4);
             out += `<text class="bar-text" fill="#0f172a" x="${x + 44}" y="${y + 22}">${b.name}</text>`;
             out += `<text class="bar-text" fill="${ok ? '#059669' : '#dc2626'}" x="${x + 44}" y="${y + 42}">${ok ? '대표 서식지' : `다른 예: ${HABITATS[b.home].label}`}</text>`;
         });
@@ -291,12 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'sort' ? graphSort(a) : graphHabitat(a);
+        window.scienceScene.render(graphGroup,a.kind === 'sort' ? graphSort(a) : graphHabitat(a));
         stageBadge.textContent = a.kind === 'sort' ? a.rule.label : `${a.being.name} · ${a.habitat.label}`;
         methodHint.textContent = state.mode === 'sort'
             ? '같은 카드라도 나누는 기준이 달라지면 무리가 달라집니다'
             : '몸의 특징이 사는 곳에 맞는 생물만 그곳에서 잘 살 수 있습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

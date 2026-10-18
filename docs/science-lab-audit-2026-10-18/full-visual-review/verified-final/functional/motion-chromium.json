@@ -1,0 +1,163 @@
+{
+  "engine": "chromium",
+  "physicalDeviceTested": false,
+  "rows": [
+    {
+      "slug": "ride-acceleration",
+      "mode": "swing",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8000999999999998,
+      "distinctPerSecond": 60.55219154491418,
+      "p95FrameMs": 16.800000000000182,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "seesaw",
+      "frames": 110,
+      "changes": 110,
+      "seconds": 1.8166000000000004,
+      "distinctPerSecond": 60.55268083232411,
+      "p95FrameMs": 16.800000000000182,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "circle",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8,
+      "distinctPerSecond": 60.55555555555556,
+      "p95FrameMs": 16.800000000000182,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "straight",
+      "frames": 110,
+      "changes": 110,
+      "seconds": 1.8164999999999991,
+      "distinctPerSecond": 60.55601431323978,
+      "p95FrameMs": 16.80000000000109,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "elevator",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8,
+      "distinctPerSecond": 60.55555555555556,
+      "p95FrameMs": 16.80000000000109,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "slide",
+      "frames": 49,
+      "changes": 49,
+      "seconds": 0.8,
+      "distinctPerSecond": 61.25,
+      "p95FrameMs": 16.899999999999636,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "water-wave-tank",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8000999999999998,
+      "distinctPerSecond": 60.55219154491418,
+      "p95FrameMs": 16.80000000000001,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "speaker-lab",
+      "frames": 110,
+      "changes": 110,
+      "seconds": 1.8166000000000002,
+      "distinctPerSecond": 60.552680832324114,
+      "p95FrameMs": 16.800000000000068,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "wireless-power",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8001,
+      "distinctPerSecond": 60.55219154491417,
+      "p95FrameMs": 16.800000000000068,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "electroplating",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8,
+      "distinctPerSecond": 60.55555555555556,
+      "p95FrameMs": 16.800000000000068,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "acoustic-resonance",
+      "frames": 110,
+      "changes": 110,
+      "seconds": 1.8166,
+      "distinctPerSecond": 60.55268083232412,
+      "p95FrameMs": 16.80000000000001,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "sugar-phase",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8,
+      "distinctPerSecond": 60.55555555555556,
+      "p95FrameMs": 16.800000000000182,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "catalyst-foam",
+      "frames": 110,
+      "changes": 110,
+      "seconds": 1.8166000000000002,
+      "distinctPerSecond": 60.552680832324114,
+      "p95FrameMs": 16.799999999999983,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "force-motion",
+      "frames": 73,
+      "changes": 73,
+      "seconds": 1.2001,
+      "distinctPerSecond": 60.82826431130739,
+      "p95FrameMs": 16.800000000000182,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "periodic-bonding",
+      "frames": 109,
+      "changes": 109,
+      "seconds": 1.8003,
+      "distinctPerSecond": 60.545464644781426,
+      "p95FrameMs": 16.800000000000068,
+      "sameSvg": true,
+      "sameNode": true
+    }
+  ],
+  "errors": []
+}

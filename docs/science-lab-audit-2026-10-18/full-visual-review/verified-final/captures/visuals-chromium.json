@@ -1,0 +1,5200 @@
+{
+  "engine": "chromium",
+  "complete": true,
+  "physicalDeviceTested": false,
+  "routes": 25,
+  "rows": [
+    {
+      "slug": "refraction",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-refraction-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 389.5625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-refraction-0-1.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "motion-energy",
+      "states": [
+        {
+          "mode": "incline",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-motion-energy-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-motion-energy-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-motion-energy-0-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "energy",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-motion-energy-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-motion-energy-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-motion-energy-1-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "torque",
+      "states": [
+        {
+          "mode": "seesaw",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-torque-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-torque-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "tip",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-torque-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-torque-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "plank",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-torque-2-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-torque-2-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "circuit-bulbs",
+      "states": [
+        {
+          "mode": "circuit",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-circuit-bulbs-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 365.203125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "magnet",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-circuit-bulbs-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 365.203125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ohms-law-middle-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 267.8125,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ohms-law-middle-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 255.640625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ohms-law-middle-0-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ohms-law-high-elective-0-0.webp",
+              "visible": true,
+              "width": 622,
+              "height": 403.84375,
+              "id": "cmScene",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "periodic-bonding",
+      "states": [
+        {
+          "mode": "elements",
+          "actions": [],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-periodic-bonding-0-0.webp",
+              "visible": true,
+              "width": 620,
+              "height": 288.421875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-0-1.webp",
+              "visible": true,
+              "width": 620,
+              "height": 264.171875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-0-2.webp",
+              "visible": true,
+              "width": 517.046875,
+              "height": 488.9375,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-0-3.webp",
+              "visible": true,
+              "width": 322.953125,
+              "height": 129.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-0-4.webp",
+              "visible": true,
+              "width": 322.953125,
+              "height": 147.421875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "bonds",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-periodic-bonding-1-0.webp",
+              "visible": true,
+              "width": 620,
+              "height": 288.421875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-1-1.webp",
+              "visible": true,
+              "width": 620,
+              "height": 264.171875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-1-2.webp",
+              "visible": true,
+              "width": 517.046875,
+              "height": 488.9375,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-1-3.webp",
+              "visible": true,
+              "width": 322.953125,
+              "height": 129.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-periodic-bonding-1-4.webp",
+              "visible": true,
+              "width": 322.953125,
+              "height": 147.421875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "living-things",
+      "states": [
+        {
+          "mode": "sort",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "discrete-observations",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-living-things-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-living-things-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "habitat",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "discrete-observations",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-living-things-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-living-things-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "nutrient-detection",
+      "states": [
+        {
+          "mode": "reagent",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-nutrient-detection-0-0.webp",
+              "visible": true,
+              "width": 580,
+              "height": 263.21875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-nutrient-detection-0-1.webp",
+              "visible": true,
+              "width": 580,
+              "height": 234.21875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "benedict",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-nutrient-detection-1-0.webp",
+              "visible": true,
+              "width": 580,
+              "height": 263.21875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-nutrient-detection-1-1.webp",
+              "visible": true,
+              "width": 580,
+              "height": 234.21875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "amylase",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-nutrient-detection-2-0.webp",
+              "visible": true,
+              "width": 580,
+              "height": 263.21875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-nutrient-detection-2-1.webp",
+              "visible": true,
+              "width": 580,
+              "height": 234.21875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "homeostasis",
+      "states": [
+        {
+          "mode": "glucose",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-homeostasis-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-homeostasis-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "temp",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-homeostasis-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-homeostasis-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "water",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-homeostasis-2-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-homeostasis-2-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "neuron",
+      "states": [
+        {
+          "mode": "spike",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-neuron-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-neuron-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "conduct",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-neuron-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-neuron-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "synapse",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-neuron-2-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-neuron-2-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "geologic-time",
+      "states": [
+        {
+          "mode": "calendar",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-geologic-time-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-geologic-time-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "extinction",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-geologic-time-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-geologic-time-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "diversity",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-geologic-time-2-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-geologic-time-2-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "earthquake",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-earthquake-0-0.webp",
+              "visible": true,
+              "width": 348.796875,
+              "height": 160,
+              "id": "travelTimeCanvas",
+              "tag": "CANVAS"
+            },
+            {
+              "file": "chromium-earthquake-0-1.webp",
+              "visible": true,
+              "width": 507.203125,
+              "height": 405.75,
+              "id": "epicenterCanvas",
+              "tag": "CANVAS"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "air-stability",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#runBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-air-stability-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-air-stability-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "planet-motion",
+      "states": [
+        {
+          "mode": "retro",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-planet-motion-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-planet-motion-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "phase",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-planet-motion-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-planet-motion-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "eclipse",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-planet-motion-2-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-planet-motion-2-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "states": [
+        {
+          "mode": "bright",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-stars-universe-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-stars-universe-0-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "expand",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-stars-universe-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-stars-universe-1-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "states": [
+        {
+          "mode": "circle",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-common-0-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-common-0-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "straight",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-common-1-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-common-1-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "elevator",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-common-2-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-common-2-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "swing",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-common-3-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-common-3-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "seesaw",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-common-4-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-common-4-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "slide",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-common-5-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-common-5-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "states": [
+        {
+          "mode": "circle",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-elective-0-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-elective-0-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "straight",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-elective-1-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-elective-1-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "elevator",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-elective-2-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-elective-2-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "swing",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-elective-3-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-elective-3-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "seesaw",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-elective-4-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-elective-4-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        },
+        {
+          "mode": "slide",
+          "actions": [
+            {
+              "selector": "#measureRide",
+              "clicked": true
+            },
+            {
+              "selector": "#play",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ride-acceleration-high-elective-5-0.webp",
+              "visible": true,
+              "width": 624,
+              "height": 392.875,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ride-acceleration-high-elective-5-1.webp",
+              "visible": true,
+              "width": 874,
+              "height": 477.453125,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "middle",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-telescope-observation-middle-0-0.webp",
+              "visible": true,
+              "width": 292.25,
+              "height": 300.359375,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-telescope-observation-middle-0-1.webp",
+              "visible": true,
+              "width": 573.75,
+              "height": 364.734375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "high-elective",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-telescope-observation-high-elective-0-0.webp",
+              "visible": true,
+              "width": 292.25,
+              "height": 300.359375,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-telescope-observation-high-elective-0-1.webp",
+              "visible": true,
+              "width": 573.75,
+              "height": 364.734375,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "coastal-inundation",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#coBuild",
+              "clicked": true
+            },
+            {
+              "selector": "#coMark",
+              "clicked": true
+            },
+            {
+              "selector": "#coPour",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-coastal-inundation-0-0.webp",
+              "visible": true,
+              "width": 718,
+              "height": 490.625,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "sea-level-causes",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#slPrepare",
+              "clicked": true
+            },
+            {
+              "selector": "#slMark",
+              "clicked": true
+            },
+            {
+              "selector": "#slPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-sea-level-causes-0-0.webp",
+              "visible": true,
+              "width": 272,
+              "height": 320.5625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-sea-level-causes-0-1.webp",
+              "visible": true,
+              "width": 272,
+              "height": 320.5625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-sea-level-causes-0-2.webp",
+              "visible": true,
+              "width": 272,
+              "height": 320.5625,
+              "id": "",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "liquid-heat",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#lhPrepare",
+              "clicked": true
+            },
+            {
+              "selector": "#lhConnect",
+              "clicked": true
+            },
+            {
+              "selector": "#lhStart",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-liquid-heat-0-0.webp",
+              "visible": true,
+              "width": 926,
+              "height": 300,
+              "id": "lhChart",
+              "tag": "CANVAS"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "polarized-thin-sections",
+      "states": [
+        {
+          "mode": "ppl",
+          "actions": [
+            {
+              "selector": "#tsMount",
+              "clicked": true
+            },
+            {
+              "selector": "#tsPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-polarized-thin-sections-0-0.webp",
+              "visible": true,
+              "width": 380,
+              "height": 380,
+              "id": "tsCanvas",
+              "tag": "CANVAS"
+            }
+          ]
+        },
+        {
+          "mode": "xpl",
+          "actions": [
+            {
+              "selector": "#tsMount",
+              "clicked": true
+            },
+            {
+              "selector": "#tsPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-polarized-thin-sections-1-0.webp",
+              "visible": true,
+              "width": 380,
+              "height": 380,
+              "id": "tsCanvas",
+              "tag": "CANVAS"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "video-motion",
+      "states": [
+        {
+          "mode": "cart",
+          "actions": [
+            {
+              "selector": "#vmPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-video-motion-0-0.webp",
+              "visible": true,
+              "width": 543.140625,
+              "height": 305.515625,
+              "id": "vmCanvas",
+              "tag": "CANVAS"
+            }
+          ]
+        },
+        {
+          "mode": "projectile",
+          "actions": [
+            {
+              "selector": "#vmPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "changes": 0,
+            "distinctPerSecond": 0,
+            "notMeasured": true
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "changes": 0,
+              "distinctPerSecond": 0,
+              "notMeasured": true
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-video-motion-1-0.webp",
+              "visible": true,
+              "width": 543.140625,
+              "height": 305.515625,
+              "id": "vmCanvas",
+              "tag": "CANVAS"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    }
+  ],
+  "errors": []
+}

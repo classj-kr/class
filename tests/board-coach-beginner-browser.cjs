@@ -25,7 +25,7 @@ async function main(){
       });
       await page.goto(base+'/learning/games/board-coach/coach.html?game='+game);
       assert.equal(await page.locator('input[name=level]:checked').inputValue(),'beginner');
-      assert.match(await page.locator('#levelDescription').innerText(),/지금 둘 곳을 골라요/);
+      assert.match(await page.locator('#levelDescription').innerText(),/기본적인 공격과 방어/);
       assert.deepEqual(await page.locator('input[name=level]').evaluateAll(inputs=>inputs.map(input=>input.getAttribute('aria-label'))),[1,2,3,4,5].map(n=>'레벨 '+n));
       assert.doesNotMatch(await page.locator('#setup').innerText(),/초급|중급|상급/);
       const buttons=await page.locator('.level-options .option').evaluateAll(labels=>labels.map(label=>{const r=label.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
@@ -63,9 +63,10 @@ async function main(){
       if(game==='janggi'){
         const output=path.join(root,'outputs/qa/coach-levels');fs.mkdirSync(output,{recursive:true});
         await page.locator('#setup').evaluate(dialog=>dialog.scrollTop=0);
-        await page.screenshot({path:path.join(output,'janggi-levels-mobile.png')});
+        const saveWebp = async name => require('node:child_process').execFileSync('python', ['-c', 'import sys,io;from PIL import Image;Image.open(io.BytesIO(sys.stdin.buffer.read())).save(sys.argv[1],"WEBP",lossless=True)', path.join(output,name)], {input:await page.screenshot()});
+        await saveWebp('janggi-levels-mobile.webp');
         await page.setViewportSize({width:1280,height:850});
-        await page.screenshot({path:path.join(output,'janggi-levels-desktop.png')});
+        await saveWebp('janggi-levels-desktop.webp');
       }
       console.log(`${game}: five numeric levels, real AI workers, stronger hint, keyboard and phone controls PASS`);await page.close();
     }

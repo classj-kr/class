@@ -1,0 +1,150 @@
+{
+  "checkedAt": "2026-10-17T18:36:05.968Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "specific-heat",
+      "scenarios": 20
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    },
+    {
+      "slug": "separation-methods",
+      "scenarios": 15
+    },
+    {
+      "slug": "solubility",
+      "scenarios": 25
+    },
+    {
+      "slug": "molecule-shape",
+      "scenarios": 15
+    },
+    {
+      "slug": "acid-base",
+      "scenarios": 35
+    },
+    {
+      "slug": "titration",
+      "scenarios": 5
+    },
+    {
+      "slug": "mass-ratio",
+      "scenarios": 35
+    },
+    {
+      "slug": "burning-conditions",
+      "scenarios": 50
+    },
+    {
+      "slug": "combustion",
+      "scenarios": 5
+    },
+    {
+      "slug": "microbes",
+      "scenarios": 55
+    },
+    {
+      "slug": "photosynthesis",
+      "scenarios": 40
+    },
+    {
+      "slug": "nutrient-detection",
+      "scenarios": 15
+    },
+    {
+      "slug": "homeostasis",
+      "scenarios": 15
+    },
+    {
+      "slug": "neuron",
+      "scenarios": 15
+    },
+    {
+      "slug": "pea-genetics",
+      "scenarios": 35
+    },
+    {
+      "slug": "living-environment",
+      "scenarios": 35
+    },
+    {
+      "slug": "geologic-time",
+      "scenarios": 15
+    },
+    {
+      "slug": "earth-system",
+      "scenarios": 35
+    },
+    {
+      "slug": "weather-front",
+      "scenarios": 35
+    },
+    {
+      "slug": "water-cycle",
+      "scenarios": 5
+    },
+    {
+      "slug": "seawater",
+      "scenarios": 5
+    },
+    {
+      "slug": "stars-universe",
+      "scenarios": 40
+    },
+    {
+      "slug": "galaxy-hubble",
+      "scenarios": 15
+    },
+    {
+      "slug": "polarization",
+      "scenarios": 5
+    },
+    {
+      "slug": "bean-respiration",
+      "scenarios": 5
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "scenarios": 35
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "scenarios": 35
+    },
+    {
+      "slug": "karyotype-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "cell-micrometry",
+      "scenarios": 25
+    },
+    {
+      "slug": "sea-level-causes",
+      "scenarios": 25
+    },
+    {
+      "slug": "dissolution-mass",
+      "scenarios": 35
+    },
+    {
+      "slug": "reaction-pressure",
+      "scenarios": 95
+    }
+  ],
+  "scenarios": 890,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

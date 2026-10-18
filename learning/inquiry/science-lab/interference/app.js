@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="${X0}" y="136">두 파동을 더한 것</text>`;
         const tone = a.verdict === 'constructive' ? '#059669' : a.verdict === 'destructive' ? '#ea580c' : '#d97706';
         out += `<text class="verdict-text" fill="${tone}" x="20" y="20">경로차 ${a.ratio}λ · 합성 진폭 ${a.amp.toFixed(2)}A · ${VERDICT[a.verdict]}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     // one full cycle of cos, for the standing wave to breathe through
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="20" y="20">${a.n}배 진동 · 줄 ${a.L.toFixed(1)} m · v ${a.v} m/s</text>`;
         out += `<text class="read-text" x="20" y="190">λ = 2×${a.L.toFixed(1)}÷${a.n} = ${a.lambda.toFixed(2)} m · f = ${a.n}×${a.v}÷(2×${a.L.toFixed(1)}) = ${a.freq.toFixed(0)} Hz</text>`;
         out += `<text class="note-text" x="20" y="206">화면의 진동은 실제보다 ${SLOW}배 느리게 보여 줍니다 — 모드끼리의 빠르기 비는 그대로입니다</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const VERDICT = { constructive: '보강 간섭', destructive: '상쇄 간섭', partial: '부분 보강' };
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let r = 0; r <= 2.0001; r += 0.01) pts.push(`${gx(r).toFixed(1)},${gy(analyseSuper(r).amp).toFixed(1)}`);
         out += `<path class="trace" d="M${pts.join('L')}"/>`;
         out += `<circle class="trace-dot" cx="${gx(a.ratio).toFixed(1)}" cy="${gy(a.amp).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function graphStanding(a) {
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="bar-text" style="fill:${flip ? '#ffffff' : (on ? '#b45309' : '#475569')}" x="${(gx(row.freq) + (flip ? -6 : 6)).toFixed(1)}" ` +
                    `y="${(y + 4).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${row.freq.toFixed(0)} Hz</text>`;
         });
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     /* ------------------------------------------------------------ render */
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'super'
             ? `${VERDICT[a.verdict]} · ${a.amp.toFixed(2)}A`
             : `${a.n}배 진동 · ${a.freq.toFixed(0)} Hz`;
-        dataNote.innerHTML = a.kind === 'super'
+        window.scienceScene.render(dataNote,a.kind === 'super'
             ? `<div class="data-row"><span class="data-name">경로차</span><span class="data-val">${a.ratio}λ → 위상차 ${(a.ratio * 360).toFixed(0)}°</span></div>` +
               `<div class="data-row"><span class="data-name">합성 진폭</span><span class="data-val">2A × |cos(${(a.ratio * 180).toFixed(0)}°)| = ${a.amp.toFixed(3)}A</span></div>` +
               `<div class="data-row"><span class="data-name">보강 조건</span><span class="data-val">경로차 = 0λ, 1λ, 2λ … (정수배)</span></div>` +
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
               `<div class="data-row"><span class="data-name">고유 진동수</span><span class="data-val">f = v/λ = ${a.v}÷${a.lambda.toFixed(2)} = ${a.freq.toFixed(0)} Hz</span></div>` +
               `<div class="data-row"><span class="data-name">기본 진동수</span><span class="data-val">${a.base.toFixed(0)} Hz 의 ${a.n}배</span></div>` +
               `<div class="data-row"><span class="data-name">마디와 배</span><span class="data-val">마디 ${a.nodes}개 · 배 ${a.antinodes}개</span></div>` +
-              `<div class="data-row match"><span class="data-name">${BENCH} Hz와 견주면</span><span class="data-val">${FREQ_WORD[a.verdict]}</span></div>`;
+              `<div class="data-row match"><span class="data-name">${BENCH} Hz와 견주면</span><span class="data-val">${FREQ_WORD[a.verdict]}</span></div>`);
         return a;
     }
 

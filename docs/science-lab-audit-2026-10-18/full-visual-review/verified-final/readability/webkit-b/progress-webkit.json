@@ -1,0 +1,284 @@
+{
+  "checkedAt": "2026-10-17T21:30:25.722Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "refraction",
+      "scenarios": 220
+    },
+    {
+      "slug": "interference",
+      "scenarios": 10
+    },
+    {
+      "slug": "gravity-motion",
+      "scenarios": 10
+    },
+    {
+      "slug": "induction",
+      "scenarios": 10
+    },
+    {
+      "slug": "motor-magnet",
+      "scenarios": 15
+    },
+    {
+      "slug": "heat-transfer",
+      "scenarios": 65
+    },
+    {
+      "slug": "specific-heat",
+      "scenarios": 20
+    },
+    {
+      "slug": "weight-compare",
+      "scenarios": 30
+    },
+    {
+      "slug": "separation-methods",
+      "scenarios": 15
+    },
+    {
+      "slug": "solubility",
+      "scenarios": 25
+    },
+    {
+      "slug": "solubility-curve",
+      "scenarios": 5
+    },
+    {
+      "slug": "flame-ions",
+      "scenarios": 30
+    },
+    {
+      "slug": "acid-base",
+      "scenarios": 35
+    },
+    {
+      "slug": "titration",
+      "scenarios": 5
+    },
+    {
+      "slug": "rate-equilibrium",
+      "scenarios": 75
+    },
+    {
+      "slug": "burning-conditions",
+      "scenarios": 50
+    },
+    {
+      "slug": "microbes",
+      "scenarios": 55
+    },
+    {
+      "slug": "cell-osmosis",
+      "scenarios": 5
+    },
+    {
+      "slug": "cell-division",
+      "scenarios": 135
+    },
+    {
+      "slug": "photosynthesis",
+      "scenarios": 40
+    },
+    {
+      "slug": "body-organs",
+      "scenarios": 25
+    },
+    {
+      "slug": "homeostasis",
+      "scenarios": 15
+    },
+    {
+      "slug": "immune",
+      "scenarios": 65
+    },
+    {
+      "slug": "reflex-nerve",
+      "scenarios": 165
+    },
+    {
+      "slug": "pea-genetics",
+      "scenarios": 35
+    },
+    {
+      "slug": "dna-gel",
+      "scenarios": 5
+    },
+    {
+      "slug": "phylogeny",
+      "scenarios": 15
+    },
+    {
+      "slug": "population",
+      "scenarios": 10
+    },
+    {
+      "slug": "magma",
+      "scenarios": 20
+    },
+    {
+      "slug": "weather-front",
+      "scenarios": 35
+    },
+    {
+      "slug": "air-stability",
+      "scenarios": 5
+    },
+    {
+      "slug": "typhoon",
+      "scenarios": 15
+    },
+    {
+      "slug": "ocean-circulation",
+      "scenarios": 5
+    },
+    {
+      "slug": "night-sky",
+      "scenarios": 20
+    },
+    {
+      "slug": "star-elements",
+      "scenarios": 75
+    },
+    {
+      "slug": "stars",
+      "scenarios": 5
+    },
+    {
+      "slug": "galaxy-hubble",
+      "scenarios": 15
+    },
+    {
+      "slug": "neutralization-common",
+      "scenarios": 50
+    },
+    {
+      "slug": "mendeleev",
+      "scenarios": 5
+    },
+    {
+      "slug": "magnetic-brake",
+      "scenarios": 5
+    },
+    {
+      "slug": "polarization",
+      "scenarios": 5
+    },
+    {
+      "slug": "sugar-phase",
+      "scenarios": 15
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "scenarios": 5
+    },
+    {
+      "slug": "doppler-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "pedigree-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "water-wave-tank",
+      "scenarios": 5
+    },
+    {
+      "slug": "stellar-mass-data",
+      "scenarios": 5
+    },
+    {
+      "slug": "centrifuge-design",
+      "scenarios": 5
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-common",
+      "scenarios": 40
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-elective",
+      "scenarios": 40
+    },
+    {
+      "slug": "organelle-builder",
+      "scenarios": 5
+    },
+    {
+      "slug": "mcu-sampling",
+      "scenarios": 15
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "scenarios": 20
+    },
+    {
+      "slug": "protein-interaction",
+      "school": "high-elective",
+      "scenarios": 10
+    },
+    {
+      "slug": "leaf-pigments",
+      "scenarios": 25
+    },
+    {
+      "slug": "coastal-inundation",
+      "scenarios": 25
+    },
+    {
+      "slug": "serial-dilution",
+      "scenarios": 25
+    },
+    {
+      "slug": "yeast-fermentation",
+      "scenarios": 35
+    },
+    {
+      "slug": "galileo-incline",
+      "scenarios": 40
+    },
+    {
+      "slug": "animal-classification",
+      "scenarios": 45
+    },
+    {
+      "slug": "ph-comparison",
+      "scenarios": 45
+    },
+    {
+      "slug": "polarized-thin-sections",
+      "scenarios": 50
+    },
+    {
+      "slug": "hr-diagram",
+      "scenarios": 45
+    },
+    {
+      "slug": "equilibrium-data",
+      "scenarios": 65
+    },
+    {
+      "slug": "galactic-objects",
+      "scenarios": 75
+    },
+    {
+      "slug": "phase-curves",
+      "scenarios": 110
+    }
+  ],
+  "scenarios": 2210,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

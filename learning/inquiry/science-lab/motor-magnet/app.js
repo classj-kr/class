@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -362,14 +362,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'motor' ? renderMotor(a) : a.kind === 'material' ? renderMaterial(a) : renderCurie(a);
-        graphGroup.innerHTML = a.kind === 'motor' ? graphMotor(a) : a.kind === 'material' ? graphMaterial(a) : graphCurie(a);
+        window.scienceScene.render(mainGroup,a.kind === 'motor' ? renderMotor(a) : a.kind === 'material' ? renderMaterial(a) : renderCurie(a));
+        window.scienceScene.render(graphGroup,a.kind === 'motor' ? graphMotor(a) : a.kind === 'material' ? graphMaterial(a) : graphCurie(a));
         liftProse();
         stageBadge.textContent = a.kind === 'motor' ? `${TURNS[state.turns].label} · ${CURRENTS[state.current].label} · 정류자 ${COMMS[state.comm].label}` : a.kind === 'material' ? `${a.m.label} · ${a.m.hint}` : `${a.f.label} · ${a.T} ℃`;
         methodHint.textContent = a.kind === 'motor' ? '돌림힘은 감은 수 × 전류 × 넓이 × 자기장, 정류자가 반 바퀴마다 전류를 뒤집습니다'
             : a.kind === 'material' ? '강자성체는 세게 끌리고, 상자성체는 아주 약하게 끌리고, 반자성체는 아주 약하게 밀립니다'
                 : '퀴리 온도 위에서는 강자성 질서가 사라지고 약한 상자성 반응이 남습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

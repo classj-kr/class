@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <text x="0" y="4.5" text-anchor="middle" fill="#0f172a" font-size="12.5" font-weight="800" font-family="Pretendard, sans-serif">병렬: 두 저항에 같은 전압(${V().toFixed(1)} V)이 걸리고 전류가 나뉩니다</text>
             </g>`;
         }
-        circuitGroup.innerHTML = out;
+        window.scienceScene.render(circuitGroup,out);
     }
 
     function renderGraph() {
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </g>`;
 
         const graphShadow='<defs><filter id="ohmsGraphDrop" x="-15%" y="-15%" width="130%" height="130%"><feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.12"/></filter></defs>';
-        graphGroup.innerHTML = graphShadow + out.replaceAll('url(#compDrop)','url(#ohmsGraphDrop)');
+        window.scienceScene.render(graphGroup,graphShadow + out.replaceAll('url(#compDrop)','url(#ohmsGraphDrop)'));
     }
 
     function render() {

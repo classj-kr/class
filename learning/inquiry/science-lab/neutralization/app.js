@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         out += `<circle class="ph-dot" cx="${gx(addedML()).toFixed(1)}" cy="${gyPH(a.pH).toFixed(1)}" r="5"/>`;
         out += `<circle class="temp-dot" cx="${gx(addedML()).toFixed(1)}" cy="${gyT(a.temp).toFixed(1)}" r="4"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -191,11 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dataRows(a) {
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">H⁺ 의 몰수</span><span class="data-val">${acidC().toFixed(2)} × 0.050 L = ${a.nH.toFixed(4)} mol</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">H⁺ 의 몰수</span><span class="data-val">${acidC().toFixed(2)} × 0.050 L = ${a.nH.toFixed(4)} mol</span></div>` +
             `<div class="data-row"><span class="data-name">OH⁻ 의 몰수</span><span class="data-val">${baseC().toFixed(2)} × ${(addedML() / 1000).toFixed(3)} L = ${a.nOH.toFixed(4)} mol</span></div>` +
             `<div class="data-row${a.state === 'neutral' ? ' match' : ''}"><span class="data-name">지금 상태</span>` +
-            `<span class="data-val">${a.state === 'neutral' ? '두 몰수가 같아 중화점' : a.state === 'acid' ? `수소 이온(H⁺)이 ${(a.nH - a.nOH).toFixed(4)} mol 남아 산성` : `수산화 이온(OH⁻)이 ${(a.nOH - a.nH).toFixed(4)} mol 남아 염기성`}</span></div>`;
+            `<span class="data-val">${a.state === 'neutral' ? '두 몰수가 같아 중화점' : a.state === 'acid' ? `수소 이온(H⁺)이 ${(a.nH - a.nOH).toFixed(4)} mol 남아 산성` : `수산화 이온(OH⁻)이 ${(a.nOH - a.nH).toFixed(4)} mol 남아 염기성`}</span></div>`);
     }
 
     const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };

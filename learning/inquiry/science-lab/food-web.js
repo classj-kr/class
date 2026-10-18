@@ -30,7 +30,7 @@
   for(const edge of state.edges){const [from,to]=edge.split('>'),a=$(`[data-fw-node="${from}"]`).getBoundingClientRect(),z=$(`[data-fw-node="${to}"]`).getBoundingClientRect(),ax=a.x+a.width/2-b.x,ay=a.y+a.height/2-b.y,zx=z.x+z.width/2-b.x,zy=z.y+z.height/2-b.y,dx=zx-ax,dy=zy-ay,t1=Math.min((a.width/2+6)/Math.abs(dx),(a.height/2+6)/Math.abs(dy)),t2=Math.min((z.width/2+9)/Math.abs(dx),(z.height/2+9)/Math.abs(dy)),x1=ax+dx*t1,y1=ay+dy*t1,x2=zx-dx*t2,y2=zy-dy*t2;
    const kind=edge.split('>').includes(state.removed)?'missing':state.edgeCheck?.wrong.includes(edge)?'wrong':'normal',flow=state.flow&&kind==='normal'?' flow':'';
    out+=`<path class="fw-line ${kind}${flow}" data-edge="${edge}" d="M${x1} ${y1}L${x2} ${y2}" marker-end="url(#fwArrow-${kind})"/>`;
-  }svg.innerHTML=out;
+  }window.scienceScene.render(svg,out);
  }
  function render(){
   $('.fw-role-panel').hidden=state.mode!=='roles';$('.fw-web-panel').hidden=state.mode!=='web';for(const b of lab.querySelectorAll('[data-fw-mode]'))b.setAttribute('aria-pressed',String(b.dataset.fwMode===state.mode));

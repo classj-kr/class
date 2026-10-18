@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -374,14 +374,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'genesis' ? renderGenesis(a) : a.kind === 'track' ? renderTrack(a) : renderEnso(a);
-        graphGroup.innerHTML = a.kind === 'genesis' ? graphGenesis(a) : a.kind === 'track' ? graphTrack(a) : graphEnso(a);
+        window.scienceScene.render(mainGroup,a.kind === 'genesis' ? renderGenesis(a) : a.kind === 'track' ? renderTrack(a) : renderEnso(a));
+        window.scienceScene.render(graphGroup,a.kind === 'genesis' ? graphGenesis(a) : a.kind === 'track' ? graphTrack(a) : graphEnso(a));
         liftProse();
         stageBadge.textContent = a.kind === 'genesis' ? `${SSTS[state.sst].label} · ${LATS[state.lat].label}` : a.kind === 'track' ? `고기압 ${HIGHS[state.high].label} · ${SPEEDS[state.speed].label}` : `무역풍 ${TRADES[state.trade].label}`;
         methodHint.textContent = a.kind === 'genesis' ? '따뜻한 바다의 수증기(잠열)와 전향력, 둘 다 있어야 태풍이 됩니다'
             : a.kind === 'track' ? '태풍은 북태평양 고기압의 가장자리를 따라 갑니다'
                 : '무역풍이 따뜻한 물을 서쪽으로 밀어 쌓습니다. 바람이 바뀌면 바다도 뒤집힙니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

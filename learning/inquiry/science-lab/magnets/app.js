@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const t = p * SIM_SECONDS;
         let lo = 0, hi = a.path.length - 1;
         while (lo < hi) { const mid = (lo + hi) >> 1; if (a.path[mid].t < t) lo = mid + 1; else hi = mid; }
-        return a.path[lo];
+        const end=a.path[lo],start=a.path[Math.max(0,lo-1)],fraction=end.t===start.t?0:(t-start.t)/(end.t-start.t);
+        return Object.fromEntries(Object.keys(end).map(k=>[k,start[k]+(end[k]-start[k])*fraction]));
     };
 
     // field of the bar magnet (centre at origin, N pole at +x) plus the Earth's, in cm coordinates
@@ -323,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderMain(a) {
         mainGroup.closest('svg').toggleAttribute('data-mobile-fit',a.kind==='compass');
         mainGroup.closest('svg').setAttribute('viewBox', a.kind === 'force' ? '0 0 460 214' : '0 0 460 294');
-        mainGroup.innerHTML = a.kind === 'force' ? renderForce(a, state.progress) : renderCompass(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'force' ? renderForce(a, state.progress) : renderCompass(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -354,12 +355,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'force' ? graphForce(a) : graphCompass(a);
+        window.scienceScene.render(graphGroup,a.kind === 'force' ? graphForce(a) : graphCompass(a));
         stageBadge.textContent = a.kind === 'force' ? `${a.f.label} · ${state.gap} cm` : `${a.place.label} · ${state.dist} cm`;
         methodHint.textContent = state.mode === 'force'
             ? '같은 극은 서로 밀고, 다른 극은 서로 끌어당깁니다'
             : '나침반 바늘도 자석이어서 곁의 자석에 끌리고, 자석이 없으면 북쪽을 가리킵니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

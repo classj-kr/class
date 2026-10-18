@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'area' ? renderArea(a, state.progress) : renderSalt(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'area' ? renderArea(a, state.progress) : renderSalt(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -286,12 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'area' ? graphArea(a) : graphSalt(a);
+        window.scienceScene.render(graphGroup,a.kind === 'area' ? graphArea(a) : graphSalt(a));
         stageBadge.textContent = a.kind === 'area' ? `붙임딱지 ${state.dots}장` : `${a.water.name} ${state.grams} g`;
         methodHint.textContent = state.mode === 'area'
             ? '지구 표면은 바다가 약 71칸, 육지가 약 29칸입니다'
             : '물은 날아가고 녹아 있던 소금만 남습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

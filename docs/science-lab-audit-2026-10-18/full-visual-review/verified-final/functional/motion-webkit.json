@@ -1,0 +1,163 @@
+{
+  "engine": "webkit",
+  "physicalDeviceTested": false,
+  "rows": [
+    {
+      "slug": "ride-acceleration",
+      "mode": "swing",
+      "frames": 106,
+      "changes": 106,
+      "seconds": 1.812,
+      "distinctPerSecond": 58.498896247240616,
+      "p95FrameMs": 30,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "seesaw",
+      "frames": 119,
+      "changes": 119,
+      "seconds": 1.813,
+      "distinctPerSecond": 65.63706563706563,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "circle",
+      "frames": 110,
+      "changes": 110,
+      "seconds": 1.824,
+      "distinctPerSecond": 60.307017543859644,
+      "p95FrameMs": 30,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "straight",
+      "frames": 120,
+      "changes": 120,
+      "seconds": 1.812,
+      "distinctPerSecond": 66.2251655629139,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "elevator",
+      "frames": 117,
+      "changes": 117,
+      "seconds": 1.812,
+      "distinctPerSecond": 64.56953642384106,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "ride-acceleration",
+      "mode": "slide",
+      "frames": 54,
+      "changes": 54,
+      "seconds": 0.801,
+      "distinctPerSecond": 67.41573033707864,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "water-wave-tank",
+      "frames": 121,
+      "changes": 121,
+      "seconds": 1.814,
+      "distinctPerSecond": 66.70341786108048,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "speaker-lab",
+      "frames": 121,
+      "changes": 121,
+      "seconds": 1.814,
+      "distinctPerSecond": 66.70341786108048,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "wireless-power",
+      "frames": 121,
+      "changes": 121,
+      "seconds": 1.81,
+      "distinctPerSecond": 66.85082872928177,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "electroplating",
+      "frames": 108,
+      "changes": 108,
+      "seconds": 1.801,
+      "distinctPerSecond": 59.966685174902835,
+      "p95FrameMs": 22,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "acoustic-resonance",
+      "frames": 101,
+      "changes": 101,
+      "seconds": 1.804,
+      "distinctPerSecond": 55.98669623059867,
+      "p95FrameMs": 24,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "sugar-phase",
+      "frames": 121,
+      "changes": 121,
+      "seconds": 1.81,
+      "distinctPerSecond": 66.85082872928177,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "catalyst-foam",
+      "frames": 120,
+      "changes": 120,
+      "seconds": 1.801,
+      "distinctPerSecond": 66.62965019433648,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "force-motion",
+      "frames": 79,
+      "changes": 79,
+      "seconds": 1.213,
+      "distinctPerSecond": 65.1277823577906,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    },
+    {
+      "slug": "periodic-bonding",
+      "frames": 121,
+      "changes": 121,
+      "seconds": 1.81,
+      "distinctPerSecond": 66.85082872928177,
+      "p95FrameMs": 16,
+      "sameSvg": true,
+      "sameNode": true
+    }
+  ],
+  "errors": []
+}

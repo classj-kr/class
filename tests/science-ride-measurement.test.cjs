@@ -44,7 +44,7 @@ test('browser: apparatus, course routes, isolated diagnostics, reload and narrow
  const base=path.resolve(__dirname,'../learning/inquiry/science-lab');
  const server=http.createServer((req,res)=>{let file=path.resolve(base,'.'+new URL(req.url,'http://local').pathname);if(!file.startsWith(base+path.sep))return res.writeHead(403).end();if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err)return res.writeHead(404).end();res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css'})[path.extname(file)]||'application/octet-stream');res.end(data);});});
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let browser;
- const out=path.resolve('docs/science-lab-audit-2026-10-11/ride-measurement');fs.mkdirSync(out,{recursive:true});
+ const out=path.resolve(process.env.SCIENCE_RIDE_CAPTURE_DIR||'docs/science-lab-audit-2026-10-11/ride-measurement');fs.mkdirSync(out,{recursive:true});
  try{
   browser=await require('playwright').chromium.launch({headless:true,executablePath:process.env.SCIENCE_BROWSER});
   const p=await browser.newPage({viewport:{width:1100,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));

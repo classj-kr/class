@@ -4,8 +4,7 @@
 })(typeof globalThis!=="undefined"?globalThis:this,function(R){
   "use strict";
   const LEVELS=Object.freeze({
-    // Beginners get a fallible practice opponent; stronger opponents and
-    // teaching hints retain tactical safety and their own search budgets.
+    // Beginners compare safe one-turn choices; higher levels search deeper.
     beginner:{name:"레벨 1",depth:1,nodes:0,ms:0,practice:true},
     level2:{name:"레벨 2",depth:1,nodes:3500,ms:250},
     intermediate:{name:"레벨 3",depth:2,nodes:9000,ms:500},
@@ -131,7 +130,7 @@
   function choose(state,level="beginner",options={}){
     if(R.status(state).ended)return null;
     const settings={...(LEVELS[level]||LEVELS.beginner),...options};
-    const practice=settings.practice&&!settings.coaching,candidates=practice?order(R.actions(state)):roots(state);
+    const practice=settings.practice&&!settings.coaching,candidates=roots(state);
     const drawScore=settings.coaching?-120:0;
     if(!candidates.length)return null;
     if(practice){
@@ -153,10 +152,12 @@
         const end=R.status(R.advance(state,m));return end.ended&&!end.winner;
       }));
       const random=options.random||Math.random,board=candidates.filter(m=>!m.kind);
-      const developing=board.filter(m=>!['K','A'].includes(m.piece[1])||m.capture);
-      const choices=random()<.65?(developing.length?developing:board):board.map(move=>({move,
-        score:-evaluate(R.advance(state,move))-repetitionCost(state,move)
-      })).sort((a,b)=>b.score-a.score).slice(0,3).map(m=>m.move);
+      // Vary comparable moves, not blunders: inspect captures on every own
+      // piece, and allow recaptures before treating an exchange as a loss.
+      const ranked=board.map(move=>({move,
+        score:fallbackScore(state,move)-repetitionCost(state,move)
+      })).sort((a,b)=>b.score-a.score);
+      const choices=ranked.filter(m=>m.score>=ranked[0].score-60).slice(0,4).map(m=>m.move);
       const move=draw||choices[Math.min(choices.length-1,Math.floor(random()*choices.length))]||candidates[0];
       return {move,line:[move],reason:explain(state,move),depth:1,nodes:0,practice:true};
     }

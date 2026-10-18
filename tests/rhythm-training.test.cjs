@@ -16,6 +16,35 @@ test('generated bars have exactly four beats; seeds and settings are reproducibl
     }
     assert.deepEqual(Core.settings({ level: 50, bpm: 500 }), { level: 1, bpm: 140 });
 });
+
+test('each sixteenth-note round mixes every reference figure across its 32 beats', () => {
+    const figures = ['e e', 's s s s', 'e s s', 's s e', 's e s', 'ed s', 's ed', 'rs s e', 'rs s s s'];
+    const signatures = new Set();
+    for (let seed = 0; seed < 100; seed++) {
+        const round = Core.chart({ level: 3, bpm: 100 }, seed);
+        const beats = round.bars.flatMap(bar => {
+            let beat = [], length = 0;
+            const result = [];
+            for (const event of bar) {
+                beat.push((event.rest ? 'r' : '') + event.v);
+                length += Core.VALUES[event.v];
+                if (length === 1) { result.push(beat.join(' ')); beat = []; length = 0; }
+            }
+            assert.equal(length, 0);
+            return result;
+        });
+        assert.equal(beats.length, 32);
+        const counts = new Map(figures.map(figure => [figure, 0]));
+        for (const beat of beats) {
+            assert.ok(counts.has(beat), beat);
+            counts.set(beat, counts.get(beat) + 1);
+        }
+        for (const count of counts.values()) assert.ok(count >= 3 && count <= 4);
+        for (let i = 1; i < beats.length; i++) assert.notEqual(beats[i], beats[i - 1]);
+        signatures.add(beats.join('|'));
+    }
+    assert.ok(signatures.size > 90);
+});
 test('a long note has one onset; misses and extra taps reduce scores; rest attacks are extra', () => {
     const c = { bpm: 100, targets: [0, 1.2, 2.4], duration: 4.8 };
     assert.equal(Core.judge(c, [0, 1.2, 2.4]).accuracy, 100);

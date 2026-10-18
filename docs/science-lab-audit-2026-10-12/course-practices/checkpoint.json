@@ -1533,5 +1533,19 @@
       "functionalStatesPerEngine": 78,
       "readabilityStatesPerEngine": 70
     }
+  },
+  "deviceEmulationFollowup": {
+    "verifiedAt": "2026-10-17T07:11:02.548Z",
+    "report": "docs/science-lab-audit-2026-10-17/device-check/checkpoint.json",
+    "localEmulationComplete": true,
+    "physicalDeviceTested": false,
+    "routes": 201
+  },
+  "motionControlsFollowup": {
+    "verifiedAt": "2026-10-17T18:44:08.505Z",
+    "report": "docs/science-lab-audit-2026-10-18/motion-controls/checkpoint.json",
+    "localVerificationComplete": true,
+    "physicalDeviceTested": false,
+    "requiredExperimentTotal": null
   }
 }

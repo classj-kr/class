@@ -7,8 +7,8 @@
  const txt=(x,y,t,anchor='middle',fill='')=>`<text x="${x}" y="${y}" text-anchor="${anchor}"${fill?` style="fill:${fill}"`:''}>${t}</text>`;
  const defs=`<defs><linearGradient id="glass"><stop stop-color="#e2f0f4" stop-opacity=".6"/><stop offset=".22" stop-color="#fff" stop-opacity=".7"/><stop offset=".5" stop-color="#c7e0e9" stop-opacity=".15"/><stop offset="1" stop-color="#a9cbd8" stop-opacity=".55"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#b9e2ed" stop-opacity=".75"/><stop offset="1" stop-color="#58a3bf" stop-opacity=".8"/></linearGradient><linearGradient id="metal"><stop stop-color="#516b78"/><stop offset=".3" stop-color="#d4e3e8"/><stop offset=".65" stop-color="#899ea8"/><stop offset="1" stop-color="#3d5967"/></linearGradient><filter id="soft"><feGaussianBlur stdDeviation="1.8"/></filter></defs>`;
  function scopedTank(markup,index){for(const id of ['glass','water','metal','soft'])markup=markup.replaceAll('id="'+id+'"','id="cp-tank-'+index+'-'+id+'"').replaceAll('url(#'+id+')','url(#cp-tank-'+index+'-'+id+')');return markup;}
- function font(){for(const svg of host.querySelectorAll('svg[data-fit]')){const w=svg.getBoundingClientRect().width;if(w)for(const t of svg.querySelectorAll('text'))t.style.fontSize=(15*Number(svg.getAttribute('viewBox').split(' ')[2])/w)+'px';}}
- function scene(body,height=420){$('cpScene').innerHTML=`<svg viewBox="0 0 600 ${height}" data-fit role="img" aria-label="${host.querySelector('h2').textContent}">${defs}${body}</svg>`;font();}
+ function font(){if(window.scienceNormalizeFigure)return;for(const svg of host.querySelectorAll('svg[data-fit]')){const w=svg.getBoundingClientRect().width;if(w)for(const t of svg.querySelectorAll('text'))t.style.fontSize=(15*Number(svg.getAttribute('viewBox').split(' ')[2])/w)+'px';}}
+ function scene(body,height=420){window.scienceScene.render($('cpScene'),`<svg viewBox="0 0 600 ${height}" data-fit role="img" aria-label="${host.querySelector('h2').textContent}">${defs}${body}</svg>`);font();}
  const on=(id,fn,event='click')=>$(id).addEventListener(event,fn);
  function bindRange(id,fn){on(id,()=>{fn(Number($(id).value));render();},'input');}
  function value(id,v,suffix=''){$(id).value=v;const out=$(id+'Value');if(out)out.textContent=v+suffix;}
@@ -88,7 +88,7 @@
   model=M.digestion;
   render=()=>{
    steps('diSteps',[['튜브 준비',s.prepared],['37 °C · 30분',s.incubated],['바깥 용액 채취',s.sampled],['시약·가열',s.heated]]);
-   $('diScene').innerHTML=model.results(s).map((r,i)=>{const color=r.inside==='empty'?'#eef6f8':r.inside==='blue'?'#354a90':'#c49856',test={empty:'#eef6f8',clear:'#c5e5eb',cyan:'#65b7d0',orange:'#ce792e'}[r.test];return `<article class="cp-sample"><h3>${'ABC'[i]} · ${['침 용액','소화제 용액','증류수'][i]}</h3><svg viewBox="0 0 170 300" role="img" aria-label="${'ABC'[i]}의 튜브와 바깥 용액 검출 시험관"><defs><linearGradient id="diGlass${i}"><stop stop-color="#a8cddb" stop-opacity=".5"/><stop offset=".3" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#81b1c5" stop-opacity=".5"/></linearGradient></defs><ellipse cx="85" cy="175" rx="65" ry="9" fill="#b3cbd5" opacity=".3"/><path d="M23 20V158Q23 173 40 173H130Q147 173 147 158V20" fill="url(#diGlass${i})" stroke="#7d9fac" stroke-width="2"/><path d="M26 66H144V157Q144 168 130 168H40Q26 168 26 157Z" fill="#b5dce7" opacity=".6"/><path d="M60 29Q48 52 53 90L59 145Q85 159 111 145L117 90Q120 50 109 29Z" fill="${color}" stroke="#8c9dad" stroke-width="2"/><path d="M55 30H115M57 146H113" stroke="#536f80" stroke-width="7"/><path d="M70 205V275Q70 291 85 291Q100 291 100 275V205" fill="url(#diGlass${i})" stroke="#7399ab" stroke-width="2"/><path d="M73 240H97V275Q97 287 85 287Q73 287 73 275Z" fill="${test}"/><path d="M77 244V270" stroke="#fff" stroke-opacity=".4" stroke-width="3"/></svg><p>튜브 안: ${!s.prepared?'준비 전':r.digested?'연한 갈색':'청람색'}</p><p>바깥 용액 검사: ${!s.sampled?'채취 전':!s.reagent?'시약 넣기 전':!s.heated?'푸른색 · 가열 전':r.test==='orange'?'황적색':'푸른색'}</p></article>`;}).join('');
+   window.scienceScene.render($('diScene'),model.results(s).map((r,i)=>{const color=r.inside==='empty'?'#eef6f8':r.inside==='blue'?'#354a90':'#c49856',test={empty:'#eef6f8',clear:'#c5e5eb',cyan:'#65b7d0',orange:'#ce792e'}[r.test];return `<article class="cp-sample"><h3>${'ABC'[i]} · ${['침 용액','소화제 용액','증류수'][i]}</h3><svg viewBox="0 0 170 300" role="img" aria-label="${'ABC'[i]}의 튜브와 바깥 용액 검출 시험관"><defs><linearGradient id="diGlass${i}"><stop stop-color="#a8cddb" stop-opacity=".5"/><stop offset=".3" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#81b1c5" stop-opacity=".5"/></linearGradient></defs><ellipse cx="85" cy="175" rx="65" ry="9" fill="#b3cbd5" opacity=".3"/><path d="M23 20V158Q23 173 40 173H130Q147 173 147 158V20" fill="url(#diGlass${i})" stroke="#7d9fac" stroke-width="2"/><path d="M26 66H144V157Q144 168 130 168H40Q26 168 26 157Z" fill="#b5dce7" opacity=".6"/><path d="M60 29Q48 52 53 90L59 145Q85 159 111 145L117 90Q120 50 109 29Z" fill="${color}" stroke="#8c9dad" stroke-width="2"/><path d="M55 30H115M57 146H113" stroke="#536f80" stroke-width="7"/><path d="M70 205V275Q70 291 85 291Q100 291 100 275V205" fill="url(#diGlass${i})" stroke="#7399ab" stroke-width="2"/><path d="M73 240H97V275Q97 287 85 287Q73 287 73 275Z" fill="${test}"/><path d="M77 244V270" stroke="#fff" stroke-opacity=".4" stroke-width="3"/></svg><p>튜브 안: ${!s.prepared?'준비 전':r.digested?'연한 갈색':'청람색'}</p><p>바깥 용액 검사: ${!s.sampled?'채취 전':!s.reagent?'시약 넣기 전':!s.heated?'푸른색 · 가열 전':r.test==='orange'?'황적색':'푸른색'}</p></article>`;}).join(''));
    value('diEnzyme',s.enzyme);value('diMembrane',s.membrane);for(const id of ['diEnzyme','diMembrane'])$(id).disabled=s.prepared;$('diPrepare').disabled=s.prepared;$('diIncubate').disabled=!s.prepared||s.incubated;$('diSample').disabled=!s.incubated||s.sampled;$('diReagent').disabled=!s.sampled||s.reagent;$('diHeat').disabled=!s.reagent||s.heated;
   };
   reset=()=>{s=model.create();say('세 튜브에 같은 녹말·아이오딘 혼합액과 각각의 비교 용액을 넣으세요.');render();};
@@ -135,7 +135,7 @@
    scene(b,410);read(s.level.toFixed(1)+' 눈금',flooded.length+'곳');
    for(const[k,v]of Object.entries(s.places)){value('co'+k,v);$('co'+k).disabled=s.level>0;}
    $('coBuild').disabled=s.built;$('coMark').disabled=!s.built||s.marked;$('coPour').disabled=!s.built||!s.marked||s.running||s.target>=6;$('coDrain').disabled=s.level===0;
-   $('coPlaces').innerHTML=Object.entries(s.places).map(([k,p])=>`<span>${names[k]} · ${places[p]} · ${!s.built?'배치 전':flooded.includes(k)?'물에 잠김':Math.abs(s.level-model.heights[p])<1e-6?'물이 바닥에 닿음':'마른 땅'}</span>`).join('');
+   window.scienceScene.render($('coPlaces'),Object.entries(s.places).map(([k,p])=>`<span>${names[k]} · ${places[p]} · ${!s.built?'배치 전':flooded.includes(k)?'물에 잠김':Math.abs(s.level-model.heights[p])<1e-6?'물이 바닥에 닿음':'마른 땅'}</span>`).join(''));
   };
   reset=()=>{s=model.create();say('깃발을 놓을 높이를 정하고 점토 마을을 만드세요.');render();};
   for(const k of Object.keys(names))on('co'+k,()=>{model.place(s,k,$('co'+k).value);say('선택한 장소의 깃발을 바꿨습니다. 건물의 종류와 놓인 땅의 높이를 구별하세요.');render();},'change');
@@ -146,7 +146,7 @@
  if(slug==='sea-level-causes'){
   model=M.seaLevel;
   render=()=>{
-   $('slScene').innerHTML=s.tanks.map((t,i)=>{const label=['A · 가열 없음','B · 가열만','C · 가열 + 육상 얼음'][i],delta=(model.height(t)-7.5)*10;let b='';
+   window.scienceScene.render($('slScene'),s.tanks.map((t,i)=>{const label=['A · 가열 없음','B · 가열만','C · 가열 + 육상 얼음'][i],delta=(model.height(t)-7.5)*10;let b='';
     if(s.view==='zoom'){
      b+='<rect x="76" y="32" width="166" height="246" rx="8" fill="url(#glass)" stroke="#99b7c4"/>';
      if(s.prepared)b+=`<path d="M79 ${260-delta*20}H239V273H79Z" fill="url(#water)"/><path d="M79 ${260-delta*20}H239" stroke="#3a859b" stroke-width="2"/>`;
@@ -165,7 +165,7 @@
      if(i){if(s.running)b+='<path d="M59 74L28 212M88 67L166 217M76 78L98 212" stroke="#d98645" opacity=".25" stroke-width="6"/>';b+='<path d="M16 38H71L99 63L48 88Z" fill="#c3d0d5" stroke="#708c99" stroke-width="2"/><path d="M48 88L99 63" stroke="'+(s.running?'#e29b51':'#8299a5')+'" stroke-width="7"/><path d="M17 40V23H254V285H274" fill="none" stroke="#697f8b" stroke-width="3"/>';}
     }
     return `<article class="cp-sample"><h3>${label}</h3><svg viewBox="0 0 280 330" data-fit role="img" aria-label="${label}, ${s.view==='zoom'?'수면 확대':'수조 장치'}">${scopedTank(defs+b,i)}</svg><div class="cp-tank-values"><span>온도 <strong>${s.prepared?fmt(t.temperature,1)+' °C':'—'}</strong></span><span>수면 상승 <strong>${s.marked?fmt(delta,2)+' mm':'—'}</strong></span>${i===2?`<span>남은 얼음 <strong>${s.prepared?fmt(t.ice,1)+' g':'—'}</strong></span>`:''}</div></article>`;
-   }).join('');font();read(Math.floor(s.time/60)+'분 '+String(Math.floor(s.time%60)).padStart(2,'0')+'초',s.marked?'20.0 °C':'—');
+   }).join(''));font();read(Math.floor(s.time/60)+'분 '+String(Math.floor(s.time%60)).padStart(2,'0')+'초',s.marked?'20.0 °C':'—');
    $('slPrepare').disabled=s.prepared;$('slMark').disabled=!s.prepared||s.marked;$('slPlay').disabled=!s.marked||s.time>=600;$('slPlay').textContent=s.running?'일시 정지':s.time>0?'가열 이어 하기':'가열 시작';$('slMinute').disabled=!s.marked||s.time>=600;value('slView',s.view);
   };
   reset=()=>{s=model.create();say('세 수조에 같은 양의 물과 같은 받침을 준비하세요.');render();};
@@ -179,6 +179,6 @@
  }
  if(!model)return;
  on('cpReset',()=>reset());reset();new ResizeObserver(font).observe(host);
- let last=performance.now(),acc=0;function frame(now){const dt=Math.min(.08,(now-last)/1000);last=now;acc+=dt;if(acc>.045){advance(acc);acc=0;}requestAnimationFrame(frame);}requestAnimationFrame(frame);
+ let last=performance.now();function frame(now){const dt=Math.min(.08,(now-last)/1000);last=now;if(!document.hidden)advance(dt);requestAnimationFrame(frame);}requestAnimationFrame(frame);
  window.__coursePractice={getState:()=>JSON.parse(JSON.stringify(s)),slug};
 })();

@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const left = TRACK_X0 + st.x * PX_PER_M;
         const right = left + CRATE_W, cx = left + CRATE_W / 2;
-        out += `<rect class="crate" x="${left.toFixed(1)}" y="${CRATE_TOP}" width="${CRATE_W}" height="${CRATE_H}" rx="3"/>`;
+        out += window.scienceScene.art.crate(+left.toFixed(2),CRATE_TOP,CRATE_W,CRATE_H);
         out += `<line class="crate-band" x1="${left.toFixed(1)}" y1="${CRATE_TOP + 8}" x2="${right.toFixed(1)}" y2="${CRATE_TOP + 8}"/>`;
         out += `<text class="crate-text" x="${cx.toFixed(1)}" y="${CY + 6}" text-anchor="middle">${a.m} kg</text>`;
 
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="balance-text" fill="${tone}" x="20" y="190">` +
                `미는 힘 ${a.F} N ${balanced ? '=' : a.net > 0 ? '>' : '<'} 마찰력 ${fmt(a.friction)} N → 알짜힘 ${fmt(Math.abs(a.net))} N${balanced ? ' (평형)' : ''}</text>`;
         out += `<text class="note-text" x="20" y="206">${MOTION_NOTE[a.motion]}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const fmt = n => (Math.abs(n - Math.round(n)) < 1e-9 ? String(Math.round(n)) : n.toFixed(1));
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += line(0, endT, 'trace-done');
         if (simTime > 0) out += line(0, Math.min(simTime, endT), 'trace');
         out += `<circle class="trace-dot" cx="${gx(Math.min(simTime, endT)).toFixed(1)}" cy="${gy(st.v).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -218,8 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
         massOutput.textContent = `${a.m} kg`;
         startOutput.textContent = `${a.v0.toFixed(1)} m/s`;
         stageBadge.textContent = `${a.floorName} · ${MOTION_NAME[a.motion]}`;
-        dataNote.innerHTML = '<p>미는 힘: ' + a.F + ' N · 마찰력: ' + fmt(a.friction) + ' N</p>' +
-            '<p>알짜힘: ' + fmt(a.net) + ' N · ' + MOTION_NAME[a.motion] + '</p>';
+        window.scienceScene.render(dataNote,'<p>미는 힘: ' + a.F + ' N · 마찰력: ' + fmt(a.friction) + ' N</p>' +
+            '<p>알짜힘: ' + fmt(a.net) + ' N · ' + MOTION_NAME[a.motion] + '</p>');
         return { a, st };
     }
 

@@ -131,13 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             out += `<text class="read-text" x="20" y="208">${a.kind === 'real' ? '거꾸로 선 실상' : '바로 선 허상'}</text>`;
         }
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     function renderGraph(a) {
-        graphGroup.innerHTML = '<text x="20" y="40" fill="#0f172a" font-size="16">광선이 실제로 만나면 실상</text>' +
+        window.scienceScene.render(graphGroup,'<text x="20" y="40" fill="#0f172a" font-size="16">광선이 실제로 만나면 실상</text>' +
             '<text x="20" y="80" fill="#0f172a" font-size="16">광선의 연장선이 만나 보이면 허상</text>' +
-            '<text x="20" y="120" fill="#0f172a" font-size="16">물체의 위치를 바꾸며 상의 방향과 크기를 비교하세요.</text>';
+            '<text x="20" y="120" fill="#0f172a" font-size="16">물체의 위치를 바꾸며 상의 방향과 크기를 비교하세요.</text>');
     }
 
     function render() {
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         distOutput.textContent = `${a.a} cm`;
         stageBadge.textContent = a.parallel ? '상이 생기지 않음'
             : `${a.kind === 'real' ? '실상' : '허상'}`;
-        dataNote.innerHTML = '<p>' + (a.parallel ? '광선이 나란히 나아갑니다.' : a.kind === 'real' ? '거꾸로 선 실상 · 스크린에 맺힙니다.' : '바로 선 허상 · 스크린에 맺히지 않습니다.') + '</p>';
+        window.scienceScene.render(dataNote,'<p>' + (a.parallel ? '광선이 나란히 나아갑니다.' : a.kind === 'real' ? '거꾸로 선 실상 · 스크린에 맺힙니다.' : '바로 선 허상 · 스크린에 맺히지 않습니다.') + '</p>');
         return a;
     }
 

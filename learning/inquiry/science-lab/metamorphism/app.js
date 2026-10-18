@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -345,14 +345,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'facies' ? renderFacies(a) : a.kind === 'grade' ? renderGrade(a) : renderContact(a);
-        graphGroup.innerHTML = a.kind === 'facies' ? graphFacies(a) : a.kind === 'grade' ? graphGrade(a) : graphContact(a);
+        window.scienceScene.render(mainGroup,a.kind === 'facies' ? renderFacies(a) : a.kind === 'grade' ? renderGrade(a) : renderContact(a));
+        window.scienceScene.render(graphGroup,a.kind === 'facies' ? graphFacies(a) : a.kind === 'grade' ? graphGrade(a) : graphContact(a));
         liftProse();
         stageBadge.textContent = a.kind === 'facies' ? `${DEPTHS[state.depth].label} · ${GRADS[state.grad].hint}` : a.kind === 'grade' ? `${PARENTS[a.parent].label} · ${a.T} ℃` : `${a.b.label} · ${DISTS[state.dist].label}`;
         methodHint.textContent = a.kind === 'facies' ? '깊이가 압력을, 지온 기울기가 온도를 정합니다'
             : a.kind === 'grade' ? '온도가 오를수록 결정이 굵어지고 새 광물이 나타납니다'
                 : '마그마 곁은 압력 없이 열만 받아 엽리 없는 혼펠스가 됩니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

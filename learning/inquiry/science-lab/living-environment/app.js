@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'bean' ? renderBean(a, state.progress) : renderWeb(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'bean' ? renderBean(a, state.progress) : renderWeb(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -360,14 +360,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'bean' ? graphBean(a) : graphWeb(a);
+        window.scienceScene.render(graphGroup,a.kind === 'bean' ? graphBean(a) : graphWeb(a));
         stageBadge.textContent = a.kind === 'bean'
             ? (a.changed.length ? `${a.changed.map(k => ({ light: '햇빛', water: '물', warm: '따뜻함' })[k]).join('·')} 없음` : '기준과 같음')
             : a.ev.label;
         methodHint.textContent = state.mode === 'bean'
             ? '한 가지 조건만 바꾸고 나머지는 기준 화분과 똑같이 해야 무엇 때문인지 알 수 있습니다'
             : '먹고 먹히는 관계로 이어져 있어 한 생물이 바뀌면 다른 생물도 바뀝니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

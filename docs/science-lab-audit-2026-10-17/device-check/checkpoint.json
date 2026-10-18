@@ -1,0 +1,131 @@
+{
+  "verifiedAt": "2026-10-17T07:11:02.548Z",
+  "scope": "Local Chromebook and iPad emulation verification of the current science lab. This is not a physical-device sign-off or a completed textbook census.",
+  "localEmulationComplete": true,
+  "physicalDeviceTested": false,
+  "requiredExperimentTotal": null,
+  "apps": 196,
+  "routes": 201,
+  "input": [
+    {
+      "engine": "chromium",
+      "browserVersion": "155.0.8059.80",
+      "routes": 201,
+      "questions": 806,
+      "states": 804,
+      "input": "keyboard",
+      "report": "chromium.json"
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "routes": 201,
+      "questions": 806,
+      "states": 804,
+      "input": "synthetic touch",
+      "report": "webkit.json"
+    }
+  ],
+  "readability": [
+    {
+      "engine": "chromium",
+      "routes": 17,
+      "states": 200,
+      "viewports": [
+        [
+          1366,
+          768
+        ],
+        [
+          1180,
+          820
+        ],
+        [
+          1024,
+          768
+        ],
+        [
+          820,
+          1180
+        ],
+        [
+          768,
+          1024
+        ]
+      ],
+      "report": "readability/extended-chromium.json"
+    },
+    {
+      "engine": "webkit",
+      "routes": 17,
+      "states": 200,
+      "viewports": [
+        [
+          1366,
+          768
+        ],
+        [
+          1180,
+          820
+        ],
+        [
+          1024,
+          768
+        ],
+        [
+          820,
+          1180
+        ],
+        [
+          768,
+          1024
+        ]
+      ],
+      "report": "readability/extended-webkit.json"
+    }
+  ],
+  "workflows": [
+    {
+      "engine": "chromium",
+      "experiments": 5,
+      "states": 30,
+      "report": "workflows-chromium.json"
+    },
+    {
+      "engine": "webkit",
+      "experiments": 5,
+      "states": 30,
+      "report": "workflows-webkit.json"
+    }
+  ],
+  "controls": [
+    {
+      "engine": "chromium",
+      "checkboxLabels": 9,
+      "fileChooser": 1,
+      "distanceInputs": 3,
+      "report": "controls-chromium.json"
+    },
+    {
+      "engine": "webkit",
+      "checkboxLabels": 9,
+      "fileChooser": 1,
+      "distanceInputs": 3,
+      "report": "controls-webkit.json"
+    }
+  ],
+  "manuallyReviewedWebP": 20,
+  "liveAssets": 952,
+  "changes": [
+    "44 px label targets in nine experiment pages and 44 px distance inputs in earthquake.",
+    "Explicit per-direction SVG arrow colours in ride-acceleration for WebKit.",
+    "Readable spacing and keyboard-scrollable figures in narrow periodic-bonding layouts.",
+    "Removed publisher/page citations from two student-facing observation tables; original evidence-data metadata remains."
+  ],
+  "limits": [
+    "WebKit is the Windows Playwright build using an iPad profile; it is not a remotely connected physical iPad.",
+    "683 CSS px exercises the layout width equivalent of 200% Chrome zoom on a 1366 px screen; it does not change browser zoom.",
+    "No hardware virtual-keyboard, real-device thermal, battery or performance claim.",
+    "This check does not establish the full required-experiment count."
+  ]
+}

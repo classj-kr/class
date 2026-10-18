@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderMain(a) {
         mainGroup.closest('svg').toggleAttribute('data-mobile-fit',a.kind==='path');
         mainGroup.closest('svg').setAttribute('viewBox', a.kind === 'path' ? '0 0 460 334' : '0 0 460 240');
-        mainGroup.innerHTML = a.kind === 'path' ? renderPath(a, state.progress) : renderOrbit(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'path' ? renderPath(a, state.progress) : renderOrbit(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -300,12 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'path' ? graphPath(a) : graphOrbit(a);
+        window.scienceScene.render(graphGroup,a.kind === 'path' ? graphPath(a) : graphOrbit(a));
         stageBadge.textContent = a.kind === 'path' ? `${a.season.label} · 서울` : `${state.tilt === TILT_REAL ? '23.5' : state.tilt}° · ${a.spot.label}`;
         methodHint.textContent = state.mode === 'path'
             ? '여름에는 태양이 높이 떠 낮이 길고, 겨울에는 낮게 떠 낮이 짧습니다'
             : '자전축이 기울어진 채 공전하기 때문에 자리에 따라 햇빛이 비치는 각도가 달라집니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

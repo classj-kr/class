@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const text = `${a.mat.label} · ${state.vessel === 'open' ? '열린 그릇' : '밀폐 용기'} → ${VERDICT[a.verdict]}`;
         out += `<text class="verdict-text" fill="${TONE[a.verdict]}" x="20" y="28">${text}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------- graph */
@@ -231,11 +231,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = graph(a);
+        window.scienceScene.render(graphGroup,graph(a));
         const mOut = document.getElementById('massRangeOut');
         if (mOut) mOut.textContent = `${state.mass} g`;
         stageBadge.textContent = `${a.mat.label} · ${VERDICT[a.verdict]}`;
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

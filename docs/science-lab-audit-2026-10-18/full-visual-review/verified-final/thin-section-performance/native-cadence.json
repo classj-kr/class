@@ -1,0 +1,21 @@
+{
+  "instrumentation": "Observe the live stage-angle input without wrapping canvas drawing calls",
+  "rows": [
+    {
+      "crossed": false,
+      "frames": 116,
+      "changes": 61,
+      "seconds": 5.035,
+      "fps": 11.916583912611717,
+      "p95": 55
+    },
+    {
+      "crossed": true,
+      "frames": 77,
+      "changes": 61,
+      "seconds": 5.026,
+      "fps": 11.937922801432551,
+      "p95": 73
+    }
+  ]
+}

@@ -99,6 +99,8 @@
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+/* Gradient faces provide depth without blurring every frame of the circuit. */
+#circuitGroup [filter], #graphGroup [filter] { filter: none; }
 .wire-core {
     stroke: #38bdf8;
     stroke-width: 3.5;
@@ -108,7 +110,7 @@
 }
 
 /* Animated Current Flow Pulses */
-@keyframes currentFlow { to { stroke-dashoffset: -32; } }
+@keyframes currentFlow { to { stroke-dashoffset: -26; } }
 .current-pulse {
     stroke: #f59e0b;
     stroke-width: 3.5;
@@ -116,7 +118,7 @@
     stroke-linecap: round;
     stroke-dasharray: 8 18;
     animation: currentFlow 1s linear infinite;
-    filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.7));
+    /* A crisp pulse avoids repainting a blurred layer around the whole circuit. */
 }
 
 .comp-sub {

@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -359,14 +359,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'classify' ? renderClassify(a) : a.kind === 'redshift' ? renderRedshift(a) : renderHubble(a);
-        graphGroup.innerHTML = a.kind === 'classify' ? graphClassify(a) : a.kind === 'redshift' ? graphRedshift(a) : graphHubble(a);
+        window.scienceScene.render(mainGroup,a.kind === 'classify' ? renderClassify(a) : a.kind === 'redshift' ? renderRedshift(a) : renderHubble(a));
+        window.scienceScene.render(graphGroup,a.kind === 'classify' ? graphClassify(a) : a.kind === 'redshift' ? graphRedshift(a) : graphHubble(a));
         liftProse();
         stageBadge.textContent = a.kind === 'classify' ? `팔 ${ARMS[a.arms].label} · 팽대부 ${BULGES[a.bulge].label}` : a.kind === 'redshift' ? a.o.name : `${a.sm.label} · ${SCALES[state.scale].label}`;
         methodHint.textContent = a.kind === 'classify' ? '팽대부와 나선팔, 막대의 유무로 은하의 자리가 정해집니다'
             : a.kind === 'redshift' ? '멀어지는 천체의 스펙트럼 선은 파장이 길어져 붉은 쪽으로 밀립니다'
                 : '멀수록 빨리 멀어집니다. 기울기가 H₀, 그 역수가 우주 나이의 어림값';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

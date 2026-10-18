@@ -1,0 +1,31 @@
+{
+  "completedAt": "2026-10-17T21:22:54.635Z",
+  "exitCode": 0,
+  "passed": true,
+  "tests": 22,
+  "passes": 22,
+  "failures": 0,
+  "durationMs": 332782,
+  "files": [
+    "science-frame-stability",
+    "science-thin-sections",
+    "science-interpolated-motion",
+    "science-motion-controls",
+    "science-observation-motion",
+    "science-video-motion",
+    "science-liquid-heat",
+    "science-reaction-pressure",
+    "science-all-apps"
+  ],
+  "log": "tests.log",
+  "physicalDeviceTested": false,
+  "recheck": {
+    "exitCode": 0,
+    "tests": 3,
+    "passes": 3,
+    "failures": 0,
+    "log": "video-recheck.log",
+    "reason": "Wait for the app media-error handler to finish, not only the earlier native video.error property update."
+  },
+  "initialResult": "initial-results.json"
+}

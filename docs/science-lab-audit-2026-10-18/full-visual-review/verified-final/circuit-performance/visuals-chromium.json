@@ -1,0 +1,302 @@
+{
+  "engine": "chromium",
+  "complete": true,
+  "physicalDeviceTested": false,
+  "routes": 2,
+  "rows": [
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 73,
+            "burstDurationMs": 1199.8000000000002,
+            "burstUpdatesPerSecond": 60.01000166694448,
+            "frames": 74,
+            "changes": 74,
+            "seconds": 1.2167000000000001,
+            "distinctPerSecond": 60.8202514999589,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16.800000000000182,
+            "activeUpdatesPerSecond": 60.01000166694448,
+            "firstChangeMs": 16.899999999999864,
+            "lastChangeMs": 1216.7,
+            "maxChangeGapMs": 16.90000000000009,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 73,
+              "burstDurationMs": 1199.8000000000002,
+              "burstUpdatesPerSecond": 60.01000166694448,
+              "frames": 74,
+              "changes": 74,
+              "seconds": 1.2167000000000001,
+              "distinctPerSecond": 60.8202514999589,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16.800000000000182,
+              "activeUpdatesPerSecond": 60.01000166694448,
+              "firstChangeMs": 16.899999999999864,
+              "lastChangeMs": 1216.7,
+              "maxChangeGapMs": 16.90000000000009,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ohms-law-middle-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 267.8125,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ohms-law-middle-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 255.640625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "chromium-ohms-law-middle-0-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "burstFrames": 0,
+            "burstDurationMs": 0,
+            "burstUpdatesPerSecond": 0,
+            "frames": 73,
+            "changes": 1,
+            "seconds": 1.2003,
+            "distinctPerSecond": 0.8331250520703158,
+            "changedFrameRatio": 0.0136986301369863,
+            "p95FrameMs": 16.899999999999864,
+            "activeUpdatesPerSecond": 0,
+            "firstChangeMs": null,
+            "lastChangeMs": null,
+            "maxChangeGapMs": null,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 0,
+              "burstDurationMs": 0,
+              "burstUpdatesPerSecond": 0,
+              "frames": 73,
+              "changes": 1,
+              "seconds": 1.2003,
+              "distinctPerSecond": 0.8331250520703158,
+              "changedFrameRatio": 0.0136986301369863,
+              "p95FrameMs": 16.899999999999864,
+              "activeUpdatesPerSecond": 0,
+              "firstChangeMs": null,
+              "lastChangeMs": null,
+              "maxChangeGapMs": null,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "chromium-ohms-law-high-elective-0-0.webp",
+              "visible": true,
+              "width": 622,
+              "height": 403.84375,
+              "id": "cmScene",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    }
+  ],
+  "errors": []
+}

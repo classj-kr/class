@@ -1,0 +1,144 @@
+{
+  "checkedAt": "2026-10-17T18:35:34.274Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "motor-magnet",
+      "scenarios": 15
+    },
+    {
+      "slug": "energy-heat",
+      "scenarios": 5
+    },
+    {
+      "slug": "heat-engine",
+      "scenarios": 15
+    },
+    {
+      "slug": "density-buoyancy",
+      "scenarios": 55
+    },
+    {
+      "slug": "measurement",
+      "scenarios": 15
+    },
+    {
+      "slug": "mixture-separation",
+      "scenarios": 30
+    },
+    {
+      "slug": "state-change",
+      "scenarios": 40
+    },
+    {
+      "slug": "solubility-curve",
+      "scenarios": 5
+    },
+    {
+      "slug": "recrystallise",
+      "scenarios": 5
+    },
+    {
+      "slug": "neutralization",
+      "scenarios": 5
+    },
+    {
+      "slug": "living-things",
+      "scenarios": 10
+    },
+    {
+      "slug": "cell-osmosis",
+      "scenarios": 5
+    },
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    },
+    {
+      "slug": "body-systems",
+      "scenarios": 5
+    },
+    {
+      "slug": "immune",
+      "scenarios": 65
+    },
+    {
+      "slug": "phylogeny",
+      "scenarios": 15
+    },
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    },
+    {
+      "slug": "land-sea",
+      "scenarios": 20
+    },
+    {
+      "slug": "wireless-power",
+      "scenarios": 5
+    },
+    {
+      "slug": "transistor-speaker",
+      "scenarios": 5
+    },
+    {
+      "slug": "electron-slits",
+      "scenarios": 5
+    },
+    {
+      "slug": "gas-identification",
+      "scenarios": 5
+    },
+    {
+      "slug": "dna-replication",
+      "scenarios": 5
+    },
+    {
+      "slug": "protein-synthesis",
+      "scenarios": 5
+    },
+    {
+      "slug": "pedigree-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "silver-mirror",
+      "scenarios": 5
+    },
+    {
+      "slug": "nylon-interface",
+      "scenarios": 5
+    },
+    {
+      "slug": "water-electrolysis",
+      "scenarios": 25
+    },
+    {
+      "slug": "spring-wave-speed",
+      "scenarios": 25
+    },
+    {
+      "slug": "acoustic-resonance",
+      "scenarios": 25
+    },
+    {
+      "slug": "seasonal-sky",
+      "scenarios": 55
+    },
+    {
+      "slug": "catalyst-foam",
+      "scenarios": 145
+    }
+  ],
+  "scenarios": 760,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

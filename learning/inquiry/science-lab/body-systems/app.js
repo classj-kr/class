@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         out += `<text class="note-text" x="14" y="188">산소 소비량 ${a.d.vo2} mL/분 = 심박출량 ${fmt(a.co)} L × 1 L에서 뽑아 쓴 ${fmt(a.avDiff, 0)} mL</text>`;
         out += `<text class="note-text" x="14" y="204">표시된 호흡·심장 박동은 예시 자료이며 모든 사람의 측정값이 아닙니다</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const ROWS = [
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const flip = gx(ratio) > GRAPH.x1 - 110;
             out += `<text class="bar-text" style="fill:${flip ? '#ffffff' : colour}" x="${(gx(ratio) + (flip ? -6 : 6)).toFixed(1)}" y="${(y + 5).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${label}</text>`;
         });
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -169,12 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
         timeOutput.textContent = `${minutes()} 분`;
         stageBadge.textContent = `${a.d.label} · 심장 ${a.d.hr}회/분`;
         const t = minutes();
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">산소 소비량</span><span class="data-val">심박출량 ${fmt(a.co)} L/분 × 1 L당 ${fmt(a.avDiff, 0)} mL = ${a.d.vo2} mL/분</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">산소 소비량</span><span class="data-val">심박출량 ${fmt(a.co)} L/분 × 1 L당 ${fmt(a.avDiff, 0)} mL = ${a.d.vo2} mL/분</span></div>` +
             `<div class="data-row"><span class="data-name">숨</span><span class="data-val">${a.d.rr} 회 × ${a.d.tv} mL = ${fmt(a.ve)} L/분 · 내쉰 숨의 산소 약 ${fmt(a.feO2 * 100, 1)} % (들숨·날숨 부피를 같게 둔 근사)</span></div>` +
             `<div class="data-row"><span class="data-name">양분</span><span class="data-val">포도당 ${fmt(a.glucose, 2)} g/분 · ${t} 분이면 ${fmt(a.glucose * t, 1)} g (${fmt(a.kcal * t, 0)} kcal)</span></div>` +
             `<div class="data-row"><span class="data-name">콩팥</span><span class="data-val">포도당 ${fmt(a.filteredGlucose, 0)} mg/분을 거른 뒤 재흡수합니다 (정상 조건 모형)</span></div>` +
-            `<div class="data-row match"><span class="data-name">${t} 분 동안</span><span class="data-val">산소 ${fmt((a.d.vo2 * t) / 1000, 1)} L · 오줌 ${fmt(a.d.urine * t, 0)} mL</span></div>`;
+            `<div class="data-row match"><span class="data-name">${t} 분 동안</span><span class="data-val">산소 ${fmt((a.d.vo2 * t) / 1000, 1)} L · 오줌 ${fmt(a.d.urine * t, 0)} mL</span></div>`);
         return a;
     }
 

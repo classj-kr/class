@@ -39,7 +39,7 @@
 /* Light is drawn as dashes crawling along each ray in its direction of
    travel, so incident light runs toward the boundary and the reflected and
    refracted rays run away from it. */
-@keyframes rayTravel { to { stroke-dashoffset: -28; } }
+@keyframes rayTravel { to { stroke-dashoffset: -32; } }
 .ray { stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-dasharray: 9 7;
        animation: rayTravel 1s linear infinite; }
 .ray.incident { stroke: #d97706; }

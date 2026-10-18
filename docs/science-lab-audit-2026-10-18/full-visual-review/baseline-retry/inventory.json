@@ -1,0 +1,129 @@
+{
+  "rows": [
+    {
+      "title": "동물·식물 세포 관찰",
+      "scripts": [
+        "/learning/inquiry/science-lab/lab-scene.js",
+        "/learning/inquiry/science-lab/cell-observation.js",
+        "/learning/inquiry/science-lab/microbe-observation.js",
+        "/learning/inquiry/science-lab/curriculum-map.js",
+        "/learning/inquiry/science-lab/exam-scope.js",
+        "/learning/inquiry/science-lab/experiment-questions.js",
+        "/learning/inquiry/science-lab/apparatus-scenes.js",
+        "/learning/inquiry/science-lab/lab-ui.js",
+        "/learning/inquiry/science-lab/observation-scenes.js",
+        "/learning/inquiry/science-lab/question-quality-content.js",
+        "/learning/inquiry/science-lab/supplement-extra.js",
+        "/learning/inquiry/science-lab/assessment-content.js",
+        "/learning/inquiry/science-lab/optics-comparison.js",
+        "/learning/inquiry/science-lab/science-assessment.js",
+        "/learning/inquiry/science-lab/supplement-core.js",
+        "/learning/inquiry/science-lab/exam-review.js",
+        "/learning/inquiry/science-lab/required-experiments-more.js",
+        "/learning/inquiry/science-lab/required-experiments-final.js",
+        "/learning/inquiry/science-lab/plant-experiments.js",
+        "/learning/inquiry/science-lab/required-experiments.js",
+        "/learning/inquiry/science-lab/supplement-labs.js"
+      ],
+      "modes": [],
+      "buttons": [
+        {
+          "id": "",
+          "text": "입안 상피 · 염색",
+          "disabled": false
+        },
+        {
+          "id": "",
+          "text": "검정말 · 물",
+          "disabled": false
+        },
+        {
+          "id": "",
+          "text": "검정말 · 염색",
+          "disabled": false
+        },
+        {
+          "id": "",
+          "text": "표본 펴 놓기",
+          "disabled": false
+        },
+        {
+          "id": "",
+          "text": "메틸렌 블루 떨어뜨리기",
+          "disabled": false
+        },
+        {
+          "id": "",
+          "text": "염색 기다리기",
+          "disabled": false
+        },
+        {
+          "id": "",
+          "text": "덮개 유리 비스듬히 덮기",
+          "disabled": false
+        },
+        {
+          "id": "",
+          "text": "여분 용액 제거",
+          "disabled": false
+        },
+        {
+          "id": "mbPlace",
+          "text": "현미경에 표본 올리기",
+          "disabled": true
+        },
+        {
+          "id": "mbLamp",
+          "text": "조명 켜기",
+          "disabled": false
+        },
+        {
+          "id": "mbWhole",
+          "text": "사진 전체 보기",
+          "disabled": false
+        },
+        {
+          "id": "mbObserve",
+          "text": "관찰한 표본 나란히 비교",
+          "disabled": false
+        },
+        {
+          "id": "mbReset",
+          "text": "관찰 처음부터",
+          "disabled": false
+        }
+      ],
+      "models": [
+        {
+          "name": "__cellObservation",
+          "methods": [
+            "getState",
+            "ready",
+            "render"
+          ]
+        }
+      ],
+      "slug": "cell-structure",
+      "captures": []
+    }
+  ],
+  "errors": [
+    {
+      "slug": "microbes",
+      "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-assessment-ready]')\u001b[22m\n"
+    },
+    {
+      "slug": "light-shadow",
+      "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-assessment-ready]')\u001b[22m\n"
+    },
+    {
+      "slug": "lens-image",
+      "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-assessment-ready]')\u001b[22m\n"
+    },
+    {
+      "slug": "life-cycle",
+      "error": "locator.screenshot: Timeout 29995.532ms exceeded.\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying scroll into view action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    }
+  ],
+  "captures": 0
+}

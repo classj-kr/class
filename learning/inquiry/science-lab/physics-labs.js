@@ -16,7 +16,7 @@
  const line=(x1,y1,x2,y2,color='#537785',width=3,extra='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}" ${extra}/>`;
  const path=(d,color,width=3,extra='')=>`<path d="${d}" fill="none" stroke="${color}" stroke-width="${width}" ${extra}/>`;
  const rect=(x,y,w,h,fill,extra='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${extra}/>`;
- function svg(body,label,height=340){scene.innerHTML=`<svg viewBox="0 0 640 ${height}" role="img" aria-label="${label}"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#22798b"/></marker></defs>${body}</svg>`;}
+ function svg(body,label,height=340){window.scienceScene.render(scene,`<svg viewBox="0 0 640 ${height}" role="img" aria-label="${label}"><defs><linearGradient id="speakerPaper" x2="0" y2="1"><stop stop-color="#f7ead3"/><stop offset=".5" stop-color="#fffbef"/><stop offset="1" stop-color="#d8bd92"/></linearGradient><linearGradient id="speakerCone"><stop stop-color="#dce9eb"/><stop offset=".55" stop-color="#f2faf9"/><stop offset="1" stop-color="#9ebfc5"/></linearGradient><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#22798b"/></marker></defs>${body}</svg>`);}
  const metric=(label,value)=>`<div><span>${label}</span><strong>${value}</strong></div>`;
  function setStatus(value){if(status.textContent!==value)status.textContent=value;}
  function pressed(id,on,onLabel,offLabel){const b=$(id);if(!b)return;if(b.getAttribute('aria-pressed')!==String(on))b.setAttribute('aria-pressed',String(on));const label=on?onLabel:offLabel;if(onLabel&&b.textContent!==label)b.textContent=label;}
@@ -26,7 +26,7 @@
  function drawSpeaker(){
   const r=M.speaker(state,elapsed*5*state.frequency/220),dx=r.displacement;
   let b=text(135,45,'종이컵 · 고정')+text(450,45,'종이컵 · 진동판');
-  b+=path('M120 110L270 80L270 250L120 220Z','#6593a2',5)+path(`M270 80L${450+dx} 110L${450+dx} 220L270 250Z`,'#6593a2',5);
+  b+=`<ellipse cx="295" cy="267" rx="196" ry="9" fill="#507687" opacity=".09"/><path d="M120 110L270 80L270 250L120 220Z" fill="url(#speakerPaper)" stroke="#a18f73" stroke-width="3"/><path d="M270 80L${450+dx} 110L${450+dx} 220L270 250Z" fill="url(#speakerCone)" stroke="#6d9aa6" stroke-width="3"/><path d="M132 116L260 91M280 91L${443+dx} 118" stroke="#fff" stroke-width="3" opacity=".75"/><path d="M270 80V250" stroke="#88a8b4" stroke-width="5"/>`;
   if(state.magnet)b+=rect(115,137,70,28,'#c85b51')+rect(115,165,70,28,'#467cab')+text(148,158,'N','white',18)+text(148,187,'S','white',18);
   b+=`<g transform="translate(${dx} 0)">`+path('M430 125L410 140L430 151L410 163L430 175L410 186L430 202','#b27030',7)+line(448,109,448,222,'#176878',7)+'</g>';
   b+=path(`M420 198L420 280L530 280L530 237M420 129L490 129L490 280L560 280L560 237`,state.stripped?'#bb7434':'#727b83',3,state.connected?'':'stroke-dasharray="7 7"');
@@ -34,7 +34,7 @@
   if(r.connected)b+=path(`M${465+dx} 135Q${495+dx} 164 ${465+dx} 197`,'#df9b30',3)+path(`M${477+dx} 120Q${520+dx} 163 ${477+dx} 212`,'#df9b30',2);
   b+=text(145,310,state.magnet?'자석 부착됨':'자석 없음')+text(400,310,`${state.turns}회 감은 코일`);
   svg(b,'자석과 코일이 붙은 두 종이컵의 단면 및 오디오 연결');
-  readout.innerHTML=metric('전류 경로',state.stripped&&state.connected?'연결됨':'끊어짐')+metric('신호 주파수',state.frequency+' Hz')+metric('진동판',r.connected?'왕복 진동':'정지');
+  window.scienceScene.render(readout,metric('전류 경로',state.stripped&&state.connected?'연결됨':'끊어짐')+metric('신호 주파수',state.frequency+' Hz')+metric('진동판',r.connected?'왕복 진동':'정지'));
   setStatus(!state.playing?'장치를 조립하고 신호를 보내 보세요.':r.connected?'전류 방향이 바뀌며 코일과 진동판이 앞뒤로 움직입니다.':!state.magnet?'자석이 없는 상태입니다. 자석을 붙이고 변화를 비교하세요.':!state.stripped?'전선 끝의 피복 때문에 전기적 접촉이 되지 않았습니다.':'오디오 출력과 코일을 연결하세요.');
   ['magnet','stripped','connected'].forEach((id,i)=>pressed(id,state[id],[ '① 자석 떼기','② 전선 끝 절연하기','③ 연결 끊기'][i],['① 자석 붙이기','② 전선 끝 피복 벗기기','③ 오디오 출력 연결'][i]));
   pressed('playSignal',state.playing,'신호 멈추기','신호 보내기');
@@ -50,7 +50,7 @@
   b+=text(214,253,'송신 코일')+text(rx,253,'수신 코일')+text(568,45,'LED',undefined,18);
   b+=line(50,302,590,302,'#aac1cd',1)+curve(t=>state.power&&state.signal==='ac'?Math.cos(t*Math.PI*6)*r.peak/3.8:0,50,302,540,22,'#176878');
   svg(b,'분리된 송신 회로와 수신 코일·발광 다이오드, 수신 전압 파형');
-  readout.innerHTML=metric('수신 전압 진폭',r.peak.toFixed(3)+' V')+metric('발광 다이오드',r.led?'켜짐':'꺼짐')+metric('거리 / 각도',`${state.distance} cm / ${state.angle}°`);
+  window.scienceScene.render(readout,metric('수신 전압 진폭',r.peak.toFixed(3)+' V')+metric('발광 다이오드',r.led?'켜짐':'꺼짐')+metric('거리 / 각도',`${state.distance} cm / ${state.angle}°`));
   setStatus(!state.power?'전원을 켜고 두 코일 사이의 거리와 방향을 바꾸어 보세요.':state.signal==='dc'?'일정한 직류를 유지하는 동안에는 수신 파형이 평평합니다. 켜고 끄는 순간의 유도는 이 화면에 포함하지 않습니다.':r.led?'수신 코일의 전압으로 발광 다이오드가 켜졌습니다. 거리와 방향을 바꾸어 비교하세요.':'교류를 보내고 있습니다. 발광 여부와 수신 전압 값을 함께 확인하세요.');
   pressed('power',state.power,'전원 끄기','전원 켜기');
  }
@@ -58,7 +58,7 @@
   const gamma=state.plate==='copper'?12:0,a=M.fall(elapsed,{height:state.height,gamma}),b=M.fall(elapsed,{height:state.height});
   let out='';[a,b].forEach((v,i)=>{const x=180+i*280,y=80+v.y/state.height*200;out+=text(x,34,i?'알루미늄 조각':'네오디뮴 자석');out+=rect(x-65,58,20,235,state.plate==='copper'?'#bc865d':'#d2dbe0')+rect(x+45,58,20,235,state.plate==='copper'?'#bc865d':'#d2dbe0');out+=rect(x-28,y-12,56,24,i?'#a8b9c1':'#bb524b','rx="3"');if(!i)out+=text(x,y+6,'N  S','white',16);out+=rect(x-75,299,150,12,'#8b9caa');if(!i&&gamma&&v.v>0)out+=line(x+12,y-18,x+12,y-51,'#22798b',3,'marker-end="url(#arrow)"');out+=text(x,337,v.landed?'도착':state.started?'낙하 중':'대기');});
   svg(out,'나란히 세운 판 사이에서 자석과 알루미늄 조각의 동시 낙하',360);
-  readout.innerHTML=metric('경과 시간',elapsed.toFixed(2)+' s')+metric('자석 도착',a.landed?M.fallTime(state.height,gamma).toFixed(2)+' s':'—')+metric('알루미늄 도착',b.landed?M.fallTime(state.height,0).toFixed(2)+' s':'—');
+  window.scienceScene.render(readout,metric('경과 시간',elapsed.toFixed(2)+' s')+metric('자석 도착',a.landed?M.fallTime(state.height,gamma).toFixed(2)+' s':'—')+metric('알루미늄 도착',b.landed?M.fallTime(state.height,0).toFixed(2)+' s':'—'));
   setStatus(!state.started?'두 물체는 같은 높이에서 정지한 상태입니다.':a.landed&&b.landed?'두 물체가 도착했습니다. 판의 재질을 바꾸어 다시 비교하세요.':state.plate==='copper'?'움직이는 자석 옆 구리판에는 유도 전류가 생겨 낙하를 방해합니다.':'절연판 조건에서는 이 모형의 자기 제동이 작용하지 않습니다.');
   $('drop').textContent=state.started?'다시 떨어뜨리기':'두 물체 놓기';$('pauseDrop').disabled=!state.started||(a.landed&&b.landed);$('pauseDrop').textContent=running?'일시 정지':'계속 관찰';
   if(a.landed&&b.landed)stop();
@@ -74,7 +74,7 @@
   [40,355].forEach(x=>{b+=rect(x,235,245,92,'#f8fbfc','stroke="#c4d5db"')+line(x,281,x+245,281,'#aac1cd',1);});
   b+=curve(t=>active?M.amplifier(state,t*Math.PI*4+elapsed*5).input:0,40,281,245,14,'#248795')+curve(t=>active?M.amplifier(state,t*Math.PI*4+elapsed*5).output:0,355,281,245,14,'#bb6b31');
   svg(b,'입력 신호와 증폭 회로의 전원, 스피커 및 같은 전압 눈금의 입력·출력 파형');
-  readout.innerHTML=metric('입력 진폭',active?state.amplitude.toFixed(2)+' V':'0 V')+metric('출력 진폭',active?(amp&&state.power?Math.min(state.amplitude*10,r.limit):amp?0:state.amplitude).toFixed(2)+' V':'0 V')+metric('파형',active&&r.clipped?'위아래가 잘림':active?'관찰 중':'정지');
+  window.scienceScene.render(readout,metric('입력 진폭',active?state.amplitude.toFixed(2)+' V':'0 V')+metric('출력 진폭',active?(amp&&state.power?Math.min(state.amplitude*10,r.limit):amp?0:state.amplitude).toFixed(2)+' V':'0 V')+metric('파형',active&&r.clipped?'위아래가 잘림':active?'관찰 중':'정지'));
   setStatus(!active?'신호를 보내고 직접 연결과 증폭 회로를 비교하세요.':amp&&!state.power?'증폭 회로에 전원이 공급되지 않았습니다.':r.clipped?'출력의 위아래가 평평해졌습니다. 입력 진폭을 줄여 변화를 확인하세요.':amp?'전지의 에너지를 사용하여 같은 주파수의 입력 신호를 더 큰 출력으로 바꿉니다.':'같은 신호를 스피커에 직접 연결한 상태입니다.');
   pressed('power',state.power,'증폭 회로 전원 끄기','증폭 회로 전원 켜기');pressed('playSignal',state.playing,'신호 멈추기','신호 보내기');
  }
@@ -87,7 +87,7 @@
   if(state.formed){b+=path('M350 90L451 150L350 210','#d9a132',3,'marker-end="url(#arrow)"')+path('M451 150L490 166.4L451 182.8L350 242.8','#ca6854',3,'marker-end="url(#arrow)"');}
   b+=text(372,76,'입사광',undefined,16)+text(359,230,'앞면 반사',undefined,16)+text(385,266,'뒷면 반사',undefined,16)+text(540,132,'공기',undefined,16)+text(469,305,'빛길을 벌려 표시',undefined,16);
   svg(b,'수직 비누막의 반사 무늬와 앞면·뒷면에서 반사되는 두 빛');
-  readout.innerHTML=metric('경과 시간',elapsed.toFixed(1)+' s')+metric('선택 높이의 두께',state.formed?Math.round(d)+' nm':'막 없음')+metric('반사 상대 세기',state.formed&&state.light!=='white'?Math.round(100*M.filmIntensity(d,{red:650,green:530,blue:460}[state.light]))+'%':'색과 무늬 비교');
+  window.scienceScene.render(readout,metric('경과 시간',elapsed.toFixed(1)+' s')+metric('선택 높이의 두께',state.formed?Math.round(d)+' nm':'막 없음')+metric('반사 상대 세기',state.formed&&state.light!=='white'?Math.round(100*M.filmIntensity(d,{red:650,green:530,blue:460}[state.light]))+'%':'색과 무늬 비교'));
   setStatus(!state.formed?'틀을 비눗물에 담갔다 세워 막을 만드세요.':'점선 높이의 두께와 반사 무늬를 비교하세요. 관찰 위치 또는 빛의 색을 바꾸면 두 반사광의 간섭 조건이 달라집니다.');
   $('drain').disabled=$('stepFilm').disabled=!state.formed;pressed('drain',running,'시간 멈추기','시간 보내기');
  }
@@ -101,7 +101,7 @@
   }else b+=rect(276,62,82,180,'none','stroke="#9bb8c5" stroke-dasharray="6 6"');
   b+=path('M374 137H453M374 164H453','#daa448',8,`opacity="${value/100}"`)+rect(463,82,150,148,'#294957','rx="10"')+rect(477,100,122,71,'#e3f1ee','rx="5"')+text(538,144,value.toFixed(1),undefined,30)+text(538,205,'센서','white',18)+text(318,315,'광원과 센서의 거리 유지',undefined,18);
   svg(b,'광원, 회전하는 편광판과 같은 위치의 빛 센서');
-  readout.innerHTML=metric('편광판 없음', '100')+metric('현재 상대 세기',value.toFixed(1))+metric('편광판',state.filter?state.angle+'°':'제거됨');
+  window.scienceScene.render(readout,metric('편광판 없음', '100')+metric('현재 상대 세기',value.toFixed(1))+metric('편광판',state.filter?state.angle+'°':'제거됨'));
   setStatus(state.filter?'편광판을 0°부터 180°까지 돌려 가장 밝고 어두운 방향을 찾아 보세요. 광원을 바꾸어 같은 방식으로 비교할 수 있습니다.':'편광판 없는 기준 세기는 100입니다. 편광판을 넣고 각도를 바꾸어 보세요.');
   pressed('filter',state.filter,'편광판 빼기','편광판 넣기');
  }
@@ -115,7 +115,7 @@
   const bins=Array(70).fill(0);for(const p of hits)bins[Math.min(69,Math.floor((p.x+5)/10*70))]++;
   const max=Math.max(1,...bins);b+=text(169,286,'위치별 도착 횟수',undefined,17);bins.forEach((n,i)=>b+=rect(334+i*4,324-n/max*62,3.2,n/max*62,'#176878'));b+=line(332,324,618,324,'#8bacbb',1);
   svg(b,'전자총과 슬릿, 도착 사건을 누적한 검출판과 위치별 도착 횟수');
-  readout.innerHTML=metric('누적 검출',hits.length+'개')+metric('통과 경로',state.pathKnown?'측정함':'측정하지 않음')+metric('방출',running?'한 개씩 연속':'대기');
+  window.scienceScene.render(readout,metric('누적 검출',hits.length+'개')+metric('통과 경로',state.pathKnown?'측정함':'측정하지 않음')+metric('방출',running?'한 개씩 연속':'대기'));
   setStatus(hits.length===0?'한 전자를 보내 점 하나를 확인하고, 더 많은 전자를 누적해 보세요.':hits.length<30?'점 하나는 전자 하나의 도착입니다. 아직 전체 분포를 판단하기에는 점이 적습니다.':state.pathKnown?'경로를 측정한 조건입니다. 측정하지 않은 조건과 새 검출판에서 비교하세요.':'같은 조건에서 도착 점을 계속 누적하고 있습니다. 띠 사이와 띠 안의 도착 횟수를 비교하세요.');
   pressed('runElectrons',running,'연속 방출 멈추기','한 개씩 연속 보내기');
   $('singleElectron').disabled=$('manyElectrons').disabled=hits.length>=10000;$('spacing').disabled=state.slits==='one';

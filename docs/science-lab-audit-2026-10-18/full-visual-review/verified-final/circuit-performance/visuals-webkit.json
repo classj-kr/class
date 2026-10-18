@@ -1,0 +1,236 @@
+{
+  "engine": "webkit",
+  "complete": true,
+  "physicalDeviceTested": false,
+  "routes": 2,
+  "rows": [
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 44,
+            "burstDurationMs": 1174,
+            "burstUpdatesPerSecond": 36.626916524701876,
+            "frames": 45,
+            "changes": 45,
+            "seconds": 1.202,
+            "distinctPerSecond": 37.437603993344425,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 30,
+            "activeUpdatesPerSecond": 36.626916524701876,
+            "firstChangeMs": 28,
+            "lastChangeMs": 1202,
+            "maxChangeGapMs": 30,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 44,
+              "burstDurationMs": 1174,
+              "burstUpdatesPerSecond": 36.626916524701876,
+              "frames": 45,
+              "changes": 45,
+              "seconds": 1.202,
+              "distinctPerSecond": 37.437603993344425,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 30,
+              "activeUpdatesPerSecond": 36.626916524701876,
+              "firstChangeMs": 28,
+              "lastChangeMs": 1202,
+              "maxChangeGapMs": 30,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-ohms-law-middle-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 267.8125,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-ohms-law-middle-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 255.640625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-ohms-law-middle-0-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "burstFrames": 0,
+            "burstDurationMs": 0,
+            "burstUpdatesPerSecond": 0,
+            "frames": 76,
+            "changes": 1,
+            "seconds": 1.21,
+            "distinctPerSecond": 0.8264462809917356,
+            "changedFrameRatio": 0.013157894736842105,
+            "p95FrameMs": 17,
+            "activeUpdatesPerSecond": 0,
+            "firstChangeMs": null,
+            "lastChangeMs": null,
+            "maxChangeGapMs": null,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 0,
+              "burstDurationMs": 0,
+              "burstUpdatesPerSecond": 0,
+              "frames": 76,
+              "changes": 1,
+              "seconds": 1.21,
+              "distinctPerSecond": 0.8264462809917356,
+              "changedFrameRatio": 0.013157894736842105,
+              "p95FrameMs": 17,
+              "activeUpdatesPerSecond": 0,
+              "firstChangeMs": null,
+              "lastChangeMs": null,
+              "maxChangeGapMs": null,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-ohms-law-high-elective-0-0.webp",
+              "visible": true,
+              "width": 622,
+              "height": 403.84375,
+              "id": "cmScene",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR"
+      ]
+    }
+  ],
+  "errors": []
+}

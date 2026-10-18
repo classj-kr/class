@@ -1,0 +1,25 @@
+{
+  "scope": "Registered science-lab visuals; this is not a census of required textbook experiments.",
+  "reviewedFigures": 581,
+  "figureIndex": "../scenes/figure-index.json",
+  "contactSheets": "../scenes/review-000.webp through review-576.webp, in steps of 12",
+  "reviewMethod": "Every contact sheet was opened and visually inspected. Suspected clipping was checked against the live page and DOM bounds.",
+  "findings": [
+    {"slug":"air-stability","issue":"Moving parcel caption overlapped the condensation-level label; detached SVG text did not provide usable bounds.","correction":"Place the caption above the apparatus and check live, normalized text bounds."},
+    {"slug":"geologic-time","issue":"White strokes reduced era-label legibility, and the shortest bars could not contain their labels.","correction":"Remove the white stroke and display a bar label only when there is enough room."},
+    {"slug":"stars-universe","issue":"The redundant home-galaxy suffix extended beyond the left edge.","correction":"Use the object name; the existing outline and heading identify the reference galaxy."},
+    {"slug":"neuron","issue":"An element screenshot appeared to cut off a caption.","correction":"Full-viewport and DOM inspection confirmed that the caption was correctly placed outside the SVG; no cropping change was required."},
+    {"slug":"metamorphism","issue":"An element screenshot appeared to cut off the lower axis title.","correction":"A fresh viewport and DOM inspection confirmed correct live layout."}
+  ],
+  "freshCorrectionCaptures": "reviewed",
+  "freshReview": {
+    "figures": 109,
+    "routeContexts": 25,
+    "figureIndex": "captures/figure-index.json",
+    "contactSheets": "captures/final-review-000.webp through final-review-108.webp, in steps of 9",
+    "reviewMethod": "All 13 fresh contact sheets were opened and visually inspected after the final source freeze. Captures show operating apparatus, motion graphs, electrical circuits, refraction, nutrient detection, astronomical observations, air stability and thin-section microscopy.",
+    "additionalFullSizeReview": ["functional/webkit-ride-circle.webp", "thin-section-performance/webkit-polarized-thin-sections-0-0.webp", "thin-section-performance/webkit-polarized-thin-sections-1-0.webp"],
+    "result": "The corrected caption placements, chart type sizes, apparatus details and optical grain patterns are legible. No additional visual defects were found in these captures. Continuous motion was measured separately; still images do not establish frame cadence."
+  },
+  "physicalDevicesTested": false
+}

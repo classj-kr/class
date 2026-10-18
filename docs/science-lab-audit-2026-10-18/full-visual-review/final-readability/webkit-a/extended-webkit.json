@@ -1,0 +1,60 @@
+{
+  "engine": "webkit",
+  "catalog": false,
+  "routes": 68,
+  "scenarios": 2300,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "supplementDiagnosisChecked": true,
+  "deviceProfile": "ipad",
+  "emulationOnly": true,
+  "deviceScaleFactor": 2,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR",
+    "Pretendard"
+  ],
+  "issues": [
+    {
+      "slug": "enzyme",
+      "width": 768,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "속도",
+          "px": 16.43,
+          "element": "text",
+          "css": "small-label"
+        },
+        {
+          "kind": "svg",
+          "text": "표준 100",
+          "px": 16.43,
+          "element": "text",
+          "css": "small-label"
+        },
+        {
+          "kind": "svg",
+          "text": "37 ℃ · pH 2",
+          "px": 16.43,
+          "element": "text",
+          "css": "small-label"
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    }
+  ],
+  "errors": []
+}

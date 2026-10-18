@@ -504,14 +504,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'solar' ? renderSolar(a) : a.kind === 'wind' ? renderWind(a) : renderChain(a);
-        graphGroup.innerHTML = a.kind === 'solar' ? graphSolar(a) : a.kind === 'wind' ? graphWind(a) : graphChain(a);
+        window.scienceScene.render(mainGroup,a.kind === 'solar' ? renderSolar(a) : a.kind === 'wind' ? renderWind(a) : renderChain(a));
+        window.scienceScene.render(graphGroup,a.kind === 'solar' ? graphSolar(a) : a.kind === 'wind' ? graphWind(a) : graphChain(a));
         stageBadge.textContent = a.kind === 'solar' ? `${SEASONS[state.season].label} · ${WEATHERS[state.weather].label}`
             : a.kind === 'wind' ? `풍속 ${a.v} m/s · 날개 ${a.r} m` : `${PLANTS[state.plant].label} → ${LAMPS[state.lamp].label}`;
         methodHint.textContent = a.kind === 'solar' ? '빛이 판에 수직으로 들 때 같은 넓이에 가장 많은 빛이 닿습니다'
             : a.kind === 'wind' ? '바람이 초마다 전해 주는 에너지는 풍속의 세제곱에 비례합니다'
                 : '에너지는 단계마다 일부가 열로 흩어지고, 효율은 곱해집니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

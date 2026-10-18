@@ -1,0 +1,4155 @@
+{
+  "engine": "webkit",
+  "catalog": false,
+  "routes": 66,
+  "scenarios": 2200,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "supplementDiagnosisChecked": true,
+  "deviceProfile": "ipad",
+  "emulationOnly": true,
+  "deviceScaleFactor": 2,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR",
+    "Pretendard"
+  ],
+  "issues": [
+    {
+      "slug": "volcano-model",
+      "width": 1366,
+      "mode": {
+        "kind": "required",
+        "value": "erosion",
+        "last": false
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1366,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1366,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "whole"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1366,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "grain"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1180,
+      "mode": {
+        "kind": "required",
+        "value": "erosion",
+        "last": false
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1180,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1180,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "basalt"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1180,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "granite"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1180,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "whole"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1180,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "grain"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1024,
+      "mode": {
+        "kind": "required",
+        "value": "erosion",
+        "last": false
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1024,
+      "mode": {
+        "kind": "required",
+        "value": "erosion",
+        "last": true
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1024,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1024,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "basalt"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1024,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "granite"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1024,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "whole"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 1024,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "grain"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 820,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 820,
+      "mode": {
+        "kind": "required",
+        "value": "erosion",
+        "last": false
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 820,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 820,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "basalt"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 820,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "whole"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 820,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "grain"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 768,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 768,
+      "mode": {
+        "kind": "required",
+        "value": "erosion",
+        "last": true
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 768,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 768,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "basalt"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 768,
+      "mode": {
+        "kind": "supplement",
+        "key": "rock",
+        "value": "granite"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "volcano-model",
+      "width": 768,
+      "mode": {
+        "kind": "supplement",
+        "key": "detail",
+        "value": "whole"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [],
+      "overlaps": [
+        [
+          "찰흙으로 만든 화산 모형",
+          "모형의 거품은 용암처럼 뜨겁지 않습니다"
+        ]
+      ],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "initial"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 12.73,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "difference"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "same"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "land"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "solomon"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "solomon-diff"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "sydney"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "sydney-diff"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "years"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 1024,
+      "mode": {
+        "kind": "sst",
+        "value": "east"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 16.45,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "initial"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "위도 (°)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "경도 (°E)",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "35N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "40N",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "120",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "125",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "130",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "135",
+          "px": 18.1,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "difference"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "same"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "land"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "solomon"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "solomon-diff"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "sydney"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "sydney-diff"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "years"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "width": 820,
+      "mode": {
+        "kind": "sst",
+        "value": "east"
+      },
+      "overflow": false,
+      "fonts": [
+        {
+          "kind": "svg",
+          "text": "수온 (℃)",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "월",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "0",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "20",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "30",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "1",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "2",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "3",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "4",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "5",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "6",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "7",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "8",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "9",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "10",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "11",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        },
+        {
+          "kind": "svg",
+          "text": "12",
+          "px": 18.15,
+          "element": "text",
+          "css": ""
+        }
+      ],
+      "clipped": [],
+      "overlaps": [],
+      "canvas": []
+    }
+  ],
+  "errors": []
+}

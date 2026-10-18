@@ -1,0 +1,5826 @@
+[
+  {
+    "file": "chromium-light-shadow-0-0.webp",
+    "visible": true,
+    "width": 538,
+    "height": 358.65625,
+    "id": "",
+    "tag": "svg",
+    "slug": "light-shadow",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-light-shadow-0-1.webp",
+    "visible": true,
+    "width": 168,
+    "height": 168,
+    "id": "",
+    "tag": "svg",
+    "slug": "light-shadow",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-light-shadow-0-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 239.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "light-shadow",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-light-shadow-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "light-shadow",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-refraction-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 389.5625,
+    "id": "",
+    "tag": "svg",
+    "slug": "refraction",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-refraction-0-1.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "refraction",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-lens-image-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "lens-image",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-photoelectric-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "photoelectric",
+    "mode": "photo"
+  },
+  {
+    "file": "chromium-photoelectric-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "photoelectric",
+    "mode": "photo"
+  },
+  {
+    "file": "chromium-photoelectric-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "photoelectric",
+    "mode": "hydrogen"
+  },
+  {
+    "file": "chromium-photoelectric-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "photoelectric",
+    "mode": "hydrogen"
+  },
+  {
+    "file": "chromium-photoelectric-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "photoelectric",
+    "mode": "matter"
+  },
+  {
+    "file": "chromium-photoelectric-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "photoelectric",
+    "mode": "matter"
+  },
+  {
+    "file": "chromium-sound-vibration-0-0.webp",
+    "visible": true,
+    "width": 593.3125,
+    "height": 365.875,
+    "id": "tfScene",
+    "tag": "svg",
+    "slug": "sound-vibration",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-wave-transfer-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "wave-transfer",
+    "mode": "transverse"
+  },
+  {
+    "file": "chromium-wave-transfer-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "wave-transfer",
+    "mode": "transverse"
+  },
+  {
+    "file": "chromium-wave-transfer-0-2.webp",
+    "visible": true,
+    "width": 700,
+    "height": 280,
+    "id": "",
+    "tag": "svg",
+    "slug": "wave-transfer",
+    "mode": "transverse"
+  },
+  {
+    "file": "chromium-wave-transfer-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "wave-transfer",
+    "mode": "longitudinal"
+  },
+  {
+    "file": "chromium-wave-transfer-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "wave-transfer",
+    "mode": "longitudinal"
+  },
+  {
+    "file": "chromium-wave-transfer-1-2.webp",
+    "visible": true,
+    "width": 700,
+    "height": 280,
+    "id": "",
+    "tag": "svg",
+    "slug": "wave-transfer",
+    "mode": "longitudinal"
+  },
+  {
+    "file": "chromium-interference-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "interference",
+    "mode": "superpose"
+  },
+  {
+    "file": "chromium-interference-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "interference",
+    "mode": "superpose"
+  },
+  {
+    "file": "chromium-interference-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "interference",
+    "mode": "standing"
+  },
+  {
+    "file": "chromium-interference-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "interference",
+    "mode": "standing"
+  },
+  {
+    "file": "chromium-lever-balance-0-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 426.25,
+    "id": "",
+    "tag": "svg",
+    "slug": "lever-balance",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-lever-balance-0-1.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "lever-balance",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-lever-balance-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "lever-balance",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-speed-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "speed",
+    "mode": "distance"
+  },
+  {
+    "file": "chromium-speed-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "speed",
+    "mode": "distance"
+  },
+  {
+    "file": "chromium-speed-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "speed",
+    "mode": "time"
+  },
+  {
+    "file": "chromium-speed-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "speed",
+    "mode": "time"
+  },
+  {
+    "file": "chromium-force-motion-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "force-motion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-force-motion-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "force-motion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-force-motion-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "force-motion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-motion-energy-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "motion-energy",
+    "mode": "incline"
+  },
+  {
+    "file": "chromium-motion-energy-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "motion-energy",
+    "mode": "incline"
+  },
+  {
+    "file": "chromium-motion-energy-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "motion-energy",
+    "mode": "incline"
+  },
+  {
+    "file": "chromium-motion-energy-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "motion-energy",
+    "mode": "energy"
+  },
+  {
+    "file": "chromium-motion-energy-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "motion-energy",
+    "mode": "energy"
+  },
+  {
+    "file": "chromium-motion-energy-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "motion-energy",
+    "mode": "energy"
+  },
+  {
+    "file": "chromium-gravity-motion-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "gravity-motion",
+    "mode": "drop"
+  },
+  {
+    "file": "chromium-gravity-motion-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "gravity-motion",
+    "mode": "drop"
+  },
+  {
+    "file": "chromium-gravity-motion-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "gravity-motion",
+    "mode": "impact"
+  },
+  {
+    "file": "chromium-gravity-motion-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "gravity-motion",
+    "mode": "impact"
+  },
+  {
+    "file": "chromium-torque-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "torque",
+    "mode": "seesaw"
+  },
+  {
+    "file": "chromium-torque-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "torque",
+    "mode": "seesaw"
+  },
+  {
+    "file": "chromium-torque-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "torque",
+    "mode": "tip"
+  },
+  {
+    "file": "chromium-torque-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "torque",
+    "mode": "tip"
+  },
+  {
+    "file": "chromium-torque-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "torque",
+    "mode": "plank"
+  },
+  {
+    "file": "chromium-torque-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "torque",
+    "mode": "plank"
+  },
+  {
+    "file": "chromium-collision-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "collision",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-collision-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "collision",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-magnets-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "magnets",
+    "mode": "force"
+  },
+  {
+    "file": "chromium-magnets-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 357.90625,
+    "id": "",
+    "tag": "svg",
+    "slug": "magnets",
+    "mode": "compass"
+  },
+  {
+    "file": "chromium-circuit-bulbs-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 365.203125,
+    "id": "",
+    "tag": "svg",
+    "slug": "circuit-bulbs",
+    "mode": "circuit"
+  },
+  {
+    "file": "chromium-circuit-bulbs-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 365.203125,
+    "id": "",
+    "tag": "svg",
+    "slug": "circuit-bulbs",
+    "mode": "magnet"
+  },
+  {
+    "file": "chromium-ohms-law-middle-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 267.8125,
+    "id": "",
+    "tag": "svg",
+    "slug": "ohms-law",
+    "mode": "initial",
+    "school": "middle"
+  },
+  {
+    "file": "chromium-ohms-law-middle-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 255.640625,
+    "id": "",
+    "tag": "svg",
+    "slug": "ohms-law",
+    "mode": "initial",
+    "school": "middle"
+  },
+  {
+    "file": "chromium-ohms-law-middle-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "ohms-law",
+    "mode": "initial",
+    "school": "middle"
+  },
+  {
+    "file": "chromium-ohms-law-high-elective-0-0.webp",
+    "visible": true,
+    "width": 622,
+    "height": 403.84375,
+    "id": "cmScene",
+    "tag": "svg",
+    "slug": "ohms-law",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-electric-field-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "electric-field",
+    "mode": "field"
+  },
+  {
+    "file": "chromium-electric-field-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "electric-field",
+    "mode": "field"
+  },
+  {
+    "file": "chromium-electric-field-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "electric-field",
+    "mode": "accel"
+  },
+  {
+    "file": "chromium-electric-field-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "electric-field",
+    "mode": "accel"
+  },
+  {
+    "file": "chromium-electric-field-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "electric-field",
+    "mode": "cap"
+  },
+  {
+    "file": "chromium-induction-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "induction",
+    "mode": "induce"
+  },
+  {
+    "file": "chromium-induction-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "induction",
+    "mode": "induce"
+  },
+  {
+    "file": "chromium-induction-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "induction",
+    "mode": "circuit"
+  },
+  {
+    "file": "chromium-induction-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "induction",
+    "mode": "circuit"
+  },
+  {
+    "file": "chromium-semiconductor-relativity-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "semiconductor-relativity",
+    "mode": "diode"
+  },
+  {
+    "file": "chromium-semiconductor-relativity-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "semiconductor-relativity",
+    "mode": "diode"
+  },
+  {
+    "file": "chromium-semiconductor-relativity-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "semiconductor-relativity",
+    "mode": "muon"
+  },
+  {
+    "file": "chromium-semiconductor-relativity-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "semiconductor-relativity",
+    "mode": "energy"
+  },
+  {
+    "file": "chromium-motor-magnet-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "motor-magnet",
+    "mode": "motor"
+  },
+  {
+    "file": "chromium-motor-magnet-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "motor-magnet",
+    "mode": "motor"
+  },
+  {
+    "file": "chromium-motor-magnet-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "motor-magnet",
+    "mode": "material"
+  },
+  {
+    "file": "chromium-motor-magnet-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "motor-magnet",
+    "mode": "material"
+  },
+  {
+    "file": "chromium-motor-magnet-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "motor-magnet",
+    "mode": "curie"
+  },
+  {
+    "file": "chromium-motor-magnet-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "motor-magnet",
+    "mode": "curie"
+  },
+  {
+    "file": "chromium-heat-transfer-0-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 387.5,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-transfer",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-heat-transfer-0-1.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-transfer",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-heat-transfer-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-transfer",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-specific-heat-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 304.34375,
+    "id": "",
+    "tag": "svg",
+    "slug": "specific-heat",
+    "mode": "heat"
+  },
+  {
+    "file": "chromium-specific-heat-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 231.296875,
+    "id": "",
+    "tag": "svg",
+    "slug": "specific-heat",
+    "mode": "heat"
+  },
+  {
+    "file": "chromium-specific-heat-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "specific-heat",
+    "mode": "heat"
+  },
+  {
+    "file": "chromium-specific-heat-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 304.34375,
+    "id": "",
+    "tag": "svg",
+    "slug": "specific-heat",
+    "mode": "expand"
+  },
+  {
+    "file": "chromium-specific-heat-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 231.296875,
+    "id": "",
+    "tag": "svg",
+    "slug": "specific-heat",
+    "mode": "expand"
+  },
+  {
+    "file": "chromium-specific-heat-1-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "specific-heat",
+    "mode": "expand"
+  },
+  {
+    "file": "chromium-energy-heat-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-heat",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-energy-heat-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-heat",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-heat-engine-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-engine",
+    "mode": "carnot"
+  },
+  {
+    "file": "chromium-heat-engine-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-engine",
+    "mode": "carnot"
+  },
+  {
+    "file": "chromium-heat-engine-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-engine",
+    "mode": "flow"
+  },
+  {
+    "file": "chromium-heat-engine-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-engine",
+    "mode": "flow"
+  },
+  {
+    "file": "chromium-heat-engine-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-engine",
+    "mode": "pump"
+  },
+  {
+    "file": "chromium-heat-engine-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "heat-engine",
+    "mode": "pump"
+  },
+  {
+    "file": "chromium-energy-conversion-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "solar"
+  },
+  {
+    "file": "chromium-energy-conversion-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "solar"
+  },
+  {
+    "file": "chromium-energy-conversion-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "solar"
+  },
+  {
+    "file": "chromium-energy-conversion-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "wind"
+  },
+  {
+    "file": "chromium-energy-conversion-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "wind"
+  },
+  {
+    "file": "chromium-energy-conversion-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "wind"
+  },
+  {
+    "file": "chromium-energy-conversion-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "chain"
+  },
+  {
+    "file": "chromium-energy-conversion-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "chain"
+  },
+  {
+    "file": "chromium-energy-conversion-2-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-conversion",
+    "mode": "chain"
+  },
+  {
+    "file": "chromium-weight-compare-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "weight-compare",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-weight-compare-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "weight-compare",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-weight-compare-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "weight-compare",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-density-buoyancy-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 316.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "density-buoyancy",
+    "mode": "buoy"
+  },
+  {
+    "file": "chromium-density-buoyancy-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "density-buoyancy",
+    "mode": "buoy"
+  },
+  {
+    "file": "chromium-density-buoyancy-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 316.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "density-buoyancy",
+    "mode": "gas"
+  },
+  {
+    "file": "chromium-density-buoyancy-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "density-buoyancy",
+    "mode": "gas"
+  },
+  {
+    "file": "chromium-measurement-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "scale"
+  },
+  {
+    "file": "chromium-measurement-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "scale"
+  },
+  {
+    "file": "chromium-measurement-0-2.webp",
+    "visible": true,
+    "width": 700,
+    "height": 280,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "scale"
+  },
+  {
+    "file": "chromium-measurement-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "units"
+  },
+  {
+    "file": "chromium-measurement-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "units"
+  },
+  {
+    "file": "chromium-measurement-1-2.webp",
+    "visible": true,
+    "width": 700,
+    "height": 280,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "units"
+  },
+  {
+    "file": "chromium-measurement-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "measure"
+  },
+  {
+    "file": "chromium-measurement-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "measure"
+  },
+  {
+    "file": "chromium-measurement-2-2.webp",
+    "visible": true,
+    "width": 700,
+    "height": 280,
+    "id": "",
+    "tag": "svg",
+    "slug": "measurement",
+    "mode": "measure"
+  },
+  {
+    "file": "chromium-mixture-separation-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 401.734375,
+    "id": "",
+    "tag": "svg",
+    "slug": "mixture-separation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-mixture-separation-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 233.734375,
+    "id": "",
+    "tag": "svg",
+    "slug": "mixture-separation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-mixture-separation-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "mixture-separation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-separation-methods-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "separation-methods",
+    "mode": "filter"
+  },
+  {
+    "file": "chromium-separation-methods-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "separation-methods",
+    "mode": "filter"
+  },
+  {
+    "file": "chromium-separation-methods-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "separation-methods",
+    "mode": "distill"
+  },
+  {
+    "file": "chromium-separation-methods-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "separation-methods",
+    "mode": "distill"
+  },
+  {
+    "file": "chromium-separation-methods-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "separation-methods",
+    "mode": "chroma"
+  },
+  {
+    "file": "chromium-separation-methods-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "separation-methods",
+    "mode": "chroma"
+  },
+  {
+    "file": "chromium-state-change-0-0.webp",
+    "visible": true,
+    "width": 322.546875,
+    "height": 430.0625,
+    "id": "",
+    "tag": "svg",
+    "slug": "state-change",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-state-change-0-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "state-change",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-state-change-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "state-change",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-gases-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "gases",
+    "mode": "make"
+  },
+  {
+    "file": "chromium-gases-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "gases",
+    "mode": "make"
+  },
+  {
+    "file": "chromium-gases-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "gases",
+    "mode": "make"
+  },
+  {
+    "file": "chromium-gases-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "gases",
+    "mode": "press"
+  },
+  {
+    "file": "chromium-gases-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "gases",
+    "mode": "press"
+  },
+  {
+    "file": "chromium-gases-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "gases",
+    "mode": "press"
+  },
+  {
+    "file": "chromium-diffusion-0-0.webp",
+    "visible": true,
+    "width": 582.9375,
+    "height": 453.390625,
+    "id": "dfCanvas",
+    "tag": "CANVAS",
+    "slug": "diffusion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-diffusion-0-1.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "diffusion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-solubility-0-1.webp",
+    "visible": true,
+    "width": 322.546875,
+    "height": 430.0625,
+    "id": "",
+    "tag": "svg",
+    "slug": "solubility",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-solubility-0-3.webp",
+    "visible": true,
+    "width": 560,
+    "height": 231.296875,
+    "id": "",
+    "tag": "svg",
+    "slug": "solubility",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-solubility-0-4.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "solubility",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-solubility-curve-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 204.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "solubility-curve",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-solubility-curve-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 289.734375,
+    "id": "",
+    "tag": "svg",
+    "slug": "solubility-curve",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-recrystallise-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "recrystallise",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-recrystallise-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "recrystallise",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-flame-ions-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "flame-ions",
+    "mode": "flame"
+  },
+  {
+    "file": "chromium-flame-ions-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "flame-ions",
+    "mode": "flame"
+  },
+  {
+    "file": "chromium-flame-ions-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "flame-ions",
+    "mode": "flame"
+  },
+  {
+    "file": "chromium-flame-ions-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "flame-ions",
+    "mode": "ion"
+  },
+  {
+    "file": "chromium-flame-ions-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "flame-ions",
+    "mode": "ion"
+  },
+  {
+    "file": "chromium-flame-ions-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "flame-ions",
+    "mode": "ion"
+  },
+  {
+    "file": "chromium-periodic-bonding-0-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 288.421875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "elements"
+  },
+  {
+    "file": "chromium-periodic-bonding-0-1.webp",
+    "visible": true,
+    "width": 620,
+    "height": 264.171875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "elements"
+  },
+  {
+    "file": "chromium-periodic-bonding-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 488.9375,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "elements"
+  },
+  {
+    "file": "chromium-periodic-bonding-0-3.webp",
+    "visible": true,
+    "width": 322.953125,
+    "height": 129.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "elements"
+  },
+  {
+    "file": "chromium-periodic-bonding-0-4.webp",
+    "visible": true,
+    "width": 322.953125,
+    "height": 147.421875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "elements"
+  },
+  {
+    "file": "chromium-periodic-bonding-1-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 288.421875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "bonds"
+  },
+  {
+    "file": "chromium-periodic-bonding-1-1.webp",
+    "visible": true,
+    "width": 620,
+    "height": 264.171875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "bonds"
+  },
+  {
+    "file": "chromium-periodic-bonding-1-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 488.9375,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "bonds"
+  },
+  {
+    "file": "chromium-periodic-bonding-1-3.webp",
+    "visible": true,
+    "width": 322.953125,
+    "height": 129.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "bonds"
+  },
+  {
+    "file": "chromium-periodic-bonding-1-4.webp",
+    "visible": true,
+    "width": 322.953125,
+    "height": 147.421875,
+    "id": "",
+    "tag": "svg",
+    "slug": "periodic-bonding",
+    "mode": "bonds"
+  },
+  {
+    "file": "chromium-molecule-shape-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "molecule-shape",
+    "mode": "shape"
+  },
+  {
+    "file": "chromium-molecule-shape-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "molecule-shape",
+    "mode": "shape"
+  },
+  {
+    "file": "chromium-molecule-shape-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "molecule-shape",
+    "mode": "polar"
+  },
+  {
+    "file": "chromium-molecule-shape-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "molecule-shape",
+    "mode": "polar"
+  },
+  {
+    "file": "chromium-molecule-shape-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "molecule-shape",
+    "mode": "mix"
+  },
+  {
+    "file": "chromium-molecule-shape-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "molecule-shape",
+    "mode": "mix"
+  },
+  {
+    "file": "chromium-acid-base-0-0.webp",
+    "visible": true,
+    "width": 322.546875,
+    "height": 430.0625,
+    "id": "",
+    "tag": "svg",
+    "slug": "acid-base",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-acid-base-0-3.webp",
+    "visible": true,
+    "width": 560,
+    "height": 214.25,
+    "id": "",
+    "tag": "svg",
+    "slug": "acid-base",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-acid-base-0-4.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "acid-base",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-neutralization-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 231.296875,
+    "id": "",
+    "tag": "svg",
+    "slug": "neutralization",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-neutralization-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "neutralization",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-titration-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "titration",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-titration-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "titration",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-mass-ratio-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 255.640625,
+    "id": "",
+    "tag": "svg",
+    "slug": "mass-ratio",
+    "mode": "mass"
+  },
+  {
+    "file": "chromium-mass-ratio-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 236.171875,
+    "id": "",
+    "tag": "svg",
+    "slug": "mass-ratio",
+    "mode": "mass"
+  },
+  {
+    "file": "chromium-mass-ratio-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "mass-ratio",
+    "mode": "mass"
+  },
+  {
+    "file": "chromium-mass-ratio-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 255.640625,
+    "id": "",
+    "tag": "svg",
+    "slug": "mass-ratio",
+    "mode": "heat"
+  },
+  {
+    "file": "chromium-mass-ratio-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 236.171875,
+    "id": "",
+    "tag": "svg",
+    "slug": "mass-ratio",
+    "mode": "heat"
+  },
+  {
+    "file": "chromium-mass-ratio-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "mass-ratio",
+    "mode": "heat"
+  },
+  {
+    "file": "chromium-mole-0-0.webp",
+    "visible": true,
+    "width": 475.8125,
+    "height": 279.28125,
+    "id": "",
+    "tag": "svg",
+    "slug": "mole",
+    "mode": "weigh"
+  },
+  {
+    "file": "chromium-mole-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "mole",
+    "mode": "count"
+  },
+  {
+    "file": "chromium-mole-1-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "mole",
+    "mode": "count"
+  },
+  {
+    "file": "chromium-mole-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "mole",
+    "mode": "react"
+  },
+  {
+    "file": "chromium-mole-2-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "mole",
+    "mode": "react"
+  },
+  {
+    "file": "chromium-mole-3-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "mole",
+    "mode": "molar"
+  },
+  {
+    "file": "chromium-mole-3-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "mole",
+    "mode": "molar"
+  },
+  {
+    "file": "chromium-rate-equilibrium-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "rate-equilibrium",
+    "mode": "rate"
+  },
+  {
+    "file": "chromium-rate-equilibrium-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "rate-equilibrium",
+    "mode": "rate"
+  },
+  {
+    "file": "chromium-rate-equilibrium-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "rate-equilibrium",
+    "mode": "eq"
+  },
+  {
+    "file": "chromium-rate-equilibrium-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "rate-equilibrium",
+    "mode": "eq"
+  },
+  {
+    "file": "chromium-burning-conditions-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "burning-conditions",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-burning-conditions-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "burning-conditions",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-burning-conditions-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "burning-conditions",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-burning-conditions-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "burning-conditions",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-combustion-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "combustion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-combustion-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "combustion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-redox-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "redox",
+    "mode": "cell"
+  },
+  {
+    "file": "chromium-redox-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "redox",
+    "mode": "cell"
+  },
+  {
+    "file": "chromium-redox-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "redox",
+    "mode": "elec"
+  },
+  {
+    "file": "chromium-redox-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "redox",
+    "mode": "elec"
+  },
+  {
+    "file": "chromium-living-things-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "living-things",
+    "mode": "sort"
+  },
+  {
+    "file": "chromium-living-things-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "living-things",
+    "mode": "sort"
+  },
+  {
+    "file": "chromium-living-things-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "living-things",
+    "mode": "habitat"
+  },
+  {
+    "file": "chromium-living-things-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "living-things",
+    "mode": "habitat"
+  },
+  {
+    "file": "chromium-microbes-0-0.webp",
+    "visible": true,
+    "width": 501.609375,
+    "height": 502.734375,
+    "id": "mbImage",
+    "tag": "IMG",
+    "slug": "microbes",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-microscope-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "microscope",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-microscope-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 275.125,
+    "id": "",
+    "tag": "svg",
+    "slug": "microscope",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-microscope-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "microscope",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-microscope-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "microscope",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-cell-osmosis-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 275.125,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-osmosis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-cell-osmosis-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 226.421875,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-osmosis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-cell-membrane-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-membrane",
+    "mode": "diffusion"
+  },
+  {
+    "file": "chromium-cell-membrane-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-membrane",
+    "mode": "diffusion"
+  },
+  {
+    "file": "chromium-cell-membrane-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-membrane",
+    "mode": "diffusion"
+  },
+  {
+    "file": "chromium-cell-membrane-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-membrane",
+    "mode": "diffusion"
+  },
+  {
+    "file": "chromium-cell-membrane-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-membrane",
+    "mode": "osmosis"
+  },
+  {
+    "file": "chromium-cell-membrane-1-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-membrane",
+    "mode": "osmosis"
+  },
+  {
+    "file": "chromium-cell-membrane-1-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-membrane",
+    "mode": "osmosis"
+  },
+  {
+    "file": "chromium-cell-division-0-0.webp",
+    "visible": true,
+    "width": 888,
+    "height": 360,
+    "id": "cdScene",
+    "tag": "svg",
+    "slug": "cell-division",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-cell-division-0-1.webp",
+    "visible": true,
+    "width": 888,
+    "height": 265,
+    "id": "cdGraph",
+    "tag": "svg",
+    "slug": "cell-division",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-seed-germination-0-0.webp",
+    "visible": true,
+    "width": 520,
+    "height": 408.5625,
+    "id": "",
+    "tag": "svg",
+    "slug": "seed-germination",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-seed-germination-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 243.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "seed-germination",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-photosynthesis-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "photosynthesis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-photosynthesis-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "photosynthesis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-photosynthesis-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "photosynthesis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-photosynthesis-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "photosynthesis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-energy-metabolism-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-metabolism",
+    "mode": "leaf"
+  },
+  {
+    "file": "chromium-energy-metabolism-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-metabolism",
+    "mode": "leaf"
+  },
+  {
+    "file": "chromium-energy-metabolism-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-metabolism",
+    "mode": "atp"
+  },
+  {
+    "file": "chromium-energy-metabolism-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "energy-metabolism",
+    "mode": "atp"
+  },
+  {
+    "file": "chromium-body-organs-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "body-organs",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-body-organs-0-2.webp",
+    "visible": true,
+    "width": 540,
+    "height": 363.90625,
+    "id": "muscleDrawing",
+    "tag": "svg",
+    "slug": "body-organs",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-body-systems-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "body-systems",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-body-systems-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "body-systems",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-nutrient-detection-0-0.webp",
+    "visible": true,
+    "width": 580,
+    "height": 263.21875,
+    "id": "",
+    "tag": "svg",
+    "slug": "nutrient-detection",
+    "mode": "reagent"
+  },
+  {
+    "file": "chromium-nutrient-detection-0-1.webp",
+    "visible": true,
+    "width": 580,
+    "height": 234.21875,
+    "id": "",
+    "tag": "svg",
+    "slug": "nutrient-detection",
+    "mode": "reagent"
+  },
+  {
+    "file": "chromium-nutrient-detection-1-0.webp",
+    "visible": true,
+    "width": 580,
+    "height": 263.21875,
+    "id": "",
+    "tag": "svg",
+    "slug": "nutrient-detection",
+    "mode": "benedict"
+  },
+  {
+    "file": "chromium-nutrient-detection-1-1.webp",
+    "visible": true,
+    "width": 580,
+    "height": 234.21875,
+    "id": "",
+    "tag": "svg",
+    "slug": "nutrient-detection",
+    "mode": "benedict"
+  },
+  {
+    "file": "chromium-nutrient-detection-2-0.webp",
+    "visible": true,
+    "width": 580,
+    "height": 263.21875,
+    "id": "",
+    "tag": "svg",
+    "slug": "nutrient-detection",
+    "mode": "amylase"
+  },
+  {
+    "file": "chromium-nutrient-detection-2-1.webp",
+    "visible": true,
+    "width": 580,
+    "height": 234.21875,
+    "id": "",
+    "tag": "svg",
+    "slug": "nutrient-detection",
+    "mode": "amylase"
+  },
+  {
+    "file": "chromium-homeostasis-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "homeostasis",
+    "mode": "glucose"
+  },
+  {
+    "file": "chromium-homeostasis-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "homeostasis",
+    "mode": "glucose"
+  },
+  {
+    "file": "chromium-homeostasis-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "homeostasis",
+    "mode": "temp"
+  },
+  {
+    "file": "chromium-homeostasis-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "homeostasis",
+    "mode": "temp"
+  },
+  {
+    "file": "chromium-homeostasis-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "homeostasis",
+    "mode": "water"
+  },
+  {
+    "file": "chromium-homeostasis-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "homeostasis",
+    "mode": "water"
+  },
+  {
+    "file": "chromium-immune-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "immune",
+    "mode": "infect"
+  },
+  {
+    "file": "chromium-immune-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "immune",
+    "mode": "infect"
+  },
+  {
+    "file": "chromium-immune-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "immune",
+    "mode": "infect"
+  },
+  {
+    "file": "chromium-immune-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "immune",
+    "mode": "vaccine"
+  },
+  {
+    "file": "chromium-immune-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "immune",
+    "mode": "vaccine"
+  },
+  {
+    "file": "chromium-immune-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "immune",
+    "mode": "vaccine"
+  },
+  {
+    "file": "chromium-enzyme-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "enzyme",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-enzyme-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "enzyme",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-senses-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "senses",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-senses-0-2.webp",
+    "visible": true,
+    "width": 620,
+    "height": 417.8125,
+    "id": "",
+    "tag": "svg",
+    "slug": "senses",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-reflex-nerve-0-0.webp",
+    "visible": true,
+    "width": 477.46875,
+    "height": 380.203125,
+    "id": "rfScene",
+    "tag": "svg",
+    "slug": "reflex-nerve",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-neuron-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "neuron",
+    "mode": "spike"
+  },
+  {
+    "file": "chromium-neuron-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "neuron",
+    "mode": "spike"
+  },
+  {
+    "file": "chromium-neuron-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "neuron",
+    "mode": "conduct"
+  },
+  {
+    "file": "chromium-neuron-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "neuron",
+    "mode": "conduct"
+  },
+  {
+    "file": "chromium-neuron-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "neuron",
+    "mode": "synapse"
+  },
+  {
+    "file": "chromium-neuron-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "neuron",
+    "mode": "synapse"
+  },
+  {
+    "file": "chromium-pea-genetics-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 289.734375,
+    "id": "",
+    "tag": "svg",
+    "slug": "pea-genetics",
+    "mode": "one"
+  },
+  {
+    "file": "chromium-pea-genetics-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "pea-genetics",
+    "mode": "one"
+  },
+  {
+    "file": "chromium-pea-genetics-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "pea-genetics",
+    "mode": "one"
+  },
+  {
+    "file": "chromium-pea-genetics-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 246.046875,
+    "id": "",
+    "tag": "svg",
+    "slug": "pea-genetics",
+    "mode": "two"
+  },
+  {
+    "file": "chromium-pea-genetics-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "pea-genetics",
+    "mode": "two"
+  },
+  {
+    "file": "chromium-pea-genetics-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "pea-genetics",
+    "mode": "two"
+  },
+  {
+    "file": "chromium-dna-gel-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "dna-gel",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-dna-gel-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "dna-gel",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-natural-selection-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "natural-selection",
+    "mode": "beak"
+  },
+  {
+    "file": "chromium-natural-selection-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "natural-selection",
+    "mode": "beak"
+  },
+  {
+    "file": "chromium-natural-selection-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "natural-selection",
+    "mode": "coat"
+  },
+  {
+    "file": "chromium-natural-selection-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "natural-selection",
+    "mode": "coat"
+  },
+  {
+    "file": "chromium-phylogeny-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "phylogeny",
+    "mode": "rank"
+  },
+  {
+    "file": "chromium-phylogeny-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "phylogeny",
+    "mode": "rank"
+  },
+  {
+    "file": "chromium-phylogeny-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "phylogeny",
+    "mode": "tree"
+  },
+  {
+    "file": "chromium-phylogeny-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "phylogeny",
+    "mode": "tree"
+  },
+  {
+    "file": "chromium-phylogeny-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "phylogeny",
+    "mode": "clock"
+  },
+  {
+    "file": "chromium-phylogeny-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "phylogeny",
+    "mode": "clock"
+  },
+  {
+    "file": "chromium-life-cycle-0-0.webp",
+    "visible": true,
+    "width": 320,
+    "height": 320,
+    "id": "",
+    "tag": "svg",
+    "slug": "life-cycle",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-life-cycle-0-1.webp",
+    "visible": true,
+    "width": 316.8000183105469,
+    "height": 316.8000183105469,
+    "id": "",
+    "tag": "svg",
+    "slug": "life-cycle",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-life-cycle-0-7.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "life-cycle",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-living-environment-0-0.webp",
+    "visible": true,
+    "width": 452,
+    "height": 320,
+    "id": "",
+    "tag": "svg",
+    "slug": "living-environment",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-living-environment-0-1.webp",
+    "visible": true,
+    "width": 452,
+    "height": 320,
+    "id": "",
+    "tag": "svg",
+    "slug": "living-environment",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-population-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "population",
+    "mode": "growth"
+  },
+  {
+    "file": "chromium-population-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "population",
+    "mode": "growth"
+  },
+  {
+    "file": "chromium-population-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "population",
+    "mode": "survey"
+  },
+  {
+    "file": "chromium-population-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "population",
+    "mode": "survey"
+  },
+  {
+    "file": "chromium-rock-layers-0-0.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 145,
+    "id": "",
+    "tag": "IMG",
+    "slug": "rock-layers",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-rock-layers-0-1.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 145,
+    "id": "",
+    "tag": "IMG",
+    "slug": "rock-layers",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-rock-layers-0-2.webp",
+    "visible": true,
+    "width": 273.34375,
+    "height": 145,
+    "id": "",
+    "tag": "IMG",
+    "slug": "rock-layers",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-rock-layers-0-3.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 145,
+    "id": "",
+    "tag": "IMG",
+    "slug": "rock-layers",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-rock-layers-0-4.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 145,
+    "id": "",
+    "tag": "IMG",
+    "slug": "rock-layers",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-rock-layers-0-5.webp",
+    "visible": true,
+    "width": 273.34375,
+    "height": 145,
+    "id": "",
+    "tag": "IMG",
+    "slug": "rock-layers",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-rock-layers-0-9.webp",
+    "visible": true,
+    "width": 486.34375,
+    "height": 348,
+    "id": "rsPhoto",
+    "tag": "IMG",
+    "slug": "rock-layers",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-minerals-rocks-0-6.webp",
+    "visible": true,
+    "width": 469.421875,
+    "height": 308,
+    "id": "mrRockPhoto",
+    "tag": "IMG",
+    "slug": "minerals-rocks",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-minerals-rocks-0-10.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "minerals-rocks",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-geologic-time-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "geologic-time",
+    "mode": "calendar"
+  },
+  {
+    "file": "chromium-geologic-time-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "geologic-time",
+    "mode": "calendar"
+  },
+  {
+    "file": "chromium-geologic-time-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "geologic-time",
+    "mode": "extinction"
+  },
+  {
+    "file": "chromium-geologic-time-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "geologic-time",
+    "mode": "extinction"
+  },
+  {
+    "file": "chromium-geologic-time-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "geologic-time",
+    "mode": "diversity"
+  },
+  {
+    "file": "chromium-geologic-time-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "geologic-time",
+    "mode": "diversity"
+  },
+  {
+    "file": "chromium-rock-age-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "rock-age",
+    "mode": "decay"
+  },
+  {
+    "file": "chromium-rock-age-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "rock-age",
+    "mode": "decay"
+  },
+  {
+    "file": "chromium-rock-age-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "rock-age",
+    "mode": "strata"
+  },
+  {
+    "file": "chromium-rock-age-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "rock-age",
+    "mode": "strata"
+  },
+  {
+    "file": "chromium-metamorphism-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "metamorphism",
+    "mode": "facies"
+  },
+  {
+    "file": "chromium-metamorphism-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "metamorphism",
+    "mode": "facies"
+  },
+  {
+    "file": "chromium-metamorphism-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "metamorphism",
+    "mode": "grade"
+  },
+  {
+    "file": "chromium-metamorphism-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "metamorphism",
+    "mode": "grade"
+  },
+  {
+    "file": "chromium-metamorphism-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "metamorphism",
+    "mode": "contact"
+  },
+  {
+    "file": "chromium-metamorphism-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "metamorphism",
+    "mode": "contact"
+  },
+  {
+    "file": "chromium-volcano-model-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "volcano-model",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-volcano-model-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "volcano-model",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-volcano-model-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "volcano-model",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-volcano-model-0-3.webp",
+    "visible": true,
+    "width": 282.203125,
+    "height": 211.640625,
+    "id": "",
+    "tag": "IMG",
+    "slug": "volcano-model",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-volcano-model-0-4.webp",
+    "visible": true,
+    "width": 282.21875,
+    "height": 211.65625,
+    "id": "",
+    "tag": "IMG",
+    "slug": "volcano-model",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-magma-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "magma",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-magma-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "magma",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-plate-tectonics-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 462,
+    "id": "tdMap",
+    "tag": "CANVAS",
+    "slug": "plate-tectonics",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-earthquake-0-0.webp",
+    "visible": true,
+    "width": 348.796875,
+    "height": 160,
+    "id": "travelTimeCanvas",
+    "tag": "CANVAS",
+    "slug": "earthquake",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-earthquake-0-1.webp",
+    "visible": true,
+    "width": 507.203125,
+    "height": 405.75,
+    "id": "epicenterCanvas",
+    "tag": "CANVAS",
+    "slug": "earthquake",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-earth-system-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "spheres"
+  },
+  {
+    "file": "chromium-earth-system-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "spheres"
+  },
+  {
+    "file": "chromium-earth-system-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "spheres"
+  },
+  {
+    "file": "chromium-earth-system-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "water"
+  },
+  {
+    "file": "chromium-earth-system-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "water"
+  },
+  {
+    "file": "chromium-earth-system-1-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "water"
+  },
+  {
+    "file": "chromium-earth-system-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "carbon"
+  },
+  {
+    "file": "chromium-earth-system-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "carbon"
+  },
+  {
+    "file": "chromium-earth-system-2-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "earth-system",
+    "mode": "carbon"
+  },
+  {
+    "file": "chromium-weather-watch-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-watch",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-weather-watch-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-watch",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-weather-watch-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-watch",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-weather-watch-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-watch",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-weather-front-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-front",
+    "mode": "wind"
+  },
+  {
+    "file": "chromium-weather-front-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-front",
+    "mode": "wind"
+  },
+  {
+    "file": "chromium-weather-front-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-front",
+    "mode": "wind"
+  },
+  {
+    "file": "chromium-weather-front-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-front",
+    "mode": "front"
+  },
+  {
+    "file": "chromium-weather-front-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-front",
+    "mode": "front"
+  },
+  {
+    "file": "chromium-weather-front-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "weather-front",
+    "mode": "front"
+  },
+  {
+    "file": "chromium-air-stability-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "air-stability",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-air-stability-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "air-stability",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-typhoon-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "typhoon",
+    "mode": "genesis"
+  },
+  {
+    "file": "chromium-typhoon-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "typhoon",
+    "mode": "genesis"
+  },
+  {
+    "file": "chromium-typhoon-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "typhoon",
+    "mode": "track"
+  },
+  {
+    "file": "chromium-typhoon-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "typhoon",
+    "mode": "track"
+  },
+  {
+    "file": "chromium-typhoon-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "typhoon",
+    "mode": "enso"
+  },
+  {
+    "file": "chromium-typhoon-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "typhoon",
+    "mode": "enso"
+  },
+  {
+    "file": "chromium-land-sea-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "land-sea",
+    "mode": "area"
+  },
+  {
+    "file": "chromium-land-sea-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "land-sea",
+    "mode": "area"
+  },
+  {
+    "file": "chromium-land-sea-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "land-sea",
+    "mode": "area"
+  },
+  {
+    "file": "chromium-land-sea-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "land-sea",
+    "mode": "salt"
+  },
+  {
+    "file": "chromium-land-sea-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "land-sea",
+    "mode": "salt"
+  },
+  {
+    "file": "chromium-land-sea-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "land-sea",
+    "mode": "salt"
+  },
+  {
+    "file": "chromium-water-cycle-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 365.203125,
+    "id": "",
+    "tag": "svg",
+    "slug": "water-cycle",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-water-cycle-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 372.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "water-cycle",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-seawater-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "seawater",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-seawater-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "seawater",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-ocean-circulation-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-circulation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-ocean-circulation-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-circulation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-ocean-layers-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-layers",
+    "mode": "profile"
+  },
+  {
+    "file": "chromium-ocean-layers-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-layers",
+    "mode": "profile"
+  },
+  {
+    "file": "chromium-ocean-layers-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-layers",
+    "mode": "salinity"
+  },
+  {
+    "file": "chromium-ocean-layers-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-layers",
+    "mode": "salinity"
+  },
+  {
+    "file": "chromium-ocean-layers-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-layers",
+    "mode": "density"
+  },
+  {
+    "file": "chromium-ocean-layers-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "ocean-layers",
+    "mode": "density"
+  },
+  {
+    "file": "chromium-night-sky-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "night-sky",
+    "mode": "moon"
+  },
+  {
+    "file": "chromium-night-sky-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "night-sky",
+    "mode": "moon"
+  },
+  {
+    "file": "chromium-night-sky-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "night-sky",
+    "mode": "moon"
+  },
+  {
+    "file": "chromium-night-sky-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "night-sky",
+    "mode": "stars"
+  },
+  {
+    "file": "chromium-night-sky-1-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "night-sky",
+    "mode": "stars"
+  },
+  {
+    "file": "chromium-seasons-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 406.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "path"
+  },
+  {
+    "file": "chromium-seasons-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "path"
+  },
+  {
+    "file": "chromium-seasons-0-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "path"
+  },
+  {
+    "file": "chromium-seasons-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "path"
+  },
+  {
+    "file": "chromium-seasons-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 292.171875,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "orbit"
+  },
+  {
+    "file": "chromium-seasons-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "orbit"
+  },
+  {
+    "file": "chromium-seasons-1-2.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "orbit"
+  },
+  {
+    "file": "chromium-seasons-1-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "seasons",
+    "mode": "orbit"
+  },
+  {
+    "file": "chromium-moon-phases-0-0.webp",
+    "visible": true,
+    "width": 300,
+    "height": 187.5,
+    "id": "",
+    "tag": "svg",
+    "slug": "moon-phases",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-moon-phases-0-1.webp",
+    "visible": true,
+    "width": 182,
+    "height": 182,
+    "id": "",
+    "tag": "svg",
+    "slug": "moon-phases",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-apparent-motion-0-0.webp",
+    "visible": true,
+    "width": 540,
+    "height": 399.125,
+    "id": "",
+    "tag": "svg",
+    "slug": "apparent-motion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-planet-motion-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "planet-motion",
+    "mode": "retro"
+  },
+  {
+    "file": "chromium-planet-motion-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "planet-motion",
+    "mode": "retro"
+  },
+  {
+    "file": "chromium-planet-motion-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "planet-motion",
+    "mode": "phase"
+  },
+  {
+    "file": "chromium-planet-motion-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "planet-motion",
+    "mode": "phase"
+  },
+  {
+    "file": "chromium-planet-motion-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "planet-motion",
+    "mode": "eclipse"
+  },
+  {
+    "file": "chromium-planet-motion-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "planet-motion",
+    "mode": "eclipse"
+  },
+  {
+    "file": "chromium-stars-universe-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "stars-universe",
+    "mode": "bright"
+  },
+  {
+    "file": "chromium-stars-universe-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "stars-universe",
+    "mode": "bright"
+  },
+  {
+    "file": "chromium-stars-universe-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "stars-universe",
+    "mode": "expand"
+  },
+  {
+    "file": "chromium-stars-universe-1-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "stars-universe",
+    "mode": "expand"
+  },
+  {
+    "file": "chromium-star-elements-0-0.webp",
+    "visible": true,
+    "width": 411,
+    "height": 412,
+    "id": "ecEarth",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "fusion"
+  },
+  {
+    "file": "chromium-star-elements-0-1.webp",
+    "visible": true,
+    "width": 411,
+    "height": 332,
+    "id": "ecBody",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "fusion"
+  },
+  {
+    "file": "chromium-star-elements-0-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "fusion"
+  },
+  {
+    "file": "chromium-star-elements-0-3.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "fusion"
+  },
+  {
+    "file": "chromium-star-elements-0-4.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "fusion"
+  },
+  {
+    "file": "chromium-star-elements-1-0.webp",
+    "visible": true,
+    "width": 411,
+    "height": 412,
+    "id": "ecEarth",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "mass"
+  },
+  {
+    "file": "chromium-star-elements-1-1.webp",
+    "visible": true,
+    "width": 411,
+    "height": 332,
+    "id": "ecBody",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "mass"
+  },
+  {
+    "file": "chromium-star-elements-1-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "mass"
+  },
+  {
+    "file": "chromium-star-elements-1-4.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "mass"
+  },
+  {
+    "file": "chromium-star-elements-2-0.webp",
+    "visible": true,
+    "width": 411,
+    "height": 412,
+    "id": "ecEarth",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "origin"
+  },
+  {
+    "file": "chromium-star-elements-2-1.webp",
+    "visible": true,
+    "width": 411,
+    "height": 332,
+    "id": "ecBody",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "origin"
+  },
+  {
+    "file": "chromium-star-elements-2-2.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "origin"
+  },
+  {
+    "file": "chromium-star-elements-2-4.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "star-elements",
+    "mode": "origin"
+  },
+  {
+    "file": "chromium-stars-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "stars",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-stars-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "stars",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-galaxy-hubble-0-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "galaxy-hubble",
+    "mode": "classify"
+  },
+  {
+    "file": "chromium-galaxy-hubble-0-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "galaxy-hubble",
+    "mode": "classify"
+  },
+  {
+    "file": "chromium-galaxy-hubble-1-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "galaxy-hubble",
+    "mode": "redshift"
+  },
+  {
+    "file": "chromium-galaxy-hubble-1-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "galaxy-hubble",
+    "mode": "redshift"
+  },
+  {
+    "file": "chromium-galaxy-hubble-2-0.webp",
+    "visible": true,
+    "width": 560,
+    "height": 260.515625,
+    "id": "",
+    "tag": "svg",
+    "slug": "galaxy-hubble",
+    "mode": "hubble"
+  },
+  {
+    "file": "chromium-galaxy-hubble-2-1.webp",
+    "visible": true,
+    "width": 560,
+    "height": 238.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "galaxy-hubble",
+    "mode": "hubble"
+  },
+  {
+    "file": "chromium-cell-structure-0-0.webp",
+    "visible": true,
+    "width": 382,
+    "height": 383.515625,
+    "id": "mbImage",
+    "tag": "IMG",
+    "slug": "cell-structure",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-neutralization-common-0-0.webp",
+    "visible": true,
+    "width": 517.046875,
+    "height": 438.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "neutralization-common",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-neutralization-common-0-1.webp",
+    "visible": true,
+    "width": 480,
+    "height": 323.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "neutralization-common",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-pasteur-0-0.webp",
+    "visible": true,
+    "width": 452,
+    "height": 409.625,
+    "id": "",
+    "tag": "svg",
+    "slug": "pasteur",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-pasteur-0-1.webp",
+    "visible": true,
+    "width": 452,
+    "height": 409.625,
+    "id": "",
+    "tag": "svg",
+    "slug": "pasteur",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-newton-prism-0-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 335.828125,
+    "id": "",
+    "tag": "svg",
+    "slug": "newton-prism",
+    "mode": "dispersion"
+  },
+  {
+    "file": "chromium-newton-prism-1-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 335.828125,
+    "id": "",
+    "tag": "svg",
+    "slug": "newton-prism",
+    "mode": "single"
+  },
+  {
+    "file": "chromium-newton-prism-2-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 335.828125,
+    "id": "",
+    "tag": "svg",
+    "slug": "newton-prism",
+    "mode": "fixed"
+  },
+  {
+    "file": "chromium-newton-prism-3-0.webp",
+    "visible": true,
+    "width": 620,
+    "height": 335.828125,
+    "id": "",
+    "tag": "svg",
+    "slug": "newton-prism",
+    "mode": "combine"
+  },
+  {
+    "file": "chromium-infection-prevention-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 423.5,
+    "id": "",
+    "tag": "svg",
+    "slug": "infection-prevention",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-mendeleev-0-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1359.578125,
+    "slug": "mendeleev",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-speaker-lab-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "speaker-lab",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-wireless-power-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "wireless-power",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-magnetic-brake-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 519.75,
+    "id": "",
+    "tag": "svg",
+    "slug": "magnetic-brake",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-transistor-speaker-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "transistor-speaker",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-soap-film-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "soap-film",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-polarization-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "polarization",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-electron-slits-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "electron-slits",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-gas-identification-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "gas-identification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-sugar-phase-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 642.46875,
+    "id": "",
+    "tag": "svg",
+    "slug": "sugar-phase",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-hess-calorimetry-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "hess-calorimetry",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-buffer-solution-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 490.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "buffer-solution",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-salt-hydrolysis-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 389.8125,
+    "id": "",
+    "tag": "svg",
+    "slug": "salt-hydrolysis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-bean-respiration-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 714.65625,
+    "id": "",
+    "tag": "svg",
+    "slug": "bean-respiration",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-insulation-lab-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 470.546875,
+    "id": "",
+    "tag": "svg",
+    "slug": "insulation-lab",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-insulation-lab-0-1.webp",
+    "visible": true,
+    "width": 925.984375,
+    "height": 557.3125,
+    "id": "",
+    "tag": "svg",
+    "slug": "insulation-lab",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-doppler-lab-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 487.65625,
+    "id": "",
+    "tag": "svg",
+    "slug": "doppler-lab",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-ride-acceleration-high-common-0-0.webp",
+    "visible": true,
+    "width": 624,
+    "height": 392.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "ride-acceleration",
+    "mode": "initial",
+    "school": "high-common"
+  },
+  {
+    "file": "chromium-ride-acceleration-high-common-0-1.webp",
+    "visible": true,
+    "width": 874,
+    "height": 477.453125,
+    "id": "",
+    "tag": "svg",
+    "slug": "ride-acceleration",
+    "mode": "initial",
+    "school": "high-common"
+  },
+  {
+    "file": "chromium-ride-acceleration-high-elective-0-0.webp",
+    "visible": true,
+    "width": 624,
+    "height": 392.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "ride-acceleration",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-ride-acceleration-high-elective-0-1.webp",
+    "visible": true,
+    "width": 874,
+    "height": 477.453125,
+    "id": "",
+    "tag": "svg",
+    "slug": "ride-acceleration",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-dna-replication-0-0.webp",
+    "visible": true,
+    "width": 904,
+    "height": 445.34375,
+    "id": "",
+    "tag": "svg",
+    "slug": "dna-replication",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-protein-synthesis-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 427.765625,
+    "id": "",
+    "tag": "svg",
+    "slug": "protein-synthesis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-pedigree-lab-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 533.859375,
+    "id": "",
+    "tag": "svg",
+    "slug": "pedigree-lab",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-karyotype-lab-0-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1765.984375,
+    "slug": "karyotype-lab",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-antibiotic-disc-0-0.webp",
+    "visible": true,
+    "width": 484,
+    "height": 476.4375,
+    "id": "",
+    "tag": "svg",
+    "slug": "antibiotic-disc",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-antibiotic-disc-0-1.webp",
+    "visible": true,
+    "width": 440,
+    "height": 482.296875,
+    "id": "",
+    "tag": "svg",
+    "slug": "antibiotic-disc",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-water-wave-tank-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 393.546875,
+    "id": "",
+    "tag": "svg",
+    "slug": "water-wave-tank",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-water-wave-tank-0-1.webp",
+    "visible": true,
+    "width": 924,
+    "height": 422.640625,
+    "id": "",
+    "tag": "svg",
+    "slug": "water-wave-tank",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-silver-mirror-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 547.546875,
+    "id": "",
+    "tag": "svg",
+    "slug": "silver-mirror",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-nylon-interface-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 564.65625,
+    "id": "",
+    "tag": "svg",
+    "slug": "nylon-interface",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-stellar-mass-data-0-0.webp",
+    "visible": true,
+    "width": 904.8125,
+    "height": 542.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "stellar-mass-data",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-cluster-fitting-0-0.webp",
+    "visible": true,
+    "width": 904.8125,
+    "height": 542.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "cluster-fitting",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-habitable-orbits-0-0.webp",
+    "visible": true,
+    "width": 904.8125,
+    "height": 504.109375,
+    "id": "",
+    "tag": "svg",
+    "slug": "habitable-orbits",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-centrifuge-design-0-0.webp",
+    "visible": true,
+    "width": 904.8125,
+    "height": 478.25,
+    "id": "",
+    "tag": "svg",
+    "slug": "centrifuge-design",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-organic-builder-0-0.webp",
+    "visible": true,
+    "width": 904.8125,
+    "height": 542.875,
+    "id": "",
+    "tag": "svg",
+    "slug": "organic-builder",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-dna-structure-high-common-0-0.webp",
+    "visible": true,
+    "width": 467.8125,
+    "height": 526,
+    "id": "dnaPlot",
+    "tag": "svg",
+    "slug": "dna-structure",
+    "mode": "initial",
+    "school": "high-common"
+  },
+  {
+    "file": "chromium-dna-structure-high-elective-0-0.webp",
+    "visible": true,
+    "width": 467.8125,
+    "height": 374,
+    "id": "dnaPlot",
+    "tag": "svg",
+    "slug": "dna-structure",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-protein-folding-0-0.webp",
+    "visible": true,
+    "width": 908,
+    "height": 499.390625,
+    "id": "",
+    "tag": "svg",
+    "slug": "protein-folding",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-organelle-builder-0-0.webp",
+    "visible": true,
+    "width": 908,
+    "height": 590.1875,
+    "id": "",
+    "tag": "svg",
+    "slug": "organelle-builder",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-hydride-boiling-0-0.webp",
+    "visible": true,
+    "width": 908,
+    "height": 629.109375,
+    "id": "",
+    "tag": "svg",
+    "slug": "hydride-boiling",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-fuel-comparison-0-0.webp",
+    "visible": true,
+    "width": 908,
+    "height": 648.5625,
+    "id": "",
+    "tag": "svg",
+    "slug": "fuel-comparison",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-mcu-sampling-0-0.webp",
+    "visible": true,
+    "width": 908,
+    "height": 557.765625,
+    "id": "",
+    "tag": "svg",
+    "slug": "mcu-sampling",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-smart-pot-0-0.webp",
+    "visible": true,
+    "width": 908,
+    "height": 908,
+    "id": "",
+    "tag": "svg",
+    "slug": "smart-pot",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-telescope-observation-middle-0-0.webp",
+    "visible": true,
+    "width": 292.25,
+    "height": 300.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "telescope-observation",
+    "mode": "initial",
+    "school": "middle"
+  },
+  {
+    "file": "chromium-telescope-observation-middle-0-1.webp",
+    "visible": true,
+    "width": 573.75,
+    "height": 364.734375,
+    "id": "",
+    "tag": "svg",
+    "slug": "telescope-observation",
+    "mode": "initial",
+    "school": "middle"
+  },
+  {
+    "file": "chromium-telescope-observation-high-elective-0-0.webp",
+    "visible": true,
+    "width": 292.25,
+    "height": 300.359375,
+    "id": "",
+    "tag": "svg",
+    "slug": "telescope-observation",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-telescope-observation-high-elective-0-1.webp",
+    "visible": true,
+    "width": 573.75,
+    "height": 364.734375,
+    "id": "",
+    "tag": "svg",
+    "slug": "telescope-observation",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-rotating-annulus-high-elective-0-0.webp",
+    "visible": true,
+    "width": 666,
+    "height": 612.71875,
+    "id": "annulusCanvas",
+    "tag": "CANVAS",
+    "slug": "rotating-annulus",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-sunspot-observation-high-elective-0-0.webp",
+    "visible": true,
+    "width": 450.5,
+    "height": 450.5,
+    "id": "sunCanvasA",
+    "tag": "CANVAS",
+    "slug": "sunspot-observation",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-sunspot-observation-high-elective-0-1.webp",
+    "visible": true,
+    "width": 450.5,
+    "height": 130,
+    "id": "sunMagnifyA",
+    "tag": "CANVAS",
+    "slug": "sunspot-observation",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-sunspot-observation-high-elective-0-2.webp",
+    "visible": true,
+    "width": 450.5,
+    "height": 450.5,
+    "id": "sunCanvasB",
+    "tag": "CANVAS",
+    "slug": "sunspot-observation",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-sunspot-observation-high-elective-0-3.webp",
+    "visible": true,
+    "width": 450.5,
+    "height": 130,
+    "id": "sunMagnifyB",
+    "tag": "CANVAS",
+    "slug": "sunspot-observation",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-sunspot-observation-high-elective-0-4.webp",
+    "visible": true,
+    "width": 924,
+    "height": 235,
+    "id": "sunChart",
+    "tag": "CANVAS",
+    "slug": "sunspot-observation",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-protein-interaction-high-elective-0-0.webp",
+    "visible": true,
+    "width": 576.4375,
+    "height": 489.96875,
+    "id": "dockCanvas",
+    "tag": "CANVAS",
+    "slug": "protein-interaction",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-air-sampling-0-0.webp",
+    "visible": true,
+    "width": 644,
+    "height": 322,
+    "id": "",
+    "tag": "svg",
+    "slug": "air-sampling",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-local-biodiversity-high-common-0-12.webp",
+    "visible": true,
+    "width": 434,
+    "height": 300,
+    "id": "",
+    "tag": "svg",
+    "slug": "local-biodiversity",
+    "mode": "initial",
+    "school": "high-common"
+  },
+  {
+    "file": "chromium-local-biodiversity-high-elective-0-12.webp",
+    "visible": true,
+    "width": 434,
+    "height": 300,
+    "id": "",
+    "tag": "svg",
+    "slug": "local-biodiversity",
+    "mode": "initial",
+    "school": "high-elective"
+  },
+  {
+    "file": "chromium-water-electrolysis-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 502.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "water-electrolysis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-cell-micrometry-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 562.421875,
+    "id": "",
+    "tag": "svg",
+    "slug": "cell-micrometry",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-pigments-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 538.5,
+    "id": "",
+    "tag": "svg",
+    "slug": "leaf-pigments",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-digestive-enzymes-0-0.webp",
+    "visible": true,
+    "width": 272,
+    "height": 480,
+    "id": "",
+    "tag": "svg",
+    "slug": "digestive-enzymes",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-digestive-enzymes-0-1.webp",
+    "visible": true,
+    "width": 272,
+    "height": 480,
+    "id": "",
+    "tag": "svg",
+    "slug": "digestive-enzymes",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-digestive-enzymes-0-2.webp",
+    "visible": true,
+    "width": 272,
+    "height": 480,
+    "id": "",
+    "tag": "svg",
+    "slug": "digestive-enzymes",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-spring-wave-speed-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 502.59375,
+    "id": "",
+    "tag": "svg",
+    "slug": "spring-wave-speed",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-coastal-inundation-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 490.625,
+    "id": "",
+    "tag": "svg",
+    "slug": "coastal-inundation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-sea-level-causes-0-0.webp",
+    "visible": true,
+    "width": 272,
+    "height": 320.5625,
+    "id": "",
+    "tag": "svg",
+    "slug": "sea-level-causes",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-sea-level-causes-0-1.webp",
+    "visible": true,
+    "width": 272,
+    "height": 320.5625,
+    "id": "",
+    "tag": "svg",
+    "slug": "sea-level-causes",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-sea-level-causes-0-2.webp",
+    "visible": true,
+    "width": 272,
+    "height": 320.5625,
+    "id": "",
+    "tag": "svg",
+    "slug": "sea-level-causes",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-standard-solution-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 490.625,
+    "id": "",
+    "tag": "svg",
+    "slug": "standard-solution",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-serial-dilution-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 481.046875,
+    "id": "",
+    "tag": "svg",
+    "slug": "serial-dilution",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-serial-dilution-0-1.webp",
+    "visible": true,
+    "width": 718,
+    "height": 424.8125,
+    "id": "",
+    "tag": "svg",
+    "slug": "serial-dilution",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-vinegar-titration-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 598.328125,
+    "id": "",
+    "tag": "svg",
+    "slug": "vinegar-titration",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-acoustic-resonance-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 470.921875,
+    "id": "",
+    "tag": "svg",
+    "slug": "acoustic-resonance",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-electroplating-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 517.375,
+    "id": "",
+    "tag": "svg",
+    "slug": "electroplating",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-starch-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 543.765625,
+    "id": "",
+    "tag": "svg",
+    "slug": "leaf-starch",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-dissolution-mass-0-0.webp",
+    "visible": true,
+    "width": 718,
+    "height": 582.84375,
+    "id": "",
+    "tag": "svg",
+    "slug": "dissolution-mass",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-food-web-0-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 2601.96875,
+    "slug": "food-web",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-yeast-fermentation-0-0.webp",
+    "visible": true,
+    "width": 260,
+    "height": 282,
+    "id": "",
+    "tag": "svg",
+    "slug": "yeast-fermentation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-yeast-fermentation-0-1.webp",
+    "visible": true,
+    "width": 260,
+    "height": 282,
+    "id": "",
+    "tag": "svg",
+    "slug": "yeast-fermentation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-yeast-fermentation-0-2.webp",
+    "visible": true,
+    "width": 260,
+    "height": 282,
+    "id": "",
+    "tag": "svg",
+    "slug": "yeast-fermentation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-light-interference-0-0.webp",
+    "visible": true,
+    "width": 660,
+    "height": 188,
+    "id": "",
+    "tag": "svg",
+    "slug": "light-interference",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-light-interference-0-1.webp",
+    "visible": true,
+    "width": 660,
+    "height": 178,
+    "id": "liScreen",
+    "tag": "CANVAS",
+    "slug": "light-interference",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-galileo-incline-0-0.webp",
+    "visible": true,
+    "width": 453,
+    "height": 240,
+    "id": "",
+    "tag": "svg",
+    "slug": "galileo-incline",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-galileo-incline-0-1.webp",
+    "visible": true,
+    "width": 453,
+    "height": 240,
+    "id": "",
+    "tag": "svg",
+    "slug": "galileo-incline",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-reaction-pressure-0-0.webp",
+    "visible": true,
+    "width": 719,
+    "height": 262,
+    "id": "",
+    "tag": "svg",
+    "slug": "reaction-pressure",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-reaction-pressure-0-1.webp",
+    "visible": true,
+    "width": 840,
+    "height": 250,
+    "id": "",
+    "tag": "svg",
+    "slug": "reaction-pressure",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-osmosis-mass-0-0.webp",
+    "visible": true,
+    "width": 269.328125,
+    "height": 145,
+    "id": "",
+    "tag": "svg",
+    "slug": "osmosis-mass",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-osmosis-mass-0-1.webp",
+    "visible": true,
+    "width": 269.328125,
+    "height": 145,
+    "id": "",
+    "tag": "svg",
+    "slug": "osmosis-mass",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-osmosis-mass-0-2.webp",
+    "visible": true,
+    "width": 269.34375,
+    "height": 145,
+    "id": "",
+    "tag": "svg",
+    "slug": "osmosis-mass",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-osmosis-mass-0-3.webp",
+    "visible": true,
+    "width": 432,
+    "height": 245,
+    "id": "",
+    "tag": "svg",
+    "slug": "osmosis-mass",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-classification-0-0.webp",
+    "visible": true,
+    "width": 389.8125,
+    "height": 238,
+    "id": "lcPhoto",
+    "tag": "IMG",
+    "slug": "leaf-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-classification-0-1.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 125,
+    "id": "",
+    "tag": "IMG",
+    "slug": "leaf-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-classification-0-2.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 125,
+    "id": "",
+    "tag": "IMG",
+    "slug": "leaf-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-classification-0-3.webp",
+    "visible": true,
+    "width": 273.34375,
+    "height": 125,
+    "id": "",
+    "tag": "IMG",
+    "slug": "leaf-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-classification-0-4.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 125,
+    "id": "",
+    "tag": "IMG",
+    "slug": "leaf-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-classification-0-5.webp",
+    "visible": true,
+    "width": 273.328125,
+    "height": 125,
+    "id": "",
+    "tag": "IMG",
+    "slug": "leaf-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-leaf-classification-0-6.webp",
+    "visible": true,
+    "width": 273.34375,
+    "height": 125,
+    "id": "",
+    "tag": "IMG",
+    "slug": "leaf-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-0.webp",
+    "visible": true,
+    "width": 435,
+    "height": 278,
+    "id": "acPhoto",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-1.webp",
+    "visible": true,
+    "width": 257.328125,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-2.webp",
+    "visible": true,
+    "width": 257.328125,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-3.webp",
+    "visible": true,
+    "width": 257.34375,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-4.webp",
+    "visible": true,
+    "width": 257.328125,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-5.webp",
+    "visible": true,
+    "width": 257.328125,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-6.webp",
+    "visible": true,
+    "width": 257.34375,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-7.webp",
+    "visible": true,
+    "width": 257.328125,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-animal-classification-0-8.webp",
+    "visible": true,
+    "width": 257.328125,
+    "height": 129,
+    "id": "",
+    "tag": "IMG",
+    "slug": "animal-classification",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-liquid-heat-0-0.webp",
+    "visible": true,
+    "width": 926,
+    "height": 300,
+    "id": "lhChart",
+    "tag": "CANVAS",
+    "slug": "liquid-heat",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-phase-mass-0-0.webp",
+    "visible": true,
+    "width": 193.5,
+    "height": 160,
+    "id": "pmLiquid",
+    "tag": "svg",
+    "slug": "phase-mass",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-rotating-disc-0-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1917.578125,
+    "slug": "rotating-disc",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-quadrat-community-0-0.webp",
+    "visible": true,
+    "width": 434.5625,
+    "height": 434.5625,
+    "id": "",
+    "tag": "svg",
+    "slug": "quadrat-community",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-ph-comparison-0-0.webp",
+    "visible": true,
+    "width": 519.53125,
+    "height": 378.8125,
+    "id": "",
+    "tag": "svg",
+    "slug": "ph-comparison",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-equilibrium-colour-0-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1505.765625,
+    "slug": "equilibrium-colour",
+    "mode": "concentration"
+  },
+  {
+    "file": "chromium-equilibrium-colour-1-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1362.203125,
+    "slug": "equilibrium-colour",
+    "mode": "pressure"
+  },
+  {
+    "file": "chromium-equilibrium-colour-2-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1524.375,
+    "slug": "equilibrium-colour",
+    "mode": "temperature"
+  },
+  {
+    "file": "chromium-strata-correlation-0-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1590.96875,
+    "slug": "strata-correlation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-polarized-thin-sections-0-0.webp",
+    "visible": true,
+    "width": 486.265625,
+    "height": 486.265625,
+    "id": "tsCanvas",
+    "tag": "CANVAS",
+    "slug": "polarized-thin-sections",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-crust-thickness-0-0.webp",
+    "visible": true,
+    "width": 624,
+    "height": 340,
+    "id": "ctPlot",
+    "tag": "svg",
+    "slug": "crust-thickness",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-video-motion-0-0.webp",
+    "visible": true,
+    "width": 543.140625,
+    "height": 305.515625,
+    "id": "vmCanvas",
+    "tag": "CANVAS",
+    "slug": "video-motion",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-hr-diagram-0-0.webp",
+    "visible": true,
+    "width": 527.921875,
+    "height": 490,
+    "id": "hrPlot",
+    "tag": "svg",
+    "slug": "hr-diagram",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-kepler-data-0-0.webp",
+    "visible": true,
+    "width": 539.140625,
+    "height": 390,
+    "id": "kdPlot",
+    "tag": "svg",
+    "slug": "kepler-data",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-kepler-data-0-1.webp",
+    "visible": true,
+    "width": 884,
+    "height": 300,
+    "id": "kdOrbitPlot",
+    "tag": "svg",
+    "slug": "kepler-data",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-seasonal-sky-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 420,
+    "id": "skyCanvas",
+    "tag": "CANVAS",
+    "slug": "seasonal-sky",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-equilibrium-data-0-bench.webp",
+    "tag": "HTML",
+    "width": 1024,
+    "height": 768,
+    "benchHeight": 1522.234375,
+    "slug": "equilibrium-data",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-argo-observation-0-0.webp",
+    "visible": true,
+    "width": 431,
+    "height": 350,
+    "id": "aoTemperature",
+    "tag": "svg",
+    "slug": "argo-observation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-argo-observation-0-1.webp",
+    "visible": true,
+    "width": 431,
+    "height": 350,
+    "id": "aoSalinity",
+    "tag": "svg",
+    "slug": "argo-observation",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-satellite-sea-temperature-0-0.webp",
+    "visible": true,
+    "width": 900,
+    "height": 440,
+    "id": "",
+    "tag": "CANVAS",
+    "slug": "satellite-sea-temperature",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-satellite-sea-temperature-0-1.webp",
+    "visible": true,
+    "width": 900,
+    "height": 440,
+    "id": "",
+    "tag": "svg",
+    "slug": "satellite-sea-temperature",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-satellite-sea-temperature-0-2.webp",
+    "visible": true,
+    "width": 900,
+    "height": 440,
+    "id": "",
+    "tag": "CANVAS",
+    "slug": "satellite-sea-temperature",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-satellite-sea-temperature-0-3.webp",
+    "visible": true,
+    "width": 900,
+    "height": 440,
+    "id": "",
+    "tag": "svg",
+    "slug": "satellite-sea-temperature",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-satellite-sea-temperature-0-6.webp",
+    "visible": true,
+    "width": 892,
+    "height": 310,
+    "id": "sstAnnual",
+    "tag": "svg",
+    "slug": "satellite-sea-temperature",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-galactic-objects-0-0.webp",
+    "visible": true,
+    "width": 614,
+    "height": 614,
+    "id": "goImageA",
+    "tag": "IMG",
+    "slug": "galactic-objects",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-phase-curves-0-0.webp",
+    "visible": true,
+    "width": 435,
+    "height": 330,
+    "id": "hcScene",
+    "tag": "svg",
+    "slug": "phase-curves",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-phase-curves-0-1.webp",
+    "visible": true,
+    "width": 892,
+    "height": 340,
+    "id": "hcGraph",
+    "tag": "svg",
+    "slug": "phase-curves",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-acid-mixing-0-0.webp",
+    "visible": true,
+    "width": 554.484375,
+    "height": 415.859375,
+    "id": "amDiagram",
+    "tag": "svg",
+    "slug": "acid-mixing",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-iodine-clock-0-0.webp",
+    "visible": true,
+    "width": 480,
+    "height": 205,
+    "id": "",
+    "tag": "svg",
+    "slug": "iodine-clock",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-iodine-clock-0-1.webp",
+    "visible": true,
+    "width": 480,
+    "height": 205,
+    "id": "",
+    "tag": "svg",
+    "slug": "iodine-clock",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-iodine-clock-0-2.webp",
+    "visible": true,
+    "width": 480,
+    "height": 205,
+    "id": "",
+    "tag": "svg",
+    "slug": "iodine-clock",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-iodine-clock-0-3.webp",
+    "visible": true,
+    "width": 480,
+    "height": 205,
+    "id": "",
+    "tag": "svg",
+    "slug": "iodine-clock",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-iodine-clock-0-4.webp",
+    "visible": true,
+    "width": 934,
+    "height": 280,
+    "id": "icGraph",
+    "tag": "svg",
+    "slug": "iodine-clock",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-catalyst-foam-0-0.webp",
+    "visible": true,
+    "width": 478,
+    "height": 310,
+    "id": "",
+    "tag": "svg",
+    "slug": "catalyst-foam",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-catalyst-foam-0-1.webp",
+    "visible": true,
+    "width": 478,
+    "height": 310,
+    "id": "",
+    "tag": "svg",
+    "slug": "catalyst-foam",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-weather-analysis-0-0.webp",
+    "visible": true,
+    "width": 320,
+    "height": 275.03125,
+    "id": "waCurrent",
+    "tag": "IMG",
+    "slug": "weather-analysis",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-temperature-clouding-0-0.webp",
+    "visible": true,
+    "width": 314,
+    "height": 320,
+    "id": "",
+    "tag": "svg",
+    "slug": "temperature-clouding",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-temperature-clouding-0-1.webp",
+    "visible": true,
+    "width": 314,
+    "height": 175,
+    "id": "",
+    "tag": "svg",
+    "slug": "temperature-clouding",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-temperature-clouding-0-2.webp",
+    "visible": true,
+    "width": 314,
+    "height": 320,
+    "id": "",
+    "tag": "svg",
+    "slug": "temperature-clouding",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-temperature-clouding-0-3.webp",
+    "visible": true,
+    "width": 314,
+    "height": 175,
+    "id": "",
+    "tag": "svg",
+    "slug": "temperature-clouding",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-temperature-clouding-0-4.webp",
+    "visible": true,
+    "width": 314,
+    "height": 320,
+    "id": "",
+    "tag": "svg",
+    "slug": "temperature-clouding",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-temperature-clouding-0-5.webp",
+    "visible": true,
+    "width": 314,
+    "height": 175,
+    "id": "",
+    "tag": "svg",
+    "slug": "temperature-clouding",
+    "mode": "initial"
+  },
+  {
+    "file": "chromium-constellation-space-0-0.webp",
+    "visible": true,
+    "width": 924,
+    "height": 420,
+    "id": "csCanvas",
+    "tag": "CANVAS",
+    "slug": "constellation-space",
+    "mode": "initial"
+  }
+]

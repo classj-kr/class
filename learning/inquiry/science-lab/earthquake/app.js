@@ -455,6 +455,13 @@ document.addEventListener('DOMContentLoaded', () => {
     newDataButton.addEventListener('click', () => loadScenario((scenarioIndex + 1) % scenarios.length));
     canvas.addEventListener('click', selectPredictedEpicenter);
     window.addEventListener('resize', setCanvasSize);
+    // Fonts and responsive panels can resize the drawing after the window's
+    // resize event. Keep canvas pixels and printed labels at their CSS size.
+    let canvasResizeFrame = 0;
+    const canvasResize = new ResizeObserver(() => { cancelAnimationFrame(canvasResizeFrame); canvasResizeFrame = requestAnimationFrame(setCanvasSize); });
+    canvasResize.observe(canvas);
+    canvasResize.observe(travelTimeCanvas);
+    document.fonts.ready.then(setCanvasSize);
 
     /* This page lays its choices out in a <fieldset> with a <legend>, not in a
        .quiz-options div, so only the labels are shuffled and the legend is left

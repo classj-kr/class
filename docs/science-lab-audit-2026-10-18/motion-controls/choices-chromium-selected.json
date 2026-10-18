@@ -1,0 +1,35 @@
+{
+  "engine": "chromium",
+  "physicalDeviceTested": false,
+  "rows": [
+    {
+      "slug": "sugar-phase",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "groups": 5,
+      "actions": 4
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "groups": 5,
+      "actions": 4
+    },
+    {
+      "slug": "protein-synthesis",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "electroplating",
+      "groups": 3,
+      "actions": 3
+    }
+  ],
+  "failures": [],
+  "errors": []
+}

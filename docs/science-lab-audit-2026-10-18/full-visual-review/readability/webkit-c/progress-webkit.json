@@ -1,0 +1,261 @@
+{
+  "checkedAt": "2026-10-17T19:10:37.947Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": false,
+  "completedRoutes": [
+    {
+      "slug": "lens-image",
+      "scenarios": 5
+    },
+    {
+      "slug": "wave-transfer",
+      "scenarios": 10
+    },
+    {
+      "slug": "speed",
+      "scenarios": 10
+    },
+    {
+      "slug": "gravity-motion",
+      "scenarios": 10
+    },
+    {
+      "slug": "magnets",
+      "scenarios": 10
+    },
+    {
+      "slug": "electric-field",
+      "scenarios": 15
+    },
+    {
+      "slug": "motor-magnet",
+      "scenarios": 15
+    },
+    {
+      "slug": "energy-heat",
+      "scenarios": 5
+    },
+    {
+      "slug": "weight-compare",
+      "scenarios": 30
+    },
+    {
+      "slug": "mixture-separation",
+      "scenarios": 30
+    },
+    {
+      "slug": "gases",
+      "scenarios": 25
+    },
+    {
+      "slug": "solubility-curve",
+      "scenarios": 5
+    },
+    {
+      "slug": "periodic-bonding",
+      "scenarios": 30
+    },
+    {
+      "slug": "neutralization",
+      "scenarios": 5
+    },
+    {
+      "slug": "mole",
+      "scenarios": 55
+    },
+    {
+      "slug": "combustion",
+      "scenarios": 5
+    },
+    {
+      "slug": "microbes",
+      "scenarios": 55
+    },
+    {
+      "slug": "cell-membrane",
+      "scenarios": 55
+    },
+    {
+      "slug": "photosynthesis",
+      "scenarios": 40
+    },
+    {
+      "slug": "body-systems",
+      "scenarios": 5
+    },
+    {
+      "slug": "immune",
+      "scenarios": 65
+    },
+    {
+      "slug": "reflex-nerve",
+      "scenarios": 145
+    },
+    {
+      "slug": "dna-gel",
+      "scenarios": 5
+    },
+    {
+      "slug": "life-cycle",
+      "scenarios": 15
+    },
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    },
+    {
+      "slug": "rock-age",
+      "scenarios": 10
+    },
+    {
+      "slug": "magma",
+      "scenarios": 5
+    },
+    {
+      "slug": "earth-system",
+      "scenarios": 35
+    },
+    {
+      "slug": "air-stability",
+      "scenarios": 5
+    },
+    {
+      "slug": "water-cycle",
+      "scenarios": 5
+    },
+    {
+      "slug": "ocean-layers",
+      "scenarios": 15
+    },
+    {
+      "slug": "moon-phases",
+      "scenarios": 5
+    },
+    {
+      "slug": "stars-universe",
+      "scenarios": 40
+    },
+    {
+      "slug": "galaxy-hubble",
+      "scenarios": 15
+    },
+    {
+      "slug": "pasteur",
+      "scenarios": 5
+    },
+    {
+      "slug": "mendeleev",
+      "scenarios": 5
+    },
+    {
+      "slug": "magnetic-brake",
+      "scenarios": 5
+    },
+    {
+      "slug": "polarization",
+      "scenarios": 5
+    },
+    {
+      "slug": "sugar-phase",
+      "scenarios": 5
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "scenarios": 5
+    },
+    {
+      "slug": "doppler-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "protein-synthesis",
+      "scenarios": 5
+    },
+    {
+      "slug": "antibiotic-disc",
+      "scenarios": 5
+    },
+    {
+      "slug": "nylon-interface",
+      "scenarios": 5
+    },
+    {
+      "slug": "habitable-orbits",
+      "scenarios": 5
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-common",
+      "scenarios": 40
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-elective",
+      "scenarios": 40
+    },
+    {
+      "slug": "hydride-boiling",
+      "scenarios": 5
+    },
+    {
+      "slug": "smart-pot",
+      "scenarios": 5
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "scenarios": 20
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-common",
+      "scenarios": 80
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-elective",
+      "scenarios": 80
+    },
+    {
+      "slug": "leaf-pigments",
+      "scenarios": 25
+    },
+    {
+      "slug": "coastal-inundation",
+      "scenarios": 25
+    },
+    {
+      "slug": "serial-dilution",
+      "scenarios": 25
+    },
+    {
+      "slug": "electroplating",
+      "scenarios": 35
+    },
+    {
+      "slug": "food-web",
+      "scenarios": 40
+    },
+    {
+      "slug": "galileo-incline",
+      "scenarios": 40
+    },
+    {
+      "slug": "leaf-classification",
+      "scenarios": 45
+    },
+    {
+      "slug": "phase-mass",
+      "scenarios": 45
+    }
+  ],
+  "scenarios": 1515,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

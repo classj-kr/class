@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -120,7 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let k = 1; k < rows.length; k += 1) { const dec = rows[k].lon < rows[k - 1].lon; if (dec && t1 === null) t1 = rows[k - 1].t; if (!dec && t1 !== null && t2 === null) t2 = rows[k - 1].t; }
         if (t1 !== null && t2 === null) t2 = W;
         const dur = t1 === null ? 0 : t2 - t1, arc = t1 === null ? 0 : rows[t1 + W].lon - rows[t2 + W].lon;
-        return { kind: 'retro', pl, W, rows, t1, t2, dur, arc, verdict: dur <= 50 ? 'short' : dur <= 100 ? 'mid' : 'long' };
+        const at = t => {
+            const r = pos(t), anchor = rows[clamp(Math.round(t + W), 0, rows.length - 1)];
+            let delta = r.lam - anchor.lam;
+            if (delta > Math.PI) delta -= 2 * Math.PI;
+            if (delta < -Math.PI) delta += 2 * Math.PI;
+            return { ...r, lon: anchor.lon + delta * R2D };
+        };
+        return { kind: 'retro', pl, W, rows, at, t1, t2, dur, arc, verdict: dur <= 50 ? 'short' : dur <= 100 ? 'mid' : 'long' };
     }
     function phaseModel(key, posKey) {
         const pl = PHASE_PLANETS[key];
@@ -216,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function renderRetro(a) {
-        const p = state.progress, { pl, W, rows } = a, t = Math.round(-W + 2 * W * p), row = rows[t + W];
+        const p = state.progress, { pl, W, rows } = a, t = -W + 2 * W * p, day = Math.round(t), row = a.at(t);
         const CX = 92, CY = 110, s = 66 / Math.max(pl.a, 1);
         let out = `<circle class="orbit" cx="${CX}" cy="${CY}" r="${s.toFixed(1)}"/><circle class="orbit" cx="${CX}" cy="${CY}" r="${(pl.a * s).toFixed(1)}"/><circle class="sun-dot" cx="${CX}" cy="${CY}" r="4"/>`;
         const P = r => [CX + r.px * s, CY - r.py * s], E = r => [CX + r.ex * s, CY - r.ey * s];
@@ -235,8 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sc = Math.min((SX1 - SX0 - 24) / span, 48 / betaMax);
         const xOf = lon => SX1 - 12 - (lon - lonMin) * sc - ((SX1 - SX0 - 24) - span * sc) / 2, yOf = beta => (SY0 + SY1) / 2 - beta * sc;
         let dPro = '', dRet = '', dPro2 = '';
-        rows.forEach(r => {
-            if (r.t > t) return;
+        [...rows.filter(r => r.t < t), row].forEach(r => {
             const seg = a.t1 !== null && r.t >= a.t1 && r.t <= a.t2 ? 'ret' : a.t1 !== null && r.t > a.t2 ? 'pro2' : 'pro';
             const pt = `${xOf(r.lon).toFixed(1)},${yOf(r.beta).toFixed(1)} `;
             if (seg === 'pro') dPro += (dPro ? 'L' : 'M') + pt; else if (seg === 'ret') dRet += (dRet ? 'L' : 'M') + pt; else dPro2 += (dPro2 ? 'L' : 'M') + pt;
@@ -248,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" style="fill:#e2e8f0" x="${SX0 + 6}" y="${SY1 - 6}">가로 ${fmtN(span, 1)}° · 세로 남북 ${fmtN(betaMax * 2, 1)}° (같은 눈금)</text>`;
         const ref = pl.inner ? '내합' : '충';
         const inRet = a.t1 !== null && t >= a.t1 && t <= a.t2;
-        out += `<text class="trait-text" x="${SX0}" y="170">${t === 0 ? ref : t < 0 ? `${ref} ${-t}일 전` : `${ref} ${t}일 후`} · 지구에서 ${fmtN(row.delta, 2)} AU · 황경 ${row.lon >= 0 ? '+' : ''}${fmtN(row.lon, 1)}°</text>`;
+        out += `<text class="trait-text" x="${SX0}" y="170">${day === 0 ? ref : day < 0 ? `${ref} ${-day}일 전` : `${ref} ${day}일 후`} · 지구에서 ${fmtN(row.delta, 2)} AU · 황경 ${row.lon >= 0 ? '+' : ''}${fmtN(row.lon, 1)}°</text>`;
         out += `<text class="trait-text" style="fill:${inRet ? '#dc2626' : '#0369a1'}" x="${SX0}" y="186">${inRet ? '지금 서쪽으로 되돌아가는 중 (역행)' : '지금 동쪽으로 가는 중 (순행)'}</text>`;
         const VERD = { short: '한 달 남짓', mid: '두 달 반쯤', long: '넉 달 안팎' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${pl.label}: ${ref} ${-a.t1}일 전부터 ${a.t2}일 후까지 ${a.dur}일 동안 역행 — ${VERD[a.verdict]}` : `${pl.label} · ${ref} 앞뒤 ${W}일씩`}</text>`;
@@ -265,8 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
         [-W, -W / 2, 0, W / 2, W].forEach(t => { out += `<line class="grid-line" x1="${xOf(t).toFixed(1)}" y1="${Y1}" x2="${xOf(t).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(t).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${t === 0 ? (pl.inner ? '내합' : '충') : `${t > 0 ? '+' : '−'}${Math.abs(t)}일`}</text>`; });
         [lonMin, (lonMin + lonMax) / 2, lonMax].forEach(l => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(l).toFixed(1)}" x2="${X1}" y2="${yOf(l).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(l) + 3.5).toFixed(1)}" text-anchor="end">${l >= 0 ? '+' : ''}${fmtN(l, 0)}°</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
-        const tNow = Math.round(-W + 2 * W * state.progress);
-        let d = ''; rows.forEach(r => { if (r.t <= tNow) d += `${d ? 'L' : 'M'}${xOf(r.t).toFixed(1)},${yOf(r.lon).toFixed(1)} `; });
+        const tNow = -W + 2 * W * state.progress;
+        let d = ''; [...rows.filter(r => r.t < tNow), a.at(tNow)].forEach(r => { d += `${d ? 'L' : 'M'}${xOf(r.t).toFixed(1)},${yOf(r.lon).toFixed(1)} `; });
         out += `<path class="trace" style="stroke:#d97706" d="${d}"/>`;
         if (a.t1 !== null) { const r1 = rows[a.t1 + W], r2 = rows[a.t2 + W]; out += `<text class="small-label" style="fill:#dc2626" x="${((xOf(a.t1) + xOf(a.t2)) / 2).toFixed(1)}" y="${Y1 + 12}" text-anchor="middle">역행 ${a.dur}일 · ${fmtN(a.arc, 1)}° 되돌아감</text>`; if (tNow >= a.t1) out += `<circle class="stop-dot" cx="${xOf(a.t1).toFixed(1)}" cy="${yOf(r1.lon).toFixed(1)}" r="3.5"/>`; if (tNow >= a.t2) out += `<circle class="stop-dot" cx="${xOf(a.t2).toFixed(1)}" cy="${yOf(r2.lon).toFixed(1)}" r="3.5"/>`; }
         out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">황경은 동쪽으로 갈수록 커집니다. 동그라미가 멈추는 순간 유(留)</text>`;
@@ -407,14 +413,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'retro' ? renderRetro(a) : a.kind === 'phase' ? renderPhase(a) : renderEclipse(a);
-        graphGroup.innerHTML = a.kind === 'retro' ? graphRetro(a) : a.kind === 'phase' ? graphPhase(a) : graphEclipse(a);
+        window.scienceScene.render(mainGroup,a.kind === 'retro' ? renderRetro(a) : a.kind === 'phase' ? renderPhase(a) : renderEclipse(a));
+        window.scienceScene.render(graphGroup,a.kind === 'retro' ? graphRetro(a) : a.kind === 'phase' ? graphPhase(a) : graphEclipse(a));
         liftProse();
         stageBadge.textContent = a.kind === 'retro' ? `${a.pl.label} · ${a.pl.inner ? '내합' : '충'} 앞뒤` : a.kind === 'phase' ? `${a.pl.label} · ${posTable()[a.posKey].label}` : `${KINDS[a.kindKey].label} · ${NODES[state.node].label} · ${DISTS[state.dist].label}`;
         methodHint.textContent = a.kind === 'retro' ? '안쪽 행성이 바깥 행성을 앞지를 때 하늘에서 행성이 뒤로 가는 것처럼 보입니다'
             : a.kind === 'phase' ? '가까울수록 크게, 태양 반대편에 있을수록 둥글게 보입니다'
                 : '달이 가까우면 본그림자가 지표에 닿고, 교점에서 멀면 그림자가 비껴갑니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

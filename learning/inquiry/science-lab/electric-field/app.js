@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -359,14 +359,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         if (a.kind === 'cap') checkBtn.textContent = a.phase === 'store' ? '전지에 연결하기' : '전구에 연결하기';
-        mainGroup.innerHTML = a.kind === 'field' ? renderField(a) : a.kind === 'accel' ? renderAccel(a) : renderCap(a);
-        graphGroup.innerHTML = a.kind === 'field' ? graphField(a) : a.kind === 'accel' ? graphAccel(a) : graphCap(a);
+        window.scienceScene.render(mainGroup,a.kind === 'field' ? renderField(a) : a.kind === 'accel' ? renderAccel(a) : renderCap(a));
+        window.scienceScene.render(graphGroup,a.kind === 'field' ? graphField(a) : a.kind === 'accel' ? graphAccel(a) : graphCap(a));
         liftProse();
         stageBadge.textContent = a.kind === 'field' ? `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · ${SPOTS[state.spot].label}` : a.kind === 'accel' ? `${PARTS[state.part].label} · ${VOLTS[state.volt].label}` : (a.phase === 'store' ? '충전 회로' : '방전 회로');
         methodHint.textContent = a.kind === 'field' ? '전기장은 + 전하에서 나와 − 전하로 들어가고, 세기는 거리의 제곱에 반비례합니다'
             : a.kind === 'accel' ? '전위차 V를 지난 전하 q는 qV만큼의 운동 에너지를 얻습니다'
                 : '축전기는 에너지를 저장하고 방전할 때 다른 형태로 전환합니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

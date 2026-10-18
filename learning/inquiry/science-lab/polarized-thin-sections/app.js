@@ -1,16 +1,39 @@
 (()=>{
  'use strict';const M=window.scienceThinSections,$=id=>document.getElementById(id),canvas=$('tsCanvas'),ctx=canvas.getContext('2d');
- const cache=Object.fromEntries(Object.keys(M.specimens).map(k=>[k,M.grains(k).map(g=>{const path=new Path2D();g.poly.forEach((p,i)=>i?path.lineTo(...p):path.moveTo(...p));path.closePath();return{...g,path};})]));
+ const cache=Object.fromEntries(Object.keys(M.specimens).map(k=>[k,M.grains(k).filter(g=>{const xs=g.poly.map(p=>p[0]),ys=g.poly.map(p=>p[1]);const dx=Math.max(Math.min(...xs)-300,300-Math.max(...xs),0),dy=Math.max(Math.min(...ys)-300,300-Math.max(...ys),0);return dx*dx+dy*dy<=304*304;}).map(g=>{
+  const path=new Path2D();g.poly.forEach((p,i)=>i?path.lineTo(...p):path.moveTo(...p));path.closePath();
+  const cleavages=new Path2D();
+  for(let x=-140;x<140;x+=8){cleavages.moveTo(x,-150);cleavages.lineTo(x+20,150);}
+  return{...g,path,cleavages};
+ })]));
+ const fields=new Map(),littleEndian=new Uint8Array(new Uint32Array([0x01020304]).buffer)[0]===4;let drawKey='';
  let state,frame=0,last=0,photo='fine',zoom=1,pan={x:0,y:0},drag=null;
  const initial=()=>({sample:'basalt',mounted:false,focus:20,light:70,crossed:false,angle:0,playing:false,seen:{basalt:{ppl:false,xpl:false},granite:{ppl:false,xpl:false}},classifications:{},firstClassification:null,attempts:[]});
  function status(text){$('tsStatus').textContent=text;}
+ function packedColour(css){const rgb=css[0]==='#'?[1,3,5].map(i=>parseInt(css.slice(i,i+2),16)):css.match(/\d+/g).map(Number),[r,g,b]=rgb.map(v=>Math.max(0,Math.min(255,v)));return littleEndian?(255<<24|b<<16|g<<8|r)>>>0:(r<<24|g<<16|b<<8|255)>>>0;}
+ function field(){
+  const W=canvas.width,key=state.sample+':'+W;if(fields.has(key))return fields.get(key);
+  const scale=W/600,grains=cache[state.sample],ids=new Uint16Array(W*W),image=ctx.createImageData(W,W),palette=new Uint32Array(grains.length*2+1),overlays=[];
+  // Rasterize grain membership once. Subsequent frames update its colour
+  // palette, preserving the exact live optical model without redrawing hundreds
+  // of clipped polygons and twin stripes on every frame.
+  grains.forEach((g,i)=>{const poly=g.poly.map(([x,y])=>[x*scale,y*scale]),top=Math.max(0,Math.ceil(Math.min(...poly.map(p=>p[1]))-.5)),bottom=Math.min(W,Math.ceil(Math.max(...poly.map(p=>p[1]))-.5)),a=g.orientation*Math.PI/180,cos=Math.cos(a),sin=Math.sin(a),step=state.sample==='basalt'?6:16;
+   for(let y=top;y<bottom;y++){const crossings=[],cy=y+.5;for(let n=0;n<poly.length;n++){const p=poly[n],q=poly[(n+1)%poly.length];if((p[1]>cy)!==(q[1]>cy))crossings.push(p[0]+(cy-p[1])*(q[0]-p[0])/(q[1]-p[1]));}crossings.sort((a,b)=>a-b);
+    for(let n=0;n+1<crossings.length;n+=2)for(let x=Math.max(0,Math.ceil(crossings[n]-.5));x<Math.min(W,Math.ceil(crossings[n+1]-.5));x++){const dx=(x+.5)/scale-g.x,dy=cy/scale-g.y,u=dx*cos+dy*sin,v=-dx*sin+dy*cos,twin=g.kind==='feldspar'&&g.twin&&u>=-130&&u<130&&Math.abs(v)<160&&(u+130)%step<step*.35;ids[y*W+x]=1+i*2+(twin?1:0);}
+   }
+  });
+  for(const crossed of [false,true]){const layer=document.createElement('canvas');layer.width=layer.height=W;const p=layer.getContext('2d');p.scale(scale,scale);for(const g of grains){p.strokeStyle=crossed?'#141b22':'#787b7160';p.lineWidth=.65;p.stroke(g.path);if(g.kind==='mica'&&g.cleavage){p.save();p.clip(g.path);p.translate(g.x,g.y);p.rotate(g.orientation*Math.PI/180);p.strokeStyle='#11191c70';p.lineWidth=.8;p.stroke(g.cleavages);p.restore();}}overlays.push(layer);}
+  const painted=document.createElement('canvas');painted.width=painted.height=W;
+  const result={ids,image,pixels:new Uint32Array(image.data.buffer),palette,overlays,grains,painted};fields.set(key,result);return result;
+ }
  function draw(){
-  const W=canvas.width,scale=W/600;ctx.clearRect(0,0,W,W);ctx.fillStyle=state.crossed?'#060b10':'#e7e5d8';ctx.fillRect(0,0,W,W);ctx.save();ctx.scale(scale,scale);ctx.translate(300,300);ctx.rotate(state.angle*Math.PI/180);ctx.translate(-300,-300);
-  for(const g of cache[state.sample]){ctx.fillStyle=M.color(g,state.angle,state.crossed,state.light);ctx.fill(g.path);ctx.strokeStyle=state.crossed?'#141b22':'#787b7160';ctx.lineWidth=.65;ctx.stroke(g.path);
-   if(g.kind==='feldspar'&&g.twin&&state.crossed){ctx.save();ctx.clip(g.path);ctx.translate(g.x,g.y);ctx.rotate(g.orientation*Math.PI/180);ctx.fillStyle=M.color({...g,orientation:g.orientation+24},state.angle,true,state.light);const step=state.sample==='basalt'?6:16;for(let x=-130;x<130;x+=step)ctx.fillRect(x,-160,step*.35,320);ctx.restore();}
-   if(g.kind==='mica'&&g.cleavage){ctx.save();ctx.clip(g.path);ctx.translate(g.x,g.y);ctx.rotate(g.orientation*Math.PI/180);ctx.strokeStyle='#11191c70';ctx.lineWidth=.8;for(let x=-140;x<140;x+=8){ctx.beginPath();ctx.moveTo(x,-150);ctx.lineTo(x+20,150);ctx.stroke();}ctx.restore();}
+  const W=canvas.width,amount=Math.min(8,Math.abs(state.focus-50)*.2),blur=amount?'blur('+amount+'px)':'none';
+  if(canvas.style.filter!==blur)canvas.style.filter=blur;
+  const changingColour=state.crossed||cache[state.sample].some(g=>g.kind==='mica'),next=[state.sample,state.light,state.crossed,W,changingColour?state.angle:0].join(':');
+  const f=field();if(next!==drawKey){drawKey=next;f.palette[0]=packedColour(state.crossed?'#060b10':'#e7e5d8');f.grains.forEach((g,i)=>{f.palette[1+i*2]=packedColour(M.color(g,state.angle,state.crossed,state.light));f.palette[2+i*2]=state.crossed&&g.kind==='feldspar'&&g.twin?packedColour(M.color({...g,orientation:g.orientation+24},state.angle,true,state.light)):f.palette[1+i*2];});
+   for(let i=0;i<f.ids.length;i++)f.pixels[i]=f.palette[f.ids[i]];const p=f.painted.getContext('2d');p.putImageData(f.image,0,0);p.drawImage(f.overlays[Number(state.crossed)],0,0);
   }
-  ctx.restore();canvas.style.filter='blur('+Math.min(8,Math.abs(state.focus-50)*.2)+'px)';
+  ctx.clearRect(0,0,W,W);ctx.save();ctx.translate(W/2,W/2);ctx.rotate(state.angle*Math.PI/180);ctx.drawImage(f.painted,-W/2,-W/2);ctx.restore();
  }
  function progress(){
   $('tsProgress').innerHTML=Object.entries(M.specimens).map(([key,s])=>'<div><strong>'+s.name+'</strong><span>개방 니콜 · '+(state.seen[key].ppl?'관찰함':'관찰 전')+'</span><span>직교 니콜 · '+(state.seen[key].xpl?'관찰함':'관찰 전')+'</span></div>').join('');
@@ -25,10 +48,10 @@
   $('tsAngleValue').textContent=Math.round(state.angle)+'°';$('tsAngle').value=state.angle;
   $('tsPlay').textContent=state.playing?'회전 멈추기':'천천히 회전';$('tsPlay').setAttribute('aria-pressed',String(state.playing));
   const blocked=!state.mounted||state.light<5;$('tsCover').hidden=!blocked;$('tsCover').textContent=!state.mounted?'박편을 재물대에 올리세요.':'조명을 밝게 조절하세요.';
-  progress();draw();document.querySelector('.ts-scale i').style.width=(canvas.getBoundingClientRect().width/6)+'px';
+  progress();draw();document.querySelector('.ts-scale i').style.width=(canvas.clientWidth/6)+'px';
  }
  function stop(){state.playing=false;cancelAnimationFrame(frame);frame=0;last=0;}
- function animate(now){if(!state.playing)return;if(last)state.angle=(state.angle+Math.min(now-last,80)*.012)%360;last=now;draw();$('tsAngle').value=state.angle;$('tsAngleValue').textContent=Math.round(state.angle)+'°';frame=requestAnimationFrame(animate);}
+ function animate(now){if(!state.playing)return;if(last)state.angle=(state.angle+Math.min(now-last,80)*.012)%360;last=now;draw();const rounded=Math.round(state.angle),value=String(rounded),label=value+'°';if($('tsAngle').value!==value)$('tsAngle').value=value;if($('tsAngleValue').textContent!==label)$('tsAngleValue').textContent=label;frame=requestAnimationFrame(animate);}
  function mode(value){stop();for(const b of document.querySelectorAll('[data-ts-mode]'))b.setAttribute('aria-pressed',String(b.dataset.tsMode===value));$('tsScope').hidden=value!=='scope';$('tsPhotos').hidden=value!=='photos';update();}
  function selectSample(key){stop();state.sample=key;state.mounted=false;state.focus=20;state.angle=0;$('tsFocus').value=20;status(M.specimens[key].name+' 박편을 올리고 초점을 다시 맞추세요.');update();}
  function observe(){
@@ -62,7 +85,7 @@
  $('tsPhotoZoom').oninput=()=>{zoom=Number($('tsPhotoZoom').value);photoTransform();};
  const viewer=$('tsPhotoViewer');viewer.onkeydown=e=>{const d={ArrowLeft:[24,0],ArrowRight:[-24,0],ArrowUp:[0,24],ArrowDown:[0,-24]}[e.key];if(d&&zoom>1){e.preventDefault();pan.x+=d[0];pan.y+=d[1];photoTransform();}};
  viewer.onpointerdown=e=>{if(zoom<=1)return;drag={x:e.clientX,y:e.clientY};viewer.setPointerCapture(e.pointerId);};viewer.onpointermove=e=>{if(!drag)return;pan.x+=e.clientX-drag.x;pan.y+=e.clientY-drag.y;drag={x:e.clientX,y:e.clientY};photoTransform();};viewer.onpointerup=viewer.onpointercancel=()=>drag=null;
- document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();update();}});window.addEventListener('resize',()=>{photoTransform();document.querySelector('.ts-scale i').style.width=(canvas.getBoundingClientRect().width/6)+'px';});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();update();}});window.addEventListener('resize',()=>{photoTransform();document.querySelector('.ts-scale i').style.width=(canvas.clientWidth/6)+'px';});
  function reset(){if(state)stop();state=initial();$('tsFocus').value=20;$('tsLight').value=70;$('tsPhotoDetail').hidden=true;$('tsPhotoStatus').textContent='';buildPhotos();mode('scope');status(' 초점을 맞추고 편광판을 넣고 빼며 같은 박편을 살펴보세요.');}
  $('tsReset').onclick=()=>{try{localStorage.removeItem(storageKey);}catch{}reset();};reset();
  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null'),valid=a=>a&&M.photos.every(p=>M.photos.some(t=>t.texture===a[p.id]));if(saved&&valid(saved.first)&&valid(saved.last)){state.firstClassification={answers:saved.first,result:Object.fromEntries(M.photos.map(p=>[p.id,saved.first[p.id]===p.texture]))};state.classifications=saved.last;for(const p of M.photos)$('tsClass-'+p.id).value=saved.last[p.id];checkPhotos();}}catch{}

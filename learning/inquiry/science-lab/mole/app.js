@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -347,14 +347,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'count' ? renderCount(a) : a.kind === 'react' ? renderReact(a) : renderMolar(a);
-        graphGroup.innerHTML = a.kind === 'count' ? graphCount(a) : a.kind === 'react' ? graphReact(a) : graphMolar(a);
+        window.scienceScene.render(mainGroup,a.kind === 'count' ? renderCount(a) : a.kind === 'react' ? renderReact(a) : renderMolar(a));
+        window.scienceScene.render(graphGroup,a.kind === 'count' ? graphCount(a) : a.kind === 'react' ? graphReact(a) : graphMolar(a));
         liftProse();
         stageBadge.textContent = a.kind === 'count' ? `${a.sub.label} · ${MASSES[state.mass].label}` : a.kind === 'react' ? `${a.r.label} · ${AMT_A[state.na].label} + ${AMT_B[state.nb].label}` : `${a.so.short} ${NSOL[state.nsol].label} · ${VOLS[state.vol].label} · ${DILS[state.dil].label}`;
         methodHint.textContent = a.kind === 'count' ? '1몰 = 6.02×10²³개, 몰 질량의 단위는 g/mol입니다'
             : a.kind === 'react' ? '반응식의 계수가 몰수의 비입니다. 비율보다 많은 쪽이 남습니다'
                 : '몰 농도 = 용질 몰수 ÷ 용액 부피(L). 묽혀도 몰수는 그대로입니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

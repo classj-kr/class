@@ -58,6 +58,33 @@ test('home math accordion reaches the number model on desktop and phone', async 
   }
 });
 
+test('5555 stays fully visible at classroom screen sizes with matching model scales', async () => {
+  for (const [width, height] of [[1718, 855], [1366, 768], [1024, 768]]) {
+    await page.setViewportSize({ width, height });
+    await number('5555');
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    const layout = await page.evaluate(() => {
+      const clouds = [...document.querySelectorAll('.block-cloud')];
+      return {
+        overflow: document.documentElement.scrollWidth > innerWidth || document.documentElement.scrollHeight > innerHeight,
+        clipped: clouds.map(cloud => [...cloud.querySelectorAll('.block')].some(block => {
+          const box = block.getBoundingClientRect(), area = cloud.getBoundingClientRect();
+          return box.top < area.top || box.bottom > area.bottom || box.left < area.left || box.right > area.right;
+        })),
+        scales: clouds.map(cloud => {
+          const svg = cloud.querySelector('svg');
+          return svg.getBoundingClientRect().width / Number(svg.getAttribute('width'));
+        })
+      };
+    });
+    assert.equal(layout.overflow, false, `${width}: page fits viewport`);
+    assert.deepEqual(layout.clipped, [false, false, false, false], `${width}: all five models in each place are visible`);
+    assert.ok(Math.max(...layout.scales) - Math.min(...layout.scales) < 0.002, 'all four shapes keep the same unit scale');
+    if (width === 1718) await shot('desktop-5555');
+    if (width === 1366) await shot('laptop-5555');
+  }
+});
+
 test('carrying, borrowing, subtraction and keyboard undo show each step accurately', async () => {
   await page.locator('[data-example=whole-add]').click();
   assert.deepEqual(await counts(), [0, 0, 2, 15]);

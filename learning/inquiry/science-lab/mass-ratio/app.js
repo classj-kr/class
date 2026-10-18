@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       : a.product > 0 ? '남는 물질 없음 (꼭 맞게 반응)' : '';
         out += `<text class="left-note" x="${rx}" y="${panY + 62}" text-anchor="middle">${leftTxt}</text>`;
         out += `<text class="left-note" x="${lx}" y="${panY + 62}" text-anchor="middle">Mg ${mg().toFixed(1)} g + O ${ox().toFixed(1)} g</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
 
         // Product against magnesium added, at the current oxygen: a straight
         // line while oxygen lasts, then a flat ceiling once it runs out.
@@ -146,15 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
             g += `<text class="knee-text" x="${(gx(knee, MAX_G) + (flip ? -5 : 5)).toFixed(1)}" y="${GRAPH.y1 + 10}"${flip ? ' text-anchor="end"' : ''}>산소가 다 쓰이는 ${knee.toFixed(1)} g</text>`;
         }
         g += `<circle class="trace-dot" cx="${gx(mg(), MAX_G).toFixed(1)}" cy="${gy(a.product, 0, yMax).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = g;
+        window.scienceScene.render(graphGroup,g);
 
         stageBadge.textContent = `${a.before.toFixed(1)} g → ${a.after.toFixed(1)} g`;
         mgOutput.textContent = `${mg().toFixed(1)} g`;
         oxOutput.textContent = `${ox().toFixed(1)} g`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">반응한 질량</span><span class="data-val">Mg ${a.mgUsed.toFixed(1)} g + O ${a.oxUsed.toFixed(1)} g → MgO ${a.product.toFixed(1)} g</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">반응한 질량</span><span class="data-val">Mg ${a.mgUsed.toFixed(1)} g + O ${a.oxUsed.toFixed(1)} g → MgO ${a.product.toFixed(1)} g</span></div>` +
             `<div class="data-row${a.product > 0 ? ' match' : ''}"><span class="data-name">화합물의 질량비</span><span class="data-val">${a.product > 0 ? `${a.mgUsed.toFixed(1)} : ${a.oxUsed.toFixed(1)} = ${R_MG} : ${R_OX} (항상 일정)` : '반응 없음'}</span></div>` +
-            `<div class="data-row match"><span class="data-name">전체 질량</span><span class="data-val">반응 전 ${a.before.toFixed(1)} g = 반응 후 ${a.after.toFixed(1)} g</span></div>`;
+            `<div class="data-row match"><span class="data-name">전체 질량</span><span class="data-val">반응 전 ${a.before.toFixed(1)} g = 반응 후 ${a.after.toFixed(1)} g</span></div>`);
     }
 
     function renderHeat() {
@@ -172,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="axis-text" x="${TX + 18}" y="92">시작 ${T0} ℃</text>`;
         out += `<text class="rxn-label" x="${(BX.x0 + BX.x1) / 2}" y="182" text-anchor="middle">${r.name}</text>`;
         out += `<text class="rxn-kind" fill="${warming ? '#ea580c' : '#0284c7'}" x="${(BX.x0 + BX.x1) / 2}" y="200" text-anchor="middle">${r.kind} 반응 · 주위 온도 ${warming ? '상승' : '하강'}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
 
         const lo = 0, hi = 50;
         let g = '';
@@ -198,14 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
             g += `<path class="trace" style="stroke:${col};opacity:${key === rxn ? 1 : .32}" d="M${pts.join('L')}"/>`;
         });
         g += `<circle class="trace-dot" cx="${gx(t, 60).toFixed(1)}" cy="${gy(temp, lo, hi).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = g;
+        window.scienceScene.render(graphGroup,g);
 
         stageBadge.textContent = `${r.kind} · ${temp.toFixed(1)} ℃`;
         timeOutput.textContent = `${t.toFixed(0)} 초`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">반응</span><span class="data-val">${r.name}</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">반응</span><span class="data-val">${r.name}</span></div>` +
             `<div class="data-row"><span class="data-name">온도 변화</span><span class="data-val">${T0} ℃ → ${temp.toFixed(1)} ℃ (${r.delta > 0 ? '+' : ''}${(temp - T0).toFixed(1)} ℃)</span></div>` +
-            `<div class="data-row match"><span class="data-name">종류</span><span class="data-val">${r.kind} 반응 — 열을 ${r.delta > 0 ? '내놓아 주위가 따뜻해집니다' : '흡수해 주위가 차가워집니다'}</span></div>`;
+            `<div class="data-row match"><span class="data-name">종류</span><span class="data-val">${r.kind} 반응 — 열을 ${r.delta > 0 ? '내놓아 주위가 따뜻해집니다' : '흡수해 주위가 차가워집니다'}</span></div>`);
     }
 
     const render = () => {

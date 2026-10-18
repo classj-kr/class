@@ -1,0 +1,206 @@
+{
+  "checkedAt": "2026-10-17T06:43:46.773Z",
+  "count": 20,
+  "images": [
+    {
+      "file": "chromium-constellation-space-narrow.webp",
+      "width": 794,
+      "height": 1999,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "93045abc4d8a78c91d030bb792ff870c26637edbe4482e5ddc5e84f26e4b31f2"
+    },
+    {
+      "file": "chromium-earthquake-controls.webp",
+      "width": 746,
+      "height": 273,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "f59a53e5ae0f5a5855aea9ee86fded233b37b0b8218e9310fcc93611800d3713"
+    },
+    {
+      "file": "chromium-mcu-sampling-controls.webp",
+      "width": 731,
+      "height": 766,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "fcc6ea01a755de1b2305588498525c15cbf8dc9f3d3eae7c404d776d67e9c2fe"
+    },
+    {
+      "file": "chromium-periodic-bonding-narrow.webp",
+      "width": 794,
+      "height": 2113,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "20f9caf739d29e9ebed851bb057732eb150ac7b4d6e16aa9cee901937e75fec8"
+    },
+    {
+      "file": "chromium-periodic-bonding-panned.webp",
+      "width": 794,
+      "height": 2113,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "2ad2fe7221f393e31017787d2ead047be386d096e0ed707d504b0f1c1c778a2d"
+    },
+    {
+      "file": "chromium-reaction-pressure-narrow.webp",
+      "width": 794,
+      "height": 2258,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "db30d1d0954f4b9bf5dd8e80128c3706d716ce122d8ac4ef045ce76d75f2cc84"
+    },
+    {
+      "file": "chromium-ride-acceleration-narrow.webp",
+      "width": 794,
+      "height": 2235,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "06f49335b03d3cbf9c053576ba4fc32f0f8d14ec92c8a99d130bdf113fe0d799"
+    },
+    {
+      "file": "chromium-stellar-mass-data-controls.webp",
+      "width": 731,
+      "height": 451,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "fab2b102dddc309f94f0e20071be82df06a907ae66d160d8f32fa5894eb6c74d"
+    },
+    {
+      "file": "chromium-temperature-clouding-narrow.webp",
+      "width": 794,
+      "height": 1750,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "5d1c083c598e9e85a109f8e80df8f3fb54eeafdc06128ae0a3f035445c78712b"
+    },
+    {
+      "file": "chromium-video-motion-controls.webp",
+      "width": 731,
+      "height": 64,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "2c2eb5eadfa9763ca244da81522a19c4e6ab82c3d415c612ac86fc62e1301032"
+    },
+    {
+      "file": "webkit-constellation-space-narrow.webp",
+      "width": 976,
+      "height": 3330,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "6eb152f427ce3d010d013fc225fd409658a673514de4282bc5fe8bd0d645725e"
+    },
+    {
+      "file": "webkit-earthquake-controls.webp",
+      "width": 750,
+      "height": 436,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "2aa9c5c125b78f4392d4a2c9a3ca646e3ac6404823fdec80967c7679f748d53b"
+    },
+    {
+      "file": "webkit-mcu-sampling-controls.webp",
+      "width": 1852,
+      "height": 966,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "5cf0cbc09f8f9e89704313ae142873a4d612e152fbd7be142b88db620992e679"
+    },
+    {
+      "file": "webkit-periodic-bonding-narrow.webp",
+      "width": 976,
+      "height": 3546,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "234317be5fc56af2f5bcfab0efb890d0a400d1ea5891cabc1d3739104a967699"
+    },
+    {
+      "file": "webkit-periodic-bonding-panned.webp",
+      "width": 976,
+      "height": 3546,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "bffe4067f0cc97df063edce270b714be4f18130b44c73e72b23fc8f2d44857cf"
+    },
+    {
+      "file": "webkit-reaction-pressure-narrow.webp",
+      "width": 976,
+      "height": 4164,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "c11da2aff75d87968972e92d93a3e83fd38414483641dc0763118a2d60bcba30"
+    },
+    {
+      "file": "webkit-ride-acceleration-narrow.webp",
+      "width": 976,
+      "height": 4394,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "d520befcbc5b60878eb1d04c9abd246117df66301ae57eed0ea2ab225f4cb9f6"
+    },
+    {
+      "file": "webkit-stellar-mass-data-controls.webp",
+      "width": 1852,
+      "height": 722,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "f37d0c75755f57996804edf91e3e75c05b79058a155be5721b802e7610d9504a"
+    },
+    {
+      "file": "webkit-temperature-clouding-narrow.webp",
+      "width": 976,
+      "height": 5772,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "2e2d831d5e077d4b41d63483600ea7aa77bfee8147f6b7db0dbcfbd3030c969f"
+    },
+    {
+      "file": "webkit-video-motion-controls.webp",
+      "width": 1852,
+      "height": 102,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "ad98d00ff8e25e66e4c0dbfd5857c329b89d3c9db2bd87cb39e83b80c04edffd"
+    }
+  ]
+}

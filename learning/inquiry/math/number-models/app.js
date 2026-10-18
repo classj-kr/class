@@ -8,6 +8,38 @@
   const allowed = action => { try { action(); return true; } catch (_) { return false; } };
   const message = (text, error = false) => { $('message').textContent = text; $('message').dataset.error = String(error); $('message').hidden = !error; };
   const saveStatus = (text, error = false) => { $('save-status').textContent = text; $('save-status').dataset.error = String(error); $('save-status').hidden = !error; };
+  let fitFrame;
+  function fitModels() {
+    cancelAnimationFrame(fitFrame);
+    fitFrame = requestAnimationFrame(() => {
+      const columns = $('columns');
+      if (innerWidth <= 900) { columns.style.removeProperty('--model-zoom'); return; }
+      const boxes = [...columns.querySelectorAll('.block-cloud')].flatMap(cloud => {
+        const block = cloud.querySelector('.block'), svg = block?.querySelector('svg');
+        if (!svg) return [];
+        const style = getComputedStyle(cloud), blockStyle = getComputedStyle(block);
+        return [{
+          count: cloud.children.length,
+          width: cloud.getBoundingClientRect().width - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight),
+          height: cloud.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom),
+          blockWidth: Number(svg.getAttribute('width')), blockHeight: Number(svg.getAttribute('height')),
+          insetX: parseFloat(blockStyle.paddingLeft) + parseFloat(blockStyle.paddingRight),
+          insetY: parseFloat(blockStyle.paddingTop) + parseFloat(blockStyle.paddingBottom),
+          gapX: parseFloat(style.columnGap), gapY: parseFloat(style.rowGap)
+        }];
+      });
+      // Keep the same unit length in every place; never shrink one shape independently.
+      const fits = scale => boxes.every(box => {
+        const width = box.blockWidth * scale + box.insetX;
+        const perRow = Math.max(1, Math.floor((box.width + box.gapX) / (width + box.gapX)));
+        const rows = Math.ceil(box.count / perRow);
+        return width <= box.width && rows * (box.blockHeight * scale + box.insetY) + (rows - 1) * box.gapY <= box.height - 1;
+      });
+      let scale = 150;
+      while (scale > 80 && !fits(scale / 100)) scale--;
+      columns.style.setProperty('--model-zoom', scale / 100);
+    });
+  }
   function persist() {
     edited = true;
     if (!store) return;
@@ -52,14 +84,14 @@
     $('columns').innerHTML = indexes.map(i => {
       const n = s.counts[i], bundle = allowed(() => C.exchange(s, i, 'bundle', mode)), split = allowed(() => C.exchange(s, i, 'split', mode));
       return `<article class="place-column" data-index="${i}" aria-label="${info.values[i]} 모형 ${n}개">
-        <div class="place-heading" tabindex="-1"><div><h2>${info.values[i]}</h2><span class="place-name">${info.labels[i]}</span></div><span class="count"><b>${n}</b>개</span></div>
+        <div class="place-heading" tabindex="-1"><div class="place-value"><h2>${info.values[i]}</h2><span class="place-name">${info.labels[i]}</span></div><div class="counter-buttons"><button type="button" data-action="remove" aria-label="${info.values[i]} 모형 1개 지우기" ${n ? '' : 'disabled'}>−</button><span class="count"><b>${n}</b>개</span><button type="button" data-action="add" aria-label="${info.values[i]} 모형 1개 놓기" ${allowed(() => C.add(s, i, 1, mode)) ? '' : 'disabled'}>＋</button></div></div>
         <div class="block-cloud" data-shape="${i}" role="img" aria-label="${info.values[i]} 모형 ${n}개">${Array.from({ length: n }, () => `<span class="block" aria-hidden="true">${C.blockSVG(i)}</span>`).join('')}</div>
-        <div class="place-controls"><div class="counter-buttons"><button type="button" data-action="remove" aria-label="${info.values[i]} 모형 1개 지우기" ${n ? '' : 'disabled'}>−</button><button type="button" data-action="add" aria-label="${info.values[i]} 모형 1개 놓기" ${allowed(() => C.add(s, i, 1, mode)) ? '' : 'disabled'}>＋</button></div>
-        <div class="exchange-buttons"><button type="button" data-action="bundle" title="${indexes.includes(i-1) ? info.values[i-1] + ' 모형 1개로 묶기' : '가장 큰 자리'}" ${bundle ? '' : 'disabled'}>← 10개 묶기</button><button type="button" data-action="split" title="${indexes.includes(i+1) ? info.values[i+1] + ' 모형 10개로 풀기' : '가장 작은 자리'}" ${split ? '' : 'disabled'}>1개 풀기 →</button></div></div>
+        <div class="exchange-buttons"><button type="button" data-action="bundle" title="${indexes.includes(i-1) ? info.values[i-1] + ' 모형 1개로 묶기' : '가장 큰 자리'}" ${bundle ? '' : 'disabled'}>← 10개 묶기</button><button type="button" data-action="split" title="${indexes.includes(i+1) ? info.values[i+1] + ' 모형 10개로 풀기' : '가장 작은 자리'}" ${split ? '' : 'disabled'}>1개 풀기 →</button></div>
       </article>`;
     }).join('');
     $('clear').disabled = !C.total(s.counts);
     $('undo').disabled = !undo.length; $('redo').disabled = !redo.length;
+    fitModels();
     if (focus) {
       const target = document.querySelector(`[data-index="${focus.index}"] [data-action="${focus.action}"]`);
       if (target && !target.disabled) target.focus({ preventScroll: true });
@@ -149,7 +181,7 @@
     if (event.key.toLowerCase() === 'y') { event.preventDefault(); history('redo'); }
   });
   function showSettings(show) {
-    $('settings').hidden = !show; document.querySelector('.workspace').classList.toggle('settings-hidden', !show);
+    $('settings').hidden = !show;
     $('toggle-settings').setAttribute('aria-expanded', String(show)); $('toggle-settings').title = show ? '설정 접기' : '설정 펼치기';
   }
   $('toggle-settings').addEventListener('click', () => showSettings($('settings').hidden));
@@ -159,6 +191,7 @@
     if (back) { $('back-slot').append(back); $('back-slot').hidden = false; }
   }, { once: true });
   render();
+  new ResizeObserver(fitModels).observe($('columns'));
   window.SiteStorage.open('number-models').then(opened => {
     store = opened;
     store.onError(() => { failed = true; saveStatus('저장하지 못했어요. 잠시 후 다시 조작하면 재시도해요.', true); });

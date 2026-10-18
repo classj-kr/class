@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <text x="${badgeW / 2}" y="15" text-anchor="middle" fill="#c2410c" font-size="11" font-weight="900" font-family="Pretendard, monospace">${distance} cm에서 ${shadowCm.toFixed(1)} cm</text>
         </g>`;
 
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function renderData(distance, m) {
@@ -208,8 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const gap = SCREEN_DIST_CM - distance;
         const ratio = m / magnification(REFERENCE_CM);
         const same = Math.abs(ratio - 1) < 1e-9;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">광원에서 물체까지</span><span class="data-val">${distance} cm</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">광원에서 물체까지</span><span class="data-val">${distance} cm</span></div>` +
             `<div class="data-row"><span class="data-name">물체에서 스크린까지</span><span class="data-val">${gap.toFixed(0)} cm</span></div>` +
             `<div class="data-row"><span class="data-name">광원에서 스크린까지</span><span class="data-val">${SCREEN_DIST_CM.toFixed(0)} cm</span></div>` +
             `<div class="data-row"><span class="data-name">물체의 높이</span><span class="data-val">${CARD_HEIGHT_CM.toFixed(0)} cm</span></div>` +
@@ -217,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 반올림한 배율을 다시 곱해 보이면 아이가 검산할 때 값이 어긋납니다.
             // 나누기를 그대로 남겨 두면 손으로 따라가도 딱 맞습니다.
             `<div class="data-row"><span class="data-name">그림자 높이</span><span class="data-val">${CARD_HEIGHT_CM.toFixed(0)} × ${SCREEN_DIST_CM.toFixed(0)} ÷ ${distance} = ${shadowCm.toFixed(1)} cm</span></div>` +
-            `<div class="data-row${same ? ' match' : ''}"><span class="data-name">기준 ${REFERENCE_CM} cm와 견주면</span><span class="data-val">${ratio.toFixed(2)}배</span></div>`;
+            `<div class="data-row${same ? ' match' : ''}"><span class="data-name">기준 ${REFERENCE_CM} cm와 견주면</span><span class="data-val">${ratio.toFixed(2)}배</span></div>`);
     }
 
     function clearResult() {
