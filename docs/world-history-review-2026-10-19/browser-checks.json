@@ -1,0 +1,226 @@
+{
+  "date": "2026-10-19",
+  "desktop": {
+    "width": 1440,
+    "height": 900,
+    "studyViews": [
+      {
+        "id": "civilizations",
+        "labels": 3,
+        "overlaps": []
+      },
+      {
+        "id": "greece",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "persia",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "alexander",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "rome",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "india",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "gupta",
+        "labels": 3,
+        "overlaps": []
+      },
+      {
+        "id": "han",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "sui-canal",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "tang",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "song",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "islam",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "mongols",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "frank",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "byzantine",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "crusades",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "ming",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "qing",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "edo",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "ottoman",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "mughal",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "reformation",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "voyages",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "american",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "napoleon",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "unification",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "colonial-africa",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "china-opening",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "xinhai",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "colonial-india",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "southeast-asia",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "ww1",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "postwar-europe",
+        "labels": 4,
+        "overlaps": []
+      },
+      {
+        "id": "ww2",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "cold-war",
+        "labels": 5,
+        "overlaps": []
+      },
+      {
+        "id": "europe-1989",
+        "labels": 4,
+        "overlaps": []
+      }
+    ]
+  },
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "checked": [
+      "question viewport",
+      "map fit after resize",
+      "visible A/B anchors",
+      "scrollable answers",
+      "no horizontal panel overflow"
+    ]
+  },
+  "flows": [
+    "36 study maps loaded",
+    "three alternate map steps loaded",
+    "place detail opens",
+    "explanation dialog opens and Escape closes",
+    "topic search filters",
+    "wrong choice: zero correct highlights; next disabled",
+    "retry correct: explanation and next enabled",
+    "explicit reveal and results: 0/2 first-time correct",
+    "guest reload intentionally does not preserve progress"
+  ],
+  "storage": "Account persistence and account isolation verified separately using the real storage API harness in tests/world-history-storage.test.mjs; not claimed as a browser login test.",
+  "screenshots": [
+    "ming-study.webp",
+    "desktop-question.webp",
+    "mobile-question.webp"
+  ],
+  "automated": {
+    "command": "node --test tests/world-history.test.mjs tests/world-history-storage.test.mjs",
+    "passed": 9,
+    "failed": 0,
+    "staticAssetRoutes": 39,
+    "originalAtlasesUnmodified": true,
+    "losslessWebpRoundTrips": 39
+  },
+  "deployment": "Local implementation and verification; not pushed or deployed by this task."
+}

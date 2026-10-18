@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#edf2ed">
+  <title>세계사 지도</title>
+  <link rel="stylesheet" href="vendor/maplibre-gl-6.10.0/maplibre-gl.css">
+  <link rel="stylesheet" href="/assets/exam-typography.css?v=20261011-school-questions">
+  <link rel="stylesheet" href="history/styles.css?v=20261019-3">
+  <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
+  <script src="/assets/site-storage.js?v=20261006-1"></script>
+</head>
+<body>
+  <main id="historyMap" aria-label="시대별 세계사 지도"></main>
+  <nav class="history-tools" aria-label="세계사 지도 도구">
+    <button id="openTopics" aria-haspopup="dialog">시대·주제</button>
+    <div class="mode-switch" role="group" aria-label="학습 방식">
+      <button id="studyMode" aria-pressed="true">지도</button>
+      <button id="quizMode" aria-pressed="false">문제</button>
+    </div>
+    <button id="openExplanation">설명</button>
+  </nav>
+  <section class="scene-card" id="sceneCard" aria-labelledby="sceneTitle">
+    <div class="scene-heading"><div><p id="sceneDate"></p><h1 id="sceneTitle"></h1></div><button id="hideCard" aria-label="학습 카드 접기">−</button></div>
+    <p id="sceneCue"></p><div id="sceneSteps" class="scene-steps"></div>
+    <div id="placeDetail" class="place-detail" hidden aria-live="polite"></div>
+    <div id="mapLegend" class="map-legend" aria-label="지도 범례"></div>
+  </section>
+  <button id="showCard" hidden>학습 카드</button>
+  <div class="map-navigation" role="group" aria-label="지도 확대와 이동">
+    <button id="zoomIn" aria-label="지도 확대">＋</button><button id="zoomOut" aria-label="지도 축소">−</button><button id="fitMap">전체</button>
+  </div>
+  <p id="mapStatus" role="status">지도를 불러오는 중입니다.</p>
+  <aside id="questionPanel" class="question-panel" aria-label="지도 문제" hidden></aside>
+  <dialog id="topicsDialog" aria-labelledby="topicsTitle">
+    <div class="dialog-heading"><h2 id="topicsTitle">세계사 지도</h2><button data-close="topicsDialog">닫기 ×</button></div>
+    <label class="search-label"><span>주제 검색</span><input id="topicSearch" type="search" placeholder="시대·국가·사건" autocomplete="off"></label>
+    <div id="topicList"></div><div class="catalog-footer"><button id="reviewWrong">오답 다시 풀기</button><span>지도: 미래엔 역사부도 · 학습용 재구성</span></div>
+  </dialog>
+  <dialog id="explanationDialog" aria-labelledby="explanationTitle">
+    <div class="dialog-heading"><h2 id="explanationTitle"></h2><button data-close="explanationDialog">닫기 ×</button></div><article id="explanationBody" class="reading-sheet"></article>
+  </dialog>
+  <script type="module" src="history/app.mjs?v=20261019-3"></script>
+</body>
+</html>

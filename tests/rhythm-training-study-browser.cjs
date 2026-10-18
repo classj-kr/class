@@ -50,7 +50,8 @@ function mockAudio() {
         const browser = await engine.launch({ headless: true, ...(engine === chromium ? { executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe' } : {}) });
         try {
             const page = await browser.newPage({ viewport, hasTouch: true });
-            const errors = []; page.on('pageerror', error => errors.push(error.message));
+            const errors = [], reports = []; page.on('pageerror', error => errors.push(error.message));
+            page.on('console', message => { if (message.text().startsWith('RHYTHM_TIMING_REPORT ')) reports.push(JSON.parse(message.text().slice(21))); });
             await page.addInitScript(mockAudio);
             await page.goto(origin + '/learning/arts/music-theory/rhythm-training/');
             await page.locator('#score .rhythm-head').first().waitFor();
@@ -173,15 +174,12 @@ function mockAudio() {
                 await page.locator('#result').waitFor({ state: 'visible' });
                 assert.equal(await page.locator('#perfect').textContent(), '63');
                 assert.equal(await page.locator('#hitRate').textContent(), '음표 적중률 90.0%');
-                await page.locator('#timingDetails > summary').click();
-                const missed = await page.locator('#timingRows tr').evaluateAll(rows => rows.filter(row => row.lastElementChild.textContent.startsWith('놓침')).map(row => row.children[1].textContent));
-                assert.deepEqual(missed, ['배정 없음'], 'only the unconnected note is a miss');
-                assert.match(await page.locator('#inputCount').textContent(), /기록된 타격 70회/);
-                assert.match(await page.locator('#timingRows tr').nth(16).textContent(), /#17/);
-                assert.match(await page.locator('#timingRows tr').nth(16).textContent(), /박자 오류/);
-                assert.equal(await page.locator('#timingExtraRows tr').count(), 7);
-                assert.equal(await page.locator('#timingExtraRows tr').first().locator('td').first().textContent(), '#17');
-                assert.match(await page.locator('#timingExtraRows tr').first().textContent(), /해당 음에 연결됨/);
+                assert.equal(reports.at(-1).misses, 1, 'only the unconnected note is a miss');
+                assert.equal(reports.at(-1).taps, 70);
+                assert.equal(reports.at(-1).tapJudgments[16].target, 17);
+                assert.equal(reports.at(-1).tapJudgments[16].reason, 'timing');
+                assert.equal(reports.at(-1).tapJudgments.filter(input => !input.accepted).length, 7);
+                assert.equal(await page.locator('#timingDetails, #inputCount').count(), 0);
                 await capture(page, { path: path.join(output, 'mixed-input-assignments-v6.webp'), fullPage: true });
                 const complete = require('./fixtures/rhythm-mixed-complete-input.json');
                 await page.goto(origin + '/learning/arts/music-theory/rhythm-training/?seed=' + complete.seed);
@@ -200,10 +198,10 @@ function mockAudio() {
                 assert.equal(await page.locator('#misses').textContent(), '0');
                 assert.equal(await page.locator('#extras').textContent(), '0');
                 assert.equal(await page.locator('#timingWrong').textContent(), '11');
-                assert.match(await page.locator('#inputCount').textContent(), /기록된 타격 68회 · 스페이스 누름 68회/);
-                await page.locator('#timingDetails > summary').click();
-                assert.match(await page.locator('#timingRows tr').nth(36).textContent(), /#37/);
-                assert.match(await page.locator('#timingRows tr').nth(37).textContent(), /#38/);
+                assert.equal(reports.at(-1).taps, 68);
+                assert.equal(reports.at(-1).input.keydowns, 68);
+                assert.equal(reports.at(-1).tapJudgments[36].target, 37);
+                assert.equal(reports.at(-1).tapJudgments[37].target, 38);
                 await capture(page, { path: path.join(output, 'actual-68-sequence-judge-v12.webp'), fullPage: true });
             }
             assert.deepEqual(errors, []);

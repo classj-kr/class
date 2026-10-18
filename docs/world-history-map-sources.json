@@ -1,0 +1,704 @@
+[
+  {
+    "id": "persia",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_3_서아시아_인도_지역의_역사.pdf",
+    "page": 1,
+    "crop": [
+      174,
+      122,
+      464,
+      311
+    ],
+    "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
+    "imageSha256": "dea25a312eb39054aac3ff857d4c2e60cfb97a461653089d52ed927075cc2ba3",
+    "pixels": [
+      1740,
+      1134
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "alexander",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 1,
+    "crop": [
+      302,
+      494,
+      655,
+      687
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "b53b745982615702055252c64fb1590fc0770820b2125c8a8bb7ea2c78a292c5",
+    "pixels": [
+      2118,
+      1158
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "rome",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 2,
+    "crop": [
+      309,
+      481,
+      531,
+      635
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "60fa97e9805c36bfb52f9f6eb113daba1483ea476b1edc50195d4bb6277234de",
+    "pixels": [
+      1332,
+      924
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "han",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 2,
+    "crop": [
+      0,
+      0,
+      663,
+      321
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "398e587fce5d4cde05ecb83977a32e4f834f3195d1f34917d5dedc3bdb585a2c",
+    "pixels": [
+      2400,
+      1162
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "tang",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 3,
+    "crop": [
+      332,
+      423,
+      691,
+      688
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "a5e48b827edce4b3ef01288fc5e31a494625f5072371e5a5f818eb0a47474a2c",
+    "pixels": [
+      2154,
+      1590
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "northern-song",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 5,
+    "crop": [
+      333,
+      88,
+      655,
+      325
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "cbdf4951603f109e5066e81719941c7a2f5a02d03fa2792e92d04c86962f028a",
+    "pixels": [
+      1932,
+      1422
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "southern-song",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 5,
+    "crop": [
+      404,
+      486,
+      655,
+      718
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "93cff0f8e6ffcd532013db4f2ce325b39e15c938818cd48b07633b14824bf4ee",
+    "pixels": [
+      1506,
+      1392
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "mongols",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 7,
+    "crop": [
+      180,
+      40,
+      655,
+      320
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "80a8149c6399d4863ac7e6f1e20349c0556ddadd87189d875fd7c5e299f175a4",
+    "pixels": [
+      2400,
+      1415
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ming",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 9,
+    "crop": [
+      282,
+      88,
+      655,
+      335
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "a5480426483481631415a44bfa74e6bffd7529092696fcaa698c32dcdbaf2bfd",
+    "pixels": [
+      2238,
+      1482
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "qing",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 10,
+    "crop": [
+      276,
+      269,
+      652,
+      484
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "8731c79e4beae116f7c4467659c7318b4f3a2a911c9c00505157eed6fc7d662d",
+    "pixels": [
+      2256,
+      1290
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "edo",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 12,
+    "crop": [
+      310,
+      117,
+      650,
+      424
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "a18a274bdbd5ec854431574f1d6f33b4a5f3a5e60f80bd13e5f93feb834e75a7",
+    "pixels": [
+      2040,
+      1842
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "islam",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_3_서아시아_인도_지역의_역사.pdf",
+    "page": 2,
+    "crop": [
+      174,
+      130,
+      655,
+      342
+    ],
+    "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
+    "imageSha256": "c1f00fa18e255885d763d3507b41707082ff7525ea551f52b7af12c1bb9d30c9",
+    "pixels": [
+      2400,
+      1058
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ottoman",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_3_서아시아_인도_지역의_역사.pdf",
+    "page": 3,
+    "crop": [
+      395,
+      202,
+      655,
+      468
+    ],
+    "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
+    "imageSha256": "4370f9f17badb0ed9d6b39d94652c0d766cb50cb99b778bfe4ced1caf7e8eccf",
+    "pixels": [
+      1560,
+      1596
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "india",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_3_서아시아_인도_지역의_역사.pdf",
+    "page": 5,
+    "crop": [
+      174,
+      96,
+      428,
+      399
+    ],
+    "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
+    "imageSha256": "8ad46969655295ecd0939b0a18319d594c0ae458ab61718adcb44562a6323f8b",
+    "pixels": [
+      1524,
+      1818
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "gupta",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_3_서아시아_인도_지역의_역사.pdf",
+    "page": 5,
+    "crop": [
+      184,
+      462,
+      360,
+      651
+    ],
+    "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
+    "imageSha256": "7271dcbcd80838ce2b45b2114134c6e40f03d9973ebdb8644c286721072830ff",
+    "pixels": [
+      1056,
+      1134
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "mughal",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_3_서아시아_인도_지역의_역사.pdf",
+    "page": 6,
+    "crop": [
+      340,
+      70,
+      650,
+      344
+    ],
+    "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
+    "imageSha256": "aed0dc185cc657c0f997763262bd7151efef2098aa43349de588217b53ed50a6",
+    "pixels": [
+      1860,
+      1644
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "frank",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 4,
+    "crop": [
+      174,
+      301,
+      423,
+      448
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "e32e737a6c84a54bc25136315191eebb723bc8ba711358db84d7e8b695c993aa",
+    "pixels": [
+      1494,
+      882
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "byzantine",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 5,
+    "crop": [
+      390,
+      65,
+      691,
+      332
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "12f0202057bbb0e5bb01030a32bfffbaa2dd88a460aa2d6b9a7b0412c4ec9ef2",
+    "pixels": [
+      1806,
+      1602
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "crusades",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 5,
+    "crop": [
+      411,
+      420,
+      655,
+      578
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "519fe0764edfcc39e7464bd6003f38ae489961f1ab1d180e4ed3e5b5e45cddab",
+    "pixels": [
+      1464,
+      948
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "reformation",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 6,
+    "crop": [
+      405,
+      473,
+      653,
+      688
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "75e14ae7bbbd33039f90c4928779c359b5ecef9b38131ac34bdbbf3c9ccb501a",
+    "pixels": [
+      1488,
+      1290
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "voyages",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 7,
+    "crop": [
+      174,
+      275,
+      655,
+      460
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "1e750392373c64324a842fb809c13a2141f09b15b0a8784331acf44f5754fc51",
+    "pixels": [
+      2400,
+      923
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "american",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 10,
+    "crop": [
+      171,
+      199,
+      454,
+      406
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "e54d1ff9b030e9e21378a12ae22f6d23afd1489b67dd2e8d77d6e3a822d6b3bf",
+    "pixels": [
+      1698,
+      1242
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "napoleon",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 11,
+    "crop": [
+      174,
+      71,
+      421,
+      323
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "e12fa00ef5ad64f0492b263a39d7c814e73beda52c177ae8590ffd7ce2206c76",
+    "pixels": [
+      1482,
+      1512
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "unification",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 12,
+    "crop": [
+      40,
+      42,
+      381,
+      326
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "39019701f3cccc29783483f755b2e0d09dc5ea0356abc6d5af927f0a5da6d230",
+    "pixels": [
+      2046,
+      1704
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ww1",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_5_제국주의와_두_차례_세계_대전.pdf",
+    "page": 5,
+    "crop": [
+      174,
+      266,
+      503,
+      515
+    ],
+    "sourceSha256": "ececfb049f19f088b5cdc0386672e9abaffc6c7b60e2bab6f3410cee08e35ec4",
+    "imageSha256": "04c79af9b34a1b5e231034164187624176094df43936ae685e7a2cbbe9b170bf",
+    "pixels": [
+      1974,
+      1494
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ww2",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_5_제국주의와_두_차례_세계_대전.pdf",
+    "page": 6,
+    "crop": [
+      174,
+      170,
+      654,
+      389
+    ],
+    "sourceSha256": "ececfb049f19f088b5cdc0386672e9abaffc6c7b60e2bab6f3410cee08e35ec4",
+    "imageSha256": "956c3cd3f461970fd0909e687b31785baccc8010ccccdb466014aa9e9c71a304",
+    "pixels": [
+      2400,
+      1095
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "colonial-africa",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 122,
+    "crop": [
+      465,
+      427,
+      636,
+      717
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "6b269d2e9919c4f2b27abe6a2fa191c4564480d6596e88728a6bb30aae2d83a9",
+    "pixels": [
+      1026,
+      1740
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "china-opening",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 124,
+    "crop": [
+      186,
+      93,
+      428,
+      355
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "214e4a69d5d5b1cfd847b9e1f1134fa9bc487ffca79e9ef58d7dec148ffbff65",
+    "pixels": [
+      1452,
+      1572
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "xinhai",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 124,
+    "crop": [
+      203,
+      563,
+      416,
+      741
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "bf830ccfeb8177d67a120779df1bbb91cd29ac96c19e7335c21303c55a5d6edb",
+    "pixels": [
+      1278,
+      1068
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "colonial-india",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 126,
+    "crop": [
+      290,
+      62,
+      523,
+      267
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "ff42f1db6a42d7dac8ab1d366a34a77d9439626d7a488bf0c5969e13ddd4e9b6",
+    "pixels": [
+      1398,
+      1230
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "southeast-asia",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 126,
+    "crop": [
+      348,
+      389,
+      564,
+      682
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "d51f389a23b0fac778df0fa286122bebfb59df47aa47a1ffe94a36b9fc74cdf7",
+    "pixels": [
+      1296,
+      1758
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "europe-1914",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 130,
+    "crop": [
+      302,
+      115,
+      498,
+      301
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "51d8101e758c423b890f34cb6e34c72247c3dc551fb593a3186c1ab98d1aa2e7",
+    "pixels": [
+      1176,
+      1116
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "europe-1922",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 130,
+    "crop": [
+      503,
+      115,
+      697,
+      301
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "76fb9d09bbe7d2e040084712d27101fd8eb1890c89b24dd5a511b37d2f2d6d81",
+    "pixels": [
+      1164,
+      1116
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "cold-war",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 134,
+    "crop": [
+      195,
+      220,
+      697,
+      400
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "2d95fcf652995abe6bb0e5e7a77d9c4f3f67b8a31e5d9899b5edc1e8ab093c2c",
+    "pixels": [
+      2400,
+      861
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "europe-1989",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 135,
+    "crop": [
+      195,
+      310,
+      397,
+      457
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "f687b2f9ab5826e35d2e805a8a6c4c2afa04f6341ce18bd197ce3b023ea77618",
+    "pixels": [
+      1212,
+      882
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "sui-canal",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+    "page": 3,
+    "crop": [
+      182,
+      215,
+      299,
+      360
+    ],
+    "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
+    "imageSha256": "479d8675bd28dfa5931c250f34260713c72cfa24bdfe8c83a307375e87431203",
+    "pixels": [
+      702,
+      870
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "civilizations-west",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 90,
+    "crop": [
+      420,
+      500,
+      737,
+      793
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "49ee447930c808caabffe72cc8057cf3f5d2a22d99343949e664f56de935cad5",
+    "pixels": [
+      1902,
+      1758
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "civilizations-east",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+    "page": 91,
+    "crop": [
+      0,
+      470,
+      466,
+      794
+    ],
+    "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+    "imageSha256": "3e6446b3c07be534dfd717ca2d7e48a7250af467737a222489be0c2d3f92fa2d",
+    "pixels": [
+      2400,
+      1669
+    ],
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "greece",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+    "page": 1,
+    "crop": [
+      174,
+      260,
+      655,
+      460
+    ],
+    "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
+    "imageSha256": "f68fb8e850c7cbac237ec8d704fbd9632415ef88a0017dfd152719838aceaab1",
+    "pixels": [
+      2400,
+      998
+    ],
+    "losslessDecodedEqual": true
+  }
+]
