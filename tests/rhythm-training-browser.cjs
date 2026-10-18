@@ -1,3 +1,4 @@
+const screenshotWebp = require('./screenshot-webp.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const fs = require('node:fs');
@@ -8,7 +9,7 @@ const root = path.resolve(__dirname, '..'), output = path.join(root, "outputs/qa
 fs.mkdirSync(output, { recursive: true });
 let serverClock = Date.now();
 const app = express(); app.use(express.json());
-for (const [alias, source] of [['notation.js', 'notation.js'], ['rhythm-notation.js', 'rhythm.js']]) {
+for (const [alias, source] of [['notation.js', 'notation.js']]) {
     app.get(`/learning/arts/music-theory/rhythm-training/${alias}`, (_req, res) => res.sendFile(path.join(root, 'learning/arts/music-theory/ear-training', source)));
 }
 app.use('/api/rhythm-training', createRhythmTraining({ now: () => serverClock, platform: {
@@ -37,7 +38,7 @@ function mockAudio() {
         for (const [width, height] of [[1366, 620], [1024, 768], [768, 1024], [390, 844]]) {
             const page = await browser.newPage({ viewport: { width, height }, hasTouch: true });
             page.on('pageerror', error => errors.push(error.message));
-            await page.goto(url); await page.locator('.rhythm-head').first().waitFor();
+            await page.goto(url); await page.locator('#score .rhythm-head').first().waitFor();
             assert.equal(await page.locator('.score-measure').count(), 8, 'all eight measures are available before playback');
             assert.equal(await page.locator('#score .rhythm-meter').count(), 2, 'one 4/4 signature for the whole score');
             const connected = await page.locator('.score-system').evaluateAll(systems => systems.every(system => {
@@ -52,7 +53,7 @@ function mockAudio() {
             assert.ok(connected, 'staff lines join across each measure without card gaps');
             assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
             if (width >= 768) assert.ok(await page.locator('#pad').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), 'pad fits school device');
-            await page.screenshot({ path: path.join(output, `chromium-${width}.png`), fullPage: true });
+            await screenshotWebp(page, { path: path.join(output, `chromium-${width}.webp`), fullPage: true });
             // Exercise real Web Audio unlock on a user gesture, then stop.
             await page.click('#start'); await page.locator('#stop').waitFor({ state: 'visible' });
             assert.ok(await page.locator('#score').evaluate(node => { const rect = node.getBoundingClientRect(); return rect.top >= 0 && rect.bottom <= innerHeight; }), 'all eight measures fit during play');
@@ -109,7 +110,7 @@ function mockAudio() {
         await contact(4, .01, 'wrong');
         await contact(5, 0, 'perfect');
         assert.equal((await contact(6, 0, 'perfect')).combo, '2 COMBO');
-        await feedbackPage.screenshot({ path: path.join(output, 'live-perfect.png') });
+        await screenshotWebp(feedbackPage, { path: path.join(output, 'live-perfect.webp') });
         assert.ok(await feedbackPage.evaluate(() => testSoundStarts > 0), 'metronome still plays');
         await feedbackPage.click('#stop');
         await feedbackPage.emulateMedia({ reducedMotion: 'reduce' });
@@ -170,7 +171,7 @@ function mockAudio() {
         await student.locator('#result').waitFor({ state: 'visible' });
         assert.equal(await student.locator('#accuracy').textContent(), '100%');
         await teacher.waitForFunction(() => document.getElementById('players').textContent.includes('100%'));
-        await teacher.screenshot({ path: path.join(output, 'teacher-ranking.png'), fullPage: true });
+        await screenshotWebp(teacher, { path: path.join(output, 'teacher-ranking.webp'), fullPage: true });
         await student.reload(); await student.locator('#roomCode').filter({ hasText: code }).waitFor();
         assert.ok((await student.locator('#players').textContent()).includes('100%'), 'result survives tab refresh');
         await teacher.click('#leave');
@@ -186,11 +187,19 @@ function mockAudio() {
         try {
             const page = await safari.newPage({ viewport: { width: 1024, height: 768 }, hasTouch: true });
             const webkitErrors = []; page.on('pageerror', error => webkitErrors.push(error.message));
-            await page.goto(url); await page.locator('.rhythm-head').first().waitFor();
-            await page.click('#start'); await page.locator('#stop').waitFor({ state: 'visible' }); await page.locator('#pad').tap();
-            await page.screenshot({ path: path.join(output, 'webkit-1024.png'), fullPage: true });
-            await page.click('#stop'); assert.deepEqual(webkitErrors, []);
-            console.log('WebKit: iPad viewport, audio unlock and touch passed.');
+            await page.goto(url); await page.locator('#score .rhythm-head').first().waitFor();
+            const hasAudio = await page.evaluate(() => Boolean(window.AudioContext || window.webkitAudioContext));
+            await page.click('#start');
+            if (hasAudio) {
+                await page.locator('#stop').waitFor({ state: 'visible' }); await page.locator('#pad').tap();
+                await screenshotWebp(page, { path: path.join(output, 'webkit-1024.webp'), fullPage: true });
+                await page.click('#stop');
+                console.log('WebKit: iPad viewport, audio unlock and touch passed.');
+            } else {
+                assert.match(await page.locator('#notice').textContent(), /다른 브라우저/);
+                console.log('WebKit build has no Web Audio: unsupported-audio notice passed; study/input workflows use mock audio in rhythm-training-study-browser.cjs.');
+            }
+            assert.deepEqual(webkitErrors, []);
         } finally { await safari.close(); }
     }
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(() => server.close());

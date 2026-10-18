@@ -1,9 +1,10 @@
+const screenshotWebp = require('./screenshot-webp.cjs');
 // Browser/viewport coverage, not a substitute for testing physical ChromeOS/iOS devices.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
-const {chromium, webkit} = require('playwright');
+const {chromium, webkit} = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, "outputs/qa/ear-training-devices");
 fs.mkdirSync(output, {recursive:true});
@@ -71,7 +72,7 @@ const profiles = [
       assert.ok(layout.sheet.width <= layout.staff.width, profile.name + ': clipped staff');
       assert.ok(layout.replay.height >= 44, profile.name + ': replay touch target');
       assert.ok(layout.keyboard.bottom <= layout.viewport[1], profile.name + ': keyboard below viewport');
-      await page.screenshot({path:path.join(output,profile.name + '-drill.png'),fullPage:true});
+      await screenshotWebp(page, {path:path.join(output,profile.name + '-drill.webp'),fullPage:true});
       // Trigger a playable answer through the actual input surface.
       await page.evaluate(() => {
         window.directNotes = []; window.notesBeforeRelease = 0;
@@ -90,6 +91,7 @@ const profiles = [
       if (profile.touch) await key.tap(); else await key.click();
       assert.deepEqual(await page.evaluate(() => ({count:directNotes.length,beforeRelease:notesBeforeRelease})),{count:1,beforeRelease:1},profile.name + ': direct note exactly once, before release');
 
+      await page.addScriptTag({url:'http://127.0.0.1:' + server.address().port + '/learning/arts/music-theory/rhythm-training/rhythm.js'});
       const shapes = await page.evaluate(() => {
         const N = window.Notation, host = document.createElement('section');
         host.id = 'notation-device-gallery';
@@ -105,7 +107,7 @@ const profiles = [
       for (const glyph of ['1d11e','1d122','266f','266d','266e','1d12a','1d13b','1d13c','1d13d','1d13e','1d13f']) {
         assert.ok(shapes.some(shape => shape.glyph === glyph && shape.tag === 'path' && shape.width > 0 && shape.height > 0), profile.name + ': missing ' + glyph);
       }
-      await page.locator('#notation-device-gallery').screenshot({path:path.join(output,profile.name + '-notation.png')});
+      await screenshotWebp(page.locator('#notation-device-gallery'), {path:path.join(output,profile.name + '-notation.webp')});
       assert.deepEqual(errors, [], profile.name);
       report.push({profile:profile.name,layout,glyphs:shapes.length,errors});
       console.log(profile.name, 'passed', JSON.stringify(layout));

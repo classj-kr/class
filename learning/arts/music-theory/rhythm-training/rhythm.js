@@ -240,7 +240,11 @@
         sixteenths: [{ v: "s" }, { v: "s" }, { v: "s" }, { v: "s" }],
         twoThenOne: [{ v: "s" }, { v: "s" }, { v: "e" }],
         oneThenTwo: [{ v: "e" }, { v: "s" }, { v: "s" }],
-        dottedPair: [{ v: "ed" }, { v: "s" }]
+        dottedPair: [{ v: "ed" }, { v: "s" }],
+        reverseDotted: [{ v: "s" }, { v: "ed" }],
+        middleEighth: [{ v: "s" }, { v: "e" }, { v: "s" }],
+        restSixteenthPair: [{ v: "s", rest: true }, { v: "s" }, { v: "e" }],
+        restSixteenthRun: [{ v: "s", rest: true }, { v: "s" }, { v: "s" }, { v: "s" }]
     };
 
     const LONG_VALUES = { h: 2, hd: 3, w: 4 };

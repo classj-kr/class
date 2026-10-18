@@ -2,9 +2,10 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const dir = path.join(__dirname,'../learning/arts/music-theory/ear-training');
+const dir = path.join(__dirname,'../learning/arts/music-theory/rhythm-training');
 const context = vm.createContext({window:{},document:{readyState:'loading',addEventListener(){}}});
-for (const file of ['notation.js','rhythm.js','app.js']) vm.runInContext(fs.readFileSync(path.join(dir,file),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(dir,'../ear-training/notation.js'),'utf8'),context);
+for (const file of ['rhythm.js','questions.js']) vm.runInContext(fs.readFileSync(path.join(dir,file),'utf8'),context);
 const RN = context.window.RhythmNotation;
 const plain = value => JSON.parse(JSON.stringify(value));
 
@@ -49,27 +50,27 @@ for(const [slots,step] of [[16,3],[12,4]]) {
 
 let questions=0;
 const makeBar=RN.makeBar;
-const writeDrill=context.window.EarTraining.drills.find(drill=>drill.id==='rhythmWrite');
+const Q=context.window.RhythmQuestions;
 for(const [set,v,length] of [['pick','s',16],['trip','te',12]]) {
   RN.makeBar=()=>Array.from({length},()=>({v}));
-  const question=writeDrill.make(writeDrill.items.find(item=>item.set===set));
+  const question=Q.choice({set});
   assert.equal(question.bars.list.length,4,'A full subdivision grid must not leave only one choice');
 }
 RN.makeBar=makeBar;
-for(const drill of context.window.EarTraining.drills.filter(drill=>drill.id.startsWith('rhythm'))) {
-  for(const item of drill.items) for(let i=0;i<40;i++) {
-    const question=drill.make(item);
+for(const set of Object.keys(Q.sets)) for(const kind of ['grid','choice']) {
+  if(kind==='grid' && !Q.sets[set].cells) continue;
+  for(let i=0;i<80;i++) {
+    const question=Q[kind]({set});
     const expected=Array.from(question.rhythm.onsets);
     check(question.rhythm.bar,expected);
     if(question.bars) {
-      assert.equal(question.bars.list.length,4,'Four distinct choices must still be generated: '+item.set+' '+expected.join(','));
+      assert.equal(question.bars.list.length,4,'Four distinct choices: '+set+' '+expected.join(','));
       const signatures=new Set();
       question.bars.list.forEach(bar=>{
-        const onsets=Array.from(RN.onsets(bar));
-        check(bar,onsets);
+        const onsets=Array.from(RN.onsets(bar)); check(bar,onsets);
         assert.equal(onsets.length,expected.length,'Choices retain the same number of attacks');
         signatures.add(onsets.join(','));
-        if(item.set==='pick') assert.ok(bar.every(event=>!RN.VALUES[event.v].triplet));
+        if(set==='pick') assert.ok(bar.every(event=>!RN.VALUES[event.v].triplet));
       });
       assert.equal(signatures.size,4);
     }

@@ -5,10 +5,10 @@ const express = require('../game-hub-server/node_modules/express');
 const { createRhythmTraining } = require('../game-hub-server/rhythm-training');
 
 test('generated bars have exactly four beats; seeds and settings are reproducible', () => {
-    for (let level = 0; level < 4; level++) for (let seed = 0; seed < 200; seed++) {
+    for (let level = 0; level < Core.LEVELS.length; level++) for (let seed = 0; seed < 200; seed++) {
         const c = Core.chart({ level, bpm: 100 }, seed);
         assert.equal(c.bars.length, 8);
-        c.bars.forEach(bar => assert.equal(bar.reduce((n, e) => n + Core.VALUES[e.v], 0), 4));
+        c.bars.forEach(bar => assert.equal(bar.reduce((n, e) => n + Math.round(Core.VALUES[e.v] * 12), 0), 48));
         assert.deepEqual(c, Core.chart({ level, bpm: 100 }, seed));
         assert.equal(c.duration, 19.2);
         assert.equal(Core.judge(c, c.targets).accuracy, 100);
@@ -57,8 +57,21 @@ test('a long note has one onset; misses and extra taps reduce scores; rest attac
     assert.equal(Core.judge(c, [0, 1.2, 2.4, ...Array(20).fill(.6)]).accuracy, 0);
 });
 
+test('short rounds and tied notes use the same chart timing and scorer', () => {
+    for (const length of [1, 4, 8]) for (let level = 0; level < Core.LEVELS.length; level++) {
+        const chart = Core.chart({ level, bpm: 100 }, 123, length);
+        assert.equal(chart.bars.length, length);
+        assert.equal(chart.duration, length * 4 * .6);
+        assert.equal(Core.judge(chart, chart.targets).accuracy, 100);
+    }
+    const tied = Core.fromBars({ level: 4, bpm: 100 }, [[{ v: 'e' }, { v: 'e', tie: true }, { v: 'q' }, { v: 'h' }]]);
+    assert.deepEqual(tied.targets, [0, .3, 1.2]);
+    assert.equal(Core.judge(tied, tied.targets).accuracy, 100);
+    assert.equal(Core.judge(tied, [0, .3, .6, 1.2]).extras, 1, 'a tied continuation is not another attack');
+});
+
 test('accepted timing variation earns full credit without stealing neighboring sixteenths', () => {
-    for (const bpm of [70, 100, 140]) for (let level = 0; level < 4; level++) for (let seed = 1; seed < 40; seed++) {
+    for (const bpm of [70, 100, 140]) for (let level = 0; level < Core.LEVELS.length; level++) for (let seed = 1; seed < 40; seed++) {
         const chart = Core.chart({ bpm, level }, seed);
         const margin = Math.min(...chart.targets.map((_, index) => Core.noteWindow(chart, index))) * .75;
         for (const offset of [-margin, margin]) {
