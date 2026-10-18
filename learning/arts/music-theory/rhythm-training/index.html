@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#111827">
     <title>리듬 트레이닝</title>
-    <link rel="stylesheet" href="styles.css?v=20261018-unified-rhythm-v2">
+    <link rel="stylesheet" href="styles.css?v=20261018-nearest-attack-v4">
     <script src="notation.js?v=20261006-vector-notation" defer></script>
-    <script src="rhythm.js?v=20261018-unified-rhythm-v2" defer></script>
-    <script src="core.js?v=20261018-unified-rhythm-v2" defer></script>
-    <script src="questions.js?v=20261018-unified-rhythm-v2" defer></script>
-    <script src="lessons.js?v=20261018-unified-rhythm-v2" defer></script>
-    <script src="app.js?v=20261018-unified-rhythm-v2" defer></script>
+    <script src="rhythm.js?v=20261018-nearest-attack-v4" defer></script>
+    <script src="core.js?v=20261018-nearest-attack-v4" defer></script>
+    <script src="questions.js?v=20261018-nearest-attack-v4" defer></script>
+    <script src="lessons.js?v=20261018-nearest-attack-v4" defer></script>
+    <script src="app.js?v=20261018-nearest-attack-v4" defer></script>
 </head>
 <body data-sfx-clicks="none">
 <main class="shell" aria-label="리듬 트레이닝">
@@ -85,6 +85,11 @@
                 <dl><div><dt>맞음</dt><dd id="perfect"></dd></div><div><dt>놓침</dt><dd id="misses"></dd></div><div><dt>틀림</dt><dd id="extras"></dd></div></dl>
                 <button id="retry" class="secondary">같은 리듬 다시</button>
             </section>
+            <details id="timingDetails" class="timing-details" hidden>
+                <summary>입력·판정 확인</summary>
+                <p id="timingSummary"></p>
+                <div class="timing-table-wrap"><table><thead><tr><th>음표 위치</th><th>가까운 입력</th><th>차이</th><th>판정</th></tr></thead><tbody id="timingRows"></tbody></table></div>
+            </details>
             <section id="ranking" class="ranking" hidden>
                 <div class="ranking-title"><h2>우리 반 순위</h2><span id="roomPhase"></span></div>
                 <p id="roomHint" class="helper"></p>

@@ -77,14 +77,16 @@
         return { ...config, seed: Number(seed) >>> 0, bars, targets, duration: bars.length * 4 * 60 / config.bpm };
     }
     // One onset is one tap. Release times and key-hold duration never enter scoring.
-    const hitWindow = chart => 60 / chart.bpm * .22;
+    // Virtual outer boundary only; interior boundaries come from adjacent attacks.
+    const hitWindow = chart => 60 / chart.bpm / 2;
     // Compare only the written attacks. Empty sixteenth subdivisions are not
     // timing targets: the boundary between two attacks is their BPM-based midpoint.
-    function noteWindow(chart, index) {
+    function noteWindow(chart, index, side = 'both') {
         const targets = chart.targets, time = targets[index];
-        const previous = index ? (time - targets[index - 1]) / 2 : Infinity;
-        const next = index + 1 < targets.length ? (targets[index + 1] - time) / 2 : Infinity;
-        return Math.min(hitWindow(chart), previous, next) - .000001;
+        const previous = index ? (time - targets[index - 1]) / 2 : hitWindow(chart);
+        const next = index + 1 < targets.length ? (targets[index + 1] - time) / 2 : hitWindow(chart);
+        const neighbor = side === 'early' ? previous : side === 'late' ? next : Math.min(previous, next);
+        return neighbor - 60 / chart.bpm * 1e-9;
     }
     function judge(chart, taps) {
         const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
@@ -95,8 +97,14 @@
         const marks = chart.targets.map(time => ({ time, hit: false, error: null, points: 0 }));
         let extras = 0;
         for (const raw of clean) {
-            const best = marks.findIndex((mark, index) => !mark.hit
-                && Math.abs(raw - mark.time) <= noteWindow(chart, index));
+            let nearest = -1, gap = Infinity;
+            marks.forEach((mark, index) => {
+                const distance = Math.abs(raw - mark.time);
+                if (distance < gap) { nearest = index; gap = distance; }
+            });
+            const error = nearest < 0 ? 0 : raw - marks[nearest].time;
+            const best = nearest >= 0 && !marks[nearest].hit
+                && Math.abs(error) <= noteWindow(chart, nearest, error < 0 ? 'early' : 'late') ? nearest : -1;
             if (best < 0) { extras++; continue; }
             const mark = marks[best];
             mark.hit = true;

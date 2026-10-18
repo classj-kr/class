@@ -99,11 +99,15 @@ function mockAudio() {
             return state;
         }
         await contact(0, 0, 'perfect');
-        assert.equal((await contact(1, -.18, 'wrong')).combo, '');
-        assert.equal((await contact(2, .18, 'wrong')).combo, '');
+        assert.equal((await contact(0, .01, 'wrong')).combo, '');
+        assert.equal((await contact(0, .02, 'wrong')).combo, '');
         assert.equal(await feedbackPage.locator('#timing').count(), 0);
         assert.equal(await feedbackPage.locator('#feedback').textContent(), '틀렸어요');
-        await feedbackPage.evaluate(target => { testAudio.time = 1 + .18 + 2.4 + target + .145; }, targets[3]);
+        const deadline = await feedbackPage.evaluate(() => {
+            const chart = RhythmTrainer.chart({ level: 0, bpm: 100 }, 123);
+            return chart.targets[3] + RhythmTrainer.noteWindow(chart, 3, 'late') + .01;
+        });
+        await feedbackPage.evaluate(deadline => { testAudio.time = 1 + .18 + 2.4 + deadline; }, deadline);
         await feedbackPage.waitForFunction(() => document.getElementById('pad').dataset.judgment === 'miss');
         assert.equal(await feedbackPage.locator('#combo').textContent(), '');
         assert.ok((await contact(4, 0, 'perfect')).animations > 0);

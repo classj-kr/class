@@ -117,7 +117,8 @@ function createRhythmTraining({ platform, now = Date.now }) {
             const chart = room.round.chart, taps = req.body?.taps;
             const minimum = (chart.duration + 4 * 60 / chart.bpm) * 1000 - 1000;
             if (now() - player.started < minimum) throw fail(409, '아직 연주가 끝나지 않았어요.');
-            if (!Array.isArray(taps) || taps.length > 512 || taps.some(t => typeof t !== 'number' || !Number.isFinite(t) || t < -.15 || t > chart.duration + .2)) throw fail(400, '연주 기록이 올바르지 않아요.');
+            if (!Array.isArray(taps) || taps.length > 512 || taps.some(t => typeof t !== 'number' || !Number.isFinite(t)
+                || t < -Core.noteWindow(chart, 0, 'early') || t > chart.duration + 60 / chart.bpm / 4)) throw fail(400, '연주 기록이 올바르지 않아요.');
             const { marks, ...result } = Core.judge(chart, taps);
             player.result = result; player.status = 'done';
         }
