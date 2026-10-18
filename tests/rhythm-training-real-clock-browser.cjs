@@ -37,6 +37,7 @@ const server = app.listen(0, '127.0.0.1');
         });
         await page.goto(`http://127.0.0.1:${server.address().port}/learning/arts/music-theory/rhythm-training/`);
         await page.selectOption('#level', '3'); await page.selectOption('#length', '1');
+        await page.locator('#bpm').fill('100'); await page.locator('#bpm').dispatchEvent('input');
         const targets = await page.evaluate(() => {
             const chart = RhythmTrainer.chart({ level: 3, bpm: 100 }, 123, 1), beat = .6;
             return chart.targets.map((time, index, list) => {

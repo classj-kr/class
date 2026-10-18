@@ -102,10 +102,10 @@ function mockAudio() {
         assert.equal((await contact(0, .01, 'wrong')).combo, '');
         assert.equal((await contact(0, .02, 'wrong')).combo, '');
         assert.equal(await feedbackPage.locator('#timing').count(), 0);
-        assert.equal(await feedbackPage.locator('#feedback').textContent(), '박자 위치가 달라요');
+        assert.equal(await feedbackPage.locator('#feedback').textContent(), '추가 입력');
         const deadline = await feedbackPage.evaluate(() => {
             const chart = RhythmTrainer.chart({ level: 0, bpm: 100 }, 123);
-            return chart.targets[3] + RhythmTrainer.noteWindow(chart, 3, 'late') + .01;
+            return chart.targets[3] + RhythmTrainer.connectionWindow(chart, 3, 'late') + .01;
         });
         await feedbackPage.evaluate(deadline => { testAudio.time = 1 + .18 + 2.4 + deadline; }, deadline);
         await feedbackPage.waitForFunction(() => document.getElementById('pad').dataset.judgment === 'miss');
@@ -129,7 +129,11 @@ function mockAudio() {
         await feedbackPage.close();
         const fair = await browser.newPage(); await fair.addInitScript(mockAudio);
         await fair.addInitScript(() => { crypto.getRandomValues = values => { values.fill(123); return values; }; });
-        await fair.goto(url); await fair.selectOption('#level', '3'); await fair.click('#start');
+        await fair.goto(url); await fair.selectOption('#level', '3');
+        assert.equal(await fair.locator('#bpm').inputValue(), '60');
+        assert.equal(await fair.locator('#bpm').getAttribute('min'), '40');
+        assert.equal(await fair.locator('#bpm').getAttribute('max'), '100');
+        await fair.locator('#bpm').fill('100'); await fair.locator('#bpm').dispatchEvent('input'); await fair.click('#start');
         await fair.waitForTimeout(220); // Ensure a simulated queued event still has a positive performance timestamp.
         await fair.evaluate(() => {
             const start = 1 + .18 + 2.4;

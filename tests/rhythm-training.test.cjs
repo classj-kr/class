@@ -144,23 +144,81 @@ test('the captured 0.242-beat late input stays correct when it is nearest to tha
         assert.equal(result.marks[1].hit, true);
     }
 });
-test('captured mixed-rhythm inputs expose their actual assignments without reusing a tap on missed notes', () => {
+test('a late input stays with the current note and cannot consume the following input', () => {
+    for (const bpm of [40, 60, 80, 100]) {
+        const beat = 60 / bpm, chart = { bpm, targets: [16, 16.25, 16.5].map(value => value * beat) };
+        const taps = [16.01, 16.382, 16.643].map(value => value * beat);
+        const first = Core.analyze(chart, taps.slice(0, 2));
+        assert.equal(first.inputs[1].target, 1);
+        assert.equal(first.inputs[1].reason, 'timing');
+        assert.equal(first.result.marks[2].hit, false, 'the next note remains available');
+        const final = Core.analyze(chart, taps);
+        assert.deepEqual(final.inputs.map(input => input.target), [0, 1, 2]);
+        assert.equal(final.result.misses, 0);
+        assert.equal(final.result.extras, 0);
+        assert.equal(final.result.timingWrong, 1);
+        assert.equal(final.result.hits, 2, 'timing outside the BPM midpoint is still wrong');
+    }
+});
+test('the complete human performance connects all 68 inputs to their own notes, live and final', () => {
+    const input = require('./fixtures/rhythm-mixed-complete-input.json');
+    const chart = Core.chart(input, input.seed), taps = input.tapBeats.map(value => value * 60 / input.bpm);
+    const { result, inputs } = Core.analyze(chart, taps);
+    assert.equal(result.played, 68);
+    assert.equal(result.misses, 0); assert.equal(result.extras, 0);
+    assert.equal(result.timingWrong, 11); assert.equal(result.hits, 57);
+    assert.deepEqual(inputs.map(input => input.target), chart.targets.map((_, index) => index));
+    for (let count = 1; count <= taps.length; count++) {
+        const current = Core.analyze(chart, taps.slice(0, count));
+        assert.equal(current.inputs[count - 1].target, count - 1, `prefix ${count} cannot advance into the next note`);
+        assert.equal(current.result.extras, 0);
+    }
+});
+test('real omissions and extra taps resynchronize instead of shifting every subsequent note', () => {
+    for (const bpm of [40, 80, 100]) {
+        const beat = 60 / bpm, chart = { bpm, targets: [0, .25, .5, .75, 1, 1.25].map(value => value * beat) };
+        const taps = [0, .5, .51, .75, 1, 1.25].map(value => value * beat);
+        const { result, inputs } = Core.analyze(chart, taps);
+        assert.deepEqual(inputs.map(input => input.target), [0, 2, -1, 3, 4, 5]);
+        assert.equal(result.hits, 5); assert.equal(result.misses, 1); assert.equal(result.extras, 1);
+        assert.equal(result.timingWrong, 0);
+    }
+});
+test('an early extra cannot permanently occupy the actual upcoming strike', () => {
+    for (const bpm of [40, 80, 100]) {
+        const beat = 60 / bpm, chart = { bpm, targets: [0, .25, .5].map(value => value * beat) };
+        const taps = [0, .08, .25, .5].map(value => value * beat);
+        const { result, inputs } = Core.analyze(chart, taps);
+        assert.deepEqual(inputs.map(input => input.target), [0, -1, 1, 2]);
+        assert.equal(result.hits, 3); assert.equal(result.extras, 1);
+        assert.equal(result.misses, 0); assert.equal(result.timingWrong, 0);
+    }
+});
+test('tempo limits and slow defaults depend on the rhythm subdivision', () => {
+    for (const level of [3, 7]) {
+        assert.deepEqual(Core.tempoRange(level), { min: 40, max: 100, initial: 60 });
+        assert.equal(Core.settings({ level, bpm: 140 }).bpm, 100);
+        assert.equal(Core.settings({ level, bpm: 10 }).bpm, 40);
+        assert.equal(Core.settings({ level }).bpm, 60);
+    }
+    assert.equal(Core.settings({ level: 6, bpm: 140 }).bpm, 120);
+});
+test('the mixed human trace separates timing mistakes from an actual omission and extra input', () => {
     const input = require('./fixtures/rhythm-mixed-input.json');
     const chart = Core.chart(input, input.seed), taps = input.tapBeats.map(time => time * 60 / input.bpm);
     const result = Core.judge(chart, taps), trace = Core.trace(chart, taps);
     assert.equal(chart.targets.length, 70);
-    assert.equal(result.hits, 65);
-    assert.equal(result.extras, 5);
+    assert.equal(result.hits, 63);
+    assert.equal(result.played, 69); assert.equal(result.timingWrong, 6);
+    assert.equal(result.misses, 1); assert.equal(result.extras, 1);
     assert.equal(trace.filter(input => input.accepted).length, result.hits);
     assert.equal(new Set(trace.filter(input => input.accepted).map(input => input.nearest)).size, result.hits);
-    assert.deepEqual(trace.flatMap((input, index) => input.accepted ? [] : [index + 1]), [18, 25, 30, 55, 57]);
-    assert.ok(trace.filter(input => !input.accepted).every(input => input.reason === 'duplicate'));
-    // 7.380 beats crosses the 7.375-beat midpoint by .005 beats and belongs to 7.5.
-    assert.equal(trace[16].nearest, 17);
-    assert.equal(trace[16].accepted, true);
-    assert.equal(result.marks[16].hit, false);
-    assert.equal(trace[17].accepted, false);
-    assert.equal(trace[17].reason, 'duplicate');
+    assert.deepEqual(trace.flatMap((input, index) => input.target < 0 ? [index + 1] : []), [30]);
+    // A late first tap is a timing error on that note, not a hit that steals the next note.
+    assert.equal(trace[16].nearest, 17); assert.equal(trace[16].target, 16);
+    assert.equal(trace[16].accepted, false); assert.equal(trace[16].reason, 'timing');
+    assert.equal(result.marks[16].hit, true); assert.equal(result.marks[16].points, 0);
+    assert.equal(trace[17].target, 17); assert.equal(trace[17].accepted, true);
 });
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
     let clock = 1000000, blocked = false, configured = true;
