@@ -128,6 +128,24 @@ test('the captured 0.242-beat late input stays correct when it is nearest to tha
         assert.equal(result.marks[1].hit, true);
     }
 });
+test('captured mixed-rhythm inputs expose their actual assignments without reusing a tap on missed notes', () => {
+    const input = require('./fixtures/rhythm-mixed-input.json');
+    const chart = Core.chart(input, input.seed), taps = input.tapBeats.map(time => time * 60 / input.bpm);
+    const result = Core.judge(chart, taps), trace = Core.trace(chart, taps);
+    assert.equal(chart.targets.length, 70);
+    assert.equal(result.hits, 65);
+    assert.equal(result.extras, 5);
+    assert.equal(trace.filter(input => input.accepted).length, result.hits);
+    assert.equal(new Set(trace.filter(input => input.accepted).map(input => input.nearest)).size, result.hits);
+    assert.deepEqual(trace.flatMap((input, index) => input.accepted ? [] : [index + 1]), [18, 25, 30, 55, 57]);
+    assert.ok(trace.filter(input => !input.accepted).every(input => input.reason === 'duplicate'));
+    // 7.380 beats crosses the 7.375-beat midpoint by .005 beats and belongs to 7.5.
+    assert.equal(trace[16].nearest, 17);
+    assert.equal(trace[16].accepted, true);
+    assert.equal(result.marks[16].hit, false);
+    assert.equal(trace[17].accepted, false);
+    assert.equal(trace[17].reason, 'duplicate');
+});
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
     let clock = 1000000, blocked = false, configured = true;
     const app = express(); app.use(express.json());
