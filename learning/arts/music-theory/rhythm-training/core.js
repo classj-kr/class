@@ -93,7 +93,12 @@
         const { errorSum, ...result } = match(chart, clean);
         return result;
     }
-    function match(chart, clean) {
+    function trace(chart, taps) {
+        const inputs = [];
+        match(chart, taps.filter(Number.isFinite).slice().sort((a, b) => a - b), inputs);
+        return inputs;
+    }
+    function match(chart, clean, inputs) {
         const marks = chart.targets.map(time => ({ time, hit: false, error: null, points: 0 }));
         let extras = 0;
         for (const raw of clean) {
@@ -105,6 +110,8 @@
             const error = nearest < 0 ? 0 : raw - marks[nearest].time;
             const best = nearest >= 0 && !marks[nearest].hit
                 && Math.abs(error) <= noteWindow(chart, nearest, error < 0 ? 'early' : 'late') ? nearest : -1;
+            if (inputs) inputs.push({ time: raw, nearest, error, accepted: best >= 0,
+                reason: best >= 0 ? 'hit' : nearest < 0 ? 'no-target' : marks[nearest].hit ? 'duplicate' : 'boundary' });
             if (best < 0) { extras++; continue; }
             const mark = marks[best];
             mark.hit = true;
@@ -118,5 +125,5 @@
             misses: marks.length - hits.length, extras, wrong: extras + hits.filter(m => m.points === 0).length, marks,
             errorMs: hits.length ? Math.round(errorSum * 1000 / hits.length) : null, lagMs: 0, errorSum };
     }
-    return { LEVELS, VALUES, settings, chart, fromBars, judge, hitWindow, noteWindow };
+    return { LEVELS, VALUES, settings, chart, fromBars, judge, trace, hitWindow, noteWindow };
 });

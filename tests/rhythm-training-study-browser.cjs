@@ -155,6 +155,30 @@ function mockAudio() {
             await page.click('#soloTab');
             assert.equal(await page.locator('#listeningPanel').isVisible(), true);
             assert.equal(await page.locator('#score').isVisible(), false);
+            if (name === 'desktop') {
+                const fixture = require('./fixtures/rhythm-mixed-input.json');
+                await page.evaluate(seed => { crypto.getRandomValues = values => { values.fill(seed); return values; }; testAudio.time = 1; }, fixture.seed);
+                await page.selectOption('#activity', 'tap'); await page.selectOption('#level', '7'); await page.selectOption('#length', '8');
+                await page.locator('#bpm').fill('80'); await page.locator('#bpm').dispatchEvent('input');
+                await page.click('#start');
+                await page.evaluate(beats => {
+                    for (const beat of beats) {
+                        testAudio.time = 1 + .18 + 3 + beat * .75;
+                        document.getElementById('pad').dispatchEvent(new PointerEvent('pointerdown', { isPrimary: true, button: 0, bubbles: true }));
+                    }
+                    testAudio.time = 50;
+                }, fixture.tapBeats);
+                await page.locator('#result').waitFor({ state: 'visible' });
+                assert.equal(await page.locator('#perfect').textContent(), '65');
+                assert.equal(await page.locator('#hitRate').textContent(), '음표 적중률 92.9%');
+                await page.locator('#timingDetails > summary').click();
+                const missed = await page.locator('#timingRows tr').evaluateAll(rows => rows.filter(row => row.lastElementChild.textContent === '놓침').map(row => row.children[1].textContent));
+                assert.deepEqual(missed, Array(5).fill('없음'), 'missed notes never display another note’s assigned input');
+                assert.equal(await page.locator('#timingExtraRows tr').count(), 5);
+                assert.equal(await page.locator('#timingExtraRows tr').first().locator('td').first().textContent(), '#18');
+                assert.match(await page.locator('#timingExtraRows tr').first().textContent(), /입력 #17이 이미 맞힌 음/);
+                await capture(page, { path: path.join(output, 'mixed-input-assignments-v6.webp'), fullPage: true });
+            }
             assert.deepEqual(errors, []);
             await page.close();
             console.log(`${name}: lessons, grid/choice answers, replay, activity switches, tied-note scoring and layout passed`);

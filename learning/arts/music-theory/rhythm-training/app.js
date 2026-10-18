@@ -430,6 +430,7 @@
         if (!ended.demo && !interrupted) {
             const result = C.judge(chart, ended.taps);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
+            $('hitRate').textContent = `음표 적중률 ${(100 * result.hits / result.marks.length).toFixed(1)}%`;
             $('misses').textContent = result.misses; $('extras').textContent = result.wrong; $('result').hidden = false;
         }
         if (!ended.demo) timingReport(ended, interrupted);
@@ -438,31 +439,42 @@
     }
     function timingReport(ended, interrupted) {
         const result = C.judge(chart, ended.taps), beat = 60 / chart.bpm;
-        const nearestErrors = ended.taps.map(tap => {
-            let index = -1, distance = Infinity;
-            chart.targets.forEach((target, i) => { if (Math.abs(tap - target) < distance) { index = i; distance = Math.abs(tap - target); } });
-            return [index, Math.round((tap - chart.targets[index]) / beat * 1000) / 1000];
-        });
-        const report = { version: '20261018-nearest-attack-v4', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+        const inputs = C.trace(chart, ended.taps);
+        const nearestErrors = inputs.map(input => [input.nearest, Math.round(input.error / beat * 1000) / 1000]);
+        const report = { version: '20261018-input-trace-v6', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
             targets: chart.targets.length, taps: ended.taps.length, input: ended.input,
             accuracy: result.accuracy, hits: result.hits, misses: result.misses, extras: result.extras,
             targetBeats: chart.targets.map(time => Math.round(time / beat * 1000) / 1000),
             tapBeats: ended.taps.map(time => Math.round(time / beat * 1000) / 1000), nearestErrors,
+            tapJudgments: inputs.map((input, index) => ({ input: index + 1, target: input.nearest + 1, accepted: input.accepted, reason: input.reason })),
             queueMs: ended.queue, clocks: ended.clocks };
         console.info('RHYTHM_TIMING_REPORT ' + JSON.stringify(report));
         $('timingSummary').textContent = `음표 ${report.targets}개 · 기록된 타격 ${report.taps}개 · 스페이스 누름 ${report.input.keydowns}회 · 키를 누르고 있는 동안의 반복 ${report.input.repeats}회`;
+        $('timingSummary').textContent += `\n점수는 (맞음 − 틀림 × 0.5) ÷ 음표 수로 계산합니다. 한 입력이 다음 음에 배정되면 앞 음의 놓침과 이후 입력의 틀림이 함께 생길 수 있습니다.`;
         $('timingRows').replaceChildren();
         const position = time => { const value = time / beat; return value < 0 ? `시작 ${(-value).toFixed(3)}박 전` : `${Math.floor(value / 4) + 1}마디 ${(value % 4 + 1).toFixed(2)}박`; };
-        result.marks.forEach(mark => {
-            const closest = mark.hit ? mark.time + mark.error : ended.taps.reduce((best, tap) => best === null || Math.abs(tap - mark.time) < Math.abs(best - mark.time) ? tap : best, null);
-            const difference = closest === null ? null : (closest - mark.time) / beat;
+        const differenceText = difference => difference === null ? '—' : `${difference < 0 ? '빠름' : '늦음'} ${Math.abs(difference).toFixed(3)}박`;
+        const appendRow = (parent, values) => {
             const row = document.createElement('tr');
-            for (const value of [position(mark.time), closest === null ? '없음' : position(closest),
-                difference === null ? '—' : `${difference < 0 ? '빠름' : '늦음'} ${Math.abs(difference).toFixed(3)}박`, mark.hit ? '맞음' : '놓침']) {
+            for (const value of values) {
                 const cell = document.createElement('td'); cell.textContent = value; row.append(cell);
             }
-            $('timingRows').append(row);
+            parent.append(row);
+        };
+        result.marks.forEach((mark, index) => {
+            const assigned = inputs.find(input => input.accepted && input.nearest === index);
+            appendRow($('timingRows'), [position(mark.time), assigned ? `#${inputs.indexOf(assigned) + 1} · ${position(assigned.time)}` : '없음',
+                differenceText(assigned ? assigned.error / beat : null),
+                `앞 ${(C.noteWindow(chart, index, 'early') / beat).toFixed(3)}박 · 뒤 ${(C.noteWindow(chart, index, 'late') / beat).toFixed(3)}박`, mark.hit ? '맞음' : '놓침']);
         });
+        $('timingExtraRows').replaceChildren();
+        inputs.forEach((input, index) => {
+            if (input.accepted) return;
+            const prior = inputs.findIndex(candidate => candidate.accepted && candidate.nearest === input.nearest);
+            appendRow($('timingExtraRows'), [`#${index + 1}`, position(input.time), input.nearest < 0 ? '없음' : position(chart.targets[input.nearest]),
+                differenceText(input.error / beat), input.reason === 'duplicate' ? `입력 #${prior + 1}이 이미 맞힌 음` : '앞·뒤 음의 중간 경계 또는 시작·끝 범위 밖']);
+        });
+        $('timingExtras').hidden = !result.extras;
         $('timingDetails').hidden = false;
     }
     function updateRoom(state) {
@@ -478,7 +490,7 @@
         $('roomStop').hidden = !state.me.host || state.phase !== 'running';
         $('ready').textContent = state.me.ready ? '준비 완료 · 취소' : '소리 켜고 준비';
         $('roomPhase').textContent = state.phase === 'running' ? '연주 중' : state.phase === 'results' ? '결과' : '입장 중';
-        $('roomHint').textContent = state.me.host ? '모두 준비하면 시작해 주세요. 정확도, 평균 오차 순으로 순위를 매겨요.' : '준비를 누르면 선생님이 시작할 때 네 박을 듣고 연주해요.';
+        $('roomHint').textContent = state.me.host ? '모두 준비하면 시작해 주세요. 점수, 평균 오차 순으로 순위를 매겨요.' : '준비를 누르면 선생님이 시작할 때 네 박을 듣고 연주해요.';
         $('players').replaceChildren();
         for (const p of state.participants) {
             const row = document.createElement('li'); row.classList.toggle('me', p.id === state.me.id);
