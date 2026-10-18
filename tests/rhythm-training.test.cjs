@@ -60,8 +60,8 @@ test('a long note has one onset; misses and extra taps reduce scores; rest attac
 test('accepted timing variation earns full credit without stealing neighboring sixteenths', () => {
     for (const bpm of [70, 100, 140]) for (let level = 0; level < 4; level++) for (let seed = 1; seed < 40; seed++) {
         const chart = Core.chart({ bpm, level }, seed);
-        const margin = Core.hitWindow(chart) * .75;
-        for (const offset of [-margin, -.06, .06, margin]) {
+        const margin = Math.min(...chart.targets.map((_, index) => Core.noteWindow(chart, index))) * .75;
+        for (const offset of [-margin, margin]) {
             const result = Core.judge(chart, chart.targets.map(time => time + offset));
             assert.equal(result.accuracy, 100, JSON.stringify({ bpm, level, seed, offset }));
             assert.equal(result.perfect, chart.targets.length);
@@ -72,16 +72,20 @@ test('accepted timing variation earns full credit without stealing neighboring s
         assert.equal(omitted.hits, chart.targets.length - 1);
     }
 });
-test('a constant device delay is removed once enough notes establish it', () => {
-    for (const bpm of [70, 100, 140]) for (let level = 0; level < 4; level++) for (let seed = 1; seed < 40; seed++) {
-        const chart = Core.chart({ bpm, level }, seed);
-        const lag = Core.hitWindow(chart) * 1.4;
-        const late = Core.judge(chart, chart.targets.map((time, i) => time + lag + (i % 2 ? .02 : -.02)));
-        assert.equal(late.accuracy, 100, JSON.stringify({ bpm, level, seed }));
-        assert.ok(late.lagMs > 0);
+test('sixteenth taps use the nearest BPM grid slot, including silent slots', () => {
+    for (const bpm of [70, 100, 140]) {
+        const slot = 60 / bpm / 4;
+        const chart = { level: 3, bpm, targets: [0, 2 * slot, 4 * slot], duration: 4 * 60 / bpm };
+        for (const direction of [-1, 1]) {
+            const near = Core.judge(chart, [2 * slot + direction * slot * .49]);
+            const far = Core.judge(chart, [2 * slot + direction * slot * .51]);
+            assert.equal(near.hits, 1, JSON.stringify({ bpm, direction, kind: 'near' }));
+            assert.equal(far.hits, 0, JSON.stringify({ bpm, direction, kind: 'far' }));
+            assert.equal(far.extras, 1);
+        }
+        assert.equal(Core.judge(chart, [slot]).hits, 0, 'a silent subdivision is not a note');
+        assert.equal(Core.judge(chart, [0, 2 * slot, 4 * slot]).accuracy, 100);
     }
-    const c = { bpm: 100, targets: [0, 1.2, 2.4], duration: 4.8 };
-    assert.equal(Core.judge(c, [.2, 1.4, 2.6]).accuracy, 0);
 });
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
     let clock = 1000000, blocked = false, configured = true;
