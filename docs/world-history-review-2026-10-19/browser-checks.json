@@ -222,5 +222,5 @@
     "originalAtlasesUnmodified": true,
     "losslessWebpRoundTrips": 39
   },
-  "deployment": "Production health and home menu verified on 2026-10-19; see deployment-verification.json. Authenticated UI verification remains the earlier local test."
+  "deployment": "The initial health/menu check missed a clean-URL 404. Fixed by moving the entry to history/index.html; 19 tests passed including the actual production redirect middleware and its asset URLs. Mobile map/questions rendered through that middleware. Live fix commit efc4a6de6 and canonical home link confirmed at 2026-10-19T08:27:08+09:00. No authenticated production UI session was available; see deployment-verification.json."
 }
