@@ -2,7 +2,7 @@
  const $=id=>document.getElementById(id),{colors,sources,collectors,result,ray,fixedRay,fixedFirstRay}=window.prismModel;let mode='dispersion',color=0,screen=45,light=false,source='incandescent',collector='glass';
  const line=(x1,y1,x2,y2,c,width=3)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${width}"/>`;
  const marker=(x,y,n)=>`<circle cx="${x}" cy="${y}" r="15" fill="#eff8fa"/><text x="${x}" y="${y+7}" text-anchor="middle" fill="#183746" font-size="22">${n}</text>`;
- function drawScene(markup){const previous=$('opticsScene').querySelector('svg');if(previous){const template=document.createElement('template');template.innerHTML=markup;const next=template.content.querySelector('svg');for(const attribute of ['viewBox','role','aria-label'])previous.setAttribute(attribute,next.getAttribute(attribute));previous.innerHTML=next.innerHTML;}else $('opticsScene').innerHTML=markup;}
+ function drawScene(markup){const previous=$('opticsScene').querySelector('svg');if(previous){const template=document.createElement('template');template.innerHTML=markup;const next=template.content.querySelector('svg');for(const attribute of ['viewBox','role','aria-label'])previous.setAttribute(attribute,next.getAttribute(attribute));previous.innerHTML=next.innerHTML;}else window.scienceScene.render($('opticsScene'),markup);}
  function fixedScene(){
   const p=fixedRay(color),first=fixedFirstRay(color),red=fixedRay(0),inputY=p.entry.y,c=colors[color][1];
   const slit=(x,label)=>`<g data-fixed-slit="${label}"><path d="M${x} 151V${label===1?215.5:inputY-1}M${x} ${label===1?223.5:inputY+1}V270" stroke="#aebdc9" stroke-width="8"/>${marker(x,120,label)}</g>`;

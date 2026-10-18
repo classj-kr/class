@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'make' ? renderMake(a, state.progress) : renderPress(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'make' ? renderMake(a, state.progress) : renderPress(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -329,12 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'make' ? graphMake(a) : graphPress(a);
+        window.scienceScene.render(graphGroup,a.kind === 'make' ? graphMake(a) : graphPress(a));
         stageBadge.textContent = a.kind === 'make' ? `${a.gas.name} · ${a.test.name}` : `${state.weight ? `추 ${state.weight} kg` : '추 없음'} · ${state.temp} ℃`;
         methodHint.textContent = state.mode === 'make'
             ? '산소는 다른 물질이 타는 것을 돕고, 이산화 탄소는 불을 끄고 석회수를 뿌옇게 합니다'
             : '기체는 누르면 부피가 줄고, 데우면 부피가 늘어납니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

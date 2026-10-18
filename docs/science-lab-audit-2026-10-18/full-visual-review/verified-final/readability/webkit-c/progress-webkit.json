@@ -1,0 +1,292 @@
+{
+  "checkedAt": "2026-10-17T21:30:31.553Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "light-shadow",
+      "scenarios": 40
+    },
+    {
+      "slug": "lens-image",
+      "scenarios": 5
+    },
+    {
+      "slug": "photoelectric",
+      "scenarios": 15
+    },
+    {
+      "slug": "sound-vibration",
+      "scenarios": 70
+    },
+    {
+      "slug": "motion-energy",
+      "scenarios": 40
+    },
+    {
+      "slug": "collision",
+      "scenarios": 5
+    },
+    {
+      "slug": "magnets",
+      "scenarios": 10
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "scenarios": 55
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "scenarios": 125
+    },
+    {
+      "slug": "electric-field",
+      "scenarios": 15
+    },
+    {
+      "slug": "heat-engine",
+      "scenarios": 15
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    },
+    {
+      "slug": "density-buoyancy",
+      "scenarios": 55
+    },
+    {
+      "slug": "mixture-separation",
+      "scenarios": 30
+    },
+    {
+      "slug": "diffusion",
+      "scenarios": 125
+    },
+    {
+      "slug": "recrystallise",
+      "scenarios": 5
+    },
+    {
+      "slug": "periodic-bonding",
+      "scenarios": 30
+    },
+    {
+      "slug": "molecule-shape",
+      "scenarios": 15
+    },
+    {
+      "slug": "combustion",
+      "scenarios": 5
+    },
+    {
+      "slug": "redox",
+      "scenarios": 10
+    },
+    {
+      "slug": "microscope",
+      "scenarios": 75
+    },
+    {
+      "slug": "cell-membrane",
+      "scenarios": 55
+    },
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    },
+    {
+      "slug": "body-systems",
+      "scenarios": 5
+    },
+    {
+      "slug": "senses",
+      "scenarios": 40
+    },
+    {
+      "slug": "life-cycle",
+      "scenarios": 35
+    },
+    {
+      "slug": "living-environment",
+      "scenarios": 35
+    },
+    {
+      "slug": "geologic-time",
+      "scenarios": 15
+    },
+    {
+      "slug": "rock-age",
+      "scenarios": 10
+    },
+    {
+      "slug": "earthquake",
+      "scenarios": 5
+    },
+    {
+      "slug": "land-sea",
+      "scenarios": 20
+    },
+    {
+      "slug": "water-cycle",
+      "scenarios": 5
+    },
+    {
+      "slug": "ocean-layers",
+      "scenarios": 15
+    },
+    {
+      "slug": "moon-phases",
+      "scenarios": 5
+    },
+    {
+      "slug": "stars-universe",
+      "scenarios": 40
+    },
+    {
+      "slug": "cell-structure",
+      "scenarios": 90
+    },
+    {
+      "slug": "pasteur",
+      "scenarios": 5
+    },
+    {
+      "slug": "newton-prism",
+      "scenarios": 20
+    },
+    {
+      "slug": "speaker-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "transistor-speaker",
+      "scenarios": 15
+    },
+    {
+      "slug": "electron-slits",
+      "scenarios": 5
+    },
+    {
+      "slug": "hess-calorimetry",
+      "scenarios": 5
+    },
+    {
+      "slug": "bean-respiration",
+      "scenarios": 20
+    },
+    {
+      "slug": "dna-replication",
+      "scenarios": 5
+    },
+    {
+      "slug": "karyotype-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "silver-mirror",
+      "scenarios": 5
+    },
+    {
+      "slug": "cluster-fitting",
+      "scenarios": 5
+    },
+    {
+      "slug": "organic-builder",
+      "scenarios": 5
+    },
+    {
+      "slug": "hydride-boiling",
+      "scenarios": 5
+    },
+    {
+      "slug": "smart-pot",
+      "scenarios": 5
+    },
+    {
+      "slug": "air-sampling",
+      "scenarios": 15
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-common",
+      "scenarios": 80
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-elective",
+      "scenarios": 80
+    },
+    {
+      "slug": "water-electrolysis",
+      "scenarios": 25
+    },
+    {
+      "slug": "digestive-enzymes",
+      "scenarios": 25
+    },
+    {
+      "slug": "sea-level-causes",
+      "scenarios": 25
+    },
+    {
+      "slug": "vinegar-titration",
+      "scenarios": 25
+    },
+    {
+      "slug": "electroplating",
+      "scenarios": 35
+    },
+    {
+      "slug": "light-interference",
+      "scenarios": 50
+    },
+    {
+      "slug": "osmosis-mass",
+      "scenarios": 40
+    },
+    {
+      "slug": "phase-mass",
+      "scenarios": 45
+    },
+    {
+      "slug": "quadrat-community",
+      "scenarios": 35
+    },
+    {
+      "slug": "equilibrium-colour",
+      "scenarios": 70
+    },
+    {
+      "slug": "strata-correlation",
+      "scenarios": 45
+    },
+    {
+      "slug": "kepler-data",
+      "scenarios": 50
+    },
+    {
+      "slug": "argo-observation",
+      "scenarios": 50
+    },
+    {
+      "slug": "iodine-clock",
+      "scenarios": 120
+    },
+    {
+      "slug": "weather-analysis",
+      "scenarios": 135
+    }
+  ],
+  "scenarios": 2245,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

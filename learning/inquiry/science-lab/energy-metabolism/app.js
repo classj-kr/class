@@ -382,11 +382,10 @@ function drawCellGraph(g) {
 }
 
 function render() {
-    const main = $('mainGroup'), graph = $('graphGroup');
-    main.textContent = '';
-    graph.textContent = '';
+    window.scienceScene.draw([$('mainGroup'), $('graphGroup')], ([main, graph]) => {
     if (state.mode === 'leaf') { drawLeaf(main); drawLeafGraph(graph); }
     else { drawCell(main); drawCellGraph(graph); }
+    });
     updateReadout();
 }
 

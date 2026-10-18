@@ -1,0 +1,289 @@
+{
+  "checkedAt": "2026-10-17T21:30:03.764Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "wave-transfer",
+      "scenarios": 10
+    },
+    {
+      "slug": "lever-balance",
+      "scenarios": 35
+    },
+    {
+      "slug": "speed",
+      "scenarios": 10
+    },
+    {
+      "slug": "force-motion",
+      "scenarios": 25
+    },
+    {
+      "slug": "torque",
+      "scenarios": 15
+    },
+    {
+      "slug": "circuit-bulbs",
+      "scenarios": 10
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "scenarios": 15
+    },
+    {
+      "slug": "energy-heat",
+      "scenarios": 5
+    },
+    {
+      "slug": "measurement",
+      "scenarios": 15
+    },
+    {
+      "slug": "state-change",
+      "scenarios": 40
+    },
+    {
+      "slug": "gases",
+      "scenarios": 25
+    },
+    {
+      "slug": "neutralization",
+      "scenarios": 5
+    },
+    {
+      "slug": "mass-ratio",
+      "scenarios": 35
+    },
+    {
+      "slug": "mole",
+      "scenarios": 55
+    },
+    {
+      "slug": "living-things",
+      "scenarios": 10
+    },
+    {
+      "slug": "energy-metabolism",
+      "scenarios": 10
+    },
+    {
+      "slug": "nutrient-detection",
+      "scenarios": 15
+    },
+    {
+      "slug": "enzyme",
+      "scenarios": 5
+    },
+    {
+      "slug": "neuron",
+      "scenarios": 15
+    },
+    {
+      "slug": "natural-selection",
+      "scenarios": 10
+    },
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    },
+    {
+      "slug": "minerals-rocks",
+      "scenarios": 95
+    },
+    {
+      "slug": "metamorphism",
+      "scenarios": 15
+    },
+    {
+      "slug": "volcano-model",
+      "scenarios": 40
+    },
+    {
+      "slug": "plate-tectonics",
+      "scenarios": 75
+    },
+    {
+      "slug": "earth-system",
+      "scenarios": 35
+    },
+    {
+      "slug": "weather-watch",
+      "scenarios": 45
+    },
+    {
+      "slug": "seawater",
+      "scenarios": 5
+    },
+    {
+      "slug": "seasons",
+      "scenarios": 60
+    },
+    {
+      "slug": "apparent-motion",
+      "scenarios": 5
+    },
+    {
+      "slug": "planet-motion",
+      "scenarios": 15
+    },
+    {
+      "slug": "infection-prevention",
+      "scenarios": 5
+    },
+    {
+      "slug": "wireless-power",
+      "scenarios": 5
+    },
+    {
+      "slug": "soap-film",
+      "scenarios": 5
+    },
+    {
+      "slug": "gas-identification",
+      "scenarios": 5
+    },
+    {
+      "slug": "buffer-solution",
+      "scenarios": 5
+    },
+    {
+      "slug": "insulation-lab",
+      "scenarios": 15
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "scenarios": 35
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "scenarios": 35
+    },
+    {
+      "slug": "protein-synthesis",
+      "scenarios": 5
+    },
+    {
+      "slug": "antibiotic-disc",
+      "scenarios": 5
+    },
+    {
+      "slug": "nylon-interface",
+      "scenarios": 5
+    },
+    {
+      "slug": "habitable-orbits",
+      "scenarios": 5
+    },
+    {
+      "slug": "protein-folding",
+      "scenarios": 5
+    },
+    {
+      "slug": "fuel-comparison",
+      "scenarios": 5
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "middle",
+      "scenarios": 5
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "high-elective",
+      "scenarios": 5
+    },
+    {
+      "slug": "rotating-annulus",
+      "school": "high-elective",
+      "scenarios": 30
+    },
+    {
+      "slug": "cell-micrometry",
+      "scenarios": 25
+    },
+    {
+      "slug": "spring-wave-speed",
+      "scenarios": 35
+    },
+    {
+      "slug": "standard-solution",
+      "scenarios": 25
+    },
+    {
+      "slug": "acoustic-resonance",
+      "scenarios": 35
+    },
+    {
+      "slug": "leaf-starch",
+      "scenarios": 45
+    },
+    {
+      "slug": "dissolution-mass",
+      "scenarios": 35
+    },
+    {
+      "slug": "food-web",
+      "scenarios": 40
+    },
+    {
+      "slug": "reaction-pressure",
+      "scenarios": 95
+    },
+    {
+      "slug": "leaf-classification",
+      "scenarios": 45
+    },
+    {
+      "slug": "liquid-heat",
+      "scenarios": 50
+    },
+    {
+      "slug": "rotating-disc",
+      "scenarios": 45
+    },
+    {
+      "slug": "crust-thickness",
+      "scenarios": 45
+    },
+    {
+      "slug": "video-motion",
+      "scenarios": 45
+    },
+    {
+      "slug": "seasonal-sky",
+      "scenarios": 55
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "scenarios": 55
+    },
+    {
+      "slug": "acid-mixing",
+      "scenarios": 225
+    },
+    {
+      "slug": "catalyst-foam",
+      "scenarios": 145
+    },
+    {
+      "slug": "temperature-clouding",
+      "scenarios": 105
+    },
+    {
+      "slug": "constellation-space",
+      "scenarios": 70
+    }
+  ],
+  "scenarios": 2280,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

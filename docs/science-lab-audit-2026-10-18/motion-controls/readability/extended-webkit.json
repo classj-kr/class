@@ -1,0 +1,33 @@
+{
+  "engine": "webkit",
+  "catalog": false,
+  "routes": 112,
+  "scenarios": 2735,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "supplementDiagnosisChecked": true,
+  "deviceProfile": "ipad",
+  "emulationOnly": true,
+  "deviceScaleFactor": 2,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR",
+    "Pretendard"
+  ],
+  "issues": [],
+  "errors": [],
+  "batches": [
+    "webkit-batch-1.json",
+    "webkit-part-0/progress-webkit.json",
+    "webkit-part-1/progress-webkit.json",
+    "webkit-part-2/progress-webkit.json"
+  ],
+  "checkedAt": "2026-10-17T18:37:07.123Z",
+  "sourceManifest": "../live-assets.json"
+}

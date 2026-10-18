@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const to = arr[i + 1] ? arr[i + 1][0] : 0;
             const x1 = xOf(from), x2 = xOf(to);
             out += `<rect class="era" fill="${color}" x="${x1.toFixed(1)}" y="${Y}" width="${(x2 - x1).toFixed(1)}" height="${H}"/>`;
-            if (x2 - x1 > 36) out += `<text class="era-text" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 3}" text-anchor="middle">${name}</text>`;
+            if (x2 - x1 >= name.length * 12 + 4) out += `<text class="era-text" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 3}" text-anchor="middle">${name}</text>`;
         });
         PERIODS.forEach(([name, from, to, color]) => {
             const x1 = xOf(from), x2 = xOf(to);
@@ -371,13 +371,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'calendar' ? renderCalendar(a) : a.kind === 'extinction' ? renderExtinction(a) : renderDiversity(a);
-        graphGroup.innerHTML = a.kind === 'calendar' ? graphCalendar(a) : a.kind === 'extinction' ? graphExtinction(a) : graphDiversity(a);
+        window.scienceScene.render(mainGroup,a.kind === 'calendar' ? renderCalendar(a) : a.kind === 'extinction' ? renderExtinction(a) : renderDiversity(a));
+        window.scienceScene.render(graphGroup,a.kind === 'calendar' ? graphCalendar(a) : a.kind === 'extinction' ? graphExtinction(a) : graphDiversity(a));
         stageBadge.textContent = a.kind === 'calendar' ? `${a.ev.label} · ${fmtAge(a.ev.age)}` : a.kind === 'extinction' ? a.ex.label : `${a.f.label} · ${a.f.hint}`;
         methodHint.textContent = a.kind === 'calendar' ? '지구 46억 년을 1년으로 줄이면 하루는 1,260만 년입니다'
             : a.kind === 'extinction' ? '지질 시대의 경계는 대개 많은 생물이 한꺼번에 사라진 자리입니다'
                 : '종이 여러 가지로 고루 있을수록 한 가지 재난에 무너지지 않습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

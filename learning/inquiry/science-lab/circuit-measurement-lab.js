@@ -33,7 +33,7 @@
   }
   svg+=line(probes,'#c37a39',3)+`<circle cx="${mx}" cy="${my}" r="17" fill="#fff8e9" stroke="#ae7136" stroke-width="2"/>`+text(state.meter==='current'?'A':'V',mx,my+5,'#81501b');
   svg+=text((series?'직렬':'병렬')+' · '+targetLabel[state.target]+' 측정',295,27);
-  $('cmScene').innerHTML=svg;
+  window.scienceScene.render($('cmScene'),svg);
  }
  function render(message){
   $('cmVoltsValue').textContent=state.volts.toFixed(1)+' V';$('cmVolts').value=state.volts;$('cmR1').value=state.r1;$('cmR2').value=state.r2;

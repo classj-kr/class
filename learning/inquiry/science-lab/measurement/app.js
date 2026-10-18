@@ -355,13 +355,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'scale' ? renderScale(a) : a.kind === 'units' ? renderUnits(a) : renderMeasure(a);
-        graphGroup.innerHTML = a.kind === 'scale' ? graphScale(a) : a.kind === 'units' ? graphUnits(a) : graphMeasure(a);
+        window.scienceScene.render(mainGroup,a.kind === 'scale' ? renderScale(a) : a.kind === 'units' ? renderUnits(a) : renderMeasure(a));
+        window.scienceScene.render(graphGroup,a.kind === 'scale' ? graphScale(a) : a.kind === 'units' ? graphUnits(a) : graphMeasure(a));
         stageBadge.textContent = a.kind === 'scale' ? `${KINDS[state.kind].label} · ${a.t.label}` : a.kind === 'units' ? `${UNITS[state.unit].label} · ${ERAS[state.era].label}` : a.r.label;
         methodHint.textContent = a.kind === 'scale' ? '10배씩 뛰는 눈금 하나가 한 자리입니다'
             : a.kind === 'units' ? '단위의 기준은 누가 어디서 재어도 같아야 합니다'
                 : '마지막 자리는 눈금 사이를 어림한 값입니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

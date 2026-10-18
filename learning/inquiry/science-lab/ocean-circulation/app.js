@@ -192,9 +192,9 @@ function drawGraph(g) {
 }
 
 function render() {
-    const m = $('mainGroup'), gr = $('graphGroup');
-    m.textContent = ''; gr.textContent = '';
+    window.scienceScene.draw([$('mainGroup'), $('graphGroup')], ([m, gr]) => {
     drawSea(m); drawGraph(gr);
+    });
     updateReadout();
 }
 

@@ -497,12 +497,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'elements' ? renderElements(a) : renderBonds(a);
-        graphGroup.innerHTML = a.kind === 'elements' ? graphElements(a) : graphBonds(a);
+        window.scienceScene.render(mainGroup,a.kind === 'elements' ? renderElements(a) : renderBonds(a));
+        window.scienceScene.render(graphGroup,a.kind === 'elements' ? graphElements(a) : graphBonds(a));
         stageBadge.textContent = a.kind === 'elements' ? `${a.el.name} ${a.el.sym} · ${a.el.period}주기 ${a.el.group}족` : `${PAIRS[state.pair].label} → ${PAIRS[state.pair].formula}`;
         methodHint.textContent = a.kind === 'elements' ? '전자 배치와 원소의 성질에서 규칙을 찾아보세요'
             : '금속은 전자를 내주고, 비금속끼리는 전자를 함께 씁니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         syncOrbit();
         return a;
     }

@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-17T06:55:25.786Z",
+  "htmlFiles": 196,
+  "unexpectedContentChanges": [],
+  "allowedChanges": [
+    "Content hash references",
+    "Two periodic-bonding SVG readable-width attributes"
+  ]
+}

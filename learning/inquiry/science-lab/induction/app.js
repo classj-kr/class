@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                `<tspan fill="#8fa8b0">  ·  </tspan><tspan fill="#ff7d6b">빨강 = 유도 전류가 만드는 방해하는 힘</tspan></text>`;
         out += `<text class="read-text" x="20" y="196">ε = ${a.B}×${a.L}×${a.v} = ${a.emf.toFixed(2)} V · I = ${a.current.toFixed(3)} A · F = ${a.force.toFixed(3)} N</text>`;
         out += `<text class="note-text" x="20" y="209">${moving ? `도선이 실제 속력으로 움직입니다 (${RAIL_M} m 구간)` : '도선이 멈춰 있어 자기장 변화가 없고 전류도 흐르지 않습니다'}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     function renderCircuit(a) {
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="20" y="20">기전력 ${a.emf} V · 내부 저항 ${a.r} Ω · 외부 저항 ${a.R} Ω</text>`;
         out += `<text class="read-text" x="20" y="192">외부 소비 전력 ${a.pExt.toFixed(2)} W (최대 가능 ${a.best.toFixed(2)} W)</text>`;
         out += `<text class="note-text" x="20" y="208">내부에서 ${a.pInt.toFixed(2)} W가 열로 버려집니다 · 효율 ${a.efficiency.toFixed(0)}%</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<path class="trace" d="M${gx(0).toFixed(1)},${gy(0).toFixed(1)}L${gx(10).toFixed(1)},${gy(a.B * ROD_L * 10).toFixed(1)}"/>`;
         }
         out += `<circle class="trace-dot" cx="${gx(a.v).toFixed(1)}" cy="${gy(a.emf).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function graphCircuit(a) {
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="peak-line" x1="${gx(a.r).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(a.r).toFixed(1)}" y2="${GRAPH.y0}"/>`;
         out += `<text class="peak-text" x="${(gx(a.r) + 5).toFixed(1)}" y="${GRAPH.y1 + 10}">R = r 에서 최대</text>`;
         out += `<circle class="trace-dot" cx="${gx(a.R).toFixed(1)}" cy="${gy(a.pExt).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     /* ------------------------------------------------------------ render */
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'induce'
             ? `ε ${a.emf.toFixed(2)} V · I ${a.current.toFixed(2)} A`
             : `${a.pExt.toFixed(2)} W · ${VERDICT_C[a.verdict]}`;
-        dataNote.innerHTML = a.kind === 'induce'
+        window.scienceScene.render(dataNote,a.kind === 'induce'
             ? `<div class="data-row"><span class="data-name">유도 기전력</span><span class="data-val">ε = BLv = ${a.B}×${a.L}×${a.v} = ${a.emf.toFixed(3)} V</span></div>` +
               `<div class="data-row"><span class="data-name">유도 전류</span><span class="data-val">I = ε/R = ${a.emf.toFixed(3)}÷${a.R} = ${a.current.toFixed(3)} A</span></div>` +
               `<div class="data-row"><span class="data-name">방해하는 힘</span><span class="data-val">F = BIL = ${a.force.toFixed(3)} N — 운동 반대쪽</span></div>` +
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
               `<div class="data-row"><span class="data-name">단자 전압</span><span class="data-val">V = ε − Ir = ${a.emf} − ${(a.current * a.r).toFixed(2)} = ${a.terminal.toFixed(2)} V</span></div>` +
               `<div class="data-row"><span class="data-name">외부 소비 전력</span><span class="data-val">I²R = ${a.pExt.toFixed(2)} W</span></div>` +
               `<div class="data-row"><span class="data-name">내부 손실</span><span class="data-val">I²r = ${a.pInt.toFixed(2)} W · 효율 ${a.efficiency.toFixed(0)}%</span></div>` +
-              `<div class="data-row match"><span class="data-name">R을 더 키우면</span><span class="data-val">${VERDICT_C[a.verdict]}</span></div>`;
+              `<div class="data-row match"><span class="data-name">R을 더 키우면</span><span class="data-val">${VERDICT_C[a.verdict]}</span></div>`);
         return a;
     }
 

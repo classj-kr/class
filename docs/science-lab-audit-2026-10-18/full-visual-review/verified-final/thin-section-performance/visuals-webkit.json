@@ -1,0 +1,183 @@
+{
+  "engine": "webkit",
+  "complete": true,
+  "physicalDeviceTested": false,
+  "routes": 1,
+  "rows": [
+    {
+      "slug": "polarized-thin-sections",
+      "states": [
+        {
+          "mode": "ppl",
+          "actions": [
+            {
+              "selector": "#tsMount",
+              "clicked": true
+            },
+            {
+              "selector": "#tsPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 258,
+            "burstDurationMs": 4979,
+            "burstUpdatesPerSecond": 51.61679052018477,
+            "frames": 259,
+            "changes": 259,
+            "seconds": 5.004,
+            "distinctPerSecond": 51.75859312549961,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 26,
+            "activeUpdatesPerSecond": 51.61679052018477,
+            "firstChangeMs": 25,
+            "lastChangeMs": 5004,
+            "maxChangeGapMs": 33,
+            "geometryMutations": 0,
+            "retained": null,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 258,
+              "burstDurationMs": 4979,
+              "burstUpdatesPerSecond": 51.61679052018477,
+              "frames": 259,
+              "changes": 259,
+              "seconds": 5.004,
+              "distinctPerSecond": 51.75859312549961,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 26,
+              "activeUpdatesPerSecond": 51.61679052018477,
+              "firstChangeMs": 25,
+              "lastChangeMs": 5004,
+              "maxChangeGapMs": 33,
+              "geometryMutations": 0,
+              "retained": null,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-polarized-thin-sections-0-0.webp",
+              "visible": true,
+              "width": 380,
+              "height": 400,
+              "id": "tsCanvas",
+              "tag": "CANVAS"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "xpl",
+          "actions": [
+            {
+              "selector": "#tsMount",
+              "clicked": true
+            },
+            {
+              "selector": "#tsPlay",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 247,
+            "burstDurationMs": 4982,
+            "burstUpdatesPerSecond": 49.377759935768765,
+            "frames": 248,
+            "changes": 248,
+            "seconds": 5.013,
+            "distinctPerSecond": 49.471374426491124,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 27,
+            "activeUpdatesPerSecond": 49.377759935768765,
+            "firstChangeMs": 31,
+            "lastChangeMs": 5013,
+            "maxChangeGapMs": 39,
+            "geometryMutations": 0,
+            "retained": null,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 247,
+              "burstDurationMs": 4982,
+              "burstUpdatesPerSecond": 49.377759935768765,
+              "frames": 248,
+              "changes": 248,
+              "seconds": 5.013,
+              "distinctPerSecond": 49.471374426491124,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 27,
+              "activeUpdatesPerSecond": 49.377759935768765,
+              "firstChangeMs": 31,
+              "lastChangeMs": 5013,
+              "maxChangeGapMs": 39,
+              "geometryMutations": 0,
+              "retained": null,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-polarized-thin-sections-1-0.webp",
+              "visible": true,
+              "width": 380,
+              "height": 400,
+              "id": "tsCanvas",
+              "tag": "CANVAS"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": []
+    }
+  ],
+  "errors": []
+}

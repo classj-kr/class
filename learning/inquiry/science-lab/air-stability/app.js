@@ -155,7 +155,6 @@ function drawRidge(g) {
     // The parcel goes on last and takes precedence: it is the thing moving, so
     // a fixed label it happens to cross steps aside rather than the other way.
     if (!state.running) return;
-    const statics = [...g.querySelectorAll('text')];
     const p = state.progress;
     const descending = p > 0.5;
     const z = descending ? a.H * (1 - (p - 0.5) * 2) : a.H * (p * 2);
@@ -163,19 +162,12 @@ function drawRidge(g) {
     const x = descending ? downX(y) : upX(y);
     const st = parcelAt(z, descending);
     g.appendChild(el('circle', { cx: x, cy: y - 22, r: 11, class: 'parcel' }));
-    const hot = el('text', { x, y: y - 19, 'text-anchor': 'middle', class: 'tiny-label', style: 'fill:#2a2410;font-weight:900' }, `${fmt(st.t, 0)}°`);
+    const hot = el('text', { x, y: y - 19, 'text-anchor': 'middle', class: 'tiny-label', 'data-parcel-temperature': '', style: 'fill:#2a2410;font-weight:900' }, `${fmt(st.t, 0)}°`);
     g.appendChild(hot);
-    const caption = el('text', { x: clamp(x, 60, 400), y: y - 38, 'text-anchor': 'middle', class: 'small-label' },
+    const caption = el('text', { x: 230, y: 20, 'text-anchor': 'middle', class: 'small-label' },
         st.sat ? '구름 속 · 습윤 단열' : '맑음 · 건조 단열');
     g.appendChild(caption);
 
-    const hits = (m, n) => {
-        const r1 = m.getBBox(), r2 = n.getBBox();
-        return Math.min(r1.x + r1.width, r2.x + r2.width) - Math.max(r1.x, r2.x) > 1
-            && Math.min(r1.y + r1.height, r2.y + r2.height) - Math.max(r1.y, r2.y) > 1;
-    };
-    statics.forEach(s => { if (hits(s, hot)) s.remove(); });
-    if (hits(caption, hot) || statics.some(s => s.isConnected && hits(caption, s))) caption.remove();
 }
 
 // --- the T-z diagram --------------------------------------------------------
@@ -265,15 +257,9 @@ function drawGraph(g) {
         const right = lx < x1 - 90;
         const t = el('text', {
             x: lx + (right ? 6 : -6), y: ly + 4, 'text-anchor': right ? 'start' : 'end',
-            class: 'axis-text', style: 'fill:#ff8a8a',
+            class: 'axis-text', 'data-convection-label': '', style: 'fill:#ff8a8a',
         }, '자유 대류 고도');
         g.appendChild(t);
-        const hits = (p, q) => {
-            const r1 = p.getBBox(), r2 = q.getBBox();
-            return Math.min(r1.x + r1.width, r2.x + r2.width) - Math.max(r1.x, r2.x) > 1
-                && Math.min(r1.y + r1.height, r2.y + r2.height) - Math.max(r1.y, r2.y) > 1;
-        };
-        if (placed.some(p => hits(t, p))) t.remove();
     }
 
     const keys = [['#0f172a', '주위 공기'], ['#d97706', '건조 단열'], ['#059669', '습윤 단열'], ['#0284c7', '이슬점']];
@@ -287,9 +273,18 @@ function drawGraph(g) {
 }
 
 function render() {
-    const m = $('mainGroup'), gr = $('graphGroup');
-    m.textContent = ''; gr.textContent = '';
+    window.scienceScene.draw([$('mainGroup'), $('graphGroup')], ([m, gr]) => {
     drawRidge(m); drawGraph(gr);
+    });
+    // Measure the retained, visible labels after their screen font size is set.
+    // Detached construction nodes have no useful text bounds.
+    const main=$('mainGroup'),graph=$('graphGroup');
+    for(const g of [main,graph])window.scienceNormalizeFigure?.(g.closest('svg'),true);
+    const hits=(p,q)=>{const a=window.scienceTextInkBox?.(p)||p.getBBox(),b=window.scienceTextInkBox?.(q)||q.getBBox();return Math.min(a.x+a.width,b.x+b.width)-Math.max(a.x,b.x)>1&&Math.min(a.y+a.height,b.y+b.height)-Math.max(a.y,b.y)>1;};
+    const hot=main.querySelector('[data-parcel-temperature]');
+    if(hot)for(const label of main.querySelectorAll('text'))if(label!==hot&&hits(label,hot))label.remove();
+    const convection=graph.querySelector('[data-convection-label]');
+    if(convection&&[...graph.querySelectorAll('text')].some(t=>t!==convection&&hits(t,convection)))convection.remove();
     updateReadout();
 }
 

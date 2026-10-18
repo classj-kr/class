@@ -117,7 +117,7 @@ function elapsedDays() {
 
 function drawStages(g) {
     const a=analyse(), art=window.lifeObservationArt;
-    g.innerHTML=art.scene(state.animal,a.step);
+    window.scienceScene.render(g,art.scene(state.animal,a.step));
     const [title,description]=art.features[state.animal][a.step];
     $('lifeFeature').innerHTML='<h3>'+title+'</h3><p>'+description+'</p><p class="life-food"><span>먹이</span> '+a.stage.eat+'</p>';
     $('lifeStages').innerHTML=a.animal.stages.map((stage,i)=>'<button type="button" data-life-step="'+i+'" aria-pressed="'+(i===a.step)+'">'+art.scene(state.animal,i,true)+'<span>'+stage.n+'</span></button>').join('');
@@ -142,8 +142,7 @@ function render() {
     if(key!==lastRenderKey){
         lastRenderKey=key;
         const m=$('mainGroup'),gr=$('graphGroup');
-        gr.textContent='';
-        drawStages(m);drawFoodChain(gr);updateReadout();
+        drawStages(m);window.scienceScene.draw([gr],([draft])=>drawFoodChain(draft));updateReadout();
     }
     const a=analyse(),done=elapsedDays();
     $('lifeProgress').value=done/a.total;

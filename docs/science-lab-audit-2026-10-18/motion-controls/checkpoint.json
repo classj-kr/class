@@ -1,0 +1,111 @@
+{
+  "verifiedAt": "2026-10-17T18:44:08.505Z",
+  "scope": "Animation, apparatus presentation and visible choices. Windows browser emulation; not a physical-device or textbook-census sign-off.",
+  "localVerificationComplete": true,
+  "physicalDeviceTested": false,
+  "requiredExperimentTotal": null,
+  "apps": 196,
+  "courseRoutes": 201,
+  "changedSceneApps": 110,
+  "classicSceneApps": 73,
+  "tests": [
+    {
+      "name": "motion",
+      "tests": 2,
+      "passed": 2
+    },
+    {
+      "name": "choices",
+      "tests": 2,
+      "passed": 2
+    },
+    {
+      "name": "capture-check",
+      "tests": 2,
+      "passed": 2
+    },
+    {
+      "name": "all-apps",
+      "tests": 1,
+      "passed": 1
+    },
+    {
+      "name": "regressions",
+      "tests": 34,
+      "passed": 34
+    }
+  ],
+  "motion": [
+    {
+      "engine": "chromium",
+      "scenes": 15,
+      "minDistinctUpdatesPerSecond": 60.003287851389125,
+      "maxDistinctUpdatesPerSecond": 61.25,
+      "report": "motion-chromium.json"
+    },
+    {
+      "engine": "webkit",
+      "scenes": 15,
+      "minDistinctUpdatesPerSecond": 45.32891100055279,
+      "maxDistinctUpdatesPerSecond": 66.92477876106194,
+      "report": "motion-webkit.json"
+    }
+  ],
+  "choices": [
+    {
+      "engine": "chromium",
+      "routes": 201,
+      "states": 1206,
+      "actions": 219,
+      "report": "choices-chromium.json"
+    },
+    {
+      "engine": "webkit",
+      "routes": 201,
+      "states": 1206,
+      "actions": 219,
+      "report": "choices-webkit.json"
+    }
+  ],
+  "readability": [
+    {
+      "engine": "chromium",
+      "routes": 112,
+      "states": 2735,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "loadedFontFamilies": [
+        "Noto Serif KR",
+        "Pretendard"
+      ],
+      "report": "readability/extended-chromium.json"
+    },
+    {
+      "engine": "webkit",
+      "routes": 112,
+      "states": 2735,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "loadedFontFamilies": [
+        "Noto Serif KR",
+        "Pretendard"
+      ],
+      "report": "readability/extended-webkit.json"
+    }
+  ],
+  "visualReview": "visual-review.json",
+  "liveAssets": {
+    "count": 944,
+    "report": "live-assets.json"
+  }
+}

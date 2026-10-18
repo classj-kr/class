@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -199,7 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderSeesaw(a) {
         const { run, p, mA, dA } = a, S = 80, CX = 230, Y = 118;
-        const t = state.progress * 4, phi = run.phi[clamp(Math.round(t / 0.02), 0, run.phi.length - 1)], deg = phi / RAD;
+        const t = state.progress * 4, sample = clamp(t / 0.02, 0, run.phi.length - 1), i = Math.floor(sample);
+        const phi = run.phi[i] + (run.phi[Math.min(i + 1, run.phi.length - 1)] - run.phi[i]) * (sample - i), deg = phi / RAD;
         const px = CX + p * S, groundY = Y + PIVOT_H * S;
         let out = `<line class="ground" x1="20" y1="${groundY}" x2="440" y2="${groundY}"/>`;
         for (let x = 24; x < 440; x += 16) out += `<line class="ground-hatch" x1="${x}" y1="${groundY}" x2="${x - 6}" y2="${groundY + 7}"/>`;
@@ -395,14 +396,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'seesaw' ? renderSeesaw(a) : a.kind === 'tip' ? renderTip(a) : renderPlank(a);
-        graphGroup.innerHTML = a.kind === 'seesaw' ? graphSeesaw(a) : a.kind === 'tip' ? graphTip(a) : graphPlank(a);
+        window.scienceScene.render(mainGroup,a.kind === 'seesaw' ? renderSeesaw(a) : a.kind === 'tip' ? renderTip(a) : renderPlank(a));
+        window.scienceScene.render(graphGroup,a.kind === 'seesaw' ? graphSeesaw(a) : a.kind === 'tip' ? graphTip(a) : graphPlank(a));
         liftProse();
         stageBadge.textContent = a.kind === 'seesaw' ? `받침점 ${PIVOTS[state.pivot].label} · ${MASSES[state.mass].label} · 왼쪽 ${DISTS[state.dist].label}` : a.kind === 'tip' ? `${SHAPES[state.shape].label} · ${FLOORS[state.floor].label} · ${ANGLES[state.angle].label}` : `${LOADS[state.load].label} · ${SPOTS[state.spot].label}`;
         methodHint.textContent = a.kind === 'seesaw' ? '돌림힘 = 힘 × 받침점까지의 거리. 양쪽이 같으면 평형입니다'
             : a.kind === 'tip' ? '무게중심의 수직선이 바닥면을 벗어나면 넘어집니다'
                 : '힘의 합 0, 돌림힘의 합 0 — 둘 다 맞아야 판이 가만히 있습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

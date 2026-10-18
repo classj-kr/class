@@ -1,0 +1,16 @@
+chromium: 10 checkbox labels and three distance fields passed
+✔ chromium: label padding is an active target and editable values stay readable (4808.7456ms)
+webkit: 10 checkbox labels and three distance fields passed
+✔ webkit: label padding is an active target and editable values stay readable (8284.6815ms)
+chromium: 30 live workflow/viewport states; results preserved, SVG screen text readable
+✔ chromium: classroom experiment controls preserve results on rotation and narrow displays (16725.3446ms)
+webkit: 30 live workflow/viewport states; results preserved, SVG screen text readable
+✔ webkit: classroom experiment controls preserve results on rotation and narrow displays (21220.9281ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 51220.6115

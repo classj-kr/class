@@ -5,13 +5,39 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
     'use strict';
     const LEVELS = ['기본 박자', '쉼표 섞기', '8분음표', '16분음표'];
-    const VALUES = { h: 2, q: 1, e: .5, s: .25 };
+    const VALUES = { h: 2, q: 1, e: .5, ed: .75, s: .25 };
+    // One-beat figures from the reference: eighths, all sixteenths, mixed
+    // beams, dotted eighths, and figures beginning with a sixteenth rest.
+    const SIXTEENTH_BEATS = [
+        ['e', 'e'], ['s', 's', 's', 's'],
+        ['e', 's', 's'], ['s', 's', 'e'], ['s', 'e', 's'],
+        ['ed', 's'], ['s', 'ed'],
+        ['rs', 's', 'e'], ['rs', 's', 's', 's']
+    ];
     const PATTERNS = [
         [['h', 'h'], ['q', 'q', 'q', 'q'], ['h', 'q', 'q'], ['q', 'q', 'h']],
         [['q', 'rq', 'q', 'q'], ['rq', 'q', 'h'], ['q', 'q', 'rq', 'q'], ['h', 'rq', 'q']],
         [['q', 'e', 'e', 'q', 'q'], ['e', 'e', 'q', 'rq', 'q'], ['q', 'q', 'e', 'e', 'q'], ['e', 'e', 'e', 'e', 'q', 'q']],
-        [['q', 's', 's', 's', 's', 'q', 'q'], ['e', 's', 's', 'q', 'e', 'e', 'q'], ['q', 'e', 'e', 's', 's', 'e', 'q'], ['rq', 'q', 's', 's', 's', 's', 'q']]
+        []
     ];
+    function shuffle(items, random) {
+        for (let i = items.length - 1; i > 0; i--) {
+            const j = Math.floor(random() * (i + 1));
+            [items[i], items[j]] = [items[j], items[i]];
+        }
+        return items;
+    }
+    function sixteenthBeats(random) {
+        const order = [];
+        while (order.length < 32) {
+            const batch = shuffle(SIXTEENTH_BEATS.map((_, index) => index), random);
+            if (order.length && batch[0] === order[order.length - 1]) {
+                [batch[0], batch[1]] = [batch[1], batch[0]];
+            }
+            order.push(...batch.slice(0, 32 - order.length));
+        }
+        return order.map(index => SIXTEENTH_BEATS[index]);
+    }
     function settings(input = {}) {
         const level = Number(input.level), bpm = Number(input.bpm);
         return { level: Number.isInteger(level) && level >= 0 && level < 4 ? level : 1,
@@ -22,7 +48,11 @@
         let state = Number(seed) >>> 0;
         const random = () => { state = (Math.imul(state, 1664525) + 1013904223) >>> 0; return state / 4294967296; };
         const pool = PATTERNS[config.level];
-        const bars = Array.from({ length: 8 }, () => pool[Math.floor(random() * pool.length)].map(token => ({
+        const sixteenthOrder = config.level === 3 ? sixteenthBeats(random) : null;
+        const patterns = config.level === 3
+            ? Array.from({ length: 8 }, (_, bar) => sixteenthOrder.slice(bar * 4, bar * 4 + 4).flat())
+            : Array.from({ length: 8 }, () => pool[Math.floor(random() * pool.length)]);
+        const bars = patterns.map(pattern => pattern.map(token => ({
             v: token.replace('r', ''), rest: token.startsWith('r')
         })));
         const targets = [];

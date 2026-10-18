@@ -1,0 +1,4762 @@
+{
+  "completedAt": "2026-10-17T21:30:35.910Z",
+  "passed": true,
+  "scope": {
+    "registeredApps": 196,
+    "courseRoutes": 201,
+    "requiredTextbookExperimentTotal": "not established by this visual audit",
+    "physicalDevicesTested": false,
+    "engines": [
+      "Chrome on Windows",
+      "Playwright WebKit on Windows with iPad screen and touch emulation"
+    ],
+    "viewports": [
+      "1366×768",
+      "1180×820",
+      "1024×768",
+      "820×1180",
+      "768×1024"
+    ],
+    "choicesAlsoCheckedAt512": true
+  },
+  "motion": [
+    {
+      "engine": "chromium",
+      "routes": 201,
+      "states": 322,
+      "continuous": 194,
+      "observational": 25,
+      "staticViews": 103,
+      "errors": 0,
+      "readabilityIssues": 0,
+      "sourceEvidence": {
+        "baseline": "../motion-baseline/source-snapshot.json",
+        "final": "../source-snapshot.json",
+        "rechecks": [
+          "../performance-corrections/visuals-chromium.json"
+        ],
+        "sharedChangesRegression": {
+          "description": "After the full motion census, unchanged condition/font writes were removed. Slow routes were remeasured; the final shared behaviour and layout are checked across every route.",
+          "choices": "../choices/",
+          "readability": "../readability/",
+          "functional": "../functional/"
+        }
+      },
+      "timing": [
+        {
+          "id": "light-shadow/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83333333333332,
+          "burstUpdatesPerSecond": 60.00676132521973,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "refraction/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.815253122945435,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "lens-image/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "photoelectric/photo",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.815253122945435,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "photoelectric/hydrogen",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 53.43197698314838,
+          "burstUpdatesPerSecond": 53.24993660721832,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "photoelectric/matter",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "sound-vibration/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "wave-transfer/transverse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.828550620040225,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "wave-transfer/longitudinal",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.81855195959018,
+          "burstUpdatesPerSecond": 59.99500041663195,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "interference/superpose",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "interference/standing",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "lever-balance/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 3.3333333333333335,
+          "burstUpdatesPerSecond": 59.70149253731343,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "speed/distance",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.8202514999589,
+          "burstUpdatesPerSecond": 59.99500041663194,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "speed/time",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "force-motion/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "motion-energy/incline",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "motion-energy/energy",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "gravity-motion/drop",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82319613397766,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "gravity-motion/impact",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 58.333333333333336,
+          "burstUpdatesPerSecond": 57.466407504436745,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "torque/seesaw",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 20,
+          "burstUpdatesPerSecond": 59.96184246388662,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "torque/tip",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83025071927662,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "torque/plank",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "collision/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99661990873755,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "magnets/force",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 13.973368403748152,
+          "burstUpdatesPerSecond": 59.97600959616155,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "magnets/compass",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 55,
+          "burstUpdatesPerSecond": 54.090601757944555,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "circuit-bulbs/circuit",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99661990873755,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "circuit-bulbs/magnet",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "ohms-law:middle/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20133559254461,
+          "burstUpdatesPerSecond": 60.00240009600383,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "ohms-law:high-elective/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.1993858914543207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "electric-field/field",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8218952905399851,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.700000000000273
+        },
+        {
+          "id": "electric-field/accel",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.820251499958914,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "electric-field/cap",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "induction/induce",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82319613397766,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "induction/circuit",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6439689355629934,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "semiconductor-relativity/diode",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99661990873755,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "semiconductor-relativity/muon",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6440608302507194,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "semiconductor-relativity/energy",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6666666666666667,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "motor-magnet/motor",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83333333333332,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "motor-magnet/material",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "motor-magnet/curie",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 55,
+          "burstUpdatesPerSecond": 54.086030592411056,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "heat-transfer/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "specific-heat/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99661990873755,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "specific-heat/expand",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220074408113542,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "energy-heat/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.820251499958914,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "heat-engine/carnot",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "heat-engine/flow",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "heat-engine/pump",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "energy-conversion/solar",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 26.302811112937693,
+          "burstUpdatesPerSecond": 57.15918833952556,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "energy-conversion/wind",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "energy-conversion/chain",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83525156198618,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "weight-compare/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "density-buoyancy/buoy",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.833194467588735,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "density-buoyancy/gas",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6665277893508874,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "measurement/scale",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 60.83333333333332,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "measurement/units",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 60.828264311307386,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "measurement/measure",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 3.2878513891172116,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "mixture-separation/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 56.66666666666667,
+          "burstUpdatesPerSecond": 59.99812505859192,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "separation-methods/filter",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.81025556742542,
+          "burstUpdatesPerSecond": 59.98500374906273,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "separation-methods/distill",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "separation-methods/chroma",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "state-change/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "gases/make",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "gases/press",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60,
+          "burstUpdatesPerSecond": 59.16659623024259,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "diffusion/ink",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "diffusion/btb",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 55.833333333333336,
+          "burstUpdatesPerSecond": 60.00184621065264,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "solubility/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "solubility-curve/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220074408113542,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "recrystallise/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.8202514999589,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "flame-ions/flame",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 53.43197698314838,
+          "burstUpdatesPerSecond": 59.99999999999997,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "flame-ions/ion",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "periodic-bonding/elements",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00676132521974,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "periodic-bonding/bonds",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00676132521973,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "molecule-shape/shape",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "molecule-shape/polar",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83025071927663,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "molecule-shape/mix",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "acid-base/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "neutralization/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "titration/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83525156198619,
+          "burstUpdatesPerSecond": 59.99500041663195,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "mass-ratio/mass",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219844677814966,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "mass-ratio/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.815253122945435,
+          "burstUpdatesPerSecond": 59.99000166638895,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "mole/weigh",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219385255737951,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "mole/count",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.16215315390382,
+          "burstUpdatesPerSecond": 60.00571482998383,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "mole/react",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 6.575702778234424,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999727
+        },
+        {
+          "id": "mole/molar",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "rate-equilibrium/rate",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "rate-equilibrium/eq",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6440608302507191,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "burning-conditions/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83025071927662,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "combustion/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6665277893508872,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "redox/cell",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "redox/elec",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8221655841486474,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "living-things/sort",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6665277893508874,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "living-things/habitat",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "microbes/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220520391822885,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "microscope/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253598,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "cell-osmosis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333333,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "cell-membrane/diffusion",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "cell-membrane/osmosis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "cell-division/mitosis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.511687220571915,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "cell-division/meiosis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.49692515374229,
+          "burstUpdatesPerSecond": 59.9907706506691,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "seed-germination/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20013554997408,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "photosynthesis/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.899999999999977
+        },
+        {
+          "id": "energy-metabolism/leaf",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.828264311307386,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "energy-metabolism/atp",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.830250719276606,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "body-organs/dig",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "body-organs/resp",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "body-organs/circ",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.006761325219756,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "body-organs/excr",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 59.99500041663194,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "body-systems/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.830250719276606,
+          "burstUpdatesPerSecond": 60.01000166694448,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "nutrient-detection/reagent",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 47.24409448818898,
+          "burstUpdatesPerSecond": 57.210632805414086,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "nutrient-detection/benedict",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 14.4,
+          "burstUpdatesPerSecond": 59.99368487527628,
+          "p95FrameMs": 16.899999999999636
+        },
+        {
+          "id": "nutrient-detection/amylase",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 57.80922954250972,
+          "burstUpdatesPerSecond": 58.81376431806863,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "homeostasis/glucose",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.006761325219756,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "homeostasis/temp",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "homeostasis/water",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.81525312294545,
+          "burstUpdatesPerSecond": 60.00000000000002,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "immune/infect",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "immune/vaccine",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 45.83333333333333,
+          "burstUpdatesPerSecond": 45.42338018512169,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "enzyme/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "senses/skin",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99661990873755,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "senses/ear",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "senses/eye",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "senses/nose",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "senses/tongue",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "reflex-nerve/knee",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 18.083182640144667,
+          "burstUpdatesPerSecond": 60.06006006006009,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "reflex-nerve/leg",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 16.666666666666668,
+          "burstUpdatesPerSecond": 60.00857265323616,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "reflex-nerve/pupil",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 17.5,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "reflex-nerve/conscious",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "neuron/spike",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82319613397766,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "neuron/conduct",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "neuron/synapse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.249547920434,
+          "burstUpdatesPerSecond": 54.08146019942539,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "pea-genetics/one",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 25.831180734938755,
+          "burstUpdatesPerSecond": 25.219584311679274,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "pea-genetics/two",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 25.47875400673954,
+          "burstUpdatesPerSecond": 25.217391304347828,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "dna-gel/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 59.99999999999999,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "natural-selection/beak",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.643925694558606,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "natural-selection/coat",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 2.4658885418379093,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "phylogeny/rank",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6665277893508874,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "phylogeny/tree",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6437905810799702,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "phylogeny/clock",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.8220304151253596,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "life-cycle/butterfly",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "life-cycle/mantis",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6662501041406312,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "life-cycle/frog",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6666666666666665,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "life-cycle/chick",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "living-environment/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6439662329335756,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "population/growth",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99155048584708,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "population/survey",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 59.99999999999999,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "rock-layers/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "minerals-rocks/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "geologic-time/calendar",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "geologic-time/extinction",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.821760210370614,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "geologic-time/diversity",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 5.832847262728106,
+          "burstUpdatesPerSecond": 30.211480362537742,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "rock-age/decay",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "rock-age/strata",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 3.2878513891172108,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "metamorphism/facies",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 59.161736521956506,
+          "burstUpdatesPerSecond": 59.14116739521729,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "metamorphism/grade",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "metamorphism/contact",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.820251499958914,
+          "burstUpdatesPerSecond": 60.000000000000014,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "volcano-model/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "magma/basalt",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83333333333332,
+          "burstUpdatesPerSecond": 59.99155048584705,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "magma/andesite",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "magma/rhyolite",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "plate-tectonics/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.643925694558606,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "earthquake/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219628472793029,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "earth-system/spheres",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 60.001690188456024,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "earth-system/water",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83333333333332,
+          "burstUpdatesPerSecond": 60.00676132521973,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "earth-system/carbon",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "weather-watch/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99661990873755,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "weather-front/wind",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.8316097710565,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "weather-front/front",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.828264311307386,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "air-stability/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.8202514999589,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "typhoon/genesis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "typhoon/track",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82319613397765,
+          "burstUpdatesPerSecond": 59.99155048584704,
+          "p95FrameMs": 16.799999999999727
+        },
+        {
+          "id": "typhoon/enso",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.8202514999589,
+          "burstUpdatesPerSecond": 59.99500041663195,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "land-sea/area",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 4.166319473377219,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "land-sea/salt",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 60.00328785138911,
+          "burstUpdatesPerSecond": 60.00676132521973,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "water-cycle/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.820251499958886,
+          "burstUpdatesPerSecond": 59.995000416631925,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "seawater/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.81812880113304,
+          "burstUpdatesPerSecond": 59.99155048584705,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "ocean-circulation/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.8202514999589,
+          "burstUpdatesPerSecond": 59.99500041663194,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "ocean-layers/profile",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 57.54212905877518,
+          "burstUpdatesPerSecond": 57.466407504436745,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "ocean-layers/salinity",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.828264311307386,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "ocean-layers/density",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 50.13973368403749,
+          "burstUpdatesPerSecond": 52.05576142579849,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "night-sky/moon",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83333333333332,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "night-sky/stars",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "seasons/path",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.828264311307386,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "seasons/orbit",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 51.78791615289766,
+          "burstUpdatesPerSecond": 51.56382079459002,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "moon-phases/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8218723237782457,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "apparent-motion/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.820251499958886,
+          "burstUpdatesPerSecond": 59.995000416631925,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "planet-motion/retro",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00676132521974,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "planet-motion/phase",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.828264311307386,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "planet-motion/eclipse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 49.995833680526616,
+          "burstUpdatesPerSecond": 50.430397356751584,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "stars-universe/bright",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "stars-universe/expand",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "star-elements/fusion",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.991550485847064,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "star-elements/mass",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8216926869350862,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "star-elements/origin",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "stars/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "galaxy-hubble/classify",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 60.83333333333332,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "galaxy-hubble/redshift",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6666666666666667,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "galaxy-hubble/hubble",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 2.5,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "cell-structure/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219398767418961,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "neutralization-common/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "pasteur/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6439256945586058,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "newton-prism/dispersion",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219844677814966,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "newton-prism/single",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6666666666666667,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "newton-prism/fixed",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6440148816227085,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "newton-prism/combine",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6665277893508874,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "infection-prevention/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6666666666666667,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "mendeleev/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220979940808943,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "speaker-lab/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.828264311307386,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "wireless-power/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "magnetic-brake/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83025071927662,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "transistor-speaker/direct",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83025071927662,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "transistor-speaker/amplified",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "soap-film/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "polarization/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "electron-slits/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 13.33111148141976,
+          "burstUpdatesPerSecond": 20,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "gas-identification/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6440608302507194,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "sugar-phase/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83025071927662,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "sugar-phase/cool",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.005000416701385,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "hess-calorimetry/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8225037012666557,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "buffer-solution/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8331944675887354,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "salt-hydrolysis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "bean-respiration/sensors",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "bean-respiration/respirometer",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "bean-respiration/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "insulation-lab/hot",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220750159893591,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "insulation-lab/cold",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "doppler-lab/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "ride-acceleration:high-common/circle",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "ride-acceleration:high-common/straight",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-common/elevator",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-common/swing",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "ride-acceleration:high-common/seesaw",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-common/slide",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-elective/circle",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-elective/straight",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-elective/elevator",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-elective/swing",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-elective/seesaw",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82826431130739,
+          "burstUpdatesPerSecond": 59.99661990873755,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "ride-acceleration:high-elective/slide",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "dna-replication/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "protein-synthesis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.643925694558606,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "pedigree-lab/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "karyotype-lab/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "antibiotic-disc/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6665277893508872,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "water-wave-tank/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "silver-mirror/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "nylon-interface/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "stellar-mass-data/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "cluster-fitting/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "habitable-orbits/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333097228911848,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "centrifuge-design/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8218952905399852,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "organic-builder/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219628472793029,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "dna-structure:high-common/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.8202514999589,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "dna-structure:high-elective/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "protein-folding/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "organelle-builder/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.700000000000045
+        },
+        {
+          "id": "hydride-boiling/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "fuel-comparison/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "mcu-sampling/pulse",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "mcu-sampling/sound",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "smart-pot/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "telescope-observation:middle/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219398767418961,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.90000000000009
+        },
+        {
+          "id": "telescope-observation:high-elective/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "rotating-annulus:high-elective/top",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "rotating-annulus:high-elective/side",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866841,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "sunspot-observation:high-elective/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "protein-interaction:high-elective/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "air-sampling/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60.00500041670139,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "local-biodiversity:high-common/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8218952905399851,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "local-biodiversity:high-elective/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8229098090849243,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "water-electrolysis/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "cell-micrometry/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219628472793029,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "leaf-pigments/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "digestive-enzymes/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219628472793029,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "spring-wave-speed/transverse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "spring-wave-speed/longitudinal",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "coastal-inundation/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 13.8,
+          "burstUpdatesPerSecond": 59.987465305757006,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "sea-level-causes/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20133559254461,
+          "burstUpdatesPerSecond": 60.00240009600383,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "standard-solution/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220979940808943,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "serial-dilution/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "vinegar-titration/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "acoustic-resonance/tube",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.2,
+          "burstUpdatesPerSecond": 60.0028094960968,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "acoustic-resonance/microphone",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20013554997409,
+          "burstUpdatesPerSecond": 60.002400096003846,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "electroplating/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.2,
+          "burstUpdatesPerSecond": 59.999197335152715,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "leaf-starch/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "dissolution-mass/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.2,
+          "burstUpdatesPerSecond": 60.0004013404772,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "food-web/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "yeast-fermentation/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 60.19893555524548,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "light-interference/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219628472793029,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "galileo-incline/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.00169018845601,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "reaction-pressure/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.001690188456,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "osmosis-mass/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "leaf-classification/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220304151253597,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "animal-classification/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "liquid-heat/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "phase-mass/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20133559254461,
+          "burstUpdatesPerSecond": 60.00240009600383,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "rotating-disc/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "quadrat-community/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "ph-comparison/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "equilibrium-colour/concentration",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8220979940808943,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "equilibrium-colour/pressure",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.822075015989359,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "equilibrium-colour/temperature",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8219398767418961,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "strata-correlation/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "polarized-thin-sections/ppl",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.2,
+          "burstUpdatesPerSecond": 59.999197335152715,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "polarized-thin-sections/xpl",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20013554997408,
+          "burstUpdatesPerSecond": 60.001200024000475,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "crust-thickness/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "video-motion/cart",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.820251499958886,
+          "burstUpdatesPerSecond": 59.995000416631925,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "video-motion/projectile",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 59.996619908737536,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "hr-diagram/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8218952905399851,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "kepler-data/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "seasonal-sky/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.83025071927662,
+          "burstUpdatesPerSecond": 60.015003750937744,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "equilibrium-data/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "argo-observation/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.821962847279303,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "satellite-sea-temperature/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 5,
+          "burstUpdatesPerSecond": 59.97001499250391,
+          "p95FrameMs": 16.899999999999864
+        },
+        {
+          "id": "galactic-objects/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "phase-curves/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 60.833333333333336,
+          "burstUpdatesPerSecond": 60.006761325219756,
+          "p95FrameMs": 16.800000000000068
+        },
+        {
+          "id": "acid-mixing/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 40,
+          "burstUpdatesPerSecond": 60.003428767358145,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "iodine-clock/concentration",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 31.666666666666668,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "iodine-clock/temperature",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 31.234588196613515,
+          "burstUpdatesPerSecond": 59.99000166638893,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "catalyst-foam/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82525069866843,
+          "burstUpdatesPerSecond": 60,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "weather-analysis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8332638946754437,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16.799999999999955
+        },
+        {
+          "id": "temperature-clouding/sulfur",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20133559254461,
+          "burstUpdatesPerSecond": 60.00360021601296,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "temperature-clouding/laser",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.20133559254461,
+          "burstUpdatesPerSecond": 60.00240009600383,
+          "p95FrameMs": 16.800000000000182
+        },
+        {
+          "id": "constellation-space/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.82319613397768,
+          "burstUpdatesPerSecond": 59.986481919567424,
+          "p95FrameMs": 16.899999999999864
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "routes": 201,
+      "states": 322,
+      "continuous": 197,
+      "observational": 25,
+      "staticViews": 100,
+      "errors": 0,
+      "readabilityIssues": 0,
+      "sourceEvidence": {
+        "baseline": "../motion-baseline/source-snapshot.json",
+        "final": "../source-snapshot.json",
+        "rechecks": [
+          "../performance-corrections/visuals-webkit.json",
+          "../thin-section-performance/visuals-webkit.json"
+        ],
+        "sharedChangesRegression": {
+          "description": "After the full motion census, unchanged condition/font writes were removed. Slow routes were remeasured; the final shared behaviour and layout are checked across every route.",
+          "choices": "../choices/",
+          "readability": "../readability/",
+          "functional": "../functional/"
+        }
+      },
+      "timing": [
+        {
+          "id": "light-shadow/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 39.06899418121363,
+          "burstUpdatesPerSecond": 38.46153846153847,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "refraction/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.05298013245033,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "lens-image/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.832639467110741,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "photoelectric/photo",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.55574043261231,
+          "burstUpdatesPerSecond": 65.54621848739497,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "photoelectric/hydrogen",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.72636815920398,
+          "burstUpdatesPerSecond": 53.73635600335852,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "photoelectric/matter",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.21991701244814,
+          "burstUpdatesPerSecond": 66.38655462184875,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "sound-vibration/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.93228736581337,
+          "burstUpdatesPerSecond": 61.139028475711896,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "wave-transfer/transverse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 33.91232423490488,
+          "burstUpdatesPerSecond": 33.106960950764005,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "wave-transfer/longitudinal",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 33.96851698425849,
+          "burstUpdatesPerSecond": 33.135089209855565,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "interference/superpose",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 33.94039735099338,
+          "burstUpdatesPerSecond": 33.106960950764005,
+          "p95FrameMs": 20
+        },
+        {
+          "id": "interference/standing",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 33.96851698425849,
+          "burstUpdatesPerSecond": 33.135089209855565,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "lever-balance/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 4.9464138499587795,
+          "burstUpdatesPerSecond": 66.66666666666667,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "speed/distance",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.10853355426677,
+          "burstUpdatesPerSecond": 66.2751677852349,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "speed/time",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.34325889164599,
+          "burstUpdatesPerSecond": 64.43514644351464,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "force-motion/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.22516556291392,
+          "burstUpdatesPerSecond": 65.38139145012573,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "motion-energy/incline",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.10853355426677,
+          "burstUpdatesPerSecond": 66.2751677852349,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "motion-energy/energy",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.56016597510373,
+          "burstUpdatesPerSecond": 64.54316848281643,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "gravity-motion/drop",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.10853355426677,
+          "burstUpdatesPerSecond": 66.38655462184875,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "gravity-motion/impact",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 64.56953642384106,
+          "burstUpdatesPerSecond": 63.70494551550712,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "torque/seesaw",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 21.558872305140962,
+          "burstUpdatesPerSecond": 66.11570247933885,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "torque/tip",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.11570247933885,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "torque/plank",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.39735099337749,
+          "burstUpdatesPerSecond": 64.54316848281643,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "collision/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.22516556291392,
+          "burstUpdatesPerSecond": 65.38139145012573,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "magnets/force",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 15.522875816993464,
+          "burstUpdatesPerSecond": 65.89147286821705,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "magnets/compass",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 59.50413223140496,
+          "burstUpdatesPerSecond": 58.57740585774058,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "circuit-bulbs/circuit",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.11570247933885,
+          "burstUpdatesPerSecond": 65.27196652719665,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "circuit-bulbs/magnet",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.21991701244814,
+          "burstUpdatesPerSecond": 66.38655462184875,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ohms-law:middle/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 35.50768003191702,
+          "burstUpdatesPerSecond": 35.29883674288006,
+          "p95FrameMs": 32
+        },
+        {
+          "id": "ohms-law:high-elective/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.19972039145196727,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "electric-field/field",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6542597187758477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "electric-field/accel",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 62.959934587080944,
+          "burstUpdatesPerSecond": 62.08609271523179,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "electric-field/cap",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6528925619834711,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "induction/induce",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 33.99668325041459,
+          "burstUpdatesPerSecond": 33.16326530612245,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "induction/circuit",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.828500414250207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "semiconductor-relativity/diode",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 55.786844296419645,
+          "burstUpdatesPerSecond": 54.75989890480202,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "semiconductor-relativity/muon",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6501650165016502,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "semiconductor-relativity/energy",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6556291390728477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "motor-magnet/motor",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 53.85252692626346,
+          "burstUpdatesPerSecond": 52.852348993288594,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "motor-magnet/material",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 63.6734693877551,
+          "burstUpdatesPerSecond": 62.8099173553719,
+          "p95FrameMs": 28
+        },
+        {
+          "id": "motor-magnet/curie",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.41055234954658,
+          "burstUpdatesPerSecond": 54.099746407438715,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "heat-transfer/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.88687035507844,
+          "burstUpdatesPerSecond": 66.05351170568562,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "specific-heat/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.34325889164599,
+          "burstUpdatesPerSecond": 64.48911222780569,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "specific-heat/expand",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6515276630883566,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "energy-heat/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.05298013245033,
+          "burstUpdatesPerSecond": 66.1641541038526,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "heat-engine/carnot",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.05298013245033,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "heat-engine/flow",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.94214876033058,
+          "burstUpdatesPerSecond": 66.05351170568562,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "heat-engine/pump",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.05298013245033,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "energy-conversion/solar",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 28.949545078577334,
+          "burstUpdatesPerSecond": 63.36088154269973,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "energy-conversion/wind",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.10853355426677,
+          "burstUpdatesPerSecond": 66.33081444164567,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "energy-conversion/chain",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.28003314001657,
+          "burstUpdatesPerSecond": 65.43624161073826,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "weight-compare/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.45153272576636,
+          "burstUpdatesPerSecond": 64.59731543624162,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "density-buoyancy/buoy",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6625103906899417,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "density-buoyancy/gas",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6528925619834711,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "measurement/scale",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 67.05298013245033,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "measurement/units",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 66.99751861042184,
+          "burstUpdatesPerSecond": 66.1641541038526,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "measurement/measure",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 3.316749585406302,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "mixture-separation/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.98347107438017,
+          "burstUpdatesPerSecond": 66.18313689936537,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "separation-methods/filter",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.28003314001657,
+          "burstUpdatesPerSecond": 65.43624161073826,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "separation-methods/distill",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.2892561983471,
+          "burstUpdatesPerSecond": 64.43514644351464,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "separation-methods/chroma",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 59.65202982601491,
+          "burstUpdatesPerSecond": 58.675607711651296,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "state-change/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 38.651315789473685,
+          "burstUpdatesPerSecond": 37.94266441821248,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "gases/make",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.94214876033058,
+          "burstUpdatesPerSecond": 66.05351170568562,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "gases/press",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.89785831960461,
+          "burstUpdatesPerSecond": 65.1085141903172,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "diffusion/ink",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 41.01722723543888,
+          "burstUpdatesPerSecond": 40.37005887300252,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "diffusion/btb",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 36.18421052631579,
+          "burstUpdatesPerSecond": 38.14713896457766,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "solubility/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 35.10204081632653,
+          "burstUpdatesPerSecond": 34.30962343096234,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "solubility-curve/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8230452674897119,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 22
+        },
+        {
+          "id": "recrystallise/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.27196652719665,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "flame-ions/flame",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 57.89909015715467,
+          "burstUpdatesPerSecond": 65.19654841802493,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "flame-ions/ion",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "periodic-bonding/elements",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.05298013245033,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "periodic-bonding/bonds",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.33499170812604,
+          "burstUpdatesPerSecond": 65.4911838790932,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "molecule-shape/shape",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.22516556291392,
+          "burstUpdatesPerSecond": 65.27196652719665,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "molecule-shape/polar",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 48.51973684210527,
+          "burstUpdatesPerSecond": 47.3421926910299,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "molecule-shape/mix",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.34325889164599,
+          "burstUpdatesPerSecond": 64.43514644351464,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "acid-base/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8305647840531561,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "neutralization/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 62.24066390041494,
+          "burstUpdatesPerSecond": 61.396131202691336,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "titration/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.50580431177447,
+          "burstUpdatesPerSecond": 64.65155331654071,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "mass-ratio/mass",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6528925619834711,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "mass-ratio/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "mole/weigh",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 7.413509060955519,
+          "burstUpdatesPerSecond": 66.66666666666667,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "mole/count",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 7.487520798668886,
+          "burstUpdatesPerSecond": 63.06306306306306,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "mole/react",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 7.43801652892562,
+          "burstUpdatesPerSecond": 66.66666666666667,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "mole/molar",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 8.285004142502071,
+          "burstUpdatesPerSecond": 66.11570247933885,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "rate-equilibrium/rate",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8305647840531561,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "rate-equilibrium/eq",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "burning-conditions/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.88687035507844,
+          "burstUpdatesPerSecond": 66.05351170568562,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "combustion/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6542597187758477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "redox/cell",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8291873963515755,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "redox/elec",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "living-things/sort",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 2.4813895781637716,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "living-things/habitat",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "microbes/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8216926869350862,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "microscope/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8298755186721991,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 33
+        },
+        {
+          "id": "cell-osmosis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.828500414250207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "cell-membrane/diffusion",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 56.10561056105611,
+          "burstUpdatesPerSecond": 55.13784461152882,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "cell-membrane/osmosis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.28003314001657,
+          "burstUpdatesPerSecond": 65.43624161073826,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "cell-division/mitosis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 41.41104294478527,
+          "burstUpdatesPerSecond": 40.19292604501608,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "cell-division/meiosis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 39.274924471299094,
+          "burstUpdatesPerSecond": 37.267080745341616,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "seed-germination/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.60319042871386,
+          "burstUpdatesPerSecond": 65.6099518459069,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "photosynthesis/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 34.36988543371522,
+          "burstUpdatesPerSecond": 33.557046979865774,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "energy-metabolism/leaf",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 37.5,
+          "burstUpdatesPerSecond": 36.564625850340136,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "energy-metabolism/atp",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 36.824877250409166,
+          "burstUpdatesPerSecond": 36.07382550335571,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "body-organs/dig",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 38.0479735318445,
+          "burstUpdatesPerSecond": 37.35144312393888,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "body-organs/resp",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 38.273615635179155,
+          "burstUpdatesPerSecond": 37.34439834024896,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "body-organs/circ",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 38.52459016393443,
+          "burstUpdatesPerSecond": 37.81512605042017,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "body-organs/excr",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 41.598694942903755,
+          "burstUpdatesPerSecond": 40.96989966555184,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "body-systems/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 34.710743801652896,
+          "burstUpdatesPerSecond": 33.50083752093803,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "nutrient-detection/reagent",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 33.672046224347476,
+          "burstUpdatesPerSecond": 41.49085794655415,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "nutrient-detection/benedict",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 15.980823012385137,
+          "burstUpdatesPerSecond": 66.24605678233438,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "nutrient-detection/amylase",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 52.56845892464521,
+          "burstUpdatesPerSecond": 52.34657039711192,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "homeostasis/glucose",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 58.139534883720934,
+          "burstUpdatesPerSecond": 57.77400169923534,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "homeostasis/temp",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 64.4095788604459,
+          "burstUpdatesPerSecond": 63.545150501672246,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "homeostasis/water",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.27196652719665,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "immune/infect",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 48.13278008298755,
+          "burstUpdatesPerSecond": 47.659574468085104,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "immune/vaccine",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 36.824877250409166,
+          "burstUpdatesPerSecond": 36.53355989804588,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "enzyme/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "senses/skin",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.28003314001657,
+          "burstUpdatesPerSecond": 65.4911838790932,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "senses/ear",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.45153272576636,
+          "burstUpdatesPerSecond": 64.65155331654071,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "senses/eye",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 62.86186931348221,
+          "burstUpdatesPerSecond": 62.028499580888514,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "senses/nose",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 59.553349875930515,
+          "burstUpdatesPerSecond": 59.32203389830509,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "senses/tongue",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "reflex-nerve/knee",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 14.096185737976784,
+          "burstUpdatesPerSecond": 46.875,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "reflex-nerve/leg",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 13.223140495867769,
+          "burstUpdatesPerSecond": 42.63565891472868,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "reflex-nerve/pupil",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 14.049586776859504,
+          "burstUpdatesPerSecond": 42.63565891472868,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "reflex-nerve/conscious",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 51.470588235294116,
+          "burstUpdatesPerSecond": 51.13160100586756,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "neuron/spike",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 56.46481178396072,
+          "burstUpdatesPerSecond": 55.50952775476387,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "neuron/conduct",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.28003314001657,
+          "burstUpdatesPerSecond": 65.38139145012573,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "neuron/synapse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 52.980132450331126,
+          "burstUpdatesPerSecond": 51.969823973176865,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "pea-genetics/one",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 26.468155500413562,
+          "burstUpdatesPerSecond": 25.77319587628866,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "pea-genetics/two",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 26.468155500413562,
+          "burstUpdatesPerSecond": 25.79535683576956,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "dna-gel/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.94214876033058,
+          "burstUpdatesPerSecond": 66.1641541038526,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "natural-selection/beak",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6556291390728477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "natural-selection/coat",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 2.497918401332223,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "phylogeny/rank",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.657000828500414,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "phylogeny/tree",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.8264462809917356,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "phylogeny/clock",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.8257638315441783,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "life-cycle/butterfly",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "life-cycle/mantis",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "life-cycle/frog",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.828500414250207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "life-cycle/chick",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "living-environment/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6260162601626016,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "population/growth",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 62.18905472636816,
+          "burstUpdatesPerSecond": 61.29303106633081,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "population/survey",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 36.24382207578254,
+          "burstUpdatesPerSecond": 35.175879396984925,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "rock-layers/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8183306055646481,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "minerals-rocks/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.832639467110741,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "geologic-time/calendar",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.21991701244814,
+          "burstUpdatesPerSecond": 66.2751677852349,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "geologic-time/extinction",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6556291390728477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "geologic-time/diversity",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 5.813953488372094,
+          "burstUpdatesPerSecond": 16.39344262295082,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "rock-age/decay",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 47.06853839801816,
+          "burstUpdatesPerSecond": 46.21848739495798,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "rock-age/strata",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 2.477291494632535,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "metamorphism/facies",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 44.73902236951118,
+          "burstUpdatesPerSecond": 44.18011894647408,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "metamorphism/grade",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8271298593879238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "metamorphism/contact",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.88687035507844,
+          "burstUpdatesPerSecond": 66.05351170568562,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "volcano-model/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.22516556291392,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "magma/basalt",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.10853355426677,
+          "burstUpdatesPerSecond": 66.2751677852349,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "magma/andesite",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.22516556291392,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "magma/rhyolite",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.20760959470636,
+          "burstUpdatesPerSecond": 60.301507537688444,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "plate-tectonics/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 1.6666666666666667,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 25
+        },
+        {
+          "id": "earthquake/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8271298593879238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "earth-system/spheres",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.11570247933885,
+          "burstUpdatesPerSecond": 65.27196652719665,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "earth-system/water",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 65.56016597510373,
+          "burstUpdatesPerSecond": 64.59731543624162,
+          "p95FrameMs": 20
+        },
+        {
+          "id": "earth-system/carbon",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 49.91816693944354,
+          "burstUpdatesPerSecond": 48.92205638474295,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "weather-watch/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 63.58381502890173,
+          "burstUpdatesPerSecond": 62.86672254819782,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "weather-front/wind",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 34.7394540942928,
+          "burstUpdatesPerSecond": 33.528918692372166,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "weather-front/front",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 33.94039735099338,
+          "burstUpdatesPerSecond": 33.106960950764005,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "air-stability/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.21991701244814,
+          "burstUpdatesPerSecond": 66.33081444164567,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "typhoon/genesis",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 63.741721854304636,
+          "burstUpdatesPerSecond": 62.919463087248324,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "typhoon/track",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.15702479338843,
+          "burstUpdatesPerSecond": 60.2510460251046,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "typhoon/enso",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.22516556291392,
+          "burstUpdatesPerSecond": 65.38139145012573,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "land-sea/area",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 4.9916805324459235,
+          "burstUpdatesPerSecond": 16.39344262295082,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "land-sea/salt",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 57.07196029776674,
+          "burstUpdatesPerSecond": 57.560137457044675,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "water-cycle/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 48.28150572831424,
+          "burstUpdatesPerSecond": 47.224523612261805,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "seawater/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 34.16666666666667,
+          "burstUpdatesPerSecond": 33.191489361702125,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ocean-circulation/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.99751861042184,
+          "burstUpdatesPerSecond": 66.1641541038526,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ocean-layers/profile",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 55.60098119378577,
+          "burstUpdatesPerSecond": 55.369127516778526,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "ocean-layers/salinity",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.23102310231023,
+          "burstUpdatesPerSecond": 59.31495405179616,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "ocean-layers/density",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 53.80794701986755,
+          "burstUpdatesPerSecond": 55.60458958517211,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "night-sky/moon",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.22516556291392,
+          "burstUpdatesPerSecond": 65.38139145012573,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "night-sky/stars",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.28003314001657,
+          "burstUpdatesPerSecond": 65.43624161073826,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "seasons/path",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 63.47897774113767,
+          "burstUpdatesPerSecond": 62.65664160401002,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "seasons/orbit",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.63576158940398,
+          "burstUpdatesPerSecond": 54.32937181663837,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "moon-phases/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.828500414250207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "apparent-motion/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 55.417700578990896,
+          "burstUpdatesPerSecond": 54.575986565910995,
+          "p95FrameMs": 20
+        },
+        {
+          "id": "planet-motion/retro",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 55.23495465787304,
+          "burstUpdatesPerSecond": 54.43886097152429,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "planet-motion/phase",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.11570247933885,
+          "burstUpdatesPerSecond": 65.21739130434783,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "planet-motion/eclipse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 51.19735755573905,
+          "burstUpdatesPerSecond": 51.45797598627787,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "stars-universe/bright",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 64.56953642384106,
+          "burstUpdatesPerSecond": 63.70494551550712,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "stars-universe/expand",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 62.96603148301574,
+          "burstUpdatesPerSecond": 62.08053691275168,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "star-elements/fusion",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.16417910447761,
+          "burstUpdatesPerSecond": 66.33081444164567,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "star-elements/mass",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6542597187758477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "star-elements/origin",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6501650165016502,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "stars/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.99751861042184,
+          "burstUpdatesPerSecond": 66.1641541038526,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "galaxy-hubble/classify",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 36.7047308319739,
+          "burstUpdatesPerSecond": 35.92314118629908,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "galaxy-hubble/redshift",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "galaxy-hubble/hubble",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 2.479338842975207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "cell-structure/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8244023083264632,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "neutralization-common/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8298755186721991,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "pasteur/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6542597187758477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "newton-prism/dispersion",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6460905349794237,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "newton-prism/single",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6515276630883566,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "newton-prism/fixed",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.665278934221482,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "newton-prism/combine",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6542597187758477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "infection-prevention/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.657000828500414,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "mendeleev/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8312551953449708,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "speaker-lab/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.10853355426677,
+          "burstUpdatesPerSecond": 66.2751677852349,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "wireless-power/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.27574750830566,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "magnetic-brake/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.10853355426677,
+          "burstUpdatesPerSecond": 66.2751677852349,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "transistor-speaker/direct",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.94214876033058,
+          "burstUpdatesPerSecond": 66.10878661087865,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "transistor-speaker/amplified",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "soap-film/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.99751861042184,
+          "burstUpdatesPerSecond": 66.1641541038526,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "polarization/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.832639467110741,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "electron-slits/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 13.256006628003313,
+          "burstUpdatesPerSecond": 66.66666666666667,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "gas-identification/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6542597187758477,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "sugar-phase/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.99751861042184,
+          "burstUpdatesPerSecond": 66.10878661087865,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "sugar-phase/cool",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.17038875103391,
+          "burstUpdatesPerSecond": 65.32663316582915,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "hess-calorimetry/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "buffer-solution/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8244023083264632,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "salt-hydrolysis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.831946755407654,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "bean-respiration/sensors",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.33167082294264,
+          "burstUpdatesPerSecond": 66.38655462184875,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "bean-respiration/respirometer",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.99751861042184,
+          "burstUpdatesPerSecond": 66.1641541038526,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "bean-respiration/heat",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.05298013245033,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "insulation-lab/hot",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8257638315441783,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "insulation-lab/cold",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.828500414250207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "doppler-lab/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8223684210526316,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "ride-acceleration:high-common/circle",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.16417910447761,
+          "burstUpdatesPerSecond": 66.33081444164567,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ride-acceleration:high-common/straight",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 64.51612903225806,
+          "burstUpdatesPerSecond": 63.651591289782246,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ride-acceleration:high-common/elevator",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 63.741721854304636,
+          "burstUpdatesPerSecond": 62.86672254819782,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "ride-acceleration:high-common/swing",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.309030654515325,
+          "burstUpdatesPerSecond": 60.40268456375839,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "ride-acceleration:high-common/seesaw",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.28003314001657,
+          "burstUpdatesPerSecond": 65.43624161073826,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ride-acceleration:high-common/slide",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.06851549755302,
+          "burstUpdatesPerSecond": 65.23534269199008,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ride-acceleration:high-elective/circle",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 57.283142389525366,
+          "burstUpdatesPerSecond": 56.384742951907135,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "ride-acceleration:high-elective/straight",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 62.292358803986716,
+          "burstUpdatesPerSecond": 62.12765957446808,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "ride-acceleration:high-elective/elevator",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 63.68899917287013,
+          "burstUpdatesPerSecond": 63.613231552162844,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "ride-acceleration:high-elective/swing",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.99751861042184,
+          "burstUpdatesPerSecond": 66.21961441743504,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "ride-acceleration:high-elective/seesaw",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.50695012264922,
+          "burstUpdatesPerSecond": 59.60264900662252,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "ride-acceleration:high-elective/slide",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 64.56953642384106,
+          "burstUpdatesPerSecond": 64.51612903225806,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "dna-replication/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8244023083264632,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "protein-synthesis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.657000828500414,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "pedigree-lab/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8176614881439084,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "karyotype-lab/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8257638315441783,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "antibiotic-disc/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 1.6353229762878168,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "water-wave-tank/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.16417910447761,
+          "burstUpdatesPerSecond": 66.33081444164567,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "silver-mirror/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "nylon-interface/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8305647840531561,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "stellar-mass-data/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 19
+        },
+        {
+          "id": "cluster-fitting/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8257638315441783,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "habitable-orbits/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8223684210526316,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "centrifuge-design/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8271298593879238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "organic-builder/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8237232289950577,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "dna-structure:high-common/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 63.42668863261944,
+          "burstUpdatesPerSecond": 62.55212677231025,
+          "p95FrameMs": 26
+        },
+        {
+          "id": "dna-structure:high-elective/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 67.21991701244814,
+          "burstUpdatesPerSecond": 66.38655462184875,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "protein-folding/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.831946755407654,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "organelle-builder/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.832639467110741,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "hydride-boiling/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8244023083264632,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "fuel-comparison/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8223684210526316,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "mcu-sampling/pulse",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8230452674897119,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "mcu-sampling/sound",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8298755186721991,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 29
+        },
+        {
+          "id": "smart-pot/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8237232289950577,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "telescope-observation:middle/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8250825082508251,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "telescope-observation:high-elective/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8244023083264632,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 21
+        },
+        {
+          "id": "rotating-annulus:high-elective/top",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 34.53947368421053,
+          "burstUpdatesPerSecond": 33.840947546531304,
+          "p95FrameMs": 35
+        },
+        {
+          "id": "rotating-annulus:high-elective/side",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 44.66501240694789,
+          "burstUpdatesPerSecond": 43.9932318104907,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "sunspot-observation:high-elective/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 0.8237232289950577,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "protein-interaction:high-elective/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 52.84888521882741,
+          "burstUpdatesPerSecond": 53.21888412017167,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "air-sampling/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 38.079470198675494,
+          "burstUpdatesPerSecond": 37.35144312393888,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "local-biodiversity:high-common/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8257638315441783,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 18
+        },
+        {
+          "id": "local-biodiversity:high-elective/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8264462809917356,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "water-electrolysis/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 46.05263157894737,
+          "burstUpdatesPerSecond": 45.22613065326633,
+          "p95FrameMs": 26
+        },
+        {
+          "id": "cell-micrometry/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.828500414250207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "leaf-pigments/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8333333333333334,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "digestive-enzymes/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8250825082508251,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 17
+        },
+        {
+          "id": "spring-wave-speed/transverse",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 47.85478547854785,
+          "burstUpdatesPerSecond": 47.019311502938706,
+          "p95FrameMs": 27
+        },
+        {
+          "id": "spring-wave-speed/longitudinal",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 40.16393442622951,
+          "burstUpdatesPerSecond": 39.49579831932773,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "coastal-inundation/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 12.2,
+          "burstUpdatesPerSecond": 52.49110320284697,
+          "p95FrameMs": 19
+        },
+        {
+          "id": "sea-level-causes/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 66.3867226554689,
+          "burstUpdatesPerSecond": 66.18531889290013,
+          "p95FrameMs": 16
+        },
+        {
+          "id": "standard-solution/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8291873963515755,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "serial-dilution/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8230452674897119,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "vinegar-titration/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8190008190008189,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "acoustic-resonance/tube",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.21566673310743,
+          "burstUpdatesPerSecond": 54.021608643457384,
+          "p95FrameMs": 22
+        },
+        {
+          "id": "acoustic-resonance/microphone",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 40.295232395770995,
+          "burstUpdatesPerSecond": 40.03202562049639,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "electroplating/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 59.117235869782306,
+          "burstUpdatesPerSecond": 58.91783567134268,
+          "p95FrameMs": 20
+        },
+        {
+          "id": "leaf-starch/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8312551953449708,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "dissolution-mass/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 60.4,
+          "burstUpdatesPerSecond": 60.192616372391655,
+          "p95FrameMs": 19
+        },
+        {
+          "id": "food-web/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8244023083264632,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "yeast-fermentation/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 40.2,
+          "burstUpdatesPerSecond": 40.032186682760006,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "light-interference/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8230452674897119,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "galileo-incline/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.95420482930891,
+          "burstUpdatesPerSecond": 54.145516074450086,
+          "p95FrameMs": 23
+        },
+        {
+          "id": "reaction-pressure/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 36.18421052631579,
+          "burstUpdatesPerSecond": 35.32380151387721,
+          "p95FrameMs": 32
+        },
+        {
+          "id": "osmosis-mass/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8312551953449708,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "leaf-classification/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "animal-classification/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8264462809917356,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "liquid-heat/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 40.562913907284766,
+          "burstUpdatesPerSecond": 39.52901597981497,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "phase-mass/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 39.90422984836393,
+          "burstUpdatesPerSecond": 39.751054005219835,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "rotating-disc/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.832639467110741,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 45
+        },
+        {
+          "id": "quadrat-community/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8250825082508251,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "ph-comparison/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8190008190008189,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "equilibrium-colour/concentration",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8298755186721991,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "equilibrium-colour/pressure",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.828500414250207,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "equilibrium-colour/temperature",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8298755186721991,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "strata-correlation/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8136696501220504,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 33
+        },
+        {
+          "id": "polarized-thin-sections/ppl",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 51.75859312549961,
+          "burstUpdatesPerSecond": 51.61679052018477,
+          "p95FrameMs": 26
+        },
+        {
+          "id": "polarized-thin-sections/xpl",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 49.471374426491124,
+          "burstUpdatesPerSecond": 49.377759935768765,
+          "p95FrameMs": 27
+        },
+        {
+          "id": "crust-thickness/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8163265306122448,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "video-motion/cart",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 40.13104013104013,
+          "burstUpdatesPerSecond": 39.46263643996641,
+          "p95FrameMs": 32
+        },
+        {
+          "id": "video-motion/projectile",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 39.03654485049834,
+          "burstUpdatesPerSecond": 38.13559322033898,
+          "p95FrameMs": 34
+        },
+        {
+          "id": "hr-diagram/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8250825082508251,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "kepler-data/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 54.05405405405405,
+          "burstUpdatesPerSecond": 53.20033250207813,
+          "p95FrameMs": 25
+        },
+        {
+          "id": "seasonal-sky/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 37.61242845461978,
+          "burstUpdatesPerSecond": 36.881810561609385,
+          "p95FrameMs": 34
+        },
+        {
+          "id": "equilibrium-data/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8271298593879238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "argo-observation/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8291873963515755,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "satellite-sea-temperature/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 4.930156121610517,
+          "burstUpdatesPerSecond": 40.4040404040404,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "galactic-objects/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8176614881439084,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 32
+        },
+        {
+          "id": "phase-curves/initial",
+          "classification": "discrete-observations",
+          "updatesPerSecond": 40.06541291905151,
+          "burstUpdatesPerSecond": 38.97180762852405,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "acid-mixing/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 24.41008950366151,
+          "burstUpdatesPerSecond": 34.36426116838488,
+          "p95FrameMs": 33
+        },
+        {
+          "id": "iodine-clock/concentration",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 20,
+          "burstUpdatesPerSecond": 39.355992844364934,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "iodine-clock/temperature",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 18.914473684210527,
+          "burstUpdatesPerSecond": 36.64921465968587,
+          "p95FrameMs": 34
+        },
+        {
+          "id": "catalyst-foam/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 43.983402489626556,
+          "burstUpdatesPerSecond": 43.183742591024554,
+          "p95FrameMs": 31
+        },
+        {
+          "id": "weather-analysis/initial",
+          "classification": "static-or-selected-condition",
+          "updatesPerSecond": 0.8278145695364238,
+          "burstUpdatesPerSecond": 0,
+          "p95FrameMs": 30
+        },
+        {
+          "id": "temperature-clouding/sulfur",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 49.26206621459912,
+          "burstUpdatesPerSecond": 49.058870644773734,
+          "p95FrameMs": 24
+        },
+        {
+          "id": "temperature-clouding/laser",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 61.61515453639083,
+          "burstUpdatesPerSecond": 61.4,
+          "p95FrameMs": 19
+        },
+        {
+          "id": "constellation-space/initial",
+          "classification": "continuous-motion",
+          "updatesPerSecond": 51.80921052631579,
+          "burstUpdatesPerSecond": 50.96073517126148,
+          "p95FrameMs": 29
+        }
+      ]
+    }
+  ],
+  "readability": [
+    {
+      "engine": "chromium",
+      "routes": 201,
+      "states": 6735,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "errors": 0,
+      "issues": 0,
+      "deviceProfile": "chromebook-scale",
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Pretendard"
+      ]
+    },
+    {
+      "engine": "webkit",
+      "routes": 201,
+      "states": 6735,
+      "widths": [
+        1366,
+        1180,
+        1024,
+        820,
+        768
+      ],
+      "errors": 0,
+      "issues": 0,
+      "deviceProfile": "ipad",
+      "fontFamilies": [
+        "Noto Serif KR",
+        "Pretendard"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "engine": "chromium",
+      "routes": 201,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "engine": "webkit",
+      "routes": 201,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "functional": {
+    "completedAt": "2026-10-17T21:22:54.635Z",
+    "exitCode": 0,
+    "passed": true,
+    "tests": 22,
+    "passes": 22,
+    "failures": 0,
+    "durationMs": 332782,
+    "files": [
+      "science-frame-stability",
+      "science-thin-sections",
+      "science-interpolated-motion",
+      "science-motion-controls",
+      "science-observation-motion",
+      "science-video-motion",
+      "science-liquid-heat",
+      "science-reaction-pressure",
+      "science-all-apps"
+    ],
+    "log": "tests.log",
+    "physicalDeviceTested": false,
+    "recheck": {
+      "exitCode": 0,
+      "tests": 3,
+      "passes": 3,
+      "failures": 0,
+      "log": "video-recheck.log",
+      "reason": "Wait for the app media-error handler to finish, not only the earlier native video.error property update."
+    },
+    "initialResult": "initial-results.json"
+  },
+  "manualReview": {
+    "scope": "Registered science-lab visuals; this is not a census of required textbook experiments.",
+    "reviewedFigures": 581,
+    "figureIndex": "../scenes/figure-index.json",
+    "contactSheets": "../scenes/review-000.webp through review-576.webp, in steps of 12",
+    "reviewMethod": "Every contact sheet was opened and visually inspected. Suspected clipping was checked against the live page and DOM bounds.",
+    "findings": [
+      {
+        "slug": "air-stability",
+        "issue": "Moving parcel caption overlapped the condensation-level label; detached SVG text did not provide usable bounds.",
+        "correction": "Place the caption above the apparatus and check live, normalized text bounds."
+      },
+      {
+        "slug": "geologic-time",
+        "issue": "White strokes reduced era-label legibility, and the shortest bars could not contain their labels.",
+        "correction": "Remove the white stroke and display a bar label only when there is enough room."
+      },
+      {
+        "slug": "stars-universe",
+        "issue": "The redundant home-galaxy suffix extended beyond the left edge.",
+        "correction": "Use the object name; the existing outline and heading identify the reference galaxy."
+      },
+      {
+        "slug": "neuron",
+        "issue": "An element screenshot appeared to cut off a caption.",
+        "correction": "Full-viewport and DOM inspection confirmed that the caption was correctly placed outside the SVG; no cropping change was required."
+      },
+      {
+        "slug": "metamorphism",
+        "issue": "An element screenshot appeared to cut off the lower axis title.",
+        "correction": "A fresh viewport and DOM inspection confirmed correct live layout."
+      }
+    ],
+    "freshCorrectionCaptures": "reviewed",
+    "freshReview": {
+      "figures": 109,
+      "routeContexts": 25,
+      "figureIndex": "captures/figure-index.json",
+      "contactSheets": "captures/final-review-000.webp through final-review-108.webp, in steps of 9",
+      "reviewMethod": "All 13 fresh contact sheets were opened and visually inspected after the final source freeze. Captures show operating apparatus, motion graphs, electrical circuits, refraction, nutrient detection, astronomical observations, air stability and thin-section microscopy.",
+      "additionalFullSizeReview": [
+        "functional/webkit-ride-circle.webp",
+        "thin-section-performance/webkit-polarized-thin-sections-0-0.webp",
+        "thin-section-performance/webkit-polarized-thin-sections-1-0.webp"
+      ],
+      "result": "The corrected caption placements, chart type sizes, apparatus details and optical grain patterns are legible. No additional visual defects were found in these captures. Continuous motion was measured separately; still images do not establish frame cadence."
+    },
+    "physicalDevicesTested": false
+  },
+  "rasterFiles": 919,
+  "sourceFiles": 953,
+  "sourceUnchanged": true,
+  "nativeWebKitMedia": {
+    "engine": "webkit",
+    "readyState": 0,
+    "errorCode": 4,
+    "errorMessage": null,
+    "actualVideoDecoded": false,
+    "physicalIPadTested": false,
+    "scope": "Windows Playwright WebKit cannot decode the MP4 and separately probed WebM fixture. Error handling verified; native Safari playback remains unverified.",
+    "documentation": "https://playwright.dev/docs/browsers#webkit"
+  },
+  "catalog": [
+    {
+      "engine": "chromium",
+      "states": 25,
+      "filters": [
+        "all",
+        "elementary",
+        "middle",
+        "high-common",
+        "high-elective"
+      ],
+      "issues": 0,
+      "errors": 0,
+      "fontSource": "Installed/system font stack; catalog styles declare no @font-face",
+      "initialHarnessAssumption": "The initial check incorrectly required a downloaded web font on the system-font catalog. Corrected the catalog-only assertion and reran all 25 states; initial-font-assumption-chromium.json preserves the initial result."
+    },
+    {
+      "engine": "webkit",
+      "states": 25,
+      "filters": [
+        "all",
+        "elementary",
+        "middle",
+        "high-common",
+        "high-elective"
+      ],
+      "issues": 0,
+      "errors": 0,
+      "fontSource": "Installed/system font stack; catalog styles declare no @font-face",
+      "initialHarnessAssumption": "The initial check incorrectly required a downloaded web font on the system-font catalog. Corrected the catalog-only assertion and reran all 25 states; initial-font-assumption-webkit.json preserves the initial result."
+    }
+  ]
+}

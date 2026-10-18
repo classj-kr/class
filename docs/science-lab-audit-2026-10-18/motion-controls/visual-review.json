@@ -1,0 +1,2617 @@
+{
+  "checkedAt": "2026-10-17T18:44:08.503Z",
+  "count": 261,
+  "manuallyReviewed": 9,
+  "images": [
+    {
+      "file": "chromium-acoustic-resonance.webp",
+      "width": 674,
+      "height": 444,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3c3ce9fd5f61a252c7923f40d9b7e424b7104d5470ef3a7693178a469fb40947"
+    },
+    {
+      "file": "chromium-catalyst-foam.webp",
+      "width": 720,
+      "height": 511,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "a7163b8c03c3fb38ece4f1aed4d104026352515563c58e9a963a97a550d69d45"
+    },
+    {
+      "file": "chromium-choices-electroplating.webp",
+      "width": 1180,
+      "height": 820,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "742cd4df543e46624a303d0c5bf432c3e2896329b11c71bd8c2d3dff0cde559f"
+    },
+    {
+      "file": "chromium-choices-protein-synthesis.webp",
+      "width": 1180,
+      "height": 820,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "505d06e44a14580ace7889248a6a9f43e91989e50ed90d2af8056aba7d4fa6dd"
+    },
+    {
+      "file": "chromium-choices-ride-acceleration.webp",
+      "width": 1180,
+      "height": 820,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "108309a3ba5b60a803f98df821370653ff8ed6cb89c11c36ed90bce3cb05bc07"
+    },
+    {
+      "file": "chromium-choices-sugar-phase.webp",
+      "width": 1180,
+      "height": 820,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c59f58bb779c416fd66f92b2d2c46acb1280013f0167093a9d712e4205fea803"
+    },
+    {
+      "file": "chromium-electroplating.webp",
+      "width": 674,
+      "height": 488,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "5cef60d1d948ac69570abaf0ed2884e78e6beab8318e721d2d06bcc7dae57c15"
+    },
+    {
+      "file": "chromium-force-motion.webp",
+      "width": 560,
+      "height": 262,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "dc63c651f58113ddede7a76c92591535e6e19fc4bc0c4fc75d77ba8bc11b4b0f"
+    },
+    {
+      "file": "chromium-periodic-bonding.webp",
+      "width": 620,
+      "height": 290,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "cac842b557513e16a77247346b5b8ebdda5173827769821d1b8612fb7b7a35d4"
+    },
+    {
+      "file": "chromium-ride-circle.webp",
+      "width": 720,
+      "height": 2149,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "fbc5b95759166c1581f06692c4a307c8ddce22c298ac0755a32a4a33854a52d2"
+    },
+    {
+      "file": "chromium-ride-slide.webp",
+      "width": 720,
+      "height": 2182,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "fda6d58bfcfb04fc8cc5ab6b66a195048766bb8ca01882f94ec7c2421ad74b25"
+    },
+    {
+      "file": "chromium-ride-swing.webp",
+      "width": 720,
+      "height": 2237,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "24adefe793f3fdf688986a6bac9e52a1b9ee5f3d43d80a5b2d1796ef1e69086a"
+    },
+    {
+      "file": "chromium-speaker-lab.webp",
+      "width": 670,
+      "height": 358,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "42289d015b22adc0dee40b10fe2c72734031077dcd6f82496c2883e72b1227b0"
+    },
+    {
+      "file": "chromium-sugar-phase.webp",
+      "width": 670,
+      "height": 468,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f037977e4071b73ea87c8a1b6b0803504e0296d3b9baf077991ecf4eb19e9e58"
+    },
+    {
+      "file": "chromium-water-wave-tank.webp",
+      "width": 670,
+      "height": 640,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "d7ebc1ba4867502e6c1f35320b2d04a51e9122b6431650fb5776fe5ec019ff32"
+    },
+    {
+      "file": "chromium-wireless-power.webp",
+      "width": 670,
+      "height": 358,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c6e9018094cd7e1baf99dffc6dd4179a6b177861558c45bcd6125235503c6fa5"
+    },
+    {
+      "file": "webkit-acoustic-resonance.webp",
+      "width": 1348,
+      "height": 888,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a9e2c0580441951ee3ca8f3dca3b144cc259b4bb6f38dee7ed2f9e3157bfb9cb"
+    },
+    {
+      "file": "webkit-catalyst-foam.webp",
+      "width": 1440,
+      "height": 1022,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2814163d9afa0665589a82d9859a6c27e6ec31295bb6d0bfa8560dbec18cf93d"
+    },
+    {
+      "file": "webkit-choices-electroplating.webp",
+      "width": 2360,
+      "height": 1640,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8a5d58ff45979f1c762c842bc7c0d911ab6a436fb4fc94eef88b47817f9c50b6"
+    },
+    {
+      "file": "webkit-choices-protein-synthesis.webp",
+      "width": 2360,
+      "height": 1640,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "09fcd3694276c256371fb3101136cb71d7023effc6aed54f10ea8243e842bb50"
+    },
+    {
+      "file": "webkit-choices-ride-acceleration.webp",
+      "width": 2360,
+      "height": 1640,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "023ae8e0e114e7ba142f3bab6132628e576a4abe196cd3ff006ba58e0a4012b6"
+    },
+    {
+      "file": "webkit-choices-sugar-phase.webp",
+      "width": 2360,
+      "height": 1640,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "065a2d8310320eb1e3b9fa1f7435d76cb9e15b3348addda28769addf8832fe2d"
+    },
+    {
+      "file": "webkit-electroplating.webp",
+      "width": 1348,
+      "height": 976,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "1dbc0e1e4f2cad1c3b3effdcf94f6c25bc3f3507e82881a758d58e46561eec6c"
+    },
+    {
+      "file": "webkit-force-motion.webp",
+      "width": 1120,
+      "height": 524,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f84458759185cf635e23aa05a72d23bd8749ce1bba1c405ab55894802f65d54a"
+    },
+    {
+      "file": "webkit-periodic-bonding.webp",
+      "width": 1240,
+      "height": 580,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "0308b1a0f49fe457d67743648df54e5e10c3e165e167c632dd397f5e94440dee"
+    },
+    {
+      "file": "webkit-ride-circle.webp",
+      "width": 1440,
+      "height": 4296,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d527b64eb7755ef63a584790ca77ab3189190d17c144f936d3148d0437fd018a"
+    },
+    {
+      "file": "webkit-ride-slide.webp",
+      "width": 1440,
+      "height": 4364,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "e2218731dde0d96162f9af138ae1ec0930f0e9777527e02987596db174e14127"
+    },
+    {
+      "file": "webkit-ride-swing.webp",
+      "width": 1440,
+      "height": 4472,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "85d56e3008860eb3a9c2f5f8e9884d6774f2d08540db9e4499a52026e974b937"
+    },
+    {
+      "file": "webkit-speaker-lab.webp",
+      "width": 1340,
+      "height": 716,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "dc0f57ca62f85202e864070b1d9e2debecd6b428b29cdc58c2a526f98fe0a8f2"
+    },
+    {
+      "file": "webkit-sugar-phase.webp",
+      "width": 1340,
+      "height": 936,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "61763d55bce695d18f12338424a186560bc47f4e36b619683086f10777e16d3f"
+    },
+    {
+      "file": "webkit-water-wave-tank.webp",
+      "width": 1340,
+      "height": 1280,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "efc1bbe297b1ae7e41e4e8f19f3c735579c7cff1740a2314c6d00af024fea2af"
+    },
+    {
+      "file": "webkit-wireless-power.webp",
+      "width": 1340,
+      "height": 716,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "15307ecaefe9f62190fca04d3b88ec1f40e68d4bdd1fc9388262806f4d2e9c3b"
+    },
+    {
+      "file": "chemistry-regression/bean-respiration-chromium-1100.webp",
+      "width": 1052,
+      "height": 1310,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9cb5a92bd4a6e7b75b3374833db6b7f2c0b134ecdbdf0e66a61dd4cb23662bad"
+    },
+    {
+      "file": "chemistry-regression/bean-respiration-chromium-390.webp",
+      "width": 366,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2eba3279aa1920e0a5a594549c88aa843d79099d1485720123da6b2124171a39"
+    },
+    {
+      "file": "chemistry-regression/bean-respiration-webkit-1100.webp",
+      "width": 1052,
+      "height": 1310,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "5a70d8ea8ece40c65840c48379cb3eb1200c2912f696fe634f94bdc3a0b9651a"
+    },
+    {
+      "file": "chemistry-regression/bean-respiration-webkit-390.webp",
+      "width": 366,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2bdb14ab9fa1a3d94e822d54b9b18c24bea3d2c4008b43315f75b7709f1ca285"
+    },
+    {
+      "file": "chemistry-regression/beans-heat-chromium-1100.webp",
+      "width": 1052,
+      "height": 1310,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a661f6293dbda96767409f980ca316287dd06a1a8f242dd2beed9bd466b8865c"
+    },
+    {
+      "file": "chemistry-regression/beans-heat-chromium-390.webp",
+      "width": 366,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2eba3279aa1920e0a5a594549c88aa843d79099d1485720123da6b2124171a39"
+    },
+    {
+      "file": "chemistry-regression/beans-heat-webkit-1100.webp",
+      "width": 1052,
+      "height": 1310,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "fa59dd3007bedd2e89b2002aff1d19c897c16da8558f546944a12990006c8114"
+    },
+    {
+      "file": "chemistry-regression/beans-heat-webkit-390.webp",
+      "width": 366,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "02c36ca74b36eed58b583bf343cf95389405273a5efc464943b9708feb7081e5"
+    },
+    {
+      "file": "chemistry-regression/beans-respirometer-chromium-1100.webp",
+      "width": 1052,
+      "height": 1091,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f0aeead500d1a5beec7c5533be8207e4b26a448dd4c0b31614eb3237f1c5c7d9"
+    },
+    {
+      "file": "chemistry-regression/beans-respirometer-chromium-390.webp",
+      "width": 366,
+      "height": 1035,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "20ebda482f28f23619c5cacc53384d8a73219f9a42050bc90283dd1fa1d5accc"
+    },
+    {
+      "file": "chemistry-regression/beans-respirometer-webkit-1100.webp",
+      "width": 1052,
+      "height": 1091,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c56bd7320afc0f9776121050736d20d2b37178e61539523e9ff90acd3cb1778a"
+    },
+    {
+      "file": "chemistry-regression/beans-respirometer-webkit-390.webp",
+      "width": 366,
+      "height": 1035,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "30069d84e91811823df16a4df58ce74a15d87a0faf33499645158a8fa4e67ed0"
+    },
+    {
+      "file": "chemistry-regression/beans-sensors-chromium-1100.webp",
+      "width": 1052,
+      "height": 1310,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3b9f83e9e5126f779ec5ce50229093c920db3d3e533176e365a717782c2319ca"
+    },
+    {
+      "file": "chemistry-regression/beans-sensors-chromium-390.webp",
+      "width": 366,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2e5e85ec312cb20491b138e1593b7014a12f4f240f2e27329a05df5a063c7c2c"
+    },
+    {
+      "file": "chemistry-regression/beans-sensors-webkit-1100.webp",
+      "width": 1052,
+      "height": 1310,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "28aac20a8783228fe096445d6b63037f0fdf3eea535068c24cc4f4b4b00bea6f"
+    },
+    {
+      "file": "chemistry-regression/beans-sensors-webkit-390.webp",
+      "width": 366,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c56505bf36eb7a53925020e35737c363a26eabf109e28e2a3ad9d48ff7231e5e"
+    },
+    {
+      "file": "chemistry-regression/buffer-solution-chromium-1100.webp",
+      "width": 1052,
+      "height": 1124,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d703c846b746a7a298bf8997d76417475142c4d0591dec19750d345113bf03bb"
+    },
+    {
+      "file": "chemistry-regression/buffer-solution-chromium-390.webp",
+      "width": 366,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d287b9b3eb7a8ceb140330156b61bd2aca729200f6e797c3695f48cfbcec0133"
+    },
+    {
+      "file": "chemistry-regression/buffer-solution-webkit-1100.webp",
+      "width": 1052,
+      "height": 1124,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9a76b81f82e4e229d6972d279a865548dc5b1f15e9d4a92ef742e1a964e0d7d7"
+    },
+    {
+      "file": "chemistry-regression/buffer-solution-webkit-390.webp",
+      "width": 366,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c6beafb2db0470d97d219e888fd5cc5a8824053e748640f4accca102ab4a11dd"
+    },
+    {
+      "file": "chemistry-regression/gas-identification-chromium-1100.webp",
+      "width": 1052,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "48e6dd4aee6df3c99efb5521b713885b16446888b3eab9d8f617c0a2856cc8f6"
+    },
+    {
+      "file": "chemistry-regression/gas-identification-chromium-390.webp",
+      "width": 366,
+      "height": 1212,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "96a3ef1970546e45d3a08a1aa12f7790fbef06d734eeb41a4f19b02dc79b5ca5"
+    },
+    {
+      "file": "chemistry-regression/gas-identification-webkit-1100.webp",
+      "width": 1052,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "bf59baf1d0d61756e917959066b68b2e0926ca4125eb5be819ea26a35013f740"
+    },
+    {
+      "file": "chemistry-regression/gas-identification-webkit-390.webp",
+      "width": 366,
+      "height": 1212,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3b12d19e0045e7331a5c2a2796361f48341f830d19d30f97d17dabb1a197e6c3"
+    },
+    {
+      "file": "chemistry-regression/hess-calorimetry-chromium-1100.webp",
+      "width": 1052,
+      "height": 1058,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3bddc29773270ea71c901716f4e5f12bd7ad48514e91ec1aa2938171993d1a2a"
+    },
+    {
+      "file": "chemistry-regression/hess-calorimetry-chromium-390.webp",
+      "width": 366,
+      "height": 1047,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "5c91ea7238e756e62e5f7663976d60bb73e7a7b5f77257479da01d656f684144"
+    },
+    {
+      "file": "chemistry-regression/hess-calorimetry-webkit-1100.webp",
+      "width": 1052,
+      "height": 1058,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8c903d77486be0797c88d3771dc95727914885e8d227639f791c65221d0b1d88"
+    },
+    {
+      "file": "chemistry-regression/hess-calorimetry-webkit-390.webp",
+      "width": 366,
+      "height": 1047,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9388930e4810fd8760648d66f33ef5d2b5897ebf043954707314593f9ec7940f"
+    },
+    {
+      "file": "chemistry-regression/hess-dissolved-chromium-1100.webp",
+      "width": 1052,
+      "height": 1038,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "0a76edf687b44e7f18e67d43254fc6b9500cf81a7a1050b5012824eee870fc6b"
+    },
+    {
+      "file": "chemistry-regression/hess-dissolved-chromium-390.webp",
+      "width": 366,
+      "height": 1023,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "0c76d93b10ac3e30ea9c493760a61e40f018133c4cea22f8079a081e4a69549c"
+    },
+    {
+      "file": "chemistry-regression/hess-dissolved-webkit-1100.webp",
+      "width": 1052,
+      "height": 1038,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "fb534c8db7296d8dc533baafbfe742be523aceb5b60538845c1558d0ed8768ea"
+    },
+    {
+      "file": "chemistry-regression/hess-dissolved-webkit-390.webp",
+      "width": 366,
+      "height": 1023,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "81c1e22cd0fbdd49b701d5bd624f3e4cc435d874a189ee775093a7dd312ff8de"
+    },
+    {
+      "file": "chemistry-regression/salt-hydrolysis-chromium-1100.webp",
+      "width": 1052,
+      "height": 1072,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "fae8373d579564d6827b2459ac51b09f78cffb3cf306d00c85ebbb72d3aa48cc"
+    },
+    {
+      "file": "chemistry-regression/salt-hydrolysis-chromium-390.webp",
+      "width": 366,
+      "height": 1119,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "eb8382b2cb45b034556e6a49da619a667c843a0f048e04070666f0d0f6be63df"
+    },
+    {
+      "file": "chemistry-regression/salt-hydrolysis-webkit-1100.webp",
+      "width": 1052,
+      "height": 1072,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "ab74b3e65e8c716afe2d2fda64ff4091eafe22c404db75c5b97e1651d0ba40c5"
+    },
+    {
+      "file": "chemistry-regression/salt-hydrolysis-webkit-390.webp",
+      "width": 366,
+      "height": 1119,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c130c262bcfaee192184a92363bb5e620f2bb634008df142746e2b61230a9c5f"
+    },
+    {
+      "file": "chemistry-regression/sugar-boiling-chromium-1100.webp",
+      "width": 1052,
+      "height": 1394,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4b22c6d61305e2d7fa500a48df3477b85f99984d3b7f63311d7c7c0cfda2fc77"
+    },
+    {
+      "file": "chemistry-regression/sugar-boiling-chromium-390.webp",
+      "width": 366,
+      "height": 1318,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "48a48773de636e41ffbdaa13d911ccdd1d2e65551aad73b3d4ba33334cd49db3"
+    },
+    {
+      "file": "chemistry-regression/sugar-boiling-webkit-1100.webp",
+      "width": 1052,
+      "height": 1394,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "335cae79e100027ff3b7485e20afa16078e248bb32f119cad1b463b1d56d6711"
+    },
+    {
+      "file": "chemistry-regression/sugar-boiling-webkit-390.webp",
+      "width": 366,
+      "height": 1318,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d909f0907cce598cddde8527b360de2757f894464243f6cc843f78b1add64401"
+    },
+    {
+      "file": "chemistry-regression/sugar-phase-chromium-1100.webp",
+      "width": 1052,
+      "height": 1394,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "932266c91dbf632765aa72ed6ab1e622e1e0221ecb3ca9f28fed08b54471172e"
+    },
+    {
+      "file": "chemistry-regression/sugar-phase-chromium-390.webp",
+      "width": 366,
+      "height": 1318,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "ddc6413142c4244bd16f4add6cb660cdce9263e4c22cd94b1a82a0db15c71bb2"
+    },
+    {
+      "file": "chemistry-regression/sugar-phase-webkit-1100.webp",
+      "width": 1052,
+      "height": 1394,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d151ad1b42846b8a16f064084b0f63f773a5ec6232359cf7447cd86e6e68ee2b"
+    },
+    {
+      "file": "chemistry-regression/sugar-phase-webkit-390.webp",
+      "width": 366,
+      "height": 1318,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "91d6388ec8401604dd8b0d1a6a6feb150c48624cc0523f15984777f853368615"
+    },
+    {
+      "file": "course-regression/chromium-cell-micrometry-1024.webp",
+      "width": 976,
+      "height": 1751,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f82b3dde4fc27108ae994ed8943bb22f74f2525733770b6cc6af33867170dbd5"
+    },
+    {
+      "file": "course-regression/chromium-cell-micrometry-1180.webp",
+      "width": 1132,
+      "height": 1456,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "653b92c6683f4df5bfc4c9efc5e745b5452186609c57b3b061b2a817a3c285c1"
+    },
+    {
+      "file": "course-regression/chromium-cell-micrometry-1366.webp",
+      "width": 1280,
+      "height": 1456,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "46262027c4dde1c326db281ddc93b867937b438878bf945926f991a8af0cec4c"
+    },
+    {
+      "file": "course-regression/chromium-cell-micrometry-768.webp",
+      "width": 720,
+      "height": 1715,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "cebb307c5df1b63cfb9f3fc7826a8613d815cd912e3a27c7ca76b3ee4dc8fa92"
+    },
+    {
+      "file": "course-regression/chromium-cell-micrometry-820.webp",
+      "width": 772,
+      "height": 1751,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "24873083544cf8519b6211c52d5e0fa200ca3e6e5b04dbd1e3ca3025bc4f35b5"
+    },
+    {
+      "file": "course-regression/chromium-coastal-inundation-1024.webp",
+      "width": 976,
+      "height": 1427,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "afddaf3b20c0f73328e0d583d07b787d93cb63cb6f0b1956114a8db37756b1fd"
+    },
+    {
+      "file": "course-regression/chromium-coastal-inundation-1180.webp",
+      "width": 1132,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "aafa1a4e7817572e073d731804cde7e79d229f1e132927637213e82f01932e7f"
+    },
+    {
+      "file": "course-regression/chromium-coastal-inundation-1366.webp",
+      "width": 1280,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "7abc6fe4c28e7bb556db92d5857dfd4c8d8f71ad492946d4cb4a363b5bbdd96d"
+    },
+    {
+      "file": "course-regression/chromium-coastal-inundation-768.webp",
+      "width": 720,
+      "height": 1420,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2f6d7c8147a6889b54a795e162b55d27574f272ffc846aff54455bfeac217379"
+    },
+    {
+      "file": "course-regression/chromium-coastal-inundation-820.webp",
+      "width": 772,
+      "height": 1427,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "eb88aca21965758cd330acd9862807436623750cffe02ca3d75d953bb0bc8448"
+    },
+    {
+      "file": "course-regression/chromium-coastal-swapped.webp",
+      "width": 1280,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "ab16db85712c3417f67df43991de80f2e05eb6fb204a07c0613a94e1756db1fb"
+    },
+    {
+      "file": "course-regression/chromium-digestive-enzymes-1024.webp",
+      "width": 976,
+      "height": 1442,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "67ad61258ee781d7de0ea24b17dc35c1a2ee966f2c32be576ed5745ee0aec1f4"
+    },
+    {
+      "file": "course-regression/chromium-digestive-enzymes-1180.webp",
+      "width": 1132,
+      "height": 1116,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "7578dcb429efdc8f6d9833b9dd37defbbad9a4bb017cb4d5ecb7c33a77a03005"
+    },
+    {
+      "file": "course-regression/chromium-digestive-enzymes-1366.webp",
+      "width": 1280,
+      "height": 1116,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f6103bcb0987855db93268e1ee05f64b3a6eea9552a4b35236b59c67435a7d67"
+    },
+    {
+      "file": "course-regression/chromium-digestive-enzymes-768.webp",
+      "width": 720,
+      "height": 1363,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a56fd4464a07541bc299fe7d5cab99a68f00f0bf212d31aaf0a24d8d4011819d"
+    },
+    {
+      "file": "course-regression/chromium-digestive-enzymes-820.webp",
+      "width": 772,
+      "height": 1394,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "44865482921a0fe5adfa5b149d7f085ebbde08716dde82d2bec99885295024df"
+    },
+    {
+      "file": "course-regression/chromium-leaf-pigments-1024.webp",
+      "width": 976,
+      "height": 1943,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f85fa451bf46cef6386bdc91411268c2b9386b0b01483ffbd1591e0334439701"
+    },
+    {
+      "file": "course-regression/chromium-leaf-pigments-1180.webp",
+      "width": 1132,
+      "height": 1551,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4204be47067fae5f992d87d8da4e1f36161528df7729aa154265a3c547480d4c"
+    },
+    {
+      "file": "course-regression/chromium-leaf-pigments-1366.webp",
+      "width": 1280,
+      "height": 1551,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d6635dab989f39383ba2035ad6956f990f78d3ad37c619c6c8c063ca5a1b8ca3"
+    },
+    {
+      "file": "course-regression/chromium-leaf-pigments-768.webp",
+      "width": 720,
+      "height": 1932,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c9f433c17d717891eac6d92f941129fa224b4716e7c79688b3bd272de4952184"
+    },
+    {
+      "file": "course-regression/chromium-leaf-pigments-820.webp",
+      "width": 772,
+      "height": 1967,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f7d939a511c86aba1df2a8718952de2e46bedc4d40dbc372959b9fdfc0b45836"
+    },
+    {
+      "file": "course-regression/chromium-longitudinal.webp",
+      "width": 1280,
+      "height": 1431,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3838686133bb42cd904f9d15cf9a22e190b70fffb1e33c06aa240b2160b37711"
+    },
+    {
+      "file": "course-regression/chromium-spring-wave-speed-1024.webp",
+      "width": 976,
+      "height": 1809,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "52745f287750147ca962d5b516d1d070a6ec1982c574ab11221f4168636cb0e3"
+    },
+    {
+      "file": "course-regression/chromium-spring-wave-speed-1180.webp",
+      "width": 1132,
+      "height": 1431,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f3cc941afb2ff2b65199b80b27266c285cd24980414e6dc6d70810ffa2457871"
+    },
+    {
+      "file": "course-regression/chromium-spring-wave-speed-1366.webp",
+      "width": 1280,
+      "height": 1431,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "6dd9e168b11702efe676007e2728c69fc1d1e70fd8295a2c4136968c6e76affa"
+    },
+    {
+      "file": "course-regression/chromium-spring-wave-speed-768.webp",
+      "width": 720,
+      "height": 1827,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f20c7893610cd083ee65d595e0a3a25590d6499d5f20f8d38a0e79e11780690d"
+    },
+    {
+      "file": "course-regression/chromium-spring-wave-speed-820.webp",
+      "width": 772,
+      "height": 1837,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "26e8c8d6276eb4fc76b287e1fa3b2369c999573f6303ef2205dcf7c0c7648708"
+    },
+    {
+      "file": "course-regression/chromium-water-electrolysis-1024.webp",
+      "width": 976,
+      "height": 1334,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "caf6c2cee99f30510091fbacbcde6bfb5bcd30798e065235895833d43e1d2554"
+    },
+    {
+      "file": "course-regression/chromium-water-electrolysis-1180.webp",
+      "width": 1132,
+      "height": 1014,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "1502b4fe94d263cfa7a85fec811463975e2f0b997d74f30dbee4ddc1f616237d"
+    },
+    {
+      "file": "course-regression/chromium-water-electrolysis-1366.webp",
+      "width": 1280,
+      "height": 1014,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "25af6a37e708ba8c06c4f20c50efe0012ff3a80f36e4455852e757265a5e418d"
+    },
+    {
+      "file": "course-regression/chromium-water-electrolysis-768.webp",
+      "width": 720,
+      "height": 1349,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "6c0c69bba5f1fc50bb16d119b190b423f4260a0a10fd5c802eb2e2e669fe8a91"
+    },
+    {
+      "file": "course-regression/chromium-water-electrolysis-820.webp",
+      "width": 772,
+      "height": 1357,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f2e94cd8bfc50f295661571e43f17355512b22de5da251075f96a18563a3c37d"
+    },
+    {
+      "file": "course-regression/webkit-cell-micrometry-1024.webp",
+      "width": 976,
+      "height": 1751,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "181ca41dd5e07b6d69c28a8399ed28e08c1e99e94e063cc0fad40538dd915777"
+    },
+    {
+      "file": "course-regression/webkit-cell-micrometry-1180.webp",
+      "width": 1132,
+      "height": 1456,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f097882adf547a49f054e461601bacb881f2d523a0249d158b585fca91569cc6"
+    },
+    {
+      "file": "course-regression/webkit-cell-micrometry-1366.webp",
+      "width": 1280,
+      "height": 1456,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d5766fd8de6e359373d030fcb5ec8a6e522d2d3f3f87a97d4685a3879ffb817e"
+    },
+    {
+      "file": "course-regression/webkit-cell-micrometry-768.webp",
+      "width": 720,
+      "height": 1715,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9bb83598d1c971550fc1716e845b1b4158b2249c85812ea2800beae4d37d27c9"
+    },
+    {
+      "file": "course-regression/webkit-cell-micrometry-820.webp",
+      "width": 772,
+      "height": 1751,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "83752138baa6e97c616bf21e4581e0c079d5869ac3e82713bac0f01c0874809c"
+    },
+    {
+      "file": "course-regression/webkit-coastal-inundation-1024.webp",
+      "width": 976,
+      "height": 1427,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4c6749c639c64a5fd54cf550f6619b381ccc79ca034519252de49ebba3b42b34"
+    },
+    {
+      "file": "course-regression/webkit-coastal-inundation-1180.webp",
+      "width": 1132,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "965cd42ddfddb67eae3e983d78725f99c5c402211c283676c467259cfcfec006"
+    },
+    {
+      "file": "course-regression/webkit-coastal-inundation-1366.webp",
+      "width": 1280,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "cf15ba6c7bddb9e1c054258d84d4c6fb490f66cf53332ee56b2d162d1dfefbe3"
+    },
+    {
+      "file": "course-regression/webkit-coastal-inundation-768.webp",
+      "width": 720,
+      "height": 1420,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "954cb04b0cbb66281ecc008b6d7340b1fe80186a123d682b799a87788c611549"
+    },
+    {
+      "file": "course-regression/webkit-coastal-inundation-820.webp",
+      "width": 772,
+      "height": 1427,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "58211be9532c01cc887ba5aba9d1fb4d7b5e315bc7e93afcb26e08a02cacd4e9"
+    },
+    {
+      "file": "course-regression/webkit-coastal-swapped.webp",
+      "width": 1280,
+      "height": 1199,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "7cafc55c545424607cf3b0851a57f11057a82155dca1f5c201e29116668e55c9"
+    },
+    {
+      "file": "course-regression/webkit-digestive-enzymes-1024.webp",
+      "width": 976,
+      "height": 1442,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "168f155d12be6ff57a3aea20c778403a0ae59308365fb4e471bd728c1807e240"
+    },
+    {
+      "file": "course-regression/webkit-digestive-enzymes-1180.webp",
+      "width": 1132,
+      "height": 1116,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "43f69676727cc26746d65e65d88491ed8436c2184769a7a94cf119dc6a262be4"
+    },
+    {
+      "file": "course-regression/webkit-digestive-enzymes-1366.webp",
+      "width": 1280,
+      "height": 1116,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f2ec8cc009affe7159d25514db1768645c1ce2981782b959474a60ce6d9cbcf9"
+    },
+    {
+      "file": "course-regression/webkit-digestive-enzymes-768.webp",
+      "width": 720,
+      "height": 1363,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "e7f837ab2b0d9279dff147c8555946f11cde40c714d7732db072fa92e192a00c"
+    },
+    {
+      "file": "course-regression/webkit-digestive-enzymes-820.webp",
+      "width": 772,
+      "height": 1394,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "20db5fddbeecacfacf3ab6ec275b0f90c97ac9037848e4cfcf8217dc7c361278"
+    },
+    {
+      "file": "course-regression/webkit-leaf-pigments-1024.webp",
+      "width": 976,
+      "height": 1943,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "82a580e865e1561985fe00bb9bcb5aeb90527e6edbbae9927804795991854198"
+    },
+    {
+      "file": "course-regression/webkit-leaf-pigments-1180.webp",
+      "width": 1132,
+      "height": 1551,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9250017a0549e990ff30ba125fba1057c20a4bd95317fb914f7e60c687d44344"
+    },
+    {
+      "file": "course-regression/webkit-leaf-pigments-1366.webp",
+      "width": 1280,
+      "height": 1551,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "1687f6227f675cab7984fd1185a178ee2f2c3dbdfeb060c008362c5c61ef78ca"
+    },
+    {
+      "file": "course-regression/webkit-leaf-pigments-768.webp",
+      "width": 720,
+      "height": 1932,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3faf0af580dd964706d4938faaa8a57bec4a4aa1180336a42c359505f99acfea"
+    },
+    {
+      "file": "course-regression/webkit-leaf-pigments-820.webp",
+      "width": 772,
+      "height": 1967,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9d3f9a35ad30eb11125cf51226749721e0b08901a766106df2fb166c0dffcb3e"
+    },
+    {
+      "file": "course-regression/webkit-longitudinal.webp",
+      "width": 1280,
+      "height": 1431,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c1a711b84aae6c64fb25dd69b95b95887b6feea5afe95b5051eb8019818e22be"
+    },
+    {
+      "file": "course-regression/webkit-spring-wave-speed-1024.webp",
+      "width": 976,
+      "height": 1809,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f3829b5c1bc31c3e588de4e460d8f523b590627ab14ab089d18f36b0b6e430eb"
+    },
+    {
+      "file": "course-regression/webkit-spring-wave-speed-1180.webp",
+      "width": 1132,
+      "height": 1431,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "601ab1a30d3cd43aaf94290a508e48b01ef54d9aace8ea50e3089d2381834756"
+    },
+    {
+      "file": "course-regression/webkit-spring-wave-speed-1366.webp",
+      "width": 1280,
+      "height": 1431,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9e1ddd8cdde4ef358777ac89320dfe224f65cb34558b644277e16911807c2565"
+    },
+    {
+      "file": "course-regression/webkit-spring-wave-speed-768.webp",
+      "width": 720,
+      "height": 1827,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4a85ce371c7c9b41c2e055b3aa3035adff163ab87cdc2c523a9a40970b0e66c7"
+    },
+    {
+      "file": "course-regression/webkit-spring-wave-speed-820.webp",
+      "width": 772,
+      "height": 1837,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "6f4051ddc0741f1761b0ed47176ea47cc0d779cf014499e9b36ddc3c97b2e9d3"
+    },
+    {
+      "file": "course-regression/webkit-water-electrolysis-1024.webp",
+      "width": 976,
+      "height": 1334,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b26ca94654b0a9d1c9cc25d44bfe7f5e2a2a17b50b8faf03c35ce1fc02f8931a"
+    },
+    {
+      "file": "course-regression/webkit-water-electrolysis-1180.webp",
+      "width": 1132,
+      "height": 1014,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "fd482d2ea8b7f091f52d1b5687b0545b9e4ee31573c0e9dc4809ab3c65d6b74e"
+    },
+    {
+      "file": "course-regression/webkit-water-electrolysis-1366.webp",
+      "width": 1280,
+      "height": 1014,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "243953bf6a80f683b450d03bf74276f858f24b1e75f3e20717978c3a9cd3f0d3"
+    },
+    {
+      "file": "course-regression/webkit-water-electrolysis-768.webp",
+      "width": 720,
+      "height": 1349,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "18ccab7f5ce5ef338601d406c7c9bf892f9ec75f3c33a0941406904d0bac7800"
+    },
+    {
+      "file": "course-regression/webkit-water-electrolysis-820.webp",
+      "width": 772,
+      "height": 1357,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b5e0acf79052d79f6f9fb6f0594cc3fce09a6509e3d6e7e473d10cd1967759d8"
+    },
+    {
+      "file": "inquiry-regression/antibiotic-disc-chromium-1100.webp",
+      "width": 1052,
+      "height": 1363,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "16d391b3de8bc74b9f8fc85ae13ad5c8f2e24851eb3e4ba418d9e958aef047ef"
+    },
+    {
+      "file": "inquiry-regression/antibiotic-disc-chromium-390.webp",
+      "width": 366,
+      "height": 1662,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9d4d2583943e283a116d974bcc0e9f77e2525840c2288557705c02d79c0f2c53"
+    },
+    {
+      "file": "inquiry-regression/antibiotic-disc-webkit-1100.webp",
+      "width": 1052,
+      "height": 1363,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b15e9cc6a2c816cb5ff254f190884b70e5ef06dc9914bc8d8907df9da7826ce5"
+    },
+    {
+      "file": "inquiry-regression/antibiotic-disc-webkit-390.webp",
+      "width": 366,
+      "height": 1662,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "eea932e747963953f2243d3f879f4402db4aabe5e11a291486118135c5a6f5a4"
+    },
+    {
+      "file": "inquiry-regression/circle-chromium-1100.webp",
+      "width": 1052,
+      "height": 1730,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "991d514b7814acca0b7415a89376bdda52f4ffb1d37c3a2c2fc2807dc4f0f031"
+    },
+    {
+      "file": "inquiry-regression/circle-chromium-390.webp",
+      "width": 366,
+      "height": 2156,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b2cefb87458a5293c7534e238fae8d38109e5ba1f27b059de7420f3a8a8380fe"
+    },
+    {
+      "file": "inquiry-regression/circle-webkit-1100.webp",
+      "width": 1052,
+      "height": 1730,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2c8c2ea7a357fa6ee332af2a07799f021b939f7c41f8741d817caa53ee84ceab"
+    },
+    {
+      "file": "inquiry-regression/circle-webkit-390.webp",
+      "width": 366,
+      "height": 2156,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "09352797da349ffef5851b6d54cce5b52b4cdf597a962a1585106827723ed950"
+    },
+    {
+      "file": "inquiry-regression/disc-separated-chromium-1100.webp",
+      "width": 1052,
+      "height": 1363,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b87774471fc366ddf04ab9ac877ecdce58577a982caed458783326e7ea72a9da"
+    },
+    {
+      "file": "inquiry-regression/disc-separated-chromium-390.webp",
+      "width": 366,
+      "height": 1638,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d1f48bf6087e1513dc5c98b0d016d7b280d817a27150802afe4f8f4da6db9e8d"
+    },
+    {
+      "file": "inquiry-regression/disc-separated-webkit-1100.webp",
+      "width": 1052,
+      "height": 1363,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9f16f4194acef7083b15d2f895960ec0357c5ad0f658f82dda48d68728a0d16d"
+    },
+    {
+      "file": "inquiry-regression/disc-separated-webkit-390.webp",
+      "width": 366,
+      "height": 1638,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "97561d7a6386125b749dc168b7fe43bcb51f78f62f307f9fa692edda479e160b"
+    },
+    {
+      "file": "inquiry-regression/dna-fragments-chromium-1100.webp",
+      "width": 1052,
+      "height": 1277,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "32a34a04db564c4459f99002b4419d5e7900387c4c20ddc65b85380e35dd924b"
+    },
+    {
+      "file": "inquiry-regression/dna-fragments-chromium-390.webp",
+      "width": 366,
+      "height": 1413,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b32854953839364e18059c10ec011148607f9e45fd2df8cdfda9fd150f57e876"
+    },
+    {
+      "file": "inquiry-regression/dna-fragments-webkit-1100.webp",
+      "width": 1052,
+      "height": 1277,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9aec45bde5baa0e4ef4f674987d6fbfe09e3388138591f46e053c77e6f22c581"
+    },
+    {
+      "file": "inquiry-regression/dna-fragments-webkit-390.webp",
+      "width": 366,
+      "height": 1413,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "5e8886ed0fd06df78b8689a10a27616d2d2ce33837371b842558d845b4089de6"
+    },
+    {
+      "file": "inquiry-regression/dna-replication-chromium-1100.webp",
+      "width": 1052,
+      "height": 1277,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8b6ee5673709db43d3cd740ffeab101167ced05c5716d896c3edcc38e80ae9a0"
+    },
+    {
+      "file": "inquiry-regression/dna-replication-chromium-390.webp",
+      "width": 366,
+      "height": 1413,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f4c2f6d00178cd929b4f52323d05859a0c8dca97e849075d92e82e51b41bfe3a"
+    },
+    {
+      "file": "inquiry-regression/dna-replication-webkit-1100.webp",
+      "width": 1052,
+      "height": 1277,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "22a1c2982684ab2dbd6dee95e92268aca4ddeffd7fac21a226b4738368a9cd1e"
+    },
+    {
+      "file": "inquiry-regression/dna-replication-webkit-390.webp",
+      "width": 366,
+      "height": 1413,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8f5538ad90956d577c2f58dd7610ee0d9084689ef3b67367d65433a01cd67a39"
+    },
+    {
+      "file": "inquiry-regression/doppler-lab-chromium-1100.webp",
+      "width": 1052,
+      "height": 1034,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "576db6f788d2405e2b273fefbc0a1c89af6a9231a9c742d72e6a548cb465d0e2"
+    },
+    {
+      "file": "inquiry-regression/doppler-lab-chromium-390.webp",
+      "width": 366,
+      "height": 862,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "32213f7229ccfa7ab57098d56b13be1b2b656ea690e634ece9949b495ebed345"
+    },
+    {
+      "file": "inquiry-regression/doppler-lab-webkit-1100.webp",
+      "width": 1052,
+      "height": 1034,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "415e5290c791652013dad366cf0c663b55d326cc37f6fa70ff7fda429fff2608"
+    },
+    {
+      "file": "inquiry-regression/doppler-lab-webkit-390.webp",
+      "width": 366,
+      "height": 862,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "7e37a7f9ee7704824ae3db1076ba0d66ab35857e6054ad4089559759694ae477"
+    },
+    {
+      "file": "inquiry-regression/doppler-toward-chromium-1100.webp",
+      "width": 1052,
+      "height": 1034,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "ec0070ce9c5397a8ec6b115dc949285b4d933ae0824dc5f7e72ffdf91679332a"
+    },
+    {
+      "file": "inquiry-regression/doppler-toward-chromium-390.webp",
+      "width": 366,
+      "height": 862,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a32cbc6e53bc719615d9614afaef26ef0daa879259ebfe4f72ab4adf4de22f1b"
+    },
+    {
+      "file": "inquiry-regression/doppler-toward-webkit-1100.webp",
+      "width": 1052,
+      "height": 1034,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d0e32dccdc75aa609de1b43a74f6eae6bfc68c536564f36ff22ce3e8850aad3f"
+    },
+    {
+      "file": "inquiry-regression/doppler-toward-webkit-390.webp",
+      "width": 366,
+      "height": 862,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4ea70824a9ca073ea86ab6aa2e5e782708933e51a340090434e1755b958e3167"
+    },
+    {
+      "file": "inquiry-regression/insulation-hot-chromium-1100.webp",
+      "width": 1052,
+      "height": 1783,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "aa61acbfd1d2e4871c6453aabd64b1ec745ff2ead6c6bbfffd1cda1ffdc72712"
+    },
+    {
+      "file": "inquiry-regression/insulation-hot-chromium-390.webp",
+      "width": 366,
+      "height": 1271,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f04189761c009d4f297bc89d151bb097118de244417336baeaa426dfda4b6849"
+    },
+    {
+      "file": "inquiry-regression/insulation-hot-webkit-1100.webp",
+      "width": 1052,
+      "height": 1782,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "0b50734483ef1a08fce11eb566b2851f5e0168af8e0d1d51dde2d68147eb5f86"
+    },
+    {
+      "file": "inquiry-regression/insulation-hot-webkit-390.webp",
+      "width": 366,
+      "height": 1270,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f14c393a094d8f434a2afb29aa3afc3423af5b634d33fb5d47b9eaedd0cd28e6"
+    },
+    {
+      "file": "inquiry-regression/insulation-lab-chromium-1100.webp",
+      "width": 1052,
+      "height": 1783,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4600e66ed8e099adf264697296fde4c0700c467cf2bdd250c44a410facad970c"
+    },
+    {
+      "file": "inquiry-regression/insulation-lab-chromium-390.webp",
+      "width": 366,
+      "height": 1271,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d0064a161560a12bb0f096e415f784e06c34bf8ea8981ab260d98a68074c2129"
+    },
+    {
+      "file": "inquiry-regression/insulation-lab-webkit-1100.webp",
+      "width": 1052,
+      "height": 1782,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "301fc284a73f89952866cdba53cc4b69bac8bf34e7aa46d91a37a918f7ff0506"
+    },
+    {
+      "file": "inquiry-regression/insulation-lab-webkit-390.webp",
+      "width": 366,
+      "height": 1270,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a1658955977b20c4aabcdc2c3d67c76d4b9516f06b6fa2b55c32f0a8bc5087db"
+    },
+    {
+      "file": "inquiry-regression/karyotype-lab-chromium-1100.webp",
+      "width": 1052,
+      "height": 1306,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c64a9e5c06cbf31f067ec6faf75a40f7c103ad0e0e346aa4828016901709349d"
+    },
+    {
+      "file": "inquiry-regression/karyotype-lab-chromium-390.webp",
+      "width": 366,
+      "height": 2277,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "1364c4b5d18a6bffc2764c0c6fcf6c42dd1519aa133646b10d8feb40912e4eae"
+    },
+    {
+      "file": "inquiry-regression/karyotype-lab-webkit-1100.webp",
+      "width": 1052,
+      "height": 1306,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "401fc2157c3c2be925722149b96abced502c5dba5917eb6d1b9dc34cd18e33b6"
+    },
+    {
+      "file": "inquiry-regression/karyotype-lab-webkit-390.webp",
+      "width": 366,
+      "height": 2277,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "afef79004046f05b8cbb46f8b2712ce02524f13dca15d4f35fa01dbdecbd5753"
+    },
+    {
+      "file": "inquiry-regression/nylon-interface-chromium-1100.webp",
+      "width": 1052,
+      "height": 1464,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a715b08378837254369ad8a2a5a0113b30b02cec61c73ab23d45ff5fb747eb80"
+    },
+    {
+      "file": "inquiry-regression/nylon-interface-chromium-390.webp",
+      "width": 366,
+      "height": 1396,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "1d34f1459cc21717db061bb7ff2ab74e25b74387551180b44a3e3c87d5a7e800"
+    },
+    {
+      "file": "inquiry-regression/nylon-interface-webkit-1100.webp",
+      "width": 1052,
+      "height": 1464,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8878b2936163f86d1e3b4e91b481ed295683ec10589ad45d946eed366f8bba19"
+    },
+    {
+      "file": "inquiry-regression/nylon-interface-webkit-390.webp",
+      "width": 366,
+      "height": 1396,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "298576f72ae94a339e45b0fad5a334027e410e41ef0502a5332ac63af10727aa"
+    },
+    {
+      "file": "inquiry-regression/pedigree-lab-chromium-1100.webp",
+      "width": 1052,
+      "height": 2340,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "17cc323950f9f62ea6ae111d24bde21c3a272d6c6faede09e1a633e64142de3a"
+    },
+    {
+      "file": "inquiry-regression/pedigree-lab-chromium-390.webp",
+      "width": 366,
+      "height": 2634,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "75551dfb9ddfc37e1021e6bf2437744b6cf1e1338099b99fe20a53b891ea317a"
+    },
+    {
+      "file": "inquiry-regression/pedigree-lab-webkit-1100.webp",
+      "width": 1052,
+      "height": 2340,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "36a1b008cfa4a639b3e7cdacdd457c909aef781f66568bb7818df1c8fe16037d"
+    },
+    {
+      "file": "inquiry-regression/pedigree-lab-webkit-390.webp",
+      "width": 366,
+      "height": 2634,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4728d66f8dacf55127d9458c4af07d96674fbabdd3ed22888014e2b6797a82c6"
+    },
+    {
+      "file": "inquiry-regression/protein-release-chromium-1100.webp",
+      "width": 1052,
+      "height": 1620,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "7cdbc54419ede6b09267a50090221dbbb8f38dc078f6a5640c4764eddb69204f"
+    },
+    {
+      "file": "inquiry-regression/protein-release-chromium-390.webp",
+      "width": 366,
+      "height": 1876,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "563ad3a2f23e6fa02969eae97b6ea0d81bc62670da17b0e263b7a37dd37470dd"
+    },
+    {
+      "file": "inquiry-regression/protein-release-webkit-1100.webp",
+      "width": 1052,
+      "height": 1620,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a515726e5ebebbb3caf5733fb339a1178a99c9377798e985f3762a983345307a"
+    },
+    {
+      "file": "inquiry-regression/protein-release-webkit-390.webp",
+      "width": 366,
+      "height": 1876,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a1f032958bddb2bba93afde934029f80d1f7d4b8c1ce54bcff2e9786b3b58f94"
+    },
+    {
+      "file": "inquiry-regression/protein-synthesis-chromium-1100.webp",
+      "width": 1052,
+      "height": 1620,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8bb3d118c377f0b8e41413807080c5c91e0724897a6622752bb5f63c8a3507ec"
+    },
+    {
+      "file": "inquiry-regression/protein-synthesis-chromium-390.webp",
+      "width": 366,
+      "height": 1831,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "a73f366049e6f861f9b19b2ef70677bfeb994fbf20945066bcb8075a45c25d1a"
+    },
+    {
+      "file": "inquiry-regression/protein-synthesis-webkit-1100.webp",
+      "width": 1052,
+      "height": 1620,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "73c74fc7fb3e92e6b31e8244164115d7f87a472463d9a9f6c2e041ed1c5d7711"
+    },
+    {
+      "file": "inquiry-regression/protein-synthesis-webkit-390.webp",
+      "width": 366,
+      "height": 1831,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "ad475f97045a76c079f4c671c06ccaf80dd41b4ff341f05a883de7ff732bb326"
+    },
+    {
+      "file": "inquiry-regression/ride-acceleration-chromium-1100.webp",
+      "width": 1052,
+      "height": 1759,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "50282150a5cb419ca84459881f3fb8ad82c4e57a059e93be6d237a346a0bcddc"
+    },
+    {
+      "file": "inquiry-regression/ride-acceleration-chromium-390.webp",
+      "width": 366,
+      "height": 2225,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "bdf0a8578eeef368018799fffd6c8f1823f938a81dea3cc4454010f3e6ededfe"
+    },
+    {
+      "file": "inquiry-regression/ride-acceleration-webkit-1100.webp",
+      "width": 1052,
+      "height": 1759,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "efe3e72d97cca9cc0217318eda3483181decdafe3e45fccdd096cc6861b730f0"
+    },
+    {
+      "file": "inquiry-regression/ride-acceleration-webkit-390.webp",
+      "width": 366,
+      "height": 2225,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "40dae4b954490d43ee092081a6e54f3d56b134ad65c1bd73f71ee56a93739ae6"
+    },
+    {
+      "file": "inquiry-regression/silver-mirror-chromium-1100.webp",
+      "width": 1052,
+      "height": 1067,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9c3ac3183a37897c49bf9ae3ac70cf5e2e8361cc8a290f23231a4b155b43b5f5"
+    },
+    {
+      "file": "inquiry-regression/silver-mirror-chromium-390.webp",
+      "width": 366,
+      "height": 945,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "1638374357d7f03a99a9213aaa85ade061378d31aa81d954f5b026c81f0867ab"
+    },
+    {
+      "file": "inquiry-regression/silver-mirror-webkit-1100.webp",
+      "width": 1052,
+      "height": 1067,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "11f480db5b54bd94a0688148717ff22ab3063724f67edb521e0233a0b8065e48"
+    },
+    {
+      "file": "inquiry-regression/silver-mirror-webkit-390.webp",
+      "width": 366,
+      "height": 945,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2d240a25f5a6c77723652fda91471cced49ffd41dbedb3a8786283c206462af0"
+    },
+    {
+      "file": "inquiry-regression/silver-positive-chromium-1100.webp",
+      "width": 1052,
+      "height": 1178,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "dcf43922752b2baf9cd8974fe2a0c6ad6ea7da5d4a8a9a2a0d6abb155c177ec3"
+    },
+    {
+      "file": "inquiry-regression/silver-positive-chromium-390.webp",
+      "width": 366,
+      "height": 1103,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3a9fa95b01ce3433e835fd2295a0ad9ec9194d907897b5438a08cd8ad896a2ef"
+    },
+    {
+      "file": "inquiry-regression/silver-positive-webkit-1100.webp",
+      "width": 1052,
+      "height": 1178,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "569b8e00f308cef5d254ac8e65a00dee022bb1d6549701c9e58cc8c9b74fe6a4"
+    },
+    {
+      "file": "inquiry-regression/silver-positive-webkit-390.webp",
+      "width": 366,
+      "height": 1103,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "515994094c2905ec5df7b69964b30dc8d5848ac16c191cf28e8ca914691424ba"
+    },
+    {
+      "file": "inquiry-regression/silver-precipitate-chromium-1100.webp",
+      "width": 1052,
+      "height": 1067,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "641dd454eaefc2f195678ac0b4f0582b11d249ea03b575f6c439e6ff3edbac91"
+    },
+    {
+      "file": "inquiry-regression/silver-precipitate-chromium-390.webp",
+      "width": 366,
+      "height": 925,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "0b0c436d0372e9bb00da454626f5d9444f6f7aa438c43bdaa1165c70ca2dc5c3"
+    },
+    {
+      "file": "inquiry-regression/silver-precipitate-webkit-1100.webp",
+      "width": 1052,
+      "height": 1067,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b89c23dbb3465153e9cf0be1e48ba26f763cd5edc70dae632ce9c1f8659be641"
+    },
+    {
+      "file": "inquiry-regression/silver-precipitate-webkit-390.webp",
+      "width": 366,
+      "height": 925,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "beae6b5e352b9e2da4d0f64781b437b31ed6a695ccf7e4b6041a232a20edae82"
+    },
+    {
+      "file": "inquiry-regression/water-wave-tank-chromium-1100.webp",
+      "width": 1052,
+      "height": 1503,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "100ccab7313b74c9855a7ceaf251d4fe5345f43f13860534c281ff0d551dcbba"
+    },
+    {
+      "file": "inquiry-regression/water-wave-tank-chromium-390.webp",
+      "width": 366,
+      "height": 1226,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "ee1e483c3d8aa26434fc68ba5003c4ae57e3547b3379a24724000a106c28f92f"
+    },
+    {
+      "file": "inquiry-regression/water-wave-tank-webkit-1100.webp",
+      "width": 1052,
+      "height": 1503,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c00aa177c3bf38dc2c4fa2c8e315306500a90fedf7bcf0d32a13e0e844b5853f"
+    },
+    {
+      "file": "inquiry-regression/water-wave-tank-webkit-390.webp",
+      "width": 366,
+      "height": 1226,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9baac7472075450c4e6c24b2d87b2ff50d599f6a4bce6fb800df51142159122e"
+    },
+    {
+      "file": "inquiry-regression/waves-shallow-chromium-1100.webp",
+      "width": 1052,
+      "height": 1503,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2b00c99f29aeea07b063cfabad917ca18032e50b1782df258ccbfe4a988b1b21"
+    },
+    {
+      "file": "inquiry-regression/waves-shallow-chromium-390.webp",
+      "width": 366,
+      "height": 1226,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "3316b9a7fb7d6e16733c645828e7017c282e01b0a5949db61c83f4ba53637ab5"
+    },
+    {
+      "file": "inquiry-regression/waves-shallow-webkit-1100.webp",
+      "width": 1052,
+      "height": 1503,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f119011cf2365a167d95c217caf2dcb6eb8c6b9708c23337176c9685eb6d1568"
+    },
+    {
+      "file": "inquiry-regression/waves-shallow-webkit-390.webp",
+      "width": 366,
+      "height": 1226,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "5a4c88cb280dacb9b71385a0d846f2efee40b09cfcf03e8ed78d8e5bcd8b2e6c"
+    },
+    {
+      "file": "physics-regression/electron-slits-chromium-1100.webp",
+      "width": 1052,
+      "height": 1203,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "7723ac267fea21d8a8bb4cb6e62d25e10f14212d331f6e0ea78b9988c5f1041b"
+    },
+    {
+      "file": "physics-regression/electron-slits-chromium-390.webp",
+      "width": 366,
+      "height": 1124,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "08ab6ad7b338b7392e49da7b15f65287daeaff67caafe1fe7b9af8d888db78b7"
+    },
+    {
+      "file": "physics-regression/electron-slits-webkit-1100.webp",
+      "width": 1052,
+      "height": 1203,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8b948ea91d63d727bb89f6f00e439efc4d561eeb30506328ff8679fced803265"
+    },
+    {
+      "file": "physics-regression/electron-slits-webkit-390.webp",
+      "width": 366,
+      "height": 1124,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "78e3e28e4005c1fb44f10c95772a595e83b19087e4c4cb0961303236765399a5"
+    },
+    {
+      "file": "physics-regression/magnetic-brake-chromium-1100.webp",
+      "width": 1052,
+      "height": 1098,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "dc7215e722b6087475e9bbb51941e7a1b159f11895de951ffbdd1fdb4ff7720d"
+    },
+    {
+      "file": "physics-regression/magnetic-brake-chromium-390.webp",
+      "width": 366,
+      "height": 875,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "17a2a3970c62d2a5454bd2b8652e60ed261506c4bc7807338355aa694393949a"
+    },
+    {
+      "file": "physics-regression/magnetic-brake-webkit-1100.webp",
+      "width": 1052,
+      "height": 1098,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "d457cf22414fcaa5c65e0cfcd7f3de5a3c2ec8488548f5787821524e05b4e499"
+    },
+    {
+      "file": "physics-regression/magnetic-brake-webkit-390.webp",
+      "width": 366,
+      "height": 875,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "34d950e3fc8ec27121a040e628ec6b00d790b3b38bce40d85db3d0542ee08fa7"
+    },
+    {
+      "file": "physics-regression/polarization-chromium-1100.webp",
+      "width": 1052,
+      "height": 1141,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2a57f13b294be28bfb8560d29e804b0ed04904bc0d723d2aa91568f87fda87aa"
+    },
+    {
+      "file": "physics-regression/polarization-chromium-390.webp",
+      "width": 366,
+      "height": 1002,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "120dc0504bbd4eec3d8494e86b3008455b4ff873e7c19c4193793cbd706a980f"
+    },
+    {
+      "file": "physics-regression/polarization-webkit-1100.webp",
+      "width": 1052,
+      "height": 1141,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "c0e531fa56be1cf666a2a85563e09b49cea9fe3b4f30823a17f8f4c72f1d66b6"
+    },
+    {
+      "file": "physics-regression/polarization-webkit-390.webp",
+      "width": 366,
+      "height": 1002,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "964e97768cea0e335153ae9771eec732f94d65a7a72fa27d34a53f7eee744eda"
+    },
+    {
+      "file": "physics-regression/soap-film-chromium-1100.webp",
+      "width": 1052,
+      "height": 1091,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b5864dd7c353b273df458557fa7117b89634d646d7779b7d8ea738135844f086"
+    },
+    {
+      "file": "physics-regression/soap-film-chromium-390.webp",
+      "width": 366,
+      "height": 1076,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "cd703636d33bc012c4e814d41770f874d61799f1d0513d2bd3469a0b3f303b92"
+    },
+    {
+      "file": "physics-regression/soap-film-webkit-1100.webp",
+      "width": 1052,
+      "height": 1091,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4ff8d6cf7281cd5571f8f8bd4a6e886d57bba3894261fde0ef1c74b27abcba64"
+    },
+    {
+      "file": "physics-regression/soap-film-webkit-390.webp",
+      "width": 366,
+      "height": 1076,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "25c16d73b73c25ab12b54e9d97b579984443c32b98e57b1cb374d2bb5ce89ae2"
+    },
+    {
+      "file": "physics-regression/speaker-lab-chromium-1100.webp",
+      "width": 1052,
+      "height": 1109,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "8aa67dc6b9c2d5760ae2c4042b8ccaec7f552af84fe61ef17735af8dac973f14"
+    },
+    {
+      "file": "physics-regression/speaker-lab-chromium-390.webp",
+      "width": 366,
+      "height": 990,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2b71909d2aa460a477d76ae21b4e350be74f573ed74793c6afc5fcdab8396d24"
+    },
+    {
+      "file": "physics-regression/speaker-lab-webkit-1100.webp",
+      "width": 1052,
+      "height": 1109,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "6fde690d03338653d9389f8ea161c4092d4b8bda620d883ff699e99724cd8f20"
+    },
+    {
+      "file": "physics-regression/speaker-lab-webkit-390.webp",
+      "width": 366,
+      "height": 990,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "639274c86e5048be7858b04287e35287f15d0f0e6e731ae87f29f82e37387d8a"
+    },
+    {
+      "file": "physics-regression/transistor-speaker-chromium-1100.webp",
+      "width": 1052,
+      "height": 1176,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "11d6978c215e295e6d94a471892897c500b0b063589296c7925d0239dcaf6e87"
+    },
+    {
+      "file": "physics-regression/transistor-speaker-chromium-390.webp",
+      "width": 366,
+      "height": 1041,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "63fea3be573926598360aa00fac5c2ac14ea638c9383bade0d73c931ef7bcf43"
+    },
+    {
+      "file": "physics-regression/transistor-speaker-webkit-1100.webp",
+      "width": 1052,
+      "height": 1176,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "ce6ee740b12fe1c11e985bf05a3c1ecfbe86ed05981dc426221e03281b2d2572"
+    },
+    {
+      "file": "physics-regression/transistor-speaker-webkit-390.webp",
+      "width": 366,
+      "height": 1041,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "32881755adaf0d19e5699f0b7005c6607af6d9d17024632ddca479b64e09b9f8"
+    },
+    {
+      "file": "physics-regression/wireless-power-chromium-1100.webp",
+      "width": 1052,
+      "height": 1159,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "0bb19ba8ff96eef9398262ce39264e6952b92d3c29d6e69785029c8fe8a2b45e"
+    },
+    {
+      "file": "physics-regression/wireless-power-chromium-390.webp",
+      "width": 366,
+      "height": 996,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f400b769a2300ded06defdfbe8ad086e6d94e9811e22b30d4de057c274cfe0c3"
+    },
+    {
+      "file": "physics-regression/wireless-power-webkit-1100.webp",
+      "width": 1052,
+      "height": 1159,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4d191a5f43892c2804b8ba63e22615b4b738f42b33c99eb2723ffcb23d3a3307"
+    },
+    {
+      "file": "physics-regression/wireless-power-webkit-390.webp",
+      "width": 366,
+      "height": 996,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "afc65b00c611701c2350881893811dc43d9330c915822c8bc84933fd2dd84a17"
+    },
+    {
+      "file": "ride-regression/high-common-entry-1100.webp",
+      "width": 1052,
+      "height": 153,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "eafcac08f2a48733fe20dfd80702dacefc30227c4b281fb2c4ff3ec3919e90f9"
+    },
+    {
+      "file": "ride-regression/high-common-entry-390.webp",
+      "width": 366,
+      "height": 149,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "49861322ec5fc355b1d026aa6be2c9e38817835b52b10c5d3c9eac658a9d1f8e"
+    },
+    {
+      "file": "ride-regression/high-elective-entry-1100.webp",
+      "width": 1052,
+      "height": 153,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "e342f60a5361b94733910d72b0439c06e3f94f8ca085e9f99486898d819588b7"
+    },
+    {
+      "file": "ride-regression/high-elective-entry-390.webp",
+      "width": 366,
+      "height": 149,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "65a5233426190eab0b5c5b04ea8fa7ef304185a4e79663b3e055f74827213c4d"
+    },
+    {
+      "file": "ride-regression/seesaw-1100.webp",
+      "width": 1052,
+      "height": 1947,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "62df4a0b5e1419ae668295d25a426b9a073e6ec25ae6f6c74191f79ad454a72e"
+    },
+    {
+      "file": "ride-regression/seesaw-320.webp",
+      "width": 296,
+      "height": 2487,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "05cb31c6fc5b3d6987264c183f637fda1da9f24694e7b1f0281e79fac445cdf8"
+    },
+    {
+      "file": "ride-regression/seesaw-390.webp",
+      "width": 366,
+      "height": 2451,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "f9c8f9f109ea616ccf49978afce64a6863e45caeb160082aa12a239f3d04cca3"
+    },
+    {
+      "file": "ride-regression/slide-1100.webp",
+      "width": 1052,
+      "height": 1759,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "9ee9ff2ac0dcd1bed456645a82f29494aa5c2d2b62761e3d0d7960aacd363336"
+    },
+    {
+      "file": "ride-regression/slide-320.webp",
+      "width": 296,
+      "height": 2294,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "2ea7b046016b84a44fdc82f0b23be18e2e753f58bcb9f3409a11b893504446a2"
+    },
+    {
+      "file": "ride-regression/slide-390.webp",
+      "width": 366,
+      "height": 2281,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "e48ad321e3c465264e7ad65dfcebcc6deb729ae868a8322113059cc73b016ade"
+    },
+    {
+      "file": "ride-regression/swing-1100.webp",
+      "width": 1052,
+      "height": 1867,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": true,
+      "sha256": "07c91fddceb226926121d025918dcb28a5e5edb0c3795a6fe62d2c0faa06f1ff"
+    },
+    {
+      "file": "ride-regression/swing-320.webp",
+      "width": 296,
+      "height": 2422,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "4d21b06904f21f4615e7efa2c6e5d70aeeb7b4d0bab05a4a54cdc9b251ca4845"
+    },
+    {
+      "file": "ride-regression/swing-390.webp",
+      "width": 366,
+      "height": 2379,
+      "alpha": false,
+      "lossless": true,
+      "decoded": true,
+      "manuallyReviewed": false,
+      "sha256": "b1cb6db6aa769d58e518a136666e4d3b4dfdca0f365a91c42b09fdcc2d39ba5d"
+    }
+  ]
+}

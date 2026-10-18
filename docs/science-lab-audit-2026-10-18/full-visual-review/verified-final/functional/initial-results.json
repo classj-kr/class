@@ -1,0 +1,22 @@
+{
+  "completedAt": "2026-10-17T21:21:18.807Z",
+  "exitCode": 1,
+  "passed": false,
+  "tests": 22,
+  "passes": 21,
+  "failures": 1,
+  "durationMs": 332782,
+  "files": [
+    "science-frame-stability",
+    "science-thin-sections",
+    "science-interpolated-motion",
+    "science-motion-controls",
+    "science-observation-motion",
+    "science-video-motion",
+    "science-liquid-heat",
+    "science-reaction-pressure",
+    "science-all-apps"
+  ],
+  "log": "tests.log",
+  "physicalDeviceTested": false
+}

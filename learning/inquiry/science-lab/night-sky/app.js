@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'moon' ? renderMoon(a, state.progress) : renderStars(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'moon' ? renderMoon(a, state.progress) : renderStars(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -293,12 +293,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'moon' ? graphMoon(a) : graphStars(a);
+        window.scienceScene.render(graphGroup,a.kind === 'moon' ? graphMoon(a) : graphStars(a));
         stageBadge.textContent = a.kind === 'moon' ? `${a.info.label}` : '북극성 찾기';
         methodHint.textContent = state.mode === 'moon'
             ? '달의 모양은 약 한 달을 주기로 초승달 → 상현달 → 보름달 → 하현달 → 그믐달로 바뀝니다'
             : '북두칠성의 국자 끝 두 별을 이어 북극성을 찾아보세요';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

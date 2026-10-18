@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         out += `<text class="part-label" x="20" y="24">${a.place.label} · 수온 ${a.T} ℃ · 염분 ${a.S} psu</text>`;
         out += `<text class="read-text" x="20" y="208">바닷물 1 kg의 염류 ${a.S} g</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const VERDICT = { heavier: '평균보다 무거워 가라앉습니다', same: '평균과 비슷해 그대로 있습니다', lighter: '평균보다 가벼워 떠 있습니다' };
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let m = 0; m <= MAX_DEPTH; m += 5) pts.push(`${gx(tempAt(m, a)).toFixed(1)},${gy(m).toFixed(1)}`);
         out += `<path class="trace" d="M${pts.join('L')}"/>`;
         out += `<circle class="trace-dot" cx="${gx(a.T).toFixed(1)}" cy="${gy(0).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saltOutput.textContent = `${a.S} psu`;
         windOutput.textContent = `${a.W} 단계`;
         stageBadge.textContent = `${a.place.label} · 염분 ${a.S}`;
-        dataNote.innerHTML='<p>바닷물 1 kg에 녹은 염류: '+a.S+' g · 염화 나트륨: '+a.grams[0].toFixed(2)+' g</p><p>염류의 구성 비율은 대체로 일정합니다. 바람에 따른 층 두께는 이 모형의 예시값입니다.</p>';
+        window.scienceScene.render(dataNote,'<p>바닷물 1 kg에 녹은 염류: '+a.S+' g · 염화 나트륨: '+a.grams[0].toFixed(2)+' g</p><p>염류의 구성 비율은 대체로 일정합니다. 바람에 따른 층 두께는 이 모형의 예시값입니다.</p>');
         return a;
     }
 

@@ -90,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cx = RAMP_X0 + (botX - RAMP_X0) * f;
         const cy = topY + (GROUND_Y - topY) * f;
         body += `<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)}) rotate(${a.deg})">`;
-        body += `<rect class="cart" x="-13" y="-19" width="26" height="15" rx="3"/>`;
-        body += `<circle class="wheel" cx="-7" cy="-3" r="3.6"/><circle class="wheel" cx="7" cy="-3" r="3.6"/>`;
+        body += window.scienceScene.art.cart(-13,-19,26,13,'#bc713a',cx*5);
         body += `</g>`;
         // heat shimmering off the contact patch when friction is doing work
         if (!a.stuck && a.mu > 0 && st.d > 0.01 && st.d < a.slope) {
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="read-text figure-caption" x="20" y="196">지금 속력 ${st.v.toFixed(2)} m/s · 위치 ${st.pe.toFixed(1)} J · 운동 ${st.ke.toFixed(1)} J · 열 ${st.heat.toFixed(1)} J</text>`;
         }
         out += `<text class="note-text" x="20" y="210">세 값을 더하면 언제나 ${a.total.toFixed(1)} J 입니다</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     function renderGraph(a, s) {
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect x="${GRAPH.x0 + 150 + i * 74}" y="14" width="9" height="9" rx="2" fill="${c}"/>`;
             out += `<text class="legend-text" fill="${c}" x="${GRAPH.x0 + 163 + i * 74}" y="22">${n} 에너지</text>`;
         });
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -169,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         angleOutput.textContent = `${a.deg}°`;
         frictionOutput.textContent = a.mu.toFixed(2);
         stageBadge.textContent = a.stuck ? '미끄러지지 않음' : `바닥 ${a.speed.toFixed(2)} m/s · 열 ${(a.lostFrac * 100).toFixed(0)}%`;
-        dataNote.innerHTML = a.stuck
+        window.scienceScene.render(dataNote,a.stuck
             ? `<div class="data-row"><span class="data-name">미끄러짐 조건</span><span class="data-val">μ ${a.mu.toFixed(2)} > tan ${a.deg}° = ${a.tan.toFixed(3)} → 정지</span></div>` +
               `<div class="data-row"><span class="data-name">빗면 방향 힘</span><span class="data-val">mg sin θ = ${(MASS * G * a.sin).toFixed(2)} N < 최대 마찰력 ${(a.mu * MASS * G * a.cos).toFixed(2)} N</span></div>` +
               `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">움직이지 않아 에너지가 그대로 위치 에너지로 남습니다</span></div>`
@@ -177,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
               `<div class="data-row"><span class="data-name">열로 바뀐 양</span><span class="data-val">μ/tan θ = ${a.mu.toFixed(2)}÷${a.tan.toFixed(3)} = ${(a.lostFrac * 100).toFixed(1)}% → ${a.heat.toFixed(1)} J</span></div>` +
               `<div class="data-row"><span class="data-name">바닥의 운동 에너지</span><span class="data-val">${a.total.toFixed(1)} − ${a.heat.toFixed(1)} = ${a.ke.toFixed(1)} J</span></div>` +
               `<div class="data-row"><span class="data-name">바닥에서의 속력</span><span class="data-val">√(2×${a.ke.toFixed(1)}÷${MASS}) = ${a.speed.toFixed(2)} m/s</span></div>` +
-              `<div class="data-row match"><span class="data-name">내려오는 데</span><span class="data-val">${a.fall.toFixed(2)} 초 (가속도 ${a.accel.toFixed(2)} m/s²)</span></div>`;
+              `<div class="data-row match"><span class="data-name">내려오는 데</span><span class="data-val">${a.fall.toFixed(2)} 초 (가속도 ${a.accel.toFixed(2)} m/s²)</span></div>`);
         return a;
     }
 

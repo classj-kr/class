@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="358" y="78">부피 ${(s.v * 100).toFixed(0)}%</text>`;
         out += `<text class="part-label" x="358" y="96">바깥 농도 ${c.toFixed(2)}</text>`;
         out += `<text class="part-label" x="358" y="114">처음 내부 1.00</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
         return s;
     }
 
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         out += `<text class="zone-text" fill="#6fbf73" x="${gx(0.35).toFixed(1)}" y="${(gy(1) - 8).toFixed(1)}">식물세포 — 처음부터 팽팽한 모형</text>`;
         out += `<circle class="trace-dot" cx="${gx(conc()).toFixed(1)}" cy="${gy(Math.min(2.2, s.v)).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -193,10 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
         timeOutput.textContent = `${elapsed().toFixed(elapsed() % 1 ? 1 : 0)} 분`;
         stageBadge.textContent = `${cell === 'animal' ? '동물세포' : '식물세포'} · ${s.label}`;
         const dir = conc() < 0.98 ? '세포 안으로' : conc() > 1.02 ? '세포 밖으로' : '양쪽이 균형';
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">농도 비교</span><span class="data-val">바깥 ${conc().toFixed(2)} vs 처음 세포 속 1.00 → 물이 ${dir}</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">농도 비교</span><span class="data-val">바깥 ${conc().toFixed(2)} vs 처음 세포 속 1.00 → 물이 ${dir}</span></div>` +
             `<div class="data-row"><span class="data-name">최종 부피</span><span class="data-val">1.00 ÷ ${conc().toFixed(2)} = ${((C_IN0 * V0) / conc()).toFixed(2)}${cell === 'plant' && (C_IN0 * V0) / conc() > 1 ? ' → 세포벽이 1.00으로 제한' : ''}</span></div>` +
-            `<div class="data-row${s.burst ? '' : ' match'}"><span class="data-name">지금 상태</span><span class="data-val">부피 ${(s.v * 100).toFixed(0)}% · ${s.label}</span></div>`;
+            `<div class="data-row${s.burst ? '' : ' match'}"><span class="data-name">지금 상태</span><span class="data-val">부피 ${(s.v * 100).toFixed(0)}% · ${s.label}</span></div>`);
         if (!resultContent.hidden) showResult();
         return s;
     }

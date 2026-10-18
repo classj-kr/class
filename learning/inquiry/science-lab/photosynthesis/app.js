@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="330" y="132">빛이 낼 수 있는 양 ${Math.min(V_MAX, a.byLight).toFixed(0)}</text>`;
         out += `<text class="part-label" x="330" y="148">CO₂가 낼 수 있는 양 ${Math.min(V_MAX, a.byCO2).toFixed(0)}</text>`;
         out += `<text class="part-label" x="330" y="164">온도 효율 ${(a.fT * 100).toFixed(0)}%</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
         return a;
     }
 
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="knee-text" x="${(gx(knee) + (flip ? -5 : 5)).toFixed(1)}" y="${GRAPH.y1 + 10}"${flip ? ' text-anchor="end"' : ''}>여기부터 빛이 남습니다</text>`;
         }
         out += `<circle class="trace-dot" cx="${gx(light()).toFixed(1)}" cy="${gy(a.rate).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -186,10 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
         co2Output.textContent = String(co2());
         tempOutput.textContent = `${temp()} ℃`;
         stageBadge.textContent = `${a.rate.toFixed(0)} 개/분 · ${LIMIT_NAME[a.limiter]}`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">모형의 각 조건 상한</span><span class="data-val">빛 ${Math.min(V_MAX, a.byLight).toFixed(1)} · CO₂ ${Math.min(V_MAX, a.byCO2).toFixed(1)} · 온도 ${a.byTemp.toFixed(1)}</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">모형의 각 조건 상한</span><span class="data-val">빛 ${Math.min(V_MAX, a.byLight).toFixed(1)} · CO₂ ${Math.min(V_MAX, a.byCO2).toFixed(1)} · 온도 ${a.byTemp.toFixed(1)}</span></div>` +
             `<div class="data-row"><span class="data-name">온도 조건</span><span class="data-val">이 모형의 최적 온도 ${T_OPT} ℃ · 실제 최적 온도는 식물과 조건에 따라 다릅니다</span></div>` +
-            `<div class="data-row match"><span class="data-name">모형의 기포 수</span><span class="data-val">세 상한 중 가장 작은 값: ${a.rate.toFixed(1)} 개/분</span></div>`;
+            `<div class="data-row match"><span class="data-name">모형의 기포 수</span><span class="data-val">세 상한 중 가장 작은 값: ${a.rate.toFixed(1)} 개/분</span></div>`);
         return a;
     }
 

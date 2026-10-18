@@ -8,11 +8,16 @@
  const line=(x1,y1,x2,y2,color='#527e8e',w=3)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${w}"/>`;
  const path=(d,color='#527e8e',w=3,extra='')=>`<path d="${d}" fill="none" stroke="${color}" stroke-width="${w}" ${extra}/>`;
  const metric=(label,value)=>`<div><span>${label}</span><strong>${value}</strong></div>`;
- function svg(body,label,h=340){scene.innerHTML=`<svg viewBox="0 0 640 ${h}" role="img" aria-label="${label}">${body}</svg>`;}
+ function svg(body,label,h=340){window.scienceScene.render(scene,`<svg viewBox="0 0 640 ${h}" role="img" aria-label="${label}">${body}</svg>`);}
  function note(s){if(status.textContent!==s)status.textContent=s;}
- function stop(){clearInterval(timer);timer=0;running=false;}
- function run(step,max,dt=100){if(running){stop();draw();return;}running=true;timer=setInterval(()=>{state.time=Math.min(max,state.time+step);if(state.time>=max)stop();draw();},dt);}
- function beaker(x,y,label,liquid='#afd5e5',level=85,labelOffset=160){return rect(x-61,y+120-level,122,level,liquid)+path(`M${x-65} ${y}V${y+120}Q${x-65} ${y+130} ${x-55} ${y+130}H${x+55}Q${x+65} ${y+130} ${x+65} ${y+120}V${y}`)+text(x,y+labelOffset,label);}
+ function stop(){cancelAnimationFrame(timer);timer=0;running=false;}
+ function run(step,max,dt=100){if(running){stop();draw();return;}running=true;let last=0;function frame(now){if(!running)return;if(last)state.time=Math.min(max,state.time+Math.min(now-last,80)*step/dt);last=now;if(state.time>=max)stop();draw();if(running)timer=requestAnimationFrame(frame);}timer=requestAnimationFrame(frame);}
+ function beaker(x,y,label,liquid='#afd5e5',level=85,labelOffset=160){
+  let b=`<ellipse cx="${x}" cy="${y+133}" rx="72" ry="7" fill="#537a8a" opacity=".1"/><path d="M${x-65} ${y}V${y+120}Q${x-65} ${y+130} ${x-55} ${y+130}H${x+55}Q${x+65} ${y+130} ${x+65} ${y+120}V${y}" fill="#edf6f8" fill-opacity=".4" stroke="#8baebb" stroke-width="2.5"/>`;
+  b+=rect(x-62,y+120-level,124,level,liquid,'opacity=".75"')+`<ellipse cx="${x}" cy="${y+120-level}" rx="62" ry="5" fill="${liquid}" stroke="#80aeba" stroke-width="1"/><path d="M${x-54} ${y+12}V${y+116}" stroke="#fff" stroke-width="4" opacity=".65"/><path d="M${x+57} ${y+8}V${y+113}" stroke="#779daa" opacity=".35" stroke-width="2"/><ellipse cx="${x}" cy="${y}" rx="65" ry="6" fill="none" stroke="#8baebb" stroke-width="2"/>`;
+  for(let i=0;i<4;i++)b+=line(x+36,y+28+i*22,x+50,y+28+i*22,'#6c94a3',1.2);
+  return b+text(x,y+labelOffset,label);
+ }
  function thermometer(x,y,t){const h=Math.max(3,Math.min(89,(t+5)/115*89));return rect(x-5,y,10,100,'#eef4f6','rx="5" stroke="#628392"')+rect(x-3,y+97-h,6,h,'#c45348')+`<circle cx="${x}" cy="${y+100}" r="9" fill="#c45348"/>`;}
  function drawGas(){
   const r=M.gas(state.sample,state.head),surface=205,inside=state.collected?surface-state.head*3:70;
@@ -24,7 +29,7 @@
   if(state.collected)b+=text(460,105,'기체',18)+text(460,132,'+ 수증기',16);
   b+=text(121,304,'기체통과 저울',17)+text(453,317,'물 위에 모은 기체',17)+text(346,192,'바깥 수면',14);
   svg(b,'전자저울 위 기체통과 물속에 거꾸로 세운 눈금실린더');
-  readout.innerHTML=metric('기체 질량',state.after?r.mass.toFixed(3)+' g':'전후 질량 필요')+metric('모은 기체 부피',state.read?(r.volume*1000).toFixed(1)+' mL':'아직 읽지 않음')+metric('건조 기체 압력',state.read?r.pressure.toFixed(2)+' kPa':'수면·수증기 확인')+(state.read&&state.after?metric('계산한 몰 질량',r.molar.toFixed(1)+' g/mol'):'');
+  window.scienceScene.render(readout,metric('기체 질량',state.after?r.mass.toFixed(3)+' g':'전후 질량 필요')+metric('모은 기체 부피',state.read?(r.volume*1000).toFixed(1)+' mL':'아직 읽지 않음')+metric('건조 기체 압력',state.read?r.pressure.toFixed(2)+' kPa':'수면·수증기 확인')+(state.read&&state.after?metric('계산한 몰 질량',r.molar.toFixed(1)+' g/mol'):''));
   $('collectGas').disabled=!state.before||state.collected;$('weighAfter').disabled=!state.collected;$('equalize').disabled=$('readGas').disabled=!state.collected;
   $('head').disabled=!state.collected;$('headValue').textContent=state.head+' cm';
   note(!state.before?'기체를 모으기 전에 통의 질량을 먼저 측정하세요.':!state.collected?'통의 처음 질량을 확인했습니다. 기체를 물 위에 모으세요.':!state.after?'기체를 모았습니다. 같은 통의 질량을 다시 재어 감소량을 확인하세요.':!state.read?'안팎 수면 높이를 확인하고 부피·온도·압력을 읽으세요.':`25 ℃ = 298.15 K. 건조 기체 압력 = 101.3 − 3.17 − ${(.0980665*state.head).toFixed(2)} kPa. M=mRT/(PV)로 후보의 몰 질량과 비교하세요.`);
@@ -40,7 +45,7 @@
   out+=text(90,277,'온도 / ℃',15)+text(588,416,'시간 / s',15)+line(70,405,585,405,'#8ba7b5',1)+line(70,290,70,405,'#8ba7b5',1)+text(54,306,'100',13)+text(54,402,'0',13)+text(75,425,'0',13)+text(567,435,'500',13);
   if(state.prepared)out+=graph(70,290,500,110,500,t=>M.sugar(0,state.mode,t).temperature,'#298b9c')+graph(70,290,500,110,500,t=>M.sugar(state.molality,state.mode,t).temperature,'#c67636');
   svg(out,'물과 설탕물의 온도 센서 및 시간별 온도 곡선, 파랑은 물 주황은 설탕물',445);
-  readout.innerHTML=metric('필요한 설탕',b.mass.toFixed(1)+' g')+metric('경과 시간',state.time+' s')+metric('물 / 설탕물',state.prepared?names[a.phase]+' / '+names[b.phase]:'용액 준비 전');
+  window.scienceScene.render(readout,metric('필요한 설탕',b.mass.toFixed(1)+' g')+metric('경과 시간',state.time+' s')+metric('물 / 설탕물',state.prepared?names[a.phase]+' / '+names[b.phase]:'용액 준비 전'));
   $('dissolveSugar').disabled=state.prepared;$('startTemperature').disabled=$('stepTemperature').disabled=!state.prepared||state.time>=500;$('startTemperature').textContent=running?'일시 정지':state.mode==='heat'?'가열 시작':'냉각 시작';
   note(!state.prepared?'선택한 농도에 필요한 설탕을 물 500 g에 모두 녹이세요.':state.time===0?'용액을 준비했습니다. 두 시료를 함께 가열하거나 냉각하세요.':`파랑: 물, 주황: 설탕물. ${state.mode==='heat'?'끓기':'얼기'} 시작하는 두 온도를 비교하세요. 상변화가 진행되는 설탕물의 온도가 순수한 물처럼 계속 일정하지는 않습니다.`);
  }
@@ -51,7 +56,7 @@
   b+=text(166,314,state.step===0?'NaOH(s) 4.0 g 준비':state.step===1?'먼저 실온으로 식히세요':state.step===2?'염산 100 mL 첨가 가능':'두 번째 반응 끝',16)+text(472,314,state.direct?'직접 반응 끝':'NaOH(s) 4.0 g 준비',16);
   svg(b,'두 단계 경로와 직접 경로의 열량계 및 온도계');
   $('dissolveNaOH').disabled=state.step!==0;$('coolSolution').disabled=state.step!==1;$('neutralize').disabled=state.step!==2;$('directReaction').disabled=state.direct;
-  readout.innerHTML=metric('A① 용해 · 방출 열',state.step>0?dissolve.q.toFixed(2)+' kJ':'아직 반응 전')+metric('A③ 중화 · 방출 열',state.step===3?neutral.q.toFixed(2)+' kJ':'아직 반응 전')+metric('B 직접 · 방출 열',state.direct?direct.q.toFixed(2)+' kJ':'아직 반응 전');
+  window.scienceScene.render(readout,metric('A① 용해 · 방출 열',state.step>0?dissolve.q.toFixed(2)+' kJ':'아직 반응 전')+metric('A③ 중화 · 방출 열',state.step===3?neutral.q.toFixed(2)+' kJ':'아직 반응 전')+metric('B 직접 · 방출 열',state.direct?direct.q.toFixed(2)+' kJ':'아직 반응 전'));
   note(state.step===3&&state.direct?'4.45 + 5.73 = 10.18 kJ. 같은 0.10 mol을 반응시키면 두 단계의 합과 직접 경로의 방출 열이 같습니다. 용액 질량이 다르므로 온도 상승 자체를 더하지 않습니다.':state.step===1?'용해열로 온도가 올라갔습니다. 이 용액을 실온으로 식힌 뒤 같은 온도의 염산을 섞어 다음 반응의 온도 변화를 확인하세요.':'각 단계에서 반응 전후 온도를 비교합니다. A의 중화는 용해시킨 용액을 식힌 뒤에 진행합니다.');
  }
  function measure(name){if(!state.clean&&state.well!==name){note('이전 용액이 묻어 있습니다. 전극을 헹군 뒤 다른 시료를 측정하세요.');return;}
@@ -60,13 +65,13 @@
  }
  function drawPH(){
   const buffer=slug==='buffer-solution',names=buffer?['A','B','C','D','E','F']:['NH4Cl','NaCN','NaCl'],labels=buffer?['A 물 · 기준','B 물 + 산','C 물 + 염기','D 완충액 · 기준','E 완충액 + 산','F 완충액 + 염기']:['NH₄Cl','NaCN','NaCl'];
-  let b='';names.forEach((name,i)=>{const x=105+i%3*210,y=buffer?(i<3?85:235):140,p=state.measured[name];
-   b+=`<ellipse cx="${x}" cy="${y}" rx="70" ry="43" fill="#b9dbe8" stroke="${state.well===name?'#176878':'#87acbd'}" stroke-width="${state.well===name?5:2}"/>`+text(x,y+7,p===undefined?'미측정':'pH '+p.toFixed(2),20)+text(x,y+68,labels[i],16);
+  let b=`<defs><radialGradient id="phWell"><stop stop-color="#f8fdff"/><stop offset=".78" stop-color="#c9e2eb"/><stop offset="1" stop-color="#8eb5c5"/></radialGradient><linearGradient id="phTray" x2="0" y2="1"><stop stop-color="#f7fbfd"/><stop offset="1" stop-color="#c4d5df"/></linearGradient></defs><rect x="22" y="${buffer?24:76}" width="598" height="${buffer?302:153}" rx="24" fill="url(#phTray)" stroke="#9db7c4" stroke-width="2"/>`;names.forEach((name,i)=>{const x=105+i%3*210,y=buffer?(i<3?85:235):140,p=state.measured[name];
+   b+=`<ellipse cx="${x}" cy="${y}" rx="74" ry="47" fill="#edf6f9" stroke="#a8c1cd" stroke-width="2"/><ellipse cx="${x}" cy="${y}" rx="70" ry="43" fill="url(#phWell)" stroke="${state.well===name?'#176878':'#87acbd'}" stroke-width="${state.well===name?4:1.5}"/><path d="M${x-55} ${y-18}Q${x} ${y-54} ${x+55} ${y-18}" fill="none" stroke="#fff" stroke-width="3" opacity=".8"/>`+text(x,y+7,p===undefined?'미측정':'pH '+p.toFixed(2),20)+text(x,y+68,labels[i],16);
    if(buffer)b+=text(x,y-56,i%3===0?'첨가 없음':(i%3===1?state.acid:state.base)+'방울',14);
   });svg(b,buffer?'물과 완충 용액의 기준·산 첨가·염기 첨가 6홈판':'세 염 수용액의 pH 비교',buffer?340:270);
   if(!actions.children.length)names.forEach((name,i)=>{const b=document.createElement('button');b.dataset.measure=name;b.textContent=labels[i]+' 측정';b.addEventListener('click',()=>measure(name));actions.append(b);});
   actions.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.measure===state.well)));
-  readout.innerHTML=metric('전극 상태',state.clean?'헹굼 완료':'시료가 묻어 있음')+metric('현재 측정',state.well?labels[names.indexOf(state.well)]:'시료 선택')+metric('pH',state.well&&state.measured[state.well]!==undefined?state.measured[state.well].toFixed(2):'—');
+  window.scienceScene.render(readout,metric('전극 상태',state.clean?'헹굼 완료':'시료가 묻어 있음')+metric('현재 측정',state.well?labels[names.indexOf(state.well)]:'시료 선택')+metric('pH',state.well&&state.measured[state.well]!==undefined?state.measured[state.well].toFixed(2):'—'));
   if(buffer){$('addAcid').disabled=state.acid>=20;$('addBase').disabled=state.base>=20;}
   note(state.clean?'헹군 전극으로 측정할 시료를 고르세요.':buffer?'같은 첨가량에서 물과 완충액을 비교하세요. A·D는 처음 상태를 유지합니다. 다른 홈으로 옮기기 전에 전극을 헹굽니다.':'짝산·짝염기가 물과 반응하는 정도를 비교하세요. 시료를 바꾸기 전에 전극을 헹굽니다.');
  }
@@ -76,7 +81,7 @@
   if(mode==='respirometer'){
    ['발아 콩 + 물','발아 콩 + KOH','마른 콩 + KOH'].forEach((label,i)=>{const y=75+i*95,f=[r.water,r.koh,r.dry][i];b+=rect(40,y-34,174,62,'#dcebef','rx="25" stroke="#698f9e"')+beanDots(102,y-17,i<2)+rect(181,y-26,11,46,i===0?'#b0d4df':'#ddb95f')+rect(211,y-33,17,60,'#54717e')+rect(228,y-5,337,10,'#d9e6eb','stroke="#698f9e"')+rect(532-165*f,y-7,10,14,'#394c90')+text(135,y+51,label,15);});
    b+=text(444,32,'잉크가 왼쪽으로 이동하면 내부 기체량 감소',15);svg(b,'세 호흡계의 물 또는 KOH와 잉크 방울 이동',355);
-   readout.innerHTML=metric('경과 시간',time)+metric('발아 콩 + KOH',r.koh>0?'콩 쪽으로 이동':'초기 위치')+metric('발아 콩 + 물',r.water===0?'거의 이동 없음':'이동');
+   window.scienceScene.render(readout,metric('경과 시간',time)+metric('발아 콩 + KOH',r.koh>0?'콩 쪽으로 이동':'초기 위치')+metric('발아 콩 + 물',r.water===0?'거의 이동 없음':'이동'));
   }else{
    const temps=mode==='sensors'?[r.dry.temperature,r.germinating.temperature]:[r.living,r.boiled],labels=mode==='sensors'?['마른 콩','발아 중인 콩']:['발아 중인 콩','삶은 콩'];
    labels.forEach((label,i)=>{const x=160+320*i;b+=beaker(x,90,label,'#e9f1f0',95)+beanDots(x,175,mode==='sensors'?i===1:i===0)+rect(x-72,108,12,106,'#d5dfdf')+rect(x+60,108,12,106,'#d5dfdf')+thermometer(x+25,53,temps[i])+text(x,35,temps[i].toFixed(2)+' ℃',23);if(mode==='sensors')b+=text(x,283,(i?r.germinating.co2:r.dry.co2).toFixed(0)+' ppm CO₂',20);});
@@ -87,7 +92,7 @@
    b+=trace(50,plotWidth,t=>co2?M.beans(mode,t).dry.co2:M.beans(mode,t).living,co2?400:25,co2?1300:27,'#298b9c')+trace(50,plotWidth,t=>co2?M.beans(mode,t).germinating.co2:M.beans(mode,t).boiled,co2?400:25,co2?1300:27,'#c67636');
    if(co2)b+=text(475,320,'온도 / ℃',16)+text(340,342,'27',13)+text(340,425,'25',13)+trace(365,225,t=>M.beans(mode,t).dry.temperature,25,27,'#298b9c')+trace(365,225,t=>M.beans(mode,t).germinating.temperature,25,27,'#c67636');
    b+=text(320,475,`파랑: ${labels[0]} · 주황: ${labels[1]}`,16);
-   svg(b,'같은 양의 콩을 담은 단열 용기와 센서의 시간별 변화',495);readout.innerHTML=metric('경과 시간',time)+metric(labels[0],temps[0].toFixed(2)+' ℃')+metric(labels[1],temps[1].toFixed(2)+' ℃');
+   svg(b,'같은 양의 콩을 담은 단열 용기와 센서의 시간별 변화',495);window.scienceScene.render(readout,metric('경과 시간',time)+metric(labels[0],temps[0].toFixed(2)+' ℃')+metric(labels[1],temps[1].toFixed(2)+' ℃'));
   }
   $('startBeans').disabled=$('stepBeans').disabled=state.time>=500;$('startBeans').textContent=running?'일시 정지':'관찰 시작';
   note(state.time===0?'같은 양의 시료와 같은 초기 조건입니다. 관찰을 시작하세요.':mode==='respirometer'?'KOH가 CO₂를 흡수하는 조건과 흡수하지 않는 조건을 함께 비교하세요. 잉크 변화가 작다고 호흡이 없다고 단정할 수는 없습니다.':'각 시료의 상태를 비교하고, 기체와 열의 변화를 세포 호흡과 연결해 보세요. 표시 수치는 변화 방향을 관찰하는 모형값입니다.');

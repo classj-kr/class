@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tone = a.verdict === 'pure' ? '#059669' : a.verdict === 'slight' ? '#d97706' : '#ea580c';
         out += `<text class="purity-text" fill="${tone}" x="248" y="160">${VERDICT[a.verdict]}</text>`;
         out += `<text class="note-text" x="20" y="206">석출량: ${yieldText(a)}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const VERDICT = { none: '주성분 결정이 나오지 않습니다', pure: '모형에서 불순물 없는 결정', slight: '불순물이 조금 섞였습니다', dirty: '불순물이 많이 섞였습니다' };
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const flip = gx(a.T2) < 130;
         out += `<text class="drop-text" x="${(gx(a.T2) + (flip ? 8 : -8)).toFixed(1)}" y="${midY.toFixed(1)}"${flip ? '' : ' text-anchor="end"'}>` +
                `${a.s1 >= a.s2 ? '감소' : '증가'} ${Math.abs(a.s1 - a.s2).toFixed(1)}</text>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -217,12 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
         coldOutput.textContent = `${cold()} ℃`;
         dirtOutput.textContent = `${a.imp} g`;
         stageBadge.textContent = `${a.crystals.toFixed(1)} g 석출 · ${SHORT[a.verdict]}`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">용해도</span><span class="data-val">${a.T1} ℃ 에서 ${a.s1.toFixed(1)} · ${a.T2} ℃ 에서 ${a.s2.toFixed(1)} (물 100 g당)</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">용해도</span><span class="data-val">${a.T1} ℃ 에서 ${a.s1.toFixed(1)} · ${a.T2} ℃ 에서 ${a.s2.toFixed(1)} (물 100 g당)</span></div>` +
             `<div class="data-row"><span class="data-name">녹아 있던 양</span><span class="data-val">${a.s1.toFixed(1)} × ${a.w} ÷ 100 = ${a.dissolved.toFixed(1)} g</span></div>` +
             `<div class="data-row"><span class="data-name">석출량</span><span class="data-val">${yieldText(a)}</span></div>` +
             `<div class="data-row"><span class="data-name">불순물</span><span class="data-val">${a.imp} g 중 ${a.impCanHold.toFixed(1)} g 까지 녹을 수 있어 ${a.impOut.toFixed(1)} g 석출</span></div>` +
-            `<div class="data-row match"><span class="data-name">결정의 순도</span><span class="data-val">${a.crystals > 0 ? `${a.crystals.toFixed(1)} ÷ ${a.totalOut.toFixed(1)} = ${a.purity.toFixed(1)}%` : '주성분 결정 없음 — 순도 비교 대상 없음'}</span></div>`;
+            `<div class="data-row match"><span class="data-name">결정의 순도</span><span class="data-val">${a.crystals > 0 ? `${a.crystals.toFixed(1)} ÷ ${a.totalOut.toFixed(1)} = ${a.purity.toFixed(1)}%` : '주성분 결정 없음 — 순도 비교 대상 없음'}</span></div>`);
         return a;
     }
 

@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<path class="drop-arrow" d="M${cx2.toFixed(1)},${topY.toFixed(1)} L${cx2.toFixed(1)},${botY.toFixed(1)}"/>`;
             out += `<path class="drop-arrow" d="M${(cx2 - 5).toFixed(1)},${(botY - 7).toFixed(1)} L${cx2.toFixed(1)},${botY.toFixed(1)} L${(cx2 + 5).toFixed(1)},${(botY - 7).toFixed(1)}"/>`;
         }
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -205,8 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tempOutput.textContent = `${temp()} ℃`;
         coolOutput.textContent = `${coolTemp()} ℃`;
         stageBadge.textContent = `${SOLUTES[solute].name} · ${temp()} ℃`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">${temp()} ℃ 용해도</span><span class="data-val">${a.s1.toFixed(1)} g — 물 100 g에 최대 ${a.max1.toFixed(1)} g</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">${temp()} ℃ 용해도</span><span class="data-val">${a.s1.toFixed(1)} g — 물 100 g에 최대 ${a.max1.toFixed(1)} g</span></div>` +
             `<div class="data-row"><span class="data-name">녹은 양 / 남은 양</span><span class="data-val">${a.dissolved.toFixed(1)} g 녹고 ${a.undissolved.toFixed(1)} g 남음</span></div>` +
             `<div class="data-row${a.precipitated > 0.01 || a.extraDissolved > 0.01 ? ' match' : ''}">` +
             `<span class="data-name">${coolTemp()} ℃로 ${a.heating ? '데우면' : '식히면'}</span>` +
@@ -214,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
             (a.heating
                 ? (a.extraDissolved > 0.01 ? `${a.extraDissolved.toFixed(1)} g 더 녹음` : '변화 없음')
                 : `${a.precipitated.toFixed(1)} g 석출`) +
-            `</span></div>`;
+            `</span></div>`);
     }
 
     const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };

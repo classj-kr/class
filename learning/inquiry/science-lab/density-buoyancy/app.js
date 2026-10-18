@@ -126,10 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (b.state === 'neutral') {
             out += `<text class="force-text" fill="#059669" x="${ax - 84}" y="${base + 34}">부력 = 무게 (중성 부력)</text>`;
         }
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
 
-        graphGroup.innerHTML = '<text x="20" y="50" fill="#334155" font-size="16">물체와 액체의 밀도를 비교하세요.</text><text x="20" y="90" fill="#334155" font-size="16">물체의 밀도가 더 작으면 뜹니다.</text>';
-        dataNote.innerHTML = '<p>질량 ' + mass() + ' g ÷ 부피 ' + vol() + ' cm³ = 밀도 ' + b.rhoObj.toFixed(3) + ' g/cm³</p><p>액체의 밀도: ' + b.rhoFl.toFixed(2) + ' g/cm³</p>';
+        window.scienceScene.render(graphGroup,'<text x="20" y="50" fill="#334155" font-size="16">물체와 액체의 밀도를 비교하세요.</text><text x="20" y="90" fill="#334155" font-size="16">물체의 밀도가 더 작으면 뜹니다.</text>');
+        window.scienceScene.render(dataNote,'<p>질량 ' + mass() + ' g ÷ 부피 ' + vol() + ' cm³ = 밀도 ' + b.rhoObj.toFixed(3) + ' g/cm³</p><p>액체의 밀도: ' + b.rhoFl.toFixed(2) + ' g/cm³</p>');
         stageBadge.textContent = `${f.name} · ${b.state === 'float' ? '뜸' : b.state === 'neutral' ? '중성 부력' : '가라앉음'}`;
         massOutput.textContent = `${mass()} g`;
         volOutput.textContent = `${vol()} cm³`;
@@ -155,10 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="zone-label" x="${BX1 + 12}" y="${(gasTop + gasH / 2).toFixed(1)}">기체 ${v} mL</text>`;
         out += `<text class="pressure-text" x="${BX1 + 12}" y="${(gasTop + gasH / 2 + 20).toFixed(1)}">${v < V0 ? "기준보다 높은 압력" : "기준 압력"}</text>`;
         out += `<text class="axis-text" x="${(BX0 + BX1) / 2}" y="252" text-anchor="middle">입자 수는 그대로, 공간만 좁아집니다</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
 
-        graphGroup.innerHTML = '<text x="20" y="50" fill="#334155" font-size="16">온도와 기체의 양을 일정하게 합니다.</text><text x="20" y="90" fill="#334155" font-size="16">부피 감소 → 압력 증가</text><text x="20" y="130" fill="#334155" font-size="16">부피 증가 → 압력 감소</text>';
-        dataNote.innerHTML = '<p>부피: ' + v + ' mL</p><p>입자 수는 그대로입니다. 부피를 줄이면 벽과의 충돌이 잦아집니다.</p>';
+        window.scienceScene.render(graphGroup,'<text x="20" y="50" fill="#334155" font-size="16">온도와 기체의 양을 일정하게 합니다.</text><text x="20" y="90" fill="#334155" font-size="16">부피 감소 → 압력 증가</text><text x="20" y="130" fill="#334155" font-size="16">부피 증가 → 압력 감소</text>');
+        window.scienceScene.render(dataNote,'<p>부피: ' + v + ' mL</p><p>입자 수는 그대로입니다. 부피를 줄이면 벽과의 충돌이 잦아집니다.</p>');
         stageBadge.textContent = v + ' mL · ' + (v < V0 ? '기준보다 높은 압력' : '기준 압력');
         gasVolOutput.textContent = `${v} mL`;
     }

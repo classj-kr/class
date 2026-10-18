@@ -1,0 +1,55 @@
+chromium: 10/201 routes; 0 findings
+chromium: 20/201 routes; 0 findings
+chromium: 30/201 routes; 0 findings
+chromium: 40/201 routes; 0 findings
+chromium: 50/201 routes; 0 findings
+chromium: 60/201 routes; 0 findings
+chromium: 70/201 routes; 0 findings
+chromium: 80/201 routes; 0 findings
+chromium: 90/201 routes; 0 findings
+chromium: 100/201 routes; 0 findings
+chromium: 110/201 routes; 0 findings
+chromium: 120/201 routes; 0 findings
+chromium: 130/201 routes; 0 findings
+chromium: 140/201 routes; 0 findings
+chromium: 150/201 routes; 0 findings
+chromium: 160/201 routes; 0 findings
+chromium: 170/201 routes; 0 findings
+chromium: 180/201 routes; 0 findings
+chromium: 190/201 routes; 0 findings
+chromium: 200/201 routes; 0 findings
+{"engine":"chromium","routes":201,"questions":806,"states":804,"findings":0,"errors":0}
+✔ chromium: all registered course routes retain diagnosis through input, rotation and reload (330119.7657ms)
+webkit: 10/201 routes; 0 findings
+webkit: 20/201 routes; 0 findings
+webkit: 30/201 routes; 0 findings
+webkit: 40/201 routes; 0 findings
+webkit: 50/201 routes; 0 findings
+webkit: 60/201 routes; 0 findings
+webkit: 70/201 routes; 0 findings
+webkit: 80/201 routes; 0 findings
+webkit: 90/201 routes; 0 findings
+webkit: 100/201 routes; 0 findings
+webkit: 110/201 routes; 0 findings
+webkit: 120/201 routes; 0 findings
+webkit: 130/201 routes; 0 findings
+webkit: 140/201 routes; 0 findings
+webkit: 150/201 routes; 0 findings
+webkit: 160/201 routes; 0 findings
+webkit: 170/201 routes; 0 findings
+webkit: 180/201 routes; 0 findings
+webkit: 190/201 routes; 0 findings
+webkit: 200/201 routes; 0 findings
+{"engine":"webkit","routes":201,"questions":806,"states":804,"findings":0,"errors":0}
+✔ webkit: all registered course routes retain diagnosis through input, rotation and reload (1473409.9431ms)
+chromebook: input, answer state, resized viewport, reset and focus passed
+tablet-webkit: input, answer state, resized viewport, reset and focus passed
+✔ Chromebook keyboard and WebKit tablet touch: filtering, answers, rotation and focus (1645.6936ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1805296.2723

@@ -80,7 +80,7 @@
 .tick { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; }
 .marker { stroke: #d97706; stroke-width: 2.4; }
 .marker-head { fill: #c2410c; }
-.era-text { font-size: 13.5px; font-weight: 900; fill: #0a1c24; paint-order: stroke; stroke: #ffffff; stroke-width: 3; stroke-linejoin: round; }
+.era-text { font-size: 13.5px; font-weight: 750; fill: #0a1c24; stroke: none; }
 
 /* a hundred species, a hundred plants */
 .dot { stroke: rgba(0, 0, 0, .35); stroke-width: .6; }

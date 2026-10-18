@@ -1,0 +1,1004 @@
+{
+  "engine": "webkit",
+  "complete": true,
+  "physicalDeviceTested": false,
+  "routes": 6,
+  "rows": [
+    {
+      "slug": "light-shadow",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 47,
+            "burstDurationMs": 1160,
+            "burstUpdatesPerSecond": 39.6551724137931,
+            "frames": 48,
+            "changes": 48,
+            "seconds": 1.21,
+            "distinctPerSecond": 39.66942148760331,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 31,
+            "activeUpdatesPerSecond": 39.6551724137931,
+            "firstChangeMs": 50,
+            "lastChangeMs": 1210,
+            "maxChangeGapMs": 39,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 47,
+              "burstDurationMs": 1160,
+              "burstUpdatesPerSecond": 39.6551724137931,
+              "frames": 48,
+              "changes": 48,
+              "seconds": 1.21,
+              "distinctPerSecond": 39.66942148760331,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 31,
+              "activeUpdatesPerSecond": 39.6551724137931,
+              "firstChangeMs": 50,
+              "lastChangeMs": 1210,
+              "maxChangeGapMs": 39,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-light-shadow-0-0.webp",
+              "visible": true,
+              "width": 538,
+              "height": 358.65625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-light-shadow-0-1.webp",
+              "visible": true,
+              "width": 168,
+              "height": 168,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-light-shadow-0-2.webp",
+              "visible": true,
+              "width": 560,
+              "height": 239.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-light-shadow-0-3.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "refraction",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 80,
+            "burstDurationMs": 1194,
+            "burstUpdatesPerSecond": 66.1641541038526,
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.208,
+            "distinctPerSecond": 67.05298013245033,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 66.1641541038526,
+            "firstChangeMs": 14,
+            "lastChangeMs": 1208,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 80,
+              "burstDurationMs": 1194,
+              "burstUpdatesPerSecond": 66.1641541038526,
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.208,
+              "distinctPerSecond": 67.05298013245033,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 66.1641541038526,
+              "firstChangeMs": 14,
+              "lastChangeMs": 1208,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-refraction-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 389.5625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-refraction-0-1.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "circuit-bulbs",
+      "states": [
+        {
+          "mode": "circuit",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 80,
+            "burstDurationMs": 1192,
+            "burstUpdatesPerSecond": 66.2751677852349,
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.206,
+            "distinctPerSecond": 67.16417910447761,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 66.2751677852349,
+            "firstChangeMs": 14,
+            "lastChangeMs": 1206,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 80,
+              "burstDurationMs": 1192,
+              "burstUpdatesPerSecond": 66.2751677852349,
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.206,
+              "distinctPerSecond": 67.16417910447761,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 66.2751677852349,
+              "firstChangeMs": 14,
+              "lastChangeMs": 1206,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-circuit-bulbs-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 365.203125,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "magnet",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 80,
+            "burstDurationMs": 1197,
+            "burstUpdatesPerSecond": 65.99832915622389,
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.211,
+            "distinctPerSecond": 66.88687035507844,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 65.99832915622389,
+            "firstChangeMs": 14,
+            "lastChangeMs": 1211,
+            "maxChangeGapMs": 17,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 80,
+              "burstDurationMs": 1197,
+              "burstUpdatesPerSecond": 65.99832915622389,
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.211,
+              "distinctPerSecond": 66.88687035507844,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 65.99832915622389,
+              "firstChangeMs": 14,
+              "lastChangeMs": 1211,
+              "maxChangeGapMs": 17,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-circuit-bulbs-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 365.203125,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 39,
+            "burstDurationMs": 1147,
+            "burstUpdatesPerSecond": 33.12990409764603,
+            "frames": 40,
+            "changes": 40,
+            "seconds": 1.205,
+            "distinctPerSecond": 33.19502074688796,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 36,
+            "activeUpdatesPerSecond": 33.12990409764603,
+            "firstChangeMs": 58,
+            "lastChangeMs": 1205,
+            "maxChangeGapMs": 36,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 39,
+              "burstDurationMs": 1147,
+              "burstUpdatesPerSecond": 33.12990409764603,
+              "frames": 40,
+              "changes": 40,
+              "seconds": 1.205,
+              "distinctPerSecond": 33.19502074688796,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 36,
+              "activeUpdatesPerSecond": 33.12990409764603,
+              "firstChangeMs": 58,
+              "lastChangeMs": 1205,
+              "maxChangeGapMs": 36,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-ohms-law-middle-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 267.8125,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-ohms-law-middle-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 255.640625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-ohms-law-middle-0-2.webp",
+              "visible": true,
+              "width": 480,
+              "height": 323.46875,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "states": [
+        {
+          "mode": "initial",
+          "actions": [],
+          "visualMode": "static-or-selected-condition",
+          "movement": {
+            "burstFrames": 0,
+            "burstDurationMs": 0,
+            "burstUpdatesPerSecond": 0,
+            "frames": 76,
+            "changes": 1,
+            "seconds": 1.212,
+            "distinctPerSecond": 0.8250825082508251,
+            "changedFrameRatio": 0.013157894736842105,
+            "p95FrameMs": 17,
+            "activeUpdatesPerSecond": 0,
+            "firstChangeMs": null,
+            "lastChangeMs": null,
+            "maxChangeGapMs": null,
+            "geometryMutations": 0,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 0,
+              "burstDurationMs": 0,
+              "burstUpdatesPerSecond": 0,
+              "frames": 76,
+              "changes": 1,
+              "seconds": 1.212,
+              "distinctPerSecond": 0.8250825082508251,
+              "changedFrameRatio": 0.013157894736842105,
+              "p95FrameMs": 17,
+              "activeUpdatesPerSecond": 0,
+              "firstChangeMs": null,
+              "lastChangeMs": null,
+              "maxChangeGapMs": null,
+              "geometryMutations": 0,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-ohms-law-high-elective-0-0.webp",
+              "visible": true,
+              "width": 622,
+              "height": 403.84375,
+              "id": "cmScene",
+              "tag": "svg"
+            }
+          ]
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR"
+      ]
+    },
+    {
+      "slug": "heat-engine",
+      "states": [
+        {
+          "mode": "carnot",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 80,
+            "burstDurationMs": 1194,
+            "burstUpdatesPerSecond": 66.1641541038526,
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.209,
+            "distinctPerSecond": 66.99751861042184,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 66.1641541038526,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1209,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 324,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 80,
+              "burstDurationMs": 1194,
+              "burstUpdatesPerSecond": 66.1641541038526,
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.209,
+              "distinctPerSecond": 66.99751861042184,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 66.1641541038526,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1209,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 324,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-heat-engine-0-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-heat-engine-0-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "flow",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 80,
+            "burstDurationMs": 1190,
+            "burstUpdatesPerSecond": 66.38655462184875,
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.205,
+            "distinctPerSecond": 67.21991701244814,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 66.38655462184875,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1205,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 324,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 80,
+              "burstDurationMs": 1190,
+              "burstUpdatesPerSecond": 66.38655462184875,
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.205,
+              "distinctPerSecond": 67.21991701244814,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 66.38655462184875,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1205,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 324,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-heat-engine-1-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-heat-engine-1-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        },
+        {
+          "mode": "pump",
+          "actions": [
+            {
+              "selector": "#checkBtn",
+              "clicked": true
+            }
+          ],
+          "visualMode": "continuous-motion",
+          "movement": {
+            "burstFrames": 80,
+            "burstDurationMs": 1194,
+            "burstUpdatesPerSecond": 66.1641541038526,
+            "frames": 81,
+            "changes": 81,
+            "seconds": 1.209,
+            "distinctPerSecond": 66.99751861042184,
+            "changedFrameRatio": 1,
+            "p95FrameMs": 16,
+            "activeUpdatesPerSecond": 66.1641541038526,
+            "firstChangeMs": 15,
+            "lastChangeMs": 1209,
+            "maxChangeGapMs": 16,
+            "geometryMutations": 81,
+            "retained": 1,
+            "sparseGeometry": []
+          },
+          "movementWindows": [
+            {
+              "phase": "opening",
+              "burstFrames": 80,
+              "burstDurationMs": 1194,
+              "burstUpdatesPerSecond": 66.1641541038526,
+              "frames": 81,
+              "changes": 81,
+              "seconds": 1.209,
+              "distinctPerSecond": 66.99751861042184,
+              "changedFrameRatio": 1,
+              "p95FrameMs": 16,
+              "activeUpdatesPerSecond": 66.1641541038526,
+              "firstChangeMs": 15,
+              "lastChangeMs": 1209,
+              "maxChangeGapMs": 16,
+              "geometryMutations": 81,
+              "retained": 1,
+              "sparseGeometry": []
+            }
+          ],
+          "readabilityStart": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "readability": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          },
+          "captures": [
+            {
+              "file": "webkit-heat-engine-2-0.webp",
+              "visible": true,
+              "width": 560,
+              "height": 260.515625,
+              "id": "",
+              "tag": "svg"
+            },
+            {
+              "file": "webkit-heat-engine-2-1.webp",
+              "visible": true,
+              "width": 560,
+              "height": 238.59375,
+              "id": "",
+              "tag": "svg"
+            }
+          ],
+          "readabilityLater": {
+            "overflow": false,
+            "fonts": [],
+            "clipped": [],
+            "overlaps": [],
+            "canvas": []
+          }
+        }
+      ],
+      "fontFamilies": [
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Pretendard",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR",
+        "Noto Serif KR"
+      ]
+    }
+  ],
+  "errors": []
+}

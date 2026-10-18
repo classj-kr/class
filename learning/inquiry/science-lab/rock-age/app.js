@@ -299,10 +299,10 @@ function drawStrataGraph(g) {
 }
 
 function render() {
-    const m = $('mainGroup'), gr = $('graphGroup');
-    m.textContent = ''; gr.textContent = '';
+    window.scienceScene.draw([$('mainGroup'), $('graphGroup')], ([m, gr]) => {
     if (state.mode === 'decay') { drawAtoms(m); drawDecayGraph(gr); }
     else { drawSection(m); drawStrataGraph(gr); }
+    });
     updateReadout();
 }
 

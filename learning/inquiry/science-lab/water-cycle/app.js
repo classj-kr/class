@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (history.length < 2) {
             out.push(`<text class="trend-empty" x="${(AX.x0 + AX.x1) / 2}" y="${((TOP.y0 + TOP.y1) / 2).toFixed(0)}" text-anchor="middle">순환을 시작하면 물이 어디로 옮겨 가는지 그려집니다.</text>`);
-            graphGroup.innerHTML = out.join('');
+            window.scienceScene.render(graphGroup,out.join(''));
             return;
         }
 
@@ -316,18 +316,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         endTags(out, SMALL.map(key => ({ name: byKey[key].name, color: byKey[key].color, y: tyBot(R[key], bMax) })), BOT);
 
-        graphGroup.innerHTML = out.join('');
+        window.scienceScene.render(graphGroup,out.join(''));
     }
 
     function renderData(rows) {
         const drift = total() - TOTAL;
-        dataNote.innerHTML =
-            rows.map(r =>
+        window.scienceScene.render(dataNote,rows.map(r =>
                 `<div class="data-row"><span class="data-name">${r.name}</span>` +
                 `<span class="data-val">${Math.round(R[r.key])} (처음 ${INITIAL[r.key]})</span></div>`).join('') +
             `<div class="data-row match"><span class="data-name">네 곳을 더하면</span>` +
             `<span class="data-val">${Math.round(total())} — 처음과 ${Math.abs(drift) < 0.5 ? '똑같습니다' : `${drift.toFixed(1)} 다릅니다`}</span></div>` +
-            `<div class="data-row"><span class="data-name">흐른 날수</span><span class="data-val">${days.toFixed(1)}일</span></div>`;
+            `<div class="data-row"><span class="data-name">흐른 날수</span><span class="data-val">${days.toFixed(1)}일</span></div>`);
     }
 
     function frame(now) {

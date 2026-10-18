@@ -145,26 +145,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         out += `<text class="band-note" x="${X0}" y="${TOP + H + 18}">용액의 색만으로 판단하지 않고 리트머스 종이의 변화를 확인합니다.</text>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function renderData() {
         if (!selectedSolution) {
-            dataNote.innerHTML =
-                `<div class="data-row"><span class="data-name">고른 용액</span><span class="data-val">아직 고르지 않았습니다</span></div>` +
+            window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">고른 용액</span><span class="data-val">아직 고르지 않았습니다</span></div>` +
                 `<div class="data-row"><span class="data-name">알아볼 것</span><span class="data-val">리트머스 종이 두 장이 어떻게 바뀌는지</span></div>` +
-                `<div class="data-row"><span class="data-name">나누는 무리</span><span class="data-val">산성 · 염기성</span></div>`;
+                `<div class="data-row"><span class="data-name">나누는 무리</span><span class="data-val">산성 · 염기성</span></div>`);
             return;
         }
         const d = SOLUTIONS[selectedSolution];
         const acid = d.type === 'acid', base = d.type === 'base';
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">고른 용액</span><span class="data-val">${d.label}</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">고른 용액</span><span class="data-val">${d.label}</span></div>` +
             `<div class="data-row"><span class="data-name">겉보기</span><span class="data-val">${d.appearance}</span></div>` +
             `<div class="data-row"><span class="data-name">푸른 리트머스 종이</span><span class="data-val">${acid ? '붉게 바뀝니다' : '그대로입니다'}</span></div>` +
             `<div class="data-row"><span class="data-name">붉은 리트머스 종이</span><span class="data-val">${base ? '푸르게 바뀝니다' : '그대로입니다'}</span></div>` +
             `<div class="data-row match"><span class="data-name">어느 무리인가</span><span class="data-val">${TYPE_LABEL[d.type]}</span></div>` +
-            `<div class="data-row"><span class="data-name">같은 무리의 용액</span><span class="data-val">${Object.values(SOLUTIONS).filter(x => x.type === d.type).map(x => x.label).join(' · ')}</span></div>`;
+            `<div class="data-row"><span class="data-name">같은 무리의 용액</span><span class="data-val">${Object.values(SOLUTIONS).filter(x => x.type === d.type).map(x => x.label).join(' · ')}</span></div>`);
     }
 
     function clearResult() {

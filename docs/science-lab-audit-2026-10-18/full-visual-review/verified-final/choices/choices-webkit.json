@@ -1,0 +1,1026 @@
+{
+  "engine": "webkit",
+  "physicalDeviceTested": false,
+  "rows": [
+    {
+      "slug": "light-shadow",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "refraction",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "lens-image",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "photoelectric",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "sound-vibration",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "wave-transfer",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "interference",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "lever-balance",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "speed",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "force-motion",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "motion-energy",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "gravity-motion",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "torque",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "collision",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "magnets",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "circuit-bulbs",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "electric-field",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "induction",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "motor-magnet",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "heat-transfer",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "specific-heat",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "energy-heat",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "heat-engine",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "energy-conversion",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "weight-compare",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "density-buoyancy",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "measurement",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "mixture-separation",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "separation-methods",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "state-change",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "gases",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "diffusion",
+      "groups": 2,
+      "actions": 1
+    },
+    {
+      "slug": "solubility",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "solubility-curve",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "recrystallise",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "flame-ions",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "periodic-bonding",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "molecule-shape",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "acid-base",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "neutralization",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "titration",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "mass-ratio",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "mole",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "rate-equilibrium",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "burning-conditions",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "combustion",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "redox",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "living-things",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "microbes",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "microscope",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "cell-osmosis",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "cell-membrane",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "cell-division",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "seed-germination",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "photosynthesis",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "energy-metabolism",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "body-organs",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "body-systems",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "nutrient-detection",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "homeostasis",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "immune",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "enzyme",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "senses",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "reflex-nerve",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "neuron",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "pea-genetics",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "dna-gel",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "natural-selection",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "phylogeny",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "life-cycle",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "living-environment",
+      "groups": 4,
+      "actions": 4
+    },
+    {
+      "slug": "population",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "rock-layers",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "minerals-rocks",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "geologic-time",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "rock-age",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "metamorphism",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "volcano-model",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "magma",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "plate-tectonics",
+      "groups": 4,
+      "actions": 4
+    },
+    {
+      "slug": "earthquake",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "earth-system",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "weather-watch",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "weather-front",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "air-stability",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "typhoon",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "land-sea",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "water-cycle",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "seawater",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "ocean-circulation",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "ocean-layers",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "night-sky",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "seasons",
+      "groups": 2,
+      "actions": 0
+    },
+    {
+      "slug": "moon-phases",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "apparent-motion",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "planet-motion",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "stars-universe",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "star-elements",
+      "groups": 4,
+      "actions": 2
+    },
+    {
+      "slug": "stars",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "galaxy-hubble",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "cell-structure",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "neutralization-common",
+      "groups": 3,
+      "actions": 0
+    },
+    {
+      "slug": "pasteur",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "newton-prism",
+      "groups": 3,
+      "actions": 1
+    },
+    {
+      "slug": "infection-prevention",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "mendeleev",
+      "groups": 1,
+      "actions": 0
+    },
+    {
+      "slug": "speaker-lab",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "wireless-power",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "magnetic-brake",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "transistor-speaker",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "soap-film",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "polarization",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "electron-slits",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "gas-identification",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "sugar-phase",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "hess-calorimetry",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "buffer-solution",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "bean-respiration",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "insulation-lab",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "doppler-lab",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "groups": 5,
+      "actions": 4
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "groups": 5,
+      "actions": 4
+    },
+    {
+      "slug": "dna-replication",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "protein-synthesis",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "pedigree-lab",
+      "groups": 9,
+      "actions": 2
+    },
+    {
+      "slug": "karyotype-lab",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "antibiotic-disc",
+      "groups": 4,
+      "actions": 4
+    },
+    {
+      "slug": "water-wave-tank",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "silver-mirror",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "nylon-interface",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "stellar-mass-data",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "cluster-fitting",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "habitable-orbits",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "centrifuge-design",
+      "groups": 4,
+      "actions": 4
+    },
+    {
+      "slug": "organic-builder",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-common",
+      "groups": 24,
+      "actions": 24
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-elective",
+      "groups": 16,
+      "actions": 16
+    },
+    {
+      "slug": "protein-folding",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "organelle-builder",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "hydride-boiling",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "fuel-comparison",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "mcu-sampling",
+      "groups": 6,
+      "actions": 4
+    },
+    {
+      "slug": "smart-pot",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "middle",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "high-elective",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "rotating-annulus",
+      "school": "high-elective",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "protein-interaction",
+      "school": "high-elective",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "air-sampling",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-common",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-elective",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "water-electrolysis",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "cell-micrometry",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "leaf-pigments",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "digestive-enzymes",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "spring-wave-speed",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "coastal-inundation",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "sea-level-causes",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "standard-solution",
+      "groups": 1,
+      "actions": 0
+    },
+    {
+      "slug": "serial-dilution",
+      "groups": 3,
+      "actions": 2
+    },
+    {
+      "slug": "vinegar-titration",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "acoustic-resonance",
+      "groups": 2,
+      "actions": 1
+    },
+    {
+      "slug": "electroplating",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "leaf-starch",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "dissolution-mass",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "food-web",
+      "groups": 10,
+      "actions": 0
+    },
+    {
+      "slug": "yeast-fermentation",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "light-interference",
+      "groups": 6,
+      "actions": 5
+    },
+    {
+      "slug": "galileo-incline",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "reaction-pressure",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "osmosis-mass",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "leaf-classification",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "animal-classification",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "liquid-heat",
+      "groups": 4,
+      "actions": 4
+    },
+    {
+      "slug": "phase-mass",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "rotating-disc",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "quadrat-community",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "ph-comparison",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "equilibrium-colour",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "strata-correlation",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "polarized-thin-sections",
+      "groups": 4,
+      "actions": 0
+    },
+    {
+      "slug": "crust-thickness",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "video-motion",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "hr-diagram",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "kepler-data",
+      "groups": 5,
+      "actions": 5
+    },
+    {
+      "slug": "seasonal-sky",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "equilibrium-data",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "argo-observation",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "groups": 2,
+      "actions": 2
+    },
+    {
+      "slug": "galactic-objects",
+      "groups": 4,
+      "actions": 1
+    },
+    {
+      "slug": "phase-curves",
+      "groups": 4,
+      "actions": 0
+    },
+    {
+      "slug": "acid-mixing",
+      "groups": 3,
+      "actions": 3
+    },
+    {
+      "slug": "iodine-clock",
+      "groups": 5,
+      "actions": 1
+    },
+    {
+      "slug": "catalyst-foam",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "weather-analysis",
+      "groups": 1,
+      "actions": 1
+    },
+    {
+      "slug": "temperature-clouding",
+      "groups": 0,
+      "actions": 0
+    },
+    {
+      "slug": "constellation-space",
+      "groups": 0,
+      "actions": 0
+    }
+  ],
+  "failures": [],
+  "errors": []
+}

@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -244,12 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = `<rect class="blood-field" x="16" y="26" width="290" height="146" rx="10"/>`;
         // germs: as many dots as the logarithm of the count
         const nG = P >= 1 ? clamp(Math.round(log10(P) * 4) + 1, 1, 40) : 0;
-        for (let k = 0; k < nG; k += 1) { const x = 26 + ((k * 53 + Math.floor(t * 7)) % 270), y = 34 + ((k * 37) % 112); out += `<circle class="germ" cx="${x}" cy="${y}" r="3.2"/>`; }
+        for (let k = 0; k < nG; k += 1) { const x = 26 + ((k * 53 + t * 7) % 270), y = 34 + ((k * 37) % 112); out += `<circle class="germ" cx="${x}" cy="${y}" r="3.2"/>`; }
         const nV = Ag >= 100 ? clamp(Math.round(log10(Ag) * 3), 1, 20) : 0;
         for (let k = 0; k < nV; k += 1) { const x = 30 + ((k * 71) % 262), y = 38 + ((k * 43) % 106); out += `<circle class="germ vaccine" cx="${x}" cy="${y}" r="3.2"/>`; }
         // antibodies
         const nA = A >= 0.02 ? clamp(Math.round((log10(A) + 2) * 5), 1, 40) : 0;
-        for (let k = 0; k < nA; k += 1) { const x = 34 + ((k * 61 + Math.floor(t * 4)) % 258), y = 42 + ((k * 29) % 104); out += yShape(x, y, 'ab', 3.5); }
+        for (let k = 0; k < nA; k += 1) { const x = 34 + ((k * 61 + t * 4) % 258), y = 42 + ((k * 29) % 104); out += yShape(x, y, 'ab', 3.5); }
         out += `<text class="small-label" x="22" y="166">몸속 (혈액·조직액)${nV ? ' — 옅은 점은 백신 항원' : ''}</text>`;
         // the cells below
         const CELL_PATHS = {
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // the recipient's own cells, faint
         [[420, 76], [426, 132], [396, 140]].forEach(([x, y]) => { out += `<g opacity=".45">${rbc(x, y, recipAg, 6)}</g>`; });
         // plasma antibodies drifting
-        recipAb.forEach((ab, j) => { for (let k = 0; k < 6; k += 1) { const x = 214 + ((k * 41 + j * 17 + Math.floor(p * 30)) % 200), y = 64 + ((k * 23 + j * 31) % 80); out += yShape(x, y, 'plasma-ab', 4).replace('class="plasma-ab"', `class="plasma-ab" style="stroke:${AB_STROKE[ab]}"`); } });
+        recipAb.forEach((ab, j) => { for (let k = 0; k < 6; k += 1) { const x = 214 + ((k * 41 + j * 17 + p * 30) % 200), y = 64 + ((k * 23 + j * 31) % 80); out += yShape(x, y, 'plasma-ab', 4).replace('class="plasma-ab"', `class="plasma-ab" style="stroke:${AB_STROKE[ab]}"`); } });
         // moved donor cells: spread out, or gather into a clump
         const clumpNow = a.verdict === 'clump';
         const cx = 300, cy = 104;
@@ -414,14 +414,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'blood' ? renderBlood(a) : renderImmune(a);
-        graphGroup.innerHTML = a.kind === 'blood' ? graphBlood(a) : graphImmune(a);
+        window.scienceScene.render(mainGroup,a.kind === 'blood' ? renderBlood(a) : renderImmune(a));
+        window.scienceScene.render(graphGroup,a.kind === 'blood' ? graphBlood(a) : graphImmune(a));
         liftProse();
         stageBadge.textContent = a.kind === 'infect' ? `${INFECTS[state.infect].label} · ${DOSES[state.dose].label}` : a.kind === 'vaccine' ? `${SHOTS[state.shot].label} · ${WHENS[state.when].label}` : `${a.d}형 → ${a.r}형 · ${RHS[state.rh].label}`;
         methodHint.textContent = a.kind === 'infect' ? '면역 기억에 따른 항체 반응의 차이를 관찰하는 가상 모형입니다'
             : a.kind === 'vaccine' ? '백신은 항원에 대한 면역 반응과 기억을 유도합니다'
                 : '받는 사람의 응집소가 주는 적혈구의 응집원을 붙잡으면 뭉칩니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

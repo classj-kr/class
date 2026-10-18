@@ -105,10 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // the drawn state at progress p
     function sampleEnergy(a, p) {
-        const t = p * a.duration;
+        const t = Math.max(0, Math.min(1, p)) * a.duration;
         let lo = 0, hi = a.path.length - 1;
         while (lo < hi) { const mid = (lo + hi) >> 1; if (a.path[mid].t < t) lo = mid + 1; else hi = mid; }
-        const pt = a.path[Math.min(lo, a.path.length - 1)];
+        const right = a.path[lo], left = a.path[Math.max(0, lo - 1)];
+        const f = right.t === left.t ? 0 : (t - left.t) / (right.t - left.t);
+        const x = left.x + (right.x - left.x) * f, y = trackY(x);
+        // The drawing follows the track between samples; energy stays conserved.
+        const pt = { t, x, y, v: Math.sqrt(Math.max(0, 2 * G * (a.h0 - y))) };
         const pe = a.m * G * pt.y, ke = Math.max(0, a.eTotal - pe);
         return { ...pt, pe, ke };
     }
@@ -206,8 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const c = pos(now.s);
         const ang = now.onRamp ? state.angle : 0;
         out += `<g transform="translate(${c.x.toFixed(1)} ${c.y.toFixed(1)}) rotate(${ang})">` +
-            `<rect class="cart" x="-11" y="-13" width="22" height="9" rx="2"/>` +
-            `<circle class="wheel" cx="-6" cy="-3" r="3"/><circle class="wheel" cx="6" cy="-3" r="3"/></g>`;
+            window.scienceScene.art.cart(-11,-13,22,9,'#bc713a',c.x*5)+'</g>';
 
         // readouts
         out += `<text class="part-label" x="300" y="40">시간</text><text class="read-text" x="300" y="58">${t.toFixed(2)} 초</text>`;
@@ -262,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'incline' ? renderIncline(a, state.progress) : renderEnergy(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'incline' ? renderIncline(a, state.progress) : renderEnergy(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -356,14 +359,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'incline' ? graphIncline(a) : graphEnergy(a);
+        window.scienceScene.render(graphGroup,a.kind === 'incline' ? graphIncline(a) : graphEnergy(a));
         stageBadge.textContent = a.kind === 'incline'
             ? `${state.angle}° · ${state.flash}초 간격`
             : `${a.h0.toFixed(1)} m · ${a.m} kg`;
         methodHint.textContent = state.mode === 'incline'
             ? '빗면에서는 속력이 일정하게 늘고, 평평한 곳에서는 속력이 그대로입니다'
             : '위치 에너지와 운동 에너지의 합은 어디서나 같습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ? '빽빽한 곳이 밀, 성긴 곳이 소입니다.'
             : '줄 위의 점은 위아래로만 움직입니다.');
         out += `<text class="note-text" x="${X0}" y="209">${tail}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     const gx = f => GRAPH.x0 + (f / GRAPH.fMax) * (GRAPH.x1 - GRAPH.x0);
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<path class="trace" style="stroke:#d97706" d="M${pts.join('L')}"/>`;
         }
         out += `<circle class="trace-dot" cx="${gx(a.f).toFixed(1)}" cy="${gy(a.lambda).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     const VERDICT = { longer: '기준보다 길다', same: '기준과 같다', shorter: '기준보다 짧다' };
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         freqOutput.textContent = `${a.f.toFixed(2)} Hz`;
         ampOutput.textContent = `${amp().toFixed(1)} cm`;
         stageBadge.textContent = `${mode === 'transverse' ? '횡파' : '종파'} · 파장 ${a.lambda.toFixed(1)} cm`;
-        dataNote.innerHTML = '<p>진동수: ' + a.f.toFixed(2) + ' Hz · 진폭: ' + amp().toFixed(1) + ' cm</p><p>소리는 진동수가 클수록 높고, 진폭이 클수록 큽니다.</p>';
+        window.scienceScene.render(dataNote,'<p>진동수: ' + a.f.toFixed(2) + ' Hz · 진폭: ' + amp().toFixed(1) + ' cm</p><p>소리는 진동수가 클수록 높고, 진폭이 클수록 큽니다.</p>');
         return a;
     }
 

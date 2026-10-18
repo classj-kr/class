@@ -1,0 +1,290 @@
+{
+  "checkedAt": "2026-10-17T19:23:33.493Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "refraction",
+      "scenarios": 220
+    },
+    {
+      "slug": "sound-vibration",
+      "scenarios": 70
+    },
+    {
+      "slug": "lever-balance",
+      "scenarios": 35
+    },
+    {
+      "slug": "motion-energy",
+      "scenarios": 40
+    },
+    {
+      "slug": "collision",
+      "scenarios": 5
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "scenarios": 55
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "scenarios": 125
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "scenarios": 15
+    },
+    {
+      "slug": "specific-heat",
+      "scenarios": 20
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    },
+    {
+      "slug": "measurement",
+      "scenarios": 15
+    },
+    {
+      "slug": "state-change",
+      "scenarios": 40
+    },
+    {
+      "slug": "solubility",
+      "scenarios": 25
+    },
+    {
+      "slug": "flame-ions",
+      "scenarios": 30
+    },
+    {
+      "slug": "acid-base",
+      "scenarios": 35
+    },
+    {
+      "slug": "mass-ratio",
+      "scenarios": 35
+    },
+    {
+      "slug": "burning-conditions",
+      "scenarios": 50
+    },
+    {
+      "slug": "living-things",
+      "scenarios": 10
+    },
+    {
+      "slug": "cell-osmosis",
+      "scenarios": 5
+    },
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    },
+    {
+      "slug": "body-organs",
+      "scenarios": 5
+    },
+    {
+      "slug": "homeostasis",
+      "scenarios": 15
+    },
+    {
+      "slug": "senses",
+      "scenarios": 15
+    },
+    {
+      "slug": "pea-genetics",
+      "scenarios": 35
+    },
+    {
+      "slug": "phylogeny",
+      "scenarios": 15
+    },
+    {
+      "slug": "population",
+      "scenarios": 10
+    },
+    {
+      "slug": "geologic-time",
+      "scenarios": 15
+    },
+    {
+      "slug": "volcano-model",
+      "scenarios": 40
+    },
+    {
+      "slug": "earthquake",
+      "scenarios": 5
+    },
+    {
+      "slug": "weather-front",
+      "scenarios": 35
+    },
+    {
+      "slug": "land-sea",
+      "scenarios": 20
+    },
+    {
+      "slug": "ocean-circulation",
+      "scenarios": 5
+    },
+    {
+      "slug": "seasons",
+      "scenarios": 60
+    },
+    {
+      "slug": "planet-motion",
+      "scenarios": 15
+    },
+    {
+      "slug": "stars",
+      "scenarios": 5
+    },
+    {
+      "slug": "neutralization-common",
+      "scenarios": 50
+    },
+    {
+      "slug": "infection-prevention",
+      "scenarios": 5
+    },
+    {
+      "slug": "wireless-power",
+      "scenarios": 5
+    },
+    {
+      "slug": "soap-film",
+      "scenarios": 5
+    },
+    {
+      "slug": "gas-identification",
+      "scenarios": 5
+    },
+    {
+      "slug": "buffer-solution",
+      "scenarios": 5
+    },
+    {
+      "slug": "insulation-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "dna-replication",
+      "scenarios": 5
+    },
+    {
+      "slug": "karyotype-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "silver-mirror",
+      "scenarios": 5
+    },
+    {
+      "slug": "cluster-fitting",
+      "scenarios": 5
+    },
+    {
+      "slug": "organic-builder",
+      "scenarios": 5
+    },
+    {
+      "slug": "organelle-builder",
+      "scenarios": 5
+    },
+    {
+      "slug": "mcu-sampling",
+      "scenarios": 5
+    },
+    {
+      "slug": "rotating-annulus",
+      "school": "high-elective",
+      "scenarios": 20
+    },
+    {
+      "slug": "air-sampling",
+      "scenarios": 15
+    },
+    {
+      "slug": "cell-micrometry",
+      "scenarios": 25
+    },
+    {
+      "slug": "spring-wave-speed",
+      "scenarios": 25
+    },
+    {
+      "slug": "standard-solution",
+      "scenarios": 25
+    },
+    {
+      "slug": "acoustic-resonance",
+      "scenarios": 25
+    },
+    {
+      "slug": "dissolution-mass",
+      "scenarios": 35
+    },
+    {
+      "slug": "light-interference",
+      "scenarios": 50
+    },
+    {
+      "slug": "osmosis-mass",
+      "scenarios": 40
+    },
+    {
+      "slug": "liquid-heat",
+      "scenarios": 50
+    },
+    {
+      "slug": "quadrat-community",
+      "scenarios": 35
+    },
+    {
+      "slug": "strata-correlation",
+      "scenarios": 45
+    },
+    {
+      "slug": "video-motion",
+      "scenarios": 35
+    },
+    {
+      "slug": "seasonal-sky",
+      "scenarios": 55
+    },
+    {
+      "slug": "satellite-sea-temperature",
+      "scenarios": 55
+    },
+    {
+      "slug": "acid-mixing",
+      "scenarios": 225
+    },
+    {
+      "slug": "weather-analysis",
+      "scenarios": 135
+    }
+  ],
+  "scenarios": 2200,
+  "issues": [],
+  "errors": [
+    {
+      "route": {
+        "slug": "earthquake"
+      },
+      "error": "ResizeObserver loop completed with undelivered notifications."
+    }
+  ],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

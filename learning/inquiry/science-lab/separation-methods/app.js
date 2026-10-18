@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (mode === 'distill') out += renderDistill(a, p);
         else out += renderChroma(a, p);
         out += `<text class="verdict-text" fill="${VERDICT_TONE[a.verdict]}" x="20" y="26">${MODE_NAME[mode]} · ${a.mix.label} → ${VERDICT[a.verdict]}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------- graphs */
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderGraph(a) {
-        graphGroup.innerHTML = mode === 'filter' ? graphFilter(a) : mode === 'distill' ? graphDistill(a) : graphChroma(a);
+        window.scienceScene.render(graphGroup,mode === 'filter' ? graphFilter(a) : mode === 'distill' ? graphDistill(a) : graphChroma(a));
     }
 
     function renderMixButtons() {
@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
         progressOutput.textContent = `${Math.round(progress() * 100)} %`;
         stageBadge.textContent = `${MODE_NAME[mode]} · ${a.mix.label}`;
         methodHint.textContent = MODE_HINT[mode];
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

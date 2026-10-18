@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -233,7 +233,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
-    const at = (arr, tArr, t) => { let i = 0; while (i < tArr.length - 1 && tArr[i + 1] <= t) i += 1; return arr[i]; };
+    const at = (arr, tArr, t, continuous = true) => {
+        let i = 0; while (i < tArr.length - 1 && tArr[i + 1] <= t) i += 1;
+        if (!continuous || i === tArr.length - 1) return arr[i];
+        const f = clamp((t - tArr[i]) / (tArr[i + 1] - tArr[i]), 0, 1);
+        return arr[i] + (arr[i + 1] - arr[i]) * f;
+    };
 
     function renderGlucose(a) {
         const t = state.progress * G_END;
@@ -243,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // the vessel across the middle, sugar dots as many as the level
         out += `<rect class="vessel" x="20" y="92" width="300" height="34" rx="17"/>`;
         const nDots = Math.round(G / 6);
-        for (let k = 0; k < nDots; k += 1) { const x = 30 + ((k * 37 + Math.floor(t) * 3) % 280), y = 100 + ((k * 13) % 18); out += `<circle class="sugar" cx="${x}" cy="${y}" r="2.6"/>`; }
+        for (let k = 0; k < nDots; k += 1) { const x = 30 + ((k * 37 + t * 3) % 280), y = 100 + ((k * 13) % 18); out += `<circle class="sugar" cx="${x}" cy="${y}" r="2.6"/>`; }
         out += `<text class="small-label" x="26" y="86">혈관 — 포도당 ${Math.round(G)} mg/dL</text>`;
         // organs: gut above, pancreas/liver/muscle below
         out += `<rect class="organ" x="30" y="30" width="90" height="34" rx="6"/><g transform="translate(32, 28) scale(0.38)"><path d="M 18 36 C 36 34 64 34 82 36 C 88 46 84 64 76 68 C 60 62 40 62 24 68 C 16 62 14 46 18 36 Z" fill="#d9b070" opacity="0.3"/></g><text class="organ-text" x="75" y="52" text-anchor="middle">소장</text><text class="small-label prose" x="0" y="0">소장 — ${Ra > 0.2 ? `흡수 중 ${Ra.toFixed(1)}/분` : '흡수 끝'}</text>`;
@@ -304,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const skin = `rgb(${Math.round(120 + 135 * dil)}, ${Math.round(140 - 40 * dil)}, ${Math.round(220 - 140 * dil)})`;
         out += `<circle class="body" cx="126" cy="76" r="16"/><rect class="body" x="100" y="94" width="52" height="66" rx="14"/><rect class="body" x="104" y="158" width="18" height="36" rx="6"/><rect class="body" x="130" y="158" width="18" height="36" rx="6"/>`;
         out += `<rect class="skin" style="stroke:${skin};opacity:.7" x="100" y="94" width="52" height="66" rx="14"/>`;
-        for (let k = 0; k < Math.round(sweat / 60); k += 1) { const x = 98 + (k * 37) % 60, y = 100 + ((k * 23 + Math.floor(t * 4)) % 60); out += `<circle class="sweat" cx="${x}" cy="${y}" r="2.4"/>`; }
+        for (let k = 0; k < Math.round(sweat / 60); k += 1) { const x = 98 + (k * 37) % 60, y = 100 + ((k * 23 + t * 4) % 60); out += `<circle class="sweat" cx="${x}" cy="${y}" r="2.4"/>`; }
         if (shiver > 0) for (let k = 0; k < Math.round(shiver / 50); k += 1) { const x = 90 - k * 4, y0 = 100 + k * 8; out += `<polyline class="shiver" fill="none" points="${x},${y0} ${x - 4},${y0 + 4} ${x},${y0 + 8} ${x - 4},${y0 + 12}"/>`; }
         out += `<text class="small-label" x="126" y="207" text-anchor="middle">${dil > 0.6 ? '피부 혈관 넓어짐 — 붉음' : dil < 0.4 ? '피부 혈관 좁아짐 — 창백' : '피부 혈관 보통'}</text>`;
         out += `<text class="trait-text" x="164" y="110">${sweat > 0 ? `땀 ${Math.round(sweat)} W` : s.sweat ? '땀 없음' : '땀 못 냄'}</text>`;
@@ -349,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderWater(a) {
         const t = state.progress * W_END;
         const { run } = a, it = INTAKES[state.intake];
-        const osm = at(run.osm, run.t, t), adh = at(run.adh, run.t, t), flow = at(run.flow, run.t, t), uosm = at(run.uosm, run.t, t), bladder = at(run.bladder, run.t, t), drank = at(run.drank, run.t, t);
+        const osm = at(run.osm, run.t, t), adh = at(run.adh, run.t, t), flow = at(run.flow, run.t, t), uosm = at(run.uosm, run.t, t), bladder = at(run.bladder, run.t, t), drank = at(run.drank, run.t, t, false);
         let out = '';
         out += `<rect class="blood-box" x="20" y="36" width="150" height="60" rx="8"/><text class="organ-text" x="95" y="54" text-anchor="middle">몸속 물 (혈액)</text>`;
         out += `<text class="trait-text" x="95" y="72" text-anchor="middle">진하기 ${osm.toFixed(1)} mOsm/kg</text><text class="small-label" x="95" y="88" text-anchor="middle">${osm > 288 ? '너무 진함 → 목마름' : osm < 282 ? '너무 옅음' : '알맞음 (285)'}</text>`;
@@ -398,14 +403,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'glucose' ? renderGlucose(a) : a.kind === 'temp' ? renderTemp(a) : renderWater(a);
-        graphGroup.innerHTML = a.kind === 'glucose' ? graphGlucose(a) : a.kind === 'temp' ? graphTemp(a) : graphWater(a);
+        window.scienceScene.render(mainGroup,a.kind === 'glucose' ? renderGlucose(a) : a.kind === 'temp' ? renderTemp(a) : renderWater(a));
+        window.scienceScene.render(graphGroup,a.kind === 'glucose' ? graphGlucose(a) : a.kind === 'temp' ? graphTemp(a) : graphWater(a));
         liftProse();
         stageBadge.textContent = a.kind === 'glucose' ? `${MEALS[state.meal].label} · ${BODIES[state.body].label}` : a.kind === 'temp' ? `${WEATHERS[state.weather].label} · ${STATES[state.bstate].label}` : INTAKES[state.intake].label;
         methodHint.textContent = a.kind === 'glucose' ? '혈당이 오르면 인슐린, 내리면 글루카곤이 되돌립니다'
             : a.kind === 'temp' ? '만드는 열과 내보내는 열이 같아야 체온이 머뭅니다'
                 : '몸속 물이 진해지면 항이뇨 호르몬이 물을 아끕니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

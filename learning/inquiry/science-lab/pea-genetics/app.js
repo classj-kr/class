@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ? `${alleles(state.parentA, a.gene).join('')} × ${alleles(state.parentB, a.gene).join('')}`
             : a.cross.label;
         out += `<text class="verdict-text figure-caption" fill="#0f172a" x="26" y="210">${head} · 기대 ${expectedText(a)}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -387,14 +387,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const a = analyse();
         if (state.offspring.length !== state.seeds) sow(a);
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'one' ? graphOne(a) : graphTwo(a);
+        window.scienceScene.render(graphGroup,a.kind === 'one' ? graphOne(a) : graphTwo(a));
         stageBadge.textContent = a.kind === 'one'
             ? `${a.trait.name} · ${alleles(state.parentA, a.gene).join('')} × ${alleles(state.parentB, a.gene).join('')}`
             : a.cross.label;
         methodHint.textContent = state.mode === 'one'
             ? '생식세포가 만들어질 때 한 쌍의 유전자는 갈라져 하나씩 들어갑니다'
             : '서로 다른 형질의 유전자는 서로 상관없이 따로 갈라집니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

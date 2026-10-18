@@ -104,11 +104,21 @@
     }
     return wins.length?wins:safe.length?safe:moves;
   }
+  function replyLoss(state) {
+    let loss=0;
+    for(const reply of C.allLegalMoves(state).filter(m=>m.capture)) {
+      const after=C.advance(state,reply);
+      const recaptured=C.allLegalMoves(after).some(m=>m.capture&&m.to===reply.to);
+      const gain=VALUES[reply.capture[1]]+(reply.promotion?VALUES[reply.promotion]-VALUES.P:0);
+      loss=Math.max(loss,gain-(recaptured?VALUES[reply.promotion||reply.piece[1]]:0));
+    }
+    return loss;
+  }
   function choose(state, level="beginner", options={}) {
     if(C.status(state).ended) return null;
     const settings={...(LEVELS[level]||LEVELS.beginner),...options};
     const practice=settings.practice&&!settings.coaching;
-    const roots=practice?C.allLegalMoves(state):rootCandidates(state);
+    const roots=rootCandidates(state);
     if(!roots.length)return null;
     if(practice){
       const win=roots.find(move=>{const next=C.advance(state,move);return C.isInCheck(next)&&!C.allLegalMoves(next).length;});
@@ -122,12 +132,13 @@
     if(options.allowClaim!==false && currentClaim && evaluate(state)<-150) return { claim:true, reason:"이 판은 무승부를 선언할 수 있어요. 기물이 불리한 상황에서 무승부로 마칩니다." };
     if(practice){
       const random=options.random||Math.random;
-      // Use legal moves, so checks and pinned pieces still obey the rules.
-      // Most turns explore without checking the opponent's reply; the rest
-      // compare only this move. No opening book, exchange search or mate shield.
-      const developing=roots.filter(m=>m.piece[1]!=='K'||m.capture||m.castle);
-      const candidates=random()<.65?(developing.length?developing:roots):
-        roots.map(move=>({move,score:-evaluate(C.advance(state,move))})).sort((a,b)=>b.score-a.score).slice(0,3).map(m=>m.move);
+      // Keep opening variety without ignoring mate or giving away material.
+      // A short comparison stays weaker than the higher levels' search.
+      const ranked=roots.map(move=>{
+        const next=C.advance(state,move),end=C.status(next);
+        return {move,score:end.ended?0:-evaluate(next)-replyLoss(next)};
+      }).sort((a,b)=>b.score-a.score);
+      const candidates=ranked.filter(m=>m.score>=ranked[0].score-35).slice(0,4).map(m=>m.move);
       const move=candidates[Math.min(candidates.length-1,Math.floor(random()*candidates.length))];
       return {move,reason:explain(state,move),depth:1,nodes:0,practice:true};
     }
@@ -168,14 +179,7 @@
     // Allow legal recaptures before treating a capture as a material loss.
     best=roots.map(move=>{
       const next=C.advance(state,move);
-      let loss=0;
-      for(const reply of C.allLegalMoves(next).filter(m=>m.capture)) {
-        const after=C.advance(next,reply);
-        const recaptured=C.allLegalMoves(after).some(m=>m.capture&&m.to===reply.to);
-        const gain=VALUES[reply.capture[1]]+(reply.promotion?VALUES[reply.promotion]-VALUES.P:0);
-        loss=Math.max(loss,gain-(recaptured?VALUES[reply.promotion||reply.piece[1]]:0));
-      }
-      return {move,score:-evaluate(next)-loss-costs.get(move)};
+      return {move,score:-evaluate(next)-replyLoss(next)-costs.get(move)};
     }).sort((a,b)=>b.score-a.score)[0].move;
     for(let depth=2;depth<=settings.depth;depth++) {
       let candidate=best, top=-Infinity;

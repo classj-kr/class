@@ -210,9 +210,9 @@ const SUP = { '-': '⁻', 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵
 function sup(n) { return String(n).split('').map(c => SUP[c]).join(''); }
 
 function render() {
-    const m = $('mainGroup'), gr = $('graphGroup');
-    m.textContent = ''; gr.textContent = '';
+    window.scienceScene.draw([$('mainGroup'), $('graphGroup')], ([m, gr]) => {
     drawScene(m); drawGraph(gr);
+    });
     updateReadout();
 }
 

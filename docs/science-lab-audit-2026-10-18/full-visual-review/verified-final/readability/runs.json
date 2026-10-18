@@ -1,0 +1,37 @@
+{
+  "completedAt": "2026-10-17T21:30:31.661Z",
+  "results": [
+    {
+      "name": "chromium",
+      "engine": "chromium",
+      "exitCode": 0,
+      "passed": true,
+      "durationMs": 358176,
+      "log": "tmp/science-full-visual-2026-10-18/verified-final-readability-chromium.log"
+    },
+    {
+      "name": "webkit-a",
+      "engine": "webkit",
+      "exitCode": 0,
+      "passed": true,
+      "durationMs": 458714,
+      "log": "tmp/science-full-visual-2026-10-18/verified-final-readability-webkit-a.log"
+    },
+    {
+      "name": "webkit-b",
+      "engine": "webkit",
+      "exitCode": 0,
+      "passed": true,
+      "durationMs": 480655,
+      "log": "tmp/science-full-visual-2026-10-18/verified-final-readability-webkit-b.log"
+    },
+    {
+      "name": "webkit-c",
+      "engine": "webkit",
+      "exitCode": 0,
+      "passed": true,
+      "durationMs": 486538,
+      "log": "tmp/science-full-visual-2026-10-18/verified-final-readability-webkit-c.log"
+    }
+  ]
+}

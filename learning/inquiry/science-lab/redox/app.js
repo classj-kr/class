@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="20" y="18">${a.A.sym} (${a.A.E.toFixed(2)} V)와 ${a.B.sym} (${a.B.E.toFixed(2)} V)</text>`;
         out += `<text class="read-text" x="20" y="209">${a.same ? '전위 차이가 0 이라 전류가 흐르지 않습니다'
             : `${a.anode.sym}이 산화되어 (−)극 · 기전력 ${a.emf.toFixed(2)} V`}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     function renderElec(a) {
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="note-text" x="316" y="130">${a.b.sym}${a.b.n === 1 ? '⁺' : '²⁺'} + ${a.b.n}e⁻ → ${a.b.sym}</text>`;
             out += `<text class="read-text" x="20" y="209">${a.b.out} ${a.mass.toFixed(3)} g이 (−)극에 석출됩니다</text>`;
         }
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                    `${!a.same && m === a.anode ? ' ← 산화 (−)' : ''}${!a.same && m === a.cathode ? ' ← 환원 (+)' : ''}</text>`;
         });
         out += `<text class="axis-text" x="${GRAPH.x0}" y="${GRAPH.y0 + 16}">아래로 갈수록 산화되기 쉬움</text>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function graphElec(a) {
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const flip = gx(mass) > GRAPH.x1 - 60;
             out += `<text class="bar-text" style="fill:${flip ? '#ffffff' : colour}" x="${(gx(mass) + (flip ? -6 : 6)).toFixed(1)}" y="${(y + 4).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${mass.toFixed(3)} g</text>`;
         });
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     /* ------------------------------------------------------------ render */
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'cell'
             ? (a.same ? '전위 차이 없음' : `${a.anode.sym} 산화 · ${a.emf.toFixed(2)} V`)
             : `전자 ${a.eMol.toFixed(4)} mol`;
-        dataNote.innerHTML = a.kind === 'cell'
+        window.scienceScene.render(dataNote,a.kind === 'cell'
             ? `<div class="data-row"><span class="data-name">표준 환원 전위</span><span class="data-val">${a.A.sym} ${a.A.E.toFixed(2)} V · ${a.B.sym} ${a.B.E.toFixed(2)} V</span></div>` +
               `<div class="data-row"><span class="data-name">(−)극 · 산화</span><span class="data-val">${a.same ? '없음' : `${a.anode.name} → ${a.anode.sym}${a.anode.n === 1 ? '⁺' : '²⁺'} + ${a.anode.n}e⁻`}</span></div>` +
               `<div class="data-row"><span class="data-name">(+)극 · 환원</span><span class="data-val">${a.same ? '없음' : `${a.cathode.sym}${a.cathode.n === 1 ? '⁺' : '²⁺'} + ${a.cathode.n}e⁻ → ${a.cathode.name}`}</span></div>` +
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `<div class="data-row match"><span class="data-name">부피비</span><span class="data-val">${a.h2L.toFixed(2)} : ${a.o2L.toFixed(2)} = 2 : 1</span></div>`
                   : `<div class="data-row"><span class="data-name">${a.b.out}의 몰수</span><span class="data-val">${a.eMol.toFixed(4)} ÷ ${a.b.n} = ${a.molOut.toFixed(4)} mol</span></div>` +
                     `<div class="data-row"><span class="data-name">질량</span><span class="data-val">${a.molOut.toFixed(4)} × ${a.b.M} = ${a.mass.toFixed(3)} g</span></div>` +
-                    `<div class="data-row match"><span class="data-name">${E_BENCH} mol과 견주면</span><span class="data-val">${E_WORD[a.verdict]}</span></div>`);
+                    `<div class="data-row match"><span class="data-name">${E_BENCH} mol과 견주면</span><span class="data-val">${E_WORD[a.verdict]}</span></div>`));
         return a;
     }
 

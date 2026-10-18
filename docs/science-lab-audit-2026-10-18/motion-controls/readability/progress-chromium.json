@@ -1,0 +1,486 @@
+{
+  "engine": "chromium",
+  "catalog": false,
+  "routes": 112,
+  "scenarios": 2735,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "supplementDiagnosisChecked": true,
+  "deviceProfile": "chromebook-scale",
+  "emulationOnly": true,
+  "deviceScaleFactor": 1.25,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR",
+    "Pretendard"
+  ],
+  "issues": [],
+  "errors": [],
+  "batches": [
+    "chromium-batch-1.json",
+    "chromium-batch-2/progress-chromium.json"
+  ],
+  "checkedAt": "2026-10-17T18:33:45.464Z",
+  "sourceManifest": "../live-assets.json",
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "light-shadow",
+      "scenarios": 40
+    },
+    {
+      "slug": "lens-image",
+      "scenarios": 5
+    },
+    {
+      "slug": "photoelectric",
+      "scenarios": 15
+    },
+    {
+      "slug": "wave-transfer",
+      "scenarios": 10
+    },
+    {
+      "slug": "interference",
+      "scenarios": 10
+    },
+    {
+      "slug": "speed",
+      "scenarios": 10
+    },
+    {
+      "slug": "force-motion",
+      "scenarios": 25
+    },
+    {
+      "slug": "motion-energy",
+      "scenarios": 40
+    },
+    {
+      "slug": "gravity-motion",
+      "scenarios": 10
+    },
+    {
+      "slug": "torque",
+      "scenarios": 15
+    },
+    {
+      "slug": "collision",
+      "scenarios": 5
+    },
+    {
+      "slug": "magnets",
+      "scenarios": 10
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "scenarios": 55
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "scenarios": 125
+    },
+    {
+      "slug": "electric-field",
+      "scenarios": 15
+    },
+    {
+      "slug": "induction",
+      "scenarios": 10
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "scenarios": 15
+    },
+    {
+      "slug": "motor-magnet",
+      "scenarios": 15
+    },
+    {
+      "slug": "specific-heat",
+      "scenarios": 20
+    },
+    {
+      "slug": "energy-heat",
+      "scenarios": 5
+    },
+    {
+      "slug": "heat-engine",
+      "scenarios": 15
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    },
+    {
+      "slug": "density-buoyancy",
+      "scenarios": 55
+    },
+    {
+      "slug": "measurement",
+      "scenarios": 15
+    },
+    {
+      "slug": "mixture-separation",
+      "scenarios": 30
+    },
+    {
+      "slug": "separation-methods",
+      "scenarios": 15
+    },
+    {
+      "slug": "state-change",
+      "scenarios": 40
+    },
+    {
+      "slug": "gases",
+      "scenarios": 25
+    },
+    {
+      "slug": "solubility",
+      "scenarios": 25
+    },
+    {
+      "slug": "solubility-curve",
+      "scenarios": 5
+    },
+    {
+      "slug": "recrystallise",
+      "scenarios": 5
+    },
+    {
+      "slug": "flame-ions",
+      "scenarios": 30
+    },
+    {
+      "slug": "periodic-bonding",
+      "scenarios": 30
+    },
+    {
+      "slug": "molecule-shape",
+      "scenarios": 15
+    },
+    {
+      "slug": "acid-base",
+      "scenarios": 35
+    },
+    {
+      "slug": "neutralization",
+      "scenarios": 5
+    },
+    {
+      "slug": "titration",
+      "scenarios": 5
+    },
+    {
+      "slug": "mass-ratio",
+      "scenarios": 35
+    },
+    {
+      "slug": "mole",
+      "scenarios": 55
+    },
+    {
+      "slug": "rate-equilibrium",
+      "scenarios": 75
+    },
+    {
+      "slug": "burning-conditions",
+      "scenarios": 50
+    },
+    {
+      "slug": "combustion",
+      "scenarios": 5
+    },
+    {
+      "slug": "redox",
+      "scenarios": 10
+    },
+    {
+      "slug": "living-things",
+      "scenarios": 10
+    },
+    {
+      "slug": "microbes",
+      "scenarios": 55
+    },
+    {
+      "slug": "cell-osmosis",
+      "scenarios": 5
+    },
+    {
+      "slug": "cell-membrane",
+      "scenarios": 55
+    },
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    },
+    {
+      "slug": "body-systems",
+      "scenarios": 5
+    },
+    {
+      "slug": "nutrient-detection",
+      "scenarios": 15
+    },
+    {
+      "slug": "photosynthesis",
+      "scenarios": 40
+    },
+    {
+      "slug": "homeostasis",
+      "scenarios": 15
+    },
+    {
+      "slug": "neuron",
+      "scenarios": 15
+    },
+    {
+      "slug": "natural-selection",
+      "scenarios": 10
+    },
+    {
+      "slug": "pea-genetics",
+      "scenarios": 35
+    },
+    {
+      "slug": "immune",
+      "scenarios": 65
+    },
+    {
+      "slug": "phylogeny",
+      "scenarios": 15
+    },
+    {
+      "slug": "living-environment",
+      "scenarios": 35
+    },
+    {
+      "slug": "geologic-time",
+      "scenarios": 15
+    },
+    {
+      "slug": "metamorphism",
+      "scenarios": 15
+    },
+    {
+      "slug": "weather-front",
+      "scenarios": 35
+    },
+    {
+      "slug": "earth-system",
+      "scenarios": 35
+    },
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    },
+    {
+      "slug": "typhoon",
+      "scenarios": 15
+    },
+    {
+      "slug": "land-sea",
+      "scenarios": 20
+    },
+    {
+      "slug": "water-cycle",
+      "scenarios": 5
+    },
+    {
+      "slug": "seawater",
+      "scenarios": 5
+    },
+    {
+      "slug": "ocean-layers",
+      "scenarios": 15
+    },
+    {
+      "slug": "night-sky",
+      "scenarios": 20
+    },
+    {
+      "slug": "planet-motion",
+      "scenarios": 15
+    },
+    {
+      "slug": "seasons",
+      "scenarios": 60
+    },
+    {
+      "slug": "stars-universe",
+      "scenarios": 40
+    },
+    {
+      "slug": "speaker-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "wireless-power",
+      "scenarios": 5
+    },
+    {
+      "slug": "galaxy-hubble",
+      "scenarios": 15
+    },
+    {
+      "slug": "magnetic-brake",
+      "scenarios": 5
+    },
+    {
+      "slug": "transistor-speaker",
+      "scenarios": 5
+    },
+    {
+      "slug": "soap-film",
+      "scenarios": 5
+    },
+    {
+      "slug": "polarization",
+      "scenarios": 5
+    },
+    {
+      "slug": "star-elements",
+      "scenarios": 75
+    },
+    {
+      "slug": "electron-slits",
+      "scenarios": 5
+    },
+    {
+      "slug": "gas-identification",
+      "scenarios": 5
+    },
+    {
+      "slug": "sugar-phase",
+      "scenarios": 5
+    },
+    {
+      "slug": "hess-calorimetry",
+      "scenarios": 5
+    },
+    {
+      "slug": "buffer-solution",
+      "scenarios": 5
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "scenarios": 5
+    },
+    {
+      "slug": "bean-respiration",
+      "scenarios": 5
+    },
+    {
+      "slug": "insulation-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "doppler-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "dna-replication",
+      "scenarios": 5
+    },
+    {
+      "slug": "protein-synthesis",
+      "scenarios": 5
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "scenarios": 35
+    },
+    {
+      "slug": "pedigree-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "scenarios": 35
+    },
+    {
+      "slug": "karyotype-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "antibiotic-disc",
+      "scenarios": 5
+    },
+    {
+      "slug": "water-wave-tank",
+      "scenarios": 5
+    },
+    {
+      "slug": "silver-mirror",
+      "scenarios": 5
+    },
+    {
+      "slug": "nylon-interface",
+      "scenarios": 5
+    },
+    {
+      "slug": "water-electrolysis",
+      "scenarios": 25
+    },
+    {
+      "slug": "leaf-pigments",
+      "scenarios": 25
+    },
+    {
+      "slug": "cell-micrometry",
+      "scenarios": 25
+    },
+    {
+      "slug": "digestive-enzymes",
+      "scenarios": 25
+    },
+    {
+      "slug": "coastal-inundation",
+      "scenarios": 25
+    },
+    {
+      "slug": "spring-wave-speed",
+      "scenarios": 25
+    },
+    {
+      "slug": "sea-level-causes",
+      "scenarios": 25
+    },
+    {
+      "slug": "acoustic-resonance",
+      "scenarios": 25
+    },
+    {
+      "slug": "electroplating",
+      "scenarios": 35
+    },
+    {
+      "slug": "dissolution-mass",
+      "scenarios": 35
+    },
+    {
+      "slug": "seasonal-sky",
+      "scenarios": 55
+    },
+    {
+      "slug": "reaction-pressure",
+      "scenarios": 95
+    },
+    {
+      "slug": "catalyst-foam",
+      "scenarios": 145
+    }
+  ]
+}

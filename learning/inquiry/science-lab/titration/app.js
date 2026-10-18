@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="verdict-text" fill="${a.indOk ? '#059669' : '#ea580c'}" x="248" y="170">` +
                `${a.indOk ? '이 적정에 알맞은 지시약입니다' : '이 적정에는 알맞지 않습니다'}</text>`;
         out += `<text class="note-text" x="20" y="206">한두 방울(${DROP} mL) 사이에 pH가 ${a.jumpLo.toFixed(1)} → ${ro(a.jumpHi.toFixed(1))} 뜁니다</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     function renderGraph(a, s) {
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="eq-text" x="${(gx(a.veq) + (flip ? -6 : 6)).toFixed(1)}" y="${(gy(a.eqPH) - 8).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>` +
                `당량점 ${a.veq.toFixed(1)} mL · pH ${a.eqPH.toFixed(2)}</text>`;
         if (s && s.V > 0) out += `<circle class="mark-dot" cx="${gx(s.V).toFixed(1)}" cy="${gy(pHAt(s.V, a.k, a.Ca, a.Cb)).toFixed(1)}" r="4" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
@@ -214,12 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
         acidOutput.textContent = `${a.Ca.toFixed(2)} M`;
         baseOutput.textContent = `${a.Cb.toFixed(2)} M`;
         stageBadge.textContent = `${a.veq.toFixed(1)} mL · 당량점 pH ${a.eqPH.toFixed(2)}`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">산의 몰수</span><span class="data-val">${a.Ca.toFixed(2)} M × ${VA.toFixed(1)} mL = ${a.moles.toFixed(3)} mmol</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">산의 몰수</span><span class="data-val">${a.Ca.toFixed(2)} M × ${VA.toFixed(1)} mL = ${a.moles.toFixed(3)} mmol</span></div>` +
             `<div class="data-row"><span class="data-name">당량점 부피</span><span class="data-val">${a.moles.toFixed(3)} ÷ ${a.Cb.toFixed(2)} = ${a.veq.toFixed(2)} mL</span></div>` +
             `<div class="data-row"><span class="data-name">당량점 pH</span><span class="data-val">${a.eqPH.toFixed(2)} — ${EQ_WHY[a.k]}</span></div>` +
             `<div class="data-row"><span class="data-name">급변 구간</span><span class="data-val">${DROP} mL 사이에 pH ${a.jumpLo.toFixed(1)} → ${a.jumpHi.toFixed(1)}</span></div>` +
-            `<div class="data-row match"><span class="data-name">지시약</span><span class="data-val">페놀프탈레인 ${a.ppOk ? '알맞음' : '부적합'} · 메틸오렌지 ${a.moOk ? '알맞음' : '부적합'}</span></div>`;
+            `<div class="data-row match"><span class="data-name">지시약</span><span class="data-val">페놀프탈레인 ${a.ppOk ? '알맞음' : '부적합'} · 메틸오렌지 ${a.moOk ? '알맞음' : '부적합'}</span></div>`);
         return a;
     }
 

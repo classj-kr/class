@@ -189,15 +189,15 @@
       candidates=nearby(state.board).map(index=>({index,own:threats(state.board,index,state.color),other:threats(state.board,index,3-state.color)}));
       const wins=candidates.filter(m=>m.own.win),blocks=candidates.filter(m=>m.other.win);
       if(wins.length)candidates=wins;
-      // A new player notices some immediate fours, but does not reliably
-      // anticipate open threes, forks, or every defensive move.
-      else if(blocks.length&&random()<.55)candidates=blocks;
-      else if(random()>=.65)candidates=candidates.sort((a,b)=>b.own.score-a.own.score).slice(0,5);
+      else if(blocks.length)candidates=blocks;
+      else {
+        candidates=candidates.map(m=>({...m,score:m.own.score+m.other.score*.9})).sort((a,b)=>b.score-a.score);
+        const margin=Math.max(30,candidates[0].score*.15);
+        candidates=candidates.filter(m=>m.score>=candidates[0].score-margin).slice(0,5);
+      }
     } else {
-      candidates=R.legal(state).map(index=>({index,flips:R.flips(state.board,index,state.color).length}));
-      // Greedy disc counting is deliberately simpler than corner/mobility
-      // search. Keep all legal choices available, including risky corners.
-      if(random()>=.65)candidates=candidates.sort((a,b)=>b.flips-a.flips).slice(0,3);
+      candidates=reversiRanked(state).map(m=>({...m,score:m.next.ended?terminal(m.next,state.color):m.score})).sort((a,b)=>b.score-a.score);
+      if(candidates.length)candidates=candidates.filter(m=>m.score>=candidates[0].score-40).slice(0,4);
     }
     if(!candidates.length)return null;
     const {index}=pick(candidates);

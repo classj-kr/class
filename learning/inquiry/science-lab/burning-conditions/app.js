@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const text = `${a.fuel.label} · ${state.oxygen === 'open' ? '열어 둠' : '덮음'} · ${state.temp} ℃ → ${VERDICT[a.outcome]}`;
         out += `<text class="verdict-text" fill="${TONE[a.outcome]}" x="20" y="28">${text}</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------- graph */
@@ -258,13 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = graph(a);
+        window.scienceScene.render(graphGroup,graph(a));
         const tOut = document.getElementById('tempRangeOut');
         if (tOut) tOut.textContent = `${state.temp} ℃`;
         const jOut = document.getElementById('jarRangeOut');
         if (jOut) jOut.textContent = `${state.jar} mL`;
         stageBadge.textContent = `${a.fuel.label} · ${VERDICT[a.outcome]}`;
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

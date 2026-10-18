@@ -315,13 +315,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'spheres' ? renderSpheres(a) : a.kind === 'water' ? renderWater(a) : renderCarbon(a);
-        graphGroup.innerHTML = a.kind === 'spheres' ? graphSpheres(a) : a.kind === 'water' ? graphWater(a) : graphCarbon(a);
+        window.scienceScene.render(mainGroup,a.kind === 'spheres' ? renderSpheres(a) : a.kind === 'water' ? renderWater(a) : renderCarbon(a));
+        window.scienceScene.render(graphGroup,a.kind === 'spheres' ? graphSpheres(a) : a.kind === 'water' ? graphWater(a) : graphCarbon(a));
         stageBadge.textContent = a.kind === 'spheres' ? a.ph.label : a.kind === 'water' ? `${a.r.label} · ${fmtVol(a.r.volume)}` : `${a.em.label} · 한 해 ${gt(a.em.E)}`;
         methodHint.textContent = a.kind === 'spheres' ? '지구의 다섯 권은 물질과 에너지를 주고받으며 서로 바꿉니다'
             : a.kind === 'water' ? '머무는 시간 = 든 물의 양 ÷ 한 해 드나드는 양'
                 : '더하는 양과 거두는 양의 차이만큼 대기에 쌓입니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

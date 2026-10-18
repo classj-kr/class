@@ -1,0 +1,88 @@
+{
+  "checkedAt": "2026-10-17T06:39:38.618Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "periodic-bonding",
+      "scenarios": 30
+    },
+    {
+      "slug": "earthquake",
+      "scenarios": 5
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "scenarios": 35
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "scenarios": 35
+    },
+    {
+      "slug": "stellar-mass-data",
+      "scenarios": 5
+    },
+    {
+      "slug": "cluster-fitting",
+      "scenarios": 5
+    },
+    {
+      "slug": "habitable-orbits",
+      "scenarios": 5
+    },
+    {
+      "slug": "centrifuge-design",
+      "scenarios": 5
+    },
+    {
+      "slug": "organic-builder",
+      "scenarios": 5
+    },
+    {
+      "slug": "protein-folding",
+      "scenarios": 5
+    },
+    {
+      "slug": "organelle-builder",
+      "scenarios": 5
+    },
+    {
+      "slug": "hydride-boiling",
+      "scenarios": 5
+    },
+    {
+      "slug": "fuel-comparison",
+      "scenarios": 5
+    },
+    {
+      "slug": "mcu-sampling",
+      "scenarios": 5
+    },
+    {
+      "slug": "smart-pot",
+      "scenarios": 5
+    },
+    {
+      "slug": "rotating-annulus",
+      "school": "high-elective",
+      "scenarios": 20
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "scenarios": 20
+    }
+  ],
+  "scenarios": 200,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

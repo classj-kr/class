@@ -189,12 +189,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'diffusion' ? renderDiffusion(a) : renderOsmosis(a);
-        graphGroup.innerHTML = a.kind === 'diffusion' ? graphDiffusion(a) : graphOsmosis(a);
+        window.scienceScene.render(mainGroup,a.kind === 'diffusion' ? renderDiffusion(a) : renderOsmosis(a));
+        window.scienceScene.render(graphGroup,a.kind === 'diffusion' ? graphDiffusion(a) : graphOsmosis(a));
         stageBadge.textContent = a.kind === 'diffusion' ? `${a.c.label} · ${a.tmp.label}` : `동물 세포 모형 · ${a.sol.label}`;
         methodHint.textContent = a.kind === 'diffusion' ? '알갱이는 제멋대로 움직이지만, 많은 쪽에서 적은 쪽으로 더 많이 건너갑니다'
             : '물은 통과하고 용질은 통과하지 못하는 막에서 안팎 조건을 비교합니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

@@ -1,0 +1,140 @@
+{
+  "checkedAt": "2026-10-17T18:37:01.444Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "semiconductor-relativity",
+      "scenarios": 15
+    },
+    {
+      "slug": "gases",
+      "scenarios": 25
+    },
+    {
+      "slug": "flame-ions",
+      "scenarios": 30
+    },
+    {
+      "slug": "periodic-bonding",
+      "scenarios": 30
+    },
+    {
+      "slug": "mole",
+      "scenarios": 55
+    },
+    {
+      "slug": "rate-equilibrium",
+      "scenarios": 75
+    },
+    {
+      "slug": "redox",
+      "scenarios": 10
+    },
+    {
+      "slug": "cell-membrane",
+      "scenarios": 55
+    },
+    {
+      "slug": "natural-selection",
+      "scenarios": 10
+    },
+    {
+      "slug": "metamorphism",
+      "scenarios": 15
+    },
+    {
+      "slug": "typhoon",
+      "scenarios": 15
+    },
+    {
+      "slug": "ocean-layers",
+      "scenarios": 15
+    },
+    {
+      "slug": "night-sky",
+      "scenarios": 20
+    },
+    {
+      "slug": "seasons",
+      "scenarios": 60
+    },
+    {
+      "slug": "planet-motion",
+      "scenarios": 15
+    },
+    {
+      "slug": "star-elements",
+      "scenarios": 75
+    },
+    {
+      "slug": "speaker-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "magnetic-brake",
+      "scenarios": 5
+    },
+    {
+      "slug": "soap-film",
+      "scenarios": 5
+    },
+    {
+      "slug": "sugar-phase",
+      "scenarios": 5
+    },
+    {
+      "slug": "hess-calorimetry",
+      "scenarios": 5
+    },
+    {
+      "slug": "buffer-solution",
+      "scenarios": 5
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "scenarios": 5
+    },
+    {
+      "slug": "insulation-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "doppler-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "antibiotic-disc",
+      "scenarios": 5
+    },
+    {
+      "slug": "water-wave-tank",
+      "scenarios": 5
+    },
+    {
+      "slug": "leaf-pigments",
+      "scenarios": 25
+    },
+    {
+      "slug": "digestive-enzymes",
+      "scenarios": 25
+    },
+    {
+      "slug": "coastal-inundation",
+      "scenarios": 25
+    },
+    {
+      "slug": "electroplating",
+      "scenarios": 35
+    }
+  ],
+  "scenarios": 685,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

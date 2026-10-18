@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="20" y="20">${a.low ? '저기압' : '고기압'} · 등압선 간격 ${a.spacing} km · 등압선 사이 ${DP_HPA} hPa</text>`;
         out += `<text class="read-text" x="20" y="200">바람 ${a.v.toFixed(1)} m/s (시속 ${a.kmh.toFixed(0)} km)</text>`;
         out += `<text class="note-text" x="240" y="200">화면의 흐름 빠르기는 바람 세기에 비례합니다</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     function renderFront(a) {
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="${X1 - 4}" y="${GROUND - 6}" text-anchor="end">${a.key === 'cold' ? '따뜻한 공기' : '찬 공기'}</text>`;
         out += `<text class="part-label" x="20" y="20">${f.label} — 기울기 1/${Math.round(1 / f.slope)} · 높이는 ${EXAG}배로 그렸습니다</text>`;
         out += `<text class="note-text" x="20" y="208">비가 내리는 폭 ${f.rainKm} km ÷ 시속 ${f.speed} km = ${a.rainHours.toFixed(1)}시간 동안 비</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let s = 100; s <= 500; s += 4) pts.push(`${gx(s).toFixed(1)},${gy(analyseWind(s).v).toFixed(1)}`);
         out += `<path class="trace" d="M${pts.join('L')}"/>`;
         out += `<circle class="trace-dot" cx="${gx(a.spacing).toFixed(1)}" cy="${gy(a.v).toFixed(1)}" r="5" fill="#d97706"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function graphFront(a) {
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pts = [];
         for (let h = 0; h <= 24; h += 0.25) pts.push(`${gx(h).toFixed(1)},${gy(tempAt(h, a)).toFixed(1)}`);
         out += `<path class="trace" d="M${pts.join('L')}"/>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     /* ------------------------------------------------------------ render */
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'wind'
             ? `${a.low ? '저기압' : '고기압'} · ${a.v.toFixed(1)} m/s`
             : `${a.f.label} · 기온 ${a.change > 0 ? '+' : ''}${a.change} ℃`;
-        dataNote.innerHTML = a.kind === 'wind'
+        window.scienceScene.render(dataNote,a.kind === 'wind'
             ? `<div class="data-row"><span class="data-name">기압 차이</span><span class="data-val">${a.spacing} km 마다 ${DP_HPA} hPa</span></div>` +
               `<div class="data-row"><span class="data-name">기압 경도</span><span class="data-val">${(DP_HPA * 100)} Pa ÷ ${(a.spacing * 1000).toLocaleString()} m = ${a.gradient.toFixed(4)} Pa/m</span></div>` +
               `<div class="data-row"><span class="data-name">바람</span><span class="data-val">${a.v.toFixed(1)} m/s · 시속 ${a.kmh.toFixed(0)} km</span></div>` +
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
               `<div class="data-row"><span class="data-name">구름</span><span class="data-val">${a.f.cloud}</span></div>` +
               `<div class="data-row"><span class="data-name">비 오는 구역</span><span class="data-val">폭 ${a.f.rainKm} km ÷ 시속 ${a.f.speed} km = ${a.rainHours.toFixed(1)}시간</span></div>` +
               `<div class="data-row"><span class="data-name">기온</span><span class="data-val">${a.f.before} ℃ → ${a.f.after} ℃ (${a.change > 0 ? '+' : ''}${a.change} ℃)</span></div>` +
-              `<div class="data-row match"><span class="data-name">지나간 뒤</span><span class="data-val">${a.f.afterText}</span></div>`;
+              `<div class="data-row match"><span class="data-name">지나간 뒤</span><span class="data-val">${a.f.afterText}</span></div>`);
         return a;
     }
 

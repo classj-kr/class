@@ -340,10 +340,10 @@ function drawSurveyGraph(g) {
 }
 
 function render() {
-    const m = $('mainGroup'), gr = $('graphGroup');
-    m.textContent = ''; gr.textContent = '';
+    window.scienceScene.draw([$('mainGroup'), $('graphGroup')], ([m, gr]) => {
     if (state.mode === 'growth') { drawDish(m); drawGrowthGraph(gr); }
     else { drawField(m); drawSurveyGraph(gr); }
+    });
     updateReadout();
 }
 

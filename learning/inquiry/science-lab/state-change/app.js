@@ -121,19 +121,18 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="op-guide" x1="${G.x0}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}"/>`;
         out += `<circle class="op-point" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="5"/>`;
         // The selected temperature is already shown in the adjacent readout; no overlapping SVG label.
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function renderData(temp, state) {
         const meltMin = T2 - T1, boilMin = T4 - T3;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">지금 온도</span><span class="data-val">${temp}℃</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">지금 온도</span><span class="data-val">${temp}℃</span></div>` +
             `<div class="data-row match"><span class="data-name">지금 상태</span><span class="data-val">${STATE_LABEL[state]}</span></div>` +
             `<div class="data-row"><span class="data-name">녹는점 · 어는점</span><span class="data-val">0℃ — 얼음과 물이 함께 있는 온도</span></div>` +
             `<div class="data-row"><span class="data-name">끓는점</span><span class="data-val">100℃ — 물과 수증기가 함께 있는 온도</span></div>` +
             `<div class="data-row"><span class="data-name">모형에서 녹는 시간</span><span class="data-val">${meltMin.toFixed(1)}분 (온도는 0℃ 그대로)</span></div>` +
             `<div class="data-row"><span class="data-name">모형에서 끓는 시간</span><span class="data-val">${boilMin.toFixed(1)}분 (온도는 100℃ 그대로)</span></div>` +
-            `<div class="data-row"><span class="data-name">이 모형의 비교</span><span class="data-val">끓는 데 ${(boilMin / meltMin).toFixed(1)}배 더 오래 걸립니다</span></div>`;
+            `<div class="data-row"><span class="data-name">이 모형의 비교</span><span class="data-val">끓는 데 ${(boilMin / meltMin).toFixed(1)}배 더 오래 걸립니다</span></div>`);
     }
 
     function renderPhaseVisuals() {

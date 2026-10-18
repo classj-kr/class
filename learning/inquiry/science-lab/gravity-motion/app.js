@@ -382,14 +382,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'drop' ? renderDrop(a) : a.kind === 'orbit' ? renderOrbit(a) : renderImpact(a);
-        graphGroup.innerHTML = a.kind === 'drop' ? graphDrop(a) : a.kind === 'orbit' ? graphOrbit(a) : graphImpact(a);
+        window.scienceScene.render(mainGroup,a.kind === 'drop' ? renderDrop(a) : a.kind === 'orbit' ? renderOrbit(a) : renderImpact(a));
+        window.scienceScene.render(graphGroup,a.kind === 'drop' ? graphDrop(a) : a.kind === 'orbit' ? graphOrbit(a) : graphImpact(a));
         stageBadge.textContent = a.kind === 'drop' ? `${a.h} m · ${a.v} m/s · ${AIMS[state.aim].label}`
             : a.kind === 'orbit' ? `${LAUNCH[state.launch].label} · 400 km 높이` : `${a.h} m · ${FLOORS[state.floor].label}`;
         methodHint.textContent = a.kind === 'drop' ? '중력은 아래로만 당기므로 옆 방향 운동에는 손대지 않습니다'
             : a.kind === 'orbit' ? '빠르게 던질수록 떨어지는 동안 더 멀리 가고, 땅은 둥글게 멀어집니다'
                 : '멈출 때 힘 × 시간은 정해져 있으니, 시간이 길면 힘이 작습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

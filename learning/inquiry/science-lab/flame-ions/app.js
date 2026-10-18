@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
-        mainGroup.innerHTML = a.kind === 'flame' ? renderFlame(a, state.progress) : renderIon(a, state.progress);
+        window.scienceScene.render(mainGroup,a.kind === 'flame' ? renderFlame(a, state.progress) : renderIon(a, state.progress));
     }
 
     /* ------------------------------------------------------------ graphs */
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
-        graphGroup.innerHTML = a.kind === 'flame' ? graphFlame(a) : graphIon(a);
+        window.scienceScene.render(graphGroup,a.kind === 'flame' ? graphFlame(a) : graphIon(a));
         const vOut = document.getElementById('voltRangeOut');
         if (vOut) vOut.textContent = `${state.volts} V`;
         stageBadge.textContent = a.kind === 'flame'
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = state.mode === 'flame'
             ? '불꽃 색은 화합물이 아니라 그 속의 금속 원소가 정합니다'
             : '이온은 전하를 띠어 반대 전하의 전극으로 끌려갑니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

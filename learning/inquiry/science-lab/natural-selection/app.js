@@ -271,13 +271,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = renderMain(a);
-        graphGroup.innerHTML = graph(a);
+        window.scienceScene.render(mainGroup,renderMain(a));
+        window.scienceScene.render(graphGroup,graph(a));
         stageBadge.textContent = a.kind === 'beak' ? SEEDS[state.seeds].label : `${GROUNDS[state.ground].label} · ${SWITCHES[state.flip].label}`;
         methodHint.textContent = state.mode === 'beak'
             ? '씨앗에 맞는 부리를 가진 새가 더 많이 살아남아 자손을 남깁니다'
             : '배경과 비슷한 털 색의 쥐가 천적을 피해 더 많이 살아남습니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

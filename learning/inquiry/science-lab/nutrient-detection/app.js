@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -228,9 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <stop offset="50%" stop-color="#f1f5f9"/>
             <stop offset="100%" stop-color="#e2e8f0"/>
         </linearGradient>
-        <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%">
-            <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.05"/>
-        </filter>
     </defs>`;
 
     function renderTestTube(x, top, w, bot, liquidTop, color, opacity = 0.9, showPrecipitate = false) {
@@ -427,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Right-Side Structured Information Card
         const RX = 316, RW = 192;
-        out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>`;
+        out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<rect x="${RX + 10}" y="16" width="${RW - 20}" height="28" rx="6" fill="${r.color}15" stroke="${r.color}50"/>`;
         out += `<circle cx="${RX + 24}" cy="30" r="5" fill="${r.color}"/>`;
         out += `<text class="card-title" x="${RX + 36}" y="35">${r.label} 검출 반응</text>`;
@@ -463,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function graphReagent(a) {
         let out = SVG_DEFS;
         const X0 = 20, W = 480, H = 194;
-        out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>`;
+        out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<text class="axis-title" x="${X0 + 16}" y="32">📊 중학교 필수 영양소 검출 반응표</text>`;
 
         const cw = 76, rh = 28, TX0 = 164, Y0 = 66;
@@ -487,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const x = TX0 + cw * j;
                 const hit = t.key === r.target;
                 if (hit) {
-                    out += `<rect x="${x}" y="${y}" width="${cw - 4}" height="${rh - 4}" rx="5" fill="${r.result}" filter="url(#cardShadow)"/>`;
+                    out += `<rect x="${x}" y="${y}" width="${cw - 4}" height="${rh - 4}" rx="5" fill="${r.result}"/>`;
                     out += `<text class="cell-text" fill="#ffffff" x="${x + (cw - 4) / 2}" y="${y + 16}" text-anchor="middle">${r.resultName}</text>`;
                 } else {
                     out += `<rect x="${x}" y="${y}" width="${cw - 4}" height="${rh - 4}" rx="5" fill="#f8fafc" stroke="#e2e8f0"/>`;
@@ -539,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Right-Side Card
         const RX = 246, RW = 254;
-        out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>`;
+        out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<rect x="${RX + 10}" y="16" width="${RW - 20}" height="28" rx="6" fill="#f0f9ff" stroke="#bae6fd"/>`;
         out += `<text class="card-title" x="${RX + 20}" y="35">🔥 베네딕트 가열 반응 분석</text>`;
 
@@ -578,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function graphBenedict(a) {
         let out = SVG_DEFS;
         const X0 = 20, W = 480, H = 194;
-        out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>`;
+        out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<text class="axis-title" x="${X0 + 16}" y="32">🌈 베네딕트 반응 색깔 스펙트럼 (당분의 양 비교)</text>`;
 
         const stops = [
@@ -689,7 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Right-Side Card
         const RX = 316, RW = 184;
-        out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>`;
+        out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<rect x="${RX + 10}" y="16" width="${RW - 20}" height="28" rx="6" fill="#f0fdf4" stroke="#bbf7d0"/>`;
         out += `<text class="card-title" x="${RX + 18}" y="35">✂️ 녹말 소화 분석</text>`;
 
@@ -713,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function graphAmylase(a) {
         let out = SVG_DEFS;
         const X0 = 20, W = 480, H = 194;
-        out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>`;
+        out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<text class="axis-title" x="${X0 + 16}" y="30">📈 시간에 따른 녹말과 엿당의 양 — ${a.c.label}</text>`;
 
         const GX0 = 70, GX1 = 460, GY0 = 144, GY1 = 44;
@@ -782,8 +779,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = scopedDefs(a.kind === 'reagent' ? renderReagent(a) : a.kind === 'benedict' ? renderBenedict(a) : renderAmylase(a),'nutrient-main-');
-        graphGroup.innerHTML = scopedDefs(a.kind === 'reagent' ? graphReagent(a) : a.kind === 'benedict' ? graphBenedict(a) : graphAmylase(a),'nutrient-graph-');
+        window.scienceScene.render(mainGroup,scopedDefs(a.kind === 'reagent' ? renderReagent(a) : a.kind === 'benedict' ? renderBenedict(a) : renderAmylase(a),'nutrient-main-'));
+        window.scienceScene.render(graphGroup,scopedDefs(a.kind === 'reagent' ? graphReagent(a) : a.kind === 'benedict' ? graphBenedict(a) : graphAmylase(a),'nutrient-graph-'));
         liftProse();
         stageBadge.textContent = a.kind === 'reagent'
             ? `${a.r.label}${a.r.needsHeat ? ` · 가열 ${HEATS[state.heat].label}` : ''}`
@@ -795,7 +792,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : a.kind === 'benedict'
                 ? '베네딕트 용액은 당분과 만나도 가열해야 색이 납니다'
                 : '녹말은 베네딕트에 반응하지 않고, 엿당으로 잘린 뒤라야 반응합니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

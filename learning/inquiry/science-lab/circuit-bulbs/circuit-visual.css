@@ -104,7 +104,6 @@
     stroke-linecap: round;
     stroke-dasharray: 7 17;
     animation: currentFlow 1s linear infinite;
-    filter: drop-shadow(0 0 4px #d97706);
 }
 
 .battery-body { fill: #1c2e38; stroke: rgba(56, 189, 248, 0.6); stroke-width: 1.4; rx: 4px; }

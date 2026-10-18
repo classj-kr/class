@@ -1,0 +1,15 @@
+{
+  "completedAt": "2026-10-17T21:29:26.856Z",
+  "results": [
+    {
+      "engine": "chromium",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "exitCode": 0,
+      "passed": true
+    }
+  ]
+}

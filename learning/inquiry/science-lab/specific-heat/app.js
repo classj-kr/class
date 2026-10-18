@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         out += `<text class="sub-c" x="230" y="245" text-anchor="middle">가열기 ${POWER} W · 각 ${m} g · ${t.toFixed(1)} 초</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
 
         // temperature against time, one line per substance
         let g = '';
@@ -157,13 +157,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const cxp = gx(t, MAX_TIME), cyp = gy(tempOf(s, t, m), tMax);
             g += `<circle class="t-dot" cx="${cxp.toFixed(1)}" cy="${cyp.toFixed(1)}" r="4" fill="${s.color}"/>`;
         });
-        graphGroup.innerHTML = g;
+        window.scienceScene.render(graphGroup,g);
 
-        dataNote.innerHTML =
-            `<div class="data-row head"><span>물질</span><span>온도</span><span>비열 (J/g·℃)</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row head"><span>물질</span><span>온도</span><span>비열 (J/g·℃)</span></div>` +
             SUBS.map(s => `<div class="data-row"><span class="data-name">${s.name}</span>` +
                 `<span class="data-val">${tempOf(s, t, m).toFixed(1)} ℃</span>` +
-                `<span class="data-extra">${s.c.toFixed(2)}</span></div>`).join('');
+                `<span class="data-extra">${s.c.toFixed(2)}</span></div>`).join(''));
 
         stageBadge.textContent = `${t.toFixed(1)} 초`;
         timeOutput.textContent = `${t.toFixed(t % 1 ? 1 : 0)} 초`;
@@ -188,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="rod-wall" x="${x0 + rodLenPx}" y="30" width="3" height="${58 * METALS.length}" rx="1"/>`;
         out += `<text class="sub-c" x="${x0 + rodLenPx}" y="24" text-anchor="middle">원래 길이 1000 mm</text>`;
         out += `<text class="scale-badge" x="230" y="240" text-anchor="middle">늘어난 부분은 ${EXAGGERATION}배 확대해 그렸습니다 (실제로는 2 mm 남짓)</text>`;
-        mainGroup.innerHTML = out;
+        window.scienceScene.render(mainGroup,out);
 
         // ΔL against ΔT: a straight line per metal, slope α·L0
         const dlMax = Math.max(...METALS.map(mt => expansionMM(mt, 100))) * 1.1;
@@ -209,13 +208,12 @@ document.addEventListener('DOMContentLoaded', () => {
             g += `<path class="t-line" style="stroke:${mt.color}" d="M${gx(0, 100)},${gy(0, dlMax)} L${gx(100, 100)},${gy(expansionMM(mt, 100), dlMax).toFixed(1)}"/>`;
             g += `<circle class="t-dot" cx="${gx(dT, 100).toFixed(1)}" cy="${gy(expansionMM(mt, dT), dlMax).toFixed(1)}" r="4" fill="${mt.color}"/>`;
         });
-        graphGroup.innerHTML = g;
+        window.scienceScene.render(graphGroup,g);
 
-        dataNote.innerHTML =
-            `<div class="data-row head"><span>금속</span><span>늘어난 길이</span><span>팽창 계수 (1/℃)</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row head"><span>금속</span><span>늘어난 길이</span><span>팽창 계수 (1/℃)</span></div>` +
             METALS.map(mt => `<div class="data-row"><span class="data-name">${mt.name}</span>` +
                 `<span class="data-val">${expansionMM(mt, dT).toFixed(2)} mm</span>` +
-                `<span class="data-extra">${(mt.alpha * 1e6).toFixed(0)} × 10⁻⁶</span></div>`).join('');
+                `<span class="data-extra">${(mt.alpha * 1e6).toFixed(0)} × 10⁻⁶</span></div>`).join(''));
 
         stageBadge.textContent = `+${dT} ℃`;
         deltaOutput.textContent = `${dT} ℃`;

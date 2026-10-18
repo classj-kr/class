@@ -56,6 +56,10 @@ test('every catalog app loads, every question has a working correct answer, mobi
       await page.route('**/*', route => new URL(route.request().url()).hostname === '127.0.0.1' ? route.continue() : route.abort());
       try {
         await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`, { waitUntil: 'load', timeout: 20000 });
+        await page.waitForSelector('[data-assessment-ready]', { state: 'attached' });
+        await page.waitForFunction(() => window.scienceAppContext?.standaloneApparatus || document.querySelector('script[src*="supplement-labs.js"]'));
+        const sourceQuestions = (fs.readFileSync(path.join(root, slug, 'index.html'), 'utf8').match(/class="quiz-card"/g) || []).length;
+        const expectedQuestions = await page.evaluate(sourceCount => window.scienceAppContext?.questionNumbers.length ?? sourceCount, sourceQuestions);
         const integration=await page.evaluate(()=>{
           const visible=e=>e.getClientRects().length&&!e.closest('[hidden]');
           const modes=[...document.querySelectorAll('button[data-mode]')].filter(visible);
@@ -83,7 +87,7 @@ test('every catalog app loads, every question has a working correct answer, mobi
           }
           document.querySelector('.supplement-reset')?.click();
           if(document.getElementById('bendArm')){document.getElementById('bendArm').click();document.getElementById('straightArm').click();interactions+=2;}
-          return {interactions,scopeBanner:!!document.querySelector('.exam-scope'),observationLoader:!!document.querySelector('script[src*="supplement-labs.js"]'),invalid:/\bNaN\b|\bundefined\b/.test(document.body.innerText)};
+          return {interactions,scopeBanner:!!document.querySelector('.exam-scope'),observationLoader:!!window.scienceAppContext?.standaloneApparatus||!!document.querySelector('script[src*="supplement-labs.js"]'),invalid:/\bNaN\b|\bundefined\b/.test(document.body.innerText)};
         });
         if(integration.scopeBanner)errors.push('removed scope banner reappeared');
         if(!integration.observationLoader)errors.push('missing observation module loader');
@@ -109,7 +113,7 @@ test('every catalog app loads, every question has a working correct answer, mobi
           return { count: cards.length, errors, duplicateIds, heading: document.querySelector('h1')?.textContent };
         });
         if(process.env.SCIENCE_CAPTURE&&await page.locator('.curriculum-supplement').count())await screenshotWebp(page.locator('.curriculum-supplement'), {path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/'+slug+'-desktop.webp')});
-        if (result.count !== 4) errors.push(`expected 4 questions, got ${result.count}`);
+        if (expectedQuestions < 1 || result.count !== expectedQuestions) errors.push(`expected ${expectedQuestions} authored questions, got ${result.count}`);
         errors.push(...result.errors);
         if (!result.heading) errors.push('missing heading');
         await page.setViewportSize({ width: 390, height: 844 });

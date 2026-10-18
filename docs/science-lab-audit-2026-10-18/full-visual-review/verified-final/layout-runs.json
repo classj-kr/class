@@ -1,0 +1,26 @@
+{
+  "completedAt": "2026-10-17T21:30:31.666Z",
+  "results": [
+    {
+      "name": "readability",
+      "exitCode": 0,
+      "passed": true,
+      "durationMs": 486610,
+      "log": "E:\\webprojects\\class\\tmp\\science-full-visual-2026-10-18\\final-readability.log"
+    },
+    {
+      "name": "choices",
+      "exitCode": 0,
+      "passed": true,
+      "durationMs": 398726,
+      "log": "E:\\webprojects\\class\\tmp\\science-full-visual-2026-10-18\\final-choices.log"
+    },
+    {
+      "name": "captures",
+      "exitCode": 0,
+      "passed": true,
+      "durationMs": 122326,
+      "log": "E:\\webprojects\\class\\tmp\\science-full-visual-2026-10-18\\final-captures.log"
+    }
+  ]
+}

@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const flip = mx > (SZ.x0 + SZ.x1) / 2;
         out += `<text class="mesh-text" x="${(mx + (flip ? -6 : 6)).toFixed(1)}" y="${SZ.top - 12}"${flip ? ' text-anchor="end"' : ''}>체 구멍 ${mesh} mm</text>`;
         out += `<text class="size-note" x="20" y="${bottom + 28}">왼쪽이 구멍보다 작아 빠져나가고, 오른쪽은 체에 남습니다. 가로 눈금은 27배 차이를 담으려고 촘촘해집니다.</text>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function showResult(text) {

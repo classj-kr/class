@@ -1,0 +1,273 @@
+{
+  "checkedAt": "2026-10-17T19:40:22.139Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "light-shadow",
+      "scenarios": 40
+    },
+    {
+      "slug": "photoelectric",
+      "scenarios": 15
+    },
+    {
+      "slug": "interference",
+      "scenarios": 10
+    },
+    {
+      "slug": "force-motion",
+      "scenarios": 25
+    },
+    {
+      "slug": "torque",
+      "scenarios": 15
+    },
+    {
+      "slug": "circuit-bulbs",
+      "scenarios": 10
+    },
+    {
+      "slug": "induction",
+      "scenarios": 10
+    },
+    {
+      "slug": "heat-transfer",
+      "scenarios": 65
+    },
+    {
+      "slug": "heat-engine",
+      "scenarios": 15
+    },
+    {
+      "slug": "density-buoyancy",
+      "scenarios": 55
+    },
+    {
+      "slug": "separation-methods",
+      "scenarios": 15
+    },
+    {
+      "slug": "diffusion",
+      "scenarios": 115
+    },
+    {
+      "slug": "recrystallise",
+      "scenarios": 5
+    },
+    {
+      "slug": "molecule-shape",
+      "scenarios": 15
+    },
+    {
+      "slug": "titration",
+      "scenarios": 5
+    },
+    {
+      "slug": "rate-equilibrium",
+      "scenarios": 75
+    },
+    {
+      "slug": "redox",
+      "scenarios": 10
+    },
+    {
+      "slug": "cell-osmosis",
+      "scenarios": 5
+    },
+    {
+      "slug": "seed-germination",
+      "scenarios": 5
+    },
+    {
+      "slug": "nutrient-detection",
+      "scenarios": 15
+    },
+    {
+      "slug": "senses",
+      "scenarios": 15
+    },
+    {
+      "slug": "pea-genetics",
+      "scenarios": 35
+    },
+    {
+      "slug": "phylogeny",
+      "scenarios": 15
+    },
+    {
+      "slug": "rock-layers",
+      "scenarios": 125
+    },
+    {
+      "slug": "rock-age",
+      "scenarios": 10
+    },
+    {
+      "slug": "plate-tectonics",
+      "scenarios": 75
+    },
+    {
+      "slug": "air-stability",
+      "scenarios": 5
+    },
+    {
+      "slug": "water-cycle",
+      "scenarios": 5
+    },
+    {
+      "slug": "ocean-layers",
+      "scenarios": 15
+    },
+    {
+      "slug": "moon-phases",
+      "scenarios": 5
+    },
+    {
+      "slug": "stars-universe",
+      "scenarios": 40
+    },
+    {
+      "slug": "galaxy-hubble",
+      "scenarios": 15
+    },
+    {
+      "slug": "pasteur",
+      "scenarios": 5
+    },
+    {
+      "slug": "mendeleev",
+      "scenarios": 5
+    },
+    {
+      "slug": "magnetic-brake",
+      "scenarios": 5
+    },
+    {
+      "slug": "polarization",
+      "scenarios": 5
+    },
+    {
+      "slug": "sugar-phase",
+      "scenarios": 5
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "scenarios": 5
+    },
+    {
+      "slug": "doppler-lab",
+      "scenarios": 5
+    },
+    {
+      "slug": "protein-synthesis",
+      "scenarios": 5
+    },
+    {
+      "slug": "antibiotic-disc",
+      "scenarios": 5
+    },
+    {
+      "slug": "nylon-interface",
+      "scenarios": 5
+    },
+    {
+      "slug": "habitable-orbits",
+      "scenarios": 5
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-common",
+      "scenarios": 40
+    },
+    {
+      "slug": "dna-structure",
+      "school": "high-elective",
+      "scenarios": 40
+    },
+    {
+      "slug": "hydride-boiling",
+      "scenarios": 5
+    },
+    {
+      "slug": "smart-pot",
+      "scenarios": 5
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "scenarios": 20
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-common",
+      "scenarios": 80
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-elective",
+      "scenarios": 80
+    },
+    {
+      "slug": "leaf-pigments",
+      "scenarios": 25
+    },
+    {
+      "slug": "coastal-inundation",
+      "scenarios": 25
+    },
+    {
+      "slug": "serial-dilution",
+      "scenarios": 25
+    },
+    {
+      "slug": "electroplating",
+      "scenarios": 35
+    },
+    {
+      "slug": "food-web",
+      "scenarios": 40
+    },
+    {
+      "slug": "galileo-incline",
+      "scenarios": 40
+    },
+    {
+      "slug": "animal-classification",
+      "scenarios": 45
+    },
+    {
+      "slug": "rotating-disc",
+      "scenarios": 45
+    },
+    {
+      "slug": "equilibrium-colour",
+      "scenarios": 70
+    },
+    {
+      "slug": "crust-thickness",
+      "scenarios": 45
+    },
+    {
+      "slug": "kepler-data",
+      "scenarios": 50
+    },
+    {
+      "slug": "acid-mixing",
+      "scenarios": 225
+    },
+    {
+      "slug": "temperature-clouding",
+      "scenarios": 95
+    }
+  ],
+  "scenarios": 1975,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

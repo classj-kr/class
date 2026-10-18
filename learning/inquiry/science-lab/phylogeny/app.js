@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -335,14 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'rank' ? renderRank(a) : a.kind === 'tree' ? renderTree(a) : renderClock(a);
-        graphGroup.innerHTML = a.kind === 'rank' ? graphRank(a) : a.kind === 'tree' ? graphTree(a) : graphClock(a);
+        window.scienceScene.render(mainGroup,a.kind === 'rank' ? renderRank(a) : a.kind === 'tree' ? renderTree(a) : renderClock(a));
+        window.scienceScene.render(graphGroup,a.kind === 'rank' ? graphRank(a) : a.kind === 'tree' ? graphTree(a) : graphClock(a));
         liftProse();
         stageBadge.textContent = a.kind === 'rank' ? `사람 · ${a.o.label}` : a.kind === 'tree' ? `${a.st.label} · ${a.A} vs ${a.B}`.replace(' vs ', ' · ') : `사람 · ${a.o.label} · ${a.cal.label}`;
         methodHint.textContent = a.kind === 'rank' ? '같은 단계를 오래 나눌수록 가까운 친척입니다'
             : a.kind === 'tree' ? '가까움은 겉모습이 아니라 공통 조상이 얼마나 최근인가로 읽습니다'
                 : '차이는 시간에 비례해 쌓이지만, 눈금은 화석으로 맞춰야 합니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

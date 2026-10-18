@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -272,9 +272,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ax.myelin) for (let k = 0; k < nodes; k += 1) { const x = AX0 + 6 + k * (AX1 - AX0 - 12) / nodes; out += `<rect class="myelin" x="${x.toFixed(1)}" y="${AY - ax.width / 2 - 5}" width="${((AX1 - AX0 - 12) / nodes - 5).toFixed(1)}" height="${ax.width + 10}" rx="4"/>`; }
         out += `<text class="small-label" x="${AX1 + 4}" y="${AY + 3}">근육</text>`;
         // the impulse: smooth on a bare axon, node to node on a myelinated one
-        let ix = AX0 + p * (AX1 - AX0);
-        if (ax.myelin) { const k = Math.min(nodes, Math.floor(p * (nodes + 0.999))); ix = k >= nodes ? AX1 : AX0 + 3 + k * (AX1 - AX0 - 12) / nodes; }
-        if (p > 0 && p < 1) { out += `<circle class="impulse-glow" cx="${ix.toFixed(1)}" cy="${AY}" r="${ax.width / 2 + 10}"/><circle class="impulse" cx="${ix.toFixed(1)}" cy="${AY}" r="${ax.width / 2 + 3}"/>`; }
+        let ix = AX0 + p * (AX1 - AX0), pulse = 1;
+        if (ax.myelin) {
+            const phase = p * (nodes + 0.999), k = Math.min(nodes, Math.floor(phase));
+            ix = k >= nodes ? AX1 : AX0 + 3 + k * (AX1 - AX0 - 12) / nodes;
+            // A pulse develops at each node; it does not slide through the myelin.
+            pulse = Math.sin(Math.PI * (phase - Math.floor(phase))) ** 2;
+        }
+        if (p > 0 && p < 1) { out += `<circle class="impulse-glow" cx="${ix.toFixed(1)}" cy="${AY}" r="${ax.width / 2 + 8 + 2 * pulse}" opacity="${.2 + .8 * pulse}"/><circle class="impulse" cx="${ix.toFixed(1)}" cy="${AY}" r="${ax.width / 2 + 3}" opacity="${.3 + .7 * pulse}"/>`; }
         const ms = p * a.ms;
         out += `<text class="gen-text" x="20" y="158">${(p * DIST_M * 100).toFixed(0)} cm 옴 · ${ms < 100 ? ms.toFixed(1) : fmtN(ms)} ms</text>`;
         out += `<text class="trait-text" x="20" y="174">${ax.label} — ${ax.hint} · 초속 ${ax.v} m</text>`;
@@ -320,7 +325,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (t > 0 && t < SYN_RELEASE) out += `<text class="trait-text" style="fill:#ff7a59" x="40" y="112">활동 전위 도착 → ${SYN_DELAY} ms 지연</text>`;
         // transmitter in the cleft, as many dots as its concentration
         const nT = Math.round(T * 18);
-        for (let k = 0; k < nT; k += 1) { const x = 192 + ((k * 7) % 19), y = 72 + ((k * 13) % 80); out += `<circle class="transmitter" cx="${x}" cy="${y}" r="2.6"/>`; }
+        for (let k = 0; k < nT; k += 1) {
+            const x = 192 + ((k * 7) % 19) + Math.sin(t * 11 + k) * 1.1;
+            const y = 72 + ((k * 13) % 80) + Math.sin(t * 9 + k * 2.3) * 1.1;
+            out += `<circle class="transmitter" data-scene-key="transmitter-${k}" cx="${x}" cy="${y}" r="2.6"/>`;
+        }
         // receptors on the next cell, blocked ones marked
         for (let k = 0; k < 6; k += 1) { const y = 70 + k * 15; out += `<rect class="receptor ${d.receptor ? '' : 'blocked'}" x="212" y="${y}" width="8" height="9" rx="2"/>`; if (!d.receptor) out += `<line stroke="#0a1c24" stroke-width="1.4" x1="213" y1="${y + 1}" x2="219" y2="${y + 8}"/><line stroke="#0a1c24" stroke-width="1.4" x1="219" y1="${y + 1}" x2="213" y2="${y + 8}"/>`; }
         // reuptake pumps and the enzyme, greyed out when a drug stops them
@@ -382,14 +391,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'spike' ? renderSpike(a) : a.kind === 'conduct' ? renderConduct(a) : renderSynapse(a);
-        graphGroup.innerHTML = a.kind === 'spike' ? graphSpike(a) : a.kind === 'conduct' ? graphConduct(a) : graphSynapse(a);
+        window.scienceScene.render(mainGroup,a.kind === 'spike' ? renderSpike(a) : a.kind === 'conduct' ? renderConduct(a) : renderSynapse(a));
+        window.scienceScene.render(graphGroup,a.kind === 'spike' ? graphSpike(a) : a.kind === 'conduct' ? graphConduct(a) : graphSynapse(a));
         liftProse();
         stageBadge.textContent = a.kind === 'spike' ? `${a.st.hint} · ${a.du.label}` : a.kind === 'conduct' ? `${a.ax.label} · 초속 ${a.ax.v} m` : a.d.label;
         methodHint.textContent = a.kind === 'spike' ? '막전위가 문턱(−55 mV)을 넘으면 Na⁺ 통로가 한꺼번에 열립니다'
             : a.kind === 'conduct' ? '굵을수록, 말이집이 있을수록 흥분은 빨리 옮겨 갑니다'
                 : '전달 물질이 틈에 남아 있는 동안만 다음 세포가 반응합니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 

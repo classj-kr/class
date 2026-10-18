@@ -21,7 +21,7 @@ test('beginner openings vary legally instead of always playing the stronger open
   }
 });
 
-test('beginner Omok sometimes sees a four, sometimes leaves a genuine winning opportunity',()=>{
+test('beginner Omok always blocks an immediate loss for either color',()=>{
   for(const color of [1,2]){
     const s=omok([104,30,31],[105,106,107,108],color),before=JSON.stringify(s);let defended=0,missed=0;
     for(const seed of samples){
@@ -29,7 +29,7 @@ test('beginner Omok sometimes sees a four, sometimes leaves a genuine winning op
       assert.equal(answer.practice,true);assert.equal(JSON.stringify(s),before);
       if(answer.index===109)defended++;else {assert.equal(R.play(next,109).winner,3-color);missed++;}
     }
-    assert.ok(defended>0&&missed>=8,`defended=${defended}, missed=${missed}`);
+    assert.equal(missed,0);assert.equal(defended,samples.length);
     for(const level of ['level2','intermediate','level4','advanced'])assert.equal(A.choose(s,level).index,109);
     assert.equal(A.chooseHint(s,{nodes:100,ms:10000}).index,109,'hints do not inherit opponent mistakes');
   }
@@ -42,7 +42,7 @@ test('beginner Omok still completes five on every axis and both colors',()=>{
   }
 });
 
-test('beginner Reversi leaves corners available without changing legal flips or turns',()=>{
+test('beginner Reversi avoids offering a corner when a safe alternative exists',()=>{
   let position;const rng=random(4427);
   for(let game=0;game<12&&!position;game++){
     let s=R.initial('reversi');
@@ -58,12 +58,12 @@ test('beginner Reversi leaves corners available without changing legal flips or 
     assert.ok(R.legal(position).includes(answer.index));
     if(R.legal(R.play(position,answer.index),3-position.color).some(i=>A.corners.includes(i)))exposed++;
   }
-  assert.ok(exposed>=4,`${exposed} corner opportunities`);
+  assert.equal(exposed,0);
   const stronger=A.choose(position,'intermediate');
   assert.ok(!R.legal(R.play(position,stronger.index),3-position.color).some(i=>A.corners.includes(i)));
 });
 
-test('beginner chess and Janggi can miss a mate threat while the coach still finds the defense',()=>{
+test('beginner chess and Janggi defend mate threats for every sampled choice',()=>{
   const chess=C.boardFromFen('r1bqk2r/pppp1ppp/2n2n2/2b1p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 4 4','standard');
   const j=janggi([['cK',4,8],['hK',4,0],['cR',3,2],['cR',5,3],['cP',4,4],['hR',0,2]],'h');
   for(const [rules,ai,state]of [[C,CA,chess],[J,JA,j]]){
@@ -73,9 +73,22 @@ test('beginner chess and Janggi can miss a mate threat while the coach still fin
       assert.equal(rules===C?C.isInCheck(next,state.turn):J.inCheck(next,state.turn),false);
       if(ai.mateInOne(next))opportunities++;
     }
-    assert.ok(opportunities>=4,`${opportunities} opportunities to finish a simple mating attack`);
+    assert.equal(opportunities,0);
     const hint=ai.chooseHint(state,{depth:1,nodes:0,ms:0});
     assert.notEqual(hint.practice,true);assert.equal(ai.mateInOne(rules.advance(state,hint.move)),null);
+  }
+});
+
+test('beginner chess and Janggi take free heavy pieces but reject poisoned captures',()=>{
+  const chessFree=C.boardFromFen('3r2k1/8/8/8/8/8/3Q4/6K1 w - - 0 1','standard');
+  const chessPoison=C.boardFromFen('3r2k1/8/8/3p4/8/8/3Q4/6K1 w - - 0 1','standard');
+  const jFree=janggi([['cK',4,8],['hK',4,1],['cR',0,5],['hR',0,2],['cP',4,6]]);
+  const jPoison=janggi([['cK',4,8],['hK',3,1],['cR',0,5],['hP',0,3],['hR',0,0],['cP',4,6]]);
+  for(const seed of samples){
+    assert.equal(CA.choose(chessFree,'beginner',{random:random(seed)}).move.capture,'bR');
+    assert.notEqual(CA.choose(chessPoison,'beginner',{random:random(seed)}).move.capture,'bP');
+    assert.equal(JA.choose(jFree,'beginner',{random:random(seed)}).move.capture,'hR');
+    assert.notEqual(JA.choose(jPoison,'beginner',{random:random(seed)}).move.capture,'hP');
   }
 });
 
@@ -89,6 +102,18 @@ test('beginner always obeys check, pins and draw rules, including a bare-king bi
   }
   const ending=janggi([['cK',4,7],['hK',4,0],['hC',6,8]],'h');
   assert.equal(JA.choose(ending,'beginner').move.kind,'bikjang');
+});
+
+test('beginner protects an already attacked queen instead of moving an unrelated piece',()=>{
+  for(const fen of ['6k1/8/1p6/2p5/3Q4/8/8/1N4K1 w - - 0 1','1n4k1/8/8/3q4/2P5/1P6/8/6K1 b - - 0 1']){
+    const state=C.boardFromFen(fen,'standard'),before=JSON.stringify(state);
+    for(const seed of samples){
+      const answer=CA.choose(state,'beginner',{random:random(seed)}),next=C.advance(state,answer.move);
+      assert.equal(answer.move.piece[1],'Q');
+      assert.ok(!C.allLegalMoves(next).some(m=>m.capture?.[1]==='Q'));
+      assert.equal(JSON.stringify(state),before);
+    }
+  }
 });
 
 test('beginner Reversi and Omok finish complete legal games for fixed random seeds',()=>{

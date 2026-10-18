@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const flip = px > (G.x0 + G.x1) / 2;
         out += `<text class="op-text" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${Math.min(G.y0 - 4, py + 16).toFixed(1)}"` +
                `${flip ? ' text-anchor="end"' : ''}>${temperature}℃에서 ${grams(maximum)} g까지</text>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function renderData() {
@@ -200,14 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const dissolved = Math.min(amount, maximum);
         const remaining = Math.max(0, amount - maximum);
         const cold = points[0][1], hot = points[points.length - 1][1];
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">물의 양</span><span class="data-val">100 g</span></div>` +
+        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">물의 양</span><span class="data-val">100 g</span></div>` +
             `<div class="data-row"><span class="data-name">물의 온도</span><span class="data-val">${temperature}℃</span></div>` +
             `<div class="data-row"><span class="data-name">이 온도에서 녹는 양</span><span class="data-val">${grams(maximum)} g</span></div>` +
             `<div class="data-row"><span class="data-name">넣은 소금</span><span class="data-val">${grams(amount)} g</span></div>` +
             `<div class="data-row${remaining < .05 ? ' match' : ''}"><span class="data-name">녹은 소금</span><span class="data-val">${grams(dissolved)} g</span></div>` +
             `<div class="data-row"><span class="data-name">바닥에 남는 소금</span><span class="data-val">${remaining < .05 ? '없음' : `${grams(amount)} − ${grams(maximum)} = ${grams(remaining)} g`}</span></div>` +
-            `<div class="data-row"><span class="data-name">0℃와 100℃ 차이</span><span class="data-val">${grams(cold)} g → ${grams(hot)} g, ${grams(hot - cold)} g만 더 녹습니다</span></div>`;
+            `<div class="data-row"><span class="data-name">0℃와 100℃ 차이</span><span class="data-val">${grams(cold)} g → ${grams(hot)} g, ${grams(hot - cold)} g만 더 녹습니다</span></div>`);
     }
 
     function clearResult() {

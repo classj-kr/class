@@ -196,21 +196,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         out += `<text class="cmp-note" x="${X0}" y="${TOP + CASES.length * (H + GAP) + 14}">한 번에 한 가지만 바꾸고 나머지는 똑같이 두어야 무엇 때문인지 알 수 있습니다.</text>`;
-        graphGroup.innerHTML = out;
+        window.scienceScene.render(graphGroup,out);
     }
 
     function renderData() {
         const need = ['water', 'warm'];
         const missing = need.filter(k => !conditions[k]).map(k => COND_LABELS[k].name);
         const days = (progress * TOTAL_DAYS).toFixed(1);
-        dataNote.innerHTML =
-            ['water', 'warm'].map(k =>
+        window.scienceScene.render(dataNote,['water', 'warm'].map(k =>
                 `<div class="data-row"><span class="data-name">${COND_LABELS[k].name}</span>` +
                 `<span class="data-val">${conditions[k] ? COND_LABELS[k].on : COND_LABELS[k].off}</span></div>`).join('') +
             `<div class="data-row"><span class="data-name">싹트는 데 필요한 것</span><span class="data-val">물 · 알맞은 온도 (나머지 조건은 같게 둠)</span></div>` +
             `<div class="data-row${germinates() ? ' match' : ''}"><span class="data-name">지금 모자란 것</span>` +
             `<span class="data-val">${missing.length ? missing.join(' · ') : '없음 — 물과 알맞은 온도를 갖추었습니다'}</span></div>` +
-            `<div class="data-row"><span class="data-name">지난 날수</span><span class="data-val">${germinates() ? `${days}일째 · ${stageName(progress)}` : '변화 없음'}</span></div>`;
+            `<div class="data-row"><span class="data-name">지난 날수</span><span class="data-val">${germinates() ? `${days}일째 · ${stageName(progress)}` : '변화 없음'}</span></div>`);
     }
 
     function frame(now) {

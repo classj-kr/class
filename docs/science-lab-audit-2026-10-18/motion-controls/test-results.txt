@@ -1,0 +1,337 @@
+=== motion ===
+chromium swing {"frames":110,"changes":110,"seconds":1.8166,"distinctPerSecond":60.55268083232412,"p95FrameMs":16.799999999999955,"sameSvg":true,"sameNode":true}
+chromium seesaw {"frames":110,"changes":110,"seconds":1.8163999999999996,"distinctPerSecond":60.55934816119799,"p95FrameMs":16.800000000000182,"sameSvg":true,"sameNode":true}
+chromium circle {"frames":110,"changes":110,"seconds":1.8167000000000006,"distinctPerSecond":60.549347718390464,"p95FrameMs":16.800000000000182,"sameSvg":true,"sameNode":true}
+chromium straight {"frames":109,"changes":109,"seconds":1.8,"distinctPerSecond":60.55555555555556,"p95FrameMs":16.80000000000109,"sameSvg":true,"sameNode":true}
+chromium elevator {"frames":109,"changes":109,"seconds":1.8,"distinctPerSecond":60.55555555555556,"p95FrameMs":16.80000000000109,"sameSvg":true,"sameNode":true}
+chromium slide {"frames":49,"changes":49,"seconds":0.8,"distinctPerSecond":61.25,"p95FrameMs":16.80000000000109,"sameSvg":true,"sameNode":true}
+chromium water-wave-tank {"frames":110,"changes":110,"seconds":1.8166,"distinctPerSecond":60.55268083232412,"p95FrameMs":16.799999999999955,"sameSvg":true,"sameNode":true}
+chromium speaker-lab {"frames":109,"changes":109,"seconds":1.8001,"distinctPerSecond":60.55219154491417,"p95FrameMs":16.80000000000001,"sameSvg":true,"sameNode":true}
+chromium wireless-power {"frames":109,"changes":109,"seconds":1.8,"distinctPerSecond":60.55555555555556,"p95FrameMs":16.80000000000001,"sameSvg":true,"sameNode":true}
+chromium electroplating {"frames":109,"changes":109,"seconds":1.8,"distinctPerSecond":60.55555555555556,"p95FrameMs":16.800000000000182,"sameSvg":true,"sameNode":true}
+chromium acoustic-resonance {"frames":109,"changes":109,"seconds":1.8,"distinctPerSecond":60.55555555555556,"p95FrameMs":16.800000000000068,"sameSvg":true,"sameNode":true}
+chromium sugar-phase {"frames":110,"changes":110,"seconds":1.8165,"distinctPerSecond":60.55601431323975,"p95FrameMs":16.799999999999955,"sameSvg":true,"sameNode":true}
+chromium catalyst-foam {"frames":109,"changes":109,"seconds":1.8,"distinctPerSecond":60.55555555555556,"p95FrameMs":16.799999999999955,"sameSvg":true,"sameNode":true}
+chromium force-motion {"frames":74,"changes":73,"seconds":1.2166,"distinctPerSecond":60.003287851389125,"p95FrameMs":16.899999999999977,"sameSvg":true,"sameNode":true}
+chromium periodic-bonding {"frames":110,"changes":110,"seconds":1.8164,"distinctPerSecond":60.559348161197974,"p95FrameMs":16.800000000000182,"sameSvg":true,"sameNode":true}
+✔ chromium: continuous apparatus motion and visible choices (35400.92ms)
+webkit swing {"frames":82,"changes":82,"seconds":1.809,"distinctPerSecond":45.32891100055279,"p95FrameMs":30,"sameSvg":true,"sameNode":true}
+webkit seesaw {"frames":110,"changes":110,"seconds":1.808,"distinctPerSecond":60.84070796460177,"p95FrameMs":30,"sameSvg":true,"sameNode":true}
+webkit circle {"frames":89,"changes":89,"seconds":1.826,"distinctPerSecond":48.74041621029573,"p95FrameMs":30,"sameSvg":true,"sameNode":true}
+webkit straight {"frames":120,"changes":120,"seconds":1.811,"distinctPerSecond":66.26173384870238,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+webkit elevator {"frames":112,"changes":112,"seconds":1.808,"distinctPerSecond":61.94690265486725,"p95FrameMs":30,"sameSvg":true,"sameNode":true}
+webkit slide {"frames":51,"changes":51,"seconds":0.8,"distinctPerSecond":63.75,"p95FrameMs":30,"sameSvg":true,"sameNode":true}
+webkit water-wave-tank {"frames":120,"changes":120,"seconds":1.806,"distinctPerSecond":66.44518272425249,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+webkit speaker-lab {"frames":121,"changes":121,"seconds":1.81,"distinctPerSecond":66.85082872928177,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+webkit wireless-power {"frames":121,"changes":121,"seconds":1.808,"distinctPerSecond":66.92477876106194,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+webkit electroplating {"frames":104,"changes":104,"seconds":1.805,"distinctPerSecond":57.61772853185596,"p95FrameMs":23,"sameSvg":true,"sameNode":true}
+webkit acoustic-resonance {"frames":102,"changes":102,"seconds":1.815,"distinctPerSecond":56.19834710743802,"p95FrameMs":20,"sameSvg":true,"sameNode":true}
+webkit sugar-phase {"frames":121,"changes":121,"seconds":1.813,"distinctPerSecond":66.74020959735246,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+webkit catalyst-foam {"frames":121,"changes":121,"seconds":1.81,"distinctPerSecond":66.85082872928177,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+webkit force-motion {"frames":78,"changes":78,"seconds":1.206,"distinctPerSecond":64.67661691542288,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+webkit periodic-bonding {"frames":120,"changes":120,"seconds":1.807,"distinctPerSecond":66.40841173215274,"p95FrameMs":16,"sameSvg":true,"sameNode":true}
+✔ webkit: continuous apparatus motion and visible choices (42449.7093ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 78103.6118
+
+=== choices ===
+chromium 20/201 routes; 0 findings
+chromium 40/201 routes; 0 findings
+chromium 60/201 routes; 0 findings
+chromium 80/201 routes; 0 findings
+chromium 100/201 routes; 0 findings
+chromium 120/201 routes; 0 findings
+chromium 140/201 routes; 0 findings
+chromium 160/201 routes; 0 findings
+chromium 180/201 routes; 0 findings
+chromium 200/201 routes; 0 findings
+✔ chromium: visible choices on every registered course route (169480.7825ms)
+webkit 20/201 routes; 0 findings
+webkit 40/201 routes; 0 findings
+webkit 60/201 routes; 0 findings
+webkit 80/201 routes; 0 findings
+webkit 100/201 routes; 0 findings
+webkit 120/201 routes; 0 findings
+webkit 140/201 routes; 0 findings
+webkit 160/201 routes; 0 findings
+webkit 180/201 routes; 0 findings
+webkit 200/201 routes; 0 findings
+✔ webkit: visible choices on every registered course route (217997.85ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 387771.7046
+
+=== capture-check ===
+✔ chromium: visible choices on every registered course route (4934.8331ms)
+✔ webkit: visible choices on every registered course route (7752.2828ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12950.0998
+
+=== all-apps ===
+lever-balance: OK (4 questions)
+speed: OK (4 questions)
+weight-compare: OK (4 questions)
+force-motion: OK (4 questions)
+motion-energy: OK (4 questions)
+magnets: OK (4 questions)
+circuit-bulbs: OK (4 questions)
+ohms-law: OK (4 questions)
+heat-transfer: OK (4 questions)
+specific-heat: OK (4 questions)
+liquid-heat: OK (4 questions)
+light-shadow: OK (4 questions)
+sound-vibration: OK (4 questions)
+refraction: OK (4 questions)
+wave-transfer: OK (4 questions)
+mixture-separation: OK (4 questions)
+state-change: OK (4 questions)
+gases: OK (4 questions)
+solubility: OK (4 questions)
+water-cycle: OK (4 questions)
+dissolution-mass: OK (4 questions)
+density-buoyancy: OK (4 questions)
+separation-methods: OK (4 questions)
+diffusion: OK (4 questions)
+solubility-curve: OK (4 questions)
+recrystallise: OK (4 questions)
+phase-mass: OK (4 questions)
+phase-curves: OK (4 questions)
+acid-base: OK (4 questions)
+burning-conditions: OK (4 questions)
+acid-mixing: OK (4 questions)
+mass-ratio: OK (4 questions)
+combustion: OK (4 questions)
+flame-ions: OK (4 questions)
+living-things: OK (4 questions)
+microbes: OK (4 questions)
+microscope: OK (4 questions)
+body-organs: OK (4 questions)
+leaf-starch: OK (4 questions)
+leaf-classification: OK (4 questions)
+animal-classification: OK (4 questions)
+photosynthesis: OK (4 questions)
+body-systems: OK (4 questions)
+nutrient-detection: OK (4 questions)
+cell-structure: OK (4 questions)
+senses: OK (4 questions)
+reflex-nerve: OK (4 questions)
+seed-germination: OK (4 questions)
+life-cycle: OK (4 questions)
+living-environment: OK (4 questions)
+pea-genetics: OK (4 questions)
+food-web: OK (4 questions)
+rock-layers: OK (4 questions)
+volcano-model: OK (4 questions)
+minerals-rocks: OK (4 questions)
+plate-tectonics: OK (4 questions)
+weather-watch: OK (4 questions)
+land-sea: OK (4 questions)
+weather-front: OK (4 questions)
+seawater: OK (4 questions)
+night-sky: OK (4 questions)
+seasons: OK (4 questions)
+seasonal-sky: OK (4 questions)
+moon-phases: OK (4 questions)
+apparent-motion: OK (4 questions)
+stars-universe: OK (4 questions)
+telescope-observation: OK (4 questions)
+galactic-objects: OK (4 questions)
+infection-prevention: OK (4 questions)
+coastal-inundation: OK (4 questions)
+measurement: OK (4 questions)
+periodic-bonding: OK (4 questions)
+star-elements: OK (4 questions)
+dna-structure: OK (4 questions)
+gravity-motion: OK (4 questions)
+cell-membrane: OK (4 questions)
+earth-system: OK (4 questions)
+natural-selection: OK (4 questions)
+geologic-time: OK (4 questions)
+neutralization-common: OK (4 questions)
+energy-conversion: OK (4 questions)
+mendeleev: OK (4 questions)
+galileo-incline: OK (4 questions)
+pasteur: OK (4 questions)
+newton-prism: OK (4 questions)
+antibiotic-disc: OK (4 questions)
+ride-acceleration: OK (4 questions)
+air-sampling: OK (4 questions)
+local-biodiversity: OK (4 questions)
+mcu-sampling: OK (4 questions)
+smart-pot: OK (4 questions)
+torque: OK (4 questions)
+collision: OK (4 questions)
+energy-heat: OK (4 questions)
+video-motion: OK (6 questions)
+induction: OK (4 questions)
+motor-magnet: OK (4 questions)
+speaker-lab: OK (4 questions)
+wireless-power: OK (4 questions)
+lens-image: OK (4 questions)
+photoelectric: OK (4 questions)
+interference: OK (4 questions)
+semiconductor-relativity: OK (4 questions)
+light-interference: OK (4 questions)
+mole: OK (4 questions)
+molecule-shape: OK (4 questions)
+water-electrolysis: OK (4 questions)
+rate-equilibrium: OK (4 questions)
+equilibrium-colour: OK (4 questions)
+equilibrium-data: OK (4 questions)
+neutralization: OK (4 questions)
+standard-solution: OK (4 questions)
+serial-dilution: OK (4 questions)
+vinegar-titration: OK (4 questions)
+population: OK (4 questions)
+digestive-enzymes: OK (4 questions)
+quadrat-community: OK (4 questions)
+homeostasis: OK (4 questions)
+immune: OK (4 questions)
+neuron: OK (4 questions)
+cell-division: OK (4 questions)
+phylogeny: OK (4 questions)
+karyotype-lab: OK (4 questions)
+typhoon: OK (4 questions)
+ocean-layers: OK (4 questions)
+argo-observation: OK (4 questions)
+satellite-sea-temperature: OK (4 questions)
+weather-analysis: OK (4 questions)
+rock-age: OK (4 questions)
+metamorphism: OK (4 questions)
+magma: OK (4 questions)
+strata-correlation: OK (4 questions)
+planet-motion: OK (4 questions)
+stars: OK (4 questions)
+galaxy-hubble: OK (4 questions)
+hr-diagram: OK (4 questions)
+kepler-data: OK (4 questions)
+heat-engine: OK (4 questions)
+insulation-lab: OK (4 questions)
+doppler-lab: OK (4 questions)
+spring-wave-speed: OK (4 questions)
+acoustic-resonance: OK (4 questions)
+electric-field: OK (4 questions)
+magnetic-brake: OK (4 questions)
+transistor-speaker: OK (4 questions)
+soap-film: OK (4 questions)
+polarization: OK (4 questions)
+electron-slits: OK (4 questions)
+gas-identification: OK (4 questions)
+hydride-boiling: OK (4 questions)
+sugar-phase: OK (4 questions)
+osmosis-mass: OK (4 questions)
+hess-calorimetry: OK (4 questions)
+fuel-comparison: OK (4 questions)
+reaction-pressure: OK (4 questions)
+iodine-clock: OK (4 questions)
+catalyst-foam: OK (4 questions)
+temperature-clouding: OK (4 questions)
+titration: OK (4 questions)
+buffer-solution: OK (4 questions)
+salt-hydrolysis: OK (4 questions)
+ph-comparison: OK (4 questions)
+redox: OK (4 questions)
+electroplating: OK (4 questions)
+silver-mirror: OK (4 questions)
+nylon-interface: OK (4 questions)
+organic-builder: OK (4 questions)
+cell-osmosis: OK (4 questions)
+centrifuge-design: OK (4 questions)
+protein-folding: OK (4 questions)
+cell-micrometry: OK (4 questions)
+enzyme: OK (4 questions)
+bean-respiration: OK (4 questions)
+energy-metabolism: OK (4 questions)
+organelle-builder: OK (4 questions)
+leaf-pigments: OK (4 questions)
+yeast-fermentation: OK (4 questions)
+dna-gel: OK (4 questions)
+dna-replication: OK (4 questions)
+pedigree-lab: OK (4 questions)
+protein-synthesis: OK (4 questions)
+protein-interaction: OK (4 questions)
+earthquake: OK (4 questions)
+polarized-thin-sections: OK (4 questions)
+crust-thickness: OK (4 questions)
+ocean-circulation: OK (4 questions)
+water-wave-tank: OK (4 questions)
+air-stability: OK (4 questions)
+rotating-annulus: OK (4 questions)
+rotating-disc: OK (4 questions)
+habitable-orbits: OK (4 questions)
+stellar-mass-data: OK (4 questions)
+sunspot-observation: OK (4 questions)
+constellation-space: OK (4 questions)
+cluster-fitting: OK (4 questions)
+sea-level-causes: OK (4 questions)
+Inspected 196 apps / 786 questions
+✔ every catalog app loads, every question has a working correct answer, mobile layout (81877.7314ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 82147.6522
+
+=== regressions ===
+✔ wet gas collection: hydrostatic and vapor corrections conserve mass and moles (0.5595ms)
+✔ colligative phase onset and changing solvent fraction, not a false solution plateau (0.1801ms)
+✔ calorimetry: reaction amounts, mass and heat sum independently agree (0.1044ms)
+✔ buffer and hydrolysis: water equilibrium, electroneutrality and finite capacity (0.3947ms)
+✔ bean controls: equal starts, separate gas absorption and heat control (0.8299ms)
+✔ chromium: source procedure, control isolation, questions and mobile (7384.5051ms)
+✔ webkit: source procedure, control isolation, questions and mobile (15581.3788ms)
+✔ gas stoichiometry, calibration invariance, chromatography ratios and selective digestion remain physically distinct (1.2935ms)
+✔ chromium: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (57448.4106ms)
+✔ webkit: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (71201.285ms)
+✔ heat transfer: approach ambient from either side, with volume and thickness controlled (0.8006ms)
+✔ moving source: wavelength times observed frequency remains the medium sound speed (0.1941ms)
+✔ motion acceleration agrees with finite differences and sensor support (0.3006ms)
+✔ DNA construction preserves templates, antiparallel synthesis, primers and ligation order (1.5169ms)
+✔ translation: reading frame, synonymous substitution, termination, cell-free exception (0.294ms)
+✔ pedigree: X inheritance and conditioning are independent of child order (0.2175ms)
+✔ karyotype: all cards conserved when moving, X/Y pairing, extra autosome is retained (2.45ms)
+✔ disc assay: control stays zero, geometry detects overlap, preincubation shows no inhibition (0.3361ms)
+✔ water waves: dispersion limits, bottom boundary and closed linear particle orbits (0.2494ms)
+✔ silver mirror: precipitation is distinct from metal reduction, with a water control (0.2276ms)
+✔ interfacial polymer model: alternating functional groups conserve chain ends and HCl (0.2046ms)
+✔ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (15696.4162ms)
+✔ webkit: source-backed actions, wrong choices, reset, diagnosis and mobile (29774.0738ms)
+✔ magnetic braking: Newton limit, terminal velocity, ground and force direction (0.5454ms)
+✔ speaker, induction and amplification: missing connections, DC, orientation and finite power (0.2237ms)
+✔ optical boundaries: reflection phase, Malus law and indistinguishable states (0.1307ms)
+✔ electron interference: nodes, loss of cross term and stable event accumulation (4.4732ms)
+✔ chromium: apparatus operations, clearing, mobile and diagnostics (8027.9297ms)
+✔ webkit: apparatus operations, clearing, mobile and diagnostics (14708.5059ms)
+✔ course scopes partition authored questions and preserve scoped transfer evidence (43.395ms)
+✔ pendulum conserves energy and acceleration matches position and velocity derivatives (8.0975ms)
+✔ seesaw attachment distance scales linear acceleration but not gravity; axis rotation preserves magnitude (1.7863ms)
+✔ frictionless slide distinguishes raw and corrected axes and ends at the end of the ramp (0.5907ms)
+✔ browser: apparatus, course routes, isolated diagnostics, reload and narrow screens (7735.1329ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 227948.7113

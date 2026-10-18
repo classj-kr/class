@@ -10,7 +10,7 @@
   for(const n of ticks(ymin,ymax))html+=`<path d="M${L} ${y(n)}H${w-R}" stroke="#ccdce4"/><text x="${L-9}" y="${y(n)+5}" text-anchor="end" font-size="14" fill="#244c60">${fmt(n)}</text>`;
   const low=log?10**xmin:0,high=log?10**xmax:xmax;html+=`<g clip-path="url(#kdClip)"><path d="M${x(low)} ${y(low*d.median)}L${x(high)} ${y(high*d.median)}" fill="none" stroke="#926227" stroke-width="2" stroke-dasharray="7 5"/>`;
   for(const p of d.rows)html+=`<circle cx="${x(p.x)}" cy="${y(p.y)}" r="7" fill="#176379" stroke="#fff" stroke-width="2"><title>${p.name}: ${fmt(p.x)}, ${fmt(p.y)}</title></circle>`;
-  svg.innerHTML=html+'</g>';
+  window.scienceScene.render(svg,html+'</g>');
  }
  function render(){const d=data(),aUnit=state.units==='au'?'AU':'백만 km',tUnit=state.units==='au'?'년':'일',ratio=power('T',state.yp)+' / '+power('a',state.xp);
   $('kdXLabel').textContent='긴반지름 '+power('a',state.xp)+' ('+power(state.units==='metric'?'(백만 km)':aUnit,state.xp)+')';$('kdYLabel').textContent='공전 주기 '+power('T',state.yp)+' ('+power(tUnit,state.yp)+')';$('kdRatioLabel').textContent=ratio;$('kdSpread').textContent='최댓값 ÷ 최솟값 '+d.spread.toFixed(d.spread<10?3:1);$('kdRange').textContent='비의 범위 '+fmt(d.min)+' ~ '+fmt(d.max)+' ('+power(tUnit,state.yp)+' / '+power(state.units==='metric'?'(백만 km)':aUnit,state.xp)+')';
@@ -24,7 +24,7 @@
  function drawOrbit(){const svg=$('kdOrbitPlot'),w=svg.clientWidth,h=svg.clientHeight;if(!w||state.set==='minor')return;const p=M.planets.find(p=>p.id===state.planet),s=Math.min((w-80)/2,108),cx=w/2,cy=h/2,origin=cx+p.e*s,pos=M.orbit(p.e,mean),point=m=>{const v=M.orbit(p.e,m);return[origin+v.x*s,cy-v.y*s];};svg.setAttribute('viewBox',`0 0 ${w} ${h}`);let html='';
   for(let i=0;i<8;i++){let path=`M${origin} ${cy}`;for(let j=0;j<=20;j++){const [x,y]=point((i+j/20)*Math.PI/4);path+=`L${x} ${y}`;}html+=`<path d="${path}Z" fill="${i%2?'#d0e6ee':'#e2eff4'}" stroke="#adcbd7" stroke-width="1"/>`;}
   html+=`<ellipse cx="${cx}" cy="${cy}" rx="${s}" ry="${s*Math.sqrt(1-p.e*p.e)}" fill="none" stroke="#477e94" stroke-width="2"/><path d="M${cx-s} ${cy}H${cx+s}" stroke="#709ba9" stroke-dasharray="4 4"/><circle cx="${origin}" cy="${cy}" r="11" fill="#b66a0c"/><text x="${origin}" y="${cy+31}" font-size="14" text-anchor="middle" fill="#244c60">태양</text><text x="${cx-s}" y="${cy-21}" text-anchor="middle" font-size="14" fill="#244c60">원일점</text><text x="${cx+s}" y="${cy-21}" text-anchor="middle" font-size="14" fill="#244c60">근일점</text><path d="M${origin} ${cy}L${origin+pos.x*s} ${cy-pos.y*s}" stroke="#176379" stroke-width="2"/><circle cx="${origin+pos.x*s}" cy="${cy-pos.y*s}" r="8" fill="#176379" stroke="#fff" stroke-width="2"/>`;
-  svg.innerHTML=html;$('kdOrbitInfo').textContent=p.name+' · 근일점 '+fmt(p.perihelionMillionKm/M.AU)+' AU · 원일점 '+fmt(p.aphelionMillionKm/M.AU)+' AU · 현재 거리 '+fmt(pos.radius*p.a)+' AU';
+  window.scienceScene.render(svg,html);$('kdOrbitInfo').textContent=p.name+' · 근일점 '+fmt(p.perihelionMillionKm/M.AU)+' AU · 원일점 '+fmt(p.aphelionMillionKm/M.AU)+' AU · 현재 거리 '+fmt(pos.radius*p.a)+' AU';
  }
  function frame(time){if(!playing)return;if(last)mean=(mean+(time-last)/12000*Math.PI*2)%(Math.PI*2);last=time;drawOrbit();raf=requestAnimationFrame(frame);}
  function change(){save();render();status('조건을 바꿨습니다. 표의 비를 비교하고 관계를 다시 확인하세요.');}

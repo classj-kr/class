@@ -1,0 +1,158 @@
+{
+  "engine": "webkit",
+  "emulationOnly": true,
+  "physicalDeviceTested": false,
+  "rows": [
+    {
+      "slug": "constellation-space",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "constellation-space",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "constellation-space",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "constellation-space",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "constellation-space",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "constellation-space",
+      "width": 512,
+      "height": 768
+    },
+    {
+      "slug": "reaction-pressure",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "reaction-pressure",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "reaction-pressure",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "reaction-pressure",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "reaction-pressure",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "reaction-pressure",
+      "width": 512,
+      "height": 768
+    },
+    {
+      "slug": "ride-acceleration",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "ride-acceleration",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "ride-acceleration",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "ride-acceleration",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "ride-acceleration",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "ride-acceleration",
+      "width": 512,
+      "height": 768
+    },
+    {
+      "slug": "periodic-bonding",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "periodic-bonding",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "periodic-bonding",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "periodic-bonding",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "periodic-bonding",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "periodic-bonding",
+      "width": 512,
+      "height": 768
+    },
+    {
+      "slug": "temperature-clouding",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "slug": "temperature-clouding",
+      "width": 1180,
+      "height": 820
+    },
+    {
+      "slug": "temperature-clouding",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "slug": "temperature-clouding",
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "slug": "temperature-clouding",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "slug": "temperature-clouding",
+      "width": 512,
+      "height": 768
+    }
+  ],
+  "errors": []
+}

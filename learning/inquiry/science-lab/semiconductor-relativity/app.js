@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        if (stageReadout) stageReadout.innerHTML = rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join('');
+        if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
     }
 
@@ -255,14 +255,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'diode' ? renderDiode(a) : a.kind === 'muon' ? renderMuon(a) : renderEnergy(a);
-        graphGroup.innerHTML = a.kind === 'diode' ? graphDiode(a) : a.kind === 'muon' ? graphMuon(a) : graphEnergy(a);
+        window.scienceScene.render(mainGroup,a.kind === 'diode' ? renderDiode(a) : a.kind === 'muon' ? renderMuon(a) : renderEnergy(a));
+        window.scienceScene.render(graphGroup,a.kind === 'diode' ? graphDiode(a) : a.kind === 'muon' ? graphMuon(a) : graphEnergy(a));
         liftProse();
         stageBadge.textContent = a.kind === 'diode' ? `${VOLTS[state.volt].label} · ${TEMPS[state.temp].label}` : a.kind === 'muon' ? `${SPEEDS_M[state.mspeed].label} · ${HEIGHTS[state.height].label}` : `${SPEEDS_E[state.espeed].label} · ${BODIES[state.body].label}`;
         methodHint.textContent = a.kind === 'diode' ? '순방향 전압은 공핍층을 얇게 해 전류를 흘리고, 역방향은 두껍게 해 막습니다'
             : a.kind === 'muon' ? '지상에서 잰 뮤온의 수명은 고유 수명보다 깁니다'
                 : '운동 방향의 길이는 고유 길이보다 짧게 측정됩니다';
-        dataNote.innerHTML = noteFor(a);
+        window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 
