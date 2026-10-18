@@ -322,8 +322,19 @@
         try {
             await unlock(); silence();
             const beat = 60 / chart.bpm, startAt = audio.currentTime + .18 + beat * 4;
-            run = { demo, roundId, startAt, taps: [], result: C.judge(chart, []), nextMiss: 0, nextClick: -4, nextTarget: 0, lastBeat: -99,
-                input: { keydowns: 0, keyups: 0, repeats: 0, ignoredFocus: 0, outside: 0 }, clocks: [], queue: [] };
+            run = { demo, roundId, startAt, taps: [], result: C.judge(chart, []), nextMiss: 0, lastBeat: -99,
+                input: { keydowns: 0, keyups: 0, repeats: 0, ignoredFocus: 0, outside: 0 }, clocks: [], queue: [], audioPlan: [] };
+            // Queue the entire short exercise on the audio rendering thread before
+            // drawing. A slow or hidden page must never drop a metronome click.
+            for (let click = -4; click < chart.bars.length * 4; click++) {
+                const at = startAt + click * beat;
+                sound(at, click % 4 === 0);
+                run.audioPlan.push({ kind: 'metronome', beat: click, time: at - startAt });
+            }
+            if (demo) for (const target of chart.targets) {
+                sound(startAt + target, false, true);
+                run.audioPlan.push({ kind: 'rhythm', beat: target / beat, time: target });
+            }
             $('timingDetails').hidden = true;
             resetFeedback();
             streak = 0; renderScore(); $('result').hidden = true; $('combo').textContent = '';
@@ -338,16 +349,6 @@
         if (audio.state !== 'running') { void finish(true); notice('소리가 중단되어 연주를 멈췄어요. 다시 시작해 주세요.'); return; }
         const beat = 60 / chart.bpm;
         const time = heardTime() - run.startAt;
-        // Schedule from the audio clock; rendering never determines sound timing.
-        while (run.nextClick < chart.bars.length * 4 && run.startAt + run.nextClick * beat < audio.currentTime + .15) {
-            const at = run.startAt + run.nextClick * beat;
-            if (at >= audio.currentTime) sound(at, run.nextClick % 4 === 0);
-            run.nextClick++;
-        }
-        if (run.demo) while (run.nextTarget < chart.targets.length && run.startAt + chart.targets[run.nextTarget] < audio.currentTime + .15) {
-            const at = run.startAt + chart.targets[run.nextTarget++];
-            if (at >= audio.currentTime) sound(at, false, true);
-        }
         const currentBeat = Math.floor(time / beat);
         if (currentBeat !== run.lastBeat) {
             run.clocks.push({ beat: currentBeat, outputGapMs: Math.round((audio.currentTime - heardTime()) * 1000),
@@ -441,13 +442,13 @@
         const result = C.judge(chart, ended.taps), beat = 60 / chart.bpm;
         const inputs = C.trace(chart, ended.taps);
         const nearestErrors = inputs.map(input => [input.nearest, Math.round(input.error / beat * 1000) / 1000]);
-        const report = { version: '20261018-input-trace-v6', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+        const report = { version: '20261018-audio-schedule-v7', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
             targets: chart.targets.length, taps: ended.taps.length, input: ended.input,
             accuracy: result.accuracy, hits: result.hits, misses: result.misses, extras: result.extras,
             targetBeats: chart.targets.map(time => Math.round(time / beat * 1000) / 1000),
             tapBeats: ended.taps.map(time => Math.round(time / beat * 1000) / 1000), nearestErrors,
             tapJudgments: inputs.map((input, index) => ({ input: index + 1, target: input.nearest + 1, accepted: input.accepted, reason: input.reason })),
-            queueMs: ended.queue, clocks: ended.clocks };
+            queueMs: ended.queue, clocks: ended.clocks, audioPlan: ended.audioPlan };
         console.info('RHYTHM_TIMING_REPORT ' + JSON.stringify(report));
         $('timingSummary').textContent = `음표 ${report.targets}개 · 기록된 타격 ${report.taps}개 · 스페이스 누름 ${report.input.keydowns}회 · 키를 누르고 있는 동안의 반복 ${report.input.repeats}회`;
         $('timingSummary').textContent += `\n점수는 (맞음 − 틀림 × 0.5) ÷ 음표 수로 계산합니다. 한 입력이 다음 음에 배정되면 앞 음의 놓침과 이후 입력의 틀림이 함께 생길 수 있습니다.`;
