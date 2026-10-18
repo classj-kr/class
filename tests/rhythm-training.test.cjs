@@ -72,19 +72,23 @@ test('accepted timing variation earns full credit without stealing neighboring s
         assert.equal(omitted.hits, chart.targets.length - 1);
     }
 });
-test('sixteenth taps use the nearest BPM grid slot, including silent slots', () => {
+test('sixteenth taps are compared with written attacks, not empty subdivisions', () => {
     for (const bpm of [70, 100, 140]) {
         const slot = 60 / bpm / 4;
         const chart = { level: 3, bpm, targets: [0, 2 * slot, 4 * slot], duration: 4 * 60 / bpm };
         for (const direction of [-1, 1]) {
-            const near = Core.judge(chart, [2 * slot + direction * slot * .49]);
-            const far = Core.judge(chart, [2 * slot + direction * slot * .51]);
+            const near = Core.judge(chart, [2 * slot + direction * slot * .87]);
+            const far = Core.judge(chart, [2 * slot + direction * slot * .9]);
             assert.equal(near.hits, 1, JSON.stringify({ bpm, direction, kind: 'near' }));
             assert.equal(far.hits, 0, JSON.stringify({ bpm, direction, kind: 'far' }));
             assert.equal(far.extras, 1);
         }
-        assert.equal(Core.judge(chart, [slot]).hits, 0, 'a silent subdivision is not a note');
+        assert.equal(Core.judge(chart, [2 * slot - slot * .51]).hits, 1, 'an empty subdivision does not cut off the note window');
+        assert.equal(Core.judge(chart, [2 * slot - 1e-9]).hits, 1, 'a tap just before the written attack is correct');
         assert.equal(Core.judge(chart, [0, 2 * slot, 4 * slot]).accuracy, 100);
+        const dense = { level: 3, bpm, targets: [0, slot, 2 * slot], duration: 4 * 60 / bpm };
+        assert.equal(Core.judge(dense, [slot - slot * .49]).hits, 1);
+        assert.equal(Core.judge(dense, [slot - slot * .51]).marks[1].hit, false, 'a tap closer to the previous attack cannot hit this one');
     }
 });
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
