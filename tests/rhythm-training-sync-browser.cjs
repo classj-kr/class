@@ -73,6 +73,13 @@ const server = app.listen(0, '127.0.0.1');
         assert.equal(await page.locator('#syncResults p').count(), 3, 'all comparisons remain available in this page only');
         await page.setViewportSize({ width: 390, height: 844 });
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        await page.goto(`http://127.0.0.1:${server.address().port}/learning/arts/music-theory/rhythm-training/?seed=3706522911`);
+        await page.selectOption('#level', '7'); await page.locator('#bpm').fill('80'); await page.locator('#bpm').dispatchEvent('input');
+        await page.click('#start'); await page.click('#stop');
+        assert.equal(reports.at(-1).seed, 3706522911, 'the actual mixed exercise is reproducible after changing settings');
+        assert.equal(reports.at(-1).targets, 68);
+        await page.click('#shuffle'); await page.click('#start'); await page.click('#stop');
+        assert.notEqual(reports.at(-1).seed, 3706522911, 'new rhythm leaves the requested exercise and draws another');
         assert.deepEqual(errors, []);
         console.log('Sync comparison: sixteen equal beats; sound-only and silent visual-only; shared output clock; offset/spread reports; no automatic correction or grading cues');
     } finally { await browser.close(); }

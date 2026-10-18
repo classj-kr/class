@@ -3,6 +3,7 @@
     const C = window.RhythmTrainer, $ = id => document.getElementById(id);
     const storageKey = 'rhythm-training-room-v1';
     const syncCheck = new URLSearchParams(location.search).get('syncCheck') === '1';
+    let requestedSeed = new URLSearchParams(location.search).get('seed');
     let syncMode = 'sound';
     const syncResults = new Map();
     let audio, chart, run = null, raf = 0, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
@@ -43,7 +44,7 @@
     }
     function feedback(kind, event) {
         if (syncCheck) return;
-        const messages = { perfect: '맞았어요!', miss: '놓쳤어요', wrong: '틀렸어요' };
+        const messages = { perfect: '맞았어요!', miss: '박자가 지났어요', wrong: '박자 위치가 달라요' };
         $('feedback').textContent = messages[kind]; $('feedback').dataset.judgment = kind;
         $('pad').dataset.judgment = kind;
         document.querySelector('.play-area').style.setProperty('--hit-color', feedbackColors[kind]);
@@ -59,7 +60,8 @@
         if (kind !== 'miss') burst(event, kind);
     }
     const config = () => C.settings({ level: $('level').value, bpm: $('bpm').value });
-    const seed = () => crypto.getRandomValues(new Uint32Array(1))[0];
+    const seed = () => requestedSeed !== null && /^\d{1,10}$/.test(requestedSeed) && Number(requestedSeed) <= 0xffffffff
+        ? Number(requestedSeed) : crypto.getRandomValues(new Uint32Array(1))[0];
     const notice = message => { $('notice').textContent = message; $('notice').hidden = !message; };
     function saveRoom() {
         try { if (credentials) sessionStorage.setItem(storageKey, JSON.stringify({ ...credentials, pendingResult })); else sessionStorage.removeItem(storageKey); } catch (_) {}
@@ -434,6 +436,7 @@
             const previous = after.marks.slice(0, after.marks.indexOf(mark));
             streak = mark.points !== 1 ? 0 : previous.length && previous[previous.length - 1].points !== 1 ? 1 : streak + 1;
             feedback(mark.points === 1 ? 'perfect' : 'wrong', event);
+            if (!syncCheck) $('feedback').textContent = `맞음 · ${notePosition(mark.time)}`;
         } else { streak = 0; feedback('wrong', event); }
         paintMarks(time);
     }
@@ -458,17 +461,22 @@
             const result = C.judge(chart, ended.taps);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('hitRate').textContent = `음표 적중률 ${(100 * result.hits / result.marks.length).toFixed(1)}%`;
+            $('inputCount').textContent = `기록된 타격 ${ended.taps.length}회 · 스페이스 누름 ${ended.input.keydowns}회. 미정답 음은 입력이 이웃 음에 배정된 경우도 포함합니다.`;
             $('misses').textContent = result.misses; $('extras').textContent = result.wrong; $('result').hidden = false;
         }
         if (!ended.demo) timingReport(ended, interrupted);
         if (ended.restoreChart) { chart = ended.restoreChart; renderScore(); $('barCount').textContent = `${chart.bars.length}마디 · 4/4박자`; }
         if (ended.roundId && credentials) { pendingResult = { roundId: ended.roundId, taps: ended.taps, interrupted }; saveRoom(); await submitResult(); }
     }
+    function notePosition(time) {
+        const value = time * chart.bpm / 60;
+        return `${Math.floor(value / 4) + 1}마디 ${(value % 4 + 1).toFixed(2)}박`;
+    }
     function timingReport(ended, interrupted) {
         const result = C.judge(chart, ended.taps), beat = 60 / chart.bpm;
         const inputs = C.trace(chart, ended.taps);
         const nearestErrors = inputs.map(input => [input.nearest, Math.round(input.error / beat * 1000) / 1000]);
-        const report = { version: '20261018-subdivision-check-v10', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+        const report = { version: '20261018-assigned-note-v11', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
             syncMode: syncCheck ? syncMode : null,
             targets: chart.targets.length, taps: ended.taps.length, input: ended.input,
             accuracy: result.accuracy, hits: result.hits, misses: result.misses, extras: result.extras,
@@ -509,9 +517,13 @@
         };
         result.marks.forEach((mark, index) => {
             const assigned = inputs.find(input => input.accepted && input.nearest === index);
-            appendRow($('timingRows'), [position(mark.time), assigned ? `#${inputs.indexOf(assigned) + 1} · ${position(assigned.time)}` : '없음',
+            const closest = !assigned && inputs.length ? inputs.reduce((best, input) => Math.abs(input.time - mark.time) < Math.abs(best.time - mark.time) ? input : best) : null;
+            const explanation = closest ? closest.accepted
+                ? `가까운 #${inputs.indexOf(closest) + 1}은 ${notePosition(chart.targets[closest.nearest])}에 배정`
+                : `가까운 #${inputs.indexOf(closest) + 1}은 중복·추가 입력` : '';
+            appendRow($('timingRows'), [position(mark.time), assigned ? `#${inputs.indexOf(assigned) + 1} · ${position(assigned.time)}` : '배정 없음',
                 differenceText(assigned ? assigned.error / beat : null),
-                `앞 ${(C.noteWindow(chart, index, 'early') / beat).toFixed(3)}박 · 뒤 ${(C.noteWindow(chart, index, 'late') / beat).toFixed(3)}박`, mark.hit ? '맞음' : '놓침']);
+                `앞 ${(C.noteWindow(chart, index, 'early') / beat).toFixed(3)}박 · 뒤 ${(C.noteWindow(chart, index, 'late') / beat).toFixed(3)}박`, mark.hit ? '맞음' : `미정답${explanation ? ' · ' + explanation : ''}`]);
         });
         $('timingExtraRows').replaceChildren();
         inputs.forEach((input, index) => {
@@ -605,7 +617,7 @@
     action('start', () => listening() ? (answered ? fresh() : submitListening()) : play());
     action('retry', () => play()); action('listen', () => play(true));
     action('showAnswer', () => { if (listening() && !answered && !run && !starting) revealListening(false, -1, true); });
-    action('shuffle', fresh); action('stop', () => finish(true));
+    action('shuffle', () => { requestedSeed = null; fresh(); }); action('stop', () => finish(true));
     for (const id of ['level', 'bpm', 'activity', 'length']) $(id).addEventListener('input', () => { $('bpmValue').value = $('bpm').value; if (!room) fresh(); });
     $('pad').addEventListener('pointerdown', event => { if (!event.isPrimary || event.button !== 0) return; event.preventDefault(); tap(event); });
     $('pad').addEventListener('click', event => { if (event.detail === 0) tap(event); });

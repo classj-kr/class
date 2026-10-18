@@ -164,7 +164,8 @@ function mockAudio() {
                 await page.evaluate(beats => {
                     for (const beat of beats) {
                         testAudio.time = 1 + .18 + 3 + beat * .75;
-                        document.getElementById('pad').dispatchEvent(new PointerEvent('pointerdown', { isPrimary: true, button: 0, bubbles: true }));
+                    document.getElementById('pad').dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', bubbles: true }));
+                    document.getElementById('pad').dispatchEvent(new KeyboardEvent('keyup', { code: 'Space', bubbles: true }));
                     }
                     testAudio.time = 50;
                 }, fixture.tapBeats);
@@ -172,12 +173,33 @@ function mockAudio() {
                 assert.equal(await page.locator('#perfect').textContent(), '65');
                 assert.equal(await page.locator('#hitRate').textContent(), '음표 적중률 92.9%');
                 await page.locator('#timingDetails > summary').click();
-                const missed = await page.locator('#timingRows tr').evaluateAll(rows => rows.filter(row => row.lastElementChild.textContent === '놓침').map(row => row.children[1].textContent));
-                assert.deepEqual(missed, Array(5).fill('없음'), 'missed notes never display another note’s assigned input');
+                const missed = await page.locator('#timingRows tr').evaluateAll(rows => rows.filter(row => row.lastElementChild.textContent.startsWith('미정답')).map(row => row.children[1].textContent));
+                assert.deepEqual(missed, Array(5).fill('배정 없음'), 'missed notes never display another note’s assigned input');
+                assert.match(await page.locator('#inputCount').textContent(), /기록된 타격 70회/);
+                assert.match(await page.locator('#timingRows tr').nth(16).textContent(), /가까운 #17은 2마디 4.50박에 배정/);
                 assert.equal(await page.locator('#timingExtraRows tr').count(), 5);
                 assert.equal(await page.locator('#timingExtraRows tr').first().locator('td').first().textContent(), '#18');
                 assert.match(await page.locator('#timingExtraRows tr').first().textContent(), /입력 #17이 이미 맞힌 음/);
                 await capture(page, { path: path.join(output, 'mixed-input-assignments-v6.webp'), fullPage: true });
+                const complete = require('./fixtures/rhythm-mixed-complete-input.json');
+                await page.goto(origin + '/learning/arts/music-theory/rhythm-training/?seed=' + complete.seed);
+                await page.selectOption('#level', '7'); await page.locator('#bpm').fill('80'); await page.locator('#bpm').dispatchEvent('input');
+                await page.click('#start');
+                await page.evaluate(beats => {
+                    for (const beat of beats) {
+                        testAudio.time = 1 + .18 + 3 + beat * .75;
+                        document.getElementById('pad').dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', bubbles: true }));
+                        document.getElementById('pad').dispatchEvent(new KeyboardEvent('keyup', { code: 'Space', bubbles: true }));
+                    }
+                    testAudio.time = 50;
+                }, complete.tapBeats);
+                await page.locator('#result').waitFor({ state: 'visible' });
+                assert.equal(await page.locator('#perfect').textContent(), '59');
+                assert.equal(await page.locator('#misses').textContent(), '9');
+                assert.match(await page.locator('#inputCount').textContent(), /기록된 타격 68회 · 스페이스 누름 68회/);
+                assert.match(await page.locator('#result').textContent(), /미정답 음/);
+                assert.doesNotMatch(await page.locator('#result').textContent(), /놓침/);
+                await capture(page, { path: path.join(output, 'actual-68-inputs-replayed-v11.webp'), fullPage: true });
             }
             assert.deepEqual(errors, []);
             await page.close();

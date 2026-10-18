@@ -102,7 +102,7 @@ function mockAudio() {
         assert.equal((await contact(0, .01, 'wrong')).combo, '');
         assert.equal((await contact(0, .02, 'wrong')).combo, '');
         assert.equal(await feedbackPage.locator('#timing').count(), 0);
-        assert.equal(await feedbackPage.locator('#feedback').textContent(), '틀렸어요');
+        assert.equal(await feedbackPage.locator('#feedback').textContent(), '박자 위치가 달라요');
         const deadline = await feedbackPage.evaluate(() => {
             const chart = RhythmTrainer.chart({ level: 0, bpm: 100 }, 123);
             return chart.targets[3] + RhythmTrainer.noteWindow(chart, 3, 'late') + .01;
