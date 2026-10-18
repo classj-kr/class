@@ -5,6 +5,7 @@
 @media(max-width:620px){.shell{padding:14px}.topbar{flex-wrap:wrap;margin-bottom:18px}.topbar nav{width:100%;margin:0;justify-content:center}.topbar nav button{flex:1}.workspace{grid-template-columns:1fr}.settings{padding:16px}.settings fieldset{margin-bottom:14px}.settings legend{margin-bottom:12px}.settings select{margin-bottom:14px}#soloControls{grid-template-columns:1fr 1fr}#shuffle{grid-column:1/-1}.settings .helper{margin-top:12px}.score{gap:24px;padding:18px 8px}.pad{height:100px}.session-bar{font-size:13px}.result{gap:16px}.result dl{flex:1}.result>button{width:100%}body.playing .settings,body.playing .topbar nav{display:none}.play-area{scroll-margin-top:12px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .sync-panel{padding:22px;margin-bottom:22px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}.sync-panel p{line-height:1.7}.sync-actions{display:flex;gap:12px;flex-wrap:wrap}.sync-actions [aria-pressed=true]{border-color:var(--mint);color:var(--mint)}.sync-check .settings{padding:18px}.sync-check.sync-sound.playing .session-bar{visibility:hidden}.sync-check .result{display:none}
+.result{flex-wrap:wrap}.result-inputs{flex:0 0 100%;margin:0;color:var(--muted);font-size:13px;line-height:1.6}
 
 /* Input judgment is painted on contact; no tap audio or delayed click animation. */
 body:not(.playing) .feedback-row:has(#feedback:empty):has(#combo:empty){height:16px}

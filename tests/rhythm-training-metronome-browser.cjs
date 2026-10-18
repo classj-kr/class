@@ -21,6 +21,11 @@ const server = app.listen(0, '127.0.0.1');
                 constructor(options) {
                     super(options); window.testAudio = this;
                     this.capture = this.createMediaStreamDestination();
+                    // Keep the recording track supplied with silent frames after
+                    // the last oscillator disconnects, so the final codec packet is retained.
+                    this.captureSilence = this.createConstantSource();
+                    const zero = super.createGain(); zero.gain.value = 0;
+                    this.captureSilence.connect(zero); zero.connect(this.capture); this.captureSilence.start();
                     this.chunks = [];
                     this.recorder = new MediaRecorder(this.capture.stream);
                     this.recorder.ondataavailable = event => this.chunks.push(event.data);
@@ -61,7 +66,7 @@ const server = app.listen(0, '127.0.0.1');
                 if (audible && !active) onsets.push(start / buffer.sampleRate);
                 active = audible;
             }
-            return { onsets, sampleRate: buffer.sampleRate };
+            return { onsets, sampleRate: buffer.sampleRate, duration: buffer.duration };
         });
         const rendered = await readRecording();
         assert.equal(rendered.onsets.length, 8, 'the recorded PCM contains all eight audible clicks');
@@ -82,8 +87,10 @@ const server = app.listen(0, '127.0.0.1');
         await page.goto(`http://127.0.0.1:${server.address().port}/learning/arts/music-theory/rhythm-training/?syncCheck=1`);
         await page.click('#syncSubdivide'); await page.click('#start');
         assert.equal(await page.evaluate(() => audioStarts.length), 36, 'four preparation clicks and thirty-two sixteenth clicks are scheduled');
-        await page.waitForTimeout(9300);
+        await page.waitForTimeout(10000); // Leave a full second after the last click for the recorder's codec buffers.
         const subdivided = await readRecording();
+        if (subdivided.onsets.length !== 36) console.log(JSON.stringify({ unexpectedSubdivisionRecording: subdivided,
+            audio: await page.evaluate(() => ({ now: testAudio.currentTime, scheduled: audioStarts })) }));
         assert.equal(subdivided.onsets.length, 36, 'every sixteenth click is audible in the rendered PCM');
         const shortIntervals = subdivided.onsets.slice(5).map((time, index) => time - subdivided.onsets[index + 4]);
         assert.equal(shortIntervals.length, 31);

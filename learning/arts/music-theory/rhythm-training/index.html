@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#111827">
     <title>리듬 트레이닝</title>
-    <link rel="stylesheet" href="styles.css?v=20261018-subdivision-check-v10">
+    <link rel="stylesheet" href="styles.css?v=20261018-assigned-note-v11">
     <script src="notation.js?v=20261006-vector-notation" defer></script>
-    <script src="rhythm.js?v=20261018-subdivision-check-v10" defer></script>
-    <script src="core.js?v=20261018-subdivision-check-v10" defer></script>
-    <script src="questions.js?v=20261018-subdivision-check-v10" defer></script>
-    <script src="lessons.js?v=20261018-subdivision-check-v10" defer></script>
+    <script src="rhythm.js?v=20261018-assigned-note-v11" defer></script>
+    <script src="core.js?v=20261018-assigned-note-v11" defer></script>
+    <script src="questions.js?v=20261018-assigned-note-v11" defer></script>
+    <script src="lessons.js?v=20261018-assigned-note-v11" defer></script>
     <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
-    <script src="app.js?v=20261018-subdivision-check-v10" defer></script>
+    <script src="app.js?v=20261018-assigned-note-v11" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
 <main class="shell" aria-label="리듬 트레이닝">
@@ -92,8 +92,9 @@
             <button id="stop" class="quiet stop" hidden>그만하기</button>
             <section id="result" class="result" hidden aria-label="연습 결과">
                 <div><span>점수</span><strong id="accuracy"></strong><small id="hitRate"></small></div>
-                <dl><div><dt>맞음</dt><dd id="perfect"></dd></div><div><dt>놓침</dt><dd id="misses"></dd></div><div><dt>틀림</dt><dd id="extras"></dd></div></dl>
+                <dl><div><dt>맞힌 음</dt><dd id="perfect"></dd></div><div><dt>미정답 음</dt><dd id="misses"></dd></div><div><dt>중복·추가 입력</dt><dd id="extras"></dd></div></dl>
                 <button id="retry" class="secondary">같은 리듬 다시</button>
+                <p id="inputCount" class="result-inputs"></p>
             </section>
             <details id="timingDetails" class="timing-details" hidden>
                 <summary>입력·판정 확인</summary>
