@@ -18,7 +18,7 @@
 
 리듬 악보 렌더러는 `rhythm-training/rhythm.js`, 듣기 문제 생성은 `questions.js`, 설명은 `lessons.js`에서 관리한다. `notation.js`의 공통 벡터 기호만 게임 허브 서버가 청음의 파일로 연결하므로 청음이 닫혀 있어도 리듬 트레이닝의 공개 설정으로 읽을 수 있다.
 
-두드리기는 입력과 가장 가까운 실제 타격 시점을 먼저 찾는다. 앞·뒤 타격의 중간점을 각각 경계로 쓰며, 한쪽 간격으로 반대쪽 허용폭을 좁히거나 일정 박 비율로 내부 경계를 다시 자르지 않는다. 끝난 연습의 ‘입력·판정 확인’과 브라우저 콘솔의 `RHYTHM_TIMING_REPORT`에서 스페이스 키다운·키업·반복·누락과 오디오 시계를 확인할 수 있다. 이 진단 기록은 페이지 메모리에만 남는다.
+두드리기는 입력과 가장 가까운 실제 타격 시점을 먼저 찾는다. 앞·뒤 타격의 중간점을 각각 경계로 쓰며, 한쪽 간격으로 반대쪽 허용폭을 좁히거나 일정 박 비율로 내부 경계를 다시 자르지 않는다. 개발자용 진단 기록은 브라우저 콘솔의 `RHYTHM_TIMING_REPORT`에서 확인한다. 스페이스 키다운·키업·반복·누락과 오디오 시계를 포함하며 페이지 메모리에만 남는다.
 
 검증: `node --test tests/rhythm-training.test.cjs`, `node tests/rhythm-training-notation.cjs`, `node tests/rhythm-training-study-browser.cjs`, `node tests/rhythm-training-browser.cjs`, `node tests/rhythm-training-real-clock-browser.cjs`. 마지막 검사는 가짜 오디오 시각을 사용하지 않고 Chrome의 실제 오디오 시계와 키다운·키업 경로를 사용한다. 브라우저 캡처는 무손실 WebP로 저장한다.
 

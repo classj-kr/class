@@ -294,7 +294,6 @@
             chart = C.chart(config(), seed(), mode === 'class' ? 8 : Number($('length').value));
         }
         renderScore(); $('result').hidden = true;
-        $('timingDetails').hidden = true;
         $('feedback').textContent = ''; $('combo').textContent = '';
         $('phase').textContent = ''; $('barCount').textContent = `${chart.bars.length}마디 · 4/4박자`;
         showPractice(true); controls();
@@ -376,7 +375,6 @@
                 sound(startAt + target, false, true);
                 run.audioPlan.push({ kind: 'rhythm', beat: target / beat, time: target });
             }
-            $('timingDetails').hidden = true;
             resetFeedback();
             streak = 0; renderScore(); $('result').hidden = true; $('combo').textContent = '';
             $('feedback').textContent = '4';
@@ -479,7 +477,6 @@
             paintMarks(chart.duration + 60 / chart.bpm, result, false);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('hitRate').textContent = `음표 적중률 ${(100 * result.hits / result.marks.length).toFixed(1)}%`;
-            $('inputCount').textContent = `기록된 타격 ${ended.taps.length}회 · 스페이스 누름 ${ended.input.keydowns}회. 각 타격은 연주 순서에 따라 한 음에 연결합니다.`;
             $('misses').textContent = result.misses; $('timingWrong').textContent = result.timingWrong; $('extras').textContent = result.extras; $('result').hidden = false;
         }
         if (!ended.demo) timingReport(ended, interrupted);
@@ -522,36 +519,6 @@
             $('phase').textContent = '동기 확인 완료';
         }
         console.info('RHYTHM_TIMING_REPORT ' + JSON.stringify(report));
-        $('timingSummary').textContent = `음표 ${report.targets}개 · 기록된 타격 ${report.taps}개 · 스페이스 누름 ${report.input.keydowns}회 · 키를 누르고 있는 동안의 반복 ${report.input.repeats}회`;
-        $('timingSummary').textContent += `\n점수는 (맞음 − 추가 입력 × 0.5) ÷ 음표 수로 계산합니다. 박자 오류는 해당 음의 오답으로 한 번만 셉니다.`;
-        $('timingRows').replaceChildren();
-        const position = time => { const value = time / beat; return value < 0 ? `시작 ${(-value).toFixed(3)}박 전` : `${Math.floor(value / 4) + 1}마디 ${(value % 4 + 1).toFixed(2)}박`; };
-        const differenceText = difference => difference === null ? '—' : `${difference < 0 ? '빠름' : '늦음'} ${Math.abs(difference).toFixed(3)}박`;
-        const appendRow = (parent, values) => {
-            const row = document.createElement('tr');
-            for (const value of values) {
-                const cell = document.createElement('td'); cell.textContent = value; row.append(cell);
-            }
-            parent.append(row);
-        };
-        result.marks.forEach((mark, index) => {
-            const assigned = inputs.find(input => input.target === index);
-            const closest = !assigned && inputs.length ? inputs.reduce((best, input) => Math.abs(input.time - mark.time) < Math.abs(best.time - mark.time) ? input : best) : null;
-            const explanation = closest ? closest.target >= 0
-                ? `가까운 #${inputs.indexOf(closest) + 1}은 ${notePosition(chart.targets[closest.target])}에 연결`
-                : `가까운 #${inputs.indexOf(closest) + 1}은 중복·추가 입력` : '';
-            appendRow($('timingRows'), [position(mark.time), assigned ? `#${inputs.indexOf(assigned) + 1} · ${position(assigned.time)}` : '배정 없음',
-                differenceText(assigned ? assigned.error / beat : null),
-                `앞 ${(C.noteWindow(chart, index, 'early') / beat).toFixed(3)}박 · 뒤 ${(C.noteWindow(chart, index, 'late') / beat).toFixed(3)}박`, mark.hit ? mark.points === 1 ? '맞음' : '박자 오류' : `놓침${explanation ? ' · ' + explanation : ''}`]);
-        });
-        $('timingExtraRows').replaceChildren();
-        inputs.forEach((input, index) => {
-            if (input.accepted) return;
-            appendRow($('timingExtraRows'), [`#${index + 1}`, position(input.time), input.target < 0 ? '연결 없음' : position(chart.targets[input.target]),
-                differenceText(input.error / beat), input.reason === 'timing' ? '해당 음에 연결됨 · 중간 경계를 벗어난 박자 오류' : '음에 연결되지 않은 추가 입력']);
-        });
-        $('timingExtras').hidden = !result.wrong;
-        $('timingDetails').hidden = false;
     }
     function updateRoom(state) {
         room = state; $('roomCode').textContent = state.code;

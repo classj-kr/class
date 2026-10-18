@@ -1,0 +1,2357 @@
+{
+  "reviewDate": "2026-10-19",
+  "scope": "세계사 지도 36개 주제, 39개 부도 도판, 직접 작성한 72개 객관식 문항. 교과서 전 문장의 완전한 수록이나 외부 역사학자의 감수를 뜻하지 않음.",
+  "method": [
+    "제공된 미래엔·천재 세계사 교과서의 해당 단원 대조",
+    "2015·2022 역사부도의 원도 경계와 이동 경로 유지. 현대 국가 경계를 과거 영토로 전용하지 않음.",
+    "원도에서 지명·범례를 추출하여 클릭 가능한 지점으로 재구성. 도판 좌표는 위경도가 아님.",
+    "각 문항의 지점 식별, 시기, 정답·오답의 구별 근거 검토. 정답 위치는 실행 시 섞음.",
+    "2026년 6월·9월 평가원 세계사 문제 및 해설의 지역·국가 식별, 왕조·정책 구별, 시기 판단 방식을 참고. 기출 문항 복제 없음."
+  ],
+  "limitations": [
+    "여러 시기의 최대 영역·원정 경로를 한 도판에 모은 경우 날짜에 비교·개관이라고 표시. 임의 연도 슬라이더로 경계를 보간하지 않음.",
+    "초기에는 해당 36개 지도 주제를 제공. 세계사 교과서의 모든 비공간적 개념을 포함하지 않음.",
+    "자동 검사는 좌표·자료 연결·오답 흐름을 확인하며, 역사적 사실의 참을 자동으로 증명하지 않음."
+  ],
+  "sources": [
+    {
+      "id": "source-00",
+      "path": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+      "pdfPages": 238,
+      "sha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351"
+    },
+    {
+      "id": "source-01",
+      "path": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+      "pdfPages": 174,
+      "sha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842"
+    },
+    {
+      "id": "source-02",
+      "path": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+      "pdfPages": 240,
+      "sha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b"
+    },
+    {
+      "id": "source-04",
+      "path": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_2_동아시아_지역의_역사.pdf",
+      "pdfPages": 12,
+      "sha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f"
+    },
+    {
+      "id": "source-05",
+      "path": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_3_서아시아_인도_지역의_역사.pdf",
+      "pdfPages": 6,
+      "sha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8"
+    },
+    {
+      "id": "source-06",
+      "path": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_4_유럽_아메리카_지역의_역사.pdf",
+      "pdfPages": 12,
+      "sha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7"
+    },
+    {
+      "id": "source-07",
+      "path": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (한철호)_2015/교과서/역사부도_PDF_세계사_5_제국주의와_두_차례_세계_대전.pdf",
+      "pdfPages": 6,
+      "sha256": "ececfb049f19f088b5cdc0386672e9abaffc6c7b60e2bab6f3410cee08e35ec4"
+    },
+    {
+      "id": "source-09",
+      "path": "references/textbooks/EBS/기출/2026/고3 6월 모평(평가원) 세계사_문제_25cc5e26d7.pdf",
+      "pdfPages": 4,
+      "sha256": "814b45eb4fec668f1d8cb66c48aa66eaf52d22ce971544d80b5e2edd6b08fcde"
+    },
+    {
+      "id": "source-10",
+      "path": "references/textbooks/EBS/기출/2026/고3 9월 모평(평가원) 세계사_문제_a1ac61c31e.pdf",
+      "pdfPages": 4,
+      "sha256": "f4f569891e02f497f3fa35d34245d5a394f37420a7a801ddcddc6f4e3c4deee7"
+    },
+    {
+      "id": "exam-solution-june",
+      "path": "references/textbooks/EBS/기출/2026/고3 6월 모평(평가원) 세계사_해설_005aefaba4.pdf",
+      "sha256": "def48cba154ab23fd9fe79147c3a7fc33cc11b58765b4ea788ea7ae38aad6e6f"
+    },
+    {
+      "id": "exam-solution-september",
+      "path": "references/textbooks/EBS/기출/2026/고3 9월 모평(평가원) 세계사_해설_10ffebf6cd.pdf",
+      "sha256": "4c502964da9c91aa06bc05728975d4de0c61c871c2e0b6197930c04b4ea1e2b3"
+    }
+  ],
+  "topics": [
+    {
+      "id": "civilizations",
+      "title": "큰 강과 고대 문명",
+      "period": "기원전 4천년기~1천년기 · 지역 비교",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "figures": [
+        "civilizations-west",
+        "civilizations-east"
+      ],
+      "boundaryNote": "인더스 도시와 중국 상·주의 전성기가 같다고 서술하지 않음.",
+      "questions": [
+        {
+          "id": "civilizations-west",
+          "figure": "civilizations-west",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "멤피스"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "바빌론"
+            }
+          ],
+          "answer": "A 태양력 · B 쐐기 문자",
+          "rationale": "A는 나일강 유역의 이집트, B는 메소포타미아입니다. 이집트의 태양력과 메소포타미아의 쐐기 문자를 연결합니다. 갑골문은 중국 상의 단서입니다."
+        },
+        {
+          "id": "civilizations-east",
+          "figure": "civilizations-east",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "하라파"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "모헨조다로"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "은허"
+            }
+          ],
+          "answer": "A·B는 인더스 문명의 계획도시, C는 상의 갑골문과 관련된다.",
+          "rationale": "A 하라파와 B 모헨조다로는 인더스강 유역의 도시입니다. C 은허는 황허강 유역에 있는 상의 도읍 유적으로 갑골문이 출토되었습니다."
+        }
+      ],
+      "quizPeriod": "기원전 4천년기~1천년기 · 지역 비교"
+    },
+    {
+      "id": "greece",
+      "title": "그리스의 폴리스와 전쟁",
+      "period": "기원전 5세기",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            44,
+            45
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            46,
+            47
+          ]
+        }
+      ],
+      "figures": [
+        "greece"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "greece-polis",
+          "figure": "greece",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "아테네"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "스파르타"
+            }
+          ],
+          "answer": "A 델로스 동맹 · B 펠로폰네소스 동맹",
+          "rationale": "A는 아티카의 아테네, B는 펠로폰네소스반도의 스파르타입니다. 각각 델로스 동맹과 펠로폰네소스 동맹의 중심이었습니다."
+        },
+        {
+          "id": "greece-democracy",
+          "figure": "greece",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "아테네"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "스파르타"
+            }
+          ],
+          "answer": "시민이 민회에 참여했으나 여성·노예·외국인은 제외되었다.",
+          "rationale": "A는 아테네입니다. 성인 남성 시민의 직접 참여를 바탕으로 민주 정치가 발전했지만 여성·노예·외국인은 시민권에서 제외되었습니다. 호민관과 원로원은 로마의 제도입니다."
+        }
+      ],
+      "quizPeriod": "기원전 5세기"
+    },
+    {
+      "id": "persia",
+      "title": "페르시아와 왕의 길",
+      "period": "기원전 6~5세기",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            40,
+            41,
+            42
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            43,
+            44
+          ]
+        }
+      ],
+      "figures": [
+        "persia"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "persia-road",
+          "figure": "persia",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "사르디스"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "수사"
+            }
+          ],
+          "answer": "총독을 파견하고 감찰관으로 감독하였다.",
+          "rationale": "A는 사르디스, B는 수사입니다. 왕의 길은 아케메네스 왕조의 교통망이며, 총독과 감찰관은 다리우스 1세의 통치 정비와 연결됩니다. 군관구·둔전병은 비잔티움, 맹안 모극제는 금의 단서입니다."
+        },
+        {
+          "id": "persia-geography",
+          "figure": "persia",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "멤피스"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "사르디스"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "페르세폴리스"
+            }
+          ],
+          "answer": "조로아스터교가 왕실의 후원을 받았다.",
+          "rationale": "이집트·소아시아·이란 고원을 연결하는 영역은 아케메네스 왕조 페르시아의 단서입니다. 이 왕조에서 조로아스터교가 발전했습니다. 이슬람교의 성립은 훨씬 뒤인 7세기입니다."
+        }
+      ],
+      "quizPeriod": "기원전 6~5세기"
+    },
+    {
+      "id": "alexander",
+      "title": "알렉산드로스의 동방 원정",
+      "period": "기원전 334~323년",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            46
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            48
+          ]
+        }
+      ],
+      "figures": [
+        "alexander"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "alexander-route",
+          "figure": "alexander",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "펠라"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "알렉산드리아"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "탁실라"
+            }
+          ],
+          "answer": "그리스 문화와 서아시아 문화의 융합이 촉진되었다.",
+          "rationale": "A의 마케도니아에서 B의 이집트를 거쳐 C의 인더스강 방면으로 이어지는 원정은 알렉산드로스의 동방 원정입니다. 그 결과 헬레니즘 문화가 형성·확산되었습니다."
+        },
+        {
+          "id": "alexander-sequence",
+          "figure": "alexander",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "알렉산드리아"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "바빌론"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "탁실라"
+            }
+          ],
+          "answer": "A — 헬레니즘 시대 학문과 교류의 중심지로 성장하였다.",
+          "rationale": "A는 나일강 하구의 알렉산드리아입니다. B는 메소포타미아의 바빌론, C는 인도 북서부의 탁실라입니다. 우마이야 왕조의 수도는 다마스쿠스, 로마의 새 수도는 콘스탄티노폴리스였습니다."
+        }
+      ],
+      "quizPeriod": "기원전 334~323년"
+    },
+    {
+      "id": "rome",
+      "title": "로마의 지중해 지배",
+      "period": "2세기 최대 영역 · 395년 분할선",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            47,
+            48,
+            49,
+            50,
+            51
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            50,
+            51,
+            52,
+            53
+          ]
+        }
+      ],
+      "figures": [
+        "rome"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "rome-punic",
+          "figure": "rome",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "로마"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "카르타고"
+            }
+          ],
+          "answer": "포에니 전쟁",
+          "rationale": "A는 이탈리아반도의 로마, B는 북아프리카의 카르타고입니다. 두 국가는 포에니 전쟁을 벌였고 로마가 승리했습니다. 에게해를 중심으로 한 그리스의 전쟁들과 공간적으로 구별됩니다."
+        },
+        {
+          "id": "rome-capital",
+          "figure": "rome",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "로마"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "콘스탄티노폴리스"
+            }
+          ],
+          "answer": "밀라노 칙령으로 크리스트교를 공인하였다.",
+          "rationale": "B는 콘스탄티노폴리스로, 콘스탄티누스 황제가 천도했습니다. 그는 313년 밀라노 칙령으로 크리스트교를 공인했습니다. 국교화는 테오도시우스, 4분할 통치는 디오클레티아누스, 성 소피아 성당 건립은 유스티니아누스와 연결됩니다."
+        }
+      ],
+      "quizPeriod": "2세기 최대 영역 · 395년 분할선"
+    },
+    {
+      "id": "india",
+      "title": "마우리아와 쿠샨",
+      "period": "기원전 3세기 · 기원후 2세기 비교",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            33,
+            34,
+            35
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            35,
+            36
+          ]
+        }
+      ],
+      "figures": [
+        "india"
+      ],
+      "boundaryNote": "마우리아와 쿠샨은 서로 다른 전성기 비교. 동시의 단일 제국으로 설명하지 않음.",
+      "questions": [
+        {
+          "id": "india-comparison",
+          "figure": "india",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "파탈리푸트라"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "푸르샤프라"
+            }
+          ],
+          "answer": "A — 아소카왕 / B — 카니슈카왕",
+          "rationale": "A는 갠지스강 유역의 파탈리푸트라로 마우리아의 수도, B는 북서부의 푸르샤프라로 쿠샨의 수도입니다. 두 왕조의 전성기는 각각 아소카왕과 카니슈카왕 때입니다."
+        },
+        {
+          "id": "india-gandhara",
+          "figure": "india",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "간다라"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "파탈리푸트라"
+            }
+          ],
+          "answer": "그리스계 조각 양식의 영향을 받은 불상이 제작되었다.",
+          "rationale": "A는 중앙아시아와 인도를 연결하는 간다라 지역입니다. 쿠샨 시대에 헬레니즘의 영향을 받은 간다라 불상이 제작되었습니다. B는 갠지스강 유역의 정치 중심지입니다."
+        }
+      ],
+      "quizPeriod": "기원전 3세기 · 기원후 2세기 비교"
+    },
+    {
+      "id": "gupta",
+      "title": "굽타와 인도 고전 문화",
+      "period": "4~6세기",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            36,
+            37
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            38,
+            39
+          ]
+        }
+      ],
+      "figures": [
+        "gupta"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "gupta-culture",
+          "figure": "gupta",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "굽타 왕조"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "에프탈"
+            }
+          ],
+          "answer": "산스크리트 문학과 힌두교가 발달하였다.",
+          "rationale": "A는 4~6세기의 굽타 왕조입니다. 산스크리트 문학과 힌두교의 발전이 대표적입니다. 간다라 불상은 앞선 쿠샨 시대, 타지마할은 뒤의 무굴 시대와 연결됩니다."
+        },
+        {
+          "id": "gupta-decline",
+          "figure": "gupta",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "굽타 왕조"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "에프탈"
+            }
+          ],
+          "answer": "에프탈의 침입으로 굽타의 세력이 약화되었다.",
+          "rationale": "지도는 인도 북부의 굽타와 북서쪽 에프탈의 관계를 보여 줍니다. 나머지는 서아시아·지중해에서 일어난 사건으로, 지도에 제시된 공간과 일치하지 않습니다."
+        }
+      ],
+      "quizPeriod": "4~6세기"
+    },
+    {
+      "id": "han",
+      "title": "한과 동서 교역로",
+      "period": "한 무제의 팽창 · 고대 교역망 개관",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            25
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            24,
+            25
+          ]
+        }
+      ],
+      "figures": [
+        "han"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "han-envoy",
+          "figure": "han",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "장안"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "대월지"
+            }
+          ],
+          "answer": "흉노를 견제할 동맹을 모색하려고 하였다.",
+          "rationale": "A는 장안, B는 중앙아시아의 대월지입니다. 한 무제는 흉노를 견제하기 위해 장건을 파견했습니다. 현장의 구법 여행이나 정화의 항해와 목적·시기를 구별해야 합니다."
+        },
+        {
+          "id": "han-intermediary",
+          "figure": "han",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "장안"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "파르티아(안식국)"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "로마"
+            }
+          ],
+          "answer": "동서 교역의 중계 지역에 위치하였다.",
+          "rationale": "B는 이란 고원과 메소포타미아를 연결하는 파르티아입니다. 중국과 로마 사이의 육상 교역을 중계한 위치가 번영의 배경이었습니다. 대서양·태평양 은 무역과 수에즈 운하는 다른 시대의 단서입니다."
+        }
+      ],
+      "quizPeriod": "기원전 2세기 이후 · 고대 교역망 개관"
+    },
+    {
+      "id": "sui-canal",
+      "title": "수의 대운하",
+      "period": "7세기 초 · 후대 운하와 비교",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            28,
+            29
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            27
+          ]
+        }
+      ],
+      "figures": [
+        "sui-canal"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "sui-function",
+          "figure": "sui-canal",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "탁군(베이징)"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "뤄양"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "여항(항저우)"
+            }
+          ],
+          "answer": "강남의 물자를 북쪽 정치·군사 중심지로 운송하였다.",
+          "rationale": "A는 탁군, B는 뤄양, C는 항저우입니다. 수의 대운하는 중국의 남북 수계를 이어 강남의 물자를 북쪽으로 보냈습니다. 원대 이후에는 수도 대도로 물자를 보내기 위해 뤄양을 우회하는 노선이 정비되었습니다."
+        },
+        {
+          "id": "sui-politics",
+          "figure": "sui-canal",
+          "requiredMapEvidence": [
+            {
+              "label": "B",
+              "sourcePlace": "뤄양"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "여항(항저우)"
+            }
+          ],
+          "answer": "과거제를 시행하고 남북조의 분열을 끝냈다.",
+          "rationale": "뤄양을 중심으로 대운하를 정비한 왕조는 수입니다. 수는 남북조를 통일하고 과거제를 시행했습니다. 나머지는 한·송·명·청의 정책입니다."
+        }
+      ],
+      "quizPeriod": "7세기 초 · 후대 운하와 비교"
+    },
+    {
+      "id": "tang",
+      "title": "당과 유라시아 교류",
+      "period": "7~8세기 영역·교통망 개관",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            29,
+            30,
+            31,
+            69
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            28,
+            63
+          ]
+        }
+      ],
+      "figures": [
+        "tang"
+      ],
+      "boundaryNote": "탈라스(751)와 바그다드 건설(762)의 선후 구별.",
+      "questions": [
+        {
+          "id": "tang-landsea",
+          "figure": "tang",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "장안"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "광저우"
+            }
+          ],
+          "answer": "A는 수도이자 육상 교류 중심, B는 해상 교류의 항구였다.",
+          "rationale": "내륙의 A는 장안, 남부 해안의 B는 광저우입니다. 당의 국제 교류는 비단길과 바닷길 모두를 통해 이루어졌습니다. 두 점의 해안·내륙 위치를 읽어야 구분할 수 있습니다."
+        },
+        {
+          "id": "tang-talas",
+          "figure": "tang",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "탈라스"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "바그다드"
+            }
+          ],
+          "answer": "후에 B를 수도로 삼아 이슬람 세계를 이끌었다.",
+          "rationale": "A는 탈라스이며 당과 아바스 왕조가 충돌했습니다. 아바스 왕조는 762년에 B인 바그다드를 건설하여 수도로 삼았습니다. 전투와 천도의 선후도 구별합니다."
+        }
+      ],
+      "quizPeriod": "7~8세기 영역·교통망 개관"
+    },
+    {
+      "id": "song",
+      "title": "송과 북방 민족",
+      "period": "11세기 → 12세기",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            76,
+            77
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            82,
+            83
+          ]
+        }
+      ],
+      "figures": [
+        "northern-song",
+        "southern-song"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "song-north",
+          "figure": "northern-song",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "요(거란)"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "송(북송)"
+            }
+          ],
+          "answer": "전연의 맹약에 따라 B가 A에 은과 비단을 보냈다.",
+          "rationale": "11세기 지도에서 북쪽 A는 요, 남쪽 B는 북송입니다. 두 국가는 1004년 전연의 맹약을 맺었으며 송이 요에 세폐를 보냈습니다."
+        },
+        {
+          "id": "song-move",
+          "figure": "southern-song",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "변경(카이펑)"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "임안(항저우)"
+            }
+          ],
+          "answer": "금이 카이펑을 함락하고 송의 황제를 포로로 잡았다.",
+          "rationale": "A는 카이펑, B는 임안(항저우)입니다. 정강의 변을 계기로 송 왕실이 강남으로 이동했습니다. 몽골의 남송 멸망은 1279년으로 훨씬 뒤입니다."
+        }
+      ],
+      "quizPeriod": "11세기 → 12세기"
+    },
+    {
+      "id": "islam",
+      "title": "이슬람 세계의 확대",
+      "period": "7~8세기 팽창 · 이후 왕조 비교",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            68,
+            69
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            62,
+            63
+          ]
+        }
+      ],
+      "figures": [
+        "islam"
+      ],
+      "boundaryNote": "다마스쿠스와 바그다드·코르도바의 왕조를 구별. 7~8세기 팽창과 후대 왕조의 비교임을 명시.",
+      "questions": [
+        {
+          "id": "islam-capitals",
+          "figure": "islam",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "다마스쿠스"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "바그다드"
+            }
+          ],
+          "answer": "A — 우마이야 / B — 아바스",
+          "rationale": "A는 지중해 동쪽 내륙의 다마스쿠스, B는 메소포타미아의 바그다드입니다. 각각 우마이야·아바스 왕조의 수도입니다."
+        },
+        {
+          "id": "islam-west",
+          "figure": "islam",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "코르도바"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "바그다드"
+            }
+          ],
+          "answer": "후우마이야 왕조가 코르도바를 중심으로 발전하였다.",
+          "rationale": "A는 이베리아반도 남부의 코르도바입니다. 후우마이야 왕조의 중심지이며, 동쪽 B의 바그다드를 수도로 한 아바스 왕조와 구별됩니다."
+        }
+      ],
+      "quizPeriod": "7~8세기 팽창 · 이후 왕조 비교"
+    },
+    {
+      "id": "mongols",
+      "title": "몽골 제국과 여러 울루스",
+      "period": "13세기 팽창 · 14세기 초까지의 변화",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            80,
+            81,
+            82
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            84,
+            85,
+            86,
+            87
+          ]
+        }
+      ],
+      "figures": [
+        "mongols"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "mongols-yuan",
+          "figure": "mongols",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "대도(베이징)"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "임안(항저우)"
+            }
+          ],
+          "answer": "국호를 원으로 정하고 남송을 멸망시켰다.",
+          "rationale": "A는 대도, B는 남송의 수도 임안입니다. 쿠빌라이는 대도를 중심으로 원을 세우고 1279년 남송을 멸망시켰습니다. 칭기즈 칸의 몽골 통일과 구별합니다."
+        },
+        {
+          "id": "mongols-baghdad",
+          "figure": "mongols",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "바그다드"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "사라이"
+            }
+          ],
+          "answer": "훌라구 울루스(일한국)",
+          "rationale": "A는 바그다드입니다. 훌라구의 군대가 1258년 이곳을 함락했고 이란·메소포타미아에 훌라구 울루스가 성립했습니다. B의 사라이를 중심으로 한 주치 울루스와 위치가 다릅니다."
+        }
+      ],
+      "quizPeriod": "13세기 팽창 · 14세기 초까지의 변화"
+    },
+    {
+      "id": "ming",
+      "title": "명과 정화의 항해",
+      "period": "명대 영역 · 정화 항해 1405~1433년",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            100,
+            101,
+            102
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            86,
+            87
+          ]
+        }
+      ],
+      "figures": [
+        "ming"
+      ],
+      "boundaryNote": "명의 영역 색과 정화 항해선을 구별. 청의 신장·티베트 영역을 명에 복사하지 않음.",
+      "questions": [
+        {
+          "id": "ming-voyage",
+          "figure": "ming",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "난징"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "호르무즈"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "말린디"
+            }
+          ],
+          "answer": "베이징으로 수도를 옮겼다.",
+          "rationale": "중국에서 페르시아만과 동아프리카를 잇는 경로는 정화의 항해입니다. 이를 후원한 명의 영락제는 1421년 베이징으로 천도했습니다."
+        },
+        {
+          "id": "ming-ports",
+          "figure": "ming",
+          "requiredMapEvidence": [
+            {
+              "label": "B",
+              "sourcePlace": "호르무즈"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "말린디"
+            }
+          ],
+          "answer": "B — 페르시아만 입구 / C — 동아프리카 연안",
+          "rationale": "B는 페르시아만 입구의 호르무즈, C는 동아프리카의 말린디입니다. 정화 함대는 인도양 교통망을 따라 활동했으며 대서양 항로를 개척한 것은 아닙니다."
+        }
+      ],
+      "quizPeriod": "15세기 전반 · 인도양 항해로"
+    },
+    {
+      "id": "qing",
+      "title": "청의 영역 확대",
+      "period": "17~18세기 확대 과정",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            118,
+            119,
+            120,
+            133
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            124,
+            125,
+            126,
+            127
+          ]
+        }
+      ],
+      "figures": [
+        "qing"
+      ],
+      "boundaryNote": "중국 내지와 내륙아시아 확장을 비교. 북방 러시아를 청의 영토로 확대하지 않음.",
+      "questions": [
+        {
+          "id": "qing-treaty",
+          "figure": "qing",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "네르친스크"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "베이징"
+            }
+          ],
+          "answer": "삼번의 난을 진압하고 타이완의 정씨 세력을 평정했다.",
+          "rationale": "A는 네르친스크입니다. 1689년 조약은 강희제 때 체결되었습니다. 군기처는 옹정제, 사고전서는 건륭제, 국호를 청으로 바꾼 것은 홍타이지의 단서입니다."
+        },
+        {
+          "id": "qing-extent",
+          "figure": "qing",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "신장"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "티베트"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "베이징"
+            }
+          ],
+          "answer": "중국 내지를 넘어 내륙 아시아로 지배 범위를 확대하였다.",
+          "rationale": "A는 신장, B는 티베트입니다. 청은 명의 중심 영역인 중국 내지를 넘어 내륙 아시아로 지배를 확대했습니다. 지도 북쪽의 러시아까지 청의 영역으로 표시된 것은 아닙니다."
+        }
+      ],
+      "quizPeriod": "17~18세기 확대 과정"
+    },
+    {
+      "id": "edo",
+      "title": "에도 시대의 도시와 교통",
+      "period": "17~19세기",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            124,
+            125
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            130,
+            131
+          ]
+        }
+      ],
+      "figures": [
+        "edo"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "edo-sankin",
+          "figure": "edo",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "에도(도쿄)"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "오사카"
+            }
+          ],
+          "answer": "산킨코타이",
+          "rationale": "A는 에도입니다. 산킨코타이는 다이묘가 에도와 영지를 번갈아 거주하게 하여 통제한 제도입니다. 폐번치현과 근대적 징병제는 메이지 정부의 개혁입니다."
+        },
+        {
+          "id": "edo-nagasaki",
+          "figure": "edo",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "나가사키"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "에도(도쿄)"
+            }
+          ],
+          "answer": "네덜란드를 통한 서양 학문인 난학",
+          "rationale": "A는 규슈 서쪽의 나가사키입니다. 네덜란드와의 제한적 교역을 통해 서양의 의학·자연과학 등이 전해져 난학이 발달했습니다. 국학은 일본 고유의 전통을 탐구한 학문입니다."
+        }
+      ],
+      "quizPeriod": "17~19세기"
+    },
+    {
+      "id": "frank",
+      "title": "프랑크 왕국의 발전",
+      "period": "8~9세기 초",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            52
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            56
+          ]
+        }
+      ],
+      "figures": [
+        "frank"
+      ],
+      "boundaryNote": "732년 투르·푸아티에 전투는 우마이야 군대. 후우마이야 성립(756)과 구분.",
+      "questions": [
+        {
+          "id": "frank-coronation",
+          "figure": "frank",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "아헨"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "로마"
+            }
+          ],
+          "answer": "교황이 수여한 서로마 황제의 관",
+          "rationale": "A는 아헨, B는 로마입니다. 카롤루스 대제는 800년 교황에게 서로마 황제의 관을 받았습니다. 오토 1세의 황제 대관(962)과 구별합니다."
+        },
+        {
+          "id": "frank-frontier",
+          "figure": "frank",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "투르"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "후우마이야 왕조"
+            }
+          ],
+          "answer": "이베리아반도에서 북상한 이슬람 세력",
+          "rationale": "A는 투르·푸아티에 전투 지역입니다. 732년 카롤루스 마르텔이 이베리아에서 북상한 이슬람군을 격퇴했습니다. 후우마이야 왕조는 그 뒤 756년에 성립했으므로, 전투 당시의 왕조 이름은 우마이야입니다."
+        }
+      ],
+      "quizPeriod": "8~9세기 초"
+    },
+    {
+      "id": "byzantine",
+      "title": "비잔티움의 확대와 축소",
+      "period": "565년 영역 · 1000년경 영역 비교",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            56,
+            57
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            59,
+            60
+          ]
+        }
+      ],
+      "figures": [
+        "byzantine"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "byzantine-justinian",
+          "figure": "byzantine",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "콘스탄티노폴리스"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "로마"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "카르타고"
+            }
+          ],
+          "answer": "로마법을 집대성한 법전을 편찬하였다.",
+          "rationale": "A는 콘스탄티노폴리스이며, 6세기 이탈리아·북아프리카를 회복한 황제는 유스티니아누스입니다. 법전 편찬과 성 소피아 성당 건립이 그의 업적입니다."
+        },
+        {
+          "id": "byzantine-shrink",
+          "figure": "byzantine",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "로마"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "콘스탄티노폴리스"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "알렉산드리아"
+            }
+          ],
+          "answer": "A와 C",
+          "rationale": "로마 A와 이집트의 알렉산드리아 C는 565년 영역에 포함되지만 1000년경의 빗금 영역 밖에 있습니다. 수도 콘스탄티노폴리스 B는 두 시기 모두 비잔티움의 중심입니다."
+        }
+      ],
+      "quizPeriod": "565년 영역 · 1000년경 영역 비교"
+    },
+    {
+      "id": "crusades",
+      "title": "십자군의 이동",
+      "period": "11~13세기 · 제1~4차 주요 경로",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            58
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            67
+          ]
+        }
+      ],
+      "figures": [
+        "crusades"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "crusades-targets",
+          "figure": "crusades",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "예루살렘"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "콘스탄티노폴리스"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "로마"
+            }
+          ],
+          "answer": "제1차 A / 제4차 B",
+          "rationale": "A는 예루살렘, B는 콘스탄티노폴리스, C는 로마입니다. 제1차는 1099년 예루살렘을, 제4차는 1204년 비잔티움의 수도를 점령했습니다."
+        },
+        {
+          "id": "crusades-fourth",
+          "figure": "crusades",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "클레르몽"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "베네치아"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "콘스탄티노폴리스"
+            }
+          ],
+          "answer": "비잔티움의 수도를 점령하고 라틴 제국을 세웠다.",
+          "rationale": "B는 베네치아, C는 콘스탄티노폴리스입니다. 제4차 십자군은 1204년 C를 점령했습니다. 이 경로는 성지 예루살렘으로 향한 초기 원정과 달랐습니다."
+        }
+      ],
+      "quizPeriod": "11~13세기 · 제1~4차 주요 경로"
+    },
+    {
+      "id": "ottoman",
+      "title": "오스만의 팽창",
+      "period": "15~17세기 단계별 영역",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            130,
+            131,
+            132
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            137
+          ]
+        }
+      ],
+      "figures": [
+        "ottoman"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "ottoman-expansion",
+          "figure": "ottoman",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "이스탄불"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "카이로"
+            }
+          ],
+          "answer": "밀레트 제도로 종교 공동체의 자치를 인정하였다.",
+          "rationale": "A는 이스탄불, B는 카이로입니다. 두 지역을 다스린 오스만은 밀레트 제도로 여러 종교 공동체를 관리했습니다. 나머지는 금·청·에도 막부·한의 제도입니다."
+        },
+        {
+          "id": "ottoman-vienna",
+          "figure": "ottoman",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "빈"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "이스탄불"
+            }
+          ],
+          "answer": "A는 공격했지만 함락하지 못했고, B는 1453년에 정복하였다.",
+          "rationale": "A는 빈, B는 콘스탄티노폴리스(이스탄불)입니다. 오스만은 1453년 B를 함락했지만 1529년 빈 포위에서는 성공하지 못했습니다. 원정선과 영토 경계가 다름을 읽어야 합니다."
+        }
+      ],
+      "quizPeriod": "15~17세기 단계별 영역"
+    },
+    {
+      "id": "mughal",
+      "title": "무굴과 인도양 교역",
+      "period": "1605년 · 1700년경 영역 비교",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            127,
+            128
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            133,
+            134
+          ]
+        }
+      ],
+      "figures": [
+        "mughal"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "mughal-cities",
+          "figure": "mughal",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "델리"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "아그라"
+            }
+          ],
+          "answer": "아크바르",
+          "rationale": "A는 델리, B는 아그라입니다. 인도의 무굴 제국과 연결되며 아크바르가 종교적 포용 정책으로 통치 기반을 강화했습니다. 술레이만은 오스만, 아바스 1세는 사파비의 군주입니다."
+        },
+        {
+          "id": "mughal-trade",
+          "figure": "mughal",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "수라트"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "첸나이"
+            }
+          ],
+          "answer": "유럽 동인도 회사가 무역 거점을 세운 인도 해안 도시였다.",
+          "rationale": "A는 수라트, B는 마드라스(첸나이)입니다. 둘 다 인도 해안의 교역 거점으로 유럽 동인도 회사가 진출했습니다. 내륙의 델리·아그라와 기능을 구별합니다."
+        }
+      ],
+      "quizPeriod": "1605년 · 1700년경 영역 비교"
+    },
+    {
+      "id": "reformation",
+      "title": "종교 개혁의 확산",
+      "period": "16세기 · 1648년까지의 변화",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            90
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            94
+          ]
+        }
+      ],
+      "figures": [
+        "reformation"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "reformation-pair",
+          "figure": "reformation",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "비텐베르크"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "제네바"
+            }
+          ],
+          "answer": "A — 루터 / B — 칼뱅",
+          "rationale": "A는 독일의 비텐베르크, B는 스위스의 제네바입니다. 루터와 칼뱅이 각각 개혁을 추진한 중심지입니다. 전파 화살표의 출발점도 비교할 수 있습니다."
+        },
+        {
+          "id": "reformation-settlement",
+          "figure": "reformation",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "아우크스부르크"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "제네바"
+            }
+          ],
+          "answer": "제후가 가톨릭과 루터파 중 종교를 선택하도록 하였다.",
+          "rationale": "A는 아우크스부르크입니다. 1555년 화의에서는 제후가 가톨릭과 루터파를 선택할 수 있었습니다. 칼뱅파는 당시 인정 대상이 아니며, 개인의 보편적 종교 자유를 보장한 합의도 아닙니다."
+        }
+      ],
+      "quizPeriod": "16세기 · 1648년까지의 변화"
+    },
+    {
+      "id": "voyages",
+      "title": "신항로 개척",
+      "period": "15세기 말~16세기 초",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            86,
+            87
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            97
+          ]
+        }
+      ],
+      "figures": [
+        "voyages"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "voyages-india",
+          "figure": "voyages",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "리스본"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "희망봉"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "캘리컷"
+            }
+          ],
+          "answer": "바스쿠 다 가마",
+          "rationale": "포르투갈의 리스본에서 출발해 희망봉을 돌아 인도의 캘리컷에 도착한 인물은 바스쿠 다 가마입니다. 디아스는 희망봉까지 도달했고 콜럼버스는 대서양을 서쪽으로 건넜습니다."
+        },
+        {
+          "id": "voyages-atlantic",
+          "figure": "voyages",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "산살바도르섬"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "캘리컷"
+            }
+          ],
+          "answer": "에스파냐의 후원으로 대서양을 서쪽으로 건넜다.",
+          "rationale": "A는 카리브해의 섬입니다. 콜럼버스는 에스파냐의 후원으로 1492년 이 지역에 도착했습니다. B의 인도 캘리컷 항로와 방향·후원국이 다릅니다."
+        }
+      ],
+      "quizPeriod": "15세기 말~16세기 초"
+    },
+    {
+      "id": "american",
+      "title": "미국 독립과 초기 영토",
+      "period": "1776년 13개 주 · 1783년 획득지",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            136,
+            137
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            141,
+            142
+          ]
+        }
+      ],
+      "figures": [
+        "american"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "american-sequence",
+          "figure": "american",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "보스턴"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "필라델피아"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "요크타운"
+            }
+          ],
+          "answer": "A → B → C",
+          "rationale": "A는 보스턴(1773), B는 필라델피아(1776), C는 요크타운(1781)입니다. 지점을 식별한 뒤 사건의 선후를 판단합니다."
+        },
+        {
+          "id": "american-territory",
+          "figure": "american",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "필라델피아"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "시카고"
+            }
+          ],
+          "answer": "1783년 파리 조약에서 독립과 영역을 인정받았다.",
+          "rationale": "지도는 대서양 연안의 13개 주와 미시시피강 동쪽의 1783년 획득지를 비교합니다. 루이지애나·멕시코 할양지·알래스카·하와이는 지도에 나타난 확대 지역과 다릅니다."
+        }
+      ],
+      "quizPeriod": "18세기 후반 · 영역 변화"
+    },
+    {
+      "id": "napoleon",
+      "title": "나폴레옹과 유럽 질서",
+      "period": "1805~1815년 전쟁 · 최대 세력권",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            142,
+            143
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            147,
+            150
+          ]
+        }
+      ],
+      "figures": [
+        "napoleon"
+      ],
+      "boundaryNote": "빈 회의 최종 의정서(1815-06-09)는 워털루 전투(1815-06-18)보다 앞섬. 전투 후 회의 시작이라는 문장 배제.",
+      "questions": [
+        {
+          "id": "napoleon-russia",
+          "figure": "napoleon",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "파리"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "모스크바"
+            }
+          ],
+          "answer": "영국과의 교역을 막으려는 대륙 봉쇄령",
+          "rationale": "A는 파리, B는 모스크바입니다. 나폴레옹의 러시아 원정은 대륙 봉쇄 체제의 이탈 등과 연결됩니다. 러시아 원정 실패 후 유럽 패권이 약화되었습니다."
+        },
+        {
+          "id": "napoleon-vienna",
+          "figure": "napoleon",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "워털루"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "빈"
+            }
+          ],
+          "answer": "정통주의와 세력 균형",
+          "rationale": "A는 워털루, B는 빈입니다. 빈 회의(1814~1815)는 왕정 복고의 정통주의와 세력 균형을 추구했습니다. 빈 회의의 최종 의정서는 워털루 전투보다 먼저 체결되었습니다. 민족 자결은 제1차 세계 대전 이후의 국제 질서와 관련됩니다."
+        }
+      ],
+      "quizPeriod": "1805~1815년 전쟁 · 최대 세력권"
+    },
+    {
+      "id": "unification",
+      "title": "이탈리아와 독일의 통일",
+      "period": "1859~1871년",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            145,
+            146
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            154,
+            155
+          ]
+        }
+      ],
+      "figures": [
+        "unification"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "unification-leaders",
+          "figure": "unification",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "프로이센 왕국"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "사르데냐 왕국"
+            }
+          ],
+          "answer": "A — 비스마르크 / B — 카부르",
+          "rationale": "A는 프로이센, B는 사르데냐입니다. 프로이센의 비스마르크와 사르데냐의 카부르는 각각 독일·이탈리아 통일을 주도했습니다."
+        },
+        {
+          "id": "unification-austria",
+          "figure": "unification",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "프로이센 왕국"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "사르데냐 왕국"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "오스트리아 제국"
+            }
+          ],
+          "answer": "오스트리아",
+          "rationale": "C는 알프스 동쪽과 다뉴브강 유역의 오스트리아입니다. 사르데냐는 북부 이탈리아의 오스트리아 지배에 맞섰고, 프로이센은 1866년 전쟁에서 오스트리아를 꺾었습니다."
+        }
+      ],
+      "quizPeriod": "1859~1871년"
+    },
+    {
+      "id": "colonial-africa",
+      "title": "열강의 아프리카 분할",
+      "period": "19세기 말~제1차 세계 대전 이전",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            155,
+            156
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            169
+          ]
+        }
+      ],
+      "figures": [
+        "colonial-africa"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "africa-fashoda",
+          "figure": "colonial-africa",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "파쇼다"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "이집트"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "남아프리카 연방"
+            }
+          ],
+          "answer": "영국의 남북 연결과 프랑스의 동서 진출",
+          "rationale": "A는 파쇼다입니다. B의 이집트와 C의 남아프리카를 연결하려는 영국의 구상과, 서아프리카에서 동쪽으로 나아가려는 프랑스의 구상이 충돌했습니다."
+        },
+        {
+          "id": "africa-colonies",
+          "figure": "colonial-africa",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "이집트"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "프랑스령"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "콩고"
+            }
+          ],
+          "answer": "A 영국 · B 프랑스 · C 벨기에",
+          "rationale": "A는 이집트, B는 서아프리카, C는 콩고입니다. 제1차 세계 대전 이전 각각 영국·프랑스·벨기에의 지배와 연결됩니다."
+        }
+      ],
+      "quizPeriod": "19세기 말~제1차 세계 대전 이전"
+    },
+    {
+      "id": "china-opening",
+      "title": "중국의 개항과 태평천국",
+      "period": "1840~1860년대",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            160,
+            161
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            172,
+            173
+          ]
+        }
+      ],
+      "figures": [
+        "china-opening"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "china-nanjing",
+          "figure": "china-opening",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "홍콩"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "상하이"
+            }
+          ],
+          "answer": "난징 조약(1842)",
+          "rationale": "A는 홍콩, B는 상하이입니다. 제1차 아편 전쟁 뒤 난징 조약으로 홍콩을 영국에 할양하고 상하이 등 5개 항구를 개항했습니다. 주룽반도 할양은 1860년입니다."
+        },
+        {
+          "id": "china-taiping",
+          "figure": "china-opening",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "난징"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "진톈촌"
+            }
+          ],
+          "answer": "천조전무 제도를 내세웠다.",
+          "rationale": "A는 난징, B는 태평천국이 시작된 광시의 진톈촌입니다. 태평천국은 토지의 균등 분배를 지향한 천조전무 제도를 제시했습니다. 나머지는 양무·변법·의화단·혁명 운동의 단서입니다."
+        }
+      ],
+      "quizPeriod": "1840~1860년대"
+    },
+    {
+      "id": "xinhai",
+      "title": "신해혁명의 전개",
+      "period": "1911~1912년",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            163
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            174
+          ]
+        }
+      ],
+      "figures": [
+        "xinhai"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "xinhai-locations",
+          "figure": "xinhai",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "우창"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "난징"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "베이징"
+            }
+          ],
+          "answer": "봉기 A · 임시 정부 B",
+          "rationale": "A는 창장강 중류의 우창, B는 하류의 난징, C는 북쪽의 베이징입니다. 우창 봉기로 혁명이 시작되고 난징에서 중화민국 임시 정부가 출범했습니다."
+        },
+        {
+          "id": "xinhai-yuan",
+          "figure": "xinhai",
+          "requiredMapEvidence": [
+            {
+              "label": "B",
+              "sourcePlace": "난징"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "베이징"
+            }
+          ],
+          "answer": "황제 체제의 부활을 시도하였다.",
+          "rationale": "난징의 쑨원에게서 대총통직을 넘겨받은 인물은 베이징을 기반으로 한 위안스카이입니다. 그는 독재를 강화하고 제정 부활을 시도했습니다. 중국 동맹회는 쑨원과 연결됩니다."
+        }
+      ],
+      "quizPeriod": "1911~1912년"
+    },
+    {
+      "id": "colonial-india",
+      "title": "인도의 식민 지배와 저항",
+      "period": "1757~1905년 주요 사건",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            168,
+            169
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            179,
+            180
+          ]
+        }
+      ],
+      "figures": [
+        "colonial-india"
+      ],
+      "boundaryNote": "1857년 항쟁→1858년 직접 통치. 플라시(1757)·벵골 분할(1905)과 구별.",
+      "questions": [
+        {
+          "id": "india-colonial-turn",
+          "figure": "colonial-india",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "델리"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "콜카타"
+            }
+          ],
+          "answer": "동인도 회사 통치가 끝나고 영국 정부의 직접 지배가 시작되었다.",
+          "rationale": "A는 델리를 중심으로 한 북인도의 항쟁 지역입니다. 세포이 항쟁 진압 후 1858년 회사 통치가 폐지되고 영국 정부의 직접 통치로 바뀌었습니다. 플라시는 1757년, 벵골 분할령은 1905년입니다."
+        },
+        {
+          "id": "india-bengal",
+          "figure": "colonial-india",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "콜카타"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "뭄바이"
+            }
+          ],
+          "answer": "스와데시와 스와라지",
+          "rationale": "A는 벵골 지역입니다. 벵골 분할령에 반대한 인도 국민 회의는 자국 상품 애용인 스와데시와 자치인 스와라지 등을 요구했습니다. B는 인도 국민 회의가 창립된 뭄바이입니다."
+        }
+      ],
+      "quizPeriod": "1757~1905년 주요 사건"
+    },
+    {
+      "id": "southeast-asia",
+      "title": "동남아시아의 식민지화",
+      "period": "19세기 말~20세기 초",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            170,
+            171
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            182
+          ]
+        }
+      ],
+      "figures": [
+        "southeast-asia"
+      ],
+      "boundaryNote": "필리핀은 1898년 이전 에스파냐, 이후 미국. 문항은 20세기 초 기준.",
+      "questions": [
+        {
+          "id": "sea-colonizers",
+          "figure": "southeast-asia",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "베트남"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "인도네시아"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "필리핀"
+            }
+          ],
+          "answer": "A 프랑스 · B 네덜란드 · C 미국",
+          "rationale": "20세기 초 A의 베트남은 프랑스, B의 인도네시아는 네덜란드, C의 필리핀은 미국의 지배와 연결됩니다. 필리핀의 1898년 이전 지배국은 에스파냐였습니다."
+        },
+        {
+          "id": "sea-thailand",
+          "figure": "southeast-asia",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "타이"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "미얀마"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "베트남"
+            }
+          ],
+          "answer": "영국과 프랑스 사이에서 외교와 근대적 개혁을 추진하였다.",
+          "rationale": "A는 타이입니다. 서쪽 B의 영국령 미얀마와 동쪽 C의 프랑스령 베트남 사이에서 완충국의 위치를 활용하고 근대적 개혁을 추진했습니다."
+        }
+      ],
+      "quizPeriod": "19세기 말~20세기 초"
+    },
+    {
+      "id": "ww1",
+      "title": "제1차 세계 대전",
+      "period": "1914~1918년 · 전쟁 중 진영과 전선",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            180,
+            181
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            192,
+            193
+          ]
+        }
+      ],
+      "figures": [
+        "ww1"
+      ],
+      "boundaryNote": "전쟁 전 동맹 구성과 전쟁 중 참전 진영을 구별.",
+      "questions": [
+        {
+          "id": "ww1-sarajevo",
+          "figure": "ww1",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "사라예보"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "독일"
+            }
+          ],
+          "answer": "독일이 무제한 잠수함 작전을 전개하였다.",
+          "rationale": "A는 사라예보입니다. 1914년 사건을 계기로 제1차 세계 대전이 시작되었고 독일은 무제한 잠수함 작전을 벌였습니다. 나머지는 제2차 세계 대전의 단서입니다."
+        },
+        {
+          "id": "ww1-fronts",
+          "figure": "ww1",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "프랑스"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "독일"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "러시아"
+            }
+          ],
+          "answer": "서부에서는 참호전이 장기화되고 동부에서는 러시아와 대립하였다.",
+          "rationale": "A 프랑스–B 독일–C 러시아의 배치에서 독일의 양면 전쟁을 읽을 수 있습니다. 러시아는 혁명 뒤 이탈했고, 1917년 새로 참전한 국가는 미국입니다."
+        }
+      ],
+      "quizPeriod": "1914~1918년 · 전쟁 중 진영과 전선"
+    },
+    {
+      "id": "postwar-europe",
+      "title": "대전 전후 유럽의 변화",
+      "period": "1914년 ↔ 1922년",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            184
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            196
+          ]
+        }
+      ],
+      "figures": [
+        "europe-1922",
+        "europe-1914"
+      ],
+      "boundaryNote": "1914와 1922 도판을 분리 전환. 신생 국가와 제국 해체 확인.",
+      "questions": [
+        {
+          "id": "postwar-newstates",
+          "figure": "europe-1922",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "폴란드"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "체코슬로바키아"
+            },
+            {
+              "label": "C",
+              "sourcePlace": "오스트리아"
+            }
+          ],
+          "answer": "A는 독립을 회복했고, B는 새 국가로 성립했으며, C는 공화국이 되었다.",
+          "rationale": "폴란드와 체코슬로바키아, 별도 국가가 된 오스트리아는 제1차 세계 대전 이후 유럽 재편의 단서입니다. 1922년 지도이며 빈 체제나 1991년 소련 해체와 구별됩니다."
+        },
+        {
+          "id": "postwar-empire",
+          "figure": "europe-1922",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "오스트리아"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "헝가리"
+            }
+          ],
+          "answer": "오스트리아·헝가리 제국",
+          "rationale": "1922년 지도에서 나뉜 A 오스트리아와 B 헝가리는 전쟁 전 하나의 오스트리아·헝가리 제국을 이루었습니다. 전쟁 후 제국이 해체되고 중부 유럽의 경계가 재편되었습니다."
+        }
+      ],
+      "quizPeriod": "1914년 ↔ 1922년"
+    },
+    {
+      "id": "ww2",
+      "title": "제2차 세계 대전의 전개",
+      "period": "1931~1945년 사건 · 최대 전선 비교",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            190,
+            191
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            201,
+            202
+          ]
+        }
+      ],
+      "figures": [
+        "ww2"
+      ],
+      "boundaryNote": "전쟁 전체의 사건과 최대 전선을 모은 비교 도판. 하나의 날짜 경계로 오인하지 않도록 명시.",
+      "questions": [
+        {
+          "id": "ww2-beginnings",
+          "figure": "ww2",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "폴란드"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "하와이"
+            }
+          ],
+          "answer": "A 독일·1939년 / B 일본·1941년",
+          "rationale": "A는 폴란드, B는 하와이의 진주만입니다. 독일의 1939년 폴란드 침공과 일본의 1941년 진주만 기습은 유럽 전쟁과 태평양 전쟁의 확대를 구분하는 사건입니다."
+        },
+        {
+          "id": "ww2-midway",
+          "figure": "ww2",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "미드웨이섬"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "하와이"
+            }
+          ],
+          "answer": "미국이 일본에 승리하여 태평양 전쟁의 전세가 바뀌는 계기가 되었다.",
+          "rationale": "A는 하와이 서쪽의 미드웨이입니다. 1942년 미드웨이 해전에서 미국이 승리하여 태평양 전쟁의 중요한 전환점이 되었습니다. 프랑스·만주·러시아의 사건과 위치가 다릅니다."
+        }
+      ],
+      "quizPeriod": "1931~1945년 사건 · 최대 전선 비교"
+    },
+    {
+      "id": "cold-war",
+      "title": "냉전과 지역 분쟁",
+      "period": "제2차 세계 대전 이후~1970년대 개관",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            196,
+            197
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            208,
+            209
+          ]
+        }
+      ],
+      "figures": [
+        "cold-war"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "coldwar-crisis",
+          "figure": "cold-war",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "쿠바"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "베를린"
+            }
+          ],
+          "answer": "쿠바 미사일 위기(1962)",
+          "rationale": "A는 미국 남쪽 카리브해의 쿠바입니다. 1962년 미사일 위기가 발생했습니다. B는 유럽의 베를린이며 1948년 봉쇄 및 1961년 장벽과 구별됩니다."
+        },
+        {
+          "id": "coldwar-blocs",
+          "figure": "cold-war",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "미국"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "소련"
+            }
+          ],
+          "answer": "A 마셜 계획 · B 코메콘",
+          "rationale": "A는 미국, B는 소련입니다. 미국의 마셜 계획에 대응하여 소련은 1949년 코메콘을 창설했습니다. NATO는 미국 중심의 군사 동맹이며 경제 협력 기구인 코메콘과 성격도 구별됩니다."
+        }
+      ],
+      "quizPeriod": "제2차 세계 대전 이후~1970년대 개관"
+    },
+    {
+      "id": "europe-1989",
+      "title": "동유럽의 민주화와 독일 통일",
+      "period": "1989~1993년 주요 변화",
+      "textbookPages": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            200,
+            201
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            212,
+            213
+          ]
+        }
+      ],
+      "figures": [
+        "europe-1989"
+      ],
+      "boundaryNote": "부도 원도의 시대·경로·영역 범위를 유지하고 교과서의 해당 단원과 대조.",
+      "questions": [
+        {
+          "id": "europe-democracy",
+          "figure": "europe-1989",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "폴란드"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "독일"
+            }
+          ],
+          "answer": "바웬사",
+          "rationale": "A는 독일 동쪽의 폴란드입니다. 바웬사는 자유 노조 운동을 이끌고 1990년 대통령에 당선되었습니다. 고르바초프는 소련, 차우셰스쿠는 루마니아의 지도자입니다."
+        },
+        {
+          "id": "europe-sequence",
+          "figure": "europe-1989",
+          "requiredMapEvidence": [
+            {
+              "label": "A",
+              "sourcePlace": "독일"
+            },
+            {
+              "label": "B",
+              "sourcePlace": "체코"
+            }
+          ],
+          "answer": "A 1990년 · B 1993년",
+          "rationale": "A는 독일, B는 체코입니다. 독일은 장벽 붕괴 이듬해인 1990년에 통일되었고 체코슬로바키아는 1993년에 평화적으로 분리되었습니다. 장벽 붕괴·국가 통일·소련 해체의 연도를 구별합니다."
+        }
+      ],
+      "quizPeriod": "1989~1993년 주요 변화"
+    }
+  ],
+  "externalCrossChecks": [
+    {
+      "topic": "워털루 전투 날짜",
+      "url": "https://www.nam.ac.uk/explore/battle-waterloo"
+    },
+    {
+      "topic": "1858년 인도 통치 이관",
+      "url": "https://www.legislation.gov.uk/ukpga/Vict/21-22/106/pdfs/ukpga_18580106_en.pdf"
+    },
+    {
+      "topic": "1898년 필리핀 이관",
+      "url": "https://www.archives.gov/files/research/foreign-policy/state-dept/finding-aids/inventory15-part4.pdf"
+    }
+  ]
+}
