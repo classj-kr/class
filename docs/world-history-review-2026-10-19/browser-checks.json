@@ -222,5 +222,5 @@
     "originalAtlasesUnmodified": true,
     "losslessWebpRoundTrips": 39
   },
-  "deployment": "Local implementation and verification; not pushed or deployed by this task."
+  "deployment": "Production health and home menu verified on 2026-10-19; see deployment-verification.json. Authenticated UI verification remains the earlier local test."
 }

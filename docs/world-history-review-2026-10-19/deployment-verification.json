@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-10-19T08:05:25+09:00",
+  "url": "https://classj.kr/learning/inquiry/globe/history.html?school=high",
+  "expectedCommit": "aa59c015c550f5078dd73f009cffd4da319711b3",
+  "healthCommit": "aa59c015c550f5078dd73f009cffd4da319711b3",
+  "healthStatus": "ok",
+  "homeMenuPresent": true,
+  "browserMenuLabel": "세계사 지도(World History)",
+  "loggedOutAccess": "Menu is disabled and the direct application route redirects to /?access=required, consistent with existing site access rules.",
+  "productionAuthenticatedInteraction": "Not run: the tool browser has no signed-in ClassJ session. Local map and question interaction checks are recorded separately.",
+  "deploymentOrigin": "Commit was already pushed when this turn began; observed automatic production transition from f343c4534 to aa59c015c.",
+  "subsequentFailure": "User reported Cannot GET /learning/inquiry/globe/history/. The health and logged-out menu checks above did not verify authenticated route delivery. The old Python static preview also missed production clean-URL redirects.",
+  "routeFix": {
+    "cause": "history.html redirected to history and then the existing history asset directory, which had no index.html.",
+    "change": "Move the entry into history/index.html, resolve its assets from that directory, and link the home menu to history/.",
+    "routingHarness": "Executes the actual clean HTML and static routing block extracted from game-hub-server/server.js; does not duplicate routing logic.",
+    "verifiedPaths": ["history/", "history", "history.html", "history/index.html"],
+    "verifiedMethods": ["GET", "HEAD"],
+    "queryPreserved": "?school=high&topic=ming",
+    "tests": {"passed": 19, "failed": 0, "command": "node --test tests/world-history-routing.test.mjs tests/world-history.test.mjs tests/world-history-storage.test.mjs tests/deployment-links.test.mjs"},
+    "browser": "Legacy history.html opened canonical history/ through the production routing harness; mobile 390x844 map and question rendered successfully.",
+    "screenshot": "route-fix-mobile.webp",
+    "productionStatus": "Pending deployment"
+  }
+}
