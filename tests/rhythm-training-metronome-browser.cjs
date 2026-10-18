@@ -10,7 +10,7 @@ app.use(express.static(root));
 const server = app.listen(0, '127.0.0.1');
 (async () => {
     await new Promise(resolve => server.once('listening', resolve));
-    const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
+    const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', args: ['--mute-audio'] });
     try {
         const page = await browser.newPage(), errors = [];
         page.on('pageerror', error => errors.push(error.message));
@@ -79,8 +79,19 @@ const server = app.listen(0, '127.0.0.1');
         await page.waitForTimeout(1800);
         const stopped = await readRecording();
         assert.equal(stopped.onsets.length, 2, 'stop cancels every future scheduled click; only two preparation clicks have sounded');
+        await page.goto(`http://127.0.0.1:${server.address().port}/learning/arts/music-theory/rhythm-training/?syncCheck=1`);
+        await page.click('#syncSubdivide'); await page.click('#start');
+        assert.equal(await page.evaluate(() => audioStarts.length), 36, 'four preparation clicks and thirty-two sixteenth clicks are scheduled');
+        await page.waitForTimeout(9300);
+        const subdivided = await readRecording();
+        assert.equal(subdivided.onsets.length, 36, 'every sixteenth click is audible in the rendered PCM');
+        const shortIntervals = subdivided.onsets.slice(5).map((time, index) => time - subdivided.onsets[index + 4]);
+        assert.equal(shortIntervals.length, 31);
+        assert.ok(shortIntervals.every(interval => Math.abs(interval - .1875) <= .004), JSON.stringify(shortIntervals));
+        await page.click('#stop');
         assert.deepEqual(errors, []);
         console.log(JSON.stringify({ bpm: 80, animationFrames: 0, scheduledClicks: scheduled.length, recordedClicks: rendered.onsets.length,
-            sampleRate: rendered.sampleRate, intervalsMs: intervals.map(interval => Math.round(interval * 1000)), clicksAfterEarlyStop: stopped.onsets.length }));
+            sampleRate: rendered.sampleRate, intervalsMs: intervals.map(interval => Math.round(interval * 1000)), clicksAfterEarlyStop: stopped.onsets.length,
+            sixteenthClicks: subdivided.onsets.length - 4, sixteenthIntervalsMs: shortIntervals.map(interval => Math.round(interval * 1000)) }));
     } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(() => server.close());
