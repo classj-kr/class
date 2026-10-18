@@ -294,7 +294,13 @@ const scienceCurriculum = {
           3,
           4
         ],
-        "followupIds": [],
+        "followupIds": [
+          "ohms-law@outcome-charge-conservation",
+          "ohms-law@outcome-coil-strength",
+          "ohms-law@outcome-series-voltage",
+          "ohms-law@outcome-parallel-readings",
+          "ohms-law@outcome-voltage-scaling"
+        ],
         "intro": ""
       },
       "high-elective": {
@@ -319,7 +325,8 @@ const scienceCurriculum = {
         "followupIds": [
           "ohms-law@meter-series",
           "ohms-law@meter-parallel",
-          "ohms-law@meter-power"
+          "ohms-law@meter-power",
+          "ohms-law@outcome-voltage-scaling"
         ],
         "standaloneApparatus": true,
         "intro": "각 저항과 전체 회로의 전압·전류를 측정하여 비교하세요."
@@ -2543,7 +2550,9 @@ const scienceCurriculum = {
         "bankQuestionIds": [],
         "followupIds": [
           "telescope-observation@power",
-          "telescope-observation@inference"
+          "telescope-observation@inference",
+          "telescope-observation@outcome-satellite-motion",
+          "telescope-observation@narrow"
         ],
         "intro": "관측 조건을 선택하고 망원경으로 금성·목성·토성을 찾아보세요. 배율과 초점을 바꾸며 보이는 특징과 해석의 범위를 비교하세요."
       }
@@ -2586,7 +2595,8 @@ const scienceCurriculum = {
         "bankQuestionIds": [],
         "followupIds": [
           "rotating-annulus@control",
-          "rotating-annulus@tracer"
+          "rotating-annulus@tracer",
+          "rotating-annulus@outcome-annulus-rotation"
         ],
         "intro": "안쪽을 차게, 바깥쪽을 따뜻하게 한 수조에서 회전 여부와 세기만 바꾸어 표지의 움직임을 비교하세요."
       }
@@ -2732,7 +2742,8 @@ const scienceCurriculum = {
         "bankQuestionIds": [],
         "followupIds": [
           "local-biodiversity@effort",
-          "local-biodiversity@absence"
+          "local-biodiversity@absence",
+          "local-biodiversity@outcome-sampling-inference"
         ],
         "intro": "구역과 관찰 시각·시간을 정하세요. 식물의 특징을 확대해 종류를 찾고 두 구역에서 관찰한 종 수를 비교하세요."
       },
@@ -2756,7 +2767,8 @@ const scienceCurriculum = {
         "bankQuestionIds": [],
         "followupIds": [
           "local-biodiversity@effort",
-          "local-biodiversity@absence"
+          "local-biodiversity@absence",
+          "local-biodiversity@outcome-sampling-inference"
         ],
         "intro": "화단의 다섯 종류 식물을 관찰하고 특징으로 동정하세요. 같은 조건에서 잔디밭과 비교하고, 관찰 자료로 판단할 수 있는 범위를 구별하세요."
       }

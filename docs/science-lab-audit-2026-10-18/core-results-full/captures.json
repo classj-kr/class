@@ -1,0 +1,114 @@
+[
+  {
+    "file": "chromium-equilibrium-colour-1366.webp",
+    "width": 1538,
+    "height": 546,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "chromium-equilibrium-colour-768.webp",
+    "width": 838,
+    "height": 616,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "chromium-interference-1366.webp",
+    "width": 1543,
+    "height": 554,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "chromium-interference-768.webp",
+    "width": 843,
+    "height": 633,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "chromium-solubility-1366.webp",
+    "width": 1543,
+    "height": 554,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "chromium-solubility-768.webp",
+    "width": 843,
+    "height": 633,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "live-font-neutralization-common.webp",
+    "width": 913,
+    "height": 541,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "live-font-rock-layers.webp",
+    "width": 965,
+    "height": 2183,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "webkit-equilibrium-colour-1366.webp",
+    "width": 2460,
+    "height": 874,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "webkit-equilibrium-colour-768.webp",
+    "width": 1340,
+    "height": 986,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "webkit-interference-1366.webp",
+    "width": 2468,
+    "height": 886,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "webkit-interference-768.webp",
+    "width": 1348,
+    "height": 1012,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "webkit-solubility-1366.webp",
+    "width": 2468,
+    "height": 886,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  },
+  {
+    "file": "webkit-solubility-768.webp",
+    "width": 1348,
+    "height": 1012,
+    "lossless": true,
+    "decoded": true,
+    "hasAlpha": false
+  }
+]

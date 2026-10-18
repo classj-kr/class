@@ -60,6 +60,6 @@
  const parts=location.pathname.split('/').filter(Boolean),slug=parts.at(-1)==='index.html'?parts.at(-2):parts.at(-1),app=window.scienceCurriculum?.[slug];if(!app)return;
  const section=document.querySelector('.quiz-section');if(!section)return;
  const content=el('div');content.className='exam-integrated';const diagnosis=section.querySelector('.science-diagnosis');if(diagnosis)diagnosis.before(content);else section.append(content);let started=false;
- const start=()=>{if(section.open&&!started){started=true;open(content,slug);}};
+ const start=()=>{if((section.tagName!=='DETAILS'||section.open)&&!started){started=true;open(content,slug);}};
  section.addEventListener('toggle',start);start();
 })();
