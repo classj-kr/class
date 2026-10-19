@@ -47,7 +47,11 @@
     "failed": 0
   },
   "deployment": {
-    "status": "pending",
+    "status": "deployed",
+    "verifiedAt": "2026-10-19T09:10:33+09:00",
+    "expectedCommit": "df13eb928cbf61415c580e585f110adc75b5acf7",
+    "healthCommit": "df13eb928cbf61415c580e585f110adc75b5acf7",
+    "healthStatus": "ok",
     "authenticatedProductionBrowser": "Not available; local browser checks use actual production clean-URL middleware."
   }
 }
