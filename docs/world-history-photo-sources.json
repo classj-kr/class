@@ -1,6 +1,7 @@
 [
   {
     "id": "ziggurat",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 16,
     "xref": 621,
@@ -20,11 +21,13 @@
       394
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "e26c280ac36d8286560d62f448892eb63a479d8371f912197c7092ba8609d473",
     "losslessDecodedEqual": true
   },
   {
     "id": "hammurabi",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 16,
     "xref": 623,
@@ -44,11 +47,13 @@
       767
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "17ffce5cf36c7a72424c0bfb7fa9117844ca59f5eca0fde71a05dce1b2fa03ab",
     "losslessDecodedEqual": true
   },
   {
     "id": "oracle-bone",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 19,
     "xref": 711,
@@ -68,11 +73,13 @@
       442
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "6e5603c45d329197f874d04a87c9b93a6d593aaa77c9f4f1243b80a5b62b99b0",
     "losslessDecodedEqual": true
   },
   {
     "id": "sanchi",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 34,
     "xref": 1095,
@@ -92,11 +99,16 @@
       1035
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      2356,
+      1524
+    ],
     "imageSha256": "2f426bce28bb73b71d6bcee251f7603fa3306ef81a6a211216f59ee78b3d3363",
     "losslessDecodedEqual": true
   },
   {
     "id": "gandhara",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 35,
     "xref": 1125,
@@ -116,11 +128,16 @@
       769
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      322,
+      769
+    ],
     "imageSha256": "87d3b681aad79195463dc5dc457a77ad638af73c2bb133187d9f05e85e666876",
     "losslessDecodedEqual": true
   },
   {
     "id": "ajanta",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 37,
     "xref": 1169,
@@ -140,11 +157,13 @@
       486
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "4909ba47a468c61ad85ba53e378cb64e368835d521df176d82681af73fe00ac4",
     "losslessDecodedEqual": true
   },
   {
     "id": "parthenon",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 45,
     "xref": 1491,
@@ -164,11 +183,13 @@
       458
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "d912683f11c16663c2b8f998694154ac0e61478267da1d94755d36137fffd20c",
     "losslessDecodedEqual": true
   },
   {
     "id": "persepolis",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 41,
     "xref": 1328,
@@ -188,11 +209,16 @@
       506
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      2641,
+      836
+    ],
     "imageSha256": "2c2d34f1a43264833d63b722f8dd2bd621a7dbecc9668b8ee143b743b7daacd7",
     "losslessDecodedEqual": true
   },
   {
     "id": "hagia-sophia",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 57,
     "xref": 1720,
@@ -212,11 +238,16 @@
       1175
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      1757,
+      1290
+    ],
     "imageSha256": "407f97806d3fde8f2dda72da8dce2fe35fdcb8946c55583ca477dcc486ebfef8",
     "losslessDecodedEqual": true
   },
   {
     "id": "forbidden-city",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 117,
     "xref": 2947,
@@ -236,11 +267,13 @@
       1600
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "f19371cd6dbd2b15387691b7b6b8084c9f0dd8fdd48f368e24724b5b823bf522",
     "losslessDecodedEqual": true
   },
   {
     "id": "ukiyoe",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 125,
     "xref": 3058,
@@ -260,11 +293,13 @@
       555
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "98f2c5017ba9b93d0ede765ad671ed8e7250b69e5cbf4a797e0b69d17f4a3ebc",
     "losslessDecodedEqual": true
   },
   {
     "id": "dejima",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 125,
     "xref": 3062,
@@ -284,11 +319,13 @@
       524
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "e21ca2c985a036617cf88070f47531c9bc8ebc2561da6bdc1af6c7289163d19d",
     "losslessDecodedEqual": true
   },
   {
     "id": "taj-mahal",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 129,
     "xref": 3144,
@@ -308,11 +345,16 @@
       1036
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      2067,
+      1338
+    ],
     "imageSha256": "9edbd4c7093955756a84320666114d5269b493f2cb224770f20fe187082a1f33",
     "losslessDecodedEqual": true
   },
   {
     "id": "berlin-airlift",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 196,
     "xref": 5009,
@@ -332,11 +374,16 @@
       781
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      1202,
+      781
+    ],
     "imageSha256": "dfdfc6ef68a031d1af7be67cdcf20110c29f6b183dea1ae10130574f30b83110",
     "losslessDecodedEqual": true
   },
   {
     "id": "brandenburg",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 179,
     "xref": 4276,
@@ -356,11 +403,13 @@
       1600
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "ea6aa46fdd0d2244cf53b4701994c4649bd755c31ce88b7b69d8bc4724e45915",
     "losslessDecodedEqual": true
   },
   {
     "id": "walesa",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 201,
     "xref": 5094,
@@ -380,11 +429,13 @@
       574
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "395dc8b790d7c621a97b020b1135f7cbfe31f45c120d0fab1395a8f6746eb794",
     "losslessDecodedEqual": true
   },
   {
     "id": "book-of-dead",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 17,
     "xref": 641,
@@ -404,11 +455,13 @@
       588
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "d77803e60d090a36bcce9bc30302c5f2cfe52147acc0ba47a42c46de771bd09a",
     "losslessDecodedEqual": true
   },
   {
     "id": "mohenjo-daro",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 18,
     "xref": 669,
@@ -428,11 +481,13 @@
       569
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "0ec2ddf2b5a68fbabadeb7f0949a80dafc0294863fa86d44d69fd3a35465d47f",
     "losslessDecodedEqual": true
   },
   {
     "id": "han-paper",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 26,
     "xref": 918,
@@ -452,11 +507,13 @@
       629
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "06a4ef2bfe26921300b44c15843956142337fd3d389353feb2080b2c26d89ea2",
     "losslessDecodedEqual": true
   },
   {
     "id": "tang-camel",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 30,
     "xref": 992,
@@ -476,11 +533,16 @@
       1210
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      800,
+      1210
+    ],
     "imageSha256": "c3b819002500f23199cf821b5651523e79bc0da998d303aed9dcdb2418a7b04b",
     "losslessDecodedEqual": true
   },
   {
     "id": "tang-stele",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 30,
     "xref": 998,
@@ -500,11 +562,16 @@
       941
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      323,
+      941
+    ],
     "imageSha256": "30f01d03063c7d24b94a5b47a9c374404999ea3b4569a520c52a22f5761f7085",
     "losslessDecodedEqual": true
   },
   {
     "id": "appian-way",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 51,
     "xref": 1587,
@@ -524,11 +591,13 @@
       371
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "768039202e09a7897b4e670410b1d31b9f84b8833d4363ac2138af742e9c8460",
     "losslessDecodedEqual": true
   },
   {
     "id": "roman-aqueduct",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 51,
     "xref": 1591,
@@ -548,11 +617,13 @@
       675
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "a8d09bcd8a3dd7bae0d344395856510abd3e2573054e33c9a5effa4a90d81a13",
     "losslessDecodedEqual": true
   },
   {
     "id": "colosseum",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 51,
     "xref": 1589,
@@ -572,11 +643,13 @@
       678
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "24257410a8d69f48cdae800695d0b356ff31f13669cabbb9db3d22a09f2db237",
     "losslessDecodedEqual": true
   },
   {
     "id": "justinian-mosaic",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 56,
     "xref": 1703,
@@ -596,11 +669,13 @@
       710
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "192bcb38bc8d4b09a0142db013fb239ef487e4c381e4c24c0b98fb552be45b9c",
     "losslessDecodedEqual": true
   },
   {
     "id": "crusade-council",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 58,
     "xref": 1746,
@@ -620,11 +695,13 @@
       448
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "d7582fdc8cd1fecabcb8ad3061c86803a422c49e21a257774f3fe6eac5a085ea",
     "losslessDecodedEqual": true
   },
   {
     "id": "cordoba-mosque",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 69,
     "xref": 1995,
@@ -644,11 +721,13 @@
       541
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "f9f1d83229ef271881f5fc1e98e65173dbe86efb1bbd55c7cdbcb0e52c50b22f",
     "losslessDecodedEqual": true
   },
   {
     "id": "qingming-scroll",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 79,
     "xref": 2246,
@@ -668,11 +747,13 @@
       683
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "aa99f3c8eb5970a7f90499db275c87a9c706c7f39c586d515b42e1b16491cc3b",
     "losslessDecodedEqual": true
   },
   {
     "id": "movable-type",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 79,
     "xref": 2244,
@@ -692,11 +773,13 @@
       520
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "cca63851b5ae6d6683211c5b1cc24f3275d881a230ab8632c5de5caf5d371832",
     "losslessDecodedEqual": true
   },
   {
     "id": "yuan-banknote",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 82,
     "xref": 2286,
@@ -716,11 +799,13 @@
       645
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "e1ca97372efaaab63acd30a897fc02d43f41135ffda53889a8261ba8f89a134a",
     "losslessDecodedEqual": true
   },
   {
     "id": "paiza",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 83,
     "xref": 2292,
@@ -740,11 +825,13 @@
       514
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "f149f2142e855dbf410ca59b79ad9bdd927e77675869cdf566962e6002ea1612",
     "losslessDecodedEqual": true
   },
   {
     "id": "caravel",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 87,
     "xref": 2381,
@@ -764,11 +851,13 @@
       335
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "2e2658b510828bd0078132827d7707285c3fe0261c253ec92692327320d6ae71",
     "losslessDecodedEqual": true
   },
   {
     "id": "sultan-ahmed",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 131,
     "xref": 3199,
@@ -788,11 +877,16 @@
       931
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      2634,
+      1533
+    ],
     "imageSha256": "07d472b14f4b19adee91474738148f6f08d47e0b7fe7e3376859b41b002fcddd",
     "losslessDecodedEqual": true
   },
   {
     "id": "boston-tea",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 136,
     "xref": 3291,
@@ -812,11 +906,16 @@
       934
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      1333,
+      934
+    ],
     "imageSha256": "d50c02746e364e95fcb00e19896d828e479f07751d0aa9abbe1760d56a54be0e",
     "losslessDecodedEqual": true
   },
   {
     "id": "vienna-cartoon",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 143,
     "xref": 3512,
@@ -836,11 +935,13 @@
       582
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "fc812385b9ccc8a77c15dd40003bb18efb4bc20185701892467561477f0b8402",
     "losslessDecodedEqual": true
   },
   {
     "id": "german-proclamation",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 146,
     "xref": 3566,
@@ -860,11 +961,13 @@
       516
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "6d3d90363b0273de8e3d005f3d453715efaf8905d66f3c38b3c203a4286e8af4",
     "losslessDecodedEqual": true
   },
   {
     "id": "imperial-burden",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 155,
     "xref": 3789,
@@ -884,11 +987,16 @@
       577
     ],
     "alpha": true,
+    "sourceMaskPixels": [
+      995,
+      577
+    ],
     "imageSha256": "1ae4569f1c0f038fed8bf75b79880d8bad78bcaf76c8c9647e438a2ba38e8d1f",
     "losslessDecodedEqual": true
   },
   {
     "id": "imperial-burden-critique",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 155,
     "xref": 3779,
@@ -908,11 +1016,13 @@
       790
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "a7ec600d970c40bb9b041faed0eaebbb5eff99e23e34939d5acd3cb49a39914d",
     "losslessDecodedEqual": true
   },
   {
     "id": "fuzhou-arsenal",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 161,
     "xref": 3924,
@@ -932,11 +1042,13 @@
       407
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "1e3778d9f9004130faaf0171b2fadfaba112f51b65caac4034ea4cf3ce540e70",
     "losslessDecodedEqual": true
   },
   {
     "id": "wuchang-uprising",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 163,
     "xref": 3939,
@@ -956,11 +1068,13 @@
       389
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "477426322d98477fb9d54ffc66a63bb06178aa4886c68359c78441e740fd37ec",
     "losslessDecodedEqual": true
   },
   {
     "id": "indian-congress",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 169,
     "xref": 4074,
@@ -980,11 +1094,13 @@
       517
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "9bdef306d3883ce2362c49bcfe2ca5590f3bbd0d9e7012394fd795324a8e8309",
     "losslessDecodedEqual": true
   },
   {
     "id": "vietnam-book",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 171,
     "xref": 4158,
@@ -1004,11 +1120,13 @@
       377
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "df49ae549c57674d35a013cd8b7f73e9703cc128a7864f513a46ef12cb5ecc04",
     "losslessDecodedEqual": true
   },
   {
     "id": "sarajevo-assassination",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 181,
     "xref": 4322,
@@ -1028,11 +1146,13 @@
       628
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "583feb6df3d0d22740b745fb4fe68a8397339a108bbcce8984ca51759df6c897",
     "losslessDecodedEqual": true
   },
   {
     "id": "pearl-harbor",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 191,
     "xref": 4877,
@@ -1052,11 +1172,13 @@
       471
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "7c62f67da4643c59e05fef6cb29ef520b566287c1df8928582a2ac4b5b28cf5b",
     "losslessDecodedEqual": true
   },
   {
     "id": "normandy-landing",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 191,
     "xref": 4881,
@@ -1076,11 +1198,13 @@
       505
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "93553e8516f408e22179b3685ba514c651e5a0dd4fb6e8a03980c73b8cdd0204",
     "losslessDecodedEqual": true
   },
   {
     "id": "cuban-crisis-cartoon",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 197,
     "xref": 5029,
@@ -1100,12 +1224,14 @@
       457
     ],
     "alpha": false,
+    "sourceMaskPixels": null,
     "imageSha256": "2f24fb57e419c06a6c1e951dab25c2ce20f095c45a34ace1644e98d5a925e79a",
     "losslessDecodedEqual": true
   },
   {
     "id": "sui-canal-record",
     "type": "document",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 28,
     "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
@@ -1124,6 +1250,7 @@
   {
     "id": "carolingian-learning",
     "type": "document",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 52,
     "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
@@ -1142,6 +1269,7 @@
   {
     "id": "luther-calvin",
     "type": "document",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 90,
     "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
@@ -1160,6 +1288,7 @@
   {
     "id": "continental-blockade",
     "type": "document",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 142,
     "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
@@ -1178,6 +1307,7 @@
   {
     "id": "nanjing-treaty",
     "type": "document",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 160,
     "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
@@ -1196,6 +1326,7 @@
   {
     "id": "fourteen-points",
     "type": "document",
+    "sourceId": "source-00",
     "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
     "pdfPage": 184,
     "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
@@ -1207,6 +1338,355 @@
       {
         "text": "독일은 해외에 보유하고 있는 모든 식민지에 대한 권리와 지위를 포기한다.",
         "attribution": "베르사유 조약 제119조, 교과서 수록 번역"
+      }
+    ],
+    "exactNormalizedExcerptMatch": true
+  },
+  {
+    "id": "ashoka-pillar",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 35,
+    "xref": 1116,
+    "sourceBBox": [
+      340.3637390136719,
+      332.46722412109375,
+      633.15869140625,
+      803.2130126953125
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      610,
+      981
+    ],
+    "pixels": [
+      610,
+      981
+    ],
+    "alpha": true,
+    "sourceMaskPixels": [
+      1220,
+      1962
+    ],
+    "imageSha256": "8803d747850ab0c095aa88163086da0cf65459b3b461b3f6319a6fdca0bb0a2a",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "laocoon",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 48,
+    "xref": 1309,
+    "sourceBBox": [
+      50.012046813964844,
+      259.12054443359375,
+      185.27813720703125,
+      424.4688720703125
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      282,
+      344
+    ],
+    "pixels": [
+      282,
+      344
+    ],
+    "alpha": true,
+    "sourceMaskPixels": [
+      564,
+      689
+    ],
+    "imageSha256": "d275829e9884064896d6e3c6ce383008467eb84afb65c54d3eda869e0ffb4e24",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "baghdad-plan",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 63,
+    "xref": 1590,
+    "sourceBBox": [
+      438.35748291015625,
+      85.49771118164062,
+      573.631103515625,
+      197.75531005859375
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      282,
+      234
+    ],
+    "pixels": [
+      282,
+      234
+    ],
+    "alpha": false,
+    "sourceMaskPixels": null,
+    "imageSha256": "febb17e2515bc7b2437e09f9228420748dd9fd8cbfd9bd331aeedacf78c8ddad",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "song-compass",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 83,
+    "xref": 2492,
+    "sourceBBox": [
+      287.051025390625,
+      172.126953125,
+      376.2357177734375,
+      302.1142578125
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      186,
+      271
+    ],
+    "pixels": [
+      186,
+      271
+    ],
+    "alpha": true,
+    "sourceMaskPixels": [
+      372,
+      542
+    ],
+    "imageSha256": "4b528793e865502e6484c22961cf8ff232fad38c40ef8f76277197a071a73a44",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "zheng-he-giraffe",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 87,
+    "xref": 2953,
+    "sourceBBox": [
+      401.41461181640625,
+      363.94598388671875,
+      573.561767578125,
+      525.2643432617188
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      359,
+      336
+    ],
+    "pixels": [
+      359,
+      336
+    ],
+    "alpha": false,
+    "sourceMaskPixels": null,
+    "imageSha256": "aaa59e0b03133757227b15a0d8bb4a87ab21843285d396afc07b62d037edd705",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "mughal-merchants",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 134,
+    "xref": 4435,
+    "sourceBBox": [
+      418.5201721191406,
+      316.4901428222656,
+      553.7803344726562,
+      403.5506286621094
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      282,
+      181
+    ],
+    "pixels": [
+      282,
+      181
+    ],
+    "alpha": false,
+    "sourceMaskPixels": null,
+    "imageSha256": "5b5211ea8183de9f8d23b54689cf5a1918afd924b6f594165f7de3644058ad5e",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ww1-trench",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 193,
+    "xref": 6326,
+    "sourceBBox": [
+      439.3700866699219,
+      190.59469604492188,
+      572.598388671875,
+      278.03314208984375
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      278,
+      182
+    ],
+    "pixels": [
+      278,
+      182
+    ],
+    "alpha": false,
+    "sourceMaskPixels": null,
+    "imageSha256": "a34fcde0fb1e9495c61624ce77f1ff34fa5481c9edaace49ce8908e9fe379ef7",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "bandung-conference",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 209,
+    "xref": 6527,
+    "sourceBBox": [
+      84.00564575195312,
+      576.40966796875,
+      266.36346435546875,
+      688.1181640625
+    ],
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "sourcePixels": [
+      380,
+      233
+    ],
+    "pixels": [
+      380,
+      233
+    ],
+    "alpha": false,
+    "sourceMaskPixels": null,
+    "imageSha256": "654b89ac15f79facb53a697ae7c47ce5c0664c1e07ea8a2e68475911d5fa7f1e",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "tang-silver-box",
+    "sourceId": "donga-atlas-3",
+    "source": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_3대단원(PDF)_3단원.pdf",
+    "pdfPage": 1,
+    "xref": 1881,
+    "sourceBBox": [
+      222.764404296875,
+      671.0236206054688,
+      300.21240234375,
+      746.6572265625
+    ],
+    "sourceSha256": "82d06471b126b2e7bc214835030cb4896f9cf6d06f77a7a947f10fac5f697615",
+    "sourcePixels": [
+      161,
+      158
+    ],
+    "pixels": [
+      161,
+      158
+    ],
+    "alpha": true,
+    "sourceMaskPixels": [
+      2305,
+      2251
+    ],
+    "imageSha256": "88abd631cea99b62b6e7efb241c6a8a222f09037abdae038195c6c055d7d3806",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "aachen-cathedral",
+    "sourceId": "donga-atlas-3",
+    "source": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_3대단원(PDF)_3단원.pdf",
+    "pdfPage": 5,
+    "xref": 286,
+    "sourceBBox": [
+      351.872314453125,
+      214.01547241210938,
+      451.7054443359375,
+      334.1951904296875
+    ],
+    "sourceSha256": "82d06471b126b2e7bc214835030cb4896f9cf6d06f77a7a947f10fac5f697615",
+    "sourcePixels": [
+      208,
+      250
+    ],
+    "pixels": [
+      208,
+      250
+    ],
+    "alpha": true,
+    "sourceMaskPixels": [
+      1629,
+      1961
+    ],
+    "imageSha256": "ecda9d06c811f9c28a7e9a87f29368927b27623b23e4962a733fddc3729926b4",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "devshirme",
+    "sourceId": "donga-atlas-4",
+    "source": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_4대단원(PDF)_4단원.pdf",
+    "pdfPage": 5,
+    "xref": 303,
+    "sourceBBox": [
+      331.21807861328125,
+      431.19500732421875,
+      471.5556640625,
+      514.18701171875
+    ],
+    "sourceSha256": "c42380e625b990e7ed74213bc2e3abd64b9060af23f77319044dbdb70f3ef3c3",
+    "sourcePixels": [
+      292,
+      173
+    ],
+    "pixels": [
+      292,
+      173
+    ],
+    "alpha": false,
+    "sourceMaskPixels": null,
+    "imageSha256": "8f2f06df5649f9ae799ca67e23b8f0affcd4f27c1fc3c31a2c84606317417a95",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "astrolabe",
+    "sourceId": "donga-atlas-4",
+    "source": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_4대단원(PDF)_4단원.pdf",
+    "pdfPage": 8,
+    "xref": 1625,
+    "sourceBBox": [
+      131.41207885742188,
+      207.57435607910156,
+      202.3050537109375,
+      297.14215087890625
+    ],
+    "sourceSha256": "c42380e625b990e7ed74213bc2e3abd64b9060af23f77319044dbdb70f3ef3c3",
+    "sourcePixels": [
+      148,
+      187
+    ],
+    "pixels": [
+      148,
+      187
+    ],
+    "alpha": true,
+    "sourceMaskPixels": [
+      1192,
+      1506
+    ],
+    "imageSha256": "35175c75f8bd03f319790a0ab1fa7fb9f97d76a008138dfb9a77528859ae10fe",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ashoka-edict",
+    "type": "document",
+    "sourceId": "source-02",
+    "source": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
+    "pdfPage": 35,
+    "sourceSha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+    "excerpts": [
+      {
+        "text": "칼링가를 정복하면서 나는 결코 돌이킬 수 없는 양심의 가책을 느꼈다.",
+        "attribution": "아소카왕의 칙령 중"
+      },
+      {
+        "text": "나는 진리의 법에 의한 승리만이 최상의 승리라고 생각한다.",
+        "attribution": "아소카왕의 칙령 중"
       }
     ],
     "exactNormalizedExcerptMatch": true

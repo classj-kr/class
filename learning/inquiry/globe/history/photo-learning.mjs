@@ -1,4 +1,4 @@
-import {PHOTOS} from './photos.mjs?v=20261019-materials';
+import {PHOTOS} from './photos.mjs?v=20261019-multisource';
 
 export {PHOTOS};
 export function photosForScene(sceneId) {

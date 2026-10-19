@@ -18,7 +18,8 @@
       "id": "source-00",
       "path": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
       "pdfPages": 238,
-      "sha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351"
+      "sha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+      "creditTitle": "미래엔 세계사(남궁원, 2022)"
     },
     {
       "id": "source-01",
@@ -30,7 +31,8 @@
       "id": "source-02",
       "path": "references/textbooks/중고등/T셀파/고등/사회/세계사(김덕수)/교과서__9d665daf21.pdf",
       "pdfPages": 240,
-      "sha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b"
+      "sha256": "b36ff46ecefd3da08c7fb405f75ee65584d65d1b924eeabc90f4627fea75f25b",
+      "creditTitle": "천재교육 세계사(김덕수)"
     },
     {
       "id": "source-04",
@@ -77,6 +79,48 @@
       "id": "exam-solution-september",
       "path": "references/textbooks/EBS/기출/2026/고3 9월 모평(평가원) 세계사_해설_10ffebf6cd.pdf",
       "sha256": "4c502964da9c91aa06bc05728975d4de0c61c871c2e0b6197930c04b4ea1e2b3"
+    },
+    {
+      "id": "donga-atlas-3",
+      "path": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_3대단원(PDF)_3단원.pdf",
+      "pdfPages": 8,
+      "sha256": "82d06471b126b2e7bc214835030cb4896f9cf6d06f77a7a947f10fac5f697615",
+      "creditTitle": "동아출판 역사 부도(서인원, 2022), 3단원"
+    },
+    {
+      "id": "donga-atlas-4",
+      "path": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_4대단원(PDF)_4단원.pdf",
+      "pdfPages": 10,
+      "sha256": "c42380e625b990e7ed74213bc2e3abd64b9060af23f77319044dbdb70f3ef3c3",
+      "creditTitle": "동아출판 역사 부도(서인원, 2022), 4단원"
+    },
+    {
+      "id": "donga-atlas-2",
+      "path": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_2대단원(PDF)_2단원.pdf",
+      "pdfPages": 12,
+      "sha256": "5240d448b775683eb9b6c4e5fca7269e19c96c00a6506dd157796d8b6d69bafb",
+      "creditTitle": "동아출판 역사 부도(서인원, 2022), 2단원"
+    },
+    {
+      "id": "donga-atlas-5",
+      "path": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_5대단원(PDF)_5단원.pdf",
+      "pdfPages": 10,
+      "sha256": "937a4eb14e94333a5f44172adc6c96ee4852a4e1d489be6b6af709c5137579fd",
+      "creditTitle": "동아출판 역사 부도(서인원, 2022), 5단원"
+    },
+    {
+      "id": "donga-atlas-6",
+      "path": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_6대단원(PDF)_6단원.pdf",
+      "pdfPages": 8,
+      "sha256": "e4b549373c29c2ab43046eb8a22a87364c3b3af8a6de8aeb03daf29d441e14af",
+      "creditTitle": "동아출판 역사 부도(서인원, 2022), 6단원"
+    },
+    {
+      "id": "donga-atlas-7",
+      "path": "references/textbooks/중고등/두클래스/중등/사회/역사 부도 (서인원)_2022/교과서/교과서_7대단원(PDF).pdf",
+      "pdfPages": 4,
+      "sha256": "c69043ac4856b42ef37441c93f841ffa02bcfaa02b9aac4fc7e6da413cc2c465",
+      "creditTitle": "동아출판 역사 부도(서인원, 2022), 7단원"
     }
   ],
   "topics": [
@@ -2455,58 +2499,78 @@
     }
   ],
   "photoSupplement": {
-    "count": 46,
-    "excerptSets": 6,
-    "totalMaterials": 52,
-    "source": "source-00",
+    "count": 58,
+    "excerptSets": 7,
+    "totalMaterials": 65,
     "sourceManifest": "docs/world-history-photo-sources.json",
     "coverageManifest": "docs/world-history-material-coverage.json",
     "questionCount": 14,
-    "verifiedPages": [
-      16,
-      17,
-      18,
-      19,
-      26,
-      28,
-      30,
-      34,
-      35,
-      37,
-      41,
-      45,
-      51,
-      52,
-      56,
-      57,
-      58,
-      69,
-      79,
-      82,
-      83,
-      87,
-      90,
-      117,
-      125,
-      129,
-      131,
-      136,
-      142,
-      143,
-      146,
-      155,
-      160,
-      161,
-      163,
-      169,
-      171,
-      179,
-      181,
-      184,
-      191,
-      196,
-      197,
-      201
-    ]
+    "multisourceReview": "docs/world-history-multisource-review.json",
+    "verifiedPagesBySource": {
+      "donga-atlas-3": [
+        1,
+        5
+      ],
+      "donga-atlas-4": [
+        5,
+        8
+      ],
+      "source-00": [
+        16,
+        17,
+        18,
+        19,
+        26,
+        28,
+        30,
+        34,
+        35,
+        37,
+        41,
+        45,
+        51,
+        52,
+        56,
+        57,
+        58,
+        69,
+        79,
+        82,
+        83,
+        87,
+        90,
+        117,
+        125,
+        129,
+        131,
+        136,
+        142,
+        143,
+        146,
+        155,
+        160,
+        161,
+        163,
+        169,
+        171,
+        179,
+        181,
+        184,
+        191,
+        196,
+        197,
+        201
+      ],
+      "source-02": [
+        35,
+        48,
+        63,
+        83,
+        87,
+        134,
+        193,
+        209
+      ]
+    }
   }
 }

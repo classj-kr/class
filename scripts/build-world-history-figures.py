@@ -36,8 +36,44 @@ def path_bounds(element):
  a,b,c,d,e,f=t;points=[(a*x+c*y+e,b*x+d*y+f) for x,y in points]
  return pymupdf.Rect(min(p[0] for p in points),min(p[1] for p in points),max(p[0] for p in points),max(p[1] for p in points))
 
+def city_circle(element):
+ # PDF exporters may write several cubic curves under a single C command. Limit
+ # this to tiny, closed round paths, not arrows, battle stars or coastlines.
+ if element.tag!=SVG+'path':return None
+ r=path_bounds(element)
+ if r is None or not (.7<r.width<6 and .7<r.height<6 and .85<r.width/r.height<1.18):return None
+ data=element.get('d','');ops=re.sub('[^A-Za-z]','',data)
+ values=re.findall(r'[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?',data)
+ if not re.fullmatch('MC{1,16}Z?',ops) or len(values) not in [2+6*n for n in range(4,17)]:return None
+ coords=list(map(float,values))
+ if abs(coords[0]-coords[-2])>.03 or abs(coords[1]-coords[-1])>.03:return None
+ # Check the curve itself, so a small closed coast/island or an arrowhead
+ # cannot qualify solely because its bounding box happens to be square.
+ xs=coords[::2];ys=coords[1::2];cx=(min(xs)+max(xs))/2;cy=(min(ys)+max(ys))/2
+ rx=(max(xs)-min(xs))/2;ry=(max(ys)-min(ys))/2
+ if not rx or not ry:return None
+ start=coords[:2]
+ for i in range(2,len(coords),6):
+  c=coords[i:i+6]
+  for t in [0,.25,.5,.75,1]:
+   x=(1-t)**3*start[0]+3*(1-t)**2*t*c[0]+3*(1-t)*t*t*c[2]+t**3*c[4]
+   y=(1-t)**3*start[1]+3*(1-t)**2*t*c[1]+3*(1-t)*t*t*c[3]+t**3*c[5]
+   radius=((x-cx)**2/rx**2+(y-cy)**2/ry**2)**.5
+   if not .90<radius<1.10:return None
+  start=c[-2:]
+ fill=element.get('fill','#000000');stroke=element.get('stroke','')
+ def dark(color):
+  if not re.fullmatch('#[0-9a-fA-F]{6}',color):return False
+  rgb=[int(color[i:i+2],16) for i in [1,3,5]]
+  return max(rgb)<100 and max(rgb)-min(rgb)<25
+ if not (dark(fill) or fill=='#ffffff' or fill=='none' and dark(stroke)):return None
+ return r,fill=='#ffffff'
+
 def cleaned_svg(page,clip,spec):
  root=ET.fromstring(page.get_svg_image());bad=set()
+ circles={el:city_circle(el) for el in root.iter(SVG+'path')}
+ centers=[((r.x0+r.x1)/2,(r.y0+r.y1)/2) for value in circles.values() if value for r,white in [value] if not white]
+ removed_city_paths=0
  # Keep the original colored shading/masks and large relief image. Remove
  # photographs and their shadow groups, which are outside the map content.
  callouts=set()
@@ -61,6 +97,11 @@ def cleaned_svg(page,clip,spec):
    if el.tag!=SVG+'path':continue
    r=path_bounds(el)
    if r is None or not pymupdf.Rect(r.x0-.01,r.y0-.01,r.x1+.01,r.y1+.01).intersects(clip):continue
+   circle=circles.get(el)
+   if circle:
+    box,white=circle;cx=(box.x0+box.x1)/2;cy=(box.y0+box.y1)/2
+    if not white or any(abs(cx-x)<.05 and abs(cy-y)<.05 for x,y in centers):
+     parent.remove(el);removed_city_paths+=1;continue
    ops=re.sub('[^A-Za-z]','',el.get('d',''));area=r.get_area();fill=el.get('fill','#000000');stroke=el.get('stroke','')
    rectangle=bool(re.fullmatch(r'M[HV]{3,4}Z?',ops)) and 4<area<11000 and r.width<185 and r.height<100
    rounded=ops.count('C')==4 and len(ops)<12 and r.width<150 and r.height<35 and r.width>r.height*1.5
@@ -76,7 +117,7 @@ def cleaned_svg(page,clip,spec):
    if rectangle or rounded or leader or balloon or heading or manual or callout:parent.remove(el)
  scale=min(6,2400/clip.width)
  root.set('viewBox',f'{clip.x0} {clip.y0} {clip.width} {clip.height}');root.set('width',str(round(clip.width*scale)));root.set('height',str(round(clip.height*scale)))
- return ET.tostring(root)
+ return ET.tostring(root),removed_city_paths
 def build():
  config=json.loads(CONFIG.read_text(encoding='utf-8'));OUT.mkdir(parents=True,exist_ok=True)
  report=[];metadata=[]
@@ -103,14 +144,17 @@ def build():
    for line in block['lines']:
     for span in line['spans']:page.add_redact_annot(span['bbox'],fill=None,cross_out=False)
   page.apply_redactions(images=0,graphics=0,text=0)
-  svg=cleaned_svg(page,clip,spec);temp=ROOT/'.tmp/world-history'/f'{spec["id"]}-clean.svg';temp.write_bytes(svg)
+  svg,removed_city_paths=cleaned_svg(page,clip,spec);temp=ROOT/'.tmp/world-history'/f'{spec["id"]}-clean.svg';temp.parent.mkdir(parents=True,exist_ok=True);temp.write_bytes(svg)
   dest=OUT/f'{spec["id"]}.webp'
-  result=subprocess.run(['node',str(ROOT/'scripts/render-world-history-svg.cjs'),str(temp),str(dest)],check=True,capture_output=True,text=True)
-  size=json.loads(result.stdout);image=Image.open(dest);assert list(image.size)==[size['width'],size['height']]
-  metadata.append({'id':spec['id'],'crop':spec['crop'],'size':list(image.size),'labels':labels,'dots':dots})
-  report.append({'id':spec['id'],'source':spec['source'],'page':spec['page'],'crop':spec['crop'],'sourceSha256':hashlib.sha256(path.read_bytes()).hexdigest(),'imageSha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'pixels':list(image.size),'losslessDecodedEqual':True})
+  result=subprocess.run(['node',str(ROOT/'scripts/render-world-history-svg.cjs'),str(temp),str(dest)],capture_output=True,text=True)
+  if result.returncode:raise RuntimeError(f"{spec['id']}: {result.stderr or result.stdout}")
+  size=json.loads(result.stdout)
+  with Image.open(dest) as image:pixels=list(image.size)
+  assert pixels==[size['width'],size['height']]
+  metadata.append({'id':spec['id'],'crop':spec['crop'],'size':pixels,'labels':labels,'dots':dots})
+  report.append({'id':spec['id'],'source':spec['source'],'page':spec['page'],'crop':spec['crop'],'sourceSha256':hashlib.sha256(path.read_bytes()).hexdigest(),'imageSha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'pixels':pixels,'losslessDecodedEqual':True,'removedCitySymbolPaths':removed_city_paths})
   source.close();doc.close()
-  print(spec['id'],list(image.size),flush=True)
+  print(spec['id'],pixels,flush=True)
  (ROOT/'.tmp/world-history/figure-labels.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2),encoding='utf-8')
  (ROOT/'docs/world-history-map-sources.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
  print(f'{len(report)} lossless map crops; originals preserved; pixel round trips verified')

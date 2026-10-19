@@ -1,8 +1,8 @@
 import * as maplibregl from '../vendor/maplibre-gl-6.10.0/maplibre-gl.mjs';
 import {ERAS,SCENES,FIGURES} from './content.mjs?v=20261019-materials-2';
 import {figurePoint,figureCorners,createAttempt,answerAttempt,revealAttempt,shouldShowSolution,recordAttempt,shuffle,escapeHTML as esc} from './session.mjs?v=20261019-3';
-import {placeLabels} from './labels.mjs?v=20261019-3';
-import {PHOTOS,photosForScene,photosForPlace,photoPresentation} from './photo-learning.mjs?v=20261019-materials';
+import {placeLabels} from './labels.mjs?v=20261019-card-clearance';
+import {PHOTOS,photosForScene,photosForPlace,photoPresentation} from './photo-learning.mjs?v=20261019-multisource';
 
 const $=id=>document.getElementById(id), BASE=new URL('.',import.meta.url);
 let current=null,figure=null,markers=[],ready=false,quiz=null,progress={},store=null,revision=0,resizeTimer,quizRevision=0,lastDraw=null,loadFailed=false;
@@ -14,6 +14,7 @@ map.on('load',()=>{ready=true;choose(new URL(location.href).searchParams.get('to
 map.on('error',event=>{if(event.sourceId==='atlas-figure'||/image|webp|fetch/i.test(String(event.error))){loadFailed=true;$('mapStatus').textContent='지도 자료를 불러오지 못했습니다. 전체 버튼을 눌러 다시 시도해 주세요.';}});
 $('zoomIn').onclick=()=>map.zoomIn();$('zoomOut').onclick=()=>map.zoomOut();$('fitMap').onclick=()=>{if(loadFailed&&lastDraw)drawFigure(...lastDraw);else fit();};
 new ResizeObserver(()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{map.resize();if(ready&&figure)fit();},80);}).observe($('historyMap'));
+new ResizeObserver(()=>{if(ready)layoutLabels();}).observe($('sceneCard'));
 $('openTopics').onclick=()=>{renderTopics();$('topicsDialog').showModal();$('topicSearch').focus();};
 $('topicSearch').oninput=renderTopics;
 $('openExplanation').onclick=showExplanation;
@@ -58,7 +59,7 @@ function drawFigure(id,places,question=false){
  if(!ready)return;lastDraw=[id,places,question];loadFailed=false;
  const version=++revision;figure=FIGURES[id];if(!figure){$('mapStatus').textContent='이 지도의 자료를 찾을 수 없습니다.';return;}
  $('mapStatus').textContent='지도를 불러오는 중입니다.';
- const coordinates=figureCorners(figure.crop),url=new URL(`figures/${id}.webp?v=20261019-3`,BASE).href;
+ const coordinates=figureCorners(figure.crop),url=new URL(`figures/${id}.webp?v=20261019-clean-markers`,BASE).href;
  markers.forEach(m=>m.remove());markers=[];
  if(map.getSource('atlas-figure'))map.getSource('atlas-figure').updateImage({url,coordinates});
  else {map.addSource('atlas-figure',{type:'image',url,coordinates});map.addLayer({id:'atlas-figure',type:'raster',source:'atlas-figure',paint:{'raster-fade-duration':0}});}
@@ -85,7 +86,7 @@ function materialContent(photo,concealAnswer=false,preview=false,inButton=false)
   const outer=inButton?'span':'div',quote=inButton?'span':'blockquote',paragraph=inButton?'span':'p';
   return `<${outer} class="source-excerpts reading-sheet${preview?' excerpt-preview':''}">${photo.excerpts.map((part,i)=>`<${quote} class="source-quote"><span class="excerpt-number">자료 ${i+1}</span><${paragraph} class="excerpt-text">${esc(part.text)}</${paragraph}>${concealAnswer||inButton?'':`<cite>${esc(part.attribution)}</cite>`}</${quote}>`).join('')}</${outer}>`;
  }
- return `<img src="${esc(new URL(photo.src,BASE).href)}" width="${photo.width}" height="${photo.height}" alt="${esc(photo.alt)}" loading="lazy" decoding="async">`;
+ return `<img src="${esc(new URL(photo.src,BASE).href)}" width="${photo.width}" height="${photo.height}" style="--material-width:${photo.width}px" alt="${esc(photo.alt)}" loading="lazy" decoding="async">`;
 }
 function photoPreview(photo,question=false,concealAnswer=question){
  const view=photoPresentation(photo,concealAnswer);

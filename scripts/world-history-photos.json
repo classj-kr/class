@@ -13,7 +13,8 @@
       ]
     },
     "alt": "계단과 층을 이룬 기단이 보이는 지구라트 유적",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "hammurabi",
@@ -29,7 +30,8 @@
       ]
     },
     "alt": "윗부분에 인물 부조가 있고 아래에 문자가 새겨진 검은 돌기둥",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "oracle-bone",
@@ -45,7 +47,8 @@
       ]
     },
     "alt": "표면에 문자가 새겨진 갑골",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "sanchi",
@@ -61,7 +64,8 @@
       ]
     },
     "alt": "둥근 불탑 앞에 조각으로 장식한 문이 서 있는 산치 유적",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "gandhara",
@@ -81,7 +85,8 @@
       ]
     },
     "alt": "곱슬머리와 옷 주름이 뚜렷하게 표현된 서 있는 불상",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "ajanta",
@@ -95,7 +100,8 @@
       "gupta": []
     },
     "alt": "머리 장식과 장신구를 한 보살을 그린 아잔타 석굴 벽화",
-    "kind": "그림"
+    "kind": "그림",
+    "sourceId": "source-00"
   },
   {
     "id": "parthenon",
@@ -111,7 +117,8 @@
       ]
     },
     "alt": "여러 기둥이 일정한 간격으로 서 있는 파르테논 신전",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "persepolis",
@@ -127,7 +134,8 @@
       ]
     },
     "alt": "돌기둥과 계단, 석조 건물의 터가 남은 페르세폴리스 왕궁 유적",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "hagia-sophia",
@@ -146,7 +154,8 @@
       ]
     },
     "alt": "거대한 돔과 주변의 가느다란 첨탑이 보이는 건축물",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "forbidden-city",
@@ -165,7 +174,8 @@
       ]
     },
     "alt": "중심축을 따라 여러 전각과 넓은 마당이 이어지는 자금성",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "ukiyoe",
@@ -182,7 +192,8 @@
       ]
     },
     "alt": "큰 파도 아래 작은 배들과 멀리 후지산이 보이는 목판화",
-    "kind": "그림"
+    "kind": "그림",
+    "sourceId": "source-00"
   },
   {
     "id": "dejima",
@@ -198,7 +209,8 @@
       ]
     },
     "alt": "나가사키 항구와 부채꼴 인공 섬을 묘사한 옛 지도",
-    "kind": "그림"
+    "kind": "그림",
+    "sourceId": "source-00"
   },
   {
     "id": "taj-mahal",
@@ -214,7 +226,8 @@
       ]
     },
     "alt": "중앙의 큰 돔과 아치, 네 모서리의 탑이 보이는 흰색 건축물",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "berlin-airlift",
@@ -230,7 +243,8 @@
       ]
     },
     "alt": "사람들이 모인 곳 위로 낮게 날아오는 수송기의 흑백 사진",
-    "kind": "사진"
+    "kind": "사진",
+    "sourceId": "source-00"
   },
   {
     "id": "brandenburg",
@@ -246,7 +260,8 @@
       ]
     },
     "alt": "기둥 위에 마차 조각이 있고 뒤로 하늘이 보이는 브란덴부르크 문",
-    "kind": "유물·유적"
+    "kind": "유물·유적",
+    "sourceId": "source-00"
   },
   {
     "id": "walesa",
@@ -262,7 +277,8 @@
       ]
     },
     "alt": "많은 시민들 앞에서 연설하는 인물의 흑백 사진",
-    "kind": "사진"
+    "kind": "사진",
+    "sourceId": "source-00"
   },
   {
     "id": "book-of-dead",
@@ -278,7 +294,8 @@
         "멤피스"
       ]
     },
-    "alt": "인물들이 저울 주변에 서 있고 위쪽에 여러 신의 모습이 그려진 고대 그림"
+    "alt": "인물들이 저울 주변에 서 있고 위쪽에 여러 신의 모습이 그려진 고대 그림",
+    "sourceId": "source-00"
   },
   {
     "id": "mohenjo-daro",
@@ -295,7 +312,8 @@
         "하라파"
       ]
     },
-    "alt": "벽돌 건물 터와 길이 줄지어 있는 도시 유적"
+    "alt": "벽돌 건물 터와 길이 줄지어 있는 도시 유적",
+    "sourceId": "source-00"
   },
   {
     "id": "han-paper",
@@ -309,7 +327,8 @@
     "bindings": {
       "han": []
     },
-    "alt": "한자가 세로로 적혀 있고 가장자리가 찢어진 오래된 종잇조각"
+    "alt": "한자가 세로로 적혀 있고 가장자리가 찢어진 오래된 종잇조각",
+    "sourceId": "source-00"
   },
   {
     "id": "tang-camel",
@@ -328,7 +347,8 @@
     "alt": "낙타 등 위에 여러 인물이 올라탄 유약을 입힌 도자기",
     "compareWith": [
       "tang-stele"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "tang-stele",
@@ -347,7 +367,8 @@
     "alt": "윗부분에 십자가 장식이 있고 아래에 글자가 빽빽한 비석",
     "compareWith": [
       "tang-camel"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "appian-way",
@@ -366,7 +387,8 @@
     "alt": "커다란 돌을 깔아 멀리까지 곧게 이어진 길",
     "compareWith": [
       "roman-aqueduct"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "roman-aqueduct",
@@ -383,7 +405,8 @@
     "alt": "강 위에 여러 층의 아치가 줄지어 세워진 석조 다리",
     "compareWith": [
       "appian-way"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "colosseum",
@@ -399,7 +422,8 @@
         "로마"
       ]
     },
-    "alt": "타원형 내부 공간과 여러 층의 관중석을 갖춘 석조 경기장"
+    "alt": "타원형 내부 공간과 여러 층의 관중석을 갖춘 석조 경기장",
+    "sourceId": "source-00"
   },
   {
     "id": "justinian-mosaic",
@@ -418,7 +442,8 @@
     "alt": "관을 쓴 인물 주위로 성직자와 군인들이 나란히 선 모자이크",
     "compareWith": [
       "hagia-sophia"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "crusade-council",
@@ -434,7 +459,8 @@
         "클레르몽"
       ]
     },
-    "alt": "성직자가 단상에 앉아 여러 사람에게 말하는 장면을 그린 그림"
+    "alt": "성직자가 단상에 앉아 여러 사람에게 말하는 장면을 그린 그림",
+    "sourceId": "source-00"
   },
   {
     "id": "cordoba-mosque",
@@ -450,7 +476,8 @@
         "코르도바"
       ]
     },
-    "alt": "붉은색과 흰색이 번갈아 이어지는 아치가 실내에 반복된 건축물"
+    "alt": "붉은색과 흰색이 번갈아 이어지는 아치가 실내에 반복된 건축물",
+    "sourceId": "source-00"
   },
   {
     "id": "qingming-scroll",
@@ -470,7 +497,8 @@
     "alt": "다리와 거리 주변에 상점과 수레, 사람들이 밀집한 두루마리 그림",
     "compareWith": [
       "movable-type"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "movable-type",
@@ -487,7 +515,8 @@
     "alt": "작은 글자 조각들을 줄과 칸에 맞추어 배열한 인쇄판",
     "compareWith": [
       "qingming-scroll"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "yuan-banknote",
@@ -506,7 +535,8 @@
     "alt": "문자와 테두리 장식, 인장이 인쇄된 오래된 지폐",
     "compareWith": [
       "paiza"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "paiza",
@@ -526,7 +556,8 @@
     "alt": "위쪽에 고리가 있고 표면에 문자가 새겨진 여러 통행용 패",
     "compareWith": [
       "yuan-banknote"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "caravel",
@@ -544,7 +575,8 @@
         "캘리컷"
       ]
     },
-    "alt": "여러 돛대와 돛을 갖춘 목조 범선"
+    "alt": "여러 돛대와 돛을 갖춘 목조 범선",
+    "sourceId": "source-00"
   },
   {
     "id": "sultan-ahmed",
@@ -563,7 +595,8 @@
     "alt": "중앙의 큰 돔과 여러 작은 돔 주위에 여섯 첨탑이 선 사원",
     "compareWith": [
       "hagia-sophia"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "boston-tea",
@@ -579,7 +612,8 @@
         "보스턴"
       ]
     },
-    "alt": "항구의 배에서 사람들이 상자를 바다로 던지는 그림"
+    "alt": "항구의 배에서 사람들이 상자를 바다로 던지는 그림",
+    "sourceId": "source-00"
   },
   {
     "id": "vienna-cartoon",
@@ -595,7 +629,8 @@
         "빈"
       ]
     },
-    "alt": "여러 군주가 둘러앉아 커다란 지도를 나누는 풍자 그림"
+    "alt": "여러 군주가 둘러앉아 커다란 지도를 나누는 풍자 그림",
+    "sourceId": "source-00"
   },
   {
     "id": "german-proclamation",
@@ -612,7 +647,8 @@
         "베를린"
       ]
     },
-    "alt": "궁전의 넓은 방에서 군복 입은 사람들이 한 인물을 향해 모인 그림"
+    "alt": "궁전의 넓은 방에서 군복 입은 사람들이 한 인물을 향해 모인 그림",
+    "sourceId": "source-00"
   },
   {
     "id": "imperial-burden",
@@ -629,7 +665,8 @@
     "alt": "서양인을 상징하는 두 인물이 여러 사람을 등에 업고 오르는 그림",
     "compareWith": [
       "imperial-burden-critique"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "imperial-burden-critique",
@@ -646,7 +683,8 @@
     "alt": "여러 사람이 거대한 서양인들을 등에 업고 있는 흑백 풍자 그림",
     "compareWith": [
       "imperial-burden"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "fuzhou-arsenal",
@@ -660,7 +698,8 @@
     "bindings": {
       "china-opening": []
     },
-    "alt": "강가에 조선 시설과 여러 건물이 늘어서 있는 흑백 사진"
+    "alt": "강가에 조선 시설과 여러 건물이 늘어서 있는 흑백 사진",
+    "sourceId": "source-00"
   },
   {
     "id": "wuchang-uprising",
@@ -676,7 +715,8 @@
         "우창"
       ]
     },
-    "alt": "관청 앞에 제복을 입은 군인들이 줄지어 선 흑백 사진"
+    "alt": "관청 앞에 제복을 입은 군인들이 줄지어 선 흑백 사진",
+    "sourceId": "source-00"
   },
   {
     "id": "indian-congress",
@@ -693,7 +733,8 @@
         "콜카타"
       ]
     },
-    "alt": "여러 줄로 앉거나 서 있는 대회 참가자들의 흑백 단체 사진"
+    "alt": "여러 줄로 앉거나 서 있는 대회 참가자들의 흑백 단체 사진",
+    "sourceId": "source-00"
   },
   {
     "id": "vietnam-book",
@@ -709,7 +750,8 @@
         "프랑스령"
       ]
     },
-    "alt": "라틴 문자로 책의 제목과 저자명이 인쇄된 오래된 책 표지"
+    "alt": "라틴 문자로 책의 제목과 저자명이 인쇄된 오래된 책 표지",
+    "sourceId": "source-00"
   },
   {
     "id": "sarajevo-assassination",
@@ -725,7 +767,8 @@
         "사라예보"
       ]
     },
-    "alt": "자동차에 탄 사람들을 향해 한 사람이 총을 겨누는 그림"
+    "alt": "자동차에 탄 사람들을 향해 한 사람이 총을 겨누는 그림",
+    "sourceId": "source-00"
   },
   {
     "id": "pearl-harbor",
@@ -744,7 +787,8 @@
     "alt": "항구의 함선 부근에서 짙은 연기가 치솟는 흑백 사진",
     "compareWith": [
       "normandy-landing"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "normandy-landing",
@@ -763,7 +807,8 @@
     "alt": "해안에 상륙정과 군용 차량이 빽빽하게 모여 있는 흑백 사진",
     "compareWith": [
       "pearl-harbor"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "cuban-crisis-cartoon",
@@ -782,7 +827,8 @@
     "alt": "미사일 위에 앉은 두 남성이 탁자 위에서 팔씨름하는 만평",
     "compareWith": [
       "berlin-airlift"
-    ]
+    ],
+    "sourceId": "source-00"
   },
   {
     "id": "sui-canal-record",
@@ -811,7 +857,8 @@
         "여항(항저우)"
       ]
     },
-    "alt": "교과서에 수록된 역사 사료"
+    "alt": "교과서에 수록된 역사 사료",
+    "sourceId": "source-00"
   },
   {
     "id": "carolingian-learning",
@@ -837,7 +884,8 @@
         "아헨"
       ]
     },
-    "alt": "교과서에 수록된 역사 사료"
+    "alt": "교과서에 수록된 역사 사료",
+    "sourceId": "source-00"
   },
   {
     "id": "luther-calvin",
@@ -864,7 +912,8 @@
         "제네바"
       ]
     },
-    "alt": "교과서에 수록된 역사 사료"
+    "alt": "교과서에 수록된 역사 사료",
+    "sourceId": "source-00"
   },
   {
     "id": "continental-blockade",
@@ -891,7 +940,8 @@
         "모스크바"
       ]
     },
-    "alt": "교과서에 수록된 역사 사료"
+    "alt": "교과서에 수록된 역사 사료",
+    "sourceId": "source-00"
   },
   {
     "id": "nanjing-treaty",
@@ -919,7 +969,8 @@
         "난징"
       ]
     },
-    "alt": "교과서에 수록된 역사 사료"
+    "alt": "교과서에 수록된 역사 사료",
+    "sourceId": "source-00"
   },
   {
     "id": "fourteen-points",
@@ -947,6 +998,264 @@
         "오스트리아"
       ]
     },
-    "alt": "교과서에 수록된 역사 사료"
+    "alt": "교과서에 수록된 역사 사료",
+    "sourceId": "source-00"
+  },
+  {
+    "id": "ashoka-pillar",
+    "sourceId": "source-02",
+    "page": 35,
+    "xref": 1116,
+    "title": "아소카왕의 돌기둥",
+    "period": "기원전 3세기 · 마우리아 왕조",
+    "observe": "기둥 위의 동물 조각과 긴 기둥을 살펴보세요. 아소카왕은 통치 원칙을 새긴 기둥을 각지에 세웠습니다.",
+    "connection": "마우리아 왕조의 영역과 불교를 후원한 아소카왕의 정책을 연결해 보세요.",
+    "bindings": {
+      "india": [
+        "마우리아"
+      ]
+    },
+    "alt": "동물 모양의 기둥머리를 얹은 긴 돌기둥",
+    "kind": "유물·유적",
+    "compareWith": [
+      "ashoka-edict",
+      "sanchi"
+    ]
+  },
+  {
+    "id": "laocoon",
+    "sourceId": "source-02",
+    "page": 48,
+    "xref": 1309,
+    "title": "라오콘 군상",
+    "period": "헬레니즘 미술",
+    "observe": "인물들이 몸을 비트는 자세와 고통을 드러내는 표정을 살펴보세요. 극적인 동작과 감정 표현이 두드러집니다.",
+    "connection": "알렉산드로스의 원정 이후 그리스 문화가 퍼진 범위를 찾고, 간다라 불상의 옷 주름·신체 표현과 비교해 보세요.",
+    "bindings": {
+      "alexander": []
+    },
+    "alt": "뱀에 감긴 세 인물의 자세와 근육이 표현된 조각",
+    "kind": "유물·유적",
+    "compareWith": [
+      "gandhara"
+    ]
+  },
+  {
+    "id": "baghdad-plan",
+    "sourceId": "source-02",
+    "page": 63,
+    "xref": 1590,
+    "title": "원형 도시 바그다드",
+    "period": "아바스 왕조 · 도시를 재현한 상상화",
+    "observe": "원형 성벽과 중심부로 이어지는 길을 살펴보세요. 이 그림은 옛 도시의 모습을 재현한 것으로 당시의 사진은 아닙니다.",
+    "connection": "바그다드는 티그리스강가에 세워진 아바스 왕조의 수도였습니다. 코르도바와 비교해 이슬람 세계의 여러 중심지를 찾아보세요.",
+    "bindings": {
+      "islam": [
+        "바그다드"
+      ]
+    },
+    "alt": "강 가까이에 원형 성벽과 도로를 배치한 도시 재현도",
+    "kind": "복원·상상도",
+    "compareWith": [
+      "cordoba-mosque"
+    ]
+  },
+  {
+    "id": "song-compass",
+    "sourceId": "source-02",
+    "page": 83,
+    "xref": 2492,
+    "title": "송대의 나침반",
+    "period": "송 · 복원 모형",
+    "observe": "자성을 띤 물체를 실에 매달아 방향을 알아내는 구조입니다. 송대에는 나침반이 해상 교역에 널리 활용되었습니다.",
+    "connection": "지도에 보이는 바닷길에서 방향을 확인하는 일이 왜 필요했을지 생각해 보세요. 나침반으로 경도까지 알아낼 수 있었던 것은 아닙니다.",
+    "bindings": {
+      "song": []
+    },
+    "alt": "틀에 실을 매달고 아래에 원형 받침을 놓은 나침반 모형",
+    "kind": "복원 모형",
+    "compareWith": [
+      "astrolabe"
+    ]
+  },
+  {
+    "id": "zheng-he-giraffe",
+    "sourceId": "source-02",
+    "page": 87,
+    "xref": 2953,
+    "title": "명에 전해진 기린을 그린 그림",
+    "period": "15세기 · 명",
+    "observe": "목이 긴 기린 옆에 사람이 서 있습니다. 기린은 당시 명의 궁정에 들어온 진귀한 동물 가운데 하나였습니다.",
+    "connection": "정화 함대의 인도양 항로와 동아프리카 방면을 살펴보세요. 항해를 통해 물품뿐 아니라 동물과 지역에 대한 정보도 오갔습니다.",
+    "bindings": {
+      "ming": []
+    },
+    "alt": "목이 긴 기린과 고삐를 잡은 사람을 그린 그림",
+    "kind": "회화",
+    "compareWith": [
+      "forbidden-city"
+    ]
+  },
+  {
+    "id": "mughal-merchants",
+    "sourceId": "source-02",
+    "page": 134,
+    "xref": 4435,
+    "title": "무굴 제국을 방문한 유럽 상인들",
+    "period": "무굴 제국 · 교역을 묘사한 그림",
+    "observe": "서로 다른 옷차림의 방문객들을 살펴보세요. 무굴 제국의 면직물과 향신료를 구하려고 유럽 상인들이 인도에 왔습니다.",
+    "connection": "인도의 해안 무역항과 인도양 항로를 연결해 보세요. 타지마할 같은 건축물뿐 아니라 교역도 무굴 제국의 번영을 보여 줍니다.",
+    "bindings": {
+      "mughal": []
+    },
+    "alt": "모자와 서로 다른 옷을 입은 방문객들이 함께 서 있는 그림",
+    "kind": "회화",
+    "compareWith": [
+      "taj-mahal"
+    ]
+  },
+  {
+    "id": "ww1-trench",
+    "sourceId": "source-02",
+    "page": 193,
+    "xref": 6326,
+    "title": "제1차 세계 대전의 참호",
+    "period": "1914~1918년",
+    "observe": "병사들이 땅을 파서 만든 좁고 긴 진지에 몸을 숨기고 있습니다. 서부 전선에서는 참호를 사이에 둔 대치가 이어졌습니다.",
+    "connection": "사라예보 사건은 전쟁의 발단이고, 참호전은 전쟁이 확대된 뒤의 전투 양상입니다. 두 자료가 보여 주는 시점과 장소를 구별해 보세요.",
+    "bindings": {
+      "ww1": []
+    },
+    "alt": "길게 파인 참호 안에 병사들이 늘어서 있는 전장 사진",
+    "kind": "당시 사진",
+    "compareWith": [
+      "sarajevo-assassination"
+    ]
+  },
+  {
+    "id": "bandung-conference",
+    "sourceId": "source-02",
+    "page": 209,
+    "xref": 6527,
+    "title": "아시아·아프리카 회의",
+    "period": "1955년 · 인도네시아 반둥",
+    "observe": "아시아·아프리카 국가의 대표들이 함께 모인 모습입니다. 이들은 식민 지배에 반대하고 국가 간 평등과 평화 공존을 강조했습니다.",
+    "connection": "냉전기의 모든 나라가 미국과 소련 중 한쪽에 속했던 것은 아닙니다. 두 진영 사이에서 독자적인 길을 모색한 국가들도 있었습니다.",
+    "bindings": {
+      "cold-war": []
+    },
+    "alt": "회의에 참석한 여러 나라 대표들이 함께 서 있는 흑백사진",
+    "kind": "당시 사진",
+    "compareWith": [
+      "cuban-crisis-cartoon"
+    ]
+  },
+  {
+    "id": "tang-silver-box",
+    "sourceId": "donga-atlas-3",
+    "page": 1,
+    "xref": 1881,
+    "title": "외국인을 새긴 당의 은합",
+    "period": "당",
+    "observe": "꽃잎처럼 나뉜 면마다 서로 다른 인물 모습이 새겨져 있습니다. 여러 나라 인물을 장식에 활용한 은제 그릇입니다.",
+    "connection": "장안을 중심으로 오간 외국 사신과 상인들을 떠올려 보세요. 경교비·당삼채와 함께 당의 국제적 교류를 보여 주는 자료입니다.",
+    "bindings": {
+      "tang": [
+        "장안"
+      ]
+    },
+    "alt": "여러 인물을 새긴 꽃 모양의 은제 그릇",
+    "kind": "유물·유적",
+    "compareWith": [
+      "tang-camel",
+      "tang-stele"
+    ]
+  },
+  {
+    "id": "aachen-cathedral",
+    "sourceId": "donga-atlas-3",
+    "page": 5,
+    "xref": 286,
+    "title": "아헨 대성당",
+    "period": "카롤루스 대제 시대에 시작 · 이후 증축된 현재 모습",
+    "observe": "서로 다른 높이와 형태의 건물이 이어져 있습니다. 오늘날의 성당은 카롤루스 대제 때 세운 예배당에 후대 건축이 더해진 모습입니다.",
+    "connection": "아헨은 카롤루스 대제의 정치·문화 중심지였습니다. 로마의 교황과 프랑크 왕국의 관계를 함께 살펴보세요.",
+    "bindings": {
+      "frank": [
+        "아헨"
+      ]
+    },
+    "alt": "돔과 첨탑 등 서로 다른 형태의 건물로 이루어진 성당",
+    "kind": "유물·유적",
+    "compareWith": [
+      "carolingian-learning"
+    ]
+  },
+  {
+    "id": "devshirme",
+    "sourceId": "donga-atlas-4",
+    "page": 5,
+    "xref": 303,
+    "title": "오스만 제국의 인재 징집",
+    "period": "오스만 제국 · 징집 장면을 묘사한 그림",
+    "observe": "관리 앞에 소년들이 줄지어 서 있는 모습을 살펴보세요. 정복지의 크리스트교도 소년을 징집해 관리나 예니체리로 양성하는 제도가 있었습니다.",
+    "connection": "영토가 넓어진 오스만 제국이 군대와 관리를 어떻게 충원했는지 살펴보세요. 종교 공동체의 자치를 인정한 밀레트 제도와는 구별됩니다.",
+    "bindings": {
+      "ottoman": []
+    },
+    "alt": "관리 앞에 소년들이 줄지어 서 있는 그림",
+    "kind": "회화"
+  },
+  {
+    "id": "astrolabe",
+    "sourceId": "donga-atlas-4",
+    "page": 8,
+    "xref": 1625,
+    "title": "아스트롤라베",
+    "period": "천문 관측 도구",
+    "observe": "원판 위의 눈금과 움직이는 부분을 살펴보세요. 천체의 높이를 재는 데 쓰이는 도구이며, 이런 관측 기술은 먼바다 항해에도 활용되었습니다.",
+    "connection": "나침반은 방향을, 천체의 높이 관측은 위도를 파악하는 데 도움을 주었습니다. 포르투갈의 아프리카 해안 항로와 인도양 항로를 따라가 보세요.",
+    "bindings": {
+      "voyages": [
+        "리스본"
+      ]
+    },
+    "alt": "고리와 여러 겹의 눈금이 있는 둥근 금속 관측 도구",
+    "kind": "유물·유적",
+    "compareWith": [
+      "song-compass",
+      "caravel"
+    ]
+  },
+  {
+    "id": "ashoka-edict",
+    "sourceId": "source-02",
+    "type": "document",
+    "page": 35,
+    "title": "정복 전쟁을 돌아본 아소카왕",
+    "period": "기원전 3세기 · 마우리아 왕조",
+    "kind": "사료",
+    "observe": "아소카왕은 칼링가 정복으로 생긴 희생을 언급하며 통치 원칙의 변화를 주장했습니다. 왕이 남긴 말과 실제 통치의 모든 결과가 같다고 단정하지는 마세요.",
+    "connection": "마우리아 왕조의 영역 확대와 불교 후원을 연결해 보세요. 산치 대탑 사진과 함께 읽으면 정복과 종교 정책의 관계를 살펴볼 수 있습니다.",
+    "bindings": {
+      "india": [
+        "마우리아"
+      ]
+    },
+    "alt": "정복 전쟁 뒤의 통치 원칙을 밝힌 글",
+    "excerpts": [
+      {
+        "text": "칼링가를 정복하면서 나는 결코 돌이킬 수 없는 양심의 가책을 느꼈다.",
+        "attribution": "아소카왕의 칙령 중"
+      },
+      {
+        "text": "나는 진리의 법에 의한 승리만이 최상의 승리라고 생각한다.",
+        "attribution": "아소카왕의 칙령 중"
+      }
+    ],
+    "compareWith": [
+      "ashoka-pillar",
+      "sanchi"
+    ]
   }
 ]

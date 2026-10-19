@@ -8,7 +8,7 @@ import {PHOTOS,photosForScene,photosForPlace,photoPresentation} from '../learnin
 const report=JSON.parse(fs.readFileSync(new URL('../docs/world-history-photo-sources.json',import.meta.url)));
 
 test('every learning material has a verified image or exact source excerpt and real map bindings',()=>{
- assert.equal(PHOTOS.length,52);assert.equal(new Set(PHOTOS.map(p=>p.id)).size,52);
+ assert.equal(PHOTOS.length,65);assert.equal(new Set(PHOTOS.map(p=>p.id)).size,65);
  for(const photo of PHOTOS){
   const record=report.find(r=>r.id===photo.id);assert.ok(record,photo.id);
   if(photo.type==='document'){
@@ -55,8 +55,34 @@ test('coverage records a learning purpose, atlas and supplemental source for eve
   assert.ok(row.materialIds.length,scene.id);
   assert.deepEqual(row.sourceQuestions,scene.questions.filter(q=>q.photo).map(q=>q.id));
  }
- assert.equal(PHOTOS.filter(p=>p.type==='document').length,6);
- assert.equal(PHOTOS.filter(p=>p.type!=='document').length,46);
+ assert.equal(PHOTOS.filter(p=>p.type==='document').length,7);
+ assert.equal(PHOTOS.filter(p=>p.type!=='document').length,58);
  const names=fs.readdirSync(new URL('../learning/inquiry/globe/history/photos/',import.meta.url));
  assert.deepEqual(names.sort(),PHOTOS.filter(p=>p.src).map(p=>p.src.split('/').at(-1)).sort());
+});
+
+test('materials resolve their own source PDF, page and object instead of a publisher fallback',()=>{
+ const specs=JSON.parse(fs.readFileSync(new URL('../scripts/world-history-photos.json',import.meta.url)));
+ const audit=JSON.parse(fs.readFileSync(new URL('../docs/world-history-content-audit.json',import.meta.url)));
+ const checked=new Set();
+ for(const spec of specs){
+  const source=audit.sources.find(s=>s.id===spec.sourceId);assert.ok(source,spec.id);
+  const record=report.find(r=>r.id===spec.id);
+  assert.equal(record.sourceId,source.id);assert.equal(record.source,source.path);
+  assert.equal(record.sourceSha256,source.sha256);assert.equal(record.pdfPage,spec.page);
+  if(spec.type!=='document')assert.equal(record.xref,spec.xref);
+  if(!checked.has(source.id)){
+   const file=new URL(`../${source.path}`,import.meta.url);
+   if(fs.existsSync(file))assert.equal(createHash('sha256').update(fs.readFileSync(file)).digest('hex'),source.sha256);
+   checked.add(source.id);
+  }
+ }
+ assert.deepEqual([...checked].sort(),['donga-atlas-3','donga-atlas-4','source-00','source-02']);
+ const review=JSON.parse(fs.readFileSync(new URL('../docs/world-history-multisource-review.json',import.meta.url)));
+ assert.deepEqual(review.topics.map(t=>t.id),SCENES.map(s=>s.id));
+ for(const row of review.topics){
+  const source=audit.sources.find(s=>s.id===row.atlasComparison.source);assert.ok(source);
+  for(const page of row.atlasComparison.pdfPages)assert.ok(page>=1&&page<=source.pdfPages);
+  assert.deepEqual(row.addedMaterials,specs.filter(s=>s.sourceId!=='source-00'&&Object.hasOwn(s.bindings,row.id)).map(s=>s.id));
+ }
 });
