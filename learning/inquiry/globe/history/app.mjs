@@ -99,7 +99,7 @@ function showPhoto(id,question=false){
  const view=photoPresentation(photo,question);
  $('photoTitle').textContent=view.title;
  const related=question?[]:(photo.compareWith||[]).map(id=>PHOTOS.find(p=>p.id===id)).filter(Boolean);
- $('photoBody').innerHTML=`<div class="photo-view${question?' photo-question-view':''}">${materialContent(photo,question)}${question?'':`<div class="photo-reading reading-sheet"><p class="source-date">${esc(photo.kind)} · ${esc(view.period)}</p><p>${esc(view.observe)}</p><p>${esc(view.connection)}</p>${related.length?`<div class="related-materials"><h3>관련 자료</h3>${related.map(p=>`<button data-photo="${esc(p.id)}">${esc(p.title)}</button>`).join('')}</div>`:''}<details class="material-source"><summary>출처</summary><p>${esc(view.credit)}</p></details></div>`}</div>`;
+ $('photoBody').innerHTML=`<div class="photo-view${question?' photo-question-view':''}">${materialContent(photo,question)}${question?'':`<div class="photo-reading reading-sheet"><p class="source-date">${esc(photo.kind)} · ${esc(view.period)}</p><p>${esc(view.observe)}</p><p>${esc(view.connection)}</p>${related.length?`<div class="related-materials"><h3>관련 자료</h3>${related.map(p=>`<button data-photo="${esc(p.id)}">${esc(p.title)}</button>`).join('')}</div>`:''}</div>`}</div>`;
  bindPhotoButtons($('photoBody'));
  $('photoDialog').showModal();$('photoDialog').scrollTop=0;
 }
