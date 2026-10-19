@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261015-target-inspection">
+  <link rel="stylesheet" href="style.css?v=20261019-quiet-ui">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
   <script src="model.js?v=20261015-3" defer></script>
   <script src="activities.js?v=20261015-3" defer></script>
   <script src="sound.js?v=20261015-c-major" defer></script>
-  <script src="library.js?v=20261015-3" defer></script>
-  <script src="app.js?v=20261015-drag-direction" defer></script>
+  <script src="library.js?v=20261019-quiet-ui" defer></script>
+  <script src="app.js?v=20261019-quiet-ui" defer></script>
   <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -47,10 +47,10 @@
       </div>
       <details class="help">
         <summary>조작 방법</summary>
-        <p>칸이나 블록을 누르면 한 층씩 쌓아요.<br>지우기는 맨 위 블록부터 지워요.</p>
-        <p>드래그하면 돌려 볼 수 있어요.<br>두 손가락이나 마우스 휠로 확대해요.</p>
-        <p>키보드: 방향키로 칸 선택, Enter로 쌓기,<br>Delete로 지우기, Ctrl/⌘ + Z로 되돌리기.</p>
-        <p>5 × 5칸 · 최대 6층<br>모두 지운 뒤에도 되돌릴 수 있어요.</p>
+        <p>누르기: 한 층 쌓기·지우기<br>드래그: 돌리기 · 휠·두 손가락: 확대</p>
+        <p>방향키: 칸 선택 · Enter: 쌓기<br>Delete: 지우기 · Ctrl/⌘ + Z: 되돌리기</p>
+        <p>목표 모양도 드래그로 돌릴 수 있어요.<br>위·층수: 가려진 칸의 높이 확인</p>
+        <p>5 × 5칸 · 최대 6층</p>
       </details>
     </section>
 
@@ -74,7 +74,7 @@
     </div>
 
     <footer class="bottom-controls">
-      <p id="hint" class="hint">빈칸을 눌러 쌓아요 · 드래그해서 돌려요</p>
+      <p id="hint" class="hint"></p>
       <div id="tools" class="tools" role="group" aria-label="쌓기 도구">
         <button type="button" data-tool="add" aria-pressed="true">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Zm0 9 8-4.5M12 12 4 7.5M12 12v9"/></svg><span>쌓기</span>
@@ -94,22 +94,21 @@
   </main>
 
   <dialog id="activity-dialog" aria-labelledby="activity-heading">
-    <div class="dialog-heading"><h2 id="activity-heading">어떻게 쌓아 볼까요?</h2><button id="close-activities" class="close-dialog" type="button" aria-label="활동 선택 닫기">×</button></div>
+    <div class="dialog-heading"><h2 id="activity-heading">활동 선택</h2><button id="close-activities" class="close-dialog" type="button" aria-label="활동 선택 닫기">×</button></div>
     <div class="activity-choices">
-      <button type="button" data-mode="free"><strong>자유 쌓기</strong><span>내 마음대로 쌓고 관찰해요</span></button>
-      <button type="button" data-mode="copy"><strong>따라 쌓기</strong><span>목표 모양과 똑같이 쌓아요</span></button>
-      <button type="button" data-mode="views"><strong>그림 보고 쌓기</strong><span>위·앞·옆 모습을 보고 만들어요</span></button>
-      <button type="button" data-mode="many"><strong>여러 답 찾기</strong><span>같은 그림에 맞는 두 모양을 찾아요</span></button>
+      <button type="button" data-mode="free"><strong>자유 쌓기</strong></button>
+      <button type="button" data-mode="copy"><strong>따라 쌓기</strong></button>
+      <button type="button" data-mode="views"><strong>그림 보고 쌓기</strong></button>
+      <button type="button" data-mode="many"><strong>여러 답 찾기</strong></button>
     </div>
-    <section class="saved-section" aria-labelledby="saved-heading">
+    <section id="saved-section" class="saved-section" aria-labelledby="saved-heading" hidden>
       <h3 id="saved-heading">저장한 모양</h3>
-      <p class="subtle">이 기기에 보관해요. 다른 기기에서는 링크나 파일로 열 수 있어요.</p>
       <div id="saved-list"></div>
       <button id="undo-saved-delete" class="text-button" type="button" hidden>삭제 되돌리기</button>
     </section>
     <details id="keep-options" class="keep-options">
-      <summary>지금 모양 저장·공유</summary>
-      <form id="save-form"><label class="sr-only" for="shape-name">모양 이름</label><input id="shape-name" type="text" maxlength="32" placeholder="모양 이름" autocomplete="off"><button id="save-shape" class="primary-button" type="submit">저장</button></form>
+      <summary>저장·공유</summary>
+      <form id="save-form"><label class="sr-only" for="shape-name">모양 이름</label><input id="shape-name" type="text" maxlength="32" placeholder="모양 이름" autocomplete="off"><button id="save-shape" class="primary-button" type="submit">기기에 저장</button></form>
       <div class="share-row"><label class="sr-only" for="share-mode">공유할 활동</label><select id="share-mode"><option value="free">자유롭게 열기</option><option value="copy">따라 쌓기로 열기</option><option value="views">그림 보고 쌓기로 열기</option></select><button id="share-shape" type="button">링크 복사</button></div>
       <input id="share-link" type="url" readonly aria-label="공유 링크, 복사해서 사용하세요" hidden>
       <div class="file-actions"><button id="export-shape" type="button">파일로 저장</button><button id="import-shape" type="button">파일 열기</button></div>
