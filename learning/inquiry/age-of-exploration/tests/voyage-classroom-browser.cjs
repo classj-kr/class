@@ -47,6 +47,23 @@ if (process.argv.includes('--fixture')) {
       const context = await browser.newContext({ viewport: { width: 1366, height: 768 } });
       const teacher = await context.newPage(), student = await context.newPage();
       const errors = []; teacher.on('pageerror', e => errors.push('teacher: ' + e.message)); student.on('pageerror', e => errors.push('student: ' + e.message));
+      async function checkVictoriaMarker(completed){
+        const labels=await student.evaluate(()=>{
+          const previousZoom=zoom,fill=ctx.fillText,labels=[];
+          ctx.fillText=function(text,...args){labels.push(text);return fill.call(this,text,...args)};
+          try{zoom=minimumMapZoom();drawStudyTargetMarkers(innerWidth,innerHeight);}
+          finally{zoom=previousZoom;ctx.fillText=fill;}
+          return labels;
+        });
+        assert.ok(labels.includes((completed?'완료 · ':'미션 · ')+'빅토리아호'),'mission name must remain visible at minimum zoom');
+        assert.ok(labels.includes(completed?'✓':'★'),'completion must change the symbol as well as the colour');
+        assert.ok(!labels.some(t=>t.includes('폭포')),'the lake mission must not mark Victoria Falls');
+        if(process.env.VOYAGE_MARKER_CAPTURE){
+          fs.mkdirSync(process.env.VOYAGE_MARKER_CAPTURE,{recursive:true});
+          const file=path.resolve(process.env.VOYAGE_MARKER_CAPTURE,completed?'completed.webp':'mission.webp');
+          require('node:child_process').execFileSync('python',['-c','import sys,io; from PIL import Image; Image.open(io.BytesIO(sys.stdin.buffer.read())).save(sys.argv[1], "WEBP", lossless=True)',file],{input:await student.screenshot(),windowsHide:true});
+        }
+      }
       await teacher.goto(base + '/teacher.html?create=race');
       await teacher.waitForFunction(() => typeof hostRoom !== 'undefined' && /^\d{4}$/.test(hostRoom));
       const room = await teacher.evaluate(() => hostRoom);
@@ -89,6 +106,7 @@ if (process.argv.includes('--fixture')) {
         await student.waitForTimeout(250);
         if(victoriaOnly){
           await student.waitForFunction(()=>discoveryInteraction?.id==='lake-victoria'&&discoveryInteraction.canUse,null,{timeout:5000});
+          await checkVictoriaMarker(false);
           await student.locator('#discoveryActionBtn').click();
           assert.equal(await student.locator('#discoveryView').evaluate(el=>el.classList.contains('show')),false,'assigned discovery must open its mission, not the unrelated exploration popup');
         }else await student.evaluate(key => VoyageStudyUI.request(key), target.key);
@@ -100,6 +118,7 @@ if (process.argv.includes('--fixture')) {
           await student.waitForFunction(n => document.querySelector('#placeStudyStatus').textContent.includes(n === 3 ? '완료' : '정답!'), i + 1);
         }
         await student.locator('#placeStudySubmit').filter({hasText:'계속 탐험하기'}).click();
+        if(victoriaOnly)await checkVictoriaMarker(true);
       }
       await student.waitForFunction(() => missionProgress?.status === 'completed');
       await teacher.waitForFunction(() => document.querySelector('#rankList').textContent.includes('검증학생'));
