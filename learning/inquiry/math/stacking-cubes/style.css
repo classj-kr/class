@@ -57,6 +57,7 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .target-panel { align-self: center; padding: 18px; border: 1px solid var(--border); border-radius: 19px; background: #fffefa; display: flex; flex-direction: column; gap: 14px; }
 .practice-copy h2 { margin: 0; font-size: 15px; font-weight: 650; }
 .practice-copy p { margin: 8px 0 0; font-size: 12px; color: #72766d; line-height: 1.7; }
+.practice-copy p:empty { display: none; }
 #target-scene { width: 100%; height: 205px; overflow: hidden; pointer-events: none; }
 #target-scene.is-rotatable { pointer-events: auto; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
 #target-scene.is-dragging { cursor: grabbing; }
@@ -73,15 +74,13 @@ dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
 .dialog-heading h2 { margin: 0; font-size: 20px; }
 .close-dialog { min-width: 44px; min-height: 44px; font-size: 27px; color: #737a70; }
 .activity-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.activity-choices button { text-align: left; padding: 18px 15px; border: 1px solid var(--border); border-radius: 13px; }
+.activity-choices button { min-height: 52px; text-align: left; padding: 18px 15px; border: 1px solid var(--border); border-radius: 13px; }
 .activity-choices button:hover { background: #f0f3eb; border-color: #829d8e; }
 .activity-choices [aria-pressed="true"] { border-color: #829d8e; background: #eff3eb; }
-.activity-choices strong, .activity-choices span { display: block; }
+.activity-choices strong { display: block; }
 .activity-choices strong { font-size: 15px; }
-.activity-choices span { color: #73796d; font-size: 12px; margin-top: 9px; line-height: 1.6; }
 .saved-section { margin-top: 26px; }
-.saved-section h3 { font-size: 15px; margin: 0; }
-.subtle { color: #757b71; font-size: 12px; line-height: 1.7; }
+.saved-section h3 { font-size: 15px; margin: 0 0 10px; }
 #saved-list { display: grid; gap: 6px; }
 .saved-row { display: flex; gap: 6px; align-items: center; padding: 5px 6px; border: 1px solid #e6e7df; border-radius: 11px; }
 .saved-open { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; text-align: left; min-height: 48px; }
@@ -91,12 +90,14 @@ dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
 .keep-options { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 5px; }
 .keep-options summary { cursor: pointer; min-height: 48px; padding: 14px 0; font-size: 14px; font-weight: 600; }
 #save-form, .share-row { display: flex; gap: 8px; margin: 12px 0; }
+#save-shape { white-space: nowrap; }
 #shape-name, #share-mode, #share-link { min-width: 0; min-height: 44px; padding: 10px; flex: 1; border: 1px solid #cdd3c7; border-radius: 9px; background: #fff; color: #333d39; font-size: 14px; }
 #share-link { width: 100%; font-size: 12px; }
 .share-row button { padding: 8px 12px; border: 1px solid var(--border); border-radius: 9px; font-size: 13px; }
 .file-actions { display: flex; gap: 14px; }
 .file-actions button, .text-button { min-height: 44px; font-size: 13px; color: var(--ink); padding: 8px 0; }
 .library-status { margin: 8px 0 0; color: #536e5a; font-size: 13px; line-height: 1.7; }
+.library-status:empty { margin: 0; }
 @media (max-width: 800px) and (min-height: 501px) {
   .workspace.is-practice .scene-wrap { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); padding: 4px 12px 0; gap: 0; }
   .target-panel { order: -1; align-self: stretch; display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 6px 12px; padding: 12px; }
@@ -126,7 +127,6 @@ dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
   .activity-choices { gap: 7px; }
   .activity-choices button { padding: 14px 10px; }
   .activity-choices strong { font-size: 14px; }
-  .activity-choices span { font-size: 11px; }
 }
 @media (max-height: 500px) and (orientation: landscape) {
   .workspace { grid-template-rows: 54px minmax(0, 1fr); }

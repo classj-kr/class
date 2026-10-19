@@ -38,24 +38,19 @@
     announcementTimer = setTimeout(() => { $('announcement').textContent = message; }, 20);
   }
 
-  function hint() {
-    if (view !== 'solid') return '같은 모양을 다른 방향에서 살펴봐요';
-    if (tool === 'erase') return '블록을 누르면 맨 위부터 지워요';
-    return model.count() ? '칸이나 블록을 눌러 쌓아요 · 드래그해서 돌려요' : '빈칸을 눌러 쌓아요 · 드래그해서 돌려요';
-  }
-
   function feedback(message) {
     clearTimeout(feedbackTimer);
     $('hint').textContent = message;
     announce(message);
-    feedbackTimer = setTimeout(() => { $('hint').textContent = hint(); }, 2400);
+    feedbackTimer = setTimeout(() => { $('hint').textContent = ''; }, 2400);
   }
 
   function update() {
     $('total').textContent = `전체 ${model.count()}개`;
     $('undo').disabled = !model.canUndo();
     $('clear-board').disabled = model.count() === 0;
-    $('hint').textContent = hint();
+    clearTimeout(feedbackTimer);
+    $('hint').textContent = '';
     updatePractice();
     schedule();
   }
@@ -205,8 +200,8 @@
     if (!challenge) return;
     const { mode, index, questions, state, found } = challenge;
     $('challenge-title').textContent = `${activities.names[mode]} · ${index + 1}/${questions.length}`;
-    $('challenge-prompt').textContent = mode === 'copy' ? '목표를 돌려 뒤쪽을 살펴봐요. 위·층수로 가려진 칸의 높이를 확인해요.'
-      : mode === 'views' ? '위·앞·옆 그림을 모두 살펴보고 쌓아요.' : `세 그림에 맞는 서로 다른 두 모양을 찾아요. (${Math.min(2, found.size)}/2)`;
+    $('challenge-prompt').textContent = mode === 'copy' ? ''
+      : mode === 'views' ? '위·앞·옆 모습이 모두 같아야 해요.' : `세 그림에 맞는 서로 다른 모양 2개 (${Math.min(2, found.size)}/2)`;
     $('target-views').hidden = false;
     $('check-shape').textContent = state === 'found' ? '다른 모양 만들기'
       : state === 'solved' ? (index + 1 < questions.length ? '다음 모양' : '활동 선택') : '확인하기';
@@ -288,22 +283,22 @@
     if (!answer.correct) {
       const names = { top: '위', front: '앞', right: '오른쪽 옆' };
       result.textContent = challenge.mode === 'copy' ? '칸 위치와 각 칸의 높이를 다시 살펴봐요.'
-        : `${answer.mismatches.map(name => names[name]).join('·')}에서 본 모습이 달라요. 그 방향을 살펴봐요.`;
+        : `${answer.mismatches.map(name => names[name]).join('·')} 모습이 달라요.`;
       sound('retry');
     } else if (challenge.mode === 'many') {
       const key = heights.join('');
       if (challenge.found.has(key) && challenge.found.size < 2) {
-        result.textContent = '이미 찾은 모양이에요. 높이를 바꿔 다른 답을 찾아봐요.';
+        result.textContent = '이미 찾은 모양이에요.';
         result.classList.remove('is-success'); sound('retry');
       } else {
         challenge.found.add(key);
         challenge.state = challenge.found.size >= 2 ? 'solved' : 'found';
-        result.textContent = challenge.state === 'solved' ? '성공! 서로 다른 두 모양이 같은 그림에 맞아요.' : '첫 번째 답을 찾았어요! 다른 모양도 만들어 볼까요?';
+        result.textContent = challenge.state === 'solved' ? '성공! 서로 다른 두 모양을 찾았어요.' : '첫 번째 답을 찾았어요.';
         sound(challenge.state === 'solved' ? 'success' : 'found');
       }
     } else {
       challenge.state = 'solved';
-      result.textContent = challenge.mode === 'copy' ? '성공! 목표와 똑같이 쌓았어요.' : '성공! 세 방향의 모습이 모두 맞아요.';
+      result.textContent = '성공!';
       sound('success');
     }
     updatePractice();
