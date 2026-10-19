@@ -1,0 +1,1470 @@
+{
+  "date": "2026-10-19",
+  "scope": "현재 세계사 지도 앱의 36개 주제에 대한 보충 학습 자료. 세계사 교육과정 전체나 모든 기출 소재를 망라한다는 뜻은 아님.",
+  "selectionRule": "사진 수를 균등 배분하지 않고 지도에서 보이지 않는 유물의 형태, 문화, 사건의 장면, 사료의 주장, 상반된 관점을 보완한다. 지도 도판은 별도로 유지한다.",
+  "counts": {
+    "topics": 36,
+    "atlasFigures": 39,
+    "images": 46,
+    "sourceExcerptSets": 6,
+    "questions": 72,
+    "sourceLinkedQuestions": 14
+  },
+  "sourceVerification": {
+    "imageObjects": "원문 페이지·캡션 및 추출 객체 시각 대조. 출판용 WebP는 원본 비율·알파 보존, 디코딩 픽셀 일치 검사.",
+    "excerpts": "교과서 수록 번역을 짧게 발췌. 공백·제어문자 정규화 후 원문 포함 여부 검증.",
+    "periods": "현대의 유적 사진, 사건을 묘사한 그림, 복원 모형, 당시 사진을 구분해 표기.",
+    "assessment": "실제 평가원의 자료 식별+지도 위치+사실 연결 방식을 참고하되 문제와 보기는 새로 작성. 기출 재현 아님."
+  },
+  "assessmentReferences": [
+    {
+      "source": "source-09",
+      "exam": "2027학년도 6월 모의평가(2026년 시행)",
+      "questions": [
+        1,
+        2,
+        9,
+        19
+      ],
+      "observedSkills": [
+        "고대 문명 시각 자료와 문화 연결",
+        "유물과 교역 거점에서 왕조 추론",
+        "삽화와 제4차 십자군의 도착지 연결",
+        "베를린 봉쇄 상황과 소련의 정책 연결"
+      ]
+    },
+    {
+      "source": "source-10",
+      "exam": "2027학년도 9월 모의평가(2026년 시행)",
+      "questions": [
+        2,
+        6,
+        7,
+        11,
+        18
+      ],
+      "observedSkills": [
+        "고지도와 국경 분쟁의 군주 식별",
+        "요새 그림과 무역 거점으로 무굴 제국 추론",
+        "대운하 사료의 도시·수계를 통해 왕조 판단",
+        "그림 속 지구본과 분할선으로 항해 국가 추론",
+        "기념 우표와 냉전 경제·군사 기구의 관계 판단"
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "id": "civilizations",
+      "title": "큰 강과 고대 문명",
+      "learningPurpose": "문명별 문자·종교·도시 유적을 관찰하고 큰 강의 유역과 연결한다.",
+      "atlasFigures": [
+        "civilizations-west",
+        "civilizations-east"
+      ],
+      "materialIds": [
+        "ziggurat",
+        "hammurabi",
+        "oracle-bone",
+        "book-of-dead",
+        "mohenjo-daro"
+      ],
+      "materialSources": [
+        {
+          "id": "ziggurat",
+          "source": "source-00",
+          "pdfPage": 16
+        },
+        {
+          "id": "hammurabi",
+          "source": "source-00",
+          "pdfPage": 16
+        },
+        {
+          "id": "oracle-bone",
+          "source": "source-00",
+          "pdfPage": 19
+        },
+        {
+          "id": "book-of-dead",
+          "source": "source-00",
+          "pdfPage": 17
+        },
+        {
+          "id": "mohenjo-daro",
+          "source": "source-00",
+          "pdfPage": 18
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "civilizations-west-source-v2"
+      ]
+    },
+    {
+      "id": "greece",
+      "title": "그리스의 폴리스와 전쟁",
+      "learningPurpose": "신전의 구조를 살펴보고 아테네와 다른 폴리스의 위치를 구별한다.",
+      "atlasFigures": [
+        "greece"
+      ],
+      "materialIds": [
+        "parthenon"
+      ],
+      "materialSources": [
+        {
+          "id": "parthenon",
+          "source": "source-00",
+          "pdfPage": 45
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            44,
+            45
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            46,
+            47
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "persia",
+      "title": "페르시아와 왕의 길",
+      "learningPurpose": "페르세폴리스의 유적과 왕의 길을 연결하여 제국의 통치를 이해한다.",
+      "atlasFigures": [
+        "persia"
+      ],
+      "materialIds": [
+        "persepolis"
+      ],
+      "materialSources": [
+        {
+          "id": "persepolis",
+          "source": "source-00",
+          "pdfPage": 41
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            40,
+            41,
+            42
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            43,
+            44
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "alexander",
+      "title": "알렉산드로스의 동방 원정",
+      "learningPurpose": "동방 원정 이후의 문화 교류를 간다라 미술과 연결하되 원정 시기와 작품의 시대를 구분한다.",
+      "atlasFigures": [
+        "alexander"
+      ],
+      "materialIds": [
+        "gandhara"
+      ],
+      "materialSources": [
+        {
+          "id": "gandhara",
+          "source": "source-00",
+          "pdfPage": 35
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            46
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            48
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "rome",
+      "title": "로마의 지중해 지배",
+      "learningPurpose": "도로·수도교·경기장에서 실용적인 건축을 관찰하고 지중해 통치망을 설명한다.",
+      "atlasFigures": [
+        "rome"
+      ],
+      "materialIds": [
+        "appian-way",
+        "roman-aqueduct",
+        "colosseum"
+      ],
+      "materialSources": [
+        {
+          "id": "appian-way",
+          "source": "source-00",
+          "pdfPage": 51
+        },
+        {
+          "id": "roman-aqueduct",
+          "source": "source-00",
+          "pdfPage": 51
+        },
+        {
+          "id": "colosseum",
+          "source": "source-00",
+          "pdfPage": 51
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            47,
+            48,
+            49,
+            50,
+            51
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            50,
+            51,
+            52,
+            53
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "india",
+      "title": "마우리아와 쿠샨",
+      "learningPurpose": "산치 대탑과 간다라 불상을 구분하고 마우리아·쿠샨의 영역과 연결한다.",
+      "atlasFigures": [
+        "india"
+      ],
+      "materialIds": [
+        "sanchi",
+        "gandhara"
+      ],
+      "materialSources": [
+        {
+          "id": "sanchi",
+          "source": "source-00",
+          "pdfPage": 34
+        },
+        {
+          "id": "gandhara",
+          "source": "source-00",
+          "pdfPage": 35
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            33,
+            34,
+            35
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            35,
+            36
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "india-gandhara"
+      ]
+    },
+    {
+      "id": "gupta",
+      "title": "굽타와 인도 고전 문화",
+      "learningPurpose": "아잔타 벽화를 통해 인도 문화의 발달을 살피고 굽타의 중심 지역을 찾는다.",
+      "atlasFigures": [
+        "gupta"
+      ],
+      "materialIds": [
+        "ajanta"
+      ],
+      "materialSources": [
+        {
+          "id": "ajanta",
+          "source": "source-00",
+          "pdfPage": 37
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            36,
+            37
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            38,
+            39
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "han",
+      "title": "한과 동서 교역로",
+      "learningPurpose": "한대 종이의 보급과 동서 교역을 연결하고 장건의 파견 목적과 시대를 구분한다.",
+      "atlasFigures": [
+        "han"
+      ],
+      "materialIds": [
+        "han-paper"
+      ],
+      "materialSources": [
+        {
+          "id": "han-paper",
+          "source": "source-00",
+          "pdfPage": 26
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            25
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            24,
+            25
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "sui-canal",
+      "title": "수의 대운하",
+      "learningPurpose": "운하 건설 기록에서 동원·수운의 단서를 찾고 남북 수계를 지도에 대응시킨다.",
+      "atlasFigures": [
+        "sui-canal"
+      ],
+      "materialIds": [
+        "sui-canal-record"
+      ],
+      "materialSources": [
+        {
+          "id": "sui-canal-record",
+          "source": "source-00",
+          "pdfPage": 28
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            28,
+            29
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            27
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "sui-function-source-v2"
+      ]
+    },
+    {
+      "id": "tang",
+      "title": "당과 유라시아 교류",
+      "learningPurpose": "당삼채와 경교비에서 국제적인 문화를 읽고 육상·해상 교류의 거점을 비교한다.",
+      "atlasFigures": [
+        "tang"
+      ],
+      "materialIds": [
+        "tang-camel",
+        "tang-stele"
+      ],
+      "materialSources": [
+        {
+          "id": "tang-camel",
+          "source": "source-00",
+          "pdfPage": 30
+        },
+        {
+          "id": "tang-stele",
+          "source": "source-00",
+          "pdfPage": 30
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            29,
+            30,
+            31,
+            69
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            28,
+            63
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "tang-landsea-source-v2"
+      ]
+    },
+    {
+      "id": "song",
+      "title": "송과 북방 민족",
+      "learningPurpose": "청명상하도와 활자판에서 도시·서민 문화·기술을 읽고 두 수도의 위치와 이동을 파악한다.",
+      "atlasFigures": [
+        "northern-song",
+        "southern-song"
+      ],
+      "materialIds": [
+        "qingming-scroll",
+        "movable-type"
+      ],
+      "materialSources": [
+        {
+          "id": "qingming-scroll",
+          "source": "source-00",
+          "pdfPage": 79
+        },
+        {
+          "id": "movable-type",
+          "source": "source-00",
+          "pdfPage": 79
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            76,
+            77
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            82,
+            83
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "islam",
+      "title": "이슬람 세계의 확대",
+      "learningPurpose": "코르도바의 아치를 관찰하고 서쪽 후우마이야와 동쪽 이슬람 왕조의 수도를 구분한다.",
+      "atlasFigures": [
+        "islam"
+      ],
+      "materialIds": [
+        "cordoba-mosque"
+      ],
+      "materialSources": [
+        {
+          "id": "cordoba-mosque",
+          "source": "source-00",
+          "pdfPage": 69
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            68,
+            69
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            62,
+            63
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "mongols",
+      "title": "몽골 제국과 여러 울루스",
+      "learningPurpose": "교초와 패자의 기능을 구분하고 유라시아 교역·역참망과 연결한다.",
+      "atlasFigures": [
+        "mongols"
+      ],
+      "materialIds": [
+        "yuan-banknote",
+        "paiza"
+      ],
+      "materialSources": [
+        {
+          "id": "yuan-banknote",
+          "source": "source-00",
+          "pdfPage": 82
+        },
+        {
+          "id": "paiza",
+          "source": "source-00",
+          "pdfPage": 83
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            80,
+            81,
+            82
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            84,
+            85,
+            86,
+            87
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "ming",
+      "title": "명과 정화의 항해",
+      "learningPurpose": "자금성과 베이징 천도를 연결하고 정화의 항로를 함께 확인한다.",
+      "atlasFigures": [
+        "ming"
+      ],
+      "materialIds": [
+        "forbidden-city"
+      ],
+      "materialSources": [
+        {
+          "id": "forbidden-city",
+          "source": "source-00",
+          "pdfPage": 117
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            100,
+            101,
+            102
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            86,
+            87
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "qing",
+      "title": "청의 영역 확대",
+      "learningPurpose": "명이 조성한 자금성을 청이 계승한 점과 청의 영역 확대를 구분한다.",
+      "atlasFigures": [
+        "qing"
+      ],
+      "materialIds": [
+        "forbidden-city"
+      ],
+      "materialSources": [
+        {
+          "id": "forbidden-city",
+          "source": "source-00",
+          "pdfPage": 117
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            118,
+            119,
+            120,
+            133
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            124,
+            125,
+            126,
+            127
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "edo",
+      "title": "에도 시대의 도시와 교통",
+      "learningPurpose": "우키요에의 도시 문화와 데지마의 대외 교역을 에도·오사카·나가사키에 연결한다.",
+      "atlasFigures": [
+        "edo"
+      ],
+      "materialIds": [
+        "ukiyoe",
+        "dejima"
+      ],
+      "materialSources": [
+        {
+          "id": "ukiyoe",
+          "source": "source-00",
+          "pdfPage": 125
+        },
+        {
+          "id": "dejima",
+          "source": "source-00",
+          "pdfPage": 125
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            124,
+            125
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            130,
+            131
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "frank",
+      "title": "프랑크 왕국의 발전",
+      "learningPurpose": "학문 진흥의 기록과 아헨·로마의 위치를 통해 카롤루스 시대 왕권과 교회의 관계를 읽는다.",
+      "atlasFigures": [
+        "frank"
+      ],
+      "materialIds": [
+        "carolingian-learning"
+      ],
+      "materialSources": [
+        {
+          "id": "carolingian-learning",
+          "source": "source-00",
+          "pdfPage": 52
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            52
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            56
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "frank-coronation-source-v2"
+      ]
+    },
+    {
+      "id": "byzantine",
+      "title": "비잔티움의 확대와 축소",
+      "learningPurpose": "모자이크와 성 소피아를 통해 황제권·종교·건축을 관찰하고 6세기 정복지와 연결한다.",
+      "atlasFigures": [
+        "byzantine"
+      ],
+      "materialIds": [
+        "hagia-sophia",
+        "justinian-mosaic"
+      ],
+      "materialSources": [
+        {
+          "id": "hagia-sophia",
+          "source": "source-00",
+          "pdfPage": 57
+        },
+        {
+          "id": "justinian-mosaic",
+          "source": "source-00",
+          "pdfPage": 56
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            56,
+            57
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            59,
+            60
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "byzantine-justinian"
+      ]
+    },
+    {
+      "id": "crusades",
+      "title": "십자군의 이동",
+      "learningPurpose": "교황의 호소 장면과 제1차·제4차 십자군의 실제 경로를 비교한다.",
+      "atlasFigures": [
+        "crusades"
+      ],
+      "materialIds": [
+        "crusade-council"
+      ],
+      "materialSources": [
+        {
+          "id": "crusade-council",
+          "source": "source-00",
+          "pdfPage": 58
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            58
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            67
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "ottoman",
+      "title": "오스만의 팽창",
+      "learningPurpose": "성 소피아의 전환과 새 모스크의 건설을 구별하고 이스탄불의 지리적 위치를 이해한다.",
+      "atlasFigures": [
+        "ottoman"
+      ],
+      "materialIds": [
+        "hagia-sophia",
+        "sultan-ahmed"
+      ],
+      "materialSources": [
+        {
+          "id": "hagia-sophia",
+          "source": "source-00",
+          "pdfPage": 57
+        },
+        {
+          "id": "sultan-ahmed",
+          "source": "source-00",
+          "pdfPage": 131
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            130,
+            131,
+            132
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            137
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "mughal",
+      "title": "무굴과 인도양 교역",
+      "learningPurpose": "타지마할의 건축 특징에서 문화 융합을 읽고 아그라와 인도양 교역항을 구분한다.",
+      "atlasFigures": [
+        "mughal"
+      ],
+      "materialIds": [
+        "taj-mahal"
+      ],
+      "materialSources": [
+        {
+          "id": "taj-mahal",
+          "source": "source-00",
+          "pdfPage": 129
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            127,
+            128
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            133,
+            134
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "mughal-cities"
+      ]
+    },
+    {
+      "id": "reformation",
+      "title": "종교 개혁의 확산",
+      "learningPurpose": "면벌부 비판과 예정설 사료를 비교하고 비텐베르크·제네바·런던에 연결한다.",
+      "atlasFigures": [
+        "reformation"
+      ],
+      "materialIds": [
+        "luther-calvin"
+      ],
+      "materialSources": [
+        {
+          "id": "luther-calvin",
+          "source": "source-00",
+          "pdfPage": 90
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            90
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            94
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "reformation-pair-source-v2"
+      ]
+    },
+    {
+      "id": "voyages",
+      "title": "신항로 개척",
+      "learningPurpose": "선박과 항해 기술을 살피며 아프리카 우회·대서양 횡단 항로를 구별한다.",
+      "atlasFigures": [
+        "voyages"
+      ],
+      "materialIds": [
+        "caravel"
+      ],
+      "materialSources": [
+        {
+          "id": "caravel",
+          "source": "source-00",
+          "pdfPage": 87
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            86,
+            87
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            97
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "american",
+      "title": "미국 독립과 초기 영토",
+      "learningPurpose": "보스턴의 저항 장면과 필라델피아·요크타운의 위치를 독립 과정 순서로 연결한다.",
+      "atlasFigures": [
+        "american"
+      ],
+      "materialIds": [
+        "boston-tea"
+      ],
+      "materialSources": [
+        {
+          "id": "boston-tea",
+          "source": "source-00",
+          "pdfPage": 136
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            136,
+            137
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            141,
+            142
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "napoleon",
+      "title": "나폴레옹과 유럽 질서",
+      "learningPurpose": "대륙 봉쇄령과 원정 경로를 연결하고 빈 회의 풍자화에서 전후 질서 재편을 읽는다.",
+      "atlasFigures": [
+        "napoleon"
+      ],
+      "materialIds": [
+        "vienna-cartoon",
+        "continental-blockade"
+      ],
+      "materialSources": [
+        {
+          "id": "vienna-cartoon",
+          "source": "source-00",
+          "pdfPage": 143
+        },
+        {
+          "id": "continental-blockade",
+          "source": "source-00",
+          "pdfPage": 142
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            142,
+            143
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            147,
+            150
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "napoleon-russia-source-v2"
+      ]
+    },
+    {
+      "id": "unification",
+      "title": "이탈리아와 독일의 통일",
+      "learningPurpose": "독일 제국 선포 장면의 단서와 프로이센·사르데냐의 위치를 결합해 두 통일을 구별한다.",
+      "atlasFigures": [
+        "unification"
+      ],
+      "materialIds": [
+        "german-proclamation"
+      ],
+      "materialSources": [
+        {
+          "id": "german-proclamation",
+          "source": "source-00",
+          "pdfPage": 146
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            145,
+            146
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            154,
+            155
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "unification-leaders-source-v2"
+      ]
+    },
+    {
+      "id": "colonial-africa",
+      "title": "열강의 아프리카 분할",
+      "learningPurpose": "서로 반대 관점의 두 풍자화를 비교하고 식민 지배국·팽창 방향을 지도에서 확인한다.",
+      "atlasFigures": [
+        "colonial-africa"
+      ],
+      "materialIds": [
+        "imperial-burden",
+        "imperial-burden-critique"
+      ],
+      "materialSources": [
+        {
+          "id": "imperial-burden",
+          "source": "source-00",
+          "pdfPage": 155
+        },
+        {
+          "id": "imperial-burden-critique",
+          "source": "source-00",
+          "pdfPage": 155
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            155,
+            156
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            169
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "africa-colonies-source-v2"
+      ]
+    },
+    {
+      "id": "china-opening",
+      "title": "중국의 개항과 태평천국",
+      "learningPurpose": "조약의 개항·할양을 지리적으로 구분하고 조선소 사진을 양무운동에 연결한다.",
+      "atlasFigures": [
+        "china-opening"
+      ],
+      "materialIds": [
+        "fuzhou-arsenal",
+        "nanjing-treaty"
+      ],
+      "materialSources": [
+        {
+          "id": "fuzhou-arsenal",
+          "source": "source-00",
+          "pdfPage": 161
+        },
+        {
+          "id": "nanjing-treaty",
+          "source": "source-00",
+          "pdfPage": 160
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            160,
+            161
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            172,
+            173
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "china-nanjing-source-v2"
+      ]
+    },
+    {
+      "id": "xinhai",
+      "title": "신해혁명의 전개",
+      "learningPurpose": "우창의 봉기 사진을 난징의 임시 정부와 베이징의 집권 과정으로 연결한다.",
+      "atlasFigures": [
+        "xinhai"
+      ],
+      "materialIds": [
+        "wuchang-uprising"
+      ],
+      "materialSources": [
+        {
+          "id": "wuchang-uprising",
+          "source": "source-00",
+          "pdfPage": 163
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            163
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            174
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "colonial-india",
+      "title": "인도의 식민 지배와 저항",
+      "learningPurpose": "국민 회의 창립 사진과 뭄바이·벵골의 위치를 연결하고 1885년·1905년을 구분한다.",
+      "atlasFigures": [
+        "colonial-india"
+      ],
+      "materialIds": [
+        "indian-congress"
+      ],
+      "materialSources": [
+        {
+          "id": "indian-congress",
+          "source": "source-00",
+          "pdfPage": 169
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            168,
+            169
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            179,
+            180
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "southeast-asia",
+      "title": "동남아시아의 식민지화",
+      "learningPurpose": "베트남의 민족 운동 자료를 식민 지배국과 연결하고 타이·필리핀의 경로와 비교한다.",
+      "atlasFigures": [
+        "southeast-asia"
+      ],
+      "materialIds": [
+        "vietnam-book"
+      ],
+      "materialSources": [
+        {
+          "id": "vietnam-book",
+          "source": "source-00",
+          "pdfPage": 171
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            170,
+            171
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            182
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "ww1",
+      "title": "제1차 세계 대전",
+      "learningPurpose": "황태자 암살 그림의 사건을 발칸반도에 위치시키고 동맹과 두 전선의 배치를 읽는다.",
+      "atlasFigures": [
+        "ww1"
+      ],
+      "materialIds": [
+        "sarajevo-assassination"
+      ],
+      "materialSources": [
+        {
+          "id": "sarajevo-assassination",
+          "source": "source-00",
+          "pdfPage": 181
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            180,
+            181
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            192,
+            193
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "ww1-sarajevo-source-v2"
+      ]
+    },
+    {
+      "id": "postwar-europe",
+      "title": "대전 전후 유럽의 변화",
+      "learningPurpose": "평화 원칙과 강화 조약의 차이를 읽고 전후 두 지도에서 제국 해체·신생국을 확인한다.",
+      "atlasFigures": [
+        "europe-1922",
+        "europe-1914"
+      ],
+      "materialIds": [
+        "fourteen-points"
+      ],
+      "materialSources": [
+        {
+          "id": "fourteen-points",
+          "source": "source-00",
+          "pdfPage": 184
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            184
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            196
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "ww2",
+      "title": "제2차 세계 대전의 전개",
+      "learningPurpose": "진주만·노르망디의 사진을 각각 태평양·유럽 전선에 연결하고 사건의 순서를 구분한다.",
+      "atlasFigures": [
+        "ww2"
+      ],
+      "materialIds": [
+        "pearl-harbor",
+        "normandy-landing"
+      ],
+      "materialSources": [
+        {
+          "id": "pearl-harbor",
+          "source": "source-00",
+          "pdfPage": 191
+        },
+        {
+          "id": "normandy-landing",
+          "source": "source-00",
+          "pdfPage": 191
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            190,
+            191
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            201,
+            202
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    },
+    {
+      "id": "cold-war",
+      "title": "냉전과 지역 분쟁",
+      "learningPurpose": "베를린 공수 사진과 쿠바 만평을 비교하며 각 위기의 위치·시기·갈등 양상을 구분한다.",
+      "atlasFigures": [
+        "cold-war"
+      ],
+      "materialIds": [
+        "berlin-airlift",
+        "cuban-crisis-cartoon"
+      ],
+      "materialSources": [
+        {
+          "id": "berlin-airlift",
+          "source": "source-00",
+          "pdfPage": 196
+        },
+        {
+          "id": "cuban-crisis-cartoon",
+          "source": "source-00",
+          "pdfPage": 197
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            196,
+            197
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            208,
+            209
+          ]
+        }
+      ],
+      "sourceQuestions": [
+        "coldwar-crisis-source-v2"
+      ]
+    },
+    {
+      "id": "europe-1989",
+      "title": "동유럽의 민주화와 독일 통일",
+      "learningPurpose": "브란덴부르크문과 바웬사의 사진을 통해 독일·폴란드의 변화와 시기를 구분한다.",
+      "atlasFigures": [
+        "europe-1989"
+      ],
+      "materialIds": [
+        "brandenburg",
+        "walesa"
+      ],
+      "materialSources": [
+        {
+          "id": "brandenburg",
+          "source": "source-00",
+          "pdfPage": 179
+        },
+        {
+          "id": "walesa",
+          "source": "source-00",
+          "pdfPage": 201
+        }
+      ],
+      "textbookContext": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            200,
+            201
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            212,
+            213
+          ]
+        }
+      ],
+      "sourceQuestions": []
+    }
+  ]
+}
