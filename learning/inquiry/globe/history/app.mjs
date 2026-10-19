@@ -59,7 +59,7 @@ function drawFigure(id,places,question=false){
  if(!ready)return;lastDraw=[id,places,question];loadFailed=false;
  const version=++revision;figure=FIGURES[id];if(!figure){$('mapStatus').textContent='이 지도의 자료를 찾을 수 없습니다.';return;}
  $('mapStatus').textContent='지도를 불러오는 중입니다.';
- const coordinates=figureCorners(figure.crop),url=new URL(`figures/${id}.webp?v=20261019-clean-markers`,BASE).href;
+ const coordinates=figureCorners(figure.crop),url=new URL(`figures/${id}.webp?v=20261019-capital-markers`,BASE).href;
  markers.forEach(m=>m.remove());markers=[];
  if(map.getSource('atlas-figure'))map.getSource('atlas-figure').updateImage({url,coordinates});
  else {map.addSource('atlas-figure',{type:'image',url,coordinates});map.addLayer({id:'atlas-figure',type:'raster',source:'atlas-figure',paint:{'raster-fade-duration':0}});}

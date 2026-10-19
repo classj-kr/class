@@ -41,6 +41,13 @@ def city_circle(element):
  # this to tiny, closed round paths, not arrows, battle stars or coastlines.
  if element.tag!=SVG+'path':return None
  r=path_bounds(element)
+ # Some PDF city symbols are zero-length strokes with round line caps,
+ # including concentric dark/white/dark rings for capitals.
+ if r is not None and r.width<.001 and r.height<.001 and element.get('stroke-linecap')=='round' and element.get('fill')=='none':
+  color=element.get('stroke','');width=float(element.get('stroke-width','0'))
+  if .7<width<6 and re.fullmatch('#[0-9a-fA-F]{6}',color):
+   rgb=[int(color[i:i+2],16) for i in [1,3,5]]
+   if color=='#ffffff' or max(rgb)<100 and max(rgb)-min(rgb)<25:return r,color=='#ffffff'
  if r is None or not (.7<r.width<6 and .7<r.height<6 and .85<r.width/r.height<1.18):return None
  data=element.get('d','');ops=re.sub('[^A-Za-z]','',data)
  values=re.findall(r'[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?',data)
