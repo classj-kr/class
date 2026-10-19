@@ -4,7 +4,7 @@ const { loadBank, dir } = require('../tools/question-bank/twin-capacity.cjs');
 const T = require('../learning/literacy-numeracy/math-bank/twins.js'), B = loadBank();
 const plans = Object.fromEntries(fs.readdirSync(path.join(dir, 'twins')).filter(file => file.endsWith('.json')).map(file => [file.slice(0, -5), JSON.parse(fs.readFileSync(path.join(dir, 'twins', file), 'utf8'))]));
 
-test('초·중·고1 1학기의 모든 원문제에 내용이 다른 검증 변형이 정확히 세 개 있다', () => {
+test('초·중·고1 두 학기의 모든 원문제에 내용이 다른 검증 변형이 정확히 세 개 있다', () => {
   let originals = 0, twins = 0;
   for (const unit of B.units()) {
     assert.equal(T.eligible(unit), true);
@@ -31,14 +31,25 @@ test('초·중·고1 1학기의 모든 원문제에 내용이 다른 검증 변�
       originals++;
     }
   }
-  assert.equal(originals, 14010); assert.equal(twins, originals * 3);
-  assert.equal(Object.keys(plans).length, 19); assert.equal(plans['10-2'], undefined);
+  assert.equal(originals, 14843); assert.equal(twins, originals * 3);
+  assert.equal(Object.keys(plans).length, 20); assert.equal(Object.keys(plans['10-2'].items).length, 833);
 });
 
-test('고1 2학기는 복원이나 네트워크 요청 전에 거부한다', async () => {
-  assert.equal(T.eligible({ grade: 10, semester: 2 }), false);
+test('고1 2학기는 포함하고 준비되지 않은 학년·학기는 요청 전에 거부한다', async () => {
+  assert.equal(T.eligible({ grade: 10, semester: 2 }), true);
   assert.equal(T.eligible({ grade: 11, semester: 1 }), false);
-  await assert.rejects(T.forItem(B, { grade: 10, semester: 2 }, {}, {}), /대상이 아닙니다/);
+  assert.equal(T.eligible({ grade: 10, semester: 3 }), false);
+  await assert.rejects(T.forItem(B, { grade: 11, semester: 1 }, {}, {}), /대상이 아닙니다/);
+  await assert.rejects(T.forItem(B, { grade: 10, semester: 3 }, {}, {}), /대상이 아닙니다/);
+});
+
+test('집합 그림의 생성 순서는 검증값에 영향을 주지 않고 색칠 영역은 구별한다', () => {
+  for (const sets of [2, 3]) {
+    const figure = (serial, side = 'in') => ({ figure: '<svg><mask id="v' + sets + '4-' + serial + '-2-in"><circle r="50"/></mask><g mask="url(#v' + sets + '4-' + serial + '-2-' + side + ')"></g></svg>' });
+    assert.equal(T.fingerprint(figure(1)), T.fingerprint(figure(99)));
+    assert.notEqual(T.fingerprint(figure(1)), T.fingerprint(figure(1, 'out')));
+    assert.notEqual(T.fingerprint(figure(1)), T.fingerprint({ figure: figure(1).figure.replace('r="50"', 'r="40"') }));
+  }
 });
 
 test('원문제나 검증된 변형이 달라지면 임의 생성으로 대체하지 않고 중단한다', async () => {

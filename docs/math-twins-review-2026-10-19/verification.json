@@ -1,14 +1,13 @@
 {
   "date": "2026-10-19",
-  "scope": "초·중학교와 고1 1학기",
+  "scope": "초·중학교와 고1 2학기까지",
   "excluded": [
-    "고1 2학기",
     "평가원·수능 기출"
   ],
-  "originals": 14010,
-  "twins": 42030,
-  "generated": 40670,
-  "conceptChecks": 1360,
+  "originals": 14843,
+  "twins": 44529,
+  "generated": 43156,
+  "conceptChecks": 1373,
   "mathematicalValidationFailures": 0,
   "independentValidatorFamilies": 6,
   "render": {
@@ -16,12 +15,12 @@
       360,
       1280
     ],
-    "layouts": 112080,
+    "layouts": 118744,
     "twinIssues": 0,
-    "existingOriginalLayoutWarnings": 212
+    "existingOriginalLayoutWarnings": 214
   },
-  "layoutRepairs": 335,
-  "manualVisualSamples": 6,
+  "layoutRepairs": 338,
+  "manualVisualSamples": 10,
   "browserChecks": [
     "오답 즉시 복습",
     "회차 완료 후 최초 오답 복습",
@@ -30,14 +29,18 @@
     "원본 및 복습 기록 분리",
     "원본 풀이 기록 ID 연결",
     "고1 1학기 적용",
-    "고1 2학기 제외 경계",
     "모바일 배치",
-    "음수·분수·여러 답칸 재시도"
+    "음수·분수·여러 답칸 재시도",
+    "고1 2학기 7개 단원 적용·저장·복원",
+    "힌트 후 정답에서도 쌍둥이 연습 진입",
+    "벤 다이어그램 생성 순서 변경 후 복습·복원",
+    "미지원 학년·학기 제외 경계"
   ],
   "terms": {
     "1-1": 439,
     "1-2": 469,
     "10-1": 860,
+    "10-2": 833,
     "2-1": 461,
     "2-2": 547,
     "3-1": 640,
@@ -70,6 +73,11 @@
       "file": "10-1.json",
       "bytes": 186727,
       "sha256": "865b02b268f3d4ff81c050ecede6d1c27889c293a5cc7ea7bc27e6a78ee7f799"
+    },
+    {
+      "file": "10-2.json",
+      "bytes": 233462,
+      "sha256": "0cd3fa495d221c8c47922006d522604ddbc1d5fd668ac5632aa184333e4a8c0e"
     },
     {
       "file": "2-1.json",
@@ -151,5 +159,22 @@
       "bytes": 124956,
       "sha256": "df79412e864693a851dfb8fd628323aa57f7908de957281a8430cdd2eba70ab4"
     }
-  ]
+  ],
+  "semester2Extension": {
+    "originals": 833,
+    "twins": 2499,
+    "generated": 2486,
+    "conceptChecks": 13,
+    "layoutRepairs": 3,
+    "previousManifestsUnchanged": 19,
+    "perUnit": {
+      "10-2-1": 98,
+      "10-2-2": 110,
+      "10-2-3": 89,
+      "10-2-4": 117,
+      "10-2-5": 135,
+      "10-2-6": 135,
+      "10-2-7": 149
+    }
+  }
 }

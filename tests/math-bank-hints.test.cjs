@@ -28,6 +28,19 @@ test('분수의 곱셈과 나눗셈은 덧셈 안내와 구분한다', () => {
   assert.match(hintFor({ typeTitle: '분수의 나눗셈' }), /역수/);
 });
 
+test('고1 2학기는 단원 개념에 맞는 방향을 주고 계산 결과는 읽지 않는다', () => {
+  for (const [title, pattern] of [
+    ['두 점 사이의 거리', /좌표의 차/], ['원의 방정식', /중심.*반지름/], ['직선의 방정식', /평행·수직/],
+    ['선분의 내분', /두 끝점/], ['도형의 평행이동', /이동 전후/], ['집합의 원소', /전체집합/],
+    ['명제의 역과 대우', /가정과 결론/], ['절대부등식', /등호가 성립/], ['역함수', /입력과 출력/],
+    ['유리함수의 그래프', /분모가 0/], ['함수의 정의역과 치역', /공역 전체/]
+  ]) {
+    const item = { typeTitle: title };
+    for (const key of ['explain', 'shown', 'inputs', 'facts', 'figure', 'choice']) Object.defineProperty(item, key, { get() { throw new Error('풀이 데이터 접근: ' + key); } });
+    assert.match(hintFor(item), pattern, title);
+  }
+});
+
 test('유형에서 방향을 찾지 못하면 묶음의 개념을 쓰고, 해설은 복사하지 않는다', () => {
   assert.match(hintFor({ typeTitle: '두 식을 비교하기', explain: '정답은 98765이다.' }, { title: '일차부등식' }), /부등호/);
   const fallback = hintFor({ typeTitle: '다른 유형', choice: { answer: 2 }, explain: '정답은 98765이다.' });

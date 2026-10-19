@@ -6,7 +6,7 @@ const { chromium } = require('../../game-hub-server/node_modules/playwright');
 const { loadBank, dir } = require('./twin-capacity.cjs');
 const { createValidator } = require('./twin-validation.cjs');
 const T = require('../../learning/literacy-numeracy/math-bank/twins.js');
-const reportFile = path.resolve(__dirname, '../../outputs/math-twins/render-validation.json');
+const reportFile = process.argv.find(arg => arg.startsWith('--report='))?.slice(9) || path.resolve(__dirname, '../../outputs/math-twins/render-validation.json');
 (async () => {
   const B = loadBank(), { validate } = createValidator(), reports = JSON.parse(fs.readFileSync(reportFile, 'utf8'));
   const requests = [...new Map(reports.issues.map(row => [row.unit + ':' + row.key + ':' + row.spec.fingerprint, row])).values()];
