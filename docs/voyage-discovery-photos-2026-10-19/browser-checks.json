@@ -1,0 +1,261 @@
+{
+  "discovery": [
+    {
+      "alt": "영국과 프랑스 사이의 도버 해협을 촬영한 위성사진입니다.",
+      "caption": "영국과 프랑스 사이의 도버 해협을 촬영한 위성사진입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/strait-of-dover.webp?v=1792409780988"
+    },
+    {
+      "alt": "1920년대 드니프로강 급류의 옛 사진. 바위 사이로 흐르는 물길이 보입니다.",
+      "caption": "1920년대 드니프로강 급류의 옛 사진. 바위 사이로 흐르는 물길이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/dnieper-rapids.webp?v=1792409780896"
+    },
+    {
+      "alt": "그랜드뱅크스 어장의 대표 어종인 대서양대구. 사진은 수족관에서 촬영했습니다.",
+      "caption": "그랜드뱅크스 어장의 대표 어종인 대서양대구. 사진은 수족관에서 촬영했습니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/grand-banks-cod.webp?v=1792409781190"
+    },
+    {
+      "alt": "산토리니섬의 항공사진. 바닷물이 들어찬 칼데라와 둘레의 섬들이 보입니다.",
+      "caption": "산토리니섬의 항공사진. 바닷물이 들어찬 칼데라와 둘레의 섬들이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/santorini.webp?v=1792409780798"
+    },
+    {
+      "alt": "미시시피강 하구의 갈라진 물길과 퇴적지. ASTER 위성사진(2001년, 합성색)입니다.",
+      "caption": "미시시피강 하구의 갈라진 물길과 퇴적지. ASTER 위성사진(2001년, 합성색)입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/mississippi_mouth.webp?v=1792409780856"
+    },
+    {
+      "alt": "알제리 타실리나제르의 탄주마이타크 바위그림. 바위 면에 그린 동물과 사람의 모습입니다.",
+      "caption": "알제리 타실리나제르의 탄주마이타크 바위그림. 바위 면에 그린 동물과 사람의 모습입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/tassili-rock-art.webp?v=1792409780821"
+    },
+    {
+      "alt": "바하마 산살바도르섬의 해안 모습입니다.",
+      "caption": "바하마 산살바도르섬의 해안 모습입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/guanahani-island.webp?v=1792409781215"
+    },
+    {
+      "alt": "나일강 제2급류의 옛 사진(1870~1888년). 현재는 나세르호에 잠긴 구간입니다.",
+      "caption": "나일강 제2급류의 옛 사진(1870~1888년). 현재는 나세르호에 잠긴 구간입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/nile-second-cataract.webp?v=1792409780925"
+    },
+    {
+      "alt": "인도반도 내부에 펼쳐진 데칸고원의 위성사진입니다.",
+      "caption": "인도반도 내부에 펼쳐진 데칸고원의 위성사진입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/deccan-plateau.webp?v=1792409781028"
+    },
+    {
+      "alt": "다나킬 저지대에 있는 달롤의 항공사진. 소금 지대와 열수 활동의 흔적이 보입니다.",
+      "caption": "다나킬 저지대에 있는 달롤의 항공사진. 소금 지대와 열수 활동의 흔적이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/danakil-depression.webp?v=1792409780956"
+    },
+    {
+      "alt": "파나마 지협의 위성사진. 두 바다 사이에 놓인 좁은 육지가 보입니다.",
+      "caption": "파나마 지협의 위성사진. 두 바다 사이에 놓인 좁은 육지가 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/panama_isthmus.webp?v=1792409781049"
+    },
+    {
+      "alt": "말레이반도와 수마트라섬 사이의 믈라카 해협을 촬영한 위성사진입니다.",
+      "caption": "말레이반도와 수마트라섬 사이의 믈라카 해협을 촬영한 위성사진입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/malacca_strait.webp?v=1792409781073"
+    },
+    {
+      "alt": "말레이 제도의 일부인 소순다 열도의 위성사진. 길게 이어진 섬들이 보입니다.",
+      "caption": "말레이 제도의 일부인 소순다 열도의 위성사진. 길게 이어진 섬들이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/malay_archipelago.webp?v=1792409781108"
+    },
+    {
+      "alt": "동아프리카 대지구대의 케냐 구간. 가파른 사면과 그 아래 낮은 땅이 보입니다.",
+      "caption": "동아프리카 대지구대의 케냐 구간. 가파른 사면과 그 아래 낮은 땅이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/great_rift_valley.webp?v=1792409781163"
+    },
+    {
+      "alt": "드레이크 해협을 건너는 배에서 촬영한 바다의 모습입니다.",
+      "caption": "드레이크 해협을 건너는 배에서 촬영한 바다의 모습입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "mapLabelVisible": false,
+      "src": "/learn/world-voyage/assets/landmarks/drake-passage.webp?v=1792409781143"
+    }
+  ],
+  "study": [
+    {
+      "alt": "영국과 프랑스 사이의 도버 해협을 촬영한 위성사진입니다.",
+      "caption": "영국과 프랑스 사이의 도버 해협을 촬영한 위성사진입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/strait-of-dover.webp?v=1792409780988"
+    },
+    {
+      "alt": "1920년대 드니프로강 급류의 옛 사진. 바위 사이로 흐르는 물길이 보입니다.",
+      "caption": "1920년대 드니프로강 급류의 옛 사진. 바위 사이로 흐르는 물길이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/dnieper-rapids.webp?v=1792409780896"
+    },
+    {
+      "alt": "그랜드뱅크스 어장의 대표 어종인 대서양대구. 사진은 수족관에서 촬영했습니다.",
+      "caption": "그랜드뱅크스 어장의 대표 어종인 대서양대구. 사진은 수족관에서 촬영했습니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/grand-banks-cod.webp?v=1792409781190"
+    },
+    {
+      "alt": "산토리니섬의 항공사진. 바닷물이 들어찬 칼데라와 둘레의 섬들이 보입니다.",
+      "caption": "산토리니섬의 항공사진. 바닷물이 들어찬 칼데라와 둘레의 섬들이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/santorini.webp?v=1792409780798"
+    },
+    {
+      "alt": "미시시피강 하구의 갈라진 물길과 퇴적지. ASTER 위성사진(2001년, 합성색)입니다.",
+      "caption": "미시시피강 하구의 갈라진 물길과 퇴적지. ASTER 위성사진(2001년, 합성색)입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/mississippi_mouth.webp?v=1792409780856"
+    },
+    {
+      "alt": "알제리 타실리나제르의 탄주마이타크 바위그림. 바위 면에 그린 동물과 사람의 모습입니다.",
+      "caption": "알제리 타실리나제르의 탄주마이타크 바위그림. 바위 면에 그린 동물과 사람의 모습입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/tassili-rock-art.webp?v=1792409780821"
+    },
+    {
+      "alt": "바하마 산살바도르섬의 해안 모습입니다.",
+      "caption": "바하마 산살바도르섬의 해안 모습입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/guanahani-island.webp?v=1792409781215"
+    },
+    {
+      "alt": "나일강 제2급류의 옛 사진(1870~1888년). 현재는 나세르호에 잠긴 구간입니다.",
+      "caption": "나일강 제2급류의 옛 사진(1870~1888년). 현재는 나세르호에 잠긴 구간입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/nile-second-cataract.webp?v=1792409780925"
+    },
+    {
+      "alt": "인도반도 내부에 펼쳐진 데칸고원의 위성사진입니다.",
+      "caption": "인도반도 내부에 펼쳐진 데칸고원의 위성사진입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/deccan-plateau.webp?v=1792409781028"
+    },
+    {
+      "alt": "다나킬 저지대에 있는 달롤의 항공사진. 소금 지대와 열수 활동의 흔적이 보입니다.",
+      "caption": "다나킬 저지대에 있는 달롤의 항공사진. 소금 지대와 열수 활동의 흔적이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/danakil-depression.webp?v=1792409780956"
+    },
+    {
+      "alt": "파나마 지협의 위성사진. 두 바다 사이에 놓인 좁은 육지가 보입니다.",
+      "caption": "파나마 지협의 위성사진. 두 바다 사이에 놓인 좁은 육지가 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/panama_isthmus.webp?v=1792409781049"
+    },
+    {
+      "alt": "말레이반도와 수마트라섬 사이의 믈라카 해협을 촬영한 위성사진입니다.",
+      "caption": "말레이반도와 수마트라섬 사이의 믈라카 해협을 촬영한 위성사진입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/malacca_strait.webp?v=1792409781073"
+    },
+    {
+      "alt": "말레이 제도의 일부인 소순다 열도의 위성사진. 길게 이어진 섬들이 보입니다.",
+      "caption": "말레이 제도의 일부인 소순다 열도의 위성사진. 길게 이어진 섬들이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/malay_archipelago.webp?v=1792409781108"
+    },
+    {
+      "alt": "동아프리카 대지구대의 케냐 구간. 가파른 사면과 그 아래 낮은 땅이 보입니다.",
+      "caption": "동아프리카 대지구대의 케냐 구간. 가파른 사면과 그 아래 낮은 땅이 보입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/great_rift_valley.webp?v=1792409781163"
+    },
+    {
+      "alt": "드레이크 해협을 건너는 배에서 촬영한 바다의 모습입니다.",
+      "caption": "드레이크 해협을 건너는 배에서 촬영한 바다의 모습입니다.",
+      "creditCount": 1,
+      "fit": "contain",
+      "loaded": true,
+      "src": "/learn/world-voyage/assets/landmarks/drake-passage.webp?v=1792409781143"
+    }
+  ]
+}
