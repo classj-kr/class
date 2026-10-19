@@ -944,5 +944,9 @@
   },
   "production": {
     "status": "pending deployment"
-  }
+  },
+  "environmentNotes": [
+    "The static UI preview does not expose account storage endpoints; expected site-storage 404 warnings use in-tab fallback. Account isolation/persistence was checked separately by the passing integration test.",
+    "Final Frank question distractors were revised to compare medieval European rulers and map locations. The 11 content/material tests were rerun and passed after that text change."
+  ]
 }

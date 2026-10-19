@@ -1,5 +1,5 @@
 import * as maplibregl from '../vendor/maplibre-gl-6.10.0/maplibre-gl.mjs';
-import {ERAS,SCENES,FIGURES} from './content.mjs?v=20261019-materials';
+import {ERAS,SCENES,FIGURES} from './content.mjs?v=20261019-materials-2';
 import {figurePoint,figureCorners,createAttempt,answerAttempt,revealAttempt,shouldShowSolution,recordAttempt,shuffle,escapeHTML as esc} from './session.mjs?v=20261019-3';
 import {placeLabels} from './labels.mjs?v=20261019-3';
 import {PHOTOS,photosForScene,photosForPlace,photoPresentation} from './photo-learning.mjs?v=20261019-materials';
