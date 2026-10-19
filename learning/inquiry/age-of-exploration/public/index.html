@@ -812,7 +812,7 @@ canvas.addEventListener('pointerdown',e=>{if(!canTravelNow()||(mode!=='sea'&&mod
   else{const view=viewPosition();x=view.x+(e.clientX-r.left-r.width/2)/zoom;y=view.y+(e.clientY-r.top-r.height/2)/zoom}
   for(const k in keys)keys[k]=false;socket.emit('setTarget',{x,y})});
 canvas.addEventListener('wheel',e=>{e.preventDefault();zoomManuallyAdjusted=true;zoom=Math.max(minimumMapZoom(),Math.min(3.6,zoom*(e.deltaY>0?.9:1.1)))},{passive:false});
-document.getElementById('minus').onclick=()=>{zoomManuallyAdjusted=true;zoom=Math.max(minimumMapZoom(),zoom/1.18)};document.getElementById('plus').onclick=()=>{zoomManuallyAdjusted=true;zoom=Math.min(3.6,zoom*1.18)};document.getElementById('home').onclick=()=>{if(!joined)return;if(activeMission?.kind==='arrivalRace'){showToast('도착지는 지도에 자동 표시되지 않습니다. 직접 찾아 이동하세요.');setMissionPanelOpen(true);return}const stage=currentStage();if(activeMission?.kind==='staged'){if(activeMission.markerMode!=='exact'){showToast('목표 지점은 자동 표시되지 않습니다. 직접 찾아 이동하세요.');setMissionPanelOpen(true);return}if(stage&&(stage.mode==='any'||stage.mode===mode)){socket.emit('setTarget',stage.point);return}showToast('현재 단계에 맞는 이동 수단을 이용하세요.');return}const target=activeMission?.target&&((activeMission.mode==='any')||activeMission.mode===mode)?activeMission.target:START;socket.emit('setTarget',target)};
+document.getElementById('minus').onclick=()=>{zoomManuallyAdjusted=true;zoom=Math.max(minimumMapZoom(),zoom/1.18)};document.getElementById('plus').onclick=()=>{zoomManuallyAdjusted=true;zoom=Math.min(3.6,zoom*1.18)};document.getElementById('home').onclick=()=>{if(!joined)return;if(activeMission?.studyTargets){showToast('지도에서 금색 깃발이 미션 장소입니다. 완료한 곳은 연녹색 체크로 표시됩니다.');setMissionPanelOpen(true);return}if(activeMission?.kind==='arrivalRace'){showToast('도착지는 지도에 자동 표시되지 않습니다. 직접 찾아 이동하세요.');setMissionPanelOpen(true);return}const stage=currentStage();if(activeMission?.kind==='staged'){if(activeMission.markerMode!=='exact'){showToast('목표 지점은 자동 표시되지 않습니다. 직접 찾아 이동하세요.');setMissionPanelOpen(true);return}if(stage&&(stage.mode==='any'||stage.mode===mode)){socket.emit('setTarget',stage.point);return}showToast('현재 단계에 맞는 이동 수단을 이용하세요.');return}const target=activeMission?.target&&((activeMission.mode==='any')||activeMission.mode===mode)?activeMission.target:START;socket.emit('setTarget',target)};
 
 function doCityAction(){
   clearKeys();if(!cityInteraction?.canUse)return;
@@ -893,7 +893,7 @@ function drawMap(cw,ch){
   const marker=stageMarker?{...stageMarker.point,radiusTiles:activeMission.markerMode==='area'?18:(stageMarker.radiusTiles||2.5),label:stageMarker.placeName,mode:stageMarker.mode}:activeMission?.target;
   const showMarker=marker&&(activeMission?.kind!=='staged'||activeMission.markerMode!=='hidden')&&(marker.mode==='any'||!marker.mode||marker.mode===mode||activeMission?.mode==='any');
   if(showMarker){const _mk=screenPoint(marker.x,marker.y,cw,ch),mx=_mk.x,my=_mk.y;if(mx>-100&&mx<cw+100&&my>-100&&my<ch+100){ctx.save();ctx.strokeStyle=missionProgress?.status==='completed'?'#9fe1b0':'#ffdc79';ctx.fillStyle='#07141acc';ctx.lineWidth=3;ctx.beginPath();ctx.arc(mx,my,Math.max(10,(marker.radiusTiles||2)*TS*zoom),0,Math.PI*2);ctx.stroke();ctx.font='bold 12px "Malgun Gothic"';ctx.textAlign='center';ctx.fillRect(mx-78,my-31,156,19);ctx.fillStyle='#fff3c2';ctx.fillText(marker.label||'학습 지점',mx,my-17);ctx.restore()}}
-  drawDiscoveryMarkers(cw,ch,left,top);drawHuntAnimal(cw,ch,left,top);drawCityLabels(cw,ch,left,top);
+  drawDiscoveryMarkers(cw,ch,left,top);drawHuntAnimal(cw,ch,left,top);drawCityLabels(cw,ch,left,top);drawStudyTargetMarkers(cw,ch);
   return {left,top};
 }
 
@@ -1010,11 +1010,49 @@ function drawHuntAnimal(cw,ch,left,top){
 function discoveryMapPoint(item){
   return discoveryInteraction?.id===item.id&&discoveryInteraction.markerPoint?discoveryInteraction.markerPoint:item;
 }
+function studyMapTargets(){
+  return (activeMission?.studyTargets||[]).flatMap(target=>{
+    const discovery=discoveryPoints.find(item=>target.key==='discovery:'+item.id);
+    const city=discovery?null:mapCities.find(item=>target.key==='city:'+item.id);
+    const point=discovery?discoveryMapPoint(discovery):city?.cityPoint;
+    if(!point)return [];
+    const completed=missionProgress?.studyPlaces?.some(p=>p.key===target.key&&p.phase==='completed')||false;
+    return [{key:target.key,name:target.name,point,completed}];
+  });
+}
+function drawStudyTargetMarkers(cw,ch){
+  if(!self)return;
+  ctx.save();ctx.font='bold 12px "Malgun Gothic",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
+  const labels=[];
+  for(const target of studyMapTargets()){
+    const {x,y}=screenPoint(target.point.x,target.point.y,cw,ch);
+    if(x<0||x>cw||y<0||y>ch)continue;
+    const color=target.completed?'#b9edc8':'#ffdb76';
+    // Fixed screen size: mission locations remain distinct even when zoomed out.
+    ctx.strokeStyle='#122b30';ctx.lineWidth=5;
+    ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y-38);ctx.stroke();
+    ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x,y-38);ctx.lineTo(x+28,y-38);ctx.lineTo(x+23,y-28);ctx.lineTo(x+28,y-18);ctx.lineTo(x,y-18);ctx.closePath();
+    ctx.fillStyle=color;ctx.strokeStyle='#122b30';ctx.lineWidth=2;ctx.fill();ctx.stroke();
+    ctx.fillStyle='#122b30';ctx.fillText(target.completed?'✓':'★',x+12,y-28);
+    ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();ctx.stroke();
+    const label=(target.completed?'완료 · ':'미션 · ')+target.name;
+    const width=Math.min(cw-8,ctx.measureText(label).width+18),lx=Math.max(4,Math.min(cw-width-4,x-width/2));
+    // Player names sit above their sprites; keep the mission name below the pin.
+    let ly=y+38<=ch?y+14:Math.max(4,y-80);
+    while(ly+50<=ch&&labels.some(r=>lx<r.x+r.w&&lx+width>r.x&&ly<r.y+24&&ly+24>r.y))ly+=26;
+    labels.push({x:lx,y:ly,w:width});
+    ctx.fillStyle='#102832f2';ctx.fillRect(lx,ly,width,24);ctx.strokeStyle=color;ctx.lineWidth=1;ctx.strokeRect(lx,ly,width,24);
+    ctx.fillStyle=color;ctx.fillText(label,lx+width/2,ly+12,width-10);
+  }
+  ctx.restore();
+}
 function drawDiscoveryMarkers(cw,ch,left,top){
   if(!discoveryPoints.length||!self)return;
   const found=new Set(Array.isArray(serverSelf?.discoveryIds)?serverSelf.discoveryIds:[]);
   ctx.save();ctx.textAlign='center';ctx.textBaseline='bottom';ctx.font=`${zoom>=2.4?'bold 11px':'bold 9px'} "Malgun Gothic",sans-serif`;
   for(const item of discoveryPoints){
+    if(activeMission?.studyTargets?.some(t=>t.key==='discovery:'+item.id))continue;
     const point=discoveryMapPoint(item),_di=screenPoint(point.x,point.y,cw,ch),sx=_di.x,sy=_di.y;
     if(sx<-60||sx>cw+60||sy<-40||sy>ch+40)continue;
     const done=found.has(item.id),size=done?3.5:4.2;
@@ -1049,6 +1087,7 @@ function drawCityLabels(cw,ch,left,top){
   ctx.save();ctx.textAlign='center';ctx.textBaseline='bottom';ctx.font=(zoom>=2.4?'bold 12px':'bold 10px')+' "Malgun Gothic",sans-serif';
   for(const item of candidates){
     const {city,sx,sy,icon}=item,label=city.name,tw=ctx.measureText(label).width,pad=3;
+    if(activeMission?.studyTargets?.some(t=>t.key==='city:'+city.id))continue;
     const labelY=sy+icon.labelY;
     const rect={x:sx-tw/2-pad,y:labelY-14,w:tw+pad*2,h:16};
     const overlap=occupied.some(r=>intersects(rect,r))||iconRects.some(r=>intersects(rect,r));
