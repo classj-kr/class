@@ -7,7 +7,8 @@
 .imageKindLabel{position:absolute;left:8px;top:8px;padding:4px 9px;border-radius:5px;background:#142b35e8;color:#fff;font:600 12px/1.4 sans-serif}
 .imageKindLabel[hidden]{display:none}
 .photoCaption{margin:8px 0 4px;font:13px/1.6 sans-serif;color:inherit;word-break:keep-all;overflow-wrap:anywhere}
-.photoCredit{margin:4px 0 0;font:12px/1.5 sans-serif;color:inherit;overflow-wrap:anywhere}
-.photoCredit summary{cursor:pointer;width:fit-content;text-decoration:underline;text-underline-offset:3px}
-.photoCredit p{margin:6px 0}
-.photoCredit a{color:inherit}
+.photoFigure>.photoCredit{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:30px;height:30px;min-width:30px;min-height:30px;margin:0;padding:0;border:1px solid #ffffff80;border-radius:50%;background:#152b32d9;color:#fff;font:20px/1 sans-serif;cursor:pointer}
+.photoCredit:focus-visible{outline:2px solid #f1ce73;outline-offset:3px}
+.photoSourceDialog{width:min(90vw,440px);max-height:80dvh;padding:0;border:1px solid #d8d2c5;border-radius:12px;background:#f3f0e8;color:#25231f;font:14px/1.7 sans-serif;overflow:auto;box-sizing:border-box}
+.photoSourceDialog::backdrop{background:#041015b3}
+.photoSourcePanel{padding:20px}.photoSourcePanel header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}.photoSourcePanel h2{margin:0;font:700 18px/1.5 sans-serif}.photoSourcePanel button{min-height:36px;padding:5px 12px;border:1px solid #b9b2a5;border-radius:6px;background:#fff;color:#25231f;font:14px/1.5 sans-serif;cursor:pointer}.photoSourcePanel p{margin:10px 0;overflow-wrap:anywhere}.photoSourcePanel a{color:#305d69;text-underline-offset:3px}
