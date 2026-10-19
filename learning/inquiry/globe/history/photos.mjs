@@ -16,7 +16,7 @@ export const PHOTOS = [
     "src": "photos/ziggurat.webp",
     "width": 824,
     "height": 394,
-    "credit": "미래엔 세계사(남궁원), 16쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 16쪽"
   },
   {
     "id": "hammurabi",
@@ -34,7 +34,7 @@ export const PHOTOS = [
     "src": "photos/hammurabi.webp",
     "width": 278,
     "height": 767,
-    "credit": "미래엔 세계사(남궁원), 16쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 16쪽"
   },
   {
     "id": "oracle-bone",
@@ -52,7 +52,7 @@ export const PHOTOS = [
     "src": "photos/oracle-bone.webp",
     "width": 266,
     "height": 442,
-    "credit": "미래엔 세계사(남궁원), 19쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 19쪽"
   },
   {
     "id": "sanchi",
@@ -70,7 +70,7 @@ export const PHOTOS = [
     "src": "photos/sanchi.webp",
     "width": 1600,
     "height": 1035,
-    "credit": "미래엔 세계사(남궁원), 34쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 34쪽"
   },
   {
     "id": "gandhara",
@@ -92,7 +92,7 @@ export const PHOTOS = [
     "src": "photos/gandhara.webp",
     "width": 322,
     "height": 769,
-    "credit": "미래엔 세계사(남궁원), 35쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 35쪽"
   },
   {
     "id": "ajanta",
@@ -108,7 +108,7 @@ export const PHOTOS = [
     "src": "photos/ajanta.webp",
     "width": 483,
     "height": 486,
-    "credit": "미래엔 세계사(남궁원), 37쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 37쪽"
   },
   {
     "id": "parthenon",
@@ -126,7 +126,7 @@ export const PHOTOS = [
     "src": "photos/parthenon.webp",
     "width": 875,
     "height": 458,
-    "credit": "미래엔 세계사(남궁원), 45쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 45쪽"
   },
   {
     "id": "persepolis",
@@ -144,7 +144,7 @@ export const PHOTOS = [
     "src": "photos/persepolis.webp",
     "width": 1600,
     "height": 506,
-    "credit": "미래엔 세계사(남궁원), 41쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 41쪽"
   },
   {
     "id": "hagia-sophia",
@@ -165,7 +165,7 @@ export const PHOTOS = [
     "src": "photos/hagia-sophia.webp",
     "width": 1600,
     "height": 1175,
-    "credit": "미래엔 세계사(남궁원), 57쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 57쪽"
   },
   {
     "id": "forbidden-city",
@@ -186,7 +186,7 @@ export const PHOTOS = [
     "src": "photos/forbidden-city.webp",
     "width": 1278,
     "height": 1600,
-    "credit": "미래엔 세계사(남궁원), 117쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 117쪽"
   },
   {
     "id": "ukiyoe",
@@ -205,7 +205,7 @@ export const PHOTOS = [
     "src": "photos/ukiyoe.webp",
     "width": 815,
     "height": 555,
-    "credit": "미래엔 세계사(남궁원), 125쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 125쪽"
   },
   {
     "id": "dejima",
@@ -223,7 +223,7 @@ export const PHOTOS = [
     "src": "photos/dejima.webp",
     "width": 876,
     "height": 524,
-    "credit": "미래엔 세계사(남궁원), 125쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 125쪽"
   },
   {
     "id": "taj-mahal",
@@ -241,7 +241,7 @@ export const PHOTOS = [
     "src": "photos/taj-mahal.webp",
     "width": 1600,
     "height": 1036,
-    "credit": "미래엔 세계사(남궁원), 129쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 129쪽"
   },
   {
     "id": "berlin-airlift",
@@ -259,7 +259,7 @@ export const PHOTOS = [
     "src": "photos/berlin-airlift.webp",
     "width": 1202,
     "height": 781,
-    "credit": "미래엔 세계사(남궁원), 196쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 196쪽"
   },
   {
     "id": "brandenburg",
@@ -277,7 +277,7 @@ export const PHOTOS = [
     "src": "photos/brandenburg.webp",
     "width": 1277,
     "height": 1600,
-    "credit": "미래엔 세계사(남궁원), 179쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 179쪽"
   },
   {
     "id": "walesa",
@@ -295,7 +295,7 @@ export const PHOTOS = [
     "src": "photos/walesa.webp",
     "width": 1010,
     "height": 574,
-    "credit": "미래엔 세계사(남궁원), 201쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 201쪽"
   },
   {
     "id": "book-of-dead",
@@ -313,7 +313,7 @@ export const PHOTOS = [
     "src": "photos/book-of-dead.webp",
     "width": 1355,
     "height": 588,
-    "credit": "미래엔 세계사(남궁원), 17쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 17쪽"
   },
   {
     "id": "mohenjo-daro",
@@ -332,7 +332,7 @@ export const PHOTOS = [
     "src": "photos/mohenjo-daro.webp",
     "width": 1600,
     "height": 569,
-    "credit": "미래엔 세계사(남궁원), 18쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 18쪽"
   },
   {
     "id": "han-paper",
@@ -348,7 +348,7 @@ export const PHOTOS = [
     "src": "photos/han-paper.webp",
     "width": 299,
     "height": 629,
-    "credit": "미래엔 세계사(남궁원), 26쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 26쪽"
   },
   {
     "id": "tang-camel",
@@ -369,7 +369,7 @@ export const PHOTOS = [
     "src": "photos/tang-camel.webp",
     "width": 800,
     "height": 1210,
-    "credit": "미래엔 세계사(남궁원), 30쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 30쪽"
   },
   {
     "id": "tang-stele",
@@ -390,7 +390,7 @@ export const PHOTOS = [
     "src": "photos/tang-stele.webp",
     "width": 323,
     "height": 941,
-    "credit": "미래엔 세계사(남궁원), 30쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 30쪽"
   },
   {
     "id": "appian-way",
@@ -411,7 +411,7 @@ export const PHOTOS = [
     "src": "photos/appian-way.webp",
     "width": 556,
     "height": 371,
-    "credit": "미래엔 세계사(남궁원), 51쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 51쪽"
   },
   {
     "id": "roman-aqueduct",
@@ -430,7 +430,7 @@ export const PHOTOS = [
     "src": "photos/roman-aqueduct.webp",
     "width": 1214,
     "height": 675,
-    "credit": "미래엔 세계사(남궁원), 51쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 51쪽"
   },
   {
     "id": "colosseum",
@@ -448,7 +448,7 @@ export const PHOTOS = [
     "src": "photos/colosseum.webp",
     "width": 1079,
     "height": 678,
-    "credit": "미래엔 세계사(남궁원), 51쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 51쪽"
   },
   {
     "id": "justinian-mosaic",
@@ -469,7 +469,7 @@ export const PHOTOS = [
     "src": "photos/justinian-mosaic.webp",
     "width": 709,
     "height": 710,
-    "credit": "미래엔 세계사(남궁원), 56쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 56쪽"
   },
   {
     "id": "crusade-council",
@@ -487,7 +487,7 @@ export const PHOTOS = [
     "src": "photos/crusade-council.webp",
     "width": 539,
     "height": 448,
-    "credit": "미래엔 세계사(남궁원), 58쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 58쪽"
   },
   {
     "id": "cordoba-mosque",
@@ -505,7 +505,7 @@ export const PHOTOS = [
     "src": "photos/cordoba-mosque.webp",
     "width": 811,
     "height": 541,
-    "credit": "미래엔 세계사(남궁원), 69쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 69쪽"
   },
   {
     "id": "qingming-scroll",
@@ -527,7 +527,7 @@ export const PHOTOS = [
     "src": "photos/qingming-scroll.webp",
     "width": 1600,
     "height": 683,
-    "credit": "미래엔 세계사(남궁원), 79쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 79쪽"
   },
   {
     "id": "movable-type",
@@ -546,7 +546,7 @@ export const PHOTOS = [
     "src": "photos/movable-type.webp",
     "width": 675,
     "height": 520,
-    "credit": "미래엔 세계사(남궁원), 79쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 79쪽"
   },
   {
     "id": "yuan-banknote",
@@ -567,7 +567,7 @@ export const PHOTOS = [
     "src": "photos/yuan-banknote.webp",
     "width": 484,
     "height": 645,
-    "credit": "미래엔 세계사(남궁원), 82쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 82쪽"
   },
   {
     "id": "paiza",
@@ -589,7 +589,7 @@ export const PHOTOS = [
     "src": "photos/paiza.webp",
     "width": 263,
     "height": 514,
-    "credit": "미래엔 세계사(남궁원), 83쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 83쪽"
   },
   {
     "id": "caravel",
@@ -609,7 +609,7 @@ export const PHOTOS = [
     "src": "photos/caravel.webp",
     "width": 335,
     "height": 335,
-    "credit": "미래엔 세계사(남궁원), 87쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 87쪽"
   },
   {
     "id": "sultan-ahmed",
@@ -630,7 +630,7 @@ export const PHOTOS = [
     "src": "photos/sultan-ahmed.webp",
     "width": 1600,
     "height": 931,
-    "credit": "미래엔 세계사(남궁원), 131쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 131쪽"
   },
   {
     "id": "boston-tea",
@@ -648,7 +648,7 @@ export const PHOTOS = [
     "src": "photos/boston-tea.webp",
     "width": 1333,
     "height": 934,
-    "credit": "미래엔 세계사(남궁원), 136쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 136쪽"
   },
   {
     "id": "vienna-cartoon",
@@ -666,7 +666,7 @@ export const PHOTOS = [
     "src": "photos/vienna-cartoon.webp",
     "width": 823,
     "height": 582,
-    "credit": "미래엔 세계사(남궁원), 143쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 143쪽"
   },
   {
     "id": "german-proclamation",
@@ -685,7 +685,7 @@ export const PHOTOS = [
     "src": "photos/german-proclamation.webp",
     "width": 823,
     "height": 516,
-    "credit": "미래엔 세계사(남궁원), 146쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 146쪽"
   },
   {
     "id": "imperial-burden",
@@ -704,7 +704,7 @@ export const PHOTOS = [
     "src": "photos/imperial-burden.webp",
     "width": 995,
     "height": 577,
-    "credit": "미래엔 세계사(남궁원), 155쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 155쪽"
   },
   {
     "id": "imperial-burden-critique",
@@ -723,7 +723,7 @@ export const PHOTOS = [
     "src": "photos/imperial-burden-critique.webp",
     "width": 923,
     "height": 790,
-    "credit": "미래엔 세계사(남궁원), 155쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 155쪽"
   },
   {
     "id": "fuzhou-arsenal",
@@ -739,7 +739,7 @@ export const PHOTOS = [
     "src": "photos/fuzhou-arsenal.webp",
     "width": 556,
     "height": 407,
-    "credit": "미래엔 세계사(남궁원), 161쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 161쪽"
   },
   {
     "id": "wuchang-uprising",
@@ -757,7 +757,7 @@ export const PHOTOS = [
     "src": "photos/wuchang-uprising.webp",
     "width": 740,
     "height": 389,
-    "credit": "미래엔 세계사(남궁원), 163쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 163쪽"
   },
   {
     "id": "indian-congress",
@@ -776,7 +776,7 @@ export const PHOTOS = [
     "src": "photos/indian-congress.webp",
     "width": 887,
     "height": 517,
-    "credit": "미래엔 세계사(남궁원), 169쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 169쪽"
   },
   {
     "id": "vietnam-book",
@@ -794,7 +794,7 @@ export const PHOTOS = [
     "src": "photos/vietnam-book.webp",
     "width": 271,
     "height": 377,
-    "credit": "미래엔 세계사(남궁원), 171쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 171쪽"
   },
   {
     "id": "sarajevo-assassination",
@@ -812,7 +812,7 @@ export const PHOTOS = [
     "src": "photos/sarajevo-assassination.webp",
     "width": 508,
     "height": 628,
-    "credit": "미래엔 세계사(남궁원), 181쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 181쪽"
   },
   {
     "id": "pearl-harbor",
@@ -833,7 +833,7 @@ export const PHOTOS = [
     "src": "photos/pearl-harbor.webp",
     "width": 860,
     "height": 471,
-    "credit": "미래엔 세계사(남궁원), 191쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 191쪽"
   },
   {
     "id": "normandy-landing",
@@ -854,7 +854,7 @@ export const PHOTOS = [
     "src": "photos/normandy-landing.webp",
     "width": 858,
     "height": 505,
-    "credit": "미래엔 세계사(남궁원), 191쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 191쪽"
   },
   {
     "id": "cuban-crisis-cartoon",
@@ -875,7 +875,7 @@ export const PHOTOS = [
     "src": "photos/cuban-crisis-cartoon.webp",
     "width": 650,
     "height": 457,
-    "credit": "미래엔 세계사(남궁원), 197쪽"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 197쪽"
   },
   {
     "id": "sui-canal-record",
@@ -904,7 +904,7 @@ export const PHOTOS = [
       ]
     },
     "alt": "교과서에 수록된 역사 사료",
-    "credit": "미래엔 세계사(남궁원), 28쪽 수록 사료"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 28쪽 수록 사료"
   },
   {
     "id": "carolingian-learning",
@@ -930,7 +930,7 @@ export const PHOTOS = [
       ]
     },
     "alt": "교과서에 수록된 역사 사료",
-    "credit": "미래엔 세계사(남궁원), 52쪽 수록 사료"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 52쪽 수록 사료"
   },
   {
     "id": "luther-calvin",
@@ -957,7 +957,7 @@ export const PHOTOS = [
       ]
     },
     "alt": "교과서에 수록된 역사 사료",
-    "credit": "미래엔 세계사(남궁원), 90쪽 수록 사료"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 90쪽 수록 사료"
   },
   {
     "id": "continental-blockade",
@@ -984,7 +984,7 @@ export const PHOTOS = [
       ]
     },
     "alt": "교과서에 수록된 역사 사료",
-    "credit": "미래엔 세계사(남궁원), 142쪽 수록 사료"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 142쪽 수록 사료"
   },
   {
     "id": "nanjing-treaty",
@@ -1012,7 +1012,7 @@ export const PHOTOS = [
       ]
     },
     "alt": "교과서에 수록된 역사 사료",
-    "credit": "미래엔 세계사(남궁원), 160쪽 수록 사료"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 160쪽 수록 사료"
   },
   {
     "id": "fourteen-points",
@@ -1040,6 +1040,274 @@ export const PHOTOS = [
       ]
     },
     "alt": "교과서에 수록된 역사 사료",
-    "credit": "미래엔 세계사(남궁원), 184쪽 수록 사료"
+    "credit": "미래엔 세계사(남궁원, 2022), PDF 184쪽 수록 사료"
+  },
+  {
+    "id": "ashoka-pillar",
+    "title": "아소카왕의 돌기둥",
+    "period": "기원전 3세기 · 마우리아 왕조",
+    "observe": "기둥 위의 동물 조각과 긴 기둥을 살펴보세요. 아소카왕은 통치 원칙을 새긴 기둥을 각지에 세웠습니다.",
+    "connection": "마우리아 왕조의 영역과 불교를 후원한 아소카왕의 정책을 연결해 보세요.",
+    "bindings": {
+      "india": [
+        "마우리아"
+      ]
+    },
+    "alt": "동물 모양의 기둥머리를 얹은 긴 돌기둥",
+    "kind": "유물·유적",
+    "compareWith": [
+      "ashoka-edict",
+      "sanchi"
+    ],
+    "src": "photos/ashoka-pillar.webp",
+    "width": 610,
+    "height": 981,
+    "credit": "천재교육 세계사(김덕수), PDF 35쪽"
+  },
+  {
+    "id": "laocoon",
+    "title": "라오콘 군상",
+    "period": "헬레니즘 미술",
+    "observe": "인물들이 몸을 비트는 자세와 고통을 드러내는 표정을 살펴보세요. 극적인 동작과 감정 표현이 두드러집니다.",
+    "connection": "알렉산드로스의 원정 이후 그리스 문화가 퍼진 범위를 찾고, 간다라 불상의 옷 주름·신체 표현과 비교해 보세요.",
+    "bindings": {
+      "alexander": []
+    },
+    "alt": "뱀에 감긴 세 인물의 자세와 근육이 표현된 조각",
+    "kind": "유물·유적",
+    "compareWith": [
+      "gandhara"
+    ],
+    "src": "photos/laocoon.webp",
+    "width": 282,
+    "height": 344,
+    "credit": "천재교육 세계사(김덕수), PDF 48쪽"
+  },
+  {
+    "id": "baghdad-plan",
+    "title": "원형 도시 바그다드",
+    "period": "아바스 왕조 · 도시를 재현한 상상화",
+    "observe": "원형 성벽과 중심부로 이어지는 길을 살펴보세요. 이 그림은 옛 도시의 모습을 재현한 것으로 당시의 사진은 아닙니다.",
+    "connection": "바그다드는 티그리스강가에 세워진 아바스 왕조의 수도였습니다. 코르도바와 비교해 이슬람 세계의 여러 중심지를 찾아보세요.",
+    "bindings": {
+      "islam": [
+        "바그다드"
+      ]
+    },
+    "alt": "강 가까이에 원형 성벽과 도로를 배치한 도시 재현도",
+    "kind": "복원·상상도",
+    "compareWith": [
+      "cordoba-mosque"
+    ],
+    "src": "photos/baghdad-plan.webp",
+    "width": 282,
+    "height": 234,
+    "credit": "천재교육 세계사(김덕수), PDF 63쪽"
+  },
+  {
+    "id": "song-compass",
+    "title": "송대의 나침반",
+    "period": "송 · 복원 모형",
+    "observe": "자성을 띤 물체를 실에 매달아 방향을 알아내는 구조입니다. 송대에는 나침반이 해상 교역에 널리 활용되었습니다.",
+    "connection": "지도에 보이는 바닷길에서 방향을 확인하는 일이 왜 필요했을지 생각해 보세요. 나침반으로 경도까지 알아낼 수 있었던 것은 아닙니다.",
+    "bindings": {
+      "song": []
+    },
+    "alt": "틀에 실을 매달고 아래에 원형 받침을 놓은 나침반 모형",
+    "kind": "복원 모형",
+    "compareWith": [
+      "astrolabe"
+    ],
+    "src": "photos/song-compass.webp",
+    "width": 186,
+    "height": 271,
+    "credit": "천재교육 세계사(김덕수), PDF 83쪽"
+  },
+  {
+    "id": "zheng-he-giraffe",
+    "title": "명에 전해진 기린을 그린 그림",
+    "period": "15세기 · 명",
+    "observe": "목이 긴 기린 옆에 사람이 서 있습니다. 기린은 당시 명의 궁정에 들어온 진귀한 동물 가운데 하나였습니다.",
+    "connection": "정화 함대의 인도양 항로와 동아프리카 방면을 살펴보세요. 항해를 통해 물품뿐 아니라 동물과 지역에 대한 정보도 오갔습니다.",
+    "bindings": {
+      "ming": []
+    },
+    "alt": "목이 긴 기린과 고삐를 잡은 사람을 그린 그림",
+    "kind": "회화",
+    "compareWith": [
+      "forbidden-city"
+    ],
+    "src": "photos/zheng-he-giraffe.webp",
+    "width": 359,
+    "height": 336,
+    "credit": "천재교육 세계사(김덕수), PDF 87쪽"
+  },
+  {
+    "id": "mughal-merchants",
+    "title": "무굴 제국을 방문한 유럽 상인들",
+    "period": "무굴 제국 · 교역을 묘사한 그림",
+    "observe": "서로 다른 옷차림의 방문객들을 살펴보세요. 무굴 제국의 면직물과 향신료를 구하려고 유럽 상인들이 인도에 왔습니다.",
+    "connection": "인도의 해안 무역항과 인도양 항로를 연결해 보세요. 타지마할 같은 건축물뿐 아니라 교역도 무굴 제국의 번영을 보여 줍니다.",
+    "bindings": {
+      "mughal": []
+    },
+    "alt": "모자와 서로 다른 옷을 입은 방문객들이 함께 서 있는 그림",
+    "kind": "회화",
+    "compareWith": [
+      "taj-mahal"
+    ],
+    "src": "photos/mughal-merchants.webp",
+    "width": 282,
+    "height": 181,
+    "credit": "천재교육 세계사(김덕수), PDF 134쪽"
+  },
+  {
+    "id": "ww1-trench",
+    "title": "제1차 세계 대전의 참호",
+    "period": "1914~1918년",
+    "observe": "병사들이 땅을 파서 만든 좁고 긴 진지에 몸을 숨기고 있습니다. 서부 전선에서는 참호를 사이에 둔 대치가 이어졌습니다.",
+    "connection": "사라예보 사건은 전쟁의 발단이고, 참호전은 전쟁이 확대된 뒤의 전투 양상입니다. 두 자료가 보여 주는 시점과 장소를 구별해 보세요.",
+    "bindings": {
+      "ww1": []
+    },
+    "alt": "길게 파인 참호 안에 병사들이 늘어서 있는 전장 사진",
+    "kind": "당시 사진",
+    "compareWith": [
+      "sarajevo-assassination"
+    ],
+    "src": "photos/ww1-trench.webp",
+    "width": 278,
+    "height": 182,
+    "credit": "천재교육 세계사(김덕수), PDF 193쪽"
+  },
+  {
+    "id": "bandung-conference",
+    "title": "아시아·아프리카 회의",
+    "period": "1955년 · 인도네시아 반둥",
+    "observe": "아시아·아프리카 국가의 대표들이 함께 모인 모습입니다. 이들은 식민 지배에 반대하고 국가 간 평등과 평화 공존을 강조했습니다.",
+    "connection": "냉전기의 모든 나라가 미국과 소련 중 한쪽에 속했던 것은 아닙니다. 두 진영 사이에서 독자적인 길을 모색한 국가들도 있었습니다.",
+    "bindings": {
+      "cold-war": []
+    },
+    "alt": "회의에 참석한 여러 나라 대표들이 함께 서 있는 흑백사진",
+    "kind": "당시 사진",
+    "compareWith": [
+      "cuban-crisis-cartoon"
+    ],
+    "src": "photos/bandung-conference.webp",
+    "width": 380,
+    "height": 233,
+    "credit": "천재교육 세계사(김덕수), PDF 209쪽"
+  },
+  {
+    "id": "tang-silver-box",
+    "title": "외국인을 새긴 당의 은합",
+    "period": "당",
+    "observe": "꽃잎처럼 나뉜 면마다 서로 다른 인물 모습이 새겨져 있습니다. 여러 나라 인물을 장식에 활용한 은제 그릇입니다.",
+    "connection": "장안을 중심으로 오간 외국 사신과 상인들을 떠올려 보세요. 경교비·당삼채와 함께 당의 국제적 교류를 보여 주는 자료입니다.",
+    "bindings": {
+      "tang": [
+        "장안"
+      ]
+    },
+    "alt": "여러 인물을 새긴 꽃 모양의 은제 그릇",
+    "kind": "유물·유적",
+    "compareWith": [
+      "tang-camel",
+      "tang-stele"
+    ],
+    "src": "photos/tang-silver-box.webp",
+    "width": 161,
+    "height": 158,
+    "credit": "동아출판 역사 부도(서인원, 2022), 3단원, PDF 1쪽"
+  },
+  {
+    "id": "aachen-cathedral",
+    "title": "아헨 대성당",
+    "period": "카롤루스 대제 시대에 시작 · 이후 증축된 현재 모습",
+    "observe": "서로 다른 높이와 형태의 건물이 이어져 있습니다. 오늘날의 성당은 카롤루스 대제 때 세운 예배당에 후대 건축이 더해진 모습입니다.",
+    "connection": "아헨은 카롤루스 대제의 정치·문화 중심지였습니다. 로마의 교황과 프랑크 왕국의 관계를 함께 살펴보세요.",
+    "bindings": {
+      "frank": [
+        "아헨"
+      ]
+    },
+    "alt": "돔과 첨탑 등 서로 다른 형태의 건물로 이루어진 성당",
+    "kind": "유물·유적",
+    "compareWith": [
+      "carolingian-learning"
+    ],
+    "src": "photos/aachen-cathedral.webp",
+    "width": 208,
+    "height": 250,
+    "credit": "동아출판 역사 부도(서인원, 2022), 3단원, PDF 5쪽"
+  },
+  {
+    "id": "devshirme",
+    "title": "오스만 제국의 인재 징집",
+    "period": "오스만 제국 · 징집 장면을 묘사한 그림",
+    "observe": "관리 앞에 소년들이 줄지어 서 있는 모습을 살펴보세요. 정복지의 크리스트교도 소년을 징집해 관리나 예니체리로 양성하는 제도가 있었습니다.",
+    "connection": "영토가 넓어진 오스만 제국이 군대와 관리를 어떻게 충원했는지 살펴보세요. 종교 공동체의 자치를 인정한 밀레트 제도와는 구별됩니다.",
+    "bindings": {
+      "ottoman": []
+    },
+    "alt": "관리 앞에 소년들이 줄지어 서 있는 그림",
+    "kind": "회화",
+    "src": "photos/devshirme.webp",
+    "width": 292,
+    "height": 173,
+    "credit": "동아출판 역사 부도(서인원, 2022), 4단원, PDF 5쪽"
+  },
+  {
+    "id": "astrolabe",
+    "title": "아스트롤라베",
+    "period": "천문 관측 도구",
+    "observe": "원판 위의 눈금과 움직이는 부분을 살펴보세요. 천체의 높이를 재는 데 쓰이는 도구이며, 이런 관측 기술은 먼바다 항해에도 활용되었습니다.",
+    "connection": "나침반은 방향을, 천체의 높이 관측은 위도를 파악하는 데 도움을 주었습니다. 포르투갈의 아프리카 해안 항로와 인도양 항로를 따라가 보세요.",
+    "bindings": {
+      "voyages": [
+        "리스본"
+      ]
+    },
+    "alt": "고리와 여러 겹의 눈금이 있는 둥근 금속 관측 도구",
+    "kind": "유물·유적",
+    "compareWith": [
+      "song-compass",
+      "caravel"
+    ],
+    "src": "photos/astrolabe.webp",
+    "width": 148,
+    "height": 187,
+    "credit": "동아출판 역사 부도(서인원, 2022), 4단원, PDF 8쪽"
+  },
+  {
+    "id": "ashoka-edict",
+    "type": "document",
+    "title": "정복 전쟁을 돌아본 아소카왕",
+    "period": "기원전 3세기 · 마우리아 왕조",
+    "kind": "사료",
+    "observe": "아소카왕은 칼링가 정복으로 생긴 희생을 언급하며 통치 원칙의 변화를 주장했습니다. 왕이 남긴 말과 실제 통치의 모든 결과가 같다고 단정하지는 마세요.",
+    "connection": "마우리아 왕조의 영역 확대와 불교 후원을 연결해 보세요. 산치 대탑 사진과 함께 읽으면 정복과 종교 정책의 관계를 살펴볼 수 있습니다.",
+    "bindings": {
+      "india": [
+        "마우리아"
+      ]
+    },
+    "alt": "정복 전쟁 뒤의 통치 원칙을 밝힌 글",
+    "excerpts": [
+      {
+        "text": "칼링가를 정복하면서 나는 결코 돌이킬 수 없는 양심의 가책을 느꼈다.",
+        "attribution": "아소카왕의 칙령 중"
+      },
+      {
+        "text": "나는 진리의 법에 의한 승리만이 최상의 승리라고 생각한다.",
+        "attribution": "아소카왕의 칙령 중"
+      }
+    ],
+    "compareWith": [
+      "ashoka-pillar",
+      "sanchi"
+    ],
+    "credit": "천재교육 세계사(김덕수), PDF 35쪽 수록 사료"
   }
 ];

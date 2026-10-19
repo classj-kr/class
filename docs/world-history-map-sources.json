@@ -10,12 +10,13 @@
       311
     ],
     "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
-    "imageSha256": "dea25a312eb39054aac3ff857d4c2e60cfb97a461653089d52ed927075cc2ba3",
+    "imageSha256": "aa7a44750be66ff624dcfa528c285298bfa9e75ff01b5bbc60b1c7c81980f0b0",
     "pixels": [
       1740,
       1134
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 14
   },
   {
     "id": "alexander",
@@ -28,12 +29,13 @@
       687
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "b53b745982615702055252c64fb1590fc0770820b2125c8a8bb7ea2c78a292c5",
+    "imageSha256": "12b3ce53717a74058c20ca79cdb8078eaf0a6134f468bde18ec58c7a44338b8f",
     "pixels": [
       2118,
       1158
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 11
   },
   {
     "id": "rome",
@@ -46,12 +48,13 @@
       635
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "60fa97e9805c36bfb52f9f6eb113daba1483ea476b1edc50195d4bb6277234de",
+    "imageSha256": "220e82e04770f19b8a54b09bd6d2e51ecbbf0b688da0501c73b14d0ceda2e7b2",
     "pixels": [
       1332,
       924
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 10
   },
   {
     "id": "han",
@@ -64,12 +67,13 @@
       321
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "398e587fce5d4cde05ecb83977a32e4f834f3195d1f34917d5dedc3bdb585a2c",
+    "imageSha256": "c9bf32e390527725281a4fae3247b5e37813346df4777133a7830befec5ed95d",
     "pixels": [
       2400,
       1162
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 19
   },
   {
     "id": "tang",
@@ -82,12 +86,13 @@
       688
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "a5e48b827edce4b3ef01288fc5e31a494625f5072371e5a5f818eb0a47474a2c",
+    "imageSha256": "038f6cd42bcaef4bfd309fe6eb43e308735024e988b58135b75d1f9a826b3a46",
     "pixels": [
       2154,
       1590
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 17
   },
   {
     "id": "northern-song",
@@ -100,12 +105,13 @@
       325
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "cbdf4951603f109e5066e81719941c7a2f5a02d03fa2792e92d04c86962f028a",
+    "imageSha256": "a8edd32077e262bc14126a325c1c639329ba96cb0043673e08ebb05d59a051c9",
     "pixels": [
       1932,
       1422
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 8
   },
   {
     "id": "southern-song",
@@ -118,12 +124,13 @@
       718
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "93cff0f8e6ffcd532013db4f2ce325b39e15c938818cd48b07633b14824bf4ee",
+    "imageSha256": "e098ff0fdf493789f6b08f3c31bb85072b87e07a66be4c9a3ddc8e50e5d98468",
     "pixels": [
       1506,
       1392
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 8
   },
   {
     "id": "mongols",
@@ -136,12 +143,13 @@
       320
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "80a8149c6399d4863ac7e6f1e20349c0556ddadd87189d875fd7c5e299f175a4",
+    "imageSha256": "ef4ecaa899aceee6aee606d9d76f9a95b6958c963b75eae55876418128ef9e87",
     "pixels": [
       2400,
       1415
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 30
   },
   {
     "id": "ming",
@@ -154,12 +162,13 @@
       335
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "a5480426483481631415a44bfa74e6bffd7529092696fcaa698c32dcdbaf2bfd",
+    "imageSha256": "b3ee615fddbf2aea49b209c72d83f1cd7a11c02f24c8a3c16e056a729b907b49",
     "pixels": [
       2238,
       1482
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 19
   },
   {
     "id": "qing",
@@ -172,12 +181,13 @@
       484
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "8731c79e4beae116f7c4467659c7318b4f3a2a911c9c00505157eed6fc7d662d",
+    "imageSha256": "65da0df2039d16b4fa78dc7dd499c45f0ff5a45b10a1a108334292aeece3e846",
     "pixels": [
       2256,
       1290
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 12
   },
   {
     "id": "edo",
@@ -190,12 +200,13 @@
       424
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "a18a274bdbd5ec854431574f1d6f33b4a5f3a5e60f80bd13e5f93feb834e75a7",
+    "imageSha256": "393c457eb6a652f938ada8bd6fb3dffec9a48d6c4ce6a0925c5310880445dc11",
     "pixels": [
       2040,
       1842
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 25
   },
   {
     "id": "islam",
@@ -208,12 +219,13 @@
       342
     ],
     "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
-    "imageSha256": "c1f00fa18e255885d763d3507b41707082ff7525ea551f52b7af12c1bb9d30c9",
+    "imageSha256": "5c71d63da600904444034c675623ad0a4de249c1bcaf32aa3dad051b3339e9c1",
     "pixels": [
       2400,
       1058
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 17
   },
   {
     "id": "ottoman",
@@ -226,12 +238,13 @@
       468
     ],
     "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
-    "imageSha256": "4370f9f17badb0ed9d6b39d94652c0d766cb50cb99b778bfe4ced1caf7e8eccf",
+    "imageSha256": "76d1bf00c7dc4103f931e1affa073cb242d49a1aca194841a00e1528eeb5c4c2",
     "pixels": [
       1560,
       1596
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 18
   },
   {
     "id": "india",
@@ -244,12 +257,13 @@
       399
     ],
     "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
-    "imageSha256": "8ad46969655295ecd0939b0a18319d594c0ae458ab61718adcb44562a6323f8b",
+    "imageSha256": "57a623fcbf54efd9bd52c75d9dccb1a4840d2a0653c18e7c94f6721437233b61",
     "pixels": [
       1524,
       1818
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 6
   },
   {
     "id": "gupta",
@@ -262,12 +276,13 @@
       651
     ],
     "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
-    "imageSha256": "7271dcbcd80838ce2b45b2114134c6e40f03d9973ebdb8644c286721072830ff",
+    "imageSha256": "8bb40e32ddfc283fc8b5f37da4d14358eae458eeef40a9f6ba6c4c1f9e0741c1",
     "pixels": [
       1056,
       1134
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 3
   },
   {
     "id": "mughal",
@@ -280,12 +295,13 @@
       344
     ],
     "sourceSha256": "1b1f89545824ff9fa7d97ba86d88d74d9a56be28614821ae585e5813b3434cb8",
-    "imageSha256": "aed0dc185cc657c0f997763262bd7151efef2098aa43349de588217b53ed50a6",
+    "imageSha256": "00b3f89b2e43002981320b32ffee5deb3be281093613e37aa008e84d11e393ae",
     "pixels": [
       1860,
       1644
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 28
   },
   {
     "id": "frank",
@@ -298,12 +314,13 @@
       448
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "e32e737a6c84a54bc25136315191eebb723bc8ba711358db84d7e8b695c993aa",
+    "imageSha256": "f6391857220a242146d4292e132812748473e91088299bb9da4ccefbf0e6a418",
     "pixels": [
       1494,
       882
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 15
   },
   {
     "id": "byzantine",
@@ -316,12 +333,13 @@
       332
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "12f0202057bbb0e5bb01030a32bfffbaa2dd88a460aa2d6b9a7b0412c4ec9ef2",
+    "imageSha256": "64790919cef75ac3da77c1606c9f847d2dae48ae1924d969d073e3c3dab8ce2b",
     "pixels": [
       1806,
       1602
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 9
   },
   {
     "id": "crusades",
@@ -334,12 +352,13 @@
       578
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "519fe0764edfcc39e7464bd6003f38ae489961f1ab1d180e4ed3e5b5e45cddab",
+    "imageSha256": "de9e71d7781315727ca6fea946a532a419a492db72fcb3f5208387112c14fcb1",
     "pixels": [
       1464,
       948
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 18
   },
   {
     "id": "reformation",
@@ -352,12 +371,13 @@
       688
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "75e14ae7bbbd33039f90c4928779c359b5ecef9b38131ac34bdbbf3c9ccb501a",
+    "imageSha256": "3236d05ec47b89d0ab320e91c46ab0db59a92fdd92894285ec9fc5d725ad1d15",
     "pixels": [
       1488,
       1290
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 10
   },
   {
     "id": "voyages",
@@ -370,12 +390,13 @@
       460
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "1e750392373c64324a842fb809c13a2141f09b15b0a8784331acf44f5754fc51",
+    "imageSha256": "759e958386d43cbbc6622d7f14c2828631da46d67b99e3b3d3d791cbb9f337a3",
     "pixels": [
       2400,
       923
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 6
   },
   {
     "id": "american",
@@ -388,12 +409,13 @@
       406
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "e54d1ff9b030e9e21378a12ae22f6d23afd1489b67dd2e8d77d6e3a822d6b3bf",
+    "imageSha256": "49239a52697d0e51c13da127c87e4975e6404df049158f5ed9381a7ef1bdb256",
     "pixels": [
       1698,
       1242
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 9
   },
   {
     "id": "napoleon",
@@ -406,12 +428,13 @@
       323
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "e12fa00ef5ad64f0492b263a39d7c814e73beda52c177ae8590ffd7ce2206c76",
+    "imageSha256": "3932dd658df0e7f8236275cc5d9b7c877ed3006bcd5a9b991e97a2957eecb89a",
     "pixels": [
       1482,
       1512
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 10
   },
   {
     "id": "unification",
@@ -424,12 +447,13 @@
       326
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "39019701f3cccc29783483f755b2e0d09dc5ea0356abc6d5af927f0a5da6d230",
+    "imageSha256": "c8566e2fe73ba89f620b49a35ea8351cca314419bb7c008d93e67665ce2b2d16",
     "pixels": [
       2046,
       1704
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 8
   },
   {
     "id": "ww1",
@@ -447,7 +471,8 @@
       1974,
       1494
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 0
   },
   {
     "id": "ww2",
@@ -460,12 +485,13 @@
       389
     ],
     "sourceSha256": "ececfb049f19f088b5cdc0386672e9abaffc6c7b60e2bab6f3410cee08e35ec4",
-    "imageSha256": "956c3cd3f461970fd0909e687b31785baccc8010ccccdb466014aa9e9c71a304",
+    "imageSha256": "aa2b7786bac06429e3ea38f0d8cacb3bf196d28eb88bb3ce4f4a0e0b4123b2ce",
     "pixels": [
       2400,
       1095
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 5
   },
   {
     "id": "colonial-africa",
@@ -478,12 +504,13 @@
       717
     ],
     "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
-    "imageSha256": "6b269d2e9919c4f2b27abe6a2fa191c4564480d6596e88728a6bb30aae2d83a9",
+    "imageSha256": "c7e6e5fdd439d1d826137c934680c3b2c4bc0a0644d3beff7a5a4db2bf858220",
     "pixels": [
       1026,
       1740
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 2
   },
   {
     "id": "china-opening",
@@ -496,12 +523,13 @@
       355
     ],
     "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
-    "imageSha256": "214e4a69d5d5b1cfd847b9e1f1134fa9bc487ffca79e9ef58d7dec148ffbff65",
+    "imageSha256": "c37b3f2c71f00c29b9a91faba9641999412d76456a9a3e8a802ffe498da461a5",
     "pixels": [
       1452,
       1572
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 46
   },
   {
     "id": "xinhai",
@@ -514,12 +542,13 @@
       741
     ],
     "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
-    "imageSha256": "bf830ccfeb8177d67a120779df1bbb91cd29ac96c19e7335c21303c55a5d6edb",
+    "imageSha256": "8b69b84b39e5d678e6dd7fe0e4d953935aaef125b09586819d99baee9e7236bd",
     "pixels": [
       1278,
       1068
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 20
   },
   {
     "id": "colonial-india",
@@ -532,12 +561,13 @@
       267
     ],
     "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
-    "imageSha256": "ff42f1db6a42d7dac8ab1d366a34a77d9439626d7a488bf0c5969e13ddd4e9b6",
+    "imageSha256": "7c373231d52ed0889ff33ae85964c9e9d7c9231fcc9508c9f9c224ad4d5a7c3b",
     "pixels": [
       1398,
       1230
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 10
   },
   {
     "id": "southeast-asia",
@@ -555,7 +585,8 @@
       1296,
       1758
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 0
   },
   {
     "id": "europe-1914",
@@ -573,7 +604,8 @@
       1176,
       1116
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 0
   },
   {
     "id": "europe-1922",
@@ -591,7 +623,8 @@
       1164,
       1116
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 0
   },
   {
     "id": "cold-war",
@@ -609,7 +642,8 @@
       2400,
       861
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 0
   },
   {
     "id": "europe-1989",
@@ -627,7 +661,8 @@
       1212,
       882
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 0
   },
   {
     "id": "sui-canal",
@@ -640,12 +675,13 @@
       360
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "479d8675bd28dfa5931c250f34260713c72cfa24bdfe8c83a307375e87431203",
+    "imageSha256": "3582eca3a8901a0ff6c7637ef02662f6a9af000e745993fdf8889e8b0d3f0917",
     "pixels": [
       702,
       870
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 11
   },
   {
     "id": "civilizations-west",
@@ -658,12 +694,13 @@
       793
     ],
     "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
-    "imageSha256": "49ee447930c808caabffe72cc8057cf3f5d2a22d99343949e664f56de935cad5",
+    "imageSha256": "c493b64e8ebfe0c2ab523e2f584b09c6e2db1e993284b54184c6cd70dcaad8c9",
     "pixels": [
       1902,
       1758
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 6
   },
   {
     "id": "civilizations-east",
@@ -676,12 +713,13 @@
       794
     ],
     "sourceSha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
-    "imageSha256": "3e6446b3c07be534dfd717ca2d7e48a7250af467737a222489be0c2d3f92fa2d",
+    "imageSha256": "685ead961ce75ae8815a29457553c27e6eadc85cb3691055f65d21e7e4d09b59",
     "pixels": [
       2400,
       1669
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 5
   },
   {
     "id": "greece",
@@ -694,11 +732,12 @@
       460
     ],
     "sourceSha256": "98825fe12703eef6b697c4a0136e81eb6dca3bfad1e4d302e397438addf0ecf7",
-    "imageSha256": "f68fb8e850c7cbac237ec8d704fbd9632415ef88a0017dfd152719838aceaab1",
+    "imageSha256": "c394515d2aa27a137845d4492b285d856af57309185a52edc846fd542ac8badb",
     "pixels": [
       2400,
       998
     ],
-    "losslessDecodedEqual": true
+    "losslessDecodedEqual": true,
+    "removedCitySymbolPaths": 9
   }
 ]

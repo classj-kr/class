@@ -61,3 +61,11 @@ test('close city labels separate without changing source anchors',()=>{
  const r=out.map((p,i)=>({x:items[i].x+p.dx,y:items[i].y+p.dy,w:items[i].w,h:items[i].h}));
  for(let i=0;i<r.length;i++){assert.ok(r[i].x>=0&&r[i].x+r[i].w<=390);assert.ok(r[i].y>=0&&r[i].y+r[i].h<=360);for(let j=i+1;j<r.length;j++)assert.ok(r[i].x+r[i].w<=r[j].x||r[j].x+r[j].w<=r[i].x||r[i].y+r[i].h<=r[j].y||r[j].y+r[j].h<=r[i].y);}
 });
+
+test('a tall explanation card cannot cover a map label even when nearby positions are blocked',()=>{
+ for(const [width,height,card] of [[1366,768,{x:1000,y:260,w:350,h:490}],[390,768,{x:90,y:280,w:290,h:476}]]){
+  const items=[{x:width-120,y:height-120,w:78,h:32},{x:width-150,y:height-160,w:82,h:32}];
+  const placed=placeLabels(items,width,height,[card]);
+  placed.forEach((p,i)=>{const r={x:items[i].x+p.dx,y:items[i].y+p.dy,w:items[i].w,h:items[i].h};assert.ok(r.x+r.w<=card.x||r.x>=card.x+card.w||r.y+r.h<=card.y||r.y>=card.y+card.h);});
+ }
+});

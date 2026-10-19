@@ -5,8 +5,8 @@
   "counts": {
     "topics": 36,
     "atlasFigures": 39,
-    "images": 46,
-    "sourceExcerptSets": 6,
+    "images": 58,
+    "sourceExcerptSets": 7,
     "questions": 72,
     "sourceLinkedQuestions": 14
   },
@@ -14,7 +14,8 @@
     "imageObjects": "원문 페이지·캡션 및 추출 객체 시각 대조. 출판용 WebP는 원본 비율·알파 보존, 디코딩 픽셀 일치 검사.",
     "excerpts": "교과서 수록 번역을 짧게 발췌. 공백·제어문자 정규화 후 원문 포함 여부 검증.",
     "periods": "현대의 유적 사진, 사건을 묘사한 그림, 복원 모형, 당시 사진을 구분해 표기.",
-    "assessment": "실제 평가원의 자료 식별+지도 위치+사실 연결 방식을 참고하되 문제와 보기는 새로 작성. 기출 재현 아님."
+    "assessment": "실제 평가원의 자료 식별+지도 위치+사실 연결 방식을 참고하되 문제와 보기는 새로 작성. 기출 재현 아님.",
+    "selection": "미래엔 단일 출처 추출을 폐지하고 자료별 sourceId와 원본 해시를 확인한다. 천재 교과서 9건(사진 8·사료 1), 동아 부도 사진 4건을 추가했다. 지도 바탕 39장은 기존 도판을 유지하며 비상호작용 도시 기호를 정리했다."
   },
   "assessmentReferences": [
     {
@@ -202,7 +203,8 @@
         "alexander"
       ],
       "materialIds": [
-        "gandhara"
+        "gandhara",
+        "laocoon"
       ],
       "materialSources": [
         {
@@ -288,7 +290,9 @@
       ],
       "materialIds": [
         "sanchi",
-        "gandhara"
+        "gandhara",
+        "ashoka-pillar",
+        "ashoka-edict"
       ],
       "materialSources": [
         {
@@ -437,7 +441,8 @@
       ],
       "materialIds": [
         "tang-camel",
-        "tang-stele"
+        "tang-stele",
+        "tang-silver-box"
       ],
       "materialSources": [
         {
@@ -483,7 +488,8 @@
       ],
       "materialIds": [
         "qingming-scroll",
-        "movable-type"
+        "movable-type",
+        "song-compass"
       ],
       "materialSources": [
         {
@@ -523,7 +529,8 @@
         "islam"
       ],
       "materialIds": [
-        "cordoba-mosque"
+        "cordoba-mosque",
+        "baghdad-plan"
       ],
       "materialSources": [
         {
@@ -602,7 +609,8 @@
         "ming"
       ],
       "materialIds": [
-        "forbidden-city"
+        "forbidden-city",
+        "zheng-he-giraffe"
       ],
       "materialSources": [
         {
@@ -718,7 +726,8 @@
         "frank"
       ],
       "materialIds": [
-        "carolingian-learning"
+        "carolingian-learning",
+        "aachen-cathedral"
       ],
       "materialSources": [
         {
@@ -830,7 +839,8 @@
       ],
       "materialIds": [
         "hagia-sophia",
-        "sultan-ahmed"
+        "sultan-ahmed",
+        "devshirme"
       ],
       "materialSources": [
         {
@@ -870,7 +880,8 @@
         "mughal"
       ],
       "materialIds": [
-        "taj-mahal"
+        "taj-mahal",
+        "mughal-merchants"
       ],
       "materialSources": [
         {
@@ -942,7 +953,8 @@
         "voyages"
       ],
       "materialIds": [
-        "caravel"
+        "caravel",
+        "astrolabe"
       ],
       "materialSources": [
         {
@@ -1278,7 +1290,8 @@
         "ww1"
       ],
       "materialIds": [
-        "sarajevo-assassination"
+        "sarajevo-assassination",
+        "ww1-trench"
       ],
       "materialSources": [
         {
@@ -1391,7 +1404,8 @@
       ],
       "materialIds": [
         "berlin-airlift",
-        "cuban-crisis-cartoon"
+        "cuban-crisis-cartoon",
+        "bandung-conference"
       ],
       "materialSources": [
         {

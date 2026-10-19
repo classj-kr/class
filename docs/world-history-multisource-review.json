@@ -1,0 +1,1109 @@
+{
+  "date": "2026-10-19",
+  "scope": "현재 36개 세계사 지도 주제의 보충 자료 선정과 원본 도시 기호 정리",
+  "method": [
+    "기존 감사 기록의 미래엔·천재 해당 본문과 동아 부도의 해당 주제·시대 범위를 대조했다.",
+    "추가한 13개 자료는 해당 원문 페이지의 설명과 이미지 객체 또는 사료 문장을 직접 확인했다.",
+    "지도 바탕 39장은 유지한다. 출판사별 장수를 맞추기 위한 교체는 하지 않았다.",
+    "그림 전체를 다른 내용으로 다시 그리지 않고 원본 벡터에서 단순 도시 원형 기호와 프랑크 지도 오표기만 제거했다."
+  ],
+  "limitations": [
+    "전체 교과서의 전 페이지 정독이나 세계사 교육과정 전체의 검증 결과가 아니다.",
+    "바탕 지도 39장의 공급원은 여전히 미래엔이다. 실제 추가 자료는 천재 9개와 동아 4개다.",
+    "추가된 원본 사진 일부는 저해상도이므로 상세 보기에서 원본 크기 이상 강제 확대하지 않는다.",
+    "자동 테스트는 파일·연결·동작을 검증하며 역사 해석의 독립적인 전문가 검토를 대신하지 않는다.",
+    "원본의 벡터 도시 기호를 제거했다. 일부 도판의 배경 비트맵에 합성된 수도 기호까지 전부 지웠다는 뜻은 아니다. 명 지도에는 베이징·한성의 원형 수도 기호가 남아 있어 별도 정리가 필요하다."
+  ],
+  "addedMaterialIds": [
+    "ashoka-pillar",
+    "laocoon",
+    "baghdad-plan",
+    "song-compass",
+    "zheng-he-giraffe",
+    "mughal-merchants",
+    "ww1-trench",
+    "bandung-conference",
+    "tang-silver-box",
+    "aachen-cathedral",
+    "devshirme",
+    "astrolabe",
+    "ashoka-edict"
+  ],
+  "topics": [
+    {
+      "id": "civilizations",
+      "title": "큰 강과 고대 문명",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-2",
+        "pdfPages": [
+          3,
+          4
+        ]
+      },
+      "decision": "두 지역 지도를 따로 유지해 큰 강·도시·문자의 차이를 비교한다. 이미 있는 사자의 서·갑골문·도시 유적은 중복 교체하지 않는다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "greece",
+      "title": "그리스의 폴리스와 전쟁",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            44,
+            45
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            46,
+            47
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-2",
+        "pdfPages": [
+          9,
+          10
+        ]
+      },
+      "decision": "폴리스와 전쟁 경로를 유지한다. 파르테논은 아테네의 문화 자료로 남기고, 헬레니즘 미술은 알렉산드로스 주제와 구분한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "persia",
+      "title": "페르시아와 왕의 길",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            40,
+            41,
+            42
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            43,
+            44
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-2",
+        "pdfPages": [
+          8
+        ]
+      },
+      "decision": "수사-사르디스의 왕의 길과 페르세폴리스를 구분하는 지도를 유지한다. 후대 사산 왕조 지도로 대체하지 않는다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "alexander",
+      "title": "알렉산드로스의 동방 원정",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            46
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            48
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-2",
+        "pdfPages": [
+          10
+        ]
+      },
+      "decision": "원정로와 제국 영역은 유지하고 라오콘 군상을 추가해 정복 이후 헬레니즘 문화의 특징을 관찰하게 한다.",
+      "addedMaterials": [
+        "laocoon"
+      ]
+    },
+    {
+      "id": "rome",
+      "title": "로마의 지중해 지배",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            47,
+            48,
+            49,
+            50,
+            51
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            50,
+            51,
+            52,
+            53
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-2",
+        "pdfPages": [
+          11,
+          12
+        ]
+      },
+      "decision": "최대 영역과 395년 분할선의 시점 차이를 유지한다. 수도교·가도·콜로세움은 통합과 도시 생활에 맞는 기존 자료다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "india",
+      "title": "마우리아와 쿠샨",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            33,
+            34,
+            35
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            35,
+            36
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-2",
+        "pdfPages": [
+          7
+        ]
+      },
+      "decision": "마우리아와 쿠샨은 시대가 다르다. 아소카왕 돌기둥과 칙령을 추가해 두 왕조의 불교 후원을 막연히 같은 사건으로 보지 않게 한다.",
+      "addedMaterials": [
+        "ashoka-pillar",
+        "ashoka-edict"
+      ]
+    },
+    {
+      "id": "gupta",
+      "title": "굽타와 인도 고전 문화",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            36,
+            37
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            38,
+            39
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-3",
+        "pdfPages": [
+          3
+        ]
+      },
+      "decision": "굽타의 영역과 힌두교·고전 문화의 관계를 유지한다. 쿠샨의 간다라 자료로 바꿔 쓰지 않는다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "han",
+      "title": "한과 동서 교역로",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            25
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            24,
+            25
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-2",
+        "pdfPages": [
+          6
+        ]
+      },
+      "decision": "장건의 파견과 이후 형성된 교역망을 구분한다. 종이 자료를 유지하며, 둔황 등 원본 그림의 이름 없는 도시 점은 제거한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "sui-canal",
+      "title": "수의 대운하",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            28,
+            29
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            27
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-3",
+        "pdfPages": [
+          1
+        ]
+      },
+      "decision": "수대 운하와 후대 운하를 구별한다. 운하 건설 사료와 남북 연결 거점은 기존 자료를 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "tang",
+      "title": "당과 유라시아 교류",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            29,
+            30,
+            31,
+            69
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            28,
+            63
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-3",
+        "pdfPages": [
+          1,
+          2
+        ]
+      },
+      "decision": "동아시아 교류뿐 아니라 서역 교류를 비교한다. 외국인 장식 은합을 추가해 경교비·당삼채와 서로 다른 증거를 제시한다.",
+      "addedMaterials": [
+        "tang-silver-box"
+      ]
+    },
+    {
+      "id": "song",
+      "title": "송과 북방 민족",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            76,
+            77
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            82,
+            83
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          1,
+          2
+        ]
+      },
+      "decision": "북송·남송의 영역 변화는 별도 화면을 유지한다. 나침반 모형을 추가해 도시 경제·활자와 함께 해상 교역의 기술을 보여 준다.",
+      "addedMaterials": [
+        "song-compass"
+      ]
+    },
+    {
+      "id": "islam",
+      "title": "이슬람 세계의 확대",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            68,
+            69
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            62,
+            63
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-3",
+        "pdfPages": [
+          4
+        ]
+      },
+      "decision": "왕조별 수도를 구분한다. 코르도바 건축만 있던 자료에 바그다드 재현도를 보완하고 상상화임을 표시한다.",
+      "addedMaterials": [
+        "baghdad-plan"
+      ]
+    },
+    {
+      "id": "mongols",
+      "title": "몽골 제국과 여러 울루스",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            80,
+            81,
+            82
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            84,
+            85,
+            86,
+            87
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          2
+        ]
+      },
+      "decision": "여러 울루스와 교역망을 함께 보되 단일 시점의 통일된 영토로 오해하지 않게 한다. 교초와 패자 자료는 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "ming",
+      "title": "명과 정화의 항해",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            100,
+            101,
+            102
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            86,
+            87
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          3,
+          4
+        ]
+      },
+      "decision": "자금성 사진만으로 부족했던 항해 부분에 기린 그림을 추가한다. 정화 항로와 인도양의 교류 범위에 연결한다.",
+      "addedMaterials": [
+        "zheng-he-giraffe"
+      ]
+    },
+    {
+      "id": "qing",
+      "title": "청의 영역 확대",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            118,
+            119,
+            120,
+            133
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            124,
+            125,
+            126,
+            127
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          3,
+          4
+        ]
+      },
+      "decision": "청의 영역 확대와 명의 항해를 구분한다. 자금성은 명·청이 공유한 궁궐이라는 기존 연결을 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "edo",
+      "title": "에도 시대의 도시와 교통",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            124,
+            125
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            130,
+            131
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          6
+        ]
+      },
+      "decision": "에도·오사카·나가사키의 기능을 구분한다. 기존 데지마와 우키요에는 다른 목적의 자료여서 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "frank",
+      "title": "프랑크 왕국의 발전",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            52
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            56
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-3",
+        "pdfPages": [
+          5
+        ]
+      },
+      "decision": "아헨 대성당 사진을 추가한다. 현재 건물이 후대 증축을 포함함을 밝힌다. 카롤루스 발전 주제에 잘못 남은 베르딩 글자와 원본 도시 점을 제거한다.",
+      "addedMaterials": [
+        "aachen-cathedral"
+      ]
+    },
+    {
+      "id": "byzantine",
+      "title": "비잔티움의 확대와 축소",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            56,
+            57
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            59,
+            60
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-3",
+        "pdfPages": [
+          5
+        ]
+      },
+      "decision": "6세기 확대와 11세기 영역 축소를 구분하는 지도를 유지한다. 성 소피아·유스티니아누스 자료를 그대로 활용한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "crusades",
+      "title": "십자군의 이동",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            58
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            67
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-3",
+        "pdfPages": [
+          7,
+          8
+        ]
+      },
+      "decision": "제1차의 예루살렘과 제4차의 콘스탄티노폴리스 목적지 차이를 유지한다. 원정 노선·전투 표시는 지우지 않는다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "ottoman",
+      "title": "오스만의 팽창",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            130,
+            131,
+            132
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            137
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          5
+        ]
+      },
+      "decision": "영역 확대만으로 설명하지 않도록 인재 징집 그림을 추가한다. 징집과 종교 공동체 자치 제도를 구분한다.",
+      "addedMaterials": [
+        "devshirme"
+      ]
+    },
+    {
+      "id": "mughal",
+      "title": "무굴과 인도양 교역",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            127,
+            128
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            133,
+            134
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          6
+        ]
+      },
+      "decision": "타지마할 외에 유럽 상인의 방문 그림을 추가해 면직물·향신료 교역을 보완한다.",
+      "addedMaterials": [
+        "mughal-merchants"
+      ]
+    },
+    {
+      "id": "reformation",
+      "title": "종교 개혁의 확산",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            90
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            94
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          7
+        ]
+      },
+      "decision": "비텐베르크·제네바와 각 개혁파를 구별한다. 루터·칼뱅 사료가 이미 다른 주장을 비교하므로 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "voyages",
+      "title": "신항로 개척",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            86,
+            87
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            97
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-4",
+        "pdfPages": [
+          8
+        ]
+      },
+      "decision": "탐험 경로와 선박 자료에 아스트롤라베를 추가한다. 방향을 알아내는 나침반과 천체 높이 관측의 기능을 구분한다.",
+      "addedMaterials": [
+        "astrolabe"
+      ]
+    },
+    {
+      "id": "american",
+      "title": "미국 독립과 초기 영토",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            136,
+            137
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            141,
+            142
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          1
+        ]
+      },
+      "decision": "13개 식민지·1783년 영토와 후대 서부 팽창을 구분한다. 보스턴 차 사건 자료는 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "napoleon",
+      "title": "나폴레옹과 유럽 질서",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            142,
+            143
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            147,
+            150
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          2,
+          3
+        ]
+      },
+      "decision": "프랑스 제국·위성국·동맹국과 러시아 원정 경로를 유지한다. 대륙 봉쇄령과 빈 회의 풍자화는 원인·결과를 비교하는 자료로 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "unification",
+      "title": "이탈리아와 독일의 통일",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            145,
+            146
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            154,
+            155
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          3
+        ]
+      },
+      "decision": "이탈리아·독일의 단계별 통일을 구분한다. 독일 제국 선포 그림을 이탈리아 통일의 장면으로 쓰지 않는다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "colonial-africa",
+      "title": "열강의 아프리카 분할",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            155,
+            156
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            169
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          5,
+          6
+        ]
+      },
+      "decision": "종단·횡단 정책과 파쇼다를 유지한다. 기존 제국주의 옹호·비판 만평의 대조가 있으므로 유사 만평을 추가하지 않는다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "china-opening",
+      "title": "중국의 개항과 태평천국",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            160,
+            161
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            172,
+            173
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          9
+        ]
+      },
+      "decision": "난징 조약의 개항장과 후속 조약의 개항장을 구분한다. 사건별 색 기호를 남기고 단순 도시 점만 정리한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "xinhai",
+      "title": "신해혁명의 전개",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            163
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            174
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          9
+        ]
+      },
+      "decision": "우창 봉기와 난징의 공화국 수립을 구분한다. 봉기·호응 지역 색은 유지하고 설명 없는 도시 기호는 정리한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "colonial-india",
+      "title": "인도의 식민 지배와 저항",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            168,
+            169
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            179,
+            180
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          8
+        ]
+      },
+      "decision": "플라시 전투·세포이 항쟁·벵골 분할의 시점 차이를 유지한다. 국민 회의 자료는 민족 운동 부분에 연결한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "southeast-asia",
+      "title": "동남아시아의 식민지화",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            170,
+            171
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            182
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-5",
+        "pdfPages": [
+          8
+        ]
+      },
+      "decision": "식민 지배국별 구역과 시암의 독립을 구분한다. 판보이쩌우 자료는 베트남 부분에 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "ww1",
+      "title": "제1차 세계 대전",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            180,
+            181
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            192,
+            193
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-6",
+        "pdfPages": [
+          1
+        ]
+      },
+      "decision": "사라예보 사건 그림에 참호 사진을 보완한다. 전쟁의 발단과 서부 전선의 전투 양상을 구별한다.",
+      "addedMaterials": [
+        "ww1-trench"
+      ]
+    },
+    {
+      "id": "postwar-europe",
+      "title": "대전 전후 유럽의 변화",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            184
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            196
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-6",
+        "pdfPages": [
+          2
+        ]
+      },
+      "decision": "전쟁 전후 국경과 신생 국가 비교를 유지한다. 평화 원칙과 실제 조약의 차이를 다루는 기존 사료를 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "ww2",
+      "title": "제2차 세계 대전의 전개",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            190,
+            191
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            201,
+            202
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-6",
+        "pdfPages": [
+          3,
+          4
+        ]
+      },
+      "decision": "유럽과 아시아의 서로 다른 개전 시점과 주요 사건을 구분한다. 진주만·노르망디 자료를 유지한다.",
+      "addedMaterials": []
+    },
+    {
+      "id": "cold-war",
+      "title": "냉전과 지역 분쟁",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            196,
+            197
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            208,
+            209
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-7",
+        "pdfPages": [
+          1,
+          2
+        ]
+      },
+      "decision": "양 진영과 충돌 지역만 보던 자료에 반둥 회의 사진을 추가해 신생 독립국의 독자 노선을 보완한다.",
+      "addedMaterials": [
+        "bandung-conference"
+      ]
+    },
+    {
+      "id": "europe-1989",
+      "title": "동유럽의 민주화와 독일 통일",
+      "textbookReferences": [
+        {
+          "source": "source-00",
+          "pdfPages": [
+            200,
+            201
+          ]
+        },
+        {
+          "source": "source-02",
+          "pdfPages": [
+            212,
+            213
+          ]
+        }
+      ],
+      "atlasComparison": {
+        "source": "donga-atlas-7",
+        "pdfPages": [
+          2
+        ]
+      },
+      "decision": "1989년 장벽 붕괴와 1990년 독일 통일을 구별한다. 바웬사·브란덴부르크 문 자료는 유지한다.",
+      "addedMaterials": []
+    }
+  ],
+  "verification": {
+    "commands": [
+      "python -X utf8 tests/world-history-figures.test.py",
+      "node --test tests/world-history.test.mjs tests/world-history-photos.test.mjs",
+      "node tests/world-history-multisource-browser.cjs"
+    ],
+    "browser": {
+      "viewports": [
+        1366,
+        768,
+        390
+      ],
+      "clicks": 206,
+      "materials": 39,
+      "topics": 44,
+      "errors": []
+    },
+    "removedVectorCitySymbolPaths": 444,
+    "additionalBugFixed": "설명 카드가 커지면 예루살렘 등 장소 버튼을 가리는 문제: 카드 크기 변화 감지, 가까운 후보가 가려지면 카드 바깥 후보를 탐색.",
+    "captures": "outputs/qa/world-history-multisource/*.webp",
+    "productionVerification": "커밋 후 /health의 배포 커밋으로 확인. 인증된 운영 UI 직접 검사는 이 로컬 브라우저 검사와 별개."
+  }
+}

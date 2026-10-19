@@ -7,11 +7,20 @@ export function placeLabels(items, width, height, blocked = []) {
     const candidates = region ? [[-w/2,-h/2]] : [[-w/2,-h-9],[10,-h/2],[-w-10,-h/2],[-w/2,10]];
     for(const distance of [h+16,2*h+24,3*h+30]) candidates.push([-w/2,-h-distance],[12,-h-distance],[-w-12,-h-distance],[-w/2,distance],[12,distance],[-w-12,distance]);
     let best;
-    for(const [dx,dy] of candidates) {
+    const consider = ([dx,dy]) => {
       const px=Math.max(gap,Math.min(width-w-gap,x+dx)),py=Math.max(gap,Math.min(height-h-gap,y+dy));
       const rect={x:px,y:py,w,h};
-      const score=occupied.reduce((n,r)=>n+overlap({x:px-gap/2,y:py-gap/2,w:w+gap,h:h+gap},r)*100,0)+Math.hypot(px-x+w/2,py-y+h/2);
-      if(!best||score<best.score)best={...rect,score};
+      const covered=occupied.reduce((n,r)=>n+overlap({x:px-gap/2,y:py-gap/2,w:w+gap,h:h+gap},r),0);
+      const distance=Math.hypot(px-x+w/2,py-y+h/2);
+      if(!best||covered<best.covered||(covered===best.covered&&distance<best.distance))best={...rect,covered,distance};
+    };
+    candidates.forEach(consider);
+    if(best.covered>0){
+      // A growing explanation card can be taller than all nearby candidates.
+      // Search obstacle edges across the viewport before accepting overlap.
+      const xs=[gap,width-w-gap,x-w/2],ys=[gap,height-h-gap,y-h/2];
+      for(const r of occupied){xs.push(r.x-w-gap,r.x+r.w+gap);ys.push(r.y-h-gap,r.y+r.h+gap);}
+      for(const px of xs)for(const py of ys)consider([px-x,py-y]);
     }
     occupied.push(best);
     const dx=best.x-x,dy=best.y-y;
