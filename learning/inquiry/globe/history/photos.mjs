@@ -1,0 +1,284 @@
+// Generated from reviewed textbook photo objects by scripts/build-world-history-photos.py.
+export const PHOTOS = [
+  {
+    "id": "ziggurat",
+    "title": "우르의 지구라트",
+    "period": "고대 메소포타미아",
+    "observe": "층층이 쌓은 기단과 위로 이어지는 계단을 보세요. 신전은 수메르 도시 국가의 중요한 중심이었습니다.",
+    "connection": "지도에서 우르와 티그리스·유프라테스강 유역을 연결하세요.",
+    "bindings": {
+      "civilizations": [
+        "우르"
+      ]
+    },
+    "alt": "계단과 층을 이룬 기단이 보이는 지구라트 유적",
+    "src": "photos/ziggurat.webp",
+    "width": 824,
+    "height": 394,
+    "credit": "미래엔 세계사(남궁원), 16쪽"
+  },
+  {
+    "id": "hammurabi",
+    "title": "함무라비 법전비",
+    "period": "바빌로니아",
+    "observe": "돌기둥에 새긴 문자와 윗부분의 인물 부조를 보세요. 법 조항을 기록한 유물입니다.",
+    "connection": "바빌론의 위치를 찾고, 신분에 따라 형벌에 차이가 있었던 사회와 연결하세요.",
+    "bindings": {
+      "civilizations": [
+        "바빌론"
+      ]
+    },
+    "alt": "윗부분에 인물 부조가 있고 아래에 문자가 새겨진 검은 돌기둥",
+    "src": "photos/hammurabi.webp",
+    "width": 278,
+    "height": 767,
+    "credit": "미래엔 세계사(남궁원), 16쪽"
+  },
+  {
+    "id": "oracle-bone",
+    "title": "갑골문",
+    "period": "중국 상",
+    "observe": "거북의 배딱지나 짐승의 뼈에 점친 내용을 새겼습니다. 문자와 점복을 통해 상의 신권 정치를 이해할 수 있습니다.",
+    "connection": "황허강 유역의 은허를 찾고 메소포타미아의 쐐기 문자와 구별하세요.",
+    "bindings": {
+      "civilizations": [
+        "은허"
+      ]
+    },
+    "alt": "표면에 문자가 새겨진 갑골",
+    "src": "photos/oracle-bone.webp",
+    "width": 266,
+    "height": 442,
+    "credit": "미래엔 세계사(남궁원), 19쪽"
+  },
+  {
+    "id": "sanchi",
+    "title": "산치 대탑",
+    "period": "고대 인도의 불교 유적",
+    "observe": "둥근 탑과 조각으로 꾸민 출입문을 보세요. 부처의 사리를 모시는 불탑의 모습을 보여 줍니다.",
+    "connection": "마우리아 왕조 아소카왕의 불교 후원과 연결해 살펴보세요.",
+    "bindings": {
+      "india": [
+        "마우리아"
+      ]
+    },
+    "alt": "둥근 불탑 앞에 조각으로 장식한 문이 서 있는 산치 유적",
+    "src": "photos/sanchi.webp",
+    "width": 1600,
+    "height": 1035,
+    "credit": "미래엔 세계사(남궁원), 34쪽"
+  },
+  {
+    "id": "gandhara",
+    "title": "간다라 불상",
+    "period": "쿠샨 시대의 불교 미술",
+    "observe": "곱슬머리와 뚜렷한 얼굴, 깊게 표현한 옷 주름을 보세요. 헬레니즘 문화의 영향을 보여 주는 특징입니다.",
+    "connection": "인도 북서부의 간다라를 찾고 중앙아시아를 잇는 교역로와 연결하세요.",
+    "bindings": {
+      "india": [
+        "간다라",
+        "쿠샨 왕조"
+      ],
+      "alexander": [
+        "탁실라"
+      ]
+    },
+    "alt": "곱슬머리와 옷 주름이 뚜렷하게 표현된 서 있는 불상",
+    "src": "photos/gandhara.webp",
+    "width": 322,
+    "height": 769,
+    "credit": "미래엔 세계사(남궁원), 35쪽"
+  },
+  {
+    "id": "ajanta",
+    "title": "아잔타 석굴의 연화수 보살",
+    "period": "인도 불교 미술",
+    "observe": "몸의 윤곽과 부드러운 자세, 장신구의 표현을 보세요. 교과서에서 굽타 양식을 설명하는 자료입니다.",
+    "connection": "굽타 시대 인도 고전 문화와 연결하고, 간다라 불상의 표현 방식과 비교하세요.",
+    "bindings": {
+      "gupta": []
+    },
+    "alt": "머리 장식과 장신구를 한 보살을 그린 아잔타 석굴 벽화",
+    "src": "photos/ajanta.webp",
+    "width": 483,
+    "height": 486,
+    "credit": "미래엔 세계사(남궁원), 37쪽"
+  },
+  {
+    "id": "parthenon",
+    "title": "파르테논 신전",
+    "period": "고대 그리스",
+    "observe": "일정한 간격의 기둥과 수평 구조를 보세요. 균형과 조화를 중시한 그리스 건축을 보여 줍니다.",
+    "connection": "아테네의 위치를 찾고, 폴리스의 정치뿐 아니라 문화도 함께 연결하세요.",
+    "bindings": {
+      "greece": [
+        "아테네"
+      ]
+    },
+    "alt": "여러 기둥이 일정한 간격으로 서 있는 파르테논 신전",
+    "src": "photos/parthenon.webp",
+    "width": 875,
+    "height": 458,
+    "credit": "미래엔 세계사(남궁원), 45쪽"
+  },
+  {
+    "id": "persepolis",
+    "title": "페르세폴리스 왕궁 유적",
+    "period": "아케메네스 왕조 페르시아",
+    "observe": "넓은 궁전 터와 남아 있는 돌기둥을 보세요. 여러 지역의 문화를 받아들인 제국의 왕궁입니다.",
+    "connection": "페르세폴리스와 왕의 길의 양 끝인 수사·사르디스의 위치를 구별하세요.",
+    "bindings": {
+      "persia": [
+        "페르세폴리스"
+      ]
+    },
+    "alt": "돌기둥과 계단, 석조 건물의 터가 남은 페르세폴리스 왕궁 유적",
+    "src": "photos/persepolis.webp",
+    "width": 1600,
+    "height": 506,
+    "credit": "미래엔 세계사(남궁원), 41쪽"
+  },
+  {
+    "id": "hagia-sophia",
+    "title": "성 소피아 성당",
+    "period": "비잔티움·오스만",
+    "observe": "가운데의 거대한 돔을 보세요. 주변의 가느다란 첨탑은 오스만 지배 아래 모스크로 바뀐 뒤 더해졌습니다.",
+    "connection": "콘스탄티노폴리스의 유스티니아누스와, 이후 이스탄불을 수도로 삼은 오스만을 구분하세요.",
+    "bindings": {
+      "byzantine": [
+        "콘스탄티노폴리스"
+      ],
+      "ottoman": [
+        "이스탄불"
+      ]
+    },
+    "alt": "거대한 돔과 주변의 가느다란 첨탑이 보이는 건축물",
+    "src": "photos/hagia-sophia.webp",
+    "width": 1600,
+    "height": 1175,
+    "credit": "미래엔 세계사(남궁원), 57쪽"
+  },
+  {
+    "id": "forbidden-city",
+    "title": "자금성",
+    "period": "명·청",
+    "observe": "넓은 마당과 중심축을 따라 이어지는 궁궐 건물을 보세요. 베이징의 황궁입니다.",
+    "connection": "영락제의 베이징 천도와, 이후 이곳을 수도로 삼은 청을 연결하세요.",
+    "bindings": {
+      "ming": [
+        "베이징"
+      ],
+      "qing": [
+        "베이징"
+      ]
+    },
+    "alt": "중심축을 따라 여러 전각과 넓은 마당이 이어지는 자금성",
+    "src": "photos/forbidden-city.webp",
+    "width": 1278,
+    "height": 1600,
+    "credit": "미래엔 세계사(남궁원), 117쪽"
+  },
+  {
+    "id": "ukiyoe",
+    "title": "호쿠사이의 우키요에",
+    "period": "에도 시대",
+    "observe": "큰 파도와 작은 배, 멀리 보이는 후지산을 보세요. 풍경과 일상생활을 소재로 한 목판화입니다.",
+    "connection": "에도·오사카 등 도시의 상공업 성장과 조닌 문화의 발달을 연결하세요.",
+    "bindings": {
+      "edo": [
+        "에도(도쿄)",
+        "오사카"
+      ]
+    },
+    "alt": "큰 파도 아래 작은 배들과 멀리 후지산이 보이는 목판화",
+    "src": "photos/ukiyoe.webp",
+    "width": 815,
+    "height": 555,
+    "credit": "미래엔 세계사(남궁원), 125쪽"
+  },
+  {
+    "id": "dejima",
+    "title": "나가사키와 데지마를 그린 옛 지도",
+    "period": "에도 시대의 교역",
+    "observe": "바다 쪽으로 나온 부채꼴 모양의 섬을 보세요. 데지마는 네덜란드 상인의 무역 거점이었습니다.",
+    "connection": "규슈 서쪽 나가사키의 위치를 찾고 제한된 대외 교역과 난학의 전래를 연결하세요.",
+    "bindings": {
+      "edo": [
+        "나가사키"
+      ]
+    },
+    "alt": "나가사키 항구와 부채꼴 인공 섬을 묘사한 옛 지도",
+    "src": "photos/dejima.webp",
+    "width": 876,
+    "height": 524,
+    "credit": "미래엔 세계사(남궁원), 125쪽"
+  },
+  {
+    "id": "taj-mahal",
+    "title": "타지마할",
+    "period": "무굴 제국",
+    "observe": "큰 돔과 뾰족한 아치, 네 모서리의 탑을 살펴보세요. 인도와 이슬람 문화가 융합된 묘당입니다.",
+    "connection": "아그라의 위치를 찾고 샤자한의 건축 사업을 아크바르의 종교적 포용 정책과 구별하세요.",
+    "bindings": {
+      "mughal": [
+        "아그라"
+      ]
+    },
+    "alt": "중앙의 큰 돔과 아치, 네 모서리의 탑이 보이는 흰색 건축물",
+    "src": "photos/taj-mahal.webp",
+    "width": 1600,
+    "height": 1036,
+    "credit": "미래엔 세계사(남궁원), 129쪽"
+  },
+  {
+    "id": "berlin-airlift",
+    "title": "베를린 봉쇄와 공수 작전",
+    "period": "1948~1949년",
+    "observe": "사람들 위로 접근하는 수송기를 보세요. 서방은 베를린 봉쇄에 대응해 항공편으로 물자를 공급했습니다.",
+    "connection": "동독 지역 안에 있던 서베를린의 위치를 찾고, 장벽 건설·붕괴와 시기를 구별하세요.",
+    "bindings": {
+      "cold-war": [
+        "베를린"
+      ]
+    },
+    "alt": "사람들이 모인 곳 위로 낮게 날아오는 수송기의 흑백 사진",
+    "src": "photos/berlin-airlift.webp",
+    "width": 1202,
+    "height": 781,
+    "credit": "미래엔 세계사(남궁원), 196쪽"
+  },
+  {
+    "id": "brandenburg",
+    "title": "브란덴부르크 문",
+    "period": "독일 베를린",
+    "observe": "기둥과 그 위의 마차 조각을 보세요. 1989년 베를린 장벽이 무너졌을 때 이곳에 많은 시민이 모였습니다.",
+    "connection": "베를린 장벽 붕괴는 1989년, 독일 통일은 1990년입니다. 독일의 위치와 두 사건의 순서를 연결하세요.",
+    "bindings": {
+      "europe-1989": [
+        "독일"
+      ]
+    },
+    "alt": "기둥 위에 마차 조각이 있고 뒤로 하늘이 보이는 브란덴부르크 문",
+    "src": "photos/brandenburg.webp",
+    "width": 1277,
+    "height": 1600,
+    "credit": "미래엔 세계사(남궁원), 179쪽"
+  },
+  {
+    "id": "walesa",
+    "title": "연설하는 바웬사와 시민들",
+    "period": "폴란드의 민주화",
+    "observe": "연설하는 인물과 그 주변에 모인 시민들을 보세요. 폴란드의 자유 노조 운동과 관련된 사진입니다.",
+    "connection": "독일 동쪽의 폴란드를 찾고, 바웬사와 자유 노조 운동을 연결하세요.",
+    "bindings": {
+      "europe-1989": [
+        "폴란드"
+      ]
+    },
+    "alt": "많은 시민들 앞에서 연설하는 인물의 흑백 사진",
+    "src": "photos/walesa.webp",
+    "width": 1010,
+    "height": 574,
+    "credit": "미래엔 세계사(남궁원), 201쪽"
+  }
+];

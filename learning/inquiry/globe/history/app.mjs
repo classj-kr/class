@@ -1,7 +1,8 @@
 import * as maplibregl from '../vendor/maplibre-gl-6.10.0/maplibre-gl.mjs';
-import {ERAS,SCENES,FIGURES} from './content.mjs?v=20261019-3';
+import {ERAS,SCENES,FIGURES} from './content.mjs?v=20261019-photos';
 import {figurePoint,figureCorners,createAttempt,answerAttempt,revealAttempt,shouldShowSolution,recordAttempt,shuffle,escapeHTML as esc} from './session.mjs?v=20261019-3';
 import {placeLabels} from './labels.mjs?v=20261019-3';
+import {PHOTOS,photosForScene,photosForPlace,photoPresentation} from './photo-learning.mjs?v=20261019-photos';
 
 const $=id=>document.getElementById(id), BASE=new URL('.',import.meta.url);
 let current=null,figure=null,markers=[],ready=false,quiz=null,progress={},store=null,revision=0,resizeTimer,quizRevision=0,lastDraw=null,loadFailed=false;
@@ -68,7 +69,9 @@ function drawFigure(id,places,question=false){
   if(question){button.setAttribute('aria-disabled','true');button.tabIndex=-1;}
   else button.onclick=()=>{
    markers.forEach(m=>m.getElement().querySelector('button').classList.remove('active'));button.classList.add('active');
-   $('placeDetail').innerHTML=`<strong>${esc(place.label)}</strong><p>${esc(place.detail)}</p>`;$('placeDetail').hidden=false;$('sceneCard').hidden=false;$('showCard').hidden=true;layoutLabels();
+   const photos=photosForPlace(current.id,place.point);
+   $('placeDetail').innerHTML=`<strong>${esc(place.label)}</strong><p>${esc(place.detail)}</p>${photos.length?`<div class="place-photos">${photos.map(p=>`<button data-photo="${esc(p.id)}" aria-haspopup="dialog">사진 보기 · ${esc(p.title)}</button>`).join('')}</div>`:''}`;
+   bindPhotoButtons($('placeDetail'));$('placeDetail').hidden=false;$('sceneCard').hidden=false;$('showCard').hidden=true;layoutLabels();
   };
   const anchor=document.createElement('div');anchor.className='map-anchor'+(place.region?' region-anchor':'');
   anchor.innerHTML='<svg width="1" height="1" aria-hidden="true"><line x1="0" y1="0" x2="0" y2="0"/></svg><span class="place-dot" aria-hidden="true"></span>';anchor.append(button);
@@ -77,10 +80,25 @@ function drawFigure(id,places,question=false){
  fit();layoutLabels();map.once('idle',()=>{if(version===revision&&!loadFailed)$('mapStatus').textContent='';});
 }
 function renderLegend(items){$('mapLegend').innerHTML=items.map(([color,label])=>`<span><i style="background:${color}"></i>${esc(label)}</span>`).join('');}
+function photoPreview(photo,question=false,concealAnswer=question){
+ const view=photoPresentation(photo,concealAnswer);
+ return `<figure class="photo-preview${question?' question-photo':''}"><button data-photo="${esc(photo.id)}" aria-haspopup="dialog" aria-label="${esc(view.title)} 크게 보기"><img src="${esc(new URL(photo.src,BASE).href)}" width="${photo.width}" height="${photo.height}" alt="${esc(view.alt)}" loading="lazy" decoding="async"><span>${esc(view.title)} <small>크게 보기 ↗</small></span></button></figure>`;
+}
+function bindPhotoButtons(root,question=false){
+ root.querySelectorAll('[data-photo]').forEach(button=>button.onclick=()=>showPhoto(button.dataset.photo,question));
+}
+function showPhoto(id,question=false){
+ const photo=PHOTOS.find(p=>p.id===id);if(!photo)return;
+ const view=photoPresentation(photo,question);
+ $('photoTitle').textContent=view.title;
+ $('photoBody').innerHTML=`<div class="photo-view${question?' photo-question-view':''}"><img src="${esc(new URL(photo.src,BASE).href)}" width="${photo.width}" height="${photo.height}" alt="${esc(view.alt)}">${question?'':`<div class="photo-reading reading-sheet"><p class="source-date">${esc(view.period)}</p><h3>사진에서 살펴보기</h3><p>${esc(view.observe)}</p><h3>지도와 연결하기</h3><p>${esc(view.connection)}</p><p class="photo-credit">${esc(view.credit)}</p></div>`}</div>`;
+ $('photoDialog').showModal();$('photoDialog').scrollTop=0;
+}
 function showExplanation(){
  $('explanationTitle').textContent=current.title;
- $('explanationBody').innerHTML=`<p class="source-date">${esc(current.date)}</p>`+current.explanation.map(s=>`<section><h3>${esc(s.heading)}</h3>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${s.table?`<table><thead><tr>${s.table[0].map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${s.table.slice(1).map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>`:''}</section>`).join('');
- $('explanationDialog').showModal();
+ const photos=photosForScene(current.id);
+ $('explanationBody').innerHTML=`<p class="source-date">${esc(current.date)}</p>${photos.length?`<section><h3>사진·유물로 살펴보기</h3><div class="photo-gallery">${photos.map(p=>photoPreview(p)).join('')}</div></section>`:''}`+current.explanation.map(s=>`<section><h3>${esc(s.heading)}</h3>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${s.table?`<table><thead><tr>${s.table[0].map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${s.table.slice(1).map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>`:''}</section>`).join('');
+ bindPhotoButtons($('explanationBody'));$('explanationDialog').showModal();$('explanationDialog').scrollTop=0;
 }
 function setQuizUI(active){
  document.body.classList.toggle('quiz-active',active);$('questionPanel').hidden=!active;$('openExplanation').hidden=active;$('openTopics').disabled=active;
@@ -95,11 +113,11 @@ function showQuestion(){
 }
 function renderQuestion(){
  const {q,scene}=quiz.pool[quiz.index],a=quiz.attempt,solution=shouldShowSolution(a);
- $('questionPanel').innerHTML=`<div class="question-heading"><span>지도 문제 · ${quiz.index+1} / ${quiz.pool.length}</span><button id="exitQuiz">지도 학습으로</button></div><div class="question"><p class="source-date">${esc(q.mapDate||scene.quizDate)}</p><h2 tabindex="-1" id="questionTitle">${esc(q.prompt)}</h2>${q.context?`<p class="question-context">${esc(q.context)}</p>`:''}<div class="history-options">${a.choices.map((o,i)=>{
+ $('questionPanel').innerHTML=`<div class="question-heading"><span>지도 문제 · ${quiz.index+1} / ${quiz.pool.length}</span><button id="exitQuiz">지도 학습으로</button></div><div class="question"><p class="source-date">${esc(q.mapDate||scene.quizDate)}</p><h2 tabindex="-1" id="questionTitle">${esc(q.prompt)}</h2>${q.context?`<p class="question-context">${esc(q.context)}</p>`:''}${q.photo?photoPreview(PHOTOS.find(p=>p.id===q.photo),true,!solution):''}<div class="history-options">${a.choices.map((o,i)=>{
   const result=solution&&o.index===q.answer?'correct':a.tried.includes(o.index)?'wrong':'';
   return `<button data-answer="${o.index}" ${result?`data-result="${result}"`:''} ${solution||a.tried.includes(o.index)?'disabled':''}><span>${i+1}</span><span>${esc(o.text)}</span></button>`;
  }).join('')}</div><div class="question-feedback" role="status">${solution?`<strong>${a.solved?'맞았습니다.':'정답과 해설'}</strong><p>${esc(q.explanation)}</p>`:a.tried.length?`<strong>다시 살펴보세요.</strong><p>${esc(q.hint)}</p>`:'지도에서 표시된 위치와 영역을 확인하세요.'}</div></div><div class="question-actions">${!solution?'<button id="revealAnswer">해설 보기</button>':''}<button class="primary" id="nextQuestion" ${!solution?'disabled':''}>${quiz.index===quiz.pool.length-1?'결과':'다음 문제'}</button></div>`;
- $('exitQuiz').onclick=exitQuiz;
+ $('exitQuiz').onclick=exitQuiz;bindPhotoButtons($('questionPanel'),!solution);
  $('questionPanel').querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{
   quiz.attempt=answerAttempt(quiz.attempt,q,Number(b.dataset.answer));persistAttempt();renderQuestion();
  });

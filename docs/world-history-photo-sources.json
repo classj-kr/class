@@ -1,0 +1,386 @@
+[
+  {
+    "id": "ziggurat",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 16,
+    "xref": 621,
+    "sourceBBox": [
+      -9.522014617919922,
+      272.236083984375,
+      188.11801147460938,
+      366.6280822753906
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      824,
+      394
+    ],
+    "pixels": [
+      824,
+      394
+    ],
+    "alpha": false,
+    "imageSha256": "e26c280ac36d8286560d62f448892eb63a479d8371f912197c7092ba8609d473",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "hammurabi",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 16,
+    "xref": 623,
+    "sourceBBox": [
+      519.0625,
+      450.28228759765625,
+      585.6270751953125,
+      634.2454833984375
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      278,
+      767
+    ],
+    "pixels": [
+      278,
+      767
+    ],
+    "alpha": false,
+    "imageSha256": "17ffce5cf36c7a72424c0bfb7fa9117844ca59f5eca0fde71a05dce1b2fa03ab",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "oracle-bone",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 19,
+    "xref": 711,
+    "sourceBBox": [
+      536.4561767578125,
+      82.38622283935547,
+      600.2357177734375,
+      188.23699951171875
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      266,
+      442
+    ],
+    "pixels": [
+      266,
+      442
+    ],
+    "alpha": false,
+    "imageSha256": "6e5603c45d329197f874d04a87c9b93a6d593aaa77c9f4f1243b80a5b62b99b0",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "sanchi",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 34,
+    "xref": 1095,
+    "sourceBBox": [
+      -8.504409790039062,
+      516.7529296875,
+      432.0150146484375,
+      801.7069091796875
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      2356,
+      1524
+    ],
+    "pixels": [
+      1600,
+      1035
+    ],
+    "alpha": true,
+    "imageSha256": "2f426bce28bb73b71d6bcee251f7603fa3306ef81a6a211216f59ee78b3d3363",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "gandhara",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 35,
+    "xref": 1125,
+    "sourceBBox": [
+      323.53021240234375,
+      377.05987548828125,
+      400.70361328125,
+      561.5459594726562
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      322,
+      769
+    ],
+    "pixels": [
+      322,
+      769
+    ],
+    "alpha": true,
+    "imageSha256": "87d3b681aad79195463dc5dc457a77ad638af73c2bb133187d9f05e85e666876",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ajanta",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 37,
+    "xref": 1169,
+    "sourceBBox": [
+      289.13336181640625,
+      591.4056396484375,
+      404.9501647949219,
+      708.0096435546875
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      483,
+      486
+    ],
+    "pixels": [
+      483,
+      486
+    ],
+    "alpha": false,
+    "imageSha256": "4909ba47a468c61ad85ba53e378cb64e368835d521df176d82681af73fe00ac4",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "parthenon",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 45,
+    "xref": 1491,
+    "sourceBBox": [
+      377.77496337890625,
+      615.450439453125,
+      587.6237182617188,
+      725.336181640625
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      875,
+      458
+    ],
+    "pixels": [
+      875,
+      458
+    ],
+    "alpha": false,
+    "imageSha256": "d912683f11c16663c2b8f998694154ac0e61478267da1d94755d36137fffd20c",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "persepolis",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 41,
+    "xref": 1328,
+    "sourceBBox": [
+      -0.42708587646484375,
+      608.3463745117188,
+      633.2089233398438,
+      808.90234375
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      2641,
+      836
+    ],
+    "pixels": [
+      1600,
+      506
+    ],
+    "alpha": true,
+    "imageSha256": "2c2d34f1a43264833d63b722f8dd2bd621a7dbecc9668b8ee143b743b7daacd7",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "hagia-sophia",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 57,
+    "xref": 1720,
+    "sourceBBox": [
+      -1.0318145751953125,
+      498.6323547363281,
+      420.5736083984375,
+      808.1661987304688
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      1757,
+      1290
+    ],
+    "pixels": [
+      1600,
+      1175
+    ],
+    "alpha": true,
+    "imageSha256": "407f97806d3fde8f2dda72da8dce2fe35fdcb8946c55583ca477dcc486ebfef8",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "forbidden-city",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 117,
+    "xref": 2947,
+    "sourceBBox": [
+      -15.445510864257812,
+      -9.0506591796875,
+      633.2024536132812,
+      802.7493286132812
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      1638,
+      2050
+    ],
+    "pixels": [
+      1278,
+      1600
+    ],
+    "alpha": false,
+    "imageSha256": "f19371cd6dbd2b15387691b7b6b8084c9f0dd8fdd48f368e24724b5b823bf522",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "ukiyoe",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 125,
+    "xref": 3058,
+    "sourceBBox": [
+      72.65351104736328,
+      218.80616760253906,
+      268.1392822265625,
+      351.8171081542969
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      815,
+      555
+    ],
+    "pixels": [
+      815,
+      555
+    ],
+    "alpha": false,
+    "imageSha256": "98f2c5017ba9b93d0ede765ad671ed8e7250b69e5cbf4a797e0b69d17f4a3ebc",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "dejima",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 125,
+    "xref": 3062,
+    "sourceBBox": [
+      435.51104736328125,
+      564.75439453125,
+      633.23583984375,
+      683.0281372070312
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      876,
+      524
+    ],
+    "pixels": [
+      876,
+      524
+    ],
+    "alpha": false,
+    "imageSha256": "e21ca2c985a036617cf88070f47531c9bc8ebc2561da6bdc1af6c7289163d19d",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "taj-mahal",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 129,
+    "xref": 3144,
+    "sourceBBox": [
+      73.70036315917969,
+      480.8810729980469,
+      569.7625122070312,
+      801.850830078125
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      2067,
+      1338
+    ],
+    "pixels": [
+      1600,
+      1036
+    ],
+    "alpha": true,
+    "imageSha256": "9edbd4c7093955756a84320666114d5269b493f2cb224770f20fe187082a1f33",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "berlin-airlift",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 196,
+    "xref": 5009,
+    "sourceBBox": [
+      -15.211267471313477,
+      533.683349609375,
+      273.2554931640625,
+      721.0331420898438
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      1202,
+      781
+    ],
+    "pixels": [
+      1202,
+      781
+    ],
+    "alpha": true,
+    "imageSha256": "dfdfc6ef68a031d1af7be67cdcf20110c29f6b183dea1ae10130574f30b83110",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "brandenburg",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 179,
+    "xref": 4276,
+    "sourceBBox": [
+      -15.317184448242188,
+      -9.5338134765625,
+      633.330810546875,
+      803.3222045898438
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      2457,
+      3079
+    ],
+    "pixels": [
+      1277,
+      1600
+    ],
+    "alpha": false,
+    "imageSha256": "ea6aa46fdd0d2244cf53b4701994c4649bd755c31ce88b7b69d8bc4724e45915",
+    "losslessDecodedEqual": true
+  },
+  {
+    "id": "walesa",
+    "source": "references/textbooks/중고등/미래엔/고등/사회/세계사 (남궁원)_2022/교과서/세계사 (남궁원)_2022_[교과서] 세계사.pdf",
+    "pdfPage": 201,
+    "xref": 5094,
+    "sourceBBox": [
+      435.4705810546875,
+      250.89964294433594,
+      632.1256713867188,
+      362.1407775878906
+    ],
+    "sourceSha256": "b9cfba568f1009f4eee42bd0e0862b6f8a7ef644094e03fa09cb58818e235351",
+    "sourcePixels": [
+      1010,
+      574
+    ],
+    "pixels": [
+      1010,
+      574
+    ],
+    "alpha": false,
+    "imageSha256": "395dc8b790d7c621a97b020b1135f7cbfe31f45c120d0fab1395a8f6746eb794",
+    "losslessDecodedEqual": true
+  }
+]

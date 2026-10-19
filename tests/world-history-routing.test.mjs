@@ -28,7 +28,7 @@ test('world history opens through production clean URLs, including cached legacy
     const response = await fetch(`${origin}${canonical}`);
     const html = await response.text();
     const assets = [...html.matchAll(/<(?:link|script)\b[^>]*(?:href|src)="([^"]+)"/g)].map(match => match[1]);
-    assert.ok(assets.includes('app.mjs?v=20261019-3'));
+    assert.ok(assets.some(asset => /^app\.mjs\?v=/.test(asset)));
     assert.ok(assets.includes('../vendor/maplibre-gl-6.10.0/maplibre-gl.css'));
     for (const asset of assets) {
       const result = await fetch(new URL(asset, response.url));

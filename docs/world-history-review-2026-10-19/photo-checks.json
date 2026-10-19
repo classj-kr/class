@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-19T09:02:03.585154+09:00",
+  "photos": 16,
+  "linkedTopics": 14,
+  "format": "lossless WebP, original alpha retained; decoded pixels verified",
+  "sourceReview": "Complete source pages and all 16 extracted image objects were visually compared. Full originals preserved. Source hashes, PDF pages and image objects are recorded in world-history-photo-sources.json.",
+  "presentation": "Photos are opened from existing place descriptions or explanation dialogs. No new top toolbar or persistent gallery covers the map.",
+  "questions": {
+    "count": 3,
+    "ids": [
+      "india-gandhara",
+      "byzantine-justinian",
+      "mughal-cities"
+    ],
+    "behavior": "Names, dates, source credits and interpretations are concealed while unsolved, including in the enlarged photo dialog. Wrong answers retain concealment. Explicit reveal or a correct answer enables full photo information."
+  },
+  "browser": {
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "desktopViewport": [
+      1440,
+      900
+    ],
+    "checks": [
+      "Gandhara place opens its photo and visual explanation",
+      "Escape returns from photo to map",
+      "Explanation opens two relevant photo previews",
+      "Nested photo dialog closes back to explanation",
+      "Agra opens Taj Mahal photo",
+      "No horizontal overflow in mobile photo dialog or question panel",
+      "Unsolved Mughal question and enlarged photo contain no artifact/dynasty identification",
+      "Wrong answer does not highlight correct choice or expose photo interpretation",
+      "Correct retry reveals answer and photo title",
+      "Byzantine question photo loads and explicit reveal identifies the building and later minarets"
+    ],
+    "screenshots": [
+      "photo-mobile.webp",
+      "photo-desktop.webp",
+      "photo-question-mobile.webp"
+    ]
+  },
+  "automated": {
+    "command": "node --test tests/world-history.test.mjs tests/world-history-photos.test.mjs tests/world-history-routing.test.mjs tests/world-history-storage.test.mjs",
+    "passed": 18,
+    "failed": 0
+  },
+  "deployment": {
+    "status": "pending",
+    "authenticatedProductionBrowser": "Not available; local browser checks use actual production clean-URL middleware."
+  }
+}
