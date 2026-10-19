@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-19",
+  "environment": "Local isolated game server, synthetic participant",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "before": {
+    "center": {
+      "lng": -0.17010000000004766,
+      "lat": -55.960199999999986
+    },
+    "zoom": 0.55,
+    "cityCount": 14,
+    "cities": [
+      {
+        "name": "비자푸르",
+        "x": 1917.2714629878644,
+        "y": 175.52487185282598,
+        "hidden": true
+      },
+      {
+        "name": "아마다바드",
+        "x": 1832.2167682720974,
+        "y": 99.92842134088968,
+        "hidden": true
+      },
+      {
+        "name": "산타마르타",
+        "x": -78.23741687353561,
+        "y": 172.64505061640386,
+        "hidden": true
+      },
+      {
+        "name": "산후안",
+        "x": 28.60848310253946,
+        "y": 4.391858621625769,
+        "hidden": true
+      },
+      {
+        "name": "킹스턴",
+        "x": 21.41775092007329,
+        "y": 177.1160222066202,
+        "hidden": true
+      },
+      {
+        "name": "산티아고데쿠바",
+        "x": 48.43579269412995,
+        "y": 154.07707858990707,
+        "hidden": true
+      },
+      {
+        "name": "산토도밍고",
+        "x": 25.383893498515384,
+        "y": 65.13625336885164,
+        "hidden": true
+      },
+      {
+        "name": "코지코드",
+        "x": 1994.8948746704255,
+        "y": 208.17376001872194,
+        "hidden": true
+      },
+      {
+        "name": "칸누르",
+        "x": 1985.7735820466858,
+        "y": 196.29306962286864,
+        "hidden": true
+      },
+      {
+        "name": "고아",
+        "x": 1937.4966449209662,
+        "y": 151.92466969082324,
+        "hidden": true
+      },
+      {
+        "name": "디우",
+        "x": 1862.5191633290328,
+        "y": 83.13244768941937,
+        "hidden": true
+      },
+      {
+        "name": "코로",
+        "x": -78.44611275564091,
+        "y": 93.39154950505304,
+        "hidden": true
+      },
+      {
+        "name": "골콘다",
+        "x": 1904.919352546604,
+        "y": 213.1954235811446,
+        "hidden": true
+      },
+      {
+        "name": "함피",
+        "x": 1938.072086791914,
+        "y": 195.7398491711427,
+        "hidden": true
+      }
+    ]
+  },
+  "after": {
+    "center": {
+      "lng": -0.17010000000004766,
+      "lat": -55.960199999999986
+    },
+    "zoom": 0.55,
+    "cityCount": 0,
+    "cities": []
+  },
+  "visibleRegion": {
+    "center": {
+      "lng": -9.288000000000011,
+      "lat": 38.52
+    },
+    "zoom": 0.55,
+    "cityCount": 45,
+    "occludedCities": 0
+  },
+  "tests": [
+    "globe-visibility-unit.js",
+    "html-script-syntax.js",
+    "v86-globe-map-unit.js",
+    "city-icons-unit.js",
+    "mission-map-markers-unit.js"
+  ],
+  "productionVerification": "Deployment status is recorded in the accompanying chat."
+}

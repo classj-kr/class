@@ -865,11 +865,23 @@ function syncGlobeCamera(){
   globeLastCenter=[lon,lat,z];
   globeMap.jumpTo({center:[lon,lat],zoom:z});
 }
-// 지구본 뒤쪽으로 넘어간 곳은 화면 밖으로 보낸다(그러지 않으면 반대편 도시가 화면 안에 찍힌다).
+// Use the same horizon test as MapLibre's own markers. Latitude/longitude
+// cutoffs cannot detect occlusion, especially when looking toward either pole.
 function globeScreenPoint(x,y){
-  const lon=mapLonAt(x),lat=90-(y/MAP_H)*180,c=globeMap.getCenter();
-  if(Math.abs((((lon-c.lng)%360)+540)%360-180)>80||Math.abs(lat-c.lat)>80)return{x:-99999,y:-99999};
-  const p=globeMap.project([lon,lat]);
+  const location={lng:mapLonAt(x),lat:90-(y/MAP_H)*180},hidden={x:-99999,y:-99999};
+  if(!Number.isFinite(location.lng)||!Number.isFinite(location.lat))return hidden;
+  // The bundled MapLibre 6.10.0 Marker uses this transform for globe occlusion.
+  const transform=globeMap._camera?.transform;
+  if(typeof transform?.isLocationOccluded==='function'&&transform.isLocationOccluded(location))return hidden;
+  const p=globeMap.project(location);
+  if(!Number.isFinite(p.x)||!Number.isFinite(p.y))return hidden;
+  if(typeof transform?.isLocationOccluded!=='function'){
+    // Public-API fallback if a future MapLibre version moves the transform:
+    // an occluded point projects onto a different, visible surface location.
+    const surface=globeMap.unproject(p),dlon=((surface.lng-location.lng)%360+540)%360-180;
+    const error=Math.hypot(dlon*Math.cos(location.lat*Math.PI/180),surface.lat-location.lat);
+    if(!Number.isFinite(error)||error>.01)return hidden;
+  }
   return{x:p.x,y:p.y};
 }
 startGlobeMap();
