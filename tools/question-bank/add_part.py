@@ -8,6 +8,7 @@
 
 index.html의 모든 ?v= 를 같은 번호로 맞춘다(로컬 js·css는 24시간 캐시라 번호를 안 올리면 옛 파일이 남는다).
 """
+import collections
 import io
 import os
 import re
@@ -39,9 +40,11 @@ def main(argv):
     unit, parts, version = argv[1], argv[2].replace('-', ''), argv[3]
     path = os.path.join(APP, 'index.html')
     html = io.open(path, encoding='utf-8').read()
-    old = re.search(r'\?v=([0-9-]+)', html).group(1)
+    # 버전은 「날짜-번호」 꼴 가운데 가장 많이 쓰인 것이다. 맨 처음 나오는 ?v= 를 잡으면, 옆방이 작업 중에 붙인 「20261019-hints-1」 같은
+    # 글자의 앞부분만 잡아 그쪽 줄만 바뀌고 나머지는 그대로 남는다(2026-10-19). 바꿀 때도 그 꼴 그대로인 것만 바꾼다.
+    old = collections.Counter(re.findall(r'\?v=(\d{8}-\d+)"', html)).most_common(1)[0][0]
     assert old != version, '번호가 그대로다: ' + old
-    html = html.replace('?v=' + old, '?v=' + version)
+    html = html.replace('?v=' + old + '"', '?v=' + version + '"')
     # 단원 줄은 type="text/plain" data-unit — 브라우저가 받지 않는 목록이고, app.js 가 고른 학기의 파일만 불러온다.
     line = '  <script src="units/%s.js?v=' + version + '" type="text/plain" data-unit></script>\n'
     for part in parts:
