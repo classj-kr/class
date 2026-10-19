@@ -7,6 +7,17 @@ CIRCLE='M2 0 C2 1.1046 1.1046 2 0 2 C-1.1046 2 -2 1.1046 -2 0 C-2 -1.1046 -1.104
 def path(id,data,fill='#000000',transform='matrix(1,0,0,1,30,30)'):
  return ET.Element(figures.SVG+'path',{'id':id,'d':data,'fill':fill,'transform':transform})
 class CitySymbols(unittest.TestCase):
+ def test_zero_length_round_stroke_capitals(self):
+  root=ET.Element(figures.SVG+'svg')
+  for id,color,width in [('outer','#221714','4.194'),('halo','#ffffff','3.595'),('inner','#221714','2.396'),('colored-event','#ff0000','3')]:
+   e=path(id,'M0 0V0','none');e.set('stroke',color);e.set('stroke-width',width);e.set('stroke-linecap','round');root.append(e)
+  line=path('boundary','M0 0V4','none');line.set('stroke','#221714');line.set('stroke-width','1');line.set('stroke-linecap','round');root.append(line)
+  class Page:
+   def get_svg_image(self):return ET.tostring(root)
+   def get_images(self):return []
+  out,count=figures.cleaned_svg(Page(),pymupdf.Rect(20,20,60,60),{})
+  self.assertEqual(count,3)
+  self.assertEqual({p.get('id') for p in ET.fromstring(out).iter(figures.SVG+'path')},{'colored-event','boundary'})
  def test_round_city_path_and_noncity_geometry(self):
   self.assertIsNotNone(figures.city_circle(path('city',CIRCLE)))
   self.assertIsNotNone(figures.city_circle(path('gray-city',CIRCLE,'#2c292a')))

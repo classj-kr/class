@@ -105,13 +105,13 @@
       325
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "a8edd32077e262bc14126a325c1c639329ba96cb0043673e08ebb05d59a051c9",
+    "imageSha256": "5815ea699810c05b9a602de3e09dd5b8b558dec9c548ed188fc699f35c85f888",
     "pixels": [
       1932,
       1422
     ],
     "losslessDecodedEqual": true,
-    "removedCitySymbolPaths": 8
+    "removedCitySymbolPaths": 26
   },
   {
     "id": "southern-song",
@@ -124,13 +124,13 @@
       718
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "e098ff0fdf493789f6b08f3c31bb85072b87e07a66be4c9a3ddc8e50e5d98468",
+    "imageSha256": "7ae6482448430b09ee72b28848ea2e951e1720fdf03556a1686a872e99c29534",
     "pixels": [
       1506,
       1392
     ],
     "losslessDecodedEqual": true,
-    "removedCitySymbolPaths": 8
+    "removedCitySymbolPaths": 28
   },
   {
     "id": "mongols",
@@ -162,13 +162,13 @@
       335
     ],
     "sourceSha256": "c41078ace495063d399752963e8ba539225a80eec308b4fbb40f61fe9cc9381f",
-    "imageSha256": "b3ee615fddbf2aea49b209c72d83f1cd7a11c02f24c8a3c16e056a729b907b49",
+    "imageSha256": "be48bdfcc60a6d6b94add9efffac6adc7e5b9e4dbf122ce8cc5d2ff4a8a6c5ba",
     "pixels": [
       2238,
       1482
     ],
     "losslessDecodedEqual": true,
-    "removedCitySymbolPaths": 19
+    "removedCitySymbolPaths": 25
   },
   {
     "id": "qing",

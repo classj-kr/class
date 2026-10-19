@@ -5,14 +5,13 @@
     "기존 감사 기록의 미래엔·천재 해당 본문과 동아 부도의 해당 주제·시대 범위를 대조했다.",
     "추가한 13개 자료는 해당 원문 페이지의 설명과 이미지 객체 또는 사료 문장을 직접 확인했다.",
     "지도 바탕 39장은 유지한다. 출판사별 장수를 맞추기 위한 교체는 하지 않았다.",
-    "그림 전체를 다른 내용으로 다시 그리지 않고 원본 벡터에서 단순 도시 원형 기호와 프랑크 지도 오표기만 제거했다."
+    "원본 벡터의 원형 경로 및 길이 0인 둥근 선끝으로 그려진 도시·수도 기호와 프랑크 지도 오표기를 제거했다. 지도 지형을 덧칠하지 않았다."
   ],
   "limitations": [
     "전체 교과서의 전 페이지 정독이나 세계사 교육과정 전체의 검증 결과가 아니다.",
     "바탕 지도 39장의 공급원은 여전히 미래엔이다. 실제 추가 자료는 천재 9개와 동아 4개다.",
     "추가된 원본 사진 일부는 저해상도이므로 상세 보기에서 원본 크기 이상 강제 확대하지 않는다.",
-    "자동 테스트는 파일·연결·동작을 검증하며 역사 해석의 독립적인 전문가 검토를 대신하지 않는다.",
-    "원본의 벡터 도시 기호를 제거했다. 일부 도판의 배경 비트맵에 합성된 수도 기호까지 전부 지웠다는 뜻은 아니다. 명 지도에는 베이징·한성의 원형 수도 기호가 남아 있어 별도 정리가 필요하다."
+    "자동 테스트는 파일·연결·동작을 검증하며 역사 해석의 독립적인 전문가 검토를 대신하지 않는다."
   ],
   "addedMaterialIds": [
     "ashoka-pillar",
@@ -1101,9 +1100,26 @@
       "topics": 44,
       "errors": []
     },
-    "removedVectorCitySymbolPaths": 444,
+    "removedVectorCitySymbolPaths": 488,
     "additionalBugFixed": "설명 카드가 커지면 예루살렘 등 장소 버튼을 가리는 문제: 카드 크기 변화 감지, 가까운 후보가 가려지면 카드 바깥 후보를 탐색.",
     "captures": "outputs/qa/world-history-multisource/*.webp",
-    "productionVerification": "커밋 후 /health의 배포 커밋으로 확인. 인증된 운영 UI 직접 검사는 이 로컬 브라우저 검사와 별개."
+    "productionVerification": "커밋 후 /health의 배포 커밋으로 확인. 인증된 운영 UI 직접 검사는 이 로컬 브라우저 검사와 별개.",
+    "capitalSymbolFollowup": {
+      "cause": "남은 수도 기호는 비트맵이 아니라 M0 0V0 형태의 둥근 선끝이었다. 기존 설명을 정정한다.",
+      "changedMaps": [
+        "ming",
+        "northern-song",
+        "southern-song"
+      ],
+      "pixelDifferenceRecord": "outputs/qa/world-history-capital-cleanup/pixel-differences.json",
+      "allMapCount": 39,
+      "removedSymbolLocations": 13,
+      "unchangedMaps": 36,
+      "pythonTests": 3,
+      "nodeTests": 13,
+      "browserClicks": 206,
+      "browserErrors": [],
+      "visualReview": "변경된 13개 영역의 전후 비교에서 기호만 사라지고 해안선·하천·경계·배경이 유지됨을 확인했다."
+    }
   }
 }
