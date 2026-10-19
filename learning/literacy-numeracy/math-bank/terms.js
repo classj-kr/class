@@ -7,7 +7,7 @@
   // 드롭다운 맨 밑의 항목. 고르면 기출 화면으로 간다.
   const PAST = { value: 'past', label: '평가원·수능 기출' };
   // 학교급을 앞에 적는다: 1~6학년은 「초」, 7·8·9학년은 「중」 1·2·3학년.
-  const label = (term) => { const [g, s] = term.split('-').map(Number); return (g > 6 ? '중 ' + (g - 6) : '초 ' + g) + '학년 ' + s + '학기'; };
+  const label = (term) => { const [g, s] = term.split('-').map(Number); return (g > 9 ? '고 ' + (g - 9) : g > 6 ? '중 ' + (g - 6) : '초 ' + g) + '학년 ' + s + '학기'; };
   // 드롭다운을 채운다. terms 를 주지 않으면 TERMS 를 쓴다.
   function fill(select, selected, terms) {
     select.replaceChildren(...(terms || TERMS).map((term) => new Option(label(term), term)), new Option(PAST.label, PAST.value));

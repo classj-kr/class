@@ -112,7 +112,8 @@ test('맨 위 드롭다운: 학기 목록(terms.js)이 실린 단원과 같고, 
   const own = {}; own.globalThis = own;
   vm.runInNewContext(fs.readFileSync(path.join(APP, 'terms.js'), 'utf8'), own, { filename: 'terms.js' });
   const T = own.MathBankTerms;
-  const terms = [...new Set(B.units().map((u) => u.grade + '-' + u.semester))];
+  // 단원 파일은 이름 차례로 읽히므로(10-1-1a 가 2-1-1a 앞) 학기는 수 차례로 세운다.
+  const terms = [...new Set(B.units().map((u) => u.grade + '-' + u.semester))].sort((a, b) => { const [p, q] = [a, b].map((t) => t.split('-').map(Number)); return p[0] - q[0] || p[1] - q[1]; });
   assert.deepEqual(JSON.parse(JSON.stringify(T.TERMS)), terms, 'terms.js 의 TERMS 를 실린 단원에 맞춘다(add_part.py 가 고친다)');
   assert.equal(T.label('3-2'), '초 3학년 2학기');
   assert.equal(T.label('7-1'), '중 1학년 1학기');
@@ -136,7 +137,8 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
     for (const part of [item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : [])) assert.deepEqual(badParticles(part), [], `토씨 — ${label}`);
     // 낱말 뒤 토씨가 겹쳐 붙은 것(사과을, 배추은 …)
     assert.doesNotMatch(whole, /[가-힣](을를|를을|은는|는은)(?=[\s,.])/, label);
-    assert.ok(/^\d수\d\d-\d\d$/.test(item.standard), label);
+    // 성취기준 번호: 초등·중학교 [4수01-02], 고등학교 공통수학 [10공수1-02-03]
+    assert.ok(/^\d수\d\d-\d\d$|^10공수[12]-\d\d-\d\d$/.test(item.standard), label);
     // 말투는 수능 문체: "~세요 / ~습니다 / ~인가요" 를 쓰지 않는다.
     assert.doesNotMatch(whole, /세요|습니다|입니다|인가요|나요\?|해요|예요|어요|까요/, '말투: ' + label);
     assert.ok(item.explain && strip(item.explain).length > 3, '풀이가 없다: ' + label);
