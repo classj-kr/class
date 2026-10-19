@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-19",
+  "scope": "World voyage teacher monitor proportions and optional 1–4 start cities",
+  "behavior": {
+    "startCityCountsAccepted": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "rejected": [
+      "zero start cities",
+      "five start cities",
+      "duplicate start cities",
+      "student selection outside published cities"
+    ],
+    "teacherStartRequiresAllStudentsToChoose": true,
+    "studentCannotChangeSelectedStart": true,
+    "legacySingleDestinationWithOneStart": true,
+    "startCityMarkersRemovedFromTeacherMap": true
+  },
+  "browser": {
+    "engine": "Codex in-app browser",
+    "environment": "local isolated server; synthetic participants only",
+    "checks": [
+      "one initial start selector",
+      "add up to four; add disabled at four",
+      "delete middle row retains other selections",
+      "last selector cannot be removed",
+      "duplicate and empty selection feedback",
+      "one-city mission restored after reload",
+      "16 participants: 12 map markers and 4 completion cards",
+      "fullscreen map preserves 2:1 image aspect ratio",
+      "rank cards fit without clipped names or rank number",
+      "mobile document has no horizontal overflow"
+    ],
+    "fullscreen": {
+      "width": 1920,
+      "height": 1080,
+      "rankBandHeight": 216,
+      "overflow": false
+    },
+    "mobile": {
+      "requestedWidth": 390,
+      "requestedHeight": 844,
+      "documentClientWidth": 375,
+      "documentScrollWidth": 375
+    },
+    "screenshot": "tv.webp"
+  },
+  "automatedChecks": [
+    "node --check server.js",
+    "tests/html-script-syntax.js",
+    "tests/v23-simplified-ui-unit.js",
+    "tests/teacher-map-completed-hidden-unit.js",
+    "tests/teacher-map-privacy-unit.js",
+    "tests/start-city-limits-smoke.js",
+    "git diff --check"
+  ],
+  "production": {
+    "status": "pending deployment",
+    "uiVerification": "Local UI tested; production revision will be checked through /health."
+  }
+}
