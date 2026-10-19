@@ -38,8 +38,9 @@ async function noOverflow(page, label, vertical = false) {
                 page.on('response', response => { if (response.status() >= 400) errors.push(response.status() + ' ' + response.url()); });
                 await page.goto(url, {waitUntil:'networkidle'});
                 await page.locator('#courseList .genre-card').first().waitFor();
-                assert.deepEqual(await page.locator('#courseList .genre-ko').allTextContents(), ['음정','화음','화음 진행','음계','리듬','5도권 원판']);
-                assert.equal(await page.locator('#toolList, .section-badge, .genre-en').count(), 0);
+                assert.deepEqual(await page.locator('#courseList .genre-en').allTextContents(), ['Intervals','Chords','Chord Progressions','Scales','Rhythm','Circle of Fifths']);
+                assert.deepEqual(await page.locator('#courseList .genre-ko').allTextContents(), ['(음정)','(화음)','(화음 진행)','(음계)','(리듬)','(5도권 활용)']);
+                assert.equal(await page.locator('#toolList, .section-badge').count(), 0);
                 const cards = await page.locator('#courseList .genre-card').evaluateAll(nodes => nodes.map(node => {
                     const rect = node.getBoundingClientRect();
                     return {width:rect.width, height:rect.height, font:getComputedStyle(node.querySelector('strong')).fontFamily};
@@ -51,7 +52,8 @@ async function noOverflow(page, label, vertical = false) {
                 }
                 await noOverflow(page, 'menu', true);
                 await capture(page, {path:path.join(output,`${engine}-${width}-menu.webp`),fullPage:true});
-                await page.getByRole('button', {name:'5도권 원판 (Circle of Fifths)', exact:true}).click();
+                await page.getByRole('button', {name:'Circle of Fifths (5도권 활용)', exact:true}).click();
+                assert.equal(await page.locator('#courseTitle').textContent(), 'Circle of Fifths​(5도권 활용)');
                 assert.equal(await page.locator('.lesson-row').count(), 6);
                 assert.equal(await page.locator('.row-act.is-practice').count(), 6);
                 await page.locator('.row-act.is-text').first().click();
@@ -130,8 +132,8 @@ async function noOverflow(page, label, vertical = false) {
                 await back(page);
                 assert.ok(await page.locator('#menuScreen').isVisible());
                 // 기존 청음의 차시·건반과 리듬 링크도 그대로 동작한다.
-                assert.equal(await page.getByRole('link', {name:'리듬 (Rhythm)',exact:true}).getAttribute('href'), '../rhythm-training/');
-                await page.getByRole('button', {name:'음정 (Intervals)',exact:true}).click();
+                assert.equal(await page.getByRole('link', {name:'Rhythm (리듬)',exact:true}).getAttribute('href'), '../rhythm-training/');
+                await page.getByRole('button', {name:'Intervals (음정)',exact:true}).click();
                 await page.locator('.row-act.is-keys').first().click();
                 await page.locator('#staff svg').waitFor();
                 assert.ok(await page.locator('#pianoKeys button').count() > 0);

@@ -1266,7 +1266,7 @@
         chord: { en: "Chords", ko: "화음", theme: "chord", icon: "chord" },
         progression: { en: "Chord Progressions", ko: "화음 진행", theme: "progression", icon: "progression" },
         scale: { en: "Scales", ko: "음계", theme: "scale", icon: "scale" },
-        wheel: { en: "Circle of Fifths", ko: "5도권 원판", theme: "wheel", icon: "wheel" },
+        wheel: { en: "Circle of Fifths", ko: "5도권 활용", theme: "wheel", icon: "wheel" },
     };
 
     function createGlassCard(meta, onOpen) {
@@ -1274,7 +1274,7 @@
         if (meta.href) button.href = meta.href;
         else button.type = "button";
         button.className = "genre-card card-" + (meta.theme || "gold");
-        button.setAttribute("aria-label", meta.ko + " (" + meta.en + ")");
+        button.setAttribute("aria-label", meta.en + " (" + meta.ko + ")");
 
         const glow = document.createElement("div");
         glow.className = "card-glow";
@@ -1288,11 +1288,16 @@
         const body = document.createElement("div");
         body.className = "card-body";
 
-        const ko = document.createElement("strong");
-        ko.className = "genre-ko";
-        ko.textContent = meta.ko;
+        const en = document.createElement("strong");
+        en.className = "genre-en";
+        en.lang = "en";
+        en.textContent = meta.en;
 
-        body.append(ko);
+        const ko = document.createElement("span");
+        ko.className = "genre-ko";
+        ko.textContent = "(" + meta.ko + ")";
+
+        body.append(en, ko);
         button.append(glow, iconWrap, body);
         if (onOpen) button.addEventListener("click", onOpen);
         return button;

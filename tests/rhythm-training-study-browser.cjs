@@ -218,7 +218,7 @@ function mockAudio() {
         await page.locator('#courseList button').first().waitFor();
         assert.equal(await page.locator('#courseList button').count(), 5);
         assert.equal(await page.getByRole('button', { name: /리듬/ }).count(), 0);
-        assert.equal(await page.getByRole('link', { name: '리듬 (Rhythm)', exact: true }).getAttribute('href'), '../rhythm-training/');
+        assert.equal(await page.getByRole('link', { name: 'Rhythm (리듬)', exact: true }).getAttribute('href'), '../rhythm-training/');
         assert.equal(await page.locator('#tapWrap, #gridWrap, #barsWrap').count(), 0);
         await purged;
         assert.equal(cleaned.progress.rhythm, undefined); assert.equal(cleaned.stats.rhythmRead, undefined);

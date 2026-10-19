@@ -456,7 +456,7 @@
 
     const WHEEL_COURSE = {
         id: "wheel",
-        name: "5도권 원판",
+        name: "Circle of Fifths​(5도권 활용)",
         lessons: [
             {
                 id: "fifths", kind: "wheel", title: "5도씩 돌아가기", practice: "fifths",
