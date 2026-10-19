@@ -3,17 +3,19 @@
 사진을 이 폴더에 바로 넣으면(jpg·png·webp) 그 자리에서 게임 규격(3:2, 1200x800 WebP)으로 맞추고 원래 파일은 지운다.
 파일 이름은 city-landmarks.json 의 id 와 같아야 한다(보기: lm-belem-tower.jpg).
 사진은 마음대로 써도 되는 것만 쓴다. 출처와 이용 조건은 data/catalog 의 credits 파일(city-photo-credits.json, photo-credits.json)에 적는다.
+photo-credits.json에서 preserveFrame이 지정된 검수 사진은 원본 구도를 유지하고 긴 변만 1280px 이내로 맞춘다.
 """
 import json
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageOps
 
 APP = Path(__file__).resolve().parent.parent
 TARGET = APP / 'public' / 'assets' / 'landmarks'
 SOURCE = TARGET
 SIZE = (1200, 800)
+credits = json.loads((APP / 'data' / 'catalog' / 'photo-credits.json').read_text(encoding='utf-8'))
 
 landmarks = json.loads((APP / 'data' / 'catalog' / 'city-landmarks.json').read_text(encoding='utf-8'))
 discoveries = json.loads((APP / 'data' / 'catalog' / 'discoveries.json').read_text(encoding='utf-8'))
@@ -34,6 +36,20 @@ for src in sorted(SOURCE.iterdir(), key=lambda p: (p.suffix.lower() == '.webp', 
         unknown.append(src.name)
         continue
     out = TARGET / f'{key}.webp'
+    if credits.get(key, {}).get('preserveFrame'):
+        with Image.open(src) as opened:
+            if src == out and opened.format == 'WEBP' and max(opened.size) <= 1280:
+                continue
+            canvas = ImageOps.exif_transpose(opened).convert('RGB')
+            canvas.thumbnail((1280, 1280), Image.Resampling.LANCZOS)
+            canvas.save(out, 'WEBP', quality=90, method=6)
+        with Image.open(out) as check:
+            check.load()
+            assert check.size == canvas.size and check.format == 'WEBP'
+        if src != out:
+            src.unlink()
+        done.append(f'{names_all[key]} (구도 유지, {out.stat().st_size // 1024}KB)')
+        continue
     with Image.open(src) as opened:
         if src == out and opened.size == SIZE:
             continue

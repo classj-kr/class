@@ -1,0 +1,264 @@
+{
+  "date": "2026-10-19",
+  "scope": "기존 대표 이미지가 지도였던 15곳의 사진 교체",
+  "photos": [
+    {
+      "id": "santorini",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:2011_Dimos_Thiras.png",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Santorini_Caldera.jpg",
+      "sourceTitle": "File:The Santorini Caldera.jpg",
+      "originalDimensions": [
+        3525,
+        1843
+      ],
+      "webpDimensions": [
+        1280,
+        669
+      ],
+      "sha256": "435f0d15d573b2951a5148b6fb5c9e5a10bf0970c83254eba21671788abf6817",
+      "caption": "산토리니섬의 항공사진. 바닷물이 들어찬 칼데라와 둘레의 섬들이 보입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "tassili-rock-art",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Map_of_Tassili_n%27Ajjer_and_surroundings-en.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Tanzoumaitak_cave_painting_in_Tassili_n%27ajjer.jpg",
+      "sourceTitle": "File:The Tanzoumaitak cave painting in Tassili n'ajjer.jpg",
+      "originalDimensions": [
+        5163,
+        2904
+      ],
+      "webpDimensions": [
+        1280,
+        720
+      ],
+      "sha256": "87fa1bd86385f31341ba5500d420b46b2083a2e0b10883d070f1a4f036e8545a",
+      "caption": "알제리 타실리나제르의 탄주마이타크 바위그림. 바위 면에 그린 동물과 사람의 모습입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "mississippi_mouth",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Watershed_Map_North_America.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Delta_(ASTER).jpg",
+      "sourceTitle": "File:Mississippi River Delta (ASTER).jpg",
+      "originalDimensions": [
+        3594,
+        3819
+      ],
+      "webpDimensions": [
+        1205,
+        1280
+      ],
+      "sha256": "d21bafc4a7f2ebbd2d0fea007193e9866ddcc46f0d34d24594144a044bef456e",
+      "caption": "미시시피강 하구의 갈라진 물길과 퇴적지. ASTER 위성사진(2001년, 합성색)입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "dnieper-rapids",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Theatrum_Belli_Ao_MDCCXXXVII._L%27Isle.png",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE%D0%B2%D1%96_%D0%BF%D0%BE%D1%80%D0%BE%D0%B3%D0%B8_1920.jpg",
+      "sourceTitle": "File:Дніпрові пороги 1920.jpg",
+      "originalDimensions": [
+        2362,
+        1683
+      ],
+      "webpDimensions": [
+        1280,
+        912
+      ],
+      "sha256": "da80b29d5aee8d266ee22aca57c458d81e4db0106e16d033366a69ec02fff06b",
+      "caption": "1920년대 드니프로강 급류의 옛 사진. 바위 사이로 흐르는 물길이 보입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "nile-second-cataract",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Nubia_today.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Nubia,_Second_cataract,_19th_century_pictures,_1870-1888,_photo_1_of_3_-_Archivio_fotografico_Museo_Egizio,_Turin_INV32_003.jpg",
+      "sourceTitle": "File:Nubia, Second cataract, 19th century pictures, 1870-1888, photo 1 of 3 - Archivio fotografico Museo Egizio, Turin INV32 003.jpg",
+      "originalDimensions": [
+        8272,
+        6135
+      ],
+      "webpDimensions": [
+        1280,
+        949
+      ],
+      "sha256": "f32afacede951e37be80185a3ed76290e36a54d9ced27634c1bd34b3e0649fd1",
+      "caption": "나일강 제2급류의 옛 사진(1870~1888년). 현재는 나세르호에 잠긴 구간입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "danakil-depression",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Map_Danakil.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Ethiopia_-_Dallol.jpg",
+      "sourceTitle": "File:Ethiopia - Dallol.jpg",
+      "originalDimensions": [
+        5464,
+        3640
+      ],
+      "webpDimensions": [
+        1280,
+        853
+      ],
+      "sha256": "f22ceab03c489807fa85bf2e7a78f660b177867147784fa602ecda51fdc0fbb6",
+      "caption": "다나킬 저지대에 있는 달롤의 항공사진. 소금 지대와 열수 활동의 흔적이 보입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "strait-of-dover",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Strait_of_Dover_map.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Dover_MODIS.jpg",
+      "sourceTitle": "File:Strait of Dover MODIS.jpg",
+      "originalDimensions": [
+        1600,
+        1600
+      ],
+      "webpDimensions": [
+        1280,
+        1280
+      ],
+      "sha256": "8aec9a4aba0a39c23abf4e0f04caf942a6c9a5960cfe760c34a583b51c2f62d6",
+      "caption": "영국과 프랑스 사이의 도버 해협을 촬영한 위성사진입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "deccan-plateau",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Deccan,_India.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Deccan.jpg",
+      "sourceTitle": "File:Deccan.jpg",
+      "originalDimensions": [
+        800,
+        1046
+      ],
+      "webpDimensions": [
+        800,
+        1046
+      ],
+      "sha256": "46b9f6402535223e8f4e37c0a97220c03b9f3582a3f2ba15972a776b0451cefd",
+      "caption": "인도반도 내부에 펼쳐진 데칸고원의 위성사진입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "panama_isthmus",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:IsthmusOfPanama.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Panama_in_March_2003.jpg",
+      "sourceTitle": "File:Satellite image of Panama in March 2003.jpg",
+      "originalDimensions": [
+        2629,
+        1116
+      ],
+      "webpDimensions": [
+        1280,
+        543
+      ],
+      "sha256": "5bec18dc52038514ccc69514aed0913b2209c2703105c576a58644c2de55b6fc",
+      "caption": "파나마 지협의 위성사진. 두 바다 사이에 놓인 좁은 육지가 보입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "malacca_strait",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Strait_of_Malacca_highlighted.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Malacca_(MODIS_2025-08-25).jpg",
+      "sourceTitle": "File:Strait of Malacca (MODIS 2025-08-25).jpg",
+      "originalDimensions": [
+        2527,
+        1951
+      ],
+      "webpDimensions": [
+        1280,
+        988
+      ],
+      "sha256": "d4d0f8e98c7870e161fd372aa30c0874c824b49b9da108605184cc5a50e709c3",
+      "caption": "말레이반도와 수마트라섬 사이의 믈라카 해협을 촬영한 위성사진입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "malay_archipelago",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Location_Malay_Archipelago.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Lesser_Sunda_Islands,_Indonesia_(MODIS_2024-09-08).jpg",
+      "sourceTitle": "File:Lesser Sunda Islands, Indonesia (MODIS 2024-09-08).jpg",
+      "originalDimensions": [
+        3675,
+        2756
+      ],
+      "webpDimensions": [
+        1280,
+        960
+      ],
+      "sha256": "dc5da6e838cb83a8f2fcadec5cfe9f295842e27ba2f75ff2bf4ed279b4d3d91b",
+      "caption": "말레이 제도의 일부인 소순다 열도의 위성사진. 길게 이어진 섬들이 보입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "drake-passage",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Drake_passage_en.png",
+      "source": "https://commons.wikimedia.org/wiki/File:DrakeP1.JPG",
+      "sourceTitle": "File:DrakeP1.JPG",
+      "originalDimensions": [
+        1000,
+        750
+      ],
+      "webpDimensions": [
+        1000,
+        750
+      ],
+      "sha256": "219dd9d08dc4711e0c5576a489c38ab1691c604e368082861527f70318cc8ea0",
+      "caption": "드레이크 해협을 건너는 배에서 촬영한 바다의 모습입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "great_rift_valley",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Tectonical_map_of_East_Africa.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Rift_valley_escarpment.jpg",
+      "sourceTitle": "File:Rift valley escarpment.jpg",
+      "originalDimensions": [
+        4000,
+        4996
+      ],
+      "webpDimensions": [
+        1025,
+        1280
+      ],
+      "sha256": "99c2edf3d309c74a62ff9ddfb3b66321e46ebd3796e070926362615532dd3a2c",
+      "caption": "동아프리카 대지구대의 케냐 구간. 가파른 사면과 그 아래 낮은 땅이 보입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "grand-banks-cod",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Grand_Banks.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Atlantic_Cod,_Atlantischer_Kabeljau_(Gadus_morhua).jpg",
+      "sourceTitle": "File:Atlantic Cod, Atlantischer Kabeljau (Gadus morhua).jpg",
+      "originalDimensions": [
+        3400,
+        2268
+      ],
+      "webpDimensions": [
+        1280,
+        854
+      ],
+      "sha256": "53f691d570e1f6ca7abdfdb9d92b2521bda9aaeca59331752bb09f00ee632e7d",
+      "caption": "그랜드뱅크스 어장의 대표 어종인 대서양대구. 사진은 수족관에서 촬영했습니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    },
+    {
+      "id": "guanahani-island",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:SanSalvador_map.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Sansalvador.jpg",
+      "sourceTitle": "File:Sansalvador.jpg",
+      "originalDimensions": [
+        628,
+        503
+      ],
+      "webpDimensions": [
+        628,
+        503
+      ],
+      "sha256": "1ad88537d385e3a0800ab6884c39345261cb8b0664d289ab5958b511132a0529",
+      "caption": "바하마 산살바도르섬의 해안 모습입니다.",
+      "review": "출처의 대상·촬영 유형·이용 조건 확인, 실제 이미지 시각 검수, 원본 종횡비·WebP 디코딩 확인"
+    }
+  ],
+  "additionalSource": {
+    "mississippi_mouth": "https://science.nasa.gov/earth/earth-observatory/mississippi-river-delta-2521/"
+  }
+}
