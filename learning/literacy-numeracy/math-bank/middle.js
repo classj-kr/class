@@ -291,7 +291,8 @@
   // 답이 점의 좌표인 문항: 「( [±][ ] , [±][ ] )」 두 칸으로 받고, 틀리면 (−3, 2) 꼴로 보인다. x, y 는 정수.
   function pointAns(text, x, y, o) {
     if (!Number.isInteger(x) || !Number.isInteger(y)) throw new Error('좌표 답은 정수여야 한다');
-    return M(text, [{ answer: x, signed: true, lead: '(' }, { answer: y, signed: true, lead: ',', unit: ')' }], Object.assign({}, o, { shown: `(${signedText(x)}, ${signedText(y)})` }));
+    // 쉼표는 앞 칸 뒤에 붙인다: 좁은 화면에서 두 칸이 갈려도 다음 줄이 「,」로 시작하지 않게.
+    return M(text, [{ answer: x, signed: true, lead: '(', unit: ',' }, { answer: y, signed: true, unit: ')' }], Object.assign({}, o, { shown: `(${signedText(x)}, ${signedText(y)})` }));
   }
 
   // ── 좌표평면 ──
