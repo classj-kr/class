@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>도착 경주 현황판</title>
-<link rel="stylesheet" href="./teacher.css?v=20261019-layout-2"></head><body>
+<link rel="stylesheet" href="./teacher.css?v=20261019-layout-3"></head><body>
 <section id="login" class="panel login"><h1>도착 경주 현황판</h1><p id="error" class="err">방을 여는 중입니다.</p><a class="backLink" href="/">사이트 첫 화면으로</a></section>
 <main id="dash" class="hidden">
 <header class="header"><div><h2>방번호 <span id="roomLabel"></span> · 도착 경주</h2><span id="status" class="ok">서버 연결</span></div><div class="summary"><span>게임 날짜 <b id="classClock">1520년 1월 1일 00:00</b></span><span>접속 <b id="count">0</b>명</span></div></header>
@@ -89,7 +89,7 @@ function showLoginError(message){$('dash').classList.add('hidden');$('login').cl
 async function enterHost(){
   if(hostRoom){const token=readHostToken(hostRoom);if(!token){showLoginError('이 방을 만든 화면에서만 현황판을 열 수 있습니다.');return}const r=await ack('teacherJoin',{roomCode:hostRoom,hostToken:token});if(!r?.ok){showLoginError(r?.error||'현황판을 열지 못했습니다.');return}openDash(r);return}
   if(pageParams.get('create')==='race'){const r=await ack('createRoom',{roomType:'race'});if(!r?.ok){showLoginError(r?.error||'방을 만들지 못했습니다.');return}hostRoom=r.roomCode;saveHostToken(hostRoom,r.hostToken);history.replaceState(null,'',`?room=${hostRoom}`);openDash(r);return}
-  showLoginError('게임 첫 화면에서 "방 만들기 → 도착 경주"를 고르면 현황판이 열립니다.');
+  showLoginError('게임 첫 화면에서 "도착 경주"를 선택하고 방을 만들면 현황판이 열립니다.');
 }
 socket.on('connect',()=>{$('status').textContent='서버 연결';$('status').className='ok';enterHost()});socket.on('disconnect',()=>{teacherClockActive=false;$('status').textContent='재연결 중';$('status').className='err'});socket.on('teacherSnapshot',s=>{players=s.players||[];activeMission=s.mission||null;progress=s.progress||[];classSettings={...classSettings,...(s.settings||{})};resetClock(s.classGameMinutes);renderAll()});socket.on('teacherMissionChanged',d=>{activeMission=d?.mission||null;renderAll()});socket.on('teacherMissionProgress',d=>{const i=progress.findIndex(p=>p.name===d.name);if(i>=0)progress[i]={name:d.name,...d.progress};else progress.push({name:d.name,...d.progress});renderAll()});
 $('studySearch').oninput=renderStudyChoices;

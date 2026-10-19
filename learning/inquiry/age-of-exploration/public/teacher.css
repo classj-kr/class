@@ -20,32 +20,31 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .missionNow{border-left:3px solid var(--accent);padding:10px;background:#081d25}.missionNow strong{display:block;color:#ffe29a;font-size:18px;word-break:keep-all;overflow-wrap:anywhere}
 .counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:7px;margin-top:9px}.countCard{padding:8px;border:1px solid #52656a;border-radius:7px;background:#0a2028;font-size:13px}
 #studySelected{padding-left:20px;font-size:13px;word-break:keep-all}#studySelected li{margin:6px 0}#studySelected button{padding:4px 8px;min-height:32px;font-size:12px}#studyCount{margin-left:12px;font-size:13px}
-.monitor{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;min-width:0;align-items:start}
-.mapPanel{padding:10px;min-height:0}.mapHeader{display:flex;align-items:center;justify-content:space-between;gap:10px}.mapHeader h3{font-size:16px;margin:0 0 4px}.mapHeader button{flex-shrink:0}
+.monitor{display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,23vw,360px);grid-template-rows:minmax(0,1fr);gap:10px;min-width:0;height:calc(100dvh - 104px);min-height:390px;align-items:stretch}
+.mapPanel{display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:10px;min-height:0}.mapHeader{display:flex;align-items:center;justify-content:space-between;gap:10px}.mapHeader h3{font-size:16px;margin:0 0 4px}.mapHeader button{flex-shrink:0}
 .mapStatus{font-size:12px;color:#cadcdb;line-height:1.5}
-.mapWrap{position:relative;width:100%;aspect-ratio:2/1;margin-top:8px;overflow:hidden;background:#061a24;border-radius:6px;min-height:0}
+.mapWrap{position:relative;width:100%;margin-top:8px;overflow:hidden;background:#061a24;border-radius:6px;min-height:0}
 .mapWrap canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
 .mapLegend{display:flex;gap:13px;flex-wrap:wrap;margin-top:8px;font-size:11px;color:#c2d3d0;line-height:1.4}.legendItem{display:flex;align-items:center;gap:5px}.legendDot{width:9px;height:9px;border-radius:50%;display:inline-block}
-.rankBoard{display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;min-height:0;max-height:360px;overflow:hidden;padding:12px}
-.rankHeader{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.rankHeader h3{margin:0;font-size:17px}.missionTitle{font-size:16px;color:#ffe29a;font-weight:700;word-break:keep-all;overflow-wrap:anywhere}.rankHeader .muted{margin-left:auto}
-.rankContent{display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:16px;min-height:0}
-.finishSection,.waitingSection{min-width:0;min-height:0;overflow:auto;scrollbar-color:#5d787b #0a2028;scrollbar-width:thin}
-.rankList{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;align-content:start}
+.rankBoard{display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px;min-height:0;overflow:hidden;padding:12px}
+.rankHeader{display:grid;gap:6px}.rankHeader h3{margin:0;font-size:17px}.missionTitle{font-size:16px;color:#ffe29a;font-weight:700;word-break:keep-all;overflow-wrap:anywhere}
+.rankContent{display:flex;flex-direction:column;gap:18px;min-height:0;overflow:auto;scrollbar-color:#5d787b #0a2028;scrollbar-width:thin}
+.finishSection,.waitingSection{min-width:0;flex-shrink:0}
+.rankList{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-content:start}
 .rankRow{display:grid;grid-template-columns:42px minmax(0,1fr);grid-template-areas:'medal name' 'medal start' 'medal time';column-gap:8px;row-gap:4px;align-content:start;padding:10px;border:1px solid #476068;border-radius:8px;background:#091e26;min-width:0}
 .rankRow.gold{border-color:#e3bc4f;background:linear-gradient(110deg,#4b3b13,#091e26 55%)}.rankRow.silver{border-color:#aebbc3;background:linear-gradient(110deg,#38454c,#091e26 55%)}.rankRow.bronze{border-color:#b97243;background:linear-gradient(110deg,#4b2d1e,#091e26 55%)}
 .rankNo{grid-area:medal;font-size:30px;font-weight:900;color:#f5d477;text-align:center}.rankName{grid-area:name;font-size:19px;font-weight:800;color:#fff;overflow-wrap:anywhere}.rankStart{grid-area:start}.rankTime{grid-area:time;color:#c7d8d6}.rankStart,.rankTime{font-size:12px;line-height:1.45;overflow-wrap:anywhere}
 .waitingTitle{margin:0 0 6px;font-size:15px}.waiting{display:flex;justify-content:space-between;gap:10px;padding:7px 2px;border-bottom:1px solid #324a53;font-size:12px;line-height:1.5;flex-wrap:wrap}.waiting>span{min-width:0;overflow-wrap:anywhere}.waiting>span:last-child{color:#a8d7e8}
 .empty{font-size:13px;line-height:1.6;padding:12px 4px;color:#bdcbc7;grid-column:1/-1}
 .rankRow:not(.gold):not(.silver):not(.bronze) .rankNo{font-size:22px;letter-spacing:-.5px;white-space:nowrap}
-.monitor:fullscreen{width:100vw;height:100dvh;background:#061219;padding:12px;overflow:hidden;grid-template-rows:minmax(0,1fr) clamp(196px,20dvh,220px);align-items:stretch}
-.monitor:fullscreen .mapPanel{display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:8px 12px}
-.monitor:fullscreen .mapWrap{aspect-ratio:auto}
-.monitor:fullscreen .rankBoard{max-height:none;padding:12px 16px}
+.monitor:fullscreen{width:100vw;height:100dvh;min-height:0;background:#061219;padding:12px;overflow:hidden;grid-template-columns:minmax(0,1fr) clamp(280px,23vw,420px);grid-template-rows:minmax(0,1fr)}
+.monitor:fullscreen .mapPanel{padding:8px 12px}
+.monitor:fullscreen .rankBoard{padding:16px}
 .monitor:fullscreen .mapHeader h3{font-size:18px}.monitor:fullscreen .mapStatus,.monitor:fullscreen .mapLegend{font-size:13px}
 .monitor:fullscreen .rankHeader h3{font-size:20px}.monitor:fullscreen .missionTitle{font-size:18px}
-.monitor:fullscreen .rankList{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .monitor:fullscreen .rankRow{grid-template-columns:46px minmax(0,1fr);padding:10px 12px}.monitor:fullscreen .rankName{font-size:22px}.monitor:fullscreen .rankNo{font-size:34px}
 .monitor:fullscreen .rankStart,.monitor:fullscreen .rankTime,.monitor:fullscreen .waiting,.monitor:fullscreen .empty{font-size:14px}
-@media(max-width:1000px){.layout{grid-template-columns:1fr}.setup{grid-template-columns:1fr 1fr}.rankContent{grid-template-columns:minmax(0,1.5fr) minmax(220px,1fr)}}
-@media(max-width:620px){body{padding:8px}.header h2{font-size:19px}.setup{grid-template-columns:1fr}.rankContent{grid-template-columns:1fr}.rankBoard{max-height:none}.rankList{grid-template-columns:1fr}.rankHeader .muted{margin-left:0;width:100%}.mapHeader h3{font-size:14px}.mapStatus{font-size:11px}.mapHeader button{font-size:12px;padding:7px}.mapLegend{font-size:10px}.monitor:fullscreen{padding:6px;grid-template-rows:minmax(0,1fr) minmax(180px,40dvh)}.monitor:fullscreen .rankContent{grid-template-columns:1fr}.monitor:fullscreen .rankBoard{overflow:auto}.monitor:fullscreen .finishSection,.monitor:fullscreen .waitingSection{overflow:visible}.monitor:fullscreen .rankList{grid-template-columns:1fr}}
-@media(max-height:540px) and (min-width:621px){.monitor:fullscreen{grid-template-rows:minmax(0,1fr) 155px;gap:6px;padding:6px}.monitor:fullscreen .mapLegend{display:none}.monitor:fullscreen .rankBoard{gap:6px;padding:7px 12px}.monitor:fullscreen .rankHeader h3{font-size:16px}.monitor:fullscreen .rankName{font-size:18px}.monitor:fullscreen .rankStart,.monitor:fullscreen .rankTime{font-size:12px}}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.setup{grid-template-columns:1fr 1fr}}
+@media(orientation:portrait),(max-width:620px){.monitor{height:auto;min-height:0;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}.mapWrap{aspect-ratio:2/1}.rankBoard{max-height:460px}.monitor:fullscreen{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(180px,38dvh)}.monitor:fullscreen .mapWrap{aspect-ratio:auto}.monitor:fullscreen .rankBoard{max-height:none}}
+@media(max-width:620px){body{padding:8px}.header h2{font-size:19px}.setup{grid-template-columns:1fr}.mapHeader h3{font-size:14px}.mapStatus{font-size:11px}.mapHeader button{font-size:12px;padding:7px}.mapLegend{font-size:10px}.monitor:fullscreen{padding:6px}}
+@media(max-height:540px) and (min-width:621px){.monitor:fullscreen{grid-template-columns:minmax(0,1fr) clamp(240px,30vw,320px);gap:6px;padding:6px}.monitor:fullscreen .mapLegend{display:none}.monitor:fullscreen .rankBoard{gap:6px;padding:9px}.monitor:fullscreen .rankHeader h3{font-size:16px}.monitor:fullscreen .rankName{font-size:18px}.monitor:fullscreen .rankStart,.monitor:fullscreen .rankTime{font-size:12px}}
