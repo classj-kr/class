@@ -873,8 +873,7 @@
             font-size: 0.9rem;
             line-height: 1.4;
             color: #e2ece6;
-            max-height: 140px;
-            overflow-y: auto;
+            overflow-wrap: anywhere;
         }
 
         .meal-dish-item {
@@ -886,6 +885,9 @@
         }
 
         .meal-dish-item:last-child { border-bottom: none; }
+
+        .meal-dish-item > span:first-child { flex: none; }
+        .meal-dish-item > span:last-child { min-width: 0; }
 
         /* Opaque notice items stay separate from the textured board. */
         .timetable-item,
