@@ -362,9 +362,9 @@
 
         .worksheet-container,
         .game-card-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            align-items: start;
             gap: 10px;
         }
 
@@ -375,7 +375,7 @@
             display: grid;
             grid-template-columns: 1fr auto;
             align-items: center;
-            flex: 0 1 220px;
+            min-width: 0;
             min-height: 72px;
             padding: 11px 15px;
             border: 2px solid var(--gold);
@@ -416,7 +416,7 @@
 
         .worksheet-group {
             position: relative;
-            flex: 0 1 200px;
+            min-width: 0;
             font-family: "Malgun Gothic", sans-serif;
         }
 
