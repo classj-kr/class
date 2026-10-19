@@ -1,6 +1,6 @@
 :root{--bg:#061219;--panel:#102832;--line:#65756f;--ink:#f4e8ca;--good:#a8e7b7;--bad:#ff9d93;--accent:#f1ce73}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Noto Sans KR",sans-serif;padding:14px;min-height:100vh}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Noto Sans KR",sans-serif;padding:8px;min-height:100dvh}
 body::before{content:"";position:fixed;inset:0;background:linear-gradient(#062039aa,#07141aee),url('./assets/ui/harbor-day-bg.webp?v=63') center/cover;z-index:-1}
 button,input,select{font:inherit;border-radius:7px;border:1px solid #887653;background:#071a22;color:#fff;padding:9px}
 button{background:#72552c;font-weight:700;cursor:pointer;min-height:42px}
@@ -8,10 +8,10 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .panel{min-width:0;background:#0a2028f0;border:1px solid var(--line);border-radius:10px;padding:14px}
 .hidden{display:none!important}.ok{color:var(--good)}.err{color:var(--bad)}.muted{font-size:12px;opacity:.78;line-height:1.55}
 .login{max-width:620px;margin:12vh auto}.backLink{color:var(--accent);font-weight:700}
-.header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}.header h2{margin:0}
-.summary{display:flex;gap:8px;flex-wrap:wrap}.summary span{background:#0a2028;border:1px solid #52656a;border-radius:7px;padding:8px 11px}
-.layout{display:grid;grid-template-columns:minmax(280px,330px) minmax(0,1fr);gap:12px;align-items:start}
-.setup{display:grid;gap:10px;align-content:start;min-width:0}.setup label{display:grid;gap:5px;font-size:13px;min-width:0}
+#dash{height:calc(100dvh - 16px);min-height:0}
+.roomHeading{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}.roomHeading strong{font-size:18px;color:#ffe29a}.roomState{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:5px;font-size:11px;line-height:1.5;color:#cadcdb}.roomState b{font-weight:400}#status.ok{display:none}.setupTitle{margin:16px 0 8px;font-size:18px}
+.layout{display:grid;grid-template-columns:minmax(260px,330px) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:10px;height:100%;min-height:0;align-items:stretch}
+.setup{display:grid;gap:10px;align-content:start;min-width:0;min-height:0;overflow:auto;scrollbar-color:#5d787b #0a2028;scrollbar-width:thin}.setup label{display:grid;gap:5px;font-size:13px;min-width:0}
 .setup select,.setup input{width:100%;min-width:0;max-width:100%}
 .startGrid{display:grid;gap:8px;margin:12px 0 8px}.startRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:8px}
 .removeStart{background:transparent;color:#e4c6a8;font-size:13px}.addStart{background:#193f49;font-size:13px;width:100%}
@@ -20,12 +20,12 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .missionNow{border-left:3px solid var(--accent);padding:10px;background:#081d25}.missionNow strong{display:block;color:#ffe29a;font-size:18px;word-break:keep-all;overflow-wrap:anywhere}
 .counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:7px;margin-top:9px}.countCard{padding:8px;border:1px solid #52656a;border-radius:7px;background:#0a2028;font-size:13px}
 #studySelected{padding-left:20px;font-size:13px;word-break:keep-all}#studySelected li{margin:6px 0}#studySelected button{padding:4px 8px;min-height:32px;font-size:12px}#studyCount{margin-left:12px;font-size:13px}
-.monitor{display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,23vw,360px);grid-template-rows:minmax(0,1fr);gap:10px;min-width:0;height:calc(100dvh - 104px);min-height:390px;align-items:stretch}
-.mapPanel{display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:10px;min-height:0}.mapHeader{display:flex;align-items:center;justify-content:space-between;gap:10px}.mapHeader h3{font-size:16px;margin:0 0 4px}.mapHeader button{flex-shrink:0}
-.mapStatus{font-size:12px;color:#cadcdb;line-height:1.5}
-.mapWrap{position:relative;width:100%;margin-top:8px;overflow:hidden;background:#061a24;border-radius:6px;min-height:0}
+.monitor{display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,23vw,360px);grid-template-rows:minmax(0,1fr);gap:10px;min-width:0;height:100%;min-height:0;align-items:stretch}
+.mapPanel{position:relative;display:grid;grid-template-rows:minmax(0,1fr);padding:0;min-height:0;overflow:hidden}.mapHeader{position:absolute;inset:8px 8px auto;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;pointer-events:none}.mapHeader button{flex-shrink:0;pointer-events:auto;font-size:13px;min-height:36px;padding:7px 10px}
+.mapStatus{font-size:11px;color:#cadcdb;line-height:1.5;background:#061219d9;border-radius:6px;padding:7px 9px}
+.mapWrap{position:relative;width:100%;overflow:hidden;background:#061a24;border-radius:9px;min-height:0}
 .mapWrap canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
-.mapLegend{display:flex;gap:13px;flex-wrap:wrap;margin-top:8px;font-size:11px;color:#c2d3d0;line-height:1.4}.legendItem{display:flex;align-items:center;gap:5px}.legendDot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.mapLegend{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);display:flex;gap:10px;flex-wrap:wrap;padding:5px 8px;border-radius:5px;background:#061219d9;font-size:11px;color:#c2d3d0;line-height:1.4;pointer-events:none}.legendItem{display:flex;align-items:center;gap:5px}.legendDot{width:9px;height:9px;border-radius:50%;display:inline-block}
 .rankBoard{display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px;min-height:0;overflow:hidden;padding:12px}
 .rankHeader{display:grid;gap:6px}.rankHeader h3{margin:0;font-size:17px}.missionTitle{font-size:16px;color:#ffe29a;font-weight:700;word-break:keep-all;overflow-wrap:anywhere}
 .rankContent{display:flex;flex-direction:column;gap:18px;min-height:0;overflow:auto;scrollbar-color:#5d787b #0a2028;scrollbar-width:thin}
@@ -38,13 +38,13 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .empty{font-size:13px;line-height:1.6;padding:12px 4px;color:#bdcbc7;grid-column:1/-1}
 .rankRow:not(.gold):not(.silver):not(.bronze) .rankNo{font-size:22px;letter-spacing:-.5px;white-space:nowrap}
 .monitor:fullscreen{width:100vw;height:100dvh;min-height:0;background:#061219;padding:12px;overflow:hidden;grid-template-columns:minmax(0,1fr) clamp(280px,23vw,420px);grid-template-rows:minmax(0,1fr)}
-.monitor:fullscreen .mapPanel{padding:8px 12px}
+.monitor:fullscreen .mapPanel{padding:0}
 .monitor:fullscreen .rankBoard{padding:16px}
-.monitor:fullscreen .mapHeader h3{font-size:18px}.monitor:fullscreen .mapStatus,.monitor:fullscreen .mapLegend{font-size:13px}
+.monitor:fullscreen .mapStatus,.monitor:fullscreen .mapLegend{font-size:13px}
 .monitor:fullscreen .rankHeader h3{font-size:20px}.monitor:fullscreen .missionTitle{font-size:18px}
 .monitor:fullscreen .rankRow{grid-template-columns:46px minmax(0,1fr);padding:10px 12px}.monitor:fullscreen .rankName{font-size:22px}.monitor:fullscreen .rankNo{font-size:34px}
 .monitor:fullscreen .rankStart,.monitor:fullscreen .rankTime,.monitor:fullscreen .waiting,.monitor:fullscreen .empty{font-size:14px}
-@media(max-width:1000px){.layout{grid-template-columns:1fr}.setup{grid-template-columns:1fr 1fr}}
+@media(max-width:1000px){#dash{height:auto}.layout{height:auto;grid-template-columns:1fr;grid-template-rows:auto auto}.setup{grid-template-columns:1fr 1fr;overflow:visible}.monitor{height:70dvh;min-height:360px}}
 @media(orientation:portrait),(max-width:620px){.monitor{height:auto;min-height:0;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}.mapWrap{aspect-ratio:2/1}.rankBoard{max-height:460px}.monitor:fullscreen{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(180px,38dvh)}.monitor:fullscreen .mapWrap{aspect-ratio:auto}.monitor:fullscreen .rankBoard{max-height:none}}
-@media(max-width:620px){body{padding:8px}.header h2{font-size:19px}.setup{grid-template-columns:1fr}.mapHeader h3{font-size:14px}.mapStatus{font-size:11px}.mapHeader button{font-size:12px;padding:7px}.mapLegend{font-size:10px}.monitor:fullscreen{padding:6px}}
+@media(max-width:620px){.setup{grid-template-columns:1fr}.mapStatus{font-size:11px}.mapHeader button{font-size:12px;padding:7px}.mapLegend{font-size:10px}.monitor:fullscreen{padding:6px}}
 @media(max-height:540px) and (min-width:621px){.monitor:fullscreen{grid-template-columns:minmax(0,1fr) clamp(240px,30vw,320px);gap:6px;padding:6px}.monitor:fullscreen .mapLegend{display:none}.monitor:fullscreen .rankBoard{gap:6px;padding:9px}.monitor:fullscreen .rankHeader h3{font-size:16px}.monitor:fullscreen .rankName{font-size:18px}.monitor:fullscreen .rankStart,.monitor:fullscreen .rankTime{font-size:12px}}
