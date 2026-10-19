@@ -1,10 +1,10 @@
 'use strict';
-// 대상 학기만 읽는다. 고1 2학기와 수능 기출은 읽거나 변경하지 않는다.
+// 초·중학교와 고1 두 학기만 읽는다. 수능 기출은 읽거나 변경하지 않는다.
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm'), crypto = require('node:crypto');
 const dir = path.resolve(__dirname, '../../learning/literacy-numeracy/math-bank');
 function loadBank() {
   const context = { console }; context.globalThis = context; vm.createContext(context);
-  const files = ['engine.js', 'geometry.js', 'middle.js', ...fs.readdirSync(path.join(dir, 'units')).filter(f => /^(?:[1-9]-[12]|10-1)-\d+[a-z]\.js$/.test(f)).sort().map(f => 'units/' + f)];
+  const files = ['engine.js', 'geometry.js', 'middle.js', ...fs.readdirSync(path.join(dir, 'units')).filter(f => /^(?:[1-9]|10)-[12]-\d+[a-z]\.js$/.test(f)).sort().map(f => 'units/' + f)];
   for (const file of files) vm.runInContext(fs.readFileSync(path.join(dir, file), 'utf8'), context, { filename: file });
   return context.MathBank;
 }

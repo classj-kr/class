@@ -8,7 +8,7 @@ function createValidator() {
   const tests = [], checks = [];
   const wrappedFs = new Proxy(fs, { get(target, prop) {
     if (prop !== 'readdirSync') return target[prop];
-    return (dir, ...args) => { const files = fs.readdirSync(dir, ...args); return path.basename(dir) === 'units' ? files.filter(f => /^(?:[1-9]-[12]|10-1)-\d+[a-z]\.js$/.test(f)) : files; };
+    return (dir, ...args) => { const files = fs.readdirSync(dir, ...args); return path.basename(dir) === 'units' ? files.filter(f => /^(?:[1-9]|10)-[12]-\d+[a-z]\.js$/.test(f)) : files; };
   } });
   const wrappedAssert = new Proxy(assert, { get(target, prop) { return prop === 'ok' ? (...args) => { if (!collecting) assert.ok(...args); } : target[prop]; } });
   const nativeRequire = require('node:module').createRequire(filename);

@@ -74,7 +74,7 @@
   const versionOf = (u) => VERSION + '.' + (u.version || 1);
   const termOf = (u) => u.grade + '-' + u.semester;
   // 해결 여부와 최초 채점은 따로 둔다. 힌트를 보고 맞혀도 최초 오답은 바뀌지 않는다.
-  // 고1 2학기는 별도 작업 중이므로 기존의 즉시 채점·해설 동작과 기록 형식을 유지한다.
+  // 검증된 쌍둥이가 준비된 초·중·고1 두 학기에 힌트와 오답 복습을 적용한다.
   const isClosed = (state) => Boolean(state && (!round.hints || state.ok || state.revealed));
   const firstRight = (state) => Boolean(state && (round.hints ? state.firstOk && !state.hinted && !state.revealed : state.ok));
   const restoreAnswer = (state) => round.hints ? { ...state, firstOk: state.firstOk ?? state.ok, hinted: state.hinted ?? !state.ok, attempts: state.attempts || 1 } : state;
@@ -364,11 +364,11 @@
       const reveal = el('button', 'mb-plain mb-reveal', '정답·풀이 보기'); reveal.type = 'button';
       reveal.addEventListener('click', () => revealAnswer(item, card));
       result.append(hint, el('p', 'mb-feedback-note', '힌트를 본 문제는 다시 맞혀도 오답으로 기록돼요.'), reveal);
-      if (!round.review && window.MathBankTwins.eligible(unit)) {
-        const practice = el('button', 'mb-plain mb-twin-start', '쌍둥이 문제로 연습'); practice.type = 'button';
-        practice.addEventListener('click', () => openReview(round.group.id, round.level, round.no, [round.items.findIndex(candidate => candidate.key === item.key)]));
-        result.append(practice);
-      }
+    }
+    if (round.hints && !firstRight(state) && !round.review && window.MathBankTwins.eligible(unit)) {
+      const practice = el('button', 'mb-plain mb-twin-start', '쌍둥이 문제로 연습'); practice.type = 'button';
+      practice.addEventListener('click', () => openReview(round.group.id, round.level, round.no, [round.items.findIndex(candidate => candidate.key === item.key)]));
+      result.append(practice);
     }
     tie(result);
   }

@@ -1,8 +1,11 @@
 // 미리 검증해 둔 세 변형만 복원한다. 브라우저에서 검증되지 않은 난수를 새로 뽑지 않는다.
 (function (root) {
   'use strict';
-  const eligible = unit => Boolean(unit && (unit.grade >= 1 && unit.grade <= 9 || unit.grade === 10 && unit.semester === 1));
-  const clean = value => String(value || '').replace(/\s+/g, ' ').replace(/\s(?:id|aria-describedby)="[^"]*"/g, '').replace(/url\(#[^)]+\)/g, 'url(#shape)').trim();
+  const eligible = unit => Boolean(unit && unit.grade >= 1 && unit.grade <= 10 && (unit.semester === 1 || unit.semester === 2));
+  // 벤 다이어그램의 mask 번호는 호출 순서마다 늘어난다. 영역 번호와 안/밖은 보존하고 호출 번호만 지운다.
+  const clean = value => String(value || '').replace(/\s+/g, ' ').replace(/\s(?:id|aria-describedby)="[^"]*"/g, '')
+    .replace(/(id=\\")(v[23]4)-\d+-(\d+)-(in|out)(\\")/g, '$1$2-$3-$4$5')
+    .replace(/url\(#[^)]+\)/g, ref => /^url\(#v[23]4-\d+-\d+-(?:in|out)\)$/.test(ref) ? ref.replace(/(v[23]4)-\d+-/, '$1-') : 'url(#shape)').trim();
   const canonical = item => JSON.stringify([clean(item.text), clean(item.figure), (item.choice?.options || []).map(clean).sort(), clean(item.template)]);
   function fingerprint(value) {
     const text = typeof value === 'string' ? value : clean(JSON.stringify(value));
@@ -62,7 +65,7 @@
   async function load(unit) {
     if (!eligible(unit)) throw new Error('쌍둥이 문제 적용 대상이 아닙니다.');
     const term = unit.grade + '-' + unit.semester;
-    if (!pending.has(term)) pending.set(term, fetch('twins/' + term + '.json?v=20261019-2').then(response => {
+    if (!pending.has(term)) pending.set(term, fetch('twins/' + term + '.json?v=20261019-3').then(response => {
       if (!response.ok) throw new Error('쌍둥이 문제를 불러오지 못했습니다.');
       return response.json();
     }).catch(error => { pending.delete(term); throw error; }));

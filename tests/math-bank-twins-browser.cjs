@@ -87,8 +87,53 @@ const OUT = path.resolve(__dirname, '../outputs/math-twins');
     await answer(0, true); await page.locator('.mb-twin-start').first().click(); await page.locator('.mb-twin-label').first().waitFor(); await ready();
     assert.equal(await page.locator('.mb-item').count(), 3); await answer(0);
     assert.equal(await page.locator('.mb-item.is-right').count(), 1);
-    assert.equal(requests.some(url => /twins\/10-2/.test(url)), false);
+    // 고1 2학기의 일곱 단원 모두 오답→힌트→쌍둥이→저장·복원이 이어진다.
+    for (let no = 1; no <= 7; no++) {
+      await page.goto(h.base + '/learning/literacy-numeracy/math-bank/?unit=10-2-' + no);
+      await page.locator('.mb-group').first().waitFor(); await page.locator('.mb-level').first().click(); await ready();
+      const baseKey = new URL(page.url()).searchParams.get('record');
+      await answer(0, true);
+      const first = page.locator('.mb-item').first();
+      assert.equal(await first.locator('.mb-hint').count(), 1);
+      assert.equal(await first.locator('.mb-reveal').count(), 1, '정답·전체 풀이는 별도 버튼으로 요청한다');
+      assert.doesNotMatch(await first.locator('.mb-result').innerText(), /답: /, '오답 직후 정답을 자동 공개하지 않는다');
+      await answer(0);
+      await page.reload(); await ready();
+      const baseSession = (await saved()).find(session => session.contentKey === baseKey);
+      const baseDetail = await page.evaluate(async id => (await (await fetch('/api/learning-records/sessions/' + id)).json()).session, baseSession.id);
+      const baseAnswers = baseDetail.events.filter(event => event.kind === 'answer');
+      assert.equal(baseAnswers[0].correct, false);
+      assert.equal(baseSession.summary.firstCorrect, 0, '힌트를 보고 고쳐도 최초 오답이다');
+      await page.locator('.mb-twin-start').first().click(); await page.locator('.mb-twin-label').first().waitFor(); await ready();
+      assert.equal(await page.locator('.mb-item').count(), 3);
+      for (let i = 0; i < 3; i++) await answer(i, i === 1);
+      await page.reload(); await ready();
+      assert.equal(await page.locator('.mb-item.is-right').count(), 2);
+      assert.equal(await page.locator('.mb-item.is-wrong').count(), 1);
+      await answer(1); await page.locator('#finish:not([hidden])').waitFor();
+      assert.match(await page.locator('#finish').innerText(), /3문항 중 2문항 정답/);
+      const reviewKey = new URL(page.url()).searchParams.get('record'), reviewSession = (await saved()).find(session => session.contentKey === reviewKey);
+      assert.equal(reviewSession.summary.firstCorrect, 2); assert.equal(reviewSession.status, 'completed');
+      if (no === 7) {
+        const captured = spawnSync('python', ['-c', 'import sys,io;from PIL import Image;im=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert("RGBA");im.save(sys.argv[1],format="WEBP",lossless=True);assert Image.open(sys.argv[1]).convert("RGBA").tobytes()==im.tobytes()', path.join(OUT, 'review-high1-semester2-mobile.webp')], { input: await page.screenshot({ fullPage: true }) });
+        assert.equal(captured.status, 0, String(captured.stderr));
+      }
+    }
+    // 벤 다이어그램이 들어 있는 묶음은 생성 호출 순서가 달라도 검증·복원이 된다.
+    await page.goto(h.base + '/learning/literacy-numeracy/math-bank/?record=' + encodeURIComponent('10-2-4:demorgan:기본:1')); await ready();
+    await page.evaluate(() => {
+      const B = window.MathBank, type = B.findGroup(B.findUnit('10-2-4'), 'demorgan').types.find(type => type.id === 'dm-shade');
+      for (let i = 0; i < 20; i++) type.make(new B.Dice(7919 + i), 0);
+    });
+    const shaded = await page.locator('.mb-item').evaluateAll(cards => cards.findIndex(card => card.dataset.key === 'dm-shade#1'));
+    assert.ok(shaded >= 0);
+    await answer(shaded, true); await page.locator('.mb-twin-start').first().click(); await page.locator('.mb-twin-label').first().waitFor(); await ready();
+    await page.reload(); await ready();
+    assert.equal(await page.locator('.mb-item').count(), 3); await answer(0);
+    assert.equal(await page.locator('.mb-item.is-right').count(), 1);
+    assert.equal(requests.some(url => /twins\/10-2\.json/.test(url)), true);
+    assert.equal(requests.some(url => /twins\/11-/.test(url)), false);
     assert.deepEqual(errors, []);
-    console.log(JSON.stringify({ ok: true, checks: ['wrong-to-twins', 'three-per-original', 'resume', 'first-score', 'separate-history', 'finish-to-review', 'high1-semester1', 'mobile'] }));
+    console.log(JSON.stringify({ ok: true, checks: ['wrong-to-twins', 'three-per-original', 'resume', 'first-score', 'separate-history', 'finish-to-review', 'high1-semester1', 'high1-semester2-all-seven-units', 'hinted-remains-wrong', 'venn-restoration', 'mobile'] }));
   } finally { await browser.close(); await h.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

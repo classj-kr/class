@@ -200,11 +200,11 @@ const UNIT = '1-1-1';
     else { const boxes = guestCard.locator('.mb-field input'); for (let i = 0; i < guestItems[0].answers.length; i += 1) await boxes.nth(i).fill(String(guestItems[0].answers[i])); await guestCard.locator('.mb-primary').click(); }
     await guestCard.locator('.mb-result:not([hidden])').waitFor();
 
-    // 고1 2학기 작업 파일을 불러오거나 수정하지 않고, 제외 경계만 가상 데이터로 확인한다.
+    // 아직 쌍둥이가 준비되지 않은 학년의 경계를 가상 데이터로 확인한다.
     const excluded = await open(0);
     await excluded.page.goto(h.base + URL_PATH);
     await excluded.page.locator('.mb-group').first().waitFor();
-    await excluded.page.evaluate((id) => { const unit = window.MathBank.findUnit(id); unit.grade = 10; unit.semester = 2; }, UNIT);
+    await excluded.page.evaluate((id) => { const unit = window.MathBank.findUnit(id); unit.grade = 11; unit.semester = 1; }, UNIT);
     await excluded.page.locator('.mb-group').first().locator('.mb-level').first().click();
     const excludedCard = excluded.page.locator(`.mb-item[data-key="${items[0].key}"]`);
     if (items[0].choice !== null) await excludedCard.locator('.mb-choice').nth((items[0].choice + 1) % await excludedCard.locator('.mb-choice').count()).click();
@@ -213,7 +213,7 @@ const UNIT = '1-1-1';
       await excludedCard.locator('.mb-primary').click();
     }
     await excluded.page.waitForFunction(() => !document.getElementById('main').inert);
-    assert.match(await excludedCard.locator('.mb-result').innerText(), /답: /, '고1 2학기는 기존 오답 표시를 유지한다');
+    assert.match(await excludedCard.locator('.mb-result').innerText(), /답: /, '준비되지 않은 학년은 기존 오답 표시를 유지한다');
     assert.equal(await excludedCard.locator('.mb-hint').count(), 0);
     assert.equal(await excludedCard.locator('input, .mb-choice').first().isDisabled(), true);
     await excluded.context.close();

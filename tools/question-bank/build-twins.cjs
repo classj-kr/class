@@ -6,12 +6,14 @@ const { B, validate } = createValidator();
 const target = path.resolve(__dirname, '../../learning/literacy-numeracy/math-bank/twins');
 const report = { originals: 0, twins: 0, generated: 0, concept: 0, rejected: [], failures: [], terms: {} };
 const checkOnly = process.argv.includes('--check');
+const selectedTerm = process.argv.find(arg => arg.startsWith('--term='))?.slice(7);
 const excludedFile = path.join(__dirname, 'twin-rejected-seeds.json');
 const excluded = new Set((fs.existsSync(excludedFile) ? JSON.parse(fs.readFileSync(excludedFile, 'utf8')) : []).map(row => row.unit + ':' + row.key + ':' + row.seed));
 const previousPlans = Object.fromEntries(fs.readdirSync(target).filter(file => file.endsWith('.json')).map(file => [file.slice(0, -5), JSON.parse(fs.readFileSync(path.join(target, file), 'utf8'))]));
 fs.mkdirSync(target, { recursive: true });
 for (const unit of B.units()) {
   const term = unit.grade + '-' + unit.semester;
+  if (selectedTerm && term !== selectedTerm) continue;
   const plan = report.terms[term] ||= { format: 1, term, items: {} };
   for (const group of unit.groups) for (const type of group.types) for (let n = 0; n < (type.count || 1); n++) {
     const key = type.id + (type.count > 1 ? '#' + (n + 1) : '');
@@ -63,11 +65,12 @@ for (const unit of B.units()) {
 }
 for (const [term, plan] of Object.entries(report.terms)) {
   const filename = path.join(target, term + '.json'), text = JSON.stringify(plan);
-  if (checkOnly && !require('node:util').isDeepStrictEqual(JSON.parse(fs.readFileSync(filename, 'utf8')), JSON.parse(text))) throw new Error(term + ' 검증 명세가 현재 문항과 다릅니다.');
-  else fs.writeFileSync(filename, text);
+  if (checkOnly) {
+    if (!require('node:util').isDeepStrictEqual(JSON.parse(fs.readFileSync(filename, 'utf8')), JSON.parse(text))) throw new Error(term + ' 검증 명세가 현재 문항과 다릅니다.');
+  } else fs.writeFileSync(filename, text);
 }
 const summary = { ...report, terms: Object.fromEntries(Object.entries(report.terms).map(([term, plan]) => [term, Object.keys(plan.items).length])) };
 fs.mkdirSync(path.resolve(__dirname, '../../outputs/math-twins'), { recursive: true });
-fs.writeFileSync(path.resolve(__dirname, '../../outputs/math-twins/validation.json'), JSON.stringify(summary, null, 2));
+fs.writeFileSync(path.resolve(__dirname, '../../outputs/math-twins/validation' + (selectedTerm ? '-' + selectedTerm : '') + '.json'), JSON.stringify(summary, null, 2));
 console.log(JSON.stringify({ ...summary, rejected: report.rejected.length, failures: report.failures.length }));
 if (report.failures.length) process.exitCode = 1;
