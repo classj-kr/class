@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#173f45">
   <title>그림 릴레이</title>
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
-  <link rel="stylesheet" href="styles.css?v=20261001-compact-lobby">
+  <link rel="stylesheet" href="styles.css?v=20261019-custom-topic">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
   <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" defer></script>
@@ -72,7 +72,29 @@
           <select id="packSelect" aria-label="제시어 꾸러미">
             <option value="proverbs">속담</option>
             <option value="history">역사</option>
+            <option value="custom">자유주제</option>
           </select>
+        </section>
+
+        <section id="customTopicSection" class="custom-topic-section hidden" aria-label="자유주제 제시어 준비">
+          <form id="topicForm" class="custom-topic-form hidden">
+            <label for="topicInput">방장이 정하는 주제</label>
+            <div class="custom-input-row">
+              <input id="topicInput" maxlength="60" required placeholder="예: 동물, 우리 학교, 음식" autocomplete="off">
+              <button id="saveTopicBtn" class="secondary" type="submit">주제 알리기</button>
+            </div>
+            <small>주제를 바꾸면 모두의 제시어를 다시 받습니다.</small>
+          </form>
+          <p class="custom-topic-title">주제: <strong id="customTopicLabel">방장이 주제를 정하는 중입니다.</strong></p>
+          <form id="customWordsForm" class="custom-words-form">
+            <p>방장 포함 모두 제시어를 1~2개씩 적어 주세요. 각자 낸 것 중 1개를 골라 다른 사람에게 나눠 줍니다.</p>
+            <label for="customWordOne">제시어 1 · 필수</label>
+            <input id="customWordOne" maxlength="40" required autocomplete="off" placeholder="그림으로 표현할 수 있는 말">
+            <label for="customWordTwo">제시어 2 · 선택</label>
+            <input id="customWordTwo" maxlength="40" autocomplete="off" placeholder="하나 더 내고 싶으면 입력하세요">
+            <button id="saveWordsBtn" class="primary" type="submit">제시어 제출</button>
+          </form>
+          <p id="customSubmissionStatus" role="status" aria-live="polite"></p>
         </section>
 
         <section class="lobby-roster">
@@ -187,6 +209,7 @@
         <article><span>06</span><strong>마지막에 함께 공개</strong><p>원래 제시어부터 마지막 결과까지 한 장씩 공개하며 즐깁니다.</p></article>
       </div>
       <p class="rule-note">그림에 글자나 숫자를 직접 쓰지 않는 것이 더 재미있어요. 점수와 승패는 없습니다.</p>
+      <p class="rule-note">자유주제는 방장이 주제를 정하고 방장 포함 모두 제시어를 1~2개씩 냅니다. 제출 내용은 준비 중에는 본인만 볼 수 있고, 첫 그림은 다른 사람이 낸 제시어로 시작합니다.</p>
       <button id="closeRulesBtn" class="primary" type="button">알겠어요</button>
     </div>
   </section>
@@ -218,6 +241,8 @@
   let toastTimer = null;
   let revealChainIndex = 0;
   let revealedEntryCount = 1;
+  let customFormKey = "";
+  let settingsPending = false;
   const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
   function showToast(message) {
@@ -480,24 +505,87 @@
   }
 
   function installState(state) {
+    const previousPhase = gameState?.phase;
     gameState = state;
+    settingsPending = false;
     if (state.mySubmitted) actionPending = false;
     if (state.phase === "lobby") {
-      if (lobby.snapshot().started) { lobby.returnToLobby(); showLobby(); showToast(state.lastAction || "대기실로 돌아왔습니다."); }
+      $("packSelect").value = state.packId;
+      const snapshot = lobby.snapshot();
+      const nextFormKey = `${snapshot.roomCode}:${snapshot.myId}:${state.topicRevision}`;
+      if (customFormKey !== nextFormKey) {
+        customFormKey = nextFormKey;
+        $("topicInput").value = state.topic || "";
+        $("customWordOne").value = state.myWords?.[0] || "";
+        $("customWordTwo").value = state.myWords?.[1] || "";
+      }
+      if (lobby.snapshot().started) {
+        lobby.returnToLobby();
+        showLobby();
+        if (previousPhase && previousPhase !== "lobby") showToast(state.lastAction || "대기실로 돌아왔습니다.");
+      }
+      if (previousPhase !== "lobby") draftKey = "";
+      lobby.render();
       return;
     }
+    lobby.started = true;
     renderGame();
   }
 
   function handleServerMessage(message) {
     if (message.type === SERVER_MESSAGE.STATE && message.state) { installState(message.state); return; }
-    if (message.type === SERVER_MESSAGE.ERROR) { actionPending = false; updateDraftControls(); showToast(message.message || "행동을 처리하지 못했습니다."); }
+    if (message.type === SERVER_MESSAGE.ERROR) {
+      actionPending = false;
+      settingsPending = false;
+      if (gameState?.phase === "lobby") $("packSelect").value = gameState.packId;
+      lobby.render();
+      updateDraftControls();
+      showToast(message.message || "행동을 처리하지 못했습니다.");
+    }
+  }
+
+  function readyToStart(count) {
+    if (count < 4 || count > 8 || settingsPending) return false;
+    if ($("packSelect").value !== "custom") return true;
+    return gameState?.packId === "custom" && gameState.canStart &&
+      $("topicInput").value.normalize("NFC").replace(/\s+/g, " ").trim() === gameState.topic;
+  }
+
+  function renderCustomLobby(snapshot) {
+    const custom = $("packSelect").value === "custom";
+    $("customTopicSection").classList.toggle("hidden", !custom);
+    $("topicForm").classList.toggle("hidden", snapshot.role !== "host");
+    $("topicInput").disabled = !snapshot.connected || snapshot.started || settingsPending;
+    $("saveTopicBtn").disabled = $("topicInput").disabled;
+    $("customTopicLabel").textContent = gameState?.topic || "방장이 주제를 정하는 중입니다.";
+    const accepting = snapshot.connected && !snapshot.started && gameState?.phase === "lobby" &&
+      gameState.packId === "custom" && !!gameState.topic && !settingsPending;
+    for (const id of ["customWordOne", "customWordTwo", "saveWordsBtn"]) $(id).disabled = !accepting;
+    const players = gameState?.players || [];
+    const ready = players.filter(player => player.wordCount > 0).length;
+    const mine = gameState?.myWords?.length || 0;
+    $("saveWordsBtn").textContent = mine ? "제시어 수정" : "제시어 제출";
+    $("customSubmissionStatus").textContent = accepting
+      ? `제출 ${ready}/${players.length}명 · ${mine ? `내 제시어 ${mine}개 저장됨` : "내 제시어를 입력해 주세요."}`
+      : "주제가 정해지면 제시어를 입력할 수 있습니다.";
+  }
+
+  function configureLobby(packId, topic = "") {
+    if (lobby.snapshot().role !== "host") return;
+    settingsPending = true;
+    if (!lobby.sendServer({ type: "DRAWRELAY_ACTION", action: "CONFIGURE", packId, topic })) {
+      settingsPending = false;
+      showToast("주제를 보내지 못했습니다. 연결을 확인해 주세요.");
+    }
+    lobby.render();
   }
 
   function syncLobby(snapshot) {
+    if (!snapshot.connected) { gameState = null; customFormKey = ""; settingsPending = false; }
     $("savedName").textContent = savedName || "플레이어";
     $("gameRoomCode").textContent = snapshot.roomCode || "----";
-    $("packSelect").disabled = snapshot.role !== "host" || snapshot.started;
+    $("packSelect").disabled = snapshot.role !== "host" || !snapshot.connected || snapshot.started || settingsPending;
+    renderCustomLobby(snapshot);
   }
 
   function startHostGame(data) {
@@ -511,6 +599,20 @@
   }
 
   function init() {
+    $("packSelect").addEventListener("change", () => configureLobby($("packSelect").value));
+    $("topicInput").addEventListener("input", () => lobby.render());
+    $("topicForm").addEventListener("submit", event => {
+      event.preventDefault();
+      configureLobby("custom", $("topicInput").value);
+    });
+    $("customWordsForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const words = [$("customWordOne").value.trim()];
+      if ($("customWordTwo").value.trim()) words.push($("customWordTwo").value.trim());
+      if (!lobby.sendServer({ type: "DRAWRELAY_ACTION", action: "SUBMIT_WORDS", words, topicRevision: gameState?.topicRevision })) {
+        showToast("제시어를 보내지 못했습니다. 연결을 확인해 주세요.");
+      }
+    });
     const canvas = $("drawingCanvas");
     canvas.addEventListener("pointerdown", beginStroke);
     canvas.addEventListener("pointermove", moveStroke);
@@ -544,20 +646,26 @@
       getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
       minPlayers: 4,
       maxPlayers: 8,
+      canStart: ({ count }) => readyToStart(count),
+      formatPlayerName: (player, id) => `${player.name}${gameState?.packId === "custom" && gameState.players.some(item => item.id === id && item.wordCount > 0) ? " ✓" : ""}`,
       rulesButtonIds: ["rulesBtnLobby", "rulesBtnGame"],
       leaveButtonIds: ["leaveBtnLobby", "leaveBtnGame"],
       onRules: showRules,
       onLeave: () => location.href = "../../../index.html",
       onNotice: showToast,
-      onInvalidStart: () => showToast("그림 릴레이는 4명부터 8명까지 시작할 수 있습니다."),
+      onInvalidStart: () => showToast($("packSelect").value === "custom"
+        ? "주제를 알리고 방장 포함 4~8명 모두 제시어를 제출해 주세요."
+        : "그림 릴레이는 4명부터 8명까지 시작할 수 있습니다."),
       onStateChange: syncLobby,
       getLobbyPresentation: ({ count, role, canStart }) => ({
         canStart,
         startText: role === "host" && canStart ? `START GAME · ${count} PLAYERS` : "WAITING FOR PLAYERS",
-        guideText: role === "host" ? `현재 ${count}명 · 4~8명일 때 시작할 수 있어요.` : "방장이 게임을 시작할 때까지 기다려 주세요."
+        guideText: $("packSelect").value === "custom"
+          ? (canStart ? "모두 제출했습니다. 방장이 시작할 수 있습니다." : "4~8명 모두 제시어를 제출하면 시작할 수 있습니다.")
+          : role === "host" ? `현재 ${count}명 · 4~8명일 때 시작할 수 있어요.` : "방장이 게임을 시작할 때까지 기다려 주세요."
       }),
       createStartData: () => ({ packId: $("packSelect").value, serverAuthoritative: true }),
-      onStarted: ({ data }) => { showGame(); startHostGame(data); },
+      onStarted: ({ data }) => { startHostGame(data); },
       onServerMessage: handleServerMessage,
       onPlayerLeftDuringGame: () => showToast("플레이어가 나가 대기실로 돌아갑니다."),
       onAbort: showAbort

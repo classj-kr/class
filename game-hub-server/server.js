@@ -4287,7 +4287,13 @@ wss.on("connection", (socket, request) => {
       }
 
       let result;
-      if (action === "START") {
+      if (action === "CONFIGURE") {
+        result = playerId === room.hostId
+          ? DrawRelay.configure(game, message.packId, message.topic)
+          : { ok: false, error: "방장만 주제를 정할 수 있습니다." };
+      } else if (action === "SUBMIT_WORDS") {
+        result = DrawRelay.submitWords(game, playerId, message.words, message.topicRevision);
+      } else if (action === "START") {
         result = playerId === room.hostId
           ? DrawRelay.startGame(game, cleanToken(message.packId, 20))
           : { ok: false, error: "방장만 게임을 시작할 수 있습니다." };
@@ -4305,6 +4311,7 @@ wss.on("connection", (socket, request) => {
 
       if (!result.ok) {
         drawRelayError(socket, result.error || "행동을 처리하지 못했습니다.");
+        if (action === "START") drawRelayBroadcast(room);
         return;
       }
       drawRelayBroadcast(room);

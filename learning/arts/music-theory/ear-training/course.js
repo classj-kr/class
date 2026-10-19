@@ -454,5 +454,48 @@
     };
 
 
-    window.EarCourses = [INTERVAL_COURSE, CHORD_COURSE, PROGRESSION_COURSE, SCALE_COURSE];
+    const WHEEL_COURSE = {
+        id: "wheel",
+        name: "5도권 원판",
+        lessons: [
+            {
+                id: "fifths", kind: "wheel", title: "5도씩 돌아가기", practice: "fifths",
+                body: [
+                    "바깥쪽 음 이름은 장조, 안쪽은 나란한 단조입니다. 장조 이름을 시계 방향으로 한 칸씩 읽으면 C → G → D처럼 완전5도씩 이어집니다.",
+                    "원판의 음 이름을 누르거나 원판을 끌어 돌려 보세요. 시계 방향은 올림표 쪽, 반시계 방향은 내림표 쪽으로 이어집니다."
+                ]
+            },
+            {
+                id: "signatures", kind: "wheel", title: "조표 읽기", practice: "signature",
+                body: [
+                    "C 장조에는 조표가 없습니다. 시계 방향으로 G·D·A로 가면 올림표가 하나씩 늘고, 반시계 방향으로 F·B♭·E♭로 가면 내림표가 하나씩 늡니다.",
+                    "가운데에 선택한 조의 조표가 보입니다. F♯ 장조와 G♭ 장조는 같은 건반을 쓰지만, 각각 올림표 여섯 개와 내림표 여섯 개로 적습니다."
+                ]
+            },
+            {
+                id: "relative", kind: "wheel", title: "나란한조", practice: "relative",
+                body: [
+                    "같은 조표를 쓰는 장조와 단조를 나란한조라고 합니다. C 장조와 A 단조처럼, 장조의 여섯째 음이 나란한 단조의 으뜸음입니다.",
+                    "원판에서 같은 칸의 바깥쪽 장조와 안쪽 단조를 짝지어 보세요. 가운데에도 두 조가 함께 표시됩니다."
+                ]
+            },
+            {
+                id: "neighbors", kind: "wheel", title: "딸림조와 버금딸림조", practice: "neighbors",
+                body: [
+                    "딸림조는 으뜸음에서 완전5도 위의 조입니다. C 장조의 딸림조는 G 장조로, 원판에서 시계 방향 한 칸에 있습니다.",
+                    "버금딸림조는 완전4도 위의 조입니다. C 장조에서는 F 장조이며, 반시계 방향 한 칸에 있습니다. 선택한 조 양옆의 I·IV·V 자리를 살펴보세요."
+                ]
+            },
+            {
+                id: "diatonic", kind: "wheel", title: "조 안의 화음", practice: "diatonic",
+                body: [
+                    "장음계의 각 음 위에 음을 하나씩 건너 쌓으면 I·ii·iii·IV·V·vi·vii° 화음이 됩니다. 대문자는 장3화음, 소문자는 단3화음, °는 감3화음입니다.",
+                    "원판을 돌리며 화음 이름이 어떻게 바뀌는지 보세요. 아래 화음 단추를 누르면 소리가 나고, I–IV–V–I를 이어서 들을 수도 있습니다."
+                ]
+            },
+            { id: "mixed", kind: "wheel-practice", title: "종합 문제", practice: "mixed" }
+        ]
+    };
+
+    window.EarCourses = [INTERVAL_COURSE, CHORD_COURSE, PROGRESSION_COURSE, SCALE_COURSE, WHEEL_COURSE];
 })();

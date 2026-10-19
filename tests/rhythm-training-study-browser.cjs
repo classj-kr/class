@@ -216,7 +216,7 @@ function mockAudio() {
         const purged = page.waitForResponse(response => response.request().method() === 'PUT' && response.url().endsWith('/saved'));
         await page.goto(origin + '/learning/arts/music-theory/ear-training/');
         await page.locator('#courseList button').first().waitFor();
-        assert.equal(await page.locator('#courseList button').count(), 4);
+        assert.equal(await page.locator('#courseList button').count(), 5);
         assert.equal(await page.getByRole('button', { name: /리듬/ }).count(), 0);
         assert.equal(await page.getByRole('link', { name: '리듬 (Rhythm)', exact: true }).getAttribute('href'), '../rhythm-training/');
         assert.equal(await page.locator('#tapWrap, #gridWrap, #barsWrap').count(), 0);

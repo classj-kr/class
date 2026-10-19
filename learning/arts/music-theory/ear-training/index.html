@@ -7,14 +7,15 @@
     <title>청음</title>
     <meta name="description" content="음정·화음·음계·화음 진행과 리듬을 듣고, 읽고, 연주하는 청음 훈련">
     <link rel="preload" href="assets/piano/C4.ogg" as="fetch" type="audio/ogg" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261019-rhythm-menu">
+    <link rel="stylesheet" href="styles.css?v=20261019-wheel-course">
     <script src="piano-engine.js?v=20261006-immediate-tap" defer></script>
     <script src="notation.js?v=20261006-vector-notation" defer></script>
     <script src="keyboard.js?v=20261011-no-fixed-solfege" defer></script>
-    <script src="wheel.js?v=20260908-glow-30" defer></script>
-    <script src="course.js?v=20261018-rhythm-moved-v2" defer></script>
+    <script src="wheel.js?v=20261019-wheel-course" defer></script>
+    <script src="wheel-practice.js?v=20261019-wheel-course" defer></script>
+    <script src="course.js?v=20261019-wheel-course" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
-    <script src="app.js?v=20261019-rhythm-menu" defer></script>
+    <script src="app.js?v=20261019-wheel-course" defer></script>
 </head>
 <body class="ear-training-room" data-sfx-clicks="none">
     <a class="page-back" href="../../../" aria-label="메인으로 돌아가기">←</a>
@@ -22,40 +23,60 @@
     <main class="shell">
         <section id="menuScreen" class="screen">
             <h1 class="visually-hidden">청음</h1>
-            
-            <div class="field">
-                <div class="section-badge">
-                    <span class="badge-dot"></span>
-                    <span class="badge-text">단계별 과정 · COURSES</span>
-                </div>
-                <div id="courseList" class="drill-list"></div>
-            </div>
-
-            <div class="field">
-                <div class="section-badge">
-                    <span class="badge-dot"></span>
-                    <span class="badge-text">도구 & 원판 · TOOLS</span>
-                </div>
-                <div id="toolList" class="drill-list"></div>
-            </div>
+            <nav id="courseList" aria-label="청음 학습 메뉴"></nav>
         </section>
 
         <section id="wheelScreen" class="screen" hidden>
             <div class="screen-header">
-                <h1 class="screen-title">5도권 원판 (Circle of Fifths)</h1>
+                <h1 id="wheelTitle" class="screen-title"></h1>
             </div>
             <div id="wheelBoard" class="wheel-board"></div>
-            <div class="wheel-controls">
-                <button id="wheelPrev" class="quiet-button" type="button" aria-label="반시계로 한 자리">◀ ♭ 쪽</button>
-                <button id="wheelFlat" class="quiet-button" type="button">F♯ ↔ G♭</button>
-                <button id="wheelNext" class="quiet-button" type="button" aria-label="시계로 한 자리">♯ 쪽 ▶</button>
+            <div class="wheel-lesson-panel">
+                <div id="wheelBody" class="lesson-body"></div>
+                <div class="wheel-controls">
+                    <button id="wheelPrev" class="quiet-button" type="button" aria-label="반시계로 한 자리">◀ ♭ 쪽</button>
+                    <button id="wheelFlat" class="quiet-button" type="button">F♯ ↔ G♭</button>
+                    <button id="wheelNext" class="quiet-button" type="button" aria-label="시계로 한 자리">♯ 쪽 ▶</button>
+                </div>
+                <div class="field">
+                    <span class="field-label">이 조의 화음 · 눌러서 듣기</span>
+                    <div id="wheelChords" class="wheel-chords"></div>
+                </div>
+                <button id="wheelCadence" class="quiet-button" type="button">I – IV – V – I 들어 보기</button>
+                <div class="wheel-lesson-actions">
+                    <button id="wheelPractice" class="primary-button" type="button">문제 풀기</button>
+                    <button id="wheelLessonNext" class="quiet-button" type="button">다음 차시</button>
+                </div>
             </div>
-            <div class="field">
-                <span class="field-label">이 조의 화음</span>
-                <div id="wheelChords" class="wheel-chords"></div>
+        </section>
+
+        <section id="wheelPracticeScreen" class="screen" hidden>
+            <div class="screen-header">
+                <h1 id="wheelPracticeTitle" class="screen-title"></h1>
             </div>
-            <button id="wheelCadence" class="primary-button" type="button">I – IV – V – I 들어 보기</button>
-            <div id="wheelKeys" class="free-keys"></div>
+            <div id="wheelQuestionPanel" class="wheel-question-panel">
+                <div class="drill-bar">
+                    <span id="wheelPracticeProgress" class="score" aria-live="polite"></span>
+                    <button id="wheelPracticeStop" class="quiet-button" type="button">그만하기</button>
+                </div>
+                <h2 id="wheelQuestion" class="wheel-question" tabindex="-1"></h2>
+                <div id="wheelChoices" class="choices" role="group" aria-labelledby="wheelQuestion"></div>
+                <p id="wheelFeedback" class="wheel-feedback" aria-live="polite"></p>
+                <button id="wheelQuestionNext" class="primary-button" type="button" hidden>다음 문제</button>
+                <details id="wheelHint" class="wheel-hint">
+                    <summary>원판 힌트</summary>
+                    <div id="wheelHintBoard" class="wheel-board"></div>
+                </details>
+            </div>
+            <div id="wheelPracticeResult" class="wheel-question-panel" hidden>
+                <p id="wheelPracticeScore" class="wheel-practice-score" aria-live="polite"></p>
+                <p id="wheelHintCount" class="field-label"></p>
+                <ul id="wheelReview" class="wheel-review"></ul>
+                <div class="result-actions">
+                    <button id="wheelPracticeAgain" class="primary-button" type="button">한 번 더</button>
+                    <button id="wheelPracticeBack" class="quiet-button" type="button">차시 목록</button>
+                </div>
+            </div>
         </section>
 
         <section id="courseScreen" class="screen" hidden>

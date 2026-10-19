@@ -41,7 +41,7 @@ function cleanName(value, fallback = "플레이어") {
 
 function cleanPack(value) {
   const key = String(value || "proverbs");
-  return Object.prototype.hasOwnProperty.call(PACKS, key) ? key : "proverbs";
+  return key === "custom" || Object.prototype.hasOwnProperty.call(PACKS, key) ? key : "proverbs";
 }
 
 function createGame(hostId, hostName) {
@@ -49,6 +49,9 @@ function createGame(hostId, hostName) {
     phase: "lobby",
     players: [{ id: String(hostId), name: cleanName(hostName, "방장") }],
     packId: "proverbs",
+    topic: "",
+    topicRevision: 0,
+    customWords: {},
     step: 0,
     actionType: null,
     deadline: 0,
@@ -73,6 +76,7 @@ function removePlayer(game, playerId) {
   const id = String(playerId);
   game.players = game.players.filter(player => player.id !== id);
   delete game.pending[id];
+  if (game.customWords) delete game.customWords[id];
   game.revision += 1;
 }
 
@@ -83,9 +87,73 @@ function resetToLobby(game, message = "대기실로 돌아왔습니다.") {
   game.deadline = 0;
   game.chains = [];
   game.pending = {};
+  game.customWords = {};
+  game.topicRevision = (game.topicRevision || 0) + 1;
   game.lastAction = message;
   game.revision += 1;
   return { ok: true };
+}
+
+function configure(game, packId, topic) {
+  if (game.phase !== "lobby") return { ok: false, error: "대기실에서만 주제를 바꿀 수 있습니다." };
+  if (packId !== "custom" && !Object.hasOwn(PACKS, packId)) return { ok: false, error: "제시어 꾸러미를 확인해 주세요." };
+  const nextTopic = packId === "custom" ? String(topic || "").normalize("NFC").replace(/\s+/g, " ").trim() : "";
+  if (nextTopic.length > 60) return { ok: false, error: "주제는 60자 이내로 적어 주세요." };
+  if (game.packId !== packId || (game.topic || "") !== nextTopic) {
+    game.packId = packId;
+    game.topic = nextTopic;
+    game.topicRevision = (game.topicRevision || 0) + 1;
+    game.customWords = {};
+    game.revision += 1;
+  }
+  return { ok: true };
+}
+
+function submitWords(game, playerId, words, topicRevision) {
+  if (game.phase !== "lobby" || game.packId !== "custom" || !game.topic) {
+    return { ok: false, error: "방장이 자유주제를 정한 뒤 제시어를 제출해 주세요." };
+  }
+  const id = String(playerId);
+  if (playerIndex(game, id) < 0) return { ok: false, error: "참가자가 아닙니다." };
+  if (topicRevision !== game.topicRevision) return { ok: false, error: "주제가 바뀌었습니다. 새 주제를 보고 다시 제출해 주세요." };
+  if (!Array.isArray(words) || words.length < 1 || words.length > 2 || words.some(word => typeof word !== "string")) {
+    return { ok: false, error: "제시어는 1~2개 제출해 주세요." };
+  }
+  const cleaned = words.map(word => word.normalize("NFC").replace(/\s+/g, " ").trim());
+  if (cleaned.some(word => !word || word.length > 40)) return { ok: false, error: "각 제시어를 1~40자로 적어 주세요." };
+  const key = word => word.replace(/\s/g, "").toLocaleLowerCase();
+  const used = new Set(Object.entries(game.customWords || {}).filter(([owner]) => owner !== id).flatMap(([, entries]) => entries.map(key)));
+  for (const word of cleaned) {
+    if (used.has(key(word))) return { ok: false, error: "중복된 제시어가 있습니다. 다른 제시어로 바꿔 주세요." };
+    used.add(key(word));
+  }
+  game.customWords ||= {};
+  game.customWords[id] = cleaned;
+  game.revision += 1;
+  return { ok: true };
+}
+
+function canStart(game, packId = game.packId) {
+  if (game.phase !== "lobby" || game.players.length < MIN_PLAYERS || game.players.length > MAX_PLAYERS) return false;
+  return packId !== "custom" || (game.packId === "custom" && !!game.topic &&
+    game.players.every(player => game.customWords?.[player.id]?.length > 0));
+}
+
+function customAssignments(game, random) {
+  const contributors = [...game.players];
+  for (let index = contributors.length - 1; index > 0; index -= 1) {
+    const pick = Math.max(0, Math.min(index, Math.floor(random() * (index + 1))));
+    [contributors[index], contributors[pick]] = [contributors[pick], contributors[index]];
+  }
+  // Each player contributes one randomly chosen word to a different player.
+  const assignments = new Map();
+  contributors.forEach((player, index) => {
+    const words = game.customWords[player.id];
+    const pick = Math.max(0, Math.min(words.length - 1, Math.floor(random() * words.length)));
+    assignments.set(contributors[(index + 1) % contributors.length].id,
+      { type: "word", authorId: player.id, text: words[pick] });
+  });
+  return game.players.map(player => assignments.get(player.id));
 }
 
 function shuffledWords(packId, count, random = Math.random) {
@@ -101,24 +169,27 @@ function nextDeadline(actionType, now = Date.now()) {
   return Number(now) + (actionType === "draw" ? DRAW_SECONDS : GUESS_SECONDS) * 1000;
 }
 
-function startGame(game, packId = "proverbs", random = Math.random, now = Date.now()) {
+function startGame(game, packId = game.packId, random = Math.random, now = Date.now()) {
   if (game.phase !== "lobby") return { ok: false, error: "이미 시작한 게임입니다." };
   if (game.players.length < MIN_PLAYERS || game.players.length > MAX_PLAYERS) {
     return { ok: false, error: "그림 릴레이는 4명부터 8명까지 시작할 수 있습니다." };
   }
-  game.packId = cleanPack(packId);
-  const words = shuffledWords(game.packId, game.players.length, random);
+  const nextPack = cleanPack(packId);
+  if (!canStart(game, nextPack)) return { ok: false, error: "주제를 정하고 방장 포함 모두 제시어를 1개 이상 제출해 주세요." };
+  game.packId = nextPack;
+  const entries = nextPack === "custom" ? customAssignments(game, random) :
+    shuffledWords(nextPack, game.players.length, random).map(text => ({ type: "word", authorId: null, text }));
   game.chains = game.players.map((player, index) => ({
     id: `chain-${index + 1}`,
     ownerId: player.id,
-    entries: [{ type: "word", authorId: null, text: words[index] }]
+    entries: [entries[index]]
   }));
   game.phase = "playing";
   game.step = 0;
   game.actionType = "draw";
   game.deadline = nextDeadline(game.actionType, now);
   game.pending = {};
-  game.lastAction = `${PACKS[game.packId].label} 주제로 첫 그림을 그리고 있습니다.`;
+  game.lastAction = `${game.packId === "custom" ? game.topic : PACKS[game.packId].label} 주제로 첫 그림을 그리고 있습니다.`;
   game.revision += 1;
   return { ok: true };
 }
@@ -238,6 +309,7 @@ function stateFor(game, viewerId) {
   const players = game.players.map(player => ({
     id: player.id,
     name: player.name,
+    wordCount: game.customWords?.[player.id]?.length || 0,
     submitted: submittedIds.has(player.id)
   }));
   let prompt = null;
@@ -264,7 +336,11 @@ function stateFor(game, viewerId) {
     phase: game.phase,
     players,
     packId: game.packId,
-    packLabel: PACKS[game.packId]?.label || PACKS.proverbs.label,
+    packLabel: game.packId === "custom" ? `자유주제 · ${game.topic}` : PACKS[game.packId]?.label || PACKS.proverbs.label,
+    topic: game.topic || "",
+    topicRevision: game.topicRevision || 0,
+    myWords: game.phase === "lobby" ? [...(game.customWords?.[id] || [])] : [],
+    canStart: canStart(game),
     step: game.step,
     totalSteps: game.players.length,
     actionType: game.actionType,
@@ -290,6 +366,9 @@ module.exports = {
   addPlayer,
   removePlayer,
   resetToLobby,
+  configure,
+  submitWords,
+  canStart,
   startGame,
   assignedChainIndex,
   sanitizeDrawing,
