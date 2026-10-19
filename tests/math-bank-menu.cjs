@@ -46,7 +46,7 @@ const PAST_LABEL = '평가원·수능 기출';
       const labels = await page.locator('#termSelect option').allInnerTexts();
       assert.equal(labels[0], '초 1학년 1학기');
       assert.equal(labels[labels.length - 1], PAST_LABEL);
-      assert.ok(labels.slice(0, -1).every((text) => /^(초|중) \d학년 [12]학기$/.test(text)), labels.join(', '));
+      assert.ok(labels.slice(0, -1).every((text) => /^(초|중|고) \d학년 [12]학기$/.test(text)), labels.join(', '));
       await snap(page, name + '-bank-groups');
       await page.locator('.mb-group').first().locator('.mb-level').first().click();
       await page.locator('.mb-item').first().waitFor();
