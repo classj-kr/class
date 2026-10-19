@@ -1605,35 +1605,51 @@ function navIndexToPoint(grid, index, mode) {
 }
 
 // 곶이나 강 하구에 막히지 않도록 목적지까지 돌아가는 길을 미리 찾아 둔다.
-function planRoute(p, destination) {
-  p.route = null;
-  p.slideSign = 0;
-  p.skippedWaypoints = 0;
-  p.bestDistance = Infinity;
-  p.lastProgressAt = 0;
-  const grid = navGridReady();
-  // 먼저 온전히 열린 물길로 찾고, 좁은 해협처럼 그런 길이 없으면 해안을 스치는 길도 허용한다.
-  let path = null;
-  const strictStart = navIndexAtPixel(grid, p.mode, p.x, p.y);
-  const strictGoal = navIndexAtPixel(grid, p.mode, destination.x, destination.y);
-  if (strictStart >= 0 && strictGoal >= 0 && strictStart !== strictGoal) {
-    path = NavGrid.findPath(grid, p.mode, strictStart, strictGoal, false);
-  }
-  if (!path) {
-    const looseStart = navIndexAtPixel(grid, p.mode, p.x, p.y, true);
-    const looseGoal = navIndexAtPixel(grid, p.mode, destination.x, destination.y, true);
-    if (looseStart >= 0 && looseGoal >= 0 && looseStart !== looseGoal) {
-      path = NavGrid.findPath(grid, p.mode, looseStart, looseGoal, true);
+async function planRoute(p, destination) {
+  if (!destination) return;
+  const request = p.routeRequest = (p.routeRequest || 0) + 1;
+  const mode = p.mode;
+  const cancelled = () => p.routeRequest !== request || p.mode !== mode;
+  const options = { key: p, cancelled };
+  try {
+    p.target = null;
+    p.route = null;
+    p.slideSign = 0;
+    p.skippedWaypoints = 0;
+    p.bestDistance = Infinity;
+    p.lastProgressAt = 0;
+    const grid = navGridReady();
+    // 먼저 온전히 열린 물길로 찾고, 좁은 해협처럼 그런 길이 없으면 해안을 스치는 길도 허용한다.
+    let path = null;
+    const strictStart = navIndexAtPixel(grid, p.mode, p.x, p.y);
+    const strictGoal = navIndexAtPixel(grid, p.mode, destination.x, destination.y);
+    if (strictStart >= 0 && strictGoal >= 0 && strictStart !== strictGoal) {
+      path = await NavGrid.findPathAsync(grid, mode, strictStart, strictGoal, false, options);
     }
+    if (cancelled()) return;
+    if (!path) {
+      const looseStart = navIndexAtPixel(grid, p.mode, p.x, p.y, true);
+      const looseGoal = navIndexAtPixel(grid, p.mode, destination.x, destination.y, true);
+      if (looseStart >= 0 && looseGoal >= 0 && looseStart !== looseGoal) {
+        path = await NavGrid.findPathAsync(grid, mode, looseStart, looseGoal, true, options);
+      }
+    }
+    if (cancelled()) return;
+    if (!path || path.length <= 2) {
+      p.target = destination;
+      return;
+    }
+    const waypoints = path.slice(1).map((index) => navIndexToPoint(grid, index, p.mode));
+    waypoints[waypoints.length - 1] = destination;
+    p.target = waypoints.shift();
+    p.route = waypoints;
+  } catch (error) {
+    if (!cancelled()) {
+      stopPlayer(p);
+      setNotice(p, '이동 경로를 찾지 못했습니다. 다른 지점을 선택하거나 방향키로 이동하세요.');
+    }
+    console.error('항로 계산 실패:', error.message);
   }
-  if (!path || path.length <= 2) {
-    p.target = destination;
-    return;
-  }
-  const waypoints = path.slice(1).map((index) => navIndexToPoint(grid, index, p.mode));
-  waypoints[waypoints.length - 1] = destination;
-  p.target = waypoints.shift();
-  p.route = waypoints;
 }
 
 function isSeaPixel(x, y) {
@@ -1704,6 +1720,19 @@ function safeSpawn(room, origin, requiredMode) {
       const terrain = terrainAtPixel(x, y);
       const allowed = requiredMode === 'sea' ? terrain.type === 'sea' : terrain.type !== 'sea' && terrain.passable;
       if (!allowed) continue;
+      // Separating a class must not place students across a river, on another
+      // island, or in an enclosed bay. Sharing the entrance is safer than that.
+      const dx = ((x - origin.x + WORLD_PIXEL_W * 1.5) % WORLD_PIXEL_W) - WORLD_PIXEL_W / 2, dy = y - origin.y;
+      const steps = Math.max(1, Math.ceil(Math.max(Math.abs(dx), Math.abs(dy)) / (TILE / 4)));
+      let connected = true;
+      for (let step = 1; step <= steps; step++) {
+        const between = terrainAtPixel(wrapX(origin.x + dx * step / steps), origin.y + dy * step / steps);
+        if (requiredMode === 'sea' ? between.type !== 'sea' : between.type === 'sea' || !between.passable) {
+          connected = false;
+          break;
+        }
+      }
+      if (!connected) continue;
       if (players.every((p) => p.mode !== requiredMode || distanceXY(p.x, p.y, x, y) > 18)) return { x, y };
     }
   }
@@ -1853,6 +1882,7 @@ function playerForSocket(socket) {
 }
 
 function stopPlayer(p) {
+  p.routeRequest = (p.routeRequest || 0) + 1;
   p.input = { up: false, down: false, left: false, right: false };
   p.target = null;
   p.route = null;
@@ -2197,7 +2227,7 @@ io.on('connection', (socket) => {
       left: payload?.left === true,
       right: payload?.right === true
     };
-    if (p.input.up || p.input.down || p.input.left || p.input.right) { p.target = null; p.route = null; }
+    if (p.input.up || p.input.down || p.input.left || p.input.right) { p.routeRequest = (p.routeRequest || 0) + 1; p.target = null; p.route = null; }
     p.lastInputAt = Date.now();
     p.lastSeen = Date.now();
   });

@@ -78,25 +78,27 @@ function deltaBx(grid, fromBx, toBx) {
 }
 
 // 길찾기는 한 번에 하나씩만 돌아가므로(노드는 한 줄로 일한다) 작업용 배열을 한 벌만 두고 돌려 쓴다.
-let scratchCache = null;
-function scratchFor(total) {
-  if (!scratchCache || scratchCache.total !== total) {
-    scratchCache = {
+const scratchCaches = new Map();
+function scratchFor(total, lane = 'sync') {
+  let scratch = scratchCaches.get(lane);
+  if (!scratch || scratch.total !== total) {
+    scratch = {
       total,
       cameFrom: new Int32Array(total),
       gScore: new Float32Array(total),
       closed: new Uint8Array(total)
     };
+    scratchCaches.set(lane, scratch);
   }
-  return scratchCache;
+  return scratch;
 }
 
-function findPath(grid, mode, startIndex, goalIndex, lenient = false, maxVisited = 3200000) {
+function* pathSteps(grid, mode, startIndex, goalIndex, lenient = false, maxVisited = 3200000, lane = 'sync') {
   if (startIndex < 0 || goalIndex < 0) return null;
   if (startIndex === goalIndex) return [goalIndex];
   const passable = passableArray(grid, mode, lenient);
   const total = grid.width * grid.height;
-  const scratch = scratchFor(total);
+  const scratch = scratchFor(total, lane);
   const cameFrom = scratch.cameFrom;
   const gScore = scratch.gScore;
   const closed = scratch.closed;
@@ -163,6 +165,8 @@ function findPath(grid, mode, startIndex, goalIndex, lenient = false, maxVisited
       return path.reverse();
     }
     if (visited > maxVisited) return null;
+    // Let simulation ticks and socket traffic run between bounded search slices.
+    if (visited % 512 === 0) yield;
     const bx = current.index % grid.width;
     const by = Math.floor(current.index / grid.width);
     for (let dy = -1; dy <= 1; dy += 1) {
@@ -184,4 +188,44 @@ function findPath(grid, mode, startIndex, goalIndex, lenient = false, maxVisited
   return null;
 }
 
-module.exports = { BLOCK, buildNavGrid, findPath, nearestPassable, indexOf, deltaBx };
+function findPath(...args) {
+  const search = pathSteps(...args);
+  let step;
+  do { step = search.next(); } while (!step.done);
+  return step.value;
+}
+
+const pendingSearches = new Map();
+let searching = false;
+async function drainSearches() {
+  if (searching) return;
+  searching = true;
+  try {
+    while (pendingSearches.size) {
+      const [key, job] = pendingSearches.entries().next().value;
+      pendingSearches.delete(key);
+      let search;
+      try {
+        search = pathSteps(...job.args, 'async');
+        let step = { done: false, value: null };
+        while (!step.done && !job.cancelled()) {
+          await new Promise(resolve => setImmediate(resolve));
+          if (!job.cancelled()) step = search.next();
+        }
+        job.resolve(job.cancelled() ? null : step.value);
+      } catch (error) { job.reject(error); }
+      finally { search?.return(); }
+    }
+  } finally { searching = false; }
+}
+
+function findPathAsync(grid, mode, start, goal, lenient = false, options = {}) {
+  return new Promise((resolve, reject) => {
+    const key = options.key ?? Symbol();
+    pendingSearches.get(key)?.resolve(null);
+    pendingSearches.set(key, { args: [grid, mode, start, goal, lenient, options.maxVisited ?? 3200000], cancelled: options.cancelled || (() => false), resolve, reject });
+    void drainSearches();
+  });
+}
+
+module.exports = { BLOCK, buildNavGrid, findPath, findPathAsync, nearestPassable, indexOf, deltaBx };

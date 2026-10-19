@@ -48,8 +48,8 @@ assert.match(server, /ShipMotion\.canEnter\(/, '서버가 같은 규칙을 써�
 assert.match(server, /ShipMotion\.slideAngles\(p\.slideSign\)/, '서버가 같은 비껴 가기를 써야 함');
 assert.match(server, /if \(!moved\) \{/, '손으로 몰 때도 비껴 가야 함');
 const page = fs.readFileSync(path.join(__dirname, '..', 'public', 'index.html'), 'utf8');
-assert.match(page, /if\(!moved\)for\(const angle of/, '학생 화면도 비껴 가야 함(서버와 어긋나면 배가 덜컥거린다)');
-assert.match(page, /iceSlowdownAt/, '학생 화면도 얼음 앞에서 느려져야 함');
+assert.match(page, /Object\.assign\(self,serverSelf\)/, '학생 화면은 서버의 비껴가기와 얼음 감속 결과를 따라야 함');
+assert.doesNotMatch(page, /function movePrediction\(/, '서로 다른 비껴가기를 중복 계산하면 안 됨');
 
 // 얼음 앞에서 느려지는 폭: 다 와서도 3분의 1은 남아야 빠져나올 수 있다.
 assert.ok(Terrain.ICE_SLOW.floor >= 0.25 && Terrain.ICE_SLOW.floor < 0.5, '얼음 속 속도는 3분의 1쯤이어야 함');

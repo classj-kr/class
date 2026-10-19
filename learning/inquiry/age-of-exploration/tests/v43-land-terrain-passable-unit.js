@@ -40,7 +40,8 @@ assert.ok(!client.includes('높은 산맥은 통과할 수 없습니다'));
 // 갈 수 있는 칸인지 정하는 규칙은 lib/ship-motion.js 하나로 모았다(2026-09-20).
 assert.ok(require('../lib/ship-motion.js').canEnter({ mode: 'land', nextType: 'mountain', nextPassable: true, frozenAhead: false, trapped: false, hereLat: 40, nextLat: 40 }), '탐험대는 산을 넘을 수 있어야 함');
 assert.ok(server.includes('ShipMotion.canEnter('));
-assert.ok(client.includes("next.type!=='sea'"));
+assert.ok(client.includes('Object.assign(self,serverSelf)'),'학생 위치도 서버의 지형 판정을 따라야 함');
+assert.ok(!client.includes('function movePrediction('),'별도 지형 예측으로 서버 위치와 어긋나면 안 됨');
 
 console.log(JSON.stringify({
   ok: true,
