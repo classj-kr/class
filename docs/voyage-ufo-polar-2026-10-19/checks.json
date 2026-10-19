@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-19",
+  "scope": "World voyage completion UFO: terrain-independent flight with bounded polar travel",
+  "serverIntegration": {
+    "test": "learning/inquiry/age-of-exploration/tests/ufo-polar-movement-smoke.js",
+    "realRaceCompletionThroughSockets": true,
+    "arcticAndAntarcticIceTraversed": true,
+    "ordinaryShipsStillBlocked": true,
+    "clientCompletionFlagsIgnored": true,
+    "iceDoesNotReduceFlightSpeed": true,
+    "landModeCanFlyAcrossPolarTerrain": true,
+    "oppositeLongitudePolarTargetsArrive": true,
+    "holdingTowardPoleStopsWithoutLongitudeFlip": true,
+    "canLeaveBothPolarEdges": true,
+    "newMissionRevokesFlight": true
+  },
+  "browser": {
+    "environment": "Local server with synthetic completed-player state; production HTML, rendering and movement code",
+    "north": { "expectedLatitude": 89.856, "cameraLatitude": 89.856, "bearing": 0, "pitch": 0, "capture": "north.webp" },
+    "south": { "expectedLatitude": -89.856, "cameraLatitude": -89.856, "bearing": 0, "pitch": 0, "capture": "south.webp" },
+    "cameraFix": "Allow camera center beyond the default Mercator latitude limit using the public transformConstrain option. Match the bundled MapLibre 6.10 globe scale using cos(latitude) and allow negative zoom at the poles.",
+    "apiReference": "https://maplibre.org/maplibre-gl-js/docs/API/type-aliases/MapOptions/#transformconstrain"
+  },
+  "regressionsPassed": ["ufo-motion-unit", "v85-ice-escape-unit", "v75-spherical-speed-unit", "completion-rewards-unit", "v86-globe-map-unit", "globe-visibility-unit", "ice-visual-unit", "html-script-syntax", "server syntax"],
+  "boundary": "Existing one-tile map boundary is retained at +/-89.856 degrees; UFOs do not cross the exact poles.",
+  "productionVerification": "Deployment status is recorded in the accompanying chat. Authenticated production gameplay was not modified or exercised by test fixtures."
+}
