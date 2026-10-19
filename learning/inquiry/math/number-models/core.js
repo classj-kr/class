@@ -5,7 +5,7 @@
 })(typeof globalThis === 'object' ? globalThis : this, function () {
   'use strict';
   // Every quantity is an integer number of the smallest cubes, including decimals.
-  const WEIGHTS = [1000, 100, 10, 1], MAX_COUNT = 30;
+  const WEIGHTS = [1000, 100, 10, 1], MAX_COUNT = 30, MAX_ROWS = 6;
   const MODES = {
     whole: { title: '자연수', labels: ['천', '백', '십', '일'], values: ['1000', '100', '10', '1'], scale: 1 },
     decimal: { title: '소수', labels: ['일', '소수 첫째 자리', '소수 둘째 자리', '소수 셋째 자리'], values: ['1', '0.1', '0.01', '0.001'], scale: 1000 }
@@ -42,15 +42,58 @@
     return { counts: [...scene.counts], places: scene.places, example: scene.example, done: scene.done };
   }
   function initial() {
-    return { version: 1, mode: 'whole', showTotal: true, scenes: {
+    return { version: 2, mode: 'whole', showTotal: true, comparisons: { whole: [], decimal: [] }, selected: { whole: 0, decimal: 0 }, scenes: {
       whole: { counts: [0, 1, 2, 3], places: 4, example: null, done: false },
       decimal: { counts: [1, 2, 3, 0], places: 4, example: null, done: false }
     } };
   }
   function validate(state) {
-    if (!state || state.version !== 1 || !state.scenes || typeof state.showTotal !== 'boolean') throw Error('저장한 모형을 읽을 수 없어요.');
+    if (!state || ![1, 2].includes(state.version) || !state.scenes || typeof state.showTotal !== 'boolean') throw Error('저장한 모형을 읽을 수 없어요.');
     modeInfo(state.mode);
-    return { version: 1, mode: state.mode, showTotal: state.showTotal, scenes: { whole: validateScene(state.scenes.whole, 'whole'), decimal: validateScene(state.scenes.decimal, 'decimal') } };
+    const result = { version: 2, mode: state.mode, showTotal: state.showTotal, scenes: {}, comparisons: {}, selected: {} };
+    for (const mode of Object.keys(MODES)) {
+      result.scenes[mode] = validateScene(state.scenes[mode], mode);
+      const others = state.version === 1 ? [] : state.comparisons?.[mode];
+      const selected = state.version === 1 ? 0 : state.selected?.[mode];
+      if (!Array.isArray(others) || others.length >= MAX_ROWS || !Number.isInteger(selected) || selected < 0 || selected > others.length) throw Error('비교할 수는 6개까지 놓을 수 있어요.');
+      result.comparisons[mode] = others.map(s => validateScene(s, mode));
+      if (result.comparisons[mode].some(s => s.places !== result.scenes[mode].places)) throw Error('비교할 수의 표시 자리를 같게 맞춰 주세요.');
+      result.selected[mode] = selected;
+    }
+    return result;
+  }
+  function rows(state, mode = state.mode) {
+    modeInfo(mode);
+    const list = [...state.comparisons[mode]];
+    list.splice(state.selected[mode], 0, state.scenes[mode]);
+    return list;
+  }
+  function withRows(state, list, selected) {
+    const next = copy(state), mode = next.mode;
+    next.scenes[mode] = list[selected];
+    next.comparisons[mode] = list.filter((_, i) => i !== selected);
+    next.selected[mode] = selected;
+    return validate(next);
+  }
+  function selectRow(state, index) {
+    const list = rows(state);
+    if (!Number.isInteger(index) || index < 0 || index >= list.length) throw Error('선택할 수를 확인해 주세요.');
+    return withRows(state, list, index);
+  }
+  function addRow(state) {
+    const list = rows(state);
+    if (list.length >= MAX_ROWS) throw Error('비교할 수는 6개까지 놓을 수 있어요.');
+    list.push({ counts: [0, 0, 0, 0], places: state.scenes[state.mode].places, example: null, done: false });
+    return withRows(state, list, list.length - 1);
+  }
+  function removeRow(state, index) {
+    const list = rows(state), selected = state.selected[state.mode];
+    if (list.length <= 1 || !Number.isInteger(index) || index < 0 || index >= list.length) throw Error('수 모형은 하나 이상 남겨 주세요.');
+    list.splice(index, 1);
+    return withRows(state, list, index < selected ? selected - 1 : Math.min(selected, list.length - 1));
+  }
+  function changePlaces(state, places) {
+    return withRows(state, rows(state).map(s => ({ ...s, places })), state.selected[state.mode]);
   }
   function parse(value, mode) {
     modeInfo(mode);
@@ -107,5 +150,5 @@
     for (let i = 1; i < nz; i++) body += `<path d="M${x+i*2.8} ${y-i*2}h${w}v${h}"/>`;
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${w+dx+2}" height="${h+dy+2}" style="--block-width:${w+dx+2}px;--block-height:${h+dy+2}px" viewBox="0 0 ${w+dx+2} ${h+dy+2}" aria-hidden="true" focusable="false"><g stroke="#36544d" stroke-width=".65" stroke-linejoin="round" fill="none">${body}</g></svg>`;
   }
-  return { WEIGHTS, MAX_COUNT, MODES, EXAMPLES, total, format, visible, initial, validate, validateScene, parse, fromNumber, add, exchange, exampleScene, subtract, expression, blockSVG };
+  return { WEIGHTS, MAX_COUNT, MAX_ROWS, MODES, EXAMPLES, total, format, visible, initial, validate, validateScene, rows, selectRow, addRow, removeRow, changePlaces, parse, fromNumber, add, exchange, exampleScene, subtract, expression, blockSVG };
 });

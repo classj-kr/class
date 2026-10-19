@@ -190,3 +190,56 @@ test('failed saves are visible while the model remains usable', async () => {
   assert.equal(await total(), '124');
   await button(3, 'add').click(); assert.equal(await total(), '125');
 });
+
+test('multiple numbers align, edit independently, undo and restore from the account', async () => {
+  await number('123');
+  await page.locator('#add-number').click(); await number('234');
+  await page.locator('#add-number').click(); await number('345');
+  const values = () => page.locator('.row-total').allTextContents();
+  assert.deepEqual(await values(), ['123', '234', '345']);
+  await page.locator('[data-row="0"] [data-index="3"] [data-action=add]').click();
+  assert.deepEqual(await values(), ['124', '234', '345']);
+  await page.locator('#undo').click(); assert.deepEqual(await values(), ['123', '234', '345']);
+  await page.locator('#redo').click(); assert.deepEqual(await values(), ['124', '234', '345']);
+  await page.locator('[data-select-row="1"]').click();
+  await page.locator('[data-row="2"] [data-index="2"] [data-action=split]').click();
+  await page.waitForFunction(() => document.querySelector('[data-row="2"] [data-index="3"] .count b').textContent === '15');
+  assert.deepEqual(await values(), ['124', '234', '345']);
+  assert.equal(await page.locator('[data-row="0"] [data-index="3"] .count b').textContent(), '4');
+  await page.locator('#undo').click();
+  await page.locator('#places').selectOption('2');
+  assert.equal(await page.locator('#places').inputValue(), '4');
+  await page.locator('#show-total').uncheck(); assert.deepEqual(await values(), ['?', '?', '?']);
+  await page.locator('#show-total').check();
+  await page.locator('[data-remove-row="1"]').click(); assert.deepEqual(await values(), ['124', '345']);
+  await page.locator('#undo').click(); assert.deepEqual(await values(), ['124', '234', '345']);
+  await page.locator('[data-mode=decimal]').click();
+  await number('0.8'); await page.locator('#add-number').click(); await number('0.75');
+  assert.deepEqual(await values(), ['0.8', '0.75']);
+  await settled(); await page.reload(); await ready();
+  assert.deepEqual(await values(), ['0.8', '0.75']);
+  await page.locator('[data-mode=whole]').click(); assert.deepEqual(await values(), ['124', '234', '345']);
+  for (const [width, height] of [[1920,1080], [1366,768], [1024,768], [390,844], [320,800]]) {
+    await page.setViewportSize({ width, height });
+    const layout = await page.evaluate(() => {
+      const rows = [...document.querySelectorAll('.model-row')];
+      const scales = [...document.querySelectorAll('.block svg')].map(svg => svg.getBoundingClientRect().width / Number(svg.getAttribute('width')));
+      const edges = rows.map(row => [...row.querySelectorAll('.place-column')].map(col => Math.round(col.getBoundingClientRect().left)));
+      return { edges, scaleRange: Math.max(...scales)-Math.min(...scales), fits: document.documentElement.scrollWidth <= innerWidth,
+        clipped: [...document.querySelectorAll('.block')].some(block => { const b = block.getBoundingClientRect(), c = block.closest('.block-cloud').getBoundingClientRect(); return b.left < c.left || b.right > c.right+1 || b.bottom > c.bottom+1; }) };
+    });
+    assert.equal(layout.fits, true, `${width}: no horizontal page overflow`);
+    assert.equal(layout.clipped, false, `${width}: no clipped models`);
+    assert.ok(layout.scaleRange < 0.002, `${width}: common model scale`);
+    assert.deepEqual(layout.edges[0], layout.edges[1], `${width}: shared place columns`);
+    if (width === 1366 || width === 390) await shot(`compare-${width}`);
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  for (let i = 0; i < 3; i++) await page.locator('#add-number').click();
+  assert.equal(await page.locator('.model-row').count(), 6);
+  assert.equal(await page.locator('#add-number').isDisabled(), true);
+  await page.locator('[data-remove-row="5"]').click(); assert.equal(await page.locator('#add-number').isDisabled(), false);
+  while (await page.locator('.model-row').count() > 1) await page.locator('[data-remove-row]').last().click();
+  assert.equal(await page.locator('body').evaluate(body => body.classList.contains('comparing')), false);
+  assert.equal(await total(), '124');
+});
