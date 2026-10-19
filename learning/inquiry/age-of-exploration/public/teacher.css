@@ -20,31 +20,28 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .missionNow{border-left:3px solid var(--accent);padding:10px;background:#081d25}.missionNow strong{display:block;color:#ffe29a;font-size:18px;word-break:keep-all;overflow-wrap:anywhere}
 .counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:7px;margin-top:9px}.countCard{padding:8px;border:1px solid #52656a;border-radius:7px;background:#0a2028;font-size:13px}
 #studySelected{padding-left:20px;font-size:13px;word-break:keep-all}#studySelected li{margin:6px 0}#studySelected button{padding:4px 8px;min-height:32px;font-size:12px}#studyCount{margin-left:12px;font-size:13px}
-.monitor{display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,23vw,360px);grid-template-rows:minmax(0,1fr);gap:10px;min-width:0;height:100%;min-height:0;align-items:stretch}
-.mapPanel{position:relative;display:grid;grid-template-rows:minmax(0,1fr);padding:0;min-height:0;overflow:hidden}.mapHeader{position:absolute;inset:8px 8px auto;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;pointer-events:none}.mapHeader button{flex-shrink:0;pointer-events:auto;font-size:13px;min-height:36px;padding:7px 10px}
-.mapStatus{font-size:11px;color:#cadcdb;line-height:1.5;background:#061219d9;border-radius:6px;padding:7px 9px}
+.monitor{display:grid;grid-template-columns:minmax(0,1fr) clamp(220px,16vw,260px);grid-template-rows:minmax(0,1fr);gap:10px;min-width:0;height:100%;min-height:0;align-items:stretch}
+.mapPanel{position:relative;display:grid;grid-template-rows:minmax(0,1fr);padding:0;min-height:0;overflow:hidden}.mapHeader{position:absolute;right:8px;top:8px;z-index:1}.mapHeader button{font-size:13px;min-height:36px;padding:7px 10px}
 .mapWrap{position:relative;width:100%;overflow:hidden;background:#061a24;border-radius:9px;min-height:0}
 .mapWrap canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
-.mapLegend{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);display:flex;gap:10px;flex-wrap:wrap;padding:5px 8px;border-radius:5px;background:#061219d9;font-size:11px;color:#c2d3d0;line-height:1.4;pointer-events:none}.legendItem{display:flex;align-items:center;gap:5px}.legendDot{width:9px;height:9px;border-radius:50%;display:inline-block}
 .rankBoard{display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px;min-height:0;overflow:hidden;padding:12px}
-.rankHeader{display:grid;gap:6px}.rankHeader h3{margin:0;font-size:17px}.missionTitle{font-size:16px;color:#ffe29a;font-weight:700;word-break:keep-all;overflow-wrap:anywhere}
+.rankHeader{display:grid;gap:6px}.rankHeader h3{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0;font-size:17px}.missionTitle{font-size:15px;color:#ffe29a;font-weight:700;word-break:keep-all;overflow-wrap:anywhere}.missionTitle[hidden]{display:none}.rankHeader small,.waitingTitle small{color:#afc4c5;font-size:12px;font-weight:400}
 .rankContent{display:flex;flex-direction:column;gap:18px;min-height:0;overflow:auto;scrollbar-color:#5d787b #0a2028;scrollbar-width:thin}
 .finishSection,.waitingSection{min-width:0;flex-shrink:0}
-.rankList{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-content:start}
-.rankRow{display:grid;grid-template-columns:42px minmax(0,1fr);grid-template-areas:'medal name' 'medal start' 'medal time';column-gap:8px;row-gap:4px;align-content:start;padding:10px;border:1px solid #476068;border-radius:8px;background:#091e26;min-width:0}
+.rankList{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;align-content:start}
+.rankRow{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:8px;align-items:center;min-height:48px;padding:8px;border:1px solid #476068;border-radius:6px;background:#091e26;min-width:0}
 .rankRow.gold{border-color:#e3bc4f;background:linear-gradient(110deg,#4b3b13,#091e26 55%)}.rankRow.silver{border-color:#aebbc3;background:linear-gradient(110deg,#38454c,#091e26 55%)}.rankRow.bronze{border-color:#b97243;background:linear-gradient(110deg,#4b2d1e,#091e26 55%)}
-.rankNo{grid-area:medal;font-size:30px;font-weight:900;color:#f5d477;text-align:center}.rankName{grid-area:name;font-size:19px;font-weight:800;color:#fff;overflow-wrap:anywhere}.rankStart{grid-area:start}.rankTime{grid-area:time;color:#c7d8d6}.rankStart,.rankTime{font-size:12px;line-height:1.45;overflow-wrap:anywhere}
-.waitingTitle{margin:0 0 6px;font-size:15px}.waiting{display:flex;justify-content:space-between;gap:10px;padding:7px 2px;border-bottom:1px solid #324a53;font-size:12px;line-height:1.5;flex-wrap:wrap}.waiting>span{min-width:0;overflow-wrap:anywhere}.waiting>span:last-child{color:#a8d7e8}
+.rankNo{font-size:25px;font-weight:900;color:#f5d477;text-align:center}.rankName{font-size:18px;font-weight:800;color:#fff;overflow-wrap:anywhere}.rankScore{font-size:13px;color:#c7d8d6;white-space:nowrap}
+.waitingTitle{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 0 6px;font-size:15px}.waitingSection[hidden]{display:none}.waiting{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:9px 2px;border-bottom:1px solid #324a53;font-size:13px;line-height:1.5;flex-wrap:wrap}.waiting>b{min-width:0;overflow-wrap:anywhere}.waiting>span{color:#a8d7e8;font-size:12px;white-space:nowrap}
 .empty{font-size:13px;line-height:1.6;padding:12px 4px;color:#bdcbc7;grid-column:1/-1}
-.rankRow:not(.gold):not(.silver):not(.bronze) .rankNo{font-size:22px;letter-spacing:-.5px;white-space:nowrap}
-.monitor:fullscreen{width:100vw;height:100dvh;min-height:0;background:#061219;padding:12px;overflow:hidden;grid-template-columns:minmax(0,1fr) clamp(280px,23vw,420px);grid-template-rows:minmax(0,1fr)}
+.rankRow:not(.gold):not(.silver):not(.bronze) .rankNo{font-size:15px;letter-spacing:-.5px;white-space:nowrap}
+.monitor:fullscreen{width:100vw;height:100dvh;min-height:0;background:#061219;padding:12px;overflow:hidden;grid-template-columns:minmax(0,1fr) clamp(240px,16vw,300px);grid-template-rows:minmax(0,1fr)}
 .monitor:fullscreen .mapPanel{padding:0}
-.monitor:fullscreen .rankBoard{padding:16px}
-.monitor:fullscreen .mapStatus,.monitor:fullscreen .mapLegend{font-size:13px}
+.monitor:fullscreen .rankBoard{padding:12px}
 .monitor:fullscreen .rankHeader h3{font-size:20px}.monitor:fullscreen .missionTitle{font-size:18px}
-.monitor:fullscreen .rankRow{grid-template-columns:46px minmax(0,1fr);padding:10px 12px}.monitor:fullscreen .rankName{font-size:22px}.monitor:fullscreen .rankNo{font-size:34px}
-.monitor:fullscreen .rankStart,.monitor:fullscreen .rankTime,.monitor:fullscreen .waiting,.monitor:fullscreen .empty{font-size:14px}
+.monitor:fullscreen .rankRow{min-height:54px}.monitor:fullscreen .rankName{font-size:21px}.monitor:fullscreen .rankNo{font-size:28px}
+.monitor:fullscreen .waiting,.monitor:fullscreen .empty{font-size:15px}.monitor:fullscreen .waiting>span{font-size:13px}
 @media(max-width:1000px){#dash{height:auto}.layout{height:auto;grid-template-columns:1fr;grid-template-rows:auto auto}.setup{grid-template-columns:1fr 1fr;overflow:visible}.monitor{height:70dvh;min-height:360px}}
 @media(orientation:portrait),(max-width:620px){.monitor{height:auto;min-height:0;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}.mapWrap{aspect-ratio:2/1}.rankBoard{max-height:460px}.monitor:fullscreen{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(180px,38dvh)}.monitor:fullscreen .mapWrap{aspect-ratio:auto}.monitor:fullscreen .rankBoard{max-height:none}}
-@media(max-width:620px){.setup{grid-template-columns:1fr}.mapStatus{font-size:11px}.mapHeader button{font-size:12px;padding:7px}.mapLegend{font-size:10px}.monitor:fullscreen{padding:6px}}
-@media(max-height:540px) and (min-width:621px){.monitor:fullscreen{grid-template-columns:minmax(0,1fr) clamp(240px,30vw,320px);gap:6px;padding:6px}.monitor:fullscreen .mapLegend{display:none}.monitor:fullscreen .rankBoard{gap:6px;padding:9px}.monitor:fullscreen .rankHeader h3{font-size:16px}.monitor:fullscreen .rankName{font-size:18px}.monitor:fullscreen .rankStart,.monitor:fullscreen .rankTime{font-size:12px}}
+@media(max-width:620px){.setup{grid-template-columns:1fr}.mapHeader button{font-size:12px;padding:7px}.monitor:fullscreen{padding:6px}}
+@media(max-height:540px) and (min-width:621px){.monitor:fullscreen{grid-template-columns:minmax(0,1fr) clamp(220px,25vw,260px);gap:6px;padding:6px}.monitor:fullscreen .rankBoard{gap:6px;padding:9px}.monitor:fullscreen .rankHeader h3{font-size:16px}.monitor:fullscreen .rankName{font-size:18px}.monitor:fullscreen .rankRow{min-height:44px}}
