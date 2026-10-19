@@ -245,6 +245,21 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
 #lobbyScreen .pack-head, #lobbyScreen .pack-head strong { margin: 0; }
 #lobbyScreen .lobby-actions { margin-top: 8px !important; padding-top: 0; }
 
+.custom-topic-section { padding: 12px; margin: 6px 0; border: 1px solid #a8b0a6; border-radius: 12px; background: #f3f7ee; }
+.custom-topic-form, .custom-words-form { display: grid; gap: 6px; }
+.custom-topic-section label { font-size: 14px; font-weight: 800; }
+.custom-topic-section input { width: 100%; min-width: 0; min-height: 44px; padding: 9px 11px; border: 1px solid #8fa49d; border-radius: 8px; background: #fffdf7; color: var(--ink); }
+.custom-topic-section input:focus { outline: 2px solid var(--teal); outline-offset: 2px; }
+.custom-input-row { display: flex; gap: 8px; }
+.custom-input-row input { flex: 1; }
+.custom-input-row button { flex-shrink: 0; }
+.custom-topic-section :is(p, small) { line-height: 1.5; overflow-wrap: anywhere; }
+.custom-topic-section p { margin: 8px 0; font-size: 14px; }
+.custom-topic-section small { color: var(--muted); }
+.custom-topic-section .custom-topic-title { font-size: 16px; }
+.custom-words-form button { margin-top: 4px; justify-self: start; }
+.custom-topic-section :disabled { opacity: .6; cursor: not-allowed; }
+
 @media (max-width: 820px) {
   .play-layout { grid-template-columns: 1fr; }
   .game-shell { min-height: calc(100vh - 14px); }

@@ -120,22 +120,22 @@
      * 한눈에 보이면 되므로 오선과 자리표는 자리만 차지한다. 글꼴 글리프는
      * 컴퓨터마다 크기가 달라지므로 획을 직접 그린다.
      */
-    /*
-     * 가운데에 붙이는 조표는 청음 악보와 같은 그림을 쓴다. 임시표가 어느 줄과 칸에
-     * 붙는지가 조표의 뜻이므로 오선과 자리표를 함께 두고, 대신 통째로 줄여 작게 놓는다.
-     */
-    const SIG_SCALE = 0.44;
-
     function keySignature(count, sharp) {
-        const holder = make("g", { class: "wheel-key-sig" });
-        if (!window.Notation || !window.Notation.keySignatureGroup) return holder;
-        const sig = window.Notation.keySignatureGroup(count, sharp);
-        const middle = (sig.top + sig.bottom) / 2;
-        sig.node.setAttribute(
-            "transform",
-            "scale(" + SIG_SCALE + ") translate(" + (-sig.width / 2) + "," + (-middle) + ")"
-        );
-        holder.append(sig.node);
+        const label = count ? (sharp ? "올림표 " : "내림표 ") + count + "개" : "조표 없음";
+        const holder = make("g", { class: "wheel-key-sig", role: "img", "aria-label": label });
+        if (count && window.Notation) {
+            const char = sharp ? "♯" : "♭";
+            const ink = window.Notation.inkBox(char);
+            const height = 18;
+            const width = ink.right * height / ink.height;
+            const gap = 4;
+            const total = count * width + (count - 1) * gap;
+            for (let at = 0; at < count; at += 1) {
+                holder.append(window.Notation.glyph(char, "wheel-signature-mark",
+                    -total / 2 + at * (width + gap) + width, -6, height, .5));
+            }
+        }
+        holder.append(make("text", { class: "wheel-signature-count", x: 0, y: count ? 19 : 0 }, label));
         return holder;
     }
 
@@ -429,6 +429,14 @@
         layout();
 
         return {
+            setKey: function (name) {
+                const position = KEYS.findIndex(key => key.major === name || key.alt === name);
+                if (position < 0) return;
+                window.cancelAnimationFrame(spin);
+                window.clearTimeout(settle);
+                flat = KEYS[position].alt === name;
+                select(position, false, 0);
+            },
             step: function (delta) {
                 select(index + delta, true, delta > 0 ? 1 : -1);
             },

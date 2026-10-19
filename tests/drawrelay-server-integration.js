@@ -61,9 +61,9 @@ function connectClient() {
   });
 }
 
-async function waitForStep(clients, step, phase = "playing") {
+async function waitForStep(clients, step, phase = "playing", packId = null) {
   return Promise.all(clients.map((client, index) => client.waitFor(
-    message => message.type === "DRAWRELAY_STATE" && message.state.phase === phase && (phase !== "playing" || message.state.step === step),
+    message => message.type === "DRAWRELAY_STATE" && (!packId || message.state.packId === packId) && message.state.phase === phase && (phase !== "playing" || message.state.step === step),
     `${index + 1}번 참가자 ${phase} ${step}단계`
   )));
 }
@@ -114,7 +114,45 @@ async function run() {
     assert.equal(revealed.every(message => message.state.chains.length === 4), true);
     assert.equal(revealed.every(message => message.state.chains.every(chain => chain.entries.length === 5)), true);
 
-    console.log("drawrelay-server-integration: room, 4 clients, private prompts, synchronized relay and reveal ok");
+    host.send({ type: "DRAWRELAY_ACTION", action: "RETURN_LOBBY" });
+    await waitForStep(clients, 0, "lobby");
+    clients[1].send({ type: "DRAWRELAY_ACTION", action: "CONFIGURE", packId: "custom", topic: "몰래 변경" });
+    const denied = await clients[1].waitFor(message => message.type === "DRAWRELAY_ERROR");
+    assert.match(denied.message, /방장만/);
+    host.send({ type: "DRAWRELAY_ACTION", action: "CONFIGURE", packId: "custom", topic: "동물" });
+    const configured = await Promise.all(clients.map(client => client.waitFor(message =>
+      message.type === "DRAWRELAY_STATE" && message.state.topic === "동물")));
+    const topicRevision = configured[0].state.topicRevision;
+    assert.ok(configured.every(message => message.state.canStart === false));
+    host.send({ type: "DRAWRELAY_ACTION", action: "START", packId: "custom" });
+    const notReady = await host.waitFor(message => message.type === "DRAWRELAY_ERROR");
+    assert.match(notReady.message, /모두 제시어/);
+    const contributed = [["고양이", "강아지"], ["호랑이"], ["기린", "코끼리"], ["토끼"]];
+    for (let index = 0; index < clients.length; index += 1) {
+      clients[index].send({ type: "DRAWRELAY_ACTION", action: "SUBMIT_WORDS", words: contributed[index], topicRevision });
+      const views = await Promise.all(clients.map(client => client.waitFor(message =>
+        message.type === "DRAWRELAY_STATE" && message.state.phase === "lobby" &&
+        message.state.players.filter(player => player.wordCount > 0).length === index + 1)));
+      views.forEach((message, viewer) => {
+        assert.deepEqual(message.state.myWords, viewer <= index ? contributed[viewer] : []);
+        for (let other = 0; other <= index; other += 1) {
+          if (other !== viewer) assert.ok(!JSON.stringify(message.state).includes(contributed[other][0]));
+        }
+      });
+    }
+    host.send({ type: "DRAWRELAY_ACTION", action: "START", packId: "custom" });
+    const customStarted = await waitForStep(clients, 0, "playing", "custom");
+    customStarted.forEach((message, index) => {
+      assert.equal(message.state.packId, "custom");
+      assert.equal(message.state.topic, "동물");
+      assert.ok(!contributed[index].includes(message.state.prompt.text));
+      assert.equal(Object.hasOwn(message.state.prompt, "authorId"), false);
+    });
+    for (let step = 0; step < 4; step += 1) {
+      clients.forEach(client => client.send({ type: "DRAWRELAY_ACTION", action: step % 2 ? "SUBMIT_GUESS" : "SUBMIT_DRAWING", text: "추측", strokes: [] }));
+      await waitForStep(clients, step + 1, step === 3 ? "reveal" : "playing", "custom");
+    }
+    console.log("drawrelay-server-integration: built-in/custom relay, host permissions, private submissions and non-self assignments ok");
   } finally {
     for (const client of clients) {
       try { client.socket.close(4000, "TEST_COMPLETE"); } catch (_) {}

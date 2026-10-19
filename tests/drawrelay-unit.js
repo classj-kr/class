@@ -97,6 +97,67 @@ assert.equal(DrawRelay.resetToLobby(game).ok, true);
 assert.equal(game.phase, "lobby");
 assert.deepEqual(game.chains, []);
 
+const custom = createPlayers(4);
+assert.equal(DrawRelay.configure(custom, "custom", "").ok, true);
+assert.equal(DrawRelay.startGame(custom, "custom").ok, false);
+assert.equal(DrawRelay.submitWords(custom, "p1", ["고양이"], custom.topicRevision).ok, false);
+assert.equal(DrawRelay.configure(custom, "custom", "  동물  ").ok, true);
+const topicRevision = custom.topicRevision;
+for (const invalid of [[], [""], ["  "], ["가", "나", "다"], ["가".repeat(41)], [null], ["고양이", "고 양 이"]]) {
+  assert.equal(DrawRelay.submitWords(custom, "p1", invalid, topicRevision).ok, false);
+}
+assert.equal(DrawRelay.submitWords(custom, "outsider", ["고양이"], topicRevision).ok, false);
+assert.equal(DrawRelay.submitWords(custom, "p1", ["고양이"], topicRevision).ok, true);
+assert.equal(DrawRelay.submitWords(custom, "p2", ["고 양 이"], topicRevision).ok, false);
+assert.deepEqual(DrawRelay.stateFor(custom, "p2").myWords, []);
+assert.ok(!JSON.stringify(DrawRelay.stateFor(custom, "p2")).includes("고양이"), "다른 사람과 방장에게 제시어를 미리 공개하면 안 됩니다.");
+assert.deepEqual(DrawRelay.stateFor(custom, "p1").myWords, ["고양이"]);
+assert.equal(DrawRelay.stateFor(custom, "p2").players[0].wordCount, 1);
+assert.equal(DrawRelay.configure(custom, "custom", "음식").ok, true);
+assert.deepEqual(custom.customWords, {});
+assert.equal(DrawRelay.submitWords(custom, "p1", ["고양이"], topicRevision).ok, false, "이전 주제의 늦은 제출은 거부해야 합니다.");
+assert.equal(DrawRelay.configure(custom, "custom", "가".repeat(61)).ok, false);
+assert.equal(custom.topic, "음식");
+assert.equal(DrawRelay.submitWords(custom, "p1", ["김밥"], custom.topicRevision).ok, true);
+assert.equal(DrawRelay.configure(custom, "history").ok, true);
+assert.deepEqual(custom.customWords, {});
+
+for (const count of [4, 8]) {
+  for (const randomValue of [0, 0.3, 0.9999]) {
+    const round = createPlayers(count);
+    DrawRelay.configure(round, "custom", "자유롭게 그리기");
+    for (let index = 2; index <= count; index += 1) {
+      assert.equal(DrawRelay.submitWords(round, `p${index}`, [`말${index}`, `그림${index}`], round.topicRevision).ok, true);
+    }
+    assert.equal(DrawRelay.canStart(round), false, "방장도 제시어를 내야 합니다.");
+    assert.equal(DrawRelay.startGame(round, "custom").ok, false);
+    DrawRelay.submitWords(round, "p1", ["방장제시어"], round.topicRevision);
+    assert.equal(DrawRelay.canStart(round), true);
+    const savedWords = structuredClone(round.customWords);
+    assert.equal(DrawRelay.startGame(round, "custom", () => randomValue).ok, true);
+    assert.equal(new Set(round.chains.map(chain => chain.entries[0].text)).size, count);
+    assert.equal(new Set(round.chains.map(chain => chain.entries[0].authorId)).size, count);
+    for (const player of round.players) {
+      const view = DrawRelay.stateFor(round, player.id);
+      assert.ok(!savedWords[player.id].includes(view.prompt.text), "첫 그림에는 자기 제시어가 배정되면 안 됩니다.");
+      assert.equal(Object.hasOwn(view.prompt, "authorId"), false);
+      assert.deepEqual(view.myWords, []);
+    }
+    assert.equal(DrawRelay.configure(round, "history").ok, false);
+    assert.equal(DrawRelay.submitWords(round, "p1", ["수정"], round.topicRevision).ok, false);
+    DrawRelay.resetToLobby(round);
+    assert.deepEqual(round.customWords, {});
+    assert.equal(DrawRelay.canStart(round), false);
+  }
+}
+
+DrawRelay.configure(custom, "custom", "동물");
+DrawRelay.submitWords(custom, "p2", ["기린"], custom.topicRevision);
+DrawRelay.removePlayer(custom, "p2");
+assert.equal(custom.customWords.p2, undefined);
+DrawRelay.addPlayer(custom, "p2", "다시 참가");
+assert.deepEqual(DrawRelay.stateFor(custom, "p2").myWords, []);
+
 const html = fs.readFileSync(path.resolve(__dirname, "..", "learning", "games", "drawrelay", "drawrelay.html"), "utf8");
 assert.match(html, /gameId:\s*GAME_ID/);
 assert.match(html, /autoCreate:\s*false/);
@@ -105,6 +166,7 @@ assert.match(html, /minPlayers:\s*4/);
 assert.match(html, /maxPlayers:\s*8/);
 assert.match(html, /<option value="proverbs">속담<\/option>/);
 assert.match(html, /<option value="history">역사<\/option>/);
+assert.match(html, /<option value="custom">자유주제<\/option>/);
 assert.doesNotMatch(html, /<option value="(?:general|science|society)">/);
 assert.match(html, /id=["']drawingCanvas["']/);
 assert.match(html, /pointerdown/);
@@ -123,4 +185,4 @@ assert.match(server, /DRAWRELAY_ACTION/);
 assert.match(server, /DrawRelay\.stateFor/);
 assert.match(server, /scheduleDrawRelayDeadline/);
 
-console.log("drawrelay-unit: two prompt packs, proverb source, 4-8 players and relay flow ok");
+console.log("drawrelay-unit: built-in packs, private custom words, topic resets, non-self assignments and relay flow ok");

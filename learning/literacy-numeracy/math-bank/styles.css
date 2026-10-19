@@ -176,11 +176,21 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 .mb-choice.is-answer { border-color: var(--right); background: var(--right-soft); color: var(--right); }
 .mb-result { margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; font-size: 0.98rem; word-break: keep-all; overflow-wrap: anywhere; }
 .mb-result.is-right { background: var(--right-soft); color: var(--right); }
-/* 틀렸을 때: 답은 붉게, 풀이 글은 읽기 쉽게 본문 색으로 */
+/* 오답에는 힌트만 보인다. 정답·풀이는 학생이 직접 요청한 뒤에만 공개한다. */
 .mb-result.is-wrong { background: var(--wrong-soft); color: var(--ink); }
 .mb-result.is-wrong strong { color: var(--wrong); }
 .mb-result .mb-expr { font-size: 1.05rem; color: var(--ink); }
 .mb-result strong { font-weight: 700; }
+.mb-hint { margin: 6px 0 8px; }
+.mb-feedback-note { margin: 6px 0 0; font-size: 0.86rem; color: var(--muted); }
+.mb-reveal { margin-top: 10px; font-size: 0.88rem; }
+.mb-twin-start { margin: 10px 0 0 6px; font-size: 0.88rem; }
+.mb-twin-label { margin: 0 0 8px; color: var(--brand-dark); font-size: 0.82rem; font-weight: 600; }
+.mb-items.is-review { grid-template-columns: minmax(0, 1fr); }
+.mb-items.is-review .mb-item { min-width: 0; }
+.mb-items.is-review .mb-expr { white-space: normal; overflow-wrap: anywhere; }
+.mb-review-error { padding: 12px 16px; border-radius: 10px; background: var(--wrong-soft); color: var(--wrong); }
+.mb-choice.is-picked:not(:disabled):hover { border-color: var(--wrong); }
 
 .mb-finish { margin-top: 16px; padding: 16px 18px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .mb-finish p { margin: 0; flex: 1; min-width: 10em; font-weight: 600; }

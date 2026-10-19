@@ -1145,7 +1145,7 @@
     const els = {};
     let keyboard = null;
     let lessonKeyboard = null;
-    let wheelKeyboard = null;
+    let wheelPractice = null;
 
     /* 눌러 보는 건반. 문제를 푸는 자리가 아니면 그냥 소리만 낸다. */
     function soundOnly(midi) {
@@ -1180,10 +1180,11 @@
 
     function showScreen(name) {
         if (session.screen === "lesson" && name !== "lesson") stopLit();
-        ["menu", "course", "lesson", "wheel", "drill", "result"].forEach(key => {
+        ["menu", "course", "lesson", "wheel", "wheelPractice", "drill", "result"].forEach(key => {
             els[key + "Screen"].hidden = key !== name;
         });
         session.screen = name;
+        document.body.classList.toggle("menu-open", name === "menu");
         document.body.classList.toggle("wheel-open", name === "wheel");
         document.body.classList.toggle("lesson-open", name === "lesson");
         document.body.classList.toggle("drill-open", name === "drill");
@@ -1265,6 +1266,7 @@
         chord: { en: "Chords", ko: "화음", theme: "chord", icon: "chord" },
         progression: { en: "Chord Progressions", ko: "화음 진행", theme: "progression", icon: "progression" },
         scale: { en: "Scales", ko: "음계", theme: "scale", icon: "scale" },
+        wheel: { en: "Circle of Fifths", ko: "5도권 원판", theme: "wheel", icon: "wheel" },
     };
 
     function createGlassCard(meta, onOpen) {
@@ -1286,25 +1288,21 @@
         const body = document.createElement("div");
         body.className = "card-body";
 
-        const en = document.createElement("span");
-        en.className = "genre-en";
-        en.textContent = meta.en;
-
         const ko = document.createElement("strong");
         ko.className = "genre-ko";
         ko.textContent = meta.ko;
 
-        body.append(en, ko);
+        body.append(ko);
         button.append(glow, iconWrap, body);
         if (onOpen) button.addEventListener("click", onOpen);
         return button;
     }
 
 
-    /* 첫 화면은 과정과 찾아보기뿐이다. 판은 과정 줄에 섞여 들어갔다. */
+    /* 독립 메뉴 여섯 개를 같은 위계로 둔다. */
     function renderMenu() {
         els.courseList.innerHTML = "";
-        (window.EarCourses || []).forEach(course => {
+        (window.EarCourses || []).filter(course => course.id !== "wheel").forEach(course => {
             const meta = COURSE_META[course.id] || { en: "Music Theory", ko: course.name, theme: "gold", icon: "course" };
             els.courseList.append(createGlassCard(meta, () => openCourse(course.id)));
         });
@@ -1313,13 +1311,7 @@
             href: "../rhythm-training/"
         }));
 
-        els.toolList.innerHTML = "";
-        els.toolList.append(createGlassCard({
-            en: "Circle of Fifths",
-            ko: "5도권 원판",
-            theme: "wheel",
-            icon: "wheel"
-        }, () => { session.exercise = null; openWheel(); }));
+        els.courseList.append(createGlassCard(COURSE_META.wheel, () => openCourse("wheel")));
     }
 
     /* 판 하나를 그 방법으로 시작한다. */
@@ -1439,7 +1431,8 @@
         { key: "text", mark: "≡", text: "설명 읽기" },
         { key: "read", mark: "𝄞", text: "악보 보고 고르기" },
         { key: "listen", mark: "♪", text: "소리 듣고 고르기" },
-        { key: "keys", mark: "🎹", text: "건반 찍기" }
+        { key: "keys", mark: "🎹", text: "건반 찍기" },
+        { key: "practice", mark: "?", text: "5도권 문제 풀기" }
     ];
 
     function rowName(lesson) {
@@ -1469,6 +1462,7 @@
         if (lesson.read) list.push("read");
         if (lesson.listen) list.push("listen");
         if (lesson.keys) list.push("keys");
+        if (lesson.practice) list.push("practice");
         return list;
     }
 
@@ -1491,11 +1485,11 @@
         course.lessons.forEach((lesson, index) => {
             const acts = actsOf(lesson);
             const row = document.createElement("div");
-            row.className = "lesson-row" + (lesson.kind === "preset" ? " is-preset" : "");
+            row.className = "lesson-row" + (lesson.kind === "preset" || lesson.kind === "wheel-practice" ? " is-preset" : "");
 
             const order = document.createElement("span");
             order.className = "lesson-order";
-            if (lesson.kind !== "preset") { step += 1; order.textContent = step + "차시"; }
+            if (lesson.body) { step += 1; order.textContent = step + "차시"; }
             row.append(order);
 
             const name = document.createElement("span");
@@ -1517,6 +1511,7 @@
         const lesson = course.lessons[index];
         if (!lesson) return;
         lessonIndex = index;
+        if (act === "practice") { openWheelPractice(lesson); return; }
         if (act === "text") { openLesson(index); return; }
         if (lesson.kind === "preset") {
             const preset = presetOf(lesson);
@@ -1533,6 +1528,7 @@
         const lesson = course.lessons[index];
         if (!lesson) return;
         lessonIndex = index;
+        if (lesson.kind === "wheel") { openWheel(lesson); return; }
         els.lessonTitle.textContent = lesson.title;
         els.lessonBody.innerHTML = "";
         lesson.body.forEach(paragraph => {
@@ -1984,7 +1980,17 @@
         return notes[notes.length - 1] > 76 ? notes.map(note => note - 12) : notes;
     }
 
-    function openWheel() {
+    function openWheel(lesson) {
+        els.wheelTitle.textContent = lesson.title;
+        els.wheelBody.replaceChildren();
+        lesson.body.forEach(text => {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = text;
+            els.wheelBody.append(paragraph);
+        });
+        const next = course.lessons.findIndex((entry, at) => at > lessonIndex && entry.body);
+        els.wheelLessonNext.dataset.next = String(next);
+        els.wheelLessonNext.textContent = next >= 0 ? "다음 차시" : "차시 목록";
         if (!wheel) {
             wheel = window.Wheel.create(els.wheelBoard, {
                 onChange: (list, home) => renderWheelChords(wheelChordNames(home, list)),
@@ -1998,7 +2004,14 @@
                 }
             });
         }
+        wheel.setKey("C");
+        setLessonMark(course.id, lesson.id, { read: true });
         showScreen("wheel");
+    }
+
+    function openWheelPractice(lesson) {
+        showScreen("wheelPractice");
+        wheelPractice.start(lesson.practice, lesson.title);
     }
 
     /* 화음 이름 뒤의 올림표·내림표도 작게 붙인다. */
@@ -2603,8 +2616,13 @@
     function goBack() {
         if (session.screen === "drill") { finishDrill(); return true; }
         if (session.screen === "result") { backToHub(); return true; }
-        if (session.screen === "lesson") { renderLessonList(); showScreen("course"); return true; }
-        if (session.screen === "wheel" || session.screen === "course") {
+        if (session.screen === "wheelPractice") {
+            if (!wheelPractice.isFinished()) wheelPractice.finish();
+            else { renderLessonList(); showScreen("course"); }
+            return true;
+        }
+        if (session.screen === "lesson" || session.screen === "wheel") { renderLessonList(); showScreen("course"); return true; }
+        if (session.screen === "course") {
             session.exercise = null;
             renderMenu();
             showScreen("menu");
@@ -2632,9 +2650,10 @@
     async function init() {
         store = await SiteStorage.open("ear-training");
         store.adopt([{ localKey: STORAGE_KEY, item: "saved" }]);
-        ["menuScreen", "courseScreen", "lessonScreen", "drillScreen", "resultScreen",
+        ["menuScreen", "courseScreen", "lessonScreen", "drillScreen", "resultScreen", "wheelPracticeScreen",
             "courseList", "courseTitle", "lessonList", "lessonTitle", "lessonBody", "lessonExamples",
-            "lessonNext", "lessonKeys", "lessonKeysLabel", "wheelKeys", "toolList", "wheelScreen", "wheelBoard", "wheelChords",
+            "lessonNext", "lessonKeys", "lessonKeysLabel", "wheelScreen", "wheelBoard", "wheelChords",
+            "wheelTitle", "wheelBody", "wheelPractice", "wheelLessonNext",
             "wheelPrev", "wheelNext", "wheelFlat", "wheelCadence",
             "helpRow", "arpButton",
             "melodicButton",
@@ -2653,7 +2672,16 @@
             if (lessonKeyPress) lessonKeyPress(midi);
             else soundOnly(midi);
         });
-        wheelKeyboard = window.Keyboard.build(els.wheelKeys, KEY_LOW, KEY_HIGH, soundOnly);
+        wheelPractice = window.WheelPractice.create(els.wheelPracticeScreen, {
+            onBack: () => { renderLessonList(); showScreen("course"); },
+            onAnswer: (topic, correct) => {
+                const table = saved.stats.wheel || (saved.stats.wheel = {});
+                const tally = table[topic] || (table[topic] = { right: 0, total: 0 });
+                tally.total += 1;
+                if (correct) tally.right += 1;
+                persist();
+            }
+        });
 
         renderMenu();
         showScreen("menu");
@@ -2685,6 +2713,12 @@
         els.wheelNext.addEventListener("click", () => wheel.step(1));
         els.wheelFlat.addEventListener("click", () => wheel.toggleFlat());
         els.wheelCadence.addEventListener("click", playCadence);
+        els.wheelPractice.addEventListener("click", () => openWheelPractice(course.lessons[lessonIndex]));
+        els.wheelLessonNext.addEventListener("click", () => {
+            const next = Number(els.wheelLessonNext.dataset.next);
+            if (next >= 0) openLesson(next);
+            else { renderLessonList(); showScreen("course"); }
+        });
 
         window.addEventListener("sitebackrequest", event => {
             if (goBack()) event.preventDefault();

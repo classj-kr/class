@@ -2,6 +2,7 @@
 // 손님(둘러보기)으로도 풀리는지, 모든 회차가 휴대폰 너비에서 가로로 넘치지 않는지 본다.
 //   node tests/math-bank-browser.cjs          통과하면 {"ok":true}
 //   node tests/math-bank-browser.cjs --shots  outputs/math-bank-review 에 화면 사진을 무손실 WebP로 남긴다(모든 회차)
+//   node tests/math-bank-browser.cjs --feedback-only  오답·힌트·재시도·기록과 대표 화면만 검사한다.
 'use strict';
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -11,6 +12,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 const { harness } = require('./learning-records-integration.cjs');
 
 const SHOTS = process.argv.includes('--shots');
+const FEEDBACK_ONLY = process.argv.includes('--feedback-only');
 const OUT = path.resolve(__dirname, '../outputs/math-bank-review');
 // 화면 사진은 무손실 WebP로 남긴다. 브라우저는 PNG로만 찍으므로 메모리에서 바꾸어 저장하고, 화소가 같은지 확인한다.
 const TO_WEBP = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert('RGBA');im.save(sys.argv[1],format='WEBP',lossless=True);out=Image.open(sys.argv[1]).convert('RGBA');assert im.size==out.size and im.tobytes()==out.tobytes()";
@@ -49,6 +51,11 @@ const UNIT = '1-1-1';
     const data = await (await fetch('/api/learning-records/sessions?activity=math-bank')).json();
     return data.sessions.filter((s) => s.contentKey === key).map((s) => s.status);
   }, key);
+  const sessionOf = (page, key) => page.evaluate(async (key) => {
+    const data = await (await fetch('/api/learning-records/sessions?activity=math-bank')).json();
+    const session = data.sessions.find((s) => s.contentKey === key);
+    return (await (await fetch('/api/learning-records/sessions/' + session.id)).json()).session;
+  }, key);
   const solve = async (page, item, wrong = false) => {
     const card = page.locator(`.mb-item[data-key="${item.key}"]`);
     if (item.choice !== null) {
@@ -60,6 +67,7 @@ const UNIT = '1-1-1';
       await card.locator('.mb-primary').click();
     }
     await card.locator('.mb-result:not([hidden])').waitFor({ timeout: 10000 });
+    await page.waitForFunction(() => !document.getElementById('main').inert);
     await page.locator('learning-records .status').filter({ hasText: '저장 완료' }).waitFor({ timeout: 10000 });
   };
   const texts = (page) => page.locator('.mb-item').evaluateAll((els) => els.map((el) => el.querySelector('.mb-text').textContent + (el.querySelector('.mb-figure')?.textContent || '')));
@@ -93,7 +101,13 @@ const UNIT = '1-1-1';
     // 첫 문항은 일부러 틀리고, 둘은 맞힌다.
     await solve(page, items[0], true);
     assert.equal(await page.locator('.mb-item').first().evaluate((el) => el.classList.contains('is-wrong')), true);
-    assert.match(await page.locator('.mb-item').first().locator('.mb-result').innerText(), /답: /);
+    const wrongCard = page.locator('.mb-item').first();
+    assert.match(await wrongCard.locator('.mb-result').innerText(), /힌트/);
+    assert.doesNotMatch(await wrongCard.locator('.mb-result').innerText(), /답: /);
+    assert.equal(await wrongCard.locator('.mb-choice.is-answer').count(), 0, '정답 보기를 표시하지 않는다');
+    assert.equal(await wrongCard.locator('input, .mb-choice').first().isEnabled(), true, '오답은 바로 수정할 수 있다');
+    await solve(page, items[0], true);
+    assert.doesNotMatch(await wrongCard.locator('.mb-result').innerText(), /답: /, '여러 번 틀려도 자동 공개하지 않는다');
     await solve(page, items[1]);
     await solve(page, items[2]);
     assert.match(await page.locator('.mb-item').nth(1).locator('.mb-result').innerText(), /정답/);
@@ -107,12 +121,25 @@ const UNIT = '1-1-1';
     assert.deepEqual(await texts(page), before, '이어 풀 때 같은 문제');
     assert.equal(await page.locator('.mb-item.is-wrong').count(), 1);
     assert.equal(await page.locator('.mb-item.is-right').count(), 2);
+    assert.equal(await wrongCard.locator('input, .mb-choice').first().isEnabled(), true, '새로고침 뒤에도 힌트와 재시도 유지');
+    assert.doesNotMatch(await wrongCard.locator('.mb-result').innerText(), /답: /);
 
     // 나머지를 다 풀면 결과가 나오고 회차가 끝난다.
     for (const item of items.slice(3)) await solve(page, item);
+    assert.equal(await page.locator('#finish').isHidden(), true, '해결하지 않은 오답이 남으면 회차를 완료하지 않는다');
+    assert.deepEqual(await statusOf(page, firstKey), ['active']);
+    await solve(page, items[0]);
+    assert.match(await wrongCard.locator('.mb-result').innerText(), /처음 풀이의 오답 기록은 유지/);
     await page.locator('#finish:not([hidden])').waitFor();
     assert.match(await page.locator('#finish').innerText(), new RegExp(items.length + '문항 중 ' + (items.length - 1) + '문항 정답'));
     assert.deepEqual(await statusOf(page, firstKey), ['completed']);
+    const savedSession = await sessionOf(page, firstKey);
+    assert.equal(savedSession.summary.firstCorrect, items.length - 1, '힌트 후 맞혀도 최초 정답 수를 올리지 않는다');
+    assert.equal(savedSession.summary.retryCount, 2);
+    assert.equal(savedSession.summary.solvedAfterRetry, 1);
+    assert.equal(savedSession.summary.hints, 1, '자동 표시한 힌트도 기록한다');
+    assert.equal(savedSession.checkpoint.answers[items[0].key].firstOk, false);
+    assert.equal(savedSession.checkpoint.answers[items[0].key].hinted, true);
     if (SHOTS) await shot(page, '0-finished');
 
     // 다시 풀기: 같은 문제가 빈 채로 다시 열리고 새 기록이 생긴다.
@@ -128,7 +155,7 @@ const UNIT = '1-1-1';
     assert.match(await page.locator('.mb-group').first().locator('.mb-level').first().innerText(), new RegExp((items.length - 1) + ' / ' + items.length), '끝낸 회차의 결과가 단추에 보인다');
     assert.equal(await page.evaluate(() => !window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true }))), false, '목록에서는 가로채지 않는다');
 
-    // 회차가 여럿인 묶음: 끝내면 다음 회차로 넘어간다. 고르기 문항은 틀리면 고른 것과 답이 함께 표시된다.
+    // 회차가 여럿인 묶음: 오답의 정답은 명시적으로 풀이 보기를 누른 뒤에만 표시한다.
     const g = plan.findIndex((group) => group.rounds.some((r) => r.of > 1));
     if (g >= 0) {
       const target = plan[g].rounds.find((r) => r.of > 1 && r.no === 1);
@@ -141,8 +168,16 @@ const UNIT = '1-1-1';
       if (choiceItem) {
         await solve(page, choiceItem, true);
         const card = page.locator(`.mb-item[data-key="${choiceItem.key}"]`);
-        assert.equal(await card.locator('.mb-choice.is-answer').count(), 1);
+        assert.equal(await card.locator('.mb-choice.is-answer').count(), 0);
         assert.equal(await card.locator('.mb-choice.is-picked').count(), 1);
+        await card.locator('.mb-reveal').click();
+        await page.waitForFunction(() => !document.getElementById('main').inert);
+        assert.equal(await card.locator('.mb-choice.is-answer').count(), 1);
+        assert.match(await card.locator('.mb-result').innerText(), /답: /);
+        assert.equal(await card.locator('.mb-choice').first().isDisabled(), true);
+        await page.reload();
+        await page.locator('.mb-item').first().waitFor();
+        assert.match(await card.locator('.mb-result').innerText(), /답: /, '직접 확인한 풀이의 상태도 복원한다');
       }
       for (const item of list.filter((it) => it !== choiceItem)) await solve(page, item);
       await page.locator('#finish button', { hasText: '다음 회차' }).click();
@@ -165,6 +200,24 @@ const UNIT = '1-1-1';
     else { const boxes = guestCard.locator('.mb-field input'); for (let i = 0; i < guestItems[0].answers.length; i += 1) await boxes.nth(i).fill(String(guestItems[0].answers[i])); await guestCard.locator('.mb-primary').click(); }
     await guestCard.locator('.mb-result:not([hidden])').waitFor();
 
+    // 고1 2학기 작업 파일을 불러오거나 수정하지 않고, 제외 경계만 가상 데이터로 확인한다.
+    const excluded = await open(0);
+    await excluded.page.goto(h.base + URL_PATH);
+    await excluded.page.locator('.mb-group').first().waitFor();
+    await excluded.page.evaluate((id) => { const unit = window.MathBank.findUnit(id); unit.grade = 10; unit.semester = 2; }, UNIT);
+    await excluded.page.locator('.mb-group').first().locator('.mb-level').first().click();
+    const excludedCard = excluded.page.locator(`.mb-item[data-key="${items[0].key}"]`);
+    if (items[0].choice !== null) await excludedCard.locator('.mb-choice').nth((items[0].choice + 1) % await excludedCard.locator('.mb-choice').count()).click();
+    else {
+      for (let i = 0; i < items[0].answers.length; i += 1) await excludedCard.locator('.mb-field input').nth(i).fill(String(items[0].answers[i] + (i === 0 ? 1 : 0)));
+      await excludedCard.locator('.mb-primary').click();
+    }
+    await excluded.page.waitForFunction(() => !document.getElementById('main').inert);
+    assert.match(await excludedCard.locator('.mb-result').innerText(), /답: /, '고1 2학기는 기존 오답 표시를 유지한다');
+    assert.equal(await excludedCard.locator('.mb-hint').count(), 0);
+    assert.equal(await excludedCard.locator('input, .mb-choice').first().isDisabled(), true);
+    await excluded.context.close();
+
     // ── 모든 단원의 모든 회차를 열어 본다: 휴대폰 너비에서 가로로 넘치지 않고, 그림이 제 크기로 그려진다 ──
     // 단원 파일은 고른 학기의 것만 불러오므로, 단원 번호는 index.html 의 목록에서 얻는다.
     const unitIds = await page.evaluate(() => window.MathBank.lazy.ids());
@@ -172,15 +225,15 @@ const UNIT = '1-1-1';
       const view = await open(0, viewport);
       await view.page.goto(h.base + URL_PATH);
       await view.page.locator('.mb-group').first().waitFor();
-      for (const unitId of unitIds) {
+      for (const unitId of FEEDBACK_ONLY ? [UNIT, '7-2-4'] : unitIds) {
         const termOf = unitId.split('-').slice(0, 2).join('-');
         await view.page.selectOption('#termSelect', termOf);
         await view.page.selectOption('#unitSelect', unitId);
         await view.page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group').length > 0, unitId);
         const groups = await outline(view.page, unitId);
         assert.equal(await view.page.locator('.mb-group').count(), groups.length, unitId + ' 묶음 수');
-        for (let gi = 0; gi < groups.length; gi += 1) {
-          for (let li = 0; li < groups[gi].rounds.length; li += 1) {
+        for (let gi = 0; gi < (FEEDBACK_ONLY ? 1 : groups.length); gi += 1) {
+          for (let li = 0; li < (FEEDBACK_ONLY ? 1 : groups[gi].rounds.length); li += 1) {
             await view.page.locator('.mb-group').nth(gi).locator('.mb-level').nth(li).click();
             await view.page.locator('.mb-item').first().waitFor();
             const report = await view.page.evaluate(() => {
@@ -190,6 +243,20 @@ const UNIT = '1-1-1';
             });
             const tag = `${unitId} ${groups[gi].id} ${groups[gi].rounds[li].level} ${groups[gi].rounds[li].no}회 (${name})`;
             assert.deepEqual(report, { page: 0, wide: [], flat: [] }, '넘치거나 찌그러진 그림: ' + tag);
+            if (FEEDBACK_ONLY) {
+              const wrong = await view.page.evaluate(({ unitId, group, level, no }) => {
+                const B = window.MathBank, item = B.makeRound(B.findUnit(unitId), group, level, no)[0];
+                return { choice: item.choice && (item.choice.answer + 1) % item.choice.options.length, inputs: item.inputs && item.inputs.map((input, i) => input.answer + (i === 0 ? 1 : 0)) };
+              }, { unitId, group: groups[gi].id, level: groups[gi].rounds[li].level, no: groups[gi].rounds[li].no });
+              const hintCard = view.page.locator('.mb-item').first();
+              if (wrong.choice !== undefined && wrong.choice !== null) await hintCard.locator('.mb-choice').nth(wrong.choice).click();
+              else {
+                for (let i = 0; i < wrong.inputs.length; i += 1) await hintCard.locator('.mb-field input').nth(i).fill(String(wrong.inputs[i]));
+                await hintCard.locator('.mb-primary').click();
+              }
+              await hintCard.locator('.mb-hint').waitFor();
+              assert.equal(await view.page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth), false, '힌트 표시 뒤에도 화면이 넘치지 않는다');
+            }
             if (SHOTS) await shot(view.page, `${name}-${unitId}-${gi + 1}${groups[gi].id}-${groups[gi].rounds[li].level}${groups[gi].rounds[li].no}`);
             await view.page.evaluate(() => window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
             await view.page.locator('.mb-group').first().waitFor();

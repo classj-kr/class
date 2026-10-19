@@ -39,7 +39,7 @@
     --wheel-glow: rgba(252, 211, 77, 0.38);
     --wheel-border: rgba(252, 211, 77, 0.45);
 
-    font-family: system-ui, -apple-system, "Pretendard", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+    font-family: system-ui, -apple-system, "Pretendard", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -132,40 +132,17 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
 .screen { display: grid; gap: 18px; }
 
-/* ==========================================================
-   Section Badges & Grid System
-   ========================================================== */
+body.menu-open .shell {
+    min-height: calc(100svh - 16px);
+    display: grid;
+    align-content: center;
+    padding-block: 72px;
+    width: min(800px, calc(100% - 48px));
+}
+
+#menuScreen { width: 100%; }
+
 .field { display: grid; gap: 12px; }
-
-.section-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 14px 5px 10px;
-    border-radius: 999px;
-    background: rgba(16, 24, 36, 0.72);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-    width: fit-content;
-}
-
-.badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 8px var(--gold);
-}
-
-.badge-text {
-    color: #e2e8f0;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
 
 .field-label {
     color: var(--muted);
@@ -182,24 +159,18 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
 #courseList {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
-}
-
-#toolList {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 320px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 
 @media (max-width: 840px) {
     #exerciseList { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    #courseList { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    #toolList { max-width: 100%; }
 }
 
-@media (max-width: 460px) {
-    #exerciseList, #courseList { gap: 10px; }
+@media (max-width: 560px) {
+    body.menu-open .shell { width: calc(100% - 32px); }
+    #courseList { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    #exerciseList { gap: 10px; }
 }
 
 /* ==========================================================
@@ -212,8 +183,8 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     align-items: center;
     text-align: center;
     justify-content: center;
-    min-height: 150px;
-    padding: 18px 12px 16px;
+    min-height: 164px;
+    padding: 24px 16px;
     border-radius: 18px;
     background: rgba(16, 24, 38, 0.65);
     backdrop-filter: blur(16px);
@@ -270,22 +241,11 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     width: 100%;
 }
 
-.genre-en {
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    line-height: 1.15;
-    margin-bottom: 4px;
-    opacity: 0.85;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-}
-
 .genre-ko {
-    font: 700 1.25rem Georgia, "Noto Serif KR", serif;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 750;
+    line-height: 1.4;
     color: #ffffff;
     letter-spacing: -0.01em;
     margin: 0;
@@ -303,7 +263,6 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     background: radial-gradient(circle, rgba(245, 201, 112, 0.25) 0%, rgba(245, 201, 112, 0.04) 75%);
     border: 1px solid var(--interval-border);
 }
-.card-interval .genre-en { color: #fde68a; }
 
 .card-chord {
     --genre-accent: var(--chord-accent);
@@ -314,7 +273,6 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     background: radial-gradient(circle, rgba(244, 114, 182, 0.25) 0%, rgba(244, 114, 182, 0.04) 75%);
     border: 1px solid var(--chord-border);
 }
-.card-chord .genre-en { color: #fbcfe8; }
 
 .card-scale {
     --genre-accent: var(--scale-accent);
@@ -325,7 +283,6 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     background: radial-gradient(circle, rgba(94, 234, 212, 0.25) 0%, rgba(94, 234, 212, 0.04) 75%);
     border: 1px solid var(--scale-border);
 }
-.card-scale .genre-en { color: #99f6e4; }
 
 .card-position {
     --genre-accent: var(--position-accent);
@@ -336,7 +293,6 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     background: radial-gradient(circle, rgba(192, 132, 252, 0.25) 0%, rgba(192, 132, 252, 0.04) 75%);
     border: 1px solid var(--position-border);
 }
-.card-position .genre-en { color: #e9d5ff; }
 
 .card-progression {
     --genre-accent: var(--progression-accent);
@@ -347,7 +303,6 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     background: radial-gradient(circle, rgba(96, 165, 250, 0.25) 0%, rgba(96, 165, 250, 0.04) 75%);
     border: 1px solid var(--progression-border);
 }
-.card-progression .genre-en { color: #bfdbfe; }
 
 .card-rhythm {
     --genre-accent: var(--rhythm-accent);
@@ -358,7 +313,6 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     background: radial-gradient(circle, rgba(251, 146, 60, 0.25) 0%, rgba(251, 146, 60, 0.04) 75%);
     border: 1px solid var(--rhythm-border);
 }
-.card-rhythm .genre-en { color: #fed7aa; }
 
 .card-wheel, .card-gold {
     --genre-accent: var(--wheel-accent);
@@ -369,7 +323,6 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     background: radial-gradient(circle, rgba(252, 211, 77, 0.25) 0%, rgba(252, 211, 77, 0.04) 75%);
     border: 1px solid var(--wheel-border);
 }
-.card-wheel .genre-en, .card-gold .genre-en { color: #fef08a; }
 
 /* Card Hover Effects */
 .genre-card:hover,
@@ -1109,9 +1062,8 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     font-weight: 800;
     text-anchor: middle;
 }
-.wheel-key-sig .sheet-staff line { stroke: rgba(255, 255, 255, 0.4); stroke-width: 1.5; }
-.wheel-key-sig .sheet-clef { fill: #f8fafc; }
-.wheel-key-sig .sheet-ink { fill: #38bdf8; stroke: #38bdf8; }
+.wheel-signature-mark { fill: #7dd3fc; }
+.wheel-signature-count { fill: #cbd5e1; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
 
 .wheel-controls { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; }
 .wheel-chords { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; }
@@ -1141,28 +1093,74 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .wheel-chord span { font-size: 17px; font-weight: 850; color: #f8fafc; }
 .wheel-chord small { color: var(--muted); font-size: 13px; font-weight: 700; }
 
-@media (min-width: 960px) {
+.wheel-lesson-panel {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(12, 20, 33, .94);
+}
+.wheel-lesson-panel .lesson-body { padding: 0; background: none; border: 0; backdrop-filter: none; }
+.wheel-lesson-panel .lesson-body p { font-size: 15px; }
+.wheel-lesson-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wheel-lesson-actions button { min-width: 0; }
+
+@media (min-width: 700px) {
     #wheelScreen {
-        grid-template-columns: minmax(0, 1fr) 340px;
-        grid-template-rows: auto auto auto auto;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
         align-content: start;
-        column-gap: 24px;
+        align-items: start;
+        column-gap: 20px;
         row-gap: 14px;
     }
     #wheelScreen .screen-header { grid-column: 1 / -1; }
     .wheel-board {
-        grid-column: 1;
-        grid-row: 2 / span 3;
         justify-self: center;
-        height: min(80vh, 680px);
+        width: 100%;
+        max-width: min(540px, calc(100svh - 120px));
         aspect-ratio: 1;
     }
-    .wheel { width: auto; max-width: 100%; height: 100%; }
-    .wheel-controls { grid-column: 2; grid-row: 2; }
-    #wheelScreen > .field { grid-column: 2; grid-row: 3; }
-    #wheelCadence { grid-column: 2; grid-row: 4; align-self: start; }
-    #wheelKeys { grid-column: 2; grid-row: 5; }
-    .wheel-chords { grid-template-columns: 1fr 1fr; }
+    .wheel { width: 100%; max-width: 100%; height: auto; }
+    .wheel-chords { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* 5도권 문제는 원판을 힌트로 열기 전까지 답을 드러내지 않는다. */
+.wheel-question-panel {
+    display: grid;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(12, 20, 33, .94);
+}
+.wheel-question { margin: 12px 0; font-size: clamp(20px, 3vw, 25px); line-height: 1.6; word-break: keep-all; }
+.wheel-question:focus { outline: none; }
+.wheel-question-panel .choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.wheel-question-panel .choice { min-height: 60px; min-width: 0; }
+.wheel-feedback { margin: 0; min-height: 48px; line-height: 1.7; word-break: keep-all; }
+.wheel-feedback.right { color: var(--right); }
+.wheel-feedback.wrong { color: var(--wrong); }
+.wheel-hint { border-top: 1px solid var(--line); padding-top: 10px; }
+.wheel-hint summary { display: list-item; padding: 12px 4px; min-height: 44px; cursor: pointer; color: var(--gold); font-weight: 700; }
+.wheel-hint .wheel-board { max-width: 420px; margin: 12px auto 0; }
+.wheel-practice-score { margin: 10px 0 0; font-size: 28px; font-weight: 750; }
+.wheel-review { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.wheel-review li { display: grid; gap: 6px; padding-block: 12px; border-top: 1px solid var(--line); line-height: 1.6; }
+.wheel-review span { color: var(--muted); }
+.row-act.is-practice { color: var(--gold); font-weight: 800; }
+@media (max-width: 560px) {
+    .wheel-question-panel { padding: 18px; gap: 14px; }
+    .wheel-controls { gap: 6px; }
+    .wheel-controls button { padding-inline: 8px; }
+    .genre-card { min-height: 148px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .genre-card, .card-icon-wrap, .card-glow { transition: none; }
+    .genre-card:hover, .genre-card:focus-visible { transform: none; }
 }
 
 /* ==========================================================

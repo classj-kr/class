@@ -69,7 +69,16 @@ const MINUS = '−';
     };
     const done = async (card, right) => {
       await card.locator('.mb-result:not([hidden])').waitFor({ timeout: 10000 });
+      await page.waitForFunction(() => !document.getElementById('main').inert);
       assert.equal(await card.evaluate((el) => el.classList.contains('is-right')), right, (right ? '맞아야 한다: ' : '틀려야 한다: ') + await card.locator('.mb-text').innerText());
+      return card.locator('.mb-result').innerText();
+    };
+    const reveal = async (card) => {
+      assert.match(await done(card, false), /힌트/);
+      assert.doesNotMatch(await card.locator('.mb-result').innerText(), /답: /);
+      if (await card.locator('.mb-sign').count()) assert.equal(await card.locator('.mb-sign').first().isEnabled(), true, '힌트를 본 뒤에도 부호를 수정할 수 있다');
+      await card.locator('.mb-reveal').click();
+      await page.waitForFunction(() => !document.getElementById('main').inert);
       return card.locator('.mb-result').innerText();
     };
     let shots = 0;
@@ -95,12 +104,12 @@ const MINUS = '−';
     await snap('minus-right');
     await back();
 
-    // ② 음의 정수: 부호를 바꾸지 않으면 틀리고, 답 줄은 빼기표(−)로 적는다.
+    // ② 음의 정수: 오답에는 힌트를 먼저 보이고, 풀이를 요청하면 답 줄에 빼기표(−)를 적는다.
     item = take('답이 음의 정수', (it) => single(it) && it.inputs[0].signed && !it.inputs[0].decimal && it.inputs[0].answer < 0);
     card = await open(item);
     await card.locator('.mb-field input').fill(String(-item.inputs[0].answer));
     await card.locator('.mb-primary').click();
-    assert.ok((await done(card, false)).includes('답: ' + MINUS + (-item.inputs[0].answer)), '답 줄에 −가 붙는다');
+    assert.ok((await reveal(card)).includes('답: ' + MINUS + (-item.inputs[0].answer)), '답 줄에 −가 붙는다');
     await back();
 
     // ③ 자판으로 -를 직접 적어도 받고, 단추가 그 부호로 바뀐다. 음의 소수.
@@ -126,6 +135,9 @@ const MINUS = '−';
     await card.locator('.mb-field input').fill(String(item.inputs[0].answer));
     await card.locator('.mb-primary').click();
     await done(card, false);
+    await card.locator('.mb-sign').click();
+    await card.locator('.mb-primary').click();
+    assert.match(await done(card, true), /오답 기록은 유지/, '부호를 고쳐 맞혀도 첫 오답은 유지한다');
     await back();
 
     // ⑤ 음의 분수: 부호 단추는 분수 칸의 왼쪽에 하나만 있다. −로 바꾸고 분자·분모를 적으면 맞다.
@@ -151,7 +163,7 @@ const MINUS = '−';
     parts = fractionOf(item);
     for (let i = 0; i < 2; i += 1) await card.locator('.mb-field input').nth(i).fill(parts[i]);
     await card.locator('.mb-primary').click();
-    assert.ok((await done(card, false)).includes('답: ' + MINUS + parts.join('/')), '분수 답 줄에 −가 붙는다');
+    assert.ok((await reveal(card)).includes('답: ' + MINUS + parts.join('/')), '분수 답 줄에 −가 붙는다');
     await snap('fraction-wrong');
     await back();
 
@@ -163,6 +175,9 @@ const MINUS = '−';
     for (let i = 0; i < 2; i += 1) await card.locator('.mb-field input').nth(i).fill(parts[i]);
     await card.locator('.mb-primary').click();
     await done(card, false);
+    await card.locator('.mb-sign').click();
+    await card.locator('.mb-primary').click();
+    assert.match(await done(card, true), /오답 기록은 유지/, '분수의 부호를 고친 뒤에도 첫 오답은 유지한다');
     await back();
 
     // ⑧ 칸이 여럿인 답: 칸마다 부호 단추가 있고, 한 칸의 부호만 틀려도 틀리다.
@@ -183,6 +198,9 @@ const MINUS = '−';
     await card.locator('.mb-primary').click();
     await done(card, false);
     await snap('multi-wrong');
+    for (let i = 0; i < item.inputs.length; i += 1) if (item.inputs[i].answer < 0) await card.locator('.mb-sign').nth(i).click();
+    await card.locator('.mb-primary').click();
+    assert.match(await done(card, true), /오답 기록은 유지/);
     await back();
 
     // ⑨ 고르기의 답에 거듭제곱이 있으면 답 줄에서도 지수가 위첨자로 보인다.
@@ -190,6 +208,7 @@ const MINUS = '−';
     card = await open(item);
     await card.locator('.mb-choice').nth((item.choice.answer + 1) % item.choice.count).click();
     await done(card, false);
+    await reveal(card);
     assert.match(await card.locator('.mb-result strong').innerHTML(), /<sup>/, '답 줄의 지수는 위첨자');
     await snap('power-wrong');
     await back();
@@ -199,7 +218,7 @@ const MINUS = '−';
     card = await open(item);
     await card.locator('.mb-field input').fill(String(Math.abs(item.inputs[0].answer) + 1));
     await card.locator('.mb-primary').click();
-    assert.match(await done(card, false), /답: [−]?\d+[ \u00A0]°C/);   // 수와 단위 사이는 줄이 갈리지 않는 빈칸이다
+    assert.match(await reveal(card), /답: [−]?\d+[ \u00A0]°C/);   // 수와 단위 사이는 줄이 갈리지 않는 빈칸이다
 
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ ok: true }));
