@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const navigation = fs.readFileSync(path.join(root, "assets/site-back-navigation.js"), "utf8");
 const humanBodyHub = fs.readFileSync(path.join(root, "learning/inquiry/human-body/index.html"), "utf8");
-const expression = navigation.match(/const LEGACY_LABEL = (\/.+\/i);/)?.[1];
+const expression = navigation.match(/const LEGACY_LABEL = (\/.+\/[a-z]*);/)?.[1];
 const legacyLabel = Function(`"use strict"; return (${expression})`)();
 // The observer must watch at least these attributes; the list may grow.
 const observedAttributes = JSON.parse(navigation.match(/attributeFilter: (\[[^\]]*\])/)?.[1] || "[]");
@@ -23,7 +23,10 @@ test("section-specific legacy navigation labels are recognized", () => {
     "← 학생 화면",
     "RETURN TO LOBBY",
     "로비로 돌아가기",
-    "게임 대기실로 돌아가기"
+    "게임 대기실로 돌아가기",
+    "🏠 메인 화면으로",
+    "🏡 홈",
+    "🌌 첫 화면으로"
   ]) {
     assert.equal(legacyLabel.test(label), true, `legacy control not recognized: ${label}`);
   }
