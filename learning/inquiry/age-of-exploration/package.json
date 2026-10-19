@@ -13,7 +13,7 @@
     "test": "npm run check && node tests/run-units.js",
     "test:units": "node tests/run-units.js",
     "test:movement": "node tests/route-scheduling.js && node tests/classroom-spawn-connectivity.cjs && node tests/narrow-strait-movement.js && node tests/movement-load.cjs && node tests/interaction-recovery-smoke.js",
-    "test:classroom:browser": "node tests/movement-input-browser.cjs && node tests/voyage-classroom-browser.cjs",
+    "test:classroom:browser": "node tests/movement-input-browser.cjs && node tests/voyage-classroom-browser.cjs && node tests/voyage-classroom-browser.cjs --victoria",
     "test:terrain": "node tests/terrain-unit.js",
     "test:v23": "node tests/v23-simplified-ui-unit.js",
     "test:v23:current": "node tests/v23-current-balance-unit.js",

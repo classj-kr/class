@@ -37,6 +37,7 @@ if (process.argv.includes('--fixture')) {
   });
   (async () => {
     try {
+      const victoriaOnly=process.argv.includes('--victoria');
       const port = await new Promise((resolve, reject) => {
         const timer = setTimeout(() => reject(Error(logs || 'server timeout')), 15000);
         server.on('message', m => { if (m.port) { clearTimeout(timer); resolve(m.port); } });
@@ -50,11 +51,11 @@ if (process.argv.includes('--fixture')) {
       await teacher.waitForFunction(() => typeof hostRoom !== 'undefined' && /^\d{4}$/.test(hostRoom));
       const room = await teacher.evaluate(() => hostRoom);
       await teacher.waitForFunction(() => catalog.places.length > 0);
-      const mission = await teacher.evaluate(async () => {
+      const mission = await teacher.evaluate(async victoriaOnly => {
         const starts=catalog.places.filter(p=>p.isOriginalCity&&p.canEnterFromSea&&p.id!=='lisbon').slice(0,4).map(p=>p.id);
-        const r = await ack('teacherPublishArrivalRace', { startPlaceIds: starts, studyTargets: ['city:lisbon','discovery:batur-caldera'] });
+        const r = await ack('teacherPublishArrivalRace', { startPlaceIds: starts, studyTargets: victoriaOnly?['discovery:lake-victoria']:['city:lisbon','discovery:batur-caldera'] });
         if (!r.ok) throw Error(r.error); return r.mission;
-      });
+      },victoriaOnly);
       await student.goto(base + '/?room=' + room + '&name=' + encodeURIComponent('검증학생'));
       await student.waitForFunction(() => typeof joined !== 'undefined' && joined, null, { timeout: 60000 });
       await student.locator('.missionChoiceCard').first().click();
@@ -84,9 +85,13 @@ if (process.argv.includes('--fixture')) {
       assert.ok(movement.every(s=>s.stableSubject),'snapshot updates must preserve the visual follower, not snap it every 100 ms');
       console.log(JSON.stringify({coastalSamples:movement.length,maxCorrection:Math.max(...movement.map(s=>s.correction)),maxAuthoritative:Math.max(...movement.map(s=>s.authoritative))}));
       for (const target of mission.studyTargets) {
-        await place(target.kind === 'city' || target.key === 'city:lisbon' ? {city:'lisbon'} : {lat:-8.24,lon:115.38});
+        await place(target.key === 'city:lisbon' ? {city:'lisbon'} : target.key==='discovery:lake-victoria'?{lat:.216,lon:33.048}:{lat:-8.24,lon:115.38});
         await student.waitForTimeout(250);
-        await student.evaluate(key => VoyageStudyUI.request(key), target.key);
+        if(victoriaOnly){
+          await student.waitForFunction(()=>discoveryInteraction?.id==='lake-victoria'&&discoveryInteraction.canUse,null,{timeout:5000});
+          await student.locator('#discoveryActionBtn').click();
+          assert.equal(await student.locator('#discoveryView').evaluate(el=>el.classList.contains('show')),false,'assigned discovery must open its mission, not the unrelated exploration popup');
+        }else await student.evaluate(key => VoyageStudyUI.request(key), target.key);
         await student.locator('#placeStudySubmit').filter({hasText:'문제 시작'}).click();
         for (let i = 0; i < 3; i++) {
           const answer = target.questions[i].answer;
@@ -98,7 +103,7 @@ if (process.argv.includes('--fixture')) {
       }
       await student.waitForFunction(() => missionProgress?.status === 'completed');
       await teacher.waitForFunction(() => document.querySelector('#rankList').textContent.includes('검증학생'));
-      assert.match(await teacher.locator('#rankList').innerText(), /2\/2 완료/);
+      assert.ok((await teacher.locator('#rankList').innerText()).includes(`${mission.studyTargets.length}/${mission.studyTargets.length} 완료`));
       await place({city:'lisbon'});
       await student.waitForFunction(()=>mode==='city'&&!serverSelf.transition);
       await student.locator('#departCityBtn').click();
@@ -126,9 +131,9 @@ if (process.argv.includes('--fixture')) {
       const Store=require('../lib/classroom-store');
       const restored=new Store({dataDir:runtime}).studentProgress(room,'검증학생',mission.id,false);
       assert.equal(restored?.status,'completed');assert.equal(restored.finishRank,1);
-      assert.equal(Object.values(restored.placeStudy.places).filter(p=>p.phase==='completed').length,2);
+      assert.equal(Object.values(restored.placeStudy.places).filter(p=>p.phase==='completed').length,mission.studyTargets.length);
       assert.deepEqual(errors, []);
-      console.log(JSON.stringify({ok:true,browser:'Edge',portBoarding:true,landCityReturn:true,completionVisible:true,teacherRank:true,reloadKeepsCompletion:true,persistedCompletion:true}));
+      console.log(JSON.stringify({ok:true,browser:'Edge',targets:mission.studyTargets.map(t=>t.key),portBoarding:true,landCityReturn:true,completionVisible:true,teacherRank:true,reloadKeepsCompletion:true,persistedCompletion:true}));
     } finally { await browser?.close(); server.kill(); }
   })().catch(e => { console.error(e); console.error(logs); process.exitCode = 1; });
 }
