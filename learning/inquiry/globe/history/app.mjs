@@ -1,8 +1,8 @@
 import * as maplibregl from '../vendor/maplibre-gl-6.10.0/maplibre-gl.mjs';
-import {ERAS,SCENES,FIGURES} from './content.mjs?v=20261019-photos';
+import {ERAS,SCENES,FIGURES} from './content.mjs?v=20261019-materials';
 import {figurePoint,figureCorners,createAttempt,answerAttempt,revealAttempt,shouldShowSolution,recordAttempt,shuffle,escapeHTML as esc} from './session.mjs?v=20261019-3';
 import {placeLabels} from './labels.mjs?v=20261019-3';
-import {PHOTOS,photosForScene,photosForPlace,photoPresentation} from './photo-learning.mjs?v=20261019-photos';
+import {PHOTOS,photosForScene,photosForPlace,photoPresentation} from './photo-learning.mjs?v=20261019-materials';
 
 const $=id=>document.getElementById(id), BASE=new URL('.',import.meta.url);
 let current=null,figure=null,markers=[],ready=false,quiz=null,progress={},store=null,revision=0,resizeTimer,quizRevision=0,lastDraw=null,loadFailed=false;
@@ -70,7 +70,7 @@ function drawFigure(id,places,question=false){
   else button.onclick=()=>{
    markers.forEach(m=>m.getElement().querySelector('button').classList.remove('active'));button.classList.add('active');
    const photos=photosForPlace(current.id,place.point);
-   $('placeDetail').innerHTML=`<strong>${esc(place.label)}</strong><p>${esc(place.detail)}</p>${photos.length?`<div class="place-photos">${photos.map(p=>`<button data-photo="${esc(p.id)}" aria-haspopup="dialog">사진 보기 · ${esc(p.title)}</button>`).join('')}</div>`:''}`;
+   $('placeDetail').innerHTML=`<strong>${esc(place.label)}</strong><p>${esc(place.detail)}</p>${photos.length?`<div class="place-photos">${photos.map(p=>`<button data-photo="${esc(p.id)}" aria-haspopup="dialog">${esc(p.kind)} · ${esc(p.title)}</button>`).join('')}</div>`:''}`;
    bindPhotoButtons($('placeDetail'));$('placeDetail').hidden=false;$('sceneCard').hidden=false;$('showCard').hidden=true;layoutLabels();
   };
   const anchor=document.createElement('div');anchor.className='map-anchor'+(place.region?' region-anchor':'');
@@ -80,9 +80,16 @@ function drawFigure(id,places,question=false){
  fit();layoutLabels();map.once('idle',()=>{if(version===revision&&!loadFailed)$('mapStatus').textContent='';});
 }
 function renderLegend(items){$('mapLegend').innerHTML=items.map(([color,label])=>`<span><i style="background:${color}"></i>${esc(label)}</span>`).join('');}
+function materialContent(photo,concealAnswer=false,preview=false,inButton=false){
+ if(photo.type==='document'){
+  const outer=inButton?'span':'div',quote=inButton?'span':'blockquote',paragraph=inButton?'span':'p';
+  return `<${outer} class="source-excerpts reading-sheet${preview?' excerpt-preview':''}">${photo.excerpts.map((part,i)=>`<${quote} class="source-quote"><span class="excerpt-number">자료 ${i+1}</span><${paragraph} class="excerpt-text">${esc(part.text)}</${paragraph}>${concealAnswer||inButton?'':`<cite>${esc(part.attribution)}</cite>`}</${quote}>`).join('')}</${outer}>`;
+ }
+ return `<img src="${esc(new URL(photo.src,BASE).href)}" width="${photo.width}" height="${photo.height}" alt="${esc(photo.alt)}" loading="lazy" decoding="async">`;
+}
 function photoPreview(photo,question=false,concealAnswer=question){
  const view=photoPresentation(photo,concealAnswer);
- return `<figure class="photo-preview${question?' question-photo':''}"><button data-photo="${esc(photo.id)}" aria-haspopup="dialog" aria-label="${esc(view.title)} 크게 보기"><img src="${esc(new URL(photo.src,BASE).href)}" width="${photo.width}" height="${photo.height}" alt="${esc(view.alt)}" loading="lazy" decoding="async"><span>${esc(view.title)} <small>크게 보기 ↗</small></span></button></figure>`;
+ return `<figure class="photo-preview${question?' question-photo':''}"><button data-photo="${esc(photo.id)}" aria-haspopup="dialog" aria-label="${esc(view.title)} 크게 보기">${materialContent(photo,concealAnswer,!question,true)}<span class="material-caption"><span>${question?'':`<small class="material-kind">${esc(photo.kind)}</small>`}${esc(view.title)}</span><small>크게 보기 ↗</small></span></button></figure>`;
 }
 function bindPhotoButtons(root,question=false){
  root.querySelectorAll('[data-photo]').forEach(button=>button.onclick=()=>showPhoto(button.dataset.photo,question));
@@ -91,13 +98,15 @@ function showPhoto(id,question=false){
  const photo=PHOTOS.find(p=>p.id===id);if(!photo)return;
  const view=photoPresentation(photo,question);
  $('photoTitle').textContent=view.title;
- $('photoBody').innerHTML=`<div class="photo-view${question?' photo-question-view':''}"><img src="${esc(new URL(photo.src,BASE).href)}" width="${photo.width}" height="${photo.height}" alt="${esc(view.alt)}">${question?'':`<div class="photo-reading reading-sheet"><p class="source-date">${esc(view.period)}</p><h3>사진에서 살펴보기</h3><p>${esc(view.observe)}</p><h3>지도와 연결하기</h3><p>${esc(view.connection)}</p><p class="photo-credit">${esc(view.credit)}</p></div>`}</div>`;
+ const related=question?[]:(photo.compareWith||[]).map(id=>PHOTOS.find(p=>p.id===id)).filter(Boolean);
+ $('photoBody').innerHTML=`<div class="photo-view${question?' photo-question-view':''}">${materialContent(photo,question)}${question?'':`<div class="photo-reading reading-sheet"><p class="source-date">${esc(photo.kind)} · ${esc(view.period)}</p><h3>자료에서 살펴보기</h3><p>${esc(view.observe)}</p><h3>지도와 연결하기</h3><p>${esc(view.connection)}</p>${related.length?`<div class="related-materials"><h3>함께 살펴보기</h3>${related.map(p=>`<button data-photo="${esc(p.id)}">${esc(p.title)}</button>`).join('')}</div>`:''}<p class="photo-credit">${esc(view.credit)}</p></div>`}</div>`;
+ bindPhotoButtons($('photoBody'));
  $('photoDialog').showModal();$('photoDialog').scrollTop=0;
 }
 function showExplanation(){
  $('explanationTitle').textContent=current.title;
  const photos=photosForScene(current.id);
- $('explanationBody').innerHTML=`<p class="source-date">${esc(current.date)}</p>${photos.length?`<section><h3>사진·유물로 살펴보기</h3><div class="photo-gallery">${photos.map(p=>photoPreview(p)).join('')}</div></section>`:''}`+current.explanation.map(s=>`<section><h3>${esc(s.heading)}</h3>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${s.table?`<table><thead><tr>${s.table[0].map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${s.table.slice(1).map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>`:''}</section>`).join('');
+ $('explanationBody').innerHTML=`<p class="source-date">${esc(current.date)}</p>${photos.length?`<section><h3>지도와 함께 볼 자료</h3><div class="photo-gallery">${photos.map(p=>photoPreview(p)).join('')}</div></section>`:''}`+current.explanation.map(s=>`<section><h3>${esc(s.heading)}</h3>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${s.table?`<table><thead><tr>${s.table[0].map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${s.table.slice(1).map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>`:''}</section>`).join('');
  bindPhotoButtons($('explanationBody'));$('explanationDialog').showModal();$('explanationDialog').scrollTop=0;
 }
 function setQuizUI(active){

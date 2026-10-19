@@ -1,0 +1,948 @@
+{
+  "checkedAt": "2026-10-19T02:16:16.175Z",
+  "environment": "Production clean-URL middleware locally, browser UI; no bypass of production authentication",
+  "desktop": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "scenesChecked": 36,
+    "uniqueMaterialsOpened": 52,
+    "results": [
+      {
+        "scene": "civilizations",
+        "materials": [
+          "ziggurat",
+          "hammurabi",
+          "oracle-bone",
+          "book-of-dead",
+          "mohenjo-daro"
+        ],
+        "opened": [
+          {
+            "id": "ziggurat",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 824
+              }
+            ],
+            "overflow": false,
+            "title": "우르의 지구라트"
+          },
+          {
+            "id": "hammurabi",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 278
+              }
+            ],
+            "overflow": false,
+            "title": "함무라비 법전비"
+          },
+          {
+            "id": "oracle-bone",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 266
+              }
+            ],
+            "overflow": false,
+            "title": "갑골문"
+          },
+          {
+            "id": "book-of-dead",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1355
+              }
+            ],
+            "overflow": false,
+            "title": "사자의 서"
+          },
+          {
+            "id": "mohenjo-daro",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1600
+              }
+            ],
+            "overflow": false,
+            "title": "모헨조다로 도시 유적"
+          }
+        ]
+      },
+      {
+        "scene": "greece",
+        "materials": [
+          "parthenon"
+        ],
+        "opened": [
+          {
+            "id": "parthenon",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 875
+              }
+            ],
+            "overflow": false,
+            "title": "파르테논 신전"
+          }
+        ]
+      },
+      {
+        "scene": "persia",
+        "materials": [
+          "persepolis"
+        ],
+        "opened": [
+          {
+            "id": "persepolis",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1600
+              }
+            ],
+            "overflow": false,
+            "title": "페르세폴리스 왕궁 유적"
+          }
+        ]
+      },
+      {
+        "scene": "alexander",
+        "materials": [
+          "gandhara"
+        ],
+        "opened": [
+          {
+            "id": "gandhara",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 322
+              }
+            ],
+            "overflow": false,
+            "title": "간다라 불상"
+          }
+        ]
+      },
+      {
+        "scene": "rome",
+        "materials": [
+          "appian-way",
+          "roman-aqueduct",
+          "colosseum"
+        ],
+        "opened": [
+          {
+            "id": "appian-way",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 556
+              }
+            ],
+            "overflow": false,
+            "title": "아피우스 가도"
+          },
+          {
+            "id": "roman-aqueduct",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1214
+              }
+            ],
+            "overflow": false,
+            "title": "로마 시대의 수도교"
+          },
+          {
+            "id": "colosseum",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1079
+              }
+            ],
+            "overflow": false,
+            "title": "콜로세움"
+          }
+        ]
+      },
+      {
+        "scene": "india",
+        "materials": [
+          "sanchi",
+          "gandhara"
+        ],
+        "opened": [
+          {
+            "id": "sanchi",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1600
+              }
+            ],
+            "overflow": false,
+            "title": "산치 대탑"
+          }
+        ]
+      },
+      {
+        "scene": "gupta",
+        "materials": [
+          "ajanta"
+        ],
+        "opened": [
+          {
+            "id": "ajanta",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 483
+              }
+            ],
+            "overflow": false,
+            "title": "아잔타 석굴의 연화수 보살"
+          }
+        ]
+      },
+      {
+        "scene": "han",
+        "materials": [
+          "han-paper"
+        ],
+        "opened": [
+          {
+            "id": "han-paper",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 299
+              }
+            ],
+            "overflow": false,
+            "title": "한대의 종잇조각"
+          }
+        ]
+      },
+      {
+        "scene": "sui-canal",
+        "materials": [
+          "sui-canal-record"
+        ],
+        "opened": [
+          {
+            "id": "sui-canal-record",
+            "excerpts": 2,
+            "images": [],
+            "overflow": false,
+            "title": "『통전』에 기록된 대운하 건설"
+          }
+        ]
+      },
+      {
+        "scene": "tang",
+        "materials": [
+          "tang-camel",
+          "tang-stele"
+        ],
+        "opened": [
+          {
+            "id": "tang-camel",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 800
+              }
+            ],
+            "overflow": false,
+            "title": "낙타와 인물을 표현한 당삼채"
+          },
+          {
+            "id": "tang-stele",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 323
+              }
+            ],
+            "overflow": false,
+            "title": "대진 경교 유행 중국비"
+          }
+        ]
+      },
+      {
+        "scene": "song",
+        "materials": [
+          "qingming-scroll",
+          "movable-type"
+        ],
+        "opened": [
+          {
+            "id": "qingming-scroll",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1600
+              }
+            ],
+            "overflow": false,
+            "title": "청명상하도 일부"
+          },
+          {
+            "id": "movable-type",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 675
+              }
+            ],
+            "overflow": false,
+            "title": "점토 활자판 복원 모형"
+          }
+        ]
+      },
+      {
+        "scene": "islam",
+        "materials": [
+          "cordoba-mosque"
+        ],
+        "opened": [
+          {
+            "id": "cordoba-mosque",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 811
+              }
+            ],
+            "overflow": false,
+            "title": "코르도바의 메스키타"
+          }
+        ]
+      },
+      {
+        "scene": "mongols",
+        "materials": [
+          "yuan-banknote",
+          "paiza"
+        ],
+        "opened": [
+          {
+            "id": "yuan-banknote",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 484
+              }
+            ],
+            "overflow": false,
+            "title": "원대의 교초"
+          },
+          {
+            "id": "paiza",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 263
+              }
+            ],
+            "overflow": false,
+            "title": "역참 통행증(패자)"
+          }
+        ]
+      },
+      {
+        "scene": "frank",
+        "materials": [
+          "carolingian-learning"
+        ],
+        "opened": [
+          {
+            "id": "carolingian-learning",
+            "excerpts": 2,
+            "images": [],
+            "overflow": false,
+            "title": "카롤루스 대제와 아헨의 학문"
+          }
+        ]
+      },
+      {
+        "scene": "byzantine",
+        "materials": [
+          "hagia-sophia",
+          "justinian-mosaic"
+        ],
+        "opened": [
+          {
+            "id": "hagia-sophia",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1600
+              }
+            ],
+            "overflow": false,
+            "title": "성 소피아 성당"
+          },
+          {
+            "id": "justinian-mosaic",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 709
+              }
+            ],
+            "overflow": false,
+            "title": "유스티니아누스 황제의 모자이크"
+          }
+        ]
+      },
+      {
+        "scene": "crusades",
+        "materials": [
+          "crusade-council"
+        ],
+        "opened": [
+          {
+            "id": "crusade-council",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 539
+              }
+            ],
+            "overflow": false,
+            "title": "클레르몽 공의회를 묘사한 그림"
+          }
+        ]
+      },
+      {
+        "scene": "ming",
+        "materials": [
+          "forbidden-city"
+        ],
+        "opened": [
+          {
+            "id": "forbidden-city",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1278
+              }
+            ],
+            "overflow": false,
+            "title": "자금성"
+          }
+        ]
+      },
+      {
+        "scene": "qing",
+        "materials": [
+          "forbidden-city"
+        ],
+        "opened": []
+      },
+      {
+        "scene": "edo",
+        "materials": [
+          "ukiyoe",
+          "dejima"
+        ],
+        "opened": [
+          {
+            "id": "ukiyoe",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 815
+              }
+            ],
+            "overflow": false,
+            "title": "호쿠사이의 우키요에"
+          },
+          {
+            "id": "dejima",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 876
+              }
+            ],
+            "overflow": false,
+            "title": "나가사키와 데지마를 그린 옛 지도"
+          }
+        ]
+      },
+      {
+        "scene": "ottoman",
+        "materials": [
+          "hagia-sophia",
+          "sultan-ahmed"
+        ],
+        "opened": [
+          {
+            "id": "sultan-ahmed",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1600
+              }
+            ],
+            "overflow": false,
+            "title": "술탄 아흐메트 사원"
+          }
+        ]
+      },
+      {
+        "scene": "mughal",
+        "materials": [
+          "taj-mahal"
+        ],
+        "opened": [
+          {
+            "id": "taj-mahal",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1600
+              }
+            ],
+            "overflow": false,
+            "title": "타지마할"
+          }
+        ]
+      },
+      {
+        "scene": "reformation",
+        "materials": [
+          "luther-calvin"
+        ],
+        "opened": [
+          {
+            "id": "luther-calvin",
+            "excerpts": 2,
+            "images": [],
+            "overflow": false,
+            "title": "루터와 칼뱅의 주장 비교"
+          }
+        ]
+      },
+      {
+        "scene": "voyages",
+        "materials": [
+          "caravel"
+        ],
+        "opened": [
+          {
+            "id": "caravel",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 335
+              }
+            ],
+            "overflow": false,
+            "title": "캐러벨선의 모습을 보여 주는 사진"
+          }
+        ]
+      },
+      {
+        "scene": "american",
+        "materials": [
+          "boston-tea"
+        ],
+        "opened": [
+          {
+            "id": "boston-tea",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1333
+              }
+            ],
+            "overflow": false,
+            "title": "보스턴 차 사건을 묘사한 그림"
+          }
+        ]
+      },
+      {
+        "scene": "napoleon",
+        "materials": [
+          "vienna-cartoon",
+          "continental-blockade"
+        ],
+        "opened": [
+          {
+            "id": "vienna-cartoon",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 823
+              }
+            ],
+            "overflow": false,
+            "title": "빈 회의에 관한 풍자화"
+          },
+          {
+            "id": "continental-blockade",
+            "excerpts": 2,
+            "images": [],
+            "overflow": false,
+            "title": "대륙 봉쇄령"
+          }
+        ]
+      },
+      {
+        "scene": "unification",
+        "materials": [
+          "german-proclamation"
+        ],
+        "opened": [
+          {
+            "id": "german-proclamation",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 823
+              }
+            ],
+            "overflow": false,
+            "title": "독일 제국의 선포"
+          }
+        ]
+      },
+      {
+        "scene": "colonial-africa",
+        "materials": [
+          "imperial-burden",
+          "imperial-burden-critique"
+        ],
+        "opened": [
+          {
+            "id": "imperial-burden",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 995
+              }
+            ],
+            "overflow": false,
+            "title": "제국주의를 정당화한 「백인의 짐」"
+          },
+          {
+            "id": "imperial-burden-critique",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 923
+              }
+            ],
+            "overflow": false,
+            "title": "제국주의를 비판한 「백인(?)의 짐」"
+          }
+        ]
+      },
+      {
+        "scene": "china-opening",
+        "materials": [
+          "fuzhou-arsenal",
+          "nanjing-treaty"
+        ],
+        "opened": [
+          {
+            "id": "fuzhou-arsenal",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 556
+              }
+            ],
+            "overflow": false,
+            "title": "푸저우 조선소"
+          },
+          {
+            "id": "nanjing-treaty",
+            "excerpts": 2,
+            "images": [],
+            "overflow": false,
+            "title": "난징 조약의 내용"
+          }
+        ]
+      },
+      {
+        "scene": "xinhai",
+        "materials": [
+          "wuchang-uprising"
+        ],
+        "opened": [
+          {
+            "id": "wuchang-uprising",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 740
+              }
+            ],
+            "overflow": false,
+            "title": "우창 봉기 이후의 신군"
+          }
+        ]
+      },
+      {
+        "scene": "colonial-india",
+        "materials": [
+          "indian-congress"
+        ],
+        "opened": [
+          {
+            "id": "indian-congress",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 887
+              }
+            ],
+            "overflow": false,
+            "title": "인도 국민 회의 창립 대회"
+          }
+        ]
+      },
+      {
+        "scene": "southeast-asia",
+        "materials": [
+          "vietnam-book"
+        ],
+        "opened": [
+          {
+            "id": "vietnam-book",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 271
+              }
+            ],
+            "overflow": false,
+            "title": "판보이쩌우의 『월남망국사』"
+          }
+        ]
+      },
+      {
+        "scene": "ww1",
+        "materials": [
+          "sarajevo-assassination"
+        ],
+        "opened": [
+          {
+            "id": "sarajevo-assassination",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 508
+              }
+            ],
+            "overflow": false,
+            "title": "사라예보 사건을 묘사한 그림"
+          }
+        ]
+      },
+      {
+        "scene": "postwar-europe",
+        "materials": [
+          "fourteen-points"
+        ],
+        "opened": [
+          {
+            "id": "fourteen-points",
+            "excerpts": 2,
+            "images": [],
+            "overflow": false,
+            "title": "평화 원칙과 베르사유 조약"
+          }
+        ]
+      },
+      {
+        "scene": "ww2",
+        "materials": [
+          "pearl-harbor",
+          "normandy-landing"
+        ],
+        "opened": [
+          {
+            "id": "pearl-harbor",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 860
+              }
+            ],
+            "overflow": false,
+            "title": "일본의 진주만 공격"
+          },
+          {
+            "id": "normandy-landing",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 858
+              }
+            ],
+            "overflow": false,
+            "title": "노르망디 상륙 작전"
+          }
+        ]
+      },
+      {
+        "scene": "cold-war",
+        "materials": [
+          "berlin-airlift",
+          "cuban-crisis-cartoon"
+        ],
+        "opened": [
+          {
+            "id": "berlin-airlift",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1202
+              }
+            ],
+            "overflow": false,
+            "title": "베를린 봉쇄와 공수 작전"
+          },
+          {
+            "id": "cuban-crisis-cartoon",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 650
+              }
+            ],
+            "overflow": false,
+            "title": "쿠바 미사일 위기를 풍자한 만평"
+          }
+        ]
+      },
+      {
+        "scene": "europe-1989",
+        "materials": [
+          "brandenburg",
+          "walesa"
+        ],
+        "opened": [
+          {
+            "id": "brandenburg",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1277
+              }
+            ],
+            "overflow": false,
+            "title": "브란덴부르크 문"
+          },
+          {
+            "id": "walesa",
+            "excerpts": 0,
+            "images": [
+              {
+                "complete": true,
+                "width": 1010
+              }
+            ],
+            "overflow": false,
+            "title": "연설하는 바웬사와 시민들"
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "scene": "reformation",
+    "checked": [
+      "Source excerpts readable in question and popup",
+      "Title, source attributions and interpretation hidden before solving",
+      "Wrong attempt shows hint, no correct highlight, Next disabled",
+      "Correct retry reveals source title and attribution",
+      "Learning explanation opens full source details",
+      "No horizontal overflow"
+    ]
+  },
+  "comparison": {
+    "scene": "colonial-africa",
+    "checked": [
+      "Related source switches the current popup",
+      "Escape closes source popup and returns to gallery"
+    ]
+  },
+  "tests": {
+    "passed": 19,
+    "failed": 0
+  },
+  "sourceReview": {
+    "images": 46,
+    "exactExcerptSets": 6,
+    "assessmentReferences": "docs/world-history-material-coverage.json"
+  },
+  "production": {
+    "status": "pending deployment"
+  }
+}

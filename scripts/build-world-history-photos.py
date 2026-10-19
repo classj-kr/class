@@ -1,7 +1,8 @@
-"""Extract verified textbook photo objects without copying surrounding page text."""
+"""Build reviewed textbook images and short source excerpts for map learning."""
 import hashlib
 import io
 import json
+import re
 from pathlib import Path
 
 import pymupdf
@@ -24,6 +25,20 @@ def build():
     report, published = [], []
     for spec in specs:
         page = doc[spec['page'] - 1]
+        if spec.get('type') == 'document':
+            normalize = lambda value: re.sub(r'[\s\x00-\x1f]+', '', value)
+            source_text = normalize(page.get_text())
+            assert spec.get('excerpts'), f"Missing excerpt: {spec['id']}"
+            for excerpt in spec['excerpts']:
+                assert normalize(excerpt['text']) in source_text, f"Excerpt differs from source: {spec['id']}"
+            entry = {k: v for k, v in spec.items() if k != 'page'}
+            entry['credit'] = f"미래엔 세계사(남궁원), {spec['page']}쪽 수록 사료"
+            published.append(entry)
+            report.append(dict(id=spec['id'], type='document', source=source['path'],
+                               pdfPage=spec['page'], sourceSha256=source_hash,
+                               excerpts=spec['excerpts'], exactNormalizedExcerptMatch=True))
+            print(spec['id'], 'source excerpt verified', flush=True)
+            continue
         info = next(i for i in page.get_image_info(xrefs=True) if i['xref'] == spec['xref'])
         extracted = doc.extract_image(spec['xref'])
         pix = pymupdf.Pixmap(doc, spec['xref'])
@@ -49,7 +64,7 @@ def build():
         print(spec['id'], image.size, flush=True)
     doc.close()
     (OUT.parent / 'photos.mjs').write_text(
-        '// Generated from reviewed textbook photo objects by scripts/build-world-history-photos.py.\n'
+        '// Reviewed textbook images and primary-source excerpts. Built by scripts/build-world-history-photos.py.\n'
         'export const PHOTOS = ' + json.dumps(published, ensure_ascii=False, indent=2) + ';\n', encoding='utf-8')
     (ROOT / 'docs/world-history-photo-sources.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
