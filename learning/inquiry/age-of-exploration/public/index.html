@@ -397,7 +397,7 @@ function renderMission(){
         button.append(title,text);bindStartChoiceButton(button,option.id,city.id||option.id,city.name);grid.append(button);
       }
       missionTarget.append(grid);
-      const warning=document.createElement('div');warning.className='choiceWarning';warning.textContent='출발 도시 네 곳 중 하나를 선택하세요. 선택 후에는 바꿀 수 없습니다.';missionTarget.append(warning);
+      const warning=document.createElement('div');warning.className='choiceWarning';warning.textContent='지정된 출발 도시 중 하나를 선택하세요. 선택 후에는 바꿀 수 없습니다.';missionTarget.append(warning);
       missionFeedback.textContent='';missionFeedback.className='';
     }else{
       const selected=missionProgress?.selectedStartPlaceName||'';
@@ -1185,7 +1185,7 @@ function updateHud(){
   }else if(mode==='city'){currentHud.textContent='도시 체류 중';currentHud.className='';const outsideWind=CDS95Wind.windAtPixel(self.x,self.y,liveGameMinutes),outsideArrow=CDS95Wind.directionArrow(outsideWind.x,outsideWind.y);windHud.textContent=`바깥 바람: ${outsideWind.name} ${outsideArrow}`;windHud.className=''}
   else{currentHud.textContent='육상 이동';currentHud.className='';windHud.textContent='육상에서는 바람 영향 없음';windHud.className=''}
   fatigueValue.textContent=`${Math.round(fatigue)}%`;fatigueFill.style.width=`${fatigue}%`;fatigueFill.style.background=fatigue<60?'#9fe1b0':fatigue<80?'#f2cf78':'#ff9f94';
-  missionEl.textContent=classSettings.paused?'게임 일시정지':!activeMission?(roomType==='free'?(classSettings.started?'자유 항해':'방장의 출발 신호 대기'):'방장의 미션 대기'):activeMission?.kind==='arrivalRace'&&!missionProgress?.selectedStartPlaceId?'출발 도시 4곳 중 하나를 선택하세요':activeMission?.kind==='arrivalRace'?`${activeMission.targetPlace?.name||activeMission.title} · ${missionProgress?.status==='completed'?`${medalText(missionProgress.finishRank)} 자유 탐험 · 속도×${formatSpeedBoost(completionBoost())}`:activeMission.phase==='running'?'이동 중':'출발 대기'}`:activeMission?.kind==='startChoiceSet'?'출발 도시를 선택하세요':activeMission?.kind==='staged'?`${activeMission.title} · ${currentStage()?.label||'완료'}`:activeMission?`${activeMission.title} · ${missionStatusText()}`:(serverSelf?.mission||'탐험 준비');
+  missionEl.textContent=classSettings.paused?'게임 일시정지':!activeMission?(roomType==='free'?(classSettings.started?'자유 항해':'방장의 출발 신호 대기'):'방장의 미션 대기'):activeMission?.kind==='arrivalRace'&&!missionProgress?.selectedStartPlaceId?'지정된 출발 도시 중 하나를 선택하세요':activeMission?.kind==='arrivalRace'?`${activeMission.targetPlace?.name||activeMission.title} · ${missionProgress?.status==='completed'?`${medalText(missionProgress.finishRank)} 자유 탐험 · 속도×${formatSpeedBoost(completionBoost())}`:activeMission.phase==='running'?'이동 중':'출발 대기'}`:activeMission?.kind==='startChoiceSet'?'출발 도시를 선택하세요':activeMission?.kind==='staged'?`${activeMission.title} · ${currentStage()?.label||'완료'}`:activeMission?`${activeMission.title} · ${missionStatusText()}`:(serverSelf?.mission||'탐험 준비');
   if(mode==='land'&&terrain!==lastTerrainMessage){lastTerrainMessage=terrain;const label=TERRAIN_LABEL[terrain]||terrain;showToast(`${label} 지형에 들어왔습니다.${effective<100?` 이동 속도는 ${effective}%입니다.`:''}`,effective<55?'warn':'system')}else if(mode!=='land')lastTerrainMessage=null;
   const fatigueBand=fatigue>=80?80:fatigue>=60?60:0;if(fatigueBand>lastFatigueBand)showToast(fatigueBand===60?'피로도가 60을 넘었습니다. 이제 이동 속도가 조금씩 느려집니다.':'피로가 많이 쌓였습니다. 도시에서 쉬어 가세요.','warn');lastFatigueBand=fatigueBand;
   applyModeUI();

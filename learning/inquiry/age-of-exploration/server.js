@@ -404,7 +404,7 @@ for (const room of Object.values(store.state?.rooms || {})) {
   if (!isArrivalRace(mission) || mission.finalQuiz || mission.studyTargets) continue;
   const target = RESOLVED_PLACES.get(String(mission.targetPlace?.id || '')) || mission.targetPlace;
   mission.finalQuiz = FinalQuiz.createFinalQuiz(target);
-  mission.instructions = `${mission.targetPlace?.name || '목적지'}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`;
+  mission.instructions = `${mission.targetPlace?.name || '목적지'}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 지정된 출발 도시 중 하나를 선택하세요.`;
 }
 store.scheduleSave();
 const ITEM_BY_ID = new Map(MissionCatalog.ITEMS.map((item) => [item.id, item]));
@@ -1163,18 +1163,22 @@ function commonMissionGoal(config) {
   return { title:`${target.name} 탐험`, label:target.name };
 }
 
-function buildStartChoiceSet(payload, roomCode) {
-  const readyMissionId = String(payload?.readyMissionId || '');
-  const preset = READY_BY_ID.get(readyMissionId);
-  if (!preset) throw new Error('공통 미션을 기본 미션 목록에서 선택하세요.');
-  const ids = Array.isArray(payload?.startPlaceIds) ? payload.startPlaceIds.map(String) : [];
-  const unique = [...new Set(ids.filter(Boolean))];
-  if (unique.length !== 4) throw new Error('서로 다른 출발 도시 4곳을 선택하세요.');
-  const starts = unique.map((id) => {
+function selectedStartPlaces(payload) {
+  const ids = Array.isArray(payload?.startPlaceIds) ? payload.startPlaceIds.map(id => String(id).trim()).filter(Boolean) : [];
+  if (ids.length < 1 || ids.length > 4) throw new Error('출발 도시를 1~4곳 선택하세요.');
+  if (new Set(ids).size !== ids.length) throw new Error('출발 도시는 서로 다르게 선택하세요.');
+  return ids.map(id => {
     const place = catalogPlace(id, '출발 도시');
     if (place.canEnterFromSea !== true) throw new Error('출발지는 항구 도시만 선택할 수 있습니다.');
     return place;
   });
+}
+
+function buildStartChoiceSet(payload, roomCode) {
+  const readyMissionId = String(payload?.readyMissionId || '');
+  const preset = READY_BY_ID.get(readyMissionId);
+  if (!preset) throw new Error('공통 미션을 기본 미션 목록에서 선택하세요.');
+  const starts = selectedStartPlaces(payload);
   const configBase = { ...preset };
   const goal = commonMissionGoal(configBase);
   const commonTitle = cleanText(payload?.title, MAX_MISSION_TITLE) || goal.title;
@@ -1203,7 +1207,7 @@ function buildStartChoiceSet(payload, roomCode) {
     title: commonTitle,
     goalLabel: goal.label,
     atlasInstruction: '',
-    instructions: cleanText(payload?.instructions, MAX_MISSION_TEXT) || `출발 도시 네 곳 중 한 곳을 선택한 뒤 ${goal.label}까지 이동하세요. 선택 후에는 출발 도시를 바꿀 수 없습니다.`,
+    instructions: cleanText(payload?.instructions, MAX_MISSION_TEXT) || `지정된 출발 도시 중 한 곳을 선택한 뒤 ${goal.label}까지 이동하세요. 선택 후에는 출발 도시를 바꿀 수 없습니다.`,
     startOptions,
     createdAt: Date.now()
   };
@@ -1315,14 +1319,7 @@ function beginPlaceStudy(p,key,missionId) {
 }
 
 function buildArrivalRace(payload, roomCode) {
-  const ids = Array.isArray(payload?.startPlaceIds) ? payload.startPlaceIds.map(String) : [];
-  const unique = [...new Set(ids.filter(Boolean))];
-  if (unique.length !== 4) throw new Error('서로 다른 출발 도시 4곳을 선택하세요.');
-  const starts = unique.map((id) => {
-    const place = catalogPlace(id, '출발 도시');
-    if (place.canEnterFromSea !== true) throw new Error('출발지는 항구 도시만 선택할 수 있습니다.');
-    return place;
-  });
+  const starts = selectedStartPlaces(payload);
   let requestedAnimal = payload?.huntAnimalId ? seaAnimalById(payload.huntAnimalId) : null;
   if (payload?.huntAnimalId && !requestedAnimal) throw new Error('그런 동물을 찾지 못했습니다.');
   if (!requestedAnimal && payload?.hunt === true) requestedAnimal = pickSeaAnimal(roomCode, starts);
@@ -1346,8 +1343,8 @@ function buildArrivalRace(payload, roomCode) {
     title,
     studyTargets,
     instructions: studyTargets ? PlaceStudy.INSTRUCTIONS : huntAnimal
-      ? `${target.name}에서 ${josaEul(huntAnimal.animal)} 찾아 만난 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`
-      : `${target.name}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`,
+      ? `${target.name}에서 ${josaEul(huntAnimal.animal)} 찾아 만난 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 지정된 출발 도시 중 하나를 선택하세요.`
+      : `${target.name}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 지정된 출발 도시 중 하나를 선택하세요.`,
     atlasInstruction: '',
     markerMode: 'hidden',
     targetPlace: {
@@ -2180,7 +2177,7 @@ io.on('connection', (socket) => {
         mode: 'sea',
         mission: freeRoom
           ? (roomSettings.started ? '자유 항해' : '방장의 출발 신호 대기')
-          : savedMission ? (activeMission?.phase === 'running' ? savedMission.title : '방장 출발 신호 대기') : activeMission ? '출발 도시 4곳 중 선택 대기 중' : '방장의 미션 대기 중',
+          : savedMission ? (activeMission?.phase === 'running' ? savedMission.title : '방장 출발 신호 대기') : activeMission ? '출발 도시 선택 대기 중' : '방장의 미션 대기 중',
         activeMissionId: activeMission?.id || null,
         missionStatus: savedProgress?.status || 'assigned',
         transition: null,
@@ -2514,7 +2511,7 @@ io.on('connection', (socket) => {
     if (isArrivalRace(activeMission)) {
       const option = activeMission.startOptions.find((item) => item.id === optionId || item.startPlace?.id === optionId);
       startPlace = option?.startPlace || null;
-      if (!startPlace?.point) return ack({ ok:false, error:'배포된 출발 도시 네 곳 중 하나를 선택하세요.' });
+      if (!startPlace?.point) return ack({ ok:false, error:'지정된 출발 도시 중 하나를 선택하세요.' });
       progress.selectedStartPlaceId = startPlace.id;
       progress.selectedMissionId = null;
       progress.shipPortId = startPlace.id;
@@ -2666,7 +2663,7 @@ io.on('connection', (socket) => {
     const roomCode = teachers.get(socket.id);
     if (!roomCode) return ack({ ok:false, error:'교사 인증이 필요합니다.' });
     const mission = store.room(roomCode).activeMission;
-    if (!isArrivalRace(mission)) return ack({ ok:false, error:'먼저 도착지와 출발 도시 4곳을 배포하세요.' });
+    if (!isArrivalRace(mission)) return ack({ ok:false, error:'먼저 학습 장소와 출발 도시를 지정하세요.' });
     if (mission.phase === 'running') return ack({ ok:false, error:'이미 출발한 미션입니다.' });
     const room = rooms.get(roomCode);
     const connected = room ? [...room.values()] : [];
@@ -2703,7 +2700,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('teacherPublishStartChoices', (payload, ack = () => {}) => {
-    return ack({ ok:false, error:'v23에서는 도착지 1곳과 출발 도시 4곳을 선택하는 도착 미션만 사용합니다.' });
+    return ack({ ok:false, error:'도착 미션에서 학습 장소와 출발 도시 1~4곳을 지정하세요.' });
     const roomCode = teachers.get(socket.id);
     if (!roomCode) return ack({ ok:false, error:'교사 인증이 필요합니다.' });
     try {
@@ -2720,7 +2717,7 @@ io.on('connection', (socket) => {
           progress.cargoItemId = null;
           progress.completedAt = null;
           p.activeMissionId = mission.id;
-          p.mission = '출발 도시 4곳 중 한 곳 선택';
+          p.mission = '지정된 출발 도시 중 한 곳 선택';
           p.missionStatus = 'assigned';
           stopPlayer(p);
         }
@@ -2734,7 +2731,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('teacherPublishGeneratedMission', (payload, ack = () => {}) => {
-    return ack({ ok:false, error:'v23에서는 도착지 1곳과 출발 도시 4곳을 선택하는 도착 미션만 사용합니다.' });
+    return ack({ ok:false, error:'도착 미션에서 학습 장소와 출발 도시 1~4곳을 지정하세요.' });
     const roomCode = teachers.get(socket.id);
     if (!roomCode) return ack({ ok:false, error:'교사 인증이 필요합니다.' });
     try {
@@ -2759,7 +2756,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('teacherPublishMission', (payload, ack = () => {}) => {
-    return ack({ ok:false, error:'v23에서는 도착지 1곳과 출발 도시 4곳을 선택하는 도착 미션만 사용합니다.' });
+    return ack({ ok:false, error:'도착 미션에서 학습 장소와 출발 도시 1~4곳을 지정하세요.' });
     const roomCode = teachers.get(socket.id);
     if (!roomCode) return ack({ ok: false, error: '교사 인증이 필요합니다.' });
     try {
@@ -2910,7 +2907,7 @@ function updateMissionProgress(roomCode, p) {
 
   if (isArrivalRace(activeMission)) {
     if (!progress.selectedStartPlaceId) {
-      p.mission = '출발 도시 4곳 중 한 곳 선택';
+      p.mission = '지정된 출발 도시 중 한 곳 선택';
       return;
     }
     if (activeMission.phase !== 'running') {
