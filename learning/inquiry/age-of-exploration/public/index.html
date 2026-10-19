@@ -284,7 +284,7 @@ const DESKTOP_MAP_ZOOM=1.0,MOBILE_MAP_ZOOM_PORTRAIT=.68,MOBILE_MAP_ZOOM_LANDSCAP
 function isPhoneMapView(){return (matchMedia('(pointer:coarse)').matches||innerWidth<=650)&&Math.min(innerWidth,innerHeight)<=650}
 function recommendedMapZoom(){if(!isPhoneMapView())return DESKTOP_MAP_ZOOM;return innerWidth>innerHeight?MOBILE_MAP_ZOOM_LANDSCAPE:MOBILE_MAP_ZOOM_PORTRAIT}
 function minimumMapZoom(){return isPhoneMapView()?MOBILE_MIN_ZOOM:DESKTOP_MIN_ZOOM}
-let world=null,naturalLandMask=null,assetsReady=false,discoveryCatalog=new Map(),discoveryPoints=[],discoveryInteraction=null,huntInteraction=null,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',roomType='race',isHost=false,chosenRoomType='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
+let world=null,naturalLandMask=null,assetsReady=false,discoveryCatalog=new Map(),discoveryPoints=[],discoveryInteraction=null,huntInteraction=null,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',roomType='race',isHost=false,chosenRoomType='',lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
 let self=null,serverSelf=null,remote=new Map(),lastSnapshotAt=0,activeMission=null,missionProgress=null,missionInteraction=null,cityInteraction=null,portInteraction=null,classGameMinutes=0,clockAnchorGameMinutes=0,clockAnchorAt=performance.now(),classSettings={paused:false,locked:false};
 let libraryCatalog={books:[]},cityCatalogById=new Map(),renderedCityId='',openedBookId='',finalQuizSubmitting=false,dismissedFinalQuizMissionId='',lastFinalQuizRenderKey='',finalQuizSaveTimer=0;
 const backgroundMusic=UW3BGM.createController({basePath:'/learn/world-voyage/assets/bgm',fadeMs:900,storage:localStorage});
@@ -705,10 +705,10 @@ socket.on('snapshot',snap=>{
   serverSelf=snap.you;sessionMode=snap.sessionMode||sessionMode;roomType=snap.roomType||roomType;roomCodeCurrent=snap.roomLabel||roomCodeCurrent;syncClassClock(snap.classGameMinutes);
   applyMissionState(snap.mission,snap.progress,false);missionInteraction=snap.interaction||null;cityInteraction=snap.cityInteraction||null;discoveryInteraction=snap.discoveryInteraction||null;huntInteraction=snap.huntInteraction||null;landmarkQueue=Array.isArray(snap.cityLandmarks)?snap.cityLandmarks:[];portInteraction=snap.portInteraction||null;applyClassSettings(snap.settings);
   const previousMode=mode;mode=serverSelf.mode;if(previousMode!==mode){showToast(mode==='sea'?'배에 올라 항해를 시작했습니다.':mode==='land'?'탐험대가 육상 탐험을 시작했습니다.':'도시에 들어왔습니다.','system')}
-  if(!self)self={...serverSelf};
-  const ex=dxWrap(serverSelf.x,self.x),ey=serverSelf.y-self.y,err=Math.hypot(ex,ey);
-  if(err>100||previousMode!==mode){self.x=serverSelf.x;self.y=serverSelf.y}else{self.x=wrapX(self.x+ex*.32);self.y+=ey*.32}
-  self.dir=serverSelf.dir;self.name=serverSelf.name;self.moving=serverSelf.moving;self.shipType=serverSelf.shipType;self.shipName=serverSelf.shipName;self.shipOriginId=serverSelf.shipOriginId;self.shipOriginName=serverSelf.shipOriginName;self.shipScale=serverSelf.shipScale;self.finishRank=serverSelf.finishRank;self.missionCompleted=serverSelf.missionCompleted;self.speedBoostMultiplier=serverSelf.speedBoostMultiplier;self.shipPortId=serverSelf.shipPortId;self.shipPortName=serverSelf.shipPortName;self.shipAnchoredAtShore=serverSelf.shipAnchoredAtShore;self.shipAnchorX=serverSelf.shipAnchorX;self.shipAnchorY=serverSelf.shipAnchorY;self.shipAnchorDir=serverSelf.shipAnchorDir;
+  // Simulation and collision belong to the server. Keep one authoritative
+  // position; viewMotion smooths its snapshots without predicting through shores.
+  if(!self)self={};
+  Object.assign(self,serverSelf);
   onlineEl.textContent=snap.online;nearbyEl.textContent=snap.nearby.length;nearbyGroup.hidden=roomType==='free';
   if(serverSelf.noticeSeq>lastNoticeSeq){lastNoticeSeq=serverSelf.noticeSeq;if(serverSelf.noticeText)showToast(serverSelf.noticeText,serverSelf.noticeText.includes('완료')||serverSelf.noticeText.includes('도착')||serverSelf.noticeText.includes('입항')||serverSelf.noticeText.includes('보급')?'good':serverSelf.noticeText.includes('없')||serverSelf.noticeText.includes('떨어')?'warn':'info')}
   const seen=new Set();
@@ -792,11 +792,14 @@ for(const b of document.querySelectorAll('#pad button[data-dir]')){
 }
 const keyMap={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'};
 addEventListener('keydown',e=>{
-  if(finalQuizOpen()||e.composedPath().some(node=>node.matches?.('input,textarea,select,button,summary,[contenteditable]')))return;
+  if(finalQuizOpen()||e.composedPath().some(node=>node.matches?.('input,textarea,select,[contenteditable]')))return;
   if(keyMap[e.key]){e.preventDefault();if(!keys[keyMap[e.key]])setDir(keyMap[e.key],true)}
+  if(e.composedPath().some(node=>node.matches?.('button,summary')))return;
   if(e.key==='Enter'||e.key==='e'||e.key==='E'){if(missionInteraction?.canInteract)doMissionOrPortAction();else if(cityInteraction?.canUse)doCityAction();else if(portInteraction?.canUse!==false&&portInteraction)doMissionOrPortAction();else if(huntInteraction?.withinReach)doMeetAnimal();else if(discoveryInteraction?.canUse!==false)doDiscoveryAction()}
 });
 addEventListener('keyup',e=>{if(keyMap[e.key]){e.preventDefault();setDir(keyMap[e.key],false)}});
+addEventListener('blur',()=>{if(joined){for(const b of document.querySelectorAll('#pad .held'))b.classList.remove('held');clearKeys()}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&joined){for(const b of document.querySelectorAll('#pad .held'))b.classList.remove('held');clearKeys()}});
 canvas.addEventListener('pointerdown',e=>{if(!canTravelNow()||(mode!=='sea'&&mode!=='land')||!self)return;const r=canvas.getBoundingClientRect();
   const hit=(x,y,radius=24)=>{const point=screenPoint(x,y,innerWidth,innerHeight);return Math.hypot(point.x-(e.clientX-r.left),point.y-(e.clientY-r.top))<=radius};
   if(mode==='land'&&portInteraction?.kind==='shore'&&hit(serverSelf.shipAnchorX,serverSelf.shipAnchorY)){doMissionOrPortAction();return}
@@ -828,31 +831,6 @@ leaveCityBtn.onclick=()=>{closeLibrary();socket.emit('leaveCity',{},result=>{if(
 
 missionToggle.onclick=()=>setMissionPanelOpen(true);missionClose.onclick=()=>setMissionPanelOpen(false);
 
-function localBlock(text){const now=performance.now();if(now-lastLocalBlock>900){lastLocalBlock=now;showToast(text)}}
-function movePrediction(dt){
-  dt*=SIMULATION_RATE;
-  if(!self||!canTravelNow()||(mode!=='sea'&&mode!=='land'))return;
-  let vx=(keys.right?1:0)-(keys.left?1:0),vy=(keys.down?1:0)-(keys.up?1:0);const len=Math.hypot(vx,vy);if(!len)return;vx/=len;vy/=len;
-  const current=terrainAtPixel(self.x,self.y),mult=(mode==='sea'?TERRAIN_SPEED.sea:current.multiplier)*UW3Terrain.iceSlowdownAt(mapLonAt(self.x),90-(self.y/MAP_H)*180,mode==='sea',seasonDay()),baseSpeed=mode==='sea'?SEA_BASE_SPEED:LAND_BASE_SPEED,fatigueMult=serverSelf?.fatigueSpeedMultiplier??fatigueMultiplier(serverSelf?.fatigue),completionMult=completionBoost(),ox=self.x,oy=self.y;
-  let windMult=1;if(mode==='sea'){const wind=CDS95Wind.windAtPixel(ox,oy,classGameMinutes),windAlignment=vx*wind.x+vy*wind.y;windMult=CDS95Wind.speedMultiplier(windAlignment,wind.strength,WIND_TAIL_FACTOR,WIND_HEAD_FACTOR)}
-  const step=baseSpeed*mult*fatigueMult*completionMult*windMult*dt;
-  let driftEast=0,driftSouth=0;if(mode==='sea'){const flow=CDS95Current.currentAtPixel(ox,oy),alignment=vx*flow.x+vy*flow.y,localTailFactor=Number.isFinite(flow.tailFactor)?flow.tailFactor:CURRENT_TAIL_FACTOR,factor=CDS95Current.movementFactor(alignment,localTailFactor,CURRENT_HEAD_FACTOR,CURRENT_CROSS_FACTOR),driftSpeed=SEA_BASE_SPEED*factor*flow.strength*completionMult;driftEast=flow.x*driftSpeed*dt;driftSouth=flow.y*driftSpeed*dt}
-  const delta=CDS95GeoMotion.localDeltaToMap(vx*step+driftEast,vy*step+driftSouth,oy,MAP_H);let blocked=null;
-  // 얼음에 갇힌 배·탐험대는 적도 쪽으로는 언제나 나아갈 수 있다(서버와 같은 규칙).
-  const hereLat=Math.abs(90-(self.y/MAP_H)*180),trapped=mode==='sea'?current.type!=='sea'||frozenNow(self.x,self.y):current.type==='sea'||current.passable===false;
-  const tryMove=(dx,dy)=>{const substeps=Math.max(1,Math.ceil(Math.max(Math.abs(dx),Math.abs(dy))/(TS*.45))),stepX=dx/substeps,stepY=dy/substeps;let moved=false;
-    for(let i=0;i<substeps;i++){const px=self.x,py=self.y,tries=[[px+stepX,py+stepY]];if(Math.abs(stepX)>.001&&Math.abs(stepY)>.001)tries.push([px+stepX,py],[px,py+stepY]);let advanced=false;for(const [rx,ry] of tries){const nx=wrapX(rx),ny=Math.max(TS,Math.min(MAP_H-TS,ry)),next=terrainAtPixel(nx,ny);let allowed=mode==='sea'?next.type==='sea':next.type!=='sea'&&next.passable!==false;if(allowed&&mode==='sea'&&frozenNow(nx,ny)){allowed=false;blocked={type:'seasonIce'}}
-      if(!allowed&&trapped&&Math.abs(90-(ny/MAP_H)*180)<hereLat-.0001&&(mode==='sea'?next.type==='sea'||next.type==='ice':next.type!=='sea'))allowed=true;
-      if(!allowed){blocked=next.type?blocked||next:blocked;continue}self.x=nx;self.y=ny;advanced=true;moved=true;break}if(!advanced)break}
-    return moved};
-  let moved=tryMove(delta.x,delta.y);
-  // 해안이나 얼음에 뱃머리가 박히면 그 자리에 서지 않고 옆으로 비껴 간다(서버와 같은 규칙).
-  if(!moved)for(const angle of [Math.PI/6,-Math.PI/6,Math.PI/3,-Math.PI/3,Math.PI/2,-Math.PI/2,Math.PI*2/3,-Math.PI*2/3,Math.PI*5/6,-Math.PI*5/6]){const c=Math.cos(angle),s=Math.sin(angle),d2=CDS95GeoMotion.localDeltaToMap((vx*c-vy*s)*step,(vx*s+vy*c)*step,oy,MAP_H);if(tryMove(d2.x,d2.y)){moved=true;break}}
-  if(moved){self.dir=vectorToDir(vx,vy);return}
-  if(blocked?.type==='seasonIce')localBlock('얼음 바다 - 항해가 어려움');
-  else if(blocked?.type==='ice')localBlock(mode==='sea'?'얼음 바다 - 항해가 어려움':'얼음 지대 - 이동이 어려움');
-  else if(mode==='land'&&blocked?.type==='sea')localBlock('탐험대는 바다로 들어갈 수 없습니다.');
-}
 // 지구본 지도. 지구본 앱(learning/inquiry/globe)의 라이브러리와 지도 조각을 그대로 쓴다.
 // 경위도를 그대로 편 평면 지도는 위도가 높을수록 동서로 늘어나, 아이슬란드가 한국보다 1.84배 커 보였다.
 // 지구본에서는 땅 모양과 넓이가 실제와 같다. 게임 규칙(이동·충돌·길찾기)은 그대로고, 그리는 방식만 바뀐다.
@@ -1180,9 +1158,8 @@ function paintScene(){
 }
 let lastPaint=0;
 function loop(t){
-  const elapsed=Math.max(0,(t-last)/1000),dt=Math.min(.04,elapsed);last=t;
+  const elapsed=Math.max(0,(t-last)/1000);last=t;
   if(assetsReady&&joined&&self){
-    if(mode!=='city')movePrediction(dt);
     viewMotion.update(self,elapsed,mode);
     const view=viewPosition(),settling=Math.hypot(dxWrap(self.x,view.x),self.y-view.y)>.001;
     const moving=!!(keys.up||keys.down||keys.left||keys.right||serverSelf?.moving||settling||[...remote.values()].some(p=>p.moving));

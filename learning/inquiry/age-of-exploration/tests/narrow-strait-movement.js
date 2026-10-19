@@ -16,7 +16,7 @@ const context = {
   require: Module.createRequire(filename), __dirname: project, __filename: filename,
   process, console, Buffer, URL,
   setInterval: () => ({ unref() {} }), setTimeout: () => ({ unref() {} }),
-  clearInterval() {}, clearTimeout() {},
+  clearInterval() {}, clearTimeout() {}, setImmediate,
 };
 vm.createContext(context);
 vm.runInContext(source.slice(0, source.lastIndexOf('server.listen(')) + `
@@ -42,6 +42,7 @@ const passages = [
     bottleneck: [[33.99, 130.89], [33.94, 131.04]],
     bounds: [130.5, 131.5, 33.7, 34.3] },
 ];
+(async () => {
 const results = [];
 for (const passage of passages) {
   for (const reverse of [false, true]) {
@@ -49,7 +50,7 @@ for (const passage of passages) {
     const p = player(start), goal = pixel(end);
     assert.equal(api.terrainAtPixel(p.x, p.y).type, 'sea', passage.name + ' entrance');
     assert.equal(api.terrainAtPixel(goal.x, goal.y).type, 'sea', passage.name + ' exit');
-    api.planRoute(p, goal);
+    await api.planRoute(p, goal);
     let ticks = 0;
     for (; ticks < (passage.maxTicks || 600) && api.distanceXY(p.x, p.y, goal.x, goal.y) >= 4; ticks++) {
       api.movePlayer(p, 0.1);
@@ -85,3 +86,4 @@ for (const [name, point] of [
   assert.notEqual(api.terrainAtPixel(p.x, p.y).type, 'sea', name + ' must remain land');
 }
 console.log(JSON.stringify({ ok: true, actualServerMovement: results, landPreserved: true }));
+})().catch(error => { console.error(error); process.exitCode = 1; });

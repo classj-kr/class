@@ -19,7 +19,8 @@ assert.doesNotMatch(server,/socket\.on\('teacherCreateClass'/);
 
 // 학생 화면: 방 만들기/들어가기, 자유 항해/도착 경주 고르기, 방장 출발 버튼
 assert.match(html,/data-entry-mode="create"/);
-assert.match(html,/data-entry-mode="join"/);
+assert.match(html,/function tryMainRoomEntry\(/);
+assert.match(html,/joinRoom\(code,mainPlayerName\)/,'메인에서 받은 방번호·학생 이름으로 참가해야 함');
 assert.match(html,/data-room-type="free"/);
 assert.match(html,/data-room-type="race"/);
 assert.match(html,/socket\.emit\('createRoom'/);
