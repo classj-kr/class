@@ -943,7 +943,12 @@
     "assessmentReferences": "docs/world-history-material-coverage.json"
   },
   "production": {
-    "status": "pending deployment"
+    "status": "deployed",
+    "verifiedAt": "2026-10-19T11:31:15+09:00",
+    "expectedCommit": "d6a93faee34390600c29e0e578da839d3056e4ef",
+    "healthCommit": "d6a93faee34390600c29e0e578da839d3056e4ef",
+    "healthStatus": "ok",
+    "authenticatedProductionBrowser": "Not available; UI checks were performed locally with the production clean-URL middleware. Public health endpoint confirms the deployed code revision."
   },
   "environmentNotes": [
     "The static UI preview does not expose account storage endpoints; expected site-storage 404 warnings use in-tab fallback. Account isolation/persistence was checked separately by the passing integration test.",
