@@ -58,7 +58,10 @@
     "git diff --check"
   ],
   "production": {
-    "status": "pending deployment",
-    "uiVerification": "Local UI tested; production revision will be checked through /health."
+    "status": "deployed",
+    "checkedAt": "2026-10-19T16:16:44.2353585+09:00",
+    "healthStatus": "ok",
+    "commit": "c8af395f86d2637978718daa47f0f8d52951ef3b",
+    "verification": "Production /health reports the tested feature commit. UI interactions were verified locally with synthetic participants."
   }
 }
