@@ -203,7 +203,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><div id="discoveryPhoto" class="photoFigure"><img id="discoveryImage" alt="" hidden><span id="discoveryImageLabel" class="imageKindLabel" hidden>위치 지도</span></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
-<script src="/learn/world-voyage/js/terrain.js?v=83"></script>
+<script src="/learn/world-voyage/js/terrain.js?v=2026101902"></script>
 <script src="/learn/world-voyage/js/city-icons.js?v=3"></script>
 <script src="/learn/world-voyage/js/ship-designs.js?v=1"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
@@ -844,6 +844,9 @@ function startGlobeMap(){
   import(`${GLOBE_BASE}vendor/maplibre-gl-6.10.0/maplibre-gl.mjs`).then(ml=>{
     globeMap=new ml.Map({
       container:'globeBase',
+      // Globe flight reaches beyond Web Mercator's default 85-degree camera limit.
+      minZoom:-10,
+      transformConstrain:(center,mapZoom)=>({center:new ml.LngLat(center.lng,Math.max(-90+TS/MAP_H*180,Math.min(90-TS/MAP_H*180,center.lat))),zoom:Math.max(-10,Math.min(22,mapZoom))}),
       style:{version:8,projection:{type:'globe'},sources:{relief:{type:'raster',tiles:[`${GLOBE_BASE}tiles/{z}/{x}/{y}.webp?v=2`],tileSize:512,minzoom:0,maxzoom:5}},layers:[{id:'space',type:'background',paint:{'background-color':'#07141a'}},{id:'relief',type:'raster',source:'relief'}]},
       center:[0,0],zoom:4,bearing:0,pitch:0,interactive:false,attributionControl:false,fadeDuration:0
     });
@@ -940,7 +943,7 @@ function drawIceLayer(cw,ch,left,top){
     const shade=Math.round(floe.tint*15);ctx.fillStyle='rgb('+(218+shade)+','+(233+shade)+',248)';ctx.strokeStyle='rgba(130,183,208,.8)';
     ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fill();ctx.stroke();visible++;
   }
-  if(visible){
+  if(visible&&!serverSelf?.missionCompleted){
     const view=viewPosition(),lon=mapLonAt(view.x),edgeY=lat=>screenPoint(view.x,(90-lat)/180*MAP_H,cw,ch).y;
     const edgeN=edgeY(UW3Terrain.iceLimitNorthAt(lon,day)),edgeS=edgeY(UW3Terrain.iceLimitSouthAt(lon,day));
     ctx.font='bold 14px "Malgun Gothic"';ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='rgba(240,247,250,.9)';ctx.fillStyle='#35566b';const label='얼음 바다 - 항해가 어려움';

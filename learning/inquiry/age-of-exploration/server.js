@@ -16,6 +16,7 @@ const MissionCatalog = require('./lib/mission-catalog.js');
 const Fatigue = require('./lib/fatigue.js');
 const NavGrid = require('./lib/nav-grid.js');
 const ShipMotion = require('./lib/ship-motion.js');
+const UfoMotion = require('./lib/ufo-motion.js');
 const ArrivalZones = require('./lib/arrival-zones.js');
 const { createDiscoveryAccess } = require('./lib/discovery-access.js');
 const CompletionRewards = require('./lib/completion-rewards.js');
@@ -1615,6 +1616,10 @@ async function planRoute(p, destination) {
     p.skippedWaypoints = 0;
     p.bestDistance = Infinity;
     p.lastProgressAt = 0;
+    if (arrivalRaceTravelGate(p).completed) {
+      p.target = destination;
+      return;
+    }
     const grid = navGridReady();
     // 먼저 온전히 열린 물길로 찾고, 좁은 해협처럼 그런 길이 없으면 해안을 스치는 길도 허용한다.
     let path = null;
@@ -2031,7 +2036,7 @@ function completeMission(roomCode, p, mission, progress, label) {
   const rankText = progress.finishRank ? ` ${progress.finishRank}위로` : '';
   const speedBoost = CompletionRewards.speedMultiplier(progress.finishRank);
   const scoreText = activeMission?.studyTargets ? ' 모든 장소 학습 완료,' : arrivalRace ? ` 최종 문제 ${Number(progress.finalCorrectCount) || 0}/3 정답,` : '';
-  setNotice(p, `미션 성공!${scoreText}${rankText} 완주했습니다. 메달을 달고 이동속도 ${speedBoost}배로 자유 탐험할 수 있습니다.`);
+  setNotice(p, `미션 성공!${scoreText}${rankText} 완주했습니다. UFO로 바다·육지·얼음 위를 이동속도 ${speedBoost}배로 자유 탐험할 수 있습니다.`);
   store.scheduleSave();
   if (arrivalRace) {
     emitArrivalProgressUpdates(roomCode, activeMission, ranked);
@@ -3049,14 +3054,24 @@ function movePlayer(p, dt) {
     return;
   }
 
+  // Flight is earned by completing the current mission, never by a client flag
+  // or an old finish rank left over from a previous mission.
+  const flying = travel.completed;
+  const directionToTarget = () => flying
+    ? UfoMotion.direction(p, p.target)
+    : GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H);
+  if (flying) {
+    p.currentName = p.windName = '';
+    p.currentStrength = p.windStrength = p.currentAssistPercent = p.windAssistPercent = 0;
+    p.currentCore = false;
+  }
+
   let vx = (p.input.right ? 1 : 0) - (p.input.left ? 1 : 0);
   let vy = (p.input.down ? 1 : 0) - (p.input.up ? 1 : 0);
   let targetDistance = Infinity;
 
   if (p.target) {
-    const targetMotion = GeoMotion.initialDirection(
-      p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H
-    );
+    const targetMotion = directionToTarget();
     targetDistance = targetMotion.distancePixels;
     if (targetDistance < (p.route && p.route.length ? TILE * 1.2 : 4)) {
       p.target = p.route && p.route.length ? p.route.shift() : null;
@@ -3066,7 +3081,7 @@ function movePlayer(p, dt) {
         p.speedKmh = 0;
         return;
       }
-      const nextMotion = GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H);
+      const nextMotion = directionToTarget();
       targetDistance = nextMotion.distancePixels;
       vx = nextMotion.x;
       vy = nextMotion.y;
@@ -3089,14 +3104,14 @@ function movePlayer(p, dt) {
   const currentTerrain = terrainAtPixel(p.x, p.y);
   p.terrain = p.mode === 'sea' ? (currentTerrain.type === 'ice' ? 'ice' : 'sea') : currentTerrain.type;
   // 얼음 가장자리에서는 벽처럼 딱 멈추지 않고 5도 앞에서부터 천천히 느려진다.
-  const multiplier = (p.mode === 'sea' ? TERRAIN_SPEED.sea : currentTerrain.multiplier) * iceSlowdownFor(p);
-  const baseSpeed = p.mode === 'sea' ? SEA_BASE_SPEED : LAND_BASE_SPEED;
+  const multiplier = flying ? TERRAIN_SPEED.sea : (p.mode === 'sea' ? TERRAIN_SPEED.sea : currentTerrain.multiplier) * iceSlowdownFor(p);
+  const baseSpeed = flying || p.mode === 'sea' ? SEA_BASE_SPEED : LAND_BASE_SPEED;
   const fatigueMultiplier = Fatigue.speedMultiplier(p.fatigue);
   const completionMultiplier = travel.completed ? CompletionRewards.speedMultiplier(travel.progress?.finishRank) : 1;
   const ox = p.x;
   const oy = p.y;
   let windMultiplier = 1;
-  if (p.mode === 'sea') {
+  if (p.mode === 'sea' && !flying) {
     const wind = MajorWind.windAtPixel(ox, oy, classGameMinutes(p.roomCode));
     const windAlignment = vx * wind.x + vy * wind.y;
     windMultiplier = MajorWind.speedMultiplier(windAlignment, wind.strength, WIND_TAIL_FACTOR, WIND_HEAD_FACTOR);
@@ -3107,7 +3122,7 @@ function movePlayer(p, dt) {
   const step = Math.min(baseSpeed * multiplier * fatigueMultiplier * completionMultiplier * windMultiplier * dt, targetDistance);
   let driftEast = 0;
   let driftSouth = 0;
-  if (p.mode === 'sea') {
+  if (p.mode === 'sea' && !flying) {
     const current = OceanCurrent.currentAtPixel(ox, oy);
     const alignment = vx * current.x + vy * current.y;
     const localTailFactor = Number.isFinite(current.tailFactor) ? current.tailFactor : CURRENT_TAIL_FACTOR;
@@ -3126,14 +3141,23 @@ function movePlayer(p, dt) {
     oy,
     WORLD_PIXEL_H
   );
-  let { moved, blockedTerrain } = moveWithTerrainCollision(p, mapDelta.x, mapDelta.y);
+  let moved, blockedTerrain = null;
+  if (flying) {
+    const flight = UfoMotion.advance(p, mapDelta.x, mapDelta.y);
+    p.x = flight.x;
+    p.y = flight.y;
+    moved = flight.moved;
+    p.terrain = terrainAtPixel(p.x, p.y).type;
+  } else {
+    ({ moved, blockedTerrain } = moveWithTerrainCollision(p, mapDelta.x, mapDelta.y));
+  }
 
   // 해안에 막히면 해안선을 따라 돈다. 예전에는 "목적지에 가까워질 때만" 비껴 갔는데,
   // 만 안쪽이나 섬 사이처럼 한동안 멀어져야 빠져나오는 곳에서 배가 얼어붙었다.
   // 이제는 한쪽 방향을 정해 벽을 따라 계속 돌고, 너무 오래 돌면 길을 다시 찾는다.
   // 손으로 몰 때도 똑같이 비껴 간다. 그러지 않으면 좁은 만이나 얼음 앞에서 뱃머리가 박힌 채
   // 아무 데로도 못 가고, 아이들은 배가 고장 난 줄 안다.
-  if (!moved) {
+  if (!moved && !flying) {
     const distanceToTarget = () => (p.target ? GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels : 0);
     const before = distanceToTarget();
     const angles = ShipMotion.slideAngles(p.slideSign);
@@ -3168,7 +3192,7 @@ function movePlayer(p, dt) {
   // 뭍에 옆으로 막힌 배는 제자리에서 떨면서도 "움직였다"가 된다.
   // 그래서 얼마나 움직였나가 아니라 목적지에 가까워졌나로 막힘을 잰다.
   if (p.target) {
-    const now = GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels;
+    const now = directionToTarget().distancePixels;
     if (!Number.isFinite(p.bestDistance) || now < p.bestDistance - 2) {
       p.bestDistance = now;
       p.lastProgressAt = Date.now();
@@ -3238,7 +3262,7 @@ function movePlayer(p, dt) {
       ? previousSpeedKmh * 0.55 + instantSpeedKmh * 0.45
       : instantSpeedKmh;
     recordMovement(p, movedPixels);
-    if (p.mode === 'sea') warnNearIce(p);
+    if (p.mode === 'sea' && !flying) warnNearIce(p);
   }
 }
 

@@ -383,7 +383,11 @@
   // 평면지도의 문제가 그대로 남는다. 위도만큼 배율을 깎아 화면 1픽셀이 어디서나 같은 거리가 되게 한다.
   function globeMapZoom(gameZoom, lat, tileSize) {
     const worldPixels = WORLD_W * TILE;
-    return Math.log2((worldPixels / (tileSize || 512)) * gameZoom) + Math.log2(Math.max(0.035, Math.cos(lat * Math.PI / 180)));
+    // The bundled MapLibre 6.10 globe scales by cos(center latitude), including
+    // beyond 85 degrees when our camera constraint allows polar flight.
+    const polarLimit = 90 - TILE / WORLD_PIXEL_H * 180;
+    const scaleLatitude = Math.max(-polarLimit, Math.min(polarLimit, lat));
+    return Math.log2((worldPixels / (tileSize || 512)) * gameZoom) + Math.log2(Math.cos(scaleLatitude * Math.PI / 180));
   }
 
   const ICE_TERRAIN = Object.freeze({ type: 'ice', multiplier: SPEED.ice, passable: false });
