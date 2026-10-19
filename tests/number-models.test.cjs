@@ -65,5 +65,48 @@ test('saved states are bounded and modes have independent scenes', () => {
   for (const delta of [{ counts: [1, 2, 3] }, { counts: [0, 0, 0, 1.1] }, { counts: [0, 0, 0, 31] }, { counts: [0, 0, 0, -1] }, { places: 5 }, { example: '__proto__' }, { example: 'decimal-add' }, { done: 'yes' }]) {
     assert.throws(() => C.validate({ ...state, scenes: { ...state.scenes, whole: { ...state.scenes.whole, ...delta } } }));
   }
-  for (const delta of [{ mode: '__proto__' }, { version: 2 }, { showTotal: 'false' }]) assert.throws(() => C.validate({ ...state, ...delta }));
+  for (const delta of [{ mode: '__proto__' }, { version: 3 }, { showTotal: 'false' }]) assert.throws(() => C.validate({ ...state, ...delta }));
+});
+
+test('legacy saved models migrate without losing exchanges or examples', () => {
+  const old = C.initial(); old.version = 1; delete old.comparisons; delete old.selected;
+  old.scenes.whole = C.exchange(C.exampleScene('whole-subtract'), 2, 'split', 'whole');
+  const migrated = C.validate(old);
+  assert.deepEqual(migrated.scenes, old.scenes);
+  assert.equal(C.rows(migrated).length, 1);
+  assert.deepEqual(C.validate(migrated), migrated);
+});
+
+test('comparison selection and deletion preserve row order and independent modes', () => {
+  let s = C.initial();
+  s = C.addRow(s); s.scenes.whole = C.fromNumber(s.scenes.whole, '234', 'whole');
+  s = C.addRow(s); s.scenes.whole = C.fromNumber(s.scenes.whole, '345', 'whole');
+  const values = s => C.rows(s).map(row => C.total(row.counts));
+  assert.deepEqual(values(s), [123, 234, 345]);
+  s = C.selectRow(s, 0); s.scenes.whole = C.add(s.scenes.whole, 3, 1, 'whole');
+  assert.deepEqual(values(s), [124, 234, 345]);
+  s = C.removeRow(s, 1); assert.deepEqual(values(s), [124, 345]);
+  s = C.selectRow(s, 1); s = C.removeRow(s, 0);
+  assert.equal(s.selected.whole, 0); assert.deepEqual(values(s), [345]);
+  assert.throws(() => C.removeRow(s, 0));
+  s.mode = 'decimal'; s = C.addRow(s); s.scenes.decimal = C.fromNumber(s.scenes.decimal, '0.009', 'decimal');
+  assert.deepEqual(C.rows(s).map(row => C.format(C.total(row.counts), 'decimal')), ['1.23', '0.009']);
+  assert.deepEqual(C.rows(s, 'whole').map(row => C.total(row.counts)), [345]);
+  assert.deepEqual(C.validate(JSON.parse(JSON.stringify(s))), s);
+});
+
+test('comparison limits and shared places never discard a different row', () => {
+  let s = C.addRow(C.initial());
+  assert.throws(() => C.changePlaces(s, 2)); // The unselected 123 needs hundreds.
+  s = C.selectRow(s, 0); s.scenes.whole = C.fromNumber(s.scenes.whole, '42', 'whole');
+  s = C.changePlaces(s, 2);
+  assert.deepEqual(C.rows(s).map(row => row.places), [2, 2]);
+  while (C.rows(s).length < C.MAX_ROWS) s = C.addRow(s);
+  assert.throws(() => C.addRow(s));
+  assert.throws(() => C.selectRow(s, -1));
+  assert.throws(() => C.selectRow(s, 6));
+  const broken = JSON.parse(JSON.stringify(s)); broken.comparisons.whole[0].places = 4;
+  assert.throws(() => C.validate(broken));
+  broken.comparisons.whole[0].places = 2; broken.selected.whole = 6;
+  assert.throws(() => C.validate(broken));
 });

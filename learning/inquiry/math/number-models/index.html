@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#f5f4ee">
   <title>수 모형 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261017-1">
-  <script src="core.js?v=20261015-1" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261019-compare">
+  <script src="core.js?v=20261019-compare" defer></script>
   <script src="/assets/site-storage.js?v=20261006-1" defer></script>
-  <script src="app.js?v=20261017-1" defer></script>
+  <script src="app.js?v=20261019-compare" defer></script>
   <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
 </head>
 <body>
@@ -21,10 +21,10 @@
       <form id="number-form"><label for="number-input" class="sr-only">나타낼 수</label><div class="number-entry"><input id="number-input" type="text" inputmode="numeric" autocomplete="off" value="123" aria-describedby="number-help"><button type="submit" class="primary">놓기</button></div></form>
       <label for="places" class="sr-only">표시할 자리</label><select id="places"></select>
       <label class="check"><input id="show-total" type="checkbox" checked>값 표시</label>
-      <button id="clear" type="button" class="clear">모두 지우기</button>
-      <details class="help"><summary>도움말</summary><div class="help-content"><p id="number-help">0부터 9999까지</p><p>각 자리의 ＋와 −로 모형을 놓거나 지워요. 같은 모형이 10개 모이면 왼쪽 자리의 모형 1개로 묶을 수 있어요.</p><p>‘1개 풀기’를 누르면 오른쪽 자리의 모형 10개가 돼요. 묶거나 풀어도 전체 값은 같아요.</p><p>소수 모드에서는 큰 정육면체가 1이에요. 판은 0.1, 막대는 0.01, 작은 정육면체는 0.001이에요.</p><p>자연수와 소수에서 놓은 모형은 각각 기억해요. 한 자리에는 모형 30개까지 놓을 수 있어요.</p></div></details>
+      <button id="clear" type="button" class="clear">모형 지우기</button>
+      <details class="help"><summary>도움말</summary><div class="help-content"><p id="number-help">0부터 9999까지</p><p>각 자리의 ＋와 −로 모형을 놓거나 지워요. 같은 모형이 10개 모이면 왼쪽 자리의 모형 1개로 묶을 수 있어요.</p><p>‘1개 풀기’를 누르면 오른쪽 자리의 모형 10개가 돼요. 묶거나 풀어도 전체 값은 같아요.</p><p>소수 모드에서는 큰 정육면체가 1이에요. 판은 0.1, 막대는 0.01, 작은 정육면체는 0.001이에요.</p><p>‘수 추가’로 최대 6개의 수를 비교해요. 수 A·B 버튼으로 수정할 수를 선택하고, ‘놓기’로 선택한 수를 바꿔요. 표시할 자리는 모두 함께 바뀌고 모형 크기는 서로 같아요.</p><p>자연수와 소수에서 놓은 모형은 각각 기억해요. 한 자리에는 모형 30개까지 놓을 수 있어요.</p></div></details>
     </aside>
-    <div class="tools"><button id="toggle-settings" type="button" aria-expanded="true" aria-controls="settings">설정</button><button id="undo" type="button" disabled aria-label="되돌리기" title="되돌리기 (Ctrl/⌘+Z)">↶</button><button id="redo" type="button" disabled aria-label="다시 하기" title="다시 하기 (Ctrl/⌘+Shift+Z)">↷</button></div>
+    <div class="tools"><button id="add-number" type="button">＋ 수 추가</button><button id="toggle-settings" type="button" aria-expanded="true" aria-controls="settings">설정</button><button id="undo" type="button" disabled aria-label="되돌리기" title="되돌리기 (Ctrl/⌘+Z)">↶</button><button id="redo" type="button" disabled aria-label="다시 하기" title="다시 하기 (Ctrl/⌘+Shift+Z)">↷</button></div>
   </div>
   <main class="workspace">
     <section class="board" aria-label="자리별 수 모형">
@@ -34,7 +34,7 @@
         <div id="lesson" class="lesson" hidden><div class="sr-only"><strong id="lesson-title"></strong><p id="lesson-hint"></p></div><button id="subtract" type="button" class="primary" aria-describedby="lesson-hint" hidden></button></div>
         <div class="unit-key"><div id="unit-model" aria-hidden="true"></div><strong id="unit-label">작은 정육면체 1개 = 1</strong></div>
       </div>
-      <div id="columns" class="columns"></div>
+      <div id="model-rows" class="model-rows"></div>
       <p id="message" role="status" aria-live="polite" hidden></p>
       <p id="save-status" role="status" hidden>저장 상태 확인 중</p>
     </section>

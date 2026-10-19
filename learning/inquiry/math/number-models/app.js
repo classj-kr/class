@@ -13,6 +13,7 @@
     cancelAnimationFrame(fitFrame);
     fitFrame = requestAnimationFrame(() => {
       const columns = $('columns');
+      if (C.rows(state).length > 1) { columns.style.removeProperty('--model-zoom'); return; }
       if (innerWidth <= 900) { columns.style.removeProperty('--model-zoom'); return; }
       const boxes = [...columns.querySelectorAll('.block-cloud')].flatMap(cloud => {
         const block = cloud.querySelector('.block'), svg = block?.querySelector('svg');
@@ -80,20 +81,27 @@
       $('subtract').disabled = !ready;
       if (example.subtract) $('subtract').textContent = C.format(C.total(example.subtract), mode) + ' 빼기';
     }
-    $('columns').style.setProperty('--places', indexes.length);
-    $('columns').innerHTML = indexes.map(i => {
-      const n = s.counts[i], bundle = allowed(() => C.exchange(s, i, 'bundle', mode)), split = allowed(() => C.exchange(s, i, 'split', mode));
+    const list = C.rows(state);
+    document.body.classList.toggle('comparing', list.length > 1);
+    $('add-number').disabled = list.length >= C.MAX_ROWS;
+    $('model-rows').innerHTML = list.map((row, rowIndex) => {
+      const active = rowIndex === state.selected[mode], label = `수 ${String.fromCharCode(65 + rowIndex)}`;
+      return `<section class="model-row${active ? ' selected' : ''}" data-row="${rowIndex}" aria-label="${label}">
+      <div class="row-heading" ${list.length === 1 ? 'hidden' : ''}><button type="button" data-select-row="${rowIndex}" aria-pressed="${active}">${label}<span class="row-total">${state.showTotal ? C.format(C.total(row.counts), mode) : '?'}</span></button><button type="button" data-remove-row="${rowIndex}" aria-label="${label} 삭제">삭제</button></div>
+      <div ${active ? 'id="columns"' : ''} class="columns" style="--places:${indexes.length}">${indexes.map(i => {
+      const n = row.counts[i], bundle = allowed(() => C.exchange(row, i, 'bundle', mode)), split = allowed(() => C.exchange(row, i, 'split', mode));
       return `<article class="place-column" data-index="${i}" aria-label="${info.values[i]} 모형 ${n}개">
-        <div class="place-heading" tabindex="-1"><div class="place-value"><h2>${info.values[i]}</h2><span class="place-name">${info.labels[i]}</span></div><div class="counter-buttons"><button type="button" data-action="remove" aria-label="${info.values[i]} 모형 1개 지우기" ${n ? '' : 'disabled'}>−</button><span class="count"><b>${n}</b>개</span><button type="button" data-action="add" aria-label="${info.values[i]} 모형 1개 놓기" ${allowed(() => C.add(s, i, 1, mode)) ? '' : 'disabled'}>＋</button></div></div>
+        <div class="place-heading" tabindex="-1"><div class="place-value"><h2>${info.values[i]}</h2><span class="place-name">${info.labels[i]}</span></div><div class="counter-buttons"><button type="button" data-action="remove" aria-label="${info.values[i]} 모형 1개 지우기" ${n ? '' : 'disabled'}>−</button><span class="count"><b>${n}</b>개</span><button type="button" data-action="add" aria-label="${info.values[i]} 모형 1개 놓기" ${allowed(() => C.add(row, i, 1, mode)) ? '' : 'disabled'}>＋</button></div></div>
         <div class="block-cloud" data-shape="${i}" role="img" aria-label="${info.values[i]} 모형 ${n}개">${Array.from({ length: n }, () => `<span class="block" aria-hidden="true">${C.blockSVG(i)}</span>`).join('')}</div>
         <div class="exchange-buttons"><button type="button" data-action="bundle" title="${indexes.includes(i-1) ? info.values[i-1] + ' 모형 1개로 묶기' : '가장 큰 자리'}" ${bundle ? '' : 'disabled'}>← 10개 묶기</button><button type="button" data-action="split" title="${indexes.includes(i+1) ? info.values[i+1] + ' 모형 10개로 풀기' : '가장 작은 자리'}" ${split ? '' : 'disabled'}>1개 풀기 →</button></div>
       </article>`;
+    }).join('')}</div></section>`;
     }).join('');
     $('clear').disabled = !C.total(s.counts);
     $('undo').disabled = !undo.length; $('redo').disabled = !redo.length;
     fitModels();
     if (focus) {
-      const target = document.querySelector(`[data-index="${focus.index}"] [data-action="${focus.action}"]`);
+      const target = document.querySelector(`#columns [data-index="${focus.index}"] [data-action="${focus.action}"]`);
       if (target && !target.disabled) target.focus({ preventScroll: true });
       else target?.closest('.place-column').querySelector('.place-heading').focus({ preventScroll: true });
     }
@@ -104,12 +112,16 @@
       if (JSON.stringify(next) === JSON.stringify(state)) { render(); return; }
       undo.push(copy(state)); if (undo.length > 60) undo.shift();
       redo = []; state = next; render(); persist();
-      if (text) message(text);
+      message(text || '');
     } catch (error) { render(); message(error.message, true); }
   }
   function update(transform, text) {
     if (busy) return;
-    try { const next = copy(state); next.scenes[next.mode] = transform(next.scenes[next.mode]); commit(next, text); }
+    try {
+      let next = copy(state); next.scenes[next.mode] = transform(next.scenes[next.mode]);
+      next = C.changePlaces(next, next.scenes[next.mode].places);
+      commit(next, text);
+    }
     catch (error) { render(); message(error.message, true); }
   }
   function history(direction) {
@@ -125,13 +137,13 @@
     try { nextScene = C.exchange(s, index, direction, mode); }
     catch (error) { message(error.message, true); return; }
     const removed = direction === 'bundle' ? 10 : 1, added = direction === 'bundle' ? 1 : 10, target = direction === 'bundle' ? index-1 : index+1;
-    const restoreFocus = document.activeElement?.closest(`[data-index="${index}"] [data-action="${direction}"]`);
+    const restoreFocus = document.activeElement?.closest(`#columns [data-index="${index}"] [data-action="${direction}"]`);
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     busy = true; edited = true;
     const controls = [...document.querySelectorAll('button,input,select')].map(el => [el, el.disabled]);
     controls.forEach(([el]) => { el.disabled = true; });
     if (!reduced) {
-      [...document.querySelectorAll(`[data-index="${index}"] .block`)].slice(-removed).forEach(el => el.classList.add('is-leaving'));
+      [...document.querySelectorAll(`#columns [data-index="${index}"] .block`)].slice(-removed).forEach(el => el.classList.add('is-leaving'));
       await new Promise(resolve => setTimeout(resolve, 300));
     }
     controls.forEach(([el, disabled]) => { el.disabled = disabled; });
@@ -139,12 +151,12 @@
     previous.scenes[mode] = nextScene;
     const values = C.MODES[mode].values, total = C.format(C.total(nextScene.counts), mode);
     commit(previous, `${values[index]} 모형 ${removed}개 → ${values[target]} 모형 ${added}개. ${state.showTotal ? '전체 값은 ' + total + ' 그대로예요.' : '전체 값은 그대로예요.'}`);
-    const column = document.querySelector(`[data-index="${target}"]`);
+    const column = document.querySelector(`#columns [data-index="${target}"]`);
     column.classList.add('is-exchanged');
     [...column.querySelectorAll('.block')].slice(-added).forEach(el => el.classList.add('is-arriving'));
     const cloud = column.querySelector('.block-cloud'); cloud.scrollTop = cloud.scrollHeight;
     if (restoreFocus) {
-      const button = document.querySelector(`[data-index="${index}"] [data-action="${direction}"]`);
+      const button = document.querySelector(`#columns [data-index="${index}"] [data-action="${direction}"]`);
       (button.disabled ? button.closest('.place-column').querySelector('.place-heading') : button).focus({ preventScroll: true });
     }
   }
@@ -168,10 +180,30 @@
     if (key) update(() => C.exampleScene(key), '예시의 모형을 놓았어요. 묶기나 풀기를 해 보세요.');
   });
   $('subtract').addEventListener('click', () => update(s => C.subtract(s, state.mode), '빼려는 모형을 지웠어요. 남은 수를 확인해 보세요.'));
-  $('columns').addEventListener('click', event => {
+  function selectRow(index) {
+    if (index === state.selected[state.mode]) return;
+    state = C.selectRow(state, index); render(); persist();
+  }
+  $('add-number').addEventListener('click', () => {
+    if (busy) return;
+    commit(C.addRow(state));
+    showSettings(true); $('number-input').focus(); $('number-input').select();
+  });
+  $('model-rows').addEventListener('click', event => {
+    if (busy) return;
+    const select = event.target.closest('[data-select-row]');
+    if (select) {
+      const index = Number(select.dataset.selectRow);
+      selectRow(index);
+      document.querySelector(`[data-select-row="${index}"]`).focus({ preventScroll: true });
+      return;
+    }
+    const remove = event.target.closest('[data-remove-row]');
+    if (remove) { commit(C.removeRow(state, Number(remove.dataset.removeRow))); return; }
     const button = event.target.closest('[data-action]');
     if (!button || button.disabled || busy) return;
     const index = Number(button.closest('[data-index]').dataset.index), action = button.dataset.action;
+    selectRow(Number(button.closest('[data-row]').dataset.row));
     if (action === 'bundle' || action === 'split') exchange(index, action);
     else update(s => C.add(s, index, action === 'add' ? 1 : -1, state.mode), `${C.MODES[state.mode].values[index]} 모형 1개를 ${action === 'add' ? '놓았어요.' : '지웠어요.'}`);
   });
@@ -191,7 +223,8 @@
     if (back) { $('back-slot').append(back); $('back-slot').hidden = false; }
   }, { once: true });
   render();
-  new ResizeObserver(fitModels).observe($('columns'));
+  new ResizeObserver(fitModels).observe($('model-rows'));
+  window.addEventListener('resize', fitModels);
   window.SiteStorage.open('number-models').then(opened => {
     store = opened;
     store.onError(() => { failed = true; saveStatus('저장하지 못했어요. 잠시 후 다시 조작하면 재시도해요.', true); });
