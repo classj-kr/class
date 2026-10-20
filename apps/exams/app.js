@@ -59,21 +59,58 @@
     });
   }
   function newQuestion(kind) { draft.push({ kind, content: '', choices: kind === 'choice' ? ['','','',''] : kind === 'ox' ? ['O','X'] : [], answer: kind === 'short' ? '' : null, aliases: [], explanation: '' }); editQuestions(); }
+  const statusLabel = status => status === 'draft' ? '준비 중' : status === 'open' ? '진행 중' : '종료';
   async function teacherHome() {
     show('teacherHome'); const data = await api('/mine'); const list = $('examList'); list.replaceChildren();
     if (!data.exams.length) list.append(node('p', '아직 만든 시험이 없습니다.'));
-    data.exams.forEach(e => { const row = node('div', undefined, 'topline'); const a = node('a', `${e.title} · 방번호 ${e.code} · ${e.status === 'draft' ? '준비 중' : e.status === 'open' ? '진행 중' : '종료'}`); a.href = '?id=' + encodeURIComponent(e.id) + '&mode=teacher'; row.append(a); list.append(row); });
+    data.exams.forEach(e => {
+      const row = node('div', undefined, 'exam-row'); const a = node('a', e.title); a.href = '?id=' + encodeURIComponent(e.id) + '&mode=teacher';
+      row.append(a, node('span', `방번호 ${e.code} · ${e.questionCount}문항 · ${statusLabel(e.status)}${e.mine ? ' · 내 시험' : e.ownerName ? ` · ${e.ownerName}` : ''}`, 'muted')); list.append(row);
+    });
+  }
+  // 파일 하나 = 시험 하나. 시험을 만들고 AI 추출 결과를 바로 문항으로 저장한다.
+  async function createFromPdf(file, duration, status) {
+    const title = file.name.replace(/\.pdf$/i, '').trim().slice(0, 80) || '시험';
+    if (!/\.pdf$/i.test(file.name) && file.type !== 'application/pdf') throw new Error('PDF 파일이 아닙니다.');
+    if (file.size > 20 * 1024 * 1024) throw new Error('20MB 이하만 올릴 수 있습니다.');
+    status('시험 만드는 중…');
+    const created = await api('/', 'POST', { title, durationMinutes: duration });
+    status('AI로 문항 추출 중…');
+    const response = await fetch('/api/teacher-ai/extract-exam', { method: 'POST', headers: { 'Content-Type': 'application/pdf' }, body: file });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(`시험은 만들었지만 문항 추출 실패: ${data.message || '다시 시도해 주세요.'}`);
+    await api('/' + encodeURIComponent(created.id), 'PUT', { title, durationMinutes: duration, questions: data.questions });
+    return `방번호 ${created.code} · ${data.questions.length}문항 추출 · 정답 확인 필요`;
+  }
+  async function uploadPdfs(files) {
+    const duration = Number($('newDuration').value);
+    if (!Number.isInteger(duration) || duration < 1 || duration > 180) { notice('제한시간은 1~180분으로 정해 주세요.'); return; }
+    const pdfs = [...files]; if (!pdfs.length) return;
+    notice(''); const host = $('uploadList');
+    const rows = pdfs.map(file => { const li = node('li'); const state = node('span', '대기 중', 'muted'); li.append(node('span', file.name), state); host.append(li); return state; });
+    // AI 호출이 몰리지 않도록 두 개씩 처리한다.
+    let next = 0;
+    const worker = async () => {
+      while (next < pdfs.length) {
+        const index = next++; const label = rows[index];
+        const status = text => { label.textContent = text; label.className = 'muted'; };
+        try { label.textContent = await createFromPdf(pdfs[index], duration, status); label.className = 'ok'; }
+        catch (error) { label.textContent = error.message; label.className = 'error'; }
+      }
+    };
+    await Promise.all([worker(), worker()]);
+    await teacherHome();
   }
   async function teacherExam() {
-    state = await api('/' + encodeURIComponent(examId)); show('teacherExam'); const e = state.exam;
+    state = await api('/' + encodeURIComponent(examId) + '?mode=teacher'); show('teacherExam'); const e = state.exam;
     $('examHeading').textContent = e.title; $('examMeta').textContent = `방번호 ${e.code} · ${e.durationMinutes}분 · ${e.status === 'draft' ? '준비 중' : e.status === 'open' ? '진행 중' : '종료'}`;
     $('editTitle').value = e.title; $('editDuration').value = e.durationMinutes; draft = structuredClone(state.questions); editQuestions();
-    $('draftTools').hidden = e.status !== 'draft'; $('startButton').hidden = e.status !== 'draft'; $('closeButton').hidden = e.status !== 'open';
+    $('draftTools').hidden = e.status !== 'draft'; $('startButton').hidden = e.status !== 'draft'; $('closeButton').hidden = e.status !== 'open'; $('deleteButton').hidden = !e.mine;
     const host = $('resultsTable'); host.replaceChildren();
     if (!state.members.length) host.append(node('p', '아직 입장한 학생이 없습니다.'));
     else {
-      const table = node('table'); const head = node('tr'); ['번호','이름','답한 문항','점수','상태'].forEach(t => head.append(node('th', t))); table.append(head);
-      state.members.forEach(m => { const row = node('tr'); [m.number,m.name,`${m.answered}/${state.questions.length}`,`${m.score}/${state.questions.length}`,m.submittedAt ? '제출' : deadlinePassed() ? '시간 종료' : '응시 중'].forEach(t => row.append(node('td', String(t)))); table.append(row); }); host.append(table);
+      const table = node('table'); const head = node('tr'); ['학년','반','번호','이름','답한 문항','점수','상태'].forEach(t => head.append(node('th', t))); table.append(head);
+      state.members.forEach(m => { const row = node('tr'); [m.grade ?? '-',m.classNumber ?? '-',m.number,m.name,`${m.answered}/${state.questions.length}`,`${m.score}/${state.questions.length}`,m.submittedAt ? '제출' : deadlinePassed() ? '시간 종료' : '응시 중'].forEach(t => row.append(node('td', String(t)))); table.append(row); }); host.append(table);
     }
   }
   function deadlinePassed() { const deadline = Date.parse(state.exam.deadline || ''); return state.exam.status !== 'open' || !Number.isFinite(deadline) || Date.now() + serverOffset >= deadline; }
@@ -135,8 +172,13 @@
     if (value !== (state.answers.find(a => a.question_id === q.id)?.response || '')) await saveAnswer(q.id, { response: value });
   }
   $('joinCode').value = (params.get('code') || '').replace(/\D/g,'').slice(0,4);
-  $('joinForm').onsubmit = event => { event.preventDefault(); run(async () => { const result = await api('/join', 'POST', { code: $('joinCode').value, number: Number($('joinNumber').value), name: $('joinName').value }); setUrl(result.exam.id); await studentExam(); }); };
-  $('createForm').onsubmit = event => { event.preventDefault(); run(async () => { const result = await api('/', 'POST', { title: $('newTitle').value, durationMinutes: Number($('newDuration').value) }); setUrl(result.id, true); await teacherExam(); }); };
+  async function join(code) { const result = await api('/join', 'POST', { code, grade: $('joinGrade').value, classNumber: $('joinClass').value, number: Number($('joinNumber').value), name: $('joinName').value }); setUrl(result.exam.id); await studentExam(); }
+  $('joinForm').onsubmit = event => { event.preventDefault(); run(() => join($('joinCode').value)); };
+  $('newPdfs').onchange = () => { const files = $('newPdfs').files; run(() => uploadPdfs(files)).finally(() => { $('newPdfs').value = ''; }); };
+  const zone = $('dropZone');
+  ['dragenter','dragover'].forEach(type => zone.addEventListener(type, event => { event.preventDefault(); zone.classList.add('dragging'); }));
+  ['dragleave','drop'].forEach(type => zone.addEventListener(type, () => zone.classList.remove('dragging')));
+  zone.addEventListener('drop', event => { event.preventDefault(); run(() => uploadPdfs(event.dataTransfer.files)); });
   $('extractButton').onclick = () => run(async () => {
     const file = $('pdfFile').files[0]; if (!file) throw new Error('PDF 시험지를 선택해 주세요.'); if (file.size > 20 * 1024 * 1024) throw new Error('PDF는 20MB 이하로 올려 주세요.');
     $('extractButton').disabled = true; notice('PDF에서 문항을 추출하고 있습니다…');
