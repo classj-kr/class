@@ -26,7 +26,7 @@ test('generated bars have exactly four beats; seeds and settings are reproducibl
         assert.equal(c.bars.length, 8);
         c.bars.forEach(bar => assert.equal(bar.reduce((n, e) => n + Math.round(Core.VALUES[e.v] * 12), 0), 48));
         assert.deepEqual(c, Core.chart({ level, bpm: 100 }, seed));
-        assert.equal(c.duration, 19.2);
+        assert.equal(c.duration, 32 * 60 / c.bpm);
         assert.equal(Core.judge(c, c.targets).accuracy, 100);
         assert.equal(Core.judge(c, []).accuracy, 0);
     }
@@ -77,7 +77,7 @@ test('short rounds and tied notes use the same chart timing and scorer', () => {
     for (const length of [1, 4, 8]) for (let level = 0; level < Core.LEVELS.length; level++) {
         const chart = Core.chart({ level, bpm: 100 }, 123, length);
         assert.equal(chart.bars.length, length);
-        assert.equal(chart.duration, length * 4 * .6);
+        assert.equal(chart.duration, length * 4 * 60 / chart.bpm);
         assert.equal(Core.judge(chart, chart.targets).accuracy, 100);
     }
     const tied = Core.fromBars({ level: 4, bpm: 100 }, [[{ v: 'e' }, { v: 'e', tie: true }, { v: 'q' }, { v: 'h' }]]);
@@ -176,8 +176,8 @@ test('the complete human performance connects all 68 inputs to their own notes, 
     }
 });
 
-test('the same 90 ms input variation stays playable at 60, 80 and 100 BPM', () => {
-    for (const bpm of [60, 80, 100]) for (let seed = 0; seed < 40; seed++) {
+test('the same 90 ms input variation stays playable at 60, 80 and 90 BPM', () => {
+    for (const bpm of [60, 80, 90]) for (let seed = 0; seed < 40; seed++) {
         const chart = Core.chart({ level: 3, bpm }, seed);
         const taps = chart.targets.map((time, index) => time + .09 * Math.sin(index * 2.1));
         const result = Core.judge(chart, taps);
@@ -225,8 +225,8 @@ test('an early extra cannot permanently occupy the actual upcoming strike', () =
 });
 test('tempo limits and slow defaults depend on the rhythm subdivision', () => {
     for (const level of [3, 7]) {
-        assert.deepEqual(Core.tempoRange(level), { min: 40, max: 100, initial: 60 });
-        assert.equal(Core.settings({ level, bpm: 140 }).bpm, 100);
+        assert.deepEqual(Core.tempoRange(level), { min: 40, max: 90, initial: 60 });
+        for (const bpm of [90, 95, 100, 140]) assert.equal(Core.settings({ level, bpm }).bpm, 90);
         assert.equal(Core.settings({ level, bpm: 10 }).bpm, 40);
         assert.equal(Core.settings({ level }).bpm, 60);
     }
@@ -248,6 +248,19 @@ test('the mixed human trace separates timing mistakes from an actual omission an
     assert.equal(trace[16].accepted, true); assert.equal(trace[16].reason, 'hit');
     assert.equal(result.marks[16].hit, true); assert.equal(result.marks[16].points, 1);
     assert.equal(trace[17].target, 17); assert.equal(trace[17].accepted, true);
+});
+
+test('the recorded 90 BPM Space performance has 75 received attacks, nine unpaired targets and one timing error', () => {
+    const input = require('./fixtures/rhythm-90-space-input.json');
+    const chart = Core.chart(input, input.seed), beat = 60 / input.bpm;
+    const { result, inputs } = Core.analyze(chart, input.tapBeats.map(value => value * beat));
+    assert.equal(chart.targets.length, 84);
+    assert.equal(inputs.length, input.input.keydowns);
+    assert.equal(result.played, 75); assert.equal(result.hits, 74);
+    assert.equal(result.misses, 9); assert.equal(result.timingWrong, 1); assert.equal(result.extras, 0);
+    assert.equal(result.accuracy, 88.1);
+    assert.deepEqual(result.marks.filter(mark => !mark.hit).map(mark => Math.round(mark.time / beat * 1000) / 1000), input.missingBeats);
+    assert.equal(new Set(inputs.map(input => input.target)).size, 75, 'none of the received attacks is discarded or used twice');
 });
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
     let clock = 1000000, blocked = false, configured = true;
@@ -273,7 +286,8 @@ test('classroom lifecycle, permissions, server scoring, retries, stale rounds, s
     configured = false;
     await request('/rooms', {}, '', true, 403);
     configured = true;
-    const host = await request('/rooms', { level: 2, bpm: 100 }, '', true);
+    const host = await request('/rooms', { level: 3, bpm: 100 }, '', true);
+    assert.equal(host.state.config.bpm, 90, 'room creation enforces the sixteenth-note limit');
     const path = '/rooms/' + host.state.code;
     const student = await request(path + '/join', { name: '학생' });
     await request(path, undefined, '', false, 403);
@@ -281,8 +295,10 @@ test('classroom lifecycle, permissions, server scoring, retries, stale rounds, s
     await request(path + '/start', {}, student.token, true, 403);
     await request(path + '/start', {}, host.token, true, 409);
     await request(path + '/ready', { ready: true }, student.token);
-    const state = await request(path + '/start', { level: 2, bpm: 100 }, host.token, true);
+    const state = await request(path + '/start', { level: 7, bpm: 140 }, host.token, true);
+    assert.equal(state.config.bpm, 90, 'direct requests cannot bypass the mixed-rhythm limit');
     const round = await request(path + '/begin', { roundId: state.roundId }, student.token);
+    assert.equal(round.chart.bpm, 90);
     await request(path + '/begin', { roundId: state.roundId }, student.token, false, 409);
     await request(path + '/result', { roundId: state.roundId, taps: round.chart.targets }, student.token, false, 409);
     clock += 30000;

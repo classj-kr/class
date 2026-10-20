@@ -9,6 +9,7 @@ import subprocess
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 WORK = ROOT / "outputs" / "qa" / "classical-audio"
@@ -18,7 +19,13 @@ API = "https://commons.wikimedia.org/w/api.php"
 
 def request(url):
     req = urllib.request.Request(url, headers={"User-Agent": "ClassJ-AudioAudit/1.0 (educational audio source verification)"})
-    return urllib.request.urlopen(req, timeout=90)
+    for attempt in range(4):
+        try:
+            return urllib.request.urlopen(req, timeout=90)
+        except urllib.error.HTTPError as error:
+            if error.code not in (429, 503) or attempt == 3:
+                raise
+            time.sleep(max(10, int(error.headers.get("Retry-After", "30"))))
 
 
 def api(**params):
@@ -57,7 +64,7 @@ def probe(file):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["baseline", "search", "info", "download"])
+    parser.add_argument("mode", choices=["baseline", "search", "info", "history", "download", "page"])
     parser.add_argument("values", nargs="*")
     args = parser.parse_args()
     if args.mode == "baseline":
@@ -89,23 +96,41 @@ if __name__ == "__main__":
             time.sleep(1)
         filename = "search-" + hashlib.sha256("|".join(args.values).encode()).hexdigest()[:10] + ".json"
         save(filename, output)
-        print(json.dumps(output, ensure_ascii=False))
+        print(json.dumps({"saved": filename, "queries": len(output)}, ensure_ascii=False))
     elif args.mode == "info":
         rows=info(args.values)
         filename="info-"+hashlib.sha256("|".join(args.values).encode()).hexdigest()[:10]+".json"
         save(filename, rows)
-        print(json.dumps(rows, ensure_ascii=False))
+        print(json.dumps({"saved": filename, "files": len(rows)}, ensure_ascii=False))
+    elif args.mode == "page":
+        for url in args.values:
+            filename = "page-" + hashlib.sha256(url.encode()).hexdigest()[:10] + ".html"
+            with request(url) as response:
+                (WORK / filename).write_bytes(response.read())
+            print(json.dumps({"url": url, "saved": filename}), flush=True)
+    elif args.mode == "history":
+        result=api(action="query", prop="imageinfo", iiprop="url|size|sha1|timestamp|comment",
+                   iilimit=10, titles="|".join(args.values))
+        filename="history-"+hashlib.sha256("|".join(args.values).encode()).hexdigest()[:10]+".json"
+        save(filename,result)
+        print(json.dumps({"saved":filename}))
     elif args.mode == "download":
         # A reviewed JSON plan names the exact source and local destination.
         plan=json.loads(pathlib.Path(args.values[0]).read_text(encoding="utf-8"))
         for row in plan:
+            if pathlib.Path(row["file"]).name != row["file"] or row["file"] in (".", ".."):
+                raise ValueError("Download destination must be a filename")
             target=WORK/"originals"/row["file"]
             target.parent.mkdir(exist_ok=True)
             if not target.exists():
+                temporary=target.with_suffix(target.suffix+".part")
                 with request(row["url"]) as response:
-                    target.write_bytes(response.read())
+                    temporary.write_bytes(response.read())
+                temporary.replace(target)
                 time.sleep(6)
+            if row.get("sourceSha1") and hashlib.sha1(target.read_bytes()).hexdigest() != row["sourceSha1"]:
+                raise ValueError("Source SHA-1 mismatch: "+row["file"])
             row["downloadSha256"]=hashlib.sha256(target.read_bytes()).hexdigest()
             row["downloadProbe"]=probe(target)
+            save("downloaded-"+pathlib.Path(args.values[0]).name,plan)
             print(json.dumps({"file":row["file"],"bytes":target.stat().st_size}),flush=True)
-        save("downloaded-plan.json",plan)

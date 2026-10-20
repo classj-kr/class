@@ -132,14 +132,17 @@ function mockAudio() {
         await fair.goto(url); await fair.selectOption('#level', '3');
         assert.equal(await fair.locator('#bpm').inputValue(), '60');
         assert.equal(await fair.locator('#bpm').getAttribute('min'), '40');
-        assert.equal(await fair.locator('#bpm').getAttribute('max'), '100');
-        await fair.locator('#bpm').fill('100'); await fair.locator('#bpm').dispatchEvent('input'); await fair.click('#start');
+        assert.equal(await fair.locator('#bpm').getAttribute('max'), '90');
+        await fair.evaluate(() => { const slider = document.getElementById('bpm'); slider.max = '140'; slider.value = '140'; slider.dispatchEvent(new Event('input')); });
+        assert.equal(await fair.locator('#bpm').inputValue(), '90', 'directly changed slider values are clamped');
+        assert.equal(await fair.locator('#bpmLimits').textContent(), '40–90 BPM');
+        await fair.click('#start');
         await fair.waitForTimeout(220); // Ensure a simulated queued event still has a positive performance timestamp.
         await fair.evaluate(() => {
-            const start = 1 + .18 + 2.4;
+            const start = 1 + .18 + 4 * 60 / 90;
             // The device's output clock trails the render clock by 120 ms.
             testAudio.getOutputTimestamp = () => ({ contextTime: testAudio.time - .12, performanceTime: performance.now() });
-            RhythmTrainer.chart({ level: 3, bpm: 100 }, 123).targets.forEach((target, index) => {
+            RhythmTrainer.chart({ level: 3, bpm: 90 }, 123).targets.forEach((target, index) => {
                 const queueDelay = index === 0 ? .2 : 0;
                 testAudio.time = start + target + .12 + (index === 0 ? 0 : .04) + queueDelay;
                 const event = new PointerEvent('pointerdown', { isPrimary: true, button: 0, bubbles: true });

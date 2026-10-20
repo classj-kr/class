@@ -7541,6 +7541,42 @@ function createClassroomPlatform(options = {}) {
   }));
 
   // ── Master Timetable Grid APIs ──
+  router.get("/school-admin/school-timetable", asyncRoute(async (req, res) => {
+    const { profile } = await requireSchoolCurriculum(req);
+    const now = new Date();
+    const year = Number(req.query.academicYear || (now.getFullYear() - (now.getMonth() < 2 ? 1 : 0)));
+    if (!Number.isInteger(year) || year < 2000 || year > 2200) {
+      throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
+    }
+    // All views read the same saved cells. Include registered classes with no
+    // timetable yet, but never return student records or another school's data.
+    const [timetable, classes, allocations] = await Promise.all([
+      pool.query(
+        `SELECT grade, class_number, day_of_week, period, subject_name, teacher_user_id, room_name
+         FROM school_master_timetable
+         WHERE school_id = $1 AND academic_year = $2
+         ORDER BY grade, class_number, day_of_week, period`, [profile.school_id, year]),
+      pool.query(
+        `SELECT grade, class_number FROM (
+           SELECT grade, class_number FROM school_master_timetable WHERE school_id = $1 AND academic_year = $2
+           UNION
+           SELECT grade, class_number FROM classroom_teachers WHERE school_id = $1 AND academic_year = $2 AND active = TRUE
+           UNION
+           SELECT grade, class_number FROM school_students WHERE school_id = $1 AND academic_year = $2
+           UNION
+           SELECT grade, class_number FROM classroom_classes WHERE school_id = $1 AND academic_year = $2
+         ) registered
+         WHERE grade BETWEEN 1 AND 12 AND class_number BETWEEN 1 AND 30
+         ORDER BY grade, class_number`, [profile.school_id, year]),
+      pool.query(
+        `SELECT grade, day_of_week, period_count FROM school_weekly_period_allocation
+         WHERE school_id = $1 AND academic_year = $2
+         ORDER BY grade, day_of_week`, [profile.school_id, year])
+    ]);
+    res.set("Cache-Control", "no-store");
+    res.json({ academicYear: year, timetable: timetable.rows, classes: classes.rows, allocations: allocations.rows });
+  }));
+
   router.get("/school-admin/master-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());

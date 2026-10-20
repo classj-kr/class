@@ -166,19 +166,19 @@ function mockAudio() {
                 await page.evaluate(beats => {
                     for (const beat of beats) {
                         testAudio.time = 1 + .18 + 3 + beat * .75;
-                    document.getElementById('pad').dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', bubbles: true }));
-                    document.getElementById('pad').dispatchEvent(new KeyboardEvent('keyup', { code: 'Space', bubbles: true }));
+                        document.getElementById('pad').dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', bubbles: true }));
+                        document.getElementById('pad').dispatchEvent(new KeyboardEvent('keyup', { code: 'Space', bubbles: true }));
                     }
                     testAudio.time = 50;
                 }, fixture.tapBeats);
                 await page.locator('#result').waitFor({ state: 'visible' });
-                assert.equal(await page.locator('#perfect').textContent(), '63');
-                assert.equal(await page.locator('#hitRate').textContent(), '음표 적중률 90.0%');
+                assert.equal(await page.locator('#perfect').textContent(), '65');
+                assert.equal(await page.locator('#hitRate').textContent(), '음표 적중률 92.9% · 입력 70회 / 음표 70개');
                 assert.equal(reports.at(-1).misses, 1, 'only the unconnected note is a miss');
                 assert.equal(reports.at(-1).taps, 70);
                 assert.equal(reports.at(-1).tapJudgments[16].target, 17);
-                assert.equal(reports.at(-1).tapJudgments[16].reason, 'timing');
-                assert.equal(reports.at(-1).tapJudgments.filter(input => !input.accepted).length, 7);
+                assert.equal(reports.at(-1).tapJudgments[16].reason, 'hit');
+                assert.equal(reports.at(-1).tapJudgments.filter(input => !input.accepted).length, 5);
                 assert.equal(await page.locator('#timingDetails, #inputCount').count(), 0);
                 await capture(page, { path: path.join(output, 'mixed-input-assignments-v6.webp'), fullPage: true });
                 const complete = require('./fixtures/rhythm-mixed-complete-input.json');
@@ -194,10 +194,10 @@ function mockAudio() {
                     testAudio.time = 50;
                 }, complete.tapBeats);
                 await page.locator('#result').waitFor({ state: 'visible' });
-                assert.equal(await page.locator('#perfect').textContent(), '57');
+                assert.equal(await page.locator('#perfect').textContent(), '61');
                 assert.equal(await page.locator('#misses').textContent(), '0');
                 assert.equal(await page.locator('#extras').textContent(), '0');
-                assert.equal(await page.locator('#timingWrong').textContent(), '11');
+                assert.equal(await page.locator('#timingWrong').textContent(), '7');
                 assert.equal(reports.at(-1).taps, 68);
                 assert.equal(reports.at(-1).input.keydowns, 68);
                 assert.equal(reports.at(-1).tapJudgments[36].target, 37);

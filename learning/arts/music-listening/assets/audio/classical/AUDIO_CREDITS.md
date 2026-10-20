@@ -1,9 +1,13 @@
 # 클래식 감상 음원 출처
 
-이 페이지에서 화면에 바로 재생되는 곡은 원곡·연주 모두 저작권 문제가 없는
-녹음만 실었습니다. 위키미디어 공용(Wikimedia Commons)을 중심으로 공개
-아카이브와 역사 음반 복원 자료에서 받아 용량을 줄여(Vorbis, 약 112kbps)
-실었습니다. 원본 링크는 아래에 있습니다.
+녹음별 제공처와 이용 조건을 아래에 기록합니다. 작곡과 연주 녹음의 권리는 별도로 확인해야 합니다.
+
+2026-10-20 음원 점검 진행 중입니다. 교체 완료 파일의 원본 URL, SHA-256,
+변환 여부와 기술 정보는 같은 폴더의 `recordings.json`에 기록합니다.
+OGG/Opus 및 MP3 원본은 바이트를 보존하고, 무손실 원본을 OGG로 제공할 때만
+Vorbis quality 8로 한 번 인코딩합니다. 아직 교체되지 않은 기존 파일에는
+약 112 kbps로 재압축한 음원과 해설에 맞지 않는 편곡이 남아 있습니다.
+이 기록은 전곡 청취 검증 완료를 의미하지 않습니다.
 
 ## 목록 (곡 번호는 classical.js의 no 기준)
 
@@ -23,7 +27,7 @@
   https://commons.wikimedia.org/wiki/File:Bach_-_Brandenburg_Concerto_5_-_1._Allegro.ogg
 
 - 04 수상 음악 〈알라 혼파이프〉 — `water-music-hornpipe.ogg`
-  연주: US Marine Band(지휘 Michelle Rakers, 2017년 실황)
+  연주: Marine Chamber Orchestra(지휘 Michelle Rakers, 2017년 실황)
   라이선스: 퍼블릭 도메인 (PD-USGov)
   https://commons.wikimedia.org/wiki/File:Handel's_Water_Music_-_12._Alla_hornpipe_-_Chamber_Orchestra_-_United_States_Marine_Band.opus
 
@@ -60,9 +64,12 @@
   https://commons.wikimedia.org/wiki/File:Haydn;_Symphony_No._94_%22Surprise%22,_2._Andante.ogg
 
 - 11 트럼펫 협주곡 3악장 — `trumpet-concerto3.ogg`
-  연주: Harry Mortimer(트럼펫) · Philharmonia Orchestra(지휘 George Weldon, 1946년 EMI 녹음)
-  라이선스: 퍼블릭 도메인
-  https://commons.wikimedia.org/wiki/File:Columbia-dx1536-cax9565.ogg
+  연주: Real Filharmonía de Galicia
+  편성: 트럼펫과 관현악
+  라이선스: CC BY 3.0
+  https://commons.wikimedia.org/wiki/File:Real_Filharmon%C3%ADa_de_Galicia_-_Haydn%27s_Trumpet_Concerto_in_E-flat_major,_Hob.VIIe-1_-_III._Finale_allegro.ogg
+  https://creativecommons.org/licenses/by/3.0
+  제공처의 OGG 파일을 추가 재압축 없이 사용합니다.
 
 - 12 윌리엄 텔 서곡 〈피날레〉 — `william-tell-finale.ogg`
   연주: US Marine Band(지휘 Timothy Foley, 관악합주 편곡, 2000년)
@@ -98,9 +105,12 @@
   https://commons.wikimedia.org/wiki/File:Tchaikovsky_Swan_Lake_Op.20_No.10._Scène.ogg
 
 - 19 동물의 사육제 〈백조〉 — `the-swan.ogg`
-  연주: Alisa Weilerstein(첼로) · Jason Yoder(피아노), 백악관 클래식 콘서트(2009년)
-  라이선스: 퍼블릭 도메인 (미국 연방정부 공무 저작물)
-  https://commons.wikimedia.org/wiki/File:20091104_Alisa_Weilerstein_and_Jason_Yoder_-_Saint_Saëns'_The_Swan.ogg
+  연주: Seattle Youth Symphony · Vilem Sokol · Neal & Nancy O’Doan(피아노)
+  편성: 첼로와 두 대의 피아노
+  라이선스: CC BY-SA 2.0
+  https://commons.wikimedia.org/wiki/File:Saint-Saens_-_The_Carnival_of_the_Animals_-_13_Le_cygne.ogg
+  https://creativecommons.org/licenses/by-sa/2.0
+  제공처의 OGG 파일을 추가 재압축 없이 사용합니다.
 
 - 20 전람회의 그림 〈키예프의 대문〉 — `great-gate-of-kiev.ogg`
   연주: Musopen 제공(연주자 정보 미표기)
@@ -117,12 +127,12 @@
   라이선스: 퍼블릭 도메인
   https://commons.wikimedia.org/wiki/File:Bolero-Maurice_Ravel-1930.ogg
 
-- 23 목신의 오후에의 전주곡 — `prelude-faun.ogg`
-  연주: Straram Symphony Orchestra(지휘 Walther Straram, 1930년 2월 24일 녹음)
-  라이선스: 퍼블릭 도메인
-  78회전판 앞뒤 두 면으로 나뉘어 있던 것을 이어붙였습니다.
-  https://commons.wikimedia.org/wiki/File:Columbia-dwx1550ix-c-wlx1289.ogg
-  https://commons.wikimedia.org/wiki/File:Columbia-dwx1550iix-c-wlx1290.ogg
+- 23 목신의 오후에의 전주곡 — `prelude-faun.mp3`
+  연주: Columbia University Orchestra
+  라이선스: Public Domain Mark 1.0 (Musopen의 해당 녹음 표기)
+  https://musopen.org/music/42994-prelude-to-the-afternoon-of-a-faun/
+  https://creativecommons.org/publicdomain/mark/1.0/
+  제공된 MP3 원본을 재압축 없이 사용. 기존 1930년 Straram 분할 음반을 교체.
 
 - 24 행성 〈목성〉 — `jupiter.ogg`
   연주: Skidmore College Orchestra (Musopen)
@@ -223,9 +233,11 @@
   https://commons.wikimedia.org/wiki/File:Rimsky-Korsakov_-_flight_of_the_bumblebee.oga
 
 - 46 헝가리 광시곡 2번 — `hungarian-rhapsody2.ogg`
-  연주: U.S. Navy Band Concert Band
-  라이선스: 퍼블릭 도메인
-  https://commons.wikimedia.org/wiki/File:Hungarian_Rhapsody_No_2.ogg
+  연주: Martha Goldstein(피아노)
+  라이선스: CC BY-SA 2.0
+  https://commons.wikimedia.org/wiki/File:Franz_Liszt_-_Second_Hungarian_Rhapsody.ogg
+  https://creativecommons.org/licenses/by-sa/2.0
+  피아노 독주 원곡 녹음이며 제공된 OGG 파일을 재압축 없이 사용합니다.
 
 - 47 베르가마스크 모음곡 〈달빛〉 — `clair-de-lune.ogg`
   연주: Laurens Goedhart(피아노)
