@@ -12,13 +12,12 @@ assert.match(
 const expectedCategories = [
   ["01", "문해·수리", "category-literacy-panel"],
   ["02", "교과 수업", "category-exploration-panel"],
-  ["03", "보드게임", "category-boardgame-panel"],
-  ["04", "개인 퍼즐", "category-puzzle-panel"],
-  ["05", "예술", "category-arts-panel"],
+  ["03", "게임·퍼즐", "category-boardgame-panel"],
+  ["04", "예술", "category-arts-panel"],
 ];
 
 const categorySections = html.match(/<section class="[^"]*category-section[^"]*" data-category-section/g) || [];
-assert.equal(categorySections.length, expectedCategories.length, "The hub must expose exactly five category sections.");
+assert.equal(categorySections.length, expectedCategories.length, "The hub must expose exactly four category sections, with solo puzzles inside board games.");
 
 for (const [number, label, panelId] of expectedCategories) {
   assert.match(
