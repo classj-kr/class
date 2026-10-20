@@ -11,7 +11,8 @@ function schoolDefaults(profile = {}, registrations = []) {
   const current = [profile, ...registrations.filter(row =>
     row.school_id === profile.school_id && row.school_name === profile.school_name &&
     Number(row.academic_year) === Number(profile.academic_year))];
-  const grades = current.flatMap(row => [Number(row.grade), ...normalizePairs(row.teaching_scope).map(pair => pair.grade)])
+  const grades = current.flatMap(row => [Number(row.grade), ...normalizePairs(row.teaching_scope).map(pair => pair.grade),
+    ...(Array.isArray(row.teaching_grades) ? row.teaching_grades.map(Number) : [])])
     .filter(grade => Number.isInteger(grade) && grade >= 1 && grade <= maxGrade);
   return { schoolLevel, schoolGrade: grades.length ? Math.max(...grades) : null };
 }

@@ -1,13 +1,13 @@
 {
   "date": "2026-10-20",
   "policy": {
-    "grade": "current student grade; highest current teacher grade in the same school and academic year",
+    "grade": "current student grade; highest current teacher grade from roster and timetable, within the same school and academic year",
     "term": "Asia/Seoul: February 15 through August 14 = semester 1; otherwise semester 2",
     "year": "January 1 through February 14 = previous year",
     "precedence": "explicit math unit/term/record and science grade links; manual selection stays until navigation"
   },
   "validation": {
-    "nodeTests": 8,
+    "nodeTests": 9,
     "browserChecks": 16,
     "browserPageErrors": 0,
     "scienceAssetHashCheck": "passed"
@@ -27,4 +27,3 @@
     "School academic schedules keep their actual March school-year boundary."
   ]
 }
-
