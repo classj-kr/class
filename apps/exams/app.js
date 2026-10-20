@@ -147,14 +147,19 @@
   const cellText = value => String(value ?? '').normalize('NFKC').trim();
   const questionNumber = value => { const m = /^(\d{1,3})(?:\s*번)?\.?$/.exec(cellText(value)); return m ? Number(m[1]) : null; };
   // 표에서 번호→정답을 찾는다. 세로표(번호 열·정답 열), 가로표(번호 행·정답 행), 번호·정답이 번갈아 나오는 표를 읽는다.
-  function answersFromRows(rows) {
+  // 한 표에 여러 시험이 섞여 있으면(학년·교과·검사형 열) 시험 이름의 학년·과목·코드와 맞는 줄만 쓴다.
+  function answersFromRows(rows, title = '') {
     const found = new Map();
     const isNumberHead = v => /^(문항\s*)?(번호|문항|no\.?)$/i.test(cellText(v));
     const isAnswerHead = v => /^(정\s*답|답|답안)$/.test(cellText(v));
+    const [grade, subject, code] = (examKey(title) || '||').split('|');
     for (let r = 0; r < rows.length; r++) {
       const row = rows[r] || []; const nc = row.findIndex(isNumberHead); const ac = row.findIndex(isAnswerHead);
       if (nc >= 0 && ac >= 0) {
-        for (let k = r + 1; k < rows.length; k++) { const n = questionNumber(rows[k]?.[nc]); const a = cellText(rows[k]?.[ac]); if (n && a && !found.has(n)) found.set(n, a); }
+        const filters = [[/^학년$/, grade, v => String(v).replace(/학년$/, '')], [/^(교과|과목)$/, subject, v => v], [/^(검사형|유형|코드|형)$/, code, v => v.toUpperCase().replace(/형$/, '')]]
+          .map(([head, want, norm]) => [row.findIndex(v => head.test(cellText(v))), want, norm]).filter(([col, want]) => col >= 0 && want);
+        const matches = data => filters.every(([col, want, norm]) => !cellText(data?.[col]) || norm(cellText(data[col])) === want);
+        for (let k = r + 1; k < rows.length; k++) { if (!matches(rows[k])) continue; const n = questionNumber(rows[k]?.[nc]); const a = cellText(rows[k]?.[ac]); if (n && a && !found.has(n)) found.set(n, a); }
       } else if (nc >= 0) {
         const answerRow = rows.slice(r + 1, r + 3).find(next => (next || []).some(isAnswerHead)) || rows[r + 1] || [];
         row.forEach((v, c) => { const n = questionNumber(v); const a = cellText(answerRow[c]); if (n && a && !isAnswerHead(a) && !found.has(n)) found.set(n, a); });
@@ -173,7 +178,7 @@
       const code = (/[A-Za-z]\d{1,3}/.exec(title) || [''])[0].toUpperCase();
       const names = [...book.SheetNames].sort((a, b) => Number(Boolean(code) && b.toUpperCase().includes(code)) - Number(Boolean(code) && a.toUpperCase().includes(code)));
       for (const name of names) {
-        const answers = answersFromRows(XLSX.utils.sheet_to_json(book.Sheets[name], { header: 1, raw: false, defval: '' }));
+        const answers = answersFromRows(XLSX.utils.sheet_to_json(book.Sheets[name], { header: 1, raw: false, defval: '' }), title);
         if (answers.size) return { answers, via: '엑셀' };
       }
       text = book.SheetNames.map(name => `# ${name}\n` + XLSX.utils.sheet_to_csv(book.Sheets[name])).join('\n');
