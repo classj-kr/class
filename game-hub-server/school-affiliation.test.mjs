@@ -12,7 +12,11 @@ test('official school affiliation distinguishes grade 1 at each level without gu
  for(const [schoolName,schoolLevel] of [['서울계상초등학교','elementary'],['중앙대학교사범대학부속중학교','middle'],['한국과학고등학교','high'],['가초등학교나분교장','elementary'],['서울교육지원청',''],['국제학교','']]){
   assert.equal(schoolDefaults({schoolName,grade:1}).schoolLevel,schoolLevel);
  }
- assert.equal(schoolDefaults({schoolName:'가중학교',grade:6}).schoolGrade,null);
+ assert.equal(schoolDefaults({schoolName:'가중학교',grade:6}).schoolGrade,1);
+ for(const schoolName of ['가초등학교','가중학교','가고등학교']){
+  assert.equal(schoolDefaults({schoolName}).schoolGrade,1);
+ }
+ assert.equal(schoolDefaults({schoolName:'미확인학교'}).schoolGrade,null);
 });
 
 test('HTML identity uses the student membership or latest active teacher registration, including dual-role admins',async()=>{

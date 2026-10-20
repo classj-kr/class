@@ -14,7 +14,7 @@ function schoolDefaults(profile = {}, registrations = []) {
   const grades = current.flatMap(row => [Number(row.grade), ...normalizePairs(row.teaching_scope).map(pair => pair.grade),
     ...(Array.isArray(row.teaching_grades) ? row.teaching_grades.map(Number) : [])])
     .filter(grade => Number.isInteger(grade) && grade >= 1 && grade <= maxGrade);
-  return { schoolLevel, schoolGrade: grades.length ? Math.max(...grades) : null };
+  return { schoolLevel, schoolGrade: grades.length ? Math.max(...grades) : schoolLevel ? 1 : null };
 }
 
 module.exports = { schoolDefaults };

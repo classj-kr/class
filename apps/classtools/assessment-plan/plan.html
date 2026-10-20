@@ -181,7 +181,7 @@
                 labelGrades();
                 // 여러 학년을 맡으면 가장 높은 담당 학년으로 시작한다.
                 gradeSelect.value = String(window.LearningDefaults.highestGrade([scope.homeroomGrade, ...scope.pairs.map(p => p.grade)]) ||
-                    (window.CLASS_SCHOOL_LEVEL === 'elementary' && Number(window.CLASS_SCHOOL_GRADE)) || 3);
+                    (window.CLASS_SCHOOL_LEVEL === 'elementary' && Number(window.CLASS_SCHOOL_GRADE)) || 1);
                 semesterSelect.value = String(defaultTerm.semester);
                 index = await (await fetch('data/index.json?v=20261006-1', { cache: 'no-cache' })).json();
                 fillSubjects();
