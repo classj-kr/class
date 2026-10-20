@@ -38,7 +38,8 @@
         <p id="examMeta"></p>
         <div id="audioTools" class="audio-tools"><strong>듣기 음원</strong><audio id="teacherAudio" controls preload="none" hidden></audio><span id="audioNote" class="muted"></span>
           <span id="audioEdit" class="actions"><label class="secondary file-button">MP3 올리기<input id="audioFile" type="file" accept="audio/mpeg,.mp3"></label><button id="audioDelete" class="secondary" type="button">음원 삭제</button></span></div>
-        <div class="actions"><button id="startButton">시험 시작</button><button id="closeButton" class="secondary">지금 종료</button><button id="deleteButton" class="danger">시험 삭제</button><button id="refreshButton" class="secondary">현황 새로고침</button></div>
+        <p id="readyNote" class="muted"></p>
+        <div class="actions"><button id="refreshButton" class="secondary">현황 새로고침</button><button id="closeButton" class="secondary">응시 마감</button><button id="deleteButton" class="danger">시험 삭제</button></div>
       </div>
       <div id="draftTools" class="panel">
         <h2>시험지 준비</h2><p>PDF에서 문항 초안을 추출한 뒤 문제와 정답을 확인하세요. 별도 정답지가 있으면 해당 내용을 정답란에 직접 입력할 수 있습니다.</p>
@@ -51,7 +52,9 @@
     </section>
     <section id="studentExam" hidden>
       <div class="panel"><div class="topline"><h2 id="studentTitle"></h2><strong id="remaining"></strong></div><p id="studentMeta"></p><audio id="studentAudio" controls preload="metadata" hidden></audio></div>
-      <div id="waitingPanel" class="panel" hidden><h2>입장 완료</h2><p>선생님이 시험을 시작할 때까지 기다려 주세요. 시작하면 문제가 자동으로 열리고 제한시간이 시작됩니다.</p></div>
+      <div id="waitingPanel" class="panel" hidden><h2>입장 완료</h2><p>아직 시험을 준비하고 있습니다. 준비가 끝나면 이 화면에 시작 버튼이 자동으로 나타납니다.</p></div>
+      <div id="beginPanel" class="panel" hidden><h2>시험 시작</h2><p id="beginInfo"></p><p class="muted">시작을 누르면 바로 제한시간이 흐릅니다. 준비가 되면 눌러 주세요.</p><button id="beginButton">시작하기</button></div>
+      <div id="closedPanel" class="panel" hidden><h2>응시 마감</h2><p>이 시험은 응시가 마감되었습니다.</p></div>
       <div id="questionPanel" class="panel"><div id="progress"></div><h3 id="questionText"></h3><img id="questionImage" class="question-image" alt="" hidden><div id="answerArea"></div><div class="actions"><button id="previousButton" class="secondary">이전</button><button id="nextButton" class="secondary">다음</button><button id="submitButton">답안 제출</button></div></div>
     </section>
   </main>

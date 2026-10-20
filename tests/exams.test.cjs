@@ -70,18 +70,27 @@ test('teacher creates an exam; students join, answer and are graded after server
       { kind: 'choice', content: '2+3?', choices: ['4','5'], answer: 1 },
       { kind: 'short', content: '우리말 이름은?', answer: '한글', aliases: ['한 글'] }
     ];
-    await request(path, 'PUT', { title: '진단평가', durationMinutes: 1, questions });
-    const before = await request(path); assert.equal(before.questions.length, 2);
+    // 정답이 빈 문항이 있으면 아직 응시할 수 없다.
+    await request(path, 'PUT', { title: '진단평가', durationMinutes: 1, questions: [{ ...questions[0], answer: null }, questions[1]] });
+    assert.equal((await request('/mine')).exams[0].ready, false);
     const joined = await request('/join', 'POST', { code: created.code, number: 1, name: '사칭' }, student);
     assert.equal(joined.member.number, 7);
     const studentCookie = `${student}; ${joined.cookie}`;
+    await request(path + '/begin', 'POST', {}, studentCookie, 409);
+    // 정답을 채우면 교사가 아무것도 누르지 않아도 응시할 수 있다.
+    await request(path, 'PUT', { title: '진단평가', durationMinutes: 1, questions });
+    const before = await request(path); assert.equal(before.questions.length, 2); assert.equal(before.exam.ready, true);
     const waiting = await request(path, 'GET', undefined, studentCookie);
     assert.equal(waiting.exam.status, 'draft');
     assert.deepEqual(waiting.questions, []);
+    assert.equal(waiting.questionCount, 2);
     assert.equal(waiting.score, null);
     await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 1 }, studentCookie, 403);
     await request(path + '/submit', 'POST', {}, studentCookie, 403);
-    await request(path + '/start', 'POST');
+    // 학생이 시작하면 그 학생의 제한시간이 흐르고, 시험 문항은 잠긴다.
+    const begun = await request(path + '/begin', 'POST', {}, studentCookie);
+    assert.ok(begun.member.deadline);
+    await request(path, 'PUT', { title: '진단평가', durationMinutes: 1, questions }, teacher, 409);
     const current = await request(path, 'GET', undefined, studentCookie);
     assert.equal(current.questions[0].answer, undefined);
     assert.equal(current.questions[1].aliases, undefined);
@@ -92,12 +101,21 @@ test('teacher creates an exam; students join, answer and are graded after server
     await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 0 }, studentCookie, 403);
     assert.equal((await request(path, 'GET', undefined, studentCookie)).score, 2);
     assert.equal((await request(path)).members[0].score, 2);
+    // 늦게 온 학생은 자기가 시작한 때부터 시간을 잰다. 그 학생의 시간이 끝나면 더 답할 수 없다.
     const late = await request('/join', 'POST', { code: created.code, number: 2, name: '둘' }, '');
     const lateCookie = late.cookie;
-    await db.query("UPDATE classroom_exams SET started_at=NOW()-INTERVAL '2 minutes' WHERE id=$1", [created.id]);
-    await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 1 }, lateCookie, 403);
-    assert.equal((await request(path, 'GET', undefined, lateCookie)).score, 0);
+    await request(path + '/begin', 'POST', {}, lateCookie);
+    await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 1 }, lateCookie);
+    await db.query("UPDATE classroom_exam_members SET started_at=NOW()-INTERVAL '2 minutes' WHERE exam_id=$1 AND number=2", [created.id]);
+    await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 0 }, lateCookie, 403);
+    assert.equal((await request(path, 'GET', undefined, lateCookie)).score, 1);
     await request('/join', 'POST', { code: created.code, number: 7, name: '학생' }, studentCookie);
+    // 마감하면 시작하지 않은 학생도, 새로 오는 학생도 응시할 수 없다.
+    const idle = await request('/join', 'POST', { code: created.code, number: 3, name: '셋' }, '');
+    await request(path + '/close', 'POST', {});
+    await request(path + '/begin', 'POST', {}, idle.cookie, 403);
+    await request('/join', 'POST', { code: created.code, number: 4, name: '넷' }, '', 403);
+    assert.deepEqual((await request(path)).members.map(m => [m.number, Boolean(m.startedAt), Boolean(m.submittedAt)]), [[2, true, false], [3, false, false], [7, true, true]]);
 
     // 같은 학교 교사는 목록에서 보고 운영할 수 있고, 삭제는 만든 교사만 한다. 다른 학교 교사는 보지 못한다.
     const shared = await request('/', 'POST', { title: '학교 공통 진단', durationMinutes: 40 }, teacher, 201);
@@ -138,7 +156,7 @@ test('teacher creates an exam; students join, answer and are graded after server
     await request('/' + shared.id, 'PUT', { title: '학교 공통 진단', durationMinutes: 40, questions: [{ ...questions[0], image: kept }, questions[1]] }, colleague);
     assert.equal((await fetch(imageUrl(orphan), { headers: { Cookie: colleague } })).status, 404, 'unused images are removed on save');
     assert.equal((await fetch(imageUrl(kept), { headers: { Cookie: ga.cookie } })).status, 403, 'students see images once the exam opens');
-    await request('/' + shared.id + '/start', 'POST', {}, colleague);
+    await request('/' + shared.id + '/begin', 'POST', {}, ga.cookie);
     const picture = await fetch(imageUrl(kept), { headers: { Cookie: ga.cookie } });
     assert.equal(picture.status, 200); assert.equal(picture.headers.get('content-type'), 'image/webp');
     assert.deepEqual(Buffer.from(await picture.arrayBuffer()), webp);
