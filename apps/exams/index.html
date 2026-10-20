@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>기초학력 진단검사 · 클래스제이</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
@@ -43,11 +46,11 @@
         <div class="actions"><button id="addChoiceButton" class="secondary">객관식 추가</button><button id="addOxButton" class="secondary">OX 추가</button><button id="addShortButton" class="secondary">단답형 추가</button><button id="saveButton">문항 저장</button></div>
       </div>    </section>
     <section id="studentExam" hidden>
-      <div class="panel"><div class="topline"><h2 id="studentTitle"></h2><strong id="remaining"></strong></div><p id="studentMeta"></p><audio id="studentAudio" controls preload="metadata" hidden></audio></div>
+      <div class="student-bar"><strong id="studentTitle"></strong><span id="studentMeta"></span><strong id="remaining"></strong><audio id="studentAudio" controls preload="metadata" hidden></audio></div>
       <div id="waitingPanel" class="panel" hidden><h2>입장 완료</h2><p>준비 중입니다. 잠시 기다려 주세요.</p></div>
       <div id="beginPanel" class="panel" hidden><h2>시험 시작</h2><p id="beginInfo"></p><button id="beginButton">시작하기</button></div>
       <div id="closedPanel" class="panel" hidden><h2>응시 마감</h2><p>이 시험은 응시가 마감되었습니다.</p></div>
-      <div id="questionPanel" class="panel"><div id="progress"></div><h3 id="questionText"></h3><img id="questionImage" class="question-image" alt="" hidden><div id="answerArea"></div><div class="actions"><button id="previousButton" class="secondary">이전</button><button id="nextButton" class="secondary">다음</button><button id="submitButton">답안 제출</button></div></div>
+      <div id="questionPanel" class="panel"><div id="progress"></div><h3 id="questionText"></h3><img id="questionImage" class="question-image" alt="" hidden><div id="answerArea"></div><div class="actions student-actions"><button id="previousButton" class="secondary">이전</button><button id="nextButton" class="secondary">다음</button><button id="submitButton">답안 제출</button></div></div>
     </section>
   </main>
 </body>
