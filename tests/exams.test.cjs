@@ -129,6 +129,9 @@ test('teacher creates an exam; students join, answer and are graded after server
     await request('/' + shared.id, 'DELETE', undefined, colleague, 403);
 
     // 학교 전체가 들어오므로 반이 다르면 번호가 같아도 입장한다. 같은 반 같은 번호는 막는다.
+    // 같은 학교 교사가 방번호를 넣으면 응시자가 되지 않고 관리 화면으로 간다. 학생 등록이 없는 다른 계정은 막는다.
+    assert.equal((await request('/join', 'POST', { code: shared.code }, colleague)).teacher, true);
+    assert.equal((await request('/join', 'POST', { code: shared.code }, outsider, 403)).code, 'STUDENT_REGISTRATION_REQUIRED');
     const ga = await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 1, number: 5, name: '가' }, '');
     await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '나' }, '');
     await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '다' }, '', 409);

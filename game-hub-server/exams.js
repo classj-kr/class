@@ -142,7 +142,14 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     const code = clean(req.body?.code, 4, true);
     if (!/^\d{4}$/.test(code)) fail(400, 'INVALID_CODE', '방번호 4자리를 입력해 주세요.');
     const user = await sessionUser(req);
+    // 같은 학교 교사가 방번호를 넣으면 응시하지 않고 관리 화면으로 보낸다.
+    if (user) {
+      const school = await teacherSchool(user);
+      const found = school ? (await pool.query('SELECT * FROM classroom_exams WHERE code=$1', [code])).rows[0] : null;
+      if (found && (String(found.owner_id) === String(user.id) || sameSchool(school, found))) return res.json({ exam: publicExam(found), teacher: true });
+    }
     const identity = await joinIdentity(req, user);
+    if (user && !Number(identity?.number)) fail(403, 'STUDENT_REGISTRATION_REQUIRED', '학생 등록 정보가 없어 입장할 수 없습니다. 담임 선생님께 알려 주세요.');
     const name = clean(identity?.name || req.body?.name, 80, true);
     const number = Number(identity?.number || req.body?.number);
     if (!Number.isInteger(number) || number < 1 || number > 60) fail(400, 'INVALID_NUMBER', '학생 번호를 1~60 사이로 입력해 주세요.');
