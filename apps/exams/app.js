@@ -36,6 +36,15 @@
       const head = node('div', undefined, 'topline'); head.append(node('h3', `${i + 1}번 · ${q.kind === 'short' ? '단답형' : q.kind === 'ox' ? 'OX' : '객관식'}`));
       const remove = node('button', '삭제', 'danger'); remove.type = 'button'; remove.onclick = () => { draft.splice(i, 1); editQuestions(); }; head.append(remove); box.append(head);
       const content = node('textarea'); content.maxLength = 2000; content.value = q.content || ''; content.oninput = () => { q.content = content.value; }; box.append(field('문제', content));
+      const figure = node('div', undefined, 'figure-edit');
+      if (q.image) {
+        const img = node('img'); img.src = imageUrl(q.image); img.alt = `${i + 1}번 그림`; img.className = 'question-image';
+        const drop = node('button', '그림 빼기', 'secondary'); drop.type = 'button'; drop.onclick = () => { q.image = null; editQuestions(); };
+        figure.append(img, drop);
+      }
+      const pick = node('label', q.image ? '그림 바꾸기' : '그림 넣기', 'file-button'); const input = node('input'); input.type = 'file'; input.accept = 'image/*';
+      input.onchange = () => run(async () => { const file = input.files[0]; if (!file) return; notice('그림을 올리고 있습니다…'); q.image = await uploadImage(examId, await imageFileToBlob(file)); editQuestions(); notice('그림을 넣었습니다. 문항 저장을 눌러 주세요.'); });
+      pick.append(input); figure.append(pick); box.append(figure);
       if (q.kind === 'choice') {
         const choices = node('div', undefined, 'choices');
         q.choices.forEach((v, ci) => choices.append(field(`${ci + 1}번 보기`, createInput(v, 300, value => { q.choices[ci] = value; }))));
@@ -58,6 +67,7 @@
       host.append(box);
     });
   }
+  const imageUrl = imageId => `/api/exams/${encodeURIComponent(examId)}/images/${encodeURIComponent(imageId)}`;
   function newQuestion(kind) { draft.push({ kind, content: '', choices: kind === 'choice' ? ['','','',''] : kind === 'ox' ? ['O','X'] : [], answer: kind === 'short' ? '' : null, aliases: [], explanation: '' }); editQuestions(); }
   const statusLabel = status => status === 'draft' ? '준비 중' : status === 'open' ? '진행 중' : '종료';
   let homeExams = [];
@@ -70,6 +80,55 @@
       headers: { 'Content-Type': 'audio/mpeg', 'X-File-Name': encodeURIComponent(file.name) }, body: file });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(data.message || '음원을 올리지 못했습니다.');
+  }
+  // 그림: 사이트의 PDF 도구와 같은 pdf.js로 쪽을 그려 AI가 알려 준 영역을 잘라 낸다.
+  const PDFJS_URL = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+  const PDFJS_WORKER_URL = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+  let pdfjsPromise;
+  function loadPdfjs() {
+    pdfjsPromise ||= import(PDFJS_URL).then(pdfjs => { pdfjs.GlobalWorkerOptions.workerSrc = PDFJS_WORKER_URL; return pdfjs; }).catch(error => { pdfjsPromise = null; throw error; });
+    return pdfjsPromise;
+  }
+  // 글자·도표가 있는 그림이라 무손실 WebP로 저장한다(품질 1이면 무손실). WebP를 못 만드는 브라우저는 PNG.
+  const canvasBlob = canvas => new Promise(resolve => canvas.toBlob(blob => blob?.type === 'image/webp' ? resolve(blob) : canvas.toBlob(resolve, 'image/png'), 'image/webp', 1));
+  async function uploadImage(id, blob) {
+    const response = await fetch('/api/exams/' + encodeURIComponent(id) + '/images', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': blob.type || 'application/octet-stream' }, body: blob });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.message || '그림을 올리지 못했습니다.');
+    return data.id;
+  }
+  async function imageFileToBlob(file) {
+    const bitmap = await createImageBitmap(file); const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas'); canvas.width = Math.round(bitmap.width * scale); canvas.height = Math.round(bitmap.height * scale);
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height); bitmap.close?.(); return canvasBlob(canvas);
+  }
+  // 문항마다 figure({page, box})가 있으면 잘라 올리고 image id로 바꾼다. 실패한 문항 번호를 돌려준다.
+  async function attachFigures(id, file, questions) {
+    const targets = questions.map((q, i) => [q, i]).filter(([q]) => q.figure); if (!targets.length) return [];
+    const failed = []; let doc;
+    try { const pdfjs = await loadPdfjs(); doc = await pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise; }
+    catch (_) { targets.forEach(([q, i]) => { delete q.figure; failed.push(i + 1); }); return failed; }
+    const pages = new Map();
+    try {
+      for (const [q, i] of targets) {
+        const { page, box } = q.figure; delete q.figure;
+        try {
+          if (!pages.has(page)) {
+            const p = await doc.getPage(page); const viewport = p.getViewport({ scale: 2.5 });
+            const canvas = document.createElement('canvas'); canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height);
+            const context = canvas.getContext('2d'); context.fillStyle = '#fff'; context.fillRect(0, 0, canvas.width, canvas.height);
+            await p.render({ canvasContext: context, viewport }).promise; pages.set(page, canvas);
+          }
+          const source = pages.get(page); const [y0, x0, y1, x1] = box;
+          const sx = Math.floor(x0 / 1000 * source.width), sy = Math.floor(y0 / 1000 * source.height);
+          const sw = Math.ceil((x1 - x0) / 1000 * source.width), sh = Math.ceil((y1 - y0) / 1000 * source.height);
+          const crop = document.createElement('canvas'); crop.width = sw; crop.height = sh;
+          crop.getContext('2d').drawImage(source, sx, sy, sw, sh, 0, 0, sw, sh);
+          q.image = await uploadImage(id, await canvasBlob(crop));
+        } catch (_) { failed.push(i + 1); }
+      }
+    } finally { doc.destroy(); }
+    return failed;
   }
   async function teacherHome() {
     show('teacherHome'); const data = await api('/mine'); homeExams = data.exams; const list = $('examList'); list.replaceChildren();
@@ -95,8 +154,12 @@
     const response = await fetch('/api/teacher-ai/extract-exam', { method: 'POST', headers: { 'Content-Type': 'application/pdf' }, body: file });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(`시험은 만들었지만 문항 추출 실패: ${data.message || '다시 시도해 주세요.'}${audioNote}`);
+    const figures = data.questions.filter(q => q.figure).length;
+    if (figures) status(`그림 ${figures}개 잘라 내는 중…`);
+    const failed = await attachFigures(created.id, file, data.questions);
     await api('/' + encodeURIComponent(created.id), 'PUT', { title, durationMinutes: duration, questions: data.questions });
-    return `방번호 ${created.code} · ${data.questions.length}문항 추출${audioNote} · 정답 확인 필요${data.note ? ` · AI 메모: ${data.note}` : ''}`;
+    const figureNote = figures ? ` · 그림 ${figures - failed.length}개${failed.length ? `(${failed.join(', ')}번 그림 실패)` : ''}` : '';
+    return `방번호 ${created.code} · ${data.questions.length}문항 추출${figureNote}${audioNote} · 정답 확인 필요${data.note ? ` · AI 메모: ${data.note}` : ''}`;
   }
   async function uploadPdfs(files) {
     const duration = Number($('newDuration').value);
@@ -184,6 +247,8 @@
     const q = questions[questionIndex]; const saved = state.answers.find(a => a.question_id === q.id);
     const nav = node('div', undefined, 'question-nav'); questions.forEach((item, i) => { const b = node('button', String(i + 1), state.answers.some(a => a.question_id === item.id) ? 'answered' : 'secondary'); b.type = 'button'; b.onclick = () => run(async () => { await saveCurrentShort(); questionIndex = i; renderQuestion(); }); nav.append(b); });
     $('progress').replaceChildren(nav, node('p', `${questionIndex + 1} / ${questions.length}`)); $('questionText').textContent = q.content;
+    const picture = $('questionImage'); picture.hidden = !q.image;
+    if (q.image) { picture.src = imageUrl(q.image); picture.alt = `${questionIndex + 1}번 문항 그림`; } else picture.removeAttribute('src');
     const area = $('answerArea'); area.replaceChildren(); const locked = deadlinePassed() || Boolean(state.member.submittedAt);
     if (q.kind === 'short') {
       const input = node('input'); input.id = 'shortAnswer'; input.maxLength = 200; input.placeholder = '답을 입력하세요'; input.value = saved?.response || ''; input.disabled = locked;
@@ -220,7 +285,10 @@
   $('extractButton').onclick = () => run(async () => {
     const file = $('pdfFile').files[0]; if (!file) throw new Error('PDF 시험지를 선택해 주세요.'); if (file.size > 20 * 1024 * 1024) throw new Error('PDF는 20MB 이하로 올려 주세요.');
     $('extractButton').disabled = true; notice('PDF에서 문항을 추출하고 있습니다…');
-    try { const response = await fetch('/api/teacher-ai/extract-exam', { method: 'POST', headers: { 'Content-Type': 'application/pdf' }, body: file }); const data = await response.json().catch(() => ({})); if (!response.ok) throw new Error(data.message || '문항 추출에 실패했습니다.'); draft = data.questions; $('extractNote').textContent = data.note || `${draft.length}문항을 추출했습니다. 정답을 확인해 주세요.`; editQuestions(); notice(''); }
+    try { const response = await fetch('/api/teacher-ai/extract-exam', { method: 'POST', headers: { 'Content-Type': 'application/pdf' }, body: file }); const data = await response.json().catch(() => ({})); if (!response.ok) throw new Error(data.message || '문항 추출에 실패했습니다.');
+      if (data.questions.some(q => q.figure)) notice('그림을 잘라 내고 있습니다…');
+      const failed = await attachFigures(examId, file, data.questions);
+      draft = data.questions; $('extractNote').textContent = [data.note || `${draft.length}문항을 추출했습니다. 정답을 확인한 뒤 문항 저장을 눌러 주세요.`, failed.length ? `${failed.join(', ')}번 그림은 잘라 내지 못했습니다. 직접 넣어 주세요.` : ''].filter(Boolean).join(' '); editQuestions(); notice(''); }
     finally { $('extractButton').disabled = false; }
   });
   $('addChoiceButton').onclick = () => newQuestion('choice'); $('addOxButton').onclick = () => newQuestion('ox'); $('addShortButton').onclick = () => newQuestion('short');
