@@ -78,9 +78,11 @@ Vorbis quality 8로 한 번 인코딩합니다. 아직 교체되지 않은 기�
   https://commons.wikimedia.org/wiki/File:Gioachino_Rossini,_William_Tell_Overture_(military_band_version,_2000).ogg
 
 - 14 마왕 — `erlking.ogg`
-  연주: Ernestine Schumann-Heink (콘트랄토, 1913년 Victor 녹음)
-  라이선스: 퍼블릭 도메인
-  https://commons.wikimedia.org/wiki/File:Schubert_-_Schumann-Heink_-_Erlkönig.ogg
+  연주: Michael Jackson(베이스바리톤)
+  라이선스: CC BY 3.0
+  https://commons.wikimedia.org/wiki/File:Schubert%27s_Erlk%C3%B6nig,_D.328_-_Michael_Jackson.ogg
+  https://creativecommons.org/licenses/by/3.0
+  1913년 음반 대신 CC BY 공개 실연으로 교체
 
 - 15 녹턴 작품 9-2 — `nocturne-op9-2.ogg`
   연주: Frank Lévy (피아노)
@@ -140,9 +142,11 @@ Vorbis quality 8로 한 번 인코딩합니다. 아직 교체되지 않은 기�
   https://commons.wikimedia.org/wiki/File:Gustav_Holst_-_the_planets,_op._32_-_iv._jupiter,_the_bringer_of_jollity.ogg
 
 - 27 메시아 〈할렐루야〉 — `hallelujah-chorus.ogg`
-  연주: London Symphony Orchestra · London Philharmonic Choir(지휘 Hermann Scherchen, 1953년)
-  라이선스: 퍼블릭 도메인
-  https://commons.wikimedia.org/wiki/File:Handel_-_Messiah,_Part_2_(Scherchen)_-_45._Hallelujah.ogg
+  연주: 국립합창단(2019년 예술의전당 실황)
+  라이선스: CC BY 3.0
+  https://commons.wikimedia.org/wiki/File:The_National_Chorus_of_Korea_-_Handel%27s_Messiah,_HWV_56_-_XLIV._Hallelujah.ogg
+  https://creativecommons.org/licenses/by/3.0
+  1953년 음반 대신 2019년 실황으로 교체
 
 - 28 피아노 소나타 11번 〈터키 행진곡〉 — `turkish-march.ogg`
   연주: Romuald Greiss(피아노, 1850년산 Budynowicz 피아노, 2000년 실황)
@@ -203,9 +207,11 @@ Vorbis quality 8로 한 번 인코딩합니다. 아직 교체되지 않은 기�
   https://commons.wikimedia.org/wiki/File:%22An_der_schönen,_blauen_Donau%22,_performed_by_the_US_Marine_Band.mp3
 
 - 40 발퀴레의 기행 — `ride-of-valkyries.ogg`
-  연주: American Symphony Orchestra(Edison Records, 1921년 12월 녹음, Edison Diamond Disc 복원)
-  라이선스: 퍼블릭 도메인
-  https://commons.wikimedia.org/wiki/File:Richard_Wagner_-_Ride_of_the_Valkyries.ogg
+  연주: Ulm Philharmonic · James Allen Gähres(지휘)
+  라이선스: EFF Open Audio License v1
+  https://commons.wikimedia.org/wiki/File:Richard_Wagner_-_The_Valkyrie_-_Ride_of_the_Valkyries.flac
+  https://web.archive.org/web/20070208085151/http://www.eff.org/IP/Open_licenses/20010421_eff_oal_1.0.html
+  1921년 음반 대신 울름 필하모닉의 실연 녹음. 무손실 FLAC에서 OGG로 한 번 변환.
 
 - 41 페르 귄트 〈아침 기분〉 — `morning-mood.ogg`
   연주: Czech National Symphony Orchestra("Musopen Symphony", 2012)
@@ -245,28 +251,20 @@ Vorbis quality 8로 한 번 인코딩합니다. 아직 교체되지 않은 기�
   https://commons.wikimedia.org/wiki/File:Clair_de_lune_(Claude_Debussy)_Suite_bergamasque.ogg
 
 - 50 랩소디 인 블루 — `rhapsody-in-blue.ogg`
-  연주: Paul Whiteman Orchestra · 조지 거슈윈(피아노, 1924년 최초 녹음)
-  라이선스: 퍼블릭 도메인
-  https://commons.wikimedia.org/wiki/File:1st_recording_of_Rhapsody_In_Blue_-_Paul_Whiteman_Orch._and_George_Gershwin_piano_(1924_version).ogg
+  연주: Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)
+  라이선스: Public domain
+  https://commons.wikimedia.org/wiki/File:US_Marine_Band_Rhapsody_in_Blue.oga
+  1924년 역사적 음반 대신 같은 초연 편성의 2018년 연주로 교체
 
-## 못 찾았거나 뺀 곡 (음원 없이 기존 "찾아 듣기" 링크만 남음)
+## 확인이 남은 곡
 
-- 13 피아노 5중주 〈송어〉 4악장 — Musopen에 European Archive 실연이 있으나
-  자동 다운로드 차단 때문에 이번 작업에서는 원본 파일 주소를 확보하지 못해 보류.
-- 25 피터와 늑대 — 위키미디어 공용에 오디오 파일 자체가 없음(사진 자료만 있음).
-- 26 청소년을 위한 관현악 입문(브리튼) — 작곡가 사후 70년이 아직 지나지 않아 원곡 저작권이 살아 있음(2046년까지).
-- 30 사브르 댄스(하차투리안) — 위와 같은 이유로 제외(2048년까지).
-- 48 로미오와 줄리엣 〈기사들의 춤〉 — 실제 연주 녹음을 찾지 못함(합성음만 있음).
-- 49 카르미나 부라나 〈오 운명의 여신이여〉(오르프) — 작곡가 사후 70년이 아직 지나지 않아 원곡 저작권이 살아 있음(2052년까지).
+전체 50곡의 확인 범위와 미해결 항목은 `docs/qa/classical-audio/review.json` 및
+`review.html`에 기록합니다. 파일 검사 통과는 실제 청음이나 음악적 일치의 확인을 뜻하지 않습니다.
+연주자·편성·판본·원곡과 녹음의 이용 조건이 확인되지 않은 후보는 채택하지 않았습니다.
+공식 영상은 다운로드하거나 추출하여 재게시하지 않았습니다.
+## 확인이 남은 곡
 
-## 다음에 곡을 더 늘릴 때
-
-같은 방식으로 찾으면 됩니다: 위키미디어 공용에서 곡 검색 → 파일 설명 페이지에서
-라이선스 확인 → 퍼블릭 도메인을 우선하고, CC BY 계열만 이 표에 추가.
-작곡가 사후 70년이 안 지난 곡은 연주 라이선스와 무관하게 원곡 저작권이
-남아 있으므로 제외합니다.
-
-위키미디어 공용은 짧은 시간에 요청을 몰아치면 429(속도 제한)를 걸고,
-한 번 걸리면 다음 요청이 다시 카운트다운을 리셋시키는 것으로 보입니다.
-파일 하나당 5~10초 이상 간격을 두고, 429를 맞으면 최소 10분은 아예
-요청을 보내지 않고 기다린 뒤 다시 시도하세요.
+전체 50곡의 확인 범위와 미해결 항목은 `docs/qa/classical-audio/review.json` 및
+`review.html`에 기록합니다. 파일 검사 통과는 실제 청음이나 음악적 일치의 확인을 뜻하지 않습니다.
+연주자·편성·판본·원곡과 녹음의 이용 조건이 확인되지 않은 후보는 채택하지 않았습니다.
+공식 영상은 다운로드하거나 추출하여 재게시하지 않았습니다.

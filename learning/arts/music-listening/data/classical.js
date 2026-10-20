@@ -13,7 +13,7 @@ const AUDIO_LOCAL = {
   '10': { file: 'haydn-surprise.ogg', performer: '보스턴 교향악단 · 세르게 쿠세비츠키 지휘(1929년 녹음)', license: '퍼블릭 도메인' },
   '11': { file: 'trumpet-concerto3.ogg', performer: "Real Filharmonía de Galicia", license: 'CC BY 3.0', revision: 'f01b2855d6ab' },
   '12': { file: 'william-tell-finale.ogg', performer: 'US Marine Band(지휘 Timothy Foley)', license: '퍼블릭 도메인', note: '관악합주 편곡이며 전곡 녹음 중 7분 30초부터가 피날레입니다.' },
-  '14': { file: 'erlking.ogg', performer: 'Ernestine Schumann-Heink(콘트랄토, 1913년 녹음)', license: '퍼블릭 도메인' },
+  '14': {"file": "erlking.ogg", "performer": "Michael Jackson(베이스바리톤)", "license": "CC BY 3.0", "revision": "2fc3ce470fdd"},
   '15': { file: 'nocturne-op9-2.ogg', performer: 'Frank Lévy(피아노)', license: '퍼블릭 도메인', revision: 'be9eb1f9326a' },
   '16': { file: 'hungarian-dance5.ogg', performer: 'Artur Nikisch(피아노, 1906년 피아노 롤 녹음)', license: '퍼블릭 도메인', note: '원곡은 피아노 네 손 연주곡이며, 이 녹음은 역사적인 피아노 롤 연주입니다.' },
   '17': { file: 'waltz-of-flowers.ogg', performer: 'US Air Force Band(편곡 Lawrence Odom)', license: '퍼블릭 도메인', note: '관악합주 편곡입니다.' },
@@ -24,7 +24,7 @@ const AUDIO_LOCAL = {
   '22': { file: 'bolero.ogg', performer: '모리스 라벨 본인 지휘(1930년 녹음)', license: '퍼블릭 도메인' },
   '23': { file: 'prelude-faun.mp3', performer: "Columbia University Orchestra", license: '퍼블릭 도메인', revision: '708c0cf674fa' },
   '24': { file: 'jupiter.ogg', performer: 'Skidmore College Orchestra(Musopen)', license: 'Musopen Attribution', revision: '2d947467948d' },
-  '27': { file: 'hallelujah-chorus.ogg', performer: 'London Symphony Orchestra · London Philharmonic Choir(지휘 Hermann Scherchen, 1953년 녹음)', license: '퍼블릭 도메인' },
+  '27': {"file": "hallelujah-chorus.ogg", "performer": "국립합창단(2019년 예술의전당 실황)", "license": "CC BY 3.0", "revision": "f58bc1e56a69"},
   '28': { file: 'turkish-march.ogg', performer: 'Romuald Greiss(피아노, 2000년 실황)', license: '퍼블릭 도메인', revision: '65d728bec126' },
   '29': { file: 'moldau.ogg', performer: 'Musopen Symphony Orchestra(2012년)', license: 'CC0', revision: '84663550a99b' },
   '31': { file: 'toccata-fugue-dminor.ogg', performer: 'Ashtar Moïra(오르간)', license: '퍼블릭 도메인' },
@@ -36,7 +36,7 @@ const AUDIO_LOCAL = {
   '37': { file: 'carmen-prelude.ogg', performer: 'Philadelphia Symphony Orchestra(지휘 Leopold Stokowski, 1919년 녹음)', license: '퍼블릭 도메인', note: '1923년 이전 녹음이라 미국에서 저작인접권이 만료됐습니다.' },
   '38': { file: 'can-can.ogg', performer: 'Musopen 제공(연주자 정보 미표기)', license: '퍼블릭 도메인' },
   '39': { file: 'blue-danube.ogg', performer: 'US Marine Band(지휘 Albert F. Schoepper)', license: '퍼블릭 도메인', note: '취주악(윈드밴드) 편곡입니다.' },
-  '40': { file: 'ride-of-valkyries.ogg', performer: 'American Symphony Orchestra(Edison Records, 1921년 녹음)', license: '퍼블릭 도메인' },
+  '40': {"file": "ride-of-valkyries.ogg", "performer": "Ulm Philharmonic · James Allen Gähres(지휘)", "license": "EFF Open Audio License v1", "revision": "c4f67cdeece7"},
   '41': { file: 'morning-mood.ogg', performer: 'Czech National Symphony Orchestra(Musopen Symphony, 2012년)', license: '퍼블릭 도메인', revision: '3207072ffef9' },
   '42': { file: 'hall-of-mountain-king.ogg', performer: 'Czech National Symphony Orchestra(Musopen Symphony, 2012년)', license: '퍼블릭 도메인', revision: '3bfa7424d3a1' },
   '43': { file: 'wedding-march.ogg', performer: 'European Archive 소장 녹음(연주 단체 정보 미표기)', license: '퍼블릭 도메인' },
@@ -44,7 +44,7 @@ const AUDIO_LOCAL = {
   '45': { file: 'flight-of-bumblebee.ogg', performer: 'US Army Band', license: '퍼블릭 도메인' },
   '46': { file: 'hungarian-rhapsody2.ogg', performer: 'Martha Goldstein(피아노)', license: 'CC BY-SA 2.0', revision: '398a95e7978f' },
   '47': { file: 'clair-de-lune.ogg', performer: 'Laurens Goedhart(피아노)', license: 'CC BY 3.0', revision: '2f7a1e833f4e' },
-  '50': { file: 'rhapsody-in-blue.ogg', performer: 'Paul Whiteman Orchestra · 조지 거슈윈(피아노, 1924년 최초 녹음)', license: '퍼블릭 도메인' },
+  '50': {"file": "rhapsody-in-blue.ogg", "performer": "Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)", "license": "Public domain", "revision": "eeaacacbce60", "note": "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다. 피아노: Bramwell Tovey."},
 };
 
 const pieces = [
