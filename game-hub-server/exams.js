@@ -6,6 +6,9 @@ const path = require('node:path');
 
 const uuid = () => crypto.randomUUID();
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
+const MAX_AUDIO_BYTES = 40 * 1024 * 1024;
+// ID3 태그로 시작하거나 MPEG 프레임 동기 비트로 시작하면 MP3로 본다.
+const isMp3 = data => data.length > 4 && (data.subarray(0, 3).toString('latin1') === 'ID3' || (data[0] === 0xff && (data[1] & 0xe0) === 0xe0));
 
 function normalizeQuestions(input, { publish = false } = {}) {
   if (!Array.isArray(input) || input.length > 50 || (publish && !input.length)) throw new Error('문항은 1~50개여야 합니다.');
@@ -48,7 +51,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   };
   async function initialize() {
     if (!pool) return;
-    for (const file of ['014-exams.sql', '015-exam-school.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
+    for (const file of ['014-exams.sql', '015-exam-school.sql', '016-exam-audio.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
   }
   async function exam(id, lock = false, db = pool) {
     const row = (await db.query(`SELECT * FROM classroom_exams WHERE id=$1${lock ? ' FOR UPDATE' : ''}`, [id])).rows[0];
@@ -74,7 +77,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     return row;
   }
   const publicExam = e => ({ id: e.id, code: e.code.trim(), title: e.title, durationMinutes: e.duration_minutes,
-    status: e.status, startedAt: e.started_at, ownerName: e.owner_name || '', deadline: e.started_at ? new Date(new Date(e.started_at).getTime() + e.duration_minutes * 60000).toISOString() : null });
+    status: e.status, startedAt: e.started_at, ownerName: e.owner_name || '', hasAudio: Boolean(e.audio_bytes), audioVersion: e.audio_bytes || 0, deadline: e.started_at ? new Date(new Date(e.started_at).getTime() + e.duration_minutes * 60000).toISOString() : null });
   const active = e => e.status === 'open' && e.started_at && Date.now() < new Date(e.started_at).getTime() + e.duration_minutes * 60000;
   const studentQuestions = questions => questions.map(({ answer, aliases, explanation, ...q }) => q);
   router.use((_req, res, next) => { requireDatabase(); res.set('Cache-Control', 'no-store'); next(); });
@@ -218,6 +221,56 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     if (!active(e)) fail(403, 'TIME_OVER', e.status === 'draft' ? '아직 시험이 시작되지 않았습니다.' : '응시 시간이 끝났습니다.');
     await pool.query('UPDATE classroom_exam_members SET submitted_at=COALESCE(submitted_at,NOW()) WHERE id=$1', [m.id]);
     res.json({ ok: true });
+  }));
+  // 듣기 음원. 시험당 MP3 하나를 준비 중에만 바꾼다. 학생은 시험이 열린 뒤 자유롭게 듣는다.
+  router.put('/:id/audio', express.raw({ type: () => true, limit: MAX_AUDIO_BYTES }), asyncRoute(async (req, res) => {
+    const e = await exam(req.params.id); await manager(req, e);
+    const data = req.body;
+    if (!Buffer.isBuffer(data) || !isMp3(data)) fail(400, 'INVALID_AUDIO', 'MP3 파일만 올릴 수 있습니다.');
+    let fileName = 'audio.mp3';
+    try { fileName = decodeURIComponent(String(req.headers['x-file-name'] || fileName)).slice(0, 120) || fileName; } catch (_) {}
+    const db = await pool.connect();
+    try {
+      await db.query('BEGIN');
+      const locked = await exam(e.id, true, db);
+      if (locked.status !== 'draft') fail(409, 'EXAM_STARTED', '시작한 시험은 음원을 바꿀 수 없습니다.');
+      await db.query(`INSERT INTO classroom_exam_audio(exam_id,file_name,data) VALUES($1,$2,$3)
+        ON CONFLICT(exam_id) DO UPDATE SET file_name=EXCLUDED.file_name,data=EXCLUDED.data,updated_at=NOW()`, [e.id, fileName, data]);
+      await db.query('UPDATE classroom_exams SET audio_bytes=$2 WHERE id=$1', [e.id, data.length]);
+      await db.query('COMMIT');
+      res.json({ ok: true, bytes: data.length });
+    } catch (error) { await db.query('ROLLBACK'); throw error; } finally { db.release(); }
+  }));
+  router.delete('/:id/audio', asyncRoute(async (req, res) => {
+    const e = await exam(req.params.id); await manager(req, e);
+    if (e.status !== 'draft') fail(409, 'EXAM_STARTED', '시작한 시험은 음원을 바꿀 수 없습니다.');
+    await pool.query('DELETE FROM classroom_exam_audio WHERE exam_id=$1', [e.id]);
+    await pool.query('UPDATE classroom_exams SET audio_bytes=NULL WHERE id=$1', [e.id]);
+    res.json({ ok: true });
+  }));
+  // 재생 위치 이동이 되도록 Range 요청에 필요한 부분만 읽어 보낸다.
+  router.get('/:id/audio', asyncRoute(async (req, res) => {
+    const e = await exam(req.params.id);
+    const user = await sessionUser(req);
+    const staff = user && (String(user.id) === String(e.owner_id) || sameSchool(await teacherSchool(user), e));
+    if (!staff) {
+      await member(req, e);
+      if (e.status === 'draft') fail(403, 'EXAM_NOT_STARTED', '시험이 시작되면 들을 수 있습니다.');
+    }
+    const size = Number(e.audio_bytes) || 0;
+    if (!size) fail(404, 'AUDIO_NOT_FOUND', '듣기 음원이 없습니다.');
+    let start = 0, end = size - 1;
+    const range = /^bytes=(\d*)-(\d*)$/.exec(String(req.headers.range || ''));
+    if (range && (range[1] || range[2])) {
+      if (range[1]) { start = Number(range[1]); if (range[2]) end = Math.min(Number(range[2]), size - 1); }
+      else start = Math.max(0, size - Number(range[2]));
+      if (start > end || start >= size) { res.set('Content-Range', `bytes */${size}`); return res.status(416).end(); }
+    }
+    const row = (await pool.query('SELECT substring(data FROM $2 FOR $3) AS part FROM classroom_exam_audio WHERE exam_id=$1', [e.id, start + 1, end - start + 1])).rows[0];
+    if (!row) fail(404, 'AUDIO_NOT_FOUND', '듣기 음원이 없습니다.');
+    res.set({ 'Content-Type': 'audio/mpeg', 'Accept-Ranges': 'bytes', 'Content-Length': String(row.part.length) });
+    if (range && (range[1] || range[2])) res.status(206).set('Content-Range', `bytes ${start}-${end}/${size}`);
+    res.end(row.part);
   }));
   router.delete('/:id', asyncRoute(async (req, res) => {
     const e = await exam(req.params.id); await manager(req, e, { ownerOnly: true });

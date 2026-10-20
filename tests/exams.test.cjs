@@ -100,11 +100,33 @@ test('teacher creates an exam; students join, answer and are graded after server
     await request('/' + shared.id, 'DELETE', undefined, colleague, 403);
 
     // 학교 전체가 들어오므로 반이 다르면 번호가 같아도 입장한다. 같은 반 같은 번호는 막는다.
-    await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 1, number: 5, name: '가' }, '');
+    const ga = await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 1, number: 5, name: '가' }, '');
     await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '나' }, '');
     await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '다' }, '', 409);
     const seats = (await request('/' + shared.id + '?mode=teacher', 'GET', undefined, colleague)).members;
     assert.deepEqual(seats.map(m => [m.grade, m.classNumber, m.number]), [[3, 1, 5], [3, 2, 5]]);
+
+    // 듣기 음원: 같은 학교 교사가 준비 중에 올리고, 학생은 시험이 열린 뒤 구간 요청으로 듣는다.
+    const audioUrl = base + '/api/exams/' + shared.id + '/audio';
+    const mp3 = Buffer.concat([Buffer.from('ID3'), Buffer.alloc(997, 7)]);
+    const put = (body, cookie) => fetch(audioUrl, { method: 'PUT', headers: { 'Content-Type': 'audio/mpeg', 'X-File-Name': encodeURIComponent('듣기.mp3'), Cookie: cookie }, body });
+    assert.equal((await put(Buffer.from('not audio'), colleague)).status, 400);
+    assert.equal((await put(mp3, outsider)).status, 403);
+    assert.equal((await put(mp3, colleague)).status, 200);
+    assert.equal((await request('/' + shared.id + '?mode=teacher', 'GET', undefined, colleague)).exam.hasAudio, true);
+    assert.equal((await fetch(audioUrl, { headers: { Cookie: ga.cookie } })).status, 403, 'not before the exam opens');
+    assert.equal((await fetch(audioUrl)).status, 401, 'outsiders cannot listen');
+    await request('/' + shared.id + '/start', 'POST', {}, colleague);
+    const whole = await fetch(audioUrl, { headers: { Cookie: ga.cookie } });
+    assert.equal(whole.status, 200); assert.equal(whole.headers.get('content-type'), 'audio/mpeg');
+    assert.deepEqual(Buffer.from(await whole.arrayBuffer()), mp3);
+    const part = await fetch(audioUrl, { headers: { Cookie: ga.cookie, Range: 'bytes=0-3' } });
+    assert.equal(part.status, 206); assert.equal(part.headers.get('content-range'), 'bytes 0-3/1000');
+    assert.deepEqual(Buffer.from(await part.arrayBuffer()), mp3.subarray(0, 4));
+    const tail = await fetch(audioUrl, { headers: { Cookie: ga.cookie, Range: 'bytes=-10' } });
+    assert.deepEqual(Buffer.from(await tail.arrayBuffer()), mp3.subarray(990));
+    assert.equal((await fetch(audioUrl, { headers: { Cookie: ga.cookie, Range: 'bytes=5000-' } })).status, 416);
+    assert.equal((await put(mp3, colleague)).status, 409, 'audio is fixed once the exam starts');
     await request('/' + shared.id, 'DELETE');
   } finally { await new Promise(resolve => server.close(resolve)); await db.close(); }
 });
