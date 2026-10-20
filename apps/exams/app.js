@@ -315,16 +315,13 @@
   }
   async function teacherExam() {
     state = await api('/' + encodeURIComponent(examId) + '?mode=teacher'); show('teacherExam'); const e = state.exam;
-    $('examHeading').textContent = e.title; $('examMeta').textContent = `방번호 ${e.code} · 학생마다 시작한 때부터 ${e.durationMinutes}분 · ${statusLabel(e)}`;
-    $('readyNote').textContent = e.status === 'closed' ? '응시가 마감되었습니다.'
-      : e.status === 'open' ? '학생이 시작해서 문항이 잠겼습니다. 학생은 방번호로 들어와 각자 시작합니다.'
-      : e.ready ? '학생이 방번호로 들어와 각자 시작할 수 있습니다. 첫 학생이 시작하기 전까지는 문항을 고칠 수 있습니다.'
-      : '정답이 비어 있는 문항이 있어 학생이 아직 시작할 수 없습니다. 정답을 채우고 문항 저장을 누르면 바로 응시할 수 있습니다.';
+    $('examHeading').textContent = e.title; $('examMeta').textContent = `방번호 ${e.code} · ${e.durationMinutes}분 · ${statusLabel(e)}`;
+    $('readyNote').textContent = e.status === 'draft' && !e.ready ? '정답을 채워야 학생이 시작할 수 있습니다.' : '';
     $('editTitle').value = e.title; $('editDuration').value = e.durationMinutes; draft = structuredClone(state.questions); editQuestions();
     $('draftTools').hidden = e.status !== 'draft'; $('closeButton').hidden = e.status === 'closed' || (e.status === 'draft' && !e.ready); $('deleteButton').hidden = !e.mine;
     const audioUrl = '/api/exams/' + encodeURIComponent(e.id) + '/audio';
     $('teacherAudio').hidden = !e.hasAudio; if (!e.hasAudio) $('teacherAudio').removeAttribute('src'); else if (!$('teacherAudio').src.endsWith(audioUrl + '?v=' + e.audioVersion)) $('teacherAudio').src = audioUrl + '?v=' + e.audioVersion;
-    $('audioNote').textContent = e.hasAudio ? '' : '없음 (듣기평가가 아니면 비워 두세요)';
+    $('audioNote').textContent = e.hasAudio ? '' : '없음';
     $('audioEdit').hidden = e.status !== 'draft'; $('audioDelete').hidden = !e.hasAudio;
     const host = $('resultsTable'); host.replaceChildren();
     if (!state.members.length) host.append(node('p', '아직 입장한 학생이 없습니다.'));
@@ -372,7 +369,7 @@
     const phase = started ? 'questions' : e.status === 'closed' ? 'closed' : e.ready || e.status === 'open' ? 'begin' : 'waiting';
     $('studentMeta').textContent = phase === 'questions' ? `${who} · ${state.questions.length}문항${state.score === null ? '' : ` · 자동채점 ${state.score}점`}`
       : phase === 'begin' ? `${who} · 시작 전` : phase === 'waiting' ? `${who} · 준비 중` : who;
-    $('beginInfo').textContent = `${state.questionCount}문항 · 제한시간 ${e.durationMinutes}분${e.hasAudio ? ' · 듣기 문항이 있으니 이어폰을 준비하세요' : ''}`;
+    $('beginInfo').textContent = `${state.questionCount}문항 · 제한시간 ${e.durationMinutes}분${e.hasAudio ? ' · 이어폰 준비' : ''}`;
     ['waiting', 'begin', 'closed', 'questions'].forEach(name => { $(name === 'questions' ? 'questionPanel' : name + 'Panel').hidden = phase !== name; });
     $('remaining').hidden = phase !== 'questions';
     clearInterval(timer); if (phase === 'questions') { timer = setInterval(tick, 1000); tick(); renderQuestion(); }
