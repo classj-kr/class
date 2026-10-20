@@ -6,7 +6,7 @@ const vm = require("node:vm");
 
 const root = path.join(__dirname, "..");
 const app = fs.readFileSync(
-  path.join(root, "learning", "literacy-numeracy", "math-ox", "app.js"),
+  path.join(root, "learning", "literacy-numeracy", "math-bank", "concept-ox-view.js"),
   "utf8"
 );
 const dataSource = fs.readFileSync(
@@ -14,7 +14,7 @@ const dataSource = fs.readFileSync(
   "utf8"
 );
 const index = fs.readFileSync(
-  path.join(root, "learning", "literacy-numeracy", "math-ox", "index.html"),
+  path.join(root, "learning", "literacy-numeracy", "math-bank", "index.html"),
   "utf8"
 );
 
@@ -25,17 +25,16 @@ function loadQuestions() {
   return vm.runInNewContext(`(${dataSource.slice(start + marker.length, end + 2)})`, Object.create(null));
 }
 
-test("과목과 단원 선택은 부드러운 공통 클릭음을 사용한다", () => {
-  assert.match(app, /class="filter-btn/);
-  assert.match(app, /class="unit-btn/);
-  assert.match(index, /id="questionsList"[^>]+data-sfx-feedback="none"/);
-  assert.doesNotMatch(app, /(?:data-subject|data-unit)="[^`]+data-sfx="none"/);
+test("통합 OX의 단원 선택과 문항 결과음은 구분한다", () => {
+  assert.match(index, /concept-ox-view\.js/);
+  assert.match(app, /list\.dataset\.sfxFeedback = 'none'/);
+  assert.doesNotMatch(index, /<select[^>]+data-sfx="none"/);
 });
 
 test("답 버튼은 클릭음 대신 정답 여부에 맞는 결과음만 재생한다", () => {
-  assert.match(app, /data-choice="O" data-sfx="none"/);
-  assert.match(app, /data-choice="X" data-sfx="none"/);
-  assert.match(app, /ClassGameSfx\?\.play\(isCorrect \? "success" : "error"\)/);
+  assert.match(app, /\['O', 'X'\]/);
+  assert.match(app, /button\.dataset\.sfx = 'none'/);
+  assert.match(app, /ClassGameSfx\?\.play\(correct \? 'success' : 'error'\)/);
 });
 
 test("세 자리 수 덧셈 문항은 자연스러운 문장과 읽기 쉬운 예시를 쓴다", () => {

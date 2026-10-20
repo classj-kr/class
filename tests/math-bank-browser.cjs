@@ -75,7 +75,7 @@ const UNIT = '1-1-1';
   try {
     // ── 학생: 묶음 목록 → 한 회차 ──
     const { page } = await open(1);
-    await page.goto(h.base + URL_PATH);
+    await page.goto(h.base + URL_PATH + '?unit=' + UNIT);
     await page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
     const plan = await outline(page);
     assert.equal(await page.locator('.mb-group:not(.mb-ox-group)').count(), plan.length);
@@ -190,7 +190,7 @@ const UNIT = '1-1-1';
 
     // ── 손님(둘러보기): 저장 없이도 풀린다 ──
     const guest = await open(0);
-    await guest.page.goto(h.base + URL_PATH);
+    await guest.page.goto(h.base + URL_PATH + '?unit=' + UNIT);
     const hardAt = plan.findIndex((group) => group.rounds.some((r) => r.level === '실력'));
     await guest.page.locator('.mb-group:not(.mb-ox-group)').nth(hardAt).locator('.mb-level.is-hard').first().click();
     await guest.page.locator('.mb-item').first().waitFor();
@@ -203,7 +203,7 @@ const UNIT = '1-1-1';
 
     // 아직 쌍둥이가 준비되지 않은 학년의 경계를 가상 데이터로 확인한다.
     const excluded = await open(0);
-    await excluded.page.goto(h.base + URL_PATH);
+    await excluded.page.goto(h.base + URL_PATH + '?unit=' + UNIT);
     await excluded.page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
     await excluded.page.evaluate((id) => { const unit = window.MathBank.findUnit(id); unit.grade = 11; unit.semester = 1; }, UNIT);
     await excluded.page.locator('.mb-group:not(.mb-ox-group)').first().locator('.mb-level').first().click();

@@ -84,14 +84,16 @@
     // One onset is one tap. Release times and key-hold duration never enter scoring.
     // Virtual outer boundary only; interior boundaries come from adjacent attacks.
     const hitWindow = chart => 60 / chart.bpm / 2;
-    // Compare only the written attacks. Empty sixteenth subdivisions are not
-    // timing targets: the boundary between two attacks is their BPM-based midpoint.
+    // Preserve a 100 ms practice margin when subdivisions get faster. Windows
+    // may overlap; ordered alignment resolves them without stealing later notes.
+    // The cap still excludes an attack made on the neighboring note itself.
+    const MIN_HIT_WINDOW = .1;
     function noteWindow(chart, index, side = 'both') {
         const targets = chart.targets, time = targets[index];
-        const previous = index ? (time - targets[index - 1]) / 2 : hitWindow(chart);
-        const next = index + 1 < targets.length ? (targets[index + 1] - time) / 2 : hitWindow(chart);
-        const neighbor = side === 'early' ? previous : side === 'late' ? next : Math.min(previous, next);
-        return neighbor - 60 / chart.bpm * 1e-9;
+        const margin = gap => Math.min(Math.max(gap / 2, MIN_HIT_WINDOW), gap * .9) - 60 / chart.bpm * 1e-9;
+        const previous = margin(index ? time - targets[index - 1] : hitWindow(chart) * 2);
+        const next = margin(index + 1 < targets.length ? targets[index + 1] - time : hitWindow(chart) * 2);
+        return side === 'early' ? previous : side === 'late' ? next : Math.min(previous, next);
     }
     // The notation adds spacing at beat and measure boundaries. Interpolate
     // between its actual written positions so the cursor cannot jump that space.
@@ -112,11 +114,15 @@
     }
     // Keep a small error band outside the correct half-interval. It records a
     // mistimed strike against its current note without counting it as correct.
-    const connectionWindow = (chart, index, side) => noteWindow(chart, index, side) * 1.5;
+    function connectionWindow(chart, index, side = 'both') {
+        const previous = index ? chart.targets[index] - chart.targets[index - 1] : Infinity;
+        const next = index + 1 < chart.targets.length ? chart.targets[index + 1] - chart.targets[index] : Infinity;
+        const gap = side === 'early' ? previous : side === 'late' ? next : Math.min(previous, next);
+        return Math.min(noteWindow(chart, index, side) * 1.5, gap * .95);
+    }
     function analyze(chart, taps) {
         const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
         const targets = chart.targets, marks = targets.map(time => ({ time, hit: false, error: null, points: 0, input: null })), inputs = [];
-        let cursor = 0, last = -1;
         for (const raw of clean) {
             let nearest = -1, gap = Infinity;
             targets.forEach((time, target) => {
@@ -125,29 +131,45 @@
             });
             const input = { time: raw, nearest, target: -1, error: nearest < 0 ? 0 : raw - targets[nearest], accepted: false, reason: 'extra' };
             inputs.push(input);
-            // Before a sequence has started there is no current-note ownership.
-            // A player who starts later can still hit that nearest note early.
-            if (last < 0 && nearest >= 0) cursor = nearest;
-            const previous = marks[last], previousError = previous ? raw - previous.time : 0;
-            // Repair a premature extra tap when the actual strike for that note
-            // arrives. It cannot shift the rest of the performance forward.
-            if (previous?.hit && !previous.points && Math.abs(previousError) < Math.abs(previous.error)
-                && Math.abs(previousError) <= noteWindow(chart, last, previousError < 0 ? 'early' : 'late')) {
-                const replaced = inputs[previous.input];
-                Object.assign(replaced, { target: -1, error: replaced.nearest < 0 ? 0 : replaced.time - targets[replaced.nearest], accepted: false, reason: 'extra' });
-                Object.assign(previous, { error: previousError, points: 1, input: inputs.length - 1 });
-                Object.assign(input, { target: last, error: previousError, accepted: true, reason: 'hit' });
-                continue;
+        }
+        // Align ordered attacks and inputs one-to-one, allowing real omissions and
+        // extras. Preserve note order before awarding timing points, so moving a
+        // late tap to the next note cannot make a real strike look like an omission.
+        const width = clean.length + 1, size = (targets.length + 1) * width;
+        const hits = new Uint16Array(size), playedCount = new Uint16Array(size), positions = new Float64Array(size);
+        const errors = new Float64Array(size), path = new Uint8Array(size);
+        for (let i = 0; i <= targets.length; i++) for (let j = 0; j <= clean.length; j++) {
+            if (!i && !j) continue;
+            const at = i * width + j;
+            function choose(from, point, connected, position, error, step) {
+                const h = hits[from] + point, p = playedCount[from] + connected;
+                const order = positions[from] + position, cost = errors[from] + error;
+                if (!path[at] || p > playedCount[at] || p === playedCount[at] && (order < positions[at]
+                    || order === positions[at] && (h > hits[at] || h === hits[at] && cost < errors[at]))) {
+                    hits[at] = h; playedCount[at] = p; positions[at] = order; errors[at] = cost; path[at] = step;
+                }
             }
-            // Only the next unresolved note can receive this strike. Truly passed
-            // notes are skipped; an early extra does not advance the note cursor.
-            while (cursor < marks.length && raw > marks[cursor].time + connectionWindow(chart, cursor, 'late')) cursor++;
-            if (cursor === marks.length || raw < marks[cursor].time - connectionWindow(chart, cursor, 'early')) continue;
-            const error = raw - marks[cursor].time;
-            const accepted = Math.abs(error) <= noteWindow(chart, cursor, error < 0 ? 'early' : 'late');
-            Object.assign(marks[cursor], { hit: true, error, points: accepted ? 1 : 0, input: inputs.length - 1 });
-            Object.assign(input, { target: cursor, error, accepted, reason: accepted ? 'hit' : 'timing' });
-            last = cursor++;
+            if (i) choose(at - width, 0, 0, 0, 0, 1);
+            if (j) choose(at - 1, 0, 0, 0, 0, 2);
+            if (i && j) {
+                const error = clean[j - 1] - targets[i - 1], side = error < 0 ? 'early' : 'late';
+                if (Math.abs(error) <= connectionWindow(chart, i - 1, side)) {
+                    choose(at - width - 1, Math.abs(error) <= noteWindow(chart, i - 1, side) ? 1 : 0, 1, i - 1, Math.abs(error), 3);
+                }
+            }
+        }
+        let i = targets.length, j = clean.length;
+        while (i || j) {
+            const step = path[i * width + j];
+            if (step === 1) i--;
+            else if (step === 2) j--;
+            else {
+                const input = inputs[j - 1], error = input.time - targets[i - 1];
+                const accepted = Math.abs(error) <= noteWindow(chart, i - 1, error < 0 ? 'early' : 'late');
+                Object.assign(marks[i - 1], { hit: true, error, points: accepted ? 1 : 0, input: j - 1 });
+                Object.assign(input, { target: i - 1, error, accepted, reason: accepted ? 'hit' : 'timing' });
+                i--; j--;
+            }
         }
         const played = marks.filter(mark => mark.hit), correct = played.filter(mark => mark.points === 1);
         const extras = clean.length - played.length, timingWrong = played.length - correct.length;

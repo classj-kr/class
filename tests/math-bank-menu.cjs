@@ -42,7 +42,7 @@ const PAST_LABEL = '평가원·수능 기출';
       page.on('dialog', (d) => d.accept());
 
       // 수학 문제: 드롭다운은 학기들 다음, 맨 밑이 기출이다.
-      await page.goto(h.base + BANK);
+      await page.goto(h.base + BANK + '?unit=1-1-1');
       await page.locator('.mb-group').first().waitFor();
       const labels = await page.locator('#termSelect option').allInnerTexts();
       assert.equal(labels[0], '초 1학년 1학기');

@@ -30,6 +30,7 @@ body {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
+html body { background: transparent; }
 
 /* 기존 수학 문제의 남색 물결 배경을 재사용한다. */
 body::before {
