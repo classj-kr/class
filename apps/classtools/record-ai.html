@@ -538,6 +538,7 @@
     <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
     <script src="/assets/site-storage.js?v=20261006-1"></script>
     <script src="record-traits.js?v=1"></script>
+    <script src="/assets/learning-defaults.js?v=20261020-1"></script>
     <script>
         (async () => {
             'use strict';
@@ -666,7 +667,7 @@
                 if (!currentScope || !currentScope.grade) return null;
                 const byTraits = areaSelect.value === 'behavior';
                 return {
-                    year: new Date().getFullYear(),
+                    year: window.LearningDefaults.term().year,
                     grade: currentScope.grade,
                     area: areaSelect.value,
                     semester: (!byTraits && area.semester) ? semesterSelect.value : '',
@@ -952,10 +953,8 @@
                 remove(key) { siteStore.remove(key); }
             };
 
-            // 학기 기본값: 8월~1월은 2학기, 그 밖은 1학기. 「전체 복사」 글의 「학기:」 표시가 나이스 화면의 학기와
-            // 맞아야 확장이 넣으므로, 늘 1학기로 시작하면 2학기에 만든 글이 번번이 막힌다.
-            const month = new Date().getMonth() + 1;
-            semesterSelect.value = (month >= 8 || month <= 1) ? '2학기' : '1학기';
+            // 수업 준비용 기본 학기: 한국 시간 2월 15일·8월 15일에 전환한다.
+            semesterSelect.value = window.LearningDefaults.term().semester + '학기';
 
             // store 를 갖춘 뒤라야 적어 둔 것을 되살릴 수 있다.
             swapTopics();
@@ -1088,7 +1087,10 @@
                     }));
                     scopeSelect.addEventListener('change', () => loadRoster(scopes[Number(scopeSelect.value)]));
                 }
-                await loadRoster(scopes[0] || null);
+                const highest = window.LearningDefaults.highestGrade(scopes.map(scope => scope.grade));
+                const initial = Math.max(0, scopes.findIndex(scope => Number(scope.grade) === highest));
+                if (scopes.length > 1) scopeSelect.value = String(initial);
+                await loadRoster(scopes[initial] || null);
             }
             loadScopes();
 
@@ -1372,7 +1374,7 @@
                 let items = [];
                 try {
                     const lists = await Promise.all(names.map(async (name) => {
-                        const query = new URLSearchParams({ year: new Date().getFullYear(), grade: currentScope.grade, semester, subject: name });
+                        const query = new URLSearchParams({ year: window.LearningDefaults.term().year, grade: currentScope.grade, semester, subject: name });
                         const res = await fetch('/api/teacher/assessment-plans?' + query);
                         if (!res.ok) return [];
                         return ((await res.json()).items || []);

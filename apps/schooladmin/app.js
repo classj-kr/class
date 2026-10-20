@@ -174,6 +174,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         if (annualDateInput) annualDateInput.value = formatDate(currentDate);
+        if (window.CLASS_SCHOOL_LEVEL === 'elementary') {
+            for (const id of ['curriculumGradeSelect', 'timetableGradeSelect', 'annualTimetableGradeSelect']) {
+                const select = document.getElementById(id);
+                if (select && [...select.options].some(option => option.value === String(window.CLASS_SCHOOL_GRADE))) {
+                    select.value = String(window.CLASS_SCHOOL_GRADE);
+                }
+            }
+        }
 
         // 학년도 드롭박스: 현재 학년도와 다음 학년도만 허용 (과거 학년도는 편집 대상 아님)
         if (annualYearSelect) {

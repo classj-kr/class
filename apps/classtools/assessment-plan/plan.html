@@ -140,6 +140,7 @@
 
     <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
     <script src="planning-extras.js?v=20261009-1"></script>
+    <script src="/assets/learning-defaults.js?v=20261020-1"></script>
     <script>
         (async () => {
             'use strict';
@@ -171,15 +172,17 @@
             async function prepare() {
                 const me = await api('/api/auth/me');
                 if (!me.signedIn || !me.isTeacher) { location.replace('/classtools/'); return false; }
-                const thisYear = new Date().getFullYear();
+                const defaultTerm = window.LearningDefaults.term();
+                const thisYear = defaultTerm.year;
                 yearSelect.replaceChildren(...[thisYear - 1, thisYear, thisYear + 1].map((y) => { const o = document.createElement('option'); o.value = y; o.textContent = y + '학년도'; return o; }));
                 yearSelect.value = String(thisYear);
                 await loadScope(thisYear);
                 gradeSelect.replaceChildren(...[1, 2, 3, 4, 5, 6].map((g) => { const o = document.createElement('option'); o.value = g; return o; }));
                 labelGrades();
-                // 담임은 자기 학년, 전담은 맡은 첫 학년부터 연다.
-                gradeSelect.value = String(scope.homeroomGrade || (scope.pairs[0] && scope.pairs[0].grade) || 3);
-                semesterSelect.value = new Date().getMonth() + 1 >= 8 || new Date().getMonth() + 1 <= 1 ? '2' : '1';
+                // 여러 학년을 맡으면 가장 높은 담당 학년으로 시작한다.
+                gradeSelect.value = String(window.LearningDefaults.highestGrade([scope.homeroomGrade, ...scope.pairs.map(p => p.grade)]) ||
+                    (window.CLASS_SCHOOL_LEVEL === 'elementary' && Number(window.CLASS_SCHOOL_GRADE)) || 3);
+                semesterSelect.value = String(defaultTerm.semester);
                 index = await (await fetch('data/index.json?v=20261006-1', { cache: 'no-cache' })).json();
                 fillSubjects();
                 return true;
