@@ -1,6 +1,4 @@
-// 수학 기초 OX의 모든 문항을 진짜 브라우저에서 앱이 그리는 그대로 그려, 수식이 깨진 곳과 바깥 서버로 나간 요청을 찾는다.
-// 문항을 전부 푼 학생의 기록을 돌려주는 가짜 기록 서버를 붙여, 과목 탭을 누를 때마다 app.js 가 물음과 풀이를 함께 그리게 한다.
-// 그리는 일은 app.js 가 하고(분수 바꾸기 같은 preProcess 포함), 여기서는 그려진 화면만 읽는다.
+// 통합 수학 앱에서 기존 OX의 모든 물음·풀이를 그려 수식과 로컬 글꼴을 검사한다.
 //   node tests/math-ox-render-browser.cjs               깨진 곳이나 바깥 요청이 하나라도 있으면 종료 코드 1
 //   node tests/math-ox-render-browser.cjs --dump=파일    문항별로 그려진 HTML과 수식 크기를 적어 둔다(KaTeX 판을 바꿀 때 앞뒤를 견준다)
 const path = require('node:path');
@@ -11,7 +9,8 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 
 const ROOT = path.resolve(__dirname, '..');
 const APP = path.join(ROOT, 'learning/literacy-numeracy/math-ox');
-const PAGE = '/learning/literacy-numeracy/math-ox/';
+const PAGE = '/learning/literacy-numeracy/math-bank/';
+const C = require('../learning/literacy-numeracy/math-bank/concept-ox.js');
 const dumpPath = (process.argv.find((a) => a.startsWith('--dump=')) || '').slice(7);
 
 // 실제 서버(game-hub-server/server.js 의 sendSiteHtml)가 학습 쪽마다 끼워 넣는 것. 이것들이 부르는 것도 바깥으로 나가면 안 된다.
@@ -42,7 +41,7 @@ dataSource.split(/\r?\n/).forEach((line, i) => {
   app.post('/api/learning-records/sessions', (req, res) => {
     const { activity, contentKey, contentVersion, title, href } = req.body;
     const mine = items.filter((q) => q.subject === contentKey);
-    const answered = Object.fromEntries(mine.map((q) => [q.id, { selectedChoice: 'O', isCorrect: q.answer === 'O' }]));
+    const answered = Object.fromEntries(mine.map((q) => [q.id, { selectedChoice: q.answer, isCorrect: true, firstOk: true, revealed: true }]));
     const session = { id: 'sweep-' + sessions.size, activity, title, contentKey, contentVersion, href, status: 'active', revision: 0,
       checkpoint: { answered, unit: '단원 전체' }, progress: { current: mine.length, total: mine.length }, events: [],
       summary: { firstScored: 0, firstCorrect: 0, retryCount: 0, readCount: 0, selfAssessments: 0 } };
@@ -56,7 +55,7 @@ dataSource.split(/\r?\n/).forEach((line, i) => {
     res.json({ session });
   });
   app.use('/api', (_req, res) => res.status(404).json({ error: 'NOT_IN_TEST' }));
-  app.get(PAGE, (_req, res) => res.type('html').send(fs.readFileSync(path.join(APP, 'index.html'), 'utf8').replace('</head>', SITE_TAGS + '</head>')));
+  app.get(PAGE, (_req, res) => res.type('html').send(fs.readFileSync(path.join(APP, '../math-bank/index.html'), 'utf8').replace('</head>', SITE_TAGS + '</head>')));
   app.use(express.static(ROOT));
   const server = await new Promise((resolve) => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
   const base = `http://127.0.0.1:${server.address().port}`;
@@ -74,26 +73,26 @@ dataSource.split(/\r?\n/).forEach((line, i) => {
     page.on('requestfailed', (request) => { const url = request.url(); if (url.startsWith(base + '/')) localFailures.add('실패 ' + url.slice(base.length)); });
     page.on('pageerror', (error) => pageErrors.push(String(error)));
 
-    await page.goto(base + PAGE);
-    const idle = () => page.waitForFunction(() => { const list = document.getElementById('questionsList'); return !list.inert && list.children.length > 0; }, null, { timeout: 30000 });
-    await idle();
-    const katexVersion = await page.evaluate(() => (typeof window.renderMathInElement === 'function' && window.katex ? window.katex.version : null));
-    if (!katexVersion) problems.push('KaTeX 나 auto-render 가 뜨지 않았습니다.');
-    const subjects = await page.$$eval('#filterNav .filter-btn', (buttons) => buttons.map((b) => b.dataset.subject));
+    await page.goto(base + PAGE + '?unit=3-1-1');
+    await page.locator('.mb-ox-start').waitFor();
+    const subjects = [...new Set(items.map(q => q.subject))];
+    let katexVersion;
 
     const drawn = {};
     let formulas = 0;
-    for (const subject of subjects) {
-      const expected = items.filter((q) => q.subject === subject).length;
-      const active = await page.$eval('#filterNav .filter-btn.active', (b) => b.dataset.subject);
-      if (active !== subject) await page.click(`#filterNav .filter-btn[data-subject="${subject}"]`);
-      await page.waitForFunction(([subject, expected]) => document.querySelector('#filterNav .filter-btn.active')?.dataset.subject === subject
-        && !document.getElementById('questionsList').inert
-        && document.querySelectorAll('#questionsList .question-card').length === expected, [subject, expected], { timeout: 30000 });
+    for (const unitId of [...new Set(C.links.map(link => link[2]))]) {
+      const subject = C.linksFor(unitId)[0][0];
+      const term = C.findUnit(unitId)?.oxCourse || unitId.split('-').slice(0,2).join('-');
+      if (await page.locator('#termSelect').inputValue() !== term) { await page.selectOption('#termSelect', term); await page.waitForFunction(() => !document.getElementById('main').inert); }
+      await page.selectOption('#unitSelect', unitId); await page.waitForFunction(() => !document.getElementById('main').inert);
+      await page.locator('.mb-ox-start').click();
+      await page.waitForFunction(expected => !document.getElementById('main').inert && document.querySelectorAll('.mb-ox-item').length === expected, C.idsFor(unitId).length);
+      katexVersion = await page.evaluate(() => window.katex?.version);
+      if (!katexVersion) problems.push('KaTeX가 뜨지 않았습니다.');
       await page.evaluate(() => document.fonts.ready);
-      const cards = await page.evaluate(() => [...document.querySelectorAll('#questionsList .question-card')].map((card) => {
+      const cards = await page.evaluate(() => [...document.querySelectorAll('.mb-ox-item')].map((card) => {
         const issues = [], fields = {}, boxes = [];
-        for (const [name, selector] of [['prompt', '.q-prompt'], ['reason', '.exp-content'], ['topic', '.q-topic']]) {
+        for (const [name, selector] of [['prompt', '.mb-ox-prompt'], ['reason', '.mb-ox-reason']]) {
           const el = card.querySelector(selector);
           if (!el) { issues.push(name + ': 화면에 없음'); continue; }
           fields[name] = el.innerHTML;
@@ -109,7 +108,7 @@ dataSource.split(/\r?\n/).forEach((line, i) => {
           if (stars !== -1) issues.push(name + ': 별표(**)가 글자로 보임 ⟨' + text.slice(Math.max(0, stars - 20), stars + 30).trim() + '⟩');
           for (const k of el.querySelectorAll('.katex')) { const r = k.getBoundingClientRect(); boxes.push([Math.round(r.width * 100) / 100, Math.round(r.height * 100) / 100]); }
         }
-        return { id: Number(card.id.replace('q-card-', '')), issues, fields, boxes };
+        return { id: Number(card.dataset.questionId), issues, fields, boxes };
       }));
       for (const card of cards) {
         if (drawn[card.id]) card.issues.push('같은 문항이 두 번 그려짐');
@@ -117,6 +116,8 @@ dataSource.split(/\r?\n/).forEach((line, i) => {
         formulas += card.boxes.length;
         if (card.issues.length) problems.push(`${subject} ${card.id}번\n  ` + card.issues.join('\n  '));
       }
+      await page.evaluate(() => window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
+      await page.locator('.mb-ox-start').waitFor();
     }
     for (const q of items) if (!drawn[q.id]) problems.push(`${q.subject} ${q.id}번: 어느 과목 탭에서도 그려지지 않음`);
 

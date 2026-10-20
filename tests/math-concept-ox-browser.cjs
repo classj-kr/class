@@ -92,8 +92,9 @@ const TO_WEBP = 'import sys,io;from PIL import Image;im=Image.open(io.BytesIO(sy
     }
     assert.equal(visited.size, 737);
     await page.goto(h.base + '/learning/inquiry/science-lab/'); await page.locator('.grade-navigation').waitFor();
-    const backgrounds = await page.evaluate(() => ({ bg: getComputedStyle(document.body, '::before').backgroundImage, heading: getComputedStyle(document.querySelector('.school-section > h2')).color }));
+    const backgrounds = await page.evaluate(() => ({ bg: getComputedStyle(document.body, '::before').backgroundImage, body: getComputedStyle(document.body).backgroundColor, heading: getComputedStyle(document.querySelector('.school-section > h2')).color }));
     assert.match(backgrounds.bg, /math-bank\/assets\/math-bg\.webp/); assert.equal(backgrounds.heading, 'rgb(241, 245, 249)');
+    assert.equal(backgrounds.body, 'rgba(0, 0, 0, 0)', '공통 과학 테마가 고정 배경을 덮지 않는다');
     await shot('science-desktop');
     await page.setViewportSize({ width: 360, height: 780 }); assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false); await shot('science-mobile');
     assert.deepEqual(errors, []);
