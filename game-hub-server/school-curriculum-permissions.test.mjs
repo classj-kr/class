@@ -29,6 +29,7 @@ const reads = [
   ['curriculum-hours-summary', { academicYear: '2026' }], ['bell-schedule', { academicYear: '2026' }],
   ['weekly-period-allocation', { academicYear: '2026' }],
   ['master-timetable', { academicYear: '2026', grade: '5', classNumber: '1' }],
+  ['school-timetable', { academicYear: '2026' }],
   ['specialist-teachers', {}], ['specialist-timetable', { academicYear: '2026', teacherUserId: '102' }],
   ['room-timetable', { academicYear: '2026', room: '검증음악실' }], ['rooms', {}],
   ['vacation-settings', { academicYear: '2026' }],
@@ -59,6 +60,8 @@ async function withSchool(run) {
         teacher_type TEXT, active BOOLEAN DEFAULT TRUE, academic_year INTEGER, grade INTEGER, class_number INTEGER,
         subject_name TEXT, room_name TEXT, teaching_scope JSONB, name_source TEXT
       );
+      CREATE TABLE classroom_classes (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER);
+      CREATE TABLE school_students (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER);
       INSERT INTO classroom_schools VALUES (1, '검증학교', TRUE), (2, '타교학교', TRUE);
       INSERT INTO classroom_users (id, email, display_name, role) VALUES
         (101, 'admin@example.invalid', '검증관리자', 'teacher'), (102, 'teacher@example.invalid', '검증교사', 'teacher'),

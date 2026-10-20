@@ -41,7 +41,6 @@ body::before {
     background: linear-gradient(rgba(11, 17, 32, 0.42), rgba(11, 17, 32, 0.65)), url("../../literacy-numeracy/math-bank/assets/math-bg.webp") center top / cover no-repeat #0b1120;
 }
 .catalog .school-section > h2 { color: #f1f5f9; }
-.catalog .school-section > h2 small, .catalog .classification-note { color: #cbd5e1; }
 
 button, a {
     font: inherit;
@@ -256,27 +255,29 @@ main {
 
 .subject-heading h3 {
     margin: 0;
+    min-width: 0;
     font-size: 18.5px;
     font-weight: 850;
     letter-spacing: -0.02em;
     color: var(--subject-text);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-.subject-heading h3::before {
-    content: "";
-    width: 4px;
-    height: 18px;
-    border-radius: 2px;
-    background: var(--subject);
-    display: inline-block;
+.subject-label {
+    min-width: 0;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
 }
 
 .subject-icon {
-    font-size: 18px;
-    line-height: 1;
+    display: block;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
 }
 
 .subject-count {

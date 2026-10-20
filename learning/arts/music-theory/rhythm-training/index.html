@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#111827">
     <title>리듬 트레이닝</title>
-    <link rel="stylesheet" href="styles.css?v=20261019-clean-results">
+    <link rel="stylesheet" href="styles.css?v=20261021-space-capture">
     <script src="notation.js?v=20261006-vector-notation" defer></script>
     <script src="rhythm.js?v=20261018-sequence-judge-v13" defer></script>
-    <script src="core.js?v=20261020-tempo-fair-judge" defer></script>
+    <script src="core.js?v=20261021-tempo-90" defer></script>
     <script src="questions.js?v=20261018-sequence-judge-v13" defer></script>
     <script src="lessons.js?v=20261018-sequence-judge-v13" defer></script>
     <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
-    <script src="app.js?v=20261020-tempo-fair-judge" defer></script>
+    <script src="app.js?v=20261021-space-capture" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
 <main class="shell" aria-label="리듬 트레이닝">
@@ -95,6 +95,15 @@
                 <div><span>점수</span><strong id="accuracy"></strong><small id="hitRate"></small></div>
                 <dl><div><dt>맞음</dt><dd id="perfect"></dd></div><div><dt>놓침</dt><dd id="misses"></dd></div><div><dt>박자 오류</dt><dd id="timingWrong"></dd></div><div><dt>추가 입력</dt><dd id="extras"></dd></div></dl>
                 <button id="retry" class="secondary">같은 리듬 다시</button>
+                <details id="judgmentDetails" class="judgment-details">
+                    <summary>음표별 입력 기록</summary>
+                    <p id="inputCaptureSummary"></p>
+                    <p id="inputExcluded" hidden></p>
+                    <p>입력 기록이 없는 음표와 박자가 어긋난 입력을 구분합니다. 시간은 악보 위치를 기준으로 빠르면 −, 늦으면 +로 표시합니다.</p>
+                    <div class="judgment-scroll" tabindex="0" role="region" aria-label="음표별 판정 표">
+                        <table><thead><tr><th scope="col">악보 위치</th><th scope="col">받은 입력</th><th scope="col">판정</th></tr></thead><tbody id="judgmentRows"></tbody></table>
+                    </div>
+                </details>
             </section>
             <section id="ranking" class="ranking" hidden>
                 <div class="ranking-title"><h2>우리 반 순위</h2><span id="roomPhase"></span></div>

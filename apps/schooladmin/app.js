@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const appMain = document.querySelector('.app-main');
     const viewControls = new Set(['annualYearSelect', 'curriculumGradeSelect', 'timetableGradeSelect',
         'timetableClassSelect', 'specialistTeacherSelect', 'roomNameSelect', 'annualTimetableGradeSelect',
-        'annualTimetableClassSelect', 'rosterSearch']);
+        'annualTimetableClassSelect', 'rosterSearch', 'schoolTimetableYearSelect', 'schoolTimetableGradeSelect']);
 
     function applyCurriculumPermissions(root = document) {
         document.body.dataset.curriculumAccess = curriculumCanEdit ? 'edit' : 'read';
@@ -194,6 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             annualYearSelect.value = String(selectedAcademicYear);
         }
+        schoolTimetableYearSelect.replaceChildren(...[currentAcademicYear, currentAcademicYear + 1]
+            .map(year => new Option(`${year}학년도`, String(year))));
+        schoolTimetableYearSelect.value = String(selectedAcademicYear);
 
         // Tab Switching
         tabButtons.forEach(btn => {
@@ -209,6 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (annualYearSelect) {
             annualYearSelect.addEventListener('change', async (e) => {
                 selectedAcademicYear = Number(e.target.value);
+                schoolTimetableYearSelect.value = String(selectedAcademicYear);
+                ++schoolTimetableRequest;
                 currentCalYear = selectedAcademicYear;
                 currentCalMonth = 3;
                 await loadVacationDates();
@@ -272,6 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tabId === 'timetable') {
             renderSubjectPalette();
             await loadMasterTimetable();
+        } else if (tabId === 'schoolTimetable') {
+            await loadSchoolTimetable();
         } else if (tabId === 'specialistTimetable') {
             if (await loadSpecialistTeachersList()) await loadSpecialistTimetable();
         } else if (tabId === 'roomTimetable') {
@@ -1545,6 +1552,151 @@ document.addEventListener('DOMContentLoaded', () => {
     if (timetableClassSelect) {
         timetableClassSelect.addEventListener('change', loadMasterTimetable);
     }
+
+    // --- School-wide timetable: a read-only view of the existing saved cells ---
+    const schoolTimetableYearSelect = document.getElementById('schoolTimetableYearSelect');
+    const schoolTimetableGradeSelect = document.getElementById('schoolTimetableGradeSelect');
+    const schoolTimetableStatus = document.getElementById('schoolTimetableStatus');
+    const schoolTimetableContent = document.getElementById('schoolTimetableContent');
+    const schoolTimetableHead = document.getElementById('schoolTimetableHead');
+    const schoolTimetableBody = document.getElementById('schoolTimetableBody');
+    const schoolTimetableDetail = document.getElementById('schoolTimetableDetail');
+    const printSchoolTimetableBtn = document.getElementById('printSchoolTimetableBtn');
+    let schoolTimetableData = null;
+    let schoolTimetableRequest = 0;
+    const schoolDays = ['월', '화', '수', '목', '금'];
+    const schoolSubjects = {
+        '국어': ['국', 'language'], '수학': ['수', 'math'], '사회': ['사', 'social'],
+        '과학': ['과', 'science'], '도덕': ['도', 'social'], '체육': ['체', 'pe'],
+        '음악': ['음', 'arts'], '미술': ['미', 'arts'], '영어': ['영', 'english'],
+        '바른 생활': ['바', 'social'], '바른생활': ['바', 'social'],
+        '슬기로운 생활': ['슬', 'science'], '슬기로운생활': ['슬', 'science'],
+        '즐거운 생활': ['즐', 'arts'], '즐거운생활': ['즐', 'arts'],
+        '창체': ['창', 'activity'], '자율': ['자', 'activity'], '동아리': ['동', 'activity']
+    };
+    const schoolSubjectStyle = name => schoolSubjects[name] ||
+        (name.startsWith('창체') ? ['창', 'activity'] : [name, 'other']);
+    const hasSchoolLesson = cell => cell && ((cell.subject_name && !['-', '수업없음'].includes(cell.subject_name)) || cell.teacher_user_id || cell.room_name);
+
+    async function loadSchoolTimetable() {
+        const request = ++schoolTimetableRequest;
+        const year = selectedAcademicYear;
+        schoolTimetableYearSelect.value = String(year);
+        schoolTimetableData = null;
+        schoolTimetableContent.hidden = true;
+        printSchoolTimetableBtn.disabled = true;
+        schoolTimetableStatus.textContent = `${year}학년도 시간표를 불러오는 중입니다.`;
+        schoolTimetableStatus.classList.remove('status-warning');
+        try {
+            const data = await api(`/api/school-admin/school-timetable?academicYear=${year}`);
+            if (request !== schoolTimetableRequest) return;
+            schoolTimetableData = data;
+            const selectedGrade = schoolTimetableGradeSelect.value;
+            const grades = [...new Set(data.classes.map(c => Number(c.grade)))].sort((a, b) => a - b);
+            schoolTimetableGradeSelect.replaceChildren(new Option('전체 학년', ''),
+                ...grades.map(grade => new Option(`${grade}학년`, String(grade))));
+            schoolTimetableGradeSelect.value = grades.includes(Number(selectedGrade)) ? selectedGrade : '';
+            renderSchoolTimetable();
+        } catch (error) {
+            if (request !== schoolTimetableRequest) return;
+            schoolTimetableStatus.textContent = `시간표를 불러오지 못했습니다. ${error.message} 새로고침으로 다시 시도하세요.`;
+            schoolTimetableStatus.classList.add('status-warning');
+        }
+    }
+
+    function renderSchoolTimetable() {
+        if (!schoolTimetableData) return;
+        const { classes, timetable, allocations, academicYear } = schoolTimetableData;
+        const gradeFilter = Number(schoolTimetableGradeSelect.value);
+        const shownClasses = classes.filter(c => !gradeFilter || Number(c.grade) === gradeFilter);
+        const rows = timetable.filter(c => !gradeFilter || Number(c.grade) === gradeFilter);
+        const shownAllocations = allocations.filter(c => !gradeFilter || Number(c.grade) === gradeFilter);
+        const cells = new Map(rows.map(c => [`${c.grade}_${c.class_number}_${c.day_of_week}_${c.period}`, c]));
+        const allocationMap = new Map(allocations.map(c => [`${c.grade}_${c.day_of_week}`, Number(c.period_count)]));
+        const periods = schoolDays.map((_, index) => {
+            const values = [...shownAllocations.filter(c => Number(c.day_of_week) === index + 1).map(c => Number(c.period_count)),
+                ...rows.filter(c => Number(c.day_of_week) === index + 1 && hasSchoolLesson(c)).map(c => Number(c.period))];
+            return Math.min(8, Math.max(1, ...(values.length ? values : [6])));
+        });
+        document.getElementById('schoolTimetableTable').style.minWidth = `${84 + periods.reduce((sum, p) => sum + p, 0) * 30}px`;
+        schoolTimetableContent.hidden = shownClasses.length === 0;
+        printSchoolTimetableBtn.disabled = shownClasses.length === 0;
+        if (!shownClasses.length) {
+            schoolTimetableStatus.textContent = `${academicYear}학년도에 등록된 학급이나 시간표가 없습니다. 교직원·학생 명단 또는 학급별 기초시간표를 먼저 등록하세요.`;
+            return;
+        }
+        const lessonCount = rows.filter(hasSchoolLesson).length;
+        schoolTimetableStatus.textContent = `${academicYear}학년도 · ${shownClasses.length}개 학급 · ${lessonCount}개 수업 배정${lessonCount ? '' : ' · 아직 저장된 수업이 없습니다.'}`;
+        document.getElementById('schoolTimetableCaption').textContent =
+            `${academicYear}학년도 ${gradeFilter ? `${gradeFilter}학년` : '학교 전체'} 주간 시간표`;
+        schoolTimetableHead.innerHTML = `<tr><th rowspan="2" scope="col" class="school-grade">학년</th><th rowspan="2" scope="col" class="school-class">반</th>${
+            schoolDays.map((day, i) => `<th colspan="${periods[i]}" scope="colgroup" class="school-day-start">${day}요일</th>`).join('')}</tr><tr>${
+            periods.map(count => Array.from({ length: count }, (_, p) => `<th scope="col" class="${p === 0 ? 'school-day-start' : ''}">${p + 1}</th>`).join('')).join('')}</tr>`;
+        const gradeCounts = new Map();
+        shownClasses.forEach(c => gradeCounts.set(c.grade, (gradeCounts.get(c.grade) || 0) + 1));
+        let previousGrade = null;
+        schoolTimetableBody.innerHTML = shownClasses.map(c => {
+            const firstInGrade = previousGrade !== c.grade;
+            previousGrade = c.grade;
+            let html = `<tr${firstInGrade ? ' class="school-grade-start"' : ''}>`;
+            if (firstInGrade) html += `<th scope="rowgroup" rowspan="${gradeCounts.get(c.grade)}" class="school-grade">${Number(c.grade)}</th>`;
+            html += `<th scope="row" class="school-class"><button type="button" class="school-class-link" data-grade="${Number(c.grade)}" data-class="${Number(c.class_number)}" aria-label="${Number(c.grade)}학년 ${Number(c.class_number)}반 시간표 열기">${Number(c.class_number)}</button></th>`;
+            periods.forEach((count, d) => {
+                for (let p = 1; p <= count; p++) {
+                    const cell = cells.get(`${c.grade}_${c.class_number}_${d + 1}_${p}`);
+                    const allocated = allocationMap.get(`${c.grade}_${d + 1}`);
+                    const lesson = hasSchoolLesson(cell);
+                    const inactive = !lesson && (cell?.subject_name === '수업없음' || (allocated !== undefined && p > allocated));
+                    const name = lesson ? (cell.subject_name || '배정') : '';
+                    const [short, color] = schoolSubjectStyle(name);
+                    const detail = `${c.grade}학년 ${c.class_number}반 · ${schoolDays[d]}요일 ${p}교시 · ${lesson ? name : inactive ? '수업 없음' : '미입력'}${cell?.teacher_user_id ? ' · 교과 담당 배정' : ''}${cell?.room_name ? ` · ${cell.room_name}` : ''}`;
+                    html += `<td class="${p === 1 ? 'school-day-start ' : ''}${inactive ? 'school-inactive' : ''}" title="${escapeHtml(detail)}">${
+                        lesson ? `<button type="button" class="school-lesson school-subject-${color}" aria-label="${escapeHtml(detail)}">${escapeHtml(short)}</button>` : ''
+                    }</td>`;
+                }
+            });
+            return html + '</tr>';
+        }).join('');
+        const subjects = [...new Set(rows.filter(hasSchoolLesson).map(c => c.subject_name || '배정'))].sort((a, b) => a.localeCompare(b, 'ko'));
+        document.getElementById('schoolTimetableLegend').innerHTML = subjects.map(name => {
+            const [short, color] = schoolSubjectStyle(name);
+            return `<span><b class="school-subject-${color}">${escapeHtml(short)}</b> ${escapeHtml(name)}</span>`;
+        }).join('');
+        schoolTimetableDetail.textContent = '빈칸은 미입력, 회색 칸은 주간 수업 배당에 따른 수업 없음입니다.';
+    }
+
+    schoolTimetableBody.addEventListener('click', event => {
+        const link = event.target.closest('.school-class-link');
+        if (link) {
+            timetableGradeSelect.value = link.dataset.grade;
+            if (![...timetableGradeSelect.options].some(o => o.value === link.dataset.grade)) {
+                timetableGradeSelect.add(new Option(`${link.dataset.grade}학년`, link.dataset.grade, true, true));
+            }
+            if (![...timetableClassSelect.options].some(o => o.value === link.dataset.class)) {
+                timetableClassSelect.add(new Option(`${link.dataset.class}반`, link.dataset.class));
+            }
+            timetableClassSelect.value = link.dataset.class;
+            switchTab('timetable');
+        }
+        const lesson = event.target.closest('.school-lesson');
+        if (lesson) schoolTimetableDetail.textContent = lesson.getAttribute('aria-label');
+    });
+    schoolTimetableBody.addEventListener('focusin', event => {
+        if (event.target.matches('.school-lesson')) schoolTimetableDetail.textContent = event.target.getAttribute('aria-label');
+    });
+    schoolTimetableGradeSelect.addEventListener('change', renderSchoolTimetable);
+    schoolTimetableYearSelect.addEventListener('change', () => {
+        selectedAcademicYear = Number(schoolTimetableYearSelect.value);
+        annualYearSelect.value = String(selectedAcademicYear);
+        currentCalYear = selectedAcademicYear;
+        currentCalMonth = 3;
+        loadSchoolTimetable();
+    });
+    document.getElementById('refreshSchoolTimetableBtn').addEventListener('click', loadSchoolTimetable);
+    printSchoolTimetableBtn.addEventListener('click', () => window.print());
+    window.addEventListener('focus', () => {
+        if (!document.getElementById('schoolTimetableTab').hidden && !appMain.hidden) loadSchoolTimetable();
+    });
 
     // --- Teacher Timetable (교사별 시간표) ---
     const specialistTeacherSelect = document.getElementById('specialistTeacherSelect');

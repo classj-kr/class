@@ -11,6 +11,7 @@
     let lastRound = '', streak = 0, pressedTimer = 0;
     let question = null, answered = false, selectedCells = new Set();
     let tempoLevel = null;
+    let completedPerformance = null;
     const listening = () => !syncCheck && mode === 'solo' && $('activity').value !== 'tap';
     const nodes = new Set();
     const linePositions = new WeakMap();
@@ -112,6 +113,11 @@
         if (stamp?.performanceTime > 0 && stamp.contextTime > 0) return stamp.contextTime + (performanceTime - stamp.performanceTime) / 1000;
         return audio.currentTime - (audio.outputLatency || 0) - Math.max(0, performance.now() - performanceTime) / 1000;
     }
+    function inputClock(event) {
+        const now = performance.now(), eventTime = Number(event?.timeStamp);
+        const at = eventTime > 0 && eventTime <= now && now - eventTime < 1000 ? eventTime : now;
+        return { time: run ? heardTime(at) - run.startAt : 0, queueMs: Math.round((now - at) * 1000) / 1000 };
+    }
     function silence() { for (const node of nodes) { try { node.stop(); } catch (_) {} } nodes.clear(); }
     function renderScore() {
         heads = []; lines = [];
@@ -173,6 +179,10 @@
                 cells += RhythmNotation.VALUES[note.v].cells;
             });
         });
+        if (completedPerformance?.chart === chart) {
+            paintMarks(chart.duration + 60 / chart.bpm, completedPerformance.result, false);
+            describeMarks(completedPerformance.result);
+        }
     }
     function buildListening() {
         answered = false; selectedCells = new Set();
@@ -361,9 +371,10 @@
         starting = true; controls();
         try {
             await unlock(); silence();
+            completedPerformance = null;
             const beat = 60 / chart.bpm, startAt = audio.currentTime + .18 + beat * 4;
             run = { demo, roundId, startAt, taps: [], result: C.judge(chart, []), nextMiss: 0, lastBeat: -99,
-                input: { keydowns: 0, keyups: 0, repeats: 0, ignoredFocus: 0, outside: 0 }, clocks: [], queue: [], audioPlan: [] };
+                input: { keydowns: 0, keyups: 0, repeats: 0, ignoredFocus: 0, outside: 0 }, keys: [], clocks: [], queue: [], audioPlan: [] };
             // Queue the entire short exercise on the audio rendering thread before
             // drawing. A slow or hidden page must never drop a metronome click.
             for (let click = -4; (!syncCheck || syncMode !== 'visual') && click < chart.bars.length * 4; click += syncCheck && syncMode === 'subdivision' && click >= 0 ? .25 : 1) {
@@ -427,17 +438,15 @@
         }
         if (missed) { streak = 0; feedback('miss'); }
     }
-    function tap(event) {
+    function tap(event, clock = inputClock(event)) {
         // Capture the audio-clock position before rendering. Input feedback is silent:
         // speaker/Bluetooth output delay must not produce a second, late tapping beat.
-        const now = performance.now(), eventTime = Number(event?.timeStamp);
-        const inputTime = eventTime > 0 && eventTime <= now && now - eventTime < 1000 ? eventTime : now;
-        const time = run ? heardTime(inputTime) - run.startAt : 0;
+        const time = clock.time;
         $('pad').classList.add('pressed'); clearTimeout(pressedTimer);
         pressedTimer = setTimeout(() => $('pad').classList.remove('pressed'), 100);
-        if (!run || run.demo || listening()) { if (!listening()) burst(event); return; }
-        if (time < -C.noteWindow(chart, 0, 'early') || time > chart.duration + 60 / chart.bpm / 4 || run.taps.length >= 512) { run.input.outside++; return; }
-        run.queue.push(Math.round((now - inputTime) * 1000) / 1000);
+        if (!run || run.demo || listening()) { if (!listening()) burst(event); return 'inactive'; }
+        if (time < -C.noteWindow(chart, 0, 'early') || time > chart.duration + 60 / chart.bpm / 4 || run.taps.length >= 512) { run.input.outside++; return 'outside'; }
+        run.queue.push(clock.queueMs);
         expireMisses(time);
         run.taps.push(time);
         const { result: after, inputs } = C.analyze(chart, run.taps);
@@ -454,6 +463,7 @@
             if (!syncCheck) $('feedback').textContent = input.target >= 0 ? `박자 오류 · ${notePosition(chart.targets[input.target])}` : '추가 입력';
         }
         paintMarks(time);
+        return 'recorded';
     }
     async function submitResult() {
         if (!pendingResult || !credentials) return;
@@ -474,10 +484,13 @@
         $('feedback').textContent = ''; $('combo').textContent = '';
         if (!ended.demo && !interrupted && !syncCheck) {
             const result = C.judge(chart, ended.taps);
+            completedPerformance = { chart, result };
             paintMarks(chart.duration + 60 / chart.bpm, result, false);
+            describeMarks(result);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('hitRate').textContent = `음표 적중률 ${(100 * result.hits / result.marks.length).toFixed(1)}% · 입력 ${ended.taps.length}회 / 음표 ${result.marks.length}개`;
             $('misses').textContent = result.misses; $('timingWrong').textContent = result.timingWrong; $('extras').textContent = result.extras; $('result').hidden = false;
+            renderJudgmentDetails(ended, result);
         }
         if (!ended.demo) timingReport(ended, interrupted);
         if (ended.restoreChart) { chart = ended.restoreChart; renderScore(); $('barCount').textContent = `${chart.bars.length}마디 · 4/4박자`; }
@@ -487,11 +500,48 @@
         const value = time * chart.bpm / 60;
         return `${Math.floor(value / 4) + 1}마디 ${(value % 4 + 1).toFixed(2)}박`;
     }
+    function markDescription(mark) {
+        if (!mark.hit) return '입력 기록 없음';
+        const ms = Number((mark.error * 1000).toFixed(1));
+        return `${mark.points === 1 ? '맞음' : '박자 오류'} · ${ms < 0 ? '빠름' : '늦음'} ${Math.abs(ms)}ms`;
+    }
+    function describeMarks(result) {
+        for (const head of heads) {
+            const mark = result.marks[head.index];
+            let title = head.node.querySelector('title');
+            if (!title) { title = document.createElementNS('http://www.w3.org/2000/svg', 'title'); head.node.append(title); }
+            title.textContent = `${notePosition(mark.time)} · ${markDescription(mark)}`;
+        }
+    }
+    function renderJudgmentDetails(ended, result) {
+        const body = $('judgmentRows'); body.replaceChildren();
+        $('judgmentDetails').open = false;
+        const input = ended.input;
+        $('inputCaptureSummary').textContent = `받은 스페이스바 누름 ${input.keydowns - input.repeats}회 · 뗌 ${input.keyups}회 · 전체 연주 입력 ${ended.taps.length}회`;
+        const excluded = [input.repeats && `길게 누른 반복 ${input.repeats}회`, input.ignoredFocus && `설정·버튼 조작 ${input.ignoredFocus}회`, input.outside && `연습 구간 밖 ${input.outside}회`].filter(Boolean);
+        $('inputExcluded').textContent = excluded.length ? `연주에서 제외: ${excluded.join(' · ')}` : '';
+        $('inputExcluded').hidden = !excluded.length;
+        function row(position, received, reason, kind, index) {
+            const tr = document.createElement('tr'); tr.dataset.reason = kind;
+            if (index !== undefined) tr.dataset.target = String(index + 1);
+            for (const value of [position, received, reason]) { const td = document.createElement('td'); td.textContent = value; tr.append(td); }
+            body.append(tr);
+        }
+        result.marks.forEach((mark, index) => {
+            const ms = Number((mark.error * 1000).toFixed(1));
+            const received = mark.hit ? `#${mark.input + 1} · ${ms >= 0 ? '+' : ''}${ms}ms` : '—';
+            const window = `허용 −${Math.round(C.noteWindow(chart, index, 'early') * 1000)}~+${Math.round(C.noteWindow(chart, index, 'late') * 1000)}ms`;
+            row(notePosition(mark.time), received, !mark.hit ? '입력 기록 없음' : mark.points === 1 ? '맞음' : `박자 오류 (${window})`, !mark.hit ? 'missing' : mark.points === 1 ? 'hit' : 'timing', index);
+        });
+        C.trace(chart, ended.taps).forEach((input, index) => {
+            if (input.target < 0) row(notePosition(input.time), `#${index + 1}`, '추가 입력', 'extra');
+        });
+    }
     function timingReport(ended, interrupted) {
         const result = C.judge(chart, ended.taps), beat = 60 / chart.bpm;
         const inputs = C.trace(chart, ended.taps);
         const nearestErrors = inputs.map(input => [input.nearest, Math.round((input.time - chart.targets[input.nearest]) / beat * 1000) / 1000]);
-        const report = { version: '20261020-tempo-fair-judge', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+        const report = { version: '20261021-space-capture', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
             syncMode: syncCheck ? syncMode : null,
             targets: chart.targets.length, taps: ended.taps.length, input: ended.input,
             accuracy: result.accuracy, hits: result.hits, played: result.played, misses: result.misses, extras: result.extras, timingWrong: result.timingWrong,
@@ -500,7 +550,7 @@
             tapJudgments: inputs.map((input, index) => ({ input: index + 1, target: input.target < 0 ? null : input.target + 1,
                 nearestTarget: input.nearest + 1, accepted: input.accepted, reason: input.reason,
                 errorMs: input.target < 0 ? null : Math.round(input.error * 1000) })),
-            queueMs: ended.queue, clocks: ended.clocks, audioPlan: ended.audioPlan };
+            keyEvents: ended.keys, queueMs: ended.queue, clocks: ended.clocks, audioPlan: ended.audioPlan };
         if (syncCheck && !interrupted) {
             // A comparison of observed timing, never an automatic latency correction.
             // Ignore the first four exercise beats to let the player settle into tempo.
@@ -519,7 +569,11 @@
             }
             $('phase').textContent = '동기 확인 완료';
         }
-        console.info('RHYTHM_TIMING_REPORT ' + JSON.stringify(report));
+        // Keep only this exercise's Space events, locally, so a reload cannot erase
+        // the evidence. No other keys or identifying information are recorded.
+        const serialized = JSON.stringify(report);
+        try { sessionStorage.setItem('rhythm-training-last-run-v1', serialized); } catch (_) {}
+        console.info('RHYTHM_TIMING_REPORT ' + serialized);
     }
     function updateRoom(state) {
         room = state; $('roomCode').textContent = state.code;
@@ -607,11 +661,22 @@
     for (const id of ['level', 'bpm', 'activity', 'length']) $(id).addEventListener('input', () => { updateTempoRange(id === 'level'); if (!room) fresh(); });
     $('pad').addEventListener('pointerdown', event => { if (!event.isPrimary || event.button !== 0) return; event.preventDefault(); tap(event); });
     $('pad').addEventListener('click', event => { if (event.detail === 0) tap(event); });
-    document.addEventListener('keydown', event => {
+    function recordSpace(event, clock) {
+        if (!run || run.demo) return null;
+        const entry = { type: event.type, time: clock.time, queueMs: clock.queueMs, repeat: event.repeat, disposition: '' };
+        if (run.keys.length < 4096) run.keys.push(entry);
+        return entry;
+    }
+    // Capture at the window before focused children can stop propagation. This
+    // records browser-delivered events; it cannot observe a physical key the OS
+    // or keyboard never delivers to the browser.
+    window.addEventListener('keydown', event => {
         if (event.code !== 'Space' || event.altKey || event.ctrlKey || event.metaKey) return;
+        const clock = inputClock(event), entry = recordSpace(event, clock);
         if (run && !run.demo) { run.input.keydowns++; if (event.repeat) run.input.repeats++; }
-        if (event.target.closest('input,select,textarea,a,button:not(#pad),[contenteditable=true]')) {
+        if (event.target.closest('input,select,textarea,a,button:not(#pad),summary,.judgment-scroll,[contenteditable=true]')) {
             if (run && !run.demo) run.input.ignoredFocus++;
+            if (entry) entry.disposition = 'control';
             return;
         }
         event.preventDefault();
@@ -619,9 +684,16 @@
             if (!event.repeat && !run && !starting) void play(true).catch(error => notice(error.message));
             return;
         }
-        if (!event.repeat) tap(event);
-    });
-    document.addEventListener('keyup', event => { if (event.code === 'Space' && run && !run.demo) run.input.keyups++; });
+        if (event.repeat) { if (entry) entry.disposition = 'repeat'; return; }
+        const disposition = tap(event, clock);
+        if (entry) entry.disposition = disposition;
+    }, true);
+    window.addEventListener('keyup', event => {
+        if (event.code !== 'Space' || !run || run.demo) return;
+        run.input.keyups++;
+        const entry = recordSpace(event, inputClock(event));
+        if (entry) entry.disposition = 'release';
+    }, true);
     document.addEventListener('visibilitychange', () => { if (document.hidden && run) { void finish(true); notice('다른 화면으로 이동해 연주를 멈췄어요.'); } });
     $('joinForm').addEventListener('submit', async event => {
         event.preventDefault(); if (loading) return; loading = true; $('join').disabled = true;

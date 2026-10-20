@@ -1,0 +1,699 @@
+{
+  "01": {
+    "file": "vivaldi-spring.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Vivaldi_-_Four_Seasons_1_Spring_mvt_1_Allegro_-_John_Harrison_violin.oga",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Vivaldi_-_Four_Seasons_1_Spring_mvt_1_Allegro_-_John_Harrison_violin.oga",
+    "performer": "John Harrison(바이올린) · Wichita State University Chamber Players",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+    "sourceSha256": "67ada06f97697196d67ce26c06e5c61700e7b79b0321b7f04571a4eb7435d4d3",
+    "outputSha256": "67ada06f97697196d67ce26c06e5c61700e7b79b0321b7f04571a4eb7435d4d3",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2,
+          "side_data_list": [
+            {}
+          ]
+        }
+      ],
+      "format": {
+        "duration": "215.280000",
+        "size": "4299414",
+        "bit_rate": "159770"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "02": {
+    "file": "air-on-g-string.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Air.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Air.ogg",
+    "performer": "US Air Force Strings(지휘 Keith H. Bland)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "8ee948ebc5912c5d0d7d3b7b31f714140d182e6fef45ba56ab99268c3bfcb60f",
+    "outputSha256": "8ee948ebc5912c5d0d7d3b7b31f714140d182e6fef45ba56ab99268c3bfcb60f",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "183.275102",
+        "size": "3615929",
+        "bit_rate": "157836"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "03": {
+    "file": "brandenburg-concerto5.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Bach_-_Brandenburg_Concerto_5_-_1._Allegro.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/68/Bach_-_Brandenburg_Concerto_5_-_1._Allegro.ogg",
+    "performer": "Advent Chamber Orchestra",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceSha256": "e338f0e20d2251838f1d50d822c7d195e6daa6c935f354e168d50b473951a331",
+    "outputSha256": "e338f0e20d2251838f1d50d822c7d195e6daa6c935f354e168d50b473951a331",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "598.533333",
+        "size": "21891372",
+        "bit_rate": "292600"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "04": {
+    "file": "water-music-hornpipe.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Handel%27s_Water_Music_-_12._Alla_hornpipe_-_Chamber_Orchestra_-_United_States_Marine_Band.opus",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Handel%27s_Water_Music_-_12._Alla_hornpipe_-_Chamber_Orchestra_-_United_States_Marine_Band.opus",
+    "performer": "Marine Chamber Orchestra(지휘 Michelle Rakers)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "cbd5956d81eafb2a713dee5729ebc62d625c6417622335d6f4db82bc1662a1fe",
+    "outputSha256": "cbd5956d81eafb2a713dee5729ebc62d625c6417622335d6f4db82bc1662a1fe",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "opus",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "228.667500",
+        "size": "3911359",
+        "bit_rate": "136840"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "06": {
+    "file": "symphony5-fate.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor,_op._67_-_i._allegro_con_brio.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor%2C_op._67_-_i._allegro_con_brio.ogg",
+    "performer": "Skidmore College Orchestra(Musopen)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "663cfa62707be850a51ec8cd7b51b95595a9ee010f3eefea16e1dd46d54a9d95",
+    "outputSha256": "663cfa62707be850a51ec8cd7b51b95595a9ee010f3eefea16e1dd46d54a9d95",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "500.088000",
+        "size": "8824613",
+        "bit_rate": "141168"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "08": {
+    "file": "eine-kleine-nachtmusik.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart_-_Eine_kleine_Nachtmusik_-_1._Allegro.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Mozart_-_Eine_kleine_Nachtmusik_-_1._Allegro.ogg",
+    "performer": "Advent Chamber Orchestra",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceSha256": "db35d442500e3d3278f19e86c75bef54d0040cd2f21e6e8b325a76a22c6e109f",
+    "outputSha256": "db35d442500e3d3278f19e86c75bef54d0040cd2f21e6e8b325a76a22c6e109f",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "355.413333",
+        "size": "11470392",
+        "bit_rate": "258187"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "09": {
+    "file": "twinkle-variations.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart_Ah_vous_dirai-je,_Maman.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Mozart_Ah_vous_dirai-je%2C_Maman.ogg",
+    "performer": "Andriy Bondarenko(피아노)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceSha256": "75150c868552f65b3ef48daf77f738fcbb598fa1cf8f8486e108ac121217f1ff",
+    "outputSha256": "75150c868552f65b3ef48daf77f738fcbb598fa1cf8f8486e108ac121217f1ff",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "686.555624",
+        "size": "32991876",
+        "bit_rate": "384433"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "15": {
+    "file": "nocturne-op9-2.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Chopin_-_Nocturne_No._2_in_E-flat_major,_Op._9_No._2_(Frank_Levy).flac",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Chopin_-_Nocturne_No._2_in_E-flat_major%2C_Op._9_No._2_%28Frank_Levy%29.flac",
+    "performer": "Frank Lévy(피아노)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "d286d06381db63d05cb3b971e3b39132866efade1dd94f514c1d83ff9d42de70",
+    "outputSha256": "be9eb1f9326a11d44b0d5b70f8ea212c0c14aec6d3a2020bcd7d70617aeb3f7b",
+    "method": "lossless-source-to-vorbis-q8",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "96000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "271.469490",
+        "size": "7501938",
+        "bit_rate": "221076"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "24": {
+    "file": "jupiter.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Gustav_Holst_-_the_planets,_op._32_-_iv._jupiter,_the_bringer_of_jollity.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Gustav_Holst_-_the_planets%2C_op._32_-_iv._jupiter%2C_the_bringer_of_jollity.ogg",
+    "performer": "Skidmore College Orchestra(Musopen)",
+    "license": "Attribution",
+    "licenseUrl": "",
+    "sourceSha256": "2d947467948d559c15f808af04ae569b0fec37391fe045b25c1045a978a11b35",
+    "outputSha256": "2d947467948d559c15f808af04ae569b0fec37391fe045b25c1045a978a11b35",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "508.473469",
+        "size": "11459557",
+        "bit_rate": "180297"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "28": {
+    "file": "turkish-march.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart-Marsz_turecki-(Romuald_Greiss).ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Mozart-Marsz_turecki-%28Romuald_Greiss%29.ogg",
+    "performer": "Romuald Greiss(피아노, 2000년 실황)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "65d728bec126d533d383ae77d533a6dba2c93f56510219faac37f15faa2dec77",
+    "outputSha256": "65d728bec126d533d383ae77d533a6dba2c93f56510219faac37f15faa2dec77",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "22050",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "181.603265",
+        "size": "1315215",
+        "bit_rate": "57937"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "29": {
+    "file": "moldau.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Smetana,_M%C3%A1_vlast_-_Vltava_-_The_Moldau.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/Smetana%2C_M%C3%A1_vlast_-_Vltava_-_The_Moldau.ogg",
+    "performer": "Musopen Symphony Orchestra(2012년)",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceSha256": "84663550a99ba8f7069cd58e0c3fcc1ca143f5ed4c6121da76f3fecd64a9f067",
+    "outputSha256": "84663550a99ba8f7069cd58e0c3fcc1ca143f5ed4c6121da76f3fecd64a9f067",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "770.904000",
+        "size": "20531794",
+        "bit_rate": "213067"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "32": {
+    "file": "vivaldi-winter.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Vivaldi_-_Four_Seasons_4_Winter_mvt_1_Allegro_non_molto_-_John_Harrison_violin.oga",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Vivaldi_-_Four_Seasons_4_Winter_mvt_1_Allegro_non_molto_-_John_Harrison_violin.oga",
+    "performer": "John Harrison(바이올린) · Wichita State University Chamber Players",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+    "sourceSha256": "e7d4c67c6466860d591b13978199674ce008983f56b0bf05906525dc0da0b7d4",
+    "outputSha256": "e7d4c67c6466860d591b13978199674ce008983f56b0bf05906525dc0da0b7d4",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2,
+          "side_data_list": [
+            {}
+          ]
+        }
+      ],
+      "format": {
+        "duration": "208.840000",
+        "size": "4008237",
+        "bit_rate": "153542"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "33": {
+    "file": "fur-elise.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:For_Elise_(F%C3%BCr_Elise)_Beethoven_JMC_Han.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/For_Elise_%28F%C3%BCr_Elise%29_Beethoven_JMC_Han.ogg",
+    "performer": "Jason M. C. Han(피아노)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceSha256": "8c7fc3c206032c0b8f72ac7792e12df4c7a95b67c590083c366ba2b16a545949",
+    "outputSha256": "8c7fc3c206032c0b8f72ac7792e12df4c7a95b67c590083c366ba2b16a545949",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "160.446259",
+        "size": "1751996",
+        "bit_rate": "87356"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "34": {
+    "file": "moonlight.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Ludwig_van_Beethoven_-_sonata_no._14_in_c_sharp_minor_%27moonlight%27,_op._27_no._2_-_i._adagio_sostenuto.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/48/Ludwig_van_Beethoven_-_sonata_no._14_in_c_sharp_minor_%27moonlight%27%2C_op._27_no._2_-_i._adagio_sostenuto.ogg",
+    "performer": "Paul Pitman(피아노, Musopen)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "035a31b8d67de4b0574110592a6f8ce2f6e51dfc7f884e16f918e47e327d7d66",
+    "outputSha256": "035a31b8d67de4b0574110592a6f8ce2f6e51dfc7f884e16f918e47e327d7d66",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "335.769229",
+        "size": "10863043",
+        "bit_rate": "258821"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "35": {
+    "file": "symphony40.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart_Symphony_40_G_minor_-_1_Molto_allegro.oga",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/Mozart_Symphony_40_G_minor_-_1_Molto_allegro.oga",
+    "performer": "Tsumugi Orchestra(지휘 Takashi Inoue, 2010년 실황)",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceSha256": "793aee0a93beb70bdb97afad9b1e63d2a0af1f548951e52d2faf6f4a0e49e991",
+    "outputSha256": "793aee0a93beb70bdb97afad9b1e63d2a0af1f548951e52d2faf6f4a0e49e991",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {},
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "476.184000",
+        "size": "4169881",
+        "bit_rate": "70054"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "36": {
+    "file": "queen-of-night-aria.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Der_Hoelle_Rache.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Der_Hoelle_Rache.ogg",
+    "performer": "Sandra Partridge(소프라노) · Bangkok Opera(2006년 실황)",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+    "sourceSha256": "bbdf0a8d4c151aee5a21fb71ed86894b1aae5c7dba9ea767f7af6c0f752915c2",
+    "outputSha256": "bbdf0a8d4c151aee5a21fb71ed86894b1aae5c7dba9ea767f7af6c0f752915c2",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "190.563265",
+        "size": "3757004",
+        "bit_rate": "157722"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "41": {
+    "file": "morning-mood.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Musopen_-_Morning.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Musopen_-_Morning.ogg",
+    "performer": "Czech National Symphony Orchestra(Musopen Symphony, 2012년)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "3207072ffef9f65f9a4a78c2ddc5afdd1c5b4c61b83ab092da3d6a87852e4996",
+    "outputSha256": "3207072ffef9f65f9a4a78c2ddc5afdd1c5b4c61b83ab092da3d6a87852e4996",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "229.183042",
+        "size": "3453888",
+        "bit_rate": "120563"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "42": {
+    "file": "hall-of-mountain-king.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg",
+    "performer": "Czech National Symphony Orchestra(Musopen Symphony, 2012년)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "3bfa7424d3a148f1482a44688b77eb9138a7cea6cff7474799f1329181ab3342",
+    "outputSha256": "3bfa7424d3a148f1482a44688b77eb9138a7cea6cff7474799f1329181ab3342",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "154.091021",
+        "size": "2155317",
+        "bit_rate": "111898"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "23": {
+    "file": "prelude-faun.mp3",
+    "sourcePage": "https://musopen.org/music/42994-prelude-to-the-afternoon-of-a-faun/",
+    "sourceUrl": "https://dl.musopen.org/recordings/85484622-ca89-44b4-aa6e-7d1607abe1cf.mp3?filename=2688_prelude-to-the-afternoon-4f784f81-2089-4ac4-9378-8c84eee06168.mp3",
+    "performer": "Columbia University Orchestra",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "sourceSha256": "708c0cf674fa74e61892aab65c580edfb742cd5a691c975992b7d4d2bc170fcd",
+    "outputSha256": "708c0cf674fa74e61892aab65c580edfb742cd5a691c975992b7d4d2bc170fcd",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "553.893333",
+        "size": "8863787",
+        "bit_rate": "128021"
+      }
+    },
+    "instrumentation": "관현악",
+    "reason": "1930년 분할 음반 대신 관현악 녹음",
+    "listeningReview": "not-performed"
+  },
+  "47": {
+    "file": "clair-de-lune.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Clair_de_lune_(Claude_Debussy)_Suite_bergamasque.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Clair_de_lune_%28Claude_Debussy%29_Suite_bergamasque.ogg",
+    "performer": "Laurens Goedhart(피아노)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "2f7a1e833f4e2408d9d1b893131863d790ba75cd5fbcf81292dc5ed6f25918fe",
+    "outputSha256": "2f7a1e833f4e2408d9d1b893131863d790ba75cd5fbcf81292dc5ed6f25918fe",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "304.088526",
+        "size": "15740765",
+        "bit_rate": "414110"
+      }
+    },
+    "instrumentation": "",
+    "reason": "Restore original source without additional lossy compression",
+    "listeningReview": "not-performed"
+  },
+  "46": {
+    "file": "hungarian-rhapsody2.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Franz_Liszt_-_Second_Hungarian_Rhapsody.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Franz_Liszt_-_Second_Hungarian_Rhapsody.ogg",
+    "performer": "Martha Goldstein(피아노)",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceSha256": "398a95e7978f013c628841356ecf2b70bb8a7a8967919d7aa41b5a5a99e204b6",
+    "outputSha256": "398a95e7978f013c628841356ecf2b70bb8a7a8967919d7aa41b5a5a99e204b6",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "785.986667",
+        "size": "14704692",
+        "bit_rate": "149668"
+      }
+    },
+    "instrumentation": "피아노 독주",
+    "reason": "관악합주 편곡을 피아노 원곡으로 교체",
+    "listeningReview": "not-performed"
+  },
+  "19": {
+    "file": "the-swan.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Saint-Saens_-_The_Carnival_of_the_Animals_-_13_Le_cygne.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/archive/d/d8/20210120131353%21Saint-Saens_-_The_Carnival_of_the_Animals_-_13_Le_cygne.ogg",
+    "performer": "Seattle Youth Symphony · Vilem Sokol · Neal & Nancy O’Doan(피아노)",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceSha256": "c72ec8d23c68e2a89452e8e51a32fda258b8e7e6bec569b1d2e5e8a08e724b6c",
+    "outputSha256": "c72ec8d23c68e2a89452e8e51a32fda258b8e7e6bec569b1d2e5e8a08e724b6c",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "180.985034",
+        "size": "3228183",
+        "bit_rate": "142693"
+      }
+    },
+    "instrumentation": "첼로와 두 대의 피아노",
+    "reason": "마림바 편곡을 원곡 편성으로 교체",
+    "listeningReview": "not-performed"
+  },
+  "11": {
+    "file": "trumpet-concerto3.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Real_Filharmon%C3%ADa_de_Galicia_-_Haydn%27s_Trumpet_Concerto_in_E-flat_major,_Hob.VIIe-1_-_III._Finale_allegro.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Real_Filharmon%C3%ADa_de_Galicia_-_Haydn%27s_Trumpet_Concerto_in_E-flat_major%2C_Hob.VIIe-1_-_III._Finale_allegro.ogg",
+    "performer": "Real Filharmonía de Galicia",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceSha256": "f01b2855d6abbfda89a7badce249f763d2e5120cf0cf02a81c6d99005e584ae9",
+    "outputSha256": "f01b2855d6abbfda89a7badce249f763d2e5120cf0cf02a81c6d99005e584ae9",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "265.127188",
+        "size": "4908361",
+        "bit_rate": "148105"
+      }
+    },
+    "instrumentation": "트럼펫과 관현악",
+    "reason": "1946년 음반 대신 공개 실연 녹음",
+    "listeningReview": "not-performed"
+  }
+}

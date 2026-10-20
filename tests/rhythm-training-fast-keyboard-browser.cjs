@@ -18,7 +18,7 @@ const server = app.listen(0, '127.0.0.1');
     fs.mkdirSync(output, {recursive: true});
     const browser = await chromium.launch({headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe'});
     try {
-        for (const bpm of [60, 100]) {
+        for (const bpm of [60, 90]) {
             const page = await browser.newPage({viewport: {width: 1366, height: 768}});
             const errors = []; let report;
             page.on('pageerror', error => errors.push(error.message));
@@ -69,10 +69,10 @@ const server = app.listen(0, '127.0.0.1');
             assert.ok((await page.evaluate(() => trustedSpaces)).every(Boolean));
             assert.match(await page.locator('#hitRate').textContent(), /입력 16회 \/ 음표 16개/);
             await capture(page, {path: path.join(output, `${bpm}-bpm-native-keyboard.webp`), fullPage: true});
-            if (bpm === 100) {
+            if (bpm === 90) {
                 await page.setViewportSize({width: 390, height: 844});
                 assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-                await capture(page, {path: path.join(output, '100-bpm-mobile-result.webp'), fullPage: true});
+                await capture(page, {path: path.join(output, '90-bpm-mobile-result.webp'), fullPage: true});
             }
             assert.deepEqual(errors, []);
             console.log(JSON.stringify({bpm, accuracy: report.accuracy, taps: report.taps,

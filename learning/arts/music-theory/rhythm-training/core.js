@@ -43,7 +43,7 @@
         return order.map(index => pool[index]);
     }
     function tempoRange(level) {
-        return { min: 40, max: level === 3 || level === 7 ? 100 : level === 6 ? 120 : 140,
+        return { min: 40, max: level === 3 || level === 7 ? 90 : level === 6 ? 120 : 140,
             initial: level === 3 || level === 7 ? 60 : 80 };
     }
     function settings(input = {}) {

@@ -6,6 +6,7 @@ const crypto = require('node:crypto');
 const root = path.resolve(__dirname,'..');
 const lab = path.join(root,'learning/inquiry/science-lab');
 const classification = require('./science-catalog-classification.cjs');
+const catalogIcon = require('./science-catalog-icons.cjs');
 const esc = s => String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const schoolLabels = {elementary:'초', middle:'중', 'high-common':'고(공통)', 'high-elective':'고(선택)'};
 const emptyMessage = populated => `<p class="catalog-empty"${populated?' hidden':''}>실험 없음</p>`;
@@ -27,7 +28,7 @@ function render(map) {
       const slugs=entries.filter(([slug])=>placements[slug].section===area.id&&placements[slug].category===category).map(([slug])=>slug);
       return `<article class="topic-row" data-category="${esc(category)}"><h4>${category}</h4><div class="level-matrix">${['elementary','middle'].map(s=>cell(slugs.filter(slug=>placements[slug].school===s),s)).join('\n')}</div></article>`;
     }).filter(Boolean).join('\n');
-    return `<section class="subject-section ${area.id}" id="${area.id}" data-area="${area.title}"><header class="subject-heading"><h3>${area.title}</h3><div class="column-labels"><span>초</span><span>중</span></div></header><div class="topic-list">${rows}</div></section>`;
+    return `<section class="subject-section ${area.id}" id="${area.id}" data-area="${area.title}"><header class="subject-heading"><h3>${catalogIcon(area.id)}<span class="subject-label">${area.title}</span></h3><div class="column-labels"><span>초</span><span>중</span></div></header><div class="topic-list">${rows}</div></section>`;
   }).join('\n');
   const high = ['high-common','high-elective'].map(school=>{
     const sections=classification.courses.filter(course=>course.school===school).map(course=>{
@@ -38,12 +39,12 @@ function render(map) {
         const selected=slugs.filter(p=>p.category===category);
         return `<article class="topic-row" data-category="${esc(category)}"><h4>${esc(category)}</h4><div class="course-apps">${selected.map(p=>card(p.slug,p)).join('\n')}${emptyMessage(selected.length)}</div></article>`;
       }).filter(Boolean).join('\n');
-      return `<section class="subject-section course-section ${course.theme}" data-area="${course.title}" id="course-${course.prefix}"><header class="subject-heading"><h3>${course.title}</h3><span class="course-kind">${course.kind}</span></header><div class="topic-list">${rows}</div></section>`;
+      return `<section class="subject-section course-section ${course.theme}" data-area="${course.title}" id="course-${course.prefix}"><header class="subject-heading"><h3>${catalogIcon(course.prefix)}<span class="subject-label">${course.title}</span></h3><span class="course-kind">${course.kind}</span></header><div class="topic-list">${rows}</div></section>`;
     }).filter(Boolean).join('\n');
     return `<section class="school-section" data-school="${school}" aria-label="${schoolLabels[school]}"><h2>${schoolLabels[school]}</h2>${sections}</section>`;
   }).join('\n');
   return {placements, html:`<section class="catalog" aria-label="2022 개정 교육과정별 실험 목록">
-<section class="school-section foundation-section" data-school="foundation" aria-label="초·중"><h2>초·중 <small>과학</small></h2><p class="classification-note">초·중 공통 교육과정의 5개 영역·18개 범주</p>${basic}</section>
+<section class="school-section foundation-section" data-school="foundation" aria-label="초·중">${basic}</section>
 ${high}
 </section>`};
 }

@@ -7,14 +7,12 @@
 .grade-navigation button:focus-visible{outline:3px solid #db8600;outline-offset:3px}
 .course-label{display:block;margin-top:4px;font-size:11px;line-height:1.5;color:#53636e;font-weight:500;white-space:normal}
 .school-filtered .column-labels{display:none}
-.school-filtered .level-cell{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr))}
+.school-filtered .level-cell{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr))}
 .school-filtered .cell-label{display:none}
 .school-section{display:grid;gap:16px;min-width:0}
 .school-section > h2{font-size:20px;margin:8px 0 0;color:#172f3b}
-.school-section > h2 small{font-size:14px;font-weight:500;color:#53636e}
-.classification-note{margin:-6px 0 0;font-size:13px;line-height:1.5;color:#53636e}
 .catalog-empty{margin:0;padding:12px;font-size:13px;line-height:1.6;color:#526371;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:9px;word-break:keep-all;overflow-wrap:anywhere}
-.course-apps > .catalog-empty{grid-column:1/-1}
+.level-cell > .catalog-empty,.course-apps > .catalog-empty{grid-column:1/-1}
 .catalog .subject-heading,.catalog .topic-row{grid-template-columns:180px minmax(0,1fr)}
 .catalog .column-labels,.catalog .level-matrix{grid-template-columns:repeat(2,minmax(0,1fr))}
 .catalog.school-filtered .level-matrix{grid-template-columns:1fr}
@@ -22,7 +20,7 @@
 .catalog .level-entry > span{white-space:normal;overflow:visible;line-height:1.55;word-break:keep-all;overflow-wrap:anywhere}
 .catalog .level-entry b{margin-top:3px}
 .catalog .level-entry::after{display:none}
-.course-apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:8px;min-width:0}
+.course-apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:8px;min-width:0}
 .catalog .course-section .subject-heading{grid-template-columns:1fr auto}
 .course-kind{font-size:12px;color:var(--subject-text);padding:4px 8px;border-radius:6px;background:white;border:1px solid var(--subject-border)}
 .cell-label{display:none}
