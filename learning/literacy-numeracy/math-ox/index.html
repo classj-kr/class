@@ -3,38 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>수학 기초 OX</title>
-  
-  <!-- 수식은 vendor/ 에 둔 KaTeX 0.16.11 로 그린다(바깥 서버에서 받지 않는다). katex.min.css 는 woff2 글꼴만 가리키게 줄였다. -->
-  <link rel="stylesheet" href="vendor/katex.min.css?v=0.16.11">
-  <script defer src="vendor/katex.min.js?v=0.16.11"></script>
-  <script defer src="vendor/auto-render.min.js?v=0.16.11"></script>
-
-  <link rel="stylesheet" href="styles.css?v=20261013-retry-button">
+  <title>수학 · 기초 개념 OX</title>
+  <script src="../math-bank/concept-ox.js?v=20261020-concept-ox-1"></script>
+  <script src="redirect.js?v=20261020-concept-ox-1"></script>
 </head>
 <body>
-
-  <div class="math-ox-container">
-    <header class="page-header">
-      <a href="../../../" class="back-link" aria-label="메인 페이지로 돌아가기">←</a>
-    </header>
-
-    <!-- 과목 필터 탭 -->
-    <nav class="filter-nav" id="filterNav" aria-label="과목 선택 탭">
-      <!-- JavaScript로 과목 탭 자동 생성 -->
-    </nav>
-
-    <!-- 단원 선택 줄 -->
-    <nav class="unit-nav" id="unitNav" aria-label="단원 선택"></nav>
-
-    <!-- 문항 카드 리스트 -->
-    <main class="questions-list" id="questionsList" aria-live="polite" data-sfx-feedback="none">
-      <!-- JavaScript로 문항 카드 dynamic 렌더링 -->
-    </main>
-  </div>
-
-  <script src="data.js?v=20261019-quadrilaterals"></script>
-  <script src="/assets/learning-records.js?v=20261007-units"></script>
-  <script src="app.js?v=20261007-units"></script>
+  <p><a href="../math-bank/">수학 문제 열기</a></p>
 </body>
 </html>

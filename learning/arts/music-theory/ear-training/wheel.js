@@ -176,6 +176,7 @@
             const center = mode.step * SECTOR;
             const cell = make("path", {
                 class: "wheel-mode-cell" + (mode.step === 0 ? " is-home" : ""),
+                role: "button", tabindex: "0", "aria-label": mode.name + " 선법 듣기",
                 d: sectorPath(R_MODE_IN, R_MODE_OUT, center - SECTOR / 2, center + SECTOR / 2)
             });
             cell.dataset.mode = mode.name;
@@ -195,6 +196,7 @@
             const center = fn.step * SECTOR;
             const cell = make("path", {
                 class: "wheel-func-cell is-" + fn.quality,
+                role: "button", tabindex: "0", "aria-label": fn.roman + " 화음 듣기",
                 d: sectorPath(R_FUNC_IN, R_FUNC_OUT, center - SECTOR / 2, center + SECTOR / 2)
             });
             cell.dataset.degree = String(fn.degree);
@@ -208,6 +210,7 @@
         const disc = make("g", { class: "wheel-disc" });
         svg.append(disc);
         const majorCells = [];
+        const minorCells = [];
         const majorTexts = [];
         const minorTexts = [];
 
@@ -215,6 +218,7 @@
             const center = position * SECTOR;
             const major = make("path", {
                 class: "wheel-cell wheel-cell-major",
+                role: "button", tabindex: "0",
                 d: sectorPath(R_MAJ_IN, R_MAJ_OUT, center - SECTOR / 2, center + SECTOR / 2)
             });
             major.dataset.position = String(position);
@@ -223,10 +227,12 @@
 
             const minor = make("path", {
                 class: "wheel-cell wheel-cell-minor",
+                role: "button", tabindex: "0",
                 d: sectorPath(R_MIN_IN, R_MIN_OUT, center - SECTOR / 2, center + SECTOR / 2)
             });
             minor.dataset.position = String(position);
             disc.append(minor);
+            minorCells.push(minor);
 
             majorTexts.push(make("text", { class: "wheel-major-name" }));
             minorTexts.push(make("text", { class: "wheel-minor-name" }));
@@ -237,10 +243,12 @@
         const hub = make("g", { class: "wheel-hub" });
         svg.append(hub);
         hub.append(make("circle", { class: "wheel-hub-face", cx: 0, cy: 0, r: R_MIN_IN }));
+        const hubMajorButton = make("rect", { class: "wheel-key-preview", role: "button", tabindex: "0", "data-quality": "maj", x: -52, y: -52, width: 104, height: 28, fill: "transparent" });
+        const hubMinorButton = make("rect", { class: "wheel-key-preview", role: "button", tabindex: "0", "data-quality": "min", x: -52, y: -25, width: 104, height: 24, fill: "transparent" });
         const hubMajor = make("text", { class: "wheel-hub-major", x: 0, y: -30 });
         const hubMinor = make("text", { class: "wheel-hub-minor", x: 0, y: -9 });
         const hubSign = make("g", { class: "wheel-hub-sig", transform: "translate(0,26)" });
-        hub.append(hubMajor, hubMinor, hubSign);
+        hub.append(hubMajorButton, hubMinorButton, hubMajor, hubMinor, hubSign);
 
         container.innerHTML = "";
         container.append(svg);
@@ -278,12 +286,16 @@
                 const shown = keyAt(position);
                 setName(majorTexts[position], withSame(shown.major, shown.same));
                 setName(minorTexts[position], shown.minor);
+                majorCells[position].setAttribute("aria-label", shown.major + " 장조 선택하고 장3화음 듣기");
+                minorCells[position].setAttribute("aria-label", shown.minor.slice(0, -1) + " 단조 선택하고 단3화음 듣기");
                 majorCells[position].classList.toggle("is-tonic", position === index);
             });
             const home = keyAt(index);
             /* 가운데는 괄호 병기를 빼서 읽기 쉽게 둔다. 병기는 칸에만 남긴다. */
             setName(hubMajor, home.major + " major");
             setName(hubMinor, home.minor.replace("m", "") + " minor");
+            hubMajorButton.setAttribute("aria-label", home.major + " 장3화음 다시 듣기");
+            hubMinorButton.setAttribute("aria-label", home.minor + " 단3화음 다시 듣기");
             hubSign.innerHTML = "";
             hubSign.append(keySignature(home.count, home.sharp));
             if (settings.onChange) settings.onChange(chords(), home);
@@ -373,9 +385,11 @@
 
         disc.addEventListener("pointerdown", event => {
             window.cancelAnimationFrame(spin);
-            drag = { from: pointerAngle(event), turn: turn, moved: 0 };
+            window.clearTimeout(settle);
+            const capture = event.target.closest(".wheel-cell") || disc;
+            drag = { from: pointerAngle(event), turn: turn, moved: 0, capture: capture };
             disc.classList.add("is-dragging");
-            disc.setPointerCapture(event.pointerId);
+            capture.setPointerCapture(event.pointerId);
         });
 
         disc.addEventListener("pointermove", event => {
@@ -392,9 +406,10 @@
             if (!drag) return;
             const spun = drag.moved;
             const way = turn < drag.turn ? 1 : turn > drag.turn ? -1 : 0;
+            const capture = drag.capture;
             drag = null;
             disc.classList.remove("is-dragging");
-            if (disc.hasPointerCapture(event.pointerId)) disc.releasePointerCapture(event.pointerId);
+            if (capture.hasPointerCapture(event.pointerId)) capture.releasePointerCapture(event.pointerId);
             const landed = Math.round(-turn / SECTOR);
             index = ((landed % 12) + 12) % 12;
             spellByArrival(way);
@@ -402,28 +417,46 @@
             spinTo(-landed * SECTOR);
             /* 돌리고 손을 뗄 때 따라 나오는 클릭 하나만 걸러 낸다. */
             spunAt = spun > 6 ? window.performance.now() : 0;
+            if (spun > 6 && event.type !== "pointercancel" && settings.onPlayKey) settings.onPlayKey(keyAt(index), "maj");
         }
 
         disc.addEventListener("pointerup", endDrag);
         disc.addEventListener("pointercancel", endDrag);
 
-        svg.addEventListener("click", event => {
-            if (spunAt && window.performance.now() - spunAt < 300) return;
-            const cell = event.target.closest(".wheel-cell");
+        function activate(target) {
+            const cell = target.closest(".wheel-cell");
             if (cell) {
                 select(Number(cell.dataset.position));
+                if (settings.onPlayKey) settings.onPlayKey(keyAt(index), cell.classList.contains("wheel-cell-minor") ? "min" : "maj");
                 return;
             }
-            const funcCell = event.target.closest(".wheel-func-cell");
+            const preview = target.closest(".wheel-key-preview");
+            if (preview) {
+                if (settings.onPlayKey) settings.onPlayKey(keyAt(index), preview.dataset.quality);
+                return;
+            }
+            const funcCell = target.closest(".wheel-func-cell");
             if (funcCell && settings.onPlayChord) {
-                settings.onPlayChord(chords().find(chord => chord.degree === Number(funcCell.dataset.degree)));
+                settings.onPlayChord(chords().find(chord => chord.degree === Number(funcCell.dataset.degree)), keyAt(index));
                 return;
             }
-            const modeCell = event.target.closest(".wheel-mode-cell");
+            const modeCell = target.closest(".wheel-mode-cell");
             if (modeCell && settings.onPlayMode) {
                 const mode = MODES.find(entry => entry.name === modeCell.dataset.mode);
                 settings.onPlayMode(mode, keyAt(index + mode.step));
             }
+        }
+
+        svg.addEventListener("pointerdown", () => { spunAt = 0; });
+        svg.addEventListener("click", event => {
+            if (spunAt && window.performance.now() - spunAt < 300) return;
+            activate(event.target);
+        });
+        svg.addEventListener("keydown", event => {
+            if (event.key !== "Enter" && event.key !== " ") return;
+            if (!event.target.closest('[role="button"]')) return;
+            event.preventDefault();
+            if (!event.repeat) activate(event.target);
         });
 
         layout();
@@ -439,10 +472,12 @@
             },
             step: function (delta) {
                 select(index + delta, true, delta > 0 ? 1 : -1);
+                if (settings.onPlayKey) settings.onPlayKey(keyAt(index), "maj");
             },
             toggleFlat: function () {
                 flat = !flat;
                 layout();
+                if (settings.onPlayKey) settings.onPlayKey(keyAt(index), "maj");
                 return flat;
             },
             chords: chords,

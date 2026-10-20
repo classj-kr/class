@@ -196,7 +196,7 @@
         get("wheelHint").addEventListener("toggle", () => {
             if (!get("wheelHint").open || finished) return;
             hints.add(at);
-            if (!hintWheel) hintWheel = window.Wheel.create(get("wheelHintBoard"));
+            if (!hintWheel) hintWheel = window.Wheel.create(get("wheelHintBoard"), settings.wheelOptions);
             hintWheel.setKey(round[at].home);
         });
         return { start, finish, isFinished: () => finished };

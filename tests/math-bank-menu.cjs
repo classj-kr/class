@@ -22,6 +22,7 @@ const PAST_LABEL = '평가원·수능 기출';
   const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   assert.equal(/<a[^>]*href="learning\/literacy-numeracy\/csat-math\/"/.test(home), false, '첫 화면 메뉴에 기출 항목이 남아 있다');
   assert.match(home, /<a[^>]*href="learning\/literacy-numeracy\/math-bank\/"/);
+  assert.equal(/<a[^>]*href="learning\/literacy-numeracy\/math-ox\/"/.test(home), false);
   assert.match(home, /data-content-paths="[^"]*learning\/literacy-numeracy\/math-bank\/[^"]*learning\/literacy-numeracy\/csat-math\/[^"]*"/);
 
   const h = await harness();
@@ -46,7 +47,8 @@ const PAST_LABEL = '평가원·수능 기출';
       const labels = await page.locator('#termSelect option').allInnerTexts();
       assert.equal(labels[0], '초 1학년 1학기');
       assert.equal(labels[labels.length - 1], PAST_LABEL);
-      assert.ok(labels.slice(0, -1).every((text) => /^(초|중|고) \d학년 [12]학기$/.test(text)), labels.join(', '));
+      assert.ok(labels.slice(0, 20).every((text) => /^(초|중|고) \d학년 [12]학기$/.test(text)), labels.join(', '));
+      assert.deepEqual(labels.slice(20, -1), ['대수', '미적분Ⅰ', '확률과 통계', '기하']);
       await snap(page, name + '-bank-groups');
       await page.locator('.mb-group').first().locator('.mb-level').first().click();
       await page.locator('.mb-item').first().waitFor();
@@ -57,7 +59,8 @@ const PAST_LABEL = '평가원·수능 기출';
       // 맨 밑 항목을 고르면 기출 화면으로 간다. 그 화면에도 같은 드롭다운이 있고 기출이 골라져 있다.
       await Promise.all([page.waitForURL('**' + PAST), page.selectOption('#termSelect', { label: PAST_LABEL })]);
       await page.locator('#term-select').waitFor();
-      assert.deepEqual(await page.locator('#term-select option').allInnerTexts(), labels, '두 화면의 드롭다운 항목이 같다');
+      const pastLabels = labels.slice(0, 20).concat(PAST_LABEL);
+      assert.deepEqual(await page.locator('#term-select option').allInnerTexts(), pastLabels, '기출 화면의 기존 학기 메뉴는 유지한다');
       assert.equal(await page.locator('#term-select option:checked').innerText(), PAST_LABEL);
       await page.locator('#subject-tabs .subject-tab').first().waitFor();
       await snap(page, name + '-past');
@@ -70,7 +73,7 @@ const PAST_LABEL = '평가원·수능 기출';
       // 기출 화면에서 학기를 고르면 수학 문제의 그 학기 첫 단원이 열린다.
       await page.goto(h.base + PAST);
       await page.locator('#term-select').waitFor();
-      const last = labels[labels.length - 2];
+      const last = pastLabels[pastLabels.length - 2];
       await Promise.all([page.waitForURL('**' + BANK + '?**'), page.selectOption('#term-select', { label: last })]);
       await page.locator('.mb-group').first().waitFor();
       assert.equal(await page.locator('#termSelect option:checked').innerText(), last);

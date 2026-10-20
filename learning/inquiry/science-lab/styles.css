@@ -19,23 +19,28 @@
 html {
     color-scheme: light;
     scroll-behavior: smooth;
+    background: #0b1120;
 }
 
 body {
     margin: 0;
     min-width: 320px;
-    background-color: #f8fafc;
-    background-image: 
-        radial-gradient(at 12% 15%, rgba(2, 132, 199, 0.05) 0px, transparent 40%),
-        radial-gradient(at 88% 25%, rgba(124, 58, 237, 0.05) 0px, transparent 40%),
-        radial-gradient(at 50% 85%, rgba(5, 150, 105, 0.04) 0px, transparent 50%),
-        radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
-    background-attachment: fixed;
+    background: transparent;
     color: var(--ink);
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
+
+/* 기존 수학 문제의 남색 물결 배경을 재사용한다. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(rgba(11, 17, 32, 0.42), rgba(11, 17, 32, 0.65)), url("../../literacy-numeracy/math-bank/assets/math-bg.webp") center top / cover no-repeat #0b1120;
+}
+.catalog .school-section > h2 { color: #f1f5f9; }
+.catalog .school-section > h2 small, .catalog .classification-note { color: #cbd5e1; }
 
 button, a {
     font: inherit;

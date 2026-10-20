@@ -407,6 +407,7 @@
         articulation: "finger",
         stringPreset: "clean",
         keyboardStartMidi: 60,
+        keyboardCenterFrame: 0,
         keyboardScale: 1,
         pixelsPerMm: CSS_PX_PER_MM,
         screenCalibrated: false,
@@ -2088,7 +2089,6 @@
         const layout = core.keyboardLayout(DISPLAY_RANGE.start, DISPLAY_RANGE.end);
         const whiteWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--key-width")) || 48;
         const blackWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--black-width")) || 31;
-        const shortcutByMidi = new Map(COMPUTER_KEYS.map(function (entry) { return [state.keyboardStartMidi + entry[1], entry[2]]; }));
         elements.keyboard.innerHTML = "";
         elements.keyboard.style.width = (layout.whiteCount * whiteWidth) + "px";
         layout.notes.forEach(function (note) {
@@ -2098,7 +2098,6 @@
             const edge = note.midi === range.start || note.midi === range.end;
             key.className = "key " + (note.black ? "black-key" : "white-key") + (note.midi % 12 === 0 ? " c-note" : "") + (unavailable ? " unavailable" : "") + (edge ? " range-edge" : "");
             key.dataset.midi = note.midi;
-            key.dataset.shortcut = unavailable ? "" : shortcutByMidi.get(note.midi) || "";
             if (edge) key.dataset.rangeLabel = note.midi === range.start ? "최저 " + note.label : "최고 " + note.label;
             key.disabled = unavailable;
             key.setAttribute("aria-label", note.label + (unavailable ? " · 연주 음역 밖" : ""));
@@ -2116,6 +2115,17 @@
             key.addEventListener("lostpointercapture", releasePointer);
             elements.keyboard.appendChild(key);
         });
+        updateKeyboardRange();
+        scheduleKeyboardCenter(false);
+    }
+
+    function updateKeyboardRange() {
+        const range = currentPitchRange();
+        const shortcutByMidi = new Map(COMPUTER_KEYS.map(function (entry) { return [state.keyboardStartMidi + entry[1], entry[2]]; }));
+        elements.keyboard.querySelectorAll(".key").forEach(function (key) {
+            const unavailable = key.disabled;
+            key.dataset.shortcut = unavailable ? "" : shortcutByMidi.get(Number(key.dataset.midi)) || "";
+        });
         elements.keyboardRangeReadout.textContent = core.noteLabel(state.keyboardStartMidi) + "–" + core.noteLabel(state.keyboardStartMidi + COMPUTER_KEY_SPAN);
         const minimum = minimumKeyboardStart();
         const maximum = maximumKeyboardStart();
@@ -2125,15 +2135,45 @@
         elements.octaveUp.disabled = state.keyboardStartMidi + 12 > maximum;
         elements.rangeLegend.classList.remove("hidden");
         elements.rangeReadout.textContent = "연주 음역 " + core.noteLabel(range.start) + "–" + core.noteLabel(range.end);
-        window.requestAnimationFrame(centerKeyboardOnComputerOctave);
     }
 
-    function centerKeyboardOnComputerOctave() {
+    function stopKeyboardCentering() {
+        window.cancelAnimationFrame(state.keyboardCenterFrame);
+        state.keyboardCenterFrame = 0;
+    }
+
+    function scheduleKeyboardCenter(smooth) {
+        stopKeyboardCentering();
+        state.keyboardCenterFrame = window.requestAnimationFrame(function () {
+            state.keyboardCenterFrame = 0;
+            centerKeyboardOnComputerOctave(smooth);
+        });
+    }
+
+    function centerKeyboardOnComputerOctave(smooth) {
         const centerMidi = Math.round(state.keyboardStartMidi + COMPUTER_KEY_SPAN / 2);
         const target = elements.keyboard.querySelector('[data-midi="' + centerMidi + '"]');
         if (!target) return;
         const desired = target.offsetLeft + target.offsetWidth * .5 - elements.keyboardViewport.clientWidth * .5;
-        elements.keyboardViewport.scrollLeft = Math.max(0, desired);
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const viewport = elements.keyboardViewport;
+        const destination = Math.max(0, Math.min(viewport.scrollWidth - viewport.clientWidth, desired));
+        const origin = viewport.scrollLeft;
+        const distance = destination - origin;
+        if (!smooth || reducedMotion || Math.abs(distance) < 1) {
+            viewport.scrollLeft = destination;
+            return;
+        }
+        // Use the same timing across browsers, resuming from the current position on each input.
+        const duration = Math.min(420, 260 + Math.sqrt(Math.abs(distance)) * 7);
+        const started = performance.now();
+        function advance(now) {
+            const progress = Math.min(1, (now - started) / duration);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            viewport.scrollLeft = origin + distance * eased;
+            state.keyboardCenterFrame = progress < 1 ? window.requestAnimationFrame(advance) : 0;
+        }
+        state.keyboardCenterFrame = window.requestAnimationFrame(advance);
     }
 
     function renderChordPads() {
@@ -2532,7 +2572,9 @@
         if (nextStart === state.keyboardStartMidi) return;
         allNotesOff();
         state.keyboardStartMidi = nextStart;
-        renderKeyboard();
+        // Keep the key elements and current scroll position while the range moves.
+        updateKeyboardRange();
+        scheduleKeyboardCenter(true);
         preloadConcertGrandRange();
     }
 
@@ -2664,6 +2706,8 @@
         elements.whiteKeyDown.addEventListener("click", function () { moveKeyboardByWhiteKey(-1); });
         elements.whiteKeyUp.addEventListener("click", function () { moveKeyboardByWhiteKey(1); });
         elements.octaveUp.addEventListener("click", function () { changeKeyboardOctave(1); });
+        elements.keyboardViewport.addEventListener("pointerdown", stopKeyboardCentering, { passive: true });
+        elements.keyboardViewport.addEventListener("wheel", stopKeyboardCentering, { passive: true });
         elements.keyboard.addEventListener("contextmenu", function (event) { event.preventDefault(); });
         elements.keyboard.addEventListener("dragstart", function (event) { event.preventDefault(); });
         if (elements.drumPads) {

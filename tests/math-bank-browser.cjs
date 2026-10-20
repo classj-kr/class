@@ -76,17 +76,17 @@ const UNIT = '1-1-1';
     // ── 학생: 묶음 목록 → 한 회차 ──
     const { page } = await open(1);
     await page.goto(h.base + URL_PATH);
-    await page.locator('.mb-group').first().waitFor();
+    await page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
     const plan = await outline(page);
-    assert.equal(await page.locator('.mb-group').count(), plan.length);
-    for (let g = 0; g < plan.length; g += 1) assert.equal(await page.locator('.mb-group').nth(g).locator('.mb-level').count(), plan[g].rounds.length, `묶음 ${g + 1}의 단추 수`);
+    assert.equal(await page.locator('.mb-group:not(.mb-ox-group)').count(), plan.length);
+    for (let g = 0; g < plan.length; g += 1) assert.equal(await page.locator('.mb-group:not(.mb-ox-group)').nth(g).locator('.mb-level').count(), plan[g].rounds.length, `묶음 ${g + 1}의 단추 수`);
     assert.ok(plan.every((group) => group.rounds.length >= 1), '빈 묶음이 없다');
     assert.ok(plan.some((group) => group.rounds.some((r) => r.level === '실력')), '실력 문제가 있다');
     assert.equal(await page.locator('#unitSelect').inputValue(), UNIT);
     if (SHOTS) await shot(page, '0-groups');
 
     const first = plan[0], firstKey = `${UNIT}:${first.id}:기본:1`;
-    await page.locator('.mb-group').first().locator('.mb-level').first().click();
+    await page.locator('.mb-group:not(.mb-ox-group)').first().locator('.mb-level').first().click();
     await page.locator('.mb-item').first().waitFor();
     const items = await itemsOf(page, first.id, '기본', 1);
     assert.equal(await page.locator('.mb-item').count(), items.length);
@@ -152,8 +152,8 @@ const UNIT = '1-1-1';
     // 사이트 공용 뒤로가기: 푸는 중에는 묶음 목록으로 한 칸만.
     const prevented = await page.evaluate(() => !window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
     assert.equal(prevented, true);
-    await page.locator('.mb-group').first().waitFor();
-    assert.match(await page.locator('.mb-group').first().locator('.mb-level').first().innerText(), new RegExp((items.length - 1) + ' / ' + items.length), '끝낸 회차의 결과가 단추에 보인다');
+    await page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
+    assert.match(await page.locator('.mb-group:not(.mb-ox-group)').first().locator('.mb-level').first().innerText(), new RegExp((items.length - 1) + ' / ' + items.length), '끝낸 회차의 결과가 단추에 보인다');
     assert.equal(await page.evaluate(() => !window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true }))), false, '목록에서는 가로채지 않는다');
 
     // 회차가 여럿인 묶음: 오답의 정답은 명시적으로 풀이 보기를 누른 뒤에만 표시한다.
@@ -161,7 +161,7 @@ const UNIT = '1-1-1';
     if (g >= 0) {
       const target = plan[g].rounds.find((r) => r.of > 1 && r.no === 1);
       const index = plan[g].rounds.indexOf(target);
-      await page.locator('.mb-group').nth(g).locator('.mb-level').nth(index).click();
+      await page.locator('.mb-group:not(.mb-ox-group)').nth(g).locator('.mb-level').nth(index).click();
       await page.locator('.mb-item').first().waitFor();
       assert.match(await page.locator('.mb-round-title').innerText(), new RegExp(target.level + ' 1회'));
       const list = await itemsOf(page, plan[g].id, target.level, 1);
@@ -192,7 +192,7 @@ const UNIT = '1-1-1';
     const guest = await open(0);
     await guest.page.goto(h.base + URL_PATH);
     const hardAt = plan.findIndex((group) => group.rounds.some((r) => r.level === '실력'));
-    await guest.page.locator('.mb-group').nth(hardAt).locator('.mb-level.is-hard').first().click();
+    await guest.page.locator('.mb-group:not(.mb-ox-group)').nth(hardAt).locator('.mb-level.is-hard').first().click();
     await guest.page.locator('.mb-item').first().waitFor();
     await guest.page.locator('learning-records .status').filter({ hasText: '둘러보기' }).waitFor();
     const guestItems = await itemsOf(guest.page, plan[hardAt].id, '실력', 1);
@@ -204,9 +204,9 @@ const UNIT = '1-1-1';
     // 아직 쌍둥이가 준비되지 않은 학년의 경계를 가상 데이터로 확인한다.
     const excluded = await open(0);
     await excluded.page.goto(h.base + URL_PATH);
-    await excluded.page.locator('.mb-group').first().waitFor();
+    await excluded.page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
     await excluded.page.evaluate((id) => { const unit = window.MathBank.findUnit(id); unit.grade = 11; unit.semester = 1; }, UNIT);
-    await excluded.page.locator('.mb-group').first().locator('.mb-level').first().click();
+    await excluded.page.locator('.mb-group:not(.mb-ox-group)').first().locator('.mb-level').first().click();
     const excludedCard = excluded.page.locator(`.mb-item[data-key="${items[0].key}"]`);
     if (items[0].choice !== null) await excludedCard.locator('.mb-choice').nth((items[0].choice + 1) % await excludedCard.locator('.mb-choice').count()).click();
     else {
@@ -225,17 +225,17 @@ const UNIT = '1-1-1';
     for (const [name, viewport] of [['phone', { width: 360, height: 760 }], ['wide', { width: 1100, height: 900 }]]) {
       const view = await open(0, viewport);
       await view.page.goto(h.base + URL_PATH);
-      await view.page.locator('.mb-group').first().waitFor();
+      await view.page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
       for (const unitId of FEEDBACK_ONLY ? [UNIT, '7-2-4'] : unitIds) {
         const termOf = unitId.split('-').slice(0, 2).join('-');
         await view.page.selectOption('#termSelect', termOf);
         await view.page.selectOption('#unitSelect', unitId);
-        await view.page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group').length > 0, unitId);
+        await view.page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group:not(.mb-ox-group)').length > 0, unitId);
         const groups = await outline(view.page, unitId);
-        assert.equal(await view.page.locator('.mb-group').count(), groups.length, unitId + ' 묶음 수');
+        assert.equal(await view.page.locator('.mb-group:not(.mb-ox-group)').count(), groups.length, unitId + ' 묶음 수');
         for (let gi = 0; gi < (FEEDBACK_ONLY ? 1 : groups.length); gi += 1) {
           for (let li = 0; li < (FEEDBACK_ONLY ? 1 : groups[gi].rounds.length); li += 1) {
-            await view.page.locator('.mb-group').nth(gi).locator('.mb-level').nth(li).click();
+            await view.page.locator('.mb-group:not(.mb-ox-group)').nth(gi).locator('.mb-level').nth(li).click();
             await view.page.locator('.mb-item').first().waitFor();
             const report = await view.page.evaluate(() => {
               const wide = [...document.querySelectorAll('.mb-item, .mb-item *')].filter((el) => el.getBoundingClientRect().right > document.documentElement.clientWidth + 1);
@@ -260,7 +260,7 @@ const UNIT = '1-1-1';
             }
             if (SHOTS) await shot(view.page, `${name}-${unitId}-${gi + 1}${groups[gi].id}-${groups[gi].rounds[li].level}${groups[gi].rounds[li].no}`);
             await view.page.evaluate(() => window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
-            await view.page.locator('.mb-group').first().waitFor();
+            await view.page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
           }
         }
       }
