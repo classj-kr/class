@@ -32,7 +32,7 @@
   const small = (max) => (list) => list.every((x) => x.q <= max);
 
   B.addGroup('8-2-7', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-or-overlap', '겹치는 두 조건의 「또는」', '심11 / 기본 ①27·44', (d) => {

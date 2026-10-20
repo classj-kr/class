@@ -21,7 +21,7 @@
   const tj0 = (n, pair) => tx(Q(n)) + tail(Math.abs(n), pair);
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-box-poly', '등식 속 □에 알맞은 다항식', '심2', (d) => {

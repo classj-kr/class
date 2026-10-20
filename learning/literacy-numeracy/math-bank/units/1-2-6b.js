@@ -361,7 +361,7 @@
 
   // ── 실력 문제 ────────────────────────────────────────────────
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-align', '수를 잘못 맞추어 쓴 세로셈 가리기', '①36 심14', (d, n) => {
         const who = d.shuffle(NAMES).slice(0, 3);

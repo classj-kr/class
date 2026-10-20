@@ -292,5 +292,5 @@
     }, { standard: S5 })
   ];
 
-  B.addGroup('10-2-7', { id: 'hard', title: '실력 문제', standard: S4, types: hard });
+  B.addGroup('10-2-7', { id: 'hard', title: '단원 종합', standard: S4, types: hard });
 })(typeof window !== 'undefined' ? window : globalThis);

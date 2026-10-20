@@ -43,7 +43,8 @@
         }
         return true;
     }
-    const initial = new URLSearchParams(location.search).get('school') || 'middle';
+    const requested = new URLSearchParams(location.search).get('school');
+    const initial = levels.includes(requested) ? requested : levels.includes(window.CLASS_SCHOOL_LEVEL) ? window.CLASS_SCHOOL_LEVEL : 'middle';
     if (!route(initial)) return;
     function init() {
         const school = window.SchoolLevel;

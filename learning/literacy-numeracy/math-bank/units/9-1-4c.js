@@ -29,7 +29,7 @@
   const rect = (b, x, y, w, h, css) => b.poly([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], css);
 
   B.addGroup('9-1-4', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ① 근의 뜻: 근을 넣으면 등식이 되므로 덩어리 α² + pα 의 값이 정해진다.
       H('hard-plug', '근을 넣으면 생기는 덩어리로 식의 값 구하기', '심1', (d, n) => {

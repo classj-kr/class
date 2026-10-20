@@ -18,7 +18,7 @@
   const LT = '<i>&lt;</i>';
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       // ── ① 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('h-allforms', '그림의 수를 나타낸 식 모두 고르기', '심5 심4', (d) => {

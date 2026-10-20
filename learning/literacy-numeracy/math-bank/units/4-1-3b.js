@@ -617,7 +617,7 @@
 
   // ── 실력 문제 ────────────────────────────────────────────────
   B.addGroup('4-1-3', {
-    id: 'hard', title: '실력 문제', standard: DIV,
+    id: 'hard', title: '단원 종합', standard: DIV,
     types: [
       H('h-rows', '곱셈 세로셈의 둘째 줄이 나타내는 값', '5·9, 기본 ①10 ②17', (d) => {
         const [a, b] = byTwo(d, (x, y) => y >= 20), ones = b % 10, digit = Math.floor(b / 10), first = a * ones, second = a * digit * 10;

@@ -199,7 +199,7 @@
     return cv.out(`직각삼각형 ㄱㄴㄷ. 각 ㄴ이 직각이고 변 ㄱㄴ의 길이 ${p} cm, 변 ㄴㄷ의 길이 ${q} cm`);
   }
   B.addGroup('6-2-6', {
-    id: 'hard', title: '실력 문제', standard: SOLID,
+    id: 'hard', title: '단원 종합', standard: SOLID,
     types: [
       // ── ① 그림·상황에 함정이 있는 문제 ──
       H('hard-count-cyl', '눕혀 놓은 것·닮은 도형이 섞인 그림에서 원기둥 세기', '1·2·7, 기본 ①1 ②1 ③1', (d) => {

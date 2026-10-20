@@ -100,7 +100,7 @@
           quiz.append(feedback);
           return;
         }
-        feedback.append(el("strong", "", picked === question.answer ? "정답입니다." : "정답입니다. 첫 응답은 오답으로 기록됩니다."));
+        feedback.append(el("strong", "", "정답입니다."));
         feedback.append(el("p", "", question.explanation));
         const last = current === data.questions.length - 1;
         if (last) feedback.append(el("p", "bronze-score", `첫 응답에서 ${data.questions.length}문제 중 ${answers.filter((answer, i) => answer === data.questions[i].answer).length}문제 정답`));

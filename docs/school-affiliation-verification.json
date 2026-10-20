@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-20",
+  "behavior": [
+    "학생의 최신 유효 소속 학교급을 초·중·고 기본값으로 전달",
+    "교사의 활성 등록 중 최신 학년도 학교급 사용, 관리자 겸직 포함",
+    "유효한 URL 학교급 또는 직접 선택은 소속 기본값보다 우선",
+    "브라우저 저장소에 소속이나 기본 학교급을 저장하지 않음",
+    "고등학교 과학실험실은 1학년·학년 미지정 교사 공통, 2·3학년 선택으로 시작"
+  ],
+  "coverage": [
+    "세계지도",
+    "국내지도",
+    "인체구조",
+    "우주",
+    "주기율표",
+    "과학실험실"
+  ],
+  "verification": {
+    "browserChecks": 25,
+    "nodeTests": 14,
+    "browserErrors": [],
+    "scienceAssetHashes": "passed"
+  },
+  "knownBaselineFailure": {
+    "test": "classroom-lifecycle.test.mjs: saving an empty school roster",
+    "reason": "ROSTER_REMOVAL_NEEDS_CONFIRM",
+    "confirmedOnUnchangedHEAD": true,
+    "excludedFrom14PassingTests": true
+  },
+  "limits": [
+    "학교급 컬럼이 없어 등록된 공식 학교명의 초등학교·중학교·고등학교 및 분교 명칭으로 판별한다.",
+    "소속 미등록·학교급 불명 계정은 기존 대체값을 유지하며 직접 선택할 수 있다."
+  ]
+}

@@ -41,7 +41,7 @@
   }
 
   B.addGroup('6-2-2', {
-    id: 'hard', title: '실력 문제', standard: VIEW,
+    id: 'hard', title: '단원 종합', standard: VIEW,
     types: [
       // ── ① 그림·상황에 함정이 있는 문제 ──
       H('hard-hidden-count', '가려진 자리가 있는 쌓은 모양의 개수', '11, 기본 ①24 ②11 ③11', (d, n) => {

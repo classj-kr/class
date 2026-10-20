@@ -228,7 +228,7 @@
   ]);
 
   B.addGroup('2-2-5', {
-    id: 'hard', title: '실력 문제', standard: GRAPH,
+    id: 'hard', title: '단원 종합', standard: GRAPH,
     types: [
       // ① 배운 뜻을 정확히 대야 풀리는 문제
       H('h-more-than', '「~보다 많은」에 같은 수는 들지 않는다', '①30 심28', (d) => {

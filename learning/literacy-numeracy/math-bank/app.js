@@ -74,7 +74,7 @@
   const versionOf = (u) => VERSION + '.' + (u.version || 1);
   const termOf = (u) => u.grade + '-' + u.semester;
   // 해결 여부와 최초 채점은 따로 둔다. 힌트를 보고 맞혀도 최초 오답은 바뀌지 않는다.
-  // 검증된 쌍둥이가 준비된 초·중·고1 두 학기에 힌트와 오답 복습을 적용한다.
+  // 검증된 유사 문제가 준비된 초·중·고1 두 학기에 힌트와 오답 복습을 적용한다.
   const isClosed = (state) => Boolean(state && (!round.hints || state.ok || state.revealed));
   const firstRight = (state) => Boolean(state && (round.hints ? state.firstOk && !state.hinted && !state.revealed : state.ok));
   const restoreAnswer = (state) => round.hints ? { ...state, firstOk: state.firstOk ?? state.ok, hinted: state.hinted ?? !state.ok, attempts: state.attempts || 1 } : state;
@@ -120,7 +120,7 @@
   }
   function fillUnits() {
     const list = unitsOf(termSelect.value);
-    unitSelect.replaceChildren(...list.map((u) => new Option(u.no + '. ' + u.title, u.id)));
+    unitSelect.replaceChildren(...list.map((u) => new Option(u.semesterAdvanced ? u.title : u.no + '. ' + u.title, u.id)));
     if (!list.includes(unit)) unit = list[0];
     unitSelect.value = unit.id;
   }
@@ -153,16 +153,16 @@
     round = null;
     const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('term'); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
     const list = el('ol', 'mb-groups');
-    unit.groups.forEach((group, gi) => {
+    unit.groups.forEach((group) => {
       const row = el('li', 'mb-group');
-      const icon = window.MathBankIcons ? window.MathBankIcons.forGroup(unit, group, gi) : '';
-      row.append(el('span', 'mb-group-title', '<span class="mb-group-text">' + titleOf(group.title) + '</span>' + icon));
+      row.append(el('span', 'mb-group-title', '<span class="mb-group-text">' + titleOf(group.title) + '</span>'));
       const levels = el('div', 'mb-levels');
       for (const level of B.LEVELS) {
         const rounds = B.roundCount(unit, group.id, level);
         for (let no = 1; no <= rounds; no += 1) {
           const done = finished[roundKey(group.id, level, no)];
-          const label = level + (rounds > 1 ? ' ' + no : '');
+          const shownLevel = level === '실력' && group.id === 'hard' && !(unit && unit.semesterAdvanced) ? '종합' : level;
+          const label = shownLevel + (rounds > 1 ? ' ' + no : '');
           const button = el('button', 'mb-level' + (level === '실력' ? ' is-hard' : '') + (done ? ' is-done' : ''), label + (done ? '<small>' + done.right + ' / ' + done.total + '</small>' : ''));
           button.type = 'button';
           button.setAttribute('aria-label', group.title + ' ' + level + (rounds > 1 ? ' ' + no + '회' : '') + (done ? ', 지난번 ' + done.total + '문항 중 ' + done.right + '문항 정답' : ''));
@@ -204,7 +204,7 @@
       const batches = await Promise.all(selected.map(i => window.MathBankTwins.forItem(B, unit, group, originals[i])));
       const items = batches.flatMap((batch, at) => batch.map(item => ({ ...item, originNo: selected[at] + 1 })));
       const contentKey = roundKey(groupId, level, no) + ':twins:' + selected.join('.');
-      const session = await records.start({ contentKey, title: unit.title + ' · ' + group.title + ' · 오답 쌍둥이 복습', version: versionOf(unit) + '.twins-1', checkpoint: { answers: {}, origins: selected, parentSessionId } });
+      const session = await records.start({ contentKey, title: unit.title + ' · ' + group.title + ' · 오답 유사 문제 복습', version: versionOf(unit) + '.twins-1', checkpoint: { answers: {}, origins: selected, parentSessionId } });
       round = { group, level, no, items, answers: {}, hints: true, review: { contentKey, indices: selected, parentSessionId: session.checkpoint?.parentSessionId || parentSessionId } };
       for (const item of items) if (session.checkpoint?.answers?.[item.key]) round.answers[item.key] = restoreAnswer(session.checkpoint.answers[item.key]);
       showRound();
@@ -216,7 +216,8 @@
   }
 
   function showRound() {
-    const head = el('p', 'mb-round-title', titleOf(round.group.title) + '<span class="mb-chip' + (round.level === '실력' ? ' is-hard' : '') + '">' + (round.review ? '오답 쌍둥이 복습' : round.level + (round.rounds > 1 ? ' ' + round.no + '회' : '')) + '</span>');
+    const shownLevel = round.level === '실력' && round.group.id === 'hard' && !(unit && unit.semesterAdvanced) ? '종합' : round.level;
+    const head = el('p', 'mb-round-title', titleOf(round.group.title) + '<span class="mb-chip' + (round.level === '실력' ? ' is-hard' : '') + '">' + (round.review ? '오답 유사 문제 복습' : shownLevel + (round.rounds > 1 ? ' ' + round.no + '회' : '')) + '</span>');
     const list = el('ol', 'mb-items');
     if (round.review) list.classList.add('is-review');
     // 여섯 자리를 넘는 답이 있는 회차는 칸을 모두 넓힌다(문항마다 넓히면 칸 너비가 답의 크기를 알려 준다).
@@ -231,7 +232,7 @@
 
   function itemCard(item, roomy) {
     const card = el('li', 'mb-item'); card.dataset.key = item.key;
-    if (round.review) card.append(el('p', 'mb-twin-label', '원문제 ' + item.originNo + '번 · 쌍둥이 ' + item.twinNo + ' / 3' + (item.twinKind === 'concept' ? ' · 개념 확인' : '')));
+    if (round.review) card.append(el('p', 'mb-twin-label', '원문제 ' + item.originNo + '번 · 유사 문제 ' + item.twinNo + ' / 3' + (item.twinKind === 'concept' ? ' · 개념 확인' : '')));
     card.append(el('p', 'mb-text', item.text));
     if (item.figure) card.append(el('div', 'mb-figure', item.figure));
     const result = el('div', 'mb-result'); result.hidden = true;
@@ -354,20 +355,18 @@
     result.className = 'mb-result ' + (ok ? 'is-right' : 'is-wrong');
     if (ok) {
       result.replaceChildren(el('strong', null, firstRight(state) ? '정답' : '다시 풀어 맞혔어요'));
-      if (!firstRight(state)) result.append(el('p', 'mb-feedback-note', '힌트를 보고 해결했어요. 처음 풀이의 오답 기록은 유지돼요.'));
     } else if (!round.hints || state.revealed) {
       result.innerHTML = '<strong>답: ' + answerText(item, true) + '</strong>' + (item.explain ? '<br>' + item.explain : '');
-      if (round.hints) result.append(el('p', 'mb-feedback-note', '정답·풀이를 확인했어요. 오답으로 기록돼요.'));
     } else {
       result.replaceChildren(el('strong', null, '힌트를 보고 다시 풀어 보세요'));
       const hint = el('p', 'mb-hint');
       hint.textContent = window.MathBankHints.forItem(item, round.group);
       const reveal = el('button', 'mb-plain mb-reveal', '정답·풀이 보기'); reveal.type = 'button';
       reveal.addEventListener('click', () => revealAnswer(item, card));
-      result.append(hint, el('p', 'mb-feedback-note', '힌트를 본 문제는 다시 맞혀도 오답으로 기록돼요.'), reveal);
+      result.append(hint, reveal);
     }
     if (round.hints && !firstRight(state) && !round.review && window.MathBankTwins.eligible(unit)) {
-      const practice = el('button', 'mb-plain mb-twin-start', '쌍둥이 문제로 연습'); practice.type = 'button';
+      const practice = el('button', 'mb-plain mb-twin-start', '유사 문제로 연습'); practice.type = 'button';
       practice.addEventListener('click', () => openReview(round.group.id, round.level, round.no, [round.items.findIndex(candidate => candidate.key === item.key)]));
       result.append(practice);
     }
@@ -436,17 +435,15 @@
     const right = states.filter(firstRight).length;
     const { group, level, no, rounds } = round;
     const button = (className, label, go) => { const node = el('button', className, label); node.type = 'button'; node.addEventListener('click', go); return node; };
-    finish.replaceChildren(el('p', null, (round.hints ? '처음 풀이 기준: ' : '') + total + '문항 중 ' + right + '문항 정답'));
-    const assisted = states.filter((state) => state.ok && !firstRight(state)).length;
-    if (assisted) finish.append(el('span', 'mb-feedback-note', '힌트 후 해결 ' + assisted + '문항 · 오답 기록 유지'));
+    finish.replaceChildren(el('p', null, total + '문항 중 ' + right + '문항 정답'));
     if (round.review) {
       const indices = round.review.indices.slice();
-      finish.append(button('mb-plain', '쌍둥이 다시 풀기', () => openReview(group.id, level, no, indices)), button('mb-plain', '다른 묶음 고르기', showGroups));
+      finish.append(button('mb-plain', '유사 문제 다시 풀기', () => openReview(group.id, level, no, indices)), button('mb-plain', '다른 묶음 고르기', showGroups));
     } else {
       const missed = round.items.map((item, i) => firstRight(round.answers[item.key]) ? -1 : i).filter(i => i >= 0);
-      if (missed.length && window.MathBankTwins.eligible(unit)) finish.append(button('mb-primary mb-review-start', '오답 쌍둥이 복습 (' + missed.length * 3 + '문항)', () => openReview(group.id, level, no, missed)));
+      if (missed.length && window.MathBankTwins.eligible(unit)) finish.append(button('mb-primary mb-review-start', '오답 유사 문제 복습 (' + missed.length * 3 + '문항)', () => openReview(group.id, level, no, missed)));
       if (no < rounds) finish.append(button('mb-primary', '다음 회차', () => openRound(group.id, level, no + 1)));
-      else if (level === '기본' && B.roundCount(unit, group.id, '실력')) finish.append(button('mb-primary', '실력 문제 풀기', () => openRound(group.id, '실력', 1)));
+      else if (level === '기본' && B.roundCount(unit, group.id, '실력')) finish.append(button('mb-primary', (group.id === 'hard' && !(unit && unit.semesterAdvanced) ? '단원 종합' : '실력 문제') + ' 풀기', () => openRound(group.id, '실력', 1)));
       finish.append(button('mb-plain', '다시 풀기', () => openRound(group.id, level, no)), button('mb-plain', '다른 묶음 고르기', showGroups));
     }
     finish.hidden = false;

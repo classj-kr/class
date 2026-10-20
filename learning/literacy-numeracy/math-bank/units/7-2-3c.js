@@ -49,7 +49,7 @@
   }
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: POLY,
+    id: 'hard', title: '단원 종합', standard: POLY,
     types: [
       // ── ① 문제의 그림·말·수에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-all-links', '모든 점을 서로 잇는 선분의 개수', '심8', (d) => {

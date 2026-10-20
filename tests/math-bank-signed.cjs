@@ -137,7 +137,7 @@ const MINUS = '−';
     await done(card, false);
     await card.locator('.mb-sign').click();
     await card.locator('.mb-primary').click();
-    assert.match(await done(card, true), /오답 기록은 유지/, '부호를 고쳐 맞혀도 첫 오답은 유지한다');
+    assert.match(await done(card, true), /다시 풀어 맞혔어요/);
     await back();
 
     // ⑤ 음의 분수: 부호 단추는 분수 칸의 왼쪽에 하나만 있다. −로 바꾸고 분자·분모를 적으면 맞다.
@@ -177,7 +177,7 @@ const MINUS = '−';
     await done(card, false);
     await card.locator('.mb-sign').click();
     await card.locator('.mb-primary').click();
-    assert.match(await done(card, true), /오답 기록은 유지/, '분수의 부호를 고친 뒤에도 첫 오답은 유지한다');
+    assert.match(await done(card, true), /다시 풀어 맞혔어요/);
     await back();
 
     // ⑧ 칸이 여럿인 답: 칸마다 부호 단추가 있고, 한 칸의 부호만 틀려도 틀리다.
@@ -200,7 +200,7 @@ const MINUS = '−';
     await snap('multi-wrong');
     for (let i = 0; i < item.inputs.length; i += 1) if (item.inputs[i].answer < 0) await card.locator('.mb-sign').nth(i).click();
     await card.locator('.mb-primary').click();
-    assert.match(await done(card, true), /오답 기록은 유지/);
+    assert.match(await done(card, true), /다시 풀어 맞혔어요/);
     await back();
 
     // ⑨ 고르기의 답에 거듭제곱이 있으면 답 줄에서도 지수가 위첨자로 보인다.

@@ -29,7 +29,7 @@
   const ij = (nm) => nm + ((nm.charCodeAt(nm.length - 1) - 0xAC00) % 28 ? '이는' : '는');
 
   B.addGroup('10-2-1', {
-    id: 'hard', title: '실력 문제', standard: STD1,
+    id: 'hard', title: '단원 종합', standard: STD1,
     types: [
       // ── ① 상황에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-ratio-outside', '수직선 위에서 거리의 비가 주어진 점', '①8', (d) => {

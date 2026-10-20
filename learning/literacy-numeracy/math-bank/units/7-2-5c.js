@@ -38,7 +38,7 @@
   const cumul = (f) => f.map((v, i) => sum(f.slice(0, i + 1)));
 
   B.addGroup('7-2-5', {
-    id: 'hard', title: '실력 문제', standard: STD2,
+    id: 'hard', title: '단원 종합', standard: STD2,
     types: [
       // ══ 대푯값 ══
       // ── ① 뜻을 정확히 대야 풀리는 문제 ──

@@ -32,7 +32,7 @@
   const beats = (x, y) => (HANDS.indexOf(x) - HANDS.indexOf(y) + 3) % 3 === 1;
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ① 6 대신 3: (앞, 뒤)와 (뒤, 앞)을 한 가지로 센 아이. 8·12: 주사위에 없는 약수까지 센 아이.
       H('hard-rps3', '세 사람의 가위바위보', '①19 심25', (d, n) => {

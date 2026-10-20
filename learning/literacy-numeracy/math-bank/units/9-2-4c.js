@@ -379,5 +379,5 @@
     })
   ];
 
-  B.addGroup(UNIT, { id: 'hard', title: '실력 문제', standard: S19, types: hard });
+  B.addGroup(UNIT, { id: 'hard', title: '단원 종합', standard: S19, types: hard });
 })(typeof window !== 'undefined' ? window : globalThis);

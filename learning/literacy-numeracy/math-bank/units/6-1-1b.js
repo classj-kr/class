@@ -572,7 +572,7 @@
 
   // ── 실력 ──
   B.addGroup('6-1-1', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 상황·그림·수에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-over-one-count', '계산하지 않고 몫이 1보다 큰 나눗셈 세기', '심6·23 / 기본 ①48 ②46 ③54', (d) => {

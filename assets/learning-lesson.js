@@ -31,7 +31,10 @@
       if ($('lessonToolbar')) $('lessonToolbar').hidden = false;
       $('lessonList').replaceChildren(...lessons().map((lesson, index) => {
         const items = itemsFor(index), button = node('button', '', 'lesson-item'); button.type = 'button';
-        const copy = node('span', '', 'lesson-copy'); copy.append(node('strong', lesson.title), node('small', lesson.copy), node('em', items.slice(0, 3).map(text).join(' · ')));
+        const copy = node('span', '', 'lesson-copy');
+        copy.append(node('strong', lesson.title));
+        if (lesson.copy) copy.append(node('small', lesson.copy));
+        copy.append(node('em', items.slice(0, 3).map(text).join(' · ')));
         const meta = node('span', `${items.length}개`, 'lesson-meta'); const status = statuses.get(`${language}:${index}`);
         if (status) meta.append(node('b', status === 'completed' ? '완료' : '진행 중'));
         button.append(node('span', String(index + 1).padStart(2, '0'), 'lesson-number'), copy, meta);
@@ -110,7 +113,8 @@
       if (busy) return; language = button.dataset.language;
       document.querySelectorAll('.language-tab').forEach(other => other.classList.toggle('active', other === button)); overview();
     });
-    $('backToLessons').onclick = () => { if (!busy) overview(); };
+    const backToLessons = $('backToLessons');
+    if (backToLessons) backToLessons.onclick = () => { if (!busy) overview(); };
     const back = event => { if (!$('learningShell').hidden) { event.preventDefault(); if (!busy) overview(); } };
     window.addEventListener('sitebackrequest', back); document.querySelector('a.back')?.addEventListener('click', back);
     await records.ready; await refreshStatuses(); overview();

@@ -40,7 +40,7 @@
   const plainLine = (s1, s2, mag) => pl({ x: [-4, 4], y: [-4, 4], grid: false, lines: [s2 === 0 ? { a: s1 * mag } : { a: s1 * mag, b: 2 * s2 }], label: `좌표평면: 눈금 없는 그림. 직선이 ${s2 === 0 ? '원점을 지나고 ' : ''}오른쪽 ${s1 > 0 ? '위' : '아래'}로 향${s2 === 0 ? '한다.' : `하고, y축과 원점의 ${s2 > 0 ? '위' : '아래'}쪽에서 만난다.`}` });
 
   B.addGroup('8-1-6', {
-    id: 'hard', title: '실력 문제', standard: STD2,
+    id: 'hard', title: '단원 종합', standard: STD2,
     types: [
       H('hard-signs-quadrant', '계수의 부호와 그래프가 지나지 않는 사분면', '심22·23', (d, n) => {
         if (n === 0) {

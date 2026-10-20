@@ -300,7 +300,7 @@
                         b.classList.add('correct');
                     }
                 });
-                expEl.innerHTML = '<strong>' + (firstSelected === quizData.answer ? '정답입니다.' : '정답입니다. 첫 응답은 오답으로 기록됩니다.') + '</strong> ' + quizData.explanation;
+                expEl.innerHTML = '<strong>정답입니다.</strong> ' + quizData.explanation;
                 SoundFX.playCorrect();
                 // Advance only after solving; the callback retains the first response.
                 if (onAnswerCallback) onAnswerCallback(firstSelected === quizData.answer, firstSelected);

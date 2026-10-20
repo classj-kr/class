@@ -244,7 +244,7 @@
   const cent = (x) => { const i = ix(x); return { s: x.k === 2 ? i.s : `${i.s}*${P10[2 - x.k]}`, un: i.un.concat([P10[2 - x.k]]) }; };
 
   B.addGroup('6-2-3', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 상황·그림·수에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-bigger-count', '계산하지 않고 몫이 나누어지는 수보다 큰 나눗셈 세기', '기본 ①27 ②12 / 심26·31·39·61', (d) => {

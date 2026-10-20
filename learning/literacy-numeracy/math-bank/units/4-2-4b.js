@@ -666,7 +666,7 @@
   const openRegular = (n, i) => { const pts = regular(n); return pts.map((_, k) => pts[(i + 1 + k) % n]); };
 
   B.addGroup('4-2-4', {
-    id: 'hard', title: '실력 문제', standard: POLY,
+    id: 'hard', title: '단원 종합', standard: POLY,
     types: [
       H('hard-poly-count', '오목한 다각형과 다각형처럼 보이는 도형이 섞인 그림에서 다각형 세기', '1·3', (d) => {
         // 그림의 함정: 오목하게 들어간 도형도 선분으로만 둘러싸여 있으면 다각형이다. 한 곳만 굽었거나 한 곳만 열린 도형은 다각형이 아니다.

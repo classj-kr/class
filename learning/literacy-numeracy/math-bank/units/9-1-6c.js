@@ -31,7 +31,7 @@
   const lineFig = (sa, sb) => fig({ x: [-4, 4], y: [-4, 4], lines: [{ a: sa * 1.2, b: sb * 2 }], say: `직선 하나(눈금과 수는 없다). 오른쪽 ${sa > 0 ? '위' : '아래'}로 향하고 y축과 원점보다 ${sb > 0 ? '위' : '아래'}에서 만난다.` });
 
   B.addGroup('9-1-6', {
-    id: 'hard', title: '실력 문제', standard: S22,
+    id: 'hard', title: '단원 종합', standard: S22,
     types: [
       // ── ① 식·그림·상황에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-coef-not-quad', '이차항의 계수에 문자가 든 식의 꼭짓점 조건', '기본 ①37', (d) => {

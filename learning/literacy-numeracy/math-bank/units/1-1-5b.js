@@ -289,7 +289,7 @@
   ]);
 
   B.addGroup('1-1-5', {
-    id: 'hard', title: '실력 문제', standard: PLACE,
+    id: 'hard', title: '단원 종합', standard: PLACE,
     types: [
       H('h-ten-odd', '10을 나타내는 것이 아닌 것', '3', (d) => {
         // 「9보다 1만큼 더 큰 수」로만 외운 아이는 「8보다 2만큼 더 큰 수」를 고른다. 구슬 그림은 세어 보아야 안다.

@@ -96,7 +96,7 @@
   }
 
   B.addGroup('7-2-4', {
-    id: 'hard', title: '실력 문제', standard: MEAS,
+    id: 'hard', title: '단원 종합', standard: MEAS,
     types: [
       // ── ① 문제의 그림·상황에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-same-faces', '꼭짓점을 잘라 낸 다면체와 면의 개수가 같은 다면체', '심5 / 기본 ①5 ②4', (d) => {

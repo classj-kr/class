@@ -30,7 +30,7 @@
   const mj = (w, k, n, pair) => mixed(w, k, n) + tail(k, pair);
 
   B.addGroup('3-2-4', {
-    id: 'hard', title: '실력 문제', standard: KIND,
+    id: 'hard', title: '단원 종합', standard: KIND,
     types: [
       H('h-improper-say', '가분수의 뜻', '옳은(틀린) 설명 고르기(심화 36), 설명이 옳은지 가려내기(기본 ③56)', (d) => {
         const den = d.int(4, 9);

@@ -601,7 +601,7 @@
   ]);
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: QUAD,
+    id: 'hard', title: '단원 종합', standard: QUAD,
     types: [
       H('hard-para-extend', '늘이면 만나는 두 선분과 평행한 두 선분', '17, 기본 ②25', (d) => {
         // 그림에 함정을 둔다: 그림에서는 만나지 않지만 늘이면 만나는 두 선분(만나지 않으면 평행이라고 보는 아이가 센다)과,

@@ -26,7 +26,7 @@
   const fact = (d, ok) => d.until(() => { const b = d.int(2, 9), q = d.int(2, 9); return [b * q, b, q]; }, ok || (() => true));
 
   B.addGroup('3-1-3', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-means', '나눗셈식으로 나타낼 수 없는 상황', '상황에 맞는 식·나눗셈식에 대한 설명(기본 자료) — 똑같이 나누기, 묶어 덜어 내기, 거듭 빼기를 한자리에서 가리게', (d) => {
         const [a, b, q] = fact(d, ([, y, z]) => y !== z);

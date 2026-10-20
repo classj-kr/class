@@ -72,7 +72,7 @@
   }
 
   B.addGroup('8-1-3', {
-    id: 'hard', title: '실력 문제', standard: STD2,
+    id: 'hard', title: '단원 종합', standard: STD2,
     types: [
       // ── ① 문제의 식·그림·상황에 장치가 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-linear-cond', '일차부등식이 되지 않게 하는 상수', '심15', (d) => {

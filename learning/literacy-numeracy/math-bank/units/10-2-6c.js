@@ -33,7 +33,7 @@
   const dec = (v) => (v < 0 ? MINUS : '') + fmt(Math.abs(v));
 
   B.addGroup('10-2-6', {
-    id: 'hard', title: '실력 문제', standard: S3,
+    id: 'hard', title: '단원 종합', standard: S3,
     types: [
       // ── ① 식·그림·상황에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-identity-piece', '항등함수가 되는 조각 함수의 상수', '심4', (d) => {

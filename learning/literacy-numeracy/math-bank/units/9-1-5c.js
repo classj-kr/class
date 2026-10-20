@@ -21,7 +21,7 @@
   const AX = (c) => nb(`${Y} = ${c}${A}${X2}`);   // y = (계수)ax²
 
   B.addGroup('9-1-5', {
-    id: 'hard', title: '실력 문제', standard: S22,
+    id: 'hard', title: '단원 종합', standard: S22,
     types: [
       // ── ① 식·그림·조건에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-coef-letter', '기준 그래프의 계수를 문자로 둔 채 다른 그래프의 식 고르기', '심6', (d) => {

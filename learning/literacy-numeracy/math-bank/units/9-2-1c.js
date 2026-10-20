@@ -48,7 +48,7 @@
   }
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 그림·조건에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-sincos-ratio', 'sin A : cos A 의 비로 삼각비 구하기', '기본 ①13', (d) => {

@@ -28,7 +28,7 @@
   const pair22 = (d, ok) => d.until(() => [d.int(12, 89), d.int(12, 89)], ([a, b]) => a % 10 !== 0 && b % 10 !== 0 && a !== b && (!ok || ok(a, b)));
 
   B.addGroup('3-2-1', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-rows', '세로셈의 둘째 줄이 나타내는 값', '세로셈의 부분곱이 나타내는 식(미래엔·동아·아이스크림), 십의 자리 곱을 그렇게 쓰는 까닭(YBM)', (d) => {
         // 32×26: 첫째 줄 192는 32×6, 둘째 줄 64는 32×20=640 을 나타낸다.

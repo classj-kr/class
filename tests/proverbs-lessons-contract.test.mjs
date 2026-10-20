@@ -17,7 +17,7 @@ const lessonRow = (button) => ({
 });
 
 test("속담은 고정 개수가 아닌 내용별 차시 학습으로 진행된다", async () => {
-  for (const id of ["lessonOverview", "lessonList", "learningShell", "backToLessons", "currentLessonTitle"]) assert.match(html, new RegExp(`id="${id}"`));
+  for (const id of ["lessonOverview", "lessonList", "learningShell", "currentLessonTitle"]) assert.match(html, new RegExp(`id="${id}"`));
   assert.doesNotMatch(app, /BATCH_SIZE|다음 5개|5개 학습|세상살이의 지혜/);
 
   // 실제 화면을 띄워 차시 목록을 읽는다. 끝낸 차시는 기록에서 받아 「완료」로 표시한다.

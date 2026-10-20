@@ -69,7 +69,7 @@
   }
 
   B.addGroup(U, {
-    id: 'hard', title: '실력 문제', standard: RATIO,
+    id: 'hard', title: '단원 종합', standard: RATIO,
     types: [
       // ── ① 장치가 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('h-duo-more', '전체 수가 다른 두 원그래프에서 수가 더 많은 쪽 찾기', '50, 기본 ②41 ③41', (d) => {

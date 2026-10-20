@@ -191,7 +191,7 @@
   }
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 그림·말·수에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-two-cases', '직각삼각형이 되게 하는 변의 길이를 제곱한 값 모두 찾기', '심27 ①39', (d) => {

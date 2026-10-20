@@ -623,7 +623,7 @@
 
   // ── 실력 ──
   B.addGroup('5-1-5', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 상황·그림·수에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-count-cells', '나눈 칸 수가 다른 두 띠에 색칠한 부분의 합', '심3 / 기본 ①3 ②1 ③1', (d) => {

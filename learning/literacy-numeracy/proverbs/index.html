@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="한국 속담과 영어 속담의 뜻과 쓰임을 익히는 학습 도구">
   <title>속담</title>
-  <link rel="stylesheet" href="styles.css?v=20261009-card-footer">
+  <link rel="stylesheet" href="styles.css?v=20261020-back-navigation">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="proverbs-data.js?v=20260927-1" defer></script>
   <script src="proverbs-essential-additions.js?v=20260927-1" defer></script>
   <script src="proverbs-lookalikes.js?v=20260927-1" defer></script>
   <script src="/assets/learning-records.js?v=20261001-1" defer></script>
-  <script src="/assets/learning-lesson.js?v=20261009-music-scope" defer></script>
-  <script src="app.js?v=20261009-music-scope" defer></script>
+  <script src="/assets/learning-lesson.js?v=20261020-back-navigation" defer></script>
+  <script src="app.js?v=20261020-single-title" defer></script>
 </head>
 <body>
   <header>
@@ -32,7 +32,7 @@
     </section>
     <div id="learningShell" hidden>
       <div class="learning-header">
-        <div class="learning-utility"><button id="backToLessons" type="button">← 차시 목록</button><strong id="currentLessonTitle"></strong></div>
+        <strong id="currentLessonTitle" class="current-lesson-title"></strong>
         <nav class="mode-tabs" aria-label="학습 모드 선택">
           <button class="mode-tab active" data-mode="study" type="button" aria-selected="true">속담 공부</button>
           <button class="mode-tab" data-mode="quiz" type="button" aria-selected="false">문제 풀기</button>

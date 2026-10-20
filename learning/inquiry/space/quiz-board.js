@@ -122,7 +122,7 @@
                 return;
             }
             expEl.hidden = false;
-            resultEl.textContent = firstAnswer.correct ? '정답입니다.' : '정답입니다. 첫 응답은 오답으로 기록됩니다.';
+            resultEl.textContent = '정답입니다.';
             Array.prototype.forEach.call(optionsWrap.querySelectorAll('input'), function (input) {
                 input.disabled = true;
             });

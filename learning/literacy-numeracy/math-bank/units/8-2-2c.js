@@ -54,7 +54,7 @@
   ];
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 그림·말·수에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-cond-count', '기호로 쓴 조건 가운데 평행사변형이 되는 것의 개수', '심14 / 기본 ②20 ②21', (d) => {

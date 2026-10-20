@@ -52,7 +52,7 @@
   ];
 
   B.addGroup(U, {
-    id: 'hard', title: '실력 문제', standard: STD1,
+    id: 'hard', title: '단원 종합', standard: STD1,
     types: [
       // ── ① 문제의 수·식·말에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-prime-both', '1과 2, 소수처럼 보이는 합성수가 섞인 수 목록에서 소수와 합성수의 개수', '심1 / 기본 ①3·4', (d) => {

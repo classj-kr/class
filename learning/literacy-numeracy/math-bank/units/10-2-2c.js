@@ -30,7 +30,7 @@
   const setText = (list) => (list.length === 1 ? `${lineText(list[0])} 하나뿐이다` : list.map(lineText).join(', '));
 
   B.addGroup('10-2-2', {
-    id: 'hard', title: '실력 문제', standard: S05,
+    id: 'hard', title: '단원 종합', standard: S05,
     types: [
       // ── ① 식·그림·상황에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-center-line-axes', '중심이 직선 위에 있고 두 좌표축에 동시에 접하는 원', '①22', (d) => {

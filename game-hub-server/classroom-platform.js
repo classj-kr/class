@@ -28,6 +28,7 @@ const { createSeating } = require("./seating");
 const { createStudentCharacterStyleResolver } = require("./student-character-style");
 const { pushSchema, createWebPush, clipText } = require("./web-push");
 const { CANONICAL_ORIGIN } = require("./canonical-host");
+const { schoolDefaults } = require("./school-affiliation");
 
 const SESSION_COOKIE = "class_session";
 const GUEST_ACCESS_COOKIE = "class_guest_access";
@@ -1788,7 +1789,7 @@ function createClassroomPlatform(options = {}) {
                 sc.name AS school_name
          FROM school_students s
          JOIN classroom_schools sc ON sc.id = s.school_id
-         WHERE s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1))
+         WHERE sc.enabled = TRUE AND (s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1)))
          UNION ALL
          SELECT s.student_number::TEXT AS student_number, s.roster_name,
                 c.academic_year, c.grade, c.class_number,
@@ -1796,7 +1797,8 @@ function createClassroomPlatform(options = {}) {
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE s.user_id = $1 AND s.roster_active = TRUE
+         WHERE s.user_id = $1 AND s.roster_active = TRUE AND sc.enabled = TRUE
+         ORDER BY academic_year DESC NULLS LAST
          LIMIT 1`,
         [userId]
       );
@@ -2028,9 +2030,9 @@ function createClassroomPlatform(options = {}) {
     }
     if (pool && databaseReady) {
       const membership = await studentMembership(user.id);
-      if (membership?.studentName) return { name: membership.studentName, kind: "student" };
-      const registration = await teacherRegistration(user);
-      if (registration?.teacher_name) return { name: registration.teacher_name, kind: "teacher" };
+      if (membership?.studentName) return { name: membership.studentName, kind: "student", ...schoolDefaults(membership) };
+      const registration = (await teacherRegistrations(user)).sort((a, b) => Number(b.academic_year || 0) - Number(a.academic_year || 0))[0];
+      if (registration?.teacher_name) return { name: registration.teacher_name, kind: "teacher", ...schoolDefaults(registration) };
     }
     return { name: String(user.name || user.displayName || "").trim(), kind: user.role || "user" };
   }

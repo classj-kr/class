@@ -27,9 +27,8 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: 
 .mb-groups { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: group; }
 .mb-group { counter-increment: group; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
 .mb-group::before { content: counter(group); width: 30px; height: 30px; border-radius: 50%; background: var(--brand-soft); color: var(--brand-dark); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-.mb-group-title { font-weight: 600; display: inline-flex; align-items: center; gap: 9px; flex-wrap: wrap; min-width: 0; }
+.mb-group-title { font-weight: 600; min-width: 0; }
 .mb-group-text { word-break: keep-all; }
-.mb-group-icon { width: 28px; height: 28px; flex: none; display: inline-block; vertical-align: middle; filter: drop-shadow(0 1px 1.5px rgba(15, 23, 42, 0.1)); }
 .mb-levels { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 .mb-level { min-height: 44px; min-width: 76px; padding: 6px 14px; border-radius: 10px; border: 1px solid var(--brand); background: var(--paper); color: var(--brand-dark); font-weight: 600; cursor: pointer; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.25; }
 .mb-level:hover { background: var(--brand-soft); }
@@ -184,7 +183,6 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 .mb-result .mb-expr { font-size: 1.05rem; color: var(--ink); }
 .mb-result strong { font-weight: 700; }
 .mb-hint { margin: 6px 0 8px; }
-.mb-feedback-note { margin: 6px 0 0; font-size: 0.86rem; color: var(--muted); }
 .mb-reveal { margin-top: 10px; font-size: 0.88rem; }
 .mb-twin-start { margin: 10px 0 0 6px; font-size: 0.88rem; }
 .mb-twin-label { margin: 0 0 8px; color: var(--brand-dark); font-size: 0.82rem; font-weight: 600; }

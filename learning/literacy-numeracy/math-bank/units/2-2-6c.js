@@ -29,7 +29,7 @@
   const H = (id, title, ref, make, more) => Object.assign({ id, level: '실력', title, source: '수집본 심화 자료(' + ref + ')', make }, more || {});
 
   B.addGroup('2-2-6', {
-    id: 'hard', title: '실력 문제', standard: FIND,
+    id: 'hard', title: '단원 종합', standard: FIND,
     types: [
       H('h-unit', '가운데에서 끊긴 무늬의 반복되는 부분', '심1 ①1', (d) => {
         // 줄의 끝이 반복되는 부분의 가운데에서 끊긴다.

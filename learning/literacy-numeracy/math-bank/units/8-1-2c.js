@@ -55,7 +55,7 @@
   }
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD1,
+    id: 'hard', title: '단원 종합', standard: STD1,
     types: [
       // ── ① 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-count-true', '뜻이 맞서는 계산을 섞어 놓고 옳은 것의 개수 세기', '심3·4·27 / 기본 ①10 ②13·39', (d, n) => {

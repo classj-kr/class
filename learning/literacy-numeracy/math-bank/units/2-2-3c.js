@@ -20,7 +20,7 @@
   const H = (id, title, ref, make, more) => Object.assign({ id, level: '실력', title, source: '수집본 심화 자료(' + ref + ')', make }, more || {});
 
   B.addGroup('2-2-3', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-place', '길이를 잘못 나타낸 것 찾기', '심3·5 ①9', (d) => {
         // 890 cm = 8 m 90 cm, 12 m 8 cm = 1208 cm, 103 cm = 1 m 3 cm 가운데 하나만 자리를 잘못 잡는다.

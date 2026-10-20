@@ -35,7 +35,7 @@
   }
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: K.STD,
+    id: 'hard', title: '단원 종합', standard: K.STD,
     types: [
       // ── ① 그림·조건에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-two-circle-chord', '두 원에 걸친 직선 위에서 두 중심에서 내린 수선의 발 사이의 거리', '심2', (d) => {

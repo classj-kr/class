@@ -27,7 +27,7 @@
   const fx = (name, arg) => V(name) + '(' + arg + ')';
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 수·기호에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-letters', '세 제곱근을 문자로 놓고 다른 제곱근 나타내기', '심3', (d) => {

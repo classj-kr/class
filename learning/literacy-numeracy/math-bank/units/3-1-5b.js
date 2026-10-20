@@ -31,7 +31,7 @@
   const clock = (d, lo, hi) => [d.int(lo, hi), d.int(11, 56), d.int(11, 56)];
 
   B.addGroup('3-1-5', {
-    id: 'hard', title: '실력 문제', standard: TIME,
+    id: 'hard', title: '단원 종합', standard: TIME,
     types: [
       H('h-second-say', '초에 대한 설명 가리기', '초에 관한 설명 중 틀린 것(기본 자료)', (d) => {
         const m = d.int(1, 4), s = d.int(11, 48), k = d.until(() => d.int(2, 11), (v) => v !== 6), slip = d.bool();

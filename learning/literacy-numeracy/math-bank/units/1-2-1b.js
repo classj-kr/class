@@ -196,7 +196,7 @@
   ]);
 
   B.addGroup('1-2-1', {
-    id: 'hard', title: '실력 문제', standard: PLACE,
+    id: 'hard', title: '단원 종합', standard: PLACE,
     types: [
       H('h-over-ten-picture', '낱개가 10개를 넘는 그림의 수', '기본 ①19', (d) => {
         // ① 묶음의 수와 낱개의 수를 이어 쓰거나(613), 낱개의 일부만 세는 아이가 틀린다(㉮)

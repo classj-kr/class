@@ -735,7 +735,7 @@
 
   // ── 실력 ──
   B.addGroup('5-2-2', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 상황·그림·수에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-size-count', '계산하지 않고 기준보다 큰 곱 세기', '심20 / 기본 ①26·27 ②32', (d) => {

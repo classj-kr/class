@@ -55,7 +55,7 @@
   }
 
   B.addGroup('5-2-5', {
-    id: 'hard', title: '실력 문제', standard: SOLID,
+    id: 'hard', title: '단원 종합', standard: SOLID,
     types: [
       // ── ① 그림·상황에 함정이 있는 문제 ──
       H('hard-count-box', '정육면체가 섞인 그림에서 직육면체 세기', '1, 기본 ①2 ②2 ③2', (d) => {

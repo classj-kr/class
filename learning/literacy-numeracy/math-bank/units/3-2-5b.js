@@ -31,7 +31,7 @@
   const ask = (v, small, big) => [{ answer: hi(v), unit: big }, { answer: lo(v), unit: small }];
 
   B.addGroup('3-2-5', {
-    id: 'hard', title: '실력 문제', standard: WEIGHT,
+    id: 'hard', title: '단원 종합', standard: WEIGHT,
     types: [
       H('h-unit', '서로 다른 물건으로 잰 무게', '다른 단위로 잰 무게는 견줄 수 없다(심화 51), 단위 물건이 달라 견줄 수 없음(기본 ①69)', (d) => {
         const n = d.int(12, 30);

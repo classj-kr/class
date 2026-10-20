@@ -48,7 +48,7 @@
   const pq = (n) => (n < 0 ? `(${iq(n)})` : String(n));
 
   B.addGroup('7-1-4', {
-    id: 'hard', title: '실력 문제', standard: STD4,
+    id: 'hard', title: '단원 종합', standard: STD4,
     types: [
       // ── ① 문제의 식·말·상황에 장치가 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-kinds', '등식·방정식·항등식이 섞인 식 목록에서 방정식과 항등식 세기', '기본 ①5 / 심3', (d, n) => {

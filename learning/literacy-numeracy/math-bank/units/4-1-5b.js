@@ -321,7 +321,7 @@
   ]);
 
   B.addGroup('4-1-5', {
-    id: 'hard', title: '실력 문제', standard: READ,
+    id: 'hard', title: '단원 종합', standard: READ,
     types: [
       H('h-cells-talk', '막대의 칸 수와 나타내는 수', '68, 기본 ①35 ②70', (d) => {
         // 잘못 말한 사람: 막대의 칸 수의 차를 그대로 수의 차로 읽는다(한 칸을 1로 여기는 아이)

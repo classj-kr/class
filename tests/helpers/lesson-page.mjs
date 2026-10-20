@@ -18,6 +18,7 @@ export async function openLessonPage(pageDir, sessions = []) {
     ...extra
   });
   const byId = new Map();
+  const windowListeners = new Map();
   const tabs = (name) => Array.from(
     html.matchAll(new RegExp(`class="${name}-tab[^"]*" data-${name}="([^"]+)"`, "g")),
     (match) => element({ dataset: { [name]: match[1] } })
@@ -27,7 +28,12 @@ export async function openLessonPage(pageDir, sessions = []) {
     saves: [], results: 0,
     byId: (id) => sandbox.document.getElementById(id),
     tab: (selector, value) => groups[selector].find((tab) => Object.values(tab.dataset).includes(value)),
-    lessonButtons: () => page.byId("lessonList").children
+    lessonButtons: () => page.byId("lessonList").children,
+    back() {
+      const event = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } };
+      for (const listener of windowListeners.get("sitebackrequest") || []) listener(event);
+      return event.defaultPrevented;
+    }
   };
   const records = {
     ready: Promise.resolve(),
@@ -38,7 +44,10 @@ export async function openLessonPage(pageDir, sessions = []) {
   };
   const sandbox = {
     console, URLSearchParams, location: { search: "" },
-    addEventListener() {},
+    addEventListener(type, listener) {
+      if (!windowListeners.has(type)) windowListeners.set(type, []);
+      windowListeners.get(type).push(listener);
+    },
     LearningRecords: { create: () => records },
     document: {
       body: element(),
@@ -46,7 +55,11 @@ export async function openLessonPage(pageDir, sessions = []) {
       // 실제 화면과 같이 index.html에 없는 id는 null로 돌려준다.
       getElementById(id) {
         if (!html.includes(`id="${id}"`)) return null;
-        if (!byId.has(id)) byId.set(id, element());
+        if (!byId.has(id)) byId.set(id, element(id === "bgm" ? {
+          paused: true,
+          pause() { this.paused = true; },
+          play() { this.paused = false; return Promise.resolve(); }
+        } : {}));
         return byId.get(id);
       },
       querySelector: () => null,

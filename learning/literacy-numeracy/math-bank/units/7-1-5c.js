@@ -30,7 +30,7 @@
   const ab = va + vb, half = (n2) => (n2 % 2 ? frac(n2, 2) : String(n2 / 2));
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD6,
+    id: 'hard', title: '단원 종합', standard: STD6,
     types: [
       // ── ① 문제의 상황·그림에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-axis-cond', '원점이 아닌 좌표축 위의 점의 조건 고르기', '심7', (d) => {
