@@ -40,15 +40,14 @@
         <p id="readyNote" class="muted"></p>
         <div class="actions"><button id="refreshButton" class="secondary">현황 새로고침</button><button id="closeButton" class="secondary">응시 마감</button><button id="deleteButton" class="danger">시험 삭제</button></div>
       </div>
+      <div id="results" class="panel"><h2>응시 현황</h2><div id="resultsTable"></div></div>
       <div id="draftTools" class="panel">
         <h2>문항</h2>
         <div class="row"><label>시험 이름 <input id="editTitle" maxlength="80"></label><label>제한시간(분) <input id="editDuration" type="number" min="1" max="180"></label></div>
         <div class="row"><label>PDF 시험지 <input id="pdfFile" type="file" accept="application/pdf,.pdf"></label><button id="extractButton">AI로 문항 추출</button><label class="file-button">정답지 올리기<input id="keyFile" type="file" accept="application/pdf,.pdf,.xlsx,.xls,.csv"></label></div>
         <p id="extractNote" class="muted"></p><div id="editor"></div>
         <div class="actions"><button id="addChoiceButton" class="secondary">객관식 추가</button><button id="addOxButton" class="secondary">OX 추가</button><button id="addShortButton" class="secondary">단답형 추가</button><button id="saveButton">문항 저장</button></div>
-      </div>
-      <div id="results" class="panel"><h2>응시 현황</h2><div id="resultsTable"></div></div>
-    </section>
+      </div>    </section>
     <section id="studentExam" hidden>
       <div class="panel"><div class="topline"><h2 id="studentTitle"></h2><strong id="remaining"></strong></div><p id="studentMeta"></p><audio id="studentAudio" controls preload="metadata" hidden></audio></div>
       <div id="waitingPanel" class="panel" hidden><h2>입장 완료</h2><p>준비 중입니다. 잠시 기다려 주세요.</p></div>
