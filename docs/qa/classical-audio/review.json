@@ -11,6 +11,28 @@
     "교체·원본 복원 수는 해설 일치와 음질 검증 완료 수가 아님.",
     "라이선스 표기는 제공 페이지의 표시를 기록한 것이며 권리 전반의 독립적 법률 검토가 아님."
   ],
+  "browserVerification": {
+    "date": "2026-10-21",
+    "browser": "Chrome",
+    "server": "local Express static with byte-range support",
+    "fixture": "scripts/build-classical-audio-browser-check.py",
+    "localFiles": 44,
+    "passed": 44,
+    "failures": [],
+    "checks": [
+      "metadata duration finite",
+      "playback advances",
+      "seek near end",
+      "ended event received"
+    ],
+    "fullPlaybackListening": false,
+    "listeningReview": "not-performed",
+    "uiChecks": [
+      "Playing Valkyries pauses Erlking",
+      "Hallelujah, Valkyries and Rhapsody in Blue seek to end",
+      "Rhapsody recording note and credits link displayed"
+    ]
+  },
   "pieces": [
     {
       "no": "01",
@@ -2699,7 +2721,7 @@
         "performer": "Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)",
         "license": "Public domain",
         "revision": "eeaacacbce60",
-        "note": "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다. 피아노: Bramwell Tovey."
+        "note": "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다."
       },
       "technicalVerification": {
         "no": "50",

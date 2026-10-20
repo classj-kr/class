@@ -51,7 +51,7 @@ def main():
             "license": row["license"], "revision": row["outputSha256"][:12],
         }
         if no == "50":
-            audio["note"] = "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다. 피아노: Bramwell Tovey."
+            audio["note"] = "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다."
         replacement = f"  '{no}': {json.dumps(audio, ensure_ascii=False)},"
         text, count = re.subn(rf"^  '{no}': \{{.*\}},$", lambda _: replacement, text, flags=re.M)
         assert count == 1, no
@@ -62,7 +62,7 @@ def main():
 vm.runInNewContext(fs.readFileSync('learning/arts/music-listening/data/classical.js','utf8'),c);
 process.stdout.write(JSON.stringify(c.window.CLASSICAL_DATA.pieces));"""
     pieces = json.loads(subprocess.check_output(["node", "-e", js], cwd=ROOT))
-    credits = (ASSETS / "AUDIO_CREDITS.md").read_text(encoding="utf-8")
+    credits = (ASSETS / "AUDIO_CREDITS.md").read_text(encoding="utf-8").replace("2026-10-20 음원 점검", "2026-10-21 음원 점검")
     for no in ("14", "27", "40", "50"):
         row = records[no]
         title = next(p["title"] for p in pieces if p["no"] == no)
@@ -74,7 +74,7 @@ process.stdout.write(JSON.stringify(c.window.CLASSICAL_DATA.pieces));"""
         block += f"  {row['reason']}\n\n"
         credits, count = re.subn(rf"^- {no} .*?(?=^- \d\d |^## |\Z)", lambda _: block, credits, flags=re.M | re.S)
         assert count == 1, no
-    credits = credits.split("## 못 찾았거나 뺀 곡")[0] + """## 확인이 남은 곡
+    credits = re.split(r"## (?:못 찾았거나 뺀 곡|확인이 남은 곡)", credits)[0] + """## 확인이 남은 곡
 
 전체 50곡의 확인 범위와 미해결 항목은 `docs/qa/classical-audio/review.json` 및
 `review.html`에 기록합니다. 파일 검사 통과는 실제 청음이나 음악적 일치의 확인을 뜻하지 않습니다.
@@ -100,6 +100,7 @@ process.stdout.write(JSON.stringify(c.window.CLASSICAL_DATA.pieces));"""
             "listeningReview": "not-performed",
             "remaining": PENDING.get(no, "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."),
         })
+    browser_path = ROOT / "outputs/qa/classical-audio/browser-verification.json"
     report = {
         "date": "2026-10-21", "scope": "음악 감상 클래식 목록 50곡",
         "complete": False, "total": len(rows), "sourceRestoredOrReplaced": len(records),
@@ -108,7 +109,8 @@ process.stdout.write(JSON.stringify(c.window.CLASSICAL_DATA.pieces));"""
             "청음 검증 미실시. 디코딩·재생·해시 검사는 음질의 주관적 평가가 아님.",
             "교체·원본 복원 수는 해설 일치와 음질 검증 완료 수가 아님.",
             "라이선스 표기는 제공 페이지의 표시를 기록한 것이며 권리 전반의 독립적 법률 검토가 아님.",
-        ], "pieces": rows,
+        ], "browserVerification": json.loads(browser_path.read_text(encoding="utf-8")) if browser_path.exists() else None,
+        "pieces": rows,
     }
     REPORT.mkdir(parents=True, exist_ok=True)
     (REPORT / "review.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
