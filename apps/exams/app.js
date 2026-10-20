@@ -10,7 +10,7 @@
   let timer;
   let waitingPoll;
   let deadlineReloaded = false;
-  const show = id => ['joinView','teacherHome','teacherExam','studentExam'].forEach(name => { $(name).hidden = name !== id; });
+  const show = id => ['teacherHome','teacherExam','studentExam'].forEach(name => { $(name).hidden = name !== id; });
   const notice = text => { $('notice').textContent = text || ''; };
   const node = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
   async function api(path, method = 'GET', body) {
@@ -408,13 +408,12 @@
     const value = input.value.trim();
     if (value !== (state.answers.find(a => a.question_id === q.id)?.response || '')) await saveAnswer(q.id, { response: value });
   }
-  $('joinCode').value = (params.get('code') || '').replace(/\D/g,'').slice(0,4);
+  const roomCode = (params.get('code') || '').replace(/\D/g,'').slice(0,4);
   async function join(code) {
     const result = await api('/join', 'POST', { code });
     if (result.teacher) { setUrl(result.exam.id, true); await teacherExam(); return; }
     setUrl(result.exam.id); await studentExam();
   }
-  $('joinForm').onsubmit = event => { event.preventDefault(); run(() => join($('joinCode').value)); };
   $('newPdfs').onchange = () => { const files = $('newPdfs').files; run(() => uploadPdfs(files)).finally(() => { $('newPdfs').value = ''; }); };
   const zone = $('dropZone');
   ['dragenter','dragover'].forEach(type => zone.addEventListener(type, event => { event.preventDefault(); zone.classList.add('dragging'); }));
@@ -455,7 +454,7 @@
   if (examId) run(async () => { if (params.get('mode') === 'teacher') await teacherExam(); else await studentExam(); });
   else if (params.get('mode') === 'teacher') run(teacherHome);
   // 메인 페이지에서 방번호만 넣고 오면 로그인한 학생은 등록된 학년·반·번호로 바로 입장한다.
-  // 사이트는 로그인해야 들어오므로 방번호만으로 등록된 학생 정보로 입장한다.
-  else if ($('joinCode').value.length === 4) join($('joinCode').value).catch(error => notice(error.message));
-  else show('joinView');
+  // 메인 화면의 방번호 입력으로만 들어온다. 등록된 학생 정보로 바로 입장한다.
+  else if (roomCode.length === 4) join(roomCode).catch(error => notice(error.message));
+  else location.replace('/');
 })();

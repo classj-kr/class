@@ -72,7 +72,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   };
   async function initialize() {
     if (!pool) return;
-    for (const file of ['014-exams.sql', '015-exam-school.sql', '016-exam-audio.sql', '017-exam-images.sql', '018-exam-member-start.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
+    for (const file of ['014-exams.sql', '015-exam-school.sql', '016-exam-audio.sql', '017-exam-images.sql', '018-exam-member-start.sql', '019-exam-member-number.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
   }
   async function exam(id, lock = false, db = pool) {
     const row = (await db.query(`SELECT * FROM classroom_exams WHERE id=$1${lock ? ' FOR UPDATE' : ''}`, [id])).rows[0];
@@ -90,10 +90,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   }
   async function member(req, e, db = pool) {
     const user = await sessionUser(req);
-    const token = String(req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith(`exam_${e.id}=`))?.split('=')[1] || '';
-    const row = (await db.query(`SELECT * FROM classroom_exam_members WHERE exam_id=$1 AND
-      ((user_id IS NOT NULL AND user_id=$2) OR (token_hash=$3 AND $3<>'')) LIMIT 1`,
-      [e.id, user?.id || null, token ? hash(token) : ''])).rows[0];
+    const row = user ? (await db.query('SELECT * FROM classroom_exam_members WHERE exam_id=$1 AND user_id=$2', [e.id, user.id])).rows[0] : null;
     if (!row) fail(401, 'JOIN_REQUIRED', '방번호로 시험에 입장해 주세요.');
     return row;
   }
@@ -148,37 +145,28 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
       const found = school ? (await pool.query('SELECT * FROM classroom_exams WHERE code=$1', [code])).rows[0] : null;
       if (found && (String(found.owner_id) === String(user.id) || sameSchool(school, found))) return res.json({ exam: publicExam(found), teacher: true });
     }
+    // 사이트는 로그인해야 들어온다. 학생은 등록된 이름·학년·반·번호로 입장한다.
+    if (!user) fail(401, 'AUTH_REQUIRED', '로그인해 주세요.');
     const identity = await joinIdentity(req, user);
-    if (user && !Number(identity?.number)) fail(403, 'STUDENT_REGISTRATION_REQUIRED', '학생 등록 정보가 없어 입장할 수 없습니다. 담임 선생님께 알려 주세요.');
-    const name = clean(identity?.name || req.body?.name, 80, true);
-    const number = Number(identity?.number || req.body?.number);
-    if (!Number.isInteger(number) || number < 1 || number > 60) fail(400, 'INVALID_NUMBER', '학생 번호를 1~60 사이로 입력해 주세요.');
-    // 학교 전체가 한 시험에 들어오므로 학년·반으로 자리를 나눈다. 비워 두면 학년·반 없이 번호만 쓴다.
-    const seat = (value, max, label) => {
-      if (value === undefined || value === null || value === '') return null;
-      const n = Number(value);
-      if (!Number.isInteger(n) || n < 1 || n > max) fail(400, 'INVALID_SEAT', `${label}을 확인해 주세요.`);
-      return n;
-    };
-    const grade = seat(identity ? identity.grade : req.body?.grade, 12, '학년');
-    const classNumber = seat(identity ? identity.classNumber : req.body?.classNumber, 30, '반');
+    const number = Number(identity?.number);
+    if (!Number.isInteger(number) || number < 1 || number > 999) fail(403, 'STUDENT_REGISTRATION_REQUIRED', '학생 등록 정보가 없어 입장할 수 없습니다. 담임 선생님께 알려 주세요.');
+    const name = clean(identity.name, 80, true);
+    const seat = (value, max) => { const n = Number(value); return Number.isInteger(n) && n >= 1 && n <= max ? n : null; };
+    const grade = seat(identity.grade, 12);
+    const classNumber = seat(identity.classNumber, 30);
     const db = await pool.connect();
     try {
       await db.query('BEGIN');
       const e = (await db.query('SELECT * FROM classroom_exams WHERE code=$1 FOR UPDATE', [code])).rows[0];
       if (!e) { failureLimiter?.recordFailure(req, 'exam-join'); fail(404, 'EXAM_NOT_FOUND', '방번호를 확인해 주세요.'); }
-      let m = user ? (await db.query('SELECT * FROM classroom_exam_members WHERE exam_id=$1 AND user_id=$2', [e.id, user.id])).rows[0] : null;
-      const token = String(req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith(`exam_${e.id}=`))?.split('=')[1] || '';
-      if (!m && token) m = (await db.query('SELECT * FROM classroom_exam_members WHERE exam_id=$1 AND token_hash=$2', [e.id, hash(token)])).rows[0];
+      let m = (await db.query('SELECT * FROM classroom_exam_members WHERE exam_id=$1 AND user_id=$2', [e.id, user.id])).rows[0];
       if (!m) {
         if (e.status === 'closed') fail(403, 'EXAM_CLOSED', '응시가 마감된 시험입니다.');
-        const fresh = crypto.randomBytes(32).toString('hex');
         const result = await db.query(`INSERT INTO classroom_exam_members(id,exam_id,number,name,user_id,token_hash,grade,class_number)
           VALUES($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT DO NOTHING RETURNING *`,
-          [uuid(), e.id, number, name, user?.id || null, hash(fresh), grade, classNumber]);
-        if (!result.rowCount) fail(409, 'NUMBER_TAKEN', '이미 참여한 학년·반·번호입니다. 원래 기기로 접속해 주세요.');
+          [uuid(), e.id, number, name, user.id, hash(crypto.randomBytes(32).toString('hex')), grade, classNumber]);
+        if (!result.rowCount) fail(409, 'NUMBER_TAKEN', '같은 학년·반·번호로 이미 입장한 학생이 있습니다. 담임 선생님께 알려 주세요.');
         m = result.rows[0];
-        res.cookie(`exam_${e.id}`, fresh, { httpOnly: true, sameSite: 'strict', secure: req.secure, path: '/api/exams', maxAge: 86400000 });
       }
       await db.query('COMMIT');
       res.json({ exam: publicExam(e), member: publicMember(e, m) });

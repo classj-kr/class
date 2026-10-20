@@ -27,7 +27,7 @@ test('figure locations from the AI are clamped or dropped', () => {
 
 test('teacher creates an exam; students join, answer and are graded after server deadline', async () => {
   const db = new PGlite();
-  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2),(3),(4);');
+  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users SELECT generate_series(1, 120);');
   let tail = Promise.resolve();
   async function lease() { const previous = tail; let release; tail = new Promise(resolve => { release = resolve; }); await previous; return release; }
   // pg 는 인자 없는 쿼리를 단순 프로토콜로 보내 여러 문장을 한 번에 실행한다. 같게 맞춘다.
@@ -38,7 +38,13 @@ test('teacher creates an exam; students join, answer and are graded after server
   const sessionUser = async req => /teacher=1/.test(req.headers.cookie || '') ? { id: 1, role: 'teacher' } :
     /teacher=3/.test(req.headers.cookie || '') ? { id: 3, role: 'teacher' } :
     /teacher=4/.test(req.headers.cookie || '') ? { id: 4, role: 'teacher' } :
-    /student=2/.test(req.headers.cookie || '') ? { id: 2, role: 'student', name: '학생' } : null;
+    /student=2/.test(req.headers.cookie || '') ? { id: 2, role: 'student', name: '학생' } : kidUser(req.headers.cookie || '');
+  // 로그인한 학생 계정: kid=계정.학년.반.번호 (학년·반 0은 등록 안 됨)
+  const kid = (id, grade, classNumber, number) => `kid=${id}.${grade}.${classNumber}.${number}`;
+  function kidUser(cookie) {
+    const m = /kid=(\d+)\.(\d+)\.(\d+)\.(\d+)/.exec(cookie);
+    return m && { id: Number(m[1]), role: 'student', seat: { grade: Number(m[2]) || null, classNumber: Number(m[3]) || null, number: Number(m[4]) } };
+  }
   // 1·3번 교사는 같은 학교, 4번 교사는 다른 학교.
   const schools = { 1: { schoolId: 10, name: '김담임' }, 3: { schoolId: 10, name: '이담임' }, 4: { schoolId: 20, name: '박교사' } };
   const roomCodes = createRoomCodes({ pool, legacyTaken: async (code, client) => (await client.query('SELECT 1 FROM classroom_exams WHERE code=$1', [code])).rows.length > 0 });
@@ -46,7 +52,7 @@ test('teacher creates an exam; students join, answer and are graded after server
   const feature = createExams({ pool, sessionUser, requireTeacher: async req => { const user = await sessionUser(req); if (user?.role !== 'teacher') throw new HttpError(401, 'AUTH', '교사 로그인 필요'); return user; },
     requireDatabase() {}, HttpError, asyncRoute: fn => (req,res,next) => Promise.resolve(fn(req,res)).catch(next),
     allocateRoomCode: client => roomCodes.allocate('exam', client),
-    joinIdentity: async (_req,user) => user?.role === 'student' ? { name: '학생', number: 7 } : null,
+    joinIdentity: async (_req,user) => user.seat ? { name: `학생${user.id}`, ...user.seat } : user.role === 'student' ? { name: '학생', number: 7 } : null,
     teacherSchool: async user => schools[user.id] || null,
     failureLimiter: { enforce() {}, recordFailure() {} } });
   await feature.initialize(); await feature.initialize();
@@ -73,9 +79,11 @@ test('teacher creates an exam; students join, answer and are graded after server
     // 정답이 빈 문항이 있으면 아직 응시할 수 없다.
     await request(path, 'PUT', { title: '진단평가', durationMinutes: 1, questions: [{ ...questions[0], answer: null }, questions[1]] });
     assert.equal((await request('/mine')).exams[0].ready, false);
+    // 로그인하지 않으면 들어올 수 없다. 학생은 보낸 이름·번호가 아니라 등록된 정보로 입장한다.
+    await request('/join', 'POST', { code: created.code, number: 1, name: '사칭' }, '', 401);
     const joined = await request('/join', 'POST', { code: created.code, number: 1, name: '사칭' }, student);
     assert.equal(joined.member.number, 7);
-    const studentCookie = `${student}; ${joined.cookie}`;
+    const studentCookie = student;
     await request(path + '/begin', 'POST', {}, studentCookie, 409);
     // 정답을 채우면 교사가 아무것도 누르지 않아도 응시할 수 있다.
     await request(path, 'PUT', { title: '진단평가', durationMinutes: 1, questions });
@@ -102,8 +110,8 @@ test('teacher creates an exam; students join, answer and are graded after server
     assert.equal((await request(path, 'GET', undefined, studentCookie)).score, 2);
     assert.equal((await request(path)).members[0].score, 2);
     // 늦게 온 학생은 자기가 시작한 때부터 시간을 잰다. 그 학생의 시간이 끝나면 더 답할 수 없다.
-    const late = await request('/join', 'POST', { code: created.code, number: 2, name: '둘' }, '');
-    const lateCookie = late.cookie;
+    const lateCookie = kid(101, 0, 0, 2);
+    await request('/join', 'POST', { code: created.code }, lateCookie);
     await request(path + '/begin', 'POST', {}, lateCookie);
     await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 1 }, lateCookie);
     await db.query("UPDATE classroom_exam_members SET started_at=NOW()-INTERVAL '2 minutes' WHERE exam_id=$1 AND number=2", [created.id]);
@@ -111,10 +119,11 @@ test('teacher creates an exam; students join, answer and are graded after server
     assert.equal((await request(path, 'GET', undefined, lateCookie)).score, 1);
     await request('/join', 'POST', { code: created.code, number: 7, name: '학생' }, studentCookie);
     // 마감하면 시작하지 않은 학생도, 새로 오는 학생도 응시할 수 없다.
-    const idle = await request('/join', 'POST', { code: created.code, number: 3, name: '셋' }, '');
+    const idle = kid(102, 0, 0, 3);
+    await request('/join', 'POST', { code: created.code }, idle);
     await request(path + '/close', 'POST', {});
-    await request(path + '/begin', 'POST', {}, idle.cookie, 403);
-    await request('/join', 'POST', { code: created.code, number: 4, name: '넷' }, '', 403);
+    await request(path + '/begin', 'POST', {}, idle, 403);
+    await request('/join', 'POST', { code: created.code }, kid(103, 0, 0, 4), 403);
     assert.deepEqual((await request(path)).members.map(m => [m.number, Boolean(m.startedAt), Boolean(m.submittedAt)]), [[2, true, false], [3, false, false], [7, true, true]]);
 
     // 같은 학교 교사는 목록에서 보고 운영할 수 있고, 삭제는 만든 교사만 한다. 다른 학교 교사는 보지 못한다.
@@ -132,11 +141,14 @@ test('teacher creates an exam; students join, answer and are graded after server
     // 같은 학교 교사가 방번호를 넣으면 응시자가 되지 않고 관리 화면으로 간다. 학생 등록이 없는 다른 계정은 막는다.
     assert.equal((await request('/join', 'POST', { code: shared.code }, colleague)).teacher, true);
     assert.equal((await request('/join', 'POST', { code: shared.code }, outsider, 403)).code, 'STUDENT_REGISTRATION_REQUIRED');
-    const ga = await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 1, number: 5, name: '가' }, '');
-    await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '나' }, '');
-    await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '다' }, '', 409);
+    const ga = { cookie: kid(104, 3, 1, 5) };
+    await request('/join', 'POST', { code: shared.code }, ga.cookie);
+    await request('/join', 'POST', { code: shared.code }, kid(105, 3, 2, 5));
+    await request('/join', 'POST', { code: shared.code }, kid(106, 3, 2, 5), 409);
+    // 60번이 넘는 번호(시험용 99번 계정 등)도 들어온다.
+    await request('/join', 'POST', { code: shared.code }, kid(107, 6, 2, 99));
     const seats = (await request('/' + shared.id + '?mode=teacher', 'GET', undefined, colleague)).members;
-    assert.deepEqual(seats.map(m => [m.grade, m.classNumber, m.number]), [[3, 1, 5], [3, 2, 5]]);
+    assert.deepEqual(seats.map(m => [m.grade, m.classNumber, m.number]), [[3, 1, 5], [3, 2, 5], [6, 2, 99]]);
 
     // 듣기 음원: 같은 학교 교사가 준비 중에 올리고, 학생은 시험이 열린 뒤 구간 요청으로 듣는다.
     const audioUrl = base + '/api/exams/' + shared.id + '/audio';
