@@ -112,7 +112,7 @@
     function trace(chart, taps) {
         return analyze(chart, taps).inputs;
     }
-    // Keep a small error band outside the correct half-interval. It records a
+    // Keep a small error band outside the correct practice window. It records a
     // mistimed strike against its current note without counting it as correct.
     function connectionWindow(chart, index, side = 'both') {
         const previous = index ? chart.targets[index] - chart.targets[index - 1] : Infinity;
@@ -154,7 +154,14 @@
             if (i && j) {
                 const error = clean[j - 1] - targets[i - 1], side = error < 0 ? 'early' : 'late';
                 if (Math.abs(error) <= connectionWindow(chart, i - 1, side)) {
-                    choose(at - width - 1, Math.abs(error) <= noteWindow(chart, i - 1, side) ? 1 : 0, 1, i - 1, Math.abs(error), 3);
+                    const from = at - width - 1;
+                    const accepted = Math.abs(error) <= noteWindow(chart, i - 1, side);
+                    const nearest = inputs[j - 1].nearest, nearestError = inputs[j - 1].error;
+                    // Before any note has been connected, allow starting on a
+                    // later, correctly timed note instead of inventing a late start.
+                    const startsOnNeighbor = !playedCount[from] && !accepted && nearest >= 0
+                        && Math.abs(nearestError) <= noteWindow(chart, nearest, nearestError < 0 ? 'early' : 'late');
+                    if (!startsOnNeighbor) choose(from, accepted ? 1 : 0, 1, i - 1, Math.abs(error), 3);
                 }
             }
         }

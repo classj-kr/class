@@ -120,7 +120,7 @@ test('sixteenth taps are compared with written attacks, not empty subdivisions',
     }
 });
 
-test('unequal neighboring gaps have separate early and late midpoint boundaries', () => {
+test('unequal neighboring gaps have separate early and late practice windows', () => {
     for (const bpm of [70, 100, 140]) {
         const slot = 60 / bpm / 4;
         const forward = { bpm, targets: [0, slot, 4 * slot] };
@@ -130,7 +130,7 @@ test('unequal neighboring gaps have separate early and late midpoint boundaries'
         assert.equal(late.marks[1].hit, true, 'the short preceding gap must not narrow the late boundary');
         assert.equal(early.marks[1].hit, true, 'the short following gap must not narrow the early boundary');
         assert.equal(Core.judge(forward, [slot * .49]).marks[1].hit, false);
-        assert.equal(Core.judge(reverse, [slot * 3.51]).marks[1].hit, false);
+        assert.equal(Core.judge(reverse, [slot * 4]).marks[1].hit, false, 'the following attack itself cannot fill a missed note');
         assert.equal(Core.noteWindow(forward, 1, 'early') < Core.noteWindow(forward, 1, 'late'), true);
     }
 });
@@ -148,16 +148,17 @@ test('a late input stays with the current note and cannot consume the following 
     for (const bpm of [40, 60, 80, 100]) {
         const beat = 60 / bpm, chart = { bpm, targets: [16, 16.25, 16.5].map(value => value * beat) };
         const taps = [16.01, 16.382, 16.643].map(value => value * beat);
+        const middleCorrect = .132 * beat <= Core.noteWindow(chart, 1, 'late');
         const first = Core.analyze(chart, taps.slice(0, 2));
         assert.equal(first.inputs[1].target, 1);
-        assert.equal(first.inputs[1].reason, 'timing');
+        assert.equal(first.inputs[1].reason, middleCorrect ? 'hit' : 'timing');
         assert.equal(first.result.marks[2].hit, false, 'the next note remains available');
         const final = Core.analyze(chart, taps);
         assert.deepEqual(final.inputs.map(input => input.target), [0, 1, 2]);
         assert.equal(final.result.misses, 0);
         assert.equal(final.result.extras, 0);
-        assert.equal(final.result.timingWrong, 1);
-        assert.equal(final.result.hits, 2, 'timing outside the BPM midpoint is still wrong');
+        assert.equal(final.result.timingWrong, middleCorrect ? 0 : 1);
+        assert.equal(final.result.hits, middleCorrect ? 3 : 2, 'timing outside the practice window is still wrong');
     }
 });
 test('the complete human performance connects all 68 inputs to their own notes, live and final', () => {
@@ -166,13 +167,41 @@ test('the complete human performance connects all 68 inputs to their own notes, 
     const { result, inputs } = Core.analyze(chart, taps);
     assert.equal(result.played, 68);
     assert.equal(result.misses, 0); assert.equal(result.extras, 0);
-    assert.equal(result.timingWrong, 11); assert.equal(result.hits, 57);
+    assert.equal(result.timingWrong, 7); assert.equal(result.hits, 61);
     assert.deepEqual(inputs.map(input => input.target), chart.targets.map((_, index) => index));
     for (let count = 1; count <= taps.length; count++) {
         const current = Core.analyze(chart, taps.slice(0, count));
         assert.equal(current.inputs[count - 1].target, count - 1, `prefix ${count} cannot advance into the next note`);
         assert.equal(current.result.extras, 0);
     }
+});
+
+test('the same 90 ms input variation stays playable at 60, 80 and 100 BPM', () => {
+    for (const bpm of [60, 80, 100]) for (let seed = 0; seed < 40; seed++) {
+        const chart = Core.chart({ level: 3, bpm }, seed);
+        const taps = chart.targets.map((time, index) => time + .09 * Math.sin(index * 2.1));
+        const result = Core.judge(chart, taps);
+        assert.equal(result.accuracy, 100, JSON.stringify({ bpm, seed }));
+        assert.equal(result.misses, 0);
+        assert.equal(result.extras, 0);
+        assert.equal(result.timingWrong, 0);
+    }
+});
+
+test('overlapping fast-note windows preserve live note order without delaying correction to the final score', () => {
+    const chart = Core.fromBars({ level: 3, bpm: 100 }, [Array.from({ length: 16 }, () => ({ v: 's' }))]);
+    for (const offset of [-.09, .09]) for (let count = 1; count <= chart.targets.length; count++) {
+        const taps = chart.targets.slice(0, count).map(time => time + offset);
+        const { result, inputs } = Core.analyze(chart, taps);
+        assert.equal(result.hits, count);
+        assert.equal(result.extras, 0);
+        assert.deepEqual(inputs.map(input => input.target), Array.from({ length: count }, (_, index) => index));
+    }
+    const omitted = Core.judge(chart, chart.targets.filter((_, index) => index !== 5));
+    assert.equal(omitted.misses, 1); assert.equal(omitted.extras, 0);
+    const repeated = Core.judge(chart, [...chart.targets, chart.targets[5] + .01]);
+    assert.equal(repeated.extras, 1); assert.ok(repeated.accuracy < 100);
+    assert.equal(Core.judge(chart, Array(40).fill(0)).accuracy, 0, 'repeated input cannot earn a full score');
 });
 test('real omissions and extra taps resynchronize instead of shifting every subsequent note', () => {
     for (const bpm of [40, 80, 100]) {
@@ -208,16 +237,16 @@ test('the mixed human trace separates timing mistakes from an actual omission an
     const chart = Core.chart(input, input.seed), taps = input.tapBeats.map(time => time * 60 / input.bpm);
     const result = Core.judge(chart, taps), trace = Core.trace(chart, taps);
     assert.equal(chart.targets.length, 70);
-    assert.equal(result.hits, 63);
-    assert.equal(result.played, 69); assert.equal(result.timingWrong, 6);
+    assert.equal(result.hits, 65);
+    assert.equal(result.played, 69); assert.equal(result.timingWrong, 4);
     assert.equal(result.misses, 1); assert.equal(result.extras, 1);
     assert.equal(trace.filter(input => input.accepted).length, result.hits);
-    assert.equal(new Set(trace.filter(input => input.accepted).map(input => input.nearest)).size, result.hits);
+    assert.equal(new Set(trace.filter(input => input.accepted).map(input => input.target)).size, result.hits);
     assert.deepEqual(trace.flatMap((input, index) => input.target < 0 ? [index + 1] : []), [30]);
-    // A late first tap is a timing error on that note, not a hit that steals the next note.
+    // A delayed tap stays on its written note even when the next note is closer.
     assert.equal(trace[16].nearest, 17); assert.equal(trace[16].target, 16);
-    assert.equal(trace[16].accepted, false); assert.equal(trace[16].reason, 'timing');
-    assert.equal(result.marks[16].hit, true); assert.equal(result.marks[16].points, 0);
+    assert.equal(trace[16].accepted, true); assert.equal(trace[16].reason, 'hit');
+    assert.equal(result.marks[16].hit, true); assert.equal(result.marks[16].points, 1);
     assert.equal(trace[17].target, 17); assert.equal(trace[17].accepted, true);
 });
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
