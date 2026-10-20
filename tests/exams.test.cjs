@@ -16,21 +16,27 @@ test('question validation and short answer aliases', () => {
 
 test('teacher creates an exam; students join, answer and are graded after server deadline', async () => {
   const db = new PGlite();
-  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2),(3);');
+  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2),(3),(4);');
   let tail = Promise.resolve();
   async function lease() { const previous = tail; let release; tail = new Promise(resolve => { release = resolve; }); await previous; return release; }
-  async function query(sql, args) { const result = !args && sql.includes('CREATE TABLE') ? (await db.exec(sql)).at(-1) : await db.query(sql, args); return { ...result, rowCount: result.rows.length || result.affectedRows || 0 }; }
+  // pg 는 인자 없는 쿼리를 단순 프로토콜로 보내 여러 문장을 한 번에 실행한다. 같게 맞춘다.
+  async function query(sql, args) { const result = !args && sql.trim().replace(/;\s*$/, '').includes(';') ? (await db.exec(sql)).at(-1) : await db.query(sql, args); return { ...result, rowCount: result.rows.length || result.affectedRows || 0 }; }
   const pool = { async query(sql, args) { const release = await lease(); try { return await query(sql, args); } finally { release(); } },
     async connect() { const release = await lease(); return { query, release }; } };
   class HttpError extends Error { constructor(status, code, message) { super(message); this.status = status; this.code = code; } }
   const sessionUser = async req => /teacher=1/.test(req.headers.cookie || '') ? { id: 1, role: 'teacher' } :
+    /teacher=3/.test(req.headers.cookie || '') ? { id: 3, role: 'teacher' } :
+    /teacher=4/.test(req.headers.cookie || '') ? { id: 4, role: 'teacher' } :
     /student=2/.test(req.headers.cookie || '') ? { id: 2, role: 'student', name: '학생' } : null;
+  // 1·3번 교사는 같은 학교, 4번 교사는 다른 학교.
+  const schools = { 1: { schoolId: 10, name: '김담임' }, 3: { schoolId: 10, name: '이담임' }, 4: { schoolId: 20, name: '박교사' } };
   const roomCodes = createRoomCodes({ pool, legacyTaken: async (code, client) => (await client.query('SELECT 1 FROM classroom_exams WHERE code=$1', [code])).rows.length > 0 });
   await roomCodes.initialize();
   const feature = createExams({ pool, sessionUser, requireTeacher: async req => { const user = await sessionUser(req); if (user?.role !== 'teacher') throw new HttpError(401, 'AUTH', '교사 로그인 필요'); return user; },
     requireDatabase() {}, HttpError, asyncRoute: fn => (req,res,next) => Promise.resolve(fn(req,res)).catch(next),
     allocateRoomCode: client => roomCodes.allocate('exam', client),
     joinIdentity: async (_req,user) => user?.role === 'student' ? { name: '학생', number: 7 } : null,
+    teacherSchool: async user => schools[user.id] || null,
     failureLimiter: { enforce() {}, recordFailure() {} } });
   await feature.initialize(); await feature.initialize();
   const app = express(); app.use(express.json()); app.use('/api/room-entry', createRoomEntry({ roomCodes })); app.use('/api/exams', feature.router);
@@ -81,5 +87,24 @@ test('teacher creates an exam; students join, answer and are graded after server
     await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 1 }, lateCookie, 403);
     assert.equal((await request(path, 'GET', undefined, lateCookie)).score, 0);
     await request('/join', 'POST', { code: created.code, number: 7, name: '학생' }, studentCookie);
+
+    // 같은 학교 교사는 목록에서 보고 운영할 수 있고, 삭제는 만든 교사만 한다. 다른 학교 교사는 보지 못한다.
+    const shared = await request('/', 'POST', { title: '학교 공통 진단', durationMinutes: 40 }, teacher, 201);
+    const colleague = 'teacher=3', outsider = 'teacher=4';
+    const list = (await request('/mine', 'GET', undefined, colleague)).exams;
+    assert.deepEqual(list.map(e => [e.title, e.mine, e.ownerName]), [['학교 공통 진단', false, '김담임'], ['진단평가', false, '김담임']]);
+    assert.equal((await request('/mine', 'GET', undefined, outsider)).exams.length, 0);
+    await request('/' + shared.id, 'PUT', { title: '학교 공통 진단', durationMinutes: 40, questions }, colleague);
+    assert.equal((await request('/' + shared.id + '?mode=teacher', 'GET', undefined, colleague)).questions.length, 2);
+    await request('/' + shared.id, 'PUT', { title: '가로채기', durationMinutes: 40, questions }, outsider, 403);
+    await request('/' + shared.id, 'DELETE', undefined, colleague, 403);
+
+    // 학교 전체가 들어오므로 반이 다르면 번호가 같아도 입장한다. 같은 반 같은 번호는 막는다.
+    await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 1, number: 5, name: '가' }, '');
+    await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '나' }, '');
+    await request('/join', 'POST', { code: shared.code, grade: 3, classNumber: 2, number: 5, name: '다' }, '', 409);
+    const seats = (await request('/' + shared.id + '?mode=teacher', 'GET', undefined, colleague)).members;
+    assert.deepEqual(seats.map(m => [m.grade, m.classNumber, m.number]), [[3, 1, 5], [3, 2, 5]]);
+    await request('/' + shared.id, 'DELETE');
   } finally { await new Promise(resolve => server.close(resolve)); await db.close(); }
 });

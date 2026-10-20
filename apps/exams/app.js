@@ -196,5 +196,7 @@
   $('submitButton').onclick = () => run(async () => { if (!confirm('답안을 제출할까요? 제출 후에는 수정할 수 없습니다.')) return; await saveCurrentShort(); await api('/' + encodeURIComponent(examId) + '/submit', 'POST'); await studentExam(); notice('제출했습니다.'); });
   if (examId) run(async () => { if (params.get('mode') === 'teacher') await teacherExam(); else await studentExam(); });
   else if (params.get('mode') === 'teacher') run(teacherHome);
+  // 메인 페이지에서 방번호만 넣고 오면 로그인한 학생은 등록된 학년·반·번호로 바로 입장한다.
+  else if ($('joinCode').value.length === 4) join($('joinCode').value).catch(() => { show('joinView'); notice('학년·반·번호와 이름을 입력하고 입장해 주세요.'); });
   else show('joinView');
 })();
