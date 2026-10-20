@@ -7554,7 +7554,7 @@ function createClassroomPlatform(options = {}) {
       pool.query(
         `SELECT grade, class_number, day_of_week, period, subject_name, teacher_user_id, room_name
          FROM school_master_timetable
-         WHERE school_id = $1 AND academic_year = $2
+         WHERE school_id = $1 AND academic_year = $2 AND class_number BETWEEN 1 AND 30
          ORDER BY grade, class_number, day_of_week, period`, [profile.school_id, year]),
       pool.query(
         `SELECT grade, class_number FROM (

@@ -1574,7 +1574,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '즐거운 생활': ['즐', 'arts'], '즐거운생활': ['즐', 'arts'],
         '창체': ['창', 'activity'], '자율': ['자', 'activity'], '동아리': ['동', 'activity']
     };
-    const schoolSubjectStyle = name => schoolSubjects[name] ||
+    const schoolSubjectStyle = name => Object.hasOwn(schoolSubjects, name) ? schoolSubjects[name] :
         (name.startsWith('창체') ? ['창', 'activity'] : [name, 'other']);
     const hasSchoolLesson = cell => cell && ((cell.subject_name && !['-', '수업없음'].includes(cell.subject_name)) || cell.teacher_user_id || cell.room_name);
 

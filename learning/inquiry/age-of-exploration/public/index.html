@@ -309,6 +309,7 @@ document.addEventListener('pointerdown',event=>{if(voyageInfo.open&&!voyageInfo.
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&voyageInfo.open){voyageInfo.open=false;voyageInfo.querySelector('summary').focus()}});
 // 해류는 수면 물결로, 바람은 실제 항해 풍향을 따라 움직이는 부드러운 구름으로 구분한다.
 const currentTracers=[];
+let currentVisualKey='';
 const CURRENT_FLOW_FRAME_W=96,CURRENT_FLOW_FRAME_H=30,CURRENT_FLOW_FRAME_COUNT=8;
 const currentFlowSprite=document.createElement('canvas'),currentFlowSpriteCtx=currentFlowSprite.getContext('2d');
 function buildCurrentSprite(){
@@ -317,19 +318,30 @@ function buildCurrentSprite(){
   for(let frame=0;frame<CURRENT_FLOW_FRAME_COUNT;frame++){
     const ox=frame*CURRENT_FLOW_FRAME_W,phase=frame/CURRENT_FLOW_FRAME_COUNT*Math.PI*2;
     for(let line=0;line<3;line++){
-      currentFlowSpriteCtx.strokeStyle=`rgba(222,246,246,${.34-line*.065})`;currentFlowSpriteCtx.lineWidth=2.7-line*.48;currentFlowSpriteCtx.beginPath();
+      currentFlowSpriteCtx.shadowColor='rgba(4,43,65,.95)';currentFlowSpriteCtx.shadowBlur=3;currentFlowSpriteCtx.shadowOffsetY=1;
+      currentFlowSpriteCtx.strokeStyle=`rgba(126,238,255,${.95-line*.12})`;currentFlowSpriteCtx.lineWidth=3.4-line*.55;currentFlowSpriteCtx.beginPath();
       for(let x=4;x<=86;x+=4){const y=7+line*7+Math.sin(x*.14+phase+line*.8)*2.2+Math.sin(x*.055-phase*.7)*1.1;if(x===4)currentFlowSpriteCtx.moveTo(ox+x,y);else currentFlowSpriteCtx.lineTo(ox+x,y)}
       currentFlowSpriteCtx.stroke();
     }
-    const pulse=.72+.28*Math.sin(phase);currentFlowSpriteCtx.fillStyle=`rgba(236,252,250,${.42*pulse})`;currentFlowSpriteCtx.beginPath();currentFlowSpriteCtx.moveTo(ox+84,7);currentFlowSpriteCtx.lineTo(ox+95,15);currentFlowSpriteCtx.lineTo(ox+84,23);currentFlowSpriteCtx.lineTo(ox+87,15);currentFlowSpriteCtx.closePath();currentFlowSpriteCtx.fill();
+    const pulse=.9+.1*Math.sin(phase);currentFlowSpriteCtx.fillStyle=`rgba(215,252,255,${pulse})`;currentFlowSpriteCtx.beginPath();currentFlowSpriteCtx.moveTo(ox+81,4);currentFlowSpriteCtx.lineTo(ox+95,15);currentFlowSpriteCtx.lineTo(ox+81,26);currentFlowSpriteCtx.lineTo(ox+85,15);currentFlowSpriteCtx.closePath();currentFlowSpriteCtx.fill();
   }
 }
-function seedCurrentVisuals(){
-  buildCurrentSprite();
-  CDS95Current.MAJOR_CURRENTS.forEach((flow,index)=>{const count=flow.id==='antarctic-circumpolar'?24:13;for(let i=0;i<count;i++)currentTracers.push({currentIndex:index,offset:(i+.37*(index%3))/count,lane:((i*37+index*11)%101)/50-1,speed:.78+((i*17+index*7)%31)/100,scale:.76+((i*13)%35)/100,frameOffset:(i*3+index)%CURRENT_FLOW_FRAME_COUNT})});
+function seedCurrentVisuals(cw,ch,left,top){
+  // 화면에 일정한 간격으로 실제 해류장을 표본화한다. 전 세계 경로에 몇 개만 흩뿌리면
+  // 배 주변에 해류가 있어도 작은 화면이나 확대 화면에서는 표시가 하나도 없었다.
+  const spacing=180/zoom,view=viewPosition(),lat=90-view.y/MAP_H*180,cosLat=globeReady?Math.max(.035,Math.cos(Math.round(lat/5)*5*Math.PI/180)):1;
+  const cols=Math.max(1,Math.ceil(SPAN/(spacing/cosLat))),stepX=SPAN/cols;
+  const x0=Math.floor(left/stepX)-1,x1=Math.ceil((left+viewSpanX)/stepX)+1,y0=Math.max(0,Math.floor(top/spacing)-1),y1=Math.min(Math.ceil(MAP_H/spacing)-1,Math.ceil((top+viewSpanY)/spacing)+1);
+  const key=[zoom,cols,x0,x1,y0,y1].join(':');if(key===currentVisualKey)return;currentVisualKey=key;currentTracers.length=0;
+  for(let gy=y0;gy<=y1;gy++)for(let rawGx=x0;rawGx<=x1;rawGx++){
+    const gx=((rawGx%cols)+cols)%cols,seed=hashUnit(gx,gy,113),x=(gx+.25+seed*.5)*stepX,y=(gy+.25+hashUnit(gx,gy,127)*.5)*spacing;
+    if(!screenPointIsSea(x,y))continue;
+    const flow=CDS95Current.currentAtPixel(x,y);if(flow.strength<.08)continue;
+    currentTracers.push({x,y,flow,seed,track:spacing*.8,scale:.9+hashUnit(gx,gy,131)*.2,frameOffset:Math.floor(seed*CURRENT_FLOW_FRAME_COUNT)});
+  }
 }
-seedCurrentVisuals();
-const WIND_CLOUD_CELL_W=760,WIND_CLOUD_CELL_H=460,WIND_CLOUD_FRAME_W=768,WIND_CLOUD_FRAME_H=512,WIND_CLOUD_VARIANTS=4,WIND_VISUAL_FLOW_RATE=3.2;
+buildCurrentSprite();
+const WIND_CLOUD_CELL_W=760,WIND_CLOUD_CELL_H=460,WIND_CLOUD_FRAME_W=768,WIND_CLOUD_FRAME_H=512,WIND_CLOUD_VARIANTS=4,WIND_VISUAL_FLOW_RATE=4;
 function hashUnit(a,b,c=0){let x=Math.imul((a|0)^0x9e3779b9,0x85ebca6b)+Math.imul((b|0)^0xc2b2ae35,0x27d4eb2f)+(c|0);x^=x>>>16;x=Math.imul(x,0x7feb352d);x^=x>>>15;x=Math.imul(x,0x846ca68b);x^=x>>>16;return(x>>>0)/4294967296}
 const keys={up:false,down:false,left:false,right:false};
 let resumeToken='';try{resumeToken=sessionStorage.getItem('uw3-resume-token')||''}catch{}let connectionReady=false,resumePending=false,resumeGeneration=0;
@@ -971,14 +983,20 @@ function drawSeaSurface(cw,ch,left,top,now=performance.now()){
 function screenPointIsSea(x,y){return !!world&&terrainAtPixel(x,y).type==='sea'}
 function flowScreenPoint(point,left,top){if(globeReady)return globeScreenPoint(point.x,point.y);const view=viewPosition();return{x:(view.x+dxWrap(point.x,view.x)-left)*zoom,y:(point.y-top)*zoom}}
 function drawCurrentTracer(tracer,now,cw,ch,left,top){
-  const flow=CDS95Current.MAJOR_CURRENTS[tracer.currentIndex],progress=tracer.offset+now*.000012*flow.speed*tracer.speed,point=CDS95Current.pointAlongCurrent(flow,progress,tracer.lane);
-  if(!screenPointIsSea(point.x,point.y))return;const s=flowScreenPoint(point,left,top);if(s.x<-110||s.x>cw+110||s.y<-70||s.y>ch+70)return;
-  const alpha=(.23+.29*point.strength)*Math.min(1,Math.max(.34,zoom/1.8)),size=(48+26*point.strength)*tracer.scale*Math.max(.72,Math.min(1.35,zoom*.72)),frame=(Math.floor(now/105)+tracer.frameOffset)%CURRENT_FLOW_FRAME_COUNT;
-  ctx.save();ctx.globalAlpha=alpha;ctx.translate(Math.round(s.x),Math.round(s.y));ctx.rotate(Math.atan2(point.yDir,point.xDir));ctx.drawImage(currentFlowSprite,frame*CURRENT_FLOW_FRAME_W,0,CURRENT_FLOW_FRAME_W,CURRENT_FLOW_FRAME_H,-size*.5,-size*.16,size,size*.32);ctx.restore();
+  const flow=tracer.flow,phase=(tracer.seed+now*.001*(28+32*flow.strength)/(tracer.track*zoom))%1,travel=(phase-.5)*tracer.track;
+  const cosLat=globeReady?Math.max(.035,Math.cos((90-tracer.y/MAP_H*180)*Math.PI/180)):1;
+  const x=wrapX(tracer.x+flow.x*travel/cosLat),y=tracer.y+flow.y*travel;
+  if(!screenPointIsSea(x,y))return;const local=CDS95Current.currentAtPixel(x,y);if(local.strength<.08)return;
+  const s=flowScreenPoint({x,y},left,top);if(s.x<-110||s.x>cw+110||s.y<-70||s.y>ch+70)return;
+  const size=(62+22*local.strength)*tracer.scale,frame=(Math.floor(now/105)+tracer.frameOffset)%CURRENT_FLOW_FRAME_COUNT;
+  // 물결 전체가 바다 위에 있는지 확인하고, 방향도 지구본에 투영해 고위도 왜곡을 막는다.
+  for(let i=-2;i<=2;i++)if(!screenPointIsSea(wrapX(x+local.x*i*size/(4*zoom*cosLat)),y+local.y*i*size/(4*zoom)))return;
+  const ahead=flowScreenPoint({x:wrapX(x+local.x*20/cosLat),y:y+local.y*20},left,top);if(ahead.x<-9000||Math.hypot(ahead.x-s.x,ahead.y-s.y)<.01)return;
+  ctx.save();ctx.globalAlpha=(.7+.25*local.strength)*(.65+.35*Math.sin(Math.PI*phase));ctx.translate(s.x,s.y);ctx.rotate(Math.atan2(ahead.y-s.y,ahead.x-s.x));ctx.drawImage(currentFlowSprite,frame*CURRENT_FLOW_FRAME_W,0,CURRENT_FLOW_FRAME_W,CURRENT_FLOW_FRAME_H,-size*.5,-size*.16,size,size*.32);ctx.restore();
 }
 function choiceModalActive(){return finalQuizOpen()||(awaitingStartChoice()&&missionPanel.classList.contains('show'))}
-function drawOceanCurrents(cw,ch,left,top,now=performance.now()*SIMULATION_RATE){
-  if(mode!=='sea'||choiceModalActive())return;ctx.save();ctx.globalCompositeOperation='screen';ctx.imageSmoothingEnabled=false;for(const tracer of currentTracers)drawCurrentTracer(tracer,now,cw,ch,left,top);ctx.restore();
+function drawOceanCurrents(cw,ch,left,top,now=performance.now()){
+  if(mode!=='sea'||choiceModalActive())return;seedCurrentVisuals(cw,ch,left,top);ctx.save();ctx.globalCompositeOperation='source-over';ctx.imageSmoothingEnabled=true;for(const tracer of currentTracers)drawCurrentTracer(tracer,now,cw,ch,left,top);ctx.restore();
 }
 function drawWindClouds(cw,ch,left,top,now=performance.now()){
   if(mode!=='sea'||choiceModalActive()||!windCloudAtlas.complete||!windCloudAtlas.naturalWidth)return;

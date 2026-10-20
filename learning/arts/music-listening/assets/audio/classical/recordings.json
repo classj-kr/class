@@ -695,5 +695,125 @@
     "instrumentation": "트럼펫과 관현악",
     "reason": "1946년 음반 대신 공개 실연 녹음",
     "listeningReview": "not-performed"
+  },
+  "27": {
+    "file": "hallelujah-chorus.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:The_National_Chorus_of_Korea_-_Handel%27s_Messiah,_HWV_56_-_XLIV._Hallelujah.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/The_National_Chorus_of_Korea_-_Handel%27s_Messiah%2C_HWV_56_-_XLIV._Hallelujah.ogg",
+    "performer": "국립합창단(2019년 예술의전당 실황)",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceSha256": "f58bc1e56a69d313f93336d51bbf2668cc34202008cc64fe69ff573f34d722a5",
+    "outputSha256": "f58bc1e56a69d313f93336d51bbf2668cc34202008cc64fe69ff573f34d722a5",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "210.762336",
+        "size": "3527111",
+        "bit_rate": "133880"
+      }
+    },
+    "instrumentation": "합창과 관현악",
+    "reason": "1953년 음반 대신 2019년 실황으로 교체",
+    "listeningReview": "not-performed"
+  },
+  "14": {
+    "file": "erlking.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Schubert%27s_Erlk%C3%B6nig,_D.328_-_Michael_Jackson.ogg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/71/Schubert%27s_Erlk%C3%B6nig%2C_D.328_-_Michael_Jackson.ogg",
+    "performer": "Michael Jackson(베이스바리톤)",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceSha256": "2fc3ce470fdd70c28129874c1e756e9c33210b0d77211dad6e8058b5d2b8c254",
+    "outputSha256": "2fc3ce470fdd70c28129874c1e756e9c33210b0d77211dad6e8058b5d2b8c254",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "247.040000",
+        "size": "2495339",
+        "bit_rate": "80807"
+      }
+    },
+    "instrumentation": "성악과 피아노",
+    "reason": "1913년 음반 대신 CC BY 공개 실연으로 교체",
+    "listeningReview": "not-performed"
+  },
+  "50": {
+    "file": "rhapsody-in-blue.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:US_Marine_Band_Rhapsody_in_Blue.oga",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/US_Marine_Band_Rhapsody_in_Blue.oga",
+    "performer": "Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceSha256": "eeaacacbce60d0fd1091088a959057b67f2618340defd5d43cd2d39f27c3db40",
+    "outputSha256": "eeaacacbce60d0fd1091088a959057b67f2618340defd5d43cd2d39f27c3db40",
+    "method": "original-bytes",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "1089.721583",
+        "size": "52416676",
+        "bit_rate": "384807"
+      }
+    },
+    "instrumentation": "피아노와 재즈 밴드(그로페의 1924년 초연 편성)",
+    "reason": "1924년 역사적 음반 대신 같은 초연 편성의 2018년 연주로 교체",
+    "listeningReview": "not-performed"
+  },
+  "40": {
+    "file": "ride-of-valkyries.ogg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Richard_Wagner_-_The_Valkyrie_-_Ride_of_the_Valkyries.flac",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Richard_Wagner_-_The_Valkyrie_-_Ride_of_the_Valkyries.flac",
+    "performer": "Ulm Philharmonic · James Allen Gähres(지휘)",
+    "license": "EFF Open Audio License v1",
+    "licenseUrl": "https://web.archive.org/web/20070208085151/http://www.eff.org/IP/Open_licenses/20010421_eff_oal_1.0.html",
+    "sourceSha256": "050c0c4f21965f4d7d93ad1a3bc3790e694b51e35e3af893bf1927aa71458c89",
+    "outputSha256": "c4f67cdeece7f32078ff98485eb9d52415ddec5dee300c4b4f254e2b5ceece84",
+    "method": "lossless-source-to-vorbis-q8",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "48000",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "338.886542",
+        "size": "9716535",
+        "bit_rate": "229375"
+      }
+    },
+    "instrumentation": "관현악",
+    "reason": "1921년 음반 대신 울름 필하모닉의 실연 녹음. 무손실 FLAC에서 OGG로 한 번 변환.",
+    "listeningReview": "not-performed"
   }
 }

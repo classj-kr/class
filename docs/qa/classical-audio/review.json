@@ -1,0 +1,2736 @@
+{
+  "date": "2026-10-21",
+  "scope": "음악 감상 클래식 목록 50곡",
+  "complete": false,
+  "total": 50,
+  "sourceRestoredOrReplaced": 27,
+  "pendingSourceReview": 23,
+  "listeningReview": "not-performed",
+  "limitations": [
+    "청음 검증 미실시. 디코딩·재생·해시 검사는 음질의 주관적 평가가 아님.",
+    "교체·원본 복원 수는 해설 일치와 음질 검증 완료 수가 아님.",
+    "라이선스 표기는 제공 페이지의 표시를 기록한 것이며 권리 전반의 독립적 법률 검토가 아님."
+  ],
+  "pieces": [
+    {
+      "no": "01",
+      "title": "사계 〈봄〉 1악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "vivaldi-spring.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Vivaldi_-_Four_Seasons_1_Spring_mvt_1_Allegro_-_John_Harrison_violin.oga",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Vivaldi_-_Four_Seasons_1_Spring_mvt_1_Allegro_-_John_Harrison_violin.oga",
+        "performer": "John Harrison(바이올린) · Wichita State University Chamber Players",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+        "sourceSha256": "67ada06f97697196d67ce26c06e5c61700e7b79b0321b7f04571a4eb7435d4d3",
+        "outputSha256": "67ada06f97697196d67ce26c06e5c61700e7b79b0321b7f04571a4eb7435d4d3",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2,
+              "side_data_list": [
+                {}
+              ]
+            }
+          ],
+          "format": {
+            "duration": "215.280000",
+            "size": "4299414",
+            "bit_rate": "159770"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "vivaldi-spring.ogg",
+        "performer": "John Harrison(바이올린) · Wichita State University Chamber Players",
+        "license": "CC BY-SA 4.0",
+        "revision": "67ada06f9769"
+      },
+      "technicalVerification": {
+        "no": "01",
+        "title": "사계 〈봄〉 1악장",
+        "file": "vivaldi-spring.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "67ada06f97697196d67ce26c06e5c61700e7b79b0321b7f04571a4eb7435d4d3",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2,
+              "side_data_list": [
+                {}
+              ]
+            }
+          ],
+          "format": {
+            "duration": "215.280000",
+            "size": "4299414",
+            "bit_rate": "159770"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -25.0,
+        "max_volume": -0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "02",
+      "title": "G선상의 아리아",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "air-on-g-string.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Air.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Air.ogg",
+        "performer": "US Air Force Strings(지휘 Keith H. Bland)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "8ee948ebc5912c5d0d7d3b7b31f714140d182e6fef45ba56ab99268c3bfcb60f",
+        "outputSha256": "8ee948ebc5912c5d0d7d3b7b31f714140d182e6fef45ba56ab99268c3bfcb60f",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "183.275102",
+            "size": "3615929",
+            "bit_rate": "157836"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "air-on-g-string.ogg",
+        "performer": "US Air Force Strings(지휘 Keith H. Bland)",
+        "license": "퍼블릭 도메인",
+        "revision": "8ee948ebc591"
+      },
+      "technicalVerification": {
+        "no": "02",
+        "title": "G선상의 아리아",
+        "file": "air-on-g-string.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "8ee948ebc5912c5d0d7d3b7b31f714140d182e6fef45ba56ab99268c3bfcb60f",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "183.275102",
+            "size": "3615929",
+            "bit_rate": "157836"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -15.2,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "03",
+      "title": "브란덴부르크 협주곡 5번 1악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "brandenburg-concerto5.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Bach_-_Brandenburg_Concerto_5_-_1._Allegro.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/68/Bach_-_Brandenburg_Concerto_5_-_1._Allegro.ogg",
+        "performer": "Advent Chamber Orchestra",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceSha256": "e338f0e20d2251838f1d50d822c7d195e6daa6c935f354e168d50b473951a331",
+        "outputSha256": "e338f0e20d2251838f1d50d822c7d195e6daa6c935f354e168d50b473951a331",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "598.533333",
+            "size": "21891372",
+            "bit_rate": "292600"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "brandenburg-concerto5.ogg",
+        "performer": "Advent Chamber Orchestra",
+        "license": "CC BY-SA 2.0",
+        "revision": "e338f0e20d22"
+      },
+      "technicalVerification": {
+        "no": "03",
+        "title": "브란덴부르크 협주곡 5번 1악장",
+        "file": "brandenburg-concerto5.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "e338f0e20d2251838f1d50d822c7d195e6daa6c935f354e168d50b473951a331",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "598.533333",
+            "size": "21891372",
+            "bit_rate": "292600"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -23.2,
+        "max_volume": -2.4,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "04",
+      "title": "수상 음악 〈알라 혼파이프〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "water-music-hornpipe.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Handel%27s_Water_Music_-_12._Alla_hornpipe_-_Chamber_Orchestra_-_United_States_Marine_Band.opus",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Handel%27s_Water_Music_-_12._Alla_hornpipe_-_Chamber_Orchestra_-_United_States_Marine_Band.opus",
+        "performer": "Marine Chamber Orchestra(지휘 Michelle Rakers)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "cbd5956d81eafb2a713dee5729ebc62d625c6417622335d6f4db82bc1662a1fe",
+        "outputSha256": "cbd5956d81eafb2a713dee5729ebc62d625c6417622335d6f4db82bc1662a1fe",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "opus",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "228.667500",
+            "size": "3911359",
+            "bit_rate": "136840"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "water-music-hornpipe.ogg",
+        "performer": "Marine Chamber Orchestra(지휘 Michelle Rakers)",
+        "license": "퍼블릭 도메인",
+        "revision": "cbd5956d81ea"
+      },
+      "technicalVerification": {
+        "no": "04",
+        "title": "수상 음악 〈알라 혼파이프〉",
+        "file": "water-music-hornpipe.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "cbd5956d81eafb2a713dee5729ebc62d625c6417622335d6f4db82bc1662a1fe",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "opus",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "228.667500",
+            "size": "3911359",
+            "bit_rate": "136840"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -22.7,
+        "max_volume": -2.6,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "05",
+      "title": "카논 라장조",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "canon.ogg",
+        "performer": "Lee Galloway(피아노 편곡)",
+        "license": "CC BY-SA 3.0",
+        "note": "원곡은 현악 합주지만 이 녹음은 피아노 독주 편곡입니다."
+      },
+      "technicalVerification": {
+        "no": "05",
+        "title": "카논 라장조",
+        "file": "canon.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "26f29c1727f7bd63fb966acb907b130f4faf5e0779431b012d22e698f6d96343",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "171.075918",
+            "size": "1828882",
+            "bit_rate": "85523"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -17.7,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "현악 원곡 해설과 피아노 편곡이 불일치. 검색 후보 중 합성 연주와 편곡은 제외했으며 현악 실연 대체본 필요."
+    },
+    {
+      "no": "06",
+      "title": "교향곡 5번 〈운명〉 1악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "symphony5-fate.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor,_op._67_-_i._allegro_con_brio.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor%2C_op._67_-_i._allegro_con_brio.ogg",
+        "performer": "Skidmore College Orchestra(Musopen)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "663cfa62707be850a51ec8cd7b51b95595a9ee010f3eefea16e1dd46d54a9d95",
+        "outputSha256": "663cfa62707be850a51ec8cd7b51b95595a9ee010f3eefea16e1dd46d54a9d95",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "500.088000",
+            "size": "8824613",
+            "bit_rate": "141168"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "symphony5-fate.ogg",
+        "performer": "Skidmore College Orchestra(Musopen)",
+        "license": "퍼블릭 도메인",
+        "revision": "663cfa62707b"
+      },
+      "technicalVerification": {
+        "no": "06",
+        "title": "교향곡 5번 〈운명〉 1악장",
+        "file": "symphony5-fate.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "663cfa62707be850a51ec8cd7b51b95595a9ee010f3eefea16e1dd46d54a9d95",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "500.088000",
+            "size": "8824613",
+            "bit_rate": "141168"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -26.2,
+        "max_volume": -4.1,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "07",
+      "title": "교향곡 9번 〈합창〉 4악장",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "symphony9-choral4.ogg",
+        "performer": "Symphony Orchestra · 합창단과 독창자 · Albert Coates 지휘(1923년 녹음)",
+        "license": "퍼블릭 도메인",
+        "note": "두 파일로 나뉜 역사적 실연 녹음을 이어 붙였습니다. 피날레는 영어로 노래합니다."
+      },
+      "technicalVerification": {
+        "no": "07",
+        "title": "교향곡 9번 〈합창〉 4악장",
+        "file": "symphony9-choral4.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "270a19161753af2b8ca7b45992275db1d23f9a25b89dadaa471512fe631aea22",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "1448.817596",
+            "size": "20443642",
+            "bit_rate": "112884"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -24.1,
+        "max_volume": -0.7,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "1923년 녹음·영어 가창·분할 음원 연결본. 독일어 합창과 관현악의 현대 녹음 필요."
+    },
+    {
+      "no": "08",
+      "title": "아이네 클라이네 나흐트무지크 1악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "eine-kleine-nachtmusik.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart_-_Eine_kleine_Nachtmusik_-_1._Allegro.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Mozart_-_Eine_kleine_Nachtmusik_-_1._Allegro.ogg",
+        "performer": "Advent Chamber Orchestra",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceSha256": "db35d442500e3d3278f19e86c75bef54d0040cd2f21e6e8b325a76a22c6e109f",
+        "outputSha256": "db35d442500e3d3278f19e86c75bef54d0040cd2f21e6e8b325a76a22c6e109f",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "355.413333",
+            "size": "11470392",
+            "bit_rate": "258187"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "eine-kleine-nachtmusik.ogg",
+        "performer": "Advent Chamber Orchestra",
+        "license": "CC BY-SA 2.0",
+        "revision": "db35d442500e"
+      },
+      "technicalVerification": {
+        "no": "08",
+        "title": "아이네 클라이네 나흐트무지크 1악장",
+        "file": "eine-kleine-nachtmusik.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "db35d442500e3d3278f19e86c75bef54d0040cd2f21e6e8b325a76a22c6e109f",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "355.413333",
+            "size": "11470392",
+            "bit_rate": "258187"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -23.0,
+        "max_volume": -3.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "09",
+      "title": "작은 별 변주곡",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "twinkle-variations.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart_Ah_vous_dirai-je,_Maman.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Mozart_Ah_vous_dirai-je%2C_Maman.ogg",
+        "performer": "Andriy Bondarenko(피아노)",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceSha256": "75150c868552f65b3ef48daf77f738fcbb598fa1cf8f8486e108ac121217f1ff",
+        "outputSha256": "75150c868552f65b3ef48daf77f738fcbb598fa1cf8f8486e108ac121217f1ff",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "686.555624",
+            "size": "32991876",
+            "bit_rate": "384433"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "twinkle-variations.ogg",
+        "performer": "Andriy Bondarenko(피아노)",
+        "license": "CC BY-SA 4.0",
+        "revision": "75150c868552"
+      },
+      "technicalVerification": {
+        "no": "09",
+        "title": "작은 별 변주곡",
+        "file": "twinkle-variations.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "75150c868552f65b3ef48daf77f738fcbb598fa1cf8f8486e108ac121217f1ff",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "686.555624",
+            "size": "32991876",
+            "bit_rate": "384433"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -20.5,
+        "max_volume": -0.4,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "10",
+      "title": "놀람 교향곡 2악장",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "haydn-surprise.ogg",
+        "performer": "보스턴 교향악단 · 세르게 쿠세비츠키 지휘(1929년 녹음)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "10",
+        "title": "놀람 교향곡 2악장",
+        "file": "haydn-surprise.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "91f14c4e6c3894ad5b5578426944a9c1967f17c1df0ec75671875ad5197645fe",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "438.265601",
+            "size": "4104601",
+            "bit_rate": "74924"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -26.6,
+        "max_volume": -4.4,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "1929년 역사적 녹음. 현대 녹음 후보의 연주자와 원본 이용 조건 확인 필요."
+    },
+    {
+      "no": "11",
+      "title": "트럼펫 협주곡 3악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "trumpet-concerto3.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Real_Filharmon%C3%ADa_de_Galicia_-_Haydn%27s_Trumpet_Concerto_in_E-flat_major,_Hob.VIIe-1_-_III._Finale_allegro.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Real_Filharmon%C3%ADa_de_Galicia_-_Haydn%27s_Trumpet_Concerto_in_E-flat_major%2C_Hob.VIIe-1_-_III._Finale_allegro.ogg",
+        "performer": "Real Filharmonía de Galicia",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceSha256": "f01b2855d6abbfda89a7badce249f763d2e5120cf0cf02a81c6d99005e584ae9",
+        "outputSha256": "f01b2855d6abbfda89a7badce249f763d2e5120cf0cf02a81c6d99005e584ae9",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "265.127188",
+            "size": "4908361",
+            "bit_rate": "148105"
+          }
+        },
+        "instrumentation": "트럼펫과 관현악",
+        "reason": "1946년 음반 대신 공개 실연 녹음",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "trumpet-concerto3.ogg",
+        "performer": "Real Filharmonía de Galicia",
+        "license": "CC BY 3.0",
+        "revision": "f01b2855d6ab"
+      },
+      "technicalVerification": {
+        "no": "11",
+        "title": "트럼펫 협주곡 3악장",
+        "file": "trumpet-concerto3.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "f01b2855d6abbfda89a7badce249f763d2e5120cf0cf02a81c6d99005e584ae9",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "265.127188",
+            "size": "4908361",
+            "bit_rate": "148105"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -16.2,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "12",
+      "title": "윌리엄 텔 서곡 〈피날레〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "william-tell-finale.ogg",
+        "performer": "US Marine Band(지휘 Timothy Foley)",
+        "license": "퍼블릭 도메인",
+        "note": "관악합주 편곡이며 전곡 녹음 중 7분 30초부터가 피날레입니다."
+      },
+      "technicalVerification": {
+        "no": "12",
+        "title": "윌리엄 텔 서곡 〈피날레〉",
+        "file": "william-tell-finale.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "2645f5ea15a237f17b4ace6af65f3d42c516d086e548b2b6f39854945cc2f11a",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "662.021224",
+            "size": "7666476",
+            "bit_rate": "92643"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -33.1,
+        "max_volume": -11.1,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "관악 편곡 전곡 파일이며 피날레는 7분 30초부터. 관현악 피날레 대체본 필요."
+    },
+    {
+      "no": "13",
+      "title": "피아노 5중주 〈송어〉 4악장",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {},
+      "technicalVerification": {
+        "no": "13",
+        "title": "피아노 5중주 〈송어〉 4악장",
+        "status": "external-link"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "현지 재생 파일 없음. Musopen의 European Archive 후보는 연주자 정보가 불명확하여 채택하지 않음."
+    },
+    {
+      "no": "14",
+      "title": "마왕",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "erlking.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Schubert%27s_Erlk%C3%B6nig,_D.328_-_Michael_Jackson.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/71/Schubert%27s_Erlk%C3%B6nig%2C_D.328_-_Michael_Jackson.ogg",
+        "performer": "Michael Jackson(베이스바리톤)",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceSha256": "2fc3ce470fdd70c28129874c1e756e9c33210b0d77211dad6e8058b5d2b8c254",
+        "outputSha256": "2fc3ce470fdd70c28129874c1e756e9c33210b0d77211dad6e8058b5d2b8c254",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "247.040000",
+            "size": "2495339",
+            "bit_rate": "80807"
+          }
+        },
+        "instrumentation": "성악과 피아노",
+        "reason": "1913년 음반 대신 CC BY 공개 실연으로 교체",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "erlking.ogg",
+        "performer": "Michael Jackson(베이스바리톤)",
+        "license": "CC BY 3.0",
+        "revision": "2fc3ce470fdd"
+      },
+      "technicalVerification": {
+        "no": "14",
+        "title": "마왕",
+        "file": "erlking.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "2fc3ce470fdd70c28129874c1e756e9c33210b0d77211dad6e8058b5d2b8c254",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "247.040000",
+            "size": "2495339",
+            "bit_rate": "80807"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -21.3,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "15",
+      "title": "녹턴 작품 9-2",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "nocturne-op9-2.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Chopin_-_Nocturne_No._2_in_E-flat_major,_Op._9_No._2_(Frank_Levy).flac",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Chopin_-_Nocturne_No._2_in_E-flat_major%2C_Op._9_No._2_%28Frank_Levy%29.flac",
+        "performer": "Frank Lévy(피아노)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "d286d06381db63d05cb3b971e3b39132866efade1dd94f514c1d83ff9d42de70",
+        "outputSha256": "be9eb1f9326a11d44b0d5b70f8ea212c0c14aec6d3a2020bcd7d70617aeb3f7b",
+        "method": "lossless-source-to-vorbis-q8",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "96000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "271.469490",
+            "size": "7501938",
+            "bit_rate": "221076"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "nocturne-op9-2.ogg",
+        "performer": "Frank Lévy(피아노)",
+        "license": "퍼블릭 도메인",
+        "revision": "be9eb1f9326a"
+      },
+      "technicalVerification": {
+        "no": "15",
+        "title": "녹턴 작품 9-2",
+        "file": "nocturne-op9-2.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "be9eb1f9326a11d44b0d5b70f8ea212c0c14aec6d3a2020bcd7d70617aeb3f7b",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "96000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "271.469490",
+            "size": "7501938",
+            "bit_rate": "221076"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -23.6,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "16",
+      "title": "헝가리 무곡 5번",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "hungarian-dance5.ogg",
+        "performer": "Artur Nikisch(피아노, 1906년 피아노 롤 녹음)",
+        "license": "퍼블릭 도메인",
+        "note": "원곡은 피아노 네 손 연주곡이며, 이 녹음은 역사적인 피아노 롤 연주입니다."
+      },
+      "technicalVerification": {
+        "no": "16",
+        "title": "헝가리 무곡 5번",
+        "file": "hungarian-dance5.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "34ca3fc0e791b4a0b441f1903beff81c7a07b853f1c4a7b60ee684f3e79b970f",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "174.800000",
+            "size": "1876807",
+            "bit_rate": "85895"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -26.1,
+        "max_volume": -4.7,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "1906년 피아노 롤 녹음. 피아노 네 손 실연 또는 해설과 일치하는 판본 필요."
+    },
+    {
+      "no": "17",
+      "title": "호두까기 인형 〈꽃의 왈츠〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "waltz-of-flowers.ogg",
+        "performer": "US Air Force Band(편곡 Lawrence Odom)",
+        "license": "퍼블릭 도메인",
+        "note": "관악합주 편곡입니다."
+      },
+      "technicalVerification": {
+        "no": "17",
+        "title": "호두까기 인형 〈꽃의 왈츠〉",
+        "file": "waltz-of-flowers.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "2474eb9800a36f80699a44a69e33bfb736e0508976705ae1ae0666c64106a40d",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "450.220408",
+            "size": "5965016",
+            "bit_rate": "105992"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -25.7,
+        "max_volume": -0.4,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "관악 편곡이 관현악·하프 해설과 불일치. 2019년 후보는 편성을 확인하지 못하여 보류."
+    },
+    {
+      "no": "18",
+      "title": "백조의 호수 〈정경〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "swan-lake-scene.ogg",
+        "performer": "London Philharmonic Orchestra(지휘 John Barbirolli, 1933년 녹음)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "18",
+        "title": "백조의 호수 〈정경〉",
+        "file": "swan-lake-scene.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "87d0d12c31976ed2d157a3f108c4d6dd3701ae888cf9a54fe4c1f1f3e30b0d25",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "150.000000",
+            "size": "1409665",
+            "bit_rate": "75182"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -22.0,
+        "max_volume": -3.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "1933년 역사적 녹음. 같은 정경 악장의 현대 관현악 녹음 필요."
+    },
+    {
+      "no": "19",
+      "title": "동물의 사육제 〈백조〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "the-swan.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Saint-Saens_-_The_Carnival_of_the_Animals_-_13_Le_cygne.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/archive/d/d8/20210120131353%21Saint-Saens_-_The_Carnival_of_the_Animals_-_13_Le_cygne.ogg",
+        "performer": "Seattle Youth Symphony · Vilem Sokol · Neal & Nancy O’Doan(피아노)",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceSha256": "c72ec8d23c68e2a89452e8e51a32fda258b8e7e6bec569b1d2e5e8a08e724b6c",
+        "outputSha256": "c72ec8d23c68e2a89452e8e51a32fda258b8e7e6bec569b1d2e5e8a08e724b6c",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "180.985034",
+            "size": "3228183",
+            "bit_rate": "142693"
+          }
+        },
+        "instrumentation": "첼로와 두 대의 피아노",
+        "reason": "마림바 편곡을 원곡 편성으로 교체",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "the-swan.ogg",
+        "performer": "Seattle Youth Symphony · Vilem Sokol · Neal & Nancy O’Doan(피아노)",
+        "license": "CC BY-SA 2.0",
+        "revision": "c72ec8d23c68"
+      },
+      "technicalVerification": {
+        "no": "19",
+        "title": "동물의 사육제 〈백조〉",
+        "file": "the-swan.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "c72ec8d23c68e2a89452e8e51a32fda258b8e7e6bec569b1d2e5e8a08e724b6c",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "180.985034",
+            "size": "3228183",
+            "bit_rate": "142693"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -41.8,
+        "max_volume": -20.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "20",
+      "title": "전람회의 그림 〈키예프의 대문〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "great-gate-of-kiev.ogg",
+        "performer": "Musopen 제공(연주자 정보 미표기)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "20",
+        "title": "전람회의 그림 〈키예프의 대문〉",
+        "file": "great-gate-of-kiev.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "596c922da2ba1a120c466dcc25f617bc7c97d57decc8c552698c06ae380029bc",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "328.200000",
+            "size": "3758427",
+            "bit_rate": "91613"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -16.0,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "제공처만 알려진 녹음. 연주자·피아노 원곡/관현악 편곡 여부 확인 필요. MIDI 후보는 제외."
+    },
+    {
+      "no": "21",
+      "title": "신세계 교향곡 2악장",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "new-world-symphony2.ogg",
+        "performer": "Musopen 제공(연주 단체 정보 미표기)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "21",
+        "title": "신세계 교향곡 2악장",
+        "file": "new-world-symphony2.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "1a51b0ae43d3baa76a05eef157cc187f29175c6ed4a4e5cc072ff82149b3524e",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "694.464000",
+            "size": "8008077",
+            "bit_rate": "92250"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -26.8,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "연주 단체 미표기. 잉글리시 호른과 관현악의 해당 악장 연주 정보 확인 필요."
+    },
+    {
+      "no": "22",
+      "title": "볼레로",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "bolero.ogg",
+        "performer": "모리스 라벨 본인 지휘(1930년 녹음)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "22",
+        "title": "볼레로",
+        "file": "bolero.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "598cbbcc01fbd087755e3bf3bd13d224518a78c1a4ef284e26d4b3d43ee1ab4f",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "952.424490",
+            "size": "8809270",
+            "bit_rate": "73994"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -17.9,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "1930년 라벨 지휘 녹음. 현대 관현악 대체본 필요. 저비트율·연도 불일치 후보는 보류."
+    },
+    {
+      "no": "23",
+      "title": "목신의 오후에의 전주곡",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "prelude-faun.mp3",
+        "sourcePage": "https://musopen.org/music/42994-prelude-to-the-afternoon-of-a-faun/",
+        "sourceUrl": "https://dl.musopen.org/recordings/85484622-ca89-44b4-aa6e-7d1607abe1cf.mp3?filename=2688_prelude-to-the-afternoon-4f784f81-2089-4ac4-9378-8c84eee06168.mp3",
+        "performer": "Columbia University Orchestra",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceSha256": "708c0cf674fa74e61892aab65c580edfb742cd5a691c975992b7d4d2bc170fcd",
+        "outputSha256": "708c0cf674fa74e61892aab65c580edfb742cd5a691c975992b7d4d2bc170fcd",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "553.893333",
+            "size": "8863787",
+            "bit_rate": "128021"
+          }
+        },
+        "instrumentation": "관현악",
+        "reason": "1930년 분할 음반 대신 관현악 녹음",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "prelude-faun.mp3",
+        "performer": "Columbia University Orchestra",
+        "license": "퍼블릭 도메인",
+        "revision": "708c0cf674fa"
+      },
+      "technicalVerification": {
+        "no": "23",
+        "title": "목신의 오후에의 전주곡",
+        "file": "prelude-faun.mp3",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "708c0cf674fa74e61892aab65c580edfb742cd5a691c975992b7d4d2bc170fcd",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "553.893333",
+            "size": "8863787",
+            "bit_rate": "128021"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -27.4,
+        "max_volume": -3.3,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "24",
+      "title": "행성 〈목성〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "jupiter.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Gustav_Holst_-_the_planets,_op._32_-_iv._jupiter,_the_bringer_of_jollity.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Gustav_Holst_-_the_planets%2C_op._32_-_iv._jupiter%2C_the_bringer_of_jollity.ogg",
+        "performer": "Skidmore College Orchestra(Musopen)",
+        "license": "Attribution",
+        "licenseUrl": "",
+        "sourceSha256": "2d947467948d559c15f808af04ae569b0fec37391fe045b25c1045a978a11b35",
+        "outputSha256": "2d947467948d559c15f808af04ae569b0fec37391fe045b25c1045a978a11b35",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "508.473469",
+            "size": "11459557",
+            "bit_rate": "180297"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "jupiter.ogg",
+        "performer": "Skidmore College Orchestra(Musopen)",
+        "license": "Musopen Attribution",
+        "revision": "2d947467948d"
+      },
+      "technicalVerification": {
+        "no": "24",
+        "title": "행성 〈목성〉",
+        "file": "jupiter.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "2d947467948d559c15f808af04ae569b0fec37391fe045b25c1045a978a11b35",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "508.473469",
+            "size": "11459557",
+            "bit_rate": "180297"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -21.4,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "25",
+      "title": "피터와 늑대",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {},
+      "technicalVerification": {
+        "no": "25",
+        "title": "피터와 늑대",
+        "status": "external-link"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "현지 재생 파일 없음. 해설·언어·원곡 및 녹음 이용 조건을 확인한 연주 확보 필요."
+    },
+    {
+      "no": "26",
+      "title": "청소년을 위한 관현악 입문",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {},
+      "technicalVerification": {
+        "no": "26",
+        "title": "청소년을 위한 관현악 입문",
+        "status": "external-link"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "현지 재생 파일 없음. 원곡과 녹음의 재사용 조건을 함께 확인한 연주 확보 필요."
+    },
+    {
+      "no": "27",
+      "title": "메시아 〈할렐루야〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "hallelujah-chorus.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:The_National_Chorus_of_Korea_-_Handel%27s_Messiah,_HWV_56_-_XLIV._Hallelujah.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/The_National_Chorus_of_Korea_-_Handel%27s_Messiah%2C_HWV_56_-_XLIV._Hallelujah.ogg",
+        "performer": "국립합창단(2019년 예술의전당 실황)",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceSha256": "f58bc1e56a69d313f93336d51bbf2668cc34202008cc64fe69ff573f34d722a5",
+        "outputSha256": "f58bc1e56a69d313f93336d51bbf2668cc34202008cc64fe69ff573f34d722a5",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "210.762336",
+            "size": "3527111",
+            "bit_rate": "133880"
+          }
+        },
+        "instrumentation": "합창과 관현악",
+        "reason": "1953년 음반 대신 2019년 실황으로 교체",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "hallelujah-chorus.ogg",
+        "performer": "국립합창단(2019년 예술의전당 실황)",
+        "license": "CC BY 3.0",
+        "revision": "f58bc1e56a69"
+      },
+      "technicalVerification": {
+        "no": "27",
+        "title": "메시아 〈할렐루야〉",
+        "file": "hallelujah-chorus.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "f58bc1e56a69d313f93336d51bbf2668cc34202008cc64fe69ff573f34d722a5",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "210.762336",
+            "size": "3527111",
+            "bit_rate": "133880"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -21.1,
+        "max_volume": -3.6,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "28",
+      "title": "피아노 소나타 11번 〈터키 행진곡〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "turkish-march.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart-Marsz_turecki-(Romuald_Greiss).ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Mozart-Marsz_turecki-%28Romuald_Greiss%29.ogg",
+        "performer": "Romuald Greiss(피아노, 2000년 실황)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "65d728bec126d533d383ae77d533a6dba2c93f56510219faac37f15faa2dec77",
+        "outputSha256": "65d728bec126d533d383ae77d533a6dba2c93f56510219faac37f15faa2dec77",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "22050",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "181.603265",
+            "size": "1315215",
+            "bit_rate": "57937"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "turkish-march.ogg",
+        "performer": "Romuald Greiss(피아노, 2000년 실황)",
+        "license": "퍼블릭 도메인",
+        "revision": "65d728bec126"
+      },
+      "technicalVerification": {
+        "no": "28",
+        "title": "피아노 소나타 11번 〈터키 행진곡〉",
+        "file": "turkish-march.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "65d728bec126d533d383ae77d533a6dba2c93f56510219faac37f15faa2dec77",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "22050",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "181.603265",
+            "size": "1315215",
+            "bit_rate": "57937"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -24.0,
+        "max_volume": -0.3,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "29",
+      "title": "나의 조국 〈몰다우〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "moldau.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Smetana,_M%C3%A1_vlast_-_Vltava_-_The_Moldau.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/Smetana%2C_M%C3%A1_vlast_-_Vltava_-_The_Moldau.ogg",
+        "performer": "Musopen Symphony Orchestra(2012년)",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceSha256": "84663550a99ba8f7069cd58e0c3fcc1ca143f5ed4c6121da76f3fecd64a9f067",
+        "outputSha256": "84663550a99ba8f7069cd58e0c3fcc1ca143f5ed4c6121da76f3fecd64a9f067",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "770.904000",
+            "size": "20531794",
+            "bit_rate": "213067"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "moldau.ogg",
+        "performer": "Musopen Symphony Orchestra(2012년)",
+        "license": "CC0",
+        "revision": "84663550a99b"
+      },
+      "technicalVerification": {
+        "no": "29",
+        "title": "나의 조국 〈몰다우〉",
+        "file": "moldau.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "84663550a99ba8f7069cd58e0c3fcc1ca143f5ed4c6121da76f3fecd64a9f067",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "770.904000",
+            "size": "20531794",
+            "bit_rate": "213067"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -17.0,
+        "max_volume": -0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "30",
+      "title": "사브르 댄스",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {},
+      "technicalVerification": {
+        "no": "30",
+        "title": "사브르 댄스",
+        "status": "external-link"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "현지 재생 파일 없음. 원곡과 녹음의 재사용 조건을 함께 확인한 연주 확보 필요."
+    },
+    {
+      "no": "31",
+      "title": "토카타와 푸가 라단조",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "toccata-fugue-dminor.ogg",
+        "performer": "Ashtar Moïra(오르간)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "31",
+        "title": "토카타와 푸가 라단조",
+        "file": "toccata-fugue-dminor.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "d95291e954f1adcd38eb6858ac607f94286e598c9a9860b4b5e1d2a2595aae34",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "513.560091",
+            "size": "5663432",
+            "bit_rate": "88222"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -21.8,
+        "max_volume": -0.4,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "기존 오르간 녹음 유지. 실제 악기/음원 제작 방식과 청취 품질 추가 확인 필요."
+    },
+    {
+      "no": "32",
+      "title": "사계 〈겨울〉 1악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "vivaldi-winter.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Vivaldi_-_Four_Seasons_4_Winter_mvt_1_Allegro_non_molto_-_John_Harrison_violin.oga",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Vivaldi_-_Four_Seasons_4_Winter_mvt_1_Allegro_non_molto_-_John_Harrison_violin.oga",
+        "performer": "John Harrison(바이올린) · Wichita State University Chamber Players",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+        "sourceSha256": "e7d4c67c6466860d591b13978199674ce008983f56b0bf05906525dc0da0b7d4",
+        "outputSha256": "e7d4c67c6466860d591b13978199674ce008983f56b0bf05906525dc0da0b7d4",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2,
+              "side_data_list": [
+                {}
+              ]
+            }
+          ],
+          "format": {
+            "duration": "208.840000",
+            "size": "4008237",
+            "bit_rate": "153542"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "vivaldi-winter.ogg",
+        "performer": "John Harrison(바이올린) · Wichita State University Chamber Players",
+        "license": "CC BY-SA 4.0",
+        "revision": "e7d4c67c6466"
+      },
+      "technicalVerification": {
+        "no": "32",
+        "title": "사계 〈겨울〉 1악장",
+        "file": "vivaldi-winter.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "e7d4c67c6466860d591b13978199674ce008983f56b0bf05906525dc0da0b7d4",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2,
+              "side_data_list": [
+                {}
+              ]
+            }
+          ],
+          "format": {
+            "duration": "208.840000",
+            "size": "4008237",
+            "bit_rate": "153542"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -26.2,
+        "max_volume": -2.1,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "33",
+      "title": "엘리제를 위하여",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "fur-elise.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:For_Elise_(F%C3%BCr_Elise)_Beethoven_JMC_Han.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/For_Elise_%28F%C3%BCr_Elise%29_Beethoven_JMC_Han.ogg",
+        "performer": "Jason M. C. Han(피아노)",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceSha256": "8c7fc3c206032c0b8f72ac7792e12df4c7a95b67c590083c366ba2b16a545949",
+        "outputSha256": "8c7fc3c206032c0b8f72ac7792e12df4c7a95b67c590083c366ba2b16a545949",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "160.446259",
+            "size": "1751996",
+            "bit_rate": "87356"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "fur-elise.ogg",
+        "performer": "Jason M. C. Han(피아노)",
+        "license": "CC BY-SA 4.0",
+        "revision": "8c7fc3c20603"
+      },
+      "technicalVerification": {
+        "no": "33",
+        "title": "엘리제를 위하여",
+        "file": "fur-elise.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "8c7fc3c206032c0b8f72ac7792e12df4c7a95b67c590083c366ba2b16a545949",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "160.446259",
+            "size": "1751996",
+            "bit_rate": "87356"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -14.1,
+        "max_volume": -3.2,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "34",
+      "title": "월광 소나타 1악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "moonlight.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Ludwig_van_Beethoven_-_sonata_no._14_in_c_sharp_minor_%27moonlight%27,_op._27_no._2_-_i._adagio_sostenuto.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/48/Ludwig_van_Beethoven_-_sonata_no._14_in_c_sharp_minor_%27moonlight%27%2C_op._27_no._2_-_i._adagio_sostenuto.ogg",
+        "performer": "Paul Pitman(피아노, Musopen)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "035a31b8d67de4b0574110592a6f8ce2f6e51dfc7f884e16f918e47e327d7d66",
+        "outputSha256": "035a31b8d67de4b0574110592a6f8ce2f6e51dfc7f884e16f918e47e327d7d66",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "335.769229",
+            "size": "10863043",
+            "bit_rate": "258821"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "moonlight.ogg",
+        "performer": "Paul Pitman(피아노, Musopen)",
+        "license": "퍼블릭 도메인",
+        "revision": "035a31b8d67d"
+      },
+      "technicalVerification": {
+        "no": "34",
+        "title": "월광 소나타 1악장",
+        "file": "moonlight.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "035a31b8d67de4b0574110592a6f8ce2f6e51dfc7f884e16f918e47e327d7d66",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "335.769229",
+            "size": "10863043",
+            "bit_rate": "258821"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -34.9,
+        "max_volume": -13.6,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "35",
+      "title": "교향곡 40번 1악장",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "symphony40.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Mozart_Symphony_40_G_minor_-_1_Molto_allegro.oga",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/Mozart_Symphony_40_G_minor_-_1_Molto_allegro.oga",
+        "performer": "Tsumugi Orchestra(지휘 Takashi Inoue, 2010년 실황)",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceSha256": "793aee0a93beb70bdb97afad9b1e63d2a0af1f548951e52d2faf6f4a0e49e991",
+        "outputSha256": "793aee0a93beb70bdb97afad9b1e63d2a0af1f548951e52d2faf6f4a0e49e991",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {},
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "476.184000",
+            "size": "4169881",
+            "bit_rate": "70054"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "symphony40.ogg",
+        "performer": "Tsumugi Orchestra(지휘 Takashi Inoue, 2010년 실황)",
+        "license": "CC BY 3.0",
+        "revision": "793aee0a93be"
+      },
+      "technicalVerification": {
+        "no": "35",
+        "title": "교향곡 40번 1악장",
+        "file": "symphony40.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "793aee0a93beb70bdb97afad9b1e63d2a0af1f548951e52d2faf6f4a0e49e991",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {},
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "476.184000",
+            "size": "4169881",
+            "bit_rate": "70054"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -27.2,
+        "max_volume": -6.2,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "36",
+      "title": "마술피리 〈밤의 여왕의 아리아〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "queen-of-night-aria.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Der_Hoelle_Rache.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Der_Hoelle_Rache.ogg",
+        "performer": "Sandra Partridge(소프라노) · Bangkok Opera(2006년 실황)",
+        "license": "CC BY 2.5",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+        "sourceSha256": "bbdf0a8d4c151aee5a21fb71ed86894b1aae5c7dba9ea767f7af6c0f752915c2",
+        "outputSha256": "bbdf0a8d4c151aee5a21fb71ed86894b1aae5c7dba9ea767f7af6c0f752915c2",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "190.563265",
+            "size": "3757004",
+            "bit_rate": "157722"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "queen-of-night-aria.ogg",
+        "performer": "Sandra Partridge(소프라노) · Bangkok Opera(2006년 실황)",
+        "license": "CC BY 2.5",
+        "revision": "bbdf0a8d4c15"
+      },
+      "technicalVerification": {
+        "no": "36",
+        "title": "마술피리 〈밤의 여왕의 아리아〉",
+        "file": "queen-of-night-aria.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "bbdf0a8d4c151aee5a21fb71ed86894b1aae5c7dba9ea767f7af6c0f752915c2",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "190.563265",
+            "size": "3757004",
+            "bit_rate": "157722"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -19.2,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "37",
+      "title": "카르멘 〈전주곡〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "carmen-prelude.ogg",
+        "performer": "Philadelphia Symphony Orchestra(지휘 Leopold Stokowski, 1919년 녹음)",
+        "license": "퍼블릭 도메인",
+        "note": "1923년 이전 녹음이라 미국에서 저작인접권이 만료됐습니다."
+      },
+      "technicalVerification": {
+        "no": "37",
+        "title": "카르멘 〈전주곡〉",
+        "file": "carmen-prelude.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "9cb35ad0ea493546933ef80a88bb1cf70d77b5e11a0b73ff9cfd2ddc6b5ea372",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "137.054292",
+            "size": "1559919",
+            "bit_rate": "91054"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -29.9,
+        "max_volume": -5.5,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "1919년 녹음. 관현악 전주곡의 현대 실연 대체본 필요."
+    },
+    {
+      "no": "38",
+      "title": "천국과 지옥 〈캉캉〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "can-can.ogg",
+        "performer": "Musopen 제공(연주자 정보 미표기)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "38",
+        "title": "천국과 지옥 〈캉캉〉",
+        "file": "can-can.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "8b82ce589b487e8579140a30a3a5706588f1f85d330aa180bd70c5e9926e4daf",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 1
+            }
+          ],
+          "format": {
+            "duration": "106.882109",
+            "size": "1484326",
+            "bit_rate": "111100"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -18.4,
+        "max_volume": -1.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "연주자 미표기. 갈로프 해당 부분·편성·녹음 원본 확인 필요."
+    },
+    {
+      "no": "39",
+      "title": "아름답고 푸른 도나우",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "blue-danube.ogg",
+        "performer": "US Marine Band(지휘 Albert F. Schoepper)",
+        "license": "퍼블릭 도메인",
+        "note": "취주악(윈드밴드) 편곡입니다."
+      },
+      "technicalVerification": {
+        "no": "39",
+        "title": "아름답고 푸른 도나우",
+        "file": "blue-danube.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "b43faa0f887a3821d0702b983e156945e68a9b825308368d8e323f0ca3d8bbc1",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "539.538866",
+            "size": "6244089",
+            "bit_rate": "92584"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -22.0,
+        "max_volume": -2.7,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "취주악 편곡. 현악을 포함하는 관현악 대체본 필요. 짧은 발췌 후보는 전곡 대체로 채택하지 않음."
+    },
+    {
+      "no": "40",
+      "title": "발퀴레의 기행",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "ride-of-valkyries.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Richard_Wagner_-_The_Valkyrie_-_Ride_of_the_Valkyries.flac",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Richard_Wagner_-_The_Valkyrie_-_Ride_of_the_Valkyries.flac",
+        "performer": "Ulm Philharmonic · James Allen Gähres(지휘)",
+        "license": "EFF Open Audio License v1",
+        "licenseUrl": "https://web.archive.org/web/20070208085151/http://www.eff.org/IP/Open_licenses/20010421_eff_oal_1.0.html",
+        "sourceSha256": "050c0c4f21965f4d7d93ad1a3bc3790e694b51e35e3af893bf1927aa71458c89",
+        "outputSha256": "c4f67cdeece7f32078ff98485eb9d52415ddec5dee300c4b4f254e2b5ceece84",
+        "method": "lossless-source-to-vorbis-q8",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "338.886542",
+            "size": "9716535",
+            "bit_rate": "229375"
+          }
+        },
+        "instrumentation": "관현악",
+        "reason": "1921년 음반 대신 울름 필하모닉의 실연 녹음. 무손실 FLAC에서 OGG로 한 번 변환.",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "ride-of-valkyries.ogg",
+        "performer": "Ulm Philharmonic · James Allen Gähres(지휘)",
+        "license": "EFF Open Audio License v1",
+        "revision": "c4f67cdeece7"
+      },
+      "technicalVerification": {
+        "no": "40",
+        "title": "발퀴레의 기행",
+        "file": "ride-of-valkyries.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "c4f67cdeece7f32078ff98485eb9d52415ddec5dee300c4b4f254e2b5ceece84",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "338.886542",
+            "size": "9716535",
+            "bit_rate": "229375"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -19.0,
+        "max_volume": -0.1,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "41",
+      "title": "페르 귄트 〈아침 기분〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "morning-mood.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Musopen_-_Morning.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Musopen_-_Morning.ogg",
+        "performer": "Czech National Symphony Orchestra(Musopen Symphony, 2012년)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "3207072ffef9f65f9a4a78c2ddc5afdd1c5b4c61b83ab092da3d6a87852e4996",
+        "outputSha256": "3207072ffef9f65f9a4a78c2ddc5afdd1c5b4c61b83ab092da3d6a87852e4996",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "229.183042",
+            "size": "3453888",
+            "bit_rate": "120563"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "morning-mood.ogg",
+        "performer": "Czech National Symphony Orchestra(Musopen Symphony, 2012년)",
+        "license": "퍼블릭 도메인",
+        "revision": "3207072ffef9"
+      },
+      "technicalVerification": {
+        "no": "41",
+        "title": "페르 귄트 〈아침 기분〉",
+        "file": "morning-mood.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "3207072ffef9f65f9a4a78c2ddc5afdd1c5b4c61b83ab092da3d6a87852e4996",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "229.183042",
+            "size": "3453888",
+            "bit_rate": "120563"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -23.2,
+        "max_volume": -0.8,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "42",
+      "title": "페르 귄트 〈산왕의 궁전에서〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "hall-of-mountain-king.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg",
+        "performer": "Czech National Symphony Orchestra(Musopen Symphony, 2012년)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "3bfa7424d3a148f1482a44688b77eb9138a7cea6cff7474799f1329181ab3342",
+        "outputSha256": "3bfa7424d3a148f1482a44688b77eb9138a7cea6cff7474799f1329181ab3342",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "154.091021",
+            "size": "2155317",
+            "bit_rate": "111898"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "hall-of-mountain-king.ogg",
+        "performer": "Czech National Symphony Orchestra(Musopen Symphony, 2012년)",
+        "license": "퍼블릭 도메인",
+        "revision": "3bfa7424d3a1"
+      },
+      "technicalVerification": {
+        "no": "42",
+        "title": "페르 귄트 〈산왕의 궁전에서〉",
+        "file": "hall-of-mountain-king.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "3bfa7424d3a148f1482a44688b77eb9138a7cea6cff7474799f1329181ab3342",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "154.091021",
+            "size": "2155317",
+            "bit_rate": "111898"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -19.3,
+        "max_volume": -0.1,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "43",
+      "title": "한여름 밤의 꿈 〈결혼행진곡〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "wedding-march.ogg",
+        "performer": "European Archive 소장 녹음(연주 단체 정보 미표기)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "43",
+        "title": "한여름 밤의 꿈 〈결혼행진곡〉",
+        "file": "wedding-march.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "85ac17fbe28448706574a9c8f2275ab6a0502505ed547b0c305c1a72f68225c5",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "293.639546",
+            "size": "2812144",
+            "bit_rate": "76614"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -28.1,
+        "max_volume": -10.3,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "European Archive 소장 녹음이나 연주 단체 미표기. 녹음 출처와 청취 품질 추가 확인 필요."
+    },
+    {
+      "no": "44",
+      "title": "1812년 서곡 〈피날레〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "1812-overture-finale.ogg",
+        "performer": "Concertgebouw Orchestra of Amsterdam(지휘 Paul van Kempen)",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "44",
+        "title": "1812년 서곡 〈피날레〉",
+        "file": "1812-overture-finale.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "02fb4fc81922d8d9aca6c73f3fbceaca5c577923f9fbb5831496a93fe4cf24fb",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "881.000000",
+            "size": "9563493",
+            "bit_rate": "86842"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -41.8,
+        "max_volume": -18.9,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "기존 역사적 녹음 유지. 피날레 구간과 현대 녹음 대체 후보 추가 확인 필요."
+    },
+    {
+      "no": "45",
+      "title": "술탄 황제의 이야기 〈왕벌의 비행〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {
+        "file": "flight-of-bumblebee.ogg",
+        "performer": "US Army Band",
+        "license": "퍼블릭 도메인"
+      },
+      "technicalVerification": {
+        "no": "45",
+        "title": "술탄 황제의 이야기 〈왕벌의 비행〉",
+        "file": "flight-of-bumblebee.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "c59effd58f30029356745c6448f32db5c4471a65bf03bf3be923454d8f92be0c",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "79.307755",
+            "size": "851569",
+            "bit_rate": "85900"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -15.0,
+        "max_volume": 0.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "US Army Band 녹음. 원곡 관현악 편성과의 일치 여부 추가 확인 필요."
+    },
+    {
+      "no": "46",
+      "title": "헝가리 광시곡 2번",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "hungarian-rhapsody2.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Franz_Liszt_-_Second_Hungarian_Rhapsody.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Franz_Liszt_-_Second_Hungarian_Rhapsody.ogg",
+        "performer": "Martha Goldstein(피아노)",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceSha256": "398a95e7978f013c628841356ecf2b70bb8a7a8967919d7aa41b5a5a99e204b6",
+        "outputSha256": "398a95e7978f013c628841356ecf2b70bb8a7a8967919d7aa41b5a5a99e204b6",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "785.986667",
+            "size": "14704692",
+            "bit_rate": "149668"
+          }
+        },
+        "instrumentation": "피아노 독주",
+        "reason": "관악합주 편곡을 피아노 원곡으로 교체",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "hungarian-rhapsody2.ogg",
+        "performer": "Martha Goldstein(피아노)",
+        "license": "CC BY-SA 2.0",
+        "revision": "398a95e7978f"
+      },
+      "technicalVerification": {
+        "no": "46",
+        "title": "헝가리 광시곡 2번",
+        "file": "hungarian-rhapsody2.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "398a95e7978f013c628841356ecf2b70bb8a7a8967919d7aa41b5a5a99e204b6",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "785.986667",
+            "size": "14704692",
+            "bit_rate": "149668"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -26.6,
+        "max_volume": -2.6,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "47",
+      "title": "베르가마스크 모음곡 〈달빛〉",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "clair-de-lune.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Clair_de_lune_(Claude_Debussy)_Suite_bergamasque.ogg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Clair_de_lune_%28Claude_Debussy%29_Suite_bergamasque.ogg",
+        "performer": "Laurens Goedhart(피아노)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "2f7a1e833f4e2408d9d1b893131863d790ba75cd5fbcf81292dc5ed6f25918fe",
+        "outputSha256": "2f7a1e833f4e2408d9d1b893131863d790ba75cd5fbcf81292dc5ed6f25918fe",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "304.088526",
+            "size": "15740765",
+            "bit_rate": "414110"
+          }
+        },
+        "instrumentation": "",
+        "reason": "Restore original source without additional lossy compression",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "clair-de-lune.ogg",
+        "performer": "Laurens Goedhart(피아노)",
+        "license": "CC BY 3.0",
+        "revision": "2f7a1e833f4e"
+      },
+      "technicalVerification": {
+        "no": "47",
+        "title": "베르가마스크 모음곡 〈달빛〉",
+        "file": "clair-de-lune.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "2f7a1e833f4e2408d9d1b893131863d790ba75cd5fbcf81292dc5ed6f25918fe",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "304.088526",
+            "size": "15740765",
+            "bit_rate": "414110"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -26.0,
+        "max_volume": -0.9,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    },
+    {
+      "no": "48",
+      "title": "로미오와 줄리엣 〈기사들의 춤〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {},
+      "technicalVerification": {
+        "no": "48",
+        "title": "로미오와 줄리엣 〈기사들의 춤〉",
+        "status": "external-link"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "현지 재생 파일 없음. 합성 연주를 제외한 실연과 재사용 조건 확인 필요."
+    },
+    {
+      "no": "49",
+      "title": "카르미나 부라나 〈오 운명의 여신이여〉",
+      "status": "pending",
+      "recording": null,
+      "currentAudio": {},
+      "technicalVerification": {
+        "no": "49",
+        "title": "카르미나 부라나 〈오 운명의 여신이여〉",
+        "status": "external-link"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "현지 재생 파일 없음. 합창·관현악 실연의 원곡 및 녹음 재사용 조건 확인 필요."
+    },
+    {
+      "no": "50",
+      "title": "랩소디 인 블루",
+      "status": "source-restored-or-replaced",
+      "recording": {
+        "file": "rhapsody-in-blue.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:US_Marine_Band_Rhapsody_in_Blue.oga",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/US_Marine_Band_Rhapsody_in_Blue.oga",
+        "performer": "Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)",
+        "license": "Public domain",
+        "licenseUrl": "",
+        "sourceSha256": "eeaacacbce60d0fd1091088a959057b67f2618340defd5d43cd2d39f27c3db40",
+        "outputSha256": "eeaacacbce60d0fd1091088a959057b67f2618340defd5d43cd2d39f27c3db40",
+        "method": "original-bytes",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "1089.721583",
+            "size": "52416676",
+            "bit_rate": "384807"
+          }
+        },
+        "instrumentation": "피아노와 재즈 밴드(그로페의 1924년 초연 편성)",
+        "reason": "1924년 역사적 음반 대신 같은 초연 편성의 2018년 연주로 교체",
+        "listeningReview": "not-performed"
+      },
+      "currentAudio": {
+        "file": "rhapsody-in-blue.ogg",
+        "performer": "Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)",
+        "license": "Public domain",
+        "revision": "eeaacacbce60",
+        "note": "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다. 피아노: Bramwell Tovey."
+      },
+      "technicalVerification": {
+        "no": "50",
+        "title": "랩소디 인 블루",
+        "file": "rhapsody-in-blue.ogg",
+        "listeningReview": "not-performed",
+        "errors": [],
+        "sha256": "eeaacacbce60d0fd1091088a959057b67f2618340defd5d43cd2d39f27c3db40",
+        "audio": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vorbis",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "1089.721583",
+            "size": "52416676",
+            "bit_rate": "384807"
+          }
+        },
+        "decodePassed": true,
+        "mean_volume": -28.1,
+        "max_volume": -4.0,
+        "status": "technical-checks-passed"
+      },
+      "listeningReview": "not-performed",
+      "remaining": "실제 청음에 의한 음색·잡음·연주 품질 확인은 미실시."
+    }
+  ]
+}

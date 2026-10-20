@@ -348,8 +348,21 @@ body { background-color: var(--bg-color); color: var(--text-main); line-height: 
     margin-top: 24px;
 }
 
+#curriculumTab { max-width: 1800px; }
+.curriculum-table { table-layout: fixed; min-width: 900px; font-variant-numeric: tabular-nums; }
+.curriculum-table th, .curriculum-table td {
+    padding: 12px 8px;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+.curriculum-table thead th:first-child { width: 6%; }
+.curriculum-table thead th:nth-child(2) { width: 12%; }
+.curriculum-table thead th:nth-child(3), .curriculum-table thead th:nth-child(5) { width: 10%; }
 .curriculum-table input[type="number"] {
-    width: 90px;
+    width: 100%;
+    max-width: 90px;
+    min-width: 0;
     min-height: 40px;
     background: #fff;
     border: 1px solid var(--border-color);
@@ -442,6 +455,7 @@ body[data-curriculum-access="read"] :is(input, select):disabled { opacity: 1; co
 
 /* @media print for Official Document Export */
 @media print {
+    .curriculum-table { min-width: 0; }
     .curriculum-access-status, .tab-content[hidden] { display: none !important; }
     .app-header, .tabs-nav, .grade-selector-wrap, .palette-container, .form-actions-row, .calendar-control-bar, button {
         display: none !important;

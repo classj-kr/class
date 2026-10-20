@@ -23,6 +23,7 @@ function motion(strength,x,y){
   return distances.reduce((a,b)=>a+b)/distances.length;
 }
 const weak=motion(.2,1,0),strong=motion(.85,1,0);assert.ok(strong>weak*2,'stronger winds must be visibly faster');
+assert.ok(strong/.05>=30&&strong/.05<=55,'strong wind must be readable without rushing across the map');
 motion(.8,-1,0);motion(.8,0,1);motion(.8,0,-1);motion(.8,-Math.SQRT1_2,Math.SQRT1_2);
 wind={x:1,y:0,strength:.05};assert.equal(render(1000).size,0,'calm areas must not suggest strong wind');
 wind.strength=.8;modal=true;assert.equal(render(1000).size,0);modal=false;context.mode='land';assert.equal(render(1000).size,0);

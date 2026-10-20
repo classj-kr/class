@@ -55,7 +55,7 @@ async function withSchool(run) {
         (school_id, academic_year, grade, class_number, day_of_week, period, subject_name) VALUES
         (1, 2026, 1, 1, 1, 1, '국어'), (1, 2026, 3, 10, 2, 2, '음악'),
         (1, 2026, 6, 3, 1, 8, ''), (1, 2027, 4, 2, 1, 1, '다음학년도'),
-        (2, 2026, 6, 30, 1, 1, '다른학교');
+        (2, 2026, 6, 30, 1, 1, '다른학교'), (1, 2026, 1, 0, 1, 1, '이전 공통양식');
       INSERT INTO school_weekly_period_allocation (school_id, academic_year, grade, day_of_week, period_count)
         SELECT 1, 2026, grade, day, CASE WHEN grade <= 2 THEN 4 WHEN day = 3 THEN 5 ELSE 6 END
         FROM generate_series(1, 6) grade CROSS JOIN generate_series(1, 5) day;
@@ -86,6 +86,7 @@ test('overview includes registered empty classes, sorts and deduplicates classes
   assert.equal(data.timetable.length, 3);
   assert.equal(data.allocations.length, 30);
   assert.ok(!JSON.stringify(data).includes('다른학교'));
+    assert.ok(!JSON.stringify(data).includes('이전 공통양식'));
   const next = await overview({ query: { academicYear: '2027' } });
   assert.deepEqual(next.classes, [{ grade: 4, class_number: 2 }]);
   assert.equal(next.timetable[0].subject_name, '다음학년도');
@@ -219,6 +220,9 @@ test('browser: overview, filters, fresh data, class links, print, mobile, safe l
     await unusual.click();
     assert.ok((await page.locator('#schoolTimetableDetail').innerText()).includes('특별실 "A"'));
     assert.equal(await page.locator('#schoolTimetableContent img').count(), 0);
+    await db.exec("UPDATE school_master_timetable SET subject_name='constructor' WHERE school_id=1 AND academic_year=2026 AND grade=1 AND class_number=1 AND day_of_week=1 AND period=1");
+    await page.locator('#refreshSchoolTimetableBtn').click();
+    await page.locator('.school-lesson').filter({ hasText: 'constructor' }).waitFor();
     fail = true;
     await page.locator('#refreshSchoolTimetableBtn').click();
     await page.getByText(/검증용 조회 실패/).waitFor();
@@ -233,8 +237,9 @@ test('browser: overview, filters, fresh data, class links, print, mobile, safe l
     await started;
     await page.locator('#schoolTimetableYearSelect').selectOption('2026');
     await page.locator('#schoolTimetableContent').waitFor();
+    const delayedResponse = page.waitForResponse(r => r.url().endsWith('/school-timetable?academicYear=2027'));
     release();
-    await page.waitForResponse(r => r.url().endsWith('/school-timetable?academicYear=2027'));
+    await delayedResponse;
     assert.match(await page.locator('#schoolTimetableCaption').innerText(), /2026/);
     assert.equal(await page.locator('#schoolTimetableBody tr').count(), 8);
     hold = false;
