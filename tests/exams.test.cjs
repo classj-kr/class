@@ -103,6 +103,8 @@ test('teacher creates an exam; students join, answer and are graded after server
     assert.equal(current.questions[0].answer, undefined);
     assert.equal(current.questions[1].aliases, undefined);
     assert.equal(current.score, null);
+    // 객관식을 안 풀었으면 제출할 수 없다. 단답형은 비워도 된다.
+    assert.equal((await request(path + '/submit', 'POST', {}, studentCookie, 400)).code, 'UNANSWERED');
     await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 1 }, studentCookie);
     await request(path + '/answers/' + before.questions[1].id, 'PUT', { response: '한 글.' }, studentCookie);
     await request(path + '/submit', 'POST', {}, studentCookie);

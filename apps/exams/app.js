@@ -498,7 +498,11 @@
   $('audioDelete').onclick = () => run(async () => { if (!confirm('듣기 음원을 삭제할까요?')) return; await api('/' + encodeURIComponent(examId) + '/audio', 'DELETE'); await teacherExam(); });
   $('previousButton').onclick = () => run(async () => { await saveCurrentShort(); questionIndex--; renderQuestion(); });
   $('nextButton').onclick = () => run(async () => { await saveCurrentShort(); questionIndex++; renderQuestion(); });
-  $('submitButton').onclick = () => run(async () => { if (!confirm('답안을 제출할까요? 제출 후에는 수정할 수 없습니다.')) return; await saveCurrentShort(); await api('/' + encodeURIComponent(examId) + '/submit', 'POST'); await studentExam(); notice('제출했습니다.'); });
+  $('submitButton').onclick = () => run(async () => {
+    // 안 푼 객관식·OX가 있으면 그 문항으로 옮기고 제출하지 않는다.
+    const missing = state.questions.map((q, i) => i).filter(i => state.questions[i].kind !== 'short' && !state.answers.some(a => a.question_id === state.questions[i].id));
+    if (missing.length) { await saveCurrentShort(); questionIndex = missing[0]; renderQuestion(); throw new Error(`${missing.map(i => state.questions[i].number || i + 1).join(', ')}번 문제를 풀어야 제출할 수 있습니다.`); }
+    if (!confirm('답안을 제출할까요? 제출 후에는 수정할 수 없습니다.')) return; await saveCurrentShort(); await api('/' + encodeURIComponent(examId) + '/submit', 'POST'); await studentExam(); notice('제출했습니다.'); });
   if (examId) run(async () => { if (params.get('mode') === 'teacher') await teacherExam(); else await studentExam(); });
   else if (params.get('mode') === 'teacher') run(teacherHome);
   // 메인 페이지에서 방번호만 넣고 오면 로그인한 학생은 등록된 학년·반·번호로 바로 입장한다.

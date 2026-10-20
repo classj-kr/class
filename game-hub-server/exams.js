@@ -262,6 +262,10 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     const e = await exam(req.params.id); const m = await member(req, e);
     if (m.submitted_at) return res.json({ ok: true });
     if (!active(e, m)) fail(403, 'TIME_OVER', m.started_at ? '응시 시간이 끝났습니다.' : '먼저 시작을 눌러 주세요.');
+    // 객관식·OX를 하나라도 안 풀었으면 제출하지 않는다. 단답형은 비워 둘 수 있다.
+    const answered = new Set((await pool.query('SELECT question_id FROM classroom_exam_answers WHERE member_id=$1', [m.id])).rows.map(a => a.question_id));
+    const missing = e.questions.map((q, i) => ({ q, n: q.number || i + 1 })).filter(({ q }) => q.kind !== 'short' && !answered.has(q.id)).map(({ n }) => n);
+    if (missing.length) fail(400, 'UNANSWERED', `${missing.join(', ')}번 문제를 풀어야 제출할 수 있습니다.`);
     await pool.query('UPDATE classroom_exam_members SET submitted_at=COALESCE(submitted_at,NOW()) WHERE id=$1', [m.id]);
     res.json({ ok: true });
   }));
