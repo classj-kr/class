@@ -19,7 +19,7 @@
     const serverDate = Date.parse(response.headers.get('Date') || '');
     if (Number.isFinite(serverDate)) serverOffset = serverDate - Date.now();
     const data = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(data.message || '요청을 처리하지 못했습니다.');
+    if (!response.ok) throw Object.assign(new Error(data.message || '요청을 처리하지 못했습니다.'), { code: data.code || data.error });
     return data;
   }
   async function run(fn) { try { notice(''); await fn(); } catch (error) { notice(error.message); } }
@@ -409,7 +409,11 @@
     if (value !== (state.answers.find(a => a.question_id === q.id)?.response || '')) await saveAnswer(q.id, { response: value });
   }
   $('joinCode').value = (params.get('code') || '').replace(/\D/g,'').slice(0,4);
-  async function join(code) { const result = await api('/join', 'POST', { code, grade: $('joinGrade').value, classNumber: $('joinClass').value, number: Number($('joinNumber').value), name: $('joinName').value }); setUrl(result.exam.id); await studentExam(); }
+  async function join(code) {
+    const result = await api('/join', 'POST', { code, grade: $('joinGrade').value, classNumber: $('joinClass').value, number: Number($('joinNumber').value), name: $('joinName').value });
+    if (result.teacher) { setUrl(result.exam.id, true); await teacherExam(); return; }
+    setUrl(result.exam.id); await studentExam();
+  }
   $('joinForm').onsubmit = event => { event.preventDefault(); run(() => join($('joinCode').value)); };
   $('newPdfs').onchange = () => { const files = $('newPdfs').files; run(() => uploadPdfs(files)).finally(() => { $('newPdfs').value = ''; }); };
   const zone = $('dropZone');
@@ -451,6 +455,9 @@
   if (examId) run(async () => { if (params.get('mode') === 'teacher') await teacherExam(); else await studentExam(); });
   else if (params.get('mode') === 'teacher') run(teacherHome);
   // 메인 페이지에서 방번호만 넣고 오면 로그인한 학생은 등록된 학년·반·번호로 바로 입장한다.
-  else if ($('joinCode').value.length === 4) join($('joinCode').value).catch(() => { show('joinView'); notice('학년·반·번호와 이름을 입력하고 입장해 주세요.'); });
+  // 로그인하지 않아 이름·번호가 없을 때만 입력 폼을 보인다. 그 밖의 실패는 이유만 알린다.
+  else if ($('joinCode').value.length === 4) join($('joinCode').value).catch(error => {
+    if (['INVALID_INPUT', 'INVALID_NUMBER', 'INVALID_SEAT'].includes(error.code)) show('joinView'); else notice(error.message);
+  });
   else show('joinView');
 })();
