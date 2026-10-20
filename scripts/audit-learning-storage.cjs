@@ -22,7 +22,7 @@ const rows = [
   ['arithmetics', '연산', '수리', 'memory', '일반 학습지는 React 메모리에서 답·채점 관리. 순위전은 별도 방 저장소', '일반 풀이용 서버 기록 필요. 생성 문제의 seed/버전·실제 문제·답을 함께 고정', ['arithmetics/app/arithmetic/add-subtract-1/page.tsx', 'arithmetics/app/components/arithmetic-race-controller.tsx', 'arithmetics/lib/arithmetic-race-store.ts']],
   ['math-ox', '수학 기초 OX', '수리', 'memory', '문항별 answeredState를 화면 메모리에만 유지', '문항 ID·학년·단원·선택 O/X·첫 시도·재시도와 현재 위치 저장', ['math-ox/app.js']],
   ['csat-math', '평가원·수능 기출', '수리', 'local', '문항별 right/wrong 상태만 기기에 저장', '학생이 고른 번호/입력값·실제 풀이 시각·시도 구분 필요', ['csat-math/app.js']],
-  ['metacognition', '학습 자기점검', '자기점검', 'mixed', '완료 결과는 PostgreSQL. 진행 중 응답·문항/선택지 순서와 최근 20결과는 기기에도 저장', '중간 저장·서버 이어하기·중복 제출 방지 필요. 기기 저장/다운로드 의존 제거', ['metacognition/app.js']]
+  ['metacognition', '학습 점검', '학습 점검', 'mixed', '완료 결과는 PostgreSQL. 진행 중 응답·문항/선택지 순서와 최근 20결과는 기기에도 저장', '중간 저장·서버 이어하기·중복 제출 방지 필요. 기기 저장/다운로드 의존 제거', ['metacognition/app.js']]
 ];
 const extras = [
   ['graph-studio', '그래프 스튜디오', '교사 수업 도구', 'supplement', '칠판 상태와 보관함을 기기에 저장', '문해·수리 학생 진입 17항목에는 없음. 학생 활동으로 사용할 경우 서버 작품 저장 대상으로 포함', ['graph-studio/app.js']]
@@ -76,8 +76,8 @@ const report = {
   importantFindings: [
     '현재 활성 활동 중 문항·진행 순서를 계정에서 읽어 기기간 이어가는 공통 구현은 확인되지 않음.',
     '비문학 reading-bank에는 pilot start/responses/submit와 응답 조회 구현이 별도로 있지만 현재 자습 app.js는 self-study GET만 사용. 기존 파일럿 API를 현재 자습 기록으로 오인하면 안 됨.',
-    '자기점검 studentContext는 classroom_students만 조회. school_students 명단만 있는 학생의 class_id가 비어 교사 요약에서 빠질 수 있어 공통 학생 식별부터 정리해야 함.',
-    '자기점검 mine 조회는 최근 20개 요약만 반환하며 응답·진행 중 데이터 복원 API가 아님. 학급 요약도 학생별 최신 1건 중심이라 기간 보고서에 그대로 쓸 수 없음.',
+    '학습 점검 studentContext는 classroom_students만 조회. school_students 명단만 있는 학생의 class_id가 비어 교사 요약에서 빠질 수 있어 공통 학생 식별부터 정리해야 함.',
+    '학습 점검 mine 조회는 최근 20개 요약만 반환하며 응답·진행 중 데이터 복원 API가 아님. 학급 요약도 학생별 최신 1건 중심이라 기간 보고서에 그대로 쓸 수 없음.',
     '연산 순위전은 Cloudflare D1 또는 서버 메모리(6시간 수명) 분기. 이름/참가자 토큰 기반 방 상태이며 일반 학습 기록·학생 계정 장기 이력이 아님.',
     '책 종류의 기기 저장 검색 결과 대부분은 언어/BGM 설정. 이를 읽기 진도·답안 저장으로 집계하지 않음.',
     '수업 순위전/멀티플레이 방 스냅샷이나 총점은 보고서용 문항별 학생 응답 이력을 대체하지 못함.',

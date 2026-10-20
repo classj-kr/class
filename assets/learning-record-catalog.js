@@ -19,7 +19,7 @@
     ['math-ox', '수리', '수학 기초 OX', 'math-ox/'],
     ['math-bank', '수리', '수학 문제', 'math-bank/'],
     ['csat-math', '수리', '수능 수학', 'csat-math/'],
-    ['metacognition', '자기점검', '학습 자기점검', 'metacognition/']
+    ['metacognition', '학습 점검', '학습 점검', 'metacognition/']
   ];
   const catalog = Object.freeze(rows.map(([id, domain, label, route]) => Object.freeze({
     id, domain, label, href: route.startsWith('/') ? route : base + route

@@ -1,5 +1,5 @@
 /*
- * 학습 자기점검 — 화면 흐름과 복습 기록
+ * 학습 점검 — 화면 흐름과 복습 기록
  *
  * 진행 중에는 정오 피드백을 절대 노출하지 않는다. 중간 피드백이 들어가면
  * 이후 문항의 확신도가 오염되어 캘리브레이션 지표가 성립하지 않는다.
@@ -11,7 +11,7 @@
   // window.METACOG_LEVEL_KEY를 지정해 둔다. 지정이 없으면(기존 index.html) 원래 값 그대로다.
   const ITEM_SET_VERSION = (typeof window !== "undefined" && window.METACOG_ITEM_SET_VERSION) || "metacog-v3";
 
-  const records = LearningRecords.create('metacognition', {label:'학습 자기점검'});
+  const records = LearningRecords.create('metacognition', {label:'학습 점검'});
   await records.ready;
   let saving = false;
   const items = METACOG_ITEMS;
@@ -682,11 +682,11 @@
 
   /* ── 초기화 ────────────────────────────────────────────── */
   el('qTotal').textContent = String(items.length);
-  const session = await records.start({contentKey:window.METACOG_LEVEL_KEY || 'common',title:'학습 자기점검'+(window.METACOG_LEVEL_KEY?' · '+window.METACOG_LEVEL_KEY:''),version:ITEM_SET_VERSION,checkpoint:checkpoint()});
+  const session = await records.start({contentKey:window.METACOG_LEVEL_KEY || 'common',title:'학습 점검'+(window.METACOG_LEVEL_KEY?' · '+window.METACOG_LEVEL_KEY:''),version:ITEM_SET_VERSION,checkpoint:checkpoint()});
   el("startBtn").disabled=false;
   const cp=session.checkpoint;
   if(validOrders(cp.orders)&&validItemOrder(cp.itemOrder)){
     state.responses=cp.responses;state.orders=cp.orders;state.itemOrder=cp.itemOrder;state.index=Math.min(cp.index,items.length-1);
-    if(cp.responses.some(isAnswered)){el('restoreNote').hidden=false;el('restoreNote').textContent='저장된 자기점검을 이어서 진행합니다.';}
+    if(cp.responses.some(isAnswered)){el('restoreNote').hidden=false;el('restoreNote').textContent='저장된 학습 점검을 이어서 진행합니다.';}
   }
 })();

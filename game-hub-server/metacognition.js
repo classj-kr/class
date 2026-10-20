@@ -98,14 +98,14 @@ function createMetacognition(options = {}) {
     router.use((req, res) => {
       res.status(503).json({
         error: "METACOGNITION_UNAVAILABLE",
-        message: "학습 자기점검이 잠시 준비 중입니다."
+        message: "학습 점검이 잠시 준비 중입니다."
       });
     });
     return {
       router,
       initialize: async () => {},
       normalizeResponses: () => {
-        throw new HttpError(503, "METACOGNITION_UNAVAILABLE", "학습 자기점검이 잠시 준비 중입니다.");
+        throw new HttpError(503, "METACOGNITION_UNAVAILABLE", "학습 점검이 잠시 준비 중입니다.");
       },
       available: false,
       loadError,
