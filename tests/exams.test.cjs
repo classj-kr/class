@@ -109,6 +109,8 @@ test('teacher creates an exam; students join, answer and are graded after server
     await request(path + '/answers/' + before.questions[0].id, 'PUT', { choice: 0 }, studentCookie, 403);
     assert.equal((await request(path, 'GET', undefined, studentCookie)).score, 2);
     assert.equal((await request(path)).members[0].score, 2);
+    // 교사는 학생별로 문항마다 무엇을 답했고 맞았는지 본다.
+    assert.deepEqual((await request(path)).members[0].answers.map(a => [a.choice, a.response, a.correct]), [[1, null, true], [null, '한 글.', true]]);
     // 늦게 온 학생은 자기가 시작한 때부터 시간을 잰다. 그 학생의 시간이 끝나면 더 답할 수 없다.
     const lateCookie = kid(101, 0, 0, 2);
     await request('/join', 'POST', { code: created.code }, lateCookie);
