@@ -182,9 +182,12 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
       const members = (await pool.query(`SELECT * FROM classroom_exam_members WHERE exam_id=$1
         ORDER BY grade NULLS FIRST, class_number NULLS FIRST, number`, [e.id])).rows;
       const answers = (await pool.query('SELECT member_id,question_id,choice,response FROM classroom_exam_answers WHERE exam_id=$1', [e.id])).rows;
-      return res.json({ exam: { ...publicExam(e), mine: Boolean(isOwner) }, questions: e.questions, members: members.map(m => ({ ...publicMember(e, m),
-        score: e.questions.filter(q => answers.some(a => a.member_id === m.id && a.question_id === q.id && matchesAnswer(q, a))).length,
-        answered: answers.filter(a => a.member_id === m.id).length })) });
+      // 학생마다 문항별로 무엇을 답했고 맞았는지 함께 보낸다(학생을 눌러 틀린 문항을 본다).
+      return res.json({ exam: { ...publicExam(e), mine: Boolean(isOwner) }, questions: e.questions, members: members.map(m => {
+        const mine = answers.filter(a => a.member_id === m.id);
+        const marked = e.questions.map(q => { const a = mine.find(x => x.question_id === q.id); return { questionId: q.id, choice: a?.choice ?? null, response: a?.response ?? null, correct: Boolean(a && matchesAnswer(q, a)) }; });
+        return { ...publicMember(e, m), score: marked.filter(a => a.correct).length, answered: mine.length, answers: marked };
+      }) });
     }
     const m = await member(req, e);
     const answers = (await pool.query('SELECT question_id,choice,response FROM classroom_exam_answers WHERE member_id=$1', [m.id])).rows;

@@ -324,6 +324,7 @@
     $('examHeading').textContent = e.title; $('examMeta').textContent = `방번호 ${e.code} · ${e.durationMinutes}분 · ${statusLabel(e)}`;
     $('readyNote').textContent = e.status === 'draft' && !e.ready ? '정답을 채워야 학생이 시작할 수 있습니다.' : '';
     $('editTitle').value = e.title; $('editDuration').value = e.durationMinutes; draft = structuredClone(state.questions); editQuestions();
+    $('paperView').hidden = e.status === 'draft'; if (e.status !== 'draft') renderPaper(state.questions);
     $('draftTools').hidden = e.status !== 'draft'; $('closeButton').hidden = e.status === 'closed' || (e.status === 'draft' && !e.ready); $('deleteButton').hidden = !e.mine;
     const audioUrl = '/api/exams/' + encodeURIComponent(e.id) + '/audio';
     $('teacherAudio').hidden = !e.hasAudio; if (!e.hasAudio) $('teacherAudio').removeAttribute('src'); else if (!$('teacherAudio').src.endsWith(audioUrl + '?v=' + e.audioVersion)) $('teacherAudio').src = audioUrl + '?v=' + e.audioVersion;
@@ -333,8 +334,49 @@
     if (!state.members.length) host.append(node('p', '아직 입장한 학생이 없습니다.'));
     else {
       const table = node('table'); const head = node('tr'); ['학년','반','번호','이름','답한 문항','점수','상태'].forEach(t => head.append(node('th', t))); table.append(head);
-      state.members.forEach(m => { const row = node('tr'); [m.grade ?? '-',m.classNumber ?? '-',m.number,m.name,`${m.answered}/${state.questions.length}`,`${m.score}/${state.questions.length}`,memberStatus(m)].forEach(t => row.append(node('td', String(t)))); table.append(row); }); host.append(table);
+      state.members.forEach(m => {
+        const row = node('tr', undefined, 'member-row'); row.title = '눌러서 문항별 답 보기';
+        [m.grade ?? '-',m.classNumber ?? '-',m.number,m.name,`${m.answered}/${state.questions.length}`,`${m.score}/${state.questions.length}`,memberStatus(m)].forEach(t => row.append(node('td', String(t))));
+        row.onclick = () => { table.querySelectorAll('tr').forEach(r => r.classList.toggle('selected', r === row)); showMemberAnswers(m); };
+        table.append(row);
+      }); host.append(table);
     }
+  }
+  // 학생 한 명의 문항별 답. 틀린 문항은 고른 답과 정답을 같이 보인다.
+  const answerText = (q, choice, response) => q.kind === 'short' ? (response || '') : choice === null || choice === undefined ? '' : q.kind === 'ox' ? ['O', 'X'][choice] : (CIRCLED[choice] || String(choice + 1));
+  function showMemberAnswers(m) {
+    const host = $('memberDetail'); host.replaceChildren();
+    const head = node('div', undefined, 'topline'); head.append(node('h3', `${m.grade ? `${m.grade}학년 ${m.classNumber}반 ` : ''}${m.number}번 ${m.name} · ${m.score}/${state.questions.length}점`));
+    const close = node('button', '닫기', 'secondary'); close.type = 'button'; close.onclick = () => { host.replaceChildren(); $('resultsTable').querySelectorAll('tr').forEach(r => r.classList.remove('selected')); }; head.append(close);
+    const grid = node('div', undefined, 'answer-grid');
+    state.questions.forEach((q, i) => {
+      const a = m.answers.find(x => x.questionId === q.id) || {}; const given = answerText(q, a.choice, a.response);
+      const cell = node('div', undefined, `answer-cell ${a.correct ? 'right' : given ? 'wrong' : 'blank'}`);
+      cell.append(node('strong', `${q.number || i + 1}번 ${a.correct ? '○' : given ? '✕' : '–'}`));
+      if (!a.correct) cell.append(node('span', given ? `${given} → 정답 ${answerText(q, q.answer, q.answer)}` : `안 함 · 정답 ${answerText(q, q.answer, q.answer)}`));
+      grid.append(cell);
+    });
+    host.append(head, grid); host.scrollIntoView({ block: 'nearest' });
+  }
+  // 시작한 시험은 고칠 수 없으니 교사에게 읽기 전용 시험지를 정답과 함께 보여 준다.
+  function renderPaper(questions) {
+    const host = $('paperList'); host.replaceChildren();
+    questions.forEach((q, i) => {
+      const box = node('div', undefined, 'paper-question');
+      const head = node('div', undefined, 'paper-head'); head.append(node('strong', `${q.number || i + 1}번`)); const text = node('div', undefined, 'paper-text'); mathText(text, q.content); head.append(text); box.append(head);
+      // 정답률은 시작한 학생 가운데 맞힌 학생 수로 센다.
+      const takers = state.members.filter(m => m.startedAt); const right = takers.filter(m => m.answers.some(a => a.questionId === q.id && a.correct)).length;
+      if (takers.length) box.append(node('p', `정답률 ${Math.round(right / takers.length * 100)}% (${right}/${takers.length}명)`, 'paper-rate'));
+      if (q.image) { const img = node('img', undefined, 'question-image'); img.src = imageUrl(q.image); img.alt = `${i + 1}번 그림`; box.append(img); }
+      if (q.kind === 'short') box.append(node('p', `정답: ${[q.answer, ...(q.aliases || [])].filter(Boolean).join(', ')}`, 'paper-answer'));
+      else {
+        const list = node('ol', undefined, 'paper-choices');
+        q.choices.forEach((choice, ci) => { const item = node('li', undefined, ci === q.answer ? 'correct' : ''); const label = node('span'); mathText(label, choice === CIRCLED[ci] ? choice : `${CIRCLED[ci] || ci + 1} ${choice}`); item.append(label); if (ci === q.answer) item.append(node('span', ' ✔ 정답', 'paper-answer')); list.append(item); });
+        box.append(list);
+      }
+      if (q.explanation) box.append(node('p', `해설: ${q.explanation}`, 'muted'));
+      host.append(box);
+    });
   }
   const timeOver = m => state.exam.status === 'closed' || (Boolean(m.deadline) && Date.now() + serverOffset >= Date.parse(m.deadline));
   function memberStatus(m) {
