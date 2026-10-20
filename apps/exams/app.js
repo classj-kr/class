@@ -218,7 +218,7 @@
   async function teacherHome() {
     show('teacherHome'); const data = await api('/mine'); homeExams = data.exams; const list = $('examList'); list.replaceChildren();
     if (!data.exams.length) list.append(node('p', '아직 만든 시험이 없습니다.'));
-    data.exams.forEach(e => {
+    [...data.exams].sort((a, b) => a.title.localeCompare(b.title, 'ko', { numeric: true })).forEach(e => {
       const row = node('div', undefined, 'exam-row'); const a = node('a', e.title); a.href = '?id=' + encodeURIComponent(e.id) + '&mode=teacher';
       row.append(a, node('span', `방번호 ${e.code} · ${e.questionCount}문항${e.hasAudio ? ' · 듣기' : ''} · ${statusLabel(e)}${e.mine ? ' · 내 시험' : e.ownerName ? ` · ${e.ownerName}` : ''}`, 'muted')); list.append(row);
     });
