@@ -44,7 +44,7 @@ const AUDIO_LOCAL = {
   '45': { file: 'flight-of-bumblebee.ogg', performer: 'US Army Band', license: '퍼블릭 도메인' },
   '46': { file: 'hungarian-rhapsody2.ogg', performer: 'Martha Goldstein(피아노)', license: 'CC BY-SA 2.0', revision: '398a95e7978f' },
   '47': { file: 'clair-de-lune.ogg', performer: 'Laurens Goedhart(피아노)', license: 'CC BY 3.0', revision: '2f7a1e833f4e' },
-  '50': {"file": "rhapsody-in-blue.ogg", "performer": "Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)", "license": "Public domain", "revision": "eeaacacbce60", "note": "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다. 피아노: Bramwell Tovey."},
+  '50': {"file": "rhapsody-in-blue.ogg", "performer": "Bramwell Tovey(피아노·지휘) · United States Marine Band(2018년)", "license": "Public domain", "revision": "eeaacacbce60", "note": "1924년 초연의 재즈 밴드 편성으로 연주한 2018년 실황입니다."},
 };
 
 const pieces = [
