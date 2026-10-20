@@ -410,7 +410,7 @@
   }
   $('joinCode').value = (params.get('code') || '').replace(/\D/g,'').slice(0,4);
   async function join(code) {
-    const result = await api('/join', 'POST', { code, grade: $('joinGrade').value, classNumber: $('joinClass').value, number: Number($('joinNumber').value), name: $('joinName').value });
+    const result = await api('/join', 'POST', { code });
     if (result.teacher) { setUrl(result.exam.id, true); await teacherExam(); return; }
     setUrl(result.exam.id); await studentExam();
   }
@@ -455,9 +455,7 @@
   if (examId) run(async () => { if (params.get('mode') === 'teacher') await teacherExam(); else await studentExam(); });
   else if (params.get('mode') === 'teacher') run(teacherHome);
   // 메인 페이지에서 방번호만 넣고 오면 로그인한 학생은 등록된 학년·반·번호로 바로 입장한다.
-  // 로그인하지 않아 이름·번호가 없을 때만 입력 폼을 보인다. 그 밖의 실패는 이유만 알린다.
-  else if ($('joinCode').value.length === 4) join($('joinCode').value).catch(error => {
-    if (['INVALID_INPUT', 'INVALID_NUMBER', 'INVALID_SEAT'].includes(error.code)) show('joinView'); else notice(error.message);
-  });
+  // 사이트는 로그인해야 들어오므로 방번호만으로 등록된 학생 정보로 입장한다.
+  else if ($('joinCode').value.length === 4) join($('joinCode').value).catch(error => notice(error.message));
   else show('joinView');
 })();
