@@ -16,13 +16,15 @@ test('official school affiliation distinguishes grade 1 at each level without gu
 });
 
 test('HTML identity uses the student membership or latest active teacher registration, including dual-role admins',async()=>{
- const resolve=({user,membership=null,teachers=[]})=>new Function('sessionUser','guestAccess','pool','databaseReady','studentMembership','teacherRegistrations','schoolDefaults',`${declaration('displayNameFor')};return displayNameFor;`)(async()=>user,()=>null,{},true,async()=>membership,async()=>teachers,schoolDefaults)({});
+ const resolve=({user,membership=null,teachers=[],timetable=[]})=>new Function('sessionUser','guestAccess','pool','databaseReady','studentMembership','teacherRegistrations','schoolDefaults',`${declaration('displayNameFor')};return displayNameFor;`)(async()=>user,()=>null,{query:async()=>({rows:timetable})},true,async()=>membership,async()=>teachers,schoolDefaults)({});
  for(const [name,expected] of [['가초등학교','elementary'],['가중학교','middle'],['가고등학교','high']]){
   assert.equal((await resolve({user:{role:'student'},membership:{studentName:'학생',schoolName:name,grade:1}})).schoolLevel,expected);
   assert.equal((await resolve({user:{role:'teacher'},teachers:[{teacher_name:'교사',school_name:name,grade:1,academic_year:2026}]})).schoolLevel,expected);
  }
  const admin=await resolve({user:{role:'admin'},teachers:[{teacher_name:'이전등록',school_name:'가초등학교',academic_year:2025},{teacher_name:'현재등록',school_name:'나고등학교',academic_year:2026}]});
  assert.equal(admin.schoolLevel,'high');assert.equal(admin.name,'현재등록');
+ const specialist=await resolve({user:{id:1,role:'teacher'},teachers:[{teacher_name:'전담',school_name:'가초등학교',academic_year:2026}],timetable:[{grade:3},{grade:6}]});
+ assert.equal(specialist.schoolGrade,6);
  assert.equal((await resolve({user:{name:'미등록',role:'user'}})).schoolLevel,undefined);
 });
 
@@ -49,4 +51,18 @@ test('server sends school context before the page scripts and escapes script del
  const html=inject('<html><head><script src="school-level.js"></script></head></html>',{name:'</script>',kind:'teacher',schoolLevel:'high',schoolGrade:2});
  assert.ok(html.indexOf('CLASS_SCHOOL_LEVEL="high"')<html.indexOf('src="school-level.js"'));
  assert.ok(html.includes('CLASS_SCHOOL_GRADE="2"'));assert.ok(!html.includes('NAME="</script>'));
+});
+
+test('teacher timetable default excludes other schools, teachers, years and empty assignments',async()=>{
+ const db=new PGlite();try{
+  await db.exec(`CREATE TABLE school_master_timetable(school_id int, teacher_user_id int, academic_year int, grade int, subject_name text);
+   INSERT INTO school_master_timetable VALUES
+   (1,1,2026,3,'음악'),(1,1,2026,5,'영어'),(2,1,2026,6,'영어'),
+   (1,2,2026,6,'영어'),(1,1,2025,6,'영어'),(1,1,2026,6,'');`);
+  const resolve=new Function('sessionUser','guestAccess','pool','databaseReady','studentMembership','teacherRegistrations','schoolDefaults',
+   `${declaration('displayNameFor')};return displayNameFor;`)(async()=>({id:1,role:'teacher'}),()=>null,
+    {query:(sql,args)=>db.query(sql,args)},true,async()=>null,
+    async()=>[{school_id:1,school_name:'가초등학교',teacher_name:'전담',academic_year:2026}],schoolDefaults);
+  assert.equal((await resolve({})).schoolGrade,5);
+ }finally{await db.close();}
 });

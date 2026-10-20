@@ -2033,7 +2033,15 @@ function createClassroomPlatform(options = {}) {
       if (membership?.studentName) return { name: membership.studentName, kind: "student", ...schoolDefaults(membership) };
       const registrations = (await teacherRegistrations(user)).sort((a, b) => Number(b.academic_year || 0) - Number(a.academic_year || 0));
       const registration = registrations[0];
-      if (registration?.teacher_name) return { name: registration.teacher_name, kind: "teacher", ...schoolDefaults(registration, registrations) };
+      if (registration?.teacher_name) {
+        const timetable = await pool.query(
+          `SELECT DISTINCT grade FROM school_master_timetable
+           WHERE school_id = $1 AND teacher_user_id = $2 AND academic_year = $3 AND subject_name <> ''`,
+          [registration.school_id, user.id, Number(registration.academic_year) || new Date().getFullYear()]
+        );
+        return { name: registration.teacher_name, kind: "teacher",
+          ...schoolDefaults({ ...registration, teaching_grades: timetable.rows.map(row => row.grade) }, registrations) };
+      }
     }
     return { name: String(user.name || user.displayName || "").trim(), kind: user.role || "user" };
   }
