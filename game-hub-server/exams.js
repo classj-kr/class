@@ -8,7 +8,15 @@ const uuid = () => crypto.randomUUID();
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const MAX_AUDIO_BYTES = 40 * 1024 * 1024;
 // ID3 태그로 시작하거나 MPEG 프레임 동기 비트로 시작하면 MP3로 본다.
-const isMp3 = data => data.length > 4 && (data.subarray(0, 3).toString('latin1') === 'ID3' || (data[0] === 0xff && (data[1] & 0xe0) === 0xe0));
+const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
+const MAX_IMAGES_PER_EXAM = 120;
+function imageType(data) {
+  if (data.length > 12 && data.subarray(0, 4).toString('latin1') === 'RIFF' && data.subarray(8, 12).toString('latin1') === 'WEBP') return 'image/webp';
+  if (data.length > 8 && data[0] === 0x89 && data.subarray(1, 4).toString('latin1') === 'PNG') return 'image/png';
+  if (data.length > 3 && data[0] === 0xff && data[1] === 0xd8 && data[2] === 0xff) return 'image/jpeg';
+  return null;
+}
+const isMp3 = data =>data.length > 4 && (data.subarray(0, 3).toString('latin1') === 'ID3' || (data[0] === 0xff && (data[1] & 0xe0) === 0xe0));
 
 function normalizeQuestions(input, { publish = false } = {}) {
   if (!Array.isArray(input) || input.length > 50 || (publish && !input.length)) throw new Error('문항은 1~50개여야 합니다.');
@@ -28,9 +36,20 @@ function normalizeQuestions(input, { publish = false } = {}) {
     const questionId = /^[a-f\d-]{36}$/i.test(raw.id || '') ? raw.id : uuid();
     if (ids.has(questionId)) throw new Error('문항 ID가 중복되었습니다.');
     ids.add(questionId);
+    const image = /^[a-f\d-]{36}$/i.test(raw.image || '') ? raw.image : null;
     return { id: questionId, kind, content, choices: choices.map(v => String(v).trim()), answer, aliases,
-      explanation: String(raw.explanation || '').trim().slice(0, 1000) };
+      explanation: String(raw.explanation || '').trim().slice(0, 1000), image };
   });
+}
+
+// AI가 알려 준 그림 위치. page는 1부터, box는 [ymin,xmin,ymax,xmax]를 0~1000으로 본 좌표.
+function cleanFigure(figure) {
+  const page = Number(figure?.page);
+  const box = Array.isArray(figure?.box) ? figure.box.map(Number) : [];
+  if (!Number.isInteger(page) || page < 1 || page > 500 || box.length !== 4 || box.some(v => !Number.isFinite(v))) return null;
+  const [y0, x0, y1, x1] = box.map(v => Math.min(1000, Math.max(0, v)));
+  if (y1 - y0 < 10 || x1 - x0 < 10) return null;
+  return { page, box: [y0, x0, y1, x1] };
 }
 
 function matchesAnswer(question, answer) {
@@ -51,7 +70,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   };
   async function initialize() {
     if (!pool) return;
-    for (const file of ['014-exams.sql', '015-exam-school.sql', '016-exam-audio.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
+    for (const file of ['014-exams.sql', '015-exam-school.sql', '016-exam-audio.sql', '017-exam-images.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
   }
   async function exam(id, lock = false, db = pool) {
     const row = (await db.query(`SELECT * FROM classroom_exams WHERE id=$1${lock ? ' FOR UPDATE' : ''}`, [id])).rows[0];
@@ -181,6 +200,9 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     const result = await pool.query(`UPDATE classroom_exams SET title=$2,duration_minutes=$3,questions=$4::jsonb WHERE id=$1 AND status='draft' RETURNING id`,
       [e.id, title, duration, JSON.stringify(questions)]);
     if (!result.rowCount) fail(409, 'EXAM_STARTED', '시작한 시험은 수정할 수 없습니다.');
+    // 어느 문항에서도 쓰지 않는 그림은 지운다.
+    const used = questions.map(q => q.image).filter(Boolean);
+    await pool.query('DELETE FROM classroom_exam_images WHERE exam_id=$1 AND NOT (id = ANY($2::text[]))', [e.id, used]);
     res.json({ questions });
   }));
   router.post('/:id/start', asyncRoute(async (req, res) => {
@@ -222,6 +244,33 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     await pool.query('UPDATE classroom_exam_members SET submitted_at=COALESCE(submitted_at,NOW()) WHERE id=$1', [m.id]);
     res.json({ ok: true });
   }));
+  // 음원·그림은 같은 학교 교사가 언제나, 입장한 학생은 시험이 열린 뒤에 본다.
+  async function viewer(req, e) {
+    const user = await sessionUser(req);
+    if (user && (String(user.id) === String(e.owner_id) || sameSchool(await teacherSchool(user), e))) return;
+    await member(req, e);
+    if (e.status === 'draft') fail(403, 'EXAM_NOT_STARTED', '시험이 시작되면 볼 수 있습니다.');
+  }
+  // 문항 그림. 올리면 id를 돌려주고, 문항의 image 칸에 그 id를 넣어 저장한다.
+  router.post('/:id/images', express.raw({ type: () => true, limit: MAX_IMAGE_BYTES }), asyncRoute(async (req, res) => {
+    const e = await exam(req.params.id); await manager(req, e);
+    if (e.status !== 'draft') fail(409, 'EXAM_STARTED', '시작한 시험은 수정할 수 없습니다.');
+    const mime = Buffer.isBuffer(req.body) ? imageType(req.body) : null;
+    if (!mime) fail(400, 'INVALID_IMAGE', 'WebP·PNG·JPG 그림만 올릴 수 있습니다.');
+    const count = (await pool.query('SELECT COUNT(*)::int AS count FROM classroom_exam_images WHERE exam_id=$1', [e.id])).rows[0].count;
+    if (count >= MAX_IMAGES_PER_EXAM) fail(409, 'IMAGE_LIMIT', `그림은 시험당 ${MAX_IMAGES_PER_EXAM}개까지 넣을 수 있습니다.`);
+    const id = uuid();
+    await pool.query('INSERT INTO classroom_exam_images(id,exam_id,mime,data) VALUES($1,$2,$3,$4)', [id, e.id, mime, req.body]);
+    res.status(201).json({ id });
+  }));
+  router.get('/:id/images/:imageId', asyncRoute(async (req, res) => {
+    const e = await exam(req.params.id);
+    await viewer(req, e);
+    const row = (await pool.query('SELECT mime,data FROM classroom_exam_images WHERE id=$1 AND exam_id=$2', [req.params.imageId, e.id])).rows[0];
+    if (!row) fail(404, 'IMAGE_NOT_FOUND', '그림을 찾을 수 없습니다.');
+    // id마다 내용이 바뀌지 않으므로 기기에 저장해 두고 다시 받지 않는다.
+    res.set({ 'Content-Type': row.mime, 'Cache-Control': 'private, max-age=86400, immutable' }).end(Buffer.from(row.data));
+  }));
   // 듣기 음원. 시험당 MP3 하나를 준비 중에만 바꾼다. 학생은 시험이 열린 뒤 자유롭게 듣는다.
   router.put('/:id/audio', express.raw({ type: () => true, limit: MAX_AUDIO_BYTES }), asyncRoute(async (req, res) => {
     const e = await exam(req.params.id); await manager(req, e);
@@ -251,12 +300,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   // 재생 위치 이동이 되도록 Range 요청에 필요한 부분만 읽어 보낸다.
   router.get('/:id/audio', asyncRoute(async (req, res) => {
     const e = await exam(req.params.id);
-    const user = await sessionUser(req);
-    const staff = user && (String(user.id) === String(e.owner_id) || sameSchool(await teacherSchool(user), e));
-    if (!staff) {
-      await member(req, e);
-      if (e.status === 'draft') fail(403, 'EXAM_NOT_STARTED', '시험이 시작되면 들을 수 있습니다.');
-    }
+    await viewer(req, e);
     const size = Number(e.audio_bytes) || 0;
     if (!size) fail(404, 'AUDIO_NOT_FOUND', '듣기 음원이 없습니다.');
     let start = 0, end = size - 1;
@@ -280,4 +324,4 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   return { router, initialize };
 }
 
-module.exports = { createExams, normalizeQuestions, matchesAnswer };
+module.exports = { createExams, normalizeQuestions, matchesAnswer, cleanFigure };

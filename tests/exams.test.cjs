@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const express = require('../game-hub-server/node_modules/express');
 const { PGlite } = require('../game-hub-server/node_modules/@electric-sql/pglite');
-const { createExams, normalizeQuestions, matchesAnswer } = require('../game-hub-server/exams');
+const { createExams, normalizeQuestions, matchesAnswer, cleanFigure } = require('../game-hub-server/exams');
 const { createRoomCodes } = require('../game-hub-server/room-codes');
 const { createRoomEntry } = require('../game-hub-server/room-entry');
 
@@ -12,6 +12,14 @@ test('question validation and short answer aliases', () => {
   assert.ok(matchesAnswer(q, { response: '다른답' }));
   assert.equal(matchesAnswer(q, { response: '엉뚱한 답' }), false);
   assert.throws(() => normalizeQuestions([{ kind: 'short', content: '문제', answer: '' }], { publish: true }));
+});
+
+test('figure locations from the AI are clamped or dropped', () => {
+  assert.deepEqual(cleanFigure({ page: 2, box: [100, -5, 400, 1200] }), { page: 2, box: [100, 0, 400, 1000] });
+  assert.equal(cleanFigure({ page: 0, box: [0, 0, 500, 500] }), null);
+  assert.equal(cleanFigure({ page: 1, box: [100, 100, 102, 400] }), null, 'too thin');
+  assert.equal(cleanFigure({ page: 1, box: [1, 2, 3] }), null);
+  assert.equal(cleanFigure(null), null);
 });
 
 test('teacher creates an exam; students join, answer and are graded after server deadline', async () => {
@@ -116,7 +124,22 @@ test('teacher creates an exam; students join, answer and are graded after server
     assert.equal((await request('/' + shared.id + '?mode=teacher', 'GET', undefined, colleague)).exam.hasAudio, true);
     assert.equal((await fetch(audioUrl, { headers: { Cookie: ga.cookie } })).status, 403, 'not before the exam opens');
     assert.equal((await fetch(audioUrl)).status, 401, 'outsiders cannot listen');
+    // 문항 그림: 올린 id를 문항에 넣어 저장하고, 쓰지 않는 그림은 저장할 때 지운다.
+    const webp = Buffer.concat([Buffer.from('RIFF'), Buffer.alloc(4), Buffer.from('WEBP'), Buffer.alloc(20, 1)]);
+    const postImage = (body, cookie) => fetch(base + '/api/exams/' + shared.id + '/images', { method: 'POST', headers: { 'Content-Type': 'image/webp', Cookie: cookie }, body });
+    assert.equal((await postImage(Buffer.from('<svg/>'), colleague)).status, 400);
+    assert.equal((await postImage(webp, outsider)).status, 403);
+    const kept = (await (await postImage(webp, colleague)).json()).id;
+    const orphan = (await (await postImage(webp, colleague)).json()).id;
+    const imageUrl = imageId => base + '/api/exams/' + shared.id + '/images/' + imageId;
+    await request('/' + shared.id, 'PUT', { title: '학교 공통 진단', durationMinutes: 40, questions: [{ ...questions[0], image: kept }, questions[1]] }, colleague);
+    assert.equal((await fetch(imageUrl(orphan), { headers: { Cookie: colleague } })).status, 404, 'unused images are removed on save');
+    assert.equal((await fetch(imageUrl(kept), { headers: { Cookie: ga.cookie } })).status, 403, 'students see images once the exam opens');
     await request('/' + shared.id + '/start', 'POST', {}, colleague);
+    const picture = await fetch(imageUrl(kept), { headers: { Cookie: ga.cookie } });
+    assert.equal(picture.status, 200); assert.equal(picture.headers.get('content-type'), 'image/webp');
+    assert.deepEqual(Buffer.from(await picture.arrayBuffer()), webp);
+    assert.equal((await request('/' + shared.id, 'GET', undefined, ga.cookie)).questions[0].image, kept);
     const whole = await fetch(audioUrl, { headers: { Cookie: ga.cookie } });
     assert.equal(whole.status, 200); assert.equal(whole.headers.get('content-type'), 'audio/mpeg');
     assert.deepEqual(Buffer.from(await whole.arrayBuffer()), mp3);
