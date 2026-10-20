@@ -1653,10 +1653,15 @@ function createClassroomPlatform(options = {}) {
     pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute,
     allocateRoomCode: db => roomCodes.allocate('exam', db),
     failureLimiter: createAuthenticationFailureLimiter(),
+    async teacherSchool(user) {
+      const registration = await teacherRegistration(user);
+      return registration ? { schoolId: registration.school_id, name: registration.teacher_name } : null;
+    },
     async joinIdentity(req, user) {
       if (user) {
         const membership = await studentMembership(user.id);
-        return { name: membership?.studentName || user.name || user.displayName, number: membership?.studentNumber };
+        return { name: membership?.studentName || user.name || user.displayName, number: membership?.studentNumber,
+          schoolId: membership?.schoolId, grade: membership?.grade, classNumber: membership?.classNumber };
       }
       const guest = guestAccess(req);
       return guest ? { name: guest.name } : null;
@@ -1784,14 +1789,14 @@ function createClassroomPlatform(options = {}) {
       const result = await pool.query(
         `SELECT s.student_number::TEXT AS student_number, s.roster_name,
                 s.academic_year, s.grade, s.class_number,
-                sc.name AS school_name
+                sc.name AS school_name, sc.id AS school_id
          FROM school_students s
          JOIN classroom_schools sc ON sc.id = s.school_id
          WHERE s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1))
          UNION ALL
          SELECT s.student_number::TEXT AS student_number, s.roster_name,
                 c.academic_year, c.grade, c.class_number,
-                sc.name AS school_name
+                sc.name AS school_name, sc.id AS school_id
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          JOIN classroom_schools sc ON sc.id = c.school_id
@@ -1806,6 +1811,7 @@ function createClassroomPlatform(options = {}) {
         studentName: row.roster_name,
         name: row.roster_name,
         schoolName: row.school_name,
+        schoolId: row.school_id,
         academicYear: row.academic_year,
         grade: row.grade,
         classNumber: row.class_number

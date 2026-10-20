@@ -37,7 +37,8 @@ function matchesAnswer(question, answer) {
   return Boolean(given) && [question.answer, ...(question.aliases || [])].some(value => normalize(value) === given);
 }
 
-function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, allocateRoomCode, joinIdentity = async () => null, failureLimiter }) {
+// teacherSchool(user) → { schoolId, name } | null. 같은 학교 교사는 서로의 시험을 보고 운영한다.
+function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, allocateRoomCode, joinIdentity = async () => null, teacherSchool = async () => null, failureLimiter }) {
   const router = express.Router();
   const fail = (status, code, message) => { throw new HttpError(status, code, message); };
   const clean = (value, max, required = false) => {
@@ -46,16 +47,21 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     return s;
   };
   async function initialize() {
-    if (pool) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations/014-exams.sql'), 'utf8'));
+    if (!pool) return;
+    for (const file of ['014-exams.sql', '015-exam-school.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
   }
   async function exam(id, lock = false, db = pool) {
     const row = (await db.query(`SELECT * FROM classroom_exams WHERE id=$1${lock ? ' FOR UPDATE' : ''}`, [id])).rows[0];
     if (!row) fail(404, 'EXAM_NOT_FOUND', '시험을 찾을 수 없습니다.');
     return row;
   }
-  async function owner(req, e) {
+  const sameSchool = (school, e) => Boolean(school?.schoolId && e.school_id && String(school.schoolId) === String(e.school_id));
+  // 만든 교사와 같은 학교 교사 모두 운영할 수 있다. 삭제는 만든 교사만 한다.
+  async function manager(req, e, { ownerOnly = false } = {}) {
     const user = await requireTeacher(req);
-    if (String(user.id) !== String(e.owner_id)) fail(403, 'OWNER_REQUIRED', '시험을 만든 선생님만 관리할 수 있습니다.');
+    const isOwner = String(user.id) === String(e.owner_id);
+    if (ownerOnly && !isOwner) fail(403, 'OWNER_REQUIRED', '시험을 만든 선생님만 삭제할 수 있습니다.');
+    if (!isOwner && !sameSchool(await teacherSchool(user), e)) fail(403, 'SCHOOL_REQUIRED', '같은 학교 선생님만 관리할 수 있습니다.');
     return user;
   }
   async function member(req, e, db = pool) {
@@ -68,18 +74,22 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     return row;
   }
   const publicExam = e => ({ id: e.id, code: e.code.trim(), title: e.title, durationMinutes: e.duration_minutes,
-    status: e.status, startedAt: e.started_at, deadline: e.started_at ? new Date(new Date(e.started_at).getTime() + e.duration_minutes * 60000).toISOString() : null });
+    status: e.status, startedAt: e.started_at, ownerName: e.owner_name || '', deadline: e.started_at ? new Date(new Date(e.started_at).getTime() + e.duration_minutes * 60000).toISOString() : null });
   const active = e => e.status === 'open' && e.started_at && Date.now() < new Date(e.started_at).getTime() + e.duration_minutes * 60000;
   const studentQuestions = questions => questions.map(({ answer, aliases, explanation, ...q }) => q);
   router.use((_req, res, next) => { requireDatabase(); res.set('Cache-Control', 'no-store'); next(); });
 
   router.get('/mine', asyncRoute(async (req, res) => {
     const user = await requireTeacher(req);
-    const rows = (await pool.query('SELECT * FROM classroom_exams WHERE owner_id=$1 ORDER BY created_at DESC', [user.id])).rows;
-    res.json({ exams: rows.map(publicExam) });
+    const school = await teacherSchool(user);
+    const rows = (await pool.query(`SELECT * FROM classroom_exams WHERE owner_id=$1 OR (school_id IS NOT NULL AND school_id=$2)
+      ORDER BY created_at DESC LIMIT 500`, [user.id, school?.schoolId || null])).rows;
+    res.json({ exams: rows.map(e => ({ ...publicExam(e), mine: String(e.owner_id) === String(user.id),
+      questionCount: Array.isArray(e.questions) ? e.questions.length : 0 })) });
   }));
   router.post('/', asyncRoute(async (req, res) => {
     const user = await requireTeacher(req);
+    const school = await teacherSchool(user);
     const title = clean(req.body?.title, 80, true);
     const duration = Number(req.body?.durationMinutes);
     if (!Number.isInteger(duration) || duration < 1 || duration > 180) fail(400, 'INVALID_DURATION', '제한시간은 1~180분으로 정해 주세요.');
@@ -87,10 +97,11 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     try {
       await db.query('BEGIN');
       const count = (await db.query('SELECT COUNT(*)::int AS count FROM classroom_exams WHERE owner_id=$1', [user.id])).rows[0].count;
-      if (count >= 50) fail(409, 'EXAM_LIMIT', '시험은 50개까지 만들 수 있습니다.');
+      if (count >= 100) fail(409, 'EXAM_LIMIT', '시험은 100개까지 만들 수 있습니다. 끝난 시험을 정리해 주세요.');
       const code = await allocateRoomCode(db);
       const id = uuid();
-      await db.query('INSERT INTO classroom_exams(id,owner_id,code,title,duration_minutes) VALUES($1,$2,$3,$4,$5)', [id, user.id, code, title, duration]);
+      await db.query('INSERT INTO classroom_exams(id,owner_id,code,title,duration_minutes,school_id,owner_name) VALUES($1,$2,$3,$4,$5,$6,$7)',
+        [id, user.id, code, title, duration, school?.schoolId || null, school?.name || user.name || null]);
       await db.query('COMMIT');
       res.status(201).json({ id, code });
     } catch (error) { await db.query('ROLLBACK'); throw error; } finally { db.release(); }
@@ -104,6 +115,15 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     const name = clean(identity?.name || req.body?.name, 80, true);
     const number = Number(identity?.number || req.body?.number);
     if (!Number.isInteger(number) || number < 1 || number > 60) fail(400, 'INVALID_NUMBER', '학생 번호를 1~60 사이로 입력해 주세요.');
+    // 학교 전체가 한 시험에 들어오므로 학년·반으로 자리를 나눈다. 비워 두면 학년·반 없이 번호만 쓴다.
+    const seat = (value, max, label) => {
+      if (value === undefined || value === null || value === '') return null;
+      const n = Number(value);
+      if (!Number.isInteger(n) || n < 1 || n > max) fail(400, 'INVALID_SEAT', `${label}을 확인해 주세요.`);
+      return n;
+    };
+    const grade = seat(identity ? identity.grade : req.body?.grade, 12, '학년');
+    const classNumber = seat(identity ? identity.classNumber : req.body?.classNumber, 30, '반');
     const db = await pool.connect();
     try {
       await db.query('BEGIN');
@@ -115,10 +135,10 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
       if (!m) {
         if (e.status === 'closed' || (e.status === 'open' && !active(e))) fail(403, 'EXAM_CLOSED', '시험이 종료되었습니다.');
         const fresh = crypto.randomBytes(32).toString('hex');
-        const result = await db.query(`INSERT INTO classroom_exam_members(id,exam_id,number,name,user_id,token_hash)
-          VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(exam_id,number) DO NOTHING RETURNING *`,
-          [uuid(), e.id, number, name, user?.id || null, hash(fresh)]);
-        if (!result.rowCount) fail(409, 'NUMBER_TAKEN', '이미 참여한 번호입니다. 원래 기기로 접속해 주세요.');
+        const result = await db.query(`INSERT INTO classroom_exam_members(id,exam_id,number,name,user_id,token_hash,grade,class_number)
+          VALUES($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT DO NOTHING RETURNING *`,
+          [uuid(), e.id, number, name, user?.id || null, hash(fresh), grade, classNumber]);
+        if (!result.rowCount) fail(409, 'NUMBER_TAKEN', '이미 참여한 학년·반·번호입니다. 원래 기기로 접속해 주세요.');
         m = result.rows[0];
         res.cookie(`exam_${e.id}`, fresh, { httpOnly: true, sameSite: 'strict', secure: req.secure, path: '/api/exams', maxAge: 86400000 });
       }
@@ -129,12 +149,15 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   router.get('/:id', asyncRoute(async (req, res) => {
     const e = await exam(req.params.id);
     const user = await sessionUser(req);
-    const teacher = user && String(user.id) === String(e.owner_id);
+    const isOwner = user && String(user.id) === String(e.owner_id);
+    const teacher = isOwner || (user && req.query.mode === 'teacher' && sameSchool(await teacherSchool(user), e));
     if (teacher) {
       await requireTeacher(req);
-      const members = (await pool.query('SELECT id,number,name,submitted_at FROM classroom_exam_members WHERE exam_id=$1 ORDER BY number', [e.id])).rows;
+      const members = (await pool.query(`SELECT id,number,name,grade,class_number,submitted_at FROM classroom_exam_members WHERE exam_id=$1
+        ORDER BY grade NULLS FIRST, class_number NULLS FIRST, number`, [e.id])).rows;
       const answers = (await pool.query('SELECT member_id,question_id,choice,response FROM classroom_exam_answers WHERE exam_id=$1', [e.id])).rows;
-      return res.json({ exam: publicExam(e), questions: e.questions, members: members.map(m => ({ number: m.number, name: m.name,
+      return res.json({ exam: { ...publicExam(e), mine: Boolean(isOwner) }, questions: e.questions, members: members.map(m => ({ number: m.number, name: m.name,
+        grade: m.grade, classNumber: m.class_number,
         submittedAt: m.submitted_at, score: e.questions.filter(q => answers.some(a => a.member_id === m.id && a.question_id === q.id && matchesAnswer(q, a))).length,
         answered: answers.filter(a => a.member_id === m.id).length })) });
     }
@@ -146,7 +169,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
       questions: e.status === 'draft' ? [] : studentQuestions(e.questions), answers });
   }));
   router.put('/:id', asyncRoute(async (req, res) => {
-    const e = await exam(req.params.id); await owner(req, e);
+    const e = await exam(req.params.id); await manager(req, e);
     let questions;
     try { questions = normalizeQuestions(req.body?.questions || []); } catch (error) { fail(400, 'INVALID_QUESTIONS', error.message); }
     const title = clean(req.body?.title, 80, true);
@@ -158,14 +181,14 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     res.json({ questions });
   }));
   router.post('/:id/start', asyncRoute(async (req, res) => {
-    const e = await exam(req.params.id); await owner(req, e);
+    const e = await exam(req.params.id); await manager(req, e);
     try { normalizeQuestions(e.questions, { publish: true }); } catch (error) { fail(400, 'INVALID_QUESTIONS', error.message); }
     const result = await pool.query(`UPDATE classroom_exams SET status='open',started_at=NOW() WHERE id=$1 AND status='draft' RETURNING *`, [e.id]);
     if (!result.rowCount) fail(409, 'EXAM_STARTED', '이미 시작한 시험입니다.');
     res.json({ exam: publicExam(result.rows[0]) });
   }));
   router.post('/:id/close', asyncRoute(async (req, res) => {
-    const e = await exam(req.params.id); await owner(req, e);
+    const e = await exam(req.params.id); await manager(req, e);
     await pool.query(`UPDATE classroom_exams SET status='closed' WHERE id=$1 AND status='open'`, [e.id]);
     res.json({ ok: true });
   }));
@@ -197,7 +220,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     res.json({ ok: true });
   }));
   router.delete('/:id', asyncRoute(async (req, res) => {
-    const e = await exam(req.params.id); await owner(req, e);
+    const e = await exam(req.params.id); await manager(req, e, { ownerOnly: true });
     await pool.query('DELETE FROM classroom_exams WHERE id=$1', [e.id]);
     res.json({ ok: true });
   }));
