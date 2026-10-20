@@ -427,8 +427,8 @@
   function renderQuestion() {
     const questions = state.questions; if (!questions.length) return;
     const q = questions[questionIndex]; const saved = state.answers.find(a => a.question_id === q.id);
-    const nav = node('div', undefined, 'question-nav'); questions.forEach((item, i) => { const b = node('button', String(i + 1), state.answers.some(a => a.question_id === item.id) ? 'answered' : 'secondary'); b.type = 'button'; b.onclick = () => run(async () => { await saveCurrentShort(); questionIndex = i; renderQuestion(); }); nav.append(b); });
-    $('progress').replaceChildren(nav, node('p', `${questionIndex + 1} / ${questions.length}`)); mathText($('questionText'), q.content);
+    const nav = node('div', undefined, 'question-nav'); questions.forEach((item, i) => { const b = node('button', String(i + 1), `${state.answers.some(a => a.question_id === item.id) ? 'answered' : 'secondary'}${i === questionIndex ? ' current' : ''}`); b.type = 'button'; b.onclick = () => run(async () => { await saveCurrentShort(); questionIndex = i; renderQuestion(); }); nav.append(b); });
+    $('progress').replaceChildren(nav); mathText($('questionText'), q.content);
     const picture = $('questionImage'); picture.hidden = !q.image;
     if (q.image) { picture.src = imageUrl(q.image); picture.alt = `${questionIndex + 1}번 문항 그림`; } else picture.removeAttribute('src');
     const area = $('answerArea'); area.replaceChildren(); const locked = deadlinePassed() || Boolean(state.member.submittedAt);
