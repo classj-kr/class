@@ -84,7 +84,7 @@
   const cutAngle = (L, k) => { let lo = 8, hi = 51.8; for (let i = 0; i < 60; i += 1) { const m = (lo + hi) / 2; if (L * Math.cos(m * RAD) * Math.tan(m * RAD / 2) < k) lo = m; else hi = m; } return (lo + hi) / 2; };
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: ISO,
+    id: 'hard', title: '단원 종합', standard: ISO,
     types: [
       // ── ① 문제의 그림·말·수에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-trapezoid', '사다리꼴 안의 두 이등변삼각형', '심13', (d) => {

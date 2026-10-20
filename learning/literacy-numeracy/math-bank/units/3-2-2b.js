@@ -33,7 +33,7 @@
   const down2 = (d, ok) => d.until(() => [d.int(32, 98), d.int(2, 8)], ([a, b]) => a % b === 0 && a % 10 !== 0 && Math.floor(a / 10) % b !== 0 && Math.floor(a / 10) > b && (!ok || ok(a, b)));
 
   B.addGroup('3-2-2', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-rem', '나머지가 나누는 수보다 큰 계산', '세로셈 고치기: 나머지가 나누는 수보다 큼(심화 58), 나눗셈식을 두고 한 말의 참·거짓(심화 34)', (d) => {
         // 47÷6 = 6 … 11 이라고 한 계산

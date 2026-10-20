@@ -129,7 +129,7 @@ const UNIT = '1-1-1';
     assert.equal(await page.locator('#finish').isHidden(), true, '해결하지 않은 오답이 남으면 회차를 완료하지 않는다');
     assert.deepEqual(await statusOf(page, firstKey), ['active']);
     await solve(page, items[0]);
-    assert.match(await wrongCard.locator('.mb-result').innerText(), /처음 풀이의 오답 기록은 유지/);
+    assert.match(await wrongCard.locator('.mb-result').innerText(), /다시 풀어 맞혔어요/);
     await page.locator('#finish:not([hidden])').waitFor();
     assert.match(await page.locator('#finish').innerText(), new RegExp(items.length + '문항 중 ' + (items.length - 1) + '문항 정답'));
     assert.deepEqual(await statusOf(page, firstKey), ['completed']);
@@ -140,6 +140,7 @@ const UNIT = '1-1-1';
     assert.equal(savedSession.summary.hints, 1, '자동 표시한 힌트도 기록한다');
     assert.equal(savedSession.checkpoint.answers[items[0].key].firstOk, false);
     assert.equal(savedSession.checkpoint.answers[items[0].key].hinted, true);
+    assert.doesNotMatch(await page.locator('#main').innerText(), /오답으로 기록|오답 기록.*유지|처음 풀이 기준/);
     if (SHOTS) await shot(page, '0-finished');
 
     // 다시 풀기: 같은 문제가 빈 채로 다시 열리고 새 기록이 생긴다.

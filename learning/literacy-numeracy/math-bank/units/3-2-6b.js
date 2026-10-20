@@ -32,7 +32,7 @@
   const facts = (values, more) => Object.assign({ picto: { shown: values }, unseen: values.filter((v) => v !== null) }, more || {});
 
   B.addGroup('3-2-6', {
-    id: 'hard', title: '실력 문제', standard: DATA,
+    id: 'hard', title: '단원 종합', standard: DATA,
     types: [
       H('h-symbols', '그림의 수와 나타내는 수', '그림 개수에 속지 않고 견주기(심화 31)', (d) => {
         // 큰 그림 3개(30)가 큰 그림 1개와 작은 그림 9개(19)보다 많다

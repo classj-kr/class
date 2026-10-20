@@ -386,7 +386,7 @@
   }
 
   B.addGroup('4-1-4', {
-    id: 'hard', title: '실력 문제', standard: SIDE,
+    id: 'hard', title: '단원 종합', standard: SIDE,
     types: [
       H('hard-same-angles', '돌려 놓은 이등변삼각형에서 크기가 같은 두 각', '기본 ①15 ②23', (d) => {
         // 「아래에 놓인 두 각이 같다」고 여기면 길이가 같은 두 변 사이의 각을 고른다.

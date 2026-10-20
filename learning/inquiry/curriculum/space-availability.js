@@ -9,7 +9,9 @@
     window.SpaceAvailability = {supports};
     const params = new URLSearchParams(location.search);
     const topic = params.get('topic');
-    const initial = params.get('school') || 'middle';
+    const levels = ['elementary', 'middle', 'high'];
+    const requested = params.get('school');
+    const initial = levels.includes(requested) ? requested : levels.includes(window.CLASS_SCHOOL_LEVEL) ? window.CLASS_SCHOOL_LEVEL : 'middle';
     function route(level) {
         if (topic && !supports(topic, level)) {
             document.documentElement.hidden = true;

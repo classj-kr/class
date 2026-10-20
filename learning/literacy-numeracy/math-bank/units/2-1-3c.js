@@ -32,7 +32,7 @@
   const given = (html) => numbers([html]);
 
   B.addGroup('2-1-3', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       // ── ① 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('h-round-add', '몇십으로 보고 더한 계산 바로잡기', '심9 ①27', (d) => {

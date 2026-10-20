@@ -311,5 +311,5 @@
   // 계수 배열에 상수 더하기
   function aAddC(p, c) { const o = p.slice(); o[0] = Q(o[0].p * 1 + c * o[0].q, o[0].q); return o; }
 
-  B.addGroup(UNIT, { id: 'hard', title: '실력 문제', standard: S1, types: hardTypes });
+  B.addGroup(UNIT, { id: 'hard', title: '단원 종합', standard: S1, types: hardTypes });
 })(typeof window !== 'undefined' ? window : globalThis);

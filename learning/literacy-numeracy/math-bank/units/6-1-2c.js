@@ -54,7 +54,7 @@
   const RULE = { prism: { face: '한 밑면의 변의 수보다 2 큰 수', edge: '한 밑면의 변의 수의 3배', vert: '한 밑면의 변의 수의 2배' }, pyramid: { face: '밑면의 변의 수보다 1 큰 수', edge: '밑면의 변의 수의 2배', vert: '밑면의 변의 수보다 1 큰 수' } };
 
   B.addGroup('6-1-2', {
-    id: 'hard', title: '실력 문제', standard: SOLID,
+    id: 'hard', title: '단원 종합', standard: SOLID,
     types: [
       // ── ① 그림·상황에 함정이 있는 문제 ──
       H('hard-prism-count', '눕혀 놓은 것과 직육면체가 섞인 도형에서 각기둥 세기', '1·3, 기본 ①4 ②3 ③3', (d) => {

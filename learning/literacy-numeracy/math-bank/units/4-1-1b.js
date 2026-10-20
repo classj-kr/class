@@ -299,7 +299,7 @@
   ]);
 
   B.addGroup('4-1-1', {
-    id: 'hard', title: '실력 문제', standard: NUM,
+    id: 'hard', title: '단원 종합', standard: NUM,
     types: [
       H('h-missing-count', '10개가 넘는 묶음이 낀 수에서 빠진 묶음의 수', '9, 기본 ②15', (d) => {
         // 수의 천의 자리 숫자를 그대로 답하는 아이(100이 10개를 넘어 천의 자리가 하나 올라간 것을 놓친다)

@@ -620,7 +620,7 @@
   // ── 실력 ──────────────────────────────────────────────────────
   const asc3 = (d) => uniq(d, 3).sort((p, q) => p - q);
   B.addGroup('4-2-3', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-between-count', '두 수 사이에 있는 소수 세 자리 수의 개수', '①62 심15', (d) => {
         // 2.674와 2.68 사이: 2.68을 2.680으로 보아야 2.675부터 2.679까지 센다.

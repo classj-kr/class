@@ -67,7 +67,7 @@ test("뜻이 비슷한 속담은 서로의 오답으로 나오지 않는다", as
         }
         questions += 1;
       }
-      await page.byId("backToLessons").onclick();
+      page.back();
     }
     assert.equal(questions, decks[language].length, language);
   }

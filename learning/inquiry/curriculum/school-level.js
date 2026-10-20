@@ -2,7 +2,7 @@
     'use strict';
     const names = { elementary: '초', middle: '중', high: '고' };
     const params = new URLSearchParams(location.search);
-    let level = names[params.get('school')] ? params.get('school') : 'middle';
+    let level = names[params.get('school')] ? params.get('school') : names[window.CLASS_SCHOOL_LEVEL] ? window.CLASS_SCHOOL_LEVEL : 'middle';
     let allowed = new Set(Object.keys(names));
     const listeners = new Set();
     const esc = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -78,7 +78,7 @@
                 }
                 answered=true;button.classList.add('correct');
                 host.querySelectorAll('[data-option]').forEach(b=>{b.disabled=true;});
-                feedback.innerHTML=`<strong>${firstAnswer.correct?'정답입니다.':'정답입니다. 첫 응답은 오답으로 기록됩니다.'}</strong><p>${esc(q.explanation)}</p>`;
+                feedback.innerHTML=`<strong>정답입니다.</strong><p>${esc(q.explanation)}</p>`;
                 next.hidden=false;
             }));
             next.addEventListener('click',()=>{

@@ -291,7 +291,7 @@
   ]);
 
   B.addGroup('1-1-4', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       H('h-ends', '끝을 맞추지 않은 두 끈', '심2 ①1', (d) => {
         // 긴 끈은 왼쪽 끝이 더 왼쪽에 있고, 짧은 끈은 오른쪽 끝이 더 오른쪽에 있다: 오른쪽 끝만 보면 틀린다.

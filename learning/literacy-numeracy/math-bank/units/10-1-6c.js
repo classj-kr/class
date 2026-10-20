@@ -39,7 +39,7 @@
   const nums = (S) => [].concat(...S.map((p) => [p.lo, p.hi].filter(Boolean).map((v) => Math.abs(v.p))));
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD11,
+    id: 'hard', title: '단원 종합', standard: STD11,
     types: [
       // ① 정수인 해의 개수(합)가 정해지면 경계가 놓일 칸이 정해진다 — 끝의 등호를 직접 넣어 가린다.
       H('hard-int-sys1', '정수인 해의 개수·합으로 상수의 최댓값 구하기', '①9 심1', (d, n) => {

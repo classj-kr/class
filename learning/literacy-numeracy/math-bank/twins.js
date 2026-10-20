@@ -49,7 +49,7 @@
       facts: { truth, want: true }, hint: base.hint || '', twinKind: 'concept' };
   }
   function construct(B, unit, group, original, entry, spec, index) {
-    if (!eligible(unit)) throw new Error('쌍둥이 문제 적용 대상이 아닙니다.');
+    if (!eligible(unit)) throw new Error('유사 문제 적용 대상이 아닙니다.');
     const type = group.types.find(type => type.id === original.typeId);
     if (!type) throw new Error('원문제의 유형을 찾지 못했습니다.');
     const made = spec.mode ? judgment(B, original, spec) : type.make(new B.Dice(spec.seed), entry.n);
@@ -63,21 +63,21 @@
   }
   const pending = new Map();
   async function load(unit) {
-    if (!eligible(unit)) throw new Error('쌍둥이 문제 적용 대상이 아닙니다.');
+    if (!eligible(unit)) throw new Error('유사 문제 적용 대상이 아닙니다.');
     const term = unit.grade + '-' + unit.semester;
-    if (!pending.has(term)) pending.set(term, fetch('twins/' + term + '.json?v=20261019-3').then(response => {
-      if (!response.ok) throw new Error('쌍둥이 문제를 불러오지 못했습니다.');
+    if (!pending.has(term)) pending.set(term, fetch('twins/' + term + '.json?v=20261020-adv-1').then(response => {
+      if (!response.ok) throw new Error('유사 문제를 불러오지 못했습니다.');
       return response.json();
     }).catch(error => { pending.delete(term); throw error; }));
     return pending.get(term);
   }
   async function forItem(B, unit, group, original) {
     const plan = await load(unit), entry = plan.items[unit.id + ':' + original.key];
-    if (!entry || entry.variants.length !== 3 || entry.original !== fingerprint(original)) throw new Error('원문제가 변경되어 쌍둥이 문제를 다시 검증해야 합니다.');
+    if (!entry || entry.variants.length !== 3 || entry.original !== fingerprint(original)) throw new Error('원문제가 변경되어 유사 문제를 다시 검증해야 합니다.');
     const seen = new Set([canonical(original)]);
     return entry.variants.map((spec, i) => {
       const item = construct(B, unit, group, original, entry, spec, i), shape = canonical(construct(B, unit, group, original, entry, { ...spec, render: undefined }, i));
-      if (fingerprint(item) !== spec.fingerprint || seen.has(shape)) throw new Error('쌍둥이 문제의 검증 정보가 일치하지 않습니다.');
+      if (fingerprint(item) !== spec.fingerprint || seen.has(shape)) throw new Error('유사 문제의 검증 정보가 일치하지 않습니다.');
       seen.add(shape); return item;
     });
   }

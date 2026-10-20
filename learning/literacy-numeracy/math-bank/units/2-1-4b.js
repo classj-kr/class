@@ -173,7 +173,7 @@
   ]);
 
   B.addGroup('2-1-4', {
-    id: 'hard', title: '실력 문제', standard: MEASURE,
+    id: 'hard', title: '단원 종합', standard: MEASURE,
     types: [
       // ① 끝이 가장 오른쪽에 있는 막대는 가장 긴 막대가 아니다. 끝 눈금만 읽는 아이는 그 막대를 고른다.
       H('h-longest', '시작한 눈금이 다른 막대의 길이 비교', '심29 ①38', (d) => {

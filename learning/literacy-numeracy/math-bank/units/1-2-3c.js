@@ -53,7 +53,7 @@
   const partsTold = (scene, k) => { const names = scene.pieces.filter((piece) => piece.k === k).map((piece) => piece.part); return [...new Set(names)].map((part) => `${part} ${names.filter((x) => x === part).length}개`).join(', '); };
 
   B.addGroup('1-2-3', {
-    id: 'hard', title: '실력 문제', standard: SHAPE,
+    id: 'hard', title: '단원 종합', standard: SHAPE,
     types: [
       H('h-turned', '놓인 방향과 길이가 다른 모양 세기', '심12 ①16', (d) => {
         // ① 길쭉하거나 기울어지거나 거꾸로 놓인 □·△ 모양을 섞는다. 생김새가 아니라 뾰족한 부분의 수로 가려야 한다.

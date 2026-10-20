@@ -32,7 +32,7 @@
   }
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD1,
+    id: 'hard', title: '단원 종합', standard: STD1,
     types: [
       // ① 허수·0이 아닌 실수·z²이 음의 실수: 실수부분(허수부분)을 0으로 놓아 얻은 두 값 가운데 하나는 다른 쪽 조건에 걸려 버려야 한다.
       H('hard-cond-pick', '복소수가 실수·허수가 되는 조건에서 값 고르기', '①29 ①30', (d, n) => {

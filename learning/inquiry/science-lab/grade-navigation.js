@@ -37,6 +37,8 @@
  else if(requestedGrade==='고1') school='high-common';
  else if(['고2','고3'].includes(requestedGrade)) school='high-elective';
  else if(requestedGrade&&gradeSchool(requestedGrade)) school=gradeSchool(requestedGrade);
+ else if(['elementary','middle'].includes(window.CLASS_SCHOOL_LEVEL)) school=window.CLASS_SCHOOL_LEVEL;
+ else if(window.CLASS_SCHOOL_LEVEL==='high') school=['2','3'].includes(String(window.CLASS_SCHOOL_GRADE))?'high-elective':'high-common';
  if(gradeButtons.some(b=>b.dataset.grade===requestedGrade)&&gradeSchool(requestedGrade)===school) grade=requestedGrade;
  render();
 })();

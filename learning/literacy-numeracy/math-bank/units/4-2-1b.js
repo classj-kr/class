@@ -633,7 +633,7 @@
 
   // ── 실력 문제 ──
   B.addGroup('4-2-1', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       H('h-range-sub-top', '빼는 수의 분자에 □가 있는 크기 비교', '심39, 기본 ①50', (d) => {
         const den = d.int(6, 12), [n, w] = two(d, 1, 9, (p, q) => p >= q + 2), z = d.int(2, den - 3), count = den - z - 1;

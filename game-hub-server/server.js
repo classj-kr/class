@@ -279,7 +279,7 @@ const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typo
 // 읽고, 브라우저 저장소에는 이름을 두지 않는다(2026-10-06).
 function siteIdentityTag(identity) {
   const literal = (value) => JSON.stringify(String(value || "")).replace(/</g, "\\u003c");
-  return `<script data-site-identity="true">window.CLASS_PLAYER_NAME=${literal(identity.name)};window.CLASS_PLAYER_KIND=${literal(identity.kind)}</script>`;
+  return `<script data-site-identity="true">window.CLASS_PLAYER_NAME=${literal(identity.name)};window.CLASS_PLAYER_KIND=${literal(identity.kind)};window.CLASS_SCHOOL_LEVEL=${literal(identity.schoolLevel)};window.CLASS_SCHOOL_GRADE=${literal(identity.schoolGrade)}</script>`;
 }
 
 function withSiteIdentity(htmlSource, identity) {

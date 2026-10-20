@@ -264,5 +264,5 @@
   const fracH = (m) => B.kit.frac(m, V('n'));
   const frac2 = () => B.kit.frac(1, 2), frac34 = () => B.kit.frac(3, 4);
 
-  B.addGroup(UNIT, { id: 'hard', title: '실력 문제', standard: S3, types: hardTypes });
+  B.addGroup(UNIT, { id: 'hard', title: '단원 종합', standard: S3, types: hardTypes });
 })(typeof window !== 'undefined' ? window : globalThis);

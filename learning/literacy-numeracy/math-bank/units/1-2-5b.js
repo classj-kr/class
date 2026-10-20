@@ -137,7 +137,7 @@
   ]);
 
   B.addGroup('1-2-5', {
-    id: 'hard', title: '실력 문제', standard: FIND,
+    id: 'hard', title: '단원 종합', standard: FIND,
     types: [
       H('h-four', '반복되는 부분이 긴 배열의 규칙', '심3·16', (d) => {
         // 반복되는 부분이 넷이고 그 안에 같은 것이 거듭 나온다. 앞의 세 개만 보면 틀린 말이 맞아 보인다(다섯째나 여섯째에서 어긋난다).

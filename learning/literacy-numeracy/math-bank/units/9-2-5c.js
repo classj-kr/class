@@ -25,7 +25,7 @@
   const ax = (p, q) => nb((p === 0 ? '' : (p === 1 ? '' : p) + V('a')) + (p === 0 ? String(q) : q === 0 ? '' : ` + ${q}`));   // pa + q 의 글
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 수·조건에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-dev-order', '편차 넷과 중앙값으로 평균 구하기', '①39', (d) => {

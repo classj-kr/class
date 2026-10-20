@@ -529,7 +529,7 @@
 
   // ── 실력 ──
   B.addGroup('5-1-4', {
-    id: 'hard', title: '실력 문제', standard: EQ,
+    id: 'hard', title: '단원 종합', standard: EQ,
     types: [
       // ── ① 문제의 상황·그림·수에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-area-trap', '크기가 다른 두 도형에 색칠한 같은 크기의 분수', '기본 ①1 ②1', (d) => {

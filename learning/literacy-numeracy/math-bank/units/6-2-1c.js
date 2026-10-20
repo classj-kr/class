@@ -178,7 +178,7 @@
   const WHERE = '다음 계산에서 처음으로 잘못된 곳의 기호는?';
 
   B.addGroup('6-2-1', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 상황·그림·수에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-size-count', '계산하지 않고 처음 수보다 큰 계산 결과 세기', '심17·19 / 기본 ①41 ③27·32', (d) => {

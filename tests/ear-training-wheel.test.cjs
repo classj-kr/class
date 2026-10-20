@@ -19,10 +19,10 @@ test('circle questions preserve theoretical spelling and enharmonic key signatur
     assert.equal(answer('relative:F♯:minor'), 'D♯ 단조');
     assert.equal(answer('relative:G♭:minor'), 'E♭ 단조');
     assert.equal(answer('relative:B:major'), 'B 장조');
-    assert.equal(answer('neighbors:C:시계'), 'G 장조');
-    assert.equal(answer('neighbors:C:반시계'), 'F 장조');
-    assert.equal(answer('neighbors:E:시계'), 'B 장조');
-    assert.equal(answer('neighbors:A♭:반시계'), 'D♭ 장조');
+    assert.equal(answer('neighbors:C:dominant'), 'G 장조');
+    assert.equal(answer('neighbors:C:subdominant'), 'F 장조');
+    assert.equal(answer('neighbors:E:dominant'), 'B 장조');
+    assert.equal(answer('neighbors:A♭:subdominant'), 'D♭ 장조');
     assert.equal(answer('diatonic:F♯:vii°'), 'E♯dim');
     assert.equal(answer('diatonic:G♭:IV'), 'C♭');
     assert.equal(answer('diatonic:B:iii'), 'D♯m');
@@ -33,6 +33,27 @@ test('circle questions preserve theoretical spelling and enharmonic key signatur
         assert.ok(question.options.includes(question.answer), question.id);
         assert.ok(!/undefined|NaN/.test(question.prompt + question.answer + question.explanation));
     }
+});
+
+test('fifths questions specify an interval and direction without relying on diagram placement', () => {
+    const questions = bank.filter(q => q.type === 'fifths');
+    const letters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    const semitones = [0, 2, 4, 5, 7, 9, 11];
+    const pitch = note => (semitones[letters.indexOf(note[0])] + (note.includes('♯') ? 1 : note.includes('♭') ? -1 : 0) + 12) % 12;
+    assert.equal(questions.length, 18);
+    for (const question of questions) {
+        const ascending = question.id.endsWith(':up-fifth');
+        assert.match(question.prompt, ascending
+            ? /완전5도 위인 음을 으뜸음으로 하는 장조는\?/
+            : /완전5도 아래인 음을 으뜸음으로 하는 장조는\?/);
+        const tonic = question.answer.split(' ')[0];
+        assert.equal((pitch(tonic) - pitch(question.home) + 12) % 12, ascending ? 7 : 5, question.id);
+        assert.equal((letters.indexOf(tonic[0]) - letters.indexOf(question.home[0]) + 7) % 7, ascending ? 4 : 3, question.id);
+        assert.equal(question.answer, answer('neighbors:' + question.home + (ascending ? ':dominant' : ':subdominant')));
+    }
+    assert.equal(answer('fifths:A:down-fifth'), 'D 장조');
+    assert.equal(answer('fifths:A:up-fifth'), 'E 장조');
+    for (const question of bank) assert.doesNotMatch(question.prompt + question.explanation, /시계|반시계|방향 한 칸|같은 칸/);
 });
 
 test('rounds contain ten different questions with four unambiguous choices', () => {

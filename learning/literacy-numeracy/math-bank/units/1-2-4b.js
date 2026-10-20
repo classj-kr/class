@@ -328,7 +328,7 @@
   // ① 배운 뜻을 정확히 대야 풀리는 문제: h-addsplit, h-sumsame, h-subways, h-diffsame, h-whichadd, h-start, h-compare
   // ② 두 번 넘게 생각해야 풀리는 문제: h-twolines, h-moreall, h-boxmax, h-twice
   B.addGroup('1-2-4', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-addsplit', '10을 만들려고 가른 수가 틀린 것', '심4 심5 심6 ①9', (d) => {
         // 가르는 수와 가르는 크기는 식마다 다르다. 뒤의 수를 가른 것 둘과 앞의 수를 가른 것 하나는 옳고, 하나는 가르기는 했으나 10이 만들어지지 않는다.

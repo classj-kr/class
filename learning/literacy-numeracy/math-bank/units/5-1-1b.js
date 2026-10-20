@@ -502,7 +502,7 @@
   const boxAsk = (figure, x, calc, explain) => N('□ 안에 알맞은 수는?', x, { figure: eqBox(figure), explain, facts: { calc: [[calc, 0]] } });
   const wide = (html) => '<span style="white-space:nowrap">' + html + '</span>';
   B.addGroup('5-1-1', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ㉮ 상황 자체에 함정이 있는 문제 ─────────────────────────────
       H('hd-keep-count', '( )를 지워도 계산 결과가 변하지 않는 식의 수', '23, 기본 ①55 ②33 ③42', (d) => {

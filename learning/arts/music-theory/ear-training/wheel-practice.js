@@ -64,17 +64,19 @@
             add("relative", key, "minor", major + "의 나란한 단조는?", minor, minors,
                 major + "의 여섯째 음은 " + key.minor.slice(0, -1) + "입니다. " + major + "와 " + minor + "는 같은 조표를 씁니다.");
             add("relative", key, "major", minor + "의 나란한 장조는?", major, majors,
-                minor + "와 " + major + "는 원판의 같은 칸에 있고, 같은 조표를 씁니다.");
+                minor + "의 으뜸음에서 단3도 위의 음은 " + key.major + "입니다. " + minor + "와 " + major + "는 같은 조표를 씁니다.");
 
             // 경계에서 C♯·C♭ 등 원판에 없는 조를 묻지 않도록 범위를 정한다.
             if (key.count <= 4) {
-                [[4, "시계", "딸림조", "완전5도"], [3, "반시계", "버금딸림조", "완전4도"]].forEach(([degree, direction, role, interval]) => {
-                    const answer = noteAt(key, degree) + " 장조";
-                    add("fifths", key, direction,
-                        "원판에서 " + major + "의 " + direction + " 방향 한 칸에 있는 장조는?", answer, majors,
-                        key.major + "에서 " + noteAt(key, degree) + "까지는 위로 " + interval + "입니다. 원판에서 " + direction + " 방향 한 칸입니다.");
-                    add("neighbors", key, direction, major + "의 " + role + "는?", answer, majors,
-                        role + "는 " + interval + " 위의 조입니다. " + major + "에서는 " + answer + "이며, 원판에서 " + direction + " 방향 한 칸입니다.");
+                [[4, "up-fifth", "위", "dominant", "딸림조", "완전5도"],
+                    [3, "down-fifth", "아래", "subdominant", "버금딸림조", "완전4도"]].forEach(([degree, variant, direction, roleId, role, interval]) => {
+                    const tonic = noteAt(key, degree);
+                    const answer = tonic + " 장조";
+                    add("fifths", key, variant,
+                        key.major + "에서 완전5도 " + direction + "인 음을 으뜸음으로 하는 장조는?", answer, majors,
+                        key.major + "에서 완전5도 " + direction + "인 음은 " + tonic + "입니다. " + answer + "는 " + major + "의 " + role + "입니다.");
+                    add("neighbors", key, roleId, major + "의 " + role + "는?", answer, majors,
+                        role + "는 으뜸음에서 " + interval + " 위의 음을 으뜸음으로 하는 조입니다. " + key.major + "에서 " + interval + " 위는 " + tonic + "이므로 " + answer + "입니다.");
                 });
             }
             const chords = ROMANS.map((roman, degree) => noteAt(key, degree) + SUFFIXES[degree]);

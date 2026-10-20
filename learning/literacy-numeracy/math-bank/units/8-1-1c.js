@@ -48,7 +48,7 @@
   ];
 
   B.addGroup(U, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 수·말에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-condition-claims', '「기약분수」가 빠진 조건 문장 가리기', '심45 / 기본 ①33', (d) => {

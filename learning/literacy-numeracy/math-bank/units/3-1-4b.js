@@ -29,7 +29,7 @@
   const near = (d, center, spread) => d.until(() => { const list = factorings(center + d.int(-spread, spread)).filter(([x]) => x % 10 !== 0); return list.length ? d.pick(list) : null; }, Boolean);
 
   B.addGroup('3-1-4', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-onemore', '곱셈의 뜻으로 같은 값 찾기', '나타내는 수가 다른 하나(기본·심화 자료) — 곱하는 수가 1 커지면 곱해지는 수만큼 커짐을 가리게', (d) => {
         // 23×4 에 23 을 더한 수 = 23×5

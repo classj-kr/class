@@ -47,7 +47,7 @@
   }
 
   B.addGroup('8-1-4', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 식·말·상황에 장치가 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-eq2-cond', '미지수가 2개인 일차방정식이 되기 위한 상수의 조건', '심3', (d) => {

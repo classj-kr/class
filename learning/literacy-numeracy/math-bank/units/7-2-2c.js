@@ -31,7 +31,7 @@
   const SQUARE = '정사각형 ABCD. 점 A는 왼쪽 위, 점 D는 오른쪽 위, 점 B는 왼쪽 아래, 점 C는 오른쪽 아래에 있다. ';
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD4,
+    id: 'hard', title: '단원 종합', standard: STD4,
     types: [
       // ── ① 수치나 그림의 놓임에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-fixed-count', '수치로 준 조건 가운데 삼각형이 하나로 정해지는 것의 개수', '심18 / 기본 ①29 ②25', (d) => {

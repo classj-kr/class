@@ -31,7 +31,7 @@
   }
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: S2,
+    id: 'hard', title: '단원 종합', standard: S2,
     types: [
       // ── ① 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-allcells', '모든 칸을 다 맞추어야 하는 같을 조건', '①16', (d) => {

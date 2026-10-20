@@ -346,7 +346,7 @@
     }, (list) => list.length >= 7 && list.length <= 9);
   }
   B.addGroup('2-1-2', {
-    id: 'hard', title: '실력 문제', standard: KNOW,
+    id: 'hard', title: '단원 종합', standard: KNOW,
     types: [
       H('hard-tri', '뜻을 대어 삼각형 세기', '심1·5, 기본 ①2·22', (d) => {
         // 함정: 길쭉하거나 납작하거나 뒤집힌 삼각형을 빼는 아이, 한 변이 굽은 것·꼭대기가 둥근 것·끊어진 것·변이 4개인 뾰족한 것을 세는 아이

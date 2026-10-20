@@ -319,5 +319,5 @@
     })
   ];
 
-  B.addGroup(UNIT, { id: 'hard', title: '실력 문제', standard: S07, types: hardTypes.map((t) => (/^hard-(bridge|curve-dist|tangent-slope|right-locus|circle-through)$/.test(t.id) ? Object.assign(t, { standard: S06 }) : t)) });
+  B.addGroup(UNIT, { id: 'hard', title: '단원 종합', standard: S07, types: hardTypes.map((t) => (/^hard-(bridge|curve-dist|tangent-slope|right-locus|circle-through)$/.test(t.id) ? Object.assign(t, { standard: S06 }) : t)) });
 })(typeof window !== 'undefined' ? window : globalThis);

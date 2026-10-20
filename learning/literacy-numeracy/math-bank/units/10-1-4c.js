@@ -25,7 +25,7 @@
   const ends = (pts) => ({ max: pts.reduce((s, t) => (t[1] > s[1] ? t : s)), min: pts.reduce((s, t) => (t[1] < s[1] ? t : s)) });
 
   B.addGroup('10-1-4', {
-    id: 'hard', title: '실력 문제', standard: S6,
+    id: 'hard', title: '단원 종합', standard: S6,
     types: [
       // ② 판별식이 k의 이차식: 판별식 → 인수분해 → 두 일차식의 부호(세 단계 넘게). 심1(학력평가 기출).
       // x축과 만나지 않을 k의 범위(①6)는 10-1-6 quadk-all-* 와 같은 일이라 그쪽에만 둔다.

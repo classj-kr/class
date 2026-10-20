@@ -400,7 +400,7 @@
   ]);
 
   B.addGroup('4-1-6', {
-    id: 'hard', title: '실력 문제', standard: EQUAL,
+    id: 'hard', title: '단원 종합', standard: EQUAL,
     types: [
       H('hd-right-side', '등호 오른쪽에 올 수 있는 것', '66, 기본 ③73', (d) => {
         // 등호 오른쪽에는 수 하나(답)만 온다고 여기는 아이는 1개라고 답한다.

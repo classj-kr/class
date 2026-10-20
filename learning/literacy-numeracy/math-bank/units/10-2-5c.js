@@ -254,5 +254,5 @@
       });
     }, { standard: STD.ineq })
   ];
-  B.addGroup('10-2-5', { id: 'hard', title: '실력 문제', standard: STD.prop, types: hardTypes });
+  B.addGroup('10-2-5', { id: 'hard', title: '단원 종합', standard: STD.prop, types: hardTypes });
 })(typeof window !== 'undefined' ? window : globalThis);

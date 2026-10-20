@@ -263,7 +263,7 @@
   ]);
 
   B.addGroup('1-1-1', {
-    id: 'hard', title: '실력 문제', standard: NUM,
+    id: 'hard', title: '단원 종합', standard: NUM,
     types: [
       H('h-four-vs-fourth', '흩어져 있는 넷과 넷째', '12, 기본 ①17', (d) => {
         // ① 넷째 하나만 색칠한 줄을 고르는 아이(넷과 넷째), 붙어 있는 것만 세는 아이. 정답은 색칠한 것이 흩어져 있다.

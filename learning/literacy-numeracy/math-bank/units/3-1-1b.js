@@ -28,7 +28,7 @@
   const H = (id, title, source, make, more) => Object.assign({ id, level: '실력', title, source, make }, more || {});
 
   B.addGroup('3-1-1', {
-    id: 'hard', title: '실력 문제', standard: CALC,
+    id: 'hard', title: '단원 종합', standard: CALC,
     types: [
       H('h-carry-say', '받아올림한 수가 나타내는 값 가리기', '받아올림한 수가 나타내는 값(기본 자료) — 두 자리의 받아올림을 한 그림에서 가리게', (d) => {
         // 백의 자리 위에 작게 쓴 1 은 100, 십의 자리 위에 작게 쓴 1 은 10 을 나타낸다.

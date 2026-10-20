@@ -29,7 +29,7 @@
   const TRIPLES = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [20, 21, 29], [9, 40, 41], [12, 35, 37]];
 
   B.addGroup('10-1-5', {
-    id: 'hard', title: '실력 문제', standard: STD3, types: [
+    id: 'hard', title: '단원 종합', standard: STD3, types: [
       H('hard-baby', '② n³ + n²의 표로 푸는 삼차방정식(바빌로니아의 방법)', '①19', (d) => {
         const opts = [];
         for (const m of [2, 3, 4, 5, 6]) for (let n = 2; n <= 8; n += 1) if (gcd(m, n) === 1 && (n ** 3 + n * n) % m === 0) opts.push([m, n]);

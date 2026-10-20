@@ -59,7 +59,7 @@
   }
 
   B.addGroup('7-2-1', {
-    id: 'hard', title: '실력 문제', standard: STD1,
+    id: 'hard', title: '단원 종합', standard: STD1,
     types: [
       // ── ① 그림·말에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-cut-count', '한 귀퉁이를 잘라 낸 직육면체의 교점과 교선', '심2', (d) => {

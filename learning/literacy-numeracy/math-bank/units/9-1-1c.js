@@ -26,7 +26,7 @@
   const fiveOf = (d, right, pool) => { const out = [right]; for (const e of pool) if (!out.some((o) => key(o) === key(e))) out.push(e); return d.shuffle(out.slice(0, 5)); };
 
   B.addGroup('9-1-1', {
-    id: 'hard', title: '실력 문제', standard: STD7,
+    id: 'hard', title: '단원 종합', standard: STD7,
     types: [
       // ── ① 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-sign2', '두 문자의 부호 조건으로 √(x²) 들을 간단히 하기', '심2', (d) => {

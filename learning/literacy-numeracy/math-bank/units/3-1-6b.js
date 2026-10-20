@@ -28,7 +28,7 @@
   const fj = (k, n, pair) => frac(k, n) + tail(k, pair);
 
   B.addGroup('3-1-6', {
-    id: 'hard', title: '실력 문제', standard: FCOMPARE,
+    id: 'hard', title: '단원 종합', standard: FCOMPARE,
     types: [
       H('h-onepiece', '나눈 조각 수가 다른 한 조각의 크기', '단위분수 문장제(기본·심화 자료) — 분모를 자연수처럼 견주는 것, 조각 수만 보는 것을 보기에 넣는다', (d) => {
         const [one, two] = d.shuffle(NAMES).slice(0, 2), [many, few] = d.until(() => [d.int(5, 12), d.int(3, 8)], ([x, y]) => x > y + 1), flip = d.bool();

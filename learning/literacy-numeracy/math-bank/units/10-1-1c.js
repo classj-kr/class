@@ -166,5 +166,5 @@
       });
     })
   ];
-  B.addGroup(UNIT, { id: 'hard', title: '실력 문제', standard: STD, types: hardTypes });
+  B.addGroup(UNIT, { id: 'hard', title: '단원 종합', standard: STD, types: hardTypes });
 })(typeof window !== 'undefined' ? window : globalThis);

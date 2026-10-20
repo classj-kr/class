@@ -92,7 +92,7 @@
   }
 
   B.addGroup('7-1-2', {
-    id: 'hard', title: '실력 문제', standard: STD5,
+    id: 'hard', title: '단원 종합', standard: STD5,
     types: [
       // ── ① 문제의 수·말·식에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-kind-count', '약분하면 정수가 되는 분수와 0이 섞인 수 목록에서 종류별 개수 세기', '심4·5 / 기본 ①6 ②3·4', (d, n) => {

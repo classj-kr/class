@@ -106,7 +106,7 @@
   const nlQ = (pair, v) => nl(pair[1], pair[0], v);
 
   B.addGroup('7-1-3', {
-    id: 'hard', title: '실력 문제', standard: STD2,
+    id: 'hard', title: '단원 종합', standard: STD2,
     types: [
       // ── ① 문제의 식·상황·그림에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-order-odd', '곱셈과 나눗셈의 차례·괄호에 따라 달라지는 식 가리기', '심3 / 기본 ①26', (d) => {

@@ -37,7 +37,7 @@
   }
 
   B.addGroup('7-1-6', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 표·그림·상황에 함정이 있어 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-increase-count', '정비례·반비례 관계 가운데 x > 0에서 x의 값이 커질 때 y의 값도 커지는 것 세기', '심9·22·23 / 기본 ①43·44', (d) => {

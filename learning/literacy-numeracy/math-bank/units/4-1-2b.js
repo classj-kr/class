@@ -581,7 +581,7 @@
   const halfClock = (h) => { const gap = Math.abs(h * 30 + 15 - 180); return Math.min(gap, 360 - gap); };
 
   B.addGroup('4-1-2', {
-    id: 'hard', title: '실력 문제', standard: DEG,
+    id: 'hard', title: '단원 종합', standard: DEG,
     types: [
       H('h-long-sides', '변의 길이가 다른 세 각의 크기 비교', '8, 기본 ②8 ③6', (d) => {
         // 변이 가장 긴 각을 가장 작게, 변이 가장 짧은 각을 가장 크게 그렸다. 변의 길이로 판단하는 아이는 첫째나 둘째 보기를 고른다.

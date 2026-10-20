@@ -33,7 +33,7 @@
   const A_ = V('a'), ka = (n) => (n === 1 ? '' : n) + A_;
 
   B.addGroup(UNIT, {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       // ── ① 문제의 그림·수에 함정이 있어 배운 뜻을 정확히 대야 풀리는 문제 ──
       H('hard-pick-par', '어떤 비든 같으면 평행한가', '심1', (d) => {

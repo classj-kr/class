@@ -43,7 +43,7 @@
   const two = (d) => d.shuffle(NAMES).slice(0, 2);
 
   B.addGroup(U, {
-    id: 'hard', title: '실력 문제', standard: RATE,
+    id: 'hard', title: '단원 종합', standard: RATE,
     types: [
       H('h-about', '「~에 대한」이 붙은 자리가 다른 두 비', '9·11·13, 기본 ①19 ②19 ③10', (d) => {
         // ① 장치: 두 문장은 「~에 대한」이 붙은 자리만 다르다. 앞 문장은 앞의 양이, 뒤 문장은 뒤의 양이 기준량이다. 문장에 나온 차례대로 쓰면 하나는 틀린다.

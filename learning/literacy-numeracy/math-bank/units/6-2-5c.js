@@ -72,7 +72,7 @@
   const rhombusFig = (label) => innerSquareFig({ shade: true, label });
 
   B.addGroup('6-2-5', {
-    id: 'hard', title: '실력 문제', standard: FIND,
+    id: 'hard', title: '단원 종합', standard: FIND,
     types: [
       // ── ① 그림·상황에 함정이 있는 문제 ─────────────────────────
       H('hard-pi-same', '원주만 알려 준 두 원의 원주율 비교', '심8 ①14 ②16 ③12', (d) => {

@@ -39,7 +39,7 @@
   }
 
   B.addGroup('3-2-3', {
-    id: 'hard', title: '실력 문제', standard: PARTS,
+    id: 'hard', title: '단원 종합', standard: PARTS,
     types: [
       H('h-radius-say', '중심에서 그은 선분과 원 위의 두 점을 이은 선분', '원의 성질 옳은 것 고르기·잘못 말한 사람(심화 23), 잘못 그은 지름·반지름(심화 8, 기본 ①12)', (d) => {
         // 점 ㄹ은 원 안에 있다. 선분 ㅇㄹ은 중심에서 그었지만 반지름이 아니다.

@@ -321,7 +321,7 @@
   ]);
 
   B.addGroup('5-1-3', {
-    id: 'hard', title: '실력 문제', standard: STD,
+    id: 'hard', title: '단원 종합', standard: STD,
     types: [
       H('hd-first-add', '첫 짝만 보면 몇 배로 보이는 표', '13·31, 기본 ①9·49 ②36', (d) => {
         // 첫 짝(2와 4)만 보면 2배와 2 더하기가 모두 맞는다. 둘째 짝에서 더하기임이 드러난다. 2배로 보면 답이 달라진다.
