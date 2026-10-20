@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const {createQuestions}=require('../lib/study-question-builder');
 const bank=require('../lib/study-question-bank'),Catalog=require('../lib/mission-catalog');
 const stories=require('../data/catalog/city-stories.json');
-const pool=[...Catalog.DISCOVERIES,...Catalog.CITY_LANDMARKS,...Catalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({...p,text:(stories.find(s=>s.cityId===p.id)?.sections||Catalog.ADDITIONAL_SETTLEMENTS.find(s=>s.id===p.id)?.story.sections||[]).map(s=>s.text).join(' ')}))];
+const pool=[...[...Catalog.DISCOVERIES,...Catalog.CITY_LANDMARKS].map(p=>({...p,text:[p.text,p.in1520?'1520년에는 '+p.in1520:''].filter(Boolean).join('\n\n')})),...Catalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({...p,text:(stories.find(s=>s.cityId===p.id)?.sections||Catalog.ADDITIONAL_SETTLEMENTS.find(s=>s.id===p.id)?.story.sections||[]).map(s=>s.text).join(' ')}))];
 const poison={id:'unrelated',name:'관련 없는 장소',text:'절대 섞이면 안 되는 딴 도시의 오답 문장입니다.'};
 for(const item of pool){
   // No other place is needed to create questions: distractors share the answer's topic.
@@ -17,6 +17,7 @@ for(const item of pool){
       assert.ok(item.text.includes(q.answer),'cloze answer comes from reading');
       assert.ok(q.passage.includes('(          )'));assert.ok(!q.passage.includes(q.answer),item.name+' '+q.answer+' '+q.passage);
       assert.ok(!item.name.includes(q.answer),'part of title cannot reveal cloze answer');
+      if(q.answer==='만')assert.ok(!/\(\s+\)들/.test(q.passage),item.name+' must not split 만들다 into the landform 만');
     }
   }
 }

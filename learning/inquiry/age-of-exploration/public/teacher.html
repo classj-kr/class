@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>도착 경주 현황판</title>
-<link rel="stylesheet" href="./teacher.css?v=20261019-layout-5"></head><body>
+<link rel="stylesheet" href="./teacher.css?v=20261021-learning-1"></head><body>
 <section id="login" class="panel login"><h1>도착 경주 현황판</h1><p id="error" class="err">방을 여는 중입니다.</p><a class="backLink" href="/">사이트 첫 화면으로</a></section>
 <main id="dash" class="hidden">
 <div class="layout">
 <section class="setup">
-<div class="panel"><div class="roomInfo"><div class="roomHeading"><strong>방번호 <span id="roomLabel"></span></strong><span>접속 <b id="count">0</b>명</span></div><div class="roomState"><span>게임 날짜 <b id="classClock">1520년 1월 1일 00:00</b></span><span id="status" class="ok" role="status">서버 연결</span></div></div><h3 class="setupTitle">미션 설정</h3><p class="muted">학습 장소는 1~3곳, 출발 도시는 1~4곳을 지정합니다.</p><div id="studyRows"><label>도시·발견물 찾기<input id="studySearch" type="search" placeholder="장소·나라 이름 검색"></label><label>학습 장소<select id="studyChoice"></select></label><button type="button" id="studyAdd">목록에 추가</button><b id="studyCount">0/3곳</b><ul id="studySelected"></ul><p class="muted">방문 순서는 자유입니다. 각 장소에서 설명을 읽고 세 문제를 연속으로 맞혀야 완료됩니다.</p></div><div id="startCities" class="startGrid"></div><button type="button" id="addStart" class="addStart">출발 도시 추가 · 최대 4곳</button><div class="setupActions"><button id="publish" class="publish">미션 준비 · 출발지 선택 시작</button><button id="startRace" class="startRace" disabled>전원 출발</button><button id="clear" class="danger">미션 종료</button></div><p id="missionError" class="err"></p></div>
+<div class="panel"><div class="roomInfo"><div class="roomHeading"><strong>방번호 <span id="roomLabel"></span></strong><span>접속 <b id="count">0</b>명</span></div><div class="roomState"><span>게임 날짜 <b id="classClock">1520년 1월 1일 00:00</b></span><span id="status" class="ok" role="status">서버 연결</span></div></div><h3 class="setupTitle">미션 설정</h3><p class="muted">학습 장소는 1~3곳, 출발 도시는 1~4곳을 지정합니다.</p><div id="studyRows"><div class="studyFilters"><label>자료 범위<select id="studyTier"><option value="recommended">교과·가치 추천</option><option value="explore">주제별 탐구</option><option value="all">전체 자료</option><option value="later">후대 문화</option></select></label><label>학교급<select id="studyLevel"><option value="all">전체 학교급</option><option value="elementary">초등</option><option value="middle">중학</option><option value="high">고등</option></select></label><label>주제<select id="studyTopic"><option value="all">전체 주제</option></select></label><label>종류<select id="studyKind"><option value="all">도시·발견물·명소</option><option value="city">도시</option><option value="discovery">발견물</option><option value="landmark">도시 명소</option></select></label></div><p class="muted">★는 문화·과학적 가치가 큰 장소입니다. 학교급을 고르면 분류된 발견물·명소를 보여 줍니다.</p><label>도시·발견물 찾기<input id="studySearch" type="search" placeholder="장소·나라 이름 검색"></label><label>학습 장소<select id="studyChoice"></select></label><div id="studyMatches" role="status"></div><div id="studyPreview" class="studyPreview" aria-live="polite"></div><button type="button" id="studyAdd">목록에 추가</button><b id="studyCount">0/3곳</b><ul id="studySelected"></ul><p class="muted">방문 순서는 자유입니다. 각 장소에서 설명을 읽고 세 문제를 연속으로 맞혀야 완료됩니다.</p></div><div id="startCities" class="startGrid"></div><button type="button" id="addStart" class="addStart">출발 도시 추가 · 최대 4곳</button><div class="setupActions"><button id="publish" class="publish">미션 준비 · 출발지 선택 시작</button><button id="startRace" class="startRace" disabled>전원 출발</button><button id="clear" class="danger">미션 종료</button></div><p id="missionError" class="err"></p></div>
 <div id="activeMission" class="panel"><p class="muted">아직 미션이 없습니다.</p></div>
 </section>
 <section id="monitor" class="monitor">
@@ -14,7 +14,7 @@
 <section id="rankBoard" class="panel rankBoard"><div class="rankHeader"><h3>완주 순위 <small id="finishCount">0명</small></h3><div id="rankMission" class="missionTitle" hidden></div></div><div class="rankContent"><section class="finishSection" aria-label="완주자"><div id="rankList" class="rankList"><div class="empty">아직 없음</div></div></section><section class="waitingSection" hidden><h3 class="waitingTitle">진행 중 <small id="waitingCount">0명</small></h3><div id="waitingList"></div></section></div></section>
 </section>
 </div></main>
-<script src="/learn/world-voyage/socket.io/socket.io.js"></script><script>
+<script src="/learn/world-voyage/socket.io/socket.io.js"></script><script src="/learn/world-voyage/js/study-catalog.js?v=2026102101"></script><script>
 'use strict';
 const socket=io({path:'/learn/world-voyage/socket.io',transports:['polling']}),$=id=>document.getElementById(id);let players=[],activeMission=null,progress=[],catalog={places:[]},classSettings={paused:false,locked:false},teacherClockActive=false,clockRate=4,clockBaseMinutes=0,clockBaseReal=Date.now();
 const WORLD_PIXEL_W=2500*16,WORLD_PIXEL_H=1250*16,worldImage=new Image(),mapCanvas=$('worldMap'),mapCtx=mapCanvas.getContext('2d');let worldImageReady=false;
@@ -38,21 +38,28 @@ function renderStartCities(){
  $('addStart').disabled=startSelection.length>=4;
 }
 $('addStart').onclick=()=>{if(startSelection.length<4){startSelection.push('');renderStartCities();$('start'+startSelection.length).focus();}};
-function studyChoices(){
-  return [
-    ...catalog.places.filter(p=>p.isOriginalCity).map(p=>({key:'city:'+p.id,name:p.name,type:'도시',region:p.region||''})),
-    ...(catalog.discoveries||[]).map(p=>({key:'discovery:'+p.id,name:p.name,type:'발견물',region:p.todayCountry||''})),
-    ...(catalog.cityLandmarks||[]).filter(p=>catalog.places.some(c=>c.id===p.cityId&&c.isOriginalCity)).map(p=>({key:'landmark:'+p.id,name:p.name,type:'도시 명소',region:catalog.places.find(c=>c.id===p.cityId)?.name||''}))
-  ];
+function studyChoices(){return VoyageStudyCatalog.choices(catalog);}
+function renderStudyPreview(){
+  const item=studyChoices().find(p=>p.key===$('studyChoice').value),box=$('studyPreview');box.replaceChildren();
+  if(!item){box.textContent='조건에 맞는 장소가 없습니다. 다른 주제나 전체 자료를 선택하세요.';return;}
+  const l=item.learning;
+  if(!l){box.textContent='도시에 입장해 역사·교역·생활에 관한 설명을 읽습니다. 도시 설명은 학교급을 지정하지 않았습니다.';return;}
+  const title=document.createElement('b');title.textContent=[l.label,l.valuable?'문화·과학 가치':'',l.topic,l.levelLabels.join('·')].filter(Boolean).join(' · ');
+  const goal=document.createElement('p');goal.textContent='학습 목표 · '+l.objective;
+  const standards=document.createElement('small');standards.textContent='연계 가능 성취기준 · '+l.standards.join(', ');
+  box.append(title,goal,standards);
+  if(l.tier==='later'){const note=document.createElement('p');note.textContent='1520년 이후의 문화입니다. 현장 발견 수에 포함하지 않습니다.';box.append(note);}
 }
 function renderStudyChoices(){
   if(!catalog)return;
   const query=$('studySearch').value.trim().toLocaleLowerCase(),select=$('studyChoice'),previous=select.value;
   select.replaceChildren();
-  for(const item of studyChoices().filter(p=>!studySelection.includes(p.key)&&[p.name,p.type,p.region].join(' ').toLocaleLowerCase().includes(query)))opt(select,item.key,item.type+' · '+item.name+' · '+item.region);
+  const matches=VoyageStudyCatalog.filter(studyChoices(),{tier:$('studyTier').value,level:$('studyLevel').value,topic:$('studyTopic').value,kind:$('studyKind').value,query});
+  for(const item of matches.filter(p=>!studySelection.includes(p.key)))opt(select,item.key,(item.learning?.valuable?'★ ':'')+item.type+' · '+item.name+' · '+item.region);
   if([...select.options].some(o=>o.value===previous))select.value=previous;
   $('studyAdd').disabled=studySelection.length>=3||!select.value;
   $('studyCount').textContent=studySelection.length+'/3곳';
+  $('studyMatches').textContent='선택 가능 '+select.options.length+'곳';renderStudyPreview();
   $('studySelected').replaceChildren();
   for(const key of studySelection){
     const item=studyChoices().find(p=>p.key===key),li=document.createElement('li'),remove=document.createElement('button');
@@ -60,7 +67,7 @@ function renderStudyChoices(){
   }
 }
 
-async function loadCatalog(){const r=await fetch('/learn/world-voyage/api/mission-catalog?v=85');catalog=await r.json();renderStudyChoices();renderStartCities();}
+async function loadCatalog(){const r=await fetch('/learn/world-voyage/api/mission-catalog?v=2026102101');catalog=await r.json();const topicSelect=$('studyTopic'),previous=topicSelect.value;topicSelect.replaceChildren();opt(topicSelect,'all','전체 주제');for(const topic of catalog.learningTopics||[])opt(topicSelect,topic,topic);if([...topicSelect.options].some(o=>o.value===previous))topicSelect.value=previous;renderStudyChoices();renderStartCities();}
 function progressOf(name){return progress.find(p=>p.name===name)||{status:'assigned'}}
 function medalText(rank){const n=Number(rank)||0;return n===1?'🥇':n===2?'🥈':n===3?'🥉':`${n}위`}function rankClass(rank){return Number(rank)===1?'gold':Number(rank)===2?'silver':Number(rank)===3?'bronze':''}
 function playerVisual(player,pr=progressOf(player.name)){if(pr.status==='completed'){const rank=Number(pr.finishRank)||Number(player.finishRank)||0;return{color:rank===1?'#f4ca55':rank===2?'#d7e0e7':rank===3?'#c78455':'#9fe1b0',rank,completed:true}}if(!pr.selectedStartPlaceId)return{color:'#8a969b',rank:0};return{color:'#70bde2',rank:0,completed:false}}
@@ -125,4 +132,6 @@ $('publish').onclick=async()=>{
  $('missionError').textContent='학생들이 출발 도시를 선택하면 전원 출발을 누르세요.';activeMission=r.mission;progress=r.progress||[];if(Number.isFinite(r.classGameMinutes))resetClock(r.classGameMinutes);renderAll();
  }finally{$('publish').disabled=false}
 };$('startRace').onclick=async()=>{const r=await ack('teacherStartArrivalRace',{});if(!r?.ok){$('missionError').textContent=r?.error||'출발 실패';return}$('missionError').textContent='전원이 동시에 출발했습니다.';activeMission=r.mission;progress=r.progress||progress;if(Number.isFinite(r.classGameMinutes))resetClock(r.classGameMinutes);renderAll()};$('clear').onclick=async()=>{const r=await ack('teacherClearMission',{});if(!r?.ok){$('missionError').textContent=r?.error||'종료 실패';return}activeMission=null;progress=[];if(Number.isFinite(r.classGameMinutes))resetClock(r.classGameMinutes);renderAll()};$('fullMonitor').onclick=()=>{const b=$('monitor');if(document.fullscreenElement)document.exitFullscreen();else b.requestFullscreen?.()};document.addEventListener('fullscreenchange',()=>{$('fullMonitor').textContent=document.fullscreenElement?'전체화면 종료':'TV 전체화면';setTimeout(drawWorldMap,80)});new ResizeObserver(()=>drawWorldMap()).observe(mapCanvas.parentElement);loadCatalog().catch(e=>$('error').textContent=e.message);
-</script></body></html>
+</script>
+<script>for(const id of ["studyTier","studyLevel","studyTopic","studyKind"])$(id).addEventListener("change",renderStudyChoices);$("studyChoice").addEventListener("change",renderStudyPreview);</script>
+</body></html>
