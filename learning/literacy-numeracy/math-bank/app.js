@@ -153,9 +153,10 @@
     round = null;
     const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('term'); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
     const list = el('ol', 'mb-groups');
-    for (const group of unit.groups) {
+    unit.groups.forEach((group, gi) => {
       const row = el('li', 'mb-group');
-      row.append(el('span', 'mb-group-title', titleOf(group.title)));
+      const icon = window.MathBankIcons ? window.MathBankIcons.forGroup(unit, group, gi) : '';
+      row.append(el('span', 'mb-group-title', '<span class="mb-group-text">' + titleOf(group.title) + '</span>' + icon));
       const levels = el('div', 'mb-levels');
       for (const level of B.LEVELS) {
         const rounds = B.roundCount(unit, group.id, level);
@@ -171,7 +172,7 @@
       }
       row.append(levels);
       list.append(row);
-    }
+    });
     main.replaceChildren(list);
   }
 
