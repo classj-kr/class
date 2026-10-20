@@ -476,7 +476,7 @@
             const result = C.judge(chart, ended.taps);
             paintMarks(chart.duration + 60 / chart.bpm, result, false);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
-            $('hitRate').textContent = `음표 적중률 ${(100 * result.hits / result.marks.length).toFixed(1)}%`;
+            $('hitRate').textContent = `음표 적중률 ${(100 * result.hits / result.marks.length).toFixed(1)}% · 입력 ${ended.taps.length}회 / 음표 ${result.marks.length}개`;
             $('misses').textContent = result.misses; $('timingWrong').textContent = result.timingWrong; $('extras').textContent = result.extras; $('result').hidden = false;
         }
         if (!ended.demo) timingReport(ended, interrupted);
@@ -491,14 +491,15 @@
         const result = C.judge(chart, ended.taps), beat = 60 / chart.bpm;
         const inputs = C.trace(chart, ended.taps);
         const nearestErrors = inputs.map(input => [input.nearest, Math.round((input.time - chart.targets[input.nearest]) / beat * 1000) / 1000]);
-        const report = { version: '20261018-sequence-judge-v13', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
+        const report = { version: '20261020-tempo-fair-judge', bpm: chart.bpm, level: chart.level, seed: chart.seed, interrupted,
             syncMode: syncCheck ? syncMode : null,
             targets: chart.targets.length, taps: ended.taps.length, input: ended.input,
             accuracy: result.accuracy, hits: result.hits, played: result.played, misses: result.misses, extras: result.extras, timingWrong: result.timingWrong,
             targetBeats: chart.targets.map(time => Math.round(time / beat * 1000) / 1000),
             tapBeats: ended.taps.map(time => Math.round(time / beat * 1000) / 1000), nearestErrors,
             tapJudgments: inputs.map((input, index) => ({ input: index + 1, target: input.target < 0 ? null : input.target + 1,
-                nearestTarget: input.nearest + 1, accepted: input.accepted, reason: input.reason })),
+                nearestTarget: input.nearest + 1, accepted: input.accepted, reason: input.reason,
+                errorMs: input.target < 0 ? null : Math.round(input.error * 1000) })),
             queueMs: ended.queue, clocks: ended.clocks, audioPlan: ended.audioPlan };
         if (syncCheck && !interrupted) {
             // A comparison of observed timing, never an automatic latency correction.
