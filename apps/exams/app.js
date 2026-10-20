@@ -226,7 +226,7 @@
     if (!data.exams.length) list.append(node('p', '아직 만든 시험이 없습니다.'));
     [...data.exams].sort((a, b) => a.title.localeCompare(b.title, 'ko', { numeric: true })).forEach(e => {
       const row = node('div', undefined, 'exam-row'); const a = node('a', e.title); a.href = '?id=' + encodeURIComponent(e.id) + '&mode=teacher';
-      row.append(a, node('span', `방번호 ${e.code} · ${e.questionCount}문항${e.hasAudio ? ' · 듣기' : ''} · ${statusLabel(e)}${e.mine ? ' · 내 시험' : e.ownerName ? ` · ${e.ownerName}` : ''}`, 'muted')); list.append(row);
+      row.append(node('span', e.code, 'room-code'), a, node('span', `${e.questionCount}문항${e.hasAudio ? ' · 듣기' : ''} · ${statusLabel(e)}${e.mine ? '' : e.ownerName ? ` · ${e.ownerName}` : ''}`, 'muted')); list.append(row);
     });
   }
   // 파일 이름에서 학년·과목·코드를 뽑아 같은 시험의 파일끼리 묶는다.
@@ -321,7 +321,7 @@
   }
   async function teacherExam() {
     state = await api('/' + encodeURIComponent(examId) + '?mode=teacher'); show('teacherExam'); const e = state.exam;
-    $('examHeading').textContent = e.title; $('examMeta').textContent = `방번호 ${e.code} · ${e.durationMinutes}분 · ${statusLabel(e)}`;
+    $('examHeading').textContent = e.title; $('examMeta').textContent = `${e.durationMinutes}분 · ${statusLabel(e)}`;
     $('readyNote').textContent = e.status === 'draft' && !e.ready ? '정답을 채워야 학생이 시작할 수 있습니다.' : '';
     $('editTitle').value = e.title; $('editDuration').value = e.durationMinutes; draft = structuredClone(state.questions); editQuestions();
     $('paperView').hidden = e.status === 'draft'; if (e.status !== 'draft') renderPaper(state.questions);
@@ -505,7 +505,6 @@
     if (!confirm('답안을 제출할까요? 제출 후에는 수정할 수 없습니다.')) return; await saveCurrentShort(); await api('/' + encodeURIComponent(examId) + '/submit', 'POST'); await studentExam(); notice('제출했습니다.'); });
   if (examId) run(async () => { if (params.get('mode') === 'teacher') await teacherExam(); else await studentExam(); });
   else if (params.get('mode') === 'teacher') run(teacherHome);
-  // 메인 페이지에서 방번호만 넣고 오면 로그인한 학생은 등록된 학년·반·번호로 바로 입장한다.
   // 메인 화면의 방번호 입력으로만 들어온다. 등록된 학생 정보로 바로 입장한다.
   else if (roomCode.length === 4) join(roomCode).catch(error => notice(error.message));
   else location.replace('/');
