@@ -6,7 +6,7 @@
   let catalog = [], data = { roster: [], sessions: [] }, mode = 'student', selected = null, generation = 0;
   let allPeriod = false;
   let detailGeneration = 0;
-  const domainClass = domain => ({ 읽기: 'reading', 문법: 'grammar', 어휘: 'words', 수리: 'math', 자기점검: 'reflection' }[domain] || '');
+  const domainClass = domain => ({ 읽기: 'reading', 문법: 'grammar', 어휘: 'words', 수리: 'math', '학습 점검': 'reflection' }[domain] || '');
   function formattedText(value, className) {
     const target = node('span', null, className), source = String(value ?? '');
     const formulas = /\$\$([\s\S]+?)\$\$|(?<!\\)\$([^$\n]+?)\$|\\\(([\s\S]+?)\\\)|\\\[([\s\S]+?)\\\]/g;
@@ -31,7 +31,7 @@
   }
   function outcome(event) {
     if (event.kind === 'answer') return event.correct === true ? ['correct', '✓ 정답'] : event.correct === false ? ['incorrect', '× 오답'] : ['unscored', '채점 없음'];
-    return { read: ['reading', '읽기'], 'self-assessment': ['reflection', '자기점검'], hint: ['hint', '도움말'] }[event.kind] || ['unscored', '기록'];
+    return { read: ['reading', '읽기'], 'self-assessment': ['reflection', '학습 점검'], hint: ['hint', '도움말'] }[event.kind] || ['unscored', '기록'];
   }
   function firstAttemptRate(correct, total) {
     const rate = node('span', null, `first-rate${total ? '' : ' no-attempts'}`);

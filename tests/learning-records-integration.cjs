@@ -135,7 +135,7 @@ async function main() {
       const opened = await request('/sessions', { ...start, activity: activity.id,
         contentKey: `report-check-${activity.id}`, title: activity.label, href: activity.href, checkpoint: {} }, 8);
       assert.equal(opened.status, 200, activity.id);
-      const kind = activity.domain === '읽기' ? 'read' : activity.domain === '자기점검' ? 'self-assessment' : 'answer';
+      const kind = activity.domain === '읽기' ? 'read' : activity.id === 'metacognition' ? 'self-assessment' : 'answer';
       const event = { kind, questionKey: activity.id === 'math-ox' ? String(question.id) : 'item-1',
         response: activity.id === 'math-ox' ? question.answer : '응답', correct: true, snapshot: { title: activity.label } };
       const saved = await request(`/sessions/${opened.data.session.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(),
