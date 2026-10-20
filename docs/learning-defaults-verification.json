@@ -4,11 +4,12 @@
     "grade": "current student grade; highest current teacher grade from roster and timetable, within the same school and academic year",
     "term": "Asia/Seoul: February 15 through August 14 = semester 1; otherwise semester 2",
     "year": "January 1 through February 14 = previous year",
-    "precedence": "explicit math unit/term/record and science grade links; manual selection stays until navigation"
+    "precedence": "explicit math unit/term/record and science grade links; manual selection stays until navigation",
+    "missingGrade": "grade 1 within the known school level; unknown school level is not inferred"
   },
   "validation": {
     "nodeTests": 9,
-    "browserChecks": 16,
+    "browserChecks": 20,
     "browserPageErrors": 0,
     "scienceAssetHashCheck": "passed"
   },

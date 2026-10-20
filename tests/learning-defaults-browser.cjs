@@ -40,7 +40,8 @@ app.use(express.static(root));
   page.on('pageerror',error=>errors.push(error.message));
   const base=`http://127.0.0.1:${server.address().port}`;
   await page.clock.setFixedTime(new Date('2026-10-20T12:00:00+09:00'));
-  for(const [school,grade,expected] of [['초등학교',6,'6-2'],['중학교',2,'8-2'],['고등학교',1,'10-2'],['고등학교',3,'10-2']]){
+  for(const [school,grade,expected] of [['초등학교',6,'6-2'],['중학교',2,'8-2'],['고등학교',1,'10-2'],['고등학교',3,'10-2'],
+   ['초등학교',null,'1-2'],['중학교',null,'7-2'],['고등학교',null,'10-2']]){
    identity={kind:'student',...schoolDefaults({schoolName:'검증'+school,grade})};
    await page.goto(base+'/learning/literacy-numeracy/math-bank/');
    await page.waitForFunction(()=>document.querySelector('#termSelect').options.length>0);
@@ -90,6 +91,12 @@ app.use(express.static(root));
    assert.equal(await page.locator('#'+id).inputValue(),'6');
   }
   results.push({area:'schooladmin',case:'highest-grade-in-three-filters'});
+  scope={homeroomGrade:null,pairs:[]};
+  identity={kind:'teacher',...schoolDefaults({school_name:'가초등학교'})};
+  await page.goto(base+'/classtools/assessment-plan/plan.html');
+  await page.waitForFunction(()=>document.querySelector('#subject-select').options.length>0);
+  assert.equal(await page.locator('#grade-select').inputValue(),'1');
+  results.push({area:'assessment',case:'unknown-grade-falls-back-to-first'});
   assert.deepEqual(errors,[]);
   const out=path.join(root,'outputs/qa/learning-defaults');fs.mkdirSync(out,{recursive:true});
   fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({results,errors},null,2));
