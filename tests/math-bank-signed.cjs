@@ -30,11 +30,11 @@ const MINUS = '−';
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('dialog', (d) => d.accept());
     await page.goto(h.base + URL_PATH);
-    await page.locator('.mb-group').first().waitFor();
+    await page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
     assert.equal(await page.locator('#termSelect option[value="7-1"]').innerText(), '중 1학년 1학기');
     await page.selectOption('#termSelect', '7-1');
     await page.selectOption('#unitSelect', UNIT);
-    await page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group').length > 0, UNIT);
+    await page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group:not(.mb-ox-group)').length > 0, UNIT);
 
     // 단원의 모든 문항을 자리(묶음·단추 차례)와 함께 읽는다.
     const pool = await page.evaluate((unitId) => {
@@ -58,14 +58,14 @@ const MINUS = '−';
     const take = (what, test) => { const item = pool.find((it) => !used.has(it.key) && test(it)); assert.ok(item, '단원에 이런 문항이 없다: ' + what); used.add(item.key); return item; };
     const single = (it) => it.inputs && it.inputs.length === 1 && !it.fraction;
     const open = async (item) => {
-      await page.locator('.mb-group').nth(item.gi).locator('.mb-level').nth(item.li).click();
+      await page.locator('.mb-group:not(.mb-ox-group)').nth(item.gi).locator('.mb-level').nth(item.li).click();
       const card = page.locator(`.mb-item[data-key="${item.key}"]`);
       await card.waitFor();
       return card;
     };
     const back = async () => {
       await page.evaluate(() => window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
-      await page.locator('.mb-group').first().waitFor();
+      await page.locator('.mb-group:not(.mb-ox-group)').first().waitFor();
     };
     const done = async (card, right) => {
       await card.locator('.mb-result:not([hidden])').waitFor({ timeout: 10000 });

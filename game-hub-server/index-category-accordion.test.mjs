@@ -35,14 +35,12 @@ for (const [number, label, panelId] of expectedCategories) {
 }
 
 assert.ok(
-  html.includes(
-    "categorySections.forEach((section) => setCategoryExpanded(section, section === selectedSection && shouldExpand));",
-  ),
-  "Selecting one category must collapse the other categories.",
+  html.includes('src="assets/hub-accordion.js?'),
+  "The hub must load its shared accordion motion controller.",
 );
 assert.ok(
-  html.includes("const shouldExpand = toggle.getAttribute('aria-expanded') !== 'true';"),
-  "Selecting the open category again must collapse it.",
+  html.includes('ClassroomHubAccordion.create(hubContent)'),
+  "Both levels of hub menus must use the shared accordion controller.",
 );
 assert.ok(
   html.includes(".category-panel[hidden] {") && html.includes("display: none !important;"),

@@ -1985,6 +1985,24 @@
         return notes[notes.length - 1] > 76 ? notes.map(note => note - 12) : notes;
     }
 
+    function playWheelChord(chord) {
+        // Direct presses sound immediately, including before the samples have loaded.
+        voiceChord(chord).forEach(midi => {
+            window.PianoEngine.playMidi(midi, { duration: .85, volume: .11 }).catch(() => {});
+        });
+    }
+
+    function wheelPlaybackOptions() {
+        return {
+            onPlayKey: (home, quality) => playWheelChord({ rootMidi: home.tonic + (quality === "min" ? 9 : 0), quality }),
+            onPlayChord: (chord, home) => playWheelChord(wheelChordNames(home, [chord])[0]),
+            onPlayMode: (mode, home) => {
+                const root = 60 + home.tonic;
+                window.PianoEngine.playSequence(mode.steps.map(step => [root + step]), .42).catch(() => {});
+            }
+        };
+    }
+
     function openWheel(lesson) {
         els.wheelTitle.textContent = lesson.title;
         els.wheelBody.replaceChildren();
@@ -1997,17 +2015,9 @@
         els.wheelLessonNext.dataset.next = String(next);
         els.wheelLessonNext.textContent = next >= 0 ? "다음 차시" : "차시 목록";
         if (!wheel) {
-            wheel = window.Wheel.create(els.wheelBoard, {
-                onChange: (list, home) => renderWheelChords(wheelChordNames(home, list)),
-                onPlayChord: chord => {
-                    const named = wheelChordNames(wheel.home(), [chord])[0];
-                    window.PianoEngine.playSequence([voiceChord(named)], 2).catch(() => {});
-                },
-                onPlayMode: (mode, home) => {
-                    const root = 60 + home.tonic;
-                    window.PianoEngine.playSequence(mode.steps.map(step => [root + step]), .42).catch(() => {});
-                }
-            });
+            wheel = window.Wheel.create(els.wheelBoard, Object.assign(wheelPlaybackOptions(), {
+                onChange: (list, home) => renderWheelChords(wheelChordNames(home, list))
+            }));
         }
         wheel.setKey("C");
         setLessonMark(course.id, lesson.id, { read: true });
@@ -2044,7 +2054,7 @@
             setChordName(button.querySelector("span"), chord.name);
             button.querySelector("small").textContent = chord.role || "";
             button.addEventListener("click", () => {
-                window.PianoEngine.playSequence([voiceChord(chord)], 2).catch(() => {});
+                playWheelChord(chord);
             });
             els.wheelChords.append(button);
         });
@@ -2678,6 +2688,7 @@
             else soundOnly(midi);
         });
         wheelPractice = window.WheelPractice.create(els.wheelPracticeScreen, {
+            wheelOptions: wheelPlaybackOptions(),
             onBack: () => { renderLessonList(); showScreen("course"); },
             onAnswer: (topic, correct) => {
                 const table = saved.stats.wheel || (saved.stats.wheel = {});

@@ -4235,7 +4235,7 @@ wss.on("connection", (socket, request) => {
       const game = room?.expedition;
       const action = cleanToken(message.action, 30);
       if (!room || !game) {
-        expeditionError(socket, "탐사대 방에 참가하지 않았습니다.");
+        expeditionError(socket, "자원 모으기 방에 참가하지 않았습니다.");
         return;
       }
 

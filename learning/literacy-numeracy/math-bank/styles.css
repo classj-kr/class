@@ -12,8 +12,8 @@
 html { background: var(--night); }
 html, body { margin: 0; color: var(--ink); font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
 button, input, select { font: inherit; color: inherit; }
-/* 바탕: 어두운 남색 물결 그림(평가원·수능 기출 화면과 같은 그림). 화면에 붙박아 두어 길게 내려도 그림이 늘어나지 않는다. */
-body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: linear-gradient(rgba(11, 17, 32, 0.42), rgba(11, 17, 32, 0.65)), url("assets/math-bg.webp") center top / cover no-repeat var(--night); }
+/* 통합 전 기초 OX에서 쓰던 배경. 긴 단원에서도 화면에 고정한다. */
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: url("/assets/images/math-ox-bg.webp") center top / cover no-repeat var(--night); }
 .mb-page { max-width: 820px; margin: 0 auto; padding: 14px 16px 60px; }
 
 /* 맨 위: 뒤로가기와 단원 고르기 */
@@ -40,6 +40,21 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: 
 .mb-level.is-hard { border-color: #7c3aed; color: #6d28d9; }
 .mb-level.is-hard:hover { background: #f1eafe; }
 .mb-level.is-hard.is-done { background: var(--right-soft); border-color: var(--right); color: var(--right); }
+
+/* OX는 단원 앞에 두되, 기존 일반 차시 번호는 유지한다. */
+.mb-ox-group { counter-increment: none; }
+.mb-ox-group::before { content: "OX"; font-size: 0.7rem; }
+.mb-ox-start { min-width: 76px; border-color: var(--brand); color: var(--brand-dark); font-weight: 600; }
+.mb-ox-answer { min-width: 80px; min-height: 48px; border: 1px solid var(--brand); border-radius: 10px; background: #fff; color: var(--brand-dark); font-weight: 700; font-size: 1.35rem; cursor: pointer; }
+.mb-ox-answer:hover, .mb-ox-answer.is-selected { background: var(--brand-soft); }
+.mb-ox-answer:disabled { cursor: default; }
+.mb-ox-item.is-wrong .mb-ox-answer.is-selected { border-color: var(--wrong); color: var(--wrong); background: var(--wrong-soft); }
+.mb-ox-item.is-right .mb-ox-answer.is-selected { border-color: var(--right); color: var(--right); background: var(--right-soft); }
+.mb-ox-prompt, .mb-ox-reason { word-break: keep-all; overflow-wrap: anywhere; }
+.mb-ox-reason { margin-top: 10px; }
+.mb-ox-item .mb-result .mb-plain { margin-top: 10px; }
+.mb-ox-item .katex { font-size: 1.12em; }
+.mb-ox-item .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
 
 /* 푸는 화면 */
 .mb-round-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }

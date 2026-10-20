@@ -4,6 +4,7 @@
 (function () {
   'use strict';
   const B = window.MathBank;
+  const C = window.MathConceptOX;
   const VERSION = '2';
   const main = document.getElementById('main');
   const termSelect = document.getElementById('termSelect');
@@ -15,10 +16,10 @@
   let round = null;     // { group, level, no, items, answers }
   let finished = {};    // 회차 열쇠 -> { right, total } (가장 최근에 끝낸 결과)
   let busy = false;
+  let conceptView = null;
   function setBusy(value) {
     busy = value; main.inert = value;
-    const lock = value && window.MathBankTwins.eligible(unit);
-    termSelect.disabled = lock; unitSelect.disabled = lock;
+    termSelect.disabled = value; unitSelect.disabled = value;
   }
 
   // 수와 단위 기호 사이(7 cm, 30 %, x cm, 12π cm²)에서 줄이 갈리지 않게 그 빈칸을 줄 바꿈 없는 빈칸으로 바꾼다. 그림(svg) 안의 글은 그대로 둔다.
@@ -72,7 +73,7 @@
   const shownText = (html) => rawText(html).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(SUP, '<sup>$1</sup>');
   const roundKey = (groupId, level, no) => unit.id + ':' + groupId + ':' + level + ':' + no;
   const versionOf = (u) => VERSION + '.' + (u.version || 1);
-  const termOf = (u) => u.grade + '-' + u.semester;
+  const termOf = (u) => u.oxCourse || u.grade + '-' + u.semester;
   // 해결 여부와 최초 채점은 따로 둔다. 힌트를 보고 맞혀도 최초 오답은 바뀌지 않는다.
   // 검증된 유사 문제가 준비된 초·중·고1 두 학기에 힌트와 오답 복습을 적용한다.
   const isClosed = (state) => Boolean(state && (!round.hints || state.ok || state.revealed));
@@ -104,19 +105,27 @@
   const TERM_LIST = [...new Set(UNIT_FILES.map((e) => e.term))];
   // 화면 검사가 쓴다: 실린 단원 번호 전부(아직 안 불러온 학기 것까지)와 학기 불러오기.
   B.lazy = { ids: () => [...new Set(UNIT_FILES.map((e) => e.file.slice(0, -1)))], terms: () => TERM_LIST.slice(), loadTerm };
-  const unitsOf = (term) => B.units().filter((u) => termOf(u) === term).sort((a, b) => a.no - b.no);
+  const unitsOf = (term) => B.units().concat(C.virtualUnits).filter((u) => termOf(u) === term).sort((a, b) => a.no - b.no);
+  const findUnit = id => B.findUnit(id) || C.findUnit(id);
+  const allTerms = TERM_LIST.concat(C.courses.map(course => course.key));
+  function fillTerms(term) {
+    T.fill(termSelect, term, TERM_LIST);
+    const past = termSelect.lastElementChild;
+    C.courses.forEach(course => termSelect.insertBefore(new Option(course.label, course.key), past));
+    termSelect.value = term;
+  }
 
   // ── 단원 고르기 ──────────────────────────────────────────────
   async function fillSelects(preferred) {
     // preferred 는 단원 번호(3-1-2)이거나 학기(3-1)다. 학기이면 그 학기의 첫 단원을 연다. 없으면 맨 앞 학기.
     const want = String(preferred || '');
-    const term = TERM_LIST.includes(want) ? want : TERM_LIST.find((t) => want.startsWith(t + '-')) ||
+    const term = allTerms.includes(want) ? want : allTerms.find((t) => want.startsWith(t + '-')) ||
       TERM_LIST.find(t => t.endsWith('-' + window.LearningDefaults.term().semester)) || TERM_LIST[0];
     await loadTerm(term);
     const list = unitsOf(term);
     unit = list.find((u) => u.id === want) || list[0];
     // 학기들 아래 맨 밑에 「평가원·수능 기출」이 붙는다(terms.js).
-    T.fill(termSelect, term, TERM_LIST);
+    fillTerms(term);
     fillUnits();
   }
   function fillUnits() {
@@ -128,9 +137,15 @@
   termSelect.addEventListener('change', async () => {
     // 맨 밑의 「평가원·수능 기출」은 따로 있는 기출 화면으로 간다. 뒤로 돌아왔을 때 드롭다운이 기출에 머물러 있지 않게 먼저 되돌려 둔다.
     if (termSelect.value === T.PAST.value) { termSelect.value = termOf(unit); location.href = PAST_URL; return; }
-    await loadTerm(termSelect.value); fillUnits(); await loadFinished(); showGroups();
+    setBusy(true);
+    try { await loadTerm(termSelect.value); fillUnits(); await loadFinished(); showGroups(); }
+    finally { setBusy(false); }
   });
-  unitSelect.addEventListener('change', async () => { unit = B.findUnit(unitSelect.value); await loadFinished(); showGroups(); });
+  unitSelect.addEventListener('change', async () => {
+    setBusy(true);
+    try { unit = findUnit(unitSelect.value); await loadFinished(); showGroups(); }
+    finally { setBusy(false); }
+  });
 
   // 끝낸 회차의 결과(학생으로 로그인했을 때만 서버에 있다)
   async function loadFinished() {
@@ -152,8 +167,17 @@
   // ── 묶음 목록 ────────────────────────────────────────────────
   function showGroups() {
     round = null;
-    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('term'); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
+    conceptView?.close();
+    if (unit.oxOnly) records.host.hidden = true;
+    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('term'); url.searchParams.delete('concept'); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
     const list = el('ol', 'mb-groups' + (unit.semesterAdvanced ? ' is-semester' : ''));
+    if (!unit.semesterAdvanced && C.idsFor(unit.id).length) {
+      const row = el('li', 'mb-group mb-ox-group');
+      row.append(el('span', 'mb-group-title', '<span class="mb-group-text">기초 개념 OX</span>'));
+      const controls = el('div', 'mb-levels');
+      const button = el('button', 'mb-plain mb-ox-start', '풀기'); button.type = 'button';
+      button.addEventListener('click', openConcept); controls.append(button); row.append(controls); list.append(row);
+    }
     unit.groups.forEach((group) => {
       const row = el('li', 'mb-group');
       row.append(el('span', 'mb-group-title', '<span class="mb-group-text">' + titleOf(group.title) + '</span>'));
@@ -175,6 +199,12 @@
       list.append(row);
     });
     main.replaceChildren(list);
+  }
+
+  async function openConcept() {
+    if (busy) return;
+    try { round = null; await conceptView.open(unit); }
+    catch (error) { showGroups(); main.append(el('p', 'mb-empty', 'OX를 불러오지 못했습니다. 다시 열어 주세요.')); console.error(error); }
   }
 
   // ── 한 회차 열기 ─────────────────────────────────────────────
@@ -455,8 +485,8 @@
 
   // ── 뒤로가기: 푸는 중이면 묶음 목록으로 한 칸만 ─────────────────
   function stepBack(event) {
-    if (busy && window.MathBankTwins.eligible(unit)) { event.preventDefault(); return; }
-    if (!round) return;
+    if (busy) { event.preventDefault(); return; }
+    if (!round && !conceptView?.active) return;
     event.preventDefault();
     showGroups();
   }
@@ -466,16 +496,20 @@
   async function start() {
     records = window.LearningRecords.create('math-bank', { label: '수학 문제', mount: main });
     await records.ready;
+    conceptView = C.createView({ main, bankRecords: records, setBusy, showGroups });
     const params = new URLSearchParams(location.search);
     const record = (params.get('record') || '').split(':');   // 풀던 회차: 단원:묶음:수준:회차
+    // 예전 OX 학습 기록의 주소(과목·원래 단원 이름)도 통합 차시로 이어진다.
+    const legacy = record.length === 1 && C.legacyTarget(record[0], params.get('unit'));
+    const preferred = params.get('unit');
     const ownTerm = window.LearningDefaults.mathTerm(window.CLASS_SCHOOL_LEVEL, window.CLASS_SCHOOL_GRADE, TERM_LIST);
-    await fillSelects(record.length >= 3 ? record[0] : params.get('unit') || params.get('term') || ownTerm);
+    await fillSelects(record.length >= 3 ? record[0] : legacy && !(C.findUnit(preferred) || /^\d+-[12]-\d+$/.test(preferred || '')) ? legacy : preferred || params.get('term') || ownTerm);
     await loadFinished();
     if (record.length >= 3 && unit.id === record[0] && B.findGroup(unit, record[1]) && B.LEVELS.includes(record[2])) {
       if (record[4] === 'twins' && record[5] && window.MathBankTwins.eligible(unit)) await openReview(record[1], record[2], Number(record[3]) || 1, record[5].split('.').map(Number));
       else await openRound(record[1], record[2], Number(record[3]) || 1);
     }
-    else showGroups();
+    else { showGroups(); if (params.get('concept') === '1' || legacy) await openConcept(); }
   }
   start().catch((error) => { main.replaceChildren(el('p', 'mb-empty', '문제를 불러오지 못했습니다. 새로 고침 해 주세요.')); console.error(error); });
 })();

@@ -1017,6 +1017,10 @@ body.menu-open .shell {
     cursor: pointer;
     transition: fill 0.2s ease, stroke 0.2s ease;
 }
+.wheel path[role="button"]:focus-visible { outline: none; stroke: #fff; stroke-width: 3; }
+.wheel-key-preview { cursor: pointer; }
+.wheel-hub-major, .wheel-hub-minor { pointer-events: none; }
+.wheel-key-preview:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .wheel-cell-major {
     fill: rgba(26, 36, 56, 0.88);
     stroke: rgba(255, 255, 255, 0.16);
