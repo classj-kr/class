@@ -12,6 +12,9 @@ test('question validation and short answer aliases', () => {
   assert.ok(matchesAnswer(q, { response: '다른답' }));
   assert.equal(matchesAnswer(q, { response: '엉뚱한 답' }), false);
   assert.throws(() => normalizeQuestions([{ kind: 'short', content: '문제', answer: '' }], { publish: true }));
+  // 시험지의 원래 문항 번호를 남겨 정답지와 번호로 맞춘다.
+  const numbered = normalizeQuestions([{ number: 4, kind: 'ox', content: '?' }, { number: '첫째', kind: 'ox', content: '?' }]);
+  assert.deepEqual(numbered.map(q => q.number), [4, null]);
 });
 
 test('figure locations from the AI are clamped or dropped', () => {

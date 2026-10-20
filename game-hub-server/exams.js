@@ -37,8 +37,10 @@ function normalizeQuestions(input, { publish = false } = {}) {
     if (ids.has(questionId)) throw new Error('문항 ID가 중복되었습니다.');
     ids.add(questionId);
     const image = /^[a-f\d-]{36}$/i.test(raw.image || '') ? raw.image : null;
+    // 시험지에 적힌 원래 문항 번호. 정답지와 번호로 맞출 때 쓴다.
+    const number = Number.isInteger(Number(raw.number)) && Number(raw.number) >= 1 && Number(raw.number) <= 300 ? Number(raw.number) : null;
     return { id: questionId, kind, content, choices: choices.map(v => String(v).trim()), answer, aliases,
-      explanation: String(raw.explanation || '').trim().slice(0, 1000), image };
+      explanation: String(raw.explanation || '').trim().slice(0, 1000), image, number };
   });
 }
 

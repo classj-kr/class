@@ -479,7 +479,8 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
       '문서에 정답표가 있으면 그 정답만 사용한다. 정답표가 없거나 대응이 불명확하면 객관식·OX의 answer는 null, 단답형의 answer는 빈 문자열로 둔다. 정답을 추측하지 마라.',
       '객관식 kind는 choice, OX는 ox. 이 둘의 answer는 0부터 시작하는 보기 번호다. OX의 choices는 ["O","X"]로 고정한다.',
       '단답형 kind는 short, choices는 빈 배열, answer는 정답표에 있는 정답 문자열이다. 여러 정답이 명시되면 aliases에 다른 허용 정답을 적는다. 정답표가 없으면 answer는 빈 문자열이다.',
-      'JSON 객체 한 개만 답하라. 예: {"questions":[{"kind":"short","content":"문제","choices":[],"answer":"","aliases":[],"explanation":"","figure":null}],"note":""}'
+      'number에는 시험지에 적힌 문항 번호를 정수로 쓴다(번호가 없으면 null).',
+      'JSON 객체 한 개만 답하라. 예: {"questions":[{"number":1,"kind":"short","content":"문제","choices":[],"answer":"","aliases":[],"explanation":"","figure":null}],"note":""}'
     ].join('\n');
     const data = readPlanDocument(req.body, 'exam.pdf');
     const parsed = parseJsonAnswer(await askJson(user.id, stored,
@@ -492,6 +493,36 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     // 그림 위치는 브라우저가 PDF 쪽을 그려 잘라 내는 데만 쓴다. 저장되는 문항에는 들어가지 않는다.
     questions.forEach((q, i) => { const figure = cleanFigure(raw[i]?.figure); if (figure) q.figure = figure; });
     res.json({ questions, note: String(parsed.note || '').slice(0, 1000) });
+  }));
+
+  // 정답지(PDF, 또는 브라우저가 엑셀을 글로 바꾼 것)에서 문항 번호별 정답을 옮긴다. 문항에 넣는 일은 브라우저가 한다.
+  router.post('/read-answer-key', express.raw({ type: () => true, limit: MAX_PLAN_FILE_BYTES }), asyncRoute(async (req, res) => {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    const body = Buffer.isBuffer(req.body) ? req.body : Buffer.alloc(0);
+    if (!body.length) fail('AI_KEY_FILE_REQUIRED', '정답지를 올려 주세요.', 415);
+    const isPdf = body.subarray(0, 4).toString('latin1') === '%PDF';
+    countGenerate(user.id);
+    const stored = await storedKey(user.id);
+    if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
+    let title = '';
+    try { title = decodeURIComponent(String(req.headers['x-exam-title'] || '')).slice(0, 120); } catch (_) {}
+    const prompt = [
+      `이것은 시험 정답표다${isPdf ? '(PDF)' : '(엑셀 내용을 쉼표로 구분한 글)'}. 문항 번호별 정답을 빠짐없이 옮겨라.`,
+      title ? `여러 시험의 정답이 섞여 있으면 "${title}"에 해당하는 것만 옮겨라.` : '',
+      '객관식 정답은 ①②③ 같은 동그라미 숫자든 1, 2, 3 숫자든 보기 번호를 1부터 세는 숫자 문자열로 바꿔 쓴다. OX는 "O" 또는 "X". 단답형은 정답 글자를 그대로 쓰고, 정답이 여러 개면 쉼표로 이어 쓴다.',
+      '표에 없는 정답을 지어내지 마라.',
+      'JSON 객체 한 개만 답하라. 예: {"answers":[{"number":1,"answer":"3"},{"number":2,"answer":"O"}],"note":""}'
+    ].filter(Boolean).join('\n');
+    const part = isPdf ? { inline_data: { mime_type: 'application/pdf', data: body.toString('base64') } }
+      : { text: body.toString('utf8').slice(0, 60000) };
+    const parsed = parseJsonAnswer(await askJson(user.id, stored, [part, { text: prompt }], 8192),
+      'AI_KEY_UNREADABLE', '정답지를 읽지 못했습니다. 파일을 확인해 주세요.');
+    const answers = (Array.isArray(parsed.answers) ? parsed.answers : [])
+      .map(a => ({ number: Number(a?.number), answer: String(a?.answer ?? '').trim().slice(0, 200) }))
+      .filter(a => Number.isInteger(a.number) && a.number >= 1 && a.number <= 300 && a.answer)
+      .slice(0, 300);
+    res.json({ answers, note: String(parsed.note || '').slice(0, 1000) });
   }));
 
   // 수행평가 계획서 파일 → 나이스 틀의 항목 목록. 성취기준 코드는 그 교과·학년군 목록에서만 고른다.
