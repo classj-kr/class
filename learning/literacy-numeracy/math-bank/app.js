@@ -153,7 +153,7 @@
   function showGroups() {
     round = null;
     const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('term'); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
-    const list = el('ol', 'mb-groups');
+    const list = el('ol', 'mb-groups' + (unit.semesterAdvanced ? ' is-semester' : ''));
     unit.groups.forEach((group) => {
       const row = el('li', 'mb-group');
       row.append(el('span', 'mb-group-title', '<span class="mb-group-text">' + titleOf(group.title) + '</span>'));
@@ -186,7 +186,8 @@
     setBusy(true);
     try {
       const rounds = B.roundCount(unit, groupId, level);
-      const session = await records.start({ contentKey: roundKey(groupId, level, no), title: unit.title + ' · ' + group.title + ' (' + level + (rounds > 1 ? ' ' + no + '회' : '') + ')', version: versionOf(unit), checkpoint: { answers: {} } });
+      const headTitle = unit.title === group.title ? unit.title : unit.title + ' · ' + group.title;
+      const session = await records.start({ contentKey: roundKey(groupId, level, no), title: headTitle + ' (' + level + (rounds > 1 ? ' ' + no + '회' : '') + ')', version: versionOf(unit), checkpoint: { answers: {} } });
       const saved = (session.checkpoint && session.checkpoint.answers) || {};
       round = { group, level, no, rounds, items, answers: {}, sessionId: session.id, hints: window.MathBankTwins.eligible(unit) };
       for (const item of items) if (saved[item.key]) round.answers[item.key] = restoreAnswer(saved[item.key]);
@@ -205,7 +206,8 @@
       const batches = await Promise.all(selected.map(i => window.MathBankTwins.forItem(B, unit, group, originals[i])));
       const items = batches.flatMap((batch, at) => batch.map(item => ({ ...item, originNo: selected[at] + 1 })));
       const contentKey = roundKey(groupId, level, no) + ':twins:' + selected.join('.');
-      const session = await records.start({ contentKey, title: unit.title + ' · ' + group.title + ' · 오답 유사 문제 복습', version: versionOf(unit) + '.twins-1', checkpoint: { answers: {}, origins: selected, parentSessionId } });
+      const headTitle = unit.title === group.title ? unit.title : unit.title + ' · ' + group.title;
+      const session = await records.start({ contentKey, title: headTitle + ' · 오답 유사 문제 복습', version: versionOf(unit) + '.twins-1', checkpoint: { answers: {}, origins: selected, parentSessionId } });
       round = { group, level, no, items, answers: {}, hints: true, review: { contentKey, indices: selected, parentSessionId: session.checkpoint?.parentSessionId || parentSessionId } };
       for (const item of items) if (session.checkpoint?.answers?.[item.key]) round.answers[item.key] = restoreAnswer(session.checkpoint.answers[item.key]);
       showRound();

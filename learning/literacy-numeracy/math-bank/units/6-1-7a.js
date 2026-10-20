@@ -1,4 +1,4 @@
-// 6학년 1학기 학기 실력 — 6학년 1학기까지 배운 여러 단원(비와 비율, 여러 가지 그래프, 직육면체의 부피와 겉넓이, 각기둥과 각뿔, 분수·소수의 나눗셈)의
+// 6학년 1학기 종합 — 6학년 1학기까지 배운 여러 단원(비와 비율, 여러 가지 그래프, 직육면체의 부피와 겉넓이, 각기둥과 각뿔, 분수·소수의 나눗셈)의
 // 개념을 연결하고, 등적변형·묶음 모형·단면 원리·부피 보존으로 해결하는 응용 문항.
 (function (root) {
   'use strict';
@@ -14,12 +14,10 @@
   function gridShadeSvg(n, fullCells, halfPairs) {
     const size = 164, pad = 12, cell = (size - pad * 2) / n;
     let out = `<rect x="${pad}" y="${pad}" width="${size - pad * 2}" height="${size - pad * 2}" style="fill:#f8fafc;stroke:#1e293b;stroke-width:1.5"/>`;
-    // 온전한 색칠 칸
     fullCells.forEach(([r, c]) => {
       const x = pad + c * cell, y = pad + r * cell;
       out += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${cell.toFixed(1)}" height="${cell.toFixed(1)}" style="fill:#60a5fa;stroke:none"/>`;
     });
-    // 대각선으로 반씩 색칠된 칸(절반 삼각형 2개가 모여 1칸이 됨)
     halfPairs.forEach(([r, c, dir]) => {
       const x = pad + c * cell, y = pad + r * cell;
       const pts = dir === 0
@@ -27,7 +25,6 @@
         : `${(x + cell).toFixed(1)},${y.toFixed(1)} ${(x + cell).toFixed(1)},${(y + cell).toFixed(1)} ${x.toFixed(1)},${(y + cell).toFixed(1)}`;
       out += `<polygon points="${pts}" style="fill:#60a5fa;stroke:none"/>`;
     });
-    // 모눈선
     for (let i = 0; i <= n; i += 1) {
       const p = (pad + i * cell).toFixed(1);
       out += `<line x1="${pad}" y1="${p}" x2="${size - pad}" y2="${p}" style="stroke:#334155;stroke-width:1"/>`;
@@ -39,41 +36,38 @@
     return `<svg class="mb-geo" viewBox="0 0 ${size} ${size}" width="${size}" role="img" aria-label="${said}">${out}</svg>`;
   }
 
-  // 2) 직육면체를 밑면에 평행하게 잘랐을 때 늘어나는 두 단면을 보여주는 그림
+  // 2) 직육면체를 밑면에 평행하게 자르는 문제 그림(스포일러 없이 절단 위치와 가로·세로·높이만 표시)
   function cutBoxSvg(a, b, c) {
-    const W = 252, Hh = 136;
+    const W = 216, Hh = 138;
     let out = '';
-    // 왼쪽: 자르기 전 직육면체와 절단면 점선
-    out += `<polygon points="24,42 84,42 104,24 44,24" style="fill:#e2e8f0;stroke:#1e293b;stroke-width:1.2"/>`;
-    out += `<polygon points="24,42 84,42 84,102 24,102" style="fill:#f8fafc;stroke:#1e293b;stroke-width:1.2"/>`;
-    out += `<polygon points="84,42 104,24 104,84 84,102" style="fill:#cbd5e1;stroke:#1e293b;stroke-width:1.2"/>`;
-    // 가운데 절단선(붉은 점선 평면)
-    out += `<polygon points="24,72 84,72 104,54 44,54" style="fill:rgba(251,191,36,0.38);stroke:#dc2626;stroke-width:1.3;stroke-dasharray:3 2"/>`;
-    out += `<text x="54" y="118" text-anchor="middle" style="font-size:10.5px;font-weight:700;fill:#1e293b">가로 ${a} cm, 세로 ${b} cm</text>`;
-    out += `<text x="114" y="62" style="font-size:10.5px;font-weight:700;fill:#1e293b">높이 ${c} cm</text>`;
-    // 오른쪽 설명: 새로 생기는 두 단면
-    out += `<polygon points="158,46 218,46 234,32 174,32" style="fill:#fde68a;stroke:#b45309;stroke-width:1.3"/>`;
-    out += `<polygon points="158,82 218,82 234,68 174,68" style="fill:#fde68a;stroke:#b45309;stroke-width:1.3"/>`;
-    out += `<text x="196" y="104" text-anchor="middle" style="font-size:10.5px;font-weight:700;fill:#b45309">새로 생긴 단면 2개</text>`;
-    const said = `가로 ${a} cm, 세로 ${b} cm, 높이 ${c} cm인 직육면체를 밑면에 평행하게 한 번 잘라 두 직육면체로 만들 때 새로 생기는 단면 2개`;
+    // 윗면, 앞면, 오른쪽 옆면
+    out += `<polygon points="34,40 118,40 144,20 60,20" style="fill:#e2e8f0;stroke:#1e293b;stroke-width:1.3;stroke-linejoin:round"/>`;
+    out += `<polygon points="34,40 118,40 118,104 34,104" style="fill:#f8fafc;stroke:#1e293b;stroke-width:1.3;stroke-linejoin:round"/>`;
+    out += `<polygon points="118,40 144,20 144,84 118,104" style="fill:#cbd5e1;stroke:#1e293b;stroke-width:1.3;stroke-linejoin:round"/>`;
+    // 밑면에 평행한 절단선
+    out += `<polygon points="34,72 118,72 144,52 60,52" style="fill:rgba(251,191,36,0.32);stroke:#dc2626;stroke-width:1.4;stroke-dasharray:4 2"/>`;
+    // 치수 표시
+    out += `<text x="76" y="121" text-anchor="middle" style="font-size:11px;font-weight:700;fill:#1e293b">${a} cm</text>`;
+    out += `<text x="140" y="103" style="font-size:11px;font-weight:700;fill:#1e293b">${b} cm</text>`;
+    out += `<text x="152" y="56" style="font-size:11px;font-weight:700;fill:#1e293b">${c} cm</text>`;
+    const said = `가로 ${a} cm, 세로 ${b} cm, 높이 ${c} cm인 직육면체를 밑면에 평행한 점선을 따라 한 번 자르는 그림`;
     return `<svg class="mb-geo" viewBox="0 0 ${W} ${Hh}" width="${W}" role="img" aria-label="${said}">${out}</svg>`;
   }
 
   B.addUnit({
-    id: U, grade: 6, semester: 1, no: 7, title: '학기 실력', semesterAdvanced: true, version: 1,
+    id: U, grade: 6, semester: 1, no: 7, title: '초 6학년 1학기 종합', semesterAdvanced: true, version: 2,
     groups: [
       {
-        id: 'synth', title: '비율·그래프·공간 개념 연결하기', standard: RATIO,
+        id: 'hard', title: '초 6학년 1학기 종합', standard: RATIO,
         types: [
           H('adv-grid-shade-pct', '대칭·합동 등적변형으로 색칠한 부분의 백분율 구하기', 'AMC8 2025 1번 개작(등적변형 + 백분율)', (d) => {
             const [n, fullCount, halfCount] = d.pick([
-              [4, 3, 6],   // (3 + 3) / 16 -> 6/16 X -> 4x4 에서 100으로 나누어떨어지려면 4, 8, 12칸 또는 5x5!
-              [5, 4, 6],   // (4 + 3) = 7칸 / 25칸 = 28%
-              [5, 5, 8],   // (5 + 4) = 9칸 / 25칸 = 36%
-              [5, 6, 6],   // (6 + 3) = 9칸 / 25칸 = 36% -> 다르게: [5, 6, 8] = 10칸 = 40%
-              [4, 2, 4],   // (2 + 2) = 4칸 / 16칸 = 25%
-              [4, 5, 6]    // (5 + 3) = 8칸 / 16칸 = 50%
-            ].filter(([nn, fc, hc]) => ((fc + hc / 2) * 100) % (nn * nn) === 0));
+              [5, 4, 6],
+              [5, 5, 8],
+              [5, 6, 8],
+              [4, 2, 4],
+              [4, 5, 6]
+            ]);
             const totalCells = n * n, shadedCells = fullCount + halfCount / 2, pct = shadedCells * 100 / totalCells;
             const allCoords = [];
             for (let r = 0; r < n; r += 1) for (let c = 0; c < n; c += 1) allCoords.push([r, c]);
@@ -83,7 +77,7 @@
             return N(`정사각형을 똑같이 ${totalCells}칸(${n}×${n})으로 나눈 모눈종이에 그림과 같이 색칠하였다. 색칠한 부분(온전한 칸 ${fullCount}개와 칸을 대각선으로 이등분한 직각삼각형 ${halfCount}개)의 넓이는 정사각형 전체 넓이의 몇 %인가?`, pct, {
               unit: '%',
               figure: gridShadeSvg(n, fullCells, halfPairs),
-              hint: `모눈 한 칸을 대각선으로 나눈 직각삼각형 2개를 합치면 온전한 모눈 1칸과 넓이가 같습니다. 색칠한 부분이 모두 모눈 몇 칸과 같은지 먼저 구해 보세요.`,
+              hint: '모눈 한 칸을 대각선으로 나눈 직각삼각형 2개를 합치면 온전한 모눈 1칸과 넓이가 같습니다. 색칠한 부분이 모두 모눈 몇 칸과 같은지 먼저 구해 보세요.',
               explain: `모눈 한 칸을 대각선으로 이등분한 직각삼각형 2개를 짝지으면 모눈 1칸과 넓이가 같으므로, 직각삼각형 ${halfCount}개의 넓이는 모눈 ${halfCount} ÷ 2 = ${halfCount / 2}(칸)과 같다. 따라서 색칠한 부분의 넓이는 모눈 ${fullCount} + ${halfCount / 2} = ${shadedCells}(칸)이고, 정사각형 전체 ${totalCells}칸에 대한 백분율은 ${frac(shadedCells, totalCells)} × 100 = ${pct}(%)이다.`,
               facts: { calc: [[`(${fullCount}+${halfCount}/2)*100/${totalCells}`, 0]], unseen: [2, 100] }
             });
@@ -109,10 +103,10 @@
           H('adv-box-cut-surface', '직육면체를 잘랐을 때 새로 생기는 단면으로 겉넓이의 합 구하기', '수집본 6-1-6 심화꼴 · KMA 초6', (d) => {
             const [a, b, c] = K525.dims3(d, 4, 10);
             const baseSurf = (a * b + b * c + a * c) * 2, cutFace = a * b, totalSurf = baseSurf + cutFace * 2;
-            return N(`가로가 ${a} cm, 세로가 ${b} cm, 높이가 ${c} cm인 직육면체 모양의 나무토막을 그림과 같이 밑면에 평행하게 한 번 잘라 두 직육면체로 나누었다. 나누어진 두 직육면체의 겉넓이의 합은 처음 직육면체의 겉넓이보다 몇 cm² 더 넓어졌는지 구하고, 두 직육면체의 겉넓이의 합은 모두 몇 cm²인지 구할 때, 나누어진 두 직육면체의 겉넓이의 합은 몇 cm²인가?`, totalSurf, {
+            return N(`가로가 ${a} cm, 세로가 ${b} cm, 높이가 ${c} cm인 직육면체 모양의 나무토막을 그림과 같이 밑면에 평행하게 한 번 잘라 두 직육면체로 나누었다. 나누어진 두 직육면체의 겉넓이의 합은 모두 몇 cm²인가?`, totalSurf, {
               unit: 'cm²',
               figure: cutBoxSvg(a, b, c),
-              hint: `나무토막을 두 조각으로 나눈 뒤 각각의 높이를 구해 계산할 필요가 없습니다. 처음 직육면체의 겉넓이에 자르면서 새로 생긴 단면 2개의 넓이만 더해 보세요.`,
+              hint: '나무토막을 두 조각으로 나눈 뒤 각각의 높이를 구해 계산할 필요가 없습니다. 처음 직육면체의 겉넓이에 자르면서 새로 생긴 단면 2개의 넓이만 더해 보세요.',
               explain: `직육면체를 밑면에 평행하게 한 번 자르면, 잘린 자리에 밑면(가로 ${a} cm, 세로 ${b} cm)과 합동인 새로운 면이 2개 더 생긴다. 처음 직육면체의 겉넓이는 (${a} × ${b} + ${b} × ${c} + ${a} × ${c}) × 2 = ${baseSurf}(cm²)이고, 새로 늘어난 두 단면의 넓이의 합은 (${a} × ${b}) × 2 = ${cutFace * 2}(cm²)이므로, 두 직육면체의 겉넓이의 합은 ${baseSurf} + ${cutFace * 2} = ${totalSurf}(cm²)이다.`,
               facts: { calc: [[`(${a}*${b}+${b}*${c}+${a}*${c})*2+${a}*${b}*2`, 0]], unseen: [2] }
             });

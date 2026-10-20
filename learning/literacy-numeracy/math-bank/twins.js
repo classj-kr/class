@@ -65,7 +65,7 @@
   async function load(unit) {
     if (!eligible(unit)) throw new Error('유사 문제 적용 대상이 아닙니다.');
     const term = unit.grade + '-' + unit.semester;
-    if (!pending.has(term)) pending.set(term, fetch('twins/' + term + '.json?v=20261020-adv-1').then(response => {
+    if (!pending.has(term)) pending.set(term, fetch('twins/' + term + '.json?v=20261020-adv-2').then(response => {
       if (!response.ok) throw new Error('유사 문제를 불러오지 못했습니다.');
       return response.json();
     }).catch(error => { pending.delete(term); throw error; }));
