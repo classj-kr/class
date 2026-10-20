@@ -54,7 +54,10 @@
         function reservePageHeight() {
             // Keep the browser from clamping scrollY before our animated layout and
             // scroll position have reached their destination together.
-            guard.style.height = `${Math.max(0, pageFloor - naturalPageHeight())}px`;
+            // The spacer extends document flow, not an absolutely positioned menu.
+            const padding = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
+            const flowBottom = guard.getBoundingClientRect().top + window.scrollY + padding;
+            guard.style.height = `${Math.max(0, pageFloor - flowBottom)}px`;
         }
 
         function requestTick() {
@@ -118,6 +121,7 @@
             entry.node.classList.remove('hub-accordion-clipping');
             entry.panel.style.opacity = '';
             entry.panel.style.transform = '';
+            entry.panel.style.clipPath = '';
             if (entry.category) {
                 if (!entry.expanded) {
                     for (const child of entries) {
@@ -162,6 +166,7 @@
             }
             entry.panel.style.opacity = String(fromVisual);
             entry.panel.style.transform = `translateY(${(1 - fromVisual) * -6}px)`;
+            if (!layout) entry.panel.style.clipPath = `inset(0 0 ${(1 - fromVisual) * 100}% 0)`;
             moving.add(entry);
             // A quick second click can open a child before its parent has finished.
             // Retarget the parent instead of letting it jump to an obsolete height.
@@ -184,9 +189,20 @@
                 if (motion.layout) entry.node.style.height = `${motion.fromHeight + (motion.toHeight - motion.fromHeight) * amount}px`;
                 entry.panel.style.opacity = String(entry.visual);
                 entry.panel.style.transform = `translateY(${(1 - entry.visual) * -6}px)`;
+                if (!motion.layout) entry.panel.style.clipPath = `inset(0 0 ${(1 - entry.visual) * 100}% 0)`;
                 if (progress === 1) finish(entry);
             }
-            const naturalHeight = naturalPageHeight();
+            let naturalHeight = naturalPageHeight();
+            // Reserve the opened menu's destination from the first frame. Otherwise
+            // short pages cannot scroll until the growing menu reaches the bottom,
+            // causing the page to catch up abruptly halfway through the animation.
+            for (const entry of moving) {
+                if (!entry.expanded) continue;
+                const bottom = entry.panel.getBoundingClientRect().bottom + window.scrollY
+                    + (1 - entry.visual) * 6 + 18;
+                naturalHeight = Math.max(naturalHeight, bottom);
+                pageFloor = Math.max(pageFloor, bottom);
+            }
             reservePageHeight();
             const maxScroll = Math.max(0, naturalHeight - window.innerHeight);
             let scroll = Math.min(window.scrollY, maxScroll);
@@ -196,22 +212,24 @@
                     : session.scroll;
                 const reveal = session.reveal;
                 if (reveal?.expanded) {
-                    // Show the first choice, not the entire menu. Different menu
-                    // lengths must not pull the viewport by different distances.
-                    const first = reveal.panel.querySelector(':scope > a, :scope > details > summary');
-                    if (first) {
-                        const extent = first.getBoundingClientRect().bottom - reveal.trigger.getBoundingClientRect().top;
-                        const shift = Math.max(0, Math.min(session.top - 12, session.top + extent - (window.innerHeight - 12)));
-                        const progress = reducedMotion.matches ? 1 : Math.min(1, (now - session.started) / DURATION);
-                        scroll += shift * ease(progress);
-                    }
+                    // Fit the complete menu, including its last button and padding.
+                    // Remove the entrance translation from the target so expansion
+                    // and scrolling follow one easing curve without a final jump.
+                    const extent = reveal.panel.getBoundingClientRect().bottom
+                        + (1 - reveal.visual) * 6 - reveal.trigger.getBoundingClientRect().top;
+                    const shift = Math.max(0, session.top + extent - (window.innerHeight - 12));
+                    const progress = reducedMotion.matches ? 1 : Math.min(1, (now - session.started) / DURATION);
+                    scroll += shift * ease(progress);
                 }
                 scroll = Math.max(0, Math.min(scroll, maxScroll));
             }
             if (Math.abs(window.scrollY - scroll) > 0.25) window.scrollTo(window.scrollX, scroll);
             if (moving.size) requestTick();
             else {
-                guard.style.height = '0px';
+                // Floating menus also need real document space below their last
+                // button; removing it here would clamp scrollY on the final frame.
+                pageFloor = naturalPageHeight();
+                reservePageHeight();
                 pageFloor = 0;
                 session = null;
                 document.documentElement.classList.remove('hub-accordion-active');

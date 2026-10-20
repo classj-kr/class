@@ -122,7 +122,10 @@ if (process.argv.includes('--fixture')) {
       }
       await student.waitForFunction(() => missionProgress?.status === 'completed');
       await teacher.waitForFunction(() => document.querySelector('#rankList').textContent.includes('검증학생'));
-      assert.ok((await teacher.locator('#rankList').innerText()).includes(`${mission.studyTargets.length}/${mission.studyTargets.length} 완료`));
+      const teacherResult=await teacher.evaluate(()=>progress.find(p=>p.name==='검증학생'));
+      assert.equal(teacherResult.status,'completed');
+      assert.equal(teacherResult.studyPlaces.filter(p=>p.phase==='completed').length,mission.studyTargets.length);
+      assert.equal(await teacher.locator('#rankList .rankNo').getAttribute('aria-label'),'1위');
       await place({city:'lisbon'});
       await student.waitForFunction(()=>mode==='city'&&!serverSelf.transition);
       await student.locator('#departCityBtn').click();

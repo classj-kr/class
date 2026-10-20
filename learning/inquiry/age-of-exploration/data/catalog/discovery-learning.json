@@ -1,0 +1,1940 @@
+{
+  "version": 1,
+  "reviewDate": "2026-10-21",
+  "topics": {
+    "위치": {
+      "levels": [
+        "elementary",
+        "middle"
+      ],
+      "standards": [
+        "6사09-01",
+        "6사09-02",
+        "9사(지리)01-01"
+      ],
+      "objective": "지도로 위치와 주변 대륙·바다의 관계를 설명한다."
+    },
+    "지형": {
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "6사10-01",
+        "12세지02-02"
+      ],
+      "objective": "지형의 특징이 물길과 사람들의 생활에 미치는 영향을 설명한다."
+    },
+    "기후": {
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "6사10-02",
+        "12세지02-01"
+      ],
+      "objective": "기후와 지형에 적응한 주거·농업·교통의 모습을 설명한다."
+    },
+    "한국지리": {
+      "levels": [
+        "elementary",
+        "middle"
+      ],
+      "standards": [
+        "6사01-01",
+        "9사(지리)08-01"
+      ],
+      "objective": "우리나라의 산지와 화산 지형의 특징을 살펴본다."
+    },
+    "지질": {
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "4과11-01",
+        "4과11-02",
+        "9과09-03",
+        "9과09-05",
+        "12지시01-04"
+      ],
+      "objective": "암석과 지형에서 침식·퇴적·화산 활동의 흔적을 찾아 설명한다."
+    },
+    "해양": {
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "9과18-01",
+        "9과18-02",
+        "9과18-03",
+        "12지시02-04"
+      ],
+      "objective": "바닷물과 바람·조석의 특징이 항해와 생활에 미치는 영향을 설명한다."
+    },
+    "생태": {
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "4과14-01",
+        "4과14-02",
+        "12생과01-06",
+        "12생과03-03"
+      ],
+      "objective": "생물이 환경과 관계를 맺는 모습과 인간 활동의 영향을 설명한다."
+    },
+    "환경": {
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "6사12-02",
+        "12세지04-02"
+      ],
+      "objective": "물과 자원의 이용이 환경에 미치는 영향을 살펴본다."
+    },
+    "문명": {
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
+    },
+    "항로": {
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "9역04-03",
+        "12세사02-02",
+        "12세사02-03"
+      ],
+      "objective": "바닷길과 거점의 위치가 상품 교역과 사람들의 삶에 미친 영향을 설명한다."
+    },
+    "교류": {
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "9사(지리)01-02",
+        "9역04-01",
+        "12세사02-01",
+        "12세사02-03"
+      ],
+      "objective": "사람과 물건·문화가 이동한 경로와 지역 사이의 관계를 설명한다."
+    },
+    "종교": {
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "9사(지리)02-02",
+        "9역03-02",
+        "9역03-03",
+        "12세지02-03"
+      ],
+      "objective": "종교 경관에 담긴 의미와 순례·정치·생활의 관계를 비교한다."
+    },
+    "산업": {
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "9과09-02",
+        "12세사02-03"
+      ],
+      "objective": "자원의 생산과 이용·교역이 지역 생활에 미친 영향을 설명한다."
+    },
+    "한국사": {
+      "levels": [
+        "elementary",
+        "middle"
+      ],
+      "standards": [
+        "6사04-03",
+        "6사05-01",
+        "9역09-03",
+        "9역10-04",
+        "9역11-01"
+      ],
+      "objective": "문화유산에서 당시 사람들의 생각과 생활·국가 운영의 특징을 찾아본다."
+    },
+    "문화": {
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "standards": [
+        "12여지02-02",
+        "12세사01-01"
+      ],
+      "objective": "주민의 생활과 장소의 문화적 의미를 이해하고 서로 다른 문화를 존중한다."
+    },
+    "관광": {
+      "levels": [
+        "high"
+      ],
+      "standards": [
+        "12여지02-04",
+        "12세지02-02"
+      ],
+      "objective": "경관의 자연적 가치와 이용·보존의 관계를 살펴본다."
+    }
+  },
+  "entries": {
+    "nordkapp": {
+      "tier": "support",
+      "topic": "위치",
+      "valuable": false
+    },
+    "lofoten-islands": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "moskstraumen": {
+      "tier": "support",
+      "topic": "해양",
+      "valuable": false
+    },
+    "bering_strait": {
+      "tier": "core",
+      "topic": "위치",
+      "valuable": false
+    },
+    "solovetsky-monastery": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "geysir": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": true
+    },
+    "thingvellir": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": true
+    },
+    "hekla": {
+      "tier": "extended",
+      "topic": "지질",
+      "valuable": false
+    },
+    "nidaros-cathedral": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "denali": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false
+    },
+    "valaam-monastery": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "sognefjord": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "hvalsey-church": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "falun-mine": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "ural-mountains": {
+      "tier": "core",
+      "topic": "위치",
+      "valuable": false
+    },
+    "iona-abbey": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "trinity-sergius-lavra": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "klyuchevskaya-volcano": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "baltic-amber-coast": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "giants-causeway": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "hadrians-wall": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "trakai-castle": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "malbork-castle": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lake-baikal": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "friesland-terp": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "aleutian_islands": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "skellig-michael": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lanse-aux-meadows": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": true
+    },
+    "canterbury-cathedral": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "stonehenge": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": true
+    },
+    "white-cliffs-dover": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "strait-of-dover": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "aachen-cathedral": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "rhine-river": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "cornwall-tin": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "pfalzgrafenstein": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "wieliczka-salt-mine": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "kutna-hora-silver": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "trier-porta-nigra": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "volga-river": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "mont-saint-michel": {
+      "tier": "support",
+      "topic": "해양",
+      "valuable": false
+    },
+    "chartres-cathedral": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "dnieper-rapids": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "rhine-falls": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "carnac-stones": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "alps": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "great-st-bernard-pass": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "postojna-cave": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "grand-banks-cod": {
+      "tier": "core",
+      "topic": "해양",
+      "valuable": false
+    },
+    "danube_delta": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "aral-sea": {
+      "tier": "core",
+      "topic": "환경",
+      "valuable": false
+    },
+    "crimea_peninsula": {
+      "tier": "support",
+      "topic": "위치",
+      "valuable": false
+    },
+    "pula-arena": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "iron-gates-danube": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "yellowstone-geysers": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "carrara-marble": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "pont-du-gard": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "nimes-arena": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "diocletian-palace-split": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "gobi-desert": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "black-sea": {
+      "tier": "support",
+      "topic": "해양",
+      "valuable": false
+    },
+    "mount-elbrus": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false
+    },
+    "madara-rider": {
+      "tier": "extended",
+      "topic": "문화",
+      "valuable": false
+    },
+    "niagara_falls": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "assisi-basilica": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "santiago-de-compostela": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "cape-finisterre": {
+      "tier": "extended",
+      "topic": "항로",
+      "valuable": false
+    },
+    "issyk-kul": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "kunya-urgench": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "rila-monastery": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "derbent-wall": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "baekdu-mountain": {
+      "tier": "core",
+      "topic": "한국지리",
+      "valuable": false
+    },
+    "caspian-sea": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "monte-cassino": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "redwood-forest": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "bosporus": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "segovia-aqueduct": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "ani-ruins": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "nuraghe-santu-antine": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "paestum": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "great-wall-badaling": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "mount-athos": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "yungang-grottoes": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "mount-olympus": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "mogao-caves": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "great-plains-bison": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "meteora": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "mount-ararat": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "tomar-convent": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "rocky-mountains": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "taklamakan-desert": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "mississippi-river": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "stromboli": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "almaden-mercury-mine": {
+      "tier": "core",
+      "topic": "산업",
+      "valuable": false
+    },
+    "cahokia-mounds": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": true
+    },
+    "cappadocia-rock-churches": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": true
+    },
+    "pamir-plateau": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "delphi": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "pico-mountain": {
+      "tier": "extended",
+      "topic": "지질",
+      "valuable": false
+    },
+    "aegean_islands": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "ephesus": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "pamukkale": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "mount-etna": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "mycenae": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "merv-ruins": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "appalachian-mountains": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "delos": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "agrigento-temples": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "mesa-verde": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": true
+    },
+    "cape-st-vincent": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "taos-pueblo": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "santorini": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "mount-tai": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "grand-canyon": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "chaco-canyon": {
+      "tier": "extended",
+      "topic": "기후",
+      "valuable": false
+    },
+    "japanese_archipelago": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "gibraltar_strait": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "haeinsa-tripitaka": {
+      "tier": "core",
+      "topic": "한국사",
+      "valuable": false
+    },
+    "bulguksa-seokguram": {
+      "tier": "core",
+      "topic": "한국사",
+      "valuable": false
+    },
+    "mount-fuji": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "acoma-pueblo": {
+      "tier": "extended",
+      "topic": "기후",
+      "valuable": false
+    },
+    "yellow-river": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "krak-des-chevaliers": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "longmen-grottoes": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "palmyra": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "ise-grand-shrine": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": true
+    },
+    "behistun-inscription": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "itsukushima-shrine": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "baalbek": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "hallasan": {
+      "tier": "core",
+      "topic": "한국지리",
+      "valuable": false
+    },
+    "leptis-magna": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "babylon-ruins": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "tibetan-plateau": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "bermuda-islands": {
+      "tier": "extended",
+      "topic": "항로",
+      "valuable": false
+    },
+    "sakurajima": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "dead-sea": {
+      "tier": "support",
+      "topic": "해양",
+      "valuable": false
+    },
+    "mount-kailash": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "atlas-mountains": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "nile_delta": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "three-gorges": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "petra": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "huangshan": {
+      "tier": "extended",
+      "topic": "관광",
+      "valuable": false
+    },
+    "suez-isthmus": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "giza-pyramids": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "persepolis": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "leshan-buddha": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "siwa-oasis": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "mississippi_mouth": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "mount-sinai": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "himalayas": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "mount-everest": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "indus-river": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "taj-mahal-later": {
+      "tier": "later",
+      "topic": "문명",
+      "valuable": false
+    },
+    "thar-desert": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "persian-gulf": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "strait-of-hormuz": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "shuri-castle": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "karnak-temple": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "tassili-rock-art": {
+      "tier": "support",
+      "topic": "환경",
+      "valuable": false
+    },
+    "prayag-confluence": {
+      "tier": "core",
+      "topic": "종교",
+      "valuable": false
+    },
+    "nalanda-ruins": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "chittorgarh-fort": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "khajuraho-temples": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "mahabodhi-bodhgaya": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "guanahani-island": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "sahara": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "sanchi-stupa": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "abu-simbel": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "sundarbans": {
+      "tier": "core",
+      "topic": "생태",
+      "valuable": false
+    },
+    "nile-second-cataract": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "bagan-plain": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "molokai-fishponds": {
+      "tier": "support",
+      "topic": "생태",
+      "valuable": false
+    },
+    "halong-bay": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "hawaiian_islands": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "chichen-itza": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "ajanta-caves": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "red-sea": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "uxmal": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "tulum": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "tula-tollan": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "ellora-caves": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": true
+    },
+    "konark-sun-temple": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "teotihuacan": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "kilauea-volcano": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "pico-de-orizaba": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false
+    },
+    "popocatepetl": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "elephanta-caves": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "deccan-plateau": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "palenque": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "belize-blue-hole": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "tikal": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "monte-alban": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "sukhothai-old-city": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "meroe-pyramids": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "shwedagon-pagoda": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "my-son-sanctuary": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "marib-dam": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "house-of-taga": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": false
+    },
+    "caribbean-sea": {
+      "tier": "core",
+      "topic": "해양",
+      "valuable": false
+    },
+    "copan": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lake-atitlan": {
+      "tier": "extended",
+      "topic": "지질",
+      "valuable": false
+    },
+    "danakil-depression": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "khone-falls": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "angkor-wat": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "mayon-volcano": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "lake-chad": {
+      "tier": "support",
+      "topic": "환경",
+      "valuable": false
+    },
+    "mahabalipuram-shore": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "bab-el-mandeb": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "socotra-dragon-trees": {
+      "tier": "support",
+      "topic": "생태",
+      "valuable": true
+    },
+    "mekong-river": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "lalibela-churches": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": true
+    },
+    "philippine_archipelago": {
+      "tier": "support",
+      "topic": "위치",
+      "valuable": false
+    },
+    "masaya-volcano": {
+      "tier": "extended",
+      "topic": "지질",
+      "valuable": false
+    },
+    "lake-tana": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "brihadisvara-thanjavur": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "trinidad-pitch-lake": {
+      "tier": "support",
+      "topic": "산업",
+      "valuable": false
+    },
+    "adams-bridge": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "panama_isthmus": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "anuradhapura": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "kanyakumari-cape": {
+      "tier": "extended",
+      "topic": "항로",
+      "valuable": false
+    },
+    "sigiriya-rock": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": false
+    },
+    "nan-madol": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": true
+    },
+    "sri-pada-peak": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "mount-kinabalu": {
+      "tier": "support",
+      "topic": "생태",
+      "valuable": false
+    },
+    "angel-falls": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false
+    },
+    "mount-roraima": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "maldives-atolls": {
+      "tier": "core",
+      "topic": "생태",
+      "valuable": false
+    },
+    "lake-toba": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "malacca_strait": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "rwenzori-mountains": {
+      "tier": "extended",
+      "topic": "기후",
+      "valuable": false
+    },
+    "mount-kenya": {
+      "tier": "extended",
+      "topic": "기후",
+      "valuable": false
+    },
+    "galapagos-islands": {
+      "tier": "core",
+      "topic": "생태",
+      "valuable": false
+    },
+    "amazon_mouth": {
+      "tier": "core",
+      "topic": "지형",
+      "valuable": false
+    },
+    "lake-victoria": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "chimborazo": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false
+    },
+    "malay_archipelago": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "great_rift_valley": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "kilimanjaro": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "meeting-of-waters": {
+      "tier": "support",
+      "topic": "해양",
+      "valuable": false
+    },
+    "amazon-rainforest": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "banda-islands": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "congo-river-mouth": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "krakatoa-island": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "kuelap": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "borobudur": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "prambanan": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "besakih-temple": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "komodo-island": {
+      "tier": "extended",
+      "topic": "생태",
+      "valuable": false
+    },
+    "kakadu-rock-art": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": true
+    },
+    "machu-picchu": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "andes": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "paracas-candelabra": {
+      "tier": "extended",
+      "topic": "문화",
+      "valuable": false
+    },
+    "qeswachaka-bridge": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lake-titicaca": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "saint-helena": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "tiwanaku": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "taputapuatea-marae": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "victoria-falls": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "great-barrier-reef": {
+      "tier": "core",
+      "topic": "생태",
+      "valuable": false
+    },
+    "madagascar": {
+      "tier": "core",
+      "topic": "생태",
+      "valuable": false
+    },
+    "yasur-volcano": {
+      "tier": "extended",
+      "topic": "지질",
+      "valuable": false
+    },
+    "salar-de-uyuni": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": false
+    },
+    "mauritius-dodo": {
+      "tier": "core",
+      "topic": "생태",
+      "valuable": false
+    },
+    "haamonga-a-maui": {
+      "tier": "extended",
+      "topic": "문화",
+      "valuable": false
+    },
+    "namib-desert": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "atacama-desert": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "uluru": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": true
+    },
+    "iguazu-falls": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "easter-island-moai": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": true
+    },
+    "aconcagua": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false
+    },
+    "cape_good_hope": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "pampas": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "maungakiekie-pa": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": true
+    },
+    "rotorua-geysers": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "tongariro-volcano": {
+      "tier": "extended",
+      "topic": "지질",
+      "valuable": false
+    },
+    "patagonia": {
+      "tier": "core",
+      "topic": "기후",
+      "valuable": false
+    },
+    "perito-moreno-glacier": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": false
+    },
+    "strait-of-magellan": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "cape-horn": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "drake-passage": {
+      "tier": "support",
+      "topic": "해양",
+      "valuable": false
+    },
+    "batur-caldera": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": true
+    },
+    "milford-sound": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": true
+    },
+    "chocolate-hills": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": true
+    },
+    "palawan-underground-river": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": true
+    },
+    "lm-table-mountain": {
+      "tier": "support",
+      "topic": "지형",
+      "valuable": true
+    },
+    "tyr_yongning_temple": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lm-belem-tower": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "lm-mezquita": {
+      "tier": "core",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-seville-cathedral": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "lm-alhambra": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-notre-dame": {
+      "tier": "support",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-san-marco": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": true
+    },
+    "lm-florence-duomo": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-pisa-tower": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "lm-tower-of-london": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-edinburgh-castle": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false
+    },
+    "lm-cologne-cathedral": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-prague-castle": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-moscow-kremlin": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-dubrovnik-walls": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lm-parthenon": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-giza-from-cairo": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false,
+      "canonicalId": "giza-pyramids"
+    },
+    "lm-djingareyber": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": true
+    },
+    "lm-djenne-mosque": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": true
+    },
+    "lm-elmina-castle": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "lm-great-zimbabwe": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lm-hagia-sophia": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-kaaba": {
+      "tier": "core",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-samarkand-madrasa": {
+      "tier": "core",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lm-qutb-minar": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lm-a-famosa": {
+      "tier": "core",
+      "topic": "항로",
+      "valuable": false
+    },
+    "lm-ayutthaya": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lm-halong-from-haiphong": {
+      "tier": "extended",
+      "topic": "지형",
+      "valuable": false,
+      "canonicalId": "halong-bay"
+    },
+    "lm-guilin-karst": {
+      "tier": "core",
+      "topic": "지질",
+      "valuable": false
+    },
+    "lm-forbidden-city": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-gyeongbokgung": {
+      "tier": "core",
+      "topic": "한국사",
+      "valuable": false
+    },
+    "lm-kinkakuji": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": false
+    },
+    "lm-ozama-fortress": {
+      "tier": "support",
+      "topic": "항로",
+      "valuable": false
+    },
+    "lm-templo-mayor": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-sugarloaf": {
+      "tier": "support",
+      "topic": "지질",
+      "valuable": false
+    },
+    "lm-coricancha": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-nazca-lines": {
+      "tier": "support",
+      "topic": "기후",
+      "valuable": true
+    },
+    "lm-potala-later": {
+      "tier": "later",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-saint-basil-later": {
+      "tier": "later",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-blue-mosque-later": {
+      "tier": "later",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-versailles-later": {
+      "tier": "later",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-rome-colosseum": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-rome-st-peters": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-rome-pantheon": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-rome-forum": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-jerusalem-dome": {
+      "tier": "core",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-jerusalem-sepulchre": {
+      "tier": "core",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-jerusalem-western-wall": {
+      "tier": "core",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-topkapi-palace": {
+      "tier": "core",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-theodosian-walls": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-al-azhar": {
+      "tier": "support",
+      "topic": "교류",
+      "valuable": false
+    },
+    "lm-cairo-citadel": {
+      "tier": "extended",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-temple-of-heaven": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-sungnyemun": {
+      "tier": "support",
+      "topic": "한국사",
+      "valuable": false
+    },
+    "lm-jongmyo": {
+      "tier": "core",
+      "topic": "한국사",
+      "valuable": false
+    },
+    "lm-kiyomizudera": {
+      "tier": "extended",
+      "topic": "문화",
+      "valuable": false
+    },
+    "lm-ginkakuji": {
+      "tier": "support",
+      "topic": "문화",
+      "valuable": false
+    },
+    "lm-sainte-chapelle": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-westminster-abbey": {
+      "tier": "extended",
+      "topic": "종교",
+      "valuable": false
+    },
+    "lm-doge-palace": {
+      "tier": "support",
+      "topic": "문명",
+      "valuable": false
+    },
+    "lm-ponte-vecchio": {
+      "tier": "extended",
+      "topic": "교류",
+      "valuable": false
+    }
+  }
+}

@@ -6,7 +6,9 @@ const COUNT=3;
 function shuffle(values){const copy=[...values];for(let i=copy.length-1;i>0;i--){const j=crypto.randomInt(i+1);[copy[i],copy[j]]=[copy[j],copy[i]];}return copy;}
 const escape=word=>word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 function termPattern(word,flags='u'){
-  return new RegExp('(?<![가-힣A-Za-z])'+escape(word)+'(?=$|[^가-힣A-Za-z]|까지|부터|처럼|보다|마저|조차|밖에|마다|[은는이가을를에의와과도만로입였인일으들])',flags);
+  // Match a whole noun with a complete particle/copula, not the first letter of a verb.
+  const ending='(?:들)?(?:(?:으로|에서|에게|부터|까지|처럼|보다|마저|조차|밖에|마다|이나|이랑|이며|이고|이자|이라|라는|라고|이란|을|를|은|는|이|가|에|의|와|과|도|만|로)(?:는|은|도|만)?|입니다|였습니다|이었습니다|이었다|였다|이다|인|일)?';
+  return new RegExp('(?<![가-힣A-Za-z])'+escape(word)+'(?='+ending+'(?:$|[^가-힣A-Za-z]))',flags);
 }
 function sentences(text){return String(text||'').split(/(?<=[.!?])\s+|\n+/).map(line=>line.trim()).filter(line=>line.length>=8);}
 function masked(line,word){

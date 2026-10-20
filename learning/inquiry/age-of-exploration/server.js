@@ -13,6 +13,7 @@ const MajorWind = require('./public/js/wind.js');
 const GeoMotion = require('./public/js/geo-motion.js');
 const ClassroomStore = require('./lib/classroom-store.js');
 const MissionCatalog = require('./lib/mission-catalog.js');
+const DiscoveryLearning = require('./lib/discovery-learning.js');
 const Fatigue = require('./lib/fatigue.js');
 const NavGrid = require('./lib/nav-grid.js');
 const ShipMotion = require('./lib/ship-motion.js');
@@ -138,7 +139,7 @@ for (const item of MissionCatalog.CITY_LANDMARKS) {
   CITY_LANDMARKS_BY_CITY.set(item.cityId, list);
 }
 const LANDMARK_BY_ID = new Map(MissionCatalog.CITY_LANDMARKS.map((item) => [item.id, item]));
-const FOUND_TOTAL = RESOLVED_DISCOVERIES.length + MissionCatalog.CITY_LANDMARKS.length;
+const FOUND_TOTAL = DiscoveryLearning.collectionTotal([...RESOLVED_DISCOVERIES,...MissionCatalog.CITY_LANDMARKS]);
 const LANDMARK_ART_DIR = path.join(__dirname, 'public', 'assets', 'landmarks');
 // 사진은 위키미디어 공용에서 자유 이용이 되는 것만 가져왔다. 대부분 이름을 밝히는 조건이 붙어 있어 함께 내려보낸다.
 const PHOTO_CREDITS = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'catalog', 'photo-credits.json'), 'utf8'));
@@ -164,12 +165,14 @@ function cityLandmarksFor(p) {
   const list = CITY_LANDMARKS_BY_CITY.get(p.currentCityId) || [];
   if (!list.length) return [];
   const found = discoveryListFor(p.roomCode, p.name);
-  return list.map((item) => ({ id: item.id, name: item.name, kind: item.kind, status: item.status, found: found.includes(item.id) }));
+  const mission=store.room(p.roomCode).activeMission;
+  return list.filter(item=>item.learning.counted||item.learning.tier==='later'||DiscoveryLearning.hasFound(found,item.id)||mission?.studyTargets?.some(t=>DiscoveryLearning.canonicalKey(t.key)===DiscoveryLearning.canonicalKey('landmark:'+item.id)))
+    .map((item) => ({ id: item.id, name: item.name, kind: item.kind, status: item.status, learning:item.learning, found: DiscoveryLearning.hasFound(found,item.id) }));
 }
 
 function publicLandmark(item) {
   return {
-    id: item.id, name: item.name, kind: item.kind, status: item.status,
+    id: item.id, name: item.name, kind: item.kind, status: item.status, learning:item.learning,
     todayCountry: item.todayCountry, built: item.built || '',
     in1520: item.in1520, text: item.text,
     image: landmarkArtUrl(item.id), imageCredit: photoCreditFor(item.id),
@@ -183,6 +186,12 @@ function discoveryListFor(roomCode, studentName) {
   room.discoveries[studentName] = Array.isArray(room.discoveries[studentName]) ? room.discoveries[studentName] : [];
   return room.discoveries[studentName];
 }
+function recordDiscovery(p,id){
+  const found=discoveryListFor(p.roomCode,p.name);
+  if(DiscoveryLearning.hasFound(found,id))return false;
+  found.push(DiscoveryLearning.canonicalId(id));store.scheduleSave();return true;
+}
+function discoveryCountFor(p){return DiscoveryLearning.foundCount(discoveryListFor(p.roomCode,p.name));}
 
 // 가까이 있는 유적·지형. 지나간다고 저절로 열리지 않고, 그 자리에서 눌러야 살펴본다.
 function nearbyDiscovery(p) {
@@ -192,11 +201,13 @@ function nearbyDiscovery(p) {
   const mission=store.room(p.roomCode).activeMission;
   const progress=mission?.studyTargets?store.studentProgress(p.roomCode,p.name,mission.id):null;
   for (const item of RESOLVED_DISCOVERIES) {
+    const key='discovery:'+item.id;
+    const assignedTarget=mission?.studyTargets?.find(t=>DiscoveryLearning.canonicalKey(t.key)===key);
+    const assigned=!!assignedTarget&&progress?.placeStudy?.places?.[assignedTarget.key]?.phase!=='completed';
+    if(!DiscoveryLearning.visibleOnMap(item)&&!assigned)continue;
     const access = discoveryProximity(p, item);
     const d = access.distance;
     if (d > DISCOVERY_RADIUS_TILES * TILE) continue;
-    const key='discovery:'+item.id;
-    const assigned=mission?.studyTargets?.some(t=>t.key===key)&&progress?.placeStudy?.places?.[key]?.phase!=='completed';
     const priority=!access.canUse?3:assigned?0:item.discoveryArea?.type==='region'?2:1;
     if(priority>bestPriority||(priority===bestPriority&&d>=bestDistance))continue;
     best = { ...item, discoveryAccess: access };
@@ -206,7 +217,7 @@ function nearbyDiscovery(p) {
   return { id: best.id, name: best.name, kind: best.kind, canUse:best.discoveryAccess.canUse,
     markerPoint:best.discoveryAccess.markerPoint || null,
     message:best.discoveryArea?.type==='waterbody' ? '해안에서 살펴보기' : best.reach === 'sea' ? '배에서 살펴보기' : '상륙해서 살펴보기',
-    found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
+    found: DiscoveryLearning.hasFound(discoveryListFor(p.roomCode, p.name),best.id) };
 }
 
 // 동물 만나기 경주. 참가자마다 자기 동물이 따로 있고, 정해진 바다 안을 어슬렁거린다.
@@ -872,7 +883,7 @@ function missionForStudent(mission) {
       mode: mission.targetPlace.mode,
       radiusTiles: mission.targetPlace.radiusTiles
     } : null,
-    studyTargets: mission.studyTargets?.map(t=>({key:t.key,id:t.id,type:t.type,name:t.name})) || null,
+    studyTargets: mission.studyTargets?.map(t=>({key:t.key,canonicalKey:DiscoveryLearning.canonicalKey(t.key),id:t.id,type:t.type,name:t.name,point:t.point,learning:t.reading?.learning})) || null,
     hasFinalQuiz: isArrivalRace(mission) && !!mission.finalQuiz,
     finalQuizQuestionCount: isArrivalRace(mission) ? Number(mission.finalQuiz?.questionCount || 3) : null,
     startOptions: Array.isArray(mission.startOptions) ? mission.startOptions.map(startOptionSummary) : null,
@@ -1263,13 +1274,13 @@ function studyReading(type, item) {
   const city = type === 'city', story = city ? CITY_STORIES.get(item.id) : null;
   const photo = city ? cityTodayPhoto(item.artKey) : null, credit = PHOTO_CREDITS[item.id];
   const text = city ? (story?.sections || []).map(s => [s.heading, s.text].filter(Boolean).join('\n')).join('\n\n') : [item.text, item.in1520 ? '1520년에는 '+item.in1520 : ''].filter(Boolean).join('\n\n');
-  return { id:item.id, name:item.name, kind:city?'도시 설명':item.kind, todayCountry:item.todayCountry||'', text,
+  return { id:item.id, name:item.name, kind:city?'도시 설명':item.kind, todayCountry:item.todayCountry||'', text, description:city?'':item.text, in1520:city?'':item.in1520, learning:item.learning||null,
     image:city?photo?.url:landmarkArtUrl(item.id), imageCredit:city?photo?.credit:photoCreditFor(item.id), imageKind:city?'photo':credit?.kind||'photo', imageChanges:city?'':credit?.changes, imageCaption:city?photo?.caption:credit?.caption,
     imageSource:city?CITY_PHOTO_CREDITS[item.artKey]?.source:credit?.source,
     imageLicenseUrl:city?CITY_PHOTO_CREDITS[item.artKey]?.licenseUrl:credit?.licenseUrl };
 }
 function studyTarget(key) {
-  const [type,id,...extra] = String(key).split(':');
+  const [type,id,...extra] = String(DiscoveryLearning.canonicalKey(key)).split(':');
   if(extra.length)throw Error('학습 장소를 다시 선택하세요.');
   const item=type==='city'?RESOLVED_PLACES.get(id):type==='discovery'?RESOLVED_DISCOVERIES.find(d=>d.id===id):type==='landmark'?LANDMARK_BY_ID.get(id):null;
   if(!item || (type==='city'&&!item.isOriginalCity))throw Error('학습 장소를 찾지 못했습니다.');
@@ -1281,18 +1292,24 @@ function studyQuestionPool() {
   return [...MissionCatalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({id:p.id,name:p.name,text:(CITY_STORIES.get(p.id)?.sections||[]).map(s=>s.text).join(' ')})),...MissionCatalog.DISCOVERIES];
 }
 for(const room of Object.values(store.state?.rooms||{})){
-  if(room.activeMission?.studyTargets && PlaceStudy.upgradeMission(room.activeMission,studyQuestionPool()))store.scheduleSave();
+  const mission=room.activeMission;
+  const progresses=Object.values(room.progress||{}).map(player=>player?.[mission?.id]?.placeStudy);
+  if(mission?.studyTargets && PlaceStudy.refreshMission(mission,studyTarget,studyQuestionPool(),progresses))store.scheduleSave();
 }
 function buildStudyTargets(keys) {
   if(!Array.isArray(keys)||keys.length<1||keys.length>3||new Set(keys).size!==keys.length)throw Error('도시·발견물을 중복 없이 1~3곳 선택하세요.');
+  const canonical=keys.map(DiscoveryLearning.canonicalKey);
+  if(new Set(canonical).size!==canonical.length)throw Error('같은 장소의 지도·도시 명소는 한 곳만 선택하세요.');
   const pool=studyQuestionPool();
-  return keys.map(key=>{const t=studyTarget(key);return {...t,questions:PlaceStudy.createQuestions(t,pool)};});
+  return canonical.map(key=>{const t=studyTarget(key);return {...t,questionsVersion:PlaceStudy.QUESTIONS_VERSION,questions:PlaceStudy.createQuestions(t,pool)};});
 }
 function atStudyTarget(p,target) {
   if(p.transition)return false;
   if(target.type==='city')return p.mode==='city'&&p.currentCityId===target.id;
-  if(target.type==='landmark')return p.mode==='city'&&p.currentCityId===LANDMARK_BY_ID.get(target.id)?.cityId;
-  const item=RESOLVED_DISCOVERIES.find(d=>d.id===target.id);
+  const aliasCity=MissionCatalog.CITY_LANDMARKS.find(item=>DiscoveryLearning.canonicalId(item.id)===DiscoveryLearning.canonicalId(target.id)&&item.learning.alias)?.cityId;
+  if(p.mode==='city'&&p.currentCityId===aliasCity)return true;
+  if(target.type==='landmark'&&!aliasCity)return p.mode==='city'&&p.currentCityId===LANDMARK_BY_ID.get(target.id)?.cityId;
+  const item=RESOLVED_DISCOVERIES.find(d=>d.id===DiscoveryLearning.canonicalId(target.id));
   const access=item&&discoveryProximity(p,item);
   return !!access?.canUse&&access.distance<=3.2*TILE;
 }
@@ -1302,13 +1319,13 @@ function studyContext(p,key,missionId,create=false) {
   if(!gate.ok)throw Error(gate.error);
   if(!mission?.studyTargets || (missionId&&mission.id!==missionId))throw Error('현재 학습 미션이 아닙니다.');
   if(store.room(p.roomCode).settings.paused)throw Error('게임이 일시정지 상태입니다.');
-  const target=mission.studyTargets.find(t=>t.key===key);
+  const target=mission.studyTargets.find(t=>DiscoveryLearning.canonicalKey(t.key)===DiscoveryLearning.canonicalKey(key));
   if(!target)throw Error('교사가 지정한 장소가 아닙니다.');
   if(!atStudyTarget(p,target))throw Error(target.type==='discovery'?'발견물에 더 가까이 가세요.':'먼저 해당 도시에 들어가세요.');
   const progress=gate.progress;
   progress.placeStudy ||= {places:{}};
-  if(!progress.placeStudy.places[key]&&!create)throw Error('먼저 장소 설명을 열어 읽으세요.');
-  const state=progress.placeStudy.places[key] ||= {phase:'reading',streak:0,token:null,order:null,completedAt:null};
+  if(!progress.placeStudy.places[target.key]&&!create)throw Error('먼저 장소 설명을 열어 읽으세요.');
+  const state=progress.placeStudy.places[target.key] ||= {phase:'reading',streak:0,token:null,order:null,completedAt:null};
   return {mission,target,progress,state};
 }
 function studyResult(p,context) {
@@ -1868,7 +1885,8 @@ function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
     shipAnchorX: Number.isFinite(p.shipAnchorX) ? p.shipAnchorX : null,
     shipAnchorY: Number.isFinite(p.shipAnchorY) ? p.shipAnchorY : null,
     shipAnchorDir: Number.isInteger(p.shipAnchorDir) ? p.shipAnchorDir : 0,
-    discoveryIds: [...discoveryListFor(p.roomCode, p.name)],
+    discoveryIds: DiscoveryLearning.uniqueIds(discoveryListFor(p.roomCode, p.name)),
+    discoveryFound: discoveryCountFor(p),
     discoveryTotal: FOUND_TOTAL,
     fatigue: Math.round(Fatigue.clamp(p.fatigue) * 10) / 10,
     fatigueSpeedMultiplier: Math.round(Fatigue.speedMultiplier(p.fatigue) * 1000) / 1000,
@@ -2268,8 +2286,7 @@ io.on('connection', (socket) => {
       const result=PlaceStudy.answer(target,state,payload?.token,payload?.choice);
       if(state.phase==='completed'){
         if(target.type!=='city'){
-          const found=discoveryListFor(p.roomCode,p.name);
-          if(!found.includes(target.id))found.push(target.id);
+          recordDiscovery(p,target.id);
         }
         setNotice(p,target.name+' 발견 성공!');
         if(mission.studyTargets.every(t=>progress.placeStudy.places[t.key]?.phase==='completed')){
@@ -2289,21 +2306,19 @@ io.on('connection', (socket) => {
     const item = RESOLVED_DISCOVERIES.find((entry) => entry.id === String(payload?.id || ''));
     if (!item) return ack({ ok:false, error:'그런 곳을 찾지 못했습니다.' });
     const studyMission=store.room(p.roomCode).activeMission;
-    if(studyMission?.studyTargets?.some(t=>t.key==='discovery:'+item.id)){
+    if(studyMission?.studyTargets?.some(t=>DiscoveryLearning.canonicalKey(t.key)==='discovery:'+item.id)){
       try{return ack(beginPlaceStudy(p,'discovery:'+item.id,studyMission.id));}catch(error){return ack({ok:false,error:error.message});}
     }
     const access = discoveryProximity(p, item);
     if (!access.canUse) return ack({ ok:false, error: item.reach === 'sea' ? '배를 타고 가야 살펴볼 수 있습니다.' : '뭍에 내려서 가야 살펴볼 수 있습니다.' });
     if (access.distance > DISCOVERY_RADIUS_TILES * TILE) return ack({ ok:false, error:`${item.name}에 더 가까이 가세요.` });
-    const found = discoveryListFor(p.roomCode, p.name);
-    const first = !found.includes(item.id);
+    const first = recordDiscovery(p,item.id);
     if (first) {
-      found.push(item.id);
       store.scheduleSave();
       setNotice(p, `발견! ${item.name}`);
       io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'discovery', name:p.name, discovery:item.name, at:Date.now() });
     }
-    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id), imageKind:PHOTO_CREDITS[item.id]?.kind||'photo', imageCaption:PHOTO_CREDITS[item.id]?.caption, imageSource:PHOTO_CREDITS[item.id]?.source, imageLicenseUrl:PHOTO_CREDITS[item.id]?.licenseUrl, imageChanges:PHOTO_CREDITS[item.id]?.changes }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
+    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, learning:item.learning, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id), imageKind:PHOTO_CREDITS[item.id]?.kind||'photo', imageCaption:PHOTO_CREDITS[item.id]?.caption, imageSource:PHOTO_CREDITS[item.id]?.source, imageLicenseUrl:PHOTO_CREDITS[item.id]?.licenseUrl, imageChanges:PHOTO_CREDITS[item.id]?.changes }, found:discoveryCountFor(p), total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
   socket.on('meetAnimal', (payload, ack = () => {}) => {
@@ -2332,17 +2347,16 @@ io.on('connection', (socket) => {
     if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
     const item = LANDMARK_BY_ID.get(String(payload?.id || ''));
     if (!item) return ack({ ok:false, error:'그런 명소를 찾지 못했습니다.' });
-    if(store.room(p.roomCode).activeMission?.studyTargets?.some(t=>t.key==='landmark:'+item.id)){try{return ack(beginPlaceStudy(p,'landmark:'+item.id));}catch(error){return ack({ok:false,error:error.message});}}
     if (p.mode !== 'city' || p.currentCityId !== item.cityId) return ack({ ok:false, error:`${josaEun(item.name)} 그 도시 안에서만 볼 수 있습니다.` });
-    const found = discoveryListFor(p.roomCode, p.name);
-    const first = !found.includes(item.id);
+    const key=DiscoveryLearning.canonicalKey('landmark:'+item.id);
+    if(store.room(p.roomCode).activeMission?.studyTargets?.some(t=>DiscoveryLearning.canonicalKey(t.key)===key)){try{return ack(beginPlaceStudy(p,key));}catch(error){return ack({ok:false,error:error.message});}}
+    const first = recordDiscovery(p,item.id);
     if (first) {
-      found.push(item.id);
       store.scheduleSave();
       setNotice(p, `명소 · ${item.name}`);
       io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'landmark', name:p.name, discovery:item.name, at:Date.now() });
     }
-    ack({ ok:true, first, landmark:publicLandmark(item), found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
+    ack({ ok:true, first, landmark:publicLandmark(item), found:discoveryCountFor(p), total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
   socket.on('stop', () => {

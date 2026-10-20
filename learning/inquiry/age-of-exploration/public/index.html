@@ -129,7 +129,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 @media(max-width:650px){#discoveryCard{padding:20px 17px}#discoveryText{font-size:16px;line-height:1.9}#discoveryText .storyHead{font-size:16px}#bookReader{padding:22px 18px}#bookReader h2{font-size:24px}#bookIntro,#bookSections p{font-size:16px;line-height:1.9}#finalQuizQuestions{padding:12px 10px}.finalQuestion{padding:13px}.finalPassage{font-size:15px!important}.finalPrompt{font-size:15px!important}.finalChoice{font-size:15px!important}}#cityRest{margin-top:5px;font-size:14px;font-weight:700;color:#e9f3d5}#cityArtCaption{display:block;margin-top:3px;font-size:10px;color:#cbd5d3}
 @media(max-width:650px){#cityMenu button{flex:1 1 calc(50% - 8px);max-width:none}}
 </style>
-<link rel="stylesheet" href="/learn/world-voyage/css/place-study.css?v=2026101904">
+<link rel="stylesheet" href="/learn/world-voyage/css/place-study.css?v=2026102101">
 </head>
 <body>
 <div id="globeBase"></div>
@@ -169,7 +169,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
     <div id="cityShade"></div>
     <div id="cityTitle">도시</div>
     <div id="cityInfo"><div id="cityContext"></div><div id="cityRest"></div><small id="cityArtCaption"></small></div>
-    <div id="cityMenu"><button id="storyBtn" hidden>도시 설명</button><button id="landmarkBtn" hidden>명소</button><button id="libraryBtn" hidden>도서관</button><button id="departCityBtn" hidden>출항</button><button id="leaveCityBtn">도시 밖으로</button></div>
+    <div id="cityMenu"><button id="storyBtn" hidden>도시 설명</button><button id="landmarkBtn" hidden>명소</button><button id="laterLandmarkBtn" hidden>후대 문화</button><button id="libraryBtn" hidden>도서관</button><button id="departCityBtn" hidden>출항</button><button id="leaveCityBtn">도시 밖으로</button></div>
   </div>
 </section>
 <section id="libraryView" aria-label="도서관">
@@ -533,10 +533,10 @@ function cityBooks(city){
   const books2=CDS95LibraryHistory.contextualBooks(catalogCity,result);
   const foundIds=Array.isArray(serverSelf?.discoveryIds)?serverSelf.discoveryIds:[];
   if(foundIds.length){
-    const sections=foundIds.map(id=>discoveryCatalog.get(id)).filter(Boolean).map(d=>({heading:d.name,text:`${d.kind}${d.todayCountry?` · 오늘날 ${d.todayCountry}`:''}
+    const sections=foundIds.map(id=>discoveryCatalog.get(id)).filter(Boolean).map(d=>({heading:d.name,text:`${d.learning?.label||d.kind}${d.todayCountry?` · 오늘날 ${d.todayCountry}`:''}
 ${d.text}
 1520년에는 ${d.in1520}`}));
-    if(sections.length)books2.unshift({id:'local-discoveries',title:`내가 찾은 것 · ${sections.length}곳`,author:'항해 기록',period:'내 항해 기록',category:'발견 기록',contextKind:'discoveries',intro:`지금까지 배와 탐험대가 찾은 곳입니다. 모두 ${serverSelf?.discoveryTotal||sections.length}곳 가운데 ${sections.length}곳을 찾았습니다.`,sections});
+    if(sections.length)books2.unshift({id:'local-discoveries',title:`내가 살펴본 곳 · ${sections.length}곳`,author:'항해 기록',period:'내 항해 기록',category:'발견 기록',contextKind:'discoveries',intro:`현장 발견 ${serverSelf?.discoveryFound??sections.length}곳 / ${serverSelf?.discoveryTotal||sections.length}곳. 추가 탐방과 후대 문화, 이전 기록도 함께 보관합니다.`,sections});
   }
   return books2;
 }
@@ -564,8 +564,9 @@ function renderCityView(){
   // 좁은 화면에서 단추 넷이 줄어 글자가 잘리므로 이름은 짧게 둔다. 자세한 이름은 열린 창에서 보여 준다.
   libraryBtn.hidden=false;libraryBtn.textContent='도서관';
   const cityStory=catalogCity?.story||null;storyBtn.hidden=!cityStory;storyBtn.textContent=catalogCity?.settlementKind==='village'?'취락 설명':'도시 설명';
-  landmarkBtn.hidden=!landmarkQueue.length;
-  if(landmarkQueue.length)landmarkBtn.textContent=landmarkQueue.length>1?`명소 ${landmarkQueue.length}곳`:'명소';
+  const present=landmarkQueue.filter(x=>x.learning?.tier!=='later'),later=landmarkQueue.filter(x=>x.learning?.tier==='later');
+  landmarkBtn.hidden=!present.length;landmarkBtn.textContent=present.length>1?`명소 ${present.length}곳`:'명소';
+  document.getElementById('laterLandmarkBtn').hidden=!later.length;
   const shipHere=!!catalogCity?.canEnterFromSea&&serverSelf.shipPortId===cityId,busy=!!serverSelf.transition;departCityBtn.hidden=!shipHere;departCityBtn.disabled=busy;leaveCityBtn.disabled=busy;
   if(renderedCityId!==cityId){renderedCityId=cityId;const sceneSrc=serverSelf.currentCityImage||catalogCity?.interiorImage||'';cityScene.hidden=!sceneSrc;if(sceneSrc)cityScene.src=sceneSrc;else cityScene.removeAttribute('src');cityScene.alt=`${serverSelf.currentCityName||'도시'} 내부`;cityTitle.textContent=serverSelf.currentCityName||'도시';cityContext.textContent=catalogCity?.in1520?`1520년 ${catalogCity.in1520} · 오늘날 ${catalogCity.todayCountry}`:[serverSelf.currentCityRegion,'도시 내부',`${regionLabel} 도서관`].filter(Boolean).join(' · ');openedBookId='';closeLibrary()}
   const fatigue=Math.max(0,Number(serverSelf.fatigue)||0);
@@ -615,7 +616,7 @@ function applyModeUI(){
 }
 
 async function ungzipResponse(url){const response=await fetch(url);if(!response.ok)throw new Error('지도 파일을 받지 못했습니다.');if(!('DecompressionStream' in window))throw new Error('최신 Chrome이 필요합니다.');const ds=new DecompressionStream('gzip');return await new Response(response.body.pipeThrough(ds)).arrayBuffer()}
-Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),decodeSoon(naturalMapOverview),decodeSoon(shipAtlas),decodeSoon(windCloudAtlas),fetch('/learn/world-voyage/api/mission-catalog?v=89').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=80').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');naturalLandMask=new Uint8Array(landMask);UW3Terrain.setNaturalEarthLandMask(naturalLandMask);mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove();tryMainRoomEntry()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
+Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),decodeSoon(naturalMapOverview),decodeSoon(shipAtlas),decodeSoon(windCloudAtlas),fetch('/learn/world-voyage/api/mission-catalog?v=2026102101').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=80').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');naturalLandMask=new Uint8Array(landMask);UW3Terrain.setNaturalEarthLandMask(naturalLandMask);mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map([...(catalog.discoveries||[]),...(catalog.cityLandmarks||[])].filter(d=>!d.learning?.alias).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove();tryMainRoomEntry()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
 
 function restoreVoyagerConnection(){
   if(!joined||!socket.connected||resumePending)return;
@@ -643,15 +644,16 @@ socket.on('missionCleared',()=>{applyMissionState(null,null,false);showToast('�
 socket.on('missionProgress',data=>{applyMissionState(data?.mission||activeMission,data?.progress||missionProgress,false)});
 socket.on('classControl',applyClassSettings);
 function showDiscovery(item,found,total,first,label='발견! '){
-  discoveryName.textContent=`${first?label:''}${item.name}`;
-  discoveryKind.textContent=[item.kind,item.built?`세운 때 ${item.built}`:'',item.todayCountry?`오늘날 ${item.todayCountry}`:''].filter(Boolean).join(' · ');
-  discoveryText.textContent=[item.text,item.in1520?`1520년에는 ${item.in1520}`:''].filter(Boolean).join('\n\n');
+  const learning=item.learning,later=learning?.tier==='later';
+  discoveryName.textContent=`${later?'후대 문화 · ':first?label:''}${item.name}`;
+  discoveryKind.textContent=[learning?.label,item.kind,item.built?`세운 때 ${item.built}`:'',item.todayCountry?`오늘날 ${item.todayCountry}`:''].filter(Boolean).join(' · ');
+  discoveryText.textContent=[later?'1520년에는 아직 완성되지 않은 후대의 문화유산입니다.':'',learning?.objective?'살펴볼 점 · '+learning.objective:'','장소의 특징과 역사 · 오늘날 기준',item.text,item.in1520?`1520년 당시\n${item.in1520}`:''].filter(Boolean).join('\n\n');
   const isMap=item.imageKind==='map';
   if(item.image){discoveryImage.src=item.image;discoveryImage.alt=VoyagePhotoFigure.alt(item);discoveryImage.hidden=false}
   else{discoveryImage.removeAttribute('src');discoveryImage.hidden=true}
   discoveryImageLabel.hidden=!item.image||!isMap;
   VoyagePhotoFigure.caption(discoveryPhoto,item);
-  discoveryCount.textContent=`지금까지 찾은 것 ${found}곳 / 모두 ${total}곳`;
+  discoveryCount.textContent=(learning?.counted===false?'추가 학습 기록 · 현장 발견 수에는 포함하지 않습니다.\n':'')+`현장 발견 ${found}곳 / ${total}곳`;
   discoveryView.classList.add('show');clearKeys();
 }
 discoveryClose.addEventListener('click',()=>discoveryView.classList.remove('show'));
@@ -675,11 +677,14 @@ function openLandmark(index){
     if(result.self){serverSelf=result.self;self={...result.self}}
     if(result.study){window.VoyageStudyUI.show(result);return;}
     showDiscovery(result.landmark,result.found,result.total,result.first,'명소 · ');
-    discoveryNext.hidden=landmarkQueue.length<2;
-    if(!discoveryNext.hidden)discoveryNext.textContent=`다음 명소 · ${landmarkQueue[(index+1)%landmarkQueue.length].name}`;
+    const group=landmarkQueue.filter(x=>(x.learning?.tier==='later')===(item.learning?.tier==='later'));
+    const next=group[(group.findIndex(x=>x.id===item.id)+1)%group.length];
+    discoveryNext.hidden=group.length<2;
+    if(!discoveryNext.hidden){discoveryNext.textContent=`다음 ${item.learning?.tier==='later'?'후대 문화':'명소'} · ${next.name}`;discoveryNext.dataset.landmarkIndex=landmarkQueue.findIndex(x=>x.id===next.id);}
   });
 }
-landmarkBtn.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark(0)});
+landmarkBtn.addEventListener('click',()=>{const index=landmarkQueue.findIndex(x=>x.learning?.tier!=='later');if(index>=0)openLandmark(index)});
+document.getElementById('laterLandmarkBtn').addEventListener('click',()=>{const index=landmarkQueue.findIndex(x=>x.learning?.tier==='later');if(index>=0)openLandmark(index)});
 // 도시별로 고른 역사·인물·문화 주제를 데이터 순서대로 표시한다.
 function openCityStory(){
   const key='city:'+serverSelf?.currentCityId;if(activeMission?.studyTargets?.some(t=>t.key===key)){window.VoyageStudyUI.request(key);return;}
@@ -709,7 +714,7 @@ function doMeetAnimal(){
   });
 }
 huntActionBtn.addEventListener('click',doMeetAnimal);
-discoveryNext.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark((landmarkIndex+1)%landmarkQueue.length)});
+discoveryNext.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark(Number(discoveryNext.dataset.landmarkIndex))});
 socket.on('snapshot',snap=>{
   if(!joined)return;
   lastSnapshotAt=performance.now();connectionReady=true;net.textContent='● 서버 연결';net.className='good';
@@ -1043,9 +1048,10 @@ function discoveryMapPoint(item){
 }
 function studyMapTargets(){
   return (activeMission?.studyTargets||[]).flatMap(target=>{
-    const discovery=discoveryPoints.find(item=>target.key==='discovery:'+item.id);
-    const city=discovery?null:mapCities.find(item=>target.key==='city:'+item.id);
-    const point=discovery?discoveryMapPoint(discovery):city?.cityPoint;
+    const key=target.canonicalKey||target.key;
+    const discovery=discoveryPoints.find(item=>key==='discovery:'+item.id);
+    const city=discovery?null:mapCities.find(item=>key==='city:'+item.id);
+    const point=discovery?discoveryMapPoint(discovery):city?.cityPoint||target.point;
     if(!point)return [];
     const completed=missionProgress?.studyPlaces?.some(p=>p.key===target.key&&p.phase==='completed')||false;
     return [{key:target.key,name:target.name,point,completed}];
@@ -1083,7 +1089,8 @@ function drawDiscoveryMarkers(cw,ch,left,top){
   const found=new Set(Array.isArray(serverSelf?.discoveryIds)?serverSelf.discoveryIds:[]);
   ctx.save();ctx.textAlign='center';ctx.textBaseline='bottom';ctx.font=`${zoom>=2.4?'bold 11px':'bold 9px'} "Malgun Gothic",sans-serif`;
   for(const item of discoveryPoints){
-    if(activeMission?.studyTargets?.some(t=>t.key==='discovery:'+item.id))continue;
+    if(item.learning?.counted===false)continue;
+    if(activeMission?.studyTargets?.some(t=>(t.canonicalKey||t.key)==='discovery:'+item.id))continue;
     const point=discoveryMapPoint(item),_di=screenPoint(point.x,point.y,cw,ch),sx=_di.x,sy=_di.y;
     if(sx<-60||sx>cw+60||sy<-40||sy>ch+40)continue;
     const done=found.has(item.id),size=done?3.5:4.2;
@@ -1247,6 +1254,6 @@ setInterval(()=>{if(joined&&self)updateHud()},100);
 setInterval(()=>{if(joined&&performance.now()-lastSnapshotAt>3000){connectionReady=false;for(const k in keys)keys[k]=false;net.textContent='● 연결 복구 중';net.className='bad';restoreVoyagerConnection()}},1000);
 </script>
 <script src="/learn/world-voyage/js/photo-figure.js?v=2026101902"></script>
-<script src="/learn/world-voyage/js/place-study-ui.js?v=2026101903"></script>
+<script src="/learn/world-voyage/js/place-study-ui.js?v=2026102101"></script>
 </body>
 </html>

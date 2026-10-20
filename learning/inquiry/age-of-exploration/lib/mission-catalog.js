@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('node:path');
+const DiscoveryLearning = require('./discovery-learning');
 
 const CATALOG_DIR = path.join(__dirname, '..', 'data', 'catalog');
 
@@ -26,8 +27,8 @@ const PLACES = Object.freeze([...ORIGINAL_CITIES.filter((city) => !city.retired)
 const ITEMS = Object.freeze(loadJson('items.json'));
 const TEMPLATES = Object.freeze(loadJson('templates.json'));
 const READY_MISSIONS = Object.freeze(loadJson('ready-missions.json'));
-const DISCOVERIES = Object.freeze([...loadJson('discoveries.json'), ...REGIONAL_SITES.discoveries]);
-const CITY_LANDMARKS = Object.freeze(loadJson('city-landmarks.json'));
+const DISCOVERIES = Object.freeze([...loadJson('discoveries.json'), ...REGIONAL_SITES.discoveries].map(DiscoveryLearning.decorate));
+const CITY_LANDMARKS = Object.freeze(loadJson('city-landmarks.json').map(DiscoveryLearning.decorate));
 const SEA_ANIMALS = Object.freeze(loadJson('sea-animals.json'));
 
 function latLonToCell(lat, lon) {
@@ -67,7 +68,8 @@ function normalizePlaceAccess(place) {
 
 function publicCatalog() {
   return {
-    version: 2,
+    version: 3,
+    learningTopics: Object.keys(DiscoveryLearning.data.topics),
     places: PLACES.map((source) => {
       const place = normalizePlaceAccess(source);
       const { originalMarkerCells, originalSeaEntryCells, originalLandEntryCells, ...publicPlace } = place;

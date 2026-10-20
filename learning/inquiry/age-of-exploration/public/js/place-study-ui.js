@@ -35,16 +35,20 @@ window.VoyageStudyUI = (() => {
   function draw(message=''){
     const s=session;if(!s)return;
     const total=s.questionCount||3;
-    $('placeStudyTitle').textContent=s.name+(s.phase==='completed'?' · 발견 성공':'');
+    $('placeStudyTitle').textContent=s.name+(s.phase==='completed'?(s.reading.learning?.counted===false?' · 학습 완료':' · 발견 성공'):'');
     $('placeStudyStatus').textContent=message || (s.phase==='completed'?total+'문제 연속 정답 · 완료':s.phase==='reading'?'설명을 읽고 문제를 시작하세요.':'연속 정답 '+s.streak+'/'+total);
     const reading=$('placeStudyReading');reading.replaceChildren();
     const body=document.createElement(s.phase==='quiz'?'details':'div');
     if(s.phase==='quiz'){const summary=document.createElement('summary');summary.textContent='설명 다시 읽기';body.append(summary);}
     const r=s.reading,figure=document.createElement('div');figure.className='photoFigure';
+    if(r.learning){const goal=document.createElement('p');goal.className='studyGoal';goal.textContent=(r.learning.tier==='later'?'후대 문화 · 1520년 이후의 역사입니다.\n':'')+'살펴볼 점 · '+r.learning.objective;body.append(goal);}
     if(r.image)body.append(figure);
     if(r.image){const img=document.createElement('img');img.src=r.image;img.alt=VoyagePhotoFigure.alt(r);figure.append(img);if(r.imageKind==='map'){const label=document.createElement('span');label.className='imageKindLabel';label.textContent='위치 지도';figure.append(label);}VoyagePhotoFigure.caption(figure,r);}
     if(r.todayCountry){const country=document.createElement('p');country.className='studyCredit';country.textContent='오늘날 '+r.todayCountry;body.append(country);}
-    const text=document.createElement('p');text.className='studyText';text.textContent=r.text;body.append(text);reading.append(body);
+    function section(title,value){if(!value)return;if(title){const h=document.createElement('h3');h.textContent=title;body.append(h);}const p=document.createElement('p');p.className='studyText';p.textContent=value;body.append(p);}
+    if(r.description){section('장소의 특징과 역사 · 오늘날 기준',r.description);section('1520년 당시',r.in1520);}
+    else section('',r.text);
+    reading.append(body);
     const qbox=$('placeStudyQuestion');qbox.replaceChildren();
     if(s.question){
       const title=document.createElement('h3');title.textContent=(s.streak+1)+'번 · '+s.question.prompt;

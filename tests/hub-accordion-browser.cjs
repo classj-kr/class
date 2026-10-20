@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 
 const root = path.resolve(__dirname, '..');
@@ -36,6 +37,8 @@ async function sampleClick(page, selector, watch) {
         top: trigger.getBoundingClientRect().top,
         scroll: window.scrollY,
         opacity: Number(getComputedStyle(element).opacity),
+        visibleHeight: element.closest('details:not([open])') ? 0 : element.getBoundingClientRect().height
+          * (1 - (parseFloat(element.style.clipPath.split(' ')[2]) || 0) / 100),
       });
       if (samples.length === 1) trigger.click();
       if (now - started < 520) requestAnimationFrame(sample);
@@ -55,6 +58,28 @@ function gradual(samples, property, label) {
     const elapsed = samples[i].t - samples[i - 1].t;
     assert.ok(delta <= range * 2.2 * elapsed / 360 + 3, `${label}: ${delta.toFixed(1)}px jump in ${elapsed.toFixed(1)}ms`);
   }
+}
+
+async function lastButtonVisible(page, panelSelector) {
+  const bounds = await page.locator(panelSelector).evaluate(panel => {
+    const choices = [...panel.querySelectorAll(':scope > a, :scope > details > summary, :scope > .worksheet-item')];
+    const last = choices.at(-1);
+    const rect = last.getBoundingClientRect();
+    return { top: rect.top, bottom: rect.bottom, viewport: innerHeight };
+  });
+  assert.ok(bounds.top >= 0 && bounds.bottom <= bounds.viewport - 6,
+    `last button is clipped in ${panelSelector}: ${JSON.stringify(bounds)}`);
+}
+
+async function captureWebp(page, name) {
+  execFileSync('python', ['-c', [
+    'from PIL import Image',
+    'import io, sys',
+    'source = Image.open(io.BytesIO(sys.stdin.buffer.read())).convert("RGBA")',
+    'source.save(sys.argv[1], "WEBP", lossless=True, exact=True)',
+    'saved = Image.open(sys.argv[1]).convert("RGBA")',
+    'assert saved.size == source.size and saved.tobytes() == source.tobytes()',
+  ].join('\n'), path.join(output, name)], { input: await page.screenshot() });
 }
 
 (async () => {
@@ -96,11 +121,14 @@ function gradual(samples, property, label) {
       const opening = await sampleClick(page, games, '.boardgame-section');
       gradual(opening, 'height', `category opening at ${width}`);
       assert.equal(await page.locator('#category-boardgame-panel').isVisible(), true);
+      await lastButtonVisible(page, '#category-boardgame-panel');
 
       const first = '[data-game-category="visual-response"] > summary';
       await page.locator(first).scrollIntoViewIfNeeded();
       const nested = await sampleClick(page, first, width <= 600 ? '[data-game-category="visual-response"]' : '[data-game-category="visual-response"] > .worksheet-group-options');
-      gradual(nested, width <= 600 ? 'height' : 'opacity', `submenu opening at ${width}`);
+      fs.writeFileSync(path.join(output, `submenu-${width}.json`), JSON.stringify(nested, null, 2));
+      gradual(nested, width <= 600 ? 'height' : 'visibleHeight', `submenu opening at ${width}`);
+      await lastButtonVisible(page, '[data-game-category="visual-response"] > .worksheet-group-options');
 
       if (width <= 600) {
         const last = '[data-game-category="solo-puzzles"] > summary';
@@ -109,27 +137,29 @@ function gradual(samples, property, label) {
         fs.writeFileSync(path.join(output, 'mobile-switch.json'), JSON.stringify(switching, null, 2));
         gradual(switching, 'height', 'closing an earlier mobile submenu');
         gradual(switching, 'scroll', 'anchored mobile submenu switch');
-        const maxTopDrift = Math.max(...switching.map((sample) => sample.top)) - Math.min(...switching.map((sample) => sample.top));
-        assert.ok(maxTopDrift < 3, `clicked mobile submenu moved ${maxTopDrift}px`);
-        results.push({ width, mobileSwitchTopDrift: maxTopDrift });
+        await lastButtonVisible(page, '[data-game-category="solo-puzzles"] > .worksheet-group-options');
+        await captureWebp(page, `expanded-${width}.webp`);
+        results.push({ width, mobileSwitchRevealsLastButton: true });
       } else {
-        // Short and long popovers on the same row should not fit their entire
-        // contents by dragging the page to different vertical positions.
+        // Different-length menus each reveal their final button smoothly.
         await page.locator(first).click();
         await settled(page);
-        const pair = ['visual-response', 'logic-deduction'];
+        const pair = ['visual-response', 'logic-deduction', 'math-operations'];
         const positions = [];
         for (const key of pair) {
           const selector = `[data-game-category="${key}"] > summary`;
           await page.locator(selector).scrollIntoViewIfNeeded();
           const before = await page.evaluate(() => window.scrollY);
-          await page.locator(selector).click();
-          await settled(page);
-          positions.push((await page.evaluate(() => window.scrollY)) - before);
+          const reveal = await sampleClick(page, selector, `[data-game-category="${key}"] > .worksheet-group-options`);
+          fs.writeFileSync(path.join(output, `reveal-${key}-${width}.json`), JSON.stringify(reveal, null, 2));
+          await lastButtonVisible(page, `[data-game-category="${key}"] > .worksheet-group-options`);
+          const distance = (await page.evaluate(() => window.scrollY)) - before;
+          if (distance > 3) gradual(reveal, 'scroll', `reveal final ${key} button at ${width}`);
+          positions.push(distance);
+          if (key === 'math-operations') await captureWebp(page, `expanded-${width}.webp`);
           await page.locator(selector).click();
           await settled(page);
         }
-        assert.ok(Math.abs(positions[0] - positions[1]) < 3, `popover length changed scroll amount: ${positions}`);
         results.push({ width, popoverScroll: positions });
       }
 
@@ -189,6 +219,9 @@ function gradual(samples, property, label) {
     await page.locator('#category-boardgame-toggle').click();
     await settled(page);
     assert.equal(await page.locator('#category-boardgame-toggle').getAttribute('aria-expanded'), 'true');
+    await page.locator('[data-game-category="math-operations"] > summary').click();
+    await settled(page);
+    await lastButtonVisible(page, '[data-game-category="math-operations"] > .worksheet-group-options');
     await page.locator('#category-boardgame-toggle').click();
     await settled(page);
     assert.equal(await page.locator('#category-boardgame-panel').isVisible(), false);
