@@ -31,7 +31,7 @@ test('초·중·고1 두 학기의 모든 원문제에 내용이 다른 검증 �
       originals++;
     }
   }
-  assert.equal(originals, 14858); assert.equal(twins, originals * 3);
+  assert.equal(originals, 14883); assert.equal(twins, originals * 3);
   assert.equal(Object.keys(plans).length, 20); assert.equal(Object.keys(plans['10-2'].items).length, 833);
 });
 
