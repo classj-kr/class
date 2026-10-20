@@ -72,7 +72,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   };
   async function initialize() {
     if (!pool) return;
-    for (const file of ['014-exams.sql', '015-exam-school.sql', '016-exam-audio.sql', '017-exam-images.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
+    for (const file of ['014-exams.sql', '015-exam-school.sql', '016-exam-audio.sql', '017-exam-images.sql', '018-exam-member-start.sql']) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
   }
   async function exam(id, lock = false, db = pool) {
     const row = (await db.query(`SELECT * FROM classroom_exams WHERE id=$1${lock ? ' FOR UPDATE' : ''}`, [id])).rows[0];
@@ -97,9 +97,16 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     if (!row) fail(401, 'JOIN_REQUIRED', '방번호로 시험에 입장해 주세요.');
     return row;
   }
+  // 교사가 시작 버튼을 누르지 않는다. 모든 문항에 정답이 있으면 응시할 수 있고(ready),
+  // 학생이 처음 시작하면 시험이 open이 되어 문항이 잠긴다. 제한시간은 학생마다 자기가 시작한 때부터 잰다.
+  const ready = e => { try { normalizeQuestions(e.questions, { publish: true }); return true; } catch (_) { return false; } };
   const publicExam = e => ({ id: e.id, code: e.code.trim(), title: e.title, durationMinutes: e.duration_minutes,
-    status: e.status, startedAt: e.started_at, ownerName: e.owner_name || '', hasAudio: Boolean(e.audio_bytes), audioVersion: e.audio_bytes || 0, deadline: e.started_at ? new Date(new Date(e.started_at).getTime() + e.duration_minutes * 60000).toISOString() : null });
-  const active = e => e.status === 'open' && e.started_at && Date.now() < new Date(e.started_at).getTime() + e.duration_minutes * 60000;
+    status: e.status, ready: e.status !== 'closed' && ready(e), startedAt: e.started_at, ownerName: e.owner_name || '',
+    hasAudio: Boolean(e.audio_bytes), audioVersion: e.audio_bytes || 0 });
+  const deadlineOf = (e, m) => m.started_at ? new Date(new Date(m.started_at).getTime() + e.duration_minutes * 60000) : null;
+  const active = (e, m) => e.status === 'open' && Boolean(m.started_at) && !m.submitted_at && Date.now() < deadlineOf(e, m).getTime();
+  const publicMember = (e, m) => ({ number: m.number, name: m.name, grade: m.grade, classNumber: m.class_number,
+    startedAt: m.started_at, submittedAt: m.submitted_at, deadline: deadlineOf(e, m)?.toISOString() || null });
   const studentQuestions = questions => questions.map(({ answer, aliases, explanation, ...q }) => q);
   router.use((_req, res, next) => { requireDatabase(); res.set('Cache-Control', 'no-store'); next(); });
 
@@ -157,7 +164,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
       const token = String(req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith(`exam_${e.id}=`))?.split('=')[1] || '';
       if (!m && token) m = (await db.query('SELECT * FROM classroom_exam_members WHERE exam_id=$1 AND token_hash=$2', [e.id, hash(token)])).rows[0];
       if (!m) {
-        if (e.status === 'closed' || (e.status === 'open' && !active(e))) fail(403, 'EXAM_CLOSED', '시험이 종료되었습니다.');
+        if (e.status === 'closed') fail(403, 'EXAM_CLOSED', '응시가 마감된 시험입니다.');
         const fresh = crypto.randomBytes(32).toString('hex');
         const result = await db.query(`INSERT INTO classroom_exam_members(id,exam_id,number,name,user_id,token_hash,grade,class_number)
           VALUES($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT DO NOTHING RETURNING *`,
@@ -167,7 +174,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
         res.cookie(`exam_${e.id}`, fresh, { httpOnly: true, sameSite: 'strict', secure: req.secure, path: '/api/exams', maxAge: 86400000 });
       }
       await db.query('COMMIT');
-      res.json({ exam: publicExam(e), member: { number: m.number, name: m.name } });
+      res.json({ exam: publicExam(e), member: publicMember(e, m) });
     } catch (error) { await db.query('ROLLBACK'); throw error; } finally { db.release(); }
   }));
   router.get('/:id', asyncRoute(async (req, res) => {
@@ -177,20 +184,20 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     const teacher = isOwner || (user && req.query.mode === 'teacher' && sameSchool(await teacherSchool(user), e));
     if (teacher) {
       await requireTeacher(req);
-      const members = (await pool.query(`SELECT id,number,name,grade,class_number,submitted_at FROM classroom_exam_members WHERE exam_id=$1
+      const members = (await pool.query(`SELECT * FROM classroom_exam_members WHERE exam_id=$1
         ORDER BY grade NULLS FIRST, class_number NULLS FIRST, number`, [e.id])).rows;
       const answers = (await pool.query('SELECT member_id,question_id,choice,response FROM classroom_exam_answers WHERE exam_id=$1', [e.id])).rows;
-      return res.json({ exam: { ...publicExam(e), mine: Boolean(isOwner) }, questions: e.questions, members: members.map(m => ({ number: m.number, name: m.name,
-        grade: m.grade, classNumber: m.class_number,
-        submittedAt: m.submitted_at, score: e.questions.filter(q => answers.some(a => a.member_id === m.id && a.question_id === q.id && matchesAnswer(q, a))).length,
+      return res.json({ exam: { ...publicExam(e), mine: Boolean(isOwner) }, questions: e.questions, members: members.map(m => ({ ...publicMember(e, m),
+        score: e.questions.filter(q => answers.some(a => a.member_id === m.id && a.question_id === q.id && matchesAnswer(q, a))).length,
         answered: answers.filter(a => a.member_id === m.id).length })) });
     }
     const m = await member(req, e);
     const answers = (await pool.query('SELECT question_id,choice,response FROM classroom_exam_answers WHERE member_id=$1', [m.id])).rows;
-    const scoreVisible = e.status !== 'draft' && (Boolean(m.submitted_at) || !active(e));
-    const score = scoreVisible ? e.questions.filter(q => answers.some(a => a.question_id === q.id && matchesAnswer(q, a))).length : null;
-    res.json({ exam: publicExam(e), member: { number: m.number, name: m.name, submittedAt: m.submitted_at }, score,
-      questions: e.status === 'draft' ? [] : studentQuestions(e.questions), answers });
+    // 문항과 점수는 자기가 시작한 뒤에만 보인다. 점수는 제출했거나 시간이 끝났거나 마감된 뒤에 보인다.
+    const started = Boolean(m.started_at) && e.status !== 'draft';
+    const score = started && !active(e, m) ? e.questions.filter(q => answers.some(a => a.question_id === q.id && matchesAnswer(q, a))).length : null;
+    res.json({ exam: publicExam(e), member: publicMember(e, m), score,
+      questions: started ? studentQuestions(e.questions) : [], questionCount: e.questions.length, answers });
   }));
   router.put('/:id', asyncRoute(async (req, res) => {
     const e = await exam(req.params.id); await manager(req, e);
@@ -201,22 +208,35 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
     if (!Number.isInteger(duration) || duration < 1 || duration > 180) fail(400, 'INVALID_DURATION', '제한시간은 1~180분으로 정해 주세요.');
     const result = await pool.query(`UPDATE classroom_exams SET title=$2,duration_minutes=$3,questions=$4::jsonb WHERE id=$1 AND status='draft' RETURNING id`,
       [e.id, title, duration, JSON.stringify(questions)]);
-    if (!result.rowCount) fail(409, 'EXAM_STARTED', '시작한 시험은 수정할 수 없습니다.');
+    if (!result.rowCount) fail(409, 'EXAM_STARTED', '학생이 이미 시작한 시험은 수정할 수 없습니다.');
     // 어느 문항에서도 쓰지 않는 그림은 지운다.
     const used = questions.map(q => q.image).filter(Boolean);
     await pool.query('DELETE FROM classroom_exam_images WHERE exam_id=$1 AND NOT (id = ANY($2::text[]))', [e.id, used]);
     res.json({ questions });
   }));
-  router.post('/:id/start', asyncRoute(async (req, res) => {
-    const e = await exam(req.params.id); await manager(req, e);
-    try { normalizeQuestions(e.questions, { publish: true }); } catch (error) { fail(400, 'INVALID_QUESTIONS', error.message); }
-    const result = await pool.query(`UPDATE classroom_exams SET status='open',started_at=NOW() WHERE id=$1 AND status='draft' RETURNING *`, [e.id]);
-    if (!result.rowCount) fail(409, 'EXAM_STARTED', '이미 시작한 시험입니다.');
-    res.json({ exam: publicExam(result.rows[0]) });
+  // 학생이 "시작"을 누른다. 그때부터 그 학생의 제한시간이 흐르고, 처음 시작한 학생이 있으면 문항이 잠긴다.
+  router.post('/:id/begin', asyncRoute(async (req, res) => {
+    const before = await exam(req.params.id);
+    const authenticated = await member(req, before);
+    const db = await pool.connect();
+    try {
+      await db.query('BEGIN');
+      const e = await exam(req.params.id, true, db);
+      if (e.status === 'closed') fail(403, 'EXAM_CLOSED', '응시가 마감된 시험입니다.');
+      if (e.status === 'draft') {
+        if (!ready(e)) fail(409, 'EXAM_NOT_READY', '아직 준비 중인 시험입니다. 잠시 뒤에 다시 시도해 주세요.');
+        await db.query(`UPDATE classroom_exams SET status='open',started_at=NOW() WHERE id=$1`, [e.id]);
+        e.status = 'open';
+      }
+      const m = (await db.query('UPDATE classroom_exam_members SET started_at=COALESCE(started_at,NOW()) WHERE id=$1 RETURNING *', [authenticated.id])).rows[0];
+      await db.query('COMMIT');
+      res.json({ member: publicMember(e, m) });
+    } catch (error) { await db.query('ROLLBACK'); throw error; } finally { db.release(); }
   }));
+  // 더 받지 않을 때 마감한다. 시작하지 않은 학생은 들어올 수 없고, 응시 중인 학생도 더 답할 수 없다.
   router.post('/:id/close', asyncRoute(async (req, res) => {
     const e = await exam(req.params.id); await manager(req, e);
-    await pool.query(`UPDATE classroom_exams SET status='closed' WHERE id=$1 AND status='open'`, [e.id]);
+    await pool.query(`UPDATE classroom_exams SET status='closed' WHERE id=$1`, [e.id]);
     res.json({ ok: true });
   }));
   router.put('/:id/answers/:questionId', asyncRoute(async (req, res) => {
@@ -228,7 +248,7 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
       const e = await exam(req.params.id, true, db);
       const m = (await db.query('SELECT * FROM classroom_exam_members WHERE id=$1 AND exam_id=$2', [authenticated.id, e.id])).rows[0];
       if (!m) fail(401, 'JOIN_REQUIRED', '다시 입장해 주세요.');
-      if (!active(e) || m.submitted_at) fail(403, 'TIME_OVER', '응시 시간이 끝났거나 제출했습니다.');
+      if (!active(e, m)) fail(403, 'TIME_OVER', m.started_at ? '응시 시간이 끝났거나 제출했습니다.' : '먼저 시작을 눌러 주세요.');
       const q = e.questions.find(q => q.id === req.params.questionId);
       if (!q) fail(404, 'QUESTION_NOT_FOUND', '문항을 찾을 수 없습니다.');
       const choice = q.kind === 'short' ? null : Number(req.body?.choice);
@@ -242,16 +262,17 @@ function createExams({ pool, sessionUser, requireTeacher, requireDatabase, HttpE
   }));
   router.post('/:id/submit', asyncRoute(async (req, res) => {
     const e = await exam(req.params.id); const m = await member(req, e);
-    if (!active(e)) fail(403, 'TIME_OVER', e.status === 'draft' ? '아직 시험이 시작되지 않았습니다.' : '응시 시간이 끝났습니다.');
+    if (m.submitted_at) return res.json({ ok: true });
+    if (!active(e, m)) fail(403, 'TIME_OVER', m.started_at ? '응시 시간이 끝났습니다.' : '먼저 시작을 눌러 주세요.');
     await pool.query('UPDATE classroom_exam_members SET submitted_at=COALESCE(submitted_at,NOW()) WHERE id=$1', [m.id]);
     res.json({ ok: true });
   }));
-  // 음원·그림은 같은 학교 교사가 언제나, 입장한 학생은 시험이 열린 뒤에 본다.
+  // 음원·그림은 같은 학교 교사가 언제나, 학생은 자기가 시작한 뒤에 본다.
   async function viewer(req, e) {
     const user = await sessionUser(req);
     if (user && (String(user.id) === String(e.owner_id) || sameSchool(await teacherSchool(user), e))) return;
-    await member(req, e);
-    if (e.status === 'draft') fail(403, 'EXAM_NOT_STARTED', '시험이 시작되면 볼 수 있습니다.');
+    const m = await member(req, e);
+    if (e.status === 'draft' || !m.started_at) fail(403, 'EXAM_NOT_STARTED', '시작을 누르면 볼 수 있습니다.');
   }
   // 문항 그림. 올리면 id를 돌려주고, 문항의 image 칸에 그 id를 넣어 저장한다.
   router.post('/:id/images', express.raw({ type: () => true, limit: MAX_IMAGE_BYTES }), asyncRoute(async (req, res) => {

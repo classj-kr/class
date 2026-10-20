@@ -69,7 +69,7 @@
   }
   const imageUrl = imageId => `/api/exams/${encodeURIComponent(examId)}/images/${encodeURIComponent(imageId)}`;
   function newQuestion(kind) { draft.push({ kind, content: '', choices: kind === 'choice' ? ['','','',''] : kind === 'ox' ? ['O','X'] : [], answer: kind === 'short' ? '' : null, aliases: [], explanation: '' }); editQuestions(); }
-  const statusLabel = status => status === 'draft' ? '준비 중' : status === 'open' ? '진행 중' : '종료';
+  const statusLabel = e => e.status === 'closed' ? '마감' : e.status === 'open' ? '응시 중' : e.ready ? '응시 가능' : '준비 중(정답 확인 필요)';
   let homeExams = [];
   const MAX_AUDIO = 40 * 1024 * 1024;
   const baseName = file => file.name.replace(/\.(pdf|mp3|xlsx|xls|csv)$/i, '').trim();
@@ -220,7 +220,7 @@
     if (!data.exams.length) list.append(node('p', '아직 만든 시험이 없습니다.'));
     data.exams.forEach(e => {
       const row = node('div', undefined, 'exam-row'); const a = node('a', e.title); a.href = '?id=' + encodeURIComponent(e.id) + '&mode=teacher';
-      row.append(a, node('span', `방번호 ${e.code} · ${e.questionCount}문항${e.hasAudio ? ' · 듣기' : ''} · ${statusLabel(e.status)}${e.mine ? ' · 내 시험' : e.ownerName ? ` · ${e.ownerName}` : ''}`, 'muted')); list.append(row);
+      row.append(a, node('span', `방번호 ${e.code} · ${e.questionCount}문항${e.hasAudio ? ' · 듣기' : ''} · ${statusLabel(e)}${e.mine ? ' · 내 시험' : e.ownerName ? ` · ${e.ownerName}` : ''}`, 'muted')); list.append(row);
     });
   }
   // 파일 이름에서 학년·과목·코드를 뽑아 같은 시험의 파일끼리 묶는다.
@@ -315,9 +315,13 @@
   }
   async function teacherExam() {
     state = await api('/' + encodeURIComponent(examId) + '?mode=teacher'); show('teacherExam'); const e = state.exam;
-    $('examHeading').textContent = e.title; $('examMeta').textContent = `방번호 ${e.code} · ${e.durationMinutes}분 · ${e.status === 'draft' ? '준비 중' : e.status === 'open' ? '진행 중' : '종료'}`;
+    $('examHeading').textContent = e.title; $('examMeta').textContent = `방번호 ${e.code} · 학생마다 시작한 때부터 ${e.durationMinutes}분 · ${statusLabel(e)}`;
+    $('readyNote').textContent = e.status === 'closed' ? '응시가 마감되었습니다.'
+      : e.status === 'open' ? '학생이 시작해서 문항이 잠겼습니다. 학생은 방번호로 들어와 각자 시작합니다.'
+      : e.ready ? '학생이 방번호로 들어와 각자 시작할 수 있습니다. 첫 학생이 시작하기 전까지는 문항을 고칠 수 있습니다.'
+      : '정답이 비어 있는 문항이 있어 학생이 아직 시작할 수 없습니다. 정답을 채우고 문항 저장을 누르면 바로 응시할 수 있습니다.';
     $('editTitle').value = e.title; $('editDuration').value = e.durationMinutes; draft = structuredClone(state.questions); editQuestions();
-    $('draftTools').hidden = e.status !== 'draft'; $('startButton').hidden = e.status !== 'draft'; $('closeButton').hidden = e.status !== 'open'; $('deleteButton').hidden = !e.mine;
+    $('draftTools').hidden = e.status !== 'draft'; $('closeButton').hidden = e.status === 'closed' || (e.status === 'draft' && !e.ready); $('deleteButton').hidden = !e.mine;
     const audioUrl = '/api/exams/' + encodeURIComponent(e.id) + '/audio';
     $('teacherAudio').hidden = !e.hasAudio; if (!e.hasAudio) $('teacherAudio').removeAttribute('src'); else if (!$('teacherAudio').src.endsWith(audioUrl + '?v=' + e.audioVersion)) $('teacherAudio').src = audioUrl + '?v=' + e.audioVersion;
     $('audioNote').textContent = e.hasAudio ? '' : '없음 (듣기평가가 아니면 비워 두세요)';
@@ -326,13 +330,21 @@
     if (!state.members.length) host.append(node('p', '아직 입장한 학생이 없습니다.'));
     else {
       const table = node('table'); const head = node('tr'); ['학년','반','번호','이름','답한 문항','점수','상태'].forEach(t => head.append(node('th', t))); table.append(head);
-      state.members.forEach(m => { const row = node('tr'); [m.grade ?? '-',m.classNumber ?? '-',m.number,m.name,`${m.answered}/${state.questions.length}`,`${m.score}/${state.questions.length}`,m.submittedAt ? '제출' : deadlinePassed() ? '시간 종료' : '응시 중'].forEach(t => row.append(node('td', String(t)))); table.append(row); }); host.append(table);
+      state.members.forEach(m => { const row = node('tr'); [m.grade ?? '-',m.classNumber ?? '-',m.number,m.name,`${m.answered}/${state.questions.length}`,`${m.score}/${state.questions.length}`,memberStatus(m)].forEach(t => row.append(node('td', String(t)))); table.append(row); }); host.append(table);
     }
   }
-  function deadlinePassed() { const deadline = Date.parse(state.exam.deadline || ''); return state.exam.status !== 'open' || !Number.isFinite(deadline) || Date.now() + serverOffset >= deadline; }
+  const timeOver = m => state.exam.status === 'closed' || (Boolean(m.deadline) && Date.now() + serverOffset >= Date.parse(m.deadline));
+  function memberStatus(m) {
+    if (m.submittedAt) return '제출';
+    if (!m.startedAt) return state.exam.status === 'closed' ? '미응시' : '시작 전';
+    if (timeOver(m)) return '시간 종료';
+    return `응시 중 (${Math.max(1, Math.ceil((Date.parse(m.deadline) - Date.now() - serverOffset) / 60000))}분 남음)`;
+  }
+  // 학생 자신의 제한시간이 끝났는지. 시험이 마감되어도 끝난 것으로 본다.
+  function deadlinePassed() { return timeOver(state.member); }
   function tick() {
-    if (!state?.exam?.deadline) return;
-    const remaining = Math.max(0, Math.ceil((Date.parse(state.exam.deadline) - Date.now() - serverOffset) / 1000));
+    if (!state?.member?.deadline) return;
+    const remaining = Math.max(0, Math.ceil((Date.parse(state.member.deadline) - Date.now() - serverOffset) / 1000));
     $('remaining').textContent = `${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2,'0')}`;
     if (!remaining) {
       $('answerArea').querySelectorAll('input,button').forEach(el => { el.disabled = true; }); $('submitButton').disabled = true;
@@ -344,22 +356,28 @@
   }
   function scheduleWaitingPoll() {
     clearTimeout(waitingPoll);
-    waitingPoll = setTimeout(() => studentExam().catch(error => { notice(error.message); scheduleWaitingPoll(); }), 2000);
+    waitingPoll = setTimeout(() => studentExam().catch(error => { notice(error.message); scheduleWaitingPoll(); }), 5000);
   }
   async function studentExam() {
     state = await api('/' + encodeURIComponent(examId));
     if (!state.member) { await teacherExam(); return; }
     show('studentExam');
-    const e = state.exam; $('studentTitle').textContent = e.title;
-    // 시험이 열리면 음원을 붙인다. 이미 붙어 있으면 다시 넣지 않아야 듣던 위치가 유지된다.
-    const player = $('studentAudio'); const showAudio = e.hasAudio && e.status !== 'draft';
+    const e = state.exam; const m = state.member; $('studentTitle').textContent = e.title;
+    const started = Boolean(m.startedAt) && state.questions.length > 0;
+    // 시작한 뒤에 음원을 붙인다. 이미 붙어 있으면 다시 넣지 않아야 듣던 위치가 유지된다.
+    const player = $('studentAudio'); const showAudio = e.hasAudio && started;
     player.hidden = !showAudio;
     if (showAudio && !player.getAttribute('src')) player.src = '/api/exams/' + encodeURIComponent(e.id) + '/audio?v=' + e.audioVersion;
-    $('studentMeta').textContent = e.status === 'draft' ? `${state.member.number}번 ${state.member.name} · 시험 시작 대기 중`
-      : `${state.member.number}번 ${state.member.name} · ${state.questions.length}문항${state.score === null ? '' : ` · 자동채점 ${state.score}점`}`;
-    $('waitingPanel').hidden = e.status !== 'draft'; $('questionPanel').hidden = e.status === 'draft';
-    clearInterval(timer); timer = setInterval(tick, 1000); tick(); renderQuestion();
-    if (e.status === 'draft') scheduleWaitingPoll(); else clearTimeout(waitingPoll);
+    const who = `${m.number}번 ${m.name}`;
+    const phase = started ? 'questions' : e.status === 'closed' ? 'closed' : e.ready || e.status === 'open' ? 'begin' : 'waiting';
+    $('studentMeta').textContent = phase === 'questions' ? `${who} · ${state.questions.length}문항${state.score === null ? '' : ` · 자동채점 ${state.score}점`}`
+      : phase === 'begin' ? `${who} · 시작 전` : phase === 'waiting' ? `${who} · 준비 중` : who;
+    $('beginInfo').textContent = `${state.questionCount}문항 · 제한시간 ${e.durationMinutes}분${e.hasAudio ? ' · 듣기 문항이 있으니 이어폰을 준비하세요' : ''}`;
+    ['waiting', 'begin', 'closed', 'questions'].forEach(name => { $(name === 'questions' ? 'questionPanel' : name + 'Panel').hidden = phase !== name; });
+    $('remaining').hidden = phase !== 'questions';
+    clearInterval(timer); if (phase === 'questions') { timer = setInterval(tick, 1000); tick(); renderQuestion(); }
+    // 준비가 끝나면 시작 버튼이 나오도록 기다리는 동안만 다시 확인한다.
+    if (phase === 'waiting') scheduleWaitingPoll(); else clearTimeout(waitingPoll);
   }
   function renderQuestion() {
     const questions = state.questions; if (!questions.length) return;
@@ -420,8 +438,8 @@
   });
   $('addChoiceButton').onclick = () => newQuestion('choice'); $('addOxButton').onclick = () => newQuestion('ox'); $('addShortButton').onclick = () => newQuestion('short');
   $('saveButton').onclick = () => run(async () => { await api('/' + encodeURIComponent(examId), 'PUT', { title: $('editTitle').value, durationMinutes: Number($('editDuration').value), questions: draft }); await teacherExam(); notice('저장했습니다.'); });
-  $('startButton').onclick = () => run(async () => { if (!confirm('시험을 시작하면 문항과 제한시간을 수정할 수 없습니다. 시작할까요?')) return; await api('/' + encodeURIComponent(examId), 'PUT', { title: $('editTitle').value, durationMinutes: Number($('editDuration').value), questions: draft }); await api('/' + encodeURIComponent(examId) + '/start', 'POST'); await teacherExam(); });
-  $('closeButton').onclick = () => run(async () => { if (!confirm('지금 시험을 종료할까요?')) return; await api('/' + encodeURIComponent(examId) + '/close', 'POST'); await teacherExam(); });
+  $('beginButton').onclick = () => run(async () => { $('beginButton').disabled = true; try { await api('/' + encodeURIComponent(examId) + '/begin', 'POST'); questionIndex = 0; deadlineReloaded = false; await studentExam(); } finally { $('beginButton').disabled = false; } });
+  $('closeButton').onclick = () => run(async () => { if (!confirm('응시를 마감할까요? 아직 시작하지 않은 학생은 더 이상 응시할 수 없고, 응시 중인 학생도 바로 끝납니다.')) return; await api('/' + encodeURIComponent(examId) + '/close', 'POST'); await teacherExam(); });
   $('deleteButton').onclick = () => run(async () => { if (!confirm('시험과 모든 학생 답안을 삭제할까요?')) return; await api('/' + encodeURIComponent(examId), 'DELETE'); location.href = '?mode=teacher'; });
   $('refreshButton').onclick = () => run(teacherExam);
   $('audioFile').onchange = () => run(async () => {
