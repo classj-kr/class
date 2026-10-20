@@ -72,7 +72,7 @@
   const statusLabel = status => status === 'draft' ? '준비 중' : status === 'open' ? '진행 중' : '종료';
   let homeExams = [];
   const MAX_AUDIO = 40 * 1024 * 1024;
-  const baseName = file => file.name.replace(/\.(pdf|mp3)$/i, '').trim();
+  const baseName = file => file.name.replace(/\.(pdf|mp3|xlsx|xls|csv)$/i, '').trim();
   const isMp3File = file => /\.mp3$/i.test(file.name) || file.type === 'audio/mpeg';
   async function uploadAudio(id, file) {
     if (file.size > MAX_AUDIO) throw new Error('MP3는 40MB 이하로 올려 주세요.');
@@ -130,6 +130,86 @@
     } finally { doc.destroy(); }
     return failed;
   }
+  // 정답지: 엑셀은 브라우저에서 읽고, 표 모양을 모르겠거나 PDF면 AI에게 읽힌다.
+  const SHEETJS_URL = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+  let sheetjsPromise;
+  function loadSheetjs() {
+    sheetjsPromise ||= new Promise((resolve, reject) => {
+      if (window.XLSX) return resolve(window.XLSX);
+      const script = document.createElement('script'); script.src = SHEETJS_URL;
+      script.onload = () => resolve(window.XLSX); script.onerror = () => { sheetjsPromise = null; reject(new Error('엑셀 도구를 불러오지 못했습니다.')); };
+      document.head.append(script);
+    });
+    return sheetjsPromise;
+  }
+  const isSheetFile = file => /\.(xlsx|xls|csv)$/i.test(file.name);
+  const isKeyFile = file => isSheetFile(file) || /정답|답안|답지/.test(file.name.normalize('NFC'));
+  const cellText = value => String(value ?? '').normalize('NFKC').trim();
+  const questionNumber = value => { const m = /^(\d{1,3})(?:\s*번)?\.?$/.exec(cellText(value)); return m ? Number(m[1]) : null; };
+  // 표에서 번호→정답을 찾는다. 세로표(번호 열·정답 열), 가로표(번호 행·정답 행), 번호·정답이 번갈아 나오는 표를 읽는다.
+  function answersFromRows(rows) {
+    const found = new Map();
+    const isNumberHead = v => /^(문항\s*)?(번호|문항|no\.?)$/i.test(cellText(v));
+    const isAnswerHead = v => /^(정\s*답|답|답안)$/.test(cellText(v));
+    for (let r = 0; r < rows.length; r++) {
+      const row = rows[r] || []; const nc = row.findIndex(isNumberHead); const ac = row.findIndex(isAnswerHead);
+      if (nc >= 0 && ac >= 0) {
+        for (let k = r + 1; k < rows.length; k++) { const n = questionNumber(rows[k]?.[nc]); const a = cellText(rows[k]?.[ac]); if (n && a && !found.has(n)) found.set(n, a); }
+      } else if (nc >= 0) {
+        const answerRow = rows.slice(r + 1, r + 3).find(next => (next || []).some(isAnswerHead)) || rows[r + 1] || [];
+        row.forEach((v, c) => { const n = questionNumber(v); const a = cellText(answerRow[c]); if (n && a && !isAnswerHead(a) && !found.has(n)) found.set(n, a); });
+      }
+    }
+    if (found.size >= 2) return found;
+    // 머리글 없이 "1 | ③ | 2 | ① …"처럼 번호와 정답이 번갈아 나오는 표. 정답이 숫자면 번호와 헷갈리므로 이 방식으로는 읽지 않는다.
+    rows.forEach(row => { for (let c = 0; c + 1 < (row || []).length; c++) { const n = questionNumber(row[c]); const a = cellText(row[c + 1]); if (n && a && questionNumber(a) === null) { if (!found.has(n)) found.set(n, a); c++; } } });
+    return found.size >= 2 ? found : new Map();
+  }
+  async function readAnswerKey(file, title) {
+    let text = null;
+    if (isSheetFile(file)) {
+      const XLSX = await loadSheetjs();
+      const book = XLSX.read(await file.arrayBuffer(), { type: 'array' });
+      const code = (/[A-Za-z]\d{1,3}/.exec(title) || [''])[0].toUpperCase();
+      const names = [...book.SheetNames].sort((a, b) => Number(Boolean(code) && b.toUpperCase().includes(code)) - Number(Boolean(code) && a.toUpperCase().includes(code)));
+      for (const name of names) {
+        const answers = answersFromRows(XLSX.utils.sheet_to_json(book.Sheets[name], { header: 1, raw: false, defval: '' }));
+        if (answers.size) return { answers, via: '엑셀' };
+      }
+      text = book.SheetNames.map(name => `# ${name}\n` + XLSX.utils.sheet_to_csv(book.Sheets[name])).join('\n');
+    }
+    const response = await fetch('/api/teacher-ai/read-answer-key', { method: 'POST', credentials: 'same-origin',
+      headers: { 'Content-Type': text === null ? 'application/pdf' : 'text/plain; charset=utf-8', 'X-Exam-Title': encodeURIComponent(title) }, body: text === null ? file : text });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.message || '정답지를 읽지 못했습니다.');
+    return { answers: new Map(data.answers.map(a => [a.number, a.answer])), via: 'AI' };
+  }
+  const CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩';
+  // 정답 글자를 문항 형식에 맞게 바꾼다. 못 바꾸면 false.
+  function setAnswer(q, raw) {
+    const text = cellText(raw).replace(/번$/, '');
+    if (q.kind === 'short') {
+      const parts = text.split(/\s*(?:,|\/|또는)\s*/).filter(Boolean); if (!parts.length) return false;
+      q.answer = parts[0]; q.aliases = parts.slice(1); return true;
+    }
+    if (q.kind === 'ox') {
+      if (/^(o|○|◯|맞음|맞다|참|t|true)$/i.test(text)) { q.answer = 0; return true; }
+      if (/^(x|×|✕|✗|틀림|틀리다|거짓|f|false)$/i.test(text)) { q.answer = 1; return true; }
+      return false;
+    }
+    const circled = CIRCLED.indexOf(text); const digit = /^\d{1,2}$/.test(text) ? Number(text) : 0;
+    let index = circled >= 0 ? circled : digit ? digit - 1 : q.choices.findIndex(choice => cellText(choice) === text);
+    // 보기를 ①②로 옮긴 그림 보기는 글자 비교로 맞춘다.
+    if (index < 0 && circled < 0) index = q.choices.findIndex(choice => cellText(choice).replace(/^[①-⑩]\s*/, '') === text);
+    if (index < 0 || index >= q.choices.length) return false;
+    q.answer = index; return true;
+  }
+  // 문항 번호(없으면 순서)로 정답을 넣는다. 정답을 못 넣은 문항 번호를 돌려준다.
+  function applyAnswers(questions, answers) {
+    const missing = [];
+    questions.forEach((q, i) => { const n = q.number || i + 1; if (!answers.has(n) || !setAnswer(q, answers.get(n))) missing.push(n); });
+    return missing;
+  }
   async function teacherHome() {
     show('teacherHome'); const data = await api('/mine'); homeExams = data.exams; const list = $('examList'); list.replaceChildren();
     if (!data.exams.length) list.append(node('p', '아직 만든 시험이 없습니다.'));
@@ -138,17 +218,26 @@
       row.append(a, node('span', `방번호 ${e.code} · ${e.questionCount}문항${e.hasAudio ? ' · 듣기' : ''} · ${statusLabel(e.status)}${e.mine ? ' · 내 시험' : e.ownerName ? ` · ${e.ownerName}` : ''}`, 'muted')); list.append(row);
     });
   }
-  // 파일 하나 = 시험 하나. 시험을 만들고 AI 추출 결과를 바로 문항으로 저장한다.
-  async function createFromPdf(file, duration, status, audio) {
+  // 파일 이름에서 학년·과목·코드를 뽑아 같은 시험의 파일끼리 묶는다.
+  // 예: "초4영어(A01)검사지.pdf", "4A01 영어(정답).xlsx", "초4영어(A01)듣기 음원.mp3" → 모두 4|영어|A01
+  const SUBJECTS = ['국어', '수학', '영어', '사회', '과학', '도덕', '음악', '미술', '체육', '실과', '한국사', '역사'];
+  function examKey(name) {
+    let text = String(name).normalize('NFKC').replace(/\.[a-z0-9]{2,4}$/i, '');
+    const code = (/[A-Za-z]\d{1,3}/.exec(text) || [''])[0].toUpperCase(); if (code) text = text.replace(/[A-Za-z]\d{1,3}/, ' ');
+    const grade = (/(?<!\d)[1-6](?!\d)/.exec(text) || [''])[0]; const subject = SUBJECTS.find(s => text.includes(s)) || '';
+    return [grade, subject, code].filter(Boolean).length >= 2 ? `${grade}|${subject}|${code}` : '';
+  }
+  // 시험 하나 = PDF 하나(+ 정답지 · 듣기 음원). 시험을 만들고 AI 추출 결과에 정답을 넣어 바로 저장한다.
+  async function createFromPdf(group, duration, status) {
+    const file = group.pdf;
     const title = baseName(file).slice(0, 80) || '시험';
-    if (!/\.pdf$/i.test(file.name) && file.type !== 'application/pdf') throw new Error('PDF 또는 MP3 파일만 올릴 수 있습니다.');
     if (file.size > 20 * 1024 * 1024) throw new Error('20MB 이하만 올릴 수 있습니다.');
     status('시험 만드는 중…');
     const created = await api('/', 'POST', { title, durationMinutes: duration });
     let audioNote = '';
-    if (audio) {
+    if (group.audio) {
       status('듣기 음원 올리는 중…');
-      try { await uploadAudio(created.id, audio); audioNote = ' · 듣기 음원 연결'; } catch (error) { audioNote = ` · 음원 실패: ${error.message}`; }
+      try { await uploadAudio(created.id, group.audio); audioNote = ' · 듣기 음원 연결'; } catch (error) { audioNote = ` · 음원 실패: ${error.message}`; }
     }
     status('AI로 문항 추출 중…');
     const response = await fetch('/api/teacher-ai/extract-exam', { method: 'POST', headers: { 'Content-Type': 'application/pdf' }, body: file });
@@ -157,37 +246,62 @@
     const figures = data.questions.filter(q => q.figure).length;
     if (figures) status(`그림 ${figures}개 잘라 내는 중…`);
     const failed = await attachFigures(created.id, file, data.questions);
+    let keyNote = ' · 정답 확인 필요';
+    if (group.key) {
+      status('정답지 읽는 중…');
+      try {
+        const key = await readAnswerKey(group.key, title); const missing = applyAnswers(data.questions, key.answers);
+        keyNote = missing.length ? ` · 정답 ${data.questions.length - missing.length}개 입력(${key.via}), ${missing.join(', ')}번 정답 확인 필요` : ` · 정답 모두 입력(${key.via})`;
+      } catch (error) { keyNote = ` · 정답지 실패: ${error.message}`; }
+    }
     await api('/' + encodeURIComponent(created.id), 'PUT', { title, durationMinutes: duration, questions: data.questions });
     const figureNote = figures ? ` · 그림 ${figures - failed.length}개${failed.length ? `(${failed.join(', ')}번 그림 실패)` : ''}` : '';
-    return `방번호 ${created.code} · ${data.questions.length}문항 추출${figureNote}${audioNote} · 정답 확인 필요${data.note ? ` · AI 메모: ${data.note}` : ''}`;
+    return `방번호 ${created.code} · ${data.questions.length}문항 추출${figureNote}${audioNote}${keyNote}${data.note ? ` · AI 메모: ${data.note}` : ''}`;
+  }
+  // 짝이 없는 음원·정답지는 이름이 맞는 준비 중인 기존 시험에 붙인다.
+  async function attachToExisting(file, label) {
+    const key = examKey(file.name);
+    const target = homeExams.find(e => e.status === 'draft' && (e.title.toLowerCase() === baseName(file).toLowerCase() || (key && examKey(e.title) === key)));
+    if (!target) throw new Error('어느 시험의 파일인지 찾지 못했습니다. 시험지 PDF와 함께 넣어 주세요.');
+    if (isMp3File(file)) { label.textContent = '듣기 음원 올리는 중…'; await uploadAudio(target.id, file); return `기존 시험 "${target.title}"에 음원을 연결했습니다.`; }
+    label.textContent = '정답지 읽는 중…';
+    const detail = await api('/' + encodeURIComponent(target.id) + '?mode=teacher');
+    const answers = await readAnswerKey(file, target.title); const missing = applyAnswers(detail.questions, answers.answers);
+    await api('/' + encodeURIComponent(target.id), 'PUT', { title: detail.exam.title, durationMinutes: detail.exam.durationMinutes, questions: detail.questions });
+    return `기존 시험 "${target.title}"에 정답 입력${missing.length ? ` · ${missing.join(', ')}번 확인 필요` : ''}`;
   }
   async function uploadPdfs(files) {
     const duration = Number($('newDuration').value);
     if (!Number.isInteger(duration) || duration < 1 || duration > 180) { notice('제한시간은 1~180분으로 정해 주세요.'); return; }
     const all = [...files]; if (!all.length) return;
-    // MP3는 이름이 같은 PDF와 짝짓는다. 짝이 없으면 같은 이름의 기존 시험에 붙인다.
-    const mp3s = new Map(all.filter(isMp3File).map(file => [baseName(file).toLowerCase(), file]));
-    const pdfs = all.filter(file => !isMp3File(file));
-    pdfs.forEach(file => mp3s.has(baseName(file).toLowerCase()) && (file.audio = mp3s.get(baseName(file).toLowerCase())));
-    pdfs.forEach(file => file.audio && mp3s.delete(baseName(file).toLowerCase()));
     notice(''); const host = $('uploadList');
     const addRow = name => { const li = node('li'); const state = node('span', '대기 중', 'muted'); li.append(node('span', name), state); host.append(li); return state; };
-    const rows = pdfs.map(file => addRow(file.audio ? `${file.name} + ${file.audio.name}` : file.name));
-    for (const audio of mp3s.values()) {
-      const label = addRow(audio.name);
-      const target = homeExams.find(e => e.title.toLowerCase() === baseName(audio).toLowerCase() && e.status === 'draft');
-      if (!target) { label.textContent = '같은 이름의 PDF나 준비 중인 시험이 없습니다.'; label.className = 'error'; continue; }
-      label.textContent = '듣기 음원 올리는 중…';
-      try { await uploadAudio(target.id, audio); label.textContent = `기존 시험 "${target.title}"에 연결했습니다.`; label.className = 'ok'; }
+    const isPdf = file => /\.pdf$/i.test(file.name) || file.type === 'application/pdf';
+    const groups = all.filter(file => isPdf(file) && !isKeyFile(file)).map(pdf => ({ pdf, key: null, audio: null }));
+    const extras = [];
+    for (const file of all) {
+      if (groups.some(g => g.pdf === file)) continue;
+      const slot = isMp3File(file) ? 'audio' : isKeyFile(file) ? 'key' : null;
+      if (!slot) { const label = addRow(file.name); label.textContent = 'PDF·MP3·엑셀 파일만 올릴 수 있습니다.'; label.className = 'error'; continue; }
+      // 이름이 같거나 학년·과목·코드가 같은 시험지를 찾는다. 시험지가 하나뿐이면 그 시험지에 붙인다.
+      const key = examKey(file.name);
+      const matches = groups.filter(g => !g[slot] && (baseName(g.pdf).toLowerCase() === baseName(file).toLowerCase() || (key && examKey(g.pdf.name) === key)));
+      const target = matches.length === 1 ? matches[0] : groups.length === 1 && !groups[0][slot] ? groups[0] : null;
+      if (target) target[slot] = file; else extras.push(file);
+    }
+    const rows = groups.map(g => addRow([g.pdf, g.key, g.audio].filter(Boolean).map(f => f.name).join(' + ')));
+    for (const file of extras) {
+      const label = addRow(file.name);
+      try { label.textContent = await attachToExisting(file, label); label.className = 'ok'; }
       catch (error) { label.textContent = error.message; label.className = 'error'; }
     }
     // AI 호출이 몰리지 않도록 두 개씩 처리한다.
     let next = 0;
     const worker = async () => {
-      while (next < pdfs.length) {
+      while (next < groups.length) {
         const index = next++; const label = rows[index];
         const status = text => { label.textContent = text; label.className = 'muted'; };
-        try { label.textContent = await createFromPdf(pdfs[index], duration, status, pdfs[index].audio); label.className = 'ok'; }
+        try { label.textContent = await createFromPdf(groups[index], duration, status); label.className = 'ok'; }
         catch (error) { label.textContent = error.message; label.className = 'error'; }
       }
     };
@@ -290,6 +404,14 @@
       const failed = await attachFigures(examId, file, data.questions);
       draft = data.questions; $('extractNote').textContent = [data.note || `${draft.length}문항을 추출했습니다. 정답을 확인한 뒤 문항 저장을 눌러 주세요.`, failed.length ? `${failed.join(', ')}번 그림은 잘라 내지 못했습니다. 직접 넣어 주세요.` : ''].filter(Boolean).join(' '); editQuestions(); notice(''); }
     finally { $('extractButton').disabled = false; }
+  });
+  $('keyFile').onchange = () => run(async () => {
+    const file = $('keyFile').files[0]; $('keyFile').value = ''; if (!file) return;
+    if (!draft.length) throw new Error('먼저 문항을 추출하거나 추가해 주세요.');
+    notice('정답지를 읽고 있습니다…');
+    const key = await readAnswerKey(file, $('editTitle').value); const missing = applyAnswers(draft, key.answers);
+    editQuestions(); notice('');
+    $('extractNote').textContent = `정답지(${key.via})에서 ${draft.length - missing.length}문항 정답을 넣었습니다.${missing.length ? ` ${missing.join(', ')}번은 직접 확인해 주세요.` : ''} 확인 후 문항 저장을 눌러 주세요.`;
   });
   $('addChoiceButton').onclick = () => newQuestion('choice'); $('addOxButton').onclick = () => newQuestion('ox'); $('addShortButton').onclick = () => newQuestion('short');
   $('saveButton').onclick = () => run(async () => { await api('/' + encodeURIComponent(examId), 'PUT', { title: $('editTitle').value, durationMinutes: Number($('editDuration').value), questions: draft }); await teacherExam(); notice('저장했습니다.'); });
