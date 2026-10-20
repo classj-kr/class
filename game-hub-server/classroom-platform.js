@@ -1548,7 +1548,7 @@ function createClassroomPlatform(options = {}) {
     if (!user || !pool || !databaseReady) return [];
     const result = await pool.query(
       `SELECT t.id, t.school_id, t.teacher_type, t.teacher_name, t.grade, t.class_number,
-              t.academic_year, t.user_id, t.subject_name, t.room_name, sc.name AS school_name
+              t.academic_year, t.user_id, t.subject_name, t.room_name, t.teaching_scope, sc.name AS school_name
        FROM classroom_teachers t
        JOIN classroom_schools sc ON sc.id = t.school_id
        WHERE t.active = TRUE AND sc.enabled = TRUE
@@ -2031,8 +2031,9 @@ function createClassroomPlatform(options = {}) {
     if (pool && databaseReady) {
       const membership = await studentMembership(user.id);
       if (membership?.studentName) return { name: membership.studentName, kind: "student", ...schoolDefaults(membership) };
-      const registration = (await teacherRegistrations(user)).sort((a, b) => Number(b.academic_year || 0) - Number(a.academic_year || 0))[0];
-      if (registration?.teacher_name) return { name: registration.teacher_name, kind: "teacher", ...schoolDefaults(registration) };
+      const registrations = (await teacherRegistrations(user)).sort((a, b) => Number(b.academic_year || 0) - Number(a.academic_year || 0));
+      const registration = registrations[0];
+      if (registration?.teacher_name) return { name: registration.teacher_name, kind: "teacher", ...schoolDefaults(registration, registrations) };
     }
     return { name: String(user.name || user.displayName || "").trim(), kind: user.role || "user" };
   }

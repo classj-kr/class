@@ -110,7 +110,8 @@
   async function fillSelects(preferred) {
     // preferred 는 단원 번호(3-1-2)이거나 학기(3-1)다. 학기이면 그 학기의 첫 단원을 연다. 없으면 맨 앞 학기.
     const want = String(preferred || '');
-    const term = TERM_LIST.includes(want) ? want : TERM_LIST.find((t) => want.startsWith(t + '-')) || TERM_LIST[0];
+    const term = TERM_LIST.includes(want) ? want : TERM_LIST.find((t) => want.startsWith(t + '-')) ||
+      TERM_LIST.find(t => t.endsWith('-' + window.LearningDefaults.term().semester)) || TERM_LIST[0];
     await loadTerm(term);
     const list = unitsOf(term);
     unit = list.find((u) => u.id === want) || list[0];
@@ -465,7 +466,8 @@
     await records.ready;
     const params = new URLSearchParams(location.search);
     const record = (params.get('record') || '').split(':');   // 풀던 회차: 단원:묶음:수준:회차
-    await fillSelects(record.length >= 3 ? record[0] : params.get('unit') || params.get('term'));
+    const ownTerm = window.LearningDefaults.mathTerm(window.CLASS_SCHOOL_LEVEL, window.CLASS_SCHOOL_GRADE, TERM_LIST);
+    await fillSelects(record.length >= 3 ? record[0] : params.get('unit') || params.get('term') || ownTerm);
     await loadFinished();
     if (record.length >= 3 && unit.id === record[0] && B.findGroup(unit, record[1]) && B.LEVELS.includes(record[2])) {
       if (record[4] === 'twins' && record[5] && window.MathBankTwins.eligible(unit)) await openReview(record[1], record[2], Number(record[3]) || 1, record[5].split('.').map(Number));

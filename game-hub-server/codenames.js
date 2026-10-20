@@ -80,10 +80,11 @@ function createPlayer(id, name) {
   };
 }
 
-function createGame(hostId, hostName) {
+function createGame(hostId, hostName, defaultGrade) {
+  const grade = Number(defaultGrade);
   return {
     phase: "lobby",
-    grade: 4,
+    grade: Number.isInteger(grade) && grade >= MIN_GRADE && grade <= MAX_GRADE ? grade : 4,
     players: [createPlayer(hostId, hostName || "방장")],
     board: [],
     currentTeam: "red",

@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-20",
+  "policy": {
+    "grade": "current student grade; highest current teacher grade in the same school and academic year",
+    "term": "Asia/Seoul: February 15 through August 14 = semester 1; otherwise semester 2",
+    "year": "January 1 through February 14 = previous year",
+    "precedence": "explicit math unit/term/record and science grade links; manual selection stays until navigation"
+  },
+  "validation": {
+    "nodeTests": 8,
+    "browserChecks": 16,
+    "browserPageErrors": 0,
+    "scienceAssetHashCheck": "passed"
+  },
+  "scope": [
+    "math-bank",
+    "science-lab",
+    "assessment-plan",
+    "record-ai",
+    "schooladmin grade filters",
+    "new code-words rooms"
+  ],
+  "limitations": [
+    "No automatic promotion of the registered student grade by date.",
+    "Math bank currently has grades up to high-school 1: higher high-school grades fall back to available high-school material.",
+    "Science has no elementary 1/2 grade filter: shows the elementary catalog.",
+    "School academic schedules keep their actual March school-year boundary."
+  ]
+}
+

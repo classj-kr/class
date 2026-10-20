@@ -480,6 +480,9 @@ function init() {
     getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
     allowedPlayerCounts: [4, 5],
     maxPlayers: 5,
+    getRoomRequestData: () => ({
+      grade: window.CLASS_SCHOOL_LEVEL === 'elementary' ? Number(window.CLASS_SCHOOL_GRADE) : undefined
+    }),
     rulesButtonIds: ["rulesEntryBtn", "rulesGameBtn"],
     leaveButtonIds: ["leaveEntryBtn", "leaveGameBtn"],
     onRules: showRules,

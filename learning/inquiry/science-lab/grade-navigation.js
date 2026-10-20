@@ -40,5 +40,9 @@
  else if(['elementary','middle'].includes(window.CLASS_SCHOOL_LEVEL)) school=window.CLASS_SCHOOL_LEVEL;
  else if(window.CLASS_SCHOOL_LEVEL==='high') school=['2','3'].includes(String(window.CLASS_SCHOOL_GRADE))?'high-elective':'high-common';
  if(gradeButtons.some(b=>b.dataset.grade===requestedGrade)&&gradeSchool(requestedGrade)===school) grade=requestedGrade;
+ else if(!requestedGrade&&school===window.CLASS_SCHOOL_LEVEL){
+  const ownGrade=({elementary:'초',middle:'중'}[school]||'')+window.CLASS_SCHOOL_GRADE;
+  if(gradeButtons.some(b=>b.dataset.grade===ownGrade)) grade=ownGrade;
+ }
  render();
 })();

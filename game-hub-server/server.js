@@ -2246,7 +2246,7 @@ wss.on("connection", (socket, request) => {
         room.clue = Clue.createGame(playerId, cleanToken(message.name, 12) || "방장", message.avatarUrl);
       }
       if (gameId === "codenames") {
-        room.codenames = Codenames.createGame(playerId, cleanToken(message.name, 12) || "방장");
+        room.codenames = Codenames.createGame(playerId, cleanToken(message.name, 12) || "방장", message.grade);
       }
       if (gameId === "dobble") {
         room.dobble = Dobble.createGame(playerId, cleanToken(message.name, 12) || "방장");
