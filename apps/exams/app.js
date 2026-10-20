@@ -28,6 +28,12 @@
     const input = node('input'); input.value = value ?? ''; if (max) input.maxLength = max;
     input.addEventListener('input', () => onChange(input.value)); return input;
   }
+  // 수식은 $…$로 감싼 LaTeX를 KaTeX로 그린다. $ 없이 \frac{3}{8}처럼 들어온 것도 감싸서 그린다.
+  const wrapBareLatex = text => text.includes('$') ? text : text.replace(/\\[a-zA-Z]+(?:\{(?:[^{}]|\{[^{}]*\})*\})*/g, match => `$${match}$`);
+  function mathText(element, text) {
+    element.textContent = wrapBareLatex(String(text ?? ''));
+    if (window.renderMathInElement) window.renderMathInElement(element, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }, { left: '\\(', right: '\\)', display: false }], throwOnError: false, strict: 'ignore', macros: { '\\frac': '\\dfrac' } });
+  }
   function field(label, control) { const wrap = node('label', label); wrap.append(control); return wrap; }
   function editQuestions() {
     const host = $('editor'); host.replaceChildren();
@@ -380,7 +386,7 @@
     const questions = state.questions; if (!questions.length) return;
     const q = questions[questionIndex]; const saved = state.answers.find(a => a.question_id === q.id);
     const nav = node('div', undefined, 'question-nav'); questions.forEach((item, i) => { const b = node('button', String(i + 1), state.answers.some(a => a.question_id === item.id) ? 'answered' : 'secondary'); b.type = 'button'; b.onclick = () => run(async () => { await saveCurrentShort(); questionIndex = i; renderQuestion(); }); nav.append(b); });
-    $('progress').replaceChildren(nav, node('p', `${questionIndex + 1} / ${questions.length}`)); $('questionText').textContent = q.content;
+    $('progress').replaceChildren(nav, node('p', `${questionIndex + 1} / ${questions.length}`)); mathText($('questionText'), q.content);
     const picture = $('questionImage'); picture.hidden = !q.image;
     if (q.image) { picture.src = imageUrl(q.image); picture.alt = `${questionIndex + 1}번 문항 그림`; } else picture.removeAttribute('src');
     const area = $('answerArea'); area.replaceChildren(); const locked = deadlinePassed() || Boolean(state.member.submittedAt);
@@ -391,7 +397,7 @@
       area.append(input, save);
     } else q.choices.forEach((choice, ci) => {
       const label = node('label', undefined, 'choice'); const input = node('input'); input.type = 'radio'; input.name = 'answer'; input.checked = saved?.choice === ci; input.disabled = locked;
-      input.onchange = () => run(async () => { await saveAnswer(q.id, { choice: ci }); renderQuestion(); }); label.append(input, node('span', choice)); area.append(label);
+      input.onchange = () => run(async () => { await saveAnswer(q.id, { choice: ci }); renderQuestion(); }); const text = node('span'); mathText(text, choice); label.append(input, text); area.append(label);
     });
     $('previousButton').disabled = questionIndex === 0; $('nextButton').disabled = questionIndex === questions.length - 1;
     $('submitButton').disabled = locked;
