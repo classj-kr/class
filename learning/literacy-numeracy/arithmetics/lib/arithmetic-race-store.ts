@@ -7,6 +7,7 @@ export type RaceRow = {
   status: string;
   created_at: number;
   started_at: number | null;
+  duration_seconds?: number | null;
 };
 
 export type ParticipantRow = {
@@ -19,6 +20,19 @@ export type ParticipantRow = {
   correct_count: number | null;
   total_count: number | null;
   mistake_count: number;
+  score?: number;
+  skip_count?: number;
+  card_index?: number;
+  scored_at?: number | null;
+};
+
+export type CardUpdate = {
+  roomCode: string;
+  participantId: string;
+  participantToken: string;
+  cardIndex: number;
+  outcome: "correct" | "wrong" | "skip";
+  at: number;
 };
 
 export type AttemptUpdate = {
@@ -38,6 +52,7 @@ export type RaceStore = {
   joinRace(participant: ParticipantRow): Promise<boolean>;
   startRace(code: string, hostToken: string, startedAt: number): Promise<boolean>;
   recordAttempt(update: AttemptUpdate): Promise<boolean>;
+  recordCard(update: CardUpdate): Promise<boolean>;
   closeRace(code: string, hostToken: string): Promise<void>;
 };
 
@@ -76,8 +91,8 @@ export function d1RaceStore(db: D1Database): RaceStore {
     async openRace(race, host) {
       try {
         await db.batch([
-          db.prepare("INSERT INTO arithmetic_races (room_code, teacher_token, worksheet_name, worksheet_route, seed, status, created_at) VALUES (?, ?, ?, ?, ?, 'waiting', ?)")
-            .bind(race.room_code, race.teacher_token, race.worksheet_name, race.worksheet_route, race.seed, race.created_at),
+          db.prepare("INSERT INTO arithmetic_races (room_code, teacher_token, worksheet_name, worksheet_route, seed, status, created_at, duration_seconds) VALUES (?, ?, ?, ?, ?, 'waiting', ?, ?)")
+            .bind(race.room_code, race.teacher_token, race.worksheet_name, race.worksheet_route, race.seed, race.created_at, race.duration_seconds ?? null),
           db.prepare("INSERT INTO arithmetic_race_participants (id, room_code, name, participant_token, joined_at) VALUES (?, ?, ?, ?, ?)")
             .bind(host.id, host.room_code, host.name, host.participant_token, host.joined_at),
         ]);
@@ -111,6 +126,23 @@ export function d1RaceStore(db: D1Database): RaceStore {
         : await db.prepare("UPDATE arithmetic_race_participants SET submitted_at = ?, correct_count = ?, total_count = ? WHERE id = ? AND room_code = ? AND participant_token = ? AND submitted_at IS NULL")
           .bind(update.submittedAt, update.correctCount, update.totalCount, update.participantId, update.roomCode, update.participantToken)
           .run();
+      return Boolean(result.meta.changes);
+    },
+    async recordCard(update) {
+      // 카드 번호가 맞을 때만 한 번 반영해 같은 카드를 두 번 채점하지 않는다.
+      const score = update.outcome === "correct" ? 1 : update.outcome === "skip" ? -1 : 0;
+      const result = await db.prepare(`UPDATE arithmetic_race_participants SET
+          card_index = card_index + 1,
+          score = score + ?,
+          correct_count = COALESCE(correct_count, 0) + ?,
+          mistake_count = mistake_count + ?,
+          skip_count = skip_count + ?,
+          total_count = COALESCE(total_count, 0) + 1,
+          scored_at = CASE WHEN ? = 0 THEN scored_at ELSE ? END
+        WHERE id = ? AND room_code = ? AND participant_token = ? AND card_index = ?`)
+        .bind(score, update.outcome === "correct" ? 1 : 0, update.outcome === "wrong" ? 1 : 0, update.outcome === "skip" ? 1 : 0,
+          score, update.at, update.participantId, update.roomCode, update.participantToken, update.cardIndex)
+        .run();
       return Boolean(result.meta.changes);
     },
     async closeRace(code, hostToken) {
@@ -179,6 +211,20 @@ export function memoryRaceStore(clock: () => number = Date.now): RaceStore {
       participant.correct_count = update.correctCount;
       participant.total_count = update.totalCount;
       participant.submitted_at = update.submittedAt;
+      return true;
+    },
+    async recordCard(update) {
+      const participant = (roster.get(update.roomCode) ?? []).find((row) =>
+        row.id === update.participantId && row.participant_token === update.participantToken);
+      if (!participant || (participant.card_index ?? 0) !== update.cardIndex) return false;
+      const score = update.outcome === "correct" ? 1 : update.outcome === "skip" ? -1 : 0;
+      participant.card_index = update.cardIndex + 1;
+      participant.score = (participant.score ?? 0) + score;
+      participant.correct_count = (participant.correct_count ?? 0) + (update.outcome === "correct" ? 1 : 0);
+      participant.mistake_count += update.outcome === "wrong" ? 1 : 0;
+      participant.skip_count = (participant.skip_count ?? 0) + (update.outcome === "skip" ? 1 : 0);
+      participant.total_count = (participant.total_count ?? 0) + 1;
+      if (score) participant.scored_at = update.at;
       return true;
     },
     async closeRace(code, hostToken) {

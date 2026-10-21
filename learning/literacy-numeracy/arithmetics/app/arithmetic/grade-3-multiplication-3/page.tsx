@@ -3,51 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { createProblemSet, type Problem } from "@/lib/race-sets/grade-3-multiplication-3";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type Range = readonly [number, number];
-type ProblemPattern = { left: Range; right: Range };
-type Problem = { id: string; left: number; right: number; product: number };
-type ProblemSet = { seed: number; problems: Problem[] };
-
 const INITIAL_SEED = 20260720;
-const THREE_BY_ONE: ProblemPattern = { left: [666, 999], right: [6, 9] };
-const TWO_BY_TWO: ProblemPattern = { left: [15, 99], right: [15, 99] };
-const HIGH_TWO_BY_TWO: ProblemPattern = { left: [77, 99], right: [77, 99] };
-const PATTERNS: ProblemPattern[] = [
-  ...Array.from({ length: 4 }, () => THREE_BY_ONE),
-  ...Array.from({ length: 8 }, () => TWO_BY_TWO),
-  ...Array.from({ length: 2 }, () => HIGH_TWO_BY_TWO),
-  ...Array.from({ length: 2 }, () => THREE_BY_ONE),
-];
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, [minimum, maximum]: Range) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  return {
-    seed,
-    problems: PATTERNS.map((pattern, index) => {
-      const left = integer(next, pattern.left);
-      const right = integer(next, pattern.right);
-      return { id: `grade-three-multiplication-three-${index}`, left, right, product: left * right };
-    }),
-  };
-}
-
 export default function GradeThreeMultiplicationThreePage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-multiplication-3/page:questionSet", () => createProblemSet(INITIAL_SEED));
   const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/grade-3-multiplication-3/page:answers", {});

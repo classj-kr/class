@@ -48,6 +48,7 @@ const classroomPlatform = createClassroomPlatform({
   adminEmails: process.env.ADMIN_EMAILS,
   nodeEnv: process.env.NODE_ENV,
   isRoomCodeActive: (entry) => isRuntimeRoomCodeActive(entry),
+  isLiveRaceRequest: (url) => isLiveArithmeticRaceRequest(url),
   isLegacyRoomCodeTaken: (code) => [...rooms.values()].some(room => room.roomCode === code) || legacyVoyageRoomExists(code)
 });
 const kmaWeather = createKmaWeather({ serviceKey: process.env.KMA_API_KEY });
@@ -85,6 +86,22 @@ async function isRuntimeRoomCodeActive({ activity, code }) {
   if (!target) return false;
   try { return (await fetch(target, { signal: AbortSignal.timeout(3000), redirect: 'error' })).status !== 404; }
   catch { return true; } // An outage must not hand a live room's number to another app.
+}
+// 순위전 문제지 주소의 참가자 입장권을 연산 앱에 물어, 그 방의 학습지일 때만 메뉴 잠금을 건너뛴다.
+async function isLiveArithmeticRaceRequest(originalUrl) {
+  let url;
+  try { url = new URL(originalUrl, 'http://local'); } catch { return false; }
+  const room = url.searchParams.get('race') || '';
+  const participant = url.searchParams.get('participant') || '';
+  const participantToken = url.searchParams.get('participantToken') || '';
+  if (!/^\d{4}$/.test(room) || !participant || !participantToken) return false;
+  try {
+    const query = new URLSearchParams({ room, participant, participantToken });
+    const response = await fetch(`http://127.0.0.1:${ARITHMETIC_PORT}/api/arithmetic-race?${query}`, { signal: AbortSignal.timeout(3000), redirect: 'error' });
+    if (!response.ok) return false;
+    const data = await response.json();
+    return new URL(String(data?.race?.worksheetRoute || ''), 'http://local').pathname === url.pathname;
+  } catch { return false; }
 }
 // 제 서버 코드를 가진 하위 앱 폴더. 사이트가 주소로 가져다 쓰는 것은 public/ 뿐이다
 // (그래프·문장 만들기가 연산 앱의 public/fonts 글꼴을 쓴다).

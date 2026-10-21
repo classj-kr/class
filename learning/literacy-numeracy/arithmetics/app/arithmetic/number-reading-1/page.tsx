@@ -3,71 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { ReadingProblem, random, createProblemSet, normalizeAnswer } from "@/lib/race-sets/number-reading-1";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type ReadingProblem = { id: string; number: number; answer: string };
-type ProblemSet = { seed: number; sinoKorean: ReadingProblem[]; nativeKorean: ReadingProblem[] };
-
 const INITIAL_SEED = 20260720;
-const SINO_DIGITS = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
-const NATIVE_TENS = ["", "열", "스물", "서른", "마흔", "쉰", "예순", "일흔", "여든", "아흔"];
-const NATIVE_ONES = ["", "하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉"];
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function shuffle<T>(values: T[], next: () => number) {
-  const result = [...values];
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const target = Math.floor(next() * (index + 1));
-    [result[index], result[target]] = [result[target], result[index]];
-  }
-  return result;
-}
-
-function sinoKoreanReading(number: number) {
-  const tens = Math.floor(number / 10);
-  const ones = number % 10;
-  return `${tens === 1 ? "" : SINO_DIGITS[tens]}십${SINO_DIGITS[ones]}`;
-}
-
-function nativeKoreanReading(number: number) {
-  return `${NATIVE_TENS[Math.floor(number / 10)]}${NATIVE_ONES[number % 10]}`;
-}
-
-function numberSequence(next: () => number) {
-  const tens = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9], next);
-  const ones = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], next);
-  return tens.map((ten, index) => ten * 10 + ones[index]);
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  const sinoKorean = numberSequence(next).map((number, index) => ({
-    id: `sino-${index}`,
-    number,
-    answer: sinoKoreanReading(number),
-  }));
-  const nativeKorean = numberSequence(next).map((number, index) => ({
-    id: `native-${index}`,
-    number,
-    answer: nativeKoreanReading(number),
-  }));
-  return { seed, sinoKorean, nativeKorean };
-}
-
-function normalizeAnswer(value: string) {
-  return value.normalize("NFC").replace(/\s+/g, "");
-}
-
 export default function NumberReadingOnePage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/number-reading-1/page:questionSet", () => createProblemSet(INITIAL_SEED));
   const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/number-reading-1/page:answers", {});

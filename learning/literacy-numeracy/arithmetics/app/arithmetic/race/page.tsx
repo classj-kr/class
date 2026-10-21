@@ -2,8 +2,9 @@
 
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { raceReadyWorksheets } from "../../../lib/arithmetic-worksheets";
+import { hasRaceCards, RACE_DURATIONS } from "../../../lib/race-cards";
 
-type Race = { worksheetName: string; worksheetRoute: string; status: string };
+type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
 type Board = { participants: Array<{ id: string; name: string }>; race: Race };
 
@@ -15,6 +16,7 @@ export default function ArithmeticRaceJoinPage() {
   const [roomCode, setRoomCode] = useState("");
   const [name, setName] = useState("");
   const [worksheetRoute, setWorksheetRoute] = useState(raceReadyWorksheets[0]?.route ?? "");
+  const [durationSeconds, setDurationSeconds] = useState(180);
   const [joined, setJoined] = useState<JoinState | null>(null);
   const [board, setBoard] = useState<Board | null>(null);
   const [error, setError] = useState("");
@@ -26,19 +28,24 @@ export default function ArithmeticRaceJoinPage() {
     const params = new URLSearchParams(window.location.search);
     // 이름은 브라우저에 두지 않고 서버에 묻는다. 로그인(교사·학생)이나 게스트 입장에서 나온 이름을 먼저 쓰고,
     // 명단에 있는 학생이면 학습 기록과 같은 계정 이름으로 바꾼다.
-    let gotName = false;
+    let rosterName = false;
     void fetch('/api/auth/me', { cache: 'no-store', credentials: 'same-origin' })
       .then(response => response.ok ? response.json() : null)
       .then(me => {
-        const info = me as { membership?: { studentName?: string }; guestName?: string; user?: { name?: string } } | null;
-        const candidate = normalizedPlayerName(info?.membership?.studentName || info?.guestName || info?.user?.name || null);
-        if (candidate) { gotName = true; setName(candidate); }
+        const info = me as { membership?: { studentName?: string }; guestName?: string; user?: { name?: string; email?: string } } | null;
+        // 이름이 없으면 구글 계정 앞부분을 쓴다.
+        const candidate = normalizedPlayerName(info?.membership?.studentName || info?.guestName || info?.user?.name || null)
+          || normalizedPlayerName(info?.user?.email?.split("@")[0] ?? null);
+        if (candidate && !rosterName) setName(candidate);
       })
       .catch(() => {});
     void fetch('/api/learning-records/context', { cache: 'no-store', credentials: 'same-origin' })
       .then(response => response.ok ? response.json() : null)
-      .then(context => { const student = (context as { student?: { name?: string } } | null)?.student; if (student?.name) { gotName = true; setName(normalizedPlayerName(student.name)); } })
-      .catch(() => { if (!gotName) setError('학생 계정의 이름을 불러오지 못했습니다. 다시 연결해 주세요.'); });
+      .then(context => {
+        const student = normalizedPlayerName((context as { student?: { name?: string } } | null)?.student?.name ?? null);
+        if (student) { rosterName = true; setName(student); }
+      })
+      .catch(() => {});
 
     const room = params.get("room");
     const participantId = params.get("participant");
@@ -76,7 +83,9 @@ export default function ArithmeticRaceJoinPage() {
         if (data.race.status === "running") {
           const params = new URLSearchParams({ race: activeRoom, participant: activeParticipant, participantToken: activeToken });
           active = false;
-          window.location.href = `${data.race.worksheetRoute}?${params}`;
+          window.location.href = data.race.mode === "cards"
+            ? `/arithmetic/race/play?${new URLSearchParams({ room: activeRoom, participant: activeParticipant, participantToken: activeToken })}`
+            : `${data.race.worksheetRoute}?${params}`;
         }
       } catch (cause) {
         if (active) setError(cause instanceof Error ? cause.message : "방 정보를 불러오지 못했습니다.");
@@ -138,7 +147,7 @@ export default function ArithmeticRaceJoinPage() {
       const response = await fetch("/api/arithmetic-race", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "create", worksheetRoute, name: playerName }),
+        body: JSON.stringify({ action: "create", worksheetRoute, name: playerName, durationSeconds }),
       });
       const data = await response.json() as { roomCode?: string; hostToken?: string; participantId?: string; participantToken?: string; race?: Race; error?: string };
       if (!response.ok || !data.roomCode || !data.hostToken || !data.participantId || !data.participantToken || !data.race) throw new Error(data.error || "방을 만들지 못했습니다.");
@@ -177,6 +186,7 @@ export default function ArithmeticRaceJoinPage() {
           <section className="race-waiting-card" aria-live="polite">
             <span>방 코드</span><strong className="race-room-code">{joined.roomCode}</strong>
             <h2>{joined.race.worksheetName || "학습지 확인 중"}</h2>
+            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note">카드 순위전 · {joined.race.durationSeconds / 60}분 · 맞히면 +1, 넘기면 −1</p> : null}
             {joined.hostToken ? <><p>{board?.participants.length ?? 1}명 참가</p><button type="button" onClick={startRace} disabled={loading || !(board?.participants.length ?? 1)}>모두 시작</button><small>방을 만든 사람이 시작합니다.</small></> : <strong>방장이 시작하면 문제지로 바로 이동합니다.</strong>}
           </section>
         ) : entryRoom ? (
@@ -190,6 +200,9 @@ export default function ArithmeticRaceJoinPage() {
               <form className="race-join-card race-create-card" onSubmit={createRoom}>
                 <h2>순위전 열기</h2>
                 <label>함께 풀 학습지<select value={worksheetRoute} onChange={(event) => setWorksheetRoute(event.target.value)}>{raceReadyWorksheets.map((worksheet) => <option value={worksheet.route} key={worksheet.route}>{worksheet.grade} · {worksheet.title}</option>)}</select></label>
+                {hasRaceCards(worksheetRoute) ? (
+                  <label>제한 시간<select value={durationSeconds} onChange={(event) => setDurationSeconds(Number(event.target.value))}>{RACE_DURATIONS.map((seconds) => <option value={seconds} key={seconds}>{seconds / 60}분</option>)}</select></label>
+                ) : <small className="race-mode-note">이 학습지는 시험지 방식으로 진행합니다.</small>}
                 <button type="submit" disabled={loading}>{loading ? "만드는 중" : "방 만들고 입장"}</button>
               </form>
             </div>

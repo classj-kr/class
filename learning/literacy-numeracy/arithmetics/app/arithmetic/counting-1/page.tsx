@@ -3,63 +3,11 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
-
-type CountingSet = {
-  seed: number;
-  counts: number[];
-  countSymbols: string[];
-  drawSymbols: string[];
-};
-
-type Answers = {
-  numbers: string[];
-  words: string[];
-  drawings: number[];
-};
+import { Answers, NUMBER_WORDS, random, createCountingSet, emptyAnswers } from "@/lib/race-sets/counting-1";
 
 type PrintMode = "worksheet" | "answers" | "both";
 
 const INITIAL_SEED = 20260720;
-const NUMBER_WORDS = ["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉"];
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function shuffle<T>(values: T[], next: () => number) {
-  const result = [...values];
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const target = Math.floor(next() * (index + 1));
-    [result[index], result[target]] = [result[target], result[index]];
-  }
-  return result;
-}
-
-function createCountingSet(seed: number): CountingSet {
-  const next = random(seed);
-  return {
-    seed,
-    counts: shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9], next),
-    countSymbols: shuffle(["☆", "♡", "♧"], next),
-    drawSymbols: shuffle(["○", "△", "□"], next),
-  };
-}
-
-function emptyAnswers(): Answers {
-  return {
-    numbers: ["", "", ""],
-    words: ["", "", ""],
-    drawings: [0, 0, 0],
-  };
-}
-
 function Symbols({ symbol, count }: { symbol: string; count: number }) {
   return (
     <span className="counting-symbols" aria-label={`${symbol} ${count}개`}>

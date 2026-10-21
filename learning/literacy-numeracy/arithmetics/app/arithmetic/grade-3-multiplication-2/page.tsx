@@ -3,46 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { Problem, random, createProblemSet } from "@/lib/race-sets/grade-3-multiplication-2";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type Problem = { id: string; multiplicand: number; multiplier: number; product: number };
-type ProblemSet = { seed: number; columns: Problem[][] };
-
 const INITIAL_SEED = 20260720;
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, minimum: number, maximum: number) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  return {
-    seed,
-    columns: Array.from({ length: 2 }, (_, column) => (
-      Array.from({ length: 11 }, (_, row) => {
-        const multiplicand = integer(next, 11, 99);
-        const multiplier = integer(next, 2, 9);
-        return {
-          id: `grade-three-multiplication-two-${column}-${row}`,
-          multiplicand,
-          multiplier,
-          product: multiplicand * multiplier,
-        };
-      })
-    )),
-  };
-}
 
 export default function GradeThreeMultiplicationTwoPage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-multiplication-2/page:questionSet", () => createProblemSet(INITIAL_SEED));

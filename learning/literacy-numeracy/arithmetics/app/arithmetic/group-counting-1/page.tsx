@@ -3,51 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { GroupProblem, NUMBERS, random, createProblemSet } from "@/lib/race-sets/group-counting-1";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type GroupProblem = { id: string; symbol: string; columns: number; rows: number; answer: number };
-type ProblemSet = { seed: number; problems: GroupProblem[] };
-
 const INITIAL_SEED = 20260720;
-const SYMBOLS = ["♧", "♤", "☆", "♡", "♪", "◈"] as const;
-const NUMBERS = ["①", "②", "③", "④", "⑤", "⑥"] as const;
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function shuffle<T>(values: T[], next: () => number) {
-  const result = [...values];
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const target = Math.floor(next() * (index + 1));
-    [result[index], result[target]] = [result[target], result[index]];
-  }
-  return result;
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  const columns = shuffle([3, 4, 5, 6, 7, 8], next);
-  const rows = shuffle([4, 5, 6, 7, 8, 9], next);
-  return {
-    seed,
-    problems: SYMBOLS.map((symbol, index) => ({
-      id: `group-${index}`,
-      symbol,
-      columns: columns[index],
-      rows: rows[index],
-      answer: columns[index] * rows[index],
-    })),
-  };
-}
-
 export default function GroupCountingOnePage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/group-counting-1/page:questionSet", () => createProblemSet(INITIAL_SEED));
   const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/group-counting-1/page:answers", {});

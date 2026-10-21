@@ -3,64 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { createProblemSet, type TimeProblem } from "@/lib/race-sets/grade-3-time-1";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type TimeProblem = {
-  id: string;
-  major: number;
-  minor: number;
-  majorUnit: "시간" | "분";
-  minorUnit: "분" | "초";
-  answerUnit: "분" | "초";
-  result: number;
-};
-type ProblemSet = { seed: number; problems: TimeProblem[] };
-
 const INITIAL_SEED = 20260720;
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, minimum: number, maximum: number) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function shuffle<T>(values: T[], next: () => number) {
-  const result = [...values];
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const target = Math.floor(next() * (index + 1));
-    [result[index], result[target]] = [result[target], result[index]];
-  }
-  return result;
-}
-
-function makeProblem(id: string, major: number, minor: number, kind: "hours" | "minutes"): TimeProblem {
-  return kind === "hours"
-    ? { id, major, minor, majorUnit: "시간", minorUnit: "분", answerUnit: "분", result: major * 60 + minor }
-    : { id, major, minor, majorUnit: "분", minorUnit: "초", answerUnit: "초", result: major * 60 + minor };
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  const hours = shuffle(Array.from({ length: 8 }, (_, index) => index + 1), next).slice(0, 6);
-  const minutes = shuffle(Array.from({ length: 8 }, (_, index) => index + 1), next).slice(0, 6);
-  const problems = Array.from({ length: 6 }, (_, index) => {
-    const minimum = index % 2 === 0 ? 1 : 11;
-    return [
-      makeProblem(`grade-three-time-hours-${index}`, hours[index], integer(next, minimum, 59), "hours"),
-      makeProblem(`grade-three-time-minutes-${index}`, minutes[index], integer(next, minimum, 59), "minutes"),
-    ];
-  }).flat();
-  return { seed, problems };
-}
 
 export default function GradeThreeTimeOnePage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-time-1/page:questionSet", () => createProblemSet(INITIAL_SEED));

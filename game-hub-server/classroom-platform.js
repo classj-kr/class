@@ -2102,8 +2102,14 @@ function createClassroomPlatform(options = {}) {
           || /^\/api\/room-entry\/resolve\/\d{4}$/.test(requestPath)
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
           || requestPath === "/exams" || requestPath.startsWith("/exams/")
-          || requestPath === "/school-election" || requestPath.startsWith("/school-election/");
-        if (classId && requestPath && !isAlwaysAllowed) {
+          || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
+          // 순위전 입장 화면과 그 API도 방번호 입구에 속한다.
+          || requestPath === "/arithmetic/race" || requestPath.startsWith("/arithmetic/race/")
+          || requestPath === "/api/arithmetic-race" || requestPath.startsWith("/api/arithmetic-race/");
+        // 순위전 문제지는 실제 참가자 입장권이 있을 때만 메뉴 잠금 없이 연다.
+        const isLiveRaceWorksheet = !isAlwaysAllowed && requestPath.startsWith("/arithmetic/")
+          && typeof options.isLiveRaceRequest === "function" && await options.isLiveRaceRequest(req.originalUrl);
+        if (classId && requestPath && !isAlwaysAllowed && !isLiveRaceWorksheet) {
           // 담임이 연 메뉴든 전담이 오늘 연 메뉴든 하나면 열린다.
           const enabled = await pool.query(CLASS_CONTENT_OPEN_SQL, [classId, requestPath, assetRootPath]);
           if (!enabled.rows[0]) return res.redirect(302, "/?content=locked");

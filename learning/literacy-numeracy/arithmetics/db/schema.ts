@@ -9,6 +9,7 @@ export const arithmeticRaces = sqliteTable("arithmetic_races", {
   status: text("status").notNull().default("waiting"),
   createdAt: integer("created_at").notNull(),
   startedAt: integer("started_at"),
+  durationSeconds: integer("duration_seconds"),
 });
 
 export const arithmeticRaceParticipants = sqliteTable("arithmetic_race_participants", {
@@ -21,6 +22,10 @@ export const arithmeticRaceParticipants = sqliteTable("arithmetic_race_participa
   correctCount: integer("correct_count"),
   totalCount: integer("total_count"),
   mistakeCount: integer("mistake_count").notNull().default(0),
+  score: integer("score").notNull().default(0),
+  skipCount: integer("skip_count").notNull().default(0),
+  cardIndex: integer("card_index").notNull().default(0),
+  scoredAt: integer("scored_at"),
 }, (table) => [
   uniqueIndex("arithmetic_race_room_name_unique").on(table.roomCode, table.name),
 ]);
