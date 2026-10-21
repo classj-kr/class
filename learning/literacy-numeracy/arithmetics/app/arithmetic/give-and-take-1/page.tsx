@@ -3,95 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { Friend, Counts, FRIENDS, random, createProblemSet, fieldId, emptyAnswers } from "@/lib/race-sets/give-and-take-1";
 
-type Friend = "토끼" | "거북이" | "호랑이";
-type Counts = Record<Friend, number>;
 type PrintMode = "worksheet" | "answers" | "both";
-type ProblemSet = {
-  seed: number;
-  initial: Counts;
-  first: { toTurtle: number; toTiger: number; after: Counts };
-  second: { toTiger: number; fromRabbit: number; after: Counts };
-  third: { fromRabbit: number; toTurtle: number; after: Counts; asked: Friend };
-};
-
 const INITIAL_SEED = 20260720;
-const FRIENDS: Friend[] = ["토끼", "거북이", "호랑이"];
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, minimum: number, maximum: number) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  const rabbitCards = integer(next, 7, 9);
-  const initial: Counts = {
-    토끼: rabbitCards,
-    거북이: rabbitCards - integer(next, 3, 5),
-    호랑이: integer(next, 1, 3),
-  };
-
-  const firstToSeulgi = integer(next, 1, 2);
-  const firstToCourage = 1;
-  const firstAfter: Counts = {
-    토끼: initial.토끼 - firstToSeulgi - firstToCourage,
-    거북이: initial.거북이 + firstToSeulgi,
-    호랑이: initial.호랑이 + firstToCourage,
-  };
-
-  const secondToCourage = integer(next, 1, 2);
-  const secondFromWisdom = integer(next, 1, 2);
-  const secondAfter: Counts = {
-    토끼: firstAfter.토끼 - secondFromWisdom,
-    거북이: firstAfter.거북이 - secondToCourage + secondFromWisdom,
-    호랑이: firstAfter.호랑이 + secondToCourage,
-  };
-
-  const thirdFromWisdom = integer(next, 1, 2);
-  const thirdToSeulgi = integer(next, 1, 3);
-  const thirdAfter: Counts = {
-    토끼: secondAfter.토끼 - thirdFromWisdom,
-    거북이: secondAfter.거북이 + thirdToSeulgi,
-    호랑이: secondAfter.호랑이 + thirdFromWisdom - thirdToSeulgi,
-  };
-
-  return {
-    seed,
-    initial,
-    first: { toTurtle: firstToSeulgi, toTiger: firstToCourage, after: firstAfter },
-    second: { toTiger: secondToCourage, fromRabbit: secondFromWisdom, after: secondAfter },
-    third: {
-      fromRabbit: thirdFromWisdom,
-      toTurtle: thirdToSeulgi,
-      after: thirdAfter,
-      asked: FRIENDS[integer(next, 0, 2)],
-    },
-  };
-}
-
-function fieldId(question: number, friend?: Friend) {
-  return friend ? `q${question}-${friend}` : `q${question}`;
-}
-
-function emptyAnswers() {
-  return Object.fromEntries([
-    ...FRIENDS.map((friend) => fieldId(1, friend)),
-    ...FRIENDS.map((friend) => fieldId(2, friend)),
-    fieldId(3),
-  ].map((id) => [id, ""]));
-}
-
 function ResultMark({ value }: { value?: boolean }) {
   if (value === undefined) return null;
   return <span className={`counting-result ${value ? "correct" : "wrong"}`} role="status">{value ? "맞음" : "틀림"}</span>;

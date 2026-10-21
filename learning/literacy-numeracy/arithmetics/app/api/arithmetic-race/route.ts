@@ -1,5 +1,6 @@
 import { raceWorksheetByRoute } from "../../../lib/arithmetic-worksheets";
-import { rankArrivedParticipants } from "../../../lib/arithmetic-race-ranking";
+import { rankArrivedParticipants, rankCardParticipants } from "../../../lib/arithmetic-race-ranking";
+import { hasRaceCards, isRaceAnswerCorrect, RACE_DURATIONS, raceAnswerText, raceCard } from "../../../lib/race-cards";
 import { raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
 import { requestRoomCode } from "../../../../../../shared/room-codes.cjs";
 
@@ -23,6 +24,36 @@ function publicRace(race: RaceRow) {
     status: race.status,
     createdAt: race.created_at,
     startedAt: race.started_at,
+    mode: race.duration_seconds ? "cards" : "sheet",
+    durationSeconds: race.duration_seconds ?? null,
+    endsAt: race.duration_seconds && race.started_at ? race.started_at + race.duration_seconds * 1000 : null,
+  };
+}
+
+// 끝난 뒤 도착한 답이 순위를 바꾸지 않도록 1초만 봐준다.
+const CARD_GRACE = 1000;
+
+function cardRanking(rows: ParticipantRow[]) {
+  return rankCardParticipants(rows).map((row, index) => ({
+    id: row.id,
+    name: row.name,
+    score: Number(row.score) || 0,
+    correctCount: Number(row.correct_count) || 0,
+    wrongCount: Number(row.mistake_count) || 0,
+    skipCount: Number(row.skip_count) || 0,
+    rank: index + 1,
+  }));
+}
+
+function cardParticipant(row: ParticipantRow) {
+  return {
+    id: row.id,
+    name: row.name,
+    score: Number(row.score) || 0,
+    cardIndex: Number(row.card_index) || 0,
+    correctCount: Number(row.correct_count) || 0,
+    wrongCount: Number(row.mistake_count) || 0,
+    skipCount: Number(row.skip_count) || 0,
   };
 }
 
@@ -51,6 +82,18 @@ export async function GET(request: Request) {
     const race = await store.race(code);
     if (!race) return error("없는 방입니다.", 404);
     const participants = await store.participants(code);
+    if (race.duration_seconds) {
+      const ranking = cardRanking(participants);
+      const me = participants.find((row) => row.id === participantId && row.participant_token === participantToken);
+      if (teacherToken ? teacherToken !== race.teacher_token : !me) return error(teacherToken ? "교사 권한을 확인하세요." : "학생 입장 정보를 확인하세요.", 403);
+      return Response.json({
+        race: publicRace(race),
+        serverNow: Date.now(),
+        participants: participants.map((row) => ({ id: row.id, name: row.name })),
+        participant: me ? { ...cardParticipant(me), rank: ranking.find((entry) => entry.id === me.id)?.rank ?? null } : null,
+        ranking,
+      });
+    }
     const ranking = rankedParticipants(participants);
 
     if (teacherToken) {
@@ -105,6 +148,10 @@ export async function POST(request: Request) {
       const name = String(payload.name ?? "").trim().slice(0, 20);
       if (!worksheet) return error("순위 모드에서 사용할 수 없는 학습지입니다.");
       if (!name) return error("이름 정보를 확인하세요.");
+      const requested = Number(payload.durationSeconds);
+      const durationSeconds = hasRaceCards(worksheet.route)
+        ? (RACE_DURATIONS as readonly number[]).includes(requested) ? requested : 180
+        : null;
       const worksheetName = `${worksheet.grade} · ${worksheet.title}`;
       const hostToken = crypto.randomUUID();
       const participantId = crypto.randomUUID();
@@ -121,6 +168,7 @@ export async function POST(request: Request) {
           status: "waiting",
           created_at: now,
           started_at: null,
+          duration_seconds: durationSeconds,
         }, {
           id: participantId,
           room_code: code,
@@ -133,7 +181,7 @@ export async function POST(request: Request) {
           mistake_count: 0,
         });
         if (!opened) continue;
-        const race = { roomCode: code, worksheetName, worksheetRoute: worksheet.route, seed: 20260720, status: "waiting", createdAt: now, startedAt: null };
+        const race = { roomCode: code, worksheetName, worksheetRoute: worksheet.route, seed: 20260720, status: "waiting", createdAt: now, startedAt: null, mode: durationSeconds ? "cards" : "sheet", durationSeconds, endsAt: null };
         return Response.json({ roomCode: code, hostToken, participantId, participantToken, race }, { status: 201 });
       }
       return error("빈 방 번호를 찾지 못했습니다. 잠시 후 다시 시도하세요.", 503);
@@ -212,6 +260,29 @@ export async function POST(request: Request) {
         wrongCount,
         mistakeCount: Number(updated?.mistake_count) || 0,
       });
+    }
+
+    if (action === "card") {
+      const code = String(payload.roomCode ?? "").trim();
+      const participantId = String(payload.participantId ?? "");
+      const participantToken = String(payload.participantToken ?? "");
+      const cardIndex = Number(payload.cardIndex);
+      const skip = payload.skip === true;
+      const race = await store.race(code);
+      if (!race || !race.duration_seconds) return error("카드 순위전 방이 아닙니다.");
+      if (race.status !== "running" || !race.started_at) return error("아직 시작하지 않았습니다.", 409);
+      const now = Date.now();
+      if (now > race.started_at + race.duration_seconds * 1000 + CARD_GRACE) return error("시간이 끝났습니다.", 409);
+      const card = raceCard(race.worksheet_route, race.seed, cardIndex);
+      if (!card) return error("카드를 확인하세요.");
+      const raw = payload.answers && typeof payload.answers === "object" ? payload.answers as Record<string, unknown> : {};
+      const answers = Object.fromEntries(Object.entries(raw).slice(0, 12).map(([key, value]) => [key.slice(0, 20), String(value ?? "").slice(0, 40)]));
+      const outcome = skip ? "skip" : isRaceAnswerCorrect(card, answers) ? "correct" : "wrong";
+      const recorded = await store.recordCard({ roomCode: code, participantId, participantToken, cardIndex, outcome, at: now });
+      const me = (await store.participants(code)).find((row) => row.id === participantId && row.participant_token === participantToken);
+      if (!me) return error("학생 입장 정보를 확인하세요.", 403);
+      if (!recorded) return Response.json({ stale: true, participant: cardParticipant(me) }, { status: 409 });
+      return Response.json({ outcome, answer: raceAnswerText(card), participant: cardParticipant(me) });
     }
 
     if (action === "delete") {

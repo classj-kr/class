@@ -3,58 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { createProblemSet, type Problem } from "@/lib/race-sets/grade-4-multiplication";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type Layout = "horizontal" | "vertical";
-type Problem = { id: string; top: number; bottom: number; result: number; layout: Layout };
-type ProblemSet = { seed: number; problems: Problem[] };
-
 const INITIAL_SEED = 20260720;
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, minimum: number, maximum: number) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function tensMultiple(next: () => number, minimumDigit: number, maximumDigit: number, minimumPower: number, maximumPower: number) {
-  return integer(next, minimumDigit, maximumDigit) * (10 ** integer(next, minimumPower, maximumPower));
-}
-
-function problem(id: string, top: number, bottom: number, layout: Layout): Problem {
-  return { id, top, bottom, result: top * bottom, layout };
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  const problems: Problem[] = [
-    ...Array.from({ length: 2 }, (_, index) => problem(
-      `grade-four-multiply-horizontal-${index}`,
-      tensMultiple(next, 2, 6, 1, 3),
-      tensMultiple(next, 2, 6, 2, 3),
-      "horizontal",
-    )),
-    problem("grade-four-multiply-vertical-0", integer(next, 150, 999), integer(next, 15, 99), "vertical"),
-    problem("grade-four-multiply-vertical-1", integer(next, 150, 999), tensMultiple(next, 5, 9, 1, 1), "vertical"),
-    problem("grade-four-multiply-vertical-2", integer(next, 150, 999), integer(next, 15, 99), "vertical"),
-    problem("grade-four-multiply-vertical-3", tensMultiple(next, 15, 99, 1, 1), tensMultiple(next, 5, 9, 1, 1), "vertical"),
-    problem("grade-four-multiply-vertical-4", integer(next, 150, 999), tensMultiple(next, 5, 9, 1, 1), "vertical"),
-    problem("grade-four-multiply-vertical-5", integer(next, 150, 999), integer(next, 15, 99), "vertical"),
-    problem("grade-four-multiply-vertical-6", integer(next, 777, 999), integer(next, 77, 99), "vertical"),
-    problem("grade-four-multiply-vertical-7", integer(next, 7777, 9999), integer(next, 77, 99), "vertical"),
-    problem("grade-four-multiply-vertical-8", integer(next, 4444, 9999), tensMultiple(next, 3, 9, 2, 3), "vertical"),
-  ];
-  return { seed, problems };
-}
 
 export default function GradeFourMultiplicationPage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-4-multiplication/page:questionSet", () => createProblemSet(INITIAL_SEED));

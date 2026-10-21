@@ -3,68 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { Problem, random, createProblemSet } from "@/lib/race-sets/multiplication-3";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type BlankPosition = "factor" | "result";
-type Problem = { id: string; multiplicand: number; factor: number; product: number; blank: BlankPosition };
-type ProblemSet = { seed: number; columns: Problem[][] };
-
 const INITIAL_SEED = 20260720;
-const FACTOR_BLANK_ROWS = new Set([2, 5, 8]);
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function shuffle<T>(values: T[], next: () => number) {
-  const result = [...values];
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const target = Math.floor(next() * (index + 1));
-    [result[index], result[target]] = [result[target], result[index]];
-  }
-  return result;
-}
-
-function randomInteger(min: number, max: number, next: () => number) {
-  return min + Math.floor(next() * (max - min + 1));
-}
-
-function makeColumn(columnIndex: number, multiplicands: number[], factors: number[]): Problem[] {
-  return factors.map((factor, rowIndex) => {
-    const multiplicand = multiplicands[rowIndex];
-    return {
-      id: `multiplication-three-${columnIndex}-${rowIndex}`,
-      multiplicand,
-      factor,
-      product: multiplicand * factor,
-      blank: FACTOR_BLANK_ROWS.has(rowIndex) ? "factor" : "result",
-    };
-  });
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  const sixFactors = [...shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9], next), randomInteger(3, 9, next)];
-  const sevenFactors = [...shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9], next), randomInteger(3, 9, next)];
-  const mixedMultiplicands = Array.from({ length: 10 }, (_, index) => index % 2 === 0 ? 6 : 7);
-  const mixedFactors = Array.from({ length: 10 }, (_, index) => randomInteger(index === 9 ? 3 : 2, 9, next));
-  return {
-    seed,
-    columns: [
-      makeColumn(0, Array(10).fill(6), sixFactors),
-      makeColumn(1, Array(10).fill(7), sevenFactors),
-      makeColumn(2, mixedMultiplicands, mixedFactors),
-    ],
-  };
-}
-
 export default function MultiplicationThreePage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/multiplication-3/page:questionSet", () => createProblemSet(INITIAL_SEED));
   const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/multiplication-3/page:answers", {});

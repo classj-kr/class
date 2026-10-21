@@ -3,40 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { Problem, random, createProblemSet } from "@/lib/race-sets/grade-3-complement-subtraction-1000";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type Problem = { id: string; left: number; right: number; result: number };
-type ProblemSet = { seed: number; leftColumn: Problem[]; rightColumn: Problem[] };
-
 const INITIAL_SEED = 20260720;
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, minimum: number, maximum: number) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function createColumn(next: () => number, side: "left" | "right") {
-  return Array.from({ length: 10 }, (_, index) => {
-    const left = 1000;
-    const right = integer(next, 13, left - 11);
-    return { id: `complement-thousand-${side}-${index}`, left, right, result: left - right };
-  });
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  return { seed, leftColumn: createColumn(next, "left"), rightColumn: createColumn(next, "right") };
-}
 
 function ResultMark({ value }: { value?: boolean }) {
   if (value === undefined) return null;

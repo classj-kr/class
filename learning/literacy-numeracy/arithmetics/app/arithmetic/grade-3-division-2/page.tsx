@@ -3,59 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { createProblemSet, type Answer, type Problem } from "@/lib/race-sets/grade-3-division-2";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type Problem = { id: string; dividend: number; divisor: number; quotient: number; remainder: number; large: boolean };
-type ProblemSet = { seed: number; columns: Problem[][] };
-type Answer = { quotient: string; remainder: string };
-
 const INITIAL_SEED = 20260720;
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, minimum: number, maximum: number) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function shuffle<T>(values: T[], next: () => number) {
-  const result = [...values];
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const target = Math.floor(next() * (index + 1));
-    [result[index], result[target]] = [result[target], result[index]];
-  }
-  return result;
-}
-
-function makeProblem(id: string, dividend: number, divisor: number, large: boolean): Problem {
-  return { id, dividend, divisor, quotient: Math.floor(dividend / divisor), remainder: dividend % divisor, large };
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  const smallProblems = Array.from({ length: 20 }, (_, index) => makeProblem(
-    `division-remainder-small-${index}`,
-    integer(next, 11, 99),
-    integer(next, 2, 9),
-    false,
-  ));
-  const largeDivisors = shuffle([2, 3, 4, 5, 6, 7, 8, 9], next).slice(0, 5);
-  const largeProblems = largeDivisors.map((divisor, index) => makeProblem(
-    `division-remainder-large-${index}`,
-    integer(next, 101, 999),
-    divisor,
-    true,
-  ));
-  return { seed, columns: [smallProblems.slice(0, 10), smallProblems.slice(10, 20), largeProblems] };
-}
 
 export default function GradeThreeDivisionTwoPage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-division-2/page:questionSet", () => createProblemSet(INITIAL_SEED));

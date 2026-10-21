@@ -3,58 +3,10 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
+import { createProblemSet, type VerticalProblem } from "@/lib/race-sets/grade-3-add-subtract";
 
 type PrintMode = "worksheet" | "answers" | "both";
-type VerticalProblem = {
-  id: string;
-  left: number;
-  operator: "+" | "−";
-  right: number;
-  result: number;
-};
-type ProblemSet = { seed: number; problems: VerticalProblem[] };
-
 const INITIAL_SEED = 20260720;
-const OPERATOR_PATTERN = ["+", "−", "+", "−", "−", "−", "+", "−", "+", "+", "−", "+", "−", "+", "−", "+"] as const;
-
-function random(seed: number) {
-  let value = seed >>> 0;
-  return () => {
-    value += 0x6d2b79f5;
-    let next = value;
-    next = Math.imul(next ^ (next >>> 15), next | 1);
-    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function integer(next: () => number, minimum: number, maximum: number) {
-  return minimum + Math.floor(next() * (maximum - minimum + 1));
-}
-
-function additionProblem(next: () => number, id: string): VerticalProblem {
-  const left = integer(next, 0, 9) * 100 + integer(next, 4, 9) * 10 + integer(next, 3, 9);
-  const right = integer(next, 0, 9) * 100 + integer(next, 3, 9) * 10 + integer(next, 4, 9);
-  return { id, left, operator: "+", right, result: left + right };
-}
-
-function subtractionProblem(next: () => number, id: string): VerticalProblem {
-  const hundreds = integer(next, 6, 9);
-  const left = hundreds * 100 + integer(next, 0, 4) * 10 + integer(next, 0, 4);
-  const right = integer(next, 0, hundreds - 1) * 100 + integer(next, 4, 9) * 10 + integer(next, 3, 9);
-  return { id, left, operator: "−", right, result: left - right };
-}
-
-function createProblemSet(seed: number): ProblemSet {
-  const next = random(seed);
-  return {
-    seed,
-    problems: OPERATOR_PATTERN.map((operator, index) => (
-      operator === "+" ? additionProblem(next, `grade-three-${index}`) : subtractionProblem(next, `grade-three-${index}`)
-    )),
-  };
-}
-
 export default function GradeThreeAdditionSubtractionPage() {
   const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-add-subtract/page:questionSet", () => createProblemSet(INITIAL_SEED));
   const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/grade-3-add-subtract/page:answers", {});
