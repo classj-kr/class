@@ -8,6 +8,8 @@
   let boardId = params.get('id'), setId = params.get('set');
   let data = null, setData = null, editing = null, reviewing = null, approved = [];
   let loading = false, signature = '', setSignature = '', toastTimer;
+  const pendingLikes = new Set();
+  let likesEpoch = 0;
 
   function element(tag, text, className) {
     const node = document.createElement(tag);
@@ -109,6 +111,33 @@
     navigateBoard(result.board.id);
   });
 
+  function likeButton(p) {
+    const heart = element('span', undefined, 'heart-icon');
+    heart.setAttribute('aria-hidden', 'true');
+    const count = element('span');
+    const update = () => {
+      heart.textContent = p.likes.liked ? '♥' : '♡';
+      count.textContent = p.likes.count;
+      control.setAttribute('aria-pressed', String(p.likes.liked));
+      control.setAttribute('aria-label', `공감${p.likes.liked ? ' 취소' : ''}, ${p.likes.count}개`);
+    };
+    const control = button('', async () => {
+      if (pendingLikes.has(p.id)) return;
+      pendingLikes.add(p.id); likesEpoch++; control.disabled = true;
+      try {
+        p.likes = await api(`/${boardId}/posts/${p.id}/like`, 'PUT', { liked: !p.likes.liked });
+        update();
+        if (p.likes.liked) {
+          heart.classList.remove('heart-pop'); void heart.offsetWidth; heart.classList.add('heart-pop');
+        }
+      } finally {
+        pendingLikes.delete(p.id); likesEpoch++; signature = ''; control.disabled = false;
+      }
+    }, 'like-button');
+    control.disabled = pendingLikes.has(p.id);
+    control.append(heart, count); update();
+    return control;
+  }
   function postCard(p) {
     const card = element('article', undefined, 'post' + (p.hidden ? ' is-hidden' : ''));
     card.dataset.postId = p.id;
@@ -144,6 +173,7 @@
         }));
       }
     }
+    if (p.likes && data.board.likesEnabled) footer.append(likeButton(p));
     if (footer.childNodes.length) card.append(footer);
     return card;
   }
@@ -202,10 +232,12 @@
     renderPosts();
   }
   async function refresh(force = false) {
-    if (loading || !boardId) return;
+    if (loading || !boardId || pendingLikes.size) return;
     loading = true;
+    const epoch = likesEpoch;
     try {
       const next = await api(`/${boardId}`);
+      if (epoch !== likesEpoch) return;
       data = next;
       if (!data.me.teacher && data.live) { navigateRace(data.live.id); return; }
       if (!data.me.teacher && setId) { setId = null; historyView(); }
@@ -284,11 +316,12 @@
   $('settingsBoard').addEventListener('click', () => {
     const b = data.board; $('settingsTitle').value = b.title; $('settingsDescription').value = b.description;
     $('settingsLocked').checked = b.locked; $('settingsClosed').checked = b.closed; $('settingsNames').checked = b.hideNames;
+    $('settingsLikes').checked = b.likesEnabled; $('settingsLikesLabel').hidden = b.layout === 'quiz';
     $('recoveryLink').replaceChildren(); openDialog('settingsDialog');
   });
   handleForm('settingsForm', async () => {
     await api(`/${boardId}`, 'PATCH', { title: $('settingsTitle').value, description: $('settingsDescription').value,
-      locked: $('settingsLocked').checked, closed: $('settingsClosed').checked, hideNames: $('settingsNames').checked });
+      locked: $('settingsLocked').checked, closed: $('settingsClosed').checked, hideNames: $('settingsNames').checked, likesEnabled: $('settingsLikes').checked });
     $('settingsDialog').close(); await refresh(true);
   });
   $('rotateCode').addEventListener('click', () => run(async () => {

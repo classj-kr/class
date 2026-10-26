@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#24594e">
   <title>게시판</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261026-likes">
 </head>
 <body>
   <main>
@@ -43,12 +43,12 @@
 
   <dialog id="shareDialog"><div class="dialog-head"><h2>공유</h2><button data-close aria-label="닫기">✕</button></div><div class="share-content"><strong id="shareCode" class="big-code"></strong><img id="shareQr" width="240" height="240" alt="학생 참여 링크 QR 코드"><label>참여 링크<input id="shareLink" readonly></label><button id="copyLink" class="primary full">링크 복사</button></div></dialog>
 
-  <dialog id="settingsDialog"><form id="settingsForm"><div class="dialog-head"><h2>게시판 관리</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>제목<input id="settingsTitle" maxlength="80" required></label><label>설명 (선택)<textarea id="settingsDescription" maxlength="1000" rows="3"></textarea></label><label class="check"><input id="settingsLocked" type="checkbox">새로운 학생 입장 잠금</label><label class="check"><input id="settingsClosed" type="checkbox">글쓰기·문제 출제 마감</label><label class="check"><input id="settingsNames" type="checkbox">학생 화면에 이름 대신 번호만 표시</label><p class="hint">문제 세트의 풀이 시작·마감은 각 세트에서 따로 관리해요.</p><p class="form-error error" role="alert"></p><button type="submit" class="primary full">설정 저장</button></form><div class="settings-extra"><button id="rotateCode">방번호 바꾸기</button><button id="exportBoard">게시판 기록 내려받기</button><button id="recoverMember">학생 기기 변경</button><button id="deleteBoard" class="danger">게시판 삭제</button></div><p id="recoveryLink" class="hint"></p></dialog>
+  <dialog id="settingsDialog"><form id="settingsForm"><div class="dialog-head"><h2>게시판 관리</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>제목<input id="settingsTitle" maxlength="80" required></label><label>설명 (선택)<textarea id="settingsDescription" maxlength="1000" rows="3"></textarea></label><label class="check"><input id="settingsLocked" type="checkbox">새로운 학생 입장 잠금</label><label class="check"><input id="settingsClosed" type="checkbox">글쓰기·문제 출제 마감</label><label id="settingsLikesLabel" class="check"><input id="settingsLikes" type="checkbox">하트 공감 사용</label><label class="check"><input id="settingsNames" type="checkbox">학생 화면에 이름 대신 번호만 표시</label><p class="hint">문제 세트의 풀이 시작·마감은 각 세트에서 따로 관리해요.</p><p class="form-error error" role="alert"></p><button type="submit" class="primary full">설정 저장</button></form><div class="settings-extra"><button id="rotateCode">방번호 바꾸기</button><button id="exportBoard">게시판 기록 내려받기</button><button id="recoverMember">학생 기기 변경</button><button id="deleteBoard" class="danger">게시판 삭제</button></div><p id="recoveryLink" class="hint"></p></dialog>
 
   <dialog id="reviewDialog"><form id="reviewForm"><div class="dialog-head"><h2>수정 요청하기</h2><button type="button" data-close aria-label="닫기">✕</button></div><p id="reviewContent"></p><label>수정할 내용<textarea id="reviewFeedback" maxlength="500" rows="4" required></textarea></label><p class="form-error error" role="alert"></p><button type="submit" class="primary full">수정 요청</button></form></dialog>
 
   <dialog id="buildDialog"><form id="buildForm"><div class="dialog-head"><h2>승인 문제로 세트 만들기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>문제 세트 제목<input id="setName" maxlength="80" required></label><p class="hint">승인 문항만 선택할 수 있습니다.</p><div id="approvedChoices"></div><p class="form-error error" role="alert"></p><button type="submit" class="primary full">세트 만들기</button></form></dialog>
-  <script src="app.js?v=20261013-author-play"></script>
+  <script src="app.js?v=20261026-likes"></script>
 </body>
 </html>
 

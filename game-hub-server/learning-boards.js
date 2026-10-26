@@ -41,6 +41,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query("SELECT pg_advisory_xact_lock(hashtext('006-learning-boards'))");
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '006-learning-boards.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '013-learning-board-races.sql'), 'utf8'));
+      await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '020-learning-board-likes.sql'), 'utf8'));
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('COMMIT');
@@ -93,7 +94,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     finally { db.release(); }
   }
   const publicBoard = b => ({ id: b.id, code: b.code, title: b.title, description: b.description, layout: b.layout,
-    columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names });
+    columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names, likesEnabled: b.likes_enabled });
 
   function question(body) {
     const kind = body.kind;
@@ -211,15 +212,19 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const who = await actor(req, b, db, verified);
       const members = (await db.query('SELECT id, number, name FROM learning_board_members WHERE board_id=$1 ORDER BY number', [b.id])).rows;
       const posts = (await db.query('SELECT * FROM learning_board_posts WHERE board_id=$1 ORDER BY created_at, id', [b.id])).rows;
+      const likes = b.likes_enabled ? (await db.query(`SELECT post_id, COUNT(*)::int AS count, BOOL_OR(actor_key=$2) AS liked
+        FROM learning_board_likes WHERE board_id=$1 GROUP BY post_id`, [b.id, who.teacher ? 'teacher' : who.id])).rows : [];
       const sets = (await db.query('SELECT id, title, status, jsonb_array_length(questions) AS count FROM learning_board_sets WHERE board_id=$1 ORDER BY created_at DESC', [b.id])).rows;
       const live = (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0] || null;
       const result = posts.filter(p => who.teacher || (!p.hidden && (p.kind === 'note' || p.member_id === who.id))).map(p => {
         const m = members.find(m => m.id === p.member_id);
         const own = who.teacher || p.member_id === who.id;
+        const reaction = likes.find(l => l.post_id === p.id);
         return { id: p.id, kind: p.kind, content: p.content, link: p.link, column: p.column_index, choices: p.choices,
           author: !m ? '선생님' : b.hide_names && !who.teacher ? `${m.number}번` : `${m.number}번 ${m.name}`,
           number: m?.number ?? null, mine: who.teacher ? p.member_id === null : p.member_id === who.id, hidden: p.hidden, createdAt: p.created_at,
           reviewStatus: p.review_status, revision: p.revision,
+          ...(b.likes_enabled && p.kind === 'note' && !p.hidden ? { likes: { count: reaction?.count ?? 0, liked: reaction?.liked ?? false } } : {}),
           ...(own ? { answer: p.answer, explanation: p.explanation, feedback: p.feedback } : {}) };
       });
       await db.query('COMMIT');
@@ -233,13 +238,13 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     await transaction(req, async (db, b) => {
       const body = req.body || {};
       const values = {};
-      for (const [key, field] of Object.entries({ locked: 'locked', closed: 'closed', hideNames: 'hide_names' })) {
+      for (const [key, field] of Object.entries({ locked: 'locked', closed: 'closed', hideNames: 'hide_names', likesEnabled: 'likes_enabled' })) {
         if (body[key] !== undefined && typeof body[key] !== 'boolean') fail(400, 'INVALID_SETTING', '설정 값이 올바르지 않아요.');
         values[field] = body[key] ?? b[field];
       }
-      await db.query(`UPDATE learning_boards SET title=$2, description=$3, locked=$4, closed=$5, hide_names=$6 WHERE id=$1`,
+      await db.query(`UPDATE learning_boards SET title=$2, description=$3, locked=$4, closed=$5, hide_names=$6, likes_enabled=$7 WHERE id=$1`,
         [b.id, body.title === undefined ? b.title : text(body.title, 80, true), body.description === undefined ? b.description : text(body.description, 1000),
-          values.locked, values.closed, values.hide_names]);
+          values.locked, values.closed, values.hide_names, values.likes_enabled]);
     }, true);
     res.json({ ok: true });
   }));
@@ -285,6 +290,22 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const boardId = found.rows[0].board_id;
     res.cookie(`board_${boardId}`, token, { httpOnly: true, sameSite: 'strict', secure: req.secure, path: '/api/boards', maxAge: 1000 * 60 * 60 * 24 * 180 });
     res.json({ board: publicBoard(await board(pool, boardId)) });
+  }));
+  router.put('/:id/posts/:postId/like', asyncRoute(async (req, res) => {
+    const result = await transaction(req, async (db, b, who) => {
+      if (!b.likes_enabled) fail(403, 'LIKES_DISABLED', '공감 기능이 꺼져 있어요.');
+      if (typeof req.body?.liked !== 'boolean') fail(400, 'INVALID_LIKE', '공감 여부를 확인해 주세요.');
+      const p = (await db.query("SELECT id FROM learning_board_posts WHERE board_id=$1 AND id=$2 AND NOT hidden AND kind='note'", [b.id, req.params.postId])).rows[0];
+      if (!p) fail(404, 'POST_NOT_FOUND', '공감할 글을 찾을 수 없어요.');
+      const key = who.teacher ? 'teacher' : who.id;
+      // Explicit state makes retries safe; membership survives device recovery.
+      if (req.body.liked) await db.query(`INSERT INTO learning_board_likes(board_id, post_id, actor_key, member_id)
+        VALUES($1,$2,$3,$4) ON CONFLICT(post_id, actor_key) DO NOTHING`, [b.id, p.id, key, who.teacher ? null : who.id]);
+      else await db.query('DELETE FROM learning_board_likes WHERE board_id=$1 AND post_id=$2 AND actor_key=$3', [b.id, p.id, key]);
+      return (await db.query(`SELECT COUNT(*)::int AS count, COALESCE(BOOL_OR(actor_key=$3), FALSE) AS liked
+        FROM learning_board_likes WHERE board_id=$1 AND post_id=$2`, [b.id, p.id, key])).rows[0];
+    });
+    res.json(result);
   }));
   router.post('/:id/posts', asyncRoute(async (req, res) => {
     const result = await transaction(req, async (db, b, who) => {
