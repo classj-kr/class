@@ -38,6 +38,11 @@ textarea{resize:vertical;line-height:1.5}#joinCode{font-size:24px;font-weight:70
 .post.is-hidden{opacity:.65;border-style:dashed}.post-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:12px;color:var(--muted)}
 .post-content{margin:0 0 8px;font-size:16px;line-height:1.55;white-space:pre-wrap}.post a{display:block;font-size:13px;overflow-wrap:anywhere}
 .post footer{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid #e8ece6}.post footer button{min-height:32px;padding:4px 7px;font-size:12px}
+.post footer .like-button{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:52px;border-color:transparent;color:#66736d;font-variant-numeric:tabular-nums}
+.post footer .like-button:hover{background:#fff0f4}.post footer .like-button[aria-pressed=true]{color:#bc3158;background:#fff0f4}
+.heart-icon{display:inline-block;font:24px/1 Arial,sans-serif}.heart-pop{animation:heart-pop .25s ease-out}
+@keyframes heart-pop{50%{transform:scale(1.3)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.heart-pop{animation:none}}
 .badge.pending{background:#f6e8c0;color:#785a14}.badge.approved{background:#dcead9;color:#295438}.badge.changes{background:#f4dcd3;color:#923d2b}
 .feedback{padding:8px;border-radius:4px;background:#fbede6;font-size:13px;white-space:pre-wrap}
 .answer-key{padding:7px 8px;border-radius:4px;background:#eff4ea;color:var(--green);font-size:13px;white-space:pre-wrap}.choice-list{padding-left:22px;margin:6px 0;font-size:14px}
