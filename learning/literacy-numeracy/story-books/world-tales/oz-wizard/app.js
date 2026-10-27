@@ -760,8 +760,7 @@ const EN = {
                     right: [
                         "Dorothy and the Lion were taken to the castle. The Witch shut the Lion in a cage and set Dorothy to work in the kitchen.",
                         "\"If only I had those silver shoes!\" muttered the Witch.",
-                        "But she feared their magic, so she dared not touch Dorothy.",
-                        "So she tripped Dorothy with an iron bar and snatched up the shoe that came off."
+                        "But she feared their magic and dared not touch Dorothy. So she tripped her with an iron bar and snatched up the shoe that came off."
                     ]
                 },
                 {
@@ -774,8 +773,7 @@ const EN = {
                         "As the water came down the Witch screamed."
                     ],
                     right: [
-                        "\"Water! Not water!\"",
-                        "The Witch melted away like a lump of sugar. Only her Golden Cap and one silver shoe were left. Dorothy put the shoe back on.",
+                        "\"Water! Not water!\" The Witch melted away like a lump of sugar. Only her Golden Cap and one silver shoe were left. Dorothy put the shoe back on.",
                         "Dorothy let the Lion out of his cage and called the Monkeys with the Golden Cap.",
                         "They brought back the Woodman. Dorothy stuffed the Scarecrow again and hammered out the Woodman's dents."
                     ]

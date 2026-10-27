@@ -742,11 +742,9 @@ const EN = {
                         "Then one day there were hoofbeats, and a prince from far away came up the hill."
                     ],
                     right: [
-                        "The prince stood by the coffin a long while. He could not take his eyes from her, lying there as if asleep.",
-                        "Then he asked the dwarfs, \"Let me take her to my castle.\"",
+                        "The prince stood by the coffin a long while. He could not take his eyes from her, lying there as if asleep. \"Let me take her to my castle,\" he said.",
                         "The dwarfs shook their heads. \"She must not leave us.\"",
-                        "But the prince would not give way. He asked again and again.",
-                        "In the end the dwarfs said yes."
+                        "But the prince asked again and again, and in the end the dwarfs said yes."
                     ]
                 }
             ]
@@ -927,7 +925,7 @@ const EN = {
         '06-glass-coffin-2.webp': [
             { word: 'turn', meaning: '(계절이) 바뀌다', sentence: 'The seasons turned, over and over.' },
             { word: 'hoofbeat', meaning: '말발굽 소리', sentence: 'Then one day there were hoofbeats.' },
-            { word: 'give way', meaning: '물러서다', sentence: 'But the prince would not give way.' }
+            { word: "take one's eyes from", meaning: '눈을 떼다', sentence: 'He could not take his eyes from her.' }
         ],
         '07-awake.webp': [
             { word: 'steep', meaning: '가파른', sentence: 'The hill path was very steep.' },

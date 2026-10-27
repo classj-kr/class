@@ -800,18 +800,13 @@ const EN = {
                     art: '06-parents-2.webp',
                     emoji: '👑',
                     left: [
-                        "That night the princess told the son.",
-                        "The next evening he flew down into the palace garden in his trunk, and the courtiers' mouths fell open.",
-                        "The court stood round the king and queen.",
-                        "The son cleared his throat and began a very long story.",
-                        "The hall went as quiet as still water.",
+                        "That night the princess told the son. The next evening he flew down into the palace garden in his trunk, and the courtiers' mouths fell open.",
+                        "The son cleared his throat and began a very long story. The hall went as quiet as still water.",
                         "At the end, the queen wiped her eyes."
                     ],
                     right: [
-                        "The king slapped his knee. \"I have never seen such a gift!\"",
-                        "\"A man who came from the sky is surely beyond any prophecy. My queen, where could we find a better son-in-law?\"",
-                        "The wedding day was fixed there and then.",
-                        "The princess blushed, and the whole country got ready for the feast.",
+                        "The king slapped his knee. \"I have never seen such a gift! A man who came from the sky is surely beyond any prophecy. My queen, where could we find a better son-in-law?\"",
+                        "The wedding day was fixed there and then. The princess blushed, and the whole country got ready for the feast.",
                         "The smell of baking filled the streets for days."
                     ]
                 }
@@ -1049,7 +1044,7 @@ const EN = {
             { word: 'perhaps', meaning: '~하면 어떨까', sentence: 'Perhaps we might hear one ourselves.' }
         ],
         '06-parents-2.webp': [
-            { word: 'court', meaning: '신하들', sentence: 'The court stood round the king and queen.' },
+            { word: 'courtier', meaning: '신하', sentence: "The courtiers' mouths fell open." },
             { word: 'as quiet as still water', meaning: '물을 끼얹은 듯 조용한', sentence: 'The hall went as quiet as still water.' },
             { word: 'slap one’s knee', meaning: '무릎을 치다', sentence: 'The king slapped his knee.' },
             { word: 'son-in-law', meaning: '사윗감', sentence: 'Where could we find a better son-in-law?' },

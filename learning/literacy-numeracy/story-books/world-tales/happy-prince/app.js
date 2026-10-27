@@ -660,8 +660,7 @@ const EN = {
                         "A young man sat at the window, breathing on his hands between one line and the next."
                     ],
                     right: [
-                        "His fingers were so stiff the letters came out crooked.",
-                        "There was not one ember in the stove, and nothing to eat on the desk.",
+                        "His fingers were so stiff his letters came out crooked. The stove was cold, and there was nothing to eat on the desk.",
                         "\"Now that the ruby is gone, take out one of my eyes,\" said the prince.",
                         "\"But then you won't be able to see!\" said the swallow.",
                         "\"Never mind. Go on.\""
@@ -921,7 +920,7 @@ const EN = {
             { word: 'attic', meaning: '다락방', sentence: 'Do you see the attic under that roof?' },
             { word: 'breathe on', meaning: '입김으로 녹이다', sentence: 'Breathing on his hands between one line and the next.' },
             { word: 'crooked', meaning: '삐뚤빼뚤한', sentence: 'The letters came out crooked.' },
-            { word: 'stove', meaning: '난로', sentence: 'There was not one ember in the stove.' }
+            { word: 'stove', meaning: '난로', sentence: 'The stove was cold.' }
         ],
         '04-sapphire-2.webp': [
             { word: 'set down', meaning: '내려놓다', sentence: 'He set it quietly on the desk.' },

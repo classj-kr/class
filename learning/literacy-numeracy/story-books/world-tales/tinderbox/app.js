@@ -691,11 +691,9 @@ const EN = {
                         "And still he spread the apron and set the dog on it."
                     ],
                     right: [
-                        "This dog, too, went quiet.",
-                        "He opened the chest, and it was brimming with gold.",
-                        "He threw the silver away without a second thought and took the gold.",
-                        "\"That will do. Now for the tinderbox.\" An old box lay in a corner.",
-                        "He took it and shouted up, \"Grandmother, pull me up now!\""
+                        "This dog, too, went quiet. He opened the chest, and it was brimming with gold. He threw the silver away without a second thought and took the gold.",
+                        "\"That will do. Now for the tinderbox,\" he thought.",
+                        "An old box lay in a corner. He took it and shouted up, \"Grandmother, pull me up now!\""
                     ]
                 }
             ]
@@ -815,17 +813,14 @@ const EN = {
                     art: '06-summon-2.webp',
                     emoji: '✨',
                     left: [
-                        "The soldier tried the box out this way and that.",
-                        "Strike it once, and the first dog came. Twice, and the second. Three times, and the dog with eyes like towers.",
-                        "The dogs brought him money from the chests in the cave.",
-                        "Soon he moved back into a good room and had new clothes made."
+                        "The soldier tried the box. One strike brought the first dog, two the second, and three the dog with eyes like towers.",
+                        "The dogs brought him money from the chests in the cave. Soon he moved back into a good room and had new clothes made.",
+                        "His friends came back one by one, as though they had seen him yesterday."
                     ],
                     right: [
-                        "His friends came back as though they had seen him yesterday.",
                         "\"We looked everywhere for you! We knew you were a fine fellow!\"",
                         "The soldier laughed to himself.",
-                        "Then one day he heard some news.",
-                        "A fortune-teller had said the princess would marry a common soldier, so she lived shut up in a copper castle. No one had seen her face."
+                        "Then one day he heard some news. A fortune-teller had said the princess would marry a common soldier, so she lived shut up in a copper castle. No one had seen her face."
                     ]
                 }
             ]
@@ -1062,8 +1057,8 @@ const EN = {
             { word: 'before one can blink', meaning: '눈 깜짝할 사이에', sentence: 'Before he could blink.' }
         ],
         '06-summon-2.webp': [
-            { word: 'try out', meaning: '시험해 보다', sentence: 'The soldier tried the box out this way and that.' },
-            { word: 'strike', meaning: '치다', sentence: 'Strike it once, and the first dog came.' },
+            { word: 'try', meaning: '시험해 보다', sentence: 'The soldier tried the box.' },
+            { word: 'strike', meaning: '한 번 치기', sentence: 'One strike brought the first dog.' },
             { word: 'as though', meaning: '마치 ~인 듯', sentence: 'As though they had seen him yesterday.' },
             { word: 'shut up', meaning: '갇힌', sentence: 'The princess lived shut up in a copper castle.' }
         ],

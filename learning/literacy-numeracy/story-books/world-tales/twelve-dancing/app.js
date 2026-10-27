@@ -656,10 +656,8 @@ const EN = {
                     art: '03-cloak.webp',
                     emoji: '🧥',
                     left: [
-                        "About that time an old soldier came through that country.",
-                        "He had been hurt in the war and could not fight any more.",
-                        "He had nowhere to go and no money.",
-                        "On the road he met an old woman with a load on her head.",
+                        "About that time an old soldier came through that country. He had been hurt in the war and could not fight any more.",
+                        "He had nowhere to go and no money. On the road he met an old woman with a load on her head.",
                         "She was having a hard time of it, so he hurried over."
                     ],
                     right: [

@@ -763,10 +763,8 @@ const EN = {
                         "but the youngest slept soundly and knew nothing."
                     ],
                     right: [
-                        "Next morning the youngest went out with the goose in his arms.",
-                        "He saw the three sisters hanging on behind him, but he had no way to pull them loose, so he simply walked on.",
-                        "The sisters were dragged along at a trot.",
-                        "Their skirts caught on the threshold, and they nearly fell over.",
+                        "Next morning the youngest went out with the goose in his arms. He saw the three sisters hanging on behind, but he could not pull them loose, so he simply walked on.",
+                        "Dragged along at a trot, the sisters caught their skirts on the threshold and nearly fell over.",
                         "\"Hey! Stop a moment!\" they cried, but he only shrugged."
                     ]
                 }
@@ -841,9 +839,8 @@ const EN = {
                     art: '07-princess-2.webp',
                     emoji: '😐',
                     left: [
-                        "The youngest walked on and on along the high road with the goose in his arms, until he came to the castle of the next kingdom.",
-                        "The strange procession came along the high road in front of the castle.",
-                        "A young man with a golden goose walked in front, and people trailed behind.",
+                        "The youngest walked on and on along the high road with the goose in his arms, until he came to the castle of the next kingdom. People trailed behind him in a long line.",
+                        "Arms and legs stuck out every which way. It was a funny sight.",
                         "The princess happened to be standing at her window."
                     ],
                     right: [
@@ -1037,7 +1034,7 @@ const EN = {
             { word: 'guess the rest', meaning: '뻔한 결과', sentence: 'And you can guess the rest.' },
             { word: 'in a row', meaning: '줄줄이', sentence: 'The three of them hung there in a row.' },
             { word: 'struggle', meaning: '낑낑거리다', sentence: 'The three sisters struggled all night.' },
-            { word: 'pull loose', meaning: '떼어 내다', sentence: 'He had no way to pull them loose.' },
+            { word: 'pull loose', meaning: '떼어 내다', sentence: 'He could not pull them loose.' },
             { word: 'at a trot', meaning: '종종걸음으로', sentence: 'They were dragged along at a trot.' }
         ],
         '06-parade.webp': [
@@ -1062,8 +1059,8 @@ const EN = {
             { word: 'reward', meaning: '상', sentence: 'Whoever makes her laugh shall have a reward.' }
         ],
         '07-princess-2.webp': [
-            { word: 'procession', meaning: '행렬', sentence: 'The strange procession came along the road.' },
-            { word: 'high road', meaning: '큰길', sentence: 'Along the high road in front of the castle.' },
+            { word: 'trail', meaning: '줄줄이 따라오다', sentence: 'People trailed behind him in a long line.' },
+            { word: 'high road', meaning: '큰길', sentence: 'The youngest walked on and on along the high road.' },
             { word: 'steadily', meaning: '물끄러미', sentence: 'The princess looked steadily at that procession.' },
             { word: 'twitch', meaning: '씰룩거리다', sentence: 'The corners of her mouth began to twitch.' },
             { word: 'hold in', meaning: '참다', sentence: 'She could not hold it in.' }

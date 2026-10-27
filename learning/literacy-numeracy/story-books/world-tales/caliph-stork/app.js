@@ -576,8 +576,7 @@ const EN = {
                         "Nobody in the palace could read them. So the caliph sent for a learned man."
                     ],
                     right: [
-                        "The man studied it for a long time. \"These letters are very ancient,\" he said.",
-                        "\"It says: smell the powder and say 'Mutabor', and you will turn into any beast you like. You will even understand the speech of beasts. To be a man again, face the east, bow three times and say the word once more.\"",
+                        "The man studied it for a long time. \"These letters are very ancient. They say: smell the powder and say 'Mutabor', and you will turn into any beast you like and understand its speech. To be a man again, face the east, bow three times and say the word again.\"",
                         "The caliph's eyes lit up. But Mansor was somehow not easy about it."
                     ]
                 }
