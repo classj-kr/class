@@ -1,0 +1,630 @@
+{
+  "format": 1,
+  "edition": "2022 개정 아이스크림 김성여 수학",
+  "reviewedSections": 48,
+  "sections": [
+    {
+      "book": "3-1",
+      "chapter": 1,
+      "title": "또 다른 나, 어때요",
+      "printedPages": "28-29",
+      "appUnit": "3-1-1",
+      "existingTypes": [
+        "h-three-rows"
+      ],
+      "addedTypes": [
+        "ic-avatar-budget"
+      ],
+      "adaptation": "종류별 선택과 예산 조건은 최소 잔액 한 값으로 확정한다."
+    },
+    {
+      "book": "3-1",
+      "chapter": 2,
+      "title": "직각이 있는 도형으로 변신해 볼까요",
+      "printedPages": "52-53",
+      "appUnit": "3-1-2",
+      "existingTypes": [
+        "rtri-tangram",
+        "h-rect-count",
+        "h-named"
+      ],
+      "addedTypes": [],
+      "adaptation": "자유 그림의 수학적 핵심인 구성 조각 판별은 기존 유형에 있다."
+    },
+    {
+      "book": "3-1",
+      "chapter": 3,
+      "title": "함께 하면 더 쉬워져요",
+      "printedPages": "72-73",
+      "appUnit": "3-1-3",
+      "existingTypes": [
+        "share-vary"
+      ],
+      "addedTypes": [],
+      "adaptation": "같은 전체를 서로 다른 인원수로 나누는 기존 유형과 같다."
+    },
+    {
+      "book": "3-1",
+      "chapter": 4,
+      "title": "전체 거리가 얼마지",
+      "printedPages": "92-93",
+      "appUnit": "3-1-4",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-cones-gap"
+      ],
+      "adaptation": "물체 개수에서 간격 수를 먼저 구한 뒤 전체 거리를 답한다."
+    },
+    {
+      "book": "3-1",
+      "chapter": 5,
+      "title": "신나는 진로 체험",
+      "printedPages": "114-115",
+      "appUnit": "3-1-5",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-trip-schedule"
+      ],
+      "adaptation": "이동 네 구간과 여러 체험 시간을 합해 귀환 시각을 답한다."
+    },
+    {
+      "book": "3-1",
+      "chapter": 6,
+      "title": "똑같은 모양으로 나누어 볼까요",
+      "printedPages": "142-143",
+      "appUnit": "3-1-6",
+      "existingTypes": [
+        "h-nolines"
+      ],
+      "addedTypes": [
+        "ic-nested-parts"
+      ],
+      "adaptation": "큰 L 모양을 같은 모양·크기의 작은 L 조각으로 나누는 경계를 복원하고, 색칠한 조각이 차지하는 분수를 답한다."
+    },
+    {
+      "book": "3-2",
+      "chapter": 1,
+      "title": "카드에 마음을 담아요",
+      "printedPages": "28-29",
+      "appUnit": "3-2-1",
+      "existingTypes": [
+        "h-chain-word"
+      ],
+      "addedTypes": [],
+      "adaptation": "행 수×열 수×구역 수의 세 양을 곱하는 기존 유형과 같다."
+    },
+    {
+      "book": "3-2",
+      "chapter": 2,
+      "title": "나눗셈으로 로봇을 움직여요",
+      "printedPages": "56-57",
+      "appUnit": "3-2-2",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-robot-route",
+        "ic-robot-correct"
+      ],
+      "adaptation": "몫·나머지 이동과 잘못된 나머지 수정 후 이동을 각각 도착 칸의 수로 묻는다."
+    },
+    {
+      "book": "3-2",
+      "chapter": 3,
+      "title": "원이 이렇게도 쓰인다고",
+      "printedPages": "78-79",
+      "appUnit": "3-2-3",
+      "existingTypes": [
+        "h-treasure"
+      ],
+      "addedTypes": [
+        "ic-circle-band",
+        "ic-circle-meeting"
+      ],
+      "adaptation": "두 원 사이의 장소 수와 두 사람 모두 갈 수 있는 장소 번호를 답한다."
+    },
+    {
+      "book": "3-2",
+      "chapter": 4,
+      "title": "게임의 주인공이 되어요",
+      "printedPages": "102-103",
+      "appUnit": "3-2-4",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-game-gems",
+        "ic-game-refill"
+      ],
+      "adaptation": "부분의 양을 구해 남는 체력이 있는 세 보석과 체력을 채우는 두 음식을 결정한다."
+    },
+    {
+      "book": "3-2",
+      "chapter": 5,
+      "title": "마음 가득, 물건 가득! 택배로 기부해요",
+      "printedPages": "130-131",
+      "appUnit": "3-2-5",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-donation-transfer"
+      ],
+      "adaptation": "두 상자의 무게 한계를 함께 만족하는 조합을 찾고 옮긴 뒤 무게를 답한다."
+    },
+    {
+      "book": "3-2",
+      "chapter": 6,
+      "title": "반려동물을 위해 댓글을 달아 볼까요",
+      "printedPages": "152-153",
+      "appUnit": "3-2-6",
+      "existingTypes": [
+        "read-one",
+        "read-most",
+        "read-most-value"
+      ],
+      "addedTypes": [],
+      "adaptation": "그림그래프의 수·최다 항목을 읽어 댓글의 빈칸을 채우는 계산은 기존 유형에 있다."
+    },
+    {
+      "book": "4-1",
+      "chapter": 1,
+      "title": "세계 여러 나라의 인구를 비교해 볼까요",
+      "printedPages": "28-29",
+      "appUnit": "4-1-1",
+      "existingTypes": [
+        "cmp-han",
+        "cmp-data-second"
+      ],
+      "addedTypes": [],
+      "adaptation": "서로 다르게 적힌 큰 수를 읽고 비교·순위 결정하는 기존 유형과 같다."
+    },
+    {
+      "book": "4-1",
+      "chapter": 2,
+      "title": "학교 안의 보물을 찾아라",
+      "printedPages": "54-55",
+      "appUnit": "4-1-2",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-map-turn"
+      ],
+      "adaptation": "방향을 바꾸는 명령의 누적 회전에서 빠진 각을 수로 답한다."
+    },
+    {
+      "book": "4-1",
+      "chapter": 3,
+      "title": "지구를 위해 물 발자국을 줄여요",
+      "printedPages": "78-79",
+      "appUnit": "4-1-3",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-footprint-choice"
+      ],
+      "adaptation": "각 메뉴의 재료별 양을 합해 더 작은 메뉴를 고른 뒤 전체 인분의 물 사용량을 답한다."
+    },
+    {
+      "book": "4-1",
+      "chapter": 4,
+      "title": "길을 연결하여 보물을 찾아볼까요",
+      "printedPages": "100-101",
+      "appUnit": "4-2-6",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-pipe-turns"
+      ],
+      "adaptation": "처음·목표 길 조각의 입구와 출구를 맞추는 최소 회전 횟수를 답한다."
+    },
+    {
+      "book": "4-1",
+      "chapter": 5,
+      "title": "우리 지역을 소개해 볼까요",
+      "printedPages": "124-125",
+      "appUnit": "4-1-5",
+      "existingTypes": [
+        "col-shapes",
+        "col-longest"
+      ],
+      "addedTypes": [],
+      "adaptation": "그림의 기호 수를 세어 표·막대그래프로 연결하는 기존 유형과 같다."
+    },
+    {
+      "book": "4-1",
+      "chapter": 6,
+      "title": "규칙적으로 모아 기부해 볼까요",
+      "printedPages": "148-149",
+      "appUnit": "4-1-6",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-saving-series"
+      ],
+      "adaptation": "첫날 저금액과 날마다 늘어나는 금액을 바꾸어 누적 합을 구한다. 본·후속 활동은 같은 누적 유형으로 통합한다."
+    },
+    {
+      "book": "4-2",
+      "chapter": 1,
+      "title": "주어진 재료로 음료를 만들어 볼까요",
+      "printedPages": "24-25",
+      "appUnit": "4-2-1",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-orders-rest",
+        "ic-orders-short"
+      ],
+      "adaptation": "여러 주문서의 같은 음료를 모아 재료 잔량과 추가 주문의 부족량을 각각 분수로 답한다."
+    },
+    {
+      "book": "4-2",
+      "chapter": 2,
+      "title": "구조물에서 삼각형을 찾아볼까요",
+      "printedPages": "44-45",
+      "appUnit": "4-1-4",
+      "existingTypes": [
+        "sides-find-iso",
+        "sides-find-equi",
+        "angles-count",
+        "hard-both-talk"
+      ],
+      "addedTypes": [],
+      "adaptation": "변과 각의 조건으로 삼각형을 분류하는 기존 유형과 같다."
+    },
+    {
+      "book": "4-2",
+      "chapter": 3,
+      "title": "음식에 포함된 나트륨의 양을 권장량과 비교해 볼까요",
+      "printedPages": "74-75",
+      "appUnit": "4-2-3",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-nutrition-limit"
+      ],
+      "adaptation": "식단과 음식표를 연결하고 각자에게 주어진 서로 다른 기준에서 초과량을 답한다. 수치는 연습용 조건이다."
+    },
+    {
+      "book": "4-2",
+      "chapter": 4,
+      "title": "소방관의 대피 훈련을 도와주세요",
+      "printedPages": "100-101",
+      "appUnit": "4-2-3",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-fire-rope"
+      ],
+      "adaptation": "평행한 바닥 사이의 수직 높이를 골라 합한다. 길이 계산은 앱의 소수 측정 문항에 연결한다."
+    },
+    {
+      "book": "4-2",
+      "chapter": 5,
+      "title": "그래프에서 물건의 가격 변화를 알아볼까요",
+      "printedPages": "124-125",
+      "appUnit": "4-2-5",
+      "existingTypes": [
+        "read-whole",
+        "chg-shape",
+        "chg-amount",
+        "h-two-sum-gap"
+      ],
+      "addedTypes": [],
+      "adaptation": "기간별 증감과 두 계열 비교는 기존 유형에 있다. 미래 가격의 자유 예상은 확정 가능한 변화량 질문으로 대응한다."
+    },
+    {
+      "book": "4-2",
+      "chapter": 6,
+      "title": "공학 도구를 사용하여 나만의 모양을 만들어 볼까요",
+      "printedPages": "146-147",
+      "appUnit": "4-2-4",
+      "existingTypes": [
+        "make-used",
+        "make-used-regular",
+        "fill-name-count"
+      ],
+      "addedTypes": [],
+      "adaptation": "그림 만들기의 핵심인 다각형 구성 조각의 이름·수 판별은 기존 유형에 있다."
+    },
+    {
+      "book": "5-1",
+      "chapter": 1,
+      "title": "나를 지켜 주는 생존 가방",
+      "printedPages": "22-23",
+      "appUnit": "5-1-1",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-survival-weight"
+      ],
+      "adaptation": "묶음 무게→낱개 무게→실제 개수의 무게→제한까지의 여유를 하나의 수로 답한다."
+    },
+    {
+      "book": "5-1",
+      "chapter": 2,
+      "title": "체육 대회에 어떻게 입장해야 할까요",
+      "printedPages": "44-45",
+      "appUnit": "5-1-2",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-parade-rows"
+      ],
+      "adaptation": "반 수에서 전체 인원을 구한 뒤 약수의 수로 줄 서는 방법을 답한다."
+    },
+    {
+      "book": "5-1",
+      "chapter": 3,
+      "title": "소중한 물, 우리가 지켜요",
+      "printedPages": "62-63",
+      "appUnit": "5-1-3",
+      "existingTypes": [
+        "pr-match",
+        "pr-step-mul",
+        "vl-expr-mul"
+      ],
+      "addedTypes": [],
+      "adaptation": "단위량에 따른 곱셈 대응식과 주어진 양의 계산은 기존 유형과 같다."
+    },
+    {
+      "book": "5-1",
+      "chapter": 4,
+      "title": "1/2을 기준으로 길이를 비교해 볼까요",
+      "printedPages": "86-87",
+      "appUnit": "5-1-4",
+      "existingTypes": [
+        "comp-via-half",
+        "comp-above-count"
+      ],
+      "addedTypes": [],
+      "adaptation": "1/2을 기준으로 분수의 크기를 비교하는 기존 유형과 같다."
+    },
+    {
+      "book": "5-1",
+      "chapter": 5,
+      "title": "음표로 분수의 덧셈을 해 볼까요",
+      "printedPages": "108-109",
+      "appUnit": "5-1-5",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-dotted-note",
+        "ic-measure-fill"
+      ],
+      "adaptation": "점음표의 추가 길이와 마디를 맞추는 빠진 길이를 분수로 답한다."
+    },
+    {
+      "book": "5-1",
+      "chapter": 6,
+      "title": "공원을 만들어요",
+      "printedPages": "144-145",
+      "appUnit": "5-1-6",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-park-min-perimeter",
+        "ic-park-max-area"
+      ],
+      "adaptation": "변의 길이 조건 아래 같은 넓이의 최소 둘레와 같은 둘레의 최대 넓이를 각각 탐색한다."
+    },
+    {
+      "book": "5-2",
+      "chapter": 1,
+      "title": "택배 요금은 얼마일까요",
+      "printedPages": "26-27",
+      "appUnit": "5-2-1",
+      "existingTypes": [
+        "hd-box-weight"
+      ],
+      "addedTypes": [
+        "ic-parcel-two-rules"
+      ],
+      "adaptation": "무게와 세 변 합의 요금을 따로 정해 더 높은 쪽을 적용하고 두 상자 요금을 합한다."
+    },
+    {
+      "book": "5-2",
+      "chapter": 2,
+      "title": "투표 과정에도 분수의 곱셈을 활용해요",
+      "printedPages": "50-51",
+      "appUnit": "5-2-2",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-vote-minimum"
+      ],
+      "adaptation": "전체의 절반 초과 출석과 참석자의 2/3 초과 찬성을 순서대로 적용해 최소 찬성표를 답한다."
+    },
+    {
+      "book": "5-2",
+      "chapter": 3,
+      "title": "자연 속 선대칭도형을 그려 볼까요",
+      "printedPages": "76-77",
+      "appUnit": "5-2-3",
+      "existingTypes": [
+        "lsym-complete-pick",
+        "lsym-draw-point",
+        "lsym-complete-count"
+      ],
+      "addedTypes": [],
+      "adaptation": "자유 그림의 대응점·대칭축·완성 모양 판별은 기존 유형에 있다."
+    },
+    {
+      "book": "5-2",
+      "chapter": 4,
+      "title": "건강하게 식단을 관리해요",
+      "printedPages": "100-101",
+      "appUnit": "5-2-4",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-meal-energy"
+      ],
+      "adaptation": "음식별 단위 열량에 실제 양을 곱해 합한 뒤 주어진 연습용 기준과의 차이를 답한다."
+    },
+    {
+      "book": "5-2",
+      "chapter": 5,
+      "title": "직육면체로 장난감을 만들어요",
+      "printedPages": "126-127",
+      "appUnit": "5-2-5",
+      "existingTypes": [
+        "net-add-cube",
+        "net-add-box"
+      ],
+      "addedTypes": [],
+      "adaptation": "다섯 면에 빠진 한 면을 더해 전개도를 완성하는 유형이 이미 있다."
+    },
+    {
+      "book": "5-2",
+      "chapter": 6,
+      "title": "여러 번 던져도 가능성이 같을까요",
+      "printedPages": "148-149",
+      "appUnit": "5-2-6",
+      "existingTypes": [
+        "num-fact",
+        "data-table-word",
+        "data-table-num",
+        "data-talk",
+        "h-coin-streak"
+      ],
+      "addedTypes": [],
+      "adaptation": "실험 자료 해석과 이론적 가능성·앞선 결과의 독립성을 묻는 기존 유형에 있다."
+    },
+    {
+      "book": "6-1",
+      "chapter": 1,
+      "title": "1개의 무게를 구해 볼까요",
+      "printedPages": "22-23",
+      "appUnit": "6-1-1",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-tare-fraction"
+      ],
+      "adaptation": "여러 상자 총무게를 나누고 빈 상자 무게를 뺀 뒤 낱개 수로 다시 나누어 분수 무게를 답한다."
+    },
+    {
+      "book": "6-1",
+      "chapter": 2,
+      "title": "필요한 재료의 수를 구해 볼까요",
+      "printedPages": "48-49",
+      "appUnit": "6-1-2",
+      "existingTypes": [
+        "pname-model",
+        "pname-rule",
+        "yname-rule"
+      ],
+      "addedTypes": [],
+      "adaptation": "각기둥·각뿔의 모서리와 꼭짓점 수를 구하는 기존 모형·규칙 유형과 같다."
+    },
+    {
+      "book": "6-1",
+      "chapter": 3,
+      "title": "1분 동안 소모한 열량을 알아보아요",
+      "printedPages": "72-73",
+      "appUnit": "6-1-3",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-exercise-rate"
+      ],
+      "adaptation": "다른 시간 동안의 기록을 1분당 양으로 바꿔 비교한 뒤 선택한 단위량을 답한다."
+    },
+    {
+      "book": "6-1",
+      "chapter": 4,
+      "title": "에너지 절약, 실천해요",
+      "printedPages": "94-95",
+      "appUnit": "6-1-4",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-energy-saving"
+      ],
+      "adaptation": "여러 기기의 절약량을 모아 지난달 전체 사용량에 대한 백분율을 답한다."
+    },
+    {
+      "book": "6-1",
+      "chapter": 5,
+      "title": "자료를 보고 판단해 볼까요",
+      "printedPages": "118-119",
+      "appUnit": "6-1-5",
+      "existingTypes": [
+        "h-down-but-up",
+        "h-years-increase",
+        "h-duo-more"
+      ],
+      "addedTypes": [],
+      "adaptation": "전체 양과 비율을 함께 봐 실제 양을 판단·비교하는 기존 유형과 같다."
+    },
+    {
+      "book": "6-1",
+      "chapter": 6,
+      "title": "어떤 모양으로 쌓아서 포장할까요",
+      "printedPages": "140-141",
+      "appUnit": "6-1-6",
+      "existingTypes": [
+        "hard-same-blocks"
+      ],
+      "addedTypes": [
+        "ic-package-surface"
+      ],
+      "adaptation": "직육면체 상자들의 배치에서 전체 세 길이를 구해 포장 면적과 절약량을 비교한다."
+    },
+    {
+      "book": "6-2",
+      "chapter": 1,
+      "title": "어느 가게에서 사는 것이 더 저렴할까요",
+      "printedPages": "24-25",
+      "appUnit": "6-2-1",
+      "existingTypes": [
+        "hard-rate-compare"
+      ],
+      "addedTypes": [],
+      "adaptation": "각 분수량당 값을 1만큼의 값으로 바꾸어 비교하는 구조는 기존 단위량 비교와 같다."
+    },
+    {
+      "book": "6-2",
+      "chapter": 2,
+      "title": "자동차 연료를 얼마나 절약할 수 있을까요",
+      "printedPages": "46-47",
+      "appUnit": "6-2-3",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-fuel-saving"
+      ],
+      "adaptation": "같은 거리÷두 자동차의 서로 다른 연비를 각각 구한 뒤 사용 연료의 차이를 답한다."
+    },
+    {
+      "book": "6-2",
+      "chapter": 3,
+      "title": "쌓기나무를 더 붙여서 멋지게 만들어 볼까요",
+      "printedPages": "68-69",
+      "appUnit": "6-2-2",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-blocks-add"
+      ],
+      "adaptation": "기존 높이와 총 추가 개수를 함께 확인해 만들 수 있는 목표 모양의 수를 답한다."
+    },
+    {
+      "book": "6-2",
+      "chapter": 4,
+      "title": "재료의 양을 구해 볼까요",
+      "printedPages": "90-91",
+      "appUnit": "6-2-4",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-recipe-scale-share"
+      ],
+      "adaptation": "전체 인분에 맞게 양을 조절하고 혼합 재료를 주어진 비로 나누어 각 양을 답한다."
+    },
+    {
+      "book": "6-2",
+      "chapter": 5,
+      "title": "어느 메뉴를 고를까요",
+      "printedPages": "112-113",
+      "appUnit": "6-2-5",
+      "existingTypes": [],
+      "addedTypes": [
+        "ic-pizza-area"
+      ],
+      "adaptation": "지름을 반지름으로 바꿔 한 판과 여러 판의 총넓이를 비교하고 넓이 차이를 답한다."
+    },
+    {
+      "book": "6-2",
+      "chapter": 6,
+      "title": "공학 도구를 사용하여 원기둥, 원뿔, 구를 살펴볼까요",
+      "printedPages": "132-133",
+      "appUnit": "6-2-6",
+      "existingTypes": [
+        "view-any-circle",
+        "hard-half-view"
+      ],
+      "addedTypes": [
+        "ic-solid-view-circles"
+      ],
+      "adaptation": "각 입체의 위·앞·옆 모양을 구별한 뒤 원으로 보이는 경우의 수를 답한다."
+    }
+  ]
+}

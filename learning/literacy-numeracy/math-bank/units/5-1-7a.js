@@ -127,19 +127,20 @@
   }
 
   B.addUnit({
-    id: U, grade: 5, semester: 1, no: 7, title: '초 5학년 1학기 종합', semesterAdvanced: true, version: 1,
+    id: U, grade: 5, semester: 1, no: 7, title: '초 5학년 1학기 종합', semesterAdvanced: true, version: 2,
     groups: [
       {
         id: 'hard', title: '초 5학년 1학기 종합', standard: AREA,
         types: [
           H('adv-tri-two-ways-trap', '직각삼각형의 넓이를 두 가지로 나타내어 사다리꼴의 넓이 구하기', '수집본 5-1-6 심화꼴 91번(미래엔·YBM·지학사 구제)', (d) => {
+            // 정수 답 칸을 쓰므로 공통 높이와 최종 넓이가 자연수인 직각삼각형만 고른다.
             const [leg1, leg2, botB, topB] = d.pick([
               [15, 20, 25, 13],
               [15, 20, 25, 17],
-              [9, 12, 15, 7],
-              [9, 12, 15, 11],
+              [30, 40, 50, 7],
+              [30, 40, 50, 11],
               [12, 16, 20, 10],
-              [18, 24, 30, 14]
+              [30, 40, 50, 14]
             ]);
             const triArea2 = leg1 * leg2, triArea = triArea2 / 2, h = triArea2 / botB;
             const trapArea = (topB + botB) * h / 2;
@@ -217,7 +218,7 @@
             const [tw, th] = d.pick([
               [40, 50],
               [50, 60],
-              [60, 80],
+              [60, 100],
               [40, 75],
               [75, 100]
             ]);
@@ -225,7 +226,7 @@
             return N(`가로가 ${tw} cm, 세로가 ${th} cm인 직사각형 모양의 타일을 겹치지 않게 같은 방향으로 빈틈없이 이어 붙여 가장 작은 정사각형 모양의 벽면을 꾸미려고 한다. 완성된 정사각형 벽면의 넓이는 몇 m²인가?`, areaM2, {
               unit: 'm²',
               hint: `먼저 가로 ${tw} cm와 세로 ${th} cm의 최소공배수로 정사각형 한 변의 길이(cm)를 구한 뒤, 100 cm = 1 m를 이용해 m 단위로 바꾸어 넓이를 구해 보세요.`,
-              explain: `가장 작은 정사각형의 한 변의 길이는 ${tw}과 ${th}의 최소공배수인 ${sideCm} cm이다. 100 cm = 1 m이므로 정사각형의 한 변의 길이는 ${sideCm} cm = ${sideM} m이고, 구하는 정사각형 벽면의 넓이는 ${sideM} × ${sideM} = ${areaM2}(m²)이다.`,
+              explain: `가장 작은 정사각형의 한 변의 길이는 ${josa(tw, '과/와')} ${th}의 최소공배수인 ${sideCm} cm이다. 100 cm = 1 m이므로 정사각형의 한 변의 길이는 ${sideCm} cm = ${sideM} m이고, 구하는 정사각형 벽면의 넓이는 ${sideM} × ${sideM} = ${areaM2}(m²)이다.`,
               facts: { calc: [[`(${sideCm}/100)*(${sideCm}/100)`, 0]], unseen: [100, sideCm] }
             });
           }, { standard: UNITS }),
@@ -307,13 +308,15 @@
             const initBNum = aNum + pNum * 2;
             const gB = gcd(initBNum, L), top = initBNum / gB, bot = L / gB;
             const whole = Math.floor(top / bot), rem = top % bot;
-            return F(`가 물통에는 물이 ${mixed(wA, a1, b1)} L 들어 있다. 나 물통에 들어 있던 물 가운데 ${fj(a2, b2, '을/를')} 가 물통에 옮겨 부었더니 두 물통에 들어 있는 물의 양이 서로 같아졌다. 처음 나 물통에 들어 있던 물은 몇 L인가?`, rem, bot, {
-              whole,
+            const display = (w, a, b) => a ? mixed(w, a, b) : String(w);
+            const text = `가 물통에는 물이 ${mixed(wA, a1, b1)} L 들어 있다. 나 물통에서 물 ${frac(a2, b2)} L를 가 물통에 옮겨 부었더니 두 물통에 들어 있는 물의 양이 서로 같아졌다. 처음 나 물통에 들어 있던 물은 몇 L인가?`;
+            const options = {
               unit: 'L',
               hint: `나 물통에서 ${frac(a2, b2)} L를 덜어 내어 가 물통에 부었더니 같아졌으므로, 먼저 가 물통에 ${frac(a2, b2)} L를 더해 같아졌을 때의 물의 양을 구한 뒤 거꾸로 나 물통의 처음 양을 구해 보세요.`,
-              explain: `가 물통에 ${frac(a2, b2)} L를 옮겨 부은 뒤의 물의 양은 ${mixed(wA, a1, b1)} + ${frac(a2, b2)} = ${mixed(eqWhole, eqRem / gEq, L / gEq)}(L)이다. 이때 나 물통에 남은 물도 ${mixed(eqWhole, eqRem / gEq, L / gEq)} L이므로, 처음 나 물통에 들어 있던 물은 덜어 냈던 ${frac(a2, b2)} L를 다시 더한 ${mixed(eqWhole, eqRem / gEq, L / gEq)} + ${frac(a2, b2)} = ${mixed(whole, rem, bot)}(L)이다.`,
+              explain: `가 물통에 ${frac(a2, b2)} L를 옮겨 부은 뒤의 물의 양은 ${mixed(wA, a1, b1)} + ${frac(a2, b2)} = ${display(eqWhole, eqRem / gEq, L / gEq)}(L)이다. 이때 나 물통에 남은 물도 ${display(eqWhole, eqRem / gEq, L / gEq)} L이므로, 처음 나 물통에 들어 있던 물은 덜어 냈던 ${frac(a2, b2)} L를 다시 더한 ${display(eqWhole, eqRem / gEq, L / gEq)} + ${frac(a2, b2)} = ${display(whole, rem, bot)}(L)이다.`,
               facts: { value: `${wA}+${a1}/${b1}+${a2}/${b2}+${a2}/${b2}` }
-            });
+            };
+            return rem === 0 ? N(text, whole, options) : F(text, rem, bot, { ...options, whole, anyForm: true });
           }, { standard: FADD })
         ]
       }

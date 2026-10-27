@@ -99,7 +99,7 @@ completed={(b['publisher'],b['subject'],b['title']) for b in books if b['collect
 books=[b for b in books if b['collectionStatus']=='complete' or (b['publisher'],b['subject'],b['title']) not in completed]
 cachepath.write_text(json.dumps(pdfs,ensure_ascii=False,indent=2),encoding='utf8')
 (OUT/'교과서목록.json').write_text(json.dumps(books,ensure_ascii=False,indent=2),encoding='utf8')
-coverage={'scope':'2022 개정 초등 국어·수학·사회·과학. 국정 교과서 및 미래엔·동아·천재·디딤돌 제공 목록 기준. 부교재 전체 완비를 뜻하지 않음.',
+coverage={'scope':'2022 개정 초등 국어·수학·사회·과학. 국정 교과서 및 미래엔·동아·천재·디딤돌·아이스크림 제공 목록 기준. 부교재 전체 완비를 뜻하지 않음.',
     'bodySets':sum(b['subject']!='사회과부도' and b['collectionStatus']=='complete' for b in books),
     'atlasTitles':sum(b['subject']=='사회과부도' and b['collectionStatus']=='complete' for b in books),
     'pdfFiles':len(pdfs),'bytes':sum(f['bytes'] for f in pdfs),
