@@ -551,9 +551,9 @@ const EN = {
                         "\"We are all one family now.\" At first everyone smiled."
                     ],
                     right: [
-                        "But that winter her father fell ill. No medicine did him any good.",
-                        "Night after night the girl changed the cloth on his forehead. \"Father, when spring comes we will walk up the hill together.\"",
-                        "He only nodded. But he died before the spring came.",
+                        "But that winter her father fell ill. Night after night the girl stayed by his side.",
+                        "\"Father, when spring comes we will walk up the hill together.\" He only nodded.",
+                        "But he died before the spring came.",
                         "The day after the funeral her stepmother called her in. \"From tonight you sleep in the kitchen.\""
                     ]
                 },
@@ -864,7 +864,7 @@ const EN = {
         'story-01-chores.webp': [
             { word: 'marry again', meaning: '재혼하다', sentence: 'Before long her father married again.' },
             { word: 'fall ill', meaning: '병이 들다', sentence: 'But then her father fell ill.' },
-            { word: 'do good', meaning: '효험이 있다', sentence: 'No medicine did him any good.' },
+            { word: 'by one\'s side', meaning: '곁에', sentence: 'The girl stayed by his side.' },
             { word: 'funeral', meaning: '장례', sentence: 'The day after the funeral her stepmother called her in.' }
         ],
         'story-01-chores-2.webp': [

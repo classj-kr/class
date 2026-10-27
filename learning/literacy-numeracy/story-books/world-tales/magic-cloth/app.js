@@ -701,8 +701,7 @@ const EN = {
                     right: [
                         "He made it pour out gold in the yard. The landlord's eyes nearly popped out.",
                         "That night the landlord swapped it for an ordinary donkey.",
-                        "He got home knowing nothing. He shouted and shouted, but no gold came. He too was empty-handed.",
-                        "Their father only sighed. Neither son could lift his head."
+                        "He got home knowing nothing. He shouted and shouted, but no gold came. Their father only sighed, and neither son could lift his head."
                     ]
                 }
             ]
@@ -974,7 +973,7 @@ const EN = {
             { word: 'worn out', meaning: '고생한', sentence: 'You must be worn out from the road.' },
             { word: 'tongue itch', meaning: '입이 근질거리다', sentence: "His tongue began to itch." },
             { word: 'pour out', meaning: '쏟아 놓다', sentence: "He made it pour out gold in the yard." },
-            { word: 'empty-handed', meaning: '빈손으로', sentence: "He too was empty-handed." },
+            { word: 'swap', meaning: '바꿔치기하다', sentence: 'The landlord swapped it for an ordinary donkey.' },
             { word: 'sigh', meaning: '한숨 쉬다', sentence: 'Their father only sighed.' }
         ],
         '05-sack.webp': [

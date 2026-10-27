@@ -727,17 +727,13 @@ const EN = {
                     art: '05-robber.webp',
                     emoji: '🗝️',
                     left: [
-                        "Gerda set out again. On the way a crow came down out of a tree.",
-                        "\"I saw a boy who went north. It's a long way — let's ask the princess at our castle for help.\"",
+                        "Gerda set out again. On the way a crow came down out of a tree. \"I saw a boy who went north. It's a long way — let's ask the princess at our castle for help.\"",
                         "The crow led her to a castle, and a kind princess gave her warm boots and a golden carriage.",
-                        "So Gerda drove north.",
-                        "But she had not gone far before she ran into robbers, who came swarming out and closed round her."
+                        "So Gerda drove north."
                     ],
                     right: [
-                        "\"Let's see what she's got!\"",
-                        "The robbers crowded in.",
-                        "Then a girl pushed to the front — the robber chief's daughter.",
-                        "\"She's mine!\"",
+                        "But in the forest, robbers came swarming out and closed round her. \"Let's see what she's got!\"",
+                        "Then a girl pushed to the front — the robber chief's daughter. \"She's mine!\"",
                         "And the robber girl took Gerda off to her own room."
                     ]
                 },
@@ -1006,7 +1002,7 @@ const EN = {
         ],
         '05-robber.webp': [
             { word: 'crow', meaning: '까마귀', sentence: 'A crow came down out of a tree.' },
-            { word: 'run into', meaning: '맞닥뜨리다', sentence: 'She ran into robbers.' },
+            { word: 'swarm out', meaning: '우르르 몰려나오다', sentence: 'Robbers came swarming out.' },
             { word: 'close round', meaning: '에워싸다', sentence: 'They came swarming out and closed round her.' },
             { word: 'push to the front', meaning: '앞으로 나서다', sentence: 'Then a girl pushed to the front.' }
         ],

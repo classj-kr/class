@@ -708,8 +708,7 @@ const EN = {
                     right: [
                         "Morgiana's breath stopped. But she made her voice deep and answered as if she were the captain. \"Not yet. Wait.\"",
                         "\"Yes, captain,\" came the answer.",
-                        "She went from jar to jar, and from each one came the same question.",
-                        "Only one of them held any oil at all. 'They mean to leap out in the night and harm us all,' thought Morgiana, biting her lip."
+                        "She went from jar to jar, and from each came the same question. Only one held any oil. 'They mean to leap out in the night and harm us all,' thought Morgiana, biting her lip."
                     ]
                 }
             ]

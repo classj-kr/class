@@ -680,8 +680,7 @@ const EN = {
                     left: [
                         "\"No!\" cried her father. \"I made the promise, so I must go.\"",
                         "\"Father, it was I who asked for that flower.\" Belle's voice did not shake. Her father begged her all night, but she would not give way.",
-                        "Before dawn the next day she put on her coat and rode off with her father. The horse's hooves sank deep into the snow.",
-                        "At last they reached the castle."
+                        "Before dawn the next day she rode off with her father. The horse's hooves sank deep into the snow, and at last they reached the castle."
                     ],
                     right: [
                         "The great door opened without a sound, and warm air came out.",
@@ -948,7 +947,7 @@ const EN = {
         '04-belle-2.webp': [
             { word: 'shake', meaning: '떨리다', sentence: "Belle's voice did not shake." },
             { word: 'before dawn', meaning: '새벽에', sentence: 'Before dawn the next day she rode off with her father.' },
-            { word: 'put on', meaning: '걸치다', sentence: 'She put on her coat.' },
+            { word: 'give way', meaning: '뜻을 굽히다', sentence: 'She would not give way.' },
             { word: 'sink into', meaning: '푹푹 빠지다', sentence: "The horse's hooves sank deep into the snow." },
             { word: 'let go of', meaning: '손을 놓다', sentence: 'Her father could not let go of her hand.' },
             { word: 'manage a smile', meaning: '웃어 보이다', sentence: 'Belle managed a smile.' }
