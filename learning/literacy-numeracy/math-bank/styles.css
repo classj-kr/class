@@ -133,6 +133,11 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 .mb-table th, .mb-table td { border: 1px solid #8a96a3; padding: 6px 12px; text-align: center; font-size: 1.02rem; white-space: nowrap; }
 .mb-table th { background: var(--brand-soft); font-weight: 600; }
 .mb-table td:first-child { background: var(--canvas); font-weight: 600; }
+/* 단원말 응용 자료의 표도 휴대폰에서 조건을 한눈에 읽는다. */
+.mb-iscream .mb-table { width: 100%; table-layout: fixed; }
+.mb-iscream .mb-table th, .mb-iscream .mb-table td { white-space: normal; word-break: keep-all; overflow-wrap: anywhere; padding: 6px 4px; font-size: 0.95rem; }
+.mb-iscream .mb-table svg { max-width: 100%; height: auto; }
+.mb-iscream .mb-ic-board .mb-table th, .mb-iscream .mb-ic-board .mb-table td { padding: 4px 1px; font-size: 0.8rem; }
 
 /* 길 그림, 겹쳐 붙인 띠 */
 .mb-route, .mb-tapes, .mb-bar, .mb-shapes, .mb-splitgrid { max-width: 100%; height: auto; }

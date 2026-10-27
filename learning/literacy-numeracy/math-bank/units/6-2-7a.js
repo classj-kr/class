@@ -164,7 +164,7 @@
             return N(`길이가 ${wireLen} cm인 철사를 남김없이 모두 사용하여 가로와 세로의 비가 ${rW} : ${rH}인 직사각형 한 개를 만들었다. 만든 직사각형의 넓이는 몇 cm²인가?`, area, {
               unit: 'cm²',
               hint: `직사각형의 둘레(${wireLen} cm)에는 가로가 2번, 세로가 2번 들어 있습니다. 먼저 둘레를 2로 나누어 (가로 + 세로)를 구한 뒤 ${rW} : ${rH}로 비례배분해 보세요.`,
-              explain: `직사각형의 (가로) + (세로)는 둘레의 절반인 ${wireLen} ÷ 2 = ${halfPerim}(cm)이다. ${halfPerim} cm를 ${rW} : ${rH}로 비례배분하면 가로는 ${halfPerim} × ${frac(rW, rW + rH)} = ${w}(cm), 세로는 ${halfPerim} × ${frac(rH, rW + rH)} = ${h}(cm)이다. 따라서 직사각형의 넓이는 ${w} × ${h} = ${area}(cm²)이다.`,
+              explain: `직사각형의 (가로) + (세로)는 둘레의 절반인 ${wireLen} ÷ 2 = ${halfPerim}(cm)이다. ${halfPerim} cm를 ${rW} : ${josa(rH, '으로/로')} 비례배분하면 가로는 ${halfPerim} × ${frac(rW, rW + rH)} = ${w}(cm), 세로는 ${halfPerim} × ${frac(rH, rW + rH)} = ${h}(cm)이다. 따라서 직사각형의 넓이는 ${w} × ${h} = ${area}(cm²)이다.`,
               facts: { calc: [[`(${wireLen}/2*${rW}/(${rW}+${rH}))*(${wireLen}/2*${rH}/(${rW}+${rH}))`, 0]], unseen: [2] }
             });
           }, { standard: RATIO }),

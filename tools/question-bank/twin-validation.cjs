@@ -3,6 +3,7 @@
 // ‘60개 씨앗 이상’ 같은 표본 수 검사는 수집 단계에서만 생략한다. 문항의 수학 검사는 모두 그대로 실행한다.
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm'), assert = require('node:assert/strict');
 const filename = path.resolve(__dirname, '../../tests/math-bank-units.test.cjs');
+const iscream = require('./iscream-validation.cjs');
 function createValidator() {
   let collecting = false;
   const tests = [], checks = [];
@@ -24,6 +25,6 @@ function createValidator() {
   for (const test of tests) if (!/맨 위|은행:|토씨 붙이기|도형 움직이기/.test(test.name)) test.fn();
   collecting = false; context.__checks = checks;
   assert.equal(checks.length, 6, '기존의 여섯 문항 검사 갈래를 모두 사용한다');
-  return { B: context.__bank, validate: (item, at) => context.__validate(item, at) };
+  return { B: context.__bank, validate: (item, at) => { context.__validate(item, at); iscream.validate(item); } };
 }
 module.exports = { createValidator };
