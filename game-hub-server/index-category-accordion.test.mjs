@@ -11,8 +11,8 @@ assert.match(
 
 const expectedCategories = [
   ["01", "문해·수리", "category-literacy-panel"],
-  ["02", "교과 수업", "category-exploration-panel"],
-  ["03", "게임·퍼즐", "category-boardgame-panel"],
+  ["02", "교과", "category-exploration-panel"],
+  ["03", "게임", "category-boardgame-panel"],
   ["04", "예술", "category-arts-panel"],
 ];
 

@@ -1,7 +1,7 @@
 /* global BoardCoachRules, BoardCoachAI, BoardCoachUI, ClassGameMotion */
 (() => {
   "use strict";
-  if (["chess", "janggi"].includes(new URLSearchParams(location.search).get("game"))) return;
+  if (["chess", "janggi", "baduk"].includes(new URLSearchParams(location.search).get("game"))) return;
   const R = BoardCoachRules, AI = BoardCoachAI, $ = id => document.getElementById(id);
   const game = new URLSearchParams(location.search).get("game") === "omok" ? "omok" : "reversi";
   const name = game === "omok" ? "오목" : "리버시";

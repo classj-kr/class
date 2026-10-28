@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "test:handwriting": "node --test tests/handwriting.test.cjs game-hub-server/handwriting.test.mjs game-hub-server/index-category-accordion.test.mjs game-hub-server/index-menu-copy.test.mjs game-hub-server/room-codes.test.mjs",
+    "test:handwriting:ui": "node --test tests/handwriting-browser.cjs",
     "audit:repository": "node scripts/audit-repository-hygiene.mjs",
     "audit:links": "node scripts/audit-site-links.mjs",
     "test:coach-quality": "node --test tests/board-coach-quality.test.cjs tests/board-coach-hints.test.cjs",
@@ -19,6 +21,8 @@
     "test:chess-coach:ui": "node tests/chess-coach-browser.cjs",
     "test:board-coach": "node --test tests/board-coach.test.cjs && node tests/omok-unit.js",
     "test:board-coach:ui": "node tests/board-coach-browser.cjs",
+    "test:baduk-coach": "node --test tests/baduk-coach.test.cjs && node tests/baduk-unit.js",
+    "test:baduk-coach:ui": "node tests/baduk-coach-browser.cjs",
     "test:learning-boards": "node --test tests/learning-boards.test.cjs tests/learning-boards-identity.test.cjs tests/learning-board-races.test.cjs tests/learning-board-likes.test.cjs",
     "test:learning-boards:entry": "node --test tests/room-entry-student-access.test.cjs && node tests/learning-boards-entry-browser.cjs && node tests/learning-boards-auto-entry-browser.cjs",
     "test:learning-boards:ui": "node tests/learning-boards-browser.cjs && node tests/learning-board-races-browser.cjs",

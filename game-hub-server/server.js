@@ -22,6 +22,7 @@ const Clue = require("./clue");
 const Codenames = require("./codenames");
 const Dobble = require("./dobble");
 const { createRhythmTraining } = require("./rhythm-training");
+const { createHandwriting } = require("./handwriting");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
@@ -81,6 +82,7 @@ function legacyVoyageRoomExists(code) {
 async function isRuntimeRoomCodeActive({ activity, code }) {
   if (activity.startsWith('game:')) return rooms.has(roomKey(activity.slice(5), code));
   if (activity === 'rhythm') return rhythmTraining.hasRoomCode(code);
+  if (activity === 'handwriting') return handwriting.hasRoomCode(code);
   const target = activity === 'arithmetic' ? `http://127.0.0.1:${ARITHMETIC_PORT}/api/arithmetic-race/entry?room=${code}`
     : activity === 'voyage' ? `http://127.0.0.1:${WORLD_VOYAGE_PORT}/api/room-entry/${code}` : null;
   if (!target) return false;
@@ -495,7 +497,8 @@ app.use("/arithmetic", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/room-entry", classroomPlatform.requireSiteAccess, createRoomEntry({
   roomCodes: classroomPlatform.roomCodes, arithmeticPort: ARITHMETIC_PORT, voyagePort: WORLD_VOYAGE_PORT,
-  legacyVoyageRoomExists, rhythmExists: code => rhythmTraining.hasRoomCode(code)
+  legacyVoyageRoomExists, rhythmExists: code => rhythmTraining.hasRoomCode(code),
+  handwritingExists: code => handwriting.hasRoomCode(code)
 }));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
 app.use("/hanguksa", (req, res) => res.redirect(301, "/learning/inquiry/korean-history/"));
@@ -546,6 +549,7 @@ app.use('/api/learning-records', express.json({ limit: '512kb' }));
 app.use('/api/teacher-ai', express.json({ limit: '256kb' }));
 app.use('/api/exams', express.json({ limit: '512kb' }));
 app.use('/api/me/storage', express.json({ limit: '1100kb' }));
+app.use('/api/handwriting', express.json({ limit: '512kb' }));
 app.use('/api/teacher/assessment-plans', express.json({ limit: '512kb' }));   // 교과 하나의 계획(항목 수십 개·단계별 평가기준)
 // 명단 저장은 한 번에 전교생(최대 2000명)을 보낸다. 계정만 적은 224명만 해도 42kb 라 기본 32kb 에
 // 걸려 413 으로 돌아왔고, 화면에는 "서버 오류"로만 보였다. 교직원 명단과 학급 명단도 같은 이유로 넉넉히 둔다.
@@ -569,6 +573,14 @@ app.use("/api", (_req, res, next) => {
 
 const rhythmTraining = createRhythmTraining({ platform: classroomPlatform });
 app.use('/api/rhythm-training', classroomPlatform.requireSiteAccess, rhythmTraining.router);
+const handwriting = createHandwriting({ platform: classroomPlatform });
+app.use('/api/handwriting', classroomPlatform.requireSiteAccess, handwriting.router);
+// The always-open race entrance shares the editor, with practice disabled until joining a room.
+const handwritingRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/handwriting');
+app.get('/learning/literacy-numeracy/handwriting/race/', (req, res, next) => sendSiteHtml(req, res, path.join(handwritingRoot, 'index.html'), next));
+for (const file of ['core.js', 'app.js', 'race.js', 'styles.css']) {
+  app.get(`/learning/literacy-numeracy/handwriting/race/${file}`, (_req, res) => res.sendFile(path.join(handwritingRoot, file)));
+}
 
 // Reuse notation under this activity's access grant, even when ear training is closed.
 for (const [alias, source] of [['notation.js', 'notation.js']]) {
