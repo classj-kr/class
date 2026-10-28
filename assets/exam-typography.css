@@ -73,7 +73,17 @@ body :is(
 
 /* Reading prose across lessons, concept panels and interactive explanations.
    Navigation and controls keep their own UI typography. */
-body :is(p, blockquote, figcaption, dd, li, .sl-remnant small):not(:is(nav *, button *, [role="button"] *, .menu *, .toolbar *, .controls *)) {
+body :is(p, blockquote, figcaption, dd, li, .sl-remnant small):not(:is(nav *, button *, [role="button"] *, .menu *, .toolbar *, .controls *, .lesson-list *, .lesson-grid *, .unit-list *)) {
   font-family: var(--class-exam-font) !important;
   font-synthesis: weight;
+}
+
+/* Lesson selection is navigation, including cards inside ordered lists.
+   Set the controls explicitly so a serif page body cannot leak into them.
+   Dedicated glyph faces (e.g. .lesson-term / KaTeX) keep their own fonts. */
+body :is(.lesson-list, .lesson-grid, .unit-list, .lesson-card, .lesson-item, .stage-toggle),
+body :is(.lesson-list, .lesson-grid, .unit-list) :is(button, a),
+body :is(.lesson-list, .lesson-grid, .unit-list) .lesson-copy,
+body :is(.lesson-list, .lesson-grid, .unit-list) .lesson-copy :is(strong, small, em) {
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif !important;
 }
