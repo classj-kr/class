@@ -352,7 +352,7 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
   await drawLetter(page, '가');
   await page.evaluate(async () => {
     const older = HandwritingApp.snapshot();
-    older.version = 3;
+    older.version = 4;
     HandwritingApp.store.set('draft', older);
     await HandwritingApp.store.flush();
   });
@@ -360,16 +360,62 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
   await ready();
   const state = await page.evaluate(() => ({
     current: HandwritingApp.snapshot(),
-    older: HandwritingApp.store.get('legacy-draft-v3'),
+    older: HandwritingApp.store.get('legacy-draft-v4'),
   }));
-  assert.equal(state.current.version, 4);
+  assert.equal(state.current.version, 5);
   assert.equal(state.current.cells.trace[0].length, 0);
   assert.equal(state.older.cells.trace[0].length, 3);
+});
+test('practice cells stay pencil sized across phone, tablet, Chromebook and desktop, and preserve ink', async () => {
+  await page.goto(h.base + route);
+  await ready();
+  await drawLetter(page, '가');
+  const before = await page.evaluate(() => HandwritingApp.snapshot().cells.trace[0]);
+  const views = [
+    ['phone', 390, 844],
+    ['tablet', 768, 1024],
+    ['chromebook', 1366, 768],
+    ['desktop', 1920, 1080],
+    ['wide', 2560, 1440],
+    ['landscape-phone', 844, 390],
+  ];
+  for (const [name, width, height] of views) {
+    await page.setViewportSize({ width, height });
+    const cell = await page.locator('#writingCanvas').boundingBox(),
+      model = await page.locator('#modelCanvas').boundingBox();
+    assert.ok(cell.width >= 70 && cell.width <= 89, name + ': bounded writing cell ' + cell.width);
+    assert.ok(Math.abs(cell.width - model.width) <= 2, name + ': model and writing use the same scale');
+    assert.ok(Math.abs(cell.height - cell.width) < 1, name + ': square writing cell');
+    assert.equal(
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      true,
+      name + ': no horizontal overflow',
+    );
+    assert.deepEqual(
+      await page.evaluate(() => HandwritingApp.snapshot().cells.trace[0]),
+      before,
+      name + ': ink survives viewport changes',
+    );
+    if (['phone', 'tablet', 'chromebook', 'desktop'].includes(name)) await shot('pencil-size-' + name);
+  }
+  await page.locator('#settingsMenu summary').click();
+  await page.selectOption('#cellSize', 'small');
+  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).width - 62) < 1);
+  await page.evaluate(() => HandwritingApp.store.flush());
+  await page.reload();
+  await ready();
+  assert.equal(await page.locator('#cellSize').inputValue(), 'small');
+  assert.deepEqual(await page.evaluate(() => HandwritingApp.snapshot().cells.trace[0]), before);
+  await page.locator('#settingsMenu summary').click();
+  await page.selectOption('#cellSize', 'large');
+  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).width - 110) < 1);
+  await page.selectOption('#cellSize', 'auto');
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).width <= 89);
 });
 test('the original pen font matches the designed outlines and the editor remains compact', async () => {
   await page.goto(h.base + route);
   await ready();
-  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 80);
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 115);
   assert.equal(
     await page.locator('.page-header, .practice-tip, input[type=file], #saveFile, #openFile').count(),
     0,

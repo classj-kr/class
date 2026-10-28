@@ -42,7 +42,7 @@ test('the designed pen paths remain aligned with shape and order judging', () =>
     assert.ok(r.shape >= 98, c);
   }
 });
-test('final consonants retain height, width and space below the upper components', () => {
+test('optical final proportions retain open counters and separate from upper ink', () => {
   const bounds = (paths) => {
     const p = paths.flat();
     return [
@@ -55,14 +55,28 @@ test('final consonants retain height, width and space below the upper components
   for (const char of Array.from('각간갈감강꽃닭읽읊')) {
     const parts = Font.components(char),
       [l, t, r, b] = bounds(parts.find((p) => p.kind === 'final').paths);
-    assert.ok(b - t >= 20 && b - t <= 32, char + ': final height');
-    assert.ok(r - l >= 48 && r - l <= 86, char + ': final width');
-    assert.ok(t >= 62 && b <= 94, char + ': final vertical placement');
-    assert.ok(
-      t - bounds(parts.filter((p) => p.kind !== 'final').flatMap((p) => p.paths))[3] >= 3,
-      char + ': component gap',
+    assert.ok(b - t >= 20 && b - t <= 37, char + ': final height');
+    assert.ok(r - l >= 36 && r - l <= 82, char + ': final width');
+    assert.ok(t >= 56 && b <= 94, char + ': final vertical placement');
+    const final = parts.find((p) => p.kind === 'final').paths.flatMap((p) => Font.sample(p, 80));
+    const upper = parts
+      .filter((p) => p.kind !== 'final')
+      .flatMap((p) => p.paths)
+      .flatMap((p) => Font.sample(p, 80));
+    const gap = Math.min(
+      ...final.map((p) => Math.min(...upper.map((q) => Math.hypot(p[0] - q[0], p[1] - q[1])))),
     );
+    assert.ok(gap > 4.8, char + ': final ink must stay separate');
   }
+  const finalBounds = (c) => bounds(Font.components(c).find((p) => p.kind === 'final').paths);
+  const [ol, ot, or, ob] = finalBounds('정');
+  assert.ok((or - ol) / (ob - ot) < 1.5, 'final ㅇ must not be flattened into a wide oval');
+  const [nl, , nr] = finalBounds('인');
+  assert.ok(nr - nl < 48, 'final ㄴ stays compact instead of spanning the whole square');
+  const [, rt, , rb] = finalBounds('열');
+  assert.ok(rb - rt > 27, 'final ㄹ has enough height for three tiers');
+  const [, ct, , cb] = finalBounds('꽃');
+  assert.ok(cb - ct > 34, 'final ㅊ has room for its head, horizontal and diagonal strokes');
   for (const char of Array.from('오요와왜')) {
     const parts = Font.components(char),
       upper = bounds(parts[0].paths),
@@ -96,13 +110,12 @@ test('a manually traced font sample passes without following generated guide art
   // Coordinates read from the rendered reference, independent of C.model().
   const strokes = [
     [
-      [14, 30],
-      [29, 29],
-      [50, 28],
-      [48, 39],
-      [39, 55],
-      [28, 67],
-      [16, 75],
+      [14, 29],
+      [29, 28],
+      [51, 28],
+      [46, 42],
+      [31, 56],
+      [16, 64],
     ],
     [
       [69, 13],
@@ -130,4 +143,24 @@ test('bounded coordinate validation rejects forged geometry and combines indepen
   assert.equal(r.passed, 1);
   assert.equal(r.order, false);
   assert.ok(r.shape >= 49 && r.shape <= 50);
+});
+test('validating saved handwriting is idempotent and preserves small pen movements', () => {
+  const cells = [
+    [
+      {
+        points: [
+          [12.34, 24.56],
+          [13.5, 24.9],
+          [14, 28],
+          [17, 30],
+        ],
+        width: 1.5,
+      },
+    ],
+  ];
+  const clean = C.validateCells('가', cells);
+  assert.deepEqual(clean, cells);
+  assert.deepEqual(C.validateCells('가', clean), clean);
+  clean[0][0].points[0][0] = 80;
+  assert.equal(cells[0][0].points[0][0], 12.34, 'validated data must be a copy');
 });

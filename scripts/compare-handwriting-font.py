@@ -49,7 +49,7 @@ def main():
     draw = ImageDraw.Draw(im)
     ui = ImageFont.truetype('C:/Windows/Fonts/malgun.ttf', 24)
     small = ImageFont.truetype('C:/Windows/Fonts/malgun.ttf', 17)
-    draw.text((24, 20), '글자 전체 높이만 맞춘 비교 · 자모별 변형 없음', font=small, fill='#586168')
+    draw.text((24, 20), '전체 글자 높이만 맞춤 · 자모 비례 유지 · 견본은 여러 굵기 포함', font=small, fill='#586168')
     for i,label in enumerate(labels): draw.text((margin+i*cell+44,56), label,font=ui,fill='#27362f')
     reference = Image.open(a.reference)
     for j,char in enumerate(a.chars):

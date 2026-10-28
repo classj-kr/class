@@ -30,7 +30,7 @@
     ㄴ: [stroke([24, 20], [24, 37, 23, 60, 25, 75], [25, 79, 29, 80, 34, 79], [50, 79, 65, 77, 80, 76])],
     ㄷ: [
       stroke([23, 24], [42, 23, 61, 22, 80, 22]),
-      stroke([25, 25], [24, 41, 24, 62, 26, 75], [26, 80, 29, 80, 35, 79], [51, 79, 66, 77, 81, 76]),
+      stroke([25, 25], [24, 41, 24, 62, 26, 74], [26, 80, 30, 80, 36, 79], [52, 78, 68, 74, 81, 70]),
     ],
     ㄹ: [
       stroke([22, 23], [40, 22, 60, 21, 78, 21], [78, 29, 77, 40, 76, 49]),
@@ -51,7 +51,7 @@
     ㅅ: [stroke([54, 21], [52, 42, 39, 67, 18, 82]), stroke([48, 45], [58, 61, 71, 75, 83, 81])],
     ㅇ: [oval(50, 51, 29, 30)],
     ㅈ: [
-      stroke([20, 26], [40, 25, 61, 24, 79, 24], [60, 46, 38, 68, 20, 82]),
+      stroke([20, 23], [40, 22, 61, 21, 79, 21], [60, 45, 38, 68, 20, 82]),
       stroke([55, 49], [64, 64, 75, 76, 83, 81]),
     ],
     ㅊ: [
@@ -70,8 +70,8 @@
     ],
     ㅍ: [
       stroke([17, 25], [39, 24, 63, 23, 84, 23]),
-      stroke([34, 26], [34, 44, 35, 63, 36, 82]),
-      stroke([68, 25], [70, 43, 69, 64, 67, 81]),
+      stroke([32, 26], [36, 42, 36, 62, 36, 82]),
+      stroke([69, 25], [72, 42, 69, 65, 66, 81]),
       stroke([17, 82], [40, 82, 63, 81, 85, 80]),
     ],
     ㅎ: [
@@ -85,10 +85,10 @@
       stroke([48, 35], [59, 34, 70, 34, 81, 34]),
       stroke([48, 64], [59, 63, 70, 63, 81, 63]),
     ],
-    ㅓ: [stroke([16, 49], [27, 48, 38, 48, 49, 48]), stroke([49, 13], [49, 36, 49, 63, 48, 88])],
+    ㅓ: [stroke([24, 49], [32, 48, 41, 48, 49, 48]), stroke([49, 13], [49, 36, 49, 63, 48, 88])],
     ㅕ: [
-      stroke([16, 35], [27, 34, 38, 34, 49, 34]),
-      stroke([16, 65], [27, 64, 38, 64, 49, 64]),
+      stroke([24, 35], [32, 34, 41, 34, 49, 34]),
+      stroke([24, 65], [32, 64, 41, 64, 49, 64]),
       stroke([49, 13], [49, 37, 49, 64, 48, 88]),
     ],
     ㅗ: [stroke([51, 21], [51, 35, 51, 50, 50, 65]), stroke([14, 67], [38, 66, 63, 65, 86, 65])],
@@ -114,10 +114,10 @@
     stroke([40, 64], [52, 63, 65, 63, 76, 63]),
     stem(76),
   ];
-  bases.ㅔ = [stroke([16, 49], [25, 48, 34, 48, 43, 48]), stem(43), stem(76)];
+  bases.ㅔ = [stroke([22, 49], [29, 48, 36, 48, 43, 48]), stem(43), stem(76)];
   bases.ㅖ = [
-    stroke([16, 35], [25, 34, 34, 34, 43, 34]),
-    stroke([16, 65], [25, 64, 34, 64, 43, 64]),
+    stroke([22, 35], [29, 34, 36, 34, 43, 34]),
+    stroke([22, 65], [29, 64, 36, 64, 43, 64]),
     stem(43),
     stem(76),
   ];
@@ -156,13 +156,15 @@
   function base(c, context = 'vertical') {
     if (pairs[c])
       return [
-        ...transform(base(pairs[c][0], context), [-4, 0, 60, 100]),
-        ...transform(base(pairs[c][1], context), [48, 0, 60, 100]),
+        ...transform(base(pairs[c][0], context), [0, 0, 57, 100]),
+        ...transform(base(pairs[c][1], context), [44, 0, 57, 100]),
       ];
     if (context !== 'vertical' && (c === 'ㄱ' || c === 'ㅋ')) {
-      const corner = stroke([21, 24], [40, 23, 60, 22, 79, 22], [80, 39, 78, 61, 76, 81]);
+      const corner = stroke([21, 24], [40, 23, 60, 22, 79, 22], [78, 39, 73, 62, 68, 81]);
       return c === 'ㄱ' ? [corner] : [corner, stroke([23, 51], [41, 50, 59, 49, 78, 49])];
     }
+    if (context === 'final' && c === 'ㄴ')
+      return [stroke([24, 20], [25, 36, 24, 59, 28, 74], [29, 79, 34, 80, 40, 79], [54, 79, 68, 79, 80, 78])];
     return bases[c];
   }
   function standalone(c) {
@@ -194,43 +196,72 @@
       c = JONG[n % 28],
       final = Boolean(c),
       out = [];
+    const finalLetters = pairs[c] || c;
+    const raisedFinal = /[ㅊㅎ]/.test(finalLetters);
+    const tieredFinal = /[ㄹㅂㅍㅊㅎ]/.test(finalLetters);
+    const vowelHeight = c === 'ㄴ' ? 82 : c === 'ㅇ' ? 69 : tieredFinal ? 66 : 72;
     const add = (kind, letter, box, context = 'vertical') =>
       out.push({ kind, char: letter, paths: transform(base(letter, context), box) });
     if (compounds[b]) {
       const [h, v] = compounds[b],
         wide = 'ㅐㅔ'.includes(v);
-      add('initial', a, final ? [-2, 0, 65, 50] : [-2, 2, 65, 62], 'horizontal');
+      add('initial', a, final ? [0, 0, 61, raisedFinal ? 44 : 50] : [0, 6, 61, 56], 'horizontal');
       const box =
         h === 'ㅡ'
           ? [-6, final ? 10 : 33, 73, 90]
           : h === 'ㅜ'
             ? [-6, final ? 31 : 38, 73, final ? 39 : 57]
-            : [-6, final ? 41 : 49, 73, final ? 34 : 53];
+            : [-6, final ? (raisedFinal ? 31 : tieredFinal ? 36 : 41) : 49, 73, final ? 31 : 53];
       add('vowel', h, box);
-      add('vowel', v, [wide ? 47 : 52, -1, wide ? 56 : 48, final ? 72 : 104]);
+      add('vowel', v, [wide ? 47 : 52, -1, wide ? 56 : 48, final ? vowelHeight : 104]);
     } else if ('ㅗㅛㅜㅠㅡ'.includes(b)) {
       add(
         'initial',
         a,
-        final ? [8, -3, 84, 52] : b === 'ㅡ' ? [9, -3, 82, 80] : [10, -2, 80, 68],
+        final
+          ? pairs[a]
+            ? [15, -1, 70, 'ㅜㅠ'.includes(b) ? 44 : raisedFinal ? 48 : 52]
+            : a === 'ㅇ'
+              ? [18, 0, 64, 50]
+              : [15, -1, 70, 'ㅜㅠ'.includes(b) ? 44 : raisedFinal ? 46 : 52]
+          : b === 'ㅡ'
+            ? [14, 0, 72, 73]
+            : [14, 1, 72, 62],
         'horizontal',
       );
       const box =
         b === 'ㅡ'
-          ? [0, final ? 9 : 34, 100, 90]
+          ? [0, final ? (tieredFinal ? 3 : 9) : 34, 100, 90]
           : 'ㅜㅠ'.includes(b)
             ? [0, final ? 31 : 39, 100, final ? 39 : 59]
-            : [0, final ? 41 : 47, 100, final ? 34 : 58];
+            : [0, final ? (raisedFinal ? 24.5 : tieredFinal ? 36 : 41) : 47, 100, final ? 31 : 58];
       add('vowel', b, box);
     } else {
       const wide = 'ㅐㅒㅔㅖ'.includes(b);
-      add('initial', a, [0, final ? 2 : 10, wide ? 58 : 66, final ? 63 : 80]);
-      add('vowel', b, [wide ? 31 : 39, -1, wide ? 77 : 62, final ? 72 : 104]);
+      const opticalLeft = 'ㅇㅎ'.includes(a) && 'ㅓㅕㅔㅖ'.includes(b) ? -6 : 0;
+      add('initial', a, [opticalLeft, final ? 7 : 14, wide ? 58 : 66, final ? 57 : 62]);
+      add('vowel', b, [wide ? 31 : 39, -1, wide ? 77 : 62, final ? vowelHeight : 104]);
+      if (!final && 'ㄴㄷㄹㅌ'.includes(a)) {
+        const foot = out[0].paths.at(-1),
+          end = foot.at(-1);
+        const stem = out[1].paths.find((p) => Math.abs(p.at(-1)[1] - p[0][1]) > 40);
+        const target = stem[0][0] - 1;
+        foot.push([end[0] + (target - end[0]) / 2, end[1] - 0.55], [target, end[1] - 1.1]);
+      }
     }
     if (c) {
-      // Raised marks in ㅊ/ㅎ need their own headroom below ㅗ/ㅛ/ㅜ/ㅠ.
-      const raised = /[ㅊㅎ]/.test(pairs[c] || c);
-      add('final', c, raised ? [3, 64, 94, 34] : [3, 59, 94, 40], 'final');
+      // Optical width and height depend on the final's construction, not one flat box.
+      const box =
+        c === 'ㅇ'
+          ? [15, 52, 70, 51]
+          : c === 'ㄴ'
+            ? [12, 60, 80, 39]
+            : raisedFinal
+              ? [pairs[c] ? 5 : 8, 50.5, pairs[c] ? 90 : 84, 50]
+              : tieredFinal
+                ? [pairs[c] ? 5 : 10, 53, pairs[c] ? 90 : 80, 48]
+                : [pairs[c] ? 5 : 8, 59, pairs[c] ? 90 : 84, 40];
+      add('final', c, box, 'final');
     }
     return out;
   }
@@ -271,7 +302,17 @@
     if (points.length < 2) return [];
     const closed = distance(points[0], points.at(-1)) < 0.01;
     const length = points.slice(1).reduce((n, p, i) => n + distance(points[i], p), 0);
-    const dense = sample(points, Math.min(82, Math.max(12, Math.ceil(length / 1.2))));
+    let design = points;
+    const headVector = sample(points, 24),
+      dx0 = headVector[1][0] - points[0][0],
+      dy0 = headVector[1][1] - points[0][1];
+    if (!closed && dy0 > Math.abs(dx0) * 2 && length > 16) {
+      const [x, y] = points[0],
+        body = sample(points, Math.max(16, Math.ceil(length)));
+      const entry = stroke([x - 4.4, y - 4.3], [x - 2.7, y - 3.3, x + 0.1, y - 1, x, y + 2]);
+      design = [...entry, ...body.filter((p, i) => i > 0 && distance(p, points[0]) > 2.2)];
+    }
+    const dense = sample(design, Math.min(90, Math.max(14, Math.ceil(length / 1.1))));
     const p = closed ? dense.slice(0, -1) : dense,
       left = [],
       right = [],
@@ -284,10 +325,8 @@
         dy = after[1] - before[1],
         len = Math.hypot(dx, dy) || 1,
         t = i / (p.length - 1);
-      const pressure = closed
-        ? 1
-        : 0.86 + 0.2 * Math.sin(Math.PI * Math.min(1, t * 1.6)) - 0.3 * Math.pow(t, 8);
-      const half = (1.25 + (0.75 * Math.abs(dy)) / len) * pressure,
+      const pressure = closed ? 1 : 0.98 + 0.04 * Math.sin(Math.PI * t) - 0.07 * Math.pow(t, 6);
+      const half = (1.9 + (0.55 * Math.abs(dy)) / len) * pressure,
         nx = -dy / len,
         ny = dx / len;
       left.push([p[i][0] + nx * half, p[i][1] + ny * half]);
@@ -314,27 +353,6 @@
         ...cap(start, halfWidths[0], angles[0] + Math.PI),
       ]),
       out = [body];
-    const dx = p[1][0] - start[0],
-      dy = p[1][1] - start[1];
-    if (dy > Math.abs(dx) * 2 && length > 16)
-      out.push(
-        orient([
-          [start[0] - 2.8, start[1] - 3.1],
-          [start[0] - 1.3, start[1] - 2.8],
-          [start[0] + 1.7, start[1] - 0.2],
-          [start[0] + 1.8, start[1] + 3.3],
-          [start[0] - 0.3, start[1] + 2],
-        ]),
-      );
-    else if (dx > Math.abs(dy) * 2 && length > 12)
-      out.push(
-        orient([
-          [start[0] - 1.7, start[1] - 0.8],
-          [start[0] - 0.5, start[1] - 1.5],
-          [start[0] + 2.8, start[1] - 0.5],
-          [start[0] + 0.7, start[1] + 1.1],
-        ]),
-      );
     return out;
   }
   const api = {
@@ -345,7 +363,7 @@
     CHO,
     JUNG,
     JONG,
-    VERSION: 4,
+    VERSION: 5,
     FAMILY: 'ClassJ Gyeongpil Myeongjo',
   };
   if (typeof module === 'object' && module.exports) module.exports = api;

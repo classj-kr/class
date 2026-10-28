@@ -23,6 +23,7 @@ SAMPLES = ['가나다라마바사아자차카타파하', '아야어여오요우�
            '학교 친구 연필 책가방', '나무 바다 하늘 꽃 구름',
            '나는 나를 믿어요', '값 넋 앉 닭 삶 읽 밟 읊 괜 쐐',
            'ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ']
+COMPARISON = '디자인 열정을 디지털 폰트로 꽃 피우다 한글 정각 간 갈 감 강 꽃 닭 읽 읊'
 
 
 def records(specimen=False):
@@ -31,7 +32,7 @@ const F=require(process.argv[1]);
 const cps=process.argv[2]==='all'?new Set([...Array.from({length:11172},(_,i)=>0xac00+i),...Array.from({length:51},(_,i)=>0x3131+i)]):new Set(Array.from(JSON.parse(process.argv[2]),c=>c.codePointAt(0)));
 for(const cp of cps){const p=F.model(String.fromCodePoint(cp));if(p)process.stdout.write(JSON.stringify([cp,p.flatMap(F.outlines)])+'\\n');}
 """
-    scope = json.dumps(''.join(SAMPLES), ensure_ascii=True) if specimen else 'all'
+    scope = json.dumps(''.join(SAMPLES)+COMPARISON, ensure_ascii=True) if specimen else 'all'
     proc = subprocess.Popen(['node', '-e', program, str(SOURCE), scope], stdout=subprocess.PIPE, text=True, encoding='utf-8')
     assert proc.stdout is not None
     for line in proc.stdout:
@@ -84,10 +85,10 @@ def main():
     fb.setupNameTable({
         'familyName': {'en': FAMILY, 'ko': '클래스제이 경필명조'},
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'ClassJ-GyeongpilMyeongjo-0.4',
+        'uniqueFontIdentifier': 'ClassJ-GyeongpilMyeongjo-0.5',
         'fullName': FAMILY + ' Regular',
         'psName': 'ClassJGyeongpilMyeongjo-Regular',
-        'version': 'Version 0.400',
+        'version': 'Version 0.500',
         'copyright': 'Original ClassJ lettering, 2026.',
         'designer': 'ClassJ',
         'description': 'Original pen lettering for Hangul practice. Glyphs and stroke-order models share the same source. No third-party font outlines.',
@@ -122,11 +123,11 @@ def main():
         for cp in check_points:
             g = f['glyf'][mapping[cp]]
             assert g.numberOfContours > 0
-            assert 0 <= g.xMin < g.xMax <= 1000 and -50 <= g.yMin < g.yMax <= 900
+            assert 0 <= g.xMin < g.xMax <= 1000 and -80 <= g.yMin < g.yMax <= 900, (hex(cp),g.xMin,g.yMin,g.xMax,g.yMax)
         f.close()
     print('Font tables verified', flush=True)
     assert hashlib.sha256(SOURCE.read_bytes()).hexdigest() == source_hash, 'Font source changed during the build; rebuild before publishing.'
-    manifest = {'family': FAMILY, 'version': '0.400', 'hangulSyllables': sum(0xac00<=cp<=0xd7a3 for cp in cmap),
+    manifest = {'family': FAMILY, 'version': '0.500', 'hangulSyllables': sum(0xac00<=cp<=0xd7a3 for cp in cmap),
                 'compatibilityJamo': sum(0x3131<=cp<=0x3163 for cp in cmap), 'sourceSha256': source_hash,
                 'ttfBytes': ttf.stat().st_size, 'woff2Bytes': woff.stat().st_size}
     (args.output / 'font-manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')

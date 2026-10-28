@@ -109,7 +109,8 @@
     }
     return cells.map((strokes) =>
       strokes.map((s) => ({
-        points: sample(s.points || s, Math.min(128, (s.points || s).length)),
+        points:
+          (s.points || s).length > 128 ? sample(s.points || s, 128) : (s.points || s).map((p) => [...p]),
         width: [1, 1.5, 2.2].includes(s.width) ? s.width : 1.5,
       })),
     );
