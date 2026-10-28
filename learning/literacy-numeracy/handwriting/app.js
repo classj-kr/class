@@ -58,7 +58,7 @@
       C.chars(raw.text).length > 48 ||
       !C.supported(raw.text)
     )
-      throw Error('한글 연습 파일을 확인해 주세요.');
+      throw Error('저장된 연습을 읽지 못했어요.');
     const next = fresh(
       raw.text,
       presets[raw.lesson] !== undefined ? raw.lesson : 'custom',
@@ -86,7 +86,7 @@
     store.set(saveKey, snapshot());
     clearTimeout(saveTimer);
     if (!store.persistent) {
-      $('saveStatus').textContent = '게스트는 이 탭에서만 유지돼요. 연습 파일로 저장할 수 있어요.';
+      $('saveStatus').textContent = '게스트 연습은 이 탭에서만 유지돼요.';
       return;
     }
     $('saveStatus').textContent = '계정에 저장 중…';
@@ -174,7 +174,7 @@
   function stopDemo() {
     cancelAnimationFrame(demoFrame);
     demoFrame = 0;
-    $('demoButton').textContent = '▶ 획순 보기';
+    $('demoButton').textContent = '획순';
     drawModel();
   }
   function render() {
@@ -182,27 +182,22 @@
     const chars = letters(),
       strokes = current(),
       model = C.model(chars[doc.index]);
-    $('lessonText').textContent = doc.text;
-    $('lessonCount').textContent = `${chars.length}글자`;
     $('lessonSelect').value = doc.lesson;
     $('customText').value = doc.text;
     $('customForm').hidden = doc.lesson !== 'custom';
-    $('currentLetter').textContent = chars[doc.index];
-    $('strokeCount').textContent = `${model.length}획으로 써요`;
-    $('paperHint').textContent =
-      doc.phase === 'trace' ? '시작점에서 연한 선을 따라 써요' : '본보기를 보고 혼자 써요';
+    $('strokeCount').textContent = `${model.length}획`;
     $('guideCheck').checked = doc.guide;
     $('penWidth').value = String(doc.width);
     document.querySelectorAll('[data-phase]').forEach((b) => {
       b.setAttribute('aria-pressed', String(b.dataset.phase === doc.phase));
       b.disabled = inRoom;
     });
-    $('progressLabel').textContent =
-      `${doc.cells[doc.phase].filter((s) => s.length).length} / ${chars.length}글자`;
+    $('progressLabel').textContent = `${doc.index + 1} / ${chars.length}`;
     $('strokeStatus').textContent = strokes.length
-      ? `${strokes.length}획 썼어요 · 본보기 ${model.length}획`
-      : '첫 획을 써 보세요.';
-    $('feedback').textContent = '본보기의 모양과 쓰는 순서를 함께 연습해요.';
+      ? `${strokes.length} / ${model.length}획`
+      : '';
+    $('feedback').textContent = '';
+    $('feedback').hidden = true;
     $('undoButton').disabled = !undo.length || locked;
     $('redoButton').disabled = !redo.length || locked;
     for (const id of ['clearButton', 'checkButton']) $(id).disabled = locked;
@@ -351,7 +346,7 @@
         const total = doc.cells[doc.phase].flat().reduce((n, s) => n + s.points.length, 0);
         if (total + a.stroke.points.length > 24000) {
           draw();
-          toast('이 연습장에 획 기록이 많아요. 파일로 저장한 뒤 새 연습을 시작해 주세요.');
+            toast('획이 너무 많아요. 이 칸을 지우고 다시 써 주세요.');
           return;
         }
         const before = [...current()],
@@ -409,7 +404,7 @@
     }
     if (
       Object.values(doc.cells).some((c) => c.some((s) => s.length)) &&
-      !confirm('지금 연습은 새 글자로 바뀌어요. 필요한 기록은 연습 파일로 저장했나요?')
+      !confirm('지금 쓴 글씨를 지우고 새 글자를 연습할까요?')
     )
       return false;
     cancel();
@@ -476,6 +471,7 @@
   };
   $('checkButton').onclick = () => {
     cancel();
+    $('feedback').hidden = false;
     const r = C.judge(letters()[doc.index], current());
     $('feedback').textContent = !r.actual
       ? '먼저 한 글자를 써 보세요.'
@@ -488,7 +484,7 @@
     const paths = C.model(letters()[doc.index]),
       start = performance.now(),
       m = modelCanvas.getContext('2d');
-    $('demoButton').textContent = '쓰는 순서…';
+    $('demoButton').textContent = '재생 중';
     function tick(now) {
       const at = (now - start) / 750,
         index = Math.floor(at);
@@ -507,40 +503,11 @@
       m.restore();
       if (index < paths.length) demoFrame = requestAnimationFrame(tick);
       else {
-        $('demoButton').textContent = '▶ 다시 보기';
+        $('demoButton').textContent = '다시 보기';
         demoFrame = 0;
       }
     }
     demoFrame = requestAnimationFrame(tick);
-  };
-  $('saveFile').onclick = () => {
-    const url = URL.createObjectURL(new Blob([JSON.stringify(snapshot())], { type: 'application/json' })),
-      a = document.createElement('a');
-    a.href = url;
-    a.download = '바른-글씨-연습.json';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
-  };
-  $('openFile').onclick = () => $('importFile').click();
-  $('importFile').onchange = async () => {
-    const f = $('importFile').files[0];
-    if (!f) return;
-    try {
-      if (f.size > 1024 * 1024) throw Error('1MB 이하의 연습 파일을 열어 주세요.');
-      const next = normalize(JSON.parse(await f.text()));
-      if (!confirm('파일에 담긴 연습으로 바꿀까요?')) return;
-      cancel();
-      doc = next;
-      undo = [];
-      redo = [];
-      render();
-      save();
-      toast('연습 파일을 열었어요.');
-    } catch (e) {
-      toast(e.message || '연습 파일을 열지 못했어요.');
-    } finally {
-      $('importFile').value = '';
-    }
   };
   function preparePrint() {
     const sheet = $('printSheet');
@@ -579,7 +546,8 @@
     store = await SiteStorage.open('handwriting');
     store.onError(() => {
       saveFailed = true;
-      $('saveStatus').textContent = '계정 저장에 실패했어요. 연습 파일로 저장해 주세요.';
+      $('saveStatus').textContent = '연결 문제로 저장하지 못했어요.';
+      toast('연습을 저장하지 못했어요. 연결을 확인해 주세요.');
     });
     try {
       if (store.has('draft')) doc = normalize(store.get('draft'));
@@ -589,7 +557,7 @@
     render();
     $('saveStatus').textContent = store.persistent
       ? '계정에 자동 저장'
-      : '게스트는 이 탭에서만 유지돼요. 연습 파일로 저장할 수 있어요.';
+      : '게스트 연습은 이 탭에서만 유지돼요.';
   })();
   window.HandwritingApp = {
     ready,
