@@ -40,29 +40,42 @@
     let value=(s.captures[color-1]-s.captures[2-color])*(s.mode==='capture'?160:10);
     for(const g of R.groups(s.board,s.size)){
       const sign=g.color===color?1:-1;
-      value+=sign*(g.stones.length*30+Math.min(g.liberties.length,6)*5-(g.liberties.length===1?g.stones.length*95:0));
+      // An atari stone is vulnerable, but not worth less than an absent stone:
+      // otherwise the AI prefers leaving an enemy in atari over capturing it.
+      value+=sign*(g.stones.length*30+Math.min(g.liberties.length,6)*5-(g.liberties.length===1?g.stones.length*25:0));
     }
     if(s.mode!=='capture')value+=influence(s,color)*3+(color===2?1:-1)*(R.MODES[s.mode].komi||0)*15;
     return value;
   }
   function ranked(s){
     const endangered=capturable(s,s.color),rows=[];
+    // Small empty regions bounded by our stones already count as our area.
+    // Preserve captures and atari rescues instead of blindly filling that space.
+    const ownSpace=new Set(),seen=new Set();
+    if(s.mode==='standard')for(let i=0;i<s.board.length;i++)if(!s.board[i]&&!seen.has(i)){
+      const region=[],border=new Set(),queue=[i];seen.add(i);
+      for(let p=0;p<queue.length;p++){const at=queue[p];region.push(at);for(const n of R.neighbors(at,s.size)){
+        if(s.board[n])border.add(s.board[n]);else if(!seen.has(n)){seen.add(n);queue.push(n);}
+      }}
+      if(region.length<=s.size&&border.size===1&&border.has(s.color))region.forEach(n=>ownSpace.add(n));
+    }
     for(const index of R.legal(s)){
       const next=R.play(s,index),g=R.group(next.board,s.size,index);
       const saved=endangered.filter(old=>old.stones.every(i=>next.board[i]===s.color)&&R.group(next.board,s.size,old.stones[0]).liberties.length>1).reduce((n,g)=>n+g.stones.length,0);
       const immediateLoss=capturable(next,s.color).reduce((n,g)=>Math.max(n,g.stones.length),0);
       const losesGame=s.mode==='capture'&&next.captures[2-s.color]+immediateLoss>=3;
       const center=(s.size-1)/2,central=4-Math.abs(index%s.size-center)-Math.abs(Math.floor(index/s.size)-center);
-      const eye=ownEye(s,index)&&!next.captured.length;
+      const eye=(ownEye(s,index)||ownSpace.has(index))&&!next.captured.length&&!saved;
       const score=evaluate(next,s.color)+saved*75+next.captured.length*35+central*2-(g.liberties.length===1?80:0)-(eye?180:0);
-      rows.push({index,next,score,eye,losesGame});
+      const pointless=eye||(!next.captured.length&&!saved&&g.liberties.length===1);
+      rows.push({index,next,score,eye,pointless,losesGame});
     }
     rows.sort((a,b)=>b.score-a.score||a.index-b.index);
     const wins=rows.filter(r=>r.next.ended&&r.next.winner===s.color);if(wins.length)return wins;
     let safe=rows.filter(r=>!r.losesGame);if(!safe.length)safe=rows;
-    // Keep some placement options in standard play; a player can always pass.
-    if(s.mode==='standard'&&(!safe.length||safe.every(r=>r.eye))){
-      const next=R.play(s,-1);return [{index:-1,next,score:evaluate(next,s.color)},...safe];
+    // Passing is also valid while behind: do not force a meaningless extra move.
+    if(s.mode==='standard'&&(!safe.length||safe.every(r=>r.pointless))){
+      const next=R.play(s,-1);return [{index:-1,next,score:evaluate(next,s.color)}];
     }
     return safe.length?safe:[{index:-1,next:R.play(s,-1),score:0}];
   }

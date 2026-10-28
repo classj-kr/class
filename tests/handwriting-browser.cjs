@@ -111,7 +111,7 @@ test.before(async () => {
         }),
       );
       app.get(route + 'race/', (_, res) => res.sendFile(path.join(root, route, 'index.html')));
-      for (const f of ['styles.css', 'core.js', 'app.js', 'race.js'])
+      for (const f of ['styles.css', 'stroke-topology.js', 'core.js', 'app.js', 'race.js'])
         app.get(route + 'race/' + f, (_, res) => res.sendFile(path.join(root, route, f)));
     },
   });
@@ -212,12 +212,8 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   await ready();
   assert.equal(await count(), 3);
   assert.deepEqual(await page.evaluate(() => Object.keys(localStorage)), []);
-  const download = page.waitForEvent('download');
-  await page.locator('#saveFile').click();
-  const file = await download;
-  assert.match(file.suggestedFilename(), /\.json$/);
-  const parsed = JSON.parse(fs.readFileSync(await file.path(), 'utf8'));
-  assert.equal(parsed.cells.trace[0].length, 3);
+  assert.equal(await page.locator('#saveFile, #openFile, #importFile').count(), 0);
+  assert.ok((await canvas.boundingBox()).y < 140, 'the writing surface starts near the top on a phone');
   await page.evaluate(() => dispatchEvent(new Event('beforeprint')));
   assert.equal(await page.locator('#printSheet canvas').count(), 28);
   await page.emulateMedia({ media: 'print' });
@@ -228,6 +224,7 @@ test('touch fallback admits one contact, rejects broad palms, and yields immedia
   await page.goto(h.base + route);
   await ready();
   const canvas = page.locator('#writingCanvas');
+  await page.locator('#settingsMenu > summary').click();
   await page.selectOption('#inputMode', 'touch');
   await pointer(
     canvas,
@@ -264,6 +261,7 @@ test('touch fallback admits one contact, rejects broad palms, and yields immedia
   assert.equal(await page.locator('#inputMode').inputValue(), 'pen');
   await pointer(canvas, 'pointerup', [[80, 80]], { type: 'touch', id: 5 });
   assert.equal(await count(), 1);
+  await page.locator('#settingsMenu > summary').click();
   await page.locator('#testInput').click();
   await pointer(
     page.locator('#testCanvas'),
@@ -310,11 +308,18 @@ test('teacher creates a room, student enters from the main entrance, submits, an
     assert.equal(await p.evaluate(() => HandwritingApp.snapshot().cells.trace[0].length), 3);
     await page.waitForFunction(() => document.querySelector('#rankList').textContent.includes('획순 통과'));
     await shot('room-results');
+    assert.equal(await page.locator('#raceText').isVisible(), true, 'teacher can choose the next text');
+    await page.fill('#raceText', '나');
+    await p.locator('#readyButton').click();
+    await page.waitForFunction(() => document.querySelector('#rankList').textContent.includes('준비 완료'));
+    await page.locator('#startRound').click();
+    await p.waitForFunction(() => HandwritingApp.snapshot().text === '나');
+    assert.equal(await p.locator('#writingCanvas').getAttribute('aria-disabled'), 'false');
   } finally {
     await students.close();
   }
 });
-test('custom text restores, invalid files leave the current sheet intact, and guests do not persist a draft', async () => {
+test('custom text restores and guests do not persist a draft', async () => {
   await page.goto(h.base + route);
   await ready();
   await page.selectOption('#lessonSelect', 'custom');
@@ -325,15 +330,6 @@ test('custom text restores, invalid files leave the current sheet intact, and gu
   await ready();
   assert.equal(await page.locator('#customForm').isVisible(), true);
   assert.equal(await page.locator('#customText').inputValue(), '한글');
-  await page
-    .locator('#importFile')
-    .setInputFiles({
-      name: 'invalid.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from('{"version":1,"text":"한글","cells":{}}'),
-    });
-  await page.waitForFunction(() => !document.querySelector('#toast').hidden);
-  assert.equal(await page.evaluate(() => HandwritingApp.snapshot().text), '한글');
   const guests = await browser.newContext();
   try {
     const p = await guests.newPage();
@@ -348,4 +344,61 @@ test('custom text restores, invalid files leave the current sheet intact, and gu
   } finally {
     await guests.close();
   }
+});
+
+test('the actual webfont matches the stroke source and the editor has no landing-page or file controls', async () => {
+  await page.goto(h.base + route);
+  await ready();
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 80);
+  assert.equal(
+    await page.locator('.page-header, .practice-tip, input[type=file], #saveFile, #openFile').count(),
+    0,
+  );
+  assert.equal(await page.locator('#settingsMenu').getAttribute('open'), null);
+  const agreement = await page.evaluate(() => {
+    const actual = document.createElement('canvas'),
+      source = document.createElement('canvas');
+    actual.width = actual.height = source.width = source.height = 600;
+    const a = actual.getContext('2d'),
+      b = source.getContext('2d'),
+      result = {};
+    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊ㅏㅓㅇㅎ')) {
+      a.resetTransform();
+      a.clearRect(0, 0, 600, 600);
+      a.scale(6, 6);
+      a.font = '100px ClassJPen';
+      a.fillText(char, 0, 90);
+      b.resetTransform();
+      b.clearRect(0, 0, 600, 600);
+      b.scale(6, 6);
+      for (const stroke of HandwritingFont.model(char)) {
+        b.beginPath();
+        for (const contour of HandwritingFont.outlines(stroke)) {
+          b.moveTo(...contour[0]);
+          for (const p of contour.slice(1)) b.lineTo(...p);
+          b.closePath();
+        }
+        b.fill();
+      }
+      const x = a.getImageData(0, 0, 600, 600).data,
+        y = b.getImageData(0, 0, 600, 600).data;
+      let union = 0,
+        same = 0;
+      for (let i = 3; i < x.length; i += 4) {
+        const p = x[i] >= 128,
+          q = y[i] >= 128;
+        if (p || q) union++;
+        if (p && q) same++;
+      }
+      result[char] = same / union;
+    }
+    return result;
+  });
+  for (const [char, value] of Object.entries(agreement))
+    assert.ok(value > 0.94, `${char}: font/source overlap ${value}`);
+  await shot('compact-desktop');
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 140);
+  await shot('compact-mobile');
 });

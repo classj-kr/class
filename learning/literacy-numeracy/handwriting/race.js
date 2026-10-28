@@ -41,6 +41,7 @@
     const host = s.me.host,
       writing = s.phase === 'writing',
       results = s.phase === 'results';
+    document.body.classList.toggle('round-writing', writing);
     $('roomEntry').hidden = true;
     $('roomLobby').hidden = false;
     $('roomSettings').hidden = !host;
@@ -69,8 +70,8 @@
         const name = document.createElement('strong');
         name.textContent = (p.rank ? `${p.rank}위 · ` : '') + p.name;
         const detail = document.createElement('span');
-        detail.textContent = p.result ? `${p.result.shape}%` : p.ready ? '준비 완료' : p.status;
-        if (p.result) {
+        detail.textContent = p.ready ? '준비 완료' : p.result ? `${p.result.shape}%` : p.status;
+        if (p.result && !p.ready) {
           const small = document.createElement('small');
           small.textContent = p.result.order
             ? '획순 통과'

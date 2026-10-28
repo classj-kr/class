@@ -54,6 +54,9 @@
     return result;
   }
   function canPass(state){return !state.ended&&!state.scoring&&(state.mode==='standard'||!legal(state).length);}
+  function beginScoring(state){
+    return state.mode==='standard'&&!state.ended&&!state.scoring?{...state,scoring:true,dead:[]}:state;
+  }
   function areaScore(board,size,komi=0){
     const score=[0,0],seen=new Set();
     for(let i=0;i<board.length;i++){
@@ -100,5 +103,5 @@
   }
   function resume(state){return state.scoring?{...state,scoring:false,dead:[],passes:0}:state;}
   function confirmScore(state){return state.scoring?finish(state,preview(state)):state;}
-  return {MODES,key,coord,neighbors,group,groups,initial,placement,legal,canPass,areaScore,preview,play,toggleDead,resume,confirmScore};
+  return {MODES,key,coord,neighbors,group,groups,initial,placement,legal,canPass,beginScoring,areaScore,preview,play,toggleDead,resume,confirmScore};
 });

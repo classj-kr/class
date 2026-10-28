@@ -1,19 +1,22 @@
 /* global BadukCoachRules, BadukCoachAI, BoardCoachUI */
 (() => {
   'use strict';
-  if(new URLSearchParams(location.search).get('game')!=='baduk')return;
+  if(document.documentElement.dataset.coachGame!=='baduk')return;
   const R=BadukCoachRules,AI=BadukCoachAI,$=id=>document.getElementById(id);
   let state=R.initial(),level='beginner',human=1,started=false,busy=false,worker=null,token=0,timer=null,timeout=null;
   let hint=null,feedback=null,scene=null,history=[],job='move';
   const escape=text=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const principle='활로 세기 → 단수에서 내 돌 지키기 → 돌 연결하기 → 집 지키기';
   document.title='바둑 · AI와 배우기';$('title').textContent='바둑';$('backLink').href='../baduk/baduk';
-  BoardCoachUI.useOriginalTheme('baduk');BoardCoachUI.mountOpponent();
+  BoardCoachUI.mountOpponent();
+  // Keep the original game header and board. On small screens explanations go
+  // below the match instead of taking height away from the board.
+  const wide=matchMedia('(min-width:900px) and (orientation:landscape)');
+  function positionNotes(){(wide.matches?$('badukHeader'):document.querySelector('.shell')).append($('badukNotes'));}
+  positionNotes();wide.addEventListener('change',positionNotes);
   $('principle').textContent=principle;
-  document.querySelector('.color-options').insertAdjacentHTML('beforebegin',`<fieldset id="badukModes"><legend>대국 방식</legend>${Object.entries(R.MODES).map(([id,m])=>`<label class="option"><input type="radio" name="mode" value="${id}" ${id==='capture'?'checked':''}><span><strong>${m.size}×${m.size} · ${m.name}</strong><small>${m.description}</small></span></label>`).join('')}</fieldset>`);
-  document.querySelector('.controls').insertAdjacentHTML('beforeend','<button id="badukPass" type="button">패스</button><button id="badukResign" type="button">기권</button>');
-  document.querySelector('.explanation').insertAdjacentHTML('afterend','<section id="badukScoring" class="panel hidden"><h2>사석 확인 · 연습 계가</h2><p>죽은 돌 덩어리를 누르면 표시하거나 취소해요. AI는 사석의 생사를 확정하지 않아요. 확실하지 않으면 계속 두어 확인하세요.</p><p id="badukScorePreview" aria-live="polite"></p><button id="badukAgree" type="button">표시한 사석으로 계가</button><button id="badukResume" type="button">대국 계속하기</button></section><section class="panel"><p id="badukStatus" aria-live="polite"></p><p class="muted">파란 점선: 추천 자리 · 빨간 고리: 단수인 내 돌 · 작은 빨간 점: 마지막 수</p></section>');
-  document.body.insertAdjacentHTML('beforeend','<dialog id="badukResignDialog" aria-labelledby="badukResignTitle"><h2 id="badukResignTitle">이번 대국을 기권할까요?</h2><p>기권하면 대국을 마치고 중요한 장면을 복기할 수 있어요.</p><div class="resign-choices"><button id="badukResignCancel" type="button">계속 두기</button><button id="badukResignConfirm" type="button">기권하기</button></div></dialog>');
+  document.querySelector('.color-options').insertAdjacentHTML('beforebegin',`<fieldset id="badukModes"><legend>대국 방식</legend>${Object.entries(R.MODES).map(([id,m])=>`<label class="option secondary"><input type="radio" name="mode" value="${id}" ${id==='capture'?'checked':''}><span><strong>${m.size}×${m.size} · ${m.name}</strong><small>${m.description}</small></span></label>`).join('')}</fieldset>`);
+  document.body.insertAdjacentHTML('beforeend','<dialog id="badukResignDialog" aria-labelledby="badukResignTitle"><h2 id="badukResignTitle">이번 대국을 기권할까요?</h2><p>기권하면 대국을 마치고 중요한 장면을 복기할 수 있어요.</p><div class="resign-choices"><button id="badukResignCancel" class="secondary" type="button">계속 두기</button><button id="badukResignConfirm" class="primary" type="button">기권하기</button></div></dialog>');
   $('rulesCopy').innerHTML='<p>흑부터 교차점에 하나씩 둡니다. 위·아래·왼쪽·오른쪽으로 이어진 돌은 활로(빈 이웃 자리)를 공유해요. 마지막 활로를 막으면 상대 돌을 잡아요. 상대 돌을 잡지 못하면서 내 활로가 없어지는 수와 이전 판을 되풀이하는 수는 둘 수 없어요.</p><p>돌 따먹기: 7×7에서 돌 3개를 먼저 잡으면 승리해요. 땅 따먹기: 7×7에서 40수 뒤 내 돌과 둘러싼 빈 땅을 합산해요. 두 모드는 사석을 따로 제거하지 않아요. 둘 곳이 없을 때만 패스하며, 둘 다 못 두면 잡은 돌 수(돌 따먹기) 또는 면적(땅 따먹기)으로 끝내요.</p><p>정식 바둑 연습: 9×9, 백 덤 7.5점, 연속 패스 후 사석 확인. 사석을 직접 표시한 뒤 남은 돌과 둘러싼 빈 땅을 합산해요. 흑돌과 백돌 양쪽에 닿은 빈 영역은 어느 쪽 점수에도 넣지 않아요. AI는 사활 전문가가 아니므로 불확실하면 대국을 계속하세요.</p><p>레벨 1~5는 이 연습 AI 안에서의 상대적 수준이에요. 힌트는 상대 레벨과 별도로 더 깊게 계산한 후보이며 최선 수나 정석을 보장하지 않아요. 시간 제한과 순위 기록은 없어요.</p>';
   function reason(label,title,text){$('reasonLabel').textContent=label;$('moveLabel').textContent=title;$('reason').textContent=text;}
   function stop(){
@@ -24,18 +27,25 @@
   function render(){
     const position=scene?.before||state,mark=scene?scene.feedback?.alternative??scene.index:hint?.index;
     const legal=new Set(R.legal(position)),active=started&&!busy&&!state.ended&&!scene&&state.color===human&&!state.scoring;
-    const board=$('board');board.className='baduk board';board.style.setProperty('--size',position.size);
+    const board=$('board');board.className='board';board.style.gridTemplateColumns=`repeat(${position.size},1fr)`;
     board.setAttribute('aria-label',`${position.size}줄 바둑판`);
     board.innerHTML=position.board.map((v,i)=>{
       const row=Math.floor(i/position.size),col=i%position.size,dead=position.dead.includes(i),coordinate=R.coord(i,position.size);
       const enabled=!scene&&(state.scoring?!!v:active&&legal.has(i));
-      return `<button type="button" role="gridcell" class="square point${col===0?' edge-left':''}${col===position.size-1?' edge-right':''}${row===0?' edge-top':''}${row===position.size-1?' edge-bottom':''}${mark===i?' suggested':''}${position.last===i?' last':''}${dead?' dead-stone':''}" data-index="${i}" ${enabled?'':'disabled'} aria-label="${coordinate} · ${v===1?'흑돌':v===2?'백돌':legal.has(i)?'둘 수 있는 곳':'둘 수 없는 곳'}${dead?' · 사석 표시':''}${mark===i?' · 추천 자리':''}">${v?`<span class="stone ${v===1?'black':'white'}"></span>`:''}${mark===i?'<span class="hint-ring" aria-hidden="true"></span>':''}<span class="baduk-coordinate" aria-hidden="true">${coordinate}</span></button>`;
+      return `<button type="button" role="gridcell" class="square point${col===0?' edge-left':''}${col===position.size-1?' edge-right':''}${row===0?' edge-top':''}${row===position.size-1?' edge-bottom':''}${mark===i?' suggested':''}${position.last===i?' last':''}${dead?' dead-stone':''}" data-index="${i}" ${enabled?'':'disabled'} title="${coordinate}" aria-label="${coordinate} · ${v===1?'흑돌':v===2?'백돌':legal.has(i)?'둘 수 있는 곳':'둘 수 없는 곳'}${dead?' · 사석 표시':''}${mark===i?' · 추천 자리':''}">${v?`<span class="stone ${v===1?'black':'white'}"></span>`:''}${mark===i?'<span class="hint-ring" aria-hidden="true"></span>':''}</button>`;
     }).join('');
     const opponent=started&&!scene&&!state.ended&&!state.scoring?history.at(-1)?.opponent:null;
     BoardCoachUI.showOpponent(opponent,board,position.size);
     $('turn').textContent=scene?`${history.indexOf(scene)+1}수 두기 전 · 복기`:!started?'레벨과 대국 방식을 골라 시작하세요.':state.ended?(state.winner===0?'무승부예요.':state.winner===human?'내가 이겼어요!':'AI가 이겼어요.'):state.scoring?'사석을 확인하세요':busy&&job==='move'?'AI가 생각하고 있어요…':state.color===human?'내 차례':'AI 차례';
     $('score').textContent=`${position.count}수`;
-    $('badukStatus').textContent=`${R.MODES[position.mode].name} · 잡은 돌: 흑 ${position.captures[0]} / 백 ${position.captures[1]}${position.scores?` · 최종 점수: 흑 ${position.scores.black} / 백 ${position.scores.white}`:''}`;
+    $('title').textContent=R.MODES[position.mode].name;
+    $('blackName').textContent=human===1?'나':'AI';$('whiteName').textContent=human===2?'나':'AI';
+    $('blackCaptured').textContent=position.captures[0];$('whiteCaptured').textContent=position.captures[1];
+    $('blackCard').classList.toggle('active',started&&!state.ended&&!state.scoring&&position.color===1);
+    $('whiteCard').classList.toggle('active',started&&!state.ended&&!state.scoring&&position.color===2);
+    $('badukStatus').textContent=position.scores?`최종 점수: 흑 ${position.scores.black} · 백 ${position.scores.white}`:position.mode==='territory'?`${position.count}/40수`:position.mode==='standard'?(position.passes===1?'한쪽 패스 · 이어서 패스하면 사석 확인':'마칠 때 ‘끝내고 계가’를 누르세요'):R.MODES[position.mode].description;
+    $('badukFinish').classList.toggle('hidden',state.mode!=='standard');
+    $('badukFinish').disabled=!started||state.ended||state.scoring||!!scene;
     $('levelLabel').textContent=AI.LEVELS[level].name;$('colorLabel').textContent=`내 돌: ${human===1?'검은색':'흰색'}`;
     $('hint').disabled=!active;$('undo').disabled=!history.some(m=>m.color===human)||!!scene;
     $('badukPass').disabled=!active||!R.canPass(state);$('badukPass').classList.toggle('suggested',mark===-1);
@@ -47,7 +57,7 @@
     $('reviewPanel').classList.toggle('hidden',!state.ended);$('liveBoard').classList.toggle('hidden',!scene);
     if(state.ended){
       let chosen=history.filter(m=>m.feedback).slice(-3);if(!chosen.length)chosen=history.slice(-3);
-      $('reviewList').innerHTML=chosen.map(m=>`<button type="button" data-review="${history.indexOf(m)}"><strong>${history.indexOf(m)+1}수 · ${R.coord(m.index,m.before.size)}</strong>${escape(m.feedback?.text||m.reason)}</button>`).join('')||'<p>아직 복기할 수가 없어요.</p>';
+      $('reviewList').innerHTML=chosen.map(m=>`<button type="button" class="secondary" data-review="${history.indexOf(m)}"><strong>${history.indexOf(m)+1}수 · ${R.coord(m.index,m.before.size)}</strong>${escape(m.feedback?.text||m.reason)}</button>`).join('')||'<p>아직 복기할 수가 없어요.</p>';
     }
   }
   function fail(text){stop();$('retry').classList.remove('hidden');reason('다시 시도할 수 있어요','계산을 마치지 못했어요',text);render();}
@@ -56,7 +66,7 @@
     stop();hint=null;job=kind;busy=true;$('retry').classList.add('hidden');const id=token;
     if(kind==='hint')reason('힌트를 생각하고 있어요','잠깐만 기다려 주세요','활로와 연결, 상대가 잡을 수 있는 돌을 살펴보고 있어요.');render();
     try{
-      worker=new Worker('baduk-worker.js?v=1');
+      worker=new Worker('baduk-worker.js?v=2');
       worker.onmessage=event=>{
         if(id!==token||event.data.token!==id)return;
         const {result,error}=event.data;
@@ -98,7 +108,14 @@
   });
   $('hint').addEventListener('click',()=>calculate('hint'));$('retry').addEventListener('click',()=>calculate(job));
   $('undo').addEventListener('click',undo);$('rethink').addEventListener('click',undo);$('badukPass').addEventListener('click',()=>humanMove(-1));
-  $('zoom').addEventListener('click',()=>{const on=$('boardViewport').classList.toggle('zoomed');$('zoom').setAttribute('aria-pressed',String(on));$('zoom').textContent=on?'전체 판 보기':'판 확대';});
+  $('rulesButton').addEventListener('click',()=>$('badukRules').showModal());
+  $('closeRules').addEventListener('click',()=>$('badukRules').close());
+  $('badukFinish').addEventListener('click',()=>{
+    if(!started||scene||state.mode!=='standard'||state.ended||state.scoring)return;
+    stop();hint=null;feedback=null;$('retry').classList.add('hidden');state=R.beginScoring(state);
+    reason('계가 준비','사석을 확인하고 마무리하세요','죽은 돌을 표시한 뒤 계가하면 승패가 나와요. 더 둘 곳이 있으면 대국을 계속할 수 있어요.');
+    render();$('badukScoring').scrollIntoView({block:'nearest'});
+  });
   $('newGame').addEventListener('click',()=>{stop();hint=null;$('retry').classList.add('hidden');$('setup').showModal();render();});
   $('closeSetup').addEventListener('click',()=>$('setup').close());$('setup').addEventListener('close',continueComputer);
   $('setupForm').addEventListener('submit',event=>{

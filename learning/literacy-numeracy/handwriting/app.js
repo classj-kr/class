@@ -1,6 +1,7 @@
 (function () {
   'use strict';
   const C = window.HandwritingCore,
+    Reference = window.HandwritingReference,
     $ = (id) => document.getElementById(id);
   const presets = {
     consonants: 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ',
@@ -16,7 +17,8 @@
     store,
     saveTimer,
     toastTimer,
-    saveFailed = false;
+    saveFailed = false,
+    referenceReady = false;
   let active = null,
     frame = 0,
     demoFrame = 0,
@@ -33,7 +35,7 @@
     modelCanvas = $('modelCanvas');
   function fresh(text, lesson = 'custom', phase = 'trace') {
     return {
-      version: 1,
+      version: 3,
       text,
       lesson,
       phase,
@@ -52,7 +54,7 @@
   function normalize(raw) {
     if (
       !raw ||
-      raw.version !== 1 ||
+      raw.version !== 3 ||
       typeof raw.text !== 'string' ||
       raw.text.length > 160 ||
       C.chars(raw.text).length > 48 ||
@@ -111,6 +113,28 @@
       context.fill();
     } else context.stroke();
   }
+  function reference(context, char, color) {
+    const layout = Reference.layout(char);
+    if (!layout) return;
+    context.save();
+    context.font = `${layout[0]}px PracticeReference`;
+    context.textAlign = 'left';
+    context.textBaseline = 'alphabetic';
+    context.fillStyle = color;
+    context.fillText(char, layout[1], layout[2]);
+    context.restore();
+  }
+  function ink(context, points, color) {
+    if (points.length < 2) return;
+    const layer = document.createElement('canvas');
+    layer.width = layer.height = 400;
+    const paint = layer.getContext('2d');
+    paint.scale(4, 4);
+    reference(paint, letters()[doc.index], color);
+    paint.globalCompositeOperation = 'destination-in';
+    path(paint, points, '#000', 8);
+    context.drawImage(layer, 0, 0, 100, 100);
+  }
   function paper(context, char, strokes, { guide = true, trace = false, next = false } = {}) {
     context.save();
     context.setTransform(context.canvas.width / 100, 0, 0, context.canvas.height / 100, 0, 0);
@@ -143,13 +167,13 @@
       context.strokeRect(10, 10, 80, 80);
     }
     const paths = C.model(char) || [];
-    if (trace) paths.forEach((s) => path(context, s, '#d4dace', 2.4));
+    if (trace && referenceReady) reference(context, char, '#cdd3c7');
     strokes.forEach((s) => path(context, s.points, '#233c34', s.width || doc.width));
     if (next && trace && strokes.length < paths.length) {
       const s = paths[strokes.length];
       context.fillStyle = '#cb763f';
       context.beginPath();
-      context.arc(s[0][0], s[0][1], 1.7, 0, Math.PI * 2);
+      context.arc(s[0][0], s[0][1], 1.1, 0, Math.PI * 2);
       context.fill();
     }
     context.restore();
@@ -163,12 +187,12 @@
   function queueDraw() {
     if (!frame) frame = requestAnimationFrame(draw);
   }
-  function drawModel() {
+  function drawModel(color = '#27362f') {
     const m = modelCanvas.getContext('2d');
     paper(m, letters()[doc.index], [], { guide: false });
     m.save();
     m.scale(modelCanvas.width / 100, modelCanvas.height / 100);
-    (C.model(letters()[doc.index]) || []).forEach((s) => path(m, s, '#2b493d', 2.5));
+    if (referenceReady) reference(m, letters()[doc.index], color);
     m.restore();
   }
   function stopDemo() {
@@ -193,15 +217,14 @@
       b.disabled = inRoom;
     });
     $('progressLabel').textContent = `${doc.index + 1} / ${chars.length}`;
-    $('strokeStatus').textContent = strokes.length
-      ? `${strokes.length} / ${model.length}획`
-      : '';
+    $('strokeStatus').textContent = strokes.length ? `${strokes.length} / ${model.length}획` : '';
     $('feedback').textContent = '';
     $('feedback').hidden = true;
-    $('undoButton').disabled = !undo.length || locked;
-    $('redoButton').disabled = !redo.length || locked;
-    for (const id of ['clearButton', 'checkButton']) $(id).disabled = locked;
-    canvas.setAttribute('aria-disabled', String(locked));
+    const cannotWrite = locked || !referenceReady;
+    $('undoButton').disabled = !undo.length || cannotWrite;
+    $('redoButton').disabled = !redo.length || cannotWrite;
+    for (const id of ['clearButton', 'checkButton', 'demoButton']) $(id).disabled = cannotWrite;
+    canvas.setAttribute('aria-disabled', String(cannotWrite));
     canvas.setAttribute('aria-label', `${chars[doc.index]} 글씨 쓰는 칸. ${model.length}획.`);
     $('previousLetter').disabled = doc.index === 0;
     $('nextLetter').disabled = doc.index === chars.length - 1;
@@ -293,7 +316,7 @@
               ? '터치로 인식됐어요. 펜이라면 기기에서 손가락과 구분하지 못한 상태예요.'
               : '마우스로 인식됐어요. PC에서도 연습할 수 있어요.';
       }
-      if ((locked && !test) || !allowed(e) || active) return;
+      if (((locked || !referenceReady) && !test) || !allowed(e) || active) return;
       if (!test && current().length >= 64) {
         toast('획이 많아요. 이 칸을 지우고 다시 써 주세요.');
         return;
@@ -346,7 +369,7 @@
         const total = doc.cells[doc.phase].flat().reduce((n, s) => n + s.points.length, 0);
         if (total + a.stroke.points.length > 24000) {
           draw();
-            toast('획이 너무 많아요. 이 칸을 지우고 다시 써 주세요.');
+          toast('획이 너무 많아요. 이 칸을 지우고 다시 써 주세요.');
           return;
         }
         const before = [...current()],
@@ -384,6 +407,7 @@
           : '터치는 무시해요. 펜 또는 마우스로 써 보세요.';
   };
   $('testInput').onclick = () => {
+    $('settingsMenu').open = false;
     $('testCanvas').getContext('2d').clearRect(0, 0, 600, 230);
     $('testResult').textContent = '아직 입력이 없어요. 실제 입력으로 확인합니다.';
     $('inputDialog').showModal();
@@ -488,14 +512,14 @@
     function tick(now) {
       const at = (now - start) / 750,
         index = Math.floor(at);
-      drawModel();
+      drawModel('#d4d9cd');
       m.save();
       m.scale(modelCanvas.width / 100, modelCanvas.height / 100);
-      for (let i = 0; i < Math.min(index, paths.length); i++) path(m, paths[i], '#176b59', 3.8);
+      for (let i = 0; i < Math.min(index, paths.length); i++) ink(m, paths[i], '#32664f');
       if (index < paths.length) {
         const s = C.sample(paths[index], 70),
           n = Math.max(1, Math.floor((at - index) * 70));
-        path(m, s.slice(0, n), '#cb763f', 4);
+        ink(m, s.slice(0, n), '#ad643a');
         m.fillStyle = '#cb763f';
         m.font = 'bold 9px sans-serif';
         m.fillText(String(index + 1), s[0][0] - 8, s[0][1] - 4);
@@ -543,22 +567,40 @@
     window.print();
   };
   const ready = (async () => {
-    store = await SiteStorage.open('handwriting');
+    const loaded = document.fonts
+      .load('100px PracticeReference', '가나다')
+      .then((faces) => {
+        referenceReady = faces.length > 0;
+      })
+      .catch(() => {
+        referenceReady = false;
+      });
+    [store] = await Promise.all([SiteStorage.open('handwriting'), loaded]);
     store.onError(() => {
       saveFailed = true;
       $('saveStatus').textContent = '연결 문제로 저장하지 못했어요.';
       toast('연습을 저장하지 못했어요. 연결을 확인해 주세요.');
     });
     try {
-      if (store.has('draft')) doc = normalize(store.get('draft'));
+      if (store.has('draft')) {
+        const saved = store.get('draft');
+        if (saved?.version === 1 || saved?.version === 2) {
+          store.set('legacy-draft-v'+saved.version, saved);
+          doc = fresh(saved.text, saved.lesson, saved.phase);
+        } else doc = normalize(saved);
+      }
     } catch {
       toast('이전 연습을 읽지 못해 새 연습장을 열었어요.');
     }
     render();
+    if (!referenceReady) toast('글꼴을 불러오지 못했어요. 화면을 다시 열어 주세요.');
     $('saveStatus').textContent = store.persistent
       ? '계정에 자동 저장'
       : '게스트 연습은 이 탭에서만 유지돼요.';
   })();
+  document.addEventListener('pointerdown', (event) => {
+    if (!$('settingsMenu').contains(event.target)) $('settingsMenu').open = false;
+  });
   window.HandwritingApp = {
     ready,
     snapshot,

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko" data-coach-game="baduk" data-coach-state="loading">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>바둑 · AI와 배우기</title>
+  <!-- Board, stones, background and match layout are owned by the original game. -->
+  <link rel="stylesheet" href="../baduk/baduk.css?v=20260923-scoring">
+  <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+  <link rel="stylesheet" href="baduk-theme.css?v=2">
+  <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
+  <script src="../../../assets/game-motion.js?v=20261006-capture" defer></script>
+  <script src="coach-ui.js?v=7" defer></script>
+  <script src="baduk-rules.js?v=2" defer></script><script src="baduk-ai.js?v=2" defer></script><script src="baduk-coach.js?v=2" defer></script>
+  <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
+  <script src="../../../assets/sound/music-control.js?v=20261006-capture" data-sfx-controls defer></script>
+  <script>
+    window.BoardCoachBoot={ready(){document.documentElement.dataset.coachState='ready';}};
+    document.addEventListener('DOMContentLoaded',()=>{
+      if(document.documentElement.dataset.coachState!=='ready')document.getElementById('coachLoadingMessage').textContent='대국판을 불러오지 못했어요. 다시 불러와 주세요.';
+    });
+  </script>
+</head>
+<body class="baduk-learning">
+  <div id="coachLoading" role="status"><p id="coachLoadingMessage">바둑판을 준비하고 있어요.</p><a class="secondary" href="">다시 불러오기</a><a class="secondary" href="../baduk/baduk">게임으로</a><noscript>자바스크립트를 켜 주세요.</noscript></div>
+  <main class="shell">
+    <section id="gameScreen">
+      <header class="panel" id="badukHeader">
+        <div class="row spread"><strong id="title">바둑</strong><div class="row"><button id="rulesButton" class="secondary" type="button">규칙</button><a id="backLink" class="secondary back-link" href="../baduk/baduk">게임으로</a></div></div>
+        <div class="players">
+          <div id="blackCard" class="player"><span class="sample black"></span><span><small>흑 · 선공</small><br><strong id="blackName">나</strong> · 잡은 돌 <b id="blackCaptured">0</b></span></div>
+          <div id="whiteCard" class="player"><span class="sample white"></span><span><small>백 · 후공</small><br><strong id="whiteName">AI</strong> · 잡은 돌 <b id="whiteCaptured">0</b></span></div>
+        </div>
+        <div class="turn-area"><div id="turn" class="turn-banner" role="status">대국 준비 중</div><div id="score" class="clock">0수</div></div>
+        <div id="badukStatus" class="game-status" aria-live="polite"></div>
+        <div class="actions controls"><button id="hint" class="primary" type="button">힌트</button><button id="undo" class="secondary" type="button">내 수 물리기</button><button id="badukPass" class="secondary" type="button">패스</button><button id="badukResign" class="secondary" type="button">기권</button><button id="newGame" class="secondary" type="button">새 대국</button></div>
+        <div class="coach-caption muted">AI와 배우기 · <span id="levelLabel">레벨 1</span><span id="colorLabel" hidden></span></div>
+        <button id="badukFinish" class="secondary hidden" type="button">끝내고 계가</button>
+      </header>
+      <section class="panel play-panel"><div id="boardViewport" class="board-stage"><div class="board-frame"><div id="board" class="board" data-sfx-clicks="none" role="grid"></div></div></div></section>
+    </section>
+    <aside id="badukNotes" class="coach-notes" aria-label="배움 안내">
+      <section class="explanation" aria-live="polite"><span class="eyebrow" id="reasonLabel">이번 수의 생각</span><h2 id="moveLabel">기본 원칙부터</h2><p id="reason">수의 이유를 함께 살펴봅니다.</p><button id="retry" class="secondary hidden" type="button">다시 계산하기</button></section>
+      <section id="feedbackPanel" class="feedback hidden" aria-live="polite"><h2>다시 생각해 볼 수</h2><p id="feedback"></p><button id="rethink" class="secondary" type="button">내 수부터 다시 두기</button></section>
+      <section id="badukScoring" class="hidden"><h2>사석 확인 · 연습 계가</h2><p>죽은 돌 덩어리를 누르면 표시하거나 취소해요. AI는 사석의 생사를 확정하지 않아요. 확실하지 않으면 계속 두어 확인하세요.</p><p id="badukScorePreview" aria-live="polite"></p><div class="actions"><button id="badukAgree" class="primary" type="button">표시한 사석으로 계가</button><button id="badukResume" class="secondary" type="button">대국 계속하기</button></div></section>
+      <section id="reviewPanel" class="hidden"><h2>중요한 장면 복기</h2><p>장면을 누르면 그 수를 두기 전의 판을 봅니다.</p><div id="reviewList"></div><button id="liveBoard" class="secondary hidden" type="button">마지막 판으로</button></section>
+    </aside>
+  </main>
+  <dialog id="setup" aria-labelledby="setupTitle"><form id="setupForm">
+    <div class="row spread"><h2 id="setupTitle">바둑 · AI와 배우기</h2><button id="closeSetup" class="secondary" type="button">닫기</button></div>
+    <fieldset class="level-options" aria-describedby="levelDescription"><legend>AI 레벨</legend>
+      <label class="option secondary"><input type="radio" name="level" value="beginner" aria-label="레벨 1" checked><strong>1</strong></label>
+      <label class="option secondary"><input type="radio" name="level" value="level2" aria-label="레벨 2"><strong>2</strong></label>
+      <label class="option secondary"><input type="radio" name="level" value="intermediate" aria-label="레벨 3"><strong>3</strong></label>
+      <label class="option secondary"><input type="radio" name="level" value="level4" aria-label="레벨 4"><strong>4</strong></label>
+      <label class="option secondary"><input type="radio" name="level" value="advanced" aria-label="레벨 5"><strong>5</strong></label>
+    </fieldset>
+    <p id="levelDescription" class="muted" aria-live="polite"></p>
+    <fieldset class="color-options"><legend>내 돌 색깔</legend><label class="option secondary"><input type="radio" name="color" value="1" checked><span>검은색 · 선공</span></label><label class="option secondary"><input type="radio" name="color" value="2"><span>흰색 · 후공</span></label></fieldset>
+    <button id="startLearning" class="primary" type="submit">대국 시작</button>
+  </form></dialog>
+  <dialog id="badukRules" aria-labelledby="rulesTitle"><h2 id="rulesTitle">바둑 규칙과 배우는 내용</h2><p id="principle"></p><div id="rulesCopy"></div><button id="closeRules" class="primary" type="button">확인</button></dialog>
+  <audio id="bgm" src="../baduk/assets/sound/baduk-bgm.ogg" loop preload="none"></audio>
+</body>
+</html>
