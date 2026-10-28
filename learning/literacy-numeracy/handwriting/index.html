@@ -1,210 +1,58 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-    <meta name="theme-color" content="#176b59" />
-    <meta
-      name="description"
-      content="한글을 획순에 맞게 따라 쓰고 혼자 쓰는 바른 글씨 연습. 펜·터치·마우스와 학급 순위전을 지원합니다."
-    />
-    <title>바른 글씨 연습 · 글씨 쓰기</title>
-    <link rel="stylesheet" href="styles.css?v=20261028-1" />
-  </head>
-  <body>
-    <main class="app">
-      <header class="page-header">
-        <div>
-          <a class="back-link" href="/">← 학습 홈</a>
-          <p class="eyebrow">문해·수리 / 글씨 쓰기</p>
-          <h1>바른 글씨 연습<span aria-hidden="true">.</span></h1>
-          <p class="lead">서두르지 않고, 한 획씩 또박또박.</p>
-        </div>
-        <a class="room-link" href="race/">함께 쓰기 · 순위전 <span aria-hidden="true">↗</span></a>
-      </header>
-
-      <section id="roomPanel" class="room-panel" hidden aria-labelledby="roomTitle">
-        <div class="room-heading">
-          <div>
-            <p class="eyebrow">같은 글자로 함께 연습해요</p>
-            <h2 id="roomTitle">글씨 쓰기 순위전</h2>
-          </div>
-          <a href="/room/">방번호 입력으로</a>
-        </div>
-        <div id="roomSettings" class="room-actions" hidden>
-          <label for="raceText">함께 쓸 한글</label
-          ><input id="raceText" value="가나다" maxlength="24" aria-describedby="raceRule" /><select
-            id="raceMode"
-            aria-label="순위전 쓰기 모드"
-          >
-            <option value="trace">따라 쓰기</option>
-            <option value="solo">혼자 쓰기</option>
-          </select>
-          <p id="raceRule">1~12글자 · 제한 시간 5분 · 획순 통과 후 일치도로 순위</p>
-        </div>
-        <div id="roomEntry" class="room-entry">
-          <form id="joinForm">
-            <label for="roomCode">방번호</label
-            ><input
-              id="roomCode"
-              inputmode="numeric"
-              pattern="[0-9]{4}"
-              maxlength="4"
-              placeholder="4자리"
-              required
-            /><button class="primary">입장하기</button>
-          </form>
-          <button id="createRoom" hidden>선생님 · 방 만들기</button
-          ><button id="roomInputTest">펜 입력 확인</button>
-        </div>
-        <div id="roomLobby" hidden>
-          <div class="room-heading">
-            <strong class="room-code">방번호 <span id="codeLabel"></span></strong><span id="roomPhase"></span>
-          </div>
-          <p id="roomHelp"></p>
-          <div class="room-actions">
-            <button id="readyButton">준비했어요</button
-            ><button id="startRound" class="primary" hidden>모두 준비되면 시작</button
-            ><button id="stopRound" hidden>이번 판 마치기</button
-            ><button id="submitRound" class="primary" hidden>내 글씨 제출하기</button
-            ><button id="leaveRoom">방 나가기</button>
-          </div>
-          <ol id="rankList" class="rank-list" aria-label="참가자와 순위"></ol>
-        </div>
-        <p id="roomStatus" role="status"></p>
-      </section>
-
-      <div id="workspace" class="workspace">
-        <aside id="lessonPanel" class="lesson-panel" aria-label="연습할 글자">
-          <p class="eyebrow">오늘의 연습</p>
-          <h2>무엇을 써 볼까요?</h2>
-          <label for="lessonSelect">연습 고르기</label
-          ><select id="lessonSelect">
-            <optgroup label="기본 글자">
-              <option value="consonants">자음 · ㄱ부터 ㅎ까지</option>
-              <option value="vowels">모음 · ㅏ부터 ㅣ까지</option>
-              <option value="gana" selected>가나다 · 가부터 하까지</option>
-              <option value="double">쌍자음과 겹모음</option>
-            </optgroup>
-            <optgroup label="낱말과 문장">
-              <option value="nature">낱말 · 자연</option>
-              <option value="school">낱말 · 학교</option>
-              <option value="sentence">문장 · 작은 약속</option>
-            </optgroup>
-            <option value="custom">직접 넣기</option>
-          </select>
-          <form id="customForm" hidden>
-            <label for="customText">한글 자모·낱말·문장</label
-            ><textarea id="customText" rows="3" maxlength="80" placeholder="예: 나는 나를 믿어요"></textarea
-            ><small>띄어쓰기를 제외한 한글 48자까지</small><button type="submit">이 글자로 연습</button>
-          </form>
-          <div class="lesson-caption">
-            <span class="small-label">이번 연습</span>
-            <p id="lessonText"></p>
-            <span id="lessonCount"></span>
-          </div>
-          <div class="practice-tip">
-            <span aria-hidden="true">↘</span><strong>시작점부터 차근차근</strong>
-            <p>‘획순 보기’로 쓰는 순서를 살펴보고, 연한 선을 따라 써 보세요.</p>
-          </div>
-          <div class="file-actions">
-            <button id="saveFile">연습 파일 저장</button><button id="openFile">연습 파일 열기</button
-            ><button id="printButton">종이 연습지 인쇄</button>
-          </div>
-          <input id="importFile" type="file" accept=".json,application/json" hidden />
-          <p id="saveStatus" class="save-status" role="status">저장 공간 확인 중…</p>
-        </aside>
-
-        <section class="practice-panel" aria-label="글씨 연습장">
-          <div class="mode-row">
-            <div class="phase-tabs" role="group" aria-label="연습 단계">
-              <button data-phase="trace" aria-pressed="true"><span>01</span> 따라 쓰기</button
-              ><button data-phase="solo" aria-pressed="false"><span>02</span> 혼자 쓰기</button>
-            </div>
-            <span id="progressLabel" class="progress-label"></span>
-          </div>
-          <div class="input-row">
-            <label for="inputMode">입력</label
-            ><select id="inputMode">
-              <option value="pen">펜 전용 · 손바닥 무시</option>
-              <option value="touch">터치 · 일반 터치펜</option></select
-            ><button id="testInput">입력 확인</button
-            ><span id="inputStatus" role="status">펜 또는 마우스로 써 보세요.</span>
-          </div>
-          <p id="touchNotice" class="touch-notice" hidden>
-            터치 모드는 손가락과 일반 터치펜을 구분할 수 없어요. 손바닥을 화면에서 떼고 한 손가락으로 써
-            주세요. 펜이 따로 인식되면 펜 전용으로 바뀝니다.
-          </p>
-          <div class="writing-layout">
-            <div class="model-side">
-              <span class="small-label">본보기</span
-              ><canvas id="modelCanvas" width="200" height="200" aria-label="현재 글자 본보기"></canvas
-              ><button id="demoButton">▶ 획순 보기</button>
-              <p id="strokeCount"></p>
-            </div>
-            <div class="paper-wrap">
-              <div class="paper-top">
-                <strong id="currentLetter"></strong><span id="paperHint">연한 선 위에 써 보세요</span>
-              </div>
-              <canvas
-                id="writingCanvas"
-                width="600"
-                height="600"
-                aria-label="글씨 쓰는 칸"
-                tabindex="0"
-              ></canvas>
-              <div class="paper-bottom">
-                <span id="strokeStatus" role="status">첫 획을 써 보세요.</span
-                ><span aria-hidden="true">✦</span>
-              </div>
-            </div>
-          </div>
-          <div class="toolbar">
-            <div>
-              <button id="undoButton" disabled aria-label="마지막 획 되돌리기">↶ 되돌리기</button
-              ><button id="redoButton" disabled>↷ 다시</button><button id="clearButton">이 칸 지우기</button>
-            </div>
-            <div>
-              <label for="penWidth">굵기</label
-              ><select id="penWidth">
-                <option value="1">가늘게</option>
-                <option value="1.5" selected>보통</option>
-                <option value="2.2">굵게</option></select
-              ><label class="check"><input id="guideCheck" type="checkbox" checked /> 보조선</label>
-            </div>
-          </div>
-          <div class="feedback-row">
-            <button id="checkButton" class="primary">내 글씨 확인</button>
-            <p id="feedback" role="status">본보기의 모양과 쓰는 순서를 함께 연습해요.</p>
-          </div>
-          <nav class="letter-navigation" aria-label="연습 글자 이동">
-            <button id="previousLetter" aria-label="이전 글자">←</button>
-            <div id="letterList" class="letter-list"></div>
-            <button id="nextLetter" aria-label="다음 글자">→</button>
-          </nav>
-          <p class="score-note">
-            일치도는 이 연습장의 본보기와 비교한 참고 점수예요. 획의 개수·순서·방향을 함께 확인하며, 필압과
-            속도는 점수에 넣지 않아요.
-          </p>
-        </section>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>글씨 쓰기</title>
+  <link rel="stylesheet" href="styles.css?v=20261028-2">
+</head>
+<body>
+<main class="app">
+  <h1 class="sr-only">글씨 쓰기</h1>
+  <div class="topbar">
+    <a class="back-link" href="/" aria-label="학습 홈">←</a>
+    <div id="lessonPanel" class="lesson-controls">
+      <label class="sr-only" for="lessonSelect">연습할 글자</label>
+      <select id="lessonSelect">
+        <optgroup label="기본 글자"><option value="consonants">자음</option><option value="vowels">모음</option><option value="gana" selected>가나다</option><option value="double">쌍자음·겹모음</option></optgroup>
+        <optgroup label="낱말과 문장"><option value="nature">낱말 · 자연</option><option value="school">낱말 · 학교</option><option value="sentence">문장</option></optgroup><option value="custom">직접 넣기</option>
+      </select>
+      <div class="phase-tabs" role="group" aria-label="연습 단계"><button data-phase="trace" aria-pressed="true">따라 쓰기</button><button data-phase="solo" aria-pressed="false">혼자 쓰기</button></div>
+    </div>
+    <div class="topbar-end">
+      <a class="room-link" href="race/">순위전</a>
+      <details id="settingsMenu" class="settings-menu"><summary>설정</summary><div class="settings-content">
+        <label for="inputMode">입력 방식</label><select id="inputMode"><option value="pen">펜 전용</option><option value="touch">터치·일반 터치펜</option></select>
+        <button id="testInput">펜 입력 확인</button><p id="inputStatus" role="status">펜 또는 마우스</p>
+        <label for="penWidth">펜 굵기</label><select id="penWidth"><option value="1">가늘게</option><option value="1.5" selected>보통</option><option value="2.2">굵게</option></select>
+        <label class="check"><input id="guideCheck" type="checkbox" checked> 보조선</label><button id="printButton">연습지 인쇄</button>
+        <p id="saveStatus" role="status">저장 확인 중</p>
+      </div></details>
+    </div>
+  </div>
+  <form id="customForm" class="custom-form" hidden><label class="sr-only" for="customText">연습할 한글</label><textarea id="customText" rows="1" maxlength="80" placeholder="연습할 한글을 넣으세요"></textarea><button type="submit">적용</button></form>
+  <section id="roomPanel" class="room-panel" hidden aria-labelledby="roomTitle">
+    <div id="roomHeading" class="room-heading"><h2 id="roomTitle">순위전</h2><a href="/room/">방번호 입력</a></div>
+    <div id="roomSettings" class="room-actions" hidden><label for="raceText">글자</label><input id="raceText" value="가나다" maxlength="24" aria-describedby="raceRule"><select id="raceMode" aria-label="순위전 쓰기 모드"><option value="trace">따라 쓰기</option><option value="solo">혼자 쓰기</option></select><small id="raceRule">한글 1~12자 · 5분</small></div>
+    <div id="roomEntry" class="room-entry"><form id="joinForm"><label class="sr-only" for="roomCode">방번호</label><input id="roomCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="방번호 4자리" required><button class="primary">입장</button></form><button id="createRoom" hidden>방 만들기</button><button id="roomInputTest">펜 입력 확인</button></div>
+    <div id="roomLobby" hidden><div class="room-live"><strong class="room-code">방 <span id="codeLabel"></span></strong><span id="roomPhase"></span><span id="roomHelp"></span><div class="room-actions"><button id="readyButton">준비</button><button id="startRound" class="primary" hidden>시작</button><button id="stopRound" hidden>마치기</button><button id="submitRound" class="primary" hidden>제출</button><button id="leaveRoom">나가기</button></div></div><details id="rankingDetails" open><summary>참가자 · 순위</summary><ol id="rankList" class="rank-list" aria-label="참가자와 순위"></ol></details></div>
+    <p id="roomStatus" role="status"></p>
+  </section>
+  <div id="workspace" class="workspace">
+    <section class="practice-panel" aria-label="글씨 연습장">
+      <p id="touchNotice" class="touch-notice" hidden>터치 모드에서는 손바닥을 화면에서 떼고 써 주세요.</p>
+      <div class="writing-layout">
+        <div class="model-side"><span class="small-label">본보기</span><canvas id="modelCanvas" width="400" height="400" aria-label="현재 글자 본보기"></canvas><button id="demoButton">획순</button><span id="strokeCount" class="stroke-count"></span></div>
+        <div class="paper-wrap"><canvas id="writingCanvas" width="800" height="800" aria-label="글씨 쓰는 칸" tabindex="0"></canvas></div>
       </div>
-    </main>
-    <dialog id="inputDialog" aria-labelledby="inputTitle">
-      <h2 id="inputTitle">내 기기의 입력 확인</h2>
-      <p>손바닥을 화면에 올리고 펜으로 아래에 써 보세요.</p>
-      <canvas id="testCanvas" width="600" height="230" aria-label="펜 입력 시험 영역"></canvas>
-      <p id="testResult" role="status">아직 입력이 없어요. 실제 입력으로 확인합니다.</p>
-      <p class="help">
-        ‘펜’으로 표시되면 손바닥 입력을 무시할 수 있어요. ‘터치’로만 표시되면 일반 터치펜과 손가락을 구분할 수
-        없어요.
-      </p>
-      <button id="closeInput" class="primary">확인했어요</button>
-    </dialog>
-    <section id="printSheet" aria-label="인쇄용 글씨 연습지"></section>
-    <div id="toast" class="toast" role="status" hidden></div>
-    <script src="/assets/site-storage.js?v=20261006-1"></script>
-    <script src="core.js?v=20261028-1"></script>
-    <script src="app.js?v=20261028-1"></script>
-    <script src="race.js?v=20261028-1"></script>
-  </body>
-</html>
+      <div class="toolbar"><div><button id="undoButton" disabled aria-label="마지막 획 되돌리기">↶ 되돌리기</button><button id="redoButton" disabled aria-label="되돌린 획 다시 실행">↷</button><button id="clearButton">지우기</button></div><span id="strokeStatus" class="stroke-status" role="status"></span><button id="checkButton" class="primary">확인</button></div>
+      <p id="feedback" class="feedback" role="status" hidden></p>
+      <nav class="letter-navigation" aria-label="연습 글자 이동"><button id="previousLetter" aria-label="이전 글자">←</button><div id="letterList" class="letter-list"></div><button id="nextLetter" aria-label="다음 글자">→</button><span id="progressLabel"></span></nav>
+    </section>
+  </div>
+</main>
+<dialog id="inputDialog" aria-labelledby="inputTitle"><h2 id="inputTitle">펜 입력 확인</h2><p>아래 칸에 펜으로 써 보세요.</p><canvas id="testCanvas" width="600" height="230" aria-label="펜 입력 시험 영역"></canvas><p id="testResult" role="status">입력을 기다립니다.</p><p class="help">펜으로 인식되면 손바닥 입력을 무시합니다. 터치로 인식되면 손을 떼고 써 주세요.</p><button id="closeInput">닫기</button></dialog>
+<section id="printSheet" aria-label="인쇄용 글씨 연습지"></section><div id="toast" class="toast" role="status" hidden></div>
+<script src="/assets/site-storage.js?v=20261006-1"></script><script src="core.js?v=20261028-2"></script><script src="app.js?v=20261028-2"></script><script src="race.js?v=20261028-2"></script>
+</body></html>
