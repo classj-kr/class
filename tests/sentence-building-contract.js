@@ -151,11 +151,11 @@ assert.ok(finalWriting.minChars >= 280);
 assert.ok(finalWriting.criteria.length >= 8);
 assert.doesNotMatch(`${finalWriting.prompt} ${finalWriting.scene}`, /그림|[🌳🧺👨‍👩‍👧‍👦☀️🥪🍎🐕]/u);
 
-assert.match(hub, /data-access-group="grammar"/);
-assert.match(hub, /<strong>문법<\/strong><small>\(Grammar\)<\/small>/);
+assert.match(hub, /data-access-group="writing"/);
+assert.match(hub, /<strong>쓰기<\/strong><small>\(Writing\)<\/small>/);
 assert.match(hub, /learning\/literacy-numeracy\/spelling\//);
 assert.match(hub, /learning\/literacy-numeracy\/sentence-building\//);
-assert.match(hub, /<strong>문장 고르기<\/strong><small>\(Sentence Choice\)<\/small>/);
+assert.match(hub, /<strong>바른 문장 고르기<\/strong><small>\(Sentence Choice\)<\/small>/);
 assert.doesNotMatch(hub, /<strong>문장 만들기<\/strong>/);
 assert.equal((hub.match(/href="learning\/literacy-numeracy\/sentence-building\/"/g) || []).length, 1);
 
