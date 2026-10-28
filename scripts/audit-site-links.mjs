@@ -62,7 +62,7 @@ export function auditSiteLinks(root = ROOT) {
     const handwritingRace = "/learning/literacy-numeracy/handwriting/race/";
     if (url.startsWith(handwritingRace)) {
       const file = url.slice(handwritingRace.length) || "index.html";
-      if (["index.html", "stroke-topology.js", "reference-data.js", "reference.js", "core.js", "app.js", "race.js", "styles.css"].includes(file)) {
+      if (["index.html", "font-source.js", "pen-reference.js", "core.js", "app.js", "race.js", "styles.css"].includes(file)) {
         return path.join(root, "learning/literacy-numeracy/handwriting", file);
       }
     }

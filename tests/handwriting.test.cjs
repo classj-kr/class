@@ -1,7 +1,23 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const C = require('../learning/literacy-numeracy/handwriting/core');
+const Font = require('../learning/literacy-numeracy/handwriting/font-source');
+const fs = require('node:fs'),
+  path = require('node:path'),
+  crypto = require('node:crypto');
 const perfect = (c) => C.model(c).map((p) => ({ points: C.sample(p, 50), width: 1.5 }));
+test('the delivered font files match the current original design source', () => {
+  const directory = path.join(__dirname, '../assets/fonts/classj-gyeongpil');
+  const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'font-manifest.json'), 'utf8'));
+  const source = fs.readFileSync(require.resolve('../learning/literacy-numeracy/handwriting/font-source'));
+  assert.equal(manifest.sourceSha256, crypto.createHash('sha256').update(source).digest('hex'));
+  assert.equal(manifest.hangulSyllables, 11172);
+  assert.equal(manifest.compatibilityJamo, 51);
+  assert.equal(
+    fs.readFileSync(path.join(directory, 'ClassJGyeongpilMyeongjo-Regular.woff2')).subarray(0, 4).toString(),
+    'wOF2',
+  );
+});
 test('all modern Hangul syllables compose finite, ordered stroke paths', () => {
   for (let n = 0; n < 11172; n++) {
     const paths = C.model(String.fromCodePoint(0xac00 + n));
@@ -18,13 +34,40 @@ test('all modern Hangul syllables compose finite, ordered stroke paths', () => {
   );
   assert.equal(C.model('A'), null);
 });
-test('approximate stroke guides stay close to actual font ink', () => {
+test('the designed pen paths remain aligned with shape and order judging', () => {
   for (const c of ['ㄹ', 'ㅂ', 'ㅓ', '한', '꽃', '과', '읽']) {
     const strokes = perfect(c),
       r = C.judge(c, strokes);
     assert.equal(r.order, true, c);
-    // Guides approximate the centreline; the shape target is the independent font mask.
-    assert.ok(r.shape >= 90, c);
+    assert.ok(r.shape >= 98, c);
+  }
+});
+test('final consonants retain height, width and space below the upper components', () => {
+  const bounds = (paths) => {
+    const p = paths.flat();
+    return [
+      Math.min(...p.map((v) => v[0])),
+      Math.min(...p.map((v) => v[1])),
+      Math.max(...p.map((v) => v[0])),
+      Math.max(...p.map((v) => v[1])),
+    ];
+  };
+  for (const char of Array.from('각간갈감강꽃닭읽읊')) {
+    const parts = Font.components(char),
+      [l, t, r, b] = bounds(parts.find((p) => p.kind === 'final').paths);
+    assert.ok(b - t >= 20 && b - t <= 32, char + ': final height');
+    assert.ok(r - l >= 48 && r - l <= 86, char + ': final width');
+    assert.ok(t >= 62 && b <= 94, char + ': final vertical placement');
+    assert.ok(
+      t - bounds(parts.filter((p) => p.kind !== 'final').flatMap((p) => p.paths))[3] >= 3,
+      char + ': component gap',
+    );
+  }
+  for (const char of Array.from('오요와왜')) {
+    const parts = Font.components(char),
+      upper = bounds(parts[0].paths),
+      lower = bounds(parts[1].paths);
+    assert.ok(lower[1] - upper[3] > 6, char + ': circle must not touch the following vowel');
   }
 });
 test('matching shape does not pass a reversed direction, swapped order, missing or extra stroke', () => {
@@ -53,22 +96,21 @@ test('a manually traced font sample passes without following generated guide art
   // Coordinates read from the rendered reference, independent of C.model().
   const strokes = [
     [
-      [17.5, 29.5],
-      [28, 29.3],
-      [38, 28.5],
-      [47, 28],
-      [44, 38],
-      [37, 48],
-      [29, 57],
-      [18, 67],
+      [14, 30],
+      [29, 29],
+      [50, 28],
+      [48, 39],
+      [39, 55],
+      [28, 67],
+      [16, 75],
     ],
     [
-      [69, 12.5],
-      [69, 89],
+      [69, 13],
+      [69, 91],
     ],
     [
-      [69, 44],
-      [84, 43],
+      [69, 48],
+      [89, 47],
     ],
   ];
   const result = C.judge('가', strokes);

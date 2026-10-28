@@ -1,0 +1,12 @@
+# 클래스제이 경필명조
+
+프로젝트에서 자모 곡선, 펜촉 윤곽과 한글 조합 비례를 직접 작성한 경필 연습용 서체다. 디자인 원본은 learning/literacy-numeracy/handwriting/font-source.js이며, scripts/build-handwriting-font.py가 TTF·WOFF2를 만든다.
+
+- 본문과 본보기에서 사용하는 실제 글꼴: ClassJGyeongpilMyeongjo-Regular.woff2
+- 설치·문서용 글꼴: ClassJGyeongpilMyeongjo-Regular.ttf
+- 현대 한글 11,172음절과 호환 자모 51자. 영문·숫자·문장부호는 첫 버전의 지원 범위에 포함하지 않는다.
+- font-manifest.json에 원본 해시, 버전, 글자 수와 파일 크기를 기록한다.
+- 세로모음, 가로모음, 겹모음, 받침과 겹받침을 구분해 배치한다. 받침의 높이·간격과 ㅊ·ㅎ의 윗획 여백을 따로 둔다.
+- 경필명조 계열의 펜글씨 방향을 참고해 새로 그렸다. DX경필명조 원본 파일·윤곽을 사용하거나 수정한 서체가 아니다.
+
+빌드 과정에서 다른 글꼴을 읽지 않는다. 화면·획순 시범·거리 점수는 같은 자체 원본을 사용한다. 글씨 점수는 교육 현장 표본으로 추가 교정할 수 있는 참고 수치다.

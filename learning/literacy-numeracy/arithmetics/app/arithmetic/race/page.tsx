@@ -187,7 +187,23 @@ export default function ArithmeticRaceJoinPage() {
             <span>방 코드</span><strong className="race-room-code">{joined.roomCode}</strong>
             <h2>{joined.race.worksheetName || "학습지 확인 중"}</h2>
             {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note">카드 순위전 · {joined.race.durationSeconds / 60}분 · 맞히면 +1, 넘기면 −1</p> : null}
-            {joined.hostToken ? <><p>{board?.participants.length ?? 1}명 참가</p><button type="button" onClick={startRace} disabled={loading || !(board?.participants.length ?? 1)}>모두 시작</button><small>방을 만든 사람이 시작합니다.</small></> : <strong>방장이 시작하면 문제지로 바로 이동합니다.</strong>}
+            {joined.hostToken ? (
+              <>
+                <p>{board?.participants.length ?? 1}명 참가</p>
+                {board ? (
+                  <ul className="race-participant-list" aria-label="참가자 명단" role="list">
+                    {board.participants.map((participant) => (
+                      <li key={participant.id}>
+                        <span>{participant.name}</span>
+                        {participant.id === joined.participantId ? <span className="race-host-badge">방장 · 나</span> : null}
+                      </li>
+                    ))}
+                  </ul>
+                ) : <p>참가자 명단 불러오는 중…</p>}
+                <button type="button" onClick={startRace} disabled={loading || !(board?.participants.length ?? 1)}>모두 시작</button>
+                <small>방을 만든 사람이 시작합니다.</small>
+              </>
+            ) : <strong>방장이 시작하면 문제지로 바로 이동합니다.</strong>}
           </section>
         ) : entryRoom ? (
           <section className="race-waiting-card" aria-live="polite">
