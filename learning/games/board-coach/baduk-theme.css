@@ -1,0 +1,30 @@
+body.original-coach.baduk-surface {
+  --ink:#f5efe3;--muted:#d0c1a9;--accent:#efd29a;--edge:#816744;
+  --panel:#211b14f0;--card:#17130e;--radius:12px;--button:#34291c;
+  --primary:linear-gradient(#edcf95,#bf9252);--primary-ink:#201307;
+  --scene:linear-gradient(#17110988,#171109bb),url('../baduk/assets/images/background.webp');
+}
+.baduk-surface .board-frame {padding:12px;background:#a7773e;border:4px solid #795328;border-radius:8px;}
+.baduk-surface #board {background:#dfb77c;}
+.baduk-surface #board .point {border:0;background:transparent;border-radius:0;}
+.baduk-surface .point::before {content:'';position:absolute;inset:0;background:linear-gradient(#614328,#614328) center/1px 100% no-repeat,linear-gradient(#614328,#614328) center/100% 1px no-repeat;pointer-events:none;}
+.baduk-surface .point.edge-left::before {left:50%;background-position:left center;}
+.baduk-surface .point.edge-right::before {right:50%;background-position:right center;}
+.baduk-surface .point.edge-top::before {top:50%;background-position:center top;}
+.baduk-surface .point.edge-bottom::before {bottom:50%;background-position:center bottom;}
+.baduk-surface .point.edge-left.edge-top::before {background-position:left top;}
+.baduk-surface .point.edge-right.edge-top::before {background-position:right top;}
+.baduk-surface .point.edge-left.edge-bottom::before {background-position:left bottom;}
+.baduk-surface .point.edge-right.edge-bottom::before {background-position:right bottom;}
+.baduk-surface .stone {inset:7%;z-index:1;}
+.baduk-surface .point.last::after {content:'';position:absolute;inset:44%;background:#cf3e29;border:1px solid #fff3c2;border-radius:50%;z-index:2;pointer-events:none;}
+.baduk-surface .hint-ring {border-color:#185f9a;background:#a9d9ff44;z-index:3;}
+.baduk-surface .point:not(:disabled):hover {background:#ffffff30!important;}
+.baduk-surface .dead-stone .stone {opacity:.38;}
+.baduk-surface .point.dead-stone::after {content:'×';position:absolute;inset:0;display:grid;place-items:center;background:transparent;border:0;border-radius:0;color:#a31b13;font-size:32px;z-index:3;}
+.baduk-surface .baduk-coordinate {position:absolute;left:2px;bottom:1px;font-size:10px;line-height:1;color:#493015;z-index:2;pointer-events:none;}
+.baduk-surface #badukScoring p {margin:8px 0;}
+.baduk-surface #badukScoring button {width:100%;margin-top:8px;}
+.baduk-surface #badukPass.suggested {outline:3px dashed #efd29a;outline-offset:2px;}
+.baduk-surface .threat-ring {z-index:4;}
+.baduk-surface #badukStatus {font-size:14px;}

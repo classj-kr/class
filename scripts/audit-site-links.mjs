@@ -59,6 +59,13 @@ export function auditSiteLinks(root = ROOT) {
     if (/^\/learning\/arts\/music-theory\/rhythm-training\/(?:notation|rhythm-notation)\.js$/.test(url)) {
       return path.join(root, "learning/arts/music-theory/ear-training", url.endsWith("/notation.js") ? "notation.js" : "rhythm.js");
     }
+    const handwritingRace = "/learning/literacy-numeracy/handwriting/race/";
+    if (url.startsWith(handwritingRace)) {
+      const file = url.slice(handwritingRace.length) || "index.html";
+      if (["index.html", "core.js", "app.js", "race.js", "styles.css"].includes(file)) {
+        return path.join(root, "learning/literacy-numeracy/handwriting", file);
+      }
+    }
     return sitePaths.resolveSitePath(root, url);
   }
   const missing = [], optional = [], urls = new Set();

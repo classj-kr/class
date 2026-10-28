@@ -2100,6 +2100,9 @@ function createClassroomPlatform(options = {}) {
           // fetch defaults to Accept: */*, which also matches req.accepts("html").
           // The room lookup belongs to the always-open entrance, not the lesson catalog.
           || /^\/api\/room-entry\/resolve\/\d{4}$/.test(requestPath)
+          || requestPath === "/learning/literacy-numeracy/handwriting/race"
+          || requestPath.startsWith("/learning/literacy-numeracy/handwriting/race/")
+          || requestPath === "/api/handwriting" || requestPath.startsWith("/api/handwriting/")
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
           || requestPath === "/exams" || requestPath.startsWith("/exams/")
           || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
