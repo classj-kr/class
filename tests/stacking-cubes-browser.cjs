@@ -45,7 +45,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         if (!shots) return;
         await page.mouse.move(width - 8, 3);
         await page.waitForTimeout(80);
-        const result = spawnSync('python', ['-c', convert, path.join(output, `${name}-${suffix}.webp`)], { input: await page.screenshot() });
+        const result = spawnSync(process.env.PYTHON || 'python', ['-c', convert, path.join(output, `${name}-${suffix}.webp`)], { input: await page.screenshot() });
         assert.equal(result.status, 0, String(result.stderr));
       };
       const openPanel = async () => { if (!(await page.locator('#view-panel').isVisible())) await activate(page.locator('#view-button')); };
@@ -197,18 +197,36 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
 
       await page.evaluate(() => {
         window.playedSounds = [];
+        window.startedSounds = [];
         const play = StackingSounds.play;
-        StackingSounds.play = (...args) => { window.playedSounds.push(args[0]); return play(...args); };
+        StackingSounds.play = (...args) => {
+          window.playedSounds.push(args[0]);
+          const started = play(...args);
+          if (started) window.startedSounds.push(args[0]);
+          return started;
+        };
       });
       await choose('copy');
       await total(0);
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /다시/);
+      assert.equal(await page.locator('#celebration').isVisible(), false, 'incorrect answers do not celebrate');
       await fill(activities.questions('copy')[0]);
       await activate(page.locator('#check-shape'));
       assert.equal(await page.locator('#check-shape').textContent(), '다음 모양');
+      await page.locator('#celebration:not([hidden])').waitFor();
+      assert.equal(await page.locator('#celebration-title').textContent(), '성공!');
+      assert.ok(await page.locator('#celebration-title').evaluate(node => parseFloat(getComputedStyle(node).fontSize)) >= 44, 'success is large enough to recognize');
+      assert.equal(await page.locator('.confetti-piece').count(), 48);
+      assert.equal(await page.locator('#celebration').evaluate(node => getComputedStyle(node).pointerEvents), 'none', 'celebration leaves controls usable');
+      assert.ok(await page.evaluate(() => window.startedSounds.includes('success')), 'success audio actually starts');
+      await page.waitForTimeout(350);
+      const celebrationBox = await page.locator('.celebration-card').boundingBox();
+      assert.ok(celebrationBox.x >= 0 && celebrationBox.y >= 0 && celebrationBox.x + celebrationBox.width <= width && celebrationBox.y + celebrationBox.height <= height, 'celebration fits viewport');
       await snap('copy-success');
       await activate(page.locator('#check-shape'));
+      assert.equal(await page.locator('#celebration').isVisible(), false, 'next problem clears celebration immediately');
+      assert.equal(await page.locator('.confetti-piece').count(), 0);
       assert.match(await page.locator('#challenge-title').textContent(), /2\/6/);
       await total(0);
       // The rear column of the second copy task is occluded in its initial view.
@@ -277,24 +295,43 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         assert.equal(await page.locator('#target-scene .cell-number').count(), 0, 'target never reveals column heights');
       }
       await fill(alternative);
+      await page.emulateMedia({ reducedMotion: 'reduce' });
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /성공/);
+      assert.equal(await page.locator('#celebration').isVisible(), true, 'reduced motion retains the large success message');
+      for (const selector of ['#activity-button', '#total', '#sound-toggle', '#view-button']) {
+        const rect = await page.locator(selector).boundingBox();
+        assert.ok(rect.x >= 0 && rect.x + rect.width <= width && rect.height <= 48, `${selector}: header controls fit on one line`);
+      }
+      assert.equal(await page.locator('#celebration-confetti').isVisible(), false, 'reduced motion hides confetti');
+      assert.equal(await page.locator('.celebration-card').evaluate(node => getComputedStyle(node).animationName), 'none');
       await snap('views-success');
+      await page.locator('#celebration').waitFor({ state: 'hidden' });
+      assert.equal(await page.locator('.confetti-piece').count(), 0, 'effect cleans itself up');
+      assert.equal(await page.locator('#challenge-result').isVisible(), true, 'success result remains after the effect');
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
 
       await choose('many');
       await fill(target);
       await activate(page.locator('#check-shape'));
       assert.equal(await page.locator('#check-shape').textContent(), '다른 모양 만들기');
+      assert.equal(await page.locator('#celebration-title').textContent(), '첫 번째 모양 발견!');
+      assert.equal(await page.locator('.confetti-piece').count(), 22);
       await activate(page.locator('#check-shape'));
+      assert.equal(await page.locator('#celebration').isVisible(), false);
       await total(0);
       await activate(page.locator('#undo'));
       await total(7);
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /이미 찾은/);
+      assert.equal(await page.locator('#celebration').isVisible(), false, 'duplicate answers do not celebrate');
       await openPanel(); await activate(page.locator('#clear-board'));
       await fill(alternative);
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /서로 다른 두/);
+      assert.equal(await page.locator('#celebration-title').textContent(), '성공!');
+      assert.match(await page.locator('#celebration-message').textContent(), /서로 다른 두/);
+      await page.waitForTimeout(350);
       await snap('many-success');
       assert.equal(await page.locator('#target-panel').evaluate(panel => panel.scrollHeight <= panel.clientHeight + 1), true, 'goal and success message fit without scrolling');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight), true, 'activity fits viewport');
@@ -342,12 +379,23 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await openPanel();
       await page.locator('#sound-enabled').uncheck();
       assert.equal(await page.evaluate(() => StackingSounds.play('add', 1)), false);
+      assert.equal(await page.locator('#sound-toggle').getAttribute('aria-pressed'), 'false');
       await page.evaluate(() => history.replaceState(null, '', location.pathname));
       await page.reload();
       await page.locator('#scene .floor-cell').first().waitFor();
       await openPanel();
       assert.equal(await page.locator('#sound-enabled').isChecked(), false, 'mute persists');
-      await page.locator('#sound-enabled').check();
+      await activate(page.locator('#view-button'));
+      await activate(page.locator('#sound-toggle'));
+      assert.equal(await page.locator('#sound-toggle').getAttribute('aria-pressed'), 'true', 'visible sound button enables audio');
+      await openPanel();
+      assert.equal(await page.locator('#sound-enabled').isChecked(), true, 'sound controls stay in sync');
+      await page.locator('#sound-volume').fill('0');
+      assert.equal(await page.locator('#sound-toggle').getAttribute('aria-pressed'), 'false', 'zero volume is visibly silent');
+      await activate(page.locator('#view-button'));
+      await activate(page.locator('#sound-toggle'));
+      assert.equal(await page.evaluate(() => StackingSounds.volume()), .65, 'enabling from zero restores an audible level');
+      await openPanel();
       await page.locator('#sound-volume').fill('35');
       await page.locator('#sound-volume').dispatchEvent('change');
       assert.equal(await page.evaluate(() => StackingSounds.volume()), .35);

@@ -7,7 +7,6 @@ Requires fonttools, brotli, Pillow and numpy.
 from __future__ import annotations
 
 import argparse
-from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
@@ -16,7 +15,6 @@ import shutil
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from fontTools.ttLib import TTFont
-from fontTools.pens.boundsPen import BoundsPen
 import base64
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -34,7 +32,6 @@ def main():
     cmap = font.getBestCmap()
     cps = list(range(0xac00, 0xd7a4)) + list(range(0x3131, 0x3164))
     assert all(cp in cmap for cp in cps)
-    em = font['head'].unitsPerEm
     temp = ROOT / 'tmp/handwriting-font/reference-build.ttf'
     font.flavor = None
     font.save(temp)

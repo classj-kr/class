@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   let lastAt = -Infinity;
+  let lastKind;
   const voices = [];
   let noiseBuffer;
   let noiseContext;
@@ -12,8 +13,10 @@
     if (!bus) return false;
     const { context: ctx, output } = bus;
     const now = ctx.currentTime;
-    if (now - lastAt < .035) return false;
+    // An answer checked just after placing a cube must still get its fanfare.
+    if (now - lastAt < .035 && (kind === lastKind || !['success', 'found'].includes(kind))) return false;
     lastAt = now;
+    lastKind = kind;
     // Each action owns its short-lived nodes; rapid tapping cannot accumulate voices.
     const nodes = [], sources = [];
     const voice = ctx.createGain();
@@ -63,9 +66,17 @@
     else if (kind === 'undo') { knock(0, 520, .65); knock(.07, 350, .65); }
     else if (kind === 'clear') [500, 390, 310, 240].forEach((note, i) => knock(i * .045, note, .55));
     else if (kind === 'success' || kind === 'found') {
-      const notes = kind === 'success' ? [523.25, 659.25, 783.99, 1046.5] : [523.25, 659.25, 783.99];
-      notes.forEach((note, i) => { tone(note, i * .085, .3, .26, 'triangle'); tone(note * 2, i * .085, .22, .07); });
-      tone(261.63, .02, .4, .2);
+      const complete = kind === 'success';
+      const notes = complete ? [523.25, 659.25, 783.99, 1046.5] : [523.25, 659.25, 783.99];
+      notes.forEach((note, i) => {
+        tone(note, i * .12, .34, .34, 'triangle');
+        tone(note * 2, i * .12, .25, .09);
+      });
+      tone(261.63, .02, .5, .24);
+      if (complete) {
+        [523.25, 659.25, 783.99, 1046.5].forEach(note => tone(note, .52, .62, .13, 'triangle'));
+        tone(2093, .64, .45, .07);
+      }
     } else if (kind === 'retry') { tone(330, 0, .12, .2, 'triangle'); tone(294, .11, .16, .18, 'triangle'); }
     else if (kind === 'save') { knock(0, 660, .55); tone(880, .075, .2, .22, 'triangle'); }
     else if (kind === 'view') { tone(420, 0, .075, .16, 'sine', 680); }

@@ -24,6 +24,7 @@
   let frame = 0;
   let announcementTimer;
   let feedbackTimer;
+  let celebrationTimer;
   const pointers = new Map();
   let gesture = null;
   let targetGesture = null;
@@ -189,7 +190,42 @@
     return pieces.join('');
   }
 
+  function clearCelebration() {
+    clearTimeout(celebrationTimer);
+    $('celebration').hidden = true;
+    $('celebration-confetti').replaceChildren();
+  }
+
+  function celebrate() {
+    clearCelebration();
+    const partial = challenge.state === 'found';
+    const overlay = $('celebration');
+    overlay.classList.toggle('is-found', partial);
+    $('celebration-title').textContent = partial ? '첫 번째 모양 발견!' : '성공!';
+    $('celebration-message').textContent = partial ? '세 방향의 모습이 모두 맞아요.'
+      : challenge.mode === 'many' ? '서로 다른 두 모양을 찾았어요!'
+      : challenge.mode === 'copy' ? '목표 모양과 똑같이 쌓았어요!' : '위·앞·옆 모습이 모두 맞아요!';
+    $('celebration-next').textContent = partial ? '다른 모양을 하나 더 찾아보세요'
+      : challenge.index + 1 < challenge.questions.length ? '다음 모양에도 도전해 보세요' : '활동을 모두 해냈어요!';
+    const colors = ['#efbd44', '#398362', '#75bb9a', '#ed8662', '#71a9d3', '#c09acb'];
+    const pieces = document.createDocumentFragment();
+    for (let i = 0; i < (partial ? 22 : 48); i++) {
+      const piece = document.createElement('i');
+      piece.className = 'confetti-piece';
+      const x = (Math.random() - .5) * 92;
+      piece.style.cssText = `--x:${x}vw;--drift:${x * 1.2}vw;--rise:${-14 - Math.random() * 30}vh;--turn:${(i % 2 ? 1 : -1) * (160 + Math.random() * 360)}deg;--size:${7 + Math.random() * 7}px;--color:${colors[i % colors.length]};--duration:${1.6 + Math.random() * .7}s;--delay:${Math.random() * .16}s`;
+      pieces.append(piece);
+    }
+    $('celebration-confetti').append(pieces);
+    // Restart the entrance even when a new answer follows the previous one immediately.
+    overlay.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+    overlay.hidden = false;
+    celebrationTimer = setTimeout(clearCelebration, 2600);
+    sound(partial ? 'found' : 'success');
+  }
+
   function resetAnswer() {
+    clearCelebration();
     if (!challenge) return;
     challenge.state = 'ready';
     $('challenge-result').textContent = '';
@@ -227,6 +263,7 @@
   }
 
   function startActivity(mode, questions = activities.questions(mode), index = 0, keepHash = false) {
+    clearCelebration();
     dialog.close();
     closePanel();
     stopTargetRotation();
@@ -250,6 +287,7 @@
   }
 
   function openActivities() {
+    clearCelebration();
     closePanel();
     library.refresh();
     document.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === (challenge?.mode || 'free'))));
@@ -294,12 +332,12 @@
         challenge.found.add(key);
         challenge.state = challenge.found.size >= 2 ? 'solved' : 'found';
         result.textContent = challenge.state === 'solved' ? '성공! 서로 다른 두 모양을 찾았어요.' : '첫 번째 답을 찾았어요.';
-        sound(challenge.state === 'solved' ? 'success' : 'found');
+        celebrate();
       }
     } else {
       challenge.state = 'solved';
       result.textContent = '성공!';
-      sound('success');
+      celebrate();
     }
     updatePractice();
   });
@@ -369,15 +407,35 @@
     feedback('쌓기판을 비웠어요 · 되돌리기로 복원할 수 있어요');
   });
   $('undo').addEventListener('click', undo);
-  $('sound-enabled').checked = !window.StackingSounds.muted();
+  function updateSoundControls() {
+    const enabled = !window.StackingSounds.muted();
+    const audible = enabled && window.StackingSounds.volume() > 0;
+    $('sound-enabled').checked = enabled;
+    $('sound-volume').disabled = !enabled;
+    $('sound-toggle').setAttribute('aria-pressed', String(audible));
+    const label = audible ? '효과음 끄기' : '효과음 켜기';
+    $('sound-toggle').setAttribute('aria-label', label);
+    $('sound-toggle').title = label;
+  }
+  updateSoundControls();
   $('sound-volume').value = Math.round(window.StackingSounds.volume() * 100);
-  $('sound-volume').disabled = !$('sound-enabled').checked;
+  $('sound-toggle').addEventListener('click', () => {
+    const enable = $('sound-toggle').getAttribute('aria-pressed') !== 'true';
+    window.StackingSounds.setMuted(!enable);
+    if (enable && window.StackingSounds.volume() === 0) window.StackingSounds.setVolume(.65);
+    $('sound-volume').value = Math.round(window.StackingSounds.volume() * 100);
+    updateSoundControls();
+    if (enable) sound('found');
+  });
   $('sound-enabled').addEventListener('change', event => {
     window.StackingSounds.setMuted(!event.target.checked);
-    $('sound-volume').disabled = !event.target.checked;
+    updateSoundControls();
     if (event.target.checked) sound('add', 2);
   });
-  $('sound-volume').addEventListener('input', event => window.StackingSounds.setVolume(Number(event.target.value) / 100));
+  $('sound-volume').addEventListener('input', event => {
+    window.StackingSounds.setVolume(Number(event.target.value) / 100);
+    updateSoundControls();
+  });
   $('sound-volume').addEventListener('change', () => sound('add', 2));
 
   function cellFromTarget(target) {
