@@ -23,7 +23,7 @@ async function main(){
     if(fixture)await page.route('**/baduk-coach.js?*',async route=>{
       const response=await route.fetch();await route.fulfill({response,body:`BadukCoachRules.initial=()=>(${JSON.stringify(fixture)});\n`+await response.text()});
     });
-    await page.goto(`${base}/learning/games/board-coach/coach.html?game=baduk`);
+    await page.goto(`${base}/learning/games/board-coach/baduk.html?game=baduk`);
     assert.equal(await page.locator('html').getAttribute('data-coach-state'),'ready');
     assert.equal(await page.locator('input[name=level]').count(),5);
     await page.locator(`input[name=mode][value=${mode}]`).check();await page.locator(`input[name=color][value='${color}']`).check();
@@ -71,7 +71,7 @@ async function main(){
     fixture=R.initial();fixture.board[10]=1;fixture.board[16]=1;fixture.board[17]=2;fixture.board[24]=1;fixture.history=[R.key(fixture.board)];fixture.captures=[2,0];
     const win=await boot('capture','1',fixture);await win.locator('[data-index="18"]').click();
     assert.equal(await win.locator('[data-index="17"] .stone').count(),0);assert.match(await win.locator('#turn').innerText(),/내가 이겼/);
-    assert.match(await win.locator('#badukStatus').innerText(),/흑 3/);await win.locator('#reviewList button').first().click();
+    assert.equal(await win.locator('#blackCaptured').innerText(),'3');await win.locator('#reviewList button').first().click();
     assert.equal(await win.locator('[data-index="17"] .stone.white').count(),1);await win.close();
     fixture=R.initial('standard');fixture.board[40]=1;fixture.board[0]=2;fixture.passes=1;fixture.history=[R.key(fixture.board)];
     const scoring=await boot('standard','1',fixture);await scoring.locator('#badukPass').click();await scoring.locator('#badukScoring').waitFor({state:'visible'});
@@ -79,13 +79,42 @@ async function main(){
     await capture(scoring,'standard-scoring');await scoring.locator('#badukResume').click();assert.equal(await scoring.locator('.dead-stone').count(),0);
     await scoring.locator('#undo').click();await scoring.locator('#badukPass').click();await scoring.locator('[data-index="0"]').click();await scoring.locator('#badukAgree').click();
     assert.match(await scoring.locator('#badukStatus').innerText(),/최종 점수/);assert.equal(await scoring.locator('#hint').isDisabled(),true);await scoring.close();
+    // Finish is reversible and cancels a pending AI response without placing it.
+    const finish=await boot('standard');await finish.route('**/baduk-worker.js?*',async route=>{await new Promise(r=>setTimeout(r,800));try{await route.continue();}catch{}});
+    await finish.locator('[data-index="40"]').click();await finish.locator('#badukFinish').click();
+    await finish.waitForTimeout(1100);assert.equal(await finish.locator('#board .stone').count(),1);
+    assert.equal(await finish.locator('#badukScoring').isVisible(),true);await finish.unroute('**/baduk-worker.js?*');
+    await finish.locator('#badukResume').click();await finish.locator('#hint:not(:disabled)').waitFor();assert.equal(await finish.locator('#board .stone').count(),2);
+    await finish.locator('#badukFinish').click();await finish.locator('#badukAgree').click();assert.match(await finish.locator('#badukStatus').innerText(),/최종 점수/);await finish.close();
+    // Compare the actual multiplayer screen, not a hand-drawn reference.
+    const look=async p=>p.evaluate(()=>{
+      const read=(selector,props,pseudo)=>{const s=getComputedStyle(document.querySelector(selector),pseudo);return props.map(p=>s[p]);};
+      return {background:read('body',['backgroundImage','backgroundColor','fontFamily']),
+        frame:read('.board-frame',['backgroundColor','borderTopColor','borderTopWidth','borderRadius','boxShadow']),
+        black:read('.stone.black',['backgroundImage','boxShadow','borderRadius']),white:read('.stone.white',['backgroundImage','boxShadow','borderRadius']),
+        lines:read('.point',['backgroundColor','height'],'::before'),vertical:read('.point',['backgroundColor','width'],'::after')};
+    });
     for(const viewport of [{width:390,height:844},{width:768,height:1024},{width:1280,height:850}]){
+      const sample=R.initial('standard');sample.board[20]=1;sample.board[30]=2;sample.board[40]=1;sample.board[41]=2;sample.last=41;sample.count=4;sample.history=[R.key(sample.board)];
+      const original=await browser.newPage({viewport});await original.goto(`${base}/learning/games/baduk/baduk.html`);
+      await original.evaluate(sample=>{
+        lobby={snapshot:()=>({myId:'human',role:'guest',roomCode:'1234',players:{human:{name:'나'},computer:{name:'AI'}}})};
+        gameState={...sample,turn:0,moveCount:sample.count,playerOrder:['human','computer'],lastMove:{row:4,col:5},draw:false};
+        document.getElementById('missingScreen').classList.add('hidden');showGame();renderGame();
+      },sample);
+      const matching=await boot('standard','1',sample,viewport);
+      assert.deepEqual(await look(matching),await look(original),'board artwork must use the original game stylesheet');
+      assert.equal(await matching.locator('.baduk-coordinate').count(),0,'do not print labels on every intersection');
+      assert.equal(await matching.locator('link[href^="coach.css"],link[href^="game-theme.css"]').count(),0);
+      await capture(original,`original-${viewport.width}`);await capture(matching,`matched-${viewport.width}`);
+      await original.close();await matching.close();
       const p=await boot('standard','1',null,viewport);await p.locator('#hint').click();await p.locator('.square.suggested').waitFor();
       assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
       assert.ok(await p.locator('#board').evaluate(el=>{const r=el.getBoundingClientRect();return r.width>250&&Math.abs(r.width-r.height)<2;}));
       assert.ok(await p.locator('.explanation').evaluate(el=>{const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight+1;}));
       await capture(p,`hint-${viewport.width}`);await p.close();
     }
+    const legacy=await browser.newPage();await legacy.goto(`${base}/learning/games/board-coach/coach.html?game=baduk`);await legacy.waitForURL('**/baduk.html?game=baduk');await legacy.locator('#setup[open]').waitFor();await legacy.close();
     // Shared shell continues to boot the other four games.
     for(const game of ['chess','janggi','omok','reversi']){
       const p=await browser.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(`${base}/learning/games/board-coach/coach.html?game=${game}`);

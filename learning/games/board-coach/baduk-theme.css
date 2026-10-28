@@ -1,30 +1,48 @@
-body.original-coach.baduk-surface {
-  --ink:#f5efe3;--muted:#d0c1a9;--accent:#efd29a;--edge:#816744;
-  --panel:#211b14f0;--card:#17130e;--radius:12px;--button:#34291c;
-  --primary:linear-gradient(#edcf95,#bf9252);--primary-ink:#201307;
-  --scene:linear-gradient(#17110988,#171109bb),url('../baduk/assets/images/background.webp');
+/* Learning controls only. Board art and match layout come from baduk/baduk.css. */
+html:not([data-coach-state="ready"]) .shell,html:not([data-coach-state="ready"]) dialog{visibility:hidden}
+#coachLoading{position:fixed;inset:0;z-index:100;display:grid;align-content:center;justify-content:center;gap:12px;background:#16130f;text-align:center}
+html[data-coach-state="ready"] #coachLoading{display:none}
+.baduk-learning a.secondary{display:inline-flex;align-items:center;text-decoration:none;min-height:44px}
+.baduk-learning button:disabled{cursor:default;opacity:.45}
+.baduk-learning .point:disabled{opacity:1}
+.baduk-learning button:focus-visible,.baduk-learning a:focus-visible,.baduk-learning input:focus-visible{outline:3px solid #f2c67d;outline-offset:2px}
+.baduk-learning .coach-caption{font-size:13px;text-align:center;margin-top:10px}
+.baduk-learning #score{font-size:20px;min-width:54px}
+.baduk-learning .hint-ring,.baduk-learning .threat-ring{position:absolute;inset:8%;border:3px dashed #185f9a;border-radius:50%;z-index:4;pointer-events:none}
+.baduk-learning .threat-ring{border:3px solid #dc4a37;box-shadow:0 0 0 1px #ffe1b5}
+.baduk-learning #badukPass.suggested{outline:3px dashed #e8bb72;outline-offset:2px}
+.baduk-learning .coach-notes{line-height:1.6;font-size:14px}
+.baduk-learning .coach-notes>section{margin:12px 0 0;padding:12px 0 0;border:0;border-top:1px solid #685237;border-radius:0;background:none;box-shadow:none}
+.baduk-learning .coach-notes h2,.baduk-learning .coach-notes h3{font-size:15px;color:#ffe0a8;margin:4px 0}
+.baduk-learning .coach-notes p{margin:6px 0 10px;overflow-wrap:anywhere}
+.baduk-learning .eyebrow{color:#cbbca7;font-size:12px}
+.baduk-learning .opponent-danger{color:#ffb49e}
+.baduk-learning #reviewList{display:grid;gap:8px;margin:10px 0}
+.baduk-learning #reviewList button{text-align:left;font-size:14px;line-height:1.55}
+.baduk-learning #reviewList strong{display:block}
+.baduk-learning dialog{width:min(520px,calc(100% - 28px));max-height:calc(100dvh - 28px);overflow:auto;padding:22px;border:1px solid #aa7f45;border-radius:16px;background:#241b13;color:#f5efe3;box-shadow:0 18px 50px #0007}
+.baduk-learning dialog::backdrop{background:#090704df}
+.baduk-learning dialog h2{font-size:20px;margin:0 0 10px}
+.baduk-learning dialog p{line-height:1.6}
+.baduk-learning fieldset{border:0;padding:0;margin:18px 0;display:grid;gap:8px}
+.baduk-learning legend{font-weight:800;margin-bottom:8px}
+.baduk-learning .option{display:flex;align-items:center;gap:10px}
+.baduk-learning .option:has(input:checked){border-color:#f2c67d;box-shadow:0 0 0 1px #f2c67d35}
+.baduk-learning .option small{display:block;margin-top:4px;color:#cbbca7;font-size:13px}
+.baduk-learning input{accent-color:#d6a45d}
+.baduk-learning .level-options{grid-template-columns:repeat(5,minmax(0,1fr))}
+.baduk-learning .level-options .option{justify-content:center;padding:10px 4px}
+.baduk-learning .color-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.baduk-learning #startLearning{width:100%}
+.baduk-learning .resign-choices{display:flex;gap:8px;margin-top:16px}
+@media(min-width:900px) and (orientation:landscape){
+  .baduk-learning #badukHeader{max-height:100%;overflow:auto;scrollbar-width:thin;scrollbar-color:#806342 #211a14}
 }
-.baduk-surface .board-frame {padding:12px;background:#a7773e;border:4px solid #795328;border-radius:8px;}
-.baduk-surface #board {background:#dfb77c;}
-.baduk-surface #board .point {border:0;background:transparent;border-radius:0;}
-.baduk-surface .point::before {content:'';position:absolute;inset:0;background:linear-gradient(#614328,#614328) center/1px 100% no-repeat,linear-gradient(#614328,#614328) center/100% 1px no-repeat;pointer-events:none;}
-.baduk-surface .point.edge-left::before {left:50%;background-position:left center;}
-.baduk-surface .point.edge-right::before {right:50%;background-position:right center;}
-.baduk-surface .point.edge-top::before {top:50%;background-position:center top;}
-.baduk-surface .point.edge-bottom::before {bottom:50%;background-position:center bottom;}
-.baduk-surface .point.edge-left.edge-top::before {background-position:left top;}
-.baduk-surface .point.edge-right.edge-top::before {background-position:right top;}
-.baduk-surface .point.edge-left.edge-bottom::before {background-position:left bottom;}
-.baduk-surface .point.edge-right.edge-bottom::before {background-position:right bottom;}
-.baduk-surface .stone {inset:7%;z-index:1;}
-.baduk-surface .point.last::after {content:'';position:absolute;inset:44%;background:#cf3e29;border:1px solid #fff3c2;border-radius:50%;z-index:2;pointer-events:none;}
-.baduk-surface .hint-ring {border-color:#185f9a;background:#a9d9ff44;z-index:3;}
-.baduk-surface .point:not(:disabled):hover {background:#ffffff30!important;}
-.baduk-surface .dead-stone .stone {opacity:.38;}
-.baduk-surface .point.dead-stone::after {content:'×';position:absolute;inset:0;display:grid;place-items:center;background:transparent;border:0;border-radius:0;color:#a31b13;font-size:32px;z-index:3;}
-.baduk-surface .baduk-coordinate {position:absolute;left:2px;bottom:1px;font-size:10px;line-height:1;color:#493015;z-index:2;pointer-events:none;}
-.baduk-surface #badukScoring p {margin:8px 0;}
-.baduk-surface #badukScoring button {width:100%;margin-top:8px;}
-.baduk-surface #badukPass.suggested {outline:3px dashed #efd29a;outline-offset:2px;}
-.baduk-surface .threat-ring {z-index:4;}
-.baduk-surface #badukStatus {font-size:14px;}
+@media(max-width:899px),(orientation:portrait){
+  .baduk-learning #badukHeader>.row:first-child{padding-left:34px}
+  .baduk-learning .shell>.coach-notes{margin-top:12px;padding:0 12px 12px;border:1px solid #806342;border-radius:16px;background:#211a14ed;box-shadow:0 18px 50px #0007}
+  .baduk-learning .shell>.coach-notes>section:first-child{border-top:0}
+}
+.baduk-learning #badukFinish{width:100%;margin-top:10px}
+.baduk-learning .unified-music-control{top:auto;bottom:max(12px,env(safe-area-inset-bottom))}
+.baduk-learning .unified-music-control .unified-audio-panel{top:auto;bottom:56px}

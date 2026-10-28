@@ -89,3 +89,21 @@ test('seeded practice games finish legally; stronger searches preserve history a
   const answer=AI.chooseHint(s,{ms:100,nodes:100});assert.ok(R.play(s,answer.index));assert.equal(JSON.stringify(s),before);
   assert.ok(Date.now()-start<2000,'a small budget must return promptly');assert.ok(answer.depth>=1);
 });
+test('settled groups with larger eyes pass and end after the other player passes, even when behind',()=>{
+  for(const color of [1,2])for(const level of levels){
+    const s=position(['1112222','1012022','1012222','1112222','1012022','1112222','1112222'],color,'standard');
+    s.passes=1;
+    const answer=AI.choose(s,level);assert.equal(answer.index,-1);assert.equal(R.play(s,answer.index).scoring,true);
+    assert.equal(AI.chooseHint(s).index,-1);
+  }
+  const opening=R.play(R.initial('standard'),-1);assert.notEqual(AI.choose(opening).index,-1,'one early pass does not end an unfinished board');
+  const capture=position(['0000000','0001000','0012000','0001000','0000000','0000000','0000000'],1,'standard');capture.passes=1;
+  assert.equal(AI.choose(capture).index,18,'still capture a stone in atari');
+});
+test('manual scoring preserves the exact board and turn until confirmation or resume',()=>{
+  const s=R.play(R.initial('standard'),40),before=JSON.stringify(s),pending=R.beginScoring(s);
+  assert.equal(pending.scoring,true);assert.equal(pending.ended,false);assert.equal(pending.count,s.count);assert.equal(pending.color,s.color);
+  assert.deepEqual(pending.board,s.board);assert.deepEqual(pending.history,s.history);assert.equal(JSON.stringify(s),before);
+  const resumed=R.resume(R.toggleDead(pending,40));assert.deepEqual(resumed.board,s.board);assert.deepEqual(resumed.dead,[]);assert.equal(resumed.color,s.color);
+  assert.equal(R.beginScoring(R.initial('capture')).scoring,false);
+});

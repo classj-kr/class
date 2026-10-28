@@ -1,125 +1,16 @@
 (function (root) {
   'use strict';
-  // Original centre-line models on a 100 × 100 square. One array = one pen-down.
-  // Stroke divisions/directions: Sejong Korean 1 (2011), preliminary unit, pp.18–21.
-  const line = (...p) => p;
-  const circle = () =>
-    Array.from({ length: 41 }, (_, i) => {
-      const a = -Math.PI / 2 - (i * Math.PI) / 20;
-      return [50 + 30 * Math.cos(a), 52 + 30 * Math.sin(a)];
-    });
-  const shapes = {
-    ㄱ: [line([20, 22], [80, 22], [80, 80])],
-    ㄴ: [line([20, 20], [20, 80], [80, 80])],
-    ㄷ: [line([20, 22], [80, 22]), line([20, 22], [20, 80], [80, 80])],
-    ㄹ: [line([20, 20], [80, 20], [80, 50]), line([20, 50], [80, 50]), line([20, 50], [20, 80], [80, 80])],
-    ㅁ: [line([20, 22], [20, 80]), line([20, 22], [80, 22], [80, 80]), line([20, 80], [80, 80])],
-    ㅂ: [
-      line([20, 20], [20, 80]),
-      line([80, 20], [80, 80]),
-      line([20, 48], [80, 48]),
-      line([20, 80], [80, 80]),
-    ],
-    ㅅ: [line([50, 22], [43, 49], [20, 80]), line([48, 39], [61, 60], [80, 80])],
-    ㅇ: [circle()],
-    ㅈ: [line([20, 22], [80, 22], [56, 52], [20, 80]), line([53, 48], [80, 80])],
-    ㅊ: [line([40, 12], [60, 12]), line([20, 32], [80, 32], [56, 58], [20, 85]), line([53, 53], [80, 85])],
-    ㅋ: [line([20, 22], [80, 22], [80, 80]), line([20, 50], [80, 50])],
-    ㅌ: [line([20, 20], [80, 20]), line([20, 48], [80, 48]), line([20, 20], [20, 80], [80, 80])],
-    ㅍ: [
-      line([15, 22], [85, 22]),
-      line([32, 22], [32, 80]),
-      line([68, 22], [68, 80]),
-      line([15, 80], [85, 80]),
-    ],
-    ㅎ: [
-      line([40, 12], [60, 12]),
-      line([18, 30], [82, 30]),
-      circle().map(([x, y]) => [x, 42 + (y - 22) * 0.65]),
-    ],
-    ㅏ: [line([45, 15], [45, 85]), line([45, 48], [78, 48])],
-    ㅑ: [line([45, 15], [45, 85]), line([45, 35], [78, 35]), line([45, 65], [78, 65])],
-    ㅓ: [line([22, 48], [55, 48]), line([55, 15], [55, 85])],
-    ㅕ: [line([22, 35], [55, 35]), line([22, 65], [55, 65]), line([55, 15], [55, 85])],
-    ㅗ: [line([50, 22], [50, 65]), line([15, 65], [85, 65])],
-    ㅛ: [line([35, 22], [35, 65]), line([65, 22], [65, 65]), line([15, 65], [85, 65])],
-    ㅜ: [line([15, 35], [85, 35]), line([50, 35], [50, 80])],
-    ㅠ: [line([15, 35], [85, 35]), line([35, 35], [35, 80]), line([65, 35], [65, 80])],
-    ㅡ: [line([15, 50], [85, 50])],
-    ㅣ: [line([50, 15], [50, 85])],
-  };
-  const transform = (s, box) =>
-    s.map((p) => p.map(([x, y]) => [box[0] + (x * box[2]) / 100, box[1] + (y * box[3]) / 100]));
-  const join = (...s) => s.flat();
-  const pairs = {
-    ㄲ: 'ㄱㄱ',
-    ㄸ: 'ㄷㄷ',
-    ㅃ: 'ㅂㅂ',
-    ㅆ: 'ㅅㅅ',
-    ㅉ: 'ㅈㅈ',
-    ㄳ: 'ㄱㅅ',
-    ㄵ: 'ㄴㅈ',
-    ㄶ: 'ㄴㅎ',
-    ㄺ: 'ㄹㄱ',
-    ㄻ: 'ㄹㅁ',
-    ㄼ: 'ㄹㅂ',
-    ㄽ: 'ㄹㅅ',
-    ㄾ: 'ㄹㅌ',
-    ㄿ: 'ㄹㅍ',
-    ㅀ: 'ㄹㅎ',
-    ㅄ: 'ㅂㅅ',
-  };
-  for (const [c, p] of Object.entries(pairs))
-    shapes[c] = join(transform(shapes[p[0]], [0, 0, 47, 100]), transform(shapes[p[1]], [53, 0, 47, 100]));
-  for (const [c, p] of Object.entries({ ㅐ: 'ㅏ', ㅒ: 'ㅑ', ㅔ: 'ㅓ', ㅖ: 'ㅕ' })) {
-    shapes[c] = join(transform(shapes[p], [0, 0, 75, 100]), [line([85, 15], [85, 85])]);
-  }
-  const compounds = {
-    ㅘ: ['ㅗ', 'ㅏ'],
-    ㅙ: ['ㅗ', 'ㅐ'],
-    ㅚ: ['ㅗ', 'ㅣ'],
-    ㅝ: ['ㅜ', 'ㅓ'],
-    ㅞ: ['ㅜ', 'ㅔ'],
-    ㅟ: ['ㅜ', 'ㅣ'],
-    ㅢ: ['ㅡ', 'ㅣ'],
-  };
-  for (const [c, [a, b]] of Object.entries(compounds))
-    shapes[c] = join(transform(shapes[a], [0, 28, 58, 72]), transform(shapes[b], [50, 0, 50, 100]));
-  const CHO = Array.from('ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ');
-  const JUNG = Array.from('ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ');
-  const JONG = ['', ...Array.from('ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ')];
-  function model(char) {
-    if (shapes[char]) return transform(shapes[char], [0, 0, 100, 100]);
-    const n = char?.codePointAt(0) - 0xac00;
-    if (!Number.isInteger(n) || n < 0 || n >= 11172) return null;
-    const a = CHO[Math.floor(n / 588)],
-      b = JUNG[Math.floor(n / 28) % 21],
-      c = JONG[n % 28];
-    const h = c ? 65 : 100;
-    let first, vowel;
-    if ('ㅗㅛㅜㅠㅡ'.includes(b)) {
-      first = [13, 0, 74, h * 0.56];
-      vowel = [5, h * 0.52, 90, h * 0.48];
-    } else if (compounds[b]) {
-      first = [3, 0, 49, h * 0.57];
-      vowel = [0, 0, 100, h];
-    } else {
-      first = [0, 0, 56, h];
-      vowel = [51, 0, 49, h];
-    }
-    return join(
-      transform(shapes[a], first),
-      transform(shapes[b], vowel),
-      c ? transform(shapes[c], [8, 67, 84, 33]) : [],
-    );
-  }
+  const Font = typeof module === 'object' && module.exports ? require('./stroke-topology') : root.HandwritingStrokeTopology;
+  const Reference = typeof module === 'object' && module.exports ? require('./reference') : root.HandwritingReference;
+  const { CHO, JUNG, JONG } = Font;
+  const model = Reference.model;
   const chars = (text) =>
     Array.from(
       String(text || '')
         .normalize('NFC')
         .replace(/\s/g, ''),
     ).slice(0, 48);
-  const supported = (text) => chars(text).length > 0 && chars(text).every((c) => model(c));
+  const supported = (text) => chars(text).length > 0 && chars(text).every((c) => Reference.has(c));
   const distance = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
   const length = (p) => p.slice(1).reduce((v, b, i) => v + distance(p[i], b), 0);
   function sample(p, n = 32) {
@@ -158,26 +49,8 @@
         actual: strokes?.length || 0,
       };
     const actual = Array.isArray(strokes) ? strokes.map((s) => s.points || s) : [];
-    const used = new Set();
-    let geometry = 0,
-      correct = 0;
+    let correct = 0;
     expected.forEach((s, i) => {
-      let best = Infinity,
-        bestIndex = -1;
-      actual.forEach((p, j) => {
-        if (used.has(j)) return;
-        const e = Math.min(strokeError(s, p), strokeError(s, [...p].reverse()));
-        if (e < best) {
-          best = e;
-          bestIndex = j;
-        }
-      });
-      if (bestIndex >= 0) {
-        used.add(bestIndex);
-        const ratio =
-          Math.min(length(s), length(actual[bestIndex])) / Math.max(1, length(s), length(actual[bestIndex]));
-        geometry += Math.max(0, 1 - best / 25) * ratio;
-      }
       const p = actual[i];
       if (!p) return;
       const forward = strokeError(s, p),
@@ -198,7 +71,7 @@
       )
         correct++;
     });
-    const shape = Math.round((100 * geometry) / Math.max(expected.length, actual.length));
+    const shape = Reference.shape(char, actual);
     const order = actual.length === expected.length && correct === expected.length;
     return {
       supported: true,
