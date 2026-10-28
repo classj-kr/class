@@ -147,11 +147,12 @@ test('menu placement, independent phases, input priority, cancellation, undo and
     .locator('#category-literacy-panel > a, #category-literacy-panel > details > summary')
     .allTextContents();
   assert.match(names[0], /읽기/);
-  assert.match(names[1], /글씨 쓰기/);
+  assert.match(names[1], /쓰기/);
   assert.equal(await page.locator('#category-literacy-panel a[href*=metacognition]').count(), 0);
   assert.equal(await page.locator('#category-exploration-panel a[href*=metacognition]').count(), 1);
   assert.equal(await page.locator('#category-exploration-toggle .category-label').textContent(), '교과');
   assert.equal(await page.locator('#category-boardgame-toggle .category-label').textContent(), '게임');
+  await page.locator('[data-access-group="writing"] > summary').click();
   await page.locator('a[href="learning/literacy-numeracy/handwriting/"]').click();
   await page.waitForURL('**/handwriting/');
   await ready();
@@ -352,7 +353,7 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
   await drawLetter(page, '가');
   await page.evaluate(async () => {
     const older = HandwritingApp.snapshot();
-    older.version = 4;
+    older.version = 5;
     HandwritingApp.store.set('draft', older);
     await HandwritingApp.store.flush();
   });
@@ -360,9 +361,9 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
   await ready();
   const state = await page.evaluate(() => ({
     current: HandwritingApp.snapshot(),
-    older: HandwritingApp.store.get('legacy-draft-v4'),
+    older: HandwritingApp.store.get('legacy-draft-v5'),
   }));
-  assert.equal(state.current.version, 5);
+  assert.equal(state.current.version, 6);
   assert.equal(state.current.cells.trace[0].length, 0);
   assert.equal(state.older.cells.trace[0].length, 3);
 });

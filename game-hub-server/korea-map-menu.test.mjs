@@ -5,7 +5,7 @@ const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const groups = [...html.matchAll(/<details class="worksheet-group" data-access-group="([^"]+)">[\s\S]*?<\/details>/g)];
 const groupByName = new Map(groups.map((match) => [match[1], match[0]]));
 
-for (const groupName of ['story-books', 'grammar', 'vocabulary', 'information-computing', 'social-studies', 'science', 'arts-appreciation', 'arts-experience', 'music-theory']) {
+for (const groupName of ['story-books', 'writing', 'vocabulary', 'information-computing', 'social-studies', 'science', 'arts-appreciation', 'arts-experience', 'music-theory']) {
   assert.ok(groupByName.has(groupName), `Missing disclosure menu: ${groupName}`);
 }
 
@@ -53,13 +53,14 @@ for (const [href, label] of orderedVocabularyItems) {
   previousVocabularyIndex = itemIndex;
 }
 
-const grammar = groupByName.get('grammar') || '';
-assert.ok(grammar, 'Grammar tools must be grouped in one disclosure menu.');
-assert.match(grammar, /<strong>문법<\/strong><small>\(Grammar\)<\/small>/);
-assert.match(grammar, /href="learning\/literacy-numeracy\/spelling\/"[^>]*data-access-parent="grammar"/);
-assert.match(grammar, /href="learning\/literacy-numeracy\/sentence-building\/"[^>]*data-access-parent="grammar"/);
-assert.match(grammar, /<strong>문장 고르기<\/strong><small>\(Sentence Choice\)<\/small>/);
-assert.doesNotMatch(grammar, /<strong>문장 만들기<\/strong>/);
+const writing = groupByName.get('writing') || '';
+assert.ok(writing, 'Writing activities must be grouped in one disclosure menu.');
+assert.match(writing, /<strong>쓰기<\/strong><small>\(Writing\)<\/small>/);
+assert.match(writing, /href="learning\/literacy-numeracy\/handwriting\/"[^>]*data-access-parent="writing"/);
+assert.match(writing, /href="learning\/literacy-numeracy\/spelling\/"[^>]*data-access-parent="writing"/);
+assert.match(writing, /href="learning\/literacy-numeracy\/sentence-building\/"[^>]*data-access-parent="writing"/);
+assert.match(writing, /<strong>바른 문장 고르기<\/strong><small>\(Sentence Choice\)<\/small>/);
+assert.doesNotMatch(writing, /<strong>문장 만들기<\/strong>/);
 
 const science = groupByName.get('science') || '';
 assert.ok(science, 'Science experiments and models must share one subject menu.');

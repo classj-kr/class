@@ -44,7 +44,7 @@ for(const cp of cps){const p=F.model(String.fromCodePoint(cp));if(p)process.stdo
 def glyph(contours):
     pen = TTGlyphPen(None)
     for contour in contours:
-        points = [(round(x * 10), round(900 - y * 10)) for x, y in contour]
+        points = [(round(x * 10), round(800 - y * 10)) for x, y in contour]
         # Rounding is at 1/1000 em. Consecutive identical points add no geometry.
         points = [p for i, p in enumerate(points) if not i or p != points[i - 1]]
         if len(set(points)) < 3:
@@ -67,34 +67,34 @@ def main():
     empty = glyph([])
     glyphs = {'.notdef': empty, 'space': empty}
     cmap = {32: 'space', 0x3000: 'space'}
-    metrics = {'.notdef': (1000, 0), 'space': (500, 0)}
+    metrics = {'.notdef': (920, 0), 'space': (460, 0)}
     for cp, contours in records(args.specimen_only):
         name = f'uni{cp:04X}'
         glyphs[name] = glyph(contours)
         cmap[cp] = name
-        metrics[name] = (1000, 0)
+        metrics[name] = (920, 0)
     fb = FontBuilder(1000, isTTF=True)
     fb.setupGlyphOrder(list(glyphs))
     fb.setupCharacterMap(cmap)
     fb.setupGlyf(glyphs)
     for name, g in glyphs.items():
         if g.numberOfContours:
-            metrics[name] = (1000, g.xMin)
+            metrics[name] = (920, g.xMin)
     fb.setupHorizontalMetrics(metrics)
-    fb.setupHorizontalHeader(ascent=900, descent=-100, lineGap=0)
+    fb.setupHorizontalHeader(ascent=800, descent=-200, lineGap=0)
     fb.setupNameTable({
         'familyName': {'en': FAMILY, 'ko': '클래스제이 경필명조'},
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'ClassJ-GyeongpilMyeongjo-0.5',
+        'uniqueFontIdentifier': 'ClassJ-GyeongpilMyeongjo-0.8',
         'fullName': FAMILY + ' Regular',
         'psName': 'ClassJGyeongpilMyeongjo-Regular',
-        'version': 'Version 0.500',
+        'version': 'Version 0.800',
         'copyright': 'Original ClassJ lettering, 2026.',
         'designer': 'ClassJ',
         'description': 'Original pen lettering for Hangul practice. Glyphs and stroke-order models share the same source. No third-party font outlines.',
     })
-    fb.setupOS2(sTypoAscender=900, sTypoDescender=-100, sTypoLineGap=0,
-                usWinAscent=900, usWinDescent=100, usWeightClass=400,
+    fb.setupOS2(sTypoAscender=800, sTypoDescender=-200, sTypoLineGap=0,
+                usWinAscent=800, usWinDescent=200, usWeightClass=400,
                 fsType=0, fsSelection=64, sCapHeight=750)
     fb.setupPost()
     fb.setupMaxp()
@@ -123,11 +123,11 @@ def main():
         for cp in check_points:
             g = f['glyf'][mapping[cp]]
             assert g.numberOfContours > 0
-            assert 0 <= g.xMin < g.xMax <= 1000 and -80 <= g.yMin < g.yMax <= 900, (hex(cp),g.xMin,g.yMin,g.xMax,g.yMax)
+            assert 0 <= g.xMin < g.xMax <= 1000 and -180 <= g.yMin < g.yMax <= 800, (hex(cp),g.xMin,g.yMin,g.xMax,g.yMax)
         f.close()
     print('Font tables verified', flush=True)
     assert hashlib.sha256(SOURCE.read_bytes()).hexdigest() == source_hash, 'Font source changed during the build; rebuild before publishing.'
-    manifest = {'family': FAMILY, 'version': '0.500', 'hangulSyllables': sum(0xac00<=cp<=0xd7a3 for cp in cmap),
+    manifest = {'family': FAMILY, 'version': '0.800', 'hangulSyllables': sum(0xac00<=cp<=0xd7a3 for cp in cmap),
                 'compatibilityJamo': sum(0x3131<=cp<=0x3163 for cp in cmap), 'sourceSha256': source_hash,
                 'ttfBytes': ttf.stat().st_size, 'woff2Bytes': woff.stat().st_size}
     (args.output / 'font-manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')

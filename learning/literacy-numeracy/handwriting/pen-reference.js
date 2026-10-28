@@ -21,7 +21,7 @@
       const paths = Font.model(char);
       if (cache.size >= 256) cache.delete(cache.keys().next().value);
       cache.set(char, {
-        layout: [100, 0, 90],
+        layout: [100, 0, 80],
         paths,
         contours: paths.flatMap(Font.outlines),
         points: cloud(paths),
@@ -51,7 +51,7 @@
     has: supported,
     model: Font.model,
     shape,
-    layout: (char) => (supported(char) ? [100, 0, 90] : null),
+    layout: (char) => (supported(char) ? [100, 0, 80] : null),
     sample,
     FAMILY: Font.FAMILY,
     VERSION: Font.VERSION,
