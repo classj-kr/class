@@ -49,15 +49,19 @@
     $('codeLabel').textContent = s.code;
     $('roomPhase').textContent = writing ? '함께 쓰는 중' : results ? '이번 판 결과' : '입장·준비';
     $('readyButton').hidden = host || writing;
-    $('readyButton').textContent = s.me.ready ? '준비 취소' : '준비했어요';
+    $('readyButton').textContent = s.me.ready ? '준비 취소' : '준비';
     $('startRound').hidden = !host || writing;
     $('stopRound').hidden = !host || !writing;
     $('submitRound').hidden = host || !writing || s.me.status === '제출 완료';
     $('roomHelp').textContent = writing
-      ? `「${s.config.text}」 · ${s.config.phase === 'solo' ? '혼자 쓰기' : '따라 쓰기'} · 모두 쓴 뒤 제출하세요. 남은 시간 ${Math.max(0, Math.ceil((s.deadline - Date.now()) / 1000))}초`
+      ? `${Math.max(0, Math.ceil((s.deadline - Date.now()) / 1000))}초 남음`
       : results
-        ? '획순과 방향을 통과한 기록에 순위가 표시됩니다. 같은 일치도는 공동 순위예요. 다시 준비하면 다음 판을 할 수 있어요.'
-        : '학생들은 메인의 방번호 입력에서 들어와 준비를 눌러 주세요. 펜이 없는 기기는 터치나 마우스로 참여할 수 있어요.';
+        ? '획순 통과 기록으로 순위'
+        : '모두 준비하면 시작합니다.';
+    if (!state || s.phase !== document.body.dataset.roomPhase) {
+      $('rankingDetails').open = !writing;
+      document.body.dataset.roomPhase = s.phase;
+    }
     $('rankList').replaceChildren(
       ...s.participants.map((p) => {
         const li = document.createElement('li');
