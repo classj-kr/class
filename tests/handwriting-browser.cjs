@@ -111,7 +111,7 @@ test.before(async () => {
         }),
       );
       app.get(route + 'race/', (_, res) => res.sendFile(path.join(root, route, 'index.html')));
-      for (const f of ['styles.css', 'stroke-topology.js', 'reference-data.js', 'reference.js', 'core.js', 'app.js', 'race.js'])
+      for (const f of ['styles.css', 'font-source.js', 'pen-reference.js', 'core.js', 'app.js', 'race.js'])
         app.get(route + 'race/' + f, (_, res) => res.sendFile(path.join(root, route, f)));
     },
   });
@@ -346,33 +346,110 @@ test('custom text restores and guests do not persist a draft', async () => {
   }
 });
 
-test('the educational webfont matches its reference mask and the editor remains compact', async () => {
+test('older font drafts are preserved before opening a new handwriting sheet', async () => {
+  await page.goto(h.base + route);
+  await ready();
+  await drawLetter(page, '가');
+  await page.evaluate(async () => {
+    const older = HandwritingApp.snapshot();
+    older.version = 3;
+    HandwritingApp.store.set('draft', older);
+    await HandwritingApp.store.flush();
+  });
+  await page.reload();
+  await ready();
+  const state = await page.evaluate(() => ({
+    current: HandwritingApp.snapshot(),
+    older: HandwritingApp.store.get('legacy-draft-v3'),
+  }));
+  assert.equal(state.current.version, 4);
+  assert.equal(state.current.cells.trace[0].length, 0);
+  assert.equal(state.older.cells.trace[0].length, 3);
+});
+test('the original pen font matches the designed outlines and the editor remains compact', async () => {
   await page.goto(h.base + route);
   await ready();
   assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 80);
-  assert.equal(await page.locator('.page-header, .practice-tip, input[type=file], #saveFile, #openFile').count(), 0);
+  assert.equal(
+    await page.locator('.page-header, .practice-tip, input[type=file], #saveFile, #openFile').count(),
+    0,
+  );
   assert.equal(await page.locator('#settingsMenu').getAttribute('open'), null);
   const agreement = await page.evaluate(() => {
-    const canvas = document.createElement('canvas'); canvas.width=canvas.height=256;
-    const ctx=canvas.getContext('2d'), result={};
-    for(const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊ㅏㅓㅇㅎ')){
-      const glyph=HandwritingReference.glyph(char), layout=glyph.layout;
-      ctx.resetTransform();ctx.clearRect(0,0,256,256);ctx.scale(2.56,2.56);
-      ctx.font=layout[0]+'px PracticeReference';ctx.fillText(char,layout[1],layout[2]);
-      const pixels=ctx.getImageData(0,0,256,256).data,expected=new Set(glyph.points.map(p=>Math.floor(p[1]*32/100)*32+Math.floor(p[0]*32/100)));
-      let union=0,same=0;
-      for(let y=0;y<32;y++)for(let x=0;x<32;x++){
-        let alpha=0;for(let dy=0;dy<8;dy++)for(let dx=0;dx<8;dx++)alpha+=pixels[((y*8+dy)*256+x*8+dx)*4+3];
-        const actual=alpha/64>=20, target=expected.has(y*32+x);if(actual||target)union++;if(actual&&target)same++;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 256;
+    const ctx = canvas.getContext('2d'),
+      result = {};
+    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊ㅏㅓㅇㅎ')) {
+      const glyph = HandwritingReference.glyph(char),
+        layout = glyph.layout;
+      ctx.resetTransform();
+      ctx.clearRect(0, 0, 256, 256);
+      ctx.scale(2.56, 2.56);
+      ctx.font = layout[0] + 'px PracticeReference';
+      ctx.fillText(char, layout[1], layout[2]);
+      const pixels = ctx.getImageData(0, 0, 256, 256).data;
+      ctx.resetTransform();
+      ctx.clearRect(0, 0, 256, 256);
+      ctx.scale(2.56, 2.56);
+      ctx.beginPath();
+      for (const contour of glyph.contours) {
+        ctx.moveTo(...contour[0]);
+        for (const point of contour.slice(1)) ctx.lineTo(...point);
+        ctx.closePath();
       }
-      result[char]=same/union;
+      ctx.fill();
+      const expected = ctx.getImageData(0, 0, 256, 256).data;
+      let union = 0,
+        same = 0,
+        nearby = 0,
+        total = 0;
+      const near = (pixels, i) => {
+        const pixel = (i - 3) / 4,
+          x = pixel % 256,
+          y = Math.floor(pixel / 256);
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++) {
+            const nx = x + dx,
+              ny = y + dy;
+            if (nx >= 0 && nx < 256 && ny >= 0 && ny < 256 && pixels[(ny * 256 + nx) * 4 + 3] > 40)
+              return true;
+          }
+        return false;
+      };
+      for (let i = 3; i < pixels.length; i += 4) {
+        const actual = pixels[i] > 40,
+          target = expected[i] > 40;
+        if (actual || target) union++;
+        if (actual && target) same++;
+        if (actual) {
+          total++;
+          if (near(expected, i)) nearby++;
+        }
+        if (target) {
+          total++;
+          if (near(pixels, i)) nearby++;
+        }
+      }
+      result[char] = { overlap: same / union, nearby: nearby / total };
     }
     return result;
   });
-  for(const [char,value]of Object.entries(agreement))assert.ok(value>.7,char+': reference mask overlap '+value);
-  await shot('corrected-desktop');
-  await page.setViewportSize({width:390,height:844});
-  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-  assert.ok((await page.locator('#writingCanvas').boundingBox()).y<140);
-  await shot('corrected-mobile');
+  await shot('gyeongpil-desktop');
+  // Direct Canvas polygons and the OS font rasterizer quantize thin stems differently.
+  // Require both strong raw overlap and 99% agreement within one output pixel.
+  for (const [char, value] of Object.entries(agreement))
+    assert.ok(
+      value.overlap > 0.85 && value.nearby > 0.99,
+      char + ': original outline agreement ' + JSON.stringify(value),
+    );
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 140);
+  await shot('gyeongpil-mobile');
+  await page.setViewportSize({ width: 1366, height: 950 });
+  await page.selectOption('#lessonSelect', 'custom');
+  await page.fill('#customText', '꽃한글값읽');
+  await page.locator('#customForm button').click();
+  await shot('gyeongpil-final-consonants');
 });

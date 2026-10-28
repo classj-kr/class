@@ -35,7 +35,7 @@
     modelCanvas = $('modelCanvas');
   function fresh(text, lesson = 'custom', phase = 'trace') {
     return {
-      version: 3,
+      version: 4,
       text,
       lesson,
       phase,
@@ -54,7 +54,7 @@
   function normalize(raw) {
     if (
       !raw ||
-      raw.version !== 3 ||
+      raw.version !== 4 ||
       typeof raw.text !== 'string' ||
       raw.text.length > 160 ||
       C.chars(raw.text).length > 48 ||
@@ -584,8 +584,8 @@
     try {
       if (store.has('draft')) {
         const saved = store.get('draft');
-        if (saved?.version === 1 || saved?.version === 2) {
-          store.set('legacy-draft-v'+saved.version, saved);
+        if ([1, 2, 3].includes(saved?.version)) {
+          store.set('legacy-draft-v' + saved.version, saved);
           doc = fresh(saved.text, saved.lesson, saved.phase);
         } else doc = normalize(saved);
       }
