@@ -1,9 +1,9 @@
 {
   "family": "ClassJ Gyeongpil Myeongjo",
-  "version": "0.400",
+  "version": "0.500",
   "hangulSyllables": 11172,
   "compatibilityJamo": 51,
-  "sourceSha256": "bdc3ac8f64dc0104e55509c8156e222c2f359a7bbdef9ae82bd77219c4c6addd",
-  "ttfBytes": 21069896,
-  "woff2Bytes": 245000
+  "sourceSha256": "54e2ecd94f5e97e7c6c08adfe53f1898b171d077ebf21862f9e032abb19e13a7",
+  "ttfBytes": 20039812,
+  "woff2Bytes": 264476
 }

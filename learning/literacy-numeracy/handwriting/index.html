@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" />
     <title>글씨 쓰기</title>
-    <link rel="stylesheet" href="styles.css?v=20261028-6" />
+    <link rel="stylesheet" href="styles.css?v=20261028-7" />
   </head>
   <body>
     <main class="app">
@@ -45,6 +45,13 @@
               </select>
               <button id="testInput">펜 입력 확인</button>
               <p id="inputStatus" role="status">펜 또는 마우스</p>
+              <label for="cellSize">쓰기 칸 크기</label>
+              <select id="cellSize">
+                <option value="auto" selected>자동</option>
+                <option value="small">작게</option>
+                <option value="medium">보통</option>
+                <option value="large">크게</option>
+              </select>
               <label for="penWidth">펜 굵기</label
               ><select id="penWidth">
                 <option value="1">가늘게</option>
@@ -161,10 +168,10 @@
     <section id="printSheet" aria-label="인쇄용 글씨 연습지"></section>
     <div id="toast" class="toast" role="status" hidden></div>
     <script src="/assets/site-storage.js?v=20261006-1"></script>
-    <script src="font-source.js?v=20261028-6"></script>
-    <script src="pen-reference.js?v=20261028-6"></script>
-    <script src="core.js?v=20261028-6"></script>
-    <script src="app.js?v=20261028-6"></script>
-    <script src="race.js?v=20261028-6"></script>
+    <script src="font-source.js?v=20261028-7"></script>
+    <script src="pen-reference.js?v=20261028-7"></script>
+    <script src="core.js?v=20261028-7"></script>
+    <script src="app.js?v=20261028-7"></script>
+    <script src="race.js?v=20261028-7"></script>
   </body>
 </html>

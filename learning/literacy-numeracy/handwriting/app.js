@@ -35,7 +35,7 @@
     modelCanvas = $('modelCanvas');
   function fresh(text, lesson = 'custom', phase = 'trace') {
     return {
-      version: 4,
+      version: 5,
       text,
       lesson,
       phase,
@@ -54,7 +54,7 @@
   function normalize(raw) {
     if (
       !raw ||
-      raw.version !== 4 ||
+      raw.version !== 5 ||
       typeof raw.text !== 'string' ||
       raw.text.length > 160 ||
       C.chars(raw.text).length > 48 ||
@@ -132,7 +132,7 @@
     paint.scale(4, 4);
     reference(paint, letters()[doc.index], color);
     paint.globalCompositeOperation = 'destination-in';
-    path(paint, points, '#000', 8);
+    path(paint, points, '#000', 12);
     context.drawImage(layer, 0, 0, 100, 100);
   }
   function paper(context, char, strokes, { guide = true, trace = false, next = false } = {}) {
@@ -164,7 +164,7 @@
       context.setLineDash([]);
       context.strokeStyle = '#e3e7dd';
       context.lineWidth = 0.35;
-      context.strokeRect(10, 10, 80, 80);
+      context.strokeRect(4, 4, 92, 92);
     }
     const paths = C.model(char) || [];
     if (trace && referenceReady) reference(context, char, '#cdd3c7');
@@ -392,6 +392,7 @@
   bind(canvas);
   bind($('testCanvas'), true);
   window.addEventListener('blur', cancel);
+  window.addEventListener('resize', cancel);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancel();
   });
@@ -576,6 +577,16 @@
         referenceReady = false;
       });
     [store] = await Promise.all([SiteStorage.open('handwriting'), loaded]);
+    const cellSizes = ['auto', 'small', 'medium', 'large'];
+    const savedCellSize = store.get('cell-size');
+    const cellSize = cellSizes.includes(savedCellSize) ? savedCellSize : 'auto';
+    document.documentElement.dataset.cellSize = $('cellSize').value = cellSize;
+    $('cellSize').onchange = () => {
+      cancel();
+      const value = $('cellSize').value;
+      document.documentElement.dataset.cellSize = value;
+      store.set('cell-size', value);
+    };
     store.onError(() => {
       saveFailed = true;
       $('saveStatus').textContent = '연결 문제로 저장하지 못했어요.';
@@ -584,7 +595,7 @@
     try {
       if (store.has('draft')) {
         const saved = store.get('draft');
-        if ([1, 2, 3].includes(saved?.version)) {
+        if ([1, 2, 3, 4].includes(saved?.version)) {
           store.set('legacy-draft-v' + saved.version, saved);
           doc = fresh(saved.text, saved.lesson, saved.phase);
         } else doc = normalize(saved);
