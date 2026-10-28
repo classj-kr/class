@@ -215,7 +215,7 @@
     if (cache.size < 256) cache.set(char, paths);
     return paths.map((p) => p.map((v) => [...v]));
   }
-  const api = { model, outlines, CHO, JUNG, JONG, VERSION: 2, FAMILY: 'ClassJ Ttobak Myeongjo' };
+  const api = { model, CHO, JUNG, JONG };
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.HandwritingStrokeTopology = Object.freeze(api);
 })(typeof window === 'object' ? window : globalThis);

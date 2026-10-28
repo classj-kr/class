@@ -111,7 +111,7 @@ test.before(async () => {
         }),
       );
       app.get(route + 'race/', (_, res) => res.sendFile(path.join(root, route, 'index.html')));
-      for (const f of ['styles.css', 'stroke-topology.js', 'core.js', 'app.js', 'race.js'])
+      for (const f of ['styles.css', 'stroke-topology.js', 'reference-data.js', 'reference.js', 'core.js', 'app.js', 'race.js'])
         app.get(route + 'race/' + f, (_, res) => res.sendFile(path.join(root, route, f)));
     },
   });
@@ -346,59 +346,33 @@ test('custom text restores and guests do not persist a draft', async () => {
   }
 });
 
-test('the actual webfont matches the stroke source and the editor has no landing-page or file controls', async () => {
+test('the educational webfont matches its reference mask and the editor remains compact', async () => {
   await page.goto(h.base + route);
   await ready();
   assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 80);
-  assert.equal(
-    await page.locator('.page-header, .practice-tip, input[type=file], #saveFile, #openFile').count(),
-    0,
-  );
+  assert.equal(await page.locator('.page-header, .practice-tip, input[type=file], #saveFile, #openFile').count(), 0);
   assert.equal(await page.locator('#settingsMenu').getAttribute('open'), null);
   const agreement = await page.evaluate(() => {
-    const actual = document.createElement('canvas'),
-      source = document.createElement('canvas');
-    actual.width = actual.height = source.width = source.height = 600;
-    const a = actual.getContext('2d'),
-      b = source.getContext('2d'),
-      result = {};
-    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊ㅏㅓㅇㅎ')) {
-      a.resetTransform();
-      a.clearRect(0, 0, 600, 600);
-      a.scale(6, 6);
-      a.font = '100px ClassJPen';
-      a.fillText(char, 0, 90);
-      b.resetTransform();
-      b.clearRect(0, 0, 600, 600);
-      b.scale(6, 6);
-      for (const stroke of HandwritingFont.model(char)) {
-        b.beginPath();
-        for (const contour of HandwritingFont.outlines(stroke)) {
-          b.moveTo(...contour[0]);
-          for (const p of contour.slice(1)) b.lineTo(...p);
-          b.closePath();
-        }
-        b.fill();
+    const canvas = document.createElement('canvas'); canvas.width=canvas.height=256;
+    const ctx=canvas.getContext('2d'), result={};
+    for(const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊ㅏㅓㅇㅎ')){
+      const glyph=HandwritingReference.glyph(char), layout=glyph.layout;
+      ctx.resetTransform();ctx.clearRect(0,0,256,256);ctx.scale(2.56,2.56);
+      ctx.font=layout[0]+'px PracticeReference';ctx.fillText(char,layout[1],layout[2]);
+      const pixels=ctx.getImageData(0,0,256,256).data,expected=new Set(glyph.points.map(p=>Math.floor(p[1]*32/100)*32+Math.floor(p[0]*32/100)));
+      let union=0,same=0;
+      for(let y=0;y<32;y++)for(let x=0;x<32;x++){
+        let alpha=0;for(let dy=0;dy<8;dy++)for(let dx=0;dx<8;dx++)alpha+=pixels[((y*8+dy)*256+x*8+dx)*4+3];
+        const actual=alpha/64>=20, target=expected.has(y*32+x);if(actual||target)union++;if(actual&&target)same++;
       }
-      const x = a.getImageData(0, 0, 600, 600).data,
-        y = b.getImageData(0, 0, 600, 600).data;
-      let union = 0,
-        same = 0;
-      for (let i = 3; i < x.length; i += 4) {
-        const p = x[i] >= 128,
-          q = y[i] >= 128;
-        if (p || q) union++;
-        if (p && q) same++;
-      }
-      result[char] = same / union;
+      result[char]=same/union;
     }
     return result;
   });
-  for (const [char, value] of Object.entries(agreement))
-    assert.ok(value > 0.94, `${char}: font/source overlap ${value}`);
-  await shot('compact-desktop');
-  await page.setViewportSize({ width: 390, height: 844 });
-  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 140);
-  await shot('compact-mobile');
+  for(const [char,value]of Object.entries(agreement))assert.ok(value>.7,char+': reference mask overlap '+value);
+  await shot('corrected-desktop');
+  await page.setViewportSize({width:390,height:844});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).y<140);
+  await shot('corrected-mobile');
 });

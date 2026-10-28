@@ -1,7 +1,11 @@
 (function (root) {
   'use strict';
-  const Font = typeof module === 'object' && module.exports ? require('./stroke-topology') : root.HandwritingStrokeTopology;
-  const Reference = typeof module === 'object' && module.exports ? require('./reference') : root.HandwritingReference;
+  const Font =
+    typeof module === 'object' && module.exports
+      ? require('./stroke-topology')
+      : root.HandwritingStrokeTopology;
+  const Reference =
+    typeof module === 'object' && module.exports ? require('./reference') : root.HandwritingReference;
   const { CHO, JUNG, JONG } = Font;
   const model = Reference.model;
   const chars = (text) =>

@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261019-quiet-ui">
+  <link rel="stylesheet" href="style.css?v=20261028-celebration">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
   <script src="model.js?v=20261015-3" defer></script>
   <script src="activities.js?v=20261015-3" defer></script>
-  <script src="sound.js?v=20261015-c-major" defer></script>
+  <script src="sound.js?v=20261028-celebration" defer></script>
   <script src="library.js?v=20261019-quiet-ui" defer></script>
-  <script src="app.js?v=20261019-quiet-ui" defer></script>
+  <script src="app.js?v=20261028-celebration" defer></script>
   <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -22,9 +22,12 @@
       <button id="activity-button" class="activity-button" type="button" aria-haspopup="dialog">활동</button>
       <output id="total" class="total" aria-live="polite" hidden>전체 0개</output>
       <span id="view-label" class="view-label" hidden></span>
-      <button id="view-button" class="view-button" type="button" aria-expanded="false" aria-controls="view-panel">
+      <button id="sound-toggle" class="sound-toggle" type="button" aria-label="효과음 끄기" aria-pressed="true" title="효과음 끄기">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 6 8H3v8h3l5 4V4Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="sound-off" d="m15 9 6 6m0-6-6 6"/></svg>
+      </button>
+      <button id="view-button" class="view-button" type="button" aria-label="보기와 설정" aria-expanded="false" aria-controls="view-panel">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
-        보기
+        <span class="view-button-label">보기</span>
       </button>
     </div>
 
@@ -91,6 +94,17 @@
     </footer>
     <p id="keyboard-help" class="sr-only">쌓기판에서 방향키로 칸을 고르고 Enter로 쌓거나 Delete로 지우세요.</p>
     <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    <div id="celebration" class="celebration" aria-hidden="true" hidden>
+      <div id="celebration-confetti" class="celebration-confetti"></div>
+      <div class="celebration-card">
+        <div class="celebration-badge">
+          <svg viewBox="0 0 100 100"><path class="badge-star" d="m50 3 12 10 16-1 5 15 13 9-6 15 3 16-15 7-8 14-16-3-15 7-10-13-15-5 1-16L3 50l10-12-1-16 15-5 9-13Z"/><circle cx="50" cy="49" r="30"/><path class="badge-check" d="m34 49 11 11 23-24"/></svg>
+        </div>
+        <strong id="celebration-title" class="celebration-title">성공!</strong>
+        <p id="celebration-message" class="celebration-message"></p>
+        <span id="celebration-next" class="celebration-next"></span>
+      </div>
+    </div>
   </main>
 
   <dialog id="activity-dialog" aria-labelledby="activity-heading">
