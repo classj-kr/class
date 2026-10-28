@@ -41,8 +41,8 @@
       stroke([24, 51], [23, 60, 24, 69, 25, 77], [25, 80, 29, 81, 34, 80], [50, 80, 66, 78, 81, 77]),
     ],
     ㅁ: [
-      stroke([25, 25], [24, 44, 24, 63, 26, 80]),
-      stroke([25, 25], [42, 24, 61, 23, 78, 23], [79, 41, 78, 62, 77, 79]),
+      stroke([25, 18], [24, 39, 24, 62, 26, 80]),
+      stroke([33, 25], [48, 24, 64, 23, 78, 23], [79, 41, 78, 62, 77, 79]),
       stroke([26, 80], [44, 81, 62, 80, 77, 79]),
     ],
     ㅂ: [
@@ -207,7 +207,7 @@
     if (!c) return 94.5;
     if (c === 'ㄴ') return 71.5;
     if (c === 'ㅇ') return 59.5;
-    if ('ㅊㅎ'.includes(c)) return 50.5;
+    if ('ㅊㅎ'.includes(c) || c === 'ㄶ' || c === 'ㅀ') return 50.5;
     if (pairs[c] || 'ㄹㅂㅍ'.includes(c)) return 53.5;
     return c === 'ㄱ' ? 57.5 : 56.5;
   }
@@ -299,7 +299,223 @@
                 : [pairs[c] ? 5 : 8, 59, pairs[c] ? 90 : 84, 40];
       add('final', c, box, 'final');
     }
-    return opticalLayout(out, a, b, c);
+    return separateInitial(letteringLayout(opticalLayout(out, a, b, c), a, b, c));
+  }
+  function fitPaths(paths, [left, top, right, bottom]) {
+    const points = paths.flat(),
+      xs = points.map((p) => p[0]),
+      ys = points.map((p) => p[1]),
+      x0 = Math.min(...xs),
+      x1 = Math.max(...xs),
+      y0 = Math.min(...ys),
+      y1 = Math.max(...ys);
+    return paths.map((path) =>
+      path.map(([x, y]) => [
+        left + ((x - x0) * (right - left)) / (x1 - x0 || 1),
+        top + ((y - y0) * (bottom - top)) / (y1 - y0 || 1),
+      ]),
+    );
+  }
+  function compoundBottom(a, b, c) {
+    if (!compounds[b] || !c) return uprightBottom(c);
+    const bottoms = { ㄴ: 71.5, ㄹ: 55.5, ㄱ: 60.5, ㅇ: 60.5, ㅁ: 59.5 };
+    const extra = a === 'ㅎ' ? compounds[b][0] === 'ㅜ' && c === 'ㄴ' ? 3 : 2 : 0;
+    return (bottoms[c] ?? uprightBottom(c)) + extra;
+  }
+  function compoundUpY(a, b, c) {
+    if (!c) return b === 'ㅙ' ? 73.5 : 72.5;
+    const baselines = { ㄴ: 57.5, ㄹ: 50, ㅁ: 53, ㄱ: 54, ㅇ: 54 };
+    return (baselines[c] ?? 49) + (a === 'ㅎ' ? 6 : 0);
+  }
+  function compoundDownY(a, b, c) {
+    if (!c) return b === 'ㅞ' ? 52.5 : 55.5;
+    const baseline = c === 'ㄴ' ? 45 : c === 'ㄹ' ? 42.5 : 44;
+    const desired = baseline + (a === 'ㅎ' ? c === 'ㄴ' ? 12 : 6 : 0);
+    return Math.min(desired, compoundBottom(a, b, c) - 9.5);
+  }
+  function compoundDownArmY(a, b, c) {
+    if (!c) return 66.5;
+    const offset = c === 'ㄴ' ? a === 'ㅎ' ? 8.5 : 12 : 6;
+    return compoundDownY(a, b, c) + offset;
+  }
+  // Upright stems and crossbars have independent positions. Scaling a complete
+  // vowel made the two stems too far apart and pulled ㅝ/ㅞ's arm up to the bowl.
+  function letteringLayout(parts, a, b, c) {
+    const compound = compounds[b],
+      wide = 'ㅐㅒㅔㅖ'.includes(b),
+      end = compoundBottom(a, b, c),
+      nFinal = c === 'ㄴ',
+      round = a === 'ㅇ',
+      stemPath = (x, top = 8, bottom = end) => stroke(
+        [x, top],
+        [x + 0.25, top + (bottom - top) * 0.33, x + 0.1, top + (bottom - top) * 0.72, x - 0.55, bottom],
+      ),
+      arm = (x0, x1, y) => stroke(
+        [x0, y + 0.35],
+        [x0 + (x1 - x0) / 3, y + 0.15, x0 + (x1 - x0) * 2 / 3, y, x1, y],
+      ),
+      bar = (x0, y0, x1, y1) => stroke(
+        [x0, y0],
+        [x0 + (x1 - x0) / 3, y0 + (y1 - y0) / 3, x0 + (x1 - x0) * 2 / 3, y0 + (y1 - y0) * 2 / 3, x1, y1],
+      );
+    function upright(v, inCompound = false) {
+      const bottom = end,
+        firstBottom = bottom - 3,
+        openArm = !c ? 46.5 : inCompound && nFinal ? 42.5 : 34.5 + (inCompound && a === 'ㅎ' ? 2 : 0),
+        doubleArms = !c ? [34.5, 57.5] : [24.5, 42.5];
+      if (v === 'ㅏ') return [stemPath(70.5), arm(70.5, 89.5, openArm)];
+      if (v === 'ㅑ') return [stemPath(70.5), ...(!c ? [33.5, 57.5] : [24.5, 41.5]).map((y) => arm(70.5, 89.5, y))];
+      if (v === 'ㅐ') {
+        const x = inCompound ? 60.5 : 59.5;
+        return [stemPath(x, 12, firstBottom), arm(x, 77.5, openArm), stemPath(77.5)];
+      }
+      if (v === 'ㅒ') return [stemPath(59.5, 12, firstBottom), ...doubleArms.map((y) => arm(59.5, 77.5, y)), stemPath(77.5)];
+      if (v === 'ㅓ') return [arm(inCompound ? 57.5 : 54.5, 74.5, inCompound ? compoundDownArmY(a, b, c) : openArm), stemPath(74.5)];
+      if (v === 'ㅕ') return [...(!c ? [38, 58] : nFinal ? [24, 44] : [23.5, 42]).map((y) => arm(53.5, 74.5, y)), stemPath(74.5)];
+      if (v === 'ㅔ' || v === 'ㅖ') {
+        const x = inCompound ? 61.5 : 60.5,
+          ys = inCompound ? [compoundDownArmY(a, b, c)] : v === 'ㅖ' ? (!c ? round ? [30.5, 53.5] : [37.5, 57.5] : [23.5, 42]) : [!c && round ? 42 : openArm];
+        return [...ys.map((y) => arm(inCompound ? 48.5 : 46.5, x, y)), stemPath(x, 12, firstBottom), stemPath(77.5)];
+      }
+      return [stemPath(74.5)];
+    }
+    const output = parts.map((part) => {
+      if (part.kind === 'vowel') {
+        if (!'ㅗㅛㅜㅠㅡ'.includes(part.char))
+          return { ...part, paths: upright(part.char, Boolean(compound)) };
+        if (compound) {
+          const v = compound[1], tight = 'ㅐㅔ'.includes(v),
+            right = tight ? b === 'ㅞ' ? 52 : 60.5 : b === 'ㅘ' ? 70.5 : 74.5;
+          if (part.char === 'ㅡ') {
+            const y = !c ? 69.5 : end - 11;
+            return { ...part, paths: [bar(8, y, right, y - 4)] };
+          }
+          if (part.char === 'ㅗ') {
+            const desiredY = compoundUpY(a, b, c),
+              highFinal = c && /[ㅊㅎ]/.test(pairs[c] || c),
+              final = parts.find((p) => p.kind === 'final'),
+              limit = highFinal ? Math.min(...final.paths.flatMap(outlines).flat().map((p) => p[1])) - 7.5 : desiredY,
+              y = Math.min(desiredY, limit),
+              x = b === 'ㅙ' ? 28.5 : b === 'ㅚ' ? 35.5 : 31.5,
+              top = !c ? 51.5 : y - (a === 'ㅎ' ? 12 : 15);
+            return { ...part, paths: [stemPath(x, top, y - 1.7), bar(b === 'ㅘ' ? 4 : 8, y, right, y - 4)] };
+          }
+          const y = compoundDownY(a, b, c),
+            x = b === 'ㅞ' ? 31.5 : 35.5,
+            tail = !c ? 90.5 : downTail(parts, c);
+          return { ...part, paths: [bar(7, y, b === 'ㅞ' ? 52 : 64, y - 2.5), stroke([x, y - 0.7], [x - 0.5, y + (tail - y) * 0.38, x - 4, tail - 6, x - 7, tail])] };
+        }
+        if (!c && part.char === 'ㅗ')
+          return { ...part, paths: [stemPath(53.5, 54.5, 76), bar(4, 77.5, 88, 75.5)] };
+        if (!c && part.char === 'ㅛ')
+          return { ...part, paths: [stemPath(31.5, 48.5, 76.5), stemPath(53.5, 45.5, 76), bar(4, 77.5, 88, 75.5)] };
+        if ('ㅜㅠ'.includes(part.char)) {
+          const stems = part.char === 'ㅜ' ? [[50.5, 45.5]] : [[35.5, 27.5], [69.5, 61.5]];
+          const y = c ? nFinal ? 49 : 'ㅊㅎ'.includes(c) ? 34.5 : 43.5 : 'ㅁㅂㅃ'.includes(a) ? 57 : a === 'ㅎ' ? 56 : 52,
+            bottom = c ? downTail(parts, c) : 94;
+          return { ...part, paths: [bar(4, y, 88, y - 1.5), ...stems.map(([x, tail]) => stroke([x, y - 0.5], [x - 0.4, y + (bottom - y) * 0.38, tail + 3, bottom - 10, tail, bottom]))] };
+        }
+        return part;
+      }
+      if (part.kind === 'initial') {
+        let paths = part.paths;
+        if (compound) {
+          const down = compound[0] === 'ㅜ', tight = 'ㅐㅔ'.includes(compound[1]);
+          paths = transform(base(a, 'horizontal'), [down ? 2 : -1, 7, tight ? 60 : 64, c ? nFinal ? 46 : c === 'ㅇ' ? 46 : 42 : down ? 52 : 58]);
+          if (c && a === 'ㅋ') paths[1] = paths[1].map(([x, y]) => [x, y + 4]);
+          if (round) {
+            const x = down ? tight ? 30.5 : 34.5 : tight ? 28.5 : 'ㅚㅢ'.includes(b) ? 35.5 : 31.5,
+              y = c ? 23 : down ? 28.5 : tight ? 34.5 : 32.5;
+            paths = [oval(x, y, down ? tight ? 15.5 : 17.5 : tight ? 16.5 : 18, down ? tight ? 14.2 : 15 : tight ? 15.5 : 16.8)];
+          }
+          if (c && a === 'ㅎ') {
+            const x = down ? 35.5 : 32.7,
+              highFinal = /[ㅊㅎ]/.test(pairs[c] || c),
+              circleY = down ? nFinal ? 37.2 : 31.8 : highFinal ? 31.5 : c === 'ㄹ' ? 35 : 36.5,
+              radiusY = highFinal ? 8.5 : down && !nFinal ? 8.3 : 11.7;
+            paths = [
+              stroke([x - 10, down ? 9 : 7], [x - 4, down ? 11 : 9, x + 4, down ? 12 : 10, x + 10, down ? 11.5 : 9.5]),
+              bar(x - 24, down ? 20 : 18, x + 25, down ? 19.5 : 17.5),
+              oval(x, circleY, 14.4, radiusY),
+            ];
+          }
+        } else if (!c && wide && round) paths = [oval(27.2, 42.6, 18.2, 16.8)];
+        if (!c && 'ㅜㅠ'.includes(b) && a === 'ㅁ') paths = fitPaths(paths, [25.5, 10.5, 69, 40.5]);
+        if (c && b === 'ㅡ' && a === 'ㄴ') paths = fitPaths(paths, [22, 14, 70, 32]);
+        if (!compound && !'ㅗㅛㅜㅠㅡ'.includes(b)) {
+          if ('ㄲㅆㅉ'.includes(a)) {
+            const points = paths.flat(), top = Math.min(...points.map((p) => p[1])),
+              center = (Math.min(...points.map((p) => p[0])) + Math.max(...points.map((p) => p[0]))) / 2;
+            paths = paths.map((path) => path.map(([x, y]) => [center + (x - center) * 1.08, top + (y - top) * (c ? 1 : 1.11)]));
+          } else if (a === 'ㄸ') {
+            paths = paths.map((path) => path.map((p) => [...p]));
+            for (const [index, target] of [[1, paths[3][0][0]], [3, wide ? 58.5 : b === 'ㅓ' || b === 'ㅕ' || b === 'ㅣ' ? 73.5 : 69.5]]) {
+              const foot = paths[index], [x, y] = foot.at(-1);
+              foot.push([x + (target - x) / 2, y - 0.6], [target, y - 1.2]);
+            }
+          }
+        }
+        if (!c && 'ㅗㅛ'.includes(b) && 'ㄱㅋ'.includes(a)) {
+          paths = fitPaths(paths, [17.5, 19.5, 74.5, 57.5]);
+        }
+        if (c && !compound && !'ㅗㅛㅜㅠㅡ'.includes(b)) {
+          if (a === 'ㅎ') {
+            const shift = (wide ? -4 : 0) + ('ㅓㅕㅔㅖ'.includes(b) ? 2 : 0);
+            paths = [
+              stroke([20 + shift, 9], [26 + shift, 11.5, 35 + shift, 12, 41 + shift, 11.5]),
+              bar(6.5 + shift, 22, 55 + shift, 21),
+              oval(30.7 + shift, 43.2, 15, 12.2),
+            ];
+          } else if (a === 'ㅊ') {
+            const left = wide ? 7 : 10, right = wide ? 46.5 : 57,
+              x = wide ? 20 : 25;
+            paths = [
+              stroke([x, 10.5], [x + 6, 13, x + 14, 14, x + 20, 13.5]),
+              stroke([left, 25.5], [left + 12, 25, right - 10, 24, right, 24], [right - 7, 37, left + 15, 49, left, 56.5]),
+              stroke([left + (right - left) * 0.57, 41], [right - 14, 48, right - 5, 54, right, 56.5]),
+            ];
+          } else if (a === 'ㅂ') paths = fitPaths(paths, [8.7, 13, wide ? 42 : 47.7, 51.7]);
+          else if (a === 'ㅍ') {
+            const dx = wide ? -4 : 0;
+            paths = [bar(13 + dx, 16.3, 57 + dx, 15.6), stroke([22 + dx, 25.5], [24 + dx, 29, 25 + dx, 35, 25 + dx, 39.5]), stroke([45 + dx, 25], [49 + dx, 29, 46 + dx, 39, 44 + dx, 47.5]), bar(11 + dx, 48.5, 61 + dx, 46.6)];
+          }
+        }
+        return { ...part, paths };
+      }
+      if (wide && part.kind === 'final') {
+        const right = Math.max(...part.paths.flatMap(outlines).flat().map((p) => p[0])),
+          dx = Math.min('ㅐㅒ'.includes(b) ? 7 : 3, 97 - right);
+        return { ...part, paths: part.paths.map((path) => path.map(([x, y]) => [x + dx, y])) };
+      }
+      return part;
+    });
+    return output;
+  }
+  function downTail(parts, c) {
+    const final = parts.find((p) => p.kind === 'final'),
+      top = Math.min(...final.paths.flatMap(outlines).flat().map((p) => p[1]));
+    // A descending vowel may meet a final's first crossbar, but must not run
+    // through its middle tier. Open and dotted finals need a clear gap.
+    if ('ㄱㄷㄹㅁㅈㅋㅌ'.includes(c)) return top + 2.3;
+    if (c === 'ㅂ') return top + 7;
+    return top - 4.5;
+  }
+  function separateInitial(parts) {
+    const initial = parts.find((p) => p.kind === 'initial'),
+      final = parts.find((p) => p.kind === 'final');
+    if (!initial || !final) return parts;
+    const lower = final.paths.flatMap((p) => sample(p, 28)),
+      top = Math.min(...initial.paths.flat().map((p) => p[1]));
+    const gap = () => {
+      const upper = initial.paths.flatMap((p) => sample(p, 28));
+      let d = Infinity;
+      for (const p of upper) for (const q of lower)
+        d = Math.min(d, (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2);
+      return Math.sqrt(d);
+    };
+    for (let i = 0; i < 12 && gap() < 6.8; i++)
+      initial.paths = initial.paths.map((path) => path.map(([x, y]) => [x, top + (y - top) * 0.96]));
+    return parts;
   }
   // Optical cells for original jamo paths. Keys describe vowel layout and final
   // construction, so a correction applies to every syllable with that structure.
@@ -473,6 +689,43 @@
     "s:ㅁ": [28.25, 61.25, 79.25, 97.0],
     "s:ㅇ": [35.25, 61.5, 76.0, 96.0],
   };
+  const finalDefaults = {
+    ㄱ: [19.1, 62.9, 73.9, 96.4], ㄲ: [14, 62.9, 83, 96.4],
+    ㄳ: [14.1, 57.4, 80.9, 96.4], ㄴ: [22.8, 65.4, 77.2, 93],
+    ㄵ: [12.8, 61.3, 78.2, 94.6], ㄶ: [13, 54, 82, 97],
+    ㄷ: [22.7, 61.9, 76.2, 93], ㄹ: [23.5, 57.9, 78.2, 93],
+    ㄺ: [16.5, 57.9, 73.9, 95.4], ㄻ: [14.5, 57.6, 75, 96.4],
+    ㄼ: [14.5, 55.2, 73.2, 95.2], ㄽ: [14.5, 56.6, 80.8, 95.1],
+    ㄾ: [14.5, 58.9, 75.7, 93], ㄿ: [14.5, 58.9, 76.2, 93.1],
+    ㅀ: [14.5, 55.6, 80.5, 95], ㅁ: [24.2, 61.2, 75.2, 97.1],
+    ㅂ: [24.2, 56.2, 74.2, 96.2], ㅄ: [15.2, 56.6, 84.9, 96.2],
+    ㅅ: [16.7, 57.4, 78.5, 95.6], ㅆ: [10.7, 57.4, 81.9, 95.8],
+    ㅇ: [31.4, 61.5, 72, 96], ㅈ: [16.9, 61.3, 79.5, 95.4],
+    ㅊ: [16.9, 54, 80.3, 95.4], ㅋ: [19.1, 60.9, 75.9, 96.4],
+    ㅌ: [20.7, 59.9, 76.2, 93], ㅍ: [17.3, 60.2, 78.7, 93.5],
+    ㅎ: [19.2, 53, 79.7, 97],
+  };
+  function finalCell(a, b, c, side) {
+    const down = 'ㅜㅠ'.includes(b), horizontal = 'ㅗㅛㅜㅠㅡ'.includes(b),
+      direction = horizontal ? 'h' : compounds[b] ? 'c' : side === 'stem' ? 's' : side === 'left' ? 'l' : 'r',
+      dx = direction === 'h' ? -3 : direction === 'l' || direction === 's' ? 4 : 0;
+    let target = [...(finalInkCells[`${direction}:${c}`] || finalDefaults[c].map((v, i) => i % 2 === 0 ? v + dx : v))];
+    if (compounds[b]) {
+      const lower = compounds[b][0] === 'ㅜ', narrow = 'ㅙㅚㅞㅟㅢ'.includes(b), shift = narrow ? 4 : 0;
+      if (c === 'ㄴ') target = lower ? [25.5, 69.4, 81.2, 93] : narrow ? [26.75, 68.5, 82.2, 93] : [23.5, 68.5, 79, 93];
+      else if (c === 'ㄹ') target = lower ? [26.5, 59.9, 82.2, 93] : [22.5 + shift, 59.9, 78.2 + shift, 93];
+      else if (c === 'ㅁ') target = [23.2 + (lower ? 4 : shift), 63.2, 75.2 + (lower ? 4 : shift), 97.1];
+      else if (c === 'ㄱ') target = [19.1 + (lower ? 4 : shift), 64.9, 73.9 + (lower ? 4 : shift), 96.4];
+      else if (c === 'ㅇ') target = b === 'ㅙ' ? [38.5, 62.5, 78, 96] : [31.4 + (lower ? 4 : 0), 61.5, 72 + (lower ? 4 : 0), 96];
+      else target = finalDefaults[c].map((v, i) => i % 2 === 0 ? v + (lower ? 4 : shift) : v);
+      if (a === 'ㅎ' && c !== 'ㄴ') target[1] += c === 'ㄱ' ? 3 : 2;
+    } else if (down) {
+      if (c === 'ㄴ') target = [16, 65.4, 75.2, 93];
+      if (c === 'ㅂ') target = [19.2, 54.2, 72.2, 96.2];
+      if (c === 'ㅍ') target = [15.3, 69.9, 76.7, 93.5];
+    } else if (a === 'ㅎ' && c === 'ㅂ') target[1] += 2;
+    return target;
+  }
   function opticalLayout(parts, a, b, c) {
     const side = compounds[b] ? 'compound' : 'ㅗㅛ'.includes(b) ? 'up' : 'ㅜㅠ'.includes(b) ? 'down' : b === 'ㅡ' ? 'flat' : b === 'ㅣ' ? 'stem' : 'ㅓㅕㅔㅖ'.includes(b) ? 'left' : 'right';
     const end = !c ? 'open' : c === 'ㄴ' ? 'n' : c === 'ㅇ' ? 'round' : 'ㅊㅎ'.includes(c) ? 'raised' : 'ㄹㅂㅍ'.includes(c) ? 'tier' : 'low';
@@ -520,7 +773,7 @@
           paths = paths.map((path) => path.map(([x, y]) => [x, top + ((y - top) * (94 - top)) / (bottom - top)]));
       }
       if (part.kind === 'final') {
-        const target = finalInkCells[`${horizontal ? 'h' : compounds[b] ? 'c' : side === 'stem' ? 's' : side === 'left' ? 'l' : 'r'}:${c}`];
+        const target = finalCell(a, b, c, side);
         if (target) {
           for (let iteration = 0; iteration < 3; iteration++) {
             const ink = paths.flatMap(outlines).flat(),
@@ -589,7 +842,7 @@
           i !== strokeIndex &&
           other.some((p) => distance(p, points[0]) < clearance),
       );
-    if (!closed && !attached && dy0 > Math.abs(dx0) * 2 && length > 22) {
+    if (!closed && !attached && dy0 > Math.abs(dx0) * 2 && length > 10) {
       const [x, y] = points[0],
         body = sample(points, Math.max(16, Math.ceil(length)));
       const entry = stroke(
@@ -672,7 +925,7 @@
     CHO,
     JUNG,
     JONG,
-    VERSION: 6,
+    VERSION: 8,
     FAMILY: 'ClassJ Gyeongpil Myeongjo',
   };
   if (typeof module === 'object' && module.exports) module.exports = api;

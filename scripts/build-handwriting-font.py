@@ -24,15 +24,16 @@ SAMPLES = ['가나다라마바사아자차카타파하', '아야어여오요우�
            '나는 나를 믿어요', '값 넋 앉 닭 삶 읽 밟 읊 괜 쐐',
            'ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ']
 COMPARISON = '디자인 열정을 디지털 폰트로 꽃 피우다 한글 정각 간 갈 감 강 꽃 닭 읽 읊'
+COMPARISON += ' 까따빠싸짜애얘에예와왜외워웨위의 가개갸걔거게겨계 고과괘괴교구궈궤귀규 코쿄도됴토툐조죠초쵸 학핵환활훤휜현형획 각객갠걀갼걱걸검견결경'
 
 
-def records(specimen=False):
+def records(specimen=False, extra_chars=''):
     program = """
 const F=require(process.argv[1]);
 const cps=process.argv[2]==='all'?new Set([...Array.from({length:11172},(_,i)=>0xac00+i),...Array.from({length:51},(_,i)=>0x3131+i)]):new Set(Array.from(JSON.parse(process.argv[2]),c=>c.codePointAt(0)));
 for(const cp of cps){const p=F.model(String.fromCodePoint(cp));if(p)process.stdout.write(JSON.stringify([cp,p.flatMap(F.outlines)])+'\\n');}
 """
-    scope = json.dumps(''.join(SAMPLES)+COMPARISON, ensure_ascii=True) if specimen else 'all'
+    scope = json.dumps(''.join(SAMPLES)+COMPARISON+extra_chars, ensure_ascii=True) if specimen else 'all'
     proc = subprocess.Popen(['node', '-e', program, str(SOURCE), scope], stdout=subprocess.PIPE, text=True, encoding='utf-8')
     assert proc.stdout is not None
     for line in proc.stdout:
@@ -61,6 +62,7 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT / 'assets/fonts/classj-gyeongpil')
     parser.add_argument('--preview', type=Path)
     parser.add_argument('--specimen-only', action='store_true')
+    parser.add_argument('--chars', default='', help='Additional characters for a specimen subset')
     args = parser.parse_args()
     source_hash = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
     args.output.mkdir(parents=True, exist_ok=True)
@@ -68,7 +70,7 @@ def main():
     glyphs = {'.notdef': empty, 'space': empty}
     cmap = {32: 'space', 0x3000: 'space'}
     metrics = {'.notdef': (920, 0), 'space': (460, 0)}
-    for cp, contours in records(args.specimen_only):
+    for cp, contours in records(args.specimen_only, args.chars):
         name = f'uni{cp:04X}'
         glyphs[name] = glyph(contours)
         cmap[cp] = name
@@ -85,10 +87,10 @@ def main():
     fb.setupNameTable({
         'familyName': {'en': FAMILY, 'ko': '클래스제이 경필명조'},
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'ClassJ-GyeongpilMyeongjo-0.8',
+        'uniqueFontIdentifier': 'ClassJ-GyeongpilMyeongjo-1.0',
         'fullName': FAMILY + ' Regular',
         'psName': 'ClassJGyeongpilMyeongjo-Regular',
-        'version': 'Version 0.800',
+        'version': 'Version 1.000',
         'copyright': 'Original ClassJ lettering, 2026.',
         'designer': 'ClassJ',
         'description': 'Original pen lettering for Hangul practice. Glyphs and stroke-order models share the same source. No third-party font outlines.',
@@ -127,7 +129,7 @@ def main():
         f.close()
     print('Font tables verified', flush=True)
     assert hashlib.sha256(SOURCE.read_bytes()).hexdigest() == source_hash, 'Font source changed during the build; rebuild before publishing.'
-    manifest = {'family': FAMILY, 'version': '0.800', 'hangulSyllables': sum(0xac00<=cp<=0xd7a3 for cp in cmap),
+    manifest = {'family': FAMILY, 'version': '1.000', 'hangulSyllables': sum(0xac00<=cp<=0xd7a3 for cp in cmap),
                 'compatibilityJamo': sum(0x3131<=cp<=0x3163 for cp in cmap), 'sourceSha256': source_hash,
                 'ttfBytes': ttf.stat().st_size, 'woff2Bytes': woff.stat().st_size}
     (args.output / 'font-manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')

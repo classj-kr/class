@@ -353,7 +353,7 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
   await drawLetter(page, '가');
   await page.evaluate(async () => {
     const older = HandwritingApp.snapshot();
-    older.version = 5;
+    older.version = 7;
     HandwritingApp.store.set('draft', older);
     await HandwritingApp.store.flush();
   });
@@ -361,9 +361,9 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
   await ready();
   const state = await page.evaluate(() => ({
     current: HandwritingApp.snapshot(),
-    older: HandwritingApp.store.get('legacy-draft-v5'),
+    older: HandwritingApp.store.get('legacy-draft-v7'),
   }));
-  assert.equal(state.current.version, 6);
+  assert.equal(state.current.version, 8);
   assert.equal(state.current.cells.trace[0].length, 0);
   assert.equal(state.older.cells.trace[0].length, 3);
 });
@@ -427,7 +427,7 @@ test('the original pen font matches the designed outlines and the editor remains
     canvas.width = canvas.height = 256;
     const ctx = canvas.getContext('2d'),
       result = {};
-    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊ㅏㅓㅇㅎ')) {
+    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊교책얘에예와왜외워웨위의까따빠싸짜무늘믿귤확활훤ㅏㅓㅇㅎ')) {
       const glyph = HandwritingReference.glyph(char),
         layout = glyph.layout;
       ctx.resetTransform();
@@ -499,4 +499,22 @@ test('the original pen font matches the designed outlines and the editor remains
   await page.fill('#customText', '꽃한글값읽');
   await page.locator('#customForm button').click();
   await shot('gyeongpil-final-consonants');
+  await page.selectOption('#lessonSelect', 'school');
+  await page.locator('[data-phase=solo]').click();
+  for (const char of ['교', '책']) {
+    await page.locator('#letterList button').filter({ hasText: char }).click();
+    await shot('gyeongpil-school-' + char);
+  }
+  await page.selectOption('#lessonSelect', 'double');
+  for (const char of ['얘', '워', '웨', '위']) {
+    await page.locator('#letterList button').filter({ hasText: char }).click();
+    await shot('gyeongpil-compound-' + char);
+  }
+  await page.selectOption('#lessonSelect', 'custom');
+  await page.fill('#customText', '무늘믿귤확활훤');
+  await page.locator('#customForm button').click();
+  for (const char of ['무', '늘', '믿', '귤', '확', '활', '훤']) {
+    await page.locator('#letterList button').filter({ hasText: char }).click();
+    await shot('gyeongpil-structure-' + char);
+  }
 });

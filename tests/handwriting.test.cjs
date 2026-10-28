@@ -108,6 +108,77 @@ test('matching shape does not pass a reversed direction, swapped order, missing 
     false,
   );
 });
+test('compound vowel construction keeps the lower arm and distinct upright stems', () => {
+  const middleY = (path) => (path[0][1] + path.at(-1)[1]) / 2;
+  for (const char of ['워', '웨']) {
+    const parts = Font.components(char),
+      horizontal = parts.find((p) => p.char === 'ㅜ').paths[0],
+      arm = parts.find((p) => 'ㅓㅔ'.includes(p.char)).paths[0];
+    assert.ok(middleY(arm) - middleY(horizontal) > 10, char + ': short arm sits below the long crossbar');
+  }
+  for (const char of ['애', '얘', '에', '예', '책']) {
+    const vowel = Font.components(char).find((p) => p.kind === 'vowel'),
+      stems = vowel.paths.filter((p) => p.at(-1)[1] - p[0][1] > 35),
+      separation = Math.abs(stems[0][0][0] - stems[1][0][0]);
+    assert.equal(stems.length, 2, char);
+    assert.ok(separation >= 14 && separation <= 22, char + ': two stems fit within one vowel');
+  }
+  const parts = Font.components('교'),
+    initial = parts[0].paths.flatMap((p) => Font.sample(p, 70)),
+    stems = parts[1].paths.slice(0, 2).flatMap((p) => Font.sample(p, 40)),
+    gap = Math.min(...initial.map((p) => Math.min(...stems.map((q) => Math.hypot(p[0] - q[0], p[1] - q[1])))));
+  assert.ok(gap > 9, '교: ㄱ does not collide with either short vowel stem');
+});
+test('initial consonants stay clear of finals across every modern syllable', () => {
+  for (let n = 0; n < 11172; n++) {
+    if (n % 28 === 0) continue;
+    const char = String.fromCodePoint(0xac00 + n),
+      parts = Font.components(char),
+      upper = parts.find((p) => p.kind === 'initial').paths.flatMap((p) => Font.sample(p, 32)),
+      lower = parts.find((p) => p.kind === 'final').paths.flatMap((p) => Font.sample(p, 32));
+    let gap = Infinity;
+    for (const p of upper) for (const q of lower)
+      gap = Math.min(gap, Math.hypot(p[0] - q[0], p[1] - q[1]));
+    assert.ok(gap > 6, char + ': initial/final clearance ' + gap);
+  }
+});
+test('descending vowels stop at the first final tier instead of crossing its counter', () => {
+  for (const initial of Font.CHO) for (const vowel of ['ㅜ', 'ㅠ', 'ㅝ', 'ㅟ']) {
+    for (const final of ['ㄱ', 'ㄷ', 'ㄹ', 'ㅌ']) {
+      const char = String.fromCodePoint(0xac00 + Font.CHO.indexOf(initial) * 588 + Font.JUNG.indexOf(vowel) * 28 + Font.JONG.indexOf(final)),
+        parts = Font.components(char),
+        lower = parts.find((p) => p.kind === 'final').paths[0],
+        crossbarBottom = Math.max(...lower.map((p) => p[1])),
+        descending = parts.find((p) => p.char === 'ㅜ' || p.char === 'ㅠ').paths.slice(1);
+      for (const path of descending)
+        assert.ok(path.at(-1)[1] <= crossbarBottom + 1, char + ': vowel enters final body');
+    }
+  }
+});
+test('ㅝ and ㅞ keep the short arm below the crossbar and attached to the stem with every final', () => {
+  for (const initial of Font.CHO) for (const vowel of ['ㅝ', 'ㅞ']) for (const final of Font.JONG) {
+    const char = String.fromCodePoint(0xac00 + Font.CHO.indexOf(initial) * 588 + Font.JUNG.indexOf(vowel) * 28 + Font.JONG.indexOf(final)),
+      parts = Font.components(char),
+      longBar = parts.find((p) => p.char === 'ㅜ').paths[0],
+      upright = parts.find((p) => p.char === 'ㅓ' || p.char === 'ㅔ').paths,
+      arm = upright[0],
+      stem = upright[1];
+    assert.ok(arm.at(-1)[1] > Math.max(...longBar.map((p) => p[1])) + 3, char + ': short arm above long crossbar');
+    assert.ok(arm.at(-1)[1] < stem.at(-1)[1], char + ': short arm hangs below stem');
+  }
+});
+test('an independent pen trace of 워 agrees with the displayed compound vowel', () => {
+  const strokes = [
+    [[34.5, 13.5], [22, 17], [17, 28.5], [22, 40], [34.5, 43.5], [47, 39], [52, 28.5], [47, 17], [34.5, 13.5]],
+    [[7, 55.5], [64, 53]],
+    [[35.5, 54.5], [35, 63], [32, 78], [28.5, 90.5]],
+    [[57.5, 66.5], [74.5, 66.5]],
+    [[74.5, 8], [74, 94.5]],
+  ];
+  const result = C.judge('워', strokes);
+  assert.equal(result.order, true);
+  assert.ok(result.shape >= 94);
+});
 test('a manually traced font sample passes without following generated guide artefacts', () => {
   // Coordinates read from the rendered reference, independent of C.model().
   const strokes = [
