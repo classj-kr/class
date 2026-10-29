@@ -89,10 +89,39 @@
     if (challenge) {
       const w = targetScene.clientWidth, h = targetScene.clientHeight;
       targetScene.setAttribute('viewBox', `0 0 ${w} ${h}`);
-      targetScene.innerHTML = challenge.view === 'solid'
-        ? renderSolid(w, h, challenge.target, true)
-        : renderProjection(w, h, challenge.view, challenge.target, challenge.mode === 'copy');
+      targetScene.innerHTML = challenge.mode !== 'copy' ? renderTargetViews(w, h, challenge.target)
+        : challenge.view === 'solid' ? renderSolid(w, h, challenge.target, true)
+        : renderProjection(w, h, challenge.view, challenge.target, true);
     }
+  }
+
+  // Show top, front and side together, picking the arrangement that draws the biggest cells.
+  function renderTargetViews(width, height, board) {
+    const directions = ['top', 'front', 'right'];
+    const captions = { top: '위에서', front: '앞에서', right: '옆에서' };
+    const rows = { top: SIZE, front: Math.max(3, ...board.projection('front')), right: Math.max(3, ...board.projection('right')) };
+    const caption = 20, padX = 36, padY = 40;
+    const layouts = [
+      { cols: 3, rows: 1, at: { top: [0, 0], front: [1, 0], right: [2, 0] } },
+      { cols: 2, rows: 2, at: { top: [0, 0], front: [0, 1], right: [1, 1] } },
+      { cols: 1, rows: 3, at: { top: [0, 0], front: [0, 1], right: [0, 2] } }
+    ];
+    let best;
+    for (const layout of layouts) {
+      const w = width / layout.cols, h = height / layout.rows;
+      const cell = Math.min(46, ...directions.map(d => Math.min((w - padX) / SIZE, (h - caption - padY) / rows[d])));
+      if (!best || cell > best.cell + .5) best = { ...layout, w, h, cell };
+    }
+    const { w, h, at } = best, cell = Math.max(4, best.cell);
+    return directions.map(d => {
+      const [col, row] = at[d];
+      // Views in one row share a baseline; the caption sits just above each grid.
+      const tallest = Math.max(...directions.filter(other => at[other][1] === row).map(other => rows[other]));
+      const offset = Math.max(0, (h - caption - padY - tallest * cell) / 2);
+      const y = row * h + offset + (tallest - rows[d]) * cell;
+      return `<g transform="translate(${col * w} ${y})"><text x="${w / 2}" y="14" class="view-caption">${captions[d]}</text>`
+        + `<g transform="translate(0 ${caption})">${renderProjection(w, rows[d] * cell + padY, d, board, false, cell)}</g></g>`;
+    }).join('');
   }
 
   function renderSolid(width, height, board = model, isTarget = false) {
@@ -160,15 +189,15 @@
     return pieces.join('');
   }
 
-  function renderProjection(width, height, direction = view, board = model, showNumbers = $('show-heights').checked) {
+  function renderProjection(width, height, direction = view, board = model, showNumbers = $('show-heights').checked, fixedCell = 0) {
     const pieces = ['<g aria-hidden="true">'];
     const top = direction === 'top';
     const projection = board.projection(direction);
     const rows = top ? SIZE : Math.max(3, ...projection);
-    const numberedTarget = board !== model && top && showNumbers;
+    const numberedTarget = (board !== model && top && showNumbers) || fixedCell > 0;
     const paddingX = numberedTarget ? 36 : board === model ? 70 : 52;
     const paddingY = numberedTarget ? 28 : board === model ? 70 : 50;
-    const cell = Math.max(1, Math.min((width - paddingX) / SIZE, (height - paddingY) / rows, 91));
+    const cell = fixedCell || Math.max(1, Math.min((width - paddingX) / SIZE, (height - paddingY) / rows, 91));
     const left = (width - SIZE * cell) / 2, upper = (height - rows * cell) / 2 - 5;
     const boardBottom = upper + rows * cell;
     for (let row = 0; row < rows; row++) for (let col = 0; col < SIZE; col++) {
@@ -184,7 +213,7 @@
       pieces.push(`<text x="${width / 2}" y="${boardBottom + (numberedTarget ? 16 : 28)}" class="direction-label"${numberedTarget ? ' style="font-size:12px"' : ''}>앞</text>`);
       pieces.push(`<text x="${left + SIZE * cell + (numberedTarget ? 13 : board === model ? 23 : 18)}" y="${height / 2}" class="direction-label secondary" style="writing-mode:vertical-rl${board === model ? '' : ';font-size:11px'}">오른쪽</text>`);
     } else if (direction === 'right') {
-      pieces.push(`<text x="${left + cell / 2}" y="${boardBottom + 28}" class="direction-label">앞쪽</text>`);
+      pieces.push(`<text x="${left + cell / 2}" y="${boardBottom + (numberedTarget ? 16 : 28)}" class="direction-label"${numberedTarget ? ' style="font-size:12px"' : ''}>앞쪽</text>`);
     }
     pieces.push('</g>');
     return pieces.join('');
@@ -238,15 +267,14 @@
     $('challenge-title').textContent = `${activities.names[mode]} · ${index + 1}/${questions.length}`;
     $('challenge-prompt').textContent = mode === 'copy' ? ''
       : mode === 'views' ? '위·앞·옆 모습이 모두 같아야 해요.' : `세 그림에 맞는 서로 다른 모양 2개 (${Math.min(2, found.size)}/2)`;
-    $('target-views').hidden = false;
+    $('target-views').hidden = mode !== 'copy';
     $('check-shape').textContent = state === 'found' ? '다른 모양 만들기'
       : state === 'solved' ? (index + 1 < questions.length ? '다음 모양' : '활동 선택') : '확인하기';
-    const names = { top: '위에서', front: '앞에서', right: '오른쪽에서' };
     const rotatable = mode === 'copy' && challenge.view === 'solid';
     targetScene.classList.toggle('is-rotatable', rotatable);
     targetScene.tabIndex = rotatable ? 0 : -1;
     targetScene.setAttribute('aria-label', rotatable ? '따라 쌓을 목표 모양, 드래그로 돌려 보기'
-      : mode === 'copy' ? '목표를 위에서 본 그림, 숫자는 각 칸의 층수' : `목표를 ${names[challenge.view]} 본 그림`);
+      : mode === 'copy' ? '목표를 위에서 본 그림, 숫자는 각 칸의 층수' : '목표를 위·앞·옆에서 본 그림');
     if (rotatable) {
       targetScene.setAttribute('aria-describedby', 'target-keyboard-help');
       targetScene.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight ArrowUp ArrowDown Home');
@@ -277,6 +305,7 @@
       resetAnswer();
     }
     document.querySelector('.workspace').classList.toggle('is-practice', Boolean(challenge));
+    document.querySelector('.workspace').classList.toggle('is-all-views', Boolean(challenge) && mode !== 'copy');
     $('target-panel').hidden = !challenge;
     $('activity-button').textContent = activities.names[mode];
     tool = 'add';
@@ -593,7 +622,9 @@
     else startActivity(shared.mode, [shared.heights], 0, true);
   }
   window.addEventListener('hashchange', openShared);
-  new ResizeObserver(schedule).observe(scene.parentElement);
+  const resizeObserver = new ResizeObserver(schedule);
+  resizeObserver.observe(scene.parentElement);
+  resizeObserver.observe(targetScene);
   update();
   openShared();
 })();
