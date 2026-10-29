@@ -238,11 +238,12 @@ export default function ArithmeticRaceCardsPage() {
 
       <div className="card-race-layout">
         <section className="card-race-stage">
-          {streak >= 3 && <p className="card-race-streak" key={streak}>🔥 {streak}연속</p>}
+          {/* 같은 자리의 형제끼리 key 가 겹치면(4연속과 4번 카드) 지난 표시가 남아 쌓이므로 이름을 붙여 구분한다. */}
+          {streak >= 3 && <p className="card-race-streak" key={`streak-${streak}`}>🔥 {streak}연속</p>}
           {!playing ? (
             <div className="card-race-card waiting">{race?.status === "waiting" ? "방장이 시작하기를 기다리는 중" : "준비 중…"}</div>
           ) : card ? (
-            <form key={cardIndex} className={`card-race-card${feedback?.kind === "wrong" && busy ? " is-wrong" : ""}`} onSubmit={submit}>
+            <form key={`card-${cardIndex}`} className={`card-race-card${feedback?.kind === "wrong" && busy ? " is-wrong" : ""}`} onSubmit={submit}>
               <span className="card-race-number">#{(cardIndex ?? 0) + 1}</span>
               {card.prompt && <p className="card-race-prompt">{card.prompt}</p>}
               <div className={`card-race-question${fields.length >= 3 || card.parts.some((part) => typeof part === "object" && "svg" in part) ? " is-dense" : ""}`}>{card.parts.map((part, index) => renderPart(part, String(index)))}</div>
@@ -260,7 +261,7 @@ export default function ArithmeticRaceCardsPage() {
               </div>
             </form>
           ) : null}
-          {feedback && feedback.kind !== "wrong" && <p key={feedback.key} className={`card-race-pop ${feedback.kind}`}>{feedback.kind === "correct" ? "+1" : "−1"}</p>}
+          {feedback && feedback.kind !== "wrong" && <p key={`pop-${feedback.key}`} className={`card-race-pop ${feedback.kind}`}>{feedback.kind === "correct" ? "+1" : "−1"}</p>}
           {feedback && feedback.kind === "wrong" && busy && <p className="card-race-pop wrong">정답 {feedback.answer}</p>}
           {playing && numericOnly && (
             <div className="card-race-keypad" aria-label="숫자 패드">
