@@ -8,6 +8,8 @@ const { installBoardRaces } = require('./learning-board-races');
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
 const MAX_POSTS = 200;
+// Student numbers follow each school's own scheme (e.g. boys 1~, girls 51~), so only the PostgreSQL INTEGER bound applies.
+const MAX_NUMBER = 2147483647;
 
 function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode, joinIdentity = async () => null, now = Date.now }) {
   const router = express.Router();
@@ -44,6 +46,10 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '020-learning-board-likes.sql'), 'utf8'));
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
+      await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_slots_check');
+      await db.query('ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_slots_check CHECK (slots >= 1)');
+      await db.query('ALTER TABLE learning_board_members DROP CONSTRAINT IF EXISTS learning_board_members_number_check');
+      await db.query('ALTER TABLE learning_board_members ADD CONSTRAINT learning_board_members_number_check CHECK (number >= 1)');
       await db.query('COMMIT');
     } catch (error) { await db.query('ROLLBACK'); throw error; }
     finally { db.release(); }
@@ -126,7 +132,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const columns = body.layout === 'columns' ? body.columns : [];
     if (!Array.isArray(columns) || (body.layout === 'columns' && (columns.length < 2 || columns.length > 8))) fail(400, 'INVALID_COLUMNS', '열을 2~8개 만들어 주세요.');
     const labels = columns.map(s => text(s, 30, true));
-    const slots = integer(body.slots ?? 30, 1, 60);
+    const slots = integer(body.slots ?? 30, 1, MAX_NUMBER);
     const db = await pool.connect();
     try {
       await db.query('BEGIN');
@@ -154,7 +160,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const user = await sessionUser(req);
     const identity = await joinIdentity(req, user);
     const name = text(identity ? identity.name : req.body?.name, 80, true);
-    const requestedNumber = identity ? Number(identity.number) : integer(req.body?.number, 1, 60);
+    const requestedNumber = identity ? Number(identity.number) : integer(req.body?.number, 1, MAX_NUMBER);
     const db = await pool.connect();
     try {
       await db.query('BEGIN');
@@ -179,11 +185,11 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         let number = requestedNumber;
         if (identity) {
           const occupied = (await db.query('SELECT number FROM learning_board_members WHERE board_id=$1', [b.id])).rows.map(row => row.number);
-          if (!Number.isInteger(number) || number < 1 || number > b.slots || occupied.includes(number)) {
-            number = Array.from({ length: b.slots }, (_, index) => index + 1).find(value => !occupied.includes(value));
+          if (!Number.isInteger(number) || number < 1 || number > MAX_NUMBER || occupied.includes(number)) {
+            number = 1;
+            while (occupied.includes(number)) number++;
           }
-          if (!number) fail(409, 'BOARD_FULL', '참여 인원이 가득 찼어요.');
-        } else if (number > b.slots) fail(400, 'INVALID_NUMBER', `이 게시판에는 ${b.slots}번까지 참여할 수 있어요.`);
+        }
         const token = crypto.randomBytes(32).toString('hex');
         const added = await db.query(`INSERT INTO learning_board_members(id, board_id, number, name, token_hash, user_id)
           VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(board_id, number) DO NOTHING RETURNING id`, [id(), b.id, number, name, hash(token), identity && user ? user.id : null]);
@@ -274,7 +280,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   router.post('/:id/reclaim', asyncRoute(async (req, res) => {
     // Teacher transfers a seat to a new device using a one-time code, without deleting work.
     const result = await transaction(req, async (db, b) => {
-      const number = integer(req.body?.number, 1, b.slots);
+      const number = integer(req.body?.number, 1, MAX_NUMBER);
       const ticket = crypto.randomBytes(16).toString('hex');
       const found = await db.query('UPDATE learning_board_members SET token_hash=$3, user_id=NULL WHERE board_id=$1 AND number=$2 RETURNING id', [b.id, number, `reclaim:${hash(ticket)}`]);
       if (!found.rowCount) fail(404, 'MEMBER_NOT_FOUND', '아직 참여하지 않은 번호예요.');

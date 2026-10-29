@@ -107,7 +107,7 @@
   document.querySelectorAll('input[name=layout]').forEach(n => n.addEventListener('change', updateLayout));
   handleForm('createForm', async () => {
     const result = await api('/', 'POST', { title: $('createTitle').value, description: $('createDescription').value,
-      layout: selectedLayout(), slots: Number($('createSlots').value), columns: $('createColumns').value.split('\n').map(s => s.trim()).filter(Boolean) });
+      layout: selectedLayout(), columns: $('createColumns').value.split('\n').map(s => s.trim()).filter(Boolean) });
     navigateBoard(result.board.id);
   });
 
@@ -192,15 +192,18 @@
     } else if (b.layout === 'roster') {
       const teacher = posts.filter(p => p.number === null);
       if (teacher.length) { const intro = element('div', undefined, 'teacher-posts'); teacher.forEach(p => intro.append(postCard(p))); container.append(intro); }
-      for (let number = 1; number <= b.slots; number++) {
+      // Numbers are free-form (e.g. 1~15 and 51~65), so list only students who joined or posted.
+      const numbers = [...new Set([...data.members.map(m => m.number), ...posts.map(p => p.number).filter(n => n !== null)])].sort((a, z) => a - z);
+      numbers.forEach(number => {
         const slot = element('section', undefined, 'slot');
         const member = data.members.find(m => m.number === number);
         slot.append(element('h2', `${number}번${member?.name ? ' · ' + member.name : ''}`));
         const group = posts.filter(p => p.number === number);
         group.forEach(p => slot.append(postCard(p)));
-        if (!group.length) slot.append(element('p', member ? '미작성' : '미참여', 'empty'));
+        if (!group.length) slot.append(element('p', '미작성', 'empty'));
         container.append(slot);
-      }
+      });
+      if (!numbers.length) container.append(element('p', '참여한 학생 없음', 'empty'));
     } else {
       posts.forEach(p => container.append(postCard(p)));
       if (!posts.length) container.append(element('p', b.layout === 'quiz' ? '문제 없음' : '글 없음', 'empty'));
@@ -210,7 +213,7 @@
     const { board: b, me } = data;
     document.title = `${b.title} · 게시판`;
     $('boardDescription').textContent = b.description;
-    $('boardCode').textContent = b.code; $('memberCount').textContent = `참여 ${data.members.length} / ${b.slots}명`;
+    $('boardCode').textContent = b.code; $('memberCount').textContent = `참여 ${data.members.length}명`;
     $('myIdentity').textContent = me.teacher ? '선생님' : `${me.number}번 ${me.name}`;
     $('shareBoard').hidden = $('settingsBoard').hidden = !me.teacher;
     $('writePost').textContent = b.layout === 'quiz' ? '+ 문제 만들기' : '+ 글 쓰기';
