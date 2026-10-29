@@ -23,6 +23,7 @@ const Codenames = require("./codenames");
 const Dobble = require("./dobble");
 const { createRhythmTraining } = require("./rhythm-training");
 const { createHandwriting } = require("./handwriting");
+const { createStackingCubes } = require("./stacking-cubes");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
@@ -83,6 +84,7 @@ async function isRuntimeRoomCodeActive({ activity, code }) {
   if (activity.startsWith('game:')) return rooms.has(roomKey(activity.slice(5), code));
   if (activity === 'rhythm') return rhythmTraining.hasRoomCode(code);
   if (activity === 'handwriting') return handwriting.hasRoomCode(code);
+  if (activity === 'stacking') return stackingCubes.hasRoomCode(code);
   const target = activity === 'arithmetic' ? `http://127.0.0.1:${ARITHMETIC_PORT}/api/arithmetic-race/entry?room=${code}`
     : activity === 'voyage' ? `http://127.0.0.1:${WORLD_VOYAGE_PORT}/api/room-entry/${code}` : null;
   if (!target) return false;
@@ -498,7 +500,8 @@ app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/room-entry", classroomPlatform.requireSiteAccess, createRoomEntry({
   roomCodes: classroomPlatform.roomCodes, arithmeticPort: ARITHMETIC_PORT, voyagePort: WORLD_VOYAGE_PORT,
   legacyVoyageRoomExists, rhythmExists: code => rhythmTraining.hasRoomCode(code),
-  handwritingExists: code => handwriting.hasRoomCode(code)
+  handwritingExists: code => handwriting.hasRoomCode(code),
+  stackingExists: code => stackingCubes.hasRoomCode(code)
 }));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
 app.use("/hanguksa", (req, res) => res.redirect(301, "/learning/inquiry/korean-history/"));
@@ -580,6 +583,14 @@ const handwritingRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/handwri
 app.get('/learning/literacy-numeracy/handwriting/race/', (req, res, next) => sendSiteHtml(req, res, path.join(handwritingRoot, 'index.html'), next));
 for (const file of ['font-source.js', 'pen-reference.js', 'core.js', 'app.js', 'race.js', 'styles.css']) {
   app.get(`/learning/literacy-numeracy/handwriting/race/${file}`, (_req, res) => res.sendFile(path.join(handwritingRoot, file)));
+}
+const stackingCubes = createStackingCubes({ platform: classroomPlatform });
+app.use('/api/stacking-race', classroomPlatform.requireSiteAccess, stackingCubes.router);
+// The room-code entrance opens the same board, kept open even when the lesson menu is locked.
+const stackingRoot = path.join(SITE_ROOT, 'learning/inquiry/math/stacking-cubes');
+app.get('/learning/inquiry/math/stacking-cubes/race/', (req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
+for (const file of ['model.js', 'activities.js', 'sound.js', 'library.js', 'app.js', 'race.js', 'style.css']) {
+  app.get(`/learning/inquiry/math/stacking-cubes/race/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
 }
 
 // Reuse notation under this activity's access grant, even when ear training is closed.
