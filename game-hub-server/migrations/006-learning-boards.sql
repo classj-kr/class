@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS learning_boards (
   description TEXT NOT NULL DEFAULT '',
   layout TEXT NOT NULL CHECK (layout IN ('wall', 'columns', 'roster', 'quiz')),
   columns JSONB NOT NULL DEFAULT '[]',
-  slots INTEGER NOT NULL DEFAULT 30 CHECK (slots BETWEEN 1 AND 60),
+  slots INTEGER NOT NULL DEFAULT 30 CHECK (slots >= 1),
   locked BOOLEAN NOT NULL DEFAULT FALSE,
   closed BOOLEAN NOT NULL DEFAULT FALSE,
   hide_names BOOLEAN NOT NULL DEFAULT FALSE,
@@ -16,7 +16,7 @@ CREATE INDEX IF NOT EXISTS learning_boards_owner_idx ON learning_boards(owner_id
 CREATE TABLE IF NOT EXISTS learning_board_members (
   id TEXT PRIMARY KEY,
   board_id TEXT NOT NULL REFERENCES learning_boards(id) ON DELETE CASCADE,
-  number INTEGER NOT NULL CHECK (number BETWEEN 1 AND 60),
+  number INTEGER NOT NULL CHECK (number >= 1),
   name TEXT NOT NULL,
   token_hash TEXT NOT NULL,
   UNIQUE(board_id, number),
