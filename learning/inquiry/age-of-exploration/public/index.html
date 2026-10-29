@@ -345,7 +345,7 @@ const WIND_CLOUD_CELL_W=760,WIND_CLOUD_CELL_H=460,WIND_CLOUD_FRAME_W=768,WIND_CL
 function hashUnit(a,b,c=0){let x=Math.imul((a|0)^0x9e3779b9,0x85ebca6b)+Math.imul((b|0)^0xc2b2ae35,0x27d4eb2f)+(c|0);x^=x>>>16;x=Math.imul(x,0x7feb352d);x^=x>>>15;x=Math.imul(x,0x846ca68b);x^=x>>>16;return(x>>>0)/4294967296}
 const keys={up:false,down:false,left:false,right:false};
 let resumeToken='';try{resumeToken=sessionStorage.getItem('uw3-resume-token')||''}catch{}let connectionReady=false,resumePending=false,resumeGeneration=0;
-const socket=io({path:'/learn/world-voyage/socket.io',transports:['polling'],reconnection:true,reconnectionAttempts:Infinity,reconnectionDelay:500});
+const socket=io({path:'/learn/world-voyage/socket.io',transports:['polling','websocket'],reconnection:true,reconnectionAttempts:Infinity,reconnectionDelay:500});
 
 function resetMapZoomForDevice(){zoom=recommendedMapZoom();zoomManuallyAdjusted=false}
 function resize(){dpr=Math.min(devicePixelRatio||1,1.25);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.imageSmoothingEnabled=false;if(!zoomManuallyAdjusted)zoom=recommendedMapZoom()}
