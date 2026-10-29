@@ -266,10 +266,25 @@
     const { mode, index, questions, state, found } = challenge;
     $('challenge-title').textContent = `${activities.names[mode]} · ${index + 1}/${questions.length}`;
     $('challenge-prompt').textContent = mode === 'copy' ? ''
-      : mode === 'views' ? '위·앞·옆 모습이 모두 같아야 해요.' : `세 그림에 맞는 서로 다른 모양 2개 (${Math.min(2, found.size)}/2)`;
+      : mode === 'views' ? '위·앞·옆 모습이 모두 같아야 해요.'
+      : found.size >= 2 ? '서로 다른 두 모양을 찾았어요.' : found.size ? '답 1을 찾았어요. 다른 모양으로 하나 더 쌓아요.' : '세 그림이 똑같이 나오는 모양을 2가지 쌓아요.';
     $('target-views').hidden = mode !== 'copy';
-    $('check-shape').textContent = state === 'found' ? '다른 모양 만들기'
-      : state === 'solved' ? (index + 1 < questions.length ? '다음 모양' : '활동 선택') : '확인하기';
+    $('found-answers').hidden = mode !== 'many';
+    if (mode === 'many') {
+      const answers = [...found.values()];
+      $('found-answers').innerHTML = [0, 1].map(i => {
+        const heights = answers[i];
+        const label = `<span>답 ${i + 1}</span>`;
+        if (!heights) return `<div class="answer-slot${i === answers.length ? ' is-next' : ''}" role="listitem" aria-label="답 ${i + 1}, 아직 없음">${label}<b aria-hidden="true">?</b></div>`;
+        const cells = heights.map((h, j) => {
+          const x = j % SIZE * 14, y = Math.floor(j / SIZE) * 14;
+          return `<rect x="${x}" y="${y}" width="14" height="14" fill="${h ? '#edc583' : '#eeece3'}" stroke="${h ? '#a4814d' : '#d5d3c6'}" stroke-width=".8"/>`
+            + (h ? `<text x="${x + 7}" y="${y + 7.5}" class="cell-number" font-size="9">${h}</text>` : '');
+        }).join('');
+        return `<div class="answer-slot is-found" role="listitem" aria-label="답 ${i + 1}, 위에서 본 층수">${label}<svg viewBox="-1 -1 72 72" aria-hidden="true">${cells}</svg></div>`;
+      }).join('');
+    }
+    $('check-shape').textContent = state === 'solved' ? (index + 1 < questions.length ? '다음 모양' : '활동 선택') : '확인하기';
     const rotatable = mode === 'copy' && challenge.view === 'solid';
     targetScene.classList.toggle('is-rotatable', rotatable);
     targetScene.tabIndex = rotatable ? 0 : -1;
@@ -301,7 +316,7 @@
       model = createModel();
       const target = createModel();
       target.replace(questions[index]);
-      challenge = { mode, questions, index, target, view: mode === 'copy' ? 'solid' : 'top', found: new Set(), state: 'ready' };
+      challenge = { mode, questions, index, target, view: mode === 'copy' ? 'solid' : 'top', found: new Map(), state: 'ready' };
       resetAnswer();
     }
     document.querySelector('.workspace').classList.toggle('is-practice', Boolean(challenge));
@@ -339,10 +354,6 @@
       else openActivities();
       sound('view'); return;
     }
-    if (challenge.state === 'found') {
-      // Keep the first answer available to undo while looking for another one.
-      model.clear(); resetAnswer(); setView('solid'); sound('clear'); scene.focus(); return;
-    }
     const heights = model.snapshot();
     const answer = activities.check(heights, challenge.target.snapshot(), challenge.mode);
     const result = $('challenge-result');
@@ -358,10 +369,16 @@
         result.textContent = '이미 찾은 모양이에요.';
         result.classList.remove('is-success'); sound('retry');
       } else {
-        challenge.found.add(key);
+        challenge.found.set(key, heights);
         challenge.state = challenge.found.size >= 2 ? 'solved' : 'found';
-        result.textContent = challenge.state === 'solved' ? '성공! 서로 다른 두 모양을 찾았어요.' : '첫 번째 답을 찾았어요.';
+        result.textContent = challenge.state === 'solved' ? '성공! 서로 다른 두 모양을 찾았어요.' : '';
         celebrate();
+        if (challenge.state === 'found') {
+          // The first answer is kept in its slot; empty the board for the second (undo brings it back).
+          model.clear(); challenge.state = 'ready';
+          setView('solid'); scene.focus({ preventScroll: true });
+          return;
+        }
       }
     } else {
       challenge.state = 'solved';

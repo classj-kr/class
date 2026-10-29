@@ -76,6 +76,12 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .workspace.is-all-views .scene-wrap { grid-template-columns: minmax(0, 1fr) clamp(280px, 34vw, 520px); }
 .workspace.is-all-views .target-panel { align-self: stretch; margin: 14px 0; min-height: 0; }
 .workspace.is-all-views #target-scene { flex: 1 1 auto; height: auto; min-height: 150px; }
+.found-answers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.answer-slot { display: flex; align-items: center; gap: 8px; min-height: 64px; padding: 6px 8px; border: 1.5px dashed #d3d4c9; border-radius: 11px; font-size: 12px; font-weight: 650; color: #8a8f81; }
+.answer-slot b { flex: 1; text-align: center; font-size: 20px; color: #c3c4b8; }
+.answer-slot.is-next { border-color: #8aa697; color: var(--ink); background: #f3f6f0; }
+.answer-slot.is-found { border-style: solid; border-color: #a4c2b0; color: #216a4c; background: #f1f7f1; }
+.answer-slot svg { width: 52px; height: 52px; margin-left: auto; }
 .view-caption { fill: #4c5650; font-size: 13px; font-weight: 700; text-anchor: middle; }
 .celebration { position: absolute; inset: 0; z-index: 4; display: grid; place-items: center; overflow: hidden; pointer-events: none; animation: celebration-fade 2.6s both; }
 .celebration::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, #fff8d95c, transparent 68%); }
