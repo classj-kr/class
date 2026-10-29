@@ -1,5 +1,6 @@
 const express = require("express");
 const http = require("http");
+const net = require("net");
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
@@ -41,7 +42,7 @@ const app = express();
 app.disable("x-powered-by");
 app.set("trust proxy", 1);
 const server = http.createServer(app);
-const wss = new WebSocketServer({ server });
+const wss = new WebSocketServer({ noServer: true });
 const rooms = new Map();
 const classroomPlatform = createClassroomPlatform({
   databaseUrl: process.env.DATABASE_URL,
@@ -233,6 +234,29 @@ function proxyToLearningApp(port, options = {}) {
     });
     req.pipe(proxyRequest);
   };
+}
+
+// 하위 앱의 웹소켓은 HTTP 프록시를 못 지나므로 TCP를 그대로 이어 준다.
+// 세계 항해가 HTTP 폴링에만 기대면 학생 수만큼 요청이 쌓여 배가 끊겨 움직인다.
+function proxyLearningUpgrade(port, stripPrefix, req, socket, head) {
+  const upstream = net.connect(port, "127.0.0.1", () => {
+    const lines = [`${req.method} ${req.url.slice(stripPrefix.length) || "/"} HTTP/1.1`];
+    for (let i = 0; i < req.rawHeaders.length; i += 2) {
+      const name = req.rawHeaders[i];
+      lines.push(name.toLowerCase() === "host" ? `Host: 127.0.0.1:${port}` : `${name}: ${req.rawHeaders[i + 1]}`);
+    }
+    upstream.write(`${lines.join("\r\n")}\r\n\r\n`);
+    if (head?.length) upstream.write(head);
+    upstream.pipe(socket);
+    socket.pipe(upstream);
+  });
+  upstream.setNoDelay(true);
+  socket.setNoDelay?.(true);
+  const close = () => { upstream.destroy(); socket.destroy(); };
+  upstream.on("error", close);
+  socket.on("error", close);
+  upstream.on("close", close);
+  socket.on("close", close);
 }
 
 const arithmeticApp = startLearningApp(
@@ -2038,6 +2062,13 @@ app.post("/api/finishers", async (req, res) => {
     console.error("Failed to save finisher record:", error);
     return res.status(503).json({ error: "FINISHER_STORAGE_UNAVAILABLE" });
   }
+});
+
+server.on("upgrade", (request, socket, head) => {
+  if (request.url.startsWith(`${WORLD_VOYAGE_PREFIX}/socket.io/`)) {
+    return proxyLearningUpgrade(WORLD_VOYAGE_PORT, WORLD_VOYAGE_PREFIX, request, socket, head);
+  }
+  wss.handleUpgrade(request, socket, head, client => wss.emit("connection", client, request));
 });
 
 wss.on("connection", (socket, request) => {

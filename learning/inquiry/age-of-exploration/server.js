@@ -560,6 +560,8 @@ const io = new Server(server, {
   serveClient: true,
   transports: ['websocket', 'polling'],
   maxHttpBufferSize: 64 * 1024,
+  // 스냅샷은 같은 글자가 반복되는 JSON이라 압축하면 수 분의 1로 준다.
+  perMessageDeflate: { threshold: 512 },
   pingInterval: 10000,
   pingTimeout: 12000
 });
@@ -1818,6 +1820,12 @@ function updateFatigue(p, dt) {
     terrainMultiplier,
     paused: store.room(p.roomCode).settings.paused || !arrivalRaceTravelGate(p).ok
   });
+}
+
+const NEARBY_FIELDS = ['id', 'name', 'x', 'y', 'dir', 'moving', 'mode', 'missionStatus', 'finishRank', 'missionCompleted', 'speedBoostMultiplier',
+  'shipType', 'shipName', 'shipOriginId', 'shipOriginName', 'shipScale', 'shipAnchoredAtShore', 'shipAnchorX', 'shipAnchorY', 'shipAnchorDir'];
+function nearbyPlayer(pub) {
+  return Object.fromEntries(NEARBY_FIELDS.map((key) => [key, pub[key]]));
 }
 
 function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
@@ -3336,18 +3344,21 @@ setInterval(() => {
   for (const [roomCode, room] of rooms) {
     const classMinutes = classGameMinutes(roomCode, now);
     const freeRoom = isFreeRoom(roomCode);
+    // 한 번만 만들어 모두에게 나눠 쓴다. 남의 배는 그리는 데 필요한 값만 보낸다.
+    const publicById = new Map([...room.values()].map((p) => [p.id, publicPlayer(p, classMinutes)]));
+    const nearbyById = new Map([...publicById].map(([id, pub]) => [id, nearbyPlayer(pub)]));
     for (const p of room.values()) {
       const nearby = [];
       for (const other of room.values()) {
         if (other.id === p.id) continue;
-        if (freeRoom || distance(p, other) <= NEARBY_RADIUS) nearby.push(publicPlayer(other, classMinutes));
+        if (freeRoom || distance(p, other) <= NEARBY_RADIUS) nearby.push(nearbyById.get(other.id));
       }
       const missionState = activeMissionState(roomCode, p.name, p);
-      io.to(p.id).emit('snapshot', { serverTime: now, classGameMinutes: classMinutes, sessionMode:'competition', roomType: freeRoom ? 'free' : 'race', roomLabel:`방 ${roomCode}`, you: publicPlayer(p, classMinutes), nearby, online: room.size, settings: store.room(roomCode).settings, ...missionState });
+      io.to(p.id).emit('snapshot', { serverTime: now, classGameMinutes: classMinutes, sessionMode:'competition', roomType: freeRoom ? 'free' : 'race', roomLabel:`방 ${roomCode}`, you: publicById.get(p.id), nearby, online: room.size, settings: store.room(roomCode).settings, ...missionState });
     }
-    {
+    if (teachers.size) {
       const activeMission = store.room(roomCode).activeMission;
-      io.to(`teacher:${roomCode}`).emit('teacherSnapshot', { serverTime: now, classGameMinutes: classMinutes, roomCode, players: [...room.values()].map((p) => publicPlayer(p, classMinutes)), mission: missionForTeacher(activeMission), progress: missionProgressList(roomCode, activeMission?.id), settings: store.room(roomCode).settings });
+      io.to(`teacher:${roomCode}`).emit('teacherSnapshot', { serverTime: now, classGameMinutes: classMinutes, roomCode, players: [...publicById.values()], mission: missionForTeacher(activeMission), progress: missionProgressList(roomCode, activeMission?.id), settings: store.room(roomCode).settings });
     }
   }
 }, 1000 / SNAPSHOT_HZ).unref();

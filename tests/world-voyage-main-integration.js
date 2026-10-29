@@ -39,11 +39,11 @@ async function waitFor(url, timeoutMs = 60000) {
   throw new Error(`Timed out waiting for ${url}\nLast response: ${lastResponse}\n${output}`);
 }
 
-function connectSocketIo() {
+function connectSocketIo(transports = ["polling"]) {
   return new Promise((resolve, reject) => {
     const socket = io(BASE_URL, {
       path: "/learn/world-voyage/socket.io",
-      transports: ["polling"],
+      transports,
       forceNew: true,
       reconnection: false,
       timeout: 10000,
@@ -73,7 +73,7 @@ function connectNativeWebSocket() {
     assert.ok(Array.isArray((await catalog.json()).places));
 
     const teacher = await waitFor(`${BASE_URL}/learn/world-voyage/teacher`);
-    assert.match(await teacher.text(), /교사 화면/);
+    assert.match(await teacher.text(), /도착 경주 현황판/);
 
     const htmlRedirect = await fetch(`${BASE_URL}/learning/games/omok/omok.html`, {
       redirect: "manual",
@@ -86,6 +86,20 @@ function connectNativeWebSocket() {
 
     const socketIo = await connectSocketIo();
     socketIo.close();
+
+    // 학생 화면처럼 폴링으로 붙은 뒤 웹소켓으로 올라가야 한다. 폴링에 머물면 여러 명일 때 배가 끊긴다.
+    const upgraded = await connectSocketIo(["polling", "websocket"]);
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error("voyage socket stayed on polling")), 5000);
+      if (upgraded.io.engine.transport.name === "websocket") { clearTimeout(timer); return resolve(); }
+      upgraded.io.engine.once("upgrade", () => { clearTimeout(timer); resolve(); });
+    });
+    const rooms = await new Promise(resolve => upgraded.emit("createRoom", { roomType: "free" }, resolve));
+    assert.equal(rooms.ok, true);
+    upgraded.close();
+
+    const websocketOnly = await connectSocketIo(["websocket"]);
+    websocketOnly.close();
 
     const nativeSocket = await connectNativeWebSocket();
     nativeSocket.close();
