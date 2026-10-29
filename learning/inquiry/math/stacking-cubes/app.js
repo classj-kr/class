@@ -264,7 +264,7 @@
   function updatePractice() {
     if (!challenge) return;
     const { mode, index, questions, state, found } = challenge;
-    $('challenge-title').textContent = `${activities.names[mode]} · ${index + 1}/${questions.length}`;
+    $('challenge-title').textContent = `${challenge.race ? '순위전' : activities.names[mode]} · ${index + 1}/${questions.length}`;
     $('challenge-prompt').textContent = mode === 'copy' ? ''
       : mode === 'views' ? '위·앞·옆 모습이 모두 같아야 해요.'
       : found.size >= 2 ? '서로 다른 두 모양을 찾았어요.' : found.size ? '답 1을 찾았어요. 다른 모양으로 하나 더 쌓아요.' : '세 그림이 똑같이 나오는 모양을 2가지 쌓아요.';
@@ -305,7 +305,7 @@
     });
   }
 
-  function startActivity(mode, questions = activities.questions(mode), index = 0, keepHash = false) {
+  function startActivity(mode, questions = activities.questions(mode), index = 0, keepHash = false, race = null) {
     clearCelebration();
     dialog.close();
     closePanel();
@@ -316,7 +316,7 @@
       model = createModel();
       const target = createModel();
       target.replace(questions[index]);
-      challenge = { mode, questions, index, target, view: mode === 'copy' ? 'solid' : 'top', found: new Map(), state: 'ready' };
+      challenge = { mode, questions, index, target, view: mode === 'copy' ? 'solid' : 'top', found: new Map(), state: 'ready', race };
       resetAnswer();
     }
     document.querySelector('.workspace').classList.toggle('is-practice', Boolean(challenge));
@@ -347,8 +347,40 @@
     challenge.view = button.dataset.targetView;
     updatePractice(); schedule(); sound('view');
   }));
+  async function checkRace() {
+    const current = challenge, button = $('check-shape'), result = $('challenge-result');
+    if (button.disabled) return;
+    button.disabled = true;
+    try {
+      const answer = await current.race(current.index, model.snapshot());
+      if (challenge !== current) return;
+      if (!answer.correct) {
+        const names = { top: '위', front: '앞', right: '오른쪽 옆' };
+        result.classList.remove('is-success');
+        result.textContent = current.mode === 'copy' ? '칸 위치와 각 칸의 높이를 다시 살펴봐요.'
+          : `${answer.mismatches.map(name => names[name]).join('·')} 모습이 달라요.`;
+        sound('retry');
+        return;
+      }
+      sound('success');
+      if (current.index + 1 < current.questions.length) {
+        startActivity(current.mode, current.questions, current.index + 1, true, current.race);
+        result.classList.add('is-success');
+        result.textContent = '정답! 다음 모양이에요.';
+      } else {
+        current.state = 'solved';
+        updatePractice();
+      }
+    } catch (error) {
+      if (challenge === current) { result.classList.remove('is-success'); result.textContent = error.message; }
+    } finally {
+      button.disabled = false;
+    }
+  }
+
   $('check-shape').addEventListener('click', () => {
     if (!challenge) return;
+    if (challenge.race) { checkRace(); return; }
     if (challenge.state === 'solved') {
       if (challenge.index + 1 < challenge.questions.length) startActivity(challenge.mode, challenge.questions, challenge.index + 1);
       else openActivities();
@@ -625,8 +657,13 @@
   window.addEventListener('sitebackrequest', event => {
     if (dialog.open) { event.preventDefault(); dialog.close(); }
     else if (!panel.hidden) { event.preventDefault(); closePanel(true); }
-    else if (challenge) { event.preventDefault(); startActivity('free'); }
+    else if (challenge && !challenge.race) { event.preventDefault(); startActivity('free'); }
   });
+  // race.js drives the board from the room state; answers are judged by the server.
+  window.StackingApp = {
+    race: (mode, questions, index, submit) => startActivity(mode, questions, index, true, submit),
+    free: () => startActivity('free', [], 0, true)
+  };
   const library = window.StackingLibrary({
     snapshot: () => model.snapshot(), sound,
     load: heights => { freeModel.replace(heights); startActivity('free'); sound('save'); }
