@@ -112,7 +112,7 @@ test("mate, passes, repetition and repeated checking end with correct results",(
 test("search opponents develop, win immediately, block mate and avoid poisoned material",()=>{
   const free=fixture([["cK",4,8],["hK",4,1],["cR",0,5],["hR",0,2],["cP",4,6]]);
   const poison=fixture([["cK",4,8],["hK",3,1],["cR",0,5],["hP",0,3],["hR",0,0],["cP",4,6]]);
-  for(const level of ["level2","intermediate","level4","advanced"]){
+  for(const level of ["intermediate","level4","advanced"]){
     const opening=AI.choose(R.initial(),level);assert.equal(opening.move.piece,"cH");assert.ok(!opening.move.kind);
     const winner=AI.choose(fixture(matePieces),level);assert.equal(R.status(R.advance(fixture(matePieces),winner.move)).reason,"mate");
     const defense=fixture([...matePieces,["hR",0,2]],"h"),answer=AI.choose(defense,level);assert.equal(AI.mateInOne(R.advance(defense,answer.move)),null);
@@ -177,6 +177,21 @@ test("every level accepts a saving bikjang instead of losing an undefended chari
   for(const level of Object.keys(AI.LEVELS)){
     const answer=AI.choose(s,level);assert.equal(answer.move.kind,"bikjang");
     assert.equal(R.play(s,answer.move).state.result.winner,null);
+  }
+});
+
+test("practice levels keep playing an even bikjang and level 1 slips at most a soldier",()=>{
+  // Remove both centre soldiers so the kings face each other in an even opening.
+  const board=R.initial().board.slice();for(const i of [31,58])board[i]=null;
+  const even=R.position(board,"c");assert.equal(R.facing(even),true);
+  for(const level of ["beginner","level2"])for(const n of [0,.5,.99]){
+    assert.ok(!AI.choose(even,level,{random:()=>n}).move.kind,`${level} should not end an even game with bikjang`);
+  }
+  const before=AI.evaluate(R.initial());
+  for(const n of [0,.1,.2,.29]){
+    const answer=AI.choose(R.initial(),"beginner",{random:()=>n});assert.ok(!answer.move.kind);
+    assert.equal(AI.mateInOne(R.advance(R.initial(),answer.move)),null);
+    assert.ok(-AI.evaluate(R.advance(R.initial(),answer.move))>before-400);
   }
 });
 
