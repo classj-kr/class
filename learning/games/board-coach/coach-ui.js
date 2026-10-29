@@ -52,9 +52,9 @@
     let previous = null;
     for (const input of levelOptions?.querySelectorAll('input') || []) {
       const settings = levels[input.value], depth = settings[game] ?? settings.depth;
-      input.dataset.description = settings.practice
+      input.dataset.description = settings.description || (settings.practice
         ? '기본적인 공격과 방어를 살피며 둬요.'
-        : `${depth}수 앞까지 미리 생각해 봐요.${depth === previous?.depth ? ` ${previous.name}보다 더 많은 둘 곳을 비교해요.` : ''}`;
+        : `${depth}수 앞까지 미리 생각해 봐요.${depth === previous?.depth ? ` ${previous.name}보다 더 많은 둘 곳을 비교해요.` : ''}`);
       previous = settings.practice ? null : { depth, name: settings.name };
     }
     describeLevel();

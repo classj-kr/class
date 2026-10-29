@@ -4,12 +4,13 @@
 })(typeof globalThis!=="undefined"?globalThis:this,function(R){
   "use strict";
   const LEVELS=Object.freeze({
-    // Beginners compare safe one-turn choices; higher levels search deeper.
-    beginner:{name:"레벨 1",depth:1,nodes:0,ms:0,practice:true},
-    level2:{name:"레벨 2",depth:1,nodes:3500,ms:250},
-    intermediate:{name:"레벨 3",depth:2,nodes:9000,ms:500},
-    level4:{name:"레벨 4",depth:3,nodes:16000,ms:700},
-    advanced:{name:"레벨 5",depth:3,nodes:25000,ms:900}
+    // Practice levels compare safe one-turn choices; level 1 also slips now
+    // and then. Higher levels search deeper.
+    beginner:{name:"레벨 1",depth:1,nodes:0,ms:0,practice:true,slip:.3,description:"가끔 실수도 하며 가볍게 둬요."},
+    level2:{name:"레벨 2",depth:1,nodes:0,ms:0,practice:true},
+    intermediate:{name:"레벨 3",depth:1,nodes:3500,ms:250},
+    level4:{name:"레벨 4",depth:2,nodes:9000,ms:500},
+    advanced:{name:"레벨 5",depth:3,nodes:16000,ms:700}
   });
   const HINT=Object.freeze({depth:8,nodes:600000,ms:5000,kingTempo:28,coaching:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
@@ -147,17 +148,21 @@
       if(draw)return {move:draw,line:[draw],reason:explain(state,draw),depth:0,nodes:0};
     }
     if(practice){
-      // Accept an offered bikjang, and preserve a saving repetition draw.
-      const draw=candidates.find(m=>m.kind==='bikjang')||(evaluate(state)<-100&&candidates.find(m=>{
-        const end=R.status(R.advance(state,m));return end.ended&&!end.winner;
-      }));
       const random=options.random||Math.random,board=candidates.filter(m=>!m.kind);
       // Vary comparable moves, not blunders: inspect captures on every own
       // piece, and allow recaptures before treating an exchange as a loss.
       const ranked=board.map(move=>({move,
         score:fallbackScore(state,move)-repetitionCost(state,move)
       })).sort((a,b)=>b.score-a.score);
-      const choices=ranked.filter(m=>m.score>=ranked[0].score-60).slice(0,4).map(m=>m.move);
+      // Take a draw only when every board move leaves this side clearly behind,
+      // so an opened file does not end a beginner's game early.
+      const behind=!ranked.length||ranked[0].score<-100;
+      const draw=behind&&(candidates.find(m=>m.kind==='bikjang')||candidates.find(m=>{
+        const end=R.status(R.advance(state,m));return end.ended&&!end.winner;
+      }));
+      // A slip still avoids mate in one and never gives up more than a soldier.
+      const slip=settings.slip&&random()<settings.slip;
+      const choices=ranked.filter(m=>m.score>=ranked[0].score-(slip?250:60)).slice(0,slip?8:4).map(m=>m.move);
       const move=draw||choices[Math.min(choices.length-1,Math.floor(random()*choices.length))]||candidates[0];
       return {move,line:[move],reason:explain(state,move),depth:1,nodes:0,practice:true};
     }
