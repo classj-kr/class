@@ -5,7 +5,7 @@ import { cardFields, raceCard, type RaceCard, type RaceField, type RacePart } fr
 
 type Race = { roomCode: string; worksheetName: string; worksheetRoute: string; seed: number; status: string; startedAt: number | null; endsAt: number | null; durationSeconds: number | null };
 type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null };
-type Entry = { id: string; name: string; score: number; correctCount: number; rank: number };
+type Entry = { id: string; name: string; score: number; correctCount: number; rank: number; avatarUrl?: string | null };
 type Credentials = { room: string; participant: string; participantToken: string };
 type Feedback = { kind: "correct" | "wrong" | "skip"; answer: string; key: number } | null;
 
@@ -136,7 +136,7 @@ export default function ArithmeticRaceCardsPage() {
 
   function moveOrSend() {
     const empty = fields.find((field) => !(values[field.blank] ?? "").trim());
-    if (empty) { setFocused(empty.blank); inputs.current[empty.blank]?.focus(); return; }
+    if (empty) { setFocused(empty.blank); inputs.current[empty.blank]?.focus({ preventScroll: true }); return; }
     void send(false);
   }
 
@@ -197,6 +197,15 @@ export default function ArithmeticRaceCardsPage() {
   }
 
   const myRank = ranking.find((entry) => entry.id === me?.id)?.rank ?? null;
+  const row = (entry: Entry) => (
+    <li key={entry.id} className={entry.id === me?.id ? "is-me" : ""}>
+      <em>{entry.rank}</em>
+      {entry.avatarUrl
+        ? <img className="card-race-avatar" src={entry.avatarUrl} alt="" width={32} height={32} />
+        : <i className="card-race-avatar" aria-hidden="true">{entry.name.slice(0, 1)}</i>}
+      <span>{entry.name}</span><b>{entry.score}</b>
+    </li>
+  );
   const top = ranking.slice(0, 5);
   const progress = race?.durationSeconds && remaining !== null ? Math.max(0, Math.min(1, remaining / (race.durationSeconds * 1000))) : 1;
   const keys = ["7", "8", "9", "4", "5", "6", "1", "2", "3", hasDecimal ? "." : "⌫", "0", hasDecimal ? "⌫" : "확인"];
@@ -210,9 +219,7 @@ export default function ArithmeticRaceCardsPage() {
           <h1>{myRank ? `${myRank}위` : "결과"}</h1>
           <p><b>{me?.score ?? 0}점</b> · 맞힘 {me?.correctCount ?? 0} · 틀림 {me?.wrongCount ?? 0} · 넘김 {me?.skipCount ?? 0}</p>
           <ol className="card-race-board final">
-            {ranking.map((entry) => (
-              <li key={entry.id} className={entry.id === me?.id ? "is-me" : ""}><em>{entry.rank}</em><span>{entry.name}</span><b>{entry.score}</b></li>
-            ))}
+            {ranking.map(row)}
           </ol>
           <a className="card-race-home" href="/arithmetic">기초 연산으로</a>
         </section>
@@ -223,7 +230,7 @@ export default function ArithmeticRaceCardsPage() {
   return (
     <main className="portal-page card-race-page">
       <header className="card-race-top">
-        <span className="card-race-room">방 {credentials?.room}</span>
+        <span className="card-race-room">방 {credentials?.room}{myRank ? ` · ${myRank}위` : ""}</span>
         <strong className="card-race-score">{me?.score ?? 0}<small>점</small></strong>
         <time className={remaining !== null && remaining < 10000 ? "is-hurry" : ""}>{remaining !== null ? clock(remaining) : "--:--"}</time>
       </header>
@@ -265,9 +272,7 @@ export default function ArithmeticRaceCardsPage() {
         <aside className="card-race-side" aria-label="실시간 순위">
           <h2>실시간 순위 {myRank ? <small>나 {myRank}위</small> : null}</h2>
           <ol className="card-race-board">
-            {top.map((entry) => (
-              <li key={entry.id} className={entry.id === me?.id ? "is-me" : ""}><em>{entry.rank}</em><span>{entry.name}</span><b>{entry.score}</b></li>
-            ))}
+            {top.map(row)}
           </ol>
           <p className="card-race-rule">맞히면 +1 · 틀리면 0 · 넘기면 −1</p>
         </aside>

@@ -30,6 +30,12 @@ function publicRace(race: RaceRow) {
   };
 }
 
+// 사이트 학생 프로필의 아바타 주소만 받아, 다른 주소를 순위표에 띄우지 못하게 한다.
+function avatarUrl(value: unknown) {
+  const url = String(value ?? "");
+  return /^\/assets\/avatars\/[A-Za-z0-9._-]+\.webp$/.test(url) ? url : null;
+}
+
 // 끝난 뒤 도착한 답이 순위를 바꾸지 않도록 1초만 봐준다.
 const CARD_GRACE = 1000;
 
@@ -41,6 +47,7 @@ function cardRanking(rows: ParticipantRow[]) {
     correctCount: Number(row.correct_count) || 0,
     wrongCount: Number(row.mistake_count) || 0,
     skipCount: Number(row.skip_count) || 0,
+    avatarUrl: row.avatar_url ?? null,
     rank: index + 1,
   }));
 }
@@ -179,6 +186,7 @@ export async function POST(request: Request) {
           correct_count: null,
           total_count: null,
           mistake_count: 0,
+          avatar_url: avatarUrl(payload.avatarUrl),
         });
         if (!opened) continue;
         const race = { roomCode: code, worksheetName, worksheetRoute: worksheet.route, seed: 20260720, status: "waiting", createdAt: now, startedAt: null, mode: durationSeconds ? "cards" : "sheet", durationSeconds, endsAt: null };
@@ -207,6 +215,7 @@ export async function POST(request: Request) {
         correct_count: null,
         total_count: null,
         mistake_count: 0,
+        avatar_url: avatarUrl(payload.avatarUrl),
       });
       if (!joined) return error("같은 이름이 이미 입장했습니다.", 409);
       return Response.json({ participantId: id, participantToken, race: publicRace(race) }, { status: 201 });
