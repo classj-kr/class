@@ -26,6 +26,7 @@ export const arithmeticRaceParticipants = sqliteTable("arithmetic_race_participa
   skipCount: integer("skip_count").notNull().default(0),
   cardIndex: integer("card_index").notNull().default(0),
   scoredAt: integer("scored_at"),
+  avatarUrl: text("avatar_url"),
 }, (table) => [
   uniqueIndex("arithmetic_race_room_name_unique").on(table.roomCode, table.name),
 ]);

@@ -1,0 +1,1 @@
+ALTER TABLE `arithmetic_race_participants` ADD `avatar_url` text;

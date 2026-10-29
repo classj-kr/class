@@ -1170,11 +1170,11 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 .card-race-actions .card-race-skip { background: white; color: var(--muted); border: 1px solid var(--line); }
 .card-race-actions button:disabled { opacity: .5; cursor: default; }
 
-.card-race-pop { position: absolute; top: 40px; right: max(8px, calc(50% - 300px)); margin: 0; font-size: 34px; font-weight: 900; pointer-events: none; animation: card-race-pop .7s ease-out forwards; }
-.card-race-pop.correct { color: var(--green); }
+.card-race-pop { position: absolute; top: 40px; right: max(8px, calc(50% - 300px)); margin: 0; font-size: 34px; font-weight: 900; pointer-events: none; animation: card-race-pop .7s ease-out forwards; }.card-race-pop.correct { color: var(--green); }
 .card-race-pop.skip { color: var(--red); }
 .card-race-pop.wrong { color: var(--red); font-size: 24px; animation: none; }
-.card-race-streak { margin: 0; color: #e8590c; font-size: 22px; font-weight: 900; animation: card-race-in .3s; }
+/* 연속 정답 표시는 카드 위에 겹쳐 띄워, 생겼다 사라져도 문제 카드가 밀리지 않게 한다. */
+.card-race-streak { position: absolute; top: -14px; left: 0; right: 0; z-index: 1; width: fit-content; margin: 0 auto; padding: 2px 14px; border-radius: 99px; background: white; box-shadow: 0 4px 14px rgba(24, 35, 59, .12); color: #e8590c; font-size: 22px; font-weight: 900; white-space: nowrap; pointer-events: none; animation: card-race-in .3s; }
 
 .card-race-keypad { width: min(360px, 100%); display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .card-race-keypad button {
@@ -1196,12 +1196,13 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 .card-race-side h2 { margin: 0 0 10px; font-size: 18px; display: flex; justify-content: space-between; align-items: baseline; }
 .card-race-side h2 small { color: var(--coral); font-size: 14px; }
 .card-race-board { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.card-race-board li { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 8px 10px; border-radius: 10px; background: var(--paper); transition: transform .3s; }
+.card-race-board li { display: grid; grid-template-columns: 22px 32px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 8px 10px; border-radius: 10px; background: var(--paper); transition: transform .3s; }
 .card-race-board li.is-me { background: var(--coral-soft); outline: 2px solid var(--coral); }
 .card-race-board em { font-style: normal; font-weight: 900; color: var(--muted); }
 .card-race-board li:nth-child(1) em { color: #d4a017; }
 .card-race-board span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 800; }
 .card-race-board b { font-variant-numeric: tabular-nums; font-size: 18px; }
+.card-race-avatar { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: white; object-fit: cover; font-style: normal; font-size: 14px; font-weight: 900; color: var(--muted); box-shadow: 0 0 0 1px var(--line); }
 .card-race-rule { margin: 12px 0 0; color: var(--muted); font-size: 13px; font-weight: 700; text-align: center; }
 
 .card-race-result { width: min(560px, 100%); margin: 30px auto; padding: 32px 22px; border-radius: 24px; background: white; box-shadow: var(--shadow); text-align: center; animation: card-race-in .4s; }
@@ -1219,7 +1220,8 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 
 @media (max-width: 760px) {
   .card-race-layout { grid-template-columns: 1fr; }
-  .card-race-side { order: -1; padding: 10px; }
+  /* 순위표가 문제 위에 있으면 순위가 바뀔 때마다 문제가 밀리므로 아래에 둔다. 내 순위는 위쪽 줄에 보인다. */
+  .card-race-side { padding: 10px; }
   .card-race-side .card-race-board li:nth-child(n+4):not(.is-me) { display: none; }
   .card-race-score { font-size: 36px; }
   .card-race-top time { font-size: 24px; }

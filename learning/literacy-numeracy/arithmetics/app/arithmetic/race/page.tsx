@@ -23,9 +23,15 @@ export default function ArithmeticRaceJoinPage() {
   const [loading, setLoading] = useState(false);
   const [entryRoom, setEntryRoom] = useState("");
   const joinedFromEntry = useRef("");
+  const avatar = useRef<Promise<string | null> | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    // 순위표에 띄울 아바타. 학생 프로필이 없으면(교사·게스트) 이름만 보인다.
+    avatar.current = fetch('/api/student/profile', { cache: 'no-store', credentials: 'same-origin' })
+      .then(response => response.ok ? response.json() : null)
+      .then(data => (data as { profile?: { avatar?: { url?: string } } } | null)?.profile?.avatar?.url || null)
+      .catch(() => null);
     // 이름은 브라우저에 두지 않고 서버에 묻는다. 로그인(교사·학생)이나 게스트 입장에서 나온 이름을 먼저 쓰고,
     // 명단에 있는 학생이면 학습 기록과 같은 계정 이름으로 바꾼다.
     let rosterName = false;
@@ -105,6 +111,12 @@ export default function ArithmeticRaceJoinPage() {
     return playerName;
   }
 
+  // 아바타를 기다리느라 입장이 늦어지지 않게 잠깐만 기다린다.
+  const avatarUrl = useCallback(() => Promise.race([
+    avatar.current ?? Promise.resolve(null),
+    new Promise<null>((resolve) => window.setTimeout(() => resolve(null), 1500)),
+  ]), []);
+
   const saveSession = useCallback((next: JoinState) => {
     setJoined(next);
     const params = new URLSearchParams({ room: next.roomCode, participant: next.participantId, participantToken: next.participantToken });
@@ -119,7 +131,7 @@ export default function ArithmeticRaceJoinPage() {
       const response = await fetch("/api/arithmetic-race", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "join", roomCode: code, name: playerName }),
+        body: JSON.stringify({ action: "join", roomCode: code, name: playerName, avatarUrl: await avatarUrl() }),
       });
       const data = await response.json() as { participantId?: string; participantToken?: string; race?: Race; error?: string };
       if (!response.ok || !data.participantId || !data.participantToken || !data.race) throw new Error(data.error || "입장하지 못했습니다.");
@@ -129,7 +141,7 @@ export default function ArithmeticRaceJoinPage() {
     } finally {
       setLoading(false);
     }
-  }, [saveSession]);
+  }, [saveSession, avatarUrl]);
 
   useEffect(() => {
     if (!entryRoom || !name || joined || joinedFromEntry.current === entryRoom) return;
@@ -147,7 +159,7 @@ export default function ArithmeticRaceJoinPage() {
       const response = await fetch("/api/arithmetic-race", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "create", worksheetRoute, name: playerName, durationSeconds }),
+        body: JSON.stringify({ action: "create", worksheetRoute, name: playerName, durationSeconds, avatarUrl: await avatarUrl() }),
       });
       const data = await response.json() as { roomCode?: string; hostToken?: string; participantId?: string; participantToken?: string; race?: Race; error?: string };
       if (!response.ok || !data.roomCode || !data.hostToken || !data.participantId || !data.participantToken || !data.race) throw new Error(data.error || "방을 만들지 못했습니다.");

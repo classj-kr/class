@@ -24,6 +24,7 @@ export type ParticipantRow = {
   skip_count?: number;
   card_index?: number;
   scored_at?: number | null;
+  avatar_url?: string | null;
 };
 
 export type CardUpdate = {
@@ -93,8 +94,8 @@ export function d1RaceStore(db: D1Database): RaceStore {
         await db.batch([
           db.prepare("INSERT INTO arithmetic_races (room_code, teacher_token, worksheet_name, worksheet_route, seed, status, created_at, duration_seconds) VALUES (?, ?, ?, ?, ?, 'waiting', ?, ?)")
             .bind(race.room_code, race.teacher_token, race.worksheet_name, race.worksheet_route, race.seed, race.created_at, race.duration_seconds ?? null),
-          db.prepare("INSERT INTO arithmetic_race_participants (id, room_code, name, participant_token, joined_at) VALUES (?, ?, ?, ?, ?)")
-            .bind(host.id, host.room_code, host.name, host.participant_token, host.joined_at),
+          db.prepare("INSERT INTO arithmetic_race_participants (id, room_code, name, participant_token, joined_at, avatar_url) VALUES (?, ?, ?, ?, ?, ?)")
+            .bind(host.id, host.room_code, host.name, host.participant_token, host.joined_at, host.avatar_url ?? null),
         ]);
         return true;
       } catch (cause) {
@@ -104,8 +105,8 @@ export function d1RaceStore(db: D1Database): RaceStore {
     },
     async joinRace(participant) {
       try {
-        await db.prepare("INSERT INTO arithmetic_race_participants (id, room_code, name, participant_token, joined_at) VALUES (?, ?, ?, ?, ?)")
-          .bind(participant.id, participant.room_code, participant.name, participant.participant_token, participant.joined_at)
+        await db.prepare("INSERT INTO arithmetic_race_participants (id, room_code, name, participant_token, joined_at, avatar_url) VALUES (?, ?, ?, ?, ?, ?)")
+          .bind(participant.id, participant.room_code, participant.name, participant.participant_token, participant.joined_at, participant.avatar_url ?? null)
           .run();
         return true;
       } catch {
