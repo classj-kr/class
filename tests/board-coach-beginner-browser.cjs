@@ -25,14 +25,14 @@ async function main(){
       });
       await page.goto(base+'/learning/games/board-coach/coach.html?game='+game);
       assert.equal(await page.locator('input[name=level]:checked').inputValue(),'beginner');
-      assert.match(await page.locator('#levelDescription').innerText(),game==='janggi'?/가끔 실수/:/기본적인 공격과 방어/);
+      assert.match(await page.locator('#levelDescription').innerText(),/가끔 실수/);
       assert.deepEqual(await page.locator('input[name=level]').evaluateAll(inputs=>inputs.map(input=>input.getAttribute('aria-label'))),[1,2,3,4,5].map(n=>'레벨 '+n));
       assert.doesNotMatch(await page.locator('#setup').innerText(),/초급|중급|상급/);
       const buttons=await page.locator('.level-options .option').evaluateAll(labels=>labels.map(label=>{const r=label.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
       assert.ok(buttons.every(b=>b.width>=44&&b.height>=44&&Math.abs(b.y-buttons[0].y)<1),'all five touch targets fit one row');
       await page.locator('input[name=level]:checked').focus();await page.keyboard.press('ArrowRight');
       assert.equal(await page.locator('input[name=level]:checked').inputValue(),'level2');
-      assert.match(await page.locator('#levelDescription').innerText(),game==='janggi'?/기본적인 공격과 방어/:/^2수 앞까지/);
+      assert.match(await page.locator('#levelDescription').innerText(),/기본적인 공격과 방어/);
       await page.keyboard.press('ArrowLeft');
       await page.locator('input[name=color][value="2"]').check();await page.locator('#startLearning').click();
       await page.waitForFunction(()=>aiReplies.some(r=>r.kind==='move'),null,{timeout:15000});
@@ -48,11 +48,11 @@ async function main(){
         await page.locator('#newGame').click();await page.getByRole('radio',{name:'레벨 '+(index+1),exact:true}).check();
         const description=await page.locator('input[name=level]:checked').getAttribute('data-description');
         assert.equal(await page.locator('#levelDescription').innerText(),description);
-        // Janggi level 2 is still a practice level, so its search starts at level 3.
-        const depths={reversi:[null,2,4,5,6],omok:[null,2,3,4,4],chess:[null,2,3,4,4],janggi:[null,null,1,2,3]}[game];
+        // Level 2 is still a practice level, so search starts at level 3.
+        const depths={reversi:[null,null,2,4,5],omok:[null,null,1,3,5],chess:[null,null,1,2,4],janggi:[null,null,1,2,3]}[game];
         const practice=depths[index]===null;
         assert.match(description,practice?/기본적인 공격과 방어/:new RegExp(`^${depths[index]}수 앞까지`));
-        if(index===4&&!['reversi','janggi'].includes(game))assert.match(description,/레벨 4보다 더 많은 둘 곳/);
+        assert.doesNotMatch(description,/보다 더 많은 둘 곳/);
         await page.evaluate(()=>{aiReplies=[]});await page.locator('#startLearning').click();
         await page.waitForFunction(()=>aiReplies.some(r=>r.kind==='move'),null,{timeout:15000});
         const reply=await page.evaluate(()=>aiReplies.find(r=>r.kind==='move'));

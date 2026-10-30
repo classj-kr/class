@@ -1,4 +1,4 @@
-importScripts('baduk-rules.js?v=2','baduk-ai.js?v=2');
+importScripts('baduk-rules.js?v=2','baduk-ai.js?v=4');
 self.onmessage=({data})=>{
   try{
     const result=data.kind==='hint'?BadukCoachAI.chooseHint(data.state):BadukCoachAI.choose(data.state,data.level);

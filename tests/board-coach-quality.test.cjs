@@ -20,12 +20,12 @@ test("Reversi review preserves a winning corner sacrifice and corrects the losin
   const note=AI.review(s,1);assert.ok(note);assert.equal(exactReversi(R.play(s,note.alternative),s.color),12);assert.match(note.text,/12개 차/);
 });
 
-test("Reversi advanced and endgame reviews agree with an independent exact solver",()=>{
+test("Reversi hints and endgame reviews agree with an independent exact solver",()=>{
   const random=randomizer(77);let checked=0;
   for(let game=0;game<16;game++){
     let s=R.initial("reversi");while(!s.ended&&s.count<54){const legal=R.legal(s);s=R.play(s,legal[random(legal.length)]);}if(s.ended)continue;
     const memo=new Map(),scores=R.legal(s).map(index=>({index,score:exactReversi(R.play(s,index),s.color,memo)}));
-    const top=Math.max(...scores.map(m=>m.score)),answer=AI.choose(s,"advanced");
+    const top=Math.max(...scores.map(m=>m.score)),answer=AI.chooseHint(s);
     assert.equal(scores.find(m=>m.index===answer.index).score,top);
     for(const m of scores){const note=AI.review(s,m.index);if(m.score===top)assert.equal(note,null);if(note)assert.equal(scores.find(a=>a.index===note.alternative).score,top);}
     checked++;

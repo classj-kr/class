@@ -4,10 +4,12 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (C) {
   "use strict";
   const LEVELS = Object.freeze({
-    beginner: { name: "레벨 1", depth: 1, nodes: 0, ms: 0, practice: true },
-    level2: { name: "레벨 2", depth: 2, nodes: 10000, ms: 500 },
-    intermediate: { name: "레벨 3", depth: 3, nodes: 35000, ms: 1100 },
-    level4: { name: "레벨 4", depth: 4, nodes: 65000, ms: 1700 },
+    beginner: { name: "레벨 1", depth: 1, nodes: 0, ms: 0, practice: true, slip: .5, description: "가끔 실수도 하며 가볍게 둬요." },
+    level2: { name: "레벨 2", depth: 1, nodes: 0, ms: 0, practice: true, slip: .2 },
+    // Level 5 often stops at depth 3 within its time on school devices, so
+    // levels 3 and 4 stay shallower to keep each step clearly apart.
+    intermediate: { name: "레벨 3", depth: 1, nodes: 3000, ms: 300 },
+    level4: { name: "레벨 4", depth: 2, nodes: 10000, ms: 600 },
     advanced: { name: "레벨 5", depth: 4, nodes: 120000, ms: 2400 }
   });
   // Teaching advice is independent of the strength selected for the opponent.
@@ -138,7 +140,14 @@
         const next=C.advance(state,move),end=C.status(next);
         return {move,score:end.ended?0:-evaluate(next)-replyLoss(next)};
       }).sort((a,b)=>b.score-a.score);
-      const candidates=ranked.filter(m=>m.score>=ranked[0].score-35).slice(0,4).map(m=>m.move);
+      // A level 1 slip forgets to check the reply, as a beginner often does:
+      // it may leave a piece hanging, but still avoids mate in one.
+      const slip=settings.slip&&random()<settings.slip;
+      const careless=slip&&roots.map(move=>{
+        const next=C.advance(state,move),end=C.status(next);
+        return {move,score:end.ended?0:-evaluate(next)};
+      }).sort((a,b)=>b.score-a.score);
+      const candidates=slip?careless.slice(0,6).map(m=>m.move):ranked.filter(m=>m.score>=ranked[0].score-35).slice(0,4).map(m=>m.move);
       const move=candidates[Math.min(candidates.length-1,Math.floor(random()*candidates.length))];
       return {move,reason:explain(state,move),depth:1,nodes:0,practice:true};
     }
@@ -181,7 +190,10 @@
       const next=C.advance(state,move);
       return {move,score:-evaluate(next)-replyLoss(next)-costs.get(move)};
     }).sort((a,b)=>b.score-a.score)[0].move;
-    for(let depth=2;depth<=settings.depth;depth++) {
+    // A one-move comparison cannot drive a bare king to mate and only repeats,
+    // so simple endings always search at least two plies.
+    const pieces=state.board.filter(p=>p&&p[1]!=="K").length;
+    for(let depth=2;depth<=Math.max(settings.depth,pieces<=3?2:0);depth++) {
       let candidate=best, top=-Infinity;
       try {
         const ordered=roots.slice().sort((a,b)=>Number(same(b,best))-Number(same(a,best)));

@@ -6,8 +6,8 @@
   const LEVELS=Object.freeze({
     // Practice levels compare safe one-turn choices; level 1 also slips now
     // and then. Higher levels search deeper.
-    beginner:{name:"레벨 1",depth:1,nodes:0,ms:0,practice:true,slip:.3,description:"가끔 실수도 하며 가볍게 둬요."},
-    level2:{name:"레벨 2",depth:1,nodes:0,ms:0,practice:true},
+    beginner:{name:"레벨 1",depth:1,nodes:0,ms:0,practice:true,slip:.5,keepPlaying:true,description:"가끔 실수도 하며 가볍게 둬요."},
+    level2:{name:"레벨 2",depth:1,nodes:0,ms:0,practice:true,slip:.2},
     intermediate:{name:"레벨 3",depth:1,nodes:3500,ms:250},
     level4:{name:"레벨 4",depth:2,nodes:9000,ms:500},
     advanced:{name:"레벨 5",depth:3,nodes:16000,ms:700}
@@ -113,7 +113,9 @@
     if(cannotForceMate(next))return drawScore;
     let loss=0;
     for(const reply of R.boardMoves(next))if(reply.capture)loss=Math.max(loss,captureGain(next,reply));
-    return -evaluate(next,coaching)-loss-(move.kind==="pass"?30:0);
+    const value=-evaluate(next,coaching)-loss-(move.kind==="pass"?30:0);
+    // Facing kings let the opponent take a draw, so a lead is worth no more.
+    return R.facing(next)?Math.min(value,drawScore):value;
   }
   function repetitionCost(state,move){
     const next=R.advance(state,move);
@@ -155,14 +157,20 @@
         score:fallbackScore(state,move)-repetitionCost(state,move)
       })).sort((a,b)=>b.score-a.score);
       // Take a draw only when every board move leaves this side clearly behind,
-      // so an opened file does not end a beginner's game early.
+      // so an opened file does not end a beginner's game early. Level 1 never
+      // takes bikjang, so a student who is ahead can finish the win.
       const behind=!ranked.length||ranked[0].score<-100;
-      const draw=behind&&(candidates.find(m=>m.kind==='bikjang')||candidates.find(m=>{
-        const end=R.status(R.advance(state,m));return end.ended&&!end.winner;
+      const draw=behind&&((!settings.keepPlaying&&candidates.find(m=>m.kind==='bikjang'))||candidates.find(m=>{
+        const end=R.status(R.advance(state,m));return m.kind!=='bikjang'&&end.ended&&!end.winner;
       }));
-      // A slip still avoids mate in one and never gives up more than a soldier.
+      // A level 1 slip forgets to check the reply, as a beginner often does:
+      // it may leave a piece hanging, but still avoids mate in one.
       const slip=settings.slip&&random()<settings.slip;
-      const choices=ranked.filter(m=>m.score>=ranked[0].score-(slip?250:60)).slice(0,slip?8:4).map(m=>m.move);
+      const careless=slip&&board.map(move=>({move,
+        score:-evaluate(R.advance(state,move))-repetitionCost(state,move)
+      })).sort((a,b)=>b.score-a.score);
+      if(!board.length)return {move:candidates[0],line:[candidates[0]],reason:explain(state,candidates[0]),depth:1,nodes:0,practice:true};
+      const choices=slip?careless.slice(0,6).map(m=>m.move):ranked.filter(m=>m.score>=ranked[0].score-60).slice(0,4).map(m=>m.move);
       const move=draw||choices[Math.min(choices.length-1,Math.floor(random()*choices.length))]||candidates[0];
       return {move,line:[move],reason:explain(state,move),depth:1,nodes:0,practice:true};
     }

@@ -4,11 +4,11 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(R){
   'use strict';
   const LEVELS=Object.freeze({
-    beginner:{name:'레벨 1',depth:1,width:5,nodes:100,ms:180,practice:true},
-    level2:{name:'레벨 2',depth:1,width:7,nodes:300,ms:300},
-    intermediate:{name:'레벨 3',depth:2,width:8,nodes:1000,ms:650},
-    level4:{name:'레벨 4',depth:3,width:10,nodes:2500,ms:1000},
-    advanced:{name:'레벨 5',depth:3,width:14,nodes:5000,ms:1500}
+    beginner:{name:'레벨 1',depth:1,width:5,nodes:100,ms:180,practice:true,slip:.3,description:'가끔 실수도 하며 가볍게 둬요.'},
+    level2:{name:'레벨 2',depth:1,width:5,nodes:100,ms:180,practice:true},
+    intermediate:{name:'레벨 3',depth:2,width:7,nodes:400,ms:400},
+    level4:{name:'레벨 4',depth:3,width:6,nodes:1500,ms:700},
+    advanced:{name:'레벨 5',depth:4,width:10,nodes:8000,ms:2000}
   });
   const HINT=Object.freeze({depth:4,width:16,nodes:12000,ms:3000,practice:false});
   // A conservative local eye filter, not a life-and-death solver.
@@ -84,7 +84,9 @@
     const settings={...(LEVELS[level]||LEVELS.beginner),...options},start=Date.now(),stop={},random=options.random||Math.random;
     let nodes=0,depth=1,roots=ranked(s),best=roots[0];
     if(settings.practice){
-      const choices=roots.filter(r=>r.score>=best.score-12).slice(0,3);
+      // A level 1 slip looks a little further down the list of safe moves.
+      const slip=settings.slip&&random()<settings.slip;
+      const choices=roots.filter(r=>r.score>=best.score-(slip?60:12)).slice(0,slip?6:3);
       best=choices[Math.min(choices.length-1,Math.floor(random()*choices.length))];
     }else{
       function search(position,left,alpha,beta){
@@ -103,7 +105,9 @@
         let candidate=best,score=-Infinity;
         try{
           for(const row of roots.slice(0,settings.width)){
-            const value=search(row.next,d-1,-Infinity,Infinity)+(row.eye?-180:0);
+            // Keep the root bonuses for captures, rescues and self-atari;
+            // the plain board evaluation at the leaves does not see them.
+            const value=search(row.next,d-1,-Infinity,Infinity)+row.score-evaluate(row.next,s.color);
             if(value>score){score=value;candidate=row;}
           }
           best=candidate;depth=d;

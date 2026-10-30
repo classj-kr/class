@@ -79,16 +79,17 @@ test('beginner chess and Janggi defend mate threats for every sampled choice',()
   }
 });
 
+// Level 1 slips on purpose; these check its careful moves between slips.
 test('beginner chess and Janggi take free heavy pieces but reject poisoned captures',()=>{
   const chessFree=C.boardFromFen('3r2k1/8/8/8/8/8/3Q4/6K1 w - - 0 1','standard');
   const chessPoison=C.boardFromFen('3r2k1/8/8/3p4/8/8/3Q4/6K1 w - - 0 1','standard');
   const jFree=janggi([['cK',4,8],['hK',4,1],['cR',0,5],['hR',0,2],['cP',4,6]]);
   const jPoison=janggi([['cK',4,8],['hK',3,1],['cR',0,5],['hP',0,3],['hR',0,0],['cP',4,6]]);
   for(const seed of samples){
-    assert.equal(CA.choose(chessFree,'beginner',{random:random(seed)}).move.capture,'bR');
-    assert.notEqual(CA.choose(chessPoison,'beginner',{random:random(seed)}).move.capture,'bP');
-    assert.equal(JA.choose(jFree,'beginner',{random:random(seed)}).move.capture,'hR');
-    assert.notEqual(JA.choose(jPoison,'beginner',{random:random(seed)}).move.capture,'hP');
+    assert.equal(CA.choose(chessFree,'beginner',{random:random(seed),slip:0}).move.capture,'bR');
+    assert.notEqual(CA.choose(chessPoison,'beginner',{random:random(seed),slip:0}).move.capture,'bP');
+    assert.equal(JA.choose(jFree,'beginner',{random:random(seed),slip:0}).move.capture,'hR');
+    assert.notEqual(JA.choose(jPoison,'beginner',{random:random(seed),slip:0}).move.capture,'hP');
   }
 });
 
@@ -108,7 +109,7 @@ test('beginner protects an already attacked queen instead of moving an unrelated
   for(const fen of ['6k1/8/1p6/2p5/3Q4/8/8/1N4K1 w - - 0 1','1n4k1/8/8/3q4/2P5/1P6/8/6K1 b - - 0 1']){
     const state=C.boardFromFen(fen,'standard'),before=JSON.stringify(state);
     for(const seed of samples){
-      const answer=CA.choose(state,'beginner',{random:random(seed)}),next=C.advance(state,answer.move);
+      const answer=CA.choose(state,'beginner',{random:random(seed),slip:0}),next=C.advance(state,answer.move);
       assert.equal(answer.move.piece[1],'Q');
       assert.ok(!C.allLegalMoves(next).some(m=>m.capture?.[1]==='Q'));
       assert.equal(JSON.stringify(state),before);
