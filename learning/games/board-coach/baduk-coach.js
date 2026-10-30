@@ -66,7 +66,7 @@
     stop();hint=null;job=kind;busy=true;$('retry').classList.add('hidden');const id=token;
     if(kind==='hint')reason('힌트를 생각하고 있어요','잠깐만 기다려 주세요','활로와 연결, 상대가 잡을 수 있는 돌을 살펴보고 있어요.');render();
     try{
-      worker=new Worker('baduk-worker.js?v=4');
+      worker=new Worker('baduk-worker.js?v=5');
       worker.onmessage=event=>{
         if(id!==token||event.data.token!==id)return;
         const {result,error}=event.data;
