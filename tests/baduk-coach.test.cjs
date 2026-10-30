@@ -98,7 +98,7 @@ test('settled groups with larger eyes pass and end after the other player passes
   }
   const opening=R.play(R.initial('standard'),-1);assert.notEqual(AI.choose(opening).index,-1,'one early pass does not end an unfinished board');
   const capture=position(['0000000','0001000','0012000','0001000','0000000','0000000','0000000'],1,'standard');capture.passes=1;
-  assert.equal(AI.choose(capture).index,18,'still capture a stone in atari');
+  assert.equal(AI.choose(capture,'beginner',{slip:0}).index,18,'still capture a stone in atari');
 });
 test('manual scoring preserves the exact board and turn until confirmation or resume',()=>{
   const s=R.play(R.initial('standard'),40),before=JSON.stringify(s),pending=R.beginScoring(s);
