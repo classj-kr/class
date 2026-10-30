@@ -8,7 +8,8 @@
     level2:{name:'레벨 2',depth:1,width:5,nodes:100,ms:180,practice:true},
     intermediate:{name:'레벨 3',depth:2,width:7,nodes:400,ms:400},
     level4:{name:'레벨 4',depth:3,width:6,nodes:1500,ms:700},
-    advanced:{name:'레벨 5',depth:4,width:10,nodes:8000,ms:2000}
+    // On the 9x9 board depth 4 rarely finishes in time; a wider depth 3 does.
+    advanced:{name:'레벨 5',depth:4,width:10,nodes:8000,ms:2000,standard:{depth:3,width:12}}
   });
   const HINT=Object.freeze({depth:4,width:16,nodes:12000,ms:3000,practice:false});
   // A conservative local eye filter, not a life-and-death solver.
@@ -81,7 +82,8 @@
   }
   function choose(s,level='beginner',options={}){
     if(s.ended||s.scoring)return null;
-    const settings={...(LEVELS[level]||LEVELS.beginner),...options},start=Date.now(),stop={},random=options.random||Math.random;
+    const base=LEVELS[level]||LEVELS.beginner;
+    const settings={...base,...base[s.mode],...options},start=Date.now(),stop={},random=options.random||Math.random;
     let nodes=0,depth=1,roots=ranked(s),best=roots[0];
     if(settings.practice){
       // A level 1 slip looks a little further down the list of safe moves.
