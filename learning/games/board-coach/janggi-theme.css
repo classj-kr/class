@@ -84,6 +84,19 @@ body.janggi-coach {
   background: rgba(29,105,179,.78);
   box-shadow: 0 0 0 4px rgba(255,255,255,.35);
 }
+/* Point numbers sit in the cell corner, outside the round pieces. */
+.janggi .coord-label {
+  position: absolute;
+  left: 3%;
+  top: 2%;
+  z-index: 7;
+  padding: 0 3px;
+  border-radius: 3px;
+  background: rgba(255,248,225,.88);
+  color: #3f2412;
+  font: 700 clamp(9px, 1.7cqw, 14px)/1.3 "Malgun Gothic", sans-serif;
+  pointer-events: none;
+}
 .janggi .move-arrow { z-index: 6; }
 .janggi .move-arrow .arrow-edge { stroke: #fff6d2; }
 .janggi .move-arrow .arrow-line, .janggi .move-arrow .arrow-head { stroke: #155faa; }

@@ -4,11 +4,13 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (R) {
   "use strict";
   const LEVELS = Object.freeze({
-    beginner: { name: "레벨 1", reversi: 1, omok: 1, nodes: 0, ms: 0, width: 5, practice: true },
-    level2: { name: "레벨 2", reversi: 2, omok: 2, nodes: 6000, ms: 350, width: 7 },
-    intermediate: { name: "레벨 3", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
-    level4: { name: "레벨 4", reversi: 5, omok: 4, nodes: 45000, ms: 1200, width: 11 },
-    advanced: { name: "레벨 5", reversi: 6, omok: 4, nodes: 90000, ms: 1800, width: 12 }
+    // Omok uses odd depths: an even horizon ends on the opponent's reply and
+    // plays no better than the one-move practice levels.
+    beginner: { name: "레벨 1", reversi: 1, omok: 1, nodes: 0, ms: 0, width: 5, practice: true, slip: .6, description: "가끔 실수도 하며 가볍게 둬요." },
+    level2: { name: "레벨 2", reversi: 1, omok: 1, nodes: 0, ms: 0, width: 5, practice: true },
+    intermediate: { name: "레벨 3", reversi: 2, omok: 1, nodes: 6000, ms: 350, width: 10 },
+    level4: { name: "레벨 4", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
+    advanced: { name: "레벨 5", reversi: 5, omok: 5, nodes: 45000, ms: 1200, width: 10 }
   });
   const HINT = Object.freeze({ reversi:12, omok:6, nodes:400000, ms:4500, width:16, coaching:true });
   const corners = [0, 7, 56, 63], WIN = 10000000;
@@ -182,22 +184,24 @@
     }
     return R.legal(state).map(index=>({index,score:solve(R.play(state,index))})).sort((a,b)=>b.score-a.score||a.index-b.index);
   }
-  function practiceMove(state, random=Math.random) {
+  function practiceMove(state, random=Math.random, slipRate=0) {
     const pick=items=>items[Math.min(items.length-1,Math.floor(random()*items.length))];
+    // A level 1 slip widens the choice and may miss a block; wins stay.
+    const slip=slipRate&&random()<slipRate;
     let candidates;
     if(state.game==='omok') {
       candidates=nearby(state.board).map(index=>({index,own:threats(state.board,index,state.color),other:threats(state.board,index,3-state.color)}));
       const wins=candidates.filter(m=>m.own.win),blocks=candidates.filter(m=>m.other.win);
       if(wins.length)candidates=wins;
-      else if(blocks.length)candidates=blocks;
+      else if(blocks.length&&!slip)candidates=blocks;
       else {
         candidates=candidates.map(m=>({...m,score:m.own.score+m.other.score*.9})).sort((a,b)=>b.score-a.score);
-        const margin=Math.max(30,candidates[0].score*.15);
-        candidates=candidates.filter(m=>m.score>=candidates[0].score-margin).slice(0,5);
+        const margin=Math.max(30,candidates[0].score*(slip?.5:.15));
+        candidates=candidates.filter(m=>m.score>=candidates[0].score-margin).slice(0,slip?8:5);
       }
     } else {
       candidates=reversiRanked(state).map(m=>({...m,score:m.next.ended?terminal(m.next,state.color):m.score})).sort((a,b)=>b.score-a.score);
-      if(candidates.length)candidates=candidates.filter(m=>m.score>=candidates[0].score-40).slice(0,4);
+      if(candidates.length)candidates=candidates.filter(m=>m.score>=candidates[0].score-(slip?120:40)).slice(0,slip?8:4);
     }
     if(!candidates.length)return null;
     const {index}=pick(candidates);
@@ -206,7 +210,7 @@
   function choose(state, level = "beginner", options = {}) {
     if (state.ended) return null;
     const settings = {...(LEVELS[level] || LEVELS.beginner),...options};
-    if(settings.practice&&!settings.coaching)return practiceMove(state,options.random);
+    if(settings.practice&&!settings.coaching)return practiceMove(state,options.random,settings.slip);
     const roots = state.game === "omok" ? omokRanked(state) : reversiRanked(state,settings.coaching);
     if (!roots.length) return null;
     const learned = state.game === "reversi" ? book.get(state.board.join("") + ":" + state.color) : undefined;
@@ -240,7 +244,8 @@
       if(cache&&(cache.size<60000||cache.has(key)))cache.set(key,{depth,score,move:bestMove,bound:score<=originalAlpha?'upper':score>=beta?'lower':'exact'});
       return score;
     }
-    for (let depth = 1; depth <= settings[state.game]; depth++) {
+    // Omok deepens by two so a timed-out search falls back to an odd depth.
+    for (let depth = 1; depth <= settings[state.game]; depth += state.game === "omok" ? 2 : 1) {
       let candidate = best, top = -Infinity;
       try {
         const ordered = roots.slice(0, state.game === "omok" ? settings.width : 64).sort((a, b) => Number(b.index === best) - Number(a.index === best));

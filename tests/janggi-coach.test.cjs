@@ -163,7 +163,7 @@ test("a losing side keeps the saving repetition draw and explains why the game e
   }
 });
 
-test("every level accepts a saving bikjang instead of losing an undefended chariot",()=>{
+test("levels 2-5 accept a saving bikjang instead of losing an undefended chariot",()=>{
   let s=R.initial("HEEH","EHEH");
   for(const [from,to] of [[58,57],[6,23],[87,58],[31,30],[58,29]]){
     const next=R.play(s,{from,to});assert.ok(next.ok);s=next.state;
@@ -174,21 +174,28 @@ test("every level accepts a saving bikjang instead of losing an undefended chari
     assert.ok(R.boardMoves(next).some(reply=>reply.capture==="hR"&&
       !R.boardMoves(R.advance(next,reply)).some(recapture=>recapture.to===reply.to&&recapture.capture)));
   }
-  for(const level of Object.keys(AI.LEVELS)){
+  for(const level of Object.keys(AI.LEVELS).filter(level=>level!=="beginner")){
     const answer=AI.choose(s,level);assert.equal(answer.move.kind,"bikjang");
     assert.equal(R.play(s,answer.move).state.result.winner,null);
   }
+  // Level 1 plays on, so a student who is ahead can finish the game.
+  assert.ok(!AI.choose(s,"beginner").move.kind);
 });
 
-test("practice levels keep playing an even bikjang and level 1 slips at most a soldier",()=>{
+test("practice levels keep playing an even bikjang and level 1 slips never allow mate in one",()=>{
   // Remove both centre soldiers so the kings face each other in an even opening.
   const board=R.initial().board.slice();for(const i of [31,58])board[i]=null;
   const even=R.position(board,"c");assert.equal(R.facing(even),true);
   for(const level of ["beginner","level2"])for(const n of [0,.5,.99]){
     assert.ok(!AI.choose(even,level,{random:()=>n}).move.kind,`${level} should not end an even game with bikjang`);
   }
+  // Level 1 also plays on while behind, so a student who is ahead can finish.
+  const behind=R.position(board.map(p=>p==="hR"?null:p),"h");assert.equal(R.facing(behind),true);
+  for(const n of [0,.5,.99])assert.ok(!AI.choose(behind,"beginner",{random:()=>n}).move.kind);
+  assert.equal(AI.choose(behind,"level2",{random:()=>.99}).move.kind,"bikjang");
   const before=AI.evaluate(R.initial());
-  for(const n of [0,.1,.2,.29]){
+  // Opening slips have nothing to hang yet, so they stay close to even.
+  for(const n of [0,.1,.2,.49]){
     const answer=AI.choose(R.initial(),"beginner",{random:()=>n});assert.ok(!answer.move.kind);
     assert.equal(AI.mateInOne(R.advance(R.initial(),answer.move)),null);
     assert.ok(-AI.evaluate(R.advance(R.initial(),answer.move))>before-400);
