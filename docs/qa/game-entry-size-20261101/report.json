@@ -1,0 +1,4254 @@
+{
+  "games": 33,
+  "cases": 305,
+  "physicalDevices": false,
+  "identity": "local test identity",
+  "results": [
+    {
+      "game": "avalon",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 730,
+      "y": 382.6875,
+      "width": 460,
+      "height": 314.625,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 453,
+      "y": 226.6875,
+      "width": 460,
+      "height": 314.625,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 360,
+      "y": 252.6875,
+      "width": 460,
+      "height": 314.625,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 180,
+      "y": 432.6875,
+      "width": 460,
+      "height": 314.625,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 670,
+      "y": 239.953125,
+      "width": 580,
+      "height": 600.09375,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 393,
+      "y": 83.953125,
+      "width": 580,
+      "height": 600.09375,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 300,
+      "y": 109.953125,
+      "width": 580,
+      "height": 600.09375,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 120,
+      "y": 289.953125,
+      "width": 580,
+      "height": 600.09375,
+      "overflow": 0
+    },
+    {
+      "game": "avalon",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 82.203125,
+      "width": 358,
+      "height": 679.59375,
+      "overflow": 0
+    },
+    {
+      "game": "baduk",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 403.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 247.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 273.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 453.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 260.9375,
+      "width": 358,
+      "height": 322.109375,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 230.234375,
+      "width": 480,
+      "height": 619.53125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 74.234375,
+      "width": 480,
+      "height": 619.53125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 100.234375,
+      "width": 480,
+      "height": 619.53125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 280.234375,
+      "width": 480,
+      "height": 619.53125,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "baduk",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 52.71875,
+      "width": 358,
+      "height": 738.5625,
+      "overflow": 0,
+      "title": "GO GAME"
+    },
+    {
+      "game": "beantrading",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 750,
+      "y": 405.078125,
+      "width": 420,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 473,
+      "y": 249.078125,
+      "width": 420,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 380,
+      "y": 275.078125,
+      "width": 420,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 200,
+      "y": 455.078125,
+      "width": 420,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 690,
+      "y": 276.359375,
+      "width": 540,
+      "height": 527.28125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 413,
+      "y": 120.359375,
+      "width": 540,
+      "height": 527.28125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 320,
+      "y": 146.359375,
+      "width": 540,
+      "height": 527.28125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 140,
+      "y": 326.359375,
+      "width": 540,
+      "height": 527.28125,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "beantrading",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 168.71875,
+      "width": 358,
+      "height": 506.5625,
+      "overflow": 0,
+      "title": "BEAN TRADING"
+    },
+    {
+      "game": "blokus",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 750,
+      "y": 406,
+      "width": 420,
+      "height": 268,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 473,
+      "y": 250,
+      "width": 420,
+      "height": 268,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 380,
+      "y": 276,
+      "width": 420,
+      "height": 268,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 200,
+      "y": 456,
+      "width": 420,
+      "height": 268,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 293,
+      "width": 358,
+      "height": 258,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 680,
+      "y": 274.96875,
+      "width": 560,
+      "height": 530.0625,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 403,
+      "y": 118.96875,
+      "width": 560,
+      "height": 530.0625,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 310,
+      "y": 144.96875,
+      "width": 560,
+      "height": 530.0625,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 130,
+      "y": 324.96875,
+      "width": 560,
+      "height": 530.0625,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "blokus",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 163.96875,
+      "width": 358,
+      "height": 516.0625,
+      "overflow": 0,
+      "title": "CORNER BLOCKS"
+    },
+    {
+      "game": "bomb77",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 402.84375,
+      "width": 400,
+      "height": 274.3125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 246.84375,
+      "width": 400,
+      "height": 274.3125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 272.84375,
+      "width": 400,
+      "height": 274.3125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 452.84375,
+      "width": 400,
+      "height": 274.3125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 700,
+      "y": 297.953125,
+      "width": 520,
+      "height": 484.078125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 423,
+      "y": 141.953125,
+      "width": 520,
+      "height": 484.078125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 330,
+      "y": 167.953125,
+      "width": 520,
+      "height": 484.078125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 150,
+      "y": 347.953125,
+      "width": 520,
+      "height": 484.078125,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "bomb77",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 192.5625,
+      "width": 358,
+      "height": 458.875,
+      "overflow": 0,
+      "title": "BOMB 77"
+    },
+    {
+      "game": "chess",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 378.953125,
+      "width": 400,
+      "height": 322.078125,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 222.953125,
+      "width": 400,
+      "height": 322.078125,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 248.953125,
+      "width": 400,
+      "height": 322.078125,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 428.953125,
+      "width": 400,
+      "height": 322.078125,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 235.9375,
+      "width": 358,
+      "height": 372.109375,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 238.078125,
+      "width": 480,
+      "height": 603.84375,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 82.078125,
+      "width": 480,
+      "height": 603.84375,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 108.078125,
+      "width": 480,
+      "height": 603.84375,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 288.078125,
+      "width": 480,
+      "height": 603.84375,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "chess",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 116.0625,
+      "width": 358,
+      "height": 611.875,
+      "overflow": 0,
+      "title": "CHESS"
+    },
+    {
+      "game": "citychase",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 403.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 247.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 273.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 453.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 660,
+      "y": 149.828125,
+      "width": 600,
+      "height": 780.34375,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 383,
+      "y": 16,
+      "width": 600,
+      "height": 780.34375,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 290,
+      "y": 19.828125,
+      "width": 600,
+      "height": 780.34375,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 110,
+      "y": 199.828125,
+      "width": 600,
+      "height": 780.34375,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "citychase",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 16,
+      "width": 358,
+      "height": 883.375,
+      "overflow": 0,
+      "title": "COPS AND ROBBERS"
+    },
+    {
+      "game": "clue",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 750,
+      "y": 403.953125,
+      "width": 420,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 473,
+      "y": 247.953125,
+      "width": 420,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 380,
+      "y": 273.953125,
+      "width": 420,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 200,
+      "y": 453.953125,
+      "width": 420,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 680,
+      "y": 283.234375,
+      "width": 560,
+      "height": 513.53125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 403,
+      "y": 127.234375,
+      "width": 560,
+      "height": 513.53125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 310,
+      "y": 153.234375,
+      "width": 560,
+      "height": 513.53125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 130,
+      "y": 333.234375,
+      "width": 560,
+      "height": 513.53125,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "clue",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 172.71875,
+      "width": 358,
+      "height": 498.5625,
+      "overflow": 0,
+      "title": "MANOR MYSTERY"
+    },
+    {
+      "game": "codenames",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 730,
+      "y": 403.953125,
+      "width": 460,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CODE WORDS"
+    },
+    {
+      "game": "codenames",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 453,
+      "y": 247.953125,
+      "width": 460,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CODE WORDS"
+    },
+    {
+      "game": "codenames",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 360,
+      "y": 273.953125,
+      "width": 460,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CODE WORDS"
+    },
+    {
+      "game": "codenames",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 180,
+      "y": 453.953125,
+      "width": 460,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CODE WORDS"
+    },
+    {
+      "game": "codenames",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "CODE WORDS"
+    },
+    {
+      "game": "codenames",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 670,
+      "y": 241.453125,
+      "width": 580,
+      "height": 597.09375,
+      "overflow": 0
+    },
+    {
+      "game": "codenames",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 393,
+      "y": 85.453125,
+      "width": 580,
+      "height": 597.09375,
+      "overflow": 0
+    },
+    {
+      "game": "codenames",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 300,
+      "y": 111.453125,
+      "width": 580,
+      "height": 597.09375,
+      "overflow": 0
+    },
+    {
+      "game": "codenames",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 120,
+      "y": 291.453125,
+      "width": 580,
+      "height": 597.09375,
+      "overflow": 0
+    },
+    {
+      "game": "codenames",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 16,
+      "width": 358,
+      "height": 824.890625,
+      "overflow": 0
+    },
+    {
+      "game": "coinweighing",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 325.046875,
+      "width": 480,
+      "height": 429.890625,
+      "overflow": 0,
+      "title": "COIN WEIGHING"
+    },
+    {
+      "game": "coinweighing",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 169.046875,
+      "width": 480,
+      "height": 429.890625,
+      "overflow": 0,
+      "title": "COIN WEIGHING"
+    },
+    {
+      "game": "coinweighing",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 195.046875,
+      "width": 480,
+      "height": 429.890625,
+      "overflow": 0,
+      "title": "COIN WEIGHING"
+    },
+    {
+      "game": "coinweighing",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 375.046875,
+      "width": 480,
+      "height": 429.890625,
+      "overflow": 0,
+      "title": "COIN WEIGHING"
+    },
+    {
+      "game": "coinweighing",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 228.546875,
+      "width": 358,
+      "height": 386.890625,
+      "overflow": 0,
+      "title": "COIN WEIGHING"
+    },
+    {
+      "game": "connect6",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 403.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 247.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 273.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 453.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 282.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 126.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 152.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 332.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "connect6",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 172.21875,
+      "width": 358,
+      "height": 499.5625,
+      "overflow": 0,
+      "title": "CONNECT SIX"
+    },
+    {
+      "game": "davincicode",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 403.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 247.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 273.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 453.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 700,
+      "y": 302.734375,
+      "width": 520,
+      "height": 474.53125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 423,
+      "y": 146.734375,
+      "width": 520,
+      "height": 474.53125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 330,
+      "y": 172.734375,
+      "width": 520,
+      "height": 474.53125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 150,
+      "y": 352.734375,
+      "width": 520,
+      "height": 474.53125,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "davincicode",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 196.21875,
+      "width": 358,
+      "height": 451.5625,
+      "overflow": 0,
+      "title": "NUMBER CODE"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 403.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 247.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 273.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 453.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 680,
+      "y": 283.734375,
+      "width": 560,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 403,
+      "y": 127.734375,
+      "width": 560,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 310,
+      "y": 153.734375,
+      "width": 560,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 130,
+      "y": 333.734375,
+      "width": 560,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "diamondgame",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 173.21875,
+      "width": 358,
+      "height": 497.5625,
+      "overflow": 0,
+      "title": "DIAMOND GAME"
+    },
+    {
+      "game": "dobble",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 403.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SPOT MATCH"
+    },
+    {
+      "game": "dobble",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 247.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SPOT MATCH"
+    },
+    {
+      "game": "dobble",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 273.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SPOT MATCH"
+    },
+    {
+      "game": "dobble",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 453.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SPOT MATCH"
+    },
+    {
+      "game": "dobble",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "SPOT MATCH"
+    },
+    {
+      "game": "dobble",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 670,
+      "y": 316.203125,
+      "width": 580,
+      "height": 447.59375,
+      "overflow": 0
+    },
+    {
+      "game": "dobble",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 393,
+      "y": 160.203125,
+      "width": 580,
+      "height": 447.59375,
+      "overflow": 0
+    },
+    {
+      "game": "dobble",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 300,
+      "y": 186.203125,
+      "width": 580,
+      "height": 447.59375,
+      "overflow": 0
+    },
+    {
+      "game": "dobble",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 120,
+      "y": 366.203125,
+      "width": 580,
+      "height": 447.59375,
+      "overflow": 0
+    },
+    {
+      "game": "dobble",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 174.796875,
+      "width": 358,
+      "height": 494.390625,
+      "overflow": 0
+    },
+    {
+      "game": "drawrelay",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 399.203125,
+      "width": 440,
+      "height": 281.59375,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 243.203125,
+      "width": 440,
+      "height": 281.59375,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 269.203125,
+      "width": 440,
+      "height": 281.59375,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 449.203125,
+      "width": 440,
+      "height": 281.59375,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 285.34375,
+      "width": 358,
+      "height": 273.296875,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 670,
+      "y": 216.46875,
+      "width": 580,
+      "height": 647.046875,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 393,
+      "y": 60.46875,
+      "width": 580,
+      "height": 647.046875,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 300,
+      "y": 86.46875,
+      "width": 580,
+      "height": 647.046875,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 120,
+      "y": 266.46875,
+      "width": 580,
+      "height": 647.046875,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "drawrelay",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 102.625,
+      "width": 358,
+      "height": 638.75,
+      "overflow": 0,
+      "title": "DRAWRELAY"
+    },
+    {
+      "game": "expedition",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 730,
+      "y": 384.921875,
+      "width": 460,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 453,
+      "y": 228.921875,
+      "width": 460,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 360,
+      "y": 254.921875,
+      "width": 460,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 180,
+      "y": 434.921875,
+      "width": 460,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 276.890625,
+      "width": 358,
+      "height": 290.21875,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 680,
+      "y": 175.328125,
+      "width": 560,
+      "height": 729.328125,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 403,
+      "y": 19.328125,
+      "width": 560,
+      "height": 729.328125,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 310,
+      "y": 45.328125,
+      "width": 560,
+      "height": 729.328125,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 130,
+      "y": 225.328125,
+      "width": 560,
+      "height": 729.328125,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "expedition",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 16,
+      "width": 358,
+      "height": 947.265625,
+      "overflow": 0,
+      "title": "RESOURCE COLLECTION"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 403.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 247.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 273.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 453.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 700,
+      "y": 175.34375,
+      "width": 520,
+      "height": 729.3125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 423,
+      "y": 19.34375,
+      "width": 520,
+      "height": 729.3125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 330,
+      "y": 45.34375,
+      "width": 520,
+      "height": 729.3125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 150,
+      "y": 225.34375,
+      "width": 520,
+      "height": 729.3125,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "fruitbell",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 60.125,
+      "width": 358,
+      "height": 723.734375,
+      "overflow": 0,
+      "title": "FRUIT BELL"
+    },
+    {
+      "game": "gemguild",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 403.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 247.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 273.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 453.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 680,
+      "y": 284.734375,
+      "width": 560,
+      "height": 510.53125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 403,
+      "y": 128.734375,
+      "width": 560,
+      "height": 510.53125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 310,
+      "y": 154.734375,
+      "width": 560,
+      "height": 510.53125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 130,
+      "y": 334.734375,
+      "width": 560,
+      "height": 510.53125,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "gemguild",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 178.21875,
+      "width": 358,
+      "height": 487.5625,
+      "overflow": 0,
+      "title": "GEM GUILD"
+    },
+    {
+      "game": "hanoitower",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 393.546875,
+      "width": 480,
+      "height": 292.890625,
+      "overflow": 0,
+      "title": "TOWER OF HANOI"
+    },
+    {
+      "game": "hanoitower",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 237.546875,
+      "width": 480,
+      "height": 292.890625,
+      "overflow": 0,
+      "title": "TOWER OF HANOI"
+    },
+    {
+      "game": "hanoitower",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 263.546875,
+      "width": 480,
+      "height": 292.890625,
+      "overflow": 0,
+      "title": "TOWER OF HANOI"
+    },
+    {
+      "game": "hanoitower",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 443.546875,
+      "width": 480,
+      "height": 292.890625,
+      "overflow": 0,
+      "title": "TOWER OF HANOI"
+    },
+    {
+      "game": "hanoitower",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 272.046875,
+      "width": 358,
+      "height": 299.890625,
+      "overflow": 0,
+      "title": "TOWER OF HANOI"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 750,
+      "y": 384.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 473,
+      "y": 228.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 380,
+      "y": 254.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 200,
+      "y": 434.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 276.890625,
+      "width": 358,
+      "height": 290.21875,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 700,
+      "y": 283.734375,
+      "width": 520,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 423,
+      "y": 127.734375,
+      "width": 520,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 330,
+      "y": 153.734375,
+      "width": 520,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 150,
+      "y": 333.734375,
+      "width": 520,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "honeycomb",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 158.65625,
+      "width": 358,
+      "height": 526.671875,
+      "overflow": 0,
+      "title": "HONEYCOMB BLOCKS"
+    },
+    {
+      "game": "janggi",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 375.453125,
+      "width": 400,
+      "height": 329.078125,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 188.953125,
+      "width": 400,
+      "height": 390.078125,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 214.953125,
+      "width": 400,
+      "height": 390.078125,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 409.953125,
+      "width": 400,
+      "height": 360.078125,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 216.9375,
+      "width": 358,
+      "height": 410.109375,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 190.171875,
+      "width": 480,
+      "height": 699.640625,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 56.171875,
+      "width": 480,
+      "height": 655.640625,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 82.171875,
+      "width": 480,
+      "height": 655.640625,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 209.171875,
+      "width": 480,
+      "height": 761.640625,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "janggi",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 41.46875,
+      "width": 358,
+      "height": 761.0625,
+      "overflow": 0,
+      "title": "KOREAN CHESS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 730,
+      "y": 405.078125,
+      "width": 460,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 453,
+      "y": 249.078125,
+      "width": 460,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 360,
+      "y": 275.078125,
+      "width": 460,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 180,
+      "y": 455.078125,
+      "width": 460,
+      "height": 269.828125,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 680,
+      "y": 255.546875,
+      "width": 560,
+      "height": 568.890625,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 403,
+      "y": 99.546875,
+      "width": 560,
+      "height": 568.890625,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 310,
+      "y": 125.546875,
+      "width": 560,
+      "height": 568.890625,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 130,
+      "y": 305.546875,
+      "width": 560,
+      "height": 568.890625,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "kingdom-trails",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 147.90625,
+      "width": 358,
+      "height": 548.171875,
+      "overflow": 0,
+      "title": "KINGDOM TRAILS"
+    },
+    {
+      "game": "lastcard",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 750,
+      "y": 384.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 473,
+      "y": 228.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 380,
+      "y": 254.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 200,
+      "y": 434.921875,
+      "width": 420,
+      "height": 310.15625,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 276.890625,
+      "width": 358,
+      "height": 290.21875,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 690,
+      "y": 257.6875,
+      "width": 540,
+      "height": 564.609375,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 413,
+      "y": 101.6875,
+      "width": 540,
+      "height": 564.609375,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 320,
+      "y": 127.6875,
+      "width": 540,
+      "height": 564.609375,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 140,
+      "y": 307.6875,
+      "width": 540,
+      "height": 564.609375,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "lastcard",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 155.65625,
+      "width": 358,
+      "height": 532.671875,
+      "overflow": 0,
+      "title": "LAST CARD"
+    },
+    {
+      "game": "loveletter",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 403.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 247.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 273.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 453.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 700,
+      "y": 278.234375,
+      "width": 520,
+      "height": 523.53125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 423,
+      "y": 122.234375,
+      "width": 520,
+      "height": 523.53125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 330,
+      "y": 148.234375,
+      "width": 520,
+      "height": 523.53125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 150,
+      "y": 328.234375,
+      "width": 520,
+      "height": 523.53125,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "loveletter",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 171.71875,
+      "width": 358,
+      "height": 500.5625,
+      "overflow": 0,
+      "title": "COURT DEDUCTION"
+    },
+    {
+      "game": "nimgame",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 385.953125,
+      "width": 400,
+      "height": 308.078125,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 229.953125,
+      "width": 400,
+      "height": 308.078125,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 255.953125,
+      "width": 400,
+      "height": 308.078125,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 435.953125,
+      "width": 400,
+      "height": 308.078125,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 273.4375,
+      "width": 358,
+      "height": 297.109375,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 730,
+      "y": 61.46875,
+      "width": 460,
+      "height": 957.046875,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 453,
+      "y": 16,
+      "width": 460,
+      "height": 957.046875,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 360,
+      "y": 16,
+      "width": 460,
+      "height": 957.046875,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 180,
+      "y": 111.46875,
+      "width": 460,
+      "height": 957.046875,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nimgame",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 16,
+      "width": 358,
+      "height": 1003.875,
+      "overflow": 0,
+      "title": "NIM"
+    },
+    {
+      "game": "nonogram",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 295.90625,
+      "width": 440,
+      "height": 488.171875,
+      "overflow": 0,
+      "title": "NONOGRAM"
+    },
+    {
+      "game": "nonogram",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 139.90625,
+      "width": 440,
+      "height": 488.171875,
+      "overflow": 0,
+      "title": "NONOGRAM"
+    },
+    {
+      "game": "nonogram",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 165.90625,
+      "width": 440,
+      "height": 488.171875,
+      "overflow": 0,
+      "title": "NONOGRAM"
+    },
+    {
+      "game": "nonogram",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 345.90625,
+      "width": 440,
+      "height": 488.171875,
+      "overflow": 0,
+      "title": "NONOGRAM"
+    },
+    {
+      "game": "nonogram",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 188.265625,
+      "width": 358,
+      "height": 467.46875,
+      "overflow": 0,
+      "title": "NONOGRAM"
+    },
+    {
+      "game": "omok",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 403.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 247.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 273.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 453.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 260.9375,
+      "width": 358,
+      "height": 322.109375,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 282.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 126.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 152.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 332.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "omok",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 161.015625,
+      "width": 358,
+      "height": 521.953125,
+      "overflow": 0,
+      "title": "FIVE IN A ROW"
+    },
+    {
+      "game": "reversi",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 403.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 247.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 273.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 453.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 260.9375,
+      "width": 358,
+      "height": 322.109375,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 720,
+      "y": 282.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 443,
+      "y": 126.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 350,
+      "y": 152.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 170,
+      "y": 332.734375,
+      "width": 480,
+      "height": 514.53125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "reversi",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 161.015625,
+      "width": 358,
+      "height": 521.953125,
+      "overflow": 0,
+      "title": "REVERSI"
+    },
+    {
+      "game": "rummikub",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 403.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 247.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 273.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 453.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 690,
+      "y": 283.734375,
+      "width": 540,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 413,
+      "y": 127.734375,
+      "width": 540,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 320,
+      "y": 153.734375,
+      "width": 540,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 140,
+      "y": 333.734375,
+      "width": 540,
+      "height": 512.53125,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "rummikub",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 177.21875,
+      "width": 358,
+      "height": 489.5625,
+      "overflow": 0,
+      "title": "NUMBER TILES"
+    },
+    {
+      "game": "setgame",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 760,
+      "y": 403.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 483,
+      "y": 247.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 390,
+      "y": 273.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 210,
+      "y": 453.953125,
+      "width": 400,
+      "height": 272.078125,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 710,
+      "y": 207.578125,
+      "width": 500,
+      "height": 664.84375,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 433,
+      "y": 51.578125,
+      "width": 500,
+      "height": 664.84375,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 340,
+      "y": 77.578125,
+      "width": 500,
+      "height": 664.84375,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 160,
+      "y": 257.578125,
+      "width": 500,
+      "height": 664.84375,
+      "overflow": 0
+    },
+    {
+      "game": "setgame",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 86.859375,
+      "width": 358,
+      "height": 670.265625,
+      "overflow": 0
+    },
+    {
+      "game": "sliding-puzzle",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 750,
+      "y": 286.4375,
+      "width": 420,
+      "height": 507.109375,
+      "overflow": 0,
+      "title": "8 PUZZLE15 PUZZLE"
+    },
+    {
+      "game": "sliding-puzzle",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 473,
+      "y": 130.4375,
+      "width": 420,
+      "height": 507.109375,
+      "overflow": 0,
+      "title": "8 PUZZLE15 PUZZLE"
+    },
+    {
+      "game": "sliding-puzzle",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 380,
+      "y": 156.4375,
+      "width": 420,
+      "height": 507.109375,
+      "overflow": 0,
+      "title": "8 PUZZLE15 PUZZLE"
+    },
+    {
+      "game": "sliding-puzzle",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 200,
+      "y": 336.4375,
+      "width": 420,
+      "height": 507.109375,
+      "overflow": 0,
+      "title": "8 PUZZLE15 PUZZLE"
+    },
+    {
+      "game": "sliding-puzzle",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 203.59375,
+      "width": 358,
+      "height": 436.8125,
+      "overflow": 0,
+      "title": "8 PUZZLE15 PUZZLE"
+    },
+    {
+      "game": "sphinx",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 710,
+      "y": 297.421875,
+      "width": 500,
+      "height": 485.140625,
+      "overflow": 0,
+      "title": "SPHINX"
+    },
+    {
+      "game": "sphinx",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 433,
+      "y": 141.421875,
+      "width": 500,
+      "height": 485.140625,
+      "overflow": 0,
+      "title": "SPHINX"
+    },
+    {
+      "game": "sphinx",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 340,
+      "y": 167.421875,
+      "width": 500,
+      "height": 485.140625,
+      "overflow": 0,
+      "title": "SPHINX"
+    },
+    {
+      "game": "sphinx",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 160,
+      "y": 349.171875,
+      "width": 500,
+      "height": 481.640625,
+      "overflow": 0,
+      "title": "SPHINX"
+    },
+    {
+      "game": "sphinx",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 156.671875,
+      "width": 358,
+      "height": 530.640625,
+      "overflow": 0,
+      "title": "SPHINX"
+    },
+    {
+      "game": "traverse",
+      "phase": "entry",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 740,
+      "y": 403.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "entry",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 463,
+      "y": 247.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "entry",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 370,
+      "y": 273.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "entry",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 190,
+      "y": 453.953125,
+      "width": 440,
+      "height": 272.078125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "entry",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 291.4375,
+      "width": 358,
+      "height": 261.109375,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "waiting",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "x": 690,
+      "y": 312.734375,
+      "width": 540,
+      "height": 454.53125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "waiting",
+      "viewport": [
+        1366,
+        768
+      ],
+      "x": 413,
+      "y": 156.734375,
+      "width": 540,
+      "height": 454.53125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "waiting",
+      "viewport": [
+        1180,
+        820
+      ],
+      "x": 320,
+      "y": 182.734375,
+      "width": 540,
+      "height": 454.53125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "waiting",
+      "viewport": [
+        820,
+        1180
+      ],
+      "x": 140,
+      "y": 362.734375,
+      "width": 540,
+      "height": 454.53125,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    },
+    {
+      "game": "traverse",
+      "phase": "waiting",
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 16,
+      "y": 206.21875,
+      "width": 358,
+      "height": 431.5625,
+      "overflow": 0,
+      "title": "SHAPE CROSSING"
+    }
+  ],
+  "additionalVerification": [
+    "Bomb77 actual two-player create/join/start: passed; entry layout released during gameplay",
+    "multiplayer-lobby-unit: passed",
+    "game-start-layout-contract: passed"
+  ],
+  "existingCheckLimitation": "device-layout-contract refers to missing legacy learning/games/spot-match.html; cannot run that existing static check"
+}
