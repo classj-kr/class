@@ -1,8 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { raceReadyWorksheets } from "../../../lib/arithmetic-worksheets";
-import { hasRaceCards, RACE_DURATIONS } from "../../../lib/race-cards";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
@@ -15,8 +13,6 @@ function normalizedPlayerName(value: string | null) {
 export default function ArithmeticRaceJoinPage() {
   const [roomCode, setRoomCode] = useState("");
   const [name, setName] = useState("");
-  const [worksheetRoute, setWorksheetRoute] = useState(raceReadyWorksheets[0]?.route ?? "");
-  const [durationSeconds, setDurationSeconds] = useState(180);
   const [joined, setJoined] = useState<JoinState | null>(null);
   const [board, setBoard] = useState<Board | null>(null);
   const [error, setError] = useState("");
@@ -57,7 +53,7 @@ export default function ArithmeticRaceJoinPage() {
     const participantId = params.get("participant");
     const participantToken = params.get("participantToken");
     const hostToken = params.get("hostToken") ?? undefined;
-    if (!room || !/^\d{4}$|^\d{6}$/.test(room)) return;
+    if (!room || !/^\d{4}$|^\d{6}$/.test(room)) { window.location.replace("/arithmetic"); return; }
     if (!participantId || !participantToken) { setRoomCode(room); setEntryRoom(room); return; }
     window.setTimeout(() => {
       setRoomCode(room);
@@ -102,15 +98,6 @@ export default function ArithmeticRaceJoinPage() {
     return () => { active = false; window.clearInterval(poll); };
   }, [activeRoom, activeHost, activeParticipant, activeToken]);
 
-  function requireName() {
-    const playerName = normalizedPlayerName(name);
-    if (!playerName) {
-      setError("저장된 내 이름을 찾지 못했습니다. 메인 화면에서 이름을 먼저 정해 주세요.");
-      return null;
-    }
-    return playerName;
-  }
-
   // 아바타를 기다리느라 입장이 늦어지지 않게 잠깐만 기다린다.
   const avatarUrl = useCallback(() => Promise.race([
     avatar.current ?? Promise.resolve(null),
@@ -148,28 +135,6 @@ export default function ArithmeticRaceJoinPage() {
     joinedFromEntry.current = entryRoom;
     void joinRoom(entryRoom, name);
   }, [entryRoom, name, joined, joinRoom]);
-
-  async function createRoom(event: FormEvent) {
-    event.preventDefault();
-    const playerName = requireName();
-    if (!playerName) return;
-    setLoading(true);
-    setError("");
-    try {
-      const response = await fetch("/api/arithmetic-race", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "create", worksheetRoute, name: playerName, durationSeconds, avatarUrl: await avatarUrl() }),
-      });
-      const data = await response.json() as { roomCode?: string; hostToken?: string; participantId?: string; participantToken?: string; race?: Race; error?: string };
-      if (!response.ok || !data.roomCode || !data.hostToken || !data.participantId || !data.participantToken || !data.race) throw new Error(data.error || "방을 만들지 못했습니다.");
-      saveSession({ roomCode: data.roomCode, hostToken: data.hostToken, participantId: data.participantId, participantToken: data.participantToken, race: data.race });
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "방을 만들지 못했습니다.");
-    } finally {
-      setLoading(false);
-    }
-  }
 
   async function startRace() {
     if (!joined?.hostToken || !window.confirm("참가한 모두에게 문제를 시작할까요?")) return;
@@ -222,20 +187,7 @@ export default function ArithmeticRaceJoinPage() {
             <span>방번호</span><strong className="race-room-code">{roomCode}</strong>
             {loading ? <p>입장 중…</p> : <button type="button" disabled={!name} onClick={() => void joinRoom(entryRoom, name)}>다시 입장</button>}
           </section>
-        ) : (
-          <>
-            <div className="race-entry-grid" style={{ gridTemplateColumns: 'minmax(0, 1fr)' }}>
-              <form className="race-join-card race-create-card" onSubmit={createRoom}>
-                <h2>순위전 열기</h2>
-                <label>함께 풀 학습지<select value={worksheetRoute} onChange={(event) => setWorksheetRoute(event.target.value)}>{raceReadyWorksheets.map((worksheet) => <option value={worksheet.route} key={worksheet.route}>{worksheet.grade} · {worksheet.title}</option>)}</select></label>
-                {hasRaceCards(worksheetRoute) ? (
-                  <label>제한 시간<select value={durationSeconds} onChange={(event) => setDurationSeconds(Number(event.target.value))}>{RACE_DURATIONS.map((seconds) => <option value={seconds} key={seconds}>{seconds / 60}분</option>)}</select></label>
-                ) : <small className="race-mode-note">이 학습지는 시험지 방식으로 진행합니다.</small>}
-                <button type="submit" disabled={loading}>{loading ? "만드는 중" : "방 만들고 입장"}</button>
-              </form>
-            </div>
-          </>
-        )}
+        ) : null}
         {error && <p className="race-form-error" role="alert">{error}</p>}
       </div>
     </main>
