@@ -256,6 +256,7 @@
             [...root.children].forEach(node => node.classList.add("mp-ui-extra"));
             root.prepend(header, tabs, access);
             root.classList.add("mp-ui-lobby");
+            root.dataset.lobbyGame = this.gameId;
             root.setAttribute("data-multiplayer-lobby", "");
             e.playerList?.classList.add("mp-ui-roster");
             e.guide?.classList.add("mp-ui-guide");

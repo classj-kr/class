@@ -340,8 +340,11 @@ function sendSiteHtml(req, res, filepath, next) {
     classroomPlatform.displayNameFor(req).catch(() => ({ name: "", kind: "" })).then((identity) => {
     // Refresh shared scripts even when an older page still names an old cache version.
     const htmlSource = withSiteIdentity(source, identity).replace(
+      /(\/assets\/network\/(?:multiplayer-lobby|single-player-entry)\.css)(?:\?[^"'<>\s]*)?/g,
+      "$1?v=20261101-game-entry-size"
+    ).replace(
       /(\/assets\/network\/multiplayer-lobby\.js)(?:\?[^"'<>\s]*)?/g,
-      "$1?v=20261009-visible-timer"
+      "$1?v=20261101-game-entry-size"
     ).replace(
       /(\/assets\/sound\/(?:game-sfx|music-control)\.js)(?:\?[^"'<>\s]*)?/g,
       "$1?v=20261009-explosion-file"

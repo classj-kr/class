@@ -27,3 +27,27 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 @media (max-width: 600px) {
   :is(#start-screen,#startScreen) .start-title { font-size: clamp(24px, 7vw, 36px); letter-spacing: .03em; }
 }
+
+/* Each solo game keeps the space needed by its own setup controls. */
+body[data-entry-game="hanoitower"] { --solo-entry-width: 480px; }
+body[data-entry-game="coinweighing"] { --solo-entry-width: 480px; }
+body[data-entry-game="nonogram"] { --solo-entry-width: 440px; }
+body[data-entry-game="sliding-puzzle"] { --solo-entry-width: 420px; }
+body[data-entry-game="sphinx"] { --solo-entry-width: 500px; }
+
+body:is(:has([data-game-entry]:not([hidden]):not(.hidden):not([style*="display: none"]):not([style*="display:none"])), :has(.game-frame [data-difficulty-button])) {
+  min-height: 100dvh; height: auto !important; margin: 0; padding: 0 !important;
+  display: flex; flex-direction: column; align-items: center; justify-content: safe center;
+}
+body > .page-shell:has(> [data-game-entry]:not([hidden]):not(.hidden)),
+body[data-entry-game]:has(.game-frame [data-difficulty-button]) {
+  min-height: 100dvh; height: auto !important; width: 100%; max-width: none;
+  box-sizing: border-box; padding: 16px !important; margin: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: safe center;
+}
+body[data-entry-game] [data-game-entry],
+body[data-entry-game] .game-frame:has([data-difficulty-button]) {
+  width: min(var(--solo-entry-width), 100%) !important; max-width: calc(100vw - 32px) !important;
+  margin: 0 auto !important; flex: 0 0 auto;
+}
+body[data-entry-game]:has(> [data-game-entry]:not([hidden]):not([style*="none"])) { padding: 16px !important; }

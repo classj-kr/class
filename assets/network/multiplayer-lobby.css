@@ -600,3 +600,106 @@ body:has(#game:not(.hide) > #lobby:not(.hide)) #game .row > div:has(> #roomShare
     border-radius: 12px;
     background: var(--deep-teal, #153f43);
 }
+
+/* Entry sizes are chosen per game, rather than the former universal 640px. */
+[data-lobby-game="avalon"] { --entry-width: 460px; --entry-title: 36px; }
+[data-lobby-game="baduk"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="beantrading"] { --entry-width: 420px; --entry-title: 32px; }
+[data-lobby-game="blokus"] { --entry-width: 420px; --entry-title: 34px; }
+[data-lobby-game="bomb77"] { --entry-width: 400px; --entry-title: 36px; }
+[data-lobby-game="chess"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="citychase"] { --entry-width: 440px; --entry-title: 34px; }
+[data-lobby-game="clue"] { --entry-width: 420px; --entry-title: 34px; }
+[data-lobby-game="codenames"] { --entry-width: 460px; --entry-title: 34px; }
+[data-lobby-game="connect6"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="davincicode"] { --entry-width: 440px; --entry-title: 34px; }
+[data-lobby-game="diamondgame"] { --entry-width: 440px; --entry-title: 34px; }
+[data-lobby-game="dobble"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="drawrelay"] { --entry-width: 440px; --entry-title: 32px; }
+[data-lobby-game="expedition"] { --entry-width: 460px; --entry-title: 34px; }
+[data-lobby-game="fruitbell"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="gemguild"] { --entry-width: 440px; --entry-title: 34px; }
+[data-lobby-game="honeycomb"] { --entry-width: 420px; --entry-title: 34px; }
+[data-lobby-game="janggi"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="kingdomtrails"] { --entry-width: 460px; --entry-title: 32px; }
+[data-lobby-game="lastcard"] { --entry-width: 420px; --entry-title: 34px; }
+[data-lobby-game="loveletter"] { --entry-width: 440px; --entry-title: 34px; }
+[data-lobby-game="nimgame"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="omok"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="reversi"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="rummikub"] { --entry-width: 440px; --entry-title: 34px; }
+[data-lobby-game="setgame"] { --entry-width: 400px; --entry-title: 34px; }
+[data-lobby-game="traverse"] { --entry-width: 440px; --entry-title: 34px; }
+
+[data-multiplayer-lobby].mp-ui-lobby:not(.mp-ui-connected) {
+    width: min(var(--entry-width, 440px), 100%) !important;
+    max-width: var(--entry-width, 440px) !important;
+    padding: 20px !important;
+}
+.mp-ui-lobby .mp-ui-header { margin-bottom: 14px; }
+.mp-ui-lobby .mp-ui-header .mp-ui-title {
+    font-size: clamp(26px, 5vw, var(--entry-title, 34px)) !important;
+}
+/* Center the visible lobby, while allowing a tall waiting room to scroll. */
+body:has(.mp-ui-lobby:not(.hidden):not(.hide):not([hidden])) {
+    min-height: 100dvh; box-sizing: border-box; margin: 0; padding: 0 !important;
+}
+body:has(> .mp-ui-lobby:not(.hidden):not(.hide):not([hidden])),
+:is(main,.shell,.app-shell,.game-shell,.container,.app,.wrap,.page-shell):has(> .mp-ui-lobby:not(.hidden):not(.hide):not([hidden])) {
+    display: flex !important; flex-direction: column !important;
+    justify-content: safe center !important; align-items: center !important;
+    min-height: 100dvh !important; height: auto !important;
+    box-sizing: border-box; padding: 16px !important; margin: 0 !important;
+    width: 100% !important; max-width: none !important;
+}
+[data-multiplayer-lobby].mp-ui-lobby:not(.hidden):not(.hide):not([hidden]) {
+    flex: 0 0 auto; margin: 0 auto !important;
+}
+
+/* Waiting rooms reserve space for their own roster and settings. */
+[data-lobby-game="avalon"].mp-ui-connected { width: min(580px, 100%) !important; max-width: 580px !important; }
+[data-lobby-game="baduk"].mp-ui-connected { width: min(480px, 100%) !important; max-width: 480px !important; }
+[data-lobby-game="beantrading"].mp-ui-connected { width: min(540px, 100%) !important; max-width: 540px !important; }
+[data-lobby-game="blokus"].mp-ui-connected { width: min(560px, 100%) !important; max-width: 560px !important; }
+[data-lobby-game="bomb77"].mp-ui-connected { width: min(520px, 100%) !important; max-width: 520px !important; }
+[data-lobby-game="chess"].mp-ui-connected { width: min(480px, 100%) !important; max-width: 480px !important; }
+[data-lobby-game="citychase"].mp-ui-connected { width: min(600px, 100%) !important; max-width: 600px !important; }
+[data-lobby-game="clue"].mp-ui-connected { width: min(560px, 100%) !important; max-width: 560px !important; }
+[data-lobby-game="codenames"].mp-ui-connected { width: min(580px, 100%) !important; max-width: 580px !important; }
+[data-lobby-game="connect6"].mp-ui-connected { width: min(480px, 100%) !important; max-width: 480px !important; }
+[data-lobby-game="davincicode"].mp-ui-connected { width: min(520px, 100%) !important; max-width: 520px !important; }
+[data-lobby-game="diamondgame"].mp-ui-connected { width: min(560px, 100%) !important; max-width: 560px !important; }
+[data-lobby-game="dobble"].mp-ui-connected { width: min(520px, 100%) !important; max-width: 520px !important; }
+[data-lobby-game="drawrelay"].mp-ui-connected { width: min(580px, 100%) !important; max-width: 580px !important; }
+[data-lobby-game="expedition"].mp-ui-connected { width: min(560px, 100%) !important; max-width: 560px !important; }
+[data-lobby-game="fruitbell"].mp-ui-connected { width: min(520px, 100%) !important; max-width: 520px !important; }
+[data-lobby-game="gemguild"].mp-ui-connected { width: min(560px, 100%) !important; max-width: 560px !important; }
+[data-lobby-game="honeycomb"].mp-ui-connected { width: min(520px, 100%) !important; max-width: 520px !important; }
+[data-lobby-game="janggi"].mp-ui-connected { width: min(480px, 100%) !important; max-width: 480px !important; }
+[data-lobby-game="kingdomtrails"].mp-ui-connected { width: min(560px, 100%) !important; max-width: 560px !important; }
+[data-lobby-game="lastcard"].mp-ui-connected { width: min(540px, 100%) !important; max-width: 540px !important; }
+[data-lobby-game="loveletter"].mp-ui-connected { width: min(520px, 100%) !important; max-width: 520px !important; }
+[data-lobby-game="nimgame"].mp-ui-connected { width: min(460px, 100%) !important; max-width: 460px !important; }
+[data-lobby-game="omok"].mp-ui-connected { width: min(480px, 100%) !important; max-width: 480px !important; }
+[data-lobby-game="reversi"].mp-ui-connected { width: min(480px, 100%) !important; max-width: 480px !important; }
+[data-lobby-game="rummikub"].mp-ui-connected { width: min(540px, 100%) !important; max-width: 540px !important; }
+[data-lobby-game="setgame"].mp-ui-connected { width: min(500px, 100%) !important; max-width: 500px !important; }
+[data-lobby-game="traverse"].mp-ui-connected { width: min(540px, 100%) !important; max-width: 540px !important; }
+
+/* These two games replace the entry section with a separate waiting screen. */
+body:has(#game:not(.hide) > #lobby:not(.hide)),
+body:has(.mp-ui-separate-waiting #lobbySetup:not(.hidden)) {
+  margin: 0 !important; padding: 0 !important; min-height: 100dvh;
+}
+.shell:has(> #game:not(.hide) > #lobby:not(.hide)),
+.shell:has(> .mp-ui-separate-waiting #lobbySetup:not(.hidden)) {
+  display: flex !important; flex-direction: column; justify-content: safe center; align-items: center;
+  min-height: 100dvh !important; box-sizing: border-box; width: 100% !important; max-width: none !important;
+  padding: 16px !important; margin: 0 !important;
+}
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game {
+  width: min(580px, 100%) !important; margin: 0 auto !important; flex: 0 0 auto;
+}
+.mp-ui-separate-waiting:has(#lobbySetup:not(.hidden)) {
+  width: min(580px, 100%); margin: 0 auto; flex: 0 0 auto; box-sizing: border-box;
+}

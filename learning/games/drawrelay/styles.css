@@ -221,7 +221,7 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
 
 /* Short laptop screens need room for the roster and Start, plus normal scrolling. */
 /* Keep the lobby compact at every height, including tall desktop and phone screens. */
-#lobbyScreen.mp-ui-lobby { padding: 18px !important; margin: 40px auto 12px !important; }
+#lobbyScreen.mp-ui-lobby { padding: 18px !important; margin: 0 auto !important; }
 #lobbyScreen .mp-ui-header { margin-bottom: 12px; }
 #lobbyScreen .mp-ui-header .mp-ui-title {
   display: flex;
