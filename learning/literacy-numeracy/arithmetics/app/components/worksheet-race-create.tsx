@@ -76,10 +76,10 @@ export default function WorksheetRaceCreate() {
       <form onSubmit={event => { event.preventDefault(); void create(); }}>
         <h2 id="worksheet-race-title">순위전 만들기</h2>
         <p>{worksheet.grade} · {worksheet.title}</p>
-        {hasRaceCards(worksheet.route) ? <label>제한 시간<select value={duration}
-          disabled={busy} onChange={event => setDuration(Number(event.target.value))}>
-          {RACE_DURATIONS.map(seconds => <option key={seconds} value={seconds}>{seconds / 60}분</option>)}
-        </select></label> : <p>이 학습지의 문제를 함께 풀어요.</p>}
+        {hasRaceCards(worksheet.route) ? <fieldset className="worksheet-race-duration"><legend>제한 시간</legend>
+          <div>{RACE_DURATIONS.map(seconds => <button type="button" key={seconds} disabled={busy}
+            aria-pressed={duration === seconds} onClick={() => setDuration(seconds)}>{seconds / 60}분</button>)}</div>
+        </fieldset> : <p>이 학습지의 문제를 함께 풀어요.</p>}
         {error && <p role="alert">{error}</p>}
         <div className="toolbar"><button type="button" className="button ghost" disabled={busy}
           onClick={() => dialog.current?.close()}>취소</button>
