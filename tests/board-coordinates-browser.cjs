@@ -1,0 +1,17 @@
+const {chromium}=require('../game-hub-server/node_modules/playwright');const assert=require('node:assert/strict');const fs=require('node:fs'),{spawnSync}=require('node:child_process');
+const J=require('../learning/games/board-coach/janggi-rules.js');const C=require('../learning/games/chess/chess-rules.js');const R=require('../learning/games/board-coach/rules.js');const B=require('../learning/games/board-coach/baduk-rules.js');
+(async()=>{const browser=await chromium.launch({channel:'chrome'});const results=[];try{
+for(const game of ['janggi','chess','omok','reversi','baduk'])for(const color of (['janggi','chess'].includes(game)?['1','2']:['1'])){
+ const p=await browser.newPage();await p.goto('http://127.0.0.1:8936/learning/games/board-coach/'+(game==='baduk'?'baduk.html':'coach.html')+'?game='+game);await p.locator('html[data-coach-state="ready"]').waitFor();
+ await p.locator('input[name="color"][value="'+color+'"]').check();await p.locator('#startLearning').click();
+ if(game==='janggi')await p.locator('#janggiCoords').click();
+ if(color==='2'){await p.waitForFunction(()=>document.querySelector('#board [data-square]')?.dataset.square===(new URLSearchParams(location.search).get('game')==='janggi'?'89':'7'));}
+ for(const [width,height]of [[1366,768],[1180,820],[390,844]]){await p.setViewportSize({width,height});
+ const data=await p.locator('#board').evaluate(board=>({cells:[...board.querySelectorAll('[role="gridcell"]')].map(e=>({index:Number(e.dataset.square??e.dataset.index),label:e.getAttribute('aria-label').split(' · ')[0]})),labels:[...board.querySelectorAll('.coord-label')].map(e=>{const r=e.getBoundingClientRect(),cell=e.parentElement.getBoundingClientRect();return {text:e.textContent,type:e.classList.contains('coord-rank')?'rank':'file',index:Number(e.parentElement.dataset.square),bg:getComputedStyle(e).backgroundColor,delta:e.classList.contains('coord-rank')?Math.abs((r.top+r.bottom-cell.top-cell.bottom)/2):Math.abs((r.left+r.right-cell.left-cell.right)/2)}}),frame:board.parentElement.getBoundingClientRect().toJSON(),size:Math.round(Math.sqrt(board.querySelectorAll('[role="gridcell"]').length))}));
+ assert.equal(new Set(data.cells.map(e=>e.label)).size,data.cells.length);
+ for(const e of data.cells)assert.equal(e.label,game==='janggi'?J.coord(e.index):game==='chess'?C.squareName(e.index):game==='baduk'?B.coord(e.index,data.size):R.coord(e.index,data.size));
+ if(game==='janggi'){assert.equal(data.labels.length,19);for(const label of data.labels){assert.equal(label.text,J.coord(label.index)[label.type==='rank'?0:1]);assert.equal(label.bg,'rgba(0, 0, 0, 0)');assert.ok(label.delta<=1,'edge axis aligned to point');}}
+ results.push({game,color,width,cells:data.cells.length,edgeLabels:data.labels.length});
+ if(game==='janggi'&&color==='1'&&width===1366){const png=await p.screenshot();assert.equal(spawnSync('python',['-c','import sys,io;from PIL import Image;Image.open(io.BytesIO(sys.stdin.buffer.read())).save(sys.argv[1],"WEBP",lossless=True)','outputs/qa/board-coordinates/janggi-edge.webp'],{input:png}).status,0);}
+ }await p.close();}
+}finally{await browser.close()}fs.writeFileSync('outputs/qa/board-coordinates/report.json',JSON.stringify({cases:results.length,results},null,2));console.log('PASS',results.length,'game/orientation/viewport cases; unique matching coordinates; Janggi 19 transparent aligned edge labels');})().catch(e=>{console.error(e);process.exit(1)});
