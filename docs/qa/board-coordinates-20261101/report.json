@@ -1,0 +1,152 @@
+{
+  "cases": 21,
+  "results": [
+    {
+      "game": "janggi",
+      "color": "1",
+      "width": 1366,
+      "cells": 90,
+      "edgeLabels": 19
+    },
+    {
+      "game": "janggi",
+      "color": "1",
+      "width": 1180,
+      "cells": 90,
+      "edgeLabels": 19
+    },
+    {
+      "game": "janggi",
+      "color": "1",
+      "width": 390,
+      "cells": 90,
+      "edgeLabels": 19
+    },
+    {
+      "game": "janggi",
+      "color": "2",
+      "width": 1366,
+      "cells": 90,
+      "edgeLabels": 19
+    },
+    {
+      "game": "janggi",
+      "color": "2",
+      "width": 1180,
+      "cells": 90,
+      "edgeLabels": 19
+    },
+    {
+      "game": "janggi",
+      "color": "2",
+      "width": 390,
+      "cells": 90,
+      "edgeLabels": 19
+    },
+    {
+      "game": "chess",
+      "color": "1",
+      "width": 1366,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "chess",
+      "color": "1",
+      "width": 1180,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "chess",
+      "color": "1",
+      "width": 390,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "chess",
+      "color": "2",
+      "width": 1366,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "chess",
+      "color": "2",
+      "width": 1180,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "chess",
+      "color": "2",
+      "width": 390,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "omok",
+      "color": "1",
+      "width": 1366,
+      "cells": 225,
+      "edgeLabels": 0
+    },
+    {
+      "game": "omok",
+      "color": "1",
+      "width": 1180,
+      "cells": 225,
+      "edgeLabels": 0
+    },
+    {
+      "game": "omok",
+      "color": "1",
+      "width": 390,
+      "cells": 225,
+      "edgeLabels": 0
+    },
+    {
+      "game": "reversi",
+      "color": "1",
+      "width": 1366,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "reversi",
+      "color": "1",
+      "width": 1180,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "reversi",
+      "color": "1",
+      "width": 390,
+      "cells": 64,
+      "edgeLabels": 0
+    },
+    {
+      "game": "baduk",
+      "color": "1",
+      "width": 1366,
+      "cells": 49,
+      "edgeLabels": 0
+    },
+    {
+      "game": "baduk",
+      "color": "1",
+      "width": 1180,
+      "cells": 49,
+      "edgeLabels": 0
+    },
+    {
+      "game": "baduk",
+      "color": "1",
+      "width": 390,
+      "cells": 49,
+      "edgeLabels": 0
+    }
+  ]
+}
