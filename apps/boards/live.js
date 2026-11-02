@@ -22,6 +22,10 @@
     const timed = ['countdown', 'question'].includes(state?.phase);
     $('clock').textContent = timed ? remaining() + '초' : '';
     if (state?.phase === 'countdown') $('studentStatus').textContent = remaining() ? remaining() + '초 뒤 시작' : '문제 불러오는 중';
+    if (state?.me.teacher && state.phase === 'reveal') {
+      const seconds = Math.max(0, Math.ceil((state.nextAt - Date.now() - offset) / 1000));
+      $('phaseLabel').textContent = state.autoAdvance ? `경주 · ${seconds}초 뒤 ${state.index + 1 === state.total ? '최종 결과' : '다음 문제'}` : '경주 · 자동 진행 꺼짐';
+    }
     if (state && Date.now() - lastContact > 4000) $('connection').textContent = '연결 확인 중…';
     if (state?.phase === 'question' && (remaining() === 0 || Date.now() - lastContact > 4000)) $('choices').querySelectorAll('button').forEach(b => { b.disabled = true; });
   }
@@ -54,6 +58,10 @@
     $('phaseLabel').textContent = ({ lobby: '입장 대기', countdown: '시작 준비', question: '문제 풀이 중', reveal: '경주', finished: '경주 종료' })[s.phase];
     $('advance').textContent = ({ lobby: '경주 시작', countdown: '시작 준비', question: '답안 마감 · 경주', reveal: s.index + 1 === s.total ? '최종 결과' : '다음 문제', finished: '게시판으로' })[s.phase];
     $('advance').disabled = busy || s.phase === 'countdown' || (s.phase === 'lobby' && s.participantCount === 0);
+    $('advance').hidden = s.autoAdvance && !['lobby', 'finished'].includes(s.phase);
+    $('automatic').hidden = s.phase === 'finished'; $('automatic').disabled = busy;
+    $('automatic').textContent = s.autoAdvance ? '자동 진행 켜짐' : '자동 진행 꺼짐';
+    $('automatic').setAttribute('aria-pressed', String(s.autoAdvance));
     $('finish').hidden = s.phase === 'finished'; $('finish').disabled = busy;
     const sorted = [...s.racers].sort((a, b) => b.score - a.score || a.number - b.number);
     $('ranking').replaceChildren(...sorted.slice(0, 3).map(p => {
@@ -98,10 +106,10 @@
     catch (e) { error(e.message); }
     finally { busy = false; renderStudent(); await refresh(true); }
   }
-  async function control(action) {
+  async function control(action, extra = {}) {
     if (!state || busy) return;
     busy = true; renderTeacher();
-    try { apply(await api('/control', { action, index: state.index, phase: state.phase === 'countdown' ? 'question' : state.phase }), true); error(''); }
+    try { apply(await api('/control', { ...extra, action, index: state.index, phase: state.phase === 'countdown' ? 'question' : state.phase }), true); error(''); }
     catch (e) { error(e.message); }
     finally { busy = false; renderTeacher(); await refresh(); }
   }
@@ -111,6 +119,7 @@
     if (action) void control(action);
   });
   $('finish').addEventListener('click', () => { if (confirm('경주를 종료하고 현재 결과를 저장할까요?')) void control('finish'); });
+  $('automatic').addEventListener('click', () => void control('automatic', { enabled: !state?.autoAdvance }));
   $('fullscreen').addEventListener('click', async () => { try { if (document.fullscreenElement) await document.exitFullscreen(); else await $('liveApp').requestFullscreen(); } catch (_) { error('브라우저 전체 화면(F11)을 사용할 수 있어요.'); } });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) void refresh(true); });
   setInterval(clock, 200);
