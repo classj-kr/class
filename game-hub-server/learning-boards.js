@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const QRCode = require('qrcode');
 const { installBoardRaces } = require('./learning-board-races');
+const { installBoardComments } = require('./learning-board-comments');
 
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
@@ -44,6 +45,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '006-learning-boards.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '013-learning-board-races.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '020-learning-board-likes.sql'), 'utf8'));
+      await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '021-learning-board-comments.sql'), 'utf8'));
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_slots_check');
@@ -100,7 +102,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     finally { db.release(); }
   }
   const publicBoard = b => ({ id: b.id, code: b.code, title: b.title, description: b.description, layout: b.layout,
-    columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names, likesEnabled: b.likes_enabled });
+    columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names, likesEnabled: b.likes_enabled, commentsEnabled: b.comments_enabled });
 
   function question(body) {
     const kind = body.kind;
@@ -220,6 +222,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const posts = (await db.query('SELECT * FROM learning_board_posts WHERE board_id=$1 ORDER BY created_at, id', [b.id])).rows;
       const likes = b.likes_enabled ? (await db.query(`SELECT post_id, COUNT(*)::int AS count, BOOL_OR(actor_key=$2) AS liked
         FROM learning_board_likes WHERE board_id=$1 GROUP BY post_id`, [b.id, who.teacher ? 'teacher' : who.id])).rows : [];
+      const comments = b.comments_enabled ? (await db.query('SELECT post_id, COUNT(*)::int AS count FROM learning_board_comments WHERE board_id=$1 GROUP BY post_id', [b.id])).rows : [];
       const sets = (await db.query('SELECT id, title, status, jsonb_array_length(questions) AS count FROM learning_board_sets WHERE board_id=$1 ORDER BY created_at DESC', [b.id])).rows;
       const live = (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0] || null;
       const result = posts.filter(p => who.teacher || (!p.hidden && (p.kind === 'note' || p.member_id === who.id))).map(p => {
@@ -231,6 +234,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
           number: m?.number ?? null, mine: who.teacher ? p.member_id === null : p.member_id === who.id, hidden: p.hidden, createdAt: p.created_at,
           reviewStatus: p.review_status, revision: p.revision,
           ...(b.likes_enabled && p.kind === 'note' && !p.hidden ? { likes: { count: reaction?.count ?? 0, liked: reaction?.liked ?? false } } : {}),
+          ...(b.comments_enabled && p.kind === 'note' && !p.hidden ? { commentCount: comments.find(c => c.post_id === p.id)?.count ?? 0 } : {}),
           ...(own ? { answer: p.answer, explanation: p.explanation, feedback: p.feedback } : {}) };
       });
       await db.query('COMMIT');
@@ -244,13 +248,13 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     await transaction(req, async (db, b) => {
       const body = req.body || {};
       const values = {};
-      for (const [key, field] of Object.entries({ locked: 'locked', closed: 'closed', hideNames: 'hide_names', likesEnabled: 'likes_enabled' })) {
+      for (const [key, field] of Object.entries({ locked: 'locked', closed: 'closed', hideNames: 'hide_names', likesEnabled: 'likes_enabled', commentsEnabled: 'comments_enabled' })) {
         if (body[key] !== undefined && typeof body[key] !== 'boolean') fail(400, 'INVALID_SETTING', '설정 값이 올바르지 않아요.');
         values[field] = body[key] ?? b[field];
       }
-      await db.query(`UPDATE learning_boards SET title=$2, description=$3, locked=$4, closed=$5, hide_names=$6, likes_enabled=$7 WHERE id=$1`,
+      await db.query(`UPDATE learning_boards SET title=$2, description=$3, locked=$4, closed=$5, hide_names=$6, likes_enabled=$7, comments_enabled=$8 WHERE id=$1`,
         [b.id, body.title === undefined ? b.title : text(body.title, 80, true), body.description === undefined ? b.description : text(body.description, 1000),
-          values.locked, values.closed, values.hide_names, values.likes_enabled]);
+          values.locked, values.closed, values.hide_names, values.likes_enabled, values.comments_enabled]);
     }, true);
     res.json({ ok: true });
   }));
@@ -440,6 +444,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
 
   }));
   installBoardRaces({ router, asyncRoute, transaction, fail, integer, now });
+  installBoardComments({ router, asyncRoute, transaction, fail, text, integer });
   return { router, initialize };
 }
 
