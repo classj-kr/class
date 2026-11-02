@@ -10,6 +10,101 @@
   let loading = false, signature = '', setSignature = '', toastTimer;
   const pendingLikes = new Set();
   let likesEpoch = 0;
+  const commentPanels = new Map();
+
+  function commentForm(value, label, save, cancel) {
+    const form = element('form', undefined, 'comment-form');
+    const input = element('textarea'); input.maxLength = 500; input.rows = 2; input.required = true;
+    input.value = value; input.placeholder = '댓글 쓰기'; input.setAttribute('aria-label', label === '저장' ? '댓글 수정' : '댓글 쓰기');
+    const actions = element('div', undefined, 'comment-actions');
+    const submit = element('button', label); submit.type = 'submit'; actions.append(submit);
+    if (cancel) actions.append(button('취소', cancel));
+    const error = element('p', '', 'error'); error.setAttribute('role', 'alert');
+    input.addEventListener('input', () => { error.textContent = ''; });
+    form.append(input, actions, error);
+    form.addEventListener('submit', async event => {
+      event.preventDefault(); if (submit.disabled) return;
+      error.textContent = ''; submit.disabled = true; input.readOnly = true;
+      try { await save(input.value); } catch (e) { error.textContent = e.message; }
+      finally { submit.disabled = false; input.readOnly = false; }
+    });
+    return { form, input, submit };
+  }
+  async function changeComment(s, path, method, body) {
+    if (s.busy) throw new Error('저장 중이에요. 잠시만 기다려 주세요.');
+    s.busy = true; s.epoch++; likesEpoch++;
+    try { return await api(s.route + path, method, body); }
+    finally { s.busy = false; s.epoch++; likesEpoch++; signature = ''; }
+  }
+  function renderCommentList(s) {
+    if (s.editing) return;
+    s.list.replaceChildren();
+    if (!s.comments.length) s.list.append(element('p', '댓글 없음', 'hint'));
+    for (const c of s.comments) {
+      const row = element('article', undefined, 'comment'); row.dataset.commentId = c.id;
+      const meta = element('div', undefined, 'comment-meta'); meta.append(element('span', c.author));
+      if (c.edited) meta.append(element('span', '수정됨', 'muted'));
+      const content = element('p', c.content, 'comment-content');
+      const actions = element('div', undefined, 'comment-actions');
+      if (c.canEdit) actions.append(button('수정', () => {
+        if (s.busy) return;
+        s.editing = c.id;
+        const editor = commentForm(c.content, '저장', async value => {
+          await changeComment(s, '/' + c.id, 'PATCH', { content: value, revision: c.revision });
+          s.editing = null; await loadComments(s);
+        }, () => { s.editing = null; renderCommentList(s); });
+        content.replaceWith(editor.form); actions.hidden = true; editor.input.focus();
+      }));
+      if (c.canDelete) actions.append(button('삭제', async () => {
+        if (s.busy || !confirm('이 댓글을 삭제할까요?')) return;
+        await changeComment(s, '/' + c.id, 'DELETE'); await loadComments(s);
+      }, 'danger'));
+      row.append(meta, content, actions); s.list.append(row);
+    }
+  }
+  async function loadComments(s) {
+    if (s.loading || s.busy || !s.open || !s.panel.isConnected) return;
+    s.loading = true; const epoch = s.epoch;
+    try {
+      const result = await api(s.route);
+      if (epoch !== s.epoch || !s.panel.isConnected) return;
+      s.notice.textContent = '';
+      const changed = JSON.stringify(s.comments) !== JSON.stringify(result.comments);
+      s.comments = result.comments;
+      // Keep displayed author names in sync without replacing an active editor.
+      for (const row of s.list.querySelectorAll('.comment')) {
+        const current = s.comments.find(c => c.id === row.dataset.commentId);
+        if (current) row.querySelector('.comment-meta span').textContent = current.author;
+      }
+      s.toggle.textContent = `댓글 ${s.comments.length}`;
+      if (changed || !s.list.childNodes.length) renderCommentList(s);
+    } catch (e) {
+      s.notice.textContent = e.message;
+      if ([401, 403, 404].includes(e.status)) { s.list.replaceChildren(); s.editing = null; }
+    } finally { s.loading = false; }
+  }
+  function commentsFor(p) {
+    let s = commentPanels.get(p.id);
+    if (!s) {
+      s = { route: `/${boardId}/posts/${p.id}/comments`, open: false, comments: [], epoch: 0 };
+      s.panel = element('section', undefined, 'comments-panel'); s.panel.id = `comments-${p.id}`;
+      s.list = element('div', undefined, 'comment-list');
+      s.notice = element('p', '', 'error'); s.notice.setAttribute('role', 'status');
+      s.composer = commentForm('', '등록', async value => {
+        await changeComment(s, '', 'POST', { content: value }); s.composer.input.value = ''; await loadComments(s);
+      });
+      s.panel.append(s.list, s.notice, s.composer.form); commentPanels.set(p.id, s);
+    }
+    s.toggle = button(`댓글 ${p.commentCount}`, async () => {
+      s.open = !s.open; s.panel.hidden = !s.open; s.toggle.setAttribute('aria-expanded', String(s.open));
+      if (s.open) await loadComments(s);
+    }, 'comments-toggle');
+    s.toggle.setAttribute('aria-controls', s.panel.id); s.toggle.setAttribute('aria-expanded', String(s.open));
+    s.panel.hidden = !s.open;
+    s.composer.form.hidden = data.board.closed && !data.me.teacher;
+    if (s.composer.form.hidden && s.editing) { s.editing = null; s.list.replaceChildren(); }
+    return s;
+  }
 
   function element(tag, text, className) {
     const node = document.createElement(tag);
@@ -173,11 +268,16 @@
         }));
       }
     }
+    const comments = p.commentCount !== undefined && data.board.commentsEnabled ? commentsFor(p) : null;
+    if (comments) footer.append(comments.toggle);
     if (p.likes && data.board.likesEnabled) footer.append(likeButton(p));
     if (footer.childNodes.length) card.append(footer);
+    if (comments) card.append(comments.panel);
     return card;
   }
   function renderPosts() {
+    const focused = document.activeElement;
+    const restore = focused?.matches('.comments-panel textarea') ? [focused.selectionStart, focused.selectionEnd] : null;
     const b = data.board, container = $('posts');
     container.className = 'posts ' + b.layout; container.replaceChildren();
     const filter = $('reviewFilter').value;
@@ -208,6 +308,7 @@
       posts.forEach(p => container.append(postCard(p)));
       if (!posts.length) container.append(element('p', b.layout === 'quiz' ? '문제 없음' : '글 없음', 'empty'));
     }
+    if (restore && focused.isConnected) { focused.focus({ preventScroll: true }); focused.setSelectionRange(...restore); }
   }
   function renderBoard() {
     const { board: b, me } = data;
@@ -246,6 +347,7 @@
       if (!data.me.teacher && setId) { setId = null; historyView(); }
       const nextSignature = JSON.stringify(next);
       if (nextSignature !== signature || force) { signature = nextSignature; renderBoard(); }
+      for (const s of commentPanels.values()) if (s.open && s.panel.isConnected) void loadComments(s);
       if (setId) {
         const set = await api(`/${boardId}/sets/${setId}`); setData = set;
         const nextSetSignature = JSON.stringify(set);
@@ -320,11 +422,12 @@
     const b = data.board; $('settingsTitle').value = b.title; $('settingsDescription').value = b.description;
     $('settingsLocked').checked = b.locked; $('settingsClosed').checked = b.closed; $('settingsNames').checked = b.hideNames;
     $('settingsLikes').checked = b.likesEnabled; $('settingsLikesLabel').hidden = b.layout === 'quiz';
+    $('settingsComments').checked = b.commentsEnabled; $('settingsCommentsLabel').hidden = b.layout === 'quiz';
     $('recoveryLink').replaceChildren(); openDialog('settingsDialog');
   });
   handleForm('settingsForm', async () => {
     await api(`/${boardId}`, 'PATCH', { title: $('settingsTitle').value, description: $('settingsDescription').value,
-      locked: $('settingsLocked').checked, closed: $('settingsClosed').checked, hideNames: $('settingsNames').checked, likesEnabled: $('settingsLikes').checked });
+      locked: $('settingsLocked').checked, closed: $('settingsClosed').checked, hideNames: $('settingsNames').checked, likesEnabled: $('settingsLikes').checked, commentsEnabled: $('settingsComments').checked });
     $('settingsDialog').close(); await refresh(true);
   });
   $('rotateCode').addEventListener('click', () => run(async () => {
