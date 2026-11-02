@@ -44,7 +44,7 @@ async function createHarness({ studentSiteAccess = false, now = Date.now } = {})
       if (user) return { name: user.name, number: user.role === 'student' ? 7 : undefined };
       return /(?:^|;\s*)test_guest=1(?:;|$)/.test(req.headers.cookie || '') ? { name: '게스트' } : null;
     },
-    allocateRoomCode: client => roomCodes.allocate('board', client),
+    allocateRoomCode: (client, layout) => roomCodes.allocate(layout === 'stacking' ? 'stacking-board' : 'board', client),
     requireTeacher: async req => { const user = await sessionUser(req); if (user?.role !== 'teacher') throw new HttpError(401, 'AUTH_REQUIRED', '선생님 로그인이 필요해요.'); return user; },
     requireDatabase() {}, HttpError, asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res)).catch(next),
     failureLimiter: { enforce(req) { if ((failures.get(req.ip) || 0) >= 30) throw new HttpError(429, 'RATE_LIMIT', '잠시 후 다시 시도해 주세요.'); }, recordFailure(req) { failures.set(req.ip, (failures.get(req.ip) || 0) + 1); } }
@@ -56,6 +56,9 @@ async function createHarness({ studentSiteAccess = false, now = Date.now } = {})
   app.use('/api/room-entry', createRoomEntry({ roomCodes }));
   app.use('/api/boards', feature.router);
   app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
+  const stackingRoot = path.resolve(__dirname, '../learning/inquiry/math/stacking-cubes');
+  app.get('/learning/inquiry/math/stacking-cubes/coop/', (_req, res) => res.sendFile(path.join(stackingRoot, 'index.html')));
+  app.use('/learning/inquiry/math/stacking-cubes/coop/', express.static(stackingRoot));
   app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise(resolve => { const instance = app.listen(0, '127.0.0.1', () => resolve(instance)); });

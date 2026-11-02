@@ -4,6 +4,7 @@
   const freeModel = createModel();
   let model = freeModel;
   let challenge = null;
+  let shared = null;
   const activities = window.StackingActivities;
   const sound = (kind, height, column) => window.StackingSounds.play(kind, height, column);
   const $ = id => document.getElementById(id);
@@ -48,8 +49,8 @@
 
   function update() {
     $('total').textContent = `전체 ${model.count()}개`;
-    $('undo').disabled = !model.canUndo();
-    $('clear-board').disabled = model.count() === 0;
+    $('undo').disabled = shared ? !shared.canBuild || !shared.canUndo : !model.canUndo();
+    $('clear-board').disabled = model.count() === 0 || Boolean(shared && !shared.canBuild);
     clearTimeout(feedbackTimer);
     $('hint').textContent = '';
     updatePractice();
@@ -58,6 +59,7 @@
 
   function edit(cell, change = tool === 'add' ? 1 : -1) {
     if (!cell || view !== 'solid') return;
+    if (shared) { if (shared.canBuild) shared.action('edit', { cell: cell.z * SIZE + cell.x, delta: change }); return; }
     if (model.edit(cell.x, cell.z, change)) {
       resetAnswer();
       update();
@@ -68,6 +70,7 @@
   }
 
   function undo() {
+    if (shared) { if (shared.canBuild && shared.canUndo) shared.action('undo'); return; }
     if (!model.undo()) return;
     hovered = null;
     resetAnswer();
@@ -478,6 +481,7 @@
     sound('view');
   });
   $('clear-board').addEventListener('click', () => {
+    if (shared) { if (shared.canBuild) shared.action('clear'); closePanel(true); return; }
     model.clear(); hovered = null; keyboardCell = null;
     resetAnswer();
     setView('solid'); closePanel(true);
@@ -662,7 +666,15 @@
   // race.js drives the board from the room state; answers are judged by the server.
   window.StackingApp = {
     race: (mode, questions, index, submit) => startActivity(mode, questions, index, true, submit),
-    free: () => startActivity('free', [], 0, true)
+    free: () => startActivity('free', [], 0, true),
+    shared(next) {
+      const changed = shared?.id !== next.id;
+      if (!shared) startActivity('free', [], 0, true);
+      shared = next;
+      model.replace(next.heights);
+      if (changed) { yaw = DEFAULT_YAW; pitch = DEFAULT_PITCH; zoom = 1; setView('solid'); }
+      update();
+    }
   };
   const library = window.StackingLibrary({
     snapshot: () => model.snapshot(), sound,

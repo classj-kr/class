@@ -1,0 +1,66 @@
+.coop-page .activity-button { display:none; }
+.coop-toolbar { position:fixed; z-index:4; top:14px; left:66px; right:160px; display:flex; align-items:center; gap:12px; min-height:44px; font-size:14px; }
+.coop-toolbar button,.coop-card button,.coop-dock button { min-height:44px; padding:9px 13px; border:1px solid #cbd7cb; border-radius:9px; }
+.coop-status { position:fixed; z-index:12; bottom:8px; left:50%; transform:translateX(-50%); max-width:calc(100vw - 24px); margin:0; padding:9px 16px; border-radius:10px; background:#fffefa; box-shadow:0 2px 16px #0002; font-size:13px; }
+.coop-status:empty { display:none; }
+.coop-panel { position:fixed; inset:0; z-index:7; overflow:auto; padding:30px 16px; background:#f6f4eeed; display:grid; align-items:start; justify-items:center; }
+.coop-card { width:min(1050px,100%); padding:24px; background:#fffefa; border:1px solid #dedfd7; border-radius:20px; }
+.coop-card header { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+.coop-card h2 { margin:0 auto 0 0; font-size:20px; }
+.coop-card a { color:#2d5c51; white-space:nowrap; }
+.coop-row { display:flex; align-items:center; gap:9px; margin:12px 0; flex-wrap:wrap; }
+.coop-card input:not([type=checkbox]),.coop-dock input { font:inherit; min-width:0; min-height:44px; border:1px solid #cbd7cb; border-radius:9px; padding:8px; }
+#coop-bank-title { flex:1; }
+.coop-card input[type=number] { width:65px; }
+.coop-banks { display:grid; gap:8px; margin-top:20px; }
+.coop-teams { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+.coop-team { display:flex; flex-direction:column; gap:7px; padding:14px; border:1px solid #dedfd7; border-radius:12px; font-size:13px; }
+.coop-team.is-mine { border-color:#477e67; background:#eff5ed; }
+.coop-team strong { font-size:14px; }
+.coop-bank-heading { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-top:22px; flex-wrap:wrap; }
+.coop-bank-heading h3 { font-size:16px; }
+#coop-race-controls { display:flex; gap:8px; flex-wrap:wrap; }
+.coop-questions { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+.coop-question { padding:14px; border:1px solid #dedfd7; border-radius:12px; display:flex; flex-direction:column; gap:8px; }
+.coop-question label { display:flex; align-items:center; gap:8px; min-height:44px; cursor:pointer; }
+.coop-question input[type=checkbox] { width:20px; height:20px; }
+.coop-small { align-self:flex-end; font-size:12px; }
+.coop-empty { color:#738075; font-size:13px; }
+.coop-figures { display:flex; gap:9px; align-items:start; }
+.coop-diagram { min-width:0; flex:1; text-align:center; }
+.coop-diagram strong { font-size:12px; }
+.coop-diagram svg { width:100%; display:block; margin:6px 0; }
+.coop-diagram small,.coop-question>small { font-size:10px; color:#748073; }
+.coop-working .scene-wrap { margin-right:320px; }
+.coop-dock { position:fixed; z-index:3; right:24px; top:50%; transform:translateY(-50%); max-height:calc(100dvh - 200px); width:280px; display:flex; flex-direction:column; gap:12px; overflow:auto; padding:16px; border:1px solid #dedfd7; border-radius:16px; background:#fffefa; }
+.coop-dock h3 { font-size:15px; margin:0; }
+.coop-dock>small { text-align:center; color:#748073; }
+.coop-checks { display:flex; justify-content:space-between; gap:8px; font-size:12px; color:#53715e; }
+.coop-draw-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; }
+.coop-draw-grid button { min-width:0; min-height:44px; padding:0; border-radius:0; border-color:#bbc2b5; background:#faf9f4; }
+.coop-draw-grid button[aria-pressed=true] { background:#dcb77c; }
+.coop-draw-grid button:disabled { opacity:1; }
+.coop-readonly #tools,.coop-readonly #view-panel .view-choices,.coop-readonly #view-panel>.check-row { display:none; }
+html body.coop-page p { font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif!important; }
+@media(max-width:700px) {
+  .coop-toolbar { left:54px; right:112px; top:8px; gap:5px; font-size:12px; }
+  .coop-toolbar strong { max-width:150px; }
+  .coop-toolbar button { padding:6px 8px; }
+  .coop-working .scene-wrap { margin-right:0; margin-bottom:37dvh; }
+  .coop-dock { top:auto; right:10px; left:10px; bottom:100px; width:auto; height:35dvh; min-height:180px; padding:12px; transform:none; }
+  .coop-readonly .coop-dock { bottom:32px; height:44dvh; }
+  .coop-readonly .scene-wrap { margin-bottom:45dvh; }
+  .coop-draw-grid { width:min(260px,100%); align-self:center; }
+  .coop-card { padding:16px; }
+  .coop-card header { gap:8px; flex-wrap:wrap; }
+  .coop-card h2 { font-size:17px; }
+  .coop-teams { grid-template-columns:1fr 1fr; }
+  .coop-team { padding:10px; }
+  .coop-figures { width:min(350px,100%); align-self:center; }
+}
+@media(max-height:500px) and (orientation:landscape) {
+  .coop-working .scene-wrap { margin-right:410px; margin-bottom:30px; }
+  .coop-dock { top:64px; bottom:12px; right:145px; left:auto; width:245px; max-height:none; height:auto; min-height:0; transform:none; padding:10px; }
+  .coop-readonly .scene-wrap { margin-right:275px; }
+  .coop-readonly .coop-dock { right:12px; height:auto; bottom:12px; }
+}
