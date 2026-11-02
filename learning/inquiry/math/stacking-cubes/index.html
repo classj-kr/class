@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261029-race">
+  <link rel="stylesheet" href="style.css?v=20261102-room-entry">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
   <script src="model.js?v=20261015-3" defer></script>
   <script src="activities.js?v=20261015-3" defer></script>
   <script src="sound.js?v=20261028-celebration" defer></script>
   <script src="library.js?v=20261019-quiet-ui" defer></script>
   <script src="app.js?v=20261029-race" defer></script>
-  <script src="race.js?v=20261029-race" defer></script>
+  <script src="race.js?v=20261102-room-entry" defer></script>
   <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -119,11 +119,6 @@
         <a href="/room/">방번호 입력</a>
       </div>
       <div id="race-entry">
-        <form id="race-join" class="race-row">
-          <label class="sr-only" for="race-code">방번호</label>
-          <input id="race-code" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="방번호 4자리" autocomplete="off" required>
-          <button class="primary-button">입장</button>
-        </form>
         <div id="race-create" class="race-row" hidden>
           <label class="sr-only" for="race-mode">문제 종류</label>
           <select id="race-mode"><option value="views">그림 보고 쌓기</option><option value="copy">따라 쌓기</option></select>
@@ -154,7 +149,7 @@
       <button type="button" data-mode="copy"><strong>따라 쌓기</strong></button>
       <button type="button" data-mode="views"><strong>그림 보고 쌓기</strong></button>
       <button type="button" data-mode="many"><strong>여러 답 찾기</strong></button>
-      <a class="race-link" href="race/"><strong>순위전</strong><span>방번호로 함께</span></a>
+      <a class="race-link" href="race/"><strong>순위전</strong></a>
     </div>
     <section id="saved-section" class="saved-section" aria-labelledby="saved-heading" hidden>
       <h3 id="saved-heading">저장한 모양</h3>
