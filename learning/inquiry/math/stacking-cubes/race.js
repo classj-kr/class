@@ -120,25 +120,26 @@
     try { await fn(); } catch (error) { status(error.message); } finally { busy = false; }
   }
 
-  $('race-code').value = initialCode.replace(/\D/g, '').slice(0, 4);
-  $('race-code').addEventListener('input', () => { $('race-code').value = $('race-code').value.replace(/\D/g, '').slice(0, 4); });
-  $('race-join').addEventListener('submit', event => {
-    event.preventDefault();
-    action(async () => {
-      const value = $('race-code').value;
-      if (!/^\d{4}$/.test(value)) throw Error('방번호 4자리를 입력해 주세요.');
-      const saved = store.get('ticket-' + value);
-      if (saved?.token) {
-        token = saved.token;
-        try { enter({ token, state: await api('/rooms/' + value) }, value); return; } catch (error) {
-          if (error.status !== 403 && error.status !== 404) throw error;
-          token = '';
-          store.remove('ticket-' + value);
-        }
+  async function joinRoom(value) {
+    const saved = store.get('ticket-' + value);
+    if (saved?.token) {
+      token = saved.token;
+      try { enter({ token, state: await api('/rooms/' + value) }, value); return; } catch (error) {
+        if (error.status !== 403 && error.status !== 404) throw error;
+        token = '';
+        store.remove('ticket-' + value);
       }
-      enter(await api(`/rooms/${value}/join`, {}), value);
-    });
-  });
+    }
+    enter(await api(`/rooms/${value}/join`, {}), value);
+  }
+
+  async function openEntry() {
+    $('race-create').hidden = true;
+    const session = await api('/session');
+    // Students use the same room-number entrance linked from the home page.
+    if (!session.isTeacher) { location.replace('/room/'); return; }
+    $('race-create').hidden = false;
+  }
   $('race-open').addEventListener('click', () => action(async () => {
     const data = await api('/rooms', { mode: $('race-mode').value });
     enter(data, data.state.code);
@@ -152,15 +153,18 @@
     store.remove('ticket-' + code);
     code = ''; token = ''; state = null; shownRound = '';
     App.free();
+    document.body.classList.remove('race-host');
     $('race-room').hidden = true;
     $('race-entry').hidden = false;
     status('');
     showPanel(true);
     history.replaceState(null, '', location.pathname);
+    await openEntry();
   }));
 
   showPanel(true);
   setInterval(tick, 1000);
-  api('/session').then(session => { $('race-create').hidden = !session.isTeacher; }).catch(error => status(error.message));
-  if (/^\d{4}$/.test(initialCode)) $('race-join').requestSubmit();
+  if (/^\d{4}$/.test(initialCode)) action(() => joinRoom(initialCode));
+  else if (initialCode) location.replace('/room/');
+  else action(openEntry);
 })();
