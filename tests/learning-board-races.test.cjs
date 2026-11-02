@@ -3,6 +3,72 @@ const assert = require('node:assert/strict');
 const { createHarness } = require('./learning-boards-harness.cjs');
 const { scoreAnswer } = require('../game-hub-server/learning-board-races');
 
+test('automatic race advances on all answers or timeout, preserves reveal, pause and restart', async () => {
+  let time = Date.now();
+  const h = await createHarness({ now: () => time }), teacher = 'test_teacher=1';
+  async function req(path, method = 'GET', body, cookie = teacher, status = 200) {
+    const res = await fetch(h.base + '/api/boards' + path, { method, headers: { 'Content-Type': 'application/json', Cookie: cookie }, body: body === undefined ? undefined : JSON.stringify(body) });
+    const data = await res.json(); assert.equal(res.status, status, JSON.stringify(data));
+    return { ...data, cookie: res.headers.get('set-cookie')?.split(';')[0] };
+  }
+  try {
+    const { board } = await req('/', 'POST', { title: '자동 경주', layout: 'quiz' }, teacher, 201);
+    const base = '/' + board.id;
+    const alice = (await req('/join', 'POST', { code: board.code, number: 1, name: '하나' }, '')).cookie;
+    const bob = (await req('/join', 'POST', { code: board.code, number: 2, name: '둘' }, '')).cookie;
+    const posts = [];
+    for (let i = 0; i < 3; i++) {
+      const p = await req(base + '/posts', 'POST', { kind: 'ox', content: '문제 ' + i, answer: 0 }, teacher, 201);
+      await req(base + '/posts/' + p.id + '/review', 'POST', { status: 'approved', revision: 1 });
+      posts.push({ id: p.id, revision: 2 });
+    }
+    const set = await req(base + '/sets', 'POST', { title: '세트', posts }, teacher, 201);
+    const race = await req(base + '/races', 'POST', { setId: set.id, seconds: 10 }, teacher, 201);
+    const route = base + '/races/' + race.id;
+    await req(route + '/join', 'POST', {}, alice); await req(route + '/join', 'POST', {}, bob);
+    let s = await req(route);
+    assert.equal(s.autoAdvance, true);
+    await req(route + '/control', 'POST', { action: 'automatic', enabled: false, phase: 'lobby', index: -1 }, alice, 401);
+    await req(route + '/control', 'POST', { action: 'automatic', enabled: 'false', phase: 'lobby', index: -1 }, teacher, 400);
+    await req(route + '/control', 'POST', { action: 'start', phase: 'lobby', index: -1 });
+    time += 3100; s = await req(route, 'GET', undefined, alice);
+    await req(route + '/answer', 'POST', { questionId: s.question.id, choice: 0 }, alice);
+    assert.equal((await req(route, 'GET', undefined, alice)).phase, 'question');
+    assert.equal((await req(route, 'GET', undefined, alice)).question.answer, undefined);
+    await req(route + '/answer', 'POST', { questionId: s.question.id, choice: 0 }, bob);
+    s = await req(route, 'GET', undefined, bob);
+    assert.equal(s.phase, 'reveal'); assert.equal(s.question.answer, 0); assert.equal(s.nextAt, time + 6000);
+    assert.equal(s.me.attempts, 1); const score = s.me.score;
+    time += 2000;
+    await req(route + '/control', 'POST', { action: 'automatic', enabled: false, phase: 'reveal', index: 0 });
+    time += 30000; await h.initialize(); s = await req(route, 'GET', undefined, alice);
+    assert.equal(s.phase, 'reveal'); assert.equal(s.nextAt, null); assert.equal(s.me.score, score);
+    s = await req(route + '/control', 'POST', { action: 'automatic', enabled: true, phase: 'reveal', index: 0 });
+    assert.equal(s.nextAt, time + 6000);
+    time += 5999; assert.equal((await req(route, 'GET', undefined, alice)).phase, 'reveal');
+    time++; await h.initialize();
+    const states = await Promise.all([req(route, 'GET', undefined, alice), req(route, 'GET', undefined, bob)]);
+    assert.ok(states.every(v => v.phase === 'countdown' && v.index === 1 && v.question === null));
+    await req(route + '/control', 'POST', { action: 'next', phase: 'reveal', index: 0 }, teacher, 409);
+    time += 3100; s = await req(route, 'GET', undefined, alice);
+    await req(route + '/answer', 'POST', { questionId: s.question.id, choice: 0 }, alice);
+    time += 10000; s = await req(route, 'GET', undefined, bob);
+    assert.equal(s.phase, 'reveal'); assert.equal(s.me.delta, 0); assert.equal(s.me.attempts, 2);
+    // A long disconnection must not skip unseen questions or their countdown.
+    time += 86400000; s = await req(route, 'GET', undefined, bob);
+    assert.equal(s.phase, 'countdown'); assert.equal(s.index, 2); assert.equal(s.startsAt, time + 3000);
+    time += 3100; s = await req(route, 'GET', undefined, alice);
+    await Promise.all([alice, bob].map(cookie => req(route + '/answer', 'POST', { questionId: s.question.id, choice: 0 }, cookie)));
+    s = await req(route, 'GET', undefined, alice); assert.equal(s.phase, 'reveal'); assert.equal(s.me.attempts, 3);
+    time += 6000; s = await req(route, 'GET', undefined, alice);
+    assert.equal(s.phase, 'finished'); assert.equal(s.me.attempts, 3);
+    assert.equal((await req(base)).live, null);
+    const row = (await h.pool.query('SELECT state FROM learning_board_races WHERE id=$1', [race.id])).rows[0];
+    assert.equal(row.state.history.length, 3, 'each question grades exactly once');
+    assert.equal((await req(route, 'GET', undefined, alice)).me.score, s.me.score);
+  } finally { await h.close(); }
+});
+
 test('race scoring rewards accuracy, server-timed speed and every third consecutive answer', () => {
   assert.deepEqual(scoreAnswer(false, 5, 0, 20000), { points: 0, streak: 0, boost: false });
   assert.equal(scoreAnswer(true, 0, 20000, 20000).points, 100);
@@ -42,7 +108,7 @@ test('private submissions, synchronized rounds, immutable answers, restart, scor
     assert.deepEqual((await req(base, 'GET', undefined, bob)).sets, []);
     await req(base + '/sets/' + setId + '/answer', 'POST', { choice: 1 }, bob, 410);
     await req(base + '/races', 'POST', { setId }, bob, 401);
-    const { id: raceId } = await req(base + '/races', 'POST', { setId, seconds: 10 }, teacher, 201);
+    const { id: raceId } = await req(base + '/races', 'POST', { setId, seconds: 10, autoAdvance: false }, teacher, 201);
     assert.equal((await req(base + '/races', 'POST', { setId }, teacher, 201)).id, raceId, 'creation resumes the active race');
     const route = base + '/races/' + raceId;
     await req(route, 'GET', undefined, '', 401);
@@ -97,7 +163,7 @@ test('private submissions, synchronized rounds, immutable answers, restart, scor
       await req(route + '/control', 'POST', body, teacher, 409);
     }
     assert.equal(state.phase, 'finished'); assert.equal((await req(base)).live, null);
-    const again = await req(base + '/races', 'POST', { setId }, teacher, 201);
+    const again = await req(base + '/races', 'POST', { setId, autoAdvance: false }, teacher, 201);
     assert.notEqual(again.id, raceId);
     assert.equal((await req(base + '/races/' + again.id + '/join', 'POST', {}, bob)).me.score, 0);
     const replay = base + '/races/' + again.id;

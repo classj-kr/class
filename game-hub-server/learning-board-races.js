@@ -10,6 +10,14 @@ function scoreAnswer(correct, streak, elapsed, duration) {
 }
 
 function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now = Date.now }) {
+  const automatic = s => s.autoAdvance !== false;
+  const allAnswered = s => s.players.length > 0 && s.players.every(p => s.answers[p.id]);
+  function nextRound(s) {
+    s.nextAt = null;
+    if (s.index + 1 >= s.questions.length) { s.phase = 'finished'; return; }
+    s.index++; s.phase = 'question'; s.answers = {}; s.startsAt = now() + 3000; s.endsAt = s.startsAt + s.seconds * 1000;
+    s.players.forEach(p => { p.delta = 0; p.boost = false; p.correct = null; });
+  }
   async function load(db, b, raceId) {
     const row = (await db.query('SELECT * FROM learning_board_races WHERE board_id=$1 AND id=$2', [b.id, raceId])).rows[0];
     if (!row) fail(404, 'RACE_NOT_FOUND', '경주를 찾을 수 없어요.');
@@ -32,9 +40,17 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
     }
     s.history.push({ index: s.index, answers: s.answers, results: s.players.map(p => ({ id: p.id, delta: p.delta, correct: p.correct })) });
     s.phase = 'reveal';
+    s.nextAt = automatic(s) ? now() + 6000 : null;
   }
   async function expire(db, row) {
-    if (row.state.phase === 'question' && now() >= row.state.endsAt) { grade(row.state); await save(db, row); }
+    const s = row.state;
+    if (s.phase === 'question' && (now() >= s.endsAt || (automatic(s) && now() >= s.startsAt && allAnswered(s)))) {
+      grade(s); await save(db, row);
+    } else if (s.phase === 'reveal' && automatic(s)) {
+      // Persist the reveal window and advance only once, even after a long offline gap.
+      if (s.nextAt == null) { s.nextAt = now() + 6000; await save(db, row); }
+      else if (now() >= s.nextAt) { nextRound(s); await save(db, row); }
+    }
   }
   function project(row, b, who) {
     const s = row.state, time = now();
@@ -52,6 +68,7 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
     return { id: row.id, boardId: b.id, code: b.code, title: s.title, mode: 'individual', phase,
       index: s.index, total: s.questions.length, seconds: s.seconds, serverTime: time,
       startsAt: s.startsAt, endsAt: s.endsAt, participantCount: s.players.length,
+      autoAdvance: automatic(s), nextAt: phase === 'reveal' && automatic(s) ? s.nextAt : null,
       answered: Object.keys(s.answers).length, eligible, question,
       me: { teacher: who.teacher, joined: !!player, name: who.name, number: who.number,
         ...(player ? { score: player.score, rank: 1 + s.players.filter(p => p.score > player.score).length,
@@ -69,8 +86,9 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       const set = (await db.query('SELECT * FROM learning_board_sets WHERE board_id=$1 AND id=$2', [b.id, req.body?.setId])).rows[0];
       if (!set || !set.questions.length) fail(404, 'SET_NOT_FOUND', '승인된 문제 세트를 먼저 만들어 주세요.');
       const seconds = integer(req.body?.seconds ?? 20, 10, 120);
+      if (req.body?.autoAdvance !== undefined && typeof req.body.autoAdvance !== 'boolean') fail(400, 'INVALID_SETTING', '자동 진행 설정을 확인해 주세요.');
       const state = { title: set.title, questions: set.questions, seconds, phase: 'lobby', index: -1,
-        players: [], answers: {}, history: [], startsAt: null, endsAt: null };
+        players: [], answers: {}, history: [], startsAt: null, endsAt: null, autoAdvance: req.body?.autoAdvance ?? true, nextAt: null };
       const raceId = crypto.randomUUID();
       await db.query('INSERT INTO learning_board_races(id,board_id,set_id,state) VALUES($1,$2,$3,$4::jsonb)',
         [raceId, b.id, set.id, JSON.stringify(state)]);
@@ -106,18 +124,19 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       const row = await load(db, b, req.params.raceId); await expire(db, row);
       const s = row.state, action = req.body?.action;
       if (req.body?.index !== s.index || req.body?.phase !== s.phase) fail(409, 'STALE_RACE', '진행 상태가 바뀌었어요. 다시 확인해 주세요.');
-      if (action === 'finish' && s.phase !== 'finished') {
+      if (action === 'automatic' && s.phase !== 'finished') {
+        if (typeof req.body?.enabled !== 'boolean') fail(400, 'INVALID_SETTING', '자동 진행 설정을 확인해 주세요.');
+        s.autoAdvance = req.body.enabled;
+        s.nextAt = s.phase === 'reveal' && automatic(s) ? now() + 6000 : null;
+        if (s.phase === 'question' && now() >= s.startsAt && automatic(s) && allAnswered(s)) grade(s);
+      } else if (action === 'finish' && s.phase !== 'finished') {
         if (s.phase === 'question') grade(s);
-        s.phase = 'finished';
+        s.phase = 'finished'; s.nextAt = null;
       } else if (action === 'reveal' && s.phase === 'question' && now() >= s.startsAt) {
         grade(s);
       } else if ((action === 'start' && s.phase === 'lobby') || (action === 'next' && s.phase === 'reveal')) {
         if (!s.players.length) fail(409, 'NO_PLAYERS', '학생이 입장하면 시작할 수 있어요.');
-        if (s.index + 1 >= s.questions.length) s.phase = 'finished';
-        else {
-          s.index++; s.phase = 'question'; s.answers = {}; s.startsAt = now() + 3000; s.endsAt = s.startsAt + s.seconds * 1000;
-          s.players.forEach(p => { p.delta = 0; p.boost = false; p.correct = null; });
-        }
+        nextRound(s);
       } else fail(409, 'INVALID_TRANSITION', '지금은 이 동작을 할 수 없어요.');
       await save(db, row); return project(row, b, who);
     }, true);
@@ -132,7 +151,11 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       if (!player) fail(403, 'NOT_PLAYING', '경주에 참여하지 않았어요.');
       if (req.body?.questionId !== q.id) fail(409, 'WRONG_QUESTION', '현재 문제에 답해 주세요.');
       const choice = integer(req.body?.choice, 0, q.choices.length - 1);
-      if (!s.answers[who.id]) { s.answers[who.id] = { choice, at: time }; await save(db, row); }
+      if (!s.answers[who.id]) {
+        s.answers[who.id] = { choice, at: time };
+        if (automatic(s) && allAnswered(s)) grade(s);
+        await save(db, row);
+      }
       return { accepted: true, choice: s.answers[who.id].choice };
     });
     res.json(result);

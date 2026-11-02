@@ -7,7 +7,7 @@
     <section id="teacher" hidden>
       <canvas id="raceCanvas" role="img" aria-label="학생별 이름이 표시된 우주선 경주"></canvas>
       <div id="ranking" aria-label="경주 순위"></div>
-      <div class="control-bar"><span id="participation"></span><span id="phaseLabel"></span><button id="fullscreen">전체 화면</button><button id="finish" class="secondary">경주 종료</button><button id="advance" class="primary" disabled>연결 중</button></div>
+      <div class="control-bar"><span id="participation"></span><span id="phaseLabel"></span><button id="automatic" aria-pressed="true">자동 진행 켜짐</button><button id="fullscreen">전체 화면</button><button id="finish" class="secondary">경주 종료</button><button id="advance" class="primary" disabled>연결 중</button></div>
       <details id="teacherQuestion" hidden><summary>현재 문제 확인</summary><div id="teacherQuestionContent"></div></details>
     </section>
     <section id="student" hidden>
@@ -16,5 +16,5 @@
     </section>
     <p id="loading">연결 중…</p>
   </main>
-  <script src="race-scene.js?v=20261012-race1"></script><script src="live.js?v=20261013-author-play"></script>
+  <script src="race-scene.js?v=20261012-race1"></script><script src="live.js?v=20261102-auto-race"></script>
 </body></html>
