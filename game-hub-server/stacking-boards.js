@@ -145,7 +145,9 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
       } else if (body.action === 'new-draft') {
         builder();
         if (t.draft.phase !== 'published') fail(409, 'UNPUBLISHED', '현재 문제를 먼저 등록해 주세요.');
-        t.draft = draft((t.draft.turn + 1) % 4);
+        // Advance each person's role: build → front → right → top → build.
+        // Keep the current draft's seat offset intact until the next question.
+        t.draft = draft((t.draft.turn + 3) % 4);
       } else if (body.action === 'start-race') {
         teacher();
         if (active) fail(409, 'RACE_ACTIVE', '팀전이 진행 중이에요.');

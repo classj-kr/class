@@ -64,6 +64,13 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await builder.getByRole('button', { name: '문제 등록', exact: true }).click();
     await teacher.getByText('두 층 탑', { exact: true }).waitFor();
     await snap(teacher, 'teacher-bank');
+    await builder.getByRole('button', { name: '다음 문제 · 역할 교대', exact: true }).click();
+    for (const [p, role] of [[builder, '앞'], [front, '오른쪽 옆'], [side, '위'], [top, '출제자']]) {
+      await p.waitForFunction(role => document.getElementById('coop-label').textContent === '1모둠 · ' + role, role, { timeout: 3000 });
+      assert.equal(await p.locator('#total').textContent(), '전체 0개');
+    }
+    assert.equal(await builder.locator('#tools').isVisible(), false, 'previous author now draws the front view');
+    assert.equal(await top.locator('#tools').isVisible(), true, 'previous top-view drawer now builds');
     await teacher.locator('.coop-question input[type=checkbox]').check();
     await teacher.getByRole('button', { name: '선택한 1문제로 팀전 시작', exact: true }).click();
     for (const p of students) {
