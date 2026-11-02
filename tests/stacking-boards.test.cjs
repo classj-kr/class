@@ -83,9 +83,40 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     await act(players[0], 'check-answer', { workId: initial.work.id }, 409);
     assert.equal((await get(teacher)).teams[0].score, 1);
     await act(teacher, 'stop-race'); await act(teacher, 'return-authoring');
-    await act(players[0], 'new-draft');
-    assert.equal((await get(players[1])).me.role, 'build', 'roles rotate for the next question');
-    const saved = (await get(teacher)).questions; assert.equal(saved.length, 1);
+    const cycle = [
+      ['front', 'right', 'top', 'build'],
+      ['right', 'top', 'build', 'front'],
+      ['top', 'build', 'front', 'right'],
+      ['build', 'front', 'right', 'top']
+    ];
+    let author = 0;
+    for (const [round, expected] of cycle.entries()) {
+      const previous = await get(players[author]);
+      await act(players[(author + 1) % 4], 'new-draft', {}, 403);
+      await act(players[author], 'new-draft');
+      await act(players[author], 'new-draft', { workId: previous.work.id }, 409);
+      const snapshots = await Promise.all(players.slice(0, 4).map(get));
+      assert.deepEqual(snapshots.map(s => s.me.role), expected, 'each person advances once per new question');
+      assert.ok(snapshots.every(s => s.work.id === snapshots[0].work.id && !s.work.heights.some(Boolean)), 'all four start the same empty question');
+      author = expected.indexOf('build');
+      assert.deepEqual(snapshots.map(s => s.work.canBuild), expected.map(role => role === 'build'));
+      if (round === 0) {
+        await h.initialize();
+        assert.deepEqual((await Promise.all(players.slice(0, 4).map(get))).map(s => s.me.role), expected, 'reconnecting preserves assigned roles');
+      }
+      if (round === cycle.length - 1) break;
+      await act(players[author], 'new-draft', {}, 409);
+      await act(players[author], 'edit', { cell: 12, delta: 1 });
+      await act(players[author], 'freeze');
+      const shape = Array(25).fill(0); shape[12] = 1;
+      for (const [i, view] of expected.entries()) if (view !== 'build') {
+        await act(players[i], 'draw', { cells: drawing(shape, view) });
+        assert.equal((await act(players[i], 'check-drawing')).correct, true);
+      }
+      await act(players[author], 'publish');
+      assert.deepEqual((await Promise.all(players.slice(0, 4).map(get))).map(s => s.me.role), expected, 'publishing keeps the current roles until the next question');
+    }
+    const saved = (await get(teacher)).questions; assert.equal(saved.length, 4);
     await act(teacher, 'start-race', { questionIds: [q.id] });
     assert.deepEqual((await get(players[0])).work.heights, Array(25).fill(0), 'the same saved questions can start a fresh race');
   } finally { await h.close(); }
