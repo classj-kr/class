@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const names = { wall: '자유형', columns: '모둠형', roster: '번호형', quiz: '문제출제형' };
+  const names = { wall: '자유형', columns: '모둠형', roster: '번호형', quiz: '문제출제형', stacking: '쌓기나무 문제은행' };
   const reviews = { pending: '검토 대기', approved: '승인 완료', changes: '수정 요청' };
   const statuses = { ready: '시작 전', open: '풀이 중', closed: '풀이 마감', revealed: '정답 공개' };
   const params = new URLSearchParams(location.search);
@@ -343,6 +343,7 @@
       const next = await api(`/${boardId}`);
       if (epoch !== likesEpoch) return;
       data = next;
+      if (data.board.layout === 'stacking') { location.replace(`/learning/inquiry/math/stacking-cubes/coop/?id=${encodeURIComponent(boardId)}`); return; }
       if (!data.me.teacher && data.live) { navigateRace(data.live.id); return; }
       if (!data.me.teacher && setId) { setId = null; historyView(); }
       const nextSignature = JSON.stringify(next);

@@ -1645,7 +1645,7 @@ function createClassroomPlatform(options = {}) {
       const guest = guestAccess(req);
       return guest ? { name: guest.name } : null;
     },
-    allocateRoomCode: (db) => roomCodes.allocate('board', db),
+    allocateRoomCode: (db, layout) => roomCodes.allocate(layout === 'stacking' ? 'stacking-board' : 'board', db),
     failureLimiter: createAuthenticationFailureLimiter()
   });
   router.use("/boards", learningBoards.router);
@@ -2105,6 +2105,8 @@ function createClassroomPlatform(options = {}) {
           || requestPath === "/api/handwriting" || requestPath.startsWith("/api/handwriting/")
           || requestPath === "/learning/inquiry/math/stacking-cubes/race"
           || requestPath.startsWith("/learning/inquiry/math/stacking-cubes/race/")
+          || requestPath === "/learning/inquiry/math/stacking-cubes/coop"
+          || requestPath.startsWith("/learning/inquiry/math/stacking-cubes/coop/")
           || requestPath === "/api/stacking-race" || requestPath.startsWith("/api/stacking-race/")
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
           || requestPath === "/exams" || requestPath.startsWith("/exams/")

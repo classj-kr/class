@@ -5,6 +5,7 @@ const path = require('node:path');
 const QRCode = require('qrcode');
 const { installBoardRaces } = require('./learning-board-races');
 const { installBoardComments } = require('./learning-board-comments');
+const { installStackingBoards } = require('./stacking-boards');
 
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
@@ -46,6 +47,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '013-learning-board-races.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '020-learning-board-likes.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '021-learning-board-comments.sql'), 'utf8'));
+      await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '022-stacking-boards.sql'), 'utf8'));
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_slots_check');
@@ -130,7 +132,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const body = req.body || {};
     const title = text(body.title, 80, true);
     const description = text(body.description ?? '', 1000);
-    if (!['wall', 'columns', 'roster', 'quiz'].includes(body.layout)) fail(400, 'INVALID_LAYOUT', '게시판 유형을 선택해 주세요.');
+    if (!['wall', 'columns', 'roster', 'quiz', 'stacking'].includes(body.layout)) fail(400, 'INVALID_LAYOUT', '게시판 유형을 선택해 주세요.');
     const columns = body.layout === 'columns' ? body.columns : [];
     if (!Array.isArray(columns) || (body.layout === 'columns' && (columns.length < 2 || columns.length > 8))) fail(400, 'INVALID_COLUMNS', '열을 2~8개 만들어 주세요.');
     const labels = columns.map(s => text(s, 30, true));
@@ -143,7 +145,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       if (count.rows[0].count >= 50) fail(409, 'BOARD_LIMIT', '게시판는 50개까지 보관할 수 있어요. 사용하지 않는 게시판를 정리해 주세요.');
       let created;
       for (let attempt = 0; attempt < 20 && !created; attempt++) {
-        const code = allocateRoomCode ? await allocateRoomCode(db) : String(crypto.randomInt(1000, 10000));
+        const code = allocateRoomCode ? await allocateRoomCode(db, body.layout) : String(crypto.randomInt(1000, 10000));
         created = (await db.query(`INSERT INTO learning_boards(id, owner_id, code, title, description, layout, columns, slots)
           VALUES($1,$2,$3,$4,$5,$6,$7::jsonb,$8) ON CONFLICT(code) DO NOTHING RETURNING *`,
         [id(), user.id, code, title, description, body.layout, JSON.stringify(labels), slots])).rows[0];
@@ -445,6 +447,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   }));
   installBoardRaces({ router, asyncRoute, transaction, fail, integer, now });
   installBoardComments({ router, asyncRoute, transaction, fail, text, integer });
+  installStackingBoards({ router, asyncRoute, transaction, fail, now });
   return { router, initialize };
 }
 

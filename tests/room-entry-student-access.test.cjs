@@ -39,3 +39,12 @@ test('the entry exception preserves login, membership and actual lesson access c
   }
   assert.deepEqual(await check('/api/room-entry/resolve/6820', { disabled: ['/api/room-entry'] }), { status: 302, location: '/?content=globally-disabled' });
 });
+
+test('stacking cooperation opens from the main room entrance while retaining site access checks', async () => {
+  const root = '/learning/inquiry/math/stacking-cubes';
+  for (const url of [root + '/coop/?code=6820', root + '/coop/app.js', root + '/coop/coop.js', root + '/coop/coop.css']) {
+    assert.deepEqual(await check(url), { status: 200 });
+    assert.deepEqual(await check(url, { role: null }), { status: 302, location: '/?access=required' });
+    assert.deepEqual(await check(url, { disabled: [root] }), { status: 302, location: '/?content=globally-disabled' });
+  }
+});

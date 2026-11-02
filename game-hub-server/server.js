@@ -616,8 +616,12 @@ app.use('/api/stacking-race', classroomPlatform.requireSiteAccess, stackingCubes
 // The room-code entrance opens the same board, kept open even when the lesson menu is locked.
 const stackingRoot = path.join(SITE_ROOT, 'learning/inquiry/math/stacking-cubes');
 app.get('/learning/inquiry/math/stacking-cubes/race/', (req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
-for (const file of ['model.js', 'activities.js', 'sound.js', 'library.js', 'app.js', 'race.js', 'style.css']) {
+for (const file of ['model.js', 'activities.js', 'sound.js', 'library.js', 'app.js', 'race.js', 'style.css', 'coop.js', 'coop.css']) {
   app.get(`/learning/inquiry/math/stacking-cubes/race/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
+}
+app.get('/learning/inquiry/math/stacking-cubes/coop/', (req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
+for (const file of ['model.js', 'activities.js', 'sound.js', 'library.js', 'app.js', 'race.js', 'style.css', 'coop.js', 'coop.css']) {
+  app.get(`/learning/inquiry/math/stacking-cubes/coop/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
 }
 
 // Reuse notation under this activity's access grant, even when ear training is closed.
