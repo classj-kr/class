@@ -613,11 +613,11 @@
   });
   targetScene.addEventListener('keydown', event => {
     if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || turns.has(targetScene) || event.ctrlKey || event.metaKey || event.altKey) return;
-    const turns = { ArrowLeft: [Math.PI / 8, 0], ArrowRight: [-Math.PI / 8, 0], ArrowUp: [0, -.12], ArrowDown: [0, .12] };
-    if (!turns[event.key] && event.key !== 'Home') return;
+    const steps = { ArrowLeft: [Math.PI / 8, 0], ArrowRight: [-Math.PI / 8, 0], ArrowUp: [0, -.12], ArrowDown: [0, .12] };
+    if (!steps[event.key] && event.key !== 'Home') return;
     event.preventDefault(); stopTargetRotation();
     if (event.key === 'Home') { yaw = DEFAULT_YAW; pitch = DEFAULT_PITCH; }
-    else { yaw += turns[event.key][0]; pitch = clamp(pitch + turns[event.key][1], .22, 1.22); }
+    else { yaw += steps[event.key][0]; pitch = clamp(pitch + steps[event.key][1], .22, 1.22); }
     hovered = null; schedule(); sound('view');
   });
 
