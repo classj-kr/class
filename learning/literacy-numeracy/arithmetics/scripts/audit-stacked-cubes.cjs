@@ -69,8 +69,13 @@ async function main() {
           const heights = [[1, 3, 0], [3, 3, 0], [0, 0, 0]];
           set.problems[index] = { ...set.problems[index], heights, total: 10, views: computeViews(heights, 3) };
         }
-        saved[`${group}:questionSet`] = set;
-        saved[`${group}:counts`] = { 'stacked-cubes-2': '10' };
+        const flat = [[1, 1, 1], [1, 1, 0], [1, 0, 0]];
+        const oldShape = { heights: flat, total: 6, views: computeViews(flat, 3) };
+        set.problems[3] = { ...set.problems[3], ...oldShape }; // Answer already entered.
+        const savedSet = structuredClone(set);
+        savedSet.problems[4] = { ...savedSet.problems[4], ...oldShape }; // Untouched: upgrade on restore.
+        saved[`${group}:questionSet`] = savedSet;
+        saved[`${group}:counts`] = { 'stacked-cubes-2': '10', 'stacked-cubes-3': '6' };
         saved[`${group}:results`] = { 'stacked-cubes-2': true };
       }
       const page = await browser.newPage({ viewport: { width: 1280, height: 1250 } });
@@ -94,6 +99,8 @@ async function main() {
       assert.equal(await page.locator('.worksheet-stage [data-height-map]').count(), legacy ? 3 : 0);
       if (legacy) {
         assert.equal(await page.getByRole('textbox', { name: '3번 답', exact: true }).inputValue(), '10');
+        assert.equal(await page.getByRole('textbox', { name: '4번 답', exact: true }).inputValue(), '6');
+        assert.equal(await page.locator('.answer-stage .stack-count-static-answer').nth(2).textContent(), String(set.problems[4].total));
         assert.match(await page.locator('.counting-progress').innerText(), /^1\/10/);
         const diagrams = page.locator('.worksheet-stage [data-height-map]');
         for (let i = 0; i < 3; i += 1) assert.deepEqual(await diagrams.nth(i).locator('.stacked-cubes-map-number').allTextContents(), ['1', '3', '0', '3', '3', '0', '0', '0', '0']);
