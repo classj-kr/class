@@ -8,11 +8,11 @@ window.createStackingTeamStage = function (root) {
     <div class="relay-trophy" aria-hidden="true">🏆</div>
     <div class="race-sparkles" aria-hidden="true"></div></div>
     <div class="relay-bar"><h3 class="relay-heading"></h3><div class="relay-tools">
-      <button class="relay-sound" type="button"></button><div class="relay-actions"></div></div></div>
+      <div class="relay-actions"></div></div></div>
     <ol class="relay-lanes" aria-label="모둠 순위와 완주 기록"></ol>`;
   const find = selector => root.querySelector(selector);
   const headline = find('.relay-headline'), detail = find('.relay-detail');
-  const lanes = find('.relay-lanes'), sound = find('.relay-sound');
+  const lanes = find('.relay-lanes');
   const cards = new Map(), celebrated = new Set(), queue = [];
   let roundId, timer = null, lastStandings = [], resultTitle = '', resultDetail = '';
   const duration = ms => {
@@ -20,17 +20,6 @@ window.createStackingTeamStage = function (root) {
     return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}.${String(elapsed % 1000).padStart(3, '0')}`;
   };
   const soundOn = () => !StackingSounds.muted() && StackingSounds.volume() > 0;
-  function syncSound() {
-    sound.textContent = soundOn() ? '소리 켜짐' : '소리 꺼짐';
-    sound.setAttribute('aria-pressed', String(soundOn()));
-  }
-  sound.onclick = () => {
-    const on = soundOn();
-    StackingSounds.setMuted(on);
-    if (!on && StackingSounds.volume() === 0) StackingSounds.setVolume(.65);
-    syncSound();
-    if (!on) StackingSounds.play('view');
-  };
   function reset() {
     clearTimeout(timer);
     timer = null;
@@ -113,7 +102,6 @@ window.createStackingTeamStage = function (root) {
     if (!sameRound) reset();
     roundId = race.id;
     root.hidden = false;
-    syncSound();
     const ended = race.phase === 'finished', standings = rankTeams(teams);
     const finishers = standings.filter(t => t.finishedAt), leaders = standings.filter(t => t.rank === 1);
     const rankLabel = t => {
