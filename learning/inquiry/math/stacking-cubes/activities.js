@@ -5,7 +5,6 @@
 })(typeof globalThis === 'object' ? globalThis : this, function (model) {
   'use strict';
   const { BASIC, WIDE, countCubes, validBoard, project } = model;
-  const MODES = ['free', 'copy', 'views'];
   function centered(rows) {
     const size = countCubes(rows.flat()) > BASIC.maxCubes ? WIDE.size : BASIC.size;
     const board = Array(size * size).fill(0);
@@ -37,10 +36,6 @@
     const mismatches = ['top', 'front', 'right'].filter(view => !equal(project(heights, view), project(target, view)));
     return { correct: mismatches.length === 0, mismatches };
   }
-  function encode(heights, mode = 'free') {
-    if (!validBoard(heights) || !MODES.includes(mode)) throw new Error('Invalid shape');
-    return `#cubes1/${mode}/${heights.join('')}`;
-  }
   function decode(hash) {
     const match = /^#cubes1\/(free|copy|views)\/([0-6]{9}|[0-6]{16}|[0-6]{25})$/.exec(hash);
     if (!match) return null;
@@ -48,20 +43,8 @@
     if (!validBoard(heights) || (match[1] !== 'free' && !heights.some(Boolean))) return null;
     return { mode: match[1], heights };
   }
-  function parseFile(text) {
-    if (typeof text !== 'string' || text.length > 16384) return null;
-    try {
-      const data = JSON.parse(text);
-      if (data?.type !== 'classj-stacking-cubes' || data.version !== 1 || !validBoard(data.heights)) return null;
-      return data.heights.slice();
-    } catch (_) { return null; }
-  }
   return {
-    names, check, encode, decode, parseFile,
-    questions: mode => (mode === 'many' ? many : shapes).map(board => board.slice()),
-    file: heights => {
-      if (!validBoard(heights)) throw new Error('Invalid shape');
-      return JSON.stringify({ type: 'classj-stacking-cubes', version: 1, heights }, null, 2);
-    }
+    names, check, decode,
+    questions: mode => (mode === 'many' ? many : shapes).map(board => board.slice())
   };
 });

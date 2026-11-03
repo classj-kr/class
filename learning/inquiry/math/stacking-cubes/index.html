@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261104-camera">
+  <link rel="stylesheet" href="style.css?v=20261104-activities">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
   <script src="model.js?v=textbook-boards-1" defer></script>
-  <script src="activities.js?v=textbook-boards-1" defer></script>
+  <script src="activities.js?v=20261104-activities" defer></script>
   <script src="sound.js?v=20261104-camera" defer></script>
-  <script src="library.js?v=textbook-boards-1" defer></script>
-  <script src="app.js?v=20261104-camera" defer></script>
+  <script src="library.js?v=20261104-activities" defer></script>
+  <script src="app.js?v=20261104-activities" defer></script>
   <script src="race.js?v=20261104-camera" defer></script>
   <link rel="stylesheet" href="coop.css?v=20261104-camera">
   <script src="team-stage.js?v=20261104-camera" defer></script>
@@ -143,25 +143,17 @@
       <a class="race-link" href="race/"><strong>순위전</strong></a>
       <a class="race-link" href="coop/"><strong>문제은행·팀전</strong></a>
     </div>
-    <section id="saved-section" class="saved-section" aria-labelledby="saved-heading" hidden>
-      <h3 id="saved-heading">저장한 모양</h3>
+    <details id="saved-section" class="saved-section" hidden>
+      <summary>이전에 저장한 모양</summary>
       <div id="saved-list"></div>
       <button id="undo-saved-delete" class="text-button" type="button" hidden>삭제 되돌리기</button>
-    </section>
+    </details>
     <details class="help">
       <summary>조작 방법</summary>
       <p>누르기: 한 층 쌓기·지우기<br>드래그: 돌리기 · 휠·두 손가락: 확대</p>
       <p>방향키: 칸 선택 · Enter: 쌓기<br>Delete: 지우기 · Ctrl/⌘ + Z: 되돌리기</p>
       <p>목표 모양도 드래그로 돌릴 수 있어요.<br>위·층수: 가려진 칸의 높이 확인</p>
       <p id="board-limits"></p>
-    </details>
-    <details id="keep-options" class="keep-options">
-      <summary>저장·공유</summary>
-      <form id="save-form"><label class="sr-only" for="shape-name">모양 이름</label><input id="shape-name" type="text" maxlength="32" placeholder="모양 이름" autocomplete="off"><button id="save-shape" class="primary-button" type="submit">기기에 저장</button></form>
-      <div class="share-row"><label class="sr-only" for="share-mode">공유할 활동</label><select id="share-mode"><option value="free">자유롭게 열기</option><option value="copy">따라 쌓기로 열기</option><option value="views">그림 보고 쌓기로 열기</option></select><button id="share-shape" type="button">링크 복사</button></div>
-      <input id="share-link" type="url" readonly aria-label="공유 링크, 복사해서 사용하세요" hidden>
-      <div class="file-actions"><button id="export-shape" type="button">파일로 저장</button><button id="import-shape" type="button">파일 열기</button></div>
-      <input id="shape-file" type="file" accept=".json,application/json" hidden>
     </details>
     <p id="library-status" class="library-status" role="status"></p>
   </dialog>
