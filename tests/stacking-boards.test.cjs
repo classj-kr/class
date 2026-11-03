@@ -107,8 +107,27 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     await act(players[1], 'new-draft', { workId: published.work.id }, 409);
     const snapshots = await Promise.all(players.slice(0, 4).map(get));
     assert.ok(snapshots.every(s => s.work.canBuild && s.work.id === snapshots[0].work.id && !s.work.heights.some(Boolean)));
+    assert.equal(snapshots[0].board.teamCapacity, null, 'existing boards start unrestricted');
+    await act(players[0], 'team-capacity', { capacity: 4 }, 403);
+    await act(teacher, 'team-capacity', { capacity: 0 }, 400);
+    await act(teacher, 'team-capacity', { capacity: 5 });
+    const extra = [];
+    for (const number of [9, 10]) extra.push((await request('/api/boards/join', { code: board.code, name: '학생' + number, number })).cookie);
+    const targetTeam = { action: 'join-team', teamId: teams[0].id };
+    const attempts = await Promise.all(extra.map(cookie => fetch(h.base + base + '/actions', { method: 'POST',
+      headers: { 'Content-Type': 'application/json', Cookie: cookie }, body: JSON.stringify({ ...targetTeam, opId: crypto.randomUUID() }) })));
+    assert.deepEqual(attempts.map(r => r.status).sort(), [200, 409], 'only one student can take the final seat');
+    const waiting = extra[attempts.findIndex(r => r.status === 409)];
+    await act(players[4], 'join-team', { teamId: teams[0].id }, 409);
+    assert.equal((await get(players[4])).me.teamId, teams[1].id, 'a rejected transfer keeps the original seat');
+    await act(teacher, 'team-capacity', { capacity: 4 });
+    assert.equal((await get(teacher)).teams[0].members.length, 5, 'lowering the cap preserves current members');
     await act(teacher, 'start-race', { questionIds: [q.id] });
     assert.deepEqual((await get(players[0])).work.heights, Array(25).fill(0), 'the same saved questions can start a fresh race');
+    await act(players[0], 'join-team', { teamId: teams[0].id });
+    await act(waiting, 'join-team', { teamId: teams[0].id }, 409);
+    await act(teacher, 'team-capacity', { capacity: null });
+    assert.ok((await act(waiting, 'join-team', { teamId: teams[0].id })).state.work.canBuild, 'the teacher can reopen seats mid-race');
   } finally { await h.close(); }
 });
 

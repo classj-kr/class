@@ -31,6 +31,10 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.locator('#coop-board').waitFor();
     await teacher.getByRole('spinbutton', { name: '모둠 수' }).fill('1'); await teacher.getByRole('button', { name: '적용', exact: true }).click();
     await teacher.waitForFunction(() => document.querySelectorAll('.coop-team').length === 1);
+    await teacher.getByLabel('모둠당 최대 인원').selectOption('3');
+    await teacher.waitForFunction(() => !document.querySelector('#coop-capacity').disabled);
+    await teacher.reload();
+    await teacher.waitForFunction(() => document.querySelector('#coop-capacity')?.value === '3');
     const boardId = new URL(teacher.url()).searchParams.get('id');
     const code = (await teacher.locator('#coop-title').textContent()).match(/방 (\d{4})/)[1];
     await teacher.getByRole('button', { name: '자동 출제로 팀전 시작' }).click();
@@ -44,6 +48,12 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await p.goto(h.base + '/room/'); await p.locator('#roomCode').fill(code); await p.locator('#roomForm button').click();
       // Recognized guests reuse their member cookie even though this fixture omits platform identity.
       await p.waitForURL(/\/coop\//); await p.locator('#coop-board').waitFor();
+      if (i === 3) {
+        const full = p.getByRole('button', { name: '정원 마감' });
+        await full.waitFor();
+        assert.ok(await full.isDisabled());
+        await teacher.getByLabel('모둠당 최대 인원').selectOption('4');
+      }
       await p.getByRole('button', { name: '이 모둠 참여' }).click();
       await p.locator('#coop-panel').waitFor({ state: 'hidden' });
     }

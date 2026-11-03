@@ -9,6 +9,8 @@
 .coop-card h2 { margin:0 auto 0 0; font-size:20px; }
 .coop-card a { color:#2d5c51; white-space:nowrap; }
 .coop-row { display:flex; align-items:center; gap:9px; margin:12px 0; flex-wrap:wrap; }
+#coop-team-controls { margin:0; }
+#coop-capacity { min-height:44px; padding:6px 9px; border:1px solid #cbd7cb; border-radius:9px; background:#fffefa; color:inherit; font:inherit; }
 .coop-card input:not([type=checkbox]),.coop-dock input { font:inherit; min-width:0; min-height:44px; border:1px solid #cbd7cb; border-radius:9px; padding:8px; }
 #coop-bank-title { flex:1; }
 .coop-card input[type=number] { width:65px; }
