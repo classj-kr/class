@@ -13,7 +13,7 @@
     <p id="coop-status" class="coop-status" role="status"></p>
     <aside id="coop-dock" class="coop-dock" hidden></aside>
     <section id="coop-panel" class="coop-panel" aria-label="쌓기나무 문제은행"><div class="coop-card">
-      <header><h2 id="coop-title">쌓기나무 문제은행</h2><a href="/room/">방번호 입력</a><button id="coop-close" aria-label="게시판 닫기" hidden>×</button></header>
+      <header><h2 id="coop-title">내 쌓기나무 문제은행</h2><a href="/room/">방번호 입력</a><button id="coop-close" aria-label="게시판 닫기" hidden>×</button></header>
       <div id="coop-entry" hidden><form id="coop-create"><label for="coop-bank-title">게시판 이름</label><div class="coop-row"><input id="coop-bank-title" maxlength="80" value="쌓기나무 문제은행" required><button class="primary-button">만들기</button></div></form><div id="coop-banks" class="coop-banks"></div></div>
       <div id="coop-board" hidden><div id="coop-teacher-controls" class="coop-row" hidden>
         <label>모둠당 최대 인원 <select id="coop-capacity"><option value="">제한 없음</option></select></label>
@@ -36,8 +36,8 @@
   function element(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
   function button(text, fn, cls = '') { const b = element('button', text, cls); b.type = 'button'; b.onclick = fn; return b; }
   function status(message = '') { $('coop-status').textContent = message; }
-  async function api(path, body) {
-    const response = await fetch('/api/boards' + path, { method: body === undefined ? 'GET' : 'POST', credentials: 'same-origin', cache: 'no-store', headers: { 'Content-Type': 'application/json' }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+  async function api(path, body, method = body === undefined ? 'GET' : 'POST') {
+    const response = await fetch('/api/boards' + path, { method, credentials: 'same-origin', cache: 'no-store', headers: { 'Content-Type': 'application/json' }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw Object.assign(Error(data.message || '연결을 확인해 주세요.'), { status: response.status });
     return data;
@@ -297,7 +297,22 @@
       if (code) { const data = await api('/join', { code }); if (data.board.layout !== 'stacking') { location.replace('/boards/?id=' + encodeURIComponent(data.board.id)); return; } boardId = data.board.id; }
       if (boardId) { await openBoard(boardId); return; }
       const { boards } = await api('/mine'); $('coop-entry').hidden = false;
-      for (const b of boards.filter(b => b.layout === 'stacking')) $('coop-banks').append(button(`${b.title} · ${b.code}`, () => openBoard(b.id)));
+      for (const b of boards.filter(b => b.layout === 'stacking')) {
+        const row = element('div', undefined, 'coop-bank-row');
+        const name = `${b.title} · ${b.code}`;
+        const remove = button('삭제', async () => {
+          if (!confirm(`‘${name}’ 문제은행을 삭제할까요? 등록된 문제와 모둠 기록도 함께 삭제됩니다.`)) return;
+          remove.disabled = true;
+          try { await api('/' + b.id, undefined, 'DELETE'); }
+          catch (error) {
+            if (error.status !== 404) { remove.disabled = false; status(error.message); return; }
+          }
+          row.remove(); status('문제은행을 삭제했어요.');
+        }, 'coop-bank-delete');
+        remove.setAttribute('aria-label', name + ' 삭제');
+        row.append(button(name, () => openBoard(b.id)), remove);
+        $('coop-banks').append(row);
+      }
     } catch (error) { if ([401, 403].includes(error.status) && !boardId) location.replace('/room/'); else status(error.message); }
   })();
 })();

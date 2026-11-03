@@ -51,7 +51,7 @@
     const { size, maxHeight, maxCubes } = model.rules;
     $('board-size').value = String(size);
     $('board-size-row').hidden = !!challenge || !!shared && !(shared.phase === 'building' && shared.canBuild);
-    $('board-limits').textContent = `${size}×${size}칸 · 최대 ${maxHeight}층 · ${maxCubes}개`;
+    $('board-limits').textContent = `쌓기판 ${size}×${size} · 높이 ${maxHeight}층까지 · 블록 최대 ${maxCubes}개`;
     $('total').textContent = `전체 ${model.count()}개`;
     $('undo').disabled = shared ? !shared.canBuild || !shared.canUndo : !model.canUndo();
     $('clear-board').disabled = model.count() === 0 || Boolean(shared && !shared.canBuild);
