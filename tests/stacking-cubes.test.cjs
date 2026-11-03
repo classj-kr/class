@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { createModel, SIZE, MAX_HEIGHT } = require('../learning/inquiry/math/stacking-cubes/model.js');
 const activities = require('../learning/inquiry/math/stacking-cubes/activities.js');
 
-test('textbook grids keep their own limits and survive saving, sharing and resizing', () => {
+test('textbook grids keep their own limits and still open from old links and resize safely', () => {
   const { BASIC, WIDE, resizeBoard } = require('../learning/inquiry/math/stacking-cubes/model.js');
   const board = createModel(WIDE);
   const stairs = [4,3,2,1, 3,2,1,0, 2,1,0,0, 1,0,0,0];
@@ -11,8 +11,7 @@ test('textbook grids keep their own limits and survive saving, sharing and resiz
   assert.equal(board.edit(3, 3, 1), false);
   assert.equal(resizeBoard(stairs, BASIC), null);
   for (const shape of [stairs, Array(9).fill(1), Array(25).fill(6)]) {
-    assert.deepEqual(activities.parseFile(activities.file(shape)), shape);
-    assert.deepEqual(activities.decode(activities.encode(shape)).heights, shape);
+    assert.deepEqual(activities.decode(`#cubes1/free/${shape.join('')}`).heights, shape);
   }
   for (const invalid of [Array(9).fill(2), Array(16).fill(2)]) assert.equal(board.replace(invalid), false);
 });
@@ -85,13 +84,10 @@ test('loading validates the whole board and preserves the previous board for und
   assert.deepEqual(board.snapshot(), original);
 });
 
-test('shared links and files round-trip and reject malformed or unsupported data', () => {
+test('existing shared links open and reject malformed or unsupported data', () => {
   const board = activities.questions('copy')[2];
-  for (const mode of ['free', 'copy', 'views']) assert.deepEqual(activities.decode(activities.encode(board, mode)), { mode, heights: board });
-  assert.deepEqual(activities.parseFile(activities.file(board)), board);
+  for (const mode of ['free', 'copy', 'views']) assert.deepEqual(activities.decode(`#cubes1/${mode}/${board.join('')}`), { mode, heights: board });
   for (const hash of ['', '#cubes1/many/' + '1'.repeat(25), '#cubes1/copy/' + '0'.repeat(25), '#cubes1/free/' + '7'.repeat(25), '#cubes1/free/' + '1'.repeat(24), '#cubes1/free/' + '1'.repeat(25) + 'x']) assert.equal(activities.decode(hash), null);
-  for (const value of ['{}', 'not json', JSON.stringify({ type: 'classj-stacking-cubes', version: 2, heights: board }), ' '.repeat(16385)]) assert.equal(activities.parseFile(value), null);
-  assert.throws(() => activities.encode(board, 'many'));
 });
 
 test('every many-answer activity has distinct solutions with identical three projections', () => {
