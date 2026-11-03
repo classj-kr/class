@@ -54,11 +54,14 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     const target = Array(25).fill(0); target[12] = 2;
     for (const [p, view] of [[front, 'front'], [side, 'right'], [top, 'top']]) {
       await p.getByRole('button', { name: '그림 확인', exact: true }).waitFor();
+      await p.locator(`#scene .direction-marker.is-assigned[data-direction="${view}"]`).waitFor();
+      assert.equal(await p.locator('#coop-dock').getAttribute('data-direction'), view, 'drawing and 3D direction share the assigned role');
       const cells = drawing(target, view);
       for (let i = 0; i < cells.length; i++) if (cells[i]) await p.locator(`.coop-draw-grid [data-cell="${i}"]`).click();
       await p.getByRole('button', { name: '그림 확인', exact: true }).click();
       await p.getByRole('button', { name: '확인 완료', exact: true }).waitFor();
     }
+    await snap(front, 'front-author');
     await snap(top, 'phone-author');
     await builder.locator('#coop-question-title').fill('두 층 탑');
     await builder.getByRole('button', { name: '문제 등록', exact: true }).click();
@@ -71,11 +74,14 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     }
     assert.equal(await builder.locator('#tools').isVisible(), false, 'previous author now draws the front view');
     assert.equal(await top.locator('#tools').isVisible(), true, 'previous top-view drawer now builds');
+    for (const [p, view] of [[builder, 'front'], [front, 'right'], [side, 'top']]) await p.locator(`#scene .direction-marker.is-assigned[data-direction="${view}"]`).waitFor();
+    assert.equal(await top.locator('#scene .direction-marker.is-assigned').count(), 0, 'the new builder has no assigned drawing direction');
     await teacher.locator('.coop-question input[type=checkbox]').check();
     await teacher.getByRole('button', { name: '선택한 1문제로 팀전 시작', exact: true }).click();
     for (const p of students) {
       await p.waitForFunction(() => document.getElementById('total').textContent === '전체 0개');
       await p.getByRole('button', { name: '확인하기', exact: true }).waitFor();
+      assert.equal(await p.locator('#scene .direction-marker.is-assigned').count(), 0, 'team solving clears the authoring role highlight');
     }
     await Promise.all(students.slice(0, 2).map(async p => { await p.locator('#scene').focus(); await p.keyboard.press('Enter'); }));
     for (const p of students) await p.waitForFunction(() => document.getElementById('total').textContent === '전체 2개', null, { timeout: 3000 });

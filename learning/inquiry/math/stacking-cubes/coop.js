@@ -158,10 +158,11 @@
     const focusedTitle = document.activeElement?.id === 'coop-question-title';
     const caret = focusedTitle ? document.activeElement.selectionStart : null;
     root.replaceChildren(); root.hidden = !w || state.me.teacher;
+    root.dataset.direction = state.race ? '' : state.me.role || '';
     document.body.classList.toggle('coop-working', !!w && !state.me.teacher);
     document.body.classList.toggle('coop-readonly', !w?.canBuild);
     if (!w || state.me.teacher) return;
-    App.shared({ ...w, canBuild: connected && w.canBuild, action: send });
+    App.shared({ ...w, direction: root.dataset.direction, canBuild: connected && w.canBuild, action: send });
     if (state.race) {
       if (state.race.question) {
         root.append(element('h3', `${state.race.index + 1}/${state.race.total} · ${state.race.question.title}`), figures(state.race.question.pictures));
