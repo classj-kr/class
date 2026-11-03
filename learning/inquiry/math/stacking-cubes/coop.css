@@ -34,6 +34,7 @@
 .coop-working .scene-wrap { margin-right:320px; }
 .coop-dock { position:fixed; z-index:3; right:24px; top:50%; transform:translateY(-50%); max-height:calc(100dvh - 200px); width:280px; display:flex; flex-direction:column; gap:12px; overflow:auto; padding:16px; border:1px solid #dedfd7; border-radius:16px; background:#fffefa; }
 .coop-dock h3 { font-size:15px; margin:0; }
+.coop-dock[data-direction="front"] h3,.coop-dock[data-direction="right"] h3,.coop-dock[data-direction="top"] h3 { color:var(--direction-ink); border-left:4px solid var(--direction-ink); padding-left:9px; }
 .coop-dock>small { text-align:center; color:#748073; }
 .coop-checks { display:flex; justify-content:space-between; gap:8px; font-size:12px; color:#53715e; }
 .coop-draw-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; }

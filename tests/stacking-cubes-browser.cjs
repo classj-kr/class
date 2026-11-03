@@ -290,10 +290,9 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.evaluate(hash => { location.hash = hash; }, activities.encode(target, 'views'));
       await page.waitForFunction(() => document.getElementById('challenge-title').textContent === '그림 보고 쌓기 · 1/1');
       await total(0);
-      for (const direction of ['front', 'right', 'top']) {
-        await activate(page.locator(`[data-target-view="${direction}"]`));
-        assert.equal(await page.locator('#target-scene .cell-number').count(), 0, 'target never reveals column heights');
-      }
+      await page.waitForFunction(() => document.querySelectorAll('#target-scene .view-caption').length === 3);
+      assert.deepEqual(await page.locator('#target-scene .view-caption').allTextContents(), ['위에서', '앞에서', '옆에서'], 'all three target views are shown together');
+      assert.equal(await page.locator('#target-scene .cell-number').count(), 0, 'target never reveals column heights');
       await fill(alternative);
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await activate(page.locator('#check-shape'));
@@ -314,11 +313,10 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await choose('many');
       await fill(target);
       await activate(page.locator('#check-shape'));
-      assert.equal(await page.locator('#check-shape').textContent(), '다른 모양 만들기');
+      assert.equal(await page.locator('#check-shape').textContent(), '확인하기');
       assert.equal(await page.locator('#celebration-title').textContent(), '첫 번째 모양 발견!');
       assert.equal(await page.locator('.confetti-piece').count(), 22);
-      await activate(page.locator('#check-shape'));
-      assert.equal(await page.locator('#celebration').isVisible(), false);
+      assert.equal(await page.locator('.answer-slot.is-found').count(), 1, 'first answer is saved while preparing the second');
       await total(0);
       await activate(page.locator('#undo'));
       await total(7);
@@ -333,7 +331,11 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       assert.match(await page.locator('#celebration-message').textContent(), /서로 다른 두/);
       await page.waitForTimeout(350);
       await snap('many-success');
-      assert.equal(await page.locator('#target-panel').evaluate(panel => panel.scrollHeight <= panel.clientHeight + 1), true, 'goal and success message fit without scrolling');
+      if (height <= 500) {
+        await page.locator('#challenge-result').scrollIntoViewIfNeeded();
+        const result = await page.locator('#challenge-result').boundingBox(), panel = await page.locator('#target-panel').boundingBox();
+        assert.ok(result.y >= panel.y && result.y + result.height <= panel.y + panel.height, 'short landscape panels can scroll to the full result');
+      } else assert.equal(await page.locator('#target-panel').evaluate(panel => panel.scrollHeight <= panel.clientHeight + 1), true, 'goal and success message fit without scrolling');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight), true, 'activity fits viewport');
       for (const button of await page.locator('#target-views button:visible, #check-shape').all()) {
         const rect = await button.boundingBox(); assert.ok(rect.width >= 44 && rect.height >= 44, 'activity touch targets');
