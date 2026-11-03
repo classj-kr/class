@@ -15,9 +15,10 @@
     <section id="coop-panel" class="coop-panel" aria-label="쌓기나무 문제은행"><div class="coop-card">
       <header><h2 id="coop-title">쌓기나무 문제은행</h2><a href="/room/">방번호 입력</a><button id="coop-close" aria-label="게시판 닫기" hidden>×</button></header>
       <div id="coop-entry" hidden><form id="coop-create"><label for="coop-bank-title">게시판 이름</label><div class="coop-row"><input id="coop-bank-title" maxlength="80" value="쌓기나무 문제은행" required><button class="primary-button">만들기</button></div></form><div id="coop-banks" class="coop-banks"></div></div>
-      <div id="coop-board" hidden><div id="coop-teacher-controls" class="coop-row"></div><div id="coop-teams" class="coop-teams"></div><div class="coop-bank-heading"><h3>등록된 문제</h3><div id="coop-race-controls"></div></div><div id="coop-questions" class="coop-questions"></div></div>
+      <div id="coop-board" hidden><div id="coop-teacher-controls" class="coop-row"></div><section id="coop-stage" aria-label="팀전 현황판" hidden></section><div id="coop-teams" class="coop-teams"></div><div class="coop-bank-heading"><h3>등록된 문제</h3><div id="coop-race-controls"></div></div><div id="coop-questions" class="coop-questions"></div></div>
     </div></section>`;
   document.body.append(ui);
+  const teamStage = window.createStackingTeamStage($('coop-stage'));
   function element(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
   function button(text, fn, cls = '') { const b = element('button', text, cls); b.type = 'button'; b.onclick = fn; return b; }
   function status(message = '') { $('coop-status').textContent = message; }
@@ -119,9 +120,20 @@
       controls.append(element('span', `참여 ${state.teams.filter(t => t.members.length).length}모둠 · ${state.teams.reduce((sum, t) => sum + t.members.length, 0)}명`, 'coop-attendance'));
     }
     const teams = $('coop-teams'); teams.replaceChildren();
+    const teacherStage = state.me.teacher && state.race;
+    const playingOnStage = teacherStage && state.race.phase === 'playing';
+    const heading = document.querySelector('.coop-bank-heading');
+    const actionSlot = playingOnStage ? teamStage.actions : heading;
+    if ($('coop-race-controls').parentElement !== actionSlot) actionSlot.append($('coop-race-controls'));
+    heading.hidden = !!playingOnStage;
+    $('coop-questions').hidden = !!playingOnStage;
+    teams.hidden = !!teacherStage;
+    if (teacherStage) teamStage.render(state.race, state.teams);
+    else if (!$('coop-stage').hidden) teamStage.reset();
+    if (playingOnStage) { renderRaceControls(); renderDock(); panel(panelOpen); return; }
     const ranked = [...state.teams].sort((a, b) => (b.score || 0) - (a.score || 0) || (a.solvedAt || Infinity) - (b.solvedAt || Infinity));
     const joiningRace = !state.me.teacher && !myTeam && state.race?.phase === 'playing';
-    for (const t of ranked.filter(t => !state.race || joiningRace || t.score !== undefined)) {
+    for (const t of ranked.filter(t => !teacherStage && (!state.race || joiningRace || t.score !== undefined))) {
       const card = element('div', undefined, 'coop-team'); card.classList.toggle('is-mine', t.id === state.me.teamId);
       const rank = t.score ? 1 + ranked.filter(other => (other.score || 0) > t.score || other.score === t.score && other.solvedAt < t.solvedAt).length : null;
       card.append(element('strong', `${rank ? rank + '위 · ' : ''}${t.name} · ${t.members.length}명${t.score !== undefined ? ` · ${t.score}/${state.race.total}문제${t.finishedAt ? ' 완료' : ''}` : ''}`));

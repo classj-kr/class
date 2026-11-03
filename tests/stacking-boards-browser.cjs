@@ -105,7 +105,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     // A teammate reconnects to the authoritative model without resetting the group.
     await top.reload(); await top.waitForFunction(() => document.getElementById('total').textContent === '전체 2개');
     await front.getByRole('button', { name: '확인하기', exact: true }).click();
-    await teacher.getByText(/1\/1문제.*완료/).waitFor();
+    await teacher.locator('.relay-lane.has-finished .lane-shape svg').waitFor();
+    await teacher.locator('#coop-stage.is-cheering').waitFor();
     for (const p of students) await p.locator('#coop-panel').waitFor();
     await teacher.goto(h.base + '/boards/?id=' + boardId);
     await teacher.waitForURL(/\/stacking-cubes\/coop\/\?id=/);
@@ -120,6 +121,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.locator('#coop-bank-title').fill('두 명도 바로'); await teacher.locator('#coop-create button').click();
     await teacher.locator('#coop-board').waitFor();
     const smallCode = (await teacher.locator('#coop-title').textContent()).match(/방 (\d{4})/)[1];
+    const smallId = new URL(teacher.url()).searchParams.get('id');
     for (const [i, p] of [builder, front].entries()) {
       await p.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/?code=' + smallCode);
       await p.getByRole('button', { name: '이 모둠 참여' }).first().click();
@@ -173,6 +175,49 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await front.locator('#scene').focus(); await front.keyboard.press('Enter');
     await front.locator('#check-shape').click();
     await teacher.locator('.race-tower-card.is-complete').waitFor();
+    // Three teams finish a two-question round, with an intermediate celebration
+    // and a persisted awards screen when the teacher returns on another device.
+    await teacher.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/?id=' + smallId);
+    await teacher.getByRole('button', { name: '출제로 돌아가기' }).click();
+    const apiBase = h.base + '/api/boards/' + smallId + '/stacking';
+    async function teamAction(page, action, extra = {}) {
+      const api = page.context().request;
+      const current = await (await api.get(apiBase)).json();
+      const data = { action, opId: crypto.randomUUID(), workId: current.work?.id, version: current.work?.version, ...extra };
+      const res = await api.post(apiBase + '/actions', { data });
+      assert.equal(res.status(), 200, await res.text());
+    }
+    const slots = (await (await teacher.context().request.get(apiBase)).json()).teams;
+    await teamAction(front, 'join-team', { teamId: slots[1].id });
+    const joinedTop = await top.context().request.post(h.base + '/api/boards/join', { data: { code: smallCode, name: '학생4', number: 4 } });
+    assert.equal(joinedTop.status(), 200);
+    await teamAction(top, 'join-team', { teamId: slots[2].id });
+    await teacher.getByRole('button', { name: '등록된 2문제로 팀전 시작' }).click();
+    await teacher.locator('.relay-lane').first().waitFor();
+    await teacher.evaluate(() => { window.finishSounds = 0; const play = StackingSounds.play; StackingSounds.play = (...args) => { if (args[0] === 'success') window.finishSounds++; return play(...args); }; });
+    const solve = async p => { await teamAction(p, 'edit', { cell: 12, delta: 1 }); await teamAction(p, 'check-answer'); };
+    await solve(builder); await solve(front); await solve(front);
+    await teacher.waitForFunction(() => document.querySelector('.relay-headline').textContent === '2모둠 완주!');
+    assert.match(await teacher.locator('.relay-detail').textContent(), /1위.*기록/);
+    assert.equal(await teacher.locator('.relay-lane.has-finished').count(), 1);
+    assert.equal(await teacher.locator('.lane-shape svg').count(), 0);
+    await snap(teacher, 'team-first-finish');
+    await teacher.waitForFunction(() => !document.getElementById('coop-stage').classList.contains('is-cheering'));
+    assert.equal(await teacher.evaluate(() => window.finishSounds), 1);
+    await teacher.locator('.relay-sound').click();
+    await teacher.emulateMedia({ reducedMotion: 'reduce' });
+    await solve(top); await solve(top); await solve(builder);
+    await teacher.waitForFunction(() => document.querySelectorAll('.relay-lane.has-finished .lane-shape svg').length === 3);
+    assert.equal(await teacher.locator('#coop-stage .race-spark').count(), 0);
+    assert.equal(await teacher.evaluate(() => window.finishSounds), 1, 'muted finishes stay quiet');
+    await teacher.reload();
+    await teacher.locator('#coop-stage.is-final').waitFor();
+    assert.equal(await teacher.locator('#coop-stage.is-cheering').count(), 0, 'loading results does not replay celebrations');
+    assert.match(await teacher.locator('.relay-headline').textContent(), /2모둠 1위/);
+    assert.deepEqual(await teacher.locator('.relay-lane .lane-top strong').allTextContents(), ['2모둠', '3모둠', '1모둠']);
+    await snap(teacher, 'team-final-results');
+    await teacher.setViewportSize({width:390,height:844});
+    await snap(teacher, 'team-final-phone');
     for (const p of [teacher, ...students]) assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.deepEqual(errors, []);
     await Promise.all(contexts.map(c => c.close()));

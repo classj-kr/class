@@ -28,6 +28,7 @@
 
   if (/\/coop\/?$/.test(location.pathname)) {
     window.StackingRace = {
+      finishConfetti,
       async openSelection(bankId, questionIds) {
         const data = await api('/rooms', { mode: 'views', bankId, questionIds, questionCount: questionIds.length });
         store.set('ticket-' + data.state.code, { token: data.token });
@@ -35,12 +36,23 @@
       }
     };
   }
+  function finishConfetti(container) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const bits = Array.from({ length: 28 }, (_, i) => {
+      const bit = document.createElement('i');
+      bit.className = 'race-spark';
+      bit.style.cssText = `--x:${i * 100 / 28}%;--turn:${i % 2 ? 220 : -240}deg;--delay:${i % 5 * .045}s;background:hsl(${i * 47 % 360} 65% 60%)`;
+      return bit;
+    });
+    container.replaceChildren(...bits);
+    setTimeout(() => bits.forEach(bit => bit.remove()), 2200);
+  }
   if (!location.pathname.includes('/race') && !initialCode) return;
   document.body.classList.add('race-page');
 
   const clock = ms => `${Math.floor(ms / 60000)}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
   const towerCards = new Map();
-  let stageState = null, bannerUntil = 0, sparkTimer;
+  let stageState = null, bannerUntil = 0;
   const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   function label(tag, text, className) {
     const node = document.createElement(tag); node.textContent = text;
@@ -61,15 +73,8 @@
   function announceStage(text, sound, confetti = false) {
     $('race-banner').textContent = text; bannerUntil = Date.now() + 4500;
     if (sound) StackingSounds.play(sound);
-    clearTimeout(sparkTimer); $('race-sparkles').replaceChildren();
-    if (confetti && !reducedMotion()) {
-      for (let i = 0; i < 28; i++) {
-        const bit = label('i', '', 'race-spark');
-        bit.style.cssText = `--x:${i * 100 / 28}%;--turn:${i % 2 ? 220 : -240}deg;--delay:${i % 5 * .045}s;background:hsl(${i * 47 % 360} 65% 60%)`;
-        $('race-sparkles').append(bit);
-      }
-      sparkTimer = setTimeout(() => $('race-sparkles').replaceChildren(), 2200);
-    }
+    $('race-sparkles').replaceChildren();
+    if (confetti) finishConfetti($('race-sparkles'));
   }
   function towerBlock(level, total, filled, animate) {
     const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');

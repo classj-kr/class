@@ -686,6 +686,16 @@
   window.StackingApp = {
     race: (mode, questions, index, submit) => startActivity(mode, questions, index, true, submit),
     free: () => startActivity('free', [], 0, true),
+    preview(heights) {
+      const board = createModel();
+      board.replace(heights);
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 200 155');
+      svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', '모둠이 마지막 문제에서 완성한 입체');
+      svg.innerHTML = renderSolid(200, 155, board, true);
+      return svg;
+    },
     shared(next) {
       const changed = shared?.id !== next.id;
       if (!shared) startActivity('free', [], 0, true);
