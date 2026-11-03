@@ -36,6 +36,11 @@
 .coop-dock h3 { font-size:15px; margin:0; }
 .coop-dock[data-direction="front"] h3,.coop-dock[data-direction="right"] h3,.coop-dock[data-direction="top"] h3 { color:var(--direction-ink); border-left:4px solid var(--direction-ink); padding-left:9px; }
 .coop-dock>small { text-align:center; color:#748073; }
+.coop-view-tabs { display:flex; gap:5px; }
+.coop-view-tabs button { flex:1; padding:8px 4px; font-size:12px; }
+.coop-view-tabs button[aria-pressed="true"] { color:var(--direction-ink); background:var(--direction-fill); border-color:var(--direction-border); font-weight:700; }
+.coop-attendance { color:#53715e; font-size:14px; }
+.coop-toolbar strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .coop-checks { display:flex; justify-content:space-between; gap:8px; font-size:12px; color:#53715e; }
 .coop-draw-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; }
 .coop-draw-grid button { min-width:0; min-height:44px; padding:0; border-radius:0; border-color:#bbc2b5; background:#faf9f4; }
