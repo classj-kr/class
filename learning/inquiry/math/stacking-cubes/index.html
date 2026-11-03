@@ -6,16 +6,16 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261103-directions">
+  <link rel="stylesheet" href="style.css?v=20261103-race-stage">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
   <script src="model.js?v=20261015-3" defer></script>
   <script src="activities.js?v=20261015-3" defer></script>
   <script src="sound.js?v=20261028-celebration" defer></script>
   <script src="library.js?v=20261019-quiet-ui" defer></script>
   <script src="app.js?v=20261103-directions" defer></script>
-  <script src="race.js?v=20261102-room-entry" defer></script>
-  <link rel="stylesheet" href="coop.css?v=20261103-directions">
-  <script src="coop.js?v=20261103-directions" defer></script>
+  <script src="race.js?v=20261103-race-stage" defer></script>
+  <link rel="stylesheet" href="coop.css?v=20261103-flexible">
+  <script src="coop.js?v=20261103-flexible" defer></script>
   <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -129,16 +129,20 @@
       </div>
       <div id="race-room" hidden>
         <p class="race-live"><strong class="race-room-code">방 <span id="race-code-label"></span></strong><span id="race-phase"></span><span id="race-time"></span></p>
-        <div id="race-settings" class="race-row" hidden>
+        <div class="race-command"><div id="race-settings" class="race-row" hidden>
           <label class="sr-only" for="race-next-mode">문제 종류</label>
           <select id="race-next-mode"><option value="views">그림 보고 쌓기</option><option value="copy">따라 쌓기</option></select>
-        </div>
-        <ol id="race-ranks" class="race-ranks" aria-label="참가자와 순위"></ol>
-        <div class="race-row race-actions">
+        </div><div class="race-row race-actions">
           <button id="race-start" class="primary-button" type="button" hidden>시작</button>
           <button id="race-stop" type="button" hidden>마치기</button>
           <button id="race-leave" type="button">나가기</button>
-        </div>
+        </div></div>
+        <section id="race-showcase" class="race-showcase" aria-label="실시간 쌓기 현황" hidden>
+          <div class="race-show-heading"><div><span class="race-show-eyebrow">우리 반 쌓기 챌린지</span><strong id="race-banner" role="status" aria-live="polite"></strong></div><button id="race-show-sound" type="button" aria-label="현황판 효과음 끄기" aria-pressed="true">소리 켜짐</button></div>
+          <div id="race-summary" class="race-summary"></div>
+          <div id="race-sparkles" class="race-sparkles" aria-hidden="true"></div>
+        </section>
+        <ol id="race-ranks" class="race-ranks" aria-label="참가자와 순위"></ol>
       </div>
       <p id="race-status" class="race-status" role="status"></p>
     </div>

@@ -111,6 +111,50 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.getByRole('button', { name: '선택한 1문제로 팀전 시작', exact: true }).click();
     await builder.getByRole('button', { name: '확인하기', exact: true }).waitFor();
     assert.equal(await builder.locator('#total').textContent(), '전체 0개');
+    // Default six slots are optional; two students can author and play immediately.
+    await teacher.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/');
+    await teacher.locator('#coop-bank-title').fill('두 명도 바로'); await teacher.locator('#coop-create button').click();
+    await teacher.locator('#coop-board').waitFor();
+    const smallCode = (await teacher.locator('#coop-title').textContent()).match(/방 (\d{4})/)[1];
+    for (const [i, p] of [builder, front].entries()) {
+      await p.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/?code=' + smallCode);
+      await p.getByRole('button', { name: '이 모둠 참여' }).first().click();
+      await p.locator('#coop-panel').waitFor({ state: 'hidden' });
+      if (!i) {
+        await p.locator('#scene').focus(); await p.keyboard.press('Enter'); await p.waitForFunction(() => document.getElementById('total').textContent === '전체 1개');
+        await p.getByRole('button', { name: '입체 완성', exact: true }).click();
+        const soloShape = Array(25).fill(0); soloShape[12] = 1;
+        for (const [view, name] of [['front', '앞'], ['right', '오른쪽 옆'], ['top', '위']]) {
+          await p.locator('.coop-view-tabs').getByRole('button', { name, exact: true }).click();
+          for (const [j, cell] of drawing(soloShape, view).entries()) if (cell) await p.locator(`.coop-draw-grid [data-cell="${j}"]`).click();
+          await p.getByRole('button', { name: '그림 확인', exact: true }).click();
+          await p.getByRole('button', { name: '확인 완료', exact: true }).waitFor();
+        }
+        await p.setViewportSize({ width: 390, height: 900 }); await snap(p, 'solo-author-phone');
+        await p.getByRole('button', { name: '문제 등록', exact: true }).click();
+        await p.getByRole('button', { name: '다음 문제 · 역할 교대', exact: true }).click();
+        await p.waitForFunction(() => document.getElementById('total').textContent === '전체 0개');
+        await p.getByRole('button', { name: '입체 완성', exact: true }).waitFor();
+        await p.setViewportSize({ width: 1280, height: 900 });
+        await p.locator('#scene').focus(); await p.keyboard.press('Enter'); await p.waitForFunction(() => document.getElementById('total').textContent === '전체 1개');
+      }
+    }
+    await front.waitForFunction(() => document.getElementById('total').textContent === '전체 1개');
+    await builder.getByRole('button', { name: '입체 완성', exact: true }).click();
+    const smallShape = Array(25).fill(0); smallShape[12] = 1;
+    for (const [view, name] of [['front', '앞'], ['right', '오른쪽 옆'], ['top', '위']]) {
+      await front.locator('.coop-view-tabs').getByRole('button', { name, exact: true }).click();
+      for (const [i, cell] of drawing(smallShape, view).entries()) if (cell) await front.locator(`.coop-draw-grid [data-cell="${i}"]`).click();
+      await front.getByRole('button', { name: '그림 확인', exact: true }).click();
+      await front.getByRole('button', { name: '확인 완료', exact: true }).waitFor();
+    }
+    await snap(front, 'two-person-author');
+    await builder.getByRole('button', { name: '문제 등록', exact: true }).click();
+    await teacher.locator('.coop-question input[type=checkbox]').last().check();
+    await teacher.getByRole('button', { name: '선택한 1문제로 팀전 시작', exact: true }).click();
+    await front.getByRole('button', { name: '확인하기', exact: true }).waitFor();
+    await teacher.waitForFunction(() => document.querySelectorAll('.coop-team').length === 1);
+    assert.equal(await teacher.locator('.coop-team').count(), 1, 'only the occupied group enters, with five slots still empty');
     for (const p of [teacher, ...students]) assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.deepEqual(errors, []);
     await Promise.all(contexts.map(c => c.close()));
