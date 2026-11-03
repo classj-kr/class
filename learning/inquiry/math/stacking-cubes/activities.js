@@ -4,12 +4,13 @@
   else root.StackingActivities = api;
 })(typeof globalThis === 'object' ? globalThis : this, function (model) {
   'use strict';
-  const { SIZE, validBoard, project } = model;
+  const { BASIC, WIDE, countCubes, validBoard, project } = model;
   const MODES = ['free', 'copy', 'views'];
   function centered(rows) {
-    const board = Array(SIZE * SIZE).fill(0);
-    const left = Math.floor((SIZE - rows[0].length) / 2), back = Math.floor((SIZE - rows.length) / 2);
-    rows.forEach((row, z) => row.forEach((height, x) => { board[(back + z) * SIZE + left + x] = height; }));
+    const size = countCubes(rows.flat()) > BASIC.maxCubes ? WIDE.size : BASIC.size;
+    const board = Array(size * size).fill(0);
+    const left = Math.floor((size - rows[0].length) / 2), back = Math.floor((size - rows.length) / 2);
+    rows.forEach((row, z) => row.forEach((height, x) => { board[(back + z) * size + left + x] = height; }));
     return board;
   }
   const shapes = [
@@ -25,8 +26,8 @@
     [[3, 3], [3, 1]],
     [[2, 1, 2], [2, 2, 1]],
     [[2, 3], [3, 3], [2, 1]],
-    [[3, 2, 3], [2, 3, 2], [3, 2, 1]],
-    [[4, 2, 4], [2, 4, 2], [4, 2, 1]]
+    [[3, 1, 2], [1, 3, 1], [2, 1, 1]],
+    [[4, 1, 3], [1, 4, 1], [3, 1, 1]]
   ].map(centered);
   const names = { free: '자유 쌓기', copy: '따라 쌓기', views: '그림 보고 쌓기', many: '여러 답 찾기' };
   const equal = (a, b) => a.length === b.length && a.every((n, i) => n === b[i]);
@@ -41,10 +42,10 @@
     return `#cubes1/${mode}/${heights.join('')}`;
   }
   function decode(hash) {
-    const match = /^#cubes1\/(free|copy|views)\/([0-6]{25})$/.exec(hash);
+    const match = /^#cubes1\/(free|copy|views)\/([0-6]{9}|[0-6]{16}|[0-6]{25})$/.exec(hash);
     if (!match) return null;
     const heights = [...match[2]].map(Number);
-    if (match[1] !== 'free' && !heights.some(Boolean)) return null;
+    if (!validBoard(heights) || (match[1] !== 'free' && !heights.some(Boolean))) return null;
     return { mode: match[1], heights };
   }
   function parseFile(text) {

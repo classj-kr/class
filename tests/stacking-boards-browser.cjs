@@ -62,12 +62,18 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.getByRole('button', { name: '팀전 마치기' }).click();
     await teacher.getByRole('button', { name: '출제로 돌아가기' }).click();
     for (const p of students) await p.getByRole('button', { name: '입체 완성' }).waitFor();
+    await builder.locator('#view-button').click();
+    await builder.locator('#board-size').selectOption('4');
+    for (const p of students) await p.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 16);
+    await side.locator('#view-button').click();
+    await side.locator('#board-size').selectOption('3');
+    for (const p of students) await p.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 9);
     await builder.evaluate(() => { window.playedSounds = []; const play = StackingSounds.play; StackingSounds.play = (...args) => { window.playedSounds.push(args[0]); return play(...args); }; });
     await Promise.all([builder, side].map(async p => { await p.locator('#scene').focus(); await p.keyboard.press('Enter'); }));
     for (const p of students) await p.waitForFunction(() => document.getElementById('total').textContent === '전체 2개');
     await builder.waitForFunction(() => window.playedSounds.filter(kind => kind === 'add').length === 1);
     await front.getByRole('button', { name: '입체 완성', exact: true }).click();
-    const target = Array(25).fill(0); target[12] = 2;
+    const target = Array(9).fill(0); target[4] = 2;
     for (const [p, view] of [[front, 'front'], [side, 'right'], [top, 'top']]) {
       await p.locator('.coop-view-tabs').getByRole('button', { name: {front:'앞',right:'오른쪽 옆',top:'위'}[view], exact:true }).click();
       await p.getByRole('button', { name: '그림 확인', exact: true }).waitFor();
@@ -139,7 +145,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       if (!i) {
         await p.locator('#scene').focus(); await p.keyboard.press('Enter'); await p.waitForFunction(() => document.getElementById('total').textContent === '전체 1개');
         await p.getByRole('button', { name: '입체 완성', exact: true }).click();
-        const soloShape = Array(25).fill(0); soloShape[12] = 1;
+        const soloShape = Array(9).fill(0); soloShape[4] = 1;
         for (const [view, name] of [['front', '앞'], ['right', '오른쪽 옆'], ['top', '위']]) {
           await p.locator('.coop-view-tabs').getByRole('button', { name, exact: true }).click();
           for (const [j, cell] of drawing(soloShape, view).entries()) if (cell) await p.locator(`.coop-draw-grid [data-cell="${j}"]`).click();
@@ -157,7 +163,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     }
     await front.waitForFunction(() => document.getElementById('total').textContent === '전체 1개');
     await builder.getByRole('button', { name: '입체 완성', exact: true }).click();
-    const smallShape = Array(25).fill(0); smallShape[12] = 1;
+    const smallShape = Array(9).fill(0); smallShape[4] = 1;
     for (const [view, name] of [['front', '앞'], ['right', '오른쪽 옆'], ['top', '위']]) {
       await front.locator('.coop-view-tabs').getByRole('button', { name, exact: true }).click();
       for (const [i, cell] of drawing(smallShape, view).entries()) if (cell) await front.locator(`.coop-draw-grid [data-cell="${i}"]`).click();
@@ -193,7 +199,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     async function teamAction(page, action, extra = {}) {
       const api = page.context().request;
       const current = await (await api.get(apiBase)).json();
-      const data = { action, opId: crypto.randomUUID(), workId: current.work?.id, version: current.work?.version, ...extra };
+      const data = { action, opId: crypto.randomUUID(), workId: current.work?.id, boardSize: Math.sqrt(current.work?.heights.length), version: current.work?.version, ...extra };
       const res = await api.post(apiBase + '/actions', { data });
       assert.equal(res.status(), 200, await res.text());
     }
@@ -205,7 +211,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.getByRole('button', { name: '등록된 2문제로 팀전 시작' }).click();
     await teacher.locator('.relay-lane').first().waitFor();
     await teacher.evaluate(() => { window.finishSounds = 0; const play = StackingSounds.play; StackingSounds.play = (...args) => { if (args[0] === 'success') window.finishSounds++; return play(...args); }; });
-    const solve = async p => { await teamAction(p, 'edit', { cell: 12, delta: 1 }); await teamAction(p, 'check-answer'); };
+    const solve = async p => { await teamAction(p, 'edit', { cell: 4, delta: 1 }); await teamAction(p, 'check-answer'); };
     await solve(builder); await solve(front); await solve(front);
     await teacher.waitForFunction(() => document.querySelector('.relay-headline').textContent === '2모둠 완주!');
     assert.match(await teacher.locator('.relay-detail').textContent(), /1위.*기록/);
