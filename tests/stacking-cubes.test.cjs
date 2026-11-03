@@ -3,6 +3,20 @@ const assert = require('node:assert/strict');
 const { createModel, SIZE, MAX_HEIGHT } = require('../learning/inquiry/math/stacking-cubes/model.js');
 const activities = require('../learning/inquiry/math/stacking-cubes/activities.js');
 
+test('textbook grids keep their own limits and survive saving, sharing and resizing', () => {
+  const { BASIC, WIDE, resizeBoard } = require('../learning/inquiry/math/stacking-cubes/model.js');
+  const board = createModel(WIDE);
+  const stairs = [4,3,2,1, 3,2,1,0, 2,1,0,0, 1,0,0,0];
+  assert.ok(board.replace(stairs)); assert.equal(board.count(), 20);
+  assert.equal(board.edit(3, 3, 1), false);
+  assert.equal(resizeBoard(stairs, BASIC), null);
+  for (const shape of [stairs, Array(9).fill(1), Array(25).fill(6)]) {
+    assert.deepEqual(activities.parseFile(activities.file(shape)), shape);
+    assert.deepEqual(activities.decode(activities.encode(shape)).heights, shape);
+  }
+  for (const invalid of [Array(9).fill(2), Array(16).fill(2)]) assert.equal(board.replace(invalid), false);
+});
+
 test('front and right silhouettes preserve orientation and hide rear columns', () => {
   const board = createModel();
   for (const [x, z, height] of [[0, 0, 1], [0, 4, 3], [1, 1, 2], [4, 0, 5], [2, 3, 4]]) {
@@ -64,8 +78,9 @@ test('loading validates the whole board and preserves the previous board for und
   }
   const loaded = activities.questions('copy')[0];
   assert.equal(board.replace(loaded), true);
+  const first = loaded[0];
   loaded[0] = 6;
-  assert.equal(board.height(0, 0), 0, 'loaded boards are detached');
+  assert.equal(board.height(0, 0), first, 'loaded boards are detached');
   board.undo();
   assert.deepEqual(board.snapshot(), original);
 });
