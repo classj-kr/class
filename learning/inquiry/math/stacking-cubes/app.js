@@ -10,8 +10,6 @@
   const $ = id => document.getElementById(id);
   const scene = $('scene');
   const targetScene = $('target-scene');
-  const viewButton = $('view-button');
-  const panel = $('view-panel');
   const dialog = $('activity-dialog');
   const DEFAULT_YAW = Math.PI / 5;
   const DEFAULT_PITCH = Math.PI / 6;
@@ -23,6 +21,8 @@
   let hovered = null;
   let keyboardCell = null;
   let frame = 0;
+  const turns = new Map();
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let announcementTimer;
   let feedbackTimer;
   let celebrationTimer;
@@ -62,7 +62,7 @@
   }
 
   function edit(cell, change = tool === 'add' ? 1 : -1) {
-    if (!cell || view !== 'solid') return;
+    if (!cell || view !== 'solid' || turns.has(scene)) return;
     if (shared) { if (shared.canBuild) shared.action('edit', { cell: cell.z * model.rules.size + cell.x, delta: change }); return; }
     if (model.edit(cell.x, cell.z, change)) {
       resetAnswer();
@@ -92,13 +92,12 @@
     const height = scene.clientHeight;
     if (!width || !height) return;
     scene.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    scene.innerHTML = view === 'solid' ? renderSolid(width, height) : renderProjection(width, height);
+    scene.innerHTML = renderView(scene, model, view);
     if (challenge) {
       const w = targetScene.clientWidth, h = targetScene.clientHeight;
       targetScene.setAttribute('viewBox', `0 0 ${w} ${h}`);
       targetScene.innerHTML = challenge.mode !== 'copy' ? renderTargetViews(w, h, challenge.target)
-        : challenge.view === 'solid' ? renderSolid(w, h, challenge.target, true)
-        : renderProjection(w, h, challenge.view, challenge.target, true);
+        : renderView(targetScene, challenge.target, challenge.view);
     }
   }
 
@@ -132,19 +131,75 @@
     }).join('');
   }
 
-  function renderSolid(width, height, board = model, isTarget = false) {
-    const size = board.rules.size;
-    const sinY = Math.sin(yaw), cosY = Math.cos(yaw);
-    const sinP = Math.sin(pitch), cosP = Math.cos(pitch);
-    const rawProject = ([x, y, z]) => [cosY * x - sinY * z, sinP * (sinY * x + cosY * z) - cosP * y];
-    const depth = ([x, y, z]) => cosP * (sinY * x + cosY * z) + sinP * y;
+  function cameraFor(width, height, board, isTarget, direction, home = false) {
+    if (direction !== 'solid') {
+      const { cell, upper, rows } = projectionLayout(width, height, board, direction, isTarget, 0);
+      const top = direction === 'top';
+      return { yaw: direction === 'right' ? Math.PI / 2 : 0, pitch: top ? Math.PI / 2 : 0,
+        scale: cell, cy: upper + rows * cell * (top ? .5 : 1) };
+    }
     const tallest = Math.max(2, ...board.snapshot());
     // Fit every orientation once: rotating must not silently zoom the model.
-    const horizontalRadius = Math.SQRT2 * (size / 2 + .3);
+    const horizontalRadius = Math.SQRT2 * (board.rules.size / 2 + .3);
     const verticalRadius = Math.hypot(horizontalRadius, (tallest + .2) / 2);
-    const scale = Math.max(1, Math.min((width - (isTarget ? 30 : 48)) / (2 * horizontalRadius), (height - (isTarget ? 35 : 50)) / (2 * verticalRadius), 124)) * (isTarget ? 1 : zoom);
-    const cx = width / 2;
-    const cy = height / 2 + (tallest - .2) / 2 * cosP * scale;
+    const scale = Math.max(1, Math.min((width - (isTarget ? 30 : 48)) / (2 * horizontalRadius), (height - (isTarget ? 35 : 50)) / (2 * verticalRadius), 124)) * (isTarget || home ? 1 : zoom);
+    const tilt = home ? DEFAULT_PITCH : pitch;
+    return { yaw: home ? DEFAULT_YAW : yaw, pitch: tilt, scale, cy: height / 2 + (tallest - .2) / 2 * Math.cos(tilt) * scale };
+  }
+
+  // The end-on 3D camera uses the same cell scale and origin as the drawn grid.
+  function sampleTurn(turn, now) {
+    const t = clamp((now - turn.start) / 620, 0, 1);
+    const u = t * t * (3 - 2 * t), { from, to } = turn;
+    const angle = to.yaw - from.yaw;
+    const lerp = (a, b) => a + (b - a) * u;
+    return {
+      yaw: from.yaw + Math.atan2(Math.sin(angle), Math.cos(angle)) * u,
+      pitch: lerp(from.pitch, to.pitch), scale: lerp(from.scale, to.scale), cy: lerp(from.cy, to.cy),
+      paper: t < .5 ? from.paper : turn.direction,
+      opacity: t < .5 ? from.opacity * Math.max(0, 1 - t / .24) : Math.max(0, (t - .76) / .24),
+      done: t === 1
+    };
+  }
+
+  function beginTurn(svg, board, before, after, reset = false) {
+    const old = turns.get(svg);
+    if (reduceMotion.matches || !svg.clientWidth || !svg.clientHeight) { turns.delete(svg); return; }
+    if (before === after && !reset) return;
+    const now = performance.now();
+    const pose = (direction, home) => cameraFor(svg.clientWidth, svg.clientHeight, board, svg === targetScene, direction, home);
+    const from = old ? sampleTurn(old, now) : { ...pose(before), paper: before, opacity: 1 };
+    const to = pose(after, reset);
+    if (!old && before === after && from.yaw === to.yaw && from.pitch === to.pitch && from.scale === to.scale) return;
+    turns.set(svg, { from, to, direction: after, start: now });
+    svg.setAttribute('aria-busy', 'true');
+    schedule();
+  }
+
+  function renderView(svg, board, direction) {
+    const w = svg.clientWidth, h = svg.clientHeight, isTarget = svg === targetScene;
+    const flat = d => renderProjection(w, h, d, board, isTarget || $('show-heights').checked);
+    const turn = turns.get(svg);
+    if (turn && !reduceMotion.matches) {
+      const pose = sampleTurn(turn, performance.now());
+      if (!pose.done) {
+        schedule();
+        const solid = renderSolid(w, h, board, isTarget, pose);
+        if (pose.paper === 'solid' || pose.opacity <= 0) return solid;
+        return `<g opacity="${1 - pose.opacity}">${solid}</g><g opacity="${pose.opacity}">${flat(pose.paper)}</g>`;
+      }
+    }
+    turns.delete(svg);
+    if (svg.hasAttribute('aria-busy')) svg.removeAttribute('aria-busy');
+    return direction === 'solid' ? renderSolid(w, h, board, isTarget) : flat(direction);
+  }
+
+  function renderSolid(width, height, board = model, isTarget = false, camera = cameraFor(width, height, board, isTarget, 'solid')) {
+    const size = board.rules.size, { scale, cy } = camera, cx = width / 2;
+    const sinY = Math.sin(camera.yaw), cosY = Math.cos(camera.yaw);
+    const sinP = Math.sin(camera.pitch), cosP = Math.cos(camera.pitch);
+    const rawProject = ([x, y, z]) => [cosY * x - sinY * z, sinP * (sinY * x + cosY * z) - cosP * y];
+    const depth = ([x, y, z]) => cosP * (sinY * x + cosY * z) + sinP * y;
     const project = point => { const p = rawProject(point); return [cx + p[0] * scale, cy + p[1] * scale]; };
     const face = (points, attributes) => polygon(points.map(project), attributes);
     const pieces = [];
@@ -217,17 +272,22 @@
     return pieces.join('');
   }
 
-  function renderProjection(width, height, direction = view, board = model, showNumbers = $('show-heights').checked, fixedCell = 0) {
+  function projectionLayout(width, height, board, direction, numberedTarget, fixedCell) {
     const size = board.rules.size;
-    const pieces = ['<g aria-hidden="true">'];
-    const top = direction === 'top';
     const projection = board.projection(direction);
-    const rows = top ? size : Math.max(3, ...projection);
-    const numberedTarget = (board !== model && top && showNumbers) || fixedCell > 0;
+    const rows = direction === 'top' ? size : Math.max(3, ...projection);
     const paddingX = numberedTarget ? 36 : board === model ? 70 : 52;
     const paddingY = numberedTarget ? 28 : board === model ? 70 : 50;
     const cell = fixedCell || Math.max(1, Math.min((width - paddingX) / size, (height - paddingY) / rows, 91));
     const left = (width - size * cell) / 2, upper = (height - rows * cell) / 2 - 5;
+    return { projection, rows, cell, left, upper };
+  }
+
+  function renderProjection(width, height, direction = view, board = model, showNumbers = $('show-heights').checked, fixedCell = 0) {
+    const size = board.rules.size, top = direction === 'top';
+    const pieces = ['<g aria-hidden="true">'];
+    const numberedTarget = (board !== model && top && showNumbers) || fixedCell > 0;
+    const { projection, rows, cell, left, upper } = projectionLayout(width, height, board, direction, numberedTarget, fixedCell);
     const boardBottom = upper + rows * cell;
     for (let row = 0; row < rows; row++) for (let col = 0; col < size; col++) {
       const filled = top ? projection[row * size + col] > 0 : projection[col] >= rows - row;
@@ -336,9 +396,9 @@
   }
 
   function startActivity(mode, questions = activities.questions(mode), index = 0, keepHash = false, race = null) {
+    turns.clear();
     clearCelebration();
     dialog.close();
-    closePanel();
     stopTargetRotation();
     if (!keepHash && location.hash) history.replaceState(null, '', location.pathname + location.search);
     if (mode === 'free') { model = freeModel; challenge = null; }
@@ -362,7 +422,6 @@
 
   function openActivities() {
     clearCelebration();
-    closePanel();
     library.refresh();
     document.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === (challenge?.mode || 'free'))));
     dialog.showModal();
@@ -374,6 +433,7 @@
   document.querySelectorAll('[data-target-view]').forEach(button => button.addEventListener('click', () => {
     if (!challenge) return;
     stopTargetRotation();
+    beginTurn(targetScene, challenge.target, challenge.view, button.dataset.targetView);
     challenge.view = button.dataset.targetView;
     updatePractice(); schedule(); sound('view');
   }));
@@ -450,13 +510,13 @@
     updatePractice();
   });
 
-  function closePanel(returnFocus = false) {
-    panel.hidden = true;
-    viewButton.setAttribute('aria-expanded', 'false');
-    if (returnFocus) viewButton.focus();
-  }
-
-  function setView(next) {
+  function setView(next, animate = false, reset = false) {
+    if (animate) beginTurn(scene, model, view, next, reset);
+    else turns.delete(scene);
+    if (reset) {
+      if (challenge?.mode === 'copy' && challenge.view === 'solid') beginTurn(targetScene, challenge.target, 'solid', 'solid', true);
+      yaw = DEFAULT_YAW; pitch = DEFAULT_PITCH; zoom = 1;
+    }
     view = next;
     hovered = null;
     keyboardCell = null;
@@ -465,8 +525,6 @@
     scene.classList.remove('is-dragging');
     scene.classList.toggle('is-observing', view !== 'solid');
     const names = { solid: '입체', top: '위에서 본 모습', front: '앞에서 본 모습', right: '오른쪽에서 본 모습' };
-    $('view-label').textContent = names[view];
-    $('view-label').hidden = view === 'solid';
     scene.setAttribute('aria-label', view === 'solid' ? '쌓기판' : names[view]);
     scene.setAttribute('aria-describedby', view === 'solid' ? 'hint keyboard-help' : 'hint');
     $('tools').hidden = view !== 'solid';
@@ -475,19 +533,8 @@
     update();
   }
 
-  viewButton.addEventListener('click', () => {
-    panel.hidden = !panel.hidden;
-    viewButton.setAttribute('aria-expanded', String(!panel.hidden));
-    sound('view');
-    hovered = null;
-    schedule();
-  });
-  document.addEventListener('pointerdown', event => {
-    if (!panel.hidden && !panel.contains(event.target) && !viewButton.contains(event.target)) closePanel();
-  });
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => {
-    setView(button.dataset.view);
-    closePanel(true);
+    setView(button.dataset.view, true);
     sound('view');
   }));
   document.querySelectorAll('[data-tool]').forEach(button => button.addEventListener('click', () => {
@@ -496,65 +543,33 @@
     update();
     sound('tap');
   }));
-  $('return-solid').addEventListener('click', () => { setView('solid'); scene.focus(); sound('view'); });
+  $('return-solid').addEventListener('click', () => { setView('solid', true); scene.focus(); sound('view'); });
   $('board-size').addEventListener('change', event => {
     const rules = Number(event.target.value) === WIDE.size ? WIDE : BASIC;
     event.target.value = String(model.rules.size);
     const resized = resizeBoard(model.snapshot(), rules);
-    if (!resized) { closePanel(true); feedback('현재 모양이 이 판에 들어가지 않아요.'); return; }
-    if (shared) { shared.action('board-size', { size: rules.size }); closePanel(true); return; }
-    model.replace(resized); setView('solid'); closePanel(true);
+    if (!resized) { feedback('현재 모양이 이 판에 들어가지 않아요.'); return; }
+    if (shared) { shared.action('board-size', { size: rules.size }); return; }
+    model.replace(resized); setView('solid');
   });
   $('show-total').addEventListener('change', event => { $('total').hidden = !event.target.checked; });
   $('show-heights').addEventListener('change', event => {
-    if (event.target.checked) setView('top');
+    if (event.target.checked) setView('top', true);
     schedule();
   });
   $('reset-camera').addEventListener('click', () => {
-    yaw = DEFAULT_YAW; pitch = DEFAULT_PITCH; zoom = 1;
-    setView('solid'); closePanel(true);
+    setView('solid', true, true);
     sound('view');
   });
   $('clear-board').addEventListener('click', () => {
-    if (shared) { if (shared.canBuild) shared.action('clear'); closePanel(true); return; }
+    if (shared) { if (shared.canBuild) shared.action('clear'); return; }
     model.clear(); hovered = null; keyboardCell = null;
     resetAnswer();
-    setView('solid'); closePanel(true);
+    setView('solid');
     sound('clear');
     feedback('쌓기판을 비웠어요 · 되돌리기로 복원할 수 있어요');
   });
   $('undo').addEventListener('click', undo);
-  function updateSoundControls() {
-    const enabled = !window.StackingSounds.muted();
-    const audible = enabled && window.StackingSounds.volume() > 0;
-    $('sound-enabled').checked = enabled;
-    $('sound-volume').disabled = !enabled;
-    $('sound-toggle').setAttribute('aria-pressed', String(audible));
-    const label = audible ? '효과음 끄기' : '효과음 켜기';
-    $('sound-toggle').setAttribute('aria-label', label);
-    $('sound-toggle').title = label;
-  }
-  updateSoundControls();
-  $('sound-volume').value = Math.round(window.StackingSounds.volume() * 100);
-  $('sound-toggle').addEventListener('click', () => {
-    const enable = $('sound-toggle').getAttribute('aria-pressed') !== 'true';
-    window.StackingSounds.setMuted(!enable);
-    if (enable && window.StackingSounds.volume() === 0) window.StackingSounds.setVolume(.65);
-    $('sound-volume').value = Math.round(window.StackingSounds.volume() * 100);
-    updateSoundControls();
-    if (enable) sound('found');
-  });
-  $('sound-enabled').addEventListener('change', event => {
-    window.StackingSounds.setMuted(!event.target.checked);
-    updateSoundControls();
-    if (event.target.checked) sound('add', 2);
-  });
-  $('sound-volume').addEventListener('input', event => {
-    window.StackingSounds.setVolume(Number(event.target.value) / 100);
-    updateSoundControls();
-  });
-  $('sound-volume').addEventListener('change', () => sound('add', 2));
-
   function cellFromTarget(target) {
     const element = target.closest?.('[data-cell]');
     if (!element) return null;
@@ -574,7 +589,7 @@
     targetScene.classList.remove('is-dragging');
   }
   targetScene.addEventListener('pointerdown', event => {
-    if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || event.button !== 0 || targetGesture || pointers.size) return;
+    if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || turns.has(targetScene) || event.button !== 0 || targetGesture || pointers.size) return;
     event.preventDefault();
     targetScene.focus({ preventScroll: true });
     targetGesture = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, yaw, pitch, moved: false };
@@ -597,7 +612,7 @@
     if (moved && name === 'pointerup') sound('view');
   });
   targetScene.addEventListener('keydown', event => {
-    if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (challenge?.mode !== 'copy' || challenge.view !== 'solid' || turns.has(targetScene) || event.ctrlKey || event.metaKey || event.altKey) return;
     const turns = { ArrowLeft: [Math.PI / 8, 0], ArrowRight: [-Math.PI / 8, 0], ArrowUp: [0, -.12], ArrowDown: [0, .12] };
     if (!turns[event.key] && event.key !== 'Home') return;
     event.preventDefault(); stopTargetRotation();
@@ -607,7 +622,7 @@
   });
 
   scene.addEventListener('pointerdown', event => {
-    if (view !== 'solid' || event.button !== 0 || targetGesture) return;
+    if (view !== 'solid' || turns.has(scene) || event.button !== 0 || targetGesture) return;
     event.preventDefault();
     scene.focus({ preventScroll: true });
     keyboardCell = null;
@@ -662,7 +677,7 @@
   scene.addEventListener('lostpointercapture', event => endPointer(event, true));
   scene.addEventListener('pointerleave', () => { if (!pointers.size) { hovered = null; schedule(); } });
   scene.addEventListener('wheel', event => {
-    if (view !== 'solid' || event.ctrlKey || event.metaKey) return;
+    if (view !== 'solid' || turns.has(scene) || event.ctrlKey || event.metaKey) return;
     event.preventDefault();
     zoom = clamp(zoom * Math.exp(-event.deltaY * .001), .65, 1.65);
     hovered = null; schedule();
@@ -688,7 +703,6 @@
   scene.addEventListener('blur', () => { keyboardCell = null; schedule(); });
   document.addEventListener('keydown', event => {
     if (dialog.open) return;
-    if (event.key === 'Escape' && !panel.hidden) { closePanel(true); event.preventDefault(); }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z' && !event.shiftKey) {
       if (event.target.matches('input:not([type="checkbox"]), textarea, [contenteditable="true"]')) return;
       event.preventDefault(); undo();
@@ -696,7 +710,6 @@
   });
   window.addEventListener('sitebackrequest', event => {
     if (dialog.open) { event.preventDefault(); dialog.close(); }
-    else if (!panel.hidden) { event.preventDefault(); closePanel(true); }
     else if (challenge && !challenge.race) { event.preventDefault(); startActivity('free'); }
   });
   // race.js drives the board from the room state; answers are judged by the server.
@@ -719,6 +732,7 @@
       shared = next;
       model.replace(next.heights);
       if (changed) { yaw = DEFAULT_YAW; pitch = DEFAULT_PITCH; zoom = 1; setView('solid'); }
+      else if (!next.canBuild && next.phase === 'drawing' && view !== 'solid') setView('solid', true);
       update();
     }
   };

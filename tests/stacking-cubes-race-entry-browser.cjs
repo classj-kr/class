@@ -140,10 +140,10 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await capture(teacher, 'teacher-tower-race');
     const stageLayout = await teacher.locator('.race-card').evaluate(node => ({ height: node.clientHeight, content: node.scrollHeight, columns: getComputedStyle(document.getElementById('race-ranks')).gridTemplateColumns, ranks: document.getElementById('race-ranks').clientHeight, row: document.querySelector('.race-tower-card').clientHeight }));
     assert.ok(stageLayout.content <= stageLayout.height + 1, '24 students and teacher controls fit the desktop scoreboard: ' + JSON.stringify(stageLayout));
-    await teacher.locator('#race-show-sound').click(); assert.equal(await teacher.evaluate(() => StackingSounds.muted()), true);
+    await teacher.locator('.unified-audio-menu-toggle').click(); await teacher.locator('#sfxMuteBtn').click(); assert.equal(await teacher.evaluate(() => StackingSounds.muted()), true);
     await teacher.reload(); await teacher.locator('.race-tower-card.is-complete').waitFor();
     assert.equal(await teacher.locator('.tower-drop,.race-spark').count(), 0, 'reloading does not replay old finish or progress effects');
-    assert.equal(await teacher.locator('#race-show-sound').getAttribute('aria-pressed'), 'false');
+    assert.equal(await teacher.locator('#sfxMuteBtn').getAttribute('aria-pressed'), 'true');
     await teacher.emulateMedia({ reducedMotion: 'reduce' });
     await answer(roster[0], 1);
     await teacher.waitForFunction(id => document.querySelector(`[data-player="${id}"] [aria-valuenow="2"]`), roster[0].state.me.id);
