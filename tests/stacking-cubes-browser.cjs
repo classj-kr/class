@@ -293,7 +293,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
 
       const target = activities.questions('many')[0];
       const alternative = target.map(h => h === 1 ? 2 : h);
-      await page.evaluate(hash => { location.hash = hash; }, activities.encode(target, 'views'));
+      await page.evaluate(hash => { location.hash = hash; }, `#cubes1/views/${target.join('')}`);
       await page.waitForFunction(() => document.getElementById('challenge-title').textContent === '그림 보고 쌓기 · 1/1');
       await total(0);
       await page.waitForFunction(() => document.querySelectorAll('#target-scene .view-caption').length === 3);
@@ -357,36 +357,20 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       for (const kind of ['add', 'retry', 'success', 'found', 'undo', 'clear', 'view']) assert.ok(played.includes(kind), `wired sound: ${kind}`);
 
       await activate(page.locator('#activity-button'));
-      await activate(page.locator('#keep-options summary'));
-      await page.locator('#shape-name').fill('<b>내 성</b>');
-      await activate(page.locator('#save-shape'));
+      assert.equal(await page.locator('#saved-section').isVisible(), false);
+      assert.equal(await page.locator('#activity-dialog').getByText(/저장·공유|기기에 저장|링크 복사|파일로 저장|파일 열기/).count(), 0);
+      await page.evaluate(() => localStorage.setItem('classj.stacking-cubes.saved.v1', JSON.stringify([
+        { id: 'legacy', title: '<b>내 성</b>', heights: [2,1,2,1,1,1,1,1,1] }
+      ])));
+      await activate(page.locator('#close-activities'));
+      await activate(page.locator('#activity-button'));
+      await activate(page.locator('#saved-section summary'));
       assert.equal(await page.locator('.saved-open span').textContent(), '<b>내 성</b>');
       assert.equal(await page.locator('.saved-open b').count(), 0, 'saved labels are text, not HTML');
       await activate(page.locator('.saved-delete'));
       assert.equal(await page.locator('.saved-open').count(), 0);
       await activate(page.locator('#undo-saved-delete'));
       assert.equal(await page.locator('.saved-open').count(), 1);
-      await snap('library');
-
-      const downloaded = page.waitForEvent('download');
-      await activate(page.locator('#export-shape'));
-      const download = await downloaded;
-      const chunks = []; for await (const chunk of await download.createReadStream()) chunks.push(chunk);
-      const exported = activities.parseFile(Buffer.concat(chunks).toString());
-      assert.equal(exported.reduce((sum, h) => sum + h, 0), 11);
-      await page.locator('#shape-file').setInputFiles({ name: 'invalid.json', mimeType: 'application/json', buffer: Buffer.from('{}') });
-      await page.waitForFunction(() => document.getElementById('library-status').textContent.includes('올바른'));
-      await total(11);
-      await page.locator('#shape-file').setInputFiles({ name: 'shape.json', mimeType: 'application/json', buffer: Buffer.from(activities.file(activities.questions('copy')[0])) });
-      await total(4);
-      await activate(page.locator('#undo'));
-      await total(11);
-
-      await activate(page.locator('#activity-button'));
-      await page.locator('#share-mode').selectOption('views');
-      await activate(page.locator('#share-shape'));
-      const shared = await page.locator('#share-link').inputValue();
-      assert.deepEqual(activities.decode(new URL(shared).hash), { mode: 'views', heights: exported });
       await activate(page.locator('#close-activities'));
       const audioMenu = page.locator('.unified-audio-menu-toggle'), mute = page.locator('#sfxMuteBtn'), volume = page.locator('#sfxVolumeSlider');
       await activate(audioMenu); await activate(mute);
@@ -400,6 +384,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(mute); assert.equal(await volume.inputValue(), '0.35', 'the site restores the previous volume');
       await activate(audioMenu);
       await activate(page.locator('#activity-button'));
+      await activate(page.locator('#saved-section summary'));
       await activate(page.locator('.saved-open'));
       await total(11);
 

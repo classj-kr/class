@@ -3,8 +3,7 @@
   const KEY = 'classj.stacking-cubes.saved.v1';
   const LIMIT = 12;
   const { validBoard, rulesForBoard } = window.StackingCubes;
-  const activities = window.StackingActivities;
-  window.StackingLibrary = ({ snapshot, load, sound }) => {
+  window.StackingLibrary = ({ load, sound }) => {
     const $ = id => document.getElementById(id);
     let saved = [], deleted = null;
     const status = message => { $('library-status').textContent = message; };
@@ -19,7 +18,7 @@
     }
     function persist(next) {
       try { localStorage.setItem(KEY, JSON.stringify(next)); saved = next; return true; }
-      catch (_) { status('이 기기에 저장할 수 없어요. 파일로 저장해 주세요.'); return false; }
+      catch (_) { status('이 기기에서 목록을 바꿀 수 없어요.'); return false; }
     }
     function render() {
       const list = $('saved-list');
@@ -45,53 +44,12 @@
       });
       $('undo-saved-delete').hidden = !deleted;
     }
-    function current() {
-      const heights = snapshot();
-      if (!heights.some(Boolean)) { status('먼저 블록을 쌓아 주세요.'); return null; }
-      return heights;
-    }
-    $('save-form').addEventListener('submit', event => {
-      event.preventDefault();
-      const heights = current(); if (!heights) return;
-      const latest = read(); if (!latest) return;
-      saved = latest;
-      if (saved.length >= LIMIT) { status(`최대 ${LIMIT}개까지 저장할 수 있어요.`); return; }
-      const title = $('shape-name').value.trim().slice(0, 32) || `내 모양 ${saved.length + 1}`;
-      const item = { id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`, title, heights };
-      if (!persist([...saved, item])) return;
-      deleted = null; render(); $('shape-name').value = ''; status('저장했어요.'); sound('save');
-    });
     $('undo-saved-delete').addEventListener('click', () => {
       if (!deleted || !persist(deleted)) return;
       deleted = null; render(); status('삭제한 모양을 되돌렸어요.'); sound('undo');
     });
-    $('share-shape').addEventListener('click', async () => {
-      const heights = current(); if (!heights) return;
-      const url = new URL(location.href); url.hash = activities.encode(heights, $('share-mode').value);
-      const input = $('share-link'); input.hidden = false; input.value = url.href;
-      try { await navigator.clipboard.writeText(url.href); status('링크를 복사했어요.'); sound('save'); }
-      catch (_) { input.focus(); input.select(); status('선택한 링크를 복사해 주세요.'); }
-    });
-    $('export-shape').addEventListener('click', () => {
-      const heights = current(); if (!heights) return;
-      const url = URL.createObjectURL(new Blob([activities.file(heights)], { type: 'application/json' }));
-      const link = document.createElement('a'); link.href = url; link.download = '쌓기나무.json';
-      document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-      status('파일 다운로드를 시작했어요.'); sound('save');
-    });
-    $('import-shape').addEventListener('click', () => $('shape-file').click());
-    $('shape-file').addEventListener('change', async event => {
-      const file = event.target.files?.[0]; event.target.value = '';
-      if (!file) return;
-      if (file.size > 16384) { status('쌓기나무에서 저장한 작은 모양 파일을 선택해 주세요.'); return; }
-      try {
-        const heights = activities.parseFile(await file.text());
-        if (!heights) { status('올바른 쌓기나무 모양 파일이 아니에요.'); return; }
-        load(heights);
-      } catch (_) { status('파일을 읽지 못했어요. 다시 선택해 주세요.'); }
-    });
     return { refresh() {
-      status(''); saved = read(); render(); $('share-link').hidden = true;
+      status(''); saved = read(); render();
     } };
   };
 })();
