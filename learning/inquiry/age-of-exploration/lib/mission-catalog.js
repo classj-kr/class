@@ -11,6 +11,7 @@ function loadJson(filename) {
 
 const ORIGINAL_CITIES = Object.freeze(loadJson('original-cities.json'));
 const REGIONAL_SITES = loadJson('regional-sites.json');
+const TEXTBOOK_SITES = loadJson('textbook-sites.json');
 // isOriginalCity is the legacy switch for visitable settlement UI and entry rules.
 // Keep supplementary historical sites separate from the original game's city data.
 const ADDITIONAL_SETTLEMENTS = Object.freeze(REGIONAL_SITES.settlements.map(site => ({
@@ -27,8 +28,8 @@ const PLACES = Object.freeze([...ORIGINAL_CITIES.filter((city) => !city.retired)
 const ITEMS = Object.freeze(loadJson('items.json'));
 const TEMPLATES = Object.freeze(loadJson('templates.json'));
 const READY_MISSIONS = Object.freeze(loadJson('ready-missions.json'));
-const DISCOVERIES = Object.freeze([...loadJson('discoveries.json'), ...REGIONAL_SITES.discoveries].map(DiscoveryLearning.decorate));
-const CITY_LANDMARKS = Object.freeze(loadJson('city-landmarks.json').map(DiscoveryLearning.decorate));
+const DISCOVERIES = Object.freeze([...loadJson('discoveries.json'), ...REGIONAL_SITES.discoveries, ...TEXTBOOK_SITES.discoveries].map(DiscoveryLearning.decorate));
+const CITY_LANDMARKS = Object.freeze([...loadJson('city-landmarks.json'), ...TEXTBOOK_SITES.cityLandmarks].map(DiscoveryLearning.decorate));
 const SEA_ANIMALS = Object.freeze(loadJson('sea-animals.json'));
 
 function latLonToCell(lat, lon) {

@@ -2,6 +2,7 @@
 // [question, answer, three alternatives, supporting excerpt from the place reading]
 // These readings need questions about relationships or distinct facts in one sentence.
 module.exports = {
+  ...require('../data/catalog/textbook-sites.json').questions,
   'batur-caldera': [
     ['칼데라 분지는 어떤 과정으로 생겼나요?','화산 분화 뒤 땅이 내려앉아서',['강물이 운반한 흙이 쌓여서','파도가 해안을 깎아서','바람이 모래를 쌓아서'],'화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.'],
     ['바투르의 큰 칼데라 안에는 무엇이 겹쳐 있나요?','작은 칼데라',['모래 사구','빙하 계곡','강의 삼각주'],'바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.'],

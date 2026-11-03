@@ -101,8 +101,8 @@ async function capture(page,name){
   await student.locator('#placeStudySubmit').filter({hasText:'계속 탐험하기'}).click();
   await student.waitForFunction(()=>missionProgress?.status==='completed');
   const after=await student.evaluate(()=>({ids:serverSelf.discoveryIds,count:serverSelf.discoveryFound,total:serverSelf.discoveryTotal}));
-  assert.equal(after.count,1);assert.equal(after.total,259);assert.ok(after.ids.includes('lm-versailles-later'),'later learning remains in the record');
+  assert.equal(after.count,1);assert.equal(after.total,271);assert.ok(after.ids.includes('lm-versailles-later'),'later learning remains in the record');
   await teacher.waitForFunction(()=>document.querySelector('#rankList').textContent.includes('검증학생'));
   assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({ok:true,recommended:133,filters:true,mobile:true,aliases:true,twoAccessRoutes:true,laterLearning:true,recordsPreserved:true}));
+  console.log(JSON.stringify({ok:true,recommended:151,filters:true,mobile:true,aliases:true,twoAccessRoutes:true,laterLearning:true,recordsPreserved:true}));
 }finally{await browser?.close();server.kill();}})().catch(e=>{console.error(e);if(logs)console.error(logs.slice(-2000));process.exitCode=1;});

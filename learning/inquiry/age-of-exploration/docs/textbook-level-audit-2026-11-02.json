@@ -1,0 +1,810 @@
+{
+  "checkedAt": "2026-11-02",
+  "snapshotStage": "before-implementation",
+  "applicationCatalogChanged": false,
+  "scope": {
+    "catalogRows": 346,
+    "uniqueDiscoveries": 344,
+    "textbookPageSearch": 5849,
+    "primaryBodies": "2022 초6 사회 10책, 중학 사회 6책·역사① 3책",
+    "secondary": "2015 교과서와 사회·역사 부도는 보조 근거로 별도 검색",
+    "limitation": "초6 비상·지학사·YBM 등 미수집 본문이 있어 전 출판사 완전 대조는 아님"
+  },
+  "filterMechanism": {
+    "file": "learning/inquiry/age-of-exploration/lib/discovery-learning.js",
+    "detail": "장소별 levels 없이 topic.levels를 모든 장소가 상속함",
+    "defaultFilterFile": "learning/inquiry/age-of-exploration/public/js/study-catalog.js",
+    "counts": {
+      "elementaryAll": 126,
+      "elementaryRecommended": 62,
+      "middleAll": 343,
+      "middleRecommended": 133,
+      "highOnly": 1
+    },
+    "highOnly": "황산. 확보한 초·중 본문에서 우선 추가할 근거는 이번 대조로 확인되지 않음",
+    "cities": "도시 229곳은 learning=null이라 초·중·고 학교급 필터에서 모두 제외됨. 도시 자체의 데이터 삭제·미수록을 뜻하지 않음"
+  },
+  "verifiedElementaryLevelOmissions": [
+    {
+      "id": "great-wall-badaling",
+      "name": "만리장성 바다링 구간",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "디지털 지도 활동에 만리장성이 직접 제시됨. 바다링 구간 자체가 초등 필수라는 뜻은 아님.",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      }
+    },
+    {
+      "id": "giza-pyramids",
+      "name": "기자 피라미드와 스핑크스",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "디지털 지도 활동에서 기자 스핑크스를 찾아 나라·위경도를 확인함.",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      }
+    },
+    {
+      "id": "taj-mahal-later",
+      "name": "타지마할이 설 자리",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "later",
+      "recommended": false,
+      "addLevel": "초등",
+      "note": "디지털 지도 활동의 대표 장소. 초등 연계와 후대 문화 구분을 함께 유지할 필요가 있음.",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      }
+    },
+    {
+      "id": "lm-rome-colosseum",
+      "name": "콜로세움",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "디지털 지도 활동의 대표 장소로 콜로세움이 직접 제시됨.",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      }
+    },
+    {
+      "id": "machu-picchu",
+      "name": "마추픽추",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "디지털 지도 활동의 대표 장소로 마추픽추가 직접 제시됨.",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      }
+    },
+    {
+      "id": "uluru",
+      "name": "울루루",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "평지에 솟은 거대한 암석 지형의 사진·설명이 있음. 현재 문화 주제 때문에 초등에서 빠짐.",
+      "evidence": {
+        "book": "사회 6-2 (한춘희)_2022",
+        "publisher": "아이스크림",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 13,
+        "path": "references/textbooks/초등/아이스크림/사회/사회 6-2 (한춘희)_2022/사회 6-2 교과서.pdf"
+      }
+    },
+    {
+      "id": "yellow-river",
+      "name": "황허",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "황허강의 지형 경관 사진·설명이 있음. 문명 학습 이외의 초등 지형 연계가 필요함.",
+      "evidence": {
+        "book": "사회 6-2 (한춘희)_2022",
+        "publisher": "아이스크림",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 13,
+        "path": "references/textbooks/초등/아이스크림/사회/사회 6-2 (한춘희)_2022/사회 6-2 교과서.pdf"
+      }
+    },
+    {
+      "id": "panama_isthmus",
+      "name": "파나마 지협",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "북아메리카와 남아메리카를 연결하는 지협을 본문에서 설명함.",
+      "evidence": {
+        "book": "사회 6-1 (한춘희)_2022",
+        "publisher": "아이스크림",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 140,
+        "path": "references/textbooks/초등/아이스크림/사회/사회 6-1 (한춘희)_2022/사회 6-1 교과서.pdf"
+      }
+    },
+    {
+      "id": "rhine-river",
+      "name": "라인강",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "하천 지역의 생활 본문에서 세계의 주요 하천으로 제시함.",
+      "evidence": {
+        "book": "사회 6-2 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 18,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-2 (전종한)_2022/교과서_6-2__ae83daec.pdf"
+      }
+    },
+    {
+      "id": "bosporus",
+      "name": "보스포루스 해협",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "아시아와 유럽에 걸친 튀르키예의 위치를 설명하는 본문 사례임.",
+      "evidence": {
+        "book": "사회 6-1 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 136,
+        "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+      }
+    },
+    {
+      "id": "strait-of-dover",
+      "name": "도버 해협",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "recommended": false,
+      "addLevel": "초등",
+      "note": "자연환경이 국경을 이루는 사례로 해협을 직접 설명함.",
+      "evidence": {
+        "book": "사회(박기범)_6-1_2022",
+        "publisher": "천재",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 145,
+        "path": "references/textbooks/초등/천재/사회/사회(박기범)_6-1_2022/사회(박기범)_6-1_2022.pdf"
+      }
+    },
+    {
+      "id": "cape_good_hope",
+      "name": "희망봉",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "core",
+      "recommended": true,
+      "addLevel": "초등",
+      "note": "세계 여러 나라를 살펴보는 아프리카 자료에 희망봉이 제시됨.",
+      "evidence": {
+        "book": "사회(김정인)_6-1_2022",
+        "publisher": "천재",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 38,
+        "path": "references/textbooks/초등/천재/사회/사회(김정인)_6-1_2022/3단원_교과서__39f3625b.pdf"
+      }
+    },
+    {
+      "id": "teotihuacan",
+      "name": "테오티우아칸",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "recommended": false,
+      "addLevel": "초등",
+      "note": "북아메리카의 국가를 살펴보는 자료에 사진 명소로 제시됨.",
+      "evidence": {
+        "book": "사회 6-1 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 139,
+        "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+      }
+    },
+    {
+      "id": "lm-saint-basil-later",
+      "name": "성 바실리 대성당이 설 자리",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "later",
+      "recommended": false,
+      "addLevel": "초등",
+      "note": "러시아를 살펴보는 자료에 제시됨. 후대 문화 구분은 유지해야 함.",
+      "evidence": {
+        "book": "사회 6-1 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 137,
+        "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+      }
+    },
+    {
+      "id": "lm-blue-mosque-later",
+      "name": "블루 모스크가 설 자리",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "later",
+      "recommended": false,
+      "addLevel": "초등",
+      "note": "이스탄불을 살펴보는 자료에 술탄 아흐메트 모스크가 제시됨. 후대 문화 구분은 유지해야 함.",
+      "evidence": {
+        "book": "사회 6-1 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 136,
+        "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+      }
+    },
+    {
+      "id": "lm-versailles-later",
+      "name": "베르사유 궁전이 설 자리",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "later",
+      "recommended": false,
+      "addLevel": "초등",
+      "note": "국가기관의 권력 분립을 설명하면서 루이 14세와 베르사유 궁전을 제시함. 후대 문화 구분은 유지해야 함.",
+      "evidence": {
+        "book": "사회 6-1 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 88,
+        "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+      }
+    }
+  ],
+  "newDiscoveryCandidates": [
+    {
+      "name": "우르의 지구라트",
+      "proposedLevels": "중학",
+      "note": "수메르 도시 국가·신권 정치의 구체적 유적 사례",
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 9,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_2. 문명의 발생과 고대 세계의 형성(PDF).pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "모헨조다로",
+      "proposedLevels": "중학",
+      "note": "인더스 문명의 계획도시·배수시설 사례",
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 11,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_2. 문명의 발생과 고대 세계의 형성(PDF).pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "하라파",
+      "proposedLevels": "중학",
+      "note": "인더스 문명의 도시 유적 사례; 모헨조다로와 묶어서 검토",
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 11,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_2. 문명의 발생과 고대 세계의 형성(PDF).pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "호류사",
+      "proposedLevels": "중학",
+      "note": "아스카 문화·백제 장인·동아시아 문화 교류 사례",
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 9,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "도다이사",
+      "proposedLevels": "중학",
+      "note": "불교 문화가 동아시아에 전파된 모습을 비교하는 사례",
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 8,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "사헬 지대",
+      "proposedLevels": "중학",
+      "note": "사막화와 복구·지속가능한 발전의 지역 사례",
+      "evidence": {
+        "book": "사회 ① (설규주)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 11,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_4. 아프리카.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "세렝게티",
+      "proposedLevels": "초·중",
+      "note": "사바나 생태·야생 동식물·관광의 지역 사례; 초6 천재 자료에도 수록",
+      "evidence": {
+        "book": "사회 ① (손영찬)",
+        "publisher": "미래엔",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 73,
+        "path": "references/textbooks/중고등/미래엔/중학/사회/사회1_2_손영찬_2022_교과서/미래엔_사회1_교과서_2022.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "대찬정 분지",
+      "proposedLevels": "중학",
+      "note": "오스트레일리아의 주요 지형과 자연환경 비교 사례",
+      "evidence": {
+        "book": "사회 ① (설규주)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 4,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_6. 오세아니아와 극지방.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "그레이트디바이딩산맥",
+      "proposedLevels": "초·중",
+      "note": "오스트레일리아의 동부 산맥·중부 분지를 비교하는 지형 사례",
+      "evidence": {
+        "book": "사회 ① (설규주)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 4,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_6. 오세아니아와 극지방.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "바덴해 갯벌",
+      "proposedLevels": "초·중",
+      "note": "갯벌 해안과 생물의 서식 환경 사례",
+      "evidence": {
+        "book": "사회 6-2 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 23,
+        "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "포트캠벨 국립공원",
+      "proposedLevels": "초·중",
+      "note": "해안 암석 기둥과 해안 경관 사례",
+      "evidence": {
+        "book": "사회 6-2 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 23,
+        "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "코파카바나 해변",
+      "proposedLevels": "초·중",
+      "note": "모래 해안의 지형과 생활·관광을 비교하는 사례",
+      "evidence": {
+        "book": "사회 6-2 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 23,
+        "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "그리니치 천문대",
+      "proposedLevels": "초·중 / 후대",
+      "note": "본초 자오선·경도 학습의 장소. 1520년 현장과 후대 자료를 구분해 구성",
+      "evidence": {
+        "book": "사회 6-1 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 122,
+        "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "에펠탑",
+      "proposedLevels": "초·중 / 후대",
+      "note": "디지털 지도 활동에 직접 등장하는 대표 장소",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "자유의 여신상",
+      "proposedLevels": "초·중 / 후대",
+      "note": "디지털 지도 활동에 직접 등장하는 대표 장소",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      },
+      "existingDescriptionMatches": []
+    },
+    {
+      "name": "시드니 오페라 하우스",
+      "proposedLevels": "초·중 / 후대",
+      "note": "디지털 지도 활동에 직접 등장하는 대표 장소",
+      "evidence": {
+        "book": "사회 6-1 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 128,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+      },
+      "existingDescriptionMatches": []
+    }
+  ],
+  "presentButOutsideDefaultRecommendation": [
+    {
+      "id": "yungang-grottoes",
+      "name": "윈강 석굴",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 4,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+      }
+    },
+    {
+      "id": "longmen-grottoes",
+      "name": "룽먼 석굴",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 8,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+      }
+    },
+    {
+      "id": "ajanta-caves",
+      "name": "아잔타 석굴",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 16,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+      }
+    },
+    {
+      "id": "lm-notre-dame",
+      "name": "노트르담 대성당",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "사회 ① (설규주)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 8,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_3. 유럽.pdf"
+      }
+    },
+    {
+      "id": "lm-qutb-minar",
+      "name": "쿠트브 미나르",
+      "currentLevels": [
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "역사 ① (홍성구)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 24,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+      }
+    },
+    {
+      "id": "pamukkale",
+      "name": "파묵칼레",
+      "currentLevels": [
+        "초등",
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "사회 6-2 (전종한)_2022",
+        "publisher": "미래엔",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 14,
+        "path": "references/textbooks/초등/미래엔/사회/사회 6-2 (전종한)_2022/교과서_6-2__ae83daec.pdf"
+      }
+    },
+    {
+      "id": "salar-de-uyuni",
+      "name": "우유니 소금 사막",
+      "currentLevels": [
+        "초등",
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "사회 ① (설규주)",
+        "publisher": "동아",
+        "level": "middle",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 7,
+        "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_5. 아메리카.pdf"
+      }
+    },
+    {
+      "id": "victoria-falls",
+      "name": "빅토리아 폭포",
+      "currentLevels": [
+        "초등",
+        "중학",
+        "고등"
+      ],
+      "tier": "support",
+      "countedOnMap": true,
+      "evidence": {
+        "book": "사회 6-2 (박영석)_2022",
+        "publisher": "동아",
+        "level": "elementary",
+        "revision": "2022",
+        "atlas": false,
+        "referencePage": false,
+        "pdfPage": 2,
+        "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+      }
+    }
+  ],
+  "implementationAdvice": [
+    "주제 전체를 초등으로 넓히지 말고, 해당 장소에만 학교급과 학습 목표를 별도로 지정한다.",
+    "초등은 위치·지형·생활, 중학은 역사·문화 교류 등 같은 장소의 학습 목표를 구분한다.",
+    "후대 문화의 시대 구분과 기존 발견·완료 기록의 ID를 유지한다.",
+    "본문 대표 사례를 우선하고, 지도에만 쓰인 지명·색인·출처만으로 필수 발견물로 정하지 않는다."
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "appliedAt": "2026-11-02",
+  "applicationCatalogChanged": true,
+  "before": {
+    "rows": 346,
+    "unique": 344,
+    "counted": 259,
+    "recommended": 133,
+    "later": 5
+  },
+  "after": {
+    "rows": 362,
+    "unique": 360,
+    "counted": 271,
+    "recommended": 151,
+    "later": 9,
+    "levels": {
+      "elementary": {
+        "all": 151,
+        "recommended": 80
+      },
+      "middle": {
+        "all": 359,
+        "recommended": 151
+      },
+      "high": {
+        "all": 348,
+        "recommended": 143
+      }
+    }
+  },
+  "elementaryOverrides": [
+    "great-wall-badaling",
+    "giza-pyramids",
+    "taj-mahal-later",
+    "lm-rome-colosseum",
+    "machu-picchu",
+    "uluru",
+    "yellow-river",
+    "panama_isthmus",
+    "rhine-river",
+    "bosporus",
+    "strait-of-dover",
+    "cape_good_hope",
+    "teotihuacan",
+    "lm-saint-basil-later",
+    "lm-blue-mosque-later",
+    "lm-versailles-later"
+  ],
+  "newSiteIds": [
+    "ur-ziggurat",
+    "mohenjo-daro",
+    "harappa",
+    "horyuji",
+    "todaiji",
+    "sahel",
+    "serengeti",
+    "great-artesian-basin",
+    "great-dividing-range",
+    "wadden-sea",
+    "port-campbell-coast",
+    "copacabana-beach",
+    "statue-liberty-later",
+    "sydney-opera-house-later",
+    "greenwich-observatory-later",
+    "eiffel-tower-later"
+  ],
+  "promotedExistingIds": [
+    "yungang-grottoes",
+    "longmen-grottoes",
+    "ajanta-caves",
+    "pamukkale",
+    "salar-de-uyuni",
+    "victoria-falls"
+  ],
+  "rewrittenExistingDescriptions": [
+    "longmen-grottoes",
+    "ajanta-caves",
+    "pamukkale",
+    "victoria-falls"
+  ],
+  "reviewedQuestions": {
+    "newSites": 48,
+    "promotedExistingSites": 18
+  },
+  "preserved": [
+    "existing IDs and raw discovery records",
+    "completed places and finish ranks",
+    "earned answer streaks",
+    "issued questions for metadata-only updates"
+  ],
+  "checks": {
+    "syntaxCatalogHtml": "passed",
+    "placeStudySuite": "passed",
+    "newSiteUnitAndSocketSmoke": "passed: all 16 sites and 48 answers",
+    "serverRestartMigration": "passed: legacy alias, metadata-only, revised questions",
+    "allUnits": {
+      "passed": 65,
+      "total": 71,
+      "preExistingFailures": [
+        "teacher-map-completed-hidden-unit.js",
+        "teacher-map-privacy-unit.js",
+        "v55-host-rooms-unit.js",
+        "v68-final-quiz-unit.js",
+        "v70-final-quiz-unit.js",
+        "v78-discovery-unit.js"
+      ]
+    },
+    "browserUi": "not run: local browser use is disabled in Work settings; no bypass"
+  },
+  "limitation": "초6 비상·지학사·YBM 등 미수집 본문이 있어 전 출판사 완전 대조는 아님"
+}

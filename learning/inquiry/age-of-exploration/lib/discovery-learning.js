@@ -6,10 +6,12 @@ function canonicalId(id){return data.entries[id]?.canonicalId||id;}
 function canonicalKey(key){const [type,id,...extra]=String(key).split(':');return !extra.length&&type==='landmark'&&canonicalId(id)!==id?'discovery:'+canonicalId(id):key;}
 function learningFor(id){
   const entry=data.entries[id];if(!entry)return null;
-  const topic=data.topics[entry.topic];
-  const tier=entry.canonicalId?data.entries[entry.canonicalId].tier:entry.tier;
-  return {tier,label:LABELS[tier],topic:entry.topic,objective:topic.objective,levels:[...topic.levels],levelLabels:topic.levels.map(x=>LEVEL_LABELS[x]),standards:[...topic.standards],
-    valuable:entry.valuable===true,recommended:tier==='core'||entry.valuable===true,
+  const canonical=data.entries[canonicalId(id)]||entry;
+  const effective=entry.canonicalId?{...canonical,...entry,tier:canonical.tier}:entry;
+  const topic=data.topics[effective.topic],levels=effective.levels||topic.levels;
+  const tier=effective.tier;
+  return {tier,label:LABELS[tier],topic:effective.topic,objective:effective.objective||topic.objective,levels:[...levels],levelLabels:levels.map(x=>LEVEL_LABELS[x]),standards:[...(effective.standards||topic.standards)],
+    valuable:effective.valuable===true,recommended:tier==='core'||effective.valuable===true,
     counted:!['extended','later'].includes(tier),canonicalId:canonicalId(id),alias:!!entry.canonicalId};
 }
 function decorate(item){return {...item,learning:learningFor(item.id)};}
