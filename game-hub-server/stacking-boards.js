@@ -37,7 +37,9 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
     const safeTeams = s.teams.map(t => ({ id: t.id, name: t.name,
       members: t.members.map(id => { const m = roster.find(m => m.id === id); return { id, name: m ? (b.hide_names && !who.teacher ? `${m.number}번` : m.name) : '퇴장', role: 'build', roles }; }),
       phase: t.draft.phase, checked: t.draft.checked,
-      ...(s.race?.teams[t.id] ? { score: s.race.teams[t.id].index, finishedAt: s.race.teams[t.id].finishedAt, solvedAt: s.race.teams[t.id].solvedAt || null } : {})
+      ...(s.race?.teams[t.id] ? { score: s.race.teams[t.id].index, finishedAt: s.race.teams[t.id].finishedAt, solvedAt: s.race.teams[t.id].solvedAt || null } : {}),
+      ...(who.teacher && s.race?.phase === 'finished' && s.race.teams[t.id]?.finishShape
+        ? { finishShape: s.race.teams[t.id].finishShape } : {})
     }));
     const canBuild = mine && !who.teacher && (active ? !!progress && !progress.finishedAt : mine.draft.phase === 'building');
     // Race clients receive the three silhouettes only, never the source heights.
@@ -178,8 +180,12 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
         if (body.version !== w.version) fail(409, 'STALE_WORK', '모둠원이 수정했어요. 다시 확인해 주세요.');
         correct = roles.slice(1).every(view => equal(drawing(w.heights, view), s.race.questions[w.index].pictures[view]));
         if (correct) {
-          w.index++; w.heights = blank(); w.history = []; w.version++; w.solvedAt = now();
-          if (w.index >= s.race.questions.length) w.finishedAt = now();
+          w.index++; w.history = []; w.version++; w.solvedAt = now();
+          if (w.index >= s.race.questions.length) {
+            w.finishedAt = w.solvedAt;
+            w.finishShape = w.heights;
+          }
+          w.heights = blank();
           if (Object.values(s.race.teams).every(w => w.finishedAt)) s.race.phase = 'finished';
         }
       } else if (body.action === 'stop-race') {

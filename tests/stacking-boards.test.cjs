@@ -95,7 +95,13 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     const solved = await act(players[2], 'check-answer'); assert.equal(solved.correct, true); assert.equal(solved.state.race.finished, true);
     await act(players[0], 'check-answer', { workId: initial.work.id }, 409);
     assert.equal((await get(teacher)).teams[0].score, 1);
-    await act(teacher, 'stop-race'); await act(teacher, 'return-authoring');
+    assert.equal((await get(teacher)).teams[0].finishShape, undefined, 'the projector does not show a solution while others are solving');
+    await act(teacher, 'stop-race');
+    const podium = await get(teacher);
+    assert.equal(podium.teams[0].finishShape[12], 2, 'the result keeps the actual accepted alternative the team built');
+    assert.equal(podium.teams[1].finishShape, undefined, 'stopping a round does not award a finish');
+    assert.equal((await get(players[4])).teams[0].finishShape, undefined);
+    await act(teacher, 'return-authoring');
     const published = await get(players[0]);
     await act(players[3], 'new-draft');
     await act(players[1], 'new-draft', { workId: published.work.id }, 409);
