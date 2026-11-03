@@ -1,3 +1,5 @@
+import { isStackDiagramClear } from "./stacked-cubes-geometry.ts";
+
 export type StackKind = "count" | "count-map" | "three-view";
 
 export type ViewGrids = { top: boolean[][]; front: boolean[][]; side: boolean[][] };
@@ -41,8 +43,20 @@ function emptyGrid(size: number): boolean[][] {
   return Array.from({ length: size }, () => Array<boolean>(size).fill(false));
 }
 
-function randomFootprint(next: () => number, size: number, count: number): boolean[][] {
+function randomFootprint(next: () => number, size: number, count: number, clearGround = false): boolean[][] {
   const grid = emptyGrid(size);
+  if (clearGround) {
+    // Occupy back cells first so a cube cannot conceal an unoccupied floor cell.
+    for (let i = 0; i < count; i += 1) {
+      const candidates: Array<[number, number]> = [];
+      for (let r = 0; r < size; r += 1) for (let c = 0; c < size; c += 1) {
+        if (!grid[r][c] && (r === 0 || grid[r - 1][c]) && (c === 0 || grid[r][c - 1])) candidates.push([r, c]);
+      }
+      const [r, c] = candidates[integer(next, 0, candidates.length - 1)];
+      grid[r][c] = true;
+    }
+    return grid;
+  }
   const cells: Array<[number, number]> = [];
   const startR = integer(next, 0, size - 1);
   const startC = integer(next, 0, size - 1);
@@ -63,8 +77,15 @@ function randomFootprint(next: () => number, size: number, count: number): boole
   return grid;
 }
 
-function buildHeights(next: () => number, footprint: boolean[][], minHeight: number, maxHeight: number): number[][] {
-  return footprint.map((row) => row.map((occupied) => (occupied ? integer(next, minHeight, maxHeight) : 0)));
+function buildHeights(next: () => number, footprint: boolean[][]): number[][] {
+  // Heights never increase toward the viewer. Removing footprint cells cannot
+  // hide any remaining top face; count-map problems can still have irregular bases.
+  const heights = footprint.map((row) => row.map(() => 0));
+  for (let r = 0; r < heights.length; r += 1) for (let c = 0; c < heights[r].length; c += 1) {
+    const ceiling = Math.min(r === 0 ? MAX_HEIGHT : heights[r - 1][c], c === 0 ? MAX_HEIGHT : heights[r][c - 1]);
+    heights[r][c] = integer(next, 1, ceiling);
+  }
+  return heights.map((row, r) => row.map((height, c) => footprint[r][c] ? height : 0));
 }
 
 function barsToGrid(bars: number[], size: number): boolean[][] {
@@ -84,18 +105,10 @@ function total(heights: number[][]) {
 
 function buildProblem(next: () => number, kind: StackKind, id: string): StackProblem {
   const size = GRID_SIZE;
-  if (kind === "count") {
-    const footprint = randomFootprint(next, size, integer(next, 5, 8));
-    const heights = buildHeights(next, footprint, 1, MAX_HEIGHT);
-    return { id, kind, heights, size, total: total(heights), views: computeViews(heights, size) };
-  }
-  if (kind === "count-map") {
-    const footprint = randomFootprint(next, size, integer(next, 5, 8));
-    const heights = buildHeights(next, footprint, 1, MAX_HEIGHT);
-    return { id, kind, heights, size, total: total(heights), views: computeViews(heights, size) };
-  }
-  const footprint = randomFootprint(next, size, integer(next, 4, 7));
-  const heights = buildHeights(next, footprint, 1, MAX_HEIGHT);
+  const count = kind === "three-view" ? integer(next, 4, 7) : integer(next, 5, 8);
+  const footprint = randomFootprint(next, size, count, kind !== "count-map");
+  const heights = buildHeights(next, footprint);
+  if (!isStackDiagramClear(heights, kind === "count-map")) throw new Error("Stacked-cubes problem conceals a required cell");
   return { id, kind, heights, size, total: total(heights), views: computeViews(heights, size) };
 }
 

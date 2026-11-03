@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { computeViews, createStackedCubesProblemSet, sameViewGrids } from "../lib/stacked-cubes-workouts.ts";
+import { isStackDiagramClear, stackDiagramFaces, type StackPoint } from "../lib/stacked-cubes-geometry.ts";
 
 test("problem set always has 10 problems in a fixed kind order with positive totals matching their height grids", () => {
   for (let seed = 1; seed <= 30; seed += 1) {
@@ -77,4 +78,54 @@ test("sameViewGrids compares grids by value", () => {
   const c = [[true, true], [false, true]];
   assert.equal(sameViewGrids(a, b), true);
   assert.equal(sameViewGrids(a, c), false);
+});
+
+test("a footprint does not excuse a concealed column top", () => {
+  const hiddenColumn = [[1, 3, 0], [3, 3, 0], [0, 0, 0]];
+  assert.equal(isStackDiagramClear(hiddenColumn), false);
+  assert.equal(isStackDiagramClear(hiddenColumn, true), false);
+  // A nearly concealed top is also rejected: a tiny visible sliver is not
+  // enough for children to read reliably on the printed worksheet.
+  assert.equal(isStackDiagramClear([[2, 3, 0], [3, 3, 0], [0, 0, 0]], true), false);
+});
+
+test("hidden empty positions need a footprint even when every column top is visible", () => {
+  const hiddenFloor = [[0, 3, 0], [3, 3, 0], [0, 0, 0]];
+  assert.equal(isStackDiagramClear(hiddenFloor), false);
+  assert.equal(isStackDiagramClear(hiddenFloor, true), true);
+  const staircase = [[3, 2, 1], [2, 1, 0], [1, 0, 0]];
+  assert.equal(isStackDiagramClear(staircase), true);
+  assert.equal(isStackDiagramClear([[3, 3, 3], [3, 3, 3], [3, 3, 3]]), true);
+});
+
+// Independent point-in-polygon check of the painter's actual final surface.
+// This exercises the visibility result without reusing its clipping algorithm.
+function inside([x, y]: StackPoint, polygon: StackPoint[]) {
+  let result = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const [xi, yi] = polygon[i], [xj, yj] = polygon[j];
+    if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) result = !result;
+  }
+  return result;
+}
+
+test("10,000 generated problems expose every required column and empty position in the rendered projection", () => {
+  const signatures = new Set<string>();
+  for (let seed = 0; seed < 1000; seed += 1) {
+    for (const problem of createStackedCubesProblemSet(seed).problems) {
+      signatures.add(JSON.stringify(problem.heights));
+      const faces = stackDiagramFaces(problem.heights);
+      const required = faces.filter((face) => face.kind === "top" || (problem.kind !== "count-map" && face.kind === "ground" && problem.heights[face.r][face.c] === 0));
+      assert.equal(required.length, problem.kind === "count-map" ? problem.views.top.flat().filter(Boolean).length : 9);
+      for (const face of required) {
+        const center: StackPoint = [face.points.reduce((sum, point) => sum + point[0], 0) / 4, face.points.reduce((sum, point) => sum + point[1], 0) / 4];
+        const samples = [center, ...face.points.map(([x, y]): StackPoint => [0.9 * x + 0.1 * center[0], 0.9 * y + 0.1 * center[1]])];
+        for (const point of samples) {
+          const visible = faces.findLast((candidate) => inside(point, candidate.points));
+          assert.equal(visible, face, `seed ${seed}, ${problem.id}, ${face.kind} at ${face.r},${face.c} is concealed`);
+        }
+      }
+    }
+  }
+  assert.ok(signatures.size > 1000, "visibility constraints should still allow varied shapes");
 });

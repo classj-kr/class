@@ -9,6 +9,7 @@ import {
 } from "../../../lib/stacked-cubes-workouts";
 import StackedCubesDiagram from "../../components/stacked-cubes-diagram";
 import StackedCubesViewGrid from "../../components/stacked-cubes-view-grid";
+import { STACKING_GUIDE } from "../../../lib/stacked-cubes-geometry";
 
 type PrintMode = "worksheet" | "answers" | "both";
 type ViewField = keyof ViewGrids;
@@ -175,6 +176,7 @@ export default function GradeSixStackedCubesPage() {
           <div className="counting-sheet-title"><span>6학년</span><strong>쌓기나무의 개수와 세 방향 모양{answerSheet ? " 정답" : ""}</strong></div>
           <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
         </header>
+        <p className="stack-sheet-guide">{STACKING_GUIDE}</p>
         <div className="stack-grid">{questionSet.problems.map((problem, index) => renderProblem(problem, index, answerSheet))}</div>
       </div>
     );
