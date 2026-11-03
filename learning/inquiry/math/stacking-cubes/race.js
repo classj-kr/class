@@ -2,12 +2,10 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const initialCode = new URLSearchParams(location.search).get('room') || '';
-  if (!location.pathname.includes('/race') && !initialCode) return;
   const App = window.StackingApp;
   const workspace = document.querySelector('.workspace');
   const names = { views: '그림 보고 쌓기', copy: '따라 쌓기' };
   let code = '', token = '', state = null, pollTimer, shownRound = '', busy = false, failures = 0;
-  document.body.classList.add('race-page');
   const status = message => { $('race-status').textContent = message; };
   const store = {
     get: key => { try { return JSON.parse(localStorage.getItem('stacking-race-' + key)); } catch (_) { return null; } },
@@ -27,6 +25,18 @@
     if (!response.ok) throw Object.assign(Error(data.message || '방에 연결하지 못했어요.'), { status: response.status });
     return data;
   }
+
+  if (/\/coop\/?$/.test(location.pathname)) {
+    window.StackingRace = {
+      async openSelection(bankId, questionIds) {
+        const data = await api('/rooms', { mode: 'views', bankId, questionIds, questionCount: questionIds.length });
+        store.set('ticket-' + data.state.code, { token: data.token });
+        location.assign('../race/?room=' + data.state.code);
+      }
+    };
+  }
+  if (!location.pathname.includes('/race') && !initialCode) return;
+  document.body.classList.add('race-page');
 
   const clock = ms => `${Math.floor(ms / 60000)}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
   const towerCards = new Map();
@@ -71,6 +81,7 @@
   function renderStage(next) {
     const previous = stageState, sameRound = previous?.roundId === next.roundId && previous?.code === next.code;
     const root = $('race-ranks'), old = new Map(previous?.participants.map(p => [p.id, p]) || []);
+    const towerHeight = Math.min(12, next.total);
     const before = new Map([...towerCards].map(([id, card]) => [id, card.li.getBoundingClientRect()]));
     if (!sameRound) { root.replaceChildren(); towerCards.clear(); $('race-sparkles').replaceChildren(); bannerUntil = 0; }
     root.dataset.density = next.participants.length > 20 ? 'compact' : 'normal';
@@ -87,18 +98,27 @@
         const hue = [...p.id].reduce((n, ch) => n + ch.charCodeAt(0), 0) * 37 % 360;
         li.style.setProperty('--tower-hue', hue);
         const rank = label('span', '', 'tower-rank'), name = label('strong', p.name, 'tower-name'); name.title = p.name;
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', `0 0 100 ${next.total * 18 + 42}`); svg.setAttribute('aria-hidden', 'true');
-        for (let i = 0; i < next.total; i++) svg.append(towerBlock(i, next.total, false, false));
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', `0 0 100 ${towerHeight * 18 + 42}`); svg.setAttribute('aria-hidden', 'true');
+        for (let i = 0; i < towerHeight; i++) svg.append(towerBlock(i, towerHeight, false, false));
         const progress = label('div', '', 'tower-progress'); progress.setAttribute('role', 'progressbar'); progress.setAttribute('aria-label', p.name + ' 해결한 문제'); progress.setAttribute('aria-valuemin', '0'); progress.setAttribute('aria-valuemax', next.total);
         progress.append(label('i', '')); const detail = label('span', '', 'tower-detail');
-        li.append(rank, name, svg, progress, detail); card = { li, rank, name, svg, progress, detail, solved: 0 }; towerCards.set(p.id, card);
+        li.append(rank, name, svg, progress, detail); card = { li, rank, name, svg, progress, detail, layers: 0 }; towerCards.set(p.id, card);
       }
       card.name.textContent = p.name;
       card.rank.textContent = p.rank ? `${p.rank === 1 ? '♛ ' : ''}${p.rank}위` : next.phase === 'lobby' ? '준비' : '도전 중';
       card.li.dataset.rank = p.rank || '';
       card.li.classList.toggle('is-complete', p.solved >= next.total);
-      for (let i = card.solved; i < p.solved; i++) card.svg.append(towerBlock(i, next.total, true, sameRound && old.has(p.id) && !reducedMotion()));
-      card.solved = p.solved;
+      const height = p.solved * towerHeight / next.total, layers = Math.ceil(height);
+      if (layers > card.layers) {
+        if (card.layers) card.svg.lastElementChild.removeAttribute('transform');
+        for (let i = card.layers; i < layers; i++) card.svg.append(towerBlock(i, towerHeight, true, sameRound && old.has(p.id) && !reducedMotion()));
+        card.layers = layers;
+      }
+      if (layers) {
+        const fraction = 1 + height - layers;
+        const bottom = (towerHeight - layers + 1) * 18 + 39;
+        card.svg.lastElementChild.setAttribute('transform', `translate(0 ${bottom * (1 - fraction)}) scale(1 ${fraction})`);
+      }
       card.progress.setAttribute('aria-valuenow', p.solved); card.progress.firstChild.style.width = `${p.solved / next.total * 100}%`;
       card.detail.textContent = next.phase === 'lobby' ? '준비 완료' : `${p.solved >= next.total ? '완주! ' : ''}${p.solved}/${next.total}${p.time != null ? ' · ' + clock(p.time) : ''}`;
       root.append(card.li);
@@ -137,6 +157,11 @@
   }
 
   function render(next) {
+    if (!state || next.roundId !== state.roundId) {
+      $('race-next-count').max = next.maxQuestions;
+      $('race-next-count').value = next.total;
+      $('race-next-mode').value = next.mode;
+    }
     state = next;
     const host = next.me.host, racing = next.phase === 'racing', results = next.phase === 'results';
     const solving = !host && racing && next.me.solved < next.total;
@@ -145,7 +170,7 @@
     $('race-room').hidden = false;
     $('race-code-label').textContent = next.code;
     $('race-hud-code').textContent = next.code;
-    $('race-phase').textContent = racing ? `${names[next.mode]} · 진행 중` : results ? '결과' : `${names[next.mode]} · 입장 중`;
+    $('race-phase').textContent = [next.sourceTitle || '자동 출제', names[next.mode], next.total + '문제', racing ? '진행 중' : results ? '결과' : '입장 중'].join(' · ');
     $('race-settings').hidden = !host || racing;
     if (!host || racing) $('race-next-mode').value = next.mode;
     $('race-start').hidden = !host || racing;
@@ -229,12 +254,35 @@
     // Students use the same room-number entrance linked from the home page.
     if (!session.isTeacher) { location.replace('/room/'); return; }
     $('race-create').hidden = false;
+    // Auto-generated rooms are also available on installations without a board database.
+    try {
+      const response = await fetch('/api/boards/stacking-race-banks', { cache: 'no-store', credentials: 'same-origin' });
+      if (!response.ok) return;
+      const { banks } = await response.json();
+      const source = $('race-source');
+      source.replaceChildren(new Option('자동 출제', ''));
+      for (const bank of banks || []) {
+        const option = new Option(`${bank.title} (${bank.count}문제)`, bank.id);
+        option.dataset.count = bank.count;
+        source.add(option);
+      }
+      source.dispatchEvent(new Event('change'));
+    } catch { /* The automatic source is independent of board availability. */ }
   }
+  $('race-source').addEventListener('change', () => {
+    const limit = Number($('race-source').selectedOptions[0].dataset.count || 200);
+    $('race-count').max = limit;
+    $('race-count').value = Math.min(Number($('race-count').value) || 6, limit);
+  });
   $('race-open').addEventListener('click', () => action(async () => {
-    const data = await api('/rooms', { mode: $('race-mode').value });
+    if (!$('race-count').reportValidity()) return;
+    const data = await api('/rooms', { mode: $('race-mode').value, bankId: $('race-source').value || undefined, questionCount: $('race-count').valueAsNumber });
     enter(data, data.state.code);
   }));
-  $('race-start').addEventListener('click', () => action(async () => render(await api(`/rooms/${code}/start`, { mode: $('race-next-mode').value }))));
+  $('race-start').addEventListener('click', () => action(async () => {
+    if (!$('race-next-count').reportValidity()) return;
+    render(await api(`/rooms/${code}/start`, { mode: $('race-next-mode').value, questionCount: $('race-next-count').valueAsNumber }));
+  }));
   $('race-stop').addEventListener('click', () => action(async () => render(await api(`/rooms/${code}/stop`, {}))));
   $('race-leave').addEventListener('click', () => action(async () => {
     if (state?.me.host && !confirm('방을 닫으면 학생들의 순위전도 끝나요. 방을 닫을까요?')) return;

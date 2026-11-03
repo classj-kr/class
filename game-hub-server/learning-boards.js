@@ -127,6 +127,35 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const result = await pool.query('SELECT * FROM learning_boards WHERE owner_id=$1 ORDER BY created_at DESC', [user.id]);
     res.json({ boards: result.rows.map(publicBoard) });
   }));
+  router.get('/stacking-race-banks', asyncRoute(async (req, res) => {
+    const user = await requireTeacher(req);
+    const result = await pool.query(`SELECT b.id,b.title,jsonb_array_length(s.state->'questions') AS count
+      FROM learning_boards b JOIN learning_board_stacking s ON s.board_id=b.id
+      WHERE b.owner_id=$1 AND b.layout='stacking' AND jsonb_array_length(s.state->'questions')>0
+      ORDER BY b.created_at DESC`, [user.id]);
+    res.json({ banks: result.rows });
+  }));
+
+  async function readStackingRaceBank(req, boardId, selected) {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    const result = await pool.query(`SELECT b.title,s.state->'questions' AS questions
+      FROM learning_boards b LEFT JOIN learning_board_stacking s ON s.board_id=b.id
+      WHERE b.owner_id=$1 AND b.id=$2 AND b.layout='stacking'`, [user.id, boardId]);
+    const bank = result.rows[0];
+    if (!bank) fail(404, 'BANK_NOT_FOUND', '내 문제은행을 다시 선택해 주세요.');
+    let questions = bank.questions || [];
+    if (selected !== undefined) {
+      if (!Array.isArray(selected) || !selected.length || selected.length > MAX_POSTS || new Set(selected).size !== selected.length) {
+        fail(400, 'INVALID_SELECTION', '등록된 문제를 선택해 주세요.');
+      }
+      const byId = new Map(questions.map(q => [q.id, q]));
+      questions = selected.map(id => byId.get(id));
+      if (questions.some(q => !q)) fail(409, 'SELECTION_CHANGED', '문제 목록이 바뀌었어요. 다시 선택해 주세요.');
+    }
+    if (!questions.length) fail(409, 'BANK_EMPTY', '등록된 문제가 없어요.');
+    return { title: bank.title, questions: questions.map(q => q.heights), remaining: [] };
+  }
   router.post('/', asyncRoute(async (req, res) => {
     const user = await requireTeacher(req);
     const body = req.body || {};
@@ -448,7 +477,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   installBoardRaces({ router, asyncRoute, transaction, fail, integer, now });
   installBoardComments({ router, asyncRoute, transaction, fail, text, integer });
   installStackingBoards({ router, asyncRoute, transaction, fail, now });
-  return { router, initialize };
+  return { router, initialize, readStackingRaceBank };
 }
 
 module.exports = { createLearningBoards };

@@ -6,7 +6,18 @@ const require = createRequire(import.meta.url),
 const { createStackingCubes } = require('./stacking-cubes'),
   { createRoomCodes } = require('./room-codes'),
   { createRoomEntry } = require('./room-entry');
-const Activities = require('../learning/inquiry/math/stacking-cubes/activities');
+const { project, validBoard } = require('../learning/inquiry/math/stacking-cubes/model');
+const { generateRound, drawFromBank } = require('./stacking-race-questions');
+const signature = q => ['top', 'front', 'right'].map(v => project(q, v).join('')).join('/');
+test('200 generated questions per round stay distinct; a saved bank cycles without replacement', () => {
+  const a = generateRound(200, []), b = generateRound(200, a);
+  assert.ok([...a, ...b].every(q => validBoard(q) && q.some(Boolean)));
+  assert.equal(new Set([...a, ...b].map(signature)).size, 400);
+  const bank = { questions: a.slice(0, 9), remaining: [] };
+  const first = drawFromBank(bank, 6, []), next = drawFromBank(bank, 6, first);
+  assert.equal(new Set([...first, ...next.slice(0, 3)]).size, 9);
+  assert.equal(new Set(next).size, 6);
+});
 test('room entry, server judging, ranking by solved count then time, and closing', async (t) => {
   let clock = Date.now();
   const codes = createRoomCodes({ random: () => 4567, isActive: async (e) => activity.hasRoomCode(e.code) });
@@ -47,9 +58,12 @@ test('room entry, server judging, ranking by solved count then time, and closing
   const one = (await req(path + '/join', {}, '', '', '가')).data, two = (await req(path + '/join', {}, '', '', '나')).data;
   assert.equal((await req(path + '/join', {}, '', '', '가')).status, 409);
   assert.equal((await req(path + '/start', {}, one.token, 'teacher')).status, 403);
-  const started = (await req(path + '/start', { mode: 'views' }, host, 'teacher')).data;
-  const questions = Activities.questions('views');
-  assert.equal(started.total, questions.length);
+  assert.equal((await req(path + '/start', { questionCount: 201 }, host, 'teacher')).status, 400);
+  const started = (await req(path + '/start', { mode: 'views', questionCount: 12 }, host, 'teacher')).data;
+  const questions = started.questions;
+  assert.equal(started.total, 12);
+  assert.deepEqual((await req(path, undefined, one.token)).data.questions, questions);
+  assert.deepEqual((await req(path, undefined, two.token)).data.questions, questions);
   assert.equal((await req(path + '/join', {}, '', '', '늦음')).status, 409);
   const answer = (token, index, heights) => req(path + '/answer', { roundId: started.roundId, index, heights }, token);
   const wrong = (await answer(one.token, 0, Array(25).fill(0))).data;
@@ -72,6 +86,7 @@ test('room entry, server judging, ranking by solved count then time, and closing
   assert.equal((await answer(one.token, 1, questions[1])).status, 409);
   const again = (await req(path + '/start', { mode: 'copy' }, host, 'teacher')).data;
   assert.equal(again.mode, 'copy');
+  assert.equal(new Set([...questions, ...again.questions].map(signature)).size, 24);
   assert.ok(again.participants.every((p) => p.solved === 0 && p.rank === null));
   clock += 10 * 60 * 1000 + 1;
   assert.equal((await req(path, undefined, one.token)).data.phase, 'results');

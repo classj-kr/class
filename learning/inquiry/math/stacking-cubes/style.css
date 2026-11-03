@@ -160,7 +160,11 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .race-command .race-row { margin: 0; }
 .race-host #race-room { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 0 18px; align-items: center; }
 .race-host .race-showcase,.race-host .race-ranks { grid-column: 1 / -1; }
-.race-host #race-settings { max-width: 190px; }
+.race-host #race-settings { max-width: 350px; flex-wrap: wrap; }
+#race-create { flex-wrap: wrap; align-items: center; }
+#race-create select { min-width: 130px; }
+.round-count { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; }
+.round-count input { width: 68px; min-height: 44px; border: 1px solid var(--border); border-radius: 10px; padding: 6px; font: inherit; }
 .race-host #race-time { margin-left: auto; font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; color: #2d5c51; }
 .race-host #race-time.is-urgent { color: #b24c35; }
 .race-showcase { position: relative; margin: 10px 0; padding: 16px 24px; border-radius: 18px; background: linear-gradient(110deg,#214f48,#3d7560); color: #fffdf4; overflow: hidden; }
