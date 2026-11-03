@@ -58,18 +58,6 @@
     const node = document.createElement(tag); node.textContent = text;
     if (className) node.className = className; return node;
   }
-  function stageSound() {
-    const on = !StackingSounds.muted() && StackingSounds.volume() > 0;
-    $('race-show-sound').textContent = on ? '소리 켜짐' : '소리 꺼짐';
-    $('race-show-sound').setAttribute('aria-pressed', String(on));
-    $('race-show-sound').setAttribute('aria-label', on ? '현황판 효과음 끄기' : '현황판 효과음 켜기');
-  }
-  $('race-show-sound').addEventListener('click', () => {
-    const on = !StackingSounds.muted() && StackingSounds.volume() > 0;
-    StackingSounds.setMuted(on);
-    if (!on && !StackingSounds.volume()) StackingSounds.setVolume(.65);
-    stageSound(); if (!on) StackingSounds.play('view');
-  });
   function announceStage(text, sound, confetti = false) {
     $('race-banner').textContent = text; bannerUntil = Date.now() + 4500;
     if (sound) StackingSounds.play(sound);
@@ -139,7 +127,7 @@
     else if (sameRound && leader && priorLeader && leader.id !== priorLeader.id) announceStage(`${leader.name}, 1위로!`, 'found');
     else if (sameRound && next.participants.some(p => p.solved > (old.get(p.id)?.solved ?? p.solved))) StackingSounds.play('add', leader?.solved || 1);
     if (Date.now() >= bannerUntil) $('race-banner').textContent = next.phase === 'lobby' ? (next.participants.length ? '모이면 출발!' : '참가자 입장 중') : next.phase === 'results' ? (leader ? `${leader.name} · ${leader.rank}위` : '이번 도전 완료') : leader ? `${leader.name} 선두!` : '첫 번째 블록의 주인공은?';
-    stageState = next; stageSound();
+    stageState = next;
   }
   function tick() {
     const left = state?.phase === 'racing' ? clock(Math.max(0, state.deadline - Date.now())) + ' 남음' : '';

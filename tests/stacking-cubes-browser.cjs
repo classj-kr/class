@@ -48,8 +48,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         const result = spawnSync(process.env.PYTHON || 'python', ['-c', convert, path.join(output, `${name}-${suffix}.webp`)], { input: await page.screenshot() });
         assert.equal(result.status, 0, String(result.stderr));
       };
-      const openPanel = async () => { if (!(await page.locator('#view-panel').isVisible())) await activate(page.locator('#view-button')); };
-      const setView = async view => { await openPanel(); await activate(page.locator(`[data-view="${view}"]`)); };
+      const setView = async view => { await activate(page.locator(`[data-view="${view}"]`)); };
       const choose = async mode => { await activate(page.locator('#activity-button')); await activate(page.locator(`[data-mode="${mode}"]`)); };
       const frontPosition = selector => page.locator(`${selector} .direction-label`).first().evaluate(label => ({ x: Number(label.getAttribute('x')), y: Number(label.getAttribute('y')) }));
       const cubeEdgeHeight = selector => page.locator(`${selector} [data-surface="side"]`).evaluateAll(faces => Math.max(...faces.flatMap(face => {
@@ -107,7 +106,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.locator('#scene .floor-cell').first().waitFor({ state: 'visible' });
       assert.equal(await page.evaluate(() => window.audioContextCount), 0, 'audio waits for an interaction');
       assert.equal(await page.locator('#total').isVisible(), false);
-      assert.equal(await page.locator('#view-panel').isVisible(), false);
+      assert.equal(await page.locator('.view-choices button:visible').count(), 4);
       assert.equal(await page.locator('#tools button:visible').count(), 3);
       await snap('empty');
 
@@ -120,17 +119,14 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await total(0);
       await page.keyboard.press('Control+z');
       await total(1);
-      await openPanel();
       await activate(page.locator('#clear-board'));
       await total(0);
       await activate(page.locator('#undo'));
       await total(1);
-      await openPanel();
       await activate(page.locator('#clear-board'));
       await total(0);
 
       assert.equal(await page.locator('#scene .floor-cell').count(), 9);
-      await openPanel();
       await page.locator('#board-size').selectOption('4');
       await page.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 16);
       let count = 0;
@@ -170,17 +166,22 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         await page.mouse.wheel(0, -120);
       }
       await total(11);
-      await openPanel();
       await activate(page.locator('#reset-camera'));
 
+      const floor = page.locator('#scene .floor-cell').first();
+      const beforeTurn = await floor.getAttribute('points');
       await setView('top');
+      await page.waitForFunction(start => {
+        const cell = document.querySelector('#scene .floor-cell');
+        return cell && cell.getAttribute('points') !== start;
+      }, beforeTurn);
+      await page.waitForFunction(() => !document.querySelector('#scene .floor-cell'));
       await page.waitForFunction(() => document.querySelectorAll('[data-filled="true"]').length === 6);
       assert.equal(await page.locator('.cell-number').count(), 0);
       assert.equal(await page.locator('#tools').isVisible(), false);
-      await openPanel();
       await activate(page.locator('#show-heights'));
       await activate(page.locator('#show-total'));
-      await activate(page.locator('#view-button'));
+
       await page.waitForFunction(() => document.querySelectorAll('.cell-number').length === 6);
       assert.deepEqual((await page.locator('.cell-number').allTextContents()).sort(), ['1', '1', '2', '2', '2', '3']);
       assert.equal(await page.locator('#total').isVisible(), true);
@@ -191,10 +192,11 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.waitForFunction(() => document.querySelectorAll('[data-filled="true"]').length === 7);
       await snap('right');
       await activate(page.locator('#return-solid'));
+      await page.waitForFunction(() => document.getElementById('scene').getAttribute('aria-busy') !== 'true');
       await total(11);
 
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight), true, 'workspace fits viewport');
-      for (const button of await page.locator('#tools button, #view-button').all()) {
+      for (const button of await page.locator('#tools button, .view-choices button').all()) {
         const rect = await button.boundingBox();
         assert.ok(rect.width >= 44 && rect.height >= 44, 'controls retain touch target size');
       }
@@ -270,9 +272,9 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.waitForFunction(points => document.querySelector('#target-scene .floor-cell').getAttribute('points') !== points, initialGoalPoints);
       assert.ok((await frontPosition('#target-scene')).y < initialGoalFront.y, 'up arrow rotates in the same direction as an upward drag');
       await page.keyboard.press('Home');
-      await openPanel(); await page.locator('#show-heights').uncheck(); await activate(page.locator('#view-button'));
+      await page.locator('#show-heights').uncheck();
       await activate(page.locator('[data-target-view="top"]'));
-      await page.waitForFunction(() => document.querySelectorAll('#target-scene .cell-number').length === 4);
+      await page.waitForFunction(() => !document.querySelector('#target-scene[aria-busy="true"]') && document.querySelectorAll('#target-scene .cell-number').length === 4);
       assert.deepEqual(await goal.locator('.cell-number').allTextContents(), ['1', '2', '2', '1'], 'all goal heights are available, including the hidden rear cell');
       assert.equal(await goal.getAttribute('tabindex'), '-1');
       for (const number of await goal.locator('.cell-number').all()) assert.ok(await number.evaluate(node => parseFloat(getComputedStyle(node).fontSize)) >= 12, 'goal heights stay legible');
@@ -285,7 +287,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       assert.match(await page.locator('#challenge-result').textContent(), /성공/);
       await activate(page.locator('[data-target-view="solid"]'));
       await page.waitForFunction(() => document.querySelector('#target-scene .block-face'));
-      assert.equal(await goal.locator('.cell-number').count(), 0);
+      await page.waitForFunction(() => !document.querySelector('#target-scene .cell-number'));
       await choose('free');
       await total(11);
 
@@ -299,10 +301,14 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       assert.equal(await page.locator('#target-scene .cell-number').count(), 0, 'target never reveals column heights');
       await fill(alternative);
       await page.emulateMedia({ reducedMotion: 'reduce' });
+      await setView('right');
+      await page.waitForFunction(() => document.querySelector('#scene [data-projection-cell]'));
+      assert.equal(await page.locator('#scene .floor-cell').count(), 0);
+      await setView('solid');
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /성공/);
       assert.equal(await page.locator('#celebration').isVisible(), true, 'reduced motion retains the large success message');
-      for (const selector of ['#activity-button', '#total', '#sound-toggle', '#view-button']) {
+      for (const selector of ['#activity-button', '#total', '.unified-audio-menu-toggle', '[data-view="front"]']) {
         const rect = await page.locator(selector).boundingBox();
         assert.ok(rect.x >= 0 && rect.x + rect.width <= width && rect.height <= 48, `${selector}: header controls fit on one line`);
       }
@@ -327,7 +333,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /이미 찾은/);
       assert.equal(await page.locator('#celebration').isVisible(), false, 'duplicate answers do not celebrate');
-      await openPanel(); await activate(page.locator('#clear-board'));
+      await activate(page.locator('#clear-board'));
       await fill(alternative);
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /서로 다른 두/);
@@ -382,30 +388,17 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       const shared = await page.locator('#share-link').inputValue();
       assert.deepEqual(activities.decode(new URL(shared).hash), { mode: 'views', heights: exported });
       await activate(page.locator('#close-activities'));
-      await openPanel();
-      await page.locator('#sound-enabled').uncheck();
+      const audioMenu = page.locator('.unified-audio-menu-toggle'), mute = page.locator('#sfxMuteBtn'), volume = page.locator('#sfxVolumeSlider');
+      await activate(audioMenu); await activate(mute);
       assert.equal(await page.evaluate(() => StackingSounds.play('add', 1)), false);
-      assert.equal(await page.locator('#sound-toggle').getAttribute('aria-pressed'), 'false');
       await page.evaluate(() => history.replaceState(null, '', location.pathname));
-      await page.reload();
-      await page.locator('#scene .floor-cell').first().waitFor();
-      await openPanel();
-      assert.equal(await page.locator('#sound-enabled').isChecked(), false, 'mute persists');
-      await activate(page.locator('#view-button'));
-      await activate(page.locator('#sound-toggle'));
-      assert.equal(await page.locator('#sound-toggle').getAttribute('aria-pressed'), 'true', 'visible sound button enables audio');
-      await openPanel();
-      assert.equal(await page.locator('#sound-enabled').isChecked(), true, 'sound controls stay in sync');
-      await page.locator('#sound-volume').fill('0');
-      assert.equal(await page.locator('#sound-toggle').getAttribute('aria-pressed'), 'false', 'zero volume is visibly silent');
-      await activate(page.locator('#view-button'));
-      await activate(page.locator('#sound-toggle'));
-      assert.equal(await page.evaluate(() => StackingSounds.volume()), .65, 'enabling from zero restores an audible level');
-      await openPanel();
-      await page.locator('#sound-volume').fill('35');
-      await page.locator('#sound-volume').dispatchEvent('change');
+      await page.reload(); await activate(audioMenu);
+      assert.equal(await mute.getAttribute('aria-pressed'), 'true', 'the site mute setting persists');
+      await activate(mute); await volume.fill('0.35'); await volume.dispatchEvent('change');
       assert.equal(await page.evaluate(() => StackingSounds.volume()), .35);
-      await activate(page.locator('#view-button'));
+      await volume.fill('0'); assert.equal(await page.evaluate(() => StackingSounds.muted()), true);
+      await activate(mute); assert.equal(await volume.inputValue(), '0.35', 'the site restores the previous volume');
+      await activate(audioMenu);
       await activate(page.locator('#activity-button'));
       await activate(page.locator('.saved-open'));
       await total(11);

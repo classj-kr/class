@@ -62,10 +62,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.getByRole('button', { name: '팀전 마치기' }).click();
     await teacher.getByRole('button', { name: '출제로 돌아가기' }).click();
     for (const p of students) await p.getByRole('button', { name: '입체 완성' }).waitFor();
-    await builder.locator('#view-button').click();
     await builder.locator('#board-size').selectOption('4');
     for (const p of students) await p.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 16);
-    await side.locator('#view-button').click();
     await side.locator('#board-size').selectOption('3');
     for (const p of students) await p.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 9);
     await builder.evaluate(() => { window.playedSounds = []; const play = StackingSounds.play; StackingSounds.play = (...args) => { window.playedSounds.push(args[0]); return play(...args); }; });
@@ -112,6 +110,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await snap(top, 'shared-board-landscape');
     const dock = await top.locator('#coop-dock').boundingBox(), tools = await top.locator('#tools').boundingBox();
     assert.ok(dock.x + dock.width <= tools.x, 'landscape targets do not cover the stacking tools');
+    const bar = await top.locator('.board-bar').boundingBox();
+    assert.ok(bar.y + bar.height <= dock.y, 'the target card leaves the direction and board controls accessible');
     await top.setViewportSize({ width: 390, height: 900 });
     await top.context().setOffline(true);
     await front.locator('#scene').focus(); await front.keyboard.press('ArrowLeft'); await front.keyboard.press('Enter');
@@ -222,7 +222,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await snap(teacher, 'team-first-finish');
     await teacher.waitForFunction(() => !document.getElementById('coop-stage').classList.contains('is-cheering'));
     assert.equal(await teacher.evaluate(() => window.finishSounds), 1);
-    await teacher.locator('.relay-sound').click();
+    await teacher.locator('.unified-audio-menu-toggle').click(); await teacher.locator('#sfxMuteBtn').click(); await teacher.locator('.unified-audio-menu-toggle').click();
     await teacher.emulateMedia({ reducedMotion: 'reduce' });
     await solve(top); await solve(top); await solve(builder);
     await teacher.waitForFunction(() => document.querySelectorAll('.relay-lane.has-finished .lane-shape svg').length === 3);
