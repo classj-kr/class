@@ -47,20 +47,20 @@
     document.querySelector('.workspace').inert = open;
     $('coop-close').hidden = !state?.work || state.me.teacher || !!state.race && (state.race.phase !== 'playing' || state.race.finished);
   }
-  function diagram(cells, view) {
+  function diagram(cells, view, size) {
     const wrap = element('div', undefined, 'coop-diagram');
     wrap.append(element('strong', roleNames[view]));
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    const rows = view === 'top' ? 5 : 6;
-    svg.setAttribute('viewBox', `-1 -1 102 ${rows * 20 + 2}`);
+    const rows = cells.length / size;
+    svg.setAttribute('viewBox', `-1 -1 ${size * 20 + 2} ${rows * 20 + 2}`);
     svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', `${roleNames[view]}에서 본 그림`);
-    svg.innerHTML = cells.map((n, i) => `<rect x="${i % 5 * 20}" y="${Math.floor(i / 5) * 20}" width="20" height="20" fill="${n ? '#dcb77c' : '#faf9f4'}" stroke="#b8bbaf" stroke-width="1"/>`).join('');
+    svg.innerHTML = cells.map((n, i) => `<rect x="${i % size * 20}" y="${Math.floor(i / size) * 20}" width="20" height="20" fill="${n ? '#dcb77c' : '#faf9f4'}" stroke="#b8bbaf" stroke-width="1"/>`).join('');
     wrap.append(svg, element('small', view === 'top' ? '아래쪽이 앞' : view === 'right' ? '왼쪽이 앞' : '앞에서'));
     return wrap;
   }
   function figures(pictures) {
     const row = element('div', undefined, 'coop-figures');
-    for (const view of ['front', 'right', 'top']) row.append(diagram(pictures[view], view));
+    for (const view of ['front', 'right', 'top']) row.append(diagram(pictures[view], view, Math.sqrt(pictures.top.length)));
     return row;
   }
   function apply(next) {
@@ -84,7 +84,7 @@
   }
   function send(action, extra = {}) {
     if (!state || !navigator.onLine) { status('연결을 확인하는 중이에요.'); return Promise.resolve(); }
-    const body = { action, workId: state?.work?.id, version: state?.work?.version, bankRevision: state?.bankRevision, ...extra, opId: crypto.randomUUID() };
+    const body = { action, workId: state?.work?.id, boardSize: state.work ? Math.sqrt(state.work.heights.length) : undefined, version: state?.work?.version, bankRevision: state?.bankRevision, ...extra, opId: crypto.randomUUID() };
     pending++;
     const task = queue.then(async () => {
       try {
@@ -92,7 +92,7 @@
         try { result = await api(`/${boardId}/stacking/actions`, body); }
         catch (error) { if (error.status) throw error; result = await api(`/${boardId}/stacking/actions`, body); }
         status(''); apply(result.state);
-        if (action === 'edit') window.StackingSounds.play(body.delta > 0 ? 'add' : 'erase', result.state.work?.heights[body.cell], body.cell % 5);
+        if (action === 'edit') window.StackingSounds.play(body.delta > 0 ? 'add' : 'erase', result.state.work?.heights[body.cell], body.cell % body.boardSize);
         else if (action === 'undo' || action === 'clear') window.StackingSounds.play(action);
         if (result.correct === false) status(action === 'check-drawing' ? '그림을 다시 살펴봐요.' : '세 방향의 모습을 다시 살펴봐요.');
         if (result.correct === true || action === 'publish') window.StackingSounds.play('success');
@@ -218,7 +218,9 @@
     document.body.classList.toggle('coop-working', !!w && !state.me.teacher);
     document.body.classList.toggle('coop-readonly', !w?.canBuild);
     if (!w || state.me.teacher) return;
+    const { size, maxCubes } = window.StackingCubes.rulesForBoard(w.heights);
     App.shared({ ...w, direction: root.dataset.direction, canBuild: connected && w.canBuild, action: send });
+    if (w.canBuild) root.append(element('small', `${window.StackingCubes.countCubes(w.heights)} / ${maxCubes}개`, 'coop-cube-count'));
     if (state.race) {
       if (state.race.question) {
         root.append(element('h3', `${state.race.index + 1}/${state.race.total} · ${state.race.question.title}`), figures(state.race.question.pictures));
@@ -237,12 +239,13 @@
         root.append(tabs);
       }
       const cells = localDrawing?.view === view ? localDrawing.cells : w.drawings[view], grid = element('div', undefined, 'coop-draw-grid'); grid.setAttribute('role', 'group'); grid.setAttribute('aria-label', `${roleNames[view]} 그림 그리기`);
+      grid.style.setProperty('--columns', size);
       cells.forEach((n, i) => {
         const cell = button('', () => {
           const next = (localDrawing?.view === view ? localDrawing.cells : state.work.drawings[view]).slice(); next[i] = next[i] ? 0 : 1;
           localDrawing = { id: w.id, version: w.version, view, cells: next }; renderDock(); send('draw', { view, cell: i, value: next[i] });
         });
-        cell.dataset.cell = i; cell.setAttribute('aria-label', `${Math.floor(i / 5) + 1}행 ${i % 5 + 1}열`); cell.setAttribute('aria-pressed', String(!!n)); cell.disabled = !connected || w.phase !== 'drawing'; grid.append(cell);
+        cell.dataset.cell = i; cell.setAttribute('aria-label', `${Math.floor(i / size) + 1}행 ${i % size + 1}열`); cell.setAttribute('aria-pressed', String(!!n)); cell.disabled = !connected || w.phase !== 'drawing'; grid.append(cell);
       });
       root.append(grid, element('small', view === 'top' ? '아래쪽이 앞' : view === 'right' ? '왼쪽이 앞' : '앞에서'));
       const check = button(w.checked[view] ? '확인 완료' : '그림 확인', () => send('check-drawing', { view }), 'primary-button'); check.disabled = !connected || w.phase !== 'drawing'; root.append(check);

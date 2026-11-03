@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'classj.stacking-cubes.saved.v1';
   const LIMIT = 12;
-  const { validBoard } = window.StackingCubes;
+  const { validBoard, rulesForBoard } = window.StackingCubes;
   const activities = window.StackingActivities;
   window.StackingLibrary = ({ snapshot, load, sound }) => {
     const $ = id => document.getElementById(id);
@@ -29,8 +29,9 @@
         const row = document.createElement('div'); row.className = 'saved-row';
         const open = document.createElement('button'); open.type = 'button'; open.className = 'saved-open';
         const thumbnail = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        thumbnail.setAttribute('viewBox', '0 0 50 50'); thumbnail.setAttribute('aria-hidden', 'true');
-        thumbnail.innerHTML = item.heights.map((height, i) => `<rect x="${i % 5 * 10 + 1}" y="${Math.floor(i / 5) * 10 + 1}" width="8" height="8" rx="1" fill="${height ? '#d7ac68' : '#eeece3'}" stroke="none"/>`).join('');
+        const size = rulesForBoard(item.heights).size;
+        thumbnail.setAttribute('viewBox', `0 0 ${size * 10} ${size * 10}`); thumbnail.setAttribute('aria-hidden', 'true');
+        thumbnail.innerHTML = item.heights.map((height, i) => `<rect x="${i % size * 10 + 1}" y="${Math.floor(i / size) * 10 + 1}" width="8" height="8" rx="1" fill="${height ? '#d7ac68' : '#eeece3'}" stroke="none"/>`).join('');
         const title = document.createElement('span'); title.textContent = item.title;
         open.append(thumbnail, title); open.addEventListener('click', () => load(item.heights));
         const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'saved-delete';

@@ -1,6 +1,6 @@
 'use strict';
 const { randomInt } = require('node:crypto');
-const { SIZE, project } = require('../learning/inquiry/math/stacking-cubes/model');
+const { BASIC, WIDE, project } = require('../learning/inquiry/math/stacking-cubes/model');
 
 const MAX_ROUND = 200;
 const DEFAULT_ROUND = 6;
@@ -9,24 +9,32 @@ const pictureKey = shape => views.map(view => project(shape, view).join('')).joi
 
 // Grow a connected footprint, then assign the heights. All three silhouettes
 // therefore describe a buildable object even when they admit other solutions.
-function newShape(stage) {
+function newShape(stage, rules) {
+  const width = rules.size;
   const size = [3, 5, 7][stage] + randomInt(stage === 2 ? 3 : 2);
   const ceiling = stage + 2;
-  const shape = Array(SIZE * SIZE).fill(0);
+  const shape = Array(width * width).fill(0);
   const occupied = [];
-  const frontier = new Set([Math.floor(shape.length / 2)]);
+  const frontier = new Set([Math.floor(width / 2) * (width + 1)]);
   while (occupied.length < size) {
     const cell = [...frontier][randomInt(frontier.size)];
     frontier.delete(cell);
     occupied.push(cell);
-    shape[cell] = 1 + randomInt(ceiling);
-    const x = cell % SIZE, z = Math.floor(cell / SIZE);
+    shape[cell] = 1;
+    const x = cell % width, z = Math.floor(cell / width);
     for (const [dx, dz] of [[0, 1], [1, 0], [0, -1], [-1, 0]]) {
       const nx = x + dx, nz = z + dz;
-      if (nx >= 0 && nx < SIZE && nz >= 0 && nz < SIZE && !shape[nz * SIZE + nx]) frontier.add(nz * SIZE + nx);
+      if (nx >= 0 && nx < width && nz >= 0 && nz < width && !shape[nz * width + nx]) frontier.add(nz * width + nx);
     }
   }
-  shape[occupied[randomInt(size)]] = ceiling;
+  const [peak, ...others] = shuffle(occupied);
+  shape[peak] = ceiling;
+  let spare = rules.maxCubes - size - (ceiling - 1);
+  for (const cell of others) {
+    const extra = randomInt(Math.min(ceiling - 1, spare) + 1);
+    shape[cell] += extra;
+    spare -= extra;
+  }
   return shape;
 }
 
@@ -35,7 +43,7 @@ function generateRound(count, previous) {
   const questions = [];
   while (questions.length < count) {
     const stage = Math.floor(3 * questions.length / count);
-    const shape = newShape(stage);
+    const shape = newShape(stage, stage === 2 ? WIDE : BASIC);
     const key = pictureKey(shape);
     if (used.has(key)) continue;
     used.add(key);
