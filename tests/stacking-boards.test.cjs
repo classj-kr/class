@@ -121,3 +121,64 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     assert.deepEqual((await get(players[0])).work.heights, Array(25).fill(0), 'the same saved questions can start a fresh race');
   } finally { await h.close(); }
 });
+
+test('one to six authors keep their draft, share missing views, and start with any occupied teams', async () => {
+  const h = await createHarness();
+  try {
+    async function request(url, body, cookie = '', expected = 200) {
+      const r = await fetch(h.base + url, { method: body === undefined ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json', Cookie: cookie }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+      const data = await r.json(); assert.equal(r.status, expected, JSON.stringify(data));
+      return { data, cookie: r.headers.getSetCookie().map(v => v.split(';')[0]).join('; ') };
+    }
+    const teacher = 'test_teacher=1';
+    const { data: { board } } = await request('/api/boards/', { title: '자유 인원', layout: 'stacking', slots: 60 }, teacher, 201);
+    const base = '/api/boards/' + board.id + '/stacking', get = async cookie => (await request(base, undefined, cookie)).data;
+    const act = async (cookie, action, extra = {}) => {
+      const s = await get(cookie);
+      return (await request(base + '/actions', { action, workId: s.work?.id, version: s.work?.version, opId: crypto.randomUUID(), ...extra }, cookie)).data;
+    };
+    const teams = (await get(teacher)).teams, players = [];
+    const shape = Array(25).fill(0); shape[12] = 1;
+    let author, other;
+    for (let count = 1; count <= 6; count++) {
+      const joined = await request('/api/boards/join', { code: board.code, name: '학생' + count, number: count });
+      const before = author ? await get(author) : null;
+      players.push(joined.cookie); await act(joined.cookie, 'join-team', { teamId: teams[0].id });
+      if (!author) { author = players[0]; await act(author, 'edit', { cell: 12, delta: 1 }); }
+      else {
+        const after = await get(author);
+        assert.equal(after.work.id, before.work.id); assert.deepEqual(after.work.heights, before.work.heights, 'joining never discards the current shape');
+        assert.equal(after.me.role, 'build', 'late arrivals preserve the current author');
+      }
+      await act(author, 'freeze');
+      const states = await Promise.all(players.map(get));
+      assert.deepEqual([...new Set(states.flatMap(s => s.me.roles))].sort(), ['build', 'front', 'right', 'top'], 'all views have an owner for every group size');
+      if (count > 4) {
+        const frontAuthors = players.filter((_, i) => states[i].me.roles.includes('front'));
+        await Promise.all(frontAuthors.slice(0, 2).map((p, i) => act(p, 'draw', { view: 'front', cell: i, value: 1 })));
+        assert.deepEqual((await get(author)).work.drawings.front.slice(0, 2), [1, 1], 'shared drawing edits merge cell by cell');
+      }
+      for (const [i, s] of states.entries()) for (const view of s.me.roles.filter(v => v !== 'build')) {
+        await act(players[i], 'draw', { view, cells: drawing(shape, view) });
+        assert.equal((await act(players[i], 'check-drawing', { view })).correct, true);
+      }
+      await act(author, 'publish');
+      if (count === 3) {
+        other = (await request('/api/boards/join', { code: board.code, name: '다른 모둠', number: 20 })).cookie;
+        await act(other, 'join-team', { teamId: teams[1].id });
+      }
+      const q = (await get(teacher)).questions[0];
+      const started = (await act(teacher, 'start-race', { questionIds: [q.id] })).state;
+      assert.equal(started.teams.filter(t => t.score !== undefined).length, other ? 2 : 1, 'empty slots do not block or enter the match');
+      assert.ok((await get(players[count - 1])).work.canBuild, 'every present teammate can build');
+      if (other) assert.ok((await get(other)).work.canBuild, 'unequal teams can play, including a solo team');
+      await act(teacher, 'stop-race'); await act(teacher, 'return-authoring');
+      if (count < 6) {
+        await act(author, 'new-draft');
+        const next = await Promise.all(players.map(get)); author = players[next.findIndex(s => s.me.role === 'build')];
+        await act(author, 'edit', { cell: 12, delta: 1 });
+      }
+    }
+    assert.equal((await get(teacher)).questions.length, 6);
+  } finally { await h.close(); }
+});

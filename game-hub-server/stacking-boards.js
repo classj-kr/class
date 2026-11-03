@@ -12,7 +12,16 @@ function drawing(heights, view) {
 const draft = turn => ({ id: uuid(), turn, phase: 'building', heights: blank(), drawings: { front: Array(30).fill(0), right: Array(30).fill(0), top: blank() }, checked: {}, version: 0, history: [] });
 const team = i => ({ id: uuid(), name: `${i + 1}모둠`, members: [], draft: draft(0) });
 const initial = () => ({ revision: 0, teams: Array.from({ length: 6 }, (_, i) => team(i)), questions: [], race: null, operations: [] });
-const roleOf = (t, id) => roles[(t.members.indexOf(id) - t.draft.turn + 4) % 4];
+const builderOf = t => t.members.includes(t.draft.builderId) ? t.draft.builderId : t.members[(t.draft.turn || 0) % t.members.length];
+function rolesOf(t, id) {
+  const count = t.members.length, seat = t.members.indexOf(id);
+  if (seat < 0) return [];
+  if (count === 1) return roles.slice();
+  const relative = (seat - t.members.indexOf(builderOf(t)) + count) % count;
+  if (!relative) return ['build'];
+  return count <= 4 ? roles.slice(1).filter((_, i) => i % (count - 1) + 1 === relative) : [roles[1 + (relative - 1) % 3]];
+}
+const roleOf = (t, id) => rolesOf(t, id)[0];
 
 function installStackingBoards({ router, asyncRoute, transaction, fail, now = Date.now }) {
   const watchers = new Map();
@@ -34,14 +43,14 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
     const progress = s.race?.teams[mine?.id];
     const q = s.race?.questions[progress?.index];
     const safeTeams = s.teams.map(t => ({ id: t.id, name: t.name,
-      members: t.members.map(id => { const m = roster.find(m => m.id === id); return { id, name: m ? (b.hide_names && !who.teacher ? `${m.number}번` : m.name) : '퇴장', role: roleOf(t, id) }; }),
+      members: t.members.map(id => { const m = roster.find(m => m.id === id); return { id, name: m ? (b.hide_names && !who.teacher ? `${m.number}번` : m.name) : '퇴장', role: roleOf(t, id), roles: rolesOf(t, id) }; }),
       phase: t.draft.phase, checked: t.draft.checked,
       ...(s.race?.teams[t.id] ? { score: s.race.teams[t.id].index, finishedAt: s.race.teams[t.id].finishedAt, solvedAt: s.race.teams[t.id].solvedAt || null } : {})
     }));
-    const canBuild = mine && !who.teacher && (active ? !!progress && !progress.finishedAt : mine.members.length === 4 && roleOf(mine, who.id) === 'build' && mine.draft.phase === 'building');
+    const canBuild = mine && !who.teacher && (active ? !!progress && !progress.finishedAt : roleOf(mine, who.id) === 'build' && mine.draft.phase === 'building');
     // Race clients receive the three silhouettes only, never the source heights.
     return { revision: s.revision, board: { id: b.id, code: b.code, title: b.title, closed: b.closed },
-      me: { teacher: !!who.teacher, id: who.id || null, name: who.name, teamId: mine?.id || null, role: mine ? roleOf(mine, who.id) : null },
+      me: { teacher: !!who.teacher, id: who.id || null, name: who.name, teamId: mine?.id || null, role: mine ? roleOf(mine, who.id) : null, roles: mine ? rolesOf(mine, who.id) : [] },
       teams: safeTeams, bankRevision: s.bankRevision || 0,
       ...(Number(knownBankRevision) === (s.bankRevision || 0) ? {} : { questions: s.questions.map(q => ({ id: q.id, title: q.title, author: q.author, pictures: q.pictures })) }),
       race: s.race ? { id: s.race.id, phase: s.race.phase, total: s.race.questions.length, startedAt: s.race.startedAt,
@@ -51,7 +60,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
         heights: active ? progress?.heights || blank() : mine.draft.heights,
         canUndo: !!canBuild && (active ? progress.history : mine.draft.history).some(h => h.actor === who.id),
         ...(active ? {} : { phase: mine.draft.phase, drawings: mine.draft.drawings, checked: mine.draft.checked,
-          canPublish: mine.members.length === 4 && mine.draft.phase === 'drawing' && roles.slice(1).every(v => mine.draft.checked[v]) }) } : null };
+          canPublish: mine.draft.phase === 'drawing' && roles.slice(1).every(v => mine.draft.checked[v]) }) } : null };
   }
   function notify(boardId, teamId) { for (const res of watchers.get(boardId) || []) res.write(`event: change\ndata: ${JSON.stringify({ teamId })}\n\n`); }
   async function read(req) {
@@ -78,7 +87,6 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
       const t = s.teams.find(t => t.members.includes(who.id)), active = s.race?.phase === 'playing';
       const teacher = () => { if (!who.teacher) fail(403, 'TEACHER_ONLY', '선생님만 바꿀 수 있어요.'); };
       const inTeam = () => { if (!t || who.teacher) fail(403, 'TEAM_REQUIRED', '먼저 모둠을 선택해 주세요.'); };
-      const full = () => { if (t.members.length !== 4 || !t.members.every(id => roster.some(m => m.id === id))) fail(409, 'FOUR_REQUIRED', '네 명이 모이면 출제할 수 있어요.'); };
       const currentDraft = () => { inTeam(); if (active || body.workId !== t.draft.id) fail(409, 'STALE_WORK', '활동이 바뀌었어요. 다시 확인해 주세요.'); };
       const builder = () => { currentDraft(); if (roleOf(t, who.id) !== 'build') fail(403, 'BUILDER_ONLY', '출제자만 입체를 바꿀 수 있어요.'); };
       let correct;
@@ -90,15 +98,18 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
       } else if (body.action === 'join-team') {
         if (who.teacher || active) fail(409, 'TEAM_LOCKED', '지금은 모둠을 바꿀 수 없어요.');
         const target = s.teams.find(v => v.id === body.teamId);
-        if (!target || (target !== t && target.members.length >= 4)) fail(409, 'TEAM_FULL', '모둠이 가득 찼어요.');
+        if (!target) fail(404, 'TEAM_MISSING', '모둠을 찾을 수 없어요.');
         if (target !== t) {
-          if (t && t.draft.heights.some(Boolean)) fail(409, 'TEAM_BUSY', '출제 중에는 모둠을 바꿀 수 없어요. 선생님께 모둠 초기화를 요청해 주세요.');
-          if (t) { t.members = t.members.filter(id => id !== who.id); t.draft = draft(t.draft.turn); }
-          target.members.push(who.id); target.draft = draft(target.draft.turn);
+          if (t) {
+            const author = builderOf(t);
+            t.members = t.members.filter(id => id !== who.id);
+            t.draft.builderId = t.members.includes(author) ? author : t.members[0]; t.draft.version++;
+          }
+          const author = builderOf(target);
+          target.members.push(who.id); target.draft.builderId = author || who.id; target.draft.version++;
         }
       } else if (['edit', 'undo', 'clear'].includes(body.action)) {
         inTeam();
-        if (!active) full();
         const w = active ? s.race.teams[t.id] : t.draft;
         if (!w || (active ? w.finishedAt || body.workId !== `${s.race.id}:${w.index}` : roleOf(t, who.id) !== 'build' || w.phase !== 'building' || body.workId !== w.id)) fail(409, 'EDIT_CLOSED', '지금은 입체를 바꿀 수 없어요.');
         if (body.action === 'edit') {
@@ -119,7 +130,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
         }
         w.version++;
       } else if (body.action === 'freeze') {
-        builder(); full();
+        builder();
         if (t.draft.phase !== 'building' || !validBoard(t.draft.heights) || !t.draft.heights.some(Boolean)) fail(409, 'EMPTY_SHAPE', '입체를 먼저 완성해 주세요.');
         t.draft.phase = 'drawing'; t.draft.checked = {}; t.draft.version++;
       } else if (body.action === 'revise') {
@@ -127,16 +138,22 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
         if (t.draft.phase !== 'drawing') fail(409, 'DRAFT_CLOSED', '새 문제를 만들어 주세요.');
         t.draft.phase = 'building'; t.draft.checked = {}; t.draft.version++;
       } else if (body.action === 'draw' || body.action === 'check-drawing') {
-        currentDraft(); full();
-        const view = roleOf(t, who.id), d = t.draft;
-        if (view === 'build' || d.phase !== 'drawing') fail(403, 'DRAWING_CLOSED', '자기 방향의 그림을 그려 주세요.');
+        currentDraft();
+        const assigned = rolesOf(t, who.id), view = body.view || assigned.find(v => v !== 'build'), d = t.draft;
+        if (!roles.slice(1).includes(view) || !assigned.includes(view) || d.phase !== 'drawing') fail(403, 'DRAWING_CLOSED', '자기 방향의 그림을 그려 주세요.');
         if (body.version !== d.version) fail(409, 'STALE_WORK', '입체가 바뀌었어요. 다시 확인해 주세요.');
         if (body.action === 'draw') {
-          if (!Array.isArray(body.cells) || body.cells.length !== (view === 'top' ? 25 : 30) || !body.cells.every(n => n === 0 || n === 1)) fail(400, 'INVALID_DRAWING', '그림을 확인해 주세요.');
-          d.drawings[view] = body.cells.slice(); d.checked[view] = false;
+          if (body.cell !== undefined) {
+            if (!Number.isInteger(body.cell) || body.cell < 0 || body.cell >= d.drawings[view].length || ![0, 1].includes(body.value)) fail(400, 'INVALID_DRAWING', '그림을 확인해 주세요.');
+            d.drawings[view][body.cell] = body.value;
+          } else {
+            if (!Array.isArray(body.cells) || body.cells.length !== (view === 'top' ? 25 : 30) || !body.cells.every(n => n === 0 || n === 1)) fail(400, 'INVALID_DRAWING', '그림을 확인해 주세요.');
+            d.drawings[view] = body.cells.slice();
+          }
+          d.checked[view] = false;
         } else { correct = equal(d.drawings[view], drawing(d.heights, view)); d.checked[view] = correct; }
       } else if (body.action === 'publish') {
-        builder(); full();
+        builder();
         const d = t.draft;
         if (d.phase !== 'drawing' || !roles.slice(1).every(v => d.checked[v] && equal(d.drawings[v], drawing(d.heights, v)))) fail(409, 'DRAWINGS_REQUIRED', '세 그림이 모두 맞아야 등록할 수 있어요.');
         if (s.questions.length >= 200) fail(409, 'BANK_FULL', '이 게시판에는 200문제까지 등록할 수 있어요.');
@@ -145,17 +162,17 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
       } else if (body.action === 'new-draft') {
         builder();
         if (t.draft.phase !== 'published') fail(409, 'UNPUBLISHED', '현재 문제를 먼저 등록해 주세요.');
-        // Advance each person's role: build → front → right → top → build.
-        // Keep the current draft's seat offset intact until the next question.
-        t.draft = draft((t.draft.turn + 3) % 4);
+        // Rotate through everyone, preserving the existing four-person role cycle.
+        const next = (t.members.indexOf(builderOf(t)) + t.members.length - 1) % t.members.length;
+        t.draft = draft(next); t.draft.builderId = t.members[next];
       } else if (body.action === 'start-race') {
         teacher();
         if (active) fail(409, 'RACE_ACTIVE', '팀전이 진행 중이에요.');
         if (!Array.isArray(body.questionIds) || !body.questionIds.length || new Set(body.questionIds).size !== body.questionIds.length) fail(400, 'QUESTIONS_REQUIRED', '등록된 문제를 선택해 주세요.');
         const qs = body.questionIds.map(id => s.questions.find(q => q.id === id));
         if (qs.some(q => !q)) fail(400, 'INVALID_QUESTIONS', '등록된 문제만 사용할 수 있어요.');
-        const playing = s.teams.filter(t => t.members.length);
-        if (!playing.length || playing.some(t => t.members.length !== 4 || !t.members.every(id => roster.some(m => m.id === id)))) fail(409, 'FOUR_REQUIRED', '참가 모둠마다 네 명이 필요해요.');
+        const playing = s.teams.filter(t => t.members.some(id => roster.some(m => m.id === id)));
+        if (!playing.length) fail(409, 'TEAM_REQUIRED', '참가할 모둠이 없어요.');
         s.race = { id: uuid(), phase: 'playing', startedAt: now(), questions: clone(qs), teams: Object.fromEntries(playing.map(t => [t.id, { index: 0, heights: blank(), version: 0, history: [], finishedAt: null }])) };
       } else if (body.action === 'check-answer') {
         inTeam();

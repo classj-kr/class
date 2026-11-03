@@ -105,6 +105,58 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await context.close();
     }
 
+    // A real class grows towers, changes leader, celebrates once, and survives reload.
+    const roster = [];
+    async function request(path, body, token = '', studentName = '') {
+      const response = await fetch(base + '/api/stacking-race/rooms/' + code + path, {
+        method: body === undefined ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token, 'x-name': encodeURIComponent(studentName) },
+        ...(body === undefined ? {} : { body: JSON.stringify(body) })
+      });
+      const data = await response.json(); assert.equal(response.status, 200, JSON.stringify(data)); return data;
+    }
+    for (const studentName of ['가람', '나래', '다온', '라온', '마루', '바다', '새봄', '아람', '여름', '지우', '하늘', '해솔', '도윤', '서연', '수빈', '민준', '예린', '지호', '유나', '은우', '소윤', '시우', '채원', '태민']) roster.push(await request('/join', {}, '', studentName));
+    await teacher.waitForFunction(() => document.querySelectorAll('.race-tower-card').length === 24);
+    await capture(teacher, 'teacher-class-lobby');
+    await teacher.locator('#race-start').click(); await teacher.locator('#race-stop').waitFor();
+    const hostToken = await teacher.evaluate(code => JSON.parse(localStorage.getItem('stacking-race-ticket-' + code)).token, code);
+    const round = await request('', undefined, hostToken);
+    const answer = (player, index) => request('/answer', { roundId: round.roundId, index, heights: round.questions[index] }, player.token);
+    const firstCard = teacher.locator(`[data-player="${roster[0].state.me.id}"]`), winnerCard = teacher.locator(`[data-player="${roster[1].state.me.id}"]`);
+    await answer(roster[0], 0);
+    await teacher.waitForFunction(id => document.querySelector(`[data-player="${id}"] [aria-valuenow="1"]`), roster[0].state.me.id);
+    await firstCard.evaluate(node => { window.firstTowerNode = node; });
+    await answer(roster[1], 0); await answer(roster[1], 1);
+    await teacher.waitForFunction(id => document.querySelector('.race-tower-card').dataset.player === id, roster[1].state.me.id);
+    await teacher.waitForFunction(() => document.getElementById('race-banner').textContent.includes('1위로'));
+    assert.equal(await firstCard.evaluate(node => node === window.firstTowerNode), true, 'polling reuses the same card so rank changes can animate');
+    for (let i = 2; i < round.total; i++) await answer(roster[1], i);
+    await teacher.waitForFunction(() => document.getElementById('race-banner').textContent.includes('나래 완주'));
+    assert.equal(await winnerCard.locator('.tower-block').count(), round.total);
+    assert.equal(await teacher.locator('.race-spark').count(), 28);
+    for (let i = 2; i < roster.length; i++) for (let q = 0; q < i % round.total; q++) await answer(roster[i], q);
+    await teacher.waitForFunction(total => [...document.querySelectorAll('.tower-progress')].reduce((sum, n) => sum + Number(n.getAttribute('aria-valuenow')), 0) === total,
+      1 + round.total + roster.slice(2).reduce((sum, _, i) => sum + (i + 2) % round.total, 0));
+    await teacher.waitForTimeout(800);
+    await capture(teacher, 'teacher-tower-race');
+    const stageLayout = await teacher.locator('.race-card').evaluate(node => ({ height: node.clientHeight, content: node.scrollHeight, columns: getComputedStyle(document.getElementById('race-ranks')).gridTemplateColumns, ranks: document.getElementById('race-ranks').clientHeight, row: document.querySelector('.race-tower-card').clientHeight }));
+    assert.ok(stageLayout.content <= stageLayout.height + 1, '24 students and teacher controls fit the desktop scoreboard: ' + JSON.stringify(stageLayout));
+    await teacher.locator('#race-show-sound').click(); assert.equal(await teacher.evaluate(() => StackingSounds.muted()), true);
+    await teacher.reload(); await teacher.locator('.race-tower-card.is-complete').waitFor();
+    assert.equal(await teacher.locator('.tower-drop,.race-spark').count(), 0, 'reloading does not replay old finish or progress effects');
+    assert.equal(await teacher.locator('#race-show-sound').getAttribute('aria-pressed'), 'false');
+    await teacher.emulateMedia({ reducedMotion: 'reduce' });
+    await answer(roster[0], 1);
+    await teacher.waitForFunction(id => document.querySelector(`[data-player="${id}"] [aria-valuenow="2"]`), roster[0].state.me.id);
+    assert.equal(await firstCard.locator('.tower-drop').count(), 0, 'reduced motion keeps the progress without drop animation');
+    await teacher.locator('#race-stop').click(); await teacher.locator('#race-start').waitFor();
+    await capture(teacher, 'teacher-results');
+    await teacher.setViewportSize({ width: 390, height: 844 }); await capture(teacher, 'teacher-phone');
+    assert.equal(await teacher.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    await teacher.setViewportSize({ width: 1366, height: 900 });
+    await teacher.locator('#race-start').click(); await teacher.locator('#race-stop').waitFor();
+    assert.equal(await teacher.locator('.tower-block').count(), 0, 'a new race resets every tower');
+    await teacher.locator('#race-stop').click(); await teacher.locator('#race-start').waitFor();
+
     // Expired invitations still expose the shared entry link, without a second form.
     teacher.once('dialog', dialog => dialog.accept());
     await teacher.locator('#race-leave').click();
