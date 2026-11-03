@@ -43,7 +43,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
     }));
     const canBuild = mine && !who.teacher && (active ? !!progress && !progress.finishedAt : mine.draft.phase === 'building');
     // Race clients receive the three silhouettes only, never the source heights.
-    return { revision: s.revision, board: { id: b.id, code: b.code, title: b.title, closed: b.closed },
+    return { revision: s.revision, board: { id: b.id, code: b.code, title: b.title, closed: b.closed, teamCapacity: s.teamCapacity ?? null },
       me: { teacher: !!who.teacher, id: who.id || null, name: who.name, teamId: mine?.id || null, role: mine ? 'build' : null, roles: mine ? roles : [] },
       teams: safeTeams, bankRevision: s.bankRevision || 0,
       ...(Number(knownBankRevision) === (s.bankRevision || 0) ? {} : { questions: s.questions.map(q => ({ id: q.id, title: q.title, author: q.author, pictures: q.pictures })) }),
@@ -88,11 +88,21 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
         if (active || s.teams.some(t => t.members.length)) fail(409, 'TEAMS_IN_USE', '모둠에 입장하기 전에 정해 주세요.');
         if (!Number.isInteger(body.count) || body.count < 1 || body.count > 15) fail(400, 'INVALID_COUNT', '모둠 수는 1~15개예요.');
         s.teams = Array.from({ length: body.count }, (_, i) => team(i));
+      } else if (body.action === 'team-capacity') {
+        teacher();
+        if (body.capacity !== null && (!Number.isInteger(body.capacity) || body.capacity < 1 || body.capacity > 60)) {
+          fail(400, 'INVALID_CAPACITY', '모둠당 최대 인원은 1~60명으로 정해 주세요.');
+        }
+        s.teamCapacity = body.capacity;
       } else if (body.action === 'join-team') {
         if (who.teacher || (active && t && t.id !== body.teamId)) fail(409, 'TEAM_LOCKED', '지금은 모둠을 바꿀 수 없어요.');
         const target = s.teams.find(v => v.id === body.teamId);
         if (!target) fail(404, 'TEAM_MISSING', '모둠을 찾을 수 없어요.');
         if (target !== t) {
+          // Check under the board lock, before releasing a student's current seat.
+          if (s.teamCapacity != null && target.members.length >= s.teamCapacity) {
+            fail(409, 'TEAM_FULL', `${target.name}의 정원이 찼어요. 다른 모둠을 골라 주세요.`);
+          }
           if (t) t.members = t.members.filter(id => id !== who.id);
           target.members.push(who.id);
           if (active && !s.race.teams[target.id]) s.race.teams[target.id] = raceTeam();

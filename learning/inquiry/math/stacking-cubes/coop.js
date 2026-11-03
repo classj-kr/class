@@ -15,10 +15,24 @@
     <section id="coop-panel" class="coop-panel" aria-label="쌓기나무 문제은행"><div class="coop-card">
       <header><h2 id="coop-title">쌓기나무 문제은행</h2><a href="/room/">방번호 입력</a><button id="coop-close" aria-label="게시판 닫기" hidden>×</button></header>
       <div id="coop-entry" hidden><form id="coop-create"><label for="coop-bank-title">게시판 이름</label><div class="coop-row"><input id="coop-bank-title" maxlength="80" value="쌓기나무 문제은행" required><button class="primary-button">만들기</button></div></form><div id="coop-banks" class="coop-banks"></div></div>
-      <div id="coop-board" hidden><div id="coop-teacher-controls" class="coop-row"></div><section id="coop-stage" aria-label="팀전 현황판" hidden></section><div id="coop-teams" class="coop-teams"></div><div class="coop-bank-heading"><h3>등록된 문제</h3><div id="coop-race-controls"></div></div><div id="coop-questions" class="coop-questions"></div></div>
+      <div id="coop-board" hidden><div id="coop-teacher-controls" class="coop-row" hidden>
+        <label>모둠당 최대 인원 <select id="coop-capacity"><option value="">제한 없음</option></select></label>
+        <div id="coop-team-controls" class="coop-row"></div>
+      </div><section id="coop-stage" aria-label="팀전 현황판" hidden></section><div id="coop-teams" class="coop-teams"></div><div class="coop-bank-heading"><h3>등록된 문제</h3><div id="coop-race-controls"></div></div><div id="coop-questions" class="coop-questions"></div></div>
     </div></section>`;
   document.body.append(ui);
   const teamStage = window.createStackingTeamStage($('coop-stage'));
+  const capacitySelect = $('coop-capacity');
+  for (let n = 1; n <= 60; n++) capacitySelect.add(new Option(`${n}명`, String(n)));
+  capacitySelect.onchange = async () => {
+    capacitySelect.disabled = true;
+    try {
+      await send('team-capacity', { capacity: capacitySelect.value ? Number(capacitySelect.value) : null });
+    } finally {
+      capacitySelect.value = String(state.board.teamCapacity ?? '');
+      capacitySelect.disabled = false;
+    }
+  };
   function element(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
   function button(text, fn, cls = '') { const b = element('button', text, cls); b.type = 'button'; b.onclick = fn; return b; }
   function status(message = '') { $('coop-status').textContent = message; }
@@ -110,9 +124,12 @@
     const myTeam = state.teams.find(t => t.id === state.me.teamId);
     $('coop-label').textContent = state.me.teacher ? `방 ${state.board.code}` : `${myTeam?.name || '모둠 선택'}${myTeam ? ' · ' + (state.race ? '함께 쌓기' : '공동 출제') : ''}`;
     if (!panelOpen && !state.me.teacher) { renderDock(); panel(false); return; }
-    const controls = $('coop-teacher-controls'); controls.replaceChildren();
+    const capacity = state.board.teamCapacity;
+    $('coop-teacher-controls').hidden = !state.me.teacher;
+    const controls = $('coop-team-controls'); controls.replaceChildren();
     if (state.me.teacher) {
-      if (state.teams.every(t => !t.members.length)) {
+      if (!capacitySelect.disabled) capacitySelect.value = String(capacity ?? '');
+      if (!state.race && state.teams.every(t => !t.members.length)) {
         const label = element('label', '모둠 수 '), count = element('input'); count.type = 'number'; count.min = 1; count.max = 15; count.value = state.teams.length; count.setAttribute('aria-label', '모둠 수');
         label.append(count); controls.append(label, button('적용', () => send('team-count', { count: Number(count.value) })));
       }
@@ -136,11 +153,20 @@
     for (const t of ranked.filter(t => !teacherStage && (!state.race || joiningRace || t.score !== undefined))) {
       const card = element('div', undefined, 'coop-team'); card.classList.toggle('is-mine', t.id === state.me.teamId);
       const rank = t.score ? 1 + ranked.filter(other => (other.score || 0) > t.score || other.score === t.score && other.solvedAt < t.solvedAt).length : null;
-      card.append(element('strong', `${rank ? rank + '위 · ' : ''}${t.name} · ${t.members.length}명${t.score !== undefined ? ` · ${t.score}/${state.race.total}문제${t.finishedAt ? ' 완료' : ''}` : ''}`));
+      const seats = capacity == null ? `${t.members.length}명` : `${t.members.length}명 (최대 ${capacity}명)`;
+      card.append(element('strong', `${rank ? rank + '위 · ' : ''}${t.name} · ${seats}${t.score !== undefined ? ` · ${t.score}/${state.race.total}문제${t.finishedAt ? ' 완료' : ''}` : ''}`));
       for (const m of t.members) card.append(element('span', m.name));
-      if (!state.me.teacher && (!state.race || joiningRace) && t.id !== state.me.teamId) card.append(button('이 모둠 참여', () => send('join-team', { teamId: t.id })));
+      if (!state.me.teacher && (!state.race || joiningRace) && t.id !== state.me.teamId) {
+        const full = capacity != null && t.members.length >= capacity;
+        const join = button(full ? '정원 마감' : '이 모둠 참여', () => send('join-team', { teamId: t.id }));
+        join.disabled = full;
+        card.append(join);
+      }
       if (state.me.teacher && !state.race && t.members.length) card.append(button('모둠 초기화', () => { if (confirm(`${t.name}의 배정과 작성 중인 문제를 초기화할까요? 등록된 문제는 보관됩니다.`)) send('reset-team', { teamId: t.id }); }, 'coop-small'));
       teams.append(card);
+    }
+    if (!state.me.teacher && !myTeam && (!state.race || joiningRace) && capacity != null && state.teams.every(t => t.members.length >= capacity)) {
+      teams.append(element('p', '모든 모둠이 찼어요. 선생님께 알려 주세요.', 'coop-empty'));
     }
     const questions = $('coop-questions'); questions.replaceChildren();
     for (const q of state.questions) {
