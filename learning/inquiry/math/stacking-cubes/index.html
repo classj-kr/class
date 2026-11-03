@@ -6,60 +6,40 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=textbook-boards-1">
+  <link rel="stylesheet" href="style.css?v=20261104-camera">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
   <script src="model.js?v=textbook-boards-1" defer></script>
   <script src="activities.js?v=textbook-boards-1" defer></script>
-  <script src="sound.js?v=20261028-celebration" defer></script>
+  <script src="sound.js?v=20261104-camera" defer></script>
   <script src="library.js?v=textbook-boards-1" defer></script>
-  <script src="app.js?v=textbook-boards-1" defer></script>
-  <script src="race.js?v=team-finish-1" defer></script>
-  <link rel="stylesheet" href="coop.css?v=textbook-boards-2">
-  <script src="team-stage.js?v=team-finish-1" defer></script>
+  <script src="app.js?v=20261104-camera" defer></script>
+  <script src="race.js?v=20261104-camera" defer></script>
+  <link rel="stylesheet" href="coop.css?v=20261104-camera">
+  <script src="team-stage.js?v=20261104-camera" defer></script>
   <script src="coop.js?v=textbook-boards-1" defer></script>
-  <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
+  <script src="/assets/sound/music-control.js?v=20261006-capture" data-sfx-controls defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
   <main class="workspace" aria-label="쌓기나무 교구">
     <h1 class="sr-only">쌓기나무</h1>
     <div class="top-controls">
       <button id="activity-button" class="activity-button" type="button" aria-haspopup="dialog">활동</button>
-      <output id="total" class="total" aria-live="polite" hidden>전체 0개</output>
-      <span id="view-label" class="view-label" hidden></span>
-      <button id="sound-toggle" class="sound-toggle" type="button" aria-label="효과음 끄기" aria-pressed="true" title="효과음 끄기">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 6 8H3v8h3l5 4V4Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="sound-off" d="m15 9 6 6m0-6-6 6"/></svg>
-      </button>
-      <button id="view-button" class="view-button" type="button" aria-label="보기와 설정" aria-expanded="false" aria-controls="view-panel">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
-        <span class="view-button-label">보기</span>
-      </button>
     </div>
 
-    <section id="view-panel" class="view-panel" aria-label="보기와 쌓기판 설정" hidden>
+    <section class="board-bar" aria-label="쌓기판 도구">
       <div class="view-choices" role="group" aria-label="관찰 방향">
         <button type="button" data-view="solid" aria-pressed="true">입체</button>
         <button type="button" data-view="top" aria-pressed="false">위</button>
         <button type="button" data-view="front" aria-pressed="false">앞</button>
         <button type="button" data-view="right" aria-pressed="false">오른쪽 옆</button>
       </div>
-      <label id="board-size-row" class="check-row">쌓기판 <select id="board-size"><option value="3">3×3 · 16개</option><option value="4">4×4 · 20개</option><option value="5" disabled hidden>5×5 · 기존 모양</option></select></label>
-      <label class="check-row"><span>전체 개수</span><input id="show-total" type="checkbox"></label>
-      <label class="check-row"><span>위 보기의 층수</span><input id="show-heights" type="checkbox"></label>
-      <div class="sound-settings">
-        <label class="check-row"><span>효과음</span><input id="sound-enabled" type="checkbox" checked></label>
-        <label class="volume-row" for="sound-volume"><span>음량</span><input id="sound-volume" type="range" min="0" max="100" step="5" value="65"></label>
+      <div class="board-options">
+        <label id="board-size-row"><span class="sr-only">쌓기판</span><select id="board-size" title="쌓기판 크기"><option value="3">3×3 · 16개</option><option value="4">4×4 · 20개</option><option value="5" disabled hidden>5×5 · 기존 모양</option></select></label>
+        <label class="display-option" for="show-total"><input id="show-total" type="checkbox" aria-label="전체 개수 표시"><span>개수</span><output id="total" aria-live="polite" hidden>전체 0개</output></label>
+        <label class="display-option"><input id="show-heights" type="checkbox"><span>위·층수</span></label>
+        <button id="reset-camera" type="button" title="시점 되돌리기" aria-label="시점 되돌리기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.5 7M3 5v6h6"/></svg><span>시점 복원</span></button>
+        <button id="clear-board" type="button" title="모두 지우기" aria-label="모두 지우기" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7m4-7v7"/></svg><span>모두 지우기</span></button>
       </div>
-      <div class="panel-actions">
-        <button id="reset-camera" type="button">시점 되돌리기</button>
-        <button id="clear-board" type="button" disabled>모두 지우기</button>
-      </div>
-      <details class="help">
-        <summary>조작 방법</summary>
-        <p>누르기: 한 층 쌓기·지우기<br>드래그: 돌리기 · 휠·두 손가락: 확대</p>
-        <p>방향키: 칸 선택 · Enter: 쌓기<br>Delete: 지우기 · Ctrl/⌘ + Z: 되돌리기</p>
-        <p>목표 모양도 드래그로 돌릴 수 있어요.<br>위·층수: 가려진 칸의 높이 확인</p>
-        <p id="board-limits"></p>
-      </details>
     </section>
 
     <div class="scene-wrap">
@@ -143,7 +123,7 @@
           <button id="race-leave" type="button">나가기</button>
         </div></div>
         <section id="race-showcase" class="race-showcase" aria-label="실시간 쌓기 현황" hidden>
-          <div class="race-show-heading"><div><span class="race-show-eyebrow">우리 반 쌓기 챌린지</span><strong id="race-banner" role="status" aria-live="polite"></strong></div><button id="race-show-sound" type="button" aria-label="현황판 효과음 끄기" aria-pressed="true">소리 켜짐</button></div>
+          <div class="race-show-heading"><div><span class="race-show-eyebrow">우리 반 쌓기 챌린지</span><strong id="race-banner" role="status" aria-live="polite"></strong></div></div>
           <div id="race-summary" class="race-summary"></div>
           <div id="race-sparkles" class="race-sparkles" aria-hidden="true"></div>
         </section>
@@ -168,6 +148,13 @@
       <div id="saved-list"></div>
       <button id="undo-saved-delete" class="text-button" type="button" hidden>삭제 되돌리기</button>
     </section>
+    <details class="help">
+      <summary>조작 방법</summary>
+      <p>누르기: 한 층 쌓기·지우기<br>드래그: 돌리기 · 휠·두 손가락: 확대</p>
+      <p>방향키: 칸 선택 · Enter: 쌓기<br>Delete: 지우기 · Ctrl/⌘ + Z: 되돌리기</p>
+      <p>목표 모양도 드래그로 돌릴 수 있어요.<br>위·층수: 가려진 칸의 높이 확인</p>
+      <p id="board-limits"></p>
+    </details>
     <details id="keep-options" class="keep-options">
       <summary>저장·공유</summary>
       <form id="save-form"><label class="sr-only" for="shape-name">모양 이름</label><input id="shape-name" type="text" maxlength="32" placeholder="모양 이름" autocomplete="off"><button id="save-shape" class="primary-button" type="submit">기기에 저장</button></form>
