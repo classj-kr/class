@@ -112,7 +112,14 @@ function inside([x, y]: StackPoint, polygon: StackPoint[]) {
 test("10,000 generated problems expose every required column and empty position in the rendered projection", () => {
   const signatures = new Set<string>();
   for (let seed = 0; seed < 1000; seed += 1) {
-    for (const problem of createStackedCubesProblemSet(seed).problems) {
+    const { problems } = createStackedCubesProblemSet(seed);
+    const layerCounts = problems.map(problem => Math.max(...problem.heights.flat()));
+    assert.equal(layerCounts.filter(height => height === 2).length, 4);
+    assert.equal(layerCounts.filter(height => height === 3).length, 6);
+    for (const problem of problems) {
+      const columns = problem.heights.flat().filter(height => height > 0);
+      assert.ok(columns.filter(height => height >= 2).length >= 3, `seed ${seed}, ${problem.id}: several columns must rise above the base`);
+      assert.ok(columns.includes(1) && columns.includes(2), `seed ${seed}, ${problem.id}: every layer must have a different outline`);
       signatures.add(JSON.stringify(problem.heights));
       const faces = stackDiagramFaces(problem.heights);
       const required = faces.filter((face) => face.kind === "top" || (problem.kind !== "count-map" && face.kind === "ground" && problem.heights[face.r][face.c] === 0));
