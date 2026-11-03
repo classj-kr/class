@@ -737,7 +737,7 @@
     }
   };
   const library = window.StackingLibrary({
-    snapshot: () => model.snapshot(), sound,
+    sound,
     load: heights => { freeModel.replace(heights); startActivity('free'); sound('save'); }
   });
   function openShared() {

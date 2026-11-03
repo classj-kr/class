@@ -222,22 +222,14 @@ dialog::backdrop { background: #29342c38; backdrop-filter: blur(3px); }
 .activity-choices strong { display: block; }
 .activity-choices strong { font-size: 15px; }
 .saved-section { margin-top: 26px; }
-.saved-section h3 { font-size: 15px; margin: 0 0 10px; }
+.saved-section summary { cursor:pointer; padding:12px 0; font-size:14px; }
 #saved-list { display: grid; gap: 6px; }
 .saved-row { display: flex; gap: 6px; align-items: center; padding: 5px 6px; border: 1px solid #e6e7df; border-radius: 11px; }
 .saved-open { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; text-align: left; min-height: 48px; }
 .saved-open span { overflow-wrap: anywhere; font-size: 14px; }
 .saved-open svg { width: 42px; height: 42px; flex-shrink: 0; }
 .saved-delete { min-width: 44px; min-height: 44px; color: #8e7768; font-size: 23px; }
-.keep-options { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 5px; }
-.keep-options summary { cursor: pointer; min-height: 48px; padding: 14px 0; font-size: 14px; font-weight: 600; }
-#save-form, .share-row { display: flex; gap: 8px; margin: 12px 0; }
-#save-shape { white-space: nowrap; }
-#shape-name, #share-mode, #share-link { min-width: 0; min-height: 44px; padding: 10px; flex: 1; border: 1px solid #cdd3c7; border-radius: 9px; background: #fff; color: #333d39; font-size: 14px; }
-#share-link { width: 100%; font-size: 12px; }
-.share-row button { padding: 8px 12px; border: 1px solid var(--border); border-radius: 9px; font-size: 13px; }
-.file-actions { display: flex; gap: 14px; }
-.file-actions button, .text-button { min-height: 44px; font-size: 13px; color: var(--ink); padding: 8px 0; }
+.text-button { min-height:44px; font-size:13px; color:var(--ink); padding:8px 0; }
 .library-status { margin: 8px 0 0; color: #536e5a; font-size: 13px; line-height: 1.7; }
 .library-status:empty { margin: 0; }
 @media (max-width: 800px) and (min-height: 501px) {
