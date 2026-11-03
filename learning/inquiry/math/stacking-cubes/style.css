@@ -48,6 +48,18 @@ button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke
 .block-face { stroke: #a17a43; stroke-width: 1.05; stroke-linejoin: round; }
 .direction-label { fill: #457061; font-weight: 650; font-size: 15px; text-anchor: middle; pointer-events: none; }
 .direction-label.secondary { fill: #8a8f81; font-weight: 500; font-size: 13px; }
+[data-direction="front"] { --direction-ink: #785517; --direction-fill: #fff0cc; --direction-border: #c9a864; }
+[data-direction="right"] { --direction-ink: #345c7a; --direction-fill: #e7eff8; --direction-border: #99b4cb; }
+[data-direction="top"] { --direction-ink: #2d654d; --direction-fill: #e6f0e8; --direction-border: #96b8a2; }
+.direction-edge { fill: none; stroke: var(--direction-border); stroke-width: 4; stroke-linecap: round; pointer-events: none; }
+.direction-label[data-direction] { fill: var(--direction-ink); }
+.direction-marker { pointer-events: none; }
+.direction-marker rect { fill: var(--direction-fill); stroke: var(--direction-border); stroke-width: 1.2; }
+.direction-marker .direction-label { fill: var(--direction-ink); font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif; font-size: 13px; font-weight: 650; dominant-baseline: central; }
+.direction-marker.is-small .direction-label { font-size: 11px; }
+.direction-marker.is-assigned rect { fill: var(--direction-ink); stroke: var(--direction-ink); stroke-width: 2; }
+.direction-marker.is-assigned .direction-label,.direction-marker circle { fill: #fffefa; }
+.direction-pointer { fill: none; stroke: var(--direction-ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
 .cell-number { fill: #3d3424; text-anchor: middle; dominant-baseline: central; font-weight: 700; pointer-events: none; }
 .bottom-controls { display: flex; flex-direction: column; align-items: center; gap: 17px; padding: 0 16px max(25px, env(safe-area-inset-bottom)); }
 .hint { margin: 0; font-size: 13px; line-height: 1.5; color: #70766c; text-align: center; min-height: 20px; }

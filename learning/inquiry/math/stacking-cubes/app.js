@@ -155,8 +155,10 @@
       const a = x - SIZE / 2, b = z - SIZE / 2;
       pieces.push(face([[a, 0, b], [a + 1, 0, b], [a + 1, 0, b + 1], [a, 0, b + 1]], `class="floor-cell" data-cell="${x},${z}" data-surface="floor"`));
     }
-    const frontLine = [[-.4, .005, edge], [.4, .005, edge]].map(project);
-    pieces.push(`<polyline points="${pointText(frontLine)}" fill="none" stroke="#477968" stroke-width="4" stroke-linecap="round"/>`);
+    for (const direction of ['front', 'right']) {
+      const line = direction === 'front' ? [[-.4, .005, edge], [.4, .005, edge]] : [[edge, .005, -.4], [edge, .005, .4]];
+      pieces.push(`<polyline points="${pointText(line.map(project))}" class="direction-edge" data-direction="${direction}"/>`);
+    }
 
     const faces = [];
     function addFace(points, color, x, z, surface) {
@@ -186,8 +188,25 @@
     }
     const front = project([0, -.08, edge + .44]);
     const right = project([edge + .48, -.08, 0]);
-    pieces.push(`<text x="${front[0]}" y="${front[1] + 7}" class="direction-label"${isTarget ? ' style="font-size:11px"' : ''}>앞</text>`);
-    if (!isTarget) pieces.push(`<text x="${right[0]}" y="${right[1] + 7}" class="direction-label secondary">오른쪽</text>`);
+    function marker(point, direction, label) {
+      const assigned = !isTarget && shared?.direction === direction;
+      const markerWidth = (direction === 'right' ? 82 : isTarget ? 28 : 38) + (assigned ? 14 : 0);
+      const markerHeight = isTarget ? 21 : 28;
+      const x = clamp(point[0], markerWidth / 2 + 3, width - markerWidth / 2 - 3);
+      const y = clamp(point[1] + 3, markerHeight / 2 + 3, height - markerHeight / 2 - 3);
+      return `<g class="direction-marker${assigned ? ' is-assigned' : ''}${isTarget ? ' is-small' : ''}" data-direction="${direction}">`
+        + `<rect x="${x - markerWidth / 2}" y="${y - markerHeight / 2}" width="${markerWidth}" height="${markerHeight}" rx="7"/>`
+        + (assigned ? `<circle cx="${x - markerWidth / 2 + 10}" cy="${y}" r="3"/><title>내 방향: ${label}</title>` : '')
+        + `<text x="${x + (assigned ? 5 : 0)}" y="${y}" class="direction-label">${label}</text></g>`;
+    }
+    pieces.push(marker(front, 'front', '앞'));
+    if (!isTarget) pieces.push(marker(right, 'right', '오른쪽 옆'));
+    if (!isTarget && shared?.direction === 'top') {
+      const heights = board.snapshot(), h = Math.max(...heights), cell = h ? heights.indexOf(h) : 12;
+      const top = project([cell % SIZE + .5 - SIZE / 2, h, Math.floor(cell / SIZE) + .5 - SIZE / 2]);
+      pieces.push(`<path d="M${top[0]} ${Math.max(34, top[1] - 14)}V${top[1] - 3}m-4-5 4 5 4-5" class="direction-pointer" data-direction="top"/>`);
+      pieces.push(marker([top[0], top[1] - 33], 'top', '위'));
+    }
     pieces.push('</g>');
     return pieces.join('');
   }
@@ -212,11 +231,11 @@
       }
     }
     if (top) {
-      pieces.push(`<path d="M${width / 2 - 16} ${boardBottom + 1}h32" stroke="#477968" stroke-width="4" stroke-linecap="round"/>`);
-      pieces.push(`<text x="${width / 2}" y="${boardBottom + (numberedTarget ? 16 : 28)}" class="direction-label"${numberedTarget ? ' style="font-size:12px"' : ''}>앞</text>`);
-      pieces.push(`<text x="${left + SIZE * cell + (numberedTarget ? 13 : board === model ? 23 : 18)}" y="${height / 2}" class="direction-label secondary" style="writing-mode:vertical-rl${board === model ? '' : ';font-size:11px'}">오른쪽</text>`);
+      pieces.push(`<path d="M${width / 2 - 16} ${boardBottom + 1}h32" class="direction-edge" data-direction="front"/>`);
+      pieces.push(`<text x="${width / 2}" y="${boardBottom + (numberedTarget ? 16 : 28)}" class="direction-label" data-direction="front"${numberedTarget ? ' style="font-size:12px"' : ''}>앞</text>`);
+      pieces.push(`<text x="${left + SIZE * cell + (numberedTarget ? 13 : board === model ? 23 : 18)}" y="${height / 2}" class="direction-label secondary" data-direction="right" style="writing-mode:vertical-rl${board === model ? '' : ';font-size:11px'}">오른쪽</text>`);
     } else if (direction === 'right') {
-      pieces.push(`<text x="${left + cell / 2}" y="${boardBottom + (numberedTarget ? 16 : 28)}" class="direction-label"${numberedTarget ? ' style="font-size:12px"' : ''}>앞쪽</text>`);
+      pieces.push(`<text x="${left + cell / 2}" y="${boardBottom + (numberedTarget ? 16 : 28)}" class="direction-label" data-direction="front"${numberedTarget ? ' style="font-size:12px"' : ''}>앞쪽</text>`);
     }
     pieces.push('</g>');
     return pieces.join('');
