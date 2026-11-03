@@ -19,6 +19,9 @@ credits = json.loads((APP / 'data' / 'catalog' / 'photo-credits.json').read_text
 
 landmarks = json.loads((APP / 'data' / 'catalog' / 'city-landmarks.json').read_text(encoding='utf-8'))
 discoveries = json.loads((APP / 'data' / 'catalog' / 'discoveries.json').read_text(encoding='utf-8'))
+textbook_sites = json.loads((APP / 'data' / 'catalog' / 'textbook-sites.json').read_text(encoding='utf-8'))
+landmarks += textbook_sites['cityLandmarks']
+discoveries += textbook_sites['discoveries']
 sea_animals = json.loads((APP / 'data' / 'catalog' / 'sea-animals.json').read_text(encoding='utf-8'))
 names = {item['id']: item['name'] for item in landmarks}
 names.update({item['id']: item['animal'] for item in sea_animals})

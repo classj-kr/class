@@ -2193,5 +2193,165 @@
     "source": "https://commons.wikimedia.org/wiki/File:Tyr_Monuments.jpg",
     "changes": "크기 축소 및 WebP 변환",
     "title": "Tyr_Monuments.jpg"
+  },
+  "great-artesian-basin": {
+    "author": "kdliss",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:ThargomindahHydro.jpg",
+    "kind": "photo",
+    "caption": "사진 속 · 타고민다의 뜨거운 물 우물",
+    "changes": "크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "sahel": {
+    "author": "Annabel Symington",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Flickr_-_stringer_bel_-_The_road_to_Timbuktu%2C_Mali.jpg",
+    "kind": "photo",
+    "caption": "사진 속 · 말리의 아카시아 풀밭",
+    "changes": "크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "great-dividing-range": {
+    "author": "Prof. Chen Hualin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:The_typical_blue_haze_in_the_Jamison_Valley_behand_the_Three_Sister.jpeg",
+    "kind": "photo",
+    "caption": "사진 속 · 블루마운틴스의 세 자매 바위",
+    "changes": "크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "wadden-sea": {
+    "author": "Ralf Roletschek",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:13-09-29-nordfriesisches-wattenmeer-RalfR-19.jpg",
+    "kind": "photo",
+    "caption": "사진 속 · 썰물에 드러난 갯벌",
+    "changes": "크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "serengeti": {
+    "author": "Bjørn Christian Tørrissen",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Serengeti-Landscape-2012.JPG",
+    "kind": "photo",
+    "caption": "사진 속 · 사바나의 풀밭과 나무",
+    "changes": "크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "ur-ziggurat": {
+    "author": "en:User:Hardnfast",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ancient_ziggurat_at_Ali_Air_Base_Iraq_2005.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "mohenjo-daro": {
+    "author": "Saqib Qayyum",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Great_bath_view_Mohenjodaro.JPG",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "harappa": {
+    "author": "Hassan Nasir",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Harappa_Ruins_-_III.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "horyuji": {
+    "author": "Jean-Pierre Dalbéra from Paris, France",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Le_temple_bouddhique_Horyuji_(Ikaruga,_Japon)_(29157011378).jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "todaiji": {
+    "author": "Zairon",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nara_Todai-ji_Daibutsuden_Exterior_South_Side_11.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "port-campbell-coast": {
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Princetown_(AU),_Port_Campbell_National_Park,_Twelve_Apostles_--_2019_--_0930.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "copacabana-beach": {
+    "author": "Adam Jones, Ph.D.",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Panorama_of_Copacabana_Beach_-_Rio_de_Janeiro_-_Brazil.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "greenwich-observatory-later": {
+    "author": "Julian Herzog (Website)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Flamsteed_House_Greenwich_2023_01.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "eiffel-tower-later": {
+    "author": "Jorge Royan",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "statue-liberty-later": {
+    "author": "Daniel Schwen",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Statue_of_Liberty_frontal_2.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
+  },
+  "sydney-opera-house-later": {
+    "author": "Diliff",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_-_Dec_2008.jpg",
+    "kind": "photo",
+    "caption": "오늘날의 모습",
+    "changes": "원본 구도를 유지해 크기 축소 및 WebP 변환",
+    "preserveFrame": true
   }
 }

@@ -2,6 +2,10 @@
 const crypto = require('node:crypto');
 const QUESTION_COUNT = 3;
 const QUESTIONS_VERSION = '20261021-learning-1';
+const QUESTION_REVISIONS = require('../data/catalog/textbook-sites.json').questionRevisions;
+function questionsVersionFor(target) {
+  return QUESTION_REVISIONS[target.id || String(target.key).split(':')[1]] || QUESTIONS_VERSION;
+}
 const INSTRUCTIONS = '지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 세 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.';
 const { createQuestions } = require('./study-question-builder');
 function shuffle(values) {
@@ -51,10 +55,10 @@ function refreshMission(mission,resolveTarget,pool,progresses=[]) {
   if(!mission?.studyTargets)return false;
   let changed=false;
   for(const target of mission.studyTargets){
-    if(target.questionsVersion===QUESTIONS_VERSION)continue;
+    if(target.questionsVersion===questionsVersionFor(target))continue;
     const fresh=resolveTarget(target.key);
     const questions=createQuestions(fresh,pool);
-    Object.assign(target,fresh,{questions,questionsVersion:QUESTIONS_VERSION});
+    Object.assign(target,fresh,{questions,questionsVersion:questionsVersionFor(fresh)});
     for(const progress of progresses){
       const state=progress?.places?.[target.key];
       if(state?.phase==='quiz'){state.phase='reading';state.token=null;state.order=null;}
@@ -64,4 +68,14 @@ function refreshMission(mission,resolveTarget,pool,progresses=[]) {
   if(mission.instructions!==INSTRUCTIONS){mission.instructions=INSTRUCTIONS;changed=true;}
   return changed;
 }
-module.exports={QUESTION_COUNT,QUESTIONS_VERSION,INSTRUCTIONS,createQuestions,normalizeProgress,publicState,publicSession,issue,answer,upgradeMission,refreshMission};
+function refreshLearningMetadata(mission,resolveTarget){
+  let changed=false;
+  for(const target of mission?.studyTargets||[]){
+    const learning=resolveTarget(target.key)?.reading?.learning;
+    if(learning&&target.reading&&JSON.stringify(target.reading.learning)!==JSON.stringify(learning)){
+      target.reading={...target.reading,learning};changed=true;
+    }
+  }
+  return changed;
+}
+module.exports={QUESTION_COUNT,QUESTIONS_VERSION,questionsVersionFor,INSTRUCTIONS,createQuestions,normalizeProgress,publicState,publicSession,issue,answer,upgradeMission,refreshMission,refreshLearningMetadata};

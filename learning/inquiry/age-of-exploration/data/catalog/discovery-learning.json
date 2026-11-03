@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "reviewDate": "2026-10-21",
+  "version": 2,
+  "reviewDate": "2026-11-02",
   "topics": {
     "위치": {
       "levels": [
@@ -362,7 +362,31 @@
     "strait-of-dover": {
       "tier": "support",
       "topic": "항로",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회(박기범)_6-1_2022",
+          "publisher": "천재",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 145,
+          "path": "references/textbooks/초등/천재/사회/사회(박기범)_6-1_2022/사회(박기범)_6-1_2022.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역04-03",
+        "12세사02-02",
+        "12세사02-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 바닷길과 거점의 위치가 상품 교역과 사람들의 삶에 미친 영향을 설명한다."
     },
     "aachen-cathedral": {
       "tier": "support",
@@ -372,7 +396,32 @@
     "rhine-river": {
       "tier": "core",
       "topic": "교류",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 18,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-2 (전종한)_2022/교과서_6-2__ae83daec.pdf"
+        }
+      ],
+      "standards": [
+        "6사10-01",
+        "9사(지리)01-02",
+        "9역04-01",
+        "12세사02-01",
+        "12세사02-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 사람과 물건·문화가 이동한 경로와 지역 사이의 관계를 설명한다."
     },
     "cornwall-tin": {
       "tier": "support",
@@ -582,7 +631,31 @@
     "bosporus": {
       "tier": "core",
       "topic": "항로",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 136,
+          "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역04-03",
+        "12세사02-02",
+        "12세사02-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 바닷길과 거점의 위치가 상품 교역과 사람들의 삶에 미친 영향을 설명한다."
     },
     "segovia-aqueduct": {
       "tier": "extended",
@@ -607,7 +680,34 @@
     "great-wall-badaling": {
       "tier": "core",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "mount-athos": {
       "tier": "extended",
@@ -615,9 +715,21 @@
       "valuable": false
     },
     "yungang-grottoes": {
-      "tier": "support",
+      "tier": "core",
       "topic": "교류",
-      "valuable": false
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 4,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+        }
+      ]
     },
     "mount-olympus": {
       "tier": "extended",
@@ -712,7 +824,19 @@
     "pamukkale": {
       "tier": "support",
       "topic": "지질",
-      "valuable": false
+      "valuable": true,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 14,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-2 (전종한)_2022/교과서_6-2__ae83daec.pdf"
+        }
+      ]
     },
     "mount-etna": {
       "tier": "core",
@@ -812,7 +936,34 @@
     "yellow-river": {
       "tier": "core",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (한춘희)_2022",
+          "publisher": "아이스크림",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 13,
+          "path": "references/textbooks/초등/아이스크림/사회/사회 6-2 (한춘희)_2022/사회 6-2 교과서.pdf"
+        }
+      ],
+      "standards": [
+        "6사10-01",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "krak-des-chevaliers": {
       "tier": "support",
@@ -820,9 +971,21 @@
       "valuable": false
     },
     "longmen-grottoes": {
-      "tier": "support",
+      "tier": "core",
       "topic": "교류",
-      "valuable": false
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 8,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+        }
+      ]
     },
     "palmyra": {
       "tier": "support",
@@ -922,7 +1085,34 @@
     "giza-pyramids": {
       "tier": "core",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "persepolis": {
       "tier": "core",
@@ -967,7 +1157,34 @@
     "taj-mahal-later": {
       "tier": "later",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "thar-desert": {
       "tier": "support",
@@ -1080,9 +1297,21 @@
       "valuable": false
     },
     "ajanta-caves": {
-      "tier": "support",
+      "tier": "core",
       "topic": "교류",
-      "valuable": false
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 16,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+        }
+      ]
     },
     "red-sea": {
       "tier": "core",
@@ -1117,7 +1346,34 @@
     "teotihuacan": {
       "tier": "support",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 139,
+          "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "kilauea-volcano": {
       "tier": "core",
@@ -1292,7 +1548,31 @@
     "panama_isthmus": {
       "tier": "core",
       "topic": "항로",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (한춘희)_2022",
+          "publisher": "아이스크림",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 140,
+          "path": "references/textbooks/초등/아이스크림/사회/사회 6-1 (한춘희)_2022/사회 6-1 교과서.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역04-03",
+        "12세사02-02",
+        "12세사02-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 바닷길과 거점의 위치가 상품 교역과 사람들의 삶에 미친 영향을 설명한다."
     },
     "anuradhapura": {
       "tier": "support",
@@ -1452,7 +1732,34 @@
     "machu-picchu": {
       "tier": "core",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "andes": {
       "tier": "core",
@@ -1492,7 +1799,19 @@
     "victoria-falls": {
       "tier": "support",
       "topic": "지형",
-      "valuable": false
+      "valuable": true,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 2,
+          "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+        }
+      ]
     },
     "great-barrier-reef": {
       "tier": "core",
@@ -1512,7 +1831,19 @@
     "salar-de-uyuni": {
       "tier": "support",
       "topic": "기후",
-      "valuable": false
+      "valuable": true,
+      "textbookEvidence": [
+        {
+          "book": "사회 ① (설규주)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 7,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_5. 아메리카.pdf"
+        }
+      ]
     },
     "mauritius-dodo": {
       "tier": "core",
@@ -1537,7 +1868,30 @@
     "uluru": {
       "tier": "support",
       "topic": "문화",
-      "valuable": true
+      "valuable": true,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (한춘희)_2022",
+          "publisher": "아이스크림",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 13,
+          "path": "references/textbooks/초등/아이스크림/사회/사회 6-2 (한춘희)_2022/사회 6-2 교과서.pdf"
+        }
+      ],
+      "standards": [
+        "6사10-01",
+        "12여지02-02",
+        "12세사01-01"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 주민의 생활과 장소의 문화적 의미를 이해하고 서로 다른 문화를 존중한다."
     },
     "iguazu-falls": {
       "tier": "support",
@@ -1557,7 +1911,31 @@
     "cape_good_hope": {
       "tier": "core",
       "topic": "항로",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회(김정인)_6-1_2022",
+          "publisher": "천재",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 38,
+          "path": "references/textbooks/초등/천재/사회/사회(김정인)_6-1_2022/3단원_교과서__39f3625b.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역04-03",
+        "12세사02-02",
+        "12세사02-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 바닷길과 거점의 위치가 상품 교역과 사람들의 삶에 미친 영향을 설명한다."
     },
     "pampas": {
       "tier": "core",
@@ -1824,22 +2202,126 @@
     "lm-saint-basil-later": {
       "tier": "later",
       "topic": "종교",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 137,
+          "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9사(지리)02-02",
+        "9역03-02",
+        "9역03-03",
+        "12세지02-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 종교 경관에 담긴 의미와 순례·정치·생활의 관계를 비교한다."
     },
     "lm-blue-mosque-later": {
       "tier": "later",
       "topic": "종교",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 136,
+          "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9사(지리)02-02",
+        "9역03-02",
+        "9역03-03",
+        "12세지02-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 종교 경관에 담긴 의미와 순례·정치·생활의 관계를 비교한다."
     },
     "lm-versailles-later": {
       "tier": "later",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 88,
+          "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "lm-rome-colosseum": {
       "tier": "core",
       "topic": "문명",
-      "valuable": false
+      "valuable": false,
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ],
+      "objective": "지도로 위치와 경관을 찾고, 유적을 자료로 삼아 당시의 권력·종교·도시 생활을 설명한다."
     },
     "lm-rome-st-peters": {
       "tier": "core",
@@ -1935,6 +2417,463 @@
       "tier": "extended",
       "topic": "교류",
       "valuable": false
+    },
+    "ur-ziggurat": {
+      "tier": "core",
+      "topic": "문명",
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "objective": "신전과 도시 국가의 관계를 유적에서 살펴본다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 9,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_2. 문명의 발생과 고대 세계의 형성(PDF).pdf"
+        }
+      ],
+      "standards": [
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ]
+    },
+    "mohenjo-daro": {
+      "tier": "core",
+      "topic": "문명",
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "objective": "도시의 길과 생활 시설에서 인더스 문명의 특징을 찾는다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 11,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_2. 문명의 발생과 고대 세계의 형성(PDF).pdf"
+        }
+      ],
+      "standards": [
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ]
+    },
+    "harappa": {
+      "tier": "core",
+      "topic": "문명",
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "objective": "하라파와 모헨조다로의 유적을 비교하며 인더스 문명을 이해한다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 11,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_2. 문명의 발생과 고대 세계의 형성(PDF).pdf"
+        }
+      ],
+      "standards": [
+        "9역02-01",
+        "9역02-02",
+        "9역04-02",
+        "9역04-03",
+        "12세사01-01",
+        "12세사01-03"
+      ]
+    },
+    "horyuji": {
+      "tier": "core",
+      "topic": "교류",
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "objective": "불교 사원에서 한반도·중국·일본의 문화 교류를 살펴본다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 9,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+        }
+      ],
+      "standards": [
+        "9사(지리)01-02",
+        "9역04-01",
+        "12세사02-01",
+        "12세사02-03"
+      ]
+    },
+    "todaiji": {
+      "tier": "core",
+      "topic": "종교",
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "objective": "대불과 사원에서 동아시아 불교 문화의 공통점과 차이를 찾는다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "역사 ① (홍성구)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 8,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/역사 ① (홍성구)_2022/교과서/교과서_3. 세계 종교의 확산과 지역 문화의 발전(PDF).pdf"
+        }
+      ],
+      "standards": [
+        "9사(지리)02-02",
+        "9역03-02",
+        "9역03-03",
+        "12세지02-03"
+      ]
+    },
+    "sahel": {
+      "tier": "core",
+      "topic": "환경",
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "objective": "건조 지역의 생활과 토지 황폐화·복구의 관계를 설명한다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 ① (설규주)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 11,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_4. 아프리카.pdf"
+        }
+      ],
+      "standards": [
+        "6사12-02",
+        "12세지04-02"
+      ]
+    },
+    "serengeti": {
+      "tier": "core",
+      "topic": "생태",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "우기·건기와 초식동물의 이동, 생태계·관광의 관계를 살펴본다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 ① (손영찬)",
+          "publisher": "미래엔",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 73,
+          "path": "references/textbooks/중고등/미래엔/중학/사회/사회1_2_손영찬_2022_교과서/미래엔_사회1_교과서_2022.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "4과14-01",
+        "4과14-02",
+        "12생과01-06",
+        "12생과03-03"
+      ]
+    },
+    "great-artesian-basin": {
+      "tier": "core",
+      "topic": "환경",
+      "levels": [
+        "middle",
+        "high"
+      ],
+      "objective": "건조한 내륙에서 지하수가 생활과 목축에 중요한 까닭을 설명한다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 ① (설규주)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 4,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_6. 오세아니아와 극지방.pdf"
+        }
+      ],
+      "standards": [
+        "6사12-02",
+        "12세지04-02"
+      ]
+    },
+    "great-dividing-range": {
+      "tier": "core",
+      "topic": "지형",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "동부 산지와 내륙의 위치 관계, 산맥과 물길의 관계를 살펴본다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 ① (설규주)",
+          "publisher": "동아",
+          "level": "middle",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 4,
+          "path": "references/textbooks/중고등/두클래스/중등/사회/사회 ① (설규주)_2022/교과서/교과서_6. 오세아니아와 극지방.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "6사10-01",
+        "12세지02-02"
+      ]
+    },
+    "wadden-sea": {
+      "tier": "core",
+      "topic": "생태",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "밀물·썰물과 갯벌 생태계, 철새의 이동을 연결해 설명한다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 23,
+          "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "4과14-01",
+        "4과14-02",
+        "12생과01-06",
+        "12생과03-03"
+      ]
+    },
+    "port-campbell-coast": {
+      "tier": "core",
+      "topic": "지질",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "파도의 침식으로 해안 절벽과 암석 기둥이 변하는 과정을 설명한다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 23,
+          "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "4과11-01",
+        "4과11-02",
+        "9과09-03",
+        "9과09-05",
+        "12지시01-04"
+      ]
+    },
+    "copacabana-beach": {
+      "tier": "core",
+      "topic": "지형",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "모래 해안과 배후 도시의 위치 관계, 해안 이용을 살펴본다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-2 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 23,
+          "path": "references/textbooks/초등/동아/사회/사회 6-2 (박영석)_2022/사회 교과서 6-2 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "6사10-01",
+        "12세지02-02"
+      ]
+    },
+    "greenwich-observatory-later": {
+      "tier": "later",
+      "topic": "위치",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "경도의 기준과 항해를 위한 천체 관측의 관계를 이해한다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (박영석)_2022",
+          "publisher": "동아",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 122,
+          "path": "references/textbooks/초등/동아/사회/사회 6-1 (박영석)_2022/사회 교과서 6-1 PDF.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "6사09-01",
+        "9사(지리)01-01"
+      ]
+    },
+    "eiffel-tower-later": {
+      "tier": "later",
+      "topic": "문화",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "대표 건축물의 위치와 도시의 상징·산업 기술을 연결한다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "12여지02-02",
+        "12세사01-01"
+      ]
+    },
+    "statue-liberty-later": {
+      "tier": "later",
+      "topic": "문화",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "항구의 위치와 기념물에 담긴 자유·국가 간 교류를 살펴본다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "12여지02-02",
+        "12세사01-01"
+      ]
+    },
+    "sydney-opera-house-later": {
+      "tier": "later",
+      "topic": "문화",
+      "levels": [
+        "elementary",
+        "middle",
+        "high"
+      ],
+      "objective": "해안 도시의 위치와 공연 건축물이 만든 경관을 살펴본다.",
+      "valuable": false,
+      "textbookEvidence": [
+        {
+          "book": "사회 6-1 (전종한)_2022",
+          "publisher": "미래엔",
+          "level": "elementary",
+          "revision": "2022",
+          "atlas": false,
+          "referencePage": false,
+          "pdfPage": 128,
+          "path": "references/textbooks/초등/미래엔/사회/사회 6-1 (전종한)_2022/교과서_6-1__478fc03d.pdf"
+        }
+      ],
+      "standards": [
+        "6사09-02",
+        "12여지02-02",
+        "12세사01-01"
+      ]
     }
   }
 }

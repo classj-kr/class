@@ -1296,14 +1296,17 @@ function studyQuestionPool() {
 for(const room of Object.values(store.state?.rooms||{})){
   const mission=room.activeMission;
   const progresses=Object.values(room.progress||{}).map(player=>player?.[mission?.id]?.placeStudy);
-  if(mission?.studyTargets && PlaceStudy.refreshMission(mission,studyTarget,studyQuestionPool(),progresses))store.scheduleSave();
+  if(mission?.studyTargets){
+    const changed=PlaceStudy.refreshMission(mission,studyTarget,studyQuestionPool(),progresses);
+    if(PlaceStudy.refreshLearningMetadata(mission,studyTarget)||changed)store.scheduleSave();
+  }
 }
 function buildStudyTargets(keys) {
   if(!Array.isArray(keys)||keys.length<1||keys.length>3||new Set(keys).size!==keys.length)throw Error('도시·발견물을 중복 없이 1~3곳 선택하세요.');
   const canonical=keys.map(DiscoveryLearning.canonicalKey);
   if(new Set(canonical).size!==canonical.length)throw Error('같은 장소의 지도·도시 명소는 한 곳만 선택하세요.');
   const pool=studyQuestionPool();
-  return canonical.map(key=>{const t=studyTarget(key);return {...t,questionsVersion:PlaceStudy.QUESTIONS_VERSION,questions:PlaceStudy.createQuestions(t,pool)};});
+  return canonical.map(key=>{const t=studyTarget(key);return {...t,questionsVersion:PlaceStudy.questionsVersionFor(t),questions:PlaceStudy.createQuestions(t,pool)};});
 }
 function atStudyTarget(p,target) {
   if(p.transition)return false;
