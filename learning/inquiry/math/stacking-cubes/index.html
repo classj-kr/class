@@ -12,11 +12,11 @@
   <script src="activities.js?v=20261104-activities" defer></script>
   <script src="sound.js?v=20261104-camera" defer></script>
   <script src="library.js?v=20261104-activities" defer></script>
-  <script src="app.js?v=20261104-activities" defer></script>
+  <script src="app.js?v=20261104-bank-list" defer></script>
   <script src="race.js?v=20261104-camera" defer></script>
-  <link rel="stylesheet" href="coop.css?v=20261104-camera">
+  <link rel="stylesheet" href="coop.css?v=20261104-bank-list">
   <script src="team-stage.js?v=20261104-camera" defer></script>
-  <script src="coop.js?v=textbook-boards-1" defer></script>
+  <script src="coop.js?v=20261104-bank-list" defer></script>
   <script src="/assets/sound/music-control.js?v=20261006-capture" data-sfx-controls defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -34,7 +34,7 @@
         <button type="button" data-view="right" aria-pressed="false">오른쪽 옆</button>
       </div>
       <div class="board-options">
-        <label id="board-size-row"><span class="sr-only">쌓기판</span><select id="board-size" title="쌓기판 크기"><option value="3">3×3 · 16개</option><option value="4">4×4 · 20개</option><option value="5" disabled hidden>5×5 · 기존 모양</option></select></label>
+        <label id="board-size-row"><span class="sr-only">쌓기판</span><select id="board-size" title="쌓기판 크기"><option value="3">3×3</option><option value="4">4×4</option><option value="5" disabled hidden>5×5</option></select></label>
         <label class="display-option" for="show-total"><input id="show-total" type="checkbox" aria-label="전체 개수 표시"><span>개수</span><output id="total" aria-live="polite" hidden>전체 0개</output></label>
         <label class="display-option"><input id="show-heights" type="checkbox"><span>위·층수</span></label>
         <button id="reset-camera" type="button" title="시점 되돌리기" aria-label="시점 되돌리기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.5 7M3 5v6h6"/></svg><span>시점 복원</span></button>

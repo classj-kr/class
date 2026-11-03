@@ -15,6 +15,9 @@
 #coop-bank-title { flex:1; }
 .coop-card input[type=number] { width:65px; }
 .coop-banks { display:grid; gap:8px; margin-top:20px; }
+.coop-bank-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px; }
+.coop-bank-row button { overflow-wrap:anywhere; }
+.coop-bank-delete { color:#834d3d; }
 .coop-teams { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
 .coop-team { display:flex; flex-direction:column; gap:7px; padding:14px; border:1px solid #dedfd7; border-radius:12px; font-size:13px; }
 .coop-team.is-mine { border-color:#477e67; background:#eff5ed; }
