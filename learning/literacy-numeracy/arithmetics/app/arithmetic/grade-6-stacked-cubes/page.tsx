@@ -2,7 +2,7 @@
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   createStackedCubesProblemSet, sameViewGrids,
   type StackProblem, type ViewGrids,
@@ -34,6 +34,22 @@ export default function GradeSixStackedCubesPage() {
   const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-6-stacked-cubes/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
+  const checkedSavedSheet = useRef(false);
+
+  useEffect(() => {
+    if (checkedSavedSheet.current) return;
+    checkedSavedSheet.current = true;
+    const flatUnstarted = questionSet.problems.filter(({ id, heights }) => {
+      if (id in counts || id in views || id in results) return false;
+      const columns = heights.flat().filter(height => height > 0);
+      return new Set(columns).size === 1;
+    });
+    if (flatUnstarted.length === 0) return;
+    const replaceIds = new Set(flatUnstarted.map(problem => problem.id));
+    const upgraded = createStackedCubesProblemSet(questionSet.seed);
+    setQuestionSet({ ...questionSet, problems: questionSet.problems.map((problem, index) =>
+      replaceIds.has(problem.id) ? upgraded.problems[index] : problem) });
+  }, [questionSet, counts, views, results, setQuestionSet]);
 
   useEffect(() => {
     function fitA4Sheet() {

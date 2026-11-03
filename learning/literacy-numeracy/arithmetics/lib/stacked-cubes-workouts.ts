@@ -18,10 +18,11 @@ export type StackProblemSet = { seed: number; problems: StackProblem[] };
 export const GRID_SIZE = 3;
 export const MAX_HEIGHT = 3;
 
-const KIND_PLAN: StackKind[] = [
-  "three-view", "three-view",
-  "count", "count", "count", "count",
-  "count-map", "count-map", "count-map", "count-map",
+type Layers = 2 | 3;
+const PROBLEM_PLAN: [StackKind, Layers][] = [
+  ["three-view", 2], ["three-view", 3],
+  ["count", 2], ["count", 2], ["count", 3], ["count", 3],
+  ["count-map", 2], ["count-map", 3], ["count-map", 3], ["count-map", 3],
 ];
 
 function random(seed: number) {
@@ -43,49 +44,48 @@ function emptyGrid(size: number): boolean[][] {
   return Array.from({ length: size }, () => Array<boolean>(size).fill(false));
 }
 
-function randomFootprint(next: () => number, size: number, count: number, clearGround = false): boolean[][] {
-  const grid = emptyGrid(size);
-  if (clearGround) {
-    // Occupy back cells first so a cube cannot conceal an unoccupied floor cell.
-    for (let i = 0; i < count; i += 1) {
-      const candidates: Array<[number, number]> = [];
-      for (let r = 0; r < size; r += 1) for (let c = 0; c < size; c += 1) {
-        if (!grid[r][c] && (r === 0 || grid[r - 1][c]) && (c === 0 || grid[r][c - 1])) candidates.push([r, c]);
+type Cell = [number, number];
+
+function growBase(next: () => number, size: number, count: number, backFirst: boolean): Cell[] {
+  const used = emptyGrid(size);
+  const first: Cell = backFirst ? [0, 0] : [integer(next, 0, size - 1), integer(next, 0, size - 1)];
+  const cells = [first];
+  used[first[0]][first[1]] = true;
+  while (cells.length < count) {
+    const candidates: Cell[] = [];
+    for (let r = 0; r < size; r += 1) {
+      for (let c = 0; c < size; c += 1) {
+        if (used[r][c]) continue;
+        const available = backFirst
+          ? (r === 0 || used[r - 1][c]) && (c === 0 || used[r][c - 1])
+          : used[r - 1]?.[c] || used[r + 1]?.[c] || used[r][c - 1] || used[r][c + 1];
+        if (available) candidates.push([r, c]);
       }
-      const [r, c] = candidates[integer(next, 0, candidates.length - 1)];
-      grid[r][c] = true;
     }
-    return grid;
+    const cell = candidates[integer(next, 0, candidates.length - 1)];
+    used[cell[0]][cell[1]] = true;
+    cells.push(cell);
   }
-  const cells: Array<[number, number]> = [];
-  const startR = integer(next, 0, size - 1);
-  const startC = integer(next, 0, size - 1);
-  grid[startR][startC] = true;
-  cells.push([startR, startC]);
-  const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]] as const;
-  let attempts = 0;
-  while (cells.length < count && attempts < 200) {
-    attempts += 1;
-    const [r, c] = cells[integer(next, 0, cells.length - 1)];
-    const [dr, dc] = directions[integer(next, 0, directions.length - 1)];
-    const nr = r + dr;
-    const nc = c + dc;
-    if (nr < 0 || nr >= size || nc < 0 || nc >= size || grid[nr][nc]) continue;
-    grid[nr][nc] = true;
-    cells.push([nr, nc]);
-  }
-  return grid;
+  return cells;
 }
 
-function buildHeights(next: () => number, footprint: boolean[][]): number[][] {
-  // Heights never increase toward the viewer. Removing footprint cells cannot
-  // hide any remaining top face; count-map problems can still have irregular bases.
-  const heights = footprint.map((row) => row.map(() => 0));
-  for (let r = 0; r < heights.length; r += 1) for (let c = 0; c < heights[r].length; c += 1) {
-    const ceiling = Math.min(r === 0 ? MAX_HEIGHT : heights[r - 1][c], c === 0 ? MAX_HEIGHT : heights[r][c - 1]);
-    heights[r][c] = integer(next, 1, ceiling);
+function buildHeights(next: () => number, size: number, count: number, layers: Layers, hasMap: boolean): number[][] {
+  let cells = growBase(next, size, hasMap ? size * size : count, true);
+  if (hasMap) {
+    const footprint = emptyGrid(size);
+    for (const [r, c] of growBase(next, size, count, false)) footprint[r][c] = true;
+    cells = cells.filter(([r, c]) => footprint[r][c]);
   }
-  return heights.map((row, r) => row.map((height, c) => footprint[r][c] ? height : 0));
+
+  // Each upper layer occupies a shorter prefix of the back-to-front order.
+  // At least three columns rise above the base and each height remains visible.
+  const secondLayer = integer(next, Math.ceil(count / 2), count - 1);
+  const thirdLayer = layers === MAX_HEIGHT ? integer(next, 1, secondLayer - 1) : 0;
+  const heights = Array.from({ length: size }, () => Array<number>(size).fill(0));
+  cells.forEach(([r, c], index) => {
+    heights[r][c] = 1 + Number(index < secondLayer) + Number(index < thirdLayer);
+  });
+  return heights;
 }
 
 function barsToGrid(bars: number[], size: number): boolean[][] {
@@ -103,11 +103,10 @@ function total(heights: number[][]) {
   return heights.reduce((sum, row) => sum + row.reduce((rowSum, height) => rowSum + height, 0), 0);
 }
 
-function buildProblem(next: () => number, kind: StackKind, id: string): StackProblem {
+function buildProblem(next: () => number, kind: StackKind, layers: Layers, id: string): StackProblem {
   const size = GRID_SIZE;
-  const count = kind === "three-view" ? integer(next, 4, 7) : integer(next, 5, 8);
-  const footprint = randomFootprint(next, size, count, kind !== "count-map");
-  const heights = buildHeights(next, footprint);
+  const count = integer(next, 5, kind === "three-view" ? 7 : 8);
+  const heights = buildHeights(next, size, count, layers, kind === "count-map");
   if (!isStackDiagramClear(heights, kind === "count-map")) throw new Error("Stacked-cubes problem conceals a required cell");
   return { id, kind, heights, size, total: total(heights), views: computeViews(heights, size) };
 }
@@ -116,7 +115,7 @@ export function createStackedCubesProblemSet(seed: number): StackProblemSet {
   const next = random(seed);
   return {
     seed,
-    problems: KIND_PLAN.map((kind, index) => buildProblem(next, kind, `stacked-cubes-${index}`)),
+    problems: PROBLEM_PLAN.map(([kind, layers], index) => buildProblem(next, kind, layers, `stacked-cubes-${index}`)),
   };
 }
 
