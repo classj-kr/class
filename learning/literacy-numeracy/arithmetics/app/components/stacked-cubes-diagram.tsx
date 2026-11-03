@@ -1,58 +1,20 @@
-const TILE_W = 34;
-const TILE_H = 17;
-const CUBE_H = 30;
-const MAP_GAP = 22;
-
-type Cube = { r: number; c: number; z: number; isTop: boolean };
-
-function cubeFaces(r: number, c: number, z: number) {
-  const x = (c - r) * TILE_W;
-  const y = (c + r) * TILE_H - (z + 1) * CUBE_H;
-  const top = [
-    `${x},${y - TILE_H}`,
-    `${x + TILE_W},${y}`,
-    `${x},${y + TILE_H}`,
-    `${x - TILE_W},${y}`,
-  ].join(" ");
-  const left = [
-    `${x - TILE_W},${y}`,
-    `${x},${y + TILE_H}`,
-    `${x},${y + TILE_H + CUBE_H}`,
-    `${x - TILE_W},${y + CUBE_H}`,
-  ].join(" ");
-  const right = [
-    `${x},${y + TILE_H}`,
-    `${x + TILE_W},${y}`,
-    `${x + TILE_W},${y + CUBE_H}`,
-    `${x},${y + TILE_H + CUBE_H}`,
-  ].join(" ");
-  return { top, left, right };
-}
-
-function floorCellPoints(r: number, c: number, offsetY: number) {
-  const x = (c - r) * TILE_W;
-  const y = (c + r) * TILE_H + offsetY;
-  return { x, y, points: `${x},${y - TILE_H} ${x + TILE_W},${y} ${x},${y + TILE_H} ${x - TILE_W},${y}` };
-}
+import { CUBE_H, MAP_GAP, TILE_H, TILE_W, floorCellPoints, isStackDiagramClear, polygonPoints, stackDiagramFaces } from "../../lib/stacked-cubes-geometry";
 
 export default function StackedCubesDiagram({ heights, showMap = false, showDirection = true, className }: { heights: number[][]; showMap?: boolean; showDirection?: boolean; className?: string }) {
   const size = heights.length;
-  const cubes: Cube[] = [];
-  for (let r = 0; r < size; r += 1) {
-    for (let c = 0; c < size; c += 1) {
-      const height = heights[r][c];
-      for (let z = 0; z < height; z += 1) cubes.push({ r, c, z, isTop: z === height - 1 });
-    }
-  }
-  cubes.sort((a, b) => a.r + a.c - (b.r + b.c));
+  const faces = stackDiagramFaces(heights);
+  // Old saved worksheets retain their shapes and answers. Supply the missing
+  // information instead of silently replacing a student's in-progress problem.
+  const showHeightMap = !isStackDiagramClear(heights, showMap);
+  const displayMap = showMap || showHeightMap;
 
   const maxHeight = heights.reduce((max, row) => Math.max(max, ...row), 0);
   const minX = -size * TILE_W - 20;
   const maxX = size * TILE_W;
   const minY = -maxHeight * CUBE_H - TILE_H;
-  const cubesMaxY = 2 * (size - 1) * TILE_H + TILE_H + CUBE_H;
+  const cubesMaxY = 2 * (size - 1) * TILE_H + TILE_H;
   const mapOffsetY = cubesMaxY + MAP_GAP;
-  const maxY = (showMap ? mapOffsetY + 2 * (size - 1) * TILE_H + TILE_H : cubesMaxY) + 10;
+  const maxY = (displayMap ? mapOffsetY + 2 * (size - 1) * TILE_H + TILE_H : cubesMaxY) + (showHeightMap ? 28 : 10);
   const width = maxX - minX;
   const height = maxY - minY;
 
@@ -68,17 +30,11 @@ export default function StackedCubesDiagram({ heights, showMap = false, showDire
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="쌓기나무 그림"
+      data-height-map={showHeightMap || undefined}
     >
-      {cubes.map(({ r, c, z, isTop }) => {
-        const { top, left, right } = cubeFaces(r, c, z);
-        return (
-          <g key={`${r}-${c}-${z}`}>
-            <polygon className="stacked-cube-face stacked-cube-face-left" points={left} />
-            <polygon className="stacked-cube-face stacked-cube-face-right" points={right} />
-            {isTop && <polygon className="stacked-cube-face stacked-cube-face-top" points={top} />}
-          </g>
-        );
-      })}
+      {faces.map(({ r, c, z, kind, points }) => (
+        <polygon key={`${r}-${c}-${z}-${kind}`} className={`stacked-cube-face stacked-cube-face-${kind}`} points={polygonPoints(points)} />
+      ))}
       {showDirection && (
         <g className="stacked-cubes-direction">
           <line x1={arrowTailX} y1={arrowTailY} x2={arrowTipX} y2={arrowTipY} />
@@ -86,17 +42,19 @@ export default function StackedCubesDiagram({ heights, showMap = false, showDire
           <text x={arrowTailX - 2} y={arrowTailY + 12}>앞</text>
         </g>
       )}
-      {showMap && heights.map((row, r) => row.map((cellHeight, c) => {
-        if (cellHeight === 0) return null;
-        const { x, points } = floorCellPoints(r, c, mapOffsetY);
+      {displayMap && heights.map((row, r) => row.map((cellHeight, c) => {
+        if (cellHeight === 0 && !showHeightMap) return null;
+        const x = (c - r) * TILE_W;
         const groundY = (c + r) * TILE_H;
         return (
           <g key={`map-${r}-${c}`}>
-            <line className="stacked-cubes-map-guide" x1={x} y1={groundY + TILE_H} x2={x} y2={groundY + mapOffsetY - TILE_H} />
-            <polygon className="stacked-cubes-map-cell" points={points} />
+            {cellHeight > 0 && <line className="stacked-cubes-map-guide" x1={x} y1={groundY + TILE_H} x2={x} y2={groundY + mapOffsetY - TILE_H} />}
+            <polygon className="stacked-cubes-map-cell" points={polygonPoints(floorCellPoints(r, c, mapOffsetY))} />
+            {showHeightMap && <text className="stacked-cubes-map-number" x={x} y={groundY + mapOffsetY} dominantBaseline="central" textAnchor="middle">{cellHeight}</text>}
           </g>
         );
       }))}
+      {showHeightMap && <text className="stacked-cubes-map-label" x={0} y={maxY - 5} textAnchor="middle">칸별 쌓은 개수</text>}
     </svg>
   );
 }

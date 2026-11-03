@@ -9981,6 +9981,12 @@ main {
   padding-bottom: 25px;
 }
 
+.stack-sheet-guide {
+  margin: 7px 0 0;
+  font-size: 12px;
+  color: #514a40;
+}
+
 .stack-grid {
   min-height: 0;
   flex: 1 1 auto;
@@ -10056,6 +10062,22 @@ main {
 
 .stacked-cube-face-top {
   fill: #f1e6c9;
+}
+
+.stacked-cube-face-ground {
+  fill: #faf8f3;
+  stroke: #b9b1a2;
+}
+
+.stacked-cubes-map-number {
+  fill: #17233c;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.stacked-cubes-map-label {
+  fill: #514a40;
+  font-size: 17px;
 }
 
 .stacked-cube-face-left {

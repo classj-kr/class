@@ -4,6 +4,7 @@ import { createElementaryGeometryMeasurementSet, type GeometryMeasurementProblem
 import { createSolidDiagram, fitSolidProjection, type Point3, type SolidMeasure } from "../elementary-solid-diagrams.ts";
 import { createGradeSixCircleSet, type CircleProblem } from "../grade-six-circle.ts";
 import { createStackedCubesProblemSet, type StackProblem } from "../stacked-cubes-workouts.ts";
+import { CUBE_H, MAP_GAP, TILE_H, TILE_W, STACKING_GUIDE, polygonPoints, stackDiagramFaces } from "../stacked-cubes-geometry.ts";
 
 const INK = "#17233c";
 const r2 = (value: number) => Math.round(value * 100) / 100;
@@ -124,23 +125,16 @@ const circleDeck: RaceDeck = (seed) => createGradeSixCircleSet(seed).flatMap((pr
 });
 
 // 6학년 쌓기나무: stacked-cubes-diagram.tsx와 같은 등각 그림.
-const TILE_W = 34, TILE_H = 17, CUBE_H = 30, MAP_GAP = 22;
 function stackFigure(heights: number[][], showMap: boolean) {
   const size = heights.length;
-  const cubes: { r: number; c: number; z: number; isTop: boolean }[] = [];
-  for (let r = 0; r < size; r += 1) for (let c = 0; c < size; c += 1) for (let z = 0; z < heights[r][c]; z += 1) cubes.push({ r, c, z, isTop: z === heights[r][c] - 1 });
-  cubes.sort((a, b) => a.r + a.c - (b.r + b.c));
-  const face = (points: number[][], fill: string) => `<polygon points="${points.map((point) => point.join(",")).join(" ")}" fill="${fill}" stroke="#8f7a4f" stroke-width="1" stroke-linejoin="round" />`;
-  const body = cubes.map(({ r, c, z, isTop }) => {
-    const x = (c - r) * TILE_W, y = (c + r) * TILE_H - (z + 1) * CUBE_H;
-    return face([[x - TILE_W, y], [x, y + TILE_H], [x, y + TILE_H + CUBE_H], [x - TILE_W, y + CUBE_H]], "#c9b586")
-      + face([[x, y + TILE_H], [x + TILE_W, y], [x + TILE_W, y + CUBE_H], [x, y + TILE_H + CUBE_H]], "#dcc99e")
-      + (isTop ? face([[x, y - TILE_H], [x + TILE_W, y], [x, y + TILE_H], [x - TILE_W, y]], "#f1e6c9") : "");
-  }).join("");
+  const colors = { ground: "#faf8f3", left: "#c9b586", right: "#dcc99e", top: "#f1e6c9" };
+  const body = stackDiagramFaces(heights).map(({ points, kind }) =>
+    `<polygon points="${polygonPoints(points)}" fill="${colors[kind]}" stroke="${kind === "ground" ? "#b9b1a2" : "#8f7a4f"}" stroke-width="1" stroke-linejoin="round" />`
+  ).join("");
   const maxHeight = Math.max(...heights.flat());
   const minX = -size * TILE_W - 20, maxX = size * TILE_W;
   const minY = -maxHeight * CUBE_H - TILE_H;
-  const cubesMaxY = 2 * (size - 1) * TILE_H + TILE_H + CUBE_H;
+  const cubesMaxY = 2 * (size - 1) * TILE_H + TILE_H;
   const mapOffsetY = cubesMaxY + MAP_GAP;
   const maxY = (showMap ? mapOffsetY + 2 * (size - 1) * TILE_H + TILE_H : cubesMaxY) + 10;
   const tailX = minX + 8, tailY = cubesMaxY - 30, tipX = tailX + TILE_W * 0.85, tipY = tailY - TILE_H * 0.85;
@@ -158,11 +152,11 @@ const VIEW_LABELS = [["top", "위"], ["front", "앞"], ["side", "옆"]] as const
 function stackCards(problem: StackProblem): RaceCard[] {
   if (problem.kind !== "three-view") {
     const figure = stackFigure(problem.heights, problem.kind === "count-map");
-    return [{ prompt: "쌓기나무의 개수를 구하시오.", parts: [figure, { br: true }, blank(), "개"], answers: { a: [String(problem.total)] } }];
+    return [{ prompt: `${STACKING_GUIDE} 쌓기나무의 개수를 구하시오.`, parts: [figure, { br: true }, blank(), "개"], answers: { a: [String(problem.total)] } }];
   }
   const figure = stackFigure(problem.heights, false);
   return VIEW_LABELS.map(([field, label]) => ({
-    prompt: `${label}에서 본 모양을 그리면 몇 칸을 색칠할까요?`,
+    prompt: `${STACKING_GUIDE} ${label}에서 본 모양을 그리면 몇 칸을 색칠할까요?`,
     parts: [figure, { br: true }, `${label}에서 본 모양:`, blank(), "칸"],
     answers: { a: [String(problem.views[field].flat().filter(Boolean).length)] },
   }));
