@@ -80,6 +80,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await p.locator(`#scene .direction-marker.is-assigned[data-direction="${view}"]`).waitFor();
       assert.equal(await p.locator('#coop-dock').getAttribute('data-direction'), view, 'drawing and 3D direction share the assigned role');
       const cells = drawing(target, view);
+      const square = await p.locator('.coop-draw-grid button').first().boundingBox();
+      assert.ok(Math.abs(square.width - square.height) <= 1, 'the drawing uses square units in all three views');
       for (let i = 0; i < cells.length; i++) if (cells[i]) await p.locator(`.coop-draw-grid [data-cell="${i}"]`).click();
       await p.getByRole('button', { name: '그림 확인', exact: true }).click();
       await p.getByRole('button', { name: '확인 완료', exact: true }).waitFor();
