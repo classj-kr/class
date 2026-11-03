@@ -6,17 +6,17 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=race-bank-2">
+  <link rel="stylesheet" href="style.css?v=textbook-boards-1">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
-  <script src="model.js?v=20261015-3" defer></script>
-  <script src="activities.js?v=20261015-3" defer></script>
+  <script src="model.js?v=textbook-boards-1" defer></script>
+  <script src="activities.js?v=textbook-boards-1" defer></script>
   <script src="sound.js?v=20261028-celebration" defer></script>
-  <script src="library.js?v=20261019-quiet-ui" defer></script>
-  <script src="app.js?v=team-finish-1" defer></script>
+  <script src="library.js?v=textbook-boards-1" defer></script>
+  <script src="app.js?v=textbook-boards-1" defer></script>
   <script src="race.js?v=team-finish-1" defer></script>
-  <link rel="stylesheet" href="coop.css?v=team-capacity-1">
+  <link rel="stylesheet" href="coop.css?v=textbook-boards-1">
   <script src="team-stage.js?v=team-finish-1" defer></script>
-  <script src="coop.js?v=team-capacity-1" defer></script>
+  <script src="coop.js?v=textbook-boards-1" defer></script>
   <script src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -42,6 +42,7 @@
         <button type="button" data-view="front" aria-pressed="false">앞</button>
         <button type="button" data-view="right" aria-pressed="false">오른쪽 옆</button>
       </div>
+      <label id="board-size-row" class="check-row">쌓기판 <select id="board-size"><option value="3">3×3 · 16개</option><option value="4">4×4 · 20개</option><option value="5" disabled hidden>5×5 · 기존 모양</option></select></label>
       <label class="check-row"><span>전체 개수</span><input id="show-total" type="checkbox"></label>
       <label class="check-row"><span>위 보기의 층수</span><input id="show-heights" type="checkbox"></label>
       <div class="sound-settings">
@@ -57,7 +58,7 @@
         <p>누르기: 한 층 쌓기·지우기<br>드래그: 돌리기 · 휠·두 손가락: 확대</p>
         <p>방향키: 칸 선택 · Enter: 쌓기<br>Delete: 지우기 · Ctrl/⌘ + Z: 되돌리기</p>
         <p>목표 모양도 드래그로 돌릴 수 있어요.<br>위·층수: 가려진 칸의 높이 확인</p>
-        <p>5 × 5칸 · 최대 6층</p>
+        <p id="board-limits"></p>
       </details>
     </section>
 

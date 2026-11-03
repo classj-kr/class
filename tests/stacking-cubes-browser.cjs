@@ -90,7 +90,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         let x = 0, z = 0;
         for (let i = 0; i < heights.length; i++) {
           if (!heights[i]) continue;
-          const nextX = i % 5, nextZ = Math.floor(i / 5);
+          const size = Math.sqrt(heights.length), nextX = i % size, nextZ = Math.floor(i / size);
           while (x !== nextX) { await page.keyboard.press(x < nextX ? 'ArrowRight' : 'ArrowLeft'); x += x < nextX ? 1 : -1; }
           while (z !== nextZ) { await page.keyboard.press(z < nextZ ? 'ArrowDown' : 'ArrowUp'); z += z < nextZ ? 1 : -1; }
           for (let h = 0; h < heights[i]; h++) await page.keyboard.press('Enter');
@@ -129,6 +129,10 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('#clear-board'));
       await total(0);
 
+      assert.equal(await page.locator('#scene .floor-cell').count(), 9);
+      await openPanel();
+      await page.locator('#board-size').selectOption('4');
+      await page.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 16);
       let count = 0;
       for (const [x, z, layers] of [[1, 1, 1], [2, 1, 2], [1, 2, 2], [2, 2, 3], [3, 2, 1], [2, 3, 2]]) {
         for (let level = 0; level < layers; level++) {

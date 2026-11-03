@@ -1,18 +1,21 @@
 const crypto = require('node:crypto');
-const { validBoard, project } = require('../learning/inquiry/math/stacking-cubes/model');
+const { BASIC, WIDE, STANDARD, validBoard, project, rulesForBoard, countCubes, resizeBoard } = require('../learning/inquiry/math/stacking-cubes/model');
 const { DEFAULT_ROUND, generateRound } = require('./stacking-race-questions');
 const roles = ['build', 'front', 'right', 'top'];
-const blank = () => Array(25).fill(0);
-const raceTeam = () => ({ index: 0, heights: blank(), version: 0, history: [], finishedAt: null });
+const blank = (rules = BASIC) => Array(rules.size ** 2).fill(0);
+const raceTeam = question => ({ index: 0, heights: blank(rulesForBoard(question.heights)), version: 0, history: [], finishedAt: null });
 const uuid = () => crypto.randomUUID();
 const clone = value => JSON.parse(JSON.stringify(value));
 const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 function drawing(heights, view) {
   const p = project(heights, view);
-  return view === 'top' ? p : Array.from({ length: 30 }, (_, i) => p[i % 5] >= 6 - Math.floor(i / 5) ? 1 : 0);
+  const { size, maxHeight } = rulesForBoard(heights);
+  const rows = size === BASIC.size ? Math.max(size, ...heights) : maxHeight;
+  return view === 'top' ? p : Array.from({ length: size * rows }, (_, i) => p[i % size] >= rows - Math.floor(i / size) ? 1 : 0);
 }
-const draft = () => ({ id: uuid(), title: '', phase: 'building', heights: blank(), drawings: { front: Array(30).fill(0), right: Array(30).fill(0), top: blank() }, checked: {}, version: 0, history: [] });
-const team = i => ({ id: uuid(), name: `${i + 1}모둠`, members: [], draft: draft(0) });
+const blankDrawings = rules => ({ front: blank(rules), right: blank(rules), top: blank(rules) });
+const draft = () => ({ id: uuid(), title: '', phase: 'building', heights: blank(), drawings: blankDrawings(BASIC), checked: {}, version: 0, history: [] });
+const team = i => ({ id: uuid(), name: `${i + 1}모둠`, members: [], draft: draft() });
 const initial = () => ({ revision: 0, teams: Array.from({ length: 6 }, (_, i) => team(i)), questions: [], race: null, operations: [] });
 
 function installStackingBoards({ router, asyncRoute, transaction, fail, now = Date.now }) {
@@ -23,6 +26,11 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
     if (!row) {
       row = { state: initial() };
       await db.query('INSERT INTO learning_board_stacking(board_id,state) VALUES($1,$2::jsonb)', [b.id, JSON.stringify(row.state)]);
+    }
+    for (const { draft: d } of row.state.teams) {
+      if (rulesForBoard(d.heights) === STANDARD && d.phase === 'building' && d.version === 0 && !d.heights.some(Boolean)) {
+        d.heights = blank(); d.drawings = blankDrawings(BASIC);
+      }
     }
     return row.state;
   }
@@ -105,33 +113,51 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
           }
           if (t) t.members = t.members.filter(id => id !== who.id);
           target.members.push(who.id);
-          if (active && !s.race.teams[target.id]) s.race.teams[target.id] = raceTeam();
+          if (active && !s.race.teams[target.id]) s.race.teams[target.id] = raceTeam(s.race.questions[0]);
         }
+      } else if (body.action === 'board-size') {
+        currentDraft();
+        const d = t.draft, rules = body.size === BASIC.size ? BASIC : body.size === WIDE.size ? WIDE : null;
+        if (!rules) fail(400, 'INVALID_SIZE', '쌓기판 크기를 확인해 주세요.');
+        if (d.phase !== 'building' || d.version !== body.version) fail(409, 'STALE_WORK', '입체가 바뀌었어요. 다시 확인해 주세요.');
+        const oldSize = rulesForBoard(d.heights).size;
+        const next = resizeBoard(d.heights, rules);
+        if (!next) fail(409, 'NO_FIT', '현재 모양이 이 판에 들어가지 않아요.');
+        d.history = d.history.filter(h => h.cell % oldSize < rules.size && Math.floor(h.cell / oldSize) < rules.size)
+          .map(h => ({ ...h, cell: Math.floor(h.cell / oldSize) * rules.size + h.cell % oldSize }));
+        d.heights = next; d.drawings = blankDrawings(rules); d.checked = {}; d.version++;
       } else if (['edit', 'undo', 'clear'].includes(body.action)) {
         inTeam();
         const w = active ? s.race.teams[t.id] : t.draft;
         if (!w || (active ? w.finishedAt || body.workId !== `${s.race.id}:${w.index}` : w.phase !== 'building' || body.workId !== w.id)) fail(409, 'EDIT_CLOSED', '지금은 입체를 바꿀 수 없어요.');
+        const rules = rulesForBoard(w.heights);
+        if ((body.boardSize ?? STANDARD.size) !== rules.size) fail(409, 'BOARD_CHANGED', '쌓기판이 바뀌었어요. 화면을 새로고침해 주세요.');
         if (body.action === 'edit') {
-          if (!Number.isInteger(body.cell) || body.cell < 0 || body.cell > 24 || ![1, -1].includes(body.delta)) fail(400, 'INVALID_EDIT', '칸과 층수를 확인해 주세요.');
+          if (!Number.isInteger(body.cell) || body.cell < 0 || body.cell >= w.heights.length || ![1, -1].includes(body.delta)) fail(400, 'INVALID_EDIT', '칸과 층수를 확인해 주세요.');
           const h = w.heights[body.cell] + body.delta;
-          if (h < 0 || h > 6) fail(409, 'HEIGHT_LIMIT', '0~6층까지 쌓을 수 있어요.');
+          if (h < 0 || h > rules.maxHeight) fail(409, 'HEIGHT_LIMIT', `0~${rules.maxHeight}층까지 쌓을 수 있어요.`);
+          if (body.delta > 0 && countCubes(w.heights) >= rules.maxCubes) fail(409, 'CUBE_LIMIT', `쌓기나무 ${rules.maxCubes}개를 모두 썼어요.`);
           w.heights[body.cell] = h;
           w.history.push({ actor: who.id, cell: body.cell, delta: body.delta }); w.history = w.history.slice(-200);
         } else if (body.action === 'undo') {
           const index = w.history.findLastIndex(h => h.actor === who.id);
           if (index < 0) fail(409, 'NO_UNDO', '되돌릴 내 작업이 없어요.');
           const h = w.history[index], next = w.heights[h.cell] - h.delta;
-          if (next < 0 || next > 6) fail(409, 'UNDO_CONFLICT', '다른 작업과 겹쳐 되돌릴 수 없어요.');
+          if (next < 0 || next > rules.maxHeight || countCubes(w.heights) - h.delta > rules.maxCubes) fail(409, 'UNDO_CONFLICT', '다른 작업과 겹쳐 되돌릴 수 없어요.');
           w.heights[h.cell] = next; w.history.splice(index, 1);
         } else {
           if (body.version !== w.version) fail(409, 'STALE_WORK', '모둠원이 수정했어요. 다시 확인해 주세요.');
-          w.heights = blank(); w.history = [];
+          w.heights = blank(rules); w.history = [];
         }
         w.version++;
       } else if (body.action === 'freeze') {
         currentDraft();
         if (body.version !== t.draft.version) fail(409, 'STALE_WORK', '입체가 바뀌었어요. 다시 확인해 주세요.');
         if (t.draft.phase !== 'building' || !validBoard(t.draft.heights) || !t.draft.heights.some(Boolean)) fail(409, 'EMPTY_SHAPE', '입체를 먼저 완성해 주세요.');
+        const sideCells = drawing(t.draft.heights, 'front').length;
+        if (t.draft.drawings.front.length !== sideCells) {
+          t.draft.drawings.front = Array(sideCells).fill(0); t.draft.drawings.right = Array(sideCells).fill(0);
+        }
         t.draft.phase = 'drawing'; t.draft.checked = {}; t.draft.version++;
       } else if (body.action === 'revise') {
         currentDraft();
@@ -143,11 +169,12 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
         if (!roles.slice(1).includes(view) || d.phase !== 'drawing') fail(403, 'DRAWING_CLOSED', '입체를 완성하고 그림을 그려 주세요.');
         if (body.version !== d.version) fail(409, 'STALE_WORK', '입체가 바뀌었어요. 다시 확인해 주세요.');
         if (body.action === 'draw') {
+          if ((body.boardSize ?? STANDARD.size) !== rulesForBoard(d.heights).size) fail(409, 'BOARD_CHANGED', '쌓기판이 바뀌었어요. 화면을 새로고침해 주세요.');
           if (body.cell !== undefined) {
             if (!Number.isInteger(body.cell) || body.cell < 0 || body.cell >= d.drawings[view].length || ![0, 1].includes(body.value)) fail(400, 'INVALID_DRAWING', '그림을 확인해 주세요.');
             d.drawings[view][body.cell] = body.value;
           } else {
-            if (!Array.isArray(body.cells) || body.cells.length !== (view === 'top' ? 25 : 30) || !body.cells.every(n => n === 0 || n === 1)) fail(400, 'INVALID_DRAWING', '그림을 확인해 주세요.');
+            if (!Array.isArray(body.cells) || body.cells.length !== d.drawings[view].length || !body.cells.every(n => n === 0 || n === 1)) fail(400, 'INVALID_DRAWING', '그림을 확인해 주세요.');
             d.drawings[view] = body.cells.slice();
           }
           d.checked[view] = false;
@@ -182,7 +209,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
           }));
         }
         const playing = s.teams.filter(t => t.members.some(id => roster.some(m => m.id === id)));
-        s.race = { id: uuid(), phase: 'playing', startedAt: now(), questions: clone(qs), teams: Object.fromEntries(playing.map(t => [t.id, raceTeam()])) };
+        s.race = { id: uuid(), phase: 'playing', startedAt: now(), questions: clone(qs), teams: Object.fromEntries(playing.map(t => [t.id, raceTeam(qs[0])])) };
       } else if (body.action === 'check-answer') {
         inTeam();
         const w = s.race?.teams[t.id];
@@ -195,7 +222,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
             w.finishedAt = w.solvedAt;
             w.finishShape = w.heights;
           }
-          w.heights = blank();
+          w.heights = blank(rulesForBoard((s.race.questions[w.index] || s.race.questions[w.index - 1]).heights));
           if (Object.values(s.race.teams).every(w => w.finishedAt)) s.race.phase = 'finished';
         }
       } else if (body.action === 'stop-race') {
@@ -206,7 +233,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
         teacher(); if (active) fail(409, 'RACE_ACTIVE', '팀전을 먼저 마쳐 주세요.');
         const target = s.teams.find(t => t.id === body.teamId);
         if (!target) fail(404, 'TEAM_MISSING', '모둠을 찾을 수 없어요.');
-        target.members = []; target.draft = draft(0);
+        target.members = []; target.draft = draft();
       } else if (body.action === 'delete-question') {
         teacher(); if (active) fail(409, 'RACE_ACTIVE', '팀전이 끝난 뒤 삭제해 주세요.');
         s.questions = s.questions.filter(q => q.id !== body.questionId); s.bankRevision = (s.bankRevision || 0) + 1;

@@ -20,7 +20,7 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     const get = async cookie => (await request(base, undefined, cookie)).data;
     const act = async (cookie, action, extra = {}, expected = 200) => {
       const s = await get(cookie);
-      return (await request(base + '/actions', { action, opId: crypto.randomUUID(), workId: s.work?.id, version: s.work?.version, ...extra }, cookie, expected)).data;
+      return (await request(base + '/actions', { action, opId: crypto.randomUUID(), workId: s.work?.id, boardSize: Math.sqrt(s.work?.heights.length), version: s.work?.version, ...extra }, cookie, expected)).data;
     };
     await request(base, undefined, '', 401);
     await request(base, undefined, 'test_teacher=2', 401);
@@ -36,12 +36,28 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     }
     assert.ok((await get(players[7])).work.canBuild, 'teams can join after an empty room starts');
     await act(teacher, 'stop-race'); await act(teacher, 'return-authoring');
+    assert.equal((await get(players[0])).work.heights.length, 9);
+    for (let i = 0; i < 15; i++) await act(players[0], 'edit', { cell: Math.floor(i / 4), delta: 1 });
+    const draftId = (await get(players[0])).work.id;
+    const lastCube = await Promise.all(players.slice(0, 2).map(cookie => fetch(h.base + base + '/actions', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Cookie: cookie },
+      body: JSON.stringify({ action: 'edit', workId: draftId, opId: crypto.randomUUID(), boardSize: 3, cell: 4, delta: 1 })
+    })));
+    assert.deepEqual(lastCube.map(r => r.status).sort(), [200, 409], 'concurrent edits cannot place a 17th cube');
+    await act(players[2], 'edit', { cell: 0, delta: -1 });
+    await act(players[0], 'edit', { cell: 5, delta: 1 });
+    await act(players[2], 'undo', {}, 409);
+    await act(players[0], 'freeze');
+    assert.equal((await get(players[0])).work.drawings.front.length, 12, 'a four-storey shape gets a fourth row');
+    await act(players[0], 'revise'); await act(players[0], 'clear');
+    await act(players[0], 'board-size', { size: 4 });
+    await act(players[0], 'edit', { cell: 4, delta: 1, boardSize: 3 }, 409);
     await Promise.all(players.slice(0, 4).map(p => act(p, 'edit', { cell: 12, delta: 1 })));
     assert.equal((await get(players[3])).work.heights[12], 4, 'all four edits survive on the same authoring cell');
     await act(players[1], 'clear');
     await act(players[0], 'start-race', { questionIds: [] }, 403);
-    const target = Array(25).fill(0); [6, 7, 11].forEach(i => target[i] = 2); target[12] = 1;
-    for (let cell = 0; cell < 25; cell++) for (let i = 0; i < target[cell]; i++) await act(players[0], 'edit', { cell, delta: 1 });
+    const target = Array(16).fill(0); [6, 7, 10].forEach(i => target[i] = 2); target[11] = 1;
+    for (let cell = 0; cell < target.length; cell++) for (let i = 0; i < target[cell]; i++) await act(players[0], 'edit', { cell, delta: 1 });
     await act(players[0], 'freeze');
     await act(players[0], 'publish', {}, 409);
     assert.equal((await act(players[1], 'check-drawing')).correct, false);
@@ -76,7 +92,7 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     const initial = await get(players[0]);
     assert.equal(initial.race.question.heights, undefined);
     assert.equal(initial.questions[0].heights, undefined);
-    assert.deepEqual(initial.work.heights, Array(25).fill(0));
+    assert.deepEqual(initial.work.heights, Array(16).fill(0));
     // Two people hitting one column add two blocks, without overwriting a snapshot.
     await Promise.all([act(players[0], 'edit', { cell: 6, delta: 1 }), act(players[1], 'edit', { cell: 6, delta: 1 })]);
     assert.equal((await get(players[2])).work.heights[6], 2);
@@ -90,7 +106,7 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     await act(players[2], 'edit', { cell: 7, delta: 1, opId });
     await act(players[2], 'edit', { cell: 7, delta: 1, opId });
     assert.equal((await get(players[0])).work.heights[7], 2);
-    for (const cell of [11, 12]) for (let i = 0; i < 2; i++) await act(players[3], 'edit', { cell, delta: 1 });
+    for (const cell of [10, 11]) for (let i = 0; i < 2; i++) await act(players[3], 'edit', { cell, delta: 1 });
     // Height 2 in the hidden column differs from the author's 1, with identical views.
     const solved = await act(players[2], 'check-answer'); assert.equal(solved.correct, true); assert.equal(solved.state.race.finished, true);
     await act(players[0], 'check-answer', { workId: initial.work.id }, 409);
@@ -98,7 +114,7 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     assert.equal((await get(teacher)).teams[0].finishShape, undefined, 'the projector does not show a solution while others are solving');
     await act(teacher, 'stop-race');
     const podium = await get(teacher);
-    assert.equal(podium.teams[0].finishShape[12], 2, 'the result keeps the actual accepted alternative the team built');
+    assert.equal(podium.teams[0].finishShape[11], 2, 'the result keeps the actual accepted alternative the team built');
     assert.equal(podium.teams[1].finishShape, undefined, 'stopping a round does not award a finish');
     assert.equal((await get(players[4])).teams[0].finishShape, undefined);
     await act(teacher, 'return-authoring');
@@ -123,11 +139,22 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     await act(teacher, 'team-capacity', { capacity: 4 });
     assert.equal((await get(teacher)).teams[0].members.length, 5, 'lowering the cap preserves current members');
     await act(teacher, 'start-race', { questionIds: [q.id] });
-    assert.deepEqual((await get(players[0])).work.heights, Array(25).fill(0), 'the same saved questions can start a fresh race');
+    assert.deepEqual((await get(players[0])).work.heights, Array(16).fill(0), 'the same saved questions can start a fresh race');
     await act(players[0], 'join-team', { teamId: teams[0].id });
     await act(waiting, 'join-team', { teamId: teams[0].id }, 409);
     await act(teacher, 'team-capacity', { capacity: null });
     assert.ok((await act(waiting, 'join-team', { teamId: teams[0].id })).state.work.canBuild, 'the teacher can reopen seats mid-race');
+    // Replay a board containing both a pre-upgrade question and a new question.
+    await act(teacher, 'stop-race');
+    const legacy = Array(25).fill(0); legacy[24] = 6;
+    const saved = (await h.pool.query('SELECT state FROM learning_board_stacking WHERE board_id=$1', [board.id])).rows[0].state;
+    saved.questions.push({ id: 'old', title: '이전 문제', author: '모둠', heights: legacy,
+      pictures: Object.fromEntries(['top', 'front', 'right'].map(v => [v, drawing(legacy, v)])) });
+    await h.pool.query('UPDATE learning_board_stacking SET state=$2::jsonb WHERE board_id=$1', [board.id, JSON.stringify(saved)]);
+    await act(teacher, 'start-race', { questionIds: ['old', q.id] });
+    for (let i = 0; i < 6; i++) await act(players[0], 'edit', { cell: 24, delta: 1 });
+    const switched = await act(players[0], 'check-answer');
+    assert.equal(switched.correct, true); assert.equal(switched.state.work.heights.length, 16);
   } finally { await h.close(); }
 });
 
@@ -144,16 +171,16 @@ test('one to six authors keep their draft, share missing views, and start with a
     const base = '/api/boards/' + board.id + '/stacking', get = async cookie => (await request(base, undefined, cookie)).data;
     const act = async (cookie, action, extra = {}) => {
       const s = await get(cookie);
-      return (await request(base + '/actions', { action, workId: s.work?.id, version: s.work?.version, opId: crypto.randomUUID(), ...extra }, cookie)).data;
+      return (await request(base + '/actions', { action, workId: s.work?.id, boardSize: Math.sqrt(s.work?.heights.length), version: s.work?.version, opId: crypto.randomUUID(), ...extra }, cookie)).data;
     };
     const teams = (await get(teacher)).teams, players = [];
-    const shape = Array(25).fill(0); shape[12] = 1;
+    const shape = Array(9).fill(0); shape[4] = 1;
     let author, other;
     for (let count = 1; count <= 6; count++) {
       const joined = await request('/api/boards/join', { code: board.code, name: '학생' + count, number: count });
       const before = author ? await get(author) : null;
       players.push(joined.cookie); await act(joined.cookie, 'join-team', { teamId: teams[0].id });
-      if (!author) { author = players[0]; await act(author, 'edit', { cell: 12, delta: 1 }); }
+      if (!author) { author = players[0]; await act(author, 'edit', { cell: 4, delta: 1 }); }
       else {
         const after = await get(author);
         assert.equal(after.work.id, before.work.id); assert.deepEqual(after.work.heights, before.work.heights, 'joining never discards the current shape');
@@ -185,7 +212,7 @@ test('one to six authors keep their draft, share missing views, and start with a
       if (count < 6) {
         await act(author, 'new-draft');
         author = players[count - 1];
-        await act(author, 'edit', { cell: 12, delta: 1 });
+        await act(author, 'edit', { cell: 4, delta: 1 });
       }
     }
     assert.equal((await get(teacher)).questions.length, 6);

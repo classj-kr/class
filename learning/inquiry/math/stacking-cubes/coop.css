@@ -85,7 +85,7 @@
 .coop-attendance { color:#53715e; font-size:14px; }
 .coop-toolbar strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .coop-checks { display:flex; justify-content:space-between; gap:8px; font-size:12px; color:#53715e; }
-.coop-draw-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; }
+.coop-draw-grid { display:grid; grid-template-columns:repeat(var(--columns),1fr); gap:1px; }
 .coop-draw-grid button { min-width:0; min-height:44px; padding:0; border-radius:0; border-color:#bbc2b5; background:#faf9f4; }
 .coop-draw-grid button[aria-pressed=true] { background:#dcb77c; }
 .coop-draw-grid button:disabled { opacity:1; }
