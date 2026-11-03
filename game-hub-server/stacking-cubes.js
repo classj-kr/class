@@ -2,6 +2,7 @@
 const express = require('express');
 const crypto = require('node:crypto');
 const Activities = require('../learning/inquiry/math/stacking-cubes/activities');
+const { DEFAULT_ROUND, MAX_ROUND, generateRound, drawFromBank } = require('./stacking-race-questions');
 const CONTENT = '/learning/inquiry/math/stacking-cubes';
 const MODES = ['views', 'copy'];
 // Live classroom races like handwriting rooms: kept in memory, never stored as student records.
@@ -20,6 +21,10 @@ function createStackingCubes({ platform, now = Date.now }) {
   const token = () => crypto.randomBytes(24).toString('hex');
   const students = (r) => r.players.filter((p) => !p.host);
   const mode = (body) => (MODES.includes(body?.mode) ? body.mode : 'views');
+  function roundSize(value, maximum) {
+    if (!Number.isInteger(value) || value < 1 || value > maximum) throw fail(400, `문제 수는 1~${maximum}개로 정해 주세요.`);
+    return value;
+  }
   function finish(r) {
     r.phase = 'results';
     r.updated = now();
@@ -44,7 +49,7 @@ function createStackingCubes({ platform, now = Date.now }) {
   }
   function state(r, p) {
     expire(r);
-    const total = r.questions.length;
+    const total = r.count;
     // More solved first, then whoever reached that count sooner.
     const participants = students(r)
       .map((x) => ({ id: x.id, name: x.name, solved: x.solved, time: x.solved ? x.time : null }))
@@ -60,6 +65,8 @@ function createStackingCubes({ platform, now = Date.now }) {
       roundId: r.roundId,
       deadline: r.phase === 'racing' ? r.deadline : null,
       total,
+      sourceTitle: r.bank?.title || null,
+      maxQuestions: r.bank?.questions.length || MAX_ROUND,
       questions: r.phase === 'lobby' ? [] : r.questions,
       me: { id: p.id, host: p.host, solved: p.solved || 0 },
       participants,
@@ -86,10 +93,18 @@ function createStackingCubes({ platform, now = Date.now }) {
       if (!(await teacher(req))) throw fail(403, '교사 계정으로 로그인해 주세요.');
       prune();
       if (rooms.size >= 256) throw fail(503, '열린 방이 많아요. 잠시 후 다시 시도해 주세요.');
+      const body = req.body || {};
+      let bank = null;
+      if (body.bankId !== undefined) {
+        if (typeof body.bankId !== 'string' || !body.bankId || body.bankId.length > 80) throw fail(400, '문제은행을 선택해 주세요.');
+        bank = await platform.readStackingRaceBank(req, body.bankId, body.questionIds);
+      } else if (body.questionIds !== undefined) throw fail(400, '문제은행을 선택해 주세요.');
+      const maximum = bank?.questions.length || MAX_ROUND;
+      const count = roundSize(body.questionCount ?? Math.min(DEFAULT_ROUND, maximum), maximum);
       const code = await platform.roomCodes.allocate('stacking');
       const player = { id: crypto.randomUUID(), token: token(), host: true, name: '선생님' };
       const m = mode(req.body);
-      const r = { code, mode: m, questions: Activities.questions(m), players: [player], phase: 'lobby', roundId: '', updated: now() };
+      const r = { code, mode: m, bank, count, questions: [], players: [player], phase: 'lobby', roundId: '', updated: now() };
       rooms.set(code, r);
       res.json({ token: player.token, state: state(r, player) });
     }),
@@ -127,8 +142,10 @@ function createStackingCubes({ platform, now = Date.now }) {
       const { room: r, player: p } = await host(req);
       if (r.phase === 'racing') throw fail(409, '이미 시작했어요.');
       if (!students(r).length) throw fail(409, '학생이 입장하면 시작할 수 있어요.');
+      const count = roundSize(req.body?.questionCount ?? r.count, r.bank?.questions.length || MAX_ROUND);
+      r.questions = r.bank ? drawFromBank(r.bank, count, r.questions) : generateRound(count, r.questions);
+      r.count = count;
       r.mode = mode(req.body);
-      r.questions = Activities.questions(r.mode);
       r.roundId = crypto.randomUUID();
       r.phase = 'racing';
       r.startedAt = now();

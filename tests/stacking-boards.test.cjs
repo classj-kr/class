@@ -26,24 +26,30 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     await request(base, undefined, 'test_teacher=2', 401);
     await act(teacher, 'team-count', { count: 2 });
     const teams = (await get(teacher)).teams;
+    const emptyStart = await act(teacher, 'start-race', { questionIds: [] });
+    assert.equal(emptyStart.state.race.total, 6);
+    assert.equal(emptyStart.state.questions.length, 0, 'automatic rounds leave the teacher bank intact');
     const players = [];
     for (let i = 0; i < 8; i++) {
       const joined = await request('/api/boards/join', { code: board.code, name: '학생' + (i + 1), number: i + 1 });
       players.push(joined.cookie); await act(joined.cookie, 'join-team', { teamId: teams[i < 4 ? 0 : 1].id });
     }
-    assert.deepEqual((await get(players[0])).teams[0].members.map(m => m.role), ['build', 'front', 'right', 'top']);
-    await act(players[1], 'edit', { cell: 6, delta: 1 }, 409);
+    assert.ok((await get(players[7])).work.canBuild, 'teams can join after an empty room starts');
+    await act(teacher, 'stop-race'); await act(teacher, 'return-authoring');
+    await Promise.all(players.slice(0, 4).map(p => act(p, 'edit', { cell: 12, delta: 1 })));
+    assert.equal((await get(players[3])).work.heights[12], 4, 'all four edits survive on the same authoring cell');
+    await act(players[1], 'clear');
     await act(players[0], 'start-race', { questionIds: [] }, 403);
     const target = Array(25).fill(0); [6, 7, 11].forEach(i => target[i] = 2); target[12] = 1;
     for (let cell = 0; cell < 25; cell++) for (let i = 0; i < target[cell]; i++) await act(players[0], 'edit', { cell, delta: 1 });
     await act(players[0], 'freeze');
     await act(players[0], 'publish', {}, 409);
     assert.equal((await act(players[1], 'check-drawing')).correct, false);
-    await act(players[0], 'draw', { cells: Array(30).fill(0) }, 403);
+    await act(players[0], 'draw', { view: 'invalid', cells: Array(30).fill(0) }, 403);
     async function verify() {
       for (const [i, view] of [[1, 'front'], [2, 'right'], [3, 'top']]) {
-        await act(players[i], 'draw', { cells: drawing(target, view) });
-        assert.equal((await act(players[i], 'check-drawing')).correct, true);
+        await act(players[i], 'draw', { view, cells: drawing(target, view) });
+        assert.equal((await act(players[i], 'check-drawing', { view })).correct, true);
       }
     }
     await verify();
@@ -58,6 +64,13 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     assert.equal((await get(teacher)).questions.length, 1);
     await h.initialize();
     const q = (await get(teacher)).questions[0]; assert.equal(q.title, '숨은 층');
+    assert.deepEqual((await request('/api/boards/stacking-race-banks', undefined, teacher)).data.banks, [{ id: board.id, title: board.title, count: 1 }]);
+    await request('/api/stacking-race/rooms', { bankId: board.id, questionIds: [q.id] }, 'test_teacher=2', 404);
+    await request('/api/stacking-race/rooms', { bankId: board.id, questionIds: ['missing'] }, teacher, 409);
+    const individual = (await request('/api/stacking-race/rooms', { bankId: board.id, questionIds: [q.id] }, teacher)).data;
+    assert.equal(individual.state.sourceTitle, board.title);
+    assert.equal(individual.state.total, 1);
+    assert.deepEqual(individual.state.questions, []);
     assert.equal((await request(base + '?bankRevision=1', undefined, teacher)).data.questions, undefined, 'unchanged bank images are not resent with every block edit');
     await act(teacher, 'start-race', { questionIds: [q.id] });
     const initial = await get(players[0]);
@@ -83,40 +96,11 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     await act(players[0], 'check-answer', { workId: initial.work.id }, 409);
     assert.equal((await get(teacher)).teams[0].score, 1);
     await act(teacher, 'stop-race'); await act(teacher, 'return-authoring');
-    const cycle = [
-      ['front', 'right', 'top', 'build'],
-      ['right', 'top', 'build', 'front'],
-      ['top', 'build', 'front', 'right'],
-      ['build', 'front', 'right', 'top']
-    ];
-    let author = 0;
-    for (const [round, expected] of cycle.entries()) {
-      const previous = await get(players[author]);
-      await act(players[(author + 1) % 4], 'new-draft', {}, 403);
-      await act(players[author], 'new-draft');
-      await act(players[author], 'new-draft', { workId: previous.work.id }, 409);
-      const snapshots = await Promise.all(players.slice(0, 4).map(get));
-      assert.deepEqual(snapshots.map(s => s.me.role), expected, 'each person advances once per new question');
-      assert.ok(snapshots.every(s => s.work.id === snapshots[0].work.id && !s.work.heights.some(Boolean)), 'all four start the same empty question');
-      author = expected.indexOf('build');
-      assert.deepEqual(snapshots.map(s => s.work.canBuild), expected.map(role => role === 'build'));
-      if (round === 0) {
-        await h.initialize();
-        assert.deepEqual((await Promise.all(players.slice(0, 4).map(get))).map(s => s.me.role), expected, 'reconnecting preserves assigned roles');
-      }
-      if (round === cycle.length - 1) break;
-      await act(players[author], 'new-draft', {}, 409);
-      await act(players[author], 'edit', { cell: 12, delta: 1 });
-      await act(players[author], 'freeze');
-      const shape = Array(25).fill(0); shape[12] = 1;
-      for (const [i, view] of expected.entries()) if (view !== 'build') {
-        await act(players[i], 'draw', { cells: drawing(shape, view) });
-        assert.equal((await act(players[i], 'check-drawing')).correct, true);
-      }
-      await act(players[author], 'publish');
-      assert.deepEqual((await Promise.all(players.slice(0, 4).map(get))).map(s => s.me.role), expected, 'publishing keeps the current roles until the next question');
-    }
-    const saved = (await get(teacher)).questions; assert.equal(saved.length, 4);
+    const published = await get(players[0]);
+    await act(players[3], 'new-draft');
+    await act(players[1], 'new-draft', { workId: published.work.id }, 409);
+    const snapshots = await Promise.all(players.slice(0, 4).map(get));
+    assert.ok(snapshots.every(s => s.work.canBuild && s.work.id === snapshots[0].work.id && !s.work.heights.some(Boolean)));
     await act(teacher, 'start-race', { questionIds: [q.id] });
     assert.deepEqual((await get(players[0])).work.heights, Array(25).fill(0), 'the same saved questions can start a fresh race');
   } finally { await h.close(); }
@@ -148,11 +132,11 @@ test('one to six authors keep their draft, share missing views, and start with a
       else {
         const after = await get(author);
         assert.equal(after.work.id, before.work.id); assert.deepEqual(after.work.heights, before.work.heights, 'joining never discards the current shape');
-        assert.equal(after.me.role, 'build', 'late arrivals preserve the current author');
+        assert.equal(after.work.canBuild, true, 'late arrivals can build alongside existing teammates');
       }
       await act(author, 'freeze');
       const states = await Promise.all(players.map(get));
-      assert.deepEqual([...new Set(states.flatMap(s => s.me.roles))].sort(), ['build', 'front', 'right', 'top'], 'all views have an owner for every group size');
+      assert.ok(states.every(s => s.me.roles.length === 4), 'everyone can edit all views');
       if (count > 4) {
         const frontAuthors = players.filter((_, i) => states[i].me.roles.includes('front'));
         await Promise.all(frontAuthors.slice(0, 2).map((p, i) => act(p, 'draw', { view: 'front', cell: i, value: 1 })));
@@ -175,7 +159,7 @@ test('one to six authors keep their draft, share missing views, and start with a
       await act(teacher, 'stop-race'); await act(teacher, 'return-authoring');
       if (count < 6) {
         await act(author, 'new-draft');
-        const next = await Promise.all(players.map(get)); author = players[next.findIndex(s => s.me.role === 'build')];
+        author = players[count - 1];
         await act(author, 'edit', { cell: 12, delta: 1 });
       }
     }

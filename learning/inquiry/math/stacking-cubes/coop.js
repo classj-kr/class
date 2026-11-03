@@ -6,10 +6,8 @@
   const params = new URLSearchParams(location.search);
   let boardId = params.get('id'), state, stream, connected = false, refreshing = false, again = false;
   let queue = Promise.resolve(), pending = 0, localDrawing = null, panelOpen = true;
-  let questionTitle = '', titleWork = '', activeView = 'front';
+  let pendingTitle = null, composingTitle = null, activeView = 'front', openingIndividual = false;
   const selected = new Set(), roleNames = { build: '출제자', front: '앞', right: '오른쪽 옆', top: '위' };
-  const assignedRoles = person => person.roles || [person.role];
-  const roleText = person => assignedRoles(person).map(role => roleNames[role]).join('·');
   const ui = document.createElement('div');
   ui.innerHTML = `<div class="coop-toolbar"><strong id="coop-label">문제은행·팀전</strong><button id="coop-bank-button" type="button">게시판</button></div>
     <p id="coop-status" class="coop-status" role="status"></p>
@@ -70,7 +68,7 @@
     finally { refreshing = false; if (again) { again = false; void refresh(); } }
   }
   function send(action, extra = {}) {
-    if (!connected) { status('연결을 확인하는 중이에요.'); return Promise.resolve(); }
+    if (!state || !navigator.onLine) { status('연결을 확인하는 중이에요.'); return Promise.resolve(); }
     const body = { action, workId: state?.work?.id, version: state?.work?.version, bankRevision: state?.bankRevision, ...extra, opId: crypto.randomUUID() };
     pending++;
     const task = queue.then(async () => {
@@ -109,7 +107,7 @@
   function render() {
     $('coop-title').textContent = `${state.board.title} · 방 ${state.board.code}`;
     const myTeam = state.teams.find(t => t.id === state.me.teamId);
-    $('coop-label').textContent = state.me.teacher ? `방 ${state.board.code}` : `${myTeam?.name || '모둠 선택'}${myTeam ? ' · ' + (state.race ? '함께 쌓기' : roleText(state.me)) : ''}`;
+    $('coop-label').textContent = state.me.teacher ? `방 ${state.board.code}` : `${myTeam?.name || '모둠 선택'}${myTeam ? ' · ' + (state.race ? '함께 쌓기' : '공동 출제') : ''}`;
     if (!panelOpen && !state.me.teacher) { renderDock(); panel(false); return; }
     const controls = $('coop-teacher-controls'); controls.replaceChildren();
     if (state.me.teacher) {
@@ -122,12 +120,13 @@
     }
     const teams = $('coop-teams'); teams.replaceChildren();
     const ranked = [...state.teams].sort((a, b) => (b.score || 0) - (a.score || 0) || (a.solvedAt || Infinity) - (b.solvedAt || Infinity));
-    for (const t of ranked.filter(t => !state.race || t.score !== undefined)) {
+    const joiningRace = !state.me.teacher && !myTeam && state.race?.phase === 'playing';
+    for (const t of ranked.filter(t => !state.race || joiningRace || t.score !== undefined)) {
       const card = element('div', undefined, 'coop-team'); card.classList.toggle('is-mine', t.id === state.me.teamId);
       const rank = t.score ? 1 + ranked.filter(other => (other.score || 0) > t.score || other.score === t.score && other.solvedAt < t.solvedAt).length : null;
       card.append(element('strong', `${rank ? rank + '위 · ' : ''}${t.name} · ${t.members.length}명${t.score !== undefined ? ` · ${t.score}/${state.race.total}문제${t.finishedAt ? ' 완료' : ''}` : ''}`));
-      for (const m of t.members) card.append(element('span', `${m.name}${!state.race ? ' · ' + roleText(m) : ''}`));
-      if (!state.me.teacher && !state.race && t.id !== state.me.teamId) card.append(button('이 모둠 참여', () => send('join-team', { teamId: t.id })));
+      for (const m of t.members) card.append(element('span', m.name));
+      if (!state.me.teacher && (!state.race || joiningRace) && t.id !== state.me.teamId) card.append(button('이 모둠 참여', () => send('join-team', { teamId: t.id })));
       if (state.me.teacher && !state.race && t.members.length) card.append(button('모둠 초기화', () => { if (confirm(`${t.name}의 배정과 작성 중인 문제를 초기화할까요? 등록된 문제는 보관됩니다.`)) send('reset-team', { teamId: t.id }); }, 'coop-small'));
       teams.append(card);
     }
@@ -150,21 +149,34 @@
     if (!state.me.teacher) return;
     if (state.race?.phase === 'playing') root.append(button('팀전 마치기', () => send('stop-race')));
     else {
-      const start = button(`선택한 ${state.questions.filter(q => selected.has(q.id)).length}문제로 팀전 시작`, () => send('start-race', { questionIds: state.questions.filter(q => selected.has(q.id)).map(q => q.id) }), 'primary-button');
-      start.disabled = !state.questions.some(q => selected.has(q.id)) || !state.teams.some(t => t.members.length); root.append(start);
+      const questionIds = state.questions.filter(q => selected.has(q.id)).map(q => q.id);
+      let startTitle = '자동 출제로 팀전 시작';
+      if (questionIds.length) startTitle = `선택한 ${questionIds.length}문제로 팀전 시작`;
+      else if (state.questions.length) startTitle = `등록된 ${state.questions.length}문제로 팀전 시작`;
+      root.append(button(startTitle, () => send('start-race', { questionIds }), 'primary-button'));
+      const individual = button('개인전 방 만들기', async () => {
+        if (openingIndividual) return;
+        openingIndividual = true;
+        renderRaceControls();
+        try { await window.StackingRace.openSelection(boardId, questionIds); }
+        catch (error) { status(error.message); openingIndividual = false; renderRaceControls(); }
+      });
+      individual.disabled = !questionIds.length || openingIndividual;
+      root.append(individual);
       if (state.race) root.append(button('출제로 돌아가기', () => send('return-authoring')));
     }
   }
   function renderDock() {
     const root = $('coop-dock'), w = state.work;
-    const assigned = assignedRoles(state.me), draws = assigned.filter(v => v && v !== 'build'), builder = assigned.includes('build');
-    if (!draws.includes(activeView)) activeView = draws[0];
-    const view = activeView, drawingNow = draws.length && (!builder || w?.phase === 'drawing');
+    const draws = ['front', 'right', 'top'];
+    const view = activeView, drawingNow = !state.race && w?.phase === 'drawing';
+    if (drawingNow && composingTitle === w.id) return;
+    composingTitle = null;
     const focusedCell = root.contains(document.activeElement) ? document.activeElement.dataset.cell : undefined;
     const focusedTitle = document.activeElement?.id === 'coop-question-title';
     const caret = focusedTitle ? document.activeElement.selectionStart : null;
     root.replaceChildren(); root.hidden = !w || state.me.teacher;
-    root.dataset.direction = state.race ? '' : drawingNow ? view : state.me.role || '';
+    root.dataset.direction = drawingNow ? view : '';
     document.body.classList.toggle('coop-working', !!w && !state.me.teacher);
     document.body.classList.toggle('coop-readonly', !w?.canBuild);
     if (!w || state.me.teacher) return;
@@ -176,10 +188,10 @@
       }
       return;
     }
-    root.append(element('h3', drawingNow ? `${roleNames[view]}에서 본 모습` : '입체 만들기'));
+    root.append(element('h3', drawingNow ? `${roleNames[view]}에서 본 모습` : '함께 입체 만들기'));
     if (drawingNow) {
       if (draws.length > 1) {
-        const tabs = element('div', undefined, 'coop-view-tabs'); tabs.setAttribute('role', 'group'); tabs.setAttribute('aria-label', '담당 그림');
+        const tabs = element('div', undefined, 'coop-view-tabs'); tabs.setAttribute('role', 'group'); tabs.setAttribute('aria-label', '함께 그릴 방향');
         for (const v of draws) {
           const tab = button(`${roleNames[v]}${w.checked[v] ? ' ✓' : ''}`, () => { activeView = v; localDrawing = null; renderDock(); });
           tab.setAttribute('aria-pressed', String(v === view)); tabs.append(tab);
@@ -197,14 +209,26 @@
       root.append(grid, element('small', view === 'top' ? '아래쪽이 앞' : view === 'right' ? '왼쪽이 앞' : '앞에서'));
       const check = button(w.checked[view] ? '확인 완료' : '그림 확인', () => send('check-drawing', { view }), 'primary-button'); check.disabled = !connected || w.phase !== 'drawing'; root.append(check);
     }
-    if (builder && w.phase === 'building') {
+    if (w.phase === 'building') {
       const freeze = button('입체 완성', () => send('freeze'), 'primary-button'); freeze.disabled = !connected || !w.heights.some(Boolean); root.append(freeze);
-    } else if (builder && w.phase === 'drawing') {
-      if (titleWork !== w.id) { questionTitle = ''; titleWork = w.id; }
-      const title = element('input'); title.id = 'coop-question-title'; title.placeholder = '문제 이름'; title.maxLength = 60; title.setAttribute('aria-label', '문제 이름'); title.value = questionTitle; title.oninput = () => { questionTitle = title.value; };
-      const publish = button('문제 등록', () => send('publish', { title: title.value }), 'primary-button'); publish.disabled = !connected || !w.canPublish;
+    } else if (w.phase === 'drawing') {
+      const title = element('input'); title.id = 'coop-question-title'; title.placeholder = '문제 이름'; title.maxLength = 60; title.setAttribute('aria-label', '문제 이름');
+      title.value = pendingTitle?.id === w.id ? pendingTitle.value : w.title;
+      function shareTitle() {
+        const previous = pendingTitle?.id === w.id ? pendingTitle.value : state.work.title;
+        if (previous === title.value) return;
+        const edit = { id: w.id, value: title.value };
+        pendingTitle = edit;
+        send('title', { previous, title: edit.value }).finally(() => {
+          if (pendingTitle === edit) { pendingTitle = null; renderDock(); }
+        });
+      }
+      title.oncompositionstart = () => { composingTitle = w.id; };
+      title.oncompositionend = () => { composingTitle = null; shareTitle(); };
+      title.oninput = event => { if (!event.isComposing && !composingTitle) shareTitle(); };
+      const publish = button('문제 등록', () => send('publish'), 'primary-button'); publish.disabled = !connected || !w.canPublish;
       root.append(title, publish, button('입체 수정', () => send('revise')));
-    } else if (builder) root.append(button('다음 문제 · 역할 교대', () => send('new-draft'), 'primary-button'));
+    } else root.append(button('다음 문제', () => send('new-draft'), 'primary-button'));
     const checks = element('div', undefined, 'coop-checks');
     for (const view of ['front', 'right', 'top']) checks.append(element('span', `${roleNames[view]} ${w.checked[view] ? '✓' : '○'}`));
     root.append(checks);

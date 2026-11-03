@@ -33,6 +33,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.waitForFunction(() => document.querySelectorAll('.coop-team').length === 1);
     const boardId = new URL(teacher.url()).searchParams.get('id');
     const code = (await teacher.locator('#coop-title').textContent()).match(/방 (\d{4})/)[1];
+    await teacher.getByRole('button', { name: '자동 출제로 팀전 시작' }).click();
+    await teacher.getByRole('button', { name: '팀전 마치기' }).waitFor();
     const students = [];
     for (let i = 0; i < 4; i++) {
       const c = await context(i === 3 ? 390 : 1280);
@@ -46,13 +48,18 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await p.locator('#coop-panel').waitFor({ state: 'hidden' });
     }
     const [builder, front, side, top] = students;
+    await top.getByRole('button', { name: '확인하기', exact: true }).waitFor();
+    await teacher.getByRole('button', { name: '팀전 마치기' }).click();
+    await teacher.getByRole('button', { name: '출제로 돌아가기' }).click();
+    for (const p of students) await p.getByRole('button', { name: '입체 완성' }).waitFor();
     await builder.evaluate(() => { window.playedSounds = []; const play = StackingSounds.play; StackingSounds.play = (...args) => { window.playedSounds.push(args[0]); return play(...args); }; });
-    await builder.locator('#scene').focus(); await builder.keyboard.press('Enter'); await builder.keyboard.press('Enter');
+    await Promise.all([builder, side].map(async p => { await p.locator('#scene').focus(); await p.keyboard.press('Enter'); }));
     for (const p of students) await p.waitForFunction(() => document.getElementById('total').textContent === '전체 2개');
-    await builder.waitForFunction(() => window.playedSounds.filter(kind => kind === 'add').length === 2);
-    await builder.getByRole('button', { name: '입체 완성', exact: true }).click();
+    await builder.waitForFunction(() => window.playedSounds.filter(kind => kind === 'add').length === 1);
+    await front.getByRole('button', { name: '입체 완성', exact: true }).click();
     const target = Array(25).fill(0); target[12] = 2;
     for (const [p, view] of [[front, 'front'], [side, 'right'], [top, 'top']]) {
+      await p.locator('.coop-view-tabs').getByRole('button', { name: {front:'앞',right:'오른쪽 옆',top:'위'}[view], exact:true }).click();
       await p.getByRole('button', { name: '그림 확인', exact: true }).waitFor();
       await p.locator(`#scene .direction-marker.is-assigned[data-direction="${view}"]`).waitFor();
       assert.equal(await p.locator('#coop-dock').getAttribute('data-direction'), view, 'drawing and 3D direction share the assigned role');
@@ -64,18 +71,15 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await snap(front, 'front-author');
     await snap(top, 'phone-author');
     await builder.locator('#coop-question-title').fill('두 층 탑');
-    await builder.getByRole('button', { name: '문제 등록', exact: true }).click();
+    await top.waitForFunction(() => document.getElementById('coop-question-title').value === '두 층 탑');
+    await top.getByRole('button', { name: '문제 등록', exact: true }).click();
     await teacher.getByText('두 층 탑', { exact: true }).waitFor();
     await snap(teacher, 'teacher-bank');
-    await builder.getByRole('button', { name: '다음 문제 · 역할 교대', exact: true }).click();
-    for (const [p, role] of [[builder, '앞'], [front, '오른쪽 옆'], [side, '위'], [top, '출제자']]) {
-      await p.waitForFunction(role => document.getElementById('coop-label').textContent === '1모둠 · ' + role, role, { timeout: 3000 });
-      assert.equal(await p.locator('#total').textContent(), '전체 0개');
+    await side.getByRole('button', { name: '다음 문제', exact: true }).click();
+    for (const p of students) {
+      await p.waitForFunction(() => document.getElementById('total').textContent === '전체 0개');
+      assert.equal(await p.locator('#tools').isVisible(), true);
     }
-    assert.equal(await builder.locator('#tools').isVisible(), false, 'previous author now draws the front view');
-    assert.equal(await top.locator('#tools').isVisible(), true, 'previous top-view drawer now builds');
-    for (const [p, view] of [[builder, 'front'], [front, 'right'], [side, 'top']]) await p.locator(`#scene .direction-marker.is-assigned[data-direction="${view}"]`).waitFor();
-    assert.equal(await top.locator('#scene .direction-marker.is-assigned').count(), 0, 'the new builder has no assigned drawing direction');
     await teacher.locator('.coop-question input[type=checkbox]').check();
     await teacher.getByRole('button', { name: '선택한 1문제로 팀전 시작', exact: true }).click();
     for (const p of students) {
@@ -132,7 +136,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         }
         await p.setViewportSize({ width: 390, height: 900 }); await snap(p, 'solo-author-phone');
         await p.getByRole('button', { name: '문제 등록', exact: true }).click();
-        await p.getByRole('button', { name: '다음 문제 · 역할 교대', exact: true }).click();
+        await p.getByRole('button', { name: '다음 문제', exact: true }).click();
         await p.waitForFunction(() => document.getElementById('total').textContent === '전체 0개');
         await p.getByRole('button', { name: '입체 완성', exact: true }).waitFor();
         await p.setViewportSize({ width: 1280, height: 900 });
@@ -155,6 +159,20 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await front.getByRole('button', { name: '확인하기', exact: true }).waitFor();
     await teacher.waitForFunction(() => document.querySelectorAll('.coop-team').length === 1);
     assert.equal(await teacher.locator('.coop-team').count(), 1, 'only the occupied group enters, with five slots still empty');
+    await teacher.getByRole('button', {name:'팀전 마치기', exact:true}).click();
+    await teacher.getByRole('button', {name:'개인전 방 만들기', exact:true}).click();
+    await teacher.waitForURL(/\/race\/\?room=\d{4}/);
+    await teacher.locator('#race-start').waitFor();
+    assert.equal(await teacher.locator('#race-next-count').inputValue(), '1');
+    const codeForIndividual = await teacher.locator('#race-code-label').textContent();
+    await front.goto(h.base + '/room/');
+    await front.locator('#roomCode').fill(codeForIndividual); await front.locator('#roomForm button').click();
+    await front.locator('#race-room').waitFor();
+    await teacher.locator('#race-start').click();
+    await front.locator('#target-panel').waitFor();
+    await front.locator('#scene').focus(); await front.keyboard.press('Enter');
+    await front.locator('#check-shape').click();
+    await teacher.locator('.race-tower-card.is-complete').waitFor();
     for (const p of [teacher, ...students]) assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.deepEqual(errors, []);
     await Promise.all(contexts.map(c => c.close()));

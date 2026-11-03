@@ -3,6 +3,7 @@ const { PGlite } = require('../game-hub-server/node_modules/@electric-sql/pglite
 const { createLearningBoards } = require('../game-hub-server/learning-boards');
 const { createRoomCodes } = require('../game-hub-server/room-codes');
 const { createRoomEntry } = require('../game-hub-server/room-entry');
+const { createStackingCubes } = require('../game-hub-server/stacking-cubes');
 const path = require('node:path');
 const { createAccessGate } = require('./classroom-site-access-harness.cjs');
 
@@ -53,12 +54,16 @@ async function createHarness({ studentSiteAccess = false, now = Date.now } = {})
   await feature.initialize(); // repeat boot is safe
   const app = express(); app.use(express.json({ limit: '32kb' }));
   if (studentSiteAccess) app.use(['/room', '/api/room-entry'], createAccessGate());
-  app.use('/api/room-entry', createRoomEntry({ roomCodes }));
+  const individual = createStackingCubes({ platform: { roomCodes, isTeacherRequest: async req => (await sessionUser(req))?.role === 'teacher',
+    isContentGloballyDisabled: async () => false, displayNameFor: sessionUser, readStackingRaceBank: feature.readStackingRaceBank } });
+  app.use('/api/stacking-race', individual.router);
+  app.use('/api/room-entry', createRoomEntry({ roomCodes, stackingExists: individual.hasRoomCode }));
   app.use('/api/boards', feature.router);
   app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
   const stackingRoot = path.resolve(__dirname, '../learning/inquiry/math/stacking-cubes');
   app.get('/learning/inquiry/math/stacking-cubes/coop/', (_req, res) => res.sendFile(path.join(stackingRoot, 'index.html')));
   app.use('/learning/inquiry/math/stacking-cubes/coop/', express.static(stackingRoot));
+  app.use('/learning/inquiry/math/stacking-cubes/race/', express.static(stackingRoot));
   app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise(resolve => { const instance = app.listen(0, '127.0.0.1', () => resolve(instance)); });
