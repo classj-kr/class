@@ -38,6 +38,12 @@ test('room entry, server judging, ranking by solved count then time, and closing
   await new Promise((r) => s.once('listening', r));
   t.after(() => new Promise((r) => s.close(r)));
   const origin = `http://127.0.0.1:${s.address().port}`, base = origin + '/api/stacking-race';
+  for (const id of ['fruitbell', 'lastcard', 'glass-pulse-01', 'glass-pulse-02', 'glass-pulse-03']) {
+    const excerpt = await fetch(`${base}/music/${id}.ogg`, { headers: { Range: 'bytes=0-3' } });
+    assert.equal(excerpt.status, 206);
+    assert.equal(await excerpt.text(), 'OggS');
+  }
+  assert.equal((await fetch(base + '/music/unknown.ogg')).status, 404);
   async function req(path, body, token = '', role = '', name = '') {
     const response = await fetch(base + path, {
       method: body === undefined ? 'GET' : 'POST',

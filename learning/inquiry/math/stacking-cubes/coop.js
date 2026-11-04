@@ -46,6 +46,8 @@
     panelOpen = open; $('coop-panel').hidden = !open;
     document.querySelector('.workspace').inert = open;
     $('coop-close').hidden = !state?.work || state.me.teacher || !!state.race && (state.race.phase !== 'playing' || state.race.finished);
+    const racing = state?.race?.phase === 'playing' && (state.me.teacher || (!open && state.work && !state.race.finished));
+    window.StackingMusic.setSession(racing ? state.race.id : null);
   }
   function diagram(cells, view, size) {
     const wrap = element('div', undefined, 'coop-diagram');
@@ -79,7 +81,7 @@
     if (!boardId) return;
     refreshing = true;
     try { apply(await api(`/${boardId}/stacking${state ? '?bankRevision=' + state.bankRevision : ''}`)); }
-    catch (error) { status(error.message); if ([401, 403, 404].includes(error.status)) { connected = false; stream?.close(); panel(true); } }
+    catch (error) { status(error.message); if ([401, 403, 404].includes(error.status)) { connected = false; stream?.close(); panel(true); window.StackingMusic.setSession(null); } }
     finally { refreshing = false; if (again) { again = false; void refresh(); } }
   }
   function send(action, extra = {}) {

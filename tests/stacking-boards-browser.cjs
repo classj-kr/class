@@ -58,10 +58,12 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await p.locator('#coop-panel').waitFor({ state: 'hidden' });
     }
     const [builder, front, side, top] = students;
+    await builder.waitForFunction(() => document.querySelector('#stacking-bgm').currentTime > 0);
     await top.getByRole('button', { name: '확인하기', exact: true }).waitFor();
     await teacher.getByRole('button', { name: '팀전 마치기' }).click();
     await teacher.getByRole('button', { name: '출제로 돌아가기' }).click();
     for (const p of students) await p.getByRole('button', { name: '입체 완성' }).waitFor();
+    assert.ok(await builder.locator('#stacking-bgm').evaluate(a => a.paused), 'authoring is quiet');
     await builder.locator('#board-size').selectOption('4');
     for (const p of students) await p.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 16);
     await side.locator('#board-size').selectOption('3');
@@ -230,6 +232,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     assert.equal(await teacher.evaluate(() => window.finishSounds), 1, 'muted finishes stay quiet');
     await teacher.reload();
     await teacher.locator('#coop-stage.is-final').waitFor();
+    assert.ok(await teacher.locator('#stacking-bgm').evaluate(a => a.paused));
     assert.equal(await teacher.locator('#coop-stage.is-cheering').count(), 0, 'loading results does not replay celebrations');
     assert.match(await teacher.locator('.relay-headline').textContent(), /2모둠 1위/);
     assert.deepEqual(await teacher.locator('.relay-lane .lane-top strong').allTextContents(), ['2모둠', '3모둠', '1모둠']);
