@@ -36,9 +36,14 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.reload();
     await teacher.waitForFunction(() => document.querySelector('#coop-capacity')?.value === '3');
     const boardId = new URL(teacher.url()).searchParams.get('id');
-    const code = (await teacher.locator('#coop-title').textContent()).match(/방 (\d{4})/)[1];
+    const roomCode = teacher.locator('#coop-room-code');
+    const code = await roomCode.innerText();
+    assert.match(code, /^\d{4}$/);
+    assert.ok(await roomCode.evaluate(n => parseFloat(getComputedStyle(n).fontSize)) >= 90);
     await teacher.getByRole('button', { name: '자동 출제로 팀전 시작' }).click();
     await teacher.getByRole('button', { name: '팀전 마치기' }).waitFor();
+    assert.ok(await roomCode.isVisible());
+    assert.equal(await roomCode.innerText(), code);
     const students = [];
     for (let i = 0; i < 4; i++) {
       const c = await context(i === 3 ? 390 : 1280);
@@ -140,7 +145,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/');
     await teacher.locator('#coop-bank-title').fill('두 명도 바로'); await teacher.locator('#coop-create button').click();
     await teacher.locator('#coop-board').waitFor();
-    const smallCode = (await teacher.locator('#coop-title').textContent()).match(/방 (\d{4})/)[1];
+    const smallCode = await roomCode.innerText();
     const smallId = new URL(teacher.url()).searchParams.get('id');
     for (const [i, p] of [builder, front].entries()) {
       await p.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/?code=' + smallCode);
@@ -238,6 +243,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     assert.deepEqual(await teacher.locator('.relay-lane .lane-top strong').allTextContents(), ['2모둠', '3모둠', '1모둠']);
     await snap(teacher, 'team-final-results');
     await teacher.setViewportSize({width:390,height:844});
+    assert.equal(await roomCode.innerText(), smallCode);
+    assert.ok(await roomCode.evaluate(n => parseFloat(getComputedStyle(n).fontSize)) >= 60);
     await snap(teacher, 'team-final-phone');
     for (const p of [teacher, ...students]) assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     const coopUrl = h.base + '/learning/inquiry/math/stacking-cubes/coop/';
