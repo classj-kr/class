@@ -6,7 +6,14 @@
 .coop-panel { position:fixed; inset:0; z-index:7; overflow:auto; padding:30px 16px; background:#f6f4eeed; display:grid; align-items:start; justify-items:center; }
 .coop-card { width:min(1050px,100%); padding:24px; background:#fffefa; border:1px solid #dedfd7; border-radius:20px; }
 .coop-card header { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
-.coop-card h2 { margin:0 auto 0 0; font-size:20px; }
+.coop-card h2 { min-width:0; margin:0 auto 0 0; font-size:20px; overflow-wrap:anywhere; }
+.coop-card header:has(#coop-room-sign:not([hidden])) { flex-wrap:wrap; background:#fffefa; }
+#coop-room-sign { display:flex; flex-direction:column; align-items:center; padding:8px 20px 12px; border-radius:14px; background:#173f36; color:#fff; }
+#coop-room-sign span { font-size:16px; font-weight:700; }
+#coop-room-code { font:800 clamp(64px,9vw,120px)/1 system-ui,sans-serif; font-variant-numeric:tabular-nums; letter-spacing:.045em; }
+@media(min-width:800px) and (min-height:620px) {
+  .coop-card header:has(#coop-room-sign:not([hidden])) { position:sticky; top:0; z-index:2; padding-block:6px; }
+}
 .coop-card a { color:#2d5c51; white-space:nowrap; }
 .coop-row { display:flex; align-items:center; gap:9px; margin:12px 0; flex-wrap:wrap; }
 #coop-team-controls { margin:0; }
@@ -17,6 +24,8 @@
 .coop-banks { display:grid; gap:8px; margin-top:20px; }
 .coop-bank-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px; }
 .coop-bank-row button { overflow-wrap:anywhere; }
+.coop-bank-open { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:4px 16px; text-align:left; }
+.coop-bank-open strong { color:#173f36; font:750 clamp(28px,3vw,44px)/1.1 system-ui,sans-serif; font-variant-numeric:tabular-nums; letter-spacing:.04em; }
 .coop-bank-delete { color:#834d3d; }
 .coop-teams { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
 .coop-team { display:flex; flex-direction:column; gap:7px; padding:14px; border:1px solid #dedfd7; border-radius:12px; font-size:13px; }
@@ -106,6 +115,8 @@ html body.coop-page p { font-family:"Pretendard","Malgun Gothic",system-ui,sans-
   .coop-readonly .scene-wrap { margin-bottom:45dvh; }
   .coop-card { padding:16px; }
   .coop-card header { gap:8px; flex-wrap:wrap; }
+  .coop-page .coop-card header:has(#coop-room-sign:not([hidden])) { padding-right:0; }
+  #coop-room-sign { padding-inline:12px; }
   .coop-card h2 { font-size:17px; }
   .coop-teams { grid-template-columns:1fr 1fr; }
   .coop-team { padding:10px; }

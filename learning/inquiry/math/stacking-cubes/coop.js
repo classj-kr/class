@@ -13,7 +13,7 @@
     <p id="coop-status" class="coop-status" role="status"></p>
     <aside id="coop-dock" class="coop-dock" hidden></aside>
     <section id="coop-panel" class="coop-panel" aria-label="쌓기나무 문제은행"><div class="coop-card">
-      <header><h2 id="coop-title">내 쌓기나무 문제은행</h2><a href="/room/">방번호 입력</a><button id="coop-close" aria-label="게시판 닫기" hidden>×</button></header>
+      <header><div id="coop-room-sign" hidden><span>방번호</span><strong id="coop-room-code"></strong></div><h2 id="coop-title">내 쌓기나무 문제은행</h2><a href="/room/">방번호 입력</a><button id="coop-close" aria-label="게시판 닫기" hidden>×</button></header>
       <div id="coop-entry" hidden><form id="coop-create"><label for="coop-bank-title">게시판 이름</label><div class="coop-row"><input id="coop-bank-title" maxlength="80" value="쌓기나무 문제은행" required><button class="primary-button">만들기</button></div></form><div id="coop-banks" class="coop-banks"></div></div>
       <div id="coop-board" hidden><div id="coop-teacher-controls" class="coop-row" hidden>
         <label>모둠당 최대 인원 <select id="coop-capacity"><option value="">제한 없음</option></select></label>
@@ -122,7 +122,9 @@
     stream.onerror = () => { connected = false; status('다시 연결하는 중…'); if (state) renderDock(); };
   }
   function render() {
-    $('coop-title').textContent = `${state.board.title} · 방 ${state.board.code}`;
+    $('coop-title').textContent = state.me.teacher ? state.board.title : `${state.board.title} · 방 ${state.board.code}`;
+    $('coop-room-sign').hidden = !state.me.teacher;
+    $('coop-room-code').textContent = state.board.code;
     const myTeam = state.teams.find(t => t.id === state.me.teamId);
     $('coop-label').textContent = state.me.teacher ? `방 ${state.board.code}` : `${myTeam?.name || '모둠 선택'}${myTeam ? ' · ' + (state.race ? '함께 쌓기' : '공동 출제') : ''}`;
     if (!panelOpen && !state.me.teacher) { renderDock(); panel(false); return; }
@@ -312,7 +314,10 @@
           row.remove(); status('문제은행을 삭제했어요.');
         }, 'coop-bank-delete');
         remove.setAttribute('aria-label', name + ' 삭제');
-        row.append(button(name, () => openBoard(b.id)), remove);
+        const open = button('', () => openBoard(b.id), 'coop-bank-open');
+        open.setAttribute('aria-label', name);
+        open.append(element('span', b.title), element('strong', b.code));
+        row.append(open, remove);
         $('coop-banks').append(row);
       }
     } catch (error) { if ([401, 403].includes(error.status) && !boardId) location.replace('/room/'); else status(error.message); }
