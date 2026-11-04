@@ -456,9 +456,24 @@
             background: linear-gradient(135deg, var(--gold-mid), var(--panel-dark));
         }
 
-        .worksheet-group[open] > summary .worksheet-arrow {
-            transform: scale(1.12) rotate(-8deg);
-            filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.45));
+        .worksheet-chevron {
+            display: block;
+            justify-self: end;
+            width: 22px;
+            height: 22px;
+            color: #fff0c7;
+            transition: transform 0.22s ease;
+        }
+
+        .worksheet-chevron svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .worksheet-group > summary[aria-expanded="true"] .worksheet-chevron,
+        .worksheet-group[open] > summary:not([aria-expanded]) .worksheet-chevron {
+            transform: rotate(180deg);
         }
 
         .worksheet-group-options {
@@ -555,10 +570,10 @@
         }
 
         .worksheet-container a.is-class-locked .worksheet-arrow,
-        .worksheet-group > summary.is-class-locked .worksheet-arrow,
+        .worksheet-group > summary.is-class-locked .worksheet-chevron,
         .game-card-grid a.is-class-locked .worksheet-arrow,
         .worksheet-container a.is-global-locked .worksheet-arrow,
-        .worksheet-group > summary.is-global-locked .worksheet-arrow,
+        .worksheet-group > summary.is-global-locked .worksheet-chevron,
         .game-card-grid a.is-global-locked .worksheet-arrow {
             opacity: 0.62;
             filter: grayscale(100%) brightness(1.18);
@@ -1071,7 +1086,7 @@
             <details class="worksheet-group" data-access-group="story-books">
                 <summary aria-label="읽기 메뉴 열기" data-content-paths="learning/literacy-numeracy/story-books/|learning/literacy-numeracy/reading/">
                     <span class="worksheet-copy"><strong>읽기</strong><small>(Reading)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">📖</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options is-lockable-list" aria-label="읽기 갈래 선택">
                     <a href="learning/literacy-numeracy/story-books/korea-tales/" data-requires-player="true" data-access-parent="story-books">
@@ -1099,7 +1114,7 @@
             <details class="worksheet-group" data-access-group="writing">
                 <summary aria-label="쓰기 메뉴 열기" data-content-paths="learning/literacy-numeracy/handwriting/|learning/literacy-numeracy/spelling/|learning/literacy-numeracy/sentence-building/">
                     <span class="worksheet-copy"><strong>쓰기</strong><small>(Writing)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">✍️</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="쓰기 활동 선택">
                     <a href="learning/literacy-numeracy/handwriting/" data-requires-player="true" data-access-parent="writing">
@@ -1120,7 +1135,7 @@
                 <summary aria-label="어휘 메뉴 열기"
                          data-content-paths="learning/literacy-numeracy/idiomatic-expressions/|learning/literacy-numeracy/proverbs/|learning/literacy-numeracy/classical-chinese-idioms/|learning/literacy-numeracy/hanja-meaning/|learning/literacy-numeracy/phonics/|learning/literacy-numeracy/vocabulary/">
                     <span class="worksheet-copy"><strong>어휘</strong><small>(Vocabulary)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">📚</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="어휘 선택">
                     <a href="learning/literacy-numeracy/idiomatic-expressions/" data-requires-player="true" data-access-parent="vocabulary">
@@ -1153,7 +1168,7 @@
                 <summary aria-label="수리 메뉴 열기"
                          data-content-paths="/arithmetic|learning/literacy-numeracy/math-ox/|learning/literacy-numeracy/math-bank/|learning/literacy-numeracy/csat-math/">
                     <span class="worksheet-copy"><strong>수리</strong><small>(Numeracy)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="9.5" height="9.5" rx="2" fill="#6366f1"/><text x="6.75" y="9.5" font-size="7.5" font-weight="bold" fill="#fff" text-anchor="middle" font-family="'Times New Roman', serif">∑</text><rect x="12.5" y="2" width="9.5" height="9.5" rx="2" fill="#0ea5e9"/><text x="17.25" y="9.5" font-size="7.5" font-weight="bold" fill="#fff" text-anchor="middle" font-family="'Times New Roman', serif">π</text><rect x="2" y="12.5" width="9.5" height="9.5" rx="2" fill="#f59e0b"/><text x="6.75" y="19.8" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle" font-family="'Times New Roman', serif">√x</text><rect x="12.5" y="12.5" width="9.5" height="9.5" rx="2" fill="#10b981"/><text x="17.25" y="19.3" font-size="6" font-weight="bold" fill="#fff" text-anchor="middle" font-family="'Times New Roman', serif" font-style="italic">f(x)</text></svg></span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="수리 선택">
                     <a href="/arithmetic" data-access-parent="math-problems">
@@ -1180,7 +1195,7 @@
                 <summary aria-label="수학 교구 메뉴 열기" data-access-mode="individual"
                          data-content-paths="learning/inquiry/math/stacking-cubes/|learning/inquiry/math/graph-studio/|learning/inquiry/math/fraction-board/|learning/inquiry/math/number-models/">
                     <span class="worksheet-copy"><strong>수학 교구</strong><small>(Math Tools)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#f0cd8b" d="m12 2 9 5-9 5-9-5z"/><path fill="#e3b97a" d="m3 7 9 5v10l-9-5z"/><path fill="#bc8b4d" d="m12 12 9-5v10l-9 5z"/><path fill="none" stroke="#805e33" stroke-width=".8" d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm0 10 9-5M12 12 3 7m9 5v10"/></svg></span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="수학 교구 선택">
                     <a href="learning/inquiry/math/stacking-cubes/" data-requires-player="true" data-access-parent="mathematics">
@@ -1205,7 +1220,7 @@
                 <summary aria-label="정보·컴퓨터 메뉴 열기"
                          data-content-paths="learning/inquiry/information-computing/computer-fundamentals/|learning/inquiry/information-computing/typing/">
                     <span class="worksheet-copy"><strong>정보·컴퓨터</strong><small>(Computing)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">💻</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="정보·컴퓨터 선택">
                     <a href="learning/inquiry/information-computing/computer-fundamentals/" data-access-parent="information-computing">
@@ -1222,7 +1237,7 @@
                 <summary aria-label="역사·지리 메뉴 열기" data-access-mode="individual"
                          data-content-paths="learning/inquiry/korean-history/|learning/inquiry/korea-map/|learning/inquiry/world-geography/|learning/inquiry/globe/|/learn/world-voyage/">
                     <span class="worksheet-copy"><strong>역사·지리</strong><small>(History &amp; Geography)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">🌐</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="역사·지리 선택">
                     <a href="learning/inquiry/korean-history/" data-access-parent="social-studies">
@@ -1255,7 +1270,7 @@
                 <summary aria-label="과학 모형 메뉴 열기" data-access-mode="individual"
                          data-content-paths="learning/inquiry/science-lab/|learning/inquiry/human-body/|learning/inquiry/space/|learning/inquiry/periodic-table/">
                     <span class="worksheet-copy"><strong>과학 모형</strong><small>(Science Models)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">🔬</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="과학 모형 선택">
                     <a href="learning/inquiry/science-lab/" data-requires-player="true" data-access-parent="science">
@@ -1286,7 +1301,7 @@
             <details class="worksheet-group" data-game-category="visual-response">
                 <summary aria-label="시각·반응 메뉴 열기">
                     <span class="worksheet-copy"><strong>시각·반응</strong><small>(Vision &amp; Response)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">⚡</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options game-card-grid" aria-label="시각·반응 게임 선택">
                     <a href="learning/games/fruitbell/fruitbell"><span class="game-card-copy"><span class="game-card-title"><strong>과일 종</strong><span class="game-difficulty" data-level="beginner" aria-label="난이도 초급">초급</span></span><small>(Fruit Bell)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="11" width="8" height="11" rx="1" fill="#fff" stroke="#d32f2f" stroke-width="1" transform="rotate(-10 6 16.5)"/><circle cx="5" cy="15" r="2" fill="#e53935"/><path fill="#ffb300" d="M12 7c-3 0-5 2.2-5 5v5h10v-5c0-2.8-2-5-5-5z"/><rect x="11" y="5" width="2" height="2" fill="#e53935"/><rect x="6" y="17" width="12" height="2" rx="1" fill="#78909c"/></svg></span></a>
@@ -1297,7 +1312,7 @@
             <details class="worksheet-group" data-game-category="spatial-placement">
                 <summary aria-label="공간·배치 메뉴 열기">
                     <span class="worksheet-copy"><strong>공간·배치</strong><small>(Spatial &amp; Placement)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">🧩</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options game-card-grid" aria-label="공간·배치 게임 선택">
                     <a href="learning/games/diamondgame/diamondgame"><span class="game-card-copy"><span class="game-card-title"><strong>다이아몬드 게임</strong><span class="game-difficulty" data-level="beginner" aria-label="난이도 초급">초급</span></span><small>(Diamond Game)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="12,2 15,8 21,8 18,13 20,19 14,16 12,22 10,16 4,19 6,13 3,8 9,8" fill="#ffe082" stroke="#ffb300" stroke-width="1.2"/><polygon points="12,2 21,8 20,19 12,22 4,19 3,8" stroke="#e65100" stroke-width="0.8" fill="none"/><circle cx="12" cy="3.5" r="1.8" fill="#e53935"/><circle cx="4.5" cy="18" r="1.8" fill="#1e88e5"/><circle cx="19.5" cy="18" r="1.8" fill="#4caf50"/><circle cx="12" cy="12" r="1.5" fill="#37474f"/></svg></span></a>
@@ -1309,7 +1324,7 @@
             <details class="worksheet-group" data-game-category="math-operations">
                 <summary aria-label="수리·연산 메뉴 열기">
                     <span class="worksheet-copy"><strong>수리·연산</strong><small>(Math &amp; Operations)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">🔢</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options game-card-grid" aria-label="수리·연산 게임 선택">
                     <a href="learning/games/lastcard/lastcard"><span class="game-card-copy"><span class="game-card-title"><strong>라스트 카드</strong><span class="game-difficulty" data-level="beginner" aria-label="난이도 초급">초급</span></span><small>(Last Card)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="10" height="15" rx="2" fill="#e53935" stroke="#fff" stroke-width="1" transform="rotate(-15 7 13.5)"/><text x="5" y="16" font-size="8" font-weight="bold" fill="#fff" transform="rotate(-15 7 13.5)">7</text><rect x="12" y="5" width="10" height="15" rx="2" fill="#1e88e5" stroke="#fff" stroke-width="1" transform="rotate(12 17 12.5)"/><text x="14" y="15" font-size="7" font-weight="bold" fill="#fff" transform="rotate(12 17 12.5)">+2</text></svg></span></a>
@@ -1322,7 +1337,7 @@
             <details class="worksheet-group" data-game-category="logic-deduction">
                 <summary aria-label="논리·추론 메뉴 열기">
                     <span class="worksheet-copy"><strong>논리·추론</strong><small>(Logic &amp; Deduction)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">🔎</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options game-card-grid" aria-label="논리·추론 게임 선택">
                     <a href="learning/games/number-code"><span class="game-card-copy"><span class="game-card-title"><strong>숫자 암호</strong><span class="game-difficulty" data-level="beginner" aria-label="난이도 초급">초급</span></span><small>(Number Code)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="18" rx="2" fill="#212121" stroke="#424242"/><text x="7" y="16" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">7</text><rect x="13" y="3" width="8" height="18" rx="2" fill="#fff" stroke="#e0e0e0"/><text x="17" y="16" font-size="12" font-weight="bold" fill="#212121" text-anchor="middle">3</text></svg></span></a>
@@ -1335,7 +1350,7 @@
             <details class="worksheet-group" data-game-category="abstract-strategy">
                 <summary aria-label="기물·전략 메뉴 열기">
                     <span class="worksheet-copy"><strong>기물·전략</strong><small>(Pieces &amp; Strategy)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">♟</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options game-card-grid" aria-label="기물·전략 게임 선택">
                     <a href="learning/games/omok/omok"><span class="game-card-copy"><span class="game-card-title"><strong>오목</strong><span class="game-difficulty" data-level="beginner" aria-label="난이도 초급">초급</span></span><small>(Five in a Row)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="#d7ccc8"/><path stroke="#8d6e63" stroke-width="0.8" d="M2 5h20M2 12h20M2 19h20M5 2v20M12 2v20M19 2v20"/><line x1="3" y1="12" x2="21" y2="12" stroke="#e53935" stroke-width="2"/><circle cx="4" cy="12" r="2.2" fill="#212121"/><circle cx="8" cy="12" r="2.2" fill="#212121"/><circle cx="12" cy="12" r="2.2" fill="#212121"/><circle cx="16" cy="12" r="2.2" fill="#212121"/><circle cx="20" cy="12" r="2.2" fill="#212121"/></svg></span></a>
@@ -1349,7 +1364,7 @@
             <details class="worksheet-group" data-game-category="resource-economy">
                 <summary aria-label="자원·경영 메뉴 열기">
                     <span class="worksheet-copy"><strong>자원·경영</strong><small>(Resource &amp; Economy)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">💎</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options game-card-grid" aria-label="자원·경영 게임 선택">
                     <a href="learning/games/expedition/expedition"><span class="game-card-copy"><span class="game-card-title"><strong>자원 모으기</strong><span class="game-difficulty" data-level="beginner" aria-label="난이도 초급">초급</span></span><small>(Resource Collection)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#3e2723" d="M2 21V9l6-5 6 5v12z"/><path fill="#1a1008" d="M6 21v-7h4v7z"/><circle cx="17" cy="8" r="3.2" fill="#ffca28" stroke="#f57f17" stroke-width="1"/><circle cx="20" cy="13" r="2.4" fill="#ffe082" stroke="#f9a825" stroke-width="0.9"/><path stroke="#8d6e63" stroke-width="1.6" stroke-linecap="round" d="M14 18h7"/><path fill="#ef5350" d="M18.4 20.6l1.6-2.6 1.6 2.6z"/></svg></span></a>
@@ -1361,7 +1376,7 @@
             <details class="worksheet-group" data-game-category="solo-puzzles">
                 <summary aria-label="개인 퍼즐 메뉴 열기">
                     <span class="worksheet-copy"><strong>개인 퍼즐</strong><small>(Solo Puzzles)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.45rem;line-height:1">🗝</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options game-card-grid" aria-label="개인 퍼즐 게임 선택">
                     <a href="learning/games/nonogram/" data-requires-player="true"><span class="game-card-copy"><span class="game-card-title"><strong>노노그램</strong><span class="game-difficulty" data-level="beginner" aria-label="난이도 초급">초급</span></span><small>(Nonogram)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="1" fill="#fff" stroke="#212121" stroke-width="1.5"/><path stroke="#e0e0e0" stroke-width="0.8" d="M6 2v20M10 2v20M14 2v20M18 2v20M2 6h20M2 10h20M2 14h20M2 18h20"/><rect x="6" y="6" width="4" height="4" fill="#e53935"/><rect x="14" y="6" width="4" height="4" fill="#e53935"/><rect x="2" y="10" width="20" height="4" fill="#e53935"/><rect x="6" y="14" width="12" height="4" fill="#e53935"/><rect x="10" y="18" width="4" height="4" fill="#e53935"/></svg></span></a>
@@ -1380,7 +1395,7 @@
             <details class="worksheet-group" data-access-group="arts-appreciation">
                 <summary aria-label="작품 감상 메뉴 열기" data-content-paths="learning/arts/art-appreciation/|learning/arts/music-listening/">
                     <span class="worksheet-copy"><strong>작품 감상</strong><small>(Arts Appreciation)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.55rem;line-height:1">🎭</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="작품 감상 선택">
                     <a href="learning/arts/art-appreciation/museum/" data-access-parent="arts-appreciation">
@@ -1396,7 +1411,7 @@
             <details class="worksheet-group" data-access-group="arts-experience">
                 <summary aria-label="체험 메뉴 열기" data-content-paths="learning/arts/instrument-room/|learning/arts/art-studio/">
                     <span class="worksheet-copy"><strong>체험</strong><small>(Experience)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.55rem;line-height:1">🖐️</span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="체험 선택">
                     <a href="learning/arts/art-studio/" data-access-parent="arts-experience">
@@ -1412,7 +1427,7 @@
             <details class="worksheet-group" data-access-group="music-theory">
                 <summary aria-label="이론 메뉴 열기" data-content-paths="learning/arts/music-theory/ear-training/|learning/arts/music-theory/rhythm-training/">
                     <span class="worksheet-copy"><strong>이론</strong><small>(Theory)</small></span>
-                    <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5C9 3 5 3 2 4v15c4-1 7-1 10 1 3-2 6-2 10-1V4c-3-1-7-1-10 1Z" fill="#fff0c2" stroke="#c58b27" stroke-width="1.3"/><path d="M12 5v15M5 8h4M5 11h4M5 14h4" fill="none" stroke="#8d6e63" stroke-width="1.2" stroke-linecap="round"/><circle cx="17" cy="8" r="1.7" fill="#e35d51"/><path d="m14.5 15 2.5-4 2.5 4Z" fill="#379bc4"/></svg></span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="이론 선택">
                     <a href="learning/arts/music-theory/ear-training/" data-access-parent="music-theory"><span class="worksheet-copy"><strong>청음</strong><small>(Ear Training)</small></span><span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10a8 8 0 0 1 16 0" fill="none" stroke="#e0e0e0" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="10" width="4" height="8" rx="2" fill="#ffb300"/><rect x="17" y="10" width="4" height="8" rx="2" fill="#ffb300"/><path d="M7 14h1.6M15.4 14H17" stroke="#e0e0e0" stroke-width="1.2" stroke-linecap="round"/><circle cx="12" cy="14.5" r="1.5" fill="#38bdf8"/><path d="M9.6 12.4a3.4 3.4 0 0 1 4.8 0M10.9 10.9a5.3 5.3 0 0 1 2.2 0" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/></svg></span></a>
