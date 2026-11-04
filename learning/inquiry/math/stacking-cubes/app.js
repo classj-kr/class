@@ -350,7 +350,14 @@
     $('challenge-result').classList.remove('is-success');
   }
 
+  function syncPracticeMusic() {
+    if (challenge?.race || document.body.matches('.coop-page, .race-page')) return;
+    const solving = challenge && challenge.state !== 'solved' && !dialog.open;
+    window.StackingMusic.setSession(solving ? 'practice-' + challenge.mode : null);
+  }
+
   function updatePractice() {
+    syncPracticeMusic();
     if (!challenge) return;
     const { mode, index, questions, state, found } = challenge;
     $('challenge-title').textContent = `${challenge.race ? '순위전' : activities.names[mode]} · ${index + 1}/${questions.length}`;
@@ -425,8 +432,10 @@
     library.refresh();
     document.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === (challenge?.mode || 'free'))));
     dialog.showModal();
+    syncPracticeMusic();
   }
 
+  dialog.addEventListener('close', syncPracticeMusic);
   $('activity-button').addEventListener('click', () => { openActivities(); sound('view'); });
   $('close-activities').addEventListener('click', () => dialog.close());
   document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => { startActivity(button.dataset.mode); sound('view'); }));

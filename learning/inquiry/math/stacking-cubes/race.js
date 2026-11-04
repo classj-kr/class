@@ -192,6 +192,7 @@
       App.race(next.mode, next.questions, Math.min(next.me.solved, next.total - 1), submit);
     }
     showPanel(!solving);
+    window.StackingMusic.setSession(racing && (host || solving) ? next.roundId : null);
     tick();
   }
 
@@ -205,7 +206,7 @@
           failures = 0;
         } catch (error) {
           status(error.message);
-          if (error.status === 403 || error.status === 404) { showPanel(true); return; }
+          if ([401, 403, 404].includes(error.status)) { window.StackingMusic.setSession(null); showPanel(true); return; }
           failures++;
         }
       }
@@ -283,6 +284,7 @@
     clearTimeout(pollTimer);
     store.remove('ticket-' + code);
     code = ''; token = ''; state = null; shownRound = '';
+    window.StackingMusic.setSession(null);
     App.free();
     document.body.classList.remove('race-host');
     $('race-room').hidden = true;

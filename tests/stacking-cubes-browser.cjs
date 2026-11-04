@@ -5,6 +5,7 @@ const { spawnSync } = require('node:child_process');
 const express = require('../game-hub-server/node_modules/express');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const activities = require('../learning/inquiry/math/stacking-cubes/activities.js');
+const { createStackingCubes } = require('../game-hub-server/stacking-cubes');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'outputs/stacking-cubes-review');
 const shots = process.argv.includes('--shots');
@@ -17,6 +18,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
   app.get('/api/auth/me', (_, res) => res.json({ signedIn: true, user: { id: 1, name: '검수교사', role: 'teacher' } }));
   app.get('/api/teacher/profile', (_, res) => res.json({ profiles: [{ name: '검수교사', schoolName: '검수학교', teacherType: '담임', grade: 3, classNumber: 1 }] }));
   app.get('/api/home-content-access', (_, res) => res.json({ mode: 'open', enabledPaths: [], globallyDisabledPaths: [], hasClassAccess: false, canManage: false, canManageGlobally: false }));
+  app.use('/api/stacking-race', createStackingCubes({ platform: { isContentGloballyDisabled: async () => false } }).router);
   app.use('/api', (_, res) => res.json({}));
   app.use(express.static(path.join(root, 'apps')));
   app.use(express.static(root));
@@ -213,6 +215,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         };
       });
       await choose('copy');
+      await page.waitForFunction(() => document.querySelector('#stacking-bgm').currentTime > 0);
       await total(0);
       await activate(page.locator('#check-shape'));
       assert.match(await page.locator('#challenge-result').textContent(), /다시/);
@@ -289,6 +292,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.waitForFunction(() => document.querySelector('#target-scene .block-face'));
       await page.waitForFunction(() => !document.querySelector('#target-scene .cell-number'));
       await choose('free');
+      assert.ok(await page.locator('#stacking-bgm').evaluate(a => a.paused));
       await total(11);
 
       const target = activities.questions('many')[0];
