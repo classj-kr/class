@@ -28,11 +28,17 @@ export type ParticipantRow = {
   scored_at?: number | null;
   avatar_url?: string | null;
   team?: number | null;
+  // 지금 이어지는 연속 정답 수. 틀리거나 포기하면 0.
+  combo?: number;
 };
 
-// 맞히면 +1, 틀리면 −1(같은 카드 다시), 포기하면 −2(다음 카드).
-export function raceCardScore(outcome: CardUpdate["outcome"]) {
-  return outcome === "correct" ? 1 : outcome === "wrong" ? -1 : -2;
+// 맞히면 +1, 5연속째부터 +2, 10연속째부터 +3. 틀리면 −1(같은 카드 다시), 포기하면 −2(다음 카드).
+export function raceComboPoints(streak: number) {
+  return streak >= 10 ? 3 : streak >= 5 ? 2 : 1;
+}
+
+export function raceCardScore(outcome: CardUpdate["outcome"], comboBefore = 0) {
+  return outcome === "correct" ? raceComboPoints(comboBefore + 1) : outcome === "wrong" ? -1 : -2;
 }
 
 export type CardUpdate = {
@@ -142,18 +148,20 @@ export function d1RaceStore(db: D1Database): RaceStore {
     },
     async recordCard(update) {
       // 카드 번호가 맞을 때만 반영해 같은 카드를 두 번 채점하지 않는다. 틀리면 같은 카드에 머문다.
-      const score = raceCardScore(update.outcome);
+      const correct = update.outcome === "correct";
       const advance = update.outcome === "wrong" ? 0 : 1;
+      // 연속 정답 가중점은 지금 저장된 combo 로 계산한다(SET 안의 combo 는 바뀌기 전 값).
       const result = await db.prepare(`UPDATE arithmetic_race_participants SET
           card_index = card_index + ?,
-          score = score + ?,
+          score = score + CASE WHEN ? THEN (CASE WHEN combo + 1 >= 10 THEN 3 WHEN combo + 1 >= 5 THEN 2 ELSE 1 END) ELSE ? END,
+          combo = CASE WHEN ? THEN combo + 1 ELSE 0 END,
           correct_count = COALESCE(correct_count, 0) + ?,
           mistake_count = mistake_count + ?,
           skip_count = skip_count + ?,
           total_count = COALESCE(total_count, 0) + ?,
           scored_at = ?
         WHERE id = ? AND room_code = ? AND participant_token = ? AND card_index = ?`)
-        .bind(advance, score, update.outcome === "correct" ? 1 : 0, update.outcome === "wrong" ? 1 : 0, update.outcome === "skip" ? 1 : 0,
+        .bind(advance, correct ? 1 : 0, update.outcome === "wrong" ? -1 : -2, correct ? 1 : 0, correct ? 1 : 0, update.outcome === "wrong" ? 1 : 0, update.outcome === "skip" ? 1 : 0,
           advance, update.at, update.participantId, update.roomCode, update.participantToken, update.cardIndex)
         .run();
       return Boolean(result.meta.changes);
@@ -248,7 +256,8 @@ export function memoryRaceStore(clock: () => number = Date.now): RaceStore {
       if (!participant || (participant.card_index ?? 0) !== update.cardIndex) return false;
       const advance = update.outcome === "wrong" ? 0 : 1;
       participant.card_index = update.cardIndex + advance;
-      participant.score = (participant.score ?? 0) + raceCardScore(update.outcome);
+      participant.score = (participant.score ?? 0) + raceCardScore(update.outcome, participant.combo ?? 0);
+      participant.combo = update.outcome === "correct" ? (participant.combo ?? 0) + 1 : 0;
       participant.correct_count = (participant.correct_count ?? 0) + (update.outcome === "correct" ? 1 : 0);
       participant.mistake_count += update.outcome === "wrong" ? 1 : 0;
       participant.skip_count = (participant.skip_count ?? 0) + (update.outcome === "skip" ? 1 : 0);

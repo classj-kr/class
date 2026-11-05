@@ -129,13 +129,15 @@ async function main() {
       await page.waitForFunction(expected => document.querySelector('.card-race-number')?.textContent === `${expected}번째 미션`, index + 2);
     }
     assert.ok(await page.locator('main.is-fever').count());
+    // 5연속째부터 한 문제 +2: 카드에 +2 도장이 찍힌다.
+    assert.equal(await page.locator('.math-race-stamp').innerText(), '+2');
     await page.waitForFunction(() => document.querySelector('.math-race-rank')?.textContent === '1위');
     // 점수 5 = 일 모형 다섯 개. 열 개가 넘으면 십 모형 막대로 합쳐진다.
     assert.equal(await page.locator('.math-race-towers .is-me .math-race-cube').count(), me.score % 10);
     peers[0].score = 12;
     await page.waitForFunction(() => document.querySelectorAll('.math-race-towers .math-race-rod').length === 1);
     await capture(page, 'playing-desktop');
-    const animations = await page.locator('.math-race-drift i').evaluateAll(nodes => nodes.map(node => node.getAnimations()[0]?.playState));
+    const animations = await page.locator('.math-race-cloud').evaluateAll(nodes => nodes.map(node => node.getAnimations()[0]?.playState));
     assert.ok(animations.length > 0 && animations.every(state => state === 'running'));
     await page.setViewportSize({ width: 390, height: 844 });
     await page.evaluate(() => scrollTo(0, 0));

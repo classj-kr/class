@@ -3,27 +3,40 @@
 import type { CSSProperties } from "react";
 import "../arithmetic/race/race-scene.css";
 
-// 바탕은 수학 공책 모눈. 식과 숫자가 연필 자국처럼 천천히 떠오른다.
-const DRIFT = ["7 + 5", "12", "3 × 4", "=", "36 ÷ 6", "9", "15 − 8", "+", "8 × 7", "100", "÷", "48"];
+// 바탕은 수 모형 블록으로 지은 낮의 도시. 크레인이 블록을 나르고, 건물이 한 층씩 올라가고,
+// 하늘에서 블록이 떨어진다. 연속 정답이 이어지면 노을이 지고 블록이 더 쏟아진다.
+const SKYLINE = [
+  { w: 7, h: 38, hue: 4 }, { w: 5, h: 62, hue: 214, crane: true }, { w: 8, h: 30, hue: 146 }, { w: 6, h: 80, hue: 32, grow: true },
+  { w: 5, h: 46, hue: 268 }, { w: 9, h: 24, hue: 190 }, { w: 6, h: 70, hue: 350 }, { w: 7, h: 40, hue: 48 },
+  { w: 5, h: 92, hue: 214, grow: true }, { w: 8, h: 34, hue: 146 }, { w: 6, h: 58, hue: 4 }, { w: 7, h: 28, hue: 268 },
+  { w: 5, h: 74, hue: 32 }, { w: 8, h: 44, hue: 190, grow: true }, { w: 8, h: 52, hue: 350 },
+];
+const CLOUDS = [{ top: 8, size: 1, speed: 70, delay: -10 }, { top: 18, size: .7, speed: 55, delay: -38 }, { top: 4, size: .55, speed: 90, delay: -60 }, { top: 26, size: .85, speed: 64, delay: -24 }];
+const FALLING = Array.from({ length: 12 }, (_, index) => ({ left: (index * 37 + 6) % 96, hue: [4, 214, 146, 32, 268, 48][index % 6], speed: 7 + (index * 5) % 6, delay: -index * 1.3 }));
 
 export function RaceBackdrop() {
-  return <div className="math-race-paper" aria-hidden="true">
-    <div className="math-race-margin" />
-    <div className="math-race-drift">{DRIFT.map((text, index) => <i key={index} style={{
-      left: `${4 + (index * 37) % 90}%`, fontSize: `${22 + (index * 7) % 4 * 9}px`,
-      animationDuration: `${16 + (index * 5) % 7 * 2}s`, animationDelay: `${index * -2.7}s`,
-    }}>{text}</i>)}</div>
+  return <div className="math-race-city" aria-hidden="true">
+    <div className="math-race-sunset" />
+    <div className="math-race-sun" />
+    {CLOUDS.map((cloud, index) => <i key={index} className="math-race-cloud" style={{ top: `${cloud.top}%`, scale: String(cloud.size), animationDuration: `${cloud.speed}s`, animationDelay: `${cloud.delay}s` }} />)}
+    <div className="math-race-falling">{FALLING.map((block, index) => <i key={index} style={{ left: `${block.left}%`, "--hue": block.hue, animationDuration: `${block.speed}s`, animationDelay: `${block.delay}s` } as CSSProperties} />)}</div>
+    <div className="math-race-skyline">
+      {SKYLINE.map((building, index) => <span key={index} className={`math-race-building${building.grow ? " is-growing" : ""}`}
+        style={{ width: `${building.w}%`, height: `${building.h}%`, "--hue": building.hue, animationDelay: `${index * -.7}s` } as CSSProperties}>
+        {building.crane ? <span className="math-race-crane"><i className="math-race-crane-arm"><b className="math-race-crane-load" /></i></span> : null}
+      </span>)}
+    </div>
+    <div className="math-race-ground" />
   </div>;
 }
 
-// 팀전에서는 사람 대신 팀이 탑을 쌓는다. 팀은 얼굴 대신 연산 기호를 단다.
 export type RaceRunner = { id: string; name: string; score: number; rank: number; avatarUrl?: string | null; symbol?: string; hue?: number };
 export function RaceAvatar({ name, avatarUrl }: { name: string; avatarUrl?: string | null }) {
   return avatarUrl ? <img className="math-race-avatar" src={avatarUrl} alt="" width={44} height={44} />
     : <span className="math-race-avatar" aria-hidden="true">{name.slice(0, 1)}</span>;
 }
 
-const TOWER_HEIGHT = 120;
+const TOWER_HEIGHT = 150;
 const whoLabel = (runner: RaceRunner) => runner.symbol ? "우리 팀" : "나";
 const ROW = 22;
 

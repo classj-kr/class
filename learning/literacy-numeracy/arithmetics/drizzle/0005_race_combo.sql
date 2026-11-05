@@ -1,0 +1,1 @@
+ALTER TABLE `arithmetic_race_participants` ADD `combo` integer DEFAULT 0 NOT NULL;

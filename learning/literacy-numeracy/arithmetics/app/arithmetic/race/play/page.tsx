@@ -6,13 +6,17 @@ import { RaceAvatar, RaceBackdrop, RaceTowers, raceCue } from "../../../componen
 import type { TeamStanding } from "../../../../lib/arithmetic-race-teams";
 
 type Race = { roomCode: string; worksheetName: string; worksheetRoute: string; seed: number; status: string; startedAt: number | null; endsAt: number | null; durationSeconds: number | null; teamCount?: number | null };
-type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null; team?: number | null };
+type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null; team?: number | null; combo?: number };
 type Entry = { id: string; name: string; score: number; correctCount: number; rank: number; avatarUrl?: string | null; team?: number | null };
 type Credentials = { room: string; participant: string; participantToken: string };
 type Outcome = "correct" | "wrong" | "skip";
 // play: 푸는 중, wrong: 흔들림, reveal: 포기해서 정답을 보여 줌, leave: 카드가 날아감
 type Phase = "play" | "correct" | "wrong" | "reveal" | "leave";
 type Flash = { text: string; kind: string; key: number } | null;
+// 맞힌 카드에서 내 탑으로 날아가는 일 모형.
+type Flight = { key: number; x: number; y: number; dx: number; dy: number; count: number };
+// 연속 정답 가중점: 5연속째부터 +2, 10연속째부터 +3(서버와 같은 규칙).
+const comboPoints = (streak: number) => streak >= 10 ? 3 : streak >= 5 ? 2 : 1;
 
 const POINTS: Record<Outcome, string> = { correct: "+1", wrong: "−1", skip: "−2" };
 const MEDALS = ["🥇", "🥈", "🥉"];
@@ -62,6 +66,8 @@ export default function ArithmeticRaceCardsPage() {
   const [banner, setBanner] = useState<Flash>(null);
   const [toast, setToast] = useState<Flash>(null);
   const [streak, setStreak] = useState(0);
+  const [flight, setFlight] = useState<Flight | null>(null);
+  const lastTens = useRef<number | null>(null);
   const [error, setError] = useState("");
   const [now, setNow] = useState(0);
   const [launch, setLaunch] = useState(false);
@@ -152,6 +158,20 @@ export default function ArithmeticRaceCardsPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shownRank, playing]);
 
+  // 내 탑(팀전이면 우리 팀 탑)에 일 모형 열 개가 차서 십 모형이 되면 크게 알린다.
+  const towerScore = Math.max(0, teams ? myTeam?.score ?? 0 : me?.score ?? 0);
+  useEffect(() => {
+    const tens = Math.floor(towerScore / 10);
+    const previous = lastTens.current;
+    lastTens.current = tens;
+    if (!playing || previous === null || tens <= previous) return;
+    const timer = window.setTimeout(() => {
+      setBanner({ text: `🧱 십 모형 완성! ${tens * 10}점`, kind: "ten", key: Date.now() });
+      raceCue("rank");
+    }, 650);
+    return () => window.clearTimeout(timer);
+  }, [towerScore, playing]);
+
   const card: RaceCard | null = race && cardIndex !== null ? raceCard(race.worksheetRoute, race.seed, cardIndex) : null;
   const fields = card && !card.choices ? cardFields(card) : [];
   const numericOnly = fields.length > 0 && fields.every((field) => field.kind !== "text");
@@ -168,6 +188,15 @@ export default function ArithmeticRaceCardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, busy, cardIndex]);
 
+  // 카드 가운데에서 내 탑(팀전이면 우리 팀 탑) 꼭대기로 일 모형을 날린다.
+  function launchCubes(count: number) {
+    const from = document.querySelector(".card-race-card")?.getBoundingClientRect();
+    const to = document.querySelector(".math-race-towers li.is-me .math-race-climber")?.getBoundingClientRect();
+    if (!from || !to) return;
+    const x = from.left + from.width / 2, y = from.top + from.height / 2;
+    setFlight({ key: Date.now(), x, y, dx: to.left + to.width / 2 - x, dy: to.top + to.height - y, count: Math.max(1, Math.min(3, count)) });
+  }
+
   async function send(skip: boolean, answers: Record<string, string> = values) {
     if (!credentials || !race || cardIndex === null || busy || !playing) return;
     setBusy(true);
@@ -177,7 +206,7 @@ export default function ArithmeticRaceCardsPage() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ action: "card", roomCode: credentials.room, participantId: credentials.participant, participantToken: credentials.participantToken, cardIndex, answers, skip }),
       });
-      const data = await response.json() as { outcome?: Outcome; answer?: string; participant?: Me; error?: string };
+      const data = await response.json() as { outcome?: Outcome; points?: number; answer?: string; participant?: Me; error?: string };
       if (data.participant) setMe((current) => ({ ...current, ...data.participant! }));
       if (!response.ok || !data.outcome) {
         if (data.participant) { setCardIndex(data.participant.cardIndex); setValues({}); }
@@ -188,7 +217,8 @@ export default function ArithmeticRaceCardsPage() {
       setError("");
       void load();
       const next = data.participant?.cardIndex ?? (outcome === "wrong" ? cardIndex : cardIndex + 1);
-      setPop({ text: POINTS[outcome], kind: outcome, key: Date.now() });
+      const points = data.points ?? (outcome === "correct" ? 1 : outcome === "wrong" ? -1 : -2);
+      setPop({ text: points > 0 ? `+${points}` : POINTS[outcome], kind: points >= 3 ? "correct mega" : points === 2 ? "correct big" : outcome, key: Date.now() });
 
       if (outcome === "wrong") {
         // 틀리면 1점을 잃고 같은 카드를 다시 푼다.
@@ -205,10 +235,11 @@ export default function ArithmeticRaceCardsPage() {
         sound("success");
         setPhase("correct");
         setBurst(Date.now());
-        const streakNow = streak + 1;
+        launchCubes(points);
+        const streakNow = data.participant?.combo ?? streak + 1;
         setStreak(streakNow);
         if (streakNow % 5 === 0) {
-          setBanner({ text: `🔥 ${streakNow}연속!`, kind: streakNow >= 10 ? "mega" : "combo", key: Date.now() });
+          setBanner({ text: streakNow === 5 ? "🔥 5연속! 이제 한 문제 +2" : streakNow === 10 ? "⚡ 10연속! 이제 한 문제 +3" : `⚡ ${streakNow}연속!`, kind: streakNow >= 10 ? "mega" : "combo", key: Date.now() });
           sound("bell");
         }
         await wait(120);
@@ -354,13 +385,13 @@ export default function ArithmeticRaceCardsPage() {
   }
 
   return (
-    <main className={`portal-page card-race-page math-race${phase === "wrong" ? " is-shaking" : ""}${streak >= 5 ? " is-fever" : ""}`}>
+    <main className={`portal-page card-race-page math-race${phase === "wrong" ? " is-shaking" : ""}${streak >= 5 ? " is-fever" : ""}${streak >= 10 ? " is-mega" : ""}`}>
       <RaceBackdrop />
       <p className="math-race-context">{race?.worksheetName || "경기 준비 중"}</p>
       <header className="card-race-top">
         <div className="math-race-stat"><span>{myTeam ? "우리 팀" : "내 순위"}</span><strong className="math-race-rank">{shownRank ? `${shownRank}위` : "—"}</strong><small>{myTeam ? myTeam.name : `방 ${credentials?.room}`}</small></div>
         <div className="math-race-stat"><span>내 점수</span><strong key={`score-${score}`} className={`card-race-score${score < 0 ? " is-negative" : ""}`}>{score}<small>점</small></strong></div>
-        <div className={`math-race-stat math-race-combo${streak >= 5 ? " is-hot" : ""}`}><span>연속 정답</span><strong key={streak}>{streak}<small>콤보</small></strong><div aria-hidden="true">{[1, 2, 3, 4, 5].map(value => <i key={value} className={value <= (streak ? (streak - 1) % 5 + 1 : 0) ? "on" : ""} />)}</div></div>
+        <div className={`math-race-stat math-race-combo${streak >= 5 ? " is-hot" : ""}`}><span>연속 정답 · 한 문제 +{comboPoints(streak + 1)}</span><strong key={streak}>{streak}<small>콤보</small></strong><div aria-hidden="true">{[1, 2, 3, 4, 5].map(value => <i key={value} className={value <= (streak ? (streak - 1) % 5 + 1 : 0) ? "on" : ""} />)}</div></div>
         <div className="math-race-stat"><span>남은 시간</span><time className={playing && remaining < 10000 ? "is-hurry" : ""}>{remaining !== null ? clock(Math.min(remaining, (race?.durationSeconds ?? 0) * 1000)) : "--:--"}</time></div>
       </header>
       <div className={`card-race-timebar${remaining !== null && remaining < 10000 ? " is-hurry" : ""}`} aria-hidden="true"><i style={{ transform: `scaleX(${progress})` }} /></div>
@@ -377,6 +408,7 @@ export default function ArithmeticRaceCardsPage() {
           ) : card ? (
             <form key={`card-${cardIndex}`} className={`card-race-card phase-${phase}`} onSubmit={submit}>
               <span className="card-race-number">{(cardIndex ?? 0) + 1}번째 미션</span>
+              {streak >= 4 ? <span key={comboPoints(streak + 1)} className={`math-race-stamp level-${comboPoints(streak + 1)}`} aria-label={`맞히면 ${comboPoints(streak + 1)}점`}>+{comboPoints(streak + 1)}</span> : null}
               {card.prompt && <p className="card-race-prompt">{card.prompt}</p>}
               <div className={`card-race-question${fields.length >= 3 || card.parts.some((part) => typeof part === "object" && "svg" in part) ? " is-dense" : ""}`}>{card.parts.map((part, index) => renderPart(part, String(index)))}</div>
               {card.choices ? (
@@ -401,6 +433,9 @@ export default function ArithmeticRaceCardsPage() {
             </div>
           )}
           {pop && <p key={`pop-${pop.key}`} className={`card-race-pop ${pop.kind}`} onAnimationEnd={() => setPop(null)}>{pop.text}</p>}
+          {flight && <div key={`flight-${flight.key}`} className="math-race-flight" aria-hidden="true" style={{ left: flight.x, top: flight.y, "--dx": `${flight.dx}px`, "--dy": `${flight.dy}px` } as CSSProperties}>
+            {Array.from({ length: flight.count }, (_, index) => <i key={index} style={{ animationDelay: `${index * 90}ms` }} onAnimationEnd={index === flight.count - 1 ? () => setFlight(null) : undefined} />)}
+          </div>}
           {playing && numericOnly && (
             <div className="card-race-keypad" aria-label="숫자 패드">
               {keys.map((key) => <button type="button" key={key} onMouseDown={(event) => event.preventDefault()} onClick={() => press(key)} disabled={busy || (key === "확인" && !complete)} className={key === "확인" ? "ok" : ""}>{key}</button>)}
@@ -420,7 +455,7 @@ export default function ArithmeticRaceCardsPage() {
             <RaceTowers entries={ranking} myId={me?.id} playing={playing} />
             <p className="math-race-chase">{myRank === 1 ? "👑 가장 높은 탑!" : myRank && ranking[0] ? `1위 탑까지 ${Math.max(0, ranking[0].score - score)}칸!` : "맞힐 때마다 한 칸씩 쌓여요!"}</p>
           </>}
-          <p className="card-race-rule">맞히면 +1 · 틀리면 −1 · 포기 −2</p>
+          <p className="card-race-rule">맞히면 +1 · 틀리면 −1 · 포기 −2<br />5연속부터 +2 · 10연속부터 +3</p>
         </aside>
       </div>
       {error && <p className="race-form-error" role="alert">{error}</p>}

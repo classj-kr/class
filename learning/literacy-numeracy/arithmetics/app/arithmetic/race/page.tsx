@@ -190,7 +190,7 @@ export default function ArithmeticRaceJoinPage() {
           <section className="race-waiting-card" aria-live="polite">
             <span>친구를 초대해요</span><strong className="race-room-code">{joined.roomCode}</strong>
             <h2>{joined.race.worksheetName || "학습지 확인 중"}</h2>
-            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note"><b>{joined.race.durationSeconds / 60}분</b><span>맞히면 +1 · 틀리면 −1 · 포기 −2{teamCount ? " · 팀 점수는 팀원 점수의 합" : ""}</span></p> : null}
+            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note"><b>{joined.race.durationSeconds / 60}분</b><span>맞히면 +1 · 5연속부터 +2 · 10연속부터 +3 · 틀리면 −1 · 포기 −2{teamCount ? " · 팀 점수는 팀원 점수의 합" : ""}</span></p> : null}
             <div className="math-race-ready"><i aria-hidden="true" />{board ? `${board.participants.length}명 준비 완료` : "출발 준비 중"}</div>
             {joined.hostToken && joined.race.mode === "cards" ? (
               <div className="math-race-team-setup" role="group" aria-label="경기 방식">
