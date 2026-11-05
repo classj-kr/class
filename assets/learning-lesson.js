@@ -54,6 +54,13 @@
       setLessonMusicPaused(true);
       const session = await records.start({ contentKey: key(), title: `${config.label} · ${lessons()[index].title}`, version: '20261001', checkpoint: initial(itemsFor(index)) });
       state = session.checkpoint;
+      if (config.refreshSavedContent) {
+        // 문구가 고쳐져도 문제·보기 순서와 이미 푼 기록은 그대로 이어 간다.
+        const current = new Map(deck().map(item => [text(item), item]));
+        const refresh = item => current.get(text(item)) || item;
+        state.items = state.items.map(refresh);
+        state.quiz = state.quiz.map(question => ({ ...question, item: refresh(question.item) }));
+      }
       $('lessonOverview').hidden = true; if ($('lessonToolbar')) $('lessonToolbar').hidden = true;
       $('learningShell').hidden = false; document.body.classList.add('learning-active');
       $('currentLessonTitle').textContent = lessons()[index].title;
