@@ -22,7 +22,13 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
   const teacher = async (req) =>
     platform.configuration && !platform.configuration().enabled ? false : platform.isTeacherRequest(req);
   const token = () => crypto.randomBytes(24).toString('hex');
-  const students = (r) => r.players.filter((p) => !p.host);
+  // 교사가 연 방은 교사가 지켜보기만 하고, 학생이 연 방은 방장도 함께 달린다(연산 순위전처럼).
+  const students = (r) => r.players.filter((p) => p.plays);
+  // 학생 프로필 아바타. 사이트의 아바타 그림 주소만 받는다.
+  const avatar = (value) => {
+    const url = String(value || '');
+    return /^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i.test(url) ? url : null;
+  };
   function config(body, previous = {}) {
     const mode = Core.MODES[body?.mode] ? body.mode : previous.mode || 'ko-words';
     const duration = Core.DURATIONS.includes(Number(body?.duration)) ? Number(body.duration) : previous.duration || 90;
@@ -62,7 +68,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
   }
   async function host(req) {
     const v = member(req);
-    if (!v.player.host || !(await teacher(req))) throw fail(403, '방을 연 교사만 바꿀 수 있어요.');
+    if (!v.player.host || !(v.player.plays || (await teacher(req)))) throw fail(403, '방을 연 사람만 바꿀 수 있어요.');
     return v;
   }
   const resetScore = (p) => Object.assign(p, { score: 0, index: 0, good: 0, mistakes: 0, combo: 0, bestCombo: 0, scoredAt: null });
@@ -71,6 +77,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       id: x.id,
       name: x.name,
       racer: x.racer,
+      avatarUrl: x.avatarUrl || null,
       team: r.config.teamMode ? x.team : null,
       score: x.score,
       count: x.index,
@@ -95,7 +102,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       deadline: r.deadline || null,
       serverNow: now(),
       items: withItems && r.roundId ? r.items : undefined,
-      me: { id: p.id, host: p.host, name: p.name, racer: p.racer || '', team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0, rank: mine?.rank || null },
+      me: { id: p.id, host: p.host, plays: Boolean(p.plays), name: p.name, racer: p.racer || '', avatarUrl: p.avatarUrl || null, team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0, rank: mine?.rank || null },
       participants,
       teams: r.config.teamMode ? Core.teamBoard(participants, r.config.teamCount, r.config.teamScore) : null,
     };
@@ -112,12 +119,20 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
   router.post(
     '/rooms',
     wrap(async (req, res) => {
-      if (!(await teacher(req))) throw fail(403, '교사 계정으로 로그인해 주세요.');
       prune();
+      const isTeacher = await teacher(req);
+      let player;
+      if (isTeacher) player = { id: crypto.randomUUID(), token: token(), host: true, plays: false, name: '선생님' };
+      else {
+        const name = String((await platform.displayNameFor(req))?.name || '').trim();
+        if (!name || name.length > 40) throw fail(403, '메인 화면에서 이름을 확인하고 방을 열어 주세요.');
+        // 학생은 방을 하나만 연다. 새로 열면 예전 방은 닫힌다.
+        for (const [code, old] of rooms) if (old.players.some((p) => p.host && p.plays && p.name === name)) rooms.delete(code);
+        player = resetScore({ id: crypto.randomUUID(), token: token(), host: true, plays: true, name, team: null, avatarUrl: avatar(req.body?.avatarUrl), racer: Core.RACERS[0] });
+      }
       if (rooms.size >= 256) throw fail(503, '열린 방이 많아요. 잠시 후 다시 시도해 주세요.');
       const code = await platform.roomCodes.allocate('typing');
-      const player = { id: crypto.randomUUID(), token: token(), host: true, name: '선생님' };
-      const r = { code, config: config(req.body), players: [player], phase: 'lobby', roundId: '', items: [], joined: 0, updated: now() };
+      const r = { code, config: config(req.body), players: [player], phase: 'lobby', roundId: '', items: [], joined: player.plays ? 1 : 0, updated: now() };
       rooms.set(code, r);
       res.json({ token: player.token, state: state(r, player) });
     }),
@@ -136,11 +151,12 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       const seat = students(r).find((p) => p.name === name);
       if (seat) {
         seat.token = token();
+        seat.avatarUrl = avatar(req.body?.avatarUrl) || seat.avatarUrl;
         r.updated = now();
         return res.json({ token: seat.token, state: state(r, seat, true) });
       }
       if (r.players.length >= 61) throw fail(409, '방에 60명이 모두 들어왔어요.');
-      const p = resetScore({ id: crypto.randomUUID(), token: token(), name, host: false, team: null, racer: Core.RACERS[r.joined++ % Core.RACERS.length] });
+      const p = resetScore({ id: crypto.randomUUID(), token: token(), name, host: false, plays: true, team: null, avatarUrl: avatar(req.body?.avatarUrl), racer: Core.RACERS[r.joined++ % Core.RACERS.length] });
       // 달리는 중에 들어오면 자리가 남은 가장 작은 팀에 넣는다.
       if (r.config.teamMode && r.phase === 'running') p.team = openTeam(r);
       r.players.push(p);
@@ -184,7 +200,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
     wrap(async (req, res) => {
       const { room: r, player: p } = member(req);
       const t = now();
-      if (p.host || req.body?.roundId !== r.roundId) throw fail(409, '지금 판의 기록이 아니에요.');
+      if (!p.plays || req.body?.roundId !== r.roundId) throw fail(409, '지금 판의 기록이 아니에요.');
       if (r.phase !== 'running' || t > r.deadline + GRACE_MS) throw fail(409, '이번 판이 끝났어요.');
       if (t < r.startsAt) throw fail(409, '출발 신호 뒤에 입력해 주세요.');
       const index = Number(req.body?.index);
@@ -221,7 +237,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
     '/rooms/:code/team',
     wrap(async (req, res) => {
       const { room: r, player: p } = member(req);
-      if (p.host || r.phase === 'running' || !r.config.teamMode) throw fail(409, '지금은 팀을 고를 수 없어요.');
+      if (!p.plays || r.phase === 'running' || !r.config.teamMode) throw fail(409, '지금은 팀을 고를 수 없어요.');
       const team = validTeam(r, req.body?.team);
       if (p.team !== team && teamSize(r, team) >= Core.TEAM_MAX) throw fail(409, `한 팀은 ${Core.TEAM_MAX}명까지예요.`);
       p.team = team;

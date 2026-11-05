@@ -101,6 +101,46 @@ test('team race: self-pick, 5-member cap, teacher moves, shuffle, start checks, 
   assert.equal(solo.status, 409, 'settings stay during a race');
 });
 
+test('students open their own room and race in it as host', async (t) => {
+  let clock = Date.now();
+  const codes = createRoomCodes({ random: () => 2468, isActive: async (e) => activity.hasRoomCode(e.code) });
+  const platform = {
+    roomCodes: codes,
+    isTeacherRequest: async (req) => req.get('x-role') === 'teacher',
+    isContentGloballyDisabled: async () => false,
+    canBypassGlobalContentLock: async () => false,
+    displayNameFor: async (req) => ({ name: decodeURIComponent(req.get('x-name') || '') }),
+  };
+  const activity = createTypingRace({ platform, now: () => clock }), app = express();
+  app.use(express.json());
+  app.use('/api/typing-race', activity.router);
+  const s = app.listen(0, '127.0.0.1');
+  await new Promise((r) => s.once('listening', r));
+  t.after(() => new Promise((r) => s.close(r)));
+  const base = `http://127.0.0.1:${s.address().port}/api/typing-race`;
+  const req = async (path, body, token = '', name = '') => {
+    const r = await fetch(base + path, { method: body === undefined ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json', 'x-name': encodeURIComponent(name), Authorization: 'Bearer ' + token }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+    return { status: r.status, data: await r.json() };
+  };
+  assert.equal((await req('/rooms', {})).status, 403, 'a name is needed');
+  const first = (await req('/rooms', { avatarUrl: '/assets/avatars/animal-cat.webp' }, '', '가람')).data;
+  const made = (await req('/rooms', {}, '', '가람')).data;
+  assert.equal(activity.hasRoomCode(first.state.code) && first.state.code !== made.state.code, false, 'one open room per student');
+  const host = made.token, path = '/rooms/' + made.state.code;
+  assert.equal(made.state.me.host, true);
+  assert.equal(made.state.me.plays, true);
+  assert.equal(made.state.participants.length, 1, 'the host is on the board');
+  const friend = (await req(path + '/join', {}, '', '나래')).data;
+  assert.equal((await req(path + '/start', {}, friend.token)).status, 403, 'only the host starts');
+  const started = (await req(path + '/start', { duration: 60 }, host)).data;
+  clock = started.startsAt + 5000;
+  const typed = (await req(path + '/type', { roundId: started.roundId, index: 0, text: started.items[0], mistakes: 0 }, host)).data;
+  assert.ok(typed.state.me.score > 0, 'the host races too');
+  assert.equal(typed.state.participants[0].name, '가람');
+  assert.equal((await req(path + '/leave', {}, host)).status, 200);
+  assert.equal(activity.hasRoomCode(made.state.code), false);
+});
+
 test('teacher room, shared entry, live scoring, combo, speed guard, and results', async (t) => {
   let clock = Date.now();
   const codes = createRoomCodes({ random: () => 4321, isActive: async (e) => activity.hasRoomCode(e.code) });
@@ -137,10 +177,13 @@ test('teacher room, shared entry, live scoring, combo, speed guard, and results'
     href: `/learning/inquiry/information-computing/typing/race/?room=${code}`,
   });
   assert.equal((await req(path + '/start', {}, host, 'teacher')).status, 409, 'needs a student');
-  const a = (await req(path + '/join', {}, '', '', '가람')).data;
-  const b = (await req(path + '/join', {}, '', '', '나래')).data;
+  const a = (await req(path + '/join', { avatarUrl: '/assets/avatars/animal-fox.webp' }, '', '', '가람')).data;
+  const b = (await req(path + '/join', { avatarUrl: 'https://evil.example/x.webp' }, '', '', '나래')).data;
+  assert.equal(a.state.me.avatarUrl, '/assets/avatars/animal-fox.webp');
+  assert.equal(b.state.me.avatarUrl, null, 'only site avatar paths are kept');
   const again = (await req(path + '/join', {}, '', '', '가람')).data;
   assert.equal(again.state.me.id, a.state.me.id, 'a reload reclaims the same seat');
+  assert.equal(again.state.me.avatarUrl, '/assets/avatars/animal-fox.webp', 'avatar survives a reload');
   assert.equal((await req(path, undefined, a.token)).status, 403, 'the old tab loses the seat');
   a.token = again.token;
   assert.equal(again.state.participants.length, 2);

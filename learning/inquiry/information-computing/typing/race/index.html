@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b0820">
   <title>타자 레이스</title>
-  <link rel="stylesheet" href="race.css?v=20261105-team">
+  <link rel="stylesheet" href="race.css?v=20261105-host">
 </head>
 <body data-screen="entry">
   <audio id="raceMusic" preload="none"></audio>
@@ -27,14 +27,11 @@
         <div class="keycaps"><i>타</i><i>자</i><i>R</i><i>A</i><i>C</i><i>E</i></div>
       </div>
       <h1 class="title">타자 <span>레이스</span></h1>
-      <form id="joinForm" class="panel join">
-        <input id="roomCode" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="방번호 4자리" aria-label="방번호">
-        <button class="big-button go" type="submit">입장</button>
-      </form>
-      <div id="createPanel" class="panel create" hidden>
+      <div id="createPanel" class="panel create">
         <p class="panel-title">새 레이스 열기</p>
         <div class="settings" data-settings="create"></div>
         <button id="createButton" class="big-button pink" type="button">방 만들기</button>
+        <p class="entry-note">친구 방은 메인 화면 <b>방번호</b>로 들어가요.</p>
       </div>
     </section>
 
@@ -64,12 +61,12 @@
         <div class="hud-score student-only"><span>점수</span><strong id="scoreNow">0</strong></div>
         <div class="hud-combo student-only"><span>콤보</span><strong id="comboNow">0</strong><em id="multiplierNow">x1.0</em></div>
         <div class="hud-rank student-only"><span>순위</span><strong id="rankNow">-</strong></div>
-        <div class="hud-mode host-only"><span id="modeNow">한글 낱말</span><strong id="hostCode">0000</strong></div>
+        <div class="hud-mode spectator-only"><span id="modeNow">한글 낱말</span><strong id="hostCode">0000</strong></div>
         <div class="time-bar"><i id="timeBar"></i></div>
       </div>
 
       <div id="teamBar" class="team-bar" hidden></div>
-      <div id="track" class="track host-only"></div>
+      <div id="track" class="track"></div>
 
       <div class="arena student-only">
         <div class="play">
@@ -106,7 +103,7 @@
   <p id="toast" class="toast" role="status" aria-live="polite"></p>
 
   <script src="/assets/site-storage.js?v=20261006-1"></script>
-  <script src="race-core.js?v=20261105-team"></script>
-  <script src="race.js?v=20261105-team"></script>
+  <script src="race-core.js?v=20261105-host"></script>
+  <script src="race.js?v=20261105-host"></script>
 </body>
 </html>

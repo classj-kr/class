@@ -25,7 +25,10 @@ body {
 }
 button { font: inherit; color: inherit; cursor: pointer; }
 [hidden] { display: none !important; }
-body:not(.is-host) .host-only, body.is-host .student-only { display: none !important; }
+/* 방장(교사·학생)은 조작 버튼을, 달리는 사람은 타자 화면을, 지켜보는 교사는 트랙을 본다. */
+body:not(.is-host) .host-only, body.spectator .student-only, body:not(.spectator) .spectator-only { display: none !important; }
+.entry-note { margin: 4px 0 0; text-align: center; color: var(--dim); font-weight: 700; font-size: 14px; }
+.entry-note b { color: var(--yellow); }
 
 /* ── 배경: 별 + 움직이는 네온 바닥 ─────────────────── */
 .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: radial-gradient(ellipse at 50% 120%, #4a1a7a 0%, var(--bg2) 38%, var(--bg) 75%); }
@@ -98,6 +101,22 @@ main { width: min(1180px, 100%); margin: 0 auto; padding: 8px 16px 40px; }
 .option.on { border-color: var(--yellow); color: var(--yellow); background: rgba(255, 225, 77, 0.12); box-shadow: 0 0 16px rgba(255, 225, 77, 0.3); }
 kbd { padding: 1px 7px; border-radius: 6px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.08); font-family: inherit; font-size: 0.9em; }
 
+/* ── 아바타 (없으면 이모지) ───────────────────────── */
+.face { display: inline-grid; place-items: center; flex: none; vertical-align: middle; }
+img.face { border-radius: 50%; background: #fff; object-fit: cover; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75), 0 4px 10px rgba(0, 0, 0, 0.4); }
+.lobby-racers img.racer { width: 36px; height: 36px; }
+.team-col .lobby-racers img.racer { width: 30px; height: 30px; }
+.racer-big img.face { width: 120px; height: 120px; box-shadow: 0 0 0 5px var(--yellow), 0 0 30px rgba(255, 225, 77, 0.55); }
+img.mini-face { width: 28px; height: 28px; }
+img.row-face { width: 26px; height: 26px; }
+.row-face { margin-right: 6px; }
+img.pod-face { width: 78px; height: 78px; }
+.place-1 img.pod-face { width: 96px; height: 96px; box-shadow: 0 0 0 4px var(--yellow), 0 0 30px rgba(255, 225, 77, 0.7); }
+.pod-racer.crowned { position: relative; }
+.pod-racer.crowned::before { content: "👑"; position: absolute; left: 50%; top: -0.62em; transform: translateX(-50%) rotate(-10deg); font-size: 44px; z-index: 1; }
+.team-card li { display: flex; align-items: center; justify-content: center; }
+.team-card img.row-face { width: 22px; height: 22px; }
+
 /* ── 입장 ─────────────────────────────────────────── */
 .entry { display: grid; justify-items: center; gap: 18px; padding-top: 4vh; text-align: center; }
 .keycaps { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
@@ -117,9 +136,6 @@ kbd { padding: 1px 7px; border-radius: 6px; border: 1px solid var(--line); backg
 @keyframes keyhop { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-14px) rotate(-4deg); } }
 .title { margin: 0; font-size: clamp(42px, 9vw, 84px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; text-shadow: 0 0 18px rgba(39, 225, 255, 0.6), 4px 4px 0 var(--violet); }
 .title span { color: var(--yellow); text-shadow: 0 0 22px rgba(255, 225, 77, 0.7), 4px 4px 0 var(--pink); font-style: italic; }
-.join { display: flex; gap: 10px; width: min(460px, 100%); }
-.join input { flex: 1; min-width: 0; border-radius: 16px; border: 2px solid var(--line); background: rgba(0, 0, 0, 0.35); color: var(--ink); font: 900 28px var(--font); letter-spacing: 0.3em; text-align: center; padding: 10px; outline: none; }
-.join input:focus { border-color: var(--cyan); box-shadow: 0 0 18px rgba(39, 225, 255, 0.4); }
 .create { width: min(560px, 100%); text-align: left; display: grid; gap: 4px; }
 .create .big-button { justify-self: stretch; margin-top: 6px; }
 
@@ -246,7 +262,7 @@ body.fever .word-card::before { content: "FEVER x2"; position: absolute; top: -1
 .type-hint { margin: 0; color: var(--dim); font-weight: 700; font-size: 14px; }
 .chase { margin: 0; min-height: 1.4em; font-weight: 900; color: var(--yellow); font-size: 18px; text-align: center; }
 .mini-board { list-style: none; margin: 0; padding: 12px; border-radius: 22px; background: var(--panel); border: 2px solid var(--line); display: grid; gap: 6px; }
-.mini-board li { display: grid; grid-template-columns: 26px 30px 1fr auto; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); font-weight: 800; animation: enter 0.3s; }
+.mini-board li { display: grid; grid-template-columns: 26px 30px 1fr auto; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); font-weight: 800; }
 .mini-board li em { font-style: normal; color: var(--dim); }
 .mini-board li:nth-child(1) em { color: var(--yellow); }
 .mini-board li span { font-size: 22px; }
@@ -256,6 +272,11 @@ body.fever .word-card::before { content: "FEVER x2"; position: absolute; top: -1
 
 /* ── 교사: 레이스 트랙 ───────────────────────────── */
 .track { --lane: clamp(30px, calc(68vh / var(--lanes)), 64px); display: grid; gap: 4px; padding: 14px; border-radius: 24px; background: rgba(10, 6, 28, 0.75); border: 2px solid var(--line); }
+/* 학생 화면: 타자 칸 아래에 낮은 트랙 */
+.race { display: flex; flex-direction: column; }
+body:not(.spectator) .race .track { order: 5; margin-top: 16px; --lane: clamp(26px, calc(46vh / var(--lanes)), 44px); }
+.lane.mine .lane-name { color: var(--yellow); }
+.lane.mine .road { outline: 2px solid var(--yellow); outline-offset: 1px; }
 .lane { display: grid; grid-template-columns: 34px minmax(70px, 140px) 1fr; align-items: center; gap: 8px; height: var(--lane); }
 .lane-rank { display: grid; place-items: center; height: 100%; aspect-ratio: 1; max-height: 34px; border-radius: 10px; background: rgba(255, 255, 255, 0.08); font-weight: 900; font-size: 14px; }
 .lane.top3 .lane-rank { background: var(--yellow); color: #1a0b2e; }
@@ -271,6 +292,10 @@ body[data-screen="race"] .road { animation: road 0.5s linear infinite; }
 .car { position: absolute; top: 50%; left: calc(var(--x, 0) * (100% - 90px)); transform: translateY(-50%); display: flex; align-items: center; gap: 6px; transition: left 0.9s cubic-bezier(.3, 1.3, .5, 1); z-index: 1; }
 .car-emoji { font-size: calc(var(--lane) * 0.72); display: inline-block; transform: scaleX(-1); filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5)); }
 body[data-screen="race"] .car-emoji { animation: wobble 0.4s ease-in-out infinite alternate; }
+img.car-emoji { width: calc(var(--lane) * 0.8); height: calc(var(--lane) * 0.8); transform: none; }
+body[data-screen="race"] img.car-emoji { animation-name: wobble-face; }
+@keyframes wobble-face { from { transform: translateY(1px) rotate(-4deg); } to { transform: translateY(-2px) rotate(4deg); } }
+.lane.fever img.car-emoji { box-shadow: 0 0 0 3px var(--pink), 0 0 18px var(--pink); }
 @keyframes wobble { from { transform: scaleX(-1) translateY(1px) rotate(2deg); } to { transform: scaleX(-1) translateY(-2px) rotate(-3deg); } }
 .car-score { padding: 1px 8px; border-radius: 99px; background: rgba(0, 0, 0, 0.55); font-size: clamp(11px, calc(var(--lane) * 0.3), 16px); font-variant-numeric: tabular-nums; }
 .lane.leader .car::before { content: "👑"; position: absolute; left: 4px; top: -0.9em; font-size: calc(var(--lane) * 0.4); animation: bounce 0.6s ease-in-out infinite alternate; }
