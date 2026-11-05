@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0820">
+  <title>타자 레이스</title>
+  <link rel="stylesheet" href="race.css?v=20261105-team">
+</head>
+<body data-screen="entry">
+  <audio id="raceMusic" preload="none"></audio>
+  <div class="sky" aria-hidden="true"><div class="stars"></div><div class="grid-floor"></div></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <nav class="topbar">
+    <a class="back" href="../" aria-label="타자 연습으로">←</a>
+    <span class="brand">타자 <b>레이스</b></span>
+    <span id="roomBadge" class="room-badge" hidden>방 <b id="roomBadgeCode"></b></span>
+    <button id="musicButton" class="chip-button" type="button" aria-pressed="true" aria-label="음악 끄기">🔊</button>
+    <button id="leaveButton" class="chip-button" type="button" hidden>나가기</button>
+  </nav>
+
+  <main>
+    <!-- 입장 -->
+    <section id="entryScreen" class="screen entry">
+      <div class="logo" aria-hidden="true">
+        <div class="keycaps"><i>타</i><i>자</i><i>R</i><i>A</i><i>C</i><i>E</i></div>
+      </div>
+      <h1 class="title">타자 <span>레이스</span></h1>
+      <form id="joinForm" class="panel join">
+        <input id="roomCode" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="방번호 4자리" aria-label="방번호">
+        <button class="big-button go" type="submit">입장</button>
+      </form>
+      <div id="createPanel" class="panel create" hidden>
+        <p class="panel-title">새 레이스 열기</p>
+        <div class="settings" data-settings="create"></div>
+        <button id="createButton" class="big-button pink" type="button">방 만들기</button>
+      </div>
+    </section>
+
+    <!-- 대기실 -->
+    <section id="lobbyScreen" class="screen lobby" hidden>
+      <div class="lobby-head">
+        <div class="code-card host-only"><span>방번호</span><strong id="lobbyCode">0000</strong></div>
+        <div class="me-card student-only"><span id="myRacer" class="racer-big">🚀</span><strong id="myName"></strong><span id="myTeam" class="team-badge" hidden></span><p id="myLobbyHint">선생님이 출발을 누르면 달려요!</p></div>
+        <div class="host-only lobby-settings">
+          <div class="settings" data-settings="lobby"></div>
+          <button id="startButton" class="big-button go start" type="button">🏁 출발!</button>
+        </div>
+      </div>
+      <p class="lobby-count"><b id="racerCount">0</b>명 대기 중 <button id="shuffleButton" class="chip-button shuffle host-only" type="button" hidden>🎲 랜덤 배정</button></p>
+      <ul id="lobbyRacers" class="lobby-racers"></ul>
+      <div id="teamPanel" class="team-panel" hidden>
+        <div id="teamColumns" class="team-columns"></div>
+        <div id="benchZone" class="bench"><p>아직 팀 없음</p><ul id="benchList" class="lobby-racers"></ul></div>
+        <p class="team-tip host-only">학생을 누르면 다음 팀으로 옮겨요.</p>
+      </div>
+    </section>
+
+    <!-- 레이스 -->
+    <section id="raceScreen" class="screen race" hidden>
+      <div class="hud">
+        <div class="hud-time"><span>남은 시간</span><strong id="timeLeft">0</strong></div>
+        <div class="hud-score student-only"><span>점수</span><strong id="scoreNow">0</strong></div>
+        <div class="hud-combo student-only"><span>콤보</span><strong id="comboNow">0</strong><em id="multiplierNow">x1.0</em></div>
+        <div class="hud-rank student-only"><span>순위</span><strong id="rankNow">-</strong></div>
+        <div class="hud-mode host-only"><span id="modeNow">한글 낱말</span><strong id="hostCode">0000</strong></div>
+        <div class="time-bar"><i id="timeBar"></i></div>
+      </div>
+
+      <div id="teamBar" class="team-bar" hidden></div>
+      <div id="track" class="track host-only"></div>
+
+      <div class="arena student-only">
+        <div class="play">
+          <div id="card" class="word-card"><div id="word" class="word" aria-live="off"></div></div>
+          <div id="queue" class="queue" aria-hidden="true"></div>
+          <textarea id="typeInput" rows="1" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="위 글자 입력"></textarea>
+          <p id="typeHint" class="type-hint">다 치면 <kbd>Space</kbd> 또는 <kbd>Enter</kbd></p>
+          <p id="chase" class="chase"></p>
+        </div>
+        <ol id="miniBoard" class="mini-board"></ol>
+      </div>
+    </section>
+
+    <!-- 결과 -->
+    <section id="resultScreen" class="screen results" hidden>
+      <h2 class="result-title">🏆 결과 발표</h2>
+      <p id="myResult" class="my-result student-only"></p>
+      <div id="teamResult" class="team-result" hidden></div>
+      <h3 id="soloTitle" class="solo-title" hidden>개인 순위</h3>
+      <div id="podium" class="podium"></div>
+      <table class="result-table">
+        <thead><tr><th>순위</th><th>이름</th><th>점수</th><th>타/분</th><th>정확도</th><th>최고 콤보</th></tr></thead>
+        <tbody id="resultRows"></tbody>
+      </table>
+      <div class="host-only result-actions">
+        <button id="againButton" class="big-button go" type="button">🔁 한 판 더</button>
+        <button id="settingsButton" class="big-button ghost" type="button">설정 바꾸기</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="countdown" class="countdown" hidden><span id="countNum">3</span></div>
+  <div id="finish" class="finish" hidden><span>끝!</span></div>
+  <p id="toast" class="toast" role="status" aria-live="polite"></p>
+
+  <script src="/assets/site-storage.js?v=20261006-1"></script>
+  <script src="race-core.js?v=20261105-team"></script>
+  <script src="race.js?v=20261105-team"></script>
+</body>
+</html>

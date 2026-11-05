@@ -1,6 +1,6 @@
 const express = require('express');
 
-function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRoomExists = () => false, rhythmExists = () => false, handwritingExists = () => false, stackingExists = () => false, fetchImpl = fetch }) {
+function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRoomExists = () => false, rhythmExists = () => false, handwritingExists = () => false, stackingExists = () => false, typingExists = () => false, fetchImpl = fetch }) {
   const router = express.Router();
   router.get('/resolve/:code', async (req, res) => {
     const code = req.params.code;
@@ -19,6 +19,10 @@ function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRo
       if (activity === 'stacking') {
         if (!stackingExists(code)) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });
         return res.json({ type: activity, href: `/learning/inquiry/math/stacking-cubes/race/?room=${code}` });
+      }
+      if (activity === 'typing') {
+        if (!typingExists(code)) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });
+        return res.json({ type: activity, href: `/learning/inquiry/information-computing/typing/race/?room=${code}` });
       }
       if (activity === 'rhythm') {
         if (!rhythmExists(code)) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });
