@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { cardFields, hasRaceCards, isRaceAnswerCorrect, raceCard, type RaceCard } from "../lib/race-cards.ts";
 import { rankCardParticipants } from "../lib/arithmetic-race-ranking.ts";
-import { memoryRaceStore } from "../lib/arithmetic-race-store.ts";
+import { memoryRaceStore, raceCardScore } from "../lib/arithmetic-race-store.ts";
 import { raceReadyWorksheets } from "../lib/arithmetic-worksheets.ts";
 
 const cardRoutes = raceReadyWorksheets.map((worksheet) => worksheet.route).filter(hasRaceCards);
@@ -51,6 +51,25 @@ test("card scores: correct +1, wrong -1 on the same card, give up -2, each card 
   const [row] = await store.participants("4321");
   // +1 −1 −1 +1 −2 = −2
   assert.deepEqual([row.score, row.correct_count, row.mistake_count, row.skip_count, row.card_index], [-2, 2, 2, 1, 3]);
+});
+
+test("combo bonus: the 5th straight correct answer earns +2, the 10th +3, a miss resets it", async () => {
+  const store = memoryRaceStore();
+  const now = Date.now();
+  await store.openRace({ room_code: "5555", teacher_token: "h", worksheet_name: "", worksheet_route: "/arithmetic/multiplication-5", seed: 1, status: "waiting", created_at: now, started_at: null, duration_seconds: 60 },
+    { id: "a", room_code: "5555", name: "가", participant_token: "t", joined_at: now, submitted_at: null, correct_count: null, total_count: null, mistake_count: 0 });
+  const base = { roomCode: "5555", participantId: "a", participantToken: "t", at: now };
+  let card = 0;
+  for (let i = 0; i < 10; i += 1) await store.recordCard({ ...base, cardIndex: card++, outcome: "correct" });
+  let [row] = await store.participants("5555");
+  // 1·1·1·1·2·2·2·2·2·3
+  assert.deepEqual([row.score, row.combo], [17, 10]);
+  await store.recordCard({ ...base, cardIndex: card, outcome: "wrong" });
+  await store.recordCard({ ...base, cardIndex: card++, outcome: "correct" });
+  [row] = await store.participants("5555");
+  assert.deepEqual([row.score, row.combo], [17, 1], "a miss drops the bonus back to +1");
+  assert.equal(raceCardScore("correct", 4), 2);
+  assert.equal(raceCardScore("skip", 9), -2);
 });
 
 test("card ranking: score, then correct answers, then who got there first", () => {

@@ -18,25 +18,47 @@
   --orange: #dd7a08;
 }
 
-/* 바탕: 모눈 공책과 빨간 여백선, 연필로 쓴 식이 천천히 떠오른다. */
-.math-race-paper {
-  position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
-  background-color: var(--sheet);
-  background-image:
-    linear-gradient(var(--grid-bold) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px),
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+/* 바탕: 수 모형 블록 도시. 건물 벽은 일 모형 칸 무늬. */
+.math-race-city { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: linear-gradient(#5ec4ff 0%, #9edcff 45%, #e3f6ff 78%, #fff7df 100%); }
+.math-race-sunset { position: absolute; inset: 0; background: linear-gradient(#ff8a5c 0%, #ffb36b 40%, #ffe0a3 75%, #fff2d6 100%); opacity: 0; transition: opacity 1.2s; }
+.math-race.is-fever .math-race-sunset { opacity: .85; }
+.math-race.is-mega .math-race-sunset { opacity: 1; background: linear-gradient(#7b4dff 0%, #ff5fa2 45%, #ffb36b 80%, #ffe6b8 100%); }
+.math-race-sun { position: absolute; top: 7%; right: 9%; width: clamp(70px, 9vw, 120px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #fff6b0 0 38%, #ffd84d 39% 52%, transparent 53%), repeating-conic-gradient(#ffd84d88 0 10deg, transparent 10deg 30deg); animation: math-race-spin 24s linear infinite; }
+.math-race.is-fever .math-race-sun { animation-duration: 6s; }
+.math-race-cloud { position: absolute; left: 0; width: 170px; height: 44px; border-radius: 999px; background: white; opacity: .92; animation: math-race-cloud linear infinite; }
+.math-race-cloud::before, .math-race-cloud::after { content: ""; position: absolute; bottom: 14px; border-radius: 50%; background: white; }
+.math-race-cloud::before { left: 26px; width: 64px; height: 64px; }
+.math-race-cloud::after { left: 74px; width: 50px; height: 50px; }
+.math-race-falling i { position: absolute; top: -40px; width: 18px; height: 18px; border-radius: 3px; background: hsl(var(--hue) 75% 60%); box-shadow: inset 0 -4px 0 hsl(var(--hue) 60% 42%), inset 3px 3px 0 hsl(var(--hue) 90% 78%); opacity: .75; animation: math-race-fall linear infinite; }
+.math-race.is-fever .math-race-falling i { animation-duration: 3s !important; opacity: .95; }
+.math-race.is-mega .math-race-falling i { animation-duration: 1.8s !important; width: 24px; height: 24px; }
+.math-race-skyline { position: absolute; left: 0; right: 0; bottom: 3svh; height: 34svh; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 1%; }
+.math-race-building {
+  position: relative; display: block; flex: none; margin: 0 .25%; border-radius: 4px 4px 0 0; transform-origin: bottom;
+  background-color: hsl(var(--hue) 62% 66%);
+  background-image: linear-gradient(hsl(var(--hue) 55% 48% / .45) 2px, transparent 2px), linear-gradient(90deg, hsl(var(--hue) 55% 48% / .45) 2px, transparent 2px);
+  background-size: 16px 16px;
+  box-shadow: inset 0 4px 0 hsl(var(--hue) 85% 82%), inset -6px 0 0 hsl(var(--hue) 50% 52% / .5);
+  animation: math-race-sway 4s ease-in-out infinite alternate;
 }
-.math-race-margin { position: absolute; top: 0; bottom: 0; left: 56px; width: 2px; background: #f3b2b2; }
-.math-race-drift i {
-  position: absolute; bottom: -60px;
-  color: #8a97b8; opacity: .22;
-  font-style: normal; font-weight: 800; white-space: nowrap;
-  animation-name: math-race-drift; animation-timing-function: linear; animation-iteration-count: infinite;
-}
-.math-race.is-fever .math-race-drift i { color: var(--orange); opacity: .32; animation-duration: 7s !important; }
+/* 한 층씩 쌓아 올리는 건물 */
+.math-race-building.is-growing { animation: math-race-stack 6s steps(6) infinite; }
+.math-race.is-fever .math-race-building.is-growing { animation-duration: 2.4s; }
+.math-race-crane { position: absolute; left: 30%; bottom: 100%; width: 6px; height: 16svh; background: repeating-linear-gradient(0deg, #f2a516 0 10px, #c97f00 10px 12px); }
+.math-race-crane-arm { position: absolute; top: 0; left: -104px; width: 150px; height: 6px; background: #f2a516; transform-origin: 107px 3px; animation: math-race-crane 7s ease-in-out infinite alternate; }
+.math-race-crane-load { position: absolute; top: 6px; left: 14px; width: 2px; height: 50px; background: #4b4b4b; transform-origin: top; animation: math-race-swing 2.2s ease-in-out infinite alternate; }
+.math-race-crane-load::after { content: ""; position: absolute; left: -11px; bottom: -22px; width: 24px; height: 22px; border-radius: 3px; background: #3c8df0; box-shadow: inset 0 -4px 0 #1f5fb5, inset 3px 3px 0 #9cc8ff; }
+.math-race-ground { position: absolute; left: 0; right: 0; bottom: 0; height: 3svh; background: #6cc56b; box-shadow: inset 0 4px 0 #4fa84f; }
+
+/* 연속 정답 가중점 연출 */
+.math-race-stamp { position: absolute; top: 10px; right: 14px; display: grid; place-items: center; width: 62px; height: 62px; border: 4px solid currentColor; border-radius: 50%; color: var(--orange); background: #fff8ec; font-size: 26px; font-weight: 900; rotate: -12deg; animation: math-race-stamp-in .45s cubic-bezier(.2, 1.5, .4, 1) both; }
+.math-race-stamp.level-1 { color: #9aa6bf; background: white; }
+.math-race-stamp.level-3 { color: #d0246f; background: #fff0f7; box-shadow: 0 0 0 6px #ff5fa233; animation: math-race-stamp-in .45s cubic-bezier(.2, 1.5, .4, 1) both, math-race-throb .5s ease-in-out .45s infinite alternate; }
+.math-race .card-race-pop.big { font-size: 60px; color: var(--orange); }
+.math-race .card-race-pop.mega { font-size: 76px; color: #d0246f; text-shadow: 0 3px 0 white, 0 0 30px #ff5fa288; }
+.math-race-flight { position: fixed; z-index: 600; width: 0; height: 0; pointer-events: none; }
+.math-race-flight i { position: absolute; left: -11px; top: -11px; width: 22px; height: 22px; border-radius: 3px; background: #ffb648; box-shadow: inset 0 -4px 0 #c97f00, inset 3px 3px 0 #ffe2a8, 0 4px 10px #0003; animation: math-race-fly .7s cubic-bezier(.5, 0, .7, 1) both; }
+.math-race .card-race-banner.ten { background: #17894f; box-shadow: 0 6px 0 #0f6239, 0 16px 40px #17894f55; }
 
 /* 대기실 */
 .math-race .catalog-back { position: absolute; top: 14px; left: 16px; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #c9d3e3; border-radius: 50%; color: var(--pencil); background: white; text-decoration: none; font-size: 20px; }
@@ -61,7 +83,7 @@
 .math-race-wait-message { display: block; padding: 14px; color: var(--blue); }
 
 /* 경기 화면 */
-.math-race-context { margin: 0 auto 14px; color: var(--pencil-soft); text-align: center; font-size: 14px; font-weight: 800; }
+.math-race-context { width: fit-content; padding: 4px 14px; border-radius: 99px; background: #ffffffd9; margin: 0 auto 14px; color: var(--pencil-soft); text-align: center; font-size: 14px; font-weight: 800; }
 .math-race .card-race-top { width: min(1120px, 100%); grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding: 12px 6px; border: 1px solid #d5dceb; border-radius: 6px; background: white; box-shadow: 0 2px 0 #e4e9f2; }
 .math-race-stat { display: grid; justify-items: center; align-content: start; min-height: 74px; gap: 2px; border-right: 1px dashed #d5dceb; }
 .math-race-stat:last-child { border: 0; }
@@ -224,7 +246,16 @@
 @media (max-width: 520px) {
   .math-race-team-pick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@keyframes math-race-drift { from { transform: translateY(0) rotate(-4deg); } to { transform: translateY(calc(-100svh - 120px)) rotate(6deg); } }
+@keyframes math-race-spin { to { rotate: 360deg; } }
+@keyframes math-race-cloud { from { translate: -220px 0; } to { translate: calc(100vw + 60px) 0; } }
+@keyframes math-race-fall { 0% { transform: translateY(0) rotate(0); opacity: 0; } 8% { opacity: .8; } 85% { opacity: .8; } 100% { transform: translateY(70svh) rotate(260deg); opacity: 0; } }
+@keyframes math-race-sway { to { transform: translateY(-3px); } }
+@keyframes math-race-stack { from { transform: scaleY(.55); } to { transform: scaleY(1.05); } }
+@keyframes math-race-crane { from { rotate: -10deg; } to { rotate: 14deg; } }
+@keyframes math-race-swing { from { rotate: -9deg; } to { rotate: 9deg; } }
+@keyframes math-race-stamp-in { from { opacity: 0; transform: scale(2.4); } to { opacity: 1; transform: none; } }
+@keyframes math-race-throb { to { transform: scale(1.12); } }
+@keyframes math-race-fly { 0% { transform: translate(0, 0) scale(1.4); } 45% { transform: translate(calc(var(--dx) * .45), calc(var(--dy) * .45 - 120px)) scale(1.2) rotate(180deg); } 100% { transform: translate(var(--dx), var(--dy)) scale(.5) rotate(360deg); opacity: .6; } }
 @keyframes math-race-bob { to { transform: translateY(-5px); } }
 @keyframes math-race-blink { to { opacity: .3; } }
 @keyframes math-race-pin { from { opacity: 0; transform: translateY(-14px) rotate(-6deg); } to { opacity: 1; transform: none; } }
@@ -234,7 +265,8 @@
 @keyframes math-race-go { 0%, 45% { opacity: 1; } to { opacity: 0; } }
 @media (max-width: 850px) {
   .portal-page.math-race { padding: 64px 16px 30px; }
-  .math-race-margin { left: 24px; }
+  .math-race-crane-arm { width: 100px; left: -70px; transform-origin: 73px 3px; }
+  .math-race-building { background-size: 12px 12px; }
   .math-race .card-race-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .math-race .card-race-side { width: min(560px, 100%); justify-self: center; }
   .math-race .card-race-card { width: min(560px, 100%); }
@@ -256,5 +288,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .math-race *, .math-race *::before, .math-race *::after { animation: none !important; transition: none !important; }
-  .math-race .card-race-rain, .math-race .card-race-burst, .math-race-drift { display: none; }
+  .math-race .card-race-rain, .math-race .card-race-burst, .math-race-falling, .math-race-flight { display: none; }
 }

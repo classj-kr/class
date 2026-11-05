@@ -1,7 +1,7 @@
 import { raceWorksheetByRoute } from "../../../lib/arithmetic-worksheets";
 import { rankArrivedParticipants, rankCardParticipants } from "../../../lib/arithmetic-race-ranking";
 import { hasRaceCards, isRaceAnswerCorrect, RACE_DURATIONS, raceAnswerText, raceCard } from "../../../lib/race-cards";
-import { raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
+import { raceComboPoints, raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
 import { fillRaceTeams, raceTeamBoard, raceTeamCount, shuffleRaceTeams } from "../../../lib/arithmetic-race-teams";
 import { requestRoomCode } from "../../../../../../shared/room-codes.cjs";
 
@@ -65,6 +65,7 @@ function cardParticipant(row: ParticipantRow) {
     wrongCount: Number(row.mistake_count) || 0,
     skipCount: Number(row.skip_count) || 0,
     team: row.team ?? null,
+    combo: Number(row.combo) || 0,
   };
 }
 
@@ -304,7 +305,8 @@ export async function POST(request: Request) {
       if (!me) return error("학생 입장 정보를 확인하세요.", 403);
       if (!recorded) return Response.json({ stale: true, participant: cardParticipant(me) }, { status: 409 });
       // 틀렸을 때는 다시 풀어야 하므로 정답을 알려 주지 않는다.
-      return Response.json({ outcome, answer: outcome === "skip" ? raceAnswerText(card) : "", participant: cardParticipant(me) });
+      const points = outcome === "correct" ? raceComboPoints(Number(me.combo) || 1) : outcome === "wrong" ? -1 : -2;
+      return Response.json({ outcome, points, answer: outcome === "skip" ? raceAnswerText(card) : "", participant: cardParticipant(me) });
     }
 
     if (action === "teams" || action === "shuffle") {
