@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { RaceAvatar, RaceBackdrop, RaceLogo } from "../../components/arithmetic-race-scene";
 
 type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
-type Board = { participants: Array<{ id: string; name: string }>; race: Race };
+type Board = { participants: Array<{ id: string; name: string; avatarUrl?: string | null }>; race: Race };
 
 function normalizedPlayerName(value: string | null) {
   return String(value ?? "").trim().replace(/[^가-힣a-zA-Z0-9]/g, "").slice(0, 20);
@@ -81,7 +82,7 @@ export default function ArithmeticRaceJoinPage() {
         if (!response.ok || !data.race) throw new Error(data.error || "방 정보를 불러오지 못했습니다.");
         if (!active) return;
         setJoined((current) => current ? { ...current, race: data.race! } : current);
-        if (activeHost && data.participants) setBoard({ race: data.race, participants: data.participants });
+        if (data.participants) setBoard({ race: data.race, participants: data.participants });
         if (data.race.status === "running") {
           const params = new URLSearchParams({ race: activeRoom, participant: activeParticipant, participantToken: activeToken });
           active = false;
@@ -137,7 +138,7 @@ export default function ArithmeticRaceJoinPage() {
   }, [entryRoom, name, joined, joinRoom]);
 
   async function startRace() {
-    if (!joined?.hostToken || !window.confirm("참가한 모두에게 문제를 시작할까요?")) return;
+    if (!joined?.hostToken) return;
     setLoading(true);
     setError("");
     try {
@@ -156,31 +157,28 @@ export default function ArithmeticRaceJoinPage() {
   }
 
   return (
-    <main className="portal-page race-entry-page">
+    <main className="portal-page race-entry-page math-race math-race-lobby">
+      <RaceBackdrop />
       <div className="race-entry-shell">
         <a className="catalog-back" href="/arithmetic" aria-label="기초 연산 목록으로 돌아가기">←</a>
+        <RaceLogo />
         {joined ? (
           <section className="race-waiting-card" aria-live="polite">
-            <span>방 코드</span><strong className="race-room-code">{joined.roomCode}</strong>
+            <span>친구를 초대해요</span><strong className="race-room-code">{joined.roomCode}</strong>
             <h2>{joined.race.worksheetName || "학습지 확인 중"}</h2>
-            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note">카드 순위전 · {joined.race.durationSeconds / 60}분 · 맞히면 +1 · 틀리면 −1 · 포기 −2</p> : null}
+            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note"><b>{joined.race.durationSeconds / 60}분</b><span>맞히면 +1 · 틀리면 −1 · 포기 −2</span></p> : null}
+            <div className="math-race-ready"><i aria-hidden="true" />{board ? `${board.participants.length}명 준비 완료` : "출발 준비 중"}</div>
+            {board ? <ul className="race-participant-list" aria-label="참가자 명단">
+              {board.participants.map((participant, index) => <li key={participant.id} style={{ animationDelay: `${index * .07}s` }}>
+                <RaceAvatar {...participant} /><span>{participant.name}</span>
+                {participant.id === joined.participantId ? <span className="race-host-badge">{joined.hostToken ? "방장 · 나" : "나"}</span> : null}
+              </li>)}
+            </ul> : null}
             {joined.hostToken ? (
               <>
-                <p>{board?.participants.length ?? 1}명 참가</p>
-                {board ? (
-                  <ul className="race-participant-list" aria-label="참가자 명단" role="list">
-                    {board.participants.map((participant) => (
-                      <li key={participant.id}>
-                        <span>{participant.name}</span>
-                        {participant.id === joined.participantId ? <span className="race-host-badge">방장 · 나</span> : null}
-                      </li>
-                    ))}
-                  </ul>
-                ) : <p>참가자 명단 불러오는 중…</p>}
-                <button type="button" onClick={startRace} disabled={loading || !(board?.participants.length ?? 1)}>모두 시작</button>
-                <small>방을 만든 사람이 시작합니다.</small>
+                <button className="math-race-start" type="button" onClick={startRace} disabled={loading || !(board?.participants.length ?? 1)}>{loading ? "준비 중…" : "🏁 출발!"}</button>
               </>
-            ) : <strong>방장이 시작하면 문제지로 바로 이동합니다.</strong>}
+            ) : <strong className="math-race-wait-message">모두 모이면 함께 출발해요!</strong>}
           </section>
         ) : entryRoom ? (
           <section className="race-waiting-card" aria-live="polite">

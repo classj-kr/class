@@ -7,6 +7,7 @@ import ElementaryFocusScroll from "./components/elementary-focus-scroll";
 import LearningRecordBoundary from "./components/learning-record-state";
 import WorksheetRaceCreate from "./components/worksheet-race-create";
 import WorksheetEnterNavigation from "./components/worksheet-enter-navigation";
+import SharedSoundControls from "./components/shared-sound-controls";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -40,9 +41,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <script src="/assets/sound/game-sfx.js?v=20261006-capture" defer />
+        <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer />
       </head>
-      <body><LearningRecordBoundary>{children}</LearningRecordBoundary><ElementaryFocusScroll /><WorksheetEnterNavigation /><WorksheetRaceCreate /><ArithmeticRaceController /></body>
+      <body><LearningRecordBoundary>{children}</LearningRecordBoundary><ElementaryFocusScroll /><WorksheetEnterNavigation /><WorksheetRaceCreate /><ArithmeticRaceController /><SharedSoundControls /></body>
     </html>
   );
 }

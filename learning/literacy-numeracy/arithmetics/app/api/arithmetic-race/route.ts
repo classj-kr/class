@@ -96,7 +96,7 @@ export async function GET(request: Request) {
       return Response.json({
         race: publicRace(race),
         serverNow: Date.now(),
-        participants: participants.map((row) => ({ id: row.id, name: row.name })),
+        participants: participants.map((row) => ({ id: row.id, name: row.name, avatarUrl: row.avatar_url ?? null })),
         participant: me ? { ...cardParticipant(me), rank: ranking.find((entry) => entry.id === me.id)?.rank ?? null } : null,
         ranking,
       });
@@ -224,7 +224,9 @@ export async function POST(request: Request) {
     if (action === "start") {
       const code = String(payload.roomCode ?? "").trim();
       const hostToken = String(payload.hostToken ?? payload.teacherToken ?? "");
-      const startedAt = Date.now();
+      const race = await store.race(code);
+      // 모두 같은 서버 시각에 출발하며 준비 시간은 제한 시간에서 빼지 않는다.
+      const startedAt = Date.now() + (race?.duration_seconds ? 3500 : 0);
       const started = await store.startRace(code, hostToken, startedAt);
       if (!started) return error("방 상태 또는 방장 권한을 확인하세요.", 403);
       return Response.json({ ok: true, startedAt });
@@ -281,6 +283,7 @@ export async function POST(request: Request) {
       if (!race || !race.duration_seconds) return error("카드 순위전 방이 아닙니다.");
       if (race.status !== "running" || !race.started_at) return error("아직 시작하지 않았습니다.", 409);
       const now = Date.now();
+      if (now < race.started_at) return error("출발 신호를 기다려 주세요.", 409);
       if (now > race.started_at + race.duration_seconds * 1000 + CARD_GRACE) return error("시간이 끝났습니다.", 409);
       const card = raceCard(race.worksheet_route, race.seed, cardIndex);
       if (!card) return error("카드를 확인하세요.");

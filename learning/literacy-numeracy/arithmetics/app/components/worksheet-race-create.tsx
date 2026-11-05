@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { usePathname, useSearchParams } from "next/navigation";
 import { raceWorksheetByRoute } from "../../lib/arithmetic-worksheets";
 import { hasRaceCards, RACE_DURATIONS } from "../../lib/race-cards";
+import { RaceLogo } from "./arithmetic-race-scene";
 
 function playerName(value: unknown) {
   return String(value ?? "").trim().replace(/[^가-힣a-zA-Z0-9]/g, "").slice(0, 20);
@@ -71,10 +72,10 @@ export default function WorksheetRaceCreate() {
     {createPortal(
     <button ref={trigger} className="button secondary worksheet-race-trigger" type="button"
       onClick={() => { setError(""); dialog.current?.showModal(); }}>순위전 만들기</button>, toolbar)}
-    <dialog ref={dialog} className="worksheet-race-dialog" aria-labelledby="worksheet-race-title"
+    <dialog ref={dialog} className="worksheet-race-dialog math-race math-race-launch-dialog" aria-label="연산 RACE 만들기"
       onCancel={event => { if (busy) event.preventDefault(); }} onClose={() => trigger.current?.focus()}>
       <form onSubmit={event => { event.preventDefault(); void create(); }}>
-        <h2 id="worksheet-race-title">순위전 만들기</h2>
+        <RaceLogo compact />
         <p>{worksheet.grade} · {worksheet.title}</p>
         {hasRaceCards(worksheet.route) ? <fieldset className="worksheet-race-duration"><legend>제한 시간</legend>
           <div>{RACE_DURATIONS.map(seconds => <button type="button" key={seconds} disabled={busy}
