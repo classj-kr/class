@@ -8,6 +8,8 @@ export type RaceRow = {
   created_at: number;
   started_at: number | null;
   duration_seconds?: number | null;
+  // 팀전이면 팀 수(2~4), 개인전이면 null.
+  team_count?: number | null;
 };
 
 export type ParticipantRow = {
@@ -25,6 +27,7 @@ export type ParticipantRow = {
   card_index?: number;
   scored_at?: number | null;
   avatar_url?: string | null;
+  team?: number | null;
 };
 
 // 맞히면 +1, 틀리면 −1(같은 카드 다시), 포기하면 −2(다음 카드).
@@ -60,6 +63,9 @@ export type RaceStore = {
   recordAttempt(update: AttemptUpdate): Promise<boolean>;
   recordCard(update: CardUpdate): Promise<boolean>;
   closeRace(code: string, hostToken: string): Promise<void>;
+  // 대기 중일 때만 바뀐다.
+  setTeamCount(code: string, hostToken: string, teamCount: number | null): Promise<boolean>;
+  setTeams(code: string, changes: Array<{ id: string; team: number | null }>): Promise<void>;
 };
 
 type D1PreparedStatement = {
@@ -152,6 +158,22 @@ export function d1RaceStore(db: D1Database): RaceStore {
         .run();
       return Boolean(result.meta.changes);
     },
+    async setTeamCount(code, hostToken, teamCount) {
+      const result = await db.prepare("UPDATE arithmetic_races SET team_count = ? WHERE room_code = ? AND teacher_token = ? AND status = 'waiting'")
+        .bind(teamCount, code, hostToken)
+        .run();
+      if (!result.meta.changes) return false;
+      // 팀 수가 줄면 없어진 팀에 있던 사람은 다시 고른다.
+      await db.prepare("UPDATE arithmetic_race_participants SET team = NULL WHERE room_code = ? AND (? IS NULL OR team >= ?)")
+        .bind(code, teamCount, teamCount ?? 0)
+        .run();
+      return true;
+    },
+    async setTeams(code, changes) {
+      if (!changes.length) return;
+      await db.batch(changes.map((change) => db.prepare("UPDATE arithmetic_race_participants SET team = ? WHERE id = ? AND room_code = ?")
+        .bind(change.team, change.id, code)));
+    },
     async closeRace(code, hostToken) {
       await db.batch([
         db.prepare("DELETE FROM arithmetic_race_participants WHERE room_code = ?").bind(code),
@@ -233,6 +255,22 @@ export function memoryRaceStore(clock: () => number = Date.now): RaceStore {
       participant.total_count = (participant.total_count ?? 0) + advance;
       participant.scored_at = update.at;
       return true;
+    },
+    async setTeamCount(code, hostToken, teamCount) {
+      const race = races.get(code);
+      if (!race || race.teacher_token !== hostToken || race.status !== "waiting") return false;
+      race.team_count = teamCount;
+      for (const row of roster.get(code) ?? []) {
+        if (teamCount === null || (row.team ?? -1) >= teamCount) row.team = null;
+      }
+      return true;
+    },
+    async setTeams(code, changes) {
+      const rows = roster.get(code) ?? [];
+      for (const change of changes) {
+        const row = rows.find((entry) => entry.id === change.id);
+        if (row) row.team = change.team;
+      }
     },
     async closeRace(code, hostToken) {
       const race = races.get(code);

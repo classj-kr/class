@@ -3,10 +3,11 @@
 import { CSSProperties, FormEvent, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { cardFields, raceCard, type RaceCard, type RaceField, type RacePart } from "../../../../lib/race-cards";
 import { RaceAvatar, RaceBackdrop, RaceTowers, raceCue } from "../../../components/arithmetic-race-scene";
+import type { TeamStanding } from "../../../../lib/arithmetic-race-teams";
 
-type Race = { roomCode: string; worksheetName: string; worksheetRoute: string; seed: number; status: string; startedAt: number | null; endsAt: number | null; durationSeconds: number | null };
-type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null };
-type Entry = { id: string; name: string; score: number; correctCount: number; rank: number; avatarUrl?: string | null };
+type Race = { roomCode: string; worksheetName: string; worksheetRoute: string; seed: number; status: string; startedAt: number | null; endsAt: number | null; durationSeconds: number | null; teamCount?: number | null };
+type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null; team?: number | null };
+type Entry = { id: string; name: string; score: number; correctCount: number; rank: number; avatarUrl?: string | null; team?: number | null };
 type Credentials = { room: string; participant: string; participantToken: string };
 type Outcome = "correct" | "wrong" | "skip";
 // play: 푸는 중, wrong: 흔들림, reveal: 포기해서 정답을 보여 줌, leave: 카드가 날아감
@@ -49,6 +50,7 @@ export default function ArithmeticRaceCardsPage() {
   const [race, setRace] = useState<Race | null>(null);
   const [me, setMe] = useState<Me | null>(null);
   const [ranking, setRanking] = useState<Entry[]>([]);
+  const [teams, setTeams] = useState<TeamStanding[] | null>(null);
   const [cardIndex, setCardIndex] = useState<number | null>(null);
   const [values, setValues] = useState<Record<string, string>>({});
   const [focused, setFocused] = useState("");
@@ -84,12 +86,13 @@ export default function ArithmeticRaceCardsPage() {
     try {
       const query = new URLSearchParams({ room: credentials.room, participant: credentials.participant, participantToken: credentials.participantToken });
       const response = await fetch(`/api/arithmetic-race?${query}`, { cache: "no-store" });
-      const data = await response.json() as { race?: Race; participant?: Me; ranking?: Entry[]; serverNow?: number; error?: string };
+      const data = await response.json() as { race?: Race; participant?: Me; ranking?: Entry[]; teams?: TeamStanding[] | null; serverNow?: number; error?: string };
       if (!response.ok || !data.race) throw new Error(data.error || "방 정보를 불러오지 못했습니다.");
       if (data.serverNow) offset.current = data.serverNow - Date.now();
       setNow(Date.now() + offset.current);
       setRace(data.race);
       setRanking(data.ranking ?? []);
+      setTeams(data.teams ?? null);
       if (data.participant) {
         setMe(data.participant);
         setCardIndex((current) => current === null ? data.participant!.cardIndex : current);
@@ -131,17 +134,23 @@ export default function ArithmeticRaceCardsPage() {
   }, [secondsLeft, race?.status]);
 
   const myRank = ranking.find((entry) => entry.id === me?.id)?.rank ?? null;
+  // 팀전이면 순위·추월·결과를 우리 팀 기준으로 보여 준다.
+  const myTeamIndex = ranking.find((entry) => entry.id === me?.id)?.team ?? me?.team ?? null;
+  const myTeam = teams && myTeamIndex !== null ? teams.find((team) => team.index === myTeamIndex) ?? null : null;
+  const shownRank = teams ? myTeam?.rank ?? null : myRank;
   // 순위가 오르면 위에서 알림을 내린다.
   useEffect(() => {
     const previous = lastRank.current;
-    lastRank.current = myRank;
-    if (!playing || previous === null || myRank === null || myRank >= previous) return;
+    lastRank.current = shownRank;
+    if (!playing || previous === null || shownRank === null || shownRank >= previous) return;
     const timer = window.setTimeout(() => {
-      setToast({ text: myRank === 1 ? "👑 선두로 올라섰어요!" : `⬆ ${myRank}위로 추월!`, kind: "up", key: Date.now() });
+      const who = myTeam ? `${myTeam.name}이 ` : "";
+      setToast({ text: shownRank === 1 ? `👑 ${who}선두로 올라섰어요!` : `⬆ ${who}${shownRank}위로 추월!`, kind: "up", key: Date.now() });
       raceCue("rank");
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [myRank, playing]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shownRank, playing]);
 
   const card: RaceCard | null = race && cardIndex !== null ? raceCard(race.worksheetRoute, race.seed, cardIndex) : null;
   const fields = card && !card.choices ? cardFields(card) : [];
@@ -310,10 +319,21 @@ export default function ArithmeticRaceCardsPage() {
           </div>
         )}
         <section className="card-race-result">
-          <span>{myRank === 1 ? "멋진 질주였어요!" : "끝까지 해냈어요!"}</span>
-          <h2>{myRank ? `${myRank <= 3 ? MEDALS[myRank - 1] + " " : ""}${myRank}위` : "결과"}</h2>
+          <span>{teams ? (shownRank === 1 ? "우리 팀이 가장 높이 쌓았어요!" : "팀이 함께 끝까지 해냈어요!") : myRank === 1 ? "가장 높이 쌓았어요!" : "끝까지 해냈어요!"}</span>
+          <h2>{shownRank ? `${shownRank <= 3 ? MEDALS[shownRank - 1] + " " : ""}${myTeam ? `${myTeam.name} ` : ""}${shownRank}위` : "결과"}</h2>
           <p><b className={score < 0 ? "is-negative" : ""}>{score}점</b> · 맞힘 {me?.correctCount ?? 0} · 틀림 {me?.wrongCount ?? 0} · 포기 {me?.skipCount ?? 0}</p>
-          <div className="card-race-podium" aria-label="1·2·3위">
+          {teams ? (
+            <ol className="math-race-team-results" aria-label="팀 순위">
+              {[...teams].sort((a, b) => a.rank - b.rank || a.index - b.index).map((team, index) => (
+                <li key={team.index} className={team.index === myTeam?.index ? "is-mine" : ""} style={{ "--hue": team.hue, animationDelay: `${index * .15}s` } as CSSProperties}>
+                  <em>{team.rank <= 3 ? MEDALS[team.rank - 1] : team.rank}</em>
+                  <i aria-hidden="true">{team.symbol}</i>
+                  <span>{team.name}<small>{team.size}명</small></span>
+                  <b>{team.score}점</b>
+                </li>
+              ))}
+            </ol>
+          ) : <div className="card-race-podium" aria-label="1·2·3위">
             {podium.map((entry, index) => entry ? (
               <div key={entry.id} className={`step step-${entry.rank}${entry.id === me?.id ? " is-me" : ""}`} style={{ animationDelay: `${[0.3, 0.6, 0][index]}s` }}>
                 <span className="medal">{MEDALS[entry.rank - 1]}</span>
@@ -323,9 +343,9 @@ export default function ArithmeticRaceCardsPage() {
                 <i>{entry.rank}</i>
               </div>
             ) : <div key={index} className="step empty" />)}
-          </div>
+          </div>}
           <ol className="card-race-board final">
-            {ranking.slice(3).map(row)}
+            {(teams ? ranking : ranking.slice(3)).map(row)}
           </ol>
           <a className="card-race-home" href="/arithmetic">기초 연산으로</a>
         </section>
@@ -338,7 +358,7 @@ export default function ArithmeticRaceCardsPage() {
       <RaceBackdrop />
       <p className="math-race-context">{race?.worksheetName || "경기 준비 중"}</p>
       <header className="card-race-top">
-        <div className="math-race-stat"><span>내 순위</span><strong className="math-race-rank">{myRank ? `${myRank}위` : "—"}</strong><small>방 {credentials?.room}</small></div>
+        <div className="math-race-stat"><span>{myTeam ? "우리 팀" : "내 순위"}</span><strong className="math-race-rank">{shownRank ? `${shownRank}위` : "—"}</strong><small>{myTeam ? myTeam.name : `방 ${credentials?.room}`}</small></div>
         <div className="math-race-stat"><span>내 점수</span><strong key={`score-${score}`} className={`card-race-score${score < 0 ? " is-negative" : ""}`}>{score}<small>점</small></strong></div>
         <div className={`math-race-stat math-race-combo${streak >= 5 ? " is-hot" : ""}`}><span>연속 정답</span><strong key={streak}>{streak}<small>콤보</small></strong><div aria-hidden="true">{[1, 2, 3, 4, 5].map(value => <i key={value} className={value <= (streak ? (streak - 1) % 5 + 1 : 0) ? "on" : ""} />)}</div></div>
         <div className="math-race-stat"><span>남은 시간</span><time className={playing && remaining < 10000 ? "is-hurry" : ""}>{remaining !== null ? clock(Math.min(remaining, (race?.durationSeconds ?? 0) * 1000)) : "--:--"}</time></div>
@@ -389,8 +409,17 @@ export default function ArithmeticRaceCardsPage() {
         </section>
 
         <aside className="card-race-side" aria-label="실시간 순위">
-          <RaceTowers entries={ranking} myId={me?.id} playing={playing} />
-          <p className="math-race-chase">{myRank === 1 ? "👑 가장 높은 탑!" : myRank && ranking[0] ? `1위 탑까지 ${Math.max(0, ranking[0].score - score)}칸!` : "맞힐 때마다 한 칸씩 쌓여요!"}</p>
+          {teams ? <>
+            <RaceTowers title="팀 수 모형 탑" unit="팀" playing={playing} myId={myTeam ? `team-${myTeam.index}` : undefined}
+              entries={teams.map((team) => ({ id: `team-${team.index}`, name: team.name, score: team.score, rank: team.rank, symbol: team.symbol, hue: team.hue }))} />
+            <p className="math-race-chase">{shownRank === 1 ? "👑 우리 팀 탑이 가장 높아요!" : myTeam ? `1위 팀까지 ${Math.max(0, Math.max(...teams.map((team) => team.score)) - myTeam.score)}칸!` : "맞힐 때마다 팀 탑이 한 칸씩 쌓여요!"}</p>
+            {myTeam ? <ol className="math-race-teammates" aria-label="우리 팀">
+              {ranking.filter((entry) => entry.team === myTeam.index).map((entry) => <li key={entry.id} className={entry.id === me?.id ? "is-me" : ""}><RaceAvatar {...entry} /><span>{entry.name}</span><b>{entry.score}</b></li>)}
+            </ol> : null}
+          </> : <>
+            <RaceTowers entries={ranking} myId={me?.id} playing={playing} />
+            <p className="math-race-chase">{myRank === 1 ? "👑 가장 높은 탑!" : myRank && ranking[0] ? `1위 탑까지 ${Math.max(0, ranking[0].score - score)}칸!` : "맞힐 때마다 한 칸씩 쌓여요!"}</p>
+          </>}
           <p className="card-race-rule">맞히면 +1 · 틀리면 −1 · 포기 −2</p>
         </aside>
       </div>
