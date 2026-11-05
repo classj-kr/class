@@ -9,7 +9,10 @@ const DRIFT = ["7 + 5", "12", "3 × 4", "=", "36 ÷ 6", "9", "15 − 8", "+", "8
 export function RaceBackdrop() {
   return <div className="math-race-paper" aria-hidden="true">
     <div className="math-race-margin" />
-    <div className="math-race-drift">{DRIFT.map((text, index) => <i key={index} style={{ "--n": index } as CSSProperties}>{text}</i>)}</div>
+    <div className="math-race-drift">{DRIFT.map((text, index) => <i key={index} style={{
+      left: `${4 + (index * 37) % 90}%`, fontSize: `${22 + (index * 7) % 4 * 9}px`,
+      animationDuration: `${16 + (index * 5) % 7 * 2}s`, animationDelay: `${index * -2.7}s`,
+    }}>{text}</i>)}</div>
   </div>;
 }
 
@@ -19,8 +22,8 @@ export function RaceAvatar({ name, avatarUrl }: { name: string; avatarUrl?: stri
     : <span className="math-race-avatar" aria-hidden="true">{name.slice(0, 1)}</span>;
 }
 
-const TOWER_HEIGHT = 168;
-const ROW = 14;
+const TOWER_HEIGHT = 120;
+const ROW = 22;
 
 // 점수를 수 모형으로 쌓는다. 맞힐 때마다 일 모형이 한 칸 떨어지고, 열 개가 차면 십 모형 막대 하나로 합쳐진다.
 export function RaceTowers({ entries, myId, playing }: { entries: RaceRunner[]; myId?: string; playing: boolean }) {

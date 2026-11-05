@@ -61,7 +61,8 @@ async function main() {
     await page.route('**/assets/**', async route => {
       const target = path.resolve(root, '.' + decodeURIComponent(new URL(route.request().url()).pathname));
       if (target.startsWith(root + path.sep) && fs.existsSync(target) && fs.statSync(target).isFile()) await route.fulfill({ path: target });
-      else await route.fulfill({ status: 404, body: '' });
+      // 앱이 빌드한 조각(/assets/index-*.js)은 저장소에 없으니 서버로 넘긴다.
+      else await route.continue();
     });
     await page.route('**/api/**', async route => {
       const url = new URL(route.request().url());
@@ -86,11 +87,11 @@ async function main() {
     });
     await page.goto(base + '/arithmetic/add-subtract-1');
     await page.getByRole('button', { name: '순위전 만들기', exact: true }).click();
-    await page.getByRole('dialog', { name: '연산 RACE 만들기' }).waitFor();
+    await page.getByRole('dialog', { name: '순위전 만들기' }).waitFor();
     await capture(page, 'create-dialog');
     await page.goto(base + '/arithmetic/race?room=2468&participant=me&participantToken=test&hostToken=host');
     await page.getByRole('button', { name: '🏁 출발!' }).waitFor();
-    assert.equal(await page.getByRole('heading', { name: '연산 RACE' }).count(), 1);
+    assert.equal(await page.locator('.math-race-logo').count(), 0, 'no keycap title copied from the typing race');
     await page.waitForFunction(() => document.querySelectorAll('.race-participant-list li').length === 5);
     await page.getByRole('button', { name: '설정 열기', exact: true }).click();
     await page.locator('#sfxMuteBtn').click();
@@ -129,10 +130,13 @@ async function main() {
     }
     assert.ok(await page.locator('main.is-fever').count());
     await page.waitForFunction(() => document.querySelector('.math-race-rank')?.textContent === '1위');
-    assert.ok(parseFloat(await page.locator('.math-race-track .is-me .math-race-runner').evaluate(el => el.style.left)) > 0);
+    // 점수 5 = 일 모형 다섯 개. 열 개가 넘으면 십 모형 막대로 합쳐진다.
+    assert.equal(await page.locator('.math-race-towers .is-me .math-race-cube').count(), me.score % 10);
+    peers[0].score = 12;
+    await page.waitForFunction(() => document.querySelectorAll('.math-race-towers .math-race-rod').length === 1);
     await capture(page, 'playing-desktop');
-    const animations = await page.locator('.math-race-logo i').evaluateAll(nodes => nodes.map(node => node.getAnimations()[0]?.playState));
-    assert.deepEqual(animations, Array(6).fill('running'));
+    const animations = await page.locator('.math-race-drift i').evaluateAll(nodes => nodes.map(node => node.getAnimations()[0]?.playState));
+    assert.ok(animations.length > 0 && animations.every(state => state === 'running'));
     await page.setViewportSize({ width: 390, height: 844 });
     await page.evaluate(() => scrollTo(0, 0));
     await capture(page, 'playing-mobile');
@@ -146,9 +150,9 @@ async function main() {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await capture(page, 'results-desktop');
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    assert.equal(await page.locator('.math-race-logo i').first().evaluate(el => getComputedStyle(el).animationName), 'none');
+    assert.equal(await page.locator('.math-race-avatar').first().evaluate(el => getComputedStyle(el).animationName), 'none');
     assert.deepEqual(errors, []);
-    console.log('PASS: real API countdown + full duration, lobby, countdown input lock, correct/wrong/skip, streak, overtaking, moving avatars, results, mobile, reduced motion.');
+    console.log('PASS: real API countdown + full duration, lobby, countdown input lock, correct/wrong/skip, streak, overtaking, base-ten towers, results, mobile, reduced motion.');
     console.log('WebP captures: ' + out);
   } finally { await browser.close(); }
 }
