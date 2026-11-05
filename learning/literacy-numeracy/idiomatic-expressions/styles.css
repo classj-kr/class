@@ -100,6 +100,10 @@ main {
   margin-bottom: 24px;
 }
 
+@media (max-width: 1020px) {
+  main { margin-top: 64px; }
+}
+
 .learning-utility { min-height: 44px; margin-bottom: 8px; }
 .mode-tabs { gap: 6px; padding: 4px; }
 .panel { padding: clamp(20px, 3vw, 30px); }
@@ -112,9 +116,13 @@ main {
 
 @media (min-width: 761px) and (max-height: 820px) {
   header { min-height: 48px; }
-  main { margin-top: 8px; }
+  main { margin-top: 64px; }
   .panel { padding-top: 18px; padding-bottom: 18px; }
   #illustration { max-height: 240px; }
+}
+
+@media (min-width: 1021px) and (max-height: 820px) {
+  main { margin-top: 8px; }
 }
 
 @media (orientation: portrait) and (min-width: 561px) {
