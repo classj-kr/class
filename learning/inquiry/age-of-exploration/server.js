@@ -2743,11 +2743,20 @@ io.on('connection', (socket) => {
     const room = rooms.get(roomCode);
     const connected = room ? [...room.values()] : [];
     if (!connected.length) return ack({ ok:false, error:'현재 접속한 학생이 없습니다.' });
-    const notReady = connected.filter((p) => !progressFor(roomCode, p.name, mission.id, false)?.selectedStartPlaceId);
-    if (notReady.length) {
-      const names = notReady.slice(0, 6).map((p) => p.name).join(', ');
-      const more = notReady.length > 6 ? ` 외 ${notReady.length - 6}명` : '';
-      return ack({ ok:false, error:`출발 도시를 고르지 않은 학생이 있습니다: ${names}${more}` });
+    // 출발 도시를 못 고른 학생은 지정된 도시 중 한 곳에 자동으로 배정하고 함께 출발시킨다.
+    const options = (mission.startOptions || []).filter((o) => o.startPlace?.point);
+    if (!options.length) return ack({ ok:false, error:'출발 도시가 지정되지 않았습니다.' });
+    for (const p of connected) {
+      const progress = progressFor(roomCode, p.name, mission.id, true);
+      if (progress.selectedStartPlaceId) continue;
+      const startPlace = options[Math.floor(Math.random() * options.length)].startPlace;
+      Object.assign(progress, { selectedStartPlaceId:startPlace.id, selectedMissionId:null, shipPortId:startPlace.id, status:'assigned', completedAt:null, completedGameMinutes:null, finishRank:null, finalQuizStatus:'none', finalQuizArrivedAt:null, finalQuizAnswers:[null, null, null], finalCorrectCount:null, finalSubmittedAt:null });
+      p.stageArrivalKey = null;
+      p.shipPortId = startPlace.id;
+      setModeAt(p, 'sea', safeSpawn(room, startPlace.point, 'sea'));
+      p.fatigue = 0;
+      p.activeMissionId = mission.id;
+      setNotice(p, `출발 도시가 ${startPlace.name}(으)로 자동 배정되었습니다.`);
     }
     const startMinutes = classGameMinutes(roomCode);
     const startedAtReal = Date.now();
