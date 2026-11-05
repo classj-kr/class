@@ -2,7 +2,7 @@
 
 import { CSSProperties, FormEvent, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { cardFields, raceCard, type RaceCard, type RaceField, type RacePart } from "../../../../lib/race-cards";
-import { RaceAvatar, RaceBackdrop, RaceLogo, RaceTrack, raceCue } from "../../../components/arithmetic-race-scene";
+import { RaceAvatar, RaceBackdrop, RaceTowers, raceCue } from "../../../components/arithmetic-race-scene";
 
 type Race = { roomCode: string; worksheetName: string; worksheetRoute: string; seed: number; status: string; startedAt: number | null; endsAt: number | null; durationSeconds: number | null };
 type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null };
@@ -303,7 +303,7 @@ export default function ArithmeticRaceCardsPage() {
     const podium = [ranking[1], ranking[0], ranking[2]];
     return (
       <main className="portal-page card-race-page math-race is-finished">
-        <RaceBackdrop /><RaceLogo compact />
+        <RaceBackdrop />
         {(
           <div className="card-race-rain" aria-hidden="true">
             {RAIN.map((piece, index) => <i key={index} style={{ left: `${piece.left}%`, animationDelay: `${piece.delay}s`, background: piece.color, rotate: `${piece.spin}deg` }} />)}
@@ -335,7 +335,7 @@ export default function ArithmeticRaceCardsPage() {
 
   return (
     <main className={`portal-page card-race-page math-race${phase === "wrong" ? " is-shaking" : ""}${streak >= 5 ? " is-fever" : ""}`}>
-      <RaceBackdrop /><RaceLogo compact />
+      <RaceBackdrop />
       <p className="math-race-context">{race?.worksheetName || "경기 준비 중"}</p>
       <header className="card-race-top">
         <div className="math-race-stat"><span>내 순위</span><strong className="math-race-rank">{myRank ? `${myRank}위` : "—"}</strong><small>방 {credentials?.room}</small></div>
@@ -347,7 +347,7 @@ export default function ArithmeticRaceCardsPage() {
 
       {toast && <p key={`toast-${toast.key}`} className="card-race-toast" role="status" onAnimationEnd={() => setToast(null)}>{toast.text}</p>}
       {banner && <p key={`banner-${banner.key}`} className={`card-race-banner ${banner.kind}`} aria-hidden="true" onAnimationEnd={() => setBanner(null)}>{banner.text}</p>}
-      {(countdown !== null || launch) && <div className={`math-race-countdown${launch ? " is-go" : ""}`} role="status"><span>{launch ? "달려볼까요?" : "손을 준비해요"}</span><strong key={countdown ?? "go"}>{countdown ?? "GO!"}</strong></div>}
+      {(countdown !== null || launch) && <div className={`math-race-countdown${launch ? " is-go" : ""}`} role="status"><span>{launch ? "풀어요!" : "연필을 준비해요"}</span><strong key={countdown ?? "go"}>{countdown ?? "시작!"}</strong></div>}
 
       <div className="card-race-layout">
         <section className="card-race-stage">
@@ -389,8 +389,8 @@ export default function ArithmeticRaceCardsPage() {
         </section>
 
         <aside className="card-race-side" aria-label="실시간 순위">
-          <RaceTrack entries={ranking} myId={me?.id} playing={playing} />
-          <p className="math-race-chase">{myRank === 1 ? "👑 선두를 달리는 중!" : myRank && ranking[0] ? `선두까지 ${Math.max(0, ranking[0].score - score)}점! 한 문제씩 따라가요.` : "정답을 맞힐수록 앞으로!"}</p>
+          <RaceTowers entries={ranking} myId={me?.id} playing={playing} />
+          <p className="math-race-chase">{myRank === 1 ? "👑 가장 높은 탑!" : myRank && ranking[0] ? `1위 탑까지 ${Math.max(0, ranking[0].score - score)}칸!` : "맞힐 때마다 한 칸씩 쌓여요!"}</p>
           <p className="card-race-rule">맞히면 +1 · 틀리면 −1 · 포기 −2</p>
         </aside>
       </div>

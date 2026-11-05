@@ -36,6 +36,12 @@ test("뜻이 비슷한 관용어는 서로의 오답으로 나오지 않는다",
   const byExpression = new Map(data.map((item) => [item.expression, item]));
   for (const item of data) {
     assert.ok(Array.isArray(item.lookalikes), item.expression);
+    assert.equal(item.distractors.length, 2, item.expression);
+    assert.equal(new Set([item.expression, ...item.distractors]).size, 3, item.expression);
+    for (const choice of item.distractors) {
+      assert.ok(byExpression.has(choice), choice);
+      assert.ok(!item.lookalikes.includes(choice), item.expression + ' / ' + choice);
+    }
     for (const other of item.lookalikes) {
       assert.ok(byExpression.get(other).lookalikes.includes(item.expression), item.expression + " ↔ " + other);
     }
@@ -58,6 +64,7 @@ test("뜻이 비슷한 관용어는 서로의 오답으로 나오지 않는다",
       assert.equal(quiz.choices[quiz.answer], expression);
       for (const choice of quiz.choices) {
         assert.ok(!quiz.item.lookalikes.includes(choice), expression + " 문제에 " + choice);
+        assert.ok(choice === expression || quiz.item.distractors.includes(choice), expression + ' 검토하지 않은 보기: ' + choice);
       }
       questions += 1;
     }
@@ -118,6 +125,53 @@ test("진행 중인 학습은 고친 문구를 쓰면서 문제 순서와 답안
   }
 });
 
+test("예전 무작위 보기를 고칠 때 정답과 시도한 보기의 대응이 유지된다", async () => {
+  const item = data.find(entry => entry.expression === '귀가 따갑다');
+  const first = await openLessonPage(pageDir);
+  await first.lessonButtons()[item.lesson].onclick();
+  for (const solved of [false, true]) {
+    const checkpoint = JSON.parse(JSON.stringify(first.session.checkpoint));
+    checkpoint.mode = 'quiz';
+    checkpoint.quizIndex = checkpoint.quiz.findIndex(question => question.item.expression === item.expression);
+    const question = checkpoint.quiz[checkpoint.quizIndex];
+    question.choices = ['귀에 못이 박히다', item.distractors[0], item.expression];
+    question.answer = 2;
+    question.tried = solved ? [0, 1, 2] : [0, 1];
+    question.solved = solved;
+    const page = await openLessonPage(pageDir, [{contentKey: `ko:${item.lesson}`, status: 'active', checkpoint}]);
+    await page.lessonButtons()[item.lesson].onclick();
+    const restored = page.session.checkpoint.quiz[checkpoint.quizIndex];
+    assert.deepEqual(new Set(restored.choices), new Set([item.expression, ...item.distractors]));
+    assert.equal(restored.choices[restored.answer], item.expression);
+    assert.equal(restored.solved, solved);
+    assert.deepEqual(Array.from(restored.tried, index => restored.choices[index]), solved ? [item.distractors[0], item.expression] : [item.distractors[0]]);
+    assert.equal(page.saves.length, 0, '기존 응답을 새 정답 이벤트로 다시 기록하지 않는다');
+    if (!solved) await page.byId('choices').children[restored.answer].onclick();
+    assert.equal(page.byId('nextQuestion').disabled, false);
+  }
+});
+
+test("검토에서 제외한 삽화는 다시 학습해도 나타나지 않는다", async () => {
+  const page = await openLessonPage(pageDir);
+  let shown = 0, hidden = 0;
+  for (const button of page.lessonButtons()) {
+    await button.onclick();
+    for (const item of page.session.checkpoint.items) {
+      assert.equal(page.byId('illustration').hidden, item.hideIllustration, item.expression);
+      if (item.hideIllustration) hidden++;
+      else {
+        shown++;
+        assert.ok(fs.existsSync(pageDir + page.byId('illustration').src), item.expression);
+      }
+      await page.byId('next').onclick();
+      await new Promise(resolve => setImmediate(resolve));
+    }
+    await page.byId('backToLessons').onclick();
+  }
+  assert.equal(shown + hidden, 110);
+  assert.ok(shown > 0 && hidden > 0);
+});
+
 test("관용구 화면과 메인 메뉴가 내용별 차시 학습에 연결된다", async () => {
   assert.match(menu, /href="learning\/literacy-numeracy\/idiomatic-expressions\/"/);
   assert.match(menu, /<strong>관용어<\/strong>/);
@@ -167,9 +221,9 @@ test("관용구 화면과 메인 메뉴가 내용별 차시 학습에 연결된�
   await page.tab(".mode-tab", "quiz").onclick();
   assert.equal(page.byId("studyView").hidden, true);
   assert.equal(page.byId("quizView").hidden, false);
-  // 문제를 푸는 동안에는 제목줄을 숨긴다(2026-09-05 중복 제목줄 제거).
+  // 상황 설명과 함께 문제의 지시문도 보여 준다.
   assert.match(html, /id="quizTitle"/);
-  assert.equal(page.byId("quizTitle").hidden, true);
+  assert.equal(page.byId("quizTitle").hidden, false);
 
   const { quiz } = page.session.checkpoint;
   assert.equal(quiz.length, 10);
