@@ -6,7 +6,7 @@
   let store = { get: (k) => memory.get(k), set: (k, v) => memory.set(k, v), remove: (k) => memory.delete(k) };
   try { if (window.SiteStorage) store = await window.SiteStorage.open('typing-race'); } catch { /* 게스트는 이 탭에서만 기억 */ }
 
-  let code = '', token = '', state = null, items = [], itemsRound = '', isTeacher = false;
+  let code = '', token = '', state = null, items = [], itemsRound = '';
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   let localIndex = 0, localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
   let sendChain = Promise.resolve(), lastCleared = null, composing = false;
@@ -14,6 +14,25 @@
   const prevScores = new Map();
   const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2, teamScore: 'sum' };
   const serverNow = () => Date.now() + offset;
+  // 순위판에 띄울 학생 프로필 아바타(연산 순위전과 같은 곳). 없으면 동물 이모지가 대신 달린다.
+  const myAvatar = fetch('/api/student/profile', { cache: 'no-store', credentials: 'same-origin' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => data?.profile?.avatar?.url || null)
+    .catch(() => null);
+  function face(p, cls = '') {
+    if (p.avatarUrl) {
+      const img = document.createElement('img');
+      img.className = 'face ' + cls;
+      img.src = p.avatarUrl;
+      img.alt = '';
+      img.decoding = 'async';
+      return img;
+    }
+    const span = document.createElement('span');
+    span.className = 'face emoji ' + cls;
+    span.textContent = p.racer;
+    return span;
+  }
   const input = $('typeInput');
 
   // ── 소리 ──────────────────────────────────────────
@@ -241,9 +260,9 @@
     const li = document.createElement('li');
     li.className = extra;
     li.style.setProperty('--hue', (hash(p.name) % 360) + 'deg');
-    li.innerHTML = '<span class="racer"></span><b></b>';
-    li.firstChild.textContent = p.racer;
-    li.lastChild.textContent = p.name;
+    const name = document.createElement('b');
+    name.textContent = p.name;
+    li.append(face(p, 'racer'), name);
     return li;
   }
   const hash = (s) => [...String(s)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
@@ -252,6 +271,7 @@
     state = s;
     const host = s.me.host;
     document.body.classList.toggle('is-host', host);
+    document.body.classList.toggle('spectator', !s.me.plays);
     $('roomBadge').hidden = false;
     $('roomBadgeCode').textContent = s.code;
     $('leaveButton').hidden = false;
@@ -268,7 +288,10 @@
     playMusic('lobby');
     document.body.classList.remove('fever');
     $('lobbyCode').textContent = s.code;
-    $('myRacer').textContent = s.me.racer;
+    if ($('myRacer').dataset.face !== (s.me.avatarUrl || s.me.racer)) {
+      $('myRacer').dataset.face = s.me.avatarUrl || s.me.racer;
+      $('myRacer').replaceChildren(face(s.me));
+    }
     $('myName').textContent = s.me.name;
     $('racerCount').textContent = s.participants.length;
     const before = new Set((previous?.participants || []).map((p) => p.id));
@@ -292,7 +315,7 @@
         head.innerHTML = '<b></b><span></span>';
         head.firstChild.textContent = `${t.emoji} ${t.name}팀`;
         head.lastChild.textContent = `${t.size}/${C.TEAM_MAX}`;
-        head.disabled = s.me.host || s.me.team === t.index || t.size >= C.TEAM_MAX;
+        head.disabled = !s.me.plays || s.me.team === t.index || t.size >= C.TEAM_MAX;
         head.onclick = () => action(async () => { render(await api('/rooms/' + code + '/team', { team: t.index })); sfx.join(); });
         const list = document.createElement('ul');
         list.className = 'lobby-racers';
@@ -370,8 +393,9 @@
       ensureItems(s).then(paintWord).catch((e) => toast(e.message));
     }
     renderTeamBar(s);
-    if (s.me.host) renderTrack(s);
-    else {
+    // 현황판(전체 트랙)은 교사 화면과 학생 화면 모두에 나온다.
+    renderTrack(s);
+    if (s.me.plays) {
       renderMini(s);
       $('scoreNow').textContent = Math.max(localScore, 0);
       const rank = s.me.rank;
@@ -424,8 +448,8 @@
         lane = document.createElement('div');
         lane.className = 'lane';
         lane.dataset.id = p.id;
-        lane.innerHTML = '<span class="lane-rank"></span><span class="lane-name"></span><div class="road"><div class="car"><span class="car-emoji"></span><b class="car-score"></b></div><span class="flag">🏁</span></div>';
-        lane.querySelector('.car-emoji').textContent = p.racer;
+        lane.innerHTML = '<span class="lane-rank"></span><span class="lane-name"></span><div class="road"><div class="car"><b class="car-score"></b></div><span class="flag">🏁</span></div>';
+        lane.querySelector('.car').prepend(face(p, 'car-emoji'));
       }
       const team = teamOf(p);
       lane.style.setProperty('--hue', (team ? team.hue : hash(p.name) % 360) + 'deg');
@@ -437,6 +461,7 @@
       lane.querySelector('.lane-rank').textContent = p.rank;
       lane.classList.toggle('leader', p.rank === 1 && p.score > 0);
       lane.classList.toggle('top3', p.rank <= 3 && p.score > 0);
+      lane.classList.toggle('mine', p.id === s.me.id);
       lane.classList.toggle('fever', p.combo >= C.COMBO_CAP);
       lane.querySelector('.car').style.setProperty('--x', Math.min(1, p.score / top));
       lane.querySelector('.car-score').textContent = p.score;
@@ -459,11 +484,11 @@
     $('miniBoard').replaceChildren(...top.map((p) => {
       const li = document.createElement('li');
       li.className = p.id === s.me.id ? 'mine' : '';
-      li.innerHTML = '<em></em><span></span><b></b><strong></strong>';
+      li.innerHTML = '<em></em><b></b><strong></strong>';
       li.children[0].textContent = p.rank;
-      li.children[1].textContent = p.racer;
-      li.children[2].textContent = p.name;
-      li.children[3].textContent = p.id === s.me.id ? Math.max(localScore, p.score) : p.score;
+      li.children[1].textContent = p.name;
+      li.children[2].textContent = p.id === s.me.id ? Math.max(localScore, p.score) : p.score;
+      li.children[0].after(face(p, 'mini-face'));
       return li;
     }));
   }
@@ -508,7 +533,7 @@
     const v = input.value.replace(/[\r\n]/g, '');
     return sentenceMode() ? v.replace(/^\s+/, '').replace(/\s+$/, (m) => (m.length > 1 ? ' ' : m)) : v.replace(/\s/g, '');
   }
-  const racing = () => state?.phase === 'running' && !state.me.host && serverNow() >= state.startsAt && serverNow() <= state.deadline;
+  const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
   function check(fromKey = false) {
     if (!racing()) return;
     const target = items[localIndex];
@@ -629,7 +654,7 @@
         card.children[3].textContent = `${t.size}명 · ${scoring}${s.config.teamScore === 'avg' ? ` (합계 ${t.total})` : ''}`;
         card.children[4].append(...s.participants.filter((p) => p.team === t.index).map((p) => {
           const li = document.createElement('li');
-          li.textContent = `${p.racer} ${p.name} ${p.score}`;
+          li.append(face(p, 'row-face'), `${p.name} ${p.score}`);
           return li;
         }));
         return card;
@@ -643,7 +668,8 @@
       div.style.setProperty('--delay', [0.5, 1.1, 0.2][i] + 's');
       if (p) {
         div.innerHTML = '<span class="pod-racer"></span><b class="pod-name"></b><span class="pod-score"></span><div class="block"></div>';
-        div.querySelector('.pod-racer').textContent = (place === 1 ? '👑' : '') + p.racer;
+        div.querySelector('.pod-racer').append(face(p, 'pod-face'));
+        if (place === 1) div.querySelector('.pod-racer').classList.add('crowned');
         div.querySelector('.pod-name').textContent = p.name;
         div.querySelector('.pod-score').textContent = p.score + '점';
       } else div.innerHTML = '<div class="block"></div>';
@@ -654,11 +680,12 @@
       const tr = document.createElement('tr');
       tr.className = p.id === s.me.id ? 'mine' : '';
       const team = s.teams && p.team !== null ? s.teams[p.team] : null;
-      for (const value of [p.rank, `${team ? team.emoji + ' ' : ''}${p.racer} ${p.name}`, p.score, Math.round(p.strokes / minutes), p.accuracy + '%', p.bestCombo]) {
+      for (const value of [p.rank, `${team ? team.emoji + ' ' : ''}${p.name}`, p.score, Math.round(p.strokes / minutes), p.accuracy + '%', p.bestCombo]) {
         const td = document.createElement('td');
         td.textContent = value;
         tr.append(td);
       }
+      tr.children[1].prepend(face(p, 'row-face'));
       return tr;
     }));
     const mine = s.participants.find((p) => p.id === s.me.id);
@@ -693,7 +720,7 @@
       retrigger($('countNum'), 'zoom');
       sfx.go();
       setTimeout(() => ($('countdown').hidden = true), 700);
-      if (!state.me.host) { input.disabled = false; input.focus(); }
+      if (state.me.plays) { input.disabled = false; input.focus(); }
     }
     const sec = Math.max(0, Math.ceil(Math.min(left, state.config.duration * 1000) / 1000));
     if ($('timeLeft').textContent !== String(sec)) {
@@ -749,17 +776,14 @@
     code = ''; token = ''; state = null; roundSeen = ''; resultShown = '';
     $('roomBadge').hidden = true;
     $('leaveButton').hidden = true;
-    document.body.classList.remove('is-host', 'fever', 'hurry');
+    document.body.classList.remove('is-host', 'spectator', 'fever', 'hurry');
     show('entry');
     playMusic('lobby');
     history.replaceState(null, '', location.pathname);
   }
-  $('roomCode').addEventListener('input', () => ($('roomCode').value = $('roomCode').value.replace(/\D/g, '').slice(0, 4)));
-  $('joinForm').onsubmit = (e) => {
-    e.preventDefault();
+  // 방번호는 메인 화면 방번호 입력에서 ?room= 으로 넘어온다.
+  function join(value) {
     action(async () => {
-      const value = $('roomCode').value;
-      if (!/^\d{4}$/.test(value)) throw Error('방번호 4자리를 입력해 주세요.');
       const saved = store.get('ticket-' + value);
       if (saved?.token) {
         token = saved.token;
@@ -770,29 +794,22 @@
           store.remove('ticket-' + value);
         }
       }
-      enter(await api('/rooms/' + value + '/join', {}), value);
+      enter(await api('/rooms/' + value + '/join', { avatarUrl: await myAvatar }), value);
     });
-  };
+  }
   $('createButton').onclick = () => action(async () => {
-    const data = await api('/rooms', choice);
+    const data = await api('/rooms', { ...choice, avatarUrl: await myAvatar });
     enter(data, data.state.code);
   });
   $('startButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/start', choice)));
   $('againButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/start', choice)));
   $('settingsButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/lobby', {})));
   $('leaveButton').onclick = () => action(async () => {
-    if (state?.me.host && !confirm('방을 닫으면 학생들의 레이스도 끝나요. 닫을까요?')) return;
+    if (state?.me.host && !confirm('방을 닫으면 모두의 레이스가 끝나요. 닫을까요?')) return;
     try { await api('/rooms/' + code + '/leave', {}); } catch { /* 이미 닫힌 방 */ }
     leaveLocal();
   });
 
-  try {
-    isTeacher = (await api('/session')).isTeacher;
-    $('createPanel').hidden = !isTeacher;
-  } catch (e) { toast(e.message); }
   const initial = new URLSearchParams(location.search).get('room') || '';
-  if (/^\d{4}$/.test(initial)) {
-    $('roomCode').value = initial;
-    $('joinForm').requestSubmit();
-  }
+  if (/^\d{4}$/.test(initial)) join(initial);
 })();
