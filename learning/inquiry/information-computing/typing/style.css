@@ -8,4 +8,5 @@ body{position:relative;isolation:isolate;background:#3a2418}body::before{content
 @media(max-width:700px){.topbar{top:auto;right:auto;bottom:16px;left:8px}}
 body:has(#typingHome:not([hidden])) main{min-height:calc(100vh - 60px);display:flex;align-items:center;justify-content:center;margin:0 auto}
 
+.eyebrow{align-items:center;font-size:18px}#bestLabel{padding:6px 14px;border-radius:999px;background:#fff3d6;color:#b26a00;font-size:20px;font-weight:900}
 .top-actions{display:flex;gap:8px}.race-link{display:inline-flex;align-items:center;text-decoration:none;color:#fff;background:linear-gradient(135deg,#ff3d9a,#7b3dff);border-color:transparent;font-weight:900}
