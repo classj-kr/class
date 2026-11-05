@@ -350,6 +350,9 @@ function sendSiteHtml(req, res, filepath, next) {
     ).replace(
       /(\/assets\/sound\/(?:game-sfx|music-control)\.js)(?:\?[^"'<>\s]*)?/g,
       "$1?v=20261009-explosion-file"
+    ).replace(
+      /(\/assets\/learning-records\.js)(?:\?[^"'<>\s]*)?/g,
+      "$1?v=20261105-floating-records"
     );
 
     const htmlWithBackNavigation = htmlSource.includes("/assets/site-back-navigation.js")

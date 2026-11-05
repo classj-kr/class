@@ -8,14 +8,15 @@
   const uid = () => crypto.randomUUID();
   const el = (tag, text, className) => { const node = document.createElement(tag); if (text != null) node.textContent = text; if (className) node.className = className; return node; };
   const css = `
-    :host{display:block;position:relative;z-index:30;box-sizing:border-box;width:calc(100% - 112px);max-width:1180px;margin:8px auto 10px;color:#24364b;font:13px/1.45 system-ui,"Malgun Gothic",sans-serif;color-scheme:light}
+    :host{display:contents;color:#24364b;font:13px/1.45 system-ui,"Malgun Gothic",sans-serif;color-scheme:light}:host([hidden]){display:none!important}
     *{box-sizing:border-box}[hidden]{display:none!important}button,input,select{font:inherit}button,a{touch-action:manipulation}
     button{cursor:pointer;border:1px solid #d8e2ec;border-radius:6px;padding:6px 9px;background:#fff;color:#233d5d;font-weight:600}button:hover{background:#edf4fb}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #6d9df2;outline-offset:2px}button:disabled{opacity:.55;cursor:wait}a{color:#245ac0;text-decoration:none}p{margin:0}h2,h3{margin:0;color:#182c45}h2{font-size:19px}h3{font-size:15px}
-    .strip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid #dce5ee;border-radius:6px;padding:4px 8px;min-height:36px}.identity{display:flex;align-items:center;gap:10px;flex:1;min-width:0}.title{font-weight:650;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.status{font-size:11px;color:#587366;white-space:nowrap}.status[data-state=error]{color:#ad3428}.status[data-state=pending]{color:#8b6916}.progress{color:#546a82;font-size:12px;white-space:nowrap}.strip>button{font-size:12px;white-space:nowrap}
+    .strip{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:30;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;max-width:calc(100vw - 32px)}.strip>button{min-height:44px;padding:10px 16px;border-radius:12px;font-size:14px;white-space:nowrap;box-shadow:0 3px 14px #182c4529}.strip>.identity,.strip>.progress{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.dock-space{height:calc(68px + env(safe-area-inset-bottom));pointer-events:none}.identity{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}.title{font-weight:650;font-size:13px;overflow-wrap:anywhere}.status{font-size:12px;color:#587366}.status[data-state=error]{color:#ad3428}.status[data-state=pending]{color:#8b6916}.progress{color:#546a82;font-size:12px}.record-context{display:grid;gap:6px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #e0e7ef}.history-button[data-state=error]::after{content:"";display:inline-block;width:7px;height:7px;margin-left:7px;border-radius:50%;background:#ad3428}
     .primary{background:#245ac0;color:white;border-color:#245ac0}.primary:hover{background:#18499f}.muted{color:#6c7c8e;font-size:12px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.badge{font-size:11px;color:#6d7d8f;white-space:nowrap}.badge.done{color:#27633d}
     dialog{padding:0;border:1px solid #d8e2ec;border-radius:10px;box-shadow:0 15px 50px #182c4533;width:min(740px,calc(100vw - 24px));max-height:85dvh;color:#24364b;background:#fff}dialog::backdrop{background:#14273c66}.dialog-head{padding:12px 16px;border-bottom:1px solid #e0e7ef;display:flex;justify-content:space-between;gap:12px;align-items:center}.body{padding:16px}.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:end;margin-bottom:10px}.filters label{display:grid;gap:3px;font-size:12px;color:#62758c}input,select{border:1px solid #ccd9e7;border-radius:6px;background:white;padding:6px;max-width:100%}
     .row{border-bottom:1px solid #e0e7ef;padding:10px 0}.row:last-child{border-bottom:0}.row-top{display:flex;align-items:start;justify-content:space-between;gap:12px}.row h3{margin:2px 0}.row .actions{margin-top:7px}.numbers{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0}.number{padding-right:24px;border-right:1px solid #e0e7ef}.number:last-child{padding-right:0;border:0}.number strong{display:block;font-size:23px;color:#234c83}.number span{font-size:12px;color:#687b93}.empty{padding:20px 0;color:#65768c}.detail{padding:9px 0;border-bottom:1px solid #e0e7ef;overflow-wrap:anywhere}.detail pre{white-space:pre-wrap;font:inherit;margin:4px 0}.error{color:#a83629}.save-warning{max-width:460px}.save-warning p{margin:8px 0 16px}
-    @media(max-width:600px){:host{width:calc(100% - 112px)}.strip{gap:5px 8px}.identity{flex-basis:100%;justify-content:space-between}.progress{flex:1}.strip>button{padding:7px 8px}.numbers{gap:14px}.number{padding-right:14px}.number strong{font-size:22px}.row-top{gap:8px}.filters input{max-width:140px}}
+    @media(max-width:600px){.strip{right:max(12px,env(safe-area-inset-right));max-width:calc(100vw - 24px)}.strip>button{padding:10px 13px}.numbers{gap:14px}.number{padding-right:14px}.number strong{font-size:22px}.row-top{gap:8px}.filters input{max-width:140px}}
+    @media print{.strip,.dock-space{display:none}}
   `;
   async function request(route, body) {
     const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15000);
@@ -54,20 +55,16 @@
       const identity = el('div', null, 'identity');
       this.title = el('p', '학습 기록', 'title'); this.status = el('p', '불러오는 중…', 'status'); this.status.setAttribute('role', 'status');
       identity.append(this.title, this.status); this.progress = el('div', null, 'progress');
-      const history = el('button', '학습 기록'); history.type = 'button'; history.onclick = () => this.showHistory();
+      const history = el('button', '학습 기록', 'history-button'); history.type = 'button'; history.setAttribute('aria-haspopup', 'dialog'); history.onclick = () => this.showHistory(); this.historyButton = history;
       strip.append(identity, this.progress, history); this.strip = strip;
-      if (options.toolbar === false) {
-        // Keep recovery dialogs available without adding a box to the activity layout.
-        this.host.style.display = 'contents';
-        document.body.append(this.host);
-      } else {
-        this.root.append(strip);
-        const target = options.mount || document.querySelector('main') || document.body.firstElementChild;
-        if (target?.parentNode) target.before(this.host); else document.body.prepend(this.host);
-        // Some activities reset every element's margins, including the shadow host.
-        const besideTopControls = this.host.getBoundingClientRect().top + scrollY < 64;
-        Object.assign(this.host.style, { display: 'block', width: besideTopControls ? 'calc(100% - 128px)' : '100%', maxWidth: '1180px', margin: '8px auto 10px' });
+      if (options.toolbar !== false) {
+        // Leave room to scroll the final answer above the floating controls.
+        const space = el('div', null, 'dock-space'); space.setAttribute('aria-hidden', 'true');
+        this.root.append(space, strip);
       }
+      // Keep the record controls outside lesson containers that become inert while saving.
+      this.host.style.display = 'contents';
+      document.body.append(this.host);
       window.addEventListener('beforeunload', event => { if (this.pending) { event.preventDefault(); event.returnValue = ''; } });
       this.ready = this.initialize();
     }
@@ -84,7 +81,11 @@
       this.setStatus(this.preview ? '둘러보기 · 미저장' : '');
       return this;
     }
-    setStatus(text, state = '') { this.status.textContent = text; this.status.dataset.state = state; this.status.hidden = !text; }
+    setStatus(text, state = '') {
+      this.status.textContent = text; this.status.dataset.state = state; this.status.hidden = !text;
+      this.historyButton.dataset.state = state;
+      this.historyButton.title = [this.title.textContent, text].filter(Boolean).join(' · ');
+    }
     addAction(label, handler) {
       const button = el('button', label); button.type = 'button'; button.onclick = handler;
       this.strip.append(button); return button;
@@ -172,6 +173,8 @@
     async showHistory() {
       await this.ready;
       const { body } = this.modal('학습 기록');
+      const context = el('div', null, 'record-context');
+      context.append(this.title.cloneNode(true), this.status.cloneNode(true), this.progress.cloneNode(true)); body.append(context);
       const filters = el('div', null, 'filters'), startLabel = el('label', '시작일'), endLabel = el('label', '종료일');
       const from = el('input'), to = el('input'); from.type = to.type = 'date'; from.value = to.value = today(); startLabel.append(from); endLabel.append(to);
       const load = el('button', '조회', 'primary'), all = el('button', '전체 기록'); filters.append(startLabel, endLabel, load, all);
