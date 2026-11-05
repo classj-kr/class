@@ -1,0 +1,462 @@
+{
+  "generationMode": "built-in image_gen",
+  "styleReference": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gwi_giul.webp",
+  "requirements": [
+    "1024 x 1024 square",
+    "no text or speech/thought balloons",
+    "single animal illustration",
+    "lossless WebP"
+  ],
+  "images": [
+    {
+      "expression": "가닥을 잡다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gadag_jap.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "4e80f5896b67fcc4940ff2e2b364197aead1f8ed9caa06f7487010a7d90cf382",
+      "replacedBecause": "실 가닥을 잡는 실제 동작",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 가닥을 잡다: a thoughtful raccoon organizes scattered plain clue cards on a table into a clear ordered route on a simple map, finding the missing puzzle piece with a quietly confident expression. A small rabbit looks relieved at the newly clear plan. Show figuring out a direction, not actual string."
+    },
+    {
+      "expression": "가려운 곳을 긁어주다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/garyeoun_got.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "eb9c43c5196db81a81d0e2ae0a7f80dfd1122216cdfe245032b9c0d2f4e6e3a5",
+      "replacedBecause": "등을 긁는 실제 동작",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 가려운 곳을 긁어주다: a short rabbit cannot reach a needed book on a high shelf; a helpful fox brings exactly the small step stool the rabbit needs. The rabbit's relieved thankful expression shows the perfectly timed useful help. No scratching anyone."
+    },
+    {
+      "expression": "가면을 벗다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gamyeon_beot.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "baf9dc50a9b90a298898ae3109e1751e9b56550639a5d812c4180d2e36ab0dd1",
+      "replacedBecause": "실제 가면을 벗음",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 가면을 벗다: a fox who had seemed friendly now openly clutches all the shared apples greedily to its own chest and pushes away a rabbit and raccoon. The two friends recoil in surprised disappointment at the fox's revealed selfish nature. Fox's greedy face unmistakable. No actual masks, no costumes, no literal hearts."
+    },
+    {
+      "expression": "가슴에 못을 박다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gaseum_mot.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "44e10448370f3eeba9a2cbc3cf114e4d31c6ef71fd839c6d0036ae0fabc71f29",
+      "replacedBecause": "상처를 주는 대신 위로하는 장면",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 가슴에 못을 박다: an unkind fox points mockingly at a rabbit's carefully made but imperfect small craft; the rabbit's shoulders slump and tears well up, one paw pressed against its chest in deep hurt. This is causing lasting emotional pain, not comforting. No actual nail, hammer or wounded heart."
+    },
+    {
+      "expression": "가슴에 새기다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gaseum_saegi.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "7eec94c86304cd542bcdbbf425c5db04c439632f469e259550e1811b99bf68de",
+      "replacedBecause": "하트를 든 모습만으로 기억하는 뜻을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 가슴에 새기다: a rabbit student listens earnestly to a wise elderly owl beside a closed book, one paw placed on its own chest, eyes serious and respectful, showing a meaningful lesson it resolves to remember. The elder gently rests a wing on the rabbit's shoulder. No heart-shaped object, no writing."
+    },
+    {
+      "expression": "간을 졸이다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gan_eul_jolida.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "a9b0c4e3a7a7c7a4560b3d82f4b62419bb5503239d790507567f674725946909",
+      "replacedBecause": "간을 냄비에 넣은 겉뜻 그림",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 간을 졸이다: a puppy sits anxiously beside a simple doorway waiting for a loved one to return, paws tightly clasped, worried eyes glancing toward a small clock without numerals. Slightly hunched, clearly unable to relax. No organ, cooking pot, fire or injury."
+    },
+    {
+      "expression": "귀에 못이 박히다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gwi_e_mot.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "37da8b6a1b1abbc9a9cff02140a2ca1d41bfd564f4d2cf5ebcbd1873f510df0a",
+      "replacedBecause": "머리에 못과 알람시계가 있어 반복해서 듣는 상황과 다름",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 귀에 못이 박히다: a parent dog repeats a reminder about being on time, pointing at a simple clock with no numerals. The young dog droops its shoulders with a weary 'heard it countless times' expression, patiently nodding. No text, no speech bubbles, no nails or damage to ears."
+    },
+    {
+      "expression": "귀가 얇다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gwi_ga_yalba.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "3b0c8cc586712d465b2551feb1e7691360212a53695969b3e9b696581579cf1c",
+      "replacedBecause": "나뭇잎처럼 얇은 귀만 표현",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 귀가 얇다: a persuasive fox gestures eagerly toward a toy on a little sales table; a trusting rabbit immediately opens its coin purse with wide easily persuaded eyes, leaning toward the fox's suggestion. Show being easily swayed by someone else's words. No leaf-thin ears or exaggerated ear anatomy."
+    },
+    {
+      "expression": "눈 밖에 나다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/nun_bakk.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "3f3bc6b67622c977c02d10d98382fc90f87f943c8a6c350ad240995128d4cb2a",
+      "replacedBecause": "실제 창문 밖에 있음",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 눈 밖에 나다: a fox with guilty downcast ears is excluded from the trust of two rabbit teammates; the rabbits fold their arms and turn away with disappointed faces while the fox stands apart holding a damaged shared toy. No eye-shaped window or literal eye imagery."
+    },
+    {
+      "expression": "눈이 높다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/nun_i_nopa.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "699659bd11dab5b10a29db22f6144b968b206aafbf4dd761d9b3aa9f89822bbf",
+      "replacedBecause": "안경 위치만 강조",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 눈이 높다: a picky penguin examines several well-made colorful pairs of shoes arranged on a low bench, brows raised critically and arms folded, rejecting ordinary choices despite their good quality. Show demanding standards. Normal eyes and ordinary proportions, no raised glasses."
+    },
+    {
+      "expression": "도마 위에 오르다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/doma_wi.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "81ba44597a64a4bb2e7401cad4ee144086dcf97929dd1f2b5ec9d3c0a5fa7acc",
+      "replacedBecause": "실제 도마에 올라감",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 도마 위에 오르다: three animal club members gather around a poorly made miniature bridge project on a table, seriously discussing and pointing out its visibly crooked structure. The maker looks uneasy because the project is being scrutinized. No cutting board, kitchen, knives or text."
+    },
+    {
+      "expression": "뒤통수를 맞다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/dwitongsu_mat.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "2feea5ce508a0b8bc8cf05ea19403db1a8debe3a41029198b2560ba5868ed335",
+      "replacedBecause": "실제 뒤통수에 공을 맞음",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 뒤통수를 맞다: a trusting dog stands shocked with empty paws while its fox teammate walks away smugly holding the entire shared prize basket, leaving the dog with their joint unfinished project. The fox has betrayed a teammate's trust. No hitting, ball, head injury or violence."
+    },
+    {
+      "expression": "뜸을 들이다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/tteum_deul.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "0d5de8808afc7255e0f834fb50b5a2e99bf23f2a0ee8ba0555e34cd254ed63d5",
+      "replacedBecause": "실제 밥솥을 기다림",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 뜸을 들이다: a fox knows what is inside a closed gift box but hesitates to reveal it, holding one paw near its chin and the other lightly on the lid; an expectant rabbit leans forward waiting impatiently. Show deliberately delaying an answer or action. No cooking pot or food preparation."
+    },
+    {
+      "expression": "마음을 먹다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/maeum_meok.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "b51226c6b0279846bf4862f5ac467daae43d5f69f143bb67fb2977565040b14d",
+      "replacedBecause": "하트를 먹는 겉뜻",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 마음을 먹다: a rabbit student sits upright before an open blank workbook, clenches one small paw with a firm determined face and reaches for a pencil with the other, clearly deciding to start a long-postponed task. No heart-shaped food or eating."
+    },
+    {
+      "expression": "마음을 열다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/maeum_yeol.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "6892f02d3d526a003a16997ae5b979af467510b8e6e2f8a2b6df474e434da368",
+      "replacedBecause": "하트 상자를 여는 겉뜻",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 마음을 열다: a formerly shy fox sits with a kind rabbit, now sharing a treasured personal keepsake openly while the rabbit listens warmly. Fox posture open and relaxed, expression sincere, gentle eye contact. No literal heart, box opening, speech or thought bubbles."
+    },
+    {
+      "expression": "머리를 식히다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/meori_sikk.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "b9aea7dc1d9089b3e537d8065a7ecd560ec16887bee6950a948059cde44b0493",
+      "replacedBecause": "머리에 냉찜질을 함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 머리를 식히다: a fox calmly rests on a simple park bench after study, closed books set to one side, relaxed shoulders and peaceful eyes, enjoying a quiet break with just a few natural leaves nearby. No ice pack, fan, water on head, or sleeping."
+    },
+    {
+      "expression": "발목을 잡다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/balmok_jap.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "a000de02f68812d13c2bab4503ff406699c980852eac0b5de8b4ff710789f699",
+      "replacedBecause": "실제 발목을 잡음",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 발목을 잡다: a beaver tries to move a cart carrying its school project forward, but a heavy fallen wooden beam blocks the wheels. It stops frustrated, hands on the cart, project unable to progress. Emphasize an obstacle stopping progress. Nobody grabs an ankle or body part."
+    },
+    {
+      "expression": "손에 땀을 쥐다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/son_e_ttam.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "6e184823ea45123b5fdd3bde0baaf8995649616126c1dde010002a5d88f2c3f6",
+      "replacedBecause": "웃으며 물방울을 안고 있어 긴장을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 손에 땀을 쥐다: a rabbit spectator watches a fox carefully place the final block on a tall wobbly wooden block tower. Rabbit paws tightly clasped, a tiny bead of sweat, tense eyebrows, eyes fixed on the precarious tower. Not happy cheering, no hugging water droplets."
+    },
+    {
+      "expression": "손을 놓다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/son_noha.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "5ea017d4363b4b19b2d14ac1394330943c8e87a5bbfcf43ca4883b1cbf2dc51f",
+      "replacedBecause": "그림을 완성하고 자랑하는 장면",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 손을 놓다: a discouraged dog sets its paintbrush down and turns away from a clearly half-finished painting on a small easel. Its shoulders droop, the painting visibly unfinished, showing stopping the work. Not celebrating completion."
+    },
+    {
+      "expression": "코가 납작해지다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/ko_napjak.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "0a3a62e93dbf865933880a78aeb8ef5170dcfe4c04850526b46afc9fbea7bdb8",
+      "replacedBecause": "길어진 코가 거짓말을 연상시킴",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 코가 납작해지다: a previously boastful fox has just lost a chess game to a calm small rabbit; the fox looks humbled, ears drooping and head lowered beside its toppled king. A simple chessboard with a few pieces, no letters or numerals. Normal short fox nose, not elongated, flat, or injured."
+    },
+    {
+      "expression": "탄력을 받다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/tallyeok_bad.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "48799e531688d8b612fedaebf1185049872fc10b666220cf31566b034b54c11c",
+      "replacedBecause": "스프링을 타는 겉뜻",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 탄력을 받다: a small team of rabbit, beaver, and fox briskly builds a wooden model project together; finished pieces are lined up and the next part is moving smoothly into place, lively confident expressions show the work gaining momentum. No spring, trampoline, literal elastic device, or written diagram."
+    },
+    {
+      "expression": "퇴짜를 맞다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/toetja_mat.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "65cd4df535350220193e92aeae4ac0c879e90a4cfa4b8c361d7fbce1cb49e075",
+      "replacedBecause": "별이 표시된 종이가 거절을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 퇴짜를 맞다: a puppy applicant presents a rolled plain plan to an owl evaluator, who gently holds up a refusing palm and returns the plan. Focus on the puppy's disappointed face as its proposal is rejected. No gold star, approval mark, words or symbols."
+    },
+    {
+      "expression": "트집을 잡다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/teujib_jap.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "f780f9dc172f23986ac1dd855e79785f32ee7ae9d6555364385c964070c9f8ac",
+      "replacedBecause": "돋보기 관찰만 보여 트집의 부당함이 없음",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 트집을 잡다: a fussy raccoon singles out one tiny paint smudge on an otherwise lovely painting, leaning in with an exaggerated critical frown and pointing sharply. The rabbit artist looks unfairly criticized and puzzled. Show needless faultfinding, not neutral inspection. No writing."
+    },
+    {
+      "expression": "틀에 박히다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/teul_e_bak.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "bdeeed61ef4200aafb802d851a5a30fc242abd6a152ca8bdbda7693084fafb86",
+      "replacedBecause": "액자 안에서 즐거워하는 겉뜻",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 틀에 박히다: a bear mechanically makes a row of exactly identical plain clay pots, ignoring a small selection of varied colorful sample shapes off to the side. Repetitive stiff posture and bored expression show an unchanging routine. No picture frame, cage, labels or text."
+    },
+    {
+      "expression": "파김치가 되다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/pa_gimchi.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "ac07fb478b1142f01cd6f4d538e4238ea590d838ed76399b0aece99552c49f91",
+      "replacedBecause": "잠자는 파 캐릭터로 피로의 원인을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 파김치가 되다: a rabbit has carried several heavy moving boxes and now sits exhausted against them, ears sagging, shoulders limp, eyes half closed and tiny sweat beads. Show complete physical exhaustion after work. No vegetable, kimchi, octopus, injury or dramatic collapse."
+    },
+    {
+      "expression": "한 획을 긋다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/han_hoeg_geot.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "28f684f3bc1aebd609521387170807af4ff80483861863535cca31596e360b92",
+      "replacedBecause": "실제 붓으로 선을 그음",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 한 획을 긋다: an inventive beaver proudly presents a new miniature water pump that successfully brings water to a little dry plant; rabbit and owl observers look deeply impressed by the useful breakthrough. Emphasize a noteworthy invention, not drawing a stroke. No text or trophy labels."
+    },
+    {
+      "expression": "허를 찌르다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/heo_jjeul.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "dbdb8592f0c1d520fb8a9812712c418ae568db43edd3e6ed2a6a2a68e1863242",
+      "replacedBecause": "선물로 놀라게 하는 장면은 빈틈을 공략하는 뜻과 다름",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 허를 찌르다: on a tiny simplified soccer scene, a clever fox sends the ball around the undefended side while two rabbit defenders are still facing the opposite way; their surprised expressions show an unexpected tactic catching them off guard. Keep full bodies and ball clear, no violence, words, gift box or arrows."
+    },
+    {
+      "expression": "혀를 차다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/hyeo_cha.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "dfe91fb37ce2f051b238c17c9f68e62ef70e0bcfbfb60893d8f134d35fb56a8b",
+      "replacedBecause": "울고 있어 못마땅한 반응과 구별되지 않음",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 혀를 차다: an elderly owl watches a young dog carelessly drop litter beside a bin, frowns with disappointed disapproval and a small pursed beak, one wing at its cheek. Show regret and disapproval at bad behavior, not crying or grief. No visible sound text or speech bubble."
+    },
+    {
+      "expression": "가면을 쓰다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gamyeon_sseu.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "1fdf2d259b978aa1864e9d9eed3a47565a6588a175bbe534af0457e5c9a0eeb5",
+      "replacedBecause": "실제 가면을 씀",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 가면을 쓰다: a fox wears an overly polite helpful smile while hiding a pouch of unfairly taken shared coins behind its back from a trusting rabbit. Front-facing friendliness contrasts with the concealed selfish action visible to the viewer. No actual mask, separate panels or thought bubbles."
+    },
+    {
+      "expression": "가시가 돋다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gasi_dot.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "3452e47919590d99c221527e0dd761969f52f6a28a45ea97a19f27035bba476e",
+      "replacedBecause": "고슴도치의 원래 가시만 표현",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 가시가 돋다: a fox leans forward with a sharp resentful expression and an accusatory pointing paw while addressing a rabbit; the rabbit flinches emotionally and looks hurt by the harsh attitude. Show malicious tone through faces and body language. No thorns, spikes, injuries, sound marks or speech bubbles."
+    },
+    {
+      "expression": "귀가 따갑다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gwi_ttaga.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "22849376c85464e8cd76acfd2346ad713e03b63ddbccbe6a95ec54ad29368469",
+      "replacedBecause": "즐겁게 음악을 듣고 있어 뜻과 반대",
+      "prompt": "Create ONE square 1024 by 1024 pixel illustration for an existing Korean idiom learning app. Match the attached reference's hand-drawn animal illustration style very closely: clean thin dark brown outlines, friendly rounded animal anatomy, soft restrained shading, warm muted pastel colors, pure white background, full characters with ample white margin. The attached picture is ONLY a style reference; create a new scene. Idiom: 귀가 따갑다, tired of hearing repeated nagging. Show an adult fox pointing at a small messy pile of books and clothes while reminding a younger raccoon to tidy up. The raccoon sits slumped, covering its ears with both paws, eyes half closed with an exasperated, weary expression. The fox's expression is calmly insistent, not angry or threatening. Make the weary listener's emotional reaction unmistakable. Small simple pile of clutter, no room backdrop. Exactly two characters, full bodies within the frame, balanced compact composition. This is an illustration, NOT a comic strip or infographic. ABSOLUTELY NO writing, letters, numerals, words, captions, speech balloons, thought bubbles, symbols, music notes, repeated panels, or watermark. SQUARE canvas, not landscape. Do not copy the rabbit and mouse scene."
+    },
+    {
+      "expression": "귀가 열리다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gwi_yeolli.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "4981a31b742e4dd1ac24b09fd69293d6e64b4fb5b736d435ea503c538d15549c",
+      "replacedBecause": "음악 감상으로 세상 물정을 아는 뜻을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 귀가 열리다: a young rabbit visits a small market and attentively learns from an older farmer bear holding vegetables and a carpenter beaver with a finished stool. Rabbit face shows growing understanding of how different people live and work. Minimal market props only. No music, school workbook, writing or balloons."
+    },
+    {
+      "expression": "기가 차다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/gi_cha.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "9f947185370f0466da0f81311e44507f3966ff428db21b9c07f9b0cffa052111",
+      "replacedBecause": "즐겁게 놀라는 표정으로 어이없음을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 기가 차다: a chick stares in utter disbelief and indignation at a fox shrugging innocently beside an emptied cookie jar, even though crumbs cover the fox's mouth and paws. Chick's eyebrows knit, wings held outward in an incredulous gesture. Not delighted surprise. No dialogue, thought bubbles or punctuation."
+    },
+    {
+      "expression": "날개가 돋치다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/nalgae_dot.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "053388bea1e3a56db5068c2ecf4f777d652ebae964c2b9badde8108de332b1c3",
+      "replacedBecause": "실제 날개로 나는 겉뜻",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 날개가 돋치다: a beaver shopkeeper's stack of plain books is rapidly selling out, with three happy animal customers each taking a book and paying coins; only one book remains on the counter. A lively busy selling scene, no wings, flying people, labels or letters on books."
+    },
+    {
+      "expression": "목숨을 걸다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/moksum_geol.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "858a236ff3189ebc60a57340bc8688ddf2b269791695317d8b522dfbed2c578a",
+      "replacedBecause": "영웅 복장만으로 목숨을 무릅쓰는 각오를 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 목숨을 걸다: a brave dog rescue worker secured by a safety rope carefully carries a small rabbit from a precarious flooded wooden bridge toward safety. Its face is focused and resolute despite the dangerous rushing water. Compact wholesome rescue illustration, no wounds, death, graphic harm or words. Show meaningful courage under real risk, not merely a superhero costume."
+    },
+    {
+      "expression": "발을 끊다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/bal_kkeun.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "db58bb0b60e59f74b71576d7a64ba0a485dc3a308ab2985fdbae9dcf6f134525",
+      "replacedBecause": "정지 표지판만 보여 왕래를 끊는 뜻과 다름",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 발을 끊다: a rabbit firmly turns and walks away from a troublesome group of foxes who are squabbling beside a broken shared toy, choosing to stop visiting them. Rabbit's determined outward posture is central; the group stays behind. No stop sign, cut feet, scissors, text, or graphic violence."
+    },
+    {
+      "expression": "발이 묶이다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/bal_muk.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "b59be601157b2fdfa3245c4b46c303a6fd52a9f337a6fe15945b56c77abb8405",
+      "replacedBecause": "발이 아닌 손이 리본에 묶임",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 발이 묶이다: a puppy traveler with a small suitcase stands helplessly beside a bus stopped by a deep snowdrift blocking the road. Puppy looks stranded and unable to leave. Minimal bus and snow props against white. No ropes on body, tied paws, speech or written signs."
+    },
+    {
+      "expression": "속이 시원하다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/sok_siwon.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "3b609c2784f95eb6213daa2503e0962e34d8f2371201d7aa5230675b590111e1",
+      "replacedBecause": "찬 음료를 마시는 겉뜻",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 속이 시원하다: a hamster finally solves a frustrating tangled wooden puzzle, sets the completed puzzle on the table, leans back with a relieved relaxed smile and shoulders lowered. Clear emotional relief at a resolved problem. No cold drink, ice, internal organs, thought balloons or text."
+    },
+    {
+      "expression": "손을 떼다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/son_tte.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "712459bc9620d71d1433ce0b20dc288d4d3bce4262f9b378eed5b4370aebfc19",
+      "replacedBecause": "완성한 그림을 기뻐하는 장면",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 손을 떼다: a cat formally hands its work apron and paintbrush to a rabbit successor and turns to leave a small workshop project behind, no longer involved. Rabbit accepts responsibility beside a half-finished craft. No victory gesture or completed painting celebration, no writing."
+    },
+    {
+      "expression": "입에 풀칠하다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/ib_pulchil.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "3607e88ea3d4a4d0988a33b437583ecc0eac2049efba70a701952e4b7c3e5114",
+      "replacedBecause": "편안히 식사해 겨우 생계를 잇는 뜻을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 입에 풀칠하다: a modestly dressed mouse carefully counts just a few coins beside a very simple small bowl of rice, worn but tidy clothes and a sober gentle expression conveying barely enough to eat. Respectful and empathetic, not comic humiliation. No glue, lavish meal, bills with numerals, words or banners."
+    },
+    {
+      "expression": "입 발린 말",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/ib_ballin.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "5d7725d9afb5aff905030e01f8f34d1f55448f72a324165492547d079f882e7d",
+      "replacedBecause": "솜사탕을 먹는 장면",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 입 발린 말: a fox forces an exaggerated flattering smile and enthusiastic approval gesture toward a rabbit's plainly lopsided handmade pot, while the fox's other paw behind its back is secretly reaching toward a favor it wants, a little gift parcel. Rabbit looks pleased, fox's strained insincere expression suggests flattery for gain. No sweets, cotton candy, writing, speech or thought bubbles."
+    },
+    {
+      "expression": "얼굴이 두껍다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/eolgul_dukkeop.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "739011f8e2769777eb6d9d13e0dfb14a9bc524ff3dbd4ef8c1f0c762bd4e1fc9",
+      "replacedBecause": "마스크를 쓴 모습으로 뻔뻔함과 무관",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 얼굴이 두껍다: a raccoon has knocked over a flowerpot, soil and broken ceramic beside its feet, but stands smugly with an unapologetic shrug while a rabbit points at the mess in disappointment. Raccoon shows no embarrassment. No mask, face armor, literal thick skin, injuries or text."
+    },
+    {
+      "expression": "이를 갈다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/i_gal.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "2fd95f20b06644a52ff23b0999bdfcccf9555f925827fba0285314283b8f8183",
+      "replacedBecause": "무술 동작만으로 분노나 원한을 전달하지 못함",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 이를 갈다: a hamster clenches its fists and teeth with a deeply resentful angry expression while a smug rival fox walks off holding an unfairly taken prize. Show simmering anger and grievance, not martial arts or a physical fight. No injury, weapon, speech or thought bubbles."
+    },
+    {
+      "expression": "퇴짜를 놓다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/toetja_noh.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "30e9c729c9ab788a3864352425850e9011e64f59115a26f394af6cdeaaa6b95e",
+      "replacedBecause": "별 표지판을 들어 거절보다 칭찬을 연상시킴",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 퇴짜를 놓다: an owl evaluator decisively but calmly returns a poorly prepared plain plan to a fox and raises a refusing palm. The owl making the rejection is the main focus, fox looks disappointed. No reward star, approval stamp, words, letters, numerals or symbols."
+    },
+    {
+      "expression": "틀을 잡다",
+      "path": "learning/literacy-numeracy/idiomatic-expressions/assets/illustrations/teul_jap.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "lossless WebP",
+      "sha256": "724b8a1a801a90f0b7fdbfe65991586cbbf48bdaeb871e7794eccca73b52d65c",
+      "replacedBecause": "실제 집의 골조를 만드는 겉뜻",
+      "prompt": "Create ONE SQUARE 1024 x 1024 pixel illustration for a Korean grade 6 idiom learning app. The attached image is ONLY a style reference: match its clean thin dark brown outlines, friendly rounded animal anatomy, warm muted pastel colors, restrained soft shading, pure white background. Illustrate the actual figurative situation below through facial expressions and actions. Compact centered composition filling about 80% of the square, full bodies and important props inside ample safe margins. This is a single illustration, NOT a comic, script, storyboard or infographic. ABSOLUTELY NO written text, letters, numerals, captions, dialogue, speech balloons, thought bubbles, watermarks or title. No multiple panels. Do not copy the reference's rabbit-and-mouse composition. Scene: 틀을 잡다: a beaver planner arranges a few blank rectangular outline cards in an orderly structure on a table before filling in details, pencil ready, thoughtful focused expression. A rabbit teammate looks at the overall plan. Show organizing the framework of a project, not constructing a house skeleton. No text, arrows or speech bubbles."
+    }
+  ]
+}

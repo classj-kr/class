@@ -94,7 +94,8 @@
         $('meaning').textContent = item.meaning; $('example').textContent = `예: ${item.example}`;
         if ($('category')) $('category').textContent = item.category || '';
         if ($('literal')) { $('literal').textContent = item.literal || ''; $('literal').hidden = !item.literal; }
-        const src = item.hideIllustration ? '' : item.image || config.illustrations?.[text(item)] || '';
+        const imagePath = item.image || config.illustrations?.[text(item)] || '';
+        const src = imagePath && item.illustrationVersion ? `${imagePath}?v=${item.illustrationVersion}` : imagePath;
         const image = $(config.ids.image); image.hidden = !src; if (src) image.src = src; else image.removeAttribute('src'); image.alt = text(item);
         if ($('proverbIllustrationFrame')) $('proverbIllustrationFrame').hidden = !src;
         $('previous').disabled = state.studyIndex === 0; $('next').textContent = state.studyIndex === state.items.length - 1 ? '확인 문제 풀기' : '다음';

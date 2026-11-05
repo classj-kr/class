@@ -151,25 +151,24 @@ test("예전 무작위 보기를 고칠 때 정답과 시도한 보기의 대응
   }
 });
 
-test("검토에서 제외한 삽화는 다시 학습해도 나타나지 않는다", async () => {
+test("모든 관용어의 삽화를 표시하고 교체본은 새 주소로 불러온다", async () => {
   const page = await openLessonPage(pageDir);
-  let shown = 0, hidden = 0;
+  let shown = 0, refreshed = 0;
   for (const button of page.lessonButtons()) {
     await button.onclick();
     for (const item of page.session.checkpoint.items) {
-      assert.equal(page.byId('illustration').hidden, item.hideIllustration, item.expression);
-      if (item.hideIllustration) hidden++;
-      else {
-        shown++;
-        assert.ok(fs.existsSync(pageDir + page.byId('illustration').src), item.expression);
-      }
+      assert.equal(page.byId('illustration').hidden, false, item.expression);
+      shown++;
+      const src = page.byId('illustration').src;
+      assert.ok(fs.existsSync(pageDir + src.split('?')[0]), item.expression);
+      if (item.illustrationVersion) { refreshed++; assert.ok(src.endsWith('?v=' + item.illustrationVersion), item.expression); }
       await page.byId('next').onclick();
       await new Promise(resolve => setImmediate(resolve));
     }
     await page.byId('backToLessons').onclick();
   }
-  assert.equal(shown + hidden, 110);
-  assert.ok(shown > 0 && hidden > 0);
+  assert.equal(shown, 110);
+  assert.equal(refreshed, 45);
 });
 
 test("관용구 화면과 메인 메뉴가 내용별 차시 학습에 연결된다", async () => {
