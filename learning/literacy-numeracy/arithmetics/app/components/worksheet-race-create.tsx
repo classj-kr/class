@@ -26,7 +26,7 @@ export default function WorksheetRaceCreate() {
   useEffect(() => {
     setToolbar(null);
     if (!worksheet || inRace) return;
-    const locate = () => setToolbar(document.querySelector(".counting-toolbar .toolbar, .counting-toolbar"));
+    const locate = () => setToolbar(document.querySelector(".counting-toolbar .toolbar") ?? document.querySelector(".counting-toolbar"));
     locate();
     const observer = new MutationObserver(locate);
     observer.observe(document.body, { childList: true, subtree: true });

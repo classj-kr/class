@@ -9371,6 +9371,8 @@ main {
 }
 
 .counting-progress {
+  /* Keep the score and actions in their slots when shared navigation hides the back link. */
+  grid-column: 2;
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -9392,6 +9394,8 @@ main {
 }
 
 .counting-toolbar .toolbar {
+  grid-column: 3;
+  min-width: 0;
   justify-content: flex-end;
 }
 
@@ -9845,6 +9849,17 @@ main {
   .counting-toolbar .button.primary {
     grid-column: auto;
   }
+}
+
+@media screen and (max-width: 1100px) {
+  .counting-toolbar .counting-back { grid-column: 1; grid-row: 1; }
+  .counting-toolbar .counting-progress {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    min-width: 92px;
+  }
+  .counting-toolbar .toolbar { grid-row: 2; }
 }
 
 @media print {
