@@ -1,163 +1,216 @@
-.portal-page.math-race, .math-race-launch-dialog {
+/* 연산 순위전: 수학 공책 위에서 수 모형 탑을 쌓는 경기. 타자 레이스(밤하늘·네온 도로)와 겹치지 않게 밝은 종이와 연필 색만 쓴다. */
+.portal-page.math-race {
   position: relative;
   isolation: isolate;
   min-height: 100svh;
   padding: 64px 24px 36px;
   overflow-x: clip;
-  color: #f4f1ff;
-  background: #0b0820;
-  --race-pink: #ff3d9a;
-  --race-cyan: #27e1ff;
-  --race-yellow: #ffe14d;
-  --race-green: #4dff9a;
+  color: #1d2742;
+  background: transparent;
+  --sheet: #fbfaf4;
+  --grid: #dde7f3;
+  --grid-bold: #c6d6ea;
+  --pencil: #1d2742;
+  --pencil-soft: #5a6580;
+  --blue: #2259d6;
+  --red: #d33a46;
+  --green: #17894f;
+  --orange: #dd7a08;
 }
-.math-race-sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse at 50% 100%, #34216c, #14102f 50%, #0b0820 85%); }
-.math-race-stars { position: absolute; inset: 0; opacity: .55; background-image: radial-gradient(1px 1px at 15% 20%, white 50%, transparent 51%), radial-gradient(2px 2px at 65% 13%, #27e1ff 50%, transparent 51%), radial-gradient(1px 1px at 85% 40%, white 50%, transparent 51%), radial-gradient(1px 1px at 34% 63%, #ffe14d 50%, transparent 51%); background-size: 650px 450px; }
-.math-race-floor { position: absolute; bottom: -18%; left: -50%; width: 200%; height: 58%; transform: perspective(400px) rotateX(60deg); transform-origin: center top; background-image: linear-gradient(#a643b866 2px, transparent 2px), linear-gradient(90deg, #27e1ff33 2px, transparent 2px); background-size: 72px 72px; mask-image: linear-gradient(transparent, black 28%); animation: math-race-road 2.2s linear infinite; opacity: .65; }
-.math-race-symbols i { position: absolute; left: calc(7% + var(--symbol) * 27%); top: calc(16% + var(--symbol) * 17%); color: #bcb2ff; opacity: .1; font-size: clamp(44px, 7vw, 96px); font-style: normal; font-weight: 900; animation: math-race-float 5s ease-in-out infinite alternate; animation-delay: calc(var(--symbol) * -.8s); }
-.math-race.is-fever .math-race-floor { animation-duration: .8s; opacity: 1; }
-.math-race-logo { display: flex; gap: clamp(6px, 1.5vw, 10px); width: min(482px, 100%); margin: 12px auto 38px; }
-.math-race-logo i { flex: 1; min-width: 0; display: grid; place-items: center; aspect-ratio: 1; border-radius: clamp(10px, 2vw, 16px); background: linear-gradient(160deg, white, #d9d2ff); color: #21113e; font-size: clamp(22px, 4.5vw, 34px); font-style: normal; font-weight: 900; line-height: 1; box-shadow: 0 7px 0 #7a62c9, 0 14px 24px #0005; animation: math-race-keyhop 1.8s ease-in-out infinite; }
-.math-race-logo i:nth-child(1) { color: white; background: linear-gradient(160deg, #ff8cc3, var(--race-pink)); box-shadow: 0 7px 0 #a3175e, 0 14px 24px #0005; }
-.math-race-logo i:nth-child(2) { background: linear-gradient(160deg, #8ff0ff, var(--race-cyan)); box-shadow: 0 7px 0 #0c8ea6, 0 14px 24px #0005; }
-.math-race-logo.is-compact { width: 242px; gap: 6px; margin: 0 auto 16px; }
-.math-race-logo.is-compact i { font-size: 20px; border-radius: 9px; box-shadow: 0 4px 0 #7a62c9; }
-.math-race-logo.is-compact i:nth-child(1) { box-shadow: 0 4px 0 #a3175e; }
-.math-race-logo.is-compact i:nth-child(2) { box-shadow: 0 4px 0 #0c8ea6; }
-.math-race .catalog-back { position: absolute; top: 14px; left: 16px; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ffffff30; border-radius: 50%; color: white; background: #ffffff12; text-decoration: none; }
-.math-race-lobby .race-entry-shell { width: min(620px, 100%); margin: 0 auto; }
-.math-race .race-waiting-card { padding: 28px; border: 1px solid #b7a2ff4d; border-radius: 24px; background: #1c1242d9; box-shadow: 0 20px 60px #0004, inset 0 1px #ffffff14; text-align: center; }
-.math-race .race-waiting-card > span { color: #b8b0d8; font-size: 14px; font-weight: 700; }
-.math-race .race-waiting-card .race-room-code { margin: 6px 0 20px; color: var(--race-yellow); font-size: clamp(42px, 8vw, 64px); letter-spacing: .12em; font-variant-numeric: tabular-nums; text-shadow: 0 0 24px #ffe14d33; }
-.math-race .race-waiting-card h2 { margin: 0 0 16px; color: white; font-size: 21px; line-height: 1.5; }
-.math-race .race-mode-note { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; color: #b8b0d8; font-size: 13px; }
-.math-race .race-mode-note b { padding: 4px 12px; border-radius: 99px; background: #27e1ff1a; color: var(--race-cyan); }
-.math-race-ready { display: flex; justify-content: center; align-items: center; gap: 7px; margin: 26px 0 12px; color: var(--race-green); font-size: 14px; font-weight: 800; }
-.math-race-ready > i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
-.math-race .race-participant-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 10px; max-height: min(360px, 42svh); margin: 0 0 26px; padding: 0; overflow-y: auto; mask-image: none; list-style: none; }
-.math-race .race-participant-list li { display: flex; flex-direction: column; justify-content: center; gap: 8px; min-width: 0; padding: 16px 8px; border: 1px solid #a08cff33; border-radius: 16px; color: #eeeaff; background: #ffffff08; font-weight: 800; animation: card-race-in .4s both; }
+
+/* 바탕: 모눈 공책과 빨간 여백선, 연필로 쓴 식이 천천히 떠오른다. */
+.math-race-paper {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+  background-color: var(--sheet);
+  background-image:
+    linear-gradient(var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}
+.math-race-margin { position: absolute; top: 0; bottom: 0; left: 56px; width: 2px; background: #f3b2b2; }
+.math-race-drift i {
+  position: absolute; bottom: -60px;
+  left: calc(4% + (var(--n) * 37 % 92) * 1%);
+  color: #8a97b8; opacity: .22;
+  font-size: calc(22px + (var(--n) * 7 % 4) * 9px);
+  font-style: normal; font-weight: 800; white-space: nowrap;
+  animation: math-race-drift calc(16s + (var(--n) * 5 % 7) * 2s) linear infinite;
+  animation-delay: calc(var(--n) * -2.7s);
+}
+.math-race.is-fever .math-race-drift i { color: var(--orange); opacity: .3; animation-duration: 6s; }
+
+/* 대기실 */
+.math-race .catalog-back { position: absolute; top: 14px; left: 16px; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #c9d3e3; border-radius: 50%; color: var(--pencil); background: white; text-decoration: none; font-size: 20px; }
+.math-race-lobby .race-entry-shell { width: min(620px, 100%); margin: 0 auto; padding-top: 8px; }
+.math-race .race-waiting-card { margin-top: 12px; padding: 28px; border: 1px solid #d5dceb; border-radius: 6px; background: white; box-shadow: 0 2px 0 #e4e9f2, 0 14px 34px #1d27421a; text-align: center; }
+.math-race .race-waiting-card > span { color: var(--pencil-soft); font-size: 14px; font-weight: 800; }
+.math-race .race-waiting-card .race-room-code { display: block; margin: 6px 0 18px; color: var(--blue); font-size: clamp(44px, 8vw, 66px); font-weight: 900; letter-spacing: .14em; font-variant-numeric: tabular-nums; }
+.math-race .race-waiting-card h2 { margin: 0 0 14px; color: var(--pencil); font-size: 21px; line-height: 1.5; }
+.math-race .race-mode-note { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; margin: 0; color: var(--pencil-soft); font-size: 14px; font-weight: 700; }
+.math-race .race-mode-note b { padding: 3px 12px; border-radius: 4px; background: #e6edfb; color: var(--blue); }
+.math-race-ready { display: flex; justify-content: center; align-items: center; gap: 7px; margin: 24px 0 12px; color: var(--green); font-size: 15px; font-weight: 800; }
+.math-race-ready > i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; animation: math-race-blink 1s ease-in-out infinite alternate; }
+.math-race .race-participant-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 10px; max-height: min(360px, 42svh); margin: 0 0 24px; padding: 4px; overflow-y: auto; list-style: none; }
+.math-race .race-participant-list li { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-width: 0; padding: 14px 8px; border: 1px solid #dfe5f0; border-radius: 6px; color: var(--pencil); background: #f6f8fc; font-weight: 800; animation: math-race-pin .45s cubic-bezier(.2, 1.3, .4, 1) both; }
 .math-race .race-participant-list li > span:not(.math-race-avatar) { max-width: 100%; overflow-wrap: anywhere; }
-.math-race .race-participant-list .math-race-avatar { animation: math-race-float 1.7s ease-in-out infinite alternate; animation-delay: inherit; }
-.math-race-avatar { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border: 2px solid #fff; border-radius: 50%; color: #372060; background: #e9dfff; box-shadow: 0 4px 12px #0003; object-fit: cover; font-size: 18px; font-weight: 900; }
-.math-race .race-host-badge { padding: 3px 9px; border-radius: 99px; color: var(--race-cyan); background: #27e1ff1a; font-size: 11px; }
-.math-race .race-waiting-card .math-race-start { width: 100%; min-height: 58px; border-radius: 14px; color: #113627; background: var(--race-green); box-shadow: 0 6px 0 #168a51, 0 0 26px #4dff9a33; font-size: 22px; font-weight: 900; transition: transform .1s; }
-.math-race .math-race-start:active:not(:disabled) { transform: translateY(4px); }
-.math-race-wait-message { display: block; padding: 16px; color: var(--race-cyan); }
-.math-race-context { margin: 0 auto 18px; color: #b8b0d8; text-align: center; font-size: 13px; font-weight: 700; }
-.math-race .card-race-top { width: min(1120px, 100%); grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; padding: 14px 8px; border: 1px solid #a08cff44; border-radius: 18px; background: #1c1242bf; box-shadow: 0 10px 36px #0003; }
-.math-race-stat { display: grid; justify-items: center; align-content: start; min-height: 78px; gap: 3px; border-right: 1px solid #a08cff26; }
+.math-race .race-participant-list .math-race-avatar { animation: math-race-bob 1.6s ease-in-out infinite alternate; animation-delay: inherit; }
+.math-race-avatar { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border: 2px solid white; border-radius: 50%; color: var(--pencil); background: #e3e9f6; box-shadow: 0 2px 6px #1d274233; object-fit: cover; font-size: 18px; font-weight: 900; }
+.math-race .race-host-badge { padding: 2px 9px; border-radius: 4px; color: var(--blue); background: #e6edfb; font-size: 12px; }
+.math-race .race-waiting-card .math-race-start { width: 100%; min-height: 58px; border: 0; border-radius: 8px; color: white; background: var(--green); box-shadow: 0 5px 0 #0f6239; font: inherit; font-size: 22px; font-weight: 900; cursor: pointer; transition: transform .1s; }
+.math-race .math-race-start:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 #0f6239; }
+.math-race .math-race-start:disabled { opacity: .5; cursor: default; }
+.math-race-wait-message { display: block; padding: 14px; color: var(--blue); }
+
+/* 경기 화면 */
+.math-race-context { margin: 0 auto 14px; color: var(--pencil-soft); text-align: center; font-size: 14px; font-weight: 800; }
+.math-race .card-race-top { width: min(1120px, 100%); grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding: 12px 6px; border: 1px solid #d5dceb; border-radius: 6px; background: white; box-shadow: 0 2px 0 #e4e9f2; }
+.math-race-stat { display: grid; justify-items: center; align-content: start; min-height: 74px; gap: 2px; border-right: 1px dashed #d5dceb; }
 .math-race-stat:last-child { border: 0; }
-.math-race-stat > span { color: #b8b0d8; font-size: 12px; font-weight: 700; }
-.math-race-stat > strong, .math-race-stat > time { color: #f4f1ff; font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1.2; }
-.math-race-stat > small { color: #9b92bb; font-size: 10px; }
-.math-race-stat strong small { margin-left: 4px; font-size: 12px; }
-.math-race .math-race-rank { color: var(--race-cyan); }
-.math-race .card-race-score { color: var(--race-yellow); }
-.math-race .card-race-score.is-negative { color: #ff9eae; }
+.math-race-stat > span { color: var(--pencil-soft); font-size: 13px; font-weight: 800; }
+.math-race-stat > strong, .math-race-stat > time { color: var(--pencil); font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.math-race-stat > small { color: var(--pencil-soft); font-size: 12px; }
+.math-race-stat strong small { margin-left: 3px; font-size: 13px; }
+.math-race .math-race-rank { color: var(--blue); }
+.math-race .card-race-score { color: var(--green); }
+.math-race .card-race-score.is-negative { color: var(--red); }
 .math-race .card-race-top time { justify-self: center; }
-.math-race .card-race-top time.is-hurry { color: #ff6e91; }
-.math-race-combo > div { display: flex; gap: 4px; }
-.math-race-combo i { width: 12px; height: 4px; border-radius: 3px; background: #ffffff20; transition: background .2s, box-shadow .2s; }
-.math-race-combo i.on { background: #ff9e39; box-shadow: 0 0 8px #ff9e3999; }
-.math-race-combo.is-hot > strong { color: #ffb844; text-shadow: 0 0 16px #ff822b66; }
-.math-race .card-race-timebar { width: min(1100px, calc(100% - 20px)); height: 5px; margin: 10px auto 28px; background: #ffffff12; }
-.math-race .card-race-timebar i { background: linear-gradient(90deg, var(--race-cyan), var(--race-green)); box-shadow: 0 0 12px #27e1ff66; }
-.math-race .card-race-timebar.is-hurry i { background: linear-gradient(90deg, var(--race-pink), #ffb844); }
-.math-race .card-race-layout { width: min(1120px, 100%); grid-template-columns: minmax(0, 1fr) 360px; gap: 28px; }
+.math-race .card-race-top time.is-hurry { color: var(--red); }
+.math-race-combo > div { display: flex; gap: 3px; }
+.math-race-combo i { width: 10px; height: 10px; border: 1px solid #c6d0e2; background: white; transition: background .2s, transform .2s; }
+.math-race-combo i.on { border-color: var(--orange); background: #ffb648; transform: translateY(-2px); }
+.math-race-combo.is-hot > strong { color: var(--orange); }
+.math-race .card-race-timebar { width: min(1120px, 100%); height: 6px; margin: 10px auto 24px; border-radius: 0; background: #e2e8f2; }
+.math-race .card-race-timebar i { background: var(--blue); }
+.math-race .card-race-timebar.is-hurry i { background: var(--red); }
+.math-race .card-race-layout { width: min(1120px, 100%); grid-template-columns: minmax(0, 1fr) 380px; gap: 26px; }
 .math-race .card-race-stage { min-width: 0; }
-.math-race .card-race-card { width: 100%; min-height: 260px; border: 2px solid #ded4ff; background: linear-gradient(160deg, #fff, #f4f0ff); color: #211c39; box-shadow: 0 9px 0 #7862a8, 0 20px 46px #0004; }
-.math-race .card-race-card.phase-correct { border-color: #4dff9a; box-shadow: 0 9px 0 #148d5b, 0 0 42px #4dff9a77; }
-.math-race .card-race-card.phase-wrong { border-color: #ff6e91; background: linear-gradient(160deg, white, #ffe3e9); }
-.math-race .card-race-answer { border-color: #9b58e0; color: #3d205f; background: #fff; }
-.math-race .card-race-answer:focus { outline: 3px solid #9b58e044; outline-offset: 3px; }
-.math-race .card-race-prompt { color: #605078; }
-.math-race .card-race-number { color: #716286; font-size: 12px; letter-spacing: .02em; }
-.math-race .card-race-actions button:not(.card-race-skip), .math-race .card-race-choices button:hover:not(:disabled) { background: #713fc0; color: white; border-color: #713fc0; }
-.math-race .card-race-keypad { gap: 10px; margin-top: 6px; }
-.math-race .card-race-keypad button { min-height: 48px; color: #eeeaff; border: 1px solid #b7a2ff44; background: linear-gradient(160deg, #34244f, #23183b); box-shadow: 0 4px 0 #130d22; transition: transform .08s, box-shadow .08s; }
-.math-race .card-race-keypad button:active { transform: translateY(3px); box-shadow: 0 1px 0 #130d22; }
-.math-race .card-race-keypad button.ok { color: #073933; border-color: var(--race-cyan); background: var(--race-cyan); box-shadow: 0 4px 0 #087e94; }
-.math-race .card-race-side { min-width: 0; padding: 18px 14px; border: 1px solid #a08cff44; background: #1c1242d9; box-shadow: 0 12px 36px #0003; }
-.math-race-track-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0 2px 12px; }
-.math-race-track-heading > strong { font-size: 15px; }
-.math-race-track-heading > span { color: #b8b0d8; font-size: 11px; }
-.math-race-track ol { position: relative; list-style: none; margin: 0; padding: 0; }
-.math-race-track li { position: absolute; inset: 0 0 auto; display: grid; grid-template-columns: 90px minmax(0, 1fr) 36px; align-items: center; gap: 6px; height: 50px; border-radius: 10px; padding: 4px 6px; background: #ffffff04; transition: transform .55s cubic-bezier(.2, .8, .2, 1); }
-.math-race-track li.is-me { background: #27e1ff0d; outline: 1px solid #27e1ff66; }
-.math-race-runner-name { display: flex; gap: 6px; align-items: center; min-width: 0; font-size: 12px; }
-.math-race-runner-name em { font-style: normal; color: #aba0c7; font-variant-numeric: tabular-nums; }
-.math-race-runner-name b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.math-race-lane { position: relative; height: 2px; margin: 0 18px; background: repeating-linear-gradient(90deg, #ffffff2b 0 5px, transparent 5px 9px); }
-.math-race-trail { position: absolute; height: 3px; background: hsl(var(--runner-hue) 90% 70%); box-shadow: 0 0 8px hsl(var(--runner-hue) 90% 70% / .5); transition: width .65s ease-out; }
-.math-race-runner { position: absolute; top: -16px; transition: left .65s cubic-bezier(.2, .8, .2, 1); }
-.math-race-runner-body { display: block; margin-left: -16px; animation: card-race-bump .3s; }
-.math-race-runner .math-race-avatar { width: 32px; height: 32px; border-color: hsl(var(--runner-hue) 90% 75%); font-size: 14px; }
-.math-race-runner.is-running .math-race-avatar { animation: math-race-run .6s ease-in-out infinite alternate; }
-.is-leader .math-race-runner::before { content: "👑"; position: absolute; left: -10px; top: -17px; font-size: 18px; z-index: 1; }
-.math-race-runner-score { color: #f4f1ff; font-size: 17px; text-align: right; font-variant-numeric: tabular-nums; animation: card-race-bump .3s; }
-.math-race-runner-score small { font-size: 9px; margin-left: 2px; color: #aba0c7; }
-.math-race-chase { margin: 16px 0 0; color: var(--race-yellow); text-align: center; font-size: 12px; font-weight: 800; }
-.math-race .card-race-rule { color: #b8b0d8; font-size: 11px; }
-.math-race .card-race-banner { top: 100px; padding: 10px 22px; font-size: clamp(24px, 5vw, 36px); }
-.math-race .card-race-toast { top: 12px; max-width: calc(100vw - 100px); font-size: 16px; }
-.math-race .card-race-pop { color: #2acc87; text-shadow: 0 2px 0 white, 0 0 24px #4dff9a66; }
-.math-race .card-race-pop.wrong, .math-race .card-race-pop.skip { color: #ee376c; }
-.math-race-countdown { position: fixed; inset: 0; z-index: 500; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: #0b0820b8; backdrop-filter: blur(5px); pointer-events: none; }
-.math-race-countdown > span { color: #eeeaff; font-size: 22px; font-weight: 800; }
-.math-race-countdown > strong { color: var(--race-yellow); font-size: clamp(130px, 30vw, 240px); line-height: 1; font-weight: 900; text-shadow: 6px 6px 0 #b62c74, 0 0 44px #ffe14d55; animation: math-race-count .8s cubic-bezier(.2, 1.4, .4, 1); }
+
+/* 문제 카드: 공책에 붙인 메모지 */
+.math-race .card-race-card { width: 100%; min-height: 260px; border: 1px solid #d5dceb; border-radius: 6px; color: var(--pencil); background: white; box-shadow: 0 3px 0 #e1e7f1, 0 16px 38px #1d27421f; }
+.math-race .card-race-card::before { content: ""; position: absolute; top: -12px; left: 50%; width: 96px; height: 24px; translate: -50% 0; rotate: -2deg; background: #fde68ab3; box-shadow: 0 1px 2px #0001; }
+.math-race.is-fever .card-race-card { box-shadow: 0 3px 0 #f3d7a8, 0 0 0 3px #ffb64866, 0 16px 38px #dd7a0833; }
+.math-race .card-race-card.phase-correct { border-color: var(--green); box-shadow: 0 3px 0 #b7e2c9, 0 0 0 4px #17894f33; }
+.math-race .card-race-card.phase-wrong { border-color: var(--red); background: #fff4f4; }
+.math-race .card-race-answer { border: 0; border-bottom: 4px solid var(--blue); border-radius: 0; color: var(--blue); background: #f2f6ff; }
+.math-race .card-race-answer:focus { outline: 0; background: #e3ecff; }
+.math-race .card-race-prompt { color: var(--pencil-soft); }
+.math-race .card-race-number { color: var(--pencil-soft); font-size: 13px; }
+.math-race .card-race-actions button:not(.card-race-skip), .math-race .card-race-home { border-radius: 8px; background: var(--blue); box-shadow: 0 4px 0 #173f9c; }
+.math-race .card-race-actions .card-race-skip { border-radius: 8px; color: var(--pencil-soft); border-color: #d5dceb; }
+.math-race .card-race-choices button { border-radius: 8px; }
+.math-race .card-race-choices button:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
+.math-race .card-race-keypad { gap: 8px; margin-top: 4px; }
+.math-race .card-race-keypad button { min-height: 50px; border: 1px solid #cdd6e6; border-radius: 8px; color: var(--pencil); background: white; box-shadow: 0 3px 0 #d5dceb; transition: transform .08s, box-shadow .08s; }
+.math-race .card-race-keypad button:active { transform: translateY(2px); box-shadow: 0 1px 0 #d5dceb; }
+.math-race .card-race-keypad button.ok { color: white; border-color: var(--blue); background: var(--blue); box-shadow: 0 3px 0 #173f9c; }
+.math-race .card-race-reveal { border-radius: inherit; background: #1d2742; }
+.math-race .card-race-reveal span { color: #ffd27a; }
+
+/* 수 모형 탑 */
+.math-race .card-race-side { min-width: 0; padding: 16px 14px 14px; border: 1px solid #d5dceb; border-radius: 6px; background: white; box-shadow: 0 2px 0 #e4e9f2; }
+.math-race-towers-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0 2px 8px; }
+.math-race-towers-heading > strong { font-size: 16px; }
+.math-race-towers-heading > span { color: var(--pencil-soft); font-size: 13px; font-weight: 700; }
+.math-race-towers ol {
+  position: relative; height: calc(var(--tower) + 104px); margin: 0; padding: 0; list-style: none;
+  background: linear-gradient(transparent calc(var(--tower) + 52px), #8a97b8 calc(var(--tower) + 52px), #8a97b8 calc(var(--tower) + 54px), transparent calc(var(--tower) + 54px));
+}
+.math-race-towers li {
+  position: absolute; top: 0; left: 0; width: calc(100% / var(--cols)); height: 100%;
+  display: grid; grid-template-rows: calc(var(--tower) + 52px) auto auto; justify-items: center; align-content: start; padding: 0 3px;
+  transform: translateX(calc(var(--slot) * 100%)); transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+}
+.math-race-towers li.is-me { background: linear-gradient(#2259d600, #2259d612); border-radius: 6px; }
+.math-race-tower { display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; gap: 2px; width: min(64px, 100%); padding-bottom: 2px; }
+.math-race-climber { align-self: center; margin-bottom: 4px; transition: transform .3s; }
+.math-race-climber .math-race-avatar { width: 36px; height: 36px; border-color: hsl(var(--hue) 70% 55%); font-size: 15px; }
+.math-race-climber.is-playing .math-race-avatar { animation: math-race-bob .7s ease-in-out infinite alternate; }
+.is-leader .math-race-climber { position: relative; }
+.is-leader .math-race-climber::before { content: "👑"; position: absolute; left: 50%; top: -18px; translate: -50% 0; font-size: 18px; z-index: 1; animation: math-race-bob .8s ease-in-out infinite alternate; }
+.math-race-ones { display: grid; grid-template-columns: repeat(10, 1fr); gap: 1px; height: var(--row); }
+.math-race-cube { display: block; border-radius: 1px; background: hsl(var(--hue) 75% 62%); box-shadow: inset 0 -2px 0 hsl(var(--hue) 60% 42%); animation: math-race-cube .42s cubic-bezier(.3, 1.4, .5, 1) both; }
+.math-race-rod {
+  display: block; height: calc(var(--row) - 2px); border-radius: 2px;
+  background: repeating-linear-gradient(90deg, hsl(var(--hue) 70% 50%) 0 calc(10% - 1px), hsl(var(--hue) 60% 38%) calc(10% - 1px) 10%);
+  box-shadow: inset 0 -2px 0 hsl(var(--hue) 60% 34%);
+  animation: math-race-merge .7s cubic-bezier(.2, 1.2, .4, 1) both;
+}
+.math-race-tower-score { margin-top: 4px; color: var(--pencil); font-size: 20px; font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1.1; animation: card-race-bump .3s; }
+.math-race-tower-score.is-negative { color: var(--red); }
+.math-race-tower-name { display: flex; gap: 3px; max-width: 100%; color: var(--pencil); font-size: 12px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.math-race-tower-name em { flex: none; color: var(--pencil-soft); font-style: normal; }
+.is-me .math-race-tower-name { color: var(--blue); }
+.math-race-chase { margin: 12px 0 0; color: var(--orange); text-align: center; font-size: 14px; font-weight: 900; }
+.math-race .card-race-rule { color: var(--pencil-soft); font-size: 13px; }
+
+/* 알림·점수 튀기 */
+.math-race .card-race-banner { top: 100px; padding: 10px 24px; border-radius: 8px; background: var(--orange); box-shadow: 0 6px 0 #a35a06, 0 16px 40px #dd7a0840; font-size: clamp(26px, 5vw, 38px); }
+.math-race .card-race-banner.mega { background: var(--red); box-shadow: 0 6px 0 #9b222c, 0 16px 40px #d33a4640; }
+.math-race .card-race-toast { top: 12px; max-width: calc(100vw - 100px); border-radius: 8px; background: var(--blue); color: white; font-size: 17px; }
+.math-race .card-race-pop { color: var(--green); }
+.math-race .card-race-pop.wrong, .math-race .card-race-pop.skip { color: var(--red); }
+
+/* 카운트다운: 공책 칸에 숫자를 꾹 눌러 쓴다. */
+.math-race-countdown { position: fixed; inset: 0; z-index: 500; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #fbfaf4e6; pointer-events: none; }
+.math-race-countdown > span { color: var(--pencil-soft); font-size: 22px; font-weight: 800; }
+.math-race-countdown > strong {
+  display: grid; place-items: center; min-width: 1.15em; padding: 0 .12em; aspect-ratio: 1;
+  border: 4px solid var(--pencil); background: white; color: var(--blue);
+  font-size: clamp(110px, 24vw, 190px); line-height: 1; font-weight: 900;
+  box-shadow: 10px 10px 0 #c6d6ea;
+  animation: math-race-stamp .8s cubic-bezier(.2, 1.4, .4, 1);
+}
 .math-race-countdown.is-go { animation: math-race-go .9s forwards; }
-.math-race-countdown.is-go > strong { color: var(--race-green); }
-.math-race-ready-symbol { display: block; color: #9b58e0; font-size: 64px; line-height: 1; animation: math-race-float 1.2s ease-in-out infinite alternate; }
-.math-race .card-race-result { width: min(660px, 100%); margin: 32px auto 0; padding: 30px 24px; border: 1px solid #b7a2ff55; background: #1c1242e8; color: #f4f1ff; box-shadow: 0 20px 70px #0005; }
-.math-race .card-race-result > span { color: var(--race-green); }
-.math-race .card-race-result h2 { margin: 10px 0; font-size: clamp(44px, 10vw, 68px); color: var(--race-yellow); }
-.math-race .card-race-result p { color: #b8b0d8; }
-.math-race .card-race-result p b { color: #fff; }
+.math-race-countdown.is-go > strong { aspect-ratio: auto; padding: 0 .3em; color: var(--green); font-size: clamp(70px, 15vw, 120px); }
+.math-race-ready-symbol { display: block; color: var(--blue); font-size: 60px; line-height: 1; animation: math-race-bob 1.2s ease-in-out infinite alternate; }
+
+/* 결과 */
+.math-race .card-race-result { width: min(660px, 100%); margin: 8px auto 0; padding: 30px 24px; border: 1px solid #d5dceb; border-radius: 6px; background: white; color: var(--pencil); box-shadow: 0 3px 0 #e1e7f1, 0 16px 38px #1d27421f; }
+.math-race .card-race-result > span { color: var(--green); }
+.math-race .card-race-result h2 { margin: 10px 0; font-size: clamp(44px, 10vw, 68px); color: var(--blue); }
+.math-race .card-race-result p { color: var(--pencil-soft); }
+.math-race .card-race-result p b { color: var(--pencil); }
 .math-race .card-race-podium { gap: 10px; margin: 28px 0; }
-.math-race .card-race-podium .step { padding: 14px 6px 0; min-width: 0; gap: 7px; background: linear-gradient(#655685, #302647); }
-.math-race .card-race-podium .step-1 { min-height: 240px; background: linear-gradient(#a86f2f, #4d2b55); box-shadow: 0 0 26px #ffe14d22; }
+.math-race .card-race-podium .step { padding: 14px 6px 0; min-width: 0; gap: 6px; border-radius: 4px 4px 0 0; background: repeating-linear-gradient(0deg, #e3e9f6 0 22px, #d3dcee 22px 24px); }
+.math-race .card-race-podium .step-1 { min-height: 240px; background: repeating-linear-gradient(0deg, #ffe3a8 0 22px, #f7cf78 22px 24px); }
 .math-race .card-race-podium .step-2 { min-height: 205px; }
-.math-race .card-race-podium .step-3 { min-height: 175px; background: linear-gradient(#7d5062, #35243e); }
-.math-race .card-race-podium .step.is-me { outline-color: var(--race-cyan); }
+.math-race .card-race-podium .step-3 { min-height: 175px; background: repeating-linear-gradient(0deg, #f6dccb 0 22px, #ebc4ab 22px 24px); }
+.math-race .card-race-podium .step.is-me { outline: 3px solid var(--blue); }
 .math-race .card-race-podium .step.empty { background: transparent; }
-.math-race .card-race-podium .math-race-avatar { width: 54px; height: 54px; animation: math-race-float 1.6s ease-in-out infinite alternate; }
+.math-race .card-race-podium .math-race-avatar { width: 54px; height: 54px; animation: math-race-bob 1.6s ease-in-out infinite alternate; }
 .math-race .card-race-podium .step-1 .math-race-avatar { width: 66px; height: 66px; }
-.math-race .card-race-podium b { color: var(--race-yellow); }
+.math-race .card-race-podium b { color: var(--pencil); }
 .math-race .card-race-podium .medal { line-height: 1; }
 .math-race .card-race-podium strong, .math-race .card-race-podium b { line-height: 1.3; }
-.math-race .card-race-podium i { font-size: 28px; line-height: 1.1; }
-.math-race .card-race-podium i { color: #ffffff26; }
-.math-race .card-race-board li { background: #ffffff09; color: #eeeaff; }
-.math-race .card-race-board li.is-me { background: #27e1ff12; outline-color: #27e1ff77; }
-.math-race .card-race-home { background: var(--race-cyan); color: #103341; box-shadow: 0 4px 0 #087e94; }
-.math-race .race-form-error { position: relative; color: #ffb9c8; background: #4e1f35; border-radius: 12px; padding: 12px; text-align: center; }
-.worksheet-race-dialog.math-race-launch-dialog { width: min(440px, calc(100vw - 32px)); min-height: 0; padding: 28px 24px; border: 1px solid #a08cff66; border-radius: 22px; color: #f4f1ff; background: #1c1242; overflow: visible; }
-.math-race-launch-dialog .math-race-logo { margin: 6px auto 26px; }
-.math-race-launch-dialog p { text-align: center; color: #c8bfe3; }
-.math-race-launch-dialog .worksheet-race-duration legend { color: #b8b0d8; font-size: 13px; }
-.math-race-launch-dialog .worksheet-race-duration button { color: #eeeaff; border-color: #a08cff55; background: #ffffff08; border-radius: 12px; }
-.math-race-launch-dialog .worksheet-race-duration button[aria-pressed="true"] { color: var(--race-yellow); border-color: var(--race-yellow); background: #ffe14d12; }
-.math-race-launch-dialog .button.primary { color: #113627; background: var(--race-green); border-color: var(--race-green); }
-.math-race-launch-dialog .button.ghost { color: #c8bfe3; }
-@keyframes math-race-keyhop { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-12px) rotate(-4deg); } }
-@keyframes math-race-road { to { background-position: 0 72px, 0 0; } }
-@keyframes math-race-float { to { transform: translateY(-7px) rotate(-3deg); } }
-@keyframes math-race-run { to { transform: translateY(-3px) rotate(5deg); } }
-@keyframes math-race-count { from { opacity: 0; transform: scale(1.7); } 25%, 80% { opacity: 1; transform: scale(1); } to { opacity: .8; transform: scale(.95); } }
+.math-race .card-race-podium i { font-size: 28px; line-height: 1.1; color: #1d274240; }
+.math-race .card-race-board li { background: #f6f8fc; color: var(--pencil); }
+.math-race .card-race-board li.is-me { background: #e6edfb; outline-color: var(--blue); }
+.math-race .race-form-error { position: relative; color: var(--red); background: #fff0f1; border-radius: 6px; padding: 12px; text-align: center; }
+
+@keyframes math-race-drift { from { transform: translateY(0) rotate(-4deg); } to { transform: translateY(calc(-100svh - 120px)) rotate(6deg); } }
+@keyframes math-race-bob { to { transform: translateY(-5px); } }
+@keyframes math-race-blink { to { opacity: .3; } }
+@keyframes math-race-pin { from { opacity: 0; transform: translateY(-14px) rotate(-6deg); } to { opacity: 1; transform: none; } }
+@keyframes math-race-cube { 0% { opacity: 0; transform: translateY(-46px) scale(1.4); } 60% { opacity: 1; transform: translateY(2px); } 100% { transform: none; } }
+@keyframes math-race-merge { 0% { transform: scaleX(.2); filter: brightness(2.2); } 55% { transform: scaleX(1.15); filter: brightness(1.6); } 100% { transform: none; filter: none; } }
+@keyframes math-race-stamp { from { opacity: 0; transform: scale(1.8) rotate(-8deg); } 30%, 85% { opacity: 1; transform: scale(1) rotate(-2deg); } to { opacity: .85; transform: scale(.96) rotate(-2deg); } }
 @keyframes math-race-go { 0%, 45% { opacity: 1; } to { opacity: 0; } }
 @media (max-width: 850px) {
   .portal-page.math-race { padding: 64px 16px 30px; }
+  .math-race-margin { left: 24px; }
   .math-race .card-race-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .math-race .card-race-side { width: min(560px, 100%); justify-self: center; }
   .math-race .card-race-card { width: min(560px, 100%); }
-  .math-race .card-race-top { padding: 12px 2px; }
+  .math-race .card-race-top { padding: 10px 2px; }
   .math-race-stat > strong, .math-race-stat > time { font-size: 27px; }
-  .math-race-stat strong small { font-size: 10px; }
+  .math-race-stat strong small { font-size: 11px; }
   .math-race .race-waiting-card { padding: 22px 16px; }
 }
 @media (max-width: 420px) {
   .math-race-stat > strong, .math-race-stat > time { font-size: 24px; }
-  .math-race-stat > span { font-size: 10px; }
+  .math-race-stat > span { font-size: 11px; }
   .math-race .card-race-card { min-height: 240px; padding: 38px 14px 20px; }
   .math-race .card-race-question { font-size: 34px; gap: 8px; }
   .math-race .card-race-question.is-dense { font-size: 24px; }
@@ -168,5 +221,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .math-race *, .math-race *::before, .math-race *::after { animation: none !important; transition: none !important; }
-  .math-race .card-race-rain, .math-race .card-race-burst { display: none; }
+  .math-race .card-race-rain, .math-race .card-race-burst, .math-race-drift { display: none; }
 }

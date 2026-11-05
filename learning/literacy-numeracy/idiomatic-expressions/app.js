@@ -16,4 +16,4 @@ const LESSONS = [
   { title: "11차시 · 생활과 마무리", copy: "선택·경제·일상에 쓰는 표현" }
 ];
 
-runRecordedLessons({ activity: 'idiomatic-expressions', label: '관용어', decks: {ko: bank}, lessons: {ko: LESSONS}, illustrations, refreshSavedContent: true, lessonFor: item => item.lesson, ids: {studyTitle:'expression',studyProgress:'progress',quizProgress:'quizProgress',quizTitle:'quizTitle',image:'illustration'} });
+runRecordedLessons({ activity: 'idiomatic-expressions', label: '관용어', decks: {ko: bank}, lessons: {ko: LESSONS}, illustrations, refreshSavedContent: true, showQuizTitle: true, lessonFor: item => item.lesson, ids: {studyTitle:'expression',studyProgress:'progress',quizProgress:'quizProgress',quizTitle:'quizTitle',image:'illustration'} });

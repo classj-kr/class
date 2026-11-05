@@ -41,10 +41,14 @@
         button.onclick = () => open(index); return button;
       }));
     }
+    function choicesFor(item) {
+      const candidates = deck().filter(other => other !== item && !(item.lookalikes || []).includes(text(other))
+        && (!item.distractors || item.distractors.includes(text(other))));
+      return [text(item), ...shuffle(candidates).slice(0, 2).map(text)];
+    }
     function initial(items) {
       const quiz = shuffle(items).map(item => {
-        const candidates = deck().filter(other => other !== item && !(item.lookalikes || []).includes(text(other)));
-        const choices = shuffle([text(item), ...shuffle(candidates).slice(0, 2).map(text)]);
+        const choices = shuffle(choicesFor(item));
         return { item, choices, answer: choices.indexOf(text(item)), tried: [], solved: false };
       });
       return { mode: 'study', studyIndex: 0, quizIndex: 0, items, quiz };
@@ -59,7 +63,18 @@
         const current = new Map(deck().map(item => [text(item), item]));
         const refresh = item => current.get(text(item)) || item;
         state.items = state.items.map(refresh);
-        state.quiz = state.quiz.map(question => ({ ...question, item: refresh(question.item) }));
+        state.quiz = state.quiz.map(question => {
+          const item = refresh(question.item);
+          if (!item.distractors) return { ...question, item };
+          const approved = [text(item), ...item.distractors.filter(choice => current.has(choice) && !(item.lookalikes || []).includes(choice))];
+          // 검토 전 보기를 교체할 때에는 남아 있는 보기의 순서와 응답을 표현으로 대응시킨다.
+          // 학습 기록의 과거 응답 이벤트는 수정하지 않는다.
+          const choices = [...new Set([...question.choices.filter(choice => approved.includes(choice)), ...approved])];
+          const answer = choices.indexOf(text(item));
+          const tried = question.tried.map(index => choices.indexOf(question.choices[index])).filter(index => index >= 0);
+          if (question.solved && !tried.includes(answer)) tried.push(answer);
+          return { ...question, item, choices, answer, tried };
+        });
       }
       $('lessonOverview').hidden = true; if ($('lessonToolbar')) $('lessonToolbar').hidden = true;
       $('learningShell').hidden = false; document.body.classList.add('learning-active');
@@ -79,14 +94,14 @@
         $('meaning').textContent = item.meaning; $('example').textContent = `예: ${item.example}`;
         if ($('category')) $('category').textContent = item.category || '';
         if ($('literal')) { $('literal').textContent = item.literal || ''; $('literal').hidden = !item.literal; }
-        const src = item.image || config.illustrations?.[text(item)] || '';
+        const src = item.hideIllustration ? '' : item.image || config.illustrations?.[text(item)] || '';
         const image = $(config.ids.image); image.hidden = !src; if (src) image.src = src; else image.removeAttribute('src'); image.alt = text(item);
         if ($('proverbIllustrationFrame')) $('proverbIllustrationFrame').hidden = !src;
         $('previous').disabled = state.studyIndex === 0; $('next').textContent = state.studyIndex === state.items.length - 1 ? '확인 문제 풀기' : '다음';
       } else {
         const q = state.quiz[state.quizIndex];
         $(config.ids.quizProgress).textContent = `${state.quizIndex + 1} / ${state.quiz.length}`;
-        $(config.ids.quizTitle).hidden = true; $('question').textContent = q.item.question;
+        $(config.ids.quizTitle).hidden = !config.showQuizTitle; $('question').textContent = q.item.question;
         $('feedback').textContent = q.solved ? `정답! ${q.item.meaning}` : q.tried.length ? '다시 생각하고 다른 답을 골라 보세요.' : '';
         $('choices').replaceChildren(...q.choices.map((choice, i) => {
           const button = node('button', choice); button.type = 'button'; button.disabled = q.solved || q.tried.includes(i);

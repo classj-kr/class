@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { RaceAvatar, RaceBackdrop, RaceLogo } from "../../components/arithmetic-race-scene";
+import { RaceAvatar, RaceBackdrop } from "../../components/arithmetic-race-scene";
 
 type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
@@ -161,7 +161,6 @@ export default function ArithmeticRaceJoinPage() {
       <RaceBackdrop />
       <div className="race-entry-shell">
         <a className="catalog-back" href="/arithmetic" aria-label="기초 연산 목록으로 돌아가기">←</a>
-        <RaceLogo />
         {joined ? (
           <section className="race-waiting-card" aria-live="polite">
             <span>친구를 초대해요</span><strong className="race-room-code">{joined.roomCode}</strong>
