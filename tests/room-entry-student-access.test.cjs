@@ -40,6 +40,15 @@ test('the entry exception preserves login, membership and actual lesson access c
   assert.deepEqual(await check('/api/room-entry/resolve/6820', { disabled: ['/api/room-entry'] }), { status: 302, location: '/?content=globally-disabled' });
 });
 
+test('a student can open and join a typing race even when the typing menu is closed', async () => {
+  const root = '/learning/inquiry/information-computing/typing';
+  for (const url of [root + '/race/?room=6820', root + '/race/race.js', root + '/race/music/race-1.ogg', '/api/typing-race/rooms', '/api/typing-race/rooms/6820/join']) {
+    assert.deepEqual(await check(url), { status: 200 }, url);
+    assert.deepEqual(await check(url, { role: null }), { status: 302, location: '/?access=required' });
+  }
+  assert.deepEqual(await check(root + '/'), { status: 302, location: '/?content=locked' }, 'the practice menu stays curated');
+});
+
 test('stacking cooperation opens from the main room entrance while retaining site access checks', async () => {
   const root = '/learning/inquiry/math/stacking-cubes';
   for (const url of [root + '/coop/?code=6820', root + '/coop/app.js', root + '/coop/coop.js', root + '/coop/coop.css']) {
