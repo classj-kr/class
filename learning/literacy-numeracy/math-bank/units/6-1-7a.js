@@ -249,7 +249,7 @@
             const totN = nA + nB, totPart = partA + partB, totPct = (totPart * 100) / totN;
             return N(`가 학교와 나 학교의 6학년 전체 학생 수와 그중 안경을 쓴 학생의 비율을 조사하여 나타낸 표이다. 두 학교의 6학년 학생 전체에 대한 안경을 쓴 학생 전체의 비율은 몇 %인가?`, totPct, {
               unit: '%',
-              figure: table(['학교', '6학년 전체 학생 수(명)', '안경을 쓴 학생의 비율(%)'], [['가 학교', nA, pctA], ['나 학교', nB, pctB]]),
+              figure: table(['학교', '6학년 전체<br>학생 수(명)', '안경을 쓴<br>학생의 비율(%)'], [['가 학교', nA, pctA], ['나 학교', nB, pctB]]),
               hint: `두 학교의 전체 학생 수(기준량)가 서로 다르므로 백분율끼리 바로 평균을 내면 안 됩니다. 각 학교에서 안경을 쓴 학생이 몇 명인지 먼저 구해 더하세요.`,
               explain: `가 학교에서 안경을 쓴 학생은 ${nA} × ${frac(pctA, 100)} = ${partA}(명)이고, 나 학교에서 안경을 쓴 학생은 ${nB} × ${frac(pctB, 100)} = ${partB}(명)이다. 두 학교의 6학년 전체 학생 수는 ${nA} + ${nB} = ${totN}(명)이고 안경을 쓴 학생은 모두 ${partA} + ${partB} = ${totPart}(명)이므로, 전체에 대한 백분율은 ${frac(totPart, totN)} × 100 = ${totPct}(%)이다.`,
               facts: { calc: [[`(${nA}*${pctA}/100+${nB}*${pctB}/100)/(${nA}+${nB})*100`, 0]], unseen: [100] }
