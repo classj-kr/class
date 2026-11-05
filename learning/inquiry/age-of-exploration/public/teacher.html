@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>도착 경주 현황판</title>
-<link rel="stylesheet" href="./teacher.css?v=20261021-learning-1"></head><body>
+<link rel="stylesheet" href="./teacher.css?v=20261105-suggest-1"></head><body>
 <section id="login" class="panel login"><h1>도착 경주 현황판</h1><p id="error" class="err">방을 여는 중입니다.</p><a class="backLink" href="/">사이트 첫 화면으로</a></section>
 <main id="dash" class="hidden">
 <div class="layout">
 <section class="setup">
-<div class="panel"><div class="roomInfo"><div class="roomHeading"><strong>방번호 <span id="roomLabel"></span></strong><span>접속 <b id="count">0</b>명</span></div><div class="roomState"><span>게임 날짜 <b id="classClock">1520년 1월 1일 00:00</b></span><span id="status" class="ok" role="status">서버 연결</span></div></div><h3 class="setupTitle">미션 설정</h3><p class="muted">학습 장소는 1~3곳, 출발 도시는 1~4곳을 지정합니다.</p><div id="studyRows"><div class="studyFilters"><label>자료 범위<select id="studyTier"><option value="recommended">교과·가치 추천</option><option value="explore">주제별 탐구</option><option value="all">전체 자료</option><option value="later">후대 문화</option></select></label><label>학교급<select id="studyLevel"><option value="all">전체 학교급</option><option value="elementary">초등</option><option value="middle">중학</option><option value="high">고등</option></select></label><label>주제<select id="studyTopic"><option value="all">전체 주제</option></select></label><label>종류<select id="studyKind"><option value="all">도시·발견물·명소</option><option value="city">도시</option><option value="discovery">발견물</option><option value="landmark">도시 명소</option></select></label></div><p class="muted">★는 문화·과학적 가치가 큰 장소입니다. 학교급을 고르면 분류된 발견물·명소를 보여 줍니다.</p><label>도시·발견물 찾기<input id="studySearch" type="search" placeholder="장소·나라 이름 검색"></label><label>학습 장소<select id="studyChoice"></select></label><div id="studyMatches" role="status"></div><div id="studyPreview" class="studyPreview" aria-live="polite"></div><button type="button" id="studyAdd">목록에 추가</button><b id="studyCount">0/3곳</b><ul id="studySelected"></ul><p class="muted">방문 순서는 자유입니다. 각 장소에서 설명을 읽고 세 문제를 연속으로 맞혀야 완료됩니다.</p></div><div id="startCities" class="startGrid"></div><button type="button" id="addStart" class="addStart">출발 도시 추가 · 최대 4곳</button><div class="setupActions"><button id="publish" class="publish">미션 준비 · 출발지 선택 시작</button><button id="startRace" class="startRace" disabled>전원 출발</button><button id="clear" class="danger">미션 종료</button></div><p id="missionError" class="err"></p></div>
+<div class="panel"><div class="roomInfo"><div class="roomHeading"><strong>방번호 <span id="roomLabel"></span></strong><span>접속 <b id="count">0</b>명</span></div><div class="roomState"><span>게임 날짜 <b id="classClock">1520년 1월 1일 00:00</b></span><span id="status" class="ok" role="status">서버 연결</span></div></div><h3 class="setupTitle">미션 설정</h3><p class="muted">학습 장소는 1~3곳, 출발 도시는 1~4곳을 지정합니다.</p><div id="studyRows"><div class="studyFilters"><label>자료 범위<select id="studyTier"><option value="recommended">교과·가치 추천</option><option value="explore">주제별 탐구</option><option value="all">전체 자료</option><option value="later">후대 문화</option></select></label><label>학교급<select id="studyLevel"><option value="all">전체 학교급</option><option value="elementary">초등</option><option value="middle">중학</option><option value="high">고등</option></select></label><label>주제<select id="studyTopic"><option value="all">전체 주제</option></select></label><label>종류<select id="studyKind"><option value="all">도시·발견물·명소</option><option value="city">도시</option><option value="discovery">발견물</option><option value="landmark">도시 명소</option></select></label></div><p class="muted">★는 문화·과학적 가치가 큰 장소입니다. 학교급을 고르면 분류된 발견물·명소를 보여 줍니다.</p><div id="suggestPanel" class="suggestPanel"><div class="suggestHead"><b>학생 건의 <small id="suggestCount">0곳</small></b><button type="button" id="suggestClear" class="suggestClear">모두 지우기</button></div><ul id="suggestList"></ul></div><label>도시·발견물 찾기<input id="studySearch" type="search" placeholder="장소·나라 이름 검색"></label><label>학습 장소<select id="studyChoice"></select></label><div id="studyMatches" role="status"></div><div id="studyPreview" class="studyPreview" aria-live="polite"></div><button type="button" id="studyAdd">목록에 추가</button><b id="studyCount">0/3곳</b><ul id="studySelected"></ul><p class="muted">방문 순서는 자유입니다. 각 장소에서 설명을 읽고 세 문제를 연속으로 맞혀야 완료됩니다.</p></div><div id="startCities" class="startGrid"></div><button type="button" id="addStart" class="addStart">출발 도시 추가 · 최대 4곳</button><div class="setupActions"><button id="publish" class="publish">미션 준비 · 출발지 선택 시작</button><button id="startRace" class="startRace" disabled>전원 출발</button><button id="clear" class="danger">미션 종료</button></div><p id="missionError" class="err"></p></div>
 <div id="activeMission" class="panel"><p class="muted">아직 미션이 없습니다.</p></div>
 </section>
 <section id="monitor" class="monitor">
@@ -24,7 +24,19 @@ function opt(sel,v,t){const o=document.createElement('option');o.value=v;o.textC
 function originalOrder(p){const n=Number(p.originalOrder);return Number.isFinite(n)?n:9999}
 function appendOriginalCities(select,items,labelCategory=false){select.replaceChildren();let current='',group=null;for(const p of [...items].sort((a,b)=>originalOrder(a)-originalOrder(b))){const region=p.originalRegion||p.region||'원작 도시';if(region!==current){current=region;group=document.createElement('optgroup');group.label=region;select.append(group)}const o=document.createElement('option');o.value=p.id;o.textContent=labelCategory?`도시 · ${p.name}`:p.name;group.append(o)}}
 
-let studySelection=[],startSelection=['lisbon'];
+let studySelection=[],startSelection=['lisbon'],suggestions=[];
+function renderSuggestions(){
+  const list=$('suggestList');list.replaceChildren();$('suggestCount').textContent=suggestions.length+'곳';$('suggestClear').hidden=!suggestions.length;
+  if(!suggestions.length){const li=document.createElement('li');li.className='empty';li.textContent='아직 없음 · 학생은 대기 화면에서 이름을 검색해 건의합니다.';list.append(li);return;}
+  for(const s of suggestions){
+    const li=document.createElement('li'),label=document.createElement('label'),box=document.createElement('input'),count=document.createElement('b'),remove=document.createElement('button');
+    const checked=studySelection.includes(s.key);box.type='checkbox';box.checked=checked;box.disabled=!checked&&studySelection.length>=3;
+    box.onchange=()=>{if(box.checked){if(studySelection.length<3&&!studySelection.includes(s.key))studySelection.push(s.key);}else studySelection=studySelection.filter(k=>k!==s.key);renderStudyChoices();};
+    label.append(box,document.createTextNode(s.type+' · '+s.name));count.textContent=s.count+'명';
+    remove.type='button';remove.textContent='×';remove.title='건의 지우기';remove.setAttribute('aria-label',s.name+' 건의 지우기');remove.onclick=()=>ack('teacherRemoveSuggestion',{key:s.key});
+    li.append(label,count,remove);list.append(li);
+  }
+}
 function renderStartCities(){
  const ports=catalog.places.filter(p=>p.isOriginalCity&&p.canEnterFromSea===true),list=$('startCities');list.replaceChildren();
  startSelection.forEach((value,index)=>{
@@ -62,9 +74,10 @@ function renderStudyChoices(){
   $('studyMatches').textContent='선택 가능 '+select.options.length+'곳';renderStudyPreview();
   $('studySelected').replaceChildren();
   for(const key of studySelection){
-    const item=studyChoices().find(p=>p.key===key),li=document.createElement('li'),remove=document.createElement('button');
+    const item=studyChoices().find(p=>p.key===key)||suggestions.find(s=>s.key===key)||{type:'',name:key},li=document.createElement('li'),remove=document.createElement('button');
     li.append(document.createTextNode(item.type+' · '+item.name+' '));remove.type='button';remove.textContent='삭제';remove.setAttribute('aria-label',item.name+' 삭제');remove.onclick=()=>{studySelection=studySelection.filter(k=>k!==key);renderStudyChoices();};li.append(remove);$('studySelected').append(li);
   }
+  renderSuggestions();
 }
 
 async function loadCatalog(){const r=await fetch('/learn/world-voyage/api/mission-catalog?v=2026102101');catalog=await r.json();const topicSelect=$('studyTopic'),previous=topicSelect.value;topicSelect.replaceChildren();opt(topicSelect,'all','전체 주제');for(const topic of catalog.learningTopics||[])opt(topicSelect,topic,topic);if([...topicSelect.options].some(o=>o.value===previous))topicSelect.value=previous;renderStudyChoices();renderStartCities();}
@@ -111,7 +124,7 @@ function renderRanking(){
 function renderAll(){$('count').textContent=players.length;renderMission();renderRanking();drawWorldMap()}
 const pageParams=new URLSearchParams(location.search);let hostRoom=/^\d{4}$/.test(pageParams.get('room')||'')?pageParams.get('room'):'';
 const hostKey=c=>`uw3-host-${c}`;function readHostToken(c){try{return sessionStorage.getItem(hostKey(c))||''}catch{return ''}}function saveHostToken(c,t){try{sessionStorage.setItem(hostKey(c),t)}catch{}}
-function openDash(r){$('login').classList.add('hidden');$('dash').classList.remove('hidden');$('roomLabel').textContent=r.roomCode;$('roomLabel').title='참가자에게 이 방번호를 알려 주세요';activeMission=r.mission;if(activeMission?.startOptions?.length){startSelection=activeMission.startOptions.map(o=>o.startPlace.id);if(catalog.places.length)renderStartCities();}progress=r.progress||[];classSettings={...classSettings,...(r.settings||{})};clockRate=Number(r.clockRateHoursPerSecond||30);resetClock(r.classGameMinutes||0);teacherClockActive=true;renderAll()}
+function openDash(r){$('login').classList.add('hidden');$('dash').classList.remove('hidden');$('roomLabel').textContent=r.roomCode;$('roomLabel').title='참가자에게 이 방번호를 알려 주세요';activeMission=r.mission;if(activeMission?.startOptions?.length){startSelection=activeMission.startOptions.map(o=>o.startPlace.id);if(catalog.places.length)renderStartCities();}progress=r.progress||[];suggestions=r.suggestions||[];renderSuggestions();classSettings={...classSettings,...(r.settings||{})};clockRate=Number(r.clockRateHoursPerSecond||30);resetClock(r.classGameMinutes||0);teacherClockActive=true;renderAll()}
 function showLoginError(message){$('dash').classList.add('hidden');$('login').classList.remove('hidden');$('error').textContent=message}
 async function enterHost(){
   if(hostRoom){const token=readHostToken(hostRoom);if(!token){showLoginError('이 방을 만든 화면에서만 현황판을 열 수 있습니다.');return}const r=await ack('teacherJoin',{roomCode:hostRoom,hostToken:token});if(!r?.ok){showLoginError(r?.error||'현황판을 열지 못했습니다.');return}openDash(r);return}
@@ -119,6 +132,8 @@ async function enterHost(){
   showLoginError('게임 첫 화면에서 "도착 경주"를 선택하고 방을 만들면 현황판이 열립니다.');
 }
 socket.on('connect',()=>{$('status').textContent='서버 연결';$('status').className='ok';enterHost()});socket.on('disconnect',()=>{teacherClockActive=false;$('status').textContent='재연결 중';$('status').className='err'});socket.on('teacherSnapshot',s=>{players=s.players||[];activeMission=s.mission||null;progress=s.progress||[];classSettings={...classSettings,...(s.settings||{})};resetClock(s.classGameMinutes);renderAll()});socket.on('teacherMissionChanged',d=>{activeMission=d?.mission||null;renderAll()});socket.on('teacherMissionProgress',d=>{const i=progress.findIndex(p=>p.name===d.name);if(i>=0)progress[i]={name:d.name,...d.progress};else progress.push({name:d.name,...d.progress});renderAll()});
+socket.on('teacherSuggestions',d=>{suggestions=d?.suggestions||[];renderSuggestions()});
+$('suggestClear').onclick=()=>{if(confirm('학생 건의를 모두 지울까요?'))ack('teacherRemoveSuggestion',{all:true})};
 $('studySearch').oninput=renderStudyChoices;
 $('studyAdd').onclick=()=>{const key=$('studyChoice').value;if(key&&studySelection.length<3&&!studySelection.includes(key)){studySelection.push(key);renderStudyChoices();}};
 $('publish').onclick=async()=>{
