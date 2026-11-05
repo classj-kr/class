@@ -34,17 +34,22 @@ test('round items come from the typing practice sources', () => {
   assert.ok(roundItems('en-words', 50).every((w) => /^[a-z]{2,10}$/.test(w)));
 });
 
-test('team board sums or averages uneven teams', () => {
+test('team board uses totals even for legacy average requests', () => {
   const rows = [
-    { team: 0, score: 100, scoredAt: 5 },
+    { team: 0, score: 50, scoredAt: 5 },
     { team: 1, score: 30, scoredAt: 4 },
     { team: 1, score: 30, scoredAt: 3 },
     { team: 1, score: 30, scoredAt: 2 },
   ];
   const sum = Core.teamBoard(rows, 3, 'sum');
-  assert.deepEqual(sum.map((t) => [t.size, t.value, t.rank]), [[1, 100, 1], [3, 90, 2], [0, 0, undefined]]);
+  assert.deepEqual(sum.map((t) => [t.size, t.value, t.rank]), [[1, 50, 2], [3, 90, 1], [0, 0, undefined]]);
   const avg = Core.teamBoard(rows, 2, 'avg');
-  assert.deepEqual(avg.map((t) => [t.value, t.rank]), [[100, 1], [30, 2]]);
+  assert.deepEqual(avg.map((t) => [t.value, t.rank]), [[50, 2], [90, 1]]);
+  const withBeginner = Core.teamBoard([...rows, { team: 1, score: 1, scoredAt: 6 }], 3);
+  assert.equal(withBeginner[1].value, 91, 'a beginner adds to the team score');
+  assert.equal(withBeginner[1].rank, 1);
+  const withNewcomer = Core.teamBoard([...rows, { team: 1, score: 0 }], 3);
+  assert.equal(withNewcomer[1].value, 90, 'joining with zero points never lowers the team score');
 });
 
 test('team race: self-pick, 5-member cap, teacher moves, shuffle, start checks, team results', async (t) => {
@@ -68,7 +73,8 @@ test('team race: self-pick, 5-member cap, teacher moves, shuffle, start checks, 
     const r = await fetch(base + path, { method: body === undefined ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json', 'x-role': role, 'x-name': encodeURIComponent(name), Authorization: 'Bearer ' + token }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
     return { status: r.status, data: await r.json() };
   };
-  const made = (await req('/rooms', { teamMode: true, teamCount: 2 }, '', 'teacher')).data;
+  const made = (await req('/rooms', { teamMode: true, teamCount: 2, teamScore: 'avg' }, '', 'teacher')).data;
+  assert.equal(made.state.config.teamScore, 'sum');
   const host = made.token, path = '/rooms/' + made.state.code;
   const kids = [];
   for (const name of ['가', '나', '다', '라', '마', '바', '사']) kids.push((await req(path + '/join', {}, '', '', name)).data);
@@ -83,18 +89,20 @@ test('team race: self-pick, 5-member cap, teacher moves, shuffle, start checks, 
   const moved = (await req(path + '/assign', { playerId: kids[6].state.me.id, team: 0 }, host, 'teacher')).data;
   assert.deepEqual(moved.teams.map((x) => x.size), [2, 5], 'uneven teams are allowed');
   const shrunk = (await req(path + '/settings', { teamCount: 3, teamScore: 'avg' }, host, 'teacher')).data;
-  assert.equal(shrunk.config.teamScore, 'avg');
+  assert.equal(shrunk.config.teamScore, 'sum');
   assert.equal(shrunk.teams.length, 3);
   const shuffled = (await req(path + '/shuffle', {}, host, 'teacher')).data;
   assert.deepEqual(shuffled.teams.map((x) => x.size).sort(), [2, 2, 3]);
   assert.ok(shuffled.participants.every((x) => x.team !== null));
-  const started = (await req(path + '/start', { teamCount: 3 }, host, 'teacher')).data;
+  const started = (await req(path + '/start', { teamCount: 3, teamScore: 'avg' }, host, 'teacher')).data;
+  assert.equal(started.config.teamScore, 'sum');
   assert.equal((await req(path + '/team', { team: 0 }, kids[0].token)).status, 409, 'no switching mid-race');
   clock = started.startsAt + 5000;
   const typed = (await req(path + '/type', { roundId: started.roundId, index: 0, text: started.items[0], mistakes: 0 }, kids[0].token)).data;
   const myTeam = typed.state.me.team;
   assert.equal(typed.state.teams[myTeam].rank, 1);
   assert.equal(typed.state.teams[myTeam].total, typed.state.me.score);
+  assert.equal(typed.state.teams[myTeam].value, typed.state.me.score, 'team score is not divided by teammates');
   const late = (await req(path + '/join', {}, '', '', '아')).data;
   assert.notEqual(late.state.me.team, null, 'late joiners land on an open team');
   const solo = (await req(path + '/settings', { teamMode: false }, host, 'teacher'));

@@ -34,7 +34,8 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
     const duration = Core.DURATIONS.includes(Number(body?.duration)) ? Number(body.duration) : previous.duration || 90;
     const teamMode = typeof body?.teamMode === 'boolean' ? body.teamMode : Boolean(previous.teamMode);
     const teamCount = Core.TEAM_COUNTS.includes(Number(body?.teamCount)) ? Number(body.teamCount) : previous.teamCount || 2;
-    const teamScore = Core.TEAM_SCORING[body?.teamScore] ? body.teamScore : previous.teamScore || 'sum';
+    // 오래 열린 화면이 평균 설정을 보내도 팀원 모두의 점수를 합산한다.
+    const teamScore = 'sum';
     return { mode, duration, teamMode, teamCount, teamScore };
   }
   function applyConfig(r, body) {
@@ -104,7 +105,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       items: withItems && r.roundId ? r.items : undefined,
       me: { id: p.id, host: p.host, plays: Boolean(p.plays), name: p.name, racer: p.racer || '', avatarUrl: p.avatarUrl || null, team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0, rank: mine?.rank || null },
       participants,
-      teams: r.config.teamMode ? Core.teamBoard(participants, r.config.teamCount, r.config.teamScore) : null,
+      teams: r.config.teamMode ? Core.teamBoard(participants, r.config.teamCount) : null,
     };
   }
   router.use(
@@ -181,7 +182,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       if (r.config.teamMode) {
         const waiting = students(r).filter((s) => s.team === null).length;
         if (waiting) throw fail(409, `아직 팀이 없는 학생이 ${waiting}명 있어요.`);
-        if (Core.teamBoard(board(r), r.config.teamCount, r.config.teamScore).filter((t) => t.size).length < 2)
+        if (Core.teamBoard(board(r), r.config.teamCount).filter((t) => t.size).length < 2)
           throw fail(409, '두 팀 이상에 학생이 있어야 출발할 수 있어요.');
       }
       const perSecond = Core.MODES[r.config.mode].sentence ? 0.5 : 1.6;

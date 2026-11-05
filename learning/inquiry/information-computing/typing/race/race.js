@@ -12,7 +12,7 @@
   let sendChain = Promise.resolve(), lastCleared = null, composing = false;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', lastRank = null;
   const prevScores = new Map();
-  const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2, teamScore: 'sum' };
+  const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2 };
   const serverNow = () => Date.now() + offset;
   // 순위판에 띄울 학생 프로필 아바타(연산 순위전과 같은 곳). 없으면 동물 이모지가 대신 달린다.
   const myAvatar = fetch('/api/student/profile', { cache: 'no-store', credentials: 'same-origin' })
@@ -36,24 +36,17 @@
   const input = $('typeInput');
 
   // ── 소리 ──────────────────────────────────────────
-  let audioCtx = null;
-  function ctx() {
-    try {
-      audioCtx ??= new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      return audioCtx;
-    } catch { return null; }
-  }
   function tone(freq, length, type = 'sine', volume = 0.15, delay = 0, slideTo = 0) {
-    const a = ctx();
-    if (!a) return;
+    const bus = window.ClassGameSfx?.getAudioBus();
+    if (!bus) return;
+    const a = bus.context;
     const t = a.currentTime + delay, o = a.createOscillator(), g = a.createGain();
     o.type = type;
     o.frequency.setValueAtTime(freq, t);
     if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, t + length);
     g.gain.setValueAtTime(volume, t);
     g.gain.exponentialRampToValueAtTime(0.001, t + length);
-    o.connect(g).connect(a.destination);
+    o.connect(g).connect(bus.output);
     o.start(t);
     o.stop(t + length + 0.02);
   }
@@ -74,14 +67,13 @@
   };
 
   // ── 음악 (보드게임의 신나는 곡) ──────────────────────
-  const music = $('raceMusic');
+  const music = $('bgm');
   const RACE_TRACKS = ['race-1.ogg', 'race-2.ogg', 'race-3.ogg', 'race-4.ogg', 'race-5.ogg', 'race-6.ogg', 'race-7.ogg'];
-  let musicOn = store.get('music') !== false, musicKind = '', lastRaceTrack = '';
-  music.volume = 0.5;
+  let musicKind = '', lastRaceTrack = '';
   function setTrack(file, loop) {
     music.loop = loop;
     music.src = 'music/' + file;
-    if (musicOn) music.play().catch(() => {});
+    music.play().catch(() => {});
   }
   function playMusic(kind) {
     if (kind === musicKind) return;
@@ -98,23 +90,6 @@
   music.addEventListener('ended', () => {
     if (musicKind === 'race') { musicKind = ''; playMusic('race'); }
   });
-  function paintMusic() {
-    $('musicButton').textContent = musicOn ? '🔊' : '🔇';
-    $('musicButton').setAttribute('aria-pressed', String(musicOn));
-    $('musicButton').setAttribute('aria-label', musicOn ? '음악 끄기' : '음악 켜기');
-  }
-  $('musicButton').onclick = () => {
-    musicOn = !musicOn;
-    store.set('music', musicOn);
-    paintMusic();
-    if (musicOn && music.src) music.play().catch(() => {});
-    else music.pause();
-  };
-  paintMusic();
-  // 주소로 바로 들어오면 첫 클릭·키 입력 뒤에야 소리를 낼 수 있다.
-  const unlock = () => { ctx(); if (musicOn && music.src && music.paused && musicKind !== 'victory') music.play().catch(() => {}); };
-  addEventListener('pointerdown', unlock, { passive: true });
-  addEventListener('keydown', unlock);
 
   // ── 효과 (파티클·꽃가루) ───────────────────────────
   const canvas = $('fx'), g2 = canvas.getContext('2d');
@@ -214,7 +189,11 @@
   }
 
   // ── 설정 버튼 ────────────────────────────────────
-  function optionRow(entries, current, pick, small = false) {
+  function optionRow(label, entries, current, pick, small = false) {
+    const field = document.createElement('fieldset');
+    field.className = 'setting-field';
+    const legend = document.createElement('legend');
+    legend.textContent = label;
     const row = document.createElement('div');
     row.className = 'option-row';
     for (const [value, label] of entries) {
@@ -222,10 +201,12 @@
       b.type = 'button';
       b.className = 'option' + (small ? ' small' : '') + (current === value ? ' on' : '');
       b.textContent = label;
+      b.setAttribute('aria-pressed', String(current === value));
       b.onclick = () => pick(value);
       row.append(b);
     }
-    return row;
+    field.append(legend, row);
+    return field;
   }
   // 대기실에서 바꾸면 학생 화면의 팀 칸도 바로 바뀌도록 서버에 알린다.
   function change(patch) {
@@ -238,14 +219,13 @@
     document.querySelectorAll('.settings').forEach((box) => {
       box.innerHTML = '';
       box.append(
-        optionRow(Object.entries(C.MODES).map(([k, m]) => [k, m.label]), choice.mode, (mode) => change({ mode })),
-        optionRow(C.DURATIONS.map((s) => [s, s % 60 === 0 ? `${s / 60}분` : `${s}초`]), choice.duration, (duration) => change({ duration }), true),
-        optionRow([[false, '🏃 개인전'], [true, '🤝 팀전']], choice.teamMode, (teamMode) => change({ teamMode })),
+        optionRow('연습 내용', Object.entries(C.MODES).map(([k, m]) => [k, m.label]), choice.mode, (mode) => change({ mode })),
+        optionRow('시간', C.DURATIONS.map((s) => [s, s % 60 === 0 ? `${s / 60}분` : `${s}초`]), choice.duration, (duration) => change({ duration }), true),
+        optionRow('경기 방식', [[false, '개인전'], [true, '팀전']], choice.teamMode, (teamMode) => change({ teamMode })),
       );
       if (choice.teamMode)
         box.append(
-          optionRow(C.TEAM_COUNTS.map((n) => [n, `${n}팀`]), choice.teamCount, (teamCount) => change({ teamCount }), true),
-          optionRow(Object.entries(C.TEAM_SCORING).map(([k, label]) => [k, `팀 점수 ${label}`]), choice.teamScore, (teamScore) => change({ teamScore }), true),
+          optionRow('팀 수', C.TEAM_COUNTS.map((n) => [n, `${n}팀`]), choice.teamCount, (teamCount) => change({ teamCount }), true),
         );
     });
   }
@@ -405,7 +385,7 @@
       const leader = s.participants[0];
       const mineTeam = s.teams && s.me.team !== null ? s.teams[s.me.team] : null;
       const topTeam = s.teams?.find((t) => t.rank === 1);
-      const unit = s.config.teamScore === 'avg' ? '점(평균)' : '점';
+      const unit = '점';
       if (mineTeam && topTeam?.value) {
         const second = s.teams.find((t) => t.rank === 2);
         $('chase').textContent = topTeam.index === mineTeam.index
@@ -641,7 +621,6 @@
     $('teamResult').hidden = !teams.length;
     $('soloTitle').hidden = !teams.length;
     if (teams.length) {
-      const scoring = C.TEAM_SCORING[s.config.teamScore];
       $('teamResult').replaceChildren(...teams.map((t) => {
         const card = document.createElement('div');
         card.className = 'team-card' + (t.rank === 1 ? ' winner' : '');
@@ -651,7 +630,7 @@
         card.children[0].textContent = t.rank === 1 ? '🏆 우승' : `${t.rank}위`;
         card.children[1].textContent = `${t.emoji} ${t.name}팀`;
         card.children[2].textContent = t.value + '점';
-        card.children[3].textContent = `${t.size}명 · ${scoring}${s.config.teamScore === 'avg' ? ` (합계 ${t.total})` : ''}`;
+        card.children[3].textContent = `${t.size}명이 모은 점수`;
         card.children[4].append(...s.participants.filter((p) => p.team === t.index).map((p) => {
           const li = document.createElement('li');
           li.append(face(p, 'row-face'), `${p.name} ${p.score}`);

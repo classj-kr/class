@@ -18,10 +18,9 @@
   const DURATIONS = [60, 90, 120, 180];
   const RACERS = ['🚀', '🏎️', '🐆', '🦄', '🐉', '🦖', '🐬', '🦅', '🐝', '🦊', '🐯', '🐧', '🛸', '🚁', '🐎', '🦈', '🐙', '🦉', '🐼', '🐸', '🦁', '🐳', '🦋', '🐢'];
   const COMBO_CAP = 10;
-  // 팀전: 팀마다 1~5명. 인원이 달라도 되고, 점수는 합계나 평균으로 겨룬다.
+  // 팀전: 팀마다 1~5명. 모두가 보탠 점수를 합쳐 겨룬다.
   const TEAM_MAX = 5;
   const TEAM_COUNTS = [2, 3, 4, 5, 6];
-  const TEAM_SCORING = { sum: '합계', avg: '평균' };
   const TEAMS = [
     { name: '레드', emoji: '🔴', hue: 352 },
     { name: '블루', emoji: '🔵', hue: 212 },
@@ -30,13 +29,12 @@
     { name: '퍼플', emoji: '🟣', hue: 275 },
     { name: '오렌지', emoji: '🟠', hue: 26 },
   ];
-  function teamBoard(rows, teamCount, scoring) {
+  function teamBoard(rows, teamCount) {
     const teams = TEAMS.slice(0, teamCount).map((t, index) => {
       const members = rows.filter((r) => r.team === index);
       const total = members.reduce((s, r) => s + (r.score || 0), 0);
-      const value = scoring === 'avg' ? (members.length ? Math.round(total / members.length) : 0) : total;
       const reached = Math.max(0, ...members.map((r) => r.scoredAt || 0)) || null;
-      return { index, name: t.name, emoji: t.emoji, hue: t.hue, size: members.length, total, value, reached };
+      return { index, name: t.name, emoji: t.emoji, hue: t.hue, size: members.length, total, value: total, reached };
     });
     const ranked = teams
       .filter((t) => t.size)
@@ -74,5 +72,5 @@
         String(a.name).localeCompare(String(b.name), 'ko'),
     );
   }
-  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAM_SCORING, TEAMS, teamBoard, keys, strokes, onTrack, multiplier, itemScore, accuracy, rank };
+  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, strokes, onTrack, multiplier, itemScore, accuracy, rank };
 });
