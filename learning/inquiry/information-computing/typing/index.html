@@ -8,10 +8,15 @@
   <link rel="stylesheet" href="style.css?v=20261105-best-label">
   <link rel="stylesheet" href="guide.css?v=20260904-merge-records">
   <script src="typing-bgm.js" defer></script>
-  <script src="../../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+  <script src="../../../../assets/sound/music-control.js?v=20261105-settings-panel" data-settings-help="settingsHelp" defer></script>
 </head>
 <body>
   <audio id="bgm" preload="auto"></audio>
+  <template id="settingsHelp">
+    <p>자리 익히기에서 손가락 위치를 배우고, 단어와 문장을 연습해 보세요.</p>
+    <p>틀린 글자는 Backspace로 지우고 다시 입력해요. 문장을 마치면 Enter를 눌러요.</p>
+    <p>친구와 겨루려면 순위전, 연습한 내용을 보려면 내 기록을 눌러요.</p>
+  </template>
   <nav class="topbar" aria-label="페이지 기능">
     <a class="home" href="../../../../" aria-label="포털 메인으로 돌아가기">←</a>
     <div class="top-actions"><a class="icon-button race-link" href="race/">🏁 순위전</a><button id="recordsButton" class="icon-button" type="button">내 기록</button></div>
@@ -137,6 +142,6 @@
   <script src="avatar-words.js"></script>
   <script src="../../../literacy-numeracy/proverbs/proverbs-data.js"></script>
   <script src="/assets/site-storage.js?v=20261006-1"></script>
-  <script src="app.js?v=20261027-ime-space"></script>
+  <script src="app.js?v=20261105-settings-focus"></script>
 </body>
 </html>

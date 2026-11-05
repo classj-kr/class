@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import sitePaths from "./site-paths.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = relativePath => fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -17,7 +18,7 @@ test("site pages receive one shared icon-only back control", () => {
   assert.match(server, /htmlWithBackNavigation\.includes\("\/assets\/sound\/game-sfx\.js"\)/);
   assert.match(server, /sendSiteHtml\(req, res, indexCandidate, next\)/);
   assert.match(server, /sendSiteHtml\(req, res, candidate, next\)/);
-  assert.match(server, /"\/classboard"/);
+  assert.ok(sitePaths.APP_DIRECTORIES.includes("classboard"));
 
   assert.match(navigation, /aria-label="뒤로 가기"/);
   assert.match(navigation, /width: 44px/);
@@ -41,14 +42,14 @@ test("back control climbs from an active game to its lobby first", () => {
   assert.match(lobby, /leaveButton\.dataset\.siteBackLegacy = "true"/);
 });
 
-test("sound controls collapse into a top-right speaker with vertical sliders", () => {
+test("settings collapse into a top-right gear with horizontal sliders", () => {
   const control = read("assets/sound/music-control.js");
   const styles = read("assets/sound/music-control.css");
 
   assert.match(control, /unified-audio-menu-toggle/);
   assert.match(control, /unified-audio-panel[^>]*hidden/);
   assert.match(styles, /right: max\(12px, env\(safe-area-inset-right\)\)/);
-  assert.match(styles, /writing-mode: vertical-lr/);
+  assert.match(styles, /writing-mode: horizontal-tb/);
   assert.match(styles, /\.unified-audio-panel\[hidden\]/);
 });
 

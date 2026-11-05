@@ -59,7 +59,7 @@
         const stylesheetUrl = currentScript
             ? new URL("music-control.css", currentScript.src)
             : new URL("../../assets/sound/music-control.css", location.href);
-        stylesheetUrl.searchParams.set("v", "20260910-click-cache-1");
+        stylesheetUrl.searchParams.set("v", "20261105-settings-panel");
         stylesheet.href = stylesheetUrl.href;
         document.head.appendChild(stylesheet);
     }
@@ -147,26 +147,33 @@
     const control = document.createElement("div");
     control.className = "unified-music-control";
     control.setAttribute("role", "group");
-    control.setAttribute("aria-label", "소리 조절");
+    control.setAttribute("aria-label", "공통 설정");
     control.innerHTML = `
-        <button class="unified-audio-menu-toggle" type="button" aria-label="소리 조절 열기" aria-expanded="false" data-sfx="none">🔊</button>
-        <div class="unified-audio-panel" aria-label="소리 조절 패널" hidden>
+        <button class="unified-audio-menu-toggle" type="button" aria-label="설정 열기" title="설정" aria-expanded="false" aria-controls="unifiedSettingsPanel" data-sfx="none">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9.5 3-.5 2-1.7 1-2-.6-2.5 4.2 1.5 1.4v2l-1.5 1.4 2.5 4.2 2-.6 1.7 1 .5 2h5l.5-2 1.7-1 2 .6 2.5-4.2-1.5-1.4v-2l1.5-1.4-2.5-4.2-2 .6-1.7-1-.5-2z"/>
+                <circle cx="12" cy="12" r="3"/>
+            </svg>
+        </button>
+        <div class="unified-audio-panel" id="unifiedSettingsPanel" role="region" aria-label="설정" hidden>
+            <strong class="unified-settings-title">설정</strong>
             <div class="unified-audio-group">
+                <label for="musicVolumeSlider">배경음악</label><output for="musicVolumeSlider" id="musicVolumeValue"></output>
                 <button class="unified-audio-toggle" id="musicMuteBtn" type="button" aria-label="음악 음소거" data-sfx="none">♪</button>
                 <input class="unified-audio-slider" id="musicVolumeSlider" type="range" min="0" max="1" step="0.01" aria-label="음악 음량" data-sfx="none">
             </div>
-            <div class="unified-audio-divider"></div>
             <div class="unified-audio-group">
+                <label for="sfxVolumeSlider">효과음</label><output for="sfxVolumeSlider" id="sfxVolumeValue"></output>
                 <button class="unified-audio-toggle" id="sfxMuteBtn" type="button" aria-label="효과음 음소거" data-sfx="none">✦</button>
                 <input class="unified-audio-slider" id="sfxVolumeSlider" type="range" min="0" max="1" step="0.01" aria-label="효과음 음량" data-sfx="none">
             </div>
+            <button class="unified-settings-action" id="settingsFullscreen" type="button" aria-pressed="false" hidden>전체화면</button>
+            <p class="unified-settings-status" role="status" hidden></p>
         </div>`;
 
     document.body.appendChild(control);
     if (sfxOnly) {
         control.querySelector(".unified-audio-group").style.display = "none";
-        control.querySelector(".unified-audio-divider").style.display = "none";
-        control.querySelector(".unified-audio-panel").style.gridTemplateColumns = "48px";
     }
     document.body.classList.add("class-music-ready");
 
@@ -175,7 +182,7 @@
     const setPanelOpen = open => {
         audioPanel.hidden = !open;
         menuToggle.setAttribute("aria-expanded", String(open));
-        menuToggle.setAttribute("aria-label", open ? "소리 조절 닫기" : "소리 조절 열기");
+        menuToggle.setAttribute("aria-label", open ? "설정 닫기" : "설정 열기");
     };
     menuToggle.addEventListener("click", () => setPanelOpen(audioPanel.hidden));
     document.addEventListener("pointerdown", event => {
@@ -187,11 +194,46 @@
             menuToggle.focus();
         }
     });
+    control.addEventListener("focusout", event => {
+        if (event.relatedTarget && !control.contains(event.relatedTarget)) setPanelOpen(false);
+    });
+
+    const fullscreenButton = control.querySelector("#settingsFullscreen");
+    const settingsStatus = control.querySelector(".unified-settings-status");
+    const renderFullscreen = () => {
+        fullscreenButton.hidden = !document.fullscreenEnabled;
+        fullscreenButton.textContent = document.fullscreenElement ? "전체화면 나가기" : "전체화면";
+        fullscreenButton.setAttribute("aria-pressed", String(Boolean(document.fullscreenElement)));
+    };
+    fullscreenButton.addEventListener("click", async () => {
+        settingsStatus.hidden = true;
+        try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+            else await document.documentElement.requestFullscreen();
+        } catch (_) {
+            settingsStatus.textContent = "전체화면을 열 수 없어요. 브라우저 설정을 확인해 주세요.";
+            settingsStatus.hidden = false;
+        }
+    });
+    document.addEventListener("fullscreenchange", renderFullscreen);
+    renderFullscreen();
+
+    const helpTemplate = document.getElementById(currentScript?.dataset.settingsHelp || "");
+    if (helpTemplate?.content) {
+        const help = document.createElement("details");
+        help.className = "unified-settings-help";
+        const summary = document.createElement("summary");
+        summary.textContent = "도움말";
+        help.append(summary, helpTemplate.content.cloneNode(true));
+        audioPanel.append(help);
+    }
 
     const musicMuteBtn = control.querySelector("#musicMuteBtn");
     const musicVolumeSlider = control.querySelector("#musicVolumeSlider");
+    const musicVolumeValue = control.querySelector("#musicVolumeValue");
     const sfxMuteBtn = control.querySelector("#sfxMuteBtn");
     const sfxVolumeSlider = control.querySelector("#sfxVolumeSlider");
+    const sfxVolumeValue = control.querySelector("#sfxVolumeValue");
 
     let sfxPreviewLastPlayed = 0;
     function playSfxPreview({ force = false } = {}) {
@@ -264,9 +306,10 @@
     }
 
     function render() {
-        menuToggle.textContent = (sfxOnly || musicMuted) && sfxMuted ? "🔇" : "🔊";
         renderSlider(musicMuteBtn, musicVolumeSlider, "음악", "♪", musicVolume, musicMuted);
         renderSlider(sfxMuteBtn, sfxVolumeSlider, "효과음", "✦", sfxVolume, sfxMuted);
+        musicVolumeValue.value = musicMuted ? "음소거" : `${Math.round(musicVolume * 100)}%`;
+        sfxVolumeValue.value = sfxMuted ? "음소거" : `${Math.round(sfxVolume * 100)}%`;
     }
 
     function applyAudioState() {
