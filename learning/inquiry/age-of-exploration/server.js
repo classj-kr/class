@@ -23,6 +23,7 @@ const { createDiscoveryAccess } = require('./lib/discovery-access.js');
 const CompletionRewards = require('./lib/completion-rewards.js');
 const FinalQuiz = require('./lib/final-quiz.js');
 const PlaceStudy = require('./lib/place-study.js');
+const VoyageStudyCatalog = require('./public/js/study-catalog.js');
 const VoyageShips = require('./public/js/ship-designs.js');
 const SHIP_ORIGINS = require('./data/catalog/ship-origins.json').ports;
 const ARRIVAL_ZONES = require('./data/catalog/arrival-zones.json');
@@ -717,6 +718,7 @@ function pruneIdleRooms(now = Date.now()) {
     if (rooms.get(code)?.size || hosted.has(code)) continue;
     if (now - (Number(state?.host?.lastActiveAt) || 0) < ROOM_IDLE_MS) continue;
     delete store.state.rooms[code];
+    placeSuggestions.delete(code);
     roomClocks.delete(code);
     clearMissionRuntime(code);
   }
@@ -756,6 +758,47 @@ function isRoomHost(roomCode, token) {
 function touchRoom(roomCode) {
   const host = store.state?.rooms?.[roomCode]?.host;
   if (host) host.lastActiveAt = Date.now();
+}
+
+// 학생 목표 장소 건의. 전체 목록은 주지 않고, 이름 일부를 쳐야 몇 곳만 보여 준다.
+const MAX_SUGGESTIONS_PER_STUDENT = 2;
+const SUGGEST_SEARCH_LIMIT = 5;
+const placeSuggestions = new Map();
+let suggestChoiceCache = null;
+function suggestChoiceMap() {
+  if (!suggestChoiceCache) {
+    suggestChoiceCache = new Map(VoyageStudyCatalog.choices(publicMissionCatalog())
+      .filter((item) => item.learning?.tier !== 'later')
+      .map((item) => [item.key, { key:item.key, name:item.name, type:item.type, region:item.region }]));
+  }
+  return suggestChoiceCache;
+}
+const compactName = (value) => String(value || '').normalize('NFKC').toLocaleLowerCase().replace(/[\s·・()\-]/g, '');
+function searchSuggestChoices(query) {
+  const term = compactName(query).slice(0, 20);
+  if ([...term].length < 2) return [];
+  const found = [];
+  for (const item of suggestChoiceMap().values()) {
+    const name = compactName(item.name);
+    if (name.includes(term)) found.push({ item, starts:name.startsWith(term) });
+  }
+  return found.sort((a, b) => b.starts - a.starts || a.item.name.length - b.item.name.length)
+    .slice(0, SUGGEST_SEARCH_LIMIT).map((f) => f.item);
+}
+function roomSuggestions(roomCode) {
+  if (!placeSuggestions.has(roomCode)) placeSuggestions.set(roomCode, new Map());
+  return placeSuggestions.get(roomCode);
+}
+function mySuggestions(roomCode, name) {
+  return [...(placeSuggestions.get(roomCode)?.values() || [])].filter((s) => s.voters.has(name)).map(({ voters, ...item }) => item);
+}
+function suggestionsForTeacher(roomCode) {
+  return [...(placeSuggestions.get(roomCode)?.values() || [])]
+    .map(({ voters, ...item }) => ({ ...item, count:voters.size }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'ko'));
+}
+function emitSuggestions(roomCode) {
+  io.to(`teacher:${roomCode}`).emit('teacherSuggestions', { suggestions:suggestionsForTeacher(roomCode) });
 }
 
 function becomeHost(socket, roomCode) {
@@ -2900,7 +2943,7 @@ io.on('connection', (socket) => {
     io.to(`class:${roomCode}`).emit('classControl', cleanSettings);
     const classMinutes = claimTeacherClock(roomCode, socket.id);
     const activeMission = store.room(roomCode).activeMission;
-    ack({ ok: true, roomCode, classGameMinutes: classMinutes, clockRateHoursPerSecond: GAME_HOURS_PER_REAL_SECOND, mission: missionForTeacher(activeMission), progress: missionProgressList(roomCode, activeMission?.id), settings: cleanSettings });
+    ack({ ok: true, roomCode, classGameMinutes: classMinutes, clockRateHoursPerSecond: GAME_HOURS_PER_REAL_SECOND, mission: missionForTeacher(activeMission), progress: missionProgressList(roomCode, activeMission?.id), settings: cleanSettings, suggestions: suggestionsForTeacher(roomCode) });
   });
 
   socket.on('teacherClockSync', (payload, ack = () => {}) => {
@@ -2909,6 +2952,42 @@ io.on('connection', (socket) => {
     const synced = syncTeacherClock(roomCode, socket.id, payload?.gameMinutes);
     if (synced == null) return ack({ ok:false, error:'반 시간 동기화 권한이 없습니다.' });
     ack({ ok:true, classGameMinutes:synced });
+  });
+
+  socket.on('searchSuggestPlaces', (payload, ack = () => {}) => {
+    const p = playerForSocket(socket);
+    if (!p) return ack({ ok:false, error:'방에 먼저 들어오세요.' });
+    ack({ ok:true, items:searchSuggestChoices(payload?.query), mine:mySuggestions(p.roomCode, p.name) });
+  });
+
+  socket.on('suggestPlace', (payload, ack = () => {}) => {
+    const p = playerForSocket(socket);
+    if (!p) return ack({ ok:false, error:'방에 먼저 들어오세요.' });
+    if (isFreeRoom(p.roomCode)) return ack({ ok:false, error:'도착 경주 방에서만 건의할 수 있습니다.' });
+    if (store.room(p.roomCode).activeMission) return ack({ ok:false, error:'미션이 정해진 뒤에는 건의할 수 없습니다.' });
+    const item = suggestChoiceMap().get(String(payload?.key || ''));
+    if (!item) return ack({ ok:false, error:'건의할 수 없는 장소입니다.' });
+    const list = roomSuggestions(p.roomCode);
+    const entry = list.get(item.key);
+    if (entry?.voters.has(p.name)) {
+      entry.voters.delete(p.name);
+      if (!entry.voters.size) list.delete(item.key);
+    } else {
+      if (mySuggestions(p.roomCode, p.name).length >= MAX_SUGGESTIONS_PER_STUDENT) return ack({ ok:false, error:`건의는 ${MAX_SUGGESTIONS_PER_STUDENT}곳까지 할 수 있습니다.` });
+      if (entry) entry.voters.add(p.name);
+      else list.set(item.key, { ...item, voters:new Set([p.name]) });
+    }
+    emitSuggestions(p.roomCode);
+    ack({ ok:true, mine:mySuggestions(p.roomCode, p.name) });
+  });
+
+  socket.on('teacherRemoveSuggestion', (payload, ack = () => {}) => {
+    const roomCode = teachers.get(socket.id);
+    if (!roomCode) return ack({ ok:false, error:'교사 인증이 필요합니다.' });
+    if (payload?.all === true) placeSuggestions.delete(roomCode);
+    else roomSuggestions(roomCode).delete(String(payload?.key || ''));
+    emitSuggestions(roomCode);
+    ack({ ok:true });
   });
 
   socket.on('disconnect', () => {
