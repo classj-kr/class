@@ -2108,6 +2108,9 @@ function createClassroomPlatform(options = {}) {
           || requestPath === "/learning/inquiry/math/stacking-cubes/coop"
           || requestPath.startsWith("/learning/inquiry/math/stacking-cubes/coop/")
           || requestPath === "/api/stacking-race" || requestPath.startsWith("/api/stacking-race/")
+          || requestPath === "/learning/inquiry/information-computing/typing/race"
+          || requestPath.startsWith("/learning/inquiry/information-computing/typing/race/")
+          || requestPath === "/api/typing-race" || requestPath.startsWith("/api/typing-race/")
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
           || requestPath === "/exams" || requestPath.startsWith("/exams/")
           || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
