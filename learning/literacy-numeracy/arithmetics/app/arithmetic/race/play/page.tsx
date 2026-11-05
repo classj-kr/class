@@ -1,17 +1,35 @@
 "use client";
 
-import { FormEvent, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { CSSProperties, FormEvent, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { cardFields, raceCard, type RaceCard, type RaceField, type RacePart } from "../../../../lib/race-cards";
 
 type Race = { roomCode: string; worksheetName: string; worksheetRoute: string; seed: number; status: string; startedAt: number | null; endsAt: number | null; durationSeconds: number | null };
 type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null };
 type Entry = { id: string; name: string; score: number; correctCount: number; rank: number; avatarUrl?: string | null };
 type Credentials = { room: string; participant: string; participantToken: string };
-type Feedback = { kind: "correct" | "wrong" | "skip"; answer: string; key: number } | null;
+type Outcome = "correct" | "wrong" | "skip";
+// play: 푸는 중, wrong: 흔들림, reveal: 포기해서 정답을 보여 줌, leave: 카드가 날아감
+type Phase = "play" | "wrong" | "reveal" | "leave";
+type Flash = { text: string; kind: string; key: number } | null;
+
+const POINTS: Record<Outcome, string> = { correct: "+1", wrong: "−1", skip: "−2" };
+const MEDALS = ["🥇", "🥈", "🥉"];
+const BURST_COLORS = ["#f06b5b", "#f6b44b", "#3fb68b", "#4c8df6", "#b36bf0", "#ff8fb1"];
+// 색종이 조각의 방향과 거리. 매번 같아도 충분히 흩어져 보인다.
+const BURST = Array.from({ length: 18 }, (_, index) => {
+  const angle = (index / 18) * Math.PI * 2 + (index % 3) * 0.3;
+  const distance = 90 + (index * 37) % 80;
+  return { x: Math.round(Math.cos(angle) * distance), y: Math.round(Math.sin(angle) * distance), color: BURST_COLORS[index % BURST_COLORS.length], spin: (index * 73) % 360 };
+});
+const RAIN = Array.from({ length: 36 }, (_, index) => ({ left: (index * 29) % 100, delay: (index * 0.17) % 2.4, color: BURST_COLORS[index % BURST_COLORS.length], spin: (index * 47) % 360 }));
 
 // 사이트 공통 효과음(assets/sound/game-sfx.js). 없거나 꺼져 있으면 조용히 넘어간다.
-function sound(name: "success" | "error" | "back" | "tick" | "timeout") {
+function sound(name: "success" | "error" | "back" | "tick" | "timeout" | "bell") {
   try { (window as unknown as { ClassGameSfx?: { play: (name: string) => void } }).ClassGameSfx?.play(name); } catch { /* 소리 없이 진행 */ }
+}
+
+function wait(milliseconds: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
 
 function clock(milliseconds: number) {
@@ -34,12 +52,18 @@ export default function ArithmeticRaceCardsPage() {
   const [values, setValues] = useState<Record<string, string>>({});
   const [focused, setFocused] = useState("");
   const [busy, setBusy] = useState(false);
-  const [feedback, setFeedback] = useState<Feedback>(null);
+  const [phase, setPhase] = useState<Phase>("play");
+  const [reveal, setReveal] = useState("");
+  const [pop, setPop] = useState<Flash>(null);
+  const [burst, setBurst] = useState(0);
+  const [banner, setBanner] = useState<Flash>(null);
+  const [toast, setToast] = useState<Flash>(null);
   const [streak, setStreak] = useState(0);
   const [error, setError] = useState("");
   const [now, setNow] = useState(0);
   const offset = useRef(0);
   const inputs = useRef<Record<string, HTMLInputElement | null>>({});
+  const lastRank = useRef<number | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -88,6 +112,17 @@ export default function ArithmeticRaceCardsPage() {
     if (secondsLeft === 0) sound("timeout");
     else if (secondsLeft > 0 && secondsLeft <= 5) sound("tick");
   }, [secondsLeft, race?.status]);
+
+  const myRank = ranking.find((entry) => entry.id === me?.id)?.rank ?? null;
+  // 순위가 오르면 위에서 알림을 내린다.
+  useEffect(() => {
+    const previous = lastRank.current;
+    lastRank.current = myRank;
+    if (!playing || previous === null || myRank === null || myRank >= previous) return;
+    const timer = window.setTimeout(() => setToast({ text: myRank === 1 ? "👑 1위로 올라섰어요!" : `⬆ ${myRank}위로 올랐어요!`, kind: "up", key: Date.now() }), 0);
+    return () => window.clearTimeout(timer);
+  }, [myRank, playing]);
+
   const card: RaceCard | null = race && cardIndex !== null ? raceCard(race.worksheetRoute, race.seed, cardIndex) : null;
   const fields = card && !card.choices ? cardFields(card) : [];
   const numericOnly = fields.length > 0 && fields.every((field) => field.kind !== "text");
@@ -100,7 +135,7 @@ export default function ArithmeticRaceCardsPage() {
     const first = fields[0].blank;
     const timer = window.setTimeout(() => { setFocused(first); inputs.current[first]?.focus({ preventScroll: true }); }, 0);
     return () => window.clearTimeout(timer);
-    // 카드가 바뀔 때만 첫 칸으로 간다.
+    // 카드가 바뀌거나 틀려서 다시 풀 때 첫 칸으로 간다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, busy, cardIndex]);
 
@@ -113,22 +148,54 @@ export default function ArithmeticRaceCardsPage() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ action: "card", roomCode: credentials.room, participantId: credentials.participant, participantToken: credentials.participantToken, cardIndex, answers, skip }),
       });
-      const data = await response.json() as { outcome?: "correct" | "wrong" | "skip"; answer?: string; participant?: Me; error?: string };
+      const data = await response.json() as { outcome?: Outcome; answer?: string; participant?: Me; error?: string };
       if (data.participant) setMe((current) => ({ ...current, ...data.participant! }));
       if (!response.ok || !data.outcome) {
         if (data.participant) { setCardIndex(data.participant.cardIndex); setValues({}); }
         if (data.error) setError(data.error);
         return;
       }
-      setFeedback({ kind: data.outcome, answer: data.answer ?? "", key: Date.now() });
-      sound(data.outcome === "correct" ? "success" : data.outcome === "wrong" ? "error" : "back");
-      setStreak((current) => data.outcome === "correct" ? current + 1 : 0);
-      // 틀렸을 때만 정답을 잠깐 보여 주고 넘어간다.
-      if (data.outcome === "wrong") await new Promise((resolve) => window.setTimeout(resolve, 1100));
+      const outcome = data.outcome;
+      const next = data.participant?.cardIndex ?? (outcome === "wrong" ? cardIndex : cardIndex + 1);
+      setPop({ text: POINTS[outcome], kind: outcome, key: Date.now() });
+
+      if (outcome === "wrong") {
+        // 틀리면 1점을 잃고 같은 카드를 다시 푼다.
+        sound("error");
+        setStreak(0);
+        setPhase("wrong");
+        setValues({});
+        await wait(450);
+        setPhase("play");
+        return;
+      }
+
+      if (outcome === "correct") {
+        sound("success");
+        setBurst(Date.now());
+        const streakNow = streak + 1;
+        setStreak(streakNow);
+        if (streakNow % 5 === 0) {
+          setBanner({ text: `🔥 ${streakNow}연속!`, kind: streakNow >= 10 ? "mega" : "combo", key: Date.now() });
+          sound("bell");
+        }
+      } else {
+        // 포기: 2점을 잃고 카드를 뒤집어 정답을 보여 준 뒤 넘어간다.
+        sound("back");
+        setStreak(0);
+        setReveal(data.answer ?? "");
+        setPhase("reveal");
+        await wait(1100);
+      }
+      setPhase("leave");
+      await wait(outcome === "correct" ? 300 : 260);
       setValues({});
-      setCardIndex(data.participant?.cardIndex ?? cardIndex + 1);
+      setReveal("");
+      setCardIndex(next);
+      setPhase("play");
     } catch {
       setError("연결이 불안정합니다. 다시 눌러 주세요.");
+      setPhase("play");
     } finally {
       setBusy(false);
     }
@@ -175,7 +242,6 @@ export default function ArithmeticRaceCardsPage() {
       );
     }
     const id = part.blank;
-    const wrong = busy && feedback?.kind === "wrong";
     return (
       <input
         key={key}
@@ -191,15 +257,13 @@ export default function ArithmeticRaceCardsPage() {
         autoComplete="off"
         aria-label="답"
         readOnly={busy}
-        data-wrong={wrong || undefined}
       />
     );
   }
 
-  const myRank = ranking.find((entry) => entry.id === me?.id)?.rank ?? null;
   const row = (entry: Entry) => (
     <li key={entry.id} className={entry.id === me?.id ? "is-me" : ""}>
-      <em>{entry.rank}</em>
+      <em>{entry.rank <= 3 ? MEDALS[entry.rank - 1] : entry.rank}</em>
       {entry.avatarUrl
         ? <img className="card-race-avatar" src={entry.avatarUrl} alt="" width={32} height={32} />
         : <i className="card-race-avatar" aria-hidden="true">{entry.name.slice(0, 1)}</i>}
@@ -210,16 +274,33 @@ export default function ArithmeticRaceCardsPage() {
   const progress = race?.durationSeconds && remaining !== null ? Math.max(0, Math.min(1, remaining / (race.durationSeconds * 1000))) : 1;
   const keys = ["7", "8", "9", "4", "5", "6", "1", "2", "3", hasDecimal ? "." : "⌫", "0", hasDecimal ? "⌫" : "확인"];
   if (hasDecimal) keys.push("확인");
+  const score = me?.score ?? 0;
 
   if (finished && race) {
+    const podium = [ranking[1], ranking[0], ranking[2]];
     return (
       <main className="portal-page card-race-page">
+        {myRank !== null && myRank <= 3 && (
+          <div className="card-race-rain" aria-hidden="true">
+            {RAIN.map((piece, index) => <i key={index} style={{ left: `${piece.left}%`, animationDelay: `${piece.delay}s`, background: piece.color, rotate: `${piece.spin}deg` }} />)}
+          </div>
+        )}
         <section className="card-race-result">
           <span>끝!</span>
-          <h1>{myRank ? `${myRank}위` : "결과"}</h1>
-          <p><b>{me?.score ?? 0}점</b> · 맞힘 {me?.correctCount ?? 0} · 틀림 {me?.wrongCount ?? 0} · 넘김 {me?.skipCount ?? 0}</p>
+          <h1>{myRank ? `${myRank <= 3 ? MEDALS[myRank - 1] + " " : ""}${myRank}위` : "결과"}</h1>
+          <p><b className={score < 0 ? "is-negative" : ""}>{score}점</b> · 맞힘 {me?.correctCount ?? 0} · 틀림 {me?.wrongCount ?? 0} · 포기 {me?.skipCount ?? 0}</p>
+          <div className="card-race-podium" aria-label="1·2·3위">
+            {podium.map((entry, index) => entry ? (
+              <div key={entry.id} className={`step step-${entry.rank}${entry.id === me?.id ? " is-me" : ""}`} style={{ animationDelay: `${[0.3, 0.6, 0][index]}s` }}>
+                <span className="medal">{MEDALS[entry.rank - 1]}</span>
+                <strong>{entry.name}</strong>
+                <b>{entry.score}점</b>
+                <i>{entry.rank}</i>
+              </div>
+            ) : <div key={index} className="step empty" />)}
+          </div>
           <ol className="card-race-board final">
-            {ranking.map(row)}
+            {ranking.slice(3).map(row)}
           </ol>
           <a className="card-race-home" href="/arithmetic">기초 연산으로</a>
         </section>
@@ -228,41 +309,50 @@ export default function ArithmeticRaceCardsPage() {
   }
 
   return (
-    <main className="portal-page card-race-page">
+    <main className={`portal-page card-race-page${phase === "wrong" ? " is-shaking" : ""}`}>
       <header className="card-race-top">
-        <span className="card-race-room">방 {credentials?.room}{myRank ? ` · ${myRank}위` : ""}</span>
-        <strong className="card-race-score">{me?.score ?? 0}<small>점</small></strong>
+        <span className="card-race-room">방 {credentials?.room}{myRank ? ` · ${myRank <= 3 ? MEDALS[myRank - 1] : ""}${myRank}위` : ""}</span>
+        <strong key={`score-${score}`} className={`card-race-score${score < 0 ? " is-negative" : ""}`}>{score}<small>점</small></strong>
         <time className={remaining !== null && remaining < 10000 ? "is-hurry" : ""}>{remaining !== null ? clock(remaining) : "--:--"}</time>
       </header>
-      <div className="card-race-timebar" aria-hidden="true"><i style={{ transform: `scaleX(${progress})` }} /></div>
+      <div className={`card-race-timebar${remaining !== null && remaining < 10000 ? " is-hurry" : ""}`} aria-hidden="true"><i style={{ transform: `scaleX(${progress})` }} /></div>
+
+      {toast && <p key={`toast-${toast.key}`} className="card-race-toast" role="status">{toast.text}</p>}
+      {banner && <p key={`banner-${banner.key}`} className={`card-race-banner ${banner.kind}`} aria-hidden="true">{banner.text}</p>}
 
       <div className="card-race-layout">
         <section className="card-race-stage">
           {/* 같은 자리의 형제끼리 key 가 겹치면(4연속과 4번 카드) 지난 표시가 남아 쌓이므로 이름을 붙여 구분한다. */}
-          {streak >= 3 && <p className="card-race-streak" key={`streak-${streak}`}>🔥 {streak}연속</p>}
+          {streak >= 3 && <p className={`card-race-streak${streak >= 10 ? " is-hot" : ""}`} key={`streak-${streak}`}>🔥 {streak}연속</p>}
           {!playing ? (
             <div className="card-race-card waiting">{race?.status === "waiting" ? "방장이 시작하기를 기다리는 중" : "준비 중…"}</div>
           ) : card ? (
-            <form key={`card-${cardIndex}`} className={`card-race-card${feedback?.kind === "wrong" && busy ? " is-wrong" : ""}`} onSubmit={submit}>
+            <form key={`card-${cardIndex}`} className={`card-race-card phase-${phase}`} onSubmit={submit}>
               <span className="card-race-number">#{(cardIndex ?? 0) + 1}</span>
               {card.prompt && <p className="card-race-prompt">{card.prompt}</p>}
               <div className={`card-race-question${fields.length >= 3 || card.parts.some((part) => typeof part === "object" && "svg" in part) ? " is-dense" : ""}`}>{card.parts.map((part, index) => renderPart(part, String(index)))}</div>
               {card.choices ? (
                 <div className="card-race-choices">
                   {card.choices.map((choice) => (
-                    <button type="button" key={choice} disabled={busy} onClick={() => void send(false, { choice })}
-                      className={busy && feedback?.kind === "wrong" && feedback.answer === choice ? "is-answer" : ""}>{choice}</button>
+                    <button type="button" key={choice} disabled={busy} onClick={() => void send(false, { choice })}>{choice}</button>
                   ))}
                 </div>
               ) : null}
               <div className="card-race-actions">
-                <button type="button" className="card-race-skip" onClick={() => void send(true)} disabled={busy}>넘기기 −1</button>
+                <button type="button" className="card-race-skip" onClick={() => void send(true)} disabled={busy}>포기 −2</button>
                 {!card.choices && <button type="submit" disabled={busy || !complete}>확인</button>}
               </div>
+              {phase === "reveal" && (
+                <div className="card-race-reveal" aria-live="polite"><span>정답</span><strong>{reveal}</strong></div>
+              )}
             </form>
           ) : null}
-          {feedback && feedback.kind !== "wrong" && <p key={`pop-${feedback.key}`} className={`card-race-pop ${feedback.kind}`}>{feedback.kind === "correct" ? "+1" : "−1"}</p>}
-          {feedback && feedback.kind === "wrong" && busy && <p className="card-race-pop wrong">정답 {feedback.answer}</p>}
+          {burst > 0 && (
+            <div key={`burst-${burst}`} className="card-race-burst" aria-hidden="true">
+              {BURST.map((piece, index) => <i key={index} style={{ "--x": `${piece.x}px`, "--y": `${piece.y}px`, background: piece.color, rotate: `${piece.spin}deg` } as CSSProperties} />)}
+            </div>
+          )}
+          {pop && <p key={`pop-${pop.key}`} className={`card-race-pop ${pop.kind}`}>{pop.text}</p>}
           {playing && numericOnly && (
             <div className="card-race-keypad" aria-label="숫자 패드">
               {keys.map((key) => <button type="button" key={key} onMouseDown={(event) => event.preventDefault()} onClick={() => press(key)} disabled={busy || (key === "확인" && !complete)} className={key === "확인" ? "ok" : ""}>{key}</button>)}
@@ -275,7 +365,7 @@ export default function ArithmeticRaceCardsPage() {
           <ol className="card-race-board">
             {top.map(row)}
           </ol>
-          <p className="card-race-rule">맞히면 +1 · 틀리면 0 · 넘기면 −1</p>
+          <p className="card-race-rule">맞히면 +1 · 틀리면 −1 · 포기 −2</p>
         </aside>
       </div>
       {error && <p className="race-form-error" role="alert">{error}</p>}

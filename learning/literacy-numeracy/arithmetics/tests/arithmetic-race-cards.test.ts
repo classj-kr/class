@@ -36,7 +36,7 @@ test("unknown worksheets have no cards", () => {
   assert.equal(raceCard("/arithmetic/unknown", 1, 0), null);
 });
 
-test("card scores: correct +1, wrong 0, skip -1, each card counted once", async () => {
+test("card scores: correct +1, wrong -1 on the same card, give up -2, each card counted once", async () => {
   const store = memoryRaceStore();
   const now = Date.now();
   await store.openRace({ room_code: "4321", teacher_token: "h", worksheet_name: "", worksheet_route: "/arithmetic/multiplication-5", seed: 1, status: "waiting", created_at: now, started_at: null, duration_seconds: 60 },
@@ -45,9 +45,12 @@ test("card scores: correct +1, wrong 0, skip -1, each card counted once", async 
   assert.equal(await store.recordCard({ ...base, cardIndex: 0, outcome: "correct" }), true);
   assert.equal(await store.recordCard({ ...base, cardIndex: 0, outcome: "correct" }), false);
   assert.equal(await store.recordCard({ ...base, cardIndex: 1, outcome: "wrong" }), true);
+  assert.equal(await store.recordCard({ ...base, cardIndex: 1, outcome: "wrong" }), true);
+  assert.equal(await store.recordCard({ ...base, cardIndex: 1, outcome: "correct" }), true);
   assert.equal(await store.recordCard({ ...base, cardIndex: 2, outcome: "skip" }), true);
   const [row] = await store.participants("4321");
-  assert.deepEqual([row.score, row.correct_count, row.mistake_count, row.skip_count, row.card_index], [0, 1, 1, 1, 3]);
+  // +1 −1 −1 +1 −2 = −2
+  assert.deepEqual([row.score, row.correct_count, row.mistake_count, row.skip_count, row.card_index], [-2, 2, 2, 1, 3]);
 });
 
 test("card ranking: score, then correct answers, then who got there first", () => {

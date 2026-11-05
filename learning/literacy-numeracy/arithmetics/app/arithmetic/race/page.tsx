@@ -163,7 +163,7 @@ export default function ArithmeticRaceJoinPage() {
           <section className="race-waiting-card" aria-live="polite">
             <span>방 코드</span><strong className="race-room-code">{joined.roomCode}</strong>
             <h2>{joined.race.worksheetName || "학습지 확인 중"}</h2>
-            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note">카드 순위전 · {joined.race.durationSeconds / 60}분 · 맞히면 +1, 넘기면 −1</p> : null}
+            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note">카드 순위전 · {joined.race.durationSeconds / 60}분 · 맞히면 +1 · 틀리면 −1 · 포기 −2</p> : null}
             {joined.hostToken ? (
               <>
                 <p>{board?.participants.length ?? 1}명 참가</p>
