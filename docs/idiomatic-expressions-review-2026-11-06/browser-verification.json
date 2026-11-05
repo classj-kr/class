@@ -1,0 +1,30 @@
+{
+  "mode": "local Chrome with real app and LearningRecords in preview mode; no production database writes",
+  "counts": {
+    "studyCards": 110,
+    "decodedImages": 110,
+    "redrawnImages": 45,
+    "questions": 110,
+    "wrongAnswerChecks": 110,
+    "completedLessons": 11
+  },
+  "viewports": [
+    {
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "pageErrors": []
+}

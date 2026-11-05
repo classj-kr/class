@@ -13,7 +13,7 @@ body {
 
 .back { color: #315c44; min-height: 44px; display: inline-flex; align-items: center; }
 output, .label { color: #315c44; }
-button { min-height: 48px; }
+button, .actions button { min-height: 48px; }
 button:focus-visible, .back:focus-visible { outline: 3px solid #f1ad32; outline-offset: 3px; }
 .mode-tab.active { color: #1f6042; }
 .primary { color: #fff; border-color: #347355; background: #347355; }

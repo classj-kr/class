@@ -305,8 +305,8 @@ const IDIOMATIC_EXPRESSION_DISTRACTORS = new Map([
   ["피가 마르다",["가슴을 쓸어내리다","속이 시원하다"]],
 ]);
 
-// 뜻과 반대이거나 겉뜻만 그려 오해를 낳는 삽화는 학습 화면에서 제외한다.
-const IDIOMATIC_EXPRESSION_HIDDEN_IMAGES = new Set(["가닥을 잡다","가려운 곳을 긁어주다","가면을 벗다","가슴에 못을 박다","가슴에 새기다","간을 졸이다","귀에 못이 박히다","귀가 얇다","눈 밖에 나다","눈이 높다","도마 위에 오르다","뒤통수를 맞다","뜸을 들이다","마음을 먹다","마음을 열다","머리를 식히다","발목을 잡다","손에 땀을 쥐다","손을 놓다","코가 납작해지다","탄력을 받다","퇴짜를 맞다","트집을 잡다","틀에 박히다","파김치가 되다","한 획을 긋다","허를 찌르다","혀를 차다","가면을 쓰다","가시가 돋다","귀가 따갑다","귀가 열리다","기가 차다","날개가 돋치다","목숨을 걸다","발을 끊다","발이 묶이다","속이 시원하다","손을 떼다","입에 풀칠하다","입 발린 말","얼굴이 두껍다","이를 갈다","퇴짜를 놓다","틀을 잡다"]);
+// 검토에서 확인한 삽화는 같은 규격의 새 그림으로 교체한다.
+const IDIOMATIC_EXPRESSION_REDRAWN_IMAGES = new Set(["가닥을 잡다","가려운 곳을 긁어주다","가면을 벗다","가슴에 못을 박다","가슴에 새기다","간을 졸이다","귀에 못이 박히다","귀가 얇다","눈 밖에 나다","눈이 높다","도마 위에 오르다","뒤통수를 맞다","뜸을 들이다","마음을 먹다","마음을 열다","머리를 식히다","발목을 잡다","손에 땀을 쥐다","손을 놓다","코가 납작해지다","탄력을 받다","퇴짜를 맞다","트집을 잡다","틀에 박히다","파김치가 되다","한 획을 긋다","허를 찌르다","혀를 차다","가면을 쓰다","가시가 돋다","귀가 따갑다","귀가 열리다","기가 차다","날개가 돋치다","목숨을 걸다","발을 끊다","발이 묶이다","속이 시원하다","손을 떼다","입에 풀칠하다","입 발린 말","얼굴이 두껍다","이를 갈다","퇴짜를 놓다","틀을 잡다"]);
 
 IDIOMATIC_EXPRESSION_BANK.forEach((item) => {
   const lookalikes = new Set();
@@ -316,7 +316,7 @@ IDIOMATIC_EXPRESSION_BANK.forEach((item) => {
   lookalikes.delete(item.expression);
   item.lookalikes = [...lookalikes];
   item.distractors = IDIOMATIC_EXPRESSION_DISTRACTORS.get(item.expression);
-  item.hideIllustration = IDIOMATIC_EXPRESSION_HIDDEN_IMAGES.has(item.expression);
+  item.illustrationVersion = IDIOMATIC_EXPRESSION_REDRAWN_IMAGES.has(item.expression) ? '20261106-reviewed-final' : '';
 });
 
 IDIOMATIC_EXPRESSION_LOOKALIKE_GROUPS.flat().forEach((expression) => {
