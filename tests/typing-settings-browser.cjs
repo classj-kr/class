@@ -103,7 +103,21 @@ async function main() {
     await page.locator('.unified-audio-menu-toggle').click();
     await page.getByRole('link', { name: '🏁 순위전' }).click();
     await page.locator('[data-settings="create"] .option').first().waitFor();
-    assert.equal((await page.locator('body').innerText()).match(/타자 레이스/g).length, 1);
+    assert.equal(await page.getByRole('heading', { name: '타자 RACE', exact: true }).count(), 1);
+    assert.doesNotMatch(await page.locator('#entryScreen').innerText(), /새 레이스 열기|타자 레이스/);
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    const motion = await page.locator('.keycaps i').evaluateAll(caps => caps.map(cap => {
+      const animation = cap.getAnimations()[0];
+      return { state: animation.playState, duration: animation.effect.getTiming().duration, delay: animation.effect.getTiming().delay };
+    }));
+    assert.equal(motion.length, 6);
+    assert.ok(motion.every(animation => animation.state === 'running' && animation.duration === 1800));
+    assert.equal(new Set(motion.map(animation => animation.delay)).size, 6);
+    await page.waitForFunction(() => [...document.querySelectorAll('.keycaps i')].some(cap => {
+      const transform = getComputedStyle(cap).transform;
+      return transform !== 'none' && new DOMMatrix(transform).m42 < -2;
+    }));
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.locator('#createPanel').getByRole('button', { name: '팀전', exact: true }).click();
     assert.doesNotMatch(await page.locator('#createPanel').innerText(), /평균|팀 점수 합계/);
     await screenshot(page, 'race-entry-desktop');
