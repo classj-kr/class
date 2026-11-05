@@ -112,19 +112,27 @@ function loadSdk() {
   });
 }
 
+// 학습 기록 서버가 답하지 않아도 학습지는 풀 수 있어야 한다. 늦으면 연결 실패로 보고 막기를 푼다.
+function withTimeout<T>(promise: Promise<T>, milliseconds = 8000) {
+  return Promise.race([promise, new Promise<never>((_, reject) => window.setTimeout(() => reject(new Error("학습 기록 연결이 늦어요. 기록 없이 풀 수 있어요.")), milliseconds))]);
+}
+
 function RecordPage({ children, path }: { children: ReactNode; path: string }) {
   const [store] = useState(() => new RecordStore(path));
-  const [phase, setPhase] = useState("loading");
+  // 처음 HTML에는 막기를 걸지 않는다. 자바스크립트가 늦거나(느린 기기·배포 직후 옛 파일)
+  // 못 올라오면 목록 링크까지 통째로 눌리지 않았다. 저장된 답을 되살리는 동안만 잠깐 막는다.
+  const [phase, setPhase] = useState("idle");
   const [error, setError] = useState("");
   const mount = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let disposed = false;
     const begin = async () => {
       if (!Object.keys(store.values).length) { setPhase("catalog"); return; }
+      setPhase("loading");
       try {
-        const sdk = await loadSdk(); if (disposed) return;
+        const sdk = await withTimeout(loadSdk()); if (disposed) return;
         const client = store.client = sdk.create("arithmetic", { label: "연산", mount: mount.current });
-        const session = await client.start({ contentKey: path, title: store.title(), href: path, version: "20261002", checkpoint: { values: store.values } });
+        const session: any = await withTimeout<any>(client.start({ contentKey: path, title: store.title(), href: path, version: "20261002", checkpoint: { values: store.values } }));
         if (disposed) return;
         store.values = session.checkpoint.values || store.values; store.ready = true; store.active = true; setPhase("ready");
         store.submitted = new Set(session.checkpoint.submitted || []);
@@ -142,7 +150,7 @@ function RecordPage({ children, path }: { children: ReactNode; path: string }) {
   return <RecordContext.Provider value={store}>
     <div ref={mount} />
     {phase === "error" && <p role="alert">{error} <button onClick={() => location.reload()}>다시 연결</button></p>}
-    <div key={store.ready ? "restored" : "initial"} inert={phase !== "ready" && phase !== "catalog"}>{children}</div>
+    <div key={store.ready ? "restored" : "initial"} inert={phase === "loading" || phase === "finishing"}>{children}</div>
   </RecordContext.Provider>;
 }
 export default function LearningRecordBoundary({ children }: { children: ReactNode }) {
