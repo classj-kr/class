@@ -25,6 +25,7 @@ const Dobble = require("./dobble");
 const { createRhythmTraining } = require("./rhythm-training");
 const { createHandwriting } = require("./handwriting");
 const { createStackingCubes } = require("./stacking-cubes");
+const { createTypingRace } = require("./typing-race");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
@@ -86,6 +87,7 @@ async function isRuntimeRoomCodeActive({ activity, code }) {
   if (activity === 'rhythm') return rhythmTraining.hasRoomCode(code);
   if (activity === 'handwriting') return handwriting.hasRoomCode(code);
   if (activity === 'stacking') return stackingCubes.hasRoomCode(code);
+  if (activity === 'typing') return typingRace.hasRoomCode(code);
   const target = activity === 'arithmetic' ? `http://127.0.0.1:${ARITHMETIC_PORT}/api/arithmetic-race/entry?room=${code}`
     : activity === 'voyage' ? `http://127.0.0.1:${WORLD_VOYAGE_PORT}/api/room-entry/${code}` : null;
   if (!target) return false;
@@ -528,7 +530,8 @@ app.use("/api/room-entry", classroomPlatform.requireSiteAccess, createRoomEntry(
   roomCodes: classroomPlatform.roomCodes, arithmeticPort: ARITHMETIC_PORT, voyagePort: WORLD_VOYAGE_PORT,
   legacyVoyageRoomExists, rhythmExists: code => rhythmTraining.hasRoomCode(code),
   handwritingExists: code => handwriting.hasRoomCode(code),
-  stackingExists: code => stackingCubes.hasRoomCode(code)
+  stackingExists: code => stackingCubes.hasRoomCode(code),
+  typingExists: code => typingRace.hasRoomCode(code)
 }));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
 app.use("/hanguksa", (req, res) => res.redirect(301, "/learning/inquiry/korean-history/"));
@@ -619,7 +622,32 @@ app.get('/learning/inquiry/math/stacking-cubes/race/', (req, res, next) => sendS
 for (const file of ['model.js', 'activities.js', 'sound.js', 'music.js', 'library.js', 'app.js', 'race.js', 'style.css', 'coop.js', 'coop.css', 'team-stage.js']) {
   app.get(`/learning/inquiry/math/stacking-cubes/race/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
 }
-app.get('/learning/inquiry/math/stacking-cubes/coop/', (req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
+const typingRace = createTypingRace({ platform: classroomPlatform });
+app.use('/api/typing-race', classroomPlatform.requireSiteAccess, typingRace.router);
+// 방번호 입구는 수업 메뉴가 잠겨 있어도 열린다. 신나는 곡은 보드게임 음악을 이름으로만 빌려 쓴다.
+const typingRaceRoot = path.join(SITE_ROOT, 'learning/inquiry/information-computing/typing/race');
+const TYPING_RACE_MUSIC = {
+  'lobby.ogg': 'learning/games/citychase/assets/music/citychase-lobby.ogg',
+  'race-1.ogg': 'learning/games/citychase/assets/music/citychase-game-1.ogg',
+  'race-2.ogg': 'learning/games/dobble/assets/sound/bgm-1.ogg',
+  'race-3.ogg': 'learning/games/expedition/assets/sound/orerun.ogg',
+  'race-4.ogg': 'learning/games/citychase/assets/music/citychase-game-2.ogg',
+  'race-5.ogg': 'learning/games/dobble/assets/sound/bgm-2.ogg',
+  'race-6.ogg': 'learning/games/expedition/assets/sound/voidrun.ogg',
+  'race-7.ogg': 'learning/games/drawrelay/assets/sound/glass-pulse-01.ogg',
+  'victory.ogg': 'learning/games/avalon/assets/sound/avalon-good-victory.ogg'
+};
+app.get('/learning/inquiry/information-computing/typing/race/', (req, res, next) => sendSiteHtml(req, res, path.join(typingRaceRoot, 'index.html'), next));
+for (const file of ['race-core.js', 'race.js', 'race.css']) {
+  app.get(`/learning/inquiry/information-computing/typing/race/${file}`, (_req, res) => res.sendFile(path.join(typingRaceRoot, file)));
+}
+app.get('/learning/inquiry/information-computing/typing/race/music/:file', (req, res, next) => {
+  const source = TYPING_RACE_MUSIC[req.params.file];
+  if (!source) return next();
+  res.setHeader('Cache-Control', 'public, max-age=604800');
+  res.sendFile(path.join(SITE_ROOT, source));
+});
+app.get('/learning/inquiry/math/stacking-cubes/coop/',(req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
 for (const file of ['model.js', 'activities.js', 'sound.js', 'music.js', 'library.js', 'app.js', 'race.js', 'style.css', 'coop.js', 'coop.css', 'team-stage.js']) {
   app.get(`/learning/inquiry/math/stacking-cubes/coop/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
 }

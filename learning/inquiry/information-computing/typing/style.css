@@ -7,3 +7,5 @@ body{position:relative;isolation:isolate;background:#3a2418}body::before{content
 .top-actions{position:fixed;right:64px;bottom:16px;pointer-events:auto}
 @media(max-width:700px){.topbar{top:auto;right:auto;bottom:16px;left:8px}}
 body:has(#typingHome:not([hidden])) main{min-height:calc(100vh - 60px);display:flex;align-items:center;justify-content:center;margin:0 auto}
+
+.top-actions{display:flex;gap:8px}.race-link{display:inline-flex;align-items:center;text-decoration:none;color:#fff;background:linear-gradient(135deg,#ff3d9a,#7b3dff);border-color:transparent;font-weight:900}
