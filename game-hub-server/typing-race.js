@@ -22,7 +22,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
   const teacher = async (req) =>
     platform.configuration && !platform.configuration().enabled ? false : platform.isTeacherRequest(req);
   const token = () => crypto.randomBytes(24).toString('hex');
-  // 교사가 연 방은 교사가 지켜보기만 하고, 학생이 연 방은 방장도 함께 달린다(연산 순위전처럼).
+  // 방장은 교사든 학생이든 함께 달린다(연산 순위전처럼).
   const students = (r) => r.players.filter((p) => p.plays);
   // 학생 프로필 아바타. 사이트의 아바타 그림 주소만 받는다.
   const avatar = (value) => {
@@ -123,7 +123,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       prune();
       const isTeacher = await teacher(req);
       let player;
-      if (isTeacher) player = { id: crypto.randomUUID(), token: token(), host: true, plays: false, name: '선생님' };
+      if (isTeacher) player = resetScore({ id: crypto.randomUUID(), token: token(), host: true, plays: true, name: '선생님', team: null, avatarUrl: null, racer: Core.RACERS[0] });
       else {
         const name = String((await platform.displayNameFor(req))?.name || '').trim();
         if (!name || name.length > 40) throw fail(403, '메인 화면에서 이름을 확인하고 방을 열어 주세요.');
@@ -181,7 +181,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       applyConfig(r, req.body);
       if (r.config.teamMode) {
         const waiting = students(r).filter((s) => s.team === null).length;
-        if (waiting) throw fail(409, `아직 팀이 없는 학생이 ${waiting}명 있어요.`);
+        if (waiting) throw fail(409, `아직 팀이 없는 사람이 ${waiting}명 있어요.`);
         if (Core.teamBoard(board(r), r.config.teamCount).filter((t) => t.size).length < 2)
           throw fail(409, '두 팀 이상에 학생이 있어야 출발할 수 있어요.');
       }

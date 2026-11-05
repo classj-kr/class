@@ -84,15 +84,17 @@ test('team race: self-pick, 5-member cap, teacher moves, shuffle, start checks, 
   assert.equal((await req(path + '/team', { team: 1 }, kids[5].token)).status, 409, 'five per team');
   assert.equal((await req(path + '/team', { team: 2 }, kids[5].token)).status, 400);
   assert.equal((await req(path + '/team', { team: 0 }, kids[5].token)).status, 200);
-  assert.equal((await req(path + '/start', {}, host, 'teacher')).data.message, '아직 팀이 없는 학생이 1명 있어요.');
+  assert.equal(made.state.me.plays, true, 'the teacher host races too');
+  assert.equal((await req(path + '/team', { team: 0 }, host)).status, 200);
+  assert.equal((await req(path + '/start', {}, host, 'teacher')).data.message, '아직 팀이 없는 사람이 1명 있어요.');
   assert.equal((await req(path + '/assign', { playerId: kids[6].state.me.id, team: 0 }, kids[0].token)).status, 403);
   const moved = (await req(path + '/assign', { playerId: kids[6].state.me.id, team: 0 }, host, 'teacher')).data;
-  assert.deepEqual(moved.teams.map((x) => x.size), [2, 5], 'uneven teams are allowed');
+  assert.deepEqual(moved.teams.map((x) => x.size), [3, 5], 'uneven teams are allowed');
   const shrunk = (await req(path + '/settings', { teamCount: 3, teamScore: 'avg' }, host, 'teacher')).data;
   assert.equal(shrunk.config.teamScore, 'sum');
   assert.equal(shrunk.teams.length, 3);
   const shuffled = (await req(path + '/shuffle', {}, host, 'teacher')).data;
-  assert.deepEqual(shuffled.teams.map((x) => x.size).sort(), [2, 2, 3]);
+  assert.deepEqual(shuffled.teams.map((x) => x.size).sort(), [2, 3, 3]);
   assert.ok(shuffled.participants.every((x) => x.team !== null));
   const started = (await req(path + '/start', { teamCount: 3, teamScore: 'avg' }, host, 'teacher')).data;
   assert.equal(started.config.teamScore, 'sum');
@@ -184,7 +186,7 @@ test('teacher room, shared entry, live scoring, combo, speed guard, and results'
     type: 'typing',
     href: `/learning/inquiry/information-computing/typing/race/?room=${code}`,
   });
-  assert.equal((await req(path + '/start', {}, host, 'teacher')).status, 409, 'needs a student');
+  assert.equal(made.data.state.me.plays, true, 'the teacher host races like a student host');
   const a = (await req(path + '/join', { avatarUrl: '/assets/avatars/animal-fox.webp' }, '', '', '가람')).data;
   const b = (await req(path + '/join', { avatarUrl: 'https://evil.example/x.webp' }, '', '', '나래')).data;
   assert.equal(a.state.me.avatarUrl, '/assets/avatars/animal-fox.webp');
@@ -194,7 +196,7 @@ test('teacher room, shared entry, live scoring, combo, speed guard, and results'
   assert.equal(again.state.me.avatarUrl, '/assets/avatars/animal-fox.webp', 'avatar survives a reload');
   assert.equal((await req(path, undefined, a.token)).status, 403, 'the old tab loses the seat');
   a.token = again.token;
-  assert.equal(again.state.participants.length, 2);
+  assert.equal(again.state.participants.length, 3, 'teacher + two students');
   assert.notEqual(a.state.me.racer, b.state.me.racer);
   assert.equal((await req(path + '/start', {}, a.token, 'teacher')).status, 403, 'students cannot start');
   const started = (await req(path + '/start', { mode: 'en-words', duration: 60 }, host, 'teacher')).data;
