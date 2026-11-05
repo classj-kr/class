@@ -1,11 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import { RaceAvatar, RaceBackdrop } from "../../components/arithmetic-race-scene";
+import { RACE_TEAM_COUNTS, RACE_TEAMS } from "../../../lib/arithmetic-race-teams";
 
-type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null };
+type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null; teamCount?: number | null };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
-type Board = { participants: Array<{ id: string; name: string; avatarUrl?: string | null }>; race: Race };
+type Person = { id: string; name: string; avatarUrl?: string | null; team?: number | null };
+type Board = { participants: Person[]; race: Race };
 
 function normalizedPlayerName(value: string | null) {
   return String(value ?? "").trim().replace(/[^가-힣a-zA-Z0-9]/g, "").slice(0, 20);
@@ -19,6 +22,7 @@ export default function ArithmeticRaceJoinPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [entryRoom, setEntryRoom] = useState("");
+  const [refresh, setRefresh] = useState(0);
   const joinedFromEntry = useRef("");
   const avatar = useRef<Promise<string | null> | null>(null);
 
@@ -97,7 +101,7 @@ export default function ArithmeticRaceJoinPage() {
     void check();
     const poll = window.setInterval(check, 1500);
     return () => { active = false; window.clearInterval(poll); };
-  }, [activeRoom, activeHost, activeParticipant, activeToken]);
+  }, [activeRoom, activeHost, activeParticipant, activeToken, refresh]);
 
   // 아바타를 기다리느라 입장이 늦어지지 않게 잠깐만 기다린다.
   const avatarUrl = useCallback(() => Promise.race([
@@ -137,6 +141,24 @@ export default function ArithmeticRaceJoinPage() {
     void joinRoom(entryRoom, name);
   }, [entryRoom, name, joined, joinRoom]);
 
+  // 팀전 설정·팀 고르기·섞기. 바로 다시 불러와 화면에 반영한다.
+  async function teamAction(body: Record<string, unknown>) {
+    if (!joined) return;
+    setError("");
+    try {
+      const response = await fetch("/api/arithmetic-race", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ roomCode: joined.roomCode, hostToken: joined.hostToken, participantId: joined.participantId, participantToken: joined.participantToken, ...body }),
+      });
+      const data = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(data.error || "팀을 바꾸지 못했습니다.");
+      setRefresh((value) => value + 1);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "팀을 바꾸지 못했습니다.");
+    }
+  }
+
   async function startRace() {
     if (!joined?.hostToken) return;
     setLoading(true);
@@ -156,6 +178,9 @@ export default function ArithmeticRaceJoinPage() {
     }
   }
 
+  const teamCount = joined?.race.mode === "cards" ? joined.race.teamCount ?? null : null;
+  const myTeam = board?.participants.find((participant) => participant.id === joined?.participantId)?.team ?? null;
+
   return (
     <main className="portal-page race-entry-page math-race math-race-lobby">
       <RaceBackdrop />
@@ -165,9 +190,32 @@ export default function ArithmeticRaceJoinPage() {
           <section className="race-waiting-card" aria-live="polite">
             <span>친구를 초대해요</span><strong className="race-room-code">{joined.roomCode}</strong>
             <h2>{joined.race.worksheetName || "학습지 확인 중"}</h2>
-            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note"><b>{joined.race.durationSeconds / 60}분</b><span>맞히면 +1 · 틀리면 −1 · 포기 −2</span></p> : null}
+            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note"><b>{joined.race.durationSeconds / 60}분</b><span>맞히면 +1 · 틀리면 −1 · 포기 −2{teamCount ? " · 팀 점수는 팀원 점수의 합" : ""}</span></p> : null}
             <div className="math-race-ready"><i aria-hidden="true" />{board ? `${board.participants.length}명 준비 완료` : "출발 준비 중"}</div>
-            {board ? <ul className="race-participant-list" aria-label="참가자 명단">
+            {joined.hostToken && joined.race.mode === "cards" ? (
+              <div className="math-race-team-setup" role="group" aria-label="경기 방식">
+                {[null, ...RACE_TEAM_COUNTS].map((count) => <button key={count ?? "solo"} type="button" aria-pressed={(joined.race.teamCount ?? null) === count}
+                  onClick={() => void teamAction({ action: "teams", teamCount: count })}>{count ? `${count}팀` : "개인전"}</button>)}
+                {teamCount ? <button type="button" className="math-race-shuffle" onClick={() => void teamAction({ action: "shuffle" })}>🔀 섞기</button> : null}
+              </div>
+            ) : null}
+            {board && teamCount ? <>
+              <div className="math-race-team-pick" style={{ "--teams": teamCount } as CSSProperties}>
+                {RACE_TEAMS.slice(0, teamCount).map((team, index) => {
+                  const members = board.participants.filter((participant) => participant.team === index);
+                  const mine = myTeam === index;
+                  return <section key={team.name} className={`math-race-team-column${mine ? " is-mine" : ""}`} style={{ "--hue": team.hue } as CSSProperties}>
+                    <button type="button" className="math-race-team-head" aria-pressed={mine} onClick={() => void teamAction({ action: "team", team: index })}>
+                      <i aria-hidden="true">{team.symbol}</i><b>{team.name}</b><small>{members.length}명</small>
+                    </button>
+                    <ul aria-label={`${team.name} 명단`}>{members.map((participant) => <li key={participant.id}><RaceAvatar {...participant} /><span>{participant.name}</span>{participant.id === joined.participantId ? <em>나</em> : null}</li>)}</ul>
+                  </section>;
+                })}
+              </div>
+              {board.participants.some((participant) => participant.team === null || participant.team === undefined) ? <p className="math-race-team-waiting">
+                {myTeam === null ? "들어갈 팀을 눌러요. " : ""}아직 팀이 없는 {board.participants.filter((participant) => participant.team === null || participant.team === undefined).length}명은 출발할 때 사람이 적은 팀에 들어가요.
+              </p> : null}
+            </> : board ? <ul className="race-participant-list" aria-label="참가자 명단">
               {board.participants.map((participant, index) => <li key={participant.id} style={{ animationDelay: `${index * .07}s` }}>
                 <RaceAvatar {...participant} /><span>{participant.name}</span>
                 {participant.id === joined.participantId ? <span className="race-host-badge">{joined.hostToken ? "방장 · 나" : "나"}</span> : null}

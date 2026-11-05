@@ -2,6 +2,7 @@ import { raceWorksheetByRoute } from "../../../lib/arithmetic-worksheets";
 import { rankArrivedParticipants, rankCardParticipants } from "../../../lib/arithmetic-race-ranking";
 import { hasRaceCards, isRaceAnswerCorrect, RACE_DURATIONS, raceAnswerText, raceCard } from "../../../lib/race-cards";
 import { raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
+import { fillRaceTeams, raceTeamBoard, raceTeamCount, shuffleRaceTeams } from "../../../lib/arithmetic-race-teams";
 import { requestRoomCode } from "../../../../../../shared/room-codes.cjs";
 
 function error(message: string, status = 400) {
@@ -26,6 +27,7 @@ function publicRace(race: RaceRow) {
     startedAt: race.started_at,
     mode: race.duration_seconds ? "cards" : "sheet",
     durationSeconds: race.duration_seconds ?? null,
+    teamCount: race.duration_seconds ? race.team_count ?? null : null,
     endsAt: race.duration_seconds && race.started_at ? race.started_at + race.duration_seconds * 1000 : null,
   };
 }
@@ -48,6 +50,7 @@ function cardRanking(rows: ParticipantRow[]) {
     wrongCount: Number(row.mistake_count) || 0,
     skipCount: Number(row.skip_count) || 0,
     avatarUrl: row.avatar_url ?? null,
+    team: row.team ?? null,
     rank: index + 1,
   }));
 }
@@ -61,6 +64,7 @@ function cardParticipant(row: ParticipantRow) {
     correctCount: Number(row.correct_count) || 0,
     wrongCount: Number(row.mistake_count) || 0,
     skipCount: Number(row.skip_count) || 0,
+    team: row.team ?? null,
   };
 }
 
@@ -96,9 +100,10 @@ export async function GET(request: Request) {
       return Response.json({
         race: publicRace(race),
         serverNow: Date.now(),
-        participants: participants.map((row) => ({ id: row.id, name: row.name, avatarUrl: row.avatar_url ?? null })),
+        participants: participants.map((row) => ({ id: row.id, name: row.name, avatarUrl: row.avatar_url ?? null, team: row.team ?? null })),
         participant: me ? { ...cardParticipant(me), rank: ranking.find((entry) => entry.id === me.id)?.rank ?? null } : null,
         ranking,
+        teams: race.team_count ? raceTeamBoard(participants, race.team_count) : null,
       });
     }
     const ranking = rankedParticipants(participants);
@@ -225,6 +230,10 @@ export async function POST(request: Request) {
       const code = String(payload.roomCode ?? "").trim();
       const hostToken = String(payload.hostToken ?? payload.teacherToken ?? "");
       const race = await store.race(code);
+      // 팀전에서 아직 팀을 안 고른 사람은 가장 적은 팀에 넣고 출발한다.
+      if (race?.team_count && race.teacher_token === hostToken && race.status === "waiting") {
+        await store.setTeams(code, fillRaceTeams(await store.participants(code), race.team_count));
+      }
       // 모두 같은 서버 시각에 출발하며 준비 시간은 제한 시간에서 빼지 않는다.
       const startedAt = Date.now() + (race?.duration_seconds ? 3500 : 0);
       const started = await store.startRace(code, hostToken, startedAt);
@@ -296,6 +305,40 @@ export async function POST(request: Request) {
       if (!recorded) return Response.json({ stale: true, participant: cardParticipant(me) }, { status: 409 });
       // 틀렸을 때는 다시 풀어야 하므로 정답을 알려 주지 않는다.
       return Response.json({ outcome, answer: outcome === "skip" ? raceAnswerText(card) : "", participant: cardParticipant(me) });
+    }
+
+    if (action === "teams" || action === "shuffle") {
+      const code = String(payload.roomCode ?? "").trim();
+      const hostToken = String(payload.hostToken ?? "");
+      const race = await store.race(code);
+      if (!race || race.teacher_token !== hostToken) return error("방장 권한을 확인하세요.", 403);
+      if (!race.duration_seconds) return error("팀전은 카드 순위전에서만 할 수 있습니다.");
+      if (race.status !== "waiting") return error("출발한 뒤에는 팀을 바꿀 수 없습니다.", 409);
+      if (action === "teams") {
+        const teamCount = payload.teamCount === null ? null : raceTeamCount(payload.teamCount);
+        if (payload.teamCount !== null && teamCount === null) return error("팀 수를 확인하세요.");
+        await store.setTeamCount(code, hostToken, teamCount);
+      } else {
+        if (!race.team_count) return error("팀전이 아닙니다.");
+        await store.setTeams(code, shuffleRaceTeams(await store.participants(code), race.team_count));
+      }
+      return Response.json({ ok: true });
+    }
+
+    if (action === "team") {
+      const code = String(payload.roomCode ?? "").trim();
+      const participantId = String(payload.participantId ?? "");
+      const participantToken = String(payload.participantToken ?? "");
+      const race = await store.race(code);
+      if (!race) return error("없는 방입니다.", 404);
+      if (!race.team_count) return error("팀전이 아닙니다.");
+      if (race.status !== "waiting") return error("출발한 뒤에는 팀을 바꿀 수 없습니다.", 409);
+      const team = Number(payload.team);
+      if (!Number.isInteger(team) || team < 0 || team >= race.team_count) return error("팀을 확인하세요.");
+      const me = (await store.participants(code)).find((row) => row.id === participantId && row.participant_token === participantToken);
+      if (!me) return error("학생 입장 정보를 확인하세요.", 403);
+      await store.setTeams(code, [{ id: me.id, team }]);
+      return Response.json({ ok: true, team });
     }
 
     if (action === "delete") {

@@ -45,7 +45,7 @@
 .math-race .race-waiting-card > span { color: var(--pencil-soft); font-size: 14px; font-weight: 800; }
 .math-race .race-waiting-card .race-room-code { display: block; margin: 6px 0 18px; color: var(--blue); font-size: clamp(44px, 8vw, 66px); font-weight: 900; letter-spacing: .14em; font-variant-numeric: tabular-nums; }
 .math-race .race-waiting-card h2 { margin: 0 0 14px; color: var(--pencil); font-size: 21px; line-height: 1.5; }
-.math-race .race-mode-note { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; margin: 0; color: var(--pencil-soft); font-size: 14px; font-weight: 700; }
+.math-race .race-mode-note { word-break: keep-all; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; margin: 0; color: var(--pencil-soft); font-size: 14px; font-weight: 700; }
 .math-race .race-mode-note b { padding: 3px 12px; border-radius: 4px; background: #e6edfb; color: var(--blue); }
 .math-race-ready { display: flex; justify-content: center; align-items: center; gap: 7px; margin: 24px 0 12px; color: var(--green); font-size: 15px; font-weight: 800; }
 .math-race-ready > i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; animation: math-race-blink 1s ease-in-out infinite alternate; }
@@ -166,7 +166,7 @@
 /* 결과 */
 .math-race .card-race-result { width: min(660px, 100%); margin: 8px auto 0; padding: 30px 24px; border: 1px solid #d5dceb; border-radius: 6px; background: white; color: var(--pencil); box-shadow: 0 3px 0 #e1e7f1, 0 16px 38px #1d27421f; }
 .math-race .card-race-result > span { color: var(--green); }
-.math-race .card-race-result h2 { margin: 10px 0; font-size: clamp(44px, 10vw, 68px); color: var(--blue); }
+.math-race .card-race-result h2 { margin: 10px 0; font-weight: 900; word-break: keep-all; font-size: clamp(44px, 10vw, 68px); color: var(--blue); }
 .math-race .card-race-result p { color: var(--pencil-soft); }
 .math-race .card-race-result p b { color: var(--pencil); }
 .math-race .card-race-podium { gap: 10px; margin: 28px 0; }
@@ -186,6 +186,44 @@
 .math-race .card-race-board li.is-me { background: #e6edfb; outline-color: var(--blue); }
 .math-race .race-form-error { position: relative; color: var(--red); background: #fff0f1; border-radius: 6px; padding: 12px; text-align: center; }
 
+/* 팀전: 네 연산 기호 팀. 대기실에서 팀 칸을 눌러 들어간다. */
+.math-race-team-setup { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 18px 0 4px; }
+.math-race .math-race-team-setup button { min-height: 40px; padding: 6px 16px; border: 1px solid #cdd6e6; border-radius: 8px; color: var(--pencil); background: white; font: inherit; font-size: 15px; font-weight: 800; cursor: pointer; }
+.math-race .math-race-team-setup button[aria-pressed="true"] { color: white; border-color: var(--blue); background: var(--blue); }
+.math-race .math-race-team-setup .math-race-shuffle { border-style: dashed; }
+.math-race-team-pick { display: grid; grid-template-columns: repeat(var(--teams), minmax(0, 1fr)); gap: 8px; margin: 18px 0 10px; }
+.math-race-team-column { min-width: 0; border: 2px solid hsl(var(--hue) 55% 82%); border-radius: 8px; background: hsl(var(--hue) 70% 97%); overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.math-race-team-column.is-mine { border-color: hsl(var(--hue) 65% 48%); box-shadow: 0 0 0 3px hsl(var(--hue) 70% 50% / .18); transform: translateY(-3px); }
+.math-race .math-race-team-head { display: grid; justify-items: center; gap: 2px; width: 100%; padding: 10px 4px 8px; border: 0; color: hsl(var(--hue) 60% 30%); background: hsl(var(--hue) 70% 92%); font: inherit; cursor: pointer; }
+.math-race-team-head i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; color: white; background: hsl(var(--hue) 65% 50%); box-shadow: 0 3px 0 hsl(var(--hue) 60% 36%); font-size: 28px; font-style: normal; font-weight: 900; line-height: 1; }
+.math-race-team-column.is-mine .math-race-team-head i { animation: math-race-bob .7s ease-in-out infinite alternate; }
+.math-race-team-head b { font-size: 15px; }
+.math-race-team-head small { color: hsl(var(--hue) 30% 38%); font-size: 12px; font-weight: 700; }
+.math-race-team-column ul { display: grid; gap: 4px; max-height: min(260px, 32svh); margin: 0; padding: 8px 6px; overflow-y: auto; list-style: none; }
+.math-race-team-column li { display: flex; align-items: center; gap: 6px; min-width: 0; padding: 3px 4px; border-radius: 6px; background: white; font-size: 13px; font-weight: 800; animation: math-race-pin .4s cubic-bezier(.2, 1.3, .4, 1) both; }
+.math-race-team-column li .math-race-avatar { width: 26px; height: 26px; font-size: 12px; border-width: 1px; }
+.math-race-team-column li span:not(.math-race-avatar) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.math-race-team-column li em { margin-left: auto; color: var(--blue); font-size: 11px; font-style: normal; }
+.math-race-team-waiting { margin: 0 0 18px; color: var(--pencil-soft); font-size: 13px; font-weight: 700; }
+.math-race-team-symbol { color: white; background: hsl(var(--hue) 65% 50%); border-radius: 8px; font-size: 22px; }
+.math-race-teammates { display: grid; gap: 4px; margin: 12px 0 0; padding: 10px 0 0; border-top: 1px dashed #d5dceb; list-style: none; }
+.math-race-teammates li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 3px 6px; border-radius: 6px; font-size: 13px; font-weight: 800; }
+.math-race-teammates li.is-me { background: #e6edfb; color: var(--blue); }
+.math-race-teammates .math-race-avatar { width: 26px; height: 26px; font-size: 12px; border-width: 1px; }
+.math-race-teammates span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.math-race-teammates b { font-variant-numeric: tabular-nums; }
+.math-race-team-results { display: grid; gap: 8px; margin: 24px 0; padding: 0; list-style: none; text-align: left; }
+.math-race-team-results li { display: grid; grid-template-columns: 34px 44px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 10px 14px; border: 2px solid hsl(var(--hue) 55% 85%); border-radius: 8px; background: hsl(var(--hue) 70% 97%); animation: math-race-pin .5s cubic-bezier(.2, 1.3, .4, 1) both; }
+.math-race-team-results li:first-child { padding: 14px; border-color: hsl(var(--hue) 65% 50%); box-shadow: 0 6px 18px hsl(var(--hue) 60% 50% / .2); }
+.math-race-team-results li.is-mine { outline: 3px solid var(--blue); outline-offset: 2px; }
+.math-race-team-results em { font-size: 24px; font-style: normal; font-weight: 900; text-align: center; color: var(--pencil-soft); }
+.math-race-team-results i { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 8px; color: white; background: hsl(var(--hue) 65% 50%); font-size: 28px; font-style: normal; font-weight: 900; }
+.math-race-team-results span { display: grid; font-size: 18px; font-weight: 900; color: var(--pencil); }
+.math-race-team-results small { color: var(--pencil-soft); font-size: 12px; }
+.math-race-team-results b { color: var(--pencil); font-size: 22px; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) {
+  .math-race-team-pick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @keyframes math-race-drift { from { transform: translateY(0) rotate(-4deg); } to { transform: translateY(calc(-100svh - 120px)) rotate(6deg); } }
 @keyframes math-race-bob { to { transform: translateY(-5px); } }
 @keyframes math-race-blink { to { opacity: .3; } }

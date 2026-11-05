@@ -16,17 +16,19 @@ export function RaceBackdrop() {
   </div>;
 }
 
-export type RaceRunner = { id: string; name: string; score: number; rank: number; avatarUrl?: string | null };
+// 팀전에서는 사람 대신 팀이 탑을 쌓는다. 팀은 얼굴 대신 연산 기호를 단다.
+export type RaceRunner = { id: string; name: string; score: number; rank: number; avatarUrl?: string | null; symbol?: string; hue?: number };
 export function RaceAvatar({ name, avatarUrl }: { name: string; avatarUrl?: string | null }) {
   return avatarUrl ? <img className="math-race-avatar" src={avatarUrl} alt="" width={44} height={44} />
     : <span className="math-race-avatar" aria-hidden="true">{name.slice(0, 1)}</span>;
 }
 
 const TOWER_HEIGHT = 120;
+const whoLabel = (runner: RaceRunner) => runner.symbol ? "우리 팀" : "나";
 const ROW = 22;
 
 // 점수를 수 모형으로 쌓는다. 맞힐 때마다 일 모형이 한 칸 떨어지고, 열 개가 차면 십 모형 막대 하나로 합쳐진다.
-export function RaceTowers({ entries, myId, playing }: { entries: RaceRunner[]; myId?: string; playing: boolean }) {
+export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", unit = "명" }: { entries: RaceRunner[]; myId?: string; playing: boolean; title?: string; unit?: string }) {
   const me = entries.find(entry => entry.id === myId);
   const visible = entries.slice(0, 5);
   if (me && !visible.some(entry => entry.id === myId)) visible[visible.length - 1] = me;
@@ -34,16 +36,16 @@ export function RaceTowers({ entries, myId, playing }: { entries: RaceRunner[]; 
   // 막대가 많아지면 층을 얇게 해서 탑이 틀 안에 머문다.
   const row = Math.min(ROW, Math.floor(TOWER_HEIGHT / rows));
   return <section className="math-race-towers" aria-label="실시간 수 모형 탑">
-    <div className="math-race-towers-heading"><strong>수 모형 탑</strong><span>{entries.length}명{me ? ` · 나 ${me.rank}위` : ""}</span></div>
+    <div className="math-race-towers-heading"><strong>{title}</strong><span>{entries.length}{unit}{me ? ` · ${whoLabel(me)} ${me.rank}위` : ""}</span></div>
     <ol style={{ "--cols": Math.max(1, visible.length), "--row": `${row}px`, "--tower": `${TOWER_HEIGHT}px` } as CSSProperties}>
       {visible.map((entry, index) => {
-        const hue = [...entry.id].reduce((value, letter) => (value * 31 + letter.charCodeAt(0)) % 360, 0);
+        const hue = entry.hue ?? [...entry.id].reduce((value, letter) => (value * 31 + letter.charCodeAt(0)) % 360, 0);
         const score = Math.max(0, entry.score);
         const tens = Math.floor(score / 10), ones = score % 10;
         return <li key={entry.id} className={`${entry.id === myId ? "is-me " : ""}${entry.rank === 1 && entry.score > 0 ? "is-leader" : ""}`}
           style={{ "--slot": index, "--hue": hue } as CSSProperties}>
           <div className="math-race-tower" aria-label={`${entry.name} ${entry.score}점`}>
-            <span className={`math-race-climber${playing ? " is-playing" : ""}`}><RaceAvatar {...entry} /></span>
+            <span className={`math-race-climber${playing ? " is-playing" : ""}`}>{entry.symbol ? <span className="math-race-avatar math-race-team-symbol">{entry.symbol}</span> : <RaceAvatar {...entry} />}</span>
             {ones > 0 && <div className="math-race-ones">{Array.from({ length: ones }, (_, cube) => <i key={`${tens}-${cube}`} className="math-race-cube" />)}</div>}
             {Array.from({ length: tens }, (_, rod) => <i key={rod} className="math-race-rod" />).reverse()}
           </div>
