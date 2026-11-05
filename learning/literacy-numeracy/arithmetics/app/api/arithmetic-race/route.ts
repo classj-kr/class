@@ -291,7 +291,8 @@ export async function POST(request: Request) {
       const me = (await store.participants(code)).find((row) => row.id === participantId && row.participant_token === participantToken);
       if (!me) return error("학생 입장 정보를 확인하세요.", 403);
       if (!recorded) return Response.json({ stale: true, participant: cardParticipant(me) }, { status: 409 });
-      return Response.json({ outcome, answer: raceAnswerText(card), participant: cardParticipant(me) });
+      // 틀렸을 때는 다시 풀어야 하므로 정답을 알려 주지 않는다.
+      return Response.json({ outcome, answer: outcome === "skip" ? raceAnswerText(card) : "", participant: cardParticipant(me) });
     }
 
     if (action === "delete") {

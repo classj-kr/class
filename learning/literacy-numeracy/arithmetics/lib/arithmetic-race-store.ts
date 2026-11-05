@@ -27,6 +27,11 @@ export type ParticipantRow = {
   avatar_url?: string | null;
 };
 
+// 맞히면 +1, 틀리면 −1(같은 카드 다시), 포기하면 −2(다음 카드).
+export function raceCardScore(outcome: CardUpdate["outcome"]) {
+  return outcome === "correct" ? 1 : outcome === "wrong" ? -1 : -2;
+}
+
 export type CardUpdate = {
   roomCode: string;
   participantId: string;
@@ -130,19 +135,20 @@ export function d1RaceStore(db: D1Database): RaceStore {
       return Boolean(result.meta.changes);
     },
     async recordCard(update) {
-      // 카드 번호가 맞을 때만 한 번 반영해 같은 카드를 두 번 채점하지 않는다.
-      const score = update.outcome === "correct" ? 1 : update.outcome === "skip" ? -1 : 0;
+      // 카드 번호가 맞을 때만 반영해 같은 카드를 두 번 채점하지 않는다. 틀리면 같은 카드에 머문다.
+      const score = raceCardScore(update.outcome);
+      const advance = update.outcome === "wrong" ? 0 : 1;
       const result = await db.prepare(`UPDATE arithmetic_race_participants SET
-          card_index = card_index + 1,
+          card_index = card_index + ?,
           score = score + ?,
           correct_count = COALESCE(correct_count, 0) + ?,
           mistake_count = mistake_count + ?,
           skip_count = skip_count + ?,
-          total_count = COALESCE(total_count, 0) + 1,
-          scored_at = CASE WHEN ? = 0 THEN scored_at ELSE ? END
+          total_count = COALESCE(total_count, 0) + ?,
+          scored_at = ?
         WHERE id = ? AND room_code = ? AND participant_token = ? AND card_index = ?`)
-        .bind(score, update.outcome === "correct" ? 1 : 0, update.outcome === "wrong" ? 1 : 0, update.outcome === "skip" ? 1 : 0,
-          score, update.at, update.participantId, update.roomCode, update.participantToken, update.cardIndex)
+        .bind(advance, score, update.outcome === "correct" ? 1 : 0, update.outcome === "wrong" ? 1 : 0, update.outcome === "skip" ? 1 : 0,
+          advance, update.at, update.participantId, update.roomCode, update.participantToken, update.cardIndex)
         .run();
       return Boolean(result.meta.changes);
     },
@@ -218,14 +224,14 @@ export function memoryRaceStore(clock: () => number = Date.now): RaceStore {
       const participant = (roster.get(update.roomCode) ?? []).find((row) =>
         row.id === update.participantId && row.participant_token === update.participantToken);
       if (!participant || (participant.card_index ?? 0) !== update.cardIndex) return false;
-      const score = update.outcome === "correct" ? 1 : update.outcome === "skip" ? -1 : 0;
-      participant.card_index = update.cardIndex + 1;
-      participant.score = (participant.score ?? 0) + score;
+      const advance = update.outcome === "wrong" ? 0 : 1;
+      participant.card_index = update.cardIndex + advance;
+      participant.score = (participant.score ?? 0) + raceCardScore(update.outcome);
       participant.correct_count = (participant.correct_count ?? 0) + (update.outcome === "correct" ? 1 : 0);
       participant.mistake_count += update.outcome === "wrong" ? 1 : 0;
       participant.skip_count = (participant.skip_count ?? 0) + (update.outcome === "skip" ? 1 : 0);
-      participant.total_count = (participant.total_count ?? 0) + 1;
-      if (score) participant.scored_at = update.at;
+      participant.total_count = (participant.total_count ?? 0) + advance;
+      participant.scored_at = update.at;
       return true;
     },
     async closeRace(code, hostToken) {

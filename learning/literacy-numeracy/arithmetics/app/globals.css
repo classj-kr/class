@@ -1170,9 +1170,97 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 .card-race-actions .card-race-skip { background: white; color: var(--muted); border: 1px solid var(--line); }
 .card-race-actions button:disabled { opacity: .5; cursor: default; }
 
-.card-race-pop { position: absolute; top: 40px; right: max(8px, calc(50% - 300px)); margin: 0; font-size: 34px; font-weight: 900; pointer-events: none; animation: card-race-pop .7s ease-out forwards; }.card-race-pop.correct { color: var(--green); }
-.card-race-pop.skip { color: var(--red); }
-.card-race-pop.wrong { color: var(--red); font-size: 24px; animation: none; }
+/* 점수 팝: 맞히면 위로 튀어 오르고, 잃으면 아래로 떨어진다. */
+.card-race-pop { position: absolute; top: 40px; right: max(8px, calc(50% - 300px)); z-index: 3; margin: 0; font-size: 44px; font-weight: 900; pointer-events: none; text-shadow: 0 3px 0 white, 0 6px 16px rgba(24, 35, 59, .18); animation: card-race-pop .8s cubic-bezier(.2, .9, .3, 1.2) forwards; }
+.card-race-pop.correct { color: var(--green); }
+.card-race-pop.wrong, .card-race-pop.skip { color: var(--red); animation-name: card-race-drop; }
+.card-race-pop.skip { font-size: 52px; }
+
+/* 카드 상태별 연출 */
+.card-race-card.phase-wrong { animation: card-race-shake .42s; border-color: var(--red); box-shadow: 0 0 0 4px rgba(224, 72, 72, .25), 0 18px 40px rgba(224, 72, 72, .25); background: linear-gradient(160deg, white, #ffe3e0); }
+.card-race-card.phase-wrong .card-race-answer { border-color: var(--red); }
+.card-race-card.phase-leave { animation: card-race-out .3s ease-in forwards; pointer-events: none; }
+.card-race-card.phase-reveal { animation: card-race-tilt .3s ease-out; }
+.card-race-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+  border-radius: inherit;
+  background: linear-gradient(160deg, #2b3a5c, #18233b);
+  color: white;
+  text-align: center;
+  animation: card-race-flip .35s ease-out;
+  backface-visibility: hidden;
+}
+.card-race-reveal span { color: #f6b44b; font-weight: 900; letter-spacing: .1em; }
+.card-race-reveal strong { font-size: clamp(30px, 7vw, 52px); font-weight: 900; font-variant-numeric: tabular-nums; }
+.page-shake, .card-race-page.is-shaking .card-race-layout { animation: card-race-jolt .3s; }
+
+/* 맞혔을 때 카드 가운데에서 터지는 색종이 */
+.card-race-burst { position: absolute; top: 150px; left: 50%; z-index: 3; width: 0; height: 0; pointer-events: none; }
+.card-race-burst i { position: absolute; width: 10px; height: 14px; border-radius: 2px; animation: card-race-burst .8s cubic-bezier(.1, .8, .3, 1) forwards; }
+
+/* 점수가 바뀔 때마다 통통 튄다. */
+.card-race-score { animation: card-race-bump .35s cubic-bezier(.2, .9, .3, 1.4); }
+.card-race-score.is-negative, .card-race-result b.is-negative { color: var(--red); }
+.card-race-timebar.is-hurry i { background: linear-gradient(90deg, var(--red), #ff8f6b); animation: card-race-blink .5s ease-in-out infinite alternate; }
+.card-race-streak.is-hot { color: white; background: linear-gradient(90deg, #ff6a00, #ee0979); box-shadow: 0 0 18px rgba(238, 9, 121, .45); }
+
+/* 5연속마다 화면 가운데 큰 배너, 순위가 오르면 위에서 알림 */
+.card-race-banner {
+  position: fixed;
+  top: 38%;
+  left: 50%;
+  z-index: 1100;
+  margin: 0;
+  padding: 14px 34px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #ff9a3c, #ff5e62);
+  color: white;
+  font-size: clamp(34px, 8vw, 64px);
+  font-weight: 900;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 18px 50px rgba(255, 94, 98, .45);
+  animation: card-race-banner 1.3s cubic-bezier(.2, .9, .3, 1.2) forwards;
+}
+.card-race-banner.mega { background: linear-gradient(90deg, #8e2de2, #ee0979, #ff6a00); }
+.card-race-toast {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  z-index: 1100;
+  margin: 0;
+  padding: 10px 22px;
+  border-radius: 99px;
+  background: #18233b;
+  color: #ffe08a;
+  font-size: 20px;
+  font-weight: 900;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 10px 30px rgba(24, 35, 59, .3);
+  animation: card-race-toast 1.8s ease-out forwards;
+}
+
+/* 결과 화면: 시상대와 색종이 비 */
+.card-race-podium { display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; gap: 8px; margin: 22px 0 8px; }
+.card-race-podium .step { display: grid; justify-items: center; gap: 2px; padding: 10px 6px 0; border-radius: 14px 14px 0 0; background: linear-gradient(180deg, var(--coral-soft), white); animation: card-race-rise .6s cubic-bezier(.2, .9, .3, 1.2) both; }
+.card-race-podium .step.empty { background: none; animation: none; }
+.card-race-podium .step-1 { min-height: 170px; background: linear-gradient(180deg, #fff1b8, #fffaf0); }
+.card-race-podium .step-2 { min-height: 135px; background: linear-gradient(180deg, #e9eef5, white); }
+.card-race-podium .step-3 { min-height: 110px; background: linear-gradient(180deg, #f7dcc6, white); }
+.card-race-podium .step.is-me { outline: 3px solid var(--coral); }
+.card-race-podium .medal { font-size: 34px; animation: card-race-bob 1.6s ease-in-out infinite alternate; }
+.card-race-podium strong { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; }
+.card-race-podium b { color: var(--coral); }
+.card-race-podium i { margin-top: auto; padding-bottom: 6px; color: rgba(24, 35, 59, .25); font-size: 34px; font-style: normal; font-weight: 900; }
+.card-race-rain { position: fixed; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.card-race-rain i { position: absolute; top: -20px; width: 10px; height: 16px; border-radius: 2px; animation: card-race-rain 3s linear infinite; }
+.card-race-result { position: relative; z-index: 2; }
 /* 연속 정답 표시는 카드 위에 겹쳐 띄워, 생겼다 사라져도 문제 카드가 밀리지 않게 한다. */
 .card-race-streak { position: absolute; top: -14px; left: 0; right: 0; z-index: 1; width: fit-content; margin: 0 auto; padding: 2px 14px; border-radius: 99px; background: white; box-shadow: 0 4px 14px rgba(24, 35, 59, .12); color: #e8590c; font-size: 22px; font-weight: 900; white-space: nowrap; pointer-events: none; animation: card-race-in .3s; }
 
@@ -1215,7 +1303,20 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 
 @keyframes card-race-in { from { opacity: 0; transform: translateY(18px) scale(.94) rotate(-1.5deg); } to { opacity: 1; transform: none; } }
 @keyframes card-race-shake { 0%, 100% { transform: none; } 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
-@keyframes card-race-pop { from { opacity: 1; transform: translateY(0) scale(1.2); } to { opacity: 0; transform: translateY(-40px) scale(.9); } }
+@keyframes card-race-pop { 0% { opacity: 0; transform: translateY(10px) scale(.6); } 25% { opacity: 1; transform: translateY(-6px) scale(1.35); } 100% { opacity: 0; transform: translateY(-60px) scale(1); } }
+@keyframes card-race-drop { 0% { opacity: 0; transform: translateY(-10px) scale(1.4); } 25% { opacity: 1; transform: translateY(0) scale(1.2) rotate(-6deg); } 100% { opacity: 0; transform: translateY(70px) scale(.9) rotate(8deg); } }
+@keyframes card-race-out { to { opacity: 0; transform: translateX(130%) rotate(14deg) scale(.9); } }
+@keyframes card-race-tilt { 50% { transform: rotateY(12deg) scale(1.02); } }
+@keyframes card-race-flip { from { opacity: 0; transform: rotateY(-90deg); } to { opacity: 1; transform: none; } }
+@keyframes card-race-jolt { 25% { transform: translate(-3px, 2px); } 50% { transform: translate(3px, -2px); } 75% { transform: translate(-2px, 1px); } }
+@keyframes card-race-burst { 0% { opacity: 1; transform: translate(0, 0) scale(.4); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), calc(var(--y) + 40px)) scale(1) rotate(260deg); } }
+@keyframes card-race-bump { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+@keyframes card-race-blink { from { opacity: 1; } to { opacity: .55; } }
+@keyframes card-race-banner { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.3) rotate(-8deg); } 25% { opacity: 1; transform: translate(-50%, -50%) scale(1.1) rotate(2deg); } 75% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -80%) scale(.9); } }
+@keyframes card-race-toast { 0% { opacity: 0; transform: translate(-50%, -30px); } 15%, 80% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -20px); } }
+@keyframes card-race-rise { from { opacity: 0; transform: translateY(40px) scaleY(.6); transform-origin: bottom; } to { opacity: 1; transform: none; } }
+@keyframes card-race-bob { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+@keyframes card-race-rain { from { transform: translateY(0) rotate(0); } to { transform: translateY(110vh) rotate(720deg); } }
 @keyframes card-race-pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
 
 @media (max-width: 760px) {
@@ -1229,7 +1330,10 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-race-card, .card-race-pop, .card-race-streak, .card-race-result, .card-race-top time.is-hurry { animation: none; }
+  .card-race-card, .card-race-pop, .card-race-streak, .card-race-result, .card-race-top time.is-hurry,
+  .card-race-score, .card-race-burst, .card-race-rain, .card-race-podium .medal, .card-race-timebar.is-hurry i,
+  .card-race-page.is-shaking .card-race-layout { animation: none; }
+  .card-race-burst, .card-race-rain, .card-race-banner, .card-race-toast { display: none; }
 }
 
 /* 2구구단① */
