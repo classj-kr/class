@@ -80,6 +80,44 @@ test("뜻이 비슷한 관용어는 서로의 오답으로 나오지 않는다",
   }
 });
 
+test("진행 중인 학습은 고친 문구를 쓰면서 문제 순서와 답안을 유지한다", async () => {
+  for (const expression of ["가면을 벗다", "귀가 따갑다"]) {
+    const item = data.find(entry => entry.expression === expression);
+    const first = await openLessonPage(pageDir);
+    await first.lessonButtons()[item.lesson].onclick();
+    const checkpoint = JSON.parse(JSON.stringify(first.session.checkpoint));
+    checkpoint.studyIndex = checkpoint.items.findIndex(entry => entry.expression === expression);
+    checkpoint.quizIndex = checkpoint.quiz.findIndex(question => question.item.expression === expression);
+    const question = checkpoint.quiz[checkpoint.quizIndex];
+    question.tried = [(question.answer + 1) % 3, question.answer];
+    question.solved = true;
+    for (const entry of [checkpoint.items[checkpoint.studyIndex], question.item]) {
+      entry.meaning = "수정 전 뜻풀이.";
+      entry.example = "수정 전 예문이에요.";
+      entry.question = "수정 전 문제예요.";
+    }
+    const originalProgress = JSON.stringify(checkpoint.quiz.map(({ item: entry, ...progress }) => ({ expression: entry.expression, ...progress })));
+    const resumed = await openLessonPage(pageDir, [{
+      contentKey: `ko:${item.lesson}`, status: "active", checkpoint
+    }]);
+    await resumed.lessonButtons()[item.lesson].onclick();
+    assert.equal(resumed.byId("expression").textContent, expression);
+    assert.equal(resumed.byId("meaning").textContent, item.meaning);
+    assert.equal(resumed.byId("example").textContent, `예: ${item.example}`);
+    const restored = resumed.session.checkpoint;
+    assert.equal(restored.studyIndex, checkpoint.studyIndex);
+    assert.equal(restored.quizIndex, checkpoint.quizIndex);
+    assert.equal(restored.mode, checkpoint.mode);
+    assert.deepEqual(Array.from(restored.items, entry => entry.expression), checkpoint.items.map(entry => entry.expression));
+    assert.equal(JSON.stringify(restored.quiz.map(({ item: entry, ...progress }) => ({ expression: entry.expression, ...progress }))), originalProgress);
+    await resumed.tab(".mode-tab", "quiz").onclick();
+    assert.equal(resumed.byId("question").textContent, item.question);
+    assert.equal(resumed.byId("feedback").textContent, `정답! ${item.meaning}`);
+    assert.equal(resumed.byId("nextQuestion").disabled, false);
+    assert.equal(resumed.saves.at(-1).checkpoint.quiz[checkpoint.quizIndex].item.question, item.question);
+  }
+});
+
 test("관용구 화면과 메인 메뉴가 내용별 차시 학습에 연결된다", async () => {
   assert.match(menu, /href="learning\/literacy-numeracy\/idiomatic-expressions\/"/);
   assert.match(menu, /<strong>관용어<\/strong>/);

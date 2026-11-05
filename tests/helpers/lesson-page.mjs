@@ -38,7 +38,11 @@ export async function openLessonPage(pageDir, sessions = []) {
   const records = {
     ready: Promise.resolve(),
     history: async () => ({ sessions, nextOffset: null }),
-    start: async (session) => { page.session = session; return session; },
+    start: async (session) => {
+      const saved = sessions.find(item => item.contentKey === session.contentKey && item.status === 'active' && item.checkpoint);
+      page.session = saved ? { ...session, checkpoint: structuredClone(saved.checkpoint) } : session;
+      return page.session;
+    },
     save: async (payload) => { page.saves.push(payload); },
     showResult() { page.results += 1; }
   };
