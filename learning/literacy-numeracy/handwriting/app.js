@@ -8,11 +8,21 @@
     vowels: 'ㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣ',
     gana: '가나다라마바사아자차카타파하',
     double: '까따빠싸짜애얘에예와왜외워웨위의',
-    nature: '나무바다하늘꽃구름',
-    school: '학교친구연필책가방',
-    sentence: '나는 나를 믿어요',
+    nature: '나무 바다 하늘 꽃 구름',
+    school: '학교 친구 연필 책 가방',
+    sentence: '바른 글씨는 바른 마음',
     custom: '',
   };
+  // 속담·한자성어·관용어: 학습 자료에서 뽑은 문구를 무작위로 하나씩 쓴다(writing-texts.js).
+  const banks = window.HANDWRITING_TEXTS || {};
+  const isBank = (lesson) => Array.isArray(banks[lesson]) && banks[lesson].length > 0;
+  const knownLesson = (lesson) => presets[lesson] !== undefined || isBank(lesson);
+  function pick(lesson, avoid = '') {
+    const list = banks[lesson].filter(([text]) => text !== avoid);
+    return (list.length ? list : banks[lesson])[Math.floor(Math.random() * (list.length || banks[lesson].length))][0];
+  }
+  const meaningOf = (lesson, text) => (isBank(lesson) ? (banks[lesson].find(([t]) => t === text) || [])[1] || '' : '');
+
   let doc = fresh('가나다라마바사아자차카타파하', 'gana'),
     store,
     saveTimer,
@@ -29,10 +39,14 @@
     inRoom = false,
     saveKey = 'draft',
     undo = [],
-    redo = [];
-  const canvas = $('writingCanvas'),
-    ctx = canvas.getContext('2d'),
-    modelCanvas = $('modelCanvas');
+    redo = [],
+    builtFor = '',
+    cells = [],
+    marks = [];
+  const CELL_PIXELS = 240;
+  // 지금 쓰는 칸(쓰기 캔버스·본보기 캔버스). 칸을 고르면 바뀐다.
+  let canvas = null,
+    modelCanvas = null;
   function fresh(text, lesson = 'custom', phase = 'trace') {
     return {
       version: 8,
@@ -61,11 +75,7 @@
       !C.supported(raw.text)
     )
       throw Error('저장된 연습을 읽지 못했어요.');
-    const next = fresh(
-      raw.text,
-      presets[raw.lesson] !== undefined ? raw.lesson : 'custom',
-      raw.phase === 'solo' ? 'solo' : 'trace',
-    );
+    const next = fresh(raw.text, knownLesson(raw.lesson) ? raw.lesson : 'custom', raw.phase === 'solo' ? 'solo' : 'trace');
     next.cells.trace = C.validateCells(raw.text, raw.cells?.trace);
     next.cells.solo = C.validateCells(raw.text, raw.cells?.solo);
     next.index = Math.max(0, Math.min(next.cells.trace.length - 1, Number(raw.index) || 0));
@@ -135,6 +145,7 @@
     path(paint, points, '#000', 12);
     context.drawImage(layer, 0, 0, 100, 100);
   }
+  // 칸 하나: 쓰기 칸과 본보기 칸이 같은 크기·같은 보조선을 쓴다.
   function paper(context, char, strokes, { guide = true, trace = false, next = false } = {}) {
     context.save();
     context.setTransform(context.canvas.width / 100, 0, 0, context.canvas.height / 100, 0, 0);
@@ -142,29 +153,10 @@
     context.fillStyle = '#fffefa';
     context.fillRect(0, 0, 100, 100);
     if (guide) {
-      context.setLineDash([1, 1.5]);
-      path(
-        context,
-        [
-          [50, 0],
-          [50, 100],
-        ],
-        '#d8ded1',
-        0.35,
-      );
-      path(
-        context,
-        [
-          [0, 50],
-          [100, 50],
-        ],
-        '#d8ded1',
-        0.35,
-      );
+      context.setLineDash([1.6, 2]);
+      path(context, [[50, 0], [50, 100]], '#d8ded1', 0.5);
+      path(context, [[0, 50], [100, 50]], '#d8ded1', 0.5);
       context.setLineDash([]);
-      context.strokeStyle = '#e3e7dd';
-      context.lineWidth = 0.35;
-      context.strokeRect(4, 4, 92, 92);
     }
     const paths = C.model(char) || [];
     if (trace && referenceReady) reference(context, char, '#cdd3c7');
@@ -173,50 +165,121 @@
       const s = paths[strokes.length];
       context.fillStyle = '#cb763f';
       context.beginPath();
-      context.arc(s[0][0], s[0][1], 1.1, 0, Math.PI * 2);
+      context.arc(s[0][0], s[0][1], 1.4, 0, Math.PI * 2);
       context.fill();
     }
     context.restore();
   }
-  function draw() {
-    frame = 0;
-    const strokes = [...current()];
-    if (active && active.canvas === canvas) strokes.push(active.stroke);
-    paper(ctx, letters()[doc.index], strokes, { guide: doc.guide, trace: doc.phase === 'trace', next: true });
+  function draw(i = doc.index) {
+    if (i === doc.index) frame = 0;
+    const cell = cells[i];
+    if (!cell) return;
+    const strokes = [...doc.cells[doc.phase][i]];
+    if (active && active.canvas === cell.write) strokes.push(active.stroke);
+    paper(cell.write.getContext('2d'), letters()[i], strokes, {
+      guide: doc.guide,
+      trace: doc.phase === 'trace',
+      next: i === doc.index,
+    });
   }
   function queueDraw() {
-    if (!frame) frame = requestAnimationFrame(draw);
+    if (!frame) frame = requestAnimationFrame(() => draw());
   }
-  function drawModel(color = '#27362f') {
-    const m = modelCanvas.getContext('2d');
-    paper(m, letters()[doc.index], [], { guide: false });
+  function drawModel(color = '#27362f', i = doc.index) {
+    const cell = cells[i];
+    if (!cell) return;
+    const m = cell.model.getContext('2d');
+    paper(m, letters()[i], [], { guide: doc.guide });
     m.save();
-    m.scale(modelCanvas.width / 100, modelCanvas.height / 100);
-    if (referenceReady) reference(m, letters()[doc.index], color);
+    m.scale(cell.model.width / 100, cell.model.height / 100);
+    if (referenceReady) reference(m, letters()[i], color);
     m.restore();
   }
   function stopDemo() {
+    const wasPlaying = demoFrame;
     cancelAnimationFrame(demoFrame);
     demoFrame = 0;
     $('demoButton').textContent = '획순';
-    drawModel();
+    if (wasPlaying) drawModel();
+  }
+  // 글 전체를 낱말 단위로 묶어 칸을 만든다. 띄어쓰기는 칸 사이 간격으로만 보인다.
+  function buildSheet() {
+    const key = doc.text + '|' + doc.phase;
+    if (builtFor === key && cells.length === letters().length) return;
+    builtFor = key;
+    cancel();
+    const sheet = $('sheet');
+    sheet.replaceChildren();
+    cells = [];
+    let index = 0;
+    for (const word of doc.text.trim().split(/\s+/)) {
+      const group = document.createElement('div');
+      group.className = 'word';
+      for (const char of Array.from(word)) {
+        const i = index++;
+        const pair = document.createElement('div');
+        pair.className = 'cell-pair';
+        pair.dataset.index = i;
+        const model = document.createElement('canvas');
+        model.className = 'model-cell';
+        model.width = model.height = CELL_PIXELS;
+        model.setAttribute('aria-hidden', 'true');
+        const write = document.createElement('canvas');
+        write.className = 'write-cell';
+        write.width = write.height = CELL_PIXELS;
+        write.tabIndex = 0;
+        write.dataset.index = i;
+        bind(write, false);
+        write.addEventListener('focus', () => {
+          if (Number(write.dataset.index) !== doc.index) select(Number(write.dataset.index), { keepHistory: true });
+        });
+        pair.append(model, write);
+        group.append(pair);
+        cells.push({ pair, model, write, char });
+      }
+      sheet.append(group);
+    }
+    marks = [];
+  }
+  // 지금 칸 표시와 id(쓰기 칸 = writingCanvas, 본보기 = modelCanvas)를 옮긴다.
+  function markActive() {
+    cells.forEach((cell, i) => {
+      const on = i === doc.index;
+      cell.pair.classList.toggle('active', on);
+      if (on) {
+        cell.write.id = 'writingCanvas';
+        cell.model.id = 'modelCanvas';
+      } else {
+        if (cell.write.id) cell.write.removeAttribute('id');
+        if (cell.model.id) cell.model.removeAttribute('id');
+      }
+    });
+    canvas = cells[doc.index]?.write || null;
+    modelCanvas = cells[doc.index]?.model || null;
   }
   function render() {
     stopDemo();
+    buildSheet();
+    markActive();
     const chars = letters(),
       strokes = current(),
       model = C.model(chars[doc.index]);
     $('lessonSelect').value = doc.lesson;
     $('customText').value = doc.text;
-    $('customForm').hidden = doc.lesson !== 'custom';
-    $('strokeCount').textContent = `${model.length}획`;
+    $('customForm').hidden = doc.lesson !== 'custom' || inRoom;
+    const meaning = inRoom ? '' : meaningOf(doc.lesson, doc.text);
+    $('textMeaning').hidden = !meaning;
+    $('textMeaning').textContent = meaning;
+    $('anotherText').hidden = inRoom || !isBank(doc.lesson);
+    $('strokeCount').textContent = `‘${chars[doc.index]}’ ${model.length}획`;
     $('guideCheck').checked = doc.guide;
     $('penWidth').value = String(doc.width);
     document.querySelectorAll('[data-phase]').forEach((b) => {
       b.setAttribute('aria-pressed', String(b.dataset.phase === doc.phase));
       b.disabled = inRoom;
     });
-    $('progressLabel').textContent = `${doc.index + 1} / ${chars.length}`;
+    const written = doc.cells[doc.phase].filter((c) => c.length).length;
+    $('progressLabel').textContent = `${written} / ${chars.length}글자`;
     $('strokeStatus').textContent = strokes.length ? `${strokes.length} / ${model.length}획` : '';
     $('feedback').textContent = '';
     $('feedback').hidden = true;
@@ -224,29 +287,24 @@
     $('undoButton').disabled = !undo.length || cannotWrite;
     $('redoButton').disabled = !redo.length || cannotWrite;
     for (const id of ['clearButton', 'checkButton', 'demoButton']) $(id).disabled = cannotWrite;
-    canvas.setAttribute('aria-disabled', String(cannotWrite));
-    canvas.setAttribute('aria-label', `${chars[doc.index]} 글씨 쓰는 칸. ${model.length}획.`);
-    $('previousLetter').disabled = doc.index === 0;
-    $('nextLetter').disabled = doc.index === chars.length - 1;
-    $('letterList').replaceChildren(
-      ...chars.map((c, i) => {
-        const b = document.createElement('button');
-        b.textContent = c;
-        b.setAttribute('aria-label', `${i + 1}번째 글자 ${c}`);
-        b.setAttribute('aria-current', String(i === doc.index));
-        b.classList.toggle('done', doc.cells[doc.phase][i].length > 0);
-        b.onclick = () => select(i);
-        return b;
-      }),
-    );
-    draw();
-    drawModel();
+    cells.forEach((cell, i) => {
+      cell.write.setAttribute('aria-disabled', String(cannotWrite));
+      cell.write.setAttribute('aria-label', `${i + 1}번째 글자 ${cell.char} 쓰는 칸. ${C.model(cell.char).length}획.`);
+      cell.pair.classList.toggle('done', doc.cells[doc.phase][i].length > 0);
+      cell.pair.classList.toggle('pass', marks[i] === 'pass');
+      cell.pair.classList.toggle('retry', marks[i] === 'retry');
+      draw(i);
+      drawModel(undefined, i);
+    });
   }
-  function select(i) {
+  function select(i, { keepHistory = false } = {}) {
+    if (i < 0 || i >= letters().length) return;
     cancel();
     doc.index = i;
-    undo = [];
-    redo = [];
+    if (!keepHistory) {
+      undo = [];
+      redo = [];
+    }
     render();
     save();
   }
@@ -264,6 +322,7 @@
     undo.push({ index: doc.index, phase: doc.phase, before, after });
     if (undo.length > 80) undo.shift();
     redo = [];
+    marks[doc.index] = undefined;
     render();
     save();
   }
@@ -317,6 +376,8 @@
               : '마우스로 인식됐어요. PC에서도 연습할 수 있어요.';
       }
       if (((locked || !referenceReady) && !test) || !allowed(e) || active) return;
+      // 다른 칸을 누르면 그 칸이 지금 칸이 된다(되돌리기 기록은 칸마다 남아 있다).
+      if (!test && Number(target.dataset.index) !== doc.index) select(Number(target.dataset.index), { keepHistory: true });
       if (!test && current().length >= 64) {
         toast('획이 많아요. 이 칸을 지우고 다시 써 주세요.');
         return;
@@ -377,10 +438,12 @@
         doc.cells[doc.phase][doc.index] = after;
         record(before, after);
         const result = C.judge(letters()[doc.index], after);
-        if (after.length === result.expected)
-          $('strokeStatus').textContent = result.order
-            ? '획순과 방향을 잘 지켰어요.'
-            : '획순 보기와 비교해 보세요.';
+        if (after.length === result.expected) {
+          $('strokeStatus').textContent = result.order ? '획순과 방향을 잘 지켰어요.' : '획순 보기와 비교해 보세요.';
+          // 다 쓰면 다음 빈 칸으로 넘어간다.
+          const nextEmpty = doc.cells[doc.phase].findIndex((c, i) => i > doc.index && !c.length);
+          if (nextEmpty > 0) setTimeout(() => { if (!active) select(nextEmpty, { keepHistory: true }); }, 350);
+        }
       }
     });
     for (const event of ['pointercancel', 'lostpointercapture'])
@@ -389,12 +452,16 @@
       });
     target.addEventListener('contextmenu', (e) => e.preventDefault());
   }
-  bind(canvas);
   bind($('testCanvas'), true);
   window.addEventListener('blur', cancel);
   window.addEventListener('resize', cancel);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancel();
+  });
+  // 방향키로 칸 옮기기
+  $('sheet').addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); select(doc.index + 1, { keepHistory: true }); cells[doc.index]?.write.focus(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); select(doc.index - 1, { keepHistory: true }); cells[doc.index]?.write.focus(); }
   });
   $('inputMode').onchange = () => {
     cancel();
@@ -443,7 +510,12 @@
   $('lessonSelect').onchange = () => {
     const key = $('lessonSelect').value;
     $('customForm').hidden = key !== 'custom';
-    if (key !== 'custom' && !changeLesson(presets[key], key)) $('lessonSelect').value = doc.lesson;
+    if (key === 'custom') return;
+    const text = isBank(key) ? pick(key, doc.text) : presets[key];
+    if (!changeLesson(text, key)) $('lessonSelect').value = doc.lesson;
+  };
+  $('anotherText').onclick = () => {
+    if (isBank(doc.lesson)) changeLesson(pick(doc.lesson, doc.text), doc.lesson);
   };
   $('customForm').onsubmit = (e) => {
     e.preventDefault();
@@ -457,19 +529,14 @@
         doc.phase = b.dataset.phase;
         undo = [];
         redo = [];
+        marks = [];
         render();
         save();
       }),
   );
-  $('previousLetter').onclick = () => {
-    if (doc.index > 0) select(doc.index - 1);
-  };
-  $('nextLetter').onclick = () => {
-    if (doc.index < letters().length - 1) select(doc.index + 1);
-  };
   $('guideCheck').onchange = () => {
     doc.guide = $('guideCheck').checked;
-    draw();
+    render();
     save();
   };
   $('penWidth').onchange = () => {
@@ -481,6 +548,8 @@
     const a = from.pop();
     if (!a) return;
     doc.cells[a.phase][a.index] = a[which];
+    doc.index = a.index;
+    marks[a.index] = undefined;
     to.push(a);
     render();
     save();
@@ -494,15 +563,24 @@
     doc.cells[doc.phase][doc.index] = [];
     record(before, []);
   };
+  // 확인: 쓴 칸을 모두 채점해 칸마다 통과(초록)·다시(주황)를 표시한다.
   $('checkButton').onclick = () => {
     cancel();
+    const results = letters().map((c, i) => (doc.cells[doc.phase][i].length ? C.judge(c, doc.cells[doc.phase][i]) : null));
+    const written = results.filter(Boolean);
+    marks = results.map((r) => (r ? (r.order ? 'pass' : 'retry') : undefined));
+    render();
     $('feedback').hidden = false;
-    const r = C.judge(letters()[doc.index], current());
-    $('feedback').textContent = !r.actual
-      ? '먼저 한 글자를 써 보세요.'
-      : r.order
-        ? `모양 일치도 ${r.shape}% · 획순과 방향을 지켰어요.`
-        : `모양 일치도 ${r.shape}% · ${r.actual}/${r.expected}획. 획순과 방향을 다시 살펴보세요.`;
+    if (!written.length) {
+      $('feedback').textContent = '먼저 글자를 써 보세요.';
+      return;
+    }
+    const shape = Math.round(written.reduce((s, r) => s + r.shape, 0) / written.length);
+    const passed = written.filter((r) => r.order).length;
+    const here = results[doc.index];
+    $('feedback').textContent =
+      `${written.length}/${letters().length}글자 · 평균 모양 일치도 ${shape}% · 획순 통과 ${passed}글자` +
+      (here ? ` (지금 칸 ‘${letters()[doc.index]}’ ${here.shape}%${here.order ? '' : ` · ${here.actual}/${here.expected}획, 획순을 다시 살펴보세요`})` : '');
   };
   $('demoButton').onclick = () => {
     stopDemo();
@@ -605,9 +683,7 @@
     }
     render();
     if (!referenceReady) toast('글꼴을 불러오지 못했어요. 화면을 다시 열어 주세요.');
-    $('saveStatus').textContent = store.persistent
-      ? '계정에 자동 저장'
-      : '게스트 연습은 이 탭에서만 유지돼요.';
+    $('saveStatus').textContent = store.persistent ? '계정에 자동 저장' : '게스트 연습은 이 탭에서만 유지돼요.';
   })();
   document.addEventListener('pointerdown', (event) => {
     if (!$('settingsMenu').contains(event.target)) $('settingsMenu').open = false;
@@ -630,15 +706,13 @@
       saveKey = 'round-' + key;
       const saved = store.get(saveKey);
       try {
-        doc =
-          saved && saved.text === text && saved.phase === phase
-            ? normalize(saved)
-            : fresh(text, 'custom', phase);
+        doc = saved && saved.text === text && saved.phase === phase ? normalize(saved) : fresh(text, 'custom', phase);
       } catch {
         doc = fresh(text, 'custom', phase);
       }
       undo = [];
       redo = [];
+      marks = [];
       render();
     },
     exitRound() {
@@ -650,6 +724,7 @@
         doc = fresh(presets.gana, 'gana');
       }
       locked = false;
+      marks = [];
       render();
     },
     cells() {

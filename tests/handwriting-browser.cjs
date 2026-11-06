@@ -202,7 +202,9 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   await page.locator('[data-phase=solo]').click();
   assert.equal(await count(), 0);
   await page.locator('[data-phase=trace]').click();
-  assert.equal(await count(), 3);
+  // 한 글자를 다 쓰면 다음 빈 칸으로 넘어가므로, 첫 칸을 직접 센다.
+  const firstCell = () => page.evaluate(() => HandwritingApp.snapshot().cells.trace[0].length);
+  assert.equal(await firstCell(), 3);
   const before = await page.evaluate(() => HandwritingApp.snapshot());
   await page.setViewportSize({ width: 390, height: 844 });
   assert.deepEqual(await page.evaluate(() => HandwritingApp.snapshot().cells), before.cells);
@@ -211,10 +213,10 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   await shot('mobile');
   await page.reload();
   await ready();
-  assert.equal(await count(), 3);
+  assert.equal(await firstCell(), 3);
   assert.deepEqual(await page.evaluate(() => Object.keys(localStorage)), []);
   assert.equal(await page.locator('#saveFile, #openFile, #importFile').count(), 0);
-  assert.ok((await canvas.boundingBox()).y < 140, 'the writing surface starts near the top on a phone');
+  assert.ok((await page.locator('#modelCanvas').boundingBox()).y < 140, 'the sheet starts near the top on a phone');
   await page.evaluate(() => dispatchEvent(new Event('beforeprint')));
   assert.equal(await page.locator('#printSheet canvas').count(), 28);
   await page.emulateMedia({ media: 'print' });
@@ -367,7 +369,7 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
   assert.equal(state.current.cells.trace[0].length, 0);
   assert.equal(state.older.cells.trace[0].length, 3);
 });
-test('practice cells stay pencil sized across phone, tablet, Chromebook and desktop, and preserve ink', async () => {
+test('notebook cells stay bounded across phone, tablet, Chromebook and desktop, align with the model above, and preserve ink', async () => {
   await page.goto(h.base + route);
   await ready();
   await drawLetter(page, '가');
@@ -384,8 +386,10 @@ test('practice cells stay pencil sized across phone, tablet, Chromebook and desk
     await page.setViewportSize({ width, height });
     const cell = await page.locator('#writingCanvas').boundingBox(),
       model = await page.locator('#modelCanvas').boundingBox();
-    assert.ok(cell.width >= 70 && cell.width <= 89, name + ': bounded writing cell ' + cell.width);
-    assert.ok(Math.abs(cell.width - model.width) <= 2, name + ': model and writing use the same scale');
+    // 칸은 64~104px(테두리 1px씩 제외). 본보기 칸은 같은 크기로 바로 위에 붙는다.
+    assert.ok(cell.width >= 61 && cell.width <= 103, name + ': bounded writing cell ' + cell.width);
+    assert.ok(Math.abs(cell.width - model.width) < 1, name + ': model and writing use the same size');
+    assert.ok(Math.abs(cell.x - model.x) < 1 && model.y < cell.y && cell.y - model.y < cell.height + 3, name + ': model sits right above the writing cell');
     assert.ok(Math.abs(cell.height - cell.width) < 1, name + ': square writing cell');
     assert.equal(
       await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
@@ -409,14 +413,16 @@ test('practice cells stay pencil sized across phone, tablet, Chromebook and desk
   assert.deepEqual(await page.evaluate(() => HandwritingApp.snapshot().cells.trace[0]), before);
   await page.locator('#settingsMenu summary').click();
   await page.selectOption('#cellSize', 'large');
-  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).width - 110) < 1);
+  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).width - 118) < 1);
   await page.selectOption('#cellSize', 'auto');
-  assert.ok((await page.locator('#writingCanvas').boundingBox()).width <= 89);
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).width <= 103);
 });
 test('the original pen font matches the designed outlines and the editor remains compact', async () => {
   await page.goto(h.base + route);
   await ready();
-  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 115);
+  // 첫 화면에서 바로 본보기와 쓰기 칸이 보인다.
+  assert.ok((await page.locator('#modelCanvas').boundingBox()).y < 115);
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 240);
   assert.equal(
     await page.locator('.page-header, .practice-tip, input[type=file], #saveFile, #openFile').count(),
     0,
@@ -492,7 +498,7 @@ test('the original pen font matches the designed outlines and the editor remains
     );
   await page.setViewportSize({ width: 390, height: 844 });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-  assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 140);
+  assert.ok((await page.locator('#modelCanvas').boundingBox()).y < 140);
   await shot('gyeongpil-mobile');
   await page.setViewportSize({ width: 1366, height: 950 });
   await page.selectOption('#lessonSelect', 'custom');
@@ -502,19 +508,19 @@ test('the original pen font matches the designed outlines and the editor remains
   await page.selectOption('#lessonSelect', 'school');
   await page.locator('[data-phase=solo]').click();
   for (const char of ['교', '책']) {
-    await page.locator('#letterList button').filter({ hasText: char }).click();
+    await page.locator(`.write-cell[aria-label*=" ${char} 쓰는 칸"]`).first().focus();
     await shot('gyeongpil-school-' + char);
   }
   await page.selectOption('#lessonSelect', 'double');
   for (const char of ['얘', '워', '웨', '위']) {
-    await page.locator('#letterList button').filter({ hasText: char }).click();
+    await page.locator(`.write-cell[aria-label*=" ${char} 쓰는 칸"]`).first().focus();
     await shot('gyeongpil-compound-' + char);
   }
   await page.selectOption('#lessonSelect', 'custom');
   await page.fill('#customText', '무늘믿귤확활훤');
   await page.locator('#customForm button').click();
   for (const char of ['무', '늘', '믿', '귤', '확', '활', '훤']) {
-    await page.locator('#letterList button').filter({ hasText: char }).click();
+    await page.locator(`.write-cell[aria-label*=" ${char} 쓰는 칸"]`).first().focus();
     await shot('gyeongpil-structure-' + char);
   }
 });
