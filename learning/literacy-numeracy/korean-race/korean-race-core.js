@@ -1,4 +1,4 @@
-// 국어 순위전: 서버와 화면이 같은 규칙으로 점수·순위·팀 점수를 센다.
+// 문해력 순위전(맞춤법·한자성어·속담·관용어·영단어): 서버와 화면이 같은 규칙으로 점수·순위·팀 점수를 센다.
 (function (root, factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
@@ -8,11 +8,11 @@
   // 각 콘텐츠의 원래 학습 화면 주소는 전체 잠금 확인과 "돌아가기"에 쓴다.
   const SETS = {
     spelling: { label: '맞춤법', emoji: '✏️', app: '/learning/literacy-numeracy/spelling', choices: 2 },
-    idioms: { label: '한자성어', emoji: '📜', app: '/learning/literacy-numeracy/classical-chinese-idioms', choices: 4, levels: [['all', '전체'], ['초급', '초급'], ['중급', '중급'], ['고급', '고급']] },
-    proverbs: { label: '속담', emoji: '🐯', app: '/learning/literacy-numeracy/proverbs', choices: 3 },
+    idioms: { label: '한자성어', emoji: '🀄', app: '/learning/literacy-numeracy/classical-chinese-idioms', choices: 4, levels: [['all', '전체'], ['초급', '초급'], ['중급', '중급'], ['고급', '고급']] },
+    proverbs: { label: '속담', emoji: '📜', app: '/learning/literacy-numeracy/proverbs', choices: 3 },
     expressions: { label: '관용어', emoji: '👄', app: '/learning/literacy-numeracy/idiomatic-expressions', choices: 3 },
     mixed: { label: '국어 종합', emoji: '🎲', app: '', choices: 0 },
-    vocabulary: { label: '영단어', emoji: '🔤', app: '/learning/literacy-numeracy/vocabulary', choices: 4, levels: [['elementary', '초등'], ['middle_common', '중학'], ['advanced', '고등']] },
+    vocabulary: { label: '영단어', emoji: '🔤', app: '/learning/literacy-numeracy/vocabulary', choices: 4, levels: [['elementary', '초'], ['middle_common', '중'], ['advanced', '고']] },
   };
   // 국어 종합은 국어 네 가지를 섞는다(영단어는 빼 둔다).
   const MIXED_PARTS = ['spelling', 'idioms', 'proverbs', 'expressions'];

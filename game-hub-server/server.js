@@ -636,7 +636,7 @@ for (const file of ['race-core.js', 'race.js', 'race.css']) {
 }
 const koreanRace = createKoreanRace({ platform: classroomPlatform });
 app.use('/api/korean-race', classroomPlatform.requireSiteAccess, koreanRace.router);
-// 국어 순위전도 방번호 입구라 수업 메뉴가 잠겨 있어도 열린다. 음악은 순위전 공용 곡을 쓴다.
+// 문해력 순위전도 방번호 입구라 수업 메뉴가 잠겨 있어도 열린다. 음악은 순위전 공용 곡을 쓴다.
 const koreanRaceRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/korean-race');
 app.get('/learning/literacy-numeracy/korean-race/', (req, res, next) => sendSiteHtml(req, res, path.join(koreanRaceRoot, 'index.html'), next));
 for (const file of ['korean-race-core.js', 'race.js', 'race.css']) {
