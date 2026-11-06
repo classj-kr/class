@@ -6,9 +6,8 @@ const Questions = require('../learning/literacy-numeracy/korean-race/korean-race
 const bank = require('./korean-race-bank');
 const COUNTDOWN_MS = 3500;
 const GRACE_MS = 1500;
-// 문제를 읽고 고르는 데 0.35초보다 빠르면 사람이 고른 것으로 보지 않는다.
-const MIN_ANSWER_MS = 350;
-// 틀린 뒤 다시 고르기까지 잠깐 기다리게 한다(조금의 지연은 봐준다).
+// 화면과 같은 기다림을 서버도 지킨다(네트워크 지연만큼은 봐준다).
+const MIN_ANSWER_MS = Core.MIN_ANSWER_MS - 150;
 const RETRY_LOCK_MS = Core.RETRY_LOCK_MS - 150;
 
 // 타자 순위전처럼 한 수업 동안만 쓰는 방이라 서버 메모리에 둔다.

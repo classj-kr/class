@@ -114,7 +114,7 @@ test('a race: room entry, hidden answers, combo points, wrong reveal lock, stale
   const answer = (choice) => req(path + '/answer', { roundId, index, choice }, kid.token);
   const gains = [];
   for (let i = 0; i < 10; i++) {
-    tick(400);
+    tick(900);
     const r = (await answer(0)).data;
     assert.equal(r.correct, true);
     gains.push(r.gained);
@@ -124,7 +124,7 @@ test('a race: room entry, hidden answers, combo points, wrong reveal lock, stale
   assert.equal((await req(path + '/answer', { roundId, index: index - 1, choice: 0 }, kid.token)).status, 409, 'the same question counts once');
   tick(100);
   assert.equal((await answer(0)).status, 429, 'too fast to read');
-  tick(400);
+  tick(900);
   const wrong = (await answer(1)).data;
   assert.equal(wrong.correct, false);
   assert.equal(wrong.answer, undefined, 'a wrong pick does not reveal the answer');
@@ -134,9 +134,9 @@ test('a race: room entry, hidden answers, combo points, wrong reveal lock, stale
   assert.deepEqual(wrong.tried, [1]);
   assert.equal(wrong.state.me.index, index, 'a wrong pick stays on the same question');
   assert.deepEqual(wrong.state.me.question.tried, [1], 'the crossed-out choice survives a reload');
-  tick(300);
-  assert.equal((await answer(0)).status, 429, 'a short pause before trying again');
-  tick(400);
+  tick(900);
+  assert.equal((await answer(0)).status, 429, 'a pause before trying again');
+  tick(600);
   assert.equal((await answer(1)).status, 409, 'the same wrong choice is not charged twice');
   const retry = (await answer(0)).data;
   assert.equal(retry.correct, true);
@@ -144,7 +144,7 @@ test('a race: room entry, hidden answers, combo points, wrong reveal lock, stale
   assert.equal(retry.explain, '풀이', 'the explanation comes after solving it');
   assert.equal(retry.gained, 1, 'the combo starts over after a mistake');
   index++;
-  tick(400);
+  tick(900);
   me = (await answer(0)).data.state.me;
   assert.equal(me.score, 17 - 1 + 1 + 1);
   assert.equal(me.correct, 12);
@@ -153,10 +153,10 @@ test('a race: room entry, hidden answers, combo points, wrong reveal lock, stale
   assert.deepEqual(me.question.tried, [], 'a new question starts clean');
   // 틀릴 때마다 깎이므로 0점 아래로도 내려간다.
   const fresh = (await req(path + '/join', {}, '', '', '바다')).data;
-  tick(400);
+  tick(900);
   const below = (await req(path + '/answer', { roundId, index: 0, choice: 1 }, fresh.token)).data;
   assert.equal(below.state.me.score, -1);
-  tick(400);
+  tick(900);
   assert.equal((await req(path + '/answer', { roundId, index: me.index, choice: 9 }, kid.token)).status, 400);
   // 새로고침한 학생은 같은 이름으로 자리를 되찾는다.
   const again = (await req(path + '/join', {}, '', '', '하늘')).data;
@@ -185,7 +185,7 @@ test('team race fills unassigned students at start and places late joiners', asy
   const late = (await req(path + '/join', {}, '', '', '라')).data;
   assert.notEqual(late.state.me.team, null);
   assert.ok(late.state.me.question, 'a late joiner starts from the first question');
-  tick(3600 + 400);
+  tick(3600 + 900);
   const r = (await req(path + '/answer', { roundId: started.roundId, index: 0, choice: 0 }, late.token)).data;
   assert.equal(r.correct, true);
   assert.equal(r.state.teams[late.state.me.team].value, 1);
