@@ -20,8 +20,11 @@
   const RACERS = ['🐯', '🦊', '🐰', '🐻', '🐼', '🐧', '🦉', '🐸', '🐨', '🦁', '🐳', '🦄', '🐢', '🐙', '🦋', '🐝', '🐬', '🦔', '🐿️', '🦦', '🐤', '🐮', '🐹', '🐺'];
   // 연산 순위전처럼 연속으로 맞히면 한 문제의 값이 오른다.
   const COMBO_STEPS = [[10, 3], [5, 2]];
+  // 연산 순위전처럼 틀리면 1점을 잃고 같은 문제를 맞힐 때까지 다시 고른다(정답은 알려 주지 않는다).
   const WRONG_PENALTY = 1;
-  // 틀리면 정답과 풀이를 잠깐 보여 준다. 그동안은 다음 답을 받지 않는다.
+  // 틀린 뒤 잠깐은 다시 고를 수 없다. 마구 눌러 맞히는 것을 막는다.
+  const RETRY_LOCK_MS = 600;
+  // 여러 번 만에 맞히면 풀이를 잠깐 보여 준다.
   const REVEAL_MS = 1500;
   // 팀전: 해·달·별… 팀마다 1~6명. 모두가 모은 점수를 합쳐 겨룬다.
   const TEAM_MAX = 6;
@@ -75,5 +78,5 @@
     if (!levels) return 'all';
     return levels.some(([value]) => value === level) ? level : levels[0][0];
   }
-  return { SETS, MIXED_PARTS, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  return { SETS, MIXED_PARTS, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });

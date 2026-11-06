@@ -479,10 +479,12 @@
     text.classList.toggle('word', q.set === 'vocabulary');
     text.classList.toggle('long', String(q.text).length > 60);
     $('choices').dataset.count = q.choices.length;
+    const tried = new Set(q.tried || []);
     $('choices').replaceChildren(...q.choices.map((label, i) => {
       const b = document.createElement('button');
       b.type = 'button';
-      b.className = 'choice';
+      b.className = 'choice' + (tried.has(i) ? ' is-wrong' : '');
+      b.disabled = tried.has(i);
       b.innerHTML = '<kbd></kbd><span></span>';
       b.firstChild.textContent = i + 1;
       b.lastChild.textContent = label;
@@ -494,50 +496,64 @@
   const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
   function answer(index) {
     if (!racing() || answering || !shown || Date.now() < revealUntil) return;
+    const buttons = [...$('choices').children];
+    if (buttons[index]?.disabled) return;
     answering = true;
     sfx.pick();
     const q = shown, roundId = state.roundId;
-    const buttons = [...$('choices').children];
-    buttons.forEach((b) => (b.disabled = true));
+    const open = buttons.filter((b) => !b.disabled);
+    open.forEach((b) => (b.disabled = true));
     buttons[index]?.classList.add('picked');
     api('/rooms/' + code + '/answer', { roundId, index: q.no, choice: index })
       .then((data) => {
         if (state.roundId !== roundId) return;
         const card = $('card');
         const r = card.getBoundingClientRect();
-        buttons[data.answer]?.classList.add('is-answer');
         localScore = data.state.me.score;
         localCombo = data.combo;
+        state = data.state;
+        paintMine(data.state);
+        clearTimeout(revealTimer);
         if (data.correct) {
+          buttons[data.answer]?.classList.add('is-answer');
+          card.classList.remove('wrong');
           card.classList.add('right');
           burst(r.left + r.width / 2, r.top + r.height / 3, localCombo >= 10 ? 40 : 22, localCombo >= 10 ? 9 : 6);
           floatText('+' + data.gained, r.left + r.width / 2, r.top, data.gained >= 3 ? 'mega' : data.gained >= 2 ? 'big' : '');
           if (localCombo && localCombo % 5 === 0) banner(`🔥 ${localCombo}문제 연속!`);
           sfx.good(localCombo);
           retrigger($('scoreNow'), 'bump');
-          revealUntil = Date.now() + 380;
+          // 여러 번 만에 맞혔으면 풀이를 잠깐 보여 주고 넘어간다.
+          if (data.retried && data.explain) {
+            $('revealTitle').textContent = '맞았어요! ' + q.choices[data.answer];
+            $('revealText').textContent = data.explain;
+            $('reveal').hidden = false;
+            revealUntil = Date.now() + C.REVEAL_MS;
+          } else revealUntil = Date.now() + 380;
+          revealTimer = setTimeout(() => { if (state.roundId === roundId) paintQuestion(state.me.question); }, revealUntil - Date.now());
         } else {
-          buttons[index]?.classList.add('is-wrong');
+          // 틀리면 1점을 잃고, 그 보기에 줄을 그은 채 같은 문제를 다시 고른다.
+          const picked = buttons[index];
+          picked?.classList.remove('picked');
+          picked?.classList.add('is-wrong');
           card.classList.add('wrong');
           retrigger(card, 'shake');
-          if (data.gained) floatText(String(data.gained), r.left + r.width / 2, r.top, 'minus');
+          floatText(String(data.gained), r.left + r.width / 2, r.top, 'minus');
           sfx.bad();
-          // 틀린 문제는 정답과 풀이를 잠깐 보여 주고 넘어간다.
-          $('revealTitle').textContent = '정답: ' + q.choices[data.answer];
-          $('revealText').textContent = data.explain || '';
-          $('reveal').hidden = false;
-          revealUntil = Date.now() + C.REVEAL_MS;
+          shown = { ...q, tried: data.tried };
+          revealUntil = Date.now() + C.RETRY_LOCK_MS;
+          revealTimer = setTimeout(() => {
+            if (state.roundId !== roundId || shown?.no !== q.no) return;
+            card.classList.remove('wrong');
+            open.forEach((b) => { if (b !== picked) b.disabled = false; });
+          }, C.RETRY_LOCK_MS);
         }
-        state = data.state;
-        paintMine(data.state);
-        clearTimeout(revealTimer);
-        revealTimer = setTimeout(() => { if (state.roundId === roundId) paintQuestion(state.me.question); }, revealUntil - Date.now());
       })
       .catch(async (e) => {
         if (state.roundId !== roundId) return;
         toast(e.message);
         try { const fresh = await api('/rooms/' + code); shown = null; state = fresh; paintQuestion(fresh.me.question); render(fresh); }
-        catch { buttons.forEach((b) => (b.disabled = false)); }
+        catch { open.forEach((b) => (b.disabled = false)); }
       })
       .finally(() => { answering = false; });
   }

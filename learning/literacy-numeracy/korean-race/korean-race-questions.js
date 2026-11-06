@@ -196,8 +196,9 @@
       .filter((q) => q.choices.length >= 2 && q.answer >= 0 && new Set(q.choices).size === q.choices.length);
   }
   // 화면에는 정답과 풀이를 보내지 않는다.
-  function publicQuestion(q, index, label) {
-    return { no: index, set: q.set, label, ask: q.ask, text: q.text, choices: q.choices };
+  // tried: 이 문제에서 이미 골라 틀린 보기(새로고침해도 줄이 그어진 채로 둔다).
+  function publicQuestion(q, index, label, tried = []) {
+    return { no: index, set: q.set, label, ask: q.ask, text: q.text, choices: q.choices, tried };
   }
   return { shuffle, shortMeaning, buildPools, poolFor, makeRound, publicQuestion };
 });
