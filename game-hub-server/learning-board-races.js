@@ -110,13 +110,13 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       if (['quiz', 'stacking'].includes(b.layout)) fail(400, 'ART_BOARD_REQUIRED', '그림을 올리는 게시판에서 시작해 주세요.');
       const existing = await activeRace(db, b);
       if (existing) return { id: existing.id, resumed: true };
-      const works = (await db.query(`SELECT p.id AS post_id, p.content, i.id AS image_id, m.id AS member_id, m.number, m.name
+      const works = (await db.query(`SELECT p.id AS post_id, p.content, p.title_decoys, i.id AS image_id, m.id AS member_id, m.number, m.name
         FROM learning_board_posts p JOIN learning_board_images i ON i.board_id=p.board_id AND i.post_id=p.id
         JOIN learning_board_members m ON m.board_id=p.board_id AND m.id=p.member_id
         WHERE p.board_id=$1 AND p.kind='note' AND NOT p.hidden`, [b.id])).rows.map(r => ({ postId: r.post_id, imageId: r.image_id,
-        title: r.content, memberId: r.member_id, number: r.number, author: b.hide_names ? `${r.number}번` : `${r.number}번 ${r.name}` }));
+        title: r.content, decoys: r.title_decoys || [], memberId: r.member_id, number: r.number, author: b.hide_names ? `${r.number}번` : `${r.number}번 ${r.name}` }));
       const questions = buildArtQuiz(works);
-      if (!questions.length) fail(409, 'NOT_ENOUGH_ART', '학생 그림이 4장 이상(작가나 제목이 서로 다른) 있어야 퀴즈를 만들 수 있어요.');
+      if (!questions.length) fail(409, 'NOT_ENOUGH_ART', '그림 올린 학생이 4명 이상이거나, 제목 퀴즈(가짜 제목 3개)를 낸 그림이 있어야 시작할 수 있어요.');
       // Only the latest few generated sets are kept; older ones take their finished races along.
       await db.query(`DELETE FROM learning_board_sets WHERE board_id=$1 AND id LIKE 'art-%' AND id NOT IN
         (SELECT id FROM learning_board_sets WHERE board_id=$1 AND id LIKE 'art-%' ORDER BY created_at DESC LIMIT 4)`, [b.id]);

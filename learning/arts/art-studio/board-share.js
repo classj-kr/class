@@ -99,6 +99,15 @@
     if (!title) { $("shareDialog").close(); studio.exportBaseName(); return; }
     const code = $("shareCode").value.replace(/\D/g, "");
     if (!/^(\d{4}|\d{6})$/.test(code)) { setError("방번호 4자리를 써 주세요."); $("shareCode").focus(); return; }
+    const decoyInputs = [...document.querySelectorAll(".share-decoy")];
+    const decoys = decoyInputs.map(input => input.value.trim());
+    const filled = decoys.filter(Boolean).length;
+    if (filled && filled < 3) {
+      $("shareQuiz").open = true;
+      decoyInputs.find(input => !input.value.trim()).focus();
+      setError("가짜 제목을 3개 모두 써 주세요. 안 낼 거면 다 지워 주세요.");
+      return;
+    }
     setError("");
     setBusy(true, "들어가는 중…");
     try {
@@ -117,9 +126,11 @@
         method: "POST", headers: { "Content-Type": blob.type }, body: blob, signal: AbortSignal.timeout(60000)
       });
       await postJson(`/${encodeURIComponent(board.id)}/posts`, {
-        kind: "note", content: title, link: "", image,
+        kind: "note", content: title, link: "", image, ...(filled ? { decoys } : {}),
         column: board.layout === "columns" ? Number($("shareColumn").value || 0) : 0
       });
+      decoyInputs.forEach(input => { input.value = ""; });
+      $("shareQuiz").open = false;
       $("shareBoardLink").href = `/boards/?id=${encodeURIComponent(board.id)}`;
       $("shareDone").hidden = false;
       $("shareSubmit").hidden = true;

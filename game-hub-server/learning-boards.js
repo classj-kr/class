@@ -55,6 +55,8 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query("ALTER TABLE learning_boards ADD COLUMN IF NOT EXISTS theme TEXT NOT NULL DEFAULT 'default'");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_theme_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_theme_check CHECK (theme IN ('default', 'space'))");
+      // 작품 퀴즈: the artist's own three fake titles for "이 그림의 제목은?".
+      await db.query("ALTER TABLE learning_board_posts ADD COLUMN IF NOT EXISTS title_decoys JSONB NOT NULL DEFAULT '[]'");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_slots_check');
@@ -112,6 +114,16 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   }
   const publicBoard = b => ({ id: b.id, code: b.code, title: b.title, description: b.description, layout: b.layout,
     columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names, likesEnabled: b.likes_enabled, commentsEnabled: b.comments_enabled, theme: b.theme || 'default' });
+
+  // Three distinct fake titles (or none). They must differ from the real title.
+  function decoys(value, title) {
+    if (value === undefined || value === null) return null;
+    if (!Array.isArray(value) || (value.length !== 0 && value.length !== 3)) fail(400, 'INVALID_DECOYS', '가짜 제목을 3개 써 주세요.');
+    const list = value.map(v => text(v, 40, true));
+    const clean = s => s.replace(/\s+/g, ' ').trim();
+    if (new Set(list.map(clean)).size !== list.length || list.some(v => clean(v) === clean(title))) fail(400, 'INVALID_DECOYS', '가짜 제목은 진짜 제목과도, 서로도 달라야 해요.');
+    return list;
+  }
 
   function question(body) {
     const kind = body.kind;
@@ -287,7 +299,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
           reviewStatus: p.review_status, revision: p.revision,
           ...(b.likes_enabled && p.kind === 'note' && !p.hidden ? { likes: { count: reaction?.count ?? 0, liked: reaction?.liked ?? false } } : {}),
           ...(b.comments_enabled && p.kind === 'note' && !p.hidden ? { commentCount: comments.find(c => c.post_id === p.id)?.count ?? 0 } : {}),
-          ...(own ? { answer: p.answer, explanation: p.explanation, feedback: p.feedback } : {}) };
+          ...(own ? { answer: p.answer, explanation: p.explanation, feedback: p.feedback, decoys: p.title_decoys || [] } : {}) };
       });
       await db.query('COMMIT');
       res.json({ board: publicBoard(b), me: { teacher: who.teacher, number: who.number, name: who.name }, posts: result, sets: who.teacher ? sets : [], live,
@@ -393,6 +405,8 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(`INSERT INTO learning_board_posts(id, board_id, member_id, kind, content, link, column_index, choices, answer, explanation)
         VALUES($1,$2,$3,$4,$5,$6,$7,$8::jsonb,$9,$10)`, [postId, b.id, who.teacher ? null : who.id, kind, content, link(body.link), column, JSON.stringify(options), answer, explanation]);
       if (kind === 'note') await attachBoardImage(db, b, who, postId, body.image, fail);
+      const fakes = kind === 'note' ? decoys(body.decoys, content) : null;
+      if (fakes?.length) await db.query('UPDATE learning_board_posts SET title_decoys=$3::jsonb WHERE board_id=$1 AND id=$2', [b.id, postId, JSON.stringify(fakes)]);
       return { id: postId };
     });
     res.status(201).json(result);
@@ -416,6 +430,18 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
             review_status='pending', feedback='', revision=revision+1 WHERE board_id=$1 AND id=$2`, [b.id, p.id, q.kind, q.content, JSON.stringify(q.choices), q.answer, q.explanation]);
         }
       }
+    });
+    res.json({ ok: true });
+  }));
+  // The artist (or teacher) writes or clears the fake titles for the picture quiz.
+  router.put('/:id/posts/:postId/decoys', asyncRoute(async (req, res) => {
+    await transaction(req, async (db, b, who) => {
+      if (b.closed && !who.teacher) fail(403, 'BOARD_CLOSED', '글쓰기가 마감되었어요.');
+      const p = (await db.query("SELECT * FROM learning_board_posts WHERE board_id=$1 AND id=$2 AND kind='note'", [b.id, req.params.postId])).rows[0];
+      if (!p) fail(404, 'POST_NOT_FOUND', '게시물을 찾을 수 없어요.');
+      if (!who.teacher && (p.member_id !== who.id || p.hidden)) fail(403, 'NOT_YOUR_POST', '내 그림에만 제목 퀴즈를 낼 수 있어요.');
+      const fakes = decoys(req.body?.decoys ?? [], p.content);
+      await db.query('UPDATE learning_board_posts SET title_decoys=$3::jsonb WHERE board_id=$1 AND id=$2', [b.id, p.id, JSON.stringify(fakes)]);
     });
     res.json({ ok: true });
   }));
