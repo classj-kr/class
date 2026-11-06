@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f6f4ee">
   <title>쌓기나무 · 수학 교구</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="style.css?v=20261104-activities">
+  <link rel="stylesheet" href="style.css?v=20261107-activity-groups">
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
   <script src="model.js?v=textbook-boards-1" defer></script>
   <script src="activities.js?v=20261104-activities" defer></script>
@@ -14,7 +14,7 @@
   <script src="/assets/sound/race-music.js?v=20261106-1" defer></script>
   <script src="music.js?v=20261106-race-music" defer></script>
   <script src="library.js?v=20261104-activities" defer></script>
-  <script src="app.js?v=20261104-boardgame-music" defer></script>
+  <script src="app.js?v=20261107-activity-groups" defer></script>
   <script src="race.js?v=20261106-race-music" defer></script>
   <link rel="stylesheet" href="coop.css?v=20261104-room-sign">
   <script src="team-stage.js?v=20261104-camera" defer></script>
@@ -138,14 +138,24 @@
 
   <dialog id="activity-dialog" aria-labelledby="activity-heading">
     <div class="dialog-heading"><h2 id="activity-heading">활동 선택</h2><button id="close-activities" class="close-dialog" type="button" aria-label="활동 선택 닫기">×</button></div>
-    <div class="activity-choices">
-      <button type="button" data-mode="free"><strong>자유 쌓기</strong></button>
-      <button type="button" data-mode="copy"><strong>따라 쌓기</strong></button>
-      <button type="button" data-mode="views"><strong>그림 보고 쌓기</strong></button>
-      <button type="button" data-mode="many"><strong>여러 답 찾기</strong></button>
-      <a class="race-link" href="race/"><strong>순위전</strong></a>
-      <a class="race-link" href="coop/"><strong>문제은행·팀전</strong></a>
-    </div>
+    <!-- 혼자 하기는 이 화면에서 바로, 같이 하기는 방을 여는 다른 화면으로 간다. -->
+    <section class="activity-group" aria-labelledby="solo-heading">
+      <h3 id="solo-heading">혼자 하기</h3>
+      <div class="activity-choices">
+        <button type="button" data-mode="free"><strong>자유 쌓기</strong></button>
+        <button type="button" data-mode="copy"><strong>따라 쌓기</strong></button>
+        <button type="button" data-mode="views"><strong>그림 보고 쌓기</strong></button>
+        <button type="button" data-mode="many"><strong>여러 답 찾기</strong></button>
+      </div>
+    </section>
+    <section class="activity-group together" aria-labelledby="together-heading">
+      <h3 id="together-heading">같이 하기</h3>
+      <div class="activity-choices room-choices">
+        <a class="race-link" href="race/"><strong>순위전</strong><span>자동 출제로 다 같이</span></a>
+        <a class="race-link" href="coop/"><strong>문제은행·팀전</strong><span>문제를 모아 팀으로</span></a>
+      </div>
+      <p class="room-note">친구 방은 메인 화면 <b>방번호</b>로 들어가요.</p>
+    </section>
     <details id="saved-section" class="saved-section" hidden>
       <summary>이전에 저장한 모양</summary>
       <div id="saved-list"></div>

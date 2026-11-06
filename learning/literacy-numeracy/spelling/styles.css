@@ -956,7 +956,8 @@ footer a {
 .page-shell > main { margin-top: 0; }
 .topbar { position: fixed; z-index: 40; top: 8px; left: 8px; right: 64px; display: block; pointer-events: none; }
 .back-link { width: 44px; height: 44px; padding: 0; display: grid; place-items: center; border-radius: 50%; font-size: 22px; pointer-events: auto; }
-.topbar-actions { position: fixed; right: 64px; bottom: 16px; pointer-events: auto; }
+/* 오른쪽 아래에는 공용 "학습 기록" 버튼이 있어 그 위로 한 줄 띄운다. */
+.topbar-actions { position: fixed; right: 16px; bottom: 68px; pointer-events: auto; }
 .race-link { min-height: 44px; display: inline-flex; align-items: center; padding: 0 16px; border: 1px solid rgba(244, 215, 154, 0.7); border-radius: 999px; background: rgba(48, 23, 10, 0.88); color: #fff4d8; font-weight: 800; text-decoration: none; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
 .race-link:hover, .race-link:focus-visible { background: rgba(92, 45, 18, 0.95); }
 @media (max-width: 620px) { .topbar { top: auto; right: auto; bottom: 16px; left: 8px; } }

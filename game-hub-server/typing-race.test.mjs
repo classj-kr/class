@@ -187,6 +187,11 @@ test('teacher room, shared entry, live scoring, combo, speed guard, and results'
     href: `/learning/inquiry/information-computing/typing/race/?room=${code}`,
   });
   assert.equal(made.data.state.me.plays, true, 'the teacher host races like a student host');
+  // "참여하지 않고 관전하기": 교사 방장은 순위판에 없고 큰 화면만 본다.
+  const watching = (await req('/rooms', { spectate: true }, '', 'teacher')).data;
+  assert.equal(watching.state.me.plays, false);
+  assert.equal(watching.state.participants.length, 0);
+  assert.equal((await req('/rooms/' + watching.state.code + '/leave', {}, watching.token, 'teacher')).status, 200);
   const a = (await req(path + '/join', { avatarUrl: '/assets/avatars/animal-fox.webp' }, '', '', '가람')).data;
   const b = (await req(path + '/join', { avatarUrl: 'https://evil.example/x.webp' }, '', '', '나래')).data;
   assert.equal(a.state.me.avatarUrl, '/assets/avatars/animal-fox.webp');
