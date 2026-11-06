@@ -77,30 +77,8 @@
     floor: () => [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.16, 'triangle', 0.12, i * 0.08)),
   };
 
-  // ── 음악 (타자 순위전과 같은 신나는 곡) ───────────────
-  const music = $('bgm');
-  const RACE_TRACKS = ['race-1.ogg', 'race-2.ogg', 'race-3.ogg', 'race-4.ogg', 'race-5.ogg', 'race-6.ogg', 'race-7.ogg'];
-  let musicKind = '', lastRaceTrack = '';
-  function setTrack(file, loop) {
-    music.loop = loop;
-    music.src = 'music/' + file;
-    music.play().catch(() => {});
-  }
-  function playMusic(kind) {
-    if (kind === musicKind) return;
-    musicKind = kind;
-    if (!kind) return music.pause();
-    if (kind === 'lobby') setTrack('lobby.ogg', true);
-    else if (kind === 'victory') setTrack('victory.ogg', false);
-    else {
-      const pool = RACE_TRACKS.filter((t) => t !== lastRaceTrack);
-      lastRaceTrack = pool[Math.floor(Math.random() * pool.length)];
-      setTrack(lastRaceTrack, false);
-    }
-  }
-  music.addEventListener('ended', () => {
-    if (musicKind === 'race') { musicKind = ''; playMusic('race'); }
-  });
+  // ── 음악: 순위전 공용 곡(대기 화면 한 곡, 달릴 때 무작위). 방장 기기에서만 기본으로 들린다.
+  const playMusic = (kind) => window.RaceMusic?.set(kind === 'race' ? 'race' : 'lobby', { host: !state || state.me.host });
 
   // ── 효과 (파티클·꽃가루) ───────────────────────────
   const canvas = $('fx'), g2 = canvas.getContext('2d');
@@ -655,7 +633,8 @@
     if (resultShown === key) return;
     const first = !resultShown.startsWith(s.roundId);
     resultShown = key;
-    if (first) { playMusic('victory'); setTimeout(() => confetti(), 200); }
+    playMusic('lobby');
+    if (first) setTimeout(() => confetti(), 200);
     const teams = (s.teams || []).filter((t) => t.size).sort((a, b) => a.rank - b.rank);
     $('teamResult').hidden = !teams.length;
     $('soloTitle').hidden = !teams.length;
@@ -750,7 +729,7 @@
       [...$('choices').children].forEach((b) => (b.disabled = true));
       $('finish').hidden = false;
       sfx.whistle();
-      music.pause();
+      window.RaceMusic?.set(null);
       setTimeout(() => ($('finish').hidden = true), 1600);
       setTimeout(refresh, 1800);
     }
@@ -795,7 +774,7 @@
     $('stopButton').hidden = true;
     document.body.classList.remove('is-host', 'spectator', 'fever', 'hurry');
     show('entry');
-    playMusic('');
+    playMusic('lobby');
     history.replaceState(null, '', location.pathname + (params.get('set') ? '?set=' + fromSet : ''));
   }
   // 방번호는 메인 화면 방번호 입력에서 ?room= 으로 넘어온다.
@@ -833,4 +812,5 @@
 
   const initial = params.get('room') || '';
   if (/^\d{4}$/.test(initial)) join(initial);
+  else playMusic('lobby'); // 방 만들기 화면
 })();

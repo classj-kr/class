@@ -192,7 +192,9 @@
       App.race(next.mode, next.questions, Math.min(next.me.solved, next.total - 1), submit);
     }
     showPanel(!solving);
-    window.StackingMusic.setSession(racing && (host || solving) ? next.roundId : null);
+    // 달리는 동안은 무작위 곡, 대기·결과 화면은 대기 곡. 방장 기기에서만 기본으로 들린다.
+    if (racing) window.StackingMusic.setSession(next.roundId, { host });
+    else window.StackingMusic.setLobby(host);
     tick();
   }
 
@@ -248,6 +250,7 @@
     // Students use the same room-number entrance linked from the home page.
     if (!session.isTeacher) { location.replace('/room/'); return; }
     $('race-create').hidden = false;
+    window.StackingMusic.setLobby(true);
     // Auto-generated rooms are also available on installations without a board database.
     try {
       const response = await fetch('/api/boards/stacking-race-banks', { cache: 'no-store', credentials: 'same-origin' });
@@ -284,7 +287,7 @@
     clearTimeout(pollTimer);
     store.remove('ticket-' + code);
     code = ''; token = ''; state = null; shownRound = '';
-    window.StackingMusic.setSession(null);
+    window.StackingMusic.setLobby(true);
     App.free();
     document.body.classList.remove('race-host');
     $('race-room').hidden = true;

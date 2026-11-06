@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { isRememberedHost, useRaceMusic } from "./race-music";
 
 type Session = {
   race: { roomCode: string; worksheetName: string; worksheetRoute: string; status: string; startedAt: number | null };
@@ -71,6 +72,10 @@ export default function ArithmeticRaceController() {
     if (!session?.participant.submittedAt) return;
     document.querySelectorAll<HTMLInputElement | HTMLButtonElement>(".worksheet-stage input, .worksheet-stage button").forEach((element) => { element.disabled = true; });
   }, [session?.participant.submittedAt]);
+
+  // 학습지 순위전: 푸는 동안은 무작위 곡, 도착하면 대기 곡. 방장 기기에서만 기본으로 들린다.
+  const racing = Boolean(credentials && session?.race.status === "running");
+  useRaceMusic(credentials ? (racing && !session?.participant.submittedAt ? "race" : "lobby") : null, isRememberedHost(credentials?.room));
 
   if (!credentials) return null;
 

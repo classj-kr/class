@@ -90,15 +90,23 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await student.reload();
       await student.locator('#race-room').waitFor();
       assert.equal(joins, 1, 'reload restores the ticket without adding another participant');
-      assert.ok(await student.locator('#stacking-bgm').evaluate(a => a.paused && !a.hasAttribute('src')));
+      // 대기실은 순위전 대기 곡. 보드게임처럼 참가자 기기는 꺼진 채로 시작한다.
+      const music = student.locator('#stacking-bgm');
+      await student.waitForFunction(() => /race-music\/lobby-brisk-pursuit\.mp3$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
+      const lobbyAudio = await music.evaluate(a => ({ paused: a.paused, muted: a.muted }));
+      assert.ok(lobbyAudio.paused && lobbyAudio.muted, 'guests start muted ' + JSON.stringify(lobbyAudio));
       await teacher.locator('#race-start').click();
       await student.locator('#race-panel').waitFor({ state: 'hidden' });
       await student.locator('#target-panel').waitFor();
+      const racing = () => {
+        const a = document.querySelector('#stacking-bgm'), src = a.getAttribute('src') || '';
+        return /\/assets\/sound\/race-music\//.test(src) && !/lobby/.test(src) && a.currentTime > 0;
+      };
+      await teacher.waitForFunction(racing);
+      assert.ok(await music.evaluate(a => a.muted), 'the student is still muted while the host plays');
       await student.locator('.unified-audio-menu-toggle').click();
-      await student.waitForFunction(() => document.querySelector('#stacking-bgm').currentTime > 0);
-      await teacher.waitForFunction(() => document.querySelector('#stacking-bgm').currentTime > 0);
-      const music = student.locator('#stacking-bgm');
-      assert.equal(await music.getAttribute('src'), await teacher.locator('#stacking-bgm').getAttribute('src'));
+      await student.locator('#musicMuteBtn').click();
+      await student.waitForFunction(racing);
       await student.locator('#musicVolumeSlider').fill('0.18');
       assert.equal(await music.evaluate(a => a.volume), .18);
       await student.locator('#musicMuteBtn').click();
@@ -115,7 +123,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       assert.equal(await student.locator('.workspace').evaluate(el => el.inert), false);
       await teacher.locator('#race-stop').click();
       await student.locator('#race-panel').waitFor();
-      assert.ok(await music.evaluate(a => a.paused));
+      await student.waitForFunction(() => /lobby-brisk-pursuit\.mp3$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
       await student.locator('#race-leave').click();
       await student.waitForURL(base + '/room/');
       await student.goto(base + race);

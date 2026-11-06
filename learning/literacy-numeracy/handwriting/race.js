@@ -7,6 +7,12 @@
   if (!roomOnly) return;
   document.body.classList.add('room-only');
   $('roomPanel').hidden = false;
+  // 순위전 공용 음악(대기 화면 한 곡, 쓰는 동안 무작위). 방장 기기에서만 기본으로 들린다.
+  const musicScript = document.createElement('script');
+  musicScript.src = '/assets/sound/race-music.js?v=20261106-1';
+  document.head.append(musicScript);
+  const playMusic = (kind, host = true) => window.RaceMusic?.set(kind, { host });
+  musicScript.onload = () => playMusic('lobby');
   await A.ready;
   let code = '',
     token = '',
@@ -42,6 +48,7 @@
       writing = s.phase === 'writing',
       results = s.phase === 'results';
     document.body.classList.toggle('round-writing', writing);
+    playMusic(writing ? 'race' : 'lobby', host);
     $('roomEntry').hidden = true;
     $('roomLobby').hidden = false;
     $('roomSettings').hidden = !host;
@@ -194,6 +201,7 @@
       shownRound = '';
       previousLock = null;
       A.exitRound();
+      playMusic('lobby');
       document.body.classList.remove('room-active');
       $('workspace').style.display = 'none';
       $('roomLobby').hidden = true;

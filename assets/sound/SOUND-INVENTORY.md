@@ -4,6 +4,10 @@
 
 The shared `game-sfx.js` exposes 13 effects. Select, back, bell, card, stone, success, error, tick, turn, timeout and explosion normally use the 11 OGG files in `sfx/`, with synthesized loading-failure fallbacks. Click and capture are synthesized. Custom game tones use `getAudioBus()`; custom file effects use `playFile()` so both follow the shared effects controls.
 
+## Race music (순위전), 2026-11-06
+
+All ranking races (typing, Korean, arithmetic, handwriting, stacking race and stacking bank race) use `race-music.js` and the files in `race-music/`, supplied by the user: `lobby-brisk-pursuit.mp3` loops on create/waiting/result screens, and the other 10 tracks play in random order while racing. Board-game tracks are no longer served to races; they stay with their games. Like board games, only the host device plays by default: guests receive the shared `classroommultiplayerjoined` mute after page load and can unmute from the speaker menu.
+
 ## Expanded verification, 2026-10-09
 
 See [the reproducible verification report](../../docs/sound-verification-2026-10-09.md) for the later pass: 50 game-action checks, 38 computer lesson checks, instrument playback and 105 drum signals, count-in/ear-training input checks, capture feedback, a fresh real three-player Bomb 77 match, and server HTML/asset checks. This pass found and fixed Pattern Trio's extra generic click and the shared countdown warning sounding while its timer was hidden. Historical exclusions below describe the earlier passes; the linked report states the current coverage and remaining listening limits.

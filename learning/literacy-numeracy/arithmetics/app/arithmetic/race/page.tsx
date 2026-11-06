@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { RaceAvatar, RaceBackdrop } from "../../components/arithmetic-race-scene";
 import { RACE_TEAM_COUNTS, RACE_TEAMS } from "../../../lib/arithmetic-race-teams";
+import { rememberRaceHost, useRaceMusic } from "../../components/race-music";
 
 type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null; teamCount?: number | null };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
@@ -68,6 +69,9 @@ export default function ArithmeticRaceJoinPage() {
 
   const activeRoom = joined?.roomCode;
   const activeHost = joined?.hostToken;
+  // 대기실 음악. 방장 기기에서만 기본으로 들린다.
+  useRaceMusic("lobby", Boolean(activeHost));
+  useEffect(() => { if (activeRoom) rememberRaceHost(activeRoom, Boolean(activeHost)); }, [activeRoom, activeHost]);
   const activeParticipant = joined?.participantId;
   const activeToken = joined?.participantToken;
   useEffect(() => {

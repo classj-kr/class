@@ -47,7 +47,11 @@
     document.querySelector('.workspace').inert = open;
     $('coop-close').hidden = !state?.work || state.me.teacher || !!state.race && (state.race.phase !== 'playing' || state.race.finished);
     const racing = state?.race?.phase === 'playing' && (state.me.teacher || (!open && state.work && !state.race.finished));
-    window.StackingMusic.setSession(racing ? state.race.id : null);
+    const host = Boolean(state?.me?.teacher);
+    // 순위전 중에는 달리는 곡, 순위전 대기·결과에는 대기 곡. 방장(교사) 기기에서만 기본으로 들린다.
+    if (racing) window.StackingMusic.setSession(state.race.id, { host });
+    else if (state?.race) window.StackingMusic.setLobby(host);
+    else window.StackingMusic.setSession(null, { host });
   }
   function diagram(cells, view, size) {
     const wrap = element('div', undefined, 'coop-diagram');

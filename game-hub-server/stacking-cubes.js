@@ -1,7 +1,6 @@
 'use strict';
 const express = require('express');
 const crypto = require('node:crypto');
-const path = require('node:path');
 const Activities = require('../learning/inquiry/math/stacking-cubes/activities');
 const { DEFAULT_ROUND, MAX_ROUND, generateRound, drawFromBank } = require('./stacking-race-questions');
 const CONTENT = '/learning/inquiry/math/stacking-cubes';
@@ -83,23 +82,6 @@ function createStackingCubes({ platform, now = Date.now }) {
         throw fail(403, '현재 사용할 수 없는 활동이에요.');
       next();
     }),
-  );
-  router.get(
-    '/music/:file',
-    (req, res) => {
-      // Serve only these recordings with the lesson, including when the source games are locked.
-      const file = req.params.file;
-      const originals = {
-        'fruitbell.ogg': 'fruitbell/assets/sound/bgm.ogg',
-        'lastcard.ogg': 'lastcard/assets/sound/bgm.ogg',
-        'glass-pulse-01.ogg': 'drawrelay/assets/sound/glass-pulse-01.ogg',
-        'glass-pulse-02.ogg': 'drawrelay/assets/sound/glass-pulse-02.ogg',
-        'glass-pulse-03.ogg': 'drawrelay/assets/sound/glass-pulse-03.ogg',
-      };
-      if (!Object.hasOwn(originals, file)) return res.sendStatus(404);
-      res.set('Cache-Control', 'private, max-age=86400');
-      res.sendFile(path.resolve(__dirname, '../learning/games', originals[file]));
-    },
   );
   router.get(
     '/session',
