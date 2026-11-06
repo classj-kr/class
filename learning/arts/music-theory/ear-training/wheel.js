@@ -31,9 +31,9 @@
      * 반시계 한 자리가 IV, 제자리가 I, 시계로 다섯 자리가 V·ii·vi·iii·vii°.
      */
     const FUNCTIONS = [
-        { step: -1, roman: "IV", ko: "버금딸림", quality: "maj", degree: 3 },
-        { step: 0, roman: "I", ko: "으뜸", quality: "maj", degree: 0 },
-        { step: 1, roman: "V", ko: "딸림", quality: "maj", degree: 4 },
+        { step: -1, roman: "IV", ko: "Subdominant\n(버금딸림)", quality: "maj", degree: 3 },
+        { step: 0, roman: "I", ko: "Tonic\n(으뜸)", quality: "maj", degree: 0 },
+        { step: 1, roman: "V", ko: "Dominant\n(딸림)", quality: "maj", degree: 4 },
         { step: 2, roman: "ii", ko: "", quality: "min", degree: 1 },
         { step: 3, roman: "vi", ko: "", quality: "min", degree: 5 },
         { step: 4, roman: "iii", ko: "", quality: "min", degree: 2 },
