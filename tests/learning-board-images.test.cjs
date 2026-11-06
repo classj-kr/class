@@ -28,7 +28,7 @@ test('board images upload, attach, display and follow post visibility', async ()
     const { board } = await req('/', 'POST', { title: '그림 전시', layout: 'wall' }, teacher, 201);
     const base = '/' + board.id;
     // Background is random at creation and changeable by the teacher only.
-    assert.ok(['default', 'space'].includes(board.theme));
+    assert.ok(['default', 'space', 'ocean', 'forest', 'snow', 'sunset', 'petals'].includes(board.theme));
     await req(base, 'PATCH', { theme: 'neon' }, teacher, 400);
     await req(base, 'PATCH', { theme: 'space' });
     assert.equal((await req(base)).board.theme, 'space');

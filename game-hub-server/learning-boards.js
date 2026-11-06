@@ -11,7 +11,7 @@ const { installStackingBoards } = require('./stacking-boards');
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
 const MAX_POSTS = 200;
-const THEMES = ['default', 'space'];
+const THEMES = ['default', 'space', 'ocean', 'forest', 'snow', 'sunset', 'petals'];
 // Student numbers follow each school's own scheme (e.g. boys 1~, girls 51~), so only the PostgreSQL INTEGER bound applies.
 const MAX_NUMBER = 2147483647;
 
@@ -54,7 +54,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       // 게시판 배경: 기본(default) 또는 별이 반짝이는 우주(space).
       await db.query("ALTER TABLE learning_boards ADD COLUMN IF NOT EXISTS theme TEXT NOT NULL DEFAULT 'default'");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_theme_check');
-      await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_theme_check CHECK (theme IN ('default', 'space'))");
+      await db.query(`ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_theme_check CHECK (theme IN (${THEMES.map(t => `'${t}'`).join(', ')}))`);
       // 작품 퀴즈: the artist's own three fake titles for "이 그림의 제목은?".
       await db.query("ALTER TABLE learning_board_posts ADD COLUMN IF NOT EXISTS title_decoys JSONB NOT NULL DEFAULT '[]'");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
