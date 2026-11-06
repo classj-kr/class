@@ -18,7 +18,10 @@ const ROOT = path.join(__dirname, '..');
 const APP = process.env.MATH_BANK_DIR || path.join(ROOT, 'learning/literacy-numeracy/math-bank');
 const context = { console }; context.globalThis = context;
 vm.createContext(context);
-for (const file of [...['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(APP, f))), ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js')).sort().map((f) => 'units/' + f)]) {
+// MATH_BANK_ONLY=11-1-3,11-1-4: 그 단원 파일만 읽어 검사한다(단원을 짓는 사본에서 제 단원만 빨리 볼 때). 학기 목록 검사는 건너뛴다.
+const ONLY = process.env.MATH_BANK_ONLY ? process.env.MATH_BANK_ONLY.split(',').map((s) => s.trim()).filter(Boolean) : null;
+const mine = (f) => !ONLY || ONLY.some((id) => f.startsWith(id) && /^[a-z]\.js$/.test(f.slice(id.length)));
+for (const file of [...['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(APP, f))), ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js') && mine(f)).sort().map((f) => 'units/' + f)]) {
   vm.runInContext(fs.readFileSync(path.join(APP, file), 'utf8'), context, { filename: file });
 }
 const B = context.MathBank;
@@ -108,7 +111,7 @@ const answerAt = (item, i) => item.inputs[i].answer;
 
 test('맨 위 드롭다운: 학기 목록(terms.js)이 실린 단원과 같고, 기출 화면도 그 파일을 읽는다', () => {
   // 단원을 짓는 사본(MATH_BANK_DIR)에는 아직 등록하지 않은 단원이 있으므로 보지 않는다.
-  if (process.env.MATH_BANK_DIR) return;
+  if (process.env.MATH_BANK_DIR || ONLY) return;
   const own = {}; own.globalThis = own;
   vm.runInNewContext(fs.readFileSync(path.join(APP, 'terms.js'), 'utf8'), own, { filename: 'terms.js' });
   const T = own.MathBankTerms;
@@ -137,8 +140,8 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
     for (const part of [item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : [])) assert.deepEqual(badParticles(part), [], `토씨 — ${label}`);
     // 낱말 뒤 토씨가 겹쳐 붙은 것(사과을, 배추은 …)
     assert.doesNotMatch(whole, /[가-힣](을를|를을|은는|는은)(?=[\s,.])/, label);
-    // 성취기준 번호: 초등·중학교 [4수01-02], 고등학교 공통수학 [10공수1-02-03]
-    assert.ok(/^\d수\d\d-\d\d$|^10공수[12]-\d\d-\d\d$/.test(item.standard), label);
+    // 성취기준 번호: 초등·중학교 [4수01-02], 고등학교 공통수학 [10공수1-02-03], 고2·3 선택 과목 [12대수01-02]·[12확통02-03]·[12기하03-01]·[12미적Ⅰ-02-05]·[12미적Ⅱ-01-03]
+    assert.ok(/^\d수\d\d-\d\d$|^10공수[12]-\d\d-\d\d$|^12(대수|확통|기하)\d\d-\d\d$|^12미적[ⅠⅡ]-\d\d-\d\d$/.test(item.standard), label);
     // 말투는 수능 문체: "~세요 / ~습니다 / ~인가요" 를 쓰지 않는다.
     assert.doesNotMatch(whole, /세요|습니다|입니다|인가요|나요\?|해요|예요|어요|까요/, '말투: ' + label);
     assert.ok(item.explain && strip(item.explain).length > 3, '풀이가 없다: ' + label);
@@ -195,7 +198,7 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
     // 검사할 거리가 하나도 없는 문항은 답을 믿을 수 없다.
     assert.ok(Object.keys(item.facts || {}).length > 0, '다시 셈할 근거(facts)가 없다: ' + label);
   });
-  assert.ok(made > 2000, '문항 수: ' + made);
+  if (!ONLY) assert.ok(made > 2000, '문항 수: ' + made);
 });
 
 test('은행: 같은 문제가 두 번 실리지 않고, 회차가 문항을 빠짐없이 나눈다', () => {
@@ -355,9 +358,10 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       }
     }
   });
-  assert.ok(checked > 1000);
-  assert.ok(divisions > 1000, '나눗셈 검사 수: ' + divisions);
-  assert.ok(muls > 1500, '곱셈 검사 수: ' + muls);
+  // 아래 셋째 줄까지의 「몇 개 넘게 보았다」는 은행 전체를 볼 때만 따진다(MATH_BANK_ONLY 로 한 단원만 보면 그 단원에 없는 갈래가 있다).
+  if (!ONLY) assert.ok(checked > 1000);
+  if (!ONLY) assert.ok(divisions > 1000, '나눗셈 검사 수: ' + divisions);
+  if (!ONLY) assert.ok(muls > 1500, '곱셈 검사 수: ' + muls);
 });
 
 test('가려진 숫자: 가린 자리를 모든 숫자로 바꿔 보아도 맞는 경우는 하나뿐이다', () => {
@@ -387,7 +391,7 @@ test('가려진 숫자: 가린 자리를 모든 숫자로 바꿔 보아도 맞�
     const order = f.masks.map((m) => m.row * 10 - m.place);
     assert.deepEqual(order, order.slice().sort((x, y) => x - y), '가린 자리의 차례: ' + label);
   });
-  assert.ok(checked > 100);
+  if (!ONLY) assert.ok(checked > 100);
 });
 
 test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하나이고 표시된 답과 같다', () => {
@@ -1086,7 +1090,7 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
     }
   });
   for (const name of Object.keys(counts)) assert.ok(counts[name] >= 30, name + ' 문항이 거의 검사되지 않았다');
-  assert.ok(Object.keys(counts).length >= 25, '검사한 갈래: ' + Object.keys(counts).join(', '));
+  if (!ONLY) assert.ok(Object.keys(counts).length >= 25, '검사한 갈래: ' + Object.keys(counts).join(', '));
 });
 
 // ── 도형 문항 ────────────────────────────────────────────────
@@ -1279,7 +1283,7 @@ test('도형: 그림의 좌표로 다시 따져 답이 하나이고 표시된 �
     if (f.twoSquares) { const [a, total] = f.twoSquares, big = total - a; assert.ok(big > a, label); assert.equal(answerAt(item, 0), big - a, label); tally('twoSquares'); }
   });
   for (const name of Object.keys(counts)) assert.ok(counts[name] >= 30, name + ' 문항이 거의 검사되지 않았다');
-  assert.ok(Object.keys(counts).length >= 20, '검사한 갈래: ' + Object.keys(counts).join(', '));
+  if (!ONLY) assert.ok(Object.keys(counts).length >= 20, '검사한 갈래: ' + Object.keys(counts).join(', '));
 });
 
 // ── 큰 수(4학년 1학기) ─────────────────────────────────────────
