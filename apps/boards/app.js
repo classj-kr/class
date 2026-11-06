@@ -188,7 +188,26 @@
         tile.append(element('span', names[b.layout], 'pill'), element('h2', b.title));
         if (b.description) tile.append(element('span', b.description, 'muted'));
         const footer = element('footer'); footer.append(element('span', `방번호 ${b.code}`), element('span', b.closed ? '글쓰기 마감' : '참여 가능'));
-        tile.append(footer); $('boardList').append(tile);
+        tile.append(footer);
+        const card = element('div', undefined, 'board-card');
+        const remove = button('삭제', async () => {
+          if (!confirm(`‘${b.title}’ 게시판을 삭제할까요? 학생 글·그림·댓글·문제가 모두 지워지고 되돌릴 수 없어요.`)) return;
+          remove.disabled = true;
+          try { await api(`/${b.id}`, 'DELETE'); }
+          catch (error) { if (error.status !== 404) { remove.disabled = false; throw error; } }
+          card.remove(); toast('게시판을 삭제했어요.');
+          if (!$('boardList').querySelector('.board-card')) $('boardList').append(element('p', '게시판 없음', 'empty'));
+        }, 'board-delete danger');
+        remove.setAttribute('aria-label', `${b.title} 삭제`);
+        const rename = button('이름 바꾸기', async () => {
+          const title = prompt('새 게시판 이름 (80자까지)', b.title);
+          if (title === null || !title.trim() || title.trim() === b.title) return;
+          await api(`/${b.id}`, 'PATCH', { title: title.trim() });
+          b.title = title.trim(); tile.querySelector('h2').textContent = b.title;
+          remove.setAttribute('aria-label', `${b.title} 삭제`); toast('이름을 바꿨어요.');
+        }, 'board-rename');
+        const actions = element('div', undefined, 'board-actions'); actions.append(rename, remove);
+        card.append(tile, actions); $('boardList').append(card);
       });
     } catch (error) {
       $('newBoard').disabled = true; $('teacherError').hidden = false;

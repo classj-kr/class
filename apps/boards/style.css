@@ -17,10 +17,13 @@ textarea{resize:vertical;line-height:1.5}#joinCode{font-size:24px;font-weight:70
 .form-row{display:grid;grid-template-columns:85px 1fr;gap:10px}
 .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .board-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.board-card{position:relative;display:grid}.board-card .board-tile{padding-bottom:52px}
+.board-actions{position:absolute;right:10px;bottom:10px;display:flex;gap:6px}
+.board-actions button{min-height:32px;padding:4px 10px;font-size:13px;background:white}.board-actions .board-delete:hover{background:#fbeceb;border-color:#a2382d}
 .board-tile{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:14px;text-align:left}.board-tile h2{margin:0;font-size:18px}.board-tile .muted{font-size:13px}.board-tile footer{display:flex;gap:10px;font-size:12px;color:var(--muted)}
 .board-title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}.board-title-row .pill{flex-shrink:0}
 .description{margin:6px 0 8px;font-size:14px;white-space:pre-wrap;color:var(--muted)}
-.code-chip{display:flex;align-items:center;gap:8px;flex-shrink:0;font-size:12px}.code-chip strong{font-size:20px;letter-spacing:2px;font-variant-numeric:tabular-nums}
+.code-chip{display:flex;align-items:center;gap:12px;flex-shrink:0;padding:6px 18px;border-radius:12px;background:#173f35;color:#fff;font-size:16px;font-weight:800}.code-chip strong{font-size:48px;line-height:1.05;letter-spacing:4px;font-variant-numeric:tabular-nums}
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 8px;padding:0 0 8px;border-bottom:1px solid var(--line)}
 .toolbar-group{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:13px}
 .pill,.badge{display:inline-block;padding:2px 6px;border-radius:4px;background:#e9eee7;font-size:12px;font-weight:600}
@@ -76,7 +79,7 @@ fieldset{margin:12px 0;padding:0;border:0}legend{margin-bottom:6px;font-size:14p
 #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 24px);z-index:100;background:var(--green);color:white;padding:8px 14px;border-radius:6px;font-size:13px}
 @media(max-width:650px){
  main{padding:8px 10px 24px}h1{font-size:19px}.entry{margin:0 auto}.panel,dialog{padding:16px}
- button,select{min-height:40px}.post footer button{min-height:36px}.board-title-row{gap:7px}.code-chip strong{font-size:18px}
+ button,select{min-height:40px}.post footer button{min-height:36px}.board-title-row{gap:7px}.code-chip strong{font-size:34px}
  .toolbar{gap:8px}.toolbar-group{gap:5px;font-size:12px}.quiz-controls{flex-wrap:wrap;gap:8px}.sets-panel{gap:5px}
  #setDetails{min-width:123px}#setDetails summary{min-height:40px;padding:9px 8px}#setDetails[open]{min-width:0}.sets-panel:has(details[open]){flex-basis:100%}.set-row{flex-wrap:wrap}
  .posts.wall,.posts.quiz{columns:1}.posts.roster{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.slot:has(.post){grid-column:1/-1}.questions{grid-template-columns:1fr}.post,.question-card{padding:12px}
