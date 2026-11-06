@@ -130,7 +130,15 @@
     return value;
   }
   async function run(fn) { try { await fn(); } catch (error) { toast(error.message); } }
-  function show(view) { ['entry', 'teacherHome', 'boardView', 'setView'].forEach(id => { $(id).hidden = id !== view; }); }
+  function show(view) {
+    ['entry', 'teacherHome', 'boardView', 'setView'].forEach(id => { $(id).hidden = id !== view; });
+    if (view === 'entry' || view === 'teacherHome') applyTheme('default');
+  }
+  function applyTheme(theme) {
+    const space = theme === 'space';
+    document.body.classList.toggle('theme-space', space);
+    if (window.boardStarfield) { if (space) window.boardStarfield.start(); else window.boardStarfield.stop(); }
+  }
   function openDialog(id) { $(id).querySelectorAll('.form-error').forEach(n => { n.textContent = ''; }); $(id).showModal(); }
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => b.closest('dialog').close()));
   function handleForm(id, action) {
@@ -339,6 +347,7 @@
   function renderBoard() {
     const { board: b, me } = data;
     document.title = `${b.title} · 게시판`;
+    applyTheme(b.theme);
     $('boardDescription').textContent = b.description;
     $('boardCode').textContent = b.code; $('memberCount').textContent = `참여 ${data.members.length}명`;
     $('myIdentity').textContent = me.teacher ? '선생님' : `${me.number}번 ${me.name}`;
@@ -479,11 +488,12 @@
     $('settingsLocked').checked = b.locked; $('settingsClosed').checked = b.closed; $('settingsNames').checked = b.hideNames;
     $('settingsLikes').checked = b.likesEnabled; $('settingsLikesLabel').hidden = b.layout === 'quiz';
     $('settingsComments').checked = b.commentsEnabled; $('settingsCommentsLabel').hidden = b.layout === 'quiz';
+    $('settingsTheme').value = b.theme || 'default';
     $('recoveryLink').replaceChildren(); openDialog('settingsDialog');
   });
   handleForm('settingsForm', async () => {
     await api(`/${boardId}`, 'PATCH', { title: $('settingsTitle').value, description: $('settingsDescription').value,
-      locked: $('settingsLocked').checked, closed: $('settingsClosed').checked, hideNames: $('settingsNames').checked, likesEnabled: $('settingsLikes').checked, commentsEnabled: $('settingsComments').checked });
+      locked: $('settingsLocked').checked, closed: $('settingsClosed').checked, hideNames: $('settingsNames').checked, likesEnabled: $('settingsLikes').checked, commentsEnabled: $('settingsComments').checked, theme: $('settingsTheme').value });
     $('settingsDialog').close(); await refresh(true);
   });
   $('rotateCode').addEventListener('click', () => run(async () => {

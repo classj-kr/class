@@ -11,6 +11,7 @@ const { installStackingBoards } = require('./stacking-boards');
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
 const MAX_POSTS = 200;
+const THEMES = ['default', 'space'];
 // Student numbers follow each school's own scheme (e.g. boys 1~, girls 51~), so only the PostgreSQL INTEGER bound applies.
 const MAX_NUMBER = 2147483647;
 
@@ -50,6 +51,10 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '021-learning-board-comments.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '022-stacking-boards.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '023-learning-board-images.sql'), 'utf8'));
+      // 게시판 배경: 기본(default) 또는 별이 반짝이는 우주(space).
+      await db.query("ALTER TABLE learning_boards ADD COLUMN IF NOT EXISTS theme TEXT NOT NULL DEFAULT 'default'");
+      await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_theme_check');
+      await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_theme_check CHECK (theme IN ('default', 'space'))");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_slots_check');
@@ -106,7 +111,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     finally { db.release(); }
   }
   const publicBoard = b => ({ id: b.id, code: b.code, title: b.title, description: b.description, layout: b.layout,
-    columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names, likesEnabled: b.likes_enabled, commentsEnabled: b.comments_enabled });
+    columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names, likesEnabled: b.likes_enabled, commentsEnabled: b.comments_enabled, theme: b.theme || 'default' });
 
   function question(body) {
     const kind = body.kind;
@@ -177,9 +182,11 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       let created;
       for (let attempt = 0; attempt < 20 && !created; attempt++) {
         const code = allocateRoomCode ? await allocateRoomCode(db, body.layout) : String(crypto.randomInt(1000, 10000));
-        created = (await db.query(`INSERT INTO learning_boards(id, owner_id, code, title, description, layout, columns, slots)
-          VALUES($1,$2,$3,$4,$5,$6,$7::jsonb,$8) ON CONFLICT(code) DO NOTHING RETURNING *`,
-        [id(), user.id, code, title, description, body.layout, JSON.stringify(labels), slots])).rows[0];
+        // Background is picked at random; the teacher may change it in 관리.
+        const theme = THEMES[crypto.randomInt(THEMES.length)];
+        created = (await db.query(`INSERT INTO learning_boards(id, owner_id, code, title, description, layout, columns, slots, theme)
+          VALUES($1,$2,$3,$4,$5,$6,$7::jsonb,$8,$9) ON CONFLICT(code) DO NOTHING RETURNING *`,
+        [id(), user.id, code, title, description, body.layout, JSON.stringify(labels), slots, theme])).rows[0];
       }
       if (!created) fail(503, 'CODE_BUSY', '방번호를 만들지 못했어요. 다시 시도해 주세요.');
       await db.query('COMMIT');
@@ -297,9 +304,10 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         if (body[key] !== undefined && typeof body[key] !== 'boolean') fail(400, 'INVALID_SETTING', '설정 값이 올바르지 않아요.');
         values[field] = body[key] ?? b[field];
       }
-      await db.query(`UPDATE learning_boards SET title=$2, description=$3, locked=$4, closed=$5, hide_names=$6, likes_enabled=$7, comments_enabled=$8 WHERE id=$1`,
+      if (body.theme !== undefined && !THEMES.includes(body.theme)) fail(400, 'INVALID_SETTING', '설정 값이 올바르지 않아요.');
+      await db.query(`UPDATE learning_boards SET title=$2, description=$3, locked=$4, closed=$5, hide_names=$6, likes_enabled=$7, comments_enabled=$8, theme=$9 WHERE id=$1`,
         [b.id, body.title === undefined ? b.title : text(body.title, 80, true), body.description === undefined ? b.description : text(body.description, 1000),
-          values.locked, values.closed, values.hide_names, values.likes_enabled, values.comments_enabled]);
+          values.locked, values.closed, values.hide_names, values.likes_enabled, values.comments_enabled, body.theme ?? b.theme ?? 'default']);
     }, true);
     res.json({ ok: true });
   }));
