@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" />
     <title>글씨 쓰기</title>
-    <link rel="stylesheet" href="styles.css?v=20261107-sheet" />
+    <link rel="stylesheet" href="styles.css?v=20261107-score" />
   </head>
   <body>
     <main class="app">
@@ -81,28 +81,25 @@
           <a href="/room/">방번호 입력</a>
         </div>
         <div id="roomSettings" class="room-actions" hidden>
-          <label for="raceText">글자</label
-          ><input id="raceText" value="가나다" maxlength="24" aria-describedby="raceRule" /><select
-            id="raceMode"
-            aria-label="순위전 쓰기 모드"
-          >
+          <select id="raceSource" aria-label="순위전 글감">
+            <option value="custom">직접 넣기</option>
+            <option value="proverbs">속담</option>
+            <option value="idioms">한자성어</option>
+            <option value="expressions">관용어</option></select
+          ><input id="raceText" value="가나다" maxlength="40" aria-label="쓸 글" aria-describedby="raceRule" /><button
+            id="raceAnother"
+            type="button"
+            hidden
+          >다른 문구</button
+          ><select id="raceMode" aria-label="순위전 쓰기 모드">
             <option value="trace">따라 쓰기</option>
             <option value="solo">혼자 쓰기</option></select
-          ><small id="raceRule">한글 1~12자 · 5분</small>
+          ><small id="raceRule">한글 1~24자 · 5분 · 점수 = 모양 × 획순</small>
+          <label id="spectateRow" class="check" hidden><input id="spectateInput" type="checkbox" /> 나는 참여하지 않고 관전하기</label>
         </div>
         <div id="roomEntry" class="room-entry">
-          <form id="joinForm">
-            <label class="sr-only" for="roomCode">방번호</label
-            ><input
-              id="roomCode"
-              inputmode="numeric"
-              pattern="[0-9]{4}"
-              maxlength="4"
-              placeholder="방번호 4자리"
-              required
-            /><button class="primary">입장</button>
-          </form>
-          <button id="createRoom" hidden>방 만들기</button><button id="roomInputTest">펜 입력 확인</button>
+          <button id="createRoom" class="primary">방 만들기</button><button id="roomInputTest">펜 입력 확인</button>
+          <small class="room-note">친구 방은 메인 화면 <b>방번호</b>로 들어가요.</small>
         </div>
         <div id="roomLobby" hidden>
           <div class="room-live">
@@ -162,10 +159,10 @@
     <div id="toast" class="toast" role="status" hidden></div>
     <script src="/assets/site-storage.js?v=20261006-1"></script>
     <script src="font-source.js?v=20261029-12"></script>
-    <script src="pen-reference.js?v=20261029-12"></script>
-    <script src="core.js?v=20261029-12"></script>
+    <script src="pen-reference.js?v=20261107-score"></script>
+    <script src="core.js?v=20261107-score"></script>
     <script src="writing-texts.js?v=20261107-1"></script>
-    <script src="app.js?v=20261107-sheet"></script>
-    <script src="race.js?v=20261029-12"></script>
+    <script src="app.js?v=20261107-score"></script>
+    <script src="race.js?v=20261107-score"></script>
   </body>
 </html>

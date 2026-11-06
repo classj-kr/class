@@ -21,7 +21,8 @@
     shownRound = '',
     busy = false,
     failures = 0,
-    previousLock = null;
+    previousLock = null,
+    isTeacher = false;
   const status = (message) => ($('roomStatus').textContent = message);
   async function api(path, body) {
     const r = await fetch('/api/handwriting' + path, {
@@ -35,6 +36,20 @@
     if (!r.ok) throw Object.assign(Error(data.message || '방에 연결하지 못했어요.'), { status: r.status });
     return data;
   }
+  // 글감: 직접 넣기, 또는 속담·한자성어·관용어에서 무작위로(writing-texts.js)
+  const banks = window.HANDWRITING_TEXTS || {};
+  function pickText() {
+    const list = banks[$('raceSource').value];
+    if (!Array.isArray(list) || !list.length) return;
+    const others = list.filter(([t]) => t !== $('raceText').value);
+    $('raceText').value = (others.length ? others : list)[Math.floor(Math.random() * (others.length || list.length))][0];
+  }
+  $('raceSource').onchange = () => {
+    const bank = $('raceSource').value !== 'custom';
+    $('raceAnother').hidden = !bank;
+    if (bank) pickText();
+  };
+  $('raceAnother').onclick = pickText;
   const settings = () => ({ text: $('raceText').value.trim(), phase: $('raceMode').value });
   function setLock(value) {
     if (previousLock !== value) {
@@ -45,6 +60,7 @@
   function render(s) {
     state = s;
     const host = s.me.host,
+      plays = s.me.plays,
       writing = s.phase === 'writing',
       results = s.phase === 'results';
     document.body.classList.toggle('round-writing', writing);
@@ -52,19 +68,19 @@
     $('roomEntry').hidden = true;
     $('roomLobby').hidden = false;
     $('roomSettings').hidden = !host;
-    $('raceText').disabled = writing;
-    $('raceMode').disabled = writing;
+    $('spectateRow').hidden = true;
+    for (const id of ['raceText', 'raceMode', 'raceSource', 'raceAnother']) $(id).disabled = writing;
     $('codeLabel').textContent = s.code;
     $('roomPhase').textContent = writing ? '함께 쓰는 중' : results ? '이번 판 결과' : '입장·준비';
     $('readyButton').hidden = host || writing;
     $('readyButton').textContent = s.me.ready ? '준비 취소' : '준비';
     $('startRound').hidden = !host || writing;
     $('stopRound').hidden = !host || !writing;
-    $('submitRound').hidden = host || !writing || s.me.status === '제출 완료';
+    $('submitRound').hidden = !plays || !writing || s.me.status === '제출 완료';
     $('roomHelp').textContent = writing
       ? `${Math.max(0, Math.ceil((s.deadline - Date.now()) / 1000))}초 남음`
       : results
-        ? '획순 통과 기록으로 순위'
+        ? '점수(모양 × 획순)로 순위'
         : '모두 준비하면 시작합니다.';
     if (!state || s.phase !== document.body.dataset.roomPhase) {
       $('rankingDetails').open = !writing;
@@ -75,14 +91,13 @@
         const li = document.createElement('li');
         li.classList.toggle('mine', p.id === s.me.id);
         const name = document.createElement('strong');
-        name.textContent = (p.rank ? `${p.rank}위 · ` : '') + p.name;
+        name.textContent = (p.rank ? `${p.rank}위 · ` : '') + p.name + (p.host ? ' (방장)' : '');
         const detail = document.createElement('span');
-        detail.textContent = p.ready ? '준비 완료' : p.result ? `${p.result.shape}%` : p.status;
-        if (p.result && !p.ready) {
+        // 다음 판 준비를 누른 학생은 "준비 완료"가 먼저, 지난 판 점수는 아래 작은 글씨로 남긴다.
+        detail.textContent = !writing && !p.host && p.ready ? '준비 완료' : p.result ? `${p.result.score}점` : p.status;
+        if (p.result) {
           const small = document.createElement('small');
-          small.textContent = p.result.order
-            ? '획순 통과'
-            : `획순 다시 · ${p.result.passed}/${p.result.total}글자`;
+          small.textContent = (detail.textContent === '준비 완료' ? `지난 판 ${p.result.score}점 · ` : '') + `모양 ${p.result.shape}% · ` + (p.result.order ? '획순 통과' : `획순 ${p.result.passed}/${p.result.total}글자`);
           detail.append(small);
         }
         li.append(name, detail);
@@ -90,7 +105,7 @@
       }),
     );
     const showBoard = Boolean(s.roundId) && (writing || results);
-    $('workspace').style.display = showBoard ? 'grid' : 'none';
+    $('workspace').style.display = showBoard ? 'block' : 'none';
     document.body.classList.toggle('room-active', showBoard);
     if (showBoard) {
       if (shownRound !== s.roundId) {
@@ -98,7 +113,7 @@
         A.useRound(s.config.text, s.config.phase, s.code + '-' + s.roundId);
         previousLock = null;
       }
-      setLock(host || !writing || s.me.status === '제출 완료');
+      setLock(!plays || !writing || s.me.status === '제출 완료');
     }
     if (!host) {
       $('raceText').value = s.config.text;
@@ -150,15 +165,9 @@
       busy = false;
     }
   }
-  $('roomCode').value = initialCode.replace(/\D/g, '').slice(0, 4);
-  $('roomCode').oninput = () => {
-    $('roomCode').value = $('roomCode').value.replace(/\D/g, '').slice(0, 4);
-  };
-  $('joinForm').onsubmit = (e) => {
-    e.preventDefault();
+  // 방번호는 메인 화면 방번호 입력에서 ?room= 으로 넘어온다.
+  function join(value) {
     action(async () => {
-      const value = $('roomCode').value;
-      if (!/^\d{4}$/.test(value)) throw Error('방번호 4자리를 입력해 주세요.');
       const saved = A.store.get('ticket-' + value);
       if (saved?.token) {
         token = saved.token;
@@ -173,16 +182,15 @@
       }
       enter(await api('/rooms/' + value + '/join', {}), value);
     });
-  };
+  }
   $('createRoom').onclick = () =>
     action(async () => {
-      const data = await api('/rooms', settings());
+      const data = await api('/rooms', { ...settings(), spectate: isTeacher && $('spectateInput').checked });
       enter(data, data.state.code);
     });
   $('readyButton').onclick = () =>
     action(async () => render(await api('/rooms/' + code + '/ready', { ready: !state.me.ready })));
-  $('startRound').onclick = () =>
-    action(async () => render(await api('/rooms/' + code + '/start', settings())));
+  $('startRound').onclick = () => action(async () => render(await api('/rooms/' + code + '/start', settings())));
   $('stopRound').onclick = () => action(async () => render(await api('/rooms/' + code + '/stop', {})));
   $('submitRound').onclick = () =>
     action(async () => {
@@ -191,8 +199,8 @@
     });
   $('leaveRoom').onclick = () =>
     action(async () => {
-      if (state?.me.host && !confirm('방을 닫으면 학생들의 순위전도 끝나요. 방을 닫을까요?')) return;
-      await api('/rooms/' + code + '/leave', {});
+      if (state?.me.host && !confirm('방을 닫으면 모두의 순위전이 끝나요. 방을 닫을까요?')) return;
+      await api('/rooms/' + code + '/leave', {}).catch(() => {});
       clearTimeout(pollTimer);
       A.store.remove('ticket-' + code);
       code = '';
@@ -206,15 +214,18 @@
       $('workspace').style.display = 'none';
       $('roomLobby').hidden = true;
       $('roomEntry').hidden = false;
+      $('roomSettings').hidden = false;
+      $('spectateRow').hidden = !isTeacher;
       history.replaceState(null, '', location.pathname);
     });
   $('roomInputTest').onclick = () => $('testInput').click();
+  // 방 만들기는 누구나. 관전 옵션은 교사에게만.
+  $('roomSettings').hidden = false;
   try {
-    const session = await api('/session');
-    $('createRoom').hidden = !session.isTeacher;
-    $('roomSettings').hidden = !session.isTeacher;
+    isTeacher = Boolean((await api('/session')).isTeacher);
+    $('spectateRow').hidden = !isTeacher;
   } catch (e) {
     status(e.message);
   }
-  if (/^\d{4}$/.test(initialCode)) $('joinForm').requestSubmit();
+  if (/^\d{4}$/.test(initialCode)) join(initialCode);
 })();

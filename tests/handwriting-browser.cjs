@@ -284,6 +284,9 @@ test('teacher creates a room, student enters from the main entrance, submits, an
   await page.goto(h.base + route + 'race/');
   await page.locator('#createRoom').waitFor({ state: 'visible' });
   await page.fill('#raceText', '가');
+  // 교사는 기본으로 함께 쓰므로, 이 시험에서는 관전만 한다.
+  await page.locator('#spectateRow').waitFor({ state: 'visible' });
+  await page.check('#spectateInput');
   await page.locator('#createRoom').click();
   await page.locator('#codeLabel').waitFor({ state: 'visible' });
   const code = await page.locator('#codeLabel').textContent();

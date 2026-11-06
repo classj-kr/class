@@ -46,7 +46,8 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
   }
   assert.equal((await req('/rooms', { text: '가' })).status, 403);
   assert.equal((await req('/rooms', { text: 'abc' }, '', 'teacher')).status, 400);
-  const made = await req('/rooms', { text: '가나', phase: 'solo' }, '', 'teacher');
+  const made = await req('/rooms', { text: '가나', phase: 'solo', spectate: true }, '', 'teacher');
+  assert.equal(made.data.state.me.plays, false, 'the teacher only watches');
   assert.equal(made.status, 200);
   const code = made.data.state.code,
     host = made.data.token,
@@ -84,7 +85,10 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
   assert.equal(end.participants[0].result.order, true);
   assert.ok(end.participants[0].result.shape >= 98);
   assert.equal(end.participants[1].result.order, false);
-  assert.equal(end.participants[1].rank, undefined);
+  // 획순이 틀려도 순위에서 빠지지 않고, 획 점수만큼 깎인 점수로 아래 순위가 된다.
+  assert.equal(end.participants[1].rank, 2);
+  assert.ok(end.participants[1].result.score < end.participants[0].result.score);
+  assert.ok(end.participants[1].result.score > 0);
   assert.ok(
     !JSON.stringify(end).includes(host) &&
       !JSON.stringify(end).includes(one.token) &&
@@ -115,4 +119,19 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
     (await fetch(base.replace('/api/handwriting', '') + '/api/room-entry/resolve/' + code)).status,
     404,
   );
+  // 학생도 방을 열고, 방장으로 함께 쓰며 시작한다. 같은 점수는 공동 순위.
+  const own = (await req('/rooms', { text: '하늘 바다' }, '', '', 'host-kid')).data;
+  assert.equal(own.state.me.host, true);
+  assert.equal(own.state.me.plays, true);
+  const kidPath = '/rooms/' + own.state.code;
+  const friend = (await req(kidPath + '/join', {}, '', '', 'friend')).data;
+  assert.equal((await req(kidPath + '/start', { text: '하늘 바다' }, friend.token)).status, 403, 'only the host starts');
+  await req(kidPath + '/ready', { ready: true }, friend.token);
+  const round = (await req(kidPath + '/start', { text: '하늘 바다' }, own.token)).data;
+  const kidCells = C.chars('하늘 바다').map((c) => C.model(c).map((points) => ({ points: C.sample(points, 60) })));
+  await req(kidPath + '/result', { roundId: round.roundId, cells: kidCells }, own.token);
+  const done = (await req(kidPath + '/result', { roundId: round.roundId, cells: kidCells }, friend.token)).data;
+  assert.equal(done.phase, 'results');
+  assert.deepEqual(done.participants.map((x) => x.rank), [1, 1], 'equal scores share a rank');
+  assert.equal((await req('/rooms', { text: '가' + '나'.repeat(24) }, '', 'teacher')).status, 400, '24 letters at most');
 });
