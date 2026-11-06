@@ -885,7 +885,7 @@
       const across = nx * 0.965926 + ny * 0.258819,
         along = -nx * 0.258819 + ny * 0.965926,
         horizontalWeight = !closed && Math.abs(dy) < Math.abs(dx) * 0.3 && length > 20 ? (length > 65 ? 1.2 : 1.1) : 1,
-        half = Math.hypot((closed ? 2.65 : 2.45) * across, (closed ? 2.25 : 2.45) * along) * pressure * horizontalWeight;
+        half = Math.hypot((closed ? 2.65 : 2.45) * across, (closed ? 2.25 : 2.45) * along) * 1.2 * pressure * horizontalWeight;
       left.push([p[i][0] + nx * half, p[i][1] + ny * half]);
       right.push([p[i][0] - nx * half, p[i][1] - ny * half]);
       halfWidths.push(half);
