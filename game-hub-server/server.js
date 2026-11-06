@@ -628,43 +628,20 @@ for (const file of ['model.js', 'activities.js', 'sound.js', 'music.js', 'librar
 }
 const typingRace = createTypingRace({ platform: classroomPlatform });
 app.use('/api/typing-race', classroomPlatform.requireSiteAccess, typingRace.router);
-// 방번호 입구는 수업 메뉴가 잠겨 있어도 열린다. 신나는 곡은 보드게임 음악을 이름으로만 빌려 쓴다.
+// 방번호 입구는 수업 메뉴가 잠겨 있어도 열린다. 음악은 순위전 공용 곡(/assets/sound/race-music/)을 쓴다.
 const typingRaceRoot = path.join(SITE_ROOT, 'learning/inquiry/information-computing/typing/race');
-const TYPING_RACE_MUSIC = {
-  'lobby.ogg': 'learning/games/citychase/assets/music/citychase-lobby.ogg',
-  'race-1.ogg': 'learning/games/citychase/assets/music/citychase-game-1.ogg',
-  'race-2.ogg': 'learning/games/dobble/assets/sound/bgm-1.ogg',
-  'race-3.ogg': 'learning/games/expedition/assets/sound/orerun.ogg',
-  'race-4.ogg': 'learning/games/citychase/assets/music/citychase-game-2.ogg',
-  'race-5.ogg': 'learning/games/dobble/assets/sound/bgm-2.ogg',
-  'race-6.ogg': 'learning/games/expedition/assets/sound/voidrun.ogg',
-  'race-7.ogg': 'learning/games/drawrelay/assets/sound/glass-pulse-01.ogg',
-  'victory.ogg': 'learning/games/avalon/assets/sound/avalon-good-victory.ogg'
-};
 app.get('/learning/inquiry/information-computing/typing/race/', (req, res, next) => sendSiteHtml(req, res, path.join(typingRaceRoot, 'index.html'), next));
 for (const file of ['race-core.js', 'race.js', 'race.css']) {
   app.get(`/learning/inquiry/information-computing/typing/race/${file}`, (_req, res) => res.sendFile(path.join(typingRaceRoot, file)));
 }
-app.get('/learning/inquiry/information-computing/typing/race/music/:file', (req, res, next) => {
-  const source = TYPING_RACE_MUSIC[req.params.file];
-  if (!source) return next();
-  res.setHeader('Cache-Control', 'public, max-age=604800');
-  res.sendFile(path.join(SITE_ROOT, source));
-});
 const koreanRace = createKoreanRace({ platform: classroomPlatform });
 app.use('/api/korean-race', classroomPlatform.requireSiteAccess, koreanRace.router);
-// 국어 순위전도 방번호 입구라 수업 메뉴가 잠겨 있어도 열린다. 음악은 타자 순위전 곡을 함께 쓴다.
+// 국어 순위전도 방번호 입구라 수업 메뉴가 잠겨 있어도 열린다. 음악은 순위전 공용 곡을 쓴다.
 const koreanRaceRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/korean-race');
 app.get('/learning/literacy-numeracy/korean-race/', (req, res, next) => sendSiteHtml(req, res, path.join(koreanRaceRoot, 'index.html'), next));
 for (const file of ['korean-race-core.js', 'race.js', 'race.css']) {
   app.get(`/learning/literacy-numeracy/korean-race/${file}`, (_req, res) => res.sendFile(path.join(koreanRaceRoot, file)));
 }
-app.get('/learning/literacy-numeracy/korean-race/music/:file', (req, res, next) => {
-  const source = TYPING_RACE_MUSIC[req.params.file];
-  if (!source) return next();
-  res.setHeader('Cache-Control', 'public, max-age=604800');
-  res.sendFile(path.join(SITE_ROOT, source));
-});
 app.get('/learning/inquiry/math/stacking-cubes/coop/',(req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
 for (const file of ['model.js', 'activities.js', 'sound.js', 'music.js', 'library.js', 'app.js', 'race.js', 'style.css', 'coop.js', 'coop.css', 'team-stage.js']) {
   app.get(`/learning/inquiry/math/stacking-cubes/coop/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));

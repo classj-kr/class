@@ -4,6 +4,7 @@ import { CSSProperties, FormEvent, ReactNode, useCallback, useEffect, useRef, us
 import { cardFields, raceCard, type RaceCard, type RaceField, type RacePart } from "../../../../lib/race-cards";
 import { RaceAvatar, RaceBackdrop, RaceTowers, raceCue } from "../../../components/arithmetic-race-scene";
 import type { TeamStanding } from "../../../../lib/arithmetic-race-teams";
+import { isRememberedHost, useRaceMusic } from "../../../components/race-music";
 
 type Race = { roomCode: string; worksheetName: string; worksheetRoute: string; seed: number; status: string; startedAt: number | null; endsAt: number | null; durationSeconds: number | null; teamCount?: number | null };
 type Me = { id: string; name: string; score: number; cardIndex: number; correctCount: number; wrongCount: number; skipCount: number; rank?: number | null; team?: number | null; combo?: number };
@@ -122,6 +123,8 @@ export default function ArithmeticRaceCardsPage() {
   const countdown = race?.status === "running" && race.startedAt && now > 0 && now < race.startedAt
     ? Math.min(3, Math.ceil((race.startedAt - now) / 1000)) : null;
   const playing = race?.status === "running" && now > 0 && countdown === null && remaining !== null && remaining > 0;
+  // 푸는 동안은 무작위 곡, 기다리거나 끝나면 대기 곡. 방장 기기에서만 기본으로 들린다.
+  useRaceMusic(playing ? "race" : "lobby", isRememberedHost(credentials?.room));
   useEffect(() => {
     if (countdown !== null) { wasCounting.current = true; raceCue("count"); return; }
     if (!playing || !wasCounting.current) return;

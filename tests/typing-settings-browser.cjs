@@ -43,9 +43,6 @@ async function main() {
   };
   const race = createTypingRace({ platform });
   app.use('/api/typing-race', race.router);
-  const serverSource = fs.readFileSync(path.join(root, 'game-hub-server/server.js'), 'utf8');
-  const tracks = JSON.parse(serverSource.match(/const TYPING_RACE_MUSIC = (\{[\s\S]*?\});/)[1].replaceAll("'", '"'));
-  app.get(typingPath + 'race/music/:file', (req, res) => res.sendFile(path.join(root, tracks[req.params.file])));
   app.get('/settings-sfx', (_, res) => res.send('<!doctype html><html lang="ko"><body><script src="/assets/sound/music-control.js" data-sfx-controls></script></body></html>'));
   app.get('/settings-external', (_, res) => res.send('<!doctype html><html lang="ko"><body><script>window.ClassMusicController={setVolume(value){this.volume=value},setMuted(value){this.muted=value},unlock(){this.unlocked=true}}</script><script src="/assets/sound/music-control.js"></script></body></html>'));
   app.use(express.static(root));
@@ -122,7 +119,10 @@ async function main() {
     assert.doesNotMatch(await page.locator('#createPanel').innerText(), /평균|팀 점수 합계/);
     await screenshot(page, 'race-entry-desktop');
     await open();
-    assert.equal(await page.locator('#bgm').evaluate(el => el.volume), 0.27);
+    // 순위전은 공용 순위전 음악(race-music.js)을 쓰고, 방 만들기 화면은 대기 곡이다.
+    const raceAudio = page.locator('audio[data-race-music]');
+    assert.equal(await raceAudio.evaluate(el => el.volume), 0.27);
+    assert.match(await raceAudio.getAttribute('src'), /\/assets\/sound\/race-music\/lobby-brisk-pursuit\.mp3$/);
     assert.equal(await page.locator('#sfxVolumeSlider').inputValue(), '0.42');
     await page.locator('h1').click();
     assert.equal(await page.locator('.unified-audio-panel').isVisible(), false);
