@@ -576,11 +576,13 @@
       return;
     }
     const shape = Math.round(written.reduce((s, r) => s + r.shape, 0) / written.length);
+    // 점수: 순위전과 같은 계산(글자마다 모양 × 획순, 안 쓴 글자는 0점)
+    const score = Math.round(results.reduce((s, r) => s + (r ? r.score : 0), 0) / results.length);
     const passed = written.filter((r) => r.order).length;
     const here = results[doc.index];
     $('feedback').textContent =
-      `${written.length}/${letters().length}글자 · 평균 모양 일치도 ${shape}% · 획순 통과 ${passed}글자` +
-      (here ? ` (지금 칸 ‘${letters()[doc.index]}’ ${here.shape}%${here.order ? '' : ` · ${here.actual}/${here.expected}획, 획순을 다시 살펴보세요`})` : '');
+      `점수 ${score}점 · ${written.length}/${letters().length}글자 · 평균 모양 일치도 ${shape}% · 획순 통과 ${passed}글자` +
+      (here ? ` (지금 칸 ‘${letters()[doc.index]}’ ${here.score}점, 모양 ${here.shape}%${here.order ? '' : ` · ${here.actual}/${here.expected}획, 획순을 다시 살펴보세요`})` : '');
   };
   $('demoButton').onclick = () => {
     stopDemo();

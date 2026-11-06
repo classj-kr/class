@@ -206,6 +206,34 @@ test('a manually traced font sample passes without following generated guide art
   assert.ok(C.judge('가', shifted).shape < 60);
   assert.equal(C.judge('가', [strokes[0], strokes[1], [...strokes[2]].reverse()]).order, false);
 });
+test('a well-formed letter written a little small or off-center keeps its shape score; scribbles do not', () => {
+  const around = (strokes, scale, dx = 0, dy = 0) => strokes.map((s) => ({ ...s, points: s.points.map(([x, y]) => [50 + (x - 50) * scale + dx, 50 + (y - 50) * scale + dy]) }));
+  for (const c of ['가', '한', '글', '봄']) {
+    assert.ok(C.judge(c, around(perfect(c), 0.75)).shape >= 90, c + ': 75% size');
+    assert.ok(C.judge(c, around(perfect(c), 1.2)).shape >= 90, c + ': 120% size');
+    assert.ok(C.judge(c, around(perfect(c), 1, 6, -5)).shape >= 90, c + ': slightly off-center');
+    assert.ok(C.judge(c, around(perfect(c), 0.4)).shape < 70, c + ': far too small');
+  }
+  // 칸을 빽빽이 칠하면 모양 겹침은 어느 정도 나오지만, 획 점수까지 곱한 글자 점수는 낮다.
+  const scribble = [{ points: Array.from({ length: 60 }, (_, i) => [20 + (i % 10) * 6, 20 + Math.floor(i / 10) * 12]) }];
+  assert.ok(C.judge('가', scribble).score < 35, 'zig-zag scribble');
+  const fill = [];
+  for (let y = 15; y <= 90; y += 6) fill.push({ points: [[10, y], [90, y]] });
+  assert.ok(C.judge('가', fill).score < 20, 'filling the cell with lines');
+});
+test('letter scores give partial credit for stroke mistakes and the text score averages letters', () => {
+  const good = C.judge('가', perfect('가'));
+  assert.equal(good.score, good.shape);
+  const strokes = perfect('가');
+  const oneReversed = C.judge('가', [strokes[0], strokes[1], { ...strokes[2], points: [...strokes[2].points].reverse() }]);
+  assert.equal(oneReversed.order, false);
+  assert.ok(oneReversed.score > 60 && oneReversed.score < good.score, 'one wrong stroke loses some, not all');
+  const extra = C.judge('가', [...strokes, strokes[2]]);
+  assert.ok(extra.score < oneReversed.score + 15 && extra.score < good.score);
+  assert.equal(C.judge('가', []).score, 0);
+  const text = C.judgeText('가나', [perfect('가'), []]);
+  assert.ok(text.score >= 49 && text.score <= 50);
+});
 test('bounded coordinate validation rejects forged geometry and combines independent letter results', () => {
   assert.equal(C.judgeText('한 글', [perfect('한'), perfect('글')]).order, true);
   assert.throws(() => C.judgeText('가', []));

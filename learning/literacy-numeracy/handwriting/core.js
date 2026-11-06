@@ -72,12 +72,17 @@
       )
         correct++;
     });
-    const shape = Reference.shape(char, actual);
+    const { shape, form, place } = Reference.measure(char, actual);
     const order = actual.length === expected.length && correct === expected.length;
+    // 글자 점수: 모양 점수에 획(순서·방향·개수) 점수를 곱한다. 획 하나 틀렸다고 0점이 되지는 않는다.
+    // 맞은 획 비율로 40~100%, 획을 더 그었으면 그만큼 더 깎는다.
+    const strokeRate = (0.4 + 0.6 * (correct / expected.length)) * Math.min(1, expected.length / Math.max(actual.length, 1));
     return {
       supported: true,
       shape,
-      score: order ? shape : 0,
+      form,
+      place,
+      score: actual.length ? Math.round(shape * strokeRate) : 0,
       order,
       correct,
       expected: expected.length,
@@ -119,6 +124,8 @@
     const clean = validateCells(text, cells),
       results = chars(text).map((c, i) => judge(c, clean[i]));
     return {
+      // 글 전체 점수: 글자 점수의 평균(안 쓴 글자는 0점). 순위전은 이 점수로 순위를 매긴다.
+      score: Math.round(results.reduce((n, r) => n + r.score, 0) / results.length),
       shape: Math.round(results.reduce((n, r) => n + r.shape, 0) / results.length),
       order: results.every((r) => r.order),
       passed: results.filter((r) => r.order).length,
