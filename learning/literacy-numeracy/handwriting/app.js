@@ -10,7 +10,6 @@
     double: '까따빠싸짜애얘에예와왜외워웨위의',
     nature: '나무 바다 하늘 꽃 구름',
     school: '학교 친구 연필 책 가방',
-    sentence: '바른 글씨는 바른 마음',
     custom: '',
   };
   // 속담·한자성어·관용어: 학습 자료에서 뽑은 문구를 무작위로 하나씩 쓴다(writing-texts.js).
@@ -70,6 +69,9 @@
       !raw ||
       raw.version !== 8 ||
       typeof raw.text !== 'string' ||
+      raw.lesson === 'sentence' ||
+      raw.text === '나는 나를 믿어요' ||
+      raw.text === '바른 글씨는 바른 마음' ||
       raw.text.length > 160 ||
       C.chars(raw.text).length > 48 ||
       !C.supported(raw.text)
