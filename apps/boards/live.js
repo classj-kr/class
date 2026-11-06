@@ -95,6 +95,8 @@
     $('teacher').hidden = !state.me.teacher; $('student').hidden = state.me.teacher;
     document.body.classList.toggle('student-view', !state.me.teacher);
     $('roomCode').textContent = state.code;
+    // 순위전 공용 음악: 대기·결과는 한 곡 반복, 문제·경주 중엔 무작위. 전자칠판(교사)에서만 기본 재생.
+    window.RaceMusic?.set(['lobby', 'finished'].includes(state.phase) ? 'lobby' : 'race', { host: state.me.teacher });
     $('roundLabel').textContent = `${Math.max(0, state.index + 1)} / ${state.total} 문제`;
     const nextSignature = JSON.stringify({ ...next, serverTime: 0 });
     if (force || signature !== nextSignature) { signature = nextSignature; if (state.me.teacher) renderTeacher(); else renderStudent(); }

@@ -77,7 +77,7 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
         ...(answer ? { choice: answer.choice } : {}) },
       // Never publish answer-dependent scores during an open question.
       ...(who.teacher ? { racers: s.players.map(p => ({ id: p.id, name: p.name, number: p.number, score: p.score,
-        delta: revealed ? p.delta : 0, boost: revealed && p.boost })) } : {}) };
+        delta: revealed ? p.delta : 0, boost: revealed && p.boost, correct: phase === 'reveal' ? p.correct : null })) } : {}) };
   }
   async function createRace(db, b, set, body) {
     const seconds = integer(body?.seconds ?? 20, 10, 120);
