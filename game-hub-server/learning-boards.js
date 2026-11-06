@@ -5,6 +5,7 @@ const path = require('node:path');
 const QRCode = require('qrcode');
 const { installBoardRaces } = require('./learning-board-races');
 const { installBoardComments } = require('./learning-board-comments');
+const { installBoardImages, attachBoardImage } = require('./learning-board-images');
 const { installStackingBoards } = require('./stacking-boards');
 
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
@@ -48,6 +49,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '020-learning-board-likes.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '021-learning-board-comments.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '022-stacking-boards.sql'), 'utf8'));
+      await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '023-learning-board-images.sql'), 'utf8'));
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_slots_check');
@@ -254,13 +256,16 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const likes = b.likes_enabled ? (await db.query(`SELECT post_id, COUNT(*)::int AS count, BOOL_OR(actor_key=$2) AS liked
         FROM learning_board_likes WHERE board_id=$1 GROUP BY post_id`, [b.id, who.teacher ? 'teacher' : who.id])).rows : [];
       const comments = b.comments_enabled ? (await db.query('SELECT post_id, COUNT(*)::int AS count FROM learning_board_comments WHERE board_id=$1 GROUP BY post_id', [b.id])).rows : [];
+      const images = (await db.query('SELECT id, post_id FROM learning_board_images WHERE board_id=$1 AND post_id IS NOT NULL', [b.id])).rows;
       const sets = (await db.query('SELECT id, title, status, jsonb_array_length(questions) AS count FROM learning_board_sets WHERE board_id=$1 ORDER BY created_at DESC', [b.id])).rows;
       const live = (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0] || null;
       const result = posts.filter(p => who.teacher || (!p.hidden && (p.kind === 'note' || p.member_id === who.id))).map(p => {
         const m = members.find(m => m.id === p.member_id);
         const own = who.teacher || p.member_id === who.id;
         const reaction = likes.find(l => l.post_id === p.id);
+        const image = images.find(i => i.post_id === p.id);
         return { id: p.id, kind: p.kind, content: p.content, link: p.link, column: p.column_index, choices: p.choices,
+          ...(image ? { image: image.id } : {}),
           author: !m ? '선생님' : b.hide_names && !who.teacher ? `${m.number}번` : `${m.number}번 ${m.name}`,
           number: m?.number ?? null, mine: who.teacher ? p.member_id === null : p.member_id === who.id, hidden: p.hidden, createdAt: p.created_at,
           reviewStatus: p.review_status, revision: p.revision,
@@ -370,6 +375,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const postId = id();
       await db.query(`INSERT INTO learning_board_posts(id, board_id, member_id, kind, content, link, column_index, choices, answer, explanation)
         VALUES($1,$2,$3,$4,$5,$6,$7,$8::jsonb,$9,$10)`, [postId, b.id, who.teacher ? null : who.id, kind, content, link(body.link), column, JSON.stringify(options), answer, explanation]);
+      if (kind === 'note') await attachBoardImage(db, b, who, postId, body.image, fail);
       return { id: postId };
     });
     res.status(201).json(result);
@@ -476,6 +482,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   }));
   installBoardRaces({ router, asyncRoute, transaction, fail, integer, now });
   installBoardComments({ router, asyncRoute, transaction, fail, text, integer });
+  installBoardImages({ router, asyncRoute, transaction, fail, pool, board, actor });
   installStackingBoards({ router, asyncRoute, transaction, fail, now });
   return { router, initialize, readStackingRaceBank };
 }

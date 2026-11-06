@@ -240,7 +240,14 @@
     top.append(element('span', p.author));
     if (p.kind !== 'note') top.append(element('span', reviews[p.reviewStatus], `badge ${p.reviewStatus}`));
     if (p.hidden) top.append(element('span', '숨김', 'badge'));
-    card.append(top, element('p', p.content, 'post-content'));
+    card.append(top);
+    if (p.image) {
+      const src = `/api/boards/${encodeURIComponent(boardId)}/images/${encodeURIComponent(p.image)}`;
+      const link = element('a', undefined, 'post-image-link'); link.href = src; link.target = '_blank'; link.rel = 'noopener';
+      const img = element('img', undefined, 'post-image'); img.src = src; img.alt = p.content; img.loading = 'lazy'; img.decoding = 'async';
+      link.append(img); card.append(link);
+    }
+    card.append(element('p', p.content, 'post-content'));
     if (p.kind !== 'note') {
       const list = element('ol', undefined, 'choice-list'); p.choices.forEach(choice => list.append(element('li', choice))); card.append(list);
       if (p.answer !== undefined) card.append(element('p', `정답: ${p.choices[p.answer]}${p.explanation ? '\n' + p.explanation : ''}`, 'answer-key'));
@@ -386,6 +393,7 @@
     const quiz = data.board.layout === 'quiz';
     $('postForm').reset(); $('postDialogTitle').textContent = quiz ? (post ? '문제 수정·재제출' : '문제 출제') : post ? '글 수정' : '글 쓰기';
     $('kindLabel').hidden = $('questionFields').hidden = !quiz; $('linkLabel').hidden = quiz;
+    $('imageLabel').hidden = quiz || !!post;
     $('postAnswer').required = quiz; $('contentLabel').textContent = quiz ? '문제' : '내용';
     $('postContent').value = post?.content || ''; $('postLink').value = post?.link || '';
     $('postColumnLabel').hidden = data.board.layout !== 'columns' || !!post;
@@ -398,11 +406,39 @@
     $('submitPost').textContent = quiz ? '검토 요청하기' : '글 올리기'; openDialog('postDialog');
   }
   $('writePost').addEventListener('click', () => openPost());
+  const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
+  // Big photos are shrunk to WebP; GIFs keep their animation, so only size is checked.
+  async function prepareImage(file) {
+    if (file.type === 'image/gif') {
+      if (file.size > MAX_IMAGE_BYTES) throw new Error('GIF는 3MB까지 올릴 수 있어요.');
+      return file;
+    }
+    if (file.size <= 1024 * 1024) return file;
+    const bitmap = await createImageBitmap(file).catch(() => { throw new Error('그림 파일을 열 수 없어요.'); });
+    const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(bitmap.width * scale); canvas.height = Math.round(bitmap.height * scale);
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    bitmap.close?.();
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/webp', 0.85));
+    if (!blob || blob.size > MAX_IMAGE_BYTES) throw new Error('그림이 너무 커요. 더 작은 그림을 골라 주세요.');
+    return blob;
+  }
+  async function uploadImage(file) {
+    const blob = await prepareImage(file);
+    const res = await fetch(`/api/boards/${encodeURIComponent(boardId)}/images`, { method: 'POST', credentials: 'same-origin', cache: 'no-store',
+      headers: { 'Content-Type': blob.type || 'application/octet-stream' }, body: blob, signal: AbortSignal.timeout(60000) });
+    const value = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(res.status === 413 ? '그림은 3MB까지 올릴 수 있어요.' : value.message || '그림을 올리지 못했어요.');
+    return value.id;
+  }
   handleForm('postForm', async () => {
     const quiz = data.board.layout === 'quiz';
     const payload = { content: $('postContent').value, link: quiz ? '' : $('postLink').value, column: Number($('postColumn').value || 0),
       kind: quiz ? $('postKind').value : 'note', revision: editing?.revision };
     if (quiz) Object.assign(payload, { choices: [...document.querySelectorAll('.choice-input')].map(n => n.value), answer: Number($('postAnswer').value), explanation: $('postExplanation').value });
+    const file = !quiz && !editing ? $('postImage').files[0] : null;
+    if (file) payload.image = await uploadImage(file);
     await api(`/${boardId}/posts${editing ? '/' + editing.id : ''}`, editing ? 'PATCH' : 'POST', payload);
     $('postDialog').close(); toast(quiz ? '검토 요청 완료' : '저장 완료'); await refresh(true);
   });

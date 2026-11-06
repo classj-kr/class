@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#24594e">
   <title>게시판</title>
-  <link rel="stylesheet" href="style.css?v=20261102-comments">
+  <link rel="stylesheet" href="style.css?v=20261106-images">
 </head>
 <body>
   <main>
@@ -39,7 +39,7 @@
 3모둠
 4모둠</textarea></label><p class="form-error error" role="alert"></p><button class="primary full" type="submit">개설</button></form></dialog>
 
-  <dialog id="postDialog"><form id="postForm"><div class="dialog-head"><h2 id="postDialogTitle">글 쓰기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label id="kindLabel" hidden>문제 유형<select id="postKind"><option value="ox">OX 문제</option><option value="choice">객관식 문제</option></select></label><label id="postColumnLabel" hidden>올릴 곳<select id="postColumn"></select></label><label><span id="contentLabel">내용</span><textarea id="postContent" maxlength="2000" rows="5" required placeholder="내용"></textarea></label><label id="linkLabel">링크 (선택)<input id="postLink" type="url" maxlength="1500" placeholder="https://"></label><div id="questionFields" hidden><div id="choiceFields"></div><label>정답<select id="postAnswer" required></select></label><label>해설<textarea id="postExplanation" maxlength="1000" rows="3" placeholder="정답 해설"></textarea></label></div><p class="form-error error" role="alert"></p><button id="submitPost" class="primary full" type="submit">올리기</button></form></dialog>
+  <dialog id="postDialog"><form id="postForm"><div class="dialog-head"><h2 id="postDialogTitle">글 쓰기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label id="kindLabel" hidden>문제 유형<select id="postKind"><option value="ox">OX 문제</option><option value="choice">객관식 문제</option></select></label><label id="postColumnLabel" hidden>올릴 곳<select id="postColumn"></select></label><label><span id="contentLabel">내용</span><textarea id="postContent" maxlength="2000" rows="5" required placeholder="내용"></textarea></label><label id="linkLabel">링크 (선택)<input id="postLink" type="url" maxlength="1500" placeholder="https://"></label><label id="imageLabel">그림·사진 (선택)<input id="postImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></label><div id="questionFields" hidden><div id="choiceFields"></div><label>정답<select id="postAnswer" required></select></label><label>해설<textarea id="postExplanation" maxlength="1000" rows="3" placeholder="정답 해설"></textarea></label></div><p class="form-error error" role="alert"></p><button id="submitPost" class="primary full" type="submit">올리기</button></form></dialog>
 
   <dialog id="shareDialog"><div class="dialog-head"><h2>공유</h2><button data-close aria-label="닫기">✕</button></div><div class="share-content"><strong id="shareCode" class="big-code"></strong><img id="shareQr" width="240" height="240" alt="학생 참여 링크 QR 코드"><label>참여 링크<input id="shareLink" readonly></label><button id="copyLink" class="primary full">링크 복사</button></div></dialog>
 
@@ -48,7 +48,7 @@
   <dialog id="reviewDialog"><form id="reviewForm"><div class="dialog-head"><h2>수정 요청하기</h2><button type="button" data-close aria-label="닫기">✕</button></div><p id="reviewContent"></p><label>수정할 내용<textarea id="reviewFeedback" maxlength="500" rows="4" required></textarea></label><p class="form-error error" role="alert"></p><button type="submit" class="primary full">수정 요청</button></form></dialog>
 
   <dialog id="buildDialog"><form id="buildForm"><div class="dialog-head"><h2>승인 문제로 세트 만들기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>문제 세트 제목<input id="setName" maxlength="80" required></label><p class="hint">승인 문항만 선택할 수 있습니다.</p><div id="approvedChoices"></div><p class="form-error error" role="alert"></p><button type="submit" class="primary full">세트 만들기</button></form></dialog>
-  <script src="app.js?v=20261102-stacking"></script>
+  <script src="app.js?v=20261106-images"></script>
 </body>
 </html>
 

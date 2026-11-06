@@ -6,8 +6,10 @@
 <meta name="theme-color" content="#fef3e2">
 <title>그림판</title>
 <meta name="description" content="연필·크레파스·마카·수채화 브러시로 자유롭게 그리는 그림 도구">
-<link rel="stylesheet" href="styles.css?v=3">
-<script src="app.js?v=20261006-name" defer></script>
+<link rel="stylesheet" href="styles.css?v=4">
+<script src="gif-encoder.js?v=20261106" defer></script>
+<script src="app.js?v=20261106-share" defer></script>
+<script src="board-share.js?v=20261106" defer></script>
 </head>
 <body>
 <div class="app-shell">
@@ -17,12 +19,33 @@
       <input id="drawingTitle" type="text" maxlength="20" placeholder="그림 제목" autocomplete="off">
     </div>
     <div class="topbar-actions">
+      <button id="flipbookBtn" class="mode-btn" type="button" aria-pressed="false">🎞 플립북</button>
       <button id="undoBtn" class="icon-btn" type="button" title="되돌리기" disabled>↶</button>
       <button id="redoBtn" class="icon-btn" type="button" title="다시하기" disabled>↷</button>
       <button id="clearBtn" class="icon-btn" type="button" title="현재 레이어 지우기">🗑</button>
+      <button id="shareBtn" class="mode-btn" type="button">📤 게시판에 올리기</button>
       <button id="saveBtn" class="primary-btn" type="button">저장</button>
     </div>
   </header>
+
+  <dialog id="shareDialog" class="share-dialog" aria-labelledby="shareTitle">
+    <form id="shareForm" novalidate>
+      <h2 id="shareTitle">게시판에 올리기</h2>
+      <p id="shareWhat" class="share-note"></p>
+      <label>방번호 <input id="shareCode" type="text" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="선생님이 알려 준 번호"></label>
+      <div id="shareIdentity" class="share-identity" hidden>
+        <label>번호 <input id="shareNumber" type="number" min="1" inputmode="numeric"></label>
+        <label>이름 <input id="shareName" type="text" maxlength="80" autocomplete="off"></label>
+      </div>
+      <label id="shareColumnLabel" hidden>올릴 칸 <select id="shareColumn"></select></label>
+      <p id="shareError" class="share-error" role="alert"></p>
+      <p id="shareDone" class="share-done" hidden>올렸어요! <a id="shareBoardLink" target="_blank" rel="noopener">게시판 보기</a></p>
+      <div class="share-actions">
+        <button id="shareClose" class="mode-btn" type="button">닫기</button>
+        <button id="shareSubmit" class="primary-btn" type="submit">올리기</button>
+      </div>
+    </form>
+  </dialog>
 
   <main class="workspace">
     <aside class="tool-rail left-rail">
@@ -69,6 +92,20 @@
           <div class="resize-handle handle-s" data-dir="s" title="세로 크기 조절" aria-hidden="true"></div>
           <div class="resize-handle handle-se" data-dir="se" title="크기 조절" aria-hidden="true"></div>
         </div>
+      </div>
+      <div id="flipStrip" class="flip-strip" hidden>
+        <div class="flip-controls">
+          <button id="playBtn" class="play-btn" type="button">▶ 재생</button>
+          <label class="flip-fps">빠르기 <input id="fpsSlider" type="range" min="1" max="12" value="6"> <span id="fpsValue" class="value-pill">6</span></label>
+          <label class="flip-onion"><input id="onionToggle" type="checkbox" checked> 앞 장 비춰 보기</label>
+          <span class="flip-spacer"></span>
+          <button id="frameLeftBtn" class="icon-btn small" type="button" title="앞으로 옮기기">◀</button>
+          <button id="frameRightBtn" class="icon-btn small" type="button" title="뒤로 옮기기">▶</button>
+          <button id="addFrameBtn" class="icon-btn small" type="button" title="새 장">＋</button>
+          <button id="dupFrameBtn" class="icon-btn small" type="button" title="이 장 복사">⧉</button>
+          <button id="delFrameBtn" class="icon-btn small" type="button" title="이 장 삭제">✕</button>
+        </div>
+        <div id="frameList" class="frame-list"></div>
       </div>
     </section>
 
