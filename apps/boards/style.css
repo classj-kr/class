@@ -85,19 +85,28 @@ fieldset{margin:12px 0;padding:0;border:0}legend{margin-bottom:6px;font-size:14p
  .posts.wall,.posts.quiz{columns:1}.posts.roster{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.slot:has(.post){grid-column:1/-1}.questions{grid-template-columns:1fr}.post,.question-card{padding:12px}
 }
 
-/* 우주 배경: dark sky behind white post cards. */
-body.theme-space{color:#eef1ff;background:radial-gradient(ellipse at 18% 12%,#2b2466 0%,transparent 48%),radial-gradient(ellipse at 85% 80%,#3a1f5c 0%,transparent 50%),radial-gradient(ellipse at 60% 40%,#14306b 0%,transparent 60%),#070b1f;background-attachment:fixed}
+/* Board backgrounds (random per board): a moving canvas behind white post cards. */
 .starfield{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
-body.theme-space main{position:relative;z-index:1}
-body.theme-space .toolbar{border-bottom-color:rgba(255,255,255,.18)}
-body.theme-space .muted,body.theme-space .empty,body.theme-space .description,body.theme-space #setProgress{color:#c3cbea}
-body.theme-space .toolbar .pill{background:rgba(255,255,255,.16);color:#fff}
-body.theme-space .code-chip{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
-body.theme-space .column,body.theme-space .slot{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.16)}
-body.theme-space .column h2,body.theme-space .slot h2{color:#eef1ff}
-body.theme-space .post,body.theme-space .question-card,body.theme-space .post .empty{color:var(--ink)}
-body.theme-space .post{border-color:rgba(255,255,255,.4);box-shadow:0 6px 22px rgba(0,0,0,.35)}
-body.theme-space .post .muted,body.theme-space .post-top{color:var(--muted)}
+body[class*="theme-"] main{position:relative;z-index:1}
+body[class*="theme-"]{background-attachment:fixed}
+body.theme-space{background:radial-gradient(ellipse at 18% 12%,#2b2466 0%,transparent 48%),radial-gradient(ellipse at 85% 80%,#3a1f5c 0%,transparent 50%),radial-gradient(ellipse at 60% 40%,#14306b 0%,transparent 60%),#070b1f}
+body.theme-ocean{background:linear-gradient(180deg,#0f4c75 0%,#0b3558 40%,#06213c 100%)}
+body.theme-forest{background:radial-gradient(ellipse at 50% 0%,#1d4a39 0%,transparent 60%),linear-gradient(180deg,#0e2a22 0%,#08190f 100%)}
+body.theme-snow{background:linear-gradient(180deg,#1b2a4a 0%,#2c3e63 60%,#3d5279 100%)}
+body.theme-sunset{background:linear-gradient(180deg,#2b1c4f 0%,#6b2f6b 40%,#c4566a 75%,#f09a6a 100%)}
+body.theme-petals{background:linear-gradient(180deg,#fff4f7 0%,#fde6ee 60%,#f9dbe7 100%)}
+body.theme-petals .column,body.theme-petals .slot{background:rgba(255,255,255,.6)}
+/* Dark backgrounds: light text around the cards. */
+body.theme-dark{color:#eef1ff}
+body.theme-dark .toolbar{border-bottom-color:rgba(255,255,255,.18)}
+body.theme-dark .muted,body.theme-dark .empty,body.theme-dark .description,body.theme-dark #setProgress{color:#d3dbf3}
+body.theme-dark .toolbar .pill{background:rgba(255,255,255,.16);color:#fff}
+body.theme-dark .code-chip{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+body.theme-dark .column,body.theme-dark .slot{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.16)}
+body.theme-dark .column h2,body.theme-dark .slot h2{color:#eef1ff}
+body.theme-dark .post,body.theme-dark .question-card,body.theme-dark .post .empty{color:var(--ink)}
+body.theme-dark .post{border-color:rgba(255,255,255,.4);box-shadow:0 6px 22px rgba(0,0,0,.35)}
+body.theme-dark .post .muted,body.theme-dark .post-top{color:var(--muted)}
 
 body:has(site-back-navigation) #boardView>.toolbar,body:has(site-back-navigation) #teacherHome>.section-head,body:has(site-back-navigation) #setView>.section-head{padding-left:50px;min-height:44px}
 body:has(site-back-navigation) .entry{max-width:380px;margin-left:max(50px,calc((100% - 380px)/2))}

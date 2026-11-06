@@ -134,10 +134,13 @@
     ['entry', 'teacherHome', 'boardView', 'setView'].forEach(id => { $(id).hidden = id !== view; });
     if (view === 'entry' || view === 'teacherHome') applyTheme('default');
   }
+  const DARK_THEMES = ['space', 'ocean', 'forest', 'snow', 'sunset'];
   function applyTheme(theme) {
-    const space = theme === 'space';
-    document.body.classList.toggle('theme-space', space);
-    if (window.boardStarfield) { if (space) window.boardStarfield.start(); else window.boardStarfield.stop(); }
+    const name = window.boardBackdrop?.themes.includes(theme) ? theme : 'default';
+    [...document.body.classList].filter(c => c.startsWith('theme-')).forEach(c => document.body.classList.remove(c));
+    if (name !== 'default') document.body.classList.add('theme-' + name);
+    document.body.classList.toggle('theme-dark', DARK_THEMES.includes(name));
+    window.boardBackdrop?.set(name === 'default' ? null : name);
   }
   function openDialog(id) { $(id).querySelectorAll('.form-error').forEach(n => { n.textContent = ''; }); $(id).showModal(); }
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => b.closest('dialog').close()));
