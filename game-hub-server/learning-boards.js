@@ -194,8 +194,16 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     // Resolve platform identity before leasing a connection (it also queries the pool).
     const user = await sessionUser(req);
     const identity = await joinIdentity(req, user);
-    const name = text(identity ? identity.name : req.body?.name, 80, true);
-    const requestedNumber = identity ? Number(identity.number) : integer(req.body?.number, 1, MAX_NUMBER);
+    // A guest who already joined on this device is found by cookie, so number/name
+    // are only checked when a new seat is needed (e.g. 그림판 sends just the code).
+    let name = identity ? text(identity.name, 80, true) : null;
+    let requestedNumber = identity ? Number(identity.number) : null;
+    const readGuest = () => {
+      if (req.body?.name === undefined && req.body?.number === undefined) fail(400, 'IDENTITY_REQUIRED', '번호와 이름을 써 주세요.');
+      name = text(req.body?.name, 80, true);
+      requestedNumber = integer(req.body?.number, 1, MAX_NUMBER);
+    };
+    if (!identity && (req.body?.name !== undefined || req.body?.number !== undefined)) readGuest();
     const db = await pool.connect();
     try {
       await db.query('BEGIN');
@@ -217,6 +225,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       }
       if (!member) {
         if (b.locked || b.closed) fail(403, 'BOARD_LOCKED', '선생님이 입장을 닫았어요.');
+        if (!identity && name === null) readGuest();
         let number = requestedNumber;
         if (identity) {
           const occupied = (await db.query('SELECT number FROM learning_board_members WHERE board_id=$1', [b.id])).rows.map(row => row.number);

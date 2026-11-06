@@ -29,6 +29,10 @@ test('board images upload, attach, display and follow post visibility', async ()
     const base = '/' + board.id;
     const alice = (await req('/join', 'POST', { code: board.code, name: '하나', number: 1 }, '')).cookie;
     const bob = (await req('/join', 'POST', { code: board.code, name: '둘', number: 2 }, '')).cookie;
+    // 그림판 sends only the code: a known device re-enters, a new one is asked.
+    assert.equal((await req('/join', 'POST', { code: board.code }, alice)).board.id, board.id);
+    assert.equal((await req('/join', 'POST', { code: board.code }, '', 400)).error, 'IDENTITY_REQUIRED');
+    assert.equal((await req('/join', 'POST', { code: board.code, name: '셋' }, '', 400)).error, 'INVALID_NUMBER');
 
     await upload(board.id, PNG, '', 401);
     await upload(board.id, Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"/>'), alice, 400, 'image/svg+xml');
