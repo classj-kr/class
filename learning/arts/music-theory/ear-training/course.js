@@ -459,37 +459,37 @@
         name: "Circle of Fifths​(5도권 활용)",
         lessons: [
             {
-                id: "fifths", kind: "wheel", title: "5도씩 돌아가기", practice: "fifths",
+                id: "fifths", kind: "wheel", title: "Moving by Fifths​(5도씩 돌아가기)", practice: "fifths",
                 body: [
-                    "5도권은 으뜸음이 완전5도 관계인 조들을 이어 놓은 그림입니다. C에서 완전5도 위는 G, 완전5도 아래는 F입니다. 바깥쪽은 장조, 안쪽은 나란한 단조입니다.",
-                    "이 원판은 시계 방향으로 C → G → D처럼 완전5도 위의 조를 배치했습니다. 반대쪽은 완전5도 아래이며, 완전4도 위로도 읽을 수 있습니다. 장조·단조 이름을 누르면 각각 장3화음·단3화음이 들립니다. 끌어 돌리며 비교해 보세요."
+                    "Circle of Fifths​(5도권)는 Tonic​(으뜸음)이 Perfect 5th​(완전5도) 관계인 조들을 이어 놓은 그림입니다. C에서 완전5도 위는 G, 완전5도 아래는 F입니다. 바깥쪽은 Major Key​(장조), 안쪽은 나란한 Minor Key​(단조)입니다.",
+                    "이 원판은 시계 방향으로 C → G → D처럼 완전5도 위의 조를 배치했습니다. 반대쪽은 완전5도 아래이며, Perfect 4th​(완전4도) 위로도 읽을 수 있습니다. 장조·단조 이름을 누르면 각각 장3화음·단3화음이 들립니다. 끌어 돌리며 비교해 보세요."
                 ]
             },
             {
-                id: "signatures", kind: "wheel", title: "조표 읽기", practice: "signature",
+                id: "signatures", kind: "wheel", title: "Key Signatures​(조표 읽기)", practice: "signature",
                 body: [
-                    "C 장조에는 조표가 없습니다. C → G → D → A처럼 완전5도씩 위로 가면 올림표가 하나씩 늘고, C → F → B♭ → E♭처럼 완전5도씩 아래로 가면 내림표가 하나씩 늡니다.",
+                    "C 장조에는 Key Signature​(조표)가 없습니다. C → G → D → A처럼 완전5도씩 위로 가면 Sharp​(올림표)가 하나씩 늘고, C → F → B♭ → E♭처럼 완전5도씩 아래로 가면 Flat​(내림표)이 하나씩 늡니다.",
                     "가운데에 선택한 조의 조표가 보입니다. F♯ 장조와 G♭ 장조는 같은 건반을 쓰지만, 각각 올림표 여섯 개와 내림표 여섯 개로 적습니다."
                 ]
             },
             {
-                id: "relative", kind: "wheel", title: "나란한조", practice: "relative",
+                id: "relative", kind: "wheel", title: "Relative Keys​(나란한조)", practice: "relative",
                 body: [
-                    "같은 조표를 쓰는 장조와 단조를 나란한조라고 합니다. C 장조와 A 단조처럼, 장조의 여섯째 음이 나란한 단조의 으뜸음입니다.",
+                    "같은 조표를 쓰는 장조와 단조를 Relative Key​(나란한조)라고 합니다. C Major​(C 장조)와 A Minor​(A 단조)처럼, 장조의 여섯째 음이 나란한 단조의 Tonic​(으뜸음)입니다.",
                     "원판에서 같은 칸의 바깥쪽 장조와 안쪽 단조를 짝지어 보세요. 가운데에도 두 조가 함께 표시됩니다."
                 ]
             },
             {
-                id: "neighbors", kind: "wheel", title: "딸림조와 버금딸림조", practice: "neighbors",
+                id: "neighbors", kind: "wheel", title: "Dominant and Subdominant Keys​(딸림조와 버금딸림조)", practice: "neighbors",
                 body: [
-                    "딸림조는 으뜸음에서 완전5도 위의 음을 으뜸음으로 하는 조입니다. C에서 완전5도 위는 G이므로, C 장조의 딸림조는 G 장조입니다.",
-                    "버금딸림조는 으뜸음에서 완전4도 위의 음을 으뜸음으로 하는 조입니다. C에서 완전4도 위는 F이므로, C 장조의 버금딸림조는 F 장조입니다. C에서 완전5도 아래로 가도 F가 됩니다."
+                    "Dominant Key​(딸림조)는 Tonic​(으뜸음)에서 Perfect 5th​(완전5도) 위의 음을 으뜸음으로 하는 조입니다. C에서 완전5도 위는 G이므로, C 장조의 딸림조는 G 장조입니다.",
+                    "Subdominant Key​(버금딸림조)는 으뜸음에서 Perfect 4th​(완전4도) 위의 음을 으뜸음으로 하는 조입니다. C에서 완전4도 위는 F이므로, C 장조의 버금딸림조는 F 장조입니다. C에서 완전5도 아래로 가도 F가 됩니다."
                 ]
             },
             {
-                id: "diatonic", kind: "wheel", title: "조 안의 화음", practice: "diatonic",
+                id: "diatonic", kind: "wheel", title: "Diatonic Chords​(조 안의 화음)", practice: "diatonic",
                 body: [
-                    "장음계의 각 음 위에 음을 하나씩 건너 쌓으면 I·ii·iii·IV·V·vi·vii° 화음이 됩니다. 대문자는 장3화음, 소문자는 단3화음, °는 감3화음입니다.",
+                    "Major Scale​(장음계)의 각 음 위에 음을 하나씩 건너 쌓으면 I·ii·iii·IV·V·vi·vii° 화음이 됩니다. 대문자는 Major Triad​(장3화음), 소문자는 Minor Triad​(단3화음), °는 Diminished Triad​(감3화음)입니다.",
                     "원판을 돌리며 화음 이름이 어떻게 바뀌는지 보세요. 아래 화음 단추를 누르면 소리가 나고, I–IV–V–I를 이어서 들을 수도 있습니다."
                 ]
             },
