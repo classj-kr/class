@@ -10,7 +10,7 @@
   let code = '', token = '', state = null;
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   // 지금 화면에 띄운 문제. 답을 보내거나 풀이를 보여 주는 동안에는 폴링이 바꾸지 않는다.
-  let shown = null, answering = false, revealUntil = 0, revealTimer = 0;
+  let shown = null, answering = false, revealUntil = 0, revealTimer = 0, readyAt = 0, readTimer = 0;
   let localScore = 0, localCombo = 0, lastRank = null, lastFloor = 0;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', roundSeen = '';
   const prevScores = new Map();
@@ -492,10 +492,17 @@
       return b;
     }));
     retrigger(card, 'enter');
+    // 문제를 읽을 짧은 시간 동안은 보기를 누를 수 없다(서버도 같은 시간을 지킨다).
+    readyAt = Date.now() + C.MIN_ANSWER_MS;
+    $('choices').classList.add('reading');
+    clearTimeout(readTimer);
+    readTimer = setTimeout(() => $('choices').classList.remove('reading'), C.MIN_ANSWER_MS);
   }
   const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
   function answer(index) {
-    if (!racing() || answering || !shown || Date.now() < revealUntil) return;
+    if (!racing() || answering || !shown || Date.now() < revealUntil || Date.now() < readyAt) return;
+    // 첫 문제는 출발 신호부터 센다.
+    if (serverNow() - state.startsAt < C.MIN_ANSWER_MS) return;
     const buttons = [...$('choices').children];
     if (buttons[index]?.disabled) return;
     answering = true;

@@ -22,8 +22,11 @@
   const COMBO_STEPS = [[10, 3], [5, 2]];
   // 연산 순위전처럼 틀리면 1점을 잃고 같은 문제를 맞힐 때까지 다시 고른다(정답은 알려 주지 않는다).
   const WRONG_PENALTY = 1;
-  // 틀린 뒤 잠깐은 다시 고를 수 없다. 마구 눌러 맞히는 것을 막는다.
-  const RETRY_LOCK_MS = 600;
+  // 틀린 뒤 잠깐은 다시 고를 수 없다. 보기가 둘인 문제를 마구 찍으면 평균 +0.5점이 남으므로,
+  // 찍는 쪽이 꼼꼼히 읽고 푸는 쪽보다 빨리 점수를 모으지 못하게 넉넉히 기다리게 한다.
+  const RETRY_LOCK_MS = 1500;
+  // 새 문제가 뜬 뒤 이보다 빨리 고르면 읽지 않은 것으로 본다.
+  const MIN_ANSWER_MS = 800;
   // 여러 번 만에 맞히면 풀이를 잠깐 보여 준다.
   const REVEAL_MS = 1500;
   // 팀전: 해·달·별… 팀마다 1~6명. 모두가 모은 점수를 합쳐 겨룬다.
@@ -78,5 +81,5 @@
     if (!levels) return 'all';
     return levels.some(([value]) => value === level) ? level : levels[0][0];
   }
-  return { SETS, MIXED_PARTS, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  return { SETS, MIXED_PARTS, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });

@@ -206,6 +206,8 @@ body.hurry #timeLeft { color: var(--red); }
   background: var(--paper-2); font: 800 14px/1 inherit; color: var(--ink-soft);
 }
 .choice.picked { border-color: var(--ink); }
+.choices.reading .choice { opacity: 0.55; pointer-events: none; }
+.choices .choice { transition: opacity 0.2s, transform 0.08s, box-shadow 0.08s, border-color 0.15s, background 0.15s; }
 .choice.is-answer { border-color: var(--green); background: #e6f6ec; box-shadow: 0 4px 0 #9fd5b3; }
 .choice.is-wrong { border-color: var(--red); background: #fde8e4; box-shadow: 0 4px 0 #f0b3a7; opacity: 0.75; }
 .choice.is-wrong span { text-decoration: line-through 3px var(--red); }
