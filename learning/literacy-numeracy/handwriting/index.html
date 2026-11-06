@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" />
     <title>글씨 쓰기</title>
-    <link rel="stylesheet" href="styles.css?v=20261029-12" />
+    <link rel="stylesheet" href="styles.css?v=20261107-sheet" />
   </head>
   <body>
     <main class="app">
@@ -25,6 +25,11 @@
               <option value="nature">낱말 · 자연</option>
               <option value="school">낱말 · 학교</option>
               <option value="sentence">문장</option>
+            </optgroup>
+            <optgroup label="속담·성어 (무작위)">
+              <option value="proverbs">속담</option>
+              <option value="idioms">한자성어</option>
+              <option value="expressions">관용어</option>
             </optgroup>
             <option value="custom">직접 넣기</option>
           </select>
@@ -123,37 +128,25 @@
           <p id="touchNotice" class="touch-notice" hidden>
             터치 모드에서는 손바닥을 화면에서 떼고 써 주세요.
           </p>
-          <div class="writing-layout">
-            <div class="model-side">
-              <span class="small-label">본보기</span
-              ><canvas id="modelCanvas" width="400" height="400" aria-label="현재 글자 본보기"></canvas
-              ><button id="demoButton">획순</button><span id="strokeCount" class="stroke-count"></span>
-            </div>
-            <div class="paper-wrap">
-              <canvas
-                id="writingCanvas"
-                width="800"
-                height="800"
-                aria-label="글씨 쓰는 칸"
-                tabindex="0"
-              ></canvas>
-            </div>
+          <!-- 공책처럼: 글 전체를 칸에 늘어놓고, 칸마다 바로 위에 같은 크기의 본보기 칸을 둔다. -->
+          <div class="text-head">
+            <p id="textMeaning" class="text-meaning" hidden></p>
+            <button id="anotherText" class="another-text" hidden>다른 문구</button>
           </div>
+          <div id="sheet" class="sheet" aria-label="글씨 연습장"></div>
           <div class="toolbar">
             <div>
               <button id="undoButton" disabled aria-label="마지막 획 되돌리기">↶ 되돌리기</button
               ><button id="redoButton" disabled aria-label="되돌린 획 다시 실행">↷</button
-              ><button id="clearButton">지우기</button>
+              ><button id="clearButton">이 칸 지우기</button
+              ><button id="demoButton">획순</button>
             </div>
             <span id="strokeStatus" class="stroke-status" role="status"></span
+            ><span id="strokeCount" class="stroke-count"></span
+            ><span id="progressLabel" class="progress-label"></span
             ><button id="checkButton" class="primary">확인</button>
           </div>
           <p id="feedback" class="feedback" role="status" hidden></p>
-          <nav class="letter-navigation" aria-label="연습 글자 이동">
-            <button id="previousLetter" aria-label="이전 글자">←</button>
-            <div id="letterList" class="letter-list"></div>
-            <button id="nextLetter" aria-label="다음 글자">→</button><span id="progressLabel"></span>
-          </nav>
         </section>
       </div>
     </main>
@@ -171,7 +164,8 @@
     <script src="font-source.js?v=20261029-12"></script>
     <script src="pen-reference.js?v=20261029-12"></script>
     <script src="core.js?v=20261029-12"></script>
-    <script src="app.js?v=20261029-12"></script>
+    <script src="writing-texts.js?v=20261107-1"></script>
+    <script src="app.js?v=20261107-sheet"></script>
     <script src="race.js?v=20261029-12"></script>
   </body>
 </html>
