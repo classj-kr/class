@@ -122,7 +122,7 @@ async function main() {
     // 순위전은 공용 순위전 음악(race-music.js)을 쓰고, 방 만들기 화면은 대기 곡이다.
     const raceAudio = page.locator('audio[data-race-music]');
     assert.equal(await raceAudio.evaluate(el => el.volume), 0.27);
-    assert.match(await raceAudio.getAttribute('src'), /\/assets\/sound\/race-music\/lobby-brisk-pursuit\.mp3$/);
+    assert.match(await raceAudio.getAttribute('src'), /\/assets\/sound\/race-music\/lobby-brisk-pursuit\.ogg$/);
     assert.equal(await page.locator('#sfxVolumeSlider').inputValue(), '0.42');
     await page.locator('h1').click();
     assert.equal(await page.locator('.unified-audio-panel').isVisible(), false);

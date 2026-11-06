@@ -8,11 +8,11 @@
   'use strict';
   if (window.RaceMusic) return;
   const base = (document.currentScript ? new URL('race-music/', document.currentScript.src) : new URL('/assets/sound/race-music/', location.href)).href;
-  const LOBBY = 'lobby-brisk-pursuit.mp3';
+  const LOBBY = 'lobby-brisk-pursuit.ogg';
   const POOL = [
-    'gain-control.mp3', 'we-make-our-own-room-1.mp3', 'we-make-our-own-room-2.mp3',
-    'glass-pulse-1.mp3', 'glass-pulse-2.mp3', 'glass-pulse-3.mp3', 'neon-pulse.mp3',
-    'superlattice-beat.mp3', 'glossy-funk-groove.mp3', 'glossy-funk-future.mp3',
+    'gain-control.ogg', 'we-make-our-own-room-1.ogg', 'we-make-our-own-room-2.ogg',
+    'glass-pulse-1.ogg', 'glass-pulse-2.ogg', 'glass-pulse-3.ogg', 'neon-pulse.ogg',
+    'superlattice-beat.ogg', 'glossy-funk-groove.ogg', 'glossy-funk-future.ogg',
   ];
   let audio = null, mode = null, last = '', volume = 0.3, siteMuted = false, driven = false, ready = false, role = null, sentRole = null;
   try {

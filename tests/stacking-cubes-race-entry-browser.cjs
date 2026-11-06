@@ -92,7 +92,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       assert.equal(joins, 1, 'reload restores the ticket without adding another participant');
       // 대기실은 순위전 대기 곡. 보드게임처럼 참가자 기기는 꺼진 채로 시작한다.
       const music = student.locator('#stacking-bgm');
-      await student.waitForFunction(() => /race-music\/lobby-brisk-pursuit\.mp3$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
+      await student.waitForFunction(() => /race-music\/lobby-brisk-pursuit\.ogg$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
       const lobbyAudio = await music.evaluate(a => ({ paused: a.paused, muted: a.muted }));
       assert.ok(lobbyAudio.paused && lobbyAudio.muted, 'guests start muted ' + JSON.stringify(lobbyAudio));
       await teacher.locator('#race-start').click();
@@ -123,7 +123,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       assert.equal(await student.locator('.workspace').evaluate(el => el.inert), false);
       await teacher.locator('#race-stop').click();
       await student.locator('#race-panel').waitFor();
-      await student.waitForFunction(() => /lobby-brisk-pursuit\.mp3$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
+      await student.waitForFunction(() => /lobby-brisk-pursuit\.ogg$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
       await student.locator('#race-leave').click();
       await student.waitForURL(base + '/room/');
       await student.goto(base + race);
