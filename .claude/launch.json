@@ -34,6 +34,15 @@
       "port": 4191
     },
     {
+      "name": "boards-harness",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tests/learning-boards-harness.cjs"
+      ],
+      "env": { "HARNESS_PORT": "4199" },
+      "port": 4199
+    },
+    {
       "name": "game-hub",
       "runtimeExecutable": "node",
       "runtimeArgs": [

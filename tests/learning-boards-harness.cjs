@@ -66,7 +66,7 @@ async function createHarness({ studentSiteAccess = false, now = Date.now } = {})
   app.use('/learning/inquiry/math/stacking-cubes/race/', express.static(stackingRoot));
   app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
-  const server = await new Promise(resolve => { const instance = app.listen(0, '127.0.0.1', () => resolve(instance)); });
+  const server = await new Promise(resolve => { const instance = app.listen(Number(process.env.HARNESS_PORT) || 0, '127.0.0.1', () => resolve(instance)); });
   return { app, db, pool, roomCodes, initialize: feature.initialize, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise(resolve => server.close(resolve)); await db.close(); } };
 }
 module.exports = { createHarness };

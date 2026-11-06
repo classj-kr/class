@@ -5,6 +5,10 @@
   const MIN_VIEW_W = 200;
   const MIN_VIEW_H = 150;
   const MAX_LAYERS = 3;
+  const MAX_FRAMES = 30;
+  const THUMB_W = 96;
+  const GIF_MAX_SIDE = 640;
+  const PAPER_COLOR = "#fffdf6";
   const SNAPSHOT_INTERVAL = 20;
   const MIN_POINT_GAP = 1.4;
 
@@ -171,6 +175,15 @@
       this.ctx = this.canvas.getContext("2d");
       this.strokes = [];
       this.snapshots = [];
+      this.version = 0;
+    }
+  }
+
+  // One flipbook page: its own drawing layer plus a small preview.
+  class Frame {
+    constructor(layer) {
+      this.layer = layer;
+      this.thumb = document.createElement("canvas");
     }
   }
 
@@ -207,6 +220,21 @@
       this.alphaLock = false;
       this.eyedropperArmed = false;
       this.playerName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
+
+      this.flipbook = false;
+      this.frames = [];
+      this.frameIndex = 0;
+      this.onionSkin = true;
+      this.fps = 6;
+      this.playing = false;
+      this.playIndex = 0;
+      this.playTimer = null;
+      this.exporting = false;
+      this.onionCanvas = document.createElement("canvas");
+      this.onionCanvas.width = CANVAS_W;
+      this.onionCanvas.height = CANVAS_H;
+      this.onionCtx = this.onionCanvas.getContext("2d");
+      this.onionKey = "";
 
       this.canvasFrameEl = $("canvasFrame");
       this.canvasStageEl = document.querySelector(".canvas-stage");
@@ -274,10 +302,41 @@
       $("undoBtn").addEventListener("click", () => this.undo());
       $("redoBtn").addEventListener("click", () => this.redo());
       $("addLayerBtn").addEventListener("click", () => this.addLayer());
-      $("saveBtn").addEventListener("click", () => this.savePng());
+      $("saveBtn").addEventListener("click", () => {
+        if (this.flipbook) this.saveGif(); else this.savePng();
+      });
       $("clearBtn").addEventListener("click", () => this.clearActiveLayer());
 
+      $("flipbookBtn").addEventListener("click", () => {
+        if (this.flipbook) this.exitFlipbook(); else this.enterFlipbook();
+      });
+      $("playBtn").addEventListener("click", () => {
+        if (this.playing) this.stopPlayback(); else this.startPlayback();
+      });
+      $("fpsSlider").addEventListener("input", e => {
+        this.fps = Number(e.target.value);
+        $("fpsValue").textContent = this.fps;
+        if (this.playing) { this.stopPlayback(); this.startPlayback(); }
+      });
+      $("onionToggle").addEventListener("change", e => {
+        this.onionSkin = e.target.checked;
+        this.composite();
+      });
+      $("addFrameBtn").addEventListener("click", () => this.addFrame(false));
+      $("dupFrameBtn").addEventListener("click", () => this.addFrame(true));
+      $("delFrameBtn").addEventListener("click", () => this.deleteFrame());
+      $("frameLeftBtn").addEventListener("click", () => this.moveFrame(-1));
+      $("frameRightBtn").addEventListener("click", () => this.moveFrame(1));
+
       window.addEventListener("keydown", e => {
+        if (this.flipbook && !e.ctrlKey && !e.metaKey && !e.altKey
+          && (e.key === "ArrowLeft" || e.key === "ArrowRight")
+          && !(e.target instanceof HTMLElement && e.target.closest("input:not([type=range]):not([type=checkbox]), select, textarea, dialog"))) {
+          e.preventDefault();
+          this.stopPlayback();
+          this.setFrame(this.frameIndex + (e.key === "ArrowLeft" ? -1 : 1));
+          return;
+        }
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
           e.preventDefault();
           if (e.shiftKey) this.redo(); else this.undo();
@@ -408,7 +467,7 @@
           <button type="button" class="layer-visible" aria-label="레이어 보이기/숨기기">${layer.visible ? "👁" : "🚫"}</button>
           <span class="layer-name">${layer.name}</span>
           <input type="range" class="layer-opacity" min="0" max="100" value="${Math.round(layer.opacity * 100)}">
-          ${this.layers.length > 1 ? '<button type="button" class="layer-remove" aria-label="레이어 삭제">✕</button>' : ""}
+          ${this.layers.length > 1 && !this.flipbook ? '<button type="button" class="layer-remove" aria-label="레이어 삭제">✕</button>' : ""}
         `;
         row.querySelector(".layer-name").addEventListener("click", () => {
           this.activeLayerIndex = i;
@@ -418,11 +477,13 @@
           layer.visible = !layer.visible;
           this.renderLayerPanel();
           this.composite();
+          this.refreshThumbs(layer);
         });
         row.querySelector(".layer-opacity").addEventListener("input", e => {
           layer.opacity = Number(e.target.value) / 100;
           this.composite();
         });
+        row.querySelector(".layer-opacity").addEventListener("change", () => this.refreshThumbs(layer));
         const removeBtn = row.querySelector(".layer-remove");
         if (removeBtn) {
           removeBtn.addEventListener("click", () => this.removeLayer(i));
@@ -432,7 +493,7 @@
     }
 
     addLayer() {
-      if (this.layers.length >= MAX_LAYERS) return;
+      if (this.flipbook || this.layers.length >= MAX_LAYERS) return;
       this.layers.push(new Layer(`레이어 ${this.layers.length + 1}`));
       this.activeLayerIndex = this.layers.length - 1;
       this.renderLayerPanel();
@@ -440,11 +501,18 @@
     }
 
     removeLayer(index) {
-      if (this.layers.length <= 1) return;
-      this.layers.splice(index, 1);
+      if (this.flipbook || this.layers.length <= 1) return;
+      const [removed] = this.layers.splice(index, 1);
+      this.forgetLayerHistory(removed);
       this.activeLayerIndex = Math.min(this.activeLayerIndex, this.layers.length - 1);
       this.renderLayerPanel();
       this.composite();
+    }
+
+    forgetLayerHistory(layer) {
+      this.actionLog = this.actionLog.filter(a => a.layer !== layer);
+      this.redoLog = this.redoLog.filter(a => a.layer !== layer);
+      this.updateHistoryButtons();
     }
 
     clearActiveLayer() {
@@ -452,19 +520,246 @@
       layer.ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
       layer.strokes = [];
       layer.snapshots = [];
-      this.actionLog = this.actionLog.filter(a => a.layerIndex !== this.activeLayerIndex);
-      this.redoLog = [];
-      this.updateHistoryButtons();
+      layer.version += 1;
+      this.forgetLayerHistory(layer);
       this.composite();
+      this.refreshThumbs(layer);
+    }
+
+    // ---------- Flipbook ----------
+    // In flipbook mode layers[0] is a background shared by every page and
+    // layers[1] is always the current page's own layer.
+    enterFlipbook() {
+      if (this.flipbook) return;
+      const background = this.layers[0];
+      let pageLayer;
+      if (this.layers.length === 2) {
+        pageLayer = this.layers[1];
+      } else {
+        pageLayer = new Layer("1장");
+        if (this.layers.length > 2) {
+          // Three layers flatten into one page; their undo history cannot follow.
+          this.layers.slice(1).forEach(layer => {
+            if (!layer.visible) return;
+            pageLayer.ctx.globalAlpha = layer.opacity;
+            pageLayer.ctx.drawImage(layer.canvas, 0, 0);
+            this.forgetLayerHistory(layer);
+          });
+          pageLayer.ctx.globalAlpha = 1;
+          pageLayer.snapshots = [{ index: 0, data: pageLayer.ctx.getImageData(0, 0, CANVAS_W, CANVAS_H) }];
+        }
+      }
+      background.name = "배경 (모든 장)";
+      this.flipbook = true;
+      this.frames = [new Frame(pageLayer)];
+      this.frameIndex = 0;
+      this.layers = [background, pageLayer];
+      this.activeLayerIndex = 1;
+      $("flipbookBtn").setAttribute("aria-pressed", "true");
+      $("flipStrip").hidden = false;
+      $("addLayerBtn").disabled = true;
+      $("saveBtn").textContent = "GIF 저장";
+      this.syncFrameNames();
+      this.renderLayerPanel();
+      this.renderFrameList();
+      this.updateStageScale();
+      this.composite();
+    }
+
+    exitFlipbook() {
+      if (!this.flipbook) return;
+      if (this.frames.length > 1 && !window.confirm("지금 보이는 장만 남고 나머지 장은 사라져요. 플립북을 끌까요?")) return;
+      this.stopPlayback();
+      const keep = this.frames[this.frameIndex].layer;
+      this.frames.forEach(frame => { if (frame.layer !== keep) this.forgetLayerHistory(frame.layer); });
+      this.frames = [];
+      this.flipbook = false;
+      this.layers[0].name = "배경";
+      keep.name = "레이어 2";
+      this.layers = [this.layers[0], keep];
+      this.activeLayerIndex = Math.min(this.activeLayerIndex, 1);
+      $("flipbookBtn").setAttribute("aria-pressed", "false");
+      $("flipStrip").hidden = true;
+      $("addLayerBtn").disabled = false;
+      $("saveBtn").textContent = "저장";
+      this.renderLayerPanel();
+      this.updateStageScale();
+      this.composite();
+    }
+
+    syncFrameNames() {
+      this.frames.forEach((frame, i) => { frame.layer.name = `${i + 1}장`; });
+    }
+
+    setFrame(index) {
+      if (!this.flipbook || this.activeStroke) return;
+      const next = Math.max(0, Math.min(this.frames.length - 1, index));
+      this.frameIndex = next;
+      this.layers[1] = this.frames[next].layer;
+      this.renderLayerPanel();
+      this.renderFrameList();
+      this.composite();
+    }
+
+    addFrame(copyCurrent) {
+      if (!this.flipbook || this.frames.length >= MAX_FRAMES) return;
+      this.stopPlayback();
+      const layer = new Layer("");
+      if (copyCurrent) {
+        const source = this.frames[this.frameIndex].layer;
+        layer.ctx.drawImage(source.canvas, 0, 0);
+        layer.strokes = source.strokes.slice();
+        layer.snapshots = source.snapshots.slice();
+        layer.opacity = source.opacity;
+        layer.visible = source.visible;
+      }
+      this.frames.splice(this.frameIndex + 1, 0, new Frame(layer));
+      this.syncFrameNames();
+      this.setFrame(this.frameIndex + 1);
+      this.scrollActiveThumb();
+    }
+
+    deleteFrame() {
+      if (!this.flipbook || this.frames.length <= 1) return;
+      this.stopPlayback();
+      const [removed] = this.frames.splice(this.frameIndex, 1);
+      this.forgetLayerHistory(removed.layer);
+      this.syncFrameNames();
+      this.setFrame(Math.min(this.frameIndex, this.frames.length - 1));
+    }
+
+    moveFrame(delta) {
+      const target = this.frameIndex + delta;
+      if (!this.flipbook || target < 0 || target >= this.frames.length) return;
+      this.stopPlayback();
+      const [frame] = this.frames.splice(this.frameIndex, 1);
+      this.frames.splice(target, 0, frame);
+      this.syncFrameNames();
+      this.setFrame(target);
+      this.scrollActiveThumb();
+    }
+
+    renderFrameList() {
+      const list = $("frameList");
+      list.innerHTML = "";
+      this.frames.forEach((frame, i) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `frame-thumb${i === this.frameIndex ? " active" : ""}`;
+        button.setAttribute("aria-label", `${i + 1}장 열기`);
+        this.drawThumb(frame);
+        button.appendChild(frame.thumb);
+        const num = document.createElement("span");
+        num.className = "frame-num";
+        num.textContent = i + 1;
+        button.appendChild(num);
+        button.addEventListener("click", () => {
+          this.stopPlayback();
+          this.setFrame(i);
+        });
+        list.appendChild(button);
+      });
+      $("delFrameBtn").disabled = this.frames.length <= 1;
+      $("addFrameBtn").disabled = $("dupFrameBtn").disabled = this.frames.length >= MAX_FRAMES;
+      $("frameLeftBtn").disabled = this.frameIndex === 0;
+      $("frameRightBtn").disabled = this.frameIndex === this.frames.length - 1;
+    }
+
+    scrollActiveThumb() {
+      const active = $("frameList").querySelector(".frame-thumb.active");
+      if (active) active.scrollIntoView({ block: "nearest", inline: "nearest" });
+    }
+
+    drawThumb(frame) {
+      const thumb = frame.thumb;
+      const w = THUMB_W;
+      const h = Math.max(1, Math.round(THUMB_W * this.viewH / this.viewW));
+      if (thumb.width !== w || thumb.height !== h) { thumb.width = w; thumb.height = h; }
+      this.renderPage(thumb.getContext("2d"), frame.layer, w, h);
+    }
+
+    // Background + one page, cropped to the current paper size, into ctx (w x h).
+    renderPage(ctx, pageLayer, w, h) {
+      ctx.save();
+      ctx.fillStyle = PAPER_COLOR;
+      ctx.fillRect(0, 0, w, h);
+      [this.layers[0], pageLayer].forEach(layer => {
+        if (!layer.visible) return;
+        ctx.globalAlpha = layer.opacity;
+        ctx.drawImage(layer.canvas, 0, 0, this.viewW, this.viewH, 0, 0, w, h);
+      });
+      ctx.restore();
+    }
+
+    // Redraw previews after `layer` changed (the background touches all of them).
+    refreshThumbs(layer) {
+      if (!this.flipbook) return;
+      this.frames.forEach(frame => {
+        if (!layer || layer === this.layers[0] || frame.layer === layer) this.drawThumb(frame);
+      });
+    }
+
+    startPlayback() {
+      if (!this.flipbook || this.playing || this.frames.length < 2) return;
+      this.playing = true;
+      this.playIndex = this.frameIndex;
+      $("playBtn").textContent = "■ 멈춤";
+      $("playBtn").classList.add("playing");
+      this.hideBrushCursor();
+      this.playTimer = setInterval(() => {
+        this.playIndex = (this.playIndex + 1) % this.frames.length;
+        $("frameList").querySelectorAll(".frame-thumb").forEach((el, i) => {
+          el.classList.toggle("playing", i === this.playIndex);
+        });
+        this.composite();
+      }, 1000 / this.fps);
+      this.composite();
+    }
+
+    stopPlayback() {
+      if (!this.playing) return;
+      clearInterval(this.playTimer);
+      this.playTimer = null;
+      this.playing = false;
+      $("playBtn").textContent = "▶ 재생";
+      $("playBtn").classList.remove("playing");
+      $("frameList").querySelectorAll(".frame-thumb.playing").forEach(el => el.classList.remove("playing"));
+      this.composite();
+    }
+
+    // Previous page tinted red, cached until that page changes.
+    onionLayerCanvas() {
+      const prev = this.frames[this.frameIndex - 1].layer;
+      const key = `${prev.id}:${prev.version}`;
+      if (key !== this.onionKey) {
+        const ctx = this.onionCtx;
+        ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.drawImage(prev.canvas, 0, 0);
+        ctx.globalCompositeOperation = "source-in";
+        ctx.fillStyle = "#e2533b";
+        ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+        ctx.globalCompositeOperation = "source-over";
+        this.onionKey = key;
+      }
+      return this.onionCanvas;
     }
 
     // ---------- Compositing ----------
     composite() {
       const ctx = this.displayCtx;
+      if (this.flipbook && this.playing) {
+        this.renderPage(ctx, this.frames[this.playIndex].layer, this.viewW, this.viewH);
+        return;
+      }
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
-      ctx.fillStyle = "#fffdf6";
+      ctx.fillStyle = PAPER_COLOR;
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       this.layers.forEach((layer, index) => {
+        if (this.flipbook && index === 1 && this.onionSkin && this.frameIndex > 0) {
+          ctx.globalAlpha = 0.3;
+          ctx.drawImage(this.onionLayerCanvas(), 0, 0);
+        }
         if (!layer.visible) return;
         ctx.globalAlpha = layer.opacity;
         ctx.drawImage(layer.canvas, 0, 0);
@@ -512,6 +807,7 @@
           const onUp = () => {
             window.removeEventListener("pointermove", onMove);
             window.removeEventListener("pointerup", onUp);
+            this.refreshThumbs();
           };
           window.addEventListener("pointermove", onMove);
           window.addEventListener("pointerup", onUp, { once: true });
@@ -526,12 +822,21 @@
       const stage = this.canvasStageEl;
       if (!stage) return;
       const CARD_CHROME = 22; // 10px padding + 1px border on each side
+      // The stage column hugs the paper, so measure it at full size first;
+      // otherwise a sheet that once shrank could never grow back.
+      this.canvasFrameEl.style.setProperty("--scale", "1");
       const top = stage.getBoundingClientRect().top;
       const availW = stage.clientWidth - CARD_CHROME;
-      const availH = window.innerHeight - top - 24 - CARD_CHROME; // 24 = app-shell bottom padding
-      if (availW <= 0 || availH <= 0) return;
-      const scale = Math.min(availW / CANVAS_W, availH / CANVAS_H, 1);
-      this.canvasFrameEl.style.setProperty("--scale", Math.max(0.1, scale).toFixed(4));
+      const strip = $("flipStrip");
+      let scale = 1;
+      // Two passes: the flipbook strip's height depends on the paper width.
+      for (let pass = 0; pass < 2; pass += 1) {
+        const stripH = strip && !strip.hidden ? strip.offsetHeight + 10 : 0;
+        const availH = window.innerHeight - top - 24 - CARD_CHROME - stripH; // 24 = app-shell bottom padding
+        if (availW <= 0 || availH <= 0) break;
+        scale = Math.max(0.1, Math.min(availW / CANVAS_W, availH / CANVAS_H, 1));
+        this.canvasFrameEl.style.setProperty("--scale", scale.toFixed(4));
+      }
     }
 
     setViewSize(w, h) {
@@ -575,6 +880,10 @@
     beginStroke(event) {
       if (event.button !== undefined && event.button !== 0 && event.pointerType === "mouse") return;
       event.preventDefault();
+      if (this.playing) {
+        this.stopPlayback();
+        return;
+      }
       if (this.eyedropperArmed) {
         this.pickColorAt(event);
         return;
@@ -739,10 +1048,23 @@
         });
       }
 
-      this.actionLog.push({ layerIndex: this.activeLayerIndex, stroke });
+      layer.version += 1;
+      this.actionLog.push({ layer, stroke });
       this.redoLog = [];
       this.updateHistoryButtons();
       this.composite();
+      this.refreshThumbs(layer);
+    }
+
+    // Undo/redo of another page's stroke first turns to that page.
+    showLayerOf(layer) {
+      if (!this.flipbook || layer === this.layers[0]) return;
+      this.stopPlayback();
+      const index = this.frames.findIndex(frame => frame.layer === layer);
+      if (index >= 0 && index !== this.frameIndex) {
+        this.setFrame(index);
+        this.scrollActiveThumb();
+      }
     }
 
     // ---------- Undo / redo ----------
@@ -763,19 +1085,24 @@
 
     undo() {
       const action = this.actionLog.pop();
-      if (!action) return;
-      const layer = this.layers[action.layerIndex];
+      if (!action || this.activeStroke) { if (action) this.actionLog.push(action); return; }
+      const layer = action.layer;
+      this.showLayerOf(layer);
       layer.strokes.pop();
       this.rebuildLayer(layer, layer.strokes.length);
+      layer.version += 1;
       this.redoLog.push(action);
       this.updateHistoryButtons();
       this.composite();
+      this.refreshThumbs(layer);
     }
 
     redo() {
       const action = this.redoLog.pop();
-      if (!action) return;
-      const layer = this.layers[action.layerIndex];
+      if (!action || this.activeStroke) { if (action) this.redoLog.push(action); return; }
+      const layer = action.layer;
+      this.showLayerOf(layer);
+      layer.version += 1;
       layer.strokes.push(action.stroke);
       action.stroke.stamps.forEach(stamp => this.drawStamp(layer.ctx, action.stroke.brushId, action.stroke.color, stamp));
       if (layer.strokes.length % SNAPSHOT_INTERVAL === 0) {
@@ -787,6 +1114,7 @@
       this.actionLog.push(action);
       this.updateHistoryButtons();
       this.composite();
+      this.refreshThumbs(layer);
     }
 
     updateHistoryButtons() {
@@ -795,42 +1123,97 @@
     }
 
     // ---------- Save ----------
-    savePng() {
+    // Returns "이름제목" for the download, or null (and nudges) when untitled.
+    exportBaseName() {
       const titleInput = $("drawingTitle");
       if (!titleInput.value.trim()) {
         titleInput.focus();
         titleInput.classList.remove("shake-warning");
         void titleInput.offsetWidth;
         titleInput.classList.add("shake-warning");
-        return;
+        return null;
       }
-      this.composite();
       const fileSafe = (value, fallback) => {
         const cleaned = String(value || "").trim().replace(/[\\/:*?"<>|]/g, "");
         return cleaned.slice(0, 20) || fallback;
       };
-      const name = fileSafe(this.playerName, "이름없음");
-      const title = fileSafe(titleInput.value, "제목없음");
+      return `${fileSafe(this.playerName, "이름없음")}${fileSafe(titleInput.value, "제목없음")}`;
+    }
+
+    downloadBlob(blob, fileName) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }
+
+    savePng() {
+      const baseName = this.exportBaseName();
+      if (!baseName) return;
+      this.composite();
       const exportCanvas = document.createElement("canvas");
       exportCanvas.width = this.viewW;
       exportCanvas.height = this.viewH;
       exportCanvas.getContext("2d").drawImage(
         this.displayCanvas, 0, 0, this.viewW, this.viewH, 0, 0, this.viewW, this.viewH
       );
-      exportCanvas.toBlob(blob => {
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `${name}${title}.png`;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
-      }, "image/png");
+      exportCanvas.toBlob(blob => this.downloadBlob(blob, `${baseName}.png`), "image/png");
+    }
+
+    async buildGifBlob(onProgress) {
+      this.stopPlayback();
+      const scale = Math.min(1, GIF_MAX_SIDE / Math.max(this.viewW, this.viewH));
+      const w = Math.max(1, Math.round(this.viewW * scale));
+      const h = Math.max(1, Math.round(this.viewH * scale));
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      const images = this.frames.map(frame => {
+        this.renderPage(ctx, frame.layer, w, h);
+        return ctx.getImageData(0, 0, w, h);
+      });
+      return window.encodeGif({ width: w, height: h, frames: images, delayMs: 1000 / this.fps, onProgress });
+    }
+
+    // For the board upload: the drawing as WebP (PNG fallback), or the flipbook as GIF.
+    async buildUploadBlob(onProgress) {
+      if (this.flipbook && this.frames.length > 1) return this.buildGifBlob(onProgress);
+      if (this.flipbook) this.stopPlayback();
+      this.composite();
+      const canvas = document.createElement("canvas");
+      canvas.width = this.viewW;
+      canvas.height = this.viewH;
+      canvas.getContext("2d").drawImage(this.displayCanvas, 0, 0, this.viewW, this.viewH, 0, 0, this.viewW, this.viewH);
+      const toBlob = (type, quality) => new Promise(resolve => canvas.toBlob(resolve, type, quality));
+      const webp = await toBlob("image/webp", 0.92);
+      return webp && webp.type === "image/webp" ? webp : toBlob("image/png");
+    }
+
+    async saveGif() {
+      if (this.exporting) return;
+      const baseName = this.exportBaseName();
+      if (!baseName) return;
+      const saveBtn = $("saveBtn");
+      this.exporting = true;
+      saveBtn.disabled = true;
+      saveBtn.textContent = "만드는 중…";
+      try {
+        const blob = await this.buildGifBlob(p => { saveBtn.textContent = `만드는 중 ${Math.round(p * 100)}%`; });
+        this.downloadBlob(blob, `${baseName}.gif`);
+      } finally {
+        this.exporting = false;
+        saveBtn.disabled = false;
+        saveBtn.textContent = this.flipbook ? "GIF 저장" : "저장";
+      }
     }
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    new ArtStudio();
+    window.artStudio = new ArtStudio();
   });
 })();
