@@ -97,7 +97,7 @@ class/
 검증: `npm run test:learning-boards`, `npm run test:learning-boards:entry`, `npm run test:learning-boards:ui`.
 테스트는 PGlite 임시 DB와 테스트 전용 교사 세션을 사용하고 운영 DB를 건드리지 않습니다.
 
-## 국어 순위전
+## 문해력 순위전
 
 맞춤법·한자성어·속담·관용어·영단어 화면의 **🏁 순위전**, 또는 `/learning/literacy-numeracy/korean-race/`에서 방을 엽니다.
 학생은 공통 `/room/` 입구에 4자리 방번호를 넣어 들어옵니다. 문항은 각 학습 화면의 자료 파일을 서버가 그대로 읽어

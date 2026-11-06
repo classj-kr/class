@@ -7,14 +7,13 @@ body {
     linear-gradient(#fff4dc2e, #5b321a18),
     url("assets/wooden-board.webp") center / cover fixed no-repeat;
 }
-header { min-height: 52px; padding: 4px max(3vw, 16px); background: #fff9edeb; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #9a633d66; backdrop-filter: blur(8px); }
+/* 머리줄이 버튼 몇 개 때문에 한 줄을 통째로 차지하지 않게, 위에 투명하게 띄운다. */
+header { position: fixed; z-index: 20; top: 8px; left: 64px; right: 64px; min-height: 44px; display: flex; align-items: center; gap: 12px; pointer-events: none; }
+header > * { pointer-events: auto; }
 .back { display:inline-flex; min-height:44px; align-items:center; color:#70401f; text-decoration:none; }
-.race-link { margin-left:auto; display:inline-flex; min-height:40px; align-items:center; padding:0 14px; border-radius:999px; background:#70401f; color:#fff9ed; font-weight:800; text-decoration:none; }
+.race-link { margin: 0 auto; display:inline-flex; min-height:40px; box-shadow: 0 4px 14px #3a1f0d33; align-items:center; padding:0 14px; border-radius:999px; background:#70401f; color:#fff9ed; font-weight:800; text-decoration:none; }
 output { margin-left: auto; font-weight: 700; color: #70401f; }
-@media (min-width: 761px) {
-  .class-music-ready header { padding-right: 380px; }
-}
-main { width: min(760px, calc(100% - 32px)); margin: 16px auto 80px; }
+main { width: min(760px, calc(100% - 32px)); margin: 60px auto 80px; }
 .label { color: #8b4e25; font-weight: 750; letter-spacing: .04em; font-size: .82rem; }
 button { cursor: pointer; font: inherit; border: 1px solid #c7d4e6; border-radius: 10px; background: white; padding: 11px 15px; color: #243248; }
 .mode-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 6px; border-radius: 14px; background: #ead7bfee; }

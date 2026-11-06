@@ -183,6 +183,27 @@
     try { await fn(); } catch (e) { toast(e.message); } finally { busy = false; }
   }
 
+  // ── 문제 종류 아이콘: 메인 화면(index.html) 메뉴와 같은 그림 ─────────
+  const SET_ICONS = {
+    spelling: '<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="#fff8e1" stroke="#ffb300" stroke-width="1.2"/><rect x="4" y="4" width="7" height="7" stroke="#ffb300" stroke-width="0.8" fill="none"/><text x="7.5" y="9.8" font-size="6" font-weight="bold" fill="#212121" text-anchor="middle" font-family="\'Malgun Gothic\', sans-serif">ㄱ</text><rect x="13" y="4" width="7" height="7" stroke="#ffb300" stroke-width="0.8" fill="none"/><text x="16.5" y="9.8" font-size="6" font-weight="bold" fill="#212121" text-anchor="middle" font-family="\'Malgun Gothic\', sans-serif">ㄴ</text><rect x="4" y="13" width="7" height="7" stroke="#ffb300" stroke-width="0.8" fill="none"/><text x="7.5" y="18.8" font-size="6" font-weight="bold" fill="#212121" text-anchor="middle" font-family="\'Malgun Gothic\', sans-serif">ㄷ</text><circle cx="16.5" cy="16.5" r="3.5" stroke="#e53935" stroke-width="1.2" fill="none"/><path fill="#e53935" d="M19 12l2 2-6 6h-2v-2l6-6z"/></svg>',
+    idioms: '<svg viewBox="0 0 24 24"><path fill="#f6d58b" d="M5 4h14v16H5z"/><path fill="#d49a3a" d="M5 4a3 3 0 0 0 0 6h2V4H5zm14 10h-2v6h2a3 3 0 1 0 0-6z"/><path fill="#8d6e63" d="M8 7h8v1.7H8zm0 3.5h6v1.7H8z"/><rect x="10" y="11" width="10" height="10" rx="1.5" fill="#c62828" stroke="#fff3d0" stroke-width=".8"/><text x="15" y="19" font-size="9.5" font-weight="bold" fill="#fff" text-anchor="middle" font-family="serif">四</text></svg>',
+    proverbs: '📜',
+    expressions: '<svg viewBox="0 0 24 24"><path fill="#42a5f5" d="M3 4.5A2.5 2.5 0 0 1 5.5 2h13A2.5 2.5 0 0 1 21 4.5v11a2.5 2.5 0 0 1-2.5 2.5H11l-5.5 4v-4A2.5 2.5 0 0 1 3 15.5v-11z"/><path fill="#fff3d0" d="M6.5 7h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8H6.5V7zm7 0h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8h-1.6V7z"/></svg>',
+    mixed: '🎲',
+    vocabulary: '<svg viewBox="0 0 24 24"><rect x="5.5" y="3" width="15.5" height="18" rx="2.5" fill="#e0e7ff" stroke="#818cf8" stroke-width="0.9"/><rect x="3" y="5" width="15.5" height="18" rx="2.5" fill="#ffffff" stroke="#4f46e5" stroke-width="1.1"/><circle cx="6" cy="8.5" r="1.3" fill="#f8fafc" stroke="#64748b" stroke-width="0.8"/><path d="M4 8.5a2.5 2.5 0 0 1 4 0" fill="none" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/><rect x="8.5" y="8" width="8" height="1.8" rx="0.9" fill="#0284c7"/><text x="10.8" y="15" font-size="4.2" font-weight="900" fill="#1e293b" text-anchor="middle" font-family="\'Segoe UI\', sans-serif" letter-spacing="0.4">VOCAB</text><circle cx="14.8" cy="18.2" r="2.2" fill="#10b981"/><path d="M13.8 18.2l0.7 0.7 1.4-1.4" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+  function setIcon(key) {
+    const span = document.createElement('span');
+    span.className = 'set-icon';
+    span.setAttribute('aria-hidden', 'true');
+    span.innerHTML = SET_ICONS[key] || '';
+    return span;
+  }
+  // 아이콘 + 글자. 화면 곳곳(설정 버튼·문제 표·현황판 머리)에 같은 모양으로 붙인다.
+  function setLabel(el, key, text) {
+    el.replaceChildren(setIcon(key), document.createTextNode(text));
+  }
+
   // ── 설정 버튼 ────────────────────────────────────
   function optionRow(label, entries, current, pick, small = false) {
     const field = document.createElement('fieldset');
@@ -191,11 +212,12 @@
     legend.textContent = label;
     const row = document.createElement('div');
     row.className = 'option-row';
-    for (const [value, text] of entries) {
+    for (const [value, text, iconKey] of entries) {
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'option' + (small ? ' small' : '') + (current === value ? ' on' : '');
-      b.textContent = text;
+      if (iconKey) setLabel(b, iconKey, text);
+      else b.textContent = text;
       b.setAttribute('aria-pressed', String(current === value));
       b.onclick = () => pick(value);
       row.append(b);
@@ -213,7 +235,7 @@
   function paintSettings() {
     document.querySelectorAll('.settings').forEach((box) => {
       box.innerHTML = '';
-      box.append(optionRow('문제', Object.entries(C.SETS).map(([k, s]) => [k, `${s.emoji} ${s.label}`]), choice.set, (set) => change({ set })));
+      box.append(optionRow('문제', Object.entries(C.SETS).map(([k, s]) => [k, s.label, k]), choice.set, (set) => change({ set })));
       const levels = C.levelsOf(choice.set);
       if (levels) box.append(optionRow('수준', levels, choice.level, (level) => change({ level }), true));
       box.append(
@@ -227,7 +249,7 @@
   function setName(config) {
     const set = C.SETS[config.set];
     const level = (C.levelsOf(config.set) || []).find(([v]) => v === config.level);
-    return `${set.emoji} ${set.label}${level && level[0] !== 'all' ? ' · ' + level[1] : ''}`;
+    return `${set.label}${level && level[0] !== 'all' ? ' · ' + level[1] : ''}`;
   }
 
   // ── 화면 그리기 ──────────────────────────────────
@@ -267,7 +289,7 @@
     playMusic('lobby');
     document.body.classList.remove('fever', 'hurry');
     $('lobbyCode').textContent = s.code;
-    $('lobbySet').textContent = setName(s.config);
+    setLabel($('lobbySet'), s.config.set, setName(s.config));
     $('lobbyRule').textContent = `${setName(s.config)} · ${s.config.duration % 60 ? s.config.duration + '초' : s.config.duration / 60 + '분'}`;
     if ($('myRacer').dataset.face !== (s.me.avatarUrl || s.me.racer)) {
       $('myRacer').dataset.face = s.me.avatarUrl || s.me.racer;
@@ -340,7 +362,7 @@
   function renderRace(s) {
     show('race');
     playMusic('race');
-    $('modeNow').textContent = setName(s.config);
+    setLabel($('modeNow'), s.config.set, setName(s.config));
     $('hostCode').textContent = s.code;
     if (roundSeen !== s.roundId) {
       roundSeen = s.roundId;
@@ -370,7 +392,7 @@
   function paintMine(s) {
     renderMini(s);
     paintBlocks(s.me.blocks, s.me.correct);
-    $('scoreNow').textContent = localScore;
+    paintScore(localScore);
     paintCombo();
     const rank = s.me.rank;
     $('rankNow').textContent = rank ? rank + '위' : '-';
@@ -397,8 +419,33 @@
       $('chase').textContent = gap > 0 ? `👑 1위! 2위와 ${gap}칸 차이` : '👑 공동 1위! 한 문제만 더!';
     }
   }
+  // 점수가 한 칸씩 올라가며 바뀐다.
+  let scoreShown = 0, scoreTimer = 0;
+  function paintScore(value) {
+    clearInterval(scoreTimer);
+    if (Math.abs(value - scoreShown) > 12 || value < scoreShown) scoreShown = value;
+    const tick = () => {
+      if (scoreShown < value) scoreShown += 1;
+      $('scoreNow').textContent = scoreShown;
+      if (scoreShown >= value) clearInterval(scoreTimer);
+    };
+    tick();
+    if (scoreShown < value) scoreTimer = setInterval(tick, 70);
+  }
+  // 정답·오답 도장
+  function judge(ok) {
+    const stamp = document.createElement('span');
+    stamp.className = 'judge ' + (ok ? 'ok' : 'no');
+    stamp.textContent = ok ? '정답' : '땡';
+    $('card').append(stamp);
+    setTimeout(() => stamp.remove(), 750);
+  }
   function paintCombo() {
     $('comboNow').textContent = localCombo;
+    // 다음 가산점(5연속 +2, 10연속 +3)까지 얼마나 남았는지 불꽃 막대로 보여 준다.
+    const meter = localCombo >= 10 ? 1 : (localCombo % 5) / 5;
+    $('comboMeter').style.setProperty('--fill', meter);
+    $('comboMeter').classList.toggle('max', localCombo >= 10);
     $('worthNow').textContent = `한 문제 +${C.points(localCombo + 1)}`;
     document.body.classList.toggle('fever', localCombo >= 10);
     $('comboNow').parentElement.classList.toggle('hot', localCombo >= 4);
@@ -443,7 +490,7 @@
       return;
     }
     card.dataset.set = q.set;
-    $('qLabel').textContent = C.SETS[q.set].emoji + ' ' + q.label;
+    setLabel($('qLabel'), q.set, q.label);
     $('qNo').textContent = `${q.no + 1}번째 문제`;
     $('qAsk').textContent = q.ask;
     // 맞춤법 문장의 빈칸(___)은 칸으로 그린다.
@@ -463,6 +510,7 @@
       b.type = 'button';
       b.className = 'choice' + (tried.has(i) ? ' is-wrong' : '');
       b.disabled = tried.has(i);
+      b.style.setProperty('--i', i);
       b.innerHTML = '<kbd></kbd><span></span>';
       b.firstChild.textContent = i + 1;
       b.lastChild.textContent = label;
@@ -503,6 +551,8 @@
           buttons[data.answer]?.classList.add('is-answer');
           card.classList.remove('wrong');
           card.classList.add('right');
+          retrigger(card, 'cheer');
+          judge(true);
           burst(r.left + r.width / 2, r.top + r.height / 3, localCombo >= 10 ? 40 : 22, localCombo >= 10 ? 9 : 6);
           floatText('+' + data.gained, r.left + r.width / 2, r.top, data.gained >= 3 ? 'mega' : data.gained >= 2 ? 'big' : '');
           if (localCombo && localCombo % 5 === 0) banner(`🔥 ${localCombo}문제 연속!`);
@@ -523,6 +573,7 @@
           picked?.classList.add('is-wrong');
           card.classList.add('wrong');
           retrigger(card, 'shake');
+          judge(false);
           floatText(String(data.gained), r.left + r.width / 2, r.top, 'minus');
           sfx.bad();
           shown = { ...q, tried: data.tried };
@@ -569,7 +620,8 @@
   // 모두의 글자 탑: 점수만큼 블록이 쌓인다. 선생님 큰 화면에서는 모두, 학생 화면에서는 위쪽만 보인다.
   function renderTowers(s) {
     const box = $('towers');
-    const top = Math.max(20, ...s.participants.map((p) => p.score)) * 1.1;
+    // 1위 탑이 칸의 80%쯤 차도록 맞춘다. 처음 몇 점부터 탑이 쑥쑥 자라 보이게.
+    const top = Math.max(6, ...s.participants.map((p) => p.score)) * 1.22;
     const ordered = [...s.participants].sort((a, b) => (a.team ?? 99) - (b.team ?? 99) || a.name.localeCompare(b.name, 'ko'));
     box.style.setProperty('--cols', Math.max(ordered.length, 1));
     const alive = new Set();
@@ -603,6 +655,7 @@
         pop.textContent = '+' + (p.score - before);
         col.querySelector('.climber').append(pop);
         setTimeout(() => pop.remove(), 900);
+        retrigger(col, 'hop');
       }
       prevScores.set(p.id, p.score);
     }
