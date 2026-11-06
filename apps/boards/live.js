@@ -29,6 +29,13 @@
     if (state && Date.now() - lastContact > 4000) $('connection').textContent = '연결 확인 중…';
     if (state?.phase === 'question' && (remaining() === 0 || Date.now() - lastContact > 4000)) $('choices').querySelectorAll('button').forEach(b => { b.disabled = true; });
   }
+  // 작품 퀴즈 questions carry a board picture id.
+  function showArt(img, q) {
+    const src = q?.image ? `/api/boards/${encodeURIComponent(boardId)}/images/${encodeURIComponent(q.image)}` : '';
+    if (src && img.getAttribute('src') !== src) img.src = src;
+    img.hidden = !src;
+    return !!src;
+  }
   function renderStudent() {
     const s = state, q = s.question, revealed = ['reveal', 'finished'].includes(s.phase);
     $('studentName').textContent = s.me.name;
@@ -37,6 +44,7 @@
       s.phase === 'lobby' ? '입장 완료 · 선생님이 시작하면 문제가 나와요.' : s.phase === 'finished' ? `경주 종료 · ${s.me.rank}위` :
         s.phase === 'reveal' ? '전자칠판을 보세요' : s.me.choice !== undefined ? '제출 완료 · 전자칠판을 보세요' : '답을 선택하세요';
     $('question').textContent = q?.content || '';
+    showArt($('studentArt'), q);
     $('choices').replaceChildren();
     q?.choices.forEach((choice, i) => {
       const b = node('button'); b.type = 'button'; b.append(node('b', i + 1), node('span', choice));
@@ -69,6 +77,10 @@
       const name = sorted.some(other => other.id !== p.id && other.name === p.name) ? `${p.name} ${p.number}번` : p.name;
       card.append(node('b', 1 + sorted.filter(r => r.score > p.score).length), node('strong', name), node('span', p.score + 'm')); return card;
     }));
+    // The picture fills the board screen while students answer; the race shows on reveal.
+    const art = s.phase === 'question' && s.question ? s.question : null;
+    $('teacherArt').hidden = !showArt($('teacherArtImage'), art);
+    $('teacherArtCaption').textContent = art ? art.content : '';
     $('teacherQuestion').hidden = !s.question;
     $('teacherQuestionContent').replaceChildren();
     if (s.question) {

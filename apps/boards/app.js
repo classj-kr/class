@@ -158,6 +158,10 @@
     navigateRace(result.id);
   }
   $('resumeRace').addEventListener('click', () => { if (data?.live) navigateRace(data.live.id); });
+  $('artQuiz').addEventListener('click', () => run(async () => {
+    const result = await api(`/${boardId}/art-quiz`, 'POST', { seconds: 20 });
+    navigateRace(result.id);
+  }));
   function historyView() {
     const query = new URLSearchParams({ id: boardId });
     if (setId) query.set('set', setId);
@@ -352,6 +356,8 @@
     $('boardCode').textContent = b.code; $('memberCount').textContent = `참여 ${data.members.length}명`;
     $('myIdentity').textContent = me.teacher ? '선생님' : `${me.number}번 ${me.name}`;
     $('shareBoard').hidden = $('settingsBoard').hidden = !me.teacher;
+    $('artQuiz').hidden = !me.teacher || b.layout === 'quiz' || !data.posts.some(p => p.image && p.number !== null && !p.hidden);
+    $('artQuiz').textContent = data.live ? '🎨 진행 중인 경주로' : '🎨 작품 퀴즈 경주';
     $('writePost').textContent = b.layout === 'quiz' ? '+ 문제 만들기' : '+ 글 쓰기';
     $('writePost').disabled = !me.teacher && b.closed;
     $('closedNotice').hidden = !b.closed;

@@ -1,4 +1,5 @@
 const crypto = require('node:crypto');
+const { buildArtQuiz } = require('./learning-board-art-quiz');
 
 // Scoring is independent of presentation and participant grouping, so a future
 // team mode can aggregate these results without changing answer validation.
@@ -61,7 +62,7 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
     const answer = s.answers[who.id];
     const canSee = who.teacher || player;
     const question = q && canSee && ['question', 'reveal', 'finished'].includes(phase) ? {
-      id: q.id, kind: q.kind, content: q.content, choices: q.choices,
+      id: q.id, kind: q.kind, content: q.content, choices: q.choices, ...(q.image ? { image: q.image } : {}),
       ...(revealed ? { answer: q.answer, explanation: q.explanation } : {})
     } : null;
     const eligible = s.players.length;
@@ -78,24 +79,51 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       ...(who.teacher ? { racers: s.players.map(p => ({ id: p.id, name: p.name, number: p.number, score: p.score,
         delta: revealed ? p.delta : 0, boost: revealed && p.boost })) } : {}) };
   }
+  async function createRace(db, b, set, body) {
+    const seconds = integer(body?.seconds ?? 20, 10, 120);
+    if (body?.autoAdvance !== undefined && typeof body.autoAdvance !== 'boolean') fail(400, 'INVALID_SETTING', '자동 진행 설정을 확인해 주세요.');
+    const state = { title: set.title, questions: set.questions, seconds, phase: 'lobby', index: -1,
+      players: [], answers: {}, history: [], startsAt: null, endsAt: null, autoAdvance: body?.autoAdvance ?? true, nextAt: null };
+    const raceId = crypto.randomUUID();
+    await db.query('INSERT INTO learning_board_races(id,board_id,set_id,state) VALUES($1,$2,$3,$4::jsonb)',
+      [raceId, b.id, set.id, JSON.stringify(state)]);
+    // Keep a bounded history, without touching the current race.
+    await db.query(`DELETE FROM learning_board_races WHERE board_id=$1 AND finished AND id NOT IN
+      (SELECT id FROM learning_board_races WHERE board_id=$1 ORDER BY created_at DESC LIMIT 30)`, [b.id]);
+    return { id: raceId };
+  }
+  const activeRace = async (db, b) => (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0];
   router.post('/:id/races', asyncRoute(async (req, res) => {
     const result = await transaction(req, async (db, b) => {
       if (b.layout !== 'quiz') fail(400, 'QUIZ_REQUIRED', '문제 출제 게시판에서 경주를 시작해 주세요.');
-      const existing = (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0];
+      const existing = await activeRace(db, b);
       if (existing) return { id: existing.id, resumed: true };
       const set = (await db.query('SELECT * FROM learning_board_sets WHERE board_id=$1 AND id=$2', [b.id, req.body?.setId])).rows[0];
       if (!set || !set.questions.length) fail(404, 'SET_NOT_FOUND', '승인된 문제 세트를 먼저 만들어 주세요.');
-      const seconds = integer(req.body?.seconds ?? 20, 10, 120);
-      if (req.body?.autoAdvance !== undefined && typeof req.body.autoAdvance !== 'boolean') fail(400, 'INVALID_SETTING', '자동 진행 설정을 확인해 주세요.');
-      const state = { title: set.title, questions: set.questions, seconds, phase: 'lobby', index: -1,
-        players: [], answers: {}, history: [], startsAt: null, endsAt: null, autoAdvance: req.body?.autoAdvance ?? true, nextAt: null };
-      const raceId = crypto.randomUUID();
-      await db.query('INSERT INTO learning_board_races(id,board_id,set_id,state) VALUES($1,$2,$3,$4::jsonb)',
-        [raceId, b.id, set.id, JSON.stringify(state)]);
-      // Keep a bounded history, without touching the current race.
-      await db.query(`DELETE FROM learning_board_races WHERE board_id=$1 AND finished AND id NOT IN
-        (SELECT id FROM learning_board_races WHERE board_id=$1 ORDER BY created_at DESC LIMIT 30)`, [b.id]);
-      return { id: raceId };
+      return createRace(db, b, set, req.body);
+    }, true);
+    res.status(201).json(result);
+  }));
+  // 작품 퀴즈: a picture board turns its students' pictures into a race, no authoring.
+  router.post('/:id/art-quiz', asyncRoute(async (req, res) => {
+    const result = await transaction(req, async (db, b) => {
+      if (['quiz', 'stacking'].includes(b.layout)) fail(400, 'ART_BOARD_REQUIRED', '그림을 올리는 게시판에서 시작해 주세요.');
+      const existing = await activeRace(db, b);
+      if (existing) return { id: existing.id, resumed: true };
+      const works = (await db.query(`SELECT p.id AS post_id, p.content, i.id AS image_id, m.id AS member_id, m.number, m.name
+        FROM learning_board_posts p JOIN learning_board_images i ON i.board_id=p.board_id AND i.post_id=p.id
+        JOIN learning_board_members m ON m.board_id=p.board_id AND m.id=p.member_id
+        WHERE p.board_id=$1 AND p.kind='note' AND NOT p.hidden`, [b.id])).rows.map(r => ({ postId: r.post_id, imageId: r.image_id,
+        title: r.content, memberId: r.member_id, number: r.number, author: b.hide_names ? `${r.number}번` : `${r.number}번 ${r.name}` }));
+      const questions = buildArtQuiz(works);
+      if (!questions.length) fail(409, 'NOT_ENOUGH_ART', '학생 그림이 4장 이상(작가나 제목이 서로 다른) 있어야 퀴즈를 만들 수 있어요.');
+      // Only the latest few generated sets are kept; older ones take their finished races along.
+      await db.query(`DELETE FROM learning_board_sets WHERE board_id=$1 AND id LIKE 'art-%' AND id NOT IN
+        (SELECT id FROM learning_board_sets WHERE board_id=$1 AND id LIKE 'art-%' ORDER BY created_at DESC LIMIT 4)`, [b.id]);
+      const set = { id: `art-${crypto.randomUUID()}`, title: `${b.title} · 작품 퀴즈`, questions };
+      await db.query("INSERT INTO learning_board_sets(id, board_id, title, questions, status) VALUES($1,$2,$3,$4::jsonb,'open')",
+        [set.id, b.id, set.title, JSON.stringify(questions)]);
+      return createRace(db, b, set, req.body);
     }, true);
     res.status(201).json(result);
   }));
