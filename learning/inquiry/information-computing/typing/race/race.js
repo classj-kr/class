@@ -19,6 +19,12 @@
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => data?.profile?.avatar?.url || null)
     .catch(() => null);
+  // 교사만 "참여하지 않고 관전하기"를 고를 수 있다.
+  let isTeacher = false;
+  fetch('/api/typing-race/session', { cache: 'no-store', credentials: 'same-origin' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => { isTeacher = Boolean(data?.isTeacher); $('spectateRow').hidden = !isTeacher; })
+    .catch(() => {});
   function face(p, cls = '') {
     if (p.avatarUrl) {
       const img = document.createElement('img');
@@ -756,7 +762,7 @@
     });
   }
   $('createButton').onclick = () => action(async () => {
-    const data = await api('/rooms', { ...choice, avatarUrl: await myAvatar });
+    const data = await api('/rooms', { ...choice, spectate: isTeacher && $('spectateInput').checked, avatarUrl: await myAvatar });
     enter(data, data.state.code);
   });
   $('startButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/start', choice)));

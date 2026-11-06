@@ -436,6 +436,11 @@
   }
 
   dialog.addEventListener('close', syncPracticeMusic);
+  // 방(순위전·문제은행)은 교사가 연다. 학생 메뉴에는 방번호 안내만 보인다.
+  fetch('/api/stacking-race/session', { cache: 'no-store', credentials: 'same-origin' })
+    .then(response => (response.ok ? response.json() : null))
+    .then(session => document.body.classList.toggle('stacking-teacher', Boolean(session?.isTeacher)))
+    .catch(() => {});
   $('activity-button').addEventListener('click', () => { openActivities(); sound('view'); });
   $('close-activities').addEventListener('click', () => dialog.close());
   document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => { startActivity(button.dataset.mode); sound('view'); }));
