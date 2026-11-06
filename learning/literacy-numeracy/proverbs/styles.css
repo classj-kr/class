@@ -9,6 +9,7 @@ body {
 }
 header { min-height: 52px; padding: 4px max(3vw, 16px); background: #fff9edeb; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #9a633d66; backdrop-filter: blur(8px); }
 .back { display:inline-flex; min-height:44px; align-items:center; color:#70401f; text-decoration:none; }
+.race-link { margin-left:auto; display:inline-flex; min-height:40px; align-items:center; padding:0 14px; border-radius:999px; background:#70401f; color:#fff9ed; font-weight:800; text-decoration:none; }
 output { margin-left: auto; font-weight: 700; color: #70401f; }
 @media (min-width: 761px) {
   .class-music-ready header { padding-right: 380px; }

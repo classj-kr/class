@@ -92,6 +92,21 @@ button { color: inherit; }
     backdrop-filter: blur(14px);
 }
 
+.site-header { grid-template-columns: 1fr auto auto; gap: 12px; }
+
+.race-link {
+    justify-self: end;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+}
+
 .back-link {
     justify-self: start;
     min-height: 44px;

@@ -49,6 +49,15 @@ test('a student can open and join a typing race even when the typing menu is clo
   assert.deepEqual(await check(root + '/'), { status: 302, location: '/?content=locked' }, 'the practice menu stays curated');
 });
 
+test('a student can open and join a Korean race even when the language menus are closed', async () => {
+  const root = '/learning/literacy-numeracy/korean-race';
+  for (const url of [root + '/?room=6820', root + '/race.js', root + '/korean-race-core.js', root + '/music/race-1.ogg', '/api/korean-race/rooms', '/api/korean-race/rooms/6820/answer']) {
+    assert.deepEqual(await check(url), { status: 200 }, url);
+    assert.deepEqual(await check(url, { role: null }), { status: 302, location: '/?access=required' });
+  }
+  assert.deepEqual(await check('/learning/literacy-numeracy/spelling/'), { status: 302, location: '/?content=locked' }, 'the spelling menu stays curated');
+});
+
 test('stacking cooperation opens from the main room entrance while retaining site access checks', async () => {
   const root = '/learning/inquiry/math/stacking-cubes';
   for (const url of [root + '/coop/?code=6820', root + '/coop/app.js', root + '/coop/coop.js', root + '/coop/coop.css']) {

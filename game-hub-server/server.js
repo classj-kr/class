@@ -26,6 +26,7 @@ const { createRhythmTraining } = require("./rhythm-training");
 const { createHandwriting } = require("./handwriting");
 const { createStackingCubes } = require("./stacking-cubes");
 const { createTypingRace } = require("./typing-race");
+const { createKoreanRace } = require("./korean-race");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
@@ -88,6 +89,7 @@ async function isRuntimeRoomCodeActive({ activity, code }) {
   if (activity === 'handwriting') return handwriting.hasRoomCode(code);
   if (activity === 'stacking') return stackingCubes.hasRoomCode(code);
   if (activity === 'typing') return typingRace.hasRoomCode(code);
+  if (activity === 'korean') return koreanRace.hasRoomCode(code);
   const target = activity === 'arithmetic' ? `http://127.0.0.1:${ARITHMETIC_PORT}/api/arithmetic-race/entry?room=${code}`
     : activity === 'voyage' ? `http://127.0.0.1:${WORLD_VOYAGE_PORT}/api/room-entry/${code}` : null;
   if (!target) return false;
@@ -470,7 +472,6 @@ const MAX_ROOM_PLAYERS = {
   clue: 6,
   codenames: 5,
   dobble: 8,
-  spelling: 61,
   circulation: 61,
   digestion: 61,
   respiration: 61,
@@ -507,7 +508,6 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   clue: "/learning/games/clue/clue",
   codenames: "/learning/games/codenames/codenames",
   dobble: "/learning/games/dobble/dobble",
-  spelling: "/learning/literacy-numeracy/spelling",
   circulation: "/learning/inquiry/human-body/circulation",
   digestion: "/learning/inquiry/human-body/digestion",
   respiration: "/learning/inquiry/human-body/respiration",
@@ -534,7 +534,8 @@ app.use("/api/room-entry", classroomPlatform.requireSiteAccess, createRoomEntry(
   legacyVoyageRoomExists, rhythmExists: code => rhythmTraining.hasRoomCode(code),
   handwritingExists: code => handwriting.hasRoomCode(code),
   stackingExists: code => stackingCubes.hasRoomCode(code),
-  typingExists: code => typingRace.hasRoomCode(code)
+  typingExists: code => typingRace.hasRoomCode(code),
+  koreanExists: code => koreanRace.hasRoomCode(code)
 }));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
 app.use("/hanguksa", (req, res) => res.redirect(301, "/learning/inquiry/korean-history/"));
@@ -645,6 +646,20 @@ for (const file of ['race-core.js', 'race.js', 'race.css']) {
   app.get(`/learning/inquiry/information-computing/typing/race/${file}`, (_req, res) => res.sendFile(path.join(typingRaceRoot, file)));
 }
 app.get('/learning/inquiry/information-computing/typing/race/music/:file', (req, res, next) => {
+  const source = TYPING_RACE_MUSIC[req.params.file];
+  if (!source) return next();
+  res.setHeader('Cache-Control', 'public, max-age=604800');
+  res.sendFile(path.join(SITE_ROOT, source));
+});
+const koreanRace = createKoreanRace({ platform: classroomPlatform });
+app.use('/api/korean-race', classroomPlatform.requireSiteAccess, koreanRace.router);
+// 국어 순위전도 방번호 입구라 수업 메뉴가 잠겨 있어도 열린다. 음악은 타자 순위전 곡을 함께 쓴다.
+const koreanRaceRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/korean-race');
+app.get('/learning/literacy-numeracy/korean-race/', (req, res, next) => sendSiteHtml(req, res, path.join(koreanRaceRoot, 'index.html'), next));
+for (const file of ['korean-race-core.js', 'race.js', 'race.css']) {
+  app.get(`/learning/literacy-numeracy/korean-race/${file}`, (_req, res) => res.sendFile(path.join(koreanRaceRoot, file)));
+}
+app.get('/learning/literacy-numeracy/korean-race/music/:file', (req, res, next) => {
   const source = TYPING_RACE_MUSIC[req.params.file];
   if (!source) return next();
   res.setHeader('Cache-Control', 'public, max-age=604800');
@@ -1376,48 +1391,6 @@ function scheduleDrawRelayDeadline(room) {
     drawRelayBroadcast(room);
   }, delay);
   room.drawrelayTimer.unref?.();
-}
-
-function spellingPublicState(room) {
-  const game = room?.spelling;
-  if (!game) return null;
-
-  const finishers = game.players
-    .filter(player => game.results[player.id])
-    .map(player => ({
-      id: player.id,
-      name: player.name,
-      score: game.results[player.id].score,
-      elapsedMs: game.results[player.id].elapsedMs
-    }))
-    .sort((a, b) => b.score - a.score || a.elapsedMs - b.elapsedMs || a.name.localeCompare(b.name, "ko"))
-    .map((player, index) => ({ ...player, rank: index + 1 }));
-  const rankingById = new Map(finishers.map(player => [player.id, player]));
-
-  return {
-    phase: game.phase,
-    sessionId: game.sessionId,
-    questionIds: game.phase === "lobby" ? [] : game.questionIds,
-    startedAt: game.startedAt,
-    participants: game.players.map(player => ({
-      id: player.id,
-      name: player.name,
-      status: rankingById.has(player.id) ? "finished" : game.phase === "lobby" ? "waiting" : "playing"
-    })),
-    rankings: finishers
-  };
-}
-
-function spellingBroadcast(room) {
-  const state = spellingPublicState(room);
-  if (!state) return;
-  for (const client of room.clients.values()) {
-    safeSend(client, { type: "SPELLING_STATE", state });
-  }
-}
-
-function spellingError(socket, message) {
-  safeSend(socket, { type: "SPELLING_ERROR", message });
 }
 
 function circulationPublicState(room) {
@@ -2269,7 +2242,6 @@ wss.on("connection", (socket, request) => {
         if (existingRoom.clue) clueBroadcast(existingRoom);
         if (existingRoom.codenames) codenamesBroadcast(existingRoom);
         if (existingRoom.dobble) dobbleBroadcast(existingRoom);
-        if (existingRoom.spelling) spellingBroadcast(existingRoom);
         if (existingRoom.circulation) circulationBroadcast(existingRoom);
         if (existingRoom.digestion) digestionBroadcast(existingRoom);
         if (existingRoom.respiration) respirationBroadcast(existingRoom);
@@ -2360,16 +2332,6 @@ wss.on("connection", (socket, request) => {
       if (gameId === "dobble") {
         room.dobble = Dobble.createGame(playerId, cleanToken(message.name, 12) || "방장");
       }
-      if (gameId === "spelling") {
-        room.spelling = {
-          phase: "lobby",
-          sessionId: "",
-          questionIds: [],
-          startedAt: 0,
-          players: [],
-          results: {}
-        };
-      }
       if (gameId === "circulation") {
         room.circulation = createBodyExplorerGame();
       }
@@ -2423,7 +2385,6 @@ wss.on("connection", (socket, request) => {
       if (room.clue) clueBroadcast(room);
       if (room.codenames) codenamesBroadcast(room);
       if (room.dobble) dobbleBroadcast(room);
-      if (room.spelling) spellingBroadcast(room);
       if (room.circulation) circulationBroadcast(room);
       if (room.digestion) digestionBroadcast(room);
       if (room.respiration) respirationBroadcast(room);
@@ -2488,7 +2449,6 @@ wss.on("connection", (socket, request) => {
         if (room.clue) clueBroadcast(room);
         if (room.codenames) codenamesBroadcast(room);
         if (room.dobble) dobbleBroadcast(room);
-        if (room.spelling) spellingBroadcast(room);
         if (room.circulation) circulationBroadcast(room);
         if (room.digestion) digestionBroadcast(room);
         if (room.respiration) respirationBroadcast(room);
@@ -2688,24 +2648,6 @@ wss.on("connection", (socket, request) => {
         }
         Dobble.addPlayer(room.dobble, playerId, cleanToken(message.name, 12) || `플레이어 ${room.dobble.players.length + 1}`);
       }
-      if (room.spelling) {
-        if (room.spelling.phase !== "lobby") {
-          room.clients.delete(playerId);
-          socket.meta.roomKey = null;
-          socket.meta.role = null;
-          safeSend(socket, { type: "ERROR", message: "이미 시작한 학급 순위전입니다." });
-          return;
-        }
-        const name = cleanToken(message.name, 12);
-        if (!/^[가-힣]{2,6}$/.test(name)) {
-          room.clients.delete(playerId);
-          socket.meta.roomKey = null;
-          socket.meta.role = null;
-          safeSend(socket, { type: "ERROR", message: "메인 화면에서 한글 이름을 먼저 저장하세요." });
-          return;
-        }
-        room.spelling.players.push({ id: playerId, name });
-      }
       if (room.circulation) {
         if (room.circulation.phase !== "lobby") {
           room.clients.delete(playerId);
@@ -2881,7 +2823,6 @@ wss.on("connection", (socket, request) => {
       if (room.clue) clueBroadcast(room);
       if (room.codenames) codenamesBroadcast(room);
       if (room.dobble) dobbleBroadcast(room);
-      if (room.spelling) spellingBroadcast(room);
       if (room.circulation) circulationBroadcast(room);
       if (room.digestion) digestionBroadcast(room);
       if (room.respiration) respirationBroadcast(room);
@@ -2891,94 +2832,6 @@ wss.on("connection", (socket, request) => {
       if (room.excretion) excretionBroadcast(room);
       if (room.temperature) temperatureBroadcast(room);
       void persistRoomSnapshot(room, true);
-      return;
-    }
-
-    if (type === "SPELLING_ACTION") {
-      const room = socket.meta.roomKey ? rooms.get(socket.meta.roomKey) : null;
-      const game = room?.spelling;
-      const action = cleanToken(message.action, 30);
-      if (!room || !game) {
-        spellingError(socket, "한글 맞춤법 학급에 참가하지 않았습니다.");
-        return;
-      }
-
-      if (action === "START") {
-        if (playerId !== room.hostId) {
-          spellingError(socket, "교사 화면에서만 순위전을 시작할 수 있습니다.");
-          return;
-        }
-        if (game.phase !== "lobby") {
-          spellingError(socket, "이미 순위전이 진행 중입니다.");
-          return;
-        }
-        if (game.players.length < 1) {
-          spellingError(socket, "학생이 한 명 이상 참가해야 합니다.");
-          return;
-        }
-        const questionIds = Array.isArray(message.questionIds)
-          ? [...new Set(message.questionIds.map(id => cleanToken(id, 60)).filter(id => /^[a-z0-9_-]+$/i.test(id)))]
-          : [];
-        if (questionIds.length !== 10) {
-          spellingError(socket, "순위전 문항 10개가 필요합니다.");
-          return;
-        }
-        game.phase = "running";
-        game.sessionId = crypto.randomUUID();
-        game.questionIds = questionIds;
-        game.startedAt = Date.now();
-        game.results = {};
-        spellingBroadcast(room);
-        return;
-      }
-
-      if (action === "SUBMIT") {
-        if (game.phase !== "running") {
-          spellingError(socket, "현재 진행 중인 순위전이 없습니다.");
-          return;
-        }
-        if (cleanToken(message.sessionId, 80) !== game.sessionId) {
-          spellingError(socket, "현재 순위전의 결과가 아닙니다.");
-          return;
-        }
-        if (!game.players.some(player => player.id === playerId)) {
-          spellingError(socket, "참가 학생만 결과를 제출할 수 있습니다.");
-          return;
-        }
-        const score = Number(message.score);
-        if (!Number.isInteger(score) || score < 0 || score > 10) {
-          spellingError(socket, "점수가 올바르지 않습니다.");
-          return;
-        }
-        if (!game.results[playerId]) {
-          game.results[playerId] = {
-            score,
-            elapsedMs: Math.max(0, Date.now() - game.startedAt)
-          };
-        }
-        if (game.players.length > 0 && game.players.every(player => game.results[player.id])) {
-          game.phase = "ended";
-        }
-        spellingBroadcast(room);
-        return;
-      }
-
-      if (action === "RESET") {
-        if (playerId !== room.hostId) {
-          spellingError(socket, "교사 화면에서만 새 순위전을 준비할 수 있습니다.");
-          return;
-        }
-        game.phase = "lobby";
-        game.sessionId = "";
-        game.questionIds = [];
-        game.startedAt = 0;
-        game.results = {};
-        game.players = game.players.filter(player => room.clients.has(player.id));
-        spellingBroadcast(room);
-        return;
-      }
-
-      spellingError(socket, "알 수 없는 학급 순위전 요청입니다.");
       return;
     }
 
@@ -4626,15 +4479,6 @@ wss.on("connection", (socket, request) => {
           DrawRelay.resetToLobby(currentRoom.drawrelay, "플레이어가 나가 게임을 중단하고 대기실로 돌아왔습니다.");
         }
       }
-      if (currentRoom.spelling) {
-        const spelling = currentRoom.spelling;
-        if (spelling.phase === "lobby" || !spelling.results[playerId]) {
-          spelling.players = spelling.players.filter(player => player.id !== playerId);
-        }
-        if (spelling.phase === "running" && spelling.players.length > 0 && spelling.players.every(player => spelling.results[player.id])) {
-          spelling.phase = "ended";
-        }
-      }
       if (currentRoom.circulation) {
         const circulation = currentRoom.circulation;
         if (circulation.phase === "lobby" || !circulation.results[playerId]) {
@@ -4729,7 +4573,6 @@ wss.on("connection", (socket, request) => {
       if (currentRoom.clue) clueBroadcast(currentRoom);
       if (currentRoom.codenames) codenamesBroadcast(currentRoom);
       if (currentRoom.dobble) dobbleBroadcast(currentRoom);
-      if (currentRoom.spelling) spellingBroadcast(currentRoom);
       if (currentRoom.circulation) circulationBroadcast(currentRoom);
       if (currentRoom.digestion) digestionBroadcast(currentRoom);
       if (currentRoom.respiration) respirationBroadcast(currentRoom);
