@@ -6,7 +6,7 @@ The shared `game-sfx.js` exposes 13 effects. Select, back, bell, card, stone, su
 
 ## Race music (순위전), 2026-11-06
 
-All ranking races (typing, Korean, arithmetic, handwriting, stacking race and stacking bank race) use `race-music.js` and the files in `race-music/`, supplied by the user: `lobby-brisk-pursuit.mp3` loops on create/waiting/result screens, and the other 10 tracks play in random order while racing. Board-game tracks are no longer served to races; they stay with their games. Like board games, only the host device plays by default: guests receive the shared `classroommultiplayerjoined` mute after page load and can unmute from the speaker menu.
+All ranking races (typing, Korean, arithmetic, handwriting, stacking race and stacking bank race) use `race-music.js` and the files in `race-music/`, supplied by the user as MP3 and converted to OGG Vorbis (48 kHz stereo, quality about 0.4; durations checked against the originals): `lobby-brisk-pursuit.ogg` loops on create/waiting/result screens, and the other 10 tracks play in random order while racing. Board-game tracks are no longer served to races; they stay with their games. Like board games, only the host device plays by default: guests receive the shared `classroommultiplayerjoined` mute after page load and can unmute from the speaker menu.
 
 ## Expanded verification, 2026-10-09
 
