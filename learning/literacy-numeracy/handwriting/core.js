@@ -89,6 +89,12 @@
       actual: actual.length,
     };
   }
+  // 본보기 글꼴의 획 굵기(약 5.9)에 맞춘 세 단계. 예전 값(1·1.5·2.2)은 같은 단계로 옮긴다.
+  const PEN_WIDTHS = [3.5, 5.5, 7.5],
+    OLD_PEN_WIDTHS = { 1: 3.5, 1.5: 5.5, 2.2: 7.5 };
+  function penWidth(w) {
+    return PEN_WIDTHS.includes(w) ? w : OLD_PEN_WIDTHS[w] || 5.5;
+  }
   function validateCells(text, cells) {
     const letters = chars(text);
     if (!supported(text) || !Array.isArray(cells) || cells.length !== letters.length)
@@ -116,7 +122,7 @@
       strokes.map((s) => ({
         points:
           (s.points || s).length > 128 ? sample(s.points || s, 128) : (s.points || s).map((p) => [...p]),
-        width: [1, 1.5, 2.2].includes(s.width) ? s.width : 1.5,
+        width: penWidth(s.width),
       })),
     );
   }
@@ -139,6 +145,7 @@
     judge,
     judgeText,
     validateCells,
+    penWidth,
     sample,
     strokeError,
     CHO,
