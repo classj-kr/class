@@ -27,6 +27,11 @@ test('board images upload, attach, display and follow post visibility', async ()
   try {
     const { board } = await req('/', 'POST', { title: '그림 전시', layout: 'wall' }, teacher, 201);
     const base = '/' + board.id;
+    // Background is random at creation and changeable by the teacher only.
+    assert.ok(['default', 'space'].includes(board.theme));
+    await req(base, 'PATCH', { theme: 'neon' }, teacher, 400);
+    await req(base, 'PATCH', { theme: 'space' });
+    assert.equal((await req(base)).board.theme, 'space');
     const alice = (await req('/join', 'POST', { code: board.code, name: '하나', number: 1 }, '')).cookie;
     const bob = (await req('/join', 'POST', { code: board.code, name: '둘', number: 2 }, '')).cookie;
     // 그림판 sends only the code: a known device re-enters, a new one is asked.
