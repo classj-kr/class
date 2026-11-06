@@ -93,9 +93,25 @@ button { color: inherit; }
 }
 
 .site-header { grid-template-columns: 1fr auto auto; gap: 12px; }
+/* 머리줄이 버튼 하나 때문에 한 줄을 통째로 차지하지 않게, 띠 없이 위에 띄운다(속담·관용어와 같게). */
+.site-header {
+    position: fixed;
+    top: 8px;
+    left: 64px;
+    right: 64px;
+    min-height: 44px;
+    padding: 0;
+    border-bottom: 0;
+    background: transparent;
+    backdrop-filter: none;
+    pointer-events: none;
+}
+.site-header > * { pointer-events: auto; }
+body { padding-top: 56px; }
 
 .race-link {
-    justify-self: end;
+    justify-self: center;
+    box-shadow: 0 4px 14px rgba(20, 50, 38, 0.25);
     min-height: 40px;
     display: inline-flex;
     align-items: center;
