@@ -10,7 +10,6 @@
     set(key, value) { try { localStorage.setItem(key, value); } catch { /* private mode */ } }
   };
 
-  let recognized = null;  // platform login already tells the board who this is
   let joined = null;      // { code, board }
   let busy = false;
 
@@ -21,7 +20,9 @@
       const message = res.status === 413 ? "그림이 너무 커요. 장 수를 줄이거나 그림 크기를 줄여 주세요."
         : res.status === 404 && !value.message ? "게시판에 연결할 수 없어요."
           : value.message || "게시판에 연결할 수 없어요. 잠시 후 다시 해 주세요.";
-      throw new Error(message);
+      const error = new Error(message);
+      error.code = value.error;
+      throw error;
     }
     return value;
   }
@@ -53,18 +54,14 @@
     if (!$("shareNumber").value) $("shareNumber").value = storage.get(NUMBER_KEY);
     if (!$("shareName").value) $("shareName").value = String(window.CLASS_PLAYER_NAME || "").trim();
     $("shareDialog").showModal();
-    if (recognized === null) {
-      try { recognized = (await api("/identity")).recognized; } catch { recognized = false; }
-    }
-    $("shareIdentity").hidden = recognized;
-    const needsIdentity = !recognized && (!$("shareNumber").value || !$("shareName").value.trim());
-    ($("shareCode").value ? (needsIdentity ? $("shareNumber") : $("shareSubmit")) : $("shareCode")).focus();
+    // Number/name only appear when the board asks for them (a new guest seat).
+    ($("shareCode").value ? $("shareSubmit") : $("shareCode")).focus();
   }
 
   async function join(code) {
     if (joined && joined.code === code) return joined.board;
     const body = { code };
-    if (!recognized) {
+    if (!$("shareIdentity").hidden) {
       const number = Number($("shareNumber").value);
       const name = $("shareName").value.trim();
       if (!Number.isInteger(number) || number < 1) { $("shareNumber").focus(); throw new Error("번호를 써 주세요."); }
@@ -72,7 +69,17 @@
       body.number = number;
       body.name = name;
     }
-    const { board } = await postJson("/join", body);
+    let board;
+    try {
+      ({ board } = await postJson("/join", body));
+    } catch (error) {
+      if (error.code === "IDENTITY_REQUIRED") {
+        $("shareIdentity").hidden = false;
+        ($("shareNumber").value ? $("shareName") : $("shareNumber")).focus();
+        throw new Error("처음 들어가는 게시판이에요. 번호와 이름을 써 주세요.");
+      }
+      throw error;
+    }
     if (board.layout === "quiz" || board.layout === "stacking") throw new Error("이 방번호는 그림을 올릴 수 없는 게시판이에요.");
     joined = { code, board };
     storage.set(CODE_KEY, code);
@@ -133,7 +140,7 @@
       if (joined && joined.code !== $("shareCode").value) {
         joined = null;
         $("shareColumnLabel").hidden = true;
-        $("shareIdentity").hidden = recognized === true;
+        $("shareIdentity").hidden = true;
       }
     });
   });
