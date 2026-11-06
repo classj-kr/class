@@ -538,6 +538,10 @@ input[type="range"] {
   color: var(--ink);
   font-size: 15px;
 }
+.share-quiz { margin-top: 12px; font-size: 13px; }
+.share-quiz summary { cursor: pointer; font-weight: 800; color: var(--accent-dark); }
+.share-quiz .share-note { margin: 6px 0; }
+.share-quiz input { display: block; width: 100%; margin-top: 6px; }
 .share-identity { display: grid; grid-template-columns: 90px 1fr; gap: 8px; }
 .share-note { margin: 0; color: var(--muted); font-size: 13px; }
 .share-error { min-height: 1em; margin: 10px 0 0; color: #c62828; font-size: 13px; font-weight: 700; }

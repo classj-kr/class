@@ -306,6 +306,9 @@
         }));
       }
     }
+    if (p.image && p.mine && !data.me.teacher && !p.hidden && !data.board.closed) {
+      footer.append(button(p.decoys?.length ? '🎯 제목 퀴즈 수정' : '🎯 제목 퀴즈 내기', () => openDecoys(p), 'decoy-button'));
+    }
     const comments = p.commentCount !== undefined && data.board.commentsEnabled ? commentsFor(p) : null;
     if (comments) footer.append(comments.toggle);
     if (p.likes && data.board.likesEnabled) footer.append(likeButton(p));
@@ -440,6 +443,23 @@
     $('submitPost').textContent = quiz ? '검토 요청하기' : '글 올리기'; openDialog('postDialog');
   }
   $('writePost').addEventListener('click', () => openPost());
+  let decoyPost = null;
+  function openDecoys(p) {
+    decoyPost = p;
+    $('decoyTitle').textContent = `「${p.content}」`;
+    document.querySelectorAll('.decoy-input').forEach((input, i) => { input.value = p.decoys?.[i] || ''; });
+    $('clearDecoys').hidden = !p.decoys?.length;
+    openDialog('decoyDialog');
+  }
+  handleForm('decoyForm', async () => {
+    const decoys = [...document.querySelectorAll('.decoy-input')].map(n => n.value);
+    await api(`/${boardId}/posts/${decoyPost.id}/decoys`, 'PUT', { decoys });
+    $('decoyDialog').close(); toast('제목 퀴즈를 저장했어요.'); await refresh(true);
+  });
+  $('clearDecoys').addEventListener('click', () => run(async () => {
+    await api(`/${boardId}/posts/${decoyPost.id}/decoys`, 'PUT', { decoys: [] });
+    $('decoyDialog').close(); toast('제목 퀴즈를 뺐어요.'); await refresh(true);
+  }));
   const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
   // Big photos are shrunk to WebP; GIFs keep their animation, so only size is checked.
   async function prepareImage(file) {
