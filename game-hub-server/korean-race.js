@@ -8,8 +8,8 @@ const COUNTDOWN_MS = 3500;
 const GRACE_MS = 1500;
 // 문제를 읽고 고르는 데 0.35초보다 빠르면 사람이 고른 것으로 보지 않는다.
 const MIN_ANSWER_MS = 350;
-// 틀린 뒤에는 풀이를 보여 주는 동안 다음 답을 받지 않는다(조금의 지연은 봐준다).
-const REVEAL_LOCK_MS = Core.REVEAL_MS - 300;
+// 틀린 뒤 다시 고르기까지 잠깐 기다리게 한다(조금의 지연은 봐준다).
+const RETRY_LOCK_MS = Core.RETRY_LOCK_MS - 150;
 
 // 타자 순위전처럼 한 수업 동안만 쓰는 방이라 서버 메모리에 둔다.
 // 정답은 서버만 안다. 화면은 지금 풀 문제(보기)만 받는다.
@@ -84,7 +84,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     if (!v.player.host || !(v.player.plays || (await teacher(req)))) throw fail(403, '방을 연 사람만 바꿀 수 있어요.');
     return v;
   }
-  const resetScore = (p) => Object.assign(p, { score: 0, index: 0, correct: 0, wrong: 0, combo: 0, bestCombo: 0, blocks: [], scoredAt: null, lastAt: 0, lastWrong: false });
+  const resetScore = (p) => Object.assign(p, { score: 0, index: 0, correct: 0, wrong: 0, combo: 0, bestCombo: 0, blocks: [], tried: [], scoredAt: null, lastAt: 0, lastWrong: false });
   function board(r) {
     const rows = students(r).map((x) => ({
       id: x.id,
@@ -106,7 +106,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
   function question(r, p) {
     if (r.phase !== 'running' || !p.plays) return null;
     const q = r.items[p.index];
-    return q ? Questions.publicQuestion(q, p.index, Core.SETS[q.set].label) : null;
+    return q ? Questions.publicQuestion(q, p.index, Core.SETS[q.set].label, p.tried) : null;
   }
   function state(r, p) {
     expire(r);
@@ -229,35 +229,44 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
       if (!p.plays || req.body?.roundId !== r.roundId) throw fail(409, '지금 판의 기록이 아니에요.');
       if (r.phase !== 'running' || t > r.deadline + GRACE_MS) throw fail(409, '이번 판이 끝났어요.');
       if (t < r.startsAt) throw fail(409, '출발 신호 뒤에 골라 주세요.');
-      // 같은 문제를 두 번 보내도(두 번 누름·다른 탭) 한 번만 센다.
+      // 다른 문제의 답(두 번 누름·다른 탭)은 받지 않는다.
       if (Number(req.body?.index) !== p.index) throw fail(409, '다른 문제의 답이에요. 다시 맞춰 볼게요.');
       const q = r.items[p.index];
       if (!q) throw fail(409, '준비한 문제를 모두 풀었어요!');
       const since = t - Math.max(p.lastAt, r.startsAt);
-      if (since < MIN_ANSWER_MS || (p.lastWrong && since < REVEAL_LOCK_MS)) throw fail(429, '너무 빨라요. 문제를 읽고 골라 주세요.');
+      if (since < MIN_ANSWER_MS || (p.lastWrong && since < RETRY_LOCK_MS)) throw fail(429, '너무 빨라요. 문제를 읽고 골라 주세요.');
       const choice = Number(req.body?.choice);
       if (!Number.isInteger(choice) || choice < 0 || choice >= q.choices.length) throw fail(400, '보기를 다시 골라 주세요.');
+      // 이미 틀린 보기를 또 보내면(두 번 누름) 점수를 두 번 깎지 않는다.
+      if (p.tried.includes(choice)) throw fail(409, '이미 고른 보기예요. 다른 보기를 골라 주세요.');
       const correct = choice === q.answer;
       let gained;
       if (correct) {
+        // 한 번에 맞히면 콤보가 이어지고, 틀린 뒤 맞히면 콤보는 처음부터다(연산 순위전처럼).
         p.combo += 1;
         gained = Core.points(p.combo);
         p.correct += 1;
         p.blocks = [...p.blocks, q.block].slice(-60);
       } else {
+        // 틀릴 때마다 1점씩 깎고 같은 문제를 다시 고른다. 점수는 0 아래로도 내려간다.
         p.combo = 0;
-        // 점수는 0 아래로 내려가지 않는다.
-        gained = -Math.min(Core.WRONG_PENALTY, p.score);
+        gained = -Core.WRONG_PENALTY;
         p.wrong += 1;
+        p.tried = [...p.tried, choice];
       }
+      const retried = correct && p.tried.length > 0;
       p.bestCombo = Math.max(p.bestCombo, p.combo);
       p.score += gained;
-      p.index += 1;
+      if (correct) {
+        p.index += 1;
+        p.tried = [];
+      }
       p.lastAt = t;
       p.lastWrong = !correct;
-      if (gained) p.scoredAt = t;
+      p.scoredAt = t;
       r.updated = t;
-      res.json({ correct, answer: q.answer, explain: q.explain, gained, combo: p.combo, state: state(r, p) });
+      // 정답과 풀이는 맞힌 뒤에만 보낸다.
+      res.json({ correct, gained, combo: p.combo, ...(correct ? { answer: q.answer, explain: q.explain, retried } : { tried: p.tried }), state: state(r, p) });
     }),
   );
   // 대기실에서 바꾼 설정은 바로 학생 화면에도 보인다.

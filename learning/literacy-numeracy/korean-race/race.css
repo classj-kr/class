@@ -207,7 +207,8 @@ body.hurry #timeLeft { color: var(--red); }
 }
 .choice.picked { border-color: var(--ink); }
 .choice.is-answer { border-color: var(--green); background: #e6f6ec; box-shadow: 0 4px 0 #9fd5b3; }
-.choice.is-wrong { border-color: var(--red); background: #fde8e4; box-shadow: 0 4px 0 #f0b3a7; }
+.choice.is-wrong { border-color: var(--red); background: #fde8e4; box-shadow: 0 4px 0 #f0b3a7; opacity: 0.75; }
+.choice.is-wrong span { text-decoration: line-through 3px var(--red); }
 .q-card.right { border-color: var(--green); }
 .q-card.wrong { border-color: var(--red); }
 .q-card.enter { animation: card-in 0.25s ease; }
