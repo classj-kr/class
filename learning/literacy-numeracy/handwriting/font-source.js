@@ -159,11 +159,13 @@
   const transform = (paths, [x, y, w, h]) =>
     paths.map((s) => s.map((p) => [x + (p[0] * w) / 100, y + (p[1] * h) / 100]));
   function base(c, context = 'vertical') {
-    if (pairs[c])
+    if (pairs[c]) {
+      const [w, dx] = c === 'ㅉ' ? [49, 52] : [57, 44];
       return [
-        ...transform(base(pairs[c][0], context), [0, 0, 57, 100]),
-        ...transform(base(pairs[c][1], context), [44, 0, 57, 100]),
+        ...transform(base(pairs[c][0], context), [0, 0, w, 100]),
+        ...transform(base(pairs[c][1], context), [dx, 0, w, 100]),
       ];
+    }
     if (context !== 'vertical' && (c === 'ㄱ' || c === 'ㅋ')) {
       const corner = context === 'final'
         ? stroke([21, 24], [40, 23, 60, 22, 79, 22], [80, 41, 79, 64, 78, 81])
@@ -469,13 +471,7 @@
               oval(30.7 + shift, 43.2, 15, 12.2),
             ];
           } else if (a === 'ㅊ') {
-            const left = wide ? 7 : 10, right = wide ? 46.5 : 57,
-              x = wide ? 20 : 25;
-            paths = [
-              stroke([x, 10.5], [x + 6, 13, x + 14, 14, x + 20, 13.5]),
-              stroke([left, 25.5], [left + 12, 25, right - 10, 24, right, 24], [right - 7, 37, left + 15, 49, left, 56.5]),
-              stroke([left + (right - left) * 0.57, 41], [right - 14, 48, right - 5, 54, right, 56.5]),
-            ];
+            paths = fitPaths(base('ㅊ'), [wide ? 7 : 10, 10.5, wide ? 46.5 : 57, 56.5]);
           } else if (a === 'ㅂ') paths = fitPaths(paths, [8.7, 13, wide ? 42 : 47.7, 51.7]);
           else if (a === 'ㅍ') {
             const dx = wide ? -4 : 0;
@@ -491,6 +487,20 @@
       }
       return part;
     });
+    const initial = output.find((p) => p.kind === 'initial'),
+      vowel = output.find((p) => p.kind === 'vowel');
+    if (initial && vowel && !compound && 'ㅈㅊㅉ'.includes(a) && 'ㅗㅛㅜㅠㅡ'.includes(b)) {
+      const ys = initial.paths.flat().map((p) => p[1]),
+        top = Math.min(...ys),
+        limit = Math.min(...vowel.paths.flat().map((p) => p[1])) - 10;
+      if (Math.max(...ys) > limit) {
+        const k = Math.max(0.6, (limit - top) / (Math.max(...ys) - top));
+        output[output.indexOf(initial)] = {
+          ...initial,
+          paths: initial.paths.map((path) => path.map(([x, y]) => [x, top + (y - top) * k])),
+        };
+      }
+    }
     return output;
   }
   function downTail(parts, c) {
