@@ -54,7 +54,7 @@
       phase,
       index: 0,
       guide: true,
-      width: 1.5,
+      width: 5.5,
       cells: { trace: C.chars(text).map(() => []), solo: C.chars(text).map(() => []) },
     };
   }
@@ -83,7 +83,7 @@
     next.index = Math.max(0, Math.min(next.cells.trace.length - 1, Number(raw.index) || 0));
     next.index = Math.floor(next.index);
     next.guide = raw.guide !== false;
-    next.width = [1, 1.5, 2.2].includes(raw.width) ? raw.width : 1.5;
+    next.width = C.penWidth(raw.width);
     return next;
   }
   function snapshot() {
