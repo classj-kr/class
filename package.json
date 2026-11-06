@@ -5,6 +5,7 @@
   "scripts": {
     "test:handwriting": "node --test tests/handwriting.test.cjs game-hub-server/handwriting.test.mjs game-hub-server/index-category-accordion.test.mjs game-hub-server/index-menu-copy.test.mjs game-hub-server/room-codes.test.mjs",
     "test:handwriting:ui": "node --test tests/handwriting-browser.cjs",
+    "test:korean-race": "node --test game-hub-server/korean-race.test.mjs tests/room-entry-student-access.test.cjs",
     "audit:repository": "node scripts/audit-repository-hygiene.mjs",
     "audit:links": "node scripts/audit-site-links.mjs",
     "test:coach-quality": "node --test tests/board-coach-quality.test.cjs tests/board-coach-hints.test.cjs",

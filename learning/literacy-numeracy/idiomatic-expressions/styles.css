@@ -12,6 +12,7 @@ body {
 }
 
 .back { color: #315c44; min-height: 44px; display: inline-flex; align-items: center; }
+.race-link { margin-left: auto; min-height: 40px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #315c44; color: #fff9e9; font-weight: 800; text-decoration: none; }
 output, .label { color: #315c44; }
 button, .actions button { min-height: 48px; }
 button:focus-visible, .back:focus-visible { outline: 3px solid #f1ad32; outline-offset: 3px; }
