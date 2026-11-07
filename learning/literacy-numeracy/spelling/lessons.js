@@ -7,12 +7,15 @@
 
     window.SPELLING_LESSONS = Object.freeze([
         lesson("doe-dwae", "되·돼, 안·않, 왠·웬", "줄어든 말과 헷갈리는 짝", [
-            "dwaeyo", "an_dwae", "dwaesseo", "doeeo", "bwaeyo", "eotteokhae",
+            "dwaeyo", "an_dwae", "dwaesseo", "doeeo", "dwaeseo", "dwaeya", "doego", "bwaeyo", "eotteokhae",
             "anhatda", "an-haetda", "waenji", "wenillo", "wenmanhamyeon"
         ]),
         lesson("word-endings", "말끝 바로 적기", "-ㄹ게, -려고, 예요·이에요, -십시오", [
             "halge", "halgeol", "haryeogo", "geoyeyo", "ieyo", "hasipsio",
             "aniyo", "geureonde", "seoseumji", "deunji-choice", "deon-past"
+        ]),
+        lesson("eot-yeot", "-었다·-였다·이었다, 아니에요", "이었다·였다, 아니었다, 바뀌었다", [
+            "ieotda", "yeotda", "anieotda", "anieyo", "bakkwieotda"
         ]),
         lesson("i-hi-1", "-이와 -히 (1)", "깨끗이, 곰곰이처럼 '이'로 적는 말", [
             "kkaekkeusi", "gomgomi", "iriri", "teumteumi", "natnati", "nanari",
