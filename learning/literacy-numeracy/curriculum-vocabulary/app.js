@@ -2,9 +2,11 @@
   'use strict';
 
   const books = window.CurriculumVocabulary || {};
+  const visualLessons = window.CurriculumVisualLessons || {};
   const termSelect = document.getElementById('term');
   const subjectList = document.getElementById('subjects');
   const unitList = document.getElementById('unit-list');
+  const unitSelect = document.getElementById('unit-select');
   const lesson = document.getElementById('lesson');
   const query = new URLSearchParams(location.search);
   const terms = Array.from({ length: 12 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
@@ -46,103 +48,124 @@
     return shuffled;
   }
 
-  function startQuiz(container, words, onClose) {
-    const questions = orderedChoices(words);
-    let index = 0;
-    let firstCorrect = 0;
-
-    function showQuestion() {
-      const quiz = element('div', '', 'quiz');
-      if (index === questions.length) {
-        const title = element('h3', '단원 확인을 마쳤어요');
-        title.tabIndex = -1;
-        quiz.append(title, element('p', `${questions.length}문제 중 ${firstCorrect}문제를 처음에 맞혔어요.`),
-          button('단어 다시 보기', onClose), ' ', button('한 번 더 풀기', () => startQuiz(container, words, onClose), 'primary'));
-        container.replaceChildren(quiz);
-        title.focus();
-        return;
-      }
-
-      const [word, meaning, example] = questions[index];
-      const title = element('h3', `이 문장에서 ‘${word}’의 뜻은 무엇인가요?`);
-      title.tabIndex = -1;
-      const choices = element('div', '', 'choices');
-      const feedback = element('p', '', 'feedback');
-      feedback.setAttribute('role', 'status');
-      const next = button(index + 1 === questions.length ? '결과 보기' : '다음 문제', () => { index++; showQuestion(); }, 'primary');
-      next.hidden = true;
-      let triedWrong = false;
-      const alternatives = [...new Set(words.map(row => row[1]).filter(text => text !== meaning))];
-      const options = orderedChoices([meaning, ...orderedChoices(alternatives).slice(0, 2)]);
-      for (const option of options) {
-        const choice = button(option, () => {
-          if (option === meaning) {
-            if (!triedWrong) firstCorrect++;
-            choice.classList.add('correct');
-            for (const node of choices.children) node.disabled = true;
-            feedback.textContent = '맞았어요!';
-            next.hidden = false;
-            next.focus();
-          } else {
-            triedWrong = true;
-            choice.classList.add('wrong');
-            choice.disabled = true;
-            feedback.textContent = '문장 속 단어의 쓰임을 다시 살펴봐요.';
-            choices.querySelector('button:not(:disabled)')?.focus();
-          }
-        });
-        choices.append(choice);
-      }
-      quiz.append(element('p', `확인 문제 ${index + 1} / ${questions.length}`, 'eyebrow'), title,
-        exampleOf(word, example), choices, feedback, next, ' ', button('단어 보기로 돌아가기', onClose));
-      container.replaceChildren(quiz);
-      title.focus();
+  function detailsOf(parts) {
+    const details = element('details', '', 'scene-details');
+    details.append(element('summary', '뜻과 쓰임 자세히 보기'));
+    for (const [name, paragraphs] of parts) {
+      const block = element('div', '', 'detail-part');
+      block.append(element('h3', name), ...paragraphs.map(text => element('p', text)));
+      details.append(block);
     }
-
-    showQuestion();
+    return details;
   }
 
-  function showLesson(book, unit) {
-    const heading = element('h2', unit ? unit.title : `${termName(term)} ${subject}`);
-    heading.id = 'unit-title';
+  function writingOf({ prompt, guide, example }) {
+    const block = element('div', '', 'scene-writing');
+    const label = element('label', prompt);
+    const response = element('textarea');
+    response.rows = 2;
+    label.append(response);
+    const model = element('details');
+    model.append(element('summary', '예시와 비교하기'), element('p', example));
+    block.append(element('h3', '내 말로 설명하기'), label, element('p', guide, 'writing-guide'), model);
+    return block;
+  }
+
+  function visualLessonOf(activity) {
+    const section = element('section', '', 'visual-lesson');
+    const title = element('h2', activity.title);
+    const figure = element('figure', '', 'scene');
+    const image = element('div', '', 'scene-image');
+    const caption = element('figcaption');
+    const controls = element('div', '', 'scene-controls');
+    controls.setAttribute('role', 'group');
+    controls.setAttribute('aria-label', activity.controlLabel);
+    figure.append(image, caption);
+    section.append(title, controls, figure);
+
+    const buttons = activity.states.map(([name], index) => button(name, () => select(index)));
+    controls.append(...buttons);
+    function select(index) {
+      const [name, description] = activity.states[index];
+      buttons.forEach((node, i) => node.setAttribute('aria-pressed', String(i === index)));
+      image.innerHTML = activity.draw(index);
+      caption.replaceChildren(element('strong', name), ' ', description);
+    }
+    select(0);
+
+    if (activity.parts || activity.wordResult || activity.english) {
+      const word = element('div', '', 'word-build');
+      if (activity.parts) {
+        const pieces = element('div', '', 'word-pieces');
+        for (const [character, reading] of activity.parts) {
+          const part = element('span', '', 'word-piece');
+          part.append(element('b', character), element('span', reading));
+          pieces.append(part);
+        }
+        word.append(pieces);
+      }
+      if (activity.wordResult) word.append(element('p', activity.wordResult, 'word-result'));
+      if (activity.english) word.append(element('p', activity.english, 'word-english'));
+      section.append(word);
+    }
+
+    if (activity.details) section.append(detailsOf(activity.details));
+
+    if (activity.check) {
+      const { question, options, answer, feedback, draw } = activity.check;
+      const practice = element('div', '', 'visual-check');
+      const result = element('p', '', 'visual-feedback');
+      result.setAttribute('role', 'status');
+      const choices = element('div', '', 'scene-choices');
+      let solved = false;
+      const optionButtons = orderedChoices(options).map((option) => button(option, (event) => {
+        if (solved) return;
+        const selected = event.currentTarget;
+        selected.classList.add(option === answer ? 'correct' : 'wrong');
+        selected.disabled = true;
+        result.textContent = feedback[option];
+        if (option === answer) {
+          solved = true;
+          optionButtons.forEach(node => { node.disabled = true; });
+          result.tabIndex = -1;
+          result.focus();
+        } else {
+          choices.querySelector('button:not(:disabled)')?.focus();
+        }
+      }));
+      choices.append(...optionButtons);
+      practice.append(element('h3', question));
+      if (draw) {
+        const example = element('div', '', 'scene-image check-image');
+        example.innerHTML = draw();
+        practice.append(example);
+      }
+      practice.append(choices, result);
+      section.append(practice);
+    }
+
+    if (activity.writing) section.append(writingOf(activity.writing));
+    return section;
+  }
+
+  function showLesson(unit) {
+    lesson.setAttribute('aria-label', unit?.title || '학습 내용');
     if (!unit) {
-      lesson.replaceChildren(heading, element('p', '이 과목의 단원별 어휘는 준비 중이에요.'));
+      lesson.replaceChildren(element('p', '이 과목의 단원별 어휘는 준비 중이에요.'));
       return;
     }
-    const header = element('div', '', 'lesson-header');
-    const headingBlock = element('div');
-    const source = element('p', `기준 교과서 · ${book.publisher}`, 'source');
-    headingBlock.append(heading, source);
-    if (book.source) {
-      const link = element('a', '교과서 자료실');
-      link.href = book.source;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      source.append(' · ', link);
+    const visuals = visualLessons[term]?.[subject]?.[unit.id] || [];
+    const glossary = element('details', '', 'glossary');
+    glossary.append(element('summary', '단어와 예문 찾아보기'));
+    const words = element('dl', '', 'word-list');
+    for (const [word, meaning, example] of unit.words) {
+      const definition = element('dd');
+      definition.append(element('p', meaning), exampleOf(word, example));
+      words.append(element('dt', word), definition);
     }
-    header.append(headingBlock);
-    const container = element('div');
-    const actions = element('div', '', 'lesson-actions');
-    const openQuiz = button('이 단원 확인 문제', () => {
-      openQuiz.hidden = true;
-      startQuiz(container, unit.words, () => showWords(true));
-    }, 'primary');
-    if (unit.words.length > 1) actions.append(openQuiz);
-    header.append(actions);
-    lesson.replaceChildren(header, container);
-
-    function showWords(focus = false) {
-      const entries = element('div', '', 'entries');
-      for (const [word, meaning, example] of unit.words) {
-        const card = element('article', '', 'entry');
-        card.append(element('h3', word), element('p', meaning), exampleOf(word, example));
-        entries.append(card);
-      }
-      container.replaceChildren(entries);
-      openQuiz.hidden = false;
-      if (focus) openQuiz.focus();
-    }
-    showWords();
+    glossary.append(words);
+    const panels = visuals.length ? visuals.map(visualLessonOf) : [element('p', '이 단원의 그림 학습은 준비 중이에요.')];
+    lesson.replaceChildren(...panels, glossary);
   }
 
   function render(focusGroup) {
@@ -166,8 +189,15 @@
       }
       return control;
     }));
+    unitSelect.replaceChildren(...units.map((row) => {
+      const option = element('option', row.title);
+      option.value = row.id;
+      option.selected = row === unit;
+      return option;
+    }));
+    unitSelect.hidden = !units.length;
     if (!units.length) unitList.append(element('p', '준비 중'));
-    showLesson(book, unit);
+    showLesson(unit);
     const url = new URL(location.href);
     url.searchParams.set('term', term);
     url.searchParams.set('subject', subject);
@@ -186,6 +216,10 @@
     term = termSelect.value;
     if (!subjectsFor(term).includes(subject)) subject = '국어';
     unitId = null;
+    render();
+  });
+  unitSelect.addEventListener('change', () => {
+    unitId = unitSelect.value;
     render();
   });
   render();

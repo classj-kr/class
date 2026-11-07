@@ -58,12 +58,20 @@ let guardianGroups = [];
 let postDeleteRows = [];
 let commentDeleteRows = [];
 let unreadRows = [];
+let feedRows = [];
+let feedComments = [];
 const deleteAttempts = [];
 const insertedPosts = [];
 const readMarks = [];
 
 function answer(sql, params) {
   const text = String(sql);
+  if (text.includes("COALESCE(t.avatar_key, student.avatar_key)")) {
+    return { rows: [{ id: 1, avatar_key: "animal-bear.webp" }, { id: 3, avatar_key: "animal-cat.webp" }]
+      .filter(row => params[0].includes(String(row.id))) };
+  }
+  if (text.includes("JOIN classroom_users u ON u.id = p.author_user_id")) return { rows: feedRows };
+  if (text.includes("JOIN classroom_users u ON u.id = c.author_user_id")) return { rows: feedComments };
   if (text.includes("FROM classroom_sessions s")) return { rows: sessionRows };
 
   // getGuardianChildren(). 학생 조회 가지보다 먼저 봐야 한다 -- 이 질의의 UNION
@@ -136,6 +144,11 @@ function answer(sql, params) {
     readMarks.push(params);
     return { rows: [] };
   }
+  if (text.includes("INSERT INTO classroom_classboard_item_reads")) {
+    readMarks.push(params);
+    return { rows: params.at(-1).map(id => ({ item_id: id })) };
+  }
+  if (text.startsWith("SELECT p.id FROM classroom_classboard_posts p")) return { rows: [] };
   if (text.includes("classroom_classboard_reads r")) return { rows: unreadRows };
   if (text.includes("DELETE FROM classroom_classboard_posts")) {
     deleteAttempts.push({ sql: text, params });
@@ -330,6 +343,10 @@ const asGroupOnlyHomeroom = () => { sessionRows = [{ id: 4, email: "new@x.kr", r
     assert.equal(list.canPost, true);
     assert.equal(list.classes.length, 2, "The subject teacher can switch between classes.");
     assert.equal(list.classes[0].teaching, true, "Classes they teach come first.");
+    const subjectBoards = (await (await get("/api/classboard/boards")).json()).boards;
+    assert.equal(subjectBoards.some(b => b.key === "class:100"), true);
+    assert.equal(subjectBoards.some(b => b.key === "class:101"), false,
+      "My groups lists only assigned/taught classes, even when school-level permissions are wider.");
 
     // 9. A student's board list is their class plus every club / after-school
     //    group they belong to -- the point of the picker.
@@ -357,11 +374,30 @@ const asGroupOnlyHomeroom = () => { sessionRows = [{ id: 4, email: "new@x.kr", r
     assert.equal(boards[1].unreadCount, 3, "The club board reports its unread posts.");
     assert.equal(boards[0].unreadCount, 0, "A board with nothing new stays quiet.");
 
-    // 11. Opening a board marks it read.
+    // 11. Fetching a board is read-only; the client acknowledges viewed items.
     readMarks.length = 0;
     await get("/api/classboard/posts?board=group:55");
-    assert.equal(readMarks.length, 1, "Opening a board must record the visit.");
-    assert.equal(readMarks[0][1], "group:55", "It must record which board was opened.");
+    assert.equal(readMarks.length, 0, "Opening a board must not mark unseen posts read.");
+    const viewed = await post("/api/classboard/read", { board: "group:55", ids: ["7"] });
+    assert.equal(viewed.status, 200);
+    assert.deepEqual((await viewed.json()).readIds, ["7"]);
+    assert.equal(readMarks[0][2], 3, "Read state belongs to the authenticated student.");
+    assert.equal(readMarks[0][3], "group:55");
+    const foreignRead = await post("/api/classboard/read", { board: "group:777", ids: ["7"] });
+    assert.equal(foreignRead.status, 403, "Cannot acknowledge another group's items.");
+    const malformedRead = await post("/api/classboard/read", { board: "group:55", ids: ["oops"] });
+    assert.equal(malformedRead.status, 400);
+    const oversizedRead = await post("/api/classboard/read", { board: "group:55", ids: ["9999999999999999999"] });
+    assert.equal(oversizedRead.status, 400);
+
+    feedRows = [{ id: 7, author_user_id: 1, author_name: "담임", author_role: "teacher", author_teacher_type: "homeroom", content: "준비물", created_at: new Date().toISOString() }];
+    feedComments = [{ id: 8, post_id: 7, author_user_id: 3, author_name: "학생", author_role: "student", content: "확인", created_at: new Date().toISOString() }];
+    const avatarFeed = await (await get("/api/classboard/posts?board=class:100")).json();
+    assert.equal(avatarFeed.posts[0].authorAvatar, "/assets/avatars/animal-bear.webp");
+    assert.equal(avatarFeed.posts[0].comments[0].authorAvatar, "/assets/avatars/animal-cat.webp");
+    assert.equal(avatarFeed.posts[0].authorPicture, undefined);
+    feedRows = [];
+    feedComments = [];
 
     // 12. A student cannot read a board they don't belong to.
     const foreignBoard = await get("/api/classboard/posts?board=group:777");
