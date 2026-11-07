@@ -50,7 +50,7 @@ for (const [index, lesson] of lessons.entries()) {
   }).join('');
   const questions = lesson.questions.map((question, questionIndex) => {
     const choices = question.options.map((option, optionIndex) => {
-      const sentence = escapeHtml(option[2]).replace(`{{${escapeHtml(option[0])}}}`, `<u>${escapeHtml(option[0])}</u>`);
+      const sentence = escapeHtml(option[2]).replace(`{{${escapeHtml(option[0])}}}`, `<u>${escapeHtml(option[0])}</u>`).replace(/\{\{([^}]*)\}\}/g, '$1');
       return `<button class="choice" data-index="${optionIndex}">${['①','②','③','④'][optionIndex]} ${sentence}</button>`;
     }).join('');
     return `<article class="question" data-answer="${question.answer}" data-note="${escapeHtml(question.note)}"><h2><span>${questionIndex + 1}</span>${questionPrompt(lesson, question)}</h2><div class="choices">${choices}</div><p class="feedback" aria-live="polite"></p></article>`;

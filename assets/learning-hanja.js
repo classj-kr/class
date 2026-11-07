@@ -62,7 +62,14 @@
       $('feedback').textContent = done ? '맞았습니다. ' + q.note : tried.length ? '다시 생각해 보세요.' : '';
       $('choices').replaceChildren(...q.options.map((option, index) => {
         const button = document.createElement('button'); button.type = 'button'; button.className = 'choice';
-        button.textContent = '①②③④'[index] + ' ' + option.sentence.replaceAll('{{', '').replaceAll('}}', '');
+        // 묻는 낱말({{낱말}} 첫 자리)에만 밑줄을 긋는다. 다른 표시는 괄호만 걷는다.
+        const mark = `{{${option.word}}}`, at = option.sentence.indexOf(mark), plain = (text) => text.replace(/\{\{([^}]*)\}\}/g, '$1');
+        button.append('①②③④'[index] + ' ');
+        if (at < 0) button.append(plain(option.sentence));
+        else {
+          const word = document.createElement('u'); word.textContent = option.word;
+          button.append(plain(option.sentence.slice(0, at)), word, plain(option.sentence.slice(at + mark.length)));
+        }
         button.disabled = done || tried.includes(index);
         if (tried.includes(index)) button.classList.add(option.correct ? 'correct' : 'wrong');
         button.onclick = async () => {

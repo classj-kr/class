@@ -17,7 +17,7 @@ function walk(dir) {
       if (start < 0 || end < 0) throw new Error('Unknown lesson script: ' + file);
       html = html.slice(0, start) + html.slice(end);
     } else continue;
-    html = html.replace('</body>', '<script src="/assets/learning-records.js?v=20261001-1"></script><script src="/assets/learning-hanja.js?v=20261002-1"></script></body>');
+    html = html.replace('</body>', '<script src="/assets/learning-records.js?v=20261001-1"></script><script src="/assets/learning-hanja.js?v=20261107-1"></script></body>');
     fs.writeFileSync(file, html); count++;
   }
 }
