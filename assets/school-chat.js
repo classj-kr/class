@@ -23,6 +23,7 @@
     let logMode = false;        // 선생님: 지운 줄까지 보이는 기록 보기
     let logChannel = SCHOOL;
     let logMessages = [];
+    let enabled = false;        // 설정에서 "채팅 사용"을 켠 학생만 연결하고 💬를 보인다(계정에 저장, 기본 꺼짐)
     let call = null;            // 방 통화(assets/school-call.js, 방에 들어가면 그때 불러온다)
     let callScript = null;
     const CALL_TAB_KEY = "schoolChatCallChannel";   // 같은 탭에서 쪽을 옮겨도 통화를 이어 가려고 탭에만 적어 둔다
@@ -304,8 +305,8 @@
         fetch("/api/school-chat/ticket", { credentials: "same-origin" })
             .then(response => (response.ok ? response.json() : null))
             .then(data => {
-                if (!data) return;
-                if (!me) { me = data.me; buildUi(); }
+                if (!data || !enabled) return;
+                me = me || data.me;
                 const url = `${location.protocol === "https:" ? "wss:" : "ws:"}//${location.host}`;
                 socket = new WebSocket(url);
                 socket.addEventListener("open", () => socket.send(JSON.stringify({ type: "SCHOOLCHAT_JOIN", ticket: data.ticket })));
@@ -331,9 +332,9 @@
                     else if (packet.type === "SCHOOLCHAT_REJECTED") setStatus(REJECT_TEXT[packet.reason] ?? "보내지 못했어요.");
                     else if (packet.type === "SCHOOLCHAT_AUTH_REQUIRED") socket.close();
                 });
-                socket.addEventListener("close", () => { retryTimer = setTimeout(connect, 4000); });
+                socket.addEventListener("close", () => { if (enabled) retryTimer = setTimeout(connect, 4000); });
             })
-            .catch(() => { retryTimer = setTimeout(connect, 15000); });
+            .catch(() => { if (enabled) retryTimer = setTimeout(connect, 15000); });
     }
 
     function send() {
@@ -413,6 +414,7 @@
     function buildUi() {
         injectStyle();
         const toggle = el("button", "sc-toggle", "💬");
+        ui.toggle = toggle;
         toggle.type = "button";
         toggle.setAttribute("aria-label", "학교 채팅 열기");
         ui.badge = el("span", "sc-badge", "0");
@@ -420,6 +422,7 @@
         toggle.appendChild(ui.badge);
 
         const panel = el("div", "sc-panel");
+        ui.panel = panel;
         const head = el("div", "sc-head");
         ui.title = el("span", "title");
         ui.titleText = el("span");
@@ -514,6 +517,77 @@
         render();
     }
 
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", connect);
-    else connect();
+    // ---- 설정의 "채팅 사용" 항목: 켜야 💬가 나타나고 연결이 열린다 ----
+    function loadStorageScript() {
+        if (window.SiteStorage) return Promise.resolve();
+        return new Promise(resolve => {
+            const script = document.createElement("script");
+            script.src = "/assets/site-storage.js?v=20261006-1";
+            script.onload = () => resolve();
+            script.onerror = () => resolve();
+            document.head.appendChild(script);
+        });
+    }
+
+    function enableChat() {
+        enabled = true;
+        if (!ui.toggle) buildUi();
+        ui.toggle.style.display = "";
+        connect();
+    }
+
+    function disableChat() {
+        enabled = false;
+        clearTimeout(retryTimer);
+        endCall();
+        if (socket) { const closing = socket; socket = null; closing.close(); }
+        if (ui.toggle) {
+            open = false;
+            ui.panel.classList.remove("open");
+            ui.toggle.style.display = "none";
+        }
+    }
+
+    // 설정 창(공용 소리 스크립트가 만든 #unifiedSettingsPanel)에 항목을 끼운다. 창이 아직 없으면 생길 때까지 기다린다.
+    function installSetting(store) {
+        const put = panel => {
+            if (panel.querySelector("#settingsChat")) return;
+            const button = el("button", "unified-settings-action");
+            button.id = "settingsChat";
+            button.type = "button";
+            const paint = () => { button.textContent = `채팅 사용: ${enabled ? "켜짐" : "꺼짐"}`; button.setAttribute("aria-pressed", String(enabled)); };
+            button.addEventListener("click", () => {
+                if (enabled) disableChat(); else enableChat();
+                store.set("chatEnabled", enabled);
+                paint();
+            });
+            paint();
+            const status = panel.querySelector(".unified-settings-status");
+            if (status) panel.insertBefore(button, status); else panel.appendChild(button);
+        };
+        const existing = document.getElementById("unifiedSettingsPanel");
+        if (existing) return put(existing);
+        const watcher = new MutationObserver(() => {
+            const panel = document.getElementById("unifiedSettingsPanel");
+            if (panel) { watcher.disconnect(); put(panel); }
+        });
+        watcher.observe(document.body || document.documentElement, { childList: true, subtree: true });
+    }
+
+    async function boot() {
+        // 입장권을 받을 수 있는 계정(같은 학교 학생·교사)만 항목을 본다. 게스트는 아무것도 안 뜬다.
+        const ticket = await fetch("/api/school-chat/ticket", { credentials: "same-origin" })
+            .then(response => (response.ok ? response.json() : null)).catch(() => null);
+        if (!ticket) return;
+        me = ticket.me;
+        await loadStorageScript();
+        const store = window.SiteStorage ? await window.SiteStorage.open("site-settings") : null;
+        if (!store || !store.persistent) return;   // 계정에 저장할 수 없으면 켜고 끌 수도 없다
+        // 켜져 있던 상태를 먼저 반영한 뒤 항목을 그려야 글자가 실제 상태와 맞는다.
+        if (store.get("chatEnabled") === true) enableChat();
+        installSetting(store);
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+    else boot();
 })();
