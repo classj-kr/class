@@ -100,10 +100,10 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       };
 
       await page.goto(base + '/');
-      await page.locator('#category-exploration-toggle').waitFor({ state: 'visible' });
-      await activate(page.locator('#category-exploration-toggle'));
-      await activate(page.locator('[data-access-group="mathematics"] > summary'));
-      await activate(page.locator('a[href="learning/inquiry/math/stacking-cubes/"]'));
+      await page.locator('#category-literacy-toggle').waitFor({ state: 'visible' });
+      await activate(page.locator('#category-literacy-toggle'));
+      await activate(page.locator('a[href="learning/inquiry/math/"]'));
+      await activate(page.locator('a[href="/learning/inquiry/math/stacking-cubes/"]'));
       await page.waitForURL('**/learning/inquiry/math/stacking-cubes/**');
       await page.locator('#scene .floor-cell').first().waitFor({ state: 'visible' });
       assert.equal(await page.evaluate(() => window.audioContextCount), 0, 'audio waits for an interaction');

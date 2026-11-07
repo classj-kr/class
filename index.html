@@ -389,6 +389,14 @@
             gap: 10px;
         }
 
+        @media (min-width: 770px) {
+            #category-literacy-panel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+
+        @media (min-width: 1240px) {
+            #category-literacy-panel { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+        }
+
         .worksheet-container a,
         .worksheet-container .worksheet-item,
         .worksheet-group > summary,
