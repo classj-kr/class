@@ -275,6 +275,12 @@ body.fever .word-card::before { content: "FEVER x2"; position: absolute; top: -1
 }
 #typeInput:focus { border-color: var(--yellow); box-shadow: 0 0 22px rgba(255, 225, 77, 0.35); }
 #typeInput:disabled { opacity: 0.5; }
+/* 칸의 실제 글자는 투명하게 두고, 이미 받은 낱말 몫을 뺀 글자만 위에 그린다(조합 중인 끝 글자를 IME와 다투지 않으려고). */
+.type-box { position: relative; width: min(560px, 100%); }
+.type-box #typeInput { display: block; width: 100%; color: transparent; caret-color: transparent; }
+.typed { position: absolute; inset: 3px; display: flex; align-items: center; justify-content: center; padding: 0 12px; overflow: hidden; white-space: pre; pointer-events: none; color: var(--ink); font: 800 30px var(--font); }
+.type-box:focus-within .typed::after { content: ""; width: 3px; height: 1.1em; margin-left: 2px; background: var(--yellow); animation: caret-blink 1s steps(1) infinite; }
+@keyframes caret-blink { 50% { opacity: 0; } }
 .chase { margin: 0; min-height: 1.4em; font-weight: 900; color: var(--yellow); font-size: 18px; text-align: center; }
 .mini-board { list-style: none; margin: 0; padding: 12px; border-radius: 22px; background: var(--panel); border: 2px solid var(--line); display: grid; gap: 6px; }
 .mini-board li { display: grid; grid-template-columns: 26px 30px 1fr auto; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); font-weight: 800; }

@@ -31,12 +31,12 @@ async function shot(page, name, fullPage = false) {
 
 // 실제 한글 IME처럼 한 키씩: 앞 글자는 확정(insertText), 끝 글자는 조합 중(imeSetComposition)으로 둔다.
 async function imeType(cdp, word, hooks = {}) {
-  const keys = qwerty(word);
+  const keys = qwerty(word), pre = hooks.prefix ? qwerty(hooks.prefix) : '';
   let committed = '';
   for (let n = 1; n <= keys.length; n++) {
     if (n === 2) await hooks.first?.();
     if (n === keys.length) await hooks.beforeLast?.();
-    const text = Core.hangulFromKeys(keys.slice(0, n));
+    const text = Core.hangulFromKeys(pre + keys.slice(0, n));
     const head = text.slice(0, -1), tail = text.slice(-1);
     if (head !== committed) {
       assert.ok(head.startsWith(committed), `${word}: ${committed} → ${head}`);
@@ -132,8 +132,8 @@ async function main() {
     const accepted = async (word, how) => {
       combo++;
       score += Core.claimScore(word, combo, 1);
-      await page.waitForFunction(([w, s]) => document.querySelector('#typeInput').value === '' && [...document.querySelectorAll('#board .tile')].every((t) => t.querySelector('.tile-word').textContent !== w || t.dataset.tier === 'done') && document.querySelector('#scoreNow').textContent === String(s), [word, score], { timeout: 4000 })
-        .catch(async (e) => { throw new Error(`${how} ${word}: not accepted (value=${await page.locator('#typeInput').inputValue()}, score=${await page.locator('#scoreNow').innerText()}) ${e.message}`); });
+      await page.waitForFunction(([w, s]) => document.querySelector('#typed').textContent === '' && [...document.querySelectorAll('#board .tile')].every((t) => t.querySelector('.tile-word').textContent !== w || t.dataset.tier === 'done') && document.querySelector('#scoreNow').textContent === String(s), [word, score], { timeout: 4000 })
+        .catch(async (e) => { throw new Error(`${how} ${word}: not accepted (typed=${await page.locator('#typed').textContent()}, score=${await page.locator('#scoreNow').innerText()}) ${e.message}`); });
       assert.equal(await page.locator('#comboNow').innerText(), String(combo), `${how}: no mistake was counted`);
     };
     const cell = (i) => board[i].word;
@@ -162,20 +162,32 @@ async function main() {
     const imeWord = cell(2);
     await imeType(cdp, imeWord, {
       beforeLast: async () => {
-        assert.equal(await page.locator('#typeInput').inputValue(), Core.hangulFromKeys(qwerty(imeWord).slice(0, -1)));
+        assert.equal(await page.locator('#typed').textContent(), Core.hangulFromKeys(qwerty(imeWord).slice(0, -1)));
         assert.equal(await page.locator('#scoreNow').innerText(), String(score), 'not accepted one key early');
       },
     });
-    assert.equal(await page.locator('#typeInput').inputValue(), '', 'cleared while the last syllable was still composing');
-    // 브라우저가 조합하던 끝 글자를 뒤늦게 확정해 넣어도 지워진다.
+    assert.equal(await page.locator('#typed').textContent(), '', 'the shown text is empty while the last syllable is still composing');
+    // 조합 중인 칸은 건드리지 않는다. 입력기가 끝 글자를 확정하면 그때 칸이 실제로 비워진다.
     await cdp.send('Input.insertText', { text: imeWord.slice(-1) });
     await accepted(imeWord, 'IME');
+    await page.waitForFunction(() => document.querySelector('#typeInput').value === '');
     assert.equal(await page.evaluate(() => document.activeElement?.id), 'typeInput', 'focus comes straight back');
     // 다음 낱말 첫 키는 깨끗한 칸에서 새로 조합된다(되살아난 글자가 앞에 붙지 않는다).
     board = await tiles();
     const imeNext = board.find((t) => t.tier === 'gold').word;
-    await imeType(cdp, imeNext, { first: async () => assert.equal(await page.locator('#typeInput').inputValue(), Core.keys(imeNext)[0]) });
+    await imeType(cdp, imeNext, { first: async () => assert.equal(await page.locator('#typed').textContent(), Core.keys(imeNext)[0]) });
     await accepted(imeNext, 'IME again');
+    // 실제 입력기처럼 앞 낱말 끝 글자가 조합 중인 채로 다음 낱말을 이어 친다. 첫 자음이 그 글자의 받침으로 붙었다가
+    // 모음을 치면 넘어온다. 앞 낱말 끝 글자가 화면에 남거나 다음 낱말에 붙으면 안 된다(교실 컴퓨터에서 나온 버그).
+    board = await tiles();
+    const imeChain = board.find((t) => t.tier === 'gold').word;
+    await imeType(cdp, imeChain, {
+      prefix: imeNext.slice(-1),
+      beforeLast: async () => assert.equal(await page.locator('#typed').textContent(), Core.hangulFromKeys(qwerty(imeChain).slice(0, -1))),
+    });
+    await accepted(imeChain, 'IME chained');
+    await cdp.send('Input.insertText', { text: imeChain.slice(-1) });
+    await page.waitForFunction(() => document.querySelector('#typeInput').value === '');
 
     // ── 6. 버릇처럼 Space·Enter를 눌러도 아무 일 없다 ──
     board = await tiles();
@@ -187,6 +199,7 @@ async function main() {
     assert.equal(await page.locator('#card.wrong').count(), 0);
 
     // ── 7. 날아가는 낱말: 친 칸에서 출발해 내 로켓·순위표 쪽으로 ──
+    await page.waitForFunction(() => document.querySelector('#board .tile[data-tier="gold"]'), null, { timeout: 9000 });
     board = await tiles();
     const flyWord = board.find((t) => t.tier === 'gold').word;
     await page.keyboard.type(flyWord.slice(0, -1), { delay: 30 });
@@ -209,7 +222,7 @@ async function main() {
     }
     await friend.bringToFront();
     await friend.keyboard.type(fresh[2].word, { delay: 30 });
-    await friend.waitForFunction(() => document.querySelector('#typeInput').value === '');
+    await friend.waitForFunction(() => document.querySelector('#typed').textContent === '');
     await page.bringToFront();
     const expect = [['silver', '🥈', 2], ['bronze', '🥉', 3], ['plain', '', 4]];
     await page.waitForFunction((words) => words.every(([w, tier]) => [...document.querySelectorAll('#board .tile')].some((t) => t.querySelector('.tile-word').textContent === w && t.dataset.tier === tier)), fresh.map((t, i) => [t.word, expect[i][0]]), { timeout: 4000 });
