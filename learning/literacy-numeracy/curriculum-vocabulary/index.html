@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="초등학교 국어·수학·사회·과학 교과서의 핵심 단어를 학기와 단원별로 공부합니다.">
   <title>교과 단어</title>
-  <link rel="stylesheet" href="styles.css?v=20261107-2">
+  <link rel="stylesheet" href="styles.css?v=20261107-visual-1">
   <script src="../../../assets/learning-defaults.js?v=20261020-1" defer></script>
-  <script src="word-bank.js?v=20261107-1" defer></script>
-  <script src="app.js?v=20261107-1" defer></script>
+  <script src="word-bank.js?v=20261107-visual-1" defer></script>
+  <script src="visual-lessons.js?v=20261107-visual-1" defer></script>
+  <script src="app.js?v=20261107-visual-1" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <a href="../../../" class="home">← 메인</a>
-    <h1>교과 단어</h1>
-  </header>
-  <main class="shell">
+  <main class="shell" aria-label="교과 단어">
     <section class="filters" aria-label="교과서 선택">
       <div class="term-filter"><label for="term">학기</label><select id="term"></select></div>
       <div class="subject-filter"><span id="subject-label">과목</span><div id="subjects" class="subjects" role="group" aria-labelledby="subject-label"></div></div>
@@ -23,11 +20,10 @@
     <div class="workspace">
       <nav class="units" aria-labelledby="units-heading">
         <h2 id="units-heading">단원</h2>
+        <select id="unit-select" aria-labelledby="units-heading"></select>
         <div id="unit-list"></div>
       </nav>
-      <section id="lesson" class="lesson" aria-labelledby="unit-title">
-        <h2 id="unit-title">교과서 불러오는 중</h2>
-      </section>
+      <section id="lesson" class="lesson" aria-label="학습 내용"></section>
     </div>
   </main>
 </body>

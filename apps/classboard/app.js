@@ -27,6 +27,8 @@ const feedSection = document.getElementById('feedSection');
 const postTemplate = document.getElementById('postTemplate');
 const commentTemplate = document.getElementById('commentTemplate');
 
+const groupListSection = document.getElementById('groupListSection');
+const containerEl = document.querySelector('.container');
 const boardPickerSection = document.getElementById('boardPickerSection');
 const filterSection = document.getElementById('filterSection');
 const composerTargetEl = document.getElementById('composerTarget');
@@ -35,7 +37,13 @@ let currentUser = null;
 let boards = [];
 // 알림을 눌러 들어오면 주소에 그 게시판이 적혀 있다(?board=class:12).
 let activeBoardKey = new URLSearchParams(location.search).get('board');
-let canPost = false;
+let readIds = new Set();
+let readTracker = null;
+let readQueue = Promise.resolve();
+let feedRequest = 0;
+let boardRequest = 0;
+const drafts = new Map();
+let profileAvatarEl = null;
 // 과목별 보기. null이면 전체.
 let activeSubjectFilter = null;
 // 종류별 보기: null(전체) | 'post'(알림장) | 'notice'(가정통신문) | 'todo'(할 일)
@@ -90,7 +98,12 @@ async function initApp() {
         // Setup Header
         userInfoEl.textContent = '';
         const roleLabel = { teacher: '교사', guardian: '학부모', student: '학생' }[viewerRole];
+        profileAvatarEl = document.createElement('span');
+        profileAvatarEl.className = 'avatar profile-avatar';
+        renderAvatar(profileAvatarEl, '');
+        userInfoEl.appendChild(profileAvatarEl);
         const nameLabel = document.createElement('span');
+        nameLabel.className = 'profile-name';
         nameLabel.textContent = `${currentUser.name} (${roleLabel})`;
         userInfoEl.appendChild(nameLabel);
         if (viewerRole === 'guardian') {
@@ -121,80 +134,166 @@ async function initApp() {
         if (viewerRole !== 'teacher') PushToggle.mount(userInfoEl);
 
         await loadBoards();
-        loadPosts();
+        showBoardView();
+        setInterval(() => {
+            if (!document.hidden && !activeBoardKey) refreshBoards();
+        }, 30000);
     } catch (e) {
         console.error('Failed to init app', e);
-        feedSection.innerHTML = '<div class="loader">오류가 발생했습니다.</div>';
+        feedSection.innerHTML = '<div class="loader" role="alert">불러오지 못했습니다. <button class="btn-secondary" onclick="location.reload()">다시 시도</button></div>';
     }
 }
 
-// 우리 반, 동아리, 방과후… 내가 볼 수 있는 게시판들. 안 읽은 글이 있으면 표시한다.
+// No automatic selection: even one group gets its own card on the first page.
 async function loadBoards() {
+    const request = ++boardRequest;
+    const res = await fetch(`${API_BASE}/classboard/boards${withView(new URLSearchParams())}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error('그룹을 불러오지 못했습니다.');
+    const data = await res.json();
+    if (request !== boardRequest) return;
+    boards = data.boards || [];
+    currentUser.avatar = data.viewerAvatar || '';
+    renderAvatar(profileAvatarEl, currentUser.avatar);
+    if (activeBoardKey && !boards.some(b => b.key === activeBoardKey)) activeBoardKey = null;
+}
+
+async function refreshBoards() {
     try {
-        const res = await fetch(`${API_BASE}/classboard/boards${withView(new URLSearchParams())}`);
-        if (!res.ok) return;
-        const data = await res.json();
-        boards = data.boards || [];
-        canPost = boards.some(b => b.canPost);
+        const before = JSON.stringify(boards);
+        const previousBoard = activeBoardKey;
+        await loadBoards();
+        if (previousBoard && !activeBoardKey) showBoardView();
+        else if (!activeBoardKey && before !== JSON.stringify(boards)) renderGroupList(false);
+    } catch (error) { console.error('그룹 새로고침 실패', error); }
+}
 
-        if (!boards.some(b => b.key === activeBoardKey)) activeBoardKey = boards.length > 0 ? boards[0].key : null;
-        if (canPost) composerSection.classList.remove('hidden');
+function renderAvatar(el, url) {
+    if (!el) return;
+    el.replaceChildren();
+    // A single neutral fallback for unset avatars and broken image requests.
+    const fallback = () => {
+        el.innerHTML = '<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="14" r="6" fill="currentColor"/><path d="M8 34c0-8 5-12 12-12s12 4 12 12" fill="currentColor"/></svg>';
+    };
+    if (/^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i.test(url || '')) {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = '';
+        img.addEventListener('error', fallback, { once: true });
+        el.appendChild(img);
+    } else fallback();
+}
 
-        renderBoardPicker();
-        updateComposerTarget();
-    } catch (e) {
-        console.error('Failed to load boards', e);
-    }
+function boardIcon(board) {
+    if (board.kind === 'notice') return 'description';
+    if (board.kind === 'class') return 'school';
+    return /오케스트라|합주|합창|음악/.test(board.label) ? 'music_note' : 'groups';
+}
+
+function renderGroupList(animate = true) {
+    const focusedKey = document.activeElement?.dataset.boardKey;
+    groupListSection.replaceChildren(...boards.map((board, index) => {
+        const card = document.createElement('a');
+        card.className = `group-card tone-${index % 4}`;
+        card.dataset.boardKey = board.key;
+        card.href = withView(new URLSearchParams({ board: board.key }));
+        card.setAttribute('aria-label', `${board.label}${board.unreadCount ? `, 안 읽은 글 ${board.unreadCount}개` : ''}`);
+        const icon = document.createElement('span');
+        icon.className = 'material-symbols-outlined group-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = boardIcon(board);
+        const type = document.createElement('span');
+        type.className = 'group-type';
+        type.textContent = board.typeLabel;
+        const name = document.createElement('strong');
+        name.className = 'group-name';
+        name.textContent = board.label;
+        card.append(icon, type, name);
+        if (board.memberCount != null) {
+            const members = document.createElement('span');
+            members.className = 'group-members';
+            members.textContent = `학생 ${board.memberCount}명`;
+            card.appendChild(members);
+        }
+        if (board.unreadCount > 0) {
+            card.classList.add('has-unread');
+            if (animate) card.classList.add('unread-pulse');
+            const badge = document.createElement('span');
+            badge.className = 'group-unread';
+            badge.textContent = board.unreadCount > 99 ? '99+' : String(board.unreadCount);
+            badge.setAttribute('aria-hidden', 'true');
+            card.appendChild(badge);
+        }
+        card.addEventListener('click', event => {
+            if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            navigateBoard(board.key);
+        });
+        return card;
+    }));
+    if (!boards.length) groupListSection.innerHTML = '<div class="loader">소속된 그룹이 없습니다.</div>';
+    if (focusedKey) [...groupListSection.children].find(el => el.dataset.boardKey === focusedKey)?.focus({ preventScroll: true });
+}
+
+function navigateBoard(key, push = true) {
+    if (activeBoardKey) drafts.set(activeBoardKey, postContentInput.value);
+    activeBoardKey = boards.some(b => b.key === key) ? key : null;
+    postContentInput.value = drafts.get(activeBoardKey) || '';
+    activeSubjectFilter = null;
+    activeKindFilter = null;
+    const url = new URL(location.href);
+    if (activeBoardKey) url.searchParams.set('board', activeBoardKey);
+    else url.searchParams.delete('board');
+    if (push) history.pushState(null, '', url);
+    showBoardView();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (!activeBoardKey) refreshBoards();
+}
+
+function showBoardView() {
+    feedRequest += 1;
+    readTracker?.disconnect();
+    const inBoard = Boolean(activeBoardKey);
+    containerEl.classList.toggle('group-home', !inBoard);
+    groupListSection.classList.toggle('hidden', inBoard);
+    feedSection.classList.toggle('hidden', !inBoard);
+    filterSection.classList.add('hidden');
+    renderBoardPicker();
+    updateComposerTarget();
+    if (inBoard) {
+        feedSection.innerHTML = '<div class="loader" role="status">불러오는 중…</div>';
+        loadPosts();
+    } else renderGroupList();
 }
 
 function renderBoardPicker() {
-    // 게시판이 하나뿐이면 고를 것이 없다.
-    if (boards.length < 2) {
-        boardPickerSection.classList.add('hidden');
-        return;
-    }
-    boardPickerSection.classList.remove('hidden');
-    boardPickerSection.replaceChildren(...boards.map(b => {
-        const btn = document.createElement('button');
-        btn.className = 'board-tab';
-        if (b.key === activeBoardKey) btn.classList.add('active');
-
-        const name = document.createElement('span');
-        name.className = 'board-tab-name';
-        name.textContent = b.label;
-        btn.appendChild(name);
-
-        const kind = document.createElement('span');
-        kind.className = 'board-tab-kind';
-        kind.textContent = b.typeLabel;
-        btn.appendChild(kind);
-
-        // 안 읽은 글 개수. 들어가 보면 사라진다.
-        if (b.unreadCount > 0) {
-            const dot = document.createElement('span');
-            dot.className = 'board-tab-unread';
-            dot.textContent = b.unreadCount > 99 ? '99+' : String(b.unreadCount);
-            dot.title = `안 읽은 글 ${b.unreadCount}개`;
-            btn.appendChild(dot);
-        }
-
-        btn.addEventListener('click', () => {
-            if (activeBoardKey === b.key) return;
-            activeBoardKey = b.key;
-            // 새로고침해도 고른 게시판에 머물게. 알림으로 들어온 주소가 남아 있으면 그리로 돌아간다.
-            if (location.search) {
-                const params = new URLSearchParams(location.search);
-                params.set('board', b.key);
-                history.replaceState(history.state, '', `?${params}`);
-            }
-            activeSubjectFilter = null;
-            renderBoardPicker();
-            updateComposerTarget();
-            loadPosts();
-        });
-        return btn;
-    }));
+    boardPickerSection.classList.toggle('hidden', !activeBoardKey);
+    boardPickerSection.replaceChildren();
+    if (!activeBoardKey) return;
+    const back = document.createElement('button');
+    back.className = 'group-home-button';
+    back.type = 'button';
+    back.title = '그룹 목록';
+    back.setAttribute('aria-label', '그룹 목록');
+    back.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">grid_view</span>';
+    back.addEventListener('click', () => navigateBoard(null));
+    const picker = document.createElement('select');
+    picker.className = 'group-select';
+    picker.setAttribute('aria-label', '현재 그룹');
+    boards.forEach(board => {
+        const option = document.createElement('option');
+        option.value = board.key;
+        option.textContent = board.label;
+        option.selected = board.key === activeBoardKey;
+        picker.appendChild(option);
+    });
+    picker.addEventListener('change', () => navigateBoard(picker.value));
+    boardPickerSection.append(back, picker);
 }
+
+window.addEventListener('popstate', () => navigateBoard(new URLSearchParams(location.search).get('board'), false));
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && currentUser && !activeBoardKey) refreshBoards();
+});
 
 function updateComposerTarget() {
     if (!composerTargetEl) return;
@@ -245,32 +344,61 @@ function renderFilters() {
 
 async function loadPosts() {
     const board = boards.find(b => b.key === activeBoardKey);
+    if (!board) return;
+    const request = ++feedRequest;
     try {
-        const params = new URLSearchParams();
-        if (activeBoardKey) params.set('board', activeBoardKey);
-        const query = withView(params);
-        // 가정통신문 칸에는 게시판 글이 없다. 그래도 목록은 불러야 한다 --
-        // 그 칸을 열었다는 표시(읽음)를 서버가 거기서 남기기 때문이다.
+        const query = withView(new URLSearchParams({ board: board.key }));
         const [postsRes, notices] = await Promise.all([
-            fetch(`${API_BASE}/classboard/posts${query}`),
+            fetch(`${API_BASE}/classboard/posts${query}`, { cache: 'no-store' }),
             loadNotices(board)
         ]);
         const data = await postsRes.json();
         if (!postsRes.ok) throw new Error(data.error || 'Failed to load posts');
-
+        if (request !== feedRequest || activeBoardKey !== board.key) return;
         loadedPosts = data.posts || [];
         loadedNotices = notices;
+        readIds = new Set((data.readIds || []).map(String));
         renderFeed();
-
-        // 방금 이 게시판을 읽었으니 표시를 지운다.
-        if (board && board.unreadCount) {
-            board.unreadCount = 0;
-            renderBoardPicker();
-        }
     } catch (e) {
+        if (request !== feedRequest) return;
         console.error(e);
-        feedSection.innerHTML = '<div class="loader" style="color: var(--danger);">게시물을 불러오지 못했습니다.</div>';
+        feedSection.innerHTML = '<div class="loader" role="alert">게시물을 불러오지 못했습니다. <button class="btn-secondary" id="retryFeed">다시 시도</button></div>';
+        document.getElementById('retryFeed').addEventListener('click', loadPosts);
     }
+}
+
+function startReadTracking() {
+    readTracker?.disconnect();
+    const boardKey = activeBoardKey;
+    readTracker = new ClassboardReadTracker(id => {
+        const save = async () => {
+            const res = await fetch(`${API_BASE}/classboard/read${withView(new URLSearchParams())}`, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+                body: JSON.stringify({ board: boardKey, ids: [id] })
+            });
+            if (!res.ok) throw new Error('읽음 기록을 저장하지 못했습니다.');
+            const data = await res.json();
+            const accepted = (data.readIds || []).map(String).includes(id);
+            if (accepted) {
+                // Invalidate a list refresh started before this acknowledgement.
+                boardRequest += 1;
+                const board = boards.find(b => b.key === boardKey);
+                if (board) board.unreadCount = data.unreadCount;
+                if (activeBoardKey === boardKey) readIds.add(id);
+                if (!activeBoardKey) renderGroupList(false);
+            }
+            return accepted;
+        };
+        const result = readQueue.then(save);
+        readQueue = result.catch(() => {});
+        return result;
+    });
+    feedSection.querySelectorAll('[data-item-id]').forEach(article => {
+        const id = article.dataset.itemId;
+        if (!readIds.has(id) && article.dataset.mine !== 'true') {
+            readTracker.observe(article.querySelector('.post-content'), id);
+        }
+    });
 }
 
 // 가정통신문은 학급 것이 아니다. 학교 업무 담당자가 동아리든, 이 반 저 반 골라
@@ -278,25 +406,29 @@ async function loadPosts() {
 // 온 것'을 담는 자기 칸에서만 불러온다.
 async function loadNotices(board) {
     if (!board || board.kind !== 'notice') return [];
-    try {
-        const params = new URLSearchParams();
-        if (board.child) {
-            params.set('grade', board.child.grade);
-            params.set('classNumber', board.child.classNumber);
-            params.set('studentNumber', board.child.studentNumber);
-        }
-        const qs = params.toString();
-        const res = await fetch(`${API_BASE}/notice/list${qs ? `?${qs}` : ''}`);
-        if (!res.ok) return [];
-        const data = await res.json();
-        return data.notices || [];
-    } catch (e) {
-        console.error('Failed to load notices', e);
-        return [];
+    const params = new URLSearchParams();
+    if (board.child) {
+        params.set('grade', board.child.grade);
+        params.set('classNumber', board.child.classNumber);
+        params.set('studentNumber', board.child.studentNumber);
     }
+    // Older unread notices must remain reachable beyond the first 50 results.
+    const notices = new Map();
+    let offset = 0;
+    do {
+        params.set('offset', String(offset));
+        const res = await fetch(`${API_BASE}/notice/list?${params}`, { cache: 'no-store' });
+        if (!res.ok) throw new Error('가정통신문을 불러오지 못했습니다.');
+        const data = await res.json();
+        (data.notices || []).forEach(notice => notices.set(String(notice.id), notice));
+        if (data.nextOffset == null || Number(data.nextOffset) <= offset) break;
+        offset = Number(data.nextOffset);
+    } while (activeBoardKey === board.key);
+    return [...notices.values()];
 }
 
 function renderFeed() {
+    readTracker?.disconnect();
     renderFilters();
     feedSection.innerHTML = '';
 
@@ -335,23 +467,24 @@ function renderFeed() {
 
     items.forEach(item => {
         if (item.kind === 'post') renderPost(item.data);
-        else feedSection.appendChild(NoticeCard.render(item.data, noticeCtx));
+        else {
+            const node = NoticeCard.render(item.data, noticeCtx);
+            renderAvatar(node.querySelector('.avatar'), item.data.senderAvatar);
+            node.dataset.itemId = String(item.data.id);
+            feedSection.appendChild(node);
+        }
     });
+    startReadTracking();
 }
 
 function renderPost(post) {
     const clone = postTemplate.content.cloneNode(true);
     const article = clone.querySelector('.post-card');
     
-    // Author info
-    const avatar = clone.querySelector('[data-type="post-avatar"]');
-    avatar.textContent = post.authorName.charAt(0);
-    avatar.classList.add(post.authorRole);
-    if (post.authorPicture) {
-        avatar.style.backgroundImage = `url(${post.authorPicture})`;
-        avatar.textContent = '';
-    }
-    
+    article.dataset.itemId = String(post.id);
+    article.dataset.mine = String(Boolean(post.isMine));
+    renderAvatar(clone.querySelector('[data-type="post-avatar"]'), post.authorAvatar);
+
     clone.querySelector('[data-type="post-author-name"]').textContent = post.authorName;
     // 담임인지 과목 전담인지 한눈에. 한 게시판에 여러 선생님이 글을 쓴다.
     const roleEl = clone.querySelector('[data-type="post-author-role"]');
@@ -415,7 +548,7 @@ function renderPost(post) {
                 id: data.id,
                 content: content,
                 authorName: currentUser.name,
-                authorPicture: currentUser.picture,
+                authorAvatar: currentUser.avatar,
                 authorRole: currentUser.role,
                 isMine: true,
                 canDelete: true,
@@ -446,13 +579,7 @@ function createCommentNode(comment, postId) {
     const clone = commentTemplate.content.cloneNode(true);
     const commentEl = clone.querySelector('.comment');
     
-    const avatar = clone.querySelector('[data-type="comment-avatar"]');
-    avatar.textContent = comment.authorName.charAt(0);
-    avatar.classList.add(comment.authorRole);
-    if (comment.authorPicture) {
-        avatar.style.backgroundImage = `url(${comment.authorPicture})`;
-        avatar.textContent = '';
-    }
+    renderAvatar(clone.querySelector('[data-type="comment-avatar"]'), comment.authorAvatar);
 
     clone.querySelector('[data-type="comment-author-name"]').textContent = comment.authorName;
     clone.querySelector('[data-type="comment-author-role"]').textContent = comment.authorRole === 'teacher' ? '교사' : '학생';
@@ -483,7 +610,8 @@ function createCommentNode(comment, postId) {
 // Create Post
 postSubmitBtn.addEventListener('click', async () => {
     const content = postContentInput.value.trim();
-    if (!content) return;
+    const targetKey = activeBoardKey;
+    if (!content || !targetKey) return;
 
     postSubmitBtn.disabled = true;
     postSubmitBtn.textContent = '게시 중...';
@@ -491,13 +619,16 @@ postSubmitBtn.addEventListener('click', async () => {
         const res = await fetch(`${API_BASE}/classboard/posts`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content, board: activeBoardKey })
+            body: JSON.stringify({ content, board: targetKey })
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
         
-        postContentInput.value = '';
-        loadPosts(); // Reload all posts for simplicity
+        drafts.delete(targetKey);
+        if (activeBoardKey === targetKey) {
+            if (postContentInput.value.trim() === content) postContentInput.value = '';
+            loadPosts();
+        }
     } catch (e) {
         alert(e.message || '게시물 등록에 실패했습니다.');
     } finally {

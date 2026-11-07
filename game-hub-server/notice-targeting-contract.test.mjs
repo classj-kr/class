@@ -105,11 +105,13 @@ test("every route that reads notices for a viewer goes through the shared target
   const end = serverSource.indexOf("\n  }));", start);
   const body = serverSource.slice(start, end);
   assert.match(body, /WHERE \$\{NOTICE_TARGET_SQL\}/);
-  assert.match(body, /\[target\.schoolId, target\.grade, target\.classNumber, target\.studentNumber\]/);
+  assert.match(body, /\[target\.schoolId, target\.grade, target\.classNumber, target\.studentNumber, offset\]/);
   // The viewer's school/grade/class/number come from the signed-in account's
   // roster entry, never from what the client sends.
   assert.match(body, /const targets = await noticeViewerTargets\(user\);/);
   assert.match(body, /if \(!target\) return res\.json\(\{ notices: \[\], children: \[\] \}\);/);
   // Reply, survey and push lookups reuse the same predicate instead of re-deriving it.
-  assert.ok(serverSource.split("${NOTICE_TARGET_SQL}").length - 1 >= 4, "NOTICE_TARGET_SQL should guard every notice read");
+  assert.ok(serverSource.split("${NOTICE_TARGET_SQL}").length - 1 >= 3, "NOTICE_TARGET_SQL guards list, reply and push reads");
+  assert.match(serverSource, /createClassboardReadState\(\{ pool, noticeTargetSql: NOTICE_TARGET_SQL \}\)/,
+    "The extracted unread/read service must receive the same recipient predicate.");
 });

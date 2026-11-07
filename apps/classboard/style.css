@@ -1,7 +1,7 @@
-/* 밝은 바탕. 학부모가 낮에 휴대폰으로 보는 화면이라 e알리미·학교종이처럼 흰 종이 느낌으로. */
+/* 글은 흰 종이 위에, 풍경은 화면의 가장자리에 둔다. */
 :root {
     color-scheme: light;
-    --bg-main: #f4f6f8;
+    --bg-main: #edf5f5;
     --bg-card: #ffffff;
     --bg-input: #ffffff;
     --bg-soft: #f1f4f6;
@@ -34,11 +34,12 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     padding-bottom: 60px;
+    isolation: isolate;
 }
 
 /* 제목 줄은 바탕과 같은 색. 흰 띠와 밑줄을 두면 쓸데없는 선이 한 줄 생긴다. */
 .header {
-    background: rgba(244, 246, 248, 0.94);
+    background: rgba(237, 245, 245, 0.82);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: sticky;
@@ -170,78 +171,6 @@ body {
     color: var(--text-muted);
 }
 
-/* 게시판 고르기: 우리 반 / 동아리 / 방과후 … */
-/* 제목 줄 안에서 가로로 흐른다. 게시판이 많으면 옆으로 밀린다. */
-.board-picker {
-    display: flex;
-    gap: 8px;
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-.board-picker::-webkit-scrollbar { display: none; }
-
-.board-tab {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    background: var(--bg-card);
-    color: var(--text-muted);
-    font-family: inherit;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    flex: none;
-    cursor: pointer;
-}
-
-.board-tab:hover {
-    color: var(--text-main);
-    border-color: var(--border-highlight);
-}
-
-.board-tab.active {
-    background: var(--accent-soft);
-    border-color: var(--accent);
-    color: var(--accent-strong);
-}
-
-.board-tab-name {
-    font-weight: 700;
-}
-
-.board-tab-kind {
-    font-size: 0.75rem;
-    padding: 2px 7px;
-    border-radius: 999px;
-    background: var(--bg-soft);
-    color: var(--text-muted);
-}
-
-.board-tab.active .board-tab-kind {
-    background: #ffffff;
-    color: var(--accent-strong);
-}
-
-/* 안 읽은 글이 있는 게시판에 켜 주는 불 */
-.board-tab-unread {
-    min-width: 20px;
-    height: 20px;
-    padding: 0 6px;
-    border-radius: 999px;
-    background: var(--danger);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 800;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* 담임 글만, 또는 과목별로 걸러 보기 */
 .board-filters {
     display: flex;
@@ -360,18 +289,19 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #5c6873;
+    background: #e9f0ed;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: #fff;
+    color: #91a79d;
     flex-shrink: 0;
     background-size: cover;
     background-position: center;
 }
-.avatar.teacher { background-color: #ab47bc; }
-.avatar.student { background-color: #5c6bc0; }
+.avatar img { width: 100%; height: 100%; padding: 2px; object-fit: contain; }
+.avatar svg { width: 75%; height: 75%; }
+.avatar.teacher, .avatar.student { background-color: #e9f0ed; }
 
 .author-name {
     font-weight: 600;
@@ -583,3 +513,44 @@ body {
     margin: 2px 4px;
     background: var(--border-color);
 }
+
+/* Decorative scenery never participates in focus or pointer interaction. */
+.board-scenery { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: linear-gradient(180deg, #e3f0f3 0%, #f3f7f5 55%, #edf3ea 100%); }
+.school-garden { position: absolute; inset: auto 0 0; height: min(400px, 37vh); background: url('scenery.svg') bottom center / cover no-repeat; opacity: .74; }
+.sky-cloud { position: absolute; width: 240px; height: 58px; border-radius: 100px; background: #fff; opacity: .45; }
+.sky-cloud::before, .sky-cloud::after { content: ''; position: absolute; bottom: 15px; border-radius: 50%; background: inherit; }
+.sky-cloud::before { width: 95px; height: 95px; left: 38px; }
+.sky-cloud::after { width: 125px; height: 125px; right: 25px; }
+.cloud-one { top: 23%; left: -90px; animation: cloud-drift 80s ease-in-out infinite alternate; }
+.cloud-two { top: 39%; right: -110px; transform: scale(.8); animation: cloud-drift 95s ease-in-out infinite alternate-reverse; }
+@keyframes cloud-drift { to { translate: 90px 0; } }
+.container.group-home { max-width: 1080px; margin-top: clamp(28px, 7vh, 80px); }
+.group-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.group-card { --card-dark: #183d35; --card-light: #315e4e; position: relative; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; min-height: 178px; padding: 23px 26px; border: 1px solid rgba(255,255,255,.32); border-radius: 21px; background: linear-gradient(130deg, var(--card-light), var(--card-dark)); box-shadow: 0 8px 24px #153a3012; color: #fff; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.group-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 115px; height: 100%; border-radius: 0 20px 20px 0; background: radial-gradient(ellipse at 110% 120%, #ffffff15 0 50%, transparent 51%), radial-gradient(ellipse at 130% 110%, #ffffff0a 0 65%, transparent 66%); pointer-events: none; }
+.group-card.tone-1 { --card-dark: #253e52; --card-light: #426175; }
+.group-card.tone-2 { --card-dark: #46405d; --card-light: #655a7a; }
+.group-card.tone-3 { --card-dark: #534834; --card-light: #796b4e; }
+.group-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px #153a3024; }
+.group-card:focus-visible { outline: 3px solid #186a57; outline-offset: 5px; }
+.group-card .group-icon { position: absolute; top: 24px; left: 24px; font-size: 19px; opacity: .8; }
+.group-type { padding-left: 26px; color: #e1ece6; font-size: .8rem; font-weight: 600; }
+.group-name { display: block; margin-top: 16px; padding-right: 14px; font-size: 1.3rem; line-height: 1.4; overflow-wrap: anywhere; letter-spacing: -.03em; }
+.group-members { margin-top: 7px; color: #d5e3dc; font-size: .81rem; }
+.group-unread { position: absolute; z-index: 1; right: 17px; top: 17px; display: grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; border-radius: 20px; background: #fff0ca; color: #704400; font-size: .78rem; font-weight: 800; box-shadow: 0 2px 7px #122e3220; }
+.group-card.has-unread { border-color: #b0d6b1; box-shadow: 0 0 0 2px #b5d8b64a, 0 8px 24px #153a3015; }
+.group-card.unread-pulse { animation: unread-glow 2.8s ease-in-out 2; }
+@keyframes unread-glow { 0%, 100% { box-shadow: 0 0 0 2px #b5d8b64a, 0 8px 24px #153a3015; } 50% { border-color: #d6e9b7; box-shadow: 0 0 0 5px #b5d8b666, 0 0 26px #a3ca9f66; } }
+.board-picker { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.group-home-button { width: 38px; height: 38px; flex: none; display: grid; place-items: center; border: 1px solid #cdded6; border-radius: 11px; background: #ffffffb8; color: #31594c; cursor: pointer; }
+.group-select { min-width: 0; max-width: 260px; padding: 8px 28px 8px 11px; border: 1px solid #cdded6; border-radius: 10px; color: #294a40; background: #ffffffb8; font-family: inherit; font-size: .9rem; font-weight: 600; }
+.group-home-button:focus-visible, .group-select:focus-visible { outline: 2px solid #44795e; outline-offset: 3px; }
+.profile-avatar { width: 36px; height: 36px; }
+.profile-name { color: #405b51; font-weight: 600; }
+.read-marker { display: block; width: 100%; height: 1px; pointer-events: none; }
+.post-card, .post-composer { border-color: #d9e4df; box-shadow: 0 4px 18px #254f3810; }
+@media (min-width: 721px) { .header { gap: 16px; } .header .user-info { gap: 10px; } }
+@media (max-width: 900px) { .group-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .header { flex-wrap: wrap; } .header .user-info { gap: 9px; flex-wrap: wrap; justify-content: flex-end; } .profile-name { font-size: .8rem; } }
+@media (max-width: 720px) { .board-picker { flex-basis: 100%; } .group-select { flex: 1; max-width: none; } .header .user-info { flex: 1; } .settings-link { font-size: .75rem; } .group-grid { gap: 16px; } .group-card { padding: 20px; min-height: 160px; } .group-card .group-icon { top: 22px; left: 19px; } .group-name { font-size: 1.18rem; } .container.group-home { margin-top: 26px; } .sky-cloud { animation: none; opacity: .3; } .school-garden { background-size: auto 100%; opacity: .45; } }
+@media (max-width: 480px) { .group-grid { grid-template-columns: minmax(0, 1fr); gap: 17px; } .group-card { min-height: 150px; padding: 21px 24px; } .group-card .group-icon { top: 23px; left: 23px; } .group-name { margin-top: 12px; } .header { padding: .6rem 1rem; gap: 8px; } .header .user-info { gap: 6px 9px; } .profile-avatar { width: 30px; height: 30px; } .post-composer { padding: 16px; margin-bottom: 20px; } .post-header { padding: 18px 16px; } .post-content { padding: 0 16px 18px; } .comments-section { padding: 14px 16px; } .comment { gap: 8px; } .comment-body { min-width: 0; } .comment-input { min-width: 0; } .author-name { font-size: .95rem; } .post-actions { flex-wrap: wrap; } }
+@media (prefers-reduced-motion: reduce) { .sky-cloud, .group-card.unread-pulse { animation: none; } .group-card { transition: none; } .group-card:hover { transform: none; } }

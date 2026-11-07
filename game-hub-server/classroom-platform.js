@@ -30,6 +30,8 @@ const { createStudentCharacterStyleResolver } = require("./student-character-sty
 const { pushSchema, createWebPush, clipText } = require("./web-push");
 const { CANONICAL_ORIGIN } = require("./canonical-host");
 const { schoolDefaults } = require("./school-affiliation");
+const { classboardItemReadSchema, createClassboardReadState } = require("./classboard-read-state");
+const { classboardAvatars } = require("./classboard-avatars");
 
 const SESSION_COOKIE = "class_session";
 const GUEST_ACCESS_COOKIE = "class_guest_access";
@@ -1185,6 +1187,7 @@ function createClassroomPlatform(options = {}) {
         last_read_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         PRIMARY KEY (user_id, board_key)
       )`,
+      classboardItemReadSchema,
       /* ──────────────────────────────────────────────
          전자결재. 학부모·교직원이 자기 전자서명을 한 번 등록해 두면, 결석계·체험학습
          문서가 학교가 정한 결재선(담임→교무부장→교감→교장)을 따라 올라가며 각 단계에
@@ -4903,19 +4906,21 @@ function createClassroomPlatform(options = {}) {
     // Notices are only for people on the roster; signed-out visitors get nothing.
     if (!target) return res.json({ notices: [], children: [] });
 
+    const offset = Math.max(0, Math.min(1000000, Math.floor(Number(req.query.offset) || 0)));
     const noticesRes = await pool.query(
-      `SELECT n.id, n.sender_teacher_name, n.title, n.content_type, n.content_body,
+      `SELECT n.id, n.sender_teacher_name, n.sender_user_id, n.title, n.content_type, n.content_body,
               n.target_type, n.requires_signature, n.reply_type, n.created_at,
               r.reply_choice, r.reply_note, r.updated_at AS replied_at
        FROM classroom_notices n
        LEFT JOIN classroom_notice_replies r
          ON r.notice_id = n.id AND r.grade = $2 AND r.class_number = $3 AND r.student_number = $4
        WHERE ${NOTICE_TARGET_SQL}
-       ORDER BY n.created_at DESC
-       LIMIT 50`,
-      [target.schoolId, target.grade, target.classNumber, target.studentNumber]
+       ORDER BY n.created_at DESC, n.id DESC
+       LIMIT 50 OFFSET $5`,
+      [target.schoolId, target.grade, target.classNumber, target.studentNumber, offset]
     );
 
+    const senderAvatars = await classboardAvatars(pool, noticesRes.rows.map(n => n.sender_user_id), avatarUrl);
     // 문항은 회신 방법과 따로 붙는다. 확인을 받으면서 물어볼 수도 있으므로
     // reply_type 이 'survey' 인 것만 보면 안 된다 -- 그러면 동의서에 딸린 문항이
     // 학부모 화면에서 통째로 사라진다.
@@ -4947,6 +4952,7 @@ function createClassroomPlatform(options = {}) {
     }
 
     res.json({
+      nextOffset: noticesRes.rows.length === 50 ? offset + 50 : null,
       child: {
         grade: target.grade,
         classNumber: target.classNumber,
@@ -4958,6 +4964,7 @@ function createClassroomPlatform(options = {}) {
       notices: noticesRes.rows.map(n => ({
         id: String(n.id),
         senderName: n.sender_teacher_name,
+        senderAvatar: senderAvatars.get(String(n.sender_user_id)) || "",
         title: n.title,
         contentType: n.content_type,
         contentBody: n.content_body,
@@ -6437,16 +6444,19 @@ function createClassroomPlatform(options = {}) {
 
     const listRes = await pool.query(
       `SELECT c.id, c.grade, c.class_number,
-              EXISTS (
+              (COALESCE(c.teacher_user_id = $2, FALSE)
+               OR c.grade = ANY($3::INTEGER[])
+               OR EXISTS (
                 SELECT 1 FROM school_master_timetable m
                 WHERE m.school_id = c.school_id AND m.teacher_user_id = $2
                   AND m.academic_year = c.academic_year
                   AND m.grade = c.grade AND m.class_number = c.class_number
-              ) AS teaching
+              )) AS teaching
        FROM classroom_classes c
-       WHERE c.school_id = $1
+       WHERE c.school_id = $1 AND c.academic_year = $4
        ORDER BY teaching DESC, c.grade, c.class_number`,
-      [info.school_id, user.id]
+      [info.school_id, user.id, normalizePairs(info.teaching_scope).map(pair => pair.grade),
+       Number(info.academic_year) || new Date().getFullYear()]
     );
     return {
       canPost: true,
@@ -6533,7 +6543,8 @@ function createClassroomPlatform(options = {}) {
         // 그룹 게시판으로라도 준다(글 쓸 곳이 아예 없는 것보다 낫다).
         const classId = await classIdForHomeroomGroup(g, user, scope.info);
         if (!classId) { rest.push(g); continue; }
-        if (boards.some(b => b.kind === "class" && String(b.id) === String(classId))) continue;
+        const existing = boards.find(b => b.kind === "class" && String(b.id) === String(classId));
+        if (existing) { existing.teaching = true; continue; }
         boards.push({
           key: `class:${classId}`,
           kind: "class",
@@ -6610,56 +6621,46 @@ function createClassroomPlatform(options = {}) {
       || null;
   }
 
-  // Posts in a board that arrived after this user last opened it, ignoring
-  // their own. Drives the unread dot on the board picker.
-  async function classboardUnreadCounts(user, boards) {
-    if (boards.length === 0) return new Map();
-    const classIds = boards.filter(b => b.kind === "class").map(b => b.id);
-    const groupIds = boards.filter(b => b.kind === "group").map(b => b.id);
+  const classboardReads = createClassboardReadState({ pool, noticeTargetSql: NOTICE_TARGET_SQL });
+  const classboardUnreadCounts = classboardReads.counts;
 
+  async function classboardMemberCounts(boards) {
     const result = await pool.query(
-      `SELECT CASE WHEN p.group_id IS NULL THEN 'class:' || p.class_id
-                   ELSE 'group:' || p.group_id END AS board_key,
-              COUNT(*) AS unread
-       FROM classroom_classboard_posts p
-       LEFT JOIN classroom_classboard_reads r
-         ON r.user_id = $1
-        AND r.board_key = CASE WHEN p.group_id IS NULL THEN 'class:' || p.class_id
-                               ELSE 'group:' || p.group_id END
-       WHERE (p.class_id = ANY($2::BIGINT[]) OR p.group_id = ANY($3::BIGINT[]))
-         AND p.author_user_id <> $1
-         AND (r.last_read_at IS NULL OR p.created_at > r.last_read_at)
-       GROUP BY 1`, // "GROUP BY board_key"는 위 별칭이 아니라 r.board_key 칸으로 읽혀 질의가 실패한다.
-      [user.id, classIds, groupIds]
+      `SELECT 'class:' || c.id AS board_key, COUNT(s.student_number)::INTEGER AS member_count
+       FROM classroom_classes c
+       LEFT JOIN LATERAL (
+         SELECT student_number FROM school_students
+         WHERE school_id = c.school_id AND academic_year = c.academic_year
+           AND grade = c.grade AND class_number = c.class_number
+         UNION
+         SELECT student_number FROM classroom_students WHERE class_id = c.id AND roster_active = TRUE
+       ) s ON TRUE
+       WHERE c.id = ANY($1::BIGINT[]) GROUP BY c.id
+       UNION ALL
+       SELECT 'group:' || g.id AS board_key, COUNT(ss.id)::INTEGER AS member_count
+       FROM teacher_groups g
+       LEFT JOIN school_students ss ON ss.school_id = g.school_id AND ss.academic_year = g.academic_year
+         AND (${GROUP_MEMBER_SQL})
+       WHERE g.id = ANY($2::BIGINT[]) GROUP BY g.id`,
+      [boards.filter(b => b.kind === "class").map(b => b.id), boards.filter(b => b.kind === "group").map(b => b.id)]
     );
-    const counts = new Map(result.rows.map(r => [r.board_key, Number(r.unread)]));
-
-    // 가정통신문 칸에도 불이 켜져야 한다. 새 통신문이 왔는데 게시판이 조용하면
-    // 들어가 볼 까닭이 없다. 읽음 표시는 게시판 글과 같은 것을 쓴다 -- 그 칸을
-    // 열어 본 시각이니까.
-    for (const board of boards.filter(b => b.kind === "notice")) {
-      const c = board.child || {};
-      const res = await pool.query(
-        `SELECT COUNT(*)::INTEGER AS unread
-         FROM classroom_notices n
-         LEFT JOIN classroom_classboard_reads r
-           ON r.user_id = $5 AND r.board_key = $6
-         WHERE ${NOTICE_TARGET_SQL}
-           AND (r.last_read_at IS NULL OR n.created_at > r.last_read_at)`,
-        [c.schoolId, c.grade, c.classNumber, c.studentNumber, user.id, board.key]
-      );
-      counts.set(board.key, Number(res.rows[0]?.unread || 0));
-    }
-    return counts;
+    return new Map(result.rows.map(r => [r.board_key, Number(r.member_count)]));
   }
 
   // Which boards this user may switch between, with unread counts.
   router.get("/classboard/boards", asyncRoute(async (req, res) => {
     const user = await requireUser(req);
-    const boards = await classboardBoards(user, { asGuardian: req.query.as === "guardian" });
-    const unread = await classboardUnreadCounts(user, boards);
+    // A wider school-level posting permission is not membership in every class.
+    const boards = (await classboardBoards(user, { asGuardian: req.query.as === "guardian" }))
+      .filter(board => board.kind !== "class" || !board.canPost || board.teaching);
+    const [unread, members, avatars] = await Promise.all([
+      classboardUnreadCounts(user, boards), classboardMemberCounts(boards),
+      classboardAvatars(pool, [user.id], avatarUrl)
+    ]);
+    res.set("Cache-Control", "no-store");
     res.json({
-      boards: boards.map(b => ({ ...b, unreadCount: unread.get(b.key) || 0 }))
+      viewerAvatar: avatars.get(String(user.id)) || "",
+      boards: boards.map(b => ({ ...b, memberCount: members.get(b.key) ?? null, unreadCount: unread.get(b.key) || 0 }))
     });
   }));
 
@@ -6682,7 +6683,7 @@ function createClassroomPlatform(options = {}) {
 
     const postsResult = await pool.query(
       `SELECT p.id, p.content, p.created_at, p.updated_at,
-              u.display_name as author_name, u.picture_url as author_picture,
+              u.display_name as author_name,
               u.role as author_role, p.author_user_id,
               ct.teacher_type AS author_teacher_type, ct.subject_name AS author_subject
        FROM classroom_classboard_posts p
@@ -6696,7 +6697,7 @@ function createClassroomPlatform(options = {}) {
 
     const commentsResult = await pool.query(
       `SELECT c.id, c.post_id, c.content, c.created_at, c.updated_at,
-              u.display_name as author_name, u.picture_url as author_picture,
+              u.display_name as author_name,
               u.role as author_role, c.author_user_id
        FROM classroom_classboard_comments c
        JOIN classroom_classboard_posts p ON p.id = c.post_id
@@ -6721,6 +6722,10 @@ function createClassroomPlatform(options = {}) {
         );
     const isHomeroom = ownerRes.rowCount > 0;
 
+    const avatars = await classboardAvatars(pool, [
+      ...postsResult.rows.map(row => row.author_user_id),
+      ...commentsResult.rows.map(row => row.author_user_id)
+    ], avatarUrl);
     const posts = postsResult.rows.map(row => {
       const postComments = commentsResult.rows
         .filter(c => String(c.post_id) === String(row.id))
@@ -6728,7 +6733,7 @@ function createClassroomPlatform(options = {}) {
           id: String(c.id),
           content: c.content,
           authorName: c.author_name,
-          authorPicture: c.author_picture,
+          authorAvatar: avatars.get(String(c.author_user_id)) || "",
           authorRole: c.author_role,
           isMine: c.author_user_id === user.id,
           canDelete: c.author_user_id === user.id || row.author_user_id === user.id || isHomeroom,
@@ -6741,7 +6746,7 @@ function createClassroomPlatform(options = {}) {
         id: String(row.id),
         content: row.content,
         authorName: row.author_name,
-        authorPicture: row.author_picture,
+        authorAvatar: avatars.get(String(row.author_user_id)) || "",
         authorRole: row.author_role,
         authorLabel: row.author_role !== "teacher"
           ? "학생"
@@ -6754,15 +6759,24 @@ function createClassroomPlatform(options = {}) {
       };
     });
 
-    // 이 게시판을 열어 본 시각을 남긴다. 다음부터 이후에 올라온 글만 '안 읽은 글'.
-    await pool.query(
-      `INSERT INTO classroom_classboard_reads (user_id, board_key, last_read_at)
-       VALUES ($1, $2, NOW())
-       ON CONFLICT (user_id, board_key) DO UPDATE SET last_read_at = NOW()`,
-      [user.id, target.key]
-    );
+    const readIds = await classboardReads.readIds(user, target);
+    res.set("Cache-Control", "no-store");
+    res.json({ posts, readIds, board: target, classId, canPost: target.canPost });
+  }));
 
-    res.json({ posts, board: target, classId, canPost: target.canPost });
+  router.post("/classboard/read", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    const boards = await classboardBoards(user, { asGuardian: req.query.as === "guardian" });
+    const target = boards.find(b => b.key === req.body?.board);
+    if (!target) throw new HttpError(403, "BOARD_ACCESS_DENIED", "이 그룹을 열 수 없습니다.");
+    const ids = req.body?.ids;
+    if (!Array.isArray(ids) || ids.length < 1 || ids.length > 100 ||
+        ids.some(id => !/^[1-9]\d{0,18}$/.test(String(id)) || BigInt(id) > 9223372036854775807n)) {
+      throw new HttpError(400, "INVALID_READ_IDS", "확인할 글을 선택해 주세요.");
+    }
+    const readIds = await classboardReads.markRead(user, target, [...new Set(ids.map(String))]);
+    const unread = await classboardUnreadCounts(user, [target]);
+    res.json({ readIds, unreadCount: unread.get(target.key) || 0 });
   }));
 
   router.post("/classboard/posts", asyncRoute(async (req, res) => {
