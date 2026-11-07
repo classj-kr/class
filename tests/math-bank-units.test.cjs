@@ -120,6 +120,8 @@ test('맨 위 드롭다운: 학기 목록(terms.js)이 실린 단원과 같고, 
   assert.deepEqual(JSON.parse(JSON.stringify(T.TERMS)), terms, 'terms.js 의 TERMS 를 실린 단원에 맞춘다(add_part.py 가 고친다)');
   assert.equal(T.label('3-2'), '초 3학년 2학기');
   assert.equal(T.label('7-1'), '중 1학년 1학기');
+  assert.equal(T.label('10-2'), '고 1학년 2학기');
+  assert.equal(T.label('11-3'), '확률과 통계');
   assert.equal(T.PAST.label, '평가원·수능 기출');
   if (!process.env.MATH_BANK_DIR) {
     const page = fs.readFileSync(path.join(ROOT, 'learning/literacy-numeracy/csat-math/index.html'), 'utf8');

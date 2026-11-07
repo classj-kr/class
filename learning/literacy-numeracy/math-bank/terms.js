@@ -6,8 +6,10 @@
   const TERMS = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2', '7-1', '7-2', '8-1', '8-2', '9-1', '9-2', '10-1', '10-2'];
   // 드롭다운 맨 밑의 항목. 고르면 기출 화면으로 간다.
   const PAST = { value: 'past', label: '평가원·수능 기출' };
-  // 학교급을 앞에 적는다: 1~6학년은 「초」, 7·8·9학년은 「중」 1·2·3학년.
-  const label = (term) => { const [g, s] = term.split('-').map(Number); return (g > 9 ? '고 ' + (g - 9) : g > 6 ? '중 ' + (g - 6) : '초 ' + g) + '학년 ' + s + '학기'; };
+  // 학교급을 앞에 적는다: 1~6학년은 「초」, 7·8·9학년은 「중」 1·2·3학년, 10학년은 「고 1학년」.
+  // 고2·3 선택 과목은 학년·학기가 학교마다 달라 과목 이름으로 적는다: 단원 번호 11-n-k 의 n 이 과목 번호다.
+  const SUBJECTS = { 1: '대수', 2: '미적분Ⅰ', 3: '확률과 통계', 4: '기하', 5: '미적분Ⅱ' };
+  const label = (term) => { const [g, s] = term.split('-').map(Number); if (g === 11) return SUBJECTS[s]; return (g > 9 ? '고 ' + (g - 9) : g > 6 ? '중 ' + (g - 6) : '초 ' + g) + '학년 ' + s + '학기'; };
   // 드롭다운을 채운다. terms 를 주지 않으면 TERMS 를 쓴다.
   function fill(select, selected, terms) {
     select.replaceChildren(...(terms || TERMS).map((term) => new Option(label(term), term)), new Option(PAST.label, PAST.value));
