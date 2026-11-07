@@ -402,8 +402,7 @@
             const rightHtml = `
                 <div class="story-page-right note-page-art">
                     <div class="note-art-frame">
-                        <img class="note-art-img" src="${escapeHtml(poem.illustration)}?v=20261006-smartart" alt="${escapeHtml(poem.title)} 시화" />
-                        <div class="note-art-caption">「${escapeHtml(poem.title)}」 시화</div>
+                        <img class="note-art-img" src="${escapeHtml(poem.illustration)}?v=20261006-smartart" alt="" />
                     </div>
                 </div>
             `;
