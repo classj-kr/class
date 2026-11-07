@@ -1001,7 +1001,7 @@
                 manualAssignments.set(pickerSeatIndex, studentNumber);
                 manualVacantSeats.delete(pickerSeatIndex);
                 unassignedStudents.delete(studentNumber);
-                genderLocks.delete(pickerSeatIndex);
+                // 고를 수 있는 학생은 이미 그 자리 성별뿐이라, 남녀 고정은 그대로 둔다(다음 섞기에서도 지켜지게).
                 saveSeatSettings();
                 renderDesks();
             }
