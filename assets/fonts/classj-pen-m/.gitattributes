@@ -1,0 +1,2 @@
+# The manifest hashes the exact source bytes; retain them across platforms.
+source.js -text

@@ -43,9 +43,10 @@
     cells = [],
     marks = [];
   const CELL_PIXELS = 240;
-  // 글씨체마다 본보기 글꼴과 알맞은 펜 굵기. 획순·채점 선은 font-source.js의 같은 이름 보정 표를 쓴다.
+  // 본보기와 획순·채점은 font-engine.js가 선택한 같은 글씨 모형을 쓴다.
   const Font = window.HandwritingFont,
     STYLE_FONTS = { gyeongpil: 'PracticeReference', badasseugi: 'PracticeReferenceBadasseugi' },
+    STYLE_WEIGHTS = { gyeongpil: 500, badasseugi: 400 },
     STYLE_PEN = { gyeongpil: 5.5, badasseugi: 3.5 };
   let roomStyle = null;
   function applyStyle(name) {
@@ -164,7 +165,7 @@
     context.translate(50, 50);
     context.scale(GLYPH_SCALE, GLYPH_SCALE);
     context.translate(-50, -50);
-    context.font = `${layout[0]}px ${STYLE_FONTS[Font.style()] || STYLE_FONTS.gyeongpil}`;
+    context.font = `${STYLE_WEIGHTS[Font.style()] || 500} ${layout[0]}px ${STYLE_FONTS[Font.style()] || STYLE_FONTS.gyeongpil}`;
     context.textAlign = 'left';
     context.textBaseline = 'alphabetic';
     context.fillStyle = color;
@@ -686,7 +687,7 @@
   };
   const ready = (async () => {
     const loaded = Promise.all(
-      Object.values(STYLE_FONTS).map((family) => document.fonts.load(`100px ${family}`, '가나다')),
+      Object.entries(STYLE_FONTS).map(([name, family]) => document.fonts.load(`${STYLE_WEIGHTS[name]} 100px ${family}`, '가나다')),
     )
       .then((faces) => {
         referenceReady = faces.every((f) => f.length > 0);

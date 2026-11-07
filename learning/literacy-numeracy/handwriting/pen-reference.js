@@ -1,6 +1,6 @@
 (function (root) {
   'use strict';
-  const Font = typeof module === 'object' && module.exports ? require('./font-source') : root.HandwritingFont;
+  const Font = typeof module === 'object' && module.exports ? require('./font-engine') : root.HandwritingFont;
   const cache = new Map(),
     distance = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
   const sample = (p, n = 32) => Font.sample(p, n);
