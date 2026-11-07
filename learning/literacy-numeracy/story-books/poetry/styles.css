@@ -833,6 +833,11 @@ a {
     margin-right: clamp(10px, 2.5vw, 32px);
     margin-bottom: clamp(10px, 2vh, 24px);
     transition: opacity 0.2s ease;
+    /* 해설 쪽 그림과 같은 처리: 네모난 종이 테두리가 보이지 않게 네 변을 풀어 놓는다. */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+    mask-composite: intersect;
 }
 
 .page-quiz-col {
@@ -973,6 +978,9 @@ a {
     text-align: center;
     padding: clamp(14px, 3.5cqh, 36px);
     overflow: hidden;
+    /* 쪽이 position:relative + z-index 라 제 스태킹 컨텍스트를 만든다. 그 안에 종이색이 없으면
+       그림의 multiply 가 섞일 바탕이 없어 그림 파일의 흰 여백이 흰 종이처럼 그대로 보인다. */
+    background: var(--parchment);
 }
 
 .note-art-frame {
@@ -988,26 +996,17 @@ a {
 .note-art-img {
     width: auto;
     height: auto;
-    max-width: 90%;
-    max-height: 82%;
+    max-width: 94%;
+    max-height: 90%;
     object-fit: contain;
-    border-radius: 8px;
+    /* 그림 파일은 네모난 종이에 그린 수채화라 그대로 놓으면 흰 종이를 붙인 것처럼 보인다.
+       흰 여백은 multiply 로 종이색에 녹이고, 네 변을 안개처럼 풀어(mask) 종이 위에 번진 그림처럼 만든다. 틀·그림자·이름표 없음. */
     mix-blend-mode: multiply;
-    filter: drop-shadow(0 4px 14px rgba(92, 58, 34, 0.16));
-    transition: transform 0.25s ease;
-}
-
-.note-art-img:hover {
-    transform: scale(1.02);
-}
-
-.note-art-caption {
-    margin-top: clamp(8px, 1.8cqh, 16px);
-    font-family: "Gowun Batang", "Noto Serif KR", serif;
-    font-size: clamp(12.5px, 2.1cqh, 15px);
-    font-weight: 700;
-    color: rgba(92, 58, 34, 0.72);
-    letter-spacing: -0.01em;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+    mask-composite: intersect;
 }
 
 /* ── 4. 좁은 화면 및 세로 방향 (Responsive Layout) ─────────────── */
