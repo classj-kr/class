@@ -6,37 +6,20 @@
   <meta name="theme-color" content="#0b1729">
   <title>수학 교구 · ClassJ</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="tools.css">
+  <link rel="stylesheet" href="tools.css?v=20261108-compact">
   <script src="/assets/site-back-navigation.js?v=20261019-emoji-label" defer></script>
-  <script src="tools.js" defer></script>
+  <script src="tools.js?v=20261108-compact" defer></script>
 </head>
 <body>
   <main class="catalog">
-    <header class="intro">
-      <div class="intro-copy">
-        <p class="eyebrow">문해·수리 <span lang="en">MATH TOOLS</span></p>
-        <h1>수학 교구</h1>
-        <p class="intro-description">쌓고, 나누고, 그리며 수학을 탐구해요.</p>
-      </div>
-      <svg class="intro-drawing" viewBox="0 0 330 170" fill="none" aria-hidden="true">
-        <g stroke="currentColor">
-          <path opacity=".36" d="M4 126h313M228 14v146M100 24v136" stroke-dasharray="3 6"/>
-          <path opacity=".5" d="M130 117a42 42 0 0 1 71-30m-34-24v68m-37-32h73"/>
-          <path d="m77 42 37 21v42l-37 21-37-21V63l37-21Zm0 42 37-21M77 84 40 63m37 21v42"/>
-          <path d="M206 37v89h93m-82-32 18-20 21 9 28-35"/>
-          <path opacity=".55" d="M235 74v52m21-43v43m28-78v78" stroke-dasharray="3 5"/>
-        </g>
-        <g fill="#f3cd86"><circle cx="217" cy="94" r="2.6"/><circle cx="235" cy="74" r="2.6"/><circle cx="256" cy="83" r="2.6"/><circle cx="284" cy="48" r="2.6"/></g>
-      </svg>
-    </header>
-
-    <ul class="tools" aria-label="수학 교구 선택">
+    <h1 class="sr-only">수학 교구</h1>
+    <ul class="tools menu" aria-label="수학 교구 선택">
       <li>
         <a class="tool cubes" href="/learning/inquiry/math/stacking-cubes/" aria-labelledby="cubes-title" aria-describedby="cubes-description cubes-state">
           <div class="tool-copy">
-            <span class="topic">입체도형</span>
             <h2 id="cubes-title">쌓기나무</h2>
             <p id="cubes-description">정육면체를 쌓고 여러 방향에서 살펴봐요.</p>
+            <span class="tool-state" id="cubes-state" hidden></span>
           </div>
           <svg class="tool-drawing" viewBox="0 0 180 136" aria-hidden="true">
             <defs>
@@ -52,15 +35,14 @@
             <use href="#cube" x="90" y="66"/><use href="#cube" x="67" y="79"/>
             <use href="#cube" x="113" y="79"/><use href="#cube" x="90" y="40"/>
           </svg>
-          <span class="tool-action" id="cubes-state"><span class="tool-state">교구 열기</span><span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </li>
       <li>
         <a class="tool blocks" href="/learning/inquiry/math/number-models/" aria-labelledby="blocks-title" aria-describedby="blocks-description blocks-state">
           <div class="tool-copy">
-            <span class="topic">자릿값</span>
-            <h2 id="blocks-title">수 모형</h2>
-            <p id="blocks-description">블록을 묶고 풀며 자연수와 소수의 자릿값을 알아봐요.</p>
+            <h2 id="blocks-title">자연수·소수 모형</h2>
+            <p id="blocks-description">블록을 묶고 풀며 자릿값을 알아봐요.</p>
+            <span class="tool-state" id="blocks-state" hidden></span>
           </div>
           <svg class="tool-drawing" viewBox="0 0 180 136" aria-hidden="true">
             <defs>
@@ -74,15 +56,14 @@
             <path fill="#b77077" d="M138 96h6v6h-6zm10 0h6v6h-6zm10 0h6v6h-6z"/><path fill="#f4a6ac" stroke="#c17b83" d="M138 90h6v6h-6zm10 0h6v6h-6zm10 0h6v6h-6z"/>
             <g fill="#b8e9d9" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle"><text x="54" y="126">100</text><text x="111" y="126">10</text><text x="151" y="126">1</text></g>
           </svg>
-          <span class="tool-action" id="blocks-state"><span class="tool-state">교구 열기</span><span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </li>
       <li>
         <a class="tool fractions" href="/learning/inquiry/math/fraction-board/" aria-labelledby="fractions-title" aria-describedby="fractions-description fractions-state">
           <div class="tool-copy">
-            <span class="topic">분수</span>
             <h2 id="fractions-title">분수 모형</h2>
             <p id="fractions-description">도형을 똑같이 나누고 색칠하며 분수를 비교해요.</p>
+            <span class="tool-state" id="fractions-state" hidden></span>
           </div>
           <svg class="tool-drawing" viewBox="0 0 180 136" aria-hidden="true">
             <circle cx="72" cy="56" r="36" fill="#252d52" stroke="#c2b8f1" stroke-opacity=".75"/>
@@ -93,15 +74,14 @@
             <path d="M37 105h82v14H37a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2Z" fill="#ab9bea" stroke="#e0d7ff"/>
             <path d="M63 105v14m28-14v14" stroke="#53477c"/>
           </svg>
-          <span class="tool-action" id="fractions-state"><span class="tool-state">교구 열기</span><span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </li>
       <li>
         <a class="tool graphs" href="/learning/inquiry/math/graph-studio/" aria-labelledby="graphs-title" aria-describedby="graphs-description graphs-state">
           <div class="tool-copy">
-            <span class="topic">함수</span>
             <h2 id="graphs-title">그래프 그리기</h2>
             <p id="graphs-description">함수를 입력하고 그래프의 모양과 변화를 살펴봐요.</p>
+            <span class="tool-state" id="graphs-state" hidden></span>
           </div>
           <svg class="tool-drawing" viewBox="0 0 180 136" aria-hidden="true">
             <defs>
@@ -114,7 +94,6 @@
             <path d="M44 20Q90 152 136 20" fill="none" stroke="#7bd5ff" stroke-width="3" stroke-linecap="round"/>
             <g fill="#f4cc83" stroke="#142e4a" stroke-width="1.3"><circle cx="67" cy="69.5" r="3.7"/><circle cx="90" cy="86" r="3.7"/><circle cx="113" cy="69.5" r="3.7"/></g>
           </svg>
-          <span class="tool-action" id="graphs-state"><span class="tool-state">교구 열기</span><span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </li>
     </ul>

@@ -147,9 +147,18 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await page.goto(base + '/');
     await waitLocked(page, mathEntry, 'false');
     await page.locator('#category-literacy-toggle').click();
+    const numeracy = page.locator('[data-access-group="numeracy"]');
+    assert.equal(await page.locator(mathEntry).isVisible(), false);
+    await numeracy.locator('summary').click();
+    assert.equal(await numeracy.locator('.numeracy-settings').isVisible(), false);
+    assert.equal(await numeracy.locator('a[href="/arithmetic"]').getAttribute('data-class-locked'), 'true');
+    const menuFont = await numeracy.locator('summary').evaluate(control => getComputedStyle(control).fontFamily);
     await page.locator(mathEntry).click();
     await page.waitForURL(base + mathCatalog);
+    await page.addStyleTag({ url: base + '/assets/exam-typography.css' });
     assert.equal(await page.locator('.tool').count(), 4);
+    const cardFonts = await page.locator('.tool :is(h2, p)').evaluateAll(nodes => nodes.map(node => getComputedStyle(node).fontFamily));
+    assert.ok(cardFonts.every(font => font.startsWith(menuFont.split(',')[0])), 'the injected textbook font must not affect menu cards');
     const fractionCard = page.locator(`.tool[href="${mathCatalog}fraction-board/"]`);
     const graphCard = page.locator(`.tool[href="${graphStudio}"]`);
     await fractionCard.and(page.locator('[aria-disabled="true"]')).waitFor();
@@ -178,12 +187,24 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 
     puts.length = 0;
     await page.locator('#category-literacy-toggle').click();
+    await numeracy.locator('summary').click();
+    assert.equal(puts.length, 0);
+    assert.equal(await numeracy.locator('a[href="/arithmetic"]').isVisible(), false);
     await page.locator(mathEntry).click();
     await waitFor(page, 4);
     assert.equal(page.url(), base + '/');
     assert.deepEqual(puts.map((item) => item.path).sort(), [
       'fraction-board', 'graph-studio', 'number-models', 'stacking-cubes'
     ].map((tool) => mathCatalog + tool));
+    assert.ok(puts.every((item) => item.enabled === true));
+
+    puts.length = 0;
+    await numeracy.locator('.numeracy-settings').click();
+    await waitFor(page, 4);
+    assert.deepEqual(puts.map((item) => item.path).sort(), [
+      '/arithmetic', '/learning/literacy-numeracy/csat-math',
+      '/learning/literacy-numeracy/math-bank', '/learning/literacy-numeracy/math-ox'
+    ]);
     assert.ok(puts.every((item) => item.enabled === true));
 
     assert.deepEqual(errors, []);
