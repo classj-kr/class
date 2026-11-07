@@ -1429,6 +1429,7 @@
   }
   function polishPenStrokes(char, parts) {
     if('를어푸늘름거'.includes(char)) return;
+    if(!parts.some(part=>M_STROKE_POLISH[auditGroup(char,part)])) return;
     const previous=parts.map(part=>({...part,paths:part.paths.map(path=>{
       const copy=path.map(p=>[...p]);if(path.pen) copy.pen=path.pen;return copy;
     })}));
@@ -1655,7 +1656,7 @@
     CHO,
     JUNG,
     JONG,
-    VERSION: 12,
+    VERSION: 13,
     FAMILY: 'ClassJ Pen M',
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
