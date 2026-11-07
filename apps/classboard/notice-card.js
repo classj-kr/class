@@ -167,7 +167,7 @@
                             <span>${esc(notice.senderName || '학교')}</span>
                             <span class="author-role notice-kind">${esc(kind)}</span>
                         </div>
-                        <div class="post-date">${esc(formatWhen(notice.createdAt))}</div>
+                        <div class="post-date">${esc(formatWhen(notice.createdAt))}${notice.updatedAt ? ' · 수정됨' : ''}</div>
                     </div>
                 </div>
             </header>

@@ -3,6 +3,7 @@
 
   const books = window.CurriculumVocabulary || {};
   const visualLessons = window.CurriculumVisualLessons || {};
+  const wordLessons = window.CurriculumWordLessons || {};
   const termSelect = document.getElementById('term');
   const subjectList = document.getElementById('subjects');
   const unitList = document.getElementById('unit-list');
@@ -49,8 +50,7 @@
   }
 
   function detailsOf(parts) {
-    const details = element('details', '', 'scene-details');
-    details.append(element('summary', '뜻과 쓰임 자세히 보기'));
+    const details = element('div', '', 'scene-details');
     for (const [name, paragraphs] of parts) {
       const block = element('div', '', 'detail-part');
       block.append(element('h3', name), ...paragraphs.map(text => element('p', text)));
@@ -67,7 +67,7 @@
     label.append(response);
     const model = element('details');
     model.append(element('summary', '예시와 비교하기'), element('p', example));
-    block.append(element('h3', '내 말로 설명하기'), label, element('p', guide, 'writing-guide'), model);
+    block.append(label, element('p', guide, 'writing-guide'), model);
     return block;
   }
 
@@ -81,7 +81,9 @@
     controls.setAttribute('role', 'group');
     controls.setAttribute('aria-label', activity.controlLabel);
     figure.append(image, caption);
-    section.append(title, controls, figure);
+    section.append(title);
+    if (activity.intro) section.append(element('p', activity.intro, 'scene-intro'));
+    if (activity.draw) section.append(controls, figure);
 
     const buttons = activity.states.map(([name], index) => button(name, () => select(index)));
     controls.append(...buttons);
@@ -91,7 +93,7 @@
       image.innerHTML = activity.draw(index);
       caption.replaceChildren(element('strong', name), ' ', description);
     }
-    select(0);
+    if (activity.draw) select(0);
 
     if (activity.parts || activity.wordResult || activity.english) {
       const word = element('div', '', 'word-build');
@@ -113,7 +115,7 @@
 
     if (activity.check) {
       const { question, options, answer, feedback, draw } = activity.check;
-      const practice = element('div', '', 'visual-check');
+      const practice = element('div', '', 'visual-check quiz');
       const result = element('p', '', 'visual-feedback');
       result.setAttribute('role', 'status');
       const choices = element('div', '', 'scene-choices');
@@ -152,6 +154,37 @@
     lesson.setAttribute('aria-label', unit?.title || '학습 내용');
     if (!unit) {
       lesson.replaceChildren(element('p', '이 과목의 단원별 어휘는 준비 중이에요.'));
+      return;
+    }
+    const taughtWords = wordLessons[term]?.[subject]?.[unit.id];
+    if (taughtWords) {
+      const navigation = element('nav', '', 'word-navigation');
+      navigation.setAttribute('aria-label', '배울 단어');
+      const content = element('div', '', 'word-content');
+      const requested = new URLSearchParams(location.search).get('word');
+      const names = Object.keys(taughtWords);
+      const controls = names.map(name => button(name, () => selectWord(name)));
+      navigation.append(...controls);
+      function selectWord(name) {
+        controls.forEach((control, i) => control.setAttribute('aria-pressed', String(names[i] === name)));
+        content.replaceChildren(visualLessonOf(taughtWords[name]));
+        const at = names.indexOf(name);
+        const paging = element('nav', '', 'word-paging');
+        paging.setAttribute('aria-label', '다른 단어');
+        if (at > 0) paging.append(button('← ' + names[at - 1], () => navigate(at - 1)));
+        if (at < names.length - 1) paging.append(button(names[at + 1] + ' →', () => navigate(at + 1)));
+        content.append(paging);
+        const url = new URL(location.href);
+        url.searchParams.set('word', name);
+        if (location.protocol !== 'file:') history.replaceState(null, '', url);
+      }
+      function navigate(index) {
+        selectWord(names[index]);
+        controls[index].focus({ preventScroll: true });
+        navigation.scrollIntoView({ block: 'start', behavior: 'instant' });
+      }
+      selectWord(names.includes(requested) ? requested : names[0]);
+      lesson.replaceChildren(navigation, content);
       return;
     }
     const visuals = visualLessons[term]?.[subject]?.[unit.id] || [];

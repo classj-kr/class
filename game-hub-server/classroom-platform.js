@@ -32,6 +32,7 @@ const { CANONICAL_ORIGIN } = require("./canonical-host");
 const { schoolDefaults } = require("./school-affiliation");
 const { classboardItemReadSchema, createClassboardReadState } = require("./classboard-read-state");
 const { classboardAvatars } = require("./classboard-avatars");
+const { noticeManagementSchema, NOTICE_MANAGE_SQL, registerNoticeManagement } = require("./notice-management");
 
 const SESSION_COOKIE = "class_session";
 const GUEST_ACCESS_COOKIE = "class_guest_access";
@@ -778,6 +779,7 @@ function createClassroomPlatform(options = {}) {
       // the replies to a notice.
       `ALTER TABLE classroom_notices
         ADD COLUMN IF NOT EXISTS sender_user_id BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL`,
+      ...noticeManagementSchema,
       `ALTER TABLE classroom_notices
         DROP CONSTRAINT IF EXISTS classroom_notices_reply_type_check`,
       `ALTER TABLE classroom_notices
@@ -4908,7 +4910,7 @@ function createClassroomPlatform(options = {}) {
 
     const offset = Math.max(0, Math.min(1000000, Math.floor(Number(req.query.offset) || 0)));
     const noticesRes = await pool.query(
-      `SELECT n.id, n.sender_teacher_name, n.sender_user_id, n.title, n.content_type, n.content_body,
+      `SELECT n.id, n.sender_teacher_name, n.sender_user_id, n.title, n.content_type, n.content_body, n.updated_at,
               n.target_type, n.requires_signature, n.reply_type, n.created_at,
               r.reply_choice, r.reply_note, r.updated_at AS replied_at
        FROM classroom_notices n
@@ -4965,6 +4967,7 @@ function createClassroomPlatform(options = {}) {
         id: String(n.id),
         senderName: n.sender_teacher_name,
         senderAvatar: senderAvatars.get(String(n.sender_user_id)) || "",
+        updatedAt: n.updated_at || null,
         title: n.title,
         contentType: n.content_type,
         contentBody: n.content_body,
@@ -5174,6 +5177,7 @@ function createClassroomPlatform(options = {}) {
     const { teacher, ctx, isAdmin } = await noticeReadScope(req);
     const result = await pool.query(
       `SELECT n.id, n.title, n.sender_teacher_name, n.reply_type, n.target_type,
+              n.updated_at, n.edit_version, (${NOTICE_MANAGE_SQL}) AS can_manage,
               n.target_grade, n.target_class_number, n.created_at,
               COUNT(r.id) AS reply_count,
               COUNT(r.id) FILTER (WHERE r.reply_choice = 'confirmed') AS confirmed_count,
@@ -5193,6 +5197,9 @@ function createClassroomPlatform(options = {}) {
         id: String(n.id),
         title: n.title,
         senderName: n.sender_teacher_name,
+        canManage: Boolean(n.can_manage),
+        version: Number(n.edit_version || 0),
+        updatedAt: n.updated_at || null,
         replyType: n.reply_type || "none",
         targetType: n.target_type,
         targetGrade: n.target_grade,
@@ -5207,6 +5214,8 @@ function createClassroomPlatform(options = {}) {
   }));
 
   // 2d. Who answered and who still hasn't, for one notice.
+  registerNoticeManagement({ router, pool, asyncRoute, HttpError, noticeReadScope });
+
   router.get("/teacher/notices/:id/replies", asyncRoute(async (req, res) => {
     const { teacher, ctx, isAdmin } = await noticeReadScope(req);
     const noticeId = Number(req.params.id);
