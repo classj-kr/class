@@ -15,6 +15,7 @@
     .primary{background:#245ac0;color:white;border-color:#245ac0}.primary:hover{background:#18499f}.muted{color:#6c7c8e;font-size:12px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.badge{font-size:11px;color:#6d7d8f;white-space:nowrap}.badge.done{color:#27633d}
     dialog{padding:0;border:1px solid #d8e2ec;border-radius:10px;box-shadow:0 15px 50px #182c4533;width:min(740px,calc(100vw - 24px));max-height:85dvh;color:#24364b;background:#fff}dialog::backdrop{background:#14273c66}.dialog-head{padding:12px 16px;border-bottom:1px solid #e0e7ef;display:flex;justify-content:space-between;gap:12px;align-items:center}.body{padding:16px}.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:end;margin-bottom:10px}.filters label{display:grid;gap:3px;font-size:12px;color:#62758c}input,select{border:1px solid #ccd9e7;border-radius:6px;background:white;padding:6px;max-width:100%}
     .row{border-bottom:1px solid #e0e7ef;padding:10px 0}.row:last-child{border-bottom:0}.row-top{display:flex;align-items:start;justify-content:space-between;gap:12px}.row h3{margin:2px 0}.row .actions{margin-top:7px}.numbers{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0}.number{padding-right:24px;border-right:1px solid #e0e7ef}.number:last-child{padding-right:0;border:0}.number strong{display:block;font-size:23px;color:#234c83}.number span{font-size:12px;color:#687b93}.empty{padding:20px 0;color:#65768c}.detail{padding:9px 0;border-bottom:1px solid #e0e7ef;overflow-wrap:anywhere}.detail pre{white-space:pre-wrap;font:inherit;margin:4px 0}.error{color:#a83629}.save-warning{max-width:460px}.save-warning p{margin:8px 0 16px}
+    .strip>a.race{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border-radius:12px;font-size:14px;font-weight:900;white-space:nowrap;color:#fff;background:linear-gradient(135deg,#ff3d9a,#7b3dff);box-shadow:0 3px 14px #182c4529}.strip>a.race:hover{filter:brightness(1.08)}
     @media(max-width:600px){.strip{right:max(12px,env(safe-area-inset-right));max-width:calc(100vw - 24px)}.strip>button{padding:10px 13px}.numbers{gap:14px}.number{padding-right:14px}.number strong{font-size:22px}.row-top{gap:8px}.filters input{max-width:140px}}
     @media print{.strip,.dock-space{display:none}}
   `;
@@ -57,6 +58,9 @@
       identity.append(this.title, this.status); this.progress = el('div', null, 'progress');
       const history = el('button', '학습 기록', 'history-button'); history.type = 'button'; history.setAttribute('aria-haspopup', 'dialog'); history.onclick = () => this.showHistory(); this.historyButton = history;
       strip.append(identity, this.progress, history); this.strip = strip;
+      // 순위전 바로 가기는 머리줄에 따로 자리를 만들지 않고, 타자 앱처럼 기록 단추 옆에 둔다.
+      const race = document.querySelector('a.race-link');
+      if (race) { race.className = 'race'; strip.prepend(race); }
       if (options.toolbar !== false) {
         // Leave room to scroll the final answer above the floating controls.
         const space = el('div', null, 'dock-space'); space.setAttribute('aria-hidden', 'true');
