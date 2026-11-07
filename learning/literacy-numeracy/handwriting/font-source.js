@@ -1043,5 +1043,5 @@
     FAMILY: 'ClassJ Gyeongpil Myeongjo',
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
-  else root.HandwritingFont = Object.freeze(api);
+  else root.HandwritingLegacyFont = Object.freeze(api);
 })(typeof window === 'object' ? window : globalThis);

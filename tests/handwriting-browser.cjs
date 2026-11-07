@@ -111,7 +111,7 @@ test.before(async () => {
         }),
       );
       app.get(route + 'race/', (_, res) => res.sendFile(path.join(root, route, 'index.html')));
-      for (const f of ['styles.css', 'font-source.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'app.js', 'race.js'])
+      for (const f of ['styles.css', 'font-source.js', 'font-engine.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'app.js', 'race.js'])
         app.get(route + 'race/' + f, (_, res) => res.sendFile(path.join(root, route, f)));
     },
   });
@@ -148,8 +148,8 @@ test('menu placement, independent phases, input priority, cancellation, undo and
     .allTextContents();
   assert.match(names[0], /읽기/);
   assert.match(names[1], /쓰기/);
-  assert.equal(await page.locator('#category-literacy-panel a[href*=metacognition]').count(), 0);
-  assert.equal(await page.locator('#category-exploration-panel a[href*=metacognition]').count(), 1);
+  assert.equal(await page.locator('#category-literacy-panel a[href*=metacognition]').count(), 1);
+  assert.equal(await page.locator('#category-exploration-panel a[href*=metacognition]').count(), 0);
   assert.equal(await page.locator('#category-exploration-toggle .category-label').textContent(), '교과');
   assert.equal(await page.locator('#category-boardgame-toggle .category-label').textContent(), '게임');
   await page.locator('[data-access-group="writing"] > summary').click();
@@ -423,6 +423,10 @@ test('notebook cells stay bounded across phone, tablet, Chromebook and desktop, 
 test('the original pen font matches the designed outlines and the editor remains compact', async () => {
   await page.goto(h.base + route);
   await ready();
+  assert.equal(await page.locator('#styleSelect option:checked').textContent(), '경필체 M');
+  assert.equal(await page.evaluate(() => HandwritingFont.FAMILY), 'ClassJ Pen M');
+  assert.equal(await page.evaluate(() => document.fonts.check('500 100px PracticeReference', '를어푸')), true);
+  assert.ok(await page.evaluate(() => performance.getEntriesByType('resource').some(r => r.name.includes('/classj-pen-m/ClassJPenM-Regular.woff2'))));
   // 첫 화면에서 바로 본보기와 쓰기 칸이 보인다.
   assert.ok((await page.locator('#modelCanvas').boundingBox()).y < 115);
   assert.ok((await page.locator('#writingCanvas').boundingBox()).y < 240);
@@ -436,13 +440,13 @@ test('the original pen font matches the designed outlines and the editor remains
     canvas.width = canvas.height = 256;
     const ctx = canvas.getContext('2d'),
       result = {};
-    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊교책얘에예와왜외워웨위의까따빠싸짜무늘믿귤확활훤ㅏㅓㅇㅎ')) {
+    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊교책얘에예와왜외워웨위의까따빠싸짜무늘믿귤확활훤를어푸ㅏㅓㅇㅎ')) {
       const glyph = HandwritingReference.glyph(char),
         layout = glyph.layout;
       ctx.resetTransform();
       ctx.clearRect(0, 0, 256, 256);
       ctx.scale(2.56, 2.56);
-      ctx.font = layout[0] + 'px PracticeReference';
+      ctx.font = '500 ' + layout[0] + 'px PracticeReference';
       ctx.fillText(char, layout[1], layout[2]);
       const pixels = ctx.getImageData(0, 0, 256, 256).data;
       ctx.resetTransform();
@@ -526,4 +530,16 @@ test('the original pen font matches the designed outlines and the editor remains
     await page.locator(`.write-cell[aria-label*=" ${char} 쓰는 칸"]`).first().focus();
     await shot('gyeongpil-structure-' + char);
   }
+  await page.fill('#customText', '를어푸 늘름거');
+  await page.locator('#customForm button').click();
+  const mediumPaths = await page.evaluate(() => HandwritingCore.model('푸'));
+  await shot('pen-m-applied-desktop');
+  await page.selectOption('#styleSelect', 'badasseugi');
+  assert.equal(await page.evaluate(() => HandwritingFont.style()), 'badasseugi');
+  assert.notDeepEqual(await page.evaluate(() => HandwritingCore.model('푸')), mediumPaths);
+  await page.selectOption('#styleSelect', 'gyeongpil');
+  assert.deepEqual(await page.evaluate(() => HandwritingCore.model('푸')), mediumPaths);
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await shot('pen-m-applied-mobile');
 });

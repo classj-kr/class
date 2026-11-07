@@ -1,6 +1,6 @@
 (function (root) {
   'use strict';
-  const Font = typeof module === 'object' && module.exports ? require('./font-source') : root.HandwritingFont;
+  const Font = typeof module === 'object' && module.exports ? require('./font-engine') : root.HandwritingFont;
   const Reference =
     typeof module === 'object' && module.exports ? require('./pen-reference') : root.HandwritingReference;
   const { CHO, JUNG, JONG } = Font;

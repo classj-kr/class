@@ -1,20 +1,36 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const C = require('../learning/literacy-numeracy/handwriting/core');
-const Font = require('../learning/literacy-numeracy/handwriting/font-source');
+const Font = require('../learning/literacy-numeracy/handwriting/font-engine');
 const fs = require('node:fs'),
   path = require('node:path'),
   crypto = require('node:crypto');
 const perfect = (c) => C.model(c).map((p) => ({ points: C.sample(p, 50), width: 1.5 }));
+
+test('practice and authoritative judging select the delivered M geometry and preserve pen detail', () => {
+  const PenM = require('../assets/fonts/classj-pen-m/source');
+  for (const char of '를어푸') {
+    assert.deepEqual(C.model(char), PenM.model(char), char);
+    assert.deepEqual(C.model(char).flatMap(Font.outlines), PenM.model(char).flatMap(PenM.outlines), char);
+  }
+  try {
+    Font.setStyle('badasseugi');
+    assert.equal(Font.style(), 'badasseugi');
+    assert.notDeepEqual(C.model('푸'), PenM.model('푸'));
+  } finally {
+    Font.setStyle('gyeongpil');
+  }
+  assert.deepEqual(C.model('푸'), PenM.model('푸'));
+});
 test('the delivered font files match the current original design source', () => {
-  const directory = path.join(__dirname, '../assets/fonts/classj-gyeongpil');
+  const directory = path.join(__dirname, '../assets/fonts/classj-pen-m');
   const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'font-manifest.json'), 'utf8'));
-  const source = fs.readFileSync(require.resolve('../learning/literacy-numeracy/handwriting/font-source'));
+  const source = fs.readFileSync(require.resolve('../assets/fonts/classj-pen-m/source'));
   assert.equal(manifest.sourceSha256, crypto.createHash('sha256').update(source).digest('hex'));
   assert.equal(manifest.hangulSyllables, 11172);
   assert.equal(manifest.compatibilityJamo, 51);
   assert.equal(
-    fs.readFileSync(path.join(directory, 'ClassJGyeongpilMyeongjo-Regular.woff2')).subarray(0, 4).toString(),
+    fs.readFileSync(path.join(directory, 'ClassJPenM-Regular.woff2')).subarray(0, 4).toString(),
     'wOF2',
   );
 });
@@ -55,7 +71,9 @@ test('optical final proportions retain open counters and separate from upper ink
   for (const char of Array.from('각간갈감강꽃닭읽읊')) {
     const parts = Font.components(char),
       [l, t, r, b] = bounds(parts.find((p) => p.kind === 'final').paths);
-    assert.ok(b - t >= 20 && b - t <= 37, char + ': final height');
+    // The M design uses a shorter open ㄴ; multi-tier finals still need 20 units.
+    const minHeight = parts.find((p) => p.kind === 'final').char === 'ㄴ' ? 18 : 20;
+    assert.ok(b - t >= minHeight && b - t <= 37, char + ': final height');
     assert.ok(r - l >= 33 && r - l <= 82, char + ': final width');
     assert.ok(t >= 56 && b <= 95.5, char + ': final vertical placement');
     const final = parts.find((p) => p.kind === 'final').paths.flatMap((p) => Font.sample(p, 80));
@@ -139,7 +157,8 @@ test('initial consonants stay clear of finals across every modern syllable', () 
     let gap = Infinity;
     for (const p of upper) for (const q of lower)
       gap = Math.min(gap, Math.hypot(p[0] - q[0], p[1] - q[1]));
-    assert.ok(gap > 6, char + ': initial/final clearance ' + gap);
+    // M strokes are at most 5 units wide, replacing the earlier 6-unit pen.
+    assert.ok(gap > 5, char + ': initial/final clearance ' + gap);
   }
 });
 test('descending vowels stop at the first final tier instead of crossing its counter', () => {
@@ -164,7 +183,8 @@ test('ㅝ and ㅞ keep the short arm below the crossbar and attached to the stem
       arm = upright[0],
       stem = upright[1];
     assert.ok(arm.at(-1)[1] > Math.max(...longBar.map((p) => p[1])) + 3, char + ': short arm above long crossbar');
-    assert.ok(arm.at(-1)[1] < stem.at(-1)[1], char + ': short arm hangs below stem');
+    // A rounded arm may meet the rounded stem tip within one design unit.
+    assert.ok(arm.at(-1)[1] <= stem.at(-1)[1] + 1, char + ': short arm hangs below stem');
   }
 });
 test('an independent pen trace of 워 agrees with the displayed compound vowel', () => {
