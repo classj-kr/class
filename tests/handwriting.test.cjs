@@ -58,6 +58,17 @@ test('the designed pen paths remain aligned with shape and order judging', () =>
     assert.ok(r.shape >= 98, c);
   }
 });
+test('paired ㄷ turns meet the first vowel stem without crossing into a double upright vowel', () => {
+  const PenM = require('../assets/fonts/classj-pen-m/source');
+  for (const vowel of 'ㅏㅑㅐㅒㅣ') for (let final = 0; final < 28; final++) {
+    const char = String.fromCodePoint(0xac00 + (PenM.CHO.indexOf('ㄸ') * 21 + PenM.JUNG.indexOf(vowel)) * 28 + final);
+    const parts = PenM.components(char), initial = parts.find(p => p.kind === 'initial');
+    const stem = parts.find(p => p.kind === 'vowel').paths[0], end = initial.paths[3].at(-1);
+    const near = stem.reduce((a, b) => Math.abs(a[1] - end[1]) < Math.abs(b[1] - end[1]) ? a : b);
+    assert.ok(Math.abs(end[0] - near[0]) < 2, char + ': connected end');
+    assert.ok(initial.paths.flat().every(p => p[0] <= near[0] + 2), char + ': no stroke between the upright stems');
+  }
+});
 test('optical final proportions retain open counters and separate from upper ink', () => {
   const bounds = (paths) => {
     const p = paths.flat();
