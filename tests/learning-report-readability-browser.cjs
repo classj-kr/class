@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const { harness } = require('./learning-records-integration.cjs');
+const screenshotWebp = require('./screenshot-webp.cjs');
 
 async function main() {
   const h = await harness(), browser = await chromium.launch({ channel: 'msedge', headless: true });
@@ -32,6 +33,8 @@ async function main() {
       const opened = await request('/sessions', { activity, contentKey: 'rate-check', contentVersion: 'readability-test', title, href: `/learning/literacy-numeracy/${activity}/`, checkpoint: {} });
       if (answers.length) await request(`/sessions/${opened.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(), checkpoint: {}, progress: { current: answers.length, total: answers.length },
         events: answers.map((correct, index) => ({ kind: 'answer', questionKey: `q-${index}`, response: '답', correct, snapshot: { prompt: `문항 ${index + 1}` } })) });
+      else await request(`/sessions/${opened.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(), checkpoint: {}, progress: { current: 0, total: 3 },
+        events: [{ kind: 'hint', questionKey: 'q-0', response: '도움말 확인', snapshot: { prompt: '속담의 뜻' } }] });
     }
     const context = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '3' }, viewport: { width: 1440, height: 1000 } });
     // Reports must render math even without access to an external CDN.
@@ -56,13 +59,13 @@ async function main() {
     assert.equal(await page.locator('#summary .rate-value').innerText(), '50%', 'class accuracy uses summed first attempts, not averaged percentages');
     assert.equal(await page.locator('#summary .rate-count').innerText(), '5/10');
     fs.mkdirSync(output, { recursive: true });
-    await page.screenshot({ path: path.join(output, 'teacher-rates-desktop.png'), fullPage: true });
+    await screenshotWebp(page, { path: path.join(output, 'teacher-rates-desktop.webp'), fullPage: true });
     for (const width of [320, 390]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px: no page overflow`);
       assert.equal(await page.locator('.first-rate').evaluateAll(items => items.some(el => el.scrollWidth > el.clientWidth)), false, `${width}px: rate stays on one line`);
     }
-    await page.screenshot({ path: path.join(output, 'teacher-rates-mobile.png'), fullPage: true });
+    await screenshotWebp(page, { path: path.join(output, 'teacher-rates-mobile.webp'), fullPage: true });
     await page.setViewportSize({ width: 1440, height: 1000 });
     await mathCard.locator('.detail-button').click();
     await page.locator('#detailBody .answer').first().waitFor();
@@ -75,7 +78,7 @@ async function main() {
     assert.doesNotMatch(promptText, /\\frac|\\div|\$/);
     assert.notEqual(await page.locator('.answer.correct .outcome').first().evaluate(el => getComputedStyle(el).backgroundColor), await page.locator('.answer.incorrect .outcome').first().evaluate(el => getComputedStyle(el).backgroundColor));
     fs.mkdirSync(output, { recursive: true });
-    await page.screenshot({ path: path.join(output, 'teacher-answers-desktop.png') });
+    await screenshotWebp(page, { path: path.join(output, 'teacher-answers-desktop.webp') });
     await page.getByRole('button', { name: '오답 2', exact: true }).click();
     assert.equal(await page.locator('.answer').count(), 2);
     assert.equal(await page.locator('.answer.correct').count(), 0);
@@ -84,7 +87,7 @@ async function main() {
     assert.match(await page.locator('.answer').innerText(), /2번째 풀이/);
     await page.getByRole('button', { name: '전체 6', exact: true }).click();
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.screenshot({ path: path.join(output, 'teacher-answers-mobile.png') });
+    await screenshotWebp(page, { path: path.join(output, 'teacher-answers-mobile.webp') });
     assert.equal(await page.locator('#detailBody').evaluate(el => el.scrollWidth > el.clientWidth), false, 'no horizontal modal overflow');
     await page.locator('#detailBody').evaluate(el => { el.scrollTop = el.scrollHeight; });
     assert.ok(await page.locator('#closeDetail').isVisible(), 'close button stays visible while reading');

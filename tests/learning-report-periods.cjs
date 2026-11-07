@@ -5,6 +5,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const { harness } = require('./learning-records-integration.cjs');
+const screenshotWebp = require('./screenshot-webp.cjs');
 
 async function main() {
   const h = await harness();
@@ -77,12 +78,12 @@ async function main() {
     assert.equal(await page.locator('#summary article').nth(1).locator('strong').innerText(), '2', 'all-period completed total includes old completions');
     assert.match(await page.locator('.record-card').first().innerText(), /오늘 속담/, 'all-period output remains newest first');
     const output = path.resolve(__dirname, '../outputs/learning-records-review'); fs.mkdirSync(output, { recursive: true });
-    await page.screenshot({ path: path.join(output, 'teacher-periods-desktop.png'), fullPage: true });
+    await screenshotWebp(page, { path: path.join(output, 'teacher-periods-desktop.webp'), fullPage: true });
     for (const width of [320, 390]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px presets do not overflow`);
     }
-    await page.screenshot({ path: path.join(output, 'teacher-periods-mobile.png'), fullPage: true });
+    await screenshotWebp(page, { path: path.join(output, 'teacher-periods-mobile.webp'), fullPage: true });
     await choose('today', 1);
     assert.equal(await page.locator('#fromDate').isDisabled(), false);
     await page.locator('#fromDate').fill(day(7)); await page.locator('#toDate').fill(day(7));
@@ -97,6 +98,9 @@ async function main() {
       SELECT gen_random_uuid(),$1,$2,$3,$4,1,'1','테스트','proverbs','bulk-' || n,'v1','이전 활동','/learning/literacy-numeracy/proverbs/','2025-01-01T00:00:00Z','2025-01-01T00:00:00Z' FROM generate_series(1,$5::int) n`;
     await h.pool.query(insert, [1, 10, 2026, 4, 1001]);
     for (const scope of [[2, 20, 2026, 4, 1], [1, 10, 2025, 4, 1], [9, 10, 2026, 3, 1]]) await h.pool.query(insert, scope);
+    await h.pool.query(`INSERT INTO learning_record_events(session_id,kind,question_key,response,scoring_source,attempt_number,recorded_at)
+      SELECT id,'read','word','"읽기 확인"'::jsonb,'none',1,'2025-01-01T00:00:00Z'
+      FROM learning_record_sessions WHERE content_key LIKE 'bulk-%'`);
     const seen = new Set(); let cursor = null, pages = 0;
     do {
       const part = await request(reportUrl + '&period=all' + (cursor ? '&cursor=' + cursor : ''), null, 3);

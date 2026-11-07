@@ -23,6 +23,20 @@ const STUDENT_SQL = `SELECT school_id, academic_year, grade, class_number, stude
   WHERE s.roster_active = TRUE AND (s.user_id = $1 OR (s.user_id IS NULL AND LOWER(s.student_email) = LOWER($2)))) memberships
   ORDER BY academic_year DESC, roster_priority, school_id, grade, class_number LIMIT 1`;
 
+// A checkpoint created by opening/resuming is not activity. Apply this before
+// pagination. Learning checks intentionally defer scoring until the end, so
+// their saved response count is evidence of work while still in progress.
+const CHECK_DRAFT_SQL = "s.activity = 'metacognition' AND s.status = 'active' AND s.progress_current > 0";
+const REPORT_ACTIVITY_SQL = `
+  (EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id = s.id) OR (${CHECK_DRAFT_SQL}))
+  AND ($5::date IS NULL OR EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id = s.id
+    AND e.recorded_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul'
+    AND e.recorded_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
+    OR s.completed_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul'
+      AND s.completed_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul'
+    OR (${CHECK_DRAFT_SQL}) AND s.updated_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul'
+      AND s.updated_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')`;
+
 function summarize(events) {
   const answers = events.filter(e => e.kind === 'answer');
   const first = answers.filter(e => e.attempt_number === 1);
@@ -275,9 +289,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       AND ((grade = $3 AND class_number = $4) OR user_id = ANY($8::bigint[]))
       AND ($7::text IS NULL OR activity = $7)
       AND ($9::uuid IS NULL OR s.id > $9::uuid)
-      AND ($5::date IS NULL OR EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id = s.id
-        AND e.recorded_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul' AND e.recorded_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
-        OR s.updated_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
+      AND ${REPORT_ACTIVITY_SQL}
       ORDER BY ${all ? 's.id' : 's.updated_at DESC, s.id'} LIMIT ${pageSize + 1}`, [...args, range.from, range.to, req.query.activity || null, studentIds, cursor])).rows;
     if (!all && found.length > pageSize) fail('REPORT_TOO_LARGE', '기록이 많아요. 조회 기간이나 영역을 좁혀 주세요.');
     const rows = found.slice(0, pageSize);
@@ -289,7 +301,16 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       for (const event of events) eventGroups.get(event.session_id).push(event);
     }
     const sessions = [];
-    for (const row of rows) sessions.push({ ...(await serialize(pool, row, false, range, eventGroups.get(row.id))), userId: String(row.user_id), studentNumber: row.student_number, studentName: row.student_name });
+    for (const row of rows) {
+      const events = eventGroups.get(row.id);
+      const dates = events.filter(e => inRange(e, range)).map(e => new Date(e.recorded_at).getTime());
+      const finishOrDraft = row.completed_at || (row.activity === 'metacognition' && row.progress_current > 0 ? row.updated_at : null);
+      if (finishOrDraft && inRange({ recorded_at: finishOrDraft }, range)) dates.push(new Date(finishOrDraft).getTime());
+      const lastActivity = dates.reduce((latest, time) => Math.max(latest, time), 0);
+      sessions.push({ ...(await serialize(pool, row, false, range, events)),
+        updatedAt: lastActivity ? new Date(lastActivity).toISOString() : row.updated_at,
+        userId: String(row.user_id), studentNumber: row.student_number, studentName: row.student_name });
+    }
     res.json({ range, roster, sessions, nextCursor: all && found.length > pageSize ? rows[rows.length - 1].id : null });
   }));
   router.get('/teacher/sessions/:id', asyncRoute(async (req, res) => {
@@ -310,4 +331,4 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
   }));
   return { router, initialize };
 }
-module.exports = { createLearningRecords, summarize, STUDENT_SQL };
+module.exports = { createLearningRecords, summarize, STUDENT_SQL, REPORT_ACTIVITY_SQL };
