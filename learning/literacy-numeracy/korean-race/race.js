@@ -7,6 +7,39 @@
   try { if (window.SiteStorage) store = await window.SiteStorage.open('korean-race'); } catch { /* 게스트는 이 탭에서만 기억 */ }
 
   const params = new URLSearchParams(location.search);
+  // ── 바탕: 글자 연과 날리는 글자 ─────────────────────
+  const KITES = [[8, 22, 4, 7, 5], [26, 12, 214, 9, 6], [47, 30, 146, 8, 5.5], [70, 16, 330, 10, 6.5], [88, 26, 40, 7.5, 5]];
+  const sceneLetters = (set) => (set === 'vocabulary' ? 'ABCDEFGHIJKLMNOPRSTW' : '가나다라마바사아자차카타파하글말');
+  let sceneSet = '';
+  function paintScene(set) {
+    if (sceneSet === set) return;
+    sceneSet = set;
+    const letters = sceneLetters(set);
+    document.querySelector('.kites').replaceChildren(...KITES.map(([x, y, hue, sway, bob], i) => {
+      const kite = document.createElement('span');
+      kite.className = 'kite';
+      kite.style.cssText = `--x:${x}%;--y:${y}%;--hue:${hue};--sway:${sway / 2}s;--bob:${bob}s;--delay:${-i * 1.3}s;--lean:${x < 50 ? 18 : -18}deg`;
+      kite.innerHTML = '<i class="line"></i><span class="body"><b></b></span><i class="tail"></i>';
+      kite.querySelector('b').textContent = letters[(i * 3) % letters.length];
+      return kite;
+    }));
+    document.querySelector('.drift').replaceChildren(...Array.from({ length: 16 }, (_, i) => {
+      const ch = document.createElement('i');
+      ch.textContent = letters[(i * 7 + 2) % letters.length];
+      ch.style.cssText = `--x:${(i * 37 + 5) % 96}%;--size:${18 + ((i * 11) % 18)}px;--hue:${(i * 47) % 360};--speed:${16 + ((i * 5) % 12)}s;--delay:${-i * 1.7}s`;
+      return ch;
+    }));
+  }
+  paintScene(C.SETS[params.get('set')] ? params.get('set') : 'spelling');
+  // 맞히면 연 하나가 훌쩍 솟는다.
+  function liftKite() {
+    const kites = document.querySelectorAll('.kite');
+    if (!kites.length) return;
+    const kite = kites[Math.floor(Math.random() * kites.length)];
+    kite.classList.remove('lift');
+    void kite.offsetWidth;
+    kite.classList.add('lift');
+  }
   let code = '', token = '', state = null;
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   // 지금 화면에 띄운 문제. 답을 보내거나 풀이를 보여 주는 동안에는 폴링이 바꾸지 않는다.
@@ -301,7 +334,7 @@
   function renderLobby(s, previous) {
     show('lobby');
     playMusic('lobby');
-    document.body.classList.remove('fever', 'hurry');
+    document.body.classList.remove('fever', 'warm', 'hurry');
     $('lobbyCode').textContent = s.code;
     setLabel($('lobbySet'), s.config.set, setName(s.config));
     $('lobbyRule').textContent = `${setName(s.config)} · ${s.config.duration % 60 ? s.config.duration + '초' : s.config.duration / 60 + '분'}`;
@@ -405,7 +438,7 @@
   }
   function paintMine(s) {
     renderMini(s);
-    paintBlocks(s.me.blocks, s.me.correct);
+    paintWords(s.me.words || [], s.me.correct);
     paintScore(localScore);
     paintCombo();
     const rank = s.me.rank;
@@ -462,29 +495,31 @@
     $('comboMeter').classList.toggle('max', localCombo >= 10);
     $('worthNow').textContent = `한 문제 +${C.points(localCombo + 1)}`;
     document.body.classList.toggle('fever', localCombo >= 10);
+    document.body.classList.toggle('warm', localCombo >= 5);
     $('comboNow').parentElement.classList.toggle('hot', localCombo >= 4);
     const worth = C.points(localCombo + 1);
     $('qStamp').hidden = worth < 2;
     $('qStamp').textContent = '+' + worth;
   }
-  // 내 글자 탑: 맞힌 낱말의 첫 글자가 블록이 되어 쌓인다. 열 개면 한 층.
-  function paintBlocks(blocks, correct) {
-    const box = $('myBlocks');
-    const visible = blocks.slice(-30);
+  // 맞힌 말: 이번 판에 맞힌 말(속담·관용어·한자성어·바른 맞춤법·영단어)을 최근 것부터 모아 보여 준다.
+  function paintWords(words, correct) {
+    const box = $('myWords');
     if (box.dataset.count !== String(correct)) {
       const grew = Number(box.dataset.count || 0) < correct;
       box.dataset.count = correct;
-      box.replaceChildren(...visible.map((ch, i) => {
-        const b = document.createElement('i');
-        b.textContent = ch;
-        b.style.setProperty('--hue', (hash(ch) % 360) + 'deg');
-        if (grew && i === visible.length - 1) b.className = 'drop';
-        return b;
+      box.replaceChildren(...words.slice(-14).reverse().map((word, i) => {
+        const chip = document.createElement('span');
+        chip.textContent = word;
+        chip.title = word;
+        chip.style.setProperty('--hue', hash(word) % 360);
+        if (grew && i === 0) chip.className = 'new';
+        return chip;
       }));
+      if (grew) liftKite();
     }
+    $('floorNow').textContent = correct ? `${correct}개` : '';
     const floor = Math.floor(correct / C.FLOOR);
-    $('floorNow').textContent = floor ? `${floor}층` : '';
-    if (floor > lastFloor) { banner(`🧱 ${floor}층 완성!`); sfx.floor(); }
+    if (floor > lastFloor) { banner(`🪁 ${floor * C.FLOOR}개 맞혔어요!`); sfx.floor(); }
     lastFloor = floor;
   }
 
@@ -694,7 +729,7 @@
   // ── 결과 ─────────────────────────────────────────
   function renderResults(s) {
     show('result');
-    document.body.classList.remove('fever', 'hurry');
+    document.body.classList.remove('fever', 'warm', 'hurry');
     clearTimeout(revealTimer);
     const key = s.roundId + s.participants.map((p) => p.score).join(',');
     if (resultShown === key) return;
@@ -839,7 +874,7 @@
     $('roomBadge').hidden = true;
     $('leaveButton').hidden = true;
     $('stopButton').hidden = true;
-    document.body.classList.remove('is-host', 'spectator', 'fever', 'hurry');
+    document.body.classList.remove('is-host', 'spectator', 'fever', 'warm', 'hurry');
     show('entry');
     playMusic('lobby');
     history.replaceState(null, '', location.pathname + (params.get('set') ? '?set=' + fromSet + (fromRange ? '&range=' + fromRange : '') : ''));
