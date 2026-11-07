@@ -26,10 +26,11 @@ SZ = 100
 STROKE = 5.8
 CAP = 12.0
 BOUNDS = {'d': 6.0, 's': (0.85, 1.15)}
+MIN_GAP = 6.8
 
 DUMP = """
 const F=require(process.argv[1]);
-const chars=JSON.parse(process.argv[2]);
+const chars=JSON.parse(require('fs').readFileSync(0,'utf8'));
 const out={};
 for(const ch of chars){const p=F.components(ch);if(p)out[ch]=p.map(x=>({kind:x.kind,char:x.char,paths:x.paths}));}
 process.stdout.write(JSON.stringify(out));
@@ -79,7 +80,7 @@ def load_parts(chars):
     with tempfile.TemporaryDirectory() as d:
         copy = Path(d) / 'font-source.js'
         copy.write_text(raw, encoding='utf-8')
-        proc = subprocess.run(['node', '-e', DUMP, str(copy), json.dumps(chars, ensure_ascii=True)],
+        proc = subprocess.run(['node', '-e', DUMP, str(copy)], input=json.dumps(chars, ensure_ascii=True),
                               capture_output=True, text=True, encoding='utf-8', check=True)
     return json.loads(proc.stdout)
 
@@ -161,7 +162,7 @@ class Entry:
         total_penalty = 0.0
         if 'initial' in kinds and 'final' in kinds:
             i, f = kinds.index('initial'), kinds.index('final')
-            total_penalty += 40 * max(0.0, 6.8 - gap(i, f))
+            total_penalty += 40 * max(0.0, MIN_GAP - gap(i, f))
             for v, part in enumerate(self.parts):
                 if part['kind'] == 'vowel' and part['char'] in 'ㅜㅠ' and self.c in 'ㄱㄷㄹㅌ' and len(by_part[v]) > 1:
                     bottom = max(q[1] for q in by_part[f][0])
@@ -184,7 +185,7 @@ def fit_group(key, entries, table):
     best = list(table.get(key, [0.0, 0.0, 1.0, 1.0]))
     probe = lambda p: total(entries, {**table, key: p})
     score = probe(best)
-    steps = [(1.0, 1.0, 0.03, 0.03), (0.5, 0.5, 0.015, 0.015), (0.25, 0.25, 0.008, 0.008)]
+    steps = [(4.0, 4.0, 0.12, 0.12), (2.0, 2.0, 0.06, 0.06), (1.0, 1.0, 0.03, 0.03), (0.5, 0.5, 0.015, 0.015), (0.25, 0.25, 0.008, 0.008)]
     for step in steps:
         improved = True
         while improved:
@@ -203,19 +204,30 @@ def fit_group(key, entries, table):
 
 
 def main():
+    global STROKE, MIN_GAP
     ap = argparse.ArgumentParser()
     ap.add_argument('--reference', type=Path, required=True)
     ap.add_argument('--rounds', type=int, default=2)
     ap.add_argument('--dry', action='store_true')
+    ap.add_argument('--step', type=int, default=1, help='use every n-th syllable')
+    ap.add_argument('--max-shift', type=float, default=BOUNDS['d'])
+    ap.add_argument('--scale-range', type=float, nargs=2, default=BOUNDS['s'])
+    ap.add_argument('--min-gap', type=float, default=MIN_GAP, help='initial/final centerline gap; must exceed the runtime guard')
+    ap.add_argument('--stroke', type=float, default=STROKE, help='stroke width of the reference in model units')
+    ap.add_argument('--style', help='write a separate style table (e.g. badasseugi) instead of editing font-source.js')
+    ap.add_argument('--output-js', type=Path, help='file for --style')
     ap.add_argument('--min-chars', type=int, default=4)
     ap.add_argument('--min-fine', type=int, default=5)
     args = ap.parse_args()
+    STROKE = args.stroke
+    BOUNDS['d'], BOUNDS['s'] = args.max_shift, tuple(args.scale_range)
+    MIN_GAP = args.min_gap
     ref = TTFont(args.reference)
     cmap = ref.getBestCmap()
     font = ImageFont.truetype(str(args.reference), SZ, layout_engine=ImageFont.Layout.BASIC)
     chars = []
     masks = {}
-    for cp in range(0xAC00, 0xD7A4):
+    for cp in range(0xAC00, 0xD7A4, args.step):
         if cp in cmap:
             m = ref_mask(font, chr(cp))
             if m.sum() >= 40:
@@ -253,6 +265,17 @@ def main():
     if args.dry:
         return
     rounded = {k: [round(v[0], 2), round(v[1], 2), round(v[2], 3), round(v[3], 3)] for k, v in sorted(table.items())}
+    if args.style:
+        assert args.output_js, '--style needs --output-js'
+        table_json = json.dumps(rounded, ensure_ascii=False, separators=(',', ':'))
+        args.output_js.write_text(
+            '// 자동 생성: scripts/fit-handwriting-calibration.py --style ' + args.style + ' (직접 고치지 마세요)\n'
+            '(function (root) {\n'
+            '  (root.HandwritingCalibrations = root.HandwritingCalibrations || {})[' + json.dumps(args.style) + '] = ' + table_json + ';\n'
+            "})(typeof window === 'object' ? window : globalThis);\n",
+            encoding='utf-8')
+        print('wrote', len(rounded), 'groups to', args.output_js)
+        return
     body = 'const CALIBRATION = ' + json.dumps(rounded, ensure_ascii=False, separators=(',', ':')) + ';'
     src = SOURCE.read_text(encoding='utf-8')
     new = re.sub(r'(// CAL-BEGIN\n).*?(\n\s*// CAL-END)', lambda m: m.group(1) + '  ' + body + m.group(2), src, flags=re.S)

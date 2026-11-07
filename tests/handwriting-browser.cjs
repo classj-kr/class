@@ -111,7 +111,7 @@ test.before(async () => {
         }),
       );
       app.get(route + 'race/', (_, res) => res.sendFile(path.join(root, route, 'index.html')));
-      for (const f of ['styles.css', 'font-source.js', 'pen-reference.js', 'core.js', 'app.js', 'race.js'])
+      for (const f of ['styles.css', 'font-source.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'app.js', 'race.js'])
         app.get(route + 'race/' + f, (_, res) => res.sendFile(path.join(root, route, f)));
     },
   });

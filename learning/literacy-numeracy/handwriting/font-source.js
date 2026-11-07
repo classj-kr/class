@@ -151,6 +151,7 @@
     ㅟ: ['ㅜ', 'ㅣ'],
     ㅢ: ['ㅡ', 'ㅣ'],
   };
+  let style = 'gyeongpil';
   const CHO = Array.from('ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'),
     JUNG = Array.from('ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ'),
     JONG = ['', ...Array.from('ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ')];
@@ -307,7 +308,8 @@
   // 초성·모음·받침 묶음별 위치(dx, dy)·크기(sx, sy) 보정. scripts/fit-handwriting-calibration.py가 만든다.
   // 견본에 없는 글자에서는 간격 규칙이 깨질 수 있어, 깨지면 그 글자의 보정만 되돌린다.
   function calibrate(parts, a, b, c) {
-    const type = compounds[b] ? 'c' : 'ㅗㅛㅜㅠㅡ'.includes(b) ? 'h' : 'v';
+    const type = compounds[b] ? 'c' : 'ㅗㅛㅜㅠㅡ'.includes(b) ? 'h' : 'v',
+      table = (style !== 'gyeongpil' && (root.HandwritingCalibrations || {})[style]) || CALIBRATION;
     const span = (part) => {
       const points = part.paths.flat(),
         xs = points.map((q) => q[0]),
@@ -324,7 +326,7 @@
               : part.kind === 'final'
                 ? [`f|${c}|${b}`, `f|${c}|${type}`]
                 : [],
-        p = keys.map((k) => CALIBRATION[k]).find(Boolean);
+        p = keys.map((k) => table[k]).find(Boolean);
       if (!p) return part;
       const [x0, y0, x1, y1] = span(part),
         cx = (x0 + x1) / 2,
@@ -352,7 +354,7 @@
     const at = (kind) => parts.findIndex((p) => p.kind === kind);
     const i = at('initial'),
       f = at('final');
-    if (i >= 0 && f >= 0 && moved[i] !== parts[i] && gap(moved[i], moved[f]) < 6.4) {
+    if (i >= 0 && f >= 0 && moved[i] !== parts[i] && gap(moved[i], moved[f]) < (style === 'gyeongpil' ? 6.4 : 5)) {
       moved[i] = parts[i];
       moved[f] = parts[f];
     }
@@ -871,16 +873,21 @@
   }
   const cache = new Map();
   function model(char) {
-    if (!cache.has(char)) {
+    const key = style + '|' + char;
+    if (!cache.has(key)) {
       const parts = components(char);
       if (!parts) return null;
       if (cache.size >= 256) cache.delete(cache.keys().next().value);
       cache.set(
-        char,
+        key,
         parts.flatMap((p) => p.paths),
       );
     }
-    return cache.get(char).map((s) => s.map((p) => [...p]));
+    return cache.get(key).map((s) => s.map((p) => [...p]));
+  }
+  // 본보기 글씨체. 'gyeongpil'(기본) 말고는 style-<이름>.js가 root.HandwritingCalibrations에 보정 표를 둔다.
+  function setStyle(next) {
+    style = next || 'gyeongpil';
   }
   const distance = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
   function sample(p, n) {
@@ -1024,6 +1031,8 @@
   }
   const api = {
     model,
+    setStyle,
+    style: () => style,
     components,
     outlines,
     sample,

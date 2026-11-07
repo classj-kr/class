@@ -17,17 +17,18 @@
   }
   function glyph(char) {
     if (!supported(char)) return null;
-    if (!cache.has(char)) {
+    const key = Font.style() + '|' + char;
+    if (!cache.has(key)) {
       const paths = Font.model(char);
       if (cache.size >= 256) cache.delete(cache.keys().next().value);
-      cache.set(char, {
+      cache.set(key, {
         layout: [100, 0, 80],
         paths,
         contours: paths.flatMap(Font.outlines),
         points: cloud(paths),
       });
     }
-    return cache.get(char);
+    return cache.get(key);
   }
   // 중심과 퍼진 정도(제곱평균 반지름)
   function spread(points) {
