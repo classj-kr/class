@@ -132,9 +132,12 @@
 
         // 한 번 "차단"하면 사이트는 다시 물을 수 없다. 막힌 경우에만 풀어 주는 법을 알려 준다
         // (크롬은 막힌 사이트의 주소창에 마이크·카메라 모양 표시를 띄운다).
+        async function permissionState(name) {
+            try { return (await navigator.permissions.query({ name })).state; } catch (_) { return null; }
+        }
+
         async function permissionHelp(name, label) {
-            let state = null;
-            try { state = (await navigator.permissions.query({ name })).state; } catch (_) {}
+            const state = await permissionState(name);
             return state === "denied"
                 ? `${label}가 막혀 있어요. 주소창 왼쪽의 ${label} 모양(또는 자물쇠)을 눌러 '허용'으로 바꾸고 새로고침해 주세요.`
                 : `${label}를 쓰려면 허락 창에서 '허용'을 눌러 주세요.`;
@@ -157,6 +160,14 @@
                 micOn = false;
             }
             setStatus("");
+        }
+
+        // 쪽을 넘기면 화면이 새로 열려서 마이크·카메라가 꺼진다. 이미 허락해 둔 경우에만, 넘기기 전에 켜 둔 것을
+        // 사용자 조작 없이 다시 켠다(허락이 없으면 아무것도 하지 않아서 허락 창이 갑자기 뜨는 일이 없다).
+        async function resumeMedia(saved) {
+            if (!saved || !channel) return;
+            if (saved.mic && !micOn && await permissionState("microphone") === "granted") await toggleMic();
+            if (saved.cam && !wantCam && await permissionState("camera") === "granted") await toggleCam();
         }
 
         // 카메라는 서버에 자리를 먼저 청한다. 받으면(상태에 내가 들어옴) 그때 켠다.
@@ -256,7 +267,7 @@
             };
         }
 
-        return { join, rejoin, leave, toggleMic, toggleCam, handle, view, inCall: () => Boolean(channel) };
+        return { join, rejoin, leave, toggleMic, toggleCam, resumeMedia, handle, view, inCall: () => Boolean(channel) };
     }
 
     window.SchoolCall = Object.freeze({ create, supported });
