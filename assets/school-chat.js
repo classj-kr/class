@@ -28,7 +28,8 @@
     let enabled = false;        // 설정에서 "채팅 사용"을 켠 학생만 연결하고 💬를 보인다(계정에 저장, 기본 꺼짐)
     let call = null;            // 방 통화(assets/school-call.js, 방에 들어가면 그때 불러온다)
     let callScript = null;
-    const CALL_TAB_KEY = "schoolChatCallChannel";   // 같은 탭에서 쪽을 옮겨도 통화를 이어 가려고 탭에만 적어 둔다
+    const CALL_TAB_KEY = "schoolChatCallChannel";
+    const CALL_MEDIA_KEY = "schoolChatCallMedia";    // 쪽을 넘기기 전에 마이크·카메라를 켜 뒀는지(이 탭에만)   // 같은 탭에서 쪽을 옮겨도 통화를 이어 가려고 탭에만 적어 둔다
     const ui = {};
 
     function el(tag, className, text) {
@@ -266,7 +267,7 @@
         if (!callScript) {
             callScript = new Promise(resolve => {
                 const script = document.createElement("script");
-                script.src = "/assets/school-call.js?v=20261107-help";
+                script.src = "/assets/school-call.js?v=20261107-resume";
                 script.onload = () => resolve(Boolean(window.SchoolCall));
                 script.onerror = () => resolve(false);
                 document.head.appendChild(script);
@@ -275,17 +276,22 @@
         return callScript;
     }
 
-    async function startCall(channelId) {
+    async function startCall(channelId, resume = false) {
         if (!(await loadCallScript()) || !window.SchoolCall.supported) return;
         if (!call) call = window.SchoolCall.create({ send: sendPacket, getMyId: () => me.userId, onChange: renderCall });
         call.join(channelId);
         try { sessionStorage.setItem(CALL_TAB_KEY, channelId); } catch (_) {}
+        if (resume) {
+            let saved = null;
+            try { saved = JSON.parse(sessionStorage.getItem(CALL_MEDIA_KEY) || "null"); } catch (_) {}
+            call.resumeMedia(saved);
+        }
         renderCall();
     }
 
     function endCall() {
         if (call) call.leave();
-        try { sessionStorage.removeItem(CALL_TAB_KEY); } catch (_) {}
+        try { sessionStorage.removeItem(CALL_TAB_KEY); sessionStorage.removeItem(CALL_MEDIA_KEY); } catch (_) {}
         renderCall();
     }
 
@@ -301,6 +307,7 @@
             return;
         }
         ui.callBox.classList.add("open");
+        try { sessionStorage.setItem(CALL_MEDIA_KEY, JSON.stringify({ mic: view.micOn, cam: view.camWanted })); } catch (_) {}
         const info = channelInfo(callChannelId);
         const camCount = view.members.filter(member => member.cam).length;
         ui.callInfo.textContent = `${info ? info.name : "방"} 통화 ${view.members.length}/${view.limits.call}명 · 카메라 ${camCount}/${view.limits.cams}`;
@@ -358,7 +365,7 @@
                         let remembered = null;
                         try { remembered = sessionStorage.getItem(CALL_TAB_KEY); } catch (_) {}
                         if (call && call.inCall()) call.rejoin();
-                        else if (remembered && channelInfo(remembered)) { active = remembered; render(); startCall(remembered); }
+                        else if (remembered && channelInfo(remembered)) { active = remembered; render(); startCall(remembered, true); }
                     } else if (packet.type === "SCHOOLCHAT_PRESENCE") {
                         presenceBy[packet.channel] = new Map((packet.users || []).map(user => [user.userId, user]));
                         renderPeople();
