@@ -2,24 +2,24 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,interactive-widget=resizes-content">
   <meta name="theme-color" content="#172554">
-  <title>방번호 입력</title>
-  <link rel="stylesheet" href="style.css?v=20261010-compact-entry">
+  <title>Room Code</title>
+  <link rel="stylesheet" href="style.css?v=20261107-centered-entry">
 </head>
 <body>
   <main class="shell">
     <a class="back" href="/">← 메인</a>
     <section class="card" aria-labelledby="pageTitle">
-      <h1 id="pageTitle">방번호 입력</h1>
-      <form id="roomForm">
-        <label class="sr-only" for="roomCode">방번호</label>
-        <input id="roomCode" inputmode="numeric" pattern="[0-9]{4}|[0-9]{6}" maxlength="6" autocomplete="one-time-code" placeholder="4자리 또는 6자리" autofocus>
+      <h1 id="pageTitle" lang="en">Room Code</h1>
+      <form id="roomForm" novalidate>
+        <label class="sr-only" for="roomCode">방번호 숫자 4자리</label>
+        <input id="roomCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="one-time-code" placeholder="4 digits" required>
         <button type="submit">입장</button>
       </form>
       <p id="status" class="status" role="status"></p>
     </section>
   </main>
-  <script src="app.js?v=20261012-board-entry"></script>
+  <script src="app.js?v=20261107-four-digit-entry"></script>
 </body>
 </html>

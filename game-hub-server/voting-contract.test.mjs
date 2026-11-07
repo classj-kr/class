@@ -7,12 +7,13 @@ const serverSource = await readFile(new URL("./server.js", import.meta.url), "ut
 const platformSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
 const votingSource = await readFile(new URL("./voting.js", import.meta.url), "utf8");
 const homeSource = await readFile(new URL("../index.html", import.meta.url), "utf8");
+const roomPage = await readFile(new URL("../apps/room/index.html", import.meta.url), "utf8");
 const roomSource = await readFile(new URL("../apps/room/app.js", import.meta.url), "utf8");
 const voteAppSource = await readFile(new URL("../apps/vote/app.js", import.meta.url), "utf8");
 
 test("the home room-number entrance resolves activities centrally", () => {
-  assert.match(homeSource, /href="\/room\/"[^>]*>방번호 입력/);
-  assert.match(roomSource, /code\.length !== 4/);
+  assert.match(homeSource, /href="\/room\/"[^>]*>Room Code/);
+  assert.match(roomPage, /id="roomCode"[^>]*pattern="\[0-9\]\{4\}"[^>]*maxlength="4"/);
   assert.match(roomSource, /api\/room-entry\/resolve/);
 });
 

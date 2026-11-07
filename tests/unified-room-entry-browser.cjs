@@ -76,15 +76,17 @@ function ack(socket,event,payload) {return new Promise((resolve,reject)=>{
   const student=await context.newPage(), errors=[];
   student.on('pageerror',e=>errors.push(e.message));
   await student.goto(base+'/room/');
-  assert.equal(await student.locator('#roomCode').getAttribute('maxlength'),'6');
+  assert.equal(await student.locator('#roomCode').getAttribute('maxlength'),'4');
   await student.fill('#roomCode',arithmetic.roomCode);
   await student.click('button[type=submit]');
   await student.waitForURL('**/arithmetic/race?**');
-  await student.getByText('방장이 시작하면 문제지로 바로 이동합니다.').waitFor();
+  await student.locator('.math-race-wait-message').waitFor();
   assert.equal(await student.locator('.race-room-code').textContent(),arithmetic.roomCode);
   await post({action:'start',roomCode:arithmetic.roomCode,hostToken:arithmetic.hostToken});
-  await student.waitForURL('**/arithmetic/add-subtract-1?**');
-  assert.ok(new URL(student.url()).searchParams.get('participantToken'),'actual student credentials carried to worksheet');
+  await student.waitForURL('**/arithmetic/race/play?**');
+  const playParams = new URL(student.url()).searchParams;
+  assert.equal(playParams.get('room'), arithmetic.roomCode);
+  assert.ok(playParams.get('participantToken'),'actual student credentials carried to the race');
   await student.goto(base+'/room/');
   await student.fill('#roomCode',arithmetic.roomCode);await student.click('button[type=submit]');
   await student.getByText('이미 시작했거나 입장이 닫힌 방입니다.').waitFor();
@@ -95,13 +97,13 @@ function ack(socket,event,payload) {return new Promise((resolve,reject)=>{
   await student.waitForFunction(()=>document.querySelector('#join')?.style.display==='none',null,{timeout:45000});
   assert.equal(await student.locator('#hostBar').isVisible(),false,'student does not acquire host privileges');
   await student.goto(base+'/arithmetic/race');
-  await student.getByRole('heading',{name:'순위전 열기'}).waitFor();
+  await student.waitForURL(/\/arithmetic\/?$/);
   assert.equal(await student.getByRole('heading',{name:'방 참가',exact:true}).count(),0);
   // Ignore existing third-party/renderer failures only if explicitly known; new page errors fail the test.
   assert.deepEqual(errors,[]);
   await emptyRoomCheck;
   console.log('PASS: retired common quiz cannot open or restore; board games still create rooms and empty rooms expire');
-  console.log('PASS: real hub + arithmetic + voyage; four-digit allocation, main entry once, student auto-join, host start, worksheet handoff, closed room, private allocation auth');
+  console.log('PASS: real hub + arithmetic + voyage; four-digit allocation, main entry once, student auto-join, host start, race handoff, closed room, private allocation auth');
  } catch(error) {console.error(logs.slice(-5000));throw error;}
  finally {
   gameSockets.forEach(client=>client.close());socket?.close();if(browser)await browser.close();

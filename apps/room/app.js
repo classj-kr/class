@@ -4,25 +4,51 @@
   const input = document.getElementById("roomCode");
   const status = document.getElementById("status");
   const button = form.querySelector("button");
+  const codePattern = /^\d{4}$/;
+  const invalidCode = "방번호 4자리를 입력해 주세요.";
   const invitation = new URLSearchParams(location.search).get('code') || '';
-  if (/^(?:\d{4}|\d{6})$/.test(invitation)) input.value = invitation;
+  if (/^\d{6}$/.test(invitation)) {
+    location.replace(`/boards/?code=${invitation}`);
+    return;
+  }
+  if (codePattern.test(invitation)) input.value = invitation;
 
-  input.addEventListener("input", () => { input.value = input.value.replace(/\D/g, "").slice(0, 6); });
+  function showError(message) {
+    status.textContent = message;
+    status.classList.add("error");
+  }
+
+  function clearError() {
+    if (status.classList.contains("error")) status.textContent = "";
+    status.classList.remove("error");
+  }
+
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\D/g, "");
+    clearError();
+  });
+  input.addEventListener("paste", (event) => {
+    if (!event.clipboardData) return;
+    event.preventDefault();
+    const digits = event.clipboardData.getData("text").trim();
+    const { selectionStart, selectionEnd, value } = input;
+    if (!/^\d+$/.test(digits) || value.length - (selectionEnd - selectionStart) + digits.length > input.maxLength) {
+      showError(invalidCode);
+      return;
+    }
+    input.setRangeText(digits, selectionStart, selectionEnd, "end");
+    clearError();
+  });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const code = input.value.replace(/\D/g, "");
-    status.classList.remove("error");
-    if (code.length !== 4 && code.length !== 6) {
-      status.textContent = "방번호 4자리 또는 기존 게시판 번호 6자리를 입력해 주세요.";
-      status.classList.add("error");
+    const code = input.value;
+    if (!codePattern.test(code)) {
+      showError(invalidCode);
       input.focus();
       return;
     }
+    clearError();
     button.disabled = true;
-    if (code.length === 6) {
-      location.href = `/boards/?code=${encodeURIComponent(code)}`;
-      return;
-    }
     status.textContent = "방을 확인하고 있어요…";
     try {
       const response = await fetch(`/api/room-entry/resolve/${encodeURIComponent(code)}`, { cache: "no-store" });
@@ -39,8 +65,7 @@
       }
       location.href = destination.href;
     } catch (error) {
-      status.textContent = error.message;
-      status.classList.add("error");
+      showError(error.message);
       button.disabled = false;
       input.select();
     }
