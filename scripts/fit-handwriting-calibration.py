@@ -52,19 +52,35 @@ def vowel_type(b):
 
 
 def key_of(part, a, b, c):
+    """Keys for one part, most specific first. Table lookup uses the first key present."""
     t = vowel_type(b)
+    f = 1 if c else 0
     if part['kind'] == 'initial':
-        return f"i|{a}|{t}|{1 if c else 0}"
+        return ([f"i|{a}|{b}|{f}"] if t != 'v' else []) + [f"i|{a}|{t}|{f}"]
     if part['kind'] == 'vowel':
-        return f"v|{part['char']}|{t}|{1 if c else 0}"
+        return ([f"v|{part['char']}|{t}|{c}"] if c else []) + [f"v|{part['char']}|{t}|{f}"]
     if part['kind'] == 'final':
-        return f"f|{c}|{t}"
+        return ([f"f|{c}|{b}"] if t != 'v' else []) + [f"f|{c}|{t}"]
+    return []
+
+
+def lookup(table, keys):
+    for k in keys:
+        if k in table:
+            return table[k]
     return None
 
 
 def load_parts(chars):
-    proc = subprocess.run(['node', '-e', DUMP, str(SOURCE), json.dumps(chars, ensure_ascii=True)],
-                          capture_output=True, text=True, encoding='utf-8', check=True)
+    """Dump layout parts from a copy of the source whose calibration table is empty."""
+    import tempfile
+    src = SOURCE.read_text(encoding='utf-8')
+    raw = re.sub(r'(// CAL-BEGIN\n).*?(\n\s*// CAL-END)', lambda m: m.group(1) + '  const CALIBRATION = {};' + m.group(2), src, flags=re.S)
+    with tempfile.TemporaryDirectory() as d:
+        copy = Path(d) / 'font-source.js'
+        copy.write_text(raw, encoding='utf-8')
+        proc = subprocess.run(['node', '-e', DUMP, str(copy), json.dumps(chars, ensure_ascii=True)],
+                              capture_output=True, text=True, encoding='utf-8', check=True)
     return json.loads(proc.stdout)
 
 
@@ -79,14 +95,21 @@ def to_px(p):
 
 
 def transformed(part, p):
+    """Same transform and boundary clamp that calibrate() applies in font-source.js."""
     pts = np.array([q for path in part['paths'] for q in path], float)
     c = (pts.min(0) + pts.max(0)) / 2
-    out = []
-    for path in part['paths']:
-        a = np.array(path, float)
-        a = c + (a - c) * np.array([p[2], p[3]]) + np.array([p[0], p[1]])
-        out.append(a)
-    return out
+    arrays = [c + (np.array(path, float) - c) * np.array([p[2], p[3]]) + np.array([p[0], p[1]]) for path in part['paths']]
+    allp = np.concatenate(arrays)
+    l, t = allp.min(0)
+    r, d = allp.max(0)
+    k = 87 / (d - t) if d - t > 87 else 1.0
+    mid = (t + d) / 2
+    top, bottom = (t - mid) * k + mid, (d - mid) * k + mid
+    dx = 3 - l if l < 3 else 97 - r if r > 97 else 0.0
+    dy = 7.3 - top if top < 7.3 else 94.3 - bottom if bottom > 94.3 else 0.0
+    if dx or dy or k != 1.0:
+        arrays = [np.stack([a[:, 0] + dx, (a[:, 1] - mid) * k + mid + dy], axis=1) for a in arrays]
+    return arrays
 
 
 def render(parts_paths):
@@ -113,8 +136,8 @@ class Entry:
     def cost(self, table):
         paths = []
         by_part = []
-        for part, key in zip(self.parts, self.keys):
-            p = table.get(key)
+        for part, keys in zip(self.parts, self.keys):
+            p = lookup(table, keys)
             got = transformed(part, p) if p else [np.array(x, float) for x in part['paths']]
             by_part.append(got)
             paths.extend(got)
@@ -185,6 +208,7 @@ def main():
     ap.add_argument('--rounds', type=int, default=2)
     ap.add_argument('--dry', action='store_true')
     ap.add_argument('--min-chars', type=int, default=4)
+    ap.add_argument('--min-fine', type=int, default=5)
     args = ap.parse_args()
     ref = TTFont(args.reference)
     cmap = ref.getBestCmap()
@@ -202,21 +226,30 @@ def main():
     entries = {ch: Entry(ch, parts[ch], masks[ch]) for ch in chars if ch in parts}
     groups = collections.defaultdict(list)
     for e in entries.values():
-        for k in set(e.keys):
-            if k:
+        for keys in e.keys:
+            for k in keys:
                 groups[k].append(e)
-    groups = {k: v for k, v in groups.items() if len(v) >= args.min_chars}
-    print('groups:', len(groups), flush=True)
+    coarse_keys = {ks[-1] for e in entries.values() for ks in e.keys if ks}
+    coarse = {k: v for k, v in groups.items() if len(v) >= args.min_chars and k in coarse_keys}
+    fine = {k: v for k, v in groups.items() if len(v) >= args.min_fine and k not in coarse_keys}
+    print('coarse groups:', len(coarse), 'fine groups:', len(fine), flush=True)
     table: dict[str, list[float]] = {}
     base = total(list(entries.values()), table) / len(entries)
     print('start mean cost %.3f' % base, flush=True)
-    order = sorted(groups, key=lambda k: -len(groups[k]))
+    order = sorted(coarse, key=lambda k: -len(coarse[k]))
     for r in range(args.rounds):
-        for n, k in enumerate(order):
-            best, _ = fit_group(k, groups[k], table)
-            table[k] = best
+        for k in order:
+            table[k], _ = fit_group(k, coarse[k], table)
         mean = total(list(entries.values()), table) / len(entries)
         print(f'round {r + 1}: mean cost {mean:.3f} ({len(table)} groups)', flush=True)
+    parent = {k: ks[-1] for e in entries.values() for ks in e.keys for k in ks[:-1]}
+    for r in range(args.rounds):
+        for k in sorted(fine, key=lambda k: -len(fine[k])):
+            if k not in table:
+                table[k] = list(table.get(parent[k], [0.0, 0.0, 1.0, 1.0]))
+            table[k], _ = fit_group(k, fine[k], table)
+        mean = total(list(entries.values()), table) / len(entries)
+        print(f'fine round {r + 1}: mean cost {mean:.3f} ({len(table)} groups)', flush=True)
     if args.dry:
         return
     rounded = {k: [round(v[0], 2), round(v[1], 2), round(v[2], 3), round(v[3], 3)] for k, v in sorted(table.items())}
