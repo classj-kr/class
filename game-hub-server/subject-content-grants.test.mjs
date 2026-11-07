@@ -170,6 +170,10 @@ test("an existing math tool grant opens its catalog without unlocking sibling to
     assert.equal(await isOpen(query, 1, catalog), true);
     assert.equal(await isOpen(query, 1, `${catalog}/index.html`), true);
     assert.equal(await isOpen(query, 1, `${catalog}/tools.css`, catalog), true);
+    for (const asset of ['math.js', 'ui.js', 'ui.css', 'fonts/STIXTwoMath-Regular.woff2']) {
+      assert.equal(await isOpen(query, 1, `${catalog}/assets/${asset}`, catalog), true,
+        'one math tool grant also opens the shared manipulative assets');
+    }
     assert.equal(await isOpen(query, 1, `${catalog}/number-models`), true);
     assert.equal(await isOpen(query, 1, `${catalog}/fraction-board`), false);
     assert.equal(await isOpen(query, 1, `${catalog}/fraction-board/style.css`, `${catalog}/fraction-board`), false);
@@ -180,6 +184,8 @@ test("an existing math tool grant opens its catalog without unlocking sibling to
     assert.equal(await isOpen(query, 2, catalog), true);
     assert.equal(await isOpen(query, 2, `${catalog}/graph-studio`), true);
     assert.equal(await isOpen(query, 2, `${catalog}/number-models`), false);
+    assert.equal(await isOpen(query, 2, `${catalog}/assets/math.js`, catalog), true);
+    assert.equal(await isOpen(query, 2, `${catalog}/solid-nets`), false, 'shared assets do not open another lesson');
   });
 });
 

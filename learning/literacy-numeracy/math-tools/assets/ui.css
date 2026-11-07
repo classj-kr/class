@@ -1,0 +1,363 @@
+@font-face {
+  font-family: ToolMath;
+  src: url("fonts/STIXTwoMath-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  color-scheme: light;
+  color: #304a41;
+  background: #f6f4ee;
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: radial-gradient(ellipse at 50% 35%, #fffefa, #f6f4ee 75%);
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+button,
+select,
+input[type="number"],
+input[type="text"] {
+  min-height: 42px;
+  border: 1px solid #cfd9d0;
+  border-radius: 10px;
+  background: #fffefa;
+  padding: 7px 12px;
+}
+button,
+select {
+  cursor: pointer;
+}
+button:hover:enabled {
+  background: #e5ede4;
+}
+button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+button[aria-pressed="true"] {
+  background: #e1eee5;
+  border-color: #699a81;
+}
+button.primary {
+  background: #305f50;
+  border-color: #305f50;
+  color: #fff;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #719bcb;
+  outline-offset: 3px;
+}
+input[type="range"] {
+  accent-color: #347c68;
+  min-width: 80px;
+  cursor: pointer;
+}
+input[type="checkbox"] {
+  accent-color: #347c68;
+  width: 17px;
+  height: 17px;
+}
+input[type="number"] {
+  width: 82px;
+}
+input[type="text"] {
+  width: 110px;
+}
+button.icon {
+  width: 42px;
+  padding: 0;
+  font-size: 23px;
+  line-height: 1;
+}
+[hidden] {
+  display: none !important;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.math {
+  font-family: ToolMath, "Cambria Math", serif;
+}
+.toolbar {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: max(12px, env(safe-area-inset-top)) 66px 10px;
+}
+.toolbar .history {
+  display: flex;
+  gap: 4px;
+}
+.workspace {
+  padding: 0 16px max(20px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.stage-wrap {
+  position: relative;
+  width: min(1100px, 100%);
+}
+.stage {
+  display: block;
+  width: 100%;
+  max-height: calc(100dvh - 210px);
+  min-height: 260px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: visible;
+}
+.stage * {
+  pointer-events: none;
+}
+.stage:focus {
+  outline: none;
+}
+.stage:focus-visible {
+  outline: 2px solid #719bcb;
+  outline-offset: 3px;
+  border-radius: 16px;
+}
+.stage text {
+  fill: #304a41;
+  font-family: "Malgun Gothic", system-ui, sans-serif;
+  font-size: 20px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.stage text.number {
+  font-family: ToolMath, "Cambria Math", serif;
+}
+.stage .grid {
+  stroke: #dce2d7;
+  stroke-width: 1;
+}
+.stage .guide {
+  stroke: #829a8a;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+  fill: none;
+}
+.stage .handle {
+  stroke: #fffefa;
+  stroke-width: 3;
+  fill: #327d69;
+}
+.stage .paper {
+  fill: #fffdf7;
+  stroke: #d6ddcf;
+  stroke-width: 1.5;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 9px 14px;
+  width: min(100%, 1000px);
+}
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+.control input[type="range"] {
+  width: 135px;
+}
+.control output {
+  min-width: 34px;
+  font-variant-numeric: tabular-nums;
+}
+.compact {
+  font-size: 13px;
+  min-height: 35px;
+  padding: 5px 10px;
+}
+.measurements {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 20px;
+  min-height: 27px;
+}
+.measurements .label {
+  font-size: 14px;
+  font-family: "Malgun Gothic", system-ui, sans-serif;
+}
+.measurements:empty {
+  display: none;
+}
+.swatches {
+  display: flex;
+  gap: 5px;
+}
+.swatches button {
+  width: 37px;
+  height: 40px;
+  min-height: 40px;
+  padding: 6px;
+  border-radius: 50%;
+  background: #fffefa;
+}
+.swatches button::before {
+  content: "";
+  display: block;
+  width: 23px;
+  height: 23px;
+  background: var(--color);
+  border-radius: 50%;
+}
+.swatches button[aria-pressed="true"] {
+  outline: 2px solid var(--color);
+  outline-offset: 1px;
+}
+.unit-note {
+  font-size: 12px;
+  color: #6f7c6d;
+  text-align: center;
+  margin: 0;
+}
+.data-panel {
+  width: min(100%, 840px);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.data-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.data-row .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color);
+}
+.data-row input[type="number"] {
+  width: 75px;
+}
+.data-row input[type="text"] {
+  width: 100px;
+}
+#notice {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: #304a41;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 16px;
+  max-width: calc(100% - 24px);
+  width: max-content;
+  font-size: 14px;
+  box-shadow: 0 5px 20px #18302122;
+}
+.unified-settings-help ul {
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.unified-settings-help li + li {
+  margin-top: 8px;
+}
+@media (max-width: 600px) {
+  .toolbar {
+    padding: 60px 10px 9px;
+    gap: 5px;
+  }
+  .toolbar button,
+  .toolbar select {
+    font-size: 13px;
+    padding: 7px 9px;
+  }
+  .toolbar .icon {
+    width: 36px;
+    padding: 0;
+    font-size: 22px;
+  }
+  .workspace {
+    padding-left: 8px;
+    padding-right: 8px;
+    gap: 12px;
+  }
+  .stage {
+    min-height: 220px;
+    max-height: calc(100dvh - 290px);
+  }
+  .controls {
+    gap: 8px 10px;
+  }
+  .control {
+    font-size: 12px;
+    gap: 5px;
+  }
+  .control input[type="range"] {
+    width: 104px;
+  }
+  .control input[type="number"] {
+    width: 65px;
+    min-height: 38px;
+    padding: 6px;
+  }
+  .control output {
+    min-width: 25px;
+  }
+  .measurements {
+    font-size: 18px;
+    gap: 10px;
+  }
+  .data-row {
+    gap: 3px;
+  }
+  .data-row input[type="text"] {
+    width: 77px;
+    font-size: 12px;
+  }
+  .data-row input[type="number"] {
+    width: 60px;
+  }
+  .unit-note {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+.stage {
+  overflow: hidden;
+}

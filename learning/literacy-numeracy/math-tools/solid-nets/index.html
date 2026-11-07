@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>입체도형·전개도 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <style>
+      .stage-wrap {
+        max-width: 850px;
+      }
+      .stage {
+        min-height: 310px;
+        max-height: calc(100dvh - 260px);
+      }
+      .stage {
+        cursor: grab;
+      }
+      .stage:active {
+        cursor: grabbing;
+      }
+      .properties {
+        font-size: 17px;
+      }
+      @media (max-width: 600px) {
+        .stage {
+          min-height: 320px;
+        }
+      }
+    </style>
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">입체도형·전개도</h1>
+    <div class="toolbar">
+      <select id="shape" aria-label="입체도형 종류">
+        <option value="cube">정육면체</option>
+        <option value="cuboid">직육면체</option>
+        <option value="prism3">삼각기둥</option>
+        <option value="prism5">오각기둥</option>
+        <option value="prism6">육각기둥</option>
+        <option value="pyramid3">삼각뿔</option>
+        <option value="pyramid4">사각뿔</option>
+        <option value="cylinder">원기둥</option>
+        <option value="cone">원뿔</option>
+        <option value="sphere">구</option></select
+      ><select id="net" aria-label="정육면체 전개도"></select
+      ><button id="colors" aria-pressed="true">면 색</button
+      ><button id="details" aria-pressed="false">구성 요소</button>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button>
+    </div>
+    <main class="workspace">
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 700 580"
+          tabindex="0"
+          role="group"
+          aria-label="끌어서 돌리고 펼칠 수 있는 입체 모형"
+        ></svg>
+      </div>
+      <div class="controls">
+        <label id="width-control" class="control"
+          ><span id="width-label">모서리</span
+          ><input id="width" type="range" min="1" max="6" /><output
+            id="width-value"
+          ></output></label
+        ><label id="depth-control" class="control" hidden
+          >세로<input id="depth" type="range" min="1" max="6" /><output
+            id="depth-value"
+          ></output></label
+        ><label id="height-control" class="control" hidden
+          >높이<input id="height" type="range" min="1" max="6" /><output
+            id="height-value"
+          ></output></label
+        ><label id="radius-control" class="control" hidden
+          ><span id="radius-label">반지름</span
+          ><input id="radius" type="range" min="1" max="4" /><output
+            id="radius-value"
+          ></output
+        ></label>
+      </div>
+      <div class="controls">
+        <div id="fold-controls" class="controls" style="width: auto">
+          <button id="solid" class="primary">입체</button
+          ><label class="control"
+            >펼침<input
+              id="fold"
+              type="range"
+              min="0"
+              max="100"
+              aria-label="전개도 펼침 정도" /></label
+          ><button id="unfold">전개도</button>
+        </div>
+        <button id="view">시점 되돌리기</button>
+      </div>
+      <output id="properties" class="measurements properties"></output>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span
+    ><template id="tool-help"
+      ><ul>
+        <li>
+          모형을 끌어 여러 방향에서 살펴봐요. 방향키로도 시점을 바꿀 수 있어요.
+        </li>
+        <li>
+          입체·전개도 버튼이나 펼침 슬라이더로 면이 접히는 모습을 천천히 볼 수
+          있어요. 같은 색은 같은 면이에요.
+        </li>
+        <li>정육면체 전개도는 회전·뒤집기를 같은 것으로 보면 11가지예요.</li>
+        <li>
+          원기둥의 옆면을 펼치면 가로가 밑면의 원주, 세로가 높이인 직사각형이
+          돼요.
+        </li>
+        <li>
+          초등 교과서 범위에 맞춰 각뿔·원뿔은 입체로 관찰해요. 구에는 평면에
+          그대로 펼치는 전개도가 없어요.
+        </li>
+        <li>
+          길이의 단위는 모형의 한 단위예요. 직육면체·정육면체는 겉넓이와 부피도
+          표시할 수 있어요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>

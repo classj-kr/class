@@ -34,8 +34,8 @@ class/
 통합 서버가 연산·세계 항해 앱을 실행하고 같은 사이트 경로로 연결합니다.
 `/hanguksa`는 정적 한국사 화면 `/learning/inquiry/korean-history/`로 연결합니다.
 
-수학 탐구 교구는 `learning/literacy-numeracy/math-tools/`에 모읍니다. 쌓기나무는 `stacking-cubes/`,
-수 모형은 `number-models/`, 분수 모형은 `fraction-board/`, 지오보드는 `geoboard/`, 그래프 그리기는 `graph-studio/`이며,
+수학 탐구 교구 14종은 `learning/literacy-numeracy/math-tools/`에 모읍니다.
+[교구 구성·교육과정 근거](learning/literacy-numeracy/math-tools/README.md)를 참고하세요.
 홈의 **문해·수리 → 수리 → 수학 교구**에서 엽니다. 이전 `/learning/inquiry/math/` 주소는
 하위 교구·순위전·문제은행과 방번호를 포함해 새 주소로 이동합니다. 공개·잠금 설정의 주소는
 서버 시작 때 이전하며, 개인 저장 공간과 문제은행의 식별자는 유지합니다.

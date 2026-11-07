@@ -156,13 +156,18 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await page.locator(mathEntry).click();
     await page.waitForURL(base + mathCatalog);
     await page.addStyleTag({ url: base + '/assets/exam-typography.css' });
-    assert.equal(await page.locator('.tool').count(), 5);
+    assert.equal(await page.locator('.tool').count(), 14);
     const cardFonts = await page.locator('.tool :is(h2, p)').evaluateAll(nodes => nodes.map(node => getComputedStyle(node).fontFamily));
     assert.ok(cardFonts.every(font => font.startsWith(menuFont.split(',')[0])), 'the injected textbook font must not affect menu cards');
     const fractionCard = page.locator(`.tool[href="${mathCatalog}fraction-board/"]`);
     const graphCard = page.locator(`.tool[href="${graphStudio}"]`);
     const geoboardCard = page.locator(`.tool[href="${mathCatalog}geoboard/"]`);
     await geoboardCard.and(page.locator('[aria-disabled="true"]')).waitFor();
+    for (const slug of ['number-line', 'clock', 'geometry-tools', 'pattern-blocks', 'area-lab', 'solid-nets', 'measure-lab', 'data-graphs', 'probability']) {
+      const card = page.locator(`.tool[href="${mathCatalog}${slug}/"]`);
+      await card.and(page.locator('[aria-disabled="true"]')).waitFor();
+      assert.equal(await card.locator('.tool-state').textContent(), '선생님 공개 대기');
+    }
     assert.equal(await geoboardCard.locator('.tool-state').textContent(), '선생님 공개 대기');
     await fractionCard.and(page.locator('[aria-disabled="true"]')).waitFor();
     assert.equal(await fractionCard.locator('.tool-state').textContent(), '선생님 공개 대기');
@@ -194,10 +199,10 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     assert.equal(puts.length, 0);
     assert.equal(await numeracy.locator('a[href="/arithmetic"]').isVisible(), false);
     await page.locator(mathEntry).click();
-    await waitFor(page, 5);
+    await waitFor(page, 14);
     assert.equal(page.url(), base + '/');
     assert.deepEqual(puts.map((item) => item.path).sort(), [
-      'fraction-board', 'geoboard', 'graph-studio', 'number-models', 'stacking-cubes'
+      'area-lab', 'clock', 'data-graphs', 'fraction-board', 'geoboard', 'geometry-tools', 'graph-studio', 'measure-lab', 'number-line', 'number-models', 'pattern-blocks', 'probability', 'solid-nets', 'stacking-cubes'
     ].map((tool) => mathCatalog + tool));
     assert.ok(puts.every((item) => item.enabled === true));
 

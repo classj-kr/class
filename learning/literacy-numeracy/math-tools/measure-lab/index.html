@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>저울·들이 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <style>
+      @media (max-width: 600px) {
+        .stage text:not(.weight-label) {
+          font-size: 28px !important;
+        }
+      }
+    </style>
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">저울·들이</h1>
+    <div class="toolbar">
+      <select id="mode" aria-label="모형 선택">
+        <option value="mass">저울</option>
+        <option value="volume">들이</option></select
+      ><button id="values" aria-pressed="true">값 표시</button>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button>
+    </div>
+    <main class="workspace">
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 1000 600"
+          tabindex="0"
+          role="group"
+          aria-label="무게와 들이를 비교하는 모형"
+        ></svg>
+      </div>
+      <div id="mass-controls" class="controls">
+        <select id="side" aria-label="추를 놓을 접시">
+          <option value="left">왼쪽</option>
+          <option value="right">오른쪽</option></select
+        ><button data-weight="0">＋100 g</button
+        ><button data-weight="1">＋500 g</button
+        ><button data-weight="2">＋1 kg</button
+        ><select id="remove-weight" aria-label="뺄 추">
+          <option value="0">100 g</option>
+          <option value="1">500 g</option>
+          <option value="2">1 kg</option></select
+        ><button id="remove">한 개 빼기</button
+        ><button id="empty">접시 비우기</button>
+      </div>
+      <div id="volume-controls" class="controls" hidden>
+        <select id="capacity" aria-label="용기 용량">
+          <option value="1000">1 L 용기</option>
+          <option value="2000">2 L 용기</option></select
+        ><label class="control"
+          >A<input
+            id="water-a"
+            type="range"
+            min="0"
+            max="2000"
+            step="50"
+            aria-label="A의 물의 양" /></label
+        ><label class="control"
+          >B<input
+            id="water-b"
+            type="range"
+            min="0"
+            max="2000"
+            step="50"
+            aria-label="B의 물의 양" /></label
+        ><select id="amount" aria-label="옮길 물의 양">
+          <option value="50">50 mL</option>
+          <option value="100">100 mL</option>
+          <option value="250">250 mL</option>
+          <option value="500">500 mL</option></select
+        ><button id="pour-right">A → B</button
+        ><button id="pour-left">B → A</button>
+      </div>
+      <output id="result" class="measurements math"></output>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span
+    ><template id="tool-help"
+      ><ul>
+        <li>
+          접시를 고르고 추를 놓아요. 1 kg과 1000 g처럼 같은 무게를 다른 추로
+          나타내 보세요.
+        </li>
+        <li>
+          접시가 내려가는 쪽이 더 무거워요. 추를 다른 접시로 끌어 옮길 수도
+          있어요.
+        </li>
+        <li>물 높이를 끌거나 슬라이더로 양을 바꿔요. 1 L는 1000 mL예요.</li>
+        <li>
+          옮기기에서는 물의 전체 양이 유지돼요. 남은 물이나 빈 공간이 부족하면
+          가능한 양만 옮겨요.
+        </li>
+        <li>
+          용기를 줄일 때 들어 있는 물보다 작게 바꿀 수는 없어요. 화면의 용기는
+          실제 크기가 아닌 모형이에요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>

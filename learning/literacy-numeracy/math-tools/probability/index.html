@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>가능성 실험 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <style>
+      .stage-wrap {
+        max-width: 900px;
+      }
+      .stage {
+        min-height: 300px;
+      }
+      .frequency {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .frequency > div {
+        padding: 8px 14px;
+        border: 1px solid #d6dfd3;
+        border-radius: 12px;
+        font-size: 15px;
+        display: flex;
+        gap: 9px;
+        align-items: center;
+      }
+      .frequency i {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .frequency strong {
+        font-size: 21px;
+      }
+      .weight {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .weight input {
+        width: 62px;
+      }
+      .weight i {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+      }
+    </style>
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">가능성 실험</h1>
+    <div class="toolbar">
+      <select id="mode" aria-label="실험 도구">
+        <option value="coin">동전</option>
+        <option value="dice">주사위</option>
+        <option value="spinner">회전판</option></select
+      ><button id="theory" aria-pressed="false">가능성</button>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button>
+    </div>
+    <main class="workspace">
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 900 560"
+          role="img"
+          aria-label="무작위 가능성 실험"
+        ></svg>
+      </div>
+      <div id="weights" class="controls" hidden></div>
+      <div class="controls">
+        <button id="once" class="primary">1번 실험</button
+        ><button id="ten">10번</button><button id="hundred">100번</button
+        ><button id="clear">기록 비우기</button>
+      </div>
+      <div id="frequency" class="frequency" aria-label="결과별 나온 횟수"></div>
+      <output id="total" class="measurements"></output>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span
+    ><template id="tool-help"
+      ><ul>
+        <li>
+          동전·주사위·회전판을 실험하고 결과가 나온 횟수를 비교해요. 앞의 결과가
+          다음 결과를 결정하지 않아요.
+        </li>
+        <li>
+          ‘가능성’을 켜면 도구의 구조로 계산한 가능성이 보여요. 실험에서 나온
+          비율과 항상 같지는 않아요.
+        </li>
+        <li>
+          회전판의 색별 칸 수를 바꿀 수 있어요. 칸 수를 바꾸면 이전 실험 기록은
+          비워져요.
+        </li>
+        <li>
+          동전은 앞·뒤, 주사위는 여섯 눈이 각각 같은 가능성으로 나오도록 뽑아요.
+          회전판은 색별 칸 수만큼 가능성이 달라져요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>
