@@ -36,6 +36,8 @@
 
     const saved = { lessons: {} };
     let currentLessonIndex = 0;
+    // 순위전 범위: 차시를 풀거나 막 끝낸 동안 그 차시(순위전은 처음 차시부터 거기까지를 낸다).
+    window.currentRaceRange = () => (!elements.lessonScreen.hidden || !elements.resultScreen.hidden ? String(currentLessonIndex + 1) : "");
     let taskIndex = 0;
     let score = 0;
     let selectedChoice = null;

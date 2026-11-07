@@ -248,8 +248,8 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
         gained = Core.points(p.combo);
         p.correct += 1;
         p.blocks = [...p.blocks, q.block].slice(-60);
-        // 맞힌 말 모음: 영단어는 영어 낱말, 나머지는 정답 보기(속담·관용어·한자성어·바른 맞춤법).
-        p.words = [...(p.words || []), q.set === 'vocabulary' ? q.text : q.choices[q.answer]].slice(-60);
+        // 맞힌 말 모음: 영단어는 영어 낱말, 한자는 물은 한자(collect), 나머지는 정답 보기(속담·관용어·한자성어·바른 맞춤법).
+        p.words = [...(p.words || []), q.collect || (q.set === 'vocabulary' ? q.text : q.choices[q.answer])].slice(-60);
       } else {
         // 틀릴 때마다 1점씩 깎고 같은 문제를 다시 고른다. 점수는 0 아래로도 내려간다.
         p.combo = 0;

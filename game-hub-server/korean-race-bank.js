@@ -27,6 +27,23 @@ function idiomLessons() {
   vm.runInContext(read('classical-chinese-idioms/idioms-lessons-data.js'), context, { filename: 'idioms-lessons-data.js', timeout: 3000 });
   return context.IDIOM_LESSONS || [];
 }
+// 한자 단계 문제는 진도표의 단계마다 문제 풀기 화면(v2/quiz/NN/index.html)에 JSON으로 심겨 있다.
+function hanjaStages() {
+  const dir = path.join(APPS, 'hanja-meaning/v2/quiz');
+  return fs.readdirSync(dir).filter((name) => /^\d+$/.test(name)).sort((a, b) => Number(a) - Number(b)).map((name) => {
+    const items = attempt(`한자 ${Number(name)}단계`, () => {
+      const html = fs.readFileSync(path.join(dir, name, 'index.html'), 'utf8');
+      const block = /<script type="application\/json" id="quiz-data">([\s\S]*?)<\/script>/.exec(html);
+      if (!block) throw new Error('문항 묶음(quiz-data)이 없습니다');
+      return JSON.parse(block[1]);
+    }, []);
+    return { stage: Number(name), items };
+  });
+}
+// 낱말만으로는 뜻이 갈려 예문을 다 보여 줄 문항: "목표 한자|정답 낱말"
+function hanjaWhole() {
+  return new Set(JSON.parse(read('hanja-meaning/race-full-sentence.json')).items.map((item) => `${item.target}|${item.answer}`));
+}
 function attempt(label, load, fallback) {
   try { return load(); }
   catch (error) {
@@ -50,6 +67,9 @@ function loadSources() {
     proverbLessonFor: proverbBanks ? attempt('속담 차시', () => proverbLessonFor(proverbBanks), null) : null,
     expressions: attempt('관용어', () => require(path.join(APPS, 'idiomatic-expressions/idiomatic-expressions-data.js')), []),
     vocabulary: attempt('영단어', () => JSON.parse(read('vocabulary/assets/data/english-vocabulary-3000-v2.json')).words, []),
+    hanja: attempt('한자', hanjaStages, []),
+    hanjaWhole: attempt('한자 예문 목록', hanjaWhole, new Set()),
+    sentences: attempt('문장 고르기', () => browserGlobals(['sentence-building/curriculum.js']).SENTENCE_COURSE, null),
   };
 }
 

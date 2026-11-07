@@ -192,7 +192,100 @@
     });
   }
 
-  // sources: { spelling, idioms: { data, core }, proverbs, expressions, vocabulary }
+  // 한자: 진도표 단계마다 있는 「문제 풀기」 문항을 그대로 쓴다(단계 = 범위의 차례 번호).
+  // 보기 문장({{낱말}} 표시)은 순위전에서 읽기 길어서, 밑줄 낱말 앞뒤 몇 마디만 남긴다.
+  // 낱말만으로는 다른 한자 낱말로도 읽히는 문항(whole 목록)은 예문이 뜻을 정해 주므로 문장을 다 보여 준다.
+  // 보기의 밑줄 자리는 {{낱말}} 그대로 보낸다. 화면은 이것을 글자로 받아 밑줄 친 낱말로 그린다.
+  const unmark = (text) => String(text).replace(/\{\{([^{}]*)\}\}/g, '$1');
+  function hanjaClip(sentence, word, whole) {
+    const mark = `{{${word}}}`, at = String(sentence).indexOf(mark);
+    if (!word || at < 0) return null;
+    let before = unmark(sentence.slice(0, at)), after = unmark(sentence.slice(at + mark.length));
+    if (!whole) {
+      // 앞으로 여덟 자, 뒤로 아홉 자 안쪽의 마디만. 낱말에 붙은 마디(조사 등)는 늘 남긴다.
+      const head = before.split(' '), keep = [head.pop()];
+      while (head.length && keep.join(' ').length + head[head.length - 1].length + 1 <= 8) keep.unshift(head.pop());
+      before = (head.length ? '…' : '') + keep.join(' ');
+      const tail = after.split(' '), take = [tail.shift()];
+      while (tail.length && take.join(' ').length + tail[0].length + 1 <= 9) take.push(tail.shift());
+      after = take.join(' ') + (tail.length ? '…' : '');
+      after = after.replace(/[,·]+…$/, '…');
+    }
+    return `${before}{{${word}}}${after}`;
+  }
+  function hanja(stages, whole) {
+    const out = [];
+    for (const { stage, items } of stages || []) {
+      for (const item of items || []) {
+        const options = Array.isArray(item?.options) ? item.options : [];
+        const right = options.filter((o) => o && o.correct);
+        // 보기가 넷이고 정답이 하나인 문항만(드문 한자는 보기가 셋뿐인 문항이 있다).
+        if (options.length !== 4 || right.length !== 1 || !item.target) continue;
+        const huneum = options.every((o) => o.word === o.sentence);
+        const full = Boolean(whole && whole.has(`${item.target}|${right[0].word}`));
+        const labels = options.map((o) => (huneum ? String(o.word || '').trim() : hanjaClip(o.sentence, o.word, full)));
+        if (labels.some((label) => !label) || new Set(labels).size !== labels.length) continue;
+        const answer = labels[options.indexOf(right[0])];
+        const sound = item.reading ? `${item.target}(${item.reading})` : item.target;
+        out.push({
+          key: `hanja:${item.target}|${right[0].word}`,
+          level: 'all',
+          lesson: Number(stage) || null,
+          make: (random) => ({
+            set: 'hanja',
+            ask: huneum ? '이 한자의 훈과 음은?' : '밑줄 친 말에 이 한자가 들어가지 않은 것은?',
+            text: huneum ? item.target : sound,
+            ...choiceSet(answer, labels.filter((label) => label !== answer), random),
+            explain: item.note || '',
+            block: item.target,
+            // 맞힌 말 모음에는 보기 문장 대신 한자를 모은다.
+            collect: sound,
+          }),
+        });
+      }
+    }
+    return out;
+  }
+
+  // 문장 고르기: 차시마다 있는 고르기 문제(choice)만 쓴다. 여러 개 고르기·차례 맞추기·쓰기는 순위전 꼴이 아니다.
+  // 화면처럼 지시문(prompt)과 상황 글(scene)을 함께 보인다. 상황 글이 없으면 지시문을 문제 글자리에 크게 둔다.
+  const CIRCLED = /^[①-⑳]$/;
+  function sentences(course) {
+    const out = [];
+    (course?.lessons || []).forEach((lesson, index) => {
+      (lesson?.tasks || []).forEach((task, taskIndex) => {
+        if (task?.type !== 'choice' || !Array.isArray(task.options) || !Number.isInteger(task.answer) || !task.prompt) return;
+        const options = Array.from(task.options, (option) => String(option).trim());
+        const answer = options[task.answer];
+        if (!answer || options.some((option) => !option) || new Set(options).size !== options.length) return;
+        const scene = String(task.scene || '').trim();
+        // ①②③… 번호가 붙은 문단은 번호마다 줄을 바꿔 읽기 쉽게 한다.
+        const text = /②/.test(scene) ? scene.replace(/\s*([②-⑳])/g, '\n$1') : scene;
+        // ①~⑤ 문장 번호를 고르는 문제: 보기 차례를 그대로 두고, 맞힌 말에는 그 번호의 문장을 모은다.
+        const numbered = options.every((option) => CIRCLED.test(option));
+        const keep = numbered || task.shuffleOptions === false;
+        const at = numbered ? scene.indexOf(answer) : -1;
+        const picked = at >= 0 ? scene.slice(at + answer.length).split(/[①-⑳]/)[0].trim() : answer;
+        out.push({
+          key: `sentences:${lesson.id || index + 1}:${taskIndex}`,
+          level: 'all',
+          lesson: index + 1,
+          make: (random) => ({
+            set: 'sentences',
+            ask: scene ? task.prompt : '',
+            text: scene ? text : task.prompt,
+            ...(keep ? { choices: options, answer: task.answer } : choiceSet(answer, options.filter((option) => option !== answer), random)),
+            explain: task.explain || '',
+            block: firstChar(picked || answer),
+            collect: picked || answer,
+          }),
+        });
+      });
+    });
+    return out;
+  }
+
+  // sources: { spelling, idioms: { data, core }, proverbs, expressions, vocabulary, hanja: [{ stage, items }], hanjaWhole: Set, sentences: SENTENCE_COURSE }
   function buildPools(sources = {}) {
     return {
       spelling: spelling(sources.spelling, sources.spellingLessons),
@@ -200,6 +293,8 @@
       proverbs: proverbs(sources.proverbs, sources.proverbLessonFor),
       expressions: expressions(sources.expressions),
       vocabulary: vocabulary(sources.vocabulary),
+      hanja: hanja(sources.hanja, sources.hanjaWhole),
+      sentences: sentences(sources.sentences),
     };
   }
   function poolFor(pools, set, level, mixedParts, range) {
@@ -241,5 +336,5 @@
   function publicQuestion(q, index, label, tried = []) {
     return { no: index, set: q.set, label, ask: q.ask, text: q.text, choices: q.choices, tried };
   }
-  return { shuffle, shortMeaning, buildPools, poolFor, makeRound, publicQuestion };
+  return { shuffle, shortMeaning, hanjaClip, buildPools, poolFor, makeRound, publicQuestion };
 });

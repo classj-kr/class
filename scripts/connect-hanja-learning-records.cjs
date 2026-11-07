@@ -17,7 +17,9 @@ function walk(dir) {
       if (start < 0 || end < 0) throw new Error('Unknown lesson script: ' + file);
       html = html.slice(0, start) + html.slice(end);
     } else continue;
-    html = html.replace('</body>', '<script src="/assets/learning-records.js?v=20261001-1"></script><script src="/assets/learning-hanja.js?v=20261107-1"></script></body>');
+    // 단계 문제 화면은 순위전 바로 가기(race-link)를 기록 단추 옆으로 옮기는 판이 필요하다.
+    const records = html.includes('id="quiz-data"') ? '20261107-race-range' : '20261001-1';
+    html = html.replace('</body>', `<script src="/assets/learning-records.js?v=${records}"></script><script src="/assets/learning-hanja.js?v=20261107-1"></script></body>`);
     fs.writeFileSync(file, html); count++;
   }
 }

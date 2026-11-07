@@ -1,4 +1,4 @@
-// 문해력 순위전(맞춤법·한자성어·속담·관용어·영단어): 서버와 화면이 같은 규칙으로 점수·순위·팀 점수를 센다.
+// 문해력 순위전(맞춤법·한자성어·속담·관용어·영단어·한자): 서버와 화면이 같은 규칙으로 점수·순위·팀 점수를 센다.
 (function (root, factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
@@ -13,8 +13,12 @@
     expressions: { label: '관용어', emoji: '👄', app: '/learning/literacy-numeracy/idiomatic-expressions', choices: 3 },
     mixed: { label: '국어 종합', emoji: '🎲', app: '', choices: 0 },
     vocabulary: { label: '영단어', emoji: '🔤', app: '/learning/literacy-numeracy/vocabulary', choices: 4, levels: [['elementary', '초'], ['middle_common', '중'], ['advanced', '고']] },
+    // 한자는 진도표 25단계를 범위(RANGE_SETS)로 고른다.
+    hanja: { label: '한자', emoji: '字', app: '/learning/literacy-numeracy/hanja-meaning', choices: 4 },
+    // 문장 고르기는 차시마다 있는 고르기 문제만 낸다(①~⑤ 문장 번호를 고르는 문제는 보기가 다섯).
+    sentences: { label: '문장 고르기', emoji: '🧩', app: '/learning/literacy-numeracy/sentence-building', choices: 4 },
   };
-  // 국어 종합은 국어 네 가지를 섞는다(영단어는 빼 둔다).
+  // 국어 종합은 국어 네 가지를 섞는다(영단어·한자는 단계가 따로 있어 빼 둔다).
   const MIXED_PARTS = ['spelling', 'idioms', 'proverbs', 'expressions'];
   const DURATIONS = [60, 90, 120, 180];
   const RACERS = ['🐯', '🦊', '🐰', '🐻', '🐼', '🐧', '🦉', '🐸', '🐨', '🦁', '🐳', '🦄', '🐢', '🐙', '🦋', '🐝', '🐬', '🦔', '🐿️', '🦦', '🐤', '🐮', '🐹', '🐺'];
@@ -29,9 +33,9 @@
   const MIN_ANSWER_MS = 800;
   // 여러 번 만에 맞히면 풀이를 잠깐 보여 준다.
   const REVEAL_MS = 1500;
-  // 팀전: 해·달·별… 팀마다 1~6명. 모두가 모은 점수를 합쳐 겨룬다.
+  // 팀전: 해·달·별… 팀마다 1~6명, 팀은 여덟까지. 모두가 모은 점수를 합쳐 겨룬다.
   const TEAM_MAX = 6;
-  const TEAM_COUNTS = [2, 3, 4, 5, 6];
+  const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];
   const TEAMS = [
     { name: '해', emoji: '☀️', hue: 30 },
     { name: '달', emoji: '🌙', hue: 225 },
@@ -39,6 +43,8 @@
     { name: '구름', emoji: '☁️', hue: 195 },
     { name: '꽃', emoji: '🌸', hue: 330 },
     { name: '숲', emoji: '🌲', hue: 140 },
+    { name: '산', emoji: '⛰️', hue: 0 },
+    { name: '바다', emoji: '🌊', hue: 265 },
   ];
   // 블록 열 개가 한 층이 된다(연산의 십 모형처럼).
   const FLOOR = 10;
@@ -83,12 +89,15 @@
   }
   // 학습 화면에서 보던 범위만 내는 순위전. 영단어는 "1"=Level 1(200단어), "1-4"=Level 1의 4차시(20단어),
   // 나머지는 "3"=3차시. 앞에 "~"를 붙이면 맨 처음 차시부터 그 자리까지 모두 낸다.
-  const RANGE_SETS = { vocabulary: { units: 15, lessons: 10 }, spelling: { lessons: 99 }, idioms: { lessons: 99 }, proverbs: { lessons: 99 }, expressions: { lessons: 99 } };
+  // 한자는 "5"=5단계, "~5"=1~5단계. 순위전 화면에서 단계를 바로 고를 수 있다(pick).
+  // 문장 고르기는 한 차시에 고르기 문제가 셋뿐이라 "처음부터 거기까지"만 낸다(uptoOnly). 1차시까지면 전체로 낸다.
+  const RANGE_SETS = { vocabulary: { units: 15, lessons: 10 }, spelling: { lessons: 99 }, idioms: { lessons: 99 }, proverbs: { lessons: 99 }, expressions: { lessons: 99 }, hanja: { lessons: 25, name: '단계', pick: true }, sentences: { lessons: 24, uptoOnly: true } };
   function validRange(set, value) {
     const spec = RANGE_SETS[set];
     const match = spec && /^(~?)(\d{1,2})(?:-(\d{1,2}))?$/.exec(String(value ?? ''));
     if (!match) return null;
     const upto = match[1], first = Number(match[2]), second = match[3] ? Number(match[3]) : null;
+    if (spec.uptoOnly) return second === null && first >= 2 && first <= spec.lessons ? '~' + first : null;
     if (!spec.units) return second === null && first >= 1 && first <= spec.lessons ? upto + first : null;
     if (first < 1 || first > spec.units || (second !== null && (second < 1 || second > spec.lessons))) return null;
     return upto + (second === null ? String(first) : `${first}-${second}`);
@@ -106,10 +115,11 @@
   function rangeLabel(set, range) {
     const text = String(range), upto = text.startsWith('~');
     const [first, second] = text.replace('~', '').split('-').map(Number);
-    const units = RANGE_SETS[set]?.units;
-    const at = units ? `Level ${first}${second ? ` · ${second}차시` : ''}` : `${first}차시`;
+    const spec = RANGE_SETS[set] || {}, units = spec.units;
+    const at = units ? `Level ${first}${second ? ` · ${second}차시` : ''}` : `${first}${spec.name || '차시'}`;
     const isFirst = units ? first === 1 && second === 1 : first === 1;
-    return upto && !isFirst ? `처음~${at}` : at;
+    if (!upto || isFirst) return at;
+    return spec.name ? `1~${at}` : `처음~${at}`;
   }
-  return { SETS, MIXED_PARTS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  return { SETS, MIXED_PARTS, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });
