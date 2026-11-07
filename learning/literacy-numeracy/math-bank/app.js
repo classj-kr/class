@@ -59,6 +59,8 @@
       if (unit && unit.tagName === 'SPAN' && unit.style.display === 'inline-block' && unit.lastChild === mark) glue(unit);
     });
     node.querySelectorAll('span.mb-rad').forEach(glue);
+    // 고등학교 기호(middle.js 의 B.kit.hs — Σ·lim·∫·₅C₂·벡터 …)도 바로 뒤의 토씨와 한 덩어리로 묶는다(「₅C₂」 / 「의 값은?」으로 갈리지 않게).
+    node.querySelectorAll('span.mb-hs').forEach(glue);
     return node;
   };
   // 중학교 묶음 제목 속 수식의 문자(x, y, a, n …)는 문항 글처럼 수식 글꼴로 적는다. 사건 A·B 같은 대문자 이름은 문항 글처럼 세워 두고,
@@ -352,7 +354,8 @@
   // 음수는 빼기표(−)로 적는다.
   const signedText = (n) => (n < 0 ? '−' + Math.abs(n) : String(n));
   // 순환소수의 점은 글로 옮기면 사라지므로, 점이 든 보기는 화면의 답 줄에 그대로 보인다.
-  const choiceShown = (html) => (/class="mb-(rdot|rad)"/.test(html) ? html : shownText(html));
+  // 고등학교 기호(B.kit.hs — 쌓은 기호·첨자·함수 이름·분수 지수)도 글로 옮기면 한 줄 글(Σ(k=1~n), a_n)이 되므로 그대로 보인다.
+  const choiceShown = (html) => (/class="mb-(?:rdot|rad|hs|sub|fn|pr)\b|mb-sfrac/.test(html) ? html : shownText(html));
   const answerText = (item, shown) => (item.shown ? (shown ? item.shown : plainText(item.shown)) : item.choice
     ? (shown ? choiceShown : plainText)(item.choice.options[item.choice.answer])
     : item.fraction ? (item.negative ? '−' : '') + (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
