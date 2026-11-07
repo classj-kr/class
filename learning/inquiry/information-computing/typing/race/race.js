@@ -11,7 +11,8 @@
   let board = [], recent = [], claimedLocal = new Set(), targetId = null;
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   let localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
-  let sendChain = Promise.resolve(), lastCleared = null, composing = false, muted = false;
+  // skip: 칸 앞쪽에서 이미 받은 낱말이 차지한 글자 수. 조합 중인 칸은 비우지 않고(IME가 끝 글자를 다시 붙인다) 이만큼 건너뛰어 읽는다.
+  let sendChain = Promise.resolve(), skip = 0, composing = false, muted = false;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', lastRank = null;
   const prevScores = new Map();
   const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2 };
@@ -349,6 +350,8 @@
       parts.length = 0;
       $('track').innerHTML = '';
       input.value = '';
+      skip = 0;
+      paintTyped();
       document.body.classList.remove('fever');
       document.body.classList.toggle('sentence-mode', C.MODES[s.config.mode].sentence);
       $('board').replaceChildren();
@@ -576,8 +579,20 @@
 
   // ── 입력 ─────────────────────────────────────────
   const sentenceMode = () => Boolean(state && C.MODES[state.config.mode].sentence);
+  // 화면에 보이는 입력 글자: 받은 낱말 몫(skip)을 뺀 나머지. 실제 칸 글자는 투명하고 위에 이것만 그린다.
+  function typedText() {
+    if (input.value.length < skip) skip = input.value.length;
+    return input.value.slice(skip);
+  }
+  function paintTyped() { $('typed').textContent = typedText().replace(/[\r\n]/g, ''); }
+  // 조합이 끝난 뒤에만 받은 낱말 몫을 칸에서 실제로 지운다.
+  function tidy() {
+    if (!skip || composing) return;
+    input.value = input.value.slice(skip);
+    skip = 0;
+  }
   function normalized() {
-    const v = input.value.replace(/[\r\n]/g, '');
+    const v = typedText().replace(/[\r\n]/g, '');
     return sentenceMode() ? v.replace(/^\s+/, '').replace(/\s+$/, (m) => (m.length > 1 ? ' ' : m)) : v.replace(/\s/g, '');
   }
   const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
@@ -589,17 +604,9 @@
   }
   const cleaned = () => (sentenceMode() ? normalized().replace(/\s+$/, '') : normalized());
   function check(fromKey = false) {
+    paintTyped();
     if (!racing() || muted) return;
-    const value = normalized();
     const clean = cleaned();
-    // 조합 중에 비운 칸에 IME가 마지막 글자(한라산의 산)를 다시 넣는 일이 있다. 비운 직후 그 끝 글자만 들어오면 지운다.
-    // 새로 치는 첫 키는 ㅅ처럼 낱자로 들어오므로 다 된 글자와 헷갈리지 않는다.
-    if (lastCleared?.composed && Date.now() - lastCleared.at < 400 && value && lastCleared.text.endsWith(value)) {
-      input.value = '';
-      lastCleared = null;
-      targetId = null;
-      return paintBoard();
-    }
     if (!clean) { targetId = null; erroring = false; $('card').classList.remove('wrong'); return paintBoard(); }
     // 치는 중인 낱말: 지금 고른 낱말이 계속 맞으면 그대로, 아니면 맞는 낱말 가운데 판 앞쪽 것.
     const { tracking, exact, longer } = matches(clean);
@@ -622,24 +629,16 @@
   }
   // 판이 바뀌어 더 긴 낱말이 빠지면, 기다리던 짧은 낱말을 그때 받는다.
   function acceptIfDone() {
-    if (!racing() || muted || !input.value) return;
+    if (!racing() || muted || !typedText()) return;
     const { exact, longer } = matches(cleaned());
     if (exact && !longer) complete(exact);
   }
-  // 다 친 낱말을 칸에서 지운다. 마지막 글자가 조합 중이면 value=''만으로는 IME가 그 글자를 다시 넣으므로
-  // 잠깐 포커스를 뺐다가(조합이 거기서 끝난다) 비우고 다시 준다. 그 사이에 오는 입력 이벤트는 듣지 않는다.
-  function clearField(text) {
-    const composed = composing && document.activeElement === input;
-    lastCleared = { text, at: Date.now(), composed };
-    if (composed) {
-      muted = true;
-      try {
-        input.blur();
-        input.value = '';
-        input.focus({ preventScroll: true });
-      } finally { muted = false; }
-    } else input.value = '';
-    composing = false;
+  // 다 친 낱말을 칸에서 지운다. 끝 글자가 아직 조합 중이면 칸을 건드리지 않고(비우면 IME가 그 글자를 다시 붙여
+  // 앞 낱말 끝 글자가 남는다) 그 길이만큼 건너뛰어 읽는다. 조합이 끝나면 tidy()가 실제로 지운다.
+  function clearField() {
+    if (composing && document.activeElement === input) skip = input.value.length;
+    else { input.value = ''; skip = 0; }
+    paintTyped();
   }
   function floatAtCard(text, cls) {
     const r = $('card').getBoundingClientRect();
@@ -655,7 +654,7 @@
     erroring = false;
     claimedLocal.add(cell.id);
     targetId = null;
-    clearField(text);
+    clearField();
     $('card').classList.remove('wrong');
     const tile = $('board').querySelector(`.tile[data-id="${cell.id}"]`);
     const r = (tile || $('card')).getBoundingClientRect();
@@ -690,18 +689,18 @@
       });
   }
   input.addEventListener('compositionstart', () => { if (!muted) composing = true; });
-  input.addEventListener('compositionend', () => { if (muted) return; composing = false; setTimeout(check, 0); });
+  input.addEventListener('compositionend', () => { if (muted) return; composing = false; setTimeout(() => { tidy(); check(); }, 0); });
   // 한글 판인데 한/영 키가 영어로 되어 있으면, 친 키를 두벌식 한글로 바꿔 받는다(애들이 한/영 때문에 막히지 않게).
   let hanEnNoted = '';
   function fixHanEn() {
-    if (!state || C.MODES[state.config.mode].lang !== 'ko' || !/[A-Za-z]/.test(input.value)) return;
-    input.value = C.hangulFromKeys(input.value);
+    if (!state || C.MODES[state.config.mode].lang !== 'ko' || !/[A-Za-z]/.test(typedText())) return;
+    input.value = input.value.slice(0, skip) + C.hangulFromKeys(input.value.slice(skip));
     if (hanEnNoted !== state.roundId) { hanEnNoted = state.roundId; toast('한/영 키가 영어로 되어 있어서 한글로 바꿔 받고 있어요.'); }
   }
   input.addEventListener('input', (e) => {
     if (muted) return;
     composing = e.isComposing;
-    if (!composing) fixHanEn();
+    if (!composing) { tidy(); fixHanEn(); }
     if (e.inputType !== 'deleteContentBackward') sfx.key();
     check();
   });
