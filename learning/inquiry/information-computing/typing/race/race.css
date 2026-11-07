@@ -357,29 +357,41 @@ body[data-screen="race"] img.car-emoji { animation-name: wobble-face; }
 .toast { position: fixed; left: 50%; bottom: 22px; z-index: 60; transform: translate(-50%, 30px); margin: 0; padding: 12px 20px; max-width: calc(100% - 32px); border-radius: 14px; background: #fff; color: #1a0b2e; font-weight: 800; opacity: 0; transition: 0.25s; pointer-events: none; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-/* 한 카드 안에 지금 낱말과 다음 낱말 넷이 줄지어 있다. 다 치면 줄이 한 칸씩 당겨진다. */
-.word-card { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 3vw, 40px); overflow: hidden; }
-.word-card .word { flex: none; max-width: 62%; }
-.lane { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 28px); min-width: 0; overflow: hidden; mask-image: linear-gradient(90deg, #000 70%, transparent); }
-.lane span { flex: none; white-space: nowrap; font-weight: 900; color: rgba(244, 241, 255, calc(0.62 - var(--i) * 0.13)); font-size: calc(clamp(44px, 8vw, 96px) * (0.5 - var(--i) * 0.07)); }
-.lane span:first-child { color: rgba(244, 241, 255, 0.72); text-shadow: 0 0 12px rgba(39, 225, 255, 0.35); }
-.word-card.long .lane span { font-size: calc(clamp(26px, 3.8vw, 50px) * (0.7 - var(--i) * 0.1)); }
-/* 속담 판: 지금 문장 아래에 다음 문장 한 줄 */
-.word-card.sentence { flex-direction: column; gap: 10px; }
-.word-card.sentence .word { max-width: 100%; }
-.word-card.sentence .lane { mask-image: none; max-width: 100%; }
-.word-card.sentence .lane span { font-size: clamp(16px, 2vw, 22px); white-space: normal; text-align: center; }
-.word-card.advance .word { animation: word-advance 0.32s cubic-bezier(.2, 1.3, .4, 1); }
-.word-card.advance .lane { animation: lane-advance 0.32s cubic-bezier(.2, 1.1, .4, 1); }
-@keyframes word-advance { from { transform: translateX(45%) scale(0.55); opacity: 0.55; } to { transform: none; opacity: 1; } }
-@keyframes lane-advance { from { transform: translateX(28%); } to { transform: none; } }
+/* 낱말판: 모두가 같은 판을 보고 아무 낱말이나 골라 친다. 아무도 안 친 낱말은 금빛으로 빛나며 🥇+5를 달고 있다. */
+.word-card { display: block; padding: 16px; }
+.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; }
+.board.sentence { grid-template-columns: 1fr; }
+.tile { position: relative; display: grid; place-items: center; min-height: clamp(84px, 13vh, 120px); padding: 22px 10px 14px; border-radius: 18px; background: rgba(255, 255, 255, 0.06); border: 2px solid rgba(255, 255, 255, 0.14); overflow: hidden; transition: transform .2s, opacity .3s, border-color .2s, background .2s; }
+.tile-word { font-size: clamp(26px, 3.6vw, 46px); font-weight: 900; color: #fff; line-height: 1.15; text-align: center; word-break: keep-all; }
+.board.sentence .tile-word { font-size: clamp(20px, 2.4vw, 30px); }
+.tile-word span.ok { color: var(--green); text-shadow: 0 0 14px rgba(77, 255, 154, .8); }
+.tile-word span.now { color: var(--yellow); text-decoration: underline 3px; text-underline-offset: 7px; }
+.tile-badge { position: absolute; top: 6px; left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 14px; font-weight: 900; background: rgba(0, 0, 0, .35); color: #fff; }
+.tile-badge:empty { display: none; }
+.tile-who { position: absolute; top: 5px; right: 8px; display: flex; gap: 2px; }
+.tile-face { width: 24px; height: 24px; font-size: 15px; }
+.tile-timer { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--pink); transform-origin: left; transform: scaleX(0); }
+.tile-timer[data-on] { animation: tile-timer linear forwards; }
+@keyframes tile-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+/* 먹음직스러운 새 낱말 */
+.tile.untouched { border-color: var(--yellow); background: linear-gradient(160deg, rgba(255, 214, 77, .2), rgba(255, 120, 200, .12)); box-shadow: 0 0 18px rgba(255, 214, 77, .35); animation: tile-glow 1.4s ease-in-out infinite alternate; }
+.tile.untouched .tile-badge { background: var(--yellow); color: #3a2400; }
+.tile.taken .tile-badge { background: #cfd8ff; color: #1b2150; }
+.tile.target { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(39, 225, 255, .25), 0 0 24px rgba(39, 225, 255, .45); transform: scale(1.04); }
+.tile.done { opacity: .38; border-style: dashed; animation: none; }
+.tile.done .tile-badge { background: var(--green); color: #05301a; }
+.tile.fresh-in { animation: tile-in .45s cubic-bezier(.2, 1.5, .4, 1); }
+.tile.claim { animation: tile-claim .45s cubic-bezier(.2, 1.6, .4, 1); }
+.word-card.wrong .tile.target { border-color: var(--red); }
+@keyframes tile-glow { to { box-shadow: 0 0 30px rgba(255, 214, 77, .6); } }
+@keyframes tile-in { from { transform: translateY(-30px) scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes tile-claim { 40% { transform: scale(1.15) rotate(-3deg); } }
 @media (max-width: 760px) {
-  .word-card { flex-direction: column; gap: 8px; }
-  .word-card .word { max-width: 100%; }
-  .lane { mask-image: none; flex-wrap: wrap; justify-content: center; }
-  .lane span { font-size: 20px; }
-  .word-card.advance .word { animation-name: word-advance-up; }
-  @keyframes word-advance-up { from { transform: translateY(40%) scale(0.6); opacity: 0.5; } to { transform: none; opacity: 1; } }
+  .board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .tile { min-height: 84px; padding: 30px 6px 10px; }
+  .tile-word { font-size: 22px; }
+  .tile-badge { font-size: 12px; padding: 1px 7px; }
+  .tile-face { width: 20px; height: 20px; font-size: 13px; }
 }
 @media (max-width: 760px) {
   .lobby-head, .arena { grid-template-columns: 1fr; }

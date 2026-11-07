@@ -56,7 +56,35 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
   }
   function expire(r) {
     if (r.phase === 'running' && now() > r.deadline + GRACE_MS) r.phase = 'results';
+    tick(r);
   }
+  // ── 낱말판 ── 모두 같은 판을 보고, 아무 낱말이나 골라 친다. 먼저 친 순서대로 1·2·3등.
+  // 낱말은 모두가 쳤거나, 첫 사람이 친 뒤 HOLD_MS가 지나면 새 낱말로 바뀐다.
+  // 막 바뀐 낱말도 GRACE_MS 동안은 받아 준다(치던 중에 사라져도 억울하지 않게).
+  function slot(r) {
+    const index = r.next++;
+    return { id: ++r.slotSeq, index, text: r.items[index % r.items.length], claims: [] };
+  }
+  function tick(r) {
+    if (r.phase !== 'running' || !r.board) return;
+    const t = now(), everyone = students(r).length;
+    r.board = r.board.map((x) => {
+      if (!x.claims.length || (x.claims.length < everyone && t - x.claims[0].at < Core.HOLD_MS)) return x;
+      r.recent.push({ ...x, retiredAt: t });
+      return slot(r);
+    });
+    r.recent = r.recent.filter((x) => t - x.retiredAt < GRACE_MS);
+  }
+  const publicSlot = (r, x, p) => ({
+    id: x.id,
+    text: x.text,
+    claims: x.claims.slice(0, 3).map((c) => {
+      const who = r.players.find((y) => y.id === c.player);
+      return { id: c.player, name: who?.name || '', racer: who?.racer || '', avatarUrl: who?.avatarUrl || null };
+    }),
+    count: x.claims.length,
+    mine: x.claims.findIndex((c) => c.player === p.id) + 1 || 0,
+  });
   function member(req) {
     prune();
     const room = rooms.get(req.params.code);
@@ -90,7 +118,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
     }));
     return Core.rank(rows).map((row, i) => ({ ...row, rank: i + 1 }));
   }
-  function state(r, p, withItems = false) {
+  function state(r, p) {
     expire(r);
     const participants = board(r);
     const mine = participants.find((x) => x.id === p.id);
@@ -102,7 +130,8 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       startsAt: r.startsAt || null,
       deadline: r.deadline || null,
       serverNow: now(),
-      items: withItems && r.roundId ? r.items : undefined,
+      board: r.phase === 'running' && r.board ? r.board.map((x) => publicSlot(r, x, p)) : null,
+      recent: r.phase === 'running' && r.recent ? r.recent.filter((x) => !x.claims.some((c) => c.player === p.id)).map((x) => ({ id: x.id, text: x.text })) : null,
       me: { id: p.id, host: p.host, plays: Boolean(p.plays), name: p.name, racer: p.racer || '', avatarUrl: p.avatarUrl || null, team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0, rank: mine?.rank || null },
       participants,
       teams: r.config.teamMode ? Core.teamBoard(participants, r.config.teamCount) : null,
@@ -155,7 +184,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
         seat.token = token();
         seat.avatarUrl = avatar(req.body?.avatarUrl) || seat.avatarUrl;
         r.updated = now();
-        return res.json({ token: seat.token, state: state(r, seat, true) });
+        return res.json({ token: seat.token, state: state(r, seat) });
       }
       if (r.players.length >= 61) throw fail(409, '방에 60명이 모두 들어왔어요.');
       const p = resetScore({ id: crypto.randomUUID(), token: token(), name, host: false, plays: true, team: null, avatarUrl: avatar(req.body?.avatarUrl), racer: Core.RACERS[r.joined++ % Core.RACERS.length] });
@@ -163,14 +192,14 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       if (r.config.teamMode && r.phase === 'running') p.team = openTeam(r);
       r.players.push(p);
       r.updated = now();
-      res.json({ token: p.token, state: state(r, p, true) });
+      res.json({ token: p.token, state: state(r, p) });
     }),
   );
   router.get(
     '/rooms/:code',
     wrap(async (req, res) => {
       const { room: r, player: p } = member(req);
-      res.json(state(r, p, req.query.items === '1'));
+      res.json(state(r, p));
     }),
   );
   router.post(
@@ -188,13 +217,17 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       }
       const perSecond = Core.MODES[r.config.mode].sentence ? 0.5 : 1.6;
       r.items = roundItems(r.config.mode, Math.ceil(r.config.duration * perSecond) + 20, random);
+      r.next = 0;
+      r.slotSeq = 0;
+      r.recent = [];
+      r.board = Array.from({ length: Core.boardSize(r.config.mode) }, () => slot(r));
       r.roundId = crypto.randomUUID();
       r.phase = 'running';
       r.startsAt = now() + COUNTDOWN_MS;
       r.deadline = r.startsAt + r.config.duration * 1000;
       r.updated = now();
       students(r).forEach(resetScore);
-      res.json(state(r, p, true));
+      res.json(state(r, p));
     }),
   );
   router.post(
@@ -205,23 +238,29 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       if (!p.plays || req.body?.roundId !== r.roundId) throw fail(409, '지금 판의 기록이 아니에요.');
       if (r.phase !== 'running' || t > r.deadline + GRACE_MS) throw fail(409, '이번 판이 끝났어요.');
       if (t < r.startsAt) throw fail(409, '출발 신호 뒤에 입력해 주세요.');
-      const index = Number(req.body?.index);
+      tick(r);
+      const id = Number(req.body?.slot);
       const text = String(req.body?.text ?? '');
-      if (index !== p.index || text !== r.items[index]) throw fail(409, '입력이 맞지 않아요. 다시 맞춰 볼게요.');
+      const target = r.board.find((x) => x.id === id) || r.recent.find((x) => x.id === id);
+      if (!target || target.text !== text) throw fail(409, '판이 바뀌었어요. 다른 낱말을 골라 주세요.');
+      if (target.claims.some((c) => c.player === p.id)) throw fail(409, '이미 친 낱말이에요.');
       const strokes = Core.strokes(text);
       // 네트워크가 밀려 두 낱말이 붙어 와도 되도록, 출발부터 센 평균 속도로만 막는다.
       if ((p.good + strokes) * MIN_MS_PER_STROKE > t - r.startsAt) throw fail(429, '너무 빨라요. 직접 입력해 주세요.');
       const mistakes = Math.min(50, Math.max(0, Math.floor(Number(req.body?.mistakes) || 0)));
       p.combo = mistakes ? 0 : p.combo + 1;
       p.bestCombo = Math.max(p.bestCombo, p.combo);
-      const gained = Core.itemScore(text, p.combo);
+      target.claims.push({ player: p.id, at: t });
+      const order = target.claims.length;
+      const gained = Core.claimScore(text, p.combo, order);
       p.score += gained;
       p.good += strokes;
       p.mistakes += mistakes;
       p.index += 1;
       p.scoredAt = t;
       r.updated = t;
-      res.json({ gained, combo: p.combo, state: state(r, p) });
+      tick(r);
+      res.json({ gained, order, combo: p.combo, state: state(r, p) });
     }),
   );
   // 대기실에서 바꾼 설정은 바로 학생 화면에도 보인다.
@@ -294,6 +333,8 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
       r.phase = 'lobby';
       r.roundId = '';
       r.items = [];
+      r.board = null;
+      r.recent = [];
       students(r).forEach(resetScore);
       r.updated = now();
       res.json(state(r, p));

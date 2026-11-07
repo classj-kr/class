@@ -6,9 +6,11 @@
   let store = { get: (k) => memory.get(k), set: (k, v) => memory.set(k, v), remove: (k) => memory.delete(k) };
   try { if (window.SiteStorage) store = await window.SiteStorage.open('typing-race'); } catch { /* 게스트는 이 탭에서만 기억 */ }
 
-  let code = '', token = '', state = null, items = [], itemsRound = '';
+  let code = '', token = '', state = null;
+  // 낱말판: 서버가 주는 공용 판(board)과 막 바뀐 낱말(recent). 내가 막 친 칸은 답이 오기 전에도 친 것으로 둔다.
+  let board = [], recent = [], claimedLocal = new Set(), targetId = null;
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
-  let localIndex = 0, localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
+  let localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
   let sendChain = Promise.resolve(), lastCleared = null, composing = false;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', lastRank = null;
   const prevScores = new Map();
@@ -326,13 +328,6 @@
   }
   $('shuffleButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/shuffle', {})));
 
-  async function ensureItems(s) {
-    if (s.items) { items = s.items; itemsRound = s.roundId; }
-    if (itemsRound === s.roundId) return;
-    const data = await api('/rooms/' + code + '?items=1');
-    items = data.items || [];
-    itemsRound = data.roundId;
-  }
   let roundSeen = '';
   function renderRace(s) {
     show('race');
@@ -341,7 +336,8 @@
     $('hostCode').textContent = s.code;
     if (roundSeen !== s.roundId) {
       roundSeen = s.roundId;
-      localIndex = s.me.index;
+      claimedLocal = new Set();
+      targetId = null;
       localScore = s.me.score;
       localCombo = s.me.combo;
       mistakesThis = 0;
@@ -354,7 +350,11 @@
       document.body.classList.remove('fever');
       document.body.classList.toggle('sentence-mode', C.MODES[s.config.mode].sentence);
       $('typeHint').innerHTML = C.MODES[s.config.mode].sentence ? '다 치면 <kbd>Enter</kbd>' : '다 치면 <kbd>Space</kbd> 또는 <kbd>Enter</kbd>';
-      ensureItems(s).then(paintWord).catch((e) => toast(e.message));
+    }
+    if (s.board) {
+      board = s.board;
+      recent = s.recent || [];
+      paintBoard();
     }
     renderTeamBar(s);
     // 현황판(전체 트랙)은 교사 화면과 학생 화면 모두에 나온다.
@@ -457,33 +457,50 @@
     }));
   }
 
-  function paintWord() {
-    const target = items[localIndex] || '';
-    const typed = [...normalized()];
-    const chars = [...target];
-    let done = 0;
-    while (done < typed.length && done < chars.length && typed[done] === chars[done]) done++;
-    // 낱말 단위로 묶어 줄이 글자 중간에서 끊기지 않게 한다.
-    const groups = [];
-    let group = null;
-    chars.forEach((ch, i) => {
-      const span = document.createElement('span');
-      span.textContent = ch === ' ' ? ' ' : ch;
-      span.className = i < done ? 'done' : i === done ? 'now' : '';
-      if (ch === ' ') { groups.push(span); group = null; return; }
-      if (!group) { group = document.createElement('span'); group.className = 'chunk'; groups.push(group); }
-      group.append(span);
+  // ── 낱말판 그리기 ── 아무도 안 친 낱말은 금빛으로 「🥇+5」, 누가 치면 얼굴이 붙고 다음 보너스로 내려간다.
+  const MEDALS = ['🥇', '🥈', '🥉'];
+  const mineOf = (cell) => cell.mine || (claimedLocal.has(cell.id) ? 1 : 0);
+  const open = () => [...board, ...recent].filter((cell) => !mineOf(cell));
+  function paintBoard() {
+    const box = $('board');
+    const typed = normalized();
+    box.classList.toggle('sentence', sentenceMode());
+    const alive = new Set();
+    board.forEach((cell, i) => {
+      alive.add(String(cell.id));
+      let tile = box.querySelector(`[data-id="${cell.id}"]`);
+      if (!tile) {
+        tile = document.createElement('div');
+        tile.className = 'tile fresh-in';
+        tile.dataset.id = cell.id;
+        tile.innerHTML = '<span class="tile-badge"></span><span class="tile-word"></span><span class="tile-who"></span><i class="tile-timer"></i>';
+        setTimeout(() => tile.classList.remove('fresh-in'), 500);
+      }
+      if (box.children[i] !== tile) box.insertBefore(tile, box.children[i] || null);
+      const mine = mineOf(cell), count = Math.max(cell.count, mine ? 1 : 0);
+      tile.classList.toggle('untouched', !count);
+      tile.classList.toggle('taken', count > 0 && !mine);
+      tile.classList.toggle('done', Boolean(mine));
+      tile.classList.toggle('target', cell.id === targetId);
+      const badge = tile.querySelector('.tile-badge');
+      badge.textContent = mine ? `✓ ${mine <= 3 ? mine + '등' : '쳤어요'}` : count < 3 ? `${MEDALS[count]}+${C.ORDER_BONUS[count]}` : '';
+      // 친 낱말에서는 지금 친 글자까지 초록으로 칠한다.
+      const word = tile.querySelector('.tile-word');
+      const chars = [...cell.text];
+      let done = 0;
+      if (cell.id === targetId) { const t = [...typed]; while (done < t.length && t[done] === chars[done]) done++; }
+      word.replaceChildren(...chars.map((ch, k) => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        if (cell.id === targetId) span.className = k < done ? 'ok' : k === done ? 'now' : '';
+        return span;
+      }));
+      tile.querySelector('.tile-who').replaceChildren(...(cell.claims || []).map((c) => face(c, 'tile-face')));
+      // 첫 사람이 친 뒤 남은 시간: 막대가 줄어들다 낱말이 바뀐다.
+      const timer = tile.querySelector('.tile-timer');
+      if (count && !timer.dataset.on) { timer.dataset.on = '1'; timer.style.animationDuration = C.HOLD_MS + 'ms'; }
     });
-    $('word').replaceChildren(...groups);
-    $('card').classList.toggle('long', chars.length > 8);
-    // 다음 낱말은 같은 카드 안, 지금 낱말 옆에 작고 흐리게 줄지어 기다린다(속담은 다음 한 줄).
-    $('card').classList.toggle('sentence', sentenceMode());
-    $('queue').replaceChildren(...items.slice(localIndex + 1, localIndex + (sentenceMode() ? 2 : 5)).map((w, i) => {
-      const span = document.createElement('span');
-      span.textContent = w;
-      span.style.setProperty('--i', i);
-      return span;
-    }));
+    box.querySelectorAll('.tile').forEach((tile) => { if (!alive.has(tile.dataset.id)) tile.remove(); });
     paintCombo();
   }
   function paintCombo() {
@@ -502,17 +519,25 @@
   const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
   function check(fromKey = false) {
     if (!racing()) return;
-    const target = items[localIndex];
-    if (!target) return;
     const value = normalized();
     const clean = sentenceMode() ? value.replace(/\s+$/, '') : value;
     if (lastCleared && Date.now() - lastCleared.at < 120 && value && lastCleared.text.endsWith(value)) {
       input.value = '';
       lastCleared = null;
-      return paintWord();
+      targetId = null;
+      return paintBoard();
     }
-    if (clean === target && (!composing || fromKey)) return complete(target);
-    const ok = C.onTrack(clean, target);
+    const cells = open();
+    if (!clean) { targetId = null; erroring = false; $('card').classList.remove('wrong'); return paintBoard(); }
+    // 치는 중인 낱말: 지금 고른 낱말이 계속 맞으면 그대로, 아니면 맞는 낱말 가운데 판 앞쪽 것.
+    const tracking = cells.filter((cell) => C.onTrack(clean, cell.text));
+    const exact = tracking.find((cell) => cell.text === clean);
+    const keep = tracking.find((cell) => cell.id === targetId);
+    targetId = (keep || exact || tracking[0])?.id ?? null;
+    // "사"와 "사과"처럼 더 긴 낱말이 남아 있으면 Space/Enter로 끝낸다.
+    const longer = tracking.some((cell) => cell.text !== clean);
+    if (exact && (!composing || fromKey) && (!longer || fromKey)) return complete(exact);
+    const ok = tracking.length > 0;
     if (!ok && !erroring) {
       erroring = true;
       mistakesThis++;
@@ -522,52 +547,56 @@
       localCombo = 0;
     } else if (ok) erroring = false;
     $('card').classList.toggle('wrong', !ok);
-    paintWord();
+    paintBoard();
   }
   function floatAtCard(text, cls) {
     const r = $('card').getBoundingClientRect();
     floatText(text, r.left + r.width / 2, r.top + 10, cls);
   }
-  function complete(target) {
-    const index = localIndex, mistakes = mistakesThis;
+  function complete(cell) {
+    const mistakes = mistakesThis, text = cell.text;
+    const guessOrder = Math.max(cell.count || 0, 0) + 1;
     localCombo = mistakes ? 0 : localCombo + 1;
-    const gained = C.itemScore(target, localCombo);
-    localScore += gained;
-    localIndex++;
+    const guess = C.claimScore(text, localCombo, guessOrder);
+    localScore += guess;
     mistakesThis = 0;
     erroring = false;
-    lastCleared = { text: target, at: Date.now() };
+    lastCleared = { text, at: Date.now() };
+    claimedLocal.add(cell.id);
+    targetId = null;
     input.value = '';
     $('card').classList.remove('wrong');
-    const r = $('card').getBoundingClientRect();
+    const tile = $('board').querySelector(`[data-id="${cell.id}"]`);
+    const r = (tile || $('card')).getBoundingClientRect();
     burst(r.left + r.width / 2, r.top + r.height / 2, localCombo >= C.COMBO_CAP ? 44 : 24, localCombo >= C.COMBO_CAP ? 10 : 7);
-    floatText('+' + gained, r.left + r.width / 2, r.top, localCombo >= C.COMBO_CAP ? 'fever' : '');
-    if (localCombo && localCombo % 5 === 0) floatText(`${localCombo} 콤보!`, r.left + r.width / 2, r.top - 46, 'combo');
     sfx.good(localCombo);
-    retrigger($('card'), 'advance');
-    retrigger($('scoreNow'), 'bump');
+    if (tile) retrigger(tile, 'claim');
     $('scoreNow').textContent = localScore;
-    paintWord();
+    paintBoard();
     const roundId = state.roundId;
-    sendChain = sendChain.then(() => api('/rooms/' + code + '/type', { roundId, index, text: target, mistakes }))
+    sendChain = sendChain.then(() => api('/rooms/' + code + '/type', { roundId, slot: cell.id, text, mistakes }))
       .then((data) => {
         if (state.roundId !== roundId) return;
-        if (index === localIndex - 1) { localScore = data.state.me.score; localCombo = data.combo; paintCombo(); }
+        // 몇 등이었는지는 서버가 정한다: 1등 +5, 2등 +3, 3등 +1.
+        const bonus = C.orderBonus(data.order);
+        floatText(data.order <= 3 ? `${MEDALS[data.order - 1]} ${data.order}등! +${data.gained}` : `+${data.gained}`, r.left + r.width / 2, r.top, data.order === 1 ? 'fever' : '');
+        if (bonus) floatText(`보너스 +${bonus}`, r.left + r.width / 2, r.top - 40, 'combo');
+        if (localCombo && localCombo % 5 === 0) floatText(`${localCombo} 콤보!`, r.left + r.width / 2, r.top - 80, 'combo');
+        localScore = data.state.me.score;
+        localCombo = data.combo;
+        retrigger($('scoreNow'), 'bump');
         render(data.state);
       })
       .catch(async (e) => {
         if (state.roundId !== roundId) return;
+        claimedLocal.delete(cell.id);
         toast(e.message);
-        if (e.status === 409 || e.status === 429) {
-          try {
-            const fresh = await api('/rooms/' + code);
-            localIndex = fresh.me.index;
-            localScore = fresh.me.score;
-            localCombo = fresh.me.combo;
-            render(fresh);
-            paintWord();
-          } catch { /* 다음 확인 때 다시 맞춘다 */ }
-        }
+        try {
+          const fresh = await api('/rooms/' + code);
+          localScore = fresh.me.score;
+          localCombo = fresh.me.combo;
+          render(fresh);
+        } catch { /* 다음 확인 때 다시 맞춘다 */ }
       });
   }
   input.addEventListener('compositionstart', () => (composing = true));
@@ -591,7 +620,7 @@
     if (!e.isComposing) e.preventDefault();
     setTimeout(() => {
       check(true);
-      if (normalized() && normalized() !== items[localIndex] && e.key === 'Enter' && !erroring) {
+      if (normalized() && !open().some((cell) => cell.text === normalized()) && e.key === 'Enter' && !erroring) {
         retrigger($('card'), 'shake');
         sfx.bad();
       }
