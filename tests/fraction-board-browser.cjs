@@ -43,13 +43,13 @@ test.beforeEach(async () => {
 test.afterEach(async () => { try { assert.deepEqual(errors, []); } finally { await context?.close(); } });
 test.after(async () => { await browser?.close(); await h?.close(); });
 
-test('home math accordion opens the fraction board on desktop and phone', async () => {
+test('the math tools catalog opens the fraction board on desktop and phone', async () => {
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await page.goto(h.base + '/');
-    await page.locator('#category-exploration-toggle').click();
-    await page.locator('[data-access-group="mathematics"] > summary').click();
-    await page.locator(`a[href="${url.slice(1)}"]`).click();
+    await page.locator('#category-literacy-toggle').click();
+    await page.locator('a[href="learning/inquiry/math/"]').click();
+    await page.locator(`a[href="${url}"]`).click();
     await page.waitForURL('**' + url);
     await page.locator('.fraction-drawing').waitFor();
     assert.equal(await page.title(), '분수 모형 · 수학 교구');

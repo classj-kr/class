@@ -162,6 +162,27 @@ test("the homeroom's own grants keep working alongside, and closing by the subje
   });
 });
 
+test("an existing math tool grant opens its catalog without unlocking sibling tools", async () => {
+  await withSchool(async ({ pool, query, musicTeacher, taught }) => {
+    const catalog = "/learning/inquiry/math";
+    assert.equal(await isOpen(query, 1, catalog), false);
+    await query("INSERT INTO classroom_content_enabled (class_id, content_path) VALUES ($1, $2)", [1, `${catalog}/number-models`]);
+    assert.equal(await isOpen(query, 1, catalog), true);
+    assert.equal(await isOpen(query, 1, `${catalog}/index.html`), true);
+    assert.equal(await isOpen(query, 1, `${catalog}/tools.css`, catalog), true);
+    assert.equal(await isOpen(query, 1, `${catalog}/number-models`), true);
+    assert.equal(await isOpen(query, 1, `${catalog}/fraction-board`), false);
+    assert.equal(await isOpen(query, 1, `${catalog}/fraction-board/style.css`, `${catalog}/fraction-board`), false);
+    assert.equal(await isOpen(query, 2, catalog), false);
+
+    const classes = await taught();
+    await setSubjectGrant(pool, { ...musicTeacher, classes, contentPath: `${catalog}/graph-studio`, enabled: true });
+    assert.equal(await isOpen(query, 2, catalog), true);
+    assert.equal(await isOpen(query, 2, `${catalog}/graph-studio`), true);
+    assert.equal(await isOpen(query, 2, `${catalog}/number-models`), false);
+  });
+});
+
 test("a subject teacher's grant lapses at the Korean midnight and is swept on the next write", async () => {
   await withSchool(async ({ pool, query, musicTeacher, taught }) => {
     const classes = await taught();

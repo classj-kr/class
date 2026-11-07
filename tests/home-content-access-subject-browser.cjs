@@ -137,6 +137,30 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     assert.equal(page.url(), base + '/');
     await waitText(page, /전체관리자가 준비 중인 메뉴로 사용 중지했습니다/);
 
+    // 기존에 일부 교구만 열린 반도 목록을 열며, 잠긴 교구에는 들어가지 못한다.
+    const mathCatalog = '/learning/inquiry/math/';
+    const mathEntry = `a[href="${mathCatalog.slice(1)}"]`;
+    const numberModels = `${mathCatalog}number-models/`;
+    const graphStudio = `${mathCatalog}graph-studio/`;
+    access.student.enabledPaths.push(numberModels.slice(0, -1), graphStudio.slice(0, -1));
+    access.student.globallyDisabledPaths.push(graphStudio.slice(0, -1));
+    await page.goto(base + '/');
+    await waitLocked(page, mathEntry, 'false');
+    await page.locator('#category-literacy-toggle').click();
+    await page.locator(mathEntry).click();
+    await page.waitForURL(base + mathCatalog);
+    assert.equal(await page.locator('.tool').count(), 4);
+    const fractionCard = page.locator(`.tool[href="${mathCatalog}fraction-board/"]`);
+    const graphCard = page.locator(`.tool[href="${graphStudio}"]`);
+    await fractionCard.and(page.locator('[aria-disabled="true"]')).waitFor();
+    assert.equal(await fractionCard.locator('.tool-state').textContent(), '선생님 공개 대기');
+    assert.equal(await graphCard.locator('.tool-state').textContent(), '현재 사용 중지');
+    await graphCard.focus();
+    await page.keyboard.press('Enter');
+    assert.equal(page.url(), base + mathCatalog);
+    await page.locator(`.tool[href="${numberModels}"]`).click();
+    await page.waitForURL(base + numberModels);
+
     // 새 과목 버튼의 공개 설정은 그 안에 합친 모든 기존 경로를 저장한다.
     scenario = 'subject';
     puts.length = 0;
@@ -150,6 +174,16 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
       '/learning/inquiry/human-body', '/learning/inquiry/periodic-table',
       '/learning/inquiry/science-lab', '/learning/inquiry/space'
     ]);
+    assert.ok(puts.every((item) => item.enabled === true));
+
+    puts.length = 0;
+    await page.locator('#category-literacy-toggle').click();
+    await page.locator(mathEntry).click();
+    await waitFor(page, 4);
+    assert.equal(page.url(), base + '/');
+    assert.deepEqual(puts.map((item) => item.path).sort(), [
+      'fraction-board', 'graph-studio', 'number-models', 'stacking-cubes'
+    ].map((tool) => mathCatalog + tool));
     assert.ok(puts.every((item) => item.enabled === true));
 
     assert.deepEqual(errors, []);
