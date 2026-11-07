@@ -168,6 +168,26 @@
         .badge.approved { background: var(--green-soft); color: var(--green-strong); }
 
         .hidden { display: none !important; }
+        .notice-row-main { min-width: 0; overflow-wrap: anywhere; }
+        .notice-row-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; flex-shrink: 0; }
+        .notice-row { gap: 16px; }
+        .notice-list-header { flex-wrap: wrap; gap: 12px; }
+        .btn-notice-delete { color: var(--danger); background: var(--danger-soft); }
+        button:disabled { opacity: .6; cursor: wait; }
+        .notice-edit-dialog { width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow-y: auto; border: 1px solid var(--line); border-radius: 16px; padding: 24px; color: var(--ink); background: var(--panel); box-shadow: 0 20px 80px #14251c33; }
+        .notice-edit-dialog::backdrop { background: #14251c66; }
+        .notice-edit-dialog h2 { margin: 0 0 18px; font-size: 18px; }
+        .notice-edit-dialog textarea { min-height: 240px; }
+        .notice-edit-hint { margin: 0 0 18px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+        .notice-edit-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+        .notice-manage-error { color: var(--danger); font-size: 14px; }
+        .notice-manage-error:empty { display: none; }
+        @media (max-width: 600px) {
+            .notice-row { align-items: stretch; flex-direction: column; }
+            .notice-row-actions { justify-content: flex-start; }
+            .notice-edit-dialog { padding: 18px; }
+            #sec-replies .panel-card { padding: 16px; }
+        }
 
         /* 주소록 3단. 좁은 화면에서는 가운데 명단이 손가락만큼 좁아져 이름이 잘렸다. */
         .ab-grid {
@@ -393,16 +413,37 @@
         <!-- 4. 가정통신문 회신 수합 현황 -->
         <section id="sec-replies" class="hidden">
             <div class="panel-card">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                <div class="notice-list-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
                     <h2 style="font-size:18px; margin:0; color:var(--green);">📊 가정통신문 회신 수합 현황</h2>
                     <button class="btn-secondary" onclick="loadNoticeReplies()">🔄 새로고침</button>
                 </div>
                 <div id="noticeReplyList">불러오는 중…</div>
+                <p id="noticeManageError" class="notice-manage-error" role="alert"></p>
                 <div id="noticeReplyDetail" style="margin-top:18px;"></div>
             </div>
         </section>
     </main>
 
+    <dialog id="noticeEditDialog" class="notice-edit-dialog" aria-labelledby="noticeEditHeading">
+        <form id="noticeEditForm">
+            <h2 id="noticeEditHeading">가정통신문 수정</h2>
+            <p class="notice-edit-hint">제목과 본문만 수정할 수 있습니다. 문항·선택지·회신 방식·수신 대상은 유지됩니다.</p>
+            <div class="form-group">
+                <label for="noticeEditTitle">제목</label>
+                <input id="noticeEditTitle" type="text" required>
+            </div>
+            <div class="form-group">
+                <label for="noticeEditBody">본문</label>
+                <textarea id="noticeEditBody" required></textarea>
+            </div>
+            <p id="noticeEditError" class="notice-manage-error" role="alert"></p>
+            <div class="notice-edit-actions">
+                <button id="noticeEditCancel" type="button" class="btn-secondary">취소</button>
+                <button id="noticeEditSave" type="submit" class="btn-action">수정 저장</button>
+            </div>
+        </form>
+    </dialog>
+    <script src="notice-management.js?v=1"></script>
     <script>
         function switchSection(secId, btn) {
             document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
@@ -480,6 +521,7 @@
                 if (!res.ok) throw new Error('목록을 불러오지 못했습니다.');
                 const data = await res.json();
                 const notices = data.notices || [];
+                NoticeManagement.setNotices(notices);
 
                 if (notices.length === 0) {
                     listEl.innerHTML = '<div class="item-row" style="justify-content:center; color:var(--muted);">발송한 가정통신문이 없습니다.</div>';
@@ -493,15 +535,18 @@
                             ? `확인 <strong style="color:var(--green);">${n.confirmedCount}</strong>명`
                             : '<span style="color:var(--muted);">회신을 받지 않는 통신문</span>';
                     return `
-                        <div class="item-row">
-                            <div>
+                        <div class="item-row notice-row" data-notice-id="${escapeHtml(n.id)}">
+                            <div class="notice-row-main">
                                 <span class="badge ${n.replyType === 'none' ? 'pending' : 'approved'}">${escapeHtml(REPLY_TYPE_LABELS[n.replyType] || n.replyType)}</span>
                                 <strong style="margin-left:8px; font-size:16px;">${escapeHtml(n.title)}</strong>
                                 <p style="margin:6px 0 0; color:var(--muted); font-size:13px;">
-                                    ${escapeHtml(new Date(n.createdAt).toLocaleDateString())} · ${escapeHtml(n.senderName)} · ${tally}
+                                    ${escapeHtml(new Date(n.createdAt).toLocaleDateString())} · ${escapeHtml(n.senderName)} · ${tally}${n.updatedAt ? ' · 수정됨' : ''}
                                 </p>
                             </div>
-                            ${n.replyType === 'none' ? '' : `<button class="btn-secondary" onclick="openReplyDetail('${escapeHtml(n.id)}')">👥 명단별 현황 보기</button>`}
+                            <div class="notice-row-actions">
+                                ${n.replyType === 'none' ? '' : `<button class="btn-secondary" onclick="openReplyDetail('${escapeHtml(n.id)}')">👥 명단별 현황 보기</button>`}
+                                ${n.canManage ? '<button type="button" class="btn-secondary" data-notice-action="edit">수정</button><button type="button" class="btn-secondary btn-notice-delete" data-notice-action="delete">삭제</button>' : ''}
+                            </div>
                         </div>`;
                 }).join('');
             } catch (err) {

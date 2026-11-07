@@ -136,6 +136,7 @@ async function setSubjectGrant(pool, { schoolId, teacherUserId, classes, content
 
 // 학생이 메뉴를 열 때 쓰는 검사. 담임이 연 것이든 전담이 오늘 연 것이든 하나면 된다.
 // $1 학급 id, $2 요청 경로, $3 정적 자원의 뿌리 경로(없으면 '').
+// 수학 교구 목록은 교구 하나만 열려도 보인다. 각 교구 주소는 원래의 공개 범위를 따른다.
 const CLASS_CONTENT_OPEN_SQL = `
   SELECT 1
   FROM classroom_classes c
@@ -145,7 +146,9 @@ const CLASS_CONTENT_OPEN_SQL = `
         SELECT 1 FROM classroom_content_enabled e
         WHERE e.class_id = c.id
           AND ($2 = e.content_path OR $2 LIKE e.content_path || '/%'
-               OR ($3 <> '' AND (e.content_path = $3 OR e.content_path LIKE $3 || '/%')))
+               OR ($3 <> '' AND (e.content_path = $3 OR e.content_path LIKE $3 || '/%'))
+               OR ($2 IN ('/learning/inquiry/math', '/learning/inquiry/math/index.html')
+                   AND e.content_path LIKE '/learning/inquiry/math/%'))
       )
       OR EXISTS (
         SELECT 1 FROM classroom_content_subject_grants g
@@ -153,7 +156,9 @@ const CLASS_CONTENT_OPEN_SQL = `
           AND g.grade = c.grade AND g.class_number = c.class_number
           AND g.expires_at > NOW()
           AND ($2 = g.content_path OR $2 LIKE g.content_path || '/%'
-               OR ($3 <> '' AND (g.content_path = $3 OR g.content_path LIKE $3 || '/%')))
+               OR ($3 <> '' AND (g.content_path = $3 OR g.content_path LIKE $3 || '/%'))
+               OR ($2 IN ('/learning/inquiry/math', '/learning/inquiry/math/index.html')
+                   AND g.content_path LIKE '/learning/inquiry/math/%'))
       )
     )
   LIMIT 1`;
