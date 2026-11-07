@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>클래스제이 펜 M · 글씨 견본</title>
+  <style>
+    @font-face{font-family:ClassJPenM;src:url('./ClassJPenM-Regular.woff2?v=1.300') format('woff2');font-weight:500;font-display:block}
+    *{box-sizing:border-box}body{margin:0;background:#f3f2ed;color:#273b34;font:16px/1.6 system-ui,sans-serif}
+    main{max-width:1160px;margin:auto;padding:44px 28px}h1{font-size:26px;letter-spacing:-.04em;margin:0 0 8px}
+    .intro{color:#647169;margin:0 0 28px}.controls{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+    label{display:flex;gap:12px;align-items:center}input{accent-color:#346853}select{padding:8px 12px;border:1px solid #c5cec6;border-radius:6px;background:white;color:inherit;font:inherit}
+    textarea{width:100%;min-height:108px;padding:14px 16px;resize:vertical;border:1px solid #c5cec6;border-radius:8px;background:#fffefa;font:16px/1.7 system-ui,sans-serif;color:inherit}
+    .paper{margin-top:24px;background:#fffefa;padding:36px 32px 40px;border:1px solid #dbe0d6;box-shadow:0 10px 36px #24382e08;min-height:300px}
+    #proof{font-family:ClassJPenM,serif;font-weight:500;font-synthesis:none;font-size:64px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;letter-spacing:0}
+    .caption{font-size:13px;color:#6d776e;margin-top:16px}.actions{display:flex;gap:18px;margin-top:24px;flex-wrap:wrap}a{color:#315e4b;text-underline-offset:4px}
+    @media(max-width:600px){main{padding:24px 16px}.paper{padding:22px 18px}#proof{font-size:44px}}
+    @media print{body{background:white}main{padding:0}.controls,textarea,.intro,.actions{display:none}.paper{border:0;box-shadow:none;padding:20px 0}h1{font-size:16px}}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>클래스제이 펜 M</h1>
+    <p class="intro">경필명조 M의 인상을 참고해 ㄹ의 꺾임과 모음 연결, 획의 굵기 변화를 다듬은 세 번째 시안</p>
+    <div class="controls">
+      <label for="size">글자 크기 <input id="size" type="range" min="28" max="96" value="64"><output id="sizeValue">64px</output></label>
+      <label for="sample">견본 <select id="sample"><option value="sentence">문장</option><option value="basic">기본 글자</option><option value="compound">겹모음과 받침</option><option value="detail">세부 보정 글자</option></select></label>
+    </div>
+    <textarea id="text" aria-label="미리 볼 한글 문장" spellcheck="false">나는 나를 믿어요
+학교 친구 연필 책가방
+나무 바다 하늘 꽃 구름</textarea>
+    <div class="paper"><div id="proof" aria-live="polite"></div></div>
+    <p class="caption">자체 제작 서체이며 DX경필명조 원본과는 다릅니다. 현대 한글 11,172자와 자모 51자를 지원합니다.</p>
+    <div class="actions"><a href="./ClassJPenM-Regular.ttf" download>TTF 파일</a><a href="./ClassJPenM-Regular.woff2" download>웹폰트 파일</a></div>
+  </main>
+  <script>
+    const text=document.getElementById('text'),proof=document.getElementById('proof'),size=document.getElementById('size');
+    const samples={sentence:'나는 나를 믿어요\n학교 친구 연필 책가방\n나무 바다 하늘 꽃 구름',basic:'가나다라마바사아자차카타파하\n아야어여오요우유으이\n까따빠싸짜애얘에예\nㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ',compound:'와 왜 외 워 웨 위 의\n권 괄 괜 괌 괭 귤 확 활 훤\n뺨 쌍 땅 짝 찜 찹 핥 팥\n값 넋 앉 닭 삶 읽 밟 읊',detail:'를 어 푸 늘 름 거\n현 협 형 여 푸\n쵸 죠 쿠 괴 귀 궤\n나 마 요 늘 를 쌍\n맑은 하늘 푸른 바다'};
+    const render=()=>{proof.textContent=text.value;proof.style.fontSize=size.value+'px';document.getElementById('sizeValue').value=size.value+'px';};
+    text.addEventListener('input',render);size.addEventListener('input',render);
+    document.getElementById('sample').addEventListener('change',e=>{text.value=samples[e.target.value];render();});render();
+  </script>
+</body>
+</html>
