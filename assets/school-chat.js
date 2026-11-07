@@ -45,7 +45,7 @@
             .sc-toggle:hover{background:#334052}
             .sc-badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#d8352d;color:#fff;font-size:11px;line-height:18px;text-align:center}
             .sc-badge[hidden]{display:none}
-            .sc-panel{position:fixed;left:14px;bottom:70px;z-index:70;width:min(330px,calc(100vw - 28px));height:min(440px,calc(100vh - 100px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+            .sc-panel{position:fixed;left:14px;bottom:70px;z-index:70;width:min(330px,calc(100vw - 28px));height:min(560px,calc(100vh - 90px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
             .sc-panel.open{display:flex}
             .sc-head{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
             .sc-head .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -75,17 +75,17 @@
             .sc-call .bar .end{width:auto;padding:0 8px;font-size:12px}
             .sc-call .note{min-height:0;color:#f0a39c;font-size:12px;margin-top:4px}
             .sc-call .note:empty{display:none}
-            .sc-videos{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+            .sc-videos{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;max-height:68px;overflow-y:auto}
             .sc-videos:empty{display:none}
-            .sc-video{position:relative;width:96px;height:72px;background:#0a0d12;border:1px solid rgba(255,255,255,.16);overflow:hidden}
+            .sc-video{position:relative;width:80px;height:60px;background:#0a0d12;border:1px solid rgba(255,255,255,.16);overflow:hidden}
             .sc-video video{width:100%;height:100%;object-fit:cover;display:block}
             .sc-video span{position:absolute;left:0;right:0;bottom:0;padding:1px 4px;font-size:10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#e9edf3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
             .sc-people{padding:5px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
             .sc-people .sum{width:100%;display:flex;justify-content:space-between;background:none;border:none;color:#cfd8e3;padding:0;font:inherit;font-size:12px;cursor:pointer}
-            .sc-people-list{display:flex;flex-wrap:wrap;gap:2px 10px;max-height:86px;overflow-y:auto;margin-top:4px;font-size:12px;color:#c3cddb}
+            .sc-people-list{display:flex;flex-wrap:wrap;gap:2px 10px;max-height:60px;overflow-y:auto;margin-top:4px;font-size:12px;color:#c3cddb}
             .sc-people-list .t{color:#f0d77c}
             .sc-people-list .me{color:#8fe0a8}
-            .sc-list{flex:1;overflow-y:auto;padding:8px 10px;user-select:text}
+            .sc-list{flex:1 1 auto;min-height:140px;overflow-y:auto;padding:8px 10px;user-select:text}
             .sc-empty{color:#8794a6;padding:6px 0}
             .sc-msg{margin-bottom:7px;overflow-wrap:anywhere}
             .sc-msg .who{color:#9fc6ee;font-weight:700;margin-right:5px}
@@ -171,6 +171,8 @@
             tab.addEventListener("click", () => { if (logMode) toggleLog(); switchTo(channel.id); });
             tabs.appendChild(tab);
         }
+        // 한 번에 방 하나라서, 방에 있는 동안은 만들기·들어가기 칸이 필요 없다.
+        if (channels.some(channel => channel.code)) { ui.rooms.classList.remove("open"); return; }
         const add = el("button", ui.rooms.classList.contains("open") ? "on" : "", "+ 방");
         add.type = "button";
         add.setAttribute("aria-label", "방 만들기 또는 번호로 들어가기");
@@ -233,6 +235,7 @@
         // 학생이 만든 방을 열면 그 방 통화에 자동으로 들어간다(학교 전체방에는 통화가 없다)
         const info = channelInfo(channelId);
         if (info && info.code && callChannelId !== channelId) startCall(channelId);
+        if (channelId === SCHOOL && callChannelId) endCall();
     }
 
     function onEvent(event) {
@@ -355,7 +358,7 @@
                         let remembered = null;
                         try { remembered = sessionStorage.getItem(CALL_TAB_KEY); } catch (_) {}
                         if (call && call.inCall()) call.rejoin();
-                        else if (remembered && channelInfo(remembered)) startCall(remembered);
+                        else if (remembered && channelInfo(remembered)) { active = remembered; render(); startCall(remembered); }
                     } else if (packet.type === "SCHOOLCHAT_PRESENCE") {
                         presenceBy[packet.channel] = new Map((packet.users || []).map(user => [user.userId, user]));
                         renderPeople();

@@ -351,7 +351,7 @@ const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-nav
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>';
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20261029-lesson-navigation">';
 // 학교 공용 채팅 위젯: 메인 화면과 보드게임 쪽에만 끼운다. 학교 학생·교사가 아니면 위젯이 스스로 안 뜬다.
-const SITE_SCHOOL_CHAT_TAG = '<script data-school-chat="true" src="/assets/school-chat.js?v=20261107-switch" defer></script>';
+const SITE_SCHOOL_CHAT_TAG = '<script data-school-chat="true" src="/assets/school-chat.js?v=20261107-layout" defer></script>';
 function wantsSchoolChat(filepath) {
   return filepath === path.join(SITE_ROOT, "index.html")
     || filepath.startsWith(path.join(SITE_ROOT, "learning", "games") + path.sep);
