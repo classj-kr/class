@@ -6,7 +6,8 @@ const root = path.resolve(__dirname, '..');
 const base = '/learning/literacy-numeracy/curriculum-vocabulary/';
 const lessons = require('..' + base + 'word-lessons.js');
 const books = require('..' + base + 'word-bank.js');
-const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2' };
+const visualLessons = require('..' + base + 'visual-lessons.js');
+const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf' };
 
 (async () => {
   const browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || 'chrome' });
@@ -30,13 +31,16 @@ const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 't
     await client.send('DOM.enable'); await client.send('CSS.enable');
     const { root: dom } = await client.send('DOM.getDocument');
     const fonts = {};
-    for (const selector of ['.visual-lesson > h2', '.word-navigation button', '.detail-part p', '.visual-check h3', '.scene-choices button']) {
+    for (const selector of ['.visual-lesson > h2', '.word-navigation button', '.detail-part p', '.visual-check h3', '.scene-choices button', '.hanja-glyph']) {
       const { nodeId } = await client.send('DOM.querySelector', { nodeId: dom.nodeId, selector });
       fonts[selector] = (await client.send('CSS.getPlatformFontsForNode', { nodeId })).fonts.map(font => font.familyName);
     }
     for (const selector of ['.detail-part p', '.visual-check h3', '.scene-choices button']) assert.ok(fonts[selector].some(name => /KoPub|Batang/.test(name)), selector + ': ' + fonts[selector]);
     for (const selector of ['.visual-lesson > h2', '.word-navigation button']) assert.ok(fonts[selector].some(name => /Malgun|Gothic/i.test(name)), selector + ': ' + fonts[selector]);
-    let checkedWords = 0, checkedUnits = 0;
+    assert.ok(fonts['.hanja-glyph'].some(name => /Klee/i.test(name)), fonts['.hanja-glyph']);
+    assert.equal(await page.locator('.hanja-glyph').first().evaluate(el => getComputedStyle(el).fontSynthesis), 'none');
+    assert.equal(await page.locator('.filters label, #subject-label').count(), 0);
+    let checkedWords = 0, checkedUnits = 0, checkedLegacy = 0;
     for (const width of [1280, 390]) {
       await page.setViewportSize({ width, height: 900 });
       for (const [term, subjects] of Object.entries(lessons)) for (const [subject, units] of Object.entries(subjects)) for (const [unit, words] of Object.entries(units)) {
@@ -63,11 +67,28 @@ const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 't
         assert.equal(await page.locator('.word-navigation button[aria-pressed="true"]').count(), 1);
         checkedUnits++;
       }
+      for (const [term, subjects] of Object.entries(visualLessons)) for (const [subject, units] of Object.entries(subjects)) for (const [unit, activities] of Object.entries(units)) {
+        if (lessons[term]?.[subject]?.[unit]) continue;
+        await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit }));
+        for (let index = 0; index < activities.length; index++) {
+          const { check } = activities[index];
+          const section = page.locator('.visual-lesson').nth(index);
+          assert.equal(await section.locator('.visual-check h3').textContent(), check.question);
+          assert.equal(await section.locator('.scene-choices button').count(), 3);
+          const wrong = check.options.find(option => option !== check.answer);
+          await section.locator('.scene-choices').getByRole('button', { name: wrong, exact: true }).click();
+          assert.equal(await section.locator('.visual-feedback').textContent(), check.feedback[wrong]);
+          await section.locator('.scene-choices').getByRole('button', { name: check.answer, exact: true }).click();
+          assert.equal(await section.locator('.visual-feedback').textContent(), check.feedback[check.answer]);
+          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+          checkedLegacy++;
+        }
+      }
     }
     const body = fs.readFileSync(path.join(root, base, 'visual-lessons.js'), 'utf8') + fs.readFileSync(path.join(root, base, 'app.js'), 'utf8');
     for (const phrase of ['뜻과 쓰임 자세히 보기', '물어볼 한 가지', '다른 곳에서도 찾아보기', '함께 구별하기', '같은 이야기를 무엇으로 읽을까?', '두 책의 이야기는 같아요. 무엇이 바뀌었을까요?']) assert.ok(!body.includes(phrase), phrase);
     assert.deepEqual(errors, []);
     assert.deepEqual(missing, []);
-    console.log(JSON.stringify({ wordChecks: checkedWords, unitChecks: checkedUnits, fonts, errors }, null, 2));
+    console.log(JSON.stringify({ wordChecks: checkedWords, unitChecks: checkedUnits, legacyChecks: checkedLegacy, fonts, errors }, null, 2));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

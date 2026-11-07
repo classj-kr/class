@@ -119,5 +119,24 @@
       "topic": "fractions",
       "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study/national-curriculum-in-england-mathematics-programmes-of-study"
     }
-  ]
+  ],
+  "practiceRevision": {
+    "date": "2026-11-08",
+    "authoredQuestions": 77,
+    "wordQuestions": 31,
+    "legacyQuestions": 46,
+    "choicesPerQuestion": 3,
+    "criteria": [
+      "Interpret a stated situation or apply a concept.",
+      "Use comparable, plausible answer choices.",
+      "Put reasoning in feedback, not in answer choices.",
+      "Avoid moral or politeness cues that reveal the answer."
+    ],
+    "hanjaFont": "Klee One SemiBold",
+    "hanjaSize": {
+      "mobile": "44px",
+      "desktop": "60px"
+    },
+    "newIllustrations": false
+  }
 }
