@@ -11,8 +11,6 @@ import { decks as geometry } from "./race-decks/geometry.ts";
 
 export { isRaceAnswerCorrect, raceAnswerText, cardFields, type RaceCard, type RacePart, type RaceField } from "./race-card-model.ts";
 
-export const RACE_DURATIONS = [60, 120, 180] as const;
-
 const decks: Record<string, RaceDeck> = { ...basic, ...early, ...gradeThree, ...fractions, ...gradeFour, ...upper, ...geometry };
 
 export function hasRaceCards(route: string) {

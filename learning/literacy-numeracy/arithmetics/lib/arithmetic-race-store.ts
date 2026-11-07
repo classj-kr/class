@@ -8,7 +8,7 @@ export type RaceRow = {
   created_at: number;
   started_at: number | null;
   duration_seconds?: number | null;
-  // 팀전이면 팀 수(2~4), 개인전이면 null.
+  // 팀전이면 팀 수(2~8), 개인전이면 null.
   team_count?: number | null;
 };
 
@@ -71,6 +71,8 @@ export type RaceStore = {
   closeRace(code: string, hostToken: string): Promise<void>;
   // 대기 중일 때만 바뀐다.
   setTeamCount(code: string, hostToken: string, teamCount: number | null): Promise<boolean>;
+  // 카드 순위전의 제한 시간. 대기 중일 때 방장만 바꾼다.
+  setDuration(code: string, hostToken: string, durationSeconds: number): Promise<boolean>;
   setTeams(code: string, changes: Array<{ id: string; team: number | null }>): Promise<void>;
 };
 
@@ -177,6 +179,12 @@ export function d1RaceStore(db: D1Database): RaceStore {
         .run();
       return true;
     },
+    async setDuration(code, hostToken, durationSeconds) {
+      const result = await db.prepare("UPDATE arithmetic_races SET duration_seconds = ? WHERE room_code = ? AND teacher_token = ? AND status = 'waiting' AND duration_seconds IS NOT NULL")
+        .bind(durationSeconds, code, hostToken)
+        .run();
+      return Boolean(result.meta.changes);
+    },
     async setTeams(code, changes) {
       if (!changes.length) return;
       await db.batch(changes.map((change) => db.prepare("UPDATE arithmetic_race_participants SET team = ? WHERE id = ? AND room_code = ?")
@@ -272,6 +280,12 @@ export function memoryRaceStore(clock: () => number = Date.now): RaceStore {
       for (const row of roster.get(code) ?? []) {
         if (teamCount === null || (row.team ?? -1) >= teamCount) row.team = null;
       }
+      return true;
+    },
+    async setDuration(code, hostToken, durationSeconds) {
+      const race = races.get(code);
+      if (!race || race.teacher_token !== hostToken || race.status !== "waiting" || !race.duration_seconds) return false;
+      race.duration_seconds = durationSeconds;
       return true;
     },
     async setTeams(code, changes) {

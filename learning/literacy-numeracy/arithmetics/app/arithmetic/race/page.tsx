@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { RaceAvatar, RaceBackdrop } from "../../components/arithmetic-race-scene";
-import { RACE_TEAM_COUNTS, RACE_TEAMS } from "../../../lib/arithmetic-race-teams";
+import { RACE_DURATIONS, RACE_TEAM_COUNTS, RACE_TEAMS } from "../../../lib/arithmetic-race-teams";
 import { rememberRaceHost, useRaceMusic } from "../../components/race-music";
 
 type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null; teamCount?: number | null };
@@ -24,7 +24,9 @@ export default function ArithmeticRaceJoinPage() {
   const [loading, setLoading] = useState(false);
   const [entryRoom, setEntryRoom] = useState("");
   const [refresh, setRefresh] = useState(0);
+  const [createRoute, setCreateRoute] = useState("");
   const joinedFromEntry = useRef("");
+  const creatingRoom = useRef(false);
   const avatar = useRef<Promise<string | null> | null>(null);
 
   useEffect(() => {
@@ -59,6 +61,9 @@ export default function ArithmeticRaceJoinPage() {
     const participantId = params.get("participant");
     const participantToken = params.get("participantToken");
     const hostToken = params.get("hostToken") ?? undefined;
+    // 학습지 오른쪽 아래의 「🏁 순위전」은 ?worksheet= 로 온다. 묻지 않고 바로 방을 만든다.
+    const worksheet = params.get("worksheet");
+    if (!room && worksheet) { window.setTimeout(() => setCreateRoute(worksheet), 0); return; }
     if (!room || !/^\d{4}$|^\d{6}$/.test(room)) { window.location.replace("/arithmetic"); return; }
     if (!participantId || !participantToken) { setRoomCode(room); setEntryRoom(room); return; }
     window.setTimeout(() => {
@@ -139,14 +144,49 @@ export default function ArithmeticRaceJoinPage() {
     }
   }, [saveSession, avatarUrl]);
 
+  // 방을 만들고 방장으로 들어간다. 이름은 학습 기록과 같은 계정 이름을 먼저 쓴다.
+  useEffect(() => {
+    if (!createRoute || creatingRoom.current) return;
+    creatingRoom.current = true;
+    void (async () => {
+      setLoading(true);
+      try {
+        type Identity = { student?: { name?: string }; membership?: { studentName?: string }; guestName?: string; user?: { name?: string; email?: string } };
+        const read = async (url: string): Promise<Identity | null> => {
+          try {
+            const response = await fetch(url, { cache: "no-store", credentials: "same-origin", signal: AbortSignal.timeout(5000) });
+            return response.ok ? await response.json() : null;
+          } catch { return null; }
+        };
+        const [me, context] = await Promise.all([read("/api/auth/me"), read("/api/learning-records/context")]);
+        const playerName = normalizedPlayerName(context?.student?.name || me?.membership?.studentName || me?.guestName || me?.user?.name || null)
+          || normalizedPlayerName(me?.user?.email?.split("@")[0] ?? null);
+        if (!playerName) throw new Error("저장된 내 이름을 찾지 못했습니다. 메인 화면에서 이름을 먼저 정해 주세요.");
+        const response = await fetch("/api/arithmetic-race", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ action: "create", worksheetRoute: createRoute, name: playerName, avatarUrl: await avatarUrl() }),
+        });
+        const data = await response.json() as { roomCode?: string; participantId?: string; participantToken?: string; hostToken?: string; race?: Race; error?: string };
+        if (!response.ok || !data.roomCode || !data.participantId || !data.participantToken || !data.hostToken || !data.race) throw new Error(data.error || "방을 만들지 못했습니다.");
+        setRoomCode(data.roomCode);
+        saveSession({ roomCode: data.roomCode, participantId: data.participantId, participantToken: data.participantToken, hostToken: data.hostToken, race: data.race });
+      } catch (cause) {
+        setError(cause instanceof Error ? cause.message : "방을 만들지 못했습니다.");
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [createRoute, saveSession, avatarUrl]);
+
   useEffect(() => {
     if (!entryRoom || !name || joined || joinedFromEntry.current === entryRoom) return;
     joinedFromEntry.current = entryRoom;
     void joinRoom(entryRoom, name);
   }, [entryRoom, name, joined, joinRoom]);
 
-  // 팀전 설정·팀 고르기·섞기. 바로 다시 불러와 화면에 반영한다.
-  async function teamAction(body: Record<string, unknown>) {
+  // 제한 시간·팀전 설정·팀 고르기·섞기. 바로 다시 불러와 화면에 반영한다.
+  async function lobbyAction(body: Record<string, unknown>, failure = "팀을 바꾸지 못했습니다.") {
     if (!joined) return;
     setError("");
     try {
@@ -156,10 +196,10 @@ export default function ArithmeticRaceJoinPage() {
         body: JSON.stringify({ roomCode: joined.roomCode, hostToken: joined.hostToken, participantId: joined.participantId, participantToken: joined.participantToken, ...body }),
       });
       const data = await response.json() as { error?: string };
-      if (!response.ok) throw new Error(data.error || "팀을 바꾸지 못했습니다.");
+      if (!response.ok) throw new Error(data.error || failure);
       setRefresh((value) => value + 1);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "팀을 바꾸지 못했습니다.");
+      setError(cause instanceof Error ? cause.message : failure);
     }
   }
 
@@ -184,9 +224,11 @@ export default function ArithmeticRaceJoinPage() {
 
   const teamCount = joined?.race.mode === "cards" ? joined.race.teamCount ?? null : null;
   const myTeam = board?.participants.find((participant) => participant.id === joined?.participantId)?.team ?? null;
+  // 다섯 팀부터는 대기실을 넓히고, 좁은 화면에서는 두 줄로 나눈다.
+  const manyTeams = Boolean(board && teamCount && teamCount > 4);
 
   return (
-    <main className="portal-page race-entry-page math-race math-race-lobby">
+    <main className={`portal-page race-entry-page math-race math-race-lobby${manyTeams ? " has-many-teams" : ""}`}>
       <RaceBackdrop />
       <div className="race-entry-shell">
         <a className="catalog-back" href="/arithmetic" aria-label="기초 연산 목록으로 돌아가기">←</a>
@@ -194,22 +236,26 @@ export default function ArithmeticRaceJoinPage() {
           <section className="race-waiting-card" aria-live="polite">
             <span>친구를 초대해요</span><strong className="race-room-code">{joined.roomCode}</strong>
             <h2>{joined.race.worksheetName || "학습지 확인 중"}</h2>
-            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note"><b>{joined.race.durationSeconds / 60}분</b><span>맞히면 +1 · 5연속부터 +2 · 10연속부터 +3 · 틀리면 −1 · 포기 −2{teamCount ? " · 팀 점수는 팀원 점수의 합" : ""}</span></p> : null}
+            {joined.race.mode === "cards" && joined.race.durationSeconds ? <p className="race-mode-note">{joined.hostToken ? null : <b>{joined.race.durationSeconds / 60}분</b>}<span>맞히면 +1 · 5연속부터 +2 · 10연속부터 +3 · 틀리면 −1 · 포기 −2{teamCount ? " · 팀 점수는 팀원 점수의 합" : ""}</span></p> : null}
             <div className="math-race-ready"><i aria-hidden="true" />{board ? `${board.participants.length}명 준비 완료` : "출발 준비 중"}</div>
-            {joined.hostToken && joined.race.mode === "cards" ? (
+            {joined.hostToken && joined.race.mode === "cards" ? <>
+              <div className="math-race-team-setup math-race-time-setup" role="group" aria-label="제한 시간">
+                {RACE_DURATIONS.map((seconds) => <button key={seconds} type="button" aria-pressed={joined.race.durationSeconds === seconds}
+                  onClick={() => void lobbyAction({ action: "duration", durationSeconds: seconds }, "시간을 바꾸지 못했습니다.")}>{seconds / 60}분</button>)}
+              </div>
               <div className="math-race-team-setup" role="group" aria-label="경기 방식">
                 {[null, ...RACE_TEAM_COUNTS].map((count) => <button key={count ?? "solo"} type="button" aria-pressed={(joined.race.teamCount ?? null) === count}
-                  onClick={() => void teamAction({ action: "teams", teamCount: count })}>{count ? `${count}팀` : "개인전"}</button>)}
-                {teamCount ? <button type="button" className="math-race-shuffle" onClick={() => void teamAction({ action: "shuffle" })}>🔀 섞기</button> : null}
+                  onClick={() => void lobbyAction({ action: "teams", teamCount: count })}>{count ? `${count}팀` : "개인전"}</button>)}
+                {teamCount ? <button type="button" className="math-race-shuffle" onClick={() => void lobbyAction({ action: "shuffle" })}>🔀 섞기</button> : null}
               </div>
-            ) : null}
+            </> : null}
             {board && teamCount ? <>
-              <div className="math-race-team-pick" style={{ "--teams": teamCount } as CSSProperties}>
+              <div className="math-race-team-pick" style={{ "--teams": teamCount, "--wrap": teamCount > 4 ? Math.ceil(teamCount / 2) : teamCount } as CSSProperties}>
                 {RACE_TEAMS.slice(0, teamCount).map((team, index) => {
                   const members = board.participants.filter((participant) => participant.team === index);
                   const mine = myTeam === index;
                   return <section key={team.name} className={`math-race-team-column${mine ? " is-mine" : ""}`} style={{ "--hue": team.hue } as CSSProperties}>
-                    <button type="button" className="math-race-team-head" aria-pressed={mine} onClick={() => void teamAction({ action: "team", team: index })}>
+                    <button type="button" className="math-race-team-head" aria-pressed={mine} onClick={() => void lobbyAction({ action: "team", team: index })}>
                       <i aria-hidden="true">{team.symbol}</i><b>{team.name}</b><small>{members.length}명</small>
                     </button>
                     <ul aria-label={`${team.name} 명단`}>{members.map((participant) => <li key={participant.id}><RaceAvatar {...participant} /><span>{participant.name}</span>{participant.id === joined.participantId ? <em>나</em> : null}</li>)}</ul>
@@ -236,6 +282,8 @@ export default function ArithmeticRaceJoinPage() {
             <span>방번호</span><strong className="race-room-code">{roomCode}</strong>
             {loading ? <p>입장 중…</p> : <button type="button" disabled={!name} onClick={() => void joinRoom(entryRoom, name)}>다시 입장</button>}
           </section>
+        ) : createRoute && !error ? (
+          <section className="race-waiting-card" aria-live="polite"><p>방을 만드는 중…</p></section>
         ) : null}
         {error && <p className="race-form-error" role="alert">{error}</p>}
       </div>

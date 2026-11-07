@@ -828,16 +828,19 @@
 
 .clock-write-row > strong,
 .clock-read-row > strong {
-  width: 44px;
+  min-width: 44px;
   height: 24px;
+  flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-right: 4px;
+  padding: 0 9px;
   border-radius: 999px;
   background: #eaf7fc;
   color: #2c698a;
   font-size: 13px;
+  white-space: nowrap;
 }
 
 .clock-input,
@@ -10697,16 +10700,8 @@ main {
 
 .card-race-group { display: inline-flex; align-items: center; gap: 2px; }
 
-/* Race setup belongs to the current worksheet toolbar. */
-.worksheet-race-dialog { width: min(420px, calc(100vw - 32px)); border: 1px solid #cbd5e1; border-radius: 16px; padding: 24px; color: #1e293b; background: #fff; box-shadow: 0 24px 80px #0003; }
-.worksheet-race-dialog::backdrop { background: #0f172a88; }
-.worksheet-race-dialog h2 { margin: 0 0 12px; font-size: 22px; }
-.worksheet-race-duration { border: 0; padding: 0; margin: 20px 0; }
-.worksheet-race-duration legend { padding: 0; margin-bottom: 10px; }
-.worksheet-race-duration > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.worksheet-race-duration button { min-height: 44px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; color: #334155; font: inherit; cursor: pointer; }
-.worksheet-race-duration button[aria-pressed="true"] { border-color: #216553; background: #e6f3ec; color: #174d3e; font-weight: 700; }
-.worksheet-race-duration button:focus-visible { outline: 3px solid #216553; outline-offset: 2px; }
-.worksheet-race-dialog .toolbar { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
-.worksheet-race-dialog [role="alert"] { color: #b91c1c; }
-@media print { .worksheet-race-trigger, .worksheet-race-dialog { display: none !important; } }
+/* 순위전 바로 가기: learning-records.js 가 오른쪽 아래 기록 단추 줄로 옮긴다(다른 학습 앱과 같은 자리·모양).
+   기록 연결이 끝내 안 될 때만 같은 자리에 혼자 보인다. */
+body > a.race-link { display: none; }
+body > a.race-link.is-standalone { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); z-index: 30; display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border-radius: 12px; color: #fff; background: linear-gradient(135deg, #ff3d9a, #7b3dff); box-shadow: 0 3px 14px #182c4529; font: 900 14px/1.45 system-ui, "Malgun Gothic", sans-serif; text-decoration: none; white-space: nowrap; }
+@media print { body > a.race-link { display: none !important; } }

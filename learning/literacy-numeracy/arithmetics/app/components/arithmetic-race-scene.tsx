@@ -47,9 +47,11 @@ const blocksOf = (score: number) => {
 
 // 점수를 수 모형으로 쌓는다. 맞힐 때마다 일 모형이 한 칸 떨어지고, 열 개가 차면 십 모형 막대 하나로,
 // 막대 열 개가 차면 백 모형 판 하나로 합쳐진다(탑이 다시 낮아졌다가 새로 쌓인다).
-export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", unit = "명" }: { entries: RaceRunner[]; myId?: string; playing: boolean; title?: string; unit?: string }) {
+// 개인전은 앞의 다섯 명(나 포함)만, 팀전은 limit 으로 모든 팀을 세운다.
+export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", unit = "명", limit = 5 }: { entries: RaceRunner[]; myId?: string; playing: boolean; title?: string; unit?: string; limit?: number }) {
   const me = entries.find(entry => entry.id === myId);
-  const visible = entries.slice(0, 5);
+  const visible = entries.slice(0, limit);
+  const crowded = visible.length > 5;
   if (me && !visible.some(entry => entry.id === myId)) visible[visible.length - 1] = me;
   // 판·막대가 많아지면 층을 얇게 해서 탑이 틀 안에 머문다.
   const tallest = Math.max(ROW, ...visible.map(entry => {
@@ -60,7 +62,7 @@ export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", u
   const row = Math.max(4, Math.floor(ROW * scale)), flat = Math.max(12, Math.floor(FLAT * scale));
   return <section className="math-race-towers" aria-label="실시간 수 모형 탑">
     <div className="math-race-towers-heading"><strong>{title}</strong><span>{entries.length}{unit}{me ? ` · ${whoLabel(me)} ${me.rank}위` : ""}</span></div>
-    <ol style={{ "--cols": Math.max(1, visible.length), "--row": `${row}px`, "--flat": `${flat}px`, "--tower": `${TOWER_HEIGHT}px` } as CSSProperties}>
+    <ol className={crowded ? "is-crowded" : undefined} style={{ "--cols": Math.max(1, visible.length), "--row": `${row}px`, "--flat": `${flat}px`, "--tower": `${TOWER_HEIGHT}px` } as CSSProperties}>
       {visible.map((entry, index) => {
         const hue = entry.hue ?? [...entry.id].reduce((value, letter) => (value * 31 + letter.charCodeAt(0)) % 360, 0);
         const { hundreds, tens, ones } = blocksOf(entry.score);
@@ -73,7 +75,7 @@ export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", u
             {Array.from({ length: hundreds }, (_, plate) => <i key={`flat-${plate}`} className="math-race-flat" />).reverse()}
           </div>
           <strong key={entry.score} className={`math-race-tower-score${entry.score < 0 ? " is-negative" : ""}`}>{entry.score}</strong>
-          <span className="math-race-tower-name"><em>{entry.rank}</em>{entry.name}</span>
+          <span className="math-race-tower-name"><em>{entry.rank}</em>{crowded && entry.symbol ? entry.name.replace(/팀$/, "") : entry.name}</span>
         </li>;
       })}
     </ol>
