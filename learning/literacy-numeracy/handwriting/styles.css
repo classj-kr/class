@@ -1,7 +1,15 @@
 @font-face {
   font-family: PracticeReference;
-  src: url('/assets/fonts/classj-gyeongpil/ClassJGyeongpilMyeongjo-Regular.woff2?v=20261107-18')
+  src: url('/assets/fonts/classj-gyeongpil/ClassJGyeongpilMyeongjo-Regular.woff2?v=20261107-19')
     format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+/* 학교안심 받아쓰기 L — KERIS, OFL */
+@font-face {
+  font-family: PracticeReferenceBadasseugi;
+  src: url('/assets/fonts/hakgyoansim-badasseugi/HakgyoansimBadasseugi-L.woff2?v=20261107-1') format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: block;
@@ -132,7 +140,8 @@ summary:focus-visible {
   align-items: center;
   min-width: 0;
 }
-#lessonSelect {
+#lessonSelect,
+#styleSelect {
   max-width: 170px;
   font-size: 13px;
 }
@@ -589,7 +598,8 @@ dialog p {
     gap: 5px;
     flex: 1;
   }
-  #lessonSelect {
+  #lessonSelect,
+  #styleSelect {
     font-size: 12px;
     max-width: 145px;
     min-width: 90px;

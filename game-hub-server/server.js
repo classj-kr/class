@@ -642,7 +642,7 @@ app.use('/api/handwriting', classroomPlatform.requireSiteAccess, handwriting.rou
 // The always-open race entrance shares the editor, with practice disabled until joining a room.
 const handwritingRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/handwriting');
 app.get('/learning/literacy-numeracy/handwriting/race/', (req, res, next) => sendSiteHtml(req, res, path.join(handwritingRoot, 'index.html'), next));
-for (const file of ['font-source.js', 'pen-reference.js', 'core.js', 'writing-texts.js', 'app.js', 'race.js', 'styles.css']) {
+for (const file of ['font-source.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'writing-texts.js', 'app.js', 'race.js', 'styles.css']) {
   app.get(`/learning/literacy-numeracy/handwriting/race/${file}`, (_req, res) => res.sendFile(path.join(handwritingRoot, file)));
 }
 const stackingCubes = createStackingCubes({ platform: classroomPlatform });

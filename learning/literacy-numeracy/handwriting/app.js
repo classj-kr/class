@@ -43,6 +43,15 @@
     cells = [],
     marks = [];
   const CELL_PIXELS = 240;
+  // 글씨체마다 본보기 글꼴과 알맞은 펜 굵기. 획순·채점 선은 font-source.js의 같은 이름 보정 표를 쓴다.
+  const Font = window.HandwritingFont,
+    STYLE_FONTS = { gyeongpil: 'PracticeReference', badasseugi: 'PracticeReferenceBadasseugi' },
+    STYLE_PEN = { gyeongpil: 5.5, badasseugi: 3.5 };
+  let roomStyle = null;
+  function applyStyle(name) {
+    Font.setStyle(STYLE_FONTS[name] ? name : 'gyeongpil');
+    $('styleSelect').value = Font.style();
+  }
   // 교과서 칸 공책처럼 글자가 칸을 꽉 채우지 않고 사방에 여백이 남게 한다.
   const GLYPH_SCALE = 0.88;
   const shownModel = (char) =>
@@ -155,7 +164,7 @@
     context.translate(50, 50);
     context.scale(GLYPH_SCALE, GLYPH_SCALE);
     context.translate(-50, -50);
-    context.font = `${layout[0]}px PracticeReference`;
+    context.font = `${layout[0]}px ${STYLE_FONTS[Font.style()] || STYLE_FONTS.gyeongpil}`;
     context.textAlign = 'left';
     context.textBaseline = 'alphabetic';
     context.fillStyle = color;
@@ -676,10 +685,11 @@
     window.print();
   };
   const ready = (async () => {
-    const loaded = document.fonts
-      .load('100px PracticeReference', '가나다')
+    const loaded = Promise.all(
+      Object.values(STYLE_FONTS).map((family) => document.fonts.load(`100px ${family}`, '가나다')),
+    )
       .then((faces) => {
-        referenceReady = faces.length > 0;
+        referenceReady = faces.every((f) => f.length > 0);
       })
       .catch(() => {
         referenceReady = false;
@@ -694,6 +704,15 @@
       const value = $('cellSize').value;
       document.documentElement.dataset.cellSize = value;
       store.set('cell-size', value);
+    };
+    applyStyle(store.get('font-style'));
+    $('styleSelect').onchange = () => {
+      cancel();
+      applyStyle($('styleSelect').value);
+      store.set('font-style', Font.style());
+      doc.width = STYLE_PEN[Font.style()];
+      save();
+      render();
     };
     store.onError(() => {
       saveFailed = true;
@@ -733,6 +752,9 @@
     useRound(text, phase, key) {
       cancel();
       inRoom = true;
+      if (roomStyle === null) roomStyle = Font.style();
+      applyStyle('gyeongpil');
+      $('styleSelect').disabled = true;
       saveKey = 'round-' + key;
       const saved = store.get(saveKey);
       try {
@@ -747,6 +769,9 @@
     },
     exitRound() {
       inRoom = false;
+      $('styleSelect').disabled = false;
+      if (roomStyle !== null) applyStyle(roomStyle);
+      roomStyle = null;
       saveKey = 'draft';
       try {
         doc = store.has('draft') ? normalize(store.get('draft')) : fresh(presets.gana, 'gana');
