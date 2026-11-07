@@ -15,7 +15,7 @@
   <script src="music.js?v=20261106-race-music" defer></script>
   <script src="library.js?v=20261104-activities" defer></script>
   <script src="app.js?v=20261107-activity-groups" defer></script>
-  <script src="race.js?v=20261106-race-music" defer></script>
+  <script src="race.js?v=20261107-source" defer></script>
   <link rel="stylesheet" href="coop.css?v=20261104-room-sign">
   <script src="team-stage.js?v=20261104-camera" defer></script>
   <script src="coop.js?v=20261104-room-sign" defer></script>
@@ -107,7 +107,7 @@
       </div>
       <div id="race-entry">
         <div id="race-create" class="race-row" hidden>
-          <select id="race-source" aria-label="출제할 문제은행"><option value="">자동 출제</option></select>
+          <select id="race-source" aria-label="출제할 문제은행" hidden><option value="">자동 출제</option></select>
           <label class="sr-only" for="race-mode">문제 종류</label>
           <select id="race-mode"><option value="views">그림 보고 쌓기</option><option value="copy">따라 쌓기</option></select>
           <label class="round-count">문제 수 <input id="race-count" type="number" min="1" max="200" value="6" required></label>

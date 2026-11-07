@@ -263,6 +263,8 @@
         option.dataset.count = bank.count;
         source.add(option);
       }
+      // 내 쌓기나무 게시판에 모은 문제가 없으면 고를 것이 「자동 출제」 하나뿐이라 칸을 감춘다.
+      source.hidden = !(banks || []).length;
       source.dispatchEvent(new Event('change'));
     } catch { /* The automatic source is independent of board availability. */ }
   }
