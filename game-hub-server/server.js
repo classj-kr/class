@@ -172,41 +172,67 @@ app.use((req, res, next) => {
 // Keep withdrawn lessons unavailable before login redirects and static serving.
 app.use(hideUnpublishedLessons);
 
+// 연산·세계 항해는 메인과 같은 512MB 기계에서 따로 도는 프로그램이다.
+// 메인의 힙 한도(NODE_OPTIONS)를 그대로 물려받으면 자식 하나가 불어나 기계 전체가 죽으므로,
+// 자식마다 힙 한도를 낮게 따로 주어 넘치면 그 자식만 꺼지게 하고, 꺼지면 다시 띄운다.
+const LEARNING_APP_HEAP_MB = Math.max(96, Number(process.env.LEARNING_APP_HEAP_MB) || 192);
+let learningAppsStopping = false;
+
+function learningAppNodeOptions() {
+  const flags = String(process.env.NODE_OPTIONS || "").split(/\s+/)
+    .filter((flag) => flag && !flag.startsWith("--max-old-space-size"));
+  return [...flags, `--max-old-space-size=${LEARNING_APP_HEAP_MB}`].join(" ");
+}
+
+function superviseLearningApp(label, appDirectory, args, port, extraEnv = {}) {
+  let child = null;
+  let restartTimer = null;
+  let quickFailures = 0;
+  const scheduleRestart = (reason, startedAt) => {
+    child = null;
+    if (learningAppsStopping || restartTimer) return;
+    // 1분 넘게 잘 돌다 꺼졌으면 바로, 켜자마자 계속 꺼지면 30초까지 점점 늦춰 다시 띄운다.
+    quickFailures = Date.now() - startedAt > 60000 ? 0 : quickFailures + 1;
+    const delay = Math.min(30000, 1000 * 2 ** quickFailures);
+    console.error(`${label} stopped (${reason}); restarting in ${delay / 1000}s`);
+    restartTimer = setTimeout(launch, delay);
+  };
+  function launch() {
+    restartTimer = null;
+    const startedAt = Date.now();
+    const current = spawn(process.execPath, args, {
+      cwd: appDirectory,
+      env: { ...process.env, NODE_OPTIONS: learningAppNodeOptions(), PORT: String(port), ...roomCodeEnv, ...extraEnv },
+      stdio: ["ignore", "inherit", "inherit"],
+    });
+    child = current;
+    current.on("error", (error) => {
+      if (child === current) scheduleRestart(`error=${error.message}`, startedAt);
+    });
+    current.on("exit", (code, signal) => {
+      if (child === current) scheduleRestart(`code=${code}, signal=${signal}`, startedAt);
+    });
+  }
+  launch();
+  return {
+    kill() {
+      clearTimeout(restartTimer);
+      restartTimer = null;
+      child?.kill();
+    },
+  };
+}
+
 function startLearningApp(relativeDirectory, port, label) {
   const appDirectory = path.join(SITE_ROOT, relativeDirectory);
   const cliPath = path.join(appDirectory, "node_modules", "vinext", "dist", "cli.js");
-  const child = spawn(
-    process.execPath,
-    [cliPath, "start", "--hostname", "127.0.0.1", "--port", String(port)],
-    {
-      cwd: appDirectory,
-      env: { ...process.env, PORT: String(port), ...roomCodeEnv },
-      stdio: ["ignore", "inherit", "inherit"],
-    },
-  );
-
-  child.on("exit", (code, signal) => {
-    console.error(`${label} stopped (code=${code}, signal=${signal})`);
-  });
-  return child;
+  return superviseLearningApp(label, appDirectory,
+    [cliPath, "start", "--hostname", "127.0.0.1", "--port", String(port)], port);
 }
 
 function startNodeLearningApp(relativeDirectory, port, label, extraEnv = {}) {
   const appDirectory = path.join(SITE_ROOT, relativeDirectory);
-  const child = spawn(
-    process.execPath,
-    ["server.js"],
-    {
-      cwd: appDirectory,
-      env: { ...process.env, PORT: String(port), ...roomCodeEnv, ...extraEnv },
-      stdio: ["ignore", "inherit", "inherit"],
-    },
-  );
-
-  child.on("exit", (code, signal) => {
-    console.error(`${label} stopped (code=${code}, signal=${signal})`);
-  });
-  return child;
+  return superviseLearningApp(label, appDirectory, ["server.js"], port, extraEnv);
 }
 
 function proxyToLearningApp(port, options = {}) {
@@ -276,6 +302,7 @@ const worldVoyageApp = startNodeLearningApp(
 );
 
 const stopLearningApps = () => {
+  learningAppsStopping = true;
   arithmeticApp.kill();
   worldVoyageApp.kill();
 };
