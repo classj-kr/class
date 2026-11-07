@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'KleeHanja';
+  src: url('../../../assets/fonts/klee-one/KleeOne-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
+}
 :root {
   color-scheme: light;
   --ink: #193733;
@@ -43,10 +51,11 @@ mark { background: #f8e5ae; color: var(--ink); border-radius: 3px; padding: 0 .1
 .scene figcaption { padding: 10px 14px; background: var(--paper); border-top: 1px solid var(--line); line-height: 1.6; overflow-wrap: anywhere; }
 .scene figcaption strong { margin-right: .25em; }
 .word-build { margin-top: 10px; background: #f7f2e5; border: 1px solid #ded2b9; border-radius: 12px; padding: 12px; }
-.word-pieces { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-.word-piece { display: inline-flex; align-items: center; gap: 7px; background: var(--paper); border: 1px solid #dfcda8; border-radius: 8px; padding: 4px 9px; }
-.word-piece b { font-size: 1.6rem; }
-.word-piece + .word-piece::before { content: '+'; color: var(--muted); }
+.word-pieces { display: flex; align-items: stretch; flex-wrap: wrap; gap: 12px; }
+.word-piece { display: inline-flex; max-width: 100%; align-items: center; gap: 14px; background: var(--paper); border: 1px solid #dfcda8; border-radius: 8px; padding: 12px 14px; }
+.word-piece .word-glyph { flex: none; font-family: 'Malgun Gothic', sans-serif; font-size: 2rem; font-weight: 400; line-height: 1.35; }
+.word-piece .hanja-glyph { font-family: 'KleeHanja', 'Batang', serif; font-size: clamp(44px, 5vw, 60px); font-weight: 600; font-synthesis: none; letter-spacing: .04em; }
+.word-piece .word-reading { min-width: 0; font-size: 1.05rem; line-height: 1.65; overflow-wrap: anywhere; }
 .word-result, .word-english { margin: 6px 0 0; }
 .word-result { font-weight: 750; }
 .word-english { font-size: .93rem; color: var(--muted); }

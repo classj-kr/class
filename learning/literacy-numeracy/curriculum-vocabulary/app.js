@@ -101,7 +101,8 @@
         const pieces = element('div', '', 'word-pieces');
         for (const [character, reading] of activity.parts) {
           const part = element('span', '', 'word-piece');
-          part.append(element('b', character), element('span', reading));
+          const glyph = element('span', character, /\p{Script=Han}/u.test(character) ? 'word-glyph hanja-glyph' : 'word-glyph');
+          part.append(glyph, element('span', reading, 'word-reading'));
           pieces.append(part);
         }
         word.append(pieces);
