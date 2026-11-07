@@ -18,16 +18,21 @@ body {
 }
 
 .shell {
-  width: min(100% - 24px, 900px);
-  margin: 0 auto;
-  padding: 16px 0 48px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 64px 12px;
 }
 
 .back {
+  position: absolute;
+  top: 16px;
+  left: max(12px, calc((100% - 900px) / 2));
   display: inline-flex;
   min-height: 40px;
   align-items: center;
-  margin-bottom: 14px;
   padding: 6px 14px;
   border: 1px solid rgba(255, 240, 210, 0.5);
   border-radius: 20px;
@@ -39,7 +44,6 @@ body {
 
 .card {
   width: min(100%, 340px);
-  margin: 11vh auto 0;
   padding: 20px;
   border: 2px solid var(--gold);
   border-radius: 10px;
@@ -115,7 +119,3 @@ button:disabled { opacity: 0.55; cursor: wait; box-shadow: none; }
 
 .status.error { color: #a33c34; }
 .status:empty { display: none; }
-
-@media (max-width: 520px) {
-  .card { margin-top: 7vh; }
-}
