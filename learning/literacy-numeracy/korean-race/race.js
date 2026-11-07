@@ -8,7 +8,8 @@
 
   const params = new URLSearchParams(location.search);
   // ── 바탕: 글자 연과 날리는 글자 ─────────────────────
-  const KITES = [[8, 22, 4, 7, 5], [26, 12, 214, 9, 6], [47, 30, 146, 8, 5.5], [70, 16, 330, 10, 6.5], [88, 26, 40, 7.5, 5]];
+  // 가운데 연은 시상대·문제 카드 뒤에 겹치지 않게 위쪽 오른편으로 비켜 띄운다.
+  const KITES = [[8, 22, 4, 7, 5], [26, 12, 214, 9, 6], [60, 8, 146, 8, 5.5], [72, 22, 330, 10, 6.5], [90, 30, 40, 7.5, 5]];
   const sceneLetters = (set) => (set === 'vocabulary' ? 'ABCDEFGHIJKLMNOPRSTW' : '가나다라마바사아자차카타파하글말');
   let sceneSet = '';
   function paintScene(set) {
@@ -303,6 +304,10 @@
   function show(screen) {
     document.body.dataset.screen = screen;
     for (const id of ['entry', 'lobby', 'race', 'result']) $(id + 'Screen').hidden = id !== screen;
+    // 경주 중에는 시간·점수판이 맨 위 줄(돌아가기·방번호 줄)로 올라가, 그 줄이 빈 띠로 한 줄을 먹지 않는다.
+    const hud = document.querySelector('.hud');
+    if (screen === 'race') { if (hud.parentElement !== document.querySelector('.topbar')) $('roomBadge').before(hud); }
+    else if (hud.parentElement !== $('raceScreen')) $('raceScreen').prepend(hud);
   }
   function racerItem(p, extra = '') {
     const li = document.createElement('li');
@@ -766,13 +771,14 @@
       div.className = 'step place-' + place + (p ? '' : ' empty');
       div.style.setProperty('--delay', [0.5, 1.1, 0.2][i] + 's');
       if (p) {
-        div.innerHTML = '<span class="pod-racer"></span><b class="pod-name"></b><span class="pod-score"></span><div class="block"></div>';
+        // 아바타는 단 위에 바로 서고, 이름·점수는 단 안에 적는다(아바타와 단 사이가 비어 떠 보이지 않게).
+        div.innerHTML = '<span class="pod-racer"></span><div class="block"><b class="pod-place"></b><b class="pod-name"></b><span class="pod-score"></span></div>';
         div.querySelector('.pod-racer').append(face(p, 'pod-face'));
         if (place === 1) div.querySelector('.pod-racer').classList.add('crowned');
         div.querySelector('.pod-name').textContent = p.name;
         div.querySelector('.pod-score').textContent = p.score + '점';
-      } else div.innerHTML = '<div class="block"></div>';
-      div.querySelector('.block').textContent = place;
+      } else div.innerHTML = '<div class="block"><b class="pod-place"></b></div>';
+      div.querySelector('.pod-place').textContent = place;
       return div;
     }));
     $('resultRows').replaceChildren(...s.participants.map((p) => {
