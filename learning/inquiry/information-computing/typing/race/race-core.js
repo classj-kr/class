@@ -100,6 +100,14 @@
   }
   const multiplier = (combo) => 1 + Math.min(Math.max(combo, 0), COMBO_CAP) / COMBO_CAP;
   const itemScore = (text, combo) => Math.round(strokes(text) * multiplier(combo));
+  // 낱말판: 한 화면에 낱말 여러 개가 함께 떠 있고, 먼저 친 사람일수록 점수를 더 받는다.
+  // 낱말 점수에 1등 +5, 2등 +3, 3등 +1을 더한다(곱하지 않아 아이들이 셈을 그대로 볼 수 있다). 그 뒤는 낱말 점수만.
+  // 낱말은 모두가 치거나 첫 사람이 친 뒤 HOLD_MS가 지나면 새 낱말로 바뀐다.
+  const ORDER_BONUS = [5, 3, 1];
+  const orderBonus = (order) => ORDER_BONUS[order - 1] || 0;
+  const claimScore = (text, combo, order) => itemScore(text, combo) + orderBonus(order);
+  const boardSize = (mode) => (MODES[mode]?.sentence ? 2 : 6);
+  const HOLD_MS = 5000;
   const accuracy = (good, mistakes) => (good + mistakes ? Math.round((good / (good + mistakes)) * 100) : 100);
   function rank(rows) {
     return [...rows].sort(
@@ -110,5 +118,5 @@
         String(a.name).localeCompare(String(b.name), 'ko'),
     );
   }
-  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, strokes, onTrack, multiplier, itemScore, accuracy, rank };
+  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, strokes, onTrack, multiplier, itemScore, ORDER_BONUS, orderBonus, claimScore, boardSize, HOLD_MS, accuracy, rank };
 });
