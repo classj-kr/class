@@ -341,3 +341,63 @@ html body li.mb-group.mb-group, html body p.mb-round-title.mb-round-title, html 
 .mb-vessel { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
 .mb-water { fill: #bfdcff; }
 .mb-needle { stroke: var(--wrong); stroke-width: 2; stroke-linecap: round; }
+
+/* ── 고등학교 2·3학년 공용 기호(middle.js 의 B.kit.hs) ──
+   함수 이름·확률 기호(sin, log, lim, P, C, E …)는 수식 글꼴의 세운 글자(KaTeX_Main). 쌓은 기호(Σ·lim·∫·[ ]ₐᵇ)의 보이는 글자는 빈 span 의 data-t 를
+   ::before 로 그린다(글로 옮기면 사라지고, 같은 뜻의 한 줄 글이 숨은 글 mb-sr 로 남는다). 기호 안에서는 줄이 갈리지 않는다(.mb-hs).
+   공용 읽기 글꼴(exam-typography.css)은 p·li 에만 !important 로 입히므로, 글꼴을 따로 적은 이 span 들은 그 영향을 받지 않는다. */
+@font-face { font-family: "MB Main"; src: url("fonts/KaTeX_Main-Regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "MB Main"; src: url("fonts/KaTeX_Main-Bold.woff2") format("woff2"); font-style: normal; font-weight: 700; font-display: swap; }
+.mb-fn, .mb-pr, .mb-nr, .mb-op, .mb-lim-v, .mb-evl-lim, .mb-rad-n { font-family: "MB Main", "Times New Roman", serif; font-style: normal; letter-spacing: 0; }
+.mb-hs { white-space: nowrap; }
+.mb-g::before { content: attr(data-t); white-space: pre; }
+.mb-up { font-size: 0.75em; vertical-align: 0.45em; line-height: 0; }
+.mb-dn, sub.mb-sub { font-size: 0.72em; vertical-align: -0.28em; line-height: 0; }
+.mb-pr { font-size: 0.82em; vertical-align: 0.32em; line-height: 0; margin: 0 0.03em 0 0.02em; }
+.mb-mid { margin: 0 0.14em; }
+/* lim: 아래에 x→a(글줄의 기준선은 lim 에 맞춘다) */
+.mb-lim-v { display: inline-flex; flex-direction: column; align-items: center; vertical-align: baseline; line-height: 1.1; margin: 0 0.22em -0.42em 0.04em; }
+.mb-lim-lo { font-size: 0.66em; line-height: 1.05; }
+/* Σ: 위·아래에 끝, ∫: 오른쪽 위·아래에 끝 */
+.mb-op { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1; margin: -0.32em 0.16em -0.32em 0.04em; }
+.mb-op-s { font-size: 2.1em; line-height: 0.82; }
+.mb-op-hi, .mb-op-lo { font-size: 0.68em; line-height: 1.1; }
+.mb-op.mb-op-int { flex-direction: row; align-items: stretch; margin-right: 0.14em; }
+.mb-int-s { font-size: 2.05em; line-height: 1.12; }
+.mb-int-lim { display: inline-flex; flex-direction: column; justify-content: space-between; align-items: flex-start; margin: 0 0 0 0.02em; }
+.mb-int-lim .mb-op-hi { margin-left: 0.12em; }
+.mb-int-lim .mb-op-lo { margin-left: -0.32em; }
+.mb-op.mb-op-int.is-bare { margin: -0.3em 0.12em -0.3em 0.02em; }
+/* [F(x)] 의 오른쪽 아래·위에 a, b(괄호는 안의 글 높이에 맞춘다) */
+.mb-evl { display: inline-flex; align-items: stretch; vertical-align: middle; margin: -0.2em 0.04em; }
+.mb-evl-in { align-self: center; padding: 0.12em 0.1em; }
+.mb-bk { flex: none; width: 0.22em; border: 1.3px solid currentColor; }
+.mb-bk.is-l { border-right: 0; }
+.mb-bk.is-r { border-left: 0; }
+.mb-evl-lim { display: inline-flex; flex-direction: column; justify-content: space-between; align-items: flex-start; margin: -0.28em 0 -0.22em 0.08em; }
+.mb-evl-lim .mb-op-hi, .mb-evl-lim .mb-op-lo { line-height: 1; }
+/* 순열·조합 ₙPᵣ·ₙCᵣ·ₙΠᵣ·ₙHᵣ */
+.mb-nr-n, .mb-nr-r { font-size: 0.7em; line-height: 0; vertical-align: -0.32em; }
+.mb-nr-n { margin-right: 0.06em; }
+.mb-nr-r { margin-left: 0.04em; }
+/* 거듭제곱근의 지수: 근호 왼쪽 위에 작게 */
+.mb-rad.mb-radn { margin-left: 0.3em; }
+.mb-rad-n { position: absolute; left: -0.55em; top: 0; width: 0.95em; text-align: right; font-size: 0.6em; line-height: 1; }
+/* 위첨자 안의 작은 세로 분수(분수 지수) */
+.mb-frac.mb-sfrac { font-size: 0.82em; font-weight: 400; line-height: 1; margin: 0 1px; vertical-align: 0.82em; }
+.mb-frac.mb-sfrac > span:first-child { padding: 0 2px; border-bottom-width: 1px; }
+.mb-frac.mb-sfrac > span:last-child { padding: 0 2px; }
+/* 글자 위의 화살표(벡터)·줄(표본평균)·모자(표본비율). 글줄 높이는 그대로 두고 위쪽 여백에 그린다. */
+.mb-vec, .mb-bar, .mb-hat { position: relative; padding-top: 0.42em; line-height: 1.12; }
+.mb-vec-l { position: absolute; left: 0.06em; right: 0.12em; top: 0.21em; border-top: 0.07em solid currentColor; }
+.mb-vec.is-it .mb-vec-l { left: 0.2em; right: 0.02em; }
+.mb-vec > svg { position: absolute; right: 0.01em; top: 0.09em; width: 0.3em; height: 0.3em; overflow: visible; }
+.mb-vec.is-it > svg { right: -0.09em; }
+.mb-vec.is-it.is-tall { padding-top: 0.52em; }
+.mb-vec > svg path, .mb-hat > svg path { fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.mb-bar-l { position: absolute; left: 0.24em; right: 0.02em; top: 0.2em; border-top: 0.07em solid currentColor; }
+.mb-hat > svg { position: absolute; left: 50%; top: 0.1em; width: 0.42em; height: 0.2em; margin-left: -0.15em; overflow: visible; }
+.mb-hat.is-low { padding-top: 0.2em; }
+.mb-hat.is-low > svg { top: 0.02em; }
+/* 확률분포표·표준정규분포표 */
+.mb-table.mb-dist th, .mb-table.mb-dist td, .mb-table.mb-ztab th, .mb-table.mb-ztab td { padding: 4px 9px; }

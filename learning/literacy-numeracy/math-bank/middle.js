@@ -707,3 +707,555 @@
 
   B.kit.mgeo = { RAD, r1, FS, at, dirOf, dist, mid, XY, meet, awayFrom, textW, arcTo, HALO, sv, TINT, WHITE, CLEAR, Board, polyOf, RANGE, anglesOf, ALPHA, vnames, triOf, regOn, regPts };
 })(typeof window !== 'undefined' ? window : globalThis);
+
+// ── 고등학교 2·3학년 공용 도구(B.kit.hs) ── 대수·미적분Ⅰ·확률과 통계·기하·미적분Ⅱ 단원이 함께 쓰는 수식 기호·그래프·공간 그림·답 칸.
+// 단원 파일은 `const { fn, sub, lim, sum, plot, … } = B.kit.hs;` 로 꺼내 쓴다. 쓰는 법은 tools/question-bank/new-unit-guide-h.md 에 있다.
+// 쌓은 기호(Σ·lim·∫·[ ]ₐᵇ·거듭제곱근의 지수)는 두 겹이다. 보이지 않는 한 줄 글(mb-sr — 학습 기록·단원 검사·화면 읽기 프로그램이 읽는다)과,
+// 글자를 CSS 글(::before 의 data-t)로 옮긴 보이는 모양(aria-hidden — 글로 옮기면 사라진다)이다. 그래서 기록 글은 「Σ(k=1~n) a_k」「lim(x→2) f(x)」
+// 「∫(0~1) f(x) dx」「5C2」처럼 한 줄로 읽힌다. 기호의 모양은 styles.css 의 「고등학교 2·3학년 공용 기호」에 있다.
+(function (root) {
+  'use strict';
+  const B = root.MathBank;
+  const { josa, frac, N, M, F } = B.kit;
+  const { MINUS, Q, V, sup, nb, ex, emOf, f1 } = B.kit.mid;
+  const { Board, XY, dirOf, awayFrom, sv } = B.kit.mgeo;
+
+  // ── 글 ──
+  const signed = (n) => (n < 0 ? MINUS + Math.abs(n) : String(n));                                   // 음수는 −(U+2212)로 적는다
+  const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');     // 글을 HTML 글로
+  const attr = (t) => esc(t).replace(/"/g, '&quot;');                                                  // 글을 속성 값으로
+  const hide = (t) => '<span class="mb-sr">' + esc(t) + '</span>';                                     // 화면에는 안 보이고 글로 옮길 때만 남는 글
+  // HTML 을 글로 옮긴 모양(태그를 걷고 글자 참조를 푼다). 숨은 글(mb-sr)도 그대로 읽는다.
+  const plainOf = (h) => String(h).replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
+  // 함수 이름·기호를 세운 글자(수식 글꼴 KaTeX_Main)로: fn('sin'), fn('log'), fn('lim'), fn('P'), fn('E'), fn('Π')
+  const fn = (name) => '<span class="mb-fn">' + name + '</span>';
+  // 아래 첨자: V('a') + sub(V('n')) → aₙ. 글로 옮기면 a_n(첨자가 두 글자 넘게 이어진 식이면 a_(n+1)).
+  const sub = (h) => { const s = String(h), one = /^([A-Za-z]|\d+)$/.test(plainOf(s)); return '<sub class="mb-sub">' + hide(one ? '_' : '_(') + s + (one ? '' : hide(')')) + '</sub>'; };
+  // 미분의 ′(U+2032): V('f') + prime() → f′, prime(2) → f″(′ 두 개)
+  const prime = (n) => '<span class="mb-pr">' + '′'.repeat(n || 1) + '</span>';
+
+  // 수식 글을 짧게 적는다: ms('f(x) = x^2 - 2x + 3'). 소문자·그리스 문자(π 는 빼고)는 기울인 글자(V), sin·cos·tan·log·ln·lim·max·min 은 세운 글자(fn),
+  //  - 는 −, * 는 ×, <= >= != -> 는 ≤ ≥ ≠ →, ' 는 ′, ^ 와 _ 는 위·아래 첨자(두 글자 넘으면 { }로 묶는다: x^{n+1}, a_{n+1}).
+  //  대문자는 세운 글자(점·사건 이름, P·C·E·V·N·B 기호)이고 caps 의 글자(주지 않으면 'XYZ' — 확률변수)만 기울인다. 태그(span·i·sub·sup·b)와 글자 참조는 그대로 둔다.
+  //  부등호 < > 는 앞뒤를 띄어 적는다(붙여 적으면 태그로 읽힐 수 있다).
+  const FNS = ['sin', 'cos', 'tan', 'log', 'ln', 'lim', 'max', 'min'];
+  const GREEK = 'αβγδεθλμνξρστφχψω';
+  const OP2 = { '<=': '≤', '>=': '≥', '!=': '≠', '->': '→' };
+  function ms(src, caps) {
+    const s = String(src), C = caps == null ? 'XYZ' : caps;
+    let out = '', i = 0;
+    const group = () => {
+      if (s[i] === '{') {
+        let depth = 0, j = i;
+        for (; j < s.length; j += 1) { if (s[j] === '{') depth += 1; else if (s[j] === '}') { depth -= 1; if (depth === 0) break; } }
+        const inner = s.slice(i + 1, j); i = j + 1; return ms(inner, C);
+      }
+      const m = /^(\d+(?:\.\d+)?|[\s\S])/.exec(s.slice(i)); i += m[0].length; return ms(m[0], C);
+    };
+    while (i < s.length) {
+      const r = s.slice(i);
+      const m = /^<span class="mb-sr">[^<]*<\/span>/.exec(r) || /^<\/?(?:span|i|sub|sup|b|br|svg|path)\b[^>]*>/.exec(r) || /^&[#\w]+;/.exec(r);
+      if (m) { out += m[0]; i += m[0].length; continue; }
+      const f = FNS.find((name) => r.startsWith(name));
+      if (f) { out += fn(f); i += f.length; continue; }
+      const q = /^'+/.exec(r);
+      if (q) { out += prime(q[0].length); i += q[0].length; continue; }
+      if (OP2[r.slice(0, 2)]) { out += OP2[r.slice(0, 2)]; i += 2; continue; }
+      const ch = r[0]; i += 1;
+      if ((ch === '^' || ch === '_') && i < s.length) out += ch === '^' ? sup(group()) : sub(group());
+      else if (/[a-z]/.test(ch) || C.includes(ch) || GREEK.includes(ch)) out += V(ch);
+      else out += ch === '-' ? MINUS : ch === '*' ? '×' : ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch;
+    }
+    return out;
+  }
+  // 인자로 받은 글: 수는 −를 붙인 글, 태그나 글자 참조가 든 글은 그대로(이미 그린 HTML), 글자만 있는 글은 ms 로 바꾼다.
+  const isHtml = (s) => /<\/?[A-Za-z]|&[#\w]+;/.test(String(s));
+  const mt = (x) => (typeof x === 'number' ? signed(x) : isHtml(x) ? String(x) : ms(x));
+
+  // 보이는 모양만 남긴 글: 글자를 data-t 로 옮긴다(styles.css 의 .mb-g::before 가 그린다). 숨은 글(mb-sr)은 지우고 <sup>·<sub> 는 mb-up·mb-dn 으로 바꾼다
+  // (기록 글의 거듭제곱 표시(^)와 검사의 「제곱」 읽기가 보이는 모양에 걸리지 않게).
+  const vis = (h) => String(h).replace(/<span class="mb-sr">[^<]*<\/span>/g, '')
+    .replace(/<sup\b[^>]*>/g, '<span class="mb-up">').replace(/<\/sup>/g, '</span>').replace(/<sub\b[^>]*>/g, '<span class="mb-dn">').replace(/<\/sub>/g, '</span>')
+    .replace(/(^|>)([^<]+)(?=<|$)/g, (all, lead, t) => lead + '<span class="mb-g" data-t="' + t.replace(/"/g, '&quot;') + '"></span>');
+  // 한계의 글: { h 보이는 HTML, said 기록에 남길 글 }
+  const limOf = (t) => { const h = mt(t); return { h, said: plainOf(h) }; };
+
+  // ── 쌓은 기호 ──
+  // 극한: lim('x→2', 'f(x)') — lim 아래에 x→2 를 쌓는다. 'x→2+'·'x→2-' 는 한쪽 극한(끝의 +, −를 위첨자로), 'x→∞'·'n→∞'·'x→-1'(음수). -> 도 → 로 읽는다.
+  //  몸(극한을 구할 식)을 둘째 인자로 주면 기호와 한 덩어리(줄이 갈리지 않는다)가 된다. 글로 옮기면 「lim(x→2) f(x)」「lim(x→2+) f(x)」.
+  function lim(t, body) {
+    let h, said;
+    if (typeof t === 'string' && !isHtml(t)) {
+      const s = t.replace(/->/g, '→'), m = /^(.*[^→\s])([+\-−])$/.exec(s), side = m ? (m[2] === '+' ? '+' : MINUS) : '';
+      h = ms(m ? m[1] : s) + (side ? '<sup>' + side + '</sup>' : ''); said = plainOf(ms(m ? m[1] : s)) + side;
+    } else ({ h, said } = limOf(t));
+    return '<span class="mb-hs mb-lim">' + hide('lim(' + said + ') ') + '<span class="mb-lim-v" aria-hidden="true">' + vis(fn('lim')) + '<span class="mb-lim-lo">' + vis(h) + '</span></span>'
+      + (body == null ? '' : mt(body)) + '</span>';
+  }
+  // 합의 기호: sum('k=1', 'n', 'a_k') — Σ 아래에 k=1, 위에 n. 셋째 인자(몸)는 기호와 한 덩어리가 된다. 글로 옮기면 「Σ(k=1~n) a_k」.
+  function sum(lo, hi, body) {
+    const a = limOf(lo), b = hi == null ? null : limOf(hi);
+    return '<span class="mb-hs mb-sum">' + hide('Σ(' + a.said + (b ? '~' + b.said : '') + ') ') + '<span class="mb-op" aria-hidden="true"><span class="mb-op-hi">' + (b ? vis(b.h) : '') + '</span>'
+      + '<span class="mb-op-s">' + vis('Σ') + '</span><span class="mb-op-lo">' + vis(a.h) + '</span></span>' + (body == null ? '' : mt(body)) + '</span>';
+  }
+  // 적분: intg(0, 1, 'f(x)', 'x') — ∫ 오른쪽 아래에 0, 위에 1(정적분). 아래·위 끝을 null 로 주면 부정적분 ∫ f(x) dx. 넷째 인자(변수)를 주면 끝에 dx 를 붙인다.
+  //  글로 옮기면 「∫(0~1) f(x) dx」, 「∫ f(x) dx」.
+  function intg(a, b, body, v) {
+    const def = a != null && b != null, lo = def ? limOf(a) : null, hi = def ? limOf(b) : null;
+    return '<span class="mb-hs mb-int">' + hide('∫' + (def ? '(' + lo.said + '~' + hi.said + ')' : '') + ' ')
+      + '<span class="mb-op mb-op-int' + (def ? '' : ' is-bare') + '" aria-hidden="true"><span class="mb-int-s">' + vis('∫') + '</span>'
+      + (def ? '<span class="mb-int-lim"><span class="mb-op-hi">' + vis(hi.h) + '</span><span class="mb-op-lo">' + vis(lo.h) + '</span></span>' : '') + '</span>'
+      + (body == null ? '' : mt(body)) + (v ? ' ' + V('d') + mt(v) : '') + '</span>';
+  }
+  // 끝값 대입: evl('x^3 + x', 0, 2) → [x³ + x] 의 오른쪽 아래에 0, 위에 2(괄호는 안의 글 높이에 맞춘다). 글로 옮기면 「[x^3 + x](0~2)」.
+  function evl(h, a, b) {
+    const lo = limOf(a), hi = limOf(b);
+    return '<span class="mb-hs mb-evl">' + hide('[') + '<span class="mb-bk is-l" aria-hidden="true"></span><span class="mb-evl-in">' + mt(h) + '</span><span class="mb-bk is-r" aria-hidden="true"></span>'
+      + hide('](' + lo.said + '~' + hi.said + ')') + '<span class="mb-evl-lim" aria-hidden="true"><span class="mb-op-hi">' + vis(hi.h) + '</span><span class="mb-op-lo">' + vis(lo.h) + '</span></span></span>';
+  }
+  // 도함수: df('f') → f′, df('f', 2, 'x') → f″(x), df('y') → y′
+  const df = (name, n, arg) => V(name) + prime(n) + (arg == null ? '' : '(' + mt(arg) + ')');
+  // dy/dx(세로 분수): dd('y', 'x'). 글로 옮기면 dy/dx.
+  const dd = (y, x) => frac(V('d') + mt(y), V('d') + mt(x));
+
+  // ── 지수·로그·삼각함수 ──
+  // 위첨자 안의 작은 세로 분수: '2' + sup(sfrac(3, 2)) → 2의 3/2제곱. 글로 옮기면 2^(3/2).
+  const sfrac = (n, d) => '<span class="mb-frac mb-sfrac"><span>' + mt(n) + '</span><span class="mb-frac-bar">/</span><span>' + mt(d) + '</span></span>';
+  // 거듭제곱: pw(2, 3) → 2³, pw('a', [3, 2]) → a 의 3/2제곱(지수 [p, q] 는 분수 지수), pw(2, -1) → 2⁻¹
+  const pw = (base, e) => mt(base) + sup(Array.isArray(e) ? sfrac(e[0], e[1]) : mt(e));
+  // 거듭제곱근: rtn(3, 8) → 근호 왼쪽 위에 작은 3(근호 그림은 공용 rt 와 같다). 글로 옮기면 「³√8」「ⁿ√a」(위첨자 숫자로 적을 수 없으면 「(k)√a」).
+  const SUPD = { 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹', n: 'ⁿ' };
+  function rtn(n, inner) {
+    const idx = String(n), said = [...idx].every((ch) => SUPD[ch]) ? [...idx].map((ch) => SUPD[ch]).join('') : '(' + idx + ')';
+    return '<span class="mb-rad mb-radn"><span class="mb-sr">' + esc(said) + '√</span><span class="mb-rad-n" aria-hidden="true">' + vis(mt(n)) + '</span>'
+      + '<svg class="mb-inline" aria-hidden="true" viewBox="0 0 10 20" preserveAspectRatio="none"><path d="M0.6 12.4L2.8 11.2L5.7 19.3L9.7 0.6"/></svg><span class="mb-rad-in">' + mt(inner) + '</span></span>';
+  }
+  // 로그: lg(2, 8) → log₂ 8, lg(null, 100) → log 100(상용로그), lg('a', '(x+1)') → logₐ(x+1)(괄호로 시작하면 띄우지 않는다). ln('x') → ln x
+  const gap = (arg) => (/^\(/.test(plainOf(arg)) ? '' : ' ');
+  const lg = (base, arg) => { const a = mt(arg); return nb(fn('log') + (base == null ? '' : sub(mt(base))) + gap(a) + a); };
+  const ln = (arg) => { const a = mt(arg); return nb(fn('ln') + gap(a) + a); };
+  // 삼각함수: trig('sin', 'x') → sin x, trig('cos', '2x', 2) → cos² 2x, trig('tan', '(x+π)') → tan(x+π)
+  const trig = (name, arg, power) => { const a = mt(arg); return nb(fn(name) + (power == null ? '' : sup(mt(power))) + gap(a) + a); };
+
+  // ── 순열·조합 ──
+  // 왼쪽 아래 n, 오른쪽 아래 r: nP(5, 2) → ₅P₂, nC(5, 2) → ₅C₂, nPi(3, 2) → ₃Π₂(중복순열), nH(3, 2) → ₃H₂(중복조합). 글로 옮기면 「5P2」「nCr」.
+  const nr = (sym) => (n, r) => '<span class="mb-hs mb-nr"><span class="mb-nr-n">' + mt(n) + '</span>' + fn(sym) + '<span class="mb-nr-r">' + mt(r) + '</span></span>';
+  const nP = nr('P'), nC = nr('C'), nPi = nr('Π'), nH = nr('H');
+
+  // ── 확률·통계 ──
+  // 확률: pr('A') → P(A), pr('B', 'A') → P(B∣A)(조건부확률 — 세로 막대 ∣ U+2223), pr('X = 2') → P(X = 2)(확률변수 X 는 기울인 글자), pr('A^C') → P(Aᶜ)
+  const pr = (a, given) => '<span class="mb-hs">' + fn('P') + '(' + mt(a) + (given == null ? '' : '<span class="mb-fn mb-mid">∣</span>' + mt(given)) + ')</span>';
+  // 평균·분산·표준편차: ev('X') → E(X), vr('X') → V(X), sd('X') → σ(X)(σ 는 수식 글꼴의 기울인 글자)
+  const ev = (x) => nb(fn('E') + '(' + mt(x) + ')'), vr = (x) => nb(fn('V') + '(' + mt(x) + ')'), sd = (x) => nb(V('σ') + '(' + mt(x) + ')');
+  // 이항분포 bin(10, frac(1, 3)) → B(10, 1/3), 정규분포 nrm(50, pw(4, 2)) → N(50, 4²), nrm('m', 'σ^2') → N(m, σ²)(둘째 인자는 분산을 적은 글 그대로)
+  const bin = (n, p) => nb(fn('B') + '(' + mt(n) + ', ' + mt(p) + ')'), nrm = (m, v) => nb(fn('N') + '(' + mt(m) + ', ' + mt(v) + ')');
+  // 글자 위 줄(표본평균): bar('X') → X̄. 줄은 글자 너비에 맞추고 글자에서 띄운다. 글로 옮기면 「X̄」(결합 문자 U+0304).
+  const bar = (name) => '<span class="mb-hs mb-bar" style="display:inline-block">' + mt(name) + hide('̄') + '<span class="mb-bar-l" aria-hidden="true"></span></span>';
+  // 모자(표본비율): hat('p') → p̂. 글로 옮기면 「p̂」(U+0302). 토씨는 「햇」으로 읽어 받침이 있다(p̂은, p̂을 — jh 가 고른다).
+  const hat = (name) => '<span class="mb-hs mb-hat' + (/^[acegmnopqrsuvwxyz]$/.test(String(name)) ? ' is-low' : '') + '" style="display:inline-block">' + mt(name) + hide('̂')
+    + '<svg class="mb-inline" aria-hidden="true" viewBox="0 0 10 5" preserveAspectRatio="none"><path d="M1 4.4L5 0.8L9 4.4"/></svg></span>';
+  // 확률분포표: dist([0, 1, 2], [frac(1, 4), frac(1, 2), frac(1, 4)], { v: 'X', x: 'x', total: true }) — 첫 줄 X 의 값, 둘째 줄 P(X = x), 맨 끝 열 「합계」와 1.
+  //  값과 확률은 수나 HTML(분수·문자 a). total: false 면 합계 열을 뺀다. 그림 설명(aria-label)에 값과 확률을 차례로 적는다.
+  function dist(xs, ps, o) {
+    const opt = o || {}, v = opt.v || 'X', x = opt.x || v.toLowerCase(), total = opt.total !== false;
+    const cell = (h) => '<td>' + mt(h) + '</td>';
+    const row1 = '<tr><th>' + ms(v) + '</th> ' + xs.map(cell).join(' ') + (total ? ' <th>합계</th>' : '') + '</tr>';
+    const row2 = '<tr><th>' + pr(ms(v) + ' = ' + ms(x)) + '</th> ' + ps.map(cell).join(' ') + (total ? ' <td>1</td>' : '') + '</tr>';
+    const said = '확률분포표: ' + v + '의 값 ' + xs.map((t) => plainOf(mt(t))).join(', ') + ' / 확률 ' + ps.map((t) => plainOf(mt(t))).join(', ') + (total ? ' / 합계 1' : '');
+    return '<table class="mb-table mb-dist" aria-label="' + attr(said) + '"><tbody>' + row1 + ' ' + row2 + '</tbody></table>';
+  }
+  // 표준정규분포표 조각: ztab([[1, 0.3413], [1.5, 0.4332], [2, 0.4772]]) — 왼쪽 z(소수 첫째 자리), 오른쪽 P(0 ≤ Z ≤ z)(소수 넷째 자리). 글로 준 값은 그대로 적는다.
+  function ztab(rows) {
+    const zt = (z) => (typeof z === 'number' ? z.toFixed(1) : String(z)), pt = (p) => (typeof p === 'number' ? p.toFixed(4) : String(p));
+    const head = '<tr><th>' + V('z') + '</th> <th>' + pr('0 <= Z <= z') + '</th></tr>';
+    const said = '표준정규분포표: ' + rows.map(([z, p]) => 'z = ' + zt(z) + '일 때 ' + pt(p)).join(', ');
+    return '<table class="mb-table mb-ztab" aria-label="' + attr(said) + '"><tbody>' + head + ' ' + rows.map(([z, p]) => '<tr><td>' + zt(z) + '</td> <td>' + pt(p) + '</td></tr>').join(' ') + '</tbody></table>';
+  }
+
+  // ── 벡터 ──
+  // vec('a') → 기울인 소문자 a 위에 화살표, vec('AB') → 세운 두 글자 위에 화살표(글자 너비에 맞춘다). 글로 옮기면 「a⃗」「AB⃗」(결합 문자 U+20D7 — X̄·p̂ 과 같은 방식.
+  //  「두 벡터 a⃗, b⃗」가 「두 벡터 벡터 a」로 읽히지 않게 낱말을 덧붙이지 않는다). 토씨는 글자의 이름으로 고른다(a⃗와, AB⃗의).
+  //  크기는 '|' + vec('a') + '|', 내적은 vec('a') + ' · ' + vec('b'), 성분은 cmps('a', 2) → (a₁, a₂), 공간의 점은 ms('(x, y, z)').
+  const vec = (name) => { const it = /^[a-z]$/.test(name); return '<span class="mb-hs mb-vec' + (it ? ' is-it' : '') + (/^[A-Zbdfhklt]/.test(name) ? ' is-tall' : '') + '" style="display:inline-block">' + (it ? V(name) : name) + hide('⃗')
+    + '<span class="mb-vec-l" aria-hidden="true"></span><svg class="mb-inline" aria-hidden="true" viewBox="0 0 6 6"><path d="M1.2 1L5.2 3L1.2 5"/></svg></span>'; };
+  const cmps = (name, n) => nb('(' + Array.from({ length: n }, (_, i) => V(name) + sub(i + 1)).join(', ') + ')');
+
+  // ── 토씨 ──
+  // 글을 단원 검사(tests/math-bank-units.test.cjs 의 tight)처럼 읽는다: 분수는 분자만, 위첨자는 「제곱」, 글줄 속 작은 그림(근호 √ 따위)은 지우고 태그를 걷는다.
+  const spanEnd = (h, from) => { const re = /<span\b[^>]*>|<\/span>/g; re.lastIndex = from; let depth = 0, m; while ((m = re.exec(h))) { if (m[0][1] === '/') { depth -= 1; if (depth === 0) return m.index + m[0].length; } else depth += 1; } return -1; };
+  const cutDen = (h) => { let out = h, at; const bar = '<span class="mb-frac-bar">/</span>'; while ((at = out.indexOf(bar)) >= 0) { const end = spanEnd(out, at + bar.length); if (end < 0) break; out = out.slice(0, at) + out.slice(end); } return out; };
+  const readOf = (h) => cutDen(String(h || '')).replace(/<svg\b[^>]*class="mb-inline"[\s\S]*?<\/svg>/g, '').replace(/<svg[\s\S]*?<\/svg>/g, ' ')
+    .replace(/((?:c|m|k)?m)<sup>[23]<\/sup>/g, '$1²').replace(/<sup\b[^>]*>[\s\S]*?<\/sup>/g, '제곱').replace(/<[^>]+>/g, '')
+    .replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+  // 토씨 붙이기: jh(글, '은/는') — 글의 끝소리로 고른다. 숫자는 읽는 소리(₅C₂ → 「이」 → 는), 분수는 분자, 위첨자는 「제곱」, 근호는 안의 수,
+  //  영문자는 이름(L·M·N·R 은 받침, L·R 은 ㄹ), p̂ 은 「햇」(받침), X̄ 은 「바」, ∞ 은 「무한대」, 그리스 문자·π 는 받침 없음, 닫는 괄호는 건너뛴다(f(x) → x).
+  function jh(h, pair) {
+    const [withB, without] = pair.split('/');
+    let s = readOf(h).replace(/[\s)\]}|∣,.]+$/, ''), bat = false, rieul = false;
+    const mark = /[̀-ͯ⃐-⃿]+$/.exec(s);
+    if (mark) s = s.slice(0, -mark[0].length);
+    if (mark && mark[0].includes('̂')) bat = true;                                   // 햇(p̂)
+    else if (mark && mark[0].includes('̄')) bat = false;                             // 바(X̄)
+    else if (/\d$/.test(s)) { const n = Number(/\d+$/.exec(s)[0]); return h + josa(n, pair).slice(String(n).length); }
+    else if (/[A-Za-z]$/.test(s)) { bat = /[LMNRlmnr]$/.test(s); rieul = /[LRlr]$/.test(s); }
+    else if (/[가-힣]$/.test(s)) { const t = (s.charCodeAt(s.length - 1) - 0xAC00) % 28; bat = t !== 0; rieul = t === 8; }
+    if (withB === '으로') return h + (bat && !rieul ? '으로' : '로');
+    return h + (bat ? withB : without);
+  }
+  // 식 그림(공용 ex)의 글씨 크기를 맞출 때 쌓은 기호의 너비를 셈에 넣는다(숨은 글은 빼고 보이는 글자(data-t)는 센다): hx(sum('k=1', 'n', …)).
+  const hx = (h) => { const shown = String(h).replace(/<span class="mb-sr">[^<]*<\/span>/g, '').replace(/<span class="mb-g" data-t="([^"]*)"><\/span>/g, '$1'); return ex(h, emOf(shown) - emOf(h)); };
+
+  // ── 답 칸 ──
+  // 답이 좌표·성분인 문항: coordAns(text, [2, -1, 3], o) → 「( [±][ ], [±][ ], [±][ ] )」. 두 성분이면 (a, b)(점의 좌표, 벡터의 성분). 정수만 받는다.
+  //  틀리면 (2, −1, 3) 꼴로 보인다. facts.calc 로 칸마다 근거를 적는다(칸 번호 0, 1, 2).
+  function coordAns(text, values, o) {
+    if (!Array.isArray(values) || values.length < 2 || !values.every(Number.isInteger)) throw new Error('좌표·성분 답은 정수 둘 이상이어야 한다');
+    const last = values.length - 1;
+    return M(text, values.map((v, i) => Object.assign({ answer: v, signed: true, unit: i === last ? ')' : ',' }, i === 0 ? { lead: '(' } : {})),
+      Object.assign({}, o, { shown: '(' + values.map(signed).join(', ') + ')' }));
+  }
+  // 수 하나: 정수는 수 칸, 분수(유리수 Q 나 [분자, 분모])는 분자·분모 칸(크기가 같은 분수도 맞게 친다). o.signed: 부호 단추(답이 음수면 저절로 붙는다),
+  //  o.lowest: 기약분수로 적은 것만 맞게 친다(문제 글에 「기약분수로」를 적는다). o.unit: 칸 뒤의 글.
+  function qAns(text, v, o) {
+    const opt = o || {}, q = Array.isArray(v) ? Q(v[0], v[1]) : typeof v === 'number' ? Q(v) : Q(v.p, v.q), more = { figure: opt.figure, explain: opt.explain, facts: opt.facts, unit: opt.unit };
+    if (q.q === 1) return N(text, q.p, Object.assign({ signed: Boolean(opt.signed) || q.p < 0 }, more));
+    return F(text, Math.abs(q.p), q.q, Object.assign({ improper: Math.abs(q.p) > q.q, anyForm: !opt.lowest, signed: Boolean(opt.signed) || q.p < 0, negative: q.p < 0 }, more));
+  }
+  // 답이 pπ/q 인 문항(호도법의 값): piAns(text, 2, 3, o) → 「[±][분자/분모] π」(계수가 정수면 「[±][ ] π」). 크기가 같은 분수도 맞게 친다.
+  //  칸의 꼴이 「π가 든 값」임을 알려 주므로 묻는 글이 이미 π 꼴을 말할 때(「θ = □π일 때 □에 알맞은 수」)만 쓰고, 아니면 고르기로 낸다. o.signed: false 면 단추를 뗀다(양수일 때).
+  const piAns = (text, p, q, o) => qAns(text, [p, q], Object.assign({}, o, { unit: 'π', signed: !(o && o.signed === false) }));
+
+  // ── 그래프 ──
+  const INK = '#1f2933', GRAY = '#5b6770', HUES = ['#1d4ed8', '#b42318', '#15803d', '#7c3aed'];
+  const ITAL = "font-style:italic;font-family:'MB Math','Times New Roman',serif", UPR = "font-style:normal;font-family:'MB Main','Times New Roman',serif";
+  const HALO = 'paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round';
+  // 그림(svg) 속 수식 글: svgm('y=f(x)'), svgm('S_1'), svgm('y=2^x'), svgm('y=log_2 x'). 소문자·그리스 문자는 기울인 글자, 대문자·숫자·기호는 세운 글자,
+  //  sin·log 같은 이름은 세운 글자(수식 글꼴), ^ 와 _ 는 위·아래 첨자({ }로 묶는다), - 는 −, ' 는 ′.
+  function svgm(src) {
+    const toks = [];
+    const put = (t, k, lv) => { const last = toks[toks.length - 1]; if (last && last.k === k && last.lv === lv && k !== 'f') last.t += t; else toks.push({ t, k, lv }); };
+    const walk = (s, lv) => {
+      for (let i = 0; i < s.length;) {
+        const r = s.slice(i), f = FNS.find((name) => r.startsWith(name));
+        if (f) { put(f, 'f', lv); i += f.length; continue; }
+        const ch = r[0];
+        if ((ch === '^' || ch === '_') && i + 1 < s.length) {
+          let g, j = i + 1;
+          if (s[j] === '{') { let depth = 0, e = j; for (; e < s.length; e += 1) { if (s[e] === '{') depth += 1; else if (s[e] === '}') { depth -= 1; if (!depth) break; } } g = s.slice(j + 1, e); i = e + 1; }
+          else { g = /^(\d+|[\s\S])/.exec(s.slice(j))[0]; i = j + g.length; }
+          walk(g, lv + (ch === '^' ? 1 : -1)); continue;
+        }
+        put(ch === '-' ? MINUS : ch === "'" ? '′' : ch, /[a-z]/.test(ch) || GREEK.includes(ch) ? 'i' : 'u', lv); i += 1;
+      }
+    };
+    walk(String(src).replace(/->/g, '→').replace(/<=/g, '≤').replace(/>=/g, '≥'), 0);
+    let prev = 0, out = '';
+    for (const t of toks) {
+      const dy = (prev - t.lv) * 4.5, style = [t.k === 'i' ? ITAL : t.k === 'f' ? UPR : '', t.k === 'i' || t.lv ? 'font-size:' + Math.round((t.k === 'i' ? 108 : 100) * (t.lv ? 0.72 : 1)) + '%' : ''].filter(Boolean).join(';');
+      prev = t.lv;
+      out += '<tspan' + (dy ? ' dy="' + f1(dy) + '"' : '') + (style ? ' style="' + style + '"' : '') + '>' + esc(t.t) + '</tspan>';
+    }
+    return out;
+  }
+  // π 눈금: piTicks(-1, 2, 2) → −π, −π/2, π/2, π, 3π/2, 2π(π 의 from 배부터 to 배까지 1/d 간격, 0 은 뺀다). plot 의 xt 에 넣는다.
+  function piTicks(from, to, d) {
+    const out = [];
+    for (let k = Math.round(from * d); k <= Math.round(to * d); k += 1) {
+      if (k === 0) continue;
+      const q = Q(k, d), n = Math.abs(q.p), head = (q.p < 0 ? MINUS : '') + (n === 1 ? '' : n) + 'π';
+      out.push({ v: (k / d) * Math.PI, t: q.q === 1 ? head : head + '/' + q.q });
+    }
+    return out;
+  }
+  // 그림 속 글의 너비 어림(px): 한글 1, 그 밖 0.58(글씨 크기에 곱한다)
+  const tw = (s, size) => [...String(s).replace(/\^|_|[{}]/g, '')].reduce((w, ch) => w + (/[가-힣]/.test(ch) ? 1 : 0.58), 0) * size;
+  // 글 놓을 자리: 'ur'(오른쪽 위, 기본)·'ul'·'dr'·'dl'·'u'·'d'·'r'·'l' → [가로 이동, 세로 이동, 맞춤]
+  const placeOf = (side) => { const s = side || 'ur', dx = s.includes('r') ? 5 : s.includes('l') ? -5 : 0, dy = s.includes('u') ? -6 : s.includes('d') ? 15 : 4; return [dx, dy, dx > 0 ? 'start' : dx < 0 ? 'end' : 'middle']; };
+
+  // plot(o): 고등학교 함수의 그래프(좌표평면). 공용 plane 과 같은 모양(축·화살촉·O·글씨 크기)에 아래를 더했다(plane 은 그대로 둔다).
+  //  o.x, o.y [작은 끝, 큰 끝](실수, 0을 품는다). 가로 한 칸 o.u(px — 주지 않으면 그림 너비 o.w ≈ 270 에 맞춘다), o.ys 세로 배율(y 한 칸 = 가로 한 칸 × ys).
+  //  o.xt, o.yt 눈금: 수의 배열이나 { v 자리, t 적을 글('π/2'·'a'·'−1' — '/'가 있으면 세로 분수로 적는다) }의 배열. piTicks 로 π 눈금을 만든다.
+  //  o.grid: true 면 정수 자리에, 'ticks' 면 눈금 자리에 옅은 모눈.
+  //  o.curves [{ f, from, to, dash, name, at, side, color, breaks }] y = f(x)(다항·지수·로그·삼각·분수함수). 상자 밖으로 나가는 곳은 상자 변에서 끊고,
+  //   값이 튀는 곳(점근선·끊긴 곳)도 저절로 끊는다. breaks: 꼭 끊어 그릴 x 들(구간마다 식이 다른 함수). name 은 at(x 자리, 기본은 오른쪽 끝) 옆 side 쪽에 적는다.
+  //  o.params [{ x, y, from, to, dash, name, at, side, color }] 매개변수 곡선 (x(t), y(t)) — 원·타원·쌍곡선. 상자 밖은 끊는다. at 은 t 자리.
+  //  o.lines [{ a, b } | { x } | { y } | { p: [x, y], q: [x, y] }] 직선 y = ax + b, x = p, y = q, 두 점을 지나는 직선. dash: 점선(점근선·보조선 — 색을 주지 않으면 회색), name,
+  //   said: 그림 설명에 적을 말(x = π/2 처럼 수로 적으면 어색한 자리).
+  //  o.segs [{ p, q, dash, color }] 선분. o.fill [{ f, g, from, to, color }] f 와 g(주지 않으면 x축) 사이를 옅게 칠한다(곡선보다 먼저 그린다).
+  //  o.dots [{ x, y, open, name, side, guide, xl, yl, said }] 점: open 이면 속이 빈 점(○ — 극한·연속의 끝점), guide 면 두 축으로 점선, xl·yl 은 그 발에 적을 글('a', 'f(a)').
+  //  o.texts [{ x, y, t, side }] 그림 속 글(svgm 수식 글). o.oSide: 'r' 이면 원점 O 를 오른쪽 아래에. o.say: 그림 설명에 덧붙일 말.
+  // 그림 설명(aria-label)에는 축의 눈금, 곡선·직선의 이름(점선인가), 점의 자리를 적는다. 너비는 280px 안팎으로 둔다(휴대폰 카드 288px — 넘으면 줄어든다).
+  function plot(o) {
+    const opt = o || {}, [xlo, xhi] = opt.x || [-5, 5], [ylo, yhi] = opt.y || [-5, 5];
+    if (!(xlo <= 0 && xhi >= 0 && ylo <= 0 && yhi >= 0 && xhi > xlo && yhi > ylo)) throw new Error('plot: x·y 의 범위는 0을 품어야 한다(두 축이 그림 안에 있게)');
+    const ux = opt.u || Math.min(44, ((opt.w || 270) - 46) / (xhi - xlo)), uy = ux * (opt.ys || 1);
+    const X = (v) => (v - xlo) * ux, Y = (v) => (yhi - v) * uy, X0 = X(0), Y0 = Y(0);
+    const bb = [Infinity, Infinity, -Infinity, -Infinity];
+    const grow = (x, y) => { bb[0] = Math.min(bb[0], x); bb[1] = Math.min(bb[1], y); bb[2] = Math.max(bb[2], x); bb[3] = Math.max(bb[3], y); };
+    const back = [], mid = [], front = [], said = [];
+    const pt = (x, y) => f1(X(x)) + ' ' + f1(Y(y));
+    const okY = (y) => Number.isFinite(y) && y >= ylo - 1e-9 && y <= yhi + 1e-9;
+    const clampY = (y) => (Number.isFinite(y) ? Math.min(yhi, Math.max(ylo, y)) : y > 0 ? yhi : ylo);
+    const tickOf = (t) => (typeof t === 'number' ? { v: t, t: signed(Number(t.toFixed(4))) } : t);
+    const num = (v) => signed(Number(v.toFixed(2)));                                   // 그림 설명에 적는 수(소수 둘째 자리까지)
+    const plainName = (s) => String(s).replace(/[{}]/g, '');                             // 그림 설명에 적는 수식 글
+
+    // 겹침을 피해 글을 놓는다: 이미 놓은 글 상자(rects)와 그린 선(segs — 곡선·직선·점선, 화면 좌표)에 닿지 않는 자리를 고른다.
+    const rects = [], segs = [];
+    const addPts = (pts) => { for (let i = 1; i < pts.length; i += 1) segs.push([pts[i - 1], pts[i]]); };
+    const hit = (r) => segs.some(([p, q]) => { const n = Math.max(1, Math.ceil(Math.hypot(q[0] - p[0], q[1] - p[1]) / 2)); for (let k = 0; k <= n; k += 1) { const x = p[0] + (q[0] - p[0]) * k / n, y = p[1] + (q[1] - p[1]) * k / n; if (x > r[0] && x < r[2] && y > r[1] && y < r[3]) return true; } return false; });
+    const clash = (r) => rects.some((s) => r[0] < s[2] && s[0] < r[2] && r[1] < s[3] && s[1] < r[3]);
+    const free = (r) => !hit(r) && !clash(r);
+    const shift = (r, dx, dy) => [r[0] + dx, r[1] + dy, r[2] + dx, r[3] + dy];
+    // 글 상자(화면 좌표): (x, y) 는 글의 기준선 위의 맞춤 자리
+    const boxOf = (x, y, s, anchor, fs) => { const w = tw(s, fs), x0 = anchor === 'end' ? x - w : anchor === 'middle' ? x - w / 2 : x; return [x0 - 1, y - fs * 0.78, x0 + w + 1, y + fs * 0.24]; };
+    // 글: 수식 글(svgm)을 (x, y) 에 놓는다. 흰 테두리를 둘러 밑의 선이 글자를 긋지 않게 한다.
+    const word = (x, y, s, anchor, size, color) => {
+      const fs = size || 12.5, r = boxOf(x, y, s, anchor, fs);
+      rects.push(r); grow(r[0], r[1]); grow(r[2], r[3]);
+      front.push(`<text x="${f1(x)}" y="${f1(y)}" text-anchor="${anchor || 'start'}" style="font-size:${fs}px;fill:${color || INK};${HALO}">${svgm(s)}</text>`);
+    };
+    // 이름: side 를 주면 그 자리에, 주지 않으면 prefer 쪽부터 돌아가며 선·글에 닿지 않는 첫 자리에 적는다(모두 닿으면 첫 자리).
+    const SIDES = ['ur', 'ul', 'dr', 'dl', 'r', 'l', 'u', 'd'];
+    const nameAt = (px, py, s, side, prefer, color, size) => {
+      const fs = size || 12.5, order = side ? [side] : [prefer || 'ur'].concat(SIDES.filter((v) => v !== prefer));
+      const sd = order.find((v) => { const [dx, dy, anchor] = placeOf(v); return free(boxOf(px + dx, py + dy, s, anchor, fs)); }) || order[0];
+      const [dx, dy, anchor] = placeOf(sd); word(px + dx, py + dy, s, anchor, fs, color);
+    };
+    // 눈금 글(분수는 세로로): at 'below'면 (x, y) 가 글의 위 가운데, 'left'면 글의 오른쪽 가운데.
+    const FS = 10.5, partsOf = (s) => /^([−-]?)([^/]*)\/(.*)$/.exec(String(s));
+    const tickBox = (x, y, s, at) => {
+      const m = partsOf(s);
+      if (!m) return at === 'below' ? boxOf(x, y + FS * 0.85, s, 'middle', FS) : boxOf(x, y + FS * 0.35, s, 'end', FS);
+      const w = Math.max(tw(m[2], FS), tw(m[3], FS)) + 3, neg = m[1] ? FS * 0.62 : 0, cx = at === 'below' ? x + neg / 2 : x - w / 2, top = at === 'below' ? y : y - FS * 1.05;
+      return [cx - w / 2 - neg - 1, top, cx + w / 2 + 1, top + FS * 2.2];
+    };
+    const tickDraw = (x, y, s, at) => {
+      const m = partsOf(s);
+      if (!m) { if (at === 'below') word(x, y + FS * 0.85, s, 'middle', FS); else word(x, y + FS * 0.35, s, 'end', FS); return; }
+      const w = Math.max(tw(m[2], FS), tw(m[3], FS)) + 3, neg = m[1] ? FS * 0.62 : 0, cx = at === 'below' ? x + neg / 2 : x - w / 2, top = at === 'below' ? y : y - FS * 1.05;
+      word(cx, top + FS * 0.82, m[2], 'middle', FS);
+      word(cx, top + FS * 1.98, m[3], 'middle', FS);
+      front.push(`<line x1="${f1(cx - w / 2)}" y1="${f1(top + FS * 1.08)}" x2="${f1(cx + w / 2)}" y2="${f1(top + FS * 1.08)}" style="stroke:${INK};stroke-width:0.9"/>`);
+      if (neg) word(cx - w / 2 - 1, top + FS * 1.42, MINUS, 'end', FS);
+    };
+    // 눈금 글은 눈금 바로 밑(왼쪽)에 적고, 곡선이 지나가면 옆으로 비킨다(가로축: 오른쪽 → 왼쪽, 세로축: 위 → 아래).
+    const tickAt = (x, y, s, at) => {
+      const r = tickBox(x, y, s, at), w = r[2] - r[0], h = r[3] - r[1];
+      const moves = at === 'below' ? [[0, 0], [w / 2 + 2, 0], [-w / 2 - 2, 0]] : [[0, 0], [0, -h / 2 - 1], [0, h / 2 + 1]];
+      const [dx, dy] = moves.find(([a, b]) => free(shift(r, a, b))) || moves[0];
+      tickDraw(x + dx, y + dy, s, at);
+    };
+    const tickText = (list) => list.map((t) => plainName(t.t)).join(', ');
+
+    // 모눈
+    const xt = (opt.xt || []).map(tickOf), yt = (opt.yt || []).map(tickOf);
+    if (opt.grid) {
+      const gx = opt.grid === 'ticks' ? xt.map((t) => t.v) : Array.from({ length: Math.floor(xhi) - Math.ceil(xlo) + 1 }, (_, i) => Math.ceil(xlo) + i);
+      const gy = opt.grid === 'ticks' ? yt.map((t) => t.v) : Array.from({ length: Math.floor(yhi) - Math.ceil(ylo) + 1 }, (_, i) => Math.ceil(ylo) + i);
+      for (const v of gx) back.push(`<line class="mb-gridline" x1="${f1(X(v))}" y1="${f1(Y(ylo))}" x2="${f1(X(v))}" y2="${f1(Y(yhi))}"/>`);
+      for (const v of gy) back.push(`<line class="mb-gridline" x1="${f1(X(xlo))}" y1="${f1(Y(v))}" x2="${f1(X(xhi))}" y2="${f1(Y(v))}"/>`);
+    }
+    // 칠하기: f 와 g 사이(곡선보다 먼저)
+    for (const fl of opt.fill || []) {
+      const a = Math.max(fl.from == null ? xlo : fl.from, xlo), b = Math.min(fl.to == null ? xhi : fl.to, xhi), g = fl.g || (() => 0), n = 180, top = [], low = [];
+      for (let i = 0; i <= n; i += 1) { const x = a + (b - a) * i / n; top.push(pt(x, clampY(fl.f(x)))); low.push(pt(x, clampY(g(x)))); }
+      back.push(`<path d="M${top.join('L')}L${low.reverse().join('L')}Z" style="fill:${fl.color || 'rgba(37,99,235,0.2)'};stroke:none"/>`);
+    }
+    // 축과 화살촉
+    const ax1 = X(xhi) + 10, ay1 = Y(yhi) - 10;
+    back.push(`<line class="mb-axis" x1="${f1(X(xlo) - 6)}" y1="${f1(Y0)}" x2="${f1(ax1)}" y2="${f1(Y0)}"/><path d="M${f1(ax1 + 6)} ${f1(Y0)}l-7 -3.4v6.8z" style="fill:${INK}"/>`
+      + `<line class="mb-axis" x1="${f1(X0)}" y1="${f1(Y(ylo) + 6)}" x2="${f1(X0)}" y2="${f1(ay1)}"/><path d="M${f1(X0)} ${f1(ay1 - 6)}l-3.4 7h6.8z" style="fill:${INK}"/>`);
+    grow(X(xlo) - 6, Y(ylo) + 6); grow(ax1 + 6, ay1 - 6);
+    for (const t of xt) if (Math.abs(t.v) > 1e-12) back.push(`<line x1="${f1(X(t.v))}" y1="${f1(Y0 - 3)}" x2="${f1(X(t.v))}" y2="${f1(Y0 + 3)}" style="stroke:${INK};stroke-width:1"/>`);
+    for (const t of yt) if (Math.abs(t.v) > 1e-12) back.push(`<line x1="${f1(X0 - 3)}" y1="${f1(Y(t.v))}" x2="${f1(X0 + 3)}" y2="${f1(Y(t.v))}" style="stroke:${INK};stroke-width:1"/>`);
+    said.push('좌표평면(x축, y축, 원점 O)' + (xt.length ? '. x축 눈금: ' + tickText(xt) : '') + (yt.length ? '. y축 눈금: ' + tickText(yt) : '') + '.');
+
+    const dashOf = (d) => (d ? ';stroke-dasharray:5 3' : '');
+    let hue = 0;
+    const colorOf = (c, dash) => c || (dash ? GRAY : HUES[hue++ % HUES.length]);
+    const names = [];   // 선을 다 그린 뒤에 놓을 이름 [x, y(화면), 글, side, prefer, 색]
+    // y = f(x) 를 [a, b] 에서 따라간다: 상자 안의 조각들(점 [x, y] 의 배열). 상자 밖으로 나가는 곳은 상자 변에서 끊고, 값이 튀는 곳(끊긴 곳)도 끊는다.
+    const traceF = (f, a, b) => {
+      const parts = []; let cur = null;
+      const end = () => { if (cur && cur.length > 1) parts.push(cur); cur = null; };
+      const add = (x, y) => { (cur || (cur = [])).push([x, y]); };
+      const edge = (x0, x1) => { let p = x0, q = x1; for (let k = 0; k < 44; k += 1) { const m = (p + q) / 2; if (okY(f(m))) p = m; else q = m; } return p; };
+      const step = (x0, y0, x1, y1, depth) => {
+        const a0 = okY(y0), a1 = okY(y1);
+        if (a0 && a1) {
+          const jump = Math.abs(y1 - y0) * uy;
+          if (jump <= 2.5 || depth >= 18) { if (depth >= 18 && jump > 4) { end(); add(x1, y1); } else add(x1, y1); return; }
+          const xm = (x0 + x1) / 2, ym = f(xm); step(x0, y0, xm, ym, depth + 1); step(xm, ym, x1, y1, depth + 1); return;
+        }
+        if (a0) { const e = edge(x0, x1); add(e, clampY(f(e))); end(); return; }
+        if (a1) { const e = edge(x1, x0); end(); add(e, clampY(f(e))); add(x1, y1); return; }
+        if (depth < 6) { const xm = (x0 + x1) / 2, ym = f(xm); step(x0, y0, xm, ym, depth + 1); step(xm, ym, x1, y1, depth + 1); }
+      };
+      const n = 240; let x0 = a, y0 = f(a);
+      if (okY(y0)) add(x0, y0);
+      for (let i = 1; i <= n; i += 1) { const x1 = a + (b - a) * i / n, y1 = f(x1); step(x0, y0, x1, y1, 0); x0 = x1; y0 = y1; }
+      end();
+      return parts;
+    };
+    const pathOf = (parts, color, dash) => { parts.forEach((p) => addPts(p.map(([x, y]) => [X(x), Y(y)]))); return parts.map((p) => `<path d="M${p.map(([x, y]) => pt(x, y)).join('L')}" style="fill:none;stroke:${color};stroke-width:1.8;stroke-linejoin:round${dashOf(dash)}"/>`).join(''); };
+    // 곡선
+    for (const c of opt.curves || []) {
+      const a = Math.max(c.from == null ? xlo : c.from, xlo), b = Math.min(c.to == null ? xhi : c.to, xhi), color = colorOf(c.color, false), eps = (b - a) * 1e-9;
+      const cuts = [a].concat((c.breaks || []).filter((x) => x > a && x < b).sort((s, t) => s - t), [b]), parts = [];
+      for (let i = 0; i + 1 < cuts.length; i += 1) parts.push(...traceF(c.f, cuts[i] + (i ? eps : 0), cuts[i + 1] - (i + 2 < cuts.length ? eps : 0)));
+      mid.push(pathOf(parts, color, c.dash));
+      if (c.name && parts.length) {
+        const longest = parts.reduce((s, p) => (p.length > s.length ? p : s)), [x, y] = c.at == null ? longest[longest.length - 1] : [c.at, c.f(c.at)];
+        names.push([X(x), Y(y), c.name, c.side, y > yhi - (yhi - ylo) * 0.12 ? 'dr' : 'ur', color]);
+      }
+      said.push('곡선' + (c.name ? ' ' + plainName(c.name) : '') + (c.dash ? '(점선)' : '') + (c.said ? ': ' + c.said : '') + '.');
+    }
+    // 매개변수 곡선 (x(t), y(t))
+    for (const c of opt.params || []) {
+      const a = c.from == null ? 0 : c.from, b = c.to == null ? 2 * Math.PI : c.to, color = colorOf(c.color, false), parts = []; let cur = null;
+      const okT = (t) => { const x = c.x(t), y = c.y(t); return Number.isFinite(x) && Number.isFinite(y) && x >= xlo - 1e-9 && x <= xhi + 1e-9 && okY(y); };
+      const at = (t) => [c.x(t), c.y(t)], end = () => { if (cur && cur.length > 1) parts.push(cur); cur = null; }, add = (p) => { (cur || (cur = [])).push(p); };
+      const edge = (t0, t1) => { let p = t0, q = t1; for (let k = 0; k < 44; k += 1) { const m = (p + q) / 2; if (okT(m)) p = m; else q = m; } return p; };
+      const n = 360;
+      if (okT(a)) add(at(a));
+      for (let i = 1; i <= n; i += 1) {
+        const t0 = a + (b - a) * (i - 1) / n, t1 = a + (b - a) * i / n, k0 = okT(t0), k1 = okT(t1);
+        if (k0 && k1) add(at(t1)); else if (k0) { add(at(edge(t0, t1))); end(); } else if (k1) { end(); add(at(edge(t1, t0))); add(at(t1)); }
+      }
+      end();
+      mid.push(pathOf(parts, color, c.dash));
+      if (c.name && parts.length) { const [x, y] = c.at == null ? parts[0][Math.floor(parts[0].length * 0.15)] : at(c.at); names.push([X(x), Y(y), c.name, c.side, 'ur', color]); }
+      said.push('곡선' + (c.name ? ' ' + plainName(c.name) : '') + (c.dash ? '(점선)' : '') + (c.said ? ': ' + c.said : '') + '.');
+    }
+    // 직선: 상자 안에 드는 부분만
+    for (const l of opt.lines || []) {
+      const color = colorOf(l.color, l.dash);
+      let p1, p2, told;
+      if (l.x != null) { p1 = [l.x, ylo]; p2 = [l.x, yhi]; told = `x축 위의 ${num(l.x)}인 점을 지나고 y축에 평행한 직선`; }
+      else if (l.y != null) { p1 = [xlo, l.y]; p2 = [xhi, l.y]; told = `y축 위의 ${num(l.y)}인 점을 지나고 x축에 평행한 직선`; }
+      else {
+        const [a, b] = l.p ? (l.p[0] === l.q[0] ? [null, null] : [(l.q[1] - l.p[1]) / (l.q[0] - l.p[0]), l.p[1] - (l.q[1] - l.p[1]) / (l.q[0] - l.p[0]) * l.p[0]]) : [l.a, l.b || 0];
+        if (a == null) { p1 = [l.p[0], ylo]; p2 = [l.p[0], yhi]; } else {
+          let lo = xlo, hi = xhi;
+          if (a !== 0) { const s = (ylo - b) / a, t = (yhi - b) / a; lo = Math.max(lo, Math.min(s, t)); hi = Math.min(hi, Math.max(s, t)); }
+          p1 = [lo, a * lo + b]; p2 = [hi, a * hi + b];
+        }
+        told = '직선';
+      }
+      mid.push(`<line x1="${f1(X(p1[0]))}" y1="${f1(Y(p1[1]))}" x2="${f1(X(p2[0]))}" y2="${f1(Y(p2[1]))}" style="stroke:${color};stroke-width:${l.dash ? 1.2 : 1.8}${dashOf(l.dash)}"/>`);
+      addPts([[X(p1[0]), Y(p1[1])], [X(p2[0]), Y(p2[1])]]);
+      if (l.name) names.push([X(p2[0]), Y(p2[1]), l.name, l.side, p2[1] > yhi - 1e-9 ? 'dr' : 'ur', color]);
+      said.push((l.name ? plainName(l.name) + ': ' : '') + (l.said || told) + (l.dash ? '(점선)' : '') + '.');
+    }
+    for (const s of opt.segs || []) {
+      mid.push(`<line x1="${f1(X(s.p[0]))}" y1="${f1(Y(s.p[1]))}" x2="${f1(X(s.q[0]))}" y2="${f1(Y(s.q[1]))}" style="stroke:${s.color || (s.dash ? GRAY : INK)};stroke-width:${s.dash ? 1.1 : 1.6}${dashOf(s.dash)}"/>`);
+      addPts([[X(s.p[0]), Y(s.p[1])], [X(s.q[0]), Y(s.q[1])]]);
+    }
+    // 점(○ 속이 빈 점, ● 찬 점)과 축으로 내린 점선
+    for (const d of opt.dots || []) {
+      const x = X(d.x), y = Y(d.y), color = d.color || INK;
+      if (d.guide) { mid.push(`<path d="M${f1(x)} ${f1(y)}V${f1(Y0)}M${f1(x)} ${f1(y)}H${f1(X0)}" style="fill:none;stroke:${GRAY};stroke-width:0.9;stroke-dasharray:3 2"/>`); addPts([[x, Y0], [x, y], [X0, y]]); }
+      front.push(`<circle cx="${f1(x)}" cy="${f1(y)}" r="3.2" style="fill:${d.open ? '#fff' : color};stroke:${color};stroke-width:1.4"/>`); grow(x - 4, y - 4); grow(x + 4, y + 4);
+      rects.push([x - 4, y - 4, x + 4, y + 4]);
+      said.push('점' + (d.name ? ' ' + plainName(d.name) : '') + (d.open ? '(속이 빈 점)' : '') + ': ' + (d.said || `x좌표 ${d.xl ? plainName(d.xl) : num(d.x)}, y좌표 ${d.yl ? plainName(d.yl) : num(d.y)}`) + '.');
+    }
+    // 글: 축 이름 → 원점 O → 눈금 → 점의 발 글 → 점 이름 → 곡선·직선 이름 → 그림 속 글(놓는 차례대로 앞의 글을 피한다)
+    word(ax1 + 10, Y0 + 4, 'x', 'start', 13.5); word(X0 + 7, ay1 - 4, 'y', 'start', 13.5);
+    const oSpots = [[-7, 12], [7, 12], [-7, -4], [7, -4]], oFirst = opt.oSide === 'r' ? [oSpots[1]].concat(oSpots.filter((s, i) => i !== 1)) : oSpots;
+    const oAt = oFirst.find(([dx, dy]) => free(boxOf(X0 + dx, Y0 + dy, 'O', 'middle', 11))) || oFirst[0];
+    rects.push(boxOf(X0 + oAt[0], Y0 + oAt[1], 'O', 'middle', 11)); grow(X0 + oAt[0] - 5, Y0 + oAt[1] + 3);
+    front.push(`<text x="${f1(X0 + oAt[0])}" y="${f1(Y0 + oAt[1])}" text-anchor="middle" style="font-size:11px;fill:${INK};font-weight:600;${HALO}">O</text>`);
+    for (const t of xt) if (Math.abs(t.v) > 1e-12) tickAt(X(t.v), Y0 + 3, t.t, 'below');
+    for (const t of yt) if (Math.abs(t.v) > 1e-12) tickAt(X0 - 5, Y(t.v), t.t, 'left');
+    for (const d of opt.dots || []) { if (d.xl) tickAt(X(d.x), Y0 + 3, d.xl, 'below'); if (d.yl) tickAt(X0 - 5, Y(d.y), d.yl, 'left'); }
+    for (const d of opt.dots || []) if (d.name) nameAt(X(d.x), Y(d.y), d.name, d.side, 'ur', INK, 13);
+    for (const [x, y, s, side, prefer, color] of names) nameAt(x, y, s, side, prefer, color);
+    for (const t of opt.texts || []) { const [dx, dy, anchor] = placeOf(t.side || 'r'); word(X(t.x) + dx, Y(t.y) + dy, t.t, anchor, 13, t.color); }
+    if (opt.say) said.push(opt.say);
+    const k = 4, vx = bb[0] - k, vy = bb[1] - k, vw = bb[2] - bb[0] + 2 * k, vh = bb[3] - bb[1] + 2 * k;
+    return `<svg class="mb-geo" viewBox="${f1(vx)} ${f1(vy)} ${f1(vw)} ${f1(vh)}" width="${Math.round(vw)}" role="img" aria-label="${attr(said.join(' '))}">${back.join('')}${mid.join('')}${front.join('')}</svg>`;
+  }
+
+  // ── 공간 그림 ──
+  // 좌표공간을 비스듬히 본 그림(교과서 모양): x축은 왼쪽 아래(앞으로 나오는 쪽 — 길이를 k 배로 줄인다), y축은 오른쪽, z축은 위.
+  // proj([x, y, z], o) → 화면 점 [가로, 세로](px, 세로는 아래로 커진다). o.u 한 칸(px, 기본 26), o.k x축을 줄이는 비율(기본 0.55), o.ang x축의 방향(도, 기본 225).
+  const proj = (p, o) => { const u = (o && o.u) || 26, k = o && o.k != null ? o.k : 0.55, a = ((o && o.ang) || 225) * Math.PI / 180; return [p[1] * u + p[0] * u * k * Math.cos(a), -p[2] * u - p[0] * u * k * Math.sin(a)]; };
+  // space(o): 공간 그림 판(공용 Board 위에 그린다). 좌표는 모두 [x, y, z]. 판의 함수(차례로 이어 쓸 수 있다):
+  //  axes(len, neg, inside) 세 축(len { x, y, z } 양의 쪽 길이 — 기본 4, neg 음의 쪽 길이 — 기본 0, inside 원점에서 물체 뒤에 숨는 길이 — 그 부분은 긋지 않고
+  //   물체의 점선 모서리에 맡긴다: 원점에 놓인 직육면체면 그 세 모서리의 길이), seg(p, q, 'dash'|'thin') 선분(dash: 숨은 모서리·보조선 점선),
+  //  dot(p, 이름, 각) 점, name(p, 글, 각, 거리) 이름, text(p, 글) 글, face(점들, 색) 옅게 칠한 면,
+  //  box(p, q, 이름 8개) 직육면체(마주 보는 두 꼭짓점 — 뒤·왼쪽·아래 꼭짓점에 모인 세 모서리는 점선, 이름은 아래 넷(앞 왼쪽부터 시계 반대쪽) → 위 넷),
+  //  solid({ A: [x, y, z], … }, 'AB BC CA AD BD CD', 'AC') 다면체(셋째 인자의 모서리는 점선, 이름은 가운데에서 먼 쪽), guide(p) 점의 좌표를 읽는 점선(xy평면에 내린 발과 두 축, z축),
+  //  svg(그림 설명) 그림 글. 그림 설명에는 점의 좌표나 모서리의 길이처럼 그림에서 읽어야 하는 것을 적는다.
+  function space(o) {
+    const opt = o || {}, b = Board(), P = (p) => proj(p, opt);
+    const head = (from, to) => {
+      const [x0, y0] = P(from), [x1, y1] = P(to), L = Math.hypot(x1 - x0, y1 - y0) || 1, ux = (x1 - x0) / L, uy = (y1 - y0) / L;
+      const tip = [x1 + ux * 7, y1 + uy * 7], l = [x1 - uy * 3.4, y1 + ux * 3.4], r = [x1 + uy * 3.4, y1 - ux * 3.4];
+      b.shape(`M${XY(tip)}L${XY(l)}L${XY(r)}Z`, [tip, l, r], 'fill:#1f2933;stroke:none');
+      return [tip, ux, uy];
+    };
+    const S = {
+      P,
+      axes(len, neg, inside) {
+        const L = Object.assign({ x: 4, y: 4, z: 4 }, len || {}), G = Object.assign({ x: 0, y: 0, z: 0 }, neg || {}), H = Object.assign({ x: 0, y: 0, z: 0 }, inside || {}), dirs = [];
+        for (const [nm, e] of [['x', [1, 0, 0]], ['y', [0, 1, 0]], ['z', [0, 0, 1]]]) {
+          const from = e.map((c) => -c * G[nm]), to = e.map((c) => c * L[nm]);
+          // 원점에서 inside 길이까지는 물체 뒤에 숨은 부분이라 긋지 않는다(물체의 점선 모서리가 그 자리를 긋는다).
+          if (G[nm]) b.seg(P(from), P([0, 0, 0]), 'thin', 'stroke:#1f2933');
+          b.seg(P(e.map((c) => c * H[nm])), P(to), 'thin', 'stroke:#1f2933');
+          const [tip, ux, uy] = head(from, to);
+          b.text([tip[0] + ux * 8 + (nm === 'z' ? 6 : 0), tip[1] + uy * 8 + (nm === 'z' ? 4 : 0)], sv(nm), { plain: true });
+          dirs.push(dirOf(P([0, 0, 0]), P(e)));
+          if (G[nm]) dirs.push((dirOf(P([0, 0, 0]), P(e)) + 180) % 360);
+        }
+        b.nameFree(P([0, 0, 0]), 'O', dirs);
+        return S;
+      },
+      seg(p, q, kind) { b.seg(P(p), P(q), kind === 'dash' ? 'cut' : kind === 'thin' ? 'thin' : undefined); return S; },
+      dot(p, name, ang) { b.dot(P(p)); if (name) b.name(P(p), name, ang == null ? 45 : ang); return S; },
+      name(p, label, ang, dist) { b.name(P(p), label, ang == null ? 45 : ang, dist); return S; },
+      text(p, html, o2) { b.text(P(p), html, o2); return S; },
+      face(pts, color) { b.poly(pts.map(P), 'fill:' + (color || 'rgba(37,99,235,0.14)') + ';stroke:none'); return S; },
+      box(p, q, names) {
+        const [x0, x1] = [Math.min(p[0], q[0]), Math.max(p[0], q[0])], [y0, y1] = [Math.min(p[1], q[1]), Math.max(p[1], q[1])], [z0, z1] = [Math.min(p[2], q[2]), Math.max(p[2], q[2])];
+        // 아래 넷: 뒤 왼쪽(숨은 꼭짓점) → 앞 왼쪽 → 앞 오른쪽 → 뒤 오른쪽, 위 넷도 같은 차례
+        const v = [[x0, y0, z0], [x1, y0, z0], [x1, y1, z0], [x0, y1, z0], [x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]];
+        const edges = [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [0, 4], [1, 5], [2, 6], [3, 7]], hid = (e) => e.includes(0);
+        for (const e of edges.filter(hid)) b.seg(P(v[e[0]]), P(v[e[1]]), 'cut');
+        for (const e of edges.filter((e) => !hid(e))) b.seg(P(v[e[0]]), P(v[e[1]]));
+        const c = P([(x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2]);
+        if (names) names.forEach((nm, i) => { if (nm) b.name(P(v[i]), nm, awayFrom(P(v[i]), [c])); });
+        return S;
+      },
+      solid(pts, edges, hidden, o2) {
+        const hid = new Set(String(hidden || '').split(/\s+/).filter(Boolean).flatMap((e) => [e, e[1] + e[0]])), list = String(edges).split(/\s+/).filter(Boolean);
+        for (const e of list.filter((e) => hid.has(e))) b.seg(P(pts[e[0]]), P(pts[e[1]]), 'cut');
+        for (const e of list.filter((e) => !hid.has(e))) b.seg(P(pts[e[0]]), P(pts[e[1]]));
+        const all = Object.values(pts).map(P), c = [all.reduce((s, p) => s + p[0], 0) / all.length, all.reduce((s, p) => s + p[1], 0) / all.length];
+        if (!(o2 && o2.names === false)) for (const [nm, p] of Object.entries(pts)) b.name(P(p), nm, awayFrom(P(p), [c]));
+        return S;
+      },
+      guide(p) {
+        const [x, y, z] = p;
+        for (const [s, t] of [[[x, 0, 0], [x, y, 0]], [[0, y, 0], [x, y, 0]], [[x, y, 0], p], [[0, 0, z], p]]) b.seg(P(s), P(t), 'cut');
+        return S;
+      },
+      svg(label) { return b.svg(attr(label)); }
+    };
+    return S;
+  }
+
+  B.kit.hs = {
+    signed, esc, hide, plainOf, fn, sub, prime, ms, mt, vis,
+    lim, sum, intg, evl, df, dd,
+    sfrac, pw, rtn, lg, ln, trig,
+    nP, nC, nPi, nH,
+    pr, ev, vr, sd, bin, nrm, bar, hat, dist, ztab,
+    vec, cmps,
+    readOf, jh, hx,
+    coordAns, qAns, piAns,
+    svgm, piTicks, plot, proj, space
+  };
+})(typeof window !== 'undefined' ? window : globalThis);
