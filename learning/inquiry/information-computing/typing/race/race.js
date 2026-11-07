@@ -476,7 +476,9 @@
     });
     $('word').replaceChildren(...groups);
     $('card').classList.toggle('long', chars.length > 8);
-    $('queue').replaceChildren(...items.slice(localIndex + 1, localIndex + (sentenceMode() ? 2 : 4)).map((w, i) => {
+    // 다음 낱말은 같은 카드 안, 지금 낱말 옆에 작고 흐리게 줄지어 기다린다(속담은 다음 한 줄).
+    $('card').classList.toggle('sentence', sentenceMode());
+    $('queue').replaceChildren(...items.slice(localIndex + 1, localIndex + (sentenceMode() ? 2 : 5)).map((w, i) => {
       const span = document.createElement('span');
       span.textContent = w;
       span.style.setProperty('--i', i);
@@ -542,7 +544,7 @@
     floatText('+' + gained, r.left + r.width / 2, r.top, localCombo >= C.COMBO_CAP ? 'fever' : '');
     if (localCombo && localCombo % 5 === 0) floatText(`${localCombo} 콤보!`, r.left + r.width / 2, r.top - 46, 'combo');
     sfx.good(localCombo);
-    retrigger($('card'), 'pop');
+    retrigger($('card'), 'advance');
     retrigger($('scoreNow'), 'bump');
     $('scoreNow').textContent = localScore;
     paintWord();
