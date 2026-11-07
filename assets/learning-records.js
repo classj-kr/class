@@ -60,7 +60,16 @@
       strip.append(identity, this.progress, history); this.strip = strip;
       // 순위전 바로 가기는 머리줄에 따로 자리를 만들지 않고, 타자 앱처럼 기록 단추 옆에 둔다.
       const race = document.querySelector('a.race-link');
-      if (race) { race.className = 'race'; strip.prepend(race); }
+      if (race) {
+        race.className = 'race'; strip.prepend(race);
+        // 순위전은 지금 보고 있는 차시(단계)를 범위로 넘겨받는다. 화면이 window.currentRaceRange 로 알려 준다.
+        const base = race.getAttribute('href');
+        race.addEventListener('click', () => {
+          let range = '';
+          try { range = String(window.currentRaceRange?.() || ''); } catch { range = ''; }
+          race.setAttribute('href', range ? `${base}${base.includes('?') ? '&' : '?'}range=${encodeURIComponent(range)}` : base);
+        });
+      }
       if (options.toolbar !== false) {
         // Leave room to scroll the final answer above the floating controls.
         const space = el('div', null, 'dock-space'); space.setAttribute('aria-hidden', 'true');

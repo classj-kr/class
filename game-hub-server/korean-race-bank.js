@@ -15,6 +15,18 @@ function browserGlobals(files) {
   for (const file of files) vm.runInContext(read(file), context, { filename: file, timeout: 3000 });
   return context.window;
 }
+// 속담 차시는 화면 코드(app.js) 안의 규칙으로 나뉜다. 화면을 띄우지 않고 그 규칙만 받아 온다.
+function proverbLessonFor(banks) {
+  let config = null;
+  const context = vm.createContext({ window: { PROVERB_BANKS: banks }, document: {}, runRecordedLessons: (value) => { config = value; } });
+  vm.runInContext(read('proverbs/app.js'), context, { filename: 'proverbs/app.js', timeout: 3000 });
+  return config?.lessonFor ? (item, language) => config.lessonFor(item, language) : null;
+}
+function idiomLessons() {
+  const context = vm.createContext({});
+  vm.runInContext(read('classical-chinese-idioms/idioms-lessons-data.js'), context, { filename: 'idioms-lessons-data.js', timeout: 3000 });
+  return context.IDIOM_LESSONS || [];
+}
 function attempt(label, load, fallback) {
   try { return load(); }
   catch (error) {
@@ -24,13 +36,18 @@ function attempt(label, load, fallback) {
 }
 
 function loadSources() {
+  const spelling = attempt('맞춤법', () => browserGlobals(['spelling/questions.js', 'spelling/questions-extra.js', 'spelling/lessons.js']), {});
+  const proverbBanks = attempt('속담', () => browserGlobals(['proverbs/proverbs-data.js', 'proverbs/proverbs-essential-additions.js', 'proverbs/proverbs-lookalikes.js']).PROVERB_BANKS, null);
   return {
-    spelling: attempt('맞춤법', () => browserGlobals(['spelling/questions.js', 'spelling/questions-extra.js']).SPELLING_QUESTIONS, []),
+    spelling: spelling.SPELLING_QUESTIONS || [],
+    spellingLessons: spelling.SPELLING_LESSONS || [],
     idioms: attempt('한자성어', () => ({
       data: require(path.join(APPS, 'classical-chinese-idioms/idioms-data.js')),
       core: require(path.join(APPS, 'classical-chinese-idioms/idioms-core.js')),
+      lessons: attempt('한자성어 차시', idiomLessons, []),
     }), null),
-    proverbs: attempt('속담', () => browserGlobals(['proverbs/proverbs-data.js', 'proverbs/proverbs-essential-additions.js', 'proverbs/proverbs-lookalikes.js']).PROVERB_BANKS.ko, []),
+    proverbs: proverbBanks?.ko || [],
+    proverbLessonFor: proverbBanks ? attempt('속담 차시', () => proverbLessonFor(proverbBanks), null) : null,
     expressions: attempt('관용어', () => require(path.join(APPS, 'idiomatic-expressions/idiomatic-expressions-data.js')), []),
     vocabulary: attempt('영단어', () => JSON.parse(read('vocabulary/assets/data/english-vocabulary-3000-v2.json')).words, []),
   };

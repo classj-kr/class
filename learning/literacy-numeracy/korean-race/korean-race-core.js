@@ -81,5 +81,35 @@
     if (!levels) return 'all';
     return levels.some(([value]) => value === level) ? level : levels[0][0];
   }
-  return { SETS, MIXED_PARTS, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  // 학습 화면에서 보던 범위만 내는 순위전. 영단어는 "1"=Level 1(200단어), "1-4"=Level 1의 4차시(20단어),
+  // 나머지는 "3"=3차시. 앞에 "~"를 붙이면 맨 처음 차시부터 그 자리까지 모두 낸다.
+  const RANGE_SETS = { vocabulary: { units: 15, lessons: 10 }, spelling: { lessons: 99 }, idioms: { lessons: 99 }, proverbs: { lessons: 99 }, expressions: { lessons: 99 } };
+  function validRange(set, value) {
+    const spec = RANGE_SETS[set];
+    const match = spec && /^(~?)(\d{1,2})(?:-(\d{1,2}))?$/.exec(String(value ?? ''));
+    if (!match) return null;
+    const upto = match[1], first = Number(match[2]), second = match[3] ? Number(match[3]) : null;
+    if (!spec.units) return second === null && first >= 1 && first <= spec.lessons ? upto + first : null;
+    if (first < 1 || first > spec.units || (second !== null && (second < 1 || second > spec.lessons))) return null;
+    return upto + (second === null ? String(first) : `${first}-${second}`);
+  }
+  // 문항 자리가 범위에 드는가. 영단어는 unit(Level)·lesson, 나머지는 lesson만 본다.
+  // 영단어 "1"처럼 차시 없이 Level만 고르면 그 Level 전체.
+  function inRange(set, range, unit, lesson) {
+    const text = String(range), upto = text.startsWith('~');
+    const nums = text.replace('~', '').split('-').map(Number);
+    if (!RANGE_SETS[set]?.units) return Boolean(lesson) && (upto ? lesson <= nums[0] : lesson === nums[0]);
+    const [u, l] = nums;
+    if (upto) return unit < u || (unit === u && (!l || lesson <= l));
+    return unit === u && (!l || lesson === l);
+  }
+  function rangeLabel(set, range) {
+    const text = String(range), upto = text.startsWith('~');
+    const [first, second] = text.replace('~', '').split('-').map(Number);
+    const units = RANGE_SETS[set]?.units;
+    const at = units ? `Level ${first}${second ? ` · ${second}차시` : ''}` : `${first}차시`;
+    const isFirst = units ? first === 1 && second === 1 : first === 1;
+    return upto && !isFirst ? `처음~${at}` : at;
+  }
+  return { SETS, MIXED_PARTS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });

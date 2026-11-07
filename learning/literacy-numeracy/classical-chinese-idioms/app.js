@@ -166,6 +166,8 @@
 
     let progress = {};
     let currentLessonIndex = 0;
+    // 순위전 범위: 차시를 열어 둔 동안 그 차시(전체 문제를 풀 때는 범위 없음).
+    window.currentRaceRange = () => (!elements.learningShell.hidden && quizScope !== "all" ? String(currentLessonIndex + 1) : "");
     let quizScope = "lesson";
     let deck = [...data];
     let currentIndex = 0;

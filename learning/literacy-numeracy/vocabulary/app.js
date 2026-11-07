@@ -197,6 +197,15 @@
         return lessons;
     }
 
+    // 순위전 범위: 차시 목록에서는 그 Level(200단어), 차시 공부·문제·철자에서는 그 차시(20단어).
+    window.currentRaceRange = () => {
+        const shown = (name) => elements[name] && !elements[name].hidden;
+        if (["studyScreen", "lessonQuizScreen", "spellingScreen"].some(shown)) return `${state.currentLevel}-${state.currentLesson + 1}`;
+        if (shown("lessonScreen")) return String(state.currentLevel);
+        if (shown("gameScreen") && state.gameLevel) return String(state.gameLevel);
+        return "";
+    };
+
     function currentLessonWords() {
         return lessonsForLevel(state.currentLevel)[state.currentLesson] || [];
     }

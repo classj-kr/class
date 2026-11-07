@@ -15,7 +15,10 @@
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', roundSeen = '';
   const prevScores = new Map();
   const fromSet = C.SETS[params.get('set')] ? params.get('set') : 'spelling';
-  const choice = { set: fromSet, level: C.validLevel(fromSet, params.get('level')), duration: 90, teamMode: false, teamCount: 2 };
+  const fromRange = C.validRange(fromSet, params.get('range'));
+  // 들어온 자리(앞의 "~"를 뗀 것): "그 부분만"과 "처음부터 거기까지"를 고를 수 있게 한다.
+  const baseRange = fromRange && fromRange.replace('~', '');
+  const choice = { set: fromSet, level: C.validLevel(fromSet, params.get('level')), range: fromRange, duration: 90, teamMode: false, teamCount: 2 };
   const serverNow = () => Date.now() + offset;
   // 들어온 학습 화면으로 돌아간다(방번호로 온 학생은 메인으로).
   if (params.get('set') && C.SETS[fromSet].app) $('backLink').href = C.SETS[fromSet].app + '/';
@@ -226,7 +229,11 @@
     return field;
   }
   function change(patch) {
-    if (patch.set) patch.level = C.validLevel(patch.set, choice.level);
+    if (patch.set) {
+      patch.level = C.validLevel(patch.set, choice.level);
+      // 들어온 화면의 범위는 그 콘텐츠로 돌아올 때 다시 살린다.
+      patch.range = patch.set === fromSet ? fromRange : null;
+    }
     Object.assign(choice, patch);
     paintSettings();
     if (code && state?.me.host && state.phase !== 'running')
@@ -237,7 +244,13 @@
       box.innerHTML = '';
       box.append(optionRow('문제', Object.entries(C.SETS).map(([k, s]) => [k, s.label, k]), choice.set, (set) => change({ set })));
       const levels = C.levelsOf(choice.set);
-      if (levels) box.append(optionRow('수준', levels, choice.level, (level) => change({ level }), true));
+      if (fromRange && choice.set === fromSet)
+        box.append(optionRow('범위', [
+          [baseRange, C.rangeLabel(fromSet, baseRange) + '만'],
+          ...(C.rangeLabel(fromSet, '~' + baseRange) === C.rangeLabel(fromSet, baseRange) ? [] : [['~' + baseRange, C.rangeLabel(fromSet, '~' + baseRange)]]),
+          [null, levels ? '수준별' : '전체'],
+        ], choice.range, (range) => change({ range }), true));
+      if (levels && !choice.range) box.append(optionRow('수준', levels, choice.level, (level) => change({ level }), true));
       box.append(
         optionRow('시간', C.DURATIONS.map((s) => [s, s % 60 === 0 ? `${s / 60}분` : `${s}초`]), choice.duration, (duration) => change({ duration }), true),
         optionRow('경기 방식', [[false, '개인전'], [true, '팀전']], choice.teamMode, (teamMode) => change({ teamMode })),
@@ -248,6 +261,7 @@
   paintSettings();
   function setName(config) {
     const set = C.SETS[config.set];
+    if (config.range) return `${set.label} · ${C.rangeLabel(config.set, config.range)}`;
     const level = (C.levelsOf(config.set) || []).find(([v]) => v === config.level);
     return `${set.label}${level && level[0] !== 'all' ? ' · ' + level[1] : ''}`;
   }
@@ -828,7 +842,7 @@
     document.body.classList.remove('is-host', 'spectator', 'fever', 'hurry');
     show('entry');
     playMusic('lobby');
-    history.replaceState(null, '', location.pathname + (params.get('set') ? '?set=' + fromSet : ''));
+    history.replaceState(null, '', location.pathname + (params.get('set') ? '?set=' + fromSet + (fromRange ? '&range=' + fromRange : '') : ''));
   }
   // 방번호는 메인 화면 방번호 입력에서 ?room= 으로 넘어온다.
   function join(value) {
