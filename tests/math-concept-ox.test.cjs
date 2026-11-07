@@ -24,11 +24,11 @@ test('기존 OX 737문항은 빠짐없이 한 통합 단원에 연결되고 원�
 test('두 학기의 범위가 다른 분수·소수 나눗셈과 중·고 세부 단원을 문항 내용대로 나눈다', () => {
   for (const [id, unit] of [[464,'6-1-1'],[31,'6-2-1'],[477,'6-1-3'],[473,'6-2-3'],[522,'7-1-3'],[48,'7-1-4'],[558,'8-1-2'],[598,'8-2-6'],[74,'10-1-6'],[268,'10-2-3'],[270,'10-2-7']]) assert.ok(C.idsFor(unit).includes(id), id + ': ' + unit);
 });
-test('문항이 아직 없는 고등 선택 과목의 단원은 OX만 있고, 원래 주소도 연결된다(대수·미적분Ⅰ·확률과 통계는 11-1·11-2·11-3 단원으로 옮겼다)', () => {
-  assert.equal(C.courses.length, 1); assert.equal(C.virtualUnits.length, 3);
+test('문항이 아직 없는 고등 선택 과목의 단원은 OX만 있고, 원래 주소도 연결된다(네 과목 모두 11-1~11-4 단원으로 옮겼다 — 이제 OX만 있는 과목은 없다)', () => {
+  assert.equal(C.courses.length, 0); assert.equal(C.virtualUnits.length, 0);
   assert.equal(C.legacyTarget('대수', '지수와 로그'), '11-1-1'); assert.ok(C.idsFor('11-1-3').includes(674));
   for (const unit of C.virtualUnits) { assert.equal(unit.oxOnly, true); assert.equal(unit.groups.length, 0); assert.ok(C.idsFor(unit.id).length > 0); }
-  assert.equal(C.legacyTarget('미적1', '적분'), '11-2-6'); assert.equal(C.legacyTarget('확률과 통계', '확률'), '11-3-3'); assert.equal(C.legacyTarget('기하', '벡터'), 'ox-geometry-3');
+  assert.equal(C.legacyTarget('미적1', '적분'), '11-2-6'); assert.equal(C.legacyTarget('확률과 통계', '확률'), '11-3-3'); assert.equal(C.legacyTarget('기하', '벡터'), '11-4-6'); assert.ok(C.idsFor('11-4-7').includes(733));
   assert.equal(C.legacyTarget('초4', '삼각형'), '4-1-4');
   assert.deepEqual(C.idsFor('1-1-1'), []);
 });
