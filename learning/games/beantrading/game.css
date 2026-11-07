@@ -52,6 +52,7 @@ h3 { font-size: 16px; }
 #missingScreen button { margin-left: 8px; }
 #gameScreen { --card-width: 140px; }
 .players { display: grid; grid-template-columns: repeat(var(--players, 4), minmax(0, 1fr)); gap: 8px; margin: 3px 0 10px; padding-left: 38px; }
+.class-music-ready .players { margin-right: max(52px, calc(env(safe-area-inset-right) + 48px)); }
 .player { position: relative; border: 1px solid var(--line); border-radius: 12px; background: #f8f8ee; padding: 7px 9px; min-width: 0; }
 .player.active { box-shadow: inset 0 0 0 2px var(--green); background: #eaf1e0; }
 .player.active:before { content: '이번 차례'; position: absolute; right: 8px; top: -10px; border-radius: 8px; background: var(--green); color: white; padding: 1px 7px; font-size: 12px; }
