@@ -136,9 +136,9 @@ async function main() {
   const asJson = async (response) => ({ status: response.status, body: await response.json().catch(() => ({})) });
 
   // 11. 방 만들기: 번호가 생기고 만든 사람이 들어간다.
-  const made = await asJson(await call('/rooms', { as: 1, method: 'POST', body: { name: '  우리  끼리  ' } }));
+  const made = await asJson(await call('/rooms', { as: 1, method: 'POST', body: { name: '무시되는 이름' } }));
   assert.equal(made.status, 200);
-  assert.equal(made.body.channel.name, '우리 끼리');
+  assert.equal(made.body.channel.name, '김하늘의 방', '방 이름은 입력이 아니라 만든 학생 이름으로 붙는다');
   assert.match(made.body.channel.code, /^\d{4}$/);
   const roomId = made.body.channel.id;
   const code = made.body.channel.code;
@@ -186,17 +186,21 @@ async function main() {
   assert.equal((await db.query("SELECT COUNT(*)::int AS n FROM school_chat_messages WHERE school_key='A학교' AND channel=$1", [roomId])).rows[0].n, 5000);
   assert.equal((await db.query("SELECT COUNT(*)::int AS n FROM school_chat_messages WHERE school_key='A학교' AND channel='school'")).rows[0].n, schoolBefore, '학교 전체방 기록은 그대로');
 
-  // 18. 방 수 상한: 만든 방은 3개까지.
-  assert.equal((await call('/rooms', { as: 1, method: 'POST', body: { name: '둘째' } })).status, 200);
-  assert.equal((await call('/rooms', { as: 1, method: 'POST', body: { name: '셋째' } })).status, 200);
-  assert.equal((await call('/rooms', { as: 1, method: 'POST', body: { name: '넷째' } })).status, 409);
+  // 18. 배틀넷처럼 한 번에 방 하나: 이미 방에 있으면 새로 만들 수도, 다른 방에 들어갈 수도 없다.
+  assert.equal((await asJson(await call('/rooms', { as: 1, method: 'POST' }))).body.error, 'ALREADY_IN_ROOM');
+  await db.query(`INSERT INTO school_chat_rooms (school_key, code, name, owner_user_id) VALUES ('A학교', '9998', '다른방', '301')`);
+  await db.query(`INSERT INTO school_chat_members (school_key, code, user_id) VALUES ('A학교', '9998', '301')`);
+  assert.equal((await asJson(await call('/rooms/join', { as: 2, method: 'POST', body: { code: '9998' } }))).body.error, 'ALREADY_IN_ROOM');
+  assert.equal((await call('/rooms/join', { as: 2, method: 'POST', body: { code } })).status, 200, '지금 있는 방 번호를 또 눌러도 괜찮다');
 
-  // 19. 나가기: 들어간 방 목록에서 빠지고, 아무도 안 남으면 방이 사라진다.
-  const leaveCode = (await (await call('/rooms', { as: 1 })).json()).channels.find((c) => c.name === '둘째').code;
-  assert.equal((await call(`/rooms/${leaveCode}/leave`, { as: 1, method: 'POST' })).status, 200);
-  assert.equal((await db.query("SELECT 1 FROM school_chat_rooms WHERE school_key='A학교' AND code=$1", [leaveCode])).rowCount, 0, '빈 방은 지운다');
-  assert.equal((await call(`/rooms/${code}/leave`, { as: 1, method: 'POST' })).status, 200);
+  // 19. 나가기: 나가면 다른 방에 갈 수 있고, 아무도 안 남으면 방이 사라진다.
+  assert.equal((await call(`/rooms/${code}/leave`, { as: 2, method: 'POST' })).status, 200);
   assert.equal((await db.query("SELECT 1 FROM school_chat_rooms WHERE school_key='A학교' AND code=$1", [code])).rowCount, 1, '한 명이라도 남은 방은 유지');
+  const second = await asJson(await call('/rooms', { as: 2, method: 'POST' }));
+  assert.equal(second.status, 200, '나간 뒤에는 자기 방을 만들 수 있다');
+  assert.equal(second.body.channel.name, '이바다의 방');
+  assert.equal((await call(`/rooms/${code}/leave`, { as: 1, method: 'POST' })).status, 200);
+  assert.equal((await db.query("SELECT 1 FROM school_chat_rooms WHERE school_key='A학교' AND code=$1", [code])).rowCount, 0, '마지막 사람이 나가면 빈 방은 지운다');
 
   // ---- 방 통화: 음성 6명, 카메라 동시에 4명, 연결 신호는 같은 통화 안에서만 ----
   await db.query(`INSERT INTO school_chat_rooms (school_key, code, name, owner_user_id) VALUES ('A학교', '7777', '통화방', '201')`);
@@ -270,6 +274,25 @@ async function main() {
   // 25. 방을 나가면(구독 해제) 통화에서도 빠진다.
   await say(206, { type: 'SCHOOLCHAT_UNSUBSCRIBE', channel: CALL });
   assert.ok(!last(sockets[201], 'SCHOOLCHAT_CALL_STATE').members.some((m) => m.userId === '206'));
+
+  // 26. 접속자 목록: 새로 들어온 사람은 전체 목록, 이미 있던 사람은 들고 나는 소식만 받는다.
+  const deltas = (socket, channel) => socket.sent.filter((p) => p.type === 'SCHOOLCHAT_PRESENCE_DELTA' && p.channel === channel);
+  const joinedPacket = (socket) => socket.sent.find((p) => p.type === 'SCHOOLCHAT_JOINED');
+  assert.deepEqual(joinedPacket(sockets[207]).presence.school.map((u) => u.userId).sort(), ['201', '202', '203', '204', '205', '206', '207'], '새로 들어온 사람은 전체 접속자 목록을 받는다');
+  assert.ok(joinedPacket(sockets[207]).presence.school.every((u) => u.name && u.role), '접속자에는 이름과 역할이 있다');
+  const sawJoin = new Set(deltas(sockets[201], 'school').filter((p) => p.joined).map((p) => p.joined.userId));
+  for (const id of ['202', '203', '204', '205', '206', '207']) assert.ok(sawJoin.has(id), `이미 있던 사람이 ${id}의 입장 소식을 받는다`);
+  assert.ok(deltas(sockets[202], 'school').some((p) => p.left === '204'), '나간 사람은 나갔다는 소식이 온다');
+
+  const windowB = fake();
+  const beforeDeltas = deltas(sockets[202], 'school').length;
+  await chat.handleSocketMessage(windowB, { type: 'SCHOOLCHAT_JOIN', ticket: 't201' }, verifyTicket);
+  assert.equal(deltas(sockets[202], 'school').length, beforeDeltas, '같은 계정의 두 번째 창은 접속자를 늘리지 않는다');
+  assert.equal(joinedPacket(windowB).presence.school.filter((u) => u.userId === '201').length, 1, '한 사람은 한 번만 보인다');
+  chat.leave(sockets[201]);
+  assert.equal(deltas(sockets[202], 'school').length, beforeDeltas, '한 창이 닫혀도 다른 창이 있으면 나간 것이 아니다');
+  chat.leave(windowB);
+  assert.ok(deltas(sockets[202], 'school').slice(beforeDeltas).some((p) => p.left === '201'), '마지막 창이 닫히면 나갔다고 알린다');
 
   server.close();
   console.log('school-chat: 모든 검사 통과');

@@ -16,9 +16,7 @@ const TEACHER_VIEW_LIMIT = 300;
 const MIN_GAP_MS = 1500;          // 한 사람이 연달아 보낼 때 최소 간격
 const BURST_WINDOW_MS = 10000;
 const BURST_MAX = 5;              // 10초에 다섯 번까지
-const ROOM_NAME_MAX = 20;
-const MAX_ROOMS_OWNED = 3;
-const MAX_ROOMS_JOINED = 8;
+const MAX_ROOMS_JOINED = 1;       // 한 학생이 한 번에 들어가 있을 수 있는 방(만든 방 포함, 학교 전체방은 따로)
 const SCHOOL = 'school';
 const CHANNEL_PATTERN = /^(school|room:\d{4})$/;
 const MAX_CALL = 6;               // 방 통화(음성) 인원
@@ -31,6 +29,7 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
   const listeners = new Set();
   const recentSends = new Map();   // userId -> 보낸 시각 목록
   let postsSinceCleanup = 0;
+  let cleanupTimer = null;
 
   const emit = (schoolKey, event) => { for (const listener of listeners) listener(schoolKey, event); };
   const roomChannel = (code) => `room:${code}`;
@@ -42,6 +41,11 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
       await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', file), 'utf8'));
     }
     await cleanup();
+    // 글이 거의 안 오가는 때에도 3일 지난 글·방이 남지 않게 한 시간마다 정리한다.
+    if (!cleanupTimer) {
+      cleanupTimer = setInterval(() => { cleanup().catch(() => {}); }, 60 * 60 * 1000);
+      cleanupTimer.unref?.();
+    }
   }
 
   async function cleanup() {
@@ -193,11 +197,8 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
   }));
 
   // ---- 학생이 만드는 방 ----
-  function roomName(raw, fallback) {
-    const name = String(raw || '').replace(/[\r\n\t]+/g, ' ').replace(/\s{2,}/g, ' ').trim().slice(0, ROOM_NAME_MAX);
-    return name || fallback;
-  }
-
+  // 방 이름은 입력받지 않고 만든 사람 이름으로 붙인다("○○의 방"). 자유 글이 끼어들 틈이 없고,
+  // 선생님 목록에서도 누구 방인지 바로 보인다.
   router.get('/rooms', asyncRoute(async (req, res) => {
     requireDatabase();
     const identity = await identityFor(req);
@@ -205,14 +206,17 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
     res.json({ channels: await myChannels(identity.schoolKey, identity.userId) });
   }));
 
+  // 배틀넷처럼 한 번에 방 하나. 다른 방에 가려면 지금 방을 먼저 나간다.
+  async function requireNoOtherRoom(identity) {
+    const joined = (await pool.query('SELECT COUNT(*)::int AS n FROM school_chat_members WHERE school_key = $1 AND user_id = $2', [identity.schoolKey, identity.userId])).rows[0].n;
+    if (joined >= MAX_ROOMS_JOINED) fail(409, 'ALREADY_IN_ROOM', '이미 다른 방에 있어요. 먼저 그 방에서 나가세요.');
+  }
+
   router.post('/rooms', asyncRoute(async (req, res) => {
     requireDatabase();
     const identity = await identityFor(req);
-    const owned = (await pool.query('SELECT COUNT(*)::int AS n FROM school_chat_rooms WHERE school_key = $1 AND owner_user_id = $2', [identity.schoolKey, identity.userId])).rows[0].n;
-    if (owned >= MAX_ROOMS_OWNED) fail(409, 'TOO_MANY_OWNED_ROOMS', `방은 ${MAX_ROOMS_OWNED}개까지 만들 수 있어요.`);
-    const joined = (await pool.query('SELECT COUNT(*)::int AS n FROM school_chat_members WHERE school_key = $1 AND user_id = $2', [identity.schoolKey, identity.userId])).rows[0].n;
-    if (joined >= MAX_ROOMS_JOINED) fail(409, 'TOO_MANY_JOINED_ROOMS', `들어갈 수 있는 방은 ${MAX_ROOMS_JOINED}개까지예요.`);
-    const name = roomName(req.body?.name, `${identity.name}의 방`);
+    await requireNoOtherRoom(identity);
+    const name = `${identity.name}의 방`;
     for (let attempt = 0; attempt < 30; attempt += 1) {
       const code = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
       const inserted = await pool.query(
@@ -236,8 +240,7 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
     if (!room) fail(404, 'ROOM_NOT_FOUND', '방을 찾지 못했어요. 번호를 확인하세요.');
     const already = await isMember(identity.schoolKey, identity.userId, roomChannel(code));
     if (!already) {
-      const joined = (await pool.query('SELECT COUNT(*)::int AS n FROM school_chat_members WHERE school_key = $1 AND user_id = $2', [identity.schoolKey, identity.userId])).rows[0].n;
-      if (joined >= MAX_ROOMS_JOINED) fail(409, 'TOO_MANY_JOINED_ROOMS', `들어갈 수 있는 방은 ${MAX_ROOMS_JOINED}개까지예요.`);
+      await requireNoOtherRoom(identity);
       await pool.query('INSERT INTO school_chat_members (school_key, code, user_id) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING', [identity.schoolKey, code, identity.userId]);
       await pool.query('UPDATE school_chat_rooms SET last_active_at = NOW() WHERE school_key = $1 AND code = $2', [identity.schoolKey, code]);
     }
@@ -352,13 +355,41 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
   const send = (socket, payload) => { if (socket && socket.readyState === OPEN) socket.send(JSON.stringify(payload)); };
   const roomKey = (schoolKey, channel) => `${schoolKey}\u0000${channel}`;
 
+  // ---- 접속자 목록(배틀넷처럼 그 채널에 지금 누가 있는지) ----
+  // 같은 계정이 여러 창을 열어도 한 사람으로 센다. 들고 나는 것만 알려서(전체 목록은 새로 들어온 사람에게만)
+  // 사람이 많아도 소식이 사람 수만큼만 오간다.
+  const presenceUser = (member) => ({ userId: member.userId, name: member.name, role: member.role, grade: member.grade, classNumber: member.classNumber });
+
+  function presenceUsers(schoolKey, channel) {
+    const users = new Map();
+    for (const socket of rooms.get(roomKey(schoolKey, channel)) || []) {
+      const member = socket.meta?.schoolChat;
+      if (member && !users.has(member.userId)) users.set(member.userId, presenceUser(member));
+    }
+    return [...users.values()];
+  }
+
+  function otherSocketsOfUser(sockets, member, except) {
+    for (const socket of sockets || []) if (socket !== except && socket.meta?.schoolChat?.userId === member.userId) return true;
+    return false;
+  }
+
+  function announcePresence(socket, channel, delta) {
+    const member = socket.meta.schoolChat;
+    for (const other of rooms.get(roomKey(member.schoolKey, channel)) || []) {
+      if (other !== socket && other.meta?.schoolChat?.userId !== member.userId) send(other, { type: 'SCHOOLCHAT_PRESENCE_DELTA', channel, ...delta });
+    }
+  }
+
   function subscribe(socket, channel) {
     const member = socket.meta.schoolChat;
     const key = roomKey(member.schoolKey, channel);
     const sockets = rooms.get(key) || new Set();
     rooms.set(key, sockets);
+    const firstWindow = !otherSocketsOfUser(sockets, member, socket);
     sockets.add(socket);
     member.channels.add(channel);
+    if (firstWindow) announcePresence(socket, channel, { joined: presenceUser(member) });
   }
 
   function unsubscribe(socket, channel) {
@@ -367,11 +398,16 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
     callLeave(socket, channel);
     const key = roomKey(member.schoolKey, channel);
     const sockets = rooms.get(key);
+    const wasMember = member.channels.has(channel);
     if (sockets) {
       sockets.delete(socket);
       if (!sockets.size) rooms.delete(key);
     }
     member.channels.delete(channel);
+    // 이 계정의 마지막 창이 나갔을 때만 "나갔다"고 알린다.
+    if (wasMember && sockets && sockets.size && !otherSocketsOfUser(sockets, member, socket)) {
+      for (const other of sockets) send(other, { type: 'SCHOOLCHAT_PRESENCE_DELTA', channel, left: member.userId });
+    }
   }
 
   function leave(socket) {
@@ -471,7 +507,9 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
         subscribe(socket, channel.id);
         history[channel.id] = await recent(identity.schoolKey, channel.id).catch(() => []);
       }
-      send(socket, { type: 'SCHOOLCHAT_JOINED', userId: identity.userId, channels, history });
+      const presence = {};
+      for (const channel of channels) presence[channel.id] = presenceUsers(identity.schoolKey, channel.id);
+      send(socket, { type: 'SCHOOLCHAT_JOINED', userId: identity.userId, channels, history, presence });
       return true;
     }
     const member = socket.meta?.schoolChat;
@@ -480,6 +518,7 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
       if (!member || !CHANNEL_PATTERN.test(channel) || !await isMember(member.schoolKey, member.userId, channel)) return true;
       subscribe(socket, channel);
       send(socket, { type: 'SCHOOLCHAT_HISTORY', channel, messages: await recent(member.schoolKey, channel).catch(() => []) });
+      send(socket, { type: 'SCHOOLCHAT_PRESENCE', channel, users: presenceUsers(member.schoolKey, channel) });
       return true;
     }
     if (type === 'SCHOOLCHAT_UNSUBSCRIBE') {

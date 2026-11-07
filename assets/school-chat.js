@@ -19,6 +19,8 @@
     let channels = [{ id: SCHOOL, name: "학교" }];
     let active = SCHOOL;
     let messagesBy = { [SCHOOL]: [] };
+    let presenceBy = {};        // 채널 -> Map(계정 -> 접속자): 지금 그 채널에 들어와 있는 사람
+    let peopleOpen = true;
     let unreadBy = {};
     let logMode = false;        // 선생님: 지운 줄까지 보이는 기록 보기
     let logChannel = SCHOOL;
@@ -55,7 +57,10 @@
             .sc-tabs .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d8352d;margin-left:5px}
             .sc-rooms{display:none;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
             .sc-rooms.open{display:block}
-            .sc-rooms .row{display:grid;grid-template-columns:1fr auto;gap:6px;margin-bottom:6px}
+            .sc-panel{text-align:left}
+            .sc-rooms .row{display:grid;grid-template-columns:1fr 76px;gap:6px;margin-bottom:6px}
+            .sc-rooms .row button{width:100%;padding:6px 4px}
+            .sc-rooms .row .wide{grid-column:1/-1}
             .sc-rooms input,.sc-form input{min-width:0;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit;outline:none}
             .sc-rooms input:focus,.sc-form input:focus{border-color:#f0d77c}
             .sc-rooms select{width:100%;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit}
@@ -75,6 +80,11 @@
             .sc-video{position:relative;width:96px;height:72px;background:#0a0d12;border:1px solid rgba(255,255,255,.16);overflow:hidden}
             .sc-video video{width:100%;height:100%;object-fit:cover;display:block}
             .sc-video span{position:absolute;left:0;right:0;bottom:0;padding:1px 4px;font-size:10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#e9edf3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+            .sc-people{padding:5px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
+            .sc-people .sum{width:100%;display:flex;justify-content:space-between;background:none;border:none;color:#cfd8e3;padding:0;font:inherit;font-size:12px;cursor:pointer}
+            .sc-people-list{display:flex;flex-wrap:wrap;gap:2px 10px;max-height:86px;overflow-y:auto;margin-top:4px;font-size:12px;color:#c3cddb}
+            .sc-people-list .t{color:#f0d77c}
+            .sc-people-list .me{color:#8fe0a8}
             .sc-list{flex:1;overflow-y:auto;padding:8px 10px;user-select:text}
             .sc-empty{color:#8794a6;padding:6px 0}
             .sc-msg{margin-bottom:7px;overflow-wrap:anywhere}
@@ -175,6 +185,24 @@
         ui.leaveButton.style.display = !logMode && info && info.code ? "" : "none";
     }
 
+    // 접속자 목록: 선생님 먼저, 그다음 학년·반·이름 순
+    function renderPeople() {
+        if (!ui.people) return;
+        const users = logMode ? [] : [...(presenceBy[active] ? presenceBy[active].values() : [])];
+        ui.people.style.display = logMode ? "none" : "";
+        users.sort((a, b) =>
+            (b.role === "teacher") - (a.role === "teacher")
+            || (a.grade || 99) - (b.grade || 99) || (a.classNumber || 99) - (b.classNumber || 99)
+            || String(a.name).localeCompare(String(b.name), "ko"));
+        ui.peopleSum.firstChild.textContent = `접속 ${users.length}명`;
+        ui.peopleCaret.textContent = peopleOpen ? "▾" : "▸";
+        ui.peopleList.style.display = peopleOpen ? "" : "none";
+        ui.peopleList.replaceChildren(...users.map(user => {
+            const mine = me && user.userId === me.userId;
+            return el("span", `${user.role === "teacher" ? "t" : ""}${mine ? " me" : ""}`.trim(), `${labelFor(user)}${mine ? " (나)" : ""}`);
+        }));
+    }
+
     function render() {
         renderTabs();
         renderHead();
@@ -184,6 +212,7 @@
         const shown = (logMode ? logMessages : (messagesBy[channelId] || [])).slice(-MAX_SHOWN);
         list.replaceChildren(...(shown.length ? shown.map(message => renderMessage(message, channelId)) : [el("div", "sc-empty", "아직 메시지가 없어요.")]));
         if (nearBottom) list.scrollTop = list.scrollHeight;
+        renderPeople();
         updateBadge();
     }
 
@@ -234,7 +263,7 @@
         if (!callScript) {
             callScript = new Promise(resolve => {
                 const script = document.createElement("script");
-                script.src = "/assets/school-call.js?v=20261107-first";
+                script.src = "/assets/school-call.js?v=20261107-help";
                 script.onload = () => resolve(Boolean(window.SchoolCall));
                 script.onerror = () => resolve(false);
                 document.head.appendChild(script);
@@ -317,6 +346,8 @@
                     if (packet.type === "SCHOOLCHAT_JOINED") {
                         channels = packet.channels || channels;
                         messagesBy = packet.history || {};
+                        presenceBy = {};
+                        for (const [channelId, users] of Object.entries(packet.presence || {})) presenceBy[channelId] = new Map(users.map(user => [user.userId, user]));
                         for (const channel of channels) messagesBy[channel.id] = messagesBy[channel.id] || [];
                         if (!channelInfo(active)) active = SCHOOL;
                         render();
@@ -325,6 +356,14 @@
                         try { remembered = sessionStorage.getItem(CALL_TAB_KEY); } catch (_) {}
                         if (call && call.inCall()) call.rejoin();
                         else if (remembered && channelInfo(remembered)) startCall(remembered);
+                    } else if (packet.type === "SCHOOLCHAT_PRESENCE") {
+                        presenceBy[packet.channel] = new Map((packet.users || []).map(user => [user.userId, user]));
+                        renderPeople();
+                    } else if (packet.type === "SCHOOLCHAT_PRESENCE_DELTA") {
+                        const users = presenceBy[packet.channel] = presenceBy[packet.channel] || new Map();
+                        if (packet.joined) users.set(packet.joined.userId, packet.joined);
+                        if (packet.left) users.delete(packet.left);
+                        renderPeople();
                     } else if (packet.type === "SCHOOLCHAT_HISTORY") {
                         messagesBy[packet.channel] = packet.messages || [];
                         render();
@@ -351,9 +390,8 @@
     }
 
     async function createRoom() {
-        const result = await api("rooms", "POST", { name: ui.roomName.value });
+        const result = await api("rooms", "POST", {});
         if (!result.ok) return setStatus(roomError(result.data));
-        ui.roomName.value = "";
         addChannel(result.data.channel);
         ui.rooms.classList.remove("open");
         switchTo(result.data.channel.id);
@@ -382,7 +420,7 @@
 
     function roomError(data) {
         const messages = {
-            TOO_MANY_OWNED_ROOMS: "방은 3개까지 만들 수 있어요.", TOO_MANY_JOINED_ROOMS: "들어갈 수 있는 방은 8개까지예요.",
+            ALREADY_IN_ROOM: "이미 다른 방에 있어요. 먼저 그 방에서 나가세요.",
             ROOM_NOT_FOUND: "방을 찾지 못했어요. 번호를 확인하세요.", CODE_REQUIRED: "4자리 방 번호를 입력하세요.",
             NO_FREE_ROOM_CODE: "지금은 새 방을 만들 수 없어요."
         };
@@ -448,13 +486,10 @@
 
         ui.rooms = el("div", "sc-rooms");
         const createRow = el("div", "row");
-        ui.roomName = el("input");
-        ui.roomName.maxLength = 20;
-        ui.roomName.placeholder = "새 방 이름";
-        const createButton = el("button", "", "만들기");
+        const createButton = el("button", "wide", "내 방 만들기");   // 방 이름은 서버가 "○○의 방"으로 붙인다
         createButton.type = "button";
         createButton.addEventListener("click", createRoom);
-        createRow.append(ui.roomName, createButton);
+        createRow.append(createButton);
         const joinRow = el("div", "row");
         ui.roomCode = el("input");
         ui.roomCode.maxLength = 4;
@@ -505,7 +540,18 @@
         form.append(ui.input, submit);
         form.addEventListener("submit", event => { event.preventDefault(); send(); });
 
-        panel.append(head, ui.tabs, ui.rooms, ui.logChannelRow, ui.callBox, ui.list, ui.status, form);
+        // 접속자 목록(배틀넷처럼 지금 이 채널에 누가 있는지)
+        ui.people = el("div", "sc-people");
+        ui.peopleSum = el("button", "sum");
+        ui.peopleSum.type = "button";
+        ui.peopleSum.append(document.createTextNode("접속 0명"));
+        ui.peopleCaret = el("span", "", "▾");
+        ui.peopleSum.appendChild(ui.peopleCaret);
+        ui.peopleSum.addEventListener("click", () => { peopleOpen = !peopleOpen; renderPeople(); });
+        ui.peopleList = el("div", "sc-people-list");
+        ui.people.append(ui.peopleSum, ui.peopleList);
+
+        panel.append(head, ui.tabs, ui.rooms, ui.logChannelRow, ui.callBox, ui.people, ui.list, ui.status, form);
         const setOpen = value => {
             open = value;
             panel.classList.toggle("open", open);

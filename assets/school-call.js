@@ -130,6 +130,16 @@
             changed();
         }
 
+        // 한 번 "차단"하면 사이트는 다시 물을 수 없다. 막힌 경우에만 풀어 주는 법을 알려 준다
+        // (크롬은 막힌 사이트의 주소창에 마이크·카메라 모양 표시를 띄운다).
+        async function permissionHelp(name, label) {
+            let state = null;
+            try { state = (await navigator.permissions.query({ name })).state; } catch (_) {}
+            return state === "denied"
+                ? `${label}가 막혀 있어요. 주소창 왼쪽의 ${label} 모양(또는 자물쇠)을 눌러 '허용'으로 바꾸고 새로고침해 주세요.`
+                : `${label}를 쓰려면 허락 창에서 '허용'을 눌러 주세요.`;
+        }
+
         async function toggleMic() {
             if (!channel) return;
             if (!micOn) {
@@ -137,7 +147,7 @@
                     try {
                         const media = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
                         audioTrack = media.getAudioTracks()[0];
-                    } catch (_) { return setStatus("마이크를 쓸 수 있게 허락해 주세요."); }
+                    } catch (_) { return setStatus(await permissionHelp("microphone", "마이크")); }
                     for (const peer of peers.values()) if (peer.audioTransceiver) peer.audioTransceiver.sender.replaceTrack(audioTrack).catch(() => {});
                 }
                 audioTrack.enabled = true;
@@ -172,7 +182,7 @@
             } catch (_) {
                 wantCam = false;
                 send({ type: "SCHOOLCHAT_CAM", channel, on: false });
-                return setStatus("카메라를 쓸 수 있게 허락해 주세요.");
+                return setStatus(await permissionHelp("camera", "카메라"));
             }
             for (const peer of peers.values()) if (peer.videoTransceiver) attachVideo(peer.videoTransceiver);
             changed();
