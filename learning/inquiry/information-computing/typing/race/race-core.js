@@ -58,6 +58,14 @@
   }
   // 한/영 키가 영어로 되어 있을 때 친 글자(qjfduTek)를 두벌식 자판대로 한글(벌였다)로 바꾼다.
   const DUBEOL = { q: 'ㅂ', w: 'ㅈ', e: 'ㄷ', r: 'ㄱ', t: 'ㅅ', y: 'ㅛ', u: 'ㅕ', i: 'ㅑ', o: 'ㅐ', p: 'ㅔ', a: 'ㅁ', s: 'ㄴ', d: 'ㅇ', f: 'ㄹ', g: 'ㅎ', h: 'ㅗ', j: 'ㅓ', k: 'ㅏ', l: 'ㅣ', z: 'ㅋ', x: 'ㅌ', c: 'ㅊ', v: 'ㅍ', b: 'ㅠ', n: 'ㅜ', m: 'ㅡ', Q: 'ㅃ', W: 'ㅉ', E: 'ㄸ', R: 'ㄲ', T: 'ㅆ', O: 'ㅒ', P: 'ㅖ' };
+  // 거꾸로: 한/영 키가 한글일 때 영어 낱말을 치면 ㅈ댜홋처럼 찍힌다. 두벌식 자판대로 친 키(weight)를 되살린다.
+  // 입력기가 받침을 다음 글자로 넘겨도 친 키의 차례는 그대로라, 키 줄로 읽으면 낱말 경계가 흔들리지 않는다.
+  const KEY_OF = Object.fromEntries(Object.entries(DUBEOL).map(([key, jamo]) => [jamo, key]));
+  function keysFromHangul(text) {
+    let out = '';
+    for (const ch of keys(text)) for (const part of COMPAT[ch] || ch) out += KEY_OF[part] || part;
+    return out;
+  }
   const VOWELS = new Set('ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ');
   const PAIR = Object.fromEntries(Object.entries(COMPAT).map(([joined, parts]) => [parts, joined]));
   function hangulFromKeys(text) {
@@ -126,5 +134,5 @@
         String(a.name).localeCompare(String(b.name), 'ko'),
     );
   }
-  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, strokes, clash, onTrack, multiplier, itemScore, ORDER_BONUS, orderBonus, claimScore, boardSize, HOLD_MS, accuracy, rank };
+  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, keysFromHangul, strokes, clash, onTrack, multiplier, itemScore, ORDER_BONUS, orderBonus, claimScore, boardSize, HOLD_MS, accuracy, rank };
 });

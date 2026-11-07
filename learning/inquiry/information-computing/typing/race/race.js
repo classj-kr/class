@@ -12,7 +12,7 @@
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   let localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
   // skip: 칸 앞쪽에서 이미 받은 낱말이 차지한 글자 수. 조합 중인 칸은 비우지 않고(IME가 끝 글자를 다시 붙인다) 이만큼 건너뛰어 읽는다.
-  let sendChain = Promise.resolve(), skip = 0, composing = false, muted = false;
+  let sendChain = Promise.resolve(), skip = 0, skipKeys = 0, composing = false, muted = false;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', lastRank = null;
   const prevScores = new Map();
   const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2 };
@@ -353,6 +353,7 @@
       $('track').innerHTML = '';
       input.value = '';
       skip = 0;
+      skipKeys = 0;
       paintTyped();
       document.body.classList.remove('fever');
       document.body.classList.toggle('sentence-mode', C.MODES[s.config.mode].sentence);
@@ -582,16 +583,32 @@
   // ── 입력 ─────────────────────────────────────────
   const sentenceMode = () => Boolean(state && C.MODES[state.config.mode].sentence);
   // 화면에 보이는 입력 글자: 받은 낱말 몫(skip)을 뺀 나머지. 실제 칸 글자는 투명하고 위에 이것만 그린다.
+  // 영어 판은 친 키 줄로 읽는다: 한/영 키가 한글이라 ㅈ댜홋처럼 찍혀도 weight로 받는다(칸은 건드리지 않는다).
+  const englishBoard = () => Boolean(state && C.MODES[state.config.mode].lang === 'en');
+  let enNoted = '';
+  // 칸이 잠깐 짧아져도(입력기가 받침을 떼어 다음 글자로 옮기는 사이) 경계는 그대로 둔다. 지우기 키를 눌렀을 때만 줄인다(shrinkSkip).
   function typedText() {
-    if (input.value.length < skip) skip = input.value.length;
-    return input.value.slice(skip);
+    if (!englishBoard()) return input.value.slice(Math.min(skip, input.value.length));
+    const stream = C.keysFromHangul(input.value);
+    if (stream !== input.value && enNoted !== state.roundId) { enNoted = state.roundId; toast('한/영 키가 한글로 되어 있어서 영어로 바꿔 받고 있어요.'); }
+    return stream.slice(Math.min(skipKeys, stream.length));
+  }
+  function shrinkSkip() {
+    skip = Math.min(skip, input.value.length);
+    skipKeys = Math.min(skipKeys, C.keysFromHangul(input.value).length);
   }
   function paintTyped() { $('typed').textContent = typedText().replace(/[\r\n]/g, ''); }
-  // 조합이 끝난 뒤에만 받은 낱말 몫을 칸에서 실제로 지운다.
+  // 조합이 끝난 뒤에만 받은 낱말 몫을 칸에서 실제로 지운다. 영어 판은 받은 키 수가 글자 경계와 맞을 때만 자른다
+  // (받침이 다음 글자로 넘어가 한 글자에 두 낱말의 키가 섞여 있으면 그대로 둔다).
   function tidy() {
     if (!skip || composing) return;
-    input.value = input.value.slice(skip);
-    skip = 0;
+    if (!englishBoard()) { if (input.value.length >= skip) { input.value = input.value.slice(skip); skip = 0; skipKeys = 0; } return; }
+    for (let cut = 0; cut <= input.value.length; cut++) {
+      if (C.keysFromHangul(input.value.slice(0, cut)).length !== skipKeys) continue;
+      input.value = input.value.slice(cut);
+      skip = 0; skipKeys = 0;
+      return;
+    }
   }
   function normalized() {
     const v = typedText().replace(/[\r\n]/g, '');
@@ -638,8 +655,8 @@
   // 다 친 낱말을 칸에서 지운다. 끝 글자가 아직 조합 중이면 칸을 건드리지 않고(비우면 IME가 그 글자를 다시 붙여
   // 앞 낱말 끝 글자가 남는다) 그 길이만큼 건너뛰어 읽는다. 조합이 끝나면 tidy()가 실제로 지운다.
   function clearField() {
-    if (composing && document.activeElement === input) skip = input.value.length;
-    else { input.value = ''; skip = 0; }
+    if (composing && document.activeElement === input) { skip = input.value.length; skipKeys = C.keysFromHangul(input.value).length; }
+    else { input.value = ''; skip = 0; skipKeys = 0; }
     paintTyped();
   }
   function floatAtCard(text, cls) {
@@ -702,6 +719,7 @@
   input.addEventListener('input', (e) => {
     if (muted) return;
     composing = e.isComposing;
+    if (e.inputType?.startsWith('delete')) shrinkSkip();
     if (!composing) { tidy(); fixHanEn(); }
     if (e.inputType !== 'deleteContentBackward') sfx.key();
     check();
@@ -732,7 +750,6 @@
     resultShown = key;
     playMusic('lobby');
     if (first) setTimeout(() => confetti(), 200);
-    const minutes = s.config.duration / 60;
     const teams = (s.teams || []).filter((t) => t.size).sort((a, b) => a.rank - b.rank);
     $('teamResult').hidden = !teams.length;
     $('soloTitle').hidden = !teams.length;
@@ -762,20 +779,21 @@
       div.className = 'step place-' + place + (p ? '' : ' empty');
       div.style.setProperty('--delay', [0.5, 1.1, 0.2][i] + 's');
       if (p) {
-        div.innerHTML = '<span class="pod-racer"></span><b class="pod-name"></b><span class="pod-score"></span><div class="block"></div>';
+        // 아바타는 단 위에 바로 서고 이름·점수는 단 안에 적는다(사이가 비면 공중에 떠 보인다).
+        div.innerHTML = '<span class="pod-racer"></span><div class="block"><b class="pod-place"></b><b class="pod-name"></b><span class="pod-score"></span></div>';
         div.querySelector('.pod-racer').append(face(p, 'pod-face'));
         if (place === 1) div.querySelector('.pod-racer').classList.add('crowned');
         div.querySelector('.pod-name').textContent = p.name;
         div.querySelector('.pod-score').textContent = p.score + '점';
-      } else div.innerHTML = '<div class="block"></div>';
-      div.querySelector('.block').textContent = place;
+      } else div.innerHTML = '<div class="block"><b class="pod-place"></b></div>';
+      div.querySelector('.pod-place').textContent = place;
       return div;
     }));
     $('resultRows').replaceChildren(...s.participants.map((p) => {
       const tr = document.createElement('tr');
       tr.className = p.id === s.me.id ? 'mine' : '';
       const team = s.teams && p.team !== null ? s.teams[p.team] : null;
-      for (const value of [p.rank, `${team ? team.emoji + ' ' : ''}${p.name}`, p.score, Math.round(p.strokes / minutes), p.accuracy + '%', p.bestCombo]) {
+      for (const value of [p.rank, `${team ? team.emoji + ' ' : ''}${p.name}`, p.score, p.accuracy + '%', p.bestCombo]) {
         const td = document.createElement('td');
         td.textContent = value;
         tr.append(td);
@@ -787,7 +805,7 @@
     const myTeam = mine && s.teams && mine.team !== null ? s.teams[mine.team] : null;
     $('myResult').textContent = !mine ? '' : myTeam
       ? `${myTeam.emoji} 우리 팀 ${myTeam.rank}위${myTeam.rank === 1 ? '! 🎉' : ''} · 나는 ${mine.score}점 (${mine.rank}위)`
-      : `${mine.racer} 나는 ${mine.rank}위! ${mine.score}점 · ${Math.round(mine.strokes / minutes)}타/분`;
+      : `${mine.avatarUrl ? '' : mine.racer + ' '}나는 ${mine.rank}위! ${mine.score}점`;
   }
 
   // ── 시계 (카운트다운·남은 시간) ─────────────────────
