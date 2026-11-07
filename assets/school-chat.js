@@ -1,20 +1,28 @@
 (() => {
     "use strict";
     // 학교 공용 채팅 위젯. 같은 학교 학생·교사만 쓴다(게스트는 입장권을 못 받아 아무것도 안 뜬다).
-    // 서버가 학교 이름을 내려 주지 않으므로 화면에도 학교 이름은 없다.
+    // 채널: 학교 전체방 + 학생들이 만든 방(4자리 번호). 서버가 학교 이름을 내려 주지 않으므로 화면에도 학교 이름은 없다.
     if (window.self !== window.top || window.__schoolChatLoaded) return;
     window.__schoolChatLoaded = true;
 
-    const REJECT_TEXT = { TOO_FAST: "천천히 보내 주세요.", MUTED: "잠시 채팅이 막혀 있어요.", EMPTY: "", NO_DATABASE: "지금은 채팅을 쓸 수 없어요.", ERROR: "보내지 못했어요." };
+    const REJECT_TEXT = {
+        TOO_FAST: "천천히 보내 주세요.", MUTED: "잠시 채팅이 막혀 있어요.", EMPTY: "",
+        NO_DATABASE: "지금은 채팅을 쓸 수 없어요.", NOT_MEMBER: "이 방에 들어가 있지 않아요.", NO_CHANNEL: "없는 방이에요.", ERROR: "보내지 못했어요."
+    };
     const MAX_SHOWN = 200;
+    const SCHOOL = "school";
 
     let me = null;
     let socket = null;
     let retryTimer = null;
     let open = false;
-    let unread = 0;
+    let channels = [{ id: SCHOOL, name: "학교" }];
+    let active = SCHOOL;
+    let messagesBy = { [SCHOOL]: [] };
+    let unreadBy = {};
     let logMode = false;        // 선생님: 지운 줄까지 보이는 기록 보기
-    let messages = [];
+    let logChannel = SCHOOL;
+    let logMessages = [];
     const ui = {};
 
     function el(tag, className, text) {
@@ -31,13 +39,24 @@
             .sc-toggle:hover{background:#334052}
             .sc-badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#d8352d;color:#fff;font-size:11px;line-height:18px;text-align:center}
             .sc-badge[hidden]{display:none}
-            .sc-panel{position:fixed;left:14px;bottom:70px;z-index:70;width:min(320px,calc(100vw - 28px));height:min(420px,calc(100vh - 100px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+            .sc-panel{position:fixed;left:14px;bottom:70px;z-index:70;width:min(330px,calc(100vw - 28px));height:min(440px,calc(100vh - 100px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
             .sc-panel.open{display:flex}
-            .sc-head{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
-            .sc-head span{flex:1}
-            .sc-head button{background:none;border:1px solid rgba(255,255,255,.2);color:#cfd8e3;padding:3px 8px;font-size:12px;cursor:pointer}
-            .sc-head button.on{background:#3b4a60}
+            .sc-head{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
+            .sc-head .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+            .sc-head .code{color:#f0d77c;font-weight:400;margin-left:6px}
+            .sc-head button,.sc-tabs button,.sc-rooms button{background:none;border:1px solid rgba(255,255,255,.2);color:#cfd8e3;padding:3px 8px;font-size:12px;cursor:pointer;font-family:inherit}
+            .sc-head button.on,.sc-tabs button.on{background:#3b4a60;color:#fff}
+            .sc-tabs{display:flex;gap:4px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);overflow-x:auto;white-space:nowrap}
+            .sc-tabs button{position:relative;flex:none}
+            .sc-tabs .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d8352d;margin-left:5px}
+            .sc-rooms{display:none;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
+            .sc-rooms.open{display:block}
+            .sc-rooms .row{display:grid;grid-template-columns:1fr auto;gap:6px;margin-bottom:6px}
+            .sc-rooms input,.sc-form input{min-width:0;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit;outline:none}
+            .sc-rooms input:focus,.sc-form input:focus{border-color:#f0d77c}
+            .sc-rooms select{width:100%;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit}
             .sc-list{flex:1;overflow-y:auto;padding:8px 10px;user-select:text}
+            .sc-empty{color:#8794a6;padding:6px 0}
             .sc-msg{margin-bottom:7px;overflow-wrap:anywhere}
             .sc-msg .who{color:#9fc6ee;font-weight:700;margin-right:5px}
             .sc-msg.teacher .who{color:#f0d77c}
@@ -49,8 +68,6 @@
             .sc-msg .keep{color:#f0d77c;margin-left:4px;font-size:11px}
             .sc-status{min-height:18px;padding:0 12px;color:#f0a39c;font-size:12px}
             .sc-form{display:grid;grid-template-columns:1fr auto;gap:6px;padding:8px 10px;border-top:1px solid rgba(255,255,255,.12)}
-            .sc-form input{min-width:0;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:7px 8px;font:inherit;outline:none}
-            .sc-form input:focus{border-color:#f0d77c}
             .sc-form button{background:#3b4a60;border:1px solid #55657d;color:#fff;padding:0 12px;cursor:pointer;font:inherit}
         `;
         document.head.appendChild(style);
@@ -62,18 +79,22 @@
     }
 
     function setStatus(text) { ui.status.textContent = text || ""; }
+    function channelInfo(id) { return channels.find(channel => channel.id === id); }
+    function currentChannel() { return logMode ? logChannel : active; }
 
-    async function teacherCall(path, body) {
+    async function api(path, method, body) {
         const response = await fetch(`/api/school-chat/${path}`, {
-            method: "POST", credentials: "same-origin",
-            headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {})
+            method: method || "GET", credentials: "same-origin",
+            headers: body ? { "Content-Type": "application/json" } : undefined, body: body ? JSON.stringify(body) : undefined
         });
-        if (!response.ok) setStatus("처리하지 못했어요.");
-        return response.ok;
+        let data = null;
+        try { data = await response.json(); } catch (_) {}
+        return { ok: response.ok, data };
     }
 
-    function renderMessage(message) {
-        const row = el("div", `sc-msg${message.role === "teacher" ? " teacher" : ""}${me && message.userId === me.userId ? " mine" : ""}${message.deleted ? " deleted" : ""}`);
+    function renderMessage(message, channelId) {
+        const mine = me && message.userId === me.userId;
+        const row = el("div", `sc-msg${message.role === "teacher" ? " teacher" : ""}${mine ? " mine" : ""}${message.deleted ? " deleted" : ""}`);
         row.dataset.id = message.id;
         row.appendChild(el("span", "who", labelFor(message)));
         row.appendChild(el("span", "text", message.text));
@@ -83,47 +104,102 @@
             const keep = el("button", "", message.preserved ? "보존 해제" : "보존");
             keep.type = "button";
             keep.addEventListener("click", async () => {
-                if (await teacherCall(`teacher/messages/${message.id}/preserve`, { preserved: !message.preserved })) { message.preserved = !message.preserved; render(); }
+                const result = await api(`teacher/messages/${message.id}/preserve`, "POST", { preserved: !message.preserved });
+                if (result.ok) { message.preserved = !message.preserved; render(); } else setStatus("처리하지 못했어요.");
             });
             const remove = el("button", "", "삭제");
             remove.type = "button";
             remove.addEventListener("click", async () => {
-                if (await teacherCall(`teacher/messages/${message.id}/delete`)) { message.deleted = true; if (!logMode) messages = messages.filter(item => item.id !== message.id); render(); }
-            });
-            const mute = el("button", "", "10분 막기");
-            mute.type = "button";
-            mute.addEventListener("click", async () => {
-                if (await teacherCall("teacher/mute", { userId: message.userId, minutes: 10 })) setStatus(`${message.name} 학생을 10분 막았어요.`);
+                const result = await api(`teacher/messages/${message.id}/delete`, "POST");
+                if (!result.ok) return setStatus("처리하지 못했어요.");
+                message.deleted = true;
+                if (!logMode) messagesBy[channelId] = (messagesBy[channelId] || []).filter(item => item.id !== message.id);
+                render();
             });
             tools.append(keep, remove);
-            if (message.role !== "teacher") tools.appendChild(mute);
+            if (message.role !== "teacher") {
+                const mute = el("button", "", "10분 막기");
+                mute.type = "button";
+                mute.addEventListener("click", async () => {
+                    const result = await api("teacher/mute", "POST", { userId: message.userId, minutes: 10 });
+                    setStatus(result.ok ? `${message.name} 학생을 10분 막았어요.` : "처리하지 못했어요.");
+                });
+                tools.appendChild(mute);
+            }
             row.appendChild(tools);
         }
         return row;
     }
 
-    function render() {
-        const list = ui.list;
-        const nearBottom = list.scrollHeight - list.scrollTop - list.clientHeight < 60;
-        list.replaceChildren(...messages.slice(-MAX_SHOWN).map(renderMessage));
-        if (nearBottom) list.scrollTop = list.scrollHeight;
+    function renderTabs() {
+        const tabs = ui.tabs;
+        tabs.replaceChildren();
+        for (const channel of channels) {
+            const tab = el("button", channel.id === active && !logMode ? "on" : "", channel.name);
+            tab.type = "button";
+            if (unreadBy[channel.id] && channel.id !== active) tab.appendChild(el("span", "dot"));
+            tab.addEventListener("click", () => { if (logMode) toggleLog(); switchTo(channel.id); });
+            tabs.appendChild(tab);
+        }
+        const add = el("button", ui.rooms.classList.contains("open") ? "on" : "", "+ 방");
+        add.type = "button";
+        add.setAttribute("aria-label", "방 만들기 또는 번호로 들어가기");
+        add.addEventListener("click", () => { ui.rooms.classList.toggle("open"); renderTabs(); });
+        tabs.appendChild(add);
     }
 
+    function renderHead() {
+        const info = channelInfo(active);
+        ui.titleText.textContent = logMode ? "기록" : (info ? info.name : "학교");
+        ui.code.textContent = !logMode && info && info.code ? `번호 ${info.code}` : "";
+        ui.leaveButton.style.display = !logMode && info && info.code ? "" : "none";
+    }
+
+    function render() {
+        renderTabs();
+        renderHead();
+        const list = ui.list;
+        const nearBottom = list.scrollHeight - list.scrollTop - list.clientHeight < 60;
+        const channelId = currentChannel();
+        const shown = (logMode ? logMessages : (messagesBy[channelId] || [])).slice(-MAX_SHOWN);
+        list.replaceChildren(...(shown.length ? shown.map(message => renderMessage(message, channelId)) : [el("div", "sc-empty", "아직 메시지가 없어요.")]));
+        if (nearBottom) list.scrollTop = list.scrollHeight;
+        updateBadge();
+    }
+
+    function totalUnread() { return Object.values(unreadBy).reduce((sum, count) => sum + count, 0); }
+
     function updateBadge() {
-        ui.badge.textContent = String(unread > 99 ? "99+" : unread);
-        ui.badge.hidden = unread === 0;
+        const total = totalUnread();
+        ui.badge.textContent = total > 99 ? "99+" : String(total);
+        ui.badge.hidden = total === 0;
+    }
+
+    function switchTo(channelId) {
+        active = channelId;
+        unreadBy[channelId] = 0;
+        setStatus("");
+        render();
+        ui.list.scrollTop = ui.list.scrollHeight;
     }
 
     function onEvent(event) {
+        const channelId = event.channel || SCHOOL;
         if (event.type === "message") {
-            if (logMode) return;
-            messages.push(event.message);
-            if (!open && !(me && event.message.userId === me.userId)) { unread += 1; updateBadge(); }
+            (messagesBy[channelId] = messagesBy[channelId] || []).push(event.message);
+            const mine = me && event.message.userId === me.userId;
+            if (!mine && (!open || channelId !== active || logMode)) unreadBy[channelId] = (unreadBy[channelId] || 0) + 1;
             render();
-        } else if (event.type === "deleted" && !logMode) {
-            messages = messages.filter(item => item.id !== event.id);
+        } else if (event.type === "deleted") {
+            messagesBy[channelId] = (messagesBy[channelId] || []).filter(item => item.id !== event.id);
             render();
         }
+    }
+
+    function sendPacket(packet) {
+        if (!socket || socket.readyState !== WebSocket.OPEN) return false;
+        socket.send(JSON.stringify(packet));
+        return true;
     }
 
     function connect() {
@@ -140,7 +216,14 @@
                     let packet;
                     try { packet = JSON.parse(event.data); } catch (_) { return; }
                     if (packet.type === "SCHOOLCHAT_JOINED") {
-                        if (!logMode) { messages = packet.history || []; render(); }
+                        channels = packet.channels || channels;
+                        messagesBy = packet.history || {};
+                        for (const channel of channels) messagesBy[channel.id] = messagesBy[channel.id] || [];
+                        if (!channelInfo(active)) active = SCHOOL;
+                        render();
+                    } else if (packet.type === "SCHOOLCHAT_HISTORY") {
+                        messagesBy[packet.channel] = packet.messages || [];
+                        render();
                     } else if (packet.type === "SCHOOLCHAT_EVENT") onEvent(packet.event);
                     else if (packet.type === "SCHOOLCHAT_REJECTED") setStatus(REJECT_TEXT[packet.reason] ?? "보내지 못했어요.");
                     else if (packet.type === "SCHOOLCHAT_AUTH_REQUIRED") socket.close();
@@ -152,23 +235,75 @@
 
     function send() {
         const text = ui.input.value.trim();
-        if (!text || !socket || socket.readyState !== WebSocket.OPEN) return;
+        if (!text || logMode) return;
         setStatus("");
-        socket.send(JSON.stringify({ type: "SCHOOLCHAT_SEND", text }));
-        ui.input.value = "";
+        if (sendPacket({ type: "SCHOOLCHAT_SEND", channel: active, text })) ui.input.value = "";
+    }
+
+    function addChannel(channel) {
+        if (!channelInfo(channel.id)) channels.push(channel);
+        messagesBy[channel.id] = messagesBy[channel.id] || [];
+        sendPacket({ type: "SCHOOLCHAT_SUBSCRIBE", channel: channel.id });
+    }
+
+    async function createRoom() {
+        const result = await api("rooms", "POST", { name: ui.roomName.value });
+        if (!result.ok) return setStatus(roomError(result.data));
+        ui.roomName.value = "";
+        addChannel(result.data.channel);
+        ui.rooms.classList.remove("open");
+        switchTo(result.data.channel.id);
+    }
+
+    async function joinRoom() {
+        const result = await api("rooms/join", "POST", { code: ui.roomCode.value });
+        if (!result.ok) return setStatus(roomError(result.data));
+        ui.roomCode.value = "";
+        addChannel(result.data.channel);
+        ui.rooms.classList.remove("open");
+        switchTo(result.data.channel.id);
+    }
+
+    async function leaveRoom() {
+        const info = channelInfo(active);
+        if (!info || !info.code) return;
+        const result = await api(`rooms/${info.code}/leave`, "POST");
+        if (!result.ok) return setStatus("나가지 못했어요.");
+        sendPacket({ type: "SCHOOLCHAT_UNSUBSCRIBE", channel: info.id });
+        channels = channels.filter(channel => channel.id !== info.id);
+        delete messagesBy[info.id];
+        switchTo(SCHOOL);
+    }
+
+    function roomError(data) {
+        const messages = {
+            TOO_MANY_OWNED_ROOMS: "방은 3개까지 만들 수 있어요.", TOO_MANY_JOINED_ROOMS: "들어갈 수 있는 방은 8개까지예요.",
+            ROOM_NOT_FOUND: "방을 찾지 못했어요. 번호를 확인하세요.", CODE_REQUIRED: "4자리 방 번호를 입력하세요.",
+            NO_FREE_ROOM_CODE: "지금은 새 방을 만들 수 없어요."
+        };
+        return messages[data && data.error] || "처리하지 못했어요.";
+    }
+
+    async function loadLog(channelId) {
+        logChannel = channelId;
+        const result = await api(`teacher/messages?channel=${encodeURIComponent(channelId)}`);
+        logMessages = result.ok ? result.data.messages : [];
+        render();
     }
 
     async function toggleLog() {
         logMode = !logMode;
         ui.logButton.classList.toggle("on", logMode);
+        ui.logChannelRow.style.display = logMode ? "" : "none";
         if (logMode) {
-            const response = await fetch("/api/school-chat/teacher/messages", { credentials: "same-origin" });
-            if (response.ok) messages = (await response.json()).messages;
-        } else if (socket && socket.readyState === WebSocket.OPEN) {
-            // 실시간 보기로 돌아가면 접속할 때처럼 최근 대화를 다시 받는다.
-            socket.close();
+            const rooms = await api("teacher/rooms");
+            const options = [{ id: SCHOOL, name: "학교 전체방" }, ...(rooms.ok ? rooms.data.rooms.map(room => ({ id: room.id, name: `${room.name} (${room.code})` })) : [])];
+            ui.logChannel.replaceChildren(...options.map(option => { const node = el("option", "", option.name); node.value = option.id; return node; }));
+            ui.logChannel.value = logChannel;
+            await loadLog(options.some(option => option.id === logChannel) ? logChannel : SCHOOL);
+        } else {
+            render();
         }
-        render();
     }
 
     function buildUi() {
@@ -179,9 +314,19 @@
         ui.badge = el("span", "sc-badge", "0");
         ui.badge.hidden = true;
         toggle.appendChild(ui.badge);
+
         const panel = el("div", "sc-panel");
         const head = el("div", "sc-head");
-        head.appendChild(el("span", "", "채팅"));
+        ui.title = el("span", "title");
+        ui.titleText = el("span");
+        ui.code = el("span", "code");
+        ui.title.append(ui.titleText, ui.code);
+        head.appendChild(ui.title);
+        ui.leaveButton = el("button", "", "나가기");
+        ui.leaveButton.type = "button";
+        ui.leaveButton.style.display = "none";
+        ui.leaveButton.addEventListener("click", leaveRoom);
+        head.appendChild(ui.leaveButton);
         if (me.role === "teacher") {
             ui.logButton = el("button", "", "기록");
             ui.logButton.type = "button";
@@ -191,6 +336,36 @@
         const close = el("button", "", "닫기");
         close.type = "button";
         head.appendChild(close);
+
+        ui.tabs = el("div", "sc-tabs");
+
+        ui.rooms = el("div", "sc-rooms");
+        const createRow = el("div", "row");
+        ui.roomName = el("input");
+        ui.roomName.maxLength = 20;
+        ui.roomName.placeholder = "새 방 이름";
+        const createButton = el("button", "", "만들기");
+        createButton.type = "button";
+        createButton.addEventListener("click", createRoom);
+        createRow.append(ui.roomName, createButton);
+        const joinRow = el("div", "row");
+        ui.roomCode = el("input");
+        ui.roomCode.maxLength = 4;
+        ui.roomCode.inputMode = "numeric";
+        ui.roomCode.placeholder = "방 번호 4자리";
+        ui.roomCode.addEventListener("input", () => { ui.roomCode.value = ui.roomCode.value.replace(/\D/g, "").slice(0, 4); });
+        const joinButton = el("button", "", "들어가기");
+        joinButton.type = "button";
+        joinButton.addEventListener("click", joinRoom);
+        joinRow.append(ui.roomCode, joinButton);
+        ui.rooms.append(createRow, joinRow);
+
+        ui.logChannelRow = el("div", "sc-rooms open");
+        ui.logChannelRow.style.display = "none";
+        ui.logChannel = el("select");
+        ui.logChannel.addEventListener("change", () => loadLog(ui.logChannel.value));
+        ui.logChannelRow.appendChild(ui.logChannel);
+
         ui.list = el("div", "sc-list");
         ui.status = el("div", "sc-status");
         const form = el("form", "sc-form");
@@ -202,15 +377,17 @@
         submit.type = "submit";
         form.append(ui.input, submit);
         form.addEventListener("submit", event => { event.preventDefault(); send(); });
-        panel.append(head, ui.list, ui.status, form);
+
+        panel.append(head, ui.tabs, ui.rooms, ui.logChannelRow, ui.list, ui.status, form);
         const setOpen = value => {
             open = value;
             panel.classList.toggle("open", open);
-            if (open) { unread = 0; updateBadge(); ui.list.scrollTop = ui.list.scrollHeight; ui.input.focus(); }
+            if (open) { unreadBy[active] = 0; render(); ui.list.scrollTop = ui.list.scrollHeight; ui.input.focus(); }
         };
         toggle.addEventListener("click", () => setOpen(!open));
         close.addEventListener("click", () => setOpen(false));
         document.body.append(toggle, panel);
+        render();
     }
 
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", connect);
