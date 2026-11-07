@@ -472,6 +472,9 @@ body:not([data-screen="race"]) .topbar .room-badge { margin-left: auto; }
   .topbar .hud { order: 5; flex-basis: 100%; max-width: none; }
   body[data-screen="race"] .topbar .room-badge { margin-left: auto; }
 }
+body[data-screen="race"] main { padding-bottom: 12px; }
+/* 여러 번 만에 맞힌 뒤 잠깐 뜨는 풀이는 카드 아래쪽 보기 위에 겹쳐 띄워, 카드가 늘어나 화면이 넘치지 않게 한다. */
+.q-card .reveal { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 2; box-shadow: 0 8px 24px rgba(60, 40, 20, .18); }
 /* 시상대: 아바타가 단 위에 바로 서고, 이름·점수는 단 안에. */
 .step { gap: 0; }
 .step .block { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; padding: 8px 6px 0; }
@@ -504,6 +507,46 @@ body:not([data-screen="race"]) .topbar .room-badge { margin-left: auto; }
   .topbar { gap: 6px; padding-right: 64px; }
   .chip-button, .room-badge { padding: 6px 10px; font-size: 14px; }
   .banner { font-size: 16px; top: 70px; }
+}
+
+/* 한자: 묻는 한자는 크게, 보기는 밑줄 낱말만 굵고 진하게(앞뒤 말은 조금 옅게) */
+.q-text.hanja { text-align: center; font-family: "Noto Serif KR", "Batang", "바탕", "AppleMyungjo", serif; font-size: clamp(44px, 7vw, 58px); font-weight: 700; line-height: 1.05; }
+.q-text.hanja small { font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; font-size: 0.42em; font-weight: 800; color: var(--ink-soft); margin-left: 0.1em; vertical-align: 0.3em; }
+.q-card[data-set="hanja"] .choice { min-height: 56px; font-size: clamp(16px, 2.2vw, 19px); font-weight: 600; color: #54483e; line-height: 1.45; }
+.choice u { color: var(--ink); font-weight: 900; text-decoration: underline 3px var(--blue); text-underline-offset: 0.22em; text-decoration-skip-ink: none; }
+/* 맞힌 말 칸이 긴 말(문장 고르기의 문장)에 밀려 옆 칸·화면 밖으로 넓어지지 않게: 칸 너비에서 말을 줄인다. */
+.side, .side > * { min-width: 0; }
+/* 문장 고르기: 번호 문단은 번호마다 줄을 바꾸고, 보기 문장은 조금 작게. ①~⑤ 보기 다섯은 한 줄에 나란히 */
+.q-card[data-set="sentences"] .q-text { white-space: pre-line; }
+.q-card[data-set="sentences"] .q-text.long { font-weight: 700; line-height: 1.6; }
+.q-card[data-set="sentences"] .choice { font-size: clamp(16px, 2.2vw, 19px); line-height: 1.45; }
+.choices.tiny { grid-template-columns: repeat(auto-fit, minmax(52px, 1fr)); }
+.choices.tiny .choice { justify-content: center; padding: 10px 4px; font-size: 26px; }
+.choices.tiny kbd { display: none; }
+/* 한자 단계 1~25: 숫자 단추를 촘촘한 칸에 */
+.stage-field .option-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 6px; }
+.stage-field .option.small { padding: 7px 0; text-align: center; }
+
+/* 팀이 일곱·여덟이면 대기실 팀 칸과 결과 카드는 넷씩(좁은 화면은 둘씩).
+   경주 중 팀 막대는 다섯 팀부터 두 단으로 놓아 문제 카드가 아래로 밀려나지 않게 한다. */
+.team-columns[data-count="7"], .team-columns[data-count="8"],
+.team-result[data-count="7"], .team-result[data-count="8"] { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.team-result[data-count="7"] .team-card, .team-result[data-count="8"] .team-card { min-width: 0; }
+.team-bar:is([data-count="5"], [data-count="6"], [data-count="7"], [data-count="8"]) { grid-template-columns: 1fr 1fr; column-gap: 28px; }
+@media (min-width: 861px) {
+  /* 넓은 화면은 두 줄 안에: 다섯·여섯 팀은 세 단, 일곱·여덟 팀은 네 단 */
+  .team-bar:is([data-count="5"], [data-count="6"]) { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 22px; }
+  .team-bar:is([data-count="7"], [data-count="8"]) { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 18px; }
+  .team-bar:is([data-count="5"], [data-count="6"], [data-count="7"], [data-count="8"]) .team-row { grid-template-columns: auto minmax(30px, 1fr) 36px; gap: 8px; }
+}
+@media (max-width: 860px) {
+  .team-columns[data-count="7"], .team-columns[data-count="8"],
+  .team-result[data-count="7"], .team-result[data-count="8"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .team-bar:is([data-count="5"], [data-count="6"], [data-count="7"], [data-count="8"]) { column-gap: 12px; row-gap: 4px; }
+  .team-bar:is([data-count="5"], [data-count="6"], [data-count="7"], [data-count="8"]) .team-row { grid-template-columns: auto minmax(20px, 1fr) 28px; gap: 6px; font-size: 14px; }
+  .team-bar:is([data-count="5"], [data-count="6"], [data-count="7"], [data-count="8"]) .team-fill { height: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }

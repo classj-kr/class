@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" />
     <title>글씨 쓰기</title>
-    <link rel="stylesheet" href="styles.css?v=20261107-pen-m-1300" />
+    <link rel="stylesheet" href="styles.css?v=20261107-race-show" />
   </head>
   <body>
     <main class="app">
@@ -42,8 +42,19 @@
             ><button data-phase="solo" aria-pressed="false">혼자 쓰기</button>
           </div>
         </div>
+        <!-- 순위전 화면에서만: 방번호·남은 시간·제출 줄. 이 줄 하나로 위쪽 띠를 따로 두지 않는다. -->
+        <div id="raceBar" class="race-bar" hidden>
+          <span id="roomChip" class="room-chip" hidden>방 <b id="codeLabel"></b></span>
+          <div id="raceClock" class="race-clock" hidden>
+            <span class="clock-bar"><i id="clockFill"></i></span><strong id="clockText">5:00</strong>
+          </div>
+          <div class="race-actions">
+            <button id="submitRound" class="primary submit-round" hidden>제출</button
+            ><button id="stopRound" hidden>마치기</button
+            ><button id="leaveRoom" hidden>나가기</button>
+          </div>
+        </div>
         <div class="topbar-end">
-          <a class="room-link" href="race/">순위전</a>
           <details id="settingsMenu" class="settings-menu">
             <summary>설정</summary>
             <div class="settings-content">
@@ -79,48 +90,56 @@
         ><textarea id="customText" rows="1" maxlength="80" placeholder="연습할 한글을 넣으세요"></textarea
         ><button type="submit">적용</button>
       </form>
-      <section id="roomPanel" class="room-panel" hidden aria-labelledby="roomTitle">
-        <div id="roomHeading" class="room-heading">
-          <h2 id="roomTitle">순위전</h2>
-          <a href="/room/">방번호 입력</a>
-        </div>
-        <div id="roomSettings" class="room-actions" hidden>
-          <select id="raceSource" aria-label="순위전 글감">
-            <option value="custom">직접 넣기</option>
-            <option value="proverbs">속담</option>
-            <option value="idioms">한자성어</option>
-            <option value="expressions">관용어</option></select
-          ><input id="raceText" value="가나다" maxlength="40" aria-label="쓸 글" aria-describedby="raceRule" /><button
-            id="raceAnother"
-            type="button"
-            hidden
-          >다른 문구</button
-          ><select id="raceMode" aria-label="순위전 쓰기 모드">
-            <option value="trace">따라 쓰기</option>
-            <option value="solo">혼자 쓰기</option></select
-          ><small id="raceRule">한글 1~24자 · 5분 · 점수 = 모양 × 획순</small>
-          <label id="spectateRow" class="check" hidden><input id="spectateInput" type="checkbox" /> 나는 참여하지 않고 관전하기</label>
-        </div>
+      <section id="roomPanel" class="room-panel" hidden aria-label="순위전" data-sfx-feedback="none">
         <div id="roomEntry" class="room-entry">
-          <button id="createRoom" class="primary">방 만들기</button><button id="roomInputTest">펜 입력 확인</button>
-          <small class="room-note">친구 방은 메인 화면 <b>방번호</b>로 들어가요.</small>
+          <button id="createRoom" class="create-room">방 만들기</button>
+          <a class="join-room" href="/room/">방번호로 들어가기</a>
         </div>
-        <div id="roomLobby" hidden>
-          <div class="room-live">
-            <strong class="room-code">방 <span id="codeLabel"></span></strong><span id="roomPhase"></span
-            ><span id="roomHelp"></span>
-            <div class="room-actions">
-              <button id="readyButton">준비</button
-              ><button id="startRound" class="primary" hidden>시작</button
-              ><button id="stopRound" hidden>마치기</button
-              ><button id="submitRound" class="primary" hidden>제출</button
-              ><button id="leaveRoom">나가기</button>
+        <div id="lobbyView" class="lobby-view" hidden>
+          <div class="lobby-top">
+            <div class="text-scroll">
+              <div id="textTiles" class="text-tiles" aria-label="쓸 글"></div>
+              <span id="modeTag" class="mode-tag"></span>
             </div>
+            <div id="codeBoard" class="code-board" hidden><span>방번호</span><b id="bigCode"></b></div>
+            <div id="meBoard" class="me-board" hidden><span id="meFace" class="me-face"></span><b id="meName"></b></div>
           </div>
-          <details id="rankingDetails" open>
-            <summary>참가자 · 순위</summary>
-            <ol id="rankList" class="rank-list" aria-label="참가자와 순위"></ol>
-          </details>
+          <div id="lobbyPlayers" class="lobby-players" aria-label="참가자"></div>
+        </div>
+        <div id="trackView" class="track-view" hidden>
+          <div id="raceTrack" class="race-track" aria-label="쓰는 중">
+            <i class="track-line" aria-hidden="true"></i>
+            <div id="trackStations" class="track-stations" aria-hidden="true"></div>
+            <div class="track-finish" aria-hidden="true"><b>끝</b><span id="doneCount"></span></div>
+            <div id="trackTokens" class="track-tokens"></div>
+          </div>
+        </div>
+        <div id="ceremonyView" class="ceremony" hidden>
+          <div id="podium" class="podium"></div>
+          <div class="ceremony-side">
+            <div id="myCard" class="my-card" hidden></div>
+            <div id="rankRows" class="rank-rows" aria-label="순위"></div>
+          </div>
+        </div>
+        <div id="roomControls" class="room-controls" hidden>
+          <div id="roomSettings" class="room-settings" hidden>
+            <select id="raceSource" aria-label="순위전 글감">
+              <option value="custom">직접 넣기</option>
+              <option value="proverbs">속담</option>
+              <option value="idioms">한자성어</option>
+              <option value="expressions">관용어</option></select
+            ><input id="raceText" value="가나다" maxlength="40" aria-label="쓸 글" /><button
+              id="raceAnother"
+              type="button"
+              hidden
+            >다른 문구</button
+            ><select id="raceMode" aria-label="순위전 쓰기 모드">
+              <option value="trace">따라 쓰기</option>
+              <option value="solo">혼자 쓰기</option></select
+            ><label id="spectateRow" class="check spectate" hidden><input id="spectateInput" type="checkbox" /> 관전만</label>
+          </div>
+          <button id="readyButton" class="ready-button" hidden>준비</button
+          ><button id="startRound" class="start-round" hidden>시작<small id="readyCount"></small></button>
         </div>
         <p id="roomStatus" role="status"></p>
       </section>
@@ -151,6 +170,15 @@
         </section>
       </div>
     </main>
+    <a class="race-link" href="race/">🏁 순위전</a>
+    <div id="countdown" class="countdown" hidden aria-hidden="true"><span id="countNum">3</span></div>
+    <div id="finishSign" class="finish-sign" hidden aria-hidden="true"><span id="finishText">끝!</span></div>
+    <div id="raceBanner" class="race-banner" aria-live="polite" data-sfx-feedback="none"></div>
+    <template id="raceHelp">
+      <p>한글 1~24글자를 5분 동안 함께 씁니다. 방장이 대기실에서 글과 따라/혼자 쓰기를 고릅니다.</p>
+      <p>점수 = 모양 × 획순입니다. 서버가 실제 획으로 다시 채점합니다.</p>
+      <p>시간이 끝나면 쓴 글씨를 자동으로 냅니다. 결과는 모두 함께 공개됩니다.</p>
+    </template>
     <dialog id="inputDialog" aria-labelledby="inputTitle">
       <h2 id="inputTitle">펜 입력 확인</h2>
       <p>아래 칸에 펜으로 써 보세요.</p>
@@ -169,7 +197,7 @@
     <script src="pen-reference.js?v=20261107-pen-m-1300"></script>
     <script src="core.js?v=20261107-pen-m-1300"></script>
     <script src="writing-texts.js?v=20261107-1"></script>
-    <script src="app.js?v=20261107-pen-m-1300"></script>
-    <script src="race.js?v=20261107-score"></script>
+    <script src="app.js?v=20261107-race-show"></script>
+    <script src="race.js?v=20261107-race-show"></script>
   </body>
 </html>

@@ -30,7 +30,7 @@ test('combo worth, accuracy, ranking and team ties follow the shared rules', () 
 
 test('every set builds questions from the real learning data', () => {
   const pools = bank.load();
-  const expectMin = { spelling: 300, idioms: 100, proverbs: 100, expressions: 100, vocabulary: 2000 };
+  const expectMin = { spelling: 300, idioms: 100, proverbs: 100, expressions: 100, vocabulary: 2000, hanja: 900, sentences: 72 };
   for (const [set, min] of Object.entries(expectMin)) assert.ok(pools[set].length >= min, `${set}: ${pools[set].length}`);
   let seed = 7;
   const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
@@ -40,10 +40,13 @@ test('every set builds questions from the real learning data', () => {
       assert.ok(items.length >= 190, `${set}/${level}: ${items.length}`);
       for (const q of items) {
         const want = Core.SETS[q.set].choices;
-        assert.equal(q.choices.length, want, `${q.key} has ${want} choices`);
+        // 문장 고르기의 ①~⑤ 문장 번호 고르기는 보기가 다섯이다.
+        const numbered = q.set === 'sentences' && q.choices.every((c) => /^[①-⑤]$/.test(c));
+        assert.equal(q.choices.length, numbered ? 5 : want, `${q.key} has ${want} choices`);
         assert.equal(new Set(q.choices).size, q.choices.length, `${q.key} choices are distinct`);
         assert.ok(q.answer >= 0 && q.answer < q.choices.length, q.key);
-        assert.ok(q.text && q.ask, q.key);
+        // 상황 글이 없는 문장 고르기 문제는 지시문을 글자리에 크게 두고 작은 지시 줄은 비운다.
+        assert.ok(q.text && (q.ask || q.set === 'sentences'), q.key);
         if (set !== 'mixed') assert.equal(q.set, set);
         else assert.ok(Core.MIXED_PARTS.includes(q.set), 'mixed never includes English words');
       }
@@ -55,8 +58,42 @@ test('every set builds questions from the real learning data', () => {
 });
 
 test('the public question never carries the answer or explanation', () => {
-  const pub = Questions.publicQuestion({ set: 'spelling', ask: 'a', text: 'b', choices: ['x', 'y'], answer: 1, explain: 'z', key: 'k', block: '가' }, 3, '맞춤법');
-  assert.deepEqual(Object.keys(pub).sort(), ['ask', 'choices', 'label', 'no', 'set', 'text']);
+  const pub = Questions.publicQuestion({ set: 'spelling', ask: 'a', text: 'b', choices: ['x', 'y'], answer: 1, explain: 'z', key: 'k', block: '가', collect: 'y' }, 3, '맞춤법');
+  // tried: 이 문제에서 이미 골라 틀린 보기(줄 그은 보기). 정답이 아니라 화면에 남길 오답 자리다.
+  assert.deepEqual(Object.keys(pub).sort(), ['ask', 'choices', 'label', 'no', 'set', 'text', 'tried']);
+  assert.deepEqual(pub.tried, []);
+});
+
+test('hanja questions come from the 25 stage quizzes, mark the asked word and never show the answer hanja', () => {
+  const pools = bank.load();
+  const han = /\p{Script=Han}/u;
+  const stages = new Set(pools.hanja.map((e) => e.lesson));
+  assert.deepEqual([...stages].sort((a, b) => a - b), Array.from({ length: 25 }, (_, i) => i + 1), 'every stage has questions');
+  let seed = 11;
+  const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  let huneum = 0, whole = 0;
+  for (const entry of pools.hanja) {
+    const q = entry.make(random);
+    assert.equal(q.choices.length, 4, entry.key);
+    assert.equal(new Set(q.choices).size, 4, entry.key);
+    assert.ok(han.test(q.text) && q.collect && q.block, entry.key);
+    if (q.ask.includes('훈과 음')) {
+      huneum++;
+      assert.ok(q.choices.every((c) => !han.test(c) && !c.includes('{{')), entry.key);
+      continue;
+    }
+    for (const choice of q.choices) {
+      assert.equal((choice.match(/\{\{/g) || []).length, 1, `${entry.key}: one underlined word in ${choice}`);
+      assert.ok(!han.test(choice), `${entry.key}: no hanja in the choices`);
+    }
+    if (q.choices.every((c) => !c.includes('…'))) whole++;
+  }
+  assert.ok(huneum >= 10, `훈음 문항 ${huneum}`);
+  assert.ok(whole >= 100, `예문을 다 보여 주는 문항 ${whole}`);
+  // 낱말만으로 뜻이 갈리는 문항은 예문을 다 보여 준다(부자: 富者/父子).
+  const rich = pools.hanja.find((e) => e.key === 'hanja:父|부자').make(random);
+  assert.ok(rich.choices.every((c) => !c.includes('…')));
+  assert.equal(Questions.hanjaClip('지역별 {{인구}} 변화는 주택과 교통, 학교, 의료 시설의 수요를 예측합니다.', '인구'), '지역별 {{인구}} 변화는 주택과…');
 });
 
 // 정답 자리를 알 수 있도록 문항을 꾸며 넣는다: 보기 0번이 늘 정답이다.
@@ -191,6 +228,59 @@ test('team race fills unassigned students at start and places late joiners', asy
   assert.equal(r.state.teams[late.state.me.team].value, 1);
 });
 
+test('sentence choice races use only the choice tasks and show what the app shows', () => {
+  const course = (() => {
+    const vm = require('node:vm'), fs = require('node:fs');
+    const context = vm.createContext({ window: {} });
+    vm.runInContext(fs.readFileSync(require.resolve('../learning/literacy-numeracy/sentence-building/curriculum.js'), 'utf8'), context);
+    return context.window.SENTENCE_COURSE;
+  })();
+  const tasks = course.lessons.flatMap((lesson, i) => lesson.tasks.filter((task) => task.type === 'choice').map((task) => ({ task, lesson: i + 1 })));
+  const pools = bank.load();
+  assert.equal(pools.sentences.length, tasks.length, 'every choice task, and nothing else');
+  assert.ok(pools.sentences.every((e) => e.lesson >= 1 && e.lesson <= 24));
+  pools.sentences.forEach((entry, i) => {
+    const { task } = tasks[i];
+    const q = entry.make(Math.random);
+    assert.equal(q.choices[q.answer], task.options[task.answer], `${entry.key}: the right option is the app's answer`);
+    assert.deepEqual([...q.choices].sort(), [...task.options].sort());
+    if (task.scene) {
+      assert.equal(q.ask, task.prompt);
+      assert.equal(q.text.replace(/\n/g, ' '), task.scene.replace(/\s*([②-⑳])/g, ' $1'), `${entry.key}: the passage is all there`);
+    } else assert.equal(q.text, task.prompt);
+    if (task.shuffleOptions === false) assert.deepEqual(q.choices, [...task.options], `${entry.key}: numbered options keep their order`);
+  });
+  // 한 차시에 고르기 문제가 셋뿐이라 "처음부터 거기까지"만 있다. 1차시까지면 전체.
+  assert.equal(Core.validRange('sentences', '5'), '~5');
+  assert.equal(Core.validRange('sentences', '~5'), '~5');
+  assert.equal(Core.validRange('sentences', '1'), null);
+  assert.equal(Core.validRange('sentences', '25'), null);
+  assert.equal(Core.rangeLabel('sentences', '~5'), '처음~5차시');
+  assert.equal(Questions.poolFor(pools, 'sentences', 'all', [], '~2').length, 6);
+  const round = Questions.makeRound(pools, { set: 'sentences', range: '~2', count: 110, random: Math.random });
+  assert.equal(round.length, 110);
+  for (let i = 1; i < round.length; i++) assert.notEqual(round[i].key, round[i - 1].key);
+  assert.ok(!Core.MIXED_PARTS.includes('sentences') && !Core.MIXED_PARTS.includes('hanja'), '국어 종합 stays the four word sets');
+});
+
+test('a class can race in up to eight teams', async (t) => {
+  const { req } = await serve(t);
+  assert.deepEqual(Core.TEAMS.map((x) => x.name), ['해', '달', '별', '구름', '꽃', '숲', '산', '바다']);
+  assert.equal(new Set(Core.TEAMS.map((x) => x.hue)).size, 8, 'every team has its own colour');
+  const made = (await req('/rooms', { set: 'spelling', teamMode: true, teamCount: 8 }, '', 'teacher')).data;
+  assert.equal(made.state.config.teamCount, 8);
+  const host = made.token, path = '/rooms/' + made.state.code;
+  assert.equal((await req(path + '/settings', { teamCount: 9 }, host, 'teacher')).data.config.teamCount, 8, 'nine teams is not a choice');
+  const kids = [];
+  for (let i = 0; i < 17; i++) kids.push((await req(path + '/join', {}, '', '', '학생' + i)).data);
+  assert.equal((await req(path + '/team', { team: 7 }, kids[0].token)).status, 200, 'the eighth team can be picked');
+  assert.equal((await req(path + '/team', { team: 8 }, kids[1].token)).status, 400);
+  const started = (await req(path + '/start', {}, host, 'teacher')).data;
+  assert.equal(started.teams.length, 8);
+  assert.ok(started.teams.every((team) => team.size >= 2), 'students spread over all eight teams');
+  assert.equal(started.teams[7].name, '바다');
+});
+
 test('a set whose learning page is globally closed cannot be raced', async (t) => {
   const { req } = await serve(t, { disabled: async (path) => path.endsWith('/spelling') });
   assert.equal((await req('/rooms', { set: 'spelling' }, '', 'teacher')).status, 403);
@@ -210,6 +300,12 @@ test('a race opened from a lesson asks only that lesson, or everything up to it'
   assert.equal(Core.validRange('mixed', '1'), null);
   assert.equal(Core.rangeLabel('vocabulary', '~1-4'), '처음~Level 1 · 4차시');
   assert.equal(Core.rangeLabel('proverbs', '~1'), '1차시');
+  assert.equal(Core.validRange('hanja', '25'), '25');
+  assert.equal(Core.validRange('hanja', '~7'), '~7');
+  assert.equal(Core.validRange('hanja', '26'), null);
+  assert.equal(Core.rangeLabel('hanja', '7'), '7단계');
+  assert.equal(Core.rangeLabel('hanja', '~7'), '1~7단계');
+  assert.equal(Core.rangeLabel('hanja', '~1'), '1단계');
   const pools = bank.load();
   const lessonOne = Questions.poolFor(pools, 'vocabulary', 'elementary', [], '1-1').map((e) => e.key);
   assert.ok(lessonOne.length >= 18 && lessonOne.length <= 20, 'Level 1 · 1차시 keeps nearly all of its 20 words');
@@ -221,6 +317,17 @@ test('a race opened from a lesson asks only that lesson, or everything up to it'
     const one = Questions.poolFor(pools, set, 'all', [], '1'), two = Questions.poolFor(pools, set, 'all', [], '2');
     assert.ok(one.length >= 4 && one.every((e) => e.lesson === 1));
     assert.equal(Questions.poolFor(pools, set, 'all', [], '~2').length, one.length + two.length);
+  }
+  // 한자 25단계: 단계마다 순위전 한 판을 꾸릴 만큼 문항이 있고, "~N"은 1단계부터 N단계까지다.
+  let upto = 0;
+  for (let stage = 1; stage <= 25; stage++) {
+    const only = Questions.poolFor(pools, 'hanja', 'all', [], String(stage));
+    assert.ok(only.length >= 20 && only.every((e) => e.lesson === stage), `${stage}단계: ${only.length}`);
+    upto += only.length;
+    assert.equal(Questions.poolFor(pools, 'hanja', 'all', [], '~' + stage).length, upto);
+    const round = Questions.makeRound(pools, { set: 'hanja', range: String(stage), count: 110, random: Math.random });
+    assert.equal(round.length, 110, `${stage}단계 한 판`);
+    for (let i = 1; i < round.length; i++) assert.notEqual(round[i].key, round[i - 1].key);
   }
   // 한자성어 2차시는 네 개뿐이라 보기를 전체에서 고른다(늘 같은 네 개가 되지 않게).
   const round = Questions.makeRound(pools, { set: 'idioms', range: '2', count: 40, random: Math.random });

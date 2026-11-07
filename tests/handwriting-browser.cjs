@@ -156,6 +156,12 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   await page.locator('a[href="learning/literacy-numeracy/handwriting/"]').click();
   await page.waitForURL('**/handwriting/');
   await ready();
+  const race = page.locator('a.race-link');
+  assert.equal(await race.textContent(), '🏁 순위전');
+  assert.equal(await page.locator('.topbar a[href="race/"]').count(), 0, 'no race link in the top row');
+  const raceBox = await race.boundingBox(),
+    view = page.viewportSize();
+  assert.ok(view.width - (raceBox.x + raceBox.width) < 30 && view.height - (raceBox.y + raceBox.height) < 30, 'race entry sits in the bottom-right corner');
   const canvas = page.locator('#writingCanvas');
   assert.equal(await canvas.evaluate((el) => getComputedStyle(el).touchAction), 'none');
   await pointer(
@@ -280,16 +286,21 @@ test('touch fallback admits one contact, rejects broad palms, and yields immedia
   await page.setViewportSize({ width: 1366, height: 950 });
   await shot('desktop');
 });
-test('teacher creates a room, student enters from the main entrance, submits, and sees server ranking', async () => {
+test('teacher opens a room straight into the lobby; a student joins, writes after 3-2-1, and sees the ranking ceremony', async () => {
+  const noScroll = (p) => p.evaluate(() => document.documentElement.scrollHeight <= innerHeight && document.documentElement.scrollWidth <= innerWidth);
+  await page.setViewportSize({ width: 1852, height: 775 });
   await page.goto(h.base + route + 'race/');
   await page.locator('#createRoom').waitFor({ state: 'visible' });
+  // 방 만들기 앞에는 설정 창이 없다. 글·모드·관전은 대기실에서 고른다.
+  assert.equal(await page.locator('#raceText').isVisible(), false);
+  await page.locator('#createRoom').click();
+  await page.locator('#bigCode').waitFor({ state: 'visible' });
+  const code = await page.locator('#bigCode').textContent();
   await page.fill('#raceText', '가');
-  // 교사는 기본으로 함께 쓰므로, 이 시험에서는 관전만 한다.
+  // 교사는 기본으로 함께 쓰므로, 이 시험에서는 대기실에서 관전으로 바꾼다.
   await page.locator('#spectateRow').waitFor({ state: 'visible' });
   await page.check('#spectateInput');
-  await page.locator('#createRoom').click();
-  await page.locator('#codeLabel').waitFor({ state: 'visible' });
-  const code = await page.locator('#codeLabel').textContent();
+  await page.waitForFunction(() => document.body.classList.contains('spectator'));
   const students = await browser.newContext({ viewport: { width: 768, height: 1024 }, hasTouch: true });
   try {
     await students.addCookies([{ name: 'test_user', value: '2', url: h.base }]);
@@ -299,28 +310,46 @@ test('teacher creates a room, student enters from the main entrance, submits, an
     await p.fill('#roomCode', code);
     await p.locator('#roomForm button').click();
     await p.locator('#readyButton').waitFor({ state: 'visible' });
+    // 대기실에 방장이 고른 글이 칸마다 보이고, 들어온 사람이 아바타 자리에 선다.
+    await p.waitForFunction(() => document.querySelector('#textTiles').textContent === '가');
+    await page.waitForFunction(() => document.querySelectorAll('#lobbyPlayers .chip').length === 1);
     await p.locator('#readyButton').click();
-    await page.waitForFunction(() => document.querySelector('#rankList').textContent.includes('준비 완료'));
+    await page.waitForFunction(() => document.querySelector('#lobbyPlayers .chip.ready'));
+    assert.equal(await noScroll(page), true, 'lobby fits 1852x775');
+    await shot('room-lobby');
     await page.locator('#startRound').click();
-    await p.locator('#submitRound').waitFor({ state: 'visible' });
+    // 3·2·1 동안은 쓰지 못하고, 시작과 함께 열린다.
+    await p.locator('#countdown').waitFor({ state: 'visible' });
+    assert.equal(await p.locator('#writingCanvas').getAttribute('aria-disabled'), 'true');
+    await p.waitForFunction(() => document.querySelector('#writingCanvas')?.getAttribute('aria-disabled') === 'false');
+    await p.setViewportSize({ width: 1366, height: 768 });
+    await p.waitForTimeout(250);
+    assert.equal(await noScroll(p), true, 'writing fits 1366x768');
     await drawLetter(p, '가');
+    // 먹길: 채운 글자 수만 교사 화면으로 가고(획 좌표는 가지 않는다), 말이 끝까지 나아간다.
+    await page.waitForFunction(() => document.querySelector('#trackTokens .token')?.dataset.shown === '1');
+    await shot('room-track');
     p.once('dialog', (d) => d.accept());
     await p.locator('#submitRound').click();
-    await p.waitForFunction(() => document.querySelector('#rankList').textContent.includes('획순 통과'));
-    assert.match(await p.locator('#rankList').textContent(), /1위.*(?:9[8-9]|100)%/);
+    await p.waitForFunction(() => document.querySelector('#rankRows').textContent.includes('획순 통과'));
+    assert.match(await p.locator('#rankRows').textContent(), /1위.*(?:9[8-9]|100)%/);
     assert.equal(await p.locator('#writingCanvas').getAttribute('aria-disabled'), 'true');
+    // 시상식: 아래 순위부터 공개하고, 1등 단에 장원 낙관이 찍힌다. 내 글씨 카드에는 내가 쓴 칸이 그려진다.
+    await p.waitForFunction(() => document.querySelector('.step.place-1.crowned .jangwon'), null, { timeout: 15000 });
+    assert.equal(await p.locator('#myCard canvas').count(), 1);
     await p.reload();
-    await p.waitForFunction(() => document.querySelector('#rankList').textContent.includes('획순 통과'));
+    await p.waitForFunction(() => document.querySelector('#rankRows').textContent.includes('획순 통과'));
     assert.equal(await p.evaluate(() => HandwritingApp.snapshot().cells.trace[0].length), 3);
-    await page.waitForFunction(() => document.querySelector('#rankList').textContent.includes('획순 통과'));
+    await page.waitForFunction(() => document.querySelector('.step.place-1.crowned'), null, { timeout: 15000 });
+    assert.equal(await noScroll(page), true, 'results fit 1852x775');
     await shot('room-results');
     assert.equal(await page.locator('#raceText').isVisible(), true, 'teacher can choose the next text');
     await page.fill('#raceText', '나');
     await p.locator('#readyButton').click();
-    await page.waitForFunction(() => document.querySelector('#rankList').textContent.includes('준비 완료'));
+    await page.waitForFunction(() => document.querySelector('#rankRows .rank-row.ready'));
     await page.locator('#startRound').click();
     await p.waitForFunction(() => HandwritingApp.snapshot().text === '나');
-    assert.equal(await p.locator('#writingCanvas').getAttribute('aria-disabled'), 'false');
+    await p.waitForFunction(() => document.querySelector('#writingCanvas')?.getAttribute('aria-disabled') === 'false');
   } finally {
     await students.close();
   }

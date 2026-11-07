@@ -368,6 +368,8 @@
       queueDraw();
     }
   }
+  // 순위전 화면(race.js)이 채운 글자 수를 알 수 있게 알린다.
+  const changed = (detail = {}) => window.dispatchEvent(new CustomEvent('handwritingchange', { detail }));
   function record(before, after) {
     undo.push({ index: doc.index, phase: doc.phase, before, after });
     if (undo.length > 80) undo.shift();
@@ -375,6 +377,7 @@
     marks[doc.index] = undefined;
     render();
     save();
+    changed();
   }
   function position(e, target) {
     const r = target.getBoundingClientRect();
@@ -489,6 +492,7 @@
         record(before, after);
         const result = C.judge(letters()[doc.index], modelStrokes(after));
         if (after.length === result.expected) {
+          changed({ complete: doc.index });
           $('strokeStatus').textContent = result.order ? '획순과 방향을 잘 지켰어요.' : '획순 보기와 비교해 보세요.';
           // 다 쓰면 다음 빈 칸으로 넘어간다.
           const nextEmpty = doc.cells[doc.phase].findIndex((c, i) => i > doc.index && !c.length);
@@ -603,6 +607,7 @@
     to.push(a);
     render();
     save();
+    changed();
   }
   $('undoButton').onclick = () => history(undo, redo, 'before');
   $('redoButton').onclick = () => history(redo, undo, 'after');
@@ -798,6 +803,12 @@
     cells() {
       cancel();
       return snapshot().cells[doc.phase].map(modelStrokes);
+    },
+    // 채운 정도: 글자마다 (쓴 획 수 ÷ 본보기 획 수, 1까지)를 더한 값. 순위전의 먹길 말이 이만큼 나아간다.
+    progress() {
+      const chars = letters();
+      const filled = chars.reduce((sum, c, i) => sum + Math.min(1, doc.cells[doc.phase][i].length / Math.max(1, C.model(c).length)), 0);
+      return { filled, total: chars.length, written: doc.cells[doc.phase].some((c) => c.length) };
     },
   };
 })();

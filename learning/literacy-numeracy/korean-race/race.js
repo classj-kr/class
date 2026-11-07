@@ -10,7 +10,7 @@
   // ── 바탕: 글자 연과 날리는 글자 ─────────────────────
   // 가운데 연은 시상대·문제 카드 뒤에 겹치지 않게 위쪽 오른편으로 비켜 띄운다.
   const KITES = [[8, 22, 4, 7, 5], [26, 12, 214, 9, 6], [60, 8, 146, 8, 5.5], [72, 22, 330, 10, 6.5], [90, 30, 40, 7.5, 5]];
-  const sceneLetters = (set) => (set === 'vocabulary' ? 'ABCDEFGHIJKLMNOPRSTW' : '가나다라마바사아자차카타파하글말');
+  const sceneLetters = (set) => (set === 'vocabulary' ? 'ABCDEFGHIJKLMNOPRSTW' : set === 'hanja' ? '人生大小山水日月火木金土天地上下' : '가나다라마바사아자차카타파하글말');
   let sceneSet = '';
   function paintScene(set) {
     if (sceneSet === set) return;
@@ -53,6 +53,10 @@
   // 들어온 자리(앞의 "~"를 뗀 것): "그 부분만"과 "처음부터 거기까지"를 고를 수 있게 한다.
   const baseRange = fromRange && fromRange.replace('~', '');
   const choice = { set: fromSet, level: C.validLevel(fromSet, params.get('level')), range: fromRange, duration: 90, teamMode: false, teamCount: 2 };
+  // 단계를 순위전 화면에서 바로 고르는 콘텐츠(한자 25단계): 마지막으로 고른 단계. "전체"로 바꿔도 기억해 둔다.
+  let pickedStage = 1;
+  const syncStage = () => { if (C.RANGE_SETS[choice.set]?.pick && choice.range) pickedStage = Number(String(choice.range).replace('~', '')) || 1; };
+  syncStage();
   const serverNow = () => Date.now() + offset;
   // 들어온 학습 화면으로 돌아간다(방번호로 온 학생은 메인으로).
   if (params.get('set') && C.SETS[fromSet].app) $('backLink').href = C.SETS[fromSet].app + '/';
@@ -128,6 +132,20 @@
     g2.setTransform(r, 0, 0, r, 0, 0);
   }
   addEventListener('resize', sizeCanvas);
+  // 긴 문제·팀 막대로 화면이 넘치면 아래 글자 탑 판을 줄여(120px까지) 넓은 화면에 스크롤바가 생기지 않게 한다.
+  function fitTowers() {
+    const towers = $('towers');
+    if ($('raceScreen').hidden || !towers) return;
+    towers.style.height = '';
+    if (innerWidth <= 860) return;
+    const over = document.documentElement.scrollHeight - innerHeight;
+    if (over > 0) towers.style.height = Math.max(120, towers.getBoundingClientRect().height - over) + 'px';
+  }
+  addEventListener('resize', fitTowers);
+  if (window.ResizeObserver) {
+    const watch = new ResizeObserver(() => requestAnimationFrame(fitTowers));
+    for (const node of [document.querySelector('.arena'), $('teamBar')]) if (node) watch.observe(node);
+  }
   sizeCanvas();
   const COLORS = ['#e2513c', '#2f7fd0', '#f2b632', '#3fae6a', '#8d5bd6', '#ee7d2f'];
   function burst(x, y, count = 22, power = 6) {
@@ -227,6 +245,8 @@
     proverbs: '📜',
     expressions: '<svg viewBox="0 0 24 24"><path fill="#42a5f5" d="M3 4.5A2.5 2.5 0 0 1 5.5 2h13A2.5 2.5 0 0 1 21 4.5v11a2.5 2.5 0 0 1-2.5 2.5H11l-5.5 4v-4A2.5 2.5 0 0 1 3 15.5v-11z"/><path fill="#fff3d0" d="M6.5 7h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8H6.5V7zm7 0h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8h-1.6V7z"/></svg>',
     mixed: '🎲',
+    sentences: '🧩',
+    hanja: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#d32f2f"/><rect x="5" y="5" width="14" height="14" rx="2" fill="#fff"/><text x="12" y="16" font-size="12" font-weight="bold" fill="#d32f2f" text-anchor="middle" font-family="serif">漢</text></svg>',
     vocabulary: '<svg viewBox="0 0 24 24"><rect x="5.5" y="3" width="15.5" height="18" rx="2.5" fill="#e0e7ff" stroke="#818cf8" stroke-width="0.9"/><rect x="3" y="5" width="15.5" height="18" rx="2.5" fill="#ffffff" stroke="#4f46e5" stroke-width="1.1"/><circle cx="6" cy="8.5" r="1.3" fill="#f8fafc" stroke="#64748b" stroke-width="0.8"/><path d="M4 8.5a2.5 2.5 0 0 1 4 0" fill="none" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/><rect x="8.5" y="8" width="8" height="1.8" rx="0.9" fill="#0284c7"/><text x="10.8" y="15" font-size="4.2" font-weight="900" fill="#1e293b" text-anchor="middle" font-family="\'Segoe UI\', sans-serif" letter-spacing="0.4">VOCAB</text><circle cx="14.8" cy="18.2" r="2.2" fill="#10b981"/><path d="M13.8 18.2l0.7 0.7 1.4-1.4" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   };
   function setIcon(key) {
@@ -269,6 +289,7 @@
       patch.range = patch.set === fromSet ? fromRange : null;
     }
     Object.assign(choice, patch);
+    syncStage();
     paintSettings();
     if (code && state?.me.host && state.phase !== 'running')
       action(async () => render(await api('/rooms/' + code + '/settings', choice)));
@@ -278,10 +299,20 @@
       box.innerHTML = '';
       box.append(optionRow('문제', Object.entries(C.SETS).map(([k, s]) => [k, s.label, k]), choice.set, (set) => change({ set })));
       const levels = C.levelsOf(choice.set);
-      if (fromRange && choice.set === fromSet)
+      // 한자처럼 단계를 여기서 고르는 콘텐츠는 단계 줄을 늘 보인다. 고른 단계가 범위 줄의 기준이 된다.
+      const stages = C.RANGE_SETS[choice.set]?.pick ? C.RANGE_SETS[choice.set].lessons : 0;
+      const base = stages ? String(pickedStage) : fromRange && choice.set === fromSet ? baseRange : '';
+      if (stages) {
+        const row = optionRow('단계', Array.from({ length: stages }, (_, i) => [String(i + 1), String(i + 1)]), choice.range ? String(choice.range).replace('~', '') : null,
+          (stage) => change({ range: String(choice.range || '').startsWith('~') ? '~' + stage : stage }), true);
+        row.classList.add('stage-field');
+        box.append(row);
+      }
+      // 문장 고르기처럼 한 차시의 문제가 너무 적은 콘텐츠는 "그 차시만" 없이 "처음부터 거기까지"와 "전체"만.
+      if (base)
         box.append(optionRow('범위', [
-          [baseRange, C.rangeLabel(fromSet, baseRange) + '만'],
-          ...(C.rangeLabel(fromSet, '~' + baseRange) === C.rangeLabel(fromSet, baseRange) ? [] : [['~' + baseRange, C.rangeLabel(fromSet, '~' + baseRange)]]),
+          ...(C.RANGE_SETS[choice.set]?.uptoOnly ? [] : [[base, C.rangeLabel(choice.set, base) + '만']]),
+          ...(C.rangeLabel(choice.set, '~' + base) === C.rangeLabel(choice.set, base) ? [] : [['~' + base, C.rangeLabel(choice.set, '~' + base)]]),
           [null, levels ? '수준별' : '전체'],
         ], choice.range, (range) => change({ range }), true));
       if (levels && !choice.range) box.append(optionRow('수준', levels, choice.level, (level) => change({ level }), true));
@@ -330,6 +361,7 @@
     $('stopButton').hidden = !(host && s.phase === 'running');
     if (host && !previous) {
       Object.assign(choice, s.config);
+      syncStage();
       paintSettings();
     }
     if (s.phase === 'lobby') renderLobby(s, previous);
@@ -360,6 +392,7 @@
     if (!teamMode) $('lobbyRacers').replaceChildren(...s.participants.map(item));
     else {
       $('teamColumns').style.setProperty('--teams', s.teams.length);
+      $('teamColumns').dataset.count = s.teams.length;
       $('teamColumns').replaceChildren(...s.teams.map((t) => {
         const col = document.createElement('div');
         col.className = 'team-col' + (s.me.team === t.index ? ' mine' : '') + (t.size >= C.TEAM_MAX ? ' full' : '');
@@ -529,6 +562,15 @@
   }
 
   // ── 문제와 보기 ───────────────────────────────────
+  // 한자 보기처럼 {{낱말}}로 표시한 자리는 밑줄 친 낱말로 그린다(자료를 HTML로 넣지 않고 글자 마디로 만든다).
+  function fillMarked(el, text) {
+    el.replaceChildren(...String(text).split(/\{\{([^{}]*)\}\}/).map((part, i) => {
+      if (i % 2 === 0) return document.createTextNode(part);
+      const word = document.createElement('u');
+      word.textContent = part;
+      return word;
+    }));
+  }
   function paintQuestion(q) {
     if (shown && q && shown.no === q.no) return;
     shown = q;
@@ -547,6 +589,7 @@
     setLabel($('qLabel'), q.set, q.label);
     $('qNo').textContent = `${q.no + 1}번째 문제`;
     $('qAsk').textContent = q.ask;
+    $('qAsk').hidden = !q.ask;
     // 맞춤법 문장의 빈칸(___)은 칸으로 그린다.
     const text = $('qText');
     text.replaceChildren(...String(q.text).split(/_{2,}/).flatMap((part, i) => {
@@ -555,9 +598,19 @@
       nodes.push(document.createTextNode(part));
       return nodes;
     }));
+    // 한자는 글자를 크게, 소리 "(인)"은 조금 작게.
+    const sound = q.set === 'hanja' && /^(.+?)(\(.+\))$/.exec(String(q.text));
+    if (sound) {
+      const small = document.createElement('small');
+      small.textContent = sound[2];
+      text.replaceChildren(sound[1], small);
+    }
     text.classList.toggle('word', q.set === 'vocabulary');
+    text.classList.toggle('hanja', q.set === 'hanja');
     text.classList.toggle('long', String(q.text).length > 60);
     $('choices').dataset.count = q.choices.length;
+    // 보기 다섯이 ①~⑤처럼 아주 짧으면 한 줄에 나란히 놓는다.
+    $('choices').classList.toggle('tiny', q.choices.length >= 5 && q.choices.every((label) => String(label).length <= 3));
     const tried = new Set(q.tried || []);
     $('choices').replaceChildren(...q.choices.map((label, i) => {
       const b = document.createElement('button');
@@ -567,7 +620,7 @@
       b.style.setProperty('--i', i);
       b.innerHTML = '<kbd></kbd><span></span>';
       b.firstChild.textContent = i + 1;
-      b.lastChild.textContent = label;
+      fillMarked(b.lastChild, label);
       b.onclick = () => answer(i);
       return b;
     }));
@@ -614,7 +667,9 @@
           retrigger($('scoreNow'), 'bump');
           // 여러 번 만에 맞혔으면 풀이를 잠깐 보여 주고 넘어간다.
           if (data.retried && data.explain) {
-            $('revealTitle').textContent = '맞았어요! ' + q.choices[data.answer];
+            // 밑줄 낱말이 있는 보기(한자)는 그 낱말만 적는다.
+            const right = String(q.choices[data.answer]);
+            $('revealTitle').textContent = '맞았어요! ' + (/\{\{([^{}]*)\}\}/.exec(right)?.[1] ?? right);
             $('revealText').textContent = data.explain;
             $('reveal').hidden = false;
             revealUntil = Date.now() + C.REVEAL_MS;
@@ -659,6 +714,7 @@
     bar.hidden = !s.teams;
     if (!s.teams) return;
     const shownTeams = s.teams.filter((t) => t.size);
+    bar.dataset.count = shownTeams.length;
     const top = Math.max(1, ...shownTeams.map((t) => t.value));
     bar.replaceChildren(...shownTeams.map((t) => {
       const row = document.createElement('div');
@@ -744,6 +800,7 @@
     if (first) setTimeout(() => confetti(), 200);
     const teams = (s.teams || []).filter((t) => t.size).sort((a, b) => a.rank - b.rank);
     $('teamResult').hidden = !teams.length;
+    $('teamResult').dataset.count = teams.length;
     $('soloTitle').hidden = !teams.length;
     if (teams.length) {
       $('teamResult').replaceChildren(...teams.map((t) => {

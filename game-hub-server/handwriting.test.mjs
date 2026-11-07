@@ -46,12 +46,16 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
   }
   assert.equal((await req('/rooms', { text: '가' })).status, 403);
   assert.equal((await req('/rooms', { text: 'abc' }, '', 'teacher')).status, 400);
-  const made = await req('/rooms', { text: '가나', phase: 'solo', spectate: true }, '', 'teacher');
-  assert.equal(made.data.state.me.plays, false, 'the teacher only watches');
+  // 방 만들기는 바로 대기실로: 교사는 기본으로 함께 쓰고, 관전은 대기실에서 바꾼다.
+  const made = await req('/rooms', { text: '가나', phase: 'solo' }, '', 'teacher');
   assert.equal(made.status, 200);
+  assert.equal(made.data.state.me.plays, true, 'the teacher writes by default');
   const code = made.data.state.code,
     host = made.data.token,
     path = '/rooms/' + code;
+  const watching = await req(path + '/settings', { text: '가나', phase: 'solo', spectate: true }, host, 'teacher');
+  assert.equal(watching.data.me.plays, false, 'the teacher only watches');
+  assert.equal(watching.data.participants.length, 0);
   const resolved = await fetch(base.replace('/api/handwriting', '') + '/api/room-entry/resolve/' + code);
   assert.deepEqual(await resolved.json(), {
     type: 'handwriting',
@@ -59,8 +63,14 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
   });
   assert.equal((await req(path)).status, 403);
   assert.equal((await req(path + '/join', {})).status, 403);
-  const one = (await req(path + '/join', {}, '', '', 'one')).data,
-    two = (await req(path + '/join', {}, '', '', 'two')).data;
+  const one = (await req(path + '/join', { avatarUrl: '/assets/avatars/animal-cat.webp' }, '', '', 'one')).data,
+    two = (await req(path + '/join', { avatarUrl: 'https://example.com/x.webp' }, '', '', 'two')).data;
+  assert.equal(one.state.me.avatarUrl, '/assets/avatars/animal-cat.webp');
+  assert.equal(two.state.me.avatarUrl, null, 'only site avatar paths are kept');
+  assert.equal((await req(path + '/settings', { text: '다라' }, one.token)).status, 403, 'only the host changes settings');
+  assert.equal((await req(path + '/settings', { text: 'abc' }, host, 'teacher')).status, 400);
+  await req(path + '/settings', { text: '하늘', phase: 'trace' }, host, 'teacher');
+  assert.deepEqual((await req(path, undefined, one.token)).data.config, { text: '하늘', phase: 'trace' }, 'the lobby shows the new text at once');
   assert.equal((await req(path + '/join', {}, '', '', 'one')).status, 409);
   assert.equal((await req(path + '/start', { text: '가나' }, one.token, 'teacher')).status, 403);
   assert.equal((await req(path + '/start', { text: '가나' }, host, 'teacher')).status, 409);
@@ -68,6 +78,15 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
   await req(path + '/ready', { ready: true }, two.token);
   const started = (await req(path + '/start', { text: '가나', phase: 'solo' }, host, 'teacher')).data,
     id = started.roundId;
+  assert.equal(started.startsAt, clock + 3500, 'a 3-2-1 countdown comes first');
+  assert.equal(started.deadline, started.startsAt + 300000);
+  assert.equal((await req(path + '/settings', { text: '다' }, host, 'teacher')).status, 409, 'settings are fixed while writing');
+  // 쓰는 동안에는 채운 글자 수만 오간다(0~글자 수로 자른다).
+  const moved = (await req(path + '/progress', { roundId: id, value: 1.27 }, two.token)).data;
+  assert.equal(moved.participants.find((x) => x.name === 'two').progress, 1.3);
+  assert.equal((await req(path + '/progress', { roundId: id, value: 99 }, two.token)).data.participants.find((x) => x.name === 'two').progress, 2);
+  assert.equal((await req(path + '/progress', { roundId: 'old', value: 0 }, two.token)).data.participants.find((x) => x.name === 'two').progress, 2);
+  assert.equal((await req(path, undefined, one.token)).data.participants.find((x) => x.name === 'two').progress, 2);
   assert.equal((await req(path + '/join', {}, '', '', 'late')).status, 409);
   const cells = C.chars('가나').map((c) => C.model(c).map((points) => ({ points: C.sample(points, 60) })));
   assert.equal((await req(path + '/result', { roundId: 'old', cells }, one.token)).status, 409);
@@ -81,6 +100,7 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
   const reversed = cells.map((strokes) => [...strokes].reverse());
   const end = (await req(path + '/result', { roundId: id, cells: reversed, score: 100 }, two.token)).data;
   assert.equal(end.phase, 'results');
+  assert.ok(end.participants.every((x) => x.done && x.progress === 0));
   assert.equal(end.participants[0].rank, 1);
   assert.equal(end.participants[0].result.order, true);
   assert.ok(end.participants[0].result.shape >= 98);
@@ -104,7 +124,10 @@ test('shared room entry, teacher controls, authoritative judging, retry, new rou
   const next = (await req(path + '/start', { text: '가' }, host, 'teacher')).data;
   assert.notEqual(next.roundId, id);
   assert.equal((await req(path + '/result', { roundId: id, cells }, one.token)).status, 409);
-  clock += 300001;
+  // 시간이 끝난 순간 화면이 자동으로 낸 글씨가 닿을 만큼(4초)은 받아 준다.
+  clock += 3500 + 300000 + 1000;
+  assert.equal((await req(path, undefined, host)).data.phase, 'writing');
+  clock += 3001;
   assert.equal((await req(path, undefined, host)).data.phase, 'results');
   assert.equal(
     (await req(path + '/result', { roundId: next.roundId, cells: [cells[0]] }, one.token)).status,
