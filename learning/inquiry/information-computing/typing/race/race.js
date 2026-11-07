@@ -11,7 +11,7 @@
   let board = [], recent = [], claimedLocal = new Set(), targetId = null;
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   let localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
-  let sendChain = Promise.resolve(), lastCleared = null, composing = false;
+  let sendChain = Promise.resolve(), lastCleared = null, composing = false, muted = false;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', lastRank = null;
   const prevScores = new Map();
   const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2 };
@@ -270,7 +270,9 @@
     $('myLobbyHint').textContent = teamMode && s.me.team === null ? '아래에서 들어갈 팀을 눌러요!' : '선생님이 출발을 누르면 달려요!';
     if (!teamMode) $('lobbyRacers').replaceChildren(...s.participants.map(item));
     else {
-      $('teamColumns').style.setProperty('--teams', s.teams.length);
+      // 6팀까지는 한 줄, 7·8팀은 네 칸씩 두 줄.
+      $('teamColumns').style.setProperty('--cols', s.teams.length <= 6 ? s.teams.length : Math.ceil(s.teams.length / 2));
+      $('teamColumns').classList.toggle('many', s.teams.length > 6);
       $('teamColumns').replaceChildren(...s.teams.map((t) => {
         const col = document.createElement('div');
         col.className = 'team-col' + (s.me.team === t.index ? ' mine' : '') + (t.size >= C.TEAM_MAX ? ' full' : '');
@@ -349,12 +351,13 @@
       input.value = '';
       document.body.classList.remove('fever');
       document.body.classList.toggle('sentence-mode', C.MODES[s.config.mode].sentence);
-      $('typeHint').innerHTML = C.MODES[s.config.mode].sentence ? '다 치면 <kbd>Enter</kbd>' : '다 치면 <kbd>Space</kbd> 또는 <kbd>Enter</kbd>';
+      $('board').replaceChildren();
     }
     if (s.board) {
       board = s.board;
       recent = s.recent || [];
       paintBoard();
+      acceptIfDone();
     }
     renderTeamBar(s);
     // 현황판(전체 트랙)은 교사 화면과 학생 화면 모두에 나온다.
@@ -386,6 +389,7 @@
     bar.hidden = !s.teams;
     if (!s.teams) return;
     const shown = s.teams.filter((t) => t.size);
+    bar.classList.toggle('many', shown.length > 4);
     const top = Math.max(1, ...shown.map((t) => t.value));
     bar.replaceChildren(...shown.map((t) => {
       const row = document.createElement('div');
@@ -457,33 +461,47 @@
     }));
   }
 
-  // ── 낱말판 그리기 ── 아무도 안 친 낱말은 금빛으로 「🥇+5」, 누가 치면 얼굴이 붙고 다음 보너스로 내려간다.
+  // ── 낱말판 그리기 ── 칸마다 지금 치면 받을 점수(타수×콤보 + 먼저 친 순서 보너스)를 크게 단다.
+  // 아무도 안 친 낱말은 금빛(🥇 1등 +5), 한 명이 치면 은빛(🥈 +3), 두 명이면 동빛(🥉 +1), 그 뒤는 흐린 칸(낱말 점수만).
   const MEDALS = ['🥇', '🥈', '🥉'];
+  const TIERS = ['gold', 'silver', 'bronze'];
   const mineOf = (cell) => cell.mine || (claimedLocal.has(cell.id) ? 1 : 0);
   const open = () => [...board, ...recent].filter((cell) => !mineOf(cell));
+  // 실수 없이 다음 낱말을 치면 콤보가 하나 오른다(실수가 있으면 콤보 0으로 센다). 서버와 같은 셈.
+  const nextCombo = () => (mistakesThis ? 0 : localCombo + 1);
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   function paintBoard() {
     const box = $('board');
     const typed = normalized();
     box.classList.toggle('sentence', sentenceMode());
-    const alive = new Set();
+    const alive = new Set(board.map((cell) => String(cell.id)));
+    // 바뀐 칸: 옛 낱말은 제자리에서 터지듯 사라지고 새 낱말이 위에서 떨어진다.
+    box.querySelectorAll('.tile').forEach((tile) => { if (!alive.has(tile.dataset.id)) leave(tile); });
+    const dealing = !box.children.length;
     board.forEach((cell, i) => {
-      alive.add(String(cell.id));
-      let tile = box.querySelector(`[data-id="${cell.id}"]`);
+      let tile = box.querySelector(`.tile[data-id="${cell.id}"]`);
       if (!tile) {
         tile = document.createElement('div');
         tile.className = 'tile fresh-in';
         tile.dataset.id = cell.id;
-        tile.innerHTML = '<span class="tile-badge"></span><span class="tile-word"></span><span class="tile-who"></span><i class="tile-timer"></i>';
-        setTimeout(() => tile.classList.remove('fresh-in'), 500);
+        tile.style.animationDelay = dealing ? i * 70 + 'ms' : '140ms';
+        tile.innerHTML = '<span class="tile-badge"><b class="tile-medal"></b><b class="tile-points"></b></span><span class="tile-word"></span><span class="tile-who"></span><i class="tile-timer"></i>';
+        setTimeout(() => { tile.classList.remove('fresh-in'); tile.style.animationDelay = ''; }, 1000);
       }
       if (box.children[i] !== tile) box.insertBefore(tile, box.children[i] || null);
       const mine = mineOf(cell), count = Math.max(cell.count, mine ? 1 : 0);
-      tile.classList.toggle('untouched', !count);
-      tile.classList.toggle('taken', count > 0 && !mine);
-      tile.classList.toggle('done', Boolean(mine));
+      const tier = mine ? 'done' : TIERS[count] || 'plain';
+      // 다른 친구가 먼저 쳐서 한 단계 내려간 칸은 번쩍인다.
+      if (tile.dataset.tier && tile.dataset.tier !== tier && tier !== 'done') retrigger(tile, 'hit');
+      tile.dataset.tier = tier;
       tile.classList.toggle('target', cell.id === targetId);
-      const badge = tile.querySelector('.tile-badge');
-      badge.textContent = mine ? `✓ ${mine <= 3 ? mine + '등' : '쳤어요'}` : count < 3 ? `${MEDALS[count]}+${C.ORDER_BONUS[count]}` : '';
+      tile.querySelector('.tile-medal').textContent = mine ? '✓' : MEDALS[count] || '';
+      const points = tile.querySelector('.tile-points');
+      const label = mine ? (mine <= 3 ? mine + '등' : '') : '+' + C.claimScore(cell.text, nextCombo(), count + 1);
+      if (points.textContent !== label) {
+        if (points.textContent && !mine) retrigger(points, 'tick');
+        points.textContent = label;
+      }
       // 친 낱말에서는 지금 친 글자까지 초록으로 칠한다.
       const word = tile.querySelector('.tile-word');
       const chars = [...cell.text];
@@ -495,13 +513,59 @@
         if (cell.id === targetId) span.className = k < done ? 'ok' : k === done ? 'now' : '';
         return span;
       }));
-      tile.querySelector('.tile-who').replaceChildren(...(cell.claims || []).map((c) => face(c, 'tile-face')));
+      const who = tile.querySelector('.tile-who');
+      const claimKey = (cell.claims || []).map((c) => c.id).join(',');
+      if (who.dataset.key !== claimKey) {
+        const before = new Set((who.dataset.key || '').split(','));
+        who.dataset.key = claimKey;
+        who.replaceChildren(...(cell.claims || []).map((c) => face(c, 'tile-face' + (before.has(c.id) ? '' : ' new'))));
+      }
       // 첫 사람이 친 뒤 남은 시간: 막대가 줄어들다 낱말이 바뀐다.
       const timer = tile.querySelector('.tile-timer');
       if (count && !timer.dataset.on) { timer.dataset.on = '1'; timer.style.animationDuration = C.HOLD_MS + 'ms'; }
     });
-    box.querySelectorAll('.tile').forEach((tile) => { if (!alive.has(tile.dataset.id)) tile.remove(); });
     paintCombo();
+  }
+  // 판에서 빠지는 칸: 제자리를 지킨 채(카드 위에 겹쳐) 부풀며 사라진다. 그 밑으로 새 칸이 떨어진다.
+  function leave(tile) {
+    const card = $('card');
+    if (reduceMotion.matches || !tile.offsetWidth) return tile.remove();
+    const c = card.getBoundingClientRect(), r = tile.getBoundingClientRect();
+    tile.classList.remove('target', 'fresh-in', 'claim', 'hit');
+    tile.classList.add('ghost');
+    Object.assign(tile.style, { left: r.left - c.left - card.clientLeft + 'px', top: r.top - c.top - card.clientTop + 'px', width: r.width + 'px', height: r.height + 'px' });
+    card.append(tile);
+    setTimeout(() => tile.remove(), 500);
+  }
+  // 친 낱말이 내 로켓(아래 트랙의 내 줄)으로 날아간다. 내 줄이 화면 밖이면 오른쪽 순위표의 내 줄, 그것도 없으면 점수 칸으로.
+  function fly(text, from) {
+    if (reduceMotion.matches) return;
+    const visible = (el) => {
+      const r = el?.getBoundingClientRect();
+      return r && r.width && r.top >= 0 && r.bottom <= innerHeight ? r : null;
+    };
+    const car = $('track').querySelector('.lane.mine .car-emoji');
+    const to = visible(car) || visible($('miniBoard').querySelector('li.mine .mini-face')) || $('scoreNow').getBoundingClientRect();
+    const el = document.createElement('span');
+    el.className = 'fly-word' + ([...text].length > 8 ? ' long' : '');
+    el.textContent = text;
+    const x0 = from.left + from.width / 2, y0 = from.top + from.height / 2;
+    const dx = to.left + to.width / 2 - x0, dy = to.top + to.height / 2 - y0;
+    el.style.left = x0 + 'px';
+    el.style.top = y0 + 'px';
+    document.body.append(el);
+    const at = (fx, fy, scale, turn) => `translate(-50%, -50%) translate(${dx * fx}px, ${dy * fy}px) scale(${scale}) rotate(${turn}deg)`;
+    const motion = el.animate([
+      { transform: at(0, 0, 1, 0), opacity: 1 },
+      { transform: at(0.2, 0.08, 1.25, -6), opacity: 1, offset: 0.3 },
+      { transform: at(1, 1, 0.3, 10), opacity: 0.35 },
+    ], { duration: 620, easing: 'cubic-bezier(.55, 0, .8, .3)' });
+    motion.onfinish = () => {
+      el.remove();
+      burst(x0 + dx, y0 + dy, 14, 4);
+      const rocket = car?.closest('.car');
+      if (rocket && visible(car)) retrigger(rocket, 'boost');
+    };
   }
   function paintCombo() {
     $('comboNow').textContent = localCombo;
@@ -517,26 +581,33 @@
     return sentenceMode() ? v.replace(/^\s+/, '').replace(/\s+$/, (m) => (m.length > 1 ? ' ' : m)) : v.replace(/\s/g, '');
   }
   const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
+  // 친 글자와 맞는 낱말들. "사"와 "사과"처럼 더 긴 낱말이 함께 맞으면 longer.
+  function matches(clean) {
+    const tracking = open().filter((cell) => C.onTrack(clean, cell.text));
+    const exact = tracking.find((cell) => cell.text === clean);
+    return { tracking, exact, longer: tracking.some((cell) => cell.text !== clean) };
+  }
+  const cleaned = () => (sentenceMode() ? normalized().replace(/\s+$/, '') : normalized());
   function check(fromKey = false) {
-    if (!racing()) return;
+    if (!racing() || muted) return;
     const value = normalized();
-    const clean = sentenceMode() ? value.replace(/\s+$/, '') : value;
-    if (lastCleared && Date.now() - lastCleared.at < 120 && value && lastCleared.text.endsWith(value)) {
+    const clean = cleaned();
+    // 조합 중에 비운 칸에 IME가 마지막 글자(한라산의 산)를 다시 넣는 일이 있다. 비운 직후 그 끝 글자만 들어오면 지운다.
+    // 새로 치는 첫 키는 ㅅ처럼 낱자로 들어오므로 다 된 글자와 헷갈리지 않는다.
+    if (lastCleared?.composed && Date.now() - lastCleared.at < 400 && value && lastCleared.text.endsWith(value)) {
       input.value = '';
       lastCleared = null;
       targetId = null;
       return paintBoard();
     }
-    const cells = open();
     if (!clean) { targetId = null; erroring = false; $('card').classList.remove('wrong'); return paintBoard(); }
     // 치는 중인 낱말: 지금 고른 낱말이 계속 맞으면 그대로, 아니면 맞는 낱말 가운데 판 앞쪽 것.
-    const tracking = cells.filter((cell) => C.onTrack(clean, cell.text));
-    const exact = tracking.find((cell) => cell.text === clean);
+    const { tracking, exact, longer } = matches(clean);
     const keep = tracking.find((cell) => cell.id === targetId);
     targetId = (keep || exact || tracking[0])?.id ?? null;
-    // "사"와 "사과"처럼 더 긴 낱말이 남아 있으면 Space/Enter로 끝낸다.
-    const longer = tracking.some((cell) => cell.text !== clean);
-    if (exact && (!composing || fromKey) && (!longer || fromKey)) return complete(exact);
+    // 다 친 순간 바로 받는다. Space·Enter는 누르지 않아도 되고, 마지막 글자가 아직 조합 중이어도 된다.
+    // 더 긴 낱말이 함께 맞을 때만 다음 키(Space·Enter)를 기다린다. 서버가 그런 낱말을 판에 함께 두지 않으므로 거의 없다.
+    if (exact && (!longer || fromKey)) return complete(exact);
     const ok = tracking.length > 0;
     if (!ok && !erroring) {
       erroring = true;
@@ -548,6 +619,27 @@
     } else if (ok) erroring = false;
     $('card').classList.toggle('wrong', !ok);
     paintBoard();
+  }
+  // 판이 바뀌어 더 긴 낱말이 빠지면, 기다리던 짧은 낱말을 그때 받는다.
+  function acceptIfDone() {
+    if (!racing() || muted || !input.value) return;
+    const { exact, longer } = matches(cleaned());
+    if (exact && !longer) complete(exact);
+  }
+  // 다 친 낱말을 칸에서 지운다. 마지막 글자가 조합 중이면 value=''만으로는 IME가 그 글자를 다시 넣으므로
+  // 잠깐 포커스를 뺐다가(조합이 거기서 끝난다) 비우고 다시 준다. 그 사이에 오는 입력 이벤트는 듣지 않는다.
+  function clearField(text) {
+    const composed = composing && document.activeElement === input;
+    lastCleared = { text, at: Date.now(), composed };
+    if (composed) {
+      muted = true;
+      try {
+        input.blur();
+        input.value = '';
+        input.focus({ preventScroll: true });
+      } finally { muted = false; }
+    } else input.value = '';
+    composing = false;
   }
   function floatAtCard(text, cls) {
     const r = $('card').getBoundingClientRect();
@@ -561,15 +653,15 @@
     localScore += guess;
     mistakesThis = 0;
     erroring = false;
-    lastCleared = { text, at: Date.now() };
     claimedLocal.add(cell.id);
     targetId = null;
-    input.value = '';
+    clearField(text);
     $('card').classList.remove('wrong');
-    const tile = $('board').querySelector(`[data-id="${cell.id}"]`);
+    const tile = $('board').querySelector(`.tile[data-id="${cell.id}"]`);
     const r = (tile || $('card')).getBoundingClientRect();
     burst(r.left + r.width / 2, r.top + r.height / 2, localCombo >= C.COMBO_CAP ? 44 : 24, localCombo >= C.COMBO_CAP ? 10 : 7);
     sfx.good(localCombo);
+    fly(text, r);
     if (tile) retrigger(tile, 'claim');
     $('scoreNow').textContent = localScore;
     paintBoard();
@@ -577,11 +669,9 @@
     sendChain = sendChain.then(() => api('/rooms/' + code + '/type', { roundId, slot: cell.id, text, mistakes }))
       .then((data) => {
         if (state.roundId !== roundId) return;
-        // 몇 등이었는지는 서버가 정한다: 1등 +5, 2등 +3, 3등 +1.
-        const bonus = C.orderBonus(data.order);
-        floatText(data.order <= 3 ? `${MEDALS[data.order - 1]} ${data.order}등! +${data.gained}` : `+${data.gained}`, r.left + r.width / 2, r.top, data.order === 1 ? 'fever' : '');
-        if (bonus) floatText(`보너스 +${bonus}`, r.left + r.width / 2, r.top - 40, 'combo');
-        if (localCombo && localCombo % 5 === 0) floatText(`${localCombo} 콤보!`, r.left + r.width / 2, r.top - 80, 'combo');
+        // 몇 등이었는지는 서버가 정한다: 1등 +5, 2등 +3, 3등 +1. 칸에 붙어 있던 점수와 같은 셈의 수가 뜬다.
+        floatText(data.order <= 3 ? `${MEDALS[data.order - 1]} ${data.order}등 +${data.gained}` : `+${data.gained}`, r.left + r.width / 2, r.top, ['fever', 'silver', 'bronze'][data.order - 1] || '');
+        if (localCombo && localCombo % 5 === 0) floatText(`${localCombo} 콤보!`, r.left + r.width / 2, r.top - 44, 'combo');
         localScore = data.state.me.score;
         localCombo = data.combo;
         retrigger($('scoreNow'), 'bump');
@@ -599,8 +689,8 @@
         } catch { /* 다음 확인 때 다시 맞춘다 */ }
       });
   }
-  input.addEventListener('compositionstart', () => (composing = true));
-  input.addEventListener('compositionend', () => { composing = false; setTimeout(check, 0); });
+  input.addEventListener('compositionstart', () => { if (!muted) composing = true; });
+  input.addEventListener('compositionend', () => { if (muted) return; composing = false; setTimeout(check, 0); });
   // 한글 판인데 한/영 키가 영어로 되어 있으면, 친 키를 두벌식 한글로 바꿔 받는다(애들이 한/영 때문에 막히지 않게).
   let hanEnNoted = '';
   function fixHanEn() {
@@ -609,6 +699,7 @@
     if (hanEnNoted !== state.roundId) { hanEnNoted = state.roundId; toast('한/영 키가 영어로 되어 있어서 한글로 바꿔 받고 있어요.'); }
   }
   input.addEventListener('input', (e) => {
+    if (muted) return;
     composing = e.isComposing;
     if (!composing) fixHanEn();
     if (e.inputType !== 'deleteContentBackward') sfx.key();

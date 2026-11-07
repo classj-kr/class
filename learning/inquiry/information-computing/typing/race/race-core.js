@@ -18,9 +18,9 @@
   const DURATIONS = [60, 90, 120, 180];
   const RACERS = ['🚀', '🏎️', '🐆', '🦄', '🐉', '🦖', '🐬', '🦅', '🐝', '🦊', '🐯', '🐧', '🛸', '🚁', '🐎', '🦈', '🐙', '🦉', '🐼', '🐸', '🦁', '🐳', '🦋', '🐢'];
   const COMBO_CAP = 10;
-  // 팀전: 팀마다 1~5명. 모두가 보탠 점수를 합쳐 겨룬다.
+  // 팀전: 팀마다 1~5명, 8팀까지. 모두가 보탠 점수를 합쳐 겨룬다.
   const TEAM_MAX = 5;
-  const TEAM_COUNTS = [2, 3, 4, 5, 6];
+  const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];
   const TEAMS = [
     { name: '레드', emoji: '🔴', hue: 352 },
     { name: '블루', emoji: '🔵', hue: 212 },
@@ -28,6 +28,8 @@
     { name: '옐로', emoji: '🟡', hue: 48 },
     { name: '퍼플', emoji: '🟣', hue: 275 },
     { name: '오렌지', emoji: '🟠', hue: 26 },
+    { name: '핑크', emoji: '💗', hue: 322 },
+    { name: '스카이', emoji: '💠', hue: 190 },
   ];
   function teamBoard(rows, teamCount) {
     const teams = TEAMS.slice(0, teamCount).map((t, index) => {
@@ -93,6 +95,12 @@
     return out;
   }
   const strokes = (text) => [...keys(text)].length;
+  // 한 낱말이 다른 낱말의 앞부분(가/가방, 삭/사과, to/today)이면 판에 함께 두지 않는다.
+  // 다 치는 순간 바로 받아 주므로, 긴 낱말을 치던 중에 짧은 낱말로 먼저 들어가 버리지 않게.
+  function clash(a, b) {
+    const x = keys(a), y = keys(b);
+    return x.startsWith(y) || y.startsWith(x);
+  }
   // 받침이 다음 글자로 옮겨 가는 중간 모양(사→삭→사과)도 맞게 치는 중으로 본다.
   function onTrack(typed, target) {
     const a = keys(typed), b = keys(target);
@@ -118,5 +126,5 @@
         String(a.name).localeCompare(String(b.name), 'ko'),
     );
   }
-  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, strokes, onTrack, multiplier, itemScore, ORDER_BONUS, orderBonus, claimScore, boardSize, HOLD_MS, accuracy, rank };
+  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, strokes, clash, onTrack, multiplier, itemScore, ORDER_BONUS, orderBonus, claimScore, boardSize, HOLD_MS, accuracy, rank };
 });

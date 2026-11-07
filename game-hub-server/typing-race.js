@@ -10,7 +10,7 @@ const GRACE_MS = 1500;
 const MIN_MS_PER_STROKE = 20;
 
 // 손글씨 순위전처럼 한 수업 동안만 쓰는 방이라 서버 메모리에 둔다.
-function createTypingRace({ platform, now = Date.now, random = Math.random }) {
+function createTypingRace({ platform, now = Date.now, random = Math.random, pickItems = roundItems }) {
   const router = express.Router(),
     rooms = new Map(),
     TTL = 2 * 60 * 60 * 1000;
@@ -61,19 +61,21 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
   // ── 낱말판 ── 모두 같은 판을 보고, 아무 낱말이나 골라 친다. 먼저 친 순서대로 1·2·3등.
   // 낱말은 모두가 쳤거나, 첫 사람이 친 뒤 HOLD_MS가 지나면 새 낱말로 바뀐다.
   // 막 바뀐 낱말도 GRACE_MS 동안은 받아 준다(치던 중에 사라져도 억울하지 않게).
-  function slot(r) {
-    const index = r.next++;
+  // 다 치는 순간 바로 받아 주므로, 아직 받을 수 있는 낱말(판·막 바뀐 낱말)과 앞부분이 겹치는 낱말은 건너뛴다.
+  function slot(r, others = []) {
+    let index = r.next++;
+    for (let tries = 0; tries < 40 && others.some((o) => Core.clash(r.items[index % r.items.length], o)); tries++) index = r.next++;
     return { id: ++r.slotSeq, index, text: r.items[index % r.items.length], claims: [] };
   }
   function tick(r) {
     if (r.phase !== 'running' || !r.board) return;
     const t = now(), everyone = students(r).length;
-    r.board = r.board.map((x) => {
-      if (!x.claims.length || (x.claims.length < everyone && t - x.claims[0].at < Core.HOLD_MS)) return x;
-      r.recent.push({ ...x, retiredAt: t });
-      return slot(r);
-    });
     r.recent = r.recent.filter((x) => t - x.retiredAt < GRACE_MS);
+    r.board.forEach((x, i) => {
+      if (!x.claims.length || (x.claims.length < everyone && t - x.claims[0].at < Core.HOLD_MS)) return;
+      r.recent.push({ ...x, retiredAt: t });
+      r.board[i] = slot(r, [...r.board.filter((_, j) => j !== i), ...r.recent].map((y) => y.text));
+    });
   }
   const publicSlot = (r, x, p) => ({
     id: x.id,
@@ -216,11 +218,12 @@ function createTypingRace({ platform, now = Date.now, random = Math.random }) {
           throw fail(409, '두 팀 이상에 학생이 있어야 출발할 수 있어요.');
       }
       const perSecond = Core.MODES[r.config.mode].sentence ? 0.5 : 1.6;
-      r.items = roundItems(r.config.mode, Math.ceil(r.config.duration * perSecond) + 20, random);
+      r.items = pickItems(r.config.mode, Math.ceil(r.config.duration * perSecond) + 20, random);
       r.next = 0;
       r.slotSeq = 0;
       r.recent = [];
-      r.board = Array.from({ length: Core.boardSize(r.config.mode) }, () => slot(r));
+      r.board = [];
+      while (r.board.length < Core.boardSize(r.config.mode)) r.board.push(slot(r, r.board.map((y) => y.text)));
       r.roundId = crypto.randomUUID();
       r.phase = 'running';
       r.startsAt = now() + COUNTDOWN_MS;

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b0820">
   <title>타자 RACE</title>
-  <link rel="stylesheet" href="race.css?v=20261107-board2">
+  <link rel="stylesheet" href="race.css?v=20261107-auto">
 </head>
 <body data-screen="entry">
   <div class="sky" aria-hidden="true"><div class="stars"></div><div class="grid-floor"></div></div>
@@ -68,7 +68,6 @@
         <div class="play">
           <div id="card" class="word-card"><div id="board" class="board" aria-live="off"></div></div>
           <textarea id="typeInput" rows="1" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="위 글자 입력"></textarea>
-          <p id="typeHint" class="type-hint">다 치면 <kbd>Space</kbd> 또는 <kbd>Enter</kbd></p>
           <p id="chase" class="chase"></p>
         </div>
         <ol id="miniBoard" class="mini-board"></ol>
@@ -100,15 +99,16 @@
   <script src="/assets/site-storage.js?v=20261006-1"></script>
   <template id="settingsHelp">
     <p>방을 만들고 친구에게 방번호를 알려 주세요. 친구는 메인 화면에서 방번호로 들어올 수 있어요.</p>
-    <p>판에 뜬 낱말 가운데 아무거나 골라 입력하고 Space 또는 Enter를 눌러요. 낱말 점수는 친 타수만큼이에요.</p>
-    <p>같은 낱말을 먼저 친 순서대로 1등 +5, 2등 +3, 3등 +1을 더 받아요. 아무도 안 친 금빛 낱말이 1등 기회예요.</p>
-    <p>누가 친 낱말은 5초 뒤 새 낱말로 바뀌어요. 틀리지 않고 연속으로 치면 콤보로 낱말 점수가 최대 2배가 돼요.</p>
+    <p>판에 뜬 낱말 가운데 아무거나 골라 입력해요. 끝 글자까지 치는 순간 바로 들어가요.</p>
+    <p>칸에 붙은 수가 지금 치면 받는 점수예요. 낱말 점수(친 타수)에 먼저 친 순서대로 1등 +5, 2등 +3, 3등 +1을 더해요.</p>
+    <p>아무도 안 친 금빛 칸이 1등 기회, 은빛은 2등, 동빛은 3등 자리예요. 누가 친 낱말은 5초 뒤 새 낱말로 바뀌어요.</p>
+    <p>틀리지 않고 연속으로 치면 콤보로 낱말 점수가 최대 2배가 돼요. 칸의 점수도 같이 올라가요.</p>
     <p>팀전은 모두가 모은 점수의 합계로 겨뤄요.</p>
   </template>
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file"></script>
   <script src="/assets/sound/race-music.js?v=20261106-1"></script>
   <script src="/assets/sound/music-control.js?v=20261105-settings-panel" data-settings-help="settingsHelp"></script>
-  <script src="race-core.js?v=20261107-board"></script>
-  <script src="race.js?v=20261107-board"></script>
+  <script src="race-core.js?v=20261107-auto"></script>
+  <script src="race.js?v=20261107-auto"></script>
 </body>
 </html>
