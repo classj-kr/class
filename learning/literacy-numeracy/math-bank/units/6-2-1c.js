@@ -19,7 +19,7 @@
 (function (root) {
   'use strict';
   const B = root.MathBank;
-  const { josa, name, NAMES, box, frac, mixed, lines, cards, N, M, C, F } = B.kit;
+  const { josa, name, NAMES, box, frac, mixed, lines, cards, table, N, M, C, F } = B.kit;
   const STD = '6수01-11';
   // 실력 문항. 기본 자료에서만 나온 꼴은 ref 를 '기본 ②52' 처럼 적는다.
   const H = (id, title, ref, make, more) => Object.assign({ id, level: '실력', title, source: ref.startsWith('기본 ') ? '수집본 기본 자료(' + ref.slice(3) + ')' : '수집본 심화 자료(' + ref + ')', make }, more || {});
@@ -481,7 +481,39 @@
         return ansQ(`길이가 ${show(start)} cm인 양초에 불을 붙이고 ${show(t)}시간이 지난 뒤에 길이를 재었더니 ${show(now)} cm였다. 양초가 일정한 빠르기로 탔을 때, 1시간 동안 탄 양초의 길이는 몇 cm인가?`, qdiv(qadd(q(start), q(now), '-'), q(t)), {
           unit: 'cm', explain: `${show(t)}시간 동안 탄 길이는 ${show(start)} − ${show(now)} = ${show(burnt)}(cm)이다. 탄 길이를 걸린 시간으로 나누면 ${how(burnt, t)}이다.`
         });
-      })
+      }),
+      H('hard-denom-both', '두 분수 나눗셈의 크기 조건을 모두 만족하는 분모', '', (d) => {
+        const numerator = d.int(2, 3), left = d.int(3, 8), right = d.int(3, 8);
+        const lower = d.int(numerator, 6), upper = lower + d.int(3, 6);
+        const min = left * lower + d.pick([0, 1]), max = right * upper - d.pick([0, 1]);
+        const possible = Array.from({ length: upper - lower - 1 }, (_, i) => lower + i + 1);
+        return { ...N('두 식의 □에는 같은 자연수가 들어간다. 두 분수가 모두 진분수일 때, □에 들어갈 수 있는 자연수는 모두 몇 개인가?', possible.length, {
+          unit: '개', figure: lines([eq(left, '/', frac(1, box()), '>', min), eq(right * numerator, '/', frac(numerator, box()), '<', max)]),
+          explain: `두 나눗셈을 각각 ${left} × □와 ${right} × □로 고쳐 쓸 수 있다. ${left} × ${lower} = ${left * lower}이므로 첫째 식을 만족하려면 자연수 □가 ${lower}보다 커야 한다. ${right} × ${upper} = ${right * upper}이므로 둘째 식을 만족하려면 □가 ${upper}보다 작아야 한다. 두 조건에 모두 맞는 자연수는 ${possible.join(', ')}${tail(possible[possible.length - 1], '으로/로')} 모두 ${possible.length}개이다.`,
+          facts: { digitBoth: { templates: [`${left}*□>${min}`, `${right * numerator}*□<${max}*${numerator}`], lo: numerator + 1, hi: upper + 1 } }
+        }), hint: '나눗셈을 곱셈으로 바꿔 각 식이 허용하는 □의 범위를 찾아보세요. 양쪽 값이 같은 경우도 들어가는지 확인해 보세요.' };
+      }, { source: '금성 잘 나오는, 잘 틀리는 유형 6학년 · 잘 틀리는 유형 1-2' }),
+      H('hard-proper-card-min', '카드 네 장을 골라 두 진분수의 몫을 가장 작게 만들기', '', (d) => {
+        const digits = d.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 5);
+        const ordered = digits.slice().sort((a, b) => a - b);
+        const smaller = (best, next) => cmp(next.quotient, best.quotient) < 0 ? next : best;
+        const cases = ordered.map(omitted => {
+          const [a, b, c, e] = ordered.filter(n => n !== omitted);
+          const pairings = [[a, b, c, e], [a, c, b, e], [a, e, b, c]];
+          const best = pairings.map(([p, q, r, s]) => {
+            let first = V(0, p, q), second = V(0, r, s);
+            if (p * s > r * q) [first, second] = [second, first];
+            return { first, second, quotient: div(first, second) };
+          }).reduce(smaller);
+          return { omitted, ...best };
+        });
+        const { first, second } = cases.reduce(smaller);
+        return { ...ans('수 카드 다섯 장 중 네 장을 골라 □에 한 장씩 넣는다. 두 분수가 모두 진분수일 때, 만들 수 있는 가장 작은 몫은?', first, second, {
+          figure: cards(digits) + eq(frac(box(), box()), '/', frac(box(), box())),
+          explain: `카드 한 장을 빼고 나머지 네 장을 두 장씩 짝짓는 방법은 세 가지이다. 각 방법에서 작은 진분수를 큰 진분수로 나누어야 몫이 작다. 뺀 카드별로 세 몫을 비교하면 다음과 같다.<br>${table(['뺀 카드', '가장 작은 몫'], cases.map(({ omitted, first, second, quotient }) => [omitted, eq(show(first), '/', show(second), '=', sv(quotient))]))}그중 가장 작은 몫은 ${sv(div(first, second))}이다.`,
+          facts: { minQuotientCards: digits }
+        }), hint: '빼 둘 카드 한 장을 먼저 정하고, 남은 네 장을 두 장씩 짝지어 보세요. 어느 분수를 앞에 놓을 때 몫이 더 작은지도 비교해 보세요.' };
+      }, { source: '금성 잘 나오는, 잘 틀리는 유형 6학년 · 잘 틀리는 유형 3-2' })
     ]
   });
 })(typeof window !== 'undefined' ? window : globalThis);

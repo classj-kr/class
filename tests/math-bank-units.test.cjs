@@ -1083,6 +1083,20 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.equal(new Set(f.mulCards).size, 3, label); assert.ok(f.mulCards.every((v) => v >= 1 && v <= 9), label);
       assert.equal(answerAt(item, 0), Math.max(...all), label); tally('mulCards');
     }
+    if (f.minProductCards || f.minQuotientCards) {
+      // 카드의 자리를 하나씩 골라 네 자리가 서로 다른 모든 배치를 검사한다.
+      const digits = f.minProductCards || f.minQuotientCards, quotient = Boolean(f.minQuotientCards);
+      assert.equal(new Set(digits).size, quotient ? 5 : 4, label);
+      assert.ok(digits.every(n => Number.isInteger(n) && n >= 1 && n <= 9), label);
+      let min = Infinity;
+      for (const a of digits) for (const b of digits) for (const c of digits) for (const d of digits) {
+        if (new Set([a, b, c, d]).size !== 4) continue;
+        if (quotient && (a >= b || c >= d)) continue;
+        min = Math.min(min, quotient ? (a * d) / (b * c) : (10 * a + b) * (10 * c + d));
+      }
+      assert.equal(quotient ? answerAt(item, 0) / answerAt(item, 1) : answerAt(item, 0), min, label);
+      tally(quotient ? 'minQuotientCards' : 'minProductCards');
+    }
     if (f.divEnds) {
       const big = Math.max(...f.divEnds), small = Math.min(...f.divEnds);
       assert.equal(new Set(f.divEnds).size, f.divEnds.length, label);
