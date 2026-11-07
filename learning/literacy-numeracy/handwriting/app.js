@@ -43,6 +43,10 @@
     cells = [],
     marks = [];
   const CELL_PIXELS = 240;
+  // 교과서 칸 공책처럼 글자가 칸을 꽉 채우지 않고 사방에 여백이 남게 한다.
+  const GLYPH_SCALE = 0.88;
+  const shownModel = (char) =>
+    (C.model(char) || []).map((path) => path.map(([x, y]) => [(x - 50) * GLYPH_SCALE + 50, (y - 50) * GLYPH_SCALE + 50]));
   // 브라우저는 화면의 실제 길이를 모른다. 학교에서 쓰는 아이패드·크롬북은 화면의 실제 픽셀 수로 패널을 알아보고,
   // 그 패널의 인치당 픽셀 수로 1cm가 CSS 몇 px인지 구한다. 모르는 기기는 그대로 둔다.
   (function () {
@@ -148,6 +152,9 @@
     const layout = Reference.layout(char);
     if (!layout) return;
     context.save();
+    context.translate(50, 50);
+    context.scale(GLYPH_SCALE, GLYPH_SCALE);
+    context.translate(-50, -50);
     context.font = `${layout[0]}px PracticeReference`;
     context.textAlign = 'left';
     context.textBaseline = 'alphabetic';
@@ -179,7 +186,7 @@
       path(context, [[0, 50], [100, 50]], '#d8ded1', 0.5);
       context.setLineDash([]);
     }
-    const paths = C.model(char) || [];
+    const paths = shownModel(char);
     if (trace && referenceReady) reference(context, char, '#cdd3c7');
     strokes.forEach((s) => path(context, s.points, '#233c34', s.width || doc.width));
     if (next && trace && strokes.length < paths.length) {
@@ -607,7 +614,7 @@
   };
   $('demoButton').onclick = () => {
     stopDemo();
-    const paths = C.model(letters()[doc.index]),
+    const paths = shownModel(letters()[doc.index]),
       start = performance.now(),
       m = modelCanvas.getContext('2d');
     $('demoButton').textContent = '재생 중';
