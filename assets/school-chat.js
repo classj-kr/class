@@ -594,22 +594,47 @@
         }
     }
 
+    // 스위치 모양은 채팅을 켜기 전에도 설정 창에 보여야 해서 채팅 창 스타일과 따로 넣는다.
+    function injectSettingStyle() {
+        if (document.getElementById("sc-setting-style")) return;
+        const style = el("style");
+        style.id = "sc-setting-style";
+        style.textContent = `
+            .sc-setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;font-size:14px;color:inherit}
+            .sc-switch{position:relative;flex:none;width:46px;height:26px;border-radius:13px;border:1px solid rgba(255,255,255,.35);background:#4a5568;cursor:pointer;padding:0;transition:background .15s,border-color .15s}
+            .sc-switch span{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
+            .sc-switch[aria-checked="true"]{background:#2e9d62;border-color:#2e9d62}
+            .sc-switch[aria-checked="true"] span{transform:translateX(20px)}
+            .sc-switch:focus-visible{outline:2px solid #f0d77c;outline-offset:2px}
+        `;
+        document.head.appendChild(style);
+    }
+
     // 설정 창(공용 소리 스크립트가 만든 #unifiedSettingsPanel)에 항목을 끼운다. 창이 아직 없으면 생길 때까지 기다린다.
     function installSetting(store) {
         const put = panel => {
             if (panel.querySelector("#settingsChat")) return;
-            const button = el("button", "unified-settings-action");
+            injectSettingStyle();
+            // "채팅 사용: 켜짐" 같은 글자 단추는 지금 상태인지 누르면 바뀌는 것인지 헷갈린다. 켜고 끄는 스위치로 보인다.
+            const row = el("div", "sc-setting-row");
+            const label = el("span", "", "채팅 사용");
+            label.id = "settingsChatLabel";
+            const button = el("button", "sc-switch");
             button.id = "settingsChat";
             button.type = "button";
-            const paint = () => { button.textContent = `채팅 사용: ${enabled ? "켜짐" : "꺼짐"}`; button.setAttribute("aria-pressed", String(enabled)); };
+            button.setAttribute("role", "switch");
+            button.setAttribute("aria-labelledby", "settingsChatLabel");
+            button.appendChild(el("span"));
+            const paint = () => button.setAttribute("aria-checked", String(enabled));
             button.addEventListener("click", () => {
                 if (enabled) disableChat(); else enableChat();
                 store.set("chatEnabled", enabled);
                 paint();
             });
             paint();
+            row.append(label, button);
             const status = panel.querySelector(".unified-settings-status");
-            if (status) panel.insertBefore(button, status); else panel.appendChild(button);
+            if (status) panel.insertBefore(row, status); else panel.appendChild(row);
         };
         const existing = document.getElementById("unifiedSettingsPanel");
         if (existing) return put(existing);
