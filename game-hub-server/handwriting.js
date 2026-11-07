@@ -110,7 +110,7 @@ function createHandwriting({ platform, now = Date.now }) {
       const settings = config(req.body);
       let player;
       if (await teacher(req)) {
-        player = { id: crypto.randomUUID(), token: token(), host: true, plays: req.body?.spectate !== true, name: '선생님', avatarUrl: null, ready: true, status: '대기', result: null };
+        player = { id: crypto.randomUUID(), token: token(), host: true, plays: req.body?.spectate !== true, name: '선생님', avatarUrl: avatar(req.body?.avatarUrl), ready: true, status: '대기', result: null };
       } else {
         const name = String((await platform.displayNameFor(req))?.name || '').trim();
         if (!name || name.length > 40) throw fail(403, '메인 화면에서 이름을 확인하고 방을 열어 주세요.');

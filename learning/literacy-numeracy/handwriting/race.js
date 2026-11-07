@@ -250,10 +250,12 @@
   const known = new Map(); // 앞 상태의 참가자(새로 들어옴·준비·제출을 알아보려고)
   const status = (message) => ($('roomStatus').textContent = message);
   const serverNow = () => Date.now() + offset;
-  const myAvatar = fetch('/api/student/profile', { cache: 'no-store', credentials: 'same-origin' })
+  // 내 아바타: 학생은 학생 프로필, 선생님은 선생님 설정에 고른 아바타. 둘 다 없으면 동물 그림을 쓴다.
+  const avatarOf = (path) => fetch(path, { cache: 'no-store', credentials: 'same-origin' })
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => data?.profile?.avatar?.url || null)
     .catch(() => null);
+  const myAvatar = avatarOf('/api/student/profile').then((url) => url || avatarOf('/api/teacher/settings'));
   async function api(path, body) {
     const sent = Date.now();
     const r = await fetch('/api/handwriting' + path, {

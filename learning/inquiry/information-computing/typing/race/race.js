@@ -18,10 +18,12 @@
   const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2 };
   const serverNow = () => Date.now() + offset;
   // 순위판에 띄울 학생 프로필 아바타(연산 순위전과 같은 곳). 없으면 동물 이모지가 대신 달린다.
-  const myAvatar = fetch('/api/student/profile', { cache: 'no-store', credentials: 'same-origin' })
+  // 내 아바타: 학생은 학생 프로필, 선생님은 선생님 설정에 고른 아바타. 둘 다 없으면 동물 그림을 쓴다.
+  const avatarOf = (path) => fetch(path, { cache: 'no-store', credentials: 'same-origin' })
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => data?.profile?.avatar?.url || null)
     .catch(() => null);
+  const myAvatar = avatarOf('/api/student/profile').then((url) => url || avatarOf('/api/teacher/settings'));
   // 교사만 "참여하지 않고 관전하기"를 고를 수 있다.
   let isTeacher = false;
   fetch('/api/typing-race/session', { cache: 'no-store', credentials: 'same-origin' })

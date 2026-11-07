@@ -155,7 +155,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
       const isTeacher = await teacher(req);
       let player;
       // 교사는 "참여하지 않고 관전하기"를 고르면 큰 화면 현황판만 본다.
-      if (isTeacher) player = resetScore({ id: crypto.randomUUID(), token: token(), host: true, plays: req.body?.spectate !== true, name: '선생님', team: null, avatarUrl: null, racer: Core.RACERS[0] });
+      if (isTeacher) player = resetScore({ id: crypto.randomUUID(), token: token(), host: true, plays: req.body?.spectate !== true, name: '선생님', team: null, avatarUrl: avatar(req.body?.avatarUrl), racer: Core.RACERS[0] });
       else {
         const name = String((await platform.displayNameFor(req))?.name || '').trim();
         if (!name || name.length > 40) throw fail(403, '메인 화면에서 이름을 확인하고 방을 열어 주세요.');
