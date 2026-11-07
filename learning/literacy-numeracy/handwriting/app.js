@@ -53,10 +53,21 @@
     Font.setStyle(STYLE_FONTS[name] ? name : 'gyeongpil');
     $('styleSelect').value = Font.style();
   }
-  // 교과서 칸 공책처럼 글자가 칸을 꽉 채우지 않고 사방에 여백이 남게 한다.
-  const GLYPH_SCALE = 0.88;
-  const shownModel = (char) =>
-    (C.model(char) || []).map((path) => path.map(([x, y]) => [(x - 50) * GLYPH_SCALE + 50, (y - 50) * GLYPH_SCALE + 50]));
+  // 교과서 칸 공책처럼 글자 높이가 칸의 70%쯤 되고 칸 한가운데 오게 한다. 글꼴마다 글자의 평균 잉크 상자
+  // (모형 단위: 높이 h, 가운데 cx·cy)를 재 둔 값이다. 쓴 획은 채점 전에 본보기 좌표로 되돌린다.
+  const STYLE_FIT = {
+      gyeongpil: { h: 91.3, cx: 44.7, cy: 48.4 },
+      badasseugi: { h: 85.8, cx: 42, cy: 50 },
+    },
+    GLYPH_HEIGHT = 70;
+  const fit = () => {
+    const f = STYLE_FIT[Font.style()] || STYLE_FIT.gyeongpil;
+    return { s: GLYPH_HEIGHT / f.h, cx: f.cx, cy: f.cy };
+  };
+  const toShown = ([x, y], f = fit()) => [(x - f.cx) * f.s + 50, (y - f.cy) * f.s + 50];
+  const toModel = ([x, y], f = fit()) => [(x - 50) / f.s + f.cx, (y - 50) / f.s + f.cy];
+  const shownModel = (char) => (C.model(char) || []).map((path) => path.map((p) => toShown(p)));
+  const modelStrokes = (strokes) => strokes.map((s) => ({ ...s, points: (s.points || s).map((p) => toModel(p)) }));
   // 브라우저는 화면의 실제 길이를 모른다. 학교에서 쓰는 아이패드·크롬북은 화면의 실제 픽셀 수로 패널을 알아보고,
   // 그 패널의 인치당 픽셀 수로 1cm가 CSS 몇 px인지 구한다. 모르는 기기는 그대로 둔다.
   (function () {
@@ -162,9 +173,10 @@
     const layout = Reference.layout(char);
     if (!layout) return;
     context.save();
+    const f = fit();
     context.translate(50, 50);
-    context.scale(GLYPH_SCALE, GLYPH_SCALE);
-    context.translate(-50, -50);
+    context.scale(f.s, f.s);
+    context.translate(-f.cx, -f.cy);
     context.font = `${STYLE_WEIGHTS[Font.style()] || 500} ${layout[0]}px ${STYLE_FONTS[Font.style()] || STYLE_FONTS.gyeongpil}`;
     context.textAlign = 'left';
     context.textBaseline = 'alphabetic';
@@ -475,7 +487,7 @@
           after = [...before, a.stroke];
         doc.cells[doc.phase][doc.index] = after;
         record(before, after);
-        const result = C.judge(letters()[doc.index], after);
+        const result = C.judge(letters()[doc.index], modelStrokes(after));
         if (after.length === result.expected) {
           $('strokeStatus').textContent = result.order ? '획순과 방향을 잘 지켰어요.' : '획순 보기와 비교해 보세요.';
           // 다 쓰면 다음 빈 칸으로 넘어간다.
@@ -604,7 +616,7 @@
   // 확인: 쓴 칸을 모두 채점해 칸마다 통과(초록)·다시(주황)를 표시한다.
   $('checkButton').onclick = () => {
     cancel();
-    const results = letters().map((c, i) => (doc.cells[doc.phase][i].length ? C.judge(c, doc.cells[doc.phase][i]) : null));
+    const results = letters().map((c, i) => (doc.cells[doc.phase][i].length ? C.judge(c, modelStrokes(doc.cells[doc.phase][i])) : null));
     const written = results.filter(Boolean);
     marks = results.map((r) => (r ? (r.order ? 'pass' : 'retry') : undefined));
     render();
@@ -785,7 +797,7 @@
     },
     cells() {
       cancel();
-      return snapshot().cells[doc.phase];
+      return snapshot().cells[doc.phase].map(modelStrokes);
     },
   };
 })();
