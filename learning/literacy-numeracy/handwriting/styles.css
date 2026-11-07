@@ -17,6 +17,9 @@
   /* 공책 한 칸. 화면에 맞춰 커지되 너무 크지 않게. */
   --practice-cell: clamp(64px, 9vw, 104px);
 }
+:root[data-physical]:not([data-cell-size='small']):not([data-cell-size='medium']):not([data-cell-size='large']) {
+  --practice-cell: calc(var(--px-per-cm) * 1.5px);
+}
 :root[data-cell-size='small'] {
   --practice-cell: 64px;
 }
