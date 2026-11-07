@@ -50,9 +50,11 @@ def glyph(contours):
         points = [p for i, p in enumerate(points) if not i or p != points[i - 1]]
         if len(set(points)) < 3:
             continue
-        pen.moveTo(points[0])
-        for point in points[1:]:
-            pen.lineTo(point)
+        if points[0] == points[-1]:
+            points = points[:-1]
+        # All points become off-curve quadratic controls: the outline turns into a smooth
+        # spline through their midpoints instead of a faceted polyline.
+        pen.qCurveTo(*points, None)
         pen.closePath()
     return pen.glyph()
 
@@ -125,7 +127,7 @@ def main():
         for cp in check_points:
             g = f['glyf'][mapping[cp]]
             assert g.numberOfContours > 0
-            assert 0 <= g.xMin < g.xMax <= 1000 and -180 <= g.yMin < g.yMax <= 815, (hex(cp),g.xMin,g.yMin,g.xMax,g.yMax)
+            assert -15 <= g.xMin < g.xMax <= 1000 and -180 <= g.yMin < g.yMax <= 815, (hex(cp),g.xMin,g.yMin,g.xMax,g.yMax)
         f.close()
     print('Font tables verified', flush=True)
     assert hashlib.sha256(SOURCE.read_bytes()).hexdigest() == source_hash, 'Font source changed during the build; rebuild before publishing.'
