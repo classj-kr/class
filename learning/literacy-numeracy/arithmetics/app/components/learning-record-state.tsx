@@ -105,7 +105,7 @@ let sdkLoading: Promise<any> | undefined;
 function loadSdk() {
   if ((window as any).LearningRecords) return Promise.resolve((window as any).LearningRecords);
   return sdkLoading ||= new Promise((resolve, reject) => {
-    const script = document.createElement("script"); script.src = "/assets/learning-records.js?v=20261002";
+    const script = document.createElement("script"); script.src = "/assets/learning-records.js?v=20261107-race-range";
     script.onload = () => resolve((window as any).LearningRecords);
     script.onerror = () => { sdkLoading = undefined; script.remove(); reject(new Error("학습 기록 연결을 불러오지 못했어요.")); };
     document.head.appendChild(script);

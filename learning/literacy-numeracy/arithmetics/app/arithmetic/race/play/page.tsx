@@ -455,7 +455,7 @@ export default function ArithmeticRaceCardsPage() {
 
         <aside className="card-race-side" aria-label="실시간 순위">
           {teams ? <>
-            <RaceTowers title="팀 수 모형 탑" unit="팀" playing={playing} myId={myTeam ? `team-${myTeam.index}` : undefined}
+            <RaceTowers title="팀 수 모형 탑" unit="팀" playing={playing} limit={teams.length} myId={myTeam ? `team-${myTeam.index}` : undefined}
               entries={teams.map((team) => ({ id: `team-${team.index}`, name: team.name, score: team.score, rank: team.rank, symbol: team.symbol, hue: team.hue }))} />
             <p className="math-race-chase">{shownRank === 1 ? "👑 우리 팀 탑이 가장 높아요!" : myTeam ? `1위 팀까지 ${Math.max(0, Math.max(...teams.map((team) => team.score)) - myTeam.score)}칸!` : "맞힐 때마다 팀 탑이 한 칸씩 쌓여요!"}</p>
             {myTeam ? <ol className="math-race-teammates" aria-label="우리 팀">

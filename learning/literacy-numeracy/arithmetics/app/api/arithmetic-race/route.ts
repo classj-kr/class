@@ -1,8 +1,8 @@
 import { raceWorksheetByRoute } from "../../../lib/arithmetic-worksheets";
 import { rankArrivedParticipants, rankCardParticipants } from "../../../lib/arithmetic-race-ranking";
-import { hasRaceCards, isRaceAnswerCorrect, RACE_DURATIONS, raceAnswerText, raceCard } from "../../../lib/race-cards";
+import { hasRaceCards, isRaceAnswerCorrect, raceAnswerText, raceCard } from "../../../lib/race-cards";
 import { raceComboPoints, raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
-import { fillRaceTeams, raceTeamBoard, raceTeamCount, shuffleRaceTeams } from "../../../lib/arithmetic-race-teams";
+import { fillRaceTeams, RACE_DEFAULT_DURATION, raceDuration, raceTeamBoard, raceTeamCount, shuffleRaceTeams } from "../../../lib/arithmetic-race-teams";
 import { requestRoomCode } from "../../../../../../shared/room-codes.cjs";
 
 function error(message: string, status = 400) {
@@ -161,9 +161,9 @@ export async function POST(request: Request) {
       const name = String(payload.name ?? "").trim().slice(0, 20);
       if (!worksheet) return error("순위 모드에서 사용할 수 없는 학습지입니다.");
       if (!name) return error("이름 정보를 확인하세요.");
-      const requested = Number(payload.durationSeconds);
+      // 제한 시간은 대기실에서 방장이 바꾼다. 처음에는 기본값으로 연다.
       const durationSeconds = hasRaceCards(worksheet.route)
-        ? (RACE_DURATIONS as readonly number[]).includes(requested) ? requested : 180
+        ? raceDuration(payload.durationSeconds) ?? RACE_DEFAULT_DURATION
         : null;
       const worksheetName = `${worksheet.grade} · ${worksheet.title}`;
       const hostToken = crypto.randomUUID();
@@ -325,6 +325,19 @@ export async function POST(request: Request) {
         await store.setTeams(code, shuffleRaceTeams(await store.participants(code), race.team_count));
       }
       return Response.json({ ok: true });
+    }
+
+    if (action === "duration") {
+      const code = String(payload.roomCode ?? "").trim();
+      const hostToken = String(payload.hostToken ?? "");
+      const race = await store.race(code);
+      if (!race || race.teacher_token !== hostToken) return error("방장 권한을 확인하세요.", 403);
+      if (!race.duration_seconds) return error("제한 시간은 카드 순위전에서만 정합니다.");
+      if (race.status !== "waiting") return error("출발한 뒤에는 시간을 바꿀 수 없습니다.", 409);
+      const durationSeconds = raceDuration(payload.durationSeconds);
+      if (durationSeconds === null) return error("제한 시간을 확인하세요.");
+      if (!await store.setDuration(code, hostToken, durationSeconds)) return error("출발한 뒤에는 시간을 바꿀 수 없습니다.", 409);
+      return Response.json({ ok: true, durationSeconds });
     }
 
     if (action === "team") {

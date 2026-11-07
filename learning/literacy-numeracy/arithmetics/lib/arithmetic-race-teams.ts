@@ -1,12 +1,25 @@
-// 연산 순위전 팀전. 팀 이름은 네 연산 기호에서 따온다.
+// 연산 순위전 대기실에서 방장이 고르는 것: 제한 시간과 팀.
+export const RACE_DURATIONS = [60, 120, 180] as const;
+export const RACE_DEFAULT_DURATION = 180;
+
+export function raceDuration(value: unknown) {
+  const seconds = Number(value);
+  return (RACE_DURATIONS as readonly number[]).includes(seconds) ? seconds : null;
+}
+
+// 팀 이름은 수학 기호에서 따온다. 앞의 넷은 네 연산, 뒤의 넷은 비교와 퍼센트.
 export const RACE_TEAMS = [
   { name: "더하기팀", symbol: "+", hue: 4 },
   { name: "빼기팀", symbol: "−", hue: 214 },
   { name: "곱하기팀", symbol: "×", hue: 146 },
   { name: "나누기팀", symbol: "÷", hue: 32 },
+  { name: "같다팀", symbol: "=", hue: 270 },
+  { name: "크다팀", symbol: ">", hue: 186 },
+  { name: "작다팀", symbol: "<", hue: 322 },
+  { name: "퍼센트팀", symbol: "%", hue: 52 },
 ] as const;
 
-export const RACE_TEAM_COUNTS = [2, 3, 4] as const;
+export const RACE_TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8] as const;
 
 export function raceTeamCount(value: unknown) {
   const count = Number(value);

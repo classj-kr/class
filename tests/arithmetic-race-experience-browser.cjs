@@ -7,7 +7,8 @@ const { execFileSync } = require('node:child_process');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname, '..');
 const base = process.env.ARITHMETIC_TEST_URL || 'http://127.0.0.1:8791';
-const out = path.join(root, 'outputs/arithmetic-race');
+const built = path.join(root, 'learning/literacy-numeracy/arithmetics/dist/client');
+const out = process.env.ARITHMETIC_CAPTURE_DIR || path.join(root, 'outputs/arithmetic-race');
 
 async function capture(page, name) {
   fs.mkdirSync(out, { recursive: true });
@@ -51,6 +52,7 @@ async function main() {
     page.on('console', message => {
       if (message.type() === 'error' && /hydrat|server rendered HTML/i.test(message.text())) errors.push(message.text());
     });
+    let created = null;
     const me = { id: 'me', name: '가람', score: 0, cardIndex: 0, correctCount: 0, wrongCount: 0, skipCount: 0 };
     const peers = [{ id: 'a', name: '나래', score: 3, correctCount: 3 }, { id: 'b', name: '다솜', score: 2, correctCount: 2 }, { id: 'c', name: '하람', score: 1, correctCount: 1 }, { id: 'd', name: '새봄', score: 0, correctCount: 0 }];
     const race = { roomCode: '2468', worksheetName: '초1 · 덧셈과 뺄셈', worksheetRoute: '/arithmetic/add-subtract-1', seed: 20260720, status: 'waiting', startedAt: null, endsAt: null, durationSeconds: 60, mode: 'cards' };
@@ -61,14 +63,23 @@ async function main() {
     await page.route('**/assets/**', async route => {
       const target = path.resolve(root, '.' + decodeURIComponent(new URL(route.request().url()).pathname));
       if (target.startsWith(root + path.sep) && fs.existsSync(target) && fs.statSync(target).isFile()) await route.fulfill({ path: target });
-      // 앱이 빌드한 조각(/assets/index-*.js)은 저장소에 없으니 서버로 넘긴다.
-      else await route.continue();
+      // 앱이 빌드한 조각(/assets/index-*.js)은 저장소에 없으니 빌드 결과에서 주고, 없으면 서버로 넘긴다.
+      else {
+        const app = path.resolve(built, '.' + decodeURIComponent(new URL(route.request().url()).pathname));
+        if (app.startsWith(built + path.sep) && fs.existsSync(app) && fs.statSync(app).isFile()) await route.fulfill({ path: app });
+        else await route.continue();
+      }
     });
     await page.route('**/api/**', async route => {
       const url = new URL(route.request().url());
+      if (url.pathname === '/api/auth/me') return route.fulfill({ json: { user: { name: '가람' } } });
       if (url.pathname !== '/api/arithmetic-race') return route.fulfill({ json: {} });
       if (route.request().method() === 'GET') return route.fulfill({ json: snapshot() });
       const body = route.request().postDataJSON();
+      if (body.action === 'create') {
+        created = body;
+        return route.fulfill({ status: 201, json: { roomCode: '2468', participantId: 'me', participantToken: 'test', hostToken: 'host', race } });
+      }
       if (body.action === 'start') {
         race.status = 'running'; race.startedAt = Date.now() + 3500; race.endsAt = race.startedAt + 60000;
         return route.fulfill({ json: { ok: true, startedAt: race.startedAt } });
@@ -85,11 +96,12 @@ async function main() {
       }
       return route.fulfill({ json: {} });
     });
+    // 학습지 오른쪽 아래 기록 단추 줄의 「🏁 순위전」은 묻는 창 없이 바로 방을 만들고 대기실로 간다.
     await page.goto(base + '/arithmetic/add-subtract-1');
-    await page.getByRole('button', { name: '순위전 만들기', exact: true }).click();
-    await page.getByRole('dialog', { name: '순위전 만들기' }).waitFor();
-    await capture(page, 'create-dialog');
-    await page.goto(base + '/arithmetic/race?room=2468&participant=me&participantToken=test&hostToken=host');
+    await page.locator('learning-records a.race').click();
+    await page.waitForURL(/\/arithmetic\/race\?room=2468&participant=me&participantToken=test&hostToken=host$/);
+    assert.equal(created.worksheetRoute, '/arithmetic/add-subtract-1');
+    assert.equal(created.durationSeconds, undefined, 'the lobby picks the time, not a dialog');
     await page.getByRole('button', { name: '🏁 출발!' }).waitFor();
     assert.equal(await page.locator('.math-race-logo').count(), 0, 'no keycap title copied from the typing race');
     await page.waitForFunction(() => document.querySelectorAll('.race-participant-list li').length === 5);
