@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-08",
+  "phase": "content-only",
+  "illustrations": "Deferred at user request. Prepare artwork with Sol later; no new art is referenced by the revised lessons.",
+  "totalVocabulary": 232,
+  "revisedVocabulary": 31,
+  "remainingVocabulary": 201,
+  "revisedUnits": [
+    {
+      "term": "5-2",
+      "subject": "과학",
+      "unit": "2",
+      "words": [
+        "기상 요소",
+        "습도",
+        "응결",
+        "이슬",
+        "안개",
+        "고기압",
+        "저기압",
+        "풍향"
+      ]
+    },
+    {
+      "term": "5-2",
+      "subject": "국어",
+      "unit": "reading",
+      "words": [
+        "전자책",
+        "탐색",
+        "독서 전략",
+        "간추리기"
+      ]
+    },
+    {
+      "term": "5-2",
+      "subject": "수학",
+      "unit": "2",
+      "words": [
+        "진분수",
+        "가분수",
+        "대분수",
+        "약분",
+        "곱"
+      ]
+    },
+    {
+      "term": "5-2",
+      "subject": "사회",
+      "unit": "1",
+      "words": [
+        "유적",
+        "유물",
+        "사료",
+        "선사 시대",
+        "뗀석기",
+        "간석기",
+        "고인돌",
+        "삼국 통일",
+        "팔만대장경",
+        "금속 활자"
+      ]
+    },
+    {
+      "term": "6-2",
+      "subject": "국어",
+      "unit": "2",
+      "words": [
+        "면담",
+        "질문",
+        "면담 대상",
+        "매체"
+      ]
+    }
+  ],
+  "validation": {
+    "browserWidths": [
+      1280,
+      390
+    ],
+    "wordChecks": 62,
+    "unitChecks": 10,
+    "questionAndWrongAnswerFeedback": true,
+    "actualFonts": {
+      "titlesAndNavigation": "Malgun Gothic",
+      "proseQuestionsAndOptions": "KoPubWorldBatang_Pro"
+    }
+  },
+  "references": [
+    {
+      "topic": "fog",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/fog"
+    },
+    {
+      "topic": "dew",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/temperature/dew"
+    },
+    {
+      "topic": "humidity",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/humidity"
+    },
+    {
+      "topic": "condensation",
+      "url": "https://weather.metoffice.gov.uk/learn-about/met-office-for-schools/other-content/other-resources/weather-words"
+    },
+    {
+      "topic": "Silla unification",
+      "url": "https://contents.history.go.kr/mobile/ta/view.do?levelId=ta_h71_0040_0010_0060"
+    },
+    {
+      "topic": "Tripitaka Koreana",
+      "url": "https://contents.history.go.kr/mobile/eh/view.do?code=eh_age_20&levelId=eh_r0150_0010"
+    },
+    {
+      "topic": "chipped stone tools",
+      "url": "https://encykorea.aks.ac.kr/Article/E0017209"
+    },
+    {
+      "topic": "fractions",
+      "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study/national-curriculum-in-england-mathematics-programmes-of-study"
+    }
+  ]
+}
