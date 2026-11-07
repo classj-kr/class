@@ -43,6 +43,8 @@
     "test:graph-board:ui": "node --test tests/graph-board-ui.test.cjs",
     "test:fraction-board": "node --test tests/fraction-board.test.cjs",
     "test:fraction-board:ui": "node --test tests/fraction-board-browser.cjs",
+    "test:math-tools": "node --test tests/math-tools-essentials.test.cjs tests/geoboard.test.cjs tests/menu-asset-layout.test.mjs",
+    "test:math-tools:ui": "node --test tests/math-tools-essentials-browser.cjs tests/geoboard-browser.cjs && node tests/home-content-access-subject-browser.cjs",
     "test:number-models": "node --test tests/number-models.test.cjs",
     "test:number-models:ui": "node --test tests/number-models-browser.cjs"
   },

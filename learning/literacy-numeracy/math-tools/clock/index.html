@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f6f4ee" />
+    <title>모형 시계 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <style>
+      .stage-wrap {
+        max-width: 750px;
+      }
+      .stage {
+        min-height: 290px;
+        max-height: calc(100dvh - 255px);
+      }
+      #time-form {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      #time-form input {
+        width: 65px;
+      }
+      #digital {
+        font-size: 32px;
+      }
+      #elapsed {
+        font-size: 19px;
+      }
+      @media (max-width: 600px) {
+        .stage {
+          min-height: 310px;
+        }
+        #digital {
+          font-size: 27px;
+        }
+      }
+    </style>
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">모형 시계</h1>
+    <div class="toolbar">
+      <button id="minutes" aria-pressed="true">분 눈금</button
+      ><button id="seconds-hand" aria-pressed="false">초침</button
+      ><button id="digital-toggle" aria-pressed="true">시각 표시</button>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button>
+    </div>
+    <main class="workspace">
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 700 620"
+          role="group"
+          tabindex="0"
+          aria-label="바늘을 끌어 움직이는 모형 시계"
+        ></svg>
+      </div>
+      <output id="digital" class="measurements math"></output>
+      <div class="controls">
+        <form id="time-form">
+          <input
+            id="hour"
+            type="number"
+            min="0"
+            max="23"
+            aria-label="시 (0부터 23)"
+          /><span>시</span
+          ><input
+            id="minute"
+            type="number"
+            min="0"
+            max="59"
+            aria-label="분"
+          /><span>분</span
+          ><input
+            id="second"
+            type="number"
+            min="0"
+            max="59"
+            aria-label="초"
+            hidden
+          /><button type="submit">맞추기</button>
+        </form>
+        <button id="back-five">−5분</button
+        ><button id="forward-five">＋5분</button
+        ><button id="run" class="primary" aria-pressed="false">움직이기</button
+        ><button id="mark">시작 시각</button
+        ><button id="clear-start" hidden>기준 지우기</button>
+      </div>
+      <output id="elapsed" class="measurements"></output>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span
+    ><template id="tool-help"
+      ><ul>
+        <li>
+          긴바늘과 짧은바늘을 끌면 실제 시계처럼 함께 움직여요. 자정을 지나면
+          오전·오후도 바뀌어요.
+        </li>
+        <li>‘움직이기’는 1초에 5분씩 시간을 보내요. 다시 누르면 멈춰요.</li>
+        <li>
+          ‘시작 시각’을 남기면 현재까지 지난 시간을 비교할 수 있어요. 다음
+          날까지 24시간 안의 차이를 표시해요.
+        </li>
+        <li>
+          시각 입력의 ‘시’는 0~23을 써요. 판에서 ←·→는 1분, Shift와 함께 누르면
+          1시간 움직여요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>

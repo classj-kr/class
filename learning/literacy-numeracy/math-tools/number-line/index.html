@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f6f4ee" />
+    <title>수직선 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <style>
+      .stage {
+        min-height: 250px;
+      }
+      .controls input[type="text"] {
+        width: 75px;
+      }
+      @media (max-width: 600px) {
+        .stage {
+          min-height: 240px;
+        }
+        .stage text {
+          font-size: 32px !important;
+        }
+      }
+    </style>
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">수직선</h1>
+    <div class="toolbar">
+      <select id="mode" aria-label="수의 종류">
+        <option value="whole">정수</option>
+        <option value="fraction">분수</option>
+        <option value="decimal">소수</option></select
+      ><select id="range" aria-label="수직선 범위">
+        <option value="0,10">0 ~ 10</option>
+        <option value="0,20">0 ~ 20</option>
+        <option value="-10,10">−10 ~ 10</option>
+        <option value="0,3">0 ~ 3</option>
+        <option value="0,2">0 ~ 2</option>
+        <option value="-1,1">−1 ~ 1</option></select
+      ><select id="denominator" aria-label="한 단위의 등분 수">
+        <option value="2">2등분</option>
+        <option value="3">3등분</option>
+        <option value="4">4등분</option>
+        <option value="5">5등분</option>
+        <option value="6">6등분</option>
+        <option value="8">8등분</option>
+        <option value="10">10등분</option>
+        <option value="12">12등분</option>
+      </select>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset" aria-label="처음 수직선으로">초기화</button>
+    </div>
+    <main class="workspace">
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 1000 500"
+          tabindex="0"
+          role="group"
+          aria-label="두 점을 옮기는 수직선"
+        ></svg>
+      </div>
+      <div class="controls">
+        <label class="control"
+          >A
+          <input
+            id="a"
+            type="text"
+            inputmode="decimal"
+            aria-label="A의 값" /></label
+        ><label class="control"
+          >B
+          <input
+            id="b"
+            type="text"
+            inputmode="decimal"
+            aria-label="B의 값" /></label
+        ><button id="jump" class="primary">A → B</button
+        ><button id="repeat">한 번 더</button
+        ><button id="clear-jumps">이동 지우기</button
+        ><button id="labels" aria-pressed="true">수 표시</button>
+      </div>
+      <output id="result" class="measurements math"></output>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span>
+    <template id="tool-help"
+      ><ul>
+        <li>
+          A와 B를 끌어 수의 위치를 바꿔요. 입력칸에는 분수도 쓸 수 있어요.
+        </li>
+        <li>
+          A → B는 두 점 사이의 이동을 남겨요. ‘한 번 더’는 같은 크기만큼
+          이동해요.
+        </li>
+        <li>
+          분수는 한 단위의 등분 수를 바꿀 수 있어요. 표시할 눈금이 많아지면 일부
+          눈금의 수만 표시돼요.
+        </li>
+        <li>
+          판에서 Tab으로 나간 뒤 입력칸으로 값을 바꾸거나, 판에서 A·B 키로 점을
+          고르고 방향키로 움직여요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>

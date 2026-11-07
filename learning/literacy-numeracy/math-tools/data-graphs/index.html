@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>자료·그래프 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <style>
+      .stage {
+        min-height: 300px;
+      }
+      .data-panel {
+        gap: 7px;
+      }
+      #unit {
+        width: 85px;
+      }
+      .legend {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 13px;
+      }
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend i {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        display: inline-block;
+      }
+      .data-row button {
+        min-height: 38px;
+        padding: 5px 8px;
+      }
+      @media (max-width: 600px) {
+        .stage text {
+          font-size: 28px !important;
+        }
+      }
+    </style>
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">자료·그래프</h1>
+    <div class="toolbar">
+      <select id="mode" aria-label="그래프 종류">
+        <option value="bar">막대그래프</option>
+        <option value="line">꺾은선그래프</option>
+        <option value="picture">그림그래프</option>
+        <option value="strip">띠그래프</option>
+        <option value="pie">원그래프</option></select
+      ><button id="values" aria-pressed="true">값 표시</button
+      ><button id="mean" aria-pressed="false">평균</button
+      ><button id="table" aria-pressed="true">자료</button>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button>
+    </div>
+    <main class="workspace">
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 1000 580"
+          tabindex="0"
+          role="group"
+          aria-label="자료를 나타낸 그래프"
+        ></svg>
+      </div>
+      <div id="legend" class="legend"></div>
+      <div id="data-controls" class="controls">
+        <label class="control"
+          >단위<input
+            id="unit"
+            type="text"
+            maxlength="12"
+            aria-label="자료의 단위" /></label
+        ><button id="add">＋ 항목</button>
+      </div>
+      <div id="data-panel" class="data-panel" aria-label="자료 입력"></div>
+      <output id="summary" class="measurements math"></output>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span
+    ><template id="tool-help"
+      ><ul>
+        <li>
+          자료의 이름과 수를 바꾸면 그래프가 함께 바뀌어요. 막대와 꺾은선의 점은
+          직접 끌어 높이를 바꿀 수도 있어요.
+        </li>
+        <li>
+          막대는 항목별 크기, 꺾은선은 시간에 따른 변화를 비교해요. 시간순
+          자료는 다른 종류의 자료와 따로 보관해요.
+        </li>
+        <li>
+          띠와 원은 전체에서 차지하는 비율을 나타내요. 전체가 0이면 비율을
+          그리지 않아요. ‘약’은 반올림한 값이에요.
+        </li>
+        <li>
+          그림 하나가 나타내는 수를 아래에 표시해요. 마지막 그림은 남은 수에
+          맞춰 일부만 채워져요.
+        </li>
+        <li>
+          평균은 자료의 합을 항목 수로 나눈 값이에요. 막대·꺾은선에 평균 높이를
+          점선으로 보여 줘요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>패턴블록·칠교 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <style>
+      .palette {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .palette button {
+        width: 54px;
+        height: 48px;
+        padding: 5px;
+      }
+      .palette svg {
+        width: 40px;
+        height: 34px;
+      }
+      .stage {
+        border: 1px solid #dde2d7;
+        border-radius: 18px;
+        background: #fffdf8;
+        min-height: 320px;
+      }
+      #piece-tools {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    </style>
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">패턴블록·칠교</h1>
+    <div class="toolbar">
+      <select id="mode" aria-label="조각 종류">
+        <option value="pattern">패턴블록</option>
+        <option value="tangram">칠교</option></select
+      ><button id="grid" aria-pressed="false">격자</button
+      ><button id="snap" aria-pressed="true">맞붙이기</button
+      ><button id="axis" aria-pressed="false">대칭축</button
+      ><button id="outline" aria-pressed="false" hidden>정사각형 틀</button>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button>
+    </div>
+    <main class="workspace">
+      <div
+        id="palette"
+        class="palette"
+        role="group"
+        aria-label="놓을 블록"
+      ></div>
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 1000 600"
+          tabindex="0"
+          role="group"
+          aria-label="도형 조각을 놓고 움직이는 판"
+        ></svg>
+      </div>
+      <div class="controls">
+        <select id="selection" aria-label="선택한 조각">
+          <option value="">조각 선택</option>
+        </select>
+        <div id="piece-tools">
+          <button id="left" aria-label="왼쪽으로 회전">↶ 회전</button
+          ><button id="right" aria-label="오른쪽으로 회전">회전 ↷</button
+          ><button id="flip">뒤집기</button><button id="copy">복사</button
+          ><button id="mirror">대칭 복사</button
+          ><button id="remove">지우기</button>
+        </div>
+        <div
+          id="colors"
+          class="swatches"
+          aria-label="조각 색"
+          role="group"
+        ></div>
+      </div>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span
+    ><template id="tool-help"
+      ><ul>
+        <li>
+          위의 블록을 누르면 판에 놓여요. 조각을 끌어 옮기고, 회전·뒤집기로
+          모양을 맞춰요.
+        </li>
+        <li>
+          패턴블록은 15°씩, 칠교는 45°씩 돌아가요. 맞붙이기를 켜면 가까운
+          꼭짓점에 붙어요.
+        </li>
+        <li>
+          칠교는 일곱 조각을 그대로 사용해요. 정사각형 틀을 켜서 빈틈없이 맞춰
+          볼 수 있어요.
+        </li>
+        <li>
+          대칭축을 켜면 선택한 조각의 거울 모양이 점선으로 보여요. 대칭 복사는
+          패턴블록에서 쓸 수 있어요.
+        </li>
+        <li>
+          조각 선택 메뉴와 방향키로도 옮길 수 있어요. Shift+방향키는 크게 이동,
+          Delete는 지우기예요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>

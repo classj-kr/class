@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>넓이 변형 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-1" />
+    <script src="../assets/math.js?v=20261108-1" defer></script>
+    <script src="../assets/ui.js?v=20261108-1" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="core.js?v=20261108-1" defer></script>
+    <script src="app.js?v=20261108-1" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">넓이 변형</h1>
+    <div class="toolbar">
+      <select id="shape" aria-label="넓이를 알아볼 도형">
+        <option value="parallelogram">평행사변형</option>
+        <option value="triangle">삼각형</option>
+        <option value="trapezoid">사다리꼴</option>
+        <option value="rhombus">마름모</option>
+        <option value="circle">원</option></select
+      ><button id="grid" aria-pressed="true">격자</button
+      ><button id="values" aria-pressed="false">길이·넓이</button>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button>
+    </div>
+    <main class="workspace">
+      <div class="stage-wrap">
+        <svg
+          id="stage"
+          class="stage"
+          viewBox="0 0 1000 560"
+          role="img"
+          aria-label="도형을 나누고 옮겨 넓이를 비교하는 모형"
+        ></svg>
+      </div>
+      <div class="controls">
+        <label id="base-control" class="control"
+          ><span id="base-label">밑변</span
+          ><input id="base" type="range" min="2" max="10" /><output
+            id="base-value"
+          ></output></label
+        ><label id="height-control" class="control"
+          ><span id="height-label">높이</span
+          ><input id="height" type="range" min="2" max="10" /><output
+            id="height-value"
+          ></output></label
+        ><label id="top-control" class="control" hidden
+          >윗변<input id="top" type="range" min="2" max="10" /><output
+            id="top-value"
+          ></output></label
+        ><label id="offset-control" class="control"
+          >기울기<input id="offset" type="range" min="-3" max="13" /><output
+            id="offset-value"
+          ></output></label
+        ><label id="radius-control" class="control" hidden
+          >반지름<input id="radius" type="range" min="1" max="5" /><output
+            id="radius-value"
+          ></output></label
+        ><select id="sectors" aria-label="원 조각 수" hidden>
+          <option value="12">12조각</option>
+          <option value="24">24조각</option>
+          <option value="48">48조각</option>
+          <option value="96">96조각</option>
+        </select>
+      </div>
+      <div class="controls">
+        <button id="transform" class="primary">변형하기</button
+        ><label class="control"
+          >변형<input
+            id="progress"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            aria-label="변형 정도" /></label
+        ><button id="original">원래 모양</button>
+      </div>
+      <output id="formula" class="measurements math"></output>
+      <p id="context" class="unit-note" hidden></p>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span
+    ><template id="tool-help"
+      ><ul>
+        <li>
+          변형 슬라이더를 천천히 움직여 잘라 낸 조각이 어디로 가는지 살펴봐요.
+          각 조각의 모양과 넓이는 유지돼요.
+        </li>
+        <li>평행사변형과 마름모는 잘라 옮겨 직사각형으로 만들어요.</li>
+        <li>
+          삼각형과 사다리꼴은 같은 도형을 하나 더 뒤집어 평행사변형을 만들어요.
+          따라서 처음 도형의 넓이는 합친 넓이의 절반이에요.
+        </li>
+        <li>
+          원의 조각을 번갈아 놓아요. 조각이 많아질수록 가로가 원주의 절반,
+          세로가 반지름인 직사각형에 가까워져요.
+        </li>
+        <li>
+          삼각형의 꼭짓점이 밑변 바깥으로 나가도 높이는 밑변을 포함하는 직선에
+          수직인 길이예요. 길이는 모눈 한 칸을 1로 나타내요.
+        </li>
+      </ul></template
+    >
+  </body>
+</html>
