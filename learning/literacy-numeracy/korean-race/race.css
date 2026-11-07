@@ -473,6 +473,8 @@ body:not([data-screen="race"]) .topbar .room-badge { margin-left: auto; }
   body[data-screen="race"] .topbar .room-badge { margin-left: auto; }
 }
 body[data-screen="race"] main { padding-bottom: 12px; }
+/* 넓은 화면의 경주 중에는 세로 스크롤바를 두지 않는다. 늘어난 만큼은 아래 탑 판이 0.2초 안에 줄어든다(race.js fitTowers). */
+@media (min-width: 861px) { body[data-screen="race"]:not(.spectator) { overflow-y: hidden; } }
 /* 여러 번 만에 맞힌 뒤 잠깐 뜨는 풀이는 카드 아래쪽 보기 위에 겹쳐 띄워, 카드가 늘어나 화면이 넘치지 않게 한다. */
 .q-card .reveal { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 2; box-shadow: 0 8px 24px rgba(60, 40, 20, .18); }
 /* 시상대: 아바타가 단 위에 바로 서고, 이름·점수는 단 안에. */
