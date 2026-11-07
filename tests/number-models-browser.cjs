@@ -46,10 +46,11 @@ test('the math tools catalog reaches the number model on desktop and phone', asy
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await page.goto(h.base + '/');
     await page.locator('#category-literacy-toggle').click();
+    await page.locator('[data-access-group="numeracy"] > summary').click();
     await page.locator('a[href="learning/inquiry/math/"]').click();
     await page.locator(`a[href="${url}"]`).click();
     await page.waitForURL('**' + url); await ready();
-    assert.equal(await page.title(), '수 모형 · 수학 교구');
+    assert.equal(await page.title(), '자연수·소수 모형 · 수학 교구');
     assert.equal(await total(), '123');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     await shot(width === 390 ? 'phone' : 'desktop');

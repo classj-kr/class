@@ -37,10 +37,13 @@ test("learning menus use the four top-level domains", () => {
   }
   assert.doesNotMatch(menu, /href="learning\/literacy-numeracy\/graph-studio\/"/);
   const literacy = menu.slice(menu.indexOf('id="category-literacy-panel"'), menu.indexOf('id="category-exploration-panel"'));
-  const mathematics = literacy.match(/<a href="learning\/inquiry\/math\/"[^>]*>/)?.[0];
-  assert.ok(mathematics, "The math tools catalog must open directly from literacy and numeracy.");
+  const numeracy = literacy.match(/<details[^>]*data-access-group="numeracy"[^>]*>[\s\S]*?<\/details>/)?.[0];
+  const mathematics = numeracy?.match(/<a href="learning\/inquiry\/math\/"[^>]*>/)?.[0];
+  assert.ok(mathematics, "The math tools catalog must open from the numeracy submenu.");
   assert.match(mathematics, /data-access-mode="individual"/);
   const catalog = read("learning/inquiry/math/index.html");
+  assert.doesNotMatch(catalog, /class="(?:intro|topic|tool-action)"|교구 열기/);
+  assert.match(catalog, /<h2 id="blocks-title">자연수·소수 모형<\/h2>/);
   for (const tool of ["stacking-cubes", "number-models", "fraction-board", "graph-studio"]) {
     const href = `learning/inquiry/math/${tool}/`;
     assert.ok(mathematics.includes(href), `${tool} keeps its existing access key`);

@@ -389,14 +389,6 @@
             gap: 10px;
         }
 
-        @media (min-width: 770px) {
-            #category-literacy-panel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        }
-
-        @media (min-width: 1240px) {
-            #category-literacy-panel { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-        }
-
         .worksheet-container a,
         .worksheet-container .worksheet-item,
         .worksheet-group > summary,
@@ -499,7 +491,7 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.72);
         }
 
-        .worksheet-container .worksheet-group-options a {
+        .worksheet-container .worksheet-group-options :is(a, .worksheet-item) {
             min-height: 54px;
             padding: 9px 12px;
             border-width: 1px;
@@ -538,6 +530,8 @@
 
         .worksheet-container a:hover,
         .worksheet-container a:focus-visible,
+        .worksheet-container button.worksheet-item:hover,
+        .worksheet-container button.worksheet-item:focus-visible,
         .worksheet-group > summary:hover,
         .worksheet-group > summary:focus-visible,
         .game-card-grid a:hover,
@@ -546,10 +540,10 @@
             background: linear-gradient(135deg, var(--gold-mid), var(--panel-dark));
         }
 
-        .worksheet-container a.is-class-locked,
+        .worksheet-container :is(a, button.worksheet-item).is-class-locked,
         .worksheet-group > summary.is-class-locked,
         .game-card-grid a.is-class-locked,
-        .worksheet-container a.is-global-locked,
+        .worksheet-container :is(a, button.worksheet-item).is-global-locked,
         .worksheet-group > summary.is-global-locked,
         .game-card-grid a.is-global-locked {
             border-color: #646b6f !important;
@@ -559,10 +553,10 @@
             box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035) !important;
         }
 
-        .worksheet-container a.is-class-locked *,
+        .worksheet-container :is(a, button.worksheet-item).is-class-locked *,
         .worksheet-group > summary.is-class-locked *,
         .game-card-grid a.is-class-locked *,
-        .worksheet-container a.is-global-locked *,
+        .worksheet-container :is(a, button.worksheet-item).is-global-locked *,
         .worksheet-group > summary.is-global-locked *,
         .game-card-grid a.is-global-locked * {
             color: inherit !important;
@@ -939,6 +933,17 @@
             display: grid;
         }
 
+        .worksheet-group-options .numeracy-settings { display: none; }
+
+        body:is(.content-access-editing, .global-content-access-editing) .numeracy-settings {
+            display: grid;
+            cursor: pointer;
+        }
+
+        body:is(.content-access-editing, .global-content-access-editing) [data-access-group="numeracy"] a[data-access-parent="math-problems"] {
+            display: none;
+        }
+
 
         @media (max-width: 1180px) and (min-width: 761px) {
             .top-nav-bar {
@@ -1176,13 +1181,16 @@
                     </a>
                 </div>
             </details>
-            <details class="worksheet-group" data-access-group="math-problems">
-                <summary aria-label="수리 메뉴 열기"
-                         data-content-paths="/arithmetic|learning/literacy-numeracy/math-ox/|learning/literacy-numeracy/math-bank/|learning/literacy-numeracy/csat-math/">
+            <details class="worksheet-group" data-access-group="numeracy">
+                <summary aria-label="수리 메뉴 열기">
                     <span class="worksheet-copy"><strong>수리</strong><small>(Numeracy)</small></span>
                     <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
-                <div class="worksheet-group-options" aria-label="수리 선택">
+                <div class="worksheet-group-options is-lockable-list" aria-label="수리 선택">
+                    <button type="button" class="worksheet-item numeracy-settings" data-access-group="math-problems"
+                            data-content-paths="/arithmetic|learning/literacy-numeracy/math-ox/|learning/literacy-numeracy/math-bank/|learning/literacy-numeracy/csat-math/">
+                        <span class="worksheet-copy"><strong>연산·수학 문제</strong></span>
+                    </button>
                     <a href="/arithmetic" data-access-parent="math-problems">
                         <span class="worksheet-copy"><strong>연산</strong><small>(Arithmetic)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="20" rx="3" fill="#ff9800" stroke="#e65100" stroke-width="1"/><rect x="5" y="4" width="14" height="4.5" rx="1" fill="#e0f7fa" stroke="#00acc1" stroke-width="0.8"/><text x="17" y="7.5" font-size="4" font-weight="bold" fill="#006064" text-anchor="end">123</text><rect x="5" y="10" width="3.5" height="3.5" rx="0.8" fill="#ef5350"/><text x="6.75" y="12.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">+</text><rect x="10" y="10" width="3.5" height="3.5" rx="0.8" fill="#42a5f5"/><text x="11.75" y="12.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">-</text><rect x="15" y="10" width="3.5" height="3.5" rx="0.8" fill="#66bb6a"/><text x="16.75" y="12.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">×</text><rect x="5" y="15" width="3.5" height="3.5" rx="0.8" fill="#ab47bc"/><text x="6.75" y="17.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">÷</text><rect x="10" y="15" width="8.5" height="3.5" rx="0.8" fill="#ffca28"/><text x="14.25" y="17.7" font-size="5" font-weight="bold" fill="#37474f" text-anchor="middle">=</text></svg></span>
@@ -1191,13 +1199,13 @@
                         <span class="worksheet-copy"><strong>수학 문제</strong><small>(Math Problems)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#e6eefc" stroke="#2563eb" stroke-width="1.2"/><path d="M7 8.5h4M9 6.5v4" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round"/><path d="M13.5 8.5h4" stroke="#b42318" stroke-width="1.8" stroke-linecap="round"/><path d="M7 14h10" stroke="#1f2933" stroke-width="1.4" stroke-linecap="round"/><rect x="11" y="15.6" width="6" height="3.6" rx="0.8" fill="#fff" stroke="#1f2933" stroke-width="1.1"/></svg></span>
                     </a>
+                    <a href="learning/inquiry/math/" data-requires-player="true" data-access-mode="individual"
+                       data-content-paths="learning/inquiry/math/stacking-cubes/|learning/inquiry/math/number-models/|learning/inquiry/math/fraction-board/|learning/inquiry/math/graph-studio/">
+                        <span class="worksheet-copy"><strong>수학 교구</strong><small>(Math Tools)</small></span>
+                        <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#f7d48a" d="m12 2 9 5-9 5-9-5z"/><path fill="#e3b97a" d="m3 7 9 5v10l-9-5z"/><path fill="#b38242" d="m12 12 9-5v10l-9 5z"/><path fill="none" stroke="#805e33" stroke-width=".8" d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm0 10 9-5M12 12 3 7m9 5v10"/></svg></span>
+                    </a>
                 </div>
             </details>
-            <a href="learning/inquiry/math/" data-requires-player="true" data-access-mode="individual"
-               data-content-paths="learning/inquiry/math/stacking-cubes/|learning/inquiry/math/number-models/|learning/inquiry/math/fraction-board/|learning/inquiry/math/graph-studio/">
-                <span class="worksheet-copy"><strong>수학 교구</strong><small>(Math Tools)</small></span>
-                <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#f7d48a" d="m12 2 9 5-9 5-9-5z"/><path fill="#e3b97a" d="m3 7 9 5v10l-9-5z"/><path fill="#b38242" d="m12 12 9-5v10l-9 5z"/><path fill="none" stroke="#805e33" stroke-width=".8" d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm0 10 9-5M12 12 3 7m9 5v10"/></svg></span>
-            </a>
             <a href="learning/literacy-numeracy/metacognition/">
                 <span class="worksheet-copy"><strong>학습 점검</strong><small>(Learning Check)</small></span>
                 <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#ffd54f" d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/><path fill="#fff" d="M12 5a4 4 0 0 0-4 4c0 1.2.5 2.3 1.4 3.1L10 14h4l.6-1.9c.9-.8 1.4-1.9 1.4-3.1a4 4 0 0 0-4-4z"/><rect x="9" y="18" width="6" height="2" fill="#78909c" rx="0.5"/><line x1="12" y1="0.5" x2="12" y2="1.8" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="4.5" y1="4.5" x2="5.5" y2="5.5" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="19.5" y1="4.5" x2="18.5" y2="5.5" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="1.5" y1="9" x2="2.8" y2="9" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="22.5" y1="9" x2="21.2" y2="9" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="17.5" r="3.5" fill="#4caf50"/><path stroke="#fff" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" d="M15.8 17.5l1.2 1.2 2.2-2.2"/></svg></span>
@@ -2427,8 +2435,8 @@
                 renderClassLocks();
                 setStatus(contentAccessEditing
                     ? (contentManageScope === 'subject'
-                        ? `각 상위 버튼을 눌러 공개하세요. 가르치는 ${managedClassLabels.length}개 반(${managedClassLabels.join(', ')})에 오늘 하루 적용되고, 오늘 밤 자정에 저절로 닫힙니다.`
-                        : '각 상위 버튼을 눌러 공개하세요. 하위 메뉴는 상위 설정을 함께 따릅니다.')
+                        ? `메뉴를 눌러 공개하세요. 수리는 펼쳐서 항목별로 설정합니다. 가르치는 ${managedClassLabels.length}개 반(${managedClassLabels.join(', ')})에 오늘 하루 적용되고, 오늘 밤 자정에 저절로 닫힙니다.`
+                        : '메뉴를 눌러 공개하세요. 수리는 펼쳐서 항목별로 설정합니다.')
                     : (contentManageScope === 'subject'
                         ? '가르치는 반 공개 설정을 저장했습니다. 전담이 연 메뉴는 오늘 밤 자정에 닫힙니다.'
                         : '우리 반 공개 설정을 저장했습니다.'));
@@ -2453,7 +2461,7 @@
                 }
                 renderClassLocks();
                 setStatus(globalContentAccessEditing
-                    ? '사용을 막을 버튼을 누르세요. 회색 버튼은 어느 사용자도 열 수 없습니다.'
+                    ? '사용을 막을 버튼을 누르세요. 수리는 펼쳐서 항목별로 설정합니다. 회색 버튼은 어느 사용자도 열 수 없습니다.'
                     : '전체 메뉴 사용 중지 설정을 저장했습니다.');
             });
             guestPasscodeInput.addEventListener('input', () => {

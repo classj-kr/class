@@ -23,7 +23,9 @@
         const locked = globallyLocked || classLocked;
         if (locked) link.setAttribute('aria-disabled', 'true');
         else link.removeAttribute('aria-disabled');
-        link.querySelector('.tool-state').textContent = globallyLocked ? '현재 사용 중지' : classLocked ? '선생님 공개 대기' : '교구 열기';
+        const state = link.querySelector('.tool-state');
+        state.textContent = globallyLocked ? '현재 사용 중지' : classLocked ? '선생님 공개 대기' : '';
+        state.hidden = !locked;
       }
     } catch (_) {
       // The destination routes enforce access even if this status check fails.
