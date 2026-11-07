@@ -21,9 +21,6 @@ let actionPending = false;
 let receivedAt = performance.now();
 let lobbyTimeControl = "quick";
 let toastTimer = null;
-let unreadChat = 0;
-const chatMessages = [];
-const seenChatIds = new Set();
 const pieceMotions = new Set();
 
 function escapeHtml(value) {
@@ -358,46 +355,6 @@ function applyServerMessage(message) {
   }
 }
 
-function addChatMessage(message, mineOverride = null) {
-  if (!message?.id || seenChatIds.has(message.id)) return;
-  seenChatIds.add(message.id);
-  const mine = mineOverride == null ? String(message.senderId) === String(lobby.snapshot().myId) : mineOverride;
-  chatMessages.push({ ...message, mine });
-  if (chatMessages.length > 50) chatMessages.shift();
-  if (!mine && !$("gameScreen").classList.contains("hidden") && !$("gameChatLog").closest("details").open) unreadChat += 1;
-  renderChat();
-}
-
-function renderChat() {
-  const html = chatMessages.length ? chatMessages.map(message => `<div class="chat-message ${message.mine ? "mine" : "other"}"><b>${escapeHtml(message.name)}:</b> ${escapeHtml(message.text)}</div>`).join("") : '<div class="chat-empty">아직 메시지가 없습니다.</div>';
-  [$("lobbyChatLog"), $("gameChatLog")].forEach(element => { element.innerHTML = html; element.scrollTop = element.scrollHeight; });
-  $("chatBadge").textContent = String(unreadChat);
-  $("chatBadge").classList.toggle("hidden", unreadChat === 0);
-}
-
-function sendChat(sourceId) {
-  const input = $(sourceId);
-  const text = String(input.value || "").trim().replace(/\s+/g, " ").slice(0, 100);
-  if (!text || !lobby.snapshot().connected) return;
-  const message = { type: "CHESS_CHAT", id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`, senderId: lobby.snapshot().myId, name: savedName, text };
-  addChatMessage(message, true);
-  input.value = "";
-  if (lobby.snapshot().role === "host") lobby.broadcast(message);
-  else lobby.send(message);
-}
-
-function handleGameMessage(senderId, payload) {
-  if (payload?.type !== "CHESS_CHAT") return;
-  const message = { ...payload, senderId: payload.senderId || senderId, name: String(payload.name || "플레이어").slice(0, 12), text: String(payload.text || "").slice(0, 100) };
-  addChatMessage(message);
-  if (lobby.snapshot().role === "host" && String(senderId) !== String(lobby.snapshot().myId)) lobby.broadcast(message);
-}
-
-function syncLobby(snapshot) {
-  const connected = snapshot.connected;
-  [$("lobbyChatInput"), $("gameChatInput")].forEach(input => { input.disabled = !connected; });
-}
-
 function showAbort({ title, message }) {
   $("abortTitle").textContent = title;
   $("abortMessage").textContent = message;
@@ -424,7 +381,6 @@ function init() {
     onLeave: () => { location.href = "../../../"; },
     onNotice: showToast,
     onInvalidStart: () => showToast("두 명이 모여야 시작할 수 있습니다."),
-    onStateChange: syncLobby,
     getLobbyData: () => ({ timeControl: $("timeControl").value }),
     onLobbyData: data => {
       lobbyTimeControl = TIME_LABELS[data?.timeControl] ? data.timeControl : "quick";
@@ -441,7 +397,6 @@ function init() {
       if (lobby.snapshot().role === "host") lobby.sendServer({ type: "CHESS_ACTION", action: "START", timeControl: data?.timeControl || $("timeControl").value });
     },
     onServerMessage: applyServerMessage,
-    onGameMessage: handleGameMessage,
     onPlayerLeftDuringGame: () => showToast("상대방의 재접속을 기다리고 있습니다."),
     onAbort: showAbort
   }).mount();
@@ -458,9 +413,6 @@ function init() {
     closePromotion();
     submitMove(from, to, promotion);
   });
-  document.querySelectorAll("[data-chat-source]").forEach(button => button.addEventListener("click", () => sendChat(button.dataset.chatSource)));
-  [$("lobbyChatInput"), $("gameChatInput")].forEach(input => input.addEventListener("keydown", event => { if (event.key === "Enter") { event.preventDefault(); sendChat(input.id); } }));
-  $("gameChatLog").closest("details").addEventListener("toggle", event => { if (event.target.open) { unreadChat = 0; renderChat(); } });
   $("resignBtn").addEventListener("click", () => { if (confirm("정말 기권하시겠습니까?")) sendAction("RESIGN"); });
   $("drawBtn").addEventListener("click", () => sendAction("OFFER_DRAW"));
   $("acceptDrawBtn").addEventListener("click", () => sendAction("ACCEPT_DRAW"));

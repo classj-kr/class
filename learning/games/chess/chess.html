@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="board.css?v=2">
-<link rel="stylesheet" href="styles.css?v=20261002-board">
+<link rel="stylesheet" href="styles.css?v=20261107-nochat">
 <link rel="stylesheet" href="../board-coach/entry.css?v=2">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
@@ -15,7 +15,7 @@
 <script src="chess-rules.js?v=20261001-standard"></script>
 <script src="pieces.js?v=1" defer></script>
 <script src="motion.js?v=2" defer></script>
-<script src="chess-ui.js?v=20261006-name" defer></script>
+<script src="chess-ui.js?v=20261107-nochat" defer></script>
 <script src="../board-coach/entry.js?v=1" defer></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
@@ -52,11 +52,6 @@
     </section>
     <div id="lobbyPlayers" class="player-list"></div>
     <p id="lobbyGuide" class="lobby-guide">상대방을 기다리는 중입니다.</p>
-    <details class="chat-card lobby-chat">
-      <summary>채팅</summary>
-      <div id="lobbyChatLog" class="chat-log" aria-live="polite"><div class="chat-empty">아직 메시지가 없습니다.</div></div>
-      <div class="chat-row"><input id="lobbyChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력"><button class="btn chat-send" type="button" data-chat-source="lobbyChatInput">보내기</button></div>
-    </details>
     <div class="lobby-actions">
       <button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button>
       <button id="rulesBtnLobby" class="btn" type="button">Rules</button>
@@ -76,7 +71,6 @@
       <div id="drawResponse" class="draw-response hidden"><p>상대방이 무승부를 제안했습니다.</p><div><button id="acceptDrawBtn" class="btn primary" type="button">수락</button><button id="declineDrawBtn" class="btn" type="button">거절</button></div></div>
       <section class="captured-section"><div class="capture-card"><span>내가 잡은 말</span><div id="myCaptures" class="captures"></div></div><div class="capture-card"><span>상대가 잡은 말</span><div id="opponentCaptures" class="captures"></div></div></section>
       <section class="moves-card"><div class="section-title">기보</div><div id="moveList" class="move-list"><div class="move-empty">아직 둔 수가 없습니다.</div></div></section>
-      <details class="chat-card game-chat"><summary>채팅 <span id="chatBadge" class="badge hidden">0</span></summary><div id="gameChatLog" class="chat-log"><div class="chat-empty">아직 메시지가 없습니다.</div></div><div class="chat-row"><input id="gameChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력"><button class="btn chat-send" type="button" data-chat-source="gameChatInput">보내기</button></div></details>
       <div class="game-actions"><button id="drawBtn" class="btn" type="button">무승부 제안</button><button id="resignBtn" class="btn danger" type="button">기권</button><button id="rematchBtn" class="btn primary hidden" type="button">재대국</button><button id="rulesBtnGame" class="btn" type="button">규칙 보기</button></div>
     </aside>
   </section>
