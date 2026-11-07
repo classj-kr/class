@@ -293,7 +293,7 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 .mb-timecol .mb-box { font-size: 0.8em; min-width: 1.9em; height: 1.5em; vertical-align: -0.2em; }
 
 /* 분수와 소수: 분수 글, 분수 답 칸, 나눈 도형 */
-.mb-frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1.12; font-variant-numeric: tabular-nums; margin: 0 1px; font-size: 1em; font-weight: 600; }
+.mb-frac { display: inline-flex; flex-direction: column; align-items: stretch; text-align: center; vertical-align: middle; line-height: 1.12; font-variant-numeric: tabular-nums; margin: 0 1px; font-size: 1em; font-weight: 600; }
 .mb-frac > span:first-child { border-bottom: 1.5px solid currentColor; padding: 0 4px 1px; }
 /* 근호(중3): √ 기호는 안의 글 높이에 맞춘 작은 그림, 안의 글 위에 줄. 보이지 않는 √ 글자(mb-sr)는 글로 옮길 때 쓴다. */
 .mb-rad { position: relative; display: inline-block; padding-left: 0.6em; margin-left: 0.04em; white-space: nowrap; line-height: 1.2; }
@@ -359,7 +359,7 @@ html body li.mb-group.mb-group, html body p.mb-round-title.mb-round-title, html 
 .mb-lim-v { display: inline-flex; flex-direction: column; align-items: center; vertical-align: baseline; line-height: 1.1; margin: 0 0.22em -0.42em 0.04em; }
 .mb-lim-lo { font-size: 0.66em; line-height: 1.05; }
 /* Σ: 위·아래에 끝, ∫: 오른쪽 위·아래에 끝 */
-.mb-op { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1; margin: -0.32em 0.16em -0.32em 0.04em; }
+.mb-op { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1; margin: 0 0.16em 0 0.04em; }
 .mb-op-s { font-size: 2.1em; line-height: 0.82; }
 .mb-op-hi, .mb-op-lo { font-size: 0.68em; line-height: 1.1; }
 .mb-op.mb-op-int { flex-direction: row; align-items: stretch; margin-right: 0.14em; }
@@ -367,7 +367,7 @@ html body li.mb-group.mb-group, html body p.mb-round-title.mb-round-title, html 
 .mb-int-lim { display: inline-flex; flex-direction: column; justify-content: space-between; align-items: flex-start; margin: 0 0 0 0.02em; }
 .mb-int-lim .mb-op-hi { margin-left: 0.12em; }
 .mb-int-lim .mb-op-lo { margin-left: -0.32em; }
-.mb-op.mb-op-int.is-bare { margin: -0.3em 0.12em -0.3em 0.02em; }
+.mb-op.mb-op-int.is-bare { margin: 0 0.12em 0 0.02em; }
 /* [F(x)] 의 오른쪽 아래·위에 a, b(괄호는 안의 글 높이에 맞춘다) */
 .mb-evl { display: inline-flex; align-items: stretch; vertical-align: middle; margin: -0.2em 0.04em; }
 .mb-evl-in { align-self: center; padding: 0.12em 0.1em; }

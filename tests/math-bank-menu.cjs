@@ -59,7 +59,9 @@ const PAST_LABEL = '평가원·수능 기출';
       // 맨 밑 항목을 고르면 기출 화면으로 간다. 그 화면에도 같은 드롭다운이 있고 기출이 골라져 있다.
       await Promise.all([page.waitForURL('**' + PAST), page.selectOption('#termSelect', { label: PAST_LABEL })]);
       await page.locator('#term-select').waitFor();
-      const pastLabels = labels.slice(0, 20).concat(PAST_LABEL);
+      // 기출 화면의 드롭다운은 실린 학기·과목(terms.js 의 TERMS)과 맨 밑 기출만 보인다(OX만 있는 과목은 수학 문제 화면에만 있다).
+      const termCount = await page.evaluate(() => window.MathBankTerms.TERMS.length);
+      const pastLabels = labels.slice(0, termCount).concat(PAST_LABEL);
       assert.deepEqual(await page.locator('#term-select option').allInnerTexts(), pastLabels, '기출 화면의 기존 학기 메뉴는 유지한다');
       assert.equal(await page.locator('#term-select option:checked').innerText(), PAST_LABEL);
       await page.locator('#subject-tabs .subject-tab').first().waitFor();
