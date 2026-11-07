@@ -41,7 +41,7 @@ async function withSchool(run) {
       CREATE TABLE classroom_teachers (
         id BIGSERIAL PRIMARY KEY, school_id BIGINT, user_id BIGINT UNIQUE, google_email TEXT,
         teacher_name TEXT, teacher_type TEXT, academic_year INTEGER, grade INTEGER, class_number INTEGER,
-        subject_name TEXT, room_name TEXT, active BOOLEAN DEFAULT TRUE, updated_at TIMESTAMPTZ DEFAULT NOW()
+        subject_name TEXT, room_name TEXT, teaching_scope JSONB, active BOOLEAN DEFAULT TRUE, updated_at TIMESTAMPTZ DEFAULT NOW()
       );
       CREATE TABLE classroom_classes (
         id BIGSERIAL PRIMARY KEY, school_id BIGINT, teacher_user_id BIGINT UNIQUE,
@@ -174,7 +174,10 @@ test('restarting legacy initialization cannot refill an intentionally cleared ho
 
 test('saving an empty school roster hides old student copies while preserving their rows and class history', () => withSchool(async ({ api, db, year }) => {
   await db.exec("UPDATE classroom_teachers SET teacher_type = '관리자' WHERE school_id = 2");
-  await api.saveStudents({ body: { year, students: [] } });
+  // 학생이 빠지는 저장은 확인(confirmRemoval) 없이 오면 아무것도 바꾸지 않는다.
+  await assert.rejects(api.saveStudents({ body: { year, students: [] } }), { code: 'ROSTER_REMOVAL_NEEDS_CONFIRM' });
+  assert.equal((await db.query('SELECT COUNT(*)::int AS n FROM classroom_students WHERE roster_active')).rows[0].n, 2);
+  await api.saveStudents({ body: { year, students: [], confirmRemoval: true } });
   assert.equal((await db.query('SELECT COUNT(*)::int AS n FROM classroom_students WHERE roster_active')).rows[0].n, 0);
   assert.equal((await db.query('SELECT COUNT(*)::int AS n FROM classroom_students')).rows[0].n, 2);
   assert.deepEqual((await api.classroom()).classroom.students, []);
