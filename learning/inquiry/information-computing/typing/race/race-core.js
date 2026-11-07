@@ -54,6 +54,44 @@
     }
     return out;
   }
+  // 한/영 키가 영어로 되어 있을 때 친 글자(qjfduTek)를 두벌식 자판대로 한글(벌였다)로 바꾼다.
+  const DUBEOL = { q: 'ㅂ', w: 'ㅈ', e: 'ㄷ', r: 'ㄱ', t: 'ㅅ', y: 'ㅛ', u: 'ㅕ', i: 'ㅑ', o: 'ㅐ', p: 'ㅔ', a: 'ㅁ', s: 'ㄴ', d: 'ㅇ', f: 'ㄹ', g: 'ㅎ', h: 'ㅗ', j: 'ㅓ', k: 'ㅏ', l: 'ㅣ', z: 'ㅋ', x: 'ㅌ', c: 'ㅊ', v: 'ㅍ', b: 'ㅠ', n: 'ㅜ', m: 'ㅡ', Q: 'ㅃ', W: 'ㅉ', E: 'ㄸ', R: 'ㄲ', T: 'ㅆ', O: 'ㅒ', P: 'ㅖ' };
+  const VOWELS = new Set('ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ');
+  const PAIR = Object.fromEntries(Object.entries(COMPAT).map(([joined, parts]) => [parts, joined]));
+  function hangulFromKeys(text) {
+    // Caps Lock이 켜져 있으면 대문자가 그냥 누른 키이고, Shift를 누른 키가 소문자로 찍힌다.
+    const raw = String(text || '');
+    const upper = raw.replace(/[^A-Z]/g, '').length, lower = raw.replace(/[^a-z]/g, '').length;
+    const source = upper > 1 && upper > lower
+      ? raw.replace(/[A-Za-z]/g, (ch) => (ch === ch.toUpperCase() ? ch.toLowerCase() : ch.toUpperCase()))
+      : raw;
+    const jamo = [...keys([...source].map((ch) => DUBEOL[ch] || DUBEOL[ch.toLowerCase()] || ch).join(''))];
+    let out = '', cho = '', jung = '', jong = '';
+    const flush = () => {
+      if (cho && jung) {
+        out += String.fromCharCode(0xac00 + INITIAL.indexOf(cho) * 588 + MEDIAL.indexOf(jung) * 28 + FINAL.indexOf(jong));
+      } else out += (cho || '') + (jung ? PAIR[jung] || jung : '');
+      cho = jung = jong = '';
+    };
+    for (const j of jamo) {
+      if (VOWELS.has(j)) {
+        if (jong) {
+          // 받침이 다음 글자의 첫소리로 옮겨 간다(겹받침은 뒤쪽만).
+          const parts = [...jong], moved = parts.pop();
+          jong = parts.join('');
+          flush(); cho = moved; jung = j;
+        } else if (jung && MEDIAL.includes(jung + j) && cho) jung += j;
+        else if (cho && !jung) jung = j;
+        else { flush(); jung = j; }
+      } else if (INITIAL.includes(j)) {
+        if (cho && jung && !jong && FINAL.includes(j)) jong = j;
+        else if (jong && FINAL.includes(jong + j)) jong += j;
+        else { flush(); cho = j; }
+      } else { flush(); out += j; }
+    }
+    flush();
+    return out;
+  }
   const strokes = (text) => [...keys(text)].length;
   // 받침이 다음 글자로 옮겨 가는 중간 모양(사→삭→사과)도 맞게 치는 중으로 본다.
   function onTrack(typed, target) {
@@ -72,5 +110,5 @@
         String(a.name).localeCompare(String(b.name), 'ko'),
     );
   }
-  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, strokes, onTrack, multiplier, itemScore, accuracy, rank };
+  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, strokes, onTrack, multiplier, itemScore, accuracy, rank };
 });

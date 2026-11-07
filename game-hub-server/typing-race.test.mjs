@@ -244,3 +244,12 @@ test('teacher room, shared entry, live scoring, combo, speed guard, and results'
   assert.equal(activity.hasRoomCode(code), false);
   assert.equal((await fetch(`${origin}/api/room-entry/resolve/${code}`)).status, 404);
 });
+
+test('keys typed with 한/영 left on English become the Korean they meant (두벌식)', () => {
+  assert.equal(Core.hangulFromKeys('qjfduTek'), '벌였다');
+  assert.equal(Core.hangulFromKeys('dkssudgktpdy'), '안녕하세요');
+  assert.equal(Core.hangulFromKeys('ekfrdl'), '닭이');
+  assert.equal(Core.hangulFromKeys('gksrmf tkfkd'), '한글 사랑');
+  assert.equal(Core.hangulFromKeys('QJFDUtEK'), '벌였다', 'Caps Lock: capitals are plain keys, lowercase was Shift');
+  assert.equal(Core.hangulFromKeys('벌였'), '벌였', 'Korean already typed stays as is');
+});

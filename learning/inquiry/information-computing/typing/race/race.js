@@ -570,8 +570,16 @@
   }
   input.addEventListener('compositionstart', () => (composing = true));
   input.addEventListener('compositionend', () => { composing = false; setTimeout(check, 0); });
+  // 한글 판인데 한/영 키가 영어로 되어 있으면, 친 키를 두벌식 한글로 바꿔 받는다(애들이 한/영 때문에 막히지 않게).
+  let hanEnNoted = '';
+  function fixHanEn() {
+    if (!state || C.MODES[state.config.mode].lang !== 'ko' || !/[A-Za-z]/.test(input.value)) return;
+    input.value = C.hangulFromKeys(input.value);
+    if (hanEnNoted !== state.roundId) { hanEnNoted = state.roundId; toast('한/영 키가 영어로 되어 있어서 한글로 바꿔 받고 있어요.'); }
+  }
   input.addEventListener('input', (e) => {
     composing = e.isComposing;
+    if (!composing) fixHanEn();
     if (e.inputType !== 'deleteContentBackward') sfx.key();
     check();
   });
