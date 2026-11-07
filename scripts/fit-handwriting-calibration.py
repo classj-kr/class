@@ -1,0 +1,232 @@
+"""Fit position/size calibration of the ClassJ pen font against a locally installed reference font.
+
+The reference font is only rasterised here to measure distances. Nothing from it is
+read into the font generator; the result is a small numeric table written into
+font-source.js between the CAL-BEGIN / CAL-END markers.
+
+Usage: python scripts/fit-handwriting-calibration.py --reference <ttf> [--rounds 3] [--dry]
+"""
+from __future__ import annotations
+
+import argparse
+import collections
+import json
+from pathlib import Path
+import re
+import subprocess
+
+import numpy as np
+from fontTools.ttLib import TTFont
+from PIL import Image, ImageDraw, ImageFont
+from scipy import ndimage as ndi
+
+ROOT = Path(__file__).resolve().parent.parent
+SOURCE = ROOT / 'learning/literacy-numeracy/handwriting/font-source.js'
+SZ = 100
+STROKE = 5.8
+CAP = 12.0
+BOUNDS = {'d': 6.0, 's': (0.85, 1.15)}
+
+DUMP = """
+const F=require(process.argv[1]);
+const chars=JSON.parse(process.argv[2]);
+const out={};
+for(const ch of chars){const p=F.components(ch);if(p)out[ch]=p.map(x=>({kind:x.kind,char:x.char,paths:x.paths}));}
+process.stdout.write(JSON.stringify(out));
+"""
+
+CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'
+JUNG = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ'
+JONG = [''] + list('ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ')
+COMPOUND = set('ㅘㅙㅚㅝㅞㅟㅢ')
+HORIZONTAL = set('ㅗㅛㅜㅠㅡ')
+
+
+def split(ch):
+    n = ord(ch) - 0xAC00
+    return CHO[n // 588], JUNG[(n // 28) % 21], JONG[n % 28]
+
+
+def vowel_type(b):
+    return 'c' if b in COMPOUND else 'h' if b in HORIZONTAL else 'v'
+
+
+def key_of(part, a, b, c):
+    t = vowel_type(b)
+    if part['kind'] == 'initial':
+        return f"i|{a}|{t}|{1 if c else 0}"
+    if part['kind'] == 'vowel':
+        return f"v|{part['char']}|{t}|{1 if c else 0}"
+    if part['kind'] == 'final':
+        return f"f|{c}|{t}"
+    return None
+
+
+def load_parts(chars):
+    proc = subprocess.run(['node', '-e', DUMP, str(SOURCE), json.dumps(chars, ensure_ascii=True)],
+                          capture_output=True, text=True, encoding='utf-8', check=True)
+    return json.loads(proc.stdout)
+
+
+def ref_mask(font, ch):
+    im = Image.new('L', (SZ * 2, SZ * 2), 0)
+    ImageDraw.Draw(im).text((SZ // 2, int(SZ * 1.4)), ch, font=font, fill=255, anchor='ls')
+    return np.asarray(im) > 127
+
+
+def to_px(p):
+    return SZ / 2 + p[0] * SZ / 100, SZ * 1.4 + (p[1] * 10 - 800) * SZ / 1000
+
+
+def transformed(part, p):
+    pts = np.array([q for path in part['paths'] for q in path], float)
+    c = (pts.min(0) + pts.max(0)) / 2
+    out = []
+    for path in part['paths']:
+        a = np.array(path, float)
+        a = c + (a - c) * np.array([p[2], p[3]]) + np.array([p[0], p[1]])
+        out.append(a)
+    return out
+
+
+def render(parts_paths):
+    im = Image.new('L', (SZ * 2, SZ * 2), 0)
+    d = ImageDraw.Draw(im)
+    r = STROKE * SZ / 100 / 2
+    for path in parts_paths:
+        pts = [to_px(q) for q in path]
+        if len(pts) > 1:
+            d.line(pts, fill=255, width=max(1, round(2 * r)), joint='curve')
+        for x, y in (pts[0], pts[-1]):
+            d.ellipse((x - r, y - r, x + r, y + r), fill=255)
+    return np.asarray(im) > 127
+
+
+class Entry:
+    def __init__(self, ch, parts, mask):
+        self.ch, self.parts, self.mask = ch, parts, mask
+        self.a, self.b, self.c = split(ch)
+        self.keys = [key_of(p, self.a, self.b, self.c) for p in parts]
+        self.ref_dt = ndi.distance_transform_edt(~mask)
+        self.ref_n = mask.sum()
+
+    def cost(self, table):
+        paths = []
+        by_part = []
+        for part, key in zip(self.parts, self.keys):
+            p = table.get(key)
+            got = transformed(part, p) if p else [np.array(x, float) for x in part['paths']]
+            by_part.append(got)
+            paths.extend(got)
+        penalty = self.penalty(by_part)
+        ours = render(paths)
+        if not ours.any():
+            return 2 * CAP
+        to_ref = np.minimum(self.ref_dt[ours], CAP).mean()
+        dt = ndi.distance_transform_edt(~ours)
+        to_ours = np.minimum(dt[self.mask], CAP).mean()
+        return to_ref + to_ours + penalty
+
+    def penalty(self, by_part):
+        # Invariants the layout tests enforce on centerlines (model units).
+        kinds = [p['kind'] for p in self.parts]
+        def pts(i):
+            return np.array([q for path in by_part[i] for q in path], float)
+        def gap(i, j):
+            a, b = pts(i), pts(j)
+            return np.sqrt(((a[:, None, :] - b[None, :, :]) ** 2).sum(-1)).min()
+        total_penalty = 0.0
+        if 'initial' in kinds and 'final' in kinds:
+            i, f = kinds.index('initial'), kinds.index('final')
+            total_penalty += 40 * max(0.0, 6.8 - gap(i, f))
+            for v, part in enumerate(self.parts):
+                if part['kind'] == 'vowel' and part['char'] in 'ㅜㅠ' and self.c in 'ㄱㄷㄹㅌ' and len(by_part[v]) > 1:
+                    bottom = max(q[1] for q in by_part[f][0])
+                    for path in by_part[v][1:]:
+                        total_penalty += 40 * max(0.0, path[-1][1] - (bottom + 0.6))
+        if self.a in 'ㄱㅋ' and self.b == 'ㅛ' and 'initial' in kinds:
+            i = kinds.index('initial')
+            v = [k for k, part in enumerate(self.parts) if part['kind'] == 'vowel'][0]
+            a, b = pts(i), np.array([q for path in by_part[v][:2] for q in path], float)
+            g = np.sqrt(((a[:, None, :] - b[None, :, :]) ** 2).sum(-1)).min()
+            total_penalty += 40 * max(0.0, 9.6 - g)
+        return total_penalty
+
+
+def total(entries, table):
+    return sum(e.cost(table) for e in entries)
+
+
+def fit_group(key, entries, table):
+    best = list(table.get(key, [0.0, 0.0, 1.0, 1.0]))
+    probe = lambda p: total(entries, {**table, key: p})
+    score = probe(best)
+    steps = [(1.0, 1.0, 0.03, 0.03), (0.5, 0.5, 0.015, 0.015), (0.25, 0.25, 0.008, 0.008)]
+    for step in steps:
+        improved = True
+        while improved:
+            improved = False
+            for i in range(4):
+                for sign in (-1, 1):
+                    cand = list(best)
+                    cand[i] += sign * step[i]
+                    lo, hi = (-BOUNDS['d'], BOUNDS['d']) if i < 2 else BOUNDS['s']
+                    if not lo <= cand[i] <= hi:
+                        continue
+                    s = probe(cand)
+                    if s < score - 1e-6:
+                        best, score, improved = cand, s, True
+    return best, score
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--reference', type=Path, required=True)
+    ap.add_argument('--rounds', type=int, default=2)
+    ap.add_argument('--dry', action='store_true')
+    ap.add_argument('--min-chars', type=int, default=4)
+    args = ap.parse_args()
+    ref = TTFont(args.reference)
+    cmap = ref.getBestCmap()
+    font = ImageFont.truetype(str(args.reference), SZ, layout_engine=ImageFont.Layout.BASIC)
+    chars = []
+    masks = {}
+    for cp in range(0xAC00, 0xD7A4):
+        if cp in cmap:
+            m = ref_mask(font, chr(cp))
+            if m.sum() >= 40:
+                chars.append(chr(cp))
+                masks[chr(cp)] = m
+    print('reference syllables with outlines:', len(chars), flush=True)
+    parts = load_parts(chars)
+    entries = {ch: Entry(ch, parts[ch], masks[ch]) for ch in chars if ch in parts}
+    groups = collections.defaultdict(list)
+    for e in entries.values():
+        for k in set(e.keys):
+            if k:
+                groups[k].append(e)
+    groups = {k: v for k, v in groups.items() if len(v) >= args.min_chars}
+    print('groups:', len(groups), flush=True)
+    table: dict[str, list[float]] = {}
+    base = total(list(entries.values()), table) / len(entries)
+    print('start mean cost %.3f' % base, flush=True)
+    order = sorted(groups, key=lambda k: -len(groups[k]))
+    for r in range(args.rounds):
+        for n, k in enumerate(order):
+            best, _ = fit_group(k, groups[k], table)
+            table[k] = best
+        mean = total(list(entries.values()), table) / len(entries)
+        print(f'round {r + 1}: mean cost {mean:.3f} ({len(table)} groups)', flush=True)
+    if args.dry:
+        return
+    rounded = {k: [round(v[0], 2), round(v[1], 2), round(v[2], 3), round(v[3], 3)] for k, v in sorted(table.items())}
+    body = 'const CALIBRATION = ' + json.dumps(rounded, ensure_ascii=False, separators=(',', ':')) + ';'
+    src = SOURCE.read_text(encoding='utf-8')
+    new = re.sub(r'(// CAL-BEGIN\n).*?(\n\s*// CAL-END)', lambda m: m.group(1) + '  ' + body + m.group(2), src, flags=re.S)
+    assert new != src or rounded == {}
+    SOURCE.write_text(new, encoding='utf-8')
+    print('wrote', len(rounded), 'groups')
+
+
+if __name__ == '__main__':
+    main()

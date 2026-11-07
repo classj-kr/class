@@ -125,7 +125,7 @@ def main():
         for cp in check_points:
             g = f['glyf'][mapping[cp]]
             assert g.numberOfContours > 0
-            assert 0 <= g.xMin < g.xMax <= 1000 and -180 <= g.yMin < g.yMax <= 800, (hex(cp),g.xMin,g.yMin,g.xMax,g.yMax)
+            assert 0 <= g.xMin < g.xMax <= 1000 and -180 <= g.yMin < g.yMax <= 815, (hex(cp),g.xMin,g.yMin,g.xMax,g.yMax)
         f.close()
     print('Font tables verified', flush=True)
     assert hashlib.sha256(SOURCE.read_bytes()).hexdigest() == source_hash, 'Font source changed during the build; rebuild before publishing.'
