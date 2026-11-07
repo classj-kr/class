@@ -1163,7 +1163,10 @@
     // 글: 축 이름 → 원점 O → 눈금 → 점의 발 글 → 점 이름 → 곡선·직선 이름 → 그림 속 글(놓는 차례대로 앞의 글을 피한다)
     word(ax1 + 10, Y0 + 4, 'x', 'start', 13.5); word(X0 + 7, ay1 - 4, 'y', 'start', 13.5);
     const oSpots = [[-7, 12], [7, 12], [-7, -4], [7, -4]], oFirst = opt.oSide === 'r' ? [oSpots[1]].concat(oSpots.filter((s, i) => i !== 1)) : oSpots;
-    const oAt = oFirst.find(([dx, dy]) => free(boxOf(X0 + dx, Y0 + dy, 'O', 'middle', 11))) || oFirst[0];
+    // x축 눈금 글(−1 따위)이 O 바로 옆에 붙으면 「−1O」가 「−10」으로 읽힌다. 눈금 글이 놓일 자리에서 5px 넘게 떨어진 곳을 먼저 고른다.
+    const near = xt.filter((t) => Math.abs(t.v) > 1e-12).map((t) => { const r = tickBox(X(t.v), Y0 + 3, t.t, 'below'); return [r[0] - 5, r[1], r[2] + 5, r[3]]; });
+    const apart = (r) => !near.some((q) => r[0] < q[2] && q[0] < r[2] && r[1] < q[3] && q[1] < r[3]);
+    const oAt = oFirst.find(([dx, dy]) => { const r = boxOf(X0 + dx, Y0 + dy, 'O', 'middle', 11); return free(r) && apart(r); }) || oFirst.find(([dx, dy]) => free(boxOf(X0 + dx, Y0 + dy, 'O', 'middle', 11))) || oFirst[0];
     rects.push(boxOf(X0 + oAt[0], Y0 + oAt[1], 'O', 'middle', 11)); grow(X0 + oAt[0] - 5, Y0 + oAt[1] + 3);
     front.push(`<text x="${f1(X0 + oAt[0])}" y="${f1(Y0 + oAt[1])}" text-anchor="middle" style="font-size:11px;fill:${INK};font-weight:600;${HALO}">O</text>`);
     for (const t of xt) if (Math.abs(t.v) > 1e-12) tickAt(X(t.v), Y0 + 3, t.t, 'below');
