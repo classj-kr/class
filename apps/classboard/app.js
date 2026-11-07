@@ -43,6 +43,7 @@ let readQueue = Promise.resolve();
 let feedRequest = 0;
 let boardRequest = 0;
 const drafts = new Map();
+const expandedComments = new Set();
 let profileAvatarEl = null;
 // 과목별 보기. null이면 전체.
 let activeSubjectFilter = null;
@@ -120,15 +121,6 @@ async function initApp() {
             settingsLink.className = 'settings-link';
             settingsLink.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">settings</span> 내 정보 설정';
             userInfoEl.appendChild(settingsLink);
-        }
-        if (viewerRole === 'teacher') {
-            // 여기서 쓰는 글은 자기 반·그룹 게시판에 붙는다. 전교나 동아리처럼
-            // 고른 사람에게 보내는 가정통신문은 발송 화면에서 낸다.
-            const sendLink = document.createElement('a');
-            sendLink.href = '/teacher/';
-            sendLink.className = 'settings-link';
-            sendLink.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">send</span> 가정통신문 보내기';
-            userInfoEl.appendChild(sendLink);
         }
         // 학생·보호자만 받는다. 교사는 알림장을 쓰는 쪽이다.
         if (viewerRole !== 'teacher') PushToggle.mount(userInfoEl);
@@ -504,10 +496,35 @@ function renderPost(post) {
     }
     
     // Comments
+    post.comments = post.comments || [];
     const commentsList = clone.querySelector('[data-type="comments-list"]');
-    post.comments.forEach(comment => {
-        commentsList.appendChild(createCommentNode(comment, post.id));
+    const commentsToggle = clone.querySelector('[data-type="comments-toggle"]');
+    const commentsPanel = clone.querySelector('[data-type="comments-panel"]');
+    const commentsCount = clone.querySelector('[data-type="comments-count"]');
+    const commentKey = String(post.id);
+    commentsPanel.id = `comments-${commentKey}`;
+    commentsToggle.setAttribute('aria-controls', commentsPanel.id);
+    const updateComments = () => {
+        const expanded = expandedComments.has(commentKey);
+        commentsCount.textContent = String(post.comments.length);
+        commentsPanel.hidden = !expanded;
+        commentsToggle.setAttribute('aria-expanded', String(expanded));
+        commentsToggle.setAttribute('aria-label', `댓글 ${post.comments.length}개 ${expanded ? '접기' : '펼치기'}`);
+    };
+    const onCommentDeleted = id => {
+        post.comments = post.comments.filter(comment => String(comment.id) !== String(id));
+        updateComments();
+        commentsToggle.focus({ preventScroll: true });
+    };
+    commentsToggle.addEventListener('click', () => {
+        if (expandedComments.has(commentKey)) expandedComments.delete(commentKey);
+        else expandedComments.add(commentKey);
+        updateComments();
     });
+    post.comments.forEach(comment => {
+        commentsList.appendChild(createCommentNode(comment, post.id, onCommentDeleted));
+    });
+    updateComments();
     
     // Add Comment
     const commentInput = clone.querySelector('[data-type="comment-input"]');
@@ -531,7 +548,7 @@ function renderPost(post) {
 
     const submitCommentHandler = async () => {
         const content = commentInput.value.trim();
-        if (!content) return;
+        if (!content || commentSubmitBtn.disabled) return;
         
         commentSubmitBtn.disabled = true;
         try {
@@ -543,7 +560,7 @@ function renderPost(post) {
             const data = await res.json();
             if (!res.ok) throw new Error(data.error);
             
-            // Optimistically add comment
+            // Keep the loaded model and visible count in sync after saving.
             const newComment = {
                 id: data.id,
                 content: content,
@@ -554,7 +571,9 @@ function renderPost(post) {
                 canDelete: true,
                 createdAt: new Date().toISOString()
             };
-            commentsList.appendChild(createCommentNode(newComment, post.id));
+            post.comments.push(newComment);
+            commentsList.appendChild(createCommentNode(newComment, post.id, onCommentDeleted));
+            updateComments();
             commentInput.value = '';
             commentInput.style.height = 'auto';
         } catch (e) {
@@ -566,7 +585,7 @@ function renderPost(post) {
     
     commentSubmitBtn.addEventListener('click', submitCommentHandler);
     commentInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && e.keyCode !== 229) {
             e.preventDefault();
             submitCommentHandler();
         }
@@ -575,14 +594,13 @@ function renderPost(post) {
     feedSection.appendChild(clone);
 }
 
-function createCommentNode(comment, postId) {
+function createCommentNode(comment, postId, onDeleted) {
     const clone = commentTemplate.content.cloneNode(true);
     const commentEl = clone.querySelector('.comment');
     
     renderAvatar(clone.querySelector('[data-type="comment-avatar"]'), comment.authorAvatar);
 
     clone.querySelector('[data-type="comment-author-name"]').textContent = comment.authorName;
-    clone.querySelector('[data-type="comment-author-role"]').textContent = comment.authorRole === 'teacher' ? '교사' : '학생';
     
     // Comment Content (with linkify)
     clone.querySelector('[data-type="comment-content"]').innerHTML = linkify(comment.content);
@@ -598,6 +616,7 @@ function createCommentNode(comment, postId) {
                 });
                 if (!res.ok) throw new Error('삭제 실패');
                 commentEl.remove();
+                onDeleted?.(comment.id);
             } catch (e) {
                 alert(e.message);
             }
