@@ -23,6 +23,9 @@
     let logMode = false;        // 선생님: 지운 줄까지 보이는 기록 보기
     let logChannel = SCHOOL;
     let logMessages = [];
+    let call = null;            // 방 통화(assets/school-call.js, 방에 들어가면 그때 불러온다)
+    let callScript = null;
+    const CALL_TAB_KEY = "schoolChatCallChannel";   // 같은 탭에서 쪽을 옮겨도 통화를 이어 가려고 탭에만 적어 둔다
     const ui = {};
 
     function el(tag, className, text) {
@@ -55,6 +58,22 @@
             .sc-rooms input,.sc-form input{min-width:0;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit;outline:none}
             .sc-rooms input:focus,.sc-form input:focus{border-color:#f0d77c}
             .sc-rooms select{width:100%;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit}
+            .sc-call{display:none;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);background:rgba(40,60,50,.35)}
+            .sc-call.open{display:block}
+            .sc-call .bar{display:flex;align-items:center;gap:6px}
+            .sc-call .info{flex:1;min-width:0;font-size:12px;color:#bfe8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+            .sc-call .bar button{width:34px;height:30px;border:1px solid rgba(255,255,255,.22);background:#2a323f;color:#eef2f7;cursor:pointer;position:relative;padding:0;font-size:14px}
+            .sc-call .bar button.off{background:#4a2320;border-color:#7a3630}
+            .sc-call .bar button.off::after{content:"";position:absolute;left:15%;right:15%;top:50%;height:2px;background:#f0847c;transform:rotate(-30deg)}
+            .sc-call .bar button.wait{opacity:.6}
+            .sc-call .bar .end{width:auto;padding:0 8px;font-size:12px}
+            .sc-call .note{min-height:0;color:#f0a39c;font-size:12px;margin-top:4px}
+            .sc-call .note:empty{display:none}
+            .sc-videos{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+            .sc-videos:empty{display:none}
+            .sc-video{position:relative;width:96px;height:72px;background:#0a0d12;border:1px solid rgba(255,255,255,.16);overflow:hidden}
+            .sc-video video{width:100%;height:100%;object-fit:cover;display:block}
+            .sc-video span{position:absolute;left:0;right:0;bottom:0;padding:1px 4px;font-size:10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#e9edf3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
             .sc-list{flex:1;overflow-y:auto;padding:8px 10px;user-select:text}
             .sc-empty{color:#8794a6;padding:6px 0}
             .sc-msg{margin-bottom:7px;overflow-wrap:anywhere}
@@ -135,7 +154,7 @@
         const tabs = ui.tabs;
         tabs.replaceChildren();
         for (const channel of channels) {
-            const tab = el("button", channel.id === active && !logMode ? "on" : "", channel.name);
+            const tab = el("button", channel.id === active && !logMode ? "on" : "", channel.id === callChannelId ? `${channel.name} ●` : channel.name);
             tab.type = "button";
             if (unreadBy[channel.id] && channel.id !== active) tab.appendChild(el("span", "dot"));
             tab.addEventListener("click", () => { if (logMode) toggleLog(); switchTo(channel.id); });
@@ -181,6 +200,9 @@
         setStatus("");
         render();
         ui.list.scrollTop = ui.list.scrollHeight;
+        // 학생이 만든 방을 열면 그 방 통화에 자동으로 들어간다(학교 전체방에는 통화가 없다)
+        const info = channelInfo(channelId);
+        if (info && info.code && callChannelId !== channelId) startCall(channelId);
     }
 
     function onEvent(event) {
@@ -202,6 +224,81 @@
         return true;
     }
 
+    // ---- 방 통화(음성 6명·카메라 동시에 4명). 방 탭을 열면 연결은 자동, 마이크·카메라는 직접 켠다 ----
+    let callChannelId = null;
+    const videoTiles = new Map();
+
+    function loadCallScript() {
+        if (window.SchoolCall) return Promise.resolve(true);
+        if (!callScript) {
+            callScript = new Promise(resolve => {
+                const script = document.createElement("script");
+                script.src = "/assets/school-call.js?v=20261107-first";
+                script.onload = () => resolve(Boolean(window.SchoolCall));
+                script.onerror = () => resolve(false);
+                document.head.appendChild(script);
+            });
+        }
+        return callScript;
+    }
+
+    async function startCall(channelId) {
+        if (!(await loadCallScript()) || !window.SchoolCall.supported) return;
+        if (!call) call = window.SchoolCall.create({ send: sendPacket, getMyId: () => me.userId, onChange: renderCall });
+        call.join(channelId);
+        try { sessionStorage.setItem(CALL_TAB_KEY, channelId); } catch (_) {}
+        renderCall();
+    }
+
+    function endCall() {
+        if (call) call.leave();
+        try { sessionStorage.removeItem(CALL_TAB_KEY); } catch (_) {}
+        renderCall();
+    }
+
+    function renderCall() {
+        if (!ui.callBox) return;
+        const view = call ? call.view() : null;
+        callChannelId = view && view.channel ? view.channel : null;
+        if (!callChannelId) {
+            ui.callBox.classList.remove("open");
+            ui.videos.replaceChildren();
+            videoTiles.clear();
+            renderTabs();
+            return;
+        }
+        ui.callBox.classList.add("open");
+        const info = channelInfo(callChannelId);
+        const camCount = view.members.filter(member => member.cam).length;
+        ui.callInfo.textContent = `${info ? info.name : "방"} 통화 ${view.members.length}/${view.limits.call}명 · 카메라 ${camCount}/${view.limits.cams}`;
+        ui.micButton.classList.toggle("off", !view.micOn);
+        ui.camButton.classList.toggle("off", !view.camOn);
+        ui.camButton.classList.toggle("wait", view.camWanted && !view.camOn);
+        ui.callNote.textContent = view.status;
+        const wanted = view.members.filter(member => member.cam && member.stream);
+        for (const [id, tile] of [...videoTiles]) {
+            if (!wanted.some(member => member.userId === id)) { tile.box.remove(); videoTiles.delete(id); }
+        }
+        for (const member of wanted) {
+            let tile = videoTiles.get(member.userId);
+            if (!tile) {
+                const box = el("div", "sc-video");
+                const video = document.createElement("video");
+                video.autoplay = true;
+                video.playsInline = true;
+                video.muted = true;       // 소리는 따로 재생하므로 영상 칸은 소리를 내지 않는다
+                const label = el("span");
+                box.append(video, label);
+                ui.videos.appendChild(box);
+                tile = { box, video, label };
+                videoTiles.set(member.userId, tile);
+            }
+            if (tile.video.srcObject !== member.stream) { tile.video.srcObject = member.stream; tile.video.play().catch(() => {}); }
+            tile.label.textContent = member.me ? "나" : member.name;
+        }
+        renderTabs();
+    }
+
     function connect() {
         clearTimeout(retryTimer);
         fetch("/api/school-chat/ticket", { credentials: "same-origin" })
@@ -215,12 +312,18 @@
                 socket.addEventListener("message", event => {
                     let packet;
                     try { packet = JSON.parse(event.data); } catch (_) { return; }
+                    if (call && call.handle(packet)) return;
                     if (packet.type === "SCHOOLCHAT_JOINED") {
                         channels = packet.channels || channels;
                         messagesBy = packet.history || {};
                         for (const channel of channels) messagesBy[channel.id] = messagesBy[channel.id] || [];
                         if (!channelInfo(active)) active = SCHOOL;
                         render();
+                        // 새로 접속했으면 하던 통화를 이어 간다(쪽을 옮겼거나 연결이 잠시 끊겼을 때)
+                        let remembered = null;
+                        try { remembered = sessionStorage.getItem(CALL_TAB_KEY); } catch (_) {}
+                        if (call && call.inCall()) call.rejoin();
+                        else if (remembered && channelInfo(remembered)) startCall(remembered);
                     } else if (packet.type === "SCHOOLCHAT_HISTORY") {
                         messagesBy[packet.channel] = packet.messages || [];
                         render();
@@ -269,6 +372,7 @@
         if (!info || !info.code) return;
         const result = await api(`rooms/${info.code}/leave`, "POST");
         if (!result.ok) return setStatus("나가지 못했어요.");
+        if (callChannelId === info.id) endCall();
         sendPacket({ type: "SCHOOLCHAT_UNSUBSCRIBE", channel: info.id });
         channels = channels.filter(channel => channel.id !== info.id);
         delete messagesBy[info.id];
@@ -366,6 +470,26 @@
         ui.logChannel.addEventListener("change", () => loadLog(ui.logChannel.value));
         ui.logChannelRow.appendChild(ui.logChannel);
 
+        // 방 통화 띠: 연결은 자동, 마이크·카메라는 직접 켠다
+        ui.callBox = el("div", "sc-call");
+        const callBar = el("div", "bar");
+        ui.callInfo = el("span", "info");
+        ui.micButton = el("button", "off", "🎤");
+        ui.micButton.type = "button";
+        ui.micButton.setAttribute("aria-label", "마이크 켜기/끄기");
+        ui.micButton.addEventListener("click", () => call && call.toggleMic());
+        ui.camButton = el("button", "off", "📷");
+        ui.camButton.type = "button";
+        ui.camButton.setAttribute("aria-label", "카메라 켜기/끄기");
+        ui.camButton.addEventListener("click", () => call && call.toggleCam());
+        const endButton = el("button", "end", "통화 나가기");
+        endButton.type = "button";
+        endButton.addEventListener("click", endCall);
+        callBar.append(ui.callInfo, ui.micButton, ui.camButton, endButton);
+        ui.callNote = el("div", "note");
+        ui.videos = el("div", "sc-videos");
+        ui.callBox.append(callBar, ui.callNote, ui.videos);
+
         ui.list = el("div", "sc-list");
         ui.status = el("div", "sc-status");
         const form = el("form", "sc-form");
@@ -378,7 +502,7 @@
         form.append(ui.input, submit);
         form.addEventListener("submit", event => { event.preventDefault(); send(); });
 
-        panel.append(head, ui.tabs, ui.rooms, ui.logChannelRow, ui.list, ui.status, form);
+        panel.append(head, ui.tabs, ui.rooms, ui.logChannelRow, ui.callBox, ui.list, ui.status, form);
         const setOpen = value => {
             open = value;
             panel.classList.toggle("open", open);
