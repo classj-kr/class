@@ -1,2 +1,2 @@
 # The manifest hashes the exact source bytes; retain them across platforms.
-source.js -text
+source.js -text whitespace=cr-at-eol,blank-at-eol,blank-at-eof,space-before-tab
