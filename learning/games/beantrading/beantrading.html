@@ -5,9 +5,11 @@
   <title>콩 거래 (Bean Trading)</title>
   <meta name="description" content="4~5명이 함께 심고, 흥정하고, 수확하는 콩 거래 게임">
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
-  <link rel="stylesheet" href="game.css?v=7">
+  <link rel="stylesheet" href="game.css?v=8">
   <script src="../../../assets/network/game-network.js?v=20260821" defer></script>
   <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels" defer></script>
+  <script src="music.js" defer></script>
+  <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
   <script src="engine.js?v=2" defer></script>
   <script src="strategy.js?v=1" defer></script>
   <script src="game.js?v=20261006-name" defer></script>
@@ -50,5 +52,6 @@
 <dialog id="harvestDialog"><h2>아직 금화가 없어요</h2><p>이 밭을 지금 비우면 0금화입니다. 그래도 수확할까요?</p><div class="row"><button id="confirmHarvest" class="primary">0금화로 밭 비우기</button><button id="cancelHarvest" class="secondary">취소</button></div></dialog>
 <dialog id="abortDialog"><h2 id="abortTitle">연결이 끊겼습니다</h2><p id="abortMessage"></p><button id="reloadBtn" class="primary">다시 접속</button></dialog>
 <div id="toast" class="toast hidden" role="status"></div>
+<audio id="bgm" preload="metadata" aria-hidden="true"></audio>
 </body>
 </html>
