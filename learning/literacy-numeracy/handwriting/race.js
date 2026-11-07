@@ -905,7 +905,9 @@
     const t = serverNow(),
       before = state.startsAt - t,
       left = state.deadline - t;
-    if (before > 0) {
+    // 한 번 출발하면 다시 세지 않는다. 서버 시계 보정값이 출발 직후 조금 흔들려 남은 시간이 다시 0보다 커지면
+    // 카운트다운이 다시 켜졌는데, '시작!'은 한 판에 한 번만 띄우므로 회색 막과 「1」이 그대로 남았다(입력도 잠겼다).
+    if (before > 0 && goShown !== state.roundId) {
       const n = Math.ceil(before / 1000);
       $('countdown').hidden = false;
       if (countShown !== n) {
