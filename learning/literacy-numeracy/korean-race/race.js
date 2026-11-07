@@ -133,19 +133,17 @@
   }
   addEventListener('resize', sizeCanvas);
   // 긴 문제·팀 막대로 화면이 넘치면 아래 글자 탑 판을 줄여(120px까지) 넓은 화면에 스크롤바가 생기지 않게 한다.
+  // 높이를 비웠다 다시 재지 않고 남는 자리만큼 늘리고 줄여, 스크롤바가 생겼다 없어졌다 하며 되풀이되지 않게 한다.
   function fitTowers() {
     const towers = $('towers');
-    if ($('raceScreen').hidden || !towers) return;
-    towers.style.height = '';
-    if (innerWidth <= 860) return;
-    const over = document.documentElement.scrollHeight - innerHeight;
-    if (over > 0) towers.style.height = Math.max(120, towers.getBoundingClientRect().height - over) + 'px';
+    if (!towers || $('raceScreen').hidden || document.body.classList.contains('spectator')) return;
+    if (innerWidth <= 860) { towers.style.height = ''; return; }
+    const now = towers.getBoundingClientRect().height;
+    const room = innerHeight - ($('raceScreen').getBoundingClientRect().bottom + scrollY + 12);
+    const next = Math.max(120, Math.min(230, Math.floor(now + room)));
+    if (Math.abs(next - now) > 1) towers.style.height = next + 'px';
   }
   addEventListener('resize', fitTowers);
-  if (window.ResizeObserver) {
-    const watch = new ResizeObserver(() => requestAnimationFrame(fitTowers));
-    for (const node of [document.querySelector('.arena'), $('teamBar')]) if (node) watch.observe(node);
-  }
   sizeCanvas();
   const COLORS = ['#e2513c', '#2f7fd0', '#f2b632', '#3fae6a', '#8d5bd6', '#ee7d2f'];
   function burst(x, y, count = 22, power = 6) {
@@ -473,6 +471,7 @@
       paintQuestion(s.me.question);
     }
     paintMine(s);
+    requestAnimationFrame(fitTowers);
   }
   function paintMine(s) {
     renderMini(s);
@@ -630,6 +629,7 @@
     $('choices').classList.add('reading');
     clearTimeout(readTimer);
     readTimer = setTimeout(() => $('choices').classList.remove('reading'), C.MIN_ANSWER_MS);
+    requestAnimationFrame(fitTowers);
   }
   const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
   function answer(index) {
@@ -858,12 +858,15 @@
   }
 
   // ── 시계 (카운트다운·남은 시간) ─────────────────────
+  let fitAt = 0;
   function clock() {
     requestAnimationFrame(clock);
     if (!state || state.phase !== 'running') {
       $('countdown').hidden = true;
       return;
     }
+    // 맞힌 말·팀 막대·풀이처럼 언제 늘어날지 모르는 것이 많아, 경주 중에는 0.2초마다 탑 판 높이를 맞춘다.
+    if (performance.now() - fitAt > 200) { fitAt = performance.now(); fitTowers(); }
     const t = serverNow(), before = state.startsAt - t, left = state.deadline - t;
     if (before > 0) {
       const n = Math.ceil(before / 1000);
