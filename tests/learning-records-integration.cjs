@@ -124,7 +124,8 @@ async function main() {
     result = await request('/teacher/report?classId=10:2026:4:1', null, 3);
     assert.equal(result.status, 200);
     assert.equal(result.data.sessions.find(s => s.id === emailSession.id).summary.firstCorrect, 1, 'OX answer appears in the current teacher report');
-    assert.ok(result.data.sessions.some(s => s.id === currentSession.id));
+    assert.equal(result.data.sessions.some(s => s.id === currentSession.id), false, 'opening a lesson alone is not reportable activity');
+    assert.equal((await request(`/sessions/${currentSession.id}`, null, 8)).status, 200, 'an empty checkpoint remains available for resuming');
     assert.ok(result.data.roster.some(s => s.user_id === '6'), 'email-only student appears once with the account identity');
     assert.equal(result.data.roster.some(s => s.user_id === '7'), false, 'removed student is excluded from the current roster');
     assert.equal((await request(`/teacher/sessions/${emailSession.id}`, null, 4)).status, 404, 'email matching does not cross school permissions');

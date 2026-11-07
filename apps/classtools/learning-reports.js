@@ -135,6 +135,7 @@
       if (s.retryCount) metrics.append(node('span', `다시 풀이 ${s.retryCount}회`, 'metric-retry'));
       if (s.readCount) metrics.append(node('span', `열어 본 부분 ${s.readCount}개`));
       if (s.selfAssessments) metrics.append(node('span', `스스로 점검 ${s.selfAssessments}회`));
+      if (row.activity === 'metacognition' && !s.firstScored && row.progress.current) metrics.append(node('span', `점검 응답 ${row.progress.current}/${row.progress.total}`));
       if (s.hints) metrics.append(node('span', `도움말 ${s.hints}회`));
       if (!metrics.children.length) metrics.append(node('span', '응답 없음'));
       const detail = node('button', '문항·응답 보기', 'detail-button'); detail.onclick = () => showDetail(row);

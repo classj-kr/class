@@ -622,7 +622,9 @@
 
         paint();
         const spread = spreads[currentSpreadIndex];
-        await saveRecord(spread.kind === 'read' ? [{kind:'read',questionKey:spread.poem.id,response:'시 열기',snapshot:{title:spread.poem.title}}] : []);
+        // Restoring a page is not a new reading action. Choosing a poem from
+        // the shelf is explicit, as is goTo() during reading.
+        await saveRecord(targetPoemIndex >= 0 && spread.kind === 'read' ? [{kind:'read',questionKey:spread.poem.id,response:'시 열기',snapshot:{title:spread.poem.title}}] : []);
         busy=false; bookScreen.inert=false;
     }
 
