@@ -198,6 +198,79 @@ async function main() {
   assert.equal((await call(`/rooms/${code}/leave`, { as: 1, method: 'POST' })).status, 200);
   assert.equal((await db.query("SELECT 1 FROM school_chat_rooms WHERE school_key='A학교' AND code=$1", [code])).rowCount, 1, '한 명이라도 남은 방은 유지');
 
+  // ---- 방 통화: 음성 6명, 카메라 동시에 4명, 연결 신호는 같은 통화 안에서만 ----
+  await db.query(`INSERT INTO school_chat_rooms (school_key, code, name, owner_user_id) VALUES ('A학교', '7777', '통화방', '201')`);
+  for (let id = 201; id <= 207; id += 1) await db.query(`INSERT INTO school_chat_members (school_key, code, user_id) VALUES ('A학교', '7777', $1)`, [String(id)]);
+  await db.query(`INSERT INTO school_chat_members (school_key, code, user_id) VALUES ('A학교', '8888', '201')`); // 방 없는 번호(무시되어야 함)
+  const CALL = 'room:7777';
+  const people = {};
+  const verifyTicket = (ticket) => people[ticket] || null;
+  const fake = () => { const socket = { readyState: 1, meta: {}, sent: [], send(raw) { this.sent.push(JSON.parse(raw)); } }; return socket; };
+  const last = (socket, type) => [...socket.sent].reverse().find((packet) => packet.type === type);
+  const sockets = {};
+  for (let id = 201; id <= 207; id += 1) {
+    const socket = fake();
+    people[`t${id}`] = { userId: String(id), name: `학생${id}`, role: 'student', grade: 3, classNumber: 1, schoolKey: 'A학교' };
+    await chat.handleSocketMessage(socket, { type: 'SCHOOLCHAT_JOIN', ticket: `t${id}` }, verifyTicket);
+    sockets[id] = socket;
+  }
+  const say = (id, message) => chat.handleSocketMessage(sockets[id], message, verifyTicket);
+
+  // 20. 음성은 6명까지, 일곱째는 가득 참 안내.
+  for (let id = 201; id <= 206; id += 1) await say(id, { type: 'SCHOOLCHAT_CALL_JOIN', channel: CALL });
+  await say(207, { type: 'SCHOOLCHAT_CALL_JOIN', channel: CALL });
+  assert.equal(last(sockets[201], 'SCHOOLCHAT_CALL_STATE').members.length, 6);
+  assert.ok(last(sockets[207], 'SCHOOLCHAT_CALL_FULL'), '일곱째는 거절');
+  assert.equal(last(sockets[207], 'SCHOOLCHAT_CALL_STATE'), undefined, '거절된 사람은 통화 상태를 못 받는다');
+
+  // 21. 학교 전체방과 들어가지 않은 방에서는 통화가 안 열린다.
+  const outsider = fake();
+  people.tx = { userId: '299', name: '바깥', role: 'student', grade: 3, classNumber: 1, schoolKey: 'A학교' };
+  await chat.handleSocketMessage(outsider, { type: 'SCHOOLCHAT_JOIN', ticket: 'tx' }, verifyTicket);
+  await chat.handleSocketMessage(outsider, { type: 'SCHOOLCHAT_CALL_JOIN', channel: CALL }, verifyTicket);
+  await chat.handleSocketMessage(sockets[201], { type: 'SCHOOLCHAT_CALL_JOIN', channel: 'school' }, verifyTicket);
+  assert.equal(last(outsider, 'SCHOOLCHAT_CALL_STATE'), undefined, '방에 안 들어간 사람은 통화에 못 들어간다');
+  assert.equal(last(sockets[201], 'SCHOOLCHAT_CALL_STATE').channel, CALL, '학교 전체방에는 통화가 없다');
+
+  // 22. 카메라는 동시에 4명까지. 다섯째는 거절, 누가 끄면 켤 수 있다.
+  for (let id = 201; id <= 204; id += 1) await say(id, { type: 'SCHOOLCHAT_CAM', channel: CALL, on: true });
+  assert.deepEqual(last(sockets[206], 'SCHOOLCHAT_CALL_STATE').cams, ['201', '202', '203', '204']);
+  await say(205, { type: 'SCHOOLCHAT_CAM', channel: CALL, on: true });
+  assert.ok(last(sockets[205], 'SCHOOLCHAT_CAM_DENIED'), '다섯째 카메라는 거절');
+  assert.ok(!last(sockets[206], 'SCHOOLCHAT_CALL_STATE').cams.includes('205'));
+  await say(201, { type: 'SCHOOLCHAT_CAM', channel: CALL, on: false });
+  await say(205, { type: 'SCHOOLCHAT_CAM', channel: CALL, on: true });
+  assert.ok(last(sockets[206], 'SCHOOLCHAT_CALL_STATE').cams.includes('205'), '빈자리가 나면 켤 수 있다');
+  await say(204, { type: 'SCHOOLCHAT_CAM', channel: CALL, on: true });   // 이미 켠 사람이 또 켜도 자리를 더 쓰지 않는다
+  assert.equal(last(sockets[206], 'SCHOOLCHAT_CALL_STATE').cams.length, 4);
+
+  // 23. 연결 신호는 같은 통화에 들어온 사람에게만, 보낸 사람 표시와 함께 간다.
+  await say(201, { type: 'SCHOOLCHAT_SIGNAL', channel: CALL, to: '202', data: { kind: 'offer', sdp: 'x' } });
+  assert.deepEqual(last(sockets[202], 'SCHOOLCHAT_SIGNAL'), { type: 'SCHOOLCHAT_SIGNAL', channel: CALL, from: '201', data: { kind: 'offer', sdp: 'x' } });
+  await say(201, { type: 'SCHOOLCHAT_SIGNAL', channel: CALL, to: '299', data: { kind: 'offer' } });
+  assert.equal(last(outsider, 'SCHOOLCHAT_SIGNAL'), undefined, '통화에 없는 사람에게는 안 간다');
+  await say(201, { type: 'SCHOOLCHAT_SIGNAL', channel: CALL, to: '201', data: {} });
+  assert.equal(last(sockets[201], 'SCHOOLCHAT_SIGNAL'), undefined, '자기에게는 안 간다');
+  await say(207, { type: 'SCHOOLCHAT_SIGNAL', channel: CALL, to: '202', data: { kind: 'ice' } });
+  assert.notEqual(last(sockets[202], 'SCHOOLCHAT_SIGNAL').data.kind, 'ice', '통화에 못 들어온 사람의 신호는 안 간다');
+  const sentBefore = sockets[203].sent.length;
+  await say(201, { type: 'SCHOOLCHAT_SIGNAL', channel: CALL, to: '203', data: { big: 'x'.repeat(30000) } });
+  assert.equal(sockets[203].sent.length, sentBefore, '너무 큰 신호는 버린다');
+
+  // 24. 나가면 통화와 카메라 자리에서 빠지고 남은 사람이 알게 된다. 접속이 끊겨도 같다.
+  await say(205, { type: 'SCHOOLCHAT_CALL_LEAVE', channel: CALL });
+  const afterLeave = last(sockets[206], 'SCHOOLCHAT_CALL_STATE');
+  assert.ok(!afterLeave.members.some((m) => m.userId === '205') && !afterLeave.cams.includes('205'));
+  chat.leave(sockets[204]);
+  const afterDrop = last(sockets[206], 'SCHOOLCHAT_CALL_STATE');
+  assert.ok(!afterDrop.members.some((m) => m.userId === '204') && !afterDrop.cams.includes('204'));
+  await say(207, { type: 'SCHOOLCHAT_CALL_JOIN', channel: CALL });   // 자리가 났으니 일곱째가 들어온다
+  assert.ok(last(sockets[207], 'SCHOOLCHAT_CALL_STATE'));
+
+  // 25. 방을 나가면(구독 해제) 통화에서도 빠진다.
+  await say(206, { type: 'SCHOOLCHAT_UNSUBSCRIBE', channel: CALL });
+  assert.ok(!last(sockets[201], 'SCHOOLCHAT_CALL_STATE').members.some((m) => m.userId === '206'));
+
   server.close();
   console.log('school-chat: 모든 검사 통과');
 }

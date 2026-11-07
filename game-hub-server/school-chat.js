@@ -21,6 +21,9 @@ const MAX_ROOMS_OWNED = 3;
 const MAX_ROOMS_JOINED = 8;
 const SCHOOL = 'school';
 const CHANNEL_PATTERN = /^(school|room:\d{4})$/;
+const MAX_CALL = 6;               // 방 통화(음성) 인원
+const MAX_CAMS = 4;               // 동시에 카메라를 켤 수 있는 사람 수
+const SIGNAL_MAX = 20000;         // 연결 신호 한 개의 최대 크기(글자 수)
 
 function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, studentMembership, teacherRegistration, signTicket, HttpError, asyncRoute }) {
   const router = express.Router();
@@ -361,6 +364,7 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
   function unsubscribe(socket, channel) {
     const member = socket.meta?.schoolChat;
     if (!member) return;
+    callLeave(socket, channel);
     const key = roomKey(member.schoolKey, channel);
     const sockets = rooms.get(key);
     if (sockets) {
@@ -387,6 +391,68 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
   listeners.add((schoolKey, event) => {
     for (const socket of rooms.get(roomKey(schoolKey, event.channel || SCHOOL)) || []) send(socket, { type: 'SCHOOLCHAT_EVENT', event });
   });
+
+  // ---- 방 통화: 학생이 만든 방에서만. 음성은 6명, 카메라는 동시에 4명까지 ----
+  // 영상·음성은 학생 기기끼리 직접 오가고 서버는 인원을 세고 연결 신호만 전달한다.
+  const calls = new Map();   // roomKey -> { members: Map<userId, socket>, cams: Set<userId> }
+
+  function broadcastCall(key, channel) {
+    const call = calls.get(key);
+    if (!call) return;
+    const payload = {
+      type: 'SCHOOLCHAT_CALL_STATE', channel,
+      members: [...call.members.entries()].map(([userId, socket]) => ({ userId, name: socket.meta.schoolChat.name })),
+      cams: [...call.cams], limits: { call: MAX_CALL, cams: MAX_CAMS }
+    };
+    for (const socket of call.members.values()) send(socket, payload);
+  }
+
+  function callLeave(socket, channel) {
+    const member = socket.meta?.schoolChat;
+    if (!member) return;
+    const key = roomKey(member.schoolKey, channel);
+    const call = calls.get(key);
+    if (!call || call.members.get(member.userId) !== socket) return;
+    call.members.delete(member.userId);
+    call.cams.delete(member.userId);
+    if (!call.members.size) calls.delete(key);
+    else broadcastCall(key, channel);
+  }
+
+  function handleCallMessage(socket, member, type, message) {
+    const channel = String(message.channel || '');
+    if (!/^room:\d{4}$/.test(channel) || !member.channels.has(channel)) return;   // 들어간 방에서만
+    const key = roomKey(member.schoolKey, channel);
+    if (type === 'SCHOOLCHAT_CALL_JOIN') {
+      const call = calls.get(key) || { members: new Map(), cams: new Set() };
+      if (!call.members.has(member.userId) && call.members.size >= MAX_CALL) {
+        send(socket, { type: 'SCHOOLCHAT_CALL_FULL', channel });
+        return;
+      }
+      calls.set(key, call);
+      call.members.set(member.userId, socket);   // 같은 계정이 다른 창에서 들어오면 새 창이 이어받는다
+      broadcastCall(key, channel);
+      return;
+    }
+    const call = calls.get(key);
+    if (!call || call.members.get(member.userId) !== socket) return;   // 통화에 들어와 있어야 한다
+    if (type === 'SCHOOLCHAT_CALL_LEAVE') {
+      callLeave(socket, channel);
+    } else if (type === 'SCHOOLCHAT_CAM') {
+      if (message.on) {
+        if (!call.cams.has(member.userId) && call.cams.size >= MAX_CAMS) {
+          send(socket, { type: 'SCHOOLCHAT_CAM_DENIED', channel });
+          return;
+        }
+        call.cams.add(member.userId);
+      } else call.cams.delete(member.userId);
+      broadcastCall(key, channel);
+    } else if (type === 'SCHOOLCHAT_SIGNAL') {
+      const target = call.members.get(String(message.to || ''));
+      if (!target || target === socket || JSON.stringify(message.data ?? null).length > SIGNAL_MAX) return;
+      send(target, { type: 'SCHOOLCHAT_SIGNAL', channel, from: member.userId, data: message.data });
+    }
+  }
 
   // 소켓 메시지가 채팅 것이면 처리하고 true 를 돌려준다. verifyTicket(ticket, kind)는 서명 검사.
   async function handleSocketMessage(socket, message, verifyTicket) {
@@ -419,6 +485,10 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
     if (type === 'SCHOOLCHAT_UNSUBSCRIBE') {
       const channel = String(message.channel || '');
       if (member && channel !== SCHOOL) unsubscribe(socket, channel);
+      return true;
+    }
+    if (type === 'SCHOOLCHAT_CALL_JOIN' || type === 'SCHOOLCHAT_CALL_LEAVE' || type === 'SCHOOLCHAT_CAM' || type === 'SCHOOLCHAT_SIGNAL') {
+      if (member) handleCallMessage(socket, member, type, message);
       return true;
     }
     if (type === 'SCHOOLCHAT_SEND') {
