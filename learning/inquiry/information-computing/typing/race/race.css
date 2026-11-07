@@ -94,9 +94,10 @@ main { width: min(1180px, 100%); margin: 0 auto; padding: 8px 16px 40px; }
 .settings { display: grid; gap: 16px; }
 .setting-field { min-width: 0; margin: 0; padding: 0; border: 0; }
 .setting-field legend { margin-bottom: 7px; padding: 0; color: var(--dim); font-size: 13px; font-weight: 700; }
-.option-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.option { padding: 10px 16px; border-radius: 14px; border: 2px solid var(--line); background: rgba(255, 255, 255, 0.04); font-weight: 800; transition: transform 0.1s; }
-.option.small { padding: 8px 14px; }
+/* 한 묶음은 한 줄: 버튼을 같은 너비로 나란히 두어 「8팀」 하나만 다음 줄로 떨어지는 일이 없다. */
+.option-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 8px; }
+.option { min-width: 0; padding: 10px 6px; border-radius: 14px; border: 2px solid var(--line); background: rgba(255, 255, 255, 0.04); font-weight: 800; white-space: nowrap; transition: transform 0.1s; }
+.option.small { padding: 8px 4px; }
 .option:hover { transform: translateY(-2px); }
 .option.on { border-color: var(--yellow); color: var(--yellow); background: rgba(255, 225, 77, 0.1); }
 kbd { padding: 1px 7px; border-radius: 6px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.08); font-family: inherit; font-size: 0.9em; }
@@ -141,7 +142,8 @@ img.pod-face { width: 78px; height: 78px; }
 .spectate input { width: 22px; height: 22px; accent-color: var(--cyan); }
 
 /* ── 대기실 ───────────────────────────────────────── */
-.lobby-head { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 16px; align-items: stretch; }
+/* 방장이 함께 달리면 내 카드가 둘째 줄을 통째로 쓰므로, 설정 칸은 dense로 방번호 옆 빈자리를 채운다. */
+.lobby-head { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; grid-auto-flow: row dense; gap: 16px; align-items: stretch; }
 .code-card, .me-card { display: grid; place-items: center; gap: 4px; padding: 20px; border-radius: 24px; background: var(--panel); border: 2px solid var(--line); text-align: center; }
 .code-card span { color: var(--dim); font-weight: 800; }
 .code-card strong { font-size: clamp(56px, 9vw, 96px); font-weight: 900; letter-spacing: 0.08em; color: var(--yellow); text-shadow: 0 0 24px rgba(255, 225, 77, 0.6); line-height: 1; }
@@ -150,7 +152,8 @@ img.pod-face { width: 78px; height: 78px; }
 .me-card strong { font-size: 28px; }
 .me-card p { margin: 0; color: var(--dim); font-weight: 700; }
 @keyframes bounce { from { transform: translateY(0) rotate(-6deg); } to { transform: translateY(-16px) rotate(6deg); } }
-.lobby-settings { display: grid; align-content: center; gap: 4px; padding: 18px; border-radius: 24px; background: var(--panel); border: 2px solid var(--line); }
+.lobby-settings { display: grid; align-content: center; gap: 14px; padding: 18px; border-radius: 24px; background: var(--panel); border: 2px solid var(--line); container-type: inline-size; }
+@container (min-width: 620px) { .lobby-settings .settings { grid-template-columns: 1fr 1fr; column-gap: 22px; } }
 .start { font-size: 28px; padding: 16px; animation: glow 1.4s ease-in-out infinite alternate; }
 @keyframes glow { to { box-shadow: 0 6px 0 #18a85a, 0 0 46px rgba(77, 255, 154, 0.8); } }
 .lobby-count { margin: 22px 0 10px; font-weight: 800; color: var(--dim); }
@@ -167,7 +170,16 @@ img.pod-face { width: 78px; height: 78px; }
 /* ── 팀전: 대기실 팀 칸 ───────────────────────────── */
 .shuffle { margin-left: 10px; height: 34px; color: var(--yellow); border-color: rgba(255, 225, 77, 0.5); }
 .team-panel { display: grid; gap: 14px; }
-.team-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.team-columns { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 1000px) { .team-columns { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); } .team-columns.many { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .team-columns, .team-columns.many { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } }
+/* 7·8팀: 네 칸씩 두 줄에 다 보이도록 줄을 낮춘다. */
+.team-columns.many .team-col { padding: 10px; gap: 6px; }
+.team-columns.many .team-head { padding: 8px 10px; font-size: 16px; }
+.team-columns.many .lobby-racers { gap: 4px; }
+.team-columns.many .lobby-racers li { padding: 4px 8px; }
+.team-columns.many .lobby-racers img.racer { width: 24px; height: 24px; }
+.team-columns.many .lobby-racers .racer { font-size: 18px; }
 .team-col { display: grid; gap: 8px; align-content: start; padding: 12px; border-radius: 22px; background: hsl(var(--team-hue) 70% 16% / 0.85); border: 3px solid hsl(var(--team-hue) 90% 60% / 0.55); box-shadow: inset 0 0 30px hsl(var(--team-hue) 90% 50% / 0.15); }
 .team-col.mine { border-color: hsl(var(--team-hue) 100% 65%); box-shadow: 0 0 26px hsl(var(--team-hue) 100% 60% / 0.55), inset 0 0 30px hsl(var(--team-hue) 90% 50% / 0.2); }
 .team-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 10px 12px; border: 0; border-radius: 14px; background: hsl(var(--team-hue) 90% 55%); color: #12081f; font-weight: 900; font-size: 18px; box-shadow: 0 4px 0 hsl(var(--team-hue) 80% 32%); transition: transform 0.08s; }
@@ -191,6 +203,9 @@ body:not(.is-host) .team-col:not(.mine):not(.full) .team-head::after { content: 
 
 /* ── 팀전: 레이스 중 팀 점수 막대 ─────────────────── */
 .team-bar { display: grid; gap: 6px; margin-bottom: 12px; padding: 12px; border-radius: 22px; background: rgba(10, 6, 28, 0.75); border: 2px solid var(--line); }
+/* 다섯 팀부터는 두 줄로 나눠 낱말판을 아래로 밀지 않는다. */
+.team-bar.many { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; }
+@media (max-width: 760px) { .team-bar.many { grid-template-columns: 1fr; } }
 .team-row { display: grid; grid-template-columns: minmax(96px, 150px) 1fr 72px; align-items: center; gap: 10px; font-weight: 900; }
 .team-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .team-row strong { text-align: right; font-size: 22px; color: hsl(var(--team-hue) 100% 70%); font-variant-numeric: tabular-nums; }
@@ -260,7 +275,6 @@ body.fever .word-card::before { content: "FEVER x2"; position: absolute; top: -1
 }
 #typeInput:focus { border-color: var(--yellow); box-shadow: 0 0 22px rgba(255, 225, 77, 0.35); }
 #typeInput:disabled { opacity: 0.5; }
-.type-hint { margin: 0; color: var(--dim); font-weight: 700; font-size: 14px; }
 .chase { margin: 0; min-height: 1.4em; font-weight: 900; color: var(--yellow); font-size: 18px; text-align: center; }
 .mini-board { list-style: none; margin: 0; padding: 12px; border-radius: 22px; background: var(--panel); border: 2px solid var(--line); display: grid; gap: 6px; }
 .mini-board li { display: grid; grid-template-columns: 26px 30px 1fr auto; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); font-weight: 800; }
@@ -357,48 +371,86 @@ body[data-screen="race"] img.car-emoji { animation-name: wobble-face; }
 .toast { position: fixed; left: 50%; bottom: 22px; z-index: 60; transform: translate(-50%, 30px); margin: 0; padding: 12px 20px; max-width: calc(100% - 32px); border-radius: 14px; background: #fff; color: #1a0b2e; font-weight: 800; opacity: 0; transition: 0.25s; pointer-events: none; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-/* 낱말판: 모두가 같은 판을 보고 아무 낱말이나 골라 친다. 아무도 안 친 낱말은 금빛으로 빛나며 🥇+5를 달고 있다. */
+/* 낱말판: 모두가 같은 판을 보고 아무 낱말이나 골라 친다.
+   칸의 큰 수가 지금 치면 받는 점수다. 금빛(아무도 안 침, 1등 +5) > 은빛(+3) > 동빛(+1) > 흐린 칸(보너스 없음).
+   점수가 높은 칸일수록 테두리·빛·글씨가 크고 밝으며, 금빛 칸은 반짝이며 숨 쉬듯 커졌다 작아진다. */
 .word-card { display: block; padding: 16px; }
 .board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; }
 .board.sentence { grid-template-columns: 1fr; }
-.tile { position: relative; display: grid; place-items: center; min-height: clamp(84px, 13vh, 120px); padding: 22px 10px 14px; border-radius: 18px; background: rgba(255, 255, 255, 0.06); border: 2px solid rgba(255, 255, 255, 0.14); overflow: hidden; transition: transform .2s, opacity .3s, border-color .2s, background .2s; }
-.tile-word { font-size: clamp(26px, 3.6vw, 46px); font-weight: 900; color: #fff; line-height: 1.15; text-align: center; word-break: keep-all; }
+.tile { position: relative; display: grid; grid-template-rows: auto 1fr; justify-items: center; align-items: center; gap: 2px; min-height: clamp(84px, 13vh, 120px); padding: 6px 10px 10px; border-radius: 18px; background: rgba(255, 255, 255, 0.04); border: 3px solid rgba(255, 255, 255, 0.14); overflow: hidden; transition: transform .2s, opacity .3s, border-color .3s, background .3s, box-shadow .3s; }
+.tile-word { display: inline-block; font-size: clamp(26px, 3.6vw, 46px); font-weight: 900; color: #fff; line-height: 1.15; text-align: center; word-break: keep-all; transition: transform .35s cubic-bezier(.2, 1.4, .4, 1), opacity .3s; }
 .board.sentence .tile-word { font-size: clamp(20px, 2.4vw, 30px); }
 .tile-word span.ok { color: var(--green); text-shadow: 0 0 14px rgba(77, 255, 154, .8); }
 .tile-word span.now { color: var(--yellow); text-decoration: underline 3px; text-underline-offset: 7px; }
-.tile-badge { position: absolute; top: 6px; left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 14px; font-weight: 900; background: rgba(0, 0, 0, .35); color: #fff; }
-.tile-badge:empty { display: none; }
-.tile-who { position: absolute; top: 5px; right: 8px; display: flex; gap: 2px; }
+.tile-badge { position: relative; z-index: 1; justify-self: start; display: flex; align-items: center; gap: 3px; padding: 1px 10px 1px 6px; border-radius: 99px; font-weight: 900; line-height: 1.25; background: rgba(0, 0, 0, .35); color: #fff; transition: background .3s, color .3s; }
+.tile-medal { font-size: 18px; }
+.tile-medal:empty { display: none; }
+.tile-points { font-size: 21px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.tile-points:empty { display: none; }
+.tile-points.tick { animation: tick .45s cubic-bezier(.2, 1.8, .4, 1); }
+.tile-who { position: absolute; z-index: 1; top: 5px; right: 8px; display: flex; gap: 2px; }
 .tile-face { width: 24px; height: 24px; font-size: 15px; }
+.tile-face.new { animation: popin .45s cubic-bezier(.2, 1.8, .4, 1); }
 .tile-timer { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--pink); transform-origin: left; transform: scaleX(0); }
 .tile-timer[data-on] { animation: tile-timer linear forwards; }
 @keyframes tile-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
-/* 먹음직스러운 새 낱말 */
-.tile.untouched { border-color: var(--yellow); background: linear-gradient(160deg, rgba(255, 214, 77, .2), rgba(255, 120, 200, .12)); box-shadow: 0 0 18px rgba(255, 214, 77, .35); animation: tile-glow 1.4s ease-in-out infinite alternate; }
-.tile.untouched .tile-badge { background: var(--yellow); color: #3a2400; }
-.tile.taken .tile-badge { background: #cfd8ff; color: #1b2150; }
+@keyframes tick { 40% { transform: scale(1.45); } }
+/* 금빛: 아무도 안 친 낱말. 가장 크게 반짝인다. */
+.tile[data-tier="gold"] { border-color: #ffd23f; background: linear-gradient(160deg, rgba(255, 210, 63, .28), rgba(255, 120, 200, .14)); box-shadow: 0 0 20px rgba(255, 210, 63, .4); animation: tile-glow 1.4s ease-in-out infinite alternate; }
+.tile[data-tier="gold"]::before { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .32) 50%, transparent 65%); transform: translateX(-110%); animation: shimmer 2.6s ease-in-out infinite; pointer-events: none; }
+.tile[data-tier="gold"] .tile-badge { background: linear-gradient(#ffe56b, #ffb800); color: #3a2400; box-shadow: 0 0 12px rgba(255, 210, 63, .8); }
+.tile[data-tier="gold"] .tile-points { font-size: 26px; }
+.tile[data-tier="gold"] .tile-word { animation: word-breathe 1.4s ease-in-out infinite alternate; }
+/* 은빛·동빛: 누가 먼저 쳤다. 한 단계씩 작고 차분해진다. */
+.tile[data-tier="silver"] { border-color: #c9d3ff; background: rgba(201, 211, 255, .12); }
+.tile[data-tier="silver"] .tile-badge { background: linear-gradient(#f4f6ff, #b8c2ea); color: #1b2150; }
+.tile[data-tier="silver"] .tile-word { transform: scale(.94); }
+.tile[data-tier="bronze"] { border-color: #ff9d57; background: rgba(255, 157, 87, .11); }
+.tile[data-tier="bronze"] .tile-badge { background: linear-gradient(#ffc597, #d9792f); color: #3d1600; }
+.tile[data-tier="bronze"] .tile-word { transform: scale(.9); }
+.tile[data-tier="plain"] .tile-badge { background: rgba(255, 255, 255, .1); color: var(--dim); }
+.tile[data-tier="plain"] .tile-points { font-size: 17px; }
+.tile[data-tier="plain"] .tile-word { transform: scale(.86); opacity: .75; }
+.tile[data-tier="done"] { opacity: .38; border-style: dashed; }
+.tile[data-tier="done"] .tile-badge { background: var(--green); color: #05301a; }
 .tile.target { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(39, 225, 255, .25), 0 0 24px rgba(39, 225, 255, .45); transform: scale(1.04); }
-.tile.done { opacity: .38; border-style: dashed; animation: none; }
-.tile.done .tile-badge { background: var(--green); color: #05301a; }
-.tile.fresh-in { animation: tile-in .45s cubic-bezier(.2, 1.5, .4, 1); }
-.tile.claim { animation: tile-claim .45s cubic-bezier(.2, 1.6, .4, 1); }
+.tile.target .tile-word { animation: none; }
 .word-card.wrong .tile.target { border-color: var(--red); }
-@keyframes tile-glow { to { box-shadow: 0 0 30px rgba(255, 214, 77, .6); } }
-@keyframes tile-in { from { transform: translateY(-30px) scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+/* 움직임: 새 낱말은 떨어지며 들어오고, 빠지는 낱말은 제자리에서 부풀며 사라지고, 남이 먼저 친 칸은 번쩍인다. */
+.tile.fresh-in { animation: tile-drop .55s cubic-bezier(.2, 1.5, .4, 1) both; }
+.tile.claim { animation: tile-claim .45s cubic-bezier(.2, 1.6, .4, 1); }
+.tile.hit { animation: tile-hit .55s ease-out; }
+.tile.ghost { position: absolute; z-index: 2; margin: 0; pointer-events: none; animation: tile-out .45s ease-in forwards; }
+@keyframes tile-glow { to { box-shadow: 0 0 34px rgba(255, 210, 63, .7); } }
+@keyframes shimmer { 55%, 100% { transform: translateX(110%); } }
+@keyframes word-breathe { to { transform: scale(1.07); } }
+@keyframes tile-drop { from { transform: translateY(-60px) scale(.7); opacity: 0; } 60% { transform: translateY(5px) scale(1.03); opacity: 1; } to { transform: none; opacity: 1; } }
 @keyframes tile-claim { 40% { transform: scale(1.15) rotate(-3deg); } }
+@keyframes tile-hit { 0% { background: rgba(255, 255, 255, .6); transform: scale(.93); } 35% { transform: scale(1.03) rotate(1deg); } 60% { transform: rotate(-1deg); } }
+@keyframes tile-out { to { transform: scale(1.25); opacity: 0; filter: blur(3px) brightness(1.8); } }
+/* 친 낱말이 내 로켓으로 날아간다 */
+.fly-word { position: fixed; z-index: 46; font-weight: 900; font-size: 38px; color: var(--yellow); white-space: nowrap; text-shadow: 0 0 18px rgba(255, 225, 77, .9), 2px 2px 0 #0b0820; pointer-events: none; will-change: transform; }
+.fly-word.long { font-size: 24px; }
+.car.boost { animation: car-boost .6s cubic-bezier(.2, 1.6, .4, 1); }
+@keyframes car-boost { 35% { transform: translateY(-50%) scale(1.35); filter: drop-shadow(0 0 12px var(--yellow)); } }
+.float-text.silver { color: #e6ebff; font-size: 38px; text-shadow: 0 0 16px rgba(201, 211, 255, .9), 2px 2px 0 #0b0820; }
+.float-text.bronze { color: #ffc08f; font-size: 36px; text-shadow: 0 0 16px rgba(255, 157, 87, .9), 2px 2px 0 #0b0820; }
 @media (max-width: 760px) {
   .board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .tile { min-height: 84px; padding: 30px 6px 10px; }
+  .tile { min-height: 84px; padding: 5px 6px 8px; }
   .tile-word { font-size: 22px; }
-  .tile-badge { font-size: 12px; padding: 1px 7px; }
+  .tile-medal { font-size: 14px; }
+  .tile-points, .tile[data-tier="gold"] .tile-points { font-size: 17px; }
   .tile-face { width: 20px; height: 20px; font-size: 13px; }
+  .team-card:not(.winner) { width: calc(50% - 6px); }
 }
 @media (max-width: 760px) {
   .lobby-head, .arena { grid-template-columns: 1fr; }
   .lane { grid-template-columns: 28px 64px 1fr; }
   .create { padding: 20px; }
-  .option { padding: 10px 12px; min-height: 44px; font-size: 14px; }
-  .option.small { padding: 8px 12px; }
+  .option-row { gap: 6px; }
+  .option { padding: 10px 2px; min-height: 44px; font-size: 14px; }
+  .option.small { padding: 8px 2px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }

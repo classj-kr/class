@@ -270,3 +270,89 @@ test('keys typed with 한/영 left on English become the Korean they meant (두�
   assert.equal(Core.hangulFromKeys('QJFDUtEK'), '벌였다', 'Caps Lock: capitals are plain keys, lowercase was Shift');
   assert.equal(Core.hangulFromKeys('벌였'), '벌였', 'Korean already typed stays as is');
 });
+
+test('a word that starts another word never shares the board (typing it would end the longer one early)', async (t) => {
+  assert.ok(Core.clash('가', '가방'));
+  assert.ok(Core.clash('삭', '사과'), '삭 is how 사과 looks halfway through');
+  assert.ok(Core.clash('to', 'today'));
+  assert.ok(Core.clash('나무', '나무'), 'the same word twice is a clash too');
+  assert.ok(!Core.clash('사과', '사자'));
+  assert.ok(Core.clash('닭', '달걀'), '달걀 shows 닭 for a moment before ㅕ moves the ㄱ');
+  let clock = Date.now();
+  const words = ['가', '가방', '삭', '사과', '나무', '나무꾼', '하늘', '바다', '구름', '연필', '노래', '친구', '학교', '강아지', '고양이', '무지개'];
+  const codes = createRoomCodes({ random: () => 1357, isActive: async (e) => activity.hasRoomCode(e.code) });
+  const platform = {
+    roomCodes: codes,
+    isTeacherRequest: async () => false,
+    isContentGloballyDisabled: async () => false,
+    canBypassGlobalContentLock: async () => false,
+    displayNameFor: async () => ({ name: '가람' }),
+  };
+  const activity = createTypingRace({ platform, now: () => clock, pickItems: (mode, count) => Array.from({ length: count }, (_, i) => words[i % words.length]) });
+  const app = express();
+  app.use(express.json());
+  app.use('/api/typing-race', activity.router);
+  const s = app.listen(0, '127.0.0.1');
+  await new Promise((r) => s.once('listening', r));
+  t.after(() => new Promise((r) => s.close(r)));
+  const base = `http://127.0.0.1:${s.address().port}/api/typing-race`;
+  const req = async (path, body, token = '') => {
+    const r = await fetch(base + path, { method: body === undefined ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+    return { status: r.status, data: await r.json() };
+  };
+  const made = (await req('/rooms', {})).data;
+  const path = '/rooms/' + made.state.code;
+  let state = (await req(path + '/start', { mode: 'ko-words', duration: 60 }, made.token)).data;
+  assert.deepEqual(state.board.map((x) => x.text), ['가', '삭', '나무', '하늘', '바다', '구름'], '가방, 사과, 나무꾼 wait for a later board');
+  const clean = (st) => {
+    const open = [...st.board, ...st.recent].map((x) => x.text);
+    for (let i = 0; i < open.length; i++) for (let j = i + 1; j < open.length; j++) assert.ok(!Core.clash(open[i], open[j]), `${open[i]} / ${open[j]}`);
+  };
+  clean(state);
+  clock = state.startsAt + 3000;
+  for (let n = 0; n < 40; n++) {
+    clock += 700;
+    const cell = state.board[n % state.board.length];
+    const typed = await req(path + '/type', { roundId: state.roundId, slot: cell.id, text: cell.text, mistakes: 0 }, made.token);
+    assert.equal(typed.status, 200, typed.data.message);
+    state = typed.data.state;
+    clean(state);
+    clean((await req(path, undefined, made.token)).data);
+  }
+});
+
+test('class races allow up to eight teams', async (t) => {
+  assert.deepEqual(Core.TEAM_COUNTS, [2, 3, 4, 5, 6, 7, 8]);
+  assert.equal(Core.TEAMS.length, 8);
+  assert.equal(new Set(Core.TEAMS.map((x) => x.hue)).size, 8);
+  assert.equal(new Set(Core.TEAMS.map((x) => x.emoji)).size, 8);
+  const codes = createRoomCodes({ random: () => 9753, isActive: async (e) => activity.hasRoomCode(e.code) });
+  const platform = {
+    roomCodes: codes,
+    isTeacherRequest: async (req) => req.get('x-role') === 'teacher',
+    isContentGloballyDisabled: async () => false,
+    canBypassGlobalContentLock: async () => false,
+    displayNameFor: async (req) => ({ name: decodeURIComponent(req.get('x-name') || '') }),
+  };
+  const activity = createTypingRace({ platform }), app = express();
+  app.use(express.json());
+  app.use('/api/typing-race', activity.router);
+  const s = app.listen(0, '127.0.0.1');
+  await new Promise((r) => s.once('listening', r));
+  t.after(() => new Promise((r) => s.close(r)));
+  const base = `http://127.0.0.1:${s.address().port}/api/typing-race`;
+  const req = async (path, body, token = '', role = '', name = '') => {
+    const r = await fetch(base + path, { method: body === undefined ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json', 'x-role': role, 'x-name': encodeURIComponent(name), Authorization: 'Bearer ' + token }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+    return { status: r.status, data: await r.json() };
+  };
+  const made = (await req('/rooms', { teamMode: true, teamCount: 8, spectate: true }, '', 'teacher')).data;
+  assert.equal(made.state.config.teamCount, 8);
+  assert.equal(made.state.teams.length, 8);
+  const path = '/rooms/' + made.state.code;
+  const kid = (await req(path + '/join', {}, '', '', '여덟')).data;
+  assert.equal((await req(path + '/team', { team: 7 }, kid.token)).status, 200, 'the eighth team can be picked');
+  assert.equal((await req(path + '/settings', { teamCount: 9 }, made.token, 'teacher')).data.config.teamCount, 8, 'nine is not offered');
+  for (let i = 0; i < 39; i++) await req(path + '/join', {}, '', '', '학생' + i);
+  const shuffled = (await req(path + '/shuffle', {}, made.token, 'teacher')).data;
+  assert.deepEqual(shuffled.teams.map((x) => x.size), [5, 5, 5, 5, 5, 5, 5, 5], 'forty students fill eight teams of five');
+});
