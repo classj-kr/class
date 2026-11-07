@@ -60,10 +60,12 @@
   const serverNow = () => Date.now() + offset;
   // 들어온 학습 화면으로 돌아간다(방번호로 온 학생은 메인으로).
   if (params.get('set') && C.SETS[fromSet].app) $('backLink').href = C.SETS[fromSet].app + '/';
-  const myAvatar = fetch('/api/student/profile', { cache: 'no-store', credentials: 'same-origin' })
+  // 내 아바타: 학생은 학생 프로필, 선생님은 선생님 설정에 고른 아바타. 둘 다 없으면 동물 그림을 쓴다.
+  const avatarOf = (path) => fetch(path, { cache: 'no-store', credentials: 'same-origin' })
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => data?.profile?.avatar?.url || null)
     .catch(() => null);
+  const myAvatar = avatarOf('/api/student/profile').then((url) => url || avatarOf('/api/teacher/settings'));
   let isTeacher = false;
   fetch('/api/korean-race/session', { cache: 'no-store', credentials: 'same-origin' })
     .then((r) => (r.ok ? r.json() : null))
@@ -854,7 +856,7 @@
     const myTeam = mine && s.teams && mine.team !== null ? s.teams[mine.team] : null;
     $('myResult').textContent = !mine ? '' : myTeam
       ? `${myTeam.emoji} 우리 팀 ${myTeam.rank}위${myTeam.rank === 1 ? '! 🎉' : ''} · 나는 ${mine.score}점 (${mine.rank}위)`
-      : `${mine.racer} 나는 ${mine.rank}위! ${mine.score}점 · ${mine.correct}문제 맞힘 · 정답률 ${mine.accuracy}%`;
+      : `${mine.avatarUrl ? '' : mine.racer + ' '}나는 ${mine.rank}위! ${mine.score}점 · ${mine.correct}문제 맞힘 · 정답률 ${mine.accuracy}%`;
   }
 
   // ── 시계 (카운트다운·남은 시간) ─────────────────────

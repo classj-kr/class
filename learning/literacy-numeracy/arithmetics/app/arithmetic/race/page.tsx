@@ -31,11 +31,12 @@ export default function ArithmeticRaceJoinPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    // 순위표에 띄울 아바타. 학생 프로필이 없으면(교사·게스트) 이름만 보인다.
-    avatar.current = fetch('/api/student/profile', { cache: 'no-store', credentials: 'same-origin' })
+    // 순위표에 띄울 아바타. 학생은 학생 프로필, 선생님은 선생님 설정의 아바타. 둘 다 없으면(게스트) 이름만 보인다.
+    const avatarOf = (path: string) => fetch(path, { cache: 'no-store', credentials: 'same-origin' })
       .then(response => response.ok ? response.json() : null)
       .then(data => (data as { profile?: { avatar?: { url?: string } } } | null)?.profile?.avatar?.url || null)
       .catch(() => null);
+    avatar.current = avatarOf('/api/student/profile').then(url => url || avatarOf('/api/teacher/settings'));
     // 이름은 브라우저에 두지 않고 서버에 묻는다. 로그인(교사·학생)이나 게스트 입장에서 나온 이름을 먼저 쓰고,
     // 명단에 있는 학생이면 학습 기록과 같은 계정 이름으로 바꾼다.
     let rosterName = false;
