@@ -9,7 +9,7 @@
 //
 // 뺀 것과 까닭
 //  - 위 학년: 변의 길이의 합(①54·55의 일부 ②68 ③57 심7 심65 — 둘레, 5학년), 곱이 같아지는 □(①50 ②23 ③25 심24 — 등식, 4학년 2학기),
-//    (몇십)×□=(몇천몇백)에서 몇십인 □(③24의 본디 꼴 — □0 꼴로 바꾸어 곱셈구구 안에서만 실었다), 겹친 길이 거꾸로(②80 — 두 자리 수로 나누기),
+//    (몇십)×□=(몇천몇백)에서 몇십인 □(③24의 본디 꼴 — □0 꼴로 바꾸어 곱셈구구 안에서만 실었다), 겹친 길이 거꾸로(②80 — 두 자리 수로 나누는 경우),
 //    통나무 자르는 시간(심64의 변형 — 분을 시간으로 바꾸기)
 //  - 조건 풀이·경우 따지기: 수 카드로 곱이 가장 큰(작은) 식 만들기(①53 ②61~63 ③19 ③44 심31 심39 심54, 덧문서의 같은 꼴),
 //    곱이 주어진 수가 되는 두 수(②65 심41), 두 곱 사이의 수·두 값 사이의 □(①51 심47 심50, 덧), 간격·겹쳐 잇기(②78 ②79 심64, 덧),
@@ -636,6 +636,26 @@
         unit: '개', explain: `두발자전거의 바퀴는 ${times(a, 2)}(개), 세발자전거의 바퀴는 ${times(b, 3)}(개)이다. ${expr(a * 2, '+', b * 3, '=', a * 2 + b * 3)}`,
         facts: { calc: [[`${a}*2+${b}*3`, 0]], unseen: [2, 3] }
       });
-    }, { standard: SOLVE })
+    }, { standard: SOLVE }),
+    H('h-overlap-length', '이어 붙인 전체 길이로 겹친 길이 구하기', '', (d) => {
+      const pieces = d.int(4, 9), length = d.int(12, 29), overlap = d.int(2, 5);
+      const joined = length * pieces - overlap * (pieces - 1), all = length * pieces;
+      return { ...N(`길이가 ${length} cm인 종이띠 ${pieces}장을 한 줄로 이어 붙였다. 이웃한 두 종이띠의 끝을 겹쳐 붙였고, 겹친 곳의 길이는 모두 같다. 이어 붙인 전체 길이가 ${joined} cm일 때, 한 곳에서 겹친 길이는 몇 cm인가?`, overlap, {
+        unit: 'cm',
+        explain: `겹치지 않고 이으면 ${times(length, pieces)}(cm)이다. 겹친 길이의 합은 ${expr(all, '-', joined, '=', all - joined)}(cm)이다. 겹친 곳은 종이띠 수보다 하나 적어 ${pieces - 1}곳이므로 한 곳의 길이는 ${expr(all - joined, '/', pieces - 1, '=', overlap)}(cm)이다.`,
+        facts: { calc: [[`(${length}*${pieces}-${joined})/(${pieces}-1)`, 0]], unseen: [1], mulAny: [length, pieces] }
+      }), hint: '겹치지 않게 이었을 때의 전체 길이를 먼저 구해 보세요. 종이띠의 수와 겹친 곳의 수를 구분해 보세요.' };
+    }, { source: '금성 잘 나오는, 잘 틀리는 유형 3학년 · 잘 틀리는 유형 3-2', standard: SOLVE }),
+    H('h-card-product-min', '카드 네 장으로 곱이 가장 작은 두 자리 수 만들기', '', (d) => {
+      const digits = d.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 4);
+      const [a, b, c, e] = digits.slice().sort((x, y) => x - y);
+      const pairs = [[10 * a + b, 10 * c + e], [10 * a + c, 10 * b + e], [10 * a + e, 10 * b + c]];
+      const [x, y] = pairs.reduce((best, pair) => pair[0] * pair[1] < best[0] * best[1] ? pair : best);
+      return { ...N('수 카드 네 장을 한 번씩 모두 사용하여 두 자리 수 두 개를 만들려고 한다. 두 수의 곱이 가장 작을 때, 그 곱은?', x * y, {
+        figure: cards(digits),
+        explain: `카드를 두 장씩 세 가지 방법으로 나눌 수 있다. 각 짝에서 작은 숫자를 십의 자리에 놓아야 두 자리 수가 작아진다. 짝마다 가장 작은 곱은 ${pairs.map(([p, q]) => times(p, q)).join(', ')}이다. 이 중 가장 작은 곱은 ${x * y}이다.`,
+        facts: { calc: [[`(${a}*10+${x % 10})*(${Math.floor(y / 10)}*10+${y % 10})`, 0]], unseen: [10], mulAny: [x, y], minProductCards: digits }
+      }), hint: '카드를 두 장씩 짝지어 보세요. 같은 짝 안에서 어느 숫자를 십의 자리에 놓아야 수가 작아지는지 살펴보세요.' };
+    }, { source: '금성 잘 나오는, 잘 틀리는 유형 3학년 · 잘 틀리는 유형 4-2', standard: SOLVE })
   ]);
 })(typeof window !== 'undefined' ? window : globalThis);

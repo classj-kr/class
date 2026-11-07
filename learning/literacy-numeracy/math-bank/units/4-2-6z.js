@@ -1,7 +1,7 @@
 // 아이스크림의 단원 순서와 앱의 단원 순서가 다르다. 측정 문항은 측정 단원에 연결한다.
 (function (root) {
   'use strict';
-  const B = root.MathBank, { N, D, M, F, table, frac } = B.kit;
+  const B = root.MathBank, { N, D, M, F, table, frac, josa } = B.kit;
   const gcd = (a, b) => b ? gcd(b, a % b) : a;
   const add = (unit, id, title, book, pages, make) => B.addTypes(unit, 'hard', [{ id: 'ic-' + id, title, level: '실력', source: '아이스크림 수학 ' + book + ' 생각을 더하다 ' + pages + '쪽 — 구조 변형', make(d) {
     const item = make(d); if (item.fraction && Number(unit.split('-')[0]) >= 4) item.anyForm = true; if (item.figure) item.figure = `<div class="mb-iscream">${item.figure}</div>`; item.facts.iscream = { book, pages, kind: id, ...item.facts.iscream }; return item;
@@ -42,4 +42,19 @@
   });
   // 회차의 구성 변경으로 예전 체크포인트를 새 회차에 섞지 않는다.
   for (const id of ["4-2-1","4-2-3","4-2-6"]) { const u = B.findUnit(id); u.version = (u.version || 1) + 1; }
+
+  // 기존 회차의 문항 순서를 유지하기 위해 학기 보충 문항 끝에 등록한다.
+  B.addTypes('4-2-1', 'hard', [{
+    id: 'h-from-sum-diff', title: '합과 차로 두 진분수 중 큰 수 구하기', level: '실력',
+    source: '금성 잘 나오는, 잘 틀리는 유형 4학년 · 잘 나오는 유형 3',
+    make(d) {
+      const den = d.pick([7, 11, 13, 17, 19]), small = d.int(1, Math.floor((den - 3) / 2));
+      const large = d.int(small + 1, den - small - 1), sum = large + small, diff = large - small;
+      return { ...F(`분모가 같은 두 진분수의 합은 ${frac(sum, den)}이고, 큰 분수에서 작은 분수를 뺀 차는 ${frac(diff, den)}이다. 두 분수 중 큰 것은?`, large, den, {
+        anyForm: true,
+        explain: `큰 분수에서 차를 빼면 작은 분수와 같아진다. 따라서 합에서 차를 빼면 작은 분수 두 개를 더한 값인 ${frac(sum - diff, den)}이다. 분자 ${josa(sum - diff, '을/를')} 둘로 똑같이 나누면 ${small}이므로 작은 분수는 ${frac(small, den)}이다. 여기에 두 분수의 차를 더하면 큰 분수는 ${frac(large, den)}이다.`,
+        facts: { calc: [[`(${sum}-${diff})/2+${diff}`, 0], [String(den), 1]], unseen: [2] }
+      }), hint: '두 분수를 같은 크기의 칸으로 나타내 보세요. 큰 쪽에서 두 분수의 차만큼을 덜면 무엇이 남는지 살펴보세요.' };
+    }
+  }]);
 })(typeof window !== 'undefined' ? window : globalThis);
