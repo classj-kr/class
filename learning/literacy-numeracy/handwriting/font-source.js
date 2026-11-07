@@ -902,6 +902,25 @@
       return n + q[0] * r[1] - r[0] * q[1];
     }, 0);
   const orient = (p, positive = true) => (area(p) > 0 === positive ? p : [...p].reverse());
+  function smoothLine(p, sigma) {
+    const n = p.length;
+    if (n < 5) return p;
+    const step = p.slice(1).reduce((sum, q, i) => sum + distance(p[i], q), 0) / (n - 1) || 1,
+      r = sigma / step,
+      reach = Math.max(1, Math.ceil(2 * r));
+    return p.map((q, i) => {
+      const k = Math.min(reach, i, n - 1 - i);
+      if (!k) return q;
+      let sx = 0, sy = 0, sw = 0;
+      for (let j = -k; j <= k; j++) {
+        const w = Math.exp(-(j * j) / (2 * r * r));
+        sx += p[i + j][0] * w;
+        sy += p[i + j][1] * w;
+        sw += w;
+      }
+      return [sx / sw, sy / sw];
+    });
+  }
   function outlines(points, strokeIndex, strokes) {
     if (points.length < 2) return [];
     const closed = distance(points[0], points.at(-1)) < 0.01;
@@ -935,7 +954,10 @@
       );
       design = [...entry, ...body.filter((p, i) => i > 0 && distance(p, points[0]) > 2.2)];
     }
-    const dense = sample(design, Math.min(90, Math.max(14, Math.ceil(length / 1.1))));
+    const sampled = sample(design, Math.min(120, Math.max(14, Math.ceil(length / 0.9))));
+    // A pen turns a corner in an arc. Smoothing the centerline before offsetting rounds the outer
+    // edge of ㄱ·ㄹ turns and removes the notch on the inner side; endpoints stay fixed.
+    const dense = closed ? sampled : smoothLine(sampled, 1.7);
     const p = closed ? dense.slice(0, -1) : dense,
       left = [],
       right = [],
@@ -944,7 +966,9 @@
     const tail = sample(points, 24),
       endDx = points.at(-1)[0] - tail.at(-2)[0],
       endDy = points.at(-1)[1] - tail.at(-2)[1],
-      downwardEnd = endDy > Math.abs(endDx) * 2 && length > 30;
+      downwardEnd = endDy > Math.abs(endDx) * 2 && length > 30,
+      horizontalStroke =
+        Math.abs(points.at(-1)[0] - points[0][0]) > 2.5 * Math.abs(points.at(-1)[1] - points[0][1]) && length > 12;
     for (let i = 0; i < p.length; i++) {
       const before = p[i ? i - 1 : closed ? p.length - 1 : 0],
         after = p[i < p.length - 1 ? i + 1 : closed ? 0 : i];
@@ -954,12 +978,13 @@
         t = i / (p.length - 1);
       const nx = -dy / len,
         ny = dx / len;
-      const lift = Math.max(0, Math.min(1, (t - 0.95) / 0.05)),
+      // A downward stroke is released over its last fifth and ends in a narrow round tip.
+      // A horizontal stroke starts pressed and slightly heavier.
+      const lift = Math.max(0, Math.min(1, downwardEnd ? (t - 0.8) / 0.2 : (t - 0.95) / 0.05)),
         release = lift * lift * (3 - 2 * lift),
-        pressure = closed
-          ? 1
-          : (0.9 + 0.1 * Math.min(1, t / 0.07) + 0.025 * Math.sin(Math.PI * t)) *
-            (1 - (downwardEnd ? 0.35 : 0.04) * release);
+        press = Math.max(0, 1 - t / 0.12),
+        head = horizontalStroke ? 1 + 0.13 * press * press : 0.9 + 0.1 * Math.min(1, t / 0.07),
+        pressure = closed ? 1 : head * (1 - (downwardEnd ? 0.52 : 0.04) * release);
       // Pen lettering stays close to one weight. Closed bowls keep a small
       // optical contrast; open strokes do not acquire a broad-nib appearance.
       const across = nx * 0.965926 + ny * 0.258819,
