@@ -354,7 +354,7 @@ function sendSiteHtml(req, res, filepath, next) {
       "$1?v=20261009-explosion-file"
     ).replace(
       /(\/assets\/learning-records\.js)(?:\?[^"'<>\s]*)?/g,
-      "$1?v=20261105-floating-records"
+      "$1?v=20261107-race-dock"
     );
 
     const htmlWithBackNavigation = htmlSource.includes("/assets/site-back-navigation.js")
