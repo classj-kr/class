@@ -32,7 +32,7 @@ assert.match(css, /\.rubric-list/);
 assert.match(css, /\.multi-guide/);
 assert.match(css, /@media \(max-width: 480px\)/);
 
-assert.match(app, /classj-sentence-building-progress-v2/);
+assert.match(app, /LearningRecords\.create\('sentence-building'/);
 assert.match(app, /selectedChoices/);
 assert.match(app, /task\.answers/);
 assert.match(app, /task\.shuffleOptions === false/);
@@ -40,7 +40,8 @@ assert.match(app, /task\.minChars/);
 assert.match(app, /task\.criteria/);
 assert.match(app, /rubric-checkbox/);
 assert.match(app, /rubricChecks\.some/);
-assert.match(app, /교사용.*lesson\.gradeBand/);
+assert.match(app, /lesson\.gradeBand.*lesson\.goal/);
+assert.doesNotMatch(app, /교사용/);
 assert.doesNotMatch(app, /grade-band|lesson-card-copy|unit\.subtitle/);
 assert.match(app, /sitebackrequest/);
 assert.doesNotMatch(app, /AudioContext|confetti|celebrate/);
@@ -76,7 +77,9 @@ for (const [lessonIndex, item] of course.lessons.entries()) {
         assert.ok(course.standards[code], `${where}: unknown standard ${code}`);
         usedStandards.add(code);
     });
-    assert.equal(new Set(item.tasks.map((task) => task.scene)).size, item.tasks.length, `${where}: duplicate scenes`);
+    const scenes = item.tasks.map((task) => task.scene).filter(Boolean);
+    assert.equal(new Set(scenes).size, scenes.length, `${where}: duplicate scenes`);
+    assert.match(item.goal, /다\.$/, `${where}: goal must end in ~다.`);
     assert.equal(item.tasks.filter((task) => task.type === "multi").length, 1, `${where}: one multi-select task required`);
     assert.equal(item.tasks.filter((task) => task.type === "order").length, 1, `${where}: one ordering task required`);
     assert.equal(item.tasks.filter((task) => task.type === "write").length, 1, `${where}: one writing task required`);
@@ -84,7 +87,7 @@ for (const [lessonIndex, item] of course.lessons.entries()) {
     for (const [taskIndex, task] of item.tasks.entries()) {
         const taskWhere = `${where}, task ${taskIndex + 1}`;
         assert.ok(["choice", "multi", "order", "write"].includes(task.type), `${taskWhere}: invalid type`);
-        assert.ok(task.prompt && task.scene && task.hint && task.explain, `${taskWhere}: missing copy`);
+        assert.ok(task.prompt && typeof task.scene === "string" && task.hint && task.explain, `${taskWhere}: missing copy`);
         if (task.type === "choice") {
             assert.ok(task.options.length >= 4, `${taskWhere}: too few choices`);
             assert.ok(Number.isInteger(task.answer) && task.answer >= 0 && task.answer < task.options.length, `${taskWhere}: invalid answer`);
