@@ -105,7 +105,7 @@ async function main() {
   assert.ok(!(await chat.recent('A학교')).some((m) => m.id === first.message.id));
   const afterDelete = (await (await call('/teacher/messages', { as: 9 })).json()).messages.find((m) => m.id === first.message.id);
   assert.equal(afterDelete.deleted, true);
-  assert.deepEqual(events[0].event, { type: 'deleted', id: first.message.id });
+  assert.deepEqual(events[0].event, { type: 'deleted', channel: 'school', id: first.message.id });
 
   // 8. 막기: 막힌 학생은 못 보내고, 교사는 영향 없고, 풀면 다시 보낸다.
   assert.equal((await call('/teacher/mute', { as: 9, method: 'POST', body: { userId: '1', minutes: 10 } })).status, 200);
@@ -130,6 +130,73 @@ async function main() {
   await chat.initialize();
   const counts = (await db.query("SELECT preserved, COUNT(*)::int AS n FROM school_chat_messages WHERE school_key = 'A학교' GROUP BY preserved ORDER BY preserved")).rows;
   assert.deepEqual(counts, [{ preserved: false, n: 5000 }, { preserved: true, n: 1 }]);
+
+  // ---- 채널: 학생이 만드는 방 ----
+  const lee = await identityOf(2);
+  const asJson = async (response) => ({ status: response.status, body: await response.json().catch(() => ({})) });
+
+  // 11. 방 만들기: 번호가 생기고 만든 사람이 들어간다.
+  const made = await asJson(await call('/rooms', { as: 1, method: 'POST', body: { name: '  우리  끼리  ' } }));
+  assert.equal(made.status, 200);
+  assert.equal(made.body.channel.name, '우리 끼리');
+  assert.match(made.body.channel.code, /^\d{4}$/);
+  const roomId = made.body.channel.id;
+  const code = made.body.channel.code;
+  assert.deepEqual((await (await call('/rooms', { as: 1 })).json()).channels.map((c) => c.id), ['school', roomId]);
+
+  // 12. 들어가지 않은 사람은 방에 못 쓰고, 학교 전체방 글은 방으로 안 섞인다.
+  await wait(1600);
+  assert.equal((await chat.post(lee, '몰래 쓰기', roomId)).reason, 'NOT_MEMBER');
+  assert.equal((await chat.post(kim, '방 글', roomId)).ok, true);
+  assert.deepEqual((await chat.recent('A학교', roomId)).map((m) => m.text), ['방 글']);
+  assert.ok(!(await chat.recent('A학교', 'school')).some((m) => m.text === '방 글'), '방 글이 학교 전체방에 안 보인다');
+
+  // 13. 번호로 들어가기: 같은 학교만, 없는 번호는 404, 다른 학교는 같은 번호로도 못 들어간다.
+  assert.equal((await asJson(await call('/rooms/join', { as: 2, method: 'POST', body: { code: '0000' === code ? '1111' : '0000' } }))).status, 404);
+  assert.equal((await asJson(await call('/rooms/join', { as: 3, method: 'POST', body: { code } }))).status, 404, '다른 학교 학생은 못 들어간다');
+  const joined = await asJson(await call('/rooms/join', { as: 2, method: 'POST', body: { code } }));
+  assert.equal(joined.status, 200);
+  await wait(1600);
+  assert.equal((await chat.post(lee, '들어간 뒤', roomId)).ok, true);
+
+  // 14. 이름은 같고 학교만 다른 방은 서로 별개다.
+  await db.query(`INSERT INTO school_chat_rooms (school_key, code, name, owner_user_id) VALUES ('B학교', $1, '다른학교방', '3')`, [code]);
+  await db.query(`INSERT INTO school_chat_members (school_key, code, user_id) VALUES ('B학교', $1, '3')`, [code]);
+  await chat.post(await identityOf(3), 'B 방 글', roomId);
+  assert.ok(!(await chat.recent('A학교', roomId)).some((m) => m.text === 'B 방 글'));
+
+  // 15. 선생님: 우리 학교 방 목록과 방 대화를 들어가지 않고도 본다. 다른 학교 방은 안 보인다.
+  const teacherRooms = (await (await call('/teacher/rooms', { as: 9 })).json()).rooms;
+  assert.deepEqual(teacherRooms.map((r) => [r.id, r.members]), [[roomId, 2]]);
+  const roomLog = (await (await call(`/teacher/messages?channel=${encodeURIComponent(roomId)}`, { as: 9 })).json()).messages.map((m) => m.text);
+  assert.deepEqual(roomLog, ['방 글', '들어간 뒤']);
+  assert.equal((await call('/teacher/rooms', { as: 1 })).status, 403);
+
+  // 16. 막힘은 학교 전체방과 방 모두에 적용된다.
+  await call('/teacher/mute', { as: 9, method: 'POST', body: { userId: '2', minutes: 10 } });
+  await wait(1600);
+  assert.equal((await chat.post(lee, '막힌 뒤 방', roomId)).reason, 'MUTED');
+  await call('/teacher/unmute', { as: 9, method: 'POST', body: { userId: '2' } });
+
+  // 17. 방 도배가 학교 전체방 기록을 밀어내지 못한다(방마다 상한이 따로).
+  await db.query(`INSERT INTO school_chat_messages (school_key, channel, user_id, sender_name, body)
+                  SELECT 'A학교', $1, '2', '도배', 'r' || g FROM generate_series(1, 5100) g`, [roomId]);
+  const schoolBefore = (await db.query("SELECT COUNT(*)::int AS n FROM school_chat_messages WHERE school_key='A학교' AND channel='school'")).rows[0].n;
+  await chat.initialize();
+  assert.equal((await db.query("SELECT COUNT(*)::int AS n FROM school_chat_messages WHERE school_key='A학교' AND channel=$1", [roomId])).rows[0].n, 5000);
+  assert.equal((await db.query("SELECT COUNT(*)::int AS n FROM school_chat_messages WHERE school_key='A학교' AND channel='school'")).rows[0].n, schoolBefore, '학교 전체방 기록은 그대로');
+
+  // 18. 방 수 상한: 만든 방은 3개까지.
+  assert.equal((await call('/rooms', { as: 1, method: 'POST', body: { name: '둘째' } })).status, 200);
+  assert.equal((await call('/rooms', { as: 1, method: 'POST', body: { name: '셋째' } })).status, 200);
+  assert.equal((await call('/rooms', { as: 1, method: 'POST', body: { name: '넷째' } })).status, 409);
+
+  // 19. 나가기: 들어간 방 목록에서 빠지고, 아무도 안 남으면 방이 사라진다.
+  const leaveCode = (await (await call('/rooms', { as: 1 })).json()).channels.find((c) => c.name === '둘째').code;
+  assert.equal((await call(`/rooms/${leaveCode}/leave`, { as: 1, method: 'POST' })).status, 200);
+  assert.equal((await db.query("SELECT 1 FROM school_chat_rooms WHERE school_key='A학교' AND code=$1", [leaveCode])).rowCount, 0, '빈 방은 지운다');
+  assert.equal((await call(`/rooms/${code}/leave`, { as: 1, method: 'POST' })).status, 200);
+  assert.equal((await db.query("SELECT 1 FROM school_chat_rooms WHERE school_key='A학교' AND code=$1", [code])).rowCount, 1, '한 명이라도 남은 방은 유지');
 
   server.close();
   console.log('school-chat: 모든 검사 통과');
