@@ -457,6 +457,32 @@ body.fever .drift i { animation-duration: calc(var(--speed) / 2.5); color: hsl(v
 /* 혼자일 때 탑 하나가 판을 가로질러 늘어나지 않게 칸 너비를 묶는다. */
 .towers { grid-template-columns: repeat(var(--cols), minmax(46px, 110px)); justify-content: center; }
 
+/* 맨 위 줄에는 띠를 깔지 않는다. 경주 중에는 시간·점수판이 이 줄로 올라온다(race.js show). */
+.topbar { background: none; align-items: flex-start; }
+.topbar .hud { flex: 1; min-width: 0; max-width: 860px; margin: 0 auto; padding: 6px 12px 14px; gap: 6px; }
+.topbar .hud span { font-size: 12px; }
+.topbar .hud strong { font-size: 26px; }
+.topbar .hud em { font-size: 11px; }
+.topbar .hud .combo-meter { height: 4px; margin-top: 2px; }
+.topbar .hud .time-bar { bottom: 5px; height: 5px; }
+.topbar .room-badge { margin-left: 0; }
+body:not([data-screen="race"]) .topbar .room-badge { margin-left: auto; }
+@media (max-width: 860px) {
+  .topbar { flex-wrap: wrap; }
+  .topbar .hud { order: 5; flex-basis: 100%; max-width: none; }
+  body[data-screen="race"] .topbar .room-badge { margin-left: auto; }
+}
+/* 시상대: 아바타가 단 위에 바로 서고, 이름·점수는 단 안에. */
+.step { gap: 0; }
+.step .block { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; padding: 8px 6px 0; }
+.pod-place { font-size: 32px; line-height: 1.05; }
+.step .pod-name { font-size: 16px; color: var(--ink); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.step .pod-score { font-size: 14px; color: var(--ink); opacity: .8; }
+.place-1 .block { height: 160px; }
+.place-2 .block { height: 124px; }
+.place-3 .block { height: 96px; }
+.pod-racer { margin-bottom: 4px; }
+
 @media (prefers-reduced-motion: reduce) {
   .choice, .judge, .tower.hop .climber, .tower.leader .climber::before, body.fever .q-card, .combo-meter.max::before { animation: none !important; }
   .judge { opacity: 0; }
