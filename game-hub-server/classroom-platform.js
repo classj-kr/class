@@ -392,6 +392,18 @@ function createClassroomPlatform(options = {}) {
     res.append("Set-Cookie", attributes.join("; "));
   }
 
+  function clearGuestAccessCookie(res) {
+    const attributes = [
+      `${GUEST_ACCESS_COOKIE}=`,
+      "Path=/",
+      "HttpOnly",
+      "SameSite=Lax",
+      "Max-Age=0"
+    ];
+    if (isProduction) attributes.push("Secure");
+    res.append("Set-Cookie", attributes.join("; "));
+  }
+
   function setGuestAccessCookie(res, name) {
     const body = Buffer.from(JSON.stringify({ name, exp: Date.now() + SESSION_MAX_AGE_SECONDS * 1000 })).toString("base64url");
     const signature = crypto.createHmac("sha256", guestAccessSecret).update(body).digest("base64url");
@@ -6608,7 +6620,7 @@ function createClassroomPlatform(options = {}) {
        WHERE (p.class_id = ANY($2::BIGINT[]) OR p.group_id = ANY($3::BIGINT[]))
          AND p.author_user_id <> $1
          AND (r.last_read_at IS NULL OR p.created_at > r.last_read_at)
-       GROUP BY board_key`,
+       GROUP BY 1`, // "GROUP BY board_key"는 위 별칭이 아니라 r.board_key 칸으로 읽혀 질의가 실패한다.
       [user.id, classIds, groupIds]
     );
     const counts = new Map(result.rows.map(r => [r.board_key, Number(r.unread)]));
