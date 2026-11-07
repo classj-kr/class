@@ -350,6 +350,12 @@ const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/inde
 const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20261019-emoji-label" defer></script>`;
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>';
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20261029-lesson-navigation">';
+// 학교 공용 채팅 위젯: 메인 화면과 보드게임 쪽에만 끼운다. 학교 학생·교사가 아니면 위젯이 스스로 안 뜬다.
+const SITE_SCHOOL_CHAT_TAG = '<script data-school-chat="true" src="/assets/school-chat.js?v=20261107-first" defer></script>';
+function wantsSchoolChat(filepath) {
+  return filepath === path.join(SITE_ROOT, "index.html")
+    || filepath.startsWith(path.join(SITE_ROOT, "learning", "games") + path.sep);
+}
 
 // 쪽마다 로그인(또는 게스트 입장)에서 나온 이름을 맨 앞에 박아 넣는다. 게임·학습 화면은 이 값을
 // 읽고, 브라우저 저장소에는 이름을 두지 않는다(2026-10-06).
@@ -401,11 +407,16 @@ function sendSiteHtml(req, res, filepath, next) {
         ? htmlWithSound.replace(/<\/head>/i, `  ${SITE_EXAM_TYPOGRAPHY_TAG}\n</head>`)
         : `${SITE_EXAM_TYPOGRAPHY_TAG}\n${htmlWithSound}`
       : htmlWithSound;
+    const htmlWithChat = wantsSchoolChat(filepath) && !html.includes("/assets/school-chat.js")
+      ? /<\/head>/i.test(html)
+        ? html.replace(/<\/head>/i, `  ${SITE_SCHOOL_CHAT_TAG}\n</head>`)
+        : `${SITE_SCHOOL_CHAT_TAG}\n${html}`
+      : html;
 
     res.setHeader("Cache-Control", "no-cache");
     res.type("html");
     if (req.method === "HEAD") return res.end();
-    res.send(html);
+    res.send(htmlWithChat);
     }).catch(next);
   });
 }
@@ -2013,7 +2024,18 @@ app.get("/index.html", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(SITE_ROOT, "index.html"));
+  const homeFile = path.join(SITE_ROOT, "index.html");
+  // 메인 화면에는 학교 공용 채팅 위젯 태그만 더 끼운다(그 밖에는 파일 그대로).
+  fs.readFile(homeFile, "utf8", (error, source) => {
+    if (error) return res.sendFile(homeFile);
+    const html = source.includes("/assets/school-chat.js") || !/<\/head>/i.test(source)
+      ? source
+      : source.replace(/<\/head>/i, `  ${SITE_SCHOOL_CHAT_TAG}\n</head>`);
+    res.setHeader("Cache-Control", "no-cache");
+    res.type("html");
+    if (req.method === "HEAD") return res.end();
+    res.send(html);
+  });
 });
 
 app.get("/health", (req, res) => {
@@ -2156,6 +2178,10 @@ wss.on("connection", (socket, request) => {
         return;
       }
     }
+
+    // 학교 공용 채팅(SCHOOLCHAT_JOIN·SCHOOLCHAT_SEND)은 모듈이 처리한다.
+    if (type.startsWith("SCHOOLCHAT_")
+      && await classroomPlatform.schoolChat.handleSocketMessage(socket, message, classroomPlatform.verifyMuseumPresenceTicket)) return;
 
     if (type === "MUSEUM_JOIN") {
       const identity = classroomPlatform.verifyMuseumPresenceTicket(cleanToken(message.ticket, 2048));
@@ -4321,6 +4347,7 @@ wss.on("connection", (socket, request) => {
   socket.on("close", code => {
     leaveMuseum(socket);
     leavePark(socket);
+    classroomPlatform.schoolChat.leave(socket);
     const key = socket.meta.roomKey;
     if (!key) return;
 

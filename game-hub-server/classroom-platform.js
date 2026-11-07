@@ -10,6 +10,7 @@ const { createMetacognition } = require("./metacognition");
 const { createLearningRecords } = require("./learning-records");
 const { createTeacherAi } = require("./teacher-ai");
 const { createUserStorage } = require("./user-storage");
+const { createSchoolChat } = require("./school-chat");
 const { createAssessmentPlans } = require("./assessment-plans");
 const { createSchoolTextbooks } = require("./school-textbooks");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
@@ -1427,6 +1428,7 @@ function createClassroomPlatform(options = {}) {
       await exams.initialize();
       await teacherAi.initialize();
       await userStorage.initialize();
+      await schoolChat.initialize();
       await assessmentPlans.initialize();
       await schoolTextbooks.initialize();
       await voting.initialize();
@@ -1695,6 +1697,13 @@ function createClassroomPlatform(options = {}) {
   // 계정별 저장 공간. 화면들이 브라우저에 두던 값을 여기로 옮긴다(assets/site-storage.js).
   const userStorage = createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyncRoute });
   router.use("/me/storage", userStorage.router);
+
+  // 학교 공용 채팅(학교마다 방 하나). 입장권은 박물관 입장권과 같은 서명을 쓰되 종류만 다르다.
+  const schoolChat = createSchoolChat({
+    pool, requireUser, requireTeacher, requireDatabase, studentMembership, teacherRegistration,
+    signTicket: (payload) => signMuseumPresence(payload), HttpError, asyncRoute
+  });
+  router.use("/school-chat", schoolChat.router);
 
   // 수행평가 계획(교과별 영역·성취기준·평가요소·단계별 평가기준). 같은 학교 교사가 함께 고친다.
   const assessmentPlans = createAssessmentPlans({ pool, requireTeacher, teacherRegistration, requireDatabase, HttpError, asyncRoute });
@@ -9127,6 +9136,7 @@ function createClassroomPlatform(options = {}) {
     readStackingRaceBank: learningBoards.readStackingRaceBank,
     getStudentCharacterStyle,
     verifyMuseumPresenceTicket,
+    schoolChat,
     // 152개 정식 키만 통과시키므로 클라이언트가 보낸 값을 그대로 검증하는 데 쓴다.
     listFinisherRecords,
     saveFinisherRecord,
