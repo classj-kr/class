@@ -5,7 +5,7 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const { startHarness } = require('./site-storage-harness.cjs');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
-const url = '/learning/inquiry/math/number-models/';
+const url = '/learning/literacy-numeracy/math-tools/number-models/';
 const output = path.resolve(__dirname, '../outputs/number-models');
 let h, browser, context, page, errors;
 const total = () => page.locator('#total').textContent();
@@ -47,7 +47,7 @@ test('the math tools catalog reaches the number model on desktop and phone', asy
     await page.goto(h.base + '/');
     await page.locator('#category-literacy-toggle').click();
     await page.locator('[data-access-group="numeracy"] > summary').click();
-    await page.locator('a[href="learning/inquiry/math/"]').click();
+    await page.locator('a[href="learning/literacy-numeracy/math-tools/"]').click();
     await page.locator(`a[href="${url}"]`).click();
     await page.waitForURL('**' + url); await ready();
     assert.equal(await page.title(), '자연수·소수 모형 · 수학 교구');

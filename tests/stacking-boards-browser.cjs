@@ -25,7 +25,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     }
     const teacherContext = await context(); await teacherContext.addCookies([{ name: 'test_teacher', value: '1', url: h.base }]);
     const teacher = await page(teacherContext);
-    await teacher.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/');
+    await teacher.goto(h.base + '/learning/literacy-numeracy/math-tools/stacking-cubes/coop/');
     await teacher.locator('#coop-bank-title').fill('함께 만든 입체');
     await teacher.locator('#coop-create button').click();
     await teacher.locator('#coop-board').waitFor();
@@ -63,12 +63,14 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await p.locator('#coop-panel').waitFor({ state: 'hidden' });
     }
     const [builder, front, side, top] = students;
-    await builder.waitForFunction(() => document.querySelector('#stacking-bgm').currentTime > 0);
+    await teacher.waitForFunction(() => document.querySelector('#stacking-bgm').currentTime > 0);
+    assert.ok(await builder.locator('#stacking-bgm').evaluate(a => a.paused && a.muted), 'students retain the shared music default');
     await top.getByRole('button', { name: '확인하기', exact: true }).waitFor();
     await teacher.getByRole('button', { name: '팀전 마치기' }).click();
     await teacher.getByRole('button', { name: '출제로 돌아가기' }).click();
     for (const p of students) await p.getByRole('button', { name: '입체 완성' }).waitFor();
     assert.ok(await builder.locator('#stacking-bgm').evaluate(a => a.paused), 'authoring is quiet');
+    assert.ok(await teacher.locator('#stacking-bgm').evaluate(a => a.paused), 'the host is also quiet while authoring');
     await builder.locator('#board-size').selectOption('4');
     for (const p of students) await p.waitForFunction(() => document.querySelectorAll('#scene .floor-cell').length === 16);
     await side.locator('#board-size').selectOption('3');
@@ -142,13 +144,13 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await builder.getByRole('button', { name: '확인하기', exact: true }).waitFor();
     assert.equal(await builder.locator('#total').textContent(), '전체 0개');
     // Default six slots are optional; two students can author and play immediately.
-    await teacher.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/');
+    await teacher.goto(h.base + '/learning/literacy-numeracy/math-tools/stacking-cubes/coop/');
     await teacher.locator('#coop-bank-title').fill('두 명도 바로'); await teacher.locator('#coop-create button').click();
     await teacher.locator('#coop-board').waitFor();
     const smallCode = await roomCode.innerText();
     const smallId = new URL(teacher.url()).searchParams.get('id');
     for (const [i, p] of [builder, front].entries()) {
-      await p.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/?code=' + smallCode);
+      await p.goto(h.base + '/learning/literacy-numeracy/math-tools/stacking-cubes/coop/?code=' + smallCode);
       await p.getByRole('button', { name: '이 모둠 참여' }).first().click();
       await p.locator('#coop-panel').waitFor({ state: 'hidden' });
       if (!i) {
@@ -202,7 +204,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.locator('.race-tower-card.is-complete').waitFor();
     // Three teams finish a two-question round, with an intermediate celebration
     // and a persisted awards screen when the teacher returns on another device.
-    await teacher.goto(h.base + '/learning/inquiry/math/stacking-cubes/coop/?id=' + smallId);
+    await teacher.goto(h.base + '/learning/literacy-numeracy/math-tools/stacking-cubes/coop/?id=' + smallId);
     await teacher.getByRole('button', { name: '출제로 돌아가기' }).click();
     const apiBase = h.base + '/api/boards/' + smallId + '/stacking';
     async function teamAction(page, action, extra = {}) {
@@ -237,7 +239,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     assert.equal(await teacher.evaluate(() => window.finishSounds), 1, 'muted finishes stay quiet');
     await teacher.reload();
     await teacher.locator('#coop-stage.is-final').waitFor();
-    assert.ok(await teacher.locator('#stacking-bgm').evaluate(a => a.paused));
+    await teacher.waitForFunction(() => /lobby-brisk-pursuit\.ogg$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
     assert.equal(await teacher.locator('#coop-stage.is-cheering').count(), 0, 'loading results does not replay celebrations');
     assert.match(await teacher.locator('.relay-headline').textContent(), /2모둠 1위/);
     assert.deepEqual(await teacher.locator('.relay-lane .lane-top strong').allTextContents(), ['2모둠', '3모둠', '1모둠']);
@@ -247,7 +249,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     assert.ok(await roomCode.evaluate(n => parseFloat(getComputedStyle(n).fontSize)) >= 60);
     await snap(teacher, 'team-final-phone');
     for (const p of [teacher, ...students]) assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-    const coopUrl = h.base + '/learning/inquiry/math/stacking-cubes/coop/';
+    const coopUrl = h.base + '/learning/literacy-numeracy/math-tools/stacking-cubes/coop/';
     const other = await context();
     await other.addCookies([{ name: 'test_teacher', value: '2', url: h.base }]);
     const otherTeacher = await page(other);

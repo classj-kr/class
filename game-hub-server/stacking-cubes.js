@@ -1,9 +1,9 @@
 'use strict';
 const express = require('express');
 const crypto = require('node:crypto');
-const Activities = require('../learning/inquiry/math/stacking-cubes/activities');
+const Activities = require('../learning/literacy-numeracy/math-tools/stacking-cubes/activities');
 const { DEFAULT_ROUND, MAX_ROUND, generateRound, drawFromBank } = require('./stacking-race-questions');
-const CONTENT = '/learning/inquiry/math/stacking-cubes';
+const CONTENT = '/learning/literacy-numeracy/math-tools/stacking-cubes';
 const MODES = ['views', 'copy'];
 // Live classroom races like handwriting rooms: kept in memory, never stored as student records.
 function createStackingCubes({ platform, now = Date.now }) {

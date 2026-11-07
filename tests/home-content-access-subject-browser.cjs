@@ -138,7 +138,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await waitText(page, /전체관리자가 준비 중인 메뉴로 사용 중지했습니다/);
 
     // 기존에 일부 교구만 열린 반도 목록을 열며, 잠긴 교구에는 들어가지 못한다.
-    const mathCatalog = '/learning/inquiry/math/';
+    const mathCatalog = '/learning/literacy-numeracy/math-tools/';
     const mathEntry = `a[href="${mathCatalog.slice(1)}"]`;
     const numberModels = `${mathCatalog}number-models/`;
     const graphStudio = `${mathCatalog}graph-studio/`;

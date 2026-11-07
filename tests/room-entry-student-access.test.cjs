@@ -59,10 +59,21 @@ test('a student can open and join a Korean race even when the language menus are
 });
 
 test('stacking cooperation opens from the main room entrance while retaining site access checks', async () => {
-  const root = '/learning/inquiry/math/stacking-cubes';
+  const root = '/learning/literacy-numeracy/math-tools/stacking-cubes';
   for (const url of [root + '/coop/?code=6820', root + '/coop/app.js', root + '/coop/coop.js', root + '/coop/coop.css']) {
     assert.deepEqual(await check(url), { status: 200 });
     assert.deepEqual(await check(url, { role: null }), { status: 302, location: '/?access=required' });
     assert.deepEqual(await check(url, { disabled: [root] }), { status: 302, location: '/?content=globally-disabled' });
   }
+});
+
+test('old stacking room links use the new access rules before redirecting', async () => {
+  const current = '/learning/literacy-numeracy/math-tools/stacking-cubes';
+  for (const suffix of ['/race/?room=6820', '/race/app.js', '/coop/?code=6820', '/coop/coop.css']) {
+    const url = '/learning/inquiry/math/stacking-cubes' + suffix;
+    assert.deepEqual(await check(url), { status: 200 });
+    assert.deepEqual(await check(url, { role: null }), { status: 302, location: '/?access=required' });
+    assert.deepEqual(await check(url, { disabled: [current] }), { status: 302, location: '/?content=globally-disabled' });
+  }
+  assert.deepEqual(await check('/learning/inquiry/math/number-models/'), { status: 302, location: '/?content=locked' });
 });

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const C = require('../learning/inquiry/math/number-models/core.js');
+const C = require('../learning/literacy-numeracy/math-tools/number-models/core.js');
 
 test('every legal regrouping preserves quantity and its inverse restores all blocks', () => {
   for (const mode of ['whole', 'decimal']) for (const places of [2, 3, 4]) {

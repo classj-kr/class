@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const C = require('../learning/inquiry/math/fraction-board/core.js');
+const C = require('../learning/literacy-numeracy/math-tools/fraction-board/core.js');
 
 test('equivalent fractions preserve exact quantities, including improper fractions', () => {
   let card = C.makeCard('a', 'bar', 1, 2);

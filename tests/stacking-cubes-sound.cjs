@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
-const source = fs.readFileSync(path.join(__dirname, '../learning/inquiry/math/stacking-cubes/sound.js'), 'utf8');
+const source = fs.readFileSync(path.join(__dirname, '../learning/literacy-numeracy/math-tools/stacking-cubes/sound.js'), 'utf8');
 
 (async () => {
   const browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });

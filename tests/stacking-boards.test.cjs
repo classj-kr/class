@@ -15,7 +15,7 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     const teacher = 'test_teacher=1';
     const { data: { board } } = await request('/api/boards/', { title: '입체 문제은행', layout: 'stacking', slots: 60 }, teacher, 201);
     const entry = await request('/api/room-entry/resolve/' + board.code);
-    assert.equal(entry.data.href, `/learning/inquiry/math/stacking-cubes/coop/?code=${board.code}`);
+    assert.equal(entry.data.href, `/learning/literacy-numeracy/math-tools/stacking-cubes/coop/?code=${board.code}`);
     const base = '/api/boards/' + board.id + '/stacking';
     const get = async cookie => (await request(base, undefined, cookie)).data;
     const act = async (cookie, action, extra = {}, expected = 200) => {

@@ -1,5 +1,5 @@
 const crypto = require('node:crypto');
-const { BASIC, WIDE, STANDARD, validBoard, project, rulesForBoard, countCubes, resizeBoard } = require('../learning/inquiry/math/stacking-cubes/model');
+const { BASIC, WIDE, STANDARD, validBoard, project, rulesForBoard, countCubes, resizeBoard } = require('../learning/literacy-numeracy/math-tools/stacking-cubes/model');
 const { DEFAULT_ROUND, generateRound } = require('./stacking-race-questions');
 const roles = ['build', 'front', 'right', 'top'];
 const blank = (rules = BASIC) => Array(rules.size ** 2).fill(0);

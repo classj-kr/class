@@ -1,6 +1,6 @@
 # 그래프 칠판
 
-`/learning/inquiry/math/graph-studio/`에서 제공하는 정적 수업 도구입니다. 홈의 **교과 탐구 → 수학 → 그래프 그리기**에서 엽니다. 추가 서버나 외부 API가 필요하지 않습니다.
+`/learning/literacy-numeracy/math-tools/graph-studio/`에서 제공하는 정적 수업 도구입니다. 홈의 **문해·수리 → 수리 → 수학 교구 → 그래프 그리기**에서 엽니다. 추가 서버나 외부 API가 필요하지 않습니다.
 
 기존 `/learning/literacy-numeracy/graph-studio/` 주소는 통합 서버에서 새 주소로 연결합니다. 계정 저장 공간의 `graph-studio` 식별자와 `current`·`scenes` 항목은 유지하여 기존 수업과 보관함을 그대로 읽습니다. 문해·수리 보고서도 이 폴더의 `vendor/` 수식 라이브러리를 참조합니다.
 

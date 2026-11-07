@@ -26,7 +26,7 @@ test("learning menus use the four top-level domains", () => {
     "learning/literacy-numeracy/classical-chinese-idioms/",
     "learning/literacy-numeracy/story-books/korea-tales/",
     "learning/inquiry/human-body/",
-    "learning/inquiry/math/",
+    "learning/literacy-numeracy/math-tools/",
     "learning/arts/music-listening/",
     "learning/arts/art-appreciation/museum/",
     "learning/arts/instrument-room/",
@@ -38,15 +38,15 @@ test("learning menus use the four top-level domains", () => {
   assert.doesNotMatch(menu, /href="learning\/literacy-numeracy\/graph-studio\/"/);
   const literacy = menu.slice(menu.indexOf('id="category-literacy-panel"'), menu.indexOf('id="category-exploration-panel"'));
   const numeracy = literacy.match(/<details[^>]*data-access-group="numeracy"[^>]*>[\s\S]*?<\/details>/)?.[0];
-  const mathematics = numeracy?.match(/<a href="learning\/inquiry\/math\/"[^>]*>/)?.[0];
+  const mathematics = numeracy?.match(/<a href="learning\/literacy-numeracy\/math-tools\/"[^>]*>/)?.[0];
   assert.ok(mathematics, "The math tools catalog must open from the numeracy submenu.");
   assert.match(mathematics, /data-access-mode="individual"/);
-  const catalog = read("learning/inquiry/math/index.html");
+  const catalog = read("learning/literacy-numeracy/math-tools/index.html");
   assert.doesNotMatch(catalog, /class="(?:intro|topic|tool-action)"|교구 열기/);
   assert.match(catalog, /<h2 id="blocks-title">자연수·소수 모형<\/h2>/);
   for (const tool of ["stacking-cubes", "number-models", "fraction-board", "graph-studio"]) {
-    const href = `learning/inquiry/math/${tool}/`;
-    assert.ok(mathematics.includes(href), `${tool} keeps its existing access key`);
+    const href = `learning/literacy-numeracy/math-tools/${tool}/`;
+    assert.ok(mathematics.includes(href), `${tool} has its own canonical access key`);
     assert.ok(catalog.includes(`href="/${href}"`), `${tool} is listed in the catalog`);
     assert.ok(!menu.includes(`href="${href}"`), `${tool} is no longer listed on the home page`);
   }
