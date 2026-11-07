@@ -48,7 +48,8 @@ const PAST_LABEL = '평가원·수능 기출';
       assert.equal(labels[0], '초 1학년 1학기');
       assert.equal(labels[labels.length - 1], PAST_LABEL);
       assert.ok(labels.slice(0, 20).every((text) => /^(초|중|고) \d학년 [12]학기$/.test(text)), labels.join(', '));
-      assert.deepEqual(labels.slice(20, -1), ['대수', '미적분Ⅰ', '확률과 통계', '기하']);
+      // 고2·3 선택 다섯 과목은 학년·학기 대신 과목 이름으로 뜬다(terms.js).
+      assert.deepEqual(labels.slice(20, -1), ['대수', '미적분Ⅰ', '확률과 통계', '기하', '미적분Ⅱ']);
       await snap(page, name + '-bank-groups');
       await page.locator('.mb-group').first().locator('.mb-level').first().click();
       await page.locator('.mb-item').first().waitFor();
