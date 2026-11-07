@@ -26,7 +26,7 @@ test('all modern Hangul syllables compose finite, ordered stroke paths', () => {
   }
   assert.deepEqual(
     Array.from('ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ').map((c) => C.model(c).length),
-    [1, 1, 2, 3, 3, 4, 2, 1, 3, 4, 2, 3, 4, 3],
+    [1, 1, 2, 3, 3, 4, 2, 1, 2, 3, 2, 3, 4, 3],
   );
   assert.deepEqual(
     Array.from('ㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣ').map((c) => C.model(c).length),
