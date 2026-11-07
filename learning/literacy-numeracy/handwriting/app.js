@@ -43,6 +43,25 @@
     cells = [],
     marks = [];
   const CELL_PIXELS = 240;
+  // 브라우저는 화면의 실제 길이를 모른다. 학교에서 쓰는 아이패드·크롬북은 화면의 실제 픽셀 수로 패널을 알아보고,
+  // 그 패널의 인치당 픽셀 수로 1cm가 CSS 몇 px인지 구한다. 모르는 기기는 그대로 둔다.
+  (function () {
+    const ratio = window.devicePixelRatio || 1,
+      long = Math.max(screen.width, screen.height) * ratio,
+      short = Math.min(screen.width, screen.height) * ratio;
+    const panels = [
+      [2160, 1620, 264],
+      [2360, 1640, 264],
+      [2388, 1668, 264],
+      [2732, 2048, 264],
+      [2266, 1488, 326],
+      [1366, 768, 135],
+    ];
+    const hit = panels.find(([w, h]) => Math.abs(long - w) <= 2 && Math.abs(short - h) <= 2);
+    if (!hit) return;
+    document.documentElement.style.setProperty('--px-per-cm', String(hit[2] / 2.54 / ratio));
+    document.documentElement.dataset.physical = '1';
+  })();
   // 지금 쓰는 칸(쓰기 캔버스·본보기 캔버스). 칸을 고르면 바뀐다.
   let canvas = null,
     modelCanvas = null;
