@@ -286,6 +286,7 @@
     card.append(el('p', 'mb-text', item.text));
     if (item.figure) card.append(el('div', 'mb-figure', item.figure));
     const result = el('div', 'mb-result'); result.hidden = true;
+    result.tabIndex = -1;
     result.setAttribute('role', 'status');
 
     if (item.choice) {
@@ -450,18 +451,14 @@
       await saveRound([{ kind: 'hint', questionKey: item.key, response: '정답·풀이 보기', snapshot: snapshotOf(item) }]);
     } finally {
       setBusy(false);
-      focusUnfinished();
+      focusFeedback(card);
     }
   }
 
-  function focusUnfinished(preferred) {
-    const target = preferred && !preferred.dataset.closed ? preferred : main.querySelector('.mb-item:not([data-closed])');
-    const field = target && target.querySelector('input, select.mb-rel, .mb-choice');
-    if (field) field.focus({ preventScroll: false });
-    else if (round && round.items.every((item) => isClosed(round.answers[item.key]))) {
-      // 마지막 문항의 ‘풀이 보기’ 단추가 사라진 뒤에는 결과의 조작 단추로 초점을 옮긴다.
-      main.querySelector('#finish button')?.focus({ preventScroll: true });
-    }
+  function focusFeedback(card) {
+    // 답을 확인할 때는 풀던 문항에 초점을 남긴다. 미답 문항이 앞에 있어도 화면을 옮기지 않는다.
+    const field = !card.dataset.closed && card.querySelector('input, select.mb-rel, .mb-choice');
+    (field || card.querySelector('.mb-result'))?.focus({ preventScroll: true });
   }
 
   async function answer(item, card, response) {
@@ -480,7 +477,7 @@
       await saveRound(events);
     } finally {
       setBusy(false);
-      focusUnfinished(card);
+      focusFeedback(card);
     }
   }
 
@@ -504,7 +501,6 @@
       finish.append(button('mb-plain', '다시 풀기', () => openRound(group.id, level, no)), button('mb-plain', '다른 묶음 고르기', showGroups));
     }
     finish.hidden = false;
-    finish.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   // ── 뒤로가기: 푸는 중이면 묶음 목록으로 한 칸만 ─────────────────
