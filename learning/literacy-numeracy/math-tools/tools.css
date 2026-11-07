@@ -43,6 +43,7 @@ body {
 .blocks { --accent: #91dfc6; }
 .fractions { --accent: #c8b9f5; }
 .graphs { --accent: #a4d6ff; }
+.geo { --accent: #a3dbb9; }
 
 .tool {
   display: grid;

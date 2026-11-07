@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3ed">
+  <title>지오보드 · 수학 교구</title>
+  <link rel="icon" href="/assets/icons/favicon.webp">
+  <link rel="stylesheet" href="style.css?v=20261108-1">
+  <script src="core.js?v=20261108-1" defer></script>
+  <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+  <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>
+  <script src="app.js?v=20261108-1" defer></script>
+  <script src="/assets/sound/music-control.js?v=20261105-settings-panel" data-sfx-controls data-settings-help="geoboard-help" defer></script>
+</head>
+<body>
+  <h1 class="sr-only">지오보드</h1>
+  <div class="toolbar" aria-label="판 도구">
+    <label class="sr-only" for="size">핀판 크기</label>
+    <select id="size"><option value="5">5 × 5</option><option value="9">9 × 9</option></select>
+    <button id="add" class="primary" type="button">＋ 고무줄</button>
+    <div class="history">
+      <button id="undo" type="button" aria-label="되돌리기" title="되돌리기 (Ctrl/⌘+Z)" disabled>↶</button>
+      <button id="redo" type="button" aria-label="다시 하기" title="다시 하기 (Ctrl/⌘+Shift+Z)" disabled>↷</button>
+    </div>
+    <button id="clear" class="icon" type="button" aria-label="현재 판 모두 지우기" title="현재 판 모두 지우기" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 3 7 7-10 10H5l-3-3L14 3ZM8 11l7 7M11 20h10"/></svg></button>
+  </div>
+  <main class="workspace">
+    <div class="board-wrap">
+      <svg id="board" viewBox="0 0 600 600" tabindex="0" role="group" aria-label="지오보드 핀판" aria-describedby="board-description">
+        <desc id="board-description">핀을 차례로 누른 뒤 처음 핀을 눌러 도형을 완성합니다. 고무줄의 꼭짓점이나 변을 끌어 모양을 바꿉니다. 키보드로는 방향키로 핀을 고르고 Enter로 연결합니다.</desc>
+        <defs>
+          <radialGradient id="pin-metal" cx="35%" cy="25%"><stop offset="0" stop-color="#fffefa"/><stop offset=".55" stop-color="#e8e4d8"/><stop offset="1" stop-color="#a8ad9c"/></radialGradient>
+          <linearGradient id="board-surface" x2=".6" y2="1"><stop stop-color="#fffdf4"/><stop offset="1" stop-color="#eae4d3"/></linearGradient>
+        </defs>
+        <rect class="board-shadow" x="10" y="17" width="580" height="578" rx="29"/>
+        <rect class="board-surface" x="10" y="8" width="580" height="578" rx="29"/>
+        <g id="grid" aria-hidden="true"></g>
+        <g id="pins" aria-hidden="true"></g>
+        <g id="bands"></g>
+        <g id="handles"></g>
+        <g id="preview" aria-hidden="true"></g>
+      </svg>
+      <div id="drawing-tools" hidden><button id="finish" type="button" class="primary">완성</button><button id="cancel" type="button" aria-label="그리기 취소">×</button></div>
+    </div>
+    <div class="dock">
+      <div class="palette" role="group" aria-label="고무줄 색"></div>
+      <button id="fill" type="button" aria-pressed="true">색 채우기</button>
+      <button id="remove" class="icon" type="button" aria-label="선택한 고무줄 지우기" title="선택한 고무줄 지우기 (Delete)" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7"/></svg></button>
+    </div>
+    <div class="measure-tools" role="group" aria-label="표시 선택">
+      <button id="show-grid" type="button" aria-pressed="false">격자</button>
+      <button id="show-area" type="button" aria-pressed="false">넓이</button>
+      <button id="show-length" type="button" aria-pressed="false">둘레</button>
+    </div>
+    <div id="measurement" hidden><output id="values" aria-live="polite"></output><span class="unit"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3Z"/></svg>한 칸의 변 = 1</span></div>
+  </main>
+  <p id="message" role="status" hidden></p>
+  <span id="save-status" class="sr-only" role="status">저장 상태 확인 중</span>
+  <template id="geoboard-help">
+    <ul>
+      <li><strong>고무줄 추가</strong> — ＋ 고무줄을 누르거나, 핀을 차례로 누르고 처음 핀으로 돌아와요.</li>
+      <li><strong>모양 바꾸기</strong> — 꼭짓점이나 변 가운데의 작은 점을 다른 핀으로 끌어요. 이웃 꼭짓점에 겹치면 꼭짓점이 줄어요.</li>
+      <li><strong>통째로 옮기기</strong> — 도형 안쪽을 끌어요.</li>
+      <li><strong>비교하기</strong> — 고무줄을 더 놓고 넓이·둘레를 켜요. 값은 선택한 도형에 표시돼요. ≈는 어림값이에요.</li>
+    </ul>
+    <details><summary>키보드</summary><p>판에서 방향키로 핀을 고르고 Enter로 연결해요. 처음 핀에서 Enter를 누르면 완성돼요. Esc는 그리기 취소예요.</p><p>Tab으로 고무줄·꼭짓점·변 가운데를 골라 방향키로 옮겨요. Delete로 고무줄이나 꼭짓점을 지워요. Ctrl/⌘+Z는 되돌리기예요.</p></details>
+  </template>
+</body>
+</html>
