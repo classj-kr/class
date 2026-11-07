@@ -162,16 +162,24 @@
   // 칠하지 않은 칸은 가로로 나누지 않는다(칸의 크기가 서로 달라 칸 수만 세어서는 답할 수 없다).
   function partRect(cols, on, rows, at) {
     const W = 210, HH = 100, cw = W / cols, rh = HH / rows; let out = `<rect x="2" y="2" width="${on * cw}" height="${HH}" style="fill:${LIGHT}"/><rect x="2" y="${(2 + at * rh).toFixed(2)}" width="${on * cw}" height="${rh.toFixed(2)}" style="fill:${DARK}"/>`;
-    for (let i = 1; i < cols; i += 1) out += `<line x1="${2 + i * cw}" y1="2" x2="${2 + i * cw}" y2="${2 + HH}" style="stroke:${INK};stroke-width:1"/>`;
-    for (let j = 1; j < rows; j += 1) out += `<line x1="2" y1="${(2 + j * rh).toFixed(2)}" x2="${2 + on * cw}" y2="${(2 + j * rh).toFixed(2)}" style="stroke:${INK};stroke-width:1"/>`;
+    for (let i = 1; i < cols; i += 1) out += `<line x1="${2 + i * cw}" y1="2" x2="${2 + i * cw}" y2="${2 + HH}" style="stroke:${INK};stroke-width:1;stroke-dasharray:4 3"/>`;
+    for (let j = 1; j < rows; j += 1) out += `<line x1="2" y1="${(2 + j * rh).toFixed(2)}" x2="${2 + on * cw}" y2="${(2 + j * rh).toFixed(2)}" style="stroke:${INK};stroke-width:1;stroke-dasharray:4 3"/>`;
     out += `<rect x="2" y="2" width="${W}" height="${HH}" style="fill:none;stroke:${INK};stroke-width:1.4"/>`;
     return svg('mb-pieces', W + 4, HH + 4, `직사각형을 세로 선으로 똑같이 ${cols}칸으로 나누어 왼쪽 ${on}칸을 색칠하였다. 색칠한 부분만 가로 선으로 똑같이 ${rows}줄로 나누어 그 가운데 한 줄을 진하게 색칠하였다`, out);
   }
-  // 직사각형을 가로 cols 칸, 세로 rows 줄로 똑같이 나누어 cells(칸 번호)를 색칠한 그림
-  function cellGrid(cols, rows, cells) {
-    const cw = Math.min(40, 200 / cols), rh = 30; let out = '';
-    for (let i = 0; i < cols * rows; i += 1) out += `<rect class="mb-piece${cells.includes(i) ? ' is-on' : ''}" x="${2 + (i % cols) * cw}" y="${2 + Math.floor(i / cols) * rh}" width="${cw}" height="${rh}"/>`;
-    return svg('mb-pieces', cols * cw + 4, rows * rh + 4, `직사각형을 똑같이 ${cols * rows}칸으로 나누어 그 가운데 ${cells.length}칸을 색칠`, out);
+  // 직사각형을 가로 cols 칸, 세로 rows 줄로 똑같이 나누어 cells(칸 번호)를 색칠한 그림. 바깥 변은 실선, 똑같이 나눈 선은 점선이다.
+  // dims({ w, h }: 가로·세로의 길이(cm))를 주면 직사각형을 그 비로 그리고 아래 변과 오른쪽 변에 길이를 적는다.
+  // dims 가 없으면 가로 : 세로를 7 : 4 로 둔다(칸 수만 보고 그리면 5 × 1 칸이 띠처럼 길쭉해진다).
+  function cellGrid(cols, rows, cells, dims) {
+    const W = dims ? Math.min(210, 150 * dims.w / dims.h) : 210, H = dims ? W * dims.h / dims.w : 120, cw = W / cols, rh = H / rows, f = (v) => Number(v.toFixed(2));
+    let out = '';
+    for (const i of cells) out += `<rect x="${f(2 + (i % cols) * cw)}" y="${f(2 + Math.floor(i / cols) * rh)}" width="${f(cw)}" height="${f(rh)}" style="fill:#93c5fd"/>`;
+    for (let i = 1; i < cols; i += 1) out += `<line x1="${f(2 + i * cw)}" y1="2" x2="${f(2 + i * cw)}" y2="${f(2 + H)}" style="stroke:${INK};stroke-width:1;stroke-dasharray:4 3"/>`;
+    for (let j = 1; j < rows; j += 1) out += `<line x1="2" y1="${f(2 + j * rh)}" x2="${f(2 + W)}" y2="${f(2 + j * rh)}" style="stroke:${INK};stroke-width:1;stroke-dasharray:4 3"/>`;
+    out += `<rect x="2" y="2" width="${f(W)}" height="${f(H)}" style="fill:none;stroke:${INK};stroke-width:1.5"/>`;
+    if (dims) out += `<text x="${f(2 + W / 2)}" y="${f(H + 20)}" text-anchor="middle" style="font-size:13px;fill:${INK}">${dims.w} cm</text><text x="${f(W + 8)}" y="${f(2 + H / 2 + 4)}" style="font-size:13px;fill:${INK}">${dims.h} cm</text>`;
+    const label = (dims ? `가로 ${dims.w} cm, 세로 ${dims.h} cm인 ` : '') + `직사각형을 똑같이 ${cols * rows}칸으로 나누어 그 가운데 ${cells.length}칸을 색칠`;
+    return svg('mb-pieces', f(W + (dims ? 48 : 4)), f(H + (dims ? 26 : 4)), label, out);
   }
   // 두 자연수 left, right 사이를 똑같이 parts 칸으로 나눈 수직선. left 에서 한 칸 간 눈금에 ㉠을 적는다.
   function gapLine(left, right, parts) {
@@ -564,7 +572,7 @@
     T('shape-area-split', '넓이를 구한 다음 똑같이 나눈 한 칸의 넓이', '①74 심70', (d) => {
       const [cols, rows] = d.pick([[3, 2], [4, 2], [3, 3], [5, 1], [4, 1], [3, 1], [5, 2]]), parts = cols * rows, [x, y] = d.until(() => [d.int(4, 9), d.int(3, 8)], ([p, s]) => p > s && (p * s) % parts !== 0 && p * s > parts && cols >= rows);
       return ansQ(`가로가 ${x} cm, 세로가 ${y} cm인 직사각형을 그림과 같이 똑같이 나누었다. 색칠한 부분의 넓이는 몇 cm²인가?`, { num: `${x}*${y}`, dens: [parts], P: x * y, D: parts }, {
-        unit: 'cm²', figure: cellGrid(cols, rows, [d.int(0, parts - 1)]).replace(`그 가운데 1칸을 색칠`, '그 가운데 한 칸을 색칠'),
+        unit: 'cm²', figure: cellGrid(cols, rows, [d.int(0, parts - 1)], { w: x, h: y }).replace(`그 가운데 1칸을 색칠`, '그 가운데 한 칸을 색칠'),
         explain: `직사각형의 넓이는 ${x} × ${y} = ${x * y}(cm²)이다. 똑같이 ${parts}칸으로 나눈 것 중의 한 칸이므로 ${told(nat(x * y), parts)}이다.`
       });
     }, { standard: STD_NN })

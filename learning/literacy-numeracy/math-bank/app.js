@@ -79,6 +79,21 @@
   // 해결 여부와 최초 채점은 따로 둔다. 힌트를 보고 맞혀도 최초 오답은 바뀌지 않는다.
   // 검증된 유사 문제가 준비된 초·중·고1 두 학기에 힌트와 오답 복습을 적용한다.
   const isClosed = (state) => Boolean(state && (!round.hints || state.ok || state.revealed));
+  // 4~6학년 분수 답: 답이 대분수일 때만 자연수 칸이 생기면 칸 모양이 「답이 1보다 크다」를 알려 준다. 그래서 대분수가 아닌 분수 답에도
+  // 비워 두어도 되는 자연수 칸을 늘 붙인다(가분수로 나타내라는 문항은 빼고). 그 칸의 값은 답 목록 맨 끝(inputs.length 번째)에 둔다.
+  const spareWhole = (item) => Boolean(item.fraction && !item.mixed && !item.improper && !item.template && unit && unit.grade >= 4 && unit.grade <= 6);
+  // 채점에 넘길 답: 비워 둔 자연수 칸은 0, 적었으면 분자에 (자연수 × 분모)를 더해 가분수로 바꾼다.
+  const graded = (item, response) => {
+    if (!spareWhole(item) || !Array.isArray(response) || response.length <= item.inputs.length) return response;
+    const n = item.inputs.length, w = Number(response[n] || 0), top = Number(response[n - 2]), bottom = Number(response[n - 1]);
+    return w ? response.slice(0, n - 2).concat([String(w * bottom + top), String(bottom)]) : response.slice(0, n);
+  };
+  // 기록에 남길 답 글: 남는 자연수 칸이 있으면 「1 3/4」처럼 적는다.
+  const responseText = (item, response) => {
+    if (!spareWhole(item) || response.length <= item.inputs.length) return response.join(', ');
+    const n = item.inputs.length, w = String(response[n] || '').trim();
+    return (w && w !== '0' ? w + ' ' : '') + response[n - 2] + '/' + response[n - 1];
+  };
   const firstRight = (state) => Boolean(state && (round.hints ? state.firstOk && !state.hinted && !state.revealed : state.ok));
   const restoreAnswer = (state) => round.hints ? { ...state, firstOk: state.firstOk ?? state.ok, hinted: state.hinted ?? !state.ok, attempts: state.attempts || 1 } : state;
   // 드롭다운의 항목 이름과 맨 밑의 기출 항목(terms.js). 기출 화면의 자리.
@@ -285,6 +300,12 @@
       const form = el('form', 'mb-answer'); form.noValidate = true;
       // 분수 답은 분자 칸과 분모 칸을 위아래로 놓는다. 대분수 답은 자연수 칸을 그 왼쪽에 둔다.
       const stack = item.fraction ? el('span', 'mb-fracfield') : null, slots = [];
+      if (spareWhole(item)) {
+        const field = el('label', 'mb-field is-short mb-spare'), box = document.createElement('input');
+        box.type = 'text'; box.inputMode = 'numeric'; box.autocomplete = 'off'; box.maxLength = 6;
+        box.setAttribute('aria-label', '자연수 적기(없으면 비워 둔다)'); box.dataset.at = item.inputs.length; box.dataset.spare = '1';
+        field.append(box); form.append(field);
+      }
       if (stack && !item.mixed) form.append(stack);
       item.inputs.forEach((input, at) => {
         // 칸 너비는 칸의 개수로만 정한다. 정답의 자릿수에 맞추면 칸 너비가 답의 크기를 알려 준다.
@@ -328,7 +349,7 @@
       form.addEventListener('submit', (event) => {
         event.preventDefault();
         const boxes = [...form.querySelectorAll('input, select.mb-rel')].sort((a, b) => a.dataset.at - b.dataset.at);
-        const empty = boxes.find((box) => box.value.trim() === '');
+        const empty = boxes.find((box) => box.value.trim() === '' && !box.dataset.spare);
         if (empty) { empty.focus(); return; }
         // 부호 단추가 붙은 칸은 단추의 부호를 글 앞에 붙여 보낸다. 자판으로 -를 직접 적은 것도 받는다.
         answer(item, card, boxes.map((box) => {
@@ -448,13 +469,13 @@
     if (busy || isClosed(previous)) return;
     setBusy(true);
     try {
-      const ok = B.isCorrect(item, response);
+      const ok = B.isCorrect(item, graded(item, response));
       const state = round.hints
         ? { r: response, ok, firstOk: previous ? previous.firstOk : ok, hinted: Boolean(previous?.hinted || !ok), attempts: (previous?.attempts || 0) + 1 }
         : { r: response, ok };
       round.answers[item.key] = state;
       paintAnswered(item, card, state);
-      const events = [{ kind: 'answer', questionKey: item.key, response: Array.isArray(response) ? response.join(', ') : plainText(item.choice.options[response]), correct: ok, snapshot: snapshotOf(item) }];
+      const events = [{ kind: 'answer', questionKey: item.key, response: Array.isArray(response) ? responseText(item, response) : plainText(item.choice.options[response]), correct: ok, snapshot: snapshotOf(item) }];
       if (round.hints && !ok && !previous?.hinted) events.push({ kind: 'hint', questionKey: item.key, response: window.MathBankHints.forItem(item, round.group), snapshot: { prompt: plainText(item.text), type: item.typeTitle } });
       await saveRound(events);
     } finally {

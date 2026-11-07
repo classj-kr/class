@@ -216,10 +216,13 @@
   }
   // 가로 cols 칸, 세로 rows 칸으로 똑같이 나눈 정사각형. shade(가로 자리, 세로 자리)가 0이면 흰 칸, 1이면 옅게, 2이면 진하게 칠한다. left 는 왼쪽 위의 x 자리.
   const FILL = ['#fff', '#dbeafe', '#3b82f6'];
+  // 바깥 변은 실선, 똑같이 나눈 선은 점선으로 긋는다(칸은 색만 칠한다).
   function gridAt(left, cols, rows, shade, S) {
-    const cw = S / cols, rh = S / rows; let out = '';
-    for (let r = 0; r < rows; r += 1) for (let c = 0; c < cols; c += 1) out += `<rect class="mb-piece" style="fill:${FILL[shade(c, r)]}" x="${(left + c * cw).toFixed(2)}" y="${(2 + r * rh).toFixed(2)}" width="${cw.toFixed(2)}" height="${rh.toFixed(2)}"/>`;
-    return out;
+    const cw = S / cols, rh = S / rows, ink = 'stroke:#1f2933;stroke-width:1'; let out = '';
+    for (let r = 0; r < rows; r += 1) for (let c = 0; c < cols; c += 1) out += `<rect style="fill:${FILL[shade(c, r)]}" x="${(left + c * cw).toFixed(2)}" y="${(2 + r * rh).toFixed(2)}" width="${cw.toFixed(2)}" height="${rh.toFixed(2)}"/>`;
+    for (let c = 1; c < cols; c += 1) out += `<line x1="${(left + c * cw).toFixed(2)}" y1="2" x2="${(left + c * cw).toFixed(2)}" y2="${(2 + S).toFixed(2)}" style="${ink};stroke-dasharray:4 3"/>`;
+    for (let r = 1; r < rows; r += 1) out += `<line x1="${left}" y1="${(2 + r * rh).toFixed(2)}" x2="${(left + S).toFixed(2)}" y2="${(2 + r * rh).toFixed(2)}" style="${ink};stroke-dasharray:4 3"/>`;
+    return out + `<rect x="${left}" y="2" width="${S}" height="${S}" style="fill:none;stroke:#1f2933;stroke-width:1.5"/>`;
   }
   const areaGrid = (cols, rows, shade, label, size) => svg('mb-pieces', (size || 120) + 4, (size || 120) + 4, label, gridAt(2, cols, rows, shade, size || 120));
   // 정사각형의 a/b(왼쪽 세로줄 a 칸)를 옅게 칠하고, 그것을 가로줄 c 줄로 똑같이 나눈 것 중의 맨 윗줄을 진하게 칠한 그림
@@ -247,7 +250,7 @@
   const quot = (num, den) => `(${num}-${num}%${den})/${den}`, rest = (num, den) => `${num}%${den}`;
 
   B.addUnit({
-    id: '6-1-1', grade: 6, semester: 1, no: 1, title: '분수의 나눗셈', version: 2,
+    id: '6-1-1', grade: 6, semester: 1, no: 1, title: '분수의 나눗셈', version: 3,
     groups: [
       {
         id: 'nn', title: '(자연수)÷(자연수)의 몫을 분수로 나타내기', standard: STD_NN,
