@@ -35,7 +35,9 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     const duration = Core.DURATIONS.includes(Number(body?.duration)) ? Number(body.duration) : previous.duration || 90;
     const teamMode = typeof body?.teamMode === 'boolean' ? body.teamMode : Boolean(previous.teamMode);
     const teamCount = Core.TEAM_COUNTS.includes(Number(body?.teamCount)) ? Number(body.teamCount) : previous.teamCount || 2;
-    return { set, level, duration, teamMode, teamCount };
+    // 범위(예: 영단어 Level 1 · 4차시)는 들어온 학습 화면이 정한다. 보내지 않으면 앞의 범위를 이어 쓴다.
+    const range = Core.validRange(set, body && 'range' in body ? body.range : set === previous.set ? previous.range : null);
+    return { set, level, range, duration, teamMode, teamCount };
   }
   function applyConfig(r, body) {
     r.config = config(body, r.config);
@@ -209,7 +211,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
           throw fail(409, '두 팀 이상에 학생이 있어야 출발할 수 있어요.');
       }
       // 빠른 학생도 끝까지 새 문제를 받을 만큼 넉넉히 뽑는다.
-      r.items = Questions.makeRound(pools(), { set: r.config.set, level: r.config.level, count: r.config.duration + 20, mixedParts: parts, random });
+      r.items = Questions.makeRound(pools(), { set: r.config.set, level: r.config.level, range: r.config.range, count: r.config.duration + 20, mixedParts: parts, random });
       if (r.items.length < 10) throw fail(503, '문항 자료를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.');
       r.roundId = crypto.randomUUID();
       r.phase = 'running';

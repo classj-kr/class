@@ -10,6 +10,8 @@
     let language = 'ko', lessonIndex = 0, state = null, busy = false, statuses = new Map();
     const setBusy = value => { busy = value; $('learningShell').inert = value; $('lessonOverview').inert = value; if ($('lessonToolbar')) $('lessonToolbar').inert = value; };
     const deck = () => config.decks[language];
+    // 순위전 범위: 차시를 열어 둔 동안 그 차시(순위전 문제는 우리말 속담·관용어만 있다).
+    window.currentRaceRange = () => (!$('learningShell').hidden && language === 'ko' ? String(lessonIndex + 1) : '');
     const key = () => `${language}:${lessonIndex}`;
     const lessons = () => config.lessons[language];
     const text = item => item.expression || item.proverb;

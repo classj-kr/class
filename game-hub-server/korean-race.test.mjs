@@ -201,3 +201,29 @@ test('a set whose learning page is globally closed cannot be raced', async (t) =
   assert.equal(started.phase, 'running', 'mixed races the open parts only');
   assert.equal((await req(path + '/settings', { set: 'spelling' }, mixed.token, 'teacher')).status, 409);
 });
+
+test('a race opened from a lesson asks only that lesson, or everything up to it', () => {
+  assert.equal(Core.validRange('vocabulary', '1-4'), '1-4');
+  assert.equal(Core.validRange('vocabulary', '~2'), '~2');
+  assert.equal(Core.validRange('spelling', '3'), '3');
+  assert.equal(Core.validRange('spelling', '1-2'), null);
+  assert.equal(Core.validRange('mixed', '1'), null);
+  assert.equal(Core.rangeLabel('vocabulary', '~1-4'), '처음~Level 1 · 4차시');
+  assert.equal(Core.rangeLabel('proverbs', '~1'), '1차시');
+  const pools = bank.load();
+  const lessonOne = Questions.poolFor(pools, 'vocabulary', 'elementary', [], '1-1').map((e) => e.key);
+  assert.ok(lessonOne.length >= 18 && lessonOne.length <= 20, 'Level 1 · 1차시 keeps nearly all of its 20 words');
+  assert.ok(lessonOne.includes('vocabulary:he') && lessonOne.includes('vocabulary:in'));
+  assert.equal(Questions.poolFor(pools, 'vocabulary', 'elementary', [], '~1-2').length,
+    lessonOne.length + Questions.poolFor(pools, 'vocabulary', 'elementary', [], '1-2').length);
+  for (const set of ['spelling', 'idioms', 'proverbs', 'expressions']) {
+    assert.ok(pools[set].every((e) => e.lesson >= 1), `${set}: every question belongs to a lesson`);
+    const one = Questions.poolFor(pools, set, 'all', [], '1'), two = Questions.poolFor(pools, set, 'all', [], '2');
+    assert.ok(one.length >= 4 && one.every((e) => e.lesson === 1));
+    assert.equal(Questions.poolFor(pools, set, 'all', [], '~2').length, one.length + two.length);
+  }
+  // 한자성어 2차시는 네 개뿐이라 보기를 전체에서 고른다(늘 같은 네 개가 되지 않게).
+  const round = Questions.makeRound(pools, { set: 'idioms', range: '2', count: 40, random: Math.random });
+  assert.ok(new Set(round.map((q) => q.text)).size <= 4);
+  assert.ok(new Set(round.flatMap((q) => q.choices)).size > 4);
+});

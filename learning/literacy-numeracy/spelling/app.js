@@ -96,6 +96,9 @@
         return lessons[state.lessonIndex] || null;
     }
 
+    // 순위전 범위: 차시 문제를 푸는 동안 그 차시.
+    window.currentRaceRange = () => (state.mode === "lesson" && currentLesson() && elements.lessonScreen.classList.contains("hidden") ? String(state.lessonIndex + 1) : "");
+
     function takePersonalQuestionIds() {
         return shuffle(questionBank).slice(0, SESSION_SIZE).map(q => q.id);
     }
