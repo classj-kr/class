@@ -39,28 +39,38 @@ export function RaceAvatar({ name, avatarUrl }: { name: string; avatarUrl?: stri
 const TOWER_HEIGHT = 150;
 const whoLabel = (runner: RaceRunner) => runner.symbol ? "우리 팀" : "나";
 const ROW = 22;
+const FLAT = 60;
+const blocksOf = (score: number) => {
+  const value = Math.max(0, score);
+  return { hundreds: Math.floor(value / 100), tens: Math.floor((value % 100) / 10), ones: value % 10 };
+};
 
-// 점수를 수 모형으로 쌓는다. 맞힐 때마다 일 모형이 한 칸 떨어지고, 열 개가 차면 십 모형 막대 하나로 합쳐진다.
+// 점수를 수 모형으로 쌓는다. 맞힐 때마다 일 모형이 한 칸 떨어지고, 열 개가 차면 십 모형 막대 하나로,
+// 막대 열 개가 차면 백 모형 판 하나로 합쳐진다(탑이 다시 낮아졌다가 새로 쌓인다).
 export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", unit = "명" }: { entries: RaceRunner[]; myId?: string; playing: boolean; title?: string; unit?: string }) {
   const me = entries.find(entry => entry.id === myId);
   const visible = entries.slice(0, 5);
   if (me && !visible.some(entry => entry.id === myId)) visible[visible.length - 1] = me;
-  const rows = Math.max(1, ...visible.map(entry => Math.ceil(Math.max(0, entry.score) / 10)));
-  // 막대가 많아지면 층을 얇게 해서 탑이 틀 안에 머문다.
-  const row = Math.min(ROW, Math.floor(TOWER_HEIGHT / rows));
+  // 판·막대가 많아지면 층을 얇게 해서 탑이 틀 안에 머문다.
+  const tallest = Math.max(ROW, ...visible.map(entry => {
+    const { hundreds, tens, ones } = blocksOf(entry.score);
+    return hundreds * FLAT + (tens + (ones ? 1 : 0)) * ROW;
+  }));
+  const scale = Math.min(1, TOWER_HEIGHT / tallest);
+  const row = Math.max(4, Math.floor(ROW * scale)), flat = Math.max(12, Math.floor(FLAT * scale));
   return <section className="math-race-towers" aria-label="실시간 수 모형 탑">
     <div className="math-race-towers-heading"><strong>{title}</strong><span>{entries.length}{unit}{me ? ` · ${whoLabel(me)} ${me.rank}위` : ""}</span></div>
-    <ol style={{ "--cols": Math.max(1, visible.length), "--row": `${row}px`, "--tower": `${TOWER_HEIGHT}px` } as CSSProperties}>
+    <ol style={{ "--cols": Math.max(1, visible.length), "--row": `${row}px`, "--flat": `${flat}px`, "--tower": `${TOWER_HEIGHT}px` } as CSSProperties}>
       {visible.map((entry, index) => {
         const hue = entry.hue ?? [...entry.id].reduce((value, letter) => (value * 31 + letter.charCodeAt(0)) % 360, 0);
-        const score = Math.max(0, entry.score);
-        const tens = Math.floor(score / 10), ones = score % 10;
+        const { hundreds, tens, ones } = blocksOf(entry.score);
         return <li key={entry.id} className={`${entry.id === myId ? "is-me " : ""}${entry.rank === 1 && entry.score > 0 ? "is-leader" : ""}`}
           style={{ "--slot": index, "--hue": hue } as CSSProperties}>
           <div className="math-race-tower" aria-label={`${entry.name} ${entry.score}점`}>
             <span className={`math-race-climber${playing ? " is-playing" : ""}`}>{entry.symbol ? <span className="math-race-avatar math-race-team-symbol">{entry.symbol}</span> : <RaceAvatar {...entry} />}</span>
             {ones > 0 && <div className="math-race-ones">{Array.from({ length: ones }, (_, cube) => <i key={`${tens}-${cube}`} className="math-race-cube" />)}</div>}
-            {Array.from({ length: tens }, (_, rod) => <i key={rod} className="math-race-rod" />).reverse()}
+            {Array.from({ length: tens }, (_, rod) => <i key={`${hundreds}-${rod}`} className="math-race-rod" />).reverse()}
+            {Array.from({ length: hundreds }, (_, plate) => <i key={`flat-${plate}`} className="math-race-flat" />).reverse()}
           </div>
           <strong key={entry.score} className={`math-race-tower-score${entry.score < 0 ? " is-negative" : ""}`}>{entry.score}</strong>
           <span className="math-race-tower-name"><em>{entry.rank}</em>{entry.name}</span>

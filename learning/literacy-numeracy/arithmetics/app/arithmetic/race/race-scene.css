@@ -156,6 +156,23 @@
   box-shadow: inset 0 -2px 0 hsl(var(--hue) 60% 34%);
   animation: math-race-merge .7s cubic-bezier(.2, 1.2, .4, 1) both;
 }
+/* 백 모형: 십 모형 열 개가 합쳐진 10×10 판. 처음 생길 때 막대들이 눌려 판이 되며 번쩍인다. */
+.math-race-flat {
+  position: relative; display: block; height: calc(var(--flat) - 3px); border-radius: 3px;
+  background-color: hsl(var(--hue) 70% 52%);
+  background-image: linear-gradient(90deg, hsl(var(--hue) 60% 36%) 1px, transparent 1px), linear-gradient(hsl(var(--hue) 60% 36%) 1px, transparent 1px);
+  background-size: 10% 10%;
+  box-shadow: inset 0 0 0 2px hsl(var(--hue) 60% 34%), inset 0 -4px 0 hsl(var(--hue) 60% 32%), 0 0 0 0 hsl(48 100% 60% / 0);
+  animation: math-race-flat 1.1s cubic-bezier(.2, 1.3, .4, 1) both;
+}
+.math-race-flat::after { content: "100"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: clamp(9px, calc(var(--flat) * .32), 16px); font-weight: 900; text-shadow: 0 1px 2px hsl(var(--hue) 60% 22%); }
+.math-race .card-race-banner.hundred { background: linear-gradient(90deg, #f7b500, #ff6a3d, #d0246f); box-shadow: 0 6px 0 #8f1f4a, 0 18px 50px #ff6a3d77; font-size: clamp(30px, 6vw, 48px); }
+@keyframes math-race-flat {
+  0% { transform: scaleY(4) scaleX(.6); opacity: .4; filter: brightness(1.8); }
+  35% { transform: scaleY(.6) scaleX(1.15); opacity: 1; filter: brightness(1.6); box-shadow: inset 0 0 0 2px hsl(var(--hue) 60% 34%), 0 0 0 10px hsl(48 100% 60% / .7); }
+  65% { transform: scaleY(1.12) scaleX(.96); }
+  100% { transform: none; filter: none; }
+}
 .math-race-tower-score { margin-top: 4px; color: var(--pencil); font-size: 20px; font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1.1; animation: card-race-bump .3s; }
 .math-race-tower-score.is-negative { color: var(--red); }
 .math-race-tower-name { display: flex; gap: 3px; max-width: 100%; color: var(--pencil); font-size: 12px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

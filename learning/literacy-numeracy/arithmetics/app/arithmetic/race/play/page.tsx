@@ -168,9 +168,16 @@ export default function ArithmeticRaceCardsPage() {
     const previous = lastTens.current;
     lastTens.current = tens;
     if (!playing || previous === null || tens <= previous) return;
+    // 막대 열 개가 차서 백 모형이 되는 순간(100점, 200점…)은 더 크게 알린다.
+    const hundred = Math.floor(tens / 10) > Math.floor(previous / 10);
     const timer = window.setTimeout(() => {
-      setBanner({ text: `🧱 십 모형 완성! ${tens * 10}점`, kind: "ten", key: Date.now() });
-      raceCue("rank");
+      if (hundred) {
+        setBanner({ text: `🟧 백 모형 완성! ${Math.floor(tens / 10) * 100}점`, kind: "hundred", key: Date.now() });
+        raceCue("victory");
+      } else {
+        setBanner({ text: `🧱 십 모형 완성! ${tens * 10}점`, kind: "ten", key: Date.now() });
+        raceCue("rank");
+      }
     }, 650);
     return () => window.clearTimeout(timer);
   }, [towerScore, playing]);
