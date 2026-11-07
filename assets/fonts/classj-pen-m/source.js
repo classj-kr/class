@@ -1184,6 +1184,7 @@
     polishPenStrokes(char, parts);
     finishPenM15(char, parts);
     refinePenM16(char, parts);
+    refinePenM17(char, parts);
     // A small shared deformation must not turn an uncommon syllable into
     // touching initial/final consonants. Retain the already checked draft there.
     const ii=parts.findIndex(p=>p.kind==='initial'),fi=parts.findIndex(p=>p.kind==='final');
@@ -1510,6 +1511,89 @@
       const ring=final.paths[2],cx=(Math.min(...ring.map(p=>p[0]))+Math.max(...ring.map(p=>p[0])))/2;
       for(const p of ring) {p[0]=cx+.15+(p[0]-cx)*.943;p[1]-=.2;}
       const bar=final.paths[1];line(final,1,[bar[0][0]-2,bar[0][1]],[bar.at(-1)[0]+2,bar.at(-1)[1]]);
+    }
+  }
+  function refinePenM17(char, parts) {
+    if('를어푸늘름거'.includes(char)) return;
+    const n=char.codePointAt(0)-0xac00,a=CHO[Math.floor(n/588)],b=JUNG[Math.floor(n/28)%21],c=JONG[n%28];
+    const initial=parts.find(p=>p.kind==='initial'),vowels=parts.filter(p=>p.kind==='vowel'),vowel=vowels[0],final=parts.find(p=>p.kind==='final');
+    const set=(part,index,path,pen)=>{
+      const old=part.paths[index];part.paths[index]=sample(path,old.length);
+      if(pen||old.pen) part.paths[index].pen=pen||old.pen;
+    };
+    const line=(part,index,start,end)=>set(part,index,stroke(start,end));
+    const atX=(path,x)=>{
+      for(let i=1;i<path.length;i++) if(x>=path[i-1][0]&&x<=path[i][0]) {
+        const t=(x-path[i-1][0])/(path[i][0]-path[i-1][0]||1);
+        return path[i-1][1]+t*(path[i][1]-path[i-1][1]);
+      }
+      return path.reduce((p,q)=>Math.abs(p[0]-x)<Math.abs(q[0]-x)?p:q)[1];
+    };
+    const shiftEnd=(path,target,reach=12)=>{
+      const end=[...path.at(-1)],delta=target.map((v,i)=>v-end[i]);
+      for(const p of path) {const t=Math.max(0,1-distance(p,end)/reach),w=t*t*(3-2*t);p[0]+=w*delta[0];p[1]+=w*delta[1];}
+    };
+    if(c==='ㄹ'&&'ㅏㅑㅓㅕㅣㅐㅒㅔㅖㅗㅜㅠㅘ'.includes(b)) {
+      const horizontal='ㅗㅜㅠ'.includes(b),compound=b==='ㅘ';
+      const corner=compound?71:horizontal?69:75;
+      const level=compound?(a==='ㅎ'?79.05:78.05):b==='ㅗ'?75.68:b==='ㅜ'?75.23:b==='ㅠ'?75.14:75.86;
+      const slope=compound?-.0347:b==='ㅗ'?-.0104:b==='ㅜ'?-.0113:b==='ㅠ'?-.0095:-.0122;
+      const top=final.paths[0][0],middle=final.paths[1],endX=corner-1.5,endY=level+slope*endX;
+      set(final,0,stroke(top,[corner,top[1]-1.1],[endX,endY]));
+      line(final,1,[middle[0][0]-.7,level+slope*(middle[0][0]-.7)],[corner+1.3,level+slope*(corner+1.3)]);
+      const foot=final.paths[2],start=[...foot[0]],dy=atX(final.paths[1],start[0])-start[1];
+      for(const p of foot) {const t=Math.max(0,1-distance(p,start)/8);p[1]+=dy*t*t*(3-2*t);}
+    }
+    if(b==='ㅜ'&&c&&'ㄴㄹㅁㅂㄷㅈㅍ'.includes(c)) {
+      const x=c==='ㄴ'?48.05:46.05;
+      const y=c==='ㄴ'?74.8:c==='ㅂ'?60.8:atX(final.paths[c==='ㅁ'?1:0],x);
+      line(vowel,1,[x,atX(vowel.paths[0],x)],[x,y]);
+    }
+    if(a==='ㄱ'&&b==='ㅠ'&&c==='ㄴ') {
+      set(vowel,1,stroke([40.0,atX(vowel.paths[0],40)],[39.8,57,38,68,36.9,73.5]));
+      line(vowel,2,[59.45,atX(vowel.paths[0],59.45)],[59.45,73.8]);
+    }
+    if(a==='ㄱ'&&b==='ㅠ'&&c==='ㄹ') {
+      for(const [i,x] of [[1,34.05],[2,58.05]]) line(vowel,i,[x,atX(vowel.paths[0],x)],[x,atX(final.paths[0],x)]);
+    }
+    if(c&&'ㄱㅋ'.includes(a)&&'ㅜㅠ'.includes(b)) {
+      const path=initial.paths[0],end=path.at(-1);shiftEnd(path,[end[0],atX(vowel.paths[0],end[0])]);
+    }
+    if(a==='ㄱ'&&!c&&b==='ㅞ') {
+      const bar=vowel.paths[0];line(vowel,0,[bar[0][0],53.19-.0785*bar[0][0]],[bar.at(-1)[0],53.19-.0785*bar.at(-1)[0]]);
+      set(initial,0,stroke([14.1,20.55],[29,20.3,37,19.7,45.8,19.5],[44.9,29,42.2,40,40,atX(vowel.paths[0],40)]));
+      const stem=vowel.paths[1],start=[...stem[0]],dy=atX(vowel.paths[0],start[0])-start[1];
+      for(const p of stem) {const t=Math.max(0,1-distance(p,start)/10);p[1]+=dy*t*t*(3-2*t);}
+      const arm=vowels[1].paths[0];line(vowels[1],0,[arm[0][0],68.18-.0406*arm[0][0]],[arm.at(-1)[0],68.18-.0406*arm.at(-1)[0]]);
+    }
+    if(a==='ㄱ'&&c&&'ㅘㅙㅚ'.includes(b)) {
+      const x=b==='ㅘ'?28.45:b==='ㅙ'?25.45:32.45,y=b==='ㅙ'?33.8:34.7;
+      line(vowel,0,[x,y],[x,atX(vowel.paths[1],x)]);
+    }
+    if(a==='ㅎ'&&b==='ㅘ'&&c==='ㄴ') {
+      const ring=initial.paths[2],top=Math.min(...ring.map(p=>p[1]));
+      for(const p of ring) p[1]=top+(p[1]-top)*1.10;
+      const bar=vowel.paths[1],endX=vowels[1].paths[0][0][0];
+      line(vowel,1,[bar[0][0],64.55-.0593*bar[0][0]],[endX,64.55-.0593*endX]);
+      line(vowel,0,[32.95,Math.max(...ring.map(p=>p[1]))],[32.95,atX(vowel.paths[1],32.95)]);
+      const arm=vowels[1].paths[1];line(vowels[1],1,[arm[0][0],44.92-.0288*arm[0][0]],[arm.at(-1)[0],44.92-.0288*arm.at(-1)[0]]);
+    }
+    if(a==='ㅁ'&&b==='ㅗ'&&!c) {
+      const map=p=>p.map(([x,y])=>[x,19.3+(y-13.3)*1.1992]);
+      set(initial,0,map(stroke([20.6,10.2],[23.6,12.3,24,13,24.1,17],[24.5,25,25.1,36,25.2,42.3])));
+      set(initial,1,map(stroke([29.4,13.3],[42,13,55,12.5,68.6,12.3],[68.2,21,67.5,32,67.1,38.4])));
+      set(initial,2,map(stroke([25.15,39],[70.6,38.4])));
+    }
+    if(a==='ㅍ'&&!c&&b==='ㅗ') {
+      set(initial,1,stroke([30.3,26.8],[31.8,29.5,34.1,39.2,34.4,46.3]));
+      set(initial,2,stroke([57.7,24.7],[60.6,26.1,61.5,28.5,60.5,33],[59.6,40,58.3,47,56.8,52.5]));
+    }
+    if(a==='ㅍ'&&!c&&b==='ㅏ') {
+      set(initial,1,stroke([18.2,34.5],[19.9,37.2,22.3,49,22.4,57.2]));
+      set(initial,2,stroke([44.9,32.2],[48,33.6,48.4,36,47.7,40],[46.6,48,45.2,56,43.7,62.9]));
+    }
+    if(!c&&b==='ㅗ'&&'ㅁㅍ'.includes(a)) {
+      const x=45.95;line(vowel,0,[x,atX(initial.paths.at(-1),x)],[x,atX(vowel.paths.at(-1),x)]);
     }
   }
   function polishPenStrokes(char, parts) {

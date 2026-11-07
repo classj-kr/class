@@ -352,6 +352,9 @@
   function render(s) {
     const previous = state;
     state = s;
+    if (s.config.set === 'hanja' && previous?.config.set !== 'hanja') {
+      document.fonts.load('600 1em KleeRaceHanja', '人').catch(() => {});
+    }
     const host = s.me.host;
     document.body.classList.toggle('is-host', host);
     document.body.classList.toggle('spectator', !s.me.plays);
@@ -477,7 +480,7 @@
   }
   function paintMine(s) {
     renderMini(s);
-    paintWords(s.me.words || [], s.me.correct);
+    paintWords(s.me.words || [], s.me.correct, s.config.set === 'hanja');
     paintScore(localScore);
     paintCombo();
     const rank = s.me.rank;
@@ -541,14 +544,15 @@
     $('qStamp').textContent = '+' + worth;
   }
   // 맞힌 말: 이번 판에 맞힌 말(속담·관용어·한자성어·바른 맞춤법·영단어)을 최근 것부터 모아 보여 준다.
-  function paintWords(words, correct) {
+  function paintWords(words, correct, hanja) {
     const box = $('myWords');
     if (box.dataset.count !== String(correct)) {
       const grew = Number(box.dataset.count || 0) < correct;
       box.dataset.count = correct;
       box.replaceChildren(...words.slice(-14).reverse().map((word, i) => {
         const chip = document.createElement('span');
-        chip.textContent = word;
+        if (hanja) fillHanjaLabel(chip, word);
+        else chip.textContent = word;
         chip.title = word;
         chip.style.setProperty('--hue', hash(word) % 360);
         if (grew && i === 0) chip.className = 'new';
@@ -563,6 +567,23 @@
   }
 
   // ── 문제와 보기 ───────────────────────────────────
+  function fillHanjaLabel(el, label) {
+    const parts = /^(\p{Script=Han}+)(\([^()]+\))?$/u.exec(label);
+    if (!parts) {
+      el.textContent = label;
+      return;
+    }
+    const glyph = document.createElement('span');
+    glyph.className = 'hanja-glyph';
+    glyph.textContent = parts[1];
+    el.replaceChildren(glyph);
+    if (parts[2]) {
+      const reading = document.createElement('small');
+      reading.textContent = parts[2];
+      el.append(reading);
+    }
+  }
+
   // 한자 보기처럼 {{낱말}}로 표시한 자리는 밑줄 친 낱말로 그린다(자료를 HTML로 넣지 않고 글자 마디로 만든다).
   function fillMarked(el, text) {
     el.replaceChildren(...String(text).split(/\{\{([^{}]*)\}\}/).map((part, i) => {
@@ -576,13 +597,15 @@
     if (shown && q && shown.no === q.no) return;
     shown = q;
     const card = $('card');
+    const text = $('qText');
     $('reveal').hidden = true;
     card.classList.remove('right', 'wrong', 'shake');
     if (!q) {
       $('qLabel').textContent = '';
       $('qNo').textContent = '';
       $('qAsk').textContent = '';
-      $('qText').textContent = '준비한 문제를 모두 풀었어요! 결과를 기다려요.';
+      text.classList.remove('hanja', 'word', 'long');
+      text.textContent = '준비한 문제를 모두 풀었어요! 결과를 기다려요.';
       $('choices').replaceChildren();
       return;
     }
@@ -591,20 +614,15 @@
     $('qNo').textContent = `${q.no + 1}번째 문제`;
     $('qAsk').textContent = q.ask;
     $('qAsk').hidden = !q.ask;
-    // 맞춤법 문장의 빈칸(___)은 칸으로 그린다.
-    const text = $('qText');
-    text.replaceChildren(...String(q.text).split(/_{2,}/).flatMap((part, i) => {
-      const nodes = [];
-      if (i) { const blank = document.createElement('span'); blank.className = 'blank'; nodes.push(blank); }
-      nodes.push(document.createTextNode(part));
-      return nodes;
-    }));
-    // 한자는 글자를 크게, 소리 "(인)"은 조금 작게.
-    const sound = q.set === 'hanja' && /^(.+?)(\(.+\))$/.exec(String(q.text));
-    if (sound) {
-      const small = document.createElement('small');
-      small.textContent = sound[2];
-      text.replaceChildren(sound[1], small);
+    if (q.set === 'hanja') fillHanjaLabel(text, q.text);
+    else {
+      // 맞춤법 문장의 빈칸(___)은 칸으로 그린다.
+      text.replaceChildren(...String(q.text).split(/_{2,}/).flatMap((part, i) => {
+        const nodes = [];
+        if (i) { const blank = document.createElement('span'); blank.className = 'blank'; nodes.push(blank); }
+        nodes.push(document.createTextNode(part));
+        return nodes;
+      }));
     }
     text.classList.toggle('word', q.set === 'vocabulary');
     text.classList.toggle('hanja', q.set === 'hanja');
