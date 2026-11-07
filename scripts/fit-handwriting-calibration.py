@@ -227,8 +227,9 @@ def main():
     font = ImageFont.truetype(str(args.reference), SZ, layout_engine=ImageFont.Layout.BASIC)
     chars = []
     masks = {}
-    for cp in range(0xAC00, 0xD7A4, args.step):
-        if cp in cmap:
+    for cp in range(0xAC00, 0xD7A4):
+        # every syllable without a final is the only one of its initial+vowel pair, so keep them all
+        if cp in cmap and ((cp - 0xAC00) % args.step == 0 or (cp - 0xAC00) % 28 == 0):
             m = ref_mask(font, chr(cp))
             if m.sum() >= 40:
                 chars.append(chr(cp))
