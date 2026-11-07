@@ -66,11 +66,11 @@ export function auditSiteLinks(root = ROOT) {
         return path.join(root, "learning/literacy-numeracy/handwriting", file);
       }
     }
-    const stackingRace = "/learning/inquiry/math/stacking-cubes/race/";
+    const stackingRace = "/learning/literacy-numeracy/math-tools/stacking-cubes/race/";
     if (url.startsWith(stackingRace)) {
       const file = url.slice(stackingRace.length) || "index.html";
       if (["index.html", "model.js", "activities.js", "sound.js", "library.js", "app.js", "race.js", "style.css"].includes(file)) {
-        return path.join(root, "learning/inquiry/math/stacking-cubes", file);
+        return path.join(root, "learning/literacy-numeracy/math-tools/stacking-cubes", file);
       }
     }
     return sitePaths.resolveSitePath(root, url);

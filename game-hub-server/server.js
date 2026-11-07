@@ -595,7 +595,8 @@ app.use(
 );
 
 const LEGACY_LEARNING_PATHS = new Map([
-  ["/learning/literacy-numeracy/graph-studio", "/learning/inquiry/math/graph-studio"],
+  ["/learning/inquiry/math", "/learning/literacy-numeracy/math-tools"],
+  ["/learning/literacy-numeracy/graph-studio", "/learning/literacy-numeracy/math-tools/graph-studio"],
   ["/learning/reading", "/learning/literacy-numeracy/reading"],
   ["/learning/basics/idioms", "/learning/literacy-numeracy/classical-chinese-idioms"],
   ["/learning/academics/classical-chinese-idioms", "/learning/literacy-numeracy/classical-chinese-idioms"],
@@ -659,10 +660,10 @@ for (const file of ['font-source.js', 'font-engine.js', 'style-badasseugi.js', '
 const stackingCubes = createStackingCubes({ platform: classroomPlatform });
 app.use('/api/stacking-race', classroomPlatform.requireSiteAccess, stackingCubes.router);
 // The room-code entrance opens the same board, kept open even when the lesson menu is locked.
-const stackingRoot = path.join(SITE_ROOT, 'learning/inquiry/math/stacking-cubes');
-app.get('/learning/inquiry/math/stacking-cubes/race/', (req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
+const stackingRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/math-tools/stacking-cubes');
+app.get('/learning/literacy-numeracy/math-tools/stacking-cubes/race/', (req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
 for (const file of ['model.js', 'activities.js', 'sound.js', 'music.js', 'library.js', 'app.js', 'race.js', 'style.css', 'coop.js', 'coop.css', 'team-stage.js']) {
-  app.get(`/learning/inquiry/math/stacking-cubes/race/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
+  app.get(`/learning/literacy-numeracy/math-tools/stacking-cubes/race/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
 }
 const typingRace = createTypingRace({ platform: classroomPlatform });
 app.use('/api/typing-race', classroomPlatform.requireSiteAccess, typingRace.router);
@@ -680,9 +681,9 @@ app.get('/learning/literacy-numeracy/korean-race/', (req, res, next) => sendSite
 for (const file of ['korean-race-core.js', 'race.js', 'race.css']) {
   app.get(`/learning/literacy-numeracy/korean-race/${file}`, (_req, res) => res.sendFile(path.join(koreanRaceRoot, file)));
 }
-app.get('/learning/inquiry/math/stacking-cubes/coop/',(req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
+app.get('/learning/literacy-numeracy/math-tools/stacking-cubes/coop/',(req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
 for (const file of ['model.js', 'activities.js', 'sound.js', 'music.js', 'library.js', 'app.js', 'race.js', 'style.css', 'coop.js', 'coop.css', 'team-stage.js']) {
-  app.get(`/learning/inquiry/math/stacking-cubes/coop/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
+  app.get(`/learning/literacy-numeracy/math-tools/stacking-cubes/coop/${file}`, (_req, res) => res.sendFile(path.join(stackingRoot, file)));
 }
 
 // Reuse notation under this activity's access grant, even when ear training is closed.

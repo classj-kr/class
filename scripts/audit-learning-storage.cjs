@@ -72,7 +72,7 @@ const report = {
     future: '학부모는 자기 자녀의 저장된 사실 기록 조회. AI 의견은 교사가 확인·공개한 뒤 제공.'
   },
   activities: rows.map(row => inspectArea(row)),
-  supplemental: extras.map(row => inspectArea(row, 'learning/inquiry/math/')),
+  supplemental: extras.map(row => inspectArea(row, 'learning/literacy-numeracy/math-tools/')),
   importantFindings: [
     '현재 활성 활동 중 문항·진행 순서를 계정에서 읽어 기기간 이어가는 공통 구현은 확인되지 않음.',
     '비문학 reading-bank에는 pilot start/responses/submit와 응답 조회 구현이 별도로 있지만 현재 자습 app.js는 self-study GET만 사용. 기존 파일럿 API를 현재 자습 기록으로 오인하면 안 됨.',

@@ -10,7 +10,7 @@ function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRo
       const entry = await roomCodes.lookup(code);
       const activity = entry?.activity || (legacyVoyageRoomExists(code) ? 'voyage' : 'legacy');
       if (activity === 'board') return res.json({ type: activity, href: `/boards/?code=${code}` });
-      if (activity === 'stacking-board') return res.json({ type: activity, href: `/learning/inquiry/math/stacking-cubes/coop/?code=${code}` });
+      if (activity === 'stacking-board') return res.json({ type: activity, href: `/learning/literacy-numeracy/math-tools/stacking-cubes/coop/?code=${code}` });
       if (activity === 'exam') return res.json({ type: activity, href: `/exams/?code=${code}` });
       if (activity === 'handwriting') {
         if (!handwritingExists(code)) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });
@@ -18,7 +18,7 @@ function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRo
       }
       if (activity === 'stacking') {
         if (!stackingExists(code)) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });
-        return res.json({ type: activity, href: `/learning/inquiry/math/stacking-cubes/race/?room=${code}` });
+        return res.json({ type: activity, href: `/learning/literacy-numeracy/math-tools/stacking-cubes/race/?room=${code}` });
       }
       if (activity === 'typing') {
         if (!typingExists(code)) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });

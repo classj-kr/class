@@ -60,10 +60,10 @@ async function createHarness({ studentSiteAccess = false, now = Date.now } = {})
   app.use('/api/room-entry', createRoomEntry({ roomCodes, stackingExists: individual.hasRoomCode }));
   app.use('/api/boards', feature.router);
   app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
-  const stackingRoot = path.resolve(__dirname, '../learning/inquiry/math/stacking-cubes');
-  app.get('/learning/inquiry/math/stacking-cubes/coop/', (_req, res) => res.sendFile(path.join(stackingRoot, 'index.html')));
-  app.use('/learning/inquiry/math/stacking-cubes/coop/', express.static(stackingRoot));
-  app.use('/learning/inquiry/math/stacking-cubes/race/', express.static(stackingRoot));
+  const stackingRoot = path.resolve(__dirname, '../learning/literacy-numeracy/math-tools/stacking-cubes');
+  app.get('/learning/literacy-numeracy/math-tools/stacking-cubes/coop/', (_req, res) => res.sendFile(path.join(stackingRoot, 'index.html')));
+  app.use('/learning/literacy-numeracy/math-tools/stacking-cubes/coop/', express.static(stackingRoot));
+  app.use('/learning/literacy-numeracy/math-tools/stacking-cubes/race/', express.static(stackingRoot));
   app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise(resolve => { const instance = app.listen(Number(process.env.HARNESS_PORT) || 0, '127.0.0.1', () => resolve(instance)); });

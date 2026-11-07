@@ -390,7 +390,7 @@
       const next = await api(`/${boardId}`);
       if (epoch !== likesEpoch) return;
       data = next;
-      if (data.board.layout === 'stacking') { location.replace(`/learning/inquiry/math/stacking-cubes/coop/?id=${encodeURIComponent(boardId)}`); return; }
+      if (data.board.layout === 'stacking') { location.replace(`/learning/literacy-numeracy/math-tools/stacking-cubes/coop/?id=${encodeURIComponent(boardId)}`); return; }
       if (!data.me.teacher && data.live) { navigateRace(data.live.id); return; }
       if (!data.me.teacher && setId) { setId = null; historyView(); }
       const nextSignature = JSON.stringify(next);

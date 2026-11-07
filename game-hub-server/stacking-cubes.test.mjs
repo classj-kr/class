@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url),
 const { createStackingCubes } = require('./stacking-cubes'),
   { createRoomCodes } = require('./room-codes'),
   { createRoomEntry } = require('./room-entry');
-const { project, validBoard } = require('../learning/inquiry/math/stacking-cubes/model');
+const { project, validBoard } = require('../learning/literacy-numeracy/math-tools/stacking-cubes/model');
 const { generateRound, drawFromBank } = require('./stacking-race-questions');
 const signature = q => ['top', 'front', 'right'].map(v => project(q, v).join('')).join('/');
 test('200 generated questions per round stay distinct; a saved bank cycles without replacement', () => {
@@ -55,7 +55,7 @@ test('room entry, server judging, ranking by solved count then time, and closing
   const code = made.data.state.code, host = made.data.token, path = '/rooms/' + code;
   assert.deepEqual(await (await fetch(`${origin}/api/room-entry/resolve/${code}`)).json(), {
     type: 'stacking',
-    href: `/learning/inquiry/math/stacking-cubes/race/?room=${code}`,
+    href: `/learning/literacy-numeracy/math-tools/stacking-cubes/race/?room=${code}`,
   });
   assert.deepEqual(made.data.state.questions, [], 'targets stay hidden before the start');
   assert.equal((await req(path + '/start', {}, host, 'teacher')).status, 409, 'needs a student');

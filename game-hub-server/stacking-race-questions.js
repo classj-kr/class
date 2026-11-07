@@ -1,6 +1,6 @@
 'use strict';
 const { randomInt } = require('node:crypto');
-const { BASIC, WIDE, project } = require('../learning/inquiry/math/stacking-cubes/model');
+const { BASIC, WIDE, project } = require('../learning/literacy-numeracy/math-tools/stacking-cubes/model');
 
 const MAX_ROUND = 200;
 const DEFAULT_ROUND = 6;

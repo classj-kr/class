@@ -713,6 +713,7 @@ function createClassroomPlatform(options = {}) {
        ON CONFLICT (class_id, content_path) DO NOTHING`,
       // 전담이 가르치는 반에 오늘 하루 열어 두는 메뉴. 담임의 공개와 별개 칸이라 연 사람만 닫는다.
       ...subjectGrantSchema,
+      fs.readFileSync(path.join(__dirname, 'migrations', '026-math-tools-paths.sql'), 'utf8'),
       `CREATE TABLE IF NOT EXISTS classroom_schedules (
         id BIGSERIAL PRIMARY KEY,
         class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,
@@ -1992,7 +1993,10 @@ function createClassroomPlatform(options = {}) {
   function normalizeContentPath(value) {
     const clean = String(value || "").split(/[?#]/, 1)[0].trim();
     if (!clean.startsWith("/") || clean.includes("..") || clean.length > 300) return "";
-    return clean.length > 1 ? clean.replace(/\/+$/, "") : clean;
+    // Old bookmarks and already-open menu tabs use the same grants as the new URLs.
+    return (clean.length > 1 ? clean.replace(/\/+$/, "") : clean)
+      .replace(/^\/learning\/inquiry\/math(?=\/|$)/, "/learning/literacy-numeracy/math-tools")
+      .replace(/^\/learning\/literacy-numeracy\/graph-studio(?=\/|$)/, "/learning/literacy-numeracy/math-tools/graph-studio");
   }
 
   function contentRootForStaticAsset(requestPath) {
@@ -2129,10 +2133,10 @@ function createClassroomPlatform(options = {}) {
           || requestPath === "/learning/literacy-numeracy/handwriting/race"
           || requestPath.startsWith("/learning/literacy-numeracy/handwriting/race/")
           || requestPath === "/api/handwriting" || requestPath.startsWith("/api/handwriting/")
-          || requestPath === "/learning/inquiry/math/stacking-cubes/race"
-          || requestPath.startsWith("/learning/inquiry/math/stacking-cubes/race/")
-          || requestPath === "/learning/inquiry/math/stacking-cubes/coop"
-          || requestPath.startsWith("/learning/inquiry/math/stacking-cubes/coop/")
+          || requestPath === "/learning/literacy-numeracy/math-tools/stacking-cubes/race"
+          || requestPath.startsWith("/learning/literacy-numeracy/math-tools/stacking-cubes/race/")
+          || requestPath === "/learning/literacy-numeracy/math-tools/stacking-cubes/coop"
+          || requestPath.startsWith("/learning/literacy-numeracy/math-tools/stacking-cubes/coop/")
           || requestPath === "/api/stacking-race" || requestPath.startsWith("/api/stacking-race/")
           || requestPath === "/learning/inquiry/information-computing/typing/race"
           || requestPath.startsWith("/learning/inquiry/information-computing/typing/race/")

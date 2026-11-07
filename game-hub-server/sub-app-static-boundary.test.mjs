@@ -89,10 +89,10 @@ test("sub-app internals are not reachable by URL, however the path is spelled", 
     `${voyage}/public/assets/maps/natural-earth-v58/overview.webp`,
     "/learning/literacy-numeracy/arithmetics/public/fonts/STIXTwoMath-Regular.woff2",
     "/learning/literacy-numeracy/arithmetics/public/fonts/KoPubWorld-Batang-Medium.woff2",
-    "/learning/inquiry/math/graph-studio/",
-    "/learning/inquiry/math/graph-studio/vendor/katex.min.css",
-    "/learning/inquiry/math/graph-studio/vendor/katex.min.js",
-    "/learning/inquiry/math/graph-studio/vendor/fonts/KaTeX_Main-Regular.woff2",
+    "/learning/literacy-numeracy/math-tools/graph-studio/",
+    "/learning/literacy-numeracy/math-tools/graph-studio/vendor/katex.min.css",
+    "/learning/literacy-numeracy/math-tools/graph-studio/vendor/katex.min.js",
+    "/learning/literacy-numeracy/math-tools/graph-studio/vendor/fonts/KaTeX_Main-Regular.woff2",
     "/learning/literacy-numeracy/phonics/",
   ]) {
     assert.equal((await status(requestPath)).status, 200, requestPath);
@@ -108,8 +108,22 @@ test("sub-app internals are not reachable by URL, however the path is spelled", 
   ]) {
     assert.deepEqual(await status(`/learning/literacy-numeracy/graph-studio${suffix}`), {
       status: 308,
-      location: `/learning/inquiry/math/graph-studio${expectedSuffix}`,
+      location: `/learning/literacy-numeracy/math-tools/graph-studio${expectedSuffix}`,
     });
+  }
+
+  // Every old math-tools URL keeps its suffix and room/board query parameters.
+  const mathTools = '/learning/literacy-numeracy/math-tools';
+  for (const suffix of ['', '/', '/index.html?entry=menu', '/tools.js?v=old',
+    '/stacking-cubes/?activity=views', '/stacking-cubes/race/?room=6820',
+    '/stacking-cubes/coop/?id=existing-bank&code=6820', '/stacking-cubes/coop/coop.js',
+    '/number-models/', '/fraction-board/', '/fraction-board/export-worker.js',
+    '/graph-studio/vendor/fonts/KaTeX_Main-Regular.woff2']) {
+    const redirected = await status('/learning/inquiry/math' + suffix);
+    assert.deepEqual(redirected, { status: 308, location: mathTools + (suffix || '/') });
+    const response = await fetch(`http://127.0.0.1:${port}${redirected.location}`);
+    assert.equal(response.status, 200, redirected.location);
+    await response.arrayBuffer();
   }
 
   // Group folders have no page; old back links land on the home page.

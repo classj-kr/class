@@ -164,7 +164,7 @@ test("the homeroom's own grants keep working alongside, and closing by the subje
 
 test("an existing math tool grant opens its catalog without unlocking sibling tools", async () => {
   await withSchool(async ({ pool, query, musicTeacher, taught }) => {
-    const catalog = "/learning/inquiry/math";
+    const catalog = "/learning/literacy-numeracy/math-tools";
     assert.equal(await isOpen(query, 1, catalog), false);
     await query("INSERT INTO classroom_content_enabled (class_id, content_path) VALUES ($1, $2)", [1, `${catalog}/number-models`]);
     assert.equal(await isOpen(query, 1, catalog), true);

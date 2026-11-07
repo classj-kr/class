@@ -7,7 +7,7 @@ const { startHarness } = require('./site-storage-harness.cjs');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname, '..'), output = path.join(root, 'outputs/fraction-board');
 let h, browser, context, page, errors;
-const url = '/learning/inquiry/math/fraction-board/';
+const url = '/learning/literacy-numeracy/math-tools/fraction-board/';
 const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert('RGBA');im.save(sys.argv[1],format='WEBP',lossless=True,exact=True);out=Image.open(sys.argv[1]).convert('RGBA');assert im.size==out.size and im.tobytes()==out.tobytes()";
 const shot = async name => {
   const result = spawnSync('python', ['-c', convert, path.join(output, name + '.webp')], { input: await page.screenshot({ fullPage: true }) });
@@ -49,7 +49,7 @@ test('the math tools catalog opens the fraction board on desktop and phone', asy
     await page.goto(h.base + '/');
     await page.locator('#category-literacy-toggle').click();
     await page.locator('[data-access-group="numeracy"] > summary').click();
-    await page.locator('a[href="learning/inquiry/math/"]').click();
+    await page.locator('a[href="learning/literacy-numeracy/math-tools/"]').click();
     await page.locator(`a[href="${url}"]`).click();
     await page.waitForURL('**' + url);
     await page.locator('.fraction-drawing').waitFor();

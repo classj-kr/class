@@ -147,8 +147,8 @@ const CLASS_CONTENT_OPEN_SQL = `
         WHERE e.class_id = c.id
           AND ($2 = e.content_path OR $2 LIKE e.content_path || '/%'
                OR ($3 <> '' AND (e.content_path = $3 OR e.content_path LIKE $3 || '/%'))
-               OR ($2 IN ('/learning/inquiry/math', '/learning/inquiry/math/index.html')
-                   AND e.content_path LIKE '/learning/inquiry/math/%'))
+               OR ($2 IN ('/learning/literacy-numeracy/math-tools', '/learning/literacy-numeracy/math-tools/index.html')
+                   AND e.content_path LIKE '/learning/literacy-numeracy/math-tools/%'))
       )
       OR EXISTS (
         SELECT 1 FROM classroom_content_subject_grants g
@@ -157,8 +157,8 @@ const CLASS_CONTENT_OPEN_SQL = `
           AND g.expires_at > NOW()
           AND ($2 = g.content_path OR $2 LIKE g.content_path || '/%'
                OR ($3 <> '' AND (g.content_path = $3 OR g.content_path LIKE $3 || '/%'))
-               OR ($2 IN ('/learning/inquiry/math', '/learning/inquiry/math/index.html')
-                   AND g.content_path LIKE '/learning/inquiry/math/%'))
+               OR ($2 IN ('/learning/literacy-numeracy/math-tools', '/learning/literacy-numeracy/math-tools/index.html')
+                   AND g.content_path LIKE '/learning/literacy-numeracy/math-tools/%'))
       )
     )
   LIMIT 1`;
