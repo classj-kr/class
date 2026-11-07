@@ -85,7 +85,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     if (!v.player.host || !(v.player.plays || (await teacher(req)))) throw fail(403, '방을 연 사람만 바꿀 수 있어요.');
     return v;
   }
-  const resetScore = (p) => Object.assign(p, { score: 0, index: 0, correct: 0, wrong: 0, combo: 0, bestCombo: 0, blocks: [], tried: [], scoredAt: null, lastAt: 0, lastWrong: false });
+  const resetScore = (p) => Object.assign(p, { score: 0, index: 0, correct: 0, wrong: 0, combo: 0, bestCombo: 0, blocks: [], words: [], tried: [], scoredAt: null, lastAt: 0, lastWrong: false });
   function board(r) {
     const rows = students(r).map((x) => ({
       id: x.id,
@@ -125,7 +125,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
       me: {
         id: p.id, host: p.host, plays: Boolean(p.plays), name: p.name, racer: p.racer || '', avatarUrl: p.avatarUrl || null,
         team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0,
-        correct: p.correct || 0, wrong: p.wrong || 0, blocks: p.blocks || [], rank: mine?.rank || null,
+        correct: p.correct || 0, wrong: p.wrong || 0, blocks: p.blocks || [], words: p.words || [], rank: mine?.rank || null,
         question: question(r, p),
       },
       participants,
@@ -248,6 +248,8 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
         gained = Core.points(p.combo);
         p.correct += 1;
         p.blocks = [...p.blocks, q.block].slice(-60);
+        // 맞힌 말 모음: 영단어는 영어 낱말, 나머지는 정답 보기(속담·관용어·한자성어·바른 맞춤법).
+        p.words = [...(p.words || []), q.set === 'vocabulary' ? q.text : q.choices[q.answer]].slice(-60);
       } else {
         // 틀릴 때마다 1점씩 깎고 같은 문제를 다시 고른다. 점수는 0 아래로도 내려간다.
         p.combo = 0;
