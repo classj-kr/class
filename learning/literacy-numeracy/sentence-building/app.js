@@ -152,7 +152,7 @@
         elements.hintButton.hidden = false;
         elements.activityArea.replaceChildren();
         elements.lessonTitle.textContent = `${currentLessonIndex + 1}차시 ${lesson.title}`;
-        elements.lessonMeta.textContent = `교사용 · ${lesson.gradeBand} · ${lesson.standards.map((code) => `[${code}]`).join(" · ")} · ${lesson.goal}`;
+        elements.lessonMeta.textContent = `${lesson.gradeBand} · ${lesson.standards.map((code) => `[${code}]`).join(" · ")} · ${lesson.goal}`;
         elements.missionNumber.textContent = String(taskIndex + 1);
         elements.missionTotal.textContent = String(lesson.tasks.length);
         elements.missionProgressFill.style.width = `${(taskIndex / lesson.tasks.length) * 100}%`;
