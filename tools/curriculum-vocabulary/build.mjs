@@ -16,7 +16,14 @@ const picDir = path.resolve(here, '../../learning/literacy-numeracy/curriculum-v
 // 그림 명세·영어·설명은 extra/*.json 에 따로 둔다: { 단원 id: { 낱말: { en, beats, explain, img, imgKo } } }
 const extra = {};
 const extraDir = path.join(dir, 'extra');
-if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(n => n.endsWith('.json'))) {
+// senses-*.json: { 과목 코드: { 단원 id: { 낱말: { senses: [{ mean, use, hanja }] } } } } — 단원 뜻 말고 다른 뜻
+const senses = {};
+if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(n => /^senses.*\.json$/.test(n))) {
+  for (const [code, units] of Object.entries(JSON.parse(fs.readFileSync(path.join(extraDir, name), 'utf8')))) {
+    for (const [unit, words] of Object.entries(units)) for (const [w, row] of Object.entries(words)) if (row.senses?.length) senses[`${code}/${unit}/${w}`] = row.senses;
+  }
+}
+if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(n => n.endsWith('.json') && !n.startsWith('senses'))) {
   const code = name.replace(/(-[a-z])?\.json$/, '');
   for (const [unit, words] of Object.entries(JSON.parse(fs.readFileSync(path.join(extraDir, name), 'utf8')))) {
     for (const [w, row] of Object.entries(words)) extra[`${code}/${unit}/${w}`] = row;
@@ -63,7 +70,7 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
       title: unit.title,
       words: unit.words.map((word, index) => {
         const more = extra[`${code}/${unit.id}/${word.w}`] || {};
-        const row = { w: word.w, hanja: word.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, pic: picOf(code, unit.id, index) };
+        const row = { w: word.w, hanja: word.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, senses: senses[`${code}/${unit.id}/${word.w}`], pic: picOf(code, unit.id, index) };
         return Object.fromEntries(Object.entries(row).filter(([, v]) => v));
       })
     }))
