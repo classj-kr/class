@@ -1,7 +1,7 @@
 "use strict";
 const fs=require('node:fs'),path=require('node:path');
 const engines={blokus:'blokus',bomb77:'bomb77',citychase:'citychase',clue:'clue',codenames:'codenames',dobble:'dobble',drawrelay:'drawrelay',expedition:'expedition',gemguild:'gemguild','kingdom-trails':'kingdomtrails',lastcard:'lastcard',loveletter:'loveletter',rummikub:'rummikub'};
-const solo=new Set(['coinweighing','hanoitower','nonogram','sliding-puzzle','sphinx']);
+const solo=new Set(['coinweighing','hanoitower','minesweeper','nonogram','sliding-puzzle','sphinx']);
 const clients=new Set(['davincicode','fruitbell','janggi','nimgame','setgame','reversi']);
 exports.supports=game=>!!engines[game]||clients.has(game)||solo.has(game)||game==='avalon';
 exports.load=async(page,game,original,file,root)=>{

@@ -556,7 +556,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   temperature: "/learning/inquiry/human-body/homeostasis"
 });
 
-const FINISHER_GAMES = new Set(["coinweighing", "hanoitower", "sphinx", "slidingpuzzle", "nonogram"]);
+const FINISHER_GAMES = new Set(["coinweighing", "hanoitower", "sphinx", "slidingpuzzle", "nonogram", "minesweeper"]);
 
 // 3학년 분수②는 예전에 /fraction 에 따로 있었다. 옛 주소로 온 사람은 연산 목록 안의 새 자리로 보낸다.
 app.use("/fraction", (req, res) => {

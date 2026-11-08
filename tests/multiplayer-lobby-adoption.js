@@ -34,7 +34,7 @@ const expectedMultiplayerGames = [
     "setgame",
     "traverse"
 ];
-const expectedSinglePlayerGames = ["coinweighing", "hanoitower", "nonogram", "sliding-puzzle", "sphinx"];
+const expectedSinglePlayerGames = ["coinweighing", "hanoitower", "minesweeper", "nonogram", "sliding-puzzle", "sphinx"];
 
 const ordinaryGames = fs.readdirSync(gamesRoot, { withFileTypes: true })
     .filter(entry => entry.isDirectory())
