@@ -131,11 +131,11 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 .units h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 .meanings { margin: 4px 0 0; padding: 0; list-style: none; counter-reset: sense; display: grid; gap: 10px; }
-.meaning { counter-increment: sense; position: relative; padding-left: 2.2em; }
-.meaning::before { content: counter(sense); position: absolute; left: 0; top: .15em; display: grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--wash); color: var(--green); font-weight: 800; font-size: .9rem; }
-.meaning.own::before { background: var(--green); color: white; }
-.meaning .word-mean { margin: 0; font-size: 1.1rem; }
-.meaning .word-use { margin: 2px 0 0; }
+li.meaning { counter-increment: sense; position: relative; padding-left: 2.2em; }
+li.meaning::before { content: counter(sense); position: absolute; left: 0; top: .15em; display: grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--wash); color: var(--green); font-weight: 800; font-size: .9rem; }
+li.meaning.own::before { background: var(--green); color: white; }
+li.meaning .word-mean { margin: 0; font-size: 1.1rem; }
+li.meaning .word-use { margin: 2px 0 0; }
 .meanings.has-others .meaning.own .word-mean::after { content: '이 단원'; margin-left: 8px; padding: 1px 7px; border-radius: 6px; background: var(--wash); color: var(--green); font-size: .78rem; font-weight: 800; font-family: var(--gothic); vertical-align: 2px; display: inline-block; white-space: nowrap; }
 .hanja-glyph.small { font-size: 1.15rem; }
 .meanings.others { margin-top: 8px; }
@@ -146,8 +146,8 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 .sense-kind span { font-size: .92rem; font-weight: 700; color: var(--muted); }
 .polysemy .sense-kind b { background: var(--green); }
 .homonym .sense-kind b { background: #9b4607; }
-.polysemy .meaning::before { background: var(--wash); color: var(--green); }
-.homonym .meaning::before { background: #fbe9da; color: #9b4607; }
+.polysemy li.meaning::before { background: var(--wash); color: var(--green); }
+.homonym li.meaning::before { background: #fbe9da; color: #9b4607; }
 .homonym .hanja-glyph.small { color: #9b4607; }
 .word-title .say { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 4px 12px 4px 14px; border: 1px solid #f0d2b8; border-radius: 20px; background: #fff7ef; color: #9b4607; cursor: pointer; }
 .word-title .say:hover { background: #ffeedd; }
@@ -236,3 +236,5 @@ button.rel-word.linked { color: var(--green); border-color: #a9cbbd; }
 /* 폭을 다 쓰는 긴 보기는 1.08배로 키우면 화면 밖으로 삐져나가므로 살짝만 */
 .choices.long button.right { animation: pop-soft .4s cubic-bezier(.3, 1.6, .5, 1); }
 @keyframes pop-soft { 0% { transform: scale(.98); } 60% { transform: scale(1.01); } 100% { transform: scale(1); } }
+/* 낱말 보기 넷은 화면 폭을 다 채우면 서로 멀어지므로 좁게 모은다(뜻을 고르는 긴 보기는 그대로) */
+.choices:not(.long) { max-width: 560px; }
