@@ -1,5 +1,1 @@
-import ArithmeticCatalog from "./catalog";
-
-export default function ArithmeticPage() {
-  return <ArithmeticCatalog />;
-}
+export { default } from "./catalog-page";

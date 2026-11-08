@@ -6275,8 +6275,8 @@ button.division-option {
   }
 
   .catalog-stage-link {
-    min-width: 34px;
-    min-height: 30px;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6284,7 +6284,7 @@ button.division-option {
     border: 1px solid currentColor;
     border-radius: 999px;
     padding: 4px 10px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 900;
     text-decoration: none;
     cursor: pointer;
@@ -6326,6 +6326,23 @@ button.division-option {
   .catalog-stage-link {
     color: var(--stage-color);
     background: var(--stage-soft);
+  }
+
+  .stage-all {
+    --stage-color: #4d647f;
+    --stage-soft: #f2f6fc;
+  }
+
+  .catalog-stage-link[aria-pressed="true"] {
+    background: var(--stage-color);
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 0 2px var(--stage-color);
+  }
+
+  .catalog-stage-link:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 4px;
   }
 
   .worksheet-catalog {
@@ -6522,7 +6539,7 @@ button.division-option {
       grid-template-columns: minmax(0, 1fr);
       align-items: center;
       gap: 12px;
-      padding: 24px;
+      padding: 24px 0 16px;
     }
 
     .catalog-race-link {
@@ -6541,7 +6558,7 @@ button.division-option {
     }
 
     .catalog-stage-link {
-      min-height: 30px;
+      min-height: 44px;
     }
   }
 }
