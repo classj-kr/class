@@ -1,118 +1,75 @@
+// 교과 단어: 모든 단원의 낱말 목록과 연습 한 판을 실제 브라우저로 끝까지 돌려 본다.
+// node tests/curriculum-vocabulary-browser.cjs
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname, '..');
 const base = '/learning/literacy-numeracy/curriculum-vocabulary/';
-const lessons = require('..' + base + 'word-lessons.js');
-const books = require('..' + base + 'word-bank.js');
-const visualLessons = require('..' + base + 'visual-lessons.js');
-const unitCases = require('..' + base + 'unit-cases.js');
+const books = require('..' + base + 'words-5-2.js');
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.webp': 'image/webp' };
 
-async function verifyUnitCase(page, term, subject, unit) {
-  const [title, records] = unitCases[[term, subject, unit].join('/')];
-  const section = page.locator('.unit-case');
-  assert.equal(await section.locator('h2').textContent(), title);
-  assert.equal(await page.locator('.glossary, .word-list').count(), 0);
-  const taught = new Set();
-  for (const [name, evidence] of records) {
-    const control = section.getByRole('button', { name, exact: true });
-    await control.click();
-    assert.equal(await control.getAttribute('aria-pressed'), 'true');
-    assert.equal(await section.locator('.case-evidence').textContent(), evidence);
-    for (const word of await section.locator('.case-explanation strong').allTextContents()) taught.add(word);
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-  }
-  const expected = books[term][subject].units.find(row => row.id === unit).words.map(([word]) => word);
-  assert.deepEqual([...taught].sort(), expected.sort());
+// 화면에 뜬 문제에서 정답 낱말을 원고로 찾아낸다.
+async function answerOf(page, words) {
+  const meaning = await page.locator('.prompt.meaning').count();
+  const text = (await page.locator('.prompt').textContent()).trim();
+  const hit = words.find(word => meaning ? text === '뜻' + word.mean : word.blanks.some(blank => blank.replace('{}', '').trim() === text));
+  assert.ok(hit, '정답을 찾지 못함: ' + text);
+  return hit.w;
 }
 
 (async () => {
   const browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || 'chrome' });
+  const errors = [];
+  let units = 0;
   try {
-    const page = await browser.newPage({ viewport: { width: 1280, height: 960 } });
-    const errors = [], missing = [];
-    page.on('pageerror', error => errors.push(error.message));
-    await page.route('**/*', async route => {
-      const uri = new URL(route.request().url());
-      const file = path.resolve(root, '.' + decodeURIComponent(uri.pathname) + (uri.pathname.endsWith('/') ? 'index.html' : ''));
-      if (uri.hostname !== 'curriculum.test' || !file.startsWith(root + path.sep) || !fs.existsSync(file)) {
-        missing.push(uri.pathname);
-        return route.fulfill({ status: 404, body: '' });
-      }
-      return route.fulfill({ contentType: mime[path.extname(file)] || 'application/octet-stream', body: fs.readFileSync(file) });
-    });
-    await page.goto('http://curriculum.test' + base + '?term=5-2&subject=과학&unit=2&word=응결');
-    await page.evaluate(() => document.fonts.ready);
-    assert.equal(await page.locator('.visual-lesson > h2').textContent(), '응결');
-    const client = await page.context().newCDPSession(page);
-    await client.send('DOM.enable'); await client.send('CSS.enable');
-    const { root: dom } = await client.send('DOM.getDocument');
-    const fonts = {};
-    for (const selector of ['.visual-lesson > h2', '.word-navigation button', '.detail-part p', '.visual-check h3', '.scene-choices button', '.hanja-glyph']) {
-      const { nodeId } = await client.send('DOM.querySelector', { nodeId: dom.nodeId, selector });
-      fonts[selector] = (await client.send('CSS.getPlatformFontsForNode', { nodeId })).fonts.map(font => font.familyName);
-    }
-    for (const selector of ['.detail-part p', '.visual-check h3', '.scene-choices button']) assert.ok(fonts[selector].some(name => /KoPub|Batang/.test(name)), selector + ': ' + fonts[selector]);
-    for (const selector of ['.visual-lesson > h2', '.word-navigation button']) assert.ok(fonts[selector].some(name => /Malgun|Gothic/i.test(name)), selector + ': ' + fonts[selector]);
-    assert.ok(fonts['.hanja-glyph'].some(name => /Klee/i.test(name)), fonts['.hanja-glyph']);
-    assert.equal(await page.locator('.hanja-glyph').first().evaluate(el => getComputedStyle(el).fontSynthesis), 'none');
-    assert.equal(await page.locator('.filters label, #subject-label').count(), 0);
-    let checkedWords = 0, checkedUnits = 0, checkedLegacy = 0, checkedCases = 0;
     for (const width of [1280, 390]) {
-      await page.setViewportSize({ width, height: 900 });
-      for (const [term, subjects] of Object.entries(lessons)) for (const [subject, units] of Object.entries(subjects)) for (const [unit, words] of Object.entries(units)) {
-        const expected = books[term][subject].units.find(row => row.id === unit).words.map(row => row[0]);
-        assert.deepEqual(Object.keys(words).sort(), expected.sort(), 'New content must cover every word in its unit.');
-        await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit }));
-        await verifyUnitCase(page, term, subject, unit);
-        checkedCases++;
-        assert.equal(await page.locator('.word-navigation button').count(), expected.length);
-        for (const [word, data] of Object.entries(words)) {
-          await page.locator('.word-navigation').getByRole('button', { name: word, exact: true }).click();
-          assert.equal(await page.locator('.visual-lesson > h2').textContent(), word);
-          assert.equal(new URL(page.url()).searchParams.get('word'), word);
-          assert.equal(await page.locator('.glossary, .scene-image, .scene-details summary').count(), 0);
-          assert.equal(await page.locator('.scene-details').isVisible(), true);
-          assert.ok(await page.locator('.scene-details p').count() >= 4, word);
-          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, word + ' overflow at ' + width);
-          const wrong = data.check.options.find(option => option !== data.check.answer);
-          await page.locator('.scene-choices').getByRole('button', { name: wrong, exact: true }).click();
-          assert.equal(await page.locator('.visual-feedback').textContent(), data.check.feedback[wrong]);
-          await page.locator('.scene-choices').getByRole('button', { name: data.check.answer, exact: true }).click();
-          assert.equal(await page.locator('.visual-feedback').textContent(), data.check.feedback[data.check.answer]);
-          checkedWords++;
+      const page = await browser.newPage({ viewport: { width, height: 900 } });
+      page.on('pageerror', error => errors.push(error.message));
+      await page.route('**/*', route => {
+        const uri = new URL(route.request().url());
+        const file = path.resolve(root, '.' + decodeURIComponent(uri.pathname) + (uri.pathname.endsWith('/') ? 'index.html' : ''));
+        if (uri.hostname !== 'curriculum.test' || !file.startsWith(root + path.sep) || !fs.existsSync(file)) return route.fulfill({ status: 404, body: '' });
+        return route.fulfill({ contentType: mime[path.extname(file)] || 'application/octet-stream', body: fs.readFileSync(file) });
+      });
+      for (const [term, subjects] of Object.entries(books)) for (const [subject, book] of Object.entries(subjects)) for (const unit of book.units) {
+        await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit: unit.id }));
+        assert.equal(await page.locator('.word-card').count(), unit.words.length, unit.title);
+        assert.deepEqual(await page.locator('.word-card h3').allTextContents(), unit.words.map(word => word.w));
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, unit.title + ' 가로 넘침 ' + width);
+
+        await page.locator('.words-view .start').click();
+        assert.equal(new URL(page.url()).searchParams.get('mode'), 'practice');
+        let first = true, asked = 0;
+        while (await page.locator('.question').count()) {
+          const answer = await answerOf(page, unit.words);
+          const choices = page.locator('.choices button');
+          const names = await choices.allTextContents();
+          assert.equal(new Set(names).size, names.length, '보기 겹침');
+          assert.ok(names.includes(answer));
+          if (first) {
+            // 첫 문제는 일부러 틀려서 같은 낱말이 다시 나오는지 본다.
+            await choices.filter({ hasNotText: answer }).first().click();
+            assert.equal(await page.locator('.choices button.wrong').count(), 1);
+            first = false;
+          }
+          await page.locator('.choices button', { hasText: new RegExp('^' + answer + '$') }).click();
+          assert.equal(await page.locator('.choices button.right').textContent(), answer);
+          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, unit.title + ' 문제 넘침 ' + width);
+          await page.locator('.next').click();
+          asked++;
+          assert.ok(asked <= unit.words.length + 1, '문제가 끝나지 않음');
         }
-        await page.locator('.word-paging button').first().click();
-        assert.equal(await page.locator('.word-navigation button[aria-pressed="true"]').count(), 1);
-        checkedUnits++;
+        assert.equal(asked, unit.words.length + 1);
+        assert.equal(await page.locator('.finish .score').textContent(), `처음에 맞힌 문제 ${unit.words.length - 1} / ${unit.words.length}`);
+        assert.equal(await page.locator('.finish .word-card').count(), 1);
+        units++;
       }
-      for (const [term, subjects] of Object.entries(visualLessons)) for (const [subject, units] of Object.entries(subjects)) for (const [unit, activities] of Object.entries(units)) {
-        if (lessons[term]?.[subject]?.[unit]) continue;
-        await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit }));
-        await verifyUnitCase(page, term, subject, unit);
-        checkedCases++;
-        for (let index = 0; index < activities.length; index++) {
-          const { check } = activities[index];
-          const section = page.locator('.visual-lesson').nth(index);
-          assert.equal(await section.locator('.visual-check h3').textContent(), check.question);
-          assert.equal(await section.locator('.scene-choices button').count(), 3);
-          const wrong = check.options.find(option => option !== check.answer);
-          await section.locator('.scene-choices').getByRole('button', { name: wrong, exact: true }).click();
-          assert.equal(await section.locator('.visual-feedback').textContent(), check.feedback[wrong]);
-          await section.locator('.scene-choices').getByRole('button', { name: check.answer, exact: true }).click();
-          assert.equal(await section.locator('.visual-feedback').textContent(), check.feedback[check.answer]);
-          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-          checkedLegacy++;
-        }
-      }
+      await page.close();
     }
-    const body = fs.readFileSync(path.join(root, base, 'visual-lessons.js'), 'utf8') + fs.readFileSync(path.join(root, base, 'app.js'), 'utf8');
-    for (const phrase of ['뜻과 쓰임 자세히 보기', '물어볼 한 가지', '다른 곳에서도 찾아보기', '함께 구별하기', '같은 이야기를 무엇으로 읽을까?', '두 책의 이야기는 같아요. 무엇이 바뀌었을까요?']) assert.ok(!body.includes(phrase), phrase);
     assert.deepEqual(errors, []);
-    assert.deepEqual(missing, []);
-    assert.equal(checkedCases, Object.keys(unitCases).length * 2);
-    console.log(JSON.stringify({ caseChecks: checkedCases, wordChecks: checkedWords, unitChecks: checkedUnits, legacyChecks: checkedLegacy, fonts, errors }, null, 2));
-  } finally { await browser.close(); }
-})().catch(error => { console.error(error); process.exitCode = 1; });
+    console.log(`교과 단어: 단원 ${units / 2}개를 두 너비에서 확인`);
+  } finally {
+    await browser.close();
+  }
+})().catch(error => { console.error(error); process.exit(1); });
