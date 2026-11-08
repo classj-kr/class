@@ -13,12 +13,16 @@
         s.min * s.denominator,
     );
   function render(s) {
+    const mobile = matchMedia("(max-width:600px)").matches,
+      fontSize = mobile ? 30 : 20,
+      display = (n) => s.mode === "fraction" && n % s.denominator !== 0
+        ? `${n}/${s.denominator}` : C.label(n, s);
     U.value("mode", s.mode);
     U.value("range", `${s.min},${s.max}`);
     U.value("denominator", s.denominator);
     $("denominator").hidden = s.mode !== "fraction";
-    U.value("a", C.label(s.a, s));
-    U.value("b", C.label(s.b, s));
+    U.value("a", display(s.a));
+    U.value("b", display(s.b));
     U.pressed("labels", s.labels);
     $("repeat").disabled = !s.jumps.length;
     $("clear-jumps").disabled = !s.jumps.length;
@@ -32,12 +36,10 @@
         'stroke="#668472" stroke-width="2.5" marker-end="url(#arrow)"',
       );
     const total = (s.max - s.min) * s.denominator,
-      minor = Math.max(1, Math.ceil(total / 80)),
-      labelEvery = Math.max(
-        1,
-        Math.ceil(total / (matchMedia("(max-width:600px)").matches ? 8 : 16)),
-      );
-    for (let i = 0; i <= total; i += minor) {
+      labelLimit = mobile ? 8 : 16,
+      labelEvery = total <= labelLimit ? 1 :
+        s.denominator * Math.max(1, Math.ceil((s.max - s.min) / labelLimit));
+    for (let i = 0; i <= total; i++) {
       const n = s.min * s.denominator + i,
         px = x(n, s),
         whole = n % s.denominator === 0;
@@ -45,11 +47,11 @@
         px,
         320 - (whole ? 12 : 7),
         px,
-        332,
+        320 + (whole ? 12 : 7),
         'stroke="#668472" stroke-width="1.5"',
       );
       if (s.labels && (i % labelEvery === 0 || i === total))
-        svg += U.text(px, 362, C.label(n, s), 'class="number" font-size="20"');
+        svg += U.mathText(px, 365, display(n), 'class="tick-label"', fontSize);
     }
     s.jumps.forEach((j, i) => {
       const a = x(j.from, s),
@@ -57,43 +59,44 @@
         height = 45 + (i % 3) * 27;
       svg += `<path d="M${a} 310 Q${(a + b) / 2} ${310 - height * 2} ${b} 310" fill="none" stroke="${M.colors[i % 6]}" stroke-width="3" marker-end="url(#arrow)"/>`;
       if (s.labels)
-        svg += U.text(
+        svg += U.mathText(
           (a + b) / 2,
-          303 - height,
-          `${j.to >= j.from ? "+" : ""}${C.label(j.to - j.from, s)}`,
-          'class="number" font-size="18"',
+          276 - height,
+          `${j.to >= j.from ? "+" : ""}${display(j.to - j.from)}`,
+          '', fontSize,
         );
     });
     for (const [key, color, y] of [
-      ["a", M.colors[0], 405],
-      ["b", M.colors[1], 445],
+      ["a", M.colors[0], 415],
+      ["b", M.colors[1], 470],
     ]) {
       const px = x(s[key], s);
       svg +=
         U.line(
           px,
-          320,
+          390,
           px,
-          y - 14,
+          y - 24,
           `stroke="${color}" stroke-width="1.5" stroke-dasharray="4 4"`,
         ) +
         `<circle cx="${px}" cy="320" r="${matchMedia("(max-width:600px)").matches ? 20 : selected === key ? 13 : 10}" fill="${color}" stroke="#fffefa" stroke-width="3"/>` +
-        U.text(
+        U.mathText(
           px,
           y,
-          `${key.toUpperCase()}${s.labels ? " = " + C.label(s[key], s) : ""}`,
-          `style="fill:${color}" class="number"`,
+          `${key.toUpperCase()}${s.labels ? " = " + display(s[key]) : ""}`,
+          `style="fill:${color};color:${color}"`, fontSize,
         );
     }
     $("stage").innerHTML = svg;
-    $("result").textContent = s.labels
-      ? `${C.label(s.a, s)} ${s.b >= s.a ? "+" : "−"} ${C.label(Math.abs(s.b - s.a), s)} = ${C.label(s.b, s)}`
+    $("result").innerHTML = s.labels
+      ? U.mathHTML(`${display(s.a)} ${s.b >= s.a ? "+" : "−"} ${display(Math.abs(s.b - s.a))} = ${display(s.b)}`)
       : "";
   }
   const app = U.app({
     name: "number-line",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { C.changeMode(s, s.mode); },
     render,
   });
   U.bind("mode", "change", () =>
@@ -159,10 +162,10 @@
   U.pointer($("stage"), {
     start(p) {
       const s = app.state;
-      if (Math.abs(p.y - 320) > 100) return false;
+      if (p.y < 270 || p.y > 520) return false;
       const da = Math.abs(p.x - x(s.a, s)),
         db = Math.abs(p.x - x(s.b, s));
-      selected =
+      selected = p.y > 390 ? (p.y < 445 ? "a" : "b") :
         da === db ? (selected === "a" ? "b" : "a") : da < db ? "a" : "b";
       app.begin();
       app.preview((s) => (s[selected] = at(p, s)));

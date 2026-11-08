@@ -54,7 +54,7 @@
               v = M.circlePoint(0, 0, 171, a);
             if (a === 0 || a === 180) {
               t.y = -10;
-              v.y = -27;
+              v.y = 18;
             }
             svg +=
               U.text(t.x, t.y, a, 'class="number" style="font-size:15px"') +
@@ -92,8 +92,9 @@
         }
         svg += U.text(597, 69, "cm", 'style="font-size:15px"');
       }
-      svg +=
-        '<rect x="-28" y="29" width="56" height="22" rx="9" fill="#fffefa" stroke="#769b88"/><path d="M-13 37h26m-26 6h26" stroke="#769b88"/></g>';
+      const gripX = s.mode === "ruler" ? 300 : 0,
+        gripY = s.mode === "ruler" ? 57 : 29;
+      svg += `<g transform="translate(${gripX} ${gripY})"><rect x="-28" width="56" height="22" rx="9" fill="#fffefa" stroke="#769b88"/><path d="M-13 8h26m-26 6h26" stroke="#769b88"/></g></g>`;
     }
     pts.forEach(
       (p, i) =>
@@ -110,6 +111,7 @@
     name: "geometry-tools",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { const mode = s.mode; Object.assign(s, M.copy(C.initial), {mode}); if (mode === "ruler") { s.center.x = 230; s.tool.x = 230; } },
     render,
   });
   U.bind("mode", "change", () =>
@@ -198,7 +200,7 @@
             );
             s.base = Math.round(a);
           } else if (d.index === 1) s.base = Math.round(a);
-          else s.angle = Math.round(M.clamp(M.mod(a - s.base, 360), 0, 180));
+          else s.angle = Math.round(M.clamp(s.angle + M.mod(a - s.base - s.angle + 180, 360) - 180, 0, 180));
         }
       });
     },

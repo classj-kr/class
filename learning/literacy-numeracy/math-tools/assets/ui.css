@@ -2,6 +2,9 @@
   font-family: ToolMath;
   src: url("fonts/STIXTwoMath-Regular.woff2") format("woff2");
   font-display: swap;
+  ascent-override: 76.2%;
+  descent-override: 23.8%;
+  line-gap-override: 25%;
 }
 :root {
   color-scheme: light;
@@ -95,7 +98,8 @@ button.icon {
   white-space: nowrap;
 }
 .math {
-  font-family: ToolMath, "Cambria Math", serif;
+  font-family: "ClassJ Math Units", ToolMath, "Cambria Math", serif;
+  line-height: 1.3;
 }
 .toolbar {
   display: flex;
@@ -149,7 +153,7 @@ button.icon {
   dominant-baseline: middle;
 }
 .stage text.number {
-  font-family: ToolMath, "Cambria Math", serif;
+  font-family: "ClassJ Math Units", ToolMath, "Cambria Math", serif;
 }
 .stage .grid {
   stroke: #dce2d7;
@@ -361,3 +365,26 @@ button.icon {
 .stage {
   overflow: hidden;
 }
+
+/* Upright one-storey g, selected from the same STIX math font. */
+@font-face {
+  font-family: "ClassJ Math Units";
+  src: url("fonts/ClassJMathUnits.woff2") format("woff2");
+  unicode-range: U+0067;
+  font-display: swap;
+  ascent-override: 76.2%;
+  descent-override: 23.8%;
+  line-gap-override: 25%;
+}
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.15;
+  font-size: .88em;
+  margin: 0 .15em;
+}
+.fraction > span { padding: .05em .18em; }
+.fraction > span + span { border-top: 1px solid currentColor; }

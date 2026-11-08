@@ -55,6 +55,7 @@
     name: "solid-nets",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { const shape = s.shape; Object.assign(s, M.copy(C.initial), {shape}); },
     render,
   });
   C.NETS.forEach((_, i) => $("net").append(new Option(`전개도 ${i + 1}`, i)));
@@ -62,6 +63,8 @@
     app.commit((s) => {
       s.shape = $("shape").value;
       s.fold = 1;
+      s.yaw = C.initial.yaw;
+      s.pitch = C.initial.pitch;
     }),
   );
   U.bind("net", "change", () =>

@@ -140,6 +140,7 @@
     name: "measure-lab",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { if (s.mode === "mass") { s.left = M.copy(C.initial.left); s.right = M.copy(C.initial.right); } else { s.water = M.copy(C.initial.water); s.capacity = C.initial.capacity; s.amount = C.initial.amount; } },
     render,
   });
   U.bind("mode", "change", () => app.commit((s) => (s.mode = $("mode").value)));

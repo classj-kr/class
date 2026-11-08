@@ -93,6 +93,7 @@
     name: "area-lab",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { const shape = s.shape; Object.assign(s, M.copy(C.initial), {shape}); },
     render,
     stopped() {
       animating = false;
@@ -101,7 +102,6 @@
   function stop() {
     animating = false;
     app.stop();
-    app.end(false);
   }
   U.bind("shape", "change", () => {
     stop();

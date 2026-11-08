@@ -176,6 +176,117 @@ test("linked clock hands, elapsed time, midnight and canceling playback", async 
   await page.waitForTimeout(120);
   assert.deepEqual(await state("clock"), before);
   await shot(page, "clock");
+  await page.locator("#seconds-hand").click();
+  assert.equal(await page.locator("#second-label").isVisible(), true);
+  await page.locator("#digital-toggle").click();
+  assert.equal(await page.locator("#time-form").isVisible(), false);
+  assert.equal(await page.locator("#digital").textContent(), "");
+});
+
+test("fractions use fraction bars and dense number lines retain every subdivision", async () => {
+  await open("number-line");
+  await page.locator("#mode").selectOption("fraction");
+  assert.equal(await page.locator('#stage .tick-label[aria-label="2/4"]').count(), 1);
+  assert.ok(await page.locator("#result .fraction").count() >= 2);
+  await page.locator("#denominator").selectOption("12");
+  await page.locator("#range").selectOption("0,20");
+  const ticks = await page.locator('#stage > line[y1="308"], #stage > line[y1="313"]').count();
+  assert.equal(ticks, 241);
+  assert.equal(await page.locator('#stage .tick-label[aria-label="20"]').count(), 1);
+  await page.locator("#range").selectOption("-1,1");
+  await change("a", "-1/12");
+  assert.ok(await page.locator("#result .fraction").count() >= 1);
+  await change("a", "");
+  assert.equal(await page.locator("#a").inputValue(), "-1/12");
+});
+
+test("changing controls during an animation retains the new choice and supports undo", async () => {
+  await open("area-lab");
+  await page.locator("#transform").click();
+  await page.waitForTimeout(100);
+  await page.locator("#shape").selectOption("triangle");
+  await saved();
+  assert.equal((await state("area-lab")).shape, "triangle");
+  assert.equal(await page.locator("#progress").inputValue(), "0");
+  await page.locator("#transform").click();
+  await page.waitForTimeout(100);
+  await range("progress", 65);
+  await saved();
+  assert.equal((await state("area-lab")).progress, .65);
+  await page.locator("#undo").click();
+  await saved();
+  assert.notEqual((await state("area-lab")).progress, .65);
+  await open("solid-nets");
+  await page.locator("#unfold").click();
+  await page.waitForTimeout(100);
+  await page.locator("#shape").selectOption("cylinder");
+  await saved();
+  assert.equal((await state("solid-nets")).shape, "cylinder");
+  assert.equal((await state("solid-nets")).fold, 1);
+  await open("measure-lab");
+  await page.locator("#mode").selectOption("volume");
+  await page.locator("#pour-right").click();
+  await page.waitForTimeout(100);
+  await page.locator("#mode").selectOption("mass");
+  await saved();
+  const s = await state("measure-lab");
+  assert.equal(s.mode, "mass");
+  assert.equal(s.water[0] + s.water[1], 2000);
+});
+
+test("protractor handles clamp at both semicircle boundaries without jumping across", async () => {
+  await open("geometry-tools");
+  await page.locator("#show").click();
+  await change("angle", 10);
+  await drag(430+260*Math.cos(Math.PI/18), 340-260*Math.sin(Math.PI/18), 690, 355);
+  await saved();
+  assert.equal((await state("geometry-tools")).angle, 0);
+  await change("angle", 170);
+  await drag(430+260*Math.cos(17*Math.PI/18), 340-260*Math.sin(17*Math.PI/18), 170, 355);
+  await saved();
+  assert.equal((await state("geometry-tools")).angle, 180);
+});
+
+test("reset keeps the chosen activity and preserves work in other scenes", async () => {
+  await open("pattern-blocks");
+  await page.locator('[data-shape="hexagon"]').click();
+  await page.locator("#mode").selectOption("tangram");
+  await page.locator("#selection").selectOption({index:1});
+  await page.locator("#right").click();
+  await page.locator("#reset").click();
+  await saved();
+  const p = await state("pattern-blocks");
+  assert.equal(p.mode,"tangram");
+  assert.equal(p.scenes.pattern.length,1);
+  assert.equal(p.scenes.tangram.length,7);
+  assert.equal(p.scenes.tangram[0].angle,0);
+  assert.equal(await page.locator("#remove").isVisible(),false);
+  await open("data-graphs");
+  await page.locator('[aria-label="항목 1 값"]').fill("12");
+  await page.locator('[aria-label="항목 1 값"]').dispatchEvent("change");
+  await page.locator("#mode").selectOption("line");
+  assert.doesNotMatch(await page.locator("#summary").textContent(),/전체/);
+  await page.locator("#reset").click();
+  await saved();
+  assert.equal((await state("data-graphs")).mode,"line");
+  assert.equal((await state("data-graphs")).categories.rows[0].value,12);
+});
+
+test("spinner pointer agrees with the saved result after switching tools and reloading", async () => {
+  await open("probability");
+  await page.locator("#mode").selectOption("spinner");
+  await page.locator("#ten").click();
+  await page.waitForFunction(() => document.getElementById("total").textContent.startsWith("10번"));
+  await saved();
+  const transform = await page.locator("#stage > g").getAttribute("transform");
+  await page.locator("#mode").selectOption("dice");
+  await page.locator("#mode").selectOption("spinner");
+  assert.equal(await page.locator("#stage > g").getAttribute("transform"),transform);
+  await saved();
+  await page.reload(); await ready(page);
+  assert.equal(await page.locator("#stage > g").getAttribute("transform"),transform);
+  await page.locator("#theory").click();
+  assert.equal(await page.locator("#frequency .fraction").count(),4);
 });
 test("protractor and ruler measure actual model geometry and reject invalid ranges", async () => {
   await open("geometry-tools");
