@@ -6,7 +6,7 @@
     window.__schoolChatLoaded = true;
 
     const REJECT_TEXT = {
-        TOO_FAST: "천천히 보내 주세요.", MUTED: "잠시 채팅이 막혀 있어요.", EMPTY: "",
+        TOO_FAST: "천천히 보내 주세요.", EMPTY: "",
         NO_DATABASE: "지금은 채팅을 쓸 수 없어요.", NOT_MEMBER: "이 방에 들어가 있지 않아요.", NO_CHANNEL: "없는 방이에요.", ERROR: "보내지 못했어요."
     };
     const MAX_SHOWN = 200;
@@ -148,15 +148,6 @@
                 render();
             });
             tools.append(keep, remove);
-            if (message.role !== "teacher") {
-                const mute = el("button", "", "10분 막기");
-                mute.type = "button";
-                mute.addEventListener("click", async () => {
-                    const result = await api("teacher/mute", "POST", { userId: message.userId, minutes: 10 });
-                    setStatus(result.ok ? `${message.name} 학생을 10분 막았어요.` : "처리하지 못했어요.");
-                });
-                tools.appendChild(mute);
-            }
             row.appendChild(tools);
         }
         return row;

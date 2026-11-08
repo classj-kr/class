@@ -107,15 +107,6 @@ async function main() {
   assert.equal(afterDelete.deleted, true);
   assert.deepEqual(events[0].event, { type: 'deleted', channel: 'school', id: first.message.id });
 
-  // 8. 막기: 막힌 학생은 못 보내고, 교사는 영향 없고, 풀면 다시 보낸다.
-  assert.equal((await call('/teacher/mute', { as: 9, method: 'POST', body: { userId: '1', minutes: 10 } })).status, 200);
-  await wait(1600);
-  assert.equal((await chat.post(kim, '막힌 뒤')).reason, 'MUTED');
-  assert.equal((await chat.post(teacher, '교사는 가능')).ok, true);
-  await call('/teacher/unmute', { as: 9, method: 'POST', body: { userId: '1' } });
-  await wait(1600);
-  assert.equal((await chat.post(kim, '푼 뒤')).ok, true);
-
   // 9. 3일 정리: 보존한 줄만 남는다.
   const keep = (await chat.post(await identityOf(2), '증거 글')).message;
   await call(`/teacher/messages/${keep.id}/preserve`, { as: 9, method: 'POST', body: { preserved: true } });
@@ -171,12 +162,6 @@ async function main() {
   const roomLog = (await (await call(`/teacher/messages?channel=${encodeURIComponent(roomId)}`, { as: 9 })).json()).messages.map((m) => m.text);
   assert.deepEqual(roomLog, ['방 글', '들어간 뒤']);
   assert.equal((await call('/teacher/rooms', { as: 1 })).status, 403);
-
-  // 16. 막힘은 학교 전체방과 방 모두에 적용된다.
-  await call('/teacher/mute', { as: 9, method: 'POST', body: { userId: '2', minutes: 10 } });
-  await wait(1600);
-  assert.equal((await chat.post(lee, '막힌 뒤 방', roomId)).reason, 'MUTED');
-  await call('/teacher/unmute', { as: 9, method: 'POST', body: { userId: '2' } });
 
   // 17. 방 도배가 학교 전체방 기록을 밀어내지 못한다(방마다 상한이 따로).
   await db.query(`INSERT INTO school_chat_messages (school_key, channel, user_id, sender_name, body)

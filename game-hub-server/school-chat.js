@@ -72,7 +72,6 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
       `DELETE FROM school_chat_rooms r WHERE NOT EXISTS (
          SELECT 1 FROM school_chat_members m WHERE m.school_key = r.school_key AND m.code = r.code)`
     );
-    await pool.query('DELETE FROM school_chat_mutes WHERE until < NOW()');
   }
 
   function publicMessage(row) {
@@ -122,14 +121,6 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
     return true;
   }
 
-  async function isMuted(schoolKey, userId) {
-    const result = await pool.query(
-      'SELECT 1 FROM school_chat_mutes WHERE school_key = $1 AND user_id = $2 AND until > NOW()',
-      [schoolKey, userId]
-    );
-    return result.rowCount > 0;
-  }
-
   // 학교 전체방은 누구나, 학생이 만든 방은 들어간 사람만.
   async function isMember(schoolKey, userId, channel) {
     if (channel === SCHOOL) return true;
@@ -158,7 +149,6 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
     const text = normalizeText(rawText);
     if (!text) return { ok: false, reason: 'EMPTY' };
     if (!await isMember(identity.schoolKey, identity.userId, channel)) return { ok: false, reason: 'NOT_MEMBER' };
-    if (identity.role !== 'teacher' && await isMuted(identity.schoolKey, identity.userId)) return { ok: false, reason: 'MUTED' };
     if (!allowedNow(identity.userId)) return { ok: false, reason: 'TOO_FAST' };
     const result = await pool.query(
       `INSERT INTO school_chat_messages (school_key, channel, user_id, sender_name, sender_role, grade, class_number, body)
@@ -323,29 +313,6 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
     );
     if (!result.rows[0]) fail(404, 'MESSAGE_NOT_FOUND', '메시지를 찾지 못했습니다.');
     emit(schoolKey, { type: 'deleted', channel: result.rows[0].channel, id: String(req.params.id) });
-    res.json({ ok: true });
-  }));
-
-  // 막으면 학교 전체방과 학생이 만든 방 모두에서 막힌다(막힘은 학교 단위로 저장).
-  router.post('/teacher/mute', asyncRoute(async (req, res) => {
-    requireDatabase();
-    const { user, schoolKey } = await teacherSchool(req);
-    const targetId = String(req.body?.userId || '');
-    const minutes = Math.max(1, Math.min(60 * 24 * 7, Number(req.body?.minutes) || 10));
-    if (!targetId) fail(400, 'USER_REQUIRED', '막을 학생을 고르세요.');
-    await pool.query(
-      `INSERT INTO school_chat_mutes (school_key, user_id, until, muted_by)
-       VALUES ($1, $2, NOW() + make_interval(mins => $3::int), $4)
-       ON CONFLICT (school_key, user_id) DO UPDATE SET until = EXCLUDED.until, muted_by = EXCLUDED.muted_by`,
-      [schoolKey, targetId, Math.round(minutes), String(user.id)]
-    );
-    res.json({ ok: true, minutes });
-  }));
-
-  router.post('/teacher/unmute', asyncRoute(async (req, res) => {
-    requireDatabase();
-    const { schoolKey } = await teacherSchool(req);
-    await pool.query('DELETE FROM school_chat_mutes WHERE school_key = $1 AND user_id = $2', [schoolKey, String(req.body?.userId || '')]);
     res.json({ ok: true });
   }));
 
