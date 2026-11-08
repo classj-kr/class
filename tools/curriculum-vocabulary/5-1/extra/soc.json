@@ -1,0 +1,700 @@
+{
+  "1-1": {
+    "지형": {
+      "en": "landform",
+      "explain": [
+        "쉬운 뜻: 영어로 landform, 땅의 생김새입니다. 산처럼 솟았는지, 들처럼 판판한지를 말합니다.",
+        "산, 들, 강, 바닷가, 섬은 모두 지형의 한 가지입니다.",
+        "생활 속 예: 산골 마을과 바닷가 마을은 지형이 달라 집 둘레 모습이 다릅니다."
+      ],
+      "beats": [
+        "높은 산 아래로 강이 굽이굽이 흐릅니다.",
+        "강을 따라 넓은 들이 펼쳐지고, 끝에는 바다가 보입니다.",
+        "산, 강, 들, 바다처럼 땅이 생긴 모양이 지형입니다."
+      ],
+      "img": "A wide bird's-eye landscape of the Korean countryside: tall green mountains on the left, a river winding down from them through a broad flat plain of rice fields in the middle, and a blue sea with a sandy coast on the right edge. Small villages sit along the river. No people, no text.",
+      "imgKo": "왼쪽의 높은 산에서 강이 흘러나와 가운데 넓은 논 들판을 굽이굽이 지나 오른쪽 바다에 닿는 모습을 하늘에서 내려다본다. 강가에 작은 마을들이 있다."
+    },
+    "산지": {
+      "explain": [
+        "쉬운 뜻: 산들이 여럿 모여 있는 넓은 땅입니다. 산 하나가 아니라 산이 많은 곳입니다.",
+        "우리나라 땅의 약 70 %가 산지입니다.",
+        "생활 속 예: 비행기에서 내려다보면 초록 산이 끝없이 이어진 산지가 보입니다."
+      ],
+      "beats": [
+        "높고 낮은 산봉우리가 겹겹이 이어져 있습니다.",
+        "산비탈에는 배추밭과 목장이 군데군데 보입니다.",
+        "산들이 모여 이루어진 넓은 땅이 산지입니다."
+      ],
+      "img": "A wide view of layered green mountains in Gangwon, Korea, with many high and low peaks overlapping into the distance. On a gentle high slope in the foreground there is a cabbage field and a small pasture with cows. Morning mist sits in the valleys. No people, no text.",
+      "imgKo": "높고 낮은 초록 산봉우리가 겹겹이 멀리까지 이어지고, 앞쪽 높은 산비탈에 배추밭과 소가 있는 작은 목장이 있다. 골짜기에 아침 안개가 깔려 있다."
+    },
+    "산맥": {
+      "en": "mountain range",
+      "explain": [
+        "쉬운 뜻: 영어로 mountain range입니다. 산봉우리가 줄넘기 줄처럼 길게 이어진 것입니다.",
+        "낱말 나누기: 산 + 맥(줄기), 산이 이어진 줄기입니다.",
+        "높은 산맥은 넘기 어려워 옛날에는 지역을 나누는 경계가 되었습니다."
+      ]
+    },
+    "해발 고도": {
+      "explain": [
+        "쉬운 뜻: 키를 발바닥부터 재듯, 땅의 높이를 바닷물 높이부터 잰 것입니다.",
+        "낱말 나누기: 해발(바닷물 높이에서부터) + 고도(높이)입니다.",
+        "생활 속 예: 바닷가 모래밭은 해발 고도가 0 m에 가깝습니다."
+      ]
+    },
+    "하천": {
+      "explain": [
+        "쉬운 뜻: 크고 작은 강과 시냇물을 모두 이르는 말입니다.",
+        "빗물이 모여 시냇물이 되고, 시냇물이 모여 큰 강이 됩니다.",
+        "생활 속 예: 서울을 흐르는 한강과 청계천은 모두 하천입니다."
+      ],
+      "beats": [
+        "산골짜기에서 졸졸 흐르던 시냇물이 아래로 내려옵니다.",
+        "다른 물줄기와 만나 점점 넓은 강이 되어 마을 옆을 흐릅니다.",
+        "빗물과 샘물이 모여 흐르는 크고 작은 물줄기가 하천입니다."
+      ],
+      "img": "A landscape seen from a hillside: a small clear stream trickles down a rocky mountain valley in the upper part, joins other streams, and becomes a wide river flowing past a town with a riverside walking path and bicycle lane in the lower part. A few people walk and ride bikes along the path. No text.",
+      "imgKo": "산골짜기의 작은 시냇물이 아래로 흘러 다른 물줄기와 만나고, 아래쪽에서 넓은 강이 되어 산책로와 자전거 길이 있는 마을 옆을 흐른다."
+    },
+    "발원지": {
+      "explain": [
+        "쉬운 뜻: 강이 태어나는 곳입니다. 큰 강도 처음에는 작은 샘에서 시작합니다.",
+        "낱말 나누기: 발원(물줄기가 처음 생김) + 지(곳)입니다.",
+        "발원지의 물은 손바닥으로 떠 마실 만큼 작고 맑은 샘인 때가 많습니다."
+      ]
+    },
+    "하류": {
+      "explain": [
+        "쉬운 뜻: 미끄럼틀을 다 내려온 것처럼, 강물이 내려와 바다 가까이 닿은 쪽입니다.",
+        "하류에는 강물이 실어 온 흙과 모래가 쌓여 넓은 들이 생깁니다.",
+        "생활 속 예: 강 하류에 가면 강폭이 넓어 건너편이 멀리 보입니다."
+      ]
+    },
+    "평야": {
+      "en": "plain",
+      "explain": [
+        "쉬운 뜻: 영어로 plain입니다. 산 없이 낮고 판판한 땅이 넓게 펼쳐진 곳입니다.",
+        "평야는 물을 대기 쉬워 논농사를 많이 짓습니다.",
+        "생활 속 예: 기차 창밖으로 끝없는 논이 보이면 평야를 지나는 중입니다."
+      ],
+      "beats": [
+        "산 하나 없이 판판한 땅이 멀리까지 펼쳐져 있습니다.",
+        "가을이 되자 누런 벼가 끝없이 익어 하늘과 땅이 맞닿아 보입니다.",
+        "낮고 판판한 땅이 넓게 이어진 곳이 평야입니다."
+      ],
+      "img": "An enormous flat plain of golden ripe rice fields in autumn stretching to the horizon, where the land meets the sky in one straight line. Straight irrigation canals and narrow farm roads divide the fields into neat rectangles, and a small red combine harvester works far away. No mountains, no text.",
+      "imgKo": "누렇게 익은 논이 끝없이 펼쳐져 지평선에서 하늘과 맞닿고, 곧은 물길과 농로가 논을 네모나게 나눈다. 멀리 작은 콤바인이 벼를 벤다."
+    },
+    "해안": {
+      "en": "coast",
+      "explain": [
+        "쉬운 뜻: 영어로 coast입니다. 바다와 땅이 만나는 바닷가입니다.",
+        "해안에는 모래사장도 있고, 갯벌이나 바위 절벽도 있습니다.",
+        "생활 속 예: 여름 방학에 해수욕장에 갔다면 해안에 다녀온 것입니다."
+      ],
+      "beats": [
+        "모래사장에서는 아이들이 물놀이를 합니다.",
+        "옆쪽 갯벌에서는 사람들이 조개를 캐고, 바다에는 고깃배가 떠 있습니다.",
+        "바다와 육지가 맞닿은 곳이 해안입니다."
+      ],
+      "img": "A sunny Korean seaside seen from a low hill: on the left, children play in the waves on a sandy beach; in the middle, people in boots dig for clams on a wet mudflat; on the right, rocky cliffs with a small fishing harbor where fishing boats sail out to the sea. No text.",
+      "imgKo": "왼쪽 모래사장에서 아이들이 물놀이를 하고, 가운데 갯벌에서 사람들이 조개를 캐며, 오른쪽 바위 절벽 옆 작은 항구에서 고깃배가 바다로 나간다."
+    },
+    "해안선": {
+      "en": "coastline",
+      "explain": [
+        "쉬운 뜻: 영어로 coastline입니다. 바다와 땅의 경계를 따라 그은 줄입니다.",
+        "낱말 나누기: 해안(바닷가) + 선(줄), 바닷가를 따라 이은 줄입니다.",
+        "생활 속 예: 지도에서 우리나라 둘레를 연필로 따라 그리면 그 줄이 해안선입니다."
+      ]
+    },
+    "반도": {
+      "en": "peninsula",
+      "explain": [
+        "쉬운 뜻: 영어로 peninsula입니다. '반쯤 섬'이라는 뜻으로, 한쪽만 땅에 붙은 곳입니다.",
+        "반도는 땅으로도 바다로도 다른 곳과 오가기 좋습니다.",
+        "생활 속 예: 지도에서 바다 쪽으로 혀처럼 쑥 내민 땅이 반도입니다."
+      ]
+    },
+    "다도해": {
+      "explain": [
+        "쉬운 뜻: 섬이 아주 많은 바다입니다. 바다 위에 섬이 콩을 뿌린 듯 흩어져 있습니다.",
+        "남해안 바다에서는 어느 쪽을 보아도 섬이 보입니다.",
+        "생활 속 예: 다도해의 섬마을 아이들은 배를 타고 학교에 가기도 합니다."
+      ],
+      "beats": [
+        "높은 곳에 올라 남쪽 바다를 내려다봅니다.",
+        "크고 작은 초록 섬들이 바다 위에 셀 수 없이 흩어져 있습니다.",
+        "섬이 많이 흩어져 있는 바다가 다도해입니다."
+      ],
+      "img": "From a hilltop viewpoint on the southern coast of Korea, HARIN (a girl with a yellow headband and mint cardigan) looks out over a calm blue sea dotted with dozens of green islands of many sizes, scattered all the way to the horizon. A small white ferry sails between the islands. No text.",
+      "imgKo": "남해안 언덕 전망대에서 하린이 크고 작은 초록 섬 수십 개가 수평선까지 흩어진 잔잔한 바다를 내려다보고, 섬 사이로 작은 흰 배가 지나간다."
+    },
+    "갯벌": {
+      "en": "mudflat",
+      "explain": [
+        "쉬운 뜻: 영어로 mudflat입니다. 바닷물이 빠지면 나타나는 넓은 진흙 땅입니다.",
+        "갯벌 속에는 게, 조개, 낙지 같은 생물이 많이 삽니다.",
+        "생활 속 예: 갯벌에 발을 디디면 발이 진흙 속으로 푹푹 빠집니다."
+      ],
+      "beats": [
+        "바닷물이 빠지자 넓고 판판한 진흙 땅이 드러났습니다.",
+        "아이들이 장화를 신고 호미로 진흙을 파서 조개와 게를 찾습니다.",
+        "밀물 때 잠기고 썰물 때 드러나는 진흙 땅이 갯벌입니다."
+      ],
+      "img": "A wide gray mudflat on the west coast of Korea at low tide, shining wet under the sun, with the sea far away at the horizon. DOYUN (a boy with round glasses and a navy hoodie) and HARIN wear rubber boots and dig in the mud with small hoes, finding clams, while tiny crabs peek out of holes. No text.",
+      "imgKo": "썰물 때 드러난 넓은 회색 갯벌에서 장화 신은 도윤과 하린이 호미로 진흙을 파 조개를 찾고, 작은 게들이 구멍 밖으로 고개를 내민다. 바다는 멀리 물러나 있다."
+    },
+    "밀물": {
+      "explain": [
+        "쉬운 뜻: 바닷물이 땅 쪽으로 밀려 들어오는 것입니다. '밀려오는 물'로 기억하면 쉽습니다.",
+        "밀물과 썰물은 하루에 두 번쯤씩 번갈아 찾아옵니다.",
+        "생활 속 예: 갯벌 체험은 밀물 시각 전에 꼭 마치고 나와야 안전합니다."
+      ]
+    },
+    "썰물": {
+      "explain": [
+        "쉬운 뜻: 바닷물이 바다 쪽으로 빠져나가 물이 얕아지는 것입니다.",
+        "서해안은 썰물 때 바닷물이 아주 멀리 물러나 갯벌이 넓게 드러납니다.",
+        "생활 속 예: 썰물 때 바닷가 바위틈 물웅덩이에는 작은 물고기가 남아 있습니다."
+      ]
+    },
+    "어업": {
+      "en": "fishing",
+      "explain": [
+        "쉬운 뜻: 영어로 fishing입니다. 바다나 강에서 물고기를 잡는 일을 직업으로 하는 것입니다.",
+        "동해, 서해, 남해는 바다가 달라 잡히는 물고기도 다릅니다.",
+        "생활 속 예: 식탁에 오른 고등어와 오징어는 어업으로 잡은 것입니다."
+      ],
+      "beats": [
+        "새벽 바다 위로 고깃배들이 불을 밝히고 나갑니다.",
+        "어부들이 바다에 던졌던 그물을 힘껏 끌어 올리자 물고기가 가득합니다.",
+        "바다나 강에서 물고기를 잡는 일이 어업입니다."
+      ],
+      "img": "At dawn on the East Sea, a small fishing boat rocks on the waves. Three fishermen in yellow raincoats and rubber gloves pull up a big net full of silver fish onto the deck, while other boats with lights head out in the distance. No text.",
+      "imgKo": "새벽 동해 위 작은 고깃배에서 노란 비옷을 입은 어부 세 사람이 은빛 물고기가 가득한 그물을 갑판으로 끌어 올리고, 멀리 불 밝힌 배들이 나간다."
+    },
+    "양식업": {
+      "explain": [
+        "쉬운 뜻: 바다에 '물고기 농장'을 만들어 물고기나 조개, 김을 기르는 일입니다.",
+        "낱말 나누기: 양식(길러서 불림) + 업(일), 길러서 거두는 일입니다.",
+        "생활 속 예: 겨울에 먹는 굴과 김은 대부분 양식업으로 기른 것입니다."
+      ],
+      "beats": [
+        "잔잔한 바다 위에 하얀 부표가 줄지어 떠 있습니다.",
+        "어민들이 배 위에서 줄을 끌어 올리자 굴이 주렁주렁 매달려 나옵니다.",
+        "물고기나 조개, 김 등을 길러서 거두는 일이 양식업입니다."
+      ],
+      "img": "A calm bay on Korea's southern coast filled with long rows of white floating buoys. On a small boat beside the buoys, two farmers in waterproof overalls pull up a long rope thickly covered with clusters of oysters. Green islands surround the bay. No text.",
+      "imgKo": "섬으로 둘러싸인 잔잔한 남해안 바다에 하얀 부표가 줄지어 떠 있고, 작은 배 위에서 방수복을 입은 두 사람이 굴이 주렁주렁 붙은 긴 줄을 끌어 올린다."
+    },
+    "염전": {
+      "explain": [
+        "쉬운 뜻: 바닷물로 소금을 만드는 '소금 밭'입니다.",
+        "햇볕과 바람에 물이 날아가면 바닥에 하얀 소금만 남습니다.",
+        "생활 속 예: 김장할 때 배추를 절이는 굵은 소금은 염전에서 만듭니다."
+      ],
+      "beats": [
+        "바닷가에 얕은 네모 칸이 바둑판처럼 이어져 있습니다.",
+        "햇볕에 바닷물이 마르자 일꾼이 고무래로 하얀 소금을 긁어모읍니다.",
+        "바닷물을 햇볕과 바람에 말려 소금을 얻는 곳이 염전입니다."
+      ],
+      "img": "A sunny salt farm on Korea's west coast: shallow rectangular pans of seawater arranged like a checkerboard reflect the blue sky, with small wooden salt storage sheds beside them. A worker in a straw hat pushes a long wooden rake to gather piles of white salt crystals. No text.",
+      "imgKo": "바둑판처럼 이어진 얕은 네모 칸에 하늘이 비치고 옆에 나무 소금 창고가 있다. 밀짚모자를 쓴 일꾼이 긴 나무 고무래로 하얀 소금을 긁어모은다."
+    }
+  },
+  "1-2": {
+    "영토": {
+      "en": "territory",
+      "explain": [
+        "쉬운 뜻: 영어로 territory입니다. '여기는 우리나라'라고 말할 수 있는 땅입니다.",
+        "영토가 있어야 국민이 집을 짓고 농사지으며 살아갈 수 있습니다.",
+        "생활 속 예: 우리나라 지도를 색칠할 때 칠하는 땅 부분이 모두 영토입니다."
+      ]
+    },
+    "영해": {
+      "explain": [
+        "쉬운 뜻: 우리 땅 둘레를 띠처럼 빙 감싼, 우리나라 몫의 바다입니다.",
+        "섬이 있으면 그 섬 둘레의 바다도 영해가 됩니다.",
+        "생활 속 예: 해양 경찰 배가 돌며 지키는 우리 바다가 영해입니다."
+      ]
+    },
+    "영공": {
+      "en": "airspace",
+      "explain": [
+        "쉬운 뜻: 영어로 airspace입니다. 우리 영토와 영해 위의 하늘입니다.",
+        "땅과 바다가 정해지면 그 위 하늘이 영공이 됩니다.",
+        "생활 속 예: 해외여행 비행기가 우리 하늘을 벗어나면 다른 나라 영공으로 들어갑니다."
+      ]
+    },
+    "영역": {
+      "explain": [
+        "쉬운 뜻: 우리 집 마당과 그 위 하늘까지 우리 것이듯, 나라가 다스리는 땅·바다·하늘 전부입니다.",
+        "땅은 영토, 바다는 영해, 하늘은 영공이라고 부릅니다.",
+        "생활 속 예: 육군, 해군, 공군이 나누어 우리 영역을 지킵니다."
+      ]
+    },
+    "주권": {
+      "explain": [
+        "쉬운 뜻: 나라의 일을 다른 나라 눈치 보지 않고 스스로 정하는 힘입니다.",
+        "일제 강점기에는 주권을 빼앗겨 우리 일을 우리가 정하지 못했습니다.",
+        "생활 속 예: 우리 반 규칙을 옆 반이 아니라 우리 반이 정하는 것과 비슷합니다."
+      ]
+    },
+    "화산섬": {
+      "en": "volcanic island",
+      "explain": [
+        "쉬운 뜻: 영어로 volcanic island입니다. 바다 밑 화산에서 나온 용암이 쌓여 생긴 섬입니다.",
+        "낱말 나누기: 화산(불을 뿜는 산) + 섬입니다.",
+        "생활 속 예: 제주도의 구멍 숭숭 뚫린 검은 돌은 용암이 식어 굳은 것입니다."
+      ],
+      "beats": [
+        "바다 한가운데 검은 바위섬이 우뚝 솟아 있습니다.",
+        "가까이서 보니 바위에 작은 구멍이 숭숭 뚫려 있습니다.",
+        "바다 밑 화산에서 나온 용암이 굳고 쌓여 생긴 섬이 화산섬입니다."
+      ],
+      "img": "A rugged island of dark gray and black volcanic rock rising steeply out of a deep blue sea, with layered cliffs and a few patches of green grass. In the foreground, a close-up of a black basalt boulder full of small round holes on the shore. Seagulls fly around. No people, no text.",
+      "imgKo": "짙은 바다 위로 검은 화산암 바위섬이 가파르게 솟아 있고, 앞쪽 바닷가에는 작은 구멍이 숭숭 뚫린 검은 현무암 바위가 크게 보인다."
+    },
+    "천연기념물": {
+      "explain": [
+        "쉬운 뜻: 자연 가운데 아주 귀해서 나라가 법으로 '꼭 지키자' 하고 정한 것입니다.",
+        "천연기념물은 함부로 잡거나 꺾거나 가져가면 벌을 받습니다.",
+        "생활 속 예: 물가에 사는 수달과 밤에 우는 수리부엉이도 천연기념물입니다."
+      ],
+      "beats": [
+        "바위섬 절벽에 괭이갈매기 떼가 둥지를 틀고 있습니다.",
+        "섬을 찾은 사람들은 멀리서 바라보기만 하고 돌 하나도 가져가지 않습니다.",
+        "귀하여 나라가 법으로 지키는 동물, 식물, 땅이 천연기념물입니다."
+      ],
+      "img": "A rocky island cliff covered with hundreds of black-tailed gulls sitting on nests among small wildflowers and grass. On a dock below, a group of visitors including HARIN and DOYUN watch quietly from behind a rope barrier, taking photos without touching anything. No text.",
+      "imgKo": "바위섬 절벽에 괭이갈매기 수백 마리가 들꽃 사이 둥지에 앉아 있고, 아래 선착장에서 하린과 도윤을 비롯한 사람들이 줄 뒤에서 조용히 바라보며 사진만 찍는다."
+    },
+    "해양 심층수": {
+      "explain": [
+        "쉬운 뜻: 바닷속 아주 깊은 곳에 숨어 있는, 차갑고 깨끗한 물입니다.",
+        "낱말 나누기: 해양(바다) + 심층(깊은 층) + 수(물), 바다 깊은 층의 물입니다.",
+        "200 m는 아파트 60층 높이보다 더 깊은 곳입니다."
+      ]
+    },
+    "가스 하이드레이트": {
+      "explain": [
+        "쉬운 뜻: 깊은 바다 밑 차가운 곳에 얼음 덩어리처럼 갇혀 있는 가스입니다.",
+        "가스가 들어 있어서 얼음처럼 보여도 불을 붙이면 탑니다.",
+        "생활 속 예: 가스레인지에 쓰는 가스와 비슷한 가스가 얼음 속에 갇혀 있습니다."
+      ],
+      "beats": [
+        "연구원이 깊은 바다 밑에서 꺼낸 하얀 덩어리를 들고 있습니다.",
+        "얼음처럼 보이는 덩어리에 불을 붙이자 불꽃이 활활 타오릅니다.",
+        "깊은 바다 밑에 갇혀 있는, 불에 타는 얼음 같은 자원이 가스 하이드레이트입니다."
+      ],
+      "img": "On the deck of a research ship at sea, a scientist in a white lab coat, safety glasses and thick gloves holds a lump of white, ice-like material in a metal tray. The lump is burning with bright flames on its surface while it still looks like ice. Other researchers watch with interest. No text.",
+      "imgKo": "바다 위 연구선 갑판에서 흰 가운과 장갑을 낀 연구원이 쇠 쟁반에 얼음 같은 하얀 덩어리를 들고 있고, 그 덩어리 위로 불꽃이 활활 타오른다. 다른 연구원들이 지켜본다."
+    },
+    "우산국": {
+      "explain": [
+        "쉬운 뜻: 아주 옛날 울릉도를 중심으로 둘레 섬들을 다스리던 작은 섬나라입니다.",
+        "512년에 신라 장군 이사부가 우산국을 신라 땅으로 만들었습니다.",
+        "지금으로부터 1,500년쯤 전의 일입니다."
+      ]
+    },
+    "우산도": {
+      "explain": [
+        "쉬운 뜻: 독도의 옛 이름입니다. 사람도 어릴 때 이름이 있듯 섬 이름도 바뀌었습니다.",
+        "옛 지도에 우산도가 그려져 있으면 그때 독도를 알고 있었다는 증거가 됩니다."
+      ]
+    },
+    "이사부": {
+      "explain": [
+        "쉬운 뜻: 바다 건너 우산국을 신라 땅으로 만든 신라의 장군입니다.",
+        "싸우기 전에 나무로 깎은 사자로 겁을 주어 항복을 받아 냈습니다.",
+        "512년, 신라 지증왕 때의 일입니다."
+      ],
+      "beats": [
+        "신라의 배 여러 척이 넓은 동해를 건너 섬으로 다가갑니다.",
+        "배 앞머리마다 나무로 깎은 커다란 사자가 무섭게 서 있습니다.",
+        "섬사람들은 놀라 항복했고, 이렇게 우산국을 신라 땅으로 만든 장군이 이사부입니다."
+      ],
+      "img": "Several ancient Silla wooden ships with square sails cross a wide blue sea toward a green mountainous island in the year 512. On the bow of each ship stands a large, fierce carved wooden lion statue. A general in Silla-era armor stands at the front of the lead ship, seen from behind. On the island shore, small figures of islanders look surprised. No fighting, no blood, no text.",
+      "imgKo": "네모난 돛을 단 신라의 나무 배 여러 척이 푸른 바다를 건너 초록 산섬으로 다가가고, 배 앞머리마다 무섭게 깎은 나무 사자가 서 있다. 맨 앞 배에 장군이 뒷모습으로 서 있고, 섬 바닷가 사람들이 놀라 바라본다."
+    },
+    "안용복": {
+      "explain": [
+        "쉬운 뜻: 조선 사람으로, 일본까지 건너가 울릉도와 독도가 조선 땅이라고 당당히 밝혔습니다.",
+        "나라의 관리가 아니었는데도 스스로 나서서 우리 땅을 지켰습니다.",
+        "처음 일본에 간 것은 1693년의 일입니다."
+      ],
+      "beats": [
+        "조선의 작은 고깃배가 울릉도 앞바다에서 일본 고깃배들과 마주쳤습니다.",
+        "한 사람이 뱃머리에 서서 손을 들고 이곳은 조선 바다라고 당당히 말합니다.",
+        "울릉도와 독도가 조선 땅이라고 일본에 가서 밝힌 사람이 안용복입니다."
+      ],
+      "img": "Late 17th century, near a green mountainous island in the East Sea: a small Joseon fishing boat faces several Japanese fishing boats of the same era. A Joseon man in a white hanbok top and headband stands at the bow, raising one arm and speaking firmly; he is seen from the side and his face is not detailed. The other fishermen look on. No weapons, no text.",
+      "imgKo": "17세기 말 울릉도 앞바다에서 조선의 작은 고깃배가 일본 고깃배 몇 척과 마주하고, 흰 저고리에 머리띠를 한 조선 사람이 뱃머리에서 한 팔을 들고 당당히 말한다. 얼굴은 옆모습으로 자세히 그리지 않는다."
+    },
+    "세종실록지리지": {
+      "explain": [
+        "쉬운 뜻: 세종 대왕 때 나라 곳곳의 고을 모습을 적어 둔 기록입니다.",
+        "낱말 나누기: 세종실록(세종 때 일을 적은 역사책) + 지리지(땅의 모습을 적은 글)입니다.",
+        "1454년에 완성되어 지금부터 570년쯤 전의 기록입니다."
+      ]
+    },
+    "팔도총도": {
+      "explain": [
+        "쉬운 뜻: 조선 땅 전체를 한 장에 그린 옛 지도입니다.",
+        "낱말 나누기: 팔도(조선의 여덟 도) + 총도(모두 담은 그림)입니다.",
+        "1531년에 만들어졌고, 독도가 우산도라는 이름으로 그려져 있습니다."
+      ]
+    },
+    "삼국접양지도": {
+      "explain": [
+        "쉬운 뜻: 일본 사람이 그린 옛 지도로, 독도를 조선 땅과 같은 색으로 칠해 두었습니다.",
+        "낱말 나누기: 삼국(세 나라) + 접양(땅이 맞닿음) + 지도입니다.",
+        "다른 나라 사람이 만든 지도라서 독도가 우리 땅이라는 좋은 증거가 됩니다."
+      ]
+    },
+    "태정관 지령": {
+      "explain": [
+        "쉬운 뜻: 일본 정부 스스로 '독도는 일본 땅이 아니다'라고 적어 둔 옛 문서입니다.",
+        "낱말 나누기: 태정관(그때 일본 정부의 가장 높은 기관) + 지령(내린 지시)입니다.",
+        "생활 속 예: 친구가 쓴 쪽지에 '그건 네 것'이라고 적혀 있으면 좋은 증거가 됩니다."
+      ]
+    },
+    "칙령": {
+      "explain": [
+        "쉬운 뜻: 임금이나 황제가 '이렇게 하라'고 내린 명령입니다.",
+        "1900년 고종 황제는 칙령으로 울릉군이 독도까지 다스리게 했습니다.",
+        "그날을 기념해 10월 25일은 독도의 날입니다."
+      ],
+      "beats": [
+        "대한 제국의 궁궐 마당에 관리들이 줄지어 서 있습니다.",
+        "높은 관리가 두루마리를 펼쳐 황제의 명령을 큰 소리로 읽습니다.",
+        "임금이나 황제가 공식으로 내린 명령이 칙령입니다."
+      ],
+      "img": "Around 1900 in the courtyard of a Korean Empire palace, rows of officials in dark official robes and black hats stand in line. A senior official on the stone steps unrolls a long scroll with both hands and reads it aloud. The emperor is not shown; only a yellow canopy at the top of the steps. No readable text.",
+      "imgKo": "1900년 무렵 대한 제국 궁궐 마당에 관복을 입은 관리들이 줄지어 서 있고, 돌계단 위 높은 관리가 긴 두루마리를 두 손으로 펼쳐 읽는다. 황제는 보이지 않고 계단 위 노란 차일만 보인다."
+    },
+    "독도 의용 수비대": {
+      "explain": [
+        "쉬운 뜻: 나라가 시키지 않았는데도 울릉도 청년들이 스스로 모여 독도를 지킨 모임입니다.",
+        "낱말 나누기: 의용(옳은 일에 스스로 나섬) + 수비대(지키는 무리)입니다.",
+        "그들이 독도 바위에 새긴 글자는 지금도 남아 있습니다."
+      ],
+      "beats": [
+        "동해 끝 바위섬에 청년들이 작은 천막을 치고 머뭅니다.",
+        "한 사람은 망원경으로 바다를 살피고, 다른 사람들은 배에서 짐을 나릅니다.",
+        "나라가 시키지 않았는데도 스스로 모여 독도를 지킨 모임이 독도 의용 수비대입니다."
+      ],
+      "img": "In the 1950s, on a steep rocky island in the East Sea, a group of young Korean men in worn work clothes and caps have set up a small canvas tent between the rocks. One looks out to sea through binoculars while others carry supplies up from a small wooden boat. Strong waves and seagulls around. No weapons, no flags, no text.",
+      "imgKo": "1950년대 동해의 가파른 바위섬에서 낡은 작업복 차림의 청년들이 바위 사이에 작은 천막을 쳤다. 한 사람은 망원경으로 바다를 살피고, 다른 이들은 작은 나무배에서 짐을 나른다."
+    },
+    "선착장": {
+      "en": "pier",
+      "explain": [
+        "쉬운 뜻: 영어로 pier입니다. 배를 위한 버스 정류장 같은 곳입니다.",
+        "생활 속 예: 섬에 가는 배표를 사고 배를 기다리는 곳도 선착장입니다."
+      ],
+      "beats": [
+        "바다로 길게 뻗은 콘크리트 길 끝에 여객선이 다가와 멈춥니다.",
+        "밧줄로 배를 묶자 사람들이 짐을 들고 차례로 내립니다.",
+        "배가 닿아서 사람이 타고 내리는 곳이 선착장입니다."
+      ],
+      "img": "A small island harbor on a clear day: a white passenger ferry has just docked at a concrete pier that stretches into the blue sea. A crew member ties a thick rope to a bollard while passengers with backpacks and bags walk down the ramp onto the pier. Rocky cliffs behind. No text.",
+      "imgKo": "맑은 날 섬 바닷가로 길게 뻗은 콘크리트 선착장에 흰 여객선이 닿아 있고, 선원이 굵은 밧줄을 묶는 사이 배낭 멘 사람들이 차례로 내린다."
+    }
+  },
+  "2-1": {
+    "기후": {
+      "en": "climate",
+      "explain": [
+        "쉬운 뜻: 영어로 climate입니다. 한 곳의 날씨를 여러 해 동안 모아 본 평소 모습입니다.",
+        "기후는 기온, 비와 눈의 양, 바람을 보고 알아봅니다.",
+        "생활 속 예: 우리나라 집에는 사계절에 맞춰 여름옷과 겨울옷이 다 있습니다."
+      ]
+    },
+    "대기": {
+      "en": "atmosphere",
+      "explain": [
+        "쉬운 뜻: 영어로 atmosphere입니다. 지구를 투명한 옷처럼 감싸고 있는 공기입니다.",
+        "우리가 숨 쉬는 공기도, 구름과 바람도 모두 대기 속에 있습니다.",
+        "생활 속 예: 날씨 뉴스의 '대기가 건조합니다'는 공기가 메말랐다는 말입니다."
+      ]
+    },
+    "기온": {
+      "en": "temperature",
+      "explain": [
+        "쉬운 뜻: 영어로 temperature입니다. 공기가 얼마나 덥거나 추운지를 숫자로 나타낸 것입니다.",
+        "기온은 ℃라는 단위를 붙여 나타냅니다.",
+        "생활 속 예: 기온이 0 ℃ 아래로 내려가면 물웅덩이가 꽁꽁 업니다."
+      ]
+    },
+    "강수량": {
+      "explain": [
+        "쉬운 뜻: 비와 눈이 얼마나 내렸는지 잰 양입니다.",
+        "낱말 나누기: 강수(하늘에서 물이 내림) + 량(양)입니다.",
+        "생활 속 예: 강수량 10 mm는 빈 컵에 빗물이 1 cm 고인 것과 같습니다."
+      ]
+    },
+    "등온선": {
+      "explain": [
+        "쉬운 뜻: 기온이 같은 곳들을 점 잇기 하듯 이어 그린 줄입니다.",
+        "낱말 나누기: 등온(온도가 같음) + 선(줄)입니다.",
+        "1월 등온선을 보면 남쪽일수록, 바닷가일수록 따뜻합니다."
+      ]
+    },
+    "대륙": {
+      "en": "continent",
+      "explain": [
+        "쉬운 뜻: 영어로 continent입니다. 바다로 나뉜, 지구에서 가장 큰 땅덩어리들입니다.",
+        "우리나라 땅은 북쪽으로 아시아 대륙과 이어져 있습니다.",
+        "겨울에는 대륙에서 차갑고 메마른 바람이 불어옵니다."
+      ]
+    },
+    "내륙": {
+      "en": "inland",
+      "explain": [
+        "쉬운 뜻: 영어로 inland입니다. 바닷가에서 땅 안쪽으로 멀리 들어간 곳입니다.",
+        "바닷물은 천천히 데워지고 천천히 식어서 바닷가는 덜 덥고 덜 춥습니다.",
+        "생활 속 예: 대구는 바다에서 먼 내륙이라 여름에 아주 덥습니다."
+      ]
+    },
+    "장마": {
+      "en": "rainy season",
+      "explain": [
+        "쉬운 뜻: 영어로 rainy season입니다. 여름에 비가 여러 날 이어지는 때입니다.",
+        "생활 속 예: 장마철에는 빨래가 잘 마르지 않고 집 안이 눅눅해집니다."
+      ],
+      "beats": [
+        "창밖에 며칠째 굵은 비가 쉬지 않고 내립니다.",
+        "널어 둔 빨래는 마르지 않고, 현관에는 젖은 우산이 줄지어 있습니다.",
+        "여름철에 여러 날 계속 비가 내리는 때가 장마입니다."
+      ],
+      "img": "Inside a Korean apartment on a gray summer day, heavy rain streams down the window. DOYUN sits by the window with his chin on his hand, looking out bored. Laundry hangs damp on a drying rack, and several wet umbrellas stand by the front door. No text.",
+      "imgKo": "흐린 여름날 아파트 창에 굵은 빗줄기가 흐르고, 도윤이 턱을 괴고 지루하게 밖을 본다. 빨래 건조대의 옷은 축축하고 현관에 젖은 우산 여러 개가 서 있다."
+    },
+    "집중 호우": {
+      "en": "downpour",
+      "explain": [
+        "쉬운 뜻: 영어로 downpour입니다. 짧은 시간에 좁은 곳에 비가 양동이로 붓듯 쏟아지는 것입니다.",
+        "낱말 나누기: 집중(한곳에 모임) + 호우(아주 많이 오는 비)입니다.",
+        "생활 속 예: 옆 동네는 맑은데 우리 동네에만 비가 퍼붓기도 합니다."
+      ],
+      "beats": [
+        "검은 구름 아래 굵은 빗줄기가 양동이로 붓듯 쏟아집니다.",
+        "한 시간 만에 길이 냇물처럼 변하고 차바퀴가 물에 잠깁니다.",
+        "짧은 시간에 좁은 곳에 많은 비가 쏟아지는 것이 집중 호우입니다."
+      ],
+      "img": "A city street under a very dark cloud during a sudden, extremely heavy rainstorm. Thick sheets of rain pour down, the road has turned into a brown stream reaching the middle of car wheels, and people with umbrellas stand on higher steps waiting. In the far background, the sky is bright where it is not raining. No text.",
+      "imgKo": "아주 검은 구름 아래 도시 길에 굵은 비가 쏟아져 길이 흙탕물 냇물처럼 변하고 자동차 바퀴가 반쯤 잠긴다. 우산 쓴 사람들이 높은 계단에서 기다리고, 먼 하늘은 맑게 밝다."
+    },
+    "열대야": {
+      "explain": [
+        "쉬운 뜻: 밤이 되어도 더위가 식지 않아 잠들기 힘든 밤입니다.",
+        "낱말 나누기: 열대(아주 더운 곳) + 야(밤), 열대처럼 더운 밤입니다.",
+        "생활 속 예: 열대야에는 한밤중에도 강가 공원에 나와 바람을 쐬는 사람이 많습니다."
+      ],
+      "beats": [
+        "한밤중인데도 방 안이 후끈합니다.",
+        "하린이 땀을 흘리며 이불을 걷어차고 선풍기 앞에서 뒤척입니다.",
+        "밤에도 기온이 25 ℃ 아래로 내려가지 않아 무더운 것이 열대야입니다."
+      ],
+      "img": "Late at night in a child's bedroom lit by moonlight through the window, HARIN lies on her bed sweating, having kicked off her blanket, with her hair stuck to her forehead. An electric fan blows toward her. Outside, city lights and a full moon. No text.",
+      "imgKo": "달빛 비치는 한밤 방에서 하린이 이불을 걷어찬 채 땀에 젖어 뒤척이고, 선풍기가 하린 쪽으로 바람을 보낸다. 창밖에 도시 불빛과 둥근 달이 보인다."
+    },
+    "꽃샘추위": {
+      "explain": [
+        "쉬운 뜻: 봄이 온 줄 알았는데 갑자기 다시 찾아오는 추위입니다.",
+        "낱말 나누기: 꽃 + 샘(시샘) + 추위, 꽃이 피는 것을 시샘하는 추위입니다.",
+        "생활 속 예: 3월에 봄옷을 입고 나갔다가 찬 바람에 덜덜 떠는 날이 있습니다."
+      ],
+      "beats": [
+        "노란 개나리가 활짝 핀 봄 길입니다.",
+        "갑자기 찬 바람이 불자 사람들이 옷깃을 여미고 몸을 웅크립니다.",
+        "봄에 꽃이 필 무렵 갑자기 찾아오는 추위가 꽃샘추위입니다."
+      ],
+      "img": "A spring sidewalk lined with blooming yellow forsythia and white magnolia trees. A cold gust of wind blows petals sideways, and HARIN and DOYUN in light spring jackets hunch their shoulders, hold their collars tight and shiver. No text.",
+      "imgKo": "노란 개나리와 하얀 목련이 핀 봄 길에 찬 바람이 꽃잎을 날리고, 얇은 봄옷 차림의 하린과 도윤이 옷깃을 여미며 몸을 웅크리고 떤다."
+    },
+    "서리": {
+      "en": "frost",
+      "explain": [
+        "쉬운 뜻: 영어로 frost입니다. 추운 새벽에 풀잎이나 유리창에 하얗게 얼어붙은 얼음 알갱이입니다.",
+        "서리는 눈처럼 하늘에서 내리는 것이 아니라 물체 겉에서 생깁니다.",
+        "생활 속 예: 겨울 아침 자동차 유리창이 하얗게 뿌연 것이 서리입니다."
+      ],
+      "beats": [
+        "늦가을 새벽, 밭의 배춧잎과 풀잎이 하얗게 덮여 있습니다.",
+        "가까이서 보니 잎 가장자리에 작은 얼음 알갱이가 반짝입니다.",
+        "공기 속 수증기가 차가운 물체에 하얗게 얼어붙은 것이 서리입니다."
+      ],
+      "img": "A late autumn dawn in a vegetable field: cabbage leaves and grass are covered with a thin white layer of frost that sparkles in the first sunlight. In the foreground, a close-up of a single leaf edge lined with tiny ice crystals. No people, no text.",
+      "imgKo": "늦가을 새벽 밭의 배춧잎과 풀이 하얀 서리로 덮여 첫 햇살에 반짝이고, 앞쪽에 잎 가장자리의 작은 얼음 알갱이가 크게 보인다."
+    },
+    "황사": {
+      "explain": [
+        "쉬운 뜻: 먼 사막의 누런 모래 먼지가 바람을 타고 우리나라까지 날아오는 것입니다.",
+        "황사는 주로 봄에 많이 찾아옵니다.",
+        "생활 속 예: 황사가 지나간 뒤 자동차 위를 손가락으로 쓸면 누런 먼지가 묻어납니다."
+      ],
+      "beats": [
+        "하늘이 누렇게 흐려져 멀리 있는 건물이 잘 보이지 않습니다.",
+        "사람들이 마스크를 쓰고 걷고, 자동차 위에는 고운 먼지가 쌓였습니다.",
+        "사막의 누런 흙먼지가 바람을 타고 날아오는 것이 황사입니다."
+      ],
+      "img": "A spring city street under a hazy yellowish-brown sky; tall buildings in the distance fade into the dust. People walk wearing face masks, and a parked dark car has a thin layer of fine yellow dust on its hood where a finger has drawn a line. No text.",
+      "imgKo": "누렇게 흐린 봄 하늘 아래 먼 건물들이 먼지 속에 흐릿하고, 마스크 쓴 사람들이 걷는다. 세워 둔 검은 차 위에 쌓인 고운 누런 먼지에 손가락으로 그은 줄이 보인다."
+    },
+    "자연재해": {
+      "en": "natural disaster",
+      "explain": [
+        "쉬운 뜻: 영어로 natural disaster입니다. 자연 때문에 사람이 다치거나 집과 논밭이 망가지는 일입니다.",
+        "낱말 나누기: 자연 + 재해(재난으로 입는 피해)입니다.",
+        "우리나라는 봄에 가뭄, 여름에 홍수와 태풍, 겨울에 폭설이 잦습니다."
+      ]
+    },
+    "가뭄": {
+      "en": "drought",
+      "explain": [
+        "쉬운 뜻: 영어로 drought입니다. 비가 오랫동안 오지 않아 물이 모자란 것입니다.",
+        "가뭄이 길어지면 농작물이 말라 죽고 마실 물도 모자랍니다.",
+        "생활 속 예: 가뭄 때는 양치할 때 컵을 써서 물을 아낍니다."
+      ],
+      "beats": [
+        "저수지 바닥이 드러나 쩍쩍 갈라져 있습니다.",
+        "논의 벼가 누렇게 말라 가고, 농부가 하늘을 올려다봅니다.",
+        "오랫동안 비가 오지 않아 물이 모자란 것이 가뭄입니다."
+      ],
+      "img": "A dried-up reservoir in the Korean countryside: the exposed bottom is cracked into large dry plates, and a small boat lies stranded on the cracked ground. Beside it, a rice paddy with wilting yellowish seedlings; an elderly farmer in a straw hat looks up at a cloudless, scorching sky. No text.",
+      "imgKo": "물이 말라 바닥이 쩍쩍 갈라진 저수지에 작은 배가 덩그러니 놓여 있고, 옆 논의 벼가 누렇게 시든다. 밀짚모자 쓴 할아버지 농부가 구름 한 점 없는 하늘을 올려다본다."
+    },
+    "폭염": {
+      "en": "heat wave",
+      "explain": [
+        "쉬운 뜻: 영어로 heat wave입니다. 숨이 턱 막힐 만큼 심한 더위입니다.",
+        "폭염에는 한낮에 바깥 활동을 줄이고 물을 자주 마셔야 합니다.",
+        "생활 속 예: 횡단보도 앞 그늘막은 폭염에 햇볕을 피하라고 세운 것입니다."
+      ],
+      "beats": [
+        "한낮 도로 위로 뜨거운 공기가 아지랑이처럼 일렁입니다.",
+        "사람들이 횡단보도 앞 그늘막 아래로 모여 땀을 닦습니다.",
+        "하루 가장 높은 기온이 33 ℃ 이상으로 오르는 심한 더위가 폭염입니다."
+      ],
+      "img": "A blazing hot summer noon at a city crosswalk: heat shimmer rises from the asphalt and the sun glares in a white sky. A group of people, including an elderly woman with a hand fan and a student, crowd under a large green shade umbrella next to the crosswalk, wiping sweat and drinking water. No text.",
+      "imgKo": "뜨거운 한낮 횡단보도 앞, 아스팔트 위로 아지랑이가 일렁이고, 사람들이 큰 초록 그늘막 아래 모여 부채질하며 땀을 닦고 물을 마신다."
+    },
+    "폭설": {
+      "explain": [
+        "쉬운 뜻: 눈이 한꺼번에 엄청나게 많이 쏟아지는 것입니다.",
+        "쌓인 눈이 무거워 비닐하우스나 축사 지붕이 무너지기도 합니다.",
+        "생활 속 예: 폭설이 내린 날에는 무릎까지 눈이 쌓여 학교가 쉬기도 합니다."
+      ],
+      "beats": [
+        "밤사이 쏟아진 눈이 무릎 높이까지 쌓였습니다.",
+        "자동차는 눈에 파묻혀 꼼짝 못 하고, 사람들이 삽으로 길을 냅니다.",
+        "눈이 한꺼번에 아주 많이 내리는 것이 폭설입니다."
+      ],
+      "img": "A small mountain village street the morning after a huge snowfall: snow is piled up to knee height everywhere, cars are buried up to their windows, and the roof of a greenhouse in the background has collapsed under the weight. Villagers in thick coats shovel a narrow path. No text.",
+      "imgKo": "큰 눈이 내린 다음 날 아침 산골 마을 길에 눈이 무릎까지 쌓여 자동차가 창문까지 묻히고, 뒤쪽 비닐하우스 지붕이 눈 무게에 내려앉았다. 두꺼운 옷차림의 주민들이 삽으로 좁은 길을 낸다."
+    },
+    "한파": {
+      "en": "cold wave",
+      "explain": [
+        "쉬운 뜻: 영어로 cold wave입니다. 겨울에 기온이 뚝 떨어져 꽁꽁 얼어붙는 추위입니다.",
+        "한자 뜻: 寒(찰 한)과 波(물결 파), 찬 공기가 물결처럼 밀려온다는 뜻입니다.",
+        "생활 속 예: 한파에는 모자와 장갑, 목도리로 몸을 꽁꽁 감쌉니다."
+      ],
+      "beats": [
+        "매서운 찬 바람이 부는 겨울 아침입니다.",
+        "사람들이 목도리와 모자로 얼굴을 감싸고 하얀 입김을 내뿜으며 걷습니다.",
+        "겨울에 기온이 갑자기 크게 떨어져 찾아오는 매서운 추위가 한파입니다."
+      ],
+      "img": "A freezing winter morning on a city street: the river beside the street is frozen solid, icicles hang from a bus stop roof, and people walk hunched over, wrapped in thick padded coats, scarves, hats and gloves, breathing out clouds of white breath. DOYUN pulls his scarf up over his nose. No text.",
+      "imgKo": "꽁꽁 언 강 옆 겨울 아침 거리에서 버스 정류장 지붕에 고드름이 달리고, 두꺼운 패딩과 목도리, 모자로 감싼 사람들이 하얀 입김을 뿜으며 웅크리고 걷는다. 도윤이 목도리를 코까지 올린다."
+    },
+    "이상 기후": {
+      "explain": [
+        "쉬운 뜻: 평소 그 계절과 전혀 다른, 이상한 날씨가 나타나는 것입니다.",
+        "낱말 나누기: 이상(보통과 다름) + 기후입니다.",
+        "생활 속 예: 한겨울에 반팔을 입을 만큼 따뜻한 날이 이어지는 것입니다."
+      ],
+      "beats": [
+        "5월, 연두색 새잎이 돋은 산에 사람들이 오릅니다.",
+        "그런데 하얀 눈이 쏟아져 새잎과 등산로가 눈에 덮였습니다.",
+        "계절과 맞지 않게 보통 때를 크게 벗어난 날씨가 이상 기후입니다."
+      ],
+      "img": "A mountain trail in mid-May: trees have fresh light-green spring leaves and pink azaleas are blooming, but everything is unexpectedly covered with thick white snow, and snow is still falling. A few hikers in light spring clothes stop in surprise and look around. No text.",
+      "imgKo": "5월 중순, 연두색 새잎과 분홍 진달래가 핀 산길이 뜻밖에 두꺼운 하얀 눈에 덮였고 눈이 계속 내린다. 얇은 봄옷 차림의 등산객들이 놀라 멈춰 서서 둘러본다."
+    },
+    "기상 특보": {
+      "explain": [
+        "쉬운 뜻: 큰비나 태풍 같은 위험이 다가올 때 나라에서 '조심하세요' 하고 알리는 소식입니다.",
+        "낱말 나누기: 기상(날씨) + 특보(특별히 알림)입니다.",
+        "생활 속 예: 휴대 전화에 큰 소리와 함께 오는 재난 문자로도 알 수 있습니다."
+      ]
+    },
+    "주의보": {
+      "explain": [
+        "쉬운 뜻: '피해가 생길 수 있으니 조심하세요' 하고 먼저 알리는 것입니다.",
+        "낱말 나누기: 주의(조심함) + 보(알림), 조심하라는 알림입니다.",
+        "생활 속 예: 호우 주의보가 내리면 우산과 장화를 챙기고 개울가에 가지 않습니다."
+      ]
+    },
+    "경보": {
+      "en": "warning",
+      "explain": [
+        "쉬운 뜻: 영어로 warning입니다. 아주 큰 피해가 올 수 있으니 대비하라는 알림입니다.",
+        "경보가 내리면 학교가 쉬거나 높은 곳으로 대피하기도 합니다.",
+        "생활 속 예: 불이 나면 울리는 화재 경보도 위험을 미리 알리는 소리입니다."
+      ]
+    },
+    "기후변화": {
+      "en": "climate change",
+      "explain": [
+        "쉬운 뜻: 영어로 climate change입니다. 오랫동안 이어진 날씨의 평소 모습이 조금씩 바뀌는 것입니다.",
+        "낱말 나누기: 기후 + 변화(바뀜), 기후가 바뀌는 것입니다.",
+        "생활 속 예: 경상북도에서 주로 기르던 사과를 이제는 더 북쪽에서도 기릅니다."
+      ]
+    },
+    "지구 온난화": {
+      "en": "global warming",
+      "explain": [
+        "쉬운 뜻: 영어로 global warming입니다. 지구 전체가 조금씩 더워지는 것입니다.",
+        "낱말 나누기: 지구 + 온난화(따뜻해짐), 지구가 따뜻해지는 것입니다.",
+        "생활 속 예: 따뜻한 바다에 살던 물고기가 점점 우리 바다로 올라옵니다."
+      ]
+    },
+    "온실가스": {
+      "en": "greenhouse gas",
+      "explain": [
+        "쉬운 뜻: 영어로 greenhouse gas입니다. 지구를 비닐하우스처럼 덮어 열을 가두는 기체입니다.",
+        "낱말 나누기: 온실(따뜻하게 만든 비닐하우스) + 가스(기체)입니다.",
+        "자동차와 공장에서 나오는 이산화 탄소가 대표적인 온실가스입니다."
+      ]
+    },
+    "화석 연료": {
+      "en": "fossil fuel",
+      "explain": [
+        "쉬운 뜻: 영어로 fossil fuel입니다. 아주 옛날 생물이 땅속에서 변해 생긴 땔감입니다.",
+        "낱말 나누기: 화석(옛 생물이 굳은 것) + 연료(태워서 힘을 내는 것)입니다.",
+        "생활 속 예: 석탄, 석유, 천연가스가 모두 화석 연료입니다."
+      ]
+    },
+    "기후 행동": {
+      "en": "climate action",
+      "explain": [
+        "쉬운 뜻: 영어로 climate action입니다. 지구가 더워지는 것을 막으려고 내가 직접 하는 일입니다.",
+        "작은 실천이라도 모두가 함께 하면 온실가스를 많이 줄일 수 있습니다.",
+        "생활 속 예: 빈 교실 불 끄기, 계단 이용하기, 텀블러 쓰기가 기후 행동입니다."
+      ],
+      "beats": [
+        "하린이 아무도 없는 교실을 나서며 불을 끕니다.",
+        "도윤은 텀블러에 물을 받고, 친구들은 자전거를 타고 집에 갑니다.",
+        "지구가 더워지는 것을 막으려고 생활 속에서 직접 실천하는 일이 기후 행동입니다."
+      ],
+      "img": "One wide picture of a school in the afternoon, from left to right: HARIN switches off the lights as she leaves an empty classroom; DOYUN fills his own reusable tumbler at a water fountain in the hallway; outside the school gate, classmates ride bicycles home. Bright afternoon light. No text.",
+      "imgKo": "넓은 그림 왼쪽부터, 하린이 빈 교실을 나서며 불을 끄고, 도윤이 복도 정수기에서 텀블러에 물을 받고, 교문 밖에서 친구들이 자전거를 타고 집에 간다."
+    }
+  }
+}
