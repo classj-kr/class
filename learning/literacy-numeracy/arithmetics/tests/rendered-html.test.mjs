@@ -63,7 +63,7 @@ test("renders the fraction conversion practice product", async () => {
 });
 
 test("renders the learning index and arithmetic catalog in workbook order", async () => {
-  const indexResponse = await render("/");
+  const indexResponse = await render("/?stage=all");
   const indexHtml = await indexResponse.text();
   const indexCss = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.equal(indexResponse.status, 200);
@@ -83,7 +83,7 @@ test("renders the learning index and arithmetic catalog in workbook order", asyn
   assert.match(modeHtml, /순위 모드/);
 
   */
-  const catalogResponse = await render("/arithmetic");
+  const catalogResponse = await render("/arithmetic?stage=all");
   const catalogHtml = await catalogResponse.text();
   const catalogRoutes = [...catalogHtml.matchAll(/href="([^"]+)"[^>]*data-testid="worksheet-choice"/g)]
     .map((match) => match[1].replaceAll("&amp;", "&"));
@@ -401,7 +401,7 @@ test("hides repeated high-school instruction strips and uses one math font stack
 });
 
 test("renders the unified arithmetic catalog and high-school worksheets", async () => {
-  const hubResponse = await render("/arithmetic/high-school");
+  const hubResponse = await render("/arithmetic/high-school?stage=all");
   assert.equal(hubResponse.status, 200);
   const hubHtml = await hubResponse.text();
   assert.equal((hubHtml.match(/data-testid="worksheet-choice"/g) ?? []).length, 176);

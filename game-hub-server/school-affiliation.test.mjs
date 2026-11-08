@@ -57,6 +57,25 @@ test('server sends school context before the page scripts and escapes script del
  assert.ok(html.includes('CLASS_SCHOOL_GRADE="2"'));assert.ok(!html.includes('NAME="</script>'));
 });
 
+test('arithmetic catalog receives the account school, never a client-supplied school header', async()=>{
+ const server=fs.readFileSync(new URL('./server.js',import.meta.url),'utf8');
+ const start=server.indexOf('app.use("/arithmetic", async (req, res, next) => {');
+ const end=server.indexOf('}, proxyToLearningApp(ARITHMETIC_PORT));',start);
+ assert.ok(start>=0&&end>start);
+ const handler=server.slice(start+'app.use("/arithmetic", '.length,end+1);
+ let calls=0;
+ const middleware=new Function('classroomPlatform',`return ${handler};`)({displayNameFor:async()=>{calls++;return {schoolLevel:'middle'};}});
+ for(const path of ['/','/personal','/high-school/']){
+  const req={path,headers:{'x-class-school-level':'high'}};let advanced=false;
+  await middleware(req,{},()=>{advanced=true;});
+  assert.equal(req.headers['x-class-school-level'],'middle');assert.ok(advanced);
+ }
+ const worksheet={path:'/counting-1',headers:{'x-class-school-level':'high'}};
+ await middleware(worksheet,{},()=>{});assert.equal(calls,3);assert.equal(worksheet.headers['x-class-school-level'],undefined);
+ const offline=new Function('classroomPlatform',`return ${handler};`)({displayNameFor:async()=>{throw new Error('offline');}});
+ const req={path:'/',headers:{}};await offline(req,{},()=>{});assert.equal(req.headers['x-class-school-level'],'');
+});
+
 test('teacher timetable default excludes other schools, teachers, years and empty assignments',async()=>{
  const db=new PGlite();try{
   await db.exec(`CREATE TABLE school_master_timetable(school_id int, teacher_user_id int, academic_year int, grade int, subject_name text);

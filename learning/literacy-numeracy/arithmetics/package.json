@@ -13,7 +13,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
-    "test": "npm run typecheck && npm run test:unit && npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run typecheck && npm run test:unit && npm run build && node --test tests/rendered-html.test.mjs tests/catalog-filter.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "test:unit": "node --experimental-strip-types --test tests/*.test.ts",

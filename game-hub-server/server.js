@@ -570,7 +570,15 @@ app.use("/fraction", (req, res) => {
 });
 app.use(["/admin", "/schooladmin", "/arithmetic", "/api/arithmetic-race", "/classtools", "/exams", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote", "/school-election"], classroomPlatform.requireSiteAccess);
 app.use("/learning/class-race", (_req, res) => res.status(410).type('text').send('종료된 활동입니다.'));
-app.use("/arithmetic", proxyToLearningApp(ARITHMETIC_PORT));
+app.use("/arithmetic", async (req, res, next) => {
+  // Resolve the school on the server so the catalog's first render is already filtered.
+  delete req.headers["x-class-school-level"];
+  if (["/", "/personal", "/high-school"].includes(req.path.replace(/\/$/, "") || "/")) {
+    const identity = await classroomPlatform.displayNameFor(req).catch(() => ({}));
+    req.headers["x-class-school-level"] = identity.schoolLevel || "";
+  }
+  next();
+}, proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/room-entry", classroomPlatform.requireSiteAccess, createRoomEntry({
   roomCodes: classroomPlatform.roomCodes, arithmeticPort: ARITHMETIC_PORT, voyagePort: WORLD_VOYAGE_PORT,
