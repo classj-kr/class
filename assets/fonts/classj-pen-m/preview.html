@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>클래스제이 펜 M · 글씨 견본</title>
   <style>
-    @font-face{font-family:ClassJPenM;src:url('./ClassJPenM-Regular.woff2?v=1.800') format('woff2');font-weight:500;font-display:block}
+    @font-face{font-family:ClassJPenM;src:url('./ClassJPenM-Regular.woff2?v=1.900') format('woff2');font-weight:500;font-display:block}
     *{box-sizing:border-box}body{margin:0;background:#f3f2ed;color:#273b34;font:16px/1.6 system-ui,sans-serif}
     main{max-width:1160px;margin:auto;padding:44px 28px}h1{font-size:26px;letter-spacing:-.04em;margin:0 0 8px}
     .intro{color:#647169;margin:0 0 28px}.controls{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
@@ -35,7 +35,7 @@
   </main>
   <script>
     const text=document.getElementById('text'),proof=document.getElementById('proof'),size=document.getElementById('size');
-    const samples={sentence:'나는 나를 믿어요\n학교 친구 연필 책가방\n나무 바다 하늘 꽃 구름',basic:'가나다라마바사아자차카타파하\n아야어여오요우유으이\n까따빠싸짜애얘에예\nㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ',compound:'와 왜 외 워 웨 위 의\n권 괄 괜 괌 괭 귤 확 활 훤\n뺨 쌍 땅 짝 찜 찹 핥 팥\n값 넋 앉 닭 삶 읽 밟 읊',detail:'값 없 노 소 초\n곬 곯 붉 읊 핥\n굽 협 팥 옆\n모 포 파 환 균 귤\n걸 얼 굴 괄 궤 괵\n갗 갛 꽃 숲\n를 어 푸 늘 름 거\n현 협 형 여 푸\n쵸 죠 쿠 괴 귀 궤\n나 마 요 늘 를 쌍\n맑은 하늘 푸른 바다'};
+    const samples={sentence:'나는 나를 믿어요\n학교 친구 연필 책가방\n나무 바다 하늘 꽃 구름',basic:'가나다라마바사아자차카타파하\n아야어여오요우유으이\n까따빠싸짜애얘에예\nㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ',compound:'와 왜 외 워 웨 위 의\n권 괄 괜 괌 괭 귤 확 활 훤\n뺨 쌍 땅 짝 찜 찹 핥 팥\n값 넋 앉 닭 삶 읽 밟 읊',detail:'팥 필 파 포 폰\n갚 숲 옆 같 곁 핥\n값 없 노 소 초\n곬 곯 붉 읊 핥\n굽 협 팥 옆\n모 포 파 환 균 귤\n걸 얼 굴 괄 궤 괵\n갗 갛 꽃 숲\n를 어 푸 늘 름 거\n현 협 형 여 푸\n쵸 죠 쿠 괴 귀 궤\n나 마 요 늘 를 쌍\n맑은 하늘 푸른 바다'};
     const render=()=>{proof.textContent=text.value;proof.style.fontSize=size.value+'px';document.getElementById('sizeValue').value=size.value+'px';};
     text.addEventListener('input',render);size.addEventListener('input',render);
     document.getElementById('sample').addEventListener('change',e=>{text.value=samples[e.target.value];render();});render();
