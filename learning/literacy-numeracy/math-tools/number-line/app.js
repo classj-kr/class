@@ -71,14 +71,11 @@
       ["b", M.colors[1], 470],
     ]) {
       const px = x(s[key], s);
+      // 아래 줄로 내려 쓴 이름표에만 잇는 선을 긋는다(윗줄 이름표는 선 길이가 0이라 점만 남았다).
       svg +=
-        U.line(
-          px,
-          390,
-          px,
-          y - 24,
-          `stroke="${color}" stroke-width="1.5" stroke-dasharray="4 4"`,
-        ) +
+        (y - 24 > 400
+          ? U.line(px, 390, px, y - 24, `stroke="${color}" stroke-width="1.5" stroke-dasharray="4 4"`)
+          : "") +
         `<circle cx="${px}" cy="320" r="${matchMedia("(max-width:600px)").matches ? 20 : selected === key ? 13 : 10}" fill="${color}" stroke="#fffefa" stroke-width="3"/>` +
         U.mathText(
           px,
