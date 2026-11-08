@@ -1,8 +1,9 @@
+/* 영어 낱말은 무난하고 굵은 Andika(아이들 글 읽기용으로 만든 글꼴, OFL)로 쓴다. 손글씨 느낌 Klee One은 너무 얇았다. */
 @font-face {
-    font-family: "Klee One Learning";
-    src: url("../../../assets/fonts/klee-one/KleeOne-SemiBold.ttf") format("truetype");
+    font-family: "Andika Learning";
+    src: url("../../../assets/fonts/andika/Andika-Bold.woff2") format("woff2");
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     font-display: swap;
 }
 
@@ -254,7 +255,7 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 .word-sheet tbody th { position: sticky; left: 0; z-index: 1; background: #f0f2ef; color: #68766f; font-weight: 700; }
 .word-sheet tbody tr:nth-child(even) td { background: rgba(241,246,242,.62); }
 .sheet-level { color: var(--green); font-weight: 850; white-space: nowrap; }
-.sheet-word { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--navy); font: 700 17px/1.35 "Klee One Learning", "Klee One", cursive; }
+.sheet-word { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--navy); font: 700 17px/1.35 "Andika Learning", "Segoe UI", Roboto, sans-serif; }
 .sheet-speak-button { flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 1px solid #b8c9d1; border-radius: 10px; background: #edf5f7; color: var(--blue); font-size: 19px; line-height: 1; cursor: pointer; }
 .sheet-speak-button:hover, .sheet-speak-button:focus-visible { border-color: var(--blue); background: #dfeef2; outline: 2px solid rgba(56,105,135,.2); outline-offset: 1px; }
 .study-screen { width: min(840px, 100%); margin: 0 auto; }
@@ -308,7 +309,7 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 .card-badge { position: absolute; top: 12px; right: 18px; padding: 5px 11px; border-radius: 999px; background: #ece5d5; color: var(--muted); font-size: 12px; font-weight: 900; }
 .card-badge.known { background: #dfeee3; color: #2a583d; }
 .card-badge.unknown { background: #f4ded8; color: var(--red-dark); }
-.word-text { max-width: 100%; font: 600 clamp(40px, 5.4vw, 54px)/1.1 "Klee One Learning", "Klee One", cursive; letter-spacing: .01em; overflow-wrap: anywhere; }
+.word-text { max-width: 100%; font: 700 clamp(40px, 5.4vw, 54px)/1.1 "Andika Learning", "Segoe UI", Roboto, sans-serif; letter-spacing: .01em; overflow-wrap: anywhere; }
 .pos-text { display: inline-block; margin-top: 8px; padding: 4px 14px; border-radius: 999px; background: rgba(69, 108, 133, .12); color: var(--navy); font-size: 14px; font-weight: 800; }
 .card-divider { width: 54px; height: 3px; margin: 14px 0 12px; background: var(--gold); }
 .answer-layout { display: block; width: min(690px, 100%); }
@@ -352,7 +353,7 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 .detail-panel { margin-top: 10px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,253,247,.94); overflow: hidden; }
 .detail-toggle { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 10px 16px; border: 0; background: transparent; color: var(--ink); text-align: left; cursor: pointer; }
 .detail-toggle-title { font-size: 15px; font-weight: 900; color: var(--navy); }
-.detail-toggle-word { flex: 1; font: 700 15px/1 "Klee One Learning", "Klee One", cursive; color: var(--blue); }
+.detail-toggle-word { flex: 1; font: 700 15px/1 "Andika Learning", "Segoe UI", Roboto, sans-serif; color: var(--blue); }
 .detail-toggle-icon { font-size: 16px; color: var(--muted); transition: transform .18s ease; }
 .detail-toggle[aria-expanded="true"] .detail-toggle-icon { transform: rotate(180deg); }
 .detail-body { padding: 4px 16px 16px; border-top: 1px dashed var(--line); text-align: left; font-family: var(--reading-serif); }
@@ -455,7 +456,7 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 }
 .game-instruction { margin: 0; color: var(--muted); text-align: center; font-size: 14px; font-weight: 900; letter-spacing: .8px; }
 .game-word-row { display: flex; justify-content: center; align-items: center; gap: 14px; margin: 10px 0 16px; }
-.game-word-row h2 { margin: 0; font: 600 clamp(40px, 6vw, 58px)/1.12 "Klee One Learning", "Klee One", cursive; letter-spacing: .01em; }
+.game-word-row h2 { margin: 0; font: 700 clamp(40px, 6vw, 58px)/1.12 "Andika Learning", "Segoe UI", Roboto, sans-serif; letter-spacing: .01em; }
 .game-speak-button {
     min-height: 38px;
     padding: 7px 14px;
@@ -591,7 +592,7 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 .spelling-clue-card.no-image img { display: none; }
 .spelling-meaning { margin: 0; padding: 12px 14px; color: var(--navy); font-size: 21px; font-weight: 850; line-height: 1.45; overflow-wrap: anywhere; }
 .spelling-answer-area { min-width: 0; text-align: center; }
-.spelling-hint { min-height: 32px; margin: 14px 0 10px; color: var(--blue); font: 600 26px/1.5 "Klee One Learning", "Klee One", cursive; letter-spacing: 3px; }
+.spelling-hint { min-height: 32px; margin: 14px 0 10px; color: var(--blue); font: 700 26px/1.5 "Andika Learning", "Segoe UI", Roboto, sans-serif; letter-spacing: 3px; }
 .spelling-input {
     width: 100%;
     min-height: 62px;
@@ -601,13 +602,13 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
     background: white;
     color: var(--ink);
     text-align: center;
-    font: 600 34px/1 "Klee One Learning", "Klee One", cursive;
+    font: 700 34px/1 "Andika Learning", "Segoe UI", Roboto, sans-serif;
 }
 .tile-input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
-.spelling-built-word { display: flex; justify-content: center; align-items: center; min-height: 64px; margin: 10px 0; padding: 8px 14px; border: 2px dashed #b9cbd5; border-radius: 14px; background: #fff; color: var(--navy); font: 600 34px/1 "Klee One Learning", "Klee One", cursive; letter-spacing: 5px; }
+.spelling-built-word { display: flex; justify-content: center; align-items: center; min-height: 64px; margin: 10px 0; padding: 8px 14px; border: 2px dashed #b9cbd5; border-radius: 14px; background: #fff; color: var(--navy); font: 700 34px/1 "Andika Learning", "Segoe UI", Roboto, sans-serif; letter-spacing: 5px; }
 .spelling-built-word:empty::before { content: "Choose the letter tiles."; color: #52666f; font-size: 15px; letter-spacing: 0; }
 .spelling-tile-rack { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; min-height: 62px; margin-bottom: 12px; }
-.letter-tile { min-width: 50px; min-height: 50px; padding: 8px 14px; border: 0; border-radius: 12px; background: var(--blue); color: white; font: 600 24px/1 "Klee One Learning", "Klee One", cursive; box-shadow: 0 4px 0 #2e5269; cursor: pointer; touch-action: manipulation; }
+.letter-tile { min-width: 50px; min-height: 50px; padding: 8px 14px; border: 0; border-radius: 12px; background: var(--blue); color: white; font: 700 24px/1 "Andika Learning", "Segoe UI", Roboto, sans-serif; box-shadow: 0 4px 0 #2e5269; cursor: pointer; touch-action: manipulation; }
 .letter-tile:active { transform: translateY(3px); box-shadow: 0 1px 0 #2e5269; }
 .letter-tile[disabled] { opacity: .25; box-shadow: none; }
 .spelling-input:focus { border-color: var(--blue); outline: 3px solid rgba(69,108,133,.15); }
