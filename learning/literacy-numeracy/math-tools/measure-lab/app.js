@@ -4,6 +4,13 @@
     U = ToolUI,
     C = MeasureLab,
     $ = U.$;
+  // 추는 무거울수록 크게. 100 g·500 g·1 kg (크기는 실제 비율이 아니라 구별용)
+  const WEIGHT_SIZE = [
+      { w: 44, h: 28, font: 12 },
+      { w: 56, h: 40, font: 14 },
+      { w: 66, h: 52, font: 16 },
+    ],
+    WEIGHT_LABEL = ["100 g", "500 g", "1 kg"];
   let tokens = [],
     dragToken = null,
     shownTilt = C.tilt(C.initial.left, C.initial.right),
@@ -60,24 +67,40 @@
         const p = pan(side, shownTilt),
           bottom = p.y + 215;
         svg += `<path d="M${p.x} ${p.y} ${p.x - 105} ${bottom}H${p.x + 105}Z" fill="none" stroke="#8a9b84" stroke-width="2"/><path d="M${p.x - 110} ${bottom}Q${p.x} ${bottom + 58} ${p.x + 110} ${bottom}Z" fill="#e3dfc9" stroke="#8a9b84" stroke-width="2"/>`;
-        let index = 0;
-        s[side].forEach((n, weight) => {
-          for (let k = 0; k < n; k++) {
-            const x = p.x - 88 + (index % 5) * 40,
-              y = bottom - 24 - Math.floor(index / 5) * 37,
+        // 무거운 추부터 접시 바닥에 놓고, 한 줄이 차면 위 줄에 쌓는다.
+        const pieces = [];
+        for (const weight of [2, 1, 0])
+          for (let k = 0; k < s[side][weight]; k++) pieces.push(weight);
+        let rowX = 0, rowY = bottom - 2, rowH = 0;
+        const rows = [[]];
+        for (const weight of pieces) {
+          const w = WEIGHT_SIZE[weight].w;
+          if (rowX && rowX + w > 196) { rows.push([]); rowX = 0; }
+          rows[rows.length - 1].push(weight);
+          rowX += w + 4;
+        }
+        for (const row of rows) {
+          const width = row.reduce((t, k) => t + WEIGHT_SIZE[k].w + 4, -4);
+          let x = p.x - width / 2;
+          rowH = Math.max(0, ...row.map((k) => WEIGHT_SIZE[k].h));
+          for (const weight of row) {
+            const { w, h } = WEIGHT_SIZE[weight],
+              top = rowY - h,
               color = M.colors[weight];
             svg +=
-              `<rect x="${x}" y="${y - 25}" width="36" height="35" rx="5" fill="${color}" stroke="#fffefa"/>` +
+              `<rect x="${x + w / 2 - 6}" y="${top - 7}" width="12" height="9" rx="3" fill="${color}" stroke="#fffefa" stroke-width="1.5"/>` +
+              `<rect x="${x}" y="${top}" width="${w}" height="${h}" rx="6" fill="${color}" stroke="#fffefa" stroke-width="1.5"/>` +
               U.text(
-                x + 18,
-                y - 7,
-                ["100", "500", "1 kg"][weight],
-                'class="number weight-label" style="font-size:11px;fill:white"',
+                x + w / 2,
+                top + h / 2 + 1,
+                WEIGHT_LABEL[weight],
+                `class="number weight-label" style="font-size:${WEIGHT_SIZE[weight].font}px;fill:white"`,
               );
-            tokens.push({ side, weight, x: x + 18, y: y - 7 });
-            index++;
+            tokens.push({ side, weight, x: x + w / 2, y: top + h / 2, r: Math.max(w, h) / 2 + 4 });
+            x += w + 4;
           }
-        });
+          rowY -= rowH + 9;
+        }
         svg += U.text(
           p.x,
           bottom + 82,
@@ -93,7 +116,7 @@
           );
       }
       if (dragToken)
-        svg += `<circle cx="${dragToken.x}" cy="${dragToken.y}" r="20" fill="${M.colors[dragToken.weight]}" stroke="#fffefa" stroke-width="3"/>`;
+        svg += `<circle cx="${dragToken.x}" cy="${dragToken.y}" r="${WEIGHT_SIZE[dragToken.weight].h / 2 + 4}" fill="${M.colors[dragToken.weight]}" stroke="#fffefa" stroke-width="3"/>`;
       const left = C.mass(s.left),
         right = C.mass(s.right);
       $("result").textContent = s.values
@@ -213,7 +236,7 @@
   U.pointer($("stage"), {
     start(p) {
       if (app.state.mode === "mass") {
-        const token = [...tokens].reverse().find((q) => M.distance(p, q) < 25);
+        const token = [...tokens].reverse().find((q) => M.distance(p, q) < q.r);
         if (!token) return false;
         dragToken = { ...token };
         app.begin();
