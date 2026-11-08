@@ -125,8 +125,9 @@ h2 {
 }
 
 /* The host is inserted by the shared site navigation on classj.kr. */
-site-back-navigation { top:auto; bottom:8px; left:296px; }
-.sidebar-hidden site-back-navigation { left:8px; }
+/* 뒤로가기는 다른 교구처럼 위 왼쪽 구석. 그 자리만큼 수식 제목과 그래프 도구 줄을 비켜 둔다. */
+.sidebar-heading { padding-left:48px; min-height:44px; }
+.sidebar-hidden .stage-toolbar { left:58px; }
 
 .board-menu { position:relative; }
 .board-menu summary {
@@ -834,7 +835,7 @@ dialog::backdrop {
 }
 
 @media(max-width:760px) {
-  site-back-navigation { left:8px; }
+  .stage-toolbar { left:58px; }
   .workspace,.teaching .workspace {
     position:relative;
     display:flex
