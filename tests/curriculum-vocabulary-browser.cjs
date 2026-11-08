@@ -1,4 +1,4 @@
-// 교과 단어: 모든 단원의 낱말 목록과 연습 한 판을 실제 브라우저로 끝까지 돌려 본다.
+// 교과서 단어: 모든 단원의 낱말 목록과 연습 한 판을 실제 브라우저로 끝까지 돌려 본다.
 // node tests/curriculum-vocabulary-browser.cjs
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -95,7 +95,7 @@ const clickChoice = (page, label, right) => page.evaluate(([label, right]) => {
       await page.close();
     }
     assert.deepEqual(errors, []);
-    console.log(`교과 단어: 단원 ${units / 2}개를 두 너비에서 확인`);
+    console.log(`교과서 단어: 단원 ${units / 2}개를 두 너비에서 확인`);
   } finally {
     await browser.close();
   }
