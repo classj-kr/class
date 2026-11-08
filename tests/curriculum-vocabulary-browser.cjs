@@ -34,11 +34,11 @@ async function answerOf(page, words) {
       });
       for (const [term, subjects] of Object.entries(books)) for (const [subject, book] of Object.entries(subjects)) for (const unit of book.units) {
         await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit: unit.id }));
-        assert.deepEqual(await page.locator('.chips button').allTextContents(), unit.words.map(word => word.w), unit.title);
+        assert.deepEqual(await page.locator('.chips button:not(.practice-chip)').allTextContents(), unit.words.map(word => word.w), unit.title);
         assert.equal(await page.locator('.word-title h3').textContent(), unit.words[0].w);
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, unit.title + ' 가로 넘침 ' + width);
 
-        await page.locator('.chips button').last().click();
+        await page.locator('.chips button:not(.practice-chip)').last().click();
         assert.equal(await page.locator('.word-title h3').textContent(), unit.words.at(-1).w);
         await page.locator('.words-view .start').click();
         assert.equal(new URL(page.url()).searchParams.get('mode'), 'practice');

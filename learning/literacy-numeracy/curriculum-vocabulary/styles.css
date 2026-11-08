@@ -119,9 +119,28 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 .beats .replay { margin-left: auto; min-height: 40px; }
 .word-page .word-mean { display: flex; gap: 10px; align-items: baseline; font-size: 1.12rem; }
 .word-page .word-use { margin: 8px 0 0; }
-.explain { margin-top: 14px; }
+.explain { margin-top: 14px; padding-top: 4px; border-top: 1px dashed var(--line); }
 .explain summary { cursor: pointer; color: var(--green); font-weight: 800; min-height: 40px; display: flex; align-items: center; }
 .explain p { margin: 6px 0; line-height: 1.85; font-family: var(--class-exam-font, inherit); word-break: keep-all; }
 .paging { display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); }
 .paging > :only-child { margin-left: auto; }
 .next-word { margin-left: auto; font-weight: 800; }
+
+.chips .practice-chip { margin-left: auto; background: var(--green); border-color: var(--green); color: white; font-weight: 800; padding-inline: 18px; }
+.chips .practice-chip[aria-pressed="true"] { background: #173f38; }
+.units h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.meanings { margin: 4px 0 0; padding: 0; list-style: none; counter-reset: sense; display: grid; gap: 10px; }
+.meaning { counter-increment: sense; position: relative; padding-left: 2.2em; }
+.meaning::before { content: counter(sense); position: absolute; left: 0; top: .15em; display: grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--wash); color: var(--green); font-weight: 800; font-size: .9rem; }
+.meaning.own::before { background: var(--green); color: white; }
+.meaning .word-mean { margin: 0; font-size: 1.1rem; }
+.meaning .word-use { margin: 2px 0 0; }
+.meanings:has(.meaning + .meaning) .meaning.own .word-mean::after { content: '이 단원'; margin-left: 8px; padding: 1px 7px; border-radius: 6px; background: var(--wash); color: var(--green); font-size: .78rem; font-weight: 800; font-family: var(--gothic); vertical-align: 2px; }
+.hanja-glyph.small { font-size: 1.15rem; }
+
+.stage.figure { aspect-ratio: auto; background: #fbfcf8; }
+.stage.figure svg { display: block; width: 100%; height: auto; font-family: var(--gothic); }
+.stage.figure :is(.b1, .b2, .b3, .b4, .b5) { opacity: 0; transition: opacity .45s ease; }
+.stage.figure.on1 .b1, .stage.figure.on2 .b2, .stage.figure.on3 .b3, .stage.figure.on4 .b4, .stage.figure.on5 .b5 { opacity: 1; }
+.stage.figure.on2 .h2, .stage.figure.on3 .h3, .stage.figure.on4 .h4, .stage.figure.on5 .h5 { opacity: 0; }

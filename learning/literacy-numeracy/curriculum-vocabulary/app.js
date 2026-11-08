@@ -82,11 +82,16 @@
   function sceneOf(scene) {
     const box = element('figure', '', 'scene');
     const stage = element('div', '', 'stage');
-    const picture = element('img');
-    picture.src = `images/${term}/${scene.pic}`;
-    picture.alt = '';
-    picture.decoding = 'async';
-    stage.append(picture);
+    if (scene.pic) {
+      const picture = element('img');
+      picture.src = `images/${term}/${scene.pic}`;
+      picture.alt = '';
+      picture.decoding = 'async';
+      stage.append(picture);
+    } else {
+      stage.classList.add('figure');
+      stage.innerHTML = scene.figure;
+    }
     const caption = element('figcaption', '', 'caption');
     caption.setAttribute('aria-live', 'polite');
     const controls = element('div', '', 'beats');
@@ -126,13 +131,25 @@
     const hanja = hanjaOf(word);
     if (hanja) head.append(hanja);
     page.append(head);
-    if (word.pic && word.beats) page.append(sceneOf(word));
-    const mean = element('p', '', 'word-mean');
-    mean.append(element('span', '뜻', 'tag'), word.mean);
-    page.append(mean, sentenceWith(word.use, word.w));
+    const figure = (window.CurriculumFigures || {})[`${term}/${subject}/${unit.id}/${word.w}`];
+    if (word.beats && (word.pic || figure)) page.append(sceneOf({ ...word, figure }));
+    // 이 단원에서 쓰는 뜻을 먼저, 생활에서 마주치는 다른 뜻을 그 아래에 번호로 보인다.
+    const meanings = element('ol', '', 'meanings');
+    const own = element('li', '', 'meaning own');
+    own.append(element('p', word.mean, 'word-mean'), sentenceWith(word.use, word.w));
+    meanings.append(own);
+    for (const sense of word.senses || []) {
+      const item = element('li', '', 'meaning');
+      const text = element('p', '', 'word-mean');
+      if (sense.hanja) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
+      text.append(sense.mean);
+      item.append(text, sentenceWith(sense.use, word.w));
+      meanings.append(item);
+    }
+    page.append(meanings);
     if (word.explain) {
-      const more = element('details', '', 'explain');
-      more.append(element('summary', '자세히 읽기'), ...word.explain.map(text => element('p', text)));
+      const more = element('div', '', 'explain');
+      more.append(...word.explain.map(text => element('p', text)));
       page.append(more);
     }
     const paging = element('nav', '', 'paging');
@@ -145,13 +162,22 @@
     return page;
   }
 
-  function wordsViewOf(unit) {
-    const view = element('div', '', 'words-view');
+  // 낱말 단추 줄 하나만 둔다. 맨 끝 단추가 연습이다. 연습 중에 낱말을 누르면 그 낱말로 돌아간다.
+  function chipsOf(unit, current, onWord) {
     const chips = element('nav', '', 'chips');
-    chips.setAttribute('aria-label', '이 단원의 낱말');
+    chips.setAttribute('aria-label', '낱말과 연습');
+    const controls = unit.words.map((word, i) => button(word.w, () => onWord(i)));
+    const practice = button('연습', () => { mode = 'practice'; showLesson(unit, true); }, 'practice-chip');
+    controls.forEach((control, i) => control.setAttribute('aria-pressed', String(i === current)));
+    practice.setAttribute('aria-pressed', String(mode === 'practice'));
+    chips.append(...controls, practice);
+    return { chips, controls, practice };
+  }
+
+  function wordsViewOf(unit, start = 0) {
+    const view = element('div', '', 'words-view');
     const holder = element('div');
-    const controls = unit.words.map((word, i) => button(word.w, () => select(i, true)));
-    chips.append(...controls);
+    const { chips, controls } = chipsOf(unit, start, (i) => select(i, true));
     function select(i, focus) {
       stopScene();
       controls.forEach((control, j) => control.setAttribute('aria-pressed', String(i === j)));
@@ -159,7 +185,7 @@
       if (focus) controls[i].focus({ preventScroll: true });
     }
     view.append(chips, holder);
-    select(0);
+    select(start);
     return view;
   }
 
@@ -290,7 +316,7 @@
     return view;
   }
 
-  function showLesson(unit, focus) {
+  function showLesson(unit, focus, start = 0) {
     stopScene();
     leavePractice = null;
     lesson.setAttribute('aria-label', unit?.title || '학습 내용');
@@ -298,21 +324,18 @@
       lesson.replaceChildren(element('p', '이 학기의 교과 단어는 준비 중이다.', 'empty'));
       return;
     }
-    const tabs = element('div', '', 'tabs');
-    tabs.setAttribute('role', 'group');
-    tabs.setAttribute('aria-label', '보기 방식');
-    const toWords = button(`낱말 ${unit.words.length}개`, () => { mode = 'words'; showLesson(unit, true); });
-    const toPractice = button('연습', () => { mode = 'practice'; showLesson(unit, true); });
-    toWords.setAttribute('aria-pressed', String(mode === 'words'));
-    toPractice.setAttribute('aria-pressed', String(mode === 'practice'));
-    tabs.append(toWords, toPractice);
-    const head = element('div', '', 'lesson-head');
-    head.append(element('h2', unit.title), tabs);
-    lesson.replaceChildren(head, mode === 'practice' ? practiceViewOf(unit) : wordsViewOf(unit));
-    if (mode === 'practice') leavePractice = () => { mode = 'words'; showLesson(unit, true); };
+    if (mode === 'practice') {
+      const { chips } = chipsOf(unit, -1, (i) => { mode = 'words'; showLesson(unit, true, i); });
+      lesson.replaceChildren(chips, practiceViewOf(unit));
+      leavePractice = () => { mode = 'words'; showLesson(unit, true); };
+    } else {
+      lesson.replaceChildren(wordsViewOf(unit, start));
+    }
     syncUrl();
-    if (focus) (mode === 'practice' ? lesson.querySelector('.choices button') : toWords)?.focus({ preventScroll: true });
-    if (focus) head.scrollIntoView({ block: 'nearest' });
+    if (focus) {
+      (mode === 'practice' ? lesson.querySelector('.choices button') : lesson.querySelector('.chips [aria-pressed="true"]'))?.focus({ preventScroll: true });
+      lesson.scrollIntoView({ block: 'nearest' });
+    }
   }
 
   function syncUrl() {
