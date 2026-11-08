@@ -1,0 +1,1010 @@
+{
+  "1-1": {
+    "민주주의": {
+      "en": "democracy",
+      "explain": [
+        "쉬운 뜻: 영어로 democracy입니다. 모두가 주인이 되어 우리 일을 함께 정하는 방식입니다.",
+        "생활 속 예: 반장 혼자 정하지 않고, 반 친구 모두가 의견을 내어 체육 시간 놀이를 정합니다."
+      ],
+      "beats": [
+        "학급 회의 시간에 친구들이 동그랗게 둘러앉았습니다.",
+        "하린이가 일어나 생각을 말하고, 다른 친구들도 손을 들어 의견을 냅니다.",
+        "모두가 의견을 나누어 함께 정하는 방식이 민주주의입니다."
+      ],
+      "img": "In a classroom, students sit in a circle for a class meeting. HARIN stands and speaks while DOYUN and other classmates raise their hands eagerly to share ideas. The TEACHER sits among the students listening, not standing at the front. Everyone looks engaged and equal. No text.",
+      "imgKo": "교실에서 아이들이 동그랗게 앉아 학급 회의를 한다. 하린이가 일어나 말하고 도윤이와 친구들이 손을 들며, 선생님은 앞이 아니라 아이들 사이에 앉아 듣는다."
+    },
+    "자치": {
+      "explain": [
+        "쉬운 뜻: '우리 일은 우리가 정한다!' 하는 마음으로 스스로 꾸려 가는 것입니다.",
+        "정하기만 하고 끝나는 것이 아니라, 정한 일을 끝까지 책임지는 것까지 자치입니다.",
+        "생활 속 예: 우리 반 규칙을 선생님이 정해 주지 않고 우리끼리 회의로 만들어 지킵니다."
+      ],
+      "beats": [
+        "교실에는 반 친구들이, 마을 회관에는 동네 사람들이 모였습니다.",
+        "누가 정해 주기를 기다리지 않고 자기들 일을 직접 의논합니다.",
+        "자기들 일을 스스로 정하고 책임지는 것이 자치입니다."
+      ],
+      "img": "A picture split into two scenes. Left: students in a classroom discussing together and raising their hands. Right: neighborhood residents of various ages sitting around tables in a community hall, discussing and raising their hands. In both scenes there is no boss giving orders; the people decide together. No text.",
+      "imgKo": "왼쪽은 교실에서 아이들이, 오른쪽은 마을 회관에서 여러 나이의 동네 사람들이 둘러앉아 의논하며 손을 든다. 어느 쪽에도 명령하는 사람이 없다."
+    },
+    "학교 자치": {
+      "explain": [
+        "쉬운 뜻: '우리 학교는 우리가 함께 가꾼다.'는 생각으로 학교 일을 정하는 것입니다.",
+        "낱말 나누기: 학교 + 자치(스스로 정하고 책임짐), 학교 안에서 하는 자치입니다.",
+        "생활 속 예: 학생들이 낸 의견으로 복도에 쉬는 의자를 놓기로 정합니다."
+      ],
+      "beats": [
+        "학생, 선생님, 부모님이 학교의 빈 공간 그림을 둘러쌌습니다.",
+        "바꾸고 싶은 모습 그림 아래에 저마다 붙임딱지를 붙입니다.",
+        "학교 일을 구성원이 함께 정하고 책임지는 것이 학교 자치입니다."
+      ],
+      "img": "In a school library, students, two teachers and a few parents gather around a large table with a drawing of an empty school hallway space. Pictures of choices are pinned on a board: a reading corner, a bench area and a small play zone; people place colored dot stickers under the one they like. No text.",
+      "imgKo": "학교 도서실에서 학생, 선생님, 부모님이 빈 복도 공간 그림을 둘러싸고, 게시판의 책 읽는 곳·쉼터·놀이 공간 그림 아래에 저마다 동그란 붙임딱지를 붙인다."
+    },
+    "구성원": {
+      "en": "member",
+      "explain": [
+        "쉬운 뜻: 영어로 member입니다. 퍼즐 조각이 모여 그림이 되듯, 모임을 이루는 한 사람입니다.",
+        "낱말 나누기: 구성(짜서 이룸) + 원(사람), 모임을 짜서 이루는 사람입니다.",
+        "생활 속 예: 우리 가족의 구성원은 엄마, 아빠, 동생, 그리고 나입니다."
+      ],
+      "beats": [
+        "학교 앞에 학생, 선생님, 부모님, 급식실 조리사님이 모였습니다.",
+        "한 사람 한 사람이 모여 우리 학교를 이룹니다.",
+        "모임을 이루는 한 사람 한 사람이 구성원입니다."
+      ],
+      "img": "In front of a school building, a group stands together as if for a photo: students including HARIN and DOYUN, the TEACHER, a few parents, a school cook in a white apron and a school custodian, all smiling. Each person clearly has a different role. No text.",
+      "imgKo": "학교 건물 앞에 하린이와 도윤이를 비롯한 학생들, 선생님, 부모님, 흰 앞치마의 조리사님, 학교 지킴이 아저씨가 함께 서서 웃는다."
+    },
+    "안건": {
+      "explain": [
+        "쉬운 뜻: 회의 시간에 '오늘은 이것을 정해 봅시다!' 하고 내놓는 문제입니다.",
+        "안건 하나를 다 정하고 나면 다음 안건으로 넘어갑니다.",
+        "생활 속 예: 학급 회의 칠판 맨 위에 '체육 대회 응원 구호 정하기'라고 씁니다."
+      ],
+      "beats": [
+        "학급 회의를 시작하자 사회자가 칠판을 가리킵니다.",
+        "칠판에는 체험 학습을 어디로 갈지 고르자는 그림이 붙어 있습니다.",
+        "회의에서 의논하여 정할 문제가 안건입니다."
+      ],
+      "img": "A class meeting: DOYUN stands at the front as the meeting chair, pointing at the blackboard where a large drawing is pinned showing a big question mark between a mountain, a beach and a zoo. Classmates at their desks look at it and start raising their hands. No written words on the board.",
+      "imgKo": "도윤이가 사회자로 앞에 서서 칠판을 가리킨다. 칠판에는 산·바닷가·동물원 그림 사이에 큰 물음표가 있는 그림이 붙어 있고, 친구들이 보며 손을 든다."
+    },
+    "의사 결정": {
+      "en": "decision-making",
+      "explain": [
+        "쉬운 뜻: 영어로 decision-making입니다. 여럿이 생각을 모아 '이렇게 하자.'를 정하는 일입니다.",
+        "낱말 나누기: 의사(마음속 뜻) + 결정(딱 정함), 병원의 의사 선생님과는 다른 말입니다.",
+        "생활 속 예: 반 친구들과 이야기하고 투표해서 체육 대회 반 티셔츠 색을 정합니다."
+      ],
+      "beats": [
+        "친구들이 반 티셔츠 색을 두고 저마다 생각을 말합니다.",
+        "이야기를 나눈 뒤 색깔 카드를 들어 하나로 정합니다.",
+        "여럿이 뜻을 모아 할 일을 정하는 것이 의사 결정입니다."
+      ],
+      "img": "Classmates discuss which color their class T-shirt should be; sample shirts in blue, yellow and green hang on the board. Then students hold up color cards to vote and most cards are yellow; HARIN smiles as the TEACHER holds up the yellow shirt. No text.",
+      "imgKo": "칠판 앞에 파랑·노랑·초록 반 티셔츠 견본이 걸려 있고, 아이들이 의논한 뒤 색깔 카드를 들어 투표하자 노란 카드가 가장 많아 선생님이 노란 티셔츠를 든다."
+    },
+    "학생 자치회": {
+      "en": "student council",
+      "explain": [
+        "쉬운 뜻: 영어로 student council입니다. 학생들의 목소리를 모아 학교에 전하는 학생 대표 모임입니다.",
+        "낱말 나누기: 학생 + 자치(스스로 정하고 책임짐) + 회(모임)입니다.",
+        "생활 속 예: 전교 회장, 부회장과 각 반 대표가 모여 회의합니다."
+      ],
+      "beats": [
+        "여러 학년의 학생 대표들이 회의실에 모였습니다.",
+        "건의함에서 꺼낸 쪽지를 펼쳐 보며 학교에 바라는 점을 의논합니다.",
+        "학생들의 뜻을 모아 함께 할 일을 정하는 학생 모임이 학생 자치회입니다."
+      ],
+      "img": "In a small meeting room, about eight student representatives of different ages sit around a long table. One opens a suggestion box and spreads folded notes on the table while the others lean in to read and discuss. A girl leads the meeting. No readable text.",
+      "imgKo": "작은 회의실에서 여러 학년 학생 대표 여덟 명쯤이 긴 탁자에 둘러앉아, 건의함에서 꺼낸 쪽지를 펼쳐 놓고 의논한다."
+    },
+    "학급 자치": {
+      "explain": [
+        "쉬운 뜻: 우리 반 일은 우리 반 친구들이 정하고 해낸다는 것입니다.",
+        "낱말 나누기: 학급(반) + 자치(스스로 정하고 책임짐)입니다.",
+        "생활 속 예: 반 친구들이 의논해 한 사람에 한 가지씩 역할을 나누고 날마다 해냅니다."
+      ],
+      "beats": [
+        "아침 교실에서 친구들이 저마다 맡은 일을 합니다.",
+        "하린이는 화분에 물을 주고, 도윤이는 책장을 정리합니다.",
+        "반의 일을 반 친구들이 스스로 정하고 실천하는 것이 학급 자치입니다."
+      ],
+      "img": "A classroom in the morning: students carry out the class jobs they chose themselves. HARIN waters potted plants by the window, DOYUN tidies the class bookshelf, another student wipes the board, and another sorts recycling into bins. A job chart made only of picture icons hangs on the wall. No text.",
+      "imgKo": "아침 교실에서 하린이는 화분에 물을 주고 도윤이는 책장을 정리하며, 다른 친구는 칠판을 닦고 또 다른 친구는 분리배출을 한다. 벽에 그림으로 된 역할표가 붙어 있다."
+    },
+    "선거": {
+      "en": "election",
+      "explain": [
+        "쉬운 뜻: 영어로 election입니다. 우리를 대신해 일할 사람을 표를 내어 뽑는 것입니다.",
+        "표는 남이 보지 않게 혼자 찍고, 한 사람이 한 표씩만 냅니다.",
+        "생활 속 예: 전교 어린이 회장 선거 날, 강당에 투표하는 칸막이가 놓입니다."
+      ],
+      "beats": [
+        "후보들이 그림 포스터 옆에 서 있습니다.",
+        "학생들은 칸막이 안에서 혼자 표를 찍고 투표함에 넣습니다.",
+        "투표로 단체의 대표를 뽑는 일이 선거입니다."
+      ],
+      "img": "A school election day in the gym: three candidate students stand by their poster boards that show only drawings. Students line up and, one by one, step behind a small privacy booth to mark a ballot, then drop the folded paper into a clear ballot box. No readable text.",
+      "imgKo": "강당에서 후보 세 명이 그림만 있는 포스터 옆에 서 있고, 학생들이 줄을 서서 차례로 칸막이 안에서 표를 찍은 뒤 투명한 투표함에 접은 종이를 넣는다."
+    },
+    "공약": {
+      "explain": [
+        "쉬운 뜻: '저를 뽑아 주면 이것을 꼭 하겠습니다!' 하고 여러 사람 앞에서 하는 약속입니다.",
+        "낱말 나누기: 공(여러 사람 앞에 드러냄) + 약(약속)입니다.",
+        "생활 속 예: '운동장에 그늘막을 늘리겠습니다.'라는 회장 후보의 말이 공약입니다."
+      ],
+      "beats": [
+        "회장 후보가 강당 연단에 섰습니다.",
+        "옆에 세운 그림을 가리키며, 뽑히면 운동장에 의자와 그늘막을 만들겠다고 말합니다.",
+        "선거에 나온 사람이 여러 사람에게 하는 약속이 공약입니다."
+      ],
+      "img": "A student candidate stands at a podium on the school stage giving a speech, pointing to a large drawing beside her that shows a sunny playground with new benches under a shade canopy. Students in the audience listen. No text.",
+      "imgKo": "회장 후보 학생이 강당 연단에서 연설하며, 옆에 세운 그림 판의 햇볕 쨍쨍한 운동장에 새 그늘막과 의자가 그려진 곳을 가리킨다."
+    },
+    "토론": {
+      "en": "debate",
+      "explain": [
+        "쉬운 뜻: 영어로 debate입니다. 생각이 다를 때 까닭을 대며 어느 쪽이 옳은지 따져 보는 말하기입니다.",
+        "상대의 말을 끝까지 듣고 나서 내 까닭을 말하는 것이 약속입니다.",
+        "생활 속 예: '교실에서 휴대 전화를 써도 될까?'를 두고 찬성과 반대로 나뉘어 말합니다."
+      ],
+      "beats": [
+        "친구들이 찬성 편과 반대 편으로 나누어 마주 앉았습니다.",
+        "하린이가 손가락을 꼽으며 까닭을 말하고, 도윤이는 받아 적으며 차례를 기다립니다.",
+        "서로 다른 생각과 까닭을 말하며 따져 보는 것이 토론입니다."
+      ],
+      "img": "A classroom debate: desks are arranged in two facing rows. On one side HARIN stands and speaks, counting her reasons on her fingers; on the other side DOYUN listens carefully, taking notes and waiting for his turn. The TEACHER sits at the end between the rows as the moderator. No text.",
+      "imgKo": "책상이 마주 보게 두 줄로 놓인 교실에서 한쪽의 하린이가 손가락을 꼽으며 까닭을 말하고, 맞은편 도윤이는 받아 적으며 차례를 기다린다. 두 줄 사이 끝에 선생님이 앉아 있다."
+    },
+    "양보": {
+      "explain": [
+        "쉬운 뜻: '네가 먼저 해.' 하고 내 차례나 몫을 남에게 내주는 것입니다.",
+        "회의에서 내 의견만 고집하지 않고 한발 물러서는 것도 양보입니다.",
+        "생활 속 예: 버스에서 할머니께 자리를 내어 드립니다."
+      ],
+      "beats": [
+        "놀이터의 빈 그네 앞에 하린이와 어린아이가 함께 왔습니다.",
+        "하린이가 웃으며 한 걸음 물러나 아이에게 먼저 타라고 손짓합니다.",
+        "내 몫을 고집하지 않고 남을 위해 물러서는 것이 양보입니다."
+      ],
+      "img": "At a playground, HARIN and a small younger child arrive at the only empty swing at the same time. HARIN steps back with a smile and gestures with an open hand for the little child to go first; the child happily sits on the swing. No text.",
+      "imgKo": "놀이터의 빈 그네 하나 앞에 하린이와 어린아이가 함께 왔다. 하린이가 웃으며 한 걸음 물러나 손바닥으로 먼저 타라고 하자 아이가 기뻐하며 그네에 앉는다."
+    },
+    "타협": {
+      "en": "compromise",
+      "explain": [
+        "쉬운 뜻: 영어로 compromise입니다. 서로 조금씩 물러나 둘 다 받아들일 수 있게 맞추는 것입니다.",
+        "생활 속 예: 동생은 만화, 나는 퀴즈 방송을 보고 싶어서 30분씩 나누어 봅니다."
+      ],
+      "beats": [
+        "도윤이는 불고기 피자를, 동생은 채소 피자를 먹고 싶다고 다툽니다.",
+        "둘은 반은 불고기, 반은 채소인 피자 한 판을 시키기로 합니다.",
+        "서로 조금씩 뜻을 맞추어 함께 받아들일 결론을 찾는 것이 타협입니다."
+      ],
+      "img": "Two panels. Left: DOYUN and his little sister argue in the kitchen, each pointing to a different pizza picture on a menu, one with bulgogi meat and one with vegetables. Right: they happily share one pizza that is half bulgogi and half vegetables, both smiling. No text.",
+      "imgKo": "왼쪽은 도윤이와 여동생이 메뉴판의 불고기 피자와 채소 피자 그림을 저마다 가리키며 다툰다. 오른쪽은 반은 불고기, 반은 채소인 피자 한 판을 함께 웃으며 먹는다."
+    },
+    "관용": {
+      "en": "tolerance",
+      "explain": [
+        "쉬운 뜻: 영어로 tolerance입니다. 나와 생각이 달라도 '그럴 수 있지.' 하고 너그럽게 받아들이는 마음입니다.",
+        "생활 속 예: 짜장면이 더 맛있다는 친구에게 '너는 그렇게 생각하는구나.' 하고 웃어 줍니다."
+      ],
+      "beats": [
+        "학급 회의에서 도윤이가 하린이와 정반대 의견을 냅니다.",
+        "하린이는 찡그리지 않고 고개를 끄덕이며 끝까지 듣습니다.",
+        "생각이 다른 사람의 의견을 너그럽게 받아들이는 마음이 관용입니다."
+      ],
+      "img": "During a class meeting, DOYUN stands and explains a different idea, shaking his head at HARIN's drawing pinned on the board. HARIN does not frown; she listens calmly, nodding with a warm smile and an open, welcoming hand. Other classmates watch. No text.",
+      "imgKo": "학급 회의에서 도윤이가 칠판에 붙은 하린이의 생각 그림에 고개를 저으며 다른 생각을 말하자, 하린이는 찡그리지 않고 따뜻하게 웃으며 고개를 끄덕이고 손을 펼쳐 받아들인다."
+    },
+    "비판적": {
+      "en": "critical",
+      "explain": [
+        "쉬운 뜻: 영어로 critical입니다. '정말 그럴까?' 하고 한 번 더 따져 보는 것입니다.",
+        "남을 헐뜯는 것이 아니라, 맞는지 틀리는지 꼼꼼히 살피는 것입니다.",
+        "생활 속 예: '먹기만 해도 키가 큰다'는 광고를 보고 근거가 있는지 찾아봅니다."
+      ],
+      "beats": [
+        "도윤이가 태블릿에서 놀라운 과자 광고를 보았습니다.",
+        "그대로 믿지 않고 돋보기를 든 채 과학책을 펼쳐 맞는지 견주어 봅니다.",
+        "옳은지 그른지 따져 살펴보는 것이 비판적인 태도입니다."
+      ],
+      "img": "DOYUN sits at a desk looking at a tablet showing a flashy advertisement in which a cartoon kid grows super tall after eating a snack. Instead of believing it, he raises one eyebrow, holds a magnifying glass, and opens a science book beside the tablet to check. No readable text.",
+      "imgKo": "도윤이가 과자를 먹고 키가 쑥 큰 아이가 나오는 화려한 광고를 태블릿으로 보다가, 한쪽 눈썹을 올리고 돋보기를 든 채 옆에 과학책을 펼쳐 맞는지 확인한다."
+    },
+    "존중": {
+      "en": "respect",
+      "explain": [
+        "쉬운 뜻: 영어로 respect입니다. 다른 사람을 귀하게 여기고 함부로 대하지 않는 것입니다.",
+        "나이가 어려도, 생각이 달라도 누구나 존중받아야 합니다.",
+        "생활 속 예: 친구 물건을 쓰기 전에 '빌려도 돼?' 하고 먼저 묻습니다."
+      ],
+      "beats": [
+        "회의에서 수줍은 친구가 작은 목소리로 의견을 말합니다.",
+        "친구들은 말을 끊지 않고 의자를 돌려 귀 기울여 듣습니다.",
+        "다른 사람을 높이어 소중하게 대하는 것이 존중입니다."
+      ],
+      "img": "In a class meeting, a shy girl holds a small drawing and speaks softly. All her classmates, including HARIN and DOYUN, have turned their chairs toward her and lean in, listening attentively; nobody is talking. No text.",
+      "imgKo": "학급 회의에서 수줍은 여자아이가 작은 그림을 들고 조용히 말하고, 하린이와 도윤이를 비롯한 친구들이 의자를 돌려 몸을 기울이며 귀 기울여 듣는다."
+    },
+    "평등": {
+      "en": "equality",
+      "explain": [
+        "쉬운 뜻: 영어로 equality입니다. 누구 하나 더 대접받거나 덜 대접받지 않고 똑같은 것입니다.",
+        "생활 속 예: 반장 선거에서 키가 큰 친구도, 작은 친구도 똑같이 한 표씩 냅니다."
+      ],
+      "beats": [
+        "키 큰 친구, 작은 친구, 휠체어를 탄 친구가 투표함 앞에 줄을 섰습니다.",
+        "누구나 똑같은 투표용지를 한 장씩 받아 넣습니다.",
+        "차별 없이 똑같은 권리를 누리는 것이 평등입니다."
+      ],
+      "img": "A line of very different students stands before a ballot box: a tall boy, a small girl, a child in a wheelchair, a child with a different skin color, HARIN and DOYUN. Each holds exactly one folded ballot paper of the same size, and they drop them in one by one. No text.",
+      "imgKo": "키 큰 아이, 작은 아이, 휠체어를 탄 아이, 피부색이 다른 아이, 하린이와 도윤이가 투표함 앞에 줄을 서서 똑같은 크기의 투표용지를 한 장씩 넣는다."
+    },
+    "실천": {
+      "explain": [
+        "쉬운 뜻: 말이나 생각으로만 그치지 않고 몸으로 직접 해 보는 것입니다.",
+        "생활 속 예: '물을 아끼자.'고 다짐하고, 이를 닦을 때 컵에 물을 받아 씁니다."
+      ],
+      "beats": [
+        "학급 회의에서 운동장을 깨끗이 하자고 정했습니다.",
+        "점심시간에 친구들이 집게와 봉투를 들고 운동장 쓰레기를 줍습니다.",
+        "생각하거나 약속한 일을 실제 행동으로 옮기는 것이 실천입니다."
+      ],
+      "img": "Two panels. Left: in a class meeting, students raise their hands to agree on a plan, with a drawing of a clean playground pinned on the board. Right: at lunchtime the same students, HARIN and DOYUN among them, walk across the playground with tongs and bags picking up litter. No text.",
+      "imgKo": "왼쪽은 학급 회의에서 깨끗한 운동장 그림을 붙여 놓고 손을 들어 정하는 모습, 오른쪽은 점심시간에 하린이와 도윤이를 비롯한 친구들이 집게와 봉투로 운동장 쓰레기를 줍는 모습."
+    },
+    "민주시민": {
+      "explain": [
+        "쉬운 뜻: 동네와 나라의 일을 남의 일로 여기지 않고 함께하는 사람입니다.",
+        "낱말 나누기: 민주(모두가 주인) + 시민(사회를 이루는 사람)입니다.",
+        "생활 속 예: 투표하고, 규칙을 지키고, 나와 다른 생각도 귀담아듣습니다."
+      ],
+      "beats": [
+        "선거 날, 하린이가 엄마와 함께 투표소에 갔습니다.",
+        "엄마는 후보들의 약속을 꼼꼼히 읽어 본 뒤 한 표를 넣습니다.",
+        "사회의 일에 참여하고 다른 사람을 존중하는 사람이 민주시민입니다."
+      ],
+      "img": "On election day, HARIN walks with her mother to a polling station set up in a school. Her mother reads a candidate booklet carefully, then drops a ballot into the box while HARIN watches proudly from the waiting area. No readable text.",
+      "imgKo": "선거 날 하린이가 엄마와 학교에 차려진 투표소에 간다. 엄마가 후보 안내 책자를 꼼꼼히 읽은 뒤 투표함에 표를 넣고, 하린이는 기다리는 곳에서 자랑스럽게 지켜본다."
+    },
+    "건의": {
+      "explain": [
+        "쉬운 뜻: '이렇게 바꿔 주세요.' 하고 학교나 시청 같은 곳에 의견을 내는 것입니다.",
+        "생활 속 예: 학교 건의함에 '도서실을 점심시간에도 열어 주세요.'라고 써서 넣습니다."
+      ],
+      "beats": [
+        "키 작은 1학년 동생들이 복도 정수기에 손이 닿지 않습니다.",
+        "학생 대표들이 교장 선생님께 낮은 정수기를 놓아 달라는 편지를 드립니다.",
+        "어떤 일을 해 달라거나 고쳐 달라고 의견을 내는 것이 건의입니다."
+      ],
+      "img": "Left: small first-grade children stand on tiptoe but cannot reach a tall water fountain in the school hallway. Right: two student representatives politely hand a folded letter with a drawing of a lower fountain to the principal, a gray-haired woman, in her office. No readable text.",
+      "imgKo": "왼쪽은 키 작은 1학년 아이들이 복도의 높은 정수기에 까치발로도 닿지 못하는 모습, 오른쪽은 학생 대표 둘이 교장실에서 낮은 정수기 그림이 담긴 편지를 공손히 건네는 모습."
+    }
+  },
+  "1-2": {
+    "주민": {
+      "en": "resident",
+      "explain": [
+        "쉬운 뜻: 영어로 resident입니다. 그 동네에 집을 두고 사는 사람이면 누구나 주민입니다.",
+        "생활 속 예: 엘리베이터에서 만나 인사하는 이웃이 우리 아파트 주민입니다."
+      ],
+      "beats": [
+        "아침 골목에 여러 이웃이 나왔습니다.",
+        "할아버지는 화분에 물을 주고, 아기 엄마는 유모차를 밀고, 외국인 이웃은 손을 흔듭니다.",
+        "한 지역에서 함께 살아가는 사람들이 주민입니다."
+      ],
+      "img": "A morning street in a Korean residential neighborhood with low apartment buildings and small shops. Many neighbors appear: an elderly man watering flower pots, a young mother pushing a stroller, a foreign neighbor waving hello, and HARIN walking to school. No text on signs.",
+      "imgKo": "낮은 아파트와 가게가 있는 아침 골목에 화분에 물을 주는 할아버지, 유모차를 미는 아기 엄마, 손을 흔드는 외국인 이웃, 등교하는 하린이가 함께 있다."
+    },
+    "지역사회": {
+      "explain": [
+        "쉬운 뜻: 우리 동네 사람들이 서로 얽히고 기대어 이룬 큰 모임입니다.",
+        "낱말 나누기: 지역(어느 땅의 범위) + 사회(사람들이 모여 사는 무리)입니다.",
+        "생활 속 예: 학교, 가게, 도서관, 이웃이 서로 도우며 우리 지역사회를 이룹니다."
+      ],
+      "beats": [
+        "학교, 도서관, 시장, 아파트가 한 동네에 모여 있습니다.",
+        "학생은 도서관에서 책을 빌리고, 가게 주인은 학교 행사에 간식을 나릅니다.",
+        "같은 고장에 살며 서로 관계를 맺고 생활하는 사람들의 모임이 지역사회입니다."
+      ],
+      "img": "A cozy bird's-eye illustration of one neighborhood: a school, a public library, a small market, apartments and a park. People move between places: students borrow books at the library, a shop owner carries snacks to a school event, neighbors chat in the park. Dotted paths connect the places. No text.",
+      "imgKo": "학교, 도서관, 작은 시장, 아파트, 공원이 모인 동네를 위에서 본 그림. 학생은 도서관에서 책을 빌리고 가게 주인은 학교 행사에 간식을 나르며 이웃들은 공원에서 이야기한다."
+    },
+    "주민 자치": {
+      "explain": [
+        "쉬운 뜻: 우리 동네 일은 동네 사람들이 직접 정하고 함께 해내는 것입니다.",
+        "낱말 나누기: 주민(그 동네에 사는 사람) + 자치(스스로 정하고 책임짐)입니다.",
+        "생활 속 예: 동네 사람들이 모여 빈터를 꽃밭으로 꾸미기로 정하고 함께 꽃을 심습니다."
+      ],
+      "beats": [
+        "동네 빈터에 쓰레기가 쌓이자 주민들이 마을 회관에 모였습니다.",
+        "꽃밭으로 꾸미자고 함께 정하고, 주말에 다 같이 꽃을 심습니다.",
+        "주민이 지역의 일을 스스로 정하고 책임지는 것이 주민 자치입니다."
+      ],
+      "img": "Two panels. Left: residents of all ages meet in a community center, looking at a photo of an empty lot full of trash and raising their hands to agree on a plan. Right: on a weekend, the same residents, with HARIN and her grandfather, plant flowers together in the cleaned-up lot. No text.",
+      "imgKo": "왼쪽은 주민들이 마을 회관에서 쓰레기 쌓인 빈터 사진을 보며 손을 들어 정하는 모습, 오른쪽은 주말에 하린이와 할아버지를 비롯한 주민들이 치운 빈터에 함께 꽃을 심는 모습."
+    },
+    "주민 자치회": {
+      "explain": [
+        "쉬운 뜻: 동네 사람들의 뜻을 모아 마을 일을 꾸려 가는 주민 대표 모임입니다.",
+        "낱말 나누기: 주민 + 자치(스스로 정하고 책임짐) + 회(모임)입니다.",
+        "생활 속 예: 주민 센터 회의실에서 주민 자치회가 마을 축제 계획을 세웁니다."
+      ],
+      "beats": [
+        "주민 센터 회의실에 동네 대표들이 모였습니다.",
+        "마을 지도를 펼쳐 놓고 공원에 운동 기구를 놓을 곳을 의논합니다.",
+        "주민을 대표하여 마을의 일을 계획하는 모임이 주민 자치회입니다."
+      ],
+      "img": "In a meeting room of a neighborhood community center, about seven adult residents of various ages sit around a table with a large hand-drawn map of their neighborhood spread out. One points to the park on the map where exercise equipment could go; the others nod and take notes. No text.",
+      "imgKo": "주민 센터 회의실에서 여러 나이의 주민 대표 일곱 명쯤이 동네 지도를 펼쳐 놓고, 한 사람이 공원 자리를 가리키며 운동 기구 놓을 곳을 의논한다."
+    },
+    "주민 투표": {
+      "explain": [
+        "쉬운 뜻: 동네의 큰일을 대표에게 맡기지 않고 주민이 직접 표를 내어 정하는 것입니다.",
+        "낱말 나누기: 주민(그 지역에 사는 사람) + 투표(표를 내어 정함)입니다.",
+        "생활 속 예: 새 공원을 짓는 일에 찬성인지 반대인지 주민들이 표를 냅니다."
+      ],
+      "beats": [
+        "동네에 수영장과 도서관 가운데 무엇을 지을지 정해야 합니다.",
+        "주민들이 투표소에 와서 하나를 골라 표를 넣습니다.",
+        "지역의 중요한 일을 주민이 직접 표를 내어 정하는 것이 주민 투표입니다."
+      ],
+      "img": "At a neighborhood polling place, residents line up. A board shows two large pictures of choices: a swimming pool and a library. Residents mark a ballot that has the same two pictures and drop it into a ballot box. No readable text.",
+      "imgKo": "동네 투표소 앞 판에 수영장 그림과 도서관 그림이 나란히 붙어 있고, 주민들이 같은 두 그림이 그려진 투표용지에 표시해 투표함에 넣는다."
+    },
+    "주민 참여": {
+      "explain": [
+        "쉬운 뜻: 동네 일을 구경만 하지 않고 주민이 직접 나서서 함께하는 것입니다.",
+        "낱말 나누기: 주민 + 참여(어떤 일에 끼어 함께함)입니다.",
+        "생활 속 예: 주말 아침 동네 하천 청소에 우리 가족도 나갔습니다."
+      ],
+      "beats": [
+        "한 주민은 길가에서 서명지에 이름을 쓰고, 다른 주민은 집에서 시청 누리집에 의견을 올립니다.",
+        "또 다른 주민들은 마을 회의에 나와 손을 들고 말합니다.",
+        "주민이 지역의 문제를 해결해 나가는 데 함께하는 것이 주민 참여입니다."
+      ],
+      "img": "Three small scenes of the same neighborhood in one picture: a woman signs a petition sheet held by a volunteer at a street table; an elderly man at home types an opinion on a computer; residents raise their hands at a town meeting. No readable text.",
+      "imgKo": "한 동네의 세 장면: 길가 탁자에서 서명지에 이름을 쓰는 아주머니, 집에서 컴퓨터로 의견을 올리는 할아버지, 마을 회의에서 손을 들고 말하는 주민들."
+    },
+    "공동체": {
+      "en": "community",
+      "explain": [
+        "쉬운 뜻: 영어로 community입니다. 함께 살면서 기쁜 일, 힘든 일을 나누는 사람들의 무리입니다.",
+        "가족, 학급, 마을, 나라도 저마다 하나의 공동체입니다.",
+        "생활 속 예: 비 오는 날 우산이 없는 이웃에게 우산을 빌려줍니다."
+      ],
+      "beats": [
+        "아파트 마당에 이웃들이 모여 함께 김장을 합니다.",
+        "다 담근 김치를 혼자 사시는 할머니 댁에도 나누어 드립니다.",
+        "생활을 같이하며 서로 돕는 사람들이 모여 이룬 모임이 공동체입니다."
+      ],
+      "img": "In an apartment courtyard, neighbors of all ages make kimchi together on big mats, laughing as they rub red seasoning into cabbages. In the corner, HARIN and DOYUN carry a container of kimchi to an elderly woman who lives alone; she smiles at her door. No text.",
+      "imgKo": "아파트 마당에서 여러 나이의 이웃들이 큰 돗자리 위에 모여 웃으며 함께 김장을 하고, 한쪽에서 하린이와 도윤이가 김치 통을 혼자 사시는 할머니 댁 문 앞에 전해 드린다."
+    },
+    "공공 기관": {
+      "explain": [
+        "쉬운 뜻: 돈을 벌려는 가게가 아니라, 모두를 돕기 위해 나라나 지역이 세운 곳입니다.",
+        "낱말 나누기: 공공(여러 사람 모두의) + 기관(일을 맡아 하는 곳)입니다.",
+        "생활 속 예: 불이 나면 소방서, 아프면 보건소, 편지를 부칠 때는 우체국에 갑니다."
+      ],
+      "beats": [
+        "거리에 소방서, 우체국, 주민 센터가 나란히 있습니다.",
+        "불자동차가 출동하고, 주민들은 우체국에서 소포를 부칩니다.",
+        "여러 사람의 생활을 돕기 위해 나라나 지역에서 세운 곳이 공공 기관입니다."
+      ],
+      "img": "A town street with three public buildings side by side, each recognizable without words: a red fire station with a fire truck pulling out, a post office with a mailbox and people sending parcels, and a community service center where residents get help at a counter. No text on signs.",
+      "imgKo": "글자 없이도 알아볼 수 있는 소방서(불자동차가 나감), 우체국(우체통과 소포 부치는 사람), 주민 센터(창구에서 도움받는 주민)가 나란히 있는 거리."
+    },
+    "누리집": {
+      "en": "website",
+      "explain": [
+        "쉬운 뜻: 영어로 website입니다. 학교나 시청이 인터넷에 차려 놓은 알림 공간입니다.",
+        "낱말 나누기: 누리(세상) + 집, 인터넷 세상 속의 집입니다.",
+        "생활 속 예: 학교 누리집에 들어가면 이번 달 급식 식단표를 볼 수 있습니다."
+      ],
+      "beats": [
+        "도윤이가 아빠와 함께 컴퓨터로 시청의 인터넷 공간에 들어갔습니다.",
+        "축제 사진과 알림을 보고, 게시판에 궁금한 점도 남깁니다.",
+        "기관이 인터넷에서 여러 정보를 알리려고 만든 곳이 누리집입니다."
+      ],
+      "img": "DOYUN sits at a home computer with his father, looking at a city homepage on the screen made only of festival photos, a map icon and a message board layout drawn with shapes, no readable words. DOYUN points at a festival photo excitedly.",
+      "imgKo": "도윤이가 아빠와 집 컴퓨터로 시청 누리집을 본다. 화면에는 축제 사진, 지도 그림, 게시판 모양만 있고 도윤이가 축제 사진을 가리키며 신나 한다."
+    },
+    "민원": {
+      "explain": [
+        "쉬운 뜻: 주민이 시청이나 구청에 '이것 좀 해결해 주세요.' 하고 바라는 일을 내는 것입니다.",
+        "누리집에 글을 올려도 되고, 전화하거나 주민 센터에 직접 가서 내도 됩니다.",
+        "생활 속 예: 놀이터 미끄럼틀이 부서졌다고 구청에 전화로 알립니다."
+      ],
+      "beats": [
+        "밤마다 골목 가로등이 꺼져 길이 깜깜합니다.",
+        "하린이 아빠가 구청에 고쳐 달라는 글을 올리자, 며칠 뒤 직원이 와서 고칩니다.",
+        "주민이 공공 기관에 어떤 일을 처리해 달라고 요구하는 것이 민원입니다."
+      ],
+      "img": "Three moments: a dark alley at night with a broken streetlight as HARIN walks nervously with her father; at home her father types on a laptop; a few days later a worker in a lift truck repairs the streetlight, which now shines brightly. No readable text.",
+      "imgKo": "밤에 가로등이 고장 나 깜깜한 골목을 하린이와 아빠가 걷고, 집에서 아빠가 노트북으로 글을 올리며, 며칠 뒤 작업 차에 탄 직원이 가로등을 고쳐 환해진다."
+    },
+    "서명 운동": {
+      "en": "petition",
+      "explain": [
+        "쉬운 뜻: 영어로 petition입니다. '나도 같은 생각이에요.' 하고 이름을 적어 힘을 모으는 일입니다.",
+        "낱말 나누기: 서명(자기 이름을 씀) + 운동(뜻을 이루려고 여럿이 벌이는 일)입니다.",
+        "이름이 많이 모일수록 공공 기관에 뜻이 크게 전해집니다."
+      ],
+      "beats": [
+        "주민들이 동네에 도서관이 필요하다며 길가에 탁자를 놓았습니다.",
+        "지나가던 이웃들이 같은 생각이라며 종이에 이름을 적습니다.",
+        "같은 뜻을 가진 사람들의 이름을 모아 전하는 활동이 서명 운동입니다."
+      ],
+      "img": "Residents set up a table on a busy sidewalk with a big poster showing a drawing of a library building. Passing neighbors line up to write their names on long sign-up sheets on clipboards, and a thick stack of filled sheets sits in a box. No readable text.",
+      "imgKo": "주민들이 길가에 도서관 그림 포스터를 붙인 탁자를 놓고, 지나가던 이웃들이 줄을 서서 서명지에 이름을 쓴다. 상자에 서명지가 두툼하게 쌓여 있다."
+    },
+    "공청회": {
+      "explain": [
+        "쉬운 뜻: 정하기 전에 '여러분 생각은 어떠세요?' 하고 누구나 와서 의견을 말하게 여는 회의입니다.",
+        "찬성하는 사람도, 반대하는 사람도 똑같이 말할 기회를 얻습니다.",
+        "생활 속 예: 놀이터를 주차장으로 바꿀지 정하기 전에 주민 센터에서 공청회를 엽니다."
+      ],
+      "beats": [
+        "새 길을 낼지 정하기 전에 시청 강당에 주민들이 모였습니다.",
+        "앞에 앉은 전문가의 설명을 듣고, 주민들이 차례로 마이크를 잡고 의견을 말합니다.",
+        "결정하기 전에 여러 사람의 의견을 듣고 나누는 공개 회의가 공청회입니다."
+      ],
+      "img": "A public hall at city hall: a panel of experts and officials sits at a long table on a low stage with blank name plates. Residents fill rows of chairs; an elderly woman stands holding a microphone to speak, while a young father raises his hand and waits. No readable text.",
+      "imgKo": "시청 강당 무대의 긴 탁자에 전문가와 공무원이 앉아 있고, 주민들이 객석을 채운 가운데 할머니가 일어나 마이크로 말하고 젊은 아빠가 손을 들고 기다린다."
+    },
+    "시민 단체": {
+      "explain": [
+        "쉬운 뜻: 나라나 회사가 아니라, 시민들이 뜻이 맞아 스스로 만든 모임입니다.",
+        "낱말 나누기: 시민(사회를 이루는 사람) + 단체(여럿이 모인 무리)입니다.",
+        "생활 속 예: 강을 지키는 모임, 버려진 동물을 돌보는 모임이 있습니다."
+      ],
+      "beats": [
+        "같은 조끼를 입은 사람들이 개울가에 모였습니다.",
+        "쓰레기를 줍고, 물속에 물고기가 잘 사는지 살펴봅니다.",
+        "사회에 이로운 일을 하려고 사람들이 스스로 모여 만든 모임이 시민 단체입니다."
+      ],
+      "img": "Volunteers of different ages wearing matching green vests gather along a stream. Some pick up trash with tongs and bags; others crouch to check the water and look at small fish through a magnifier. A plain green flag with a leaf symbol and no words flies by their tent.",
+      "imgKo": "같은 초록 조끼를 입은 여러 나이의 사람들이 개울가에서 집게로 쓰레기를 줍고, 몇은 쪼그려 앉아 물속 작은 물고기를 돋보기로 살핀다. 천막 옆에 나뭇잎 무늬 초록 깃발이 있다."
+    },
+    "캠페인": {
+      "en": "campaign",
+      "explain": [
+        "쉬운 뜻: 영어로 campaign입니다. '함께해요!' 하고 여럿이 힘을 모아 널리 알리는 활동입니다.",
+        "생활 속 예: 지구의 날에 학교 곳곳에 '전등을 꺼 주세요' 포스터를 붙입니다."
+      ],
+      "beats": [
+        "아침 교문 앞에 학생 자치회 친구들이 줄지어 섰습니다.",
+        "손을 맞잡은 그림 팻말을 들고 등교하는 친구들과 손뼉을 마주칩니다.",
+        "어떤 일을 널리 알리려고 여럿이 힘을 모아 벌이는 활동이 캠페인입니다."
+      ],
+      "img": "At the school gate in the morning, a row of student council members hold picket signs with friendly drawings of children holding hands and a heart, cheering and high-fiving arriving students. HARIN hands out small stickers. No readable text.",
+      "imgKo": "아침 교문 앞에 학생 자치회 친구들이 손잡은 아이들과 하트가 그려진 팻말을 들고 서서 등교하는 친구들과 손뼉을 마주치고, 하린이는 작은 붙임딱지를 나누어 준다."
+    },
+    "예산": {
+      "en": "budget",
+      "explain": [
+        "쉬운 뜻: 영어로 budget입니다. 돈을 쓰기 전에 '어디에 얼마 쓸까?' 미리 짜 보는 계획입니다.",
+        "생활 속 예: 시는 해마다 주민이 낸 세금을 어디에 얼마나 쓸지 예산을 짭니다.",
+        "예산보다 더 쓰면 다른 곳에 쓸 돈이 모자랍니다."
+      ],
+      "beats": [
+        "도윤이가 이번 달 용돈을 받았습니다.",
+        "쓰기 전에 책값, 간식값, 저금할 돈으로 나누어 병에 담습니다.",
+        "앞으로 쓸 돈을 미리 헤아려 짠 계획이 예산입니다."
+      ],
+      "img": "DOYUN sits at his desk with three clear jars and a few bills and coins. Before going shopping, he thinks carefully and divides the money into a jar with a book picture, a jar with a snack picture, and a jar with a piggy bank picture for saving. No numbers or text.",
+      "imgKo": "도윤이가 책상에 투명한 병 세 개를 놓고, 책 그림·간식 그림·돼지 저금통 그림이 붙은 병에 용돈을 나누어 담으며 쓸 곳을 미리 정한다."
+    },
+    "조례": {
+      "explain": [
+        "쉬운 뜻: 우리 지역에 꼭 맞게 지역 의회가 만든 약속, 곧 우리 지역의 법입니다.",
+        "주민이 뽑은 지역 의회 의원들이 모여 의논하고 만듭니다.",
+        "생활 속 예: 지역마다 학교 급식을 돕는 조례를 두고 있습니다."
+      ],
+      "beats": [
+        "시 의회에 주민이 뽑은 의원들이 모였습니다.",
+        "새가 유리창에 부딪히지 않게 하자는 안을 의논한 뒤, 찬성 단추를 누릅니다.",
+        "지역 의회가 만들어 그 지역에서 지키는 법이 조례입니다."
+      ],
+      "img": "Inside a city council chamber, council members of various ages sit in rows of desks. A large screen at the front shows a picture of a bird and a glass window covered with dot stickers. The members press voting buttons on their desks and most small lights glow green. No readable text.",
+      "imgKo": "시 의회 회의장에 여러 나이의 의원들이 앉아 있고, 앞 화면에 새와 점 무늬 붙임딱지를 붙인 유리창 그림이 떠 있다. 의원들이 책상의 단추를 누르자 대부분 초록 불이 켜진다."
+    },
+    "정책": {
+      "en": "policy",
+      "explain": [
+        "쉬운 뜻: 영어로 policy입니다. 시나 나라가 '이렇게 해서 이것을 이루겠다.' 하고 세운 계획입니다.",
+        "생활 속 예: 어린이가 버스를 싸게 탈 수 있게 해 주는 것도 정책입니다."
+      ],
+      "beats": [
+        "학교 앞 길에 차가 빨리 달려 아이들이 위험합니다.",
+        "시청은 과속 방지 턱과 신호등을 늘리는 계획을 세워 실행합니다.",
+        "나라나 지역이 어떤 일을 이루려고 세운 계획과 방법이 정책입니다."
+      ],
+      "img": "Left: city officials in an office look at a map of school zones and make a plan, with drawings of speed bumps and traffic lights pinned on a board. Right: the road in front of a school now has a new speed bump, a yellow crosswalk area and a flashing light, and children cross safely. No text.",
+      "imgKo": "왼쪽은 시청 직원들이 학교 주변 지도와 과속 방지 턱·신호등 그림을 보며 계획을 세우고, 오른쪽은 학교 앞 길에 과속 방지 턱과 노란 횡단보도, 깜빡이는 신호등이 생겨 아이들이 안전하게 건넌다."
+    },
+    "협력": {
+      "en": "cooperation",
+      "explain": [
+        "쉬운 뜻: 영어로 cooperation입니다. 혼자서는 힘든 일을 서로 힘을 보태 함께 해내는 것입니다.",
+        "생활 속 예: 무거운 책상을 친구와 양쪽에서 들어 함께 옮깁니다."
+      ],
+      "beats": [
+        "주민, 선생님, 학생, 봉사자들이 유리 방음벽 앞에 모였습니다.",
+        "한 사람은 사다리를 붙잡고, 한 사람은 올라가 붙임딱지를 붙입니다.",
+        "서로 힘을 합하여 돕는 것이 협력입니다."
+      ],
+      "img": "Residents, a teacher, students and volunteers in matching vests work together at a tall glass noise barrier beside an apartment complex. One holds a ladder steady, one climbs and sticks rows of dot-pattern stickers on the glass, and students pass sticker sheets up. A small bird flies safely past. No text.",
+      "imgKo": "아파트 옆 높은 유리 방음벽 앞에서 주민, 선생님, 학생, 조끼 입은 봉사자들이 함께 일한다. 한 사람은 사다리를 붙잡고 한 사람은 올라가 점 무늬 붙임딱지를 붙이며, 학생들은 붙임딱지를 올려 준다."
+    }
+  },
+  "2-1": {
+    "지역문제": {
+      "explain": [
+        "쉬운 뜻: 우리 동네 여러 사람이 함께 불편을 겪어서 다 같이 풀어야 하는 일입니다.",
+        "낱말 나누기: 지역(어느 땅의 범위) + 문제(풀어야 할 일)입니다.",
+        "생활 속 예: 학교 앞 좁은 길에 차가 많아 등굣길이 위험한 것도 지역문제입니다."
+      ],
+      "beats": [
+        "우리 동네 골목 곳곳에 불편한 일이 보입니다.",
+        "인도를 막은 차와 쌓인 쓰레기 때문에 주민들이 얼굴을 찌푸립니다.",
+        "여러 주민이 불편을 겪어 함께 풀어야 할 일이 지역문제입니다."
+      ],
+      "img": "A neighborhood alley with several problems at once: cars parked on both sides block the sidewalk so a mother with a stroller must walk in the road, and a pile of trash bags sits beside a wall. HARIN and DOYUN squeeze past, frowning, and other residents look troubled too. No text.",
+      "imgKo": "양쪽에 세운 차 때문에 인도가 막혀 유모차 엄마가 찻길로 걷고, 벽 옆에 쓰레기봉투가 쌓인 골목을 하린이와 도윤이가 얼굴을 찌푸리며 비집고 지나간다."
+    },
+    "갈등": {
+      "en": "conflict",
+      "explain": [
+        "쉬운 뜻: 영어로 conflict입니다. 서로 바라는 것이 달라 줄다리기하듯 맞서는 것입니다.",
+        "한자 뜻: 葛(칡 갈)과 藤(등나무 등), 칡과 등나무 줄기가 서로 얽힌 모양입니다.",
+        "생활 속 예: 축구를 하자는 친구들과 피구를 하자는 친구들이 맞섭니다."
+      ],
+      "beats": [
+        "공원 빈터에 반려견 놀이터를 만들자는 주민들이 있습니다.",
+        "아이들 놀이터를 넓히자는 주민들은 고개를 저으며 맞섭니다.",
+        "생각이나 의견이 달라 서로 부딪치는 것이 갈등입니다."
+      ],
+      "img": "In a park, two groups of residents face each other across an empty fenced lot. One group holds dogs on leashes and points to the lot; the other group, parents with small children, shakes their heads and points to a crowded little playground. Tense faces and crossed arms, but no shouting. No text.",
+      "imgKo": "공원 빈터를 사이에 두고, 개를 데리고 온 주민들은 빈터를 가리키고 어린아이를 데려온 부모들은 붐비는 작은 놀이터를 가리키며 고개를 젓는다. 팔짱 낀 굳은 얼굴들."
+    },
+    "공존": {
+      "explain": [
+        "쉬운 뜻: 서로 밀어내지 않고 한곳에서 함께 잘 지내는 것입니다.",
+        "생활 속 예: 오래 산 할머니와 새로 이사 온 외국인 가족이 한 동네에서 서로 도우며 삽니다."
+      ],
+      "beats": [
+        "아파트 한쪽에 길고양이 쉼터와 밥그릇이 놓여 있습니다.",
+        "주민들은 정해진 곳에서만 밥을 주고, 고양이는 그곳에서 조용히 쉽니다.",
+        "서로 도우며 함께 살아가는 것이 공존입니다."
+      ],
+      "img": "A tidy corner of an apartment complex with a small wooden cat shelter and clean food bowls. Two stray cats nap there peacefully while residents walk by on the path; an elderly woman refills the water with a smile, and children wave at the cats from a distance. No text.",
+      "imgKo": "아파트 단지 한쪽에 작은 나무 고양이 쉼터와 깨끗한 밥그릇이 있고, 길고양이 두 마리가 편히 자는 옆으로 주민들이 지나가며 할머니는 물을 채우고 아이들은 멀리서 손을 흔든다."
+    },
+    "면담": {
+      "en": "interview",
+      "explain": [
+        "쉬운 뜻: 영어로 interview입니다. 그 일을 잘 아는 사람을 직접 만나 궁금한 것을 묻는 것입니다.",
+        "물어볼 것을 미리 적어 가고, 들은 말을 받아 적습니다.",
+        "생활 속 예: 보건 선생님께 감기를 막는 방법을 여쭙고 대답을 적습니다."
+      ],
+      "beats": [
+        "하린이와 도윤이가 질문지를 들고 동네 빵집에 갔습니다.",
+        "빵집 주인께 궁금한 것을 여쭙고, 대답을 공책에 받아 적습니다.",
+        "사람을 직접 만나 묻고 이야기를 듣는 것이 면담입니다."
+      ],
+      "img": "HARIN and DOYUN visit a neighborhood bakery holding a clipboard with a question list. HARIN politely asks the baker, a middle-aged man in an apron, while DOYUN writes the answers in a notebook. The baker gestures toward the street outside as he explains. No readable text.",
+      "imgKo": "하린이와 도윤이가 질문지를 들고 동네 빵집에 가서, 하린이는 앞치마 두른 빵집 아저씨께 공손히 묻고 도윤이는 대답을 공책에 받아 적는다."
+    },
+    "원인": {
+      "en": "cause",
+      "explain": [
+        "쉬운 뜻: 영어로 cause입니다. '왜 이런 일이 생겼지?'에 대한 대답입니다.",
+        "원인을 알아야 같은 일이 다시 생기지 않게 막을 수 있습니다.",
+        "생활 속 예: 배가 아픈 원인을 생각해 보니 아이스크림을 세 개나 먹었습니다."
+      ]
+    },
+    "파악": {
+      "explain": [
+        "쉬운 뜻: 무엇이 어떻게 된 일인지 손에 꽉 쥐듯 확실하게 알아내는 것입니다.",
+        "생활 속 예: 새 학년 첫 주에 우리 반 친구들의 이름과 얼굴을 다 파악했습니다."
+      ],
+      "beats": [
+        "하린이가 처음 가는 도서관에 혼자 가야 합니다.",
+        "정류장의 버스 노선도를 꼼꼼히 보며 어디서 타고 어디서 내릴지 알아 둡니다.",
+        "내용을 확실하게 이해하여 아는 것이 파악입니다."
+      ],
+      "img": "HARIN stands at a bus stop studying a route map on the shelter wall, tracing the line with her finger from her stop to a library icon. In a second small scene she rides the bus confidently and gets off right in front of the library. No readable text.",
+      "imgKo": "하린이가 버스 정류장 벽의 노선도를 손가락으로 따라가며 도서관 그림까지 길을 확인하고, 이어서 버스를 자신 있게 타고 도서관 앞에서 바로 내린다."
+    },
+    "출처": {
+      "en": "source",
+      "explain": [
+        "쉬운 뜻: 영어로 source입니다. 그 자료나 말이 맨 처음 어디서 나왔는지입니다.",
+        "출처를 보면 그 자료를 믿어도 될지 알 수 있습니다.",
+        "생활 속 예: 신문 사진 아래에 누가 찍은 사진인지 작은 글씨로 적혀 있습니다."
+      ]
+    },
+    "분석": {
+      "en": "analysis",
+      "explain": [
+        "쉬운 뜻: 영어로 analysis입니다. 자료를 잘게 나누어 하나씩 들여다보며 뜻을 알아내는 것입니다.",
+        "생활 속 예: 좋아하는 과일 조사표를 살펴 우리 반은 딸기를 가장 좋아한다는 것을 알아냅니다."
+      ]
+    },
+    "해결 방안": {
+      "en": "solution",
+      "explain": [
+        "쉬운 뜻: 영어로 solution입니다. 문제라는 자물쇠를 여는 열쇠 같은 방법입니다.",
+        "낱말 나누기: 해결(문제를 풂) + 방안(방법과 계획)입니다.",
+        "생활 속 예: 복도에서 자꾸 부딪히는 문제를 풀려고 '오른쪽으로 걷기'를 정했습니다."
+      ],
+      "beats": [
+        "모둠 친구들이 쓰레기 문제를 풀 방법을 의논합니다.",
+        "저마다 생각한 방법을 붙임쪽지에 그려 보드에 붙입니다.",
+        "문제를 풀기 위한 방법이나 계획이 해결 방안입니다."
+      ],
+      "img": "A group of four students including HARIN and DOYUN stands before a whiteboard covered in colorful sticky notes, each with a simple drawing of a solution: a reusable cup, a recycling bin, a poster and a collecting robot. HARIN sticks on a new note while DOYUN points to one, thinking. No readable text.",
+      "imgKo": "하린이와 도윤이를 비롯한 모둠 네 명이 화이트보드 앞에 서 있다. 보드에는 다회용 컵, 분리수거함, 포스터, 수거 로봇이 그려진 알록달록한 붙임쪽지가 가득하고, 하린이가 새 쪽지를 붙인다."
+    },
+    "탐색": {
+      "en": "explore",
+      "explain": [
+        "쉬운 뜻: 영어로 explore입니다. 탐험가처럼 이곳저곳을 살피며 필요한 것을 찾아보는 것입니다.",
+        "인터넷 검색, 책 찾기, 사람에게 묻기가 모두 탐색하는 방법입니다.",
+        "생활 속 예: 도서관 책꽂이를 하나하나 살피며 공룡 책을 찾아봅니다."
+      ],
+      "beats": [
+        "도윤이는 다른 동네가 쓰레기 문제를 어떻게 풀었는지 궁금합니다.",
+        "책장 사이를 다니며 책을 꺼내 보고, 컴퓨터로도 찾아봅니다.",
+        "필요한 것을 이리저리 살피며 찾는 것이 탐색입니다."
+      ],
+      "img": "In a library, DOYUN, wearing a playful explorer's hat, moves between bookshelves pulling out books and peeking inside. Then he sits at a computer looking through several picture results on the screen with no readable words. No text.",
+      "imgKo": "도서관에서 도윤이가 탐험가 모자를 쓰고 책장 사이를 다니며 책을 꺼내 보고, 이어서 컴퓨터 앞에 앉아 그림 자료들을 찾아본다."
+    },
+    "장단점": {
+      "en": "pros and cons",
+      "explain": [
+        "쉬운 뜻: 영어로 pros and cons입니다. 좋은 점과 아쉬운 점을 한데 묶어 부르는 말입니다.",
+        "낱말 나누기: 장점(좋은 점) + 단점(모자란 점)을 합친 말입니다.",
+        "생활 속 예: 자전거는 빠르고 즐겁지만, 비 오는 날에는 타기 어렵습니다."
+      ]
+    },
+    "비용": {
+      "en": "cost",
+      "explain": [
+        "쉬운 뜻: 영어로 cost입니다. 무슨 일을 하려면 내야 하는 돈입니다.",
+        "생활 속 예: 놀이공원에 가려면 입장료, 차비, 밥값 같은 비용이 듭니다."
+      ],
+      "beats": [
+        "하린이가 엄마와 생일 잔치 준비물을 사러 갔습니다.",
+        "케이크, 풍선, 과자를 사고 계산대에서 돈을 냅니다.",
+        "어떤 일을 하는 데 드는 돈이 비용입니다."
+      ],
+      "img": "HARIN and her mother stand at a supermarket checkout with a cart holding a birthday cake box, balloons and snacks. Her mother pays with cash, and HARIN watches the bills being handed over, realizing that a party costs money. No numbers or text.",
+      "imgKo": "하린이와 엄마가 생일 케이크, 풍선, 과자를 담은 수레를 끌고 마트 계산대에서 돈을 내고, 하린이가 건네지는 지폐를 바라본다."
+    },
+    "다수결": {
+      "en": "majority rule",
+      "explain": [
+        "쉬운 뜻: 영어로 majority rule입니다. 손을 더 많이 든 쪽으로 정하는 방법입니다.",
+        "낱말 나누기: 다수(많은 사람) + 결(정함), 많은 쪽을 따라 정한다는 뜻입니다.",
+        "생활 속 예: 반 이름 후보 셋 가운데 표를 가장 많이 받은 것으로 정합니다."
+      ],
+      "beats": [
+        "칠판에 피구공 그림과 줄넘기 그림이 붙어 있습니다.",
+        "피구 쪽에 손이 더 많이 올라가고, 줄넘기에 손을 든 하린이도 손뼉을 칩니다.",
+        "더 많은 사람이 찬성한 쪽으로 정하는 방법이 다수결입니다."
+      ],
+      "img": "In a classroom, two pictures are pinned on the board: a dodgeball and a jump rope. Students raise their hands, and clearly more hands go up for the dodgeball picture while DOYUN at the board counts them. HARIN, who voted for jump rope, claps for the result. No numbers or text.",
+      "imgKo": "칠판에 피구공 그림과 줄넘기 그림이 붙어 있고, 피구 쪽에 손이 훨씬 많이 올라가 도윤이가 손을 센다. 줄넘기에 손을 든 하린이도 결과에 손뼉을 친다."
+    },
+    "제안": {
+      "en": "suggestion",
+      "explain": [
+        "쉬운 뜻: 영어로 suggestion입니다. '이렇게 해 보면 어때요?' 하고 내 생각을 내놓는 것입니다.",
+        "생활 속 예: 친구에게 '쉬는 시간에 같이 줄넘기할래?' 하고 묻습니다."
+      ],
+      "beats": [
+        "주말에 무엇을 할지 가족이 이야기를 나눕니다.",
+        "도윤이가 공원 소풍 그림을 보여 주며 함께 가 보자고 말합니다.",
+        "생각이나 의견을 내놓아 함께 생각해 보자고 하는 것이 제안입니다."
+      ],
+      "img": "At the family dinner table, DOYUN holds up a crayon drawing of a picnic in a park with a kite and smiles hopefully. His parents and grandmother lean in to think about it, and his father starts to nod. No text.",
+      "imgKo": "저녁 식탁에서 도윤이가 공원에서 연을 날리며 소풍하는 크레파스 그림을 들고 기대에 찬 얼굴로 웃고, 부모님과 할머니가 몸을 기울여 생각하다 아빠가 고개를 끄덕인다."
+    },
+    "일회용품": {
+      "explain": [
+        "쉬운 뜻: 쓰기는 편하지만 한 번 쓰고 나면 바로 쓰레기가 되는 물건입니다.",
+        "낱말 나누기: 일회용(한 번 씀) + 품(물건)입니다.",
+        "생활 속 예: 배달 음식에 딸려 오는 나무젓가락과 플라스틱 숟가락이 일회용품입니다."
+      ],
+      "beats": [
+        "공원 소풍이 끝나자 종이컵, 플라스틱 숟가락, 비닐봉지가 쌓였습니다.",
+        "모두 한 번 쓰고 버린 것들이라 쓰레기통이 넘칩니다.",
+        "한 번 쓰고 버리도록 만든 물건이 일회용품입니다."
+      ],
+      "img": "After a picnic in a park, an overflowing trash bin is piled with paper cups, plastic spoons, straws, takeout containers and plastic bags. HARIN and DOYUN stand looking at it in surprise, holding their own reusable water bottles. No text.",
+      "imgKo": "공원 소풍 뒤 쓰레기통이 종이컵, 플라스틱 숟가락, 빨대, 배달 용기, 비닐봉지로 넘치고, 하린이와 도윤이가 자기 물병을 든 채 놀라서 바라본다."
+    },
+    "분리배출": {
+      "explain": [
+        "쉬운 뜻: 쓰레기를 한 통에 몽땅 넣지 않고 종류별로 나누어 내놓는 것입니다.",
+        "낱말 나누기: 분리(따로 나눔) + 배출(밖으로 내놓음)입니다.",
+        "생활 속 예: 우유 팩은 씻어 말린 뒤 다른 종이와 따로 모읍니다."
+      ],
+      "beats": [
+        "아파트 분리수거장에 종이, 페트병, 캔, 유리병 통이 나란히 있습니다.",
+        "도윤이는 페트병의 비닐을 떼어 넣고, 아빠는 상자를 접어 종이 통에 넣습니다.",
+        "쓰레기를 종류에 따라 나누어 내놓는 것이 분리배출입니다."
+      ],
+      "img": "At an apartment recycling station, separate colored bins stand in a row, each marked only with a picture: paper, plastic bottle, can, glass bottle and plastic film. DOYUN peels the label off a plastic bottle before putting it in, while his father puts flattened boxes into the paper bin. No text.",
+      "imgKo": "아파트 분리수거장에 종이·페트병·캔·유리병·비닐 그림만 붙은 통들이 나란히 있고, 도윤이가 페트병 비닐을 떼어 넣는 옆에서 아빠가 납작하게 접은 상자를 종이 통에 넣는다."
+    },
+    "재활용": {
+      "en": "recycling",
+      "explain": [
+        "쉬운 뜻: 영어로 recycling입니다. 다 쓴 물건이 다시 쓸모 있는 물건으로 태어나는 것입니다.",
+        "생활 속 예: 빈 깡통을 모으면 녹여서 새 깡통으로 다시 만듭니다."
+      ],
+      "beats": [
+        "다 마신 페트병을 깨끗이 씻어 모읍니다.",
+        "공장에서 페트병을 잘게 부수고 녹여 실을 뽑아 옷을 짓습니다.",
+        "쓰고 난 물건을 다시 쓰거나 다른 물건으로 만들어 쓰는 것이 재활용입니다."
+      ],
+      "img": "A three-step picture from left to right: DOYUN drops rinsed plastic bottles into a collection bin; in a factory the bottles are shredded into small flakes and spun into thread; finally DOYUN wears a new sports jacket made from that thread, smiling. Curved arrows link the steps. No text.",
+      "imgKo": "왼쪽부터 도윤이가 씻은 페트병을 모으는 통에 넣고, 공장에서 페트병이 잘게 부서져 실로 뽑히며, 마지막에 그 실로 만든 새 운동복을 도윤이가 입고 웃는다. 굽은 화살표가 잇는다."
+    },
+    "과대 포장": {
+      "explain": [
+        "쉬운 뜻: 속은 작은데 겉 포장만 크고 겹겹이 싸서 부풀린 것입니다.",
+        "낱말 나누기: 과대(지나치게 큼) + 포장(물건을 쌈)입니다.",
+        "생활 속 예: 과자 봉지를 뜯었더니 과자보다 빈 공기가 더 많습니다."
+      ],
+      "beats": [
+        "명절 선물로 커다란 상자가 왔습니다.",
+        "상자 안에 또 상자, 그 안에 스티로폼과 비닐이 있고 사과는 두 개뿐입니다.",
+        "실제보다 크고 좋아 보이게 지나치게 싸는 것이 과대 포장입니다."
+      ],
+      "img": "HARIN opens a huge, fancy holiday gift box on the living room floor. Inside is another box, then foam trays and plastic wrap, and at the very center just two apples. A pile of packaging waste surrounds her and she looks surprised. No text.",
+      "imgKo": "하린이가 거실에서 커다랗고 화려한 명절 선물 상자를 연다. 상자 속 상자, 스티로폼과 비닐을 지나 한가운데에 사과 두 개만 있고, 둘레에 포장 쓰레기가 수북하다."
+    },
+    "무단 투기": {
+      "explain": [
+        "쉬운 뜻: 허락도 없이 아무 데나 몰래 쓰레기 같은 것을 내다 버리는 것입니다.",
+        "낱말 나누기: 무단(허락 없이) + 투기(던져 버림)입니다.",
+        "생활 속 예: 밤에 골목 전봇대 아래에 쓰레기봉투를 몰래 두고 가는 것입니다."
+      ],
+      "beats": [
+        "밤에 누군가 공터에 쓰레기봉투를 몰래 두고 갑니다.",
+        "아침이 되자 쓰레기가 쌓여 냄새가 나고, 지나가는 주민들이 코를 막습니다.",
+        "물건을 정해지지 않은 곳에 함부로 내다 버리는 것이 무단 투기입니다."
+      ],
+      "img": "Left: at night, a shadowy figure sneaks a trash bag beside an empty lot fence, next to a sign that shows only a crossed-out trash bag picture. Right: the next morning, a pile of trash bags and a broken chair sit there, and residents walking by hold their noses. No text.",
+      "imgKo": "왼쪽은 밤에 그림자 같은 사람이 쓰레기봉투 금지 그림 표지판 옆 공터 울타리에 몰래 봉투를 두는 모습, 오른쪽은 다음 날 아침 봉투와 부서진 의자가 쌓여 지나가는 주민들이 코를 막는 모습."
+    },
+    "소음": {
+      "en": "noise",
+      "explain": [
+        "쉬운 뜻: 영어로 noise입니다. 귀를 막고 싶을 만큼 시끄러워 괴로운 소리입니다.",
+        "생활 속 예: 위층에서 쿵쿵 뛰는 발소리가 밤늦게까지 들립니다."
+      ],
+      "beats": [
+        "아파트 옆 공사장에서 아침부터 쿵쾅 소리가 납니다.",
+        "아기는 깨서 울고, 하린이는 귀를 막고 숙제를 합니다.",
+        "듣기 싫게 시끄러운 소리가 소음입니다."
+      ],
+      "img": "Morning in an apartment beside a construction site: a pile driver and a drill pound loudly outside the window, shown by jagged sound-wave lines. Inside, a baby wakes and cries in a crib, and HARIN covers her ears at her desk while trying to do homework. No text.",
+      "imgKo": "아파트 창밖 공사장에서 기계가 쿵쾅거리며 울퉁불퉁한 소리 물결이 퍼지고, 집 안에서는 아기가 깨서 울고 하린이가 책상에서 귀를 막고 숙제를 한다."
+    }
+  },
+  "2-2": {
+    "특성": {
+      "en": "characteristic",
+      "explain": [
+        "쉬운 뜻: 영어로 characteristic입니다. 다른 것과 견주었을 때 그것에만 있는 남다른 모습입니다.",
+        "생활 속 예: 강원특별자치도는 산이 많고 눈이 많이 내려 스키장이 많습니다."
+      ],
+      "beats": [
+        "바닷가 마을에는 고기잡이배와 생선 말리는 줄이 보입니다.",
+        "산골 마을에는 비탈에 계단밭이 있고 숲이 우거져 있습니다.",
+        "다른 것과 구별되는 그것만의 성질이 특성입니다."
+      ],
+      "img": "A split picture in the same drawing style. Left: a seaside village with fishing boats in a harbor and fish drying on lines. Right: a mountain village with terraced fields on the slopes and thick forest. No text.",
+      "imgKo": "왼쪽은 항구에 고기잡이배가 있고 줄에 생선을 말리는 바닷가 마을, 오른쪽은 비탈에 계단밭이 있고 숲이 우거진 산골 마을."
+    },
+    "고유": {
+      "explain": [
+        "쉬운 뜻: 다른 데서 빌려 오지 않고 처음부터 그것에만 있던 것입니다.",
+        "주로 '고유한', '고유의' 꼴로 씁니다.",
+        "생활 속 예: 한복과 김치는 우리나라 고유의 옷과 음식입니다."
+      ],
+      "beats": [
+        "추석에 마을 사람들이 한복을 입고 모였습니다.",
+        "옛날부터 이 땅에서 이어 온 윷놀이와 송편을 함께 즐깁니다.",
+        "처음부터 그곳만이 지니고 있는 것을 고유하다고 합니다."
+      ],
+      "img": "A Chuseok scene in a Korean village: people in colorful hanbok play yutnori on a straw mat, women dance in a circle holding hands under the full moon, and a table holds songpyeon rice cakes. HARIN and DOYUN in hanbok join in. No text.",
+      "imgKo": "추석 날 마을 사람들이 고운 한복을 입고 멍석 위에서 윷놀이를 하고, 보름달 아래 손을 잡고 둥글게 돌며, 상 위에 송편이 놓여 있다. 한복 입은 하린이와 도윤이도 함께한다."
+    },
+    "생산물": {
+      "en": "product",
+      "explain": [
+        "쉬운 뜻: 영어로 product입니다. 사람이 땀 흘려 일해서 거두거나 만들어 낸 것입니다.",
+        "낱말 나누기: 생산(만들어 냄) + 물(물건)입니다.",
+        "생활 속 예: 우리 집 식탁의 쌀, 김, 달걀은 누군가 일해서 얻은 생산물입니다."
+      ],
+      "beats": [
+        "농부는 밭에서 감자를 캐고, 어부는 바다에서 고등어를 잡습니다.",
+        "공장에서는 운동화가 줄지어 만들어져 나옵니다.",
+        "농사, 고기잡이, 공장 일 등으로 만들어 낸 물건이 생산물입니다."
+      ],
+      "img": "Three side-by-side scenes: a farmer digging up potatoes in a field, a fisherman hauling a net full of mackerel onto a boat, and workers in a factory where sneakers come down a production line. No text.",
+      "imgKo": "밭에서 감자를 캐는 농부, 배 위로 고등어 가득한 그물을 끌어 올리는 어부, 운동화가 줄지어 나오는 공장의 일꾼들이 나란히 있다."
+    },
+    "특산물": {
+      "explain": [
+        "쉬운 뜻: '이 고장 하면 이것!' 하고 떠오를 만큼 그곳에서 많이 나거나 맛 좋기로 이름난 것입니다.",
+        "낱말 나누기: 특(특별히) + 산물(그 땅에서 나는 물건)입니다.",
+        "생활 속 예: 영덕의 대게, 이천의 쌀, 보성의 녹차가 이름난 특산물입니다."
+      ],
+      "beats": [
+        "제주도에 여행 간 하린이네 가족이 시장에 들렀습니다.",
+        "가게마다 제주에서 많이 나는 귤과 한라봉이 수북이 쌓여 있습니다.",
+        "어느 지역에서 특별히 많이 나거나 이름난 물건이 특산물입니다."
+      ],
+      "img": "HARIN's family, on a trip to Jeju, walks through a traditional market. Stalls are piled high with bright orange tangerines and bumpy hallabong citrus fruits in baskets, and a vendor offers HARIN a taste. Stone walls and the silhouette of a volcanic mountain are visible beyond. No text.",
+      "imgKo": "제주에 여행 간 하린이네 가족이 시장을 걷는다. 가게마다 바구니에 귤과 울퉁불퉁한 한라봉이 수북하고 상인이 하린이에게 맛보기를 건넨다. 멀리 돌담과 한라산이 보인다."
+    },
+    "향토 음식": {
+      "explain": [
+        "쉬운 뜻: 할머니의 할머니 때부터 그 고장에서 먹어 온, 그곳만의 음식입니다.",
+        "낱말 나누기: 향토(태어나 자란 고장) + 음식입니다.",
+        "생활 속 예: 춘천 닭갈비, 전주 비빔밥, 안동 찜닭이 이름난 향토 음식입니다."
+      ],
+      "beats": [
+        "마을 음식 축제에서 어르신들이 그 고장 들에서 난 나물을 다듬습니다.",
+        "옛날부터 해 오던 방법 그대로 비빔밥을 만들어 나누어 줍니다.",
+        "고장에서 나는 재료로 예로부터 만들어 먹어 온 음식이 향토 음식입니다."
+      ],
+      "img": "At a village food festival, elderly villagers in aprons prepare a big bowl of bibimbap with piles of fresh greens and vegetables from nearby fields shown in baskets. They serve bowls to visitors, and HARIN and DOYUN taste it happily. No text.",
+      "imgKo": "마을 음식 축제에서 앞치마를 두른 어르신들이 근처 들에서 난 나물과 채소 바구니를 옆에 두고 큰 그릇에 비빔밥을 만들어, 하린이와 도윤이에게 나누어 준다."
+    },
+    "문화유산": {
+      "en": "cultural heritage",
+      "explain": [
+        "쉬운 뜻: 영어로 cultural heritage입니다. 조상이 물려준 보물로, 우리도 잘 지켜 물려주어야 합니다.",
+        "낱말 나누기: 문화(사람들이 이루어 온 생활 모습) + 유산(물려받은 것)입니다.",
+        "판소리나 김장처럼 손에 잡히지 않는 것도 문화유산입니다."
+      ],
+      "beats": [
+        "하린이네 가족이 옛 성곽을 따라 걷습니다.",
+        "수백 년 전 조상들이 쌓은 돌성이 지금도 튼튼하게 남아 있습니다.",
+        "조상이 남긴 것 가운데 물려줄 만한 가치가 있는 것이 문화유산입니다."
+      ],
+      "img": "HARIN's family walks along a long old stone fortress wall with a traditional Korean gate tower and curved tiled roofs, like Suwon Hwaseong. A guide points to the stones as HARIN touches the wall in wonder. Autumn trees stand around. No text.",
+      "imgKo": "하린이네 가족이 수원 화성 같은 옛 돌 성곽과 기와지붕 문루를 따라 걷고, 안내원이 돌을 가리키는 동안 하린이가 신기한 듯 성벽을 만진다."
+    },
+    "위인": {
+      "explain": [
+        "쉬운 뜻: 많은 사람에게 도움이 되는 훌륭한 일을 해서 오래도록 기억되는 사람입니다.",
+        "고장마다 그곳에서 태어나거나 살았던 위인을 기리는 기념관이 있습니다.",
+        "생활 속 예: 이순신 장군은 바다에서 나라를 지켜 위인으로 기억됩니다."
+      ],
+      "beats": [
+        "도윤이네 반이 고장의 기념관으로 체험 학습을 갔습니다.",
+        "옛날 이 고장에 살며 백성을 위해 큰일을 한 분의 책과 발명품을 봅니다.",
+        "훌륭한 일을 하여 이름이 널리 알려진 사람이 위인입니다."
+      ],
+      "img": "A class visits a memorial museum in their town. Glass cases display old books, brushes and a wooden invention; a large bronze statue of a historical scholar in traditional robes is seen only from behind, its face not shown. DOYUN and his classmates look up respectfully while the TEACHER explains. No text.",
+      "imgKo": "도윤이네 반이 고장 기념관에 갔다. 유리 상자 안에 옛 책, 붓, 나무 발명품이 있고 도포 입은 학자의 큰 동상은 뒷모습만 보이며, 아이들이 올려다보고 선생님이 설명한다."
+    },
+    "자랑거리": {
+      "explain": [
+        "쉬운 뜻: '우리 동네에는 이런 게 있어!' 하고 남에게 뽐내고 싶은 것입니다.",
+        "낱말 나누기: 자랑 + 거리(무엇을 할 만한 것), 자랑할 만한 것입니다.",
+        "생활 속 예: 오래된 벽화 골목이나 시장의 맛있는 떡볶이도 동네 자랑거리가 됩니다."
+      ],
+      "beats": [
+        "다른 고장에서 사촌이 놀러 왔습니다.",
+        "하린이는 동네 냇가를 따라 핀 벚꽃 길로 사촌을 데려가 신나게 소개합니다.",
+        "남에게 내세워 보일 만큼 훌륭하거나 이름난 것이 자랑거리입니다."
+      ],
+      "img": "HARIN proudly leads her visiting cousin by the hand along a stream lined with blooming cherry trees in her town, spreading her arms to show off the view. The cousin gazes up in awe at the pink petals. No text.",
+      "imgKo": "하린이가 놀러 온 사촌의 손을 잡고 동네 냇가의 벚꽃 길을 걸으며 두 팔을 벌려 자랑하고, 사촌은 분홍 꽃잎을 올려다보며 감탄한다."
+    },
+    "문화제": {
+      "explain": [
+        "쉬운 뜻: 고장의 옛이야기와 문화를 자랑하려고 크게 여는 잔치입니다.",
+        "낱말 나누기: 문화 + 제(축제), 문화를 기리는 축제입니다.",
+        "생활 속 예: 백제 문화제에서는 백제 사람 옷을 입은 사람들이 거리를 행진합니다."
+      ],
+      "beats": [
+        "고장의 거리에 옛날 옷을 입은 사람들이 깃발과 북을 들고 걸어갑니다.",
+        "구경하는 사람들은 투호 같은 옛 놀이를 해 보며 고장의 옛이야기를 듣습니다.",
+        "지역의 역사나 문화를 기리고 알리려고 여는 큰 행사가 문화제입니다."
+      ],
+      "img": "A town festival parade: performers in ancient Korean royal court costumes and old-style soldier outfits, carrying no weapons, march with flags and drums. Spectators line the street; on the side, children try traditional games like tuho. HARIN and DOYUN watch excitedly. No text.",
+      "imgKo": "옛 궁중 옷과 옛 병사 옷을 입은 사람들이 무기 없이 깃발과 북을 들고 거리를 행진하고, 길가 구경꾼들 옆에서 아이들이 투호 같은 옛 놀이를 해 본다. 하린이와 도윤이가 신나게 구경한다."
+    },
+    "상징": {
+      "en": "symbol",
+      "explain": [
+        "쉬운 뜻: 영어로 symbol입니다. 말 대신 그림이나 모양으로 어떤 뜻을 나타내는 것입니다.",
+        "시와 군도 저마다 꽃, 나무, 새를 정해 그 고장의 상징으로 삼습니다.",
+        "생활 속 예: 빨간 하트는 사랑을, 네잎클로버는 행운을 나타냅니다."
+      ],
+      "beats": [
+        "어느 시청 앞 깃발에 꽃과 새 그림이 그려져 있습니다.",
+        "그 시에 많이 피는 꽃과 자주 보이는 새를 골라 고장을 나타내게 했습니다.",
+        "어떤 뜻이나 생각을 담아 나타낸 그림이나 기호가 상징입니다."
+      ],
+      "img": "In front of a city hall, a large flag waves with a simple emblem made of a flower and a bird and no letters. Below it, a flowerbed of the same flower blooms, and the same kind of bird perches on a nearby tree. HARIN compares the flag picture with the real flower and bird. No text.",
+      "imgKo": "시청 앞에 꽃과 새로 된 글자 없는 무늬 깃발이 펄럭이고, 아래 꽃밭에 같은 꽃이 피고 나무에 같은 새가 앉아 있다. 하린이가 깃발 그림과 진짜 꽃과 새를 견주어 본다."
+    },
+    "홍보": {
+      "explain": [
+        "쉬운 뜻: '이런 게 있어요, 놀러 오세요!' 하고 여러 사람에게 널리 알리는 것입니다.",
+        "포스터, 영상, 소식지, 누리집이 모두 홍보에 쓰입니다.",
+        "생활 속 예: 학예회를 알리려고 학교 곳곳에 포스터를 붙입니다."
+      ],
+      "beats": [
+        "하린이네 모둠이 우리 고장 축제를 알리는 영상을 찍습니다.",
+        "도윤이가 카메라 앞에서 축제의 볼거리를 신나게 소개합니다.",
+        "어떤 것을 널리 알리는 것이 홍보입니다."
+      ],
+      "img": "HARIN's group films a short video in front of their town's colorful festival grounds hung with lanterns. HARIN holds a tablet camera while DOYUN speaks enthusiastically, gesturing to the lanterns behind him; another classmate holds up a hand-drawn poster made only of pictures. No readable text.",
+      "imgKo": "하린이네 모둠이 등불이 걸린 고장 축제장 앞에서 짧은 영상을 찍는다. 하린이가 태블릿을 들고 도윤이가 뒤의 등불을 가리키며 신나게 소개하고, 다른 친구는 그림만 있는 손그림 포스터를 든다."
+    },
+    "소식지": {
+      "en": "newsletter",
+      "explain": [
+        "쉬운 뜻: 영어로 newsletter입니다. 알릴 소식을 모아 정해진 때마다 보내는 얇은 신문입니다.",
+        "낱말 나누기: 소식(새로 생긴 일을 알리는 말) + 지(종이)입니다.",
+        "생활 속 예: 학교에서 달마다 학교 소식지를 집으로 보내 줍니다."
+      ],
+      "beats": [
+        "아파트 우편함에 시청에서 보낸 얇은 책자가 꽂혀 있습니다.",
+        "펼쳐 보니 다음 달 축제 사진과 새로 생긴 도서관 소식이 실려 있습니다.",
+        "알릴 일을 모아 때마다 펴내는 책자가 소식지입니다."
+      ],
+      "img": "DOYUN pulls a thin, colorful booklet from his apartment mailbox. Then he and his grandmother read it together on a bench; the pages show photos of a festival, a new library building and a map, with no readable words. No text.",
+      "imgKo": "도윤이가 아파트 우편함에서 알록달록한 얇은 책자를 꺼내고, 할머니와 의자에 앉아 축제 사진, 새 도서관 사진, 지도가 실린 쪽을 함께 읽는다."
+    },
+    "사회 관계망 서비스": {
+      "en": "social media",
+      "explain": [
+        "쉬운 뜻: 영어로 social media입니다. 흔히 SNS라고 부르는, 소식을 주고받는 인터넷 공간입니다.",
+        "낱말 나누기: 사회 관계망(사람과 사람을 잇는 그물) + 서비스입니다.",
+        "생활 속 예: 여행 사진을 올리면 멀리 사는 친척이 하트를 눌러 줍니다."
+      ],
+      "beats": [
+        "축제에 간 삼촌이 휴대 전화로 사진을 찍어 올립니다.",
+        "멀리 사는 친구들이 그 사진을 보고 하트를 누르고 댓글을 답니다.",
+        "글과 사진을 올려 서로 소식을 주고받는 인터넷 공간이 사회 관계망 서비스입니다."
+      ],
+      "img": "At a mud festival on a beach, HARIN's uncle takes a photo with his phone and posts it. Small floating heart and empty speech-bubble icons with no words rise from the phone toward tiny pictures of friends in faraway cities who look at their own phones and smile. No text.",
+      "imgKo": "바닷가 머드 축제에서 하린이 삼촌이 휴대 전화로 사진을 찍어 올리자, 전화기에서 하트와 빈 말풍선 그림이 떠올라 먼 도시에서 휴대 전화를 보며 웃는 친구들에게 닿는다."
+    },
+    "경제": {
+      "en": "economy",
+      "explain": [
+        "쉬운 뜻: 영어로 economy입니다. 돈과 물건이 사람들 사이를 돌고 도는 살림살이입니다.",
+        "생활 속 예: 빵집은 빵을 팔아 번 돈으로 밀가루를 사고, 일하는 사람에게 월급을 줍니다."
+      ],
+      "beats": [
+        "축제 날 다른 지역에서 관광객이 많이 찾아왔습니다.",
+        "식당, 기념품 가게, 과일 가게마다 손님이 북적이고 돈이 오갑니다.",
+        "물건과 서비스를 만들고 사고팔며 살림을 꾸려 가는 모든 활동이 경제입니다."
+      ],
+      "img": "A small town during a festival: tourists with backpacks crowd a street. A restaurant is full, a souvenir shop owner hands a bag to a customer, a farmer sells local fruit at a stall, and coins and bills change hands everywhere. Everyone looks busy and cheerful. No text or numbers.",
+      "imgKo": "축제가 열린 작은 고장의 거리에 배낭 멘 관광객이 북적이고, 식당은 가득 차고 기념품 가게 주인은 손님에게 봉투를 건네며 농부는 과일을 판다. 곳곳에서 돈이 오간다."
+    }
+  }
+}

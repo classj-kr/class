@@ -20,10 +20,10 @@ animal-dragonfly|잠자리|382|477|.42|walk|wings
 animal-duck|오리|433|539|.65|walk|hood
 animal-eagle|독수리|421|540|.60|walk|hood
 animal-elephant|코끼리|428|545|.68|walk|hood
-animal-flamingo|플라밍고|427|515|.40|walk|hood
+animal-flamingo|플라밍고|424|507|.40|walk|hood
 animal-fox|여우|430|535|.64|walk|hood
 animal-frog|개구리|433|524|.63|walk|hood
-animal-giraffe|기린|400|539|.50|walk|hood
+animal-giraffe|기린|374|520|.50|walk|hood
 animal-hedgehog|고슴도치|464|548|.68|walk|hood
 animal-hippopotamus|하마|435|535|.69|walk|hood
 animal-kangaroo|캥거루|402|530|.52|walk|hood
@@ -32,7 +32,7 @@ animal-ladybug|무당벌레|408|538|.60|walk|wings
 animal-leopard-gecko|레오파드 게코|420|535|.63|walk|hood
 animal-lion|사자|458|537|.75|walk|hood
 animal-llama|양|405|544|.55|walk|hood
-animal-meerkat|미어캣|381|532|.63|walk|hood
+animal-meerkat|미어캣|379|501|.63|walk|hood
 animal-monkey|원숭이|427|538|.68|walk|hood
 animal-mouse|생쥐|453|537|.64|walk|hood
 animal-octopus|문어|430|580|.67|crawl|tentacles
@@ -44,7 +44,7 @@ animal-penguin|펭귄|433|535|.66|walk|hood
 animal-praying-mantis|사마귀|416|533|.54|walk|hood
 animal-rabbit|토끼|454|541|.49|walk|hood
 animal-ratsnake|구렁이|476|542|.68|walk|hood
-animal-rhinoceros|코뿔소|436|538|.57|walk|hood
+animal-rhinoceros|코뿔소|421|499|.57|walk|hood
 animal-seal|물개|423|532|.68|walk|hood
 animal-shark|상어|445|534|.58|walk|hood
 animal-sloth|나무늘보|432|540|.61|walk|hood
@@ -99,24 +99,24 @@ fruit-watermelon|수박|437|537|.27|walk|slice
 game-dice|주사위|442|540|.62|walk|box
 object-boot|운동화|471|538|.59|walk|boot
 object-camera|카메라|448|540|.49|walk|box
-object-eraser|지우개|446|539|.37|walk|box
-object-gift|선물|450|537|.55|walk|box
+object-eraser|지우개|446|501|.37|walk|box
+object-gift|선물|450|527|.55|walk|box
 object-key|열쇠|580|580|.18|hop|flat
 object-lamp|스탠드|413|537|.61|walk|lamp
 object-lock|자물쇠|444|536|.42|walk|box
-object-mitten|장갑|477|542|.34|walk|round
+object-mitten|장갑|510|546|.34|walk|round
 object-newspaper|신문|441|538|.16|walk|flat
 object-pencil|연필|527|548|.36|walk|long
-object-radio|라디오|426|536|.43|walk|box
-object-sack|복주머니|435|535|.64|walk|round
-object-television|텔레비전|434|537|.52|walk|box
+object-radio|라디오|430|519|.43|walk|box
+object-sack|복주머니|447|531|.64|walk|round
+object-television|텔레비전|434|514|.52|walk|box
 object-umbrella|우산|425|538|.49|walk|custom
 object-watch|시계|580|580|.28|hop|flat
 sport-baseball|야구공|446|537|.75|walk|ball
 sport-basketball|농구공|443|536|.73|walk|ball
 sport-bowling|볼링|580|580|.47|hop|bowling
 sport-soccer|축구공|440|537|.75|walk|ball
-theme-balloons|풍선|432|537|.64|walk|balloons
+theme-balloons|풍선|454|548|.64|walk|balloons
 theme-cactus|선인장|540|548|.50|walk|cactus
 theme-cherry-blossom|벚꽃|457|539|.25|walk|flower
 theme-cloud|구름|432|537|.55|walk|cloud
@@ -130,7 +130,7 @@ theme-music-note|음표|437|537|.35|walk|flat
 theme-paper-airplane|종이비행기|436|508|.16|walk|paper
 theme-rainbow|무지개|420|537|.28|walk|rainbow
 theme-rose|장미|443|538|.65|walk|flower
-theme-snowman|눈사람|431|580|.64|hop|snowman
+theme-snowman|눈사람|409|580|.64|hop|snowman
 theme-star|별|447|538|.38|walk|flower
 theme-sun|태양|432|537|.43|walk|flower
 theme-sunflower|해바라기|452|538|.32|walk|flower
@@ -146,11 +146,11 @@ vegetable-pumpkin|호박|432|537|.67|walk|fruit
 vegetable-radish|무|536|549|.44|walk|long
 vegetable-sweet-potato|고구마|537|548|.48|walk|fruit
 vegetable-tomato|토마토|435|537|.66|walk|fruit
-vehicle-airplane|비행기|439|538|.56|walk|airplane
+vehicle-airplane|비행기|409|491|.56|walk|airplane
 vehicle-airship|비행선|449|478|.70|walk|airship
 vehicle-ambulance|구급차|471|515|.62|walk|box
 vehicle-boat|배|580|580|.75|glide|boat
-vehicle-fire-truck|소방차|405|530|.53|walk|box
+vehicle-fire-truck|소방차|427|518|.53|walk|box
 vehicle-helicopter|헬리콥터|422|520|.66|walk|custom
 vehicle-hot-air-balloon|열기구|580|580|.71|float|balloon
 vehicle-rocket|로켓|580|580|.63|float|rocket
@@ -165,6 +165,8 @@ const profiles=Object.fromEntries(rows.map(row=>{
 function set(id,values){Object.assign(profiles[id],values);}
 const held=["animal-frog","animal-hedgehog","animal-meerkat","animal-monkey","animal-mouse","animal-owl","animal-sloth","food-fish-pastry","food-pizza","fruit-avocado","fruit-grape","fruit-mango","fruit-pineapple","object-boot","object-pencil","theme-cactus","theme-clover","theme-guitar","theme-lightning","theme-paper-airplane","vegetable-carrot","vegetable-corn","vegetable-eggplant","vegetable-potato","vegetable-radish","vegetable-sweet-potato","vehicle-airplane","vehicle-airship","vehicle-ambulance","vehicle-submarine"];
 for(const id of held)set(id,{holdArms:true});
+set('object-mitten',{cx:350,armHalf:40,holdArms:true});
+set('theme-balloons',{holdArms:true});
 for(const [id,x,y] of [
   ["animal-crested-gecko",403,412],["animal-crocodile",411,409],["animal-dog",438,395],["animal-dolphin",415,414],
   ["animal-dragon",414,427],["animal-fox",205,430],["animal-giraffe",399,460],["animal-kangaroo",395,390],
@@ -173,6 +175,8 @@ for(const [id,x,y] of [
   ["animal-viper",420,412],["animal-wolf",421,390]
 ])set(id,{tail:{x,y,side:id==="animal-fox"?"left":"right"}});
 set("animal-elephant",{cx:310,armHalf:62,holdArms:true});
+set('animal-squirrel',{cx:262,neck:418,leg:537,armHalf:69});
+set('animal-panda',{neck:400,leg:534});
 set("animal-giraffe",{armHalf:45});set("animal-kangaroo",{cx:287,armHalf:51,holdArms:true});
 set("animal-ostrich",{cx:290,armHalf:45,holdArms:true});set("animal-flamingo",{armHalf:42,holdArms:true});
 set("animal-rabbit",{armHalf:48});set("animal-unicorn",{armHalf:51});
@@ -211,4 +215,8 @@ for(const [id,headColor] of Object.entries({
  'vegetable-eggplant':'#876094','vegetable-potato':'#c3a47c','vegetable-pumpkin':'#dd994e',
  'vegetable-radish':'#eee9d8','vegetable-sweet-potato':'#a7697c','vegetable-tomato':'#ce695a'
 }))set(id,{headColor});
+for(const id of ['animal-viper','animal-ratsnake']){
+ set(id,{motion:'glide',shape:'snake',neck:580,leg:580,holdArms:true,revision:2});
+ delete profiles[id].tail;
+}
 module.exports=profiles;

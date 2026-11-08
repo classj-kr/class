@@ -1,0 +1,2020 @@
+{
+  "scope": "Source illustration review; not a 3D quality approval",
+  "avatars": [
+    {
+      "id": "animal-bear",
+      "name": "곰",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-bear-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-bear-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-bear.webp",
+      "originalSha256": "cdec61c19adf082a5242f4f72c8ad921108c31eac77037fcc83ecb1989fdf1f8",
+      "sourceSha256": "15dfcbda1b4bdaa540377fe01579831b6e6e2ebf3f2d3a610b2fdb360068be12",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        125,
+        59,
+        513,
+        584
+      ],
+      "modelSha256": "507139bd8dcaee4f26a6c4ea80b8d081d515f266fbb6a218b98938d40f32c4fe",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Ear paint boundary remains uneven from the side."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs11-noses25.webp"
+      ],
+      "historicalEvidence": [
+        {
+          "modelSha256": "b98eafd1ef5846797ff849cd3cbf45915f4d2219fdaf3056f4737955b8d093ae",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/animal-fixes-final75.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "animal-bee",
+      "name": "꿀벌",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-butterfly",
+      "name": "나비",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-cat",
+      "name": "고양이",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-chick",
+      "name": "병아리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-crab",
+      "name": "게",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-crested-gecko",
+      "name": "크레스티드 게코",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-crocodile",
+      "name": "악어",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-deer",
+      "name": "사슴",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-dog",
+      "name": "강아지",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-dolphin",
+      "name": "돌고래",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-dragon",
+      "name": "드래곤",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-dragonfly",
+      "name": "잠자리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-duck",
+      "name": "오리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-eagle",
+      "name": "독수리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-elephant",
+      "name": "코끼리",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-elephant-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-elephant-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-elephant.webp",
+      "originalSha256": "371b7fdacce5bda4b55dd24d22414bbc1d460931bf9b5096e1eabe0026c27c6f",
+      "sourceSha256": "154f23f70c9e7dbace010a2ea8db5553760ffa6c4f95fed65f316ffa2d91dab6",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        48,
+        56,
+        592,
+        583
+      ],
+      "modelSha256": "79ef1c71843d4fe47a02c6e97198893a359c0183c00ccea4ff5e560660dd7fbb",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Trunk and ear silhouette need closer original matching; lower body needs separate review."
+      ],
+      "proofs": []
+    },
+    {
+      "id": "animal-flamingo",
+      "name": "플라밍고",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-flamingo-balanced.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-flamingo-balanced-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-flamingo.webp",
+      "originalSha256": "7e58f14aea73d076b8549d53ec0551a63085cc61b01ec3d7b6a16d25b23b5548",
+      "sourceSha256": "da3c09df6b02853e99a6b40cd42231e99cda93b6d7c5eb90bcbe19f0d50b173c",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        184,
+        102,
+        455,
+        543
+      ],
+      "modelSha256": "c5685d5ddd825473728ad7aa32ee4a806828cbf34e55d93cd32981d3ede8ec51",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": []
+    },
+    {
+      "id": "animal-fox",
+      "name": "여우",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-frog",
+      "name": "개구리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-giraffe",
+      "name": "기린",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-giraffe-balanced.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-giraffe-balanced-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-giraffe.webp",
+      "originalSha256": "ee24da3b23f639c8273d036cdfac6d9586087cd6a398473808bf5f8491ee8ee3",
+      "sourceSha256": "6eb2cad9286a0d7e7de1528c823e7fd4e5a1f4235ff7083e63fdc2644f2f2d8c",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        166,
+        59,
+        474,
+        546
+      ],
+      "modelSha256": "1a592e31bf001ca536a70ae971cd83b9c1613b3876998ea259fd9b603a103d85",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Ear and torso paint transitions remain uneven; rear torso markings need refinement."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs11-face-b25.webp"
+      ],
+      "historicalEvidence": [
+        {
+          "modelSha256": "0d73d22d498e0d6737dbaaf43394ff648f029ff668aa0fe6c603abad2d05435f",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/animal-patterns-final.webp"
+          ]
+        },
+        {
+          "modelSha256": "d40713f828eb5c24e97b053c628dd377e1ad0436dd031b265f76af182fe41373",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/batch7-shapes-final75.webp"
+          ]
+        }
+      ],
+      "resolvedInBatch7": [
+        "Detached limb tail fragment replaced by one connected tail and tuft; paired hooves rebuilt."
+      ]
+    },
+    {
+      "id": "animal-hedgehog",
+      "name": "고슴도치",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-hippopotamus",
+      "name": "하마",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-kangaroo",
+      "name": "캥거루",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-koala",
+      "name": "코알라",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-ladybug",
+      "name": "무당벌레",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-leopard-gecko",
+      "name": "레오파드 게코",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-lion",
+      "name": "사자",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-llama",
+      "name": "양",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-meerkat",
+      "name": "미어캣",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-meerkat-balanced.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-meerkat-balanced-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-meerkat.webp",
+      "originalSha256": "17223e5543bc2f3fc7a0a0310100c494c062b5162564f516ea0295fb7b54d070",
+      "sourceSha256": "d8c48d3d31b3c59946b45761ed1219c3943d819b0f275ca4d98f8201f09116c6",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        119,
+        59,
+        521,
+        522
+      ],
+      "modelSha256": "d1b98e2555e4b51f6c1ffff2244ac5c4164e3ee39952e74827e54a64da2e539e",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Side ear paint and tail finish need cleanup."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "79b600e619a97667d215d327e20bd5bf8230056ca38583a5a82099276ba7e8d5",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/tiger-meerkat-revised25.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "animal-monkey",
+      "name": "원숭이",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-mouse",
+      "name": "생쥐",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-octopus",
+      "name": "문어",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-ostrich",
+      "name": "타조",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-owl",
+      "name": "부엉이",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-panda",
+      "name": "판다",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-peacock",
+      "name": "공작",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-penguin",
+      "name": "펭귄",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-praying-mantis",
+      "name": "사마귀",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-rabbit",
+      "name": "토끼",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-ratsnake",
+      "name": "구렁이",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-ratsnake-coiled.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-ratsnake-coiled-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-ratsnake.webp",
+      "originalSha256": "a718a7fee20eaefa73c20c26713f604f778bba8c12143ba62916f1d302b25d55",
+      "sourceSha256": "bbe9e98332d8eecf73dbff75e42c21b4e59f3690d7ffb80ee94d7174649aad41",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        116,
+        61,
+        518,
+        580
+      ],
+      "modelSha256": "edd92c9f8a8eb308c6f30a85569df0f6a6c16ea43b55b7c2634a60c47bd43b64",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Front paint transition on hood and tail belly needs refinement."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/coiled-snakes-r3-75.webp"
+      ]
+    },
+    {
+      "id": "animal-rhinoceros",
+      "name": "코뿔소",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-rhinoceros-balanced.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-rhinoceros-balanced-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-rhinoceros.webp",
+      "originalSha256": "7632f8e6eaaa5f3d4b6c115ec3d30af08449c458c96a410f6ac1083e938e8f79",
+      "sourceSha256": "122f6e9e47c74dfcc63a0b17e192c6baa46e0f7481b06c45425113cd00bca8a7",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        162,
+        57,
+        474,
+        531
+      ],
+      "modelSha256": "97f2b1b816a5056e5eaf53c49d50ef7683edf93e288fa53d4fb3045779194695",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs11-face-d25.webp"
+      ]
+    },
+    {
+      "id": "animal-seal",
+      "name": "물개",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-shark",
+      "name": "상어",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-sloth",
+      "name": "나무늘보",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-snail",
+      "name": "달팽이",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-squirrel",
+      "name": "다람쥐",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-tiger",
+      "name": "호랑이",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-tiger-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-tiger-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-tiger.webp",
+      "originalSha256": "5367c7bdc8fb1e8e1c9d2563408c68e6d1fe65d470e3a0839e8697c714502464",
+      "sourceSha256": "7cf6f5c2f6761ab7d1008760a12c5a1ecd0a4fef7b6f854c47057b36dfa498f8",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        109,
+        56,
+        524,
+        586
+      ],
+      "modelSha256": "c8ed243b307b6d800becabbdd59022c5dfb08ca6cf1fe95a9353521b80e4910e",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Hood ear paint boundary and ankle paint still need cleanup."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs11-face-d25.webp"
+      ],
+      "historicalEvidence": [
+        {
+          "modelSha256": "bd8ede92e02f98d36411bbb33377b5fb82afb70ee029bc68b9033912f404b516",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/animal-patterns-final.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "animal-turtle",
+      "name": "거북이",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-unicorn",
+      "name": "유니콘",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-viper",
+      "name": "살모사",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/animal-viper-coiled-cute.webp",
+      "prompt": "outputs/avatar-lab/source-edits/animal-viper-coiled-cute-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/animal-viper.webp",
+      "originalSha256": "10e7aaa2a27120f89c2414b0867353491cd12ce557fe893b531211305871bc97",
+      "sourceSha256": "e1edb0a011e9fa3bf46039da05a920e26440b9464ebff6a69291b2e0209f048b",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        137,
+        57,
+        499,
+        544
+      ],
+      "modelSha256": "26fbb7e33bfa499814958913dd6902d699de7b7afa7bc1ac2e6550319375900d",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Hood silhouette, side paint transition and coil spots still need refinement."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/coiled-snakes-r3-75.webp"
+      ]
+    },
+    {
+      "id": "animal-whale",
+      "name": "고래",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "animal-wolf",
+      "name": "늑대",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "award-trophy",
+      "name": "트로피",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "drink-bubble-tea",
+      "name": "버블티",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-bingsu",
+      "name": "빙수",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-birthday-cake",
+      "name": "생일 케이크",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-candy",
+      "name": "사탕",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-cheese",
+      "name": "치즈",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-chocolate",
+      "name": "초콜릿",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-cookie",
+      "name": "쿠키",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-donut",
+      "name": "도넛",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-dumpling",
+      "name": "만두",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-fish-pastry",
+      "name": "붕어빵",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-fried-egg",
+      "name": "달걀프라이",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-gimbap",
+      "name": "김밥",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-hamburger",
+      "name": "햄버거",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-hot-dog",
+      "name": "핫도그",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-ice-cream",
+      "name": "아이스크림",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-macaron",
+      "name": "마카롱",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-pizza",
+      "name": "피자",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-popcorn",
+      "name": "팝콘",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-pudding",
+      "name": "푸딩",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-ramen",
+      "name": "라멘",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-rice-ball",
+      "name": "삼각김밥",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-sandwich",
+      "name": "샌드위치",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-sushi",
+      "name": "초밥",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-toast",
+      "name": "토스트",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "food-tteokbokki",
+      "name": "떡볶이",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "fruit-apple",
+      "name": "사과",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "584a4d0d7839dc4cb320619f16db6550d0697405f4ae9a85b44d4837d92d36d2",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-b25.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "fruit-avocado",
+      "name": "아보카도",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "fruit-banana",
+      "name": "바나나",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "fruit-blueberry",
+      "name": "블루베리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "fruit-cherry",
+      "name": "체리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "fruit-grape",
+      "name": "포도",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "fruit-mango",
+      "name": "망고",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "4c5249c7e5660982c6085968097ef7b7322c01301c5fc523a11e6944535479f2",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-b25.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "fruit-melon",
+      "name": "멜론",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "fruit-orange",
+      "name": "오렌지",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "d551bd6b20b1535df46af96c0234f8bacadd526ab23eaa3525222b6461148c7b",
+      "proofs": [],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "fruit-peach",
+      "name": "복숭아",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "00b3b47a0e6bbb9515b3de15c31f96934b7005631011ef3e9812b4c04035a3cc",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-b25.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "fruit-persimmon",
+      "name": "감",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "ac2e3c756e7c82a699beebc9ebb5cd8cfe5b6d71e80b3ee2367ce370867c5002",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-a75.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "fruit-pineapple",
+      "name": "파인애플",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "c13363bc165537223c925b024654af691eb31547213892f83cc7f1a337441d24",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-a75.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "fruit-strawberry",
+      "name": "딸기",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "7adfccdacfb367a296ff3b1cd167aadf460df45789db258eb44437ac16d5fd5c",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-a75.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "fruit-watermelon",
+      "name": "수박",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "game-dice",
+      "name": "주사위",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "object-boot",
+      "name": "운동화",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-boot-centered.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-boot-centered-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-boot.webp",
+      "originalSha256": "ea4b08c07e8f51c0826e84fa67862bb0acde992b24c88edeca647cec08405192",
+      "sourceSha256": "6569a27d3f97e9a711867dc8ac3faf3c898eeca001dfb11daa8eccd36201b7f9",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        75,
+        59,
+        565,
+        581
+      ],
+      "modelSha256": "9d4de0c6df66e205fb76a52b1439a49f6139fd249df0411907ccd0af724dc8c5",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Toe cap and lace transitions need refinement."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "45c4993487b2bd0a3d59fdbc5160472c7ebdaf831c58b0841f2a4233d4201154",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page24.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-camera",
+      "name": "카메라",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-camera-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-camera-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-camera.webp",
+      "originalSha256": "4eed5981cf7ad8b8cbf042e6b630d5fb20ffedaef8658ce0a25c739ce4c6bac0",
+      "sourceSha256": "53df46dcbd44f122286e498102431ca0237861095dd93526969507b4bc5571cd",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        108,
+        63,
+        531,
+        582
+      ],
+      "modelSha256": "fd88442e75a9cab4dd1816b52b06dc525d152638bc9c9ea668d7d58c051a5e43",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "484ac50ceada2dc5ff92143ef6db6936811bf9c5c49b004d5540aee3f9906aae",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page24.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-eraser",
+      "name": "지우개",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-eraser-balanced.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-eraser-balanced-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-eraser.webp",
+      "originalSha256": "1283ae4c100e9ea7199d8af169f22017dd4524ab0188175b20242b8d3727ec5d",
+      "sourceSha256": "b450d9332428f7fe4b6a2786fd3b5a70bfdb67afc2483d1efe14dff028f9621f",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        177,
+        59,
+        459,
+        524
+      ],
+      "modelSha256": "3f874eab7ffc0fa86c56cc3e1f250dc06b2fa69e3d26b27f0d662da1d59f3439",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "00f7ecdb2d15da9dff0b0378a05b623de1fee7982344c55a6bc7c97d4bee9976",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page24.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-gift",
+      "name": "선물",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-gift-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-gift-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-gift.webp",
+      "originalSha256": "3047906ebcd59bd679c8f0f193e45f0841c049c356d022a81fbda403f064a2ad",
+      "sourceSha256": "0df5c78d22ae1010397a2c119bfe5cd4afaca9d032ed4a5f1a4e9110939f5133",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        146,
+        65,
+        492,
+        565
+      ],
+      "modelSha256": "5944b7cf2bae8046e9a6c0cfed72042c80e96c56f0e5f0f65cd1fac13177938d",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "3e7390147e588b677aec1769f3a0e9b2dbaa0af52286aaab0e16872b0aba8873",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page25.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-key",
+      "name": "열쇠",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-key-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-key-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-key.webp",
+      "originalSha256": "755705c9d297f3a7e7c4386047b15d1beeef2991d8fb105940a0081f477fbc58",
+      "sourceSha256": "8d8fe83bd48803af6a57b7cf99c3a2304695234d1eb2dc69602d29872ca46bcc",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        178,
+        60,
+        455,
+        586
+      ],
+      "modelSha256": "4d144b0cf4378236028fe053f873cd4435cda793b013fe18f71b1e63b22d10b8",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page25.webp"
+      ]
+    },
+    {
+      "id": "object-lamp",
+      "name": "스탠드",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-lamp-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-lamp-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-lamp.webp",
+      "originalSha256": "5d97a113168b2db9bd68a2c923f3e5915ecfb2a0326799f1eba529159b5a04a8",
+      "sourceSha256": "d1baab65563a8cc53eee02cf39a23882a17d13a99591a196204bd21122cca28a",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        123,
+        59,
+        517,
+        581
+      ],
+      "modelSha256": "63f17aae679eef40eb63e2c59cddfc998ccc30e79756435a9211ab659dc3bcee",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Shade-to-face connection and lower collar need refinement."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "86fba533bc08cee3f113ca796e279ceec90d337195ae88588e06286f46a5b101",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page25.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-lock",
+      "name": "자물쇠",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-lock-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-lock-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-lock.webp",
+      "originalSha256": "2b52cb02ab5b7e1c6dc4a7411f4123001143c97c3298365aad905de09a062230",
+      "sourceSha256": "64e3a84ea366e7c724dbb8bd34cdc726b204a4a9e7c2815b0ac763cac1ed29b5",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        168,
+        60,
+        469,
+        579
+      ],
+      "modelSha256": "2fef17d71e3b1d147afe0f0a39839f850a20eaf58b8573228c5ce145f4a397c9",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "bb808da7f3f81597c125fc5654948d9d43f79588fa6cd7db51ebad624d5117ea",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page25.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-mitten",
+      "name": "장갑",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "81da7db5228deca6e6e0de07d5381ea5ea836d69e53e1b82dc6626f384f1b213",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/batch7-shapes-final75.webp"
+      ],
+      "resolvedInBatch7": [
+        "Rounded mitten volume, thumb, cuff, compact torso and paired feet rebuilt."
+      ],
+      "openModelIssues": [
+        "Cuff appears too thin at its side edges; back knit finish needs refinement."
+      ]
+    },
+    {
+      "id": "object-newspaper",
+      "name": "신문",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-newspaper-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-newspaper-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-newspaper.webp",
+      "originalSha256": "04655d43ed66ab7d6a9ac5c8ef33b82d07acd9057f43af5f00c69a4c8bd06395",
+      "sourceSha256": "b6f79061522eb1486a22c6a5695c1fb15fde0919330503baabbd2ce7ff782db9",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        130,
+        61,
+        509,
+        580
+      ],
+      "modelSha256": "ea5266a2896ddad73a38ce3f0fba7217d8ef4a9c03ec7f80b32a0200b18ed605",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "9d0352acae443f64a980f472830edf7f1117468ab45fa13aa5809a5bf4aa3727",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page26.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-pencil",
+      "name": "연필",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-pencil-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-pencil-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-pencil.webp",
+      "originalSha256": "9faac14678fc6fc9325b213c3ae8fe565803a86961c65e840627e021c15eeab7",
+      "sourceSha256": "162f172be52544da8994460c40bcd80dbeacc6f566d6771521225436dd26040a",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        166,
+        58,
+        470,
+        579
+      ],
+      "modelSha256": "4e0c2ef6184c531a4450fe90247c8919188d8ad6d44ace94bd4b55a375f0e3ea",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Tip and face side paint boundaries need refinement."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs10-food-final0.webp",
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs10-food-final25.webp",
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs10-food-final50.webp",
+        "outputs/qa/avatar-lab/rebuild-20261108/repairs10-food-final75.webp"
+      ],
+      "historicalEvidence": [
+        {
+          "modelSha256": "fd3bae2ae17f98edcff24fa949302e4c4a503ff8d40b384741c3549e9447286d",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page26.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-radio",
+      "name": "라디오",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-radio-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-radio-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-radio.webp",
+      "originalSha256": "783d9bd8429ff55ec6d9940ff2e8a75708a1ed3b1fd4d71bcc38f76490fabde8",
+      "sourceSha256": "d1811cfc18032a0c3a7f462f411431a70d0eb2ed9f9d8e58cf670b5d97d00b89",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        82,
+        56,
+        558,
+        553
+      ],
+      "modelSha256": "81ff9536bdf88d88e4ed348c6460ce1a983cb5412c61531bc318cfc8726faa6d",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "6a471c5b70310b9483e2344c676fcad1319863f976c7d8a92a809ff73646be7d",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page26.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-sack",
+      "name": "복주머니",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-sack-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-sack-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-sack.webp",
+      "originalSha256": "42b5830464a302d0afb8c7c9a0dfad35911b0d67d5dda8fc56fca96eef948491",
+      "sourceSha256": "0d1cb112193cba74d3b483be251ffd4c405009be1dadca75f191b39449307e27",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        130,
+        60,
+        509,
+        563
+      ],
+      "modelSha256": "28bafd12972d65b9ad8f178a746fd142535d3c236b28a1f81136a3bb00d4b939",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Sack mouth silhouette still differs from source."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "eb766f7bc0c8763242f6e43cfcb7c24f68fb958ed4c4109427660771fbd8ddfc",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page27.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "object-television",
+      "name": "텔레비전",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-television-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-television-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-television.webp",
+      "originalSha256": "ee5b9464bf76557ca3f28e8c4cb7f34ee30ee4f3233dac7756470a3f9dd65aa6",
+      "sourceSha256": "1c27c5540d5e581cf8ee3e5e161ac731a63bc08f1457669d72deaeff447dd71e",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        126,
+        63,
+        513,
+        545
+      ],
+      "modelSha256": "41a3fededba941514f92e0470d36deb37392c0f5305b2fdd1c755e3d467ba5d6",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Front paint boundary still visible; overall finish acceptance pending."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/batch7-shapes-final75.webp"
+      ],
+      "historicalEvidence": [
+        {
+          "modelSha256": "3132de001d44b7329c0bdc37fed83d69079328737fde2f238904360b8363e730",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page27.webp"
+          ]
+        }
+      ],
+      "resolvedInBatch7": [
+        "Case and screen proportions revised; thin rounded-box bevel geometry corrected."
+      ]
+    },
+    {
+      "id": "object-umbrella",
+      "name": "우산",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "object-watch",
+      "name": "시계",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/object-watch-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/object-watch-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/object-watch.webp",
+      "originalSha256": "a7d40217d232b5c5687df98db956719f045c7ab869d965438180a6800dd50599",
+      "sourceSha256": "f31b1310173922b125aac58b615cca6410c8ad239ed098ebc71c3e5e8e71e90e",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        139,
+        61,
+        501,
+        582
+      ],
+      "modelSha256": "1d3d4cbf423f854c67e7f644247e2aac4507cb8819825df1e46d98f46a34f35e",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-page27.webp"
+      ]
+    },
+    {
+      "id": "sport-baseball",
+      "name": "야구공",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "sport-basketball",
+      "name": "농구공",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "sport-bowling",
+      "name": "볼링",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "sport-soccer",
+      "name": "축구공",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-balloons",
+      "name": "풍선",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/theme-balloons-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/theme-balloons-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/theme-balloons.webp",
+      "originalSha256": "ee0a0c5d1977d692fcbb0c8e0d84bbdb0fd7c1bb937827d6551b63572c0d5e91",
+      "sourceSha256": "d11201d48f84360195230a2f853883a191a401ba93e7661798c895eb4396ca4f",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        103,
+        59,
+        537,
+        581
+      ],
+      "modelSha256": "6fc06a73057635bc8b9c084434863dd35a00f742d9c4d168a3a6e63d9627888c",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Small string paint remnants and hood finish remain."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/batch7-depth-final75.webp"
+      ],
+      "historicalEvidence": [
+        {
+          "modelSha256": "ff175f1fab78cc2afea5002f11d4d660e848a382980efa2dac39efdd67825a63",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-batch6-r2.webp"
+          ]
+        }
+      ],
+      "resolvedInBatch7": [
+        "Both hands and sleeves rebuilt at the string ends; held arms preserved in Walk."
+      ]
+    },
+    {
+      "id": "theme-cactus",
+      "name": "선인장",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-cherry-blossom",
+      "name": "벚꽃",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-cloud",
+      "name": "구름",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-clover",
+      "name": "클로버",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-crown",
+      "name": "왕관",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-guitar",
+      "name": "기타",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-lightning",
+      "name": "번개",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-maple-leaf",
+      "name": "단풍잎",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-moon",
+      "name": "달",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-music-note",
+      "name": "음표",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-paper-airplane",
+      "name": "종이비행기",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-rainbow",
+      "name": "무지개",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-rose",
+      "name": "장미",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-snowman",
+      "name": "눈사람",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/theme-snowman-armless.webp",
+      "prompt": "outputs/avatar-lab/source-edits/theme-snowman-armless-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/theme-snowman.webp",
+      "originalSha256": "94efdade2f1cf994d2b145765d2ff354eab34e445843d6695c18d65775048bd6",
+      "sourceSha256": "e275c213962468513e66853daff50e3b842e78a410781ab79292fad1fa12a2e4",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        137,
+        58,
+        499,
+        558
+      ],
+      "modelSha256": "cf96ccb5ebfb62d6bde1e6b1f06d0bd21630b069f1f2c6b5e6d0139fea22c1d9",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Front-to-side paint boundary remains visible; full finish review pending."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/snowman-armless25.webp",
+        "outputs/qa/avatar-lab/rebuild-20261108/snowman-armless75.webp"
+      ],
+      "verifiedChanges": [
+        "No human nose or duplicate carrot on child face",
+        "No arms, hands or legs in original or model",
+        "Two rounded snowballs and two buttons",
+        "Hop animation and floor contact checked"
+      ]
+    },
+    {
+      "id": "theme-star",
+      "name": "별",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-sun",
+      "name": "태양",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-sunflower",
+      "name": "해바라기",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "theme-tulip",
+      "name": "튤립",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-bell-pepper",
+      "name": "피망",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-broccoli",
+      "name": "브로콜리",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-carrot",
+      "name": "당근",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-corn",
+      "name": "옥수수",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-eggplant",
+      "name": "가지",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "a5f3bd29cbf703d640a6b8a074feda84cf7e28595c3434c33d3e9bac42fabac0",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-c25.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "vegetable-mushroom",
+      "name": "버섯",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-potato",
+      "name": "감자",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-pumpkin",
+      "name": "호박",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-radish",
+      "name": "무",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-sweet-potato",
+      "name": "고구마",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vegetable-tomato",
+      "name": "토마토",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "modelSha256": "bd51a925a9eb37476c31a062496327bf4d852df1ccbabfd70037ebcc711936b9",
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/fruit-batch8-final-c25.webp"
+      ],
+      "openModelIssues": [
+        "Surface finish and side artwork transitions remain under review."
+      ]
+    },
+    {
+      "id": "vehicle-airplane",
+      "name": "비행기",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/vehicle-airplane-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/vehicle-airplane-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/vehicle-airplane.webp",
+      "originalSha256": "f8545975f4ca8e59960eb58a52d79c67912b5b24eabc812bda72d33b8d8589f9",
+      "sourceSha256": "767fb126fa444ef1e0c0cc0534c8a9ce394522a25beae60f7db9534840e4aae3",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        45,
+        58,
+        592,
+        517
+      ],
+      "modelSha256": "6b4bda87ebdbdc659b0f1b447fa88d2c1a8ef6b3b5aa926f8be25601f0115cda",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Full visual acceptance and museum verification remain pending."
+      ],
+      "proofs": []
+    },
+    {
+      "id": "vehicle-airship",
+      "name": "비행선",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/vehicle-airship-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/vehicle-airship-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/vehicle-airship.webp",
+      "originalSha256": "13c550f612b8a40e2af6ca546253c7d6bb32e2f092a3d04f0d7795799eaa4f23",
+      "sourceSha256": "47d83314497cf41dc1577ad653d13df9d4cbe272a21c34909c5f51c6542fbc57",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        40,
+        119,
+        601,
+        521
+      ],
+      "modelSha256": "0236dc6d5370326e15840a489dc895a47c07ddf1954773e4302e8794827946ae",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Side paint seam and gondola connections need refinement."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "981ddca9b2d4818f5274c7aa384d06f73ceaeef19ef5fe0305d43f988848d9e2",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-vehicles.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vehicle-ambulance",
+      "name": "구급차",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/vehicle-ambulance-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/vehicle-ambulance-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/vehicle-ambulance.webp",
+      "originalSha256": "6a2c82225cb17fb20a18493b8392e58caf89b3aab0a0ecdfe59c0db966765d5d",
+      "sourceSha256": "c4fb84f9dbb8ee3ada2f362376782ecf3b34b2d56f092fbc0972cd0058dfe229",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        40,
+        81,
+        601,
+        557
+      ],
+      "modelSha256": "8df270fdc817533f9bb38a9044fa38f835339c3a031991cc1e0a9b7820b7f3c5",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Vehicle thickness and body/arm overlap need refinement."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "099fe0422ffde3392667370ebd6e08ccf4492c1d5bc07fea3a588e8b0157f536",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-vehicles.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vehicle-boat",
+      "name": "배",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/vehicle-boat-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/vehicle-boat-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/vehicle-boat.webp",
+      "originalSha256": "d492be7fc243b507e9252070f00aa2ee5d1a0acbe24da9199f962e9cf457f8f1",
+      "sourceSha256": "912dd220dabe4f3c026576353f71fa52d4a7c5c41b2d0deae25ff36fee198827",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        41,
+        59,
+        599,
+        581
+      ],
+      "modelSha256": "159b288455b707084399b27aae2fd313e95852bb77743645247191c00c20b9de",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Cabin side depth still too boxy; porthole and gunwale paint seams remain."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/batch7-boat-final75.webp"
+      ],
+      "historicalEvidence": [
+        {
+          "modelSha256": "273de32ee5a224dd8414c4c0b46c9d59cb205736e43d3dd3a31a0730b1db1692",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-vehicles.webp"
+          ]
+        }
+      ],
+      "resolvedInBatch7": [
+        "Hull rebuilt with curved depth, continuous red band and rounded gunwale; face kept directly on cabin."
+      ]
+    },
+    {
+      "id": "vehicle-fire-truck",
+      "name": "소방차",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/vehicle-fire-truck-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/vehicle-fire-truck-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/vehicle-fire-truck.webp",
+      "originalSha256": "99baa9a60a92bd9daa6953c1a21c5db667dd6b2dc8c841ce47a2ee4ff48997f9",
+      "sourceSha256": "8a705b4e40e1bd00de010d0fea422d7a418118de897aea37b2df32b4f5f4a264",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        131,
+        70,
+        509,
+        550
+      ],
+      "modelSha256": "9a5aa41157935338661d27d8b0b94853741cf2b1359faeb4f752d3d31ab7000a",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Front-to-side paint seams and chassis proportions need refinement."
+      ],
+      "proofs": [],
+      "historicalEvidence": [
+        {
+          "modelSha256": "3b7b6483268c7ce036762a700a027819ef407af93f913e4df5f71111c49ad1a5",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-vehicles.webp"
+          ]
+        },
+        {
+          "modelSha256": "063ec7589a5788b9192bd8407ed60bc16f8fc3d892ae8c96a2278efdaa8c0d0e",
+          "proofs": [
+            "outputs/qa/avatar-lab/rebuild-20261108/batch7-depth-final75.webp"
+          ]
+        }
+      ],
+      "resolvedInBatch7": [
+        "Solid ladder block replaced by connected rails and five rungs."
+      ]
+    },
+    {
+      "id": "vehicle-helicopter",
+      "name": "헬리콥터",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vehicle-hot-air-balloon",
+      "name": "열기구",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/vehicle-hot-air-balloon-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/vehicle-hot-air-balloon-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/vehicle-hot-air-balloon.webp",
+      "originalSha256": "a4f7e603e38aade26f26a1cd12c17ce7475441f14bd59c8bd45c9a4781de0dc9",
+      "sourceSha256": "5bb4126906b32ea13b13da1206d67adedfcb207b73977d0588adcd7f0a7a0ce3",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        129,
+        57,
+        507,
+        582
+      ],
+      "modelSha256": "ec4649ca4657667c315f413d10757cc09ba7e6df6a5ff2f28e0fbae3a4f94dd9",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Basket, arm/boot shape and side paint boundary need refinement."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-batch6-r2.webp"
+      ]
+    },
+    {
+      "id": "vehicle-rocket",
+      "name": "로켓",
+      "sourceReview": "revised_applied",
+      "detailedReview": "reviewed_original_and_avatar_size",
+      "modelReview": "rebuilt_visual_review_in_progress",
+      "candidate": "outputs/avatar-lab/source-edits/vehicle-rocket-clean.webp",
+      "prompt": "outputs/avatar-lab/source-edits/vehicle-rocket-clean-prompt.txt",
+      "backup": "outputs/avatar-lab/source-edits/originals/vehicle-rocket.webp",
+      "originalSha256": "da7e7c831eee97c87045b95387a5a6546a0ffaeb3547c51c4e75b32d51cb2c5c",
+      "sourceSha256": "9d2445b79067503fbee6b01924c8f70104a30b0c0a1d83b1f01c8537003274bb",
+      "size": [
+        640,
+        640
+      ],
+      "visibleBounds": [
+        137,
+        59,
+        502,
+        590
+      ],
+      "modelSha256": "60683af28695e16be40c561e2c0925a71002a2cf07554500e23864930d1449fb",
+      "modelSourceMatches": true,
+      "openModelIssues": [
+        "Fin shape and blue-band side paint need refinement."
+      ],
+      "proofs": [
+        "outputs/qa/avatar-lab/rebuild-20261108/source-cleanup-batch6-r2.webp"
+      ]
+    },
+    {
+      "id": "vehicle-submarine",
+      "name": "잠수함",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    },
+    {
+      "id": "vehicle-train",
+      "name": "기차",
+      "sourceReview": "contact_sheet_screened",
+      "detailedReview": "pending",
+      "modelReview": "pending"
+    }
+  ],
+  "appliedCount": 31,
+  "qualityRule": "Keep the identity; faces should be cute or pretty, with natural pupils, no human nostrils, clean finish and vertically short torsos. No anatomy is added to a bodyless character merely to enable walking."
+}

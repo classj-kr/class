@@ -17,10 +17,10 @@ module.exports=function smallAnimalHeads(THREE,k,id,head){
  }
  if(id==='animal-flamingo'){
   hood=egg('FlamingoHood',[.665,.575,.55],'#ee9caf',[0,1.365,0]);face=[320,337,108,79];
-  tube('FlamingoNeck',[[309,254,.47],[299,221,.43],[309,182,.34],[322,143,.20],[315,114,.09],[293,107,.02]],.13,'#ec8fa4');
-  egg('FlamingoBirdHead',[.275,.25,.21],'#ed9aac',[-.15,2.345,0]);
-  tube('FlamingoBeakBase',[[269,127,.10],[247,137,.12],[234,152,.12]],.105,'#f0c0b4');
-  tube('FlamingoBeakTip',[[234,152,.12],[225,169,.12],[226,181,.12]],.085,'#4f3735');
+  tube('FlamingoNeck',[[309,254,.47],[304,235,.43],[316,206,.34],[329,179,.20],[325,149,.09],[293,146,.02]],.13,'#ec8fa4');
+  egg('FlamingoBirdHead',[.26,.205,.21],'#ed9aac',[-.15,2.185,0]);
+  tube('FlamingoBeakBase',[[269,160,.10],[247,169,.12],[234,182,.12]],.105,'#f0c0b4');
+  tube('FlamingoBeakTip',[[234,182,.12],[225,198,.12],[226,204,.12]],.085,'#4f3735');
  }
  if(id==='animal-frog'){
   hood=egg('FrogHood',[.87,.77,.62],'#8fb84e',[0,1.465,0]);face=[323,307,122,100];

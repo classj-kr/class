@@ -165,6 +165,7 @@
       model=gltf.scene; prepareModel(model); scene.add(model); mixer=new THREE.AnimationMixer(model);
       for(const name of Object.keys(actions))delete actions[name];
       for(const clip of gltf.animations)actions[clip.name]=mixer.clipAction(clip);
+      if(actions.CharacterEffects)actions.CharacterEffects.play();
       currentAction=null;currentAvatar=key;viewer.dataset.currentAvatar=key;setMotion("Idle");paused=reducedMotion;updatePause();mixer.update(0);
       const button=avatarButtons.find(b=>b.dataset.avatar===key), info=descriptions[key];
       avatarButtons.forEach(b=>b.setAttribute("aria-pressed",String(b===button)));

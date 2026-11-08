@@ -32,16 +32,16 @@
       "id": "animal-bear",
       "source": "apps/classtools/assets/avatars/animal-bear.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "cdec61c19adf082a5242f4f72c8ad921108c31eac77037fcc83ecb1989fdf1f8",
-      "modelSha256": "a7bb151b368a1b81a736ad56b378d3120fb3a2ba51edf96c116f242ce8421123",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "15dfcbda1b4bdaa540377fe01579831b6e6e2ebf3f2d3a610b2fdb360068be12",
+      "modelSha256": "507139bd8dcaee4f26a6c4ea80b8d081d515f266fbb6a218b98938d40f32c4fe",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -50,7 +50,7 @@
       "source": "apps/classtools/assets/avatars/animal-bee.webp",
       "sourceCategory": "animal",
       "sourceSha256": "bf13ed878b8f07296fd43f366f83d0551ab956967db3f32535e981a219793f48",
-      "modelSha256": "48d76d2b804a5f31e2159790396dc94b59cc7e1c05d0163e8897ed269c65054a",
+      "modelSha256": "a2c4dab578e795c313dd99caf23607b64622d51af97fae39af96bc3705b11182",
       "structureNote": "Individual structure: bee. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -58,7 +58,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -67,7 +67,7 @@
       "source": "apps/classtools/assets/avatars/animal-butterfly.webp",
       "sourceCategory": "animal",
       "sourceSha256": "e2881d5d4aea002d194bfb868c7ecb925a6d94a15471be34da9767aac423d205",
-      "modelSha256": "1bd56bc1939e309449d1a7f143e3e2186561b6eae637feb5fad6c3eef5d68f76",
+      "modelSha256": "66584bf200911bc144bfecca611a5e5d72c6f1154cf782774e8c9f03d1916ac5",
       "structureNote": "Individual structure: narrow_appendages. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -75,7 +75,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -101,15 +101,15 @@
       "source": "apps/classtools/assets/avatars/animal-chick.webp",
       "sourceCategory": "animal",
       "sourceSha256": "7eafe3c34943d8d65eaee81e55b6330e719c271b85ade623aaf3269f662483b0",
-      "modelSha256": "6f1981affadcbf1097765560b27558ad8107f2ad8699ce8f78b4fbe8ececdbe4",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "4fd618e0ca50f8f5caac33faeb17d138e2f9ed082c0829b9b4aadb584ed128ad",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -118,15 +118,15 @@
       "source": "apps/classtools/assets/avatars/animal-crab.webp",
       "sourceCategory": "animal",
       "sourceSha256": "66320105d3dd381481fa5cebdc4e60a6a336ba9bd632c6acf1c74b0ab9204848",
-      "modelSha256": "efc1d283eba5a054e658ea5b10b284a7d68e9a13f58468683a835bc293ed9afb",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "8454dc490e03c22d1c5ebd6ea594fdae6f906471be4bd2ad537cf92de15ac02f",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -135,7 +135,7 @@
       "source": "apps/classtools/assets/avatars/animal-crested-gecko.webp",
       "sourceCategory": "animal",
       "sourceSha256": "6b47321e9b78dcb73ae312b47dc256e47c8b7831384a9c6aea9eef73b87ecc8c",
-      "modelSha256": "d2adb4e3f8af6c3d777adecbf3958e633b883815c90335de09a3594f962afc33",
+      "modelSha256": "a4244a704057d644da7b85768b98939e7b2df18ddb11a9ba991c1f563bd5720d",
       "structureNote": "Individual structure: gecko. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -143,7 +143,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -152,15 +152,15 @@
       "source": "apps/classtools/assets/avatars/animal-crocodile.webp",
       "sourceCategory": "animal",
       "sourceSha256": "2273699b48ce290e082321985bb0a30685cfc3f8c13e3939c3fbc9fd673e56a1",
-      "modelSha256": "2e171a52907c1130beeaf52b545d676c1e1e41b5d1150f335be1d70f1849ee79",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "0ba5e9c782fd87f2742821f09daed90ec54a60abb755205817d423ccc8c4da1b",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -169,15 +169,15 @@
       "source": "apps/classtools/assets/avatars/animal-deer.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3d821b8644b37cabdcb9760ccfdaee9598df265c6c9253dc3c7fa31e62812e16",
-      "modelSha256": "86e522561a024742d87b9511b85587df94ac9d10d4c430e7432dccfd1271cd1c",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "7799cb43aa93083aa477c2a39f873f3d8b81a38c609dc21d316480a7e04c4d4f",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -186,15 +186,15 @@
       "source": "apps/classtools/assets/avatars/animal-dog.webp",
       "sourceCategory": "animal",
       "sourceSha256": "1a364e809184092cdf2bd734d9da3f28dea72647e54ada6b79ac3d628c1032ae",
-      "modelSha256": "9dae5b46408dab05643c08801922c3bef1d36c1b40200a1bd8859bb099500abb",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "35b24e406352a54f283c35d69739b4ae22e4b87fe6ffb4003a874fb195cc0b6c",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -203,15 +203,15 @@
       "source": "apps/classtools/assets/avatars/animal-dolphin.webp",
       "sourceCategory": "animal",
       "sourceSha256": "122b41e4488ade3620376d197b6084f0961e98fed48298f881c87430a472592d",
-      "modelSha256": "2f1866f3193a01d964d79cfc421620462ac3a6ca2c20ed865f41249835dde85a",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "7a30856712a5364e1b306fc7fc1025040004e00ca3e49bf9eebd3f3b1d1324d5",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -220,15 +220,15 @@
       "source": "apps/classtools/assets/avatars/animal-dragon.webp",
       "sourceCategory": "animal",
       "sourceSha256": "86f21c6089cc0d9278eea28ec14986c2b191a7bd673d04d009b7d4077d8cee43",
-      "modelSha256": "4572ef1c2a62625e212097baaa82a77ca534159d24e63e00bd4cc1274c5bc327",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "580fa2a04139835dd96415e27f17543680e4bdfd1aeac89a1afd96bbb2013794",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -237,15 +237,15 @@
       "source": "apps/classtools/assets/avatars/animal-dragonfly.webp",
       "sourceCategory": "animal",
       "sourceSha256": "093797ef501a7f306346372a462785e47b1ceb212d43d8cdb00ea1f8111fb9ef",
-      "modelSha256": "5e9c59bdc087f08990a693b832935fce1fb4499f130f3156476984e69afa1715",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "879fc76f1a1f3cf4630cf0d911953f9e0648c5142ab7e317e05a730bfd87868b",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -254,15 +254,15 @@
       "source": "apps/classtools/assets/avatars/animal-duck.webp",
       "sourceCategory": "animal",
       "sourceSha256": "43f1466c3fc4103ebf0a6d40e0a211412e5f892c2c5e31619522dfb328b70147",
-      "modelSha256": "ccd871f8c5d5fde9c2d621cb194bfab462966137a03c454db98fbea894d3cd3b",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "4c2c1c59d6248980f4af2924dd3aa86e3e7cb027b78b92538fd4ea5eac5bc955",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -271,15 +271,15 @@
       "source": "apps/classtools/assets/avatars/animal-eagle.webp",
       "sourceCategory": "animal",
       "sourceSha256": "6bd413154d09ae445d96cf5848b48162caf0140885e33b079991d55d0a806739",
-      "modelSha256": "11340f249939d0de88d94675a29d786490b3057ab36751d51b9df2e41beaf5fa",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "18f52b4ae819144cf10f41fafc491da17c6540ada13287a38871b40f4114ca38",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -287,16 +287,16 @@
       "id": "animal-elephant",
       "source": "apps/classtools/assets/avatars/animal-elephant.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "371b7fdacce5bda4b55dd24d22414bbc1d460931bf9b5096e1eabe0026c27c6f",
-      "modelSha256": "74b3a21bc7c8bc2088eb438d61049ef06d33ac76e0963b6541b2e01f65ed4d3e",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "154f23f70c9e7dbace010a2ea8db5553760ffa6c4f95fed65f316ffa2d91dab6",
+      "modelSha256": "79ef1c71843d4fe47a02c6e97198893a359c0183c00ccea4ff5e560660dd7fbb",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -304,8 +304,8 @@
       "id": "animal-flamingo",
       "source": "apps/classtools/assets/avatars/animal-flamingo.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "7e58f14aea73d076b8549d53ec0551a63085cc61b01ec3d7b6a16d25b23b5548",
-      "modelSha256": "1b72367749e971c1dc6cc9b0b8568a402d2248820ab2d64787995043d2c89ea5",
+      "sourceSha256": "da3c09df6b02853e99a6b40cd42231e99cda93b6d7c5eb90bcbe19f0d50b173c",
+      "modelSha256": "c5685d5ddd825473728ad7aa32ee4a806828cbf34e55d93cd32981d3ede8ec51",
       "structureNote": "Individual structure: narrow_appendages. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -313,7 +313,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -322,15 +322,15 @@
       "source": "apps/classtools/assets/avatars/animal-fox.webp",
       "sourceCategory": "animal",
       "sourceSha256": "cbf2d5fb40772894878739e582ed321cd74a79cf9643886e8e124b2472560da6",
-      "modelSha256": "0afb4f6270a3aa1907efb1b2cfc277ab717fd14d666d41ca2744f97ae7507db9",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "6ead5690419bd29ceb128cbec9e8b8902ce5b717f9d4eb513a6c33ff26437a28",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -339,7 +339,7 @@
       "source": "apps/classtools/assets/avatars/animal-frog.webp",
       "sourceCategory": "animal",
       "sourceSha256": "2d6f387ef33bd905414548c2c2209162dd3da9faa699b04c863cfe281ca381d9",
-      "modelSha256": "3f4fb811e19cba87aaf1d2293570c00114817648880b549cc3c688ac780f4b51",
+      "modelSha256": "8dc431c55d0c5eb5301ec35125d81b8ae31ae680b26bad031047ccce14b280e0",
       "structureNote": "Individual structure: narrow_appendages. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -347,7 +347,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -355,16 +355,16 @@
       "id": "animal-giraffe",
       "source": "apps/classtools/assets/avatars/animal-giraffe.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "ee24da3b23f639c8273d036cdfac6d9586087cd6a398473808bf5f8491ee8ee3",
-      "modelSha256": "01e4fd476f675794b01a006d01934282c15245fdf562eccdb493e2157025b123",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "6eb2cad9286a0d7e7de1528c823e7fd4e5a1f4235ff7083e63fdc2644f2f2d8c",
+      "modelSha256": "1a592e31bf001ca536a70ae971cd83b9c1613b3876998ea259fd9b603a103d85",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -373,15 +373,15 @@
       "source": "apps/classtools/assets/avatars/animal-hedgehog.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3906259faea52d84d3960e6008f3eff600b7d7f69eed6e222e7927df04089ba0",
-      "modelSha256": "175ac8c2dad9fb8f7a3500c50cfca776ce8dc911a8fbdc8b34bd8e2af8c0d26b",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "6f76955254e277a8dd744a561345e866ff2fa4b7f3eedd5215e71f44a0f2b9bf",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -390,15 +390,15 @@
       "source": "apps/classtools/assets/avatars/animal-hippopotamus.webp",
       "sourceCategory": "animal",
       "sourceSha256": "677e53ca66f628a5f23eae202b183ad7af46285283062b594df98671f7f456e1",
-      "modelSha256": "896b5682af85a4f009543c37ddda99258034911a26431a716f54b12856c3719d",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "217c6ae080b97dc8f17ce67ea114753be7b33cf6d95f8b952faf9db5bb047074",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -407,15 +407,15 @@
       "source": "apps/classtools/assets/avatars/animal-kangaroo.webp",
       "sourceCategory": "animal",
       "sourceSha256": "1e17091064e3a686c57ed2a3a9f9431b6b12dfb2ebeb0db73846535e8ca11e78",
-      "modelSha256": "535699296654ad98aa66bf8cf0db8a11fe7b0f1fef1b39c0f0c9f402f0129a4c",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "2293399f93a8fafd4cd6f7ed1b8baf6fe91f90f9032ca40a615faa830a7a85c3",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -424,15 +424,15 @@
       "source": "apps/classtools/assets/avatars/animal-koala.webp",
       "sourceCategory": "animal",
       "sourceSha256": "80df92ca5728b8cd52da65c52d0e006312d19a4521731cadd90957a8a9240abb",
-      "modelSha256": "b621f65c527e503a98b0a746cf06b72aa8b1ee2ebabd891b7df9bdae5b735449",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "09ecf95976433976d3e4fce8d813c27f1391cd99f9ed19b7117b59480a30cd0a",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -441,15 +441,15 @@
       "source": "apps/classtools/assets/avatars/animal-ladybug.webp",
       "sourceCategory": "animal",
       "sourceSha256": "af0802b993a51991a83fdd2db03d6f01add0fefaebbde6accc3e7de4bc4cca49",
-      "modelSha256": "208cd631d02c576b006cef09bc579fe142002790e60119cccc9121f437dc1f08",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "e921d0e07a46fb5ae9de501131cad5c831dd6573cc9af694f2985dfa7c68b986",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -458,15 +458,15 @@
       "source": "apps/classtools/assets/avatars/animal-leopard-gecko.webp",
       "sourceCategory": "animal",
       "sourceSha256": "cda6259bfffaae25e76c3bdc89579fb1c56f9c31060faf7f7b6d6c602835bdf0",
-      "modelSha256": "cac1c9ea13c5e62b70404d3a87346baf616eaa40126f1205eb6c987df8711963",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "0cb7f86ac857338f2829eedca7ad158a9ba75b2edd9ee6fffb6c65204edece76",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -475,15 +475,15 @@
       "source": "apps/classtools/assets/avatars/animal-lion.webp",
       "sourceCategory": "animal",
       "sourceSha256": "78ca850c7a0e0f95af00df4b7132fa6ff5d96386ce9b3b218903031babc8d962",
-      "modelSha256": "2384c23a69fa7a33aaf6b37eb0996cd708bd607b61dd8c3f90ef2f55fe4fbbb5",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "c7ca21bc82a3d9fcaba27e56a185216a659cc66a4b19f072ab61b03403e2507c",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -492,15 +492,15 @@
       "source": "apps/classtools/assets/avatars/animal-llama.webp",
       "sourceCategory": "animal",
       "sourceSha256": "c405be751393612c9e9088334c4dd76a546531ca3c2ad2b5f46c2b4ff9b9399d",
-      "modelSha256": "e5138e7d8eddd243753b60057642c7660bb450bfadb0b17e22a5e4ab6108c82b",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "dbb1e368b1b516e2432527d2d11c613b2ea1bab4f5728126def6af9b3d987fb5",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -508,16 +508,16 @@
       "id": "animal-meerkat",
       "source": "apps/classtools/assets/avatars/animal-meerkat.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "17223e5543bc2f3fc7a0a0310100c494c062b5162564f516ea0295fb7b54d070",
-      "modelSha256": "6226b1966b849ca1751e010519b4dc2077df89785468b28fdcec01db265b856e",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "d8c48d3d31b3c59946b45761ed1219c3943d819b0f275ca4d98f8201f09116c6",
+      "modelSha256": "d1b98e2555e4b51f6c1ffff2244ac5c4164e3ee39952e74827e54a64da2e539e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -526,15 +526,15 @@
       "source": "apps/classtools/assets/avatars/animal-monkey.webp",
       "sourceCategory": "animal",
       "sourceSha256": "c6fef49b9e2595ddbaa7840d9d2a0e07002f234fc374cf0725cfef2de0eb9afe",
-      "modelSha256": "d22da164bf41f214aa42ee5d3b1bc2d4bb546c9dd459dae8abe263e95fb8753b",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "048cc7e2826f9802b8c5fadcdbbdff675aa970e913f77a07a9792a7be182ba6e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -543,15 +543,15 @@
       "source": "apps/classtools/assets/avatars/animal-mouse.webp",
       "sourceCategory": "animal",
       "sourceSha256": "8a84667334bfdf490eadc16615e899018f6340cd44bc86bd5a64a2df9b3708ca",
-      "modelSha256": "ce44d8ca03074f6ee2409267ecad67002244f1148f04e11ee25a1f283a12973f",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "2ee1fd6205732e82de6391407f78b6a3a4e5d1e4a93cb58c41839138fd004261",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -560,15 +560,15 @@
       "source": "apps/classtools/assets/avatars/animal-octopus.webp",
       "sourceCategory": "animal",
       "sourceSha256": "7b36883c42f80d6e77d15e523f5cd3fbb97e60fce25820bb78cdf4e0a76521e2",
-      "modelSha256": "75da99c8580b4b856083efac546bf36218991caddc22be9b5abcb2fd80f8348f",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "e6919ad2bdaf23db96fcbbcdda259c3cfed10815248b351144da4b38c9b822e8",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -577,15 +577,15 @@
       "source": "apps/classtools/assets/avatars/animal-ostrich.webp",
       "sourceCategory": "animal",
       "sourceSha256": "66684d62a8979ddc143ea025419897350c210819e7f91b8227675493c438ecf5",
-      "modelSha256": "8d0721924ef562beee86a180e15f8801cc2e09427484c19d5620edd7082c1230",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "337ebea049b21a867c21513089230293b0b481bc033ca8274feb855337293cf7",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -594,15 +594,15 @@
       "source": "apps/classtools/assets/avatars/animal-owl.webp",
       "sourceCategory": "animal",
       "sourceSha256": "343c3f94d3363715cc2007000a1d5e343cdc64ed700c88747b78cac59084dd50",
-      "modelSha256": "fa5cc4c4e698238f1b3d06c112c88976252e033eb1c70f5a99eabdc0655c1715",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "3339c43a8ba3da92c46db2967d9613d93870c67761e9668c6ae71c9a0568f6ed",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -611,15 +611,15 @@
       "source": "apps/classtools/assets/avatars/animal-panda.webp",
       "sourceCategory": "animal",
       "sourceSha256": "25264c6f0e3804c229c41877b2ee7da7bebb229b479c6fb34ae3daed1887dcd6",
-      "modelSha256": "f0449eb8aac417f46733d65ae741b4719af1fbe5c37b8e88e02b9f7e6005f183",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "590dbe1d628f19713c0ef48c92448657e1ae951fbc3ce0b8ca3b0cdf5a6dc5d5",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -628,15 +628,15 @@
       "source": "apps/classtools/assets/avatars/animal-peacock.webp",
       "sourceCategory": "animal",
       "sourceSha256": "f303bb351e55f652c106eb3b170d3ba728e0cc795f4956023c374e1fbc7c3280",
-      "modelSha256": "0df6fb5fdf2b2671939e42f87d1411fa32fe00329569f62da201358de6b79abe",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "79b78202a3afd6ba0ad2aeb84b08d4a498386b1cad0b13ea1fbe19054692885f",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -645,15 +645,15 @@
       "source": "apps/classtools/assets/avatars/animal-penguin.webp",
       "sourceCategory": "animal",
       "sourceSha256": "889adfb10fa032076b97a39c3693129040db47e3ba0bbf40fac55b741e11f3ee",
-      "modelSha256": "d654e220f8dd7fbcd572a5796e38826c21064d597c747a9474b3d0b8390ec703",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "1dc41df1915d9f74d3972cbcaca55463c1715d037662ce195486e53e32c978ef",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -662,15 +662,15 @@
       "source": "apps/classtools/assets/avatars/animal-praying-mantis.webp",
       "sourceCategory": "animal",
       "sourceSha256": "6bc7e722247f0200dbcb98082a103730ded43687aec90165df7a78a6a8e98f04",
-      "modelSha256": "c9336530ad300664b2bd1514c392bd662094b56bbc58f50fe0f78bacf2e19802",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "cecb74951f067ec9fc1bcecb09346cf46771519dc532b3751e8ec5354b08df73",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -679,15 +679,15 @@
       "source": "apps/classtools/assets/avatars/animal-rabbit.webp",
       "sourceCategory": "animal",
       "sourceSha256": "a8a5a1f373d6420ea10b40b02be8d0ca5e1c0bb5b00ec3f9af0a76781a79dfb1",
-      "modelSha256": "a781e7ea929deb21e707a7d152c0f91bb8e8703fb9ad9fe1207a14a45848dc79",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "a246605ca3fe132af94de41cb843b9955b294e3739d55941dc578d5453b2bd16",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -695,16 +695,16 @@
       "id": "animal-ratsnake",
       "source": "apps/classtools/assets/avatars/animal-ratsnake.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "a718a7fee20eaefa73c20c26713f604f778bba8c12143ba62916f1d302b25d55",
-      "modelSha256": "4d54ab2c160d4cf6e630662b51ab0464aec9a82bec60ccfb52194dbbc9b4b9c0",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "bbe9e98332d8eecf73dbff75e42c21b4e59f3690d7ffb80ee94d7174649aad41",
+      "modelSha256": "edd92c9f8a8eb308c6f30a85569df0f6a6c16ea43b55b7c2634a60c47bd43b64",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -712,16 +712,16 @@
       "id": "animal-rhinoceros",
       "source": "apps/classtools/assets/avatars/animal-rhinoceros.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "7632f8e6eaaa5f3d4b6c115ec3d30af08449c458c96a410f6ac1083e938e8f79",
-      "modelSha256": "5193041ff8c56bc877eb2a851bfa4c89823b59a355faa57746ab1e783426cbcf",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "122f6e9e47c74dfcc63a0b17e192c6baa46e0f7481b06c45425113cd00bca8a7",
+      "modelSha256": "97f2b1b816a5056e5eaf53c49d50ef7683edf93e288fa53d4fb3045779194695",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -730,15 +730,15 @@
       "source": "apps/classtools/assets/avatars/animal-seal.webp",
       "sourceCategory": "animal",
       "sourceSha256": "90e63a9e29c164bf5d4d509ec144a96a6df18022b2adb4d2e8b047380efd954f",
-      "modelSha256": "eb529535f348bb14e99f636e6900350fb4071b8c1ceb512ec2d9a8cfbf3162cf",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "c97570b2a82d22d2292c799f7e60c0ae9e960e42b6ffe65a198390dfab5e799e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -747,15 +747,15 @@
       "source": "apps/classtools/assets/avatars/animal-shark.webp",
       "sourceCategory": "animal",
       "sourceSha256": "b328d9a9945a72c64fad2cb1995c8062eb4c634b1a83678350bbe23a26a97720",
-      "modelSha256": "c9e2f5c6aab0af6b7c9143177d77777cfab82d0728fbe902ebbd0aa3ce64e4ed",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "3cf05f193f3719dccced5fc4b4cf409ee7d380056d2d3405aa878af7ba7da0ea",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -764,15 +764,15 @@
       "source": "apps/classtools/assets/avatars/animal-sloth.webp",
       "sourceCategory": "animal",
       "sourceSha256": "a30bceec08ff5bfc5adb70c0628f29ab906a68667fa5b9a2b760df0f0647681a",
-      "modelSha256": "fdce16dda4c7d16032eee82d4d63b26874079762bfe2c10423c7e48fdb1eb8db",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "9028990ed0cdbfc1e69afac693fcf2e2bd8466308681f6f7f96b429ca8ffd2ee",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -781,15 +781,15 @@
       "source": "apps/classtools/assets/avatars/animal-snail.webp",
       "sourceCategory": "animal",
       "sourceSha256": "152c50700604f5f6b2c6df0dc9a2b13ef013d68827fb51cc042d6a9d836448e0",
-      "modelSha256": "178f3d16db9d3f221a00ecad2e7339ab0416cc4d05a0193d3f90d5a9fe739e87",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "ebea3f94e5a5e75197047a84dce2f9dbfd7b9acd400c37dd78551b04975c5d55",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -798,15 +798,15 @@
       "source": "apps/classtools/assets/avatars/animal-squirrel.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3a0c58ef84eaa83678a82756cfe63535dc3f72ea8201b686810b5403085ee493",
-      "modelSha256": "bf0b301b60663247304d520be2de6823007b4a4a9a41badc874e7a7ed283ed5d",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "226abb4d5ede31afe85ff7e4d8468c893544cd1199bf57fa02f80b0c5883fece",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -814,16 +814,16 @@
       "id": "animal-tiger",
       "source": "apps/classtools/assets/avatars/animal-tiger.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "5367c7bdc8fb1e8e1c9d2563408c68e6d1fe65d470e3a0839e8697c714502464",
-      "modelSha256": "e0523fe10b7710552bb99e13d2f1df1c6cfae4bcac8cefb6f2a25fbf69ec05b1",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "7cf6f5c2f6761ab7d1008760a12c5a1ecd0a4fef7b6f854c47057b36dfa498f8",
+      "modelSha256": "c8ed243b307b6d800becabbdd59022c5dfb08ca6cf1fe95a9353521b80e4910e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -832,15 +832,15 @@
       "source": "apps/classtools/assets/avatars/animal-turtle.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3d06908528bd00bfc8405b1bb4c1f60322c53c3f3ff08b494a06567d12546596",
-      "modelSha256": "0b78b24cfbba2cb5550edf5d1e9cc8f6aeb851f356df4bf67b938e32f2b1b267",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "0ecf24da794938a2f10ea599b904e6d05a769dc17c6b2d73b2f6e7ced79dc865",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -849,15 +849,15 @@
       "source": "apps/classtools/assets/avatars/animal-unicorn.webp",
       "sourceCategory": "animal",
       "sourceSha256": "628f5c12a10c1b873d55e5397f1fc983b73c024683aee32daaeb2e08bca45fa0",
-      "modelSha256": "30c42cf631bfa7bc34e897a9c346896a229a2237a69d9c6f3023b1f66131c81b",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "906a20fd513c737e5071676083e3d5a81a94f59ad93ab50dd43c199d3c465b01",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -865,16 +865,16 @@
       "id": "animal-viper",
       "source": "apps/classtools/assets/avatars/animal-viper.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "10e7aaa2a27120f89c2414b0867353491cd12ce557fe893b531211305871bc97",
-      "modelSha256": "ea1d802e679afab877e0bcc6e9127a61f5d08a49b1a61eeee34ad6a2fdfb56c6",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "e1edb0a011e9fa3bf46039da05a920e26440b9464ebff6a69291b2e0209f048b",
+      "modelSha256": "26fbb7e33bfa499814958913dd6902d699de7b7afa7bc1ac2e6550319375900d",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -883,15 +883,15 @@
       "source": "apps/classtools/assets/avatars/animal-whale.webp",
       "sourceCategory": "animal",
       "sourceSha256": "0e36bbe6cbf6eff9839163bc7914e60aac04c5c206fcc03cd9e403ac0bbf2cf7",
-      "modelSha256": "f33a92c2cb91011a15ce5ee60b928a90228da4a5669fd7020783df322df11076",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "822d1aee4eb6d118061096fd316b4d4b7656c6de3b7b4e09a3c3e31203ddb2d6",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -900,15 +900,15 @@
       "source": "apps/classtools/assets/avatars/animal-wolf.webp",
       "sourceCategory": "animal",
       "sourceSha256": "f40b7ae979c611886bb607f8676642862ca52f70d744c7ed3ec65b3070fa68bc",
-      "modelSha256": "9221cbe7ef81a0be670bf4ae65d1b7f226023e9defed85a3d7004caf07627328",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "6110fde2965e076aa6b44dfd95c9df15be59810e3dfdc9f0f5ea3213f4d317c6",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -917,15 +917,15 @@
       "source": "apps/classtools/assets/avatars/award-trophy.webp",
       "sourceCategory": "award",
       "sourceSha256": "0cc862cebeee4362bc12088028c608b6d4539184b80e8f287ae7dda9d44e48f9",
-      "modelSha256": "490f4b7405af65514a99c6f94ba755ccbfa6002079488dbb68306466fdadd4ea",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "977aa4e4349ac5d1fb259f844a49cde53faa5b2116e12f171e194bc9578a6349",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -934,7 +934,7 @@
       "source": "apps/classtools/assets/avatars/drink-bubble-tea.webp",
       "sourceCategory": "drink",
       "sourceSha256": "24cd946d9a30b6de40f3d5e821668d06b92aff9e8695fb23e5977a92c69bb8c5",
-      "modelSha256": "955604c0af93938dd0c9da411bd8e278a0aa16ee132d14959c68b62d493c32c4",
+      "modelSha256": "ae689b70742e182cef14230345b30be0f8265e8cc30d4a5903f669c0a632c55a",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -942,7 +942,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -951,7 +951,7 @@
       "source": "apps/classtools/assets/avatars/food-bingsu.webp",
       "sourceCategory": "food",
       "sourceSha256": "6d55ce499c9c0d60ca461ba2315b2f815919997ca70dce8df184cdf7353de9c2",
-      "modelSha256": "7b8e05dd5ae7d446213c347b2f6366ccd932efe27038df1652fbb62f7b921a06",
+      "modelSha256": "974738a8d54f8f5f91b0018a14b7643f4fc115bc946f38b2d75e771d8b45628c",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -959,7 +959,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -968,7 +968,7 @@
       "source": "apps/classtools/assets/avatars/food-birthday-cake.webp",
       "sourceCategory": "food",
       "sourceSha256": "448a6dfda24f2d564624b0c9448788737a3a8a6338b6bdca8dc4ce5dfa079ab1",
-      "modelSha256": "037cbefff84742c915a9ab015ddea3e2aa0de024ad1aaf5f7197456e829f2b8f",
+      "modelSha256": "bacaf9ebdae204e5d3136efd0ab99a087104f37f59c26d49bad050ad64eefabe",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -976,7 +976,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -985,15 +985,15 @@
       "source": "apps/classtools/assets/avatars/food-candy.webp",
       "sourceCategory": "food",
       "sourceSha256": "2f5fa0ef80c09675de0f66684b74da8f71d91781ec6b7771c09476d854875062",
-      "modelSha256": "dfc2ea9a152758f3e34e8cba2e08f3a67d6f4e2293b7f69ea558e2c2be1b83d0",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "8999ec3d945a24f60804ce5a0f941a5417bd6c8d3f09c5931408e3f4e5560bfc",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1002,7 +1002,7 @@
       "source": "apps/classtools/assets/avatars/food-cheese.webp",
       "sourceCategory": "food",
       "sourceSha256": "53d86042e692b62db4131f564df094b59a8e09c0517679f5e483cad551133525",
-      "modelSha256": "bcb523664d504156eaf7090aaaa267ccefd8c86638b55450776fc7bd8c083b3a",
+      "modelSha256": "ac86feaf697bda55e3e2c02db2ba569e586333f395b799b4e5dd8a88a69e659d",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1010,7 +1010,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1019,7 +1019,7 @@
       "source": "apps/classtools/assets/avatars/food-chocolate.webp",
       "sourceCategory": "food",
       "sourceSha256": "b579903cbee197231e24abdd6a0b4cf481020bd9152aa1767628e142846a6352",
-      "modelSha256": "569142556a5c1c8bd63d20ea2d91026b17cf99436da954e9c77cbf91152767c2",
+      "modelSha256": "13bd507ae366cff30b0ef6622e27938a6c6b1634c0d65c39dd3fcfcb2044c685",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1027,7 +1027,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1036,15 +1036,15 @@
       "source": "apps/classtools/assets/avatars/food-cookie.webp",
       "sourceCategory": "food",
       "sourceSha256": "d1c026c5ffeb38c436f8a75a3b1c33115287bebc86a94a0834c7a59dcf36d20c",
-      "modelSha256": "59144285393d99efccfffb676257f805cb893ac59a35d2274c3c4707ae166cc4",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "a174da3d848079831caa61644125f9ece1ea629b84db34ae249afa195c6f02c1",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1053,7 +1053,7 @@
       "source": "apps/classtools/assets/avatars/food-donut.webp",
       "sourceCategory": "food",
       "sourceSha256": "345b74bce063cebdc14a5ec90e299b7f390e29879e6ccfe3a0ede81902f3bae7",
-      "modelSha256": "c2d1f0a5543b37a675e9f6869e0cd8be211e4865a71525e6723f103eacbcf679",
+      "modelSha256": "f67797475dcaabf18218e8ddc7c40728bfa707f91729585a3ce350af7fcdbebf",
       "structureNote": "Individual structure: original_six. Visual review remains open.",
       "status": "needs_review",
       "checks": {
@@ -1061,7 +1061,7 @@
         "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1070,15 +1070,15 @@
       "source": "apps/classtools/assets/avatars/food-dumpling.webp",
       "sourceCategory": "food",
       "sourceSha256": "f1afe01f9af4fbf258370933767ab40f104f3798b6179f571d1a45a1f51e86fe",
-      "modelSha256": "a3883e5fe87da0d7d5474f6470e8b0e22b45b1a72536e40a7e5321a9b2b7d482",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "48fea4525ca2567530bb6c98d7136ad03fd06282d5f8e3f6f7577756bd13895e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1087,15 +1087,15 @@
       "source": "apps/classtools/assets/avatars/food-fish-pastry.webp",
       "sourceCategory": "food",
       "sourceSha256": "8a030d57d182a01b02597417c47040d75c26966952303f09e0d63147a708470a",
-      "modelSha256": "bdf5ad01ce2c28481d06c516b0c45a88e3edb28aa65eb728460cc3e2d32b0632",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "84f6291014920f93512223fff71484bfa5727a99cd4920745cb48db5e8184cfe",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1104,7 +1104,7 @@
       "source": "apps/classtools/assets/avatars/food-fried-egg.webp",
       "sourceCategory": "food",
       "sourceSha256": "2398a6a730cc91ba84be6c8d62339f2b8b78ea4dd6cce708ed03ca114a1a25a3",
-      "modelSha256": "958b11156c37de6cc4565fb8dcfaad5eb8bb24e41da3a9b1acbb9e47dfea6333",
+      "modelSha256": "752d0f7a3a2ed56c83f4d34cff5b5a12799c64ecf15c02ffe458b04392417552",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1112,7 +1112,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1121,7 +1121,7 @@
       "source": "apps/classtools/assets/avatars/food-gimbap.webp",
       "sourceCategory": "food",
       "sourceSha256": "f5fab854900301249cb3bd5eda381c082c68d50e04ac722a4b002fe52ad2c85c",
-      "modelSha256": "da27b9b77c7d8c76cef17b9dc8852ca2a60697522f2a3eea8a7a7f0b6246780e",
+      "modelSha256": "c9bd740394fb9629df21bf88190d8be80d1871d8743536577a99ab204b0be700",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1129,7 +1129,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1138,7 +1138,7 @@
       "source": "apps/classtools/assets/avatars/food-hamburger.webp",
       "sourceCategory": "food",
       "sourceSha256": "147c631837479aeadc3c267442f9e51b88edc775cdc8826831c007651c00207e",
-      "modelSha256": "25e71aa52f677332120b57994bcb572d8424e9f99497257237fec58eebd272f3",
+      "modelSha256": "066ec01aaf9ca35e3d46e217e220184ea918aa4b076b960672760c4a176ab8fe",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1146,7 +1146,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1155,7 +1155,7 @@
       "source": "apps/classtools/assets/avatars/food-hot-dog.webp",
       "sourceCategory": "food",
       "sourceSha256": "a3711c20d535cf5491eea5e1645e1117409bc25467fc4052a93b3b123811d3ae",
-      "modelSha256": "04ba476d594fb84215f4aa897047a3c382ae510ce66fc93da44bcb350b085203",
+      "modelSha256": "dac257a8fee7246671dc49e9b97aac0663434ab7e575f4cd1096464fb065829d",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1163,7 +1163,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1172,7 +1172,7 @@
       "source": "apps/classtools/assets/avatars/food-ice-cream.webp",
       "sourceCategory": "food",
       "sourceSha256": "f8e318bf582c9100d57f2e4fc98dc1179affe7ed11b29a7e2b21ec3fa7f45df6",
-      "modelSha256": "210f94e0aa6bcf12c862ac7362e30eddcf3bb4138db7e23fd36233977f5b9f5d",
+      "modelSha256": "33d4ccde45b41209561f7a8d223aa798b1e0c0fa31b00983aa5915be6758e147",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1180,7 +1180,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1189,7 +1189,7 @@
       "source": "apps/classtools/assets/avatars/food-macaron.webp",
       "sourceCategory": "food",
       "sourceSha256": "81f5748a5a9d57658e4f8b8a9c354b8f7657c65c480a890030f02e87a1bb32b3",
-      "modelSha256": "6730dd0e88debbc516a7e6ac8283131f6d155ca11a6e2ba046ff7f1defcdf957",
+      "modelSha256": "d274fd4eba411d8e69679a0730bd66d62c99daa1582f05fffc9663399011cd11",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1197,7 +1197,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1206,15 +1206,15 @@
       "source": "apps/classtools/assets/avatars/food-pizza.webp",
       "sourceCategory": "food",
       "sourceSha256": "4cc6d12a4027fd467f84ec9e4ebd74cfaddf95c34f84b284043e35a981bc5902",
-      "modelSha256": "863a79c317f5f91f303fb8638bef35f0918e24b45f2055363d6771b83056a3ff",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "a97691e41258861b46ca95861d50f4bd3567013ebbfeb261c06699e31a6ebf07",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1223,7 +1223,7 @@
       "source": "apps/classtools/assets/avatars/food-popcorn.webp",
       "sourceCategory": "food",
       "sourceSha256": "f0a4293b403b1d539720e2d3bea223d14bd219d66a4dc0e160e0e1a81cbfa670",
-      "modelSha256": "8ece222c0dd141bcbf3468df7592333e2b161b0dfd9f7474ff73e0e04096191b",
+      "modelSha256": "66caf7524a185754e6e1fd0cc6c287cd7633ba52f1046948c24b388e92739d67",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1231,7 +1231,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1240,7 +1240,7 @@
       "source": "apps/classtools/assets/avatars/food-pudding.webp",
       "sourceCategory": "food",
       "sourceSha256": "b0d0f7cfa7091166ab63187e786f456751a384b145f58114a9a1654719ac69c3",
-      "modelSha256": "121e8895bd45aeba8e81248ad893d9c9053c4d35af4895d8f3995684e6884cb6",
+      "modelSha256": "e56fa89f400eeeaaffe2fb63555c110b80f18177e868ce432f503b407417ce27",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1248,7 +1248,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1282,15 +1282,15 @@
       "source": "apps/classtools/assets/avatars/food-rice-ball.webp",
       "sourceCategory": "food",
       "sourceSha256": "b0d581748837ec269647b160521f961e177edca5546d0ab6059616ffa6170caf",
-      "modelSha256": "0b3bd5cb81cd45eea27f61d6c97b3530cb639d9d64b2f3ffa3145378ac91cee7",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "32d7ef0c8d38027449d9628d26b450309e79a1e83bf2eac2770236bd940ca6fe",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1299,15 +1299,15 @@
       "source": "apps/classtools/assets/avatars/food-sandwich.webp",
       "sourceCategory": "food",
       "sourceSha256": "0bcada062a5f0192a76bb5d7091971c5168f9f2a7733590c8fcbc9efa678ba6e",
-      "modelSha256": "fb06e173db1172da5ee63ce10f13ae9fd59c71889cb555f8a7988def8ce42563",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "c8986eeb5b342ec330a99ba6a6372f76616a74f0bab1212bb115a85608e26684",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1316,7 +1316,7 @@
       "source": "apps/classtools/assets/avatars/food-sushi.webp",
       "sourceCategory": "food",
       "sourceSha256": "b4bded7578d3a24139928ec2782e8af819526f0352545bd86aa00d04683d1d59",
-      "modelSha256": "9bcd9eb1bc361e142390223dd548e31c16c79d83bfa67a80f4f9f2d1bb948022",
+      "modelSha256": "ed87f18155e449b9dbc798e6920c87a36283d386341d799c3ee0f803c48944af",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1324,7 +1324,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1333,15 +1333,15 @@
       "source": "apps/classtools/assets/avatars/food-toast.webp",
       "sourceCategory": "food",
       "sourceSha256": "5d3b033689b35960d9f054f76384c0641254f8beddf89e99f8cba30bde28dda4",
-      "modelSha256": "80682a8f709cccb723183471ea0cb630e4c332c0cc0118aa13e5a8faa681908a",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "4eeeda00eb94c99d58230c53114e4d926fee4cc5e2c870ddd86614ba4c77419e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1350,7 +1350,7 @@
       "source": "apps/classtools/assets/avatars/food-tteokbokki.webp",
       "sourceCategory": "food",
       "sourceSha256": "7313a6b011a789aedb602774aa9b4766fa8d94121ee78bc7ac0a0934688c502f",
-      "modelSha256": "f84aad84c5387151ba1b874c4e15c6f14d5edf2f98fe20cd89f8639e3a6aa6ed",
+      "modelSha256": "2a857848ba4ce6eea7b62d6c7607a44620d414b8f155cc9847228f08f60add3f",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1358,7 +1358,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1367,15 +1367,15 @@
       "source": "apps/classtools/assets/avatars/fruit-apple.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "e230997d32b46f936186da97645de4c84af4bc63d27c1681315e71a8e538e410",
-      "modelSha256": "0355df543cc7e594dc0554f93deb65337af5df24c9c98ea40d68a7f70dd69a51",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "584a4d0d7839dc4cb320619f16db6550d0697405f4ae9a85b44d4837d92d36d2",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1384,15 +1384,15 @@
       "source": "apps/classtools/assets/avatars/fruit-avocado.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "2d32dc10d7e01c1c8e77f089a32c9f91333728c21a584d2ead4db611cc348289",
-      "modelSha256": "bf90c13776fc0afa52cc762e2f7139215b80d3c0b9bcc9042510752b79c39167",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "fa3ba4ab20f6b2effdd8203d66a8a42bbc803ddebc2c21daa6a62babad2f32cb",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1418,15 +1418,15 @@
       "source": "apps/classtools/assets/avatars/fruit-blueberry.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "bf34515bfdfc178227f91e3567f878badf4742f004c5dab54a85f937b13f27a7",
-      "modelSha256": "f61c91fcb5288c58b9757c54a6d8496ea3f1bbbe41c2ccef0b399fcc6a1f4b27",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "8500439477ac27e82347aae46ac6486c65a5fc5085676192048641281d08c3c3",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1435,15 +1435,15 @@
       "source": "apps/classtools/assets/avatars/fruit-cherry.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "c1ea4f4d1e0e1f86c2d509dbac06304dfc7e8742c2517b7b1538c1be7d4dff8f",
-      "modelSha256": "37c558eb472363ada59cb52e8e194d63ca9d9511ab3bd355766422fc3f0fe111",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "bc6b90cb06432e0a2214f96690a923d19f79dc90f40c47bea2650fa9ab84c2fd",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1452,7 +1452,7 @@
       "source": "apps/classtools/assets/avatars/fruit-grape.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "c879e12bace9e10d642cd260d3f024bab09ee4fa37ba7adf5da1cd0349d33d8a",
-      "modelSha256": "6ee80c0841da1245be1fa048b3427ca371abd22e137ef5d150b0586568480f1e",
+      "modelSha256": "0a4542666a93747e02a0cde56bba89feac3e37e960584c4f4070aa266c6917d4",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1460,7 +1460,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1469,15 +1469,15 @@
       "source": "apps/classtools/assets/avatars/fruit-mango.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "1420c90619e7dbd2cda48dbc224ac4bf7899a1274a745fc945bbac3551fd2e2c",
-      "modelSha256": "b9922af9a4578ee5147625e499a539f61e10eedefd1458fba66f19aee22e7083",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "4c5249c7e5660982c6085968097ef7b7322c01301c5fc523a11e6944535479f2",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1486,15 +1486,15 @@
       "source": "apps/classtools/assets/avatars/fruit-melon.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "d7cedba32940ceeac0e9120c44ad4424bd01d5743a88b34d1b563f076e0c21f9",
-      "modelSha256": "497f089136be562dd22e68eb2dc0f05e9c972dfe848f452253c806c46a66c6a1",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "972821d9f0c91bf7f138fa269090675ee1fb317f1f20d1e92ab95036b052bb0c",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1503,15 +1503,15 @@
       "source": "apps/classtools/assets/avatars/fruit-orange.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "a494c80b99d347ade886abe482273a3145111e6ee62fc1ae4f9ad4ed53aee42b",
-      "modelSha256": "de0db2d4bca8d30bdb08cf2c3b10acc120b73d401c48ff1a21dc8ca147659136",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "d551bd6b20b1535df46af96c0234f8bacadd526ab23eaa3525222b6461148c7b",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1520,15 +1520,15 @@
       "source": "apps/classtools/assets/avatars/fruit-peach.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "6de3d04c1d3422bdabe90fe4cd78cfa8afc9107291ac90aa6ed1599317c4754d",
-      "modelSha256": "777f02d5870a32bbd994313e21c1779e6cc6579b533df5c5c87734da011b45f0",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "00b3b47a0e6bbb9515b3de15c31f96934b7005631011ef3e9812b4c04035a3cc",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1537,15 +1537,15 @@
       "source": "apps/classtools/assets/avatars/fruit-persimmon.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "f02a59c3f7c700b95688a29a274656293c491ee0beef13ba793bb2162098a40f",
-      "modelSha256": "8d450d6c8d9567598cfa1659befea70334429ff27296a6a9594261a5322faf23",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "ac2e3c756e7c82a699beebc9ebb5cd8cfe5b6d71e80b3ee2367ce370867c5002",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1554,15 +1554,15 @@
       "source": "apps/classtools/assets/avatars/fruit-pineapple.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "8c60d7a82cbe94e2f227531dcd9de0c68ffc883396867d02ddf932ea9f2e9a41",
-      "modelSha256": "9620524a99e971ed3d0da18f45caf650d24e9508e82c5ab62fe620208e6282ac",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "c13363bc165537223c925b024654af691eb31547213892f83cc7f1a337441d24",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1571,15 +1571,15 @@
       "source": "apps/classtools/assets/avatars/fruit-strawberry.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "3d3896f2d8106806c25277895375ea1d82fa3b16d021a063067d01523c180c91",
-      "modelSha256": "754b43427eddea486b6f9dcd92687e6ce3adba0dc215d099b880fac9216ddaae",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "7adfccdacfb367a296ff3b1cd167aadf460df45789db258eb44437ac16d5fd5c",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1588,15 +1588,15 @@
       "source": "apps/classtools/assets/avatars/fruit-watermelon.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "797fdcc1468a79645df1ba0ef8ef5f0367efba8e9586be32b6e5091cb17ce6aa",
-      "modelSha256": "a3a222a59f186f6e73490386bbf19256ffd48e08256f3127f7e95b7ca56e1c41",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "0f31becc32d0d048f1d0a520663046b07d31f51679d7766078ec1c52a9a8ff5e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1605,7 +1605,7 @@
       "source": "apps/classtools/assets/avatars/game-dice.webp",
       "sourceCategory": "game",
       "sourceSha256": "2e2609fcb9c238b80532b4086d2667d852df741a5509fa58f7803790291f38d7",
-      "modelSha256": "5213b5495956c7758730a92aafbd46a410596a63c617380c466cfe296908d141",
+      "modelSha256": "c33ae9afced4781682ae373e6ac99359497a3c06ff30f38135876c716a50436a",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1613,7 +1613,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1621,8 +1621,8 @@
       "id": "object-boot",
       "source": "apps/classtools/assets/avatars/object-boot.webp",
       "sourceCategory": "object",
-      "sourceSha256": "ea4b08c07e8f51c0826e84fa67862bb0acde992b24c88edeca647cec08405192",
-      "modelSha256": "c257442e2311f090fee0136331f750b49407c5e4e68a952d733e46941a02708d",
+      "sourceSha256": "6569a27d3f97e9a711867dc8ac3faf3c898eeca001dfb11daa8eccd36201b7f9",
+      "modelSha256": "9d4de0c6df66e205fb76a52b1439a49f6139fd249df0411907ccd0af724dc8c5",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1630,7 +1630,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1638,8 +1638,8 @@
       "id": "object-camera",
       "source": "apps/classtools/assets/avatars/object-camera.webp",
       "sourceCategory": "object",
-      "sourceSha256": "4eed5981cf7ad8b8cbf042e6b630d5fb20ffedaef8658ce0a25c739ce4c6bac0",
-      "modelSha256": "70e21df2c5295a4c94048e93f6b748fee7db3268483a8fcef7116c1b15a528cb",
+      "sourceSha256": "53df46dcbd44f122286e498102431ca0237861095dd93526969507b4bc5571cd",
+      "modelSha256": "fd88442e75a9cab4dd1816b52b06dc525d152638bc9c9ea668d7d58c051a5e43",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1647,7 +1647,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1655,8 +1655,8 @@
       "id": "object-eraser",
       "source": "apps/classtools/assets/avatars/object-eraser.webp",
       "sourceCategory": "object",
-      "sourceSha256": "1283ae4c100e9ea7199d8af169f22017dd4524ab0188175b20242b8d3727ec5d",
-      "modelSha256": "1596cf6e81890453b88f2b63272010f3663671e743df1ac28a33a92e62c896e4",
+      "sourceSha256": "b450d9332428f7fe4b6a2786fd3b5a70bfdb67afc2483d1efe14dff028f9621f",
+      "modelSha256": "3f874eab7ffc0fa86c56cc3e1f250dc06b2fa69e3d26b27f0d662da1d59f3439",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1664,7 +1664,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1672,8 +1672,8 @@
       "id": "object-gift",
       "source": "apps/classtools/assets/avatars/object-gift.webp",
       "sourceCategory": "object",
-      "sourceSha256": "3047906ebcd59bd679c8f0f193e45f0841c049c356d022a81fbda403f064a2ad",
-      "modelSha256": "320b03cf8017cfc1cf7d708d1b611eae099e29ec2ba554d406960773541e2298",
+      "sourceSha256": "0df5c78d22ae1010397a2c119bfe5cd4afaca9d032ed4a5f1a4e9110939f5133",
+      "modelSha256": "5944b7cf2bae8046e9a6c0cfed72042c80e96c56f0e5f0f65cd1fac13177938d",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1681,7 +1681,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1689,16 +1689,16 @@
       "id": "object-key",
       "source": "apps/classtools/assets/avatars/object-key.webp",
       "sourceCategory": "object",
-      "sourceSha256": "755705c9d297f3a7e7c4386047b15d1beeef2991d8fb105940a0081f477fbc58",
-      "modelSha256": "7b5642202a06321195918f10139e655ac24dd27cddc3403f2302db7c7f73d32c",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "8d8fe83bd48803af6a57b7cf99c3a2304695234d1eb2dc69602d29872ca46bcc",
+      "modelSha256": "4d144b0cf4378236028fe053f873cd4435cda793b013fe18f71b1e63b22d10b8",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1706,8 +1706,8 @@
       "id": "object-lamp",
       "source": "apps/classtools/assets/avatars/object-lamp.webp",
       "sourceCategory": "object",
-      "sourceSha256": "5d97a113168b2db9bd68a2c923f3e5915ecfb2a0326799f1eba529159b5a04a8",
-      "modelSha256": "342bc153a4c53eac3ad716376da58901f2bc06b511c736f0e23de4686ae460b7",
+      "sourceSha256": "d1baab65563a8cc53eee02cf39a23882a17d13a99591a196204bd21122cca28a",
+      "modelSha256": "63f17aae679eef40eb63e2c59cddfc998ccc30e79756435a9211ab659dc3bcee",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1715,7 +1715,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1723,8 +1723,8 @@
       "id": "object-lock",
       "source": "apps/classtools/assets/avatars/object-lock.webp",
       "sourceCategory": "object",
-      "sourceSha256": "2b52cb02ab5b7e1c6dc4a7411f4123001143c97c3298365aad905de09a062230",
-      "modelSha256": "37c0c9d60e5e7f60dee152a22c165e603af7776e1b6732d1667d4bfc564b5f53",
+      "sourceSha256": "64e3a84ea366e7c724dbb8bd34cdc726b204a4a9e7c2815b0ac763cac1ed29b5",
+      "modelSha256": "2fef17d71e3b1d147afe0f0a39839f850a20eaf58b8573228c5ce145f4a397c9",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1732,7 +1732,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1741,15 +1741,15 @@
       "source": "apps/classtools/assets/avatars/object-mitten.webp",
       "sourceCategory": "object",
       "sourceSha256": "de8fd928a30d7d6e5544cff694f4bfab24078147e6499bc35c073bc8cb017acb",
-      "modelSha256": "81e7644d8c465bb1b72296fe87625fcab9e915b68d7ab84b4e04def433452aa2",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "81da7db5228deca6e6e0de07d5381ea5ea836d69e53e1b82dc6626f384f1b213",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1757,16 +1757,16 @@
       "id": "object-newspaper",
       "source": "apps/classtools/assets/avatars/object-newspaper.webp",
       "sourceCategory": "object",
-      "sourceSha256": "04655d43ed66ab7d6a9ac5c8ef33b82d07acd9057f43af5f00c69a4c8bd06395",
-      "modelSha256": "2b3e5826c025f6869fa316a46efd094c50918c94b9c8b0acc558bf5559fcdc88",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "b6f79061522eb1486a22c6a5695c1fb15fde0919330503baabbd2ce7ff782db9",
+      "modelSha256": "ea5266a2896ddad73a38ce3f0fba7217d8ef4a9c03ec7f80b32a0200b18ed605",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1774,8 +1774,8 @@
       "id": "object-pencil",
       "source": "apps/classtools/assets/avatars/object-pencil.webp",
       "sourceCategory": "object",
-      "sourceSha256": "9faac14678fc6fc9325b213c3ae8fe565803a86961c65e840627e021c15eeab7",
-      "modelSha256": "8c7e0d3bbbc7815ce333c4b1dbf8c838a037b198b0d28d96588806d8e29954b4",
+      "sourceSha256": "162f172be52544da8994460c40bcd80dbeacc6f566d6771521225436dd26040a",
+      "modelSha256": "4e0c2ef6184c531a4450fe90247c8919188d8ad6d44ace94bd4b55a375f0e3ea",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1783,7 +1783,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1791,8 +1791,8 @@
       "id": "object-radio",
       "source": "apps/classtools/assets/avatars/object-radio.webp",
       "sourceCategory": "object",
-      "sourceSha256": "783d9bd8429ff55ec6d9940ff2e8a75708a1ed3b1fd4d71bcc38f76490fabde8",
-      "modelSha256": "3298b6b85dee23522cbc39310d013d407f567441709d65d27fe732d16dab8548",
+      "sourceSha256": "d1811cfc18032a0c3a7f462f411431a70d0eb2ed9f9d8e58cf670b5d97d00b89",
+      "modelSha256": "81ff9536bdf88d88e4ed348c6460ce1a983cb5412c61531bc318cfc8726faa6d",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1800,7 +1800,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1808,16 +1808,16 @@
       "id": "object-sack",
       "source": "apps/classtools/assets/avatars/object-sack.webp",
       "sourceCategory": "object",
-      "sourceSha256": "42b5830464a302d0afb8c7c9a0dfad35911b0d67d5dda8fc56fca96eef948491",
-      "modelSha256": "9fbf0b43a57c61d1b71deea1e117f204032aa64041d5d4f961099ae0a376dbef",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "0d1cb112193cba74d3b483be251ffd4c405009be1dadca75f191b39449307e27",
+      "modelSha256": "28bafd12972d65b9ad8f178a746fd142535d3c236b28a1f81136a3bb00d4b939",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1825,8 +1825,8 @@
       "id": "object-television",
       "source": "apps/classtools/assets/avatars/object-television.webp",
       "sourceCategory": "object",
-      "sourceSha256": "ee5b9464bf76557ca3f28e8c4cb7f34ee30ee4f3233dac7756470a3f9dd65aa6",
-      "modelSha256": "e6673292073bc0a224d02952fc607eac6574cce67ced15ee3d4aba4e58df7517",
+      "sourceSha256": "1c27c5540d5e581cf8ee3e5e161ac731a63bc08f1457669d72deaeff447dd71e",
+      "modelSha256": "41a3fededba941514f92e0470d36deb37392c0f5305b2fdd1c755e3d467ba5d6",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1834,7 +1834,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1859,8 +1859,8 @@
       "id": "object-watch",
       "source": "apps/classtools/assets/avatars/object-watch.webp",
       "sourceCategory": "object",
-      "sourceSha256": "a7d40217d232b5c5687df98db956719f045c7ab869d965438180a6800dd50599",
-      "modelSha256": "8f80686c465116138cc3ad01b706972c23bfba4e66cff8815198f5ff84f63a6d",
+      "sourceSha256": "f31b1310173922b125aac58b615cca6410c8ad239ed098ebc71c3e5e8e71e90e",
+      "modelSha256": "1d3d4cbf423f854c67e7f644247e2aac4507cb8819825df1e46d98f46a34f35e",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1868,7 +1868,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1877,7 +1877,7 @@
       "source": "apps/classtools/assets/avatars/sport-baseball.webp",
       "sourceCategory": "sport",
       "sourceSha256": "32f9f51af797a79d9fc2e9a668ed1293fbfefda70cc76ed88873f9212abd0051",
-      "modelSha256": "88aaa63d0b5354b2646c42d75c7dc7d25f36df50b845fe2a338230c0269c00ce",
+      "modelSha256": "c87b124f2af6a456c255cc46357b97f5c07ae8276c299877db9f18108ef2e4bb",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1885,7 +1885,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1894,7 +1894,7 @@
       "source": "apps/classtools/assets/avatars/sport-basketball.webp",
       "sourceCategory": "sport",
       "sourceSha256": "58b06bbe3c5873bd38339e149ef6605494824d80a64869ffe8d4e72c31d1c309",
-      "modelSha256": "0ac74dc04bb48c8648238a4c2ef47f23da5412f3c13c62640043a106568b084f",
+      "modelSha256": "fe9806e558ecf4e7732813f4160e56e5d37533f74a852e26c6d332ccc0fe6a07",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1902,7 +1902,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1911,7 +1911,7 @@
       "source": "apps/classtools/assets/avatars/sport-bowling.webp",
       "sourceCategory": "sport",
       "sourceSha256": "e023e128d4e82d773fa83c3f361629ce5ac5362efc52892689eed0443e345d84",
-      "modelSha256": "a6302c2d605a16df9a0f074cf86a7ca7f8355ac9594ad5c015f0697fe950da84",
+      "modelSha256": "53e68f2d0488dc56ac8aa6c793a94fe5731913a387be68d5e33887029b9c9713",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1919,7 +1919,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1928,7 +1928,7 @@
       "source": "apps/classtools/assets/avatars/sport-soccer.webp",
       "sourceCategory": "sport",
       "sourceSha256": "31de1c0fc39525ead6e7c9e0a47b7ccb5ad449e2870512d27cf9d04c628ebebb",
-      "modelSha256": "1dc146f104d976f2f6d6e674627c5ed8eca92f793c3bc10c4b72aeaaea6c02d5",
+      "modelSha256": "5fc86aafe2207914bdb2daf471bb9836d20acc8351dbdecdf2133c66a5f8c7f6",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1936,7 +1936,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1944,8 +1944,8 @@
       "id": "theme-balloons",
       "source": "apps/classtools/assets/avatars/theme-balloons.webp",
       "sourceCategory": "theme",
-      "sourceSha256": "ee0a0c5d1977d692fcbb0c8e0d84bbdb0fd7c1bb937827d6551b63572c0d5e91",
-      "modelSha256": "6b99ecb987aaa3d34be3f4477e08e432da26478a426186dc07509b53aeda8a2b",
+      "sourceSha256": "d11201d48f84360195230a2f853883a191a401ba93e7661798c895eb4396ca4f",
+      "modelSha256": "6fc06a73057635bc8b9c084434863dd35a00f742d9c4d168a3a6e63d9627888c",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1953,7 +1953,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1962,15 +1962,15 @@
       "source": "apps/classtools/assets/avatars/theme-cactus.webp",
       "sourceCategory": "theme",
       "sourceSha256": "18f966f3f7ea3e1c2ffb256099cb461cb68d203182e028870caa4003498eaab8",
-      "modelSha256": "0b7b3c2d70d0e783ea5893f49de2b5520a2074225f23c6daf48fe986a39bd936",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "81380c6d5b8fd95aeed6db77e68c2fdf9a02ee47558972308223d54c37ca61aa",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1979,15 +1979,15 @@
       "source": "apps/classtools/assets/avatars/theme-cherry-blossom.webp",
       "sourceCategory": "theme",
       "sourceSha256": "fe7a71dc7460ee53bf97fede5b5e99c799deb0a39bf9da14a39137d947ee4ca3",
-      "modelSha256": "cec661a7258b6c6ff1659ee2f327732e470e238a5e99ff5f95f47cce47016964",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "b6f9afbf658aacd8c619a3db0a87937349f6587953e06131553f7f31be62f999",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -1996,15 +1996,15 @@
       "source": "apps/classtools/assets/avatars/theme-cloud.webp",
       "sourceCategory": "theme",
       "sourceSha256": "8fa4e47a71d06f9e8ebbf6b9ffae60678650a53c4aa582b551d6aaf9cab5aa22",
-      "modelSha256": "936e98365059ea5614cb5e211bd58c416ba5d20075bda37a9871d1686f0da1a9",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "749b1a97298bffcf1ec7878824b8b708cd8daaa734c709d6b27db5c81f33433e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2013,15 +2013,15 @@
       "source": "apps/classtools/assets/avatars/theme-clover.webp",
       "sourceCategory": "theme",
       "sourceSha256": "62537de099c01bf5aa86a2e79ab39442e99d69276dd4e8397c8c63863f3cf33f",
-      "modelSha256": "64c37153f2a42884efe3cee1ddecf794c74c8154c9ffb15bded97259a52c6935",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "7c7c73529355f9ab3f9f05c13f58f3faf274275939d3f5413dc6dc1865eae9c0",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2030,15 +2030,15 @@
       "source": "apps/classtools/assets/avatars/theme-crown.webp",
       "sourceCategory": "theme",
       "sourceSha256": "4ed8fb0b5bdccdcc0498a28553982e686e474b3a5592961d3e0c8f43401798d0",
-      "modelSha256": "2fba44cb725dd494134b1cf5aaa77ddc3a9ccd0cd188d4836562ffafe532664a",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "f78084f27de58a81339adc8ec0476d7a65b1351aa29f17f29e726a247c148589",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2047,15 +2047,15 @@
       "source": "apps/classtools/assets/avatars/theme-guitar.webp",
       "sourceCategory": "theme",
       "sourceSha256": "899df3e2bb5f71c1480ed26db904509242f87d71b7ca6701706ca4818db73819",
-      "modelSha256": "c97c127d6021dcc08d8b753fcbff42cb6d195b5274eab1609fc55c0591e86bac",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "09fb81f5ff9a87873de95c39a15be1e279e9bb0a4389c4d7df2ea41682e86240",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2064,15 +2064,15 @@
       "source": "apps/classtools/assets/avatars/theme-lightning.webp",
       "sourceCategory": "theme",
       "sourceSha256": "b7eca8cff0d414c6ab2e0f674d6d25fa0c08224b063769a9742aa42ba34efcca",
-      "modelSha256": "e3438b83935d02f9698683cea116403ec064b0add40c9ae2f18896751907b321",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "d7010be434a56118270d78e73ec7160c6b8a3f2a88bce91dfefa3483427bc321",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2081,15 +2081,15 @@
       "source": "apps/classtools/assets/avatars/theme-maple-leaf.webp",
       "sourceCategory": "theme",
       "sourceSha256": "370de952390e854995608324ae394aac0783a41fafdc54a4d4a20b74dcd7c6fb",
-      "modelSha256": "c0347db8547136f1f1ea8b47614391312dc43449764a0f8123feab4174dad5ce",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "ae6f140ac8042776dcf5903c5ed75e2f011fed36a46b22071c9e176112f312ee",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2098,15 +2098,15 @@
       "source": "apps/classtools/assets/avatars/theme-moon.webp",
       "sourceCategory": "theme",
       "sourceSha256": "d101de9d85ee9b45a138f632ccdff7383123602b9af549b5e690e240d5651509",
-      "modelSha256": "2c72c10bb845fc59fb139c3b6899533f2b5907910180e15ffdb8736ca2e7ad18",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "1d9450c55da4fdc48faff7fac346c0cc08e8d184ffc3fa72e017549899c46d4a",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2115,15 +2115,15 @@
       "source": "apps/classtools/assets/avatars/theme-music-note.webp",
       "sourceCategory": "theme",
       "sourceSha256": "1e53f434aee5319119e8b98d858c2493073a3154c02306a4fa87746c56c2b3c6",
-      "modelSha256": "dac772058c2852e0909148dd20fa9a31d959dab3f29c8264fb0691c2cccdd3c4",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "c9b4b2107c81ff77f9a06fa7e5202ba7cb1471be6afb178d2ccbf42d3219e65b",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2132,15 +2132,15 @@
       "source": "apps/classtools/assets/avatars/theme-paper-airplane.webp",
       "sourceCategory": "theme",
       "sourceSha256": "ad5644494f53e5f3ece81d495d50f93e7f0e7bf722f515623779e305d9461111",
-      "modelSha256": "a471b0e24b1592ff864e11fe3eb4b0ca7544f613995ae322b5723920eebfe8aa",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "b46acebfe3bc6877fdbed49d08c45cfa1cfdef07b08264fd59056d77599a436d",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2149,15 +2149,15 @@
       "source": "apps/classtools/assets/avatars/theme-rainbow.webp",
       "sourceCategory": "theme",
       "sourceSha256": "2ae28d5954b70141d0448f89c7b9aca45aa21381b8b2a4375f29acac2c6c8c7a",
-      "modelSha256": "a7672e200ca52e3ce3efe4e2fc2b2a3983a0051f239e2b35893a4db16acd345e",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "42205fb5b6fb5ee895fbd5c336ec83de83540b3663d391165a9edcbceadbb6e9",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2166,15 +2166,15 @@
       "source": "apps/classtools/assets/avatars/theme-rose.webp",
       "sourceCategory": "theme",
       "sourceSha256": "78aae012d1807d039bd5868e584a6a7dd517c985ca33dd4c7db2ab98f6b447d6",
-      "modelSha256": "9cbd1a60d3d178cb065051d7b2c1cdf532b4702732ad8d42424bfeba818831c2",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "be5f1f419624048d607456b7d81eeaea4b4a8908c12f175b024f265ea1476410",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2182,16 +2182,16 @@
       "id": "theme-snowman",
       "source": "apps/classtools/assets/avatars/theme-snowman.webp",
       "sourceCategory": "theme",
-      "sourceSha256": "94efdade2f1cf994d2b145765d2ff354eab34e445843d6695c18d65775048bd6",
-      "modelSha256": "2db0132adcdf19dd9289d336467534083fc834f9093590fb033b8d25b712eab7",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "e275c213962468513e66853daff50e3b842e78a410781ab79292fad1fa12a2e4",
+      "modelSha256": "cf96ccb5ebfb62d6bde1e6b1f06d0bd21630b069f1f2c6b5e6d0139fea22c1d9",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2200,15 +2200,15 @@
       "source": "apps/classtools/assets/avatars/theme-star.webp",
       "sourceCategory": "theme",
       "sourceSha256": "9448c73d0a8f629db5d011f8e6231be6c014dbfe54b1aff8332bdeb014fc802d",
-      "modelSha256": "7937479ba978c361f47e19c28eb98b75233004af053425e812394874696ee1f8",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "97a846099d121ef884656c26543ca869eec06b807913c04575193a93c7ec9e75",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2217,15 +2217,15 @@
       "source": "apps/classtools/assets/avatars/theme-sun.webp",
       "sourceCategory": "theme",
       "sourceSha256": "2a589a92ce2bed9db22d6cf4d8cf98531a54ddf04fca74e61878938074af899e",
-      "modelSha256": "65845f0d63bb97bef04320a376d6608d0721e525d7c89c25ac471115452a9faa",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "e21ef764f47d9bbf7d20e1894a09ff309a4cce6728674a1412043ed0740cd5ac",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2234,15 +2234,15 @@
       "source": "apps/classtools/assets/avatars/theme-sunflower.webp",
       "sourceCategory": "theme",
       "sourceSha256": "66a83018e74b5eb5078feea287f9ba31f0c21a501e5302a4a9ad97a43ab02aac",
-      "modelSha256": "d1cadad4ce499c84e32b849b087dccea5bafef43176f60024ea617e2e7cbda6b",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "d127c8d439bc73dbcb12aa99e8c60e8b7288fb7b1cf4327ab5de1e91a09efbc5",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2251,15 +2251,15 @@
       "source": "apps/classtools/assets/avatars/theme-tulip.webp",
       "sourceCategory": "theme",
       "sourceSha256": "5a2b4b94cad1b0e62d81d2c87e46d1da36a7ac36e3ac21fed1a447ed5961f75c",
-      "modelSha256": "fac4500f0611d6aa63ab5717b95dd87d0b3288f51026966241056e73d2be0538",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "5d06a6d18b3d7e3cad8b459146955ee5ee7c6738bed1a7a23fc9917044f6b0af",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2268,15 +2268,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-bell-pepper.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "f0e4f30c4b5794df12cbe5a9b6c3fcbb98a93f70644353465e825eef95f9f768",
-      "modelSha256": "e5894f558623ed8bda8fc7072bb675d2fc68daf187331ab20f01ba9c5ad1b1cd",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "80b379c2e0f2609d3fa9d731ce51e237d75d77981f39c253d60ec36ae4455c7a",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2285,15 +2285,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-broccoli.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "a7f2110da4f0667f31bf6c92515cd43098fbb0e3671d6291ba04b30899bc0f58",
-      "modelSha256": "bb01ab81de3f0e28a50a0459b7dc9e29ef36e31451806a5432bbbdbe99bf8776",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "251db944e2cae8a48bc5465e1364f204b3c9d89c4f19df0e20212e4dd1b77429",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2302,15 +2302,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-carrot.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "f4e1d1e6b34f4b86fa4ee40a038a6f265e8edad9f9e0048b298205fa6e3fcd8f",
-      "modelSha256": "6e3bede833ccd8d70dda9b23e79f2a87cc52bb136a11a683ac2e4528a705c586",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "4a36573a0ac2fc41d2c3f9dd7f58a684b3f413bd7c4e4effce27c33b25bf614a",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2319,15 +2319,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-corn.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "ee5220bad6b38eee354185a088b4d9c57f8e366b82b87e986aa486eac6c8e268",
-      "modelSha256": "592dd9d4802ca7bdba2da8eef72ef1e50b555b15c03b700030125285e4eb1135",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "70be7052bfba27b24e25850dc57b0f036b358ed36457905c1c351204c0950451",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2336,15 +2336,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-eggplant.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "6214dae48cc6900e1aec49a5a066e14bee486a6d60ee98b0d288d638fdd77c4a",
-      "modelSha256": "30eef4dc720772bcb2bdb1631907b353e518b61aee3f6eeabbce6695d34b8eae",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "a5f3bd29cbf703d640a6b8a074feda84cf7e28595c3434c33d3e9bac42fabac0",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2353,7 +2353,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-mushroom.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "223d3adebe3a5bbae562ce326c90265731284796396cdcd92aa2bdbe6b5e8ae5",
-      "modelSha256": "cb4a83708c29c8d536731d99aedb8fba7fec14d5c6b5bee6f81313fb0787b377",
+      "modelSha256": "7f19d4525eb3639deab1be8bc0e16ecf73a6a0f30440d8665737d6e76779367a",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2361,7 +2361,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2370,15 +2370,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-potato.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "ee5e029026a0678a950d37c5b4ac7863f7e5ab31dc28c98a23881ce90310f673",
-      "modelSha256": "6158ce72c110f266cebf9b1936b58d93889ed796fee3493e0ff645884ce842fc",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "ceb6d45c9b5d0af37cb543bec125fde61315a556d111530c11a2491b383596a3",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2387,15 +2387,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-pumpkin.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "04d7023cce9c0e819ff1e7d1bdd0cd240649c9f8899c84f3803c6255e38a178b",
-      "modelSha256": "2d5c39212a5f9d8e5a6f353925c14e84a37b552ad41e56a18532fe096ffc7931",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "71c1753fd7704ba51e9514ac370c560437935bc361340f70c969ac674388233e",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2404,7 +2404,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-radish.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "19aa149789890e6b8b81b23bfac592b32cafd5e7b6c4a02ecf7ef644edbb4607",
-      "modelSha256": "5c230698f64f29dde31602615a30bb83c3838f768af45f8d6b1433dcabff2091",
+      "modelSha256": "78485bd674b5e9c49a1af2da0ae3c0842f6ab91f9d2dce68287edafad37fed53",
       "structureNote": "Individual structure: root_and_leaves. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2412,7 +2412,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2421,15 +2421,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-sweet-potato.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "a3981a41d488efeb68edf4299dafc0accce8bb464f896031135338a3ea8c0e07",
-      "modelSha256": "7b2f27e5e15a1271bc7bf9b3df66c0b105ef64b412c2db964ebd96f913f9ee21",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "18d28faeea6d4be2ac2994e7b9a7ac62d14b5527234f9f4fb20f5da31e8af360",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2438,15 +2438,15 @@
       "source": "apps/classtools/assets/avatars/vegetable-tomato.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "29418ca9ac3dabd76f89708b202f40c9562346c9019c0e8929f4ebb1324d3ad0",
-      "modelSha256": "81ac849296cb5b97e303a02eda2c310abc1c784301af3d1c9f15b87cdf2fb92f",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "modelSha256": "bd51a925a9eb37476c31a062496327bf4d852df1ccbabfd70037ebcc711936b9",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2454,16 +2454,16 @@
       "id": "vehicle-airplane",
       "source": "apps/classtools/assets/avatars/vehicle-airplane.webp",
       "sourceCategory": "vehicle",
-      "sourceSha256": "f8545975f4ca8e59960eb58a52d79c67912b5b24eabc812bda72d33b8d8589f9",
-      "modelSha256": "94aca4a4d94b1a6dcf9394671b48ce00663e094cdb58d447ccad90add9d5492e",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "767fb126fa444ef1e0c0cc0534c8a9ce394522a25beae60f7db9534840e4aae3",
+      "modelSha256": "6b4bda87ebdbdc659b0f1b447fa88d2c1a8ef6b3b5aa926f8be25601f0115cda",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2471,16 +2471,16 @@
       "id": "vehicle-airship",
       "source": "apps/classtools/assets/avatars/vehicle-airship.webp",
       "sourceCategory": "vehicle",
-      "sourceSha256": "13c550f612b8a40e2af6ca546253c7d6bb32e2f092a3d04f0d7795799eaa4f23",
-      "modelSha256": "75b8410dce75aa5dd35f3ba53fbd8792b7ecf3e0cdc5fc71e32e2e848782df6c",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "47d83314497cf41dc1577ad653d13df9d4cbe272a21c34909c5f51c6542fbc57",
+      "modelSha256": "0236dc6d5370326e15840a489dc895a47c07ddf1954773e4302e8794827946ae",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2488,16 +2488,16 @@
       "id": "vehicle-ambulance",
       "source": "apps/classtools/assets/avatars/vehicle-ambulance.webp",
       "sourceCategory": "vehicle",
-      "sourceSha256": "6a2c82225cb17fb20a18493b8392e58caf89b3aab0a0ecdfe59c0db966765d5d",
-      "modelSha256": "5ea5e19330a0343e22bfd2f12f3054eca201c42989d8f319eaa2d0c8132361ba",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "c4fb84f9dbb8ee3ada2f362376782ecf3b34b2d56f092fbc0972cd0058dfe229",
+      "modelSha256": "8df270fdc817533f9bb38a9044fa38f835339c3a031991cc1e0a9b7820b7f3c5",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2505,16 +2505,16 @@
       "id": "vehicle-boat",
       "source": "apps/classtools/assets/avatars/vehicle-boat.webp",
       "sourceCategory": "vehicle",
-      "sourceSha256": "d492be7fc243b507e9252070f00aa2ee5d1a0acbe24da9199f962e9cf457f8f1",
-      "modelSha256": "a6ff1d911da7d2d2e69681316669cd02aeef9982e048f4091e141e84897744ce",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "912dd220dabe4f3c026576353f71fa52d4a7c5c41b2d0deae25ff36fee198827",
+      "modelSha256": "159b288455b707084399b27aae2fd313e95852bb77743645247191c00c20b9de",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2522,16 +2522,16 @@
       "id": "vehicle-fire-truck",
       "source": "apps/classtools/assets/avatars/vehicle-fire-truck.webp",
       "sourceCategory": "vehicle",
-      "sourceSha256": "99baa9a60a92bd9daa6953c1a21c5db667dd6b2dc8c841ce47a2ee4ff48997f9",
-      "modelSha256": "4ab49a77339878f5d81b47144ac0108b14dad4bbcb86bef95531d44c65008f8e",
-      "structureNote": "Rejected silhouette-inflation draft; actual costume/prop volume still requires remodeling.",
+      "sourceSha256": "8a705b4e40e1bd00de010d0fea422d7a418118de897aea37b2df32b4f5f4a264",
+      "modelSha256": "9a5aa41157935338661d27d8b0b94853741cf2b1359faeb4f752d3d31ab7000a",
+      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2556,8 +2556,8 @@
       "id": "vehicle-hot-air-balloon",
       "source": "apps/classtools/assets/avatars/vehicle-hot-air-balloon.webp",
       "sourceCategory": "vehicle",
-      "sourceSha256": "a4f7e603e38aade26f26a1cd12c17ce7475441f14bd59c8bd45c9a4781de0dc9",
-      "modelSha256": "8f624781a51da5e73a2c2d2f49bebb28918e53d8bdfb7f3b218363eaa9554b6f",
+      "sourceSha256": "5bb4126906b32ea13b13da1206d67adedfcb207b73977d0588adcd7f0a7a0ce3",
+      "modelSha256": "ec4649ca4657667c315f413d10757cc09ba7e6df6a5ff2f28e0fbae3a4f94dd9",
       "structureNote": "Individual structure: vehicles. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2565,7 +2565,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2573,8 +2573,8 @@
       "id": "vehicle-rocket",
       "source": "apps/classtools/assets/avatars/vehicle-rocket.webp",
       "sourceCategory": "vehicle",
-      "sourceSha256": "da7e7c831eee97c87045b95387a5a6546a0ffaeb3547c51c4e75b32d51cb2c5c",
-      "modelSha256": "4214d687a69d7e52087fafc1f56cd0863247908c6e4c0864220f7b72785898fd",
+      "sourceSha256": "9d2445b79067503fbee6b01924c8f70104a30b0c0a1d83b1f01c8537003274bb",
+      "modelSha256": "60683af28695e16be40c561e2c0925a71002a2cf07554500e23864930d1449fb",
       "structureNote": "Individual structure: vehicles. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2582,7 +2582,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },

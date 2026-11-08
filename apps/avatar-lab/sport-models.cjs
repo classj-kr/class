@@ -1,6 +1,6 @@
 "use strict";
 module.exports=function sport(THREE,id){
- const k=require('./model-kit.cjs')(THREE,id),head=k.group('Head',[320,580]),R=.95,C=new THREE.Vector3(0,1.64,0),orange='#ed8d32',white='#f2f3f1';
+ const k=require('./model-kit.cjs')(THREE,id),head=k.group('Head',[320,580]),R=.95,C=new THREE.Vector3(0,1.64,0),orange='#fa9529',white='#f2f3f1';
  const mat=(n,c)=>k.solid(n+'Color',c);
  function egg(n,s,c,p,parent=head){return k.ellipsoid(n,s,mat(n,c),parent,p);}
  function line(n,points,r,c){return k.tube(n,points,r,mat(n,c),head);}
@@ -9,21 +9,23 @@ module.exports=function sport(THREE,id){
  if(id!=='sport-bowling'){
   target=egg('Ball',[R,R,R],id==='sport-basketball'?orange:white,C.toArray());
   target.geometry=new THREE.SphereGeometry(1,64,40);
-  const pigment=require('./ball-pigments.json')[id],rgb=Buffer.from(pigment.rgb,'base64'),p=target.geometry.attributes.position,colors=[];
-  for(let i=0;i<p.count;i++){
-   const x=p.getX(i),y=p.getY(i),z=p.getZ(i),px=320+x*R/.005,py=580-(C.y+y*R)/.005,ix=Math.max(0,Math.min(63,Math.round((px-5)/10))),iy=Math.max(0,Math.min(63,Math.round((py-5)/10))),j=(iy*64+ix)*3;
-   const painted=new THREE.Color(rgb[j]/255,rgb[j+1]/255,rgb[j+2]/255).convertSRGBToLinear(),base=new THREE.Color(id==='sport-basketball'?'#efa044':white).convertSRGBToLinear().multiplyScalar(Math.min(1,.85+.16*y-.08*x+.05*Math.abs(z))),t=Math.max(0,Math.min(1,z/.40));base.lerp(painted,t*t*(3-2*t));colors.push(base.r,base.g,base.b);
-  }
-  target.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));target.material.color.set(0xffffff);Object.assign(target.material.userData,{preserveVertexColor:true,alreadyShaded:true});
+  // The original illustration supplies the face, not a stretched colour lookup
+  // on the sides. Smooth costume colour and lighting remain coherent at 360°.
   if(id==='sport-basketball'){
-   for(let axis=0;axis<2;axis++){const ps=[];for(let i=0;i<=128;i++){const a=i/128*Math.PI*2,v=axis===0?new THREE.Vector3(0,Math.cos(a),Math.sin(a)):new THREE.Vector3(Math.cos(a),0,Math.sin(a)).applyAxisAngle(new THREE.Vector3(1,0,0),-.45);ps.push(v.multiplyScalar(R+.005).add(C).toArray());}line('BasketballSeam'+axis,ps,.028,'#40302c');}
-   const traced=[[204,102],[236,129],[254,166],[252,203],[234,239],[207,277],[179,317],[164,349],[175,370]];
-   for(const side of [-1,1]){const front=traced.map(([px,py],i)=>{const v=new THREE.Vector3(side*(320-px)*.005,(580-py)*.005-C.y,0);if(i===0||i===traced.length-1)v.normalize().multiplyScalar(R);else v.z=Math.sqrt(Math.max(0,R*R-v.x*v.x-v.y*v.y));return v;});const outline=[...front,...front.slice(1,-1).reverse().map(v=>new THREE.Vector3(v.x,v.y,-v.z))];const curve=new THREE.CatmullRomCurve3(outline,true,'centripetal'),ps=curve.getPoints(192).map(v=>v.normalize().multiplyScalar(R+.006).add(C).toArray());line('BasketballCurvedSeam'+side,ps,.028,'#40302c');}
+   // Two perpendicular great circles plus ONE continuous waved seam: six
+   // crossings divide the sphere into eight panels (the traditional pattern).
+   const tilt=-.45;
+   for(let axis=0;axis<2;axis++){const ps=[];for(let i=0;i<=256;i++){const a=i/256*Math.PI*2,v=(axis===0?new THREE.Vector3(0,Math.cos(a),Math.sin(a)):new THREE.Vector3(Math.cos(a),0,Math.sin(a))).applyAxisAngle(new THREE.Vector3(1,0,0),tilt);ps.push(v.multiplyScalar(R+.002).add(C).toArray());}line('BasketballGreatCircle'+axis,ps,.022,'#3d2924');}
+   const seam=require('./ball-seams.cjs')(THREE,.66,tilt);
+   line('BasketballContinuousSeam',Array.from({length:513},(_,i)=>seam.point(i/512*Math.PI*2).multiplyScalar(R+.002).add(C).toArray()),.022,'#3d2924');
   }
   if(id==='sport-baseball'){
-   for(const sign of [-1,1]){
-    const ps=[];for(let i=0;i<=128;i++){const a=i/128*Math.PI*2,x=sign*(.67+.10*Math.cos(a*2)),yz=Math.sqrt(1-x*x),v=new THREE.Vector3(x,Math.cos(a)*yz,Math.sin(a)*yz).multiplyScalar(R+.004).add(C);ps.push(v.toArray());}line('BaseballSeam'+sign,ps,.009,'#b74442');
-    for(let i=0;i<34;i++){const a=i/34*Math.PI*2,x=sign*(.67+.10*Math.cos(a*2)),v=new THREE.Vector3(x,Math.cos(a)*Math.sqrt(1-x*x),Math.sin(a)*Math.sqrt(1-x*x)),tangent=new THREE.Vector3(0,-Math.sin(a),Math.cos(a)),across=new THREE.Vector3().crossVectors(v,tangent).normalize();const stitch=[v.clone().addScaledVector(across,-.047).addScaledVector(tangent,-.020),v.clone(),v.clone().addScaledVector(across,.047).addScaledVector(tangent,-.020)].map(p=>p.normalize().multiplyScalar(R+.009).add(C).toArray());line('Stitch'+sign+'_'+i,stitch,.016,'#bb3c3d');}
+   const seam=require('./ball-seams.cjs')(THREE,.79,0);
+   line('BaseballContinuousSeam',Array.from({length:513},(_,i)=>seam.point(i/512*Math.PI*2).multiplyScalar(R+.001).add(C).toArray()),.005,'#ad5a50');
+   for(let i=0;i<108;i++){
+    const u=i/108,v=seam.curve.getPointAt(u).normalize(),tangent=seam.curve.getTangentAt(u).normalize(),across=new THREE.Vector3().crossVectors(v,tangent).normalize();
+    const stitch=[v.clone().addScaledVector(across,-.043).addScaledVector(tangent,-.018),v.clone(),v.clone().addScaledVector(across,.043).addScaledVector(tangent,-.018)].map(p=>p.normalize().multiplyScalar(R+.006).add(C).toArray());
+    line('BaseballStitch'+i,stitch,.010,'#b33136');
    }
   }
   if(id==='sport-soccer'){
