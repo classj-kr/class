@@ -1,0 +1,879 @@
+{
+  "1-1": {
+    "지형": {
+      "en": "landform",
+      "explain": [
+        "쉬운 뜻: 영어로 landform입니다. 땅이 높은지 낮은지, 판판한지 울퉁불퉁한지 생긴 모양입니다.",
+        "생활 속 예: 우리 동네에 산이 있는지, 강이 흐르는지, 바다가 가까운지가 지형입니다."
+      ],
+      "beats": [
+        "높은 산과 굽이도는 강, 넓은 들, 바닷가가 한 그림에 있습니다.",
+        "산, 강, 들, 바닷가는 땅의 높이도 생김새도 저마다 다릅니다.",
+        "땅의 높낮이와 생김새가 지형입니다."
+      ],
+      "img": "A wide bird's-eye view of one imaginary land, from left to right: snowy jagged mountains, a river winding down through green hills, a broad flat plain with square farm fields, and a coast where the land meets a blue sea with a sandy beach and rocky cliffs. Small villages sit in each area. No labels or text.",
+      "imgKo": "왼쪽부터 눈 덮인 높은 산, 언덕 사이로 굽이도는 강, 네모난 밭이 펼쳐진 넓은 들, 모래사장과 바위 절벽이 있는 바닷가가 한눈에 보이는 땅."
+    },
+    "경관": {
+      "en": "landscape",
+      "explain": [
+        "쉬운 뜻: 영어로 landscape입니다. 높은 곳에 올라 한눈에 내려다본 산과 들, 마을의 모습입니다.",
+        "자연이 만든 경관도 있고, 사람이 지은 건물과 논밭이 만든 경관도 있습니다.",
+        "생활 속 예: 전망대에 올라 사진에 담는 산과 바다, 마을 모습이 경관입니다."
+      ],
+      "beats": [
+        "하린이와 도윤이가 언덕 위 전망대에 올랐습니다.",
+        "숲이 덮인 산과 강, 논밭과 마을이 한눈에 들어옵니다.",
+        "한눈에 바라보이는 자연이나 마을의 모습이 경관입니다."
+      ],
+      "img": "HARIN and DOYUN stand at a wooden lookout deck on a hilltop, seen from behind, gazing out over a wide view: forested mountains, a river curving through rice fields, and a small village with tiled roofs. The whole scenery spreads out below them in soft morning light. No text.",
+      "imgKo": "하린이와 도윤이가 언덕 위 전망대에서 뒷모습으로 서서, 숲이 덮인 산과 논 사이로 굽은 강, 지붕이 모인 마을이 펼쳐진 모습을 내려다본다."
+    },
+    "해발 고도": {
+      "en": "altitude",
+      "explain": [
+        "쉬운 뜻: 영어로 altitude입니다. 바닷가 모래사장을 0 m로 치고 땅이 얼마나 높은지 잽니다.",
+        "낱말 나누기: 해발(바다 위로 솟음) + 고도(높이), 바다에서부터 잰 높이입니다.",
+        "생활 속 예: 한라산 꼭대기는 바닷물 높이보다 1,947 m 높습니다."
+      ],
+      "beats": [
+        "바닷물 높이를 따라 점선이 그어져 있습니다.",
+        "점선에서 산꼭대기까지 긴 잣대를 세웁니다.",
+        "바닷물 높이에서부터 잰 땅의 높이가 해발 고도입니다."
+      ],
+      "img": "A side view of a tall mountain rising straight from the sea. A thin dotted line runs flat along the sea surface, and a tall striped measuring pole stands from that line up to the mountain peak, with small tick marks but no numbers. A climber waves at the summit. No text or numbers.",
+      "imgKo": "바다에서 솟은 높은 산을 옆에서 본 모습. 바다 수면을 따라 점선이 있고, 점선에서 산꼭대기까지 눈금만 있는 긴 잣대가 서 있으며 꼭대기에서 등산객이 손을 흔든다."
+    },
+    "산지": {
+      "explain": [
+        "쉬운 뜻: 산이 여기저기 솟아 있어서 오르막과 내리막이 많은 땅입니다.",
+        "생활 속 예: 강원도처럼 산이 많은 곳은 길이 구불구불하고 터널이 많습니다."
+      ],
+      "beats": [
+        "높고 낮은 산들이 겹겹이 이어진 곳에 마을이 있습니다.",
+        "비탈에 좁은 밭을 일구고, 길은 산허리를 돌아 터널로 들어갑니다.",
+        "주변보다 높이 솟은 땅이 이어진 곳이 산지입니다."
+      ],
+      "img": "A mountainous region with many peaks and ridges of different heights rolling into the distance. On a steep slope, villagers tend narrow terraced potato fields, and a winding road zigzags up the hillside into a tunnel entrance. Houses cluster in a small valley. No text.",
+      "imgKo": "높고 낮은 봉우리가 겹겹이 이어진 곳. 비탈에 계단 같은 좁은 감자밭이 있고, 구불구불한 길이 산비탈을 올라 터널로 들어간다."
+    },
+    "산맥": {
+      "en": "mountain range",
+      "explain": [
+        "쉬운 뜻: 영어로 mountain range입니다. 산들이 어깨동무하듯 길게 줄지어 이어진 것입니다.",
+        "한자 뜻: 脈(줄기 맥), 산이 줄기처럼 길게 뻗었다는 뜻입니다.",
+        "우리나라에는 태백산맥이 동쪽 바닷가를 따라 길게 뻗어 있습니다."
+      ],
+      "beats": [
+        "봉우리 하나가 아니라 여러 봉우리가 보입니다.",
+        "봉우리들이 등뼈처럼 길게 줄지어 뻗어 있습니다.",
+        "여러 봉우리가 길게 이어진 땅이 산맥입니다."
+      ],
+      "img": "An aerial view of a long chain of snow-capped peaks stretching from the foreground far into the distance like a spine, with green valleys on both sides. One small lone hill stands apart in a corner for contrast. No text.",
+      "imgKo": "눈 덮인 봉우리들이 등뼈처럼 앞에서 먼 곳까지 길게 줄지어 이어지고 양옆에 푸른 골짜기가 있다. 한쪽 구석에 낮은 언덕 하나가 따로 있다."
+    },
+    "고원": {
+      "en": "plateau",
+      "explain": [
+        "쉬운 뜻: 영어로 plateau입니다. 높은 곳에 식탁처럼 넓고 판판하게 펼쳐진 땅입니다.",
+        "한자 뜻: 高(높을 고)와 原(벌판 원), 높은 곳의 벌판이라는 뜻입니다.",
+        "생활 속 예: 강원도 대관령의 넓은 풀밭에서는 양 떼를 기릅니다."
+      ],
+      "beats": [
+        "가파른 비탈을 오르면 꼭대기가 넓게 펼쳐집니다.",
+        "높은 곳인데도 땅이 판판해서 풀밭에 야크가 풀을 뜯습니다.",
+        "높이 솟았으면서 위가 넓고 평평한 땅이 고원입니다."
+      ],
+      "img": "A side view of a huge table-shaped landmass: steep slopes rise from a low valley, and the top is a wide, flat grassland stretching far, with yaks grazing and a few tents. Clouds float near the flat top to show how high it is. No text.",
+      "imgKo": "낮은 골짜기에서 가파른 비탈이 솟고, 꼭대기는 식탁처럼 넓고 평평한 풀밭이어서 야크가 풀을 뜯고 천막 몇 채가 있다. 구름이 꼭대기 가까이 떠 있다."
+    },
+    "기복": {
+      "explain": [
+        "쉬운 뜻: 땅이 솟았다 꺼졌다 하며 오르락내리락하는 모양입니다.",
+        "한자 뜻: 起(일어날 기)와 伏(엎드릴 복), 땅이 일어섰다 엎드렸다 한다는 뜻입니다.",
+        "생활 속 예: 롤러코스터 길처럼 오르막과 내리막이 많으면 기복이 심합니다."
+      ],
+      "beats": [
+        "도윤이는 오르락내리락하는 언덕길에서 자전거를 탑니다.",
+        "하린이는 들판의 판판한 길을 편하게 달립니다.",
+        "땅이 높아졌다 낮아졌다 하는 것이 기복입니다."
+      ],
+      "img": "Split view: on the left, DOYUN pedals hard on a bicycle along a road that goes up and down over many hills like waves; on the right, HARIN rides easily along a perfectly flat road through a wide field. Same sky and drawing style on both sides. No text.",
+      "imgKo": "왼쪽은 도윤이가 물결처럼 오르락내리락하는 언덕길에서 힘들게 자전거를 타고, 오른쪽은 하린이가 넓은 들판의 판판한 길을 편하게 달린다."
+    },
+    "지하자원": {
+      "explain": [
+        "쉬운 뜻: 땅속에 숨어 있는 보물 같은 것들입니다. 캐내야 쓸 수 있습니다.",
+        "낱말 나누기: 지하(땅 아래) + 자원(쓸모 있는 것), 땅속에 묻힌 쓸모 있는 것입니다.",
+        "생활 속 예: 자동차에 넣는 휘발유는 땅속에서 뽑아낸 석유로 만듭니다."
+      ],
+      "beats": [
+        "산 아래 땅속에 석탄과 철광석이 묻혀 있습니다.",
+        "광부들이 굴을 파고 들어가 캐냅니다.",
+        "땅속에 묻혀 있어 캐내어 쓰는 것이 지하자원입니다."
+      ],
+      "img": "A cutaway view of a mountain: above ground, a mine entrance with rail carts; below ground, cross-section layers of earth showing dark coal seams and reddish iron ore, with miners in helmets and head lamps digging along a tunnel. No text.",
+      "imgKo": "산을 자른 단면. 땅 위에는 광산 입구와 수레 길이 있고, 땅속 지층에 검은 석탄층과 붉은 철광석이 있으며 안전모 쓴 광부들이 굴을 따라 캐낸다."
+    },
+    "목축업": {
+      "explain": [
+        "쉬운 뜻: 넓은 풀밭에 가축을 풀어 놓고 길러서 먹고사는 일입니다.",
+        "낱말 나누기: 목축(가축을 놓아기름) + 업(일), 가축을 기르는 일입니다.",
+        "생활 속 예: 우유, 소고기, 양털 옷은 모두 가축을 기른 덕분에 얻습니다."
+      ],
+      "beats": [
+        "산비탈 넓은 풀밭에 울타리를 친 목장이 있습니다.",
+        "소와 양, 염소가 풀을 뜯고 목동이 지켜봅니다.",
+        "가축을 길러 고기, 젖, 털을 얻는 일이 목축업입니다."
+      ],
+      "img": "A green alpine pasture on a mountain slope with a wooden fence. Cows with bells, sheep and goats graze while a herder with a staff and a dog watches them. A wooden barn stands nearby with milk cans and a bundle of wool. Snowy peaks in the background. No text.",
+      "imgKo": "눈 덮인 봉우리 아래 울타리 친 산비탈 풀밭에서 방울 단 소와 양, 염소가 풀을 뜯고 지팡이 든 목동과 개가 지켜본다. 옆 헛간에 우유 통과 양털 뭉치가 있다."
+    },
+    "셰르파": {
+      "explain": [
+        "쉬운 뜻: 높은 산길을 손바닥 보듯 훤히 아는 산 길잡이입니다.",
+        "히말라야 높은 곳에 모여 사는 한 무리 사람들의 이름에서 나온 말입니다.",
+        "숨쉬기 힘든 높은 곳에 익숙해서, 무거운 짐을 지고도 앞장서 오릅니다."
+      ],
+      "beats": [
+        "눈 덮인 산길을 등산객들이 줄지어 오릅니다.",
+        "맨 앞 사람이 커다란 짐을 지고 길을 이끕니다.",
+        "길을 안내하고 짐을 날라 주는 히말라야 산 길잡이가 셰르파입니다."
+      ],
+      "img": "A line of foreign climbers in bright down jackets roped together on a snowy Himalayan ridge. At the front, a Nepali mountain guide carries a huge backpack and points the way up toward a high peak, calm and steady while the others look tired. Plain colored prayer flags flutter on a rock nearby. No text.",
+      "imgKo": "눈 덮인 히말라야 능선에서 밝은 패딩 입은 등산객들이 줄지어 오르고, 맨 앞의 네팔 산 길잡이가 커다란 짐을 지고 앞길을 가리킨다."
+    },
+    "하천": {
+      "en": "river",
+      "explain": [
+        "쉬운 뜻: 영어로 river입니다. 골짜기 시냇물부터 넓은 강까지, 흐르는 물줄기를 모두 이릅니다.",
+        "생활 속 예: 서울 한가운데를 흐르는 한강도, 그리로 모여드는 청계천도 하천입니다."
+      ],
+      "beats": [
+        "산골짜기의 가는 물줄기들이 모여 흘러내립니다.",
+        "물줄기가 점점 넓어져 들판을 지나 바다로 갑니다.",
+        "산에서 바다로 흐르는 크고 작은 물줄기가 하천입니다."
+      ],
+      "img": "A bird's-eye view from mountains to sea: several thin streams trickle down mountain valleys, join into a bigger stream with a waterfall, then become a wide river winding through a plain with towns and bridges, finally flowing into the sea at the bottom of the picture. No text.",
+      "imgKo": "산골짜기의 가는 물줄기들이 모여 폭포를 지나고, 점점 넓은 강이 되어 마을과 다리가 있는 들판을 굽이돌아 바다로 흘러간다."
+    },
+    "평야": {
+      "en": "plain",
+      "explain": [
+        "쉬운 뜻: 영어로 plain입니다. 끝이 안 보일 만큼 넓고 판판한 들입니다.",
+        "생활 속 예: 전라북도 김제 들판에 서면 산이 가리지 않아 땅끝과 하늘이 맞닿은 선이 보입니다."
+      ],
+      "beats": [
+        "사방을 둘러봐도 산이 보이지 않습니다.",
+        "넓고 판판한 들에 논과 밭이 끝없이 이어집니다.",
+        "높낮이 없이 넓고 평평한 들이 평야입니다."
+      ],
+      "img": "A vast flat farmland under a big sky: golden rice paddies and green fields stretch in neat squares all the way to the horizon, with a straight road and a small tractor. No hills or mountains anywhere. TEACHER, HARIN and DOYUN stand on a raised path between paddies looking at the far horizon. No text.",
+      "imgKo": "산이 하나도 없이 누런 논과 푸른 밭이 네모 칸으로 지평선까지 이어지고, 곧은 길에 작은 트랙터가 있다. 선생님과 하린, 도윤이가 논둑에서 먼 지평선을 바라본다."
+    },
+    "교통로": {
+      "explain": [
+        "쉬운 뜻: 사람과 짐이 오가는 길입니다. 땅 위 길만이 아니라 강과 바다의 물길도 됩니다.",
+        "낱말 나누기: 교통(오고 감) + 로(길), 오고 가는 길입니다.",
+        "생활 속 예: 고속 도로, 기찻길, 하늘의 비행기 길이 모두 교통로입니다."
+      ],
+      "beats": [
+        "넓은 강 위로 짐 실은 배들이 오갑니다.",
+        "강가에는 기찻길과 도로도 나란히 나 있습니다.",
+        "사람이나 물건이 오가는 길이 교통로입니다."
+      ],
+      "img": "A wide European river flowing past green hills with old castles; long cargo barges loaded with containers travel up and down the river, and along the bank run a railway with a train and a road with trucks. No text.",
+      "imgKo": "성이 있는 언덕 사이로 넓은 강이 흐르고 컨테이너 실은 긴 화물선들이 오가며, 강가에 기차가 달리는 철길과 트럭이 다니는 도로가 나란히 있다."
+    },
+    "해안": {
+      "en": "coast",
+      "explain": [
+        "쉬운 뜻: 영어로 coast입니다. 땅이 끝나고 바다가 시작되는 가장자리입니다.",
+        "생활 속 예: 해수욕하는 모래사장도, 파도가 부서지는 바위 바닷가도 해안입니다."
+      ],
+      "beats": [
+        "땅과 바다가 만나는 자리를 하늘에서 내려다봅니다.",
+        "모래밭도 있고, 바위 절벽도 있고, 갯벌도 있습니다.",
+        "육지와 바다가 맞닿은 곳이 해안입니다."
+      ],
+      "img": "An aerial view along a long coastline where green land meets the blue sea: a curved sandy beach, then a rocky cliff with crashing waves, then a muddy tidal flat, then a small fishing harbor with boats. A coastal road follows the edge. No text.",
+      "imgKo": "초록 땅과 파란 바다가 만나는 긴 바닷가를 하늘에서 본 모습. 굽은 모래사장, 파도 부서지는 바위 절벽, 질척한 갯벌, 배가 있는 작은 항구가 이어진다."
+    },
+    "갯벌": {
+      "en": "tidal flat",
+      "explain": [
+        "쉬운 뜻: 영어로 tidal flat입니다. 물이 빠지면 걸어 들어갈 수 있는 바닷가 진흙 땅입니다.",
+        "생활 속 예: 서해안 갯벌에서는 장화를 신고 조개를 캐는 체험을 합니다.",
+        "갯벌은 더러운 물을 걸러 주고, 수많은 생물이 사는 집이 됩니다."
+      ],
+      "beats": [
+        "물이 빠지자 바닷가에 넓은 진흙 땅이 드러납니다.",
+        "아이들이 장화를 신고 게와 조개를 찾습니다.",
+        "썰물 때 드러나는 질척한 바닷가 땅이 갯벌입니다."
+      ],
+      "img": "Low tide on a wide gray mudflat stretching to a distant thin line of sea. HARIN and DOYUN in rubber boots crouch with small rakes and buckets, finding clams; tiny crabs and holes dot the mud, and a few fishing boats rest tilted on the mud. No text.",
+      "imgKo": "물이 빠져 멀리 바다까지 회색 진흙 땅이 펼쳐지고, 장화 신은 하린이와 도윤이가 호미와 양동이로 조개를 찾는다. 진흙에 작은 게와 구멍이 많고 배들이 기울어진 채 놓여 있다."
+    },
+    "해안 절벽": {
+      "en": "sea cliff",
+      "explain": [
+        "쉬운 뜻: 영어로 sea cliff입니다. 바닷가에 벽처럼 깎아지른 높은 바위 언덕입니다.",
+        "생활 속 예: 부산 태종대에 가면 바다 위로 우뚝 선 바위 벼랑을 볼 수 있습니다."
+      ],
+      "beats": [
+        "파도가 바닷가 바위를 쉬지 않고 때립니다.",
+        "바위가 깎여 벽처럼 가파른 낭떠러지가 되었습니다.",
+        "파도에 깎여 바닷가에 가파르게 선 낭떠러지가 해안 절벽입니다."
+      ],
+      "img": "Tall white chalk cliffs rising straight up from a blue sea, with big waves crashing at their base and a natural arch carved into the rock. A grassy path runs along the top with a safety fence, and tiny people stand far back from the edge. No text.",
+      "imgKo": "파란 바다에서 하얀 바위 벼랑이 곧게 솟고, 아래에 큰 파도가 부서지며 바위에 구멍 뚫린 아치가 있다. 꼭대기 풀밭 길에 안전 울타리가 있고 사람들이 멀찍이 서 있다."
+    },
+    "무역항": {
+      "explain": [
+        "쉬운 뜻: 다른 나라로 보낼 짐과 들어온 짐을 큰 배에 싣고 내리는 항구입니다.",
+        "낱말 나누기: 무역(나라끼리 사고팖) + 항(항구), 무역하는 배가 드나드는 항구입니다.",
+        "생활 속 예: 부산항에서는 커다란 기중기가 쉬지 않고 컨테이너를 옮깁니다."
+      ],
+      "beats": [
+        "큰 화물선이 항구에 줄지어 들어옵니다.",
+        "기중기가 알록달록한 컨테이너를 배에서 내립니다.",
+        "다른 나라와 사고파는 물건을 실은 배가 드나드는 항구가 무역항입니다."
+      ],
+      "img": "A huge modern container port: giant cargo ships stacked with colorful containers dock at the pier, tall gantry cranes lift containers onto trucks, and more ships wait out at sea. The ships fly different plain colored flags to show they come from many countries. No text, no logos.",
+      "imgKo": "알록달록한 컨테이너를 높이 쌓은 큰 화물선들이 부두에 대고, 키 큰 기중기가 컨테이너를 트럭에 내리며, 바다에는 다른 배들이 기다린다."
+    },
+    "양식업": {
+      "explain": [
+        "쉬운 뜻: 바다나 강에서 잡기만 하지 않고, 사람이 직접 키워서 거두는 일입니다.",
+        "낱말 나누기: 양식(길러서 늘림) + 업(일), 길러서 늘리는 일입니다.",
+        "생활 속 예: 마트에서 파는 김, 굴, 전복, 광어는 대부분 바다에서 길러 낸 것입니다."
+      ],
+      "beats": [
+        "어촌 앞바다에 둥근 그물 우리와 부표가 떠 있습니다.",
+        "어민이 그물 우리 안의 물고기에게 먹이를 줍니다.",
+        "물고기나 조개를 가두어 길러서 거두는 일이 양식업입니다."
+      ],
+      "img": "A calm bay near a fishing village: rows of round floating net pens and lines of white buoys float on the water. A fisher on a small boat scatters feed into a net pen where fish jump, and nearby ropes with oysters and seaweed hang from the buoys. No text.",
+      "imgKo": "어촌 앞 잔잔한 바다에 둥근 그물 우리와 흰 부표 줄이 떠 있고, 작은 배의 어민이 물고기가 뛰는 그물 우리에 먹이를 뿌린다. 부표 줄에는 굴과 미역이 매달려 있다."
+    },
+    "관광 자원": {
+      "explain": [
+        "쉬운 뜻: '저기 꼭 가 보고 싶다'는 마음이 들게 해서 사람들을 불러 모으는 것입니다.",
+        "낱말 나누기: 관광(구경하며 다님) + 자원(쓸모 있는 것)입니다.",
+        "생활 속 예: 경주 불국사, 설악산 단풍, 고장의 축제가 모두 관광 자원입니다."
+      ],
+      "beats": [
+        "큰 폭포가 하얀 물보라를 일으키며 쏟아집니다.",
+        "세계 여러 나라 관광객이 폭포를 보려고 몰려옵니다.",
+        "사람들이 구경하러 찾아오게 만드는 것이 관광 자원입니다."
+      ],
+      "img": "A wide horseshoe of thundering waterfalls in a green jungle with white mist and a rainbow. Crowds of tourists from many countries in raincoats fill a walkway and a viewing boat, taking photos. No text.",
+      "imgKo": "초록 숲 속에서 말굽 모양으로 늘어선 큰 폭포가 물보라와 무지개를 일으키고, 비옷 입은 여러 나라 관광객이 다리와 배 위에서 사진을 찍는다."
+    },
+    "관광 산업": {
+      "en": "tourism",
+      "explain": [
+        "쉬운 뜻: 영어로 tourism입니다. 놀러 온 사람들을 맞이하며 돈을 버는 여러 가지 일입니다.",
+        "생활 속 예: 호텔 직원, 관광버스 기사, 기념품 가게 주인, 여행 안내원이 하는 일입니다.",
+        "관광객이 많이 오면 마을 사람들에게 일자리가 생깁니다."
+      ],
+      "beats": [
+        "스키장과 산악 열차가 있는 산 마을에 관광객이 옵니다.",
+        "호텔, 식당, 기념품 가게 사람들이 손님을 맞습니다.",
+        "여행 온 사람을 맞이하며 돈을 버는 일이 관광 산업입니다."
+      ],
+      "img": "A Swiss-style mountain village in winter: a red mountain train climbs toward a ski slope, and in the village street, hotel staff greet tourists with suitcases, a cook serves food on a restaurant terrace, and a shopkeeper sells souvenirs. No text, no signs with letters.",
+      "imgKo": "겨울 산 마을에 빨간 산악 열차가 스키장으로 올라가고, 마을 길에서 호텔 직원이 여행 가방 든 관광객을 맞고 식당과 기념품 가게 사람들이 손님을 대한다."
+    },
+    "휴양지": {
+      "en": "resort",
+      "explain": [
+        "쉬운 뜻: 영어로 resort입니다. 일과 공부를 잠시 내려놓고 푹 쉬러 가는 곳입니다.",
+        "생활 속 예: 따뜻한 바닷가 호텔이나 숲속 통나무집에서 며칠 쉬다 옵니다."
+      ],
+      "beats": [
+        "작은 고기잡이 마을의 조용한 바닷가입니다.",
+        "같은 바닷가에 호텔과 수영장이 들어서고 사람들이 쉬러 옵니다.",
+        "편히 쉬면서 피로를 푸는 곳이 휴양지입니다."
+      ],
+      "img": "A two-panel before-and-after of the same turquoise Caribbean beach: left, a quiet small fishing village with wooden boats and palm-thatched huts; right, the same beach lined with white hotels, swimming pools and sun loungers where families relax under umbrellas. No text.",
+      "imgKo": "같은 옥빛 바닷가의 전과 후. 왼쪽은 나무배와 초가 오두막이 있는 조용한 어촌, 오른쪽은 흰 호텔과 수영장, 파라솔 아래에서 가족들이 쉬는 바닷가."
+    }
+  },
+  "1-2": {
+    "기후": {
+      "en": "climate",
+      "explain": [
+        "쉬운 뜻: 영어로 climate입니다. 그곳 날씨가 해마다 늘 어떤지, 날씨의 버릇 같은 것입니다.",
+        "생활 속 예: 더운 나라 사람은 얇은 옷을, 추운 나라 사람은 두꺼운 털옷을 늘 입습니다."
+      ],
+      "beats": [
+        "같은 마을의 한여름 모습을 여러 해 모아 걸었습니다.",
+        "해마다 한여름이면 늘 덥고 소나기가 쏟아집니다.",
+        "여러 해 동안 되풀이되는 날씨의 특징이 기후입니다."
+      ],
+      "img": "HARIN and DOYUN look at a wall where five small framed pictures hang in a row, each showing the same Korean village in midsummer of a different year: in every frame there is a hot sun, lush green rice paddies and heavy summer rain clouds, with people holding fans or umbrellas. No numbers, no text.",
+      "imgKo": "하린이와 도윤이가 벽에 걸린 액자 다섯 개를 본다. 모두 같은 마을의 여러 해 한여름 모습이고, 액자마다 뜨거운 해, 푸른 논, 소나기 구름, 부채와 우산을 든 사람들이 있다."
+    },
+    "강수량": {
+      "explain": [
+        "쉬운 뜻: 빈 통을 밖에 두었을 때 비와 눈이 얼마나 깊이 고였는지 잰 값입니다.",
+        "낱말 나누기: 강수(하늘에서 내린 비나 눈) + 량(양)입니다.",
+        "우리나라는 일 년 동안 내릴 비의 절반 넘게 여름에 몰려 내립니다."
+      ],
+      "beats": [
+        "운동장에 빈 원통을 세워 두었습니다.",
+        "비가 그치자 통에 고인 물의 깊이를 자로 잽니다.",
+        "일정한 기간에 내린 비와 눈의 양이 강수량입니다."
+      ],
+      "img": "In a schoolyard after rain, HARIN kneels beside a simple clear cylinder rain gauge standing on the ground, and DOYUN holds a ruler against it to measure how deep the collected water is. Puddles and clearing clouds around them. No numbers or text.",
+      "imgKo": "비 그친 운동장에서 하린이가 땅에 세운 투명한 원통 옆에 앉고, 도윤이가 자를 대어 고인 물의 깊이를 잰다."
+    },
+    "위도": {
+      "en": "latitude",
+      "explain": [
+        "쉬운 뜻: 영어로 latitude입니다. 지구본의 가로줄로, 적도에서 위아래로 얼마나 왔는지 알려 줍니다.",
+        "적도는 0°이고, 북극과 남극 끝은 90°입니다.",
+        "생활 속 예: 서울은 적도에서 북쪽으로 37°쯤 올라간 곳에 있습니다."
+      ],
+      "beats": [
+        "지구본 한가운데를 두르는 선이 적도입니다.",
+        "적도와 나란한 가로줄이 위아래로 여러 개 그어져 있습니다.",
+        "적도에서 남북으로 얼마나 떨어졌는지 나타낸 값이 위도입니다."
+      ],
+      "img": "A large classroom globe on a stand: TEACHER points at a bold line around its middle (the equator) while HARIN traces with her finger one of the parallel horizontal lines farther north. Several evenly spaced horizontal rings circle the globe parallel to the equator. No numbers or text.",
+      "imgKo": "교실의 큰 지구본에서 선생님이 가운데를 두르는 굵은 선(적도)을 가리키고, 하린이가 그보다 북쪽의 가로줄 하나를 손가락으로 따라간다. 적도와 나란한 가로줄들이 고르게 둘러 있다."
+    },
+    "열대 기후": {
+      "explain": [
+        "쉬운 뜻: 우리나라 한여름 같은 날씨가 일 년 내내 이어지는 기후입니다.",
+        "한자 뜻: 熱(더울 열)과 帶(띠 대), 적도를 따라 띠처럼 두른 더운 곳이라는 뜻입니다.",
+        "생활 속 예: 마트의 바나나와 파인애플은 이런 곳에서 자라 배를 타고 옵니다."
+      ],
+      "beats": [
+        "적도 근처 마을에 해가 뜨겁게 내리쬡니다.",
+        "오후가 되자 거센 소나기가 쏟아지고, 둘레에는 키 큰 나무가 우거졌습니다.",
+        "일 년 내내 덥고 비가 많은 기후가 열대 기후입니다."
+      ],
+      "img": "A village near the equator in a hot, humid jungle clearing: houses on stilts, banana trees and tall palm trees, people in light thin clothes. Half the sky shows a blazing sun and the other half a heavy afternoon downpour. Lush, dense green everywhere. No text.",
+      "imgKo": "적도 근처 무더운 숲 속 마을에 기둥 위 집, 바나나 나무, 키 큰 야자나무가 있고 사람들은 얇은 옷을 입었다. 하늘 반쪽은 뜨거운 해, 반쪽은 거센 소나기."
+    },
+    "건조 기후": {
+      "explain": [
+        "쉬운 뜻: 비가 너무 적게 와서 땅이 바싹 메마른 기후입니다.",
+        "한자 뜻: 乾(마를 건)과 燥(마를 조), 마르고 또 마른다는 뜻입니다.",
+        "생활 속 예: 사하라 사막처럼 모래 언덕이 펼쳐지고 낙타가 다니는 곳입니다."
+      ],
+      "beats": [
+        "모래 언덕이 끝없이 이어지고 풀이 거의 없습니다.",
+        "땅이 쩍쩍 갈라지고 웅덩이 물도 금세 말라 버립니다.",
+        "비보다 증발하는 물이 더 많은 기후가 건조 기후입니다."
+      ],
+      "img": "A dry desert landscape: rolling sand dunes, cracked dry ground with a shrinking puddle evaporating under a blazing sun, a few tough shrubs, and a camel caravan with people in loose long robes and head cloths crossing in the distance. No clouds. No text.",
+      "imgKo": "구름 없는 뜨거운 햇볕 아래 모래 언덕, 쩍쩍 갈라진 땅과 말라 가는 웅덩이, 질긴 덤불이 있고, 멀리 헐렁한 긴 옷 입은 사람들이 낙타를 몰고 간다."
+    },
+    "온대 기후": {
+      "explain": [
+        "쉬운 뜻: 덥지도 춥지도 않은 날이 많고, 봄, 여름, 가을, 겨울이 뚜렷한 기후입니다.",
+        "한자 뜻: 溫(따뜻할 온)과 帶(띠 대), 따뜻한 띠 지역이라는 뜻입니다.",
+        "생활 속 예: 벚꽃 피는 봄, 단풍 드는 가을처럼 철마다 옷을 바꿔 입습니다."
+      ],
+      "beats": [
+        "같은 나무가 봄에는 꽃을, 여름에는 푸른 잎을 답니다.",
+        "가을에는 단풍이 들고 겨울에는 가지에 눈이 쌓입니다.",
+        "사계절이 나타나고 기온과 비가 알맞은 기후가 온대 기후입니다."
+      ],
+      "img": "One tree on a gentle hill beside a rice field, shown in four side-by-side panels: spring with pink blossoms, summer with lush green leaves and green rice, autumn with red and yellow leaves and golden rice, winter with bare branches and light snow. Same viewpoint in every panel. No text.",
+      "imgKo": "논 옆 언덕의 나무 한 그루를 같은 자리에서 네 칸으로: 분홍 꽃 핀 봄, 푸른 잎과 푸른 논의 여름, 단풍과 누런 논의 가을, 앙상한 가지에 눈 쌓인 겨울."
+    },
+    "냉대 기후": {
+      "explain": [
+        "쉬운 뜻: 여름은 잠깐 지나가고, 꽁꽁 언 겨울이 길게 이어지는 기후입니다.",
+        "한자 뜻: 冷(찰 냉)과 帶(띠 대), 차가운 띠 지역이라는 뜻입니다.",
+        "생활 속 예: 러시아와 캐나다에서는 겨울에 언 호수 위를 걸어 다닙니다."
+      ],
+      "beats": [
+        "끝없는 바늘잎나무 숲 사이로 통나무집이 보입니다.",
+        "겨울이 길어 호수가 꽁꽁 얼고 지붕에 눈이 높이 쌓였습니다.",
+        "겨울이 몹시 춥고 길며 여름이 짧은 기후가 냉대 기후입니다."
+      ],
+      "img": "A snowy northern forest of tall pointed evergreen trees in deep winter. A log cabin with smoke rising from its chimney sits beside a frozen lake where children slide on sleds and a person ice-fishes through a hole. Snow piles high on the roofs. No text.",
+      "imgKo": "뾰족한 상록 바늘잎나무가 빽빽한 눈 덮인 숲, 굴뚝에서 연기 나는 통나무집 옆 꽁꽁 언 호수에서 아이들이 썰매를 타고 한 사람은 얼음 구멍 낚시를 한다."
+    },
+    "한대 기후": {
+      "explain": [
+        "쉬운 뜻: 가장 따뜻한 한여름도 우리나라 이른 봄처럼 쌀쌀한 기후입니다.",
+        "한자 뜻: 寒(찰 한)과 帶(띠 대), 추운 띠 지역이라는 뜻입니다.",
+        "북극과 남극 둘레에 나타나며, 짧은 여름에 이끼만 겨우 자랍니다."
+      ],
+      "beats": [
+        "얼음과 눈으로 덮인 땅에 나무가 한 그루도 없습니다.",
+        "두꺼운 털옷을 입은 사람들이 순록 떼를 몹니다.",
+        "일 년 내내 몹시 추워 나무가 자라기 어려운 기후가 한대 기후입니다."
+      ],
+      "img": "A treeless Arctic landscape near a sea with floating ice: flat ground covered with snow and patches of low moss, no trees at all. Indigenous herders in thick fur coats and hoods guide a herd of reindeer, and a hide tent stands nearby. Pale low sun. No text.",
+      "imgKo": "바다에 얼음덩이가 떠 있는 북극 땅. 나무 하나 없이 눈과 낮은 이끼만 있고, 두꺼운 털옷 입은 원주민이 순록 떼를 몰며 가죽 천막이 서 있다."
+    },
+    "고산 기후": {
+      "explain": [
+        "쉬운 뜻: 적도 근처라도 아주 높은 산 위에 올라가면 서늘해져서 생기는 기후입니다.",
+        "높이 올라갈수록 기온이 내려가서, 산 아래는 무더워도 위는 서늘합니다.",
+        "생활 속 예: 높은 산에 오르면 한여름에도 바람이 서늘한 것과 같은 까닭입니다."
+      ],
+      "beats": [
+        "적도 근처 산 아래는 무더운 밀림입니다.",
+        "높은 산 위로 올라가니 서늘한 마을과 밭이 나타납니다.",
+        "적도 근처 높은 산지에 나타나는 봄 같은 기후가 고산 기후입니다."
+      ],
+      "img": "A tall Andes mountain shown from bottom to top: at the foot, a steamy hot jungle with palm trees; halfway up, cooler green farm terraces; near the top, a village where people in ponchos and wide-brimmed hats tend llamas and alpacas under a clear sky. No text.",
+      "imgKo": "안데스의 높은 산을 아래에서 위로: 산기슭은 야자나무 무더운 밀림, 중턱은 서늘한 계단밭, 위쪽 마을에서 망토와 챙 넓은 모자를 쓴 사람들이 라마와 알파카를 돌본다."
+    },
+    "열대 우림": {
+      "en": "rainforest",
+      "explain": [
+        "쉬운 뜻: 영어로 rainforest입니다. 비가 자주 쏟아지는 더운 곳의 아주 빽빽한 숲입니다.",
+        "낱말 나누기: 열대(무더운 곳) + 우림(비를 많이 맞는 숲)입니다.",
+        "지구에 사는 생물 종류의 절반 넘게 이 숲에 산다고 합니다."
+      ],
+      "beats": [
+        "키 큰 나무들이 하늘을 가려 숲속이 어둑합니다.",
+        "나무 사이에 원숭이, 앵무새, 덩굴이 가득합니다.",
+        "덥고 비가 많은 곳에 우거진 빽빽한 숲이 열대 우림입니다."
+      ],
+      "img": "Inside a dense tropical rainforest: towering trees with wide leaves form a thick canopy that blocks most of the sky, with thin rays of light and dripping rain. Vines hang down, a monkey swings, colorful parrots perch, and huge ferns cover the wet ground. No text.",
+      "imgKo": "키 큰 나무가 하늘을 덮은 빽빽한 숲 속에 빛줄기와 빗방울이 새어 들고, 덩굴에 원숭이가 매달리고 앵무새가 앉아 있으며 젖은 땅에 커다란 고사리가 덮였다."
+    },
+    "우기": {
+      "en": "rainy season",
+      "explain": [
+        "쉬운 뜻: 영어로 rainy season입니다. 몇 달 동안 거의 날마다 비가 퍼붓는 때입니다.",
+        "한자 뜻: 雨(비 우)와 期(때 기), 비 오는 때라는 뜻입니다.",
+        "생활 속 예: 우리나라 여름 장마철처럼 비가 몰아서 내리는 때입니다."
+      ],
+      "beats": [
+        "메말랐던 초원에 먹구름이 몰려옵니다.",
+        "날마다 비가 쏟아지자 풀이 파랗게 자라고 물웅덩이가 찹니다.",
+        "일 년 가운데 비가 많이 내리는 시기가 우기입니다."
+      ],
+      "img": "An African savanna in the rainy season: dark heavy clouds pour rain over lush green grass, full water holes and a swelling river. Zebras and elephants gather at the water, and a flat-topped acacia tree stands in the rain. No text.",
+      "imgKo": "아프리카 초원에 먹구름이 비를 쏟고, 풀이 파랗게 우거지고 물웅덩이와 강물이 불어났다. 얼룩말과 코끼리가 물가에 모이고 우산 모양 나무가 비를 맞는다."
+    },
+    "건기": {
+      "en": "dry season",
+      "explain": [
+        "쉬운 뜻: 영어로 dry season입니다. 몇 달 동안 비 한 방울 보기 어려운 때입니다.",
+        "한자 뜻: 乾(마를 건)과 期(때 기), 메마른 때라는 뜻입니다.",
+        "생활 속 예: 이때는 우물물이 줄어 마을 사람들이 먼 곳까지 물을 길으러 갑니다."
+      ],
+      "beats": [
+        "같은 초원에 몇 달째 비가 오지 않습니다.",
+        "풀이 누렇게 마르고 물웅덩이가 바닥을 드러냈습니다.",
+        "일 년 가운데 비가 거의 내리지 않는 시기가 건기입니다."
+      ],
+      "img": "The same African savanna with the same flat-topped acacia tree in the dry season: cloudless hot sky, yellow dry grass, a cracked empty water hole, dust in the air, and zebras and elephants walking away in a line to look for water. No text.",
+      "imgKo": "같은 아프리카 초원, 같은 우산 모양 나무. 구름 없는 하늘 아래 풀이 누렇게 말랐고 물웅덩이는 쩍쩍 갈라졌으며, 얼룩말과 코끼리가 줄지어 물을 찾아 떠난다."
+    },
+    "고상 가옥": {
+      "en": "stilt house",
+      "explain": [
+        "쉬운 뜻: 영어로 stilt house입니다. 긴 다리로 딛고 선 것처럼 기둥 위에 올린 집입니다.",
+        "낱말 나누기: 고상(높은 마루) + 가옥(집), 바닥을 높이 올린 집입니다.",
+        "바닥 아래로 바람이 지나가고, 물이 불어나도 집 안이 젖지 않습니다."
+      ],
+      "beats": [
+        "땅에 굵은 나무 기둥을 여러 개 박았습니다.",
+        "기둥 위에 바닥을 올리고 사다리로 오르내립니다.",
+        "바닥을 땅에서 띄워 기둥 위에 지은 집이 고상 가옥입니다."
+      ],
+      "img": "A wooden house with a palm-leaf roof raised high on thick wooden stilts in a hot, humid tropical village. A ladder leads up to the floor, air flows freely underneath where chickens rest in the shade, and puddles lie on the wet ground below. No text.",
+      "imgKo": "무더운 열대 마을에 야자잎 지붕의 나무집이 굵은 기둥 위에 높이 올라 있다. 사다리로 오르내리고 바닥 아래로 바람이 지나며 그늘에 닭이 쉬고 땅에는 물웅덩이가 있다."
+    },
+    "화전 농업": {
+      "explain": [
+        "쉬운 뜻: 숲 한 자락을 불로 태워 밭을 만들고, 그 자리에 씨를 뿌리는 농사입니다.",
+        "낱말 나누기: 화전(불을 질러 일군 밭) + 농업(농사)입니다.",
+        "몇 해 지나 땅이 힘을 잃으면 다른 숲으로 옮겨 가 다시 밭을 일굽니다."
+      ],
+      "beats": [
+        "숲 한쪽의 나무를 베고 불을 놓습니다.",
+        "타고 남은 재가 덮인 땅에 카사바를 심습니다.",
+        "숲을 태운 재를 거름 삼아 농작물을 기르는 것이 화전 농업입니다."
+      ],
+      "img": "A tropical forest edge where a small patch has been cleared: on one side, villagers watch a controlled fire burning cut brush with smoke rising; on the other side, the gray ash-covered ground is planted with young cassava plants. Tall green jungle surrounds the patch. No text.",
+      "imgKo": "열대 숲 가장자리의 작은 빈터. 한쪽에서 마을 사람들이 베어 낸 나무 더미가 타는 것을 지켜보고, 다른 쪽 잿빛 땅에 어린 카사바가 심겨 있다."
+    },
+    "오아시스": {
+      "en": "oasis",
+      "explain": [
+        "쉬운 뜻: 영어로도 oasis입니다. 누런 모래 바다 한가운데 떠 있는 초록 섬 같은 곳입니다.",
+        "땅속을 흐르던 물이 솟아 샘이 되고, 그 둘레에 대추야자가 자랍니다."
+      ],
+      "beats": [
+        "끝없는 모래 언덕 너머로 초록빛이 보입니다.",
+        "샘물 둘레에 야자나무가 자라고 흙벽돌 집이 모여 있습니다.",
+        "사막 한가운데 샘이 솟고 나무가 자라는 곳이 오아시스입니다."
+      ],
+      "img": "A vast golden sand desert seen from a dune top: in the middle, a small green oasis with a blue spring pond, tall date palm trees and mud-brick houses clustered around it. A camel caravan approaches across the dunes. No text.",
+      "imgKo": "모래 언덕 위에서 본 넓은 사막 한가운데 파란 샘, 키 큰 대추야자, 흙벽돌 집이 모인 초록 오아시스가 있고, 낙타 행렬이 모래 언덕을 건너 다가온다."
+    },
+    "유목": {
+      "explain": [
+        "쉬운 뜻: 집을 한곳에 두지 않고, 가축이 먹을 풀을 따라 떠돌며 사는 삶입니다.",
+        "풀을 다 뜯으면 천막을 접어 짐을 싸고 새 풀밭으로 떠납니다.",
+        "생활 속 예: 몽골의 천막집은 한두 시간이면 걷어서 낙타에 실을 수 있습니다."
+      ],
+      "beats": [
+        "초원에 하얀 천막집과 양 떼가 있습니다.",
+        "풀이 줄어들자 천막을 걷어 짐을 싣고 길을 떠납니다.",
+        "물과 풀을 찾아 가축과 함께 옮겨 다니는 것이 유목입니다."
+      ],
+      "img": "A wide Mongolian grassland: a family takes down their round white felt tent and loads the folded pieces onto camels and a cart, while their flock of sheep and goats waits. A dotted path leads over the hills to a distant greener pasture by a river. No text.",
+      "imgKo": "넓은 몽골 초원에서 한 가족이 둥근 흰 천막을 걷어 낙타와 수레에 싣고, 양과 염소 떼가 기다린다. 점선 길이 언덕 너머 강가의 푸른 풀밭으로 이어진다."
+    },
+    "지중해": {
+      "en": "the Mediterranean Sea",
+      "explain": [
+        "쉬운 뜻: 영어로 the Mediterranean Sea입니다. 세 대륙 사이에 쏙 들어앉은 큰 바다입니다.",
+        "한자 뜻: 地(땅 지), 中(가운데 중), 海(바다 해), 땅 가운데 바다라는 뜻입니다.",
+        "생활 속 예: 피자와 스파게티로 이름난 이탈리아가 이 바다 쪽으로 장화처럼 뻗어 있습니다."
+      ],
+      "beats": [
+        "푸른 바다를 내려다보는 언덕에 하얀 집들이 모여 있습니다.",
+        "여름 햇볕이 뜨겁고, 메마른 언덕에는 올리브와 포도가 자랍니다.",
+        "유럽, 아시아, 아프리카에 둘러싸인 이 바다가 지중해입니다."
+      ],
+      "img": "A Greek island village of white cube houses with blue doors cascading down a cliff above a deep blue calm sea under a strong summer sun. Olive trees and grapevines grow on the dry hillside, and small boats sail in the bay. No text.",
+      "imgKo": "깊고 푸른 바다 위 벼랑에 파란 문의 하얀 집들이 층층이 모여 있고, 뜨거운 여름 햇볕 아래 메마른 언덕에 올리브 나무와 포도나무가 자란다."
+    },
+    "낙농업": {
+      "en": "dairy farming",
+      "explain": [
+        "쉬운 뜻: 영어로 dairy farming입니다. 우리가 마시는 흰 우유가 시작되는 곳의 일입니다.",
+        "생활 속 예: 우유, 치즈, 버터, 요구르트, 아이스크림이 모두 이 일에서 나옵니다.",
+        "젖소는 풀을 많이 먹어서, 비가 고르게 와 풀이 잘 자라는 곳에서 발달합니다."
+      ],
+      "beats": [
+        "넓은 풀밭에서 얼룩무늬 젖소들이 풀을 뜯습니다.",
+        "농부가 젖을 짜고, 그 우유로 치즈를 만듭니다.",
+        "젖소를 길러 우유와 치즈를 만드는 일이 낙농업입니다."
+      ],
+      "img": "A green flat Dutch pasture with a windmill in the distance: black-and-white dairy cows graze, a farmer milks a cow with a milking machine in an open barn, and on a table nearby sit milk cans and big round wheels of cheese. No text.",
+      "imgKo": "멀리 풍차가 보이는 넓고 평평한 풀밭에서 얼룩 젖소들이 풀을 뜯고, 헛간에서 농부가 기계로 젖을 짜며, 옆 탁자에 우유 통과 둥근 치즈 덩이가 있다."
+    },
+    "침엽수림": {
+      "explain": [
+        "쉬운 뜻: 크리스마스트리 같은 뾰족한 나무들이 끝없이 모여 있는 숲입니다.",
+        "낱말 나누기: 침엽수(바늘잎 나무) + 림(숲), 바늘잎 나무 숲입니다.",
+        "대부분 잎이 가늘고 단단해서 겨울에도 푸른 잎을 달고 있습니다."
+      ],
+      "beats": [
+        "산과 들을 뾰족한 나무들이 빽빽이 덮었습니다.",
+        "가까이 보니 잎이 바늘처럼 가늘고 뾰족합니다.",
+        "바늘잎을 가진 나무들이 이룬 숲이 침엽수림입니다."
+      ],
+      "img": "A vast evergreen forest of spruce and fir trees covering hills to the horizon under light snow. In the foreground, a close-up inset circle shows a branch with sharp needle-like leaves and a cone. A logging truck with stacked logs drives along a forest road. No text.",
+      "imgKo": "가문비나무와 전나무가 지평선까지 언덕을 덮은 눈 내린 숲. 앞쪽 동그라미 속에 바늘 같은 잎과 솔방울이 달린 가지가 크게 보이고, 숲길에 통나무 실은 트럭이 간다."
+    },
+    "순록": {
+      "en": "reindeer",
+      "explain": [
+        "쉬운 뜻: 영어로 reindeer입니다. 추운 북쪽 땅에서 떼 지어 다니는, 사슴을 닮은 동물입니다.",
+        "발굽이 넓적해서 눈밭에서도 푹 빠지지 않고 걷습니다."
+      ],
+      "beats": [
+        "눈 덮인 들판에 큰 뿔 달린 동물 떼가 있습니다.",
+        "넓적한 발굽으로 눈을 파헤쳐 이끼를 찾아 먹습니다.",
+        "추운 북쪽 땅에서 이끼를 먹고 사는 뿔 달린 동물이 순록입니다."
+      ],
+      "img": "A herd of reindeer with large branching antlers on a snowy, treeless tundra. In front, one reindeer digs through the snow with its broad hooves to reach pale moss underneath. Both larger and smaller animals in the herd have antlers. Low winter sun. No text.",
+      "imgKo": "나무 없는 눈 덮인 들판에 가지 친 큰 뿔의 순록 떼가 있고, 앞의 한 마리가 넓적한 발굽으로 눈을 파서 그 밑의 이끼를 먹는다."
+    },
+    "고산 도시": {
+      "explain": [
+        "쉬운 뜻: 구름이 가까이 보일 만큼 높은 산 위에 세운 큰 도시입니다.",
+        "공기가 옅어서 처음 온 사람은 숨이 차고 머리가 아프기도 합니다.",
+        "생활 속 예: 에콰도르의 수도 키토는 백두산 꼭대기보다 높은 곳에 있습니다."
+      ],
+      "beats": [
+        "높은 산들 사이 넓은 골짜기에 큰 도시가 들어섰습니다.",
+        "햇볕은 밝지만 바람이 서늘해서 사람들이 겉옷을 입었습니다.",
+        "적도 근처 높은 산지에 발달한 도시가 고산 도시입니다."
+      ],
+      "img": "A large city spreading across a high mountain basin surrounded by snow-capped Andes peaks, with clouds floating at eye level. Red-roofed houses climb the slopes, a cable car crosses above, and people in the streets wear jackets and ponchos under a bright sun. No text.",
+      "imgKo": "눈 덮인 안데스 봉우리에 둘러싸인 높은 분지에 큰 도시가 펼쳐지고, 구름이 눈높이에 떠 있다. 빨간 지붕 집들이 비탈을 오르고 케이블카가 지나가며 거리 사람들은 겉옷과 망토를 입었다."
+    },
+    "생태 관광": {
+      "explain": [
+        "쉬운 뜻: 자연을 구경하되, 다녀간 흔적을 남기지 않는 여행입니다.",
+        "낱말 나누기: 생태(생물이 살아가는 모습) + 관광(구경하며 다님)입니다.",
+        "생활 속 예: 순천만 습지에서는 정해진 나무 길로만 걸으며 철새를 봅니다."
+      ],
+      "beats": [
+        "관광객들이 습지에 놓인 나무 길로만 조용히 걷습니다.",
+        "쌍안경으로 멀리 있는 새를 지켜보고, 쓰레기는 되가져갑니다.",
+        "자연을 해치지 않고 있는 그대로 즐기는 여행이 생태 관광입니다."
+      ],
+      "img": "A small group of tourists with a guide walk quietly along a raised wooden boardwalk through a wetland of tall reeds. HARIN watches distant cranes through binoculars, DOYUN carries a small trash bag back with him, and the birds keep feeding undisturbed. No text, no signs.",
+      "imgKo": "안내원과 관광객 몇이 갈대 습지 위 나무 길을 조용히 걷고, 하린이는 쌍안경으로 먼 두루미를 보며 도윤이는 작은 쓰레기봉투를 들고 간다. 새들은 아랑곳없이 먹이를 먹는다."
+    }
+  },
+  "2-1": {
+    "시장경제": {
+      "explain": [
+        "쉬운 뜻: 큰 장터처럼, 누구나 팔고 싶은 것을 팔고 사고 싶은 것을 사는 경제 방식입니다.",
+        "낱말 나누기: 시장(사고파는 곳) + 경제(살림을 꾸리는 일)입니다.",
+        "생활 속 예: 빵집 주인은 빵값과 종류를 스스로 정하고, 손님은 마음에 드는 가게를 고릅니다."
+      ],
+      "beats": [
+        "가게들이 저마다 만든 물건을 내놓았습니다.",
+        "손님들은 값과 품질을 견주어 사고 싶은 것을 고릅니다.",
+        "스스로 정해 자유롭게 사고파는 방식이 시장경제입니다."
+      ],
+      "img": "A lively street with many different shops side by side: a bakery, a fruit stall, a shoe store and a toy shop, each owner arranging their own goods with blank price tags. Shoppers, including HARIN with her mother, compare items and freely choose where to buy. No text, no numbers.",
+      "imgKo": "빵집, 과일 가게, 신발 가게, 장난감 가게가 나란히 있는 거리에서 주인들이 저마다 물건을 내놓고, 하린이와 엄마를 비롯한 손님들이 물건을 견주어 보며 살 곳을 고른다."
+    },
+    "경쟁": {
+      "en": "competition",
+      "explain": [
+        "쉬운 뜻: 영어로 competition입니다. 달리기 시합처럼 서로 앞서려고 겨루는 것입니다.",
+        "가게끼리 겨루면 값이 내려가거나 물건이 좋아져서 손님에게 이롭습니다.",
+        "생활 속 예: 근처에 피자 가게가 새로 생기자 원래 가게가 할인 행사를 시작했습니다."
+      ],
+      "beats": [
+        "길 하나를 사이에 두고 빵집 두 곳이 마주 보고 있습니다.",
+        "한 가게가 새 케이크를 내놓자 건너편 가게는 더 맛있는 빵을 굽습니다.",
+        "서로 앞서려고 겨루는 것이 경쟁입니다."
+      ],
+      "img": "Two bakeries face each other across a narrow street. One baker proudly sets out a new colorful cake in the window, while the baker across the street, determined, pulls a tray of fresh golden bread from the oven. Customers in the middle look back and forth between the shops. No text, no signs with letters.",
+      "imgKo": "좁은 길을 사이에 두고 빵집 두 곳이 마주 본다. 한 제빵사가 창가에 새 케이크를 내놓자, 건너편 제빵사가 결심한 얼굴로 갓 구운 빵을 꺼내고, 가운데 손님들이 두 가게를 번갈아 본다."
+    },
+    "독과점": {
+      "explain": [
+        "쉬운 뜻: 물건 파는 곳이 하나뿐이거나 몇 곳 안 되어서 손님이 고를 수가 없는 것입니다.",
+        "낱말 나누기: 독점(혼자 차지함) + 과점(몇이 나눠 차지함)을 합친 말입니다.",
+        "생활 속 예: 섬에 가게가 하나뿐이면 값이 비싸도 그 가게에서 사야 합니다."
+      ],
+      "beats": [
+        "마을에 문구점이 딱 하나 남았습니다.",
+        "주인이 값을 올려도 아이들은 그 가게에서 살 수밖에 없습니다.",
+        "한 곳이나 몇 곳만 물건을 만들거나 파는 것이 독과점입니다."
+      ],
+      "img": "A small village street with only one stationery shop open; the neighboring shops are closed with shutters down. The smug shopkeeper swaps a small blank price tag for a much bigger one, while a line of worried children still waits to buy notebooks. No text, no numbers.",
+      "imgKo": "작은 마을 길에 문구점 하나만 열려 있고 옆 가게들은 셔터를 내렸다. 주인이 작은 가격표를 훨씬 큰 것으로 바꾸는데 걱정스러운 얼굴의 아이들이 줄을 서서 공책을 산다."
+    },
+    "규제": {
+      "explain": [
+        "쉬운 뜻: '여기까지만 됩니다' 하고 선을 그어 넘지 못하게 막는 것입니다.",
+        "생활 속 예: 어린이 장난감에 몸에 해로운 물질을 쓰지 못하게 막는 것도 규제입니다."
+      ],
+      "beats": [
+        "초등학교 앞 도로가 어린이 보호 구역으로 칠해져 있습니다.",
+        "자동차들이 정해진 속도를 넘지 않고 천천히 지나갑니다.",
+        "규칙으로 한도를 정해 넘지 못하게 막는 것이 규제입니다."
+      ],
+      "img": "A school zone road painted with a red surface and yellow lines in front of an elementary school. Cars drive slowly in a line, a traffic officer watches, and children cross at the crosswalk with a crossing guard. A round speed sign shows only a blank circle. No text, no numbers.",
+      "imgKo": "초등학교 앞 붉은 노면의 어린이 보호 구역에서 자동차들이 줄지어 천천히 달리고, 교통경찰이 지켜보며, 아이들이 건널목을 건넌다. 둥근 표지판은 비어 있다."
+    },
+    "상품": {
+      "en": "product",
+      "explain": [
+        "쉬운 뜻: 영어로 product입니다. 돈을 받고 팔려고 내놓은 것입니다.",
+        "머리 자르기, 버스 타기처럼 손에 잡히지 않는 서비스도 사고팔면 상품입니다.",
+        "생활 속 예: 엄마가 담근 김치는 반찬이지만, 가게에 내다 팔면 상품이 됩니다."
+      ],
+      "beats": [
+        "공장에서 만든 과자가 상자에 담깁니다.",
+        "상자가 가게 진열대에 놓이고, 손님이 돈을 내고 삽니다.",
+        "사고팔려고 내놓은 물건이나 서비스가 상품입니다."
+      ],
+      "img": "Left: a snack factory line where cookies are packed into colorful boxes. A curved arrow leads to the right: the same boxes neatly lined up on a convenience store shelf, and DOYUN pays at the counter to buy one. No text, no logos.",
+      "imgKo": "왼쪽 과자 공장에서 과자가 알록달록한 상자에 담기고, 화살표를 따라 오른쪽 편의점 진열대에 같은 상자가 놓여 도윤이가 계산대에서 값을 치른다."
+    },
+    "가계": {
+      "en": "household",
+      "explain": [
+        "쉬운 뜻: 영어로 household입니다. 한집에서 함께 돈을 벌고 쓰며 살림하는 사람들입니다.",
+        "한자 뜻: 家(집 가)와 計(셀 계), 집안 살림의 셈이라는 뜻입니다.",
+        "생활 속 예: 가계부는 우리 집이 번 돈과 쓴 돈을 적는 공책입니다."
+      ],
+      "beats": [
+        "엄마와 아빠가 일터에서 일하고 돈을 받습니다.",
+        "그 돈으로 장을 보고, 남은 돈은 저금통에 넣습니다.",
+        "함께 살림을 꾸려 가는 생활 공동체가 가계입니다."
+      ],
+      "img": "A cozy family scene at a kitchen table in the evening: a Korean mother and father sort receipts, a grocery bag with vegetables sits nearby, and their child drops coins into a piggy bank. A small ruled notebook lies open with no writing. No text, no numbers.",
+      "imgKo": "저녁 식탁에서 엄마 아빠가 영수증을 정리하고 옆에 채소 담긴 장바구니가 있으며, 아이가 저금통에 동전을 넣는다. 글씨 없는 줄만 있는 공책이 펼쳐져 있다."
+    },
+    "기업": {
+      "en": "company",
+      "explain": [
+        "쉬운 뜻: 영어로 company입니다. 사람들이 모여 물건을 만들어 팔고 돈을 버는 곳입니다.",
+        "동네 작은 빵집부터 수만 명이 일하는 자동차 회사까지 모두 기업입니다.",
+        "생활 속 예: 내 운동화, 연필, 휴대 전화는 모두 어느 기업이 만든 상품입니다."
+      ],
+      "beats": [
+        "공장에서 직원들이 자전거를 만듭니다.",
+        "완성된 자전거를 가게에 팔아 돈을 법니다.",
+        "이윤을 얻으려고 물건을 만들어 파는 조직이 기업입니다."
+      ],
+      "img": "Inside a bright bicycle factory: workers in matching uniforms assemble bicycles on a production line, a designer checks a drawing of a new bike, and finished bicycles are loaded onto a delivery truck bound for stores. No text, no logos.",
+      "imgKo": "밝은 자전거 공장에서 같은 작업복의 직원들이 줄지어 자전거를 조립하고, 디자이너가 새 자전거 그림을 살피며, 완성된 자전거가 가게로 갈 트럭에 실린다."
+    },
+    "소득": {
+      "en": "income",
+      "explain": [
+        "쉬운 뜻: 영어로 income입니다. 일하거나 무엇을 팔아서 내 손에 들어온 돈입니다.",
+        "생활 속 예: 아빠의 월급, 할머니가 밭에서 키운 배추를 팔아 받은 돈이 소득입니다."
+      ],
+      "beats": [
+        "아빠는 회사에서 일하고, 할머니는 밭에서 배추를 기릅니다.",
+        "아빠는 월급을, 할머니는 배추를 판 돈을 받습니다.",
+        "일한 대가 등으로 벌어들인 돈이 소득입니다."
+      ],
+      "img": "Two side-by-side scenes: on the left, a father works at an office desk and receives his pay envelope; on the right, a grandmother sells her cabbages at a market stall and receives money from a customer. Both hold their earnings with satisfied smiles. No text, no numbers.",
+      "imgKo": "왼쪽은 아빠가 사무실에서 일하고 월급 봉투를 받는 모습, 오른쪽은 할머니가 시장에서 배추를 팔고 손님에게 돈을 받는 모습. 둘 다 번 돈을 들고 흐뭇하게 웃는다."
+    },
+    "이윤": {
+      "en": "profit",
+      "explain": [
+        "쉬운 뜻: 영어로 profit입니다. 판 돈에서 들인 돈을 빼고 손에 남은 돈입니다.",
+        "생활 속 예: 재료에 3,000원을 쓰고 5,000원어치를 팔면 2,000원이 남습니다."
+      ],
+      "beats": [
+        "하린이가 레몬과 설탕을 사서 레모네이드를 만듭니다.",
+        "레모네이드를 팔아 받은 돈에서 재료값만큼 덜어 냅니다.",
+        "번 돈에서 든 비용을 빼고 남은 돈이 이윤입니다."
+      ],
+      "img": "HARIN runs a lemonade stand at a school market day. On one side of the table lie the lemons and sugar bag she bought; she hands a cup to a customer, then splits her coin jar into two piles: a bigger pile set aside to cover the ingredient cost, and a smaller leftover pile she smiles at. No text, no numbers.",
+      "imgKo": "학교 장터에서 하린이가 레모네이드를 판다. 탁자 한쪽에 사 온 레몬과 설탕이 있고, 동전 통을 재료값으로 덜어 낼 큰 더미와 남은 작은 더미로 나누며 웃는다."
+    },
+    "노동력": {
+      "explain": [
+        "쉬운 뜻: 사람이 일을 해 내는 힘입니다. 팔다리 힘도, 머리로 생각하는 힘도 됩니다.",
+        "낱말 나누기: 노동(일함) + 력(힘)입니다.",
+        "생활 속 예: 택배 기사의 짐 나르기에도, 선생님의 가르치기에도 노동력이 쓰입니다."
+      ],
+      "beats": [
+        "공장 문으로 일할 사람들이 들어옵니다.",
+        "사람들이 손과 머리를 써서 자동차를 만듭니다.",
+        "물건을 만드는 데 쓰는 사람의 일하는 힘이 노동력입니다."
+      ],
+      "img": "Inside a car factory, workers of different ages use their hands and skills: one tightens bolts, one checks a screen showing only shapes, one carries parts. In the background, more people arrive through the factory gate to start their shift. No text.",
+      "imgKo": "자동차 공장 안에서 여러 나이의 직원들이 볼트를 조이고, 도형만 보이는 화면을 살피고, 부품을 나른다. 뒤쪽 공장 문으로 일하러 오는 사람들이 들어온다."
+    },
+    "상호 의존 관계": {
+      "explain": [
+        "쉬운 뜻: 두 사람이 등을 맞대고 기대어 앉듯, 서로 없으면 안 되는 사이입니다.",
+        "낱말 나누기: 상호(서로) + 의존(기댐) + 관계(사이)입니다.",
+        "생활 속 예: 손님이 없으면 가게가 문을 닫고, 가게가 없으면 손님도 물건을 못 삽니다."
+      ],
+      "beats": [
+        "아빠가 집을 나서 회사로 일하러 갑니다.",
+        "회사는 아빠에게 임금을 주고, 아빠는 그 돈으로 회사가 만든 물건을 삽니다.",
+        "서로 도움을 주고받으며 기대어 사는 사이가 상호 의존 관계입니다."
+      ],
+      "img": "A friendly circular picture: a family house on the left and a company building on the right, joined by big curved arrows going around in a loop. Along one arrow a parent walks from the house to work at the company; along the other, coins flow back to the house, and the family carries home a product made by that company. No text, no numbers.",
+      "imgKo": "왼쪽 집과 오른쪽 회사 건물 사이를 둥근 화살표가 돈다. 집의 부모가 회사로 일하러 가고, 회사에서 돈이 집으로 오고, 가족이 그 회사가 만든 물건을 사 들고 온다."
+    },
+    "근로자": {
+      "en": "worker",
+      "explain": [
+        "쉬운 뜻: 영어로 worker입니다. 아침마다 일터로 나가 일하고 돈을 받는 사람입니다.",
+        "낱말 나누기: 근로(부지런히 일함) + 자(사람)입니다.",
+        "생활 속 예: 버스 기사, 식당 요리사, 공장 직원처럼 일하고 월급을 받는 사람입니다."
+      ],
+      "beats": [
+        "아침에 사람들이 일터로 나갑니다.",
+        "요리사, 공장 직원, 회사원이 저마다 일을 합니다.",
+        "일한 대가로 번 돈으로 생활하는 사람이 근로자입니다."
+      ],
+      "img": "Morning in a city: people of different jobs head to work — a bus driver at the wheel, a cook in a white hat entering a restaurant, a factory worker in uniform and helmet, and an office worker with a bag. A small inset shows them receiving pay envelopes. No text, no numbers.",
+      "imgKo": "아침 도시에서 버스 기사, 흰 모자 쓴 요리사, 작업복과 안전모 차림의 공장 직원, 가방 든 회사원이 일터로 간다. 작은 그림 칸에서 그들이 월급 봉투를 받는다."
+    },
+    "임금": {
+      "en": "wage",
+      "explain": [
+        "쉬운 뜻: 영어로 wage입니다. 일한 만큼 일터에서 받는 돈입니다.",
+        "생활 속 예: 한 달마다 받으면 월급, 일한 시간만큼 받으면 시급이라고 부릅니다."
+      ],
+      "beats": [
+        "삼촌이 한 달 동안 창고에서 열심히 일했습니다.",
+        "월급날이 되자 일한 대가로 돈을 받습니다.",
+        "근로자가 일하고 받는 대가가 임금입니다."
+      ],
+      "img": "A young man works hard carrying boxes in a warehouse, then on payday receives a pay envelope from his manager, smiles, and puts part of it into a savings jar. No text, no numbers.",
+      "imgKo": "젊은 삼촌이 창고에서 상자를 나르며 열심히 일하고, 월급날 관리자에게 월급 봉투를 받아 웃으며 일부를 저금통에 넣는다."
+    },
+    "적성": {
+      "explain": [
+        "쉬운 뜻: 내가 남보다 쉽게 잘하고, 오래 해도 지치지 않는 쪽의 솜씨와 성격입니다.",
+        "한자 뜻: 適(알맞을 적)과 性(성질 성), 나에게 알맞은 성질이라는 뜻입니다.",
+        "생활 속 예: 블록 쌓기를 몇 시간씩 즐기면 만드는 일이 적성일 수 있습니다."
+      ],
+      "beats": [
+        "하린이는 그림 그리기를, 도윤이는 고장 난 장난감 고치기를 좋아합니다.",
+        "둘 다 좋아하는 일을 할 때 오래 집중하고 솜씨가 좋습니다.",
+        "어떤 일을 잘할 수 있는 소질이나 성격이 적성입니다."
+      ],
+      "img": "Split scene in a classroom free-time corner: on the left, HARIN happily and skillfully paints a colorful picture at an easel; on the right, DOYUN, deeply focused, fixes a broken toy robot with a small screwdriver. TEACHER watches both with a warm smile. No text.",
+      "imgKo": "교실 자유 시간 구석에서 왼쪽 하린이는 이젤 앞에서 신나게 그림을 그리고, 오른쪽 도윤이는 작은 드라이버로 고장 난 장난감 로봇을 집중해서 고친다. 선생님이 웃으며 지켜본다."
+    },
+    "근로 조건": {
+      "en": "working conditions",
+      "explain": [
+        "쉬운 뜻: 영어로 working conditions입니다. '이렇게 일하고 이만큼 받는다'는 일터의 약속입니다.",
+        "생활 속 예: 일을 시작할 때 쓰는 근로 계약서에 일하는 시간, 임금, 쉬는 날을 적습니다."
+      ],
+      "beats": [
+        "가게 주인과 새로 일할 사람이 마주 앉았습니다.",
+        "일하는 시간, 쉬는 날, 받을 돈을 하나하나 확인하고 서명합니다.",
+        "일할 때 지켜야 할 시간, 휴일, 임금 같은 약속이 근로 조건입니다."
+      ],
+      "img": "In a small café, the owner and a new young employee sit across a table reviewing a contract paper together (lines only, no readable writing). Above them float three simple pictures: a clock, a calendar page and a coin. The employee signs with a pen. No text, no numbers.",
+      "imgKo": "작은 카페에서 주인과 새 직원이 마주 앉아 글씨 없는 계약서를 함께 살핀다. 위에 시계, 달력 한 장, 동전 그림이 떠 있고 직원이 펜으로 서명한다."
+    },
+    "투자": {
+      "en": "investment",
+      "explain": [
+        "쉬운 뜻: 영어로 investment입니다. 씨앗을 심듯, 나중에 더 크게 거두려고 지금 돈이나 시간을 쓰는 것입니다.",
+        "생활 속 예: 대회를 바라보며 날마다 한 시간씩 연습하는 것도 시간을 들이는 투자입니다.",
+        "투자한 만큼 꼭 돌려받는 것은 아니어서 잘 따져 보아야 합니다."
+      ],
+      "beats": [
+        "빵집 주인이 모은 돈으로 새 오븐을 들여놓습니다.",
+        "새 오븐 덕분에 빵을 더 많이 굽고 손님이 늘었습니다.",
+        "이익을 얻으려고 돈이나 시간을 쓰는 것이 투자입니다."
+      ],
+      "img": "A bakery owner counts out savings and pays for a big new oven being delivered. In a second small panel, the new oven bakes many more golden loaves, and a longer line of happy customers waits. No text, no numbers.",
+      "imgKo": "빵집 주인이 모은 돈을 치르고 큰 새 오븐을 들여놓는다. 옆 칸에서 새 오븐이 노릇한 빵을 훨씬 많이 굽고 손님 줄이 길어졌다."
+    },
+    "사회적 책임": {
+      "explain": [
+        "쉬운 뜻: 돈만 벌면 끝이 아니라, 회사도 사회의 한 사람으로서 해야 할 몫이 있다는 말입니다.",
+        "낱말 나누기: 사회적(사회와 관련된) + 책임(맡아서 해야 할 일)입니다.",
+        "생활 속 예: 공장에서 나온 더러운 물을 깨끗이 걸러서 내보내는 것도 그 하나입니다."
+      ],
+      "beats": [
+        "공장이 더러운 물을 거르는 시설을 갖추었습니다.",
+        "직원들은 강가에 나무를 심고 쓰레기를 줍습니다.",
+        "기업이 모두를 위한 역할을 다해야 하는 의무가 사회적 책임입니다."
+      ],
+      "img": "A clean modern factory beside a clear river: a water treatment tank filters wastewater before it flows out clean, with fish visible in the river. In the foreground, company employees in matching vests plant trees and pick up litter along the riverbank. No text, no logos.",
+      "imgKo": "맑은 강가의 공장에서 정화 시설이 물을 걸러 깨끗하게 내보내고 강에 물고기가 보인다. 앞쪽에서 같은 조끼 입은 직원들이 강둑에 나무를 심고 쓰레기를 줍는다."
+    },
+    "사회적 기업": {
+      "explain": [
+        "쉬운 뜻: 돈을 벌면서, 어려운 이웃을 돕는 일을 목표로 삼은 회사입니다.",
+        "낱말 나누기: 사회적(사회를 위한) + 기업(물건을 만들어 파는 회사)입니다.",
+        "생활 속 예: 커피 농부에게 정당한 값을 치른 커피를 파는 곳도 있습니다."
+      ],
+      "beats": [
+        "빵집에서 장애가 있는 직원들이 함께 빵을 굽습니다.",
+        "빵을 팔아 번 돈으로 새 직원을 더 뽑습니다.",
+        "번 돈을 이웃과 지역을 위해 쓰는 회사가 사회적 기업입니다."
+      ],
+      "img": "A warm neighborhood bakery where employees, including a worker in a wheelchair, bake bread together with smiles. Customers buy bread at the counter, and a small inset shows the bakery welcoming two more new employees. No text, no logos.",
+      "imgKo": "동네 빵집에서 휠체어 탄 직원을 비롯한 여러 직원이 웃으며 함께 빵을 굽고 손님들이 빵을 산다. 작은 칸에서 빵집이 새 직원 둘을 맞이한다."
+    }
+  }
+}
