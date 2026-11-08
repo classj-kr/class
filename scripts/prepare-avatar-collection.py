@@ -39,20 +39,22 @@ def part_mesh(name, mask, rgba, pivot, depth, shape='round', z=0, back_art=False
     mask=clean(mask)
     if mask.sum()<40:return None
     inside=cv2.distanceTransform(mask.astype('uint8'),cv2.DIST_L2,5)
+    local_width=cv2.dilate(inside,np.ones((41,41),'uint8'))
     outside=cv2.distanceTransform((~mask).astype('uint8'),cv2.DIST_L2,5)
     signed=inside-outside
     max_radius=float(inside.max())
     # A Poisson inflation field is smooth across branched silhouettes. Its
     # square root is a sphere for a circular mask and stays thin on antlers.
-    small=cv2.resize(mask.astype('uint8'),(160,160),interpolation=cv2.INTER_NEAREST)>0
+    resolution=320
+    small=cv2.resize(mask.astype('uint8'),(resolution,resolution),interpolation=cv2.INTER_NEAREST)>0
     sy,sx=np.where(small);ids=np.full(small.shape,-1,dtype=int);ids[sy,sx]=np.arange(len(sx))
     rr=list(range(len(sx)));cc=list(range(len(sx)));vv=[4.0]*len(sx)
     for dy,dx in [(0,1),(0,-1),(1,0),(-1,0)]:
-        ny,nx=sy+dy,sx+dx;valid=(ny>=0)&(ny<160)&(nx>=0)&(nx<160)
+        ny,nx=sy+dy,sx+dx;valid=(ny>=0)&(ny<resolution)&(nx>=0)&(nx<resolution)
         origin=np.flatnonzero(valid);dest=ids[ny[valid],nx[valid]];keep=dest>=0
         rr.extend(origin[keep]);cc.extend(dest[keep]);vv.extend([-1.0]*int(keep.sum()))
     solution=spsolve(coo_matrix((vv,(rr,cc)),shape=(len(sx),len(sx))).tocsr(),np.ones(len(sx)))
-    field=np.zeros((160,160),np.float32);field[sy,sx]=solution
+    field=np.zeros((resolution,resolution),np.float32);field[sy,sx]=solution
     field=np.maximum(0,cv2.resize(field,(640,640),interpolation=cv2.INTER_CUBIC))
     field/=max(float(field.max()),1e-5)
     step=5
@@ -66,7 +68,8 @@ def part_mesh(name, mask, rgba, pivot, depth, shape='round', z=0, back_art=False
             if shape in ['box','flat','disc','slice','paper']:
                 u=min(1,d/18);height=depth*np.sqrt(max(0,2*u-u*u))
             else:
-                height=depth*np.sqrt(float(field[iy,ix])) if d>0 else 0
+                height=depth*np.sqrt(max(float(field[iy,ix]),.20*d/max_radius)) if d>0 else 0
+                height=min(height,float(local_width[iy,ix])*.005)
             # Give a softly rounded back a little more depth than the face.
             points.append([round(x,4),round(y,4),round(float(height),6),round(d,4)])
             vertices[key]=len(points)-1
@@ -94,7 +97,16 @@ def part_mesh(name, mask, rgba, pivot, depth, shape='round', z=0, back_art=False
         if (mask&~exclusion).sum()>1000:color_mask=mask&~exclusion
     if name=='Torso' and (mask&(np.abs(X-profile['cx'])>34)).sum()>500:color_mask=mask&(np.abs(X-profile['cx'])>34)
     color=profile.get('headColor') if name=='Head' else profile.get('bodyColor') if name=='Torso' else None
-    return {'name':name,'pivot':pivot,'z':z,'depth':depth,'color':color or palette(rgba,color_mask),'backArt':back_art,
+    color=color or palette(rgba,color_mask)
+    vertex_colors=None
+    if name=='Head' and profile.get('featureTop'):
+        base=np.array([int(color[i:i+2],16) for i in (1,3,5)])/255
+        rgb=[]
+        for x,y,_,d in points:
+            chosen=rgba[int(round(y)),int(round(x)),:3]/255 if y<profile['featureTop'] and d>2 else base
+            rgb.append(np.where(chosen<=.04045,chosen/12.92,((chosen+.055)/1.055)**2.4))
+        vertex_colors=encode(rgb,'<f4')
+    return {'name':name,'pivot':pivot,'z':z,'depth':depth,'color':color,'backArt':back_art,'vertexColors':vertex_colors,
             'points':encode(points,'<f4'),'indices':encode(indices,'<u4'),'bounds':[int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())]}
 
 for key in chosen:
@@ -106,11 +118,19 @@ for key in chosen:
     if destination.exists() and json.loads(destination.read_text())['checksum']==checksum:
         print(key+' cached',flush=True);continue
     rgba=np.array(Image.open(ROOT/'apps/classtools/assets/avatars'/f'{key}.webp').convert('RGBA'))
-    mask=clean(rgba[:,:,3]>120);remaining=mask.copy();parts=[];cx=profile['cx'];neck=profile['neck'];leg=profile['leg'];half=profile['armHalf']
+    mask=clean(rgba[:,:,3]>120)
+    # The source files contain rectangular dark remnants below these feet.
+    # Keep the source WebP intact, but do not turn the remnants into extra limbs.
+    if key=='vehicle-airplane':mask &= Y<=539
+    if key=='vehicle-fire-truck':mask &= Y<=561
+    remaining=mask.copy();parts=[];cx=profile['cx'];neck=profile['neck'];leg=profile['leg'];half=profile['armHalf']
     def add(name,region,pivot,depth,shape='round',z=0,back=False,remove=False):
         part=part_mesh(name,remaining&region,rgba,pivot,depth,shape,z,back)
         if part:parts.append(part)
         if remove:remaining[region]=False
+    if key=='animal-snail':
+        add('SpiralShell',(X>350)&(Y>150)&(Y<550),[395,370],.40,'round',-.10,True)
+        remaining[(X>365)&(Y>150)&(Y<550)]=False
     if 'tail' in profile:
         t=profile['tail'];region=(X<t['x'] if t['side']=='left' else X>t['x'])&(Y>t['y'])
         add('Tail',region,[t['x'],min(515,neck+75)],.13,'round',-.13,True,True)

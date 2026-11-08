@@ -10,8 +10,7 @@ const keys={cat:"animal-cat",ramen:"food-ramen",donut:"food-donut",banana:"fruit
 const profiles=require("../apps/avatar-lab/collection-profiles.cjs");
 const assetKey = keys[avatar]||avatar;
 if (!profiles[assetKey]) throw new Error("Unknown avatar: "+avatar);
-const custom=Object.keys(keys).find(key=>keys[key]===assetKey);
-const { root, clips } = custom?require(`../apps/avatar-lab/${custom}-model.cjs`)(THREE):require("../apps/avatar-lab/collection-model.cjs")(THREE,assetKey);
+const { root, clips } = require('../apps/avatar-lab/avatar-factory.cjs').create(THREE,assetKey);
 const gltf = { asset: { version: "2.0", generator: "ClassJ fixed avatar prototype" }, scene: 0, scenes: [{ nodes: [0] }], nodes: [], meshes: [], materials: [], accessors: [], bufferViews: [], buffers: [], animations: [] };
 gltf.extensionsUsed = ["EXT_texture_webp", "KHR_materials_unlit"];
 gltf.extensionsRequired = ["EXT_texture_webp"];
@@ -67,7 +66,8 @@ node(root);
 for (const clip of clips) {
   const animation = { name: clip.name, channels: [], samplers: [] };
   for (const track of clip.tracks) {
-    const [name, property] = track.name.split(".");
+    const separator=track.name.lastIndexOf('.'),name=track.name.slice(0,separator),property=track.name.slice(separator+1);
+    if(!nodeMap.has(name))throw new Error('Animation targets missing node: '+track.name);
     const sampler = animation.samplers.push({ input: accessor(track.times, 1), output: accessor(track.values, property === "quaternion" ? 4 : 3), interpolation: "LINEAR" }) - 1;
     animation.channels.push({ sampler, target: { node: nodeMap.get(name), path: property === "quaternion" ? "rotation" : "translation" } });
   }
@@ -88,7 +88,7 @@ jsonHeader.writeUInt32LE(json.length, 0); jsonHeader.writeUInt32LE(0x4e4f534a, 4
 binaryHeader.writeUInt32LE(binary.length, 0); binaryHeader.writeUInt32LE(0x004e4942, 4);
 const destination = path.resolve(__dirname, `../apps/avatar-lab/models/${assetKey}.glb`);
 fs.mkdirSync(path.dirname(destination), { recursive: true });
-fs.writeFileSync(destination, Buffer.concat([header, jsonHeader, json, binaryHeader, binary]));
+require('./replace-generated-file.cjs')(destination,Buffer.concat([header, jsonHeader, json, binaryHeader, binary]));
 let triangles = 0;
 root.traverse(o => { if (o.isMesh) triangles += (o.geometry.index?.count || o.geometry.attributes.position.count) / 3; });
 console.log(JSON.stringify({ file: destination, bytes: fs.statSync(destination).size, nodes: gltf.nodes.length, triangles, animations: clips.map(c => c.name) }, null, 2));

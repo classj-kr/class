@@ -8,7 +8,11 @@ const avatars=fs.readdirSync(source).filter(f=>f.endsWith(".webp")).sort().map(f
   const id=file.slice(0,-5),old=known.get(id),hash=crypto.createHash("sha256").update(fs.readFileSync(path.join(source,file))).digest("hex");
   const model=path.join(root,`apps/avatar-lab/models/${id}.glb`),modelSha256=fs.existsSync(model)?crypto.createHash("sha256").update(fs.readFileSync(model)).digest("hex"):null;
   const retained=old?.sourceSha256===hash&&(!modelSha256||old.modelSha256===modelSha256)?old:{};
-  return {...retained,id,source:`apps/classtools/assets/avatars/${file}`,sourceCategory:id.split("-")[0],sourceSha256:hash,modelSha256,structureNote:old?.structureNote||inspected[id]||null,status:retained.status||(modelSha256?"needs_review":"not_started"),checks:retained.checks||{identity:"pending",allViews:"pending",connections:"pending",animation:"pending",glb:"pending",museumRuntime:"pending"}};
+  const checks=retained.checks||Object.fromEntries(['identity','allViews','connections','animation','glb','museumRuntime'].map(k=>[k,old?.checks?.[k]==='failed'?'failed':'pending']));
+  // A changed file is not evidence that a known visual defect was repaired.
+  // Retain failures until a dated, model-hash-bound visual review resolves them.
+  const status=retained.status||(old?.status==='needs_remodeling'?'needs_remodeling':modelSha256?'needs_review':'not_started');
+  return {...retained,id,source:`apps/classtools/assets/avatars/${file}`,sourceCategory:id.split("-")[0],sourceSha256:hash,modelSha256,structureNote:old?.structureNote||inspected[id]||null,status,checks};
 });
 const categories={};for(const avatar of avatars)categories[avatar.sourceCategory]=(categories[avatar.sourceCategory]||0)+1;
 const catalog={schemaVersion:1,count:avatars.length,categoryCounts:categories,styleReferences:["animal-cat","food-ramen"],suggestedStructureSamples:Object.keys(inspected),completionRule:"Every visual and technical check must pass, including museumRuntime; a prototype is not a production-complete avatar.",avatars};

@@ -20,8 +20,9 @@ module.exports=function illustrationMaterials(THREE,root){
     for(let i=0;i<normal.count;i++){
       n.fromBufferAttribute(normal,i).applyMatrix3(matrix).normalize();
       // Neutral, diffuse shading: no yellow/green light cast on pale flesh.
-      const shade=Math.min(1,.82+.20*n.y-.11*n.x+.06*Math.abs(n.z));
-      colors.push(shade,shade,shade);
+      const shade=source.userData.alreadyShaded?1:Math.min(1,.82+.20*n.y-.11*n.x+.06*Math.abs(n.z));
+      const original=source.userData.preserveVertexColor&&geometry.attributes.color;
+      colors.push(shade*(original?original.getX(i):1),shade*(original?original.getY(i):1),shade*(original?original.getZ(i):1));
     }
     geometry.setAttribute("color",new THREE.Float32BufferAttribute(colors,3));object.geometry=geometry;
   });

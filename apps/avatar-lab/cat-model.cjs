@@ -76,6 +76,17 @@ module.exports = function createCat(THREE) {
   // entire head's inflation and read as the corners of a thick flat mask.
   volume("LeftEar",[[130,70],[145,63],[178,68],[214,83],[248,106],[216,142],[170,206],[143,213],[132,170],[127,104]],[173,127],headPivot,.24,.20,.09,head,64);
   volume("RightEar",[[390,106],[425,81],[466,66],[493,64],[503,77],[507,111],[504,153],[498,181],[485,211],[466,198],[427,143]],[460,127],headPivot,.24,.20,.09,head,64);
+  // Expand the hidden ear bases into the hood. Keeping every ear section at
+  // the same shallow depth left a visible trench beside the deeper forehead.
+  const hoodCarriers=['HoodSurface','HoodBack'].map(name=>{const m=new THREE.Mesh(head.getObjectByName(name).geometry,new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));m.updateMatrixWorld(true);return m;});
+  const earRay=new THREE.Raycaster();
+  for(const ear of ['LeftEar','RightEar'])for(const back of [false,true]){
+    const object=head.getObjectByName(ear+(back?'Back':'Surface')),p=object.geometry.attributes.position;
+    for(let i=0;i<14*64;i++){const x=p.getX(i),y=p.getY(i);earRay.set(new THREE.Vector3(x,y,back?-3:3),new THREE.Vector3(0,0,back?1:-1));const hit=earRay.intersectObjects(hoodCarriers,false)[0];if(hit)p.setZ(i,back?Math.min(p.getZ(i),hit.point.z-.004):Math.max(p.getZ(i),hit.point.z+.004));}
+    object.geometry.computeVertexNormals();
+    if(!back){const decal=head.getObjectByName(ear+'Artwork').geometry;decal.setAttribute('position',p.clone());decal.translate(0,0,.0015);decal.computeVertexNormals();}
+  }
+  hoodCarriers.forEach(m=>m.material.dispose());
   const torsoPivot=[320,480],torso=group("Torso",torsoPivot,-.06,body);
   volume("Suit",[[264,427],[295,433],[338,433],[365,427],[375,452],[379,479],[373,503],[359,522],[335,533],[294,534],[271,524],[259,505],[254,477],[256,451]],[317,480],torsoPivot,.31,.30,0,torso);
   const leftPivot=[258,449],leftArm=group("LeftArm",leftPivot,-.045,body);

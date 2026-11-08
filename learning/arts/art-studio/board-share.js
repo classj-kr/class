@@ -4,7 +4,6 @@
 (() => {
   const $ = id => document.getElementById(id);
   const CODE_KEY = "artStudio.boardCode";
-  const NUMBER_KEY = "artStudio.boardNumber";
   const storage = {
     get(key) { try { return localStorage.getItem(key) || ""; } catch { return ""; } },
     set(key, value) { try { localStorage.setItem(key, value); } catch { /* private mode */ } }
@@ -51,43 +50,28 @@
     setBusy(false);
     describe();
     if (!$("shareCode").value) $("shareCode").value = storage.get(CODE_KEY);
-    if (!$("shareNumber").value) $("shareNumber").value = storage.get(NUMBER_KEY);
-    if (!$("shareName").value) $("shareName").value = String(window.CLASS_PLAYER_NAME || "").trim();
     $("shareDialog").showModal();
-    // Number/name only appear when the board asks for them (a new guest seat).
     ($("shareCode").value ? $("shareSubmit") : $("shareCode")).focus();
   }
 
   async function join(code) {
     if (joined && joined.code === code) return joined.board;
-    const body = { code };
-    if (!$("shareIdentity").hidden) {
-      const number = Number($("shareNumber").value);
-      const name = $("shareName").value.trim();
-      if (!Number.isInteger(number) || number < 1) { $("shareNumber").focus(); throw new Error("번호를 써 주세요."); }
-      if (!name) { $("shareName").focus(); throw new Error("이름을 써 주세요."); }
-      body.number = number;
-      body.name = name;
-    }
     let board;
     try {
-      ({ board } = await postJson("/join", body));
+      // The server resolves the signed-in student or existing board membership.
+      ({ board } = await postJson("/join", { code }));
     } catch (error) {
       if (error.code === "IDENTITY_REQUIRED") {
-        $("shareIdentity").hidden = false;
-        ($("shareNumber").value ? $("shareName") : $("shareNumber")).focus();
-        throw new Error("처음 들어가는 게시판이에요. 번호와 이름을 써 주세요.");
+        throw new Error("로그인 정보를 확인할 수 없어요. 다른 탭에서 로그인한 뒤 다시 올려 주세요.");
       }
       throw error;
     }
     if (board.layout === "quiz" || board.layout === "stacking") throw new Error("이 방번호는 그림을 올릴 수 없는 게시판이에요.");
     joined = { code, board };
     storage.set(CODE_KEY, code);
-    if (body.number) storage.set(NUMBER_KEY, String(body.number));
     const columns = board.layout === "columns" ? board.columns : [];
     $("shareColumn").replaceChildren(...columns.map((name, i) => new Option(name, String(i))));
     $("shareColumnLabel").hidden = !columns.length;
-    $("shareIdentity").hidden = true;
     return board;
   }
 
@@ -151,7 +135,6 @@
       if (joined && joined.code !== $("shareCode").value) {
         joined = null;
         $("shareColumnLabel").hidden = true;
-        $("shareIdentity").hidden = true;
       }
     });
   });
