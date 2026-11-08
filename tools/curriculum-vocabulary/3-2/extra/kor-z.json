@@ -1,0 +1,739 @@
+{
+ "5": {
+  "국어사전": {
+   "en": "dictionary",
+   "explain": [
+    "쉬운 뜻: 영어로 dictionary, 모르는 우리말 낱말의 뜻을 찾아보는 책입니다.",
+    "생활 속 예: 국어사전에서 '가방'은 앞쪽에, '하루'는 뒤쪽에 나옵니다."
+   ]
+  },
+  "분류": {
+   "en": "sort",
+   "explain": [
+    "쉬운 뜻: 영어로 sort, 닮은 것끼리 한 무리로 모아 나누는 것입니다.",
+    "생활 속 예: 분리배출할 때 종이는 종이끼리, 캔은 캔끼리 모읍니다."
+   ]
+  },
+  "기준": {
+   "explain": [
+    "쉬운 뜻: '무엇으로 나눌까?'에 대한 답입니다. 나누거나 견줄 때 쓰는 잣대입니다.",
+    "생활 속 예: 키 순서로 줄을 서면 키가 기준입니다."
+   ]
+  },
+  "형태": {
+   "en": "form",
+   "explain": [
+    "쉬운 뜻: 영어로 form, 겉으로 보이는 생김새나 꼴입니다.",
+    "생활 속 예: 찰흙 한 덩이로 공도 빚고 뱀도 빚으면 형태가 바뀝니다."
+   ]
+  },
+  "기본형": {
+   "explain": [
+    "쉬운 뜻: 모양이 바뀌는 낱말의 대표 꼴로, 국어사전에 실리는 모양입니다.",
+    "낱말 나누기: 기본(바탕) + 형(꼴), 바탕이 되는 꼴입니다.",
+    "생활 속 예: '웃어서'를 찾으려면 기본형 '웃다'를 찾아야 합니다."
+   ]
+  },
+  "성질": {
+   "explain": [
+    "쉬운 뜻: 사람이나 물건이 처음부터 가지고 있는 바탕입니다.",
+    "생활 속 예: 얼음은 차갑고, 고무공은 통통 튀는 성질이 있습니다."
+   ],
+   "beats": [
+    "하린이가 고무공과 찰흙 공을 함께 떨어뜨립니다.",
+    "고무공은 통 튀어 오르고, 찰흙 공은 바닥에 납작하게 붙습니다.",
+    "그것이 원래 지닌 바탕이 성질입니다."
+   ],
+   "img": "On a playground, HARIN drops a red rubber ball and a gray clay ball at the same moment. The rubber ball bounces high into the air with motion lines, while the clay ball lies flattened on the ground. HARIN watches with a surprised face.",
+   "imgKo": "놀이터에서 하린이가 고무공과 찰흙 공을 함께 떨어뜨리자, 고무공은 높이 튀어 오르고 찰흙 공은 바닥에 납작하게 붙는다."
+  },
+  "상태": {
+   "en": "condition",
+   "explain": [
+    "쉬운 뜻: 영어로 condition, 지금 어떠한지 하는 모습입니다.",
+    "생활 속 예: 노랗던 바나나가 까맣게 되면 상태가 변한 것입니다."
+   ],
+   "beats": [
+    "창가 화분의 꽃이 고개를 푹 숙이고 시들어 있습니다.",
+    "하린이가 물을 주자 다음 날 꽃이 꼿꼿하게 섭니다.",
+    "지금 어떠한지 하는 모습이 상태입니다."
+   ],
+   "img": "On a sunny windowsill, a potted flower droops with its head hanging down and dry leaves, and HARIN pours water on it from a small watering can. A small inset on the right shows the same flower the next day, standing straight and fresh.",
+   "imgKo": "창가 화분의 꽃이 시들어 고개를 숙이고 있고 하린이가 물을 준다. 오른쪽 작은 그림에서는 다음 날 꽃이 꼿꼿하게 서 있다."
+  },
+  "짐작": {
+   "en": "guess",
+   "explain": [
+    "쉬운 뜻: 영어로 guess, 보이는 것을 보고 '아마 이럴 거야' 하고 생각하는 것입니다.",
+    "생활 속 예: 현관에 아빠 신발이 있으면 아빠가 오셨다고 짐작합니다."
+   ],
+   "beats": [
+    "도윤이가 식탁 위 빈 과자 그릇과 부스러기를 봅니다.",
+    "옆에 선 동생 입가에도 과자 부스러기가 묻어 있습니다.",
+    "드러난 것을 보고 어림잡아 생각하는 것이 짐작입니다."
+   ],
+   "img": "In a living room, DOYUN looks at an empty snack bowl on the table with crumbs scattered around it. Next to him, his little sister has crumbs on her mouth and hides her hands behind her back. DOYUN tilts his head with a knowing smile.",
+   "imgKo": "거실에서 도윤이가 부스러기만 남은 빈 과자 그릇을 보고, 옆의 동생은 입가에 부스러기를 묻힌 채 손을 등 뒤로 숨긴다."
+  },
+  "소감": {
+   "explain": [
+    "쉬운 뜻: 무엇을 해 보고 나서 '이런 느낌이 들었어요' 하고 말하는 것입니다.",
+    "생활 속 예: 운동회가 끝나고 '이어달리기가 제일 떨렸어요.'라고 말합니다."
+   ],
+   "beats": [
+    "체험 학습에서 돌아온 아이들이 교실에 둥글게 앉습니다.",
+    "도윤이가 가슴에 손을 얹고 다녀온 농장 이야기를 합니다.",
+    "어떤 일을 겪고 나서 마음에 느낀 것이 소감입니다."
+   ],
+   "img": "Back in the classroom after a field trip, children sit in a circle. DOYUN stands up with one hand on his chest, smiling and talking, and a small thought bubble above him shows the farm they visited with cows and a red barn. TEACHER and classmates listen.",
+   "imgKo": "체험 학습을 다녀온 뒤 교실에 둥글게 앉아, 도윤이가 가슴에 손을 얹고 다녀온 농장을 떠올리며 느낀 점을 말한다."
+  },
+  "당일": {
+   "explain": [
+    "쉬운 뜻: '바로 그날'입니다. 어떤 일이 있는 그 하루를 가리킵니다.",
+    "생활 속 예: 운동회 당일에 비가 오면 체육관에서 합니다."
+   ]
+  },
+  "우천": {
+   "explain": [
+    "쉬운 뜻: 비가 오는 날씨입니다. 안내문의 '우천 시'는 '비가 오면'이라는 말입니다.",
+    "생활 속 예: 야구장 전광판에 '우천 취소'가 뜨면 그날 경기는 없습니다."
+   ]
+  },
+  "휴무": {
+   "en": "day off",
+   "explain": [
+    "쉬운 뜻: 영어로 day off, 가게나 일터가 문을 닫고 쉬는 것입니다.",
+    "생활 속 예: 놀이공원이 월요일 휴무이면 월요일에는 들어갈 수 없습니다."
+   ]
+  },
+  "보건": {
+   "en": "health",
+   "explain": [
+    "쉬운 뜻: 영어로 health, 아프지 않게 몸을 돌보는 일입니다.",
+    "생활 속 예: 학교 보건실에서 키와 몸무게를 재고 눈이 잘 보이는지 검사합니다."
+   ],
+   "beats": [
+    "보건 선생님이 아이들에게 손 씻는 법을 보여 줍니다.",
+    "아이들이 비누 거품을 내어 손가락 사이까지 씻습니다.",
+    "몸을 튼튼하게 지키고 병을 막는 일이 보건입니다."
+   ],
+   "img": "In a bright school health room, a kind school nurse in a white gown shows a group of children how to wash their hands at a sink. DOYUN and HARIN rub soapy bubbles between their fingers. A poster with only pictures of hand-washing steps hangs on the wall, no letters.",
+   "imgKo": "밝은 보건실에서 흰 가운을 입은 보건 선생님이 손 씻는 법을 보여 주고, 도윤이와 하린이가 손가락 사이까지 비누 거품을 낸다."
+  },
+  "사흘": {
+   "explain": [
+    "쉬운 뜻: 해가 세 번 뜨는 동안, 곧 세 날입니다.",
+    "'사' 소리 때문에 4일로 알기 쉽지만, 사흘은 3일입니다.",
+    "생활 속 예: 금, 토, 일요일에 쉬면 사흘 동안 쉬는 것입니다."
+   ]
+  },
+  "얼": {
+   "en": "spirit",
+   "explain": [
+    "쉬운 뜻: 영어로 spirit, 오랫동안 이어져 내려온 우리의 마음과 정신입니다.",
+    "생활 속 예: 태극기와 아리랑에는 우리 겨레의 얼이 담겨 있다고 합니다."
+   ],
+   "beats": [
+    "하린이가 박물관에서 오래된 푸른 도자기를 들여다봅니다.",
+    "도자기 위로 흙을 빚던 옛사람들의 모습이 은은하게 떠오릅니다.",
+    "겨레가 대대로 이어 온 마음과 정신을 얼이라고 합니다."
+   ],
+   "img": "In a quiet museum, HARIN stands with her grandmother in front of a glass case holding a pale green celadon vase with a crane pattern. Faint, glowing silhouettes of old potters shaping clay rise softly above the vase like a memory. HARIN gazes at it with wonder.",
+   "imgKo": "조용한 박물관에서 하린이와 할머니가 학 무늬 푸른 도자기 앞에 서 있고, 도자기 위로 흙을 빚던 옛 도공들의 모습이 은은하게 떠오른다."
+  },
+  "깃들다": {
+   "explain": [
+    "쉬운 뜻: 마음이나 정성이 물건 속에 스며들어 담겨 있는 것입니다.",
+    "생활 속 예: 친구가 손으로 쓴 편지에는 고마운 마음이 깃들어 있습니다."
+   ],
+   "beats": [
+    "할머니가 밤마다 등불 아래에서 털실로 목도리를 뜹니다.",
+    "하린이가 다 뜬 목도리를 두르고 꼭 끌어안습니다.",
+    "마음이나 정성이 어떤 것 속에 스며 있는 것을 깃들다라고 합니다."
+   ],
+   "img": "Grandmother sits under a warm lamp at night, knitting a red scarf, with little heart shapes floating from her hands into the yarn. A small inset on the right shows HARIN wearing the finished scarf, hugging it to her cheek and smiling.",
+   "imgKo": "밤에 할머니가 등불 아래에서 빨간 목도리를 뜨고, 손끝에서 작은 하트들이 털실로 스며든다. 오른쪽 작은 그림에서 하린이가 목도리를 두르고 웃는다."
+  },
+  "설레다": {
+   "en": "excited",
+   "explain": [
+    "쉬운 뜻: 영어로 excited, 기다리던 일 생각에 가슴이 두근두근하는 것입니다.",
+    "생활 속 예: 생일 전날 밤, 선물 생각에 잠이 잘 오지 않습니다."
+   ],
+   "beats": [
+    "소풍 전날 밤, 도윤이가 머리맡에 가방을 놓고 누워 있습니다.",
+    "눈이 말똥말똥하고 가슴이 두근두근 뜁니다.",
+    "기대되는 일 때문에 가슴이 들떠 두근거리는 것이 설레다입니다."
+   ],
+   "img": "At night in his bedroom, DOYUN lies in bed with wide-open sparkling eyes, hugging his pillow. A packed picnic backpack and a cap sit by his bed, and a little thought bubble shows a sunny amusement park. Small heartbeat lines pulse around his chest.",
+   "imgKo": "밤에 도윤이가 베개를 안고 눈을 반짝이며 누워 있고, 머리맡에 소풍 가방과 모자가 놓여 있다. 생각 풍선에 햇살 가득한 놀이공원이 보인다."
+  },
+  "분노": {
+   "en": "anger",
+   "explain": [
+    "쉬운 뜻: 영어로 anger, 몹시 분해서 화가 머리끝까지 나는 것입니다.",
+    "생활 속 예: 열심히 쌓은 모래성을 누가 일부러 밟으면 화가 불끈 솟습니다."
+   ],
+   "beats": [
+    "도윤이가 공들여 쌓은 블록 탑을 누가 일부러 무너뜨렸습니다.",
+    "도윤이 얼굴이 새빨개지고 주먹이 부르르 떨립니다.",
+    "몹시 분해서 크게 화가 나는 것이 분노입니다."
+   ],
+   "img": "In a classroom play corner, the tall block tower DOYUN built lies scattered on the floor, knocked down on purpose by a boy who walks away grinning. DOYUN's face turns bright red, his fists tremble and small cartoon steam puffs rise from his head.",
+   "imgKo": "놀이 구석에서 도윤이가 쌓은 블록 탑이 바닥에 흩어져 있고 한 아이가 히죽 웃으며 걸어간다. 도윤이 얼굴이 새빨개지고 주먹이 떨린다."
+  },
+  "감정": {
+   "en": "feeling",
+   "explain": [
+    "쉬운 뜻: 영어로 feeling, 날씨처럼 맑았다 흐렸다 바뀌는 마음속 느낌입니다.",
+    "생활 속 예: 칭찬받으면 기쁘고, 친구가 이사 가면 슬픈 감정이 듭니다."
+   ],
+   "beats": [
+    "하린이가 선물을 받고 활짝 웃습니다.",
+    "잠시 뒤 아이스크림을 떨어뜨리고 눈물을 글썽입니다.",
+    "이렇게 마음에 일어나는 느낌이 감정입니다."
+   ],
+   "img": "Two panels side by side. Left: HARIN beams with joy as she receives a wrapped gift, with a bright sun shining behind her. Right: a moment later, she has dropped her ice cream cone on the ground and her eyes fill with tears, with a small rain cloud behind her.",
+   "imgKo": "왼쪽 그림에서 하린이가 선물을 받고 활짝 웃고 뒤에 해가 빛난다. 오른쪽 그림에서는 아이스크림을 떨어뜨려 눈물을 글썽이고 뒤에 비구름이 있다."
+  },
+  "단서": {
+   "en": "clue",
+   "explain": [
+    "쉬운 뜻: 영어로 clue, 답을 찾아가도록 길을 살짝 알려 주는 것입니다.",
+    "생활 속 예: 스무고개에서 '날개가 있어요.'라는 말이 단서가 됩니다."
+   ],
+   "beats": [
+    "숨바꼭질 술래 하린이가 커튼 아래로 삐죽 나온 운동화를 봅니다.",
+    "하린이가 운동화 쪽으로 살금살금 다가갑니다.",
+    "문제를 푸는 데 도움이 되는 작은 실마리가 단서입니다."
+   ],
+   "img": "Playing hide-and-seek in a living room, HARIN as the seeker notices a pair of sneakers peeking out from under a long curtain. She tiptoes toward it with a finger on her lips, smiling, while DOYUN hides behind the curtain with only his shoes showing.",
+   "imgKo": "거실에서 숨바꼭질하던 술래 하린이가 긴 커튼 아래로 삐죽 나온 운동화를 보고 살금살금 다가가고, 커튼 뒤에 도윤이가 숨어 있다."
+  },
+  "마무리": {
+   "en": "finish",
+   "explain": [
+    "쉬운 뜻: 영어로 finish, 일의 맨 마지막을 깔끔하게 끝내는 것입니다.",
+    "생활 속 예: 일기 맨 끝에 '내일도 힘내자!'라고 쓰며 하루를 마무리합니다."
+   ],
+   "beats": [
+    "도윤이가 큰 퍼즐을 거의 다 맞추었습니다.",
+    "마지막 한 조각을 딱 끼우고 두 팔을 번쩍 듭니다.",
+    "하던 일을 끝맺는 것이 마무리입니다."
+   ],
+   "img": "At a table, DOYUN places the very last piece into a big jigsaw puzzle of mountains and a river. A small inset on the right shows him raising both arms in triumph over the completed puzzle.",
+   "imgKo": "도윤이가 산과 강이 그려진 큰 퍼즐에 마지막 조각을 끼우고, 오른쪽 작은 그림에서 다 맞춘 퍼즐 앞에서 두 팔을 번쩍 든다."
+  },
+  "갈무리": {
+   "explain": [
+    "쉬운 뜻: 다 쓴 물건을 잘 정리해서 제자리에 넣어 두는 것입니다.",
+    "생활 속 예: 여름이 끝나면 선풍기를 닦고 비닐을 씌워 창고에 넣어 둡니다."
+   ],
+   "beats": [
+    "가을이 되자 하린이가 반팔 옷을 하나씩 갭니다.",
+    "갠 옷을 상자에 차곡차곡 담아 옷장 맨 위 칸에 올립니다.",
+    "물건을 잘 정리해 넣어 두는 것이 갈무리입니다."
+   ],
+   "img": "In autumn, HARIN sits on her bedroom floor folding short-sleeved summer T-shirts and shorts neatly and stacking them into a storage box, while her mother lifts a finished box onto the top shelf of the closet. Red leaves are visible outside the window.",
+   "imgKo": "가을날 하린이가 방바닥에 앉아 반팔 옷을 가지런히 개어 상자에 담고, 엄마가 다 담은 상자를 옷장 맨 위 칸에 올린다. 창밖에 단풍이 보인다."
+  },
+  "미지": {
+   "en": "unknown",
+   "explain": [
+    "쉬운 뜻: 영어로 unknown, 지도에 아직 그려지지 않은 곳처럼 모르는 것입니다.",
+    "생활 속 예: 처음 들어가 보는 동굴 안은 나에게 미지의 세계입니다."
+   ],
+   "beats": [
+    "도윤이가 낡은 지도를 펼쳐 봅니다.",
+    "지도 가운데에는 섬이 있지만, 가장자리는 텅 빈 채 뿌옇습니다.",
+    "아직 알지 못하는 것을 미지라고 합니다."
+   ],
+   "img": "DOYUN unrolls an old paper map on a wooden table. The middle of the map shows a small island with trees and a harbor, but the edges fade into blank, misty white. He leans in curiously with a magnifying glass. No letters on the map.",
+   "imgKo": "도윤이가 나무 탁자에 낡은 지도를 펼친다. 가운데는 나무와 항구가 있는 작은 섬이 그려져 있고 가장자리는 텅 빈 채 안개처럼 뿌옇다."
+  },
+  "표면": {
+   "en": "surface",
+   "explain": [
+    "쉬운 뜻: 영어로 surface, 어떤 것의 맨 바깥쪽 겉면입니다.",
+    "생활 속 예: 손으로 쓸어 보면 사포 표면은 까끌까끌, 유리 표면은 매끈합니다."
+   ],
+   "beats": [
+    "하린이가 잔잔한 연못에 작은 돌멩이를 던집니다.",
+    "매끈한 물 위로 동그란 물결이 퍼져 나갑니다.",
+    "어떤 것의 맨 바깥쪽이나 맨 위쪽이 표면입니다."
+   ],
+   "img": "HARIN stands at the edge of a calm pond and tosses a small pebble. Round ripples spread across the smooth water surface, which reflects the sky and trees. The view is slightly from above so the water surface fills most of the picture.",
+   "imgKo": "하린이가 잔잔한 연못가에서 작은 돌멩이를 던지자, 매끈한 물 위로 동그란 물결이 퍼져 나간다."
+  },
+  "탐험": {
+   "en": "explore",
+   "explain": [
+    "쉬운 뜻: 영어로 explore, 잘 모르는 곳에 직접 가서 구석구석 살펴보는 것입니다.",
+    "생활 속 예: 손전등을 들고 동굴 속을 살피며 지도로 그려 나갑니다."
+   ],
+   "beats": [
+    "두꺼운 옷을 입은 사람들이 눈보라 속 얼음 벌판을 걸어갑니다.",
+    "썰매를 끌고 가서 아무도 가 본 적 없는 언덕에 깃발을 꽂습니다.",
+    "위험해도 알려지지 않은 곳을 찾아가 살펴보는 것이 탐험입니다."
+   ],
+   "img": "A small team of explorers in thick fur-lined coats and goggles trudges across a vast icy plain in a snowstorm, pulling a wooden sled. Their leader plants a plain flag with no symbols into the snow on a ridge. Penguins watch from a distance.",
+   "imgKo": "두꺼운 털옷과 고글을 쓴 탐험대가 눈보라 치는 얼음 벌판에서 나무 썰매를 끌고 가고, 앞장선 사람이 언덕에 무늬 없는 깃발을 꽂는다."
+  },
+  "모험": {
+   "en": "adventure",
+   "explain": [
+    "쉬운 뜻: 영어로 adventure, 무서워도 '한번 해 보자!' 하고 뛰어드는 일입니다.",
+    "생활 속 예: 보물 지도를 들고 깊은 숲으로 떠나는 이야기를 모험 이야기라고 합니다."
+   ],
+   "beats": [
+    "하린이와 도윤이가 흔들리는 밧줄 다리 앞에 섭니다.",
+    "서로 손을 꼭 잡고 한 걸음씩 다리를 건넙니다.",
+    "위험하거나 결과를 알 수 없는 일을 용기 내어 해 보는 것이 모험입니다."
+   ],
+   "img": "In a forest adventure park, HARIN and DOYUN, wearing helmets, stand at the start of a long, swaying rope bridge over a stream. They hold hands tightly and take the first brave step, knees a little shaky but faces determined.",
+   "imgKo": "숲속 체험장에서 하린이와 도윤이가 개울 위 흔들리는 밧줄 다리 앞에서 헬멧을 쓰고 손을 꼭 잡은 채 첫걸음을 내딛는다."
+  },
+  "발견": {
+   "en": "discover",
+   "explain": [
+    "쉬운 뜻: 영어로 discover, '찾았다!' 하고 숨어 있던 것을 처음 알아내는 것입니다.",
+    "생활 속 예: 바닷가 바위틈에서 작은 게를 발견하고 소리쳤습니다."
+   ],
+   "beats": [
+    "도윤이가 다락방에서 먼지 쌓인 나무 상자를 엽니다.",
+    "상자 안에서 할아버지의 어릴 적 사진첩이 나옵니다.",
+    "숨어 있던 것을 처음으로 찾아내는 것이 발견입니다."
+   ],
+   "img": "In a dusty attic lit by a small window, DOYUN opens an old wooden box and finds his grandfather's childhood photo album inside. He lifts it up with an amazed face, dust sparkling in the beam of light.",
+   "imgKo": "작은 창으로 빛이 드는 먼지 쌓인 다락방에서 도윤이가 낡은 나무 상자를 열고 할아버지의 어릴 적 사진첩을 꺼내며 놀란 얼굴을 한다."
+  },
+  "행성": {
+   "en": "planet",
+   "explain": [
+    "쉬운 뜻: 영어로 planet, 태양을 가운데 두고 제 길을 따라 빙글빙글 도는 둥근 덩어리입니다.",
+    "생활 속 예: 새벽 동쪽 하늘에서 가장 밝게 빛나는 '샛별'은 사실 금성이라는 행성입니다."
+   ]
+  },
+  "성과": {
+   "explain": [
+    "쉬운 뜻: 애쓴 끝에 열매처럼 얻은 좋은 결과입니다.",
+    "생활 속 예: 받아쓰기를 날마다 연습했더니 백 점을 받았습니다."
+   ],
+   "beats": [
+    "봄부터 도윤이가 날마다 화분에 물을 줍니다.",
+    "여름이 되자 방울토마토가 주렁주렁 열렸습니다.",
+    "애써 노력해서 얻어 낸 좋은 결과가 성과입니다."
+   ],
+   "img": "Two panels. Left: in spring, DOYUN waters a small tomato seedling in a pot on a balcony in the morning. Right: in summer, the same plant is tall and full of shiny red cherry tomatoes, and DOYUN holds a bowl of them, beaming proudly.",
+   "imgKo": "왼쪽 그림에서 봄날 도윤이가 베란다 화분의 작은 토마토 모종에 물을 주고, 오른쪽 그림에서는 여름에 방울토마토가 주렁주렁 열려 도윤이가 한 그릇 따 들고 웃는다."
+  },
+  "윤곽": {
+   "en": "outline",
+   "explain": [
+    "쉬운 뜻: 영어로 outline, 속은 몰라도 겉 테두리만 보고 '무엇이다' 알아보는 모습입니다.",
+    "생활 속 예: 해 질 녘 하늘을 보면 산은 까만 윤곽만 보입니다."
+   ],
+   "beats": [
+    "커튼 뒤에 선 도윤이의 모습이 그림자로만 비칩니다.",
+    "얼굴은 안 보여도 둥근 안경과 모자 둘레만 보고 하린이가 도윤이인 줄 압니다.",
+    "어떤 것의 겉 둘레를 이루는 선, 대강의 모습이 윤곽입니다."
+   ],
+   "img": "In a dim room, a light shines from behind a white curtain, and DOYUN's dark silhouette appears on it, showing the shape of his round glasses, hood and shoulders. On the near side, HARIN points at the silhouette and smiles, recognizing him.",
+   "imgKo": "어두운 방에서 흰 커튼 뒤에 불빛이 비치고 도윤이의 둥근 안경과 후드 모자 그림자가 커튼에 드리워진다. 앞에서 하린이가 그림자를 가리키며 웃는다."
+  },
+  "지하자원": {
+   "explain": [
+    "쉬운 뜻: 땅속에 숨어 있다가 캐내어 쓰는 보물 같은 것들입니다.",
+    "낱말 나누기: 지하(땅 밑) + 자원(쓸모 있는 것), 땅 밑에 있는 쓸모 있는 것입니다.",
+    "생활 속 예: 연필심의 흑연, 동전의 구리도 땅속에서 캐낸 것입니다."
+   ],
+   "beats": [
+    "땅을 잘라 본 그림에 검은 석탄과 반짝이는 금이 묻혀 있습니다.",
+    "광부들이 굴을 파 들어가 그것을 수레에 싣고 나옵니다.",
+    "땅속에 묻혀 있어 캐내어 쓸 수 있는 것이 지하자원입니다."
+   ],
+   "img": "A cutaway view of the ground: green grass and a small town on top, and below, layers of earth with black lumps of coal, reddish iron ore and glittering gold veins. Miners in helmets with headlamps dig along a tunnel and push a cart full of coal toward the surface.",
+   "imgKo": "땅을 잘라 본 모습으로, 위에는 풀밭과 마을이 있고 아래 흙 속에 검은 석탄, 붉은 철광석, 반짝이는 금이 묻혀 있다. 헬멧을 쓴 광부들이 굴을 따라 석탄 수레를 밀고 나온다."
+  },
+  "답사": {
+   "explain": [
+    "쉬운 뜻: 책으로만 보지 않고 그곳에 직접 걸어가서 보고 알아보는 것입니다.",
+    "생활 속 예: 우리 동네 지도를 만들려고 모둠끼리 골목을 걸으며 가게를 적었습니다."
+   ],
+   "beats": [
+    "하린이네 모둠이 공책과 줄자를 들고 마을의 오래된 돌다리에 갑니다.",
+    "하린이는 다리 길이를 재고, 도윤이는 공책에 다리를 그립니다.",
+    "어떤 곳에 직접 가서 보고 조사하는 것이 답사입니다."
+   ],
+   "img": "HARIN, DOYUN and two classmates visit an old stone bridge in their village with notebooks, a camera and a measuring tape. HARIN measures the bridge with the tape, DOYUN sketches it in his notebook, and TEACHER points out the carved stones. No readable letters.",
+   "imgKo": "하린이네 모둠이 공책, 사진기, 줄자를 들고 마을의 오래된 돌다리에 가서 하린이는 길이를 재고 도윤이는 공책에 그리며, 선생님이 돌을 가리킨다."
+  },
+  "암석": {
+   "en": "rock",
+   "explain": [
+    "쉬운 뜻: 영어로 rock, 흙 밑을 파 내려가면 나오는 땅의 뼈대 같은 돌입니다.",
+    "생활 속 예: 바닷가 절벽, 산꼭대기 바위, 강가 자갈도 모두 암석입니다."
+   ],
+   "beats": [
+    "도윤이가 산길에서 여러 가지 돌을 주워 나란히 놓습니다.",
+    "까만 돌, 흰 알갱이가 박힌 돌, 줄무늬 돌을 돋보기로 들여다봅니다.",
+    "땅의 겉과 속을 이루고 있는 단단한 돌이 암석입니다."
+   ],
+   "img": "On a mountain trail, DOYUN crouches next to a row of different stones he has collected: a black one, a gray one with white speckles and one with layered stripes. He studies them closely with a magnifying glass, and a rocky cliff rises behind him.",
+   "imgKo": "산길에서 도윤이가 까만 돌, 흰 알갱이가 박힌 회색 돌, 줄무늬 돌을 나란히 늘어놓고 돋보기로 들여다보며, 뒤로 바위 절벽이 솟아 있다."
+  },
+  "해저": {
+   "explain": [
+    "쉬운 뜻: 바닷물 아래로 쭉 내려가면 닿는 땅, 곧 바다 밑바닥입니다.",
+    "해저에도 땅 위처럼 산과 깊은 골짜기가 있습니다.",
+    "생활 속 예: 해녀들은 해저까지 잠수해 전복과 소라를 땁니다."
+   ],
+   "beats": [
+    "작은 잠수정이 불빛을 비추며 깊은 바닷속으로 내려갑니다.",
+    "바닥에 닿자 모래와 바위, 신기한 물고기가 불빛에 드러납니다.",
+    "바다의 밑바닥이 해저입니다."
+   ],
+   "img": "A small yellow research submarine with bright headlights descends into the dark deep ocean. Its lights reveal the sea floor below: sandy ground, rocky hills, sea stars and strange glowing fish. Above, the water fades from blue to black.",
+   "imgKo": "불빛을 켠 노란 잠수정이 깜깜한 깊은 바다로 내려가고, 불빛에 모래 바닥과 바위 언덕, 불가사리, 빛나는 물고기가 드러난다."
+  },
+  "해류": {
+   "explain": [
+    "쉬운 뜻: 바닷속을 흐르는 큰 강처럼, 바닷물이 늘 같은 쪽으로 흐르는 것입니다.",
+    "생활 속 예: 바다거북은 해류를 타고 아주 먼 바다까지 헤엄쳐 갑니다."
+   ]
+  },
+  "분포": {
+   "explain": [
+    "쉬운 뜻: 어디에 얼마나 흩어져 있는지 하는 모습입니다.",
+    "생활 속 예: 날씨 지도에 비 오는 곳을 파랗게 칠하면 비의 분포가 보입니다."
+   ]
+  }
+ },
+ "6": {
+  "감동": {
+   "explain": [
+    "쉬운 뜻: 가슴이 찡 울리고 눈물이 핑 돌 만큼 마음이 움직이는 것입니다.",
+    "생활 속 예: 잃어버린 강아지가 몇 달 만에 집을 찾아온 뉴스를 보고 가슴이 찡했습니다."
+   ],
+   "beats": [
+    "할머니 생신에 하린이가 손으로 만든 카드를 드립니다.",
+    "카드를 펼친 할머니가 눈물을 글썽이며 하린이를 꼭 안아 주십니다.",
+    "어떤 일에 마음이 깊이 울리는 것이 감동입니다."
+   ],
+   "img": "At a family birthday table, HARIN hands her grandmother a handmade card decorated with drawn flowers and hearts, no letters. Grandmother opens it with tears welling in her eyes and hugs HARIN tightly while family members smile warmly.",
+   "imgKo": "생신 상 앞에서 하린이가 꽃과 하트를 그린 손 카드를 드리자, 할머니가 카드를 펼치고 눈물을 글썽이며 하린이를 꼭 안아 주신다."
+  },
+  "의견": {
+   "en": "opinion",
+   "explain": [
+    "쉬운 뜻: 영어로 opinion, '나는 이렇게 생각해.' 하고 내놓는 내 생각입니다.",
+    "생활 속 예: 소풍 장소로 '바닷가가 좋겠다.'라고 말하는 것이 내 의견입니다."
+   ],
+   "beats": [
+    "학급 회의 시간에 칠판에 놀이 그림 두 장이 붙어 있습니다.",
+    "하린이가 손을 들고 피구 그림을 가리키며 말합니다.",
+    "어떤 일에 대한 자기 생각이 의견입니다."
+   ],
+   "img": "During a class meeting, two picture cards hang on the board: one of children playing dodgeball and one of children playing tag, no letters. HARIN raises her hand high and points at the dodgeball card while speaking, and classmates turn to listen. TEACHER stands beside the board.",
+   "imgKo": "학급 회의 시간에 칠판에 피구 그림과 술래잡기 그림 카드가 붙어 있고, 하린이가 손을 들고 피구 그림을 가리키며 말한다."
+  },
+  "제시": {
+   "en": "present",
+   "explain": [
+    "쉬운 뜻: 영어로 present, 손바닥 위에 올려 보여 주듯 생각을 내놓는 것입니다.",
+    "생활 속 예: 발표할 때 '제 의견은 이렇습니다.'라고 먼저 밝힙니다."
+   ],
+   "beats": [
+    "도윤이가 친구들 앞에서 그림 판을 높이 들어 보입니다.",
+    "그림 판에는 쓰레기를 쓰레기통에 넣는 모습이 그려져 있습니다.",
+    "생각이나 내용을 남이 알 수 있게 내어 보이는 것이 제시입니다."
+   ],
+   "img": "DOYUN stands in front of the class and holds up a large picture board showing a child dropping trash into a bin, no letters. He looks confident and points at the board, and classmates watch him attentively.",
+   "imgKo": "도윤이가 교실 앞에서 쓰레기를 쓰레기통에 넣는 아이 그림 판을 높이 들어 보이며 가리키고, 친구들이 바라본다."
+  },
+  "교훈": {
+   "en": "lesson",
+   "explain": [
+    "쉬운 뜻: 영어로 lesson, 이야기를 읽고 '아, 이렇게 살아야겠다.' 하고 얻는 가르침입니다.",
+    "생활 속 예: 「해와 바람」은 힘보다 따뜻한 마음이 사람을 움직인다고 알려 줍니다."
+   ],
+   "beats": [
+    "여름 내내 개미는 곡식을 나르고, 베짱이는 바이올린을 켜며 놉니다.",
+    "겨울이 되자 개미는 따뜻한 굴에서 먹고, 베짱이는 눈 속에서 떱니다.",
+    "앞으로 살아가는 데 도움이 되는 가르침이 교훈입니다."
+   ],
+   "img": "Two panels from the fable of the ant and the grasshopper. Left: in a sunny summer meadow, a grasshopper plays a violin while ants carry grains in a line. Right: in snowy winter, the ants eat cozily inside their warm burrow while the grasshopper shivers outside in the snow.",
+   "imgKo": "왼쪽 그림에서 여름 풀밭의 베짱이가 바이올린을 켜고 개미들이 곡식을 나른다. 오른쪽 그림에서는 겨울에 개미들이 따뜻한 굴에서 먹고 베짱이가 눈 속에서 떤다."
+  },
+  "효과음": {
+   "en": "sound effect",
+   "explain": [
+    "쉬운 뜻: 영어로 sound effect, 장면이 진짜처럼 느껴지게 넣는 '쾅', '휙' 같은 소리입니다.",
+    "생활 속 예: 게임에서 동전을 먹을 때 '띠링' 하고 나는 소리도 효과음입니다."
+   ],
+   "beats": [
+    "인형극 무대 뒤에서 도윤이가 엎은 그릇 두 개로 책상을 번갈아 두드립니다.",
+    "무대 위에서는 말 인형이 다그닥다그닥 달려갑니다.",
+    "장면을 실감 나게 하려고 넣는 소리가 효과음입니다."
+   ],
+   "img": "Behind a puppet theater stage, DOYUN taps two upside-down bowls on a table one after another to make clip-clop sounds, with small sound-wave lines rising from the bowls. In front, on the stage, a horse puppet gallops across, and children in the audience laugh.",
+   "imgKo": "인형극 무대 뒤에서 도윤이가 엎은 그릇 두 개로 책상을 번갈아 두드리고, 무대 위에서는 말 인형이 달려가며 관객 아이들이 웃는다."
+  },
+  "배경 음악": {
+   "en": "background music",
+   "explain": [
+    "쉬운 뜻: 영어로 background music, 장면 뒤에 깔려서 기분을 만들어 주는 음악입니다.",
+    "생활 속 예: 회전목마를 탈 때 흐르는 경쾌한 음악도 배경 음악입니다."
+   ],
+   "beats": [
+    "영화 속 소녀가 노을 지는 바닷가를 걸어갑니다.",
+    "화면 뒤로 잔잔한 음표들이 흘러나와 장면을 포근하게 감쌉니다.",
+    "분위기를 살리려고 장면 뒤에 깔아 두는 음악이 배경 음악입니다."
+   ],
+   "img": "HARIN and DOYUN sit on a sofa watching a movie on TV. On the screen, a girl walks along a beach at sunset. Soft, flowing musical notes drift out from behind the screen and wrap around the scene, and the children look calm and moved.",
+   "imgKo": "하린이와 도윤이가 소파에서 영화를 본다. 화면 속 소녀가 노을 진 바닷가를 걷고, 화면 뒤로 잔잔한 음표들이 흘러나와 장면을 감싼다."
+  },
+  "나열": {
+   "en": "list",
+   "explain": [
+    "쉬운 뜻: 영어로 list, 여러 가지를 하나, 둘, 셋 죽 늘어놓는 것입니다.",
+    "생활 속 예: 장 볼 것을 '우유, 달걀, 사과'처럼 줄줄이 적습니다."
+   ]
+  },
+  "요약": {
+   "en": "summary",
+   "explain": [
+    "쉬운 뜻: 영어로 summary, 긴 이야기에서 꼭 필요한 뼈대만 남기고 줄이는 것입니다.",
+    "생활 속 예: 두 시간짜리 영화를 '강아지를 찾는 이야기야.' 한마디로 말합니다."
+   ]
+  },
+  "다급하다": {
+   "en": "urgent",
+   "explain": [
+    "쉬운 뜻: 영어로 urgent, 시간이 없어서 발을 동동 구를 만큼 급한 것입니다.",
+    "생활 속 예: 냄비 물이 넘치려 하자 엄마가 서둘러 불을 끕니다."
+   ],
+   "beats": [
+    "늦잠을 잔 도윤이가 벽시계를 보고 깜짝 놀랍니다.",
+    "한쪽 양말만 신은 채 빵을 물고 현관으로 뛰어갑니다.",
+    "일이 몹시 급해서 서두르는 모습이 다급한 것입니다."
+   ],
+   "img": "In the morning, DOYUN, having overslept, rushes toward the front door with toast in his mouth, wearing only one sock and pulling his backpack onto one shoulder. A wall clock without numbers shows the hands in a late position, and motion lines and sweat drops show his hurry.",
+   "imgKo": "늦잠 잔 도윤이가 빵을 입에 물고 한쪽 양말만 신은 채 가방을 걸치며 현관으로 뛰어가고, 숫자 없는 벽시계가 늦은 시각을 가리킨다."
+  },
+  "신통방통하다": {
+   "explain": [
+    "쉬운 뜻: 어린아이가 놀라운 일을 해내서 '아이고, 참 잘했다!' 소리가 절로 나는 것입니다.",
+    "생활 속 예: 세 살 동생이 혼자 신발을 바로 신자 모두 손뼉을 쳤습니다."
+   ],
+   "beats": [
+    "다섯 살 동생이 혼자서 블록으로 높은 성을 쌓았습니다.",
+    "할아버지가 엄지를 척 세우고 동생 머리를 쓰다듬으십니다.",
+    "매우 대견하고 칭찬해 줄 만한 것을 신통방통하다고 합니다."
+   ],
+   "img": "In a living room, HARIN's little brother, about five years old, proudly stands beside a tall, colorful block castle he built by himself. Grandfather gives a big thumbs-up with one hand and pats the boy's head with the other, beaming. HARIN claps in the background.",
+   "imgKo": "거실에서 다섯 살 동생이 혼자 쌓은 높은 블록 성 옆에 뿌듯하게 서 있고, 할아버지가 엄지를 세우며 머리를 쓰다듬으신다. 뒤에서 하린이가 손뼉을 친다."
+  },
+  "밑창": {
+   "explain": [
+    "쉬운 뜻: 신발을 뒤집으면 보이는, 땅을 딛는 맨 아래 조각입니다.",
+    "생활 속 예: 축구화 밑창에는 미끄러지지 않게 작은 고무 돌기가 여러 개 솟아 있습니다."
+   ],
+   "beats": [
+    "도윤이가 새 운동화와 헌 운동화를 뒤집어 나란히 듭니다.",
+    "새것 바닥은 무늬가 또렷하고, 헌것 바닥은 닳아 반들반들합니다.",
+    "신발 바닥 밑에 붙이는 고무나 가죽 조각이 밑창입니다."
+   ],
+   "img": "DOYUN sits on the floor holding up two sneakers turned upside down side by side: a new one with deep, clear zigzag patterns on its rubber sole and an old one whose sole is worn smooth and flat. He compares them with a curious face.",
+   "imgKo": "도윤이가 바닥에 앉아 새 운동화와 헌 운동화를 뒤집어 나란히 들고, 무늬가 또렷한 새 바닥과 닳아 반들반들한 헌 바닥을 견주어 본다."
+  },
+  "인심": {
+   "explain": [
+    "쉬운 뜻: 내 것을 아끼지 않고 '같이 먹자.' 하고 나누는 넉넉한 마음씨입니다.",
+    "생활 속 예: 친구가 사탕 한 봉지를 반 아이들 모두에게 하나씩 나누어 줍니다."
+   ],
+   "beats": [
+    "시장 과일 가게 아주머니가 사과를 봉지에 담습니다.",
+    "아주머니가 웃으며 반짝이는 사과 하나를 더 얹어 주십니다.",
+    "남을 생각해 넉넉하게 나누어 주는 마음이 인심입니다."
+   ],
+   "img": "At a market fruit stall, a smiling middle-aged shopkeeper puts apples into a paper bag for HARIN and her mother, then adds one extra shiny apple on top with a wink. HARIN looks up, delighted.",
+   "imgKo": "시장 과일 가게에서 웃는 아주머니가 하린이와 엄마에게 사과를 봉지에 담아 주고, 윙크하며 반짝이는 사과 하나를 더 얹어 준다."
+  },
+  "오해": {
+   "en": "misunderstand",
+   "explain": [
+    "쉬운 뜻: 영어로 misunderstand, 뜻을 잘못 알아듣고 '그런 줄 알았어.' 하는 것입니다.",
+    "생활 속 예: 친구가 날 보고 웃어서 놀리는 줄 알았는데 반가워서였습니다."
+   ],
+   "beats": [
+    "도윤이 책상에 우유가 쏟아져 있고 옆에 하린이가 서 있습니다.",
+    "도윤이가 하린이를 노려보지만, 사실은 창문 바람에 커튼이 컵을 넘어뜨렸습니다.",
+    "말이나 행동의 뜻을 잘못 아는 것이 오해입니다."
+   ],
+   "img": "In a classroom, milk is spilled across DOYUN's desk and HARIN happens to be standing beside it. DOYUN frowns at HARIN with suspicion, while behind them an open window lets a strong wind blow the curtain, which has just knocked over the cup.",
+   "imgKo": "교실에서 도윤이 책상에 우유가 쏟아져 있고 하린이가 옆에 서 있다. 도윤이가 하린이를 의심스럽게 보지만, 뒤에서 열린 창문 바람에 커튼이 컵을 넘어뜨렸다."
+  },
+  "처지": {
+   "explain": [
+    "쉬운 뜻: 내가 그 사람이 되어 보면 보이는, 그 사람의 형편과 사정입니다.",
+    "생활 속 예: 다리에 깁스를 한 친구의 처지를 생각해 가방을 들어 줍니다."
+   ],
+   "beats": [
+    "비가 쏟아지는데 한 친구만 우산이 없어 교문 앞에 서 있습니다.",
+    "하린이가 그 친구 자리에서 생각해 보고 다가가 우산을 함께 씁니다.",
+    "그 사람이 놓여 있는 형편이나 사정이 처지입니다."
+   ],
+   "img": "At the school gate on a rainy afternoon, one boy stands under the roof edge without an umbrella, looking worried at the pouring rain while other children leave with umbrellas. HARIN notices him, walks over and holds her umbrella over both of them.",
+   "imgKo": "비 오는 오후 교문 앞에서 한 남자아이가 우산 없이 처마 밑에 서 있고, 하린이가 다가가 우산을 함께 쓴다."
+  },
+  "갈등": {
+   "en": "conflict",
+   "explain": [
+    "쉬운 뜻: 영어로 conflict, 서로 바라는 것이 달라 줄다리기하듯 부딪치는 것입니다.",
+    "생활 속 예: 피구를 할지 술래잡기를 할지 의견이 갈려 다툽니다."
+   ],
+   "beats": [
+    "하린이와 도윤이가 그네 하나의 줄을 양쪽에서 잡고 있습니다.",
+    "둘 다 먼저 타겠다며 얼굴을 찌푸립니다.",
+    "생각이나 바라는 것이 달라 부딪치는 것이 갈등입니다."
+   ],
+   "img": "On a playground, HARIN and DOYUN both grip the chains of a single swing from opposite sides, each wanting to ride first. They frown at each other, with small zigzag lines between their faces, while the swing hangs between them.",
+   "imgKo": "놀이터에서 하린이와 도윤이가 그네 하나의 줄을 양쪽에서 붙잡고 서로 먼저 타겠다며 얼굴을 찌푸린다."
+  },
+  "영양소": {
+   "en": "nutrient",
+   "explain": [
+    "쉬운 뜻: 영어로 nutrient, 자동차에 기름이 필요하듯 우리 몸이 음식에서 얻어야 하는 것입니다.",
+    "생활 속 예: 밥과 빵에는 몸을 움직이는 힘을 내는 영양소가 많습니다."
+   ],
+   "beats": [
+    "하린이 식판에 밥, 생선구이, 나물, 과일이 골고루 담겨 있습니다.",
+    "음식에서 나온 작은 빛 방울들이 하린이 몸으로 들어가고 팔에 힘이 솟습니다.",
+    "음식 속에 있어 몸이 자라고 힘을 내게 해 주는 것이 영양소입니다."
+   ],
+   "img": "HARIN eats from a balanced meal tray with rice, grilled fish, seasoned greens and fruit. Tiny colorful glowing dots float up from the food into her body, and she flexes her arm with a happy, energetic face.",
+   "imgKo": "하린이가 밥, 생선구이, 나물, 과일이 담긴 식판의 음식을 먹자, 음식에서 알록달록 빛나는 작은 점들이 몸으로 들어가고 하린이가 팔에 힘을 주며 웃는다."
+  },
+  "곡물": {
+   "en": "grain",
+   "explain": [
+    "쉬운 뜻: 영어로 grain, 밥과 빵, 국수를 만드는 작은 알갱이 열매입니다.",
+    "생활 속 예: 시리얼, 떡, 라면도 곡물로 만듭니다."
+   ],
+   "beats": [
+    "가을 들판에 누렇게 익은 벼 이삭이 바람에 흔들립니다.",
+    "그 알갱이를 모아 밥을 짓고 빵을 굽습니다.",
+    "밥을 짓거나 빵을 만드는 데 쓰는 작은 알갱이 열매가 곡물입니다."
+   ],
+   "img": "A golden field where ripe rice plants and wheat stalks sway in the wind. In the foreground, small sacks are filled with rice, barley, wheat and corn kernels, and next to them sit a steaming bowl of rice and a loaf of bread. HARIN holds a handful of grains, looking at them closely.",
+   "imgKo": "누렇게 익은 벼와 밀이 흔들리는 들판 앞에 쌀, 보리, 밀, 옥수수 알이 담긴 작은 자루와 김 나는 밥 한 공기, 빵 한 덩이가 놓여 있고, 하린이가 곡식 한 줌을 들여다본다."
+  },
+  "조절": {
+   "en": "adjust",
+   "explain": [
+    "쉬운 뜻: 영어로 adjust, 너무 많지도 적지도 않게 알맞게 맞추는 것입니다.",
+    "생활 속 예: 샤워할 때 물이 뜨거우면 손잡이를 돌려 미지근하게 맞춥니다."
+   ],
+   "beats": [
+    "하린이가 의자에 앉았는데 책상이 턱까지 올라옵니다.",
+    "의자 밑 손잡이를 당겨 높이를 알맞게 올립니다.",
+    "알맞게 맞추어 정도를 바꾸는 것이 조절입니다."
+   ],
+   "img": "HARIN sits on an adjustable desk chair that is too low, so the desk reaches her chin. She pulls the lever under the seat and the chair rises, shown with an up arrow, until she sits comfortably with her arms resting on the desk.",
+   "imgKo": "하린이가 책상에 비해 너무 낮은 의자에 앉아 책상이 턱까지 오자, 의자 밑 손잡이를 당겨 높이를 알맞게 올린다."
+  },
+  "공급": {
+   "en": "supply",
+   "explain": [
+    "쉬운 뜻: 영어로 supply, 모자라지 않게 필요한 것을 계속 보내 주는 것입니다.",
+    "생활 속 예: 수도관은 집집마다 깨끗한 물을 공급합니다."
+   ],
+   "beats": [
+    "더운 운동회 날, 목마른 아이들이 천막 아래 모여 있습니다.",
+    "선생님이 물병 상자를 옮겨 와 한 병씩 나누어 줍니다.",
+    "필요한 것을 대어 주는 것이 공급입니다."
+   ],
+   "img": "On a hot sports day, thirsty children in gym clothes gather under a tent. TEACHER and a helper carry a box of water bottles to them and hand a bottle to each child, and the children drink happily, wiping sweat.",
+   "imgKo": "더운 운동회 날 목마른 아이들이 천막 아래 모이고, 선생님과 도우미가 물병 상자를 옮겨 와 한 병씩 나누어 주자 아이들이 시원하게 마신다."
+  },
+  "중복": {
+   "explain": [
+    "쉬운 뜻: '어? 이거 아까 그거잖아!' 하고 같은 것이 또 나오는 것입니다.",
+    "생활 속 예: 받아쓰기에서 같은 문제를 두 번 내면 문제가 중복됩니다."
+   ],
+   "beats": [
+    "아이들이 교실 바닥에서 카드놀이를 합니다.",
+    "도윤이가 똑같은 공룡 카드 두 장을 나란히 들고 고개를 갸웃합니다.",
+    "똑같은 것이 거듭 겹치는 것이 중복입니다."
+   ],
+   "img": "Children play a card game on a classroom floor. DOYUN holds up two identical cards with the same green dinosaur picture side by side, tilting his head in surprise, while HARIN peeks at them. No letters or numbers on the cards.",
+   "imgKo": "아이들이 교실 바닥에서 카드놀이를 하고, 도윤이가 똑같은 초록 공룡 카드 두 장을 나란히 들고 고개를 갸웃하며 하린이가 들여다본다."
+  },
+  "뒷받침": {
+   "en": "support",
+   "explain": [
+    "쉬운 뜻: 영어로 support, 뒤에서 든든하게 받쳐 주어 쓰러지지 않게 하는 것입니다.",
+    "낱말 나누기: 뒤 + 받침(밑을 받치는 것), 뒤에서 받쳐 준다는 말입니다.",
+    "생활 속 예: '일찍 자자.' 뒤에 '아침에 덜 졸리니까.'를 붙이면 뒷받침이 됩니다."
+   ],
+   "beats": [
+    "하린이가 종이 집에 지붕을 얹자 지붕이 푹 내려앉습니다.",
+    "지붕 밑에 막대기 기둥 세 개를 세우자 지붕이 든든하게 버팁니다.",
+    "뒤에서 받쳐 든든하게 도와주는 것이 뒷받침입니다."
+   ],
+   "img": "Two small panels at a craft table. Left: HARIN sets a cardboard roof on a little paper house and the roof sags and slides. Right: she places three straight craft-stick pillars underneath, and the roof now stands firmly while DOYUN gives a thumbs-up.",
+   "imgKo": "만들기 책상에서 하린이가 종이 집에 지붕을 얹자 처음엔 지붕이 내려앉지만, 밑에 막대기 기둥 세 개를 세우자 지붕이 든든하게 버틴다."
+  },
+  "해결": {
+   "en": "solve",
+   "explain": [
+    "쉬운 뜻: 영어로 solve, 엉킨 실타래를 풀듯 어려운 일을 잘 풀어 끝내는 것입니다.",
+    "생활 속 예: 자전거 체인이 빠졌는데 아빠와 함께 다시 끼워 해결했습니다."
+   ],
+   "beats": [
+    "하린이의 연이 높은 나뭇가지에 걸렸습니다.",
+    "도윤이가 긴 막대로 살살 밀어 연을 빼내자 하린이가 웃습니다.",
+    "어려운 일이나 막힌 일을 잘 풀어서 끝내는 것이 해결입니다."
+   ],
+   "img": "In a park, HARIN's kite is stuck in the branches of a tree. DOYUN stands on tiptoe and gently pushes it free with a long stick, and the kite starts to float down while HARIN smiles with relief.",
+   "imgKo": "공원에서 하린이의 연이 나뭇가지에 걸려 있고, 도윤이가 발꿈치를 들고 긴 막대로 살살 밀어 빼내자 하린이가 안심하며 웃는다."
+  },
+  "설득력": {
+   "explain": [
+    "쉬운 뜻: '듣고 보니 맞네!' 하고 고개를 끄덕이게 만드는 말의 힘입니다.",
+    "낱말 나누기: 설득(까닭을 들어 따르게 함) + 력(힘), 남을 따르게 하는 힘입니다.",
+    "생활 속 예: 사진과 까닭을 함께 보여 주면 말에 설득력이 생깁니다."
+   ],
+   "beats": [
+    "하린이가 반 친구들 앞에서 그림 판 세 장을 차례로 보여 줍니다.",
+    "듣던 친구들이 하나둘 고개를 끄덕이며 손을 듭니다.",
+    "남이 내 말을 믿고 따르게 하는 힘이 설득력입니다."
+   ],
+   "img": "HARIN stands in front of her class showing three picture boards one after another: a messy classroom, children cleaning together, and a sparkling clean room, no letters. The classmates nod one by one and several raise their hands in agreement.",
+   "imgKo": "하린이가 반 친구들 앞에서 지저분한 교실, 함께 청소하는 아이들, 반짝이는 교실 그림 판 세 장을 차례로 보여 주자, 친구들이 하나둘 고개를 끄덕이며 손을 든다."
+  },
+  "맞춤법": {
+   "en": "spelling",
+   "explain": [
+    "쉬운 뜻: 영어로 spelling, 소리 나는 대로가 아니라 바른 꼴로 글자를 적는 약속입니다.",
+    "생활 속 예: [가치]로 소리 나도 '같이'라고 적습니다."
+   ]
+  },
+  "팻말": {
+   "en": "sign",
+   "explain": [
+    "쉬운 뜻: 영어로 sign, 막대에 판을 달아 알릴 말을 적어 둔 것입니다.",
+    "생활 속 예: 동물원 우리 앞 팻말에는 동물 이름과 사는 곳이 적혀 있습니다."
+   ],
+   "beats": [
+    "아이들이 막대 끝에 동그란 판을 붙이고 그림을 그립니다.",
+    "하린이와 도윤이가 그 판을 높이 들고 복도를 걸어갑니다.",
+    "알릴 내용을 적어 들거나 세워 둘 수 있게 만든 판이 팻말입니다."
+   ],
+   "img": "In a school hallway, HARIN and DOYUN walk side by side holding up handmade signs on sticks. HARIN's round sign shows a drawing of paper going into a trash can, and DOYUN's sign shows a walking figure, with no letters. Classmates watch them pass.",
+   "imgKo": "학교 복도에서 하린이와 도윤이가 막대에 단 손 팻말을 높이 들고 걷는다. 하린이 팻말에는 쓰레기를 쓰레기통에 넣는 그림, 도윤이 팻말에는 걷는 사람 그림이 있다."
+  }
+ }
+}
