@@ -4,6 +4,7 @@
   const books = window.CurriculumVocabulary || {};
   const visualLessons = window.CurriculumVisualLessons || {};
   const wordLessons = window.CurriculumWordLessons || {};
+  const unitCases = window.CurriculumUnitCases || {};
   const termSelect = document.getElementById('term');
   const subjectList = document.getElementById('subjects');
   const unitList = document.getElementById('unit-list');
@@ -30,14 +31,6 @@
     node.type = 'button';
     node.addEventListener('click', action);
     return node;
-  }
-
-  function exampleOf(word, text) {
-    const example = element('p', '', 'example');
-    const offset = text.indexOf(word);
-    if (offset < 0) example.textContent = text;
-    else example.append(text.slice(0, offset), element('mark', word), text.slice(offset + word.length));
-    return example;
   }
 
   function orderedChoices(choices) {
@@ -71,7 +64,32 @@
     return block;
   }
 
-  function visualLessonOf(activity) {
+  function unitCaseOf([title, scenes]) {
+    const section = element('section', '', 'unit-case');
+    const controls = element('div', '', 'case-controls');
+    controls.setAttribute('role', 'group');
+    controls.setAttribute('aria-label', '자료 고르기');
+    const content = element('div', '', 'case-reading');
+    content.setAttribute('aria-live', 'polite');
+    const evidence = element('p', '', 'case-evidence');
+    const explanation = element('p', '', 'case-explanation');
+    content.append(element('h3', '자료'), evidence, element('h3', '단서 읽기'), explanation);
+    const choices = scenes.map(([name], index) => button(name, () => select(index)));
+    controls.append(...choices);
+    section.append(element('h2', title), controls, content);
+
+    function select(index) {
+      const [, record, meaning] = scenes[index];
+      choices.forEach((choice, i) => choice.setAttribute('aria-pressed', String(i === index)));
+      evidence.textContent = record;
+      explanation.replaceChildren(...meaning.split(/\*\*([^*]+)\*\*/).map((part, i) =>
+        i % 2 ? element('strong', part) : document.createTextNode(part)));
+    }
+    select(0);
+    return section;
+  }
+
+  function visualLessonOf(activity, illustrate = true) {
     const section = element('section', '', 'visual-lesson');
     const title = element('h2', activity.title);
     const figure = element('figure', '', 'scene');
@@ -80,7 +98,8 @@
     const controls = element('div', '', 'scene-controls');
     controls.setAttribute('role', 'group');
     controls.setAttribute('aria-label', activity.controlLabel);
-    figure.append(image, caption);
+    if (illustrate && activity.draw) figure.append(image);
+    figure.append(caption);
     section.append(title);
     if (activity.intro) section.append(element('p', activity.intro, 'scene-intro'));
     if (activity.draw) section.append(controls, figure);
@@ -90,7 +109,7 @@
     function select(index) {
       const [name, description] = activity.states[index];
       buttons.forEach((node, i) => node.setAttribute('aria-pressed', String(i === index)));
-      image.innerHTML = activity.draw(index);
+      if (illustrate) image.innerHTML = activity.draw(index);
       caption.replaceChildren(element('strong', name), ' ', description);
     }
     if (activity.draw) select(0);
@@ -138,7 +157,7 @@
       }));
       choices.append(...optionButtons);
       practice.append(element('h3', question));
-      if (draw) {
+      if (draw && illustrate) {
         const example = element('div', '', 'scene-image check-image');
         example.innerHTML = draw();
         practice.append(example);
@@ -158,6 +177,8 @@
       return;
     }
     const taughtWords = wordLessons[term]?.[subject]?.[unit.id];
+    const unitCase = unitCases[`${term}/${subject}/${unit.id}`];
+    const panels = unitCase ? [unitCaseOf(unitCase)] : [];
     if (taughtWords) {
       const navigation = element('nav', '', 'word-navigation');
       navigation.setAttribute('aria-label', '배울 단어');
@@ -185,21 +206,15 @@
         navigation.scrollIntoView({ block: 'start', behavior: 'instant' });
       }
       selectWord(names.includes(requested) ? requested : names[0]);
-      lesson.replaceChildren(navigation, content);
+      lesson.replaceChildren(...panels, navigation, content);
       return;
     }
     const visuals = visualLessons[term]?.[subject]?.[unit.id] || [];
-    const glossary = element('details', '', 'glossary');
-    glossary.append(element('summary', '단어와 예문 찾아보기'));
-    const words = element('dl', '', 'word-list');
-    for (const [word, meaning, example] of unit.words) {
-      const definition = element('dd');
-      definition.append(element('p', meaning), exampleOf(word, example));
-      words.append(element('dt', word), definition);
+    for (const activity of visuals) {
+      const illustrate = activity.diagram || subject === '수학' || subject === '과학';
+      panels.push(visualLessonOf(activity, illustrate));
     }
-    glossary.append(words);
-    const panels = visuals.length ? visuals.map(visualLessonOf) : [element('p', '이 단원의 그림 학습은 준비 중이에요.')];
-    lesson.replaceChildren(...panels, glossary);
+    lesson.replaceChildren(...panels);
   }
 
   function render(focusGroup) {

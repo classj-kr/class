@@ -39,8 +39,16 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 #unit-list { display: grid; gap: 6px; }
 #unit-list button { width: 100%; text-align: left; line-height: 1.35; overflow-wrap: anywhere; }
 #unit-list button[aria-current="true"] { border-color: var(--green); background: var(--wash); font-weight: 800; }
-.example { color: var(--muted); }
-mark { background: #f8e5ae; color: var(--ink); border-radius: 3px; padding: 0 .12em; }
+.unit-case { margin: 0 0 24px; }
+.unit-case h2 { font-size: clamp(1.15rem, 3vw, 1.55rem); }
+.case-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.case-controls button { text-align: left; }
+.case-reading { border: 1px solid #c4d8d1; border-radius: 12px; overflow: hidden; background: #f2f7f3; }
+.case-reading h3 { margin: 0; padding: 12px 16px 0; font-size: .95rem; color: var(--green); }
+.case-reading p { margin: 0; padding: 5px 16px 14px; line-height: 1.75; word-break: keep-all; overflow-wrap: break-word; }
+.case-reading h3:last-of-type { border-top: 1px solid #c4d8d1; }
+.case-reading :is(h3, p):nth-child(n + 3) { background: var(--paper); }
+.case-explanation strong { color: #16584b; text-decoration: underline #9dcac1 .14em; text-underline-offset: .2em; }
 .visual-lesson { margin: 0 0 22px; }
 .visual-lesson + .visual-lesson { border-top: 1px solid var(--line); padding-top: 20px; }
 .visual-lesson h2 { margin: 0 0 9px; font-size: clamp(1.12rem, 2.4vw, 1.48rem); letter-spacing: -.025em; }
@@ -48,6 +56,9 @@ mark { background: #f8e5ae; color: var(--ink); border-radius: 3px; padding: 0 .1
 .scene-controls button { padding: 7px 12px; min-height: 42px; font-weight: 700; }
 .scene { margin: 0; border: 1px solid var(--line); border-radius: 13px; overflow: hidden; background: #f2f7f4; }
 .scene-image svg { display: block; width: 100%; height: auto; font-family: inherit; }
+.terrain-illustration { position: relative; }
+.terrain-illustration img { display: block; width: 100%; height: auto; }
+.terrain-illustration svg { position: absolute; inset: 0; height: 100%; }
 .scene figcaption { padding: 10px 14px; background: var(--paper); border-top: 1px solid var(--line); line-height: 1.6; overflow-wrap: anywhere; }
 .scene figcaption strong { margin-right: .25em; }
 .word-build { margin-top: 10px; background: #f7f2e5; border: 1px solid #ded2b9; border-radius: 12px; padding: 12px; }
@@ -81,12 +92,6 @@ mark { background: #f8e5ae; color: var(--ink); border-radius: 3px; padding: 0 .1
 .scene-choices button:disabled { color: var(--ink); cursor: default; }
 .visual-feedback { margin: 8px 0 0; font-weight: 650; }
 .visual-feedback:empty { display: none; }
-.glossary { border-top: 1px solid var(--line); padding-top: 12px; }
-.glossary summary { cursor: pointer; font-weight: 750; }
-.word-list { display: grid; grid-template-columns: minmax(5em, auto) minmax(0, 1fr); gap: 7px 12px; margin-bottom: 0; }
-.word-list dt { font-weight: 750; }
-.word-list dd { margin: 0; line-height: 1.6; }
-.word-list p { margin: 0 0 4px; }
 @media (max-width: 670px) {
   .workspace { grid-template-columns: 1fr; gap: 10px; }
   .units { padding: 8px 12px; display: flex; align-items: center; gap: 10px; }
