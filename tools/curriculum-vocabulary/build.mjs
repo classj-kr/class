@@ -41,7 +41,7 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
     units: book.units.map(unit => ({
       id: unit.id,
       title: unit.title,
-      words: unit.words.map(({ w, hanja, mean, use, blanks }) => (hanja ? { w, hanja, mean, use, blanks } : { w, mean, use, blanks }))
+      words: unit.words.map(({ w, hanja, en, mean, explain, use, blanks }) => Object.fromEntries(Object.entries({ w, hanja, en, mean, explain, use, blanks }).filter(([, v]) => v)))
     }))
   };
 }
