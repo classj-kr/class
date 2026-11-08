@@ -87,6 +87,13 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
       title: unit.title,
       words: unit.words.map((word, index) => {
         const more = extra[`${code}/${unit.id}/${word.w}`] || {};
+        // 설명은 줄마다 이름표(한자 뜻·비교·생활 속 예·꼭 알기)로 시작하고, 셋 이하·이름표 뺀 글 130자 이하.
+        const explainRows = more.explain || word.explain || [];
+        const bodyLength = explainRows.reduce((sum, line) => sum + line.replace(/^[^:]+:\s*/, '').length, 0);
+        if (explainRows.length > 3) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명 줄이 셋보다 많음`);
+        if (bodyLength > 140) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명이 너무 김(${bodyLength}자)`);
+        for (const line of explainRows) if (!/^(한자 뜻|비교|생활 속 예|꼭 알기): /.test(line)) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명 이름표 없음 — ${line.slice(0, 30)}`);
+        if (explainRows.some(line => line.includes('헷갈'))) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명에 '헷갈' — 아이에게 헷갈린다고 말하지 않는다`);
         const row = { w: word.w, hanja: word.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, senses: senses[`${code}/${unit.id}/${word.w}`], rel: rels[`${code}/${unit.id}/${word.w}`], pic: picOf(code, unit.id, index) };
         return Object.fromEntries(Object.entries(row).filter(([, v]) => v).map(([k, v]) => [k, k === 'pic' || k === 'en' ? v : glue(v)]));
       })
