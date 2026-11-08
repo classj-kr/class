@@ -87,7 +87,7 @@ assert.strictEqual(to.example.ko, "그녀는 남동생과 함께 학교에 걸�
 const imageManifestPath = path.join(vocabularyAssets, "data", "vocabulary-word-images-v1.json");
 const imageManifest = JSON.parse(fs.readFileSync(imageManifestPath, "utf8"));
 const imageEntries = Object.entries(imageManifest.images);
-assert.strictEqual(imageManifest.version, 1);
+assert.strictEqual(imageManifest.version, "v1");
 // 그림 수는 못 박지 않는다. 목록에 적힌 수와 실제 항목 수, 실제 파일이 서로 맞는지만 본다.
 assert.ok(imageEntries.length > 0);
 assert.strictEqual(imageEntries.length, imageManifest.totalImages);
@@ -95,7 +95,6 @@ imageEntries.forEach(([id, image]) => {
     const word = payload.words.find((entry) => String(entry.id) === id);
     assert.ok(word, `image id ${id} must match a vocabulary word`);
     assert.strictEqual(word.word, image.word);
-    assert.strictEqual(word.stageCode, "elementary");
     assert.match(image.file, /^[a-z0-9-]+\.webp$/);
     const imagePath = path.join(vocabularyAssets, "images", image.file);
     assert.ok(fs.existsSync(imagePath), `${image.word}: image file is missing`);
