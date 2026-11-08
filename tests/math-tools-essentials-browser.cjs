@@ -154,6 +154,7 @@ test("rational number-line positions, repeated jumps, drag, undo and invalid inp
   await page.locator("#undo").click();
   await saved();
   assert.equal((await state("number-line")).a, 3);
+  await page.locator("#notice").waitFor({ state: "hidden" });
   await shot(page, "number-line");
 });
 test("linked clock hands, elapsed time, midnight and canceling playback", async () => {
@@ -387,6 +388,11 @@ test("balance and water transfers preserve quantities, including interrupted ani
   await page.locator('[data-weight="0"]').click();
   await saved();
   assert.equal((await state("measure-lab")).left[0], 3);
+  await page.waitForFunction(() => {
+    const beam = document.querySelector('#stage line[stroke-width="14"]');
+    const angle = Number(beam?.getAttribute("transform")?.match(/rotate\(([^ ]+)/)?.[1]);
+    return Math.abs(angle + 0.96) < 0.00001;
+  });
   await shot(page, "balance");
   await page.locator("#mode").selectOption("volume");
   await page.locator("#pour-right").click();
