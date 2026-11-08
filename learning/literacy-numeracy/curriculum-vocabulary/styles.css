@@ -136,8 +136,14 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 .meaning.own::before { background: var(--green); color: white; }
 .meaning .word-mean { margin: 0; font-size: 1.1rem; }
 .meaning .word-use { margin: 2px 0 0; }
-.meanings:has(.meaning + .meaning) .meaning.own .word-mean::after { content: '이 단원'; margin-left: 8px; padding: 1px 7px; border-radius: 6px; background: var(--wash); color: var(--green); font-size: .78rem; font-weight: 800; font-family: var(--gothic); vertical-align: 2px; }
+.meanings.has-others .meaning.own .word-mean::after { content: '이 단원'; margin-left: 8px; padding: 1px 7px; border-radius: 6px; background: var(--wash); color: var(--green); font-size: .78rem; font-weight: 800; font-family: var(--gothic); vertical-align: 2px; display: inline-block; white-space: nowrap; }
 .hanja-glyph.small { font-size: 1.15rem; }
+.meanings.others { counter-reset: sense 1; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.word-title .say { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 4px 12px 4px 14px; border: 1px solid #f0d2b8; border-radius: 20px; background: #fff7ef; color: #9b4607; cursor: pointer; }
+.word-title .say:hover { background: #ffeedd; }
+.word-title .say svg { width: 22px; height: 22px; flex: none; }
+.word-title .say.talking .wave { animation: say-wave .7s ease-in-out infinite alternate; }
+@keyframes say-wave { from { opacity: .25; } to { opacity: 1; } }
 
 .stage.figure { aspect-ratio: auto; background: #fbfcf8; }
 .stage.figure svg { display: block; width: 100%; height: auto; font-family: var(--gothic); }

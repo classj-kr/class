@@ -2,187 +2,187 @@
  "2-2": {
   "붕당": {
    "en": "political faction",
-   "beats": ["관리들이 두 무리로 갈라져 마주 섰다.", "같은 생각끼리 모여 서로 손가락질한다.", "생각이 같은 사람들의 무리가 붕당이다."],
+   "beats": ["관리들이 두 무리로 갈라져 마주 섰습니다.", "같은 생각끼리 모여 서로 손가락질합니다.", "생각이 같은 사람들의 무리가 붕당입니다."],
    "explain": [
-    "붕(朋)은 '벗', 당(黨)은 '무리'라는 뜻이다. 조선 선조 때 관리들이 동인과 서인으로 나뉜 뒤, 남인과 북인, 노론과 소론처럼 더 잘게 갈라졌다.",
-    "처음에는 서로의 잘못을 따지며 나랏일을 바로잡는 좋은 점도 있었다. 그러나 조선 후기로 갈수록 상대 무리를 몰아내려는 다툼이 심해져 정치가 어지러워졌다.",
-    "헷갈리는 말: 오늘날의 정당은 선거에서 국민의 표를 얻어 정치를 하려는 단체다. 붕당은 선거 없이 관리들끼리 생각에 따라 모인 무리라는 점이 다르다."
+    "붕(朋)은 '벗', 당(黨)은 '무리'라는 뜻입니다. 조선 선조 때 관리들이 동인과 서인으로 나뉜 뒤, 남인과 북인, 노론과 소론처럼 더 잘게 갈라졌습니다.",
+    "처음에는 서로의 잘못을 따지며 나랏일을 바로잡는 좋은 점도 있었습니다. 그러나 조선 후기로 갈수록 상대 무리를 몰아내려는 다툼이 심해져 정치가 어지러워졌습니다.",
+    "헷갈리는 말: 오늘날의 정당은 선거에서 국민의 표를 얻어 정치를 하려는 단체입니다. 붕당은 선거 없이 관리들끼리 생각에 따라 모인 무리라는 점이 다릅니다."
    ],
    "img": "Inside a Joseon palace hall, scholar-officials in official robes and black winged hats stand in two separate groups on the left and right, frowning and pointing at each other. Every member of the left group wears a blue sash and every member of the right group wears a green sash, so the two groups are easy to tell apart. A Joseon king in a red royal robe sits small on the throne at the back center, looking troubled.",
    "imgKo": "궁궐 안에서 관리들이 파란 띠 무리와 초록 띠 무리로 갈라져 서로 손가락질하고, 뒤쪽 왕좌의 왕이 난처한 얼굴로 앉아 있다."
   },
   "탕평책": {
-   "en": "Tangpyeong policy · 여러 붕당을 고루 뽑아 쓰기",
-   "beats": ["왕이 두 무리의 관리를 섞어 고루 앉혔다.", "머리 위 저울이 어느 쪽으로도 기울지 않았다.", "치우치지 않고 고루 뽑아 쓰는 것이 탕평책이다."],
+   "en": "Tangpyeong policy",
+   "beats": ["왕이 두 무리의 관리를 섞어 고루 앉혔습니다.", "머리 위 저울이 어느 쪽으로도 기울지 않았습니다.", "치우치지 않고 고루 뽑아 쓰는 것이 탕평책입니다."],
    "explain": [
-    "탕평(蕩平)은 '어느 쪽으로도 기울지 않고 고르다'는 뜻으로, 옛 책에서 왕의 바른 정치를 말할 때 쓰던 말이다. 붕당 다툼이 심해지자 영조가 처음 펴고 정조가 이어받았다.",
-    "영조는 성균관 앞에 탕평비를 세워 관리가 될 유생들이 이 뜻을 새기게 하였다. 정조는 규장각을 두고 붕당과 관계없이 능력 있는 학자를 뽑아 썼다.",
-    "생활 속 예: 청포묵에 고기, 미나리, 김 등을 고루 섞은 음식 탕평채는 탕평책을 의논하던 자리에 올랐던 음식이라는 이야기가 전해진다."
+    "탕평(蕩平)은 '어느 쪽으로도 기울지 않고 고르다'는 뜻으로, 옛 책에서 왕의 바른 정치를 말할 때 쓰던 말입니다. 붕당 다툼이 심해지자 영조가 처음 펴고 정조가 이어받았습니다.",
+    "영조는 성균관 앞에 탕평비를 세워 관리가 될 유생들이 이 뜻을 새기게 하였습니다. 정조는 규장각을 두고 붕당과 관계없이 능력 있는 학자를 뽑아 썼습니다.",
+    "생활 속 예: 청포묵에 고기, 미나리, 김 등을 고루 섞은 음식 탕평채는 탕평책을 의논하던 자리에 올랐던 음식이라는 이야기가 전해집니다."
    ],
    "img": "A Joseon king in a red royal robe sits at the center of a palace hall, opening both hands toward the officials in front of him. The officials, some wearing blue sashes and some wearing green sashes, are seated alternately in one mixed row, calmly nodding to each other. Above the king floats a large golden balance scale with both pans perfectly level.",
    "imgKo": "왕 앞에 파란 띠 관리와 초록 띠 관리가 번갈아 한 줄로 앉아 있고, 왕의 머리 위에 양쪽 접시 높이가 똑같은 금빛 저울이 떠 있다."
   },
   "실학": {
    "en": "Silhak · practical learning",
-   "beats": ["학자가 공책을 들고 마을로 나왔다.", "농부와 돌을 들어 올리는 기계를 살펴본다.", "백성의 살림에 쓸모 있는 학문이 실학이다."],
+   "beats": ["학자가 공책을 들고 마을로 나왔습니다.", "농부와 돌을 들어 올리는 기계를 살펴봅니다.", "백성의 살림에 쓸모 있는 학문이 실학입니다."],
    "explain": [
-    "실(實)은 '실제, 열매'라는 뜻이다. 조선 후기 학자들 가운데 글 속 이치만 따지기보다 백성이 잘살 방법을 실제로 찾자는 사람들이 나왔고, 이들의 학문을 실학이라고 한다.",
-    "유형원과 이익은 농민이 땅을 고루 갖는 방법을 연구했고, 박지원과 박제가는 수레와 배를 쓰고 장사를 키우자고 하였다. 정약용은 거중기를 만들어 수원 화성을 쌓는 일손을 덜어 주었다.",
-    "헷갈리는 말: 성리학은 사람이 지켜야 할 도리와 세상의 이치를 깊이 따지는 학문으로, 조선을 세운 바탕이 되었다. 실학은 그 위에서 백성의 생활 문제를 풀려고 한 학문이다."
+    "실(實)은 '실제, 열매'라는 뜻입니다. 조선 후기 학자들 가운데 글 속 이치만 따지기보다 백성이 잘살 방법을 실제로 찾자는 사람들이 나왔고, 이들의 학문을 실학이라고 합니다.",
+    "유형원과 이익은 농민이 땅을 고루 갖는 방법을 연구했고, 박지원과 박제가는 수레와 배를 쓰고 장사를 키우자고 하였습니다. 정약용은 거중기를 만들어 수원 화성을 쌓는 일손을 덜어 주었습니다.",
+    "헷갈리는 말: 성리학은 사람이 지켜야 할 도리와 세상의 이치를 깊이 따지는 학문으로, 조선을 세운 바탕이 되었습니다. 실학은 그 위에서 백성의 생활 문제를 풀려고 한 학문입니다."
    ],
    "img": "A Joseon scholar in a white robe and black gat stands at the edge of a village holding an open notebook and a brush, watching carefully. On the left, farmers work in a rice field; on the right, workers use a tall wooden pulley crane to lift a heavy stone block for a fortress wall. Small dotted arrows run from both scenes to his notebook.",
    "imgKo": "갓 쓴 학자가 공책을 들고, 왼쪽 논의 농부들과 오른쪽 나무 도르래 기계로 성벽 돌을 들어 올리는 일꾼들을 살펴본다."
   },
   "모내기법": {
    "en": "rice transplanting",
-   "beats": ["작은 모판에서 볍씨가 모로 자랐다.", "자란 모를 물 댄 논에 줄 맞춰 옮겨 심는다.", "모를 길러 논에 옮겨 심는 것이 모내기법이다."],
+   "beats": ["작은 모판에서 볍씨가 모로 자랐습니다.", "자란 모를 물 댄 논에 줄 맞춰 옮겨 심습니다.", "모를 길러 논에 옮겨 심는 것이 모내기법입니다."],
    "explain": [
-    "모는 볍씨에서 싹이 터 자란 어린 벼다. 모를 옮겨 심는 일을 '모를 낸다'고 해서 모내기라고 부른다.",
-    "모내기법을 쓰면 잡초를 뽑는 일손이 줄고, 벼를 거둔 논에 보리를 심어 한 해에 두 번 농사짓기도 쉬웠다. 물을 댈 저수지가 늘어난 조선 후기에 전국으로 퍼져 쌀 수확량이 늘었다.",
-    "헷갈리는 말: 볍씨를 논에 바로 뿌리는 방법은 직파법이라고 한다. 지금도 5~6월 무렵 시골 논에서 모내기하는 모습을 볼 수 있다."
+    "모는 볍씨에서 싹이 터 자란 어린 벼입니다. 모를 옮겨 심는 일을 '모를 낸다'고 해서 모내기라고 부릅니다.",
+    "모내기법을 쓰면 잡초를 뽑는 일손이 줄고, 벼를 거둔 논에 보리를 심어 한 해에 두 번 농사짓기도 쉬웠습니다. 물을 댈 저수지가 늘어난 조선 후기에 전국으로 퍼져 쌀 수확량이 늘었습니다.",
+    "헷갈리는 말: 볍씨를 논에 바로 뿌리는 방법은 직파법이라고 합니다. 지금도 5~6월 무렵 시골 논에서 모내기하는 모습을 볼 수 있습니다."
    ],
    "img": "On the left, a small seedbed is packed with thick bright-green rice seedlings, and a Joseon farmer in white clothes and a straw hat lifts a bundle of seedlings from it. A big curved arrow leads to the right, where farmers in a flooded rice paddy bend over and plant the seedlings in neat straight rows. The clear water reflects the sky.",
    "imgKo": "왼쪽 작은 모판에서 농부가 모를 한 줌 뽑고, 화살표를 따라 오른쪽 물 댄 논에서 사람들이 모를 줄 맞춰 심는다."
   },
   "서민 문화": {
    "en": "culture of common people",
-   "beats": ["장터 마당에 보통 사람들이 모여들었다.", "탈춤을 보고, 책 읽어 주는 소리를 들으며 웃는다.", "보통 백성이 즐기던 예술과 놀이가 서민 문화이다."],
+   "beats": ["장터 마당에 보통 사람들이 모여들었습니다.", "탈춤을 보고, 책 읽어 주는 소리를 들으며 웃습니다.", "보통 백성이 즐기던 예술과 놀이가 서민 문화입니다."],
    "explain": [
-    "서(庶)는 '여러, 보통', 민(民)은 '백성'이라는 뜻이다. 서민은 양반이 아닌 보통 백성을 말한다.",
-    "판소리와 탈놀이, 한글 소설, 풍속화와 민화가 대표적이다. 『홍길동전』이나 『춘향전』 같은 한글 소설은 이야기꾼이 장터에서 소리 내어 읽어 주기도 하였다.",
-    "서민 문화에는 양반의 잘못을 꼬집고 백성의 바람을 담은 내용이 많았다. 그래서 웃음 속에 그 시대 사람들의 생각이 잘 드러난다."
+    "서(庶)는 '여러, 보통', 민(民)은 '백성'이라는 뜻입니다. 서민은 양반이 아닌 보통 백성을 말합니다.",
+    "판소리와 탈놀이, 한글 소설, 풍속화와 민화가 대표적입니다. 『홍길동전』이나 『춘향전』 같은 한글 소설은 이야기꾼이 장터에서 소리 내어 읽어 주기도 하였습니다.",
+    "서민 문화에는 양반의 잘못을 꼬집고 백성의 바람을 담은 내용이 많았습니다. 그래서 웃음 속에 그 시대 사람들의 생각이 잘 드러납니다."
    ],
    "img": "A lively late-Joseon market square full of ordinary people in plain white hanbok and straw hats. In the center, masked dancers perform; on one side, a storyteller reads aloud from a book to a laughing crowd; on the other side, a vendor hangs colorful folk paintings of tigers and magpies. Everyone looks cheerful and relaxed.",
    "imgKo": "장터 한가운데서 탈춤이 벌어지고, 한쪽에서는 이야기꾼이 책을 읽어 주며, 다른 쪽에서는 호랑이·까치 그림을 걸어 놓고 판다."
   },
   "판소리": {
    "en": "pansori · Korean story-singing",
-   "beats": ["소리꾼이 부채를 들고 노래하듯 이야기한다.", "곁에 앉은 고수가 북으로 장단을 맞춘다.", "북장단에 맞춰 긴 이야기를 노래하는 것이 판소리이다."],
+   "beats": ["소리꾼이 부채를 들고 노래하듯 이야기합니다.", "곁에 앉은 고수가 북으로 장단을 맞춥니다.", "북장단에 맞춰 긴 이야기를 노래하는 것이 판소리입니다."],
    "explain": [
-    "판은 여러 사람이 모인 자리, 소리는 노래를 말한다. 소리꾼 한 사람이 고수의 북장단에 맞춰 노래(창)와 말(아니리), 몸짓(발림)으로 긴 이야기를 혼자 들려준다.",
-    "구경꾼은 '얼쑤', '좋다' 같은 추임새를 넣으며 함께 흥을 돋운다. 지금은 「춘향가」, 「심청가」, 「흥보가」, 「수궁가」, 「적벽가」 다섯 마당이 전해진다.",
-    "판소리는 2003년 유네스코 인류 무형 문화유산에 올랐다. 헷갈리는 말: 민요는 여러 사람이 일하거나 놀며 함께 부르는 짧은 노래로, 긴 이야기를 들려주는 판소리와 다르다."
+    "판은 여러 사람이 모인 자리, 소리는 노래를 말합니다. 소리꾼 한 사람이 고수의 북장단에 맞춰 노래(창)와 말(아니리), 몸짓(발림)으로 긴 이야기를 혼자 들려줍니다.",
+    "구경꾼은 '얼쑤', '좋다' 같은 추임새를 넣으며 함께 흥을 돋웁니다. 지금은 「춘향가」, 「심청가」, 「흥보가」, 「수궁가」, 「적벽가」 다섯 마당이 전해집니다.",
+    "판소리는 2003년 유네스코 인류 무형 문화유산에 올랐습니다. 헷갈리는 말: 민요는 여러 사람이 일하거나 놀며 함께 부르는 짧은 노래로, 긴 이야기를 들려주는 판소리와 다릅니다."
    ],
    "img": "On a straw mat in an outdoor yard, a Korean singer in a white hanbok and black gat stands holding an open folding fan, mouth open mid-song with an expressive face. Seated beside him, a drummer beats a round barrel drum with one palm and a stick. A circle of villagers watches, some clapping.",
    "imgKo": "마당 돗자리 위에서 갓 쓴 소리꾼이 부채를 펴 들고 노래하고, 곁에 앉은 고수가 북을 치며, 둘레에서 사람들이 손뼉을 친다."
   },
   "탈놀이": {
    "en": "mask dance",
-   "beats": ["탈을 쓴 사람들이 마당에서 춤을 춘다.", "하인 탈이 양반 탈을 놀리자 구경꾼이 웃는다.", "탈을 쓰고 춤추며 이야기를 펼치는 놀이가 탈놀이이다."],
+   "beats": ["탈을 쓴 사람들이 마당에서 춤을 춥니다.", "하인 탈이 양반 탈을 놀리자 구경꾼이 웃습니다.", "탈을 쓰고 춤추며 이야기를 펼치는 놀이가 탈놀이입니다."],
    "explain": [
-    "탈은 얼굴을 가리는 가면이다. 지역에 따라 탈춤, 산대놀이, 오광대라고도 부른다.",
-    "탈을 쓰면 누구인지 알 수 없어서, 평소 양반 앞에서 하지 못하던 말을 마음껏 할 수 있었다. 양반집 하인 말뚝이가 양반을 놀리는 장면에서 구경꾼들은 크게 웃었다.",
-    "안동 하회 별신굿 탈놀이, 황해도 봉산 탈춤 등이 이어져 내려오며, 2022년 '한국의 탈춤'이 유네스코 인류 무형 문화유산에 올랐다."
+    "탈은 얼굴을 가리는 가면입니다. 지역에 따라 탈춤, 산대놀이, 오광대라고도 부릅니다.",
+    "탈을 쓰면 누구인지 알 수 없어서, 평소 양반 앞에서 하지 못하던 말을 마음껏 할 수 있었습니다. 양반집 하인 말뚝이가 양반을 놀리는 장면에서 구경꾼들은 크게 웃었습니다.",
+    "안동 하회 별신굿 탈놀이, 황해도 봉산 탈춤 등이 이어져 내려오며, 2022년 '한국의 탈춤'이 유네스코 인류 무형 문화유산에 올랐습니다."
    ],
    "img": "In a dirt yard surrounded by laughing villagers, two masked performers dance. One wears a pale yangban mask with a crooked smile and holds a fan, looking flustered; the other wears a dark red servant mask with wide eyes and points at him playfully. Their long white sleeves flutter in the air as they move.",
    "imgKo": "구경꾼이 둘러선 마당에서 양반 탈을 쓴 사람은 부채를 들고 쩔쩔매고, 붉은 하인 탈을 쓴 사람이 그를 가리키며 놀린다."
   },
   "풍속화": {
-   "en": "genre painting · 생활 모습을 그린 그림",
-   "beats": ["화가가 언덕에 앉아 씨름 구경을 그린다.", "종이 위에도 같은 씨름 장면이 담겼다.", "사람들이 살아가는 모습을 그린 그림이 풍속화이다."],
+   "en": "genre painting",
+   "beats": ["화가가 언덕에 앉아 씨름 구경을 그립니다.", "종이 위에도 같은 씨름 장면이 담겼습니다.", "사람들이 살아가는 모습을 그린 그림이 풍속화입니다."],
    "explain": [
-    "풍속(風俗)은 그 시대 사람들이 살아가는 모습과 버릇을 말한다.",
-    "조선 후기 김홍도는 「씨름」, 「서당」처럼 서민의 생활을 재미있게 그렸고, 신윤복은 「단오풍정」처럼 도시 사람들의 모습을 고운 색으로 그렸다. 그림만 보아도 그때 사람들의 옷과 놀이를 알 수 있다.",
-    "헷갈리는 말: 민화는 이름 없는 화가들이 집을 꾸미려고 그린 호랑이, 까치, 꽃 그림이다. 풍속화는 사람들의 생활 장면을 그린다는 점이 다르다."
+    "풍속(風俗)은 그 시대 사람들이 살아가는 모습과 버릇을 말합니다.",
+    "조선 후기 김홍도는 「씨름」, 「서당」처럼 서민의 생활을 재미있게 그렸고, 신윤복은 「단오풍정」처럼 도시 사람들의 모습을 고운 색으로 그렸습니다. 그림만 보아도 그때 사람들의 옷과 놀이를 알 수 있습니다.",
+    "헷갈리는 말: 민화는 이름 없는 화가들이 집을 꾸미려고 그린 호랑이, 까치, 꽃 그림입니다. 풍속화는 사람들의 생활 장면을 그린다는 점이 다릅니다."
    ],
    "img": "A Joseon painter in a white robe and gat sits on a small hill with paper and an ink brush, sketching. Below him, villagers sit in a circle watching two men wrestle in Korean ssireum style. The paper in front of the painter already shows the same wrestling scene in simple ink lines with light color.",
    "imgKo": "언덕에 앉은 화가가 아래에서 벌어지는 씨름판을 그리고, 화가 앞 종이에도 같은 씨름 장면이 먹선으로 그려져 있다."
   },
   "세도 정치": {
    "en": "Sedo politics · rule by a few in-law families",
-   "beats": ["어린 왕이 큰 왕좌에 작게 앉아 있다.", "한 집안 사람들이 돈 주머니를 받고 벼슬을 준다.", "몇몇 집안이 나랏일을 주무른 것이 세도 정치이다."],
+   "beats": ["어린 왕이 큰 왕좌에 작게 앉아 있습니다.", "한 집안 사람들이 돈 주머니를 받고 벼슬을 줍니다.", "몇몇 집안이 나랏일을 주무른 것이 세도 정치입니다."],
    "explain": [
-    "세도(世道)는 원래 '세상을 바르게 이끄는 도리'라는 좋은 뜻이었다. 그런데 몇몇 가문이 힘을 휘두르면서 '힘 세(勢)'를 쓴 세도(勢道)로 바뀌어 불렸다. 순조, 헌종, 철종 세 임금 때 60여 년 동안 이어졌다.",
-    "어린 나이에 왕이 된 임금 대신 안동 김씨, 풍양 조씨 같은 가문이 중요한 벼슬을 차지하였다. 벼슬을 돈을 받고 파는 일이 많아지자, 돈을 내고 관리가 된 사람들은 백성에게 세금을 더 걷어 그 돈을 채웠다.",
-    "백성의 살림이 어려워지면서 홍경래의 난(1811), 임술 농민 봉기(1862) 같은 저항이 일어났다. 헷갈리는 말: 붕당은 생각이 같은 관리들의 무리이고, 세도 정치는 몇몇 집안이 힘을 독차지한 것이다."
+    "세도(世道)는 원래 '세상을 바르게 이끄는 도리'라는 좋은 뜻이었습니다. 그런데 몇몇 가문이 힘을 휘두르면서 '힘 세(勢)'를 쓴 세도(勢道)로 바뀌어 불렸습니다. 순조, 헌종, 철종 세 임금 때 60여 년 동안 이어졌습니다.",
+    "어린 나이에 왕이 된 임금 대신 안동 김씨, 풍양 조씨 같은 가문이 중요한 벼슬을 차지하였습니다. 벼슬을 돈을 받고 파는 일이 많아지자, 돈을 내고 관리가 된 사람들은 백성에게 세금을 더 걷어 그 돈을 채웠습니다.",
+    "백성의 살림이 어려워지면서 홍경래의 난(1811), 임술 농민 봉기(1862) 같은 저항이 일어났습니다. 헷갈리는 말: 붕당은 생각이 같은 관리들의 무리이고, 세도 정치는 몇몇 집안이 힘을 독차지한 것입니다."
    ],
    "img": "A young boy king in a red royal robe sits small and lonely on a large throne at the back of a palace hall. In the foreground, a few noblemen from the same family, all in matching purple robes, sit around a low table handing out black official hats in exchange for heavy coin pouches. A line of men holding money pouches waits their turn.",
    "imgKo": "큰 왕좌에 어린 왕이 쓸쓸히 앉아 있고, 앞쪽에서 같은 보라색 옷을 입은 한 집안 사람들이 돈 주머니를 받고 관리 모자를 나누어 준다."
   },
   "척화비": {
    "en": "Cheokhwabi · stone against ties with the West",
-   "beats": ["마을 네거리에 키 큰 돌비석이 서 있다.", "멀리 바다에서는 서양 배가 뱃머리를 돌린다.", "서양과 가까이 지내지 말자고 세운 비석이 척화비이다."],
+   "beats": ["마을 네거리에 키 큰 돌비석이 서 있습니다.", "멀리 바다에서는 서양 배가 뱃머리를 돌립니다.", "서양과 가까이 지내지 말자고 세운 비석이 척화비입니다."],
    "explain": [
-    "척(斥)은 '물리치다', 화(和)는 '사이좋게 지내다'라는 뜻이다. 척화는 서양과 사이좋게 지내자는 생각을 물리친다는 말이다.",
-    "흥선 대원군은 프랑스(병인양요, 1866)와 미국(신미양요, 1871)의 군함을 물리친 뒤, 서울 종로와 전국 곳곳에 척화비를 세웠다. 비석에는 '서양 오랑캐가 쳐들어오는데 싸우지 않고 화친하자는 것은 나라를 파는 일'이라는 뜻의 글이 새겨져 있다.",
-    "척화비는 다른 나라와 교류하지 않고 나라 문을 굳게 닫은 통상 수교 거부 정책을 보여 준다. 지금도 박물관과 몇몇 지역에 남아 있어 직접 볼 수 있다."
+    "척(斥)은 '물리치다', 화(和)는 '사이좋게 지내다'라는 뜻입니다. 척화는 서양과 사이좋게 지내자는 생각을 물리친다는 말입니다.",
+    "흥선 대원군은 프랑스(병인양요, 1866)와 미국(신미양요, 1871)의 군함을 물리친 뒤, 서울 종로와 전국 곳곳에 척화비를 세웠습니다. 비석에는 '서양 오랑캐가 쳐들어오는데 싸우지 않고 화친하자는 것은 나라를 파는 일'이라는 뜻의 글이 새겨져 있습니다.",
+    "척화비는 다른 나라와 교류하지 않고 나라 문을 굳게 닫은 통상 수교 거부 정책을 보여 줍니다. 지금도 박물관과 몇몇 지역에 남아 있어 직접 볼 수 있습니다."
    ],
    "img": "A tall grey stone stele with a rounded top stands at a busy crossroads in a Joseon town; its face shows only faint carved vertical grooves, with no readable characters. Travelers in hanbok stop and look up at it. Far in the background on the sea, a black-hulled Western sailing warship is turning around and sailing away.",
    "imgKo": "마을 네거리에 키 큰 돌비석이 서 있고 사람들이 올려다본다. 멀리 바다에서 검은 서양 군함이 뱃머리를 돌려 떠난다."
   },
   "강화도 조약": {
    "en": "Treaty of Ganghwa",
-   "beats": ["조선 관리와 일본 관리가 문서를 두고 마주 앉았다.", "창밖엔 군함, 저울은 일본 쪽으로 기울었다.", "일본에만 유리하게 맺은 약속이 강화도 조약이다."],
+   "beats": ["조선 관리와 일본 관리가 문서를 두고 마주 앉았습니다.", "창밖엔 군함, 저울은 일본 쪽으로 기울었습니다.", "일본에만 유리하게 맺은 약속이 강화도 조약입니다."],
    "explain": [
-    "1876년 일본은 군함을 앞세워 조선을 압박하고 강화도에서 조약을 맺게 하였다. 조선이 다른 나라와 맺은 첫 근대적 조약이다.",
-    "이 조약으로 부산, 원산, 인천 세 항구가 차례로 열렸다. 일본은 조선 바닷가를 마음대로 잴 수 있게 되었고, 일본 사람이 조선에서 죄를 지어도 조선 법이 아니라 일본 관리에게 재판을 받게 하였다.",
-    "이처럼 한쪽에만 유리하고 다른 쪽은 손해를 보는 조약을 불평등 조약이라고 한다. 조선은 원하지 않는 방식으로 나라의 문을 열게 되었다."
+    "1876년 일본은 군함을 앞세워 조선을 압박하고 강화도에서 조약을 맺게 하였습니다. 조선이 다른 나라와 맺은 첫 근대적 조약입니다.",
+    "이 조약으로 부산, 원산, 인천 세 항구가 차례로 열렸습니다. 일본은 조선 바닷가를 마음대로 잴 수 있게 되었고, 일본 사람이 조선에서 죄를 지어도 조선 법이 아니라 일본 관리에게 재판을 받게 하였습니다.",
+    "이처럼 한쪽에만 유리하고 다른 쪽은 손해를 보는 조약을 불평등 조약이라고 합니다. 조선은 원하지 않는 방식으로 나라의 문을 열게 되었습니다."
    ],
    "img": "In a room on Ganghwa Island, a Joseon official in a red robe and gat sits uneasily across a table from a Japanese official in a dark Western-style uniform, with a document between them. Through the window behind, a Japanese steam warship floats on the sea. Above the table hangs a balance scale tipped heavily toward the Japanese official's side.",
    "imgKo": "강화도의 방에서 조선 관리와 서양식 제복의 일본 관리가 문서를 두고 마주 앉아 있고, 창밖에 일본 군함이, 탁자 위에는 일본 쪽으로 기운 저울이 있다."
   },
   "개항": {
    "en": "opening of ports",
-   "beats": ["바다 위 항구의 큰 문이 활짝 열렸다.", "외국 배가 들어와 부두에 짐을 내린다.", "항구를 열어 외국 배가 드나들게 하는 것이 개항이다."],
+   "beats": ["바다 위 항구의 큰 문이 활짝 열렸습니다.", "외국 배가 들어와 부두에 짐을 내립니다.", "항구를 열어 외국 배가 드나들게 하는 것이 개항입니다."],
    "explain": [
-    "개(開)는 '열다', 항(港)은 '항구'라는 뜻이다.",
-    "조선은 1876년 강화도 조약으로 부산을 처음 열었고, 뒤이어 원산과 인천도 열었다. 열린 항구로 옷감, 석유, 성냥 같은 외국 물건이 들어오고, 조선의 쌀과 콩이 많이 빠져나갔다.",
-    "헷갈리는 말: 개화는 새로운 문물과 제도를 받아들여 사회를 바꾸는 일이고, 개항은 항구를 여는 일 자체를 말한다. 인천의 차이나타운처럼 개항 때 외국 사람이 모여 살던 동네가 지금도 남아 있다."
+    "개(開)는 '열다', 항(港)은 '항구'라는 뜻입니다.",
+    "조선은 1876년 강화도 조약으로 부산을 처음 열었고, 뒤이어 원산과 인천도 열었습니다. 열린 항구로 옷감, 석유, 성냥 같은 외국 물건이 들어오고, 조선의 쌀과 콩이 많이 빠져나갔습니다.",
+    "헷갈리는 말: 개화는 새로운 문물과 제도를 받아들여 사회를 바꾸는 일이고, 개항은 항구를 여는 일 자체를 말합니다. 인천의 차이나타운처럼 개항 때 외국 사람이 모여 살던 동네가 지금도 남아 있습니다."
    ],
    "img": "A wide view of a Korean harbor town in the late 1800s. Huge wooden harbor gates standing in the water have swung wide open, and foreign steamships with smoking chimneys sail in. On the dock, workers unload wooden crates, bolts of cloth, and kerosene lamps while townspeople in hanbok watch with curiosity.",
    "imgKo": "바다 위 큰 나무 문이 활짝 열리고 연기 뿜는 외국 배들이 들어오며, 부두에서는 상자와 옷감, 석유 등잔을 내리는 모습을 사람들이 구경한다."
   },
   "갑신정변": {
    "en": "Gapsin Coup",
-   "beats": ["젊은 관리들이 밤에 모여 새 제도 그림을 펼쳤다.", "그러나 창밖에서 청나라 군대가 다가온다.", "새 제도를 세우려다 3일 만에 실패한 일이 갑신정변이다."],
+   "beats": ["젊은 관리들이 밤에 모여 새 제도 그림을 펼쳤습니다.", "그러나 창밖에서 청나라 군대가 다가옵니다.", "새 제도를 세우려다 3일 만에 실패한 일이 갑신정변입니다."],
    "explain": [
-    "갑신은 1884년을 부르던 옛 해 이름이고, 정변(政變)은 힘으로 정치를 갑자기 바꾸려는 일을 말한다. 김옥균 등 젊은 개화파는 우정총국을 처음 여는 잔치 날을 틈타 새 정부를 세웠다.",
-    "이들은 신분에 따라 사람을 차별하지 말고 나라 살림을 바로잡자는 개혁안을 내놓았다. 그러나 청나라 군대가 끼어들고 도와주기로 했던 일본군이 물러나면서 3일 만에 실패하였다.",
-    "백성의 지지를 얻지 못하고 외국의 힘에 기대려 한 것이 실패의 까닭으로 꼽힌다. 그래도 신분 차별을 없애자는 생각은 뒤의 개혁으로 이어졌다."
+    "갑신은 1884년을 부르던 옛 해 이름이고, 정변(政變)은 힘으로 정치를 갑자기 바꾸려는 일을 말합니다. 김옥균 등 젊은 개화파는 우정총국을 처음 여는 잔치 날을 틈타 새 정부를 세웠습니다.",
+    "이들은 신분에 따라 사람을 차별하지 말고 나라 살림을 바로잡자는 개혁안을 내놓았습니다. 그러나 청나라 군대가 끼어들고 도와주기로 했던 일본군이 물러나면서 3일 만에 실패하였습니다.",
+    "백성의 지지를 얻지 못하고 외국의 힘에 기대려 한 것이 실패의 까닭으로 꼽힙니다. 그래도 신분 차별을 없애자는 생각은 뒤의 개혁으로 이어졌습니다."
    ],
    "img": "At night inside a lantern-lit Joseon-era post office building, a group of young officials in hanbok and gat lean eagerly over a large scroll showing drawings of a steam train, a telegraph pole, and a Western-style school. Through the open window, a long column of soldiers in Qing dynasty uniforms marches toward the building in the distance, carrying plain flags. No fighting is shown.",
    "imgKo": "등불 켠 밤의 우정총국 안에서 젊은 관리들이 기차·전신주·학교가 그려진 두루마리를 들여다보고, 창밖 멀리 청나라 군대가 줄지어 다가온다."
   },
   "동학 농민 운동": {
    "en": "Donghak Peasant Revolution",
-   "beats": ["흰옷 입은 농민들이 깃발을 들고 나아간다.", "주먹을 치켜들고 관청 문을 향해 걷는다.", "농민들이 횡포와 외세에 맞선 일이 동학 농민 운동이다."],
+   "beats": ["흰옷 입은 농민들이 깃발을 들고 나아갑니다.", "주먹을 치켜들고 관청 문을 향해 걷습니다.", "농민들이 횡포와 외세에 맞선 일이 동학 농민 운동입니다."],
    "explain": [
-    "동학은 1860년 최제우가 만든 종교로, 신분과 관계없이 모든 사람이 귀하다고 가르쳐 농민들 사이에 널리 퍼졌다. 1894년 고부 군수가 세금을 지나치게 걷자, 화가 난 농민들이 전봉준을 앞세워 일어났다.",
-    "농민군은 전주성까지 차지한 뒤 정부와 약속을 맺고, 마을마다 집강소를 두어 잘못된 일을 스스로 고쳐 나갔다. 그러나 청과 일본 군대가 들어오자 일본을 몰아내려고 다시 일어났다가 공주 우금치에서 크게 졌다.",
-    "농민들이 내세운 신분 차별 없애기 같은 요구는 갑오개혁에 일부 담겼다. 전봉준은 몸집이 작아 '녹두 장군'이라고 불렸다."
+    "동학은 1860년 최제우가 만든 종교로, 신분과 관계없이 모든 사람이 귀하다고 가르쳐 농민들 사이에 널리 퍼졌습니다. 1894년 고부 군수가 세금을 지나치게 걷자, 화가 난 농민들이 전봉준을 앞세워 일어났습니다.",
+    "농민군은 전주성까지 차지한 뒤 정부와 약속을 맺고, 마을마다 집강소를 두어 잘못된 일을 스스로 고쳐 나갔습니다. 그러나 청과 일본 군대가 들어오자 일본을 몰아내려고 다시 일어났다가 공주 우금치에서 크게 졌습니다.",
+    "농민들이 내세운 신분 차별 없애기 같은 요구는 갑오개혁에 일부 담겼습니다. 전봉준은 몸집이 작아 '녹두 장군'이라고 불렸습니다."
    ],
    "img": "A large crowd of Korean farmers in white cotton clothes, headbands, and straw hats marches forward along a road between rice fields, holding up plain white and yellow flags on bamboo poles and raising their fists. In the distance stands the tiled gate of a government office. Seen mostly from the side and back, the farmers look determined; no weapons are shown.",
    "imgKo": "흰옷과 머리띠 차림의 농민들이 대나무 깃대에 단 흰·노란 깃발을 들고 주먹을 치켜든 채 멀리 관청 문을 향해 걸어간다."
   },
   "갑오개혁": {
    "en": "Gabo Reform",
-   "beats": ["왼쪽에는 양반 앞에 엎드린 하인이 있다.", "오른쪽에서는 두 사람이 나란히 서 있다.", "신분제와 과거제 같은 낡은 제도를 고친 일이 갑오개혁이다."],
+   "beats": ["왼쪽에는 양반 앞에 엎드린 하인이 있습니다.", "오른쪽에서는 두 사람이 나란히 서 있습니다.", "신분제와 과거제 같은 낡은 제도를 고친 일이 갑오개혁입니다."],
    "explain": [
-    "갑오는 1894년을 부르던 옛 해 이름이다. 그해 조선 정부는 군국기무처라는 기구를 두고 오래된 제도를 한꺼번에 고쳤다.",
-    "양반과 노비를 나누던 신분제를 없애고, 시험으로 관리를 뽑던 과거제도 없앴다. 어린 나이에 혼인하는 것을 막고, 남편을 잃은 여성이 다시 혼인할 수 있게 하였다.",
-    "동학 농민군의 요구가 일부 담긴 개혁이었지만, 일본의 간섭 속에서 이루어졌다는 한계도 있다. 헷갈리는 말: 갑신정변은 1884년 개화파가 일으킨 정변이고, 갑오개혁은 1894년 정부가 펼친 개혁이다."
+    "갑오는 1894년을 부르던 옛 해 이름입니다. 그해 조선 정부는 군국기무처라는 기구를 두고 오래된 제도를 한꺼번에 고쳤습니다.",
+    "양반과 노비를 나누던 신분제를 없애고, 시험으로 관리를 뽑던 과거제도 없앴습니다. 어린 나이에 혼인하는 것을 막고, 남편을 잃은 여성이 다시 혼인할 수 있게 하였습니다.",
+    "동학 농민군의 요구가 일부 담긴 개혁이었지만, 일본의 간섭 속에서 이루어졌다는 한계도 있습니다. 헷갈리는 말: 갑신정변은 1884년 개화파가 일으킨 정변이고, 갑오개혁은 1894년 정부가 펼친 개혁입니다."
    ],
    "img": "A split scene with a bold arrow pointing from left to right. On the left, a servant in rough brown clothes bows low to the ground before a yangban nobleman in a white robe and gat. On the right, the same two men stand side by side at the same height, both looking forward calmly, while above them a royal official unrolls a large decree scroll with no readable writing.",
    "imgKo": "왼쪽에서는 하인이 양반 앞에 엎드려 있고, 화살표 오른쪽에서는 두 사람이 나란히 서 있으며 그 위로 관리가 나라의 명령서를 펼친다."
   },
   "독립 협회": {
    "en": "Independence Club",
-   "beats": ["돌로 만든 큰 문 앞에 사람들이 모였다.", "양반도 상인도 학생도 한 사람의 말을 듣는다.", "나라의 자주를 외치며 모인 단체가 독립 협회이다."],
+   "beats": ["돌로 만든 큰 문 앞에 사람들이 모였습니다.", "양반도 상인도 학생도 한 사람의 말을 듣습니다.", "나라의 자주를 외치며 모인 단체가 독립 협회입니다."],
    "explain": [
-    "독립 협회는 1896년 서재필 등이 만든 단체다. 서재필은 순 한글 신문인 『독립신문』도 펴내 백성에게 나라 안팎의 소식을 알렸다.",
-    "독립 협회는 중국 사신을 맞던 영은문을 헐고 그 자리에 독립문을 세워, 어느 나라에도 기대지 않는 자주 독립의 뜻을 보여 주었다. 독립문을 세우는 돈은 관리와 백성이 함께 모았다.",
-    "종로에서 연 만민 공동회에는 신분에 관계없이 누구나 나와 나랏일에 대한 생각을 말할 수 있었다. 서울 서대문 독립 공원에 가면 지금도 독립문을 볼 수 있다."
+    "독립 협회는 1896년 서재필 등이 만든 단체입니다. 서재필은 순 한글 신문인 『독립신문』도 펴내 백성에게 나라 안팎의 소식을 알렸습니다.",
+    "독립 협회는 중국 사신을 맞던 영은문을 헐고 그 자리에 독립문을 세워, 어느 나라에도 기대지 않는 자주 독립의 뜻을 보여 주었습니다. 독립문을 세우는 돈은 관리와 백성이 함께 모았습니다.",
+    "종로에서 연 만민 공동회에는 신분에 관계없이 누구나 나와 나랏일에 대한 생각을 말할 수 있었습니다. 서울 서대문 독립 공원에 가면 지금도 독립문을 볼 수 있습니다."
    ],
    "img": "In front of a large granite arch gate with a blank stone plaque, a crowd of Koreans from all walks of life—yangban in gat, merchants, and students with short hair—gathers around a man speaking from a low wooden platform. People lean in to listen, and some raise their hands to speak next. The setting is a Seoul street in the late 1890s.",
    "imgKo": "큰 돌 아치 문 앞에서 갓 쓴 양반, 상인, 짧은 머리 학생 등 여러 사람이 나무 단 위에서 연설하는 사람의 말을 귀 기울여 듣는다."
   },
   "대한 제국": {
    "en": "Korean Empire",
-   "beats": ["노란 옷의 황제가 둥근 돌 제단에 오른다.", "아래에서 신하들이 줄지어 고개를 숙인다.", "황제가 다스리는 새 나라의 이름이 대한 제국이다."],
+   "beats": ["노란 옷의 황제가 둥근 돌 제단에 오릅니다.", "아래에서 신하들이 줄지어 고개를 숙입니다.", "황제가 다스리는 새 나라의 이름이 대한 제국입니다."],
    "explain": [
-    "1897년 고종은 러시아 공사관에서 경운궁(지금의 덕수궁)으로 돌아와 환구단에서 황제 자리에 올랐다. 나라 이름을 대한 제국으로, 연호를 광무로 정하였다.",
-    "제국(帝國)의 帝는 황제를 뜻한다. 왕이 아닌 황제라고 부른 것은 청이나 일본과 똑같이 어느 나라에도 매이지 않은 나라임을 세계에 알리려는 뜻이었다.",
-    "대한 제국은 공장과 학교를 세우고 전기와 전차를 들여오는 등 나라를 새롭게 하려고 애썼지만, 1910년 일제에 나라를 빼앗겼다. '대한'이라는 이름은 지금의 대한민국으로 이어졌다."
+    "1897년 고종은 러시아 공사관에서 경운궁(지금의 덕수궁)으로 돌아와 환구단에서 황제 자리에 올랐습니다. 나라 이름을 대한 제국으로, 연호를 광무로 정하였습니다.",
+    "제국(帝國)의 帝는 황제를 뜻합니다. 왕이 아닌 황제라고 부른 것은 청이나 일본과 똑같이 어느 나라에도 매이지 않은 나라임을 세계에 알리려는 뜻이었습니다.",
+    "대한 제국은 공장과 학교를 세우고 전기와 전차를 들여오는 등 나라를 새롭게 하려고 애썼지만, 1910년 일제에 나라를 빼앗겼습니다. '대한'이라는 이름은 지금의 대한민국으로 이어졌습니다."
    ],
    "img": "At dawn, a Korean emperor in a golden-yellow dragon robe and crown slowly climbs a round, three-tiered white stone altar under the open sky. Rows of officials in red and blue robes stand below, bowing respectfully. Colorful plain banners flutter at the edges as the morning sun rises behind the altar.",
    "imgKo": "새벽에 노란 용포를 입은 황제가 3단 둥근 돌 제단에 오르고, 아래에서 신하들이 줄지어 고개를 숙인다."
@@ -191,176 +191,176 @@
  "3-1": {
   "을사늑약": {
    "en": "Eulsa Treaty · forced on Korea in 1905",
-   "beats": ["궁궐 안 탁자 위 문서에 도장이 찍힌다.", "황제의 의자는 비었고 군인들이 둘러섰다.", "억지로 맺어 외교권을 빼앗은 조약이 을사늑약이다."],
+   "beats": ["궁궐 안 탁자 위 문서에 도장이 찍힙니다.", "황제의 의자는 비었고 군인들이 둘러섰습니다.", "억지로 맺어 외교권을 빼앗은 조약이 을사늑약입니다."],
    "explain": [
-    "을사는 1905년을 부르던 옛 해 이름이고, 늑(勒)은 '억지로 하다'라는 뜻이다. 일제가 군대로 궁궐을 둘러싸고 대신들을 위협해 억지로 맺은 조약이라 늑약이라고 부른다.",
-    "고종 황제는 끝까지 이 조약을 허락하지 않았다. 그런데도 일제는 대한 제국의 외교권을 빼앗고 통감부를 두어 나랏일에 간섭하였다.",
-    "외교권은 다른 나라와 약속을 맺고 사신을 주고받을 수 있는 권리다. 이 소식에 신문은 슬픔과 분노를 담은 글을 싣고, 전국에서 의병이 일어났다."
+    "을사는 1905년을 부르던 옛 해 이름이고, 늑(勒)은 '억지로 하다'라는 뜻입니다. 일제가 군대로 궁궐을 둘러싸고 대신들을 위협해 억지로 맺은 조약이라 늑약이라고 부릅니다.",
+    "고종 황제는 끝까지 이 조약을 허락하지 않았습니다. 그런데도 일제는 대한 제국의 외교권을 빼앗고 통감부를 두어 나랏일에 간섭하였습니다.",
+    "외교권은 다른 나라와 약속을 맺고 사신을 주고받을 수 있는 권리입니다. 이 소식에 신문은 슬픔과 분노를 담은 글을 싣고, 전국에서 의병이 일어났습니다."
    ],
    "img": "Inside a dim palace hall, a document lies on a long table and a hand presses a red stamp onto it. The emperor's golden chair at the head of the table is empty. Japanese soldiers in dark uniforms stand stiffly along the walls and at the door; no weapons are pointed at anyone.",
    "imgKo": "어두운 궁궐 방 긴 탁자 위 문서에 손이 붉은 도장을 찍고, 맨 앞 황제 의자는 비어 있으며 일본 군인들이 벽과 문을 따라 서 있다."
   },
   "헤이그 특사": {
    "en": "secret envoys to The Hague",
-   "beats": ["양복 입은 세 사람이 큰 회의장 문 앞에 섰다.", "문은 닫혀 있고 경비가 손을 들어 막는다.", "고종이 몰래 보낸 특별한 사신이 헤이그 특사이다."],
+   "beats": ["양복 입은 세 사람이 큰 회의장 문 앞에 섰습니다.", "문은 닫혀 있고 경비가 손을 들어 막습니다.", "고종이 몰래 보낸 특별한 사신이 헤이그 특사입니다."],
    "explain": [
-    "특사(特使)는 특별한 일을 맡겨 보낸 사신이다. 1907년 고종은 네덜란드 헤이그에서 열린 만국 평화 회의에 이준, 이상설, 이위종 세 사람을 몰래 보냈다.",
-    "그러나 세 특사는 일제의 방해로 회의장에 들어가지 못했다. 대신 이위종이 외국 신문 기자들 앞에서 프랑스 말로 대한 제국의 사정을 호소하였다.",
-    "일제는 이 일을 핑계로 고종을 황제 자리에서 억지로 물러나게 하였다. 이준은 헤이그에서 세상을 떠나 그곳에 묻혔다가 뒤에 우리나라로 옮겨졌다."
+    "특사(特使)는 특별한 일을 맡겨 보낸 사신입니다. 1907년 고종은 네덜란드 헤이그에서 열린 만국 평화 회의에 이준, 이상설, 이위종 세 사람을 몰래 보냈습니다.",
+    "그러나 세 특사는 일제의 방해로 회의장에 들어가지 못했습니다. 대신 이위종이 외국 신문 기자들 앞에서 프랑스 말로 대한 제국의 사정을 호소하였습니다.",
+    "일제는 이 일을 핑계로 고종을 황제 자리에서 억지로 물러나게 하였습니다. 이준은 헤이그에서 세상을 떠나 그곳에 묻혔다가 뒤에 우리나라로 옮겨졌습니다."
    ],
    "img": "In front of the tall closed doors of a grand European conference hall in the early 1900s, three Korean men in Western suits and hats stand holding an envelope sealed with red wax. A European guard in uniform holds up his hand to stop them. Behind them is a street of The Hague with brick buildings and a canal.",
    "imgKo": "유럽의 큰 회의장 닫힌 문 앞에서 양복 차림의 한국인 세 사람이 봉인된 편지를 들고 서 있고, 경비가 손을 들어 막는다."
   },
   "애국 계몽 운동": {
    "en": "Patriotic Enlightenment Movement",
-   "beats": ["작은 학교에서 학생들이 열심히 배운다.", "옆방에서는 신문이 한 장씩 찍혀 나온다.", "배움으로 겨레의 힘을 기르는 활동이 애국 계몽 운동이다."],
+   "beats": ["작은 학교에서 학생들이 열심히 배웁니다.", "옆방에서는 신문이 한 장씩 찍혀 나옵니다.", "배움으로 겨레의 힘을 기르는 활동이 애국 계몽 운동입니다."],
    "explain": [
-    "계몽(啓蒙)은 '어두운 것을 깨우쳐 밝힌다'는 뜻이다. 을사늑약 뒤, 무기를 들기에 앞서 겨레가 먼저 배우고 깨어나야 한다고 생각한 사람들이 이 운동을 이끌었다.",
-    "안창호는 평양에 대성 학교를, 이승훈은 정주에 오산 학교를 세웠다. 『대한매일신보』 같은 신문은 일제의 잘못을 알렸고, 나라 빚을 갚자는 국채 보상 운동에는 많은 사람이 담배를 끊고 반지를 내놓았다.",
-    "헷갈리는 말: 의병은 무기를 들고 일제와 맞서 싸운 백성의 군대다. 두 운동은 방법이 달랐지만 나라를 지키려는 뜻은 같았다."
+    "계몽(啓蒙)은 '어두운 것을 깨우쳐 밝힌다'는 뜻입니다. 을사늑약 뒤, 무기를 들기에 앞서 겨레가 먼저 배우고 깨어나야 한다고 생각한 사람들이 이 운동을 이끌었습니다.",
+    "안창호는 평양에 대성 학교를, 이승훈은 정주에 오산 학교를 세웠습니다. 『대한매일신보』 같은 신문은 일제의 잘못을 알렸고, 나라 빚을 갚자는 국채 보상 운동에는 많은 사람이 담배를 끊고 반지를 내놓았습니다.",
+    "헷갈리는 말: 의병은 무기를 들고 일제와 맞서 싸운 백성의 군대입니다. 두 운동은 방법이 달랐지만 나라를 지키려는 뜻은 같았습니다."
    ],
    "img": "A small early-1900s Korean schoolhouse is shown cut away to reveal two rooms. In the left room, students in hanbok, some with short hair, sit at wooden desks listening eagerly to a teacher pointing at a blank blackboard. In the right room, workers turn a hand-cranked printing press as stacks of fresh newspapers covered only in grey lines, with no readable text, pile up.",
    "imgKo": "단면으로 보이는 작은 학교의 왼쪽 방에서는 학생들이 선생님 말을 듣고, 오른쪽 방에서는 손으로 돌리는 인쇄기에서 신문이 잔뜩 찍혀 나온다."
   },
   "식민지": {
    "en": "colony",
-   "beats": ["한반도 지도를 굵은 쇠사슬이 감고 있다.", "자물쇠 열쇠는 바다 건너에서 뻗은 손이 쥐었다.", "주권을 빼앗겨 남의 지배를 받는 땅이 식민지이다."],
+   "beats": ["한반도 지도를 굵은 쇠사슬이 감고 있습니다.", "자물쇠 열쇠는 바다 건너에서 뻗은 손이 쥐었습니다.", "주권을 빼앗겨 남의 지배를 받는 땅이 식민지입니다."],
    "explain": [
-    "식(植)은 '심다', 민(民)은 '백성', 지(地)는 '땅'이라는 뜻이다. 자기 나라 사람들을 옮겨 심듯 보내 다스리는 땅이라는 데서 나온 말이다.",
-    "1910년 일제는 대한 제국을 강제로 빼앗아 식민지로 삼았다. 이때부터 1945년 광복까지 35년 동안 우리 겨레는 나라 없는 설움을 겪었다.",
-    "헷갈리는 말: 을사늑약 뒤에는 외교권을 빼앗긴 상태였고, 1910년에는 나라의 모든 주권을 빼앗겼다. 그래서 1910년을 나라를 잃은 해로 기억한다."
+    "식(植)은 '심다', 민(民)은 '백성', 지(地)는 '땅'이라는 뜻입니다. 자기 나라 사람들을 옮겨 심듯 보내 다스리는 땅이라는 데서 나온 말입니다.",
+    "1910년 일제는 대한 제국을 강제로 빼앗아 식민지로 삼았습니다. 이때부터 1945년 광복까지 35년 동안 우리 겨레는 나라 없는 설움을 겪었습니다.",
+    "헷갈리는 말: 을사늑약 뒤에는 외교권을 빼앗긴 상태였고, 1910년에는 나라의 모든 주권을 빼앗겼습니다. 그래서 1910년을 나라를 잃은 해로 기억합니다."
    ],
    "img": "A simple map of the Korean peninsula in soft green on a blue sea, with tiny villages and fields drawn on it, is wrapped tightly in thick grey iron chains fastened with a big padlock. From across the sea to the east, a large hand reaches out holding the padlock's key. There are no labels on the map.",
    "imgKo": "작은 마을과 논밭이 그려진 초록빛 한반도 지도를 굵은 쇠사슬과 자물쇠가 묶고 있고, 동쪽 바다 건너에서 뻗은 손이 그 열쇠를 쥐고 있다."
   },
   "조선 총독부": {
    "en": "Japanese Government-General of Korea",
-   "beats": ["옛 궁궐 앞을 큰 돌 건물이 가로막았다.", "궁궐 지붕은 건물 뒤에 작게 가려졌다.", "일제가 우리나라를 다스리려고 세운 기관이 조선 총독부이다."],
+   "beats": ["옛 궁궐 앞을 큰 돌 건물이 가로막았습니다.", "궁궐 지붕은 건물 뒤에 작게 가려졌습니다.", "일제가 우리나라를 다스리려고 세운 기관이 조선 총독부입니다."],
    "explain": [
-    "총독(總督)은 식민지를 맡아 다스리는 최고 우두머리이고, 총독부는 그 관청이다. 1910년 일제는 서울에 조선 총독부를 두고, 군인 출신 총독에게 법을 만들고 군대를 움직이는 큰 힘을 주었다.",
-    "일제는 1926년 경복궁 근정전 바로 앞에 거대한 총독부 건물을 지어 궁궐을 가렸다. 우리 겨레의 상징인 궁궐을 짓누르려는 뜻이 담겨 있었다.",
-    "이 건물은 광복 50주년인 1995년에 헐렸고, 그 뒤 경복궁은 옛 모습을 되찾아 가고 있다. 건물 꼭대기에 있던 첨탑은 천안 독립기념관에 옮겨져 있다."
+    "총독(總督)은 식민지를 맡아 다스리는 최고 우두머리이고, 총독부는 그 관청입니다. 1910년 일제는 서울에 조선 총독부를 두고, 군인 출신 총독에게 법을 만들고 군대를 움직이는 큰 힘을 주었습니다.",
+    "일제는 1926년 경복궁 근정전 바로 앞에 거대한 총독부 건물을 지어 궁궐을 가렸습니다. 우리 겨레의 상징인 궁궐을 짓누르려는 뜻이 담겨 있었습니다.",
+    "이 건물은 광복 50주년인 1995년에 헐렸고, 그 뒤 경복궁은 옛 모습을 되찾아 가고 있습니다. 건물 꼭대기에 있던 첨탑은 천안 독립기념관에 옮겨져 있습니다."
    ],
    "img": "A huge grey stone Western-style building with a central dome stands directly in front of a traditional Korean palace hall with a curved tiled roof, almost hiding it from view. The palace roof peeks out small and dim behind the massive building. The sky is overcast, and a few Korean passersby in hanbok look up quietly.",
    "imgKo": "가운데 둥근 지붕이 있는 커다란 회색 돌 건물이 기와지붕 궁궐 바로 앞을 가로막아, 궁궐 지붕이 뒤에 작게 가려 보인다."
   },
   "헌병 경찰 제도": {
    "en": "military police rule",
-   "beats": ["제복 입은 헌병이 장터 한가운데서 지켜본다.", "사람들은 눈치를 보며 소곤소곤 말한다.", "군인 경찰이 사람들을 감시한 방식이 헌병 경찰 제도이다."],
+   "beats": ["제복 입은 헌병이 장터 한가운데서 지켜봅니다.", "사람들은 눈치를 보며 소곤소곤 말합니다.", "군인 경찰이 사람들을 감시한 방식이 헌병 경찰 제도입니다."],
    "explain": [
-    "헌병(憲兵)의 憲은 '법'이라는 글자로, 헌병은 원래 군대 안에서 법과 질서를 지키는 군인이다. 일제는 1910년대에 이런 헌병을 경찰 자리에 앞세웠다.",
-    "헌병 경찰은 재판 없이도 벌을 줄 수 있었고, 사람들이 모이거나 말하는 것까지 살폈다. 학교 선생님과 관리들도 제복을 입고 칼을 차게 하여 사람들을 두렵게 하였다.",
-    "이처럼 군대의 힘으로 겁을 주며 다스린 1910년대 통치를 무단 통치라고 한다. 3·1 운동 뒤 일제는 헌병 경찰을 보통 경찰로 바꾸었지만, 경찰 수는 오히려 늘었다."
+    "헌병(憲兵)의 憲은 '법'이라는 글자로, 헌병은 원래 군대 안에서 법과 질서를 지키는 군인입니다. 일제는 1910년대에 이런 헌병을 경찰 자리에 앞세웠습니다.",
+    "헌병 경찰은 재판 없이도 벌을 줄 수 있었고, 사람들이 모이거나 말하는 것까지 살폈습니다. 학교 선생님과 관리들도 제복을 입고 칼을 차게 하여 사람들을 두렵게 하였습니다.",
+    "이처럼 군대의 힘으로 겁을 주며 다스린 1910년대 통치를 무단 통치라고 합니다. 3·1 운동 뒤 일제는 헌병 경찰을 보통 경찰로 바꾸었지만, 경찰 수는 오히려 늘었습니다."
    ],
    "img": "A Korean village market in the 1910s. A Japanese military policeman in a dark uniform with an armband and a peaked cap stands stiffly in the middle, staring around with sharp eyes. Korean villagers in white hanbok glance at him nervously and whisper behind their hands, and a large faint eye symbol hangs in the sky over the market.",
    "imgKo": "1910년대 장터 한가운데 완장 찬 헌병이 매섭게 둘러보고, 흰옷 입은 사람들은 눈치를 보며 소곤거린다. 하늘에 커다란 눈 모양이 희미하게 떠 있다."
   },
   "토지 조사 사업": {
    "en": "Japanese land survey",
-   "beats": ["측량하는 사람들이 논의 넓이를 잰다.", "논두렁에서 농부 가족이 빈손으로 바라본다.", "땅을 신고하게 하며 빼앗은 일이 토지 조사 사업이다."],
+   "beats": ["측량하는 사람들이 논의 넓이를 잽니다.", "논두렁에서 농부 가족이 빈손으로 바라봅니다.", "땅을 신고하게 하며 빼앗은 일이 토지 조사 사업입니다."],
    "explain": [
-    "일제는 1910년부터 1918년까지 이 사업을 벌였다. 겉으로는 땅 주인을 분명히 하는 새로운 제도라고 내세웠다.",
-    "땅 주인은 정해진 기간 안에 복잡한 서류를 갖춰 신고해야 했다. 이를 잘 모르거나 신고하지 못한 땅, 마을이 함께 쓰던 땅, 왕실의 땅은 조선 총독부가 차지했고, 일본 회사와 일본 사람에게 싸게 넘어갔다.",
-    "땅을 잃은 많은 농민이 남의 땅을 빌려 농사짓는 소작농이 되거나, 살길을 찾아 만주와 연해주로 떠났다."
+    "일제는 1910년부터 1918년까지 이 사업을 벌였습니다. 겉으로는 땅 주인을 분명히 하는 새로운 제도라고 내세웠습니다.",
+    "땅 주인은 정해진 기간 안에 복잡한 서류를 갖춰 신고해야 했습니다. 이를 잘 모르거나 신고하지 못한 땅, 마을이 함께 쓰던 땅, 왕실의 땅은 조선 총독부가 차지했고, 일본 회사와 일본 사람에게 싸게 넘어갔습니다.",
+    "땅을 잃은 많은 농민이 남의 땅을 빌려 농사짓는 소작농이 되거나, 살길을 찾아 만주와 연해주로 떠났습니다."
    ],
    "img": "In a Korean rice field in the 1910s, Japanese surveyors in Western-style clothes set up a tripod measuring instrument and stretch a long measuring rope across the paddies. At the edge of the field, a Korean farmer family in worn white clothes stands with empty hands, watching sadly. A dotted arrow runs from the field to a distant grey government building.",
    "imgKo": "논에서 일본인 측량꾼들이 세발 측량기를 세우고 줄로 넓이를 재고, 논두렁에서 농부 가족이 빈손으로 슬프게 바라본다. 점선 화살표가 논에서 멀리 회색 관청으로 이어진다."
   },
   "3·1 운동": {
    "en": "March 1st Movement",
-   "beats": ["흰옷 입은 사람들이 거리를 가득 메웠다.", "모두 태극기를 높이 들고 만세를 외친다.", "1919년 독립을 외친 겨레의 운동이 3·1 운동이다."],
+   "beats": ["흰옷 입은 사람들이 거리를 가득 메웠습니다.", "모두 태극기를 높이 들고 만세를 외칩니다.", "1919년 독립을 외친 겨레의 운동이 3·1 운동입니다."],
    "explain": [
-    "1919년 3월 1일, 민족 대표들이 독립 선언서를 발표하고, 서울 탑골 공원에서는 학생과 시민이 독립 선언서를 읽고 만세를 불렀다. 만세 소리는 곧 전국 곳곳과 만주, 연해주, 미국 등 나라 밖으로 퍼져 나갔다.",
-    "학생, 농민, 상인, 노동자, 종교인 등 신분과 나이를 가리지 않고 많은 사람이 함께하였다. 천안 아우내 장터에서 만세 운동을 이끈 유관순 열사도 이때 학생이었다.",
-    "3·1 운동은 나라 안팎에 우리 겨레의 독립 의지를 알렸고, 대한민국 임시 정부를 세우는 바탕이 되었다. 지금도 3월 1일은 삼일절이라는 국경일로 기린다."
+    "1919년 3월 1일, 민족 대표들이 독립 선언서를 발표하고, 서울 탑골 공원에서는 학생과 시민이 독립 선언서를 읽고 만세를 불렀습니다. 만세 소리는 곧 전국 곳곳과 만주, 연해주, 미국 등 나라 밖으로 퍼져 나갔습니다.",
+    "학생, 농민, 상인, 노동자, 종교인 등 신분과 나이를 가리지 않고 많은 사람이 함께하였습니다. 천안 아우내 장터에서 만세 운동을 이끈 유관순 열사도 이때 학생이었습니다.",
+    "3·1 운동은 나라 안팎에 우리 겨레의 독립 의지를 알렸고, 대한민국 임시 정부를 세우는 바탕이 되었습니다. 지금도 3월 1일은 삼일절이라는 국경일로 기립니다."
    ],
    "img": "Seen from behind, a huge crowd of Koreans in white hanbok—students, farmers, merchants, men and women—fills a wide street in 1919, all raising Korean taegukgi flags and lifting both arms high. The street stretches far into the distance under a clear early-spring sky. No soldiers or violence are shown.",
    "imgKo": "뒷모습으로 보이는 흰옷 차림의 수많은 사람들이 넓은 거리를 메우고, 모두 태극기를 들고 두 팔을 높이 들어 만세를 부른다."
   },
   "민족 말살 정책": {
    "en": "policy to erase Korean identity",
-   "beats": ["우리 책들이 자물쇠 달린 상자에 갇혔다.", "아이들은 입에 손가락을 대고 조용히 앉았다.", "우리 겨레의 얼을 지우려 한 것이 민족 말살 정책이다."],
+   "beats": ["우리 책들이 자물쇠 달린 상자에 갇혔습니다.", "아이들은 입에 손가락을 대고 조용히 앉았습니다.", "우리 겨레의 얼을 지우려 한 것이 민족 말살 정책입니다."],
    "explain": [
-    "말살(抹殺)은 '지워서 아주 없앤다'는 뜻이다. 1930년대 후반 일제는 전쟁을 넓히면서 우리 겨레를 일본 사람으로 만들려고, 우리 겨레의 얼을 지우는 정책을 폈다.",
-    "학교에서 우리말 대신 일본말만 쓰게 하고 우리 역사를 가르치지 못하게 하였다. 우리 이름을 일본식 성과 이름으로 바꾸게 했고(창씨개명), 일본의 신을 모신 신사에 절하게 하였다.",
-    "우리말 신문도 문을 닫게 하였다. 이런 가운데서도 조선어 학회처럼 우리말을 지키려고 애쓴 사람들이 있었다."
+    "말살(抹殺)은 '지워서 아주 없앤다'는 뜻입니다. 1930년대 후반 일제는 전쟁을 넓히면서 우리 겨레를 일본 사람으로 만들려고, 우리 겨레의 얼을 지우는 정책을 폈습니다.",
+    "학교에서 우리말 대신 일본말만 쓰게 하고 우리 역사를 가르치지 못하게 하였습니다. 우리 이름을 일본식 성과 이름으로 바꾸게 했고(창씨개명), 일본의 신을 모신 신사에 절하게 하였습니다.",
+    "우리말 신문도 문을 닫게 하였습니다. 이런 가운데서도 조선어 학회처럼 우리말을 지키려고 애쓴 사람들이 있었습니다."
    ],
    "img": "A 1940s Korean classroom with wooden desks. On the teacher's desk at the front, a stack of books sits inside a wooden box wrapped in iron chains and locked with a heavy padlock. The children at their desks sit silently with a finger pressed to their lips, looking sad.",
    "imgKo": "1940년대 교실 앞 교탁에 책들이 쇠사슬과 자물쇠로 잠긴 나무 상자 안에 들어 있고, 아이들은 입에 손가락을 댄 채 조용히 앉아 있다."
   },
   "일본군 ‘위안부’": {
    "en": "Japanese military 'comfort women'",
-   "beats": ["조용한 광장에 빈 의자와 꽃이 놓였다.", "노란 나비들이 하늘로 날아오른다.", "전쟁터로 끌려가 고통받은 여성들이 일본군 ‘위안부’이다."],
+   "beats": ["조용한 광장에 빈 의자와 꽃이 놓였습니다.", "노란 나비들이 하늘로 날아오릅니다.", "전쟁터로 끌려가 고통받은 여성들이 일본군 ‘위안부’입니다."],
    "explain": [
-    "일제는 아시아 여러 나라와 전쟁을 벌이면서, 우리나라와 아시아 여러 나라의 여성들을 속이거나 강제로 끌고 가 전쟁터의 일본군 시설에서 큰 고통을 겪게 하였다. 피해자들은 광복 뒤에도 오랫동안 아픔을 숨긴 채 살아야 했다.",
-    "1991년 8월 14일 김학순 할머니가 처음으로 피해 사실을 세상에 밝혔고, 이날을 '일본군 위안부 피해자 기림의 날'로 정하였다. 1992년부터는 일본 정부의 진심 어린 사과를 요구하는 수요 시위가 이어지고 있다.",
-    "'위안'은 피해자의 고통을 가리는 일본군 쪽의 말이라서, 그대로 받아들이지 않는다는 뜻으로 작은따옴표를 붙여 쓴다. 노란 나비는 피해자들이 아픔에서 벗어나 자유롭게 날기를 바라는 마음을 담은 상징이다."
+    "일제는 아시아 여러 나라와 전쟁을 벌이면서, 우리나라와 아시아 여러 나라의 여성들을 속이거나 강제로 끌고 가 전쟁터의 일본군 시설에서 큰 고통을 겪게 하였습니다. 피해자들은 광복 뒤에도 오랫동안 아픔을 숨긴 채 살아야 했습니다.",
+    "1991년 8월 14일 김학순 할머니가 처음으로 피해 사실을 세상에 밝혔고, 이날을 '일본군 위안부 피해자 기림의 날'로 정하였습니다. 1992년부터는 일본 정부의 진심 어린 사과를 요구하는 수요 시위가 이어지고 있습니다.",
+    "'위안'은 피해자의 고통을 가리는 일본군 쪽의 말이라서, 그대로 받아들이지 않는다는 뜻으로 작은따옴표를 붙여 씁니다. 노란 나비는 피해자들이 아픔에서 벗어나 자유롭게 날기를 바라는 마음을 담은 상징입니다."
    ],
    "img": "A quiet memorial plaza on a calm morning, with no people anywhere in the scene. In the center stands a single empty wooden chair, with bouquets of white and yellow flowers placed around it on the stone floor. Many yellow butterflies rise gently from the flowers into the soft blue sky.",
    "imgKo": "사람 없는 조용한 광장 한가운데 빈 나무 의자가 있고, 둘레 바닥에 흰 꽃과 노란 꽃다발이 놓여 있으며, 노란 나비들이 하늘로 날아오른다."
   },
   "대한민국 임시 정부": {
    "en": "Provisional Government of the Republic of Korea",
-   "beats": ["좁은 골목 벽돌집에 사람들이 모였다.", "벽에 태극기를 걸고 탁자에 둘러앉았다.", "나라 밖에서 독립운동을 이끈 곳이 대한민국 임시 정부이다."],
+   "beats": ["좁은 골목 벽돌집에 사람들이 모였습니다.", "벽에 태극기를 걸고 탁자에 둘러앉았습니다.", "나라 밖에서 독립운동을 이끈 곳이 대한민국 임시 정부입니다."],
    "explain": [
-    "3·1 운동 뒤 독립운동을 하나로 모아 이끌 곳이 필요해지자, 1919년 4월 중국 상하이에 대한민국 임시 정부를 세웠다. 나라를 되찾을 때까지 '임시'로 꾸린 정부라는 뜻이다.",
-    "임시 정부는 처음으로 '대한민국'이라는 나라 이름을 쓰고, 왕이 아닌 국민이 주인인 민주 공화제를 정하였다. 국내와 몰래 연락을 주고받고, 신문을 펴내며, 다른 나라에 우리 독립을 알렸다.",
-    "일제의 탄압을 피해 여러 도시로 옮겨 다니다 1940년 충칭에 자리 잡았다. 지금 대한민국 헌법은 첫머리에 임시 정부의 뜻을 이어받는다고 적고 있으며, 4월 11일을 수립 기념일로 기린다."
+    "3·1 운동 뒤 독립운동을 하나로 모아 이끌 곳이 필요해지자, 1919년 4월 중국 상하이에 대한민국 임시 정부를 세웠습니다. 나라를 되찾을 때까지 '임시'로 꾸린 정부라는 뜻입니다.",
+    "임시 정부는 처음으로 '대한민국'이라는 나라 이름을 쓰고, 왕이 아닌 국민이 주인인 민주 공화제를 정하였습니다. 국내와 몰래 연락을 주고받고, 신문을 펴내며, 다른 나라에 우리 독립을 알렸습니다.",
+    "일제의 탄압을 피해 여러 도시로 옮겨 다니다 1940년 충칭에 자리 잡았습니다. 지금 대한민국 헌법은 첫머리에 임시 정부의 뜻을 이어받는다고 적고 있으며, 4월 11일을 수립 기념일로 기립니다."
    ],
    "img": "A narrow brick lane house in 1919 Shanghai, with laundry poles hanging over the alley outside. Inside a small upstairs room, Korean men and women in suits and hanbok sit around a wooden table in a serious meeting, with a Korean taegukgi flag hanging on the wall. Warm lamplight glows through the window.",
    "imgKo": "상하이 좁은 골목 벽돌집 2층 방에서 양복과 한복 차림의 사람들이 벽에 걸린 태극기 아래 탁자에 둘러앉아 회의한다."
   },
   "한인 애국단": {
    "en": "Korean Patriotic Organization",
-   "beats": ["어두운 방에서 젊은이들이 태극기에 손을 얹었다.", "맞은편 지도자 앞에서 굳게 맹세한다.", "김구가 만든 독립운동 비밀 단체가 한인 애국단이다."],
+   "beats": ["어두운 방에서 젊은이들이 태극기에 손을 얹었습니다.", "맞은편 지도자 앞에서 굳게 맹세합니다.", "김구가 만든 독립운동 비밀 단체가 한인 애국단입니다."],
    "explain": [
-    "1920년대 말 임시 정부는 일제의 감시와 돈 부족으로 힘을 잃어 가고 있었다. 김구는 1931년 상하이에서 한인 애국단을 만들어 독립운동에 새 힘을 불어넣으려 하였다.",
-    "1932년 단원 이봉창은 도쿄에서 일왕의 행렬을 향해 의거를 일으켰고, 윤봉길은 상하이 훙커우 공원에서 일본군 지휘관들이 모인 행사장에 폭탄을 던졌다.",
-    "윤봉길의 의거 소식에 중국 정부는 크게 감동해 임시 정부를 적극적으로 돕기 시작하였다. 헷갈리는 말: 의거는 옳은 일을 위해 목숨을 걸고 일으킨 일을 말한다."
+    "1920년대 말 임시 정부는 일제의 감시와 돈 부족으로 힘을 잃어 가고 있었습니다. 김구는 1931년 상하이에서 한인 애국단을 만들어 독립운동에 새 힘을 불어넣으려 하였습니다.",
+    "1932년 단원 이봉창은 도쿄에서 일왕의 행렬을 향해 의거를 일으켰고, 윤봉길은 상하이 훙커우 공원에서 일본군 지휘관들이 모인 행사장에 폭탄을 던졌습니다.",
+    "윤봉길의 의거 소식에 중국 정부는 크게 감동해 임시 정부를 적극적으로 돕기 시작하였습니다. 헷갈리는 말: 의거는 옳은 일을 위해 목숨을 걸고 일으킨 일을 말합니다."
    ],
    "img": "In a dim, small room lit by a single lamp, two young Korean men in Western suits stand with their right hands placed on a taegukgi flag spread on a table, faces solemn and determined. A middle-aged leader in a suit stands across from them, nodding gravely. Curtains are drawn over the window.",
    "imgKo": "등불 하나 켠 어두운 방에서 양복 입은 두 젊은이가 탁자 위 태극기에 손을 얹고 맹세하고, 맞은편 지도자가 굳은 얼굴로 고개를 끄덕인다."
   },
   "한국 광복군": {
    "en": "Korean Liberation Army",
-   "beats": ["군복 입은 사람들이 줄지어 섰다.", "가운데 깃대에 태극기가 높이 올라간다.", "임시 정부가 만든 정식 군대가 한국 광복군이다."],
+   "beats": ["군복 입은 사람들이 줄지어 섰습니다.", "가운데 깃대에 태극기가 높이 올라갑니다.", "임시 정부가 만든 정식 군대가 한국 광복군입니다."],
    "explain": [
-    "광복군은 나라를 되찾을 군대라는 뜻이다. 임시 정부가 자리 잡은 중국 충칭에서 만들어졌고, 총사령관은 지청천이었다.",
-    "임시 정부는 1941년 일본에 전쟁을 선포했고, 광복군은 연합국과 함께 싸웠다. 영국군과 함께 인도와 미얀마 전선에서 활약했고, 미군과 함께 국내로 들어가 일본군과 싸울 훈련을 하였다.",
-    "그러나 국내로 들어가기 전에 일본이 항복하여 계획을 이루지 못하였다. 헷갈리는 말: 독립군은 여러 단체가 만주 등지에서 저마다 꾸린 군대이다."
+    "광복군은 나라를 되찾을 군대라는 뜻입니다. 임시 정부가 자리 잡은 중국 충칭에서 만들어졌고, 총사령관은 지청천이었습니다.",
+    "임시 정부는 1941년 일본에 전쟁을 선포했고, 광복군은 연합국과 함께 싸웠습니다. 영국군과 함께 인도와 미얀마 전선에서 활약했고, 미군과 함께 국내로 들어가 일본군과 싸울 훈련을 하였습니다.",
+    "그러나 국내로 들어가기 전에 일본이 항복하여 계획을 이루지 못하였습니다. 헷갈리는 말: 독립군은 여러 단체가 만주 등지에서 저마다 꾸린 군대입니다."
    ],
    "img": "In an open courtyard in 1940s Chongqing, China, rows of Korean soldiers in plain khaki uniforms and caps stand at attention in neat lines. At the front, a taegukgi flag is being raised up a tall flagpole as everyone salutes. Hills and old Chinese-style roofs fill the background; no weapons are shown.",
    "imgKo": "중국 충칭의 마당에서 카키색 군복의 군인들이 줄지어 서서 경례하고, 앞쪽 깃대에 태극기가 높이 올라간다."
   },
   "독립군": {
    "en": "independence army",
-   "beats": ["군인들이 눈 덮인 산길을 줄지어 걷는다.", "추위 속에서도 눈빛은 단단하다.", "나라를 되찾으려고 일본군과 싸운 군대가 독립군이다."],
+   "beats": ["군인들이 눈 덮인 산길을 줄지어 걷습니다.", "추위 속에서도 눈빛은 단단합니다.", "나라를 되찾으려고 일본군과 싸운 군대가 독립군입니다."],
    "explain": [
-    "나라를 빼앗긴 뒤 많은 사람이 일제의 감시가 덜한 만주와 연해주로 건너가 독립군을 만들었다. 이들은 군사 학교를 세워 군인을 길러 내고 국경을 넘나들며 일본군과 싸웠다.",
-    "1920년 홍범도가 이끈 독립군은 봉오동에서, 김좌진과 홍범도 등이 이끈 독립군은 청산리에서 일본군을 크게 물리쳤다. 산과 숲의 지형을 잘 이용한 덕분이었다.",
-    "헷갈리는 말: 의병은 나라를 빼앗기기 전후에 나라 안에서 일어난 백성의 군대다. 독립군은 주로 나라 밖에서 활동했고, 1940년 한국 광복군이 만들어지자 많은 독립군이 그리로 모였다."
+    "나라를 빼앗긴 뒤 많은 사람이 일제의 감시가 덜한 만주와 연해주로 건너가 독립군을 만들었습니다. 이들은 군사 학교를 세워 군인을 길러 내고 국경을 넘나들며 일본군과 싸웠습니다.",
+    "1920년 홍범도가 이끈 독립군은 봉오동에서, 김좌진과 홍범도 등이 이끈 독립군은 청산리에서 일본군을 크게 물리쳤습니다. 산과 숲의 지형을 잘 이용한 덕분이었습니다.",
+    "헷갈리는 말: 의병은 나라를 빼앗기기 전후에 나라 안에서 일어난 백성의 군대입니다. 독립군은 주로 나라 밖에서 활동했고, 1940년 한국 광복군이 만들어지자 많은 독립군이 그리로 모였습니다."
    ],
    "img": "A line of Korean independence fighters in padded winter coats, fur hats, and leg wraps marches along a mountain path through a snowy Manchurian pine forest. Their rifles are slung on their backs, not aimed. The leader at the front looks ahead with determination as everyone's breath shows white in the cold air.",
    "imgKo": "솜옷과 털모자 차림의 독립군이 눈 덮인 만주 소나무 숲 산길을 줄지어 걷고, 총은 등에 메었으며, 앞장선 사람이 굳은 눈빛으로 앞을 본다."
   },
   "물산 장려 운동": {
    "en": "Korean Products Promotion Movement",
-   "beats": ["장터에서 사람들이 우리 옷감을 골라 든다.", "외국 공장 물건은 한쪽에 밀려 먼지가 쌓였다.", "우리가 만든 물건을 쓰자는 활동이 물산 장려 운동이다."],
+   "beats": ["장터에서 사람들이 우리 옷감을 골라 듭니다.", "외국 공장 물건은 한쪽에 밀려 먼지가 쌓였습니다.", "우리가 만든 물건을 쓰자는 활동이 물산 장려 운동입니다."],
    "explain": [
-    "물산(物産)은 그 땅에서 만들어 내는 물건을 말하고, 장려(奬勵)는 '하도록 북돋운다'는 뜻이다. 1920년대 일본 공장에서 만든 값싼 물건이 쏟아져 들어오자, 우리 회사와 공장이 무너질 위기에 놓였다.",
-    "1920년 조만식 등이 평양에서 우리 물건을 쓰자는 운동을 시작했고, 1923년에는 전국으로 퍼졌다. '내 살림 내 것으로'를 외치며 무명옷을 입고 술과 담배를 줄였다.",
-    "헷갈리는 말: 국채 보상 운동(1907)은 나라 빚을 모금으로 갚자는 운동이다. 둘 다 경제의 힘으로 나라를 지키려 했다는 점은 닮았다."
+    "물산(物産)은 그 땅에서 만들어 내는 물건을 말하고, 장려(奬勵)는 '하도록 북돋운다'는 뜻입니다. 1920년대 일본 공장에서 만든 값싼 물건이 쏟아져 들어오자, 우리 회사와 공장이 무너질 위기에 놓였습니다.",
+    "1920년 조만식 등이 평양에서 우리 물건을 쓰자는 운동을 시작했고, 1923년에는 전국으로 퍼졌습니다. '내 살림 내 것으로'를 외치며 무명옷을 입고 술과 담배를 줄였습니다.",
+    "헷갈리는 말: 국채 보상 운동(1907)은 나라 빚을 모금으로 갚자는 운동입니다. 둘 다 경제의 힘으로 나라를 지키려 했다는 점은 닮았습니다."
    ],
    "img": "A busy Korean market street in the 1920s. At a stall in the center, Korean shoppers in white and grey hanbok happily pick up Korean-made cotton cloth, rubber shoes, and earthenware pots, smiling. Off to the side, a pile of shiny foreign factory goods in boxes sits untouched and covered in dust.",
    "imgKo": "1920년대 장터 가운데 가게에서 사람들이 우리 무명, 고무신, 옹기를 웃으며 고르고, 한쪽의 반짝이는 외국 공장 물건 상자들에는 먼지만 쌓여 있다."
   },
   "조선어 학회": {
    "en": "Korean Language Society",
-   "beats": ["학자들이 낱말 카드를 한 장씩 모은다.", "책상 위에 사전 원고가 높이 쌓였다.", "우리말 사전을 만들려 한 학자 모임이 조선어 학회이다."],
+   "beats": ["학자들이 낱말 카드를 한 장씩 모읍니다.", "책상 위에 사전 원고가 높이 쌓였습니다.", "우리말 사전을 만들려 한 학자 모임이 조선어 학회입니다."],
    "explain": [
-    "조선어 학회는 우리말과 한글을 연구한 학자들의 모임으로, 1921년 조선어 연구회로 시작해 1931년 이름을 바꾸었다. 오늘날 한글날의 처음인 '가갸날'을 정한 것도 이 모임이다.",
-    "학회는 1933년 한글 맞춤법 통일안을 만들어 우리말을 적는 규칙을 세웠고, 전국에서 낱말을 모아 우리말 사전을 만들었다. 그러나 1942년 일제가 회원들을 붙잡아 가두고 사전 원고를 빼앗아 갔다.",
-    "광복 직후 서울역 창고에서 잃어버린 원고를 다시 찾았고, 마침내 『큰사전』이 완성되었다. 조선어 학회는 지금의 한글 학회로 이어지고 있다."
+    "조선어 학회는 우리말과 한글을 연구한 학자들의 모임으로, 1921년 조선어 연구회로 시작해 1931년 이름을 바꾸었습니다. 오늘날 한글날의 처음인 '가갸날'을 정한 것도 이 모임입니다.",
+    "학회는 1933년 한글 맞춤법 통일안을 만들어 우리말을 적는 규칙을 세웠고, 전국에서 낱말을 모아 우리말 사전을 만들었습니다. 그러나 1942년 일제가 회원들을 붙잡아 가두고 사전 원고를 빼앗아 갔습니다.",
+    "광복 직후 서울역 창고에서 잃어버린 원고를 다시 찾았고, 마침내 『큰사전』이 완성되었습니다. 조선어 학회는 지금의 한글 학회로 이어지고 있습니다."
    ],
    "img": "In a small 1930s study room, several Korean scholars in suits and hanbok work around a big wooden table piled high with paper word cards and manuscript bundles tied with string. One scholar sorts cards into wooden drawers while another writes carefully with a brush pen; the cards show only grey squiggle lines, no readable letters. A thick unfinished book lies open in the middle of the table.",
    "imgKo": "1930년대 작은 방에서 학자들이 낱말 카드와 끈으로 묶은 원고 뭉치가 쌓인 큰 탁자에 둘러앉아, 카드를 서랍에 나누어 넣고 글을 쓴다."
@@ -369,176 +369,176 @@
  "3-2": {
   "광복": {
    "en": "liberation",
-   "beats": ["사람들이 태극기를 흔들며 거리로 나왔다.", "얼싸안고 뛰는 사람들 위로 햇살이 비친다.", "빼앗긴 나라를 다시 찾은 것이 광복이다."],
+   "beats": ["사람들이 태극기를 흔들며 거리로 나왔습니다.", "얼싸안고 뛰는 사람들 위로 햇살이 비칩니다.", "빼앗긴 나라를 다시 찾은 것이 광복입니다."],
    "explain": [
-    "광(光)은 '빛', 복(復)은 '되찾다'라는 뜻이다. 빼앗겼던 나라를 되찾아 다시 빛을 본다는 말로, 1945년 8월 15일 일본이 항복하면서 우리나라는 35년 만에 광복을 맞이하였다.",
-    "광복은 연합국이 전쟁에서 이긴 결과이기도 하지만, 나라 안팎에서 쉬지 않고 이어진 우리 겨레의 독립운동이 그 바탕이 되었다.",
-    "헷갈리는 말: 독립은 남의 지배에서 벗어나 스스로 서는 것이고, 광복은 빼앗겼던 것을 '되찾았다'는 뜻이 더 담긴 말이다. 8월 15일 광복절은 1948년 대한민국 정부가 세워진 날도 함께 기념하는 국경일이다."
+    "광(光)은 '빛', 복(復)은 '되찾다'라는 뜻입니다. 빼앗겼던 나라를 되찾아 다시 빛을 본다는 말로, 1945년 8월 15일 일본이 항복하면서 우리나라는 35년 만에 광복을 맞이하였습니다.",
+    "광복은 연합국이 전쟁에서 이긴 결과이기도 하지만, 나라 안팎에서 쉬지 않고 이어진 우리 겨레의 독립운동이 그 바탕이 되었습니다.",
+    "헷갈리는 말: 독립은 남의 지배에서 벗어나 스스로 서는 것이고, 광복은 빼앗겼던 것을 '되찾았다'는 뜻이 더 담긴 말입니다. 8월 15일 광복절은 1948년 대한민국 정부가 세워진 날도 함께 기념하는 국경일입니다."
    ],
    "img": "Seen from behind, a joyful crowd of Koreans in summer hanbok and 1940s clothes pours into a street on a bright August day, waving taegukgi flags. Some people hug each other, some jump with arms wide, and children ride on their parents' shoulders. Bright sunlight bursts through the clouds over the crowd.",
    "imgKo": "뒷모습으로 보이는 사람들이 햇살 가득한 거리로 몰려나와 태극기를 흔들고, 서로 얼싸안거나 펄쩍 뛰며 기뻐한다."
   },
   "연합국": {
    "en": "the Allies",
-   "beats": ["세계 지도에서 네 나라가 같은 파란색이다.", "네 나라가 굵은 선으로 서로 이어졌다.", "힘을 합쳐 일본과 독일에 맞선 나라들이 연합국이다."],
+   "beats": ["세계 지도에서 네 나라가 같은 파란색입니다.", "네 나라가 굵은 선으로 서로 이어졌습니다.", "힘을 합쳐 일본과 독일에 맞선 나라들이 연합국입니다."],
    "explain": [
-    "연합(聯合)은 여럿이 힘을 합친다는 뜻이다. 제2차 세계 대전은 1939년부터 1945년까지 이어졌고, 연합국에 맞선 쪽에는 독일, 일본과 함께 이탈리아도 있었다.",
-    "1945년 5월 독일이 먼저 항복했고, 8월 일본이 항복하면서 전쟁이 끝났다. 일본이 항복하자 우리나라도 광복을 맞았다.",
-    "연합국은 전쟁 중이던 1943년 카이로 회담에서 우리나라를 독립시키기로 약속하기도 했다. 한국 광복군도 연합국과 함께 일본에 맞서 싸웠다."
+    "연합(聯合)은 여럿이 힘을 합친다는 뜻입니다. 제2차 세계 대전은 1939년부터 1945년까지 이어졌고, 연합국에 맞선 쪽에는 독일, 일본과 함께 이탈리아도 있었습니다.",
+    "1945년 5월 독일이 먼저 항복했고, 8월 일본이 항복하면서 전쟁이 끝났습니다. 일본이 항복하자 우리나라도 광복을 맞았습니다.",
+    "연합국은 전쟁 중이던 1943년 카이로 회담에서 우리나라를 독립시키기로 약속하기도 했습니다. 한국 광복군도 연합국과 함께 일본에 맞서 싸웠습니다."
    ],
    "img": "A simple world map in soft colors with no labels. The United States, the United Kingdom, the Soviet Union, and China are all colored the same bright blue and connected to each other by thick glowing lines like a chain of joined hands. Germany, Italy, and Japan are shaded dark grey on the same map.",
    "imgKo": "글자 없는 세계 지도에서 미국·영국·소련·중국이 같은 파란색으로 칠해져 굵은 선으로 서로 이어져 있고, 독일·이탈리아·일본은 짙은 회색이다."
   },
   "38도선": {
    "en": "the 38th parallel",
-   "beats": ["한반도 허리에 곧은 점선이 그어졌다.", "선 위와 아래에 서로 다른 군대 천막이 있다.", "북위 38도를 따라 남북을 가른 선이 38도선이다."],
+   "beats": ["한반도 허리에 곧은 점선이 그어졌습니다.", "선 위와 아래에 서로 다른 군대 천막이 있습니다.", "북위 38도를 따라 남북을 가른 선이 38도선입니다."],
    "explain": [
-    "북위 38도는 적도에서 북쪽으로 38도 떨어진 곳을 이은 가상의 선이다. 1945년 광복 뒤 이 선을 경계로 북쪽에는 소련군이, 남쪽에는 미군이 들어와 머물렀다.",
-    "처음에는 일본군의 항복을 받으려고 잠시 나눈 선이었지만, 미국과 소련의 생각이 달라 남과 북이 점점 따로 움직이게 되었다. 땅의 모양과 상관없이 자로 그은 듯 곧게 그어져, 마을과 논밭이 둘로 갈리기도 하였다.",
-    "헷갈리는 말: 38도선은 1945년 북위 38도를 따라 곧게 그은 선이고, 휴전선은 6·25 전쟁이 멈춘 자리를 따라 1953년 정해진 구불구불한 선이다."
+    "북위 38도는 적도에서 북쪽으로 38도 떨어진 곳을 이은 가상의 선입니다. 1945년 광복 뒤 이 선을 경계로 북쪽에는 소련군이, 남쪽에는 미군이 들어와 머물렀습니다.",
+    "처음에는 일본군의 항복을 받으려고 잠시 나눈 선이었지만, 미국과 소련의 생각이 달라 남과 북이 점점 따로 움직이게 되었습니다. 땅의 모양과 상관없이 자로 그은 듯 곧게 그어져, 마을과 논밭이 둘로 갈리기도 하였습니다.",
+    "헷갈리는 말: 38도선은 1945년 북위 38도를 따라 곧게 그은 선이고, 휴전선은 6·25 전쟁이 멈춘 자리를 따라 1953년 정해진 구불구불한 선입니다."
    ],
    "img": "A clean map of the Korean peninsula on a blue sea with no labels. A perfectly straight horizontal dotted line crosses the middle of the peninsula, and the two halves are tinted slightly different pale colors. North of the line stand small grey army tents marked with a red star; south of the line stand small olive army tents marked with a white star.",
    "imgKo": "글자 없는 한반도 지도 가운데를 곧은 가로 점선이 지나고, 점선 위에는 붉은 별 천막, 아래에는 흰 별 천막이 있다."
   },
   "신탁 통치": {
    "en": "trusteeship",
-   "beats": ["한반도 모양 집의 열쇠를 네 손이 쥐고 있다.", "집 앞 가족이 열쇠를 향해 손을 뻗는다.", "다른 나라들이 대신 맡아 다스리는 것이 신탁 통치이다."],
+   "beats": ["한반도 모양 집의 열쇠를 네 손이 쥐고 있습니다.", "집 앞 가족이 열쇠를 향해 손을 뻗습니다.", "다른 나라들이 대신 맡아 다스리는 것이 신탁 통치입니다."],
    "explain": [
-    "신탁(信託)은 '믿고 맡긴다'는 뜻이다. 제2차 세계 대전 뒤 국제연합은 식민지였던 몇몇 곳을 이런 방식으로 맡아 다스리기도 했다.",
-    "1945년 12월 모스크바에서 미국, 영국, 소련의 외무 장관들이 모여 한반도에 임시 정부를 세우고 최고 5년 동안 신탁 통치를 하기로 정하였다. 이 소식에 신탁 통치를 반대하는 쪽과 회의 결정을 따르자는 쪽이 크게 맞섰다.",
-    "오랜 식민지 생활 끝에 겨우 광복을 맞은 사람들에게 신탁 통치는 또다시 남의 손에 맡겨진다는 뜻으로 받아들여졌다. 이 다툼은 남북이 하나의 정부를 세우기 어렵게 만들었다."
+    "신탁(信託)은 '믿고 맡긴다'는 뜻입니다. 제2차 세계 대전 뒤 국제연합은 식민지였던 몇몇 곳을 이런 방식으로 맡아 다스리기도 했습니다.",
+    "1945년 12월 모스크바에서 미국, 영국, 소련의 외무 장관들이 모여 한반도에 임시 정부를 세우고 최고 5년 동안 신탁 통치를 하기로 정하였습니다. 이 소식에 신탁 통치를 반대하는 쪽과 회의 결정을 따르자는 쪽이 크게 맞섰습니다.",
+    "오랜 식민지 생활 끝에 겨우 광복을 맞은 사람들에게 신탁 통치는 또다시 남의 손에 맡겨진다는 뜻으로 받아들여졌습니다. 이 다툼은 남북이 하나의 정부를 세우기 어렵게 만들었습니다."
    ],
    "img": "A traditional Korean tiled-roof house whose outline is shaped like the Korean peninsula stands in the center with its door closed. Above it, four hands reaching in from four directions, each in a differently colored sleeve, jointly hold one big ring of house keys. In front of the house, a Korean family in 1940s clothes reaches up toward the keys, looking worried.",
    "imgKo": "한반도 모양의 기와집 위에서 네 방향에서 뻗은 소매 색이 다른 네 손이 열쇠 꾸러미를 함께 쥐고, 집 앞 가족이 걱정스러운 얼굴로 열쇠를 향해 손을 뻗는다."
   },
   "국제연합": {
    "en": "the United Nations (UN)",
-   "beats": ["여러 나라 대표들이 큰 회의장에 모였다.", "하늘색 깃발 아래에서 함께 의논한다.", "세계 평화를 지키려고 만든 기구가 국제연합이다."],
+   "beats": ["여러 나라 대표들이 큰 회의장에 모였습니다.", "하늘색 깃발 아래에서 함께 의논합니다.", "세계 평화를 지키려고 만든 기구가 국제연합입니다."],
    "explain": [
-    "국제연합(UN)은 제2차 세계 대전이 끝난 1945년 10월 24일, 다시는 큰 전쟁이 일어나지 않게 하려고 51개 나라가 모여 만든 세계 기구다. 본부는 미국 뉴욕에 있다.",
-    "광복 뒤 미국과 소련의 회의로 한반도 문제가 풀리지 않자 국제연합이 이 문제를 맡았다. 소련이 북쪽의 선거를 막자, 국제연합은 선거를 할 수 있는 남한에서만이라도 총선거를 치르도록 하였다.",
-    "6·25 전쟁 때는 여러 나라의 군인이 국제연합군으로 와서 우리나라를 도왔다. 우리나라는 1991년 북한과 함께 국제연합에 가입하였고, 10월 24일은 국제연합의 날이다."
+    "국제연합(UN)은 제2차 세계 대전이 끝난 1945년 10월 24일, 다시는 큰 전쟁이 일어나지 않게 하려고 51개 나라가 모여 만든 세계 기구입니다. 본부는 미국 뉴욕에 있습니다.",
+    "광복 뒤 미국과 소련의 회의로 한반도 문제가 풀리지 않자 국제연합이 이 문제를 맡았습니다. 소련이 북쪽의 선거를 막자, 국제연합은 선거를 할 수 있는 남한에서만이라도 총선거를 치르도록 하였습니다.",
+    "6·25 전쟁 때는 여러 나라의 군인이 국제연합군으로 와서 우리나라를 도왔습니다. 우리나라는 1991년 북한과 함께 국제연합에 가입하였고, 10월 24일은 국제연합의 날입니다."
    ],
    "img": "A large semicircular assembly hall with curved rows of desks, where delegates of many nationalities in various suits and traditional clothes sit listening. On the front wall hangs a big light-blue flag with a white emblem of a world map surrounded by olive branches. One delegate raises a hand to speak.",
    "imgKo": "반원 모양의 큰 회의장에 여러 나라 대표들이 앉아 있고, 앞벽에 올리브 가지로 둘린 흰 세계 지도가 그려진 하늘색 깃발이 걸려 있다."
   },
   "5·10 총선거": {
    "en": "May 10 general election",
-   "beats": ["어른들이 투표소 앞에 길게 줄을 섰다.", "한 사람씩 나무 상자에 표를 넣는다.", "1948년 처음 치른 민주 선거가 5·10 총선거이다."],
+   "beats": ["어른들이 투표소 앞에 길게 줄을 섰습니다.", "한 사람씩 나무 상자에 표를 넣습니다.", "1948년 처음 치른 민주 선거가 5·10 총선거입니다."],
    "explain": [
-    "총선거는 국회의원 전체를 한꺼번에 뽑는 선거다. 이 선거로 국회의원 198명이 뽑혔다.",
-    "재산이나 신분, 남녀와 관계없이 만 21세 이상 모든 국민이 한 표씩 똑같이 투표할 수 있었다. 글을 모르는 사람도 투표할 수 있도록 후보마다 막대기 수로 기호를 나타냈다.",
-    "이 선거로 뽑힌 국회의원들이 모여 제헌 국회를 열었다. 그러나 남한만의 선거가 남북 분단을 굳힌다며 반대한 사람들도 있었다."
+    "총선거는 국회의원 전체를 한꺼번에 뽑는 선거입니다. 이 선거로 국회의원 198명이 뽑혔습니다.",
+    "재산이나 신분, 남녀와 관계없이 만 21세 이상 모든 국민이 한 표씩 똑같이 투표할 수 있었습니다. 글을 모르는 사람도 투표할 수 있도록 후보마다 막대기 수로 기호를 나타냈습니다.",
+    "이 선거로 뽑힌 국회의원들이 모여 제헌 국회를 열었습니다. 그러나 남한만의 선거가 남북 분단을 굳힌다며 반대한 사람들도 있었습니다."
    ],
    "img": "Outside a small school building used as a polling station in 1948, a long line of Korean men and women of all ages—farmers in white clothes, women in hanbok, elderly people with canes—waits patiently. At the front, a woman drops a folded blank ballot paper into a wooden ballot box, and a voting booth with a cloth curtain stands beside her. Everyone looks proud and serious.",
    "imgKo": "1948년 투표소가 된 학교 앞에 남녀노소가 길게 줄을 서 있고, 맨 앞의 여성이 접은 투표용지를 나무 투표함에 넣는다. 옆에는 천으로 가린 기표소가 있다."
   },
   "제헌 국회": {
    "en": "Constitutional Assembly",
-   "beats": ["새로 뽑힌 의원들이 회의장에 모였다.", "몇몇이 함께 두꺼운 새 책에 글을 써 넣는다.", "헌법을 만든 우리나라 첫 국회가 제헌 국회이다."],
+   "beats": ["새로 뽑힌 의원들이 회의장에 모였습니다.", "몇몇이 함께 두꺼운 새 책에 글을 써 넣습니다.", "헌법을 만든 우리나라 첫 국회가 제헌 국회입니다."],
    "explain": [
-    "제(制)는 '만들다', 헌(憲)은 '헌법'을 뜻한다. 5·10 총선거에서 뽑힌 의원들이 1948년 5월 31일에 처음 모였다.",
-    "제헌 국회는 나라 이름을 '대한민국'으로 정하고, 나라의 가장 높은 법인 헌법을 만들었다. 이어서 이승만을 초대 대통령으로 뽑았고, 1948년 8월 15일 대한민국 정부가 세워졌다.",
-    "헷갈리는 말: 제헌 국회는 헌법을 만든 의회, 곧 사람들의 모임이고, 제헌 헌법은 그들이 만든 법 자체이다."
+    "제(制)는 '만들다', 헌(憲)은 '헌법'을 뜻합니다. 5·10 총선거에서 뽑힌 의원들이 1948년 5월 31일에 처음 모였습니다.",
+    "제헌 국회는 나라 이름을 '대한민국'으로 정하고, 나라의 가장 높은 법인 헌법을 만들었습니다. 이어서 이승만을 초대 대통령으로 뽑았고, 1948년 8월 15일 대한민국 정부가 세워졌습니다.",
+    "헷갈리는 말: 제헌 국회는 헌법을 만든 의회, 곧 사람들의 모임이고, 제헌 헌법은 그들이 만든 법 자체입니다."
    ],
    "img": "A 1948 assembly hall in Seoul with a taegukgi flag hanging high on the front wall. Newly elected lawmakers in suits and hanbok sit in rows of wooden desks while one speaks at the podium. On a table in the center lies a thick new book, and several lawmakers lean over it together, writing in it.",
    "imgKo": "태극기가 걸린 1948년 회의장에서 양복과 한복 차림 의원들이 줄지어 앉아 있고, 가운데 탁자에서 몇몇이 함께 두꺼운 새 책에 글을 써 넣는다."
   },
   "제헌 헌법": {
    "en": "first Constitution of Korea",
-   "beats": ["태극기 아래 두꺼운 책이 펼쳐져 있다.", "책에서 나온 빛줄기가 여러 사람에게 닿는다.", "대한민국이 처음 만든 가장 높은 법이 제헌 헌법이다."],
+   "beats": ["태극기 아래 두꺼운 책이 펼쳐져 있습니다.", "책에서 나온 빛줄기가 여러 사람에게 닿습니다.", "대한민국이 처음 만든 가장 높은 법이 제헌 헌법입니다."],
    "explain": [
-    "헌법은 나라의 가장 높은 법으로, 다른 모든 법은 헌법에 어긋나면 안 된다.",
-    "제헌 헌법 제1조는 '대한민국은 민주공화국이다.'이고, 제2조는 나라의 주인 되는 힘인 주권이 국민에게 있다고 밝혔다. 첫머리에는 3·1 운동의 독립 정신을 이어받는다고 적었다.",
-    "헌법을 널리 알린 7월 17일을 제헌절로 정해 해마다 기념한다. 헌법은 그 뒤 여러 번 고쳐졌지만, 이 두 문장은 지금 헌법 제1조에 그대로 이어지고 있다."
+    "헌법은 나라의 가장 높은 법으로, 다른 모든 법은 헌법에 어긋나면 안 됩니다.",
+    "제헌 헌법 제1조는 '대한민국은 민주공화국이다.'이고, 제2조는 나라의 주인 되는 힘인 주권이 국민에게 있다고 밝혔습니다. 첫머리에는 3·1 운동의 독립 정신을 이어받는다고 적었습니다.",
+    "헌법을 널리 알린 7월 17일을 제헌절로 정해 해마다 기념합니다. 헌법은 그 뒤 여러 번 고쳐졌지만, 이 두 문장은 지금 헌법 제1조에 그대로 이어지고 있습니다."
    ],
    "img": "In the center, a thick open book with a dark blue cover lies on a wooden podium beneath a large taegukgi flag; its pages show only faint grey lines. Warm golden beams of light flow out from the book and reach a circle of ordinary Korean people around it—a farmer, a merchant, a mother holding a child, a student, and an elderly man—who look up at it.",
    "imgKo": "태극기 아래 받침대 위에 펼쳐진 두꺼운 책에서 금빛 줄기가 뻗어 나와, 둘러선 농부·상인·아이 안은 엄마·학생·할아버지에게 닿는다."
   },
   "남침": {
    "en": "invasion from the north",
-   "beats": ["한반도 지도 가운데 곧은 점선이 있다.", "북쪽에서 굵은 화살표들이 선을 넘어 내려온다.", "북쪽에서 남쪽으로 쳐들어온 것이 남침이다."],
+   "beats": ["한반도 지도 가운데 곧은 점선이 있습니다.", "북쪽에서 굵은 화살표들이 선을 넘어 내려옵니다.", "북쪽에서 남쪽으로 쳐들어온 것이 남침입니다."],
    "explain": [
-    "남(南)은 '남쪽', 침(侵)은 '쳐들어가다'라는 뜻이다. 1950년 6월 25일 새벽, 북한군이 38도선 전체에 걸쳐 갑자기 남쪽으로 쳐들어오면서 6·25 전쟁이 시작되었다.",
-    "북한군은 소련의 도움을 받아 탱크를 앞세우고 내려와 3일 만에 서울을 차지했고, 국군은 낙동강까지 밀려났다.",
-    "헷갈리는 말: 북진은 남쪽에서 북쪽으로 나아가는 것을 말한다. 인천 상륙 작전 뒤 국군과 국제연합군은 북진하여 압록강 가까이까지 올라갔다."
+    "남(南)은 '남쪽', 침(侵)은 '쳐들어가다'라는 뜻입니다. 1950년 6월 25일 새벽, 북한군이 38도선 전체에 걸쳐 갑자기 남쪽으로 쳐들어오면서 6·25 전쟁이 시작되었습니다.",
+    "북한군은 소련의 도움을 받아 탱크를 앞세우고 내려와 3일 만에 서울을 차지했고, 국군은 낙동강까지 밀려났습니다.",
+    "헷갈리는 말: 북진은 남쪽에서 북쪽으로 나아가는 것을 말합니다. 인천 상륙 작전 뒤 국군과 국제연합군은 북진하여 압록강 가까이까지 올라갔습니다."
    ],
    "img": "A clean map of the Korean peninsula with no labels and a straight horizontal dotted line across the middle. Several thick red arrows start in the north, cross the dotted line, and push deep toward the south. The southern half is pale and calm; there are no people, explosions, or weapons on the map.",
    "imgKo": "글자 없는 한반도 지도 가운데 곧은 점선이 있고, 북쪽에서 시작한 굵은 빨간 화살표들이 점선을 넘어 남쪽 깊이 내려온다."
   },
   "인천 상륙 작전": {
    "en": "Incheon Landing",
-   "beats": ["많은 배가 서해를 따라 올라가 항구에 닿는다.", "뭍에 오른 군대가 북쪽 군대의 뒤를 끊는다.", "바다에서 인천에 올라 반격한 싸움이 인천 상륙 작전이다."],
+   "beats": ["많은 배가 서해를 따라 올라가 항구에 닿습니다.", "뭍에 오른 군대가 북쪽 군대의 뒤를 끊습니다.", "바다에서 인천에 올라 반격한 싸움이 인천 상륙 작전입니다."],
    "explain": [
-    "상륙(上陸)은 배에서 내려 뭍(육지)에 오른다는 뜻이다. 낙동강까지 밀려 있던 국군과 국제연합군은 1950년 9월 15일 이 작전으로 전쟁의 흐름을 뒤집었다.",
-    "인천은 밀물과 썰물의 차이가 매우 커서 상륙하기 어려운 곳이라 북한군이 크게 대비하지 않았다. 뒤가 끊긴 북한군이 무너지면서 국군은 9월 28일 서울을 되찾았다.",
-    "이 작전은 국제연합군 사령관 맥아더 장군이 이끌었다. 헷갈리는 말: 착륙은 비행기가 땅에 내려앉는 것이다."
+    "상륙(上陸)은 배에서 내려 뭍(육지)에 오른다는 뜻입니다. 낙동강까지 밀려 있던 국군과 국제연합군은 1950년 9월 15일 이 작전으로 전쟁의 흐름을 뒤집었습니다.",
+    "인천은 밀물과 썰물의 차이가 매우 커서 상륙하기 어려운 곳이라 북한군이 크게 대비하지 않았습니다. 뒤가 끊긴 북한군이 무너지면서 국군은 9월 28일 서울을 되찾았습니다.",
+    "이 작전은 국제연합군 사령관 맥아더 장군이 이끌었습니다. 헷갈리는 말: 착륙은 비행기가 땅에 내려앉는 것입니다."
    ],
    "img": "A clean map of the Korean peninsula with no labels. Only a small corner at the southeast tip is shaded blue, and several red arrows in the middle point south toward it. Many small ship icons sail up the western sea and reach a port on the west coast near the middle of the peninsula, and from there a thick blue arrow cuts inland toward the capital area, behind the red arrows.",
    "imgKo": "글자 없는 한반도 지도 남동쪽 끝만 파랗게 칠해져 있고, 작은 배들이 서해를 따라 올라가 가운데쯤 서쪽 항구에 닿은 뒤, 굵은 파란 화살표가 남쪽을 향한 빨간 화살표들 뒤를 끊으며 서울 쪽으로 들어간다."
   },
   "피란민": {
    "en": "war refugees",
-   "beats": ["사람들이 보따리를 이고 지고 길을 걷는다.", "아이 손을 잡고 끊어진 다리 옆을 지난다.", "난리를 피해 고향을 떠난 사람들이 피란민이다."],
+   "beats": ["사람들이 보따리를 이고 지고 길을 걷습니다.", "아이 손을 잡고 끊어진 다리 옆을 지납니다.", "난리를 피해 고향을 떠난 사람들이 피란민입니다."],
    "explain": [
-    "피(避)는 '피하다', 란(亂)은 '난리, 전쟁'이라는 뜻이다.",
-    "6·25 전쟁 때 수많은 사람이 짐을 이고 지고 남쪽으로 내려왔다. 1950년 12월 흥남 부두에서는 배 한 척에 1만 4천여 명이 타고 피란하기도 했다. 임시 수도였던 부산에는 전국에서 온 피란민이 산비탈에 판잣집을 짓고 모여 살았다.",
-    "헷갈리는 말: 피난은 지진, 홍수, 불 같은 재난을 피하는 것이고, 피란은 전쟁 같은 난리를 피하는 것이다."
+    "피(避)는 '피하다', 란(亂)은 '난리, 전쟁'이라는 뜻입니다.",
+    "6·25 전쟁 때 수많은 사람이 짐을 이고 지고 남쪽으로 내려왔습니다. 1950년 12월 흥남 부두에서는 배 한 척에 1만 4천여 명이 타고 피란하기도 했습니다. 임시 수도였던 부산에는 전국에서 온 피란민이 산비탈에 판잣집을 짓고 모여 살았습니다.",
+    "헷갈리는 말: 피난은 지진, 홍수, 불 같은 재난을 피하는 것이고, 피란은 전쟁 같은 난리를 피하는 것입니다."
    ],
    "img": "Seen from behind, a long line of Korean families in 1950s winter clothes walks south along a snowy riverside road. Mothers carry cloth bundles on their heads, fathers carry loads on wooden A-frame carriers, and children hold their parents' hands. Beside them, a steel bridge with its middle section fallen stands over the frozen river; no fighting is shown.",
    "imgKo": "뒷모습으로 보이는 피란 행렬이 눈 덮인 강가 길을 걷는다. 엄마는 보따리를 이고 아빠는 지게를 졌으며, 옆에는 가운데가 끊어진 철교가 있다."
   },
   "정전 협정": {
    "en": "armistice",
-   "beats": ["긴 탁자 양쪽에서 두 편 대표가 서명한다.", "탁자 위에 일시 정지 표시가 떠 있다.", "싸움을 멈추기로 한 약속이 정전 협정이다."],
+   "beats": ["긴 탁자 양쪽에서 두 편 대표가 서명합니다.", "탁자 위에 일시 정지 표시가 떠 있습니다.", "싸움을 멈추기로 한 약속이 정전 협정입니다."],
    "explain": [
-    "정(停)은 '멈추다', 전(戰)은 '싸움'이라는 뜻이다. 휴전 협정이라고도 부른다.",
-    "6·25 전쟁은 1951년부터 2년 넘게 회담을 이어 간 끝에, 1953년 7월 27일 판문점에서 국제연합군과 북한군, 중국군 대표가 정전 협정에 서명하였다. 대한민국 정부는 통일을 이루지 못한 채 싸움을 멈추는 데 반대해 서명하지 않았다.",
-    "헷갈리는 말: 종전은 전쟁이 완전히 끝나는 것이다. 정전은 싸움을 멈춘 것일 뿐이라서, 한반도는 지금도 전쟁이 완전히 끝나지 않은 상태다."
+    "정(停)은 '멈추다', 전(戰)은 '싸움'이라는 뜻입니다. 휴전 협정이라고도 부릅니다.",
+    "6·25 전쟁은 1951년부터 2년 넘게 회담을 이어 간 끝에, 1953년 7월 27일 판문점에서 국제연합군과 북한군, 중국군 대표가 정전 협정에 서명하였습니다. 대한민국 정부는 통일을 이루지 못한 채 싸움을 멈추는 데 반대해 서명하지 않았습니다.",
+    "헷갈리는 말: 종전은 전쟁이 완전히 끝나는 것입니다. 정전은 싸움을 멈춘 것일 뿐이라서, 한반도는 지금도 전쟁이 완전히 끝나지 않은 상태입니다."
    ],
    "img": "Inside a simple wooden hut, a long table separates two groups of uniformed officials sitting on opposite sides, each signing their own copies of documents. Each side has its own small plain flag stand on the table. Floating above the center of the table is a big glowing pause symbol made of two vertical bars, and through the window a quiet, empty hillside can be seen.",
    "imgKo": "나무 건물 안 긴 탁자 양쪽에서 제복 입은 두 편 대표들이 각자 문서에 서명하고, 탁자 위에 두 줄짜리 일시 정지 표시가 떠 있다."
   },
   "휴전선": {
    "en": "ceasefire line",
-   "beats": ["지도 위 곧은 점선이 흐리게 남았다.", "그 위로 구불구불한 굵은 선이 새로 그어졌다.", "정전 협정으로 정한 남북의 경계가 휴전선이다."],
+   "beats": ["지도 위 곧은 점선이 흐리게 남았습니다.", "그 위로 구불구불한 굵은 선이 새로 그어졌습니다.", "정전 협정으로 정한 남북의 경계가 휴전선입니다."],
    "explain": [
-    "휴(休)는 '쉬다', 전(戰)은 '싸움'이라는 뜻이다. 휴전선은 1953년 정전 협정을 맺을 때 양쪽 군대가 마주하고 있던 자리를 따라 그은 군사 경계선이다.",
-    "휴전선의 길이는 약 250 km로, 서해안 쪽에서 동해안까지 한반도의 허리를 가로지른다. 휴전선에서 남북으로 각각 2 km씩은 군대를 두지 않기로 한 비무장 지대(DMZ)다.",
-    "헷갈리는 말: 38도선은 1945년 북위 38도를 따라 곧게 그은 선이고, 휴전선은 싸움이 멈춘 자리를 따라 구불구불하게 정해졌다. 그래서 서쪽은 38도선보다 아래로, 동쪽은 위로 지난다."
+    "휴(休)는 '쉬다', 전(戰)은 '싸움'이라는 뜻입니다. 휴전선은 1953년 정전 협정을 맺을 때 양쪽 군대가 마주하고 있던 자리를 따라 그은 군사 경계선입니다.",
+    "휴전선의 길이는 약 250 km로, 서해안 쪽에서 동해안까지 한반도의 허리를 가로지릅니다. 휴전선에서 남북으로 각각 2 km씩은 군대를 두지 않기로 한 비무장 지대(DMZ)입니다.",
+    "헷갈리는 말: 38도선은 1945년 북위 38도를 따라 곧게 그은 선이고, 휴전선은 싸움이 멈춘 자리를 따라 구불구불하게 정해졌습니다. 그래서 서쪽은 38도선보다 아래로, 동쪽은 위로 지납니다."
    ],
    "img": "A clean map of the Korean peninsula with no labels. A faint straight horizontal dotted line crosses the middle, and over it a bold wavy line runs across the peninsula's waist, dipping below the dotted line in the west and rising above it in the east. A thin pale-green band runs along both sides of the bold line.",
    "imgKo": "글자 없는 한반도 지도에 흐린 곧은 점선이 있고, 그 위로 서쪽은 점선보다 아래, 동쪽은 위로 지나는 구불구불한 굵은 선이 그어져 있으며 양옆으로 연둣빛 띠가 있다."
   },
   "이산가족": {
    "en": "separated families",
-   "beats": ["할머니가 반쪽만 남은 가족사진을 본다.", "창밖 먼 산에는 철조망이 길게 이어진다.", "흩어져 만나지 못하는 식구가 이산가족이다."],
+   "beats": ["할머니가 반쪽만 남은 가족사진을 봅니다.", "창밖 먼 산에는 철조망이 길게 이어집니다.", "흩어져 만나지 못하는 식구가 이산가족입니다."],
    "explain": [
-    "이(離)는 '떨어지다', 산(散)은 '흩어지다'라는 뜻이다.",
-    "6·25 전쟁 때 피란길에 헤어지거나 휴전선에 가로막혀 남과 북으로 갈린 가족이 아주 많았다. 1983년에는 텔레비전 방송으로 남한 안에서 헤어진 가족을 찾아 주기도 하였다.",
-    "1985년 처음으로 남북 이산가족이 서로 만났고, 그 뒤에도 몇 차례 만남이 이루어졌다. 그러나 끝내 만나지 못한 채 세상을 떠나는 분들이 해마다 늘고 있다."
+    "이(離)는 '떨어지다', 산(散)은 '흩어지다'라는 뜻입니다.",
+    "6·25 전쟁 때 피란길에 헤어지거나 휴전선에 가로막혀 남과 북으로 갈린 가족이 아주 많았습니다. 1983년에는 텔레비전 방송으로 남한 안에서 헤어진 가족을 찾아 주기도 하였습니다.",
+    "1985년 처음으로 남북 이산가족이 서로 만났고, 그 뒤에도 몇 차례 만남이 이루어졌습니다. 그러나 끝내 만나지 못한 채 세상을 떠나는 분들이 해마다 늘고 있습니다."
    ],
    "img": "An elderly Korean grandmother in a simple cardigan sits by a window at home, holding the left half of a torn old black-and-white family photo and gazing at it tenderly. Through the window, far-off green mountains are crossed by a long barbed-wire fence. The table beside her is empty, as if waiting for the missing half.",
    "imgKo": "할머니가 창가에 앉아 찢어진 흑백 가족사진의 왼쪽 반을 들여다보고, 창밖 먼 산에는 철조망이 길게 이어진다."
   },
   "전쟁고아": {
    "en": "war orphan",
-   "beats": ["보육원 마당에 아이들이 모여 앉았다.", "돌보는 선생님이 죽을 한 그릇씩 떠 준다.", "전쟁으로 부모를 잃은 아이가 전쟁고아이다."],
+   "beats": ["보육원 마당에 아이들이 모여 앉았습니다.", "돌보는 선생님이 죽을 한 그릇씩 떠 줍니다.", "전쟁으로 부모를 잃은 아이가 전쟁고아입니다."],
    "explain": [
-    "고아(孤兒)의 孤는 '외로울 고', 兒는 '아이 아'다.",
-    "6·25 전쟁으로 아주 많은 전쟁고아가 생겼다. 이 아이들은 보육원에서 자라거나, 거리에서 신문을 팔고 구두를 닦으며 어렵게 살아야 했다.",
-    "나라 안팎의 많은 사람과 구호 단체가 전쟁고아를 돌보았고, 다른 나라 가정으로 입양된 아이들도 많았다. 전쟁은 싸움이 끝난 뒤에도 이렇게 오랫동안 아픔을 남긴다."
+    "고아(孤兒)의 孤는 '외로울 고', 兒는 '아이 아'입니다.",
+    "6·25 전쟁으로 아주 많은 전쟁고아가 생겼습니다. 이 아이들은 보육원에서 자라거나, 거리에서 신문을 팔고 구두를 닦으며 어렵게 살아야 했습니다.",
+    "나라 안팎의 많은 사람과 구호 단체가 전쟁고아를 돌보았고, 다른 나라 가정으로 입양된 아이들도 많았습니다. 전쟁은 싸움이 끝난 뒤에도 이렇게 오랫동안 아픔을 남깁니다."
    ],
    "img": "In the yard of a 1950s Korean orphanage with a simple wooden building, children in patched, oversized clothes sit together on a mat. A kind caretaker woman in a white apron ladles warm porridge into a bowl for each child, and a small girl holds her little brother's hand tightly. The mood is gentle and hopeful in soft morning sunlight.",
    "imgKo": "1950년대 보육원 마당에서 기운 옷을 입은 아이들이 돗자리에 앉아 있고, 흰 앞치마의 선생님이 죽을 한 그릇씩 떠 주며, 작은 여자아이가 동생 손을 꼭 잡고 있다."
   },
   "분단": {
    "en": "division of Korea",
-   "beats": ["들판을 지나던 철길이 철조망 앞에서 끊겼다.", "녹슨 기차가 멈춘 채 서 있다.", "하나였던 땅이 갈라져 끊어진 것이 분단이다."],
+   "beats": ["들판을 지나던 철길이 철조망 앞에서 끊겼습니다.", "녹슨 기차가 멈춘 채 서 있습니다.", "하나였던 땅이 갈라져 끊어진 것이 분단입니다."],
    "explain": [
-    "분(分)은 '나누다', 단(斷)은 '끊다'라는 뜻이다.",
-    "우리나라는 광복 뒤 38도선으로 나뉘었고, 1948년 남과 북에 따로 정부가 세워졌다. 6·25 전쟁을 겪으며 서로 미워하는 마음이 커져 분단은 더욱 굳어졌다.",
-    "서울과 신의주를 잇던 경의선 철길도 끊겼다. 비무장 지대에 오랫동안 멈춰 서 있던 증기 기관차는 지금 임진각으로 옮겨져 분단의 아픔을 보여 준다."
+    "분(分)은 '나누다', 단(斷)은 '끊다'라는 뜻입니다.",
+    "우리나라는 광복 뒤 38도선으로 나뉘었고, 1948년 남과 북에 따로 정부가 세워졌습니다. 6·25 전쟁을 겪으며 서로 미워하는 마음이 커져 분단은 더욱 굳어졌습니다.",
+    "서울과 신의주를 잇던 경의선 철길도 끊겼습니다. 비무장 지대에 오랫동안 멈춰 서 있던 증기 기관차는 지금 임진각으로 옮겨져 분단의 아픔을 보여 줍니다."
    ],
    "img": "A railway track runs north through tall autumn grass and suddenly ends at a high barbed-wire fence. An old rusted steam locomotive sits stopped on the track just before the fence, with weeds growing around its wheels. Beyond the fence, the same track continues faintly into the distant hills on the other side.",
    "imgKo": "가을 풀숲을 지나는 철길이 높은 철조망 앞에서 끊기고, 그 앞에 녹슨 증기 기관차가 멈춰 서 있다. 철조망 너머에도 철길이 희미하게 이어진다."

@@ -2,77 +2,77 @@
  "reading": {
   "전자책": {
    "en": "e-book",
-   "beats": ["도윤이는 무거운 종이책을 한 아름 안았다.", "하린이는 얇은 태블릿 하나로 책을 읽는다.", "기기 화면으로 읽는 책이 전자책이다."],
+   "beats": ["도윤이는 무거운 종이책을 한 아름 안았습니다.", "하린이는 얇은 태블릿 하나로 책을 읽습니다.", "기기 화면으로 읽는 책이 전자책입니다."],
    "explain": [
-    "기기 하나에 책을 수십 권 담을 수 있어서 여행 갈 때도 가방이 무거워지지 않는다. 글자를 크게 키우거나 낱말을 검색해 그 낱말이 나온 쪽으로 바로 넘어갈 수도 있다.",
-    "헷갈리는 말: 오디오 북은 귀로 듣는 책이다. 전자책은 화면에 뜬 글을 눈으로 읽는다.",
-    "도서관 누리집에서 전자책을 빌리면 반납 날짜가 지났을 때 저절로 반납되어 더 이상 열리지 않는다."
+    "기기 하나에 책을 수십 권 담을 수 있어서 여행 갈 때도 가방이 무거워지지 않습니다. 글자를 크게 키우거나 낱말을 검색해 그 낱말이 나온 쪽으로 바로 넘어갈 수도 있습니다.",
+    "헷갈리는 말: 오디오 북은 귀로 듣는 책입니다. 전자책은 화면에 뜬 글을 눈으로 읽습니다.",
+    "도서관 누리집에서 전자책을 빌리면 반납 날짜가 지났을 때 저절로 반납되어 더 이상 열리지 않습니다."
    ],
    "img": "Inside a city bus, two children sit side by side. On the left, DOYUN struggles with a tall wobbling stack of thick paper books in his arms and a bulging backpack. On the right, HARIN relaxes holding one thin tablet; the screen shows a book page drawn only as grey lines and a small picture, with a faint stack of tiny book icons floating out of the tablet to show many books inside it.",
    "imgKo": "버스 안에서 도윤이는 두꺼운 종이책 더미를 낑낑 안고 있고, 옆자리 하린이는 얇은 태블릿 하나로 편하게 책을 읽는다. 태블릿에서 작은 책 그림 여러 권이 떠올라 책이 많이 들어 있음을 보여 준다."
   },
   "오디오 북": {
    "en": "audiobook",
-   "beats": ["하린이가 눈을 감고 헤드폰을 썼다.", "귀로 들리는 동화가 머릿속에 그림처럼 떠오른다.", "귀로 듣도록 만든 책이 오디오 북이다."],
+   "beats": ["하린이가 눈을 감고 헤드폰을 썼습니다.", "귀로 들리는 동화가 머릿속에 그림처럼 떠오릅니다.", "귀로 듣도록 만든 책이 오디오 북입니다."],
    "explain": [
-    "'오디오'는 '소리'를 뜻하는 영어에서 왔다. 주로 성우나 지은이가 읽어 주며, 차를 타거나 걷거나 잠들기 전처럼 글자를 보기 어려울 때 들을 수 있다.",
-    "헷갈리는 말: 전자책은 화면에 뜬 글을 눈으로 읽는 책이다. 둘 다 기기로 읽지만 쓰는 감각이 눈과 귀로 다르다.",
-    "앞이 잘 보이지 않는 사람이나 글씨가 작아 읽기 힘든 어르신에게도 오디오 북은 좋은 길동무가 된다."
+    "'오디오'는 '소리'를 뜻하는 영어에서 왔습니다. 주로 성우나 지은이가 읽어 주며, 차를 타거나 걷거나 잠들기 전처럼 글자를 보기 어려울 때 들을 수 있습니다.",
+    "헷갈리는 말: 전자책은 화면에 뜬 글을 눈으로 읽는 책입니다. 둘 다 기기로 읽지만 쓰는 감각이 눈과 귀로 다릅니다.",
+    "앞이 잘 보이지 않는 사람이나 글씨가 작아 읽기 힘든 어르신에게도 오디오 북은 좋은 길동무가 됩니다."
    ],
    "img": "In the back seat of a family car at dusk, HARIN sits with her eyes closed, smiling, wearing headphones connected to a phone on her lap. Soft sound-wave lines flow from the headphones, and above her head a large dreamy cloud shows a fairy-tale scene of a rabbit and a turtle racing. A closed paper book rests unused on the seat beside her.",
    "imgKo": "저녁 무렵 차 뒷자리에서 하린이가 눈을 감고 헤드폰으로 무언가를 들으며 웃는다. 머리 위 꿈 구름 속에 토끼와 거북이 경주 장면이 떠오르고, 옆자리에는 덮어 둔 종이책이 놓여 있다."
   },
   "증강 현실": {
    "en": "augmented reality (AR)",
-   "beats": ["책상 위에는 펼친 그림책만 놓여 있다.", "휴대 전화 화면 속에서는 공룡이 책상 위를 걷는다.", "진짜 장면에 그림을 겹쳐 보이는 기술이 증강 현실이다."],
+   "beats": ["책상 위에는 펼친 그림책만 놓여 있습니다.", "휴대 전화 화면 속에서는 공룡이 책상 위를 걷습니다.", "진짜 장면에 그림을 겹쳐 보이는 기술이 증강 현실입니다."],
    "explain": [
-    "증강(增強)은 '더하여 세게 한다'는 뜻으로, 진짜 장면에 그림을 더해 준다는 데서 붙은 이름이다. 휴대 전화 카메라로 책상을 비추면 화면 속 책상은 그대로 보이고, 그 위에 공룡이나 행성 같은 그림이 얹힌다.",
-    "헷갈리는 말: 가상 현실은 안경처럼 생긴 기기를 쓰면 진짜 주변은 보이지 않고 컴퓨터가 만든 세상만 보인다. 증강 현실은 진짜 주변이 그대로 보인다는 점이 다르다.",
-    "증강 현실 책 말고도, 휴대 전화로 길을 비추면 화면 위에 가는 길 화살표가 뜨는 길 안내나 박물관 안내에도 쓰인다."
+    "증강(增強)은 '더하여 세게 한다'는 뜻으로, 진짜 장면에 그림을 더해 준다는 데서 붙은 이름입니다. 휴대 전화 카메라로 책상을 비추면 화면 속 책상은 그대로 보이고, 그 위에 공룡이나 행성 같은 그림이 얹힙니다.",
+    "헷갈리는 말: 가상 현실은 안경처럼 생긴 기기를 쓰면 진짜 주변은 보이지 않고 컴퓨터가 만든 세상만 보입니다. 증강 현실은 진짜 주변이 그대로 보인다는 점이 다릅니다.",
+    "증강 현실 책 말고도, 휴대 전화로 길을 비추면 화면 위에 가는 길 화살표가 뜨는 길 안내나 박물관 안내에도 쓰입니다."
    ],
    "img": "DOYUN sits at his desk holding a smartphone over an open picture book. The real desk around the phone shows only the open book and a pencil cup, nothing else. On the phone screen, the same desk appears with a small green dinosaur standing on the book and walking across it, with tiny sparkles at its feet.",
    "imgKo": "도윤이가 책상 위 펼친 그림책에 휴대 전화를 비춘다. 실제 책상에는 책뿐인데, 휴대 전화 화면 속 책상에는 작은 초록 공룡이 책 위를 걸어 다닌다."
   },
   "대출": {
    "en": "borrowing (checkout)",
-   "beats": ["하린이가 사서 선생님께 도서관 카드를 내민다.", "책을 받아 들고 도서관 문밖으로 나간다.", "정한 날까지 빌려 가는 일이 대출이다."],
+   "beats": ["하린이가 사서 선생님께 도서관 카드를 내밉니다.", "책을 받아 들고 도서관 문밖으로 나갑니다.", "정한 날까지 빌려 가는 일이 대출입니다."],
    "explain": [
-    "貸(빌려줄 대)와 出(나갈 출)을 합친 말이다. 도서관 쪽에서 보면 책을 빌려주어 밖으로 내보내는 일이라서 대출이라고 한다.",
-    "헷갈리는 말: 반납은 빌린 것을 다시 돌려주는 일로, 대출과 짝을 이룬다. 은행에서 돈을 빌리는 일도 대출이라고 한다.",
-    "도서관마다 한 번에 빌릴 수 있는 권수와 날짜가 정해져 있다. 날짜를 넘기면 한동안 대출을 못 하게 하는 곳도 있다."
+    "貸(빌려줄 대)와 出(나갈 출)을 합친 말입니다. 도서관 쪽에서 보면 책을 빌려주어 밖으로 내보내는 일이라서 대출이라고 합니다.",
+    "헷갈리는 말: 반납은 빌린 것을 다시 돌려주는 일로, 대출과 짝을 이룹니다. 은행에서 돈을 빌리는 일도 대출이라고 합니다.",
+    "도서관마다 한 번에 빌릴 수 있는 권수와 날짜가 정해져 있습니다. 날짜를 넘기면 한동안 대출을 못 하게 하는 곳도 있습니다."
    ],
    "img": "At a bright school library desk, HARIN hands her library card to a smiling Korean librarian, who passes her two books. A big curved arrow runs from the bookshelf behind the desk, through HARIN's arms, toward the open library door. On the desk stands a small calendar with one day circled, with no numbers on it.",
    "imgKo": "학교 도서관 책상에서 하린이가 사서 선생님께 카드를 내밀고 책 두 권을 받는다. 책꽂이에서 하린이를 거쳐 문밖으로 나가는 큰 화살표가 있고, 책상 위 달력에는 하루에 동그라미가 쳐 있다."
   },
   "반납": {
    "en": "return",
-   "beats": ["도윤이가 빌렸던 책을 들고 도서관에 왔다.", "책이 반납함을 지나 책꽂이 빈자리로 돌아간다.", "빌린 것을 다시 돌려주는 일이 반납이다."],
+   "beats": ["도윤이가 빌렸던 책을 들고 도서관에 왔습니다.", "책이 반납함을 지나 책꽂이 빈자리로 돌아갑니다.", "빌린 것을 다시 돌려주는 일이 반납입니다."],
    "explain": [
-    "返(돌이킬 반)과 納(들일 납)을 합친 말로, 빌려 간 것을 돌려 들여놓는다는 뜻이다. 도서관 앞에 있는 반납함은 문이 닫혀 있을 때에도 책을 돌려줄 수 있게 만든 상자다.",
-    "헷갈리는 말: 환불은 산 물건을 돌려주고 낸 돈을 돌려받는 일이다. 반납은 돈과 상관없이 빌린 것을 돌려주는 일이다.",
-    "제때 반납해야 그 책을 기다리는 다음 사람이 빌릴 수 있다."
+    "返(돌이킬 반)과 納(들일 납)을 합친 말로, 빌려 간 것을 돌려 들여놓는다는 뜻입니다. 도서관 앞에 있는 반납함은 문이 닫혀 있을 때에도 책을 돌려줄 수 있게 만든 상자입니다.",
+    "헷갈리는 말: 환불은 산 물건을 돌려주고 낸 돈을 돌려받는 일입니다. 반납은 돈과 상관없이 빌린 것을 돌려주는 일입니다.",
+    "제때 반납해야 그 책을 기다리는 다음 사람이 빌릴 수 있습니다."
    ],
    "img": "In front of a school library, DOYUN slides a book into the slot of a book return box. A dotted arrow travels from the box back inside to a bookshelf where one empty gap is being filled by the same book. A few other children wait behind him with books in their hands.",
    "imgKo": "도서관 앞에서 도윤이가 반납함 구멍에 책을 밀어 넣는다. 점선 화살표가 반납함에서 책꽂이의 빈자리로 이어져 그 책이 제자리로 돌아간다."
   },
   "감상문": {
-   "en": "reflection essay · 보고 느낀 것을 적은 글",
-   "beats": ["하린이가 다 읽은 책을 옆에 덮어 두었다.", "책에서 나온 느낌이 공책 위로 흘러간다.", "보고 든 생각과 느낌을 적은 글이 감상문이다."],
+   "en": "reflection essay",
+   "beats": ["하린이가 다 읽은 책을 옆에 덮어 두었습니다.", "책에서 나온 느낌이 공책 위로 흘러갑니다.", "보고 든 생각과 느낌을 적은 글이 감상문입니다."],
    "explain": [
-    "感(느낄 감), 想(생각 상), 文(글월 문), 곧 느낌과 생각을 적은 글이라는 뜻이다. 책을 읽고 쓰면 독서 감상문, 영화를 보고 쓰면 영화 감상문이 된다.",
-    "감상문에는 무엇을 보았는지 간단히 소개하고, 인상적인 부분과 그때 든 느낌, 내 생활과 이어지는 생각을 자유롭게 쓴다. 줄거리만 길게 옮겨 적으면 감상문이 아니라 요약이 된다.",
-    "헷갈리는 말: 서평은 책의 좋은 점과 아쉬운 점을 따져 다른 사람에게 알리는 글이다. 감상문은 내 마음에 일어난 느낌이 중심이다."
+    "感(느낄 감), 想(생각 상), 文(글월 문), 곧 느낌과 생각을 적은 글이라는 뜻입니다. 책을 읽고 쓰면 독서 감상문, 영화를 보고 쓰면 영화 감상문이 됩니다.",
+    "감상문에는 무엇을 보았는지 간단히 소개하고, 인상적인 부분과 그때 든 느낌, 내 생활과 이어지는 생각을 자유롭게 씁니다. 줄거리만 길게 옮겨 적으면 감상문이 아니라 요약이 됩니다.",
+    "헷갈리는 말: 서평은 책의 좋은 점과 아쉬운 점을 따져 다른 사람에게 알리는 글입니다. 감상문은 내 마음에 일어난 느낌이 중심입니다."
    ],
    "img": "HARIN sits at her desk at home. A finished book lies closed on the left, and from it flow small floating icons, a red heart, a blue teardrop and a yellow lightbulb, along a curved arrow into an open notebook in front of her. She writes with a pencil; the notebook shows only plain ruled lines, no letters.",
    "imgKo": "하린이가 책상에 앉아 공책에 글을 쓴다. 왼쪽에 덮어 둔 책에서 하트, 눈물방울, 전구가 화살표를 따라 공책으로 흘러 들어간다."
   },
   "상위어": {
-   "en": "category word · 여러 낱말을 묶는 넓은 말",
-   "beats": ["사과, 배, 귤이 한 바구니로 들어간다.", "셋을 모두 담은 바구니는 '과일'이다.", "여러 낱말을 품는 넓은 말이 상위어이다."],
+   "en": "category word",
+   "beats": ["사과, 배, 귤이 한 바구니로 들어갑니다.", "셋을 모두 담은 바구니는 '과일'입니다.", "여러 낱말을 품는 넓은 말이 상위어입니다."],
    "explain": [
-    "上(위 상)과 位(자리 위), 곧 위쪽 자리에 있는 말이라는 뜻이다. '과일'은 사과, 배, 귤을 모두 품으므로 이 낱말들의 상위어다.",
-    "헷갈리는 말: 하위어는 그 반대로, 더 좁은 뜻의 말이다. 사과는 과일의 하위어다. 과일 위에는 다시 '먹을거리' 같은 더 넓은 말이 올 수 있다.",
-    "'연필, 지우개, 자를 챙겼다'를 '학용품을 챙겼다'로 바꾸듯, 상위어를 쓰면 글을 짧게 줄일 수 있다."
+    "上(위 상)과 位(자리 위), 곧 위쪽 자리에 있는 말이라는 뜻입니다. '과일'은 사과, 배, 귤을 모두 품으므로 이 낱말들의 상위어입니다.",
+    "헷갈리는 말: 하위어는 그 반대로, 더 좁은 뜻의 말입니다. 사과는 과일의 하위어입니다. 과일 위에는 다시 '먹을거리' 같은 더 넓은 말이 올 수 있습니다.",
+    "'연필, 지우개, 자를 챙겼다'를 '학용품을 챙겼다'로 바꾸듯, 상위어를 쓰면 글을 짧게 줄일 수 있습니다."
    ],
    "img": "At the bottom of the picture sit a red apple, a round yellow Korean pear and an orange tangerine. Three curved arrows rise from them into one large woven basket in the center top, which already holds the same three fruits plus grapes and a banana. HARIN stands beside the basket with arms spread wide as if hugging it.",
    "imgKo": "아래에 사과, 배, 귤이 있고, 세 화살표가 위쪽 큰 바구니로 올라간다. 바구니에는 여러 과일이 담겨 있고 하린이가 두 팔을 벌려 바구니를 감싼다."
@@ -81,121 +81,121 @@
  "1": {
   "인상적": {
    "en": "memorable",
-   "beats": ["도윤이가 책장을 한 장씩 넘긴다.", "한 장면에서만 빛이 솟아 도윤이 마음에 남는다.", "마음에 도장처럼 깊이 남는 장면이 인상적인 장면이다."],
+   "beats": ["도윤이가 책장을 한 장씩 넘깁니다.", "한 장면에서만 빛이 솟아 도윤이 마음에 남습니다.", "마음에 도장처럼 깊이 남는 장면이 인상적인 장면입니다."],
    "explain": [
-    "인상(印象)의 印은 '도장 인'이다. 뒤에 붙은 '-적'은 '그런 성질을 띤'이라는 뜻을 더하며, 흔히 '인상적인 부분', '인상적인 장면'처럼 뒤에 오는 말을 꾸며 쓴다.",
-    "헷갈리는 말: 중요한 부분은 글의 중심 내용이라 누가 읽어도 비슷하지만, 인상적인 부분은 읽는 사람마다 다를 수 있다.",
-    "친구와 인상적인 부분을 나눌 때는 그 장면이 왜 마음에 남았는지 까닭도 함께 말하면 좋다."
+    "인상(印象)의 印은 '도장 인'입니다. 뒤에 붙은 '-적'은 '그런 성질을 띤'이라는 뜻을 더하며, 흔히 '인상적인 부분', '인상적인 장면'처럼 뒤에 오는 말을 꾸며 씁니다.",
+    "헷갈리는 말: 중요한 부분은 글의 중심 내용이라 누가 읽어도 비슷하지만, 인상적인 부분은 읽는 사람마다 다를 수 있습니다.",
+    "친구와 인상적인 부분을 나눌 때는 그 장면이 왜 마음에 남았는지 까닭도 함께 말하면 좋습니다."
    ],
    "img": "DOYUN sits on a beanbag reading a thick storybook. Most pages fanning past are pale grey, but from one page a warm golden glow rises, and inside the glow floats a small scene of two children hugging and making up. DOYUN's eyes are wide and his hand rests on his chest.",
    "imgKo": "도윤이가 이야기책을 읽는데, 넘어가는 책장은 모두 흐릿하고 한 쪽에서만 금빛이 솟는다. 그 빛 속에 두 아이가 화해하며 안아 주는 장면이 떠 있고, 도윤이는 가슴에 손을 얹는다."
   },
   "연": {
    "en": "stanza",
-   "beats": ["시의 줄들이 네 덩어리로 묶여 있다.", "덩어리 사이마다 한 줄씩 비어 있다.", "한 줄을 띄어 나뉜 덩어리 하나가 연이다."],
+   "beats": ["시의 줄들이 네 덩어리로 묶여 있습니다.", "덩어리 사이마다 한 줄씩 비어 있습니다.", "한 줄을 띄어 나뉜 덩어리 하나가 연입니다."],
    "explain": [
-    "연은 줄글의 문단과 비슷한 일을 한다. 연이 바뀌면 장면이나 때, 생각이 바뀌는 경우가 많다.",
-    "헷갈리는 말: 행은 시의 한 줄이다. '이 시는 4연 12행이다'라고 하면 덩어리 넷, 줄 열둘로 되어 있다는 뜻이다.",
-    "시를 소리 내어 읽을 때는 연이 끝나는 곳에서 조금 길게 쉬면 장면이 바뀌는 느낌이 잘 산다."
+    "연은 줄글의 문단과 비슷한 일을 합니다. 연이 바뀌면 장면이나 때, 생각이 바뀌는 경우가 많습니다.",
+    "헷갈리는 말: 행은 시의 한 줄입니다. '이 시는 4연 12행이다'라고 하면 덩어리 넷, 줄 열둘로 되어 있다는 뜻입니다.",
+    "시를 소리 내어 읽을 때는 연이 끝나는 곳에서 조금 길게 쉬면 장면이 바뀌는 느낌이 잘 삽니다."
    ],
    "img": "A large open poetry book fills the picture. The poem lines are drawn only as plain grey bars, no letters, grouped into four clearly separated blocks with a wide empty gap between each block. Next to each block sits a tiny seasonal icon: a pink blossom, a bright sun, a red maple leaf and a snowflake. HARIN's finger points to the gap between two blocks.",
    "imgKo": "펼친 시집에 시의 줄이 회색 막대로만 그려져 있고, 네 덩어리로 묶여 사이사이가 비어 있다. 덩어리마다 꽃, 해, 단풍잎, 눈송이가 붙어 있고 하린이가 빈 줄을 가리킨다."
   },
   "낭송": {
    "en": "recitation",
-   "beats": ["하린이가 무대에서 종이 없이 시를 읊는다.", "목소리에 느낌을 담아 친구들에게 들려준다.", "시를 느낌 살려 소리 내어 들려주는 일이 낭송이다."],
+   "beats": ["하린이가 무대에서 종이 없이 시를 읊습니다.", "목소리에 느낌을 담아 친구들에게 들려줍니다.", "시를 느낌 살려 소리 내어 들려주는 일이 낭송입니다."],
    "explain": [
-    "朗(밝을 랑)과 誦(외울 송)을 합친 말로, 맑은 목소리로 외우듯 읊는다는 뜻이다.",
-    "헷갈리는 말: 낭독은 글을 소리 내어 또박또박 읽는 일이다. 낭송은 시를 노래하듯 느낌을 살려 읊는 데 더 무게가 있다.",
-    "시 낭송을 할 때는 연이 바뀌는 곳에서 잠깐 쉬고, 슬픈 대목은 느리게, 신나는 대목은 밝게 읽으면 듣는 사람에게 느낌이 잘 전해진다."
+    "朗(밝을 랑)과 誦(외울 송)을 합친 말로, 맑은 목소리로 외우듯 읊는다는 뜻입니다.",
+    "헷갈리는 말: 낭독은 글을 소리 내어 또박또박 읽는 일입니다. 낭송은 시를 노래하듯 느낌을 살려 읊는 데 더 무게가 있습니다.",
+    "시 낭송을 할 때는 연이 바뀌는 곳에서 잠깐 쉬고, 슬픈 대목은 느리게, 신나는 대목은 밝게 읽으면 듣는 사람에게 느낌이 잘 전해집니다."
    ],
    "img": "On a school stage at a talent show, HARIN stands alone with her hands gently clasped at her chest and no paper in her hands. Soft flowing wave lines and small floating flower petals come from her mouth toward the audience. Classmates sit on the floor in front of the stage, listening quietly with dreamy faces.",
    "imgKo": "학예회 무대에서 하린이가 종이 없이 두 손을 모으고 시를 읊는다. 입에서 물결선과 꽃잎이 흘러나와 객석으로 가고, 친구들이 조용히 듣는다."
   },
   "말하는 이": {
    "en": "speaker (of a poem)",
-   "beats": ["어른 시인이 책상에 앉아 시를 쓴다.", "시 속에서는 어린아이가 목소리를 낸다.", "시 속에서 생각을 들려주는 목소리가 말하는 이다."],
+   "beats": ["어른 시인이 책상에 앉아 시를 씁니다.", "시 속에서는 어린아이가 목소리를 냅니다.", "시 속에서 생각을 들려주는 목소리가 말하는 입니다."],
    "explain": [
-    "어른 시인이 어린아이가 되어 말하기도 하고, 나무나 강아지가 되어 말하기도 한다. 시 속의 '나'가 꼭 시인 자신은 아니라는 뜻이다.",
-    "헷갈리는 말: 시인은 시를 쓴 실제 사람이다. 시인이 할머니여도 말하는 이는 학교에 가는 아이일 수 있다.",
-    "말하는 이가 누구인지, 어떤 처지에 있는지 찾으면 시에 담긴 마음을 훨씬 쉽게 알 수 있다."
+    "어른 시인이 어린아이가 되어 말하기도 하고, 나무나 강아지가 되어 말하기도 합니다. 시 속의 '나'가 꼭 시인 자신은 아니라는 뜻입니다.",
+    "헷갈리는 말: 시인은 시를 쓴 실제 사람입니다. 시인이 할머니여도 말하는 이는 학교에 가는 아이일 수 있습니다.",
+    "말하는 이가 누구인지, 어떤 처지에 있는지 찾으면 시에 담긴 마음을 훨씬 쉽게 알 수 있습니다."
    ],
    "img": "On the left, a grey-haired Korean woman poet sits at a wooden desk writing with a pen. On the right, a large open book floats, and inside its pages stands a small child in the yard of a countryside grandmother's house, speaking with sound-wave lines coming from the child's mouth. A dotted arrow links the poet's pen to the book.",
    "imgKo": "왼쪽에서 머리 희끗한 어른 시인이 책상에서 시를 쓰고, 오른쪽 펼친 책 속 할머니 댁 마당에 선 어린아이가 목소리를 낸다. 시인의 펜과 책이 점선 화살표로 이어진다."
   },
   "공감": {
    "en": "empathy",
-   "beats": ["전학 온 도윤이가 혼자 쓸쓸하게 앉아 있다.", "하린이도 비슷했던 날을 떠올리며 곁에 앉는다.", "남의 마음을 나도 그렇다고 느끼는 것이 공감이다."],
+   "beats": ["전학 온 도윤이가 혼자 쓸쓸하게 앉아 있습니다.", "하린이도 비슷했던 날을 떠올리며 곁에 앉습니다.", "남의 마음을 나도 그렇다고 느끼는 것이 공감입니다."],
    "explain": [
-    "共(함께 공)과 感(느낄 감), 곧 함께 느낀다는 뜻이다. 친구의 처지가 되어 보고 '나라도 그랬겠다' 하고 마음을 알아주는 것이 공감이다.",
-    "헷갈리는 말: 동의는 상대의 의견이 옳다고 찬성하는 일이다. 의견이 달라도 그렇게 느낀 마음에는 공감할 수 있다.",
-    "시나 이야기를 읽을 때 인물의 마음에 공감하면 글이 내 일처럼 가깝게 느껴진다."
+    "共(함께 공)과 感(느낄 감), 곧 함께 느낀다는 뜻입니다. 친구의 처지가 되어 보고 '나라도 그랬겠다' 하고 마음을 알아주는 것이 공감입니다.",
+    "헷갈리는 말: 동의는 상대의 의견이 옳다고 찬성하는 일입니다. 의견이 달라도 그렇게 느낀 마음에는 공감할 수 있습니다.",
+    "시나 이야기를 읽을 때 인물의 마음에 공감하면 글이 내 일처럼 가깝게 느껴집니다."
    ],
    "img": "On a school bench, DOYUN sits alone with drooping shoulders, looking down. HARIN sits down beside him with a gentle face, one hand on his shoulder, her expression matching his. Above HARIN's head floats a faded memory bubble showing herself standing alone and shy at the door of a new classroom.",
    "imgKo": "학교 의자에 도윤이가 어깨를 늘어뜨리고 혼자 앉아 있고, 하린이가 곁에 앉아 어깨에 손을 얹는다. 하린이 머리 위에 예전에 낯선 교실 문 앞에 혼자 서 있던 자기 모습이 흐릿하게 떠 있다."
   },
   "전기문": {
    "en": "biography",
-   "beats": ["책에서 한 사람의 아기 때 모습이 나온다.", "자라서 일하고 물시계를 만든 일까지 이어진다.", "실제 인물의 일생을 사실대로 쓴 글이 전기문이다."],
+   "beats": ["책에서 한 사람의 아기 때 모습이 나옵니다.", "자라서 일하고 물시계를 만든 일까지 이어집니다.", "실제 인물의 일생을 사실대로 쓴 글이 전기문입니다."],
    "explain": [
-    "傳(전할 전)과 記(기록할 기), 곧 한 사람의 삶을 전하려고 기록한 글이다. 지어낸 장면 대신 그 사람이 남긴 편지와 일기, 주변 사람들의 이야기 같은 자료를 바탕으로 쓴다.",
-    "헷갈리는 말: 자서전은 자기 일생을 자기가 쓴 글이다. 위인전은 훌륭한 사람의 전기문을 묶은 책이다. 동화는 지어낸 이야기라서 전기문이 아니다.",
-    "전기문을 읽을 때는 그 사람이 살던 때의 시대적 상황을 함께 알면 왜 그런 일을 했는지 더 잘 이해할 수 있다."
+    "傳(전할 전)과 記(기록할 기), 곧 한 사람의 삶을 전하려고 기록한 글입니다. 지어낸 장면 대신 그 사람이 남긴 편지와 일기, 주변 사람들의 이야기 같은 자료를 바탕으로 씁니다.",
+    "헷갈리는 말: 자서전은 자기 일생을 자기가 쓴 글입니다. 위인전은 훌륭한 사람의 전기문을 묶은 책입니다. 동화는 지어낸 이야기라서 전기문이 아닙니다.",
+    "전기문을 읽을 때는 그 사람이 살던 때의 시대적 상황을 함께 알면 왜 그런 일을 했는지 더 잘 이해할 수 있습니다."
    ],
    "img": "HARIN sits in a library reading a thick book. From the open pages rises a winding path of three pictures in order: a baby in a Joseon-era cradle, a young man in plain white hanbok working with wooden tools, and the same man as an adult in an official's robe standing proudly beside a large wooden water clock with bronze water jars. Small arrows connect the three pictures.",
    "imgKo": "도서관에서 하린이가 두꺼운 책을 읽는다. 책에서 조선 시대 아기, 연장을 다루는 젊은이, 커다란 물시계 옆에 선 어른이 차례로 길처럼 이어져 떠오른다."
   },
   "일제 강점기": {
    "en": "Japanese colonial period",
-   "beats": ["도윤이가 유관순 이야기책을 펼친다.", "일본 깃발이 드리운 그늘 아래에서 사람들이 태극기를 흔든다.", "일본이 우리나라를 빼앗아 다스리던 때가 일제 강점기이다."],
+   "beats": ["도윤이가 유관순 이야기책을 펼칩니다.", "일본 깃발이 드리운 그늘 아래에서 사람들이 태극기를 흔듭니다.", "일본이 우리나라를 빼앗아 다스리던 때가 일제 강점기입니다."],
    "explain": [
-    "일제는 '일본 제국'을 줄인 말이고, 강점은 남의 땅을 힘으로 억지로 차지한다는 뜻이다. 이 시기가 끝난 1945년 8월 15일을 광복절로 기념한다.",
-    "이 시기에 많은 사람이 땅과 곡식을 빼앗겼고, 나중에는 학교에서 우리말 대신 일본말을 쓰게 했다. 그래도 사람들은 1919년 3·1 운동처럼 나라를 되찾으려는 독립운동을 멈추지 않았다.",
-    "유관순이 왜 목숨을 걸고 만세를 불렀는지는 그가 일제 강점기에 살았다는 것을 알아야 제대로 이해할 수 있다. 전기문을 읽을 때는 인물이 살던 때의 나라 형편을 함께 살펴본다."
+    "일제는 '일본 제국'을 줄인 말이고, 강점은 남의 땅을 힘으로 억지로 차지한다는 뜻입니다. 이 시기가 끝난 1945년 8월 15일을 광복절로 기념합니다.",
+    "이 시기에 많은 사람이 땅과 곡식을 빼앗겼고, 나중에는 학교에서 우리말 대신 일본말을 쓰게 했습니다. 그래도 사람들은 1919년 3·1 운동처럼 나라를 되찾으려는 독립운동을 멈추지 않았습니다.",
+    "유관순이 왜 목숨을 걸고 만세를 불렀는지는 그가 일제 강점기에 살았다는 것을 알아야 제대로 이해할 수 있습니다. 전기문을 읽을 때는 인물이 살던 때의 나라 형편을 함께 살펴봅니다."
    ],
    "img": "DOYUN sits at a desk with an open storybook. Rising from the pages like a large backdrop is a 1919 Korean street: crowds of people in white hanbok raising Korean taegeukgi flags beside old tile-roofed shops, and among them a young woman in a white jeogori and black skirt. Behind the crowd, a tall grey stone government building with a Japanese flag on its roof casts a long dark shadow across the street, while the people keep their flags held high.",
    "imgKo": "도윤이가 펼친 책 위로 1919년 거리가 떠오른다. 흰 한복 차림의 사람들과 흰 저고리 검은 치마의 젊은 여성이 태극기를 들고, 뒤쪽에는 일본 깃발을 단 잿빛 관청 건물이 거리에 긴 그늘을 드리운다."
   },
   "서평": {
    "en": "book review",
-   "beats": ["저울 한쪽엔 좋은 점, 다른 쪽엔 아쉬운 점이 놓였다.", "도윤이가 별을 매기고 까닭을 적는다.", "책을 따져 보고 의견과 까닭을 밝힌 글이 서평이다."],
+   "beats": ["저울 한쪽엔 좋은 점, 다른 쪽엔 아쉬운 점이 놓였습니다.", "도윤이가 별을 매기고 까닭을 적습니다.", "책을 따져 보고 의견과 까닭을 밝힌 글이 서평입니다."],
    "explain": [
-    "書(책 서)와 評(평할 평), 곧 책을 평가한 글이다. 먼저 책을 간단히 소개하고, 끝에 이 책을 어떤 사람에게 권하고 싶은지 덧붙이기도 한다.",
-    "헷갈리는 말: 독서 감상문은 읽고 난 내 느낌이 중심이다. 서평은 다른 사람이 이 책을 읽을지 정하는 데 도움이 되도록 책을 따지는 글이다.",
-    "인터넷 서점의 서평이나 신문의 책 소개를 읽어 보면, 좋다는 말에도 반드시 까닭이 붙어 있다는 것을 알 수 있다."
+    "書(책 서)와 評(평할 평), 곧 책을 평가한 글입니다. 먼저 책을 간단히 소개하고, 끝에 이 책을 어떤 사람에게 권하고 싶은지 덧붙이기도 합니다.",
+    "헷갈리는 말: 독서 감상문은 읽고 난 내 느낌이 중심입니다. 서평은 다른 사람이 이 책을 읽을지 정하는 데 도움이 되도록 책을 따지는 글입니다.",
+    "인터넷 서점의 서평이나 신문의 책 소개를 읽어 보면, 좋다는 말에도 반드시 까닭이 붙어 있다는 것을 알 수 있습니다."
    ],
    "img": "In the center stands a balance scale with a closed book resting on its middle. On the left pan sits a green thumbs-up icon, on the right pan a small orange wavy-mouth thinking face. Next to the scale, DOYUN writes on a card that shows five star shapes, four of them filled in yellow, and plain lines with no letters.",
    "imgKo": "가운데 저울에 책이 놓여 있고, 한쪽 접시에는 엄지 척 그림, 다른 쪽에는 갸웃한 얼굴 그림이 있다. 옆에서 도윤이가 별 다섯 개 중 넷을 칠한 카드에 글을 쓴다."
   },
   "분배": {
    "en": "distribution (sharing out)",
-   "beats": ["도윤이 앞에 색종이가 한 무더기 있다.", "친구들 앞에 다섯 장씩 똑같이 놓아 준다.", "몫을 정해 나누어 주는 일이 분배이다."],
+   "beats": ["도윤이 앞에 색종이가 한 무더기 있습니다.", "친구들 앞에 다섯 장씩 똑같이 놓아 줍니다.", "몫을 정해 나누어 주는 일이 분배입니다."],
    "explain": [
-    "分(나눌 분)과 配(나눌 배), 둘 다 '나눈다'는 글자다. 몫은 똑같을 수도 있고, 하는 일이나 필요에 따라 다를 수도 있다.",
-    "헷갈리는 말: 분류는 기준에 따라 비슷한 것끼리 묶는 일이고, 분석은 하나를 여러 부분으로 쪼개 자세히 살피는 일이다. 세 낱말 모두 分(나눌 분)으로 시작하지만 나누는 까닭이 다르다.",
-    "모둠 간식을 나눌 때, 함께 번 돈을 나눌 때처럼 분배는 공평하게 하는 것이 중요하다."
+    "分(나눌 분)과 配(나눌 배), 둘 다 '나눈다'는 글자입니다. 몫은 똑같을 수도 있고, 하는 일이나 필요에 따라 다를 수도 있습니다.",
+    "헷갈리는 말: 분류는 기준에 따라 비슷한 것끼리 묶는 일이고, 분석은 하나를 여러 부분으로 쪼개 자세히 살피는 일입니다. 세 낱말 모두 分(나눌 분)으로 시작하지만 나누는 까닭이 다릅니다.",
+    "모둠 간식을 나눌 때, 함께 번 돈을 나눌 때처럼 분배는 공평하게 하는 것이 중요합니다."
    ],
    "img": "Five children sit around a classroom table. DOYUN stands at the head with one big stack of colorful paper and places a small neat pile of five sheets in front of each friend. Five curved arrows run from the big stack to the five small piles, which are all the same height.",
    "imgKo": "모둠 책상에서 도윤이가 큰 색종이 더미를 들고 친구들 앞에 다섯 장씩 똑같이 놓아 준다. 큰 더미에서 다섯 작은 더미로 화살표가 이어진다."
   },
   "분석": {
    "en": "analysis",
-   "beats": ["도윤이가 자명종을 열어 부품을 늘어놓았다.", "돋보기로 부품 하나하나를 들여다본다.", "나누어 하나하나 자세히 살피는 일이 분석이다."],
+   "beats": ["도윤이가 자명종을 열어 부품을 늘어놓았습니다.", "돋보기로 부품 하나하나를 들여다봅니다.", "나누어 하나하나 자세히 살피는 일이 분석입니다."],
    "explain": [
-    "分(나눌 분)과 析(쪼갤 석), 곧 나누고 쪼갠다는 뜻이다. 시계가 어떻게 가는지 알려면 톱니바퀴를 하나씩 들여다보아야 하는 것과 같다.",
-    "헷갈리는 말: 분류는 여러 개를 같은 것끼리 묶는 일이다. 분류는 여러 개에서 시작하고, 분석은 하나에서 시작한다.",
-    "축구 경기 영상을 장면마다 멈춰 보며 공을 자주 놓친 곳을 찾는 일, 글을 문단마다 나누어 중심 생각을 찾는 일도 분석이다."
+    "分(나눌 분)과 析(쪼갤 석), 곧 나누고 쪼갠다는 뜻입니다. 시계가 어떻게 가는지 알려면 톱니바퀴를 하나씩 들여다보아야 하는 것과 같습니다.",
+    "헷갈리는 말: 분류는 여러 개를 같은 것끼리 묶는 일입니다. 분류는 여러 개에서 시작하고, 분석은 하나에서 시작합니다.",
+    "축구 경기 영상을 장면마다 멈춰 보며 공을 자주 놓친 곳을 찾는 일, 글을 문단마다 나누어 중심 생각을 찾는 일도 분석입니다."
    ],
    "img": "DOYUN sits at a workbench wearing his round glasses, holding a large magnifying glass. In front of him an old alarm clock has been opened, and its parts are laid out neatly in a row: gears, springs, the bell, the clock hands and the case. Dotted lines connect each part back to its place in the open clock.",
    "imgKo": "도윤이가 돋보기를 들고, 앞에 연 자명종의 톱니바퀴, 용수철, 종, 바늘을 한 줄로 늘어놓고 들여다본다. 부품마다 시계 속 제자리와 점선으로 이어져 있다."
   },
   "분류": {
    "en": "sorting (classification)",
-   "beats": ["재활용품이 한 더미로 섞여 있다.", "종이는 종이끼리, 캔은 캔끼리 통에 넣는다.", "기준에 따라 비슷한 것끼리 묶는 일이 분류이다."],
+   "beats": ["재활용품이 한 더미로 섞여 있습니다.", "종이는 종이끼리, 캔은 캔끼리 통에 넣습니다.", "기준에 따라 비슷한 것끼리 묶는 일이 분류입니다."],
    "explain": [
-    "分(나눌 분)과 類(무리 류), 곧 무리 지어 나눈다는 뜻이다. 분류하려면 먼저 무엇을 보고 나눌지 기준을 정해야 한다.",
-    "같은 물건이라도 기준이 바뀌면 묶음이 달라진다. 장난감을 재료로 나누면 나무와 플라스틱으로, 색으로 나누면 빨강과 파랑으로 묶인다.",
-    "헷갈리는 말: 분석은 하나를 쪼개어 살피는 일, 분배는 몫을 나누어 주는 일이다. 도서관 책이 과학, 역사, 문학처럼 칸을 나누어 꽂혀 있는 것도 분류 덕분이다."
+    "分(나눌 분)과 類(무리 류), 곧 무리 지어 나눈다는 뜻입니다. 분류하려면 먼저 무엇을 보고 나눌지 기준을 정해야 합니다.",
+    "같은 물건이라도 기준이 바뀌면 묶음이 달라집니다. 장난감을 재료로 나누면 나무와 플라스틱으로, 색으로 나누면 빨강과 파랑으로 묶입니다.",
+    "헷갈리는 말: 분석은 하나를 쪼개어 살피는 일, 분배는 몫을 나누어 주는 일입니다. 도서관 책이 과학, 역사, 문학처럼 칸을 나누어 꽂혀 있는 것도 분류 덕분입니다."
    ],
    "img": "On the left lies a messy mixed pile of recycling: newspapers, boxes, plastic bottles and cans. HARIN picks items from the pile and drops them into three bins on the right: a blue bin marked with a paper icon, a yellow bin marked with a bottle icon and a grey bin marked with a can icon. Arrows run from the pile to the matching bins, and each bin holds only its own kind.",
    "imgKo": "왼쪽에 종이, 페트병, 캔이 뒤섞인 더미가 있고, 하린이가 이것들을 종이, 병, 캔 그림이 붙은 세 통에 나누어 넣는다. 통마다 같은 것끼리만 담겨 있다."
@@ -204,110 +204,110 @@
  "2": {
   "문장 성분": {
    "en": "sentence parts",
-   "beats": ["기차 칸마다 실린 짐이 다르다.", "동생, 우유, 마시는 모습이 이어져 한 문장이 된다.", "문장을 이루며 저마다 일을 하는 부분이 문장 성분이다."],
+   "beats": ["기차 칸마다 실린 짐이 다릅니다.", "동생, 우유, 마시는 모습이 이어져 한 문장이 됩니다.", "문장을 이루며 저마다 일을 하는 부분이 문장 성분입니다."],
    "explain": [
-    "成(이룰 성)과 分(나눌 분), 곧 문장을 이루는 부분이라는 뜻이다. '동생이 우유를 마신다'에서 '동생이'는 주어, '우유를'은 목적어, '마신다'는 서술어로, 저마다 맡은 일이 있다.",
-    "문장 성분에는 주어, 목적어, 서술어 말고도 꾸며 주는 말 같은 것들이 있다. 낱말이 어떤 갈래인지가 아니라 문장 안에서 무슨 일을 하는지를 보고 나눈다.",
-    "꼭 있어야 할 성분이 빠지면 '동생이 우유를.'처럼 뜻이 끊긴 문장이 된다."
+    "成(이룰 성)과 分(나눌 분), 곧 문장을 이루는 부분이라는 뜻입니다. '동생이 우유를 마신다'에서 '동생이'는 주어, '우유를'은 목적어, '마신다'는 서술어로, 저마다 맡은 일이 있습니다.",
+    "문장 성분에는 주어, 목적어, 서술어 말고도 꾸며 주는 말 같은 것들이 있습니다. 낱말이 어떤 갈래인지가 아니라 문장 안에서 무슨 일을 하는지를 보고 나눕니다.",
+    "꼭 있어야 할 성분이 빠지면 '동생이 우유를.'처럼 뜻이 끊긴 문장이 됩니다."
    ],
    "img": "A toy train with three colored cars runs across the picture from left to right. The red first car carries a little girl, the blue second car carries a glass of milk, and the green third car carries a cup tilting toward a smiling mouth with motion lines. DOYUN kneels beside the track, linking the last car to the others.",
    "imgKo": "세 칸짜리 장난감 기차가 지나간다. 빨간 칸에는 어린 여동생, 파란 칸에는 우유 한 잔, 초록 칸에는 컵을 기울여 마시는 모습이 실려 있고, 도윤이가 칸을 잇는다."
   },
   "주어": {
    "en": "subject",
-   "beats": ["강아지가 꼬리를 흔든다.", "꼬리를 흔드는 주인공은 강아지다.", "'강아지가'처럼 '누가'에 해당하는 말이 주어이다."],
+   "beats": ["강아지가 꼬리를 흔듭니다.", "꼬리를 흔드는 주인공은 강아지입니다.", "'강아지가'처럼 '누가'에 해당하는 말이 주어입니다."],
    "explain": [
-    "主(주인 주)와 語(말씀 어)를 쓴다. 흔히 '-이/가', '-은/는'이 붙고, 높여야 할 사람에게는 '할머니께서'처럼 '-께서'가 붙는다.",
-    "헷갈리는 말: 목적어는 움직임을 받는 쪽이다. '강아지가 고양이를 쫓는다'에서 쫓는 주인은 강아지이므로 주어는 '강아지가'이고, '고양이를'은 목적어다.",
-    "우리말은 '밥 먹었어?'처럼 주어를 빼고 말할 때가 많다. 글을 쓸 때는 누가 한 일인지 헷갈리지 않게 주어를 챙겨야 한다."
+    "主(주인 주)와 語(말씀 어)를 씁니다. 흔히 '-이/가', '-은/는'이 붙고, 높여야 할 사람에게는 '할머니께서'처럼 '-께서'가 붙습니다.",
+    "헷갈리는 말: 목적어는 움직임을 받는 쪽입니다. '강아지가 고양이를 쫓는다'에서 쫓는 주인은 강아지이므로 주어는 '강아지가'이고, '고양이를'은 목적어입니다.",
+    "우리말은 '밥 먹었어?'처럼 주어를 빼고 말할 때가 많습니다. 글을 쓸 때는 누가 한 일인지 헷갈리지 않게 주어를 챙겨야 합니다."
    ],
    "img": "In a sunny yard, a fluffy puppy wags its tail with motion lines, standing in a bright spotlight while the rest of the yard is slightly dimmer. HARIN stands nearby pointing at the puppy. Below the scene floats a strip of three colored blocks with icons, a puppy, a tail and a wagging motion arrow, and the first block with the puppy glows.",
    "imgKo": "마당에서 강아지가 꼬리를 흔들고, 강아지에게만 환한 빛이 비친다. 아래에 강아지, 꼬리, 흔드는 화살표가 그려진 블록 셋이 있고 강아지 블록이 빛난다."
   },
   "서술어": {
    "en": "predicate",
-   "beats": ["하늘은 어떠한가? 파랗다.", "도윤이는 어찌하는가? 달린다.", "주인이 어찌하고 어떠한지 알려 주는 말이 서술어이다."],
+   "beats": ["하늘은 어떠한가? 파랗습니다.", "도윤이는 어찌하나요? 달립니다.", "주인이 어찌하고 어떠한지 알려 주는 말이 서술어입니다."],
    "explain": [
-    "서술(敍述)은 차례대로 풀어 말한다는 뜻이다. '달린다'는 움직임을, '파랗다'는 모습을, '학생이다'는 무엇인지를 나타내는 서술어다.",
-    "우리말에서 서술어는 대개 문장 맨 끝에 온다. 그래서 끝까지 들어야 그 사람이 무엇을 했는지 알 수 있다.",
-    "헷갈리는 말: 주어는 문장의 주인이다. 서술어가 빠지면 '동생이 운동장에서.'처럼 문장이 끝나지 않는다."
+    "서술(敍述)은 차례대로 풀어 말한다는 뜻입니다. '달린다'는 움직임을, '파랗다'는 모습을, '학생이다'는 무엇인지를 나타내는 서술어입니다.",
+    "우리말에서 서술어는 대개 문장 맨 끝에 옵니다. 그래서 끝까지 들어야 그 사람이 무엇을 했는지 알 수 있습니다.",
+    "헷갈리는 말: 주어는 문장의 주인입니다. 서술어가 빠지면 '동생이 운동장에서.'처럼 문장이 끝나지 않습니다."
    ],
    "img": "Two rows fill the picture. In the top row, a big bright blue sky with white clouds, and next to it a strip of two blocks: a sky icon and a glowing blue paint swatch. In the bottom row, DOYUN sprints across a playground with motion lines, and next to him a strip of two blocks: a boy icon and a glowing running-legs icon.",
    "imgKo": "위 줄에는 파란 하늘과 '하늘 그림, 빛나는 파란 물감' 블록이 있고, 아래 줄에는 운동장을 달리는 도윤이와 '아이 그림, 빛나는 달리는 다리' 블록이 있다."
   },
   "목적어": {
    "en": "object",
-   "beats": ["도윤이가 연필을 쥐고 손을 움직인다.", "연필 끝에서 고양이 그림이 생겨난다.", "'그림을'처럼 움직임을 받는 말이 목적어이다."],
+   "beats": ["도윤이가 연필을 쥐고 손을 움직입니다.", "연필 끝에서 고양이 그림이 생겨납니다.", "'그림을'처럼 움직임을 받는 말이 목적어입니다."],
    "explain": [
-    "目(눈 목)과 的(과녁 적), 곧 눈으로 겨누는 과녁 같은 말이다. 흔히 '-을/를'이 붙는다.",
-    "모든 문장에 목적어가 있는 것은 아니다. '꽃이 핀다'는 피는 일이 다른 것에 미치지 않으므로 목적어가 없다.",
-    "헷갈리는 말: 주어는 움직이는 쪽이다. '나는 그림을 그린다'에서 그리는 쪽은 '나는', 그려지는 쪽은 '그림을'이다."
+    "目(눈 목)과 的(과녁 적), 곧 눈으로 겨누는 과녁 같은 말입니다. 흔히 '-을/를'이 붙습니다.",
+    "모든 문장에 목적어가 있는 것은 아닙니다. '꽃이 핀다'는 피는 일이 다른 것에 미치지 않으므로 목적어가 없습니다.",
+    "헷갈리는 말: 주어는 움직이는 쪽입니다. '나는 그림을 그린다'에서 그리는 쪽은 '나는', 그려지는 쪽은 '그림을'입니다."
    ],
    "img": "DOYUN sits at a desk drawing with a pencil. On the paper, a cute cat drawing glows with a yellow highlight, and a bold arrow goes from his pencil hand to the drawing. Below the scene floats a strip of three colored blocks with icons, a boy, a picture frame and a pencil-drawing motion, and the middle picture-frame block glows.",
    "imgKo": "도윤이가 연필로 그림을 그리고, 종이 위 고양이 그림이 노랗게 빛나며 손에서 그림으로 화살표가 간다. 아래 블록 셋 가운데 액자 그림 블록이 빛난다."
   },
   "호응": {
-   "en": "agreement · 앞뒤 말의 짝 맞춤",
-   "beats": ["앞 조각에는 꼭 맞는 뒤 조각이 따로 있다.", "맞지 않는 조각은 아무리 밀어도 끼워지지 않는다.", "앞말에 어울리는 말이 뒤따르는 것이 호응이다."],
+   "en": "agreement",
+   "beats": ["앞 조각에는 꼭 맞는 뒤 조각이 따로 있습니다.", "맞지 않는 조각은 아무리 밀어도 끼워지지 않습니다.", "앞말에 어울리는 말이 뒤따르는 것이 호응입니다."],
    "explain": [
-    "呼(부를 호)와 應(응할 응), 곧 부르면 대답한다는 뜻이다.",
-    "'결코 ~하지 않았다', '왜냐하면 ~때문이다', '만약 ~라면', '어제 ~했다', '할머니께서 ~하신다'가 그런 짝이다. '나는 결코 숙제를 했다'는 짝이 맞지 않아 어색하다.",
-    "공연에서 관객이 손뼉과 환호로 답해 주는 것도 호응이라고 한다."
+    "呼(부를 호)와 應(응할 응), 곧 부르면 대답한다는 뜻입니다.",
+    "'결코 ~하지 않았다', '왜냐하면 ~때문이다', '만약 ~라면', '어제 ~했다', '할머니께서 ~하신다'가 그런 짝입니다. '나는 결코 숙제를 했다'는 짝이 맞지 않아 어색합니다.",
+    "공연에서 관객이 손뼉과 환호로 답해 주는 것도 호응이라고 합니다."
    ],
    "img": "In the center, a big blue puzzle piece snaps perfectly into a big orange puzzle piece, with a small green check mark and sparkles where they join. To the right, HARIN tries to push a differently shaped orange piece into another blue piece; the edges bump and do not fit, with a small red X above them.",
    "imgKo": "가운데 파란 퍼즐 조각과 주황 조각이 딱 맞물려 초록 표시와 반짝이가 있다. 오른쪽에서는 하린이가 모양이 다른 조각을 끼우려 하지만 맞지 않아 빨간 가위표가 뜬다."
   },
   "개요": {
    "en": "outline",
-   "beats": ["하린이는 쓸 거리를 처음, 가운데, 끝 칸에 나눠 둔다.", "칸 없이 쓴 도윤이 종이는 실이 엉킨 듯 뒤죽박죽이다.", "쓰기 전에 내용을 간추려 짜 둔 것이 개요이다."],
+   "beats": ["하린이는 쓸 거리를 처음, 가운데, 끝 칸에 나눠 둡니다.", "칸 없이 쓴 도윤이 종이는 실이 엉킨 듯 뒤죽박죽입니다.", "쓰기 전에 내용을 간추려 짜 둔 것이 개요입니다."],
    "explain": [
-    "槪(대개 개)와 要(요긴할 요), 곧 중요한 내용을 대강 간추린 것이다. 낱말이나 짧은 구절로만 적고, 문장을 다 갖추어 쓰지는 않는다.",
-    "집을 짓기 전에 설계도를 그리듯, 개요를 짜 두면 쓰다가 하고 싶은 말을 빠뜨리거나 같은 말을 되풀이하지 않는다.",
-    "헷갈리는 말: 요약은 이미 있는 글을 짧게 줄이는 일이다. 개요는 아직 쓰지 않은 글의 뼈대다."
+    "槪(대개 개)와 要(요긴할 요), 곧 중요한 내용을 대강 간추린 것입니다. 낱말이나 짧은 구절로만 적고, 문장을 다 갖추어 쓰지는 않습니다.",
+    "집을 짓기 전에 설계도를 그리듯, 개요를 짜 두면 쓰다가 하고 싶은 말을 빠뜨리거나 같은 말을 되풀이하지 않습니다.",
+    "헷갈리는 말: 요약은 이미 있는 글을 짧게 줄이는 일입니다. 개요는 아직 쓰지 않은 글의 뼈대입니다."
    ],
    "img": "Two desks side by side. On the left, HARIN calmly works on a sheet divided into three stacked boxes, each with a small icon (a seed, a growing sprout, a tree with fruit), and arrows carry little idea cards from a pile into the right boxes. On the right, DOYUN frowns at a page covered with a tangled ball of scribbled lines like knotted yarn. The papers show only icons and lines, no letters.",
    "imgKo": "왼쪽 하린이는 씨앗, 새싹, 열매 맺은 나무가 그려진 세 칸에 생각 카드를 차례로 넣는다. 오른쪽 도윤이 종이에는 실타래처럼 엉킨 낙서만 가득해 얼굴을 찌푸린다."
   },
   "매체": {
    "en": "media",
-   "beats": ["하린이가 사진 한 장을 친구들에게 보여 주려 한다.", "신문, 휴대 전화, 텔레비전, 누리집이 소식을 나른다.", "소식이나 생각을 전해 주는 수단이 매체이다."],
+   "beats": ["하린이가 사진 한 장을 친구들에게 보여 주려 합니다.", "신문, 휴대 전화, 텔레비전, 누리집이 소식을 나릅니다.", "소식이나 생각을 전해 주는 수단이 매체입니다."],
    "explain": [
-    "매체(媒體)의 媒(중매 매)는 둘 사이를 이어 준다는 뜻이다. 소식을 보내는 사람과 받는 사람 사이를 이어 주는 신문, 책, 텔레비전, 휴대 전화 메시지, 누리집 같은 것이 매체다.",
-    "같은 소식이라도 어떤 매체에 싣느냐에 따라 전하는 방법이 달라진다. 신문은 글과 사진으로, 텔레비전은 소리와 움직이는 영상으로 전한다.",
-    "헷갈리는 말: 자료는 전하려는 내용이고, 매체는 그 내용을 실어 나르는 그릇이다. 누구에게, 얼마나 빨리 전할지 생각해 매체를 고른다."
+    "매체(媒體)의 媒(중매 매)는 둘 사이를 이어 준다는 뜻입니다. 소식을 보내는 사람과 받는 사람 사이를 이어 주는 신문, 책, 텔레비전, 휴대 전화 메시지, 누리집 같은 것이 매체입니다.",
+    "같은 소식이라도 어떤 매체에 싣느냐에 따라 전하는 방법이 달라집니다. 신문은 글과 사진으로, 텔레비전은 소리와 움직이는 영상으로 전합니다.",
+    "헷갈리는 말: 자료는 전하려는 내용이고, 매체는 그 내용을 실어 나르는 그릇입니다. 누구에게, 얼마나 빨리 전할지 생각해 매체를 고릅니다."
    ],
    "img": "HARIN stands in the center holding up one printed photo of a class picnic. Four arrows spread out from her to four carriers around her: a folded newspaper, a smartphone with a message bubble, a television and a laptop showing a class website, each with the same tiny picnic photo on it. Beyond each carrier, small groups of friends look and smile.",
    "imgKo": "가운데 하린이가 소풍 사진을 들고, 화살표 넷이 신문, 휴대 전화, 텔레비전, 노트북으로 뻗는다. 넷 모두에 같은 사진이 실려 친구들에게 전해진다."
   },
   "전자 우편": {
    "en": "email",
-   "beats": ["종이 편지는 우체부가 먼 길을 오래 나른다.", "도윤이 편지는 인터넷을 타고 순식간에 닿는다.", "인터넷으로 보내는 편지가 전자 우편이다."],
+   "beats": ["종이 편지는 우체부가 먼 길을 오래 나릅니다.", "도윤이 편지는 인터넷을 타고 순식간에 닿습니다.", "인터넷으로 보내는 편지가 전자 우편입니다."],
    "explain": [
-    "전자 우편은 영어 이메일(e-mail)을 우리말로 옮긴 말이다. 받는 사람의 전자 우편 주소를 알면 인터넷으로 글과 사진, 문서를 몇 초 만에 보낼 수 있다.",
-    "헷갈리는 말: 문자 메시지는 전화번호로 짧게 보내는 글이다. 전자 우편은 전자 우편 주소로 보내며, 긴 글과 파일을 함께 보내기 좋다.",
-    "전자 우편을 쓸 때는 제목을 달고, 받는 사람을 부르는 인사와 보내는 사람 이름을 꼭 쓴다."
+    "전자 우편은 영어 이메일(e-mail)을 우리말로 옮긴 말입니다. 받는 사람의 전자 우편 주소를 알면 인터넷으로 글과 사진, 문서를 몇 초 만에 보낼 수 있습니다.",
+    "헷갈리는 말: 문자 메시지는 전화번호로 짧게 보내는 글입니다. 전자 우편은 전자 우편 주소로 보내며, 긴 글과 파일을 함께 보내기 좋습니다.",
+    "전자 우편을 쓸 때는 제목을 달고, 받는 사람을 부르는 인사와 보내는 사람 이름을 꼭 씁니다."
    ],
    "img": "On the left, a paper letter with a stamp rides in the basket of a mail carrier's bicycle along a long winding road toward a far-away building. On the right, DOYUN taps a laptop, and a glowing envelope icon zips along a straight bright line through the air, already arriving at a magazine office computer. A tiny snail beside the bicycle road shows slowness, and speed lines follow the glowing envelope.",
    "imgKo": "왼쪽에는 우표 붙은 종이 편지가 우체부 자전거에 실려 구불구불한 먼 길을 가고, 오른쪽에는 도윤이 노트북에서 빛나는 봉투가 곧은 선을 타고 잡지사 컴퓨터에 바로 닿는다."
   },
   "첨부": {
    "en": "attachment",
-   "beats": ["편지 봉투 모서리에 클립이 하나 달려 있다.", "클립에 숙제 사진과 그림이 매달려 함께 간다.", "편지에 파일을 덧붙여 보내는 일이 첨부이다."],
+   "beats": ["편지 봉투 모서리에 클립이 하나 달려 있습니다.", "클립에 숙제 사진과 그림이 매달려 함께 갑니다.", "편지에 파일을 덧붙여 보내는 일이 첨부입니다."],
    "explain": [
-    "添(더할 첨)과 附(붙을 부), 곧 덧붙인다는 뜻이다. '파일을 첨부하다', '첨부 파일'처럼 쓰고, 화면에서는 흔히 클립 모양 그림으로 나타낸다.",
-    "헷갈리는 말: 본문은 편지에 직접 쓴 글이다. 첨부한 파일은 본문과 따로 붙어 가서, 받는 사람이 눌러야 열린다.",
-    "모르는 사람이 보낸 전자 우편의 첨부 파일은 열지 않는다. 컴퓨터를 망가뜨리는 나쁜 프로그램이 숨어 있을 수 있다."
+    "添(더할 첨)과 附(붙을 부), 곧 덧붙인다는 뜻입니다. '파일을 첨부하다', '첨부 파일'처럼 쓰고, 화면에서는 흔히 클립 모양 그림으로 나타냅니다.",
+    "헷갈리는 말: 본문은 편지에 직접 쓴 글입니다. 첨부한 파일은 본문과 따로 붙어 가서, 받는 사람이 눌러야 열립니다.",
+    "모르는 사람이 보낸 전자 우편의 첨부 파일은 열지 않습니다. 컴퓨터를 망가뜨리는 나쁜 프로그램이 숨어 있을 수 있습니다."
    ],
    "img": "A large glowing envelope icon floats in the center, flying toward the right. A big paper clip is attached to its corner, and hanging from the clip are a photo of a homework page with plain lines, a child's crayon drawing and a small document icon. HARIN, on the left, drags the homework photo from her tablet toward the clip.",
    "imgKo": "가운데 날아가는 큰 봉투 모서리에 클립이 달려 있고, 숙제 사진, 크레파스 그림, 문서 그림이 매달려 있다. 왼쪽에서 하린이가 태블릿의 숙제 사진을 클립으로 끌어 넣는다."
   },
   "개인 정보": {
    "en": "personal information",
-   "beats": ["모르는 사람이 집과 전화번호를 묻는다.", "도윤이는 자물쇠를 채우고 손을 내젓는다.", "누구인지 알 수 있게 하는 내용이 개인 정보이다."],
+   "beats": ["모르는 사람이 집과 전화번호를 묻습니다.", "도윤이는 자물쇠를 채우고 손을 내젓습니다.", "누구인지 알 수 있게 하는 내용이 개인 정보입니다."],
    "explain": [
-    "이름, 전화번호, 집 주소 말고도 생일, 다니는 학교, 얼굴 사진, 비밀번호도 개인 정보다. 하나씩은 별것 아닌 듯해도 여러 개가 모이면 누구인지 금방 드러난다.",
-    "헷갈리는 말: 친구 사이의 비밀은 서로 지키기로 한 이야기다. 개인 정보는 모르는 사람에게 넘어가면 나쁜 일에 쓰일 수 있어서 함부로 알려 주면 안 되는 내용이다.",
-    "누리 소통망에 사진을 올릴 때도 교복의 학교 이름이나 집 앞 풍경처럼 개인 정보가 비치지 않는지 살펴야 한다."
+    "이름, 전화번호, 집 주소 말고도 생일, 다니는 학교, 얼굴 사진, 비밀번호도 개인 정보입니다. 하나씩은 별것 아닌 듯해도 여러 개가 모이면 누구인지 금방 드러납니다.",
+    "헷갈리는 말: 친구 사이의 비밀은 서로 지키기로 한 이야기입니다. 개인 정보는 모르는 사람에게 넘어가면 나쁜 일에 쓰일 수 있어서 함부로 알려 주면 안 되는 내용입니다.",
+    "누리 소통망에 사진을 올릴 때도 교복의 학교 이름이나 집 앞 풍경처럼 개인 정보가 비치지 않는지 살펴야 합니다."
    ],
    "img": "DOYUN holds a smartphone; on the screen a shadowy figure with a question mark sends message bubbles that contain only a house icon and a phone icon. Around DOYUN floats a transparent protective bubble with a big golden padlock, and inside it are icons of his house, his phone and a blank ID card. DOYUN holds up his other hand in a firm stop gesture.",
    "imgKo": "도윤이의 휴대 전화에 그림자 같은 낯선 사람이 집 그림과 전화기 그림이 든 말풍선을 보낸다. 도윤이 둘레의 투명한 막에 자물쇠가 걸려 있고 그 안에 집, 전화기, 신분증 그림이 있으며, 도윤이는 손바닥을 내밀어 막는다."
@@ -316,77 +316,77 @@
  "3": {
   "표준어": {
    "en": "standard language",
-   "beats": ["뉴스 진행자가 텔레비전에서 말한다.", "산골, 바닷가, 섬, 도시 사람이 모두 알아듣는다.", "누구나 함께 쓰도록 정해 놓은 말이 표준어이다."],
+   "beats": ["뉴스 진행자가 텔레비전에서 말합니다.", "산골, 바닷가, 섬, 도시 사람이 모두 알아듣습니다.", "누구나 함께 쓰도록 정해 놓은 말이 표준어입니다."],
    "explain": [
-    "우리나라는 교양 있는 사람들이 두루 쓰는 오늘날의 서울말을 원칙으로 표준어를 정했다. 어떤 말이 표준어인지는 국어사전에서 찾아볼 수 있다.",
-    "뉴스, 교과서, 공문서처럼 여러 지역 사람이 함께 보는 곳에서는 표준어를 쓴다. 그래야 누구나 같은 뜻으로 알아들을 수 있다.",
-    "헷갈리는 말: 방언은 틀린 말이 아니라 한 지역에서 쓰는 말이다. 표준어는 모두가 함께 쓰는 자리를 위한 기준일 뿐이다."
+    "우리나라는 교양 있는 사람들이 두루 쓰는 오늘날의 서울말을 원칙으로 표준어를 정했습니다. 어떤 말이 표준어인지는 국어사전에서 찾아볼 수 있습니다.",
+    "뉴스, 교과서, 공문서처럼 여러 지역 사람이 함께 보는 곳에서는 표준어를 씁니다. 그래야 누구나 같은 뜻으로 알아들을 수 있습니다.",
+    "헷갈리는 말: 방언은 틀린 말이 아니라 한 지역에서 쓰는 말입니다. 표준어는 모두가 함께 쓰는 자리를 위한 기준일 뿐입니다."
    ],
    "img": "In the center, a Korean woman news anchor in a neat suit speaks from a large TV screen. Arrows spread out from the TV to four small homes around it: a mountain village house, a seaside fishing village house, a Jeju stone-wall house and a city apartment. In each home a family nods with a small lightbulb above their heads.",
    "imgKo": "가운데 텔레비전에서 뉴스 진행자가 말하고, 화살표가 산골 집, 바닷가 집, 제주 돌담집, 도시 아파트로 뻗는다. 집집마다 가족이 전구를 띄우며 고개를 끄덕인다."
   },
   "방언": {
    "en": "dialect",
-   "beats": ["여러 고장 사람들이 모두 가위를 들고 있다.", "말풍선 색이 다르듯 고장마다 부르는 말이 다르다.", "한 지역에서 주로 쓰는 말이 방언이다."],
+   "beats": ["여러 고장 사람들이 모두 가위를 들고 있습니다.", "말풍선 색이 다르듯 고장마다 부르는 말이 다릅니다.", "한 지역에서 주로 쓰는 말이 방언입니다."],
    "explain": [
-    "方(지방 방)과 言(말씀 언), 곧 지방의 말이다. 사투리와 같은 뜻이며, 낱말뿐 아니라 말끝이나 말의 높낮이도 고장마다 다르다.",
-    "경상도에서는 가위를 '가새'라고 하는 것처럼, 같은 물건도 고장마다 다르게 부른다. 방언에는 그 고장 사람들이 살아온 모습과 옛말이 담겨 있다.",
-    "헷갈리는 말: 표준어는 온 나라가 함께 쓰려고 정한 말이다. 방언은 표준어와 다를 뿐 틀린 말이 아니다."
+    "方(지방 방)과 言(말씀 언), 곧 지방의 말입니다. 사투리와 같은 뜻이며, 낱말뿐 아니라 말끝이나 말의 높낮이도 고장마다 다릅니다.",
+    "경상도에서는 가위를 '가새'라고 하는 것처럼, 같은 물건도 고장마다 다르게 부릅니다. 방언에는 그 고장 사람들이 살아온 모습과 옛말이 담겨 있습니다.",
+    "헷갈리는 말: 표준어는 온 나라가 함께 쓰려고 정한 말입니다. 방언은 표준어와 다를 뿐 틀린 말이 아닙니다."
    ],
    "img": "A simple green outline map of South Korea fills the background. Standing on three regions are three people, each holding up the same pair of scissors: a city office worker near Seoul, a grandmother in the southeast Gyeongsang area and a grandmother on Jeju Island. Each has an empty speech bubble containing only a scissors icon, but the bubbles are different colors: blue, orange and green. HARIN looks from one bubble to another, curious.",
    "imgKo": "우리나라 지도 위 서울, 경상도, 제주에 선 세 사람이 모두 가위를 들고 있다. 셋의 말풍선에는 가위 그림만 있지만 파랑, 주황, 초록으로 색이 다르고, 하린이가 신기한 듯 번갈아 본다."
   },
   "의사소통": {
    "en": "communication",
-   "beats": ["말이 통하지 않아 둘 다 고개를 갸웃한다.", "손짓하고 공 그림을 그려 보이자 둘이 웃는다.", "생각과 뜻을 주고받아 통하게 하는 일이 의사소통이다."],
+   "beats": ["말이 통하지 않아 둘 다 고개를 갸웃합니다.", "손짓하고 공 그림을 그려 보이자 둘이 웃습니다.", "생각과 뜻을 주고받아 통하게 하는 일이 의사소통입니다."],
    "explain": [
-    "의사(意思)는 마음속 생각이고, 소통(疏通)은 막힘없이 서로 통한다는 뜻이다. 말과 글 말고도 손짓, 표정, 그림으로 뜻을 전할 수 있다.",
-    "헷갈리는 말: 대화는 마주 보고 말을 주고받는 것으로, 의사소통의 여러 방법 가운데 하나다.",
-    "다른 고장 사람과 방언만 쓰면 뜻이 잘 안 통할 수 있다. 그래서 여러 사람이 모인 자리에서는 표준어로 말하면 의사소통이 쉬워진다."
+    "의사(意思)는 마음속 생각이고, 소통(疏通)은 막힘없이 서로 통한다는 뜻입니다. 말과 글 말고도 손짓, 표정, 그림으로 뜻을 전할 수 있습니다.",
+    "헷갈리는 말: 대화는 마주 보고 말을 주고받는 것으로, 의사소통의 여러 방법 가운데 하나입니다.",
+    "다른 고장 사람과 방언만 쓰면 뜻이 잘 안 통할 수 있습니다. 그래서 여러 사람이 모인 자리에서는 표준어로 말하면 의사소통이 쉬워집니다."
    ],
    "img": "Two panels side by side. On the left, DOYUN and a classmate from abroad with curly brown hair face each other, both frowning, with empty speech bubbles holding only question marks. On the right, the same two children smile; DOYUN holds up a sketchbook with a drawing of a soccer ball and points outside, while the friend gives a thumbs-up, and a bright dotted line connects lightbulbs above both their heads.",
    "imgKo": "왼쪽 칸에서 도윤이와 외국인 친구가 물음표만 든 말풍선 속에 갸웃하고, 오른쪽 칸에서 도윤이가 축구공 그림을 보여 주며 손짓하자 친구가 엄지를 들고 둘의 머리 위 전구가 점선으로 이어진다."
   },
   "특성": {
    "en": "characteristic",
-   "beats": ["제주는 넓은 바다로 둘러싸인 섬이다.", "바람이 세서 돌담을 쌓고 초가지붕을 줄로 묶었다.", "그 땅에만 있는 남다른 모습이 그 땅의 특성이다."],
+   "beats": ["제주는 넓은 바다로 둘러싸인 섬입니다.", "바람이 세서 돌담을 쌓고 초가지붕을 줄로 묶었습니다.", "그 땅에만 있는 남다른 모습이 그 땅의 특성입니다."],
    "explain": [
-    "特(특별할 특)과 性(성품 성), 곧 특별한 성질이라는 뜻이다.",
-    "땅에도 특성이 있다. 제주는 바다로 둘러싸인 섬이고 바람이 세서, 사람들이 돌담을 쌓고 초가지붕을 새끼줄로 촘촘히 엮어 묶었다. 높은 산이나 바다에 가로막혀 다른 고장과 오가기 어려우면 말도 따로 달라지기 쉽다.",
-    "헷갈리는 말: 특징은 눈에 띄는 점을 두루 이르는 말이고, 특성은 그것이 본디 지닌 성질에 더 무게를 둔다. 둘은 서로 바꿔 써도 뜻이 통할 때가 많다."
+    "特(특별할 특)과 性(성품 성), 곧 특별한 성질이라는 뜻입니다.",
+    "땅에도 특성이 있습니다. 제주는 바다로 둘러싸인 섬이고 바람이 세서, 사람들이 돌담을 쌓고 초가지붕을 새끼줄로 촘촘히 엮어 묶었습니다. 높은 산이나 바다에 가로막혀 다른 고장과 오가기 어려우면 말도 따로 달라지기 쉽습니다.",
+    "헷갈리는 말: 특징은 눈에 띄는 점을 두루 이르는 말이고, 특성은 그것이 본디 지닌 성질에 더 무게를 둡니다. 둘은 서로 바꿔 써도 뜻이 통할 때가 많습니다."
    ],
    "img": "A bird's-eye view of Jeju Island in the middle of a wide blue sea, with the mainland coast only faintly visible far away across the water. Up close on the island: black volcanic stone walls around fields, low thatched-roof houses whose roofs are tied down with a grid of ropes, strong wind lines blowing across, and Hallasan mountain rising in the center.",
    "imgKo": "넓은 바다 한가운데 제주가 있고 멀리 육지가 흐릿하게 보인다. 섬에는 검은 돌담, 줄로 묶은 초가지붕, 세찬 바람 줄기, 가운데 솟은 한라산이 보인다."
   },
   "가치": {
    "en": "value",
-   "beats": ["저울 한쪽엔 동전 더미, 다른 쪽엔 낡은 시계가 있다.", "할아버지의 낡은 시계 쪽이 더 무겁게 내려간다.", "어떤 것이 지닌 쓸모와 소중함이 가치이다."],
+   "beats": ["저울 한쪽엔 동전 더미, 다른 쪽엔 낡은 시계가 있습니다.", "할아버지의 낡은 시계 쪽이 더 무겁게 내려갑니다.", "어떤 것이 지닌 쓸모와 소중함이 가치입니다."],
    "explain": [
-    "價(값 가)와 値(값 치), 둘 다 '값'이라는 글자다. 돈으로 셀 수 있는 가치도 있고, 추억이나 마음처럼 돈으로 셀 수 없는 가치도 있다.",
-    "헷갈리는 말: 가격은 물건을 사고팔 때 매긴 돈의 양이다. 가격이 낮아도 누군가에게는 가치가 아주 클 수 있다.",
-    "방언도 가치가 있다. 그 고장 사람들이 살아온 모습과 옛말이 그 안에 고스란히 담겨 있기 때문이다."
+    "價(값 가)와 値(값 치), 둘 다 '값'이라는 글자입니다. 돈으로 셀 수 있는 가치도 있고, 추억이나 마음처럼 돈으로 셀 수 없는 가치도 있습니다.",
+    "헷갈리는 말: 가격은 물건을 사고팔 때 매긴 돈의 양입니다. 가격이 낮아도 누군가에게는 가치가 아주 클 수 있습니다.",
+    "방언도 가치가 있습니다. 그 고장 사람들이 살아온 모습과 옛말이 그 안에 고스란히 담겨 있기 때문입니다."
    ],
    "img": "A large old-fashioned balance scale stands in the center of a cozy living room. On one pan sits a heap of shiny coins, on the other pan an old worn wristwatch with a scratched leather strap, glowing warmly with a few small hearts; the watch side sinks lower. HARIN and her family gather around, and a framed photo of a smiling grandfather hangs on the wall behind.",
    "imgKo": "거실 한가운데 저울 한쪽에 반짝이는 동전 더미, 다른 쪽에 낡은 손목시계가 있는데 시계 쪽이 더 내려가 있다. 하린이 가족이 둘러서 있고 벽에는 할아버지 사진이 걸려 있다."
   },
   "반영": {
    "en": "reflection (reflect)",
-   "beats": ["하린이가 강가에서 연을 날리는 소풍을 떠올린다.", "학급 소풍 계획 그림에 그 생각이 그대로 들어갔다.", "생각이 다른 것 속에 드러나는 일이 반영이다."],
+   "beats": ["하린이가 강가에서 연을 날리는 소풍을 떠올립니다.", "학급 소풍 계획 그림에 그 생각이 그대로 들어갔습니다.", "생각이 다른 것 속에 드러나는 일이 반영입니다."],
    "explain": [
-    "反(돌이킬 반)과 映(비칠 영), 곧 빛이 되돌아 비친다는 뜻이다. 맑은 호수에 산이 거꾸로 비치는 모습을 떠올리면 쉽다.",
-    "학급 회의에서 낸 의견이 결정에 들어가면 '의견이 반영되었다'고 하고, 방언에 그 고장의 삶이 담겨 있으면 '삶이 반영되어 있다'고 한다.",
-    "헷갈리는 말: 반사는 빛이나 소리가 부딪쳐 튕겨 나오는 일로, 과학에서 쓰는 말이다."
+    "反(돌이킬 반)과 映(비칠 영), 곧 빛이 되돌아 비친다는 뜻입니다. 맑은 호수에 산이 거꾸로 비치는 모습을 떠올리면 쉽습니다.",
+    "학급 회의에서 낸 의견이 결정에 들어가면 '의견이 반영되었다'고 하고, 방언에 그 고장의 삶이 담겨 있으면 '삶이 반영되어 있다'고 합니다.",
+    "헷갈리는 말: 반사는 빛이나 소리가 부딪쳐 튕겨 나오는 일로, 과학에서 쓰는 말입니다."
    ],
    "img": "On the left, HARIN raises her hand in a class meeting, and a thought bubble above her shows a picnic by a river with children flying kites. On the right, the class's big picnic plan poster on the board shows the very same riverside kite scene, drawn in crayon, no words. A soft mirror-like shimmer line connects her thought bubble to the poster.",
    "imgKo": "왼쪽에서 손을 든 하린이 머리 위에 강가에서 연을 날리는 소풍 생각이 떠 있고, 오른쪽 칠판의 학급 소풍 계획 그림에도 똑같은 장면이 그려져 있다. 둘 사이를 거울처럼 반짝이는 선이 잇는다."
   },
   "향토": {
    "en": "hometown (local region)",
-   "beats": ["도윤이 가족이 할아버지가 자란 시골 마을에 왔다.", "마을 어귀 큰 나무와 그 고장 음식이 반긴다.", "사람이 태어나 자라 온 고장이 향토이다."],
+   "beats": ["도윤이 가족이 할아버지가 자란 시골 마을에 왔습니다.", "마을 어귀 큰 나무와 그 고장 음식이 반깁니다.", "사람이 태어나 자라 온 고장이 향토입니다."],
    "explain": [
-    "鄕(시골 향)과 土(흙 토), 곧 태어나 자란 시골 땅이라는 뜻이다. '향토 음식', '향토 문화'처럼 그 고장에서만 오래 이어져 온 것을 말할 때 많이 쓴다.",
-    "강원도의 감자떡, 전주의 비빔밥처럼 그 고장의 땅과 바다에서 나는 것으로 만들어 오래 먹어 온 음식이 향토 음식이다.",
-    "헷갈리는 말: 고향은 한 사람이 태어난 곳이다. 향토는 그 고장의 땅과 사람들의 삶을 함께 가리킬 때 많이 쓴다."
+    "鄕(시골 향)과 土(흙 토), 곧 태어나 자란 시골 땅이라는 뜻입니다. '향토 음식', '향토 문화'처럼 그 고장에서만 오래 이어져 온 것을 말할 때 많이 씁니다.",
+    "강원도의 감자떡, 전주의 비빔밥처럼 그 고장의 땅과 바다에서 나는 것으로 만들어 오래 먹어 온 음식이 향토 음식입니다.",
+    "헷갈리는 말: 고향은 한 사람이 태어난 곳입니다. 향토는 그 고장의 땅과 사람들의 삶을 함께 가리킬 때 많이 씁니다."
    ],
    "img": "At the entrance of a Korean countryside village stands a huge old zelkova tree. Under it, a smiling grandfather welcomes DOYUN and his parents stepping out of a car. Behind them stretch rice fields, a small stream and a low mountain, and on a wooden table under the tree sit plates of steamed potato rice cakes and corn.",
    "imgKo": "시골 마을 어귀 큰 느티나무 아래에서 할아버지가 차에서 내린 도윤이 가족을 반긴다. 뒤로 논, 개울, 낮은 산이 펼쳐지고 나무 아래 상에 감자떡과 옥수수가 놓여 있다."
@@ -395,88 +395,88 @@
  "media": {
   "허위 정보": {
    "en": "false information (fake news)",
-   "beats": ["휴대 전화에 학교가 쉰다는 소식이 왔다.", "창밖을 보니 친구들이 학교로 걸어가고 있다.", "진짜처럼 꾸민 거짓 소식이 허위 정보이다."],
+   "beats": ["휴대 전화에 학교가 쉰다는 소식이 왔습니다.", "창밖을 보니 친구들이 학교로 걸어가고 있습니다.", "진짜처럼 꾸민 거짓 소식이 허위 정보입니다."],
    "explain": [
-    "虛(빌 허)와 僞(거짓 위), 곧 속이 비고 거짓된 정보다.",
-    "헷갈리는 말: 가짜 뉴스는 뉴스 기사처럼 꾸민 허위 정보다. 모르고 잘못 전한 소식은 오보라고 한다.",
-    "허위 정보는 놀랍고 급해 보여서 빨리 퍼진다. 누가 처음 알렸는지, 믿을 만한 다른 곳에도 나왔는지 확인한 뒤에 전해야 한다."
+    "虛(빌 허)와 僞(거짓 위), 곧 속이 비고 거짓된 정보입니다.",
+    "헷갈리는 말: 가짜 뉴스는 뉴스 기사처럼 꾸민 허위 정보입니다. 모르고 잘못 전한 소식은 오보라고 합니다.",
+    "허위 정보는 놀랍고 급해 보여서 빨리 퍼집니다. 누가 처음 알렸는지, 믿을 만한 다른 곳에도 나왔는지 확인한 뒤에 전해야 합니다."
    ],
    "img": "In his bedroom in the morning, DOYUN holds a smartphone showing a picture of a school building with a big padlock and a party popper, as if school were closed. A tiny grinning trickster mask peeks from the corner of the screen. Through the window behind him, children with backpacks are walking through the open school gate.",
    "imgKo": "아침에 도윤이가 휴대 전화를 보는데, 화면에 자물쇠 걸린 학교와 폭죽 그림이 있고 구석에서 장난꾸러기 가면이 웃는다. 창밖으로는 아이들이 열린 교문으로 걸어 들어간다."
   },
   "신뢰성": {
    "en": "reliability",
-   "beats": ["왼쪽은 박물관 누리집, 오른쪽은 누가 썼는지 모를 글이다.", "하린이는 박물관 자료를 골라 숙제에 쓴다.", "얼마나 믿을 수 있는지의 정도가 신뢰성이다."],
+   "beats": ["왼쪽은 박물관 누리집, 오른쪽은 누가 썼는지 모를 글입니다.", "하린이는 박물관 자료를 골라 숙제에 씁니다.", "얼마나 믿을 수 있는지의 정도가 신뢰성입니다."],
    "explain": [
-    "信(믿을 신), 賴(기댈 뢰), 性(성질 성)을 합친 말이다. '신뢰성이 높다', '신뢰성이 떨어진다'처럼 높고 낮음으로 말한다.",
-    "신뢰성을 따질 때는 누가 만들었는지, 언제 만들었는지, 근거가 있는지, 다른 믿을 만한 자료와 내용이 맞는지 살핀다.",
-    "헷갈리는 말: 많은 사람이 본 글이 꼭 믿을 만한 글은 아니다. 인기와 신뢰성은 다르다."
+    "信(믿을 신), 賴(기댈 뢰), 性(성질 성)을 합친 말입니다. '신뢰성이 높다', '신뢰성이 떨어진다'처럼 높고 낮음으로 말합니다.",
+    "신뢰성을 따질 때는 누가 만들었는지, 언제 만들었는지, 근거가 있는지, 다른 믿을 만한 자료와 내용이 맞는지 살핍니다.",
+    "헷갈리는 말: 많은 사람이 본 글이 꼭 믿을 만한 글은 아닙니다. 인기와 신뢰성은 다릅니다."
    ],
    "img": "HARIN sits at a desk between two screens. The left screen shows a museum building icon, a scientist in a lab coat and a green shield with a check mark, all neat and calm. The right screen shows a masked faceless figure, flashing red exclamation marks and question marks, and a cracked frame. HARIN reaches toward the left screen with a confident smile.",
    "imgKo": "하린이 앞에 화면이 둘 있다. 왼쪽에는 박물관 건물, 실험복 입은 학자, 초록 방패가 단정하게 있고, 오른쪽에는 얼굴 없는 가면과 번쩍이는 느낌표, 금 간 테두리가 있다. 하린이는 왼쪽 화면으로 손을 뻗는다."
   },
   "출처": {
    "en": "source",
-   "beats": ["하린이 발표 자료에 산 사진이 들어 있다.", "점선을 따라가면 그 사진을 처음 찍은 사람이 나온다.", "정보나 사진, 글이 처음 나온 곳이 출처이다."],
+   "beats": ["하린이 발표 자료에 산 사진이 들어 있습니다.", "점선을 따라가면 그 사진을 처음 찍은 사람이 나옵니다.", "정보나 사진, 글이 처음 나온 곳이 출처입니다."],
    "explain": [
-    "出(날 출)과 處(곳 처), 곧 나온 곳이다. 강물을 거슬러 올라가면 물이 처음 솟는 샘이 있듯, 정보에도 처음 나온 곳이 있다.",
-    "남의 사진이나 글을 쓸 때 출처를 밝히는 것은 그것을 만든 사람의 노력을 존중하는 일이다. 또 읽는 사람이 그 내용이 맞는지 직접 찾아볼 수 있게 해 준다.",
-    "헷갈리는 말: 근거는 주장이 옳다고 받쳐 주는 까닭이나 자료다. 출처는 그 자료가 처음 나온 곳이다."
+    "出(날 출)과 處(곳 처), 곧 나온 곳입니다. 강물을 거슬러 올라가면 물이 처음 솟는 샘이 있듯, 정보에도 처음 나온 곳이 있습니다.",
+    "남의 사진이나 글을 쓸 때 출처를 밝히는 것은 그것을 만든 사람의 노력을 존중하는 일입니다. 또 읽는 사람이 그 내용이 맞는지 직접 찾아볼 수 있게 해 줍니다.",
+    "헷갈리는 말: 근거는 주장이 옳다고 받쳐 주는 까닭이나 자료입니다. 출처는 그 자료가 처음 나온 곳입니다."
    ],
    "img": "HARIN stands beside a large presentation screen showing a photo of a green mountain. A long dotted line runs from the photo, across the picture, all the way back to a hiker on a real mountaintop holding a camera at the moment of taking that same photo. At the end of the dotted line near the hiker, a small glowing star marks the starting point.",
    "imgKo": "하린이 옆 발표 화면에 초록 산 사진이 있고, 사진에서 긴 점선이 이어져 실제 산꼭대기에서 그 사진을 찍는 등산객에게 닿는다. 점선 끝에 작은 별이 반짝인다."
   },
   "관점": {
    "en": "point of view",
-   "beats": ["두 아이가 같은 축구 경기를 본다.", "이긴 팀 아이는 웃고, 진 팀 아이는 고개를 숙인다.", "일을 바라보며 생각하는 방향이 관점이다."],
+   "beats": ["두 아이가 같은 축구 경기를 봅니다.", "이긴 팀 아이는 웃고, 진 팀 아이는 고개를 숙입니다.", "일을 바라보며 생각하는 방향이 관점입니다."],
    "explain": [
-    "觀(볼 관)과 點(점 점), 곧 바라보는 자리다. 같은 일도 어디에 서서 보느냐에 따라 다르게 보이고 다르게 생각된다.",
-    "비 오는 날을 두고 가뭄에 시달리던 농부는 반갑다고 하고, 소풍을 기다리던 아이는 속상하다고 한다. 기사도 쓴 사람의 관점에 따라 같은 일을 다른 제목으로 쓴다.",
-    "헷갈리는 말: 의견은 어떤 일에 대한 생각 하나하나이고, 관점은 그런 생각이 나오는 바라보는 방향이다."
+    "觀(볼 관)과 點(점 점), 곧 바라보는 자리입니다. 같은 일도 어디에 서서 보느냐에 따라 다르게 보이고 다르게 생각됩니다.",
+    "비 오는 날을 두고 가뭄에 시달리던 농부는 반갑다고 하고, 소풍을 기다리던 아이는 속상하다고 합니다. 기사도 쓴 사람의 관점에 따라 같은 일을 다른 제목으로 씁니다.",
+    "헷갈리는 말: 의견은 어떤 일에 대한 생각 하나하나이고, 관점은 그런 생각이 나오는 바라보는 방향입니다."
    ],
    "img": "Two children sit side by side in a stadium, watching the same soccer field where the match has just ended; the scoreboard shows only colored lights, no numbers. On the left, a child in a red jersey jumps up laughing with arms raised and a red flag. On the right, a child in a blue jersey sits with head down and a blue scarf drooping. Both are looking at the same field.",
    "imgKo": "경기장에서 두 아이가 같은 축구장을 본다. 빨간 옷 아이는 두 팔을 들고 웃으며 뛰고, 파란 옷 아이는 목도리를 늘어뜨린 채 고개를 숙이고 있다."
   },
   "근거": {
    "en": "evidence (reason)",
-   "beats": ["하린이 발판 아래를 책과 표가 기둥처럼 받친다.", "기둥 없는 도윤이 발판은 기우뚱 흔들린다.", "말이 옳다고 믿게 받쳐 주는 자료가 근거이다."],
+   "beats": ["하린이 발판 아래를 책과 표가 기둥처럼 받칩니다.", "기둥 없는 도윤이 발판은 기우뚱 흔들립니다.", "말이 옳다고 믿게 받쳐 주는 자료가 근거입니다."],
    "explain": [
-    "根(뿌리 근)과 據(기댈 거), 곧 뿌리처럼 받쳐 주는 것이다. 나무가 뿌리 덕분에 쓰러지지 않듯, 주장은 근거가 있어야 믿음을 얻는다.",
-    "좋은 근거는 사실이어야 하고, 믿을 만한 곳에서 나와야 하며, 주장과 맞닿아 있어야 한다. '채소를 먹으면 건강해진다'의 근거로는 채소에 든 영양소를 밝힌 자료가 알맞다.",
-    "헷갈리는 말: 주장은 내 생각이고, 근거는 그 생각이 옳다고 받쳐 주는 까닭이다. 출처는 그 근거 자료가 나온 곳이다."
+    "根(뿌리 근)과 據(기댈 거), 곧 뿌리처럼 받쳐 주는 것입니다. 나무가 뿌리 덕분에 쓰러지지 않듯, 주장은 근거가 있어야 믿음을 얻습니다.",
+    "좋은 근거는 사실이어야 하고, 믿을 만한 곳에서 나와야 하며, 주장과 맞닿아 있어야 합니다. '채소를 먹으면 건강해진다'의 근거로는 채소에 든 영양소를 밝힌 자료가 알맞습니다.",
+    "헷갈리는 말: 주장은 내 생각이고, 근거는 그 생각이 옳다고 받쳐 주는 까닭입니다. 출처는 그 근거 자료가 나온 곳입니다."
    ],
    "img": "Two small round platforms stand side by side. HARIN stands firmly on the left one, holding up a speech bubble with a carrot and broccoli icon and a sparkle; underneath, sturdy pillars made of stacked books and a bar chart with colored bars, no numbers, hold it up. DOYUN stands on the right platform, which has no pillars and tilts as he waves his arms for balance.",
    "imgKo": "왼쪽 발판 위 하린이가 채소 그림 말풍선을 들고 있고, 발판 밑을 쌓은 책과 막대그래프가 기둥처럼 받친다. 오른쪽 도윤이 발판은 기둥이 없어 기울어져 도윤이가 팔을 휘젓는다."
   },
   "과장": {
    "en": "exaggeration",
-   "beats": ["동생 팔에 모기 물린 자국이 작게 났다.", "동생 말풍선 속에서는 그 자국이 주먹만 하다.", "실제보다 훨씬 부풀려 나타내는 것이 과장이다."],
+   "beats": ["동생 팔에 모기 물린 자국이 작게 났습니다.", "동생 말풍선 속에서는 그 자국이 주먹만 합니다.", "실제보다 훨씬 부풀려 나타내는 것이 과장입니다."],
    "explain": [
-    "誇(자랑할 과)와 張(벌릴 장), 곧 크게 벌려 자랑하듯 나타내는 것이다.",
-    "헷갈리는 말: 거짓말은 없는 일을 지어내는 것이다. 과장은 있는 일을 부풀리는 것이다.",
-    "'배고파 죽겠다'처럼 재미나 강조를 위해 일부러 쓰는 과장도 있다. 하지만 광고나 기사의 과장은 사실을 잘못 알게 하므로 따져 읽어야 한다."
+    "誇(자랑할 과)와 張(벌릴 장), 곧 크게 벌려 자랑하듯 나타내는 것입니다.",
+    "헷갈리는 말: 거짓말은 없는 일을 지어내는 것입니다. 과장은 있는 일을 부풀리는 것입니다.",
+    "'배고파 죽겠다'처럼 재미나 강조를 위해 일부러 쓰는 과장도 있습니다. 하지만 광고나 기사의 과장은 사실을 잘못 알게 하므로 따져 읽어야 합니다."
    ],
    "img": "DOYUN's little sister holds out her arm, pointing at a tiny pink mosquito bite, while DOYUN leans in to look. Above her head, a big speech bubble shows the same arm with a gigantic swelling as big as a fist and a huge cartoon mosquito monster. The tiny real bite and the giant bump in the bubble are both clearly visible.",
    "imgKo": "도윤이 동생이 팔의 작은 모기 자국을 가리키고, 머리 위 큰 말풍선에는 같은 팔이 주먹만 하게 부어 있고 거대한 모기 괴물이 있다."
   },
   "취재": {
    "en": "reporting (news gathering)",
-   "beats": ["운동회 날 도윤이가 이어달리기 선수를 찾아갔다.", "녹음기를 내밀어 묻고 수첩에 적는다.", "기사를 쓰려고 가서 자료를 모으는 일이 취재이다."],
+   "beats": ["운동회 날 도윤이가 이어달리기 선수를 찾아갔습니다.", "녹음기를 내밀어 묻고 수첩에 적습니다.", "기사를 쓰려고 가서 자료를 모으는 일이 취재입니다."],
    "explain": [
-    "取(가질 취)와 材(재료 재), 곧 기사의 재료를 얻는 일이다. 기자는 현장에 가서 보고, 사람을 만나 묻고, 사진을 찍어 재료를 모은다.",
-    "헷갈리는 말: 기사는 취재한 내용을 바탕으로 쓴 글이다. 취재가 먼저이고 기사는 그다음이다.",
-    "직접 보고 들은 것을 바탕으로 쓴 기사는 남에게 전해 들은 이야기만으로 쓴 기사보다 믿을 만하다."
+    "取(가질 취)와 材(재료 재), 곧 기사의 재료를 얻는 일입니다. 기자는 현장에 가서 보고, 사람을 만나 묻고, 사진을 찍어 재료를 모읍니다.",
+    "헷갈리는 말: 기사는 취재한 내용을 바탕으로 쓴 글입니다. 취재가 먼저이고 기사는 그다음입니다.",
+    "직접 보고 들은 것을 바탕으로 쓴 기사는 남에게 전해 들은 이야기만으로 쓴 기사보다 믿을 만합니다."
    ],
    "img": "On a school sports day field, DOYUN wears a student reporter armband and holds out a small voice recorder toward a smiling girl runner with a relay baton and a headband. In his other hand he holds an open notebook with plain lines. Behind them, other children run a relay race past cheering classmates.",
    "imgKo": "운동회 날 완장을 찬 도윤이가 바통을 든 이어달리기 선수에게 녹음기를 내밀고, 다른 손에는 수첩을 들었다. 뒤로 아이들이 이어달리기를 한다."
   },
   "누리 소통망": {
    "en": "social media (SNS)",
-   "beats": ["누나가 휴대 전화로 여행 사진을 올린다.", "줄로 이어진 친구들 화면에 하트와 말풍선이 뜬다.", "인터넷에서 소식을 주고받는 서비스가 누리 소통망이다."],
+   "beats": ["누나가 휴대 전화로 여행 사진을 올립니다.", "줄로 이어진 친구들 화면에 하트와 말풍선이 뜹니다.", "인터넷에서 소식을 주고받는 서비스가 누리 소통망입니다."],
    "explain": [
-    "누리 소통망은 영어 에스엔에스(SNS)를 쉬운 우리말로 바꾼 말이다. '누리'는 세상을 뜻하는 옛말이고, '소통망'은 서로 통하는 그물이라는 뜻이다.",
-    "헷갈리는 말: 누리집은 한 곳에서 소식을 올려 두는 인터넷 집이다. 누리 소통망은 여러 사람이 서로 글과 사진을 올리고 답하며 그물처럼 이어진다.",
-    "누리 소통망에서는 소식이 아주 빨리 퍼진다. 그래서 개인 정보가 드러나지 않는지, 허위 정보는 아닌지 살펴보고 올려야 한다."
+    "누리 소통망은 영어 에스엔에스(SNS)를 쉬운 우리말로 바꾼 말입니다. '누리'는 세상을 뜻하는 옛말이고, '소통망'은 서로 통하는 그물이라는 뜻입니다.",
+    "헷갈리는 말: 누리집은 한 곳에서 소식을 올려 두는 인터넷 집입니다. 누리 소통망은 여러 사람이 서로 글과 사진을 올리고 답하며 그물처럼 이어집니다.",
+    "누리 소통망에서는 소식이 아주 빨리 퍼집니다. 그래서 개인 정보가 드러나지 않는지, 허위 정보는 아닌지 살펴보고 올려야 합니다."
    ],
    "img": "DOYUN's older sister, a teenage girl, sits on a sofa uploading a beach travel photo from her phone. Glowing lines spread out from her phone like a web to six friends' phones floating around her, each showing the same small beach photo, with heart icons and empty speech bubbles popping up from them. DOYUN peeks over the back of the sofa.",
    "imgKo": "도윤이 누나가 소파에서 휴대 전화로 바닷가 여행 사진을 올리고, 빛나는 줄이 그물처럼 친구들 휴대 전화 여섯 대로 이어진다. 화면마다 같은 사진에 하트와 말풍선이 뜨고, 도윤이가 소파 뒤에서 엿본다."
@@ -485,88 +485,88 @@
  "4": {
   "토의": {
    "en": "discussion",
-   "beats": ["모둠 아이들이 둥글게 앉아 지저분한 교실을 본다.", "저마다 꺼낸 생각이 모여 하나의 방법이 된다.", "함께 방법을 찾으려고 의견을 나누는 일이 토의이다."],
+   "beats": ["모둠 아이들이 둥글게 앉아 지저분한 교실을 봅니다.", "저마다 꺼낸 생각이 모여 하나의 방법이 됩니다.", "함께 방법을 찾으려고 의견을 나누는 일이 토의입니다."],
    "explain": [
-    "토의는 교실을 깨끗이 쓰는 방법, 체험 학습 장소 정하기처럼 답이 하나로 정해져 있지 않은 문제를 다룬다.",
-    "토의에서는 내 의견이 뽑히는 것보다 모두에게 좋은 방법을 찾는 것이 중요하다. 그래서 다른 사람 의견에서 좋은 점을 받아들여 더 나은 방법으로 고치기도 한다.",
-    "헷갈리는 말: 토론은 찬성과 반대로 편을 나누어 어느 쪽 주장이 옳은지 따지는 말하기다. 토의는 편을 나누지 않고 함께 방법을 찾는다."
+    "토의는 교실을 깨끗이 쓰는 방법, 체험 학습 장소 정하기처럼 답이 하나로 정해져 있지 않은 문제를 다룹니다.",
+    "토의에서는 내 의견이 뽑히는 것보다 모두에게 좋은 방법을 찾는 것이 중요합니다. 그래서 다른 사람 의견에서 좋은 점을 받아들여 더 나은 방법으로 고치기도 합니다.",
+    "헷갈리는 말: 토론은 찬성과 반대로 편을 나누어 어느 쪽 주장이 옳은지 따지는 말하기입니다. 토의는 편을 나누지 않고 함께 방법을 찾습니다."
    ],
    "img": "Five children, including HARIN and DOYUN, sit around a round table in a classroom with scraps of paper and a tipped-over trash can on the floor nearby. Above each child floats an idea bubble with a different icon: a broom, a chore chart, a trash can, a clean desk and a sparkle. Arrows from all the bubbles flow into one large bright bubble in the center showing a sparkling clean classroom.",
    "imgKo": "하린이와 도윤이를 비롯한 다섯 아이가 쓰레기가 흩어진 교실에서 둥근 책상에 둘러앉아 있다. 아이마다 빗자루, 당번표, 쓰레기통 같은 생각 풍선을 띄우고, 화살표가 모여 가운데 깨끗한 교실 그림 풍선이 된다."
   },
   "조정": {
-   "en": "compromise · 서로 다른 의견을 맞추는 일",
-   "beats": ["축구 모둠과 피구 모둠이 운동장을 두고 맞선다.", "요일을 번갈아 쓰는 달력을 보며 손을 맞잡는다.", "서로 다른 의견을 고쳐 맞추는 일이 조정이다."],
+   "en": "compromise",
+   "beats": ["축구 모둠과 피구 모둠이 운동장을 두고 맞섭니다.", "요일을 번갈아 쓰는 달력을 보며 손을 맞잡습니다.", "서로 다른 의견을 고쳐 맞추는 일이 조정입니다."],
    "explain": [
-    "調(고를 조)와 整(가지런할 정), 곧 고르고 가지런하게 맞춘다는 뜻이다. 어느 한쪽 말만 따르지 않는다는 점이 중요하다.",
-    "점심시간에 축구를 하자는 모둠과 피구를 하자는 모둠이 운동장을 두고 맞섰다고 하자. 요일을 나누어 번갈아 쓰기로 정하면, 두 모둠 모두 바라던 것을 다 얻지는 못해도 둘 다 받아들일 수 있다.",
-    "조정을 하려면 먼저 서로 무엇을 바라는지, 왜 그렇게 생각하는지 끝까지 들어 보아야 한다."
+    "調(고를 조)와 整(가지런할 정), 곧 고르고 가지런하게 맞춘다는 뜻입니다. 어느 한쪽 말만 따르지 않는다는 점이 중요합니다.",
+    "점심시간에 축구를 하자는 모둠과 피구를 하자는 모둠이 운동장을 두고 맞섰다고 해 봅시다. 요일을 나누어 번갈아 쓰기로 정하면, 두 모둠 모두 바라던 것을 다 얻지는 못해도 둘 다 받아들일 수 있습니다.",
+    "조정을 하려면 먼저 서로 무엇을 바라는지, 왜 그렇게 생각하는지 끝까지 들어 보아야 합니다."
    ],
    "img": "On a school playground, a group holding a soccer ball faces a group holding a dodgeball, with two opposing arrows between them. In the middle, TEACHER holds up a large weekly calendar with no numbers, whose day boxes alternate between a soccer ball icon and a dodgeball icon. In front of the calendar, HARIN from one group and DOYUN from the other shake hands.",
    "imgKo": "운동장에서 축구공 든 모둠과 피구공 든 모둠이 마주 선다. 가운데 선생님이 요일 칸마다 축구공과 피구공이 번갈아 그려진 달력을 들고, 그 앞에서 하린이와 도윤이가 악수한다."
   },
   "검토": {
    "en": "review",
-   "beats": ["세 가지 생각을 동전, 사람, 시계 칸에 하나씩 대어 본다.", "칸마다 동그라미와 가위표를 붙여 가며 따진다.", "알맞은지 하나하나 자세히 따져 보는 일이 검토이다."],
+   "beats": ["세 가지 생각을 동전, 사람, 시계 칸에 하나씩 대어 봅니다.", "칸마다 동그라미와 가위표를 붙여 가며 따집니다.", "알맞은지 하나하나 자세히 따져 보는 일이 검토입니다."],
    "explain": [
-    "'검토하다', '검토해 보다'처럼 쓴다. 뉴스에서 '새 제도를 검토 중이다'라고 하면 아직 정하지 않고 따져 보는 중이라는 뜻이다.",
-    "토의에서는 의견을 고르기 전에 '돈이 많이 들지 않는가?', '모두가 지킬 수 있는가?' 같은 기준을 먼저 정하고, 그 기준에 따라 의견마다 장점과 단점을 검토한다. 그러면 목소리 큰 사람의 의견이 아니라 기준에 가장 잘 맞는 의견을 고를 수 있다.",
-    "헷갈리는 말: 조정은 서로 다른 의견을 고쳐 맞추는 일이고, 검토는 의견이 알맞은지 따져 보는 일이다. 글을 다 쓴 뒤 틀린 곳이 없는지 다시 읽어 보는 것도 검토이다."
+    "'검토하다', '검토해 보다'처럼 씁니다. 뉴스에서 '새 제도를 검토 중이다'라고 하면 아직 정하지 않고 따져 보는 중이라는 뜻입니다.",
+    "토의에서는 의견을 고르기 전에 '돈이 많이 들지 않는가?', '모두가 지킬 수 있는가?' 같은 기준을 먼저 정하고, 그 기준에 따라 의견마다 장점과 단점을 검토합니다. 그러면 목소리 큰 사람의 의견이 아니라 기준에 가장 잘 맞는 의견을 고를 수 있습니다.",
+    "헷갈리는 말: 조정은 서로 다른 의견을 고쳐 맞추는 일이고, 검토는 의견이 알맞은지 따져 보는 일입니다. 글을 다 쓴 뒤 틀린 곳이 없는지 다시 읽어 보는 것도 검토입니다."
    ],
    "img": "A large green classroom board shows a grid. Down the left side are three idea cards with icons: a shiny trophy, a hand-drawn poster and a broom; across the top are three yellow column headers with icons: a coin, a group of people and a clock. Each cell holds a green circle or a red X mark, and the broom row is all green circles, glowing. HARIN points at the glowing row.",
    "imgKo": "칠판 표 왼쪽에 트로피, 포스터, 빗자루 생각 카드가, 위쪽에 동전, 사람들, 시계 칸이 있다. 칸마다 초록 동그라미나 빨간 가위표가 붙고, 빗자루 줄만 모두 동그라미라 빛나며 하린이가 그 줄을 가리킨다."
   },
   "합의점": {
    "en": "point of agreement",
-   "beats": ["두 아이가 길 양쪽 끝에서 한 걸음씩 다가온다.", "가운데 반짝이는 자리에서 만나 손을 잡는다.", "모두의 뜻이 하나로 모이는 자리가 합의점이다."],
+   "beats": ["두 아이가 길 양쪽 끝에서 한 걸음씩 다가옵니다.", "가운데 반짝이는 자리에서 만나 손을 잡습니다.", "모두의 뜻이 하나로 모이는 자리가 합의점입니다."],
    "explain": [
-    "합의(合意)는 뜻을 합친다는 말이고, 점(點)은 '자리'를 뜻한다. 그래서 '합의점을 찾다', '합의점에 이르다'처럼 찾아가 닿는 곳으로 말한다.",
-    "청소 당번을 두고 다투던 모둠이 '일주일씩 돌아가며 하자'로 정했다면 그것이 합의점이다. 처음 낸 의견과 똑같지 않아도 모두가 '그렇게 하자'고 말할 수 있으면 된다.",
-    "헷갈리는 말: 조정은 의견을 맞추어 가는 일이고, 합의점은 그 일을 거쳐 닿은 결과다."
+    "합의(合意)는 뜻을 합친다는 말이고, 점(點)은 '자리'를 뜻합니다. 그래서 '합의점을 찾다', '합의점에 이르다'처럼 찾아가 닿는 곳으로 말합니다.",
+    "청소 당번을 두고 다투던 모둠이 '일주일씩 돌아가며 하자'로 정했다면 그것이 합의점입니다. 처음 낸 의견과 똑같지 않아도 모두가 '그렇게 하자'고 말할 수 있으면 됩니다.",
+    "헷갈리는 말: 조정은 의견을 맞추어 가는 일이고, 합의점은 그 일을 거쳐 닿은 결과입니다."
    ],
    "img": "A long straight path runs across the picture. HARIN starts at the left end and DOYUN at the right end, and dotted footprints show each of them stepping toward the center. At the exact middle, a glowing star-shaped spot shines, and there the two children meet and clasp hands; above them floats a round chore wheel with broom and duster icons.",
    "imgKo": "긴 길 왼쪽 끝에서 하린이가, 오른쪽 끝에서 도윤이가 발자국을 남기며 다가온다. 한가운데 별 모양으로 빛나는 자리에서 둘이 손을 잡고, 머리 위에 청소 당번 돌림판이 떠 있다."
   },
   "절차": {
-   "en": "procedure · 거쳐야 하는 차례",
-   "beats": ["개울에 징검돌이 차례로 놓여 있다.", "하린이는 하나씩 밟고, 건너뛴 도윤이는 물에 빠질 뻔한다.", "일을 해 나갈 때 거쳐야 하는 차례가 절차이다."],
+   "en": "procedure",
+   "beats": ["개울에 징검돌이 차례로 놓여 있습니다.", "하린이는 하나씩 밟고, 건너뛴 도윤이는 물에 빠질 뻔합니다.", "일을 해 나갈 때 거쳐야 하는 차례가 절차입니다."],
    "explain": [
-    "節은 '마디', 次는 '차례'라는 뜻이다. 대나무 마디처럼 끊어진 단계를 하나씩 차례로 밟아 간다는 말이다.",
-    "토의도 절차를 따른다. 주제를 정하고, 의견을 마련하고, 의견을 나누고, 의견을 모은 뒤, 마지막으로 결정한다. 이 차례를 건너뛰면 여러 사람의 의견을 충분히 듣지 않고 정해 버리기 쉽다.",
-    "도서관에서 책을 빌릴 때 회원 카드를 내고, 기록을 남긴 뒤 가져가는 것처럼 생활 곳곳에도 절차가 있다."
+    "節은 '마디', 次는 '차례'라는 뜻입니다. 대나무 마디처럼 끊어진 단계를 하나씩 차례로 밟아 간다는 말입니다.",
+    "토의도 절차를 따릅니다. 주제를 정하고, 의견을 마련하고, 의견을 나누고, 의견을 모은 뒤, 마지막으로 결정합니다. 이 차례를 건너뛰면 여러 사람의 의견을 충분히 듣지 않고 정해 버리기 쉽습니다.",
+    "도서관에서 책을 빌릴 때 회원 카드를 내고, 기록을 남긴 뒤 가져가는 것처럼 생활 곳곳에도 절차가 있습니다."
    ],
    "img": "Five flat stepping stones cross a clear stream in a row, each with a small icon on top: a question mark, a lightbulb, two speech bubbles, gathering arrows and a check mark. HARIN calmly steps from stone to stone in order. Behind her, DOYUN has tried to leap from the first stone straight to the last; a dashed arc shows his jump, and he wobbles at the water's edge with a splash, safe but surprised.",
    "imgKo": "개울에 물음표, 전구, 말풍선, 모으는 화살표, 체크 표시가 그려진 징검돌 다섯 개가 놓여 있다. 하린이는 차례로 밟아 건너고, 첫 돌에서 끝 돌로 뛰려던 도윤이는 물가에서 첨벙 휘청인다."
   },
   "사회자": {
    "en": "moderator",
-   "beats": ["하린이가 앞에 서서 손든 친구를 가리킨다.", "한 사람이 말하는 동안 나머지는 차례를 기다린다.", "회의의 차례를 정하고 이끄는 사람이 사회자이다."],
+   "beats": ["하린이가 앞에 서서 손든 친구를 가리킵니다.", "한 사람이 말하는 동안 나머지는 차례를 기다립니다.", "회의의 차례를 정하고 이끄는 사람이 사회자입니다."],
    "explain": [
-    "사회자는 토의를 시작할 때 주제를 알리고, 끝날 때 나온 의견을 정리해 말한다.",
-    "이야기가 주제에서 벗어나면 다시 주제로 돌아오게 하고, 한 사람만 오래 말하면 다른 사람에게도 말할 기회를 준다.",
-    "사회자는 자기 의견을 내세우기보다 모두가 고르게 말할 수 있게 돕는 역할을 한다."
+    "사회자는 토의를 시작할 때 주제를 알리고, 끝날 때 나온 의견을 정리해 말합니다.",
+    "이야기가 주제에서 벗어나면 다시 주제로 돌아오게 하고, 한 사람만 오래 말하면 다른 사람에게도 말할 기회를 줍니다.",
+    "사회자는 자기 의견을 내세우기보다 모두가 고르게 말할 수 있게 돕는 역할을 합니다."
    ],
    "img": "In a classroom meeting, HARIN stands at the front holding a small microphone in one hand and pointing with an open palm toward one classmate with a raised hand. The other classmates sit quietly in a half circle, some with hands half raised, waiting. Behind HARIN, the board shows three icons stacked in order with no writing: a speech bubble, a lightbulb and a check mark.",
    "imgKo": "학급 회의에서 하린이가 앞에 서서 마이크를 들고 손든 친구를 손바닥으로 가리킨다. 다른 친구들은 반원으로 앉아 차례를 기다리고, 칠판에는 말풍선, 전구, 체크 그림이 차례로 붙어 있다."
   },
   "갈등": {
    "en": "conflict",
-   "beats": ["한 집에서는 밤에 나팔을 불고, 옆집은 귀를 막는다.", "두 창문 사이로 덩굴 두 줄기가 서로 엉킨다.", "바라는 것이 달라 부딪치는 일이 갈등이다."],
+   "beats": ["한 집에서는 밤에 나팔을 불고, 옆집은 귀를 막습니다.", "두 창문 사이로 덩굴 두 줄기가 서로 엉킵니다.", "바라는 것이 달라 부딪치는 일이 갈등입니다."],
    "explain": [
-    "葛(갈)은 칡, 藤(등)은 등나무다. 둘 다 다른 것을 감고 오르는 덩굴인데, 감는 방향이 서로 달라서 함께 자라면 뒤엉켜 풀기 어렵다. 그래서 일이 이리저리 얽혀 풀기 어려운 상태를 갈등이라고 부른다.",
-    "밤늦게 악기를 연주하고 싶은 사람과 조용히 쉬고 싶은 이웃 사이에 생기는 다툼이 갈등의 한 예다.",
-    "갈등이 나쁘기만 한 것은 아니다. 토의로 서로의 생각을 듣고 의견을 조정하면 더 좋은 방법을 찾을 수도 있다."
+    "葛(갈)은 칡, 藤(등)은 등나무입니다. 둘 다 다른 것을 감고 오르는 덩굴인데, 감는 방향이 서로 달라서 함께 자라면 뒤엉켜 풀기 어렵습니다. 그래서 일이 이리저리 얽혀 풀기 어려운 상태를 갈등이라고 부릅니다.",
+    "밤늦게 악기를 연주하고 싶은 사람과 조용히 쉬고 싶은 이웃 사이에 생기는 다툼이 갈등의 한 예입니다.",
+    "갈등이 나쁘기만 한 것은 아닙니다. 토의로 서로의 생각을 듣고 의견을 조정하면 더 좋은 방법을 찾을 수도 있습니다."
    ],
    "img": "At night, two neighboring apartment windows sit side by side. In the left window, a young man happily plays a trumpet with music note symbols flying out. In the right window, a tired woman in pajamas covers her ears with a pillow. Between the two windows, a green arrowroot vine and a purple wisteria vine twist around each other in opposite directions, forming a tight tangled knot.",
    "imgKo": "밤에 나란한 두 창문에서, 왼쪽 사람은 신나게 나팔을 불고 오른쪽 사람은 잠옷 차림으로 베개로 귀를 막는다. 두 창문 사이에서 초록 칡과 보라 등나무 덩굴이 반대로 감기며 뒤엉킨다."
   },
   "순화어": {
-   "en": "plain Korean word · 쉬운 우리말로 바꾼 말",
-   "beats": ["할머니가 처음 듣는 말에 고개를 갸웃한다.", "쉬운 우리말로 바꿔 말하자 바로 고개를 끄덕인다.", "어려운 말을 쉬운 우리말로 바꾼 말이 순화어이다."],
+   "en": "plain Korean word",
+   "beats": ["할머니가 처음 듣는 말에 고개를 갸웃합니다.", "쉬운 우리말로 바꿔 말하자 바로 고개를 끄덕입니다.", "어려운 말을 쉬운 우리말로 바꾼 말이 순화어입니다."],
    "explain": [
-    "순화는 섞인 것을 걸러 내어 깨끗하고 순하게 한다는 뜻이다. 국립국어원에서는 이렇게 바꾼 말을 쉽게 '다듬은 말'이라고도 부른다.",
-    "'헬멧'을 '안전모'로, '레시피'를 '조리법'으로, '스크린 도어'를 '안전문'으로 바꾸어 쓰는 것이 그 예다. 순화어를 쓰면 외국어를 잘 모르는 어린이나 어르신도 뜻을 바로 알 수 있다.",
-    "어떤 말을 무엇으로 바꿀지는 여러 사람의 의견을 모아 정한다. 그래서 순화어를 정하는 일에도 토의와 조정이 필요하다."
+    "순화는 섞인 것을 걸러 내어 깨끗하고 순하게 한다는 뜻입니다. 국립국어원에서는 이렇게 바꾼 말을 쉽게 '다듬은 말'이라고도 부릅니다.",
+    "'헬멧'을 '안전모'로, '레시피'를 '조리법'으로, '스크린 도어'를 '안전문'으로 바꾸어 쓰는 것이 그 예입니다. 순화어를 쓰면 외국어를 잘 모르는 어린이나 어르신도 뜻을 바로 알 수 있습니다.",
+    "어떤 말을 무엇으로 바꿀지는 여러 사람의 의견을 모아 정합니다. 그래서 순화어를 정하는 일에도 토의와 조정이 필요합니다."
    ],
    "img": "Two panels side by side. On the left, DOYUN holds up his bicycle helmet and talks to his grandmother, his speech bubble spiky and filled with a tangled-knot icon, and she tilts her head with question marks. On the right, DOYUN points to the same helmet with a round soft speech bubble containing a simple helmet icon, and his grandmother smiles and nods with a lightbulb above her head.",
    "imgKo": "왼쪽 칸에서 도윤이가 자전거 안전모를 들고 엉킨 매듭 그림이 든 뾰족한 말풍선으로 말하자 할머니가 갸웃한다. 오른쪽 칸에서는 안전모 그림이 든 둥근 말풍선으로 말하자 할머니가 웃으며 끄덕인다."
@@ -575,110 +575,110 @@
  "5": {
   "추론": {
    "en": "inference",
-   "beats": ["현관에 젖은 우산과 물 묻은 발자국이 있다.", "하린이 머릿속에 비 오는 하늘이 떠오른다.", "보이는 실마리로 숨은 일을 짐작하는 것이 추론이다."],
+   "beats": ["현관에 젖은 우산과 물 묻은 발자국이 있습니다.", "하린이 머릿속에 비 오는 하늘이 떠오릅니다.", "보이는 실마리로 숨은 일을 짐작하는 것이 추론입니다."],
    "explain": [
-    "推(밀 추)와 論(논할 론), 곧 아는 것에서 생각을 밀고 나아간다는 뜻이다.",
-    "글을 읽을 때도 추론을 한다. '그는 주먹을 꽉 쥐고 얼굴이 빨개졌다'는 문장에 화났다는 말은 없지만, 우리는 그가 화났다고 추론할 수 있다.",
-    "헷갈리는 말: 상상은 실마리 없이도 마음껏 떠올리는 것이다. 추론은 실마리를 근거로 그럴듯하게 짐작하는 것이다."
+    "推(밀 추)와 論(논할 론), 곧 아는 것에서 생각을 밀고 나아간다는 뜻입니다.",
+    "글을 읽을 때도 추론을 합니다. '그는 주먹을 꽉 쥐고 얼굴이 빨개졌다'는 문장에 화났다는 말은 없지만, 우리는 그가 화났다고 추론할 수 있습니다.",
+    "헷갈리는 말: 상상은 실마리 없이도 마음껏 떠올리는 것입니다. 추론은 실마리를 근거로 그럴듯하게 짐작하는 것입니다."
    ],
    "img": "Inside a home entrance with the front door closed, a wet umbrella drips onto the floor, and wet footprints lead from the door into the hallway. HARIN stands looking at them with a lightbulb above her head and a thought bubble showing grey rain clouds and falling raindrops. No window is visible, so the outside cannot be seen.",
    "imgKo": "문이 닫힌 현관에 젖은 우산에서 물이 떨어지고 물 발자국이 복도로 이어진다. 그것을 본 하린이 머리 위에 전구와 비구름 생각 풍선이 떠 있다."
   },
   "단서": {
    "en": "clue",
-   "beats": ["과자 통이 비고 바닥에 부스러기가 떨어져 있다.", "부스러기와 발자국을 따라가니 강아지가 있다.", "숨은 일을 알아내게 돕는 흔적이 단서이다."],
+   "beats": ["과자 통이 비고 바닥에 부스러기가 떨어져 있습니다.", "부스러기와 발자국을 따라가니 강아지가 있습니다.", "숨은 일을 알아내게 돕는 흔적이 단서입니다."],
    "explain": [
-    "단서(端緖)의 두 글자는 모두 '실마리'라는 뜻이다. 엉킨 실타래를 풀 때 처음 붙잡는 실 끝처럼, 숨은 일을 풀어 가는 첫 실마리를 말한다.",
-    "헷갈리는 말: 증거는 어떤 일이 사실임을 확실히 밝혀 주는 것이다. 단서는 알아내는 길을 열어 주는 흔적으로, 단서를 모아 가다 보면 증거에 이르기도 한다.",
-    "글을 읽을 때는 인물의 말과 행동, 날씨나 장소를 그린 낱말이 단서가 되어 쓰여 있지 않은 내용을 추론하게 해 준다."
+    "단서(端緖)의 두 글자는 모두 '실마리'라는 뜻입니다. 엉킨 실타래를 풀 때 처음 붙잡는 실 끝처럼, 숨은 일을 풀어 가는 첫 실마리를 말합니다.",
+    "헷갈리는 말: 증거는 어떤 일이 사실임을 확실히 밝혀 주는 것입니다. 단서는 알아내는 길을 열어 주는 흔적으로, 단서를 모아 가다 보면 증거에 이르기도 합니다.",
+    "글을 읽을 때는 인물의 말과 행동, 날씨나 장소를 그린 낱말이 단서가 되어 쓰여 있지 않은 내용을 추론하게 해 줍니다."
    ],
    "img": "In a kitchen, an empty cookie tin lies open on its side on the floor. A trail of cookie crumbs and small muddy paw prints leads across the floor to the table, where a puppy hides underneath with crumbs on its nose. DOYUN crouches along the trail holding a big magnifying glass, following it with a grin.",
    "imgKo": "부엌 바닥에 빈 과자 통이 쓰러져 있고, 과자 부스러기와 작은 발자국이 식탁 밑까지 이어진다. 식탁 밑에는 코에 부스러기를 묻힌 강아지가 숨어 있고, 도윤이가 돋보기를 들고 자국을 따라간다."
   },
   "생략": {
    "en": "omission (leaving out)",
-   "beats": ["왼쪽 쪽지에는 인사, 날씨, 할 말이 다 있다.", "오른쪽 쪽지는 인사와 날씨를 빼고 할 말만 남았다.", "일부를 빼고 줄이는 일이 생략이다."],
+   "beats": ["왼쪽 쪽지에는 인사, 날씨, 할 말이 다 있습니다.", "오른쪽 쪽지는 인사와 날씨를 빼고 할 말만 남았습니다.", "일부를 빼고 줄이는 일이 생략입니다."],
    "explain": [
-    "省(덜 생)과 略(간략할 략), 곧 덜어 내어 간단하게 한다는 뜻이다.",
-    "이야기에서는 글쓴이가 일부러 장면을 생략하기도 한다. 그러면 읽는 사람은 앞뒤 내용을 단서로 빠진 부분을 추론하며 읽는다. 글에서는 말줄임표(……)로 생략을 나타내기도 한다.",
-    "헷갈리는 말: 요약은 글 전체에서 중요한 내용만 골라 짧게 간추리는 일이다. 요약은 글 전체를 새로 줄여 쓰고, 생략은 원래 글에서 몇 군데만 뺀다."
+    "省(덜 생)과 略(간략할 략), 곧 덜어 내어 간단하게 한다는 뜻입니다.",
+    "이야기에서는 글쓴이가 일부러 장면을 생략하기도 합니다. 그러면 읽는 사람은 앞뒤 내용을 단서로 빠진 부분을 추론하며 읽습니다. 글에서는 말줄임표(……)로 생략을 나타내기도 합니다.",
+    "헷갈리는 말: 요약은 글 전체에서 중요한 내용만 골라 짧게 간추리는 일입니다. 요약은 글 전체를 새로 줄여 쓰고, 생략은 원래 글에서 몇 군데만 뺍니다."
    ],
    "img": "Two phone message screens side by side. The left screen shows a long message made of three icon bubbles stacked in order: a waving hand, a sun with clouds and a soccer ball. The right screen shows a short message with only the soccer ball bubble, while the waving-hand and sun bubbles float away from it along dotted lines, fading out. DOYUN holds the right phone with a quick thumbs-up.",
    "imgKo": "왼쪽 휴대 전화에는 손 흔드는 그림, 해와 구름, 축구공 말풍선이 차례로 있고, 오른쪽 휴대 전화에는 축구공 말풍선만 남았다. 손 흔드는 그림과 해 말풍선은 점선을 따라 흐려지며 빠져나간다."
   },
   "함축": {
    "en": "implication",
-   "beats": ["창밖은 맑은데 하린이 가슴 앞에만 비가 내린다.", "진짜 비가 아니라 슬픈 마음을 담은 말이다.", "말이 겉뜻 말고 다른 뜻을 품는 것이 함축이다."],
+   "beats": ["창밖은 맑은데 하린이 가슴 앞에만 비가 내립니다.", "진짜 비가 아니라 슬픈 마음을 담은 말입니다.", "말이 겉뜻 말고 다른 뜻을 품는 것이 함축입니다."],
    "explain": [
-    "含(머금을 함)과 蓄(쌓을 축), 곧 속에 머금어 쌓아 둔다는 뜻이다. '뜻이 함축되어 있다', '함축된 표현'처럼 쓴다.",
-    "'내 마음에 비가 내린다'는 진짜 비가 아니라 슬프다는 뜻을 품고 있다. '마음이 무겁다', '얼음처럼 차가운 눈빛'도 겉말 뒤에 마음을 담은 표현이다. 시는 짧은 말에 많은 뜻을 담으려고 함축을 많이 쓴다.",
-    "헷갈리는 말: 생략은 말의 일부를 빼고 줄이는 것이고, 함축은 말을 빼지 않고 그 속에 다른 뜻을 겹쳐 담는 것이다."
+    "含(머금을 함)과 蓄(쌓을 축), 곧 속에 머금어 쌓아 둔다는 뜻입니다. '뜻이 함축되어 있다', '함축된 표현'처럼 씁니다.",
+    "'내 마음에 비가 내린다'는 진짜 비가 아니라 슬프다는 뜻을 품고 있습니다. '마음이 무겁다', '얼음처럼 차가운 눈빛'도 겉말 뒤에 마음을 담은 표현입니다. 시는 짧은 말에 많은 뜻을 담으려고 함축을 많이 씁니다.",
+    "헷갈리는 말: 생략은 말의 일부를 빼고 줄이는 것이고, 함축은 말을 빼지 않고 그 속에 다른 뜻을 겹쳐 담는 것입니다."
    ],
    "img": "HARIN sits by a big window on a bright sunny day; outside, the sky is clear blue with a smiling sun. Inside, a small dark rain cloud floats right in front of her chest, raining softly onto a small glowing heart. Her face is gently sad as she looks down at the little cloud.",
    "imgKo": "햇살 가득한 창가에 하린이가 앉아 있고 창밖은 맑다. 그런데 하린이 가슴 앞에만 작은 먹구름이 떠서 빛나는 하트 위로 비를 뿌리고, 하린이는 슬픈 얼굴로 내려다본다."
   },
   "의도": {
    "en": "intention",
-   "beats": ["동생이 웃으며 심부름 봉지를 들고 왔다.", "동생 머릿속에는 게임기가 반짝이며 떠 있다.", "마음속으로 이루려고 하는 생각이 의도이다."],
+   "beats": ["동생이 웃으며 심부름 봉지를 들고 왔습니다.", "동생 머릿속에는 게임기가 반짝이며 떠 있습니다.", "마음속으로 이루려고 하는 생각이 의도입니다."],
    "explain": [
-    "의도(意圖)는 마음속(意)으로 꾀하는(圖) 것, 곧 무엇을 하려고 품은 생각이다. 겉으로 보이는 행동 뒤에 숨어 있어서 추론해야 알 수 있을 때가 많다.",
-    "글에도 글쓴이의 의도가 있다. 무엇을 알려 주려고, 생각을 바꾸게 하려고, 즐겁게 해 주려고 쓰는 것처럼 저마다 이루고 싶은 것이 있다.",
-    "헷갈리는 말: 결과는 실제로 일어난 일이다. 도우려는 의도로 한 일이 실수로 나쁜 결과를 낼 수도 있다."
+    "의도(意圖)는 마음속(意)으로 꾀하는(圖) 것, 곧 무엇을 하려고 품은 생각입니다. 겉으로 보이는 행동 뒤에 숨어 있어서 추론해야 알 수 있을 때가 많습니다.",
+    "글에도 글쓴이의 의도가 있습니다. 무엇을 알려 주려고, 생각을 바꾸게 하려고, 즐겁게 해 주려고 쓰는 것처럼 저마다 이루고 싶은 것이 있습니다.",
+    "헷갈리는 말: 결과는 실제로 일어난 일입니다. 도우려는 의도로 한 일이 실수로 나쁜 결과를 낼 수도 있습니다."
    ],
    "img": "In a living room, DOYUN's little brother walks in with a big sweet smile, holding up a grocery bag from an errand. Above his head, a thought bubble shows a sparkling handheld game console. DOYUN sits on the sofa with raised eyebrows, looking from the bag to the bubble.",
    "imgKo": "거실로 도윤이 동생이 활짝 웃으며 심부름 봉지를 들고 들어온다. 동생 머리 위 생각 풍선에는 반짝이는 게임기가 떠 있고, 소파의 도윤이가 눈썹을 치켜올린다."
   },
   "사전적": {
    "en": "literal",
-   "beats": ["사전 위로는 넓고 짠 바다가 떠오른다.", "시집 위로는 아이를 감싸 안은 엄마가 떠오른다.", "사전에 실린 그대로인 뜻이 사전적 뜻이다."],
+   "beats": ["사전 위로는 넓고 짠 바다가 떠오릅니다.", "시집 위로는 아이를 감싸 안은 엄마가 떠오릅니다.", "사전에 실린 그대로인 뜻이 사전적 뜻입니다."],
    "explain": [
-    "뒤에 붙은 '-적'은 '그런 성질을 띤'이라는 뜻을 더하며, 흔히 '사전적 뜻', '사전적 의미'처럼 쓴다. '바다'의 사전적 뜻은 지구 겉면에서 짠물이 넓게 차 있는 곳이다.",
-    "같은 낱말도 글 속에서는 다른 뜻을 품을 수 있다. 어떤 시에서 '바다'는 아이를 넓게 품어 주는 엄마를 뜻하기도 한다. 이럴 때는 사전적 뜻을 바탕으로 글 속에서 새로 생긴 뜻을 짐작해 읽는다.",
-    "헷갈리는 말: 함축은 겉뜻 뒤에 다른 뜻을 품는 것이다. 글을 읽을 때는 사전적 뜻과 글 속 뜻을 함께 생각해야 한다."
+    "뒤에 붙은 '-적'은 '그런 성질을 띤'이라는 뜻을 더하며, 흔히 '사전적 뜻', '사전적 의미'처럼 씁니다. '바다'의 사전적 뜻은 지구 겉면에서 짠물이 넓게 차 있는 곳입니다.",
+    "같은 낱말도 글 속에서는 다른 뜻을 품을 수 있습니다. 어떤 시에서 '바다'는 아이를 넓게 품어 주는 엄마를 뜻하기도 합니다. 이럴 때는 사전적 뜻을 바탕으로 글 속에서 새로 생긴 뜻을 짐작해 읽습니다.",
+    "헷갈리는 말: 함축은 겉뜻 뒤에 다른 뜻을 품는 것입니다. 글을 읽을 때는 사전적 뜻과 글 속 뜻을 함께 생각해야 합니다."
    ],
    "img": "Two books lie open side by side on a table. Above the left book, a thick dictionary drawn with only plain grey lines on its pages, rises a picture of the wide salty ocean with waves and a small globe. Above the right book, a thin poetry book, rises a picture of a mother gently hugging a child, wrapped in soft blue wave shapes like the sea.",
    "imgKo": "책상 위 두꺼운 사전 위로 넓은 바다와 지구본 그림이 떠오르고, 얇은 시집 위로는 바다 물결 같은 푸른 곡선에 싸여 아이를 안아 주는 엄마 그림이 떠오른다."
   },
   "화폐": {
    "en": "currency (money)",
-   "beats": ["조개껍데기, 엽전, 지폐와 동전이 차례로 놓였다.", "모두 시장에서 물건을 사고팔 때 쓰였다.", "물건을 사고팔 때 쓰는, 나라에서 정한 돈이 화폐이다."],
+   "beats": ["조개껍데기, 엽전, 지폐와 동전이 차례로 놓였습니다.", "모두 시장에서 물건을 사고팔 때 쓰였습니다.", "물건을 사고팔 때 쓰는, 나라에서 정한 돈이 화폐입니다."],
    "explain": [
-    "貨(재물 화)와 幣(돈 폐)를 합친 말이다. 물건과 물건을 바로 바꾸는 일은 서로 원하는 것이 맞아야 해서 불편했기 때문에 화폐가 생겼다.",
-    "옛날 어떤 곳에서는 조개껍데기를 돈처럼 썼고, 조선 시대에는 가운데 네모난 구멍이 뚫린 엽전인 상평통보를 썼다. 오늘날에는 지폐와 동전에 더해 카드나 휴대 전화로 돈을 내기도 한다.",
-    "헷갈리는 말: 돈은 일상에서 두루 쓰는 말이고, 화폐는 '화폐 단위', '화폐 가치'처럼 교과서나 뉴스에서 주로 쓰는 말이다. 우리나라 화폐 단위는 원이다."
+    "貨(재물 화)와 幣(돈 폐)를 합친 말입니다. 물건과 물건을 바로 바꾸는 일은 서로 원하는 것이 맞아야 해서 불편했기 때문에 화폐가 생겼습니다.",
+    "옛날 어떤 곳에서는 조개껍데기를 돈처럼 썼고, 조선 시대에는 가운데 네모난 구멍이 뚫린 엽전인 상평통보를 썼습니다. 오늘날에는 지폐와 동전에 더해 카드나 휴대 전화로 돈을 내기도 합니다.",
+    "헷갈리는 말: 돈은 일상에서 두루 쓰는 말이고, 화폐는 '화폐 단위', '화폐 가치'처럼 교과서나 뉴스에서 주로 쓰는 말입니다. 우리나라 화폐 단위는 원입니다."
    ],
    "img": "A long display table runs across the picture like a museum timeline, with arrows from left to right. On it, in order: a small pile of cowrie shells, a string of round Joseon-era brass coins with square holes in the middle, and modern plain coins and banknotes with no numbers or faces. Above each item, a tiny scene shows a hand exchanging it for a basket of goods at a market stall.",
    "imgKo": "박물관 진열대 위에 왼쪽부터 조개껍데기, 가운데 네모 구멍이 뚫린 조선 엽전 꾸러미, 오늘날의 동전과 지폐가 화살표를 따라 놓여 있다. 각각의 위에는 그것을 내고 시장에서 물건을 받는 손이 작게 그려져 있다."
   },
   "생계": {
    "en": "livelihood (making a living)",
-   "beats": ["젊은 할아버지가 새벽 바다에서 그물을 끌어 올린다.", "잡은 고기가 밥상과 옷, 집으로 이어진다.", "먹고 입고 살 것을 마련하며 살림을 꾸리는 일이 생계이다."],
+   "beats": ["젊은 할아버지가 새벽 바다에서 그물을 끌어 올립니다.", "잡은 고기가 밥상과 옷, 집으로 이어집니다.", "먹고 입고 살 것을 마련하며 살림을 꾸리는 일이 생계입니다."],
    "explain": [
-    "생계(生計)는 살아가기(生) 위한 꾀(計)라는 뜻이다.",
-    "'고기잡이로 생계를 꾸렸다'는 고기를 잡아 판 돈으로 가족이 먹고 입고 살았다는 뜻이다. '생계가 어렵다'는 살림을 꾸려 가기 힘들다는 뜻이다.",
-    "헷갈리는 말: 직업은 하는 일의 이름이다. 생계는 그 일로 살림을 꾸려 나가는 것이다."
+    "생계(生計)는 살아가기(生) 위한 꾀(計)라는 뜻입니다.",
+    "'고기잡이로 생계를 꾸렸다'는 고기를 잡아 판 돈으로 가족이 먹고 입고 살았다는 뜻입니다. '생계가 어렵다'는 살림을 꾸려 가기 힘들다는 뜻입니다.",
+    "헷갈리는 말: 직업은 하는 일의 이름입니다. 생계는 그 일로 살림을 꾸려 나가는 것입니다."
    ],
    "img": "At dawn on the sea, a young Korean fisherman of the 1960s in a straw hat hauls a net full of silver fish onto a small wooden boat. From the fish basket, three dotted arrows lead to three small pictures along the shore: a family eating at a low rice table, children's clothes on a line and a small tiled-roof seaside house.",
    "imgKo": "새벽 바다에서 밀짚모자를 쓴 1960년대의 젊은 어부가 작은 나무배에 고기 가득한 그물을 끌어 올린다. 고기 바구니에서 점선 화살표가 밥상에 둘러앉은 가족, 빨랫줄의 아이 옷, 바닷가 작은 집으로 이어진다."
   },
   "교환": {
    "en": "exchange (swap)",
-   "beats": ["하린이와 도윤이가 다 읽은 만화책을 내민다.", "두 책이 화살표를 따라 서로의 손으로 건너간다.", "내 것을 주고 남의 것을 받는 일이 교환이다."],
+   "beats": ["하린이와 도윤이가 다 읽은 만화책을 내밉니다.", "두 책이 화살표를 따라 서로의 손으로 건너갑니다.", "내 것을 주고 남의 것을 받는 일이 교환입니다."],
    "explain": [
-    "交(서로 교)와 換(바꿀 환), 곧 서로 바꾼다는 뜻이다.",
-    "화폐가 없던 옛날에는 쌀과 옷감을 바로 바꾸는 물물 교환을 했다. 오늘날에도 산 옷이 작으면 가게에서 큰 옷으로 교환한다.",
-    "헷갈리는 말: 환불은 산 물건을 돌려주고 돈을 돌려받는 일이고, 선물은 대가 없이 주기만 하는 일이다. 교환은 주고받는 것이 둘 다 있다."
+    "交(서로 교)와 換(바꿀 환), 곧 서로 바꾼다는 뜻입니다.",
+    "화폐가 없던 옛날에는 쌀과 옷감을 바로 바꾸는 물물 교환을 했습니다. 오늘날에도 산 옷이 작으면 가게에서 큰 옷으로 교환합니다.",
+    "헷갈리는 말: 환불은 산 물건을 돌려주고 돈을 돌려받는 일이고, 선물은 대가 없이 주기만 하는 일입니다. 교환은 주고받는 것이 둘 다 있습니다."
    ],
    "img": "HARIN and DOYUN face each other in a classroom, each holding out a colorful comic book. Two large curved arrows cross in the air between them, showing HARIN's red comic going to DOYUN and DOYUN's blue comic going to HARIN. Both are smiling.",
    "imgKo": "교실에서 하린이와 도윤이가 마주 서서 만화책을 내민다. 두 화살표가 엇갈리며 하린이의 빨간 책은 도윤이에게, 도윤이의 파란 책은 하린이에게 간다."
   },
   "문맹률": {
    "en": "illiteracy rate",
-   "beats": ["위 줄에는 책 앞에서 고개를 갸웃하는 사람이 많다.", "아래 줄에는 거의 모두 책을 펴 읽고 있다.", "글을 모르는 사람이 얼마나 되는지 나타낸 것이 문맹률이다."],
+   "beats": ["위 줄에는 책 앞에서 고개를 갸웃하는 사람이 많습니다.", "아래 줄에는 거의 모두 책을 펴 읽고 있습니다.", "글을 모르는 사람이 얼마나 되는지 나타낸 것이 문맹률입니다."],
    "explain": [
-    "글을 읽고 쓸 줄 모르는 것을 문맹(文盲)이라고 하고, 률(率)은 비율이다. 盲은 '눈이 멀다'는 글자로, 글 앞에서 눈이 먼 것과 같다는 뜻이다.",
-    "한글은 글자 수가 적고 소리 나는 대로 짜여 있어 배우기 쉽다. 그래서 우리나라의 문맹률은 아주 낮은 편이다.",
-    "헷갈리는 말: 문해력은 글을 읽고 그 뜻을 이해하는 힘이다. 글자를 소리 내어 읽을 줄 알아도 뜻을 잘 모르면 문해력이 낮은 것이다."
+    "글을 읽고 쓸 줄 모르는 것을 문맹(文盲)이라고 하고, 률(率)은 비율입니다. 盲은 '눈이 멀다'는 글자로, 글 앞에서 눈이 먼 것과 같다는 뜻입니다.",
+    "한글은 글자 수가 적고 소리 나는 대로 짜여 있어 배우기 쉽습니다. 그래서 우리나라의 문맹률은 아주 낮은 편입니다.",
+    "헷갈리는 말: 문해력은 글을 읽고 그 뜻을 이해하는 힘입니다. 글자를 소리 내어 읽을 줄 알아도 뜻을 잘 모르면 문해력이 낮은 것입니다."
    ],
    "img": "Two rows of ten simple people figures, one row above the other. In the top row, most figures are grey and hold closed books with question marks over their heads, and only two hold open books with lightbulbs. In the bottom row, nine figures are colorful and hold open books with lightbulbs, and only one has a question mark. No numbers or letters appear.",
    "imgKo": "사람 열 명씩 두 줄이 있다. 위 줄은 대부분 회색으로 덮인 책 위에 물음표를 띄우고 둘만 책을 펴 읽으며, 아래 줄은 아홉 명이 책을 펴고 전구를 띄우고 한 명만 물음표가 있다."
@@ -687,121 +687,121 @@
  "6": {
   "요소": {
    "en": "element",
-   "beats": ["인물, 사건, 배경 세 조각이 모여 그림 한 장이 된다.", "옆의 그림은 한 조각이 빠져 구멍이 뚫렸다.", "전체를 이루는 데 꼭 필요한 부분이 요소이다."],
+   "beats": ["인물, 사건, 배경 세 조각이 모여 그림 한 장이 됩니다.", "옆의 그림은 한 조각이 빠져 구멍이 뚫렸습니다.", "전체를 이루는 데 꼭 필요한 부분이 요소입니다."],
    "explain": [
-    "要(요긴할 요)와 素(본디 소), 곧 꼭 필요한 바탕이라는 뜻이다. 여러 요소가 얽혀 하나를 이룰 때 그 하나하나를 '구성 요소'라고도 한다.",
-    "이야기의 요소는 인물, 사건, 배경이다. 극본의 요소는 해설, 대사, 지문이다. 하나라도 빠지면 이야기나 극본이 제대로 서지 않는다.",
-    "헷갈리는 말: 부분은 전체를 나눈 한 조각이면 무엇이든 되지만, 요소는 그 가운데에서도 꼭 있어야 하는 것을 가리킨다. 샌드위치의 빵, 채소, 햄처럼 생활 속 물건에도 요소가 있다."
+    "要(요긴할 요)와 素(본디 소), 곧 꼭 필요한 바탕이라는 뜻입니다. 여러 요소가 얽혀 하나를 이룰 때 그 하나하나를 '구성 요소'라고도 합니다.",
+    "이야기의 요소는 인물, 사건, 배경입니다. 극본의 요소는 해설, 대사, 지문입니다. 하나라도 빠지면 이야기나 극본이 제대로 서지 않습니다.",
+    "헷갈리는 말: 부분은 전체를 나눈 한 조각이면 무엇이든 되지만, 요소는 그 가운데에서도 꼭 있어야 하는 것을 가리킵니다. 샌드위치의 빵, 채소, 햄처럼 생활 속 물건에도 요소가 있습니다."
    ],
    "img": "In the center, three big jigsaw pieces snap together into one storybook picture: one piece shows a brave rabbit (the character), one shows a chase with motion arrows (the event), and one shows a snowy mountain village (the place). HARIN and DOYUN fit the last piece in. To the right, a smaller copy of the same puzzle is missing one piece, leaving an empty hole.",
    "imgKo": "가운데 토끼, 쫓고 쫓기는 화살표 장면, 눈 덮인 산골 마을이 그려진 퍼즐 세 조각이 맞물려 이야기 그림이 되고, 하린이와 도윤이가 마지막 조각을 끼운다. 오른쪽 작은 퍼즐은 한 조각이 빠져 구멍이 나 있다."
   },
   "인물": {
    "en": "character",
-   "beats": ["책에서 소년, 조끼 입은 토끼, 찻주전자가 걸어 나온다.", "셋 모두 이야기 속에서 말하고 움직인다.", "이야기에서 일을 겪는 사람이나 동물, 물건이 인물이다."],
+   "beats": ["책에서 소년, 조끼 입은 토끼, 찻주전자가 걸어 나옵니다.", "셋 모두 이야기 속에서 말하고 움직입니다.", "이야기에서 일을 겪는 사람이나 동물, 물건이 인물입니다."],
    "explain": [
-    "이야기를 읽을 때는 인물이 무엇을 바라고, 그 바람을 이루려고 어떻게 하는지 살펴본다. '토끼와 거북'에서는 토끼와 거북이 인물이다.",
-    "이야기를 이끌어 가는 중심 인물을 주인공이라고 한다. 인물의 말과 행동을 보면 그 인물의 성격을 짐작할 수 있다.",
-    "헷갈리는 말: 생활에서 '인물이 좋다'는 생김새가 좋다는 뜻이고, '훌륭한 인물'은 뛰어난 사람을 뜻한다. 이야기의 인물은 이야기에 나오는 모든 등장인물을 말한다."
+    "이야기를 읽을 때는 인물이 무엇을 바라고, 그 바람을 이루려고 어떻게 하는지 살펴봅니다. '토끼와 거북'에서는 토끼와 거북이 인물입니다.",
+    "이야기를 이끌어 가는 중심 인물을 주인공이라고 합니다. 인물의 말과 행동을 보면 그 인물의 성격을 짐작할 수 있습니다.",
+    "헷갈리는 말: 생활에서 '인물이 좋다'는 생김새가 좋다는 뜻이고, '훌륭한 인물'은 뛰어난 사람을 뜻합니다. 이야기의 인물은 이야기에 나오는 모든 등장인물을 말합니다."
    ],
    "img": "A large storybook lies open on a table, and three characters step out of its pages onto the table: a brave boy with a backpack, a rabbit wearing a little vest and a teapot with a cheerful face and tiny legs, waving its spout. Small sparkles trail behind each of them as they walk out of the book.",
    "imgKo": "펼친 이야기책에서 배낭 멘 소년, 조끼 입은 토끼, 얼굴과 다리가 달린 찻주전자가 반짝이를 남기며 걸어 나온다."
   },
   "사건": {
    "en": "event (in a story)",
-   "beats": ["강아지가 대문 밖으로 달아난다.", "소년이 숲을 헤매다 마침내 강아지를 안는다.", "이야기에서 인물이 겪거나 벌이는 일이 사건이다."],
+   "beats": ["강아지가 대문 밖으로 달아납니다.", "소년이 숲을 헤매다 마침내 강아지를 안습니다.", "이야기에서 인물이 겪거나 벌이는 일이 사건입니다."],
    "explain": [
-    "사건은 앞의 일이 까닭이 되어 뒤의 일이 일어나는 식으로 이어진다. 흥부가 제비 다리를 고쳐 주자 제비가 박씨를 물어 온 것이 그 예다.",
-    "헷갈리는 말: 뉴스에서 '사건'이라고 하면 사고나 범죄 같은 나쁜 일이 떠오른다. 이야기의 사건은 기쁜 일, 슬픈 일, 신기한 일을 모두 포함한다.",
-    "이야기를 간추릴 때는 사건을 일어난 차례대로 늘어놓으면 줄거리가 된다."
+    "사건은 앞의 일이 까닭이 되어 뒤의 일이 일어나는 식으로 이어집니다. 흥부가 제비 다리를 고쳐 주자 제비가 박씨를 물어 온 것이 그 예입니다.",
+    "헷갈리는 말: 뉴스에서 '사건'이라고 하면 사고나 범죄 같은 나쁜 일이 떠오릅니다. 이야기의 사건은 기쁜 일, 슬픈 일, 신기한 일을 모두 포함합니다.",
+    "이야기를 간추릴 때는 사건을 일어난 차례대로 늘어놓으면 줄거리가 됩니다."
    ],
    "img": "Three comic-style panels in a row with arrows between them and no text. Panel one: a small puppy dashes out of an open wooden gate. Panel two: a boy with a flashlight searches through a dark forest, looking worried. Panel three: the boy kneels in a clearing hugging the happy puppy as morning light shines.",
    "imgKo": "화살표로 이어진 세 칸 그림이다. 첫 칸에서 강아지가 대문 밖으로 달아나고, 둘째 칸에서 소년이 손전등을 들고 어두운 숲을 헤매며, 셋째 칸에서 아침 햇살 속에 강아지를 끌어안는다."
   },
   "배경": {
    "en": "setting",
-   "beats": ["왼쪽 그림의 아이는 눈 내리는 겨울 산골 마을에 있다.", "오른쪽 그림의 같은 아이는 한여름 바닷가에 있다.", "이야기 속 일이 벌어지는 때와 곳이 배경이다."],
+   "beats": ["왼쪽 그림의 아이는 눈 내리는 겨울 산골 마을에 있습니다.", "오른쪽 그림의 같은 아이는 한여름 바닷가에 있습니다.", "이야기 속 일이 벌어지는 때와 곳이 배경입니다."],
    "explain": [
-    "背(등 배)와 景(경치 경), 곧 등 뒤의 경치라는 뜻이다. 이야기에서는 때를 시간적 배경, 곳을 공간적 배경이라고 나누어 부른다.",
-    "같은 인물이라도 배경이 바뀌면 이야기가 달라진다. 눈 덮인 겨울밤 산골에서는 길을 잃을까 걱정되고, 한여름 바닷가에서는 신나는 일이 기다릴 것 같다.",
-    "헷갈리는 말: 그림의 배경은 인물 뒤쪽에 그린 풍경이다. 이야기의 배경은 풍경뿐 아니라 때까지 함께 가리킨다."
+    "背(등 배)와 景(경치 경), 곧 등 뒤의 경치라는 뜻입니다. 이야기에서는 때를 시간적 배경, 곳을 공간적 배경이라고 나누어 부릅니다.",
+    "같은 인물이라도 배경이 바뀌면 이야기가 달라집니다. 눈 덮인 겨울밤 산골에서는 길을 잃을까 걱정되고, 한여름 바닷가에서는 신나는 일이 기다릴 것 같습니다.",
+    "헷갈리는 말: 그림의 배경은 인물 뒤쪽에 그린 풍경입니다. 이야기의 배경은 풍경뿐 아니라 때까지 함께 가리킵니다."
    ],
    "img": "Two framed pictures hang side by side, showing the very same girl in a red coat and boots. In the left frame, she walks through a snowy mountain village at night, with thatched roofs, falling snow and a crescent moon. In the right frame, the same girl stands on a bright sandy beach at noon in summer, with waves, a beach umbrella and a big sun.",
    "imgKo": "나란한 두 액자에 빨간 외투 입은 같은 아이가 있다. 왼쪽은 눈 내리는 겨울밤 산골 마을이고, 오른쪽은 해가 쨍한 한여름 바닷가다."
   },
   "극본": {
    "en": "script (play script)",
-   "beats": ["책상 위 극본에서 무대가 피어오른다.", "나무와 초가집, 오누이와 호랑이가 무대에 선다.", "연극을 하려고 무대와 말, 움직임을 적은 글이 극본이다."],
+   "beats": ["책상 위 극본에서 무대가 피어오릅니다.", "나무와 초가집, 오누이와 호랑이가 무대에 섭니다.", "연극을 하려고 무대와 말, 움직임을 적은 글이 극본입니다."],
    "explain": [
-    "극(劇)은 연극, 본(本)은 바탕이라는 뜻이다. 배우와 무대를 꾸미는 사람들은 모두 극본을 보고 연극을 준비한다. 영화를 찍으려고 쓴 글은 시나리오라고 부른다.",
-    "극본은 때와 곳, 인물을 알려 주는 해설, 인물이 하는 말인 대사, 표정과 몸짓을 알려 주는 지문으로 이루어진다.",
-    "헷갈리는 말: 동화는 읽는 사람에게 이야기를 들려주는 글이고, 극본은 무대 위에서 공연하려고 쓴 글이다. 같은 이야기도 극본으로 바꾸면 거의 모든 내용이 대사와 지문이 된다."
+    "극(劇)은 연극, 본(本)은 바탕이라는 뜻입니다. 배우와 무대를 꾸미는 사람들은 모두 극본을 보고 연극을 준비합니다. 영화를 찍으려고 쓴 글은 시나리오라고 부릅니다.",
+    "극본은 때와 곳, 인물을 알려 주는 해설, 인물이 하는 말인 대사, 표정과 몸짓을 알려 주는 지문으로 이루어집니다.",
+    "헷갈리는 말: 동화는 읽는 사람에게 이야기를 들려주는 글이고, 극본은 무대 위에서 공연하려고 쓴 글입니다. 같은 이야기도 극본으로 바꾸면 거의 모든 내용이 대사와 지문이 됩니다."
    ],
    "img": "On a desk lies an open script booklet whose pages show only grey lines. Rising out of it like a pop-up book is a small theater stage with red curtains: a painted tree and a thatched-roof house as the set, a brother and sister in hanbok holding hands, and a big friendly-looking tiger, with dotted movement arrows on the stage floor.",
    "imgKo": "책상 위 펼친 극본에서 팝업 책처럼 빨간 막이 달린 작은 무대가 솟아오른다. 무대에는 나무와 초가집, 손잡은 한복 차림 오누이, 호랑이가 서 있고 바닥에 움직임 점선 화살표가 있다."
   },
   "해설": {
-   "en": "opening notes · 극본 첫머리에서 때·곳·인물을 알려 주는 부분",
-   "beats": ["극본 첫머리에 달, 기차역, 인물 그림이 모여 있다.", "무대가 그대로 눈 내리는 밤 시골 기차역이 된다.", "때와 곳, 인물을 먼저 알려 주는 부분이 해설이다."],
+   "en": "opening notes",
+   "beats": ["극본 첫머리에 달, 기차역, 인물 그림이 모여 있습니다.", "무대가 그대로 눈 내리는 밤 시골 기차역이 됩니다.", "때와 곳, 인물을 먼저 알려 주는 부분이 해설입니다."],
    "explain": [
-    "解(풀 해)와 說(말씀 설), 곧 풀어서 말해 준다는 뜻이다. 극본의 해설은 주로 첫머리에 나오고, 장면이 크게 바뀌는 곳에 다시 나오기도 한다.",
-    "배우와 무대를 꾸미는 사람은 해설을 읽고 무대를 어떻게 꾸밀지, 어떤 옷을 입을지 정한다.",
-    "헷갈리는 말: 지문은 극본 중간중간 괄호 안에 인물의 표정과 몸짓을 적은 부분이다. 생활에서는 운동 경기 해설처럼 무엇을 풀어 설명해 주는 일도 해설이라고 한다."
+    "解(풀 해)와 說(말씀 설), 곧 풀어서 말해 준다는 뜻입니다. 극본의 해설은 주로 첫머리에 나오고, 장면이 크게 바뀌는 곳에 다시 나오기도 합니다.",
+    "배우와 무대를 꾸미는 사람은 해설을 읽고 무대를 어떻게 꾸밀지, 어떤 옷을 입을지 정합니다.",
+    "헷갈리는 말: 지문은 극본 중간중간 괄호 안에 인물의 표정과 몸짓을 적은 부분입니다. 생활에서는 운동 경기 해설처럼 무엇을 풀어 설명해 주는 일도 해설이라고 합니다."
    ],
    "img": "On the left, the first page of a script booklet is drawn as a column of three icons only: a crescent moon with snowflakes, a small country train station and a row of tiny character figures. A big arrow leads from that page to the right, where a theater stage is set as a quiet country train station on a snowy winter night, with a bench, a lamp post and falling snow.",
    "imgKo": "왼쪽 극본 첫 쪽에 눈송이와 초승달, 작은 시골 기차역, 인물 그림이 세로로 놓여 있다. 큰 화살표를 따라 오른쪽 무대가 눈 내리는 밤 시골 기차역으로 꾸며져 있다."
   },
   "대사": {
    "en": "lines (in a play)",
-   "beats": ["늑대 옷을 입은 도윤이가 무대에서 말한다.", "도윤이 손의 극본에는 늑대가 할 말에만 노란 줄이 쳐 있다.", "연극에서 인물이 직접 하는 말이 대사이다."],
+   "beats": ["늑대 옷을 입은 도윤이가 무대에서 말합니다.", "도윤이 손의 극본에는 늑대가 할 말에만 노란 줄이 쳐 있습니다.", "연극에서 인물이 직접 하는 말이 대사입니다."],
    "explain": [
-    "臺(대 대)와 詞(말 사), 곧 무대 위에서 하는 말이라는 뜻이다. 극본에서는 인물 이름 뒤에 그 인물이 할 말을 적는다.",
-    "대사에는 인물끼리 주고받는 말도 있고, 혼자 하는 말도 있다. 배우는 대사를 외워 인물의 마음을 담아 말한다.",
-    "헷갈리는 말: 지문은 말이 아니라 표정과 몸짓을 알려 주는 부분이라서 소리 내어 말하지 않는다."
+    "臺(대 대)와 詞(말 사), 곧 무대 위에서 하는 말이라는 뜻입니다. 극본에서는 인물 이름 뒤에 그 인물이 할 말을 적습니다.",
+    "대사에는 인물끼리 주고받는 말도 있고, 혼자 하는 말도 있습니다. 배우는 대사를 외워 인물의 마음을 담아 말합니다.",
+    "헷갈리는 말: 지문은 말이 아니라 표정과 몸짓을 알려 주는 부분이라서 소리 내어 말하지 않습니다."
    ],
    "img": "On a school stage, DOYUN wears a fluffy grey wolf costume with ears and speaks boldly toward the audience with one paw raised, sound lines coming from his mouth. In his other hand he holds a script whose pages show grey lines, with only some lines highlighted in bright yellow. Classmates in costumes stand behind him on the stage.",
    "imgKo": "학교 무대에서 늑대 옷을 입은 도윤이가 한 손을 들고 관객에게 큰 소리로 말한다. 다른 손의 극본에는 회색 줄 가운데 몇 줄에만 노란 형광 줄이 쳐 있다."
   },
   "지문": {
    "en": "stage directions",
-   "beats": ["극본의 큰 괄호 안에 문 닫는 그림이 있다.", "하린이가 화난 얼굴로 무대의 문을 쾅 닫는다.", "괄호 안에 표정과 몸짓을 적은 부분이 지문이다."],
+   "beats": ["극본의 큰 괄호 안에 문 닫는 그림이 있습니다.", "하린이가 화난 얼굴로 무대의 문을 쾅 닫습니다.", "괄호 안에 표정과 몸짓을 적은 부분이 지문입니다."],
    "explain": [
-    "'(문을 쾅 닫으며)', '(작은 목소리로)'처럼 쓰여 있으면 배우는 그대로 움직이고 말한다.",
-    "지문은 소리 내어 말하는 부분이 아니다. 배우가 어떻게 연기할지 알려 주는 안내다.",
-    "헷갈리는 말: 손끝의 무늬를 뜻하는 지문은 소리만 같고 전혀 다른 말이다."
+    "'(문을 쾅 닫으며)', '(작은 목소리로)'처럼 쓰여 있으면 배우는 그대로 움직이고 말합니다.",
+    "지문은 소리 내어 말하는 부분이 아닙니다. 배우가 어떻게 연기할지 알려 주는 안내입니다.",
+    "헷갈리는 말: 손끝의 무늬를 뜻하는 지문은 소리만 같고 전혀 다른 말입니다."
    ],
    "img": "At the top of the picture floats a script page with grey lines, where one part is enclosed by a pair of very large round brackets around a small icon of a slamming door with motion lines. Below it, on a classroom stage, HARIN acts out the scene with an angry frown, slamming a prop door with a big bang burst shape. A dotted arrow links the bracketed icon to her action.",
    "imgKo": "위쪽 극본 쪽에 큰 괄호로 둘러싼 쾅 닫히는 문 그림이 있고, 아래 무대에서 하린이가 화난 얼굴로 소품 문을 쾅 닫는다. 괄호 속 그림과 하린이가 점선 화살표로 이어진다."
   },
   "낭독": {
    "en": "reading aloud",
-   "beats": ["모둠 아이들이 극본을 손에 들고 섰다.", "종이를 보며 또박또박 소리 내어 읽는다.", "글을 여러 사람 앞에서 소리 내어 읽는 일이 낭독이다."],
+   "beats": ["모둠 아이들이 극본을 손에 들고 섰습니다.", "종이를 보며 또박또박 소리 내어 읽습니다.", "글을 여러 사람 앞에서 소리 내어 읽는 일이 낭독입니다."],
    "explain": [
-    "朗(밝을 랑)과 讀(읽을 독), 곧 맑은 소리로 읽는다는 뜻이다.",
-    "헷갈리는 말: 낭송은 주로 시를 느낌을 살려 읊는 일이고, 외워서 하기도 한다. 낭독은 글을 보며 소리 내어 읽는 데 무게가 있다. 소리 없이 눈으로만 읽는 것은 묵독이다.",
-    "극본을 역할을 나누어 낭독하면, 연극을 하기 전에 인물의 말투와 마음을 미리 익힐 수 있다."
+    "朗(밝을 랑)과 讀(읽을 독), 곧 맑은 소리로 읽는다는 뜻입니다.",
+    "헷갈리는 말: 낭송은 주로 시를 느낌을 살려 읊는 일이고, 외워서 하기도 합니다. 낭독은 글을 보며 소리 내어 읽는 데 무게가 있습니다. 소리 없이 눈으로만 읽는 것은 묵독입니다.",
+    "극본을 역할을 나누어 낭독하면, 연극을 하기 전에 인물의 말투와 마음을 미리 익힐 수 있습니다."
    ],
    "img": "In a classroom, four children including HARIN and DOYUN stand in a row at the front, each holding an open script with grey lines and looking down at it, mouths open as they read. Clear sound lines come from each child toward the classmates seated at desks, who listen attentively.",
    "imgKo": "교실 앞에 하린이와 도윤이를 비롯한 네 아이가 극본을 펴 들고 보며 소리 내어 읽고, 소리 물결이 앉아서 듣는 친구들에게 퍼진다."
   },
   "소작농": {
    "en": "tenant farmer",
-   "beats": ["농부가 남의 논에서 거둔 볏가마를 나른다.", "볏가마 대부분은 기와집 땅 주인에게 쌓인다.", "남의 땅을 빌려 농사짓는 농부가 소작농이다."],
+   "beats": ["농부가 남의 논에서 거둔 볏가마를 나릅니다.", "볏가마 대부분은 기와집 땅 주인에게 쌓입니다.", "남의 땅을 빌려 농사짓는 농부가 소작농입니다."],
    "explain": [
-    "남의 땅을 빌려 짓는 농사를 소작이라 하고, 땅을 빌린 값으로 내는 곡식이나 돈을 소작료라고 한다.",
-    "옛날, 특히 일제 강점기에는 거둔 곡식의 절반이 넘게 내야 할 때가 많았다. 그래서 소작농은 한 해 내내 열심히 농사를 지어도 늘 가난했다.",
-    "헷갈리는 말: 자작농은 자기 땅에서 농사짓는 농부이고, 지주는 땅을 빌려주는 땅 주인이다."
+    "남의 땅을 빌려 짓는 농사를 소작이라 하고, 땅을 빌린 값으로 내는 곡식이나 돈을 소작료라고 합니다.",
+    "옛날, 특히 일제 강점기에는 거둔 곡식의 절반이 넘게 내야 할 때가 많았습니다. 그래서 소작농은 한 해 내내 열심히 농사를 지어도 늘 가난했습니다.",
+    "헷갈리는 말: 자작농은 자기 땅에서 농사짓는 농부이고, 지주는 땅을 빌려주는 땅 주인입니다."
    ],
    "img": "A Korean countryside in the early 1900s, at harvest time. A thin farmer in worn white hanbok and a straw hat carries a heavy straw rice sack on an A-frame jige along a path from golden rice paddies. Arrows show most of the sacks piling up high in the yard of a large tiled-roof house, where a well-dressed landowner in a dopo and gat stands, while only one small sack sits in front of the farmer's little thatched hut, where his family waits.",
    "imgKo": "1900년대 초 가을 시골에서 낡은 흰옷에 밀짚모자를 쓴 농부가 지게로 볏가마를 나른다. 볏가마 대부분은 도포에 갓 쓴 땅 주인의 큰 기와집 마당에 쌓이고, 농부 가족이 기다리는 작은 초가집 앞에는 한 가마만 놓여 있다."
   },
   "피난": {
    "en": "evacuation (fleeing to safety)",
-   "beats": ["가족이 짐 보따리를 이고 지고 눈길을 걷는다.", "끊어진 다리를 뒤로하고 안전한 마을로 간다.", "전쟁이나 재난을 피해 옮겨 가는 일이 피난이다."],
+   "beats": ["가족이 짐 보따리를 이고 지고 눈길을 걷습니다.", "끊어진 다리를 뒤로하고 안전한 마을로 갑니다.", "전쟁이나 재난을 피해 옮겨 가는 일이 피난입니다."],
    "explain": [
-    "避(피할 피)와 難(어려울 난), 곧 어려운 일을 피한다는 뜻이다.",
-    "1950년에 일어난 6·25 전쟁 때 많은 사람이 짐을 꾸려 남쪽으로 피난을 떠났다. 전쟁 같은 난리를 피한다는 뜻으로 '피란'이라는 말도 함께 쓴다.",
-    "헷갈리는 말: 대피는 불이 났을 때 건물 밖으로 나가듯 위험을 잠시 피하는 일이다. 피난은 사는 곳을 떠나 멀리 옮겨 가는 일이다."
+    "避(피할 피)와 難(어려울 난), 곧 어려운 일을 피한다는 뜻입니다.",
+    "1950년에 일어난 6·25 전쟁 때 많은 사람이 짐을 꾸려 남쪽으로 피난을 떠났습니다. 전쟁 같은 난리를 피한다는 뜻으로 '피란'이라는 말도 함께 씁니다.",
+    "헷갈리는 말: 대피는 불이 났을 때 건물 밖으로 나가듯 위험을 잠시 피하는 일입니다. 피난은 사는 곳을 떠나 멀리 옮겨 가는 일입니다."
    ],
    "img": "A snowy winter road in Korea in 1950. A family walks south in a long line of people: a mother carrying a cloth bundle on her head, a father with belongings on an A-frame jige, a grandmother holding a little girl's hand, all in thick 1950s winter clothes. Far behind them stands a broken bridge over a frozen river, and ahead a gentle arrow points toward a calm village with smoke rising from chimneys.",
    "imgKo": "1950년 겨울 눈길에서 보따리를 머리에 인 어머니, 지게를 진 아버지, 어린 손녀 손을 잡은 할머니가 사람들 행렬 속에 남쪽으로 걷는다. 뒤로 언 강 위 끊어진 다리가 보이고, 앞쪽 화살표가 굴뚝 연기 오르는 조용한 마을을 가리킨다."
