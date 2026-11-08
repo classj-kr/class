@@ -15,7 +15,33 @@ module.exports=function createCollectionAvatar(THREE,id){
       uv.push(x/640,y/640);if(!back)alphas.push(1,1,1,Math.min(1,points[i*4+3]/11));
     }
     for(let i=0;i<front.length;i+=3)indices.push(front[i]+count,front[i+2]+count,front[i+1]+count);
-    const geometry=k.geometry(positions,indices);const shell=k.mesh(part.name+"Solid",geometry,solid,group);
+    const geometry=k.geometry(positions,indices);
+    if(part.vertexColors){const colors=floats(part.vertexColors);geometry.setAttribute('color',new THREE.Float32BufferAttribute([...colors,...colors],3));solid.color.set(0xffffff);solid.userData.preserveVertexColor=true;}
+    // Weld the shading at the closed rim as well as the positions. Separate
+    // front/back normals used to make a dark zipper along the silhouette.
+    const normals=geometry.attributes.normal;
+    // The traced boundary follows individual alpha pixels. Average only the
+    // shading normals across connected vertices so those pixels cannot form
+    // alternating dark/light ribs on the flank of a smooth costume.
+    const neighbours=Array.from({length:count*2},()=>new Set());
+    for(let i=0;i<indices.length;i+=3)for(let j=0;j<3;j++){
+      const a=indices[i+j],b=indices[i+(j+1)%3];neighbours[a].add(b);neighbours[b].add(a);
+    }
+    for(let i=0;i<count;i++)if(points[i*4+2]===0){neighbours[i].add(i+count);neighbours[i+count].add(i);}
+    for(let pass=0;pass<3;pass++){
+      const smooth=new Float32Array(normals.array.length);
+      for(let i=0;i<count*2;i++){
+        const n=new THREE.Vector3().fromBufferAttribute(normals,i).multiplyScalar(2);
+        for(const j of neighbours[i])n.add(new THREE.Vector3().fromBufferAttribute(normals,j));
+        n.normalize();smooth.set(n.toArray(),i*3);
+      }
+      normals.array.set(smooth);
+    }
+    for(let i=0;i<count;i++)if(points[i*4+2]===0){const n=new THREE.Vector3().fromBufferAttribute(normals,i).add(new THREE.Vector3().fromBufferAttribute(normals,i+count)).normalize();normals.setXYZ(i,n.x,n.y,n.z);normals.setXYZ(i+count,n.x,n.y,n.z);}
+    // A front illustration must fade before the surface turns sideways. A
+    // distance-only mask dragged outline pixels over the flanks like a zipper.
+    for(let i=0;i<count;i++){const t=Math.max(0,Math.min(1,(normals.getZ(i)-.18)/.52));alphas[i*4+3]*=t*t*(3-2*t);}
+    const shell=k.mesh(part.name+"Solid",geometry,solid,group);
     const paint=k.geometry(positions.slice(0,count*3),[...front],uv.slice(0,count*2));paint.translate(0,0,.002);
     paint.setAttribute("color",new THREE.Float32BufferAttribute(alphas,4));const material=k.art.clone();material.vertexColors=true;material.transparent=true;material.alphaTest=0;material.depthWrite=false;
     k.mesh(part.name+"Artwork",paint,material,group);
@@ -26,6 +52,7 @@ module.exports=function createCollectionAvatar(THREE,id){
     }
     parts.set(part.name,{part,group,shell,solid,points});
   }
+  require("./collection-specials.cjs")(THREE,k,id,parts);
   const torso=parts.get("Torso"),head=parts.get("Head");
   if(torso&&head){
     k.ellipsoid("NeckJoin",[Math.min(.22,profile.armHalf*.003),.10,.16],torso.solid,k.body,[(profile.cx-320)*.005,(580-profile.neck)*.005,-.025]);
@@ -42,16 +69,30 @@ module.exports=function createCollectionAvatar(THREE,id){
     if(!target)return;
     const carrier=new THREE.Mesh(target.shell.geometry,new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));carrier.updateMatrixWorld(true);
     const cx=outline.reduce((s,p)=>s+p[0],0)/outline.length,cy=outline.reduce((s,p)=>s+p[1],0)/outline.length;
-    const P=[],I=[],ray=new THREE.Raycaster();
-    for(const [x,y] of [[cx,cy],...outline]){ray.set(new THREE.Vector3((x-target.part.pivot[0])*.005,(target.part.pivot[1]-y)*.005,-5),new THREE.Vector3(0,0,1));const hit=ray.intersectObject(carrier)[0];if(!hit){carrier.material.dispose();return;}P.push(hit.point.x,hit.point.y,hit.point.z-.004);}
-    for(let i=1;i<=outline.length;i++)I.push(0,i,i===outline.length?1:i+1);
+    const P=[],I=[],ray=new THREE.Raycaster(),n=outline.length,rings=12;
+    for(let ring=0;ring<=rings;ring++)for(const [ex,ey] of outline){const x=cx+(ex-cx)*ring/rings,y=cy+(ey-cy)*ring/rings;ray.set(new THREE.Vector3((x-target.part.pivot[0])*.005,(target.part.pivot[1]-y)*.005,-5),new THREE.Vector3(0,0,1));const hit=ray.intersectObject(carrier)[0];if(!hit){carrier.material.dispose();return;}P.push(hit.point.x,hit.point.y,hit.point.z-.006);}
+    for(let ring=0;ring<rings;ring++)for(let i=0;i<n;i++){const a=ring*n+i,b=ring*n+(i+1)%n,c=a+n,d=b+n;if(ring)I.push(a,d,b);I.push(a,c,d);}
     const g=k.geometry(P,I);if(g.attributes.normal.getZ(0)>0){for(let i=0;i<I.length;i+=3)[I[i+1],I[i+2]]=[I[i+2],I[i+1]];g.setIndex(I);g.computeVertexNormals();}
     k.mesh(name,g,k.solid(name+"Paint",color),target.group);carrier.material.dispose();
   }
   function dot(target,name,x,y,r,color,n=16){patch(target,name,Array.from({length:n},(_,i)=>[x+Math.cos(i/n*Math.PI*2)*r,y+Math.sin(i/n*Math.PI*2)*r]),color);}
-  if(head&&profile.pattern){
+  if(head&&(!head.special||head.acceptPattern)&&profile.pattern){
     const top=head.part.bounds[1],bottom=Math.min(profile.neck,head.part.bounds[3]),height=bottom-top,cx=profile.cx;
     const pattern=profile.pattern;
+    if(pattern==='crested'){
+      const stripe=[[218,98],[238,112],[250,147],[239,180],[257,216],[245,253],[259,288],[248,320],[226,351],[232,310],[219,275],[231,239],[214,198],[229,160],[210,129]];
+      for(const side of [-1,1])patch(head,'CrestedOrangeStripe'+side,stripe.map(([x,y])=>[cx+side*(x-cx),y]),'#df933f');
+      if(torso)for(const side of [-1,1])patch(torso,'CrestedBackFlame'+side,[[cx+side*45,profile.neck+12],[cx+side*34,profile.neck+34],[cx+side*48,profile.neck+48],[cx+side*27,profile.neck+69],[cx+side*35,profile.neck+47],[cx+side*23,profile.neck+33]],'#d98232');
+    }
+    if(pattern==='leopard'||pattern==='giraffe'){
+      const markings=[[-76,.20,15],[4,.15,22],[78,.23,17],[-118,.34,19],[-35,.33,12],[44,.37,20],[112,.44,12],[-85,.50,15],[-3,.48,10],[-42,.63,18],[65,.60,16],[-110,.72,12],[20,.76,21],[98,.77,13],[-53,.85,13]];
+      for(const [i,[dx,t,r]] of markings.entries()){
+        const x=cx+dx,y=top+height*t,n=pattern==='giraffe'?7:16;
+        const outline=Array.from({length:n},(_,j)=>{const a=j/n*Math.PI*2,f=1+.14*Math.sin(j*2.1+i*1.7);return[x+Math.cos(a)*r*f,y+Math.sin(a)*r*(pattern==='giraffe'?1.25:.87)*f];});
+        patch(head,pattern+'Mark'+i,outline,pattern==='giraffe'?'#9e6b3e':'#815025');
+        if(pattern==='leopard'&&i%3===1)dot(head,'LeopardSpotCenter'+i,x+2,y-1,r*.52,profile.headColor);
+      }
+    }
     if(["spots","seeds","pores","chips","grape","soccer","dice"].includes(pattern)){
       const colors={spots:"#765135",seeds:"#ffe1a0",pores:"#df8825",chips:"#694330",grape:"#643880",soccer:"#363537",dice:"#333337"};
       for(let row=0;row<4;row++)for(let col=0;col<4;col++){
@@ -93,6 +134,7 @@ module.exports=function createCollectionAvatar(THREE,id){
       clips.push(new THREE.AnimationClip(name,1.8,[new THREE.VectorKeyframeTrack("Body.position",times,pos),new THREE.QuaternionKeyframeTrack("Body.quaternion",times,quat)]));
     }
     k.root.updateMatrixWorld(true);k.root.position.y-=new THREE.Box3().setFromObject(k.root).min.y;
+    for(const clip of clips){const track=clip.tracks.find(t=>t.name==='Body.position'),mix=new THREE.AnimationMixer(k.root);mix.clipAction(clip).play();for(let i=0;i<49;i++){mix.setTime(times[i]);k.root.updateMatrixWorld(true);const floor=new THREE.Box3().setFromObject(k.root).min.y;if(floor<0)track.values[i*3+1]-=floor;}mix.stopAllAction();k.body.position.set(0,0,0);k.body.quaternion.identity();}
     k.root.userData={walkStride:.4,walkDuration:1.8};require("./illustration-materials.cjs")(THREE,k.root);result={root:k.root,clips};
   }
   // Wings stay attached at their original shoulder points and flap mildly.

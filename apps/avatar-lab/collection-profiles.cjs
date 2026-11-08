@@ -31,7 +31,7 @@ animal-koala|코알라|429|535|.68|walk|hood
 animal-ladybug|무당벌레|408|538|.60|walk|wings
 animal-leopard-gecko|레오파드 게코|420|535|.63|walk|hood
 animal-lion|사자|458|537|.75|walk|hood
-animal-llama|라마|405|544|.55|walk|hood
+animal-llama|양|405|544|.55|walk|hood
 animal-meerkat|미어캣|381|532|.63|walk|hood
 animal-monkey|원숭이|427|538|.68|walk|hood
 animal-mouse|생쥐|453|537|.64|walk|hood
@@ -181,7 +181,9 @@ set("animal-dragonfly",{wingEllipse:[320,307,103,107],wingTop:260,armHalf:33,hol
 set("animal-ladybug",{wingEllipse:[320,284,160,145],wingTop:360,armHalf:48,holdArms:true});
 set("animal-peacock",{wingEllipse:[320,316,121,130],wingTop:60,armHalf:43,holdArms:true});
 for(const id of ["animal-tiger","animal-wolf"])set(id,{pattern:"stripes"});
-for(const id of ["animal-crested-gecko","animal-leopard-gecko","animal-giraffe"])set(id,{pattern:"spots"});
+set('animal-crested-gecko',{pattern:'crested',headColor:'#a26738',bodyColor:'#664128'});
+set('animal-leopard-gecko',{pattern:'leopard'});
+set('animal-giraffe',{pattern:'giraffe'});
 set("animal-turtle",{pattern:"shell"});set("animal-bee",{pattern:"bee",holdArms:true});
 set("food-fish-pastry",{pattern:"scales"});set("fruit-melon",{pattern:"melon"});
 set("fruit-strawberry",{pattern:"seeds"});set("fruit-orange",{pattern:"pores"});
@@ -197,4 +199,16 @@ const headColors={
 };
 for(const [id,headColor] of Object.entries(headColors))set(id,{headColor});
 for(const [id,bodyColor] of Object.entries({"animal-bear":"#a87540","animal-panda":"#383c35","animal-eagle":"#78553c","animal-butterfly":"#b96aaa","animal-crocodile":"#709941","animal-monkey":"#b17c3f","animal-owl":"#96754e","animal-peacock":"#357c9b","animal-koala":"#9ea5b4","animal-lion":"#e1b04c","theme-rose":"#779a3a","theme-sunflower":"#72964b","theme-tulip":"#e7b94b"}))set(id,{bodyColor});
+for(const [id,bodyColor] of Object.entries({'animal-bee':'#d6ac3a','animal-ladybug':'#725449','animal-dragonfly':'#70abb5','animal-leopard-gecko':'#dfb666','animal-squirrel':'#b58149','animal-hedgehog':'#be9b89'}))set(id,{bodyColor});
+for(const [id,featureTop] of Object.entries({'animal-bee':185,'animal-butterfly':185,'animal-deer':178,'animal-giraffe':155,'animal-ladybug':153,'animal-panda':166,'animal-praying-mantis':148,'fruit-apple':158,'fruit-mango':155,'fruit-melon':134,'fruit-orange':126,'fruit-persimmon':176,'fruit-pineapple':258,'fruit-strawberry':171,'vegetable-bell-pepper':154,'vegetable-carrot':233,'vegetable-eggplant':181,'vegetable-radish':235,'vegetable-tomato':143}))set(id,{featureTop});
+// Material regions follow the fruit/root and foliage separately. Dominant
+// color sampling can otherwise turn a white radish into a green solid.
+for(const [id,headColor] of Object.entries({
+ 'fruit-apple':'#d34d3e','fruit-blueberry':'#7777a5','fruit-cherry':'#cc4a4b',
+ 'fruit-mango':'#e9b854','fruit-melon':'#bfd68b','fruit-orange':'#e99a3f',
+ 'fruit-peach':'#e8a59a','fruit-persimmon':'#e4a14e','fruit-pineapple':'#d7ad54','fruit-strawberry':'#d05b54',
+ 'vegetable-bell-pepper':'#86a653','vegetable-broccoli':'#6b9854','vegetable-carrot':'#e4a05c',
+ 'vegetable-eggplant':'#876094','vegetable-potato':'#c3a47c','vegetable-pumpkin':'#dd994e',
+ 'vegetable-radish':'#eee9d8','vegetable-sweet-potato':'#a7697c','vegetable-tomato':'#ce695a'
+}))set(id,{headColor});
 module.exports=profiles;

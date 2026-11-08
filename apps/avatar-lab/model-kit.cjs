@@ -11,7 +11,7 @@ module.exports = function kit(THREE, key) {
   function mesh(name,geometry,material,parent=body,position=[0,0,0]){const m=new THREE.Mesh(geometry,material);m.name=name;m.position.set(...position);parent.add(m);return m;}
   function group(name,pixel,z=0){const g=new THREE.Group();g.name=name;g.position.set((pixel[0]-320)*S,(580-pixel[1])*S,z);body.add(g);return g;}
   function ellipsoid(name,size,material,parent,position=[0,0,0]){const m=mesh(name,new THREE.SphereGeometry(1,40,24),material,parent,position);m.scale.set(...size);return m;}
-  function tube(name,points,radius,material,parent=body){const curve=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p)));return mesh(name,new THREE.TubeGeometry(curve,Math.max(24,points.length*6),radius,8,false),material,parent);}
+  function tube(name,points,radius,material,parent=body){const curve=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p)));return mesh(name,new THREE.TubeGeometry(curve,Math.max(24,Math.min(192,points.length*2)),radius,8,false),material,parent);}
   function geometry(positions,indices,uvs){const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(positions,3));if(uvs)g.setAttribute("uv",new THREE.Float32BufferAttribute(uvs,2));g.setIndex(indices);g.computeVertexNormals();return g;}
   function volume(name,contour,center,pivot,frontDepth,backDepth,parent,material,options={}){
     const samples=options.samples||64,rings=12,z=options.z||0;
@@ -42,6 +42,10 @@ module.exports = function kit(THREE, key) {
   }
   function ellipse(cx,cy,rx,ry,n=24){return Array.from({length:n},(_,i)=>{const a=i/n*Math.PI*2;return[cx+Math.cos(a)*rx,cy+Math.sin(a)*ry];});}
   function projectArtwork(name,contour,center,pivot,parent,target){
+    if(name==='OriginalFace'){
+      const rx=Math.max(...contour.map(p=>Math.abs(p[0]-center[0]))),ry=Math.max(...contour.map(p=>Math.abs(p[1]-center[1])));
+      (parent.userData.originalFaceRegions??=[]).push({cx:center[0],cy:center[1],rx,ry});
+    }
     // Place every facial vertex on the actual opaque head surface. This avoids
     // an oval face disk hanging in front of a curved hood when seen sideways.
     const carriers=(Array.isArray(target)?target:[target]).map(surface=>{surface.updateMatrix();const m=new THREE.Mesh(surface.geometry.clone().applyMatrix4(surface.matrix),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));m.updateMatrixWorld(true);return m;});

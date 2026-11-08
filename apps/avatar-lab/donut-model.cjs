@@ -38,5 +38,6 @@ module.exports=function(THREE){
     ["LeftLeg",[284,526],[[263,515],[304,528],[304,548],[299,568],[283,578],[265,575],[258,563]], [280,550],.15,-.03],
     ["RightLeg",[351,526],[[330,529],[372,514],[374,544],[379,563],[369,576],[348,575],[333,565]], [353,549],.15,-.03]
   ],"#db9b50");
-  return k.finish({authoring:"Solid toroidal dough, dripped chocolate shell and separate sprinkles; original face inset in ring"});
+  require('./project-model-artwork.cjs')(THREE,k,head,[320,255]);
+  return k.finish({authoring:"Solid toroidal dough, dripped chocolate shell and original painted front preserved over the actual geometry"});
 };
