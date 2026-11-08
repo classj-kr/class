@@ -51,7 +51,7 @@ test('all modern Hangul syllables compose finite, ordered stroke paths', () => {
   assert.equal(C.model('A'), null);
 });
 test('the designed pen paths remain aligned with shape and order judging', () => {
-  for (const c of ['ㄹ', 'ㅂ', 'ㅓ', '한', '꽃', '과', '읽', '모', '포', '파', '환', '귤', '굴', '궤', '갗', ...'값없노소초곬곯붉읊굽옆협팥핥필폰갚같곁']) {
+  for (const c of ['ㄹ', 'ㅂ', 'ㅓ', '한', '꽃', '과', '읽', '모', '포', '파', '환', '귤', '굴', '궤', '갗', ...'값없노소초곬곯붉읊굽옆협팥핥필폰갚같곁쐐찜삶갊휜규학궂로조친뿔']) {
     const strokes = perfect(c),
       r = C.judge(c, strokes);
     assert.equal(r.order, true, c);
