@@ -76,11 +76,11 @@
       .replace(/^(이\/가|을\/를|은\/는|와\/과)/, (m) => pairs[m][coda ? 0 : 1]);
   }
 
-  function sentenceWith(text, word) {
+  function sentenceWith(text, word, lead = '') {
     const p = element('p', '', 'word-use');
     const at = wordAt(text, word);
-    if (at < 0) { p.textContent = text; return p; }
-    p.append(text.slice(0, at), element('mark', word), text.slice(at + word.length));
+    if (at < 0) { p.textContent = lead + text; return p; }
+    p.append(lead + text.slice(0, at), element('mark', word), text.slice(at + word.length));
     return p;
   }
 
@@ -175,6 +175,34 @@
     return say;
   }
 
+  // 이 단원 뜻의 유의어·반의어·상위어·하위어. 같은 단원 낱말이면 눌러서 그 낱말로 간다.
+  const REL = [
+    ['syn', '유의어', '뜻이 비슷한 말'],
+    ['ant', '반의어', '뜻이 반대인 말'],
+    ['up', '상위어', '더 넓게 묶는 말'],
+    ['down', '하위어', '그 안에 드는 말']
+  ];
+  function relationsOf(unit, word, select) {
+    if (!word.rel) return null;
+    const box = element('div', '', 'relations');
+    for (const [key, name, gloss] of REL) {
+      const rows = word.rel[key];
+      if (!rows || !rows.length) continue;
+      const line = element('div', '', `rel rel-${key}`);
+      const label = element('p', '', 'rel-kind');
+      label.append(element('b', name), element('span', gloss));
+      const chips = element('div', '', 'rel-words');
+      for (const row of rows) {
+        const at = unit.words.findIndex(item => item.w === row.w);
+        chips.append(at >= 0 ? button(row.w + ' →', () => select(at), 'rel-word linked') : element('span', row.w, 'rel-word'));
+      }
+      line.append(label, chips);
+      for (const row of rows.filter(item => item.note)) line.append(element('p', `${row.w}: ${row.note}`, 'rel-note'));
+      box.append(line);
+    }
+    return box.childElementCount ? box : null;
+  }
+
   function wordPageOf(unit, index, select) {
     const word = unit.words[index];
     const page = element('article', '', 'word-page');
@@ -199,6 +227,8 @@
     own.append(element('p', word.mean, 'word-mean'), sentenceWith(word.use, word.w));
     meanings.append(own);
     side.append(meanings);
+    const relations = relationsOf(unit, word, select);
+    if (relations) side.append(relations);
     if (word.explain) {
       const more = element('div', '', 'explain');
       more.append(...word.explain.map(text => element('p', text)));
@@ -280,11 +310,33 @@
   }
 
   const kindsOf = (word) => word.blanks.map(text => ({ kind: 'blank', text })).concat({ kind: 'mean', text: word.mean });
+  const pick = (rows) => rows[Math.floor(Math.random() * rows.length)];
 
-  function questionsFor(unit) {
+  // 다른 뜻이 있는 낱말은 '이 문장에서 이 낱말의 뜻은?'으로 묻는다. 다의어·동형어를 가려 보는 연습이다.
+  function senseQuestion(word) {
+    const all = [{ mean: word.mean, use: word.use, kind: '이 단원' }, ...word.senses];
+    const target = pick(all);
+    const others = shuffle(all.filter(row => row !== target)).slice(0, 3);
+    return { kind: 'sense', word, target, choices: shuffle([target, ...others]) };
+  }
+  // 반의어·유의어가 있는 낱말은 '뜻이 반대인(비슷한) 낱말은?'으로 묻는다. 보기는 관계없는 같은 단원 낱말.
+  function relQuestion(word, pool) {
+    const keys = ['ant', 'syn'].filter(key => word.rel?.[key]?.length);
+    if (!keys.length) return null;
+    const key = pick(keys);
+    const answer = pick(word.rel[key]).w;
+    const related = new Set([word.w, ...['syn', 'ant', 'up', 'down'].flatMap(k => (word.rel[k] || []).map(row => row.w))]);
+    const others = shuffle(pool.filter(row => !related.has(row.w))).slice(0, 3).map(row => row.w);
+    if (others.length < 3) return null;
+    return { kind: 'rel', key, word, answer, choices: shuffle([answer, ...others]) };
+  }
+
+  function questionsFor(unit, pool) {
     return shuffle(unit.words).map(word => {
-      const kinds = kindsOf(word);
-      return { word, ...kinds[Math.floor(Math.random() * kinds.length)] };
+      if (word.senses) return senseQuestion(word);
+      const rel = Math.random() < 0.5 ? relQuestion(word, pool) : null;
+      if (rel) return rel;
+      return { word, ...pick(kindsOf(word)) };
     });
   }
 
@@ -294,7 +346,7 @@
     let queue, total, done, missed, firstTry;
 
     function start() {
-      queue = questionsFor(unit);
+      queue = questionsFor(unit, pool);
       total = queue.length;
       done = 0;
       missed = new Set();
@@ -315,29 +367,59 @@
       return bar;
     }
 
+    // 문제마다 보기(label), 정답 여부, 틀렸을 때 보여 줄 말을 만든다.
+    function optionsOf(item) {
+      const { word } = item;
+      if (item.kind === 'sense') {
+        return item.choices.map(row => ({
+          label: row.mean, right: row === item.target,
+          wrong: row.use ? sentenceWith(row.use, word.w, '그 뜻으로는 이렇게 씁니다: ') : null
+        }));
+      }
+      if (item.kind === 'rel') {
+        return item.choices.map(name => {
+          const other = pool.find(row => row.w === name);
+          return { label: name, right: name === item.answer, wrong: other ? element('p', `${other.w}: ${other.mean}`, 'wrong-note') : null };
+        });
+      }
+      return shuffle([word, ...shuffle(pool.filter(row => row !== word)).slice(0, 3)])
+        .map(row => ({ label: row.w, right: row === word, wrong: element('p', `${row.w}: ${row.mean}`, 'wrong-note') }));
+    }
+
     function next() {
       if (!queue.length) return finish();
       const item = queue.shift();
       const { word } = item;
       const card = element('section', '', 'question');
       const prompt = element('p', '', 'prompt');
-      let blank = null, blankRest = null;
+      let blank = null, blankRest = null, heading;
       if (item.kind === 'blank') {
         const [before, after] = item.text.split('{}');
         blank = element('span', '', 'blank');
         blank.setAttribute('aria-label', '빈칸');
         blankRest = document.createTextNode(after);
         prompt.append(before, blank, blankRest);
+        heading = '빈칸에 알맞은 낱말은?';
+      } else if (item.kind === 'sense') {
+        prompt.classList.add('sense');
+        prompt.append(...sentenceWith(item.target.use, word.w).childNodes);
+        heading = `이 문장에서 '${word.w}'의 뜻은?`;
+      } else if (item.kind === 'rel') {
+        prompt.classList.add('rel');
+        prompt.append(element('span', word.w, 'rel-target'));
+        const with_ = particleFor(word.w, '와/과');
+        heading = item.key === 'ant' ? `'${word.w}'${with_} 뜻이 반대인 낱말은?` : `'${word.w}'${with_} 뜻이 비슷한 낱말은?`;
       } else {
         prompt.classList.add('meaning');
         prompt.append(element('span', '뜻', 'tag'), item.text);
+        heading = '이 뜻을 가진 낱말은?';
       }
-      const ask = element('h3', item.kind === 'blank' ? '빈칸에 알맞은 낱말은?' : '이 뜻을 가진 낱말은?');
-      const choices = element('div', '', 'choices');
+      const ask = element('h3', heading);
+      const choices = element('div', '', item.kind === 'sense' ? 'choices long' : 'choices');
       const result = element('div', '', 'result');
       result.setAttribute('role', 'status');
-      const options = shuffle([word, ...shuffle(pool.filter(row => row !== word)).slice(0, 3)]);
-      const buttons = options.map(option => button(option.w, () => answer(option)));
+      const options = optionsOf(item);
+      const buttons = options.map(option => button(option.label, () => answer(option)));
       choices.append(...buttons);
       card.append(ask, prompt, choices, result);
       view.replaceChildren(progressOf(), card);
@@ -345,13 +427,12 @@
 
       let tried = false;
       function answer(option) {
-        const right = option === word;
         const chosen = buttons[options.indexOf(option)];
-        if (!right) {
+        if (!option.right) {
           chosen.classList.add('wrong');
           chosen.disabled = true;
           if (!tried) { missed.add(word); tried = true; }
-          result.replaceChildren(element('p', `${option.w}: ${option.mean}`, 'wrong-note'));
+          result.replaceChildren(...(option.wrong ? [option.wrong] : []));
           card.classList.remove('shake');
           void card.offsetWidth;
           card.classList.add('shake');
@@ -363,7 +444,7 @@
         } else {
           // 틀린 낱말은 다른 문장으로 뒤에 한 번 더 묻는다.
           const others = kindsOf(word).filter(row => row.text !== item.text);
-          queue.push({ word, retry: true, ...others[Math.floor(Math.random() * others.length)] });
+          queue.push({ word, retry: true, ...pick(others) });
         }
         buttons.forEach(node => { node.disabled = true; });
         chosen.classList.add('right');
@@ -371,12 +452,27 @@
         const note = element('div', '', 'right-note');
         if (tried) note.append(element('p', '이 낱말은 뒤에 다른 문제로 한 번 더 나옵니다.', 'verdict'));
         if (item.kind === 'blank') note.append(element('p', `${word.w}: ${word.mean}`));
-        else note.append(sentenceWith(word.use, word.w));
+        else if (item.kind === 'sense') note.append(senseNote(item.target));
+        else if (item.kind === 'rel') {
+          const row = word.rel[item.key].find(rel => rel.w === item.answer);
+          note.append(element('p', `${word.w} ${item.key === 'ant' ? '↔' : '≈'} ${item.answer}${row?.note ? ` — ${row.note}` : ''}`));
+        } else note.append(sentenceWith(word.use, word.w));
         const go = button(queue.length ? '다음' : '결과 보기', next, 'next');
         result.replaceChildren(note, go);
         view.querySelector('.progress').replaceWith(progressOf());
         go.focus({ preventScroll: true });
       }
+    }
+
+    // '어떤 뜻?' 문제를 맞힌 뒤: 이 단원 뜻인지, 다의어인지, 동형어인지 알려 준다.
+    function senseNote(target) {
+      const note = element('p', '', 'sense-answer');
+      if (target.kind === '이 단원') { note.append(element('b', '이 단원 뜻', 'k-own'), ' 이 단원에서 배우는 뜻입니다.'); return note; }
+      const homonym = target.kind === '동형어';
+      note.append(element('b', homonym ? '동형어' : '다의어', homonym ? 'k-homonym' : 'k-polysemy'),
+        homonym ? ' 소리만 같은 다른 낱말입니다.' : ' 같은 낱말이 다른 뜻으로 쓰였습니다.');
+      if (target.hanja) note.append(' ', element('span', target.hanja, 'hanja-glyph small'));
+      return note;
     }
 
     function finish() {
