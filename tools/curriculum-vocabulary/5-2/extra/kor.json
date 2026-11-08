@@ -38,7 +38,7 @@
    "beats": ["하린이가 사서 선생님께 도서관 카드를 내밉니다.", "책을 받아 들고 도서관 문밖으로 나갑니다.", "정한 날까지 빌려 가는 일이 대출입니다."],
    "explain": [
     "貸(빌려줄 대)와 出(나갈 출)을 합친 말입니다. 도서관 쪽에서 보면 책을 빌려주어 밖으로 내보내는 일이라서 대출이라고 합니다.",
-    "헷갈리는 말: 반납은 빌린 것을 다시 돌려주는 일로, 대출과 짝을 이룹니다. 은행에서 돈을 빌리는 일도 대출이라고 합니다.",
+    "헷갈리는 말: 반납은 빌린 것을 다시 돌려주는 일로, 대출과 짝을 이룹니다.",
     "도서관마다 한 번에 빌릴 수 있는 권수와 날짜가 정해져 있습니다. 날짜를 넘기면 한동안 대출을 못 하게 하는 곳도 있습니다."
    ],
    "img": "At a bright school library desk, HARIN hands her library card to a smiling Korean librarian, who passes her two books. A big curved arrow runs from the bookshelf behind the desk, through HARIN's arms, toward the open library door. On the desk stands a small calendar with one day circled, with no numbers on it.",
@@ -216,7 +216,7 @@
    "imgKo": "마당에서 강아지가 꼬리를 흔들고, 강아지에게만 환한 빛이 비친다. 아래에 강아지, 꼬리, 흔드는 화살표가 그려진 블록 셋이 있고 강아지 블록이 빛난다."
   },
   "서술어": {
-   "beats": ["하늘은 어떠한가? 파랗습니다.", "도윤이는 어찌하나요? 달립니다.", "주인이 어찌하고 어떠한지 알려 주는 말이 서술어입니다."],
+   "beats": ["하늘은 어떠합니까? 파랗습니다.", "도윤이는 어찌하나요? 달립니다.", "주인이 어찌하고 어떠한지 알려 주는 말이 서술어입니다."],
    "explain": [
     "서술(敍述)은 차례대로 풀어 말한다는 뜻입니다. '달린다'는 움직임을, '파랗다'는 모습을, '학생이다'는 무엇인지를 나타내는 서술어입니다.",
     "우리말에서 서술어는 대개 문장 맨 끝에 옵니다. 그래서 끝까지 들어야 그 사람이 무엇을 했는지 알 수 있습니다.",
@@ -240,8 +240,7 @@
    "beats": ["앞 조각에는 꼭 맞는 뒤 조각이 따로 있습니다.", "맞지 않는 조각은 아무리 밀어도 끼워지지 않습니다.", "앞말에 어울리는 말이 뒤따르는 것이 호응입니다."],
    "explain": [
     "呼(부를 호)와 應(응할 응), 곧 부르면 대답한다는 뜻입니다.",
-    "'결코 ~하지 않았다', '왜냐하면 ~때문이다', '만약 ~라면', '어제 ~했다', '할머니께서 ~하신다'가 그런 짝입니다. '나는 결코 숙제를 했다'는 짝이 맞지 않아 어색합니다.",
-    "공연에서 관객이 손뼉과 환호로 답해 주는 것도 호응이라고 합니다."
+    "'결코 ~하지 않았다', '왜냐하면 ~때문이다', '만약 ~라면', '어제 ~했다', '할머니께서 ~하신다'가 그런 짝입니다. '나는 결코 숙제를 했다'는 짝이 맞지 않아 어색합니다."
    ],
    "img": "In the center, a big blue puzzle piece snaps perfectly into a big orange puzzle piece, with a small green check mark and sparkles where they join. To the right, HARIN tries to push a differently shaped orange piece into another blue piece; the edges bump and do not fit, with a small red X above them.",
    "imgKo": "가운데 파란 퍼즐 조각과 주황 조각이 딱 맞물려 초록 표시와 반짝이가 있다. 오른쪽에서는 하린이가 모양이 다른 조각을 끼우려 하지만 맞지 않아 빨간 가위표가 뜬다."
@@ -714,7 +713,7 @@
    "explain": [
     "解(풀 해)와 說(말씀 설), 곧 풀어서 말해 준다는 뜻입니다. 극본의 해설은 주로 첫머리에 나오고, 장면이 크게 바뀌는 곳에 다시 나오기도 합니다.",
     "배우와 무대를 꾸미는 사람은 해설을 읽고 무대를 어떻게 꾸밀지, 어떤 옷을 입을지 정합니다.",
-    "헷갈리는 말: 지문은 극본 중간중간 괄호 안에 인물의 표정과 몸짓을 적은 부분입니다. 생활에서는 운동 경기 해설처럼 무엇을 풀어 설명해 주는 일도 해설이라고 합니다."
+    "헷갈리는 말: 지문은 극본 중간중간 괄호 안에 인물의 표정과 몸짓을 적은 부분입니다."
    ],
    "img": "On the left, the first page of a script booklet is drawn as a column of three icons only: a crescent moon with snowflakes, a small country train station and a row of tiny character figures. A big arrow leads from that page to the right, where a theater stage is set as a quiet country train station on a snowy winter night, with a bench, a lamp post and falling snow.",
    "imgKo": "왼쪽 극본 첫 쪽에 눈송이와 초승달, 작은 시골 기차역, 인물 그림이 세로로 놓여 있다. 큰 화살표를 따라 오른쪽 무대가 눈 내리는 밤 시골 기차역으로 꾸며져 있다."

@@ -23,14 +23,15 @@ const castOut = (text) => {
   return text.replace(/(^|[.!?]\s+)(a|the) /g, (m, p, a) => p + a[0].toUpperCase() + a.slice(1) + ' ');
 };
 const extra = {};
-for (const name of fs.readdirSync(path.join(dir, 'extra')).filter(n => n.endsWith('.json'))) {
+// build.mjs 와 같은 차례: kor.json 먼저, kor-g.json 같은 덧붙임 파일은 나중에 칸마다 덮어쓴다.
+for (const name of fs.readdirSync(path.join(dir, 'extra')).filter(n => n.endsWith('.json') && !n.startsWith('senses')).sort((a, b) => (/-[a-z]\.json$/.test(a) - /-[a-z]\.json$/.test(b)) || a.localeCompare(b))) {
   const code = name.replace(/(-[a-z])?\.json$/, '');
-  for (const [unit, words] of Object.entries(JSON.parse(fs.readFileSync(path.join(dir, 'extra', name), 'utf8')))) for (const [w, row] of Object.entries(words)) extra[`${code}/${unit}/${w}`] = row;
+  for (const [unit, words] of Object.entries(JSON.parse(fs.readFileSync(path.join(dir, 'extra', name), 'utf8')))) for (const [w, row] of Object.entries(words)) extra[`${code}/${unit}/${w}`] = { ...extra[`${code}/${unit}/${w}`], ...row };
 }
 const lines = [`# 교과 단어 ${term} 그림 프롬프트`, '',
   '만든 그림은 파일 이름을 아래 굵은 이름(예: kor-4-01)으로 시작하게 저장해 E:/webprojects/curriculum-images/' + term + '/ 폴더에 넣으면 된다. 뒤에 다른 말이 붙어도 괜찮다(kor-4-01 토의.png).',
   '각 칸의 글을 통째로 복사해 붙여 넣으면 화풍 문단까지 함께 들어간다. 그림 속에 글자가 생기면 다시 만든다.', ''];
-let count = 0, missing = [];
+let count = 0, missing = [], drawn = [];
 for (const [code, subject] of books) {
   const book = JSON.parse(fs.readFileSync(path.join(dir, code + '.json'), 'utf8'));
   lines.push(`## ${subject}`, '');
@@ -39,6 +40,7 @@ for (const [code, subject] of books) {
     unit.words.forEach((word, i) => {
       const id = `${code}-${unit.id}-${String(i + 1).padStart(2, '0')}`;
       const row = extra[`${code}/${unit.id}/${word.w}`];
+      if (row?.fig) { drawn.push(id + ' ' + word.w); return; }   // 코드로 그린 도식이 있는 낱말은 그림을 만들지 않는다
       if (!row?.img) { missing.push(id + ' ' + word.w); return; }
       lines.push(`**${id}** ${word.w} — ${row.imgKo}`, '', '```text', `${style}\n\n${castOut(row.img)}`, '```', '');
       count++;
@@ -46,4 +48,5 @@ for (const [code, subject] of books) {
   }
 }
 fs.writeFileSync(path.join(dir, 'IMAGE-PROMPTS.md'), lines.join('\n'));
-console.log(`프롬프트 ${count}개`, missing.length ? `\n명세 없음: ${missing.join(', ')}` : '');
+console.log(`프롬프트 ${count}개`, drawn.length ? `
+도식이 있어 뺀 것: ${drawn.join(', ')}` : '', missing.length ? `\n명세 없음: ${missing.join(', ')}` : '');

@@ -56,9 +56,29 @@
   }
 
   // 예문 속 낱말에만 표시를 붙인다.
+  // 예문에서 낱말 자리를 찾는다. '복사기로 … 복사하셨다'처럼 더 긴 낱말 속에 든 자리는 건너뛰고,
+  // 뒤에 조사·끝말이 붙거나 글자가 끝나는 자리를 고른다. 그런 자리가 없으면 처음 자리.
+  const after = /^(?:[^가-힣]|[이가을를은는의에도만와과로으라랑하되됐했한할해였처보까부께서며고면게지인일]|$)/;
+  function wordAt(text, word) {
+    let first = -1;
+    for (let at = text.indexOf(word); at >= 0; at = text.indexOf(word, at + 1)) {
+      if (first < 0) first = at;
+      if (after.test(text.slice(at + word.length))) return at;
+    }
+    return first;
+  }
+  // 빈칸 뒤 '(이)라고', '을/를' 같은 조사를 채운 낱말의 받침에 맞춘다.
+  function particleFor(word, rest) {
+    const last = word.charCodeAt(word.length - 1) - 0xac00;
+    const coda = last >= 0 && last < 11172 ? last % 28 : 0;
+    const pairs = { '이/가': ['이', '가'], '을/를': ['을', '를'], '은/는': ['은', '는'], '와/과': ['과', '와'] };
+    return rest.replace(/^\(이\)/, coda ? '이' : '').replace(/^\(으\)/, coda && coda !== 8 ? '으' : '')
+      .replace(/^(이\/가|을\/를|은\/는|와\/과)/, (m) => pairs[m][coda ? 0 : 1]);
+  }
+
   function sentenceWith(text, word) {
     const p = element('p', '', 'word-use');
-    const at = text.indexOf(word);
+    const at = wordAt(text, word);
     if (at < 0) { p.textContent = text; return p; }
     p.append(text.slice(0, at), element('mark', word), text.slice(at + word.length));
     return p;
@@ -165,18 +185,24 @@
     if (hanja) head.append(hanja);
     page.append(head);
     const figure = (window.CurriculumFigures || {})[`${term}/${subject}/${unit.id}/${word.w}`];
-    if (word.beats && (word.pic || figure)) page.append(sceneOf({ ...word, figure }));
+    // 코드로 그린 도식이 있으면 그림보다 도식을 쓴다(글자 낱말은 그림으로 보여 줄 수 없다).
+    // 크롬북·아이패드 가로 화면에서는 장면을 왼쪽, 뜻과 설명을 오른쪽에 나란히 둔다(styles.css .word-body).
+    const body = element('div', '', 'word-body');
+    const side = element('div', '', 'word-text');
+    if (word.beats && (word.pic || figure)) { body.classList.add('has-scene'); body.append(sceneOf({ ...word, pic: figure ? null : word.pic, figure })); }
+    body.append(side);
+    page.append(body);
     // 이 단원에서 쓰는 뜻 → 설명 → 생활에서 마주치는 다른 뜻(②부터) 차례로 보인다.
     const meanings = element('ol', '', 'meanings');
     if (word.senses) meanings.classList.add('has-others');
     const own = element('li', '', 'meaning own');
     own.append(element('p', word.mean, 'word-mean'), sentenceWith(word.use, word.w));
     meanings.append(own);
-    page.append(meanings);
+    side.append(meanings);
     if (word.explain) {
       const more = element('div', '', 'explain');
       more.append(...word.explain.map(text => element('p', text)));
-      page.append(more);
+      side.append(more);
     }
     if (word.senses) {
       const others = element('ol', '', 'meanings others');
@@ -189,7 +215,7 @@
         item.append(text, sentenceWith(sense.use, word.w));
         others.append(item);
       }
-      page.append(others);
+      side.append(others);
     }
     const paging = element('nav', '', 'paging');
     paging.setAttribute('aria-label', '다른 낱말');
@@ -278,12 +304,13 @@
       const { word } = item;
       const card = element('section', '', 'question');
       const prompt = element('p', '', 'prompt');
-      let blank = null;
+      let blank = null, blankRest = null;
       if (item.kind === 'blank') {
         const [before, after] = item.text.split('{}');
         blank = element('span', '', 'blank');
         blank.setAttribute('aria-label', '빈칸');
-        prompt.append(before, blank, after);
+        blankRest = document.createTextNode(after);
+        prompt.append(before, blank, blankRest);
       } else {
         prompt.classList.add('meaning');
         prompt.append(element('span', '뜻', 'tag'), item.text);
@@ -323,7 +350,7 @@
         }
         buttons.forEach(node => { node.disabled = true; });
         chosen.classList.add('right');
-        if (blank) { blank.textContent = word.w; blank.classList.add('filled'); }
+        if (blank) { blank.textContent = word.w; blank.classList.add('filled'); blankRest.textContent = particleFor(word.w, blankRest.textContent); }
         const note = element('div', '', 'right-note');
         if (tried) note.append(element('p', '이 낱말은 뒤에 다른 문제로 한 번 더 나옵니다.', 'verdict'));
         if (item.kind === 'blank') note.append(element('p', `${word.w}: ${word.mean}`));

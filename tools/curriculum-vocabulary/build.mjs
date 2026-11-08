@@ -23,10 +23,13 @@ if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(
     for (const [unit, words] of Object.entries(units)) for (const [w, row] of Object.entries(words)) if (row.senses?.length) senses[`${code}/${unit}/${w}`] = row.senses;
   }
 }
-if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(n => n.endsWith('.json') && !n.startsWith('senses'))) {
+// kor.json 을 먼저, kor-g.json(글자 도식의 칸 글처럼 덧붙이는 파일)을 나중에 읽어 칸마다 덮어쓴다.
+const extraNames = fs.existsSync(extraDir) ? fs.readdirSync(extraDir).filter(n => n.endsWith('.json') && !n.startsWith('senses'))
+  .sort((a, b) => (/-[a-z]\.json$/.test(a) - /-[a-z]\.json$/.test(b)) || a.localeCompare(b)) : [];
+for (const name of extraNames) {
   const code = name.replace(/(-[a-z])?\.json$/, '');
   for (const [unit, words] of Object.entries(JSON.parse(fs.readFileSync(path.join(extraDir, name), 'utf8')))) {
-    for (const [w, row] of Object.entries(words)) extra[`${code}/${unit}/${w}`] = row;
+    for (const [w, row] of Object.entries(words)) extra[`${code}/${unit}/${w}`] = { ...extra[`${code}/${unit}/${w}`], ...row };
   }
 }
 // 그림 파일 이름: <과목>-<단원>-<두 자리 차례>. 파일 크기·시각으로 버전을 붙인다(서버가 그림을 오래 캐시한다).
@@ -37,6 +40,10 @@ const picOf = (code, unit, index) => {
   const st = fs.statSync(file);
   return `${id}.webp?v=${(st.size % 100000).toString(36)}${Math.floor(st.mtimeMs / 1000).toString(36)}`;
 };
+
+// 수와 단위 사이 빈칸은 줄이 바뀌지 않는 빈칸으로 바꾼다('8 cm'가 '8 / cm'로 갈라지지 않게).
+const unitGap = /(\d) (km²|cm²|m²|km|cm|mm|m|kg|g|mL|L|℃|%)(?![A-Za-z])/g;
+const glue = (v) => typeof v === 'string' ? v.replace(unitGap, '$1\u00a0$2') : Array.isArray(v) ? v.map(glue) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, glue(x)])) : v;
 
 for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
   const book = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
@@ -71,7 +78,7 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
       words: unit.words.map((word, index) => {
         const more = extra[`${code}/${unit.id}/${word.w}`] || {};
         const row = { w: word.w, hanja: word.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, senses: senses[`${code}/${unit.id}/${word.w}`], pic: picOf(code, unit.id, index) };
-        return Object.fromEntries(Object.entries(row).filter(([, v]) => v));
+        return Object.fromEntries(Object.entries(row).filter(([, v]) => v).map(([k, v]) => [k, k === 'pic' || k === 'en' ? v : glue(v)]));
       })
     }))
   };
