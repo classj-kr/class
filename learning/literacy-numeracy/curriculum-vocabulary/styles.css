@@ -217,15 +217,16 @@ button.rel-word.linked { color: var(--green); border-color: #a9cbbd; }
 }
 
 /* 설명 줄: 이름표(한자 뜻·비교·생활 속 예·꼭 알기) + 한 문장 */
-.explain .ex.tagged { display: grid; grid-template-columns: 6.6em minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.explain .ex.tagged { display: grid; grid-template-columns: 7.4em minmax(0, 1fr); gap: 10px; align-items: baseline; }
 .ex-tag { justify-self: start; padding: 1px 9px; border-radius: 7px; font-family: var(--gothic); font-size: .86rem; font-weight: 800; white-space: nowrap; }
 .ex-easy { background: var(--green); color: white; }
 .explain .ex.tagged:has(.ex-easy) span { font-weight: 700; }
 .ex-hanja { background: #ece6f4; color: #5b4386; }
+.ex-parts { background: #e9e4f6; color: #4a3a8a; }
 .ex-compare { background: #fbe9da; color: #9b4607; }
 .ex-life { background: #e3f0e8; color: #22594f; }
 .ex-key { background: #e3ecf6; color: #2f5f8f; }
-.explain:has(.tagged) .ex:not(.tagged) { padding-left: calc(6.6em + 10px); }
+.explain:has(.tagged) .ex:not(.tagged) { padding-left: calc(7.4em + 10px); }
 @media (max-width: 670px) { .explain .ex.tagged { grid-template-columns: 1fr; gap: 2px; } .explain:has(.tagged) .ex:not(.tagged) { padding-left: 0; } }
 
 /* 낱말 제목: 너무 크지 않게, 굵기는 700(맑은 고딕을 800으로 그리면 '률'의 ㅠ 다리가 뭉개져 '를'처럼 보인다) */
