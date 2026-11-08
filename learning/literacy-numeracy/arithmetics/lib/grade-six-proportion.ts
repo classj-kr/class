@@ -5,7 +5,9 @@ function integer(next: () => number, min: number, max: number) { return min + Ma
 function gcd(a: number, b: number): number { while (b) [a, b] = [b, a % b]; return a; }
 function simplify(a: number, b: number) { const d = gcd(a, b); return `${a / d} : ${b / d}`; }
 
-export function normalizeProportionAnswer(answer: string) { return answer.replace(/\s/g, "").replace(/:/g, ":").replace(/,/g, ","); }
+export function normalizeProportionAnswer(answer: string) {
+  return answer.trim().replace(/\s*,\s*|\s+/g, ",");
+}
 export function createGradeSixProportionSet(seed: number): ProportionProblem[] {
   const next = random(seed);
   const pair = () => {
