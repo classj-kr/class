@@ -6,7 +6,11 @@ const path = require('node:path');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname, '..');
 const base = '/learning/literacy-numeracy/curriculum-vocabulary/';
-const books = require('..' + base + 'words-5-2.js');
+// 앱에 내보낸 학기(terms.js)마다 낱말 파일을 읽는다.
+const termsSrc = fs.readFileSync(path.join(root, base, 'terms.js'), 'utf8');
+const manifest = JSON.parse(termsSrc.slice(termsSrc.indexOf('{'), termsSrc.lastIndexOf('}') + 1));
+for (const key of Object.keys(manifest)) require('..' + base + 'words-' + key + '.js');
+const books = globalThis.CurriculumWords;
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.webp': 'image/webp' };
 
 // 화면에 뜬 문제에서 정답(보기에 적힌 글)을 원고로 찾아낸다.
@@ -52,6 +56,7 @@ const clickChoice = (page, label, right) => page.evaluate(([label, right]) => {
       });
       for (const [term, subjects] of Object.entries(books)) for (const [subject, book] of Object.entries(subjects)) for (const unit of book.units) {
         await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit: unit.id }));
+        await page.locator('.chips button').first().waitFor();
         assert.deepEqual(await page.locator('.chips button:not(.practice-chip)').allTextContents(), unit.words.map(word => word.w), unit.title);
         assert.equal(await page.locator('.word-title h3').textContent(), unit.words[0].w);
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, unit.title + ' 가로 넘침 ' + width);

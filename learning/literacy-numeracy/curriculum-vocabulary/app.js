@@ -1,7 +1,25 @@
 (function () {
   'use strict';
 
-  const books = window.CurriculumWords || {};
+  // 학기마다 낱말 파일과 도식 파일을 고를 때 불러온다(terms.js 목록). 낱말 파일은 이 객체에 학기를 더한다.
+  const books = window.CurriculumWords = window.CurriculumWords || {};
+  const manifest = window.CurriculumTerms || {};
+  const loading = {};
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.append(script);
+  });
+  function loadTerm(key) {
+    if (!manifest[key]) return Promise.resolve();
+    loading[key] = loading[key] || (async () => {
+      await loadScript(manifest[key].words);
+      for (const file of manifest[key].figures) await loadScript(file);
+    })();
+    return loading[key];
+  }
   const termSelect = document.getElementById('term');
   const subjectList = document.getElementById('subjects');
   const unitList = document.getElementById('unit-list');
@@ -11,7 +29,7 @@
   const terms = Array.from({ length: 12 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
   const termName = (key) => `${key[0]}학년 ${key[2]}학기`;
   const subjectsFor = (key) => Number(key[0]) <= 2 ? ['국어', '수학'] : ['국어', '수학', '사회', '과학'];
-  const ready = Object.keys(books);
+  const ready = Object.keys(manifest);
   const currentTerm = window.LearningDefaults?.mathTerm(window.CLASS_SCHOOL_LEVEL, window.CLASS_SCHOOL_GRADE, ready);
   let term = terms.includes(query.get('term')) ? query.get('term') : (ready.includes(currentTerm) ? currentTerm : ready[0] || '1-1');
   let subject = subjectsFor(term).includes(query.get('subject')) ? query.get('subject') : '국어';
@@ -581,7 +599,7 @@
   }
 
   for (const key of terms) {
-    const option = element('option', termName(key) + (books[key] ? '' : ' · 준비 중'));
+    const option = element('option', termName(key) + (manifest[key] ? '' : ' · 준비 중'));
     option.value = key;
     termSelect.append(option);
   }
@@ -590,7 +608,8 @@
     if (!subjectsFor(term).includes(subject)) subject = '국어';
     unitId = null;
     mode = 'words';
-    render();
+    lesson.replaceChildren(element('p', '불러오는 중입니다.', 'empty'));
+    loadTerm(term).then(() => render(), () => render());
   });
   unitSelect.addEventListener('change', () => {
     unitId = unitSelect.value;
@@ -603,5 +622,5 @@
     event.preventDefault();
     leavePractice();
   });
-  render();
+  loadTerm(term).then(() => render(), () => render());
 })();
