@@ -203,7 +203,7 @@
  },
  "media": {
   "허위 정보": {
-   "en": "fake news",
+   "en": "false information",
    "beats": ["휴대 전화에 학교가 쉰다는 소식이 왔습니다.", "창밖을 보니 친구들이 학교로 걸어가고 있습니다.", "진짜처럼 꾸민 거짓 소식이 허위 정보입니다."],
    "img": "In his bedroom in the morning, DOYUN holds a smartphone showing a picture of a school building with a big padlock and a party popper, as if school were closed. A tiny grinning trickster mask peeks from the corner of the screen. Through the window behind him, children with backpacks are walking through the open school gate.",
    "imgKo": "아침에 도윤이가 휴대 전화를 보는데, 화면에 자물쇠 걸린 학교와 폭죽 그림이 있고 구석에서 장난꾸러기 가면이 웃는다. 창밖으로는 아이들이 열린 교문으로 걸어 들어간다."
