@@ -51,13 +51,51 @@
   const labelsA = (moving = true) => namesA.map((n, i) => vlabel(TA, i, n, -28, moving)).join('');
   const labelsB = () => namesB.map((n, i) => vlabel(TB, i, n, 28, false)).join('');
 
-  // 합동
+  // 합동: 밀고 돌려서는 안 겹치고, 뒤집어야 겹치는 두 삼각형.
+  // 꼭짓점이 한쪽으로 크게 치우친 삼각형이라야 뒤집기 전후가 한눈에 다르다(위의 60°·70°·50° 삼각형은 거의 정삼각형이라 쓰지 않는다).
   (function () {
     const id = 'm3-hapdong';
-    const body = `<g class="b2"><polygon points="${P(TA)}" fill="none" stroke="${C.line}" stroke-width="3" stroke-dasharray="8 6"/></g>` + tri(TB, C.peach, C.orange)
-      + `<g class="mv">${tri(TA, C.sky, C.blue, 'fill-opacity=".8"')}</g>`
-      + `<g class="b3"><polygon class="flash" points="${P(TB)}" fill="none" stroke="${C.green}" stroke-width="7" stroke-linejoin="round"/></g>`;
-    put('5-2/수학/3/합동', svg(id, body, moveCss(id, false)));
+    const O = [-110, 0], Rt = [110, 0], Top = [-65, -125];       // 밑변 가운데를 기준으로 한 자리
+    const HA = [170, 255], HB = [450, 232], HT = 20;               // 왼쪽 삼각형 자리, 오른쪽 삼각형 자리, 돌린 각
+    const hdx = HB[0] - HA[0], hdy = HB[1] - HA[1];
+    const A = [O, Rt, Top].map(([x, y]) => [HA[0] + x, HA[1] + y]);
+    const B = [O, Rt, Top].map(([x, y]) => { const [u, v] = rot([-x, y], HT); return [HB[0] + u, HB[1] + v]; });
+    const wrongTop = (() => { const [u, v] = rot(Top, HT); return [HB[0] + u, HB[1] + v]; })();
+    const move = (s) => `translate(${f(hdx)}px, ${f(hdy)}px) rotate(${s === 0 ? 0 : HT}deg) scale(${s < 0 ? -1 : 1}, 1)`;
+    const css = `
+      .sc-${id} .mv { transform-box: view-box; transform-origin: ${HA[0]}px ${HA[1]}px; transform: translate(0px, 0px) rotate(0deg) scale(1, 1); transition: transform 1.4s ease-in-out .4s; }
+      .on2 .sc-${id} .mv { transform: ${move(1)}; }
+      .on3 .sc-${id} .mv { transform: ${move(-1)}; transition-duration: 1.2s; }
+      .on4 .sc-${id} .mv { animation: ${id}-replay 3.4s ease-in-out .3s both; }
+      @keyframes ${id}-replay {
+        0% { transform: translate(0px, 0px) rotate(0deg) scale(1, 1); }
+        28%, 36% { transform: translate(${f(hdx)}px, ${f(hdy)}px) rotate(0deg) scale(1, 1); }
+        60%, 68% { transform: ${move(1)}; }
+        92%, 100% { transform: ${move(-1)}; }
+      }
+      .sc-${id} .miss { transform-box: fill-box; transform-origin: center; }
+      .on2 .sc-${id} .miss { animation: ${id}-miss .5s ease-out 1.9s both; }
+      @keyframes ${id}-miss { from { opacity: 0; transform: scale(2.2); } to { opacity: 1; transform: scale(1); } }
+      .sc-${id} .flip { opacity: 0; }
+      .on3 .sc-${id} .flip { animation: ${id}-flip 1.6s ease-in-out .1s both; }
+      @keyframes ${id}-flip { 0% { opacity: 0; } 20%, 70% { opacity: 1; } 100% { opacity: 0; } }
+      .on3 .sc-${id} .flash { animation: ${id}-flash 1.6s ease-in-out 1.7s both; }
+      @keyframes ${id}-flash { 0% { opacity: 0; } 20% { opacity: 1; } 40% { opacity: .2; } 60% { opacity: 1; } 80% { opacity: .2; } 100% { opacity: 1; } }
+      .on4 .sc-${id} .lb { animation: ${id}-lb .4s ease-out both; }
+      @keyframes ${id}-lb { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    `;
+    const ring = ([x, y]) => `<circle class="miss" cx="${f(x)}" cy="${f(y)}" r="20" fill="none" stroke="${C.red}" stroke-width="4" stroke-dasharray="7 5"/>`;
+    // 뒤집기 화살표: 오른쪽 삼각형 위에서 좌우로 넘어가는 굽은 화살표
+    const cx = HB[0], cy = 62;
+    const flip = `<g class="flip"><g transform="rotate(${HT} ${cx} ${HB[1]})"><path d="M${cx - 70} ${cy + 26} Q${cx} ${cy - 26} ${cx + 70} ${cy + 26}" fill="none" stroke="${C.purple}" stroke-width="4" stroke-linecap="round"/>`
+      + `<path d="M${cx - 70} ${cy + 26} l4 -17 M${cx - 70} ${cy + 26} l17 -3 M${cx + 70} ${cy + 26} l-4 -17 M${cx + 70} ${cy + 26} l-17 -3" stroke="${C.purple}" stroke-width="4" stroke-linecap="round"/></g></g>`;
+    const labels = ['밀기', '돌리기', '뒤집기'].map((name, i) => `<g class="lb" ${delay([0.3, 1.4, 2.5][i])}>${text(110 + i * 110, 44, name, { size: 24, color: [C.blue, C.green, C.purple][i] })}</g>`).join('');
+    const body = `<g class="b2"><polygon points="${P(A)}" fill="none" stroke="${C.line}" stroke-width="3" stroke-dasharray="8 6"/></g>` + tri(B, C.peach, C.orange)
+      + `<g class="mv">${tri(A, C.sky, C.blue, 'fill-opacity=".8"')}</g>`
+      + `<g class="b2 h3">${ring(wrongTop)}${ring(B[2])}</g>`
+      + `<g class="b3 h4">${flip}<polygon class="flash" points="${P(B)}" fill="none" stroke="${C.green}" stroke-width="7" stroke-linejoin="round"/></g>`
+      + `<g class="b4">${labels}</g>`;
+    put('5-2/수학/3/합동', svg(id, body, css));
   })();
 
   // 대응점

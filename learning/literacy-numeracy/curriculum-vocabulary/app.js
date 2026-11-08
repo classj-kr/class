@@ -122,35 +122,74 @@
     return box;
   }
 
+  // 영어 낱말을 누르면 브라우저 음성으로 읽어 준다(영어 단어·동화책 앱과 같은 방식: 미국 영어 목소리, 0.85배).
+  // 목소리 목록은 늦게 들어오는 브라우저가 있어 바뀔 때마다 다시 고른다. 음성 기능이 없으면 글자만 보인다.
+  const speech = 'speechSynthesis' in window && typeof SpeechSynthesisUtterance === 'function' ? window.speechSynthesis : null;
+  let englishVoice = null;
+  function pickVoice() {
+    const voices = speech.getVoices().filter(voice => /^en[-_]/i.test(voice.lang));
+    englishVoice = voices.find(voice => /^en[-_]US/i.test(voice.lang)) || voices[0] || null;
+  }
+  if (speech) { pickVoice(); speech.addEventListener?.('voiceschanged', pickVoice); }
+  // 괄호와 가운뎃점은 쉼으로 읽힌다: "average (mean)" → "average, mean"
+  const spoken = (en) => en.replace(/\s*\(\s*/g, ', ').replace(/\s*\)\s*/g, ' ').replace(/\s*·\s*/g, ', ').trim();
+  function englishOf(en) {
+    const label = element('span', en, 'word-en');
+    if (!speech) return label;
+    const say = element('button', '', 'say');
+    say.type = 'button';
+    say.setAttribute('aria-label', en + ' 소리 듣기');
+    say.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    say.prepend(label);
+    say.addEventListener('click', () => {
+      speech.cancel();
+      const talk = new SpeechSynthesisUtterance(spoken(en));
+      talk.lang = 'en-US';
+      talk.rate = 0.85;
+      if (!englishVoice) pickVoice();
+      if (englishVoice) talk.voice = englishVoice;
+      talk.onstart = () => say.classList.add('talking');
+      talk.onend = talk.onerror = () => say.classList.remove('talking');
+      speech.speak(talk);
+    });
+    return say;
+  }
+
   function wordPageOf(unit, index, select) {
     const word = unit.words[index];
     const page = element('article', '', 'word-page');
     const head = element('header', '', 'word-title');
     head.append(element('h3', word.w));
-    if (word.en) head.append(element('span', word.en, 'word-en'));
+    if (word.en) head.append(englishOf(word.en));
     const hanja = hanjaOf(word);
     if (hanja) head.append(hanja);
     page.append(head);
     const figure = (window.CurriculumFigures || {})[`${term}/${subject}/${unit.id}/${word.w}`];
     if (word.beats && (word.pic || figure)) page.append(sceneOf({ ...word, figure }));
-    // 이 단원에서 쓰는 뜻을 먼저, 생활에서 마주치는 다른 뜻을 그 아래에 번호로 보인다.
+    // 이 단원에서 쓰는 뜻 → 설명 → 생활에서 마주치는 다른 뜻(②부터) 차례로 보인다.
     const meanings = element('ol', '', 'meanings');
+    if (word.senses) meanings.classList.add('has-others');
     const own = element('li', '', 'meaning own');
     own.append(element('p', word.mean, 'word-mean'), sentenceWith(word.use, word.w));
     meanings.append(own);
-    for (const sense of word.senses || []) {
-      const item = element('li', '', 'meaning');
-      const text = element('p', '', 'word-mean');
-      if (sense.hanja) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
-      text.append(sense.mean);
-      item.append(text, sentenceWith(sense.use, word.w));
-      meanings.append(item);
-    }
     page.append(meanings);
     if (word.explain) {
       const more = element('div', '', 'explain');
       more.append(...word.explain.map(text => element('p', text)));
       page.append(more);
+    }
+    if (word.senses) {
+      const others = element('ol', '', 'meanings others');
+      others.start = 2;
+      for (const sense of word.senses) {
+        const item = element('li', '', 'meaning');
+        const text = element('p', '', 'word-mean');
+        if (sense.hanja) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
+        text.append(sense.mean);
+        item.append(text, sentenceWith(sense.use, word.w));
+        others.append(item);
+      }
+      page.append(others);
     }
     const paging = element('nav', '', 'paging');
     paging.setAttribute('aria-label', '다른 낱말');
@@ -286,7 +325,7 @@
         chosen.classList.add('right');
         if (blank) { blank.textContent = word.w; blank.classList.add('filled'); }
         const note = element('div', '', 'right-note');
-        if (tried) note.append(element('p', '이 낱말은 뒤에 다른 문제로 한 번 더 나온다.', 'verdict'));
+        if (tried) note.append(element('p', '이 낱말은 뒤에 다른 문제로 한 번 더 나옵니다.', 'verdict'));
         if (item.kind === 'blank') note.append(element('p', `${word.w}: ${word.mean}`));
         else note.append(sentenceWith(word.use, word.w));
         const go = button(queue.length ? '다음' : '결과 보기', next, 'next');
@@ -321,7 +360,7 @@
     leavePractice = null;
     lesson.setAttribute('aria-label', unit?.title || '학습 내용');
     if (!unit) {
-      lesson.replaceChildren(element('p', '이 학기의 교과 단어는 준비 중이다.', 'empty'));
+      lesson.replaceChildren(element('p', '이 학기의 교과 단어는 준비 중입니다.', 'empty'));
       return;
     }
     if (mode === 'practice') {

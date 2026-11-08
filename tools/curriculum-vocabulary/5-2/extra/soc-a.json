@@ -2,176 +2,176 @@
   "1-1": {
     "유적": {
       "en": "historic site",
-      "beats": ["발굴하는 땅에 둥근 집터와 기둥 구멍이 드러났다.", "가족이 땅에 남은 흔적을 들여다본다.", "그 자리에 남아 옮길 수 없는 흔적이 유적이다."],
+      "beats": ["발굴하는 땅에 둥근 집터와 기둥 구멍이 드러났습니다.", "가족이 땅에 남은 흔적을 들여다봅니다.", "그 자리에 남아 옮길 수 없는 흔적이 유적입니다."],
       "explain": [
-        "遺(남길 유)와 跡(발자취 적)을 써서 '남겨진 발자취'라는 뜻이다. 집터, 무덤, 성터, 조개더미처럼 땅에 붙어 있어서 통째로 옮길 수 없는 것을 말한다.",
-        "헷갈리는 말: 유물은 토기, 돌도끼처럼 들어서 옮길 수 있는 물건이다. 유적에서 유물이 나오는 일이 많아서, 유적은 '유물이 나온 자리'라고 생각하면 쉽다.",
-        "서울 암사동 선사 유적에 가면 신석기 시대 움집 터를 볼 수 있고, 강화도에서는 고인돌 유적을 볼 수 있다."
+        "遺(남길 유)와 跡(발자취 적)을 써서 '남겨진 발자취'라는 뜻입니다. 집터, 무덤, 성터, 조개더미처럼 땅에 붙어 있어서 통째로 옮길 수 없는 것을 말합니다.",
+        "헷갈리는 말: 유물은 토기, 돌도끼처럼 들어서 옮길 수 있는 물건입니다. 유적에서 유물이 나오는 일이 많아서, 유적은 '유물이 나온 자리'라고 생각하면 쉽습니다.",
+        "서울 암사동 선사 유적에 가면 신석기 시대 움집 터를 볼 수 있고, 강화도에서는 고인돌 유적을 볼 수 있습니다."
       ],
       "img": "A wide grassy riverside hill where archaeologists in sun hats have uncovered round pit-house floors: shallow circular hollows in the earth with small post holes around the edge and a ring of stones for a hearth in the middle. Rope lines and small blank flags mark the dig area, and a Korean family with a child stands at the edge looking down at the ground. The traces are part of the land itself, clearly too big to pick up and carry.",
       "imgKo": "강가 언덕 발굴 현장에 둥근 움집 터 구덩이, 기둥 구멍, 화덕 자리 돌이 드러나 있고 가족이 가장자리에서 들여다본다."
     },
     "유물": {
       "en": "artifact",
-      "beats": ["땅속에서 토기 조각과 돌도끼를 꺼낸다.", "꺼낸 물건이 박물관 진열장으로 옮겨졌다.", "옛사람이 쓰다 남긴, 옮길 수 있는 물건이 유물이다."],
+      "beats": ["땅속에서 토기 조각과 돌도끼를 꺼냅니다.", "꺼낸 물건이 박물관 진열장으로 옮겨졌습니다.", "옛사람이 쓰다 남긴, 옮길 수 있는 물건이 유물입니다."],
       "explain": [
-        "遺(남길 유)와 物(물건 물)을 써서 '남겨진 물건'이다. 토기, 돌도끼, 칼, 장신구, 금관이 모두 유물이다.",
-        "헷갈리는 말: 유적은 집터나 무덤처럼 땅에 붙어서 옮길 수 없는 곳이다. 유적에서 캐낸 물건이 유물이다.",
-        "박물관 진열장 안에 있는 것은 대부분 유물이다. 기록이 없는 옛날은 유물을 보고 그때 사람들이 무엇을 먹고 어떻게 살았는지 짐작한다."
+        "遺(남길 유)와 物(물건 물)을 써서 '남겨진 물건'입니다. 토기, 돌도끼, 칼, 장신구, 금관이 모두 유물입니다.",
+        "헷갈리는 말: 유적은 집터나 무덤처럼 땅에 붙어서 옮길 수 없는 곳입니다. 유적에서 캐낸 물건이 유물입니다.",
+        "박물관 진열장 안에 있는 것은 대부분 유물입니다. 기록이 없는 옛날은 유물을 보고 그때 사람들이 무엇을 먹고 어떻게 살았는지 짐작합니다."
       ],
       "img": "Left side: an archaeologist's gloved hands lifting a broken clay pot shard and a stone axe out of the soil, a small brush beside them. A curved arrow leads to the right side, where the same objects sit inside a lit museum glass case and a Korean elementary school child looks at them closely.",
       "imgKo": "왼쪽에서 장갑 낀 손이 흙 속 토기 조각과 돌도끼를 꺼내고, 화살표를 따라 오른쪽 박물관 진열장에 같은 물건이 놓여 아이가 들여다본다."
     },
     "선사 시대": {
       "en": "prehistory",
-      "beats": ["길의 긴 왼쪽에는 동굴, 돌도구, 토기만 있다.", "두루마리와 붓이 나오고부터 기록이 시작된다.", "글로 남긴 기록이 없던 앞 시대가 선사 시대다."],
+      "beats": ["길의 긴 왼쪽에는 동굴, 돌도구, 토기만 있습니다.", "두루마리와 붓이 나오고부터 기록이 시작됩니다.", "글로 남긴 기록이 없던 앞 시대가 선사 시대입니다."],
       "explain": [
-        "先(먼저 선)과 史(역사 사)를 써서 '역사보다 먼저'라는 뜻이다. 여기서 역사는 글로 적어 남긴 기록을 말한다. 그래서 글자가 쓰이기 전 시대를 선사 시대라고 부른다.",
-        "교과서에서는 선사 시대를 구석기 시대와 신석기 시대로 나누어 살펴본다. 기록이 없으니 그때 생활은 유물과 유적을 보고 짐작한다.",
-        "헷갈리는 말: 역사 시대는 글로 쓴 기록이 남아 있는 시대다. 같은 옛날이라도 기록이 있느냐 없느냐로 둘을 가른다."
+        "先(먼저 선)과 史(역사 사)를 써서 '역사보다 먼저'라는 뜻입니다. 여기서 역사는 글로 적어 남긴 기록을 말합니다. 그래서 글자가 쓰이기 전 시대를 선사 시대라고 부릅니다.",
+        "교과서에서는 선사 시대를 구석기 시대와 신석기 시대로 나누어 살펴봅니다. 기록이 없으니 그때 생활은 유물과 유적을 보고 짐작합니다.",
+        "헷갈리는 말: 역사 시대는 글로 쓴 기록이 남아 있는 시대입니다. 같은 옛날이라도 기록이 있느냐 없느냐로 둘을 가릅니다."
       ],
       "img": "A long horizontal timeline road crossing the picture. The long left section shows prehistoric scenes in warm earthy colors: a cave with a small fire, chipped stone tools, a thatched pit house and clay pots, with no writing anywhere. Near the right end, a rolled-up scroll and an ink brush stand like a gate marker, and the short section after it is brighter, showing a tiled palace and people holding rolled scrolls. All scrolls stay rolled so no writing shows.",
       "imgKo": "긴 길의 왼쪽 대부분에는 동굴, 돌도구, 움집, 토기가 있고, 오른쪽 끝 가까이 두루마리와 붓이 문처럼 서 있으며 그 뒤로 궁궐과 두루마리를 든 사람들이 있다."
     },
     "구석기 시대": {
       "en": "Old Stone Age",
-      "beats": ["동굴 앞에서 돌을 깨뜨려 도구를 만든다.", "열매를 따고 사슴 떼를 따라 옮겨 다닌다.", "뗀석기를 쓰며 사냥과 채집으로 떠돌던 때가 구석기 시대다."],
+      "beats": ["동굴 앞에서 돌을 깨뜨려 도구를 만듭니다.", "열매를 따고 사슴 떼를 따라 옮겨 다닙니다.", "뗀석기를 쓰며 사냥과 채집으로 떠돌던 때가 구석기 시대입니다."],
       "explain": [
-        "구석기는 '오래된 돌도구'라는 뜻이다. 사람들이 돌을 깨뜨려 만든 뗀석기를 쓰던, 우리 역사에서 가장 오래된 시대다.",
-        "농사를 짓지 않아서 사냥, 물고기 잡이, 열매 따기로 먹을 것을 얻었다. 먹을 것이 떨어지면 다른 곳으로 옮겨 다녔기 때문에 동굴이나 바위 그늘, 나뭇가지로 엮은 막집에서 잠깐씩 지냈다.",
-        "불을 피워 추위를 막고 음식을 익혀 먹었다. 경기도 연천 전곡리에서 이 시대의 주먹도끼가 나왔다."
+        "구석기는 '오래된 돌도구'라는 뜻입니다. 사람들이 돌을 깨뜨려 만든 뗀석기를 쓰던, 우리 역사에서 가장 오래된 시대입니다.",
+        "농사를 짓지 않아서 사냥, 물고기 잡이, 열매 따기로 먹을 것을 얻었습니다. 먹을 것이 떨어지면 다른 곳으로 옮겨 다녔기 때문에 동굴이나 바위 그늘, 나뭇가지로 엮은 막집에서 잠깐씩 지냈습니다.",
+        "불을 피워 추위를 막고 음식을 익혀 먹었습니다. 경기도 연천 전곡리에서 이 시대의 주먹도끼가 나왔습니다."
       ],
       "img": "A Paleolithic family in animal-skin clothing at the mouth of a rocky cave above a river valley: a man chips one stone against another to shape a hand axe, a woman gathers berries and acorns into a hide bag, and children warm themselves by a small fire. In the background hills, small figures follow a herd of deer, with a dotted arrow showing they move on to find food. No farm fields, no houses.",
       "imgKo": "동굴 입구에서 짐승 가죽옷 입은 가족이 돌을 깨뜨려 도구를 만들고 열매를 모으며 불을 쬔다. 뒤쪽 언덕에서는 사람들이 사슴 떼를 따라 이동한다."
     },
     "뗀석기": {
       "en": "chipped stone tool",
-      "beats": ["돌로 돌을 내리쳐 조각을 떼어 낸다.", "울퉁불퉁하지만 날카로운 날이 생겼다.", "돌을 깨뜨리고 떼어 내 만든 도구가 뗀석기다."],
+      "beats": ["돌로 돌을 내리쳐 조각을 떼어 냅니다.", "울퉁불퉁하지만 날카로운 날이 생겼습니다.", "돌을 깨뜨리고 떼어 내 만든 도구가 뗀석기입니다."],
       "explain": [
-        "'떼다'에서 나온 이름이다. 돌을 다른 돌로 내리쳐 조각을 떼어 내서 만들었기 때문에 겉면이 울퉁불퉁하다.",
-        "대표적인 뗀석기는 주먹도끼다. 손에 쥐고 짐승을 잡거나 가죽을 벗기고, 땅을 파는 데 두루 썼다. 찍개, 긁개, 찌르개도 뗀석기다.",
-        "헷갈리는 말: 간석기는 돌을 갈아서 매끈하게 다듬은 도구로 신석기 시대에 많이 썼다. '뗀'은 떼어 낸 것, '간'은 갈아 낸 것이다."
+        "'떼다'에서 나온 이름입니다. 돌을 다른 돌로 내리쳐 조각을 떼어 내서 만들었기 때문에 겉면이 울퉁불퉁합니다.",
+        "대표적인 뗀석기는 주먹도끼입니다. 손에 쥐고 짐승을 잡거나 가죽을 벗기고, 땅을 파는 데 두루 썼습니다. 찍개, 긁개, 찌르개도 뗀석기입니다.",
+        "헷갈리는 말: 간석기는 돌을 갈아서 매끈하게 다듬은 도구로 신석기 시대에 많이 썼습니다. '뗀'은 떼어 낸 것, '간'은 갈아 낸 것입니다."
       ],
       "img": "Close-up of two hands in animal-skin sleeves striking a big river cobble with another hard stone; flakes fly off with small motion lines. Below, three finished tools lie in a row on a hide: a teardrop-shaped hand axe with rough, jagged chipped faces, a chopper, and a small scraper. The edges are sharp but bumpy, not smooth.",
       "imgKo": "짐승 가죽 소매의 두 손이 돌로 돌을 내리쳐 조각이 튀고, 아래 가죽 위에 울퉁불퉁한 주먹도끼, 찍개, 긁개가 놓여 있다."
     },
     "신석기 시대": {
       "en": "New Stone Age",
-      "beats": ["강가에 움집을 짓고 모여 산다.", "조밭을 일구고 갈돌로 곡식을 간다.", "간석기를 쓰고 농사를 시작한 때가 신석기 시대다."],
+      "beats": ["강가에 움집을 짓고 모여 삽니다.", "조밭을 일구고 갈돌로 곡식을 갑니다.", "간석기를 쓰고 농사를 시작한 때가 신석기 시대입니다."],
       "explain": [
-        "신석기는 '새로운 돌도구'라는 뜻이다. 돌을 갈아서 만든 간석기를 쓰기 시작한 시대로, 우리나라에서는 지금으로부터 약 1만 년 전 무렵부터다.",
-        "이 시대 사람들은 조, 피 같은 곡식 농사를 짓기 시작했고, 사냥과 물고기 잡이도 계속했다. 먹을 것을 꾸준히 얻게 되자 강가나 바닷가에 움집을 짓고 한곳에 모여 살았다. 곡식을 담으려고 토기를 빚었고, 가락바퀴와 뼈바늘로 옷도 지었다.",
-        "헷갈리는 말: 구석기 시대는 뗀석기를 쓰고 옮겨 다녔고, 신석기 시대는 간석기를 쓰고 한곳에 머물러 살았다."
+        "신석기는 '새로운 돌도구'라는 뜻입니다. 돌을 갈아서 만든 간석기를 쓰기 시작한 시대로, 우리나라에서는 지금으로부터 약 1만 년 전 무렵부터입니다.",
+        "이 시대 사람들은 조, 피 같은 곡식 농사를 짓기 시작했고, 사냥과 물고기 잡이도 계속했습니다. 먹을 것을 꾸준히 얻게 되자 강가나 바닷가에 움집을 짓고 한곳에 모여 살았습니다. 곡식을 담으려고 토기를 빚었고, 가락바퀴와 뼈바늘로 옷도 지었습니다.",
+        "헷갈리는 말: 구석기 시대는 뗀석기를 쓰고 옮겨 다녔고, 신석기 시대는 간석기를 쓰고 한곳에 머물러 살았습니다."
       ],
       "img": "A Neolithic village on a sandy riverbank: several round pit houses with cone-shaped thatched roofs. In front, a woman grinds grain on a flat grinding slab with a rolling stone, a man hoes a small millet field with a stone hoe, and a pointed-bottom gray-brown comb-pattern pot stands stuck upright in the sand. Others fish in the river with nets. People wear simple woven cloth garments.",
       "imgKo": "모래 강가에 원뿔 지붕 움집들이 있고, 앞에서 여자가 갈판에 곡식을 갈고 남자가 돌괭이로 조밭을 일구며, 뾰족 바닥 토기가 모래에 꽂혀 있다."
     },
     "간석기": {
       "en": "polished stone tool",
-      "beats": ["숫돌에 돌도끼를 문질러 간다.", "매끈한 돌도끼와 갈돌, 갈판이 놓여 있다.", "돌을 갈고 다듬어 만든 도구가 간석기다."],
+      "beats": ["숫돌에 돌도끼를 문질러 갑니다.", "매끈한 돌도끼와 갈돌, 갈판이 놓여 있습니다.", "돌을 갈고 다듬어 만든 도구가 간석기입니다."],
       "explain": [
-        "'갈다'에서 나온 이름이다. 거친 숫돌에 오래 문질러 다듬어야 해서 만드는 데 시간이 많이 걸렸다.",
-        "갈판 위에 곡식을 올리고 갈돌로 밀면 껍질이 벗겨지고 가루가 된다. 간 돌도끼, 돌괭이 같은 농사 도구도 간석기다. 날이 고르니 더 정교한 일을 할 수 있었다.",
-        "헷갈리는 말: 뗀석기는 깨뜨려 떼어 낸 울퉁불퉁한 도구로 구석기 시대에 썼다. 간석기는 신석기 시대부터 널리 쓰였다."
+        "'갈다'에서 나온 이름입니다. 거친 숫돌에 오래 문질러 다듬어야 해서 만드는 데 시간이 많이 걸렸습니다.",
+        "갈판 위에 곡식을 올리고 갈돌로 밀면 껍질이 벗겨지고 가루가 됩니다. 간 돌도끼, 돌괭이 같은 농사 도구도 간석기입니다. 날이 고르니 더 정교한 일을 할 수 있었습니다.",
+        "헷갈리는 말: 뗀석기는 깨뜨려 떼어 낸 울퉁불퉁한 도구로 구석기 시대에 썼습니다. 간석기는 신석기 시대부터 널리 쓰였습니다."
       ],
       "img": "Split scene. Left: a Neolithic woman rubs a stone axe head back and forth on a flat wet sandstone, with a bowl of water beside her and arrows showing the rubbing motion. Right: finished polished stone tools laid out neatly on a mat: a smooth stone axe, a stone hoe, and a flat grinding slab with its long rolling grinding stone and some grain on it. The tools have smooth, even surfaces that shine slightly.",
       "imgKo": "왼쪽에서 신석기 여자가 젖은 숫돌에 돌도끼를 문질러 갈고, 오른쪽에 매끈한 돌도끼, 돌괭이, 곡식이 놓인 갈판과 갈돌이 있다."
     },
     "움집": {
       "en": "pit house",
-      "beats": ["땅을 둥글게 파고 기둥을 세웠다.", "풀로 덮은 지붕 아래 가운데에 화덕이 있다.", "땅을 파고 지붕을 덮은 신석기 집이 움집이다."],
+      "beats": ["땅을 둥글게 파고 기둥을 세웠습니다.", "풀로 덮은 지붕 아래 가운데에 화덕이 있습니다.", "땅을 파고 지붕을 덮은 신석기 집이 움집입니다."],
       "explain": [
-        "'움'은 땅을 파고 위를 덮은 구덩이를 뜻한다. 바닥은 둥글거나 모서리가 둥근 네모꼴로 얕게 팠다.",
-        "가운데에는 불을 피우는 화덕이 있어서 음식을 익히고 몸을 녹였다. 땅을 파고 지어서 겨울에는 바깥보다 따뜻했다.",
-        "헷갈리는 말: 막집은 구석기 시대 사람들이 잠깐 머물려고 나뭇가지와 가죽으로 엮은 집이다. 움집은 한곳에 오래 살려고 지었다. 서울 암사동 유적에 복원한 움집이 있다."
+        "'움'은 땅을 파고 위를 덮은 구덩이를 뜻합니다. 바닥은 둥글거나 모서리가 둥근 네모꼴로 얕게 팠습니다.",
+        "가운데에는 불을 피우는 화덕이 있어서 음식을 익히고 몸을 녹였습니다. 땅을 파고 지어서 겨울에는 바깥보다 따뜻했습니다.",
+        "헷갈리는 말: 막집은 구석기 시대 사람들이 잠깐 머물려고 나뭇가지와 가죽으로 엮은 집입니다. 움집은 한곳에 오래 살려고 지었습니다. 서울 암사동 유적에 복원한 움집이 있습니다."
       ],
       "img": "A cutaway view of a single Neolithic pit house: a round floor dug about knee-deep into the ground, wooden posts leaning together, and a cone-shaped roof of reeds and grass that reaches down to the ground. Inside, a stone-ringed hearth burns in the center, clay pots stand along the earthen wall, and a family sits around the fire.",
       "imgKo": "움집 한 채를 반으로 잘라 보인 그림. 무릎 깊이로 판 둥근 바닥, 기대어 선 기둥, 땅까지 내려온 풀 지붕, 가운데 화덕과 둘러앉은 가족이 보인다."
     },
     "빗살무늬 토기": {
       "en": "comb-pattern pottery",
-      "beats": ["바닥이 뾰족한 토기가 모래에 꽂혀 있다.", "겉에 빗으로 그은 듯한 빗금이 가득하다.", "빗금을 새긴 뾰족 바닥 그릇이 빗살무늬 토기다."],
+      "beats": ["바닥이 뾰족한 토기가 모래에 꽂혀 있습니다.", "겉에 빗으로 그은 듯한 빗금이 가득합니다.", "빗금을 새긴 뾰족 바닥 그릇이 빗살무늬 토기입니다."],
       "explain": [
-        "겉에 새긴 무늬가 머리빗의 살처럼 촘촘한 빗금이라서 빗살무늬 토기라고 부른다. 신석기 시대를 대표하는 토기다.",
-        "바닥이 뾰족하거나 둥근 것이 많아서 평평한 곳에는 세우기 어렵다. 강가나 바닷가 모래땅에 꽂아 세우고 곡식을 담거나 음식을 끓였다.",
-        "서울 암사동 유적에서 많이 나왔다. 헷갈리는 말: 청동기 시대에는 무늬가 없는 민무늬 토기를 많이 썼다."
+        "겉에 새긴 무늬가 머리빗의 살처럼 촘촘한 빗금이라서 빗살무늬 토기라고 부릅니다. 신석기 시대를 대표하는 토기입니다.",
+        "바닥이 뾰족하거나 둥근 것이 많아서 평평한 곳에는 세우기 어렵습니다. 강가나 바닷가 모래땅에 꽂아 세우고 곡식을 담거나 음식을 끓였습니다.",
+        "서울 암사동 유적에서 많이 나왔습니다. 헷갈리는 말: 청동기 시대에는 무늬가 없는 민무늬 토기를 많이 썼습니다."
       ],
       "img": "Center: a large gray-brown clay pot shaped like an upside-down cone with a pointed V-shaped bottom, its whole surface covered with short diagonal slash lines like the teeth of a comb, arranged in bands. It stands half-buried upright in riverside sand. A small inset in the corner shows a hand pressing a comb-like bone tool onto wet clay to make the lines.",
       "imgKo": "가운데에 뾰족 바닥의 회갈색 토기가 강가 모래에 반쯤 꽂혀 있고 겉은 빗살 같은 빗금으로 덮였다. 귀퉁이 작은 칸에 뼈 도구로 빗금을 새기는 손이 있다."
     },
     "가락바퀴": {
       "en": "spindle whorl",
-      "beats": ["둥근 돌에 막대를 꽂아 빙글빙글 돌린다.", "풀 섬유가 꼬여 긴 실이 된다.", "돌려서 실을 뽑던 둥근 도구가 가락바퀴다."],
+      "beats": ["둥근 돌에 막대를 꽂아 빙글빙글 돌립니다.", "풀 섬유가 꼬여 긴 실이 됩니다.", "돌려서 실을 뽑던 둥근 도구가 가락바퀴입니다."],
       "explain": [
-        "실을 감는 막대를 '가락'이라고 한다. 가락에 끼워 돌리는 바퀴라서 가락바퀴다. 흙이나 돌을 납작하고 둥글게 만들고 가운데에 구멍을 뚫었다.",
-        "막대를 돌리면 바퀴의 무게 때문에 오래 돌아서, 손에 쥔 식물 섬유가 꼬이며 실이 된다. 이 실로 천을 짜고 뼈바늘로 꿰매어 옷을 지었다.",
-        "가락바퀴가 나왔다는 것은 신석기 시대 사람들이 짐승 가죽만이 아니라 실로 짠 옷도 입었다는 뜻이다."
+        "실을 감는 막대를 '가락'이라고 합니다. 가락에 끼워 돌리는 바퀴라서 가락바퀴입니다. 흙이나 돌을 납작하고 둥글게 만들고 가운데에 구멍을 뚫었습니다.",
+        "막대를 돌리면 바퀴의 무게 때문에 오래 돌아서, 손에 쥔 식물 섬유가 꼬이며 실이 됩니다. 이 실로 천을 짜고 뼈바늘로 꿰매어 옷을 지었습니다.",
+        "가락바퀴가 나왔다는 것은 신석기 시대 사람들이 짐승 가죽만이 아니라 실로 짠 옷도 입었다는 뜻입니다."
       ],
       "img": "A Neolithic woman sits outside a pit house making thread. A small round stone disc with a hole in the middle is fixed onto a thin wooden stick; she lets it twirl, with curved arrows showing the spin, while plant fibers in her other hand twist into a long thread that winds onto the stick. Beside her lie a bone needle and a piece of simple woven cloth.",
       "imgKo": "움집 앞에 앉은 여자가 구멍 뚫린 둥근 돌을 끼운 막대를 돌리고, 손에 쥔 풀 섬유가 꼬여 실이 된다. 옆에 뼈바늘과 짠 천이 있다."
     },
     "청동기 시대": {
       "en": "Bronze Age",
-      "beats": ["우두머리가 반짝이는 청동 거울과 방울을 지녔다.", "사람들이 거둔 곡식을 우두머리에게 가져온다.", "청동 도구가 나오고 지배자가 생긴 때가 청동기 시대다."],
+      "beats": ["우두머리가 반짝이는 청동 거울과 방울을 지녔습니다.", "사람들이 거둔 곡식을 우두머리에게 가져옵니다.", "청동 도구가 나오고 지배자가 생긴 때가 청동기 시대입니다."],
       "explain": [
-        "청동은 구리에 주석을 섞어 만든 금속이다. 이 금속으로 칼, 거울, 방울 같은 도구를 만들기 시작한 때가 청동기 시대다.",
-        "청동은 만들기 어렵고 귀해서 힘 있는 사람만 무기나 제사 도구로 가졌고, 농사 도구는 여전히 돌로 만들었다. 벼농사가 시작되고 곡식이 쌓이자 많이 가진 사람과 적게 가진 사람이 생겼고, 무리를 이끄는 지배자가 나타났다.",
-        "이 시대 지배자의 무덤이 고인돌이다. 마을 둘레에 울타리와 도랑을 두르기도 했다."
+        "청동은 구리에 주석을 섞어 만든 금속입니다. 이 금속으로 칼, 거울, 방울 같은 도구를 만들기 시작한 때가 청동기 시대입니다.",
+        "청동은 만들기 어렵고 귀해서 힘 있는 사람만 무기나 제사 도구로 가졌고, 농사 도구는 여전히 돌로 만들었습니다. 벼농사가 시작되고 곡식이 쌓이자 많이 가진 사람과 적게 가진 사람이 생겼고, 무리를 이끄는 지배자가 나타났습니다.",
+        "이 시대 지배자의 무덤이 고인돌입니다. 마을 둘레에 울타리와 도랑을 두르기도 했습니다."
       ],
       "img": "A Bronze Age village of rectangular pit houses on a low hill, surrounded by a wooden fence and a ditch, with rice paddies below. At the center, a chief wearing a round bronze mirror on his chest and holding a bronze bell stands on a raised spot, while villagers carry baskets of harvested rice to him. The bronze objects glint golden-brown; the farmers still hold stone tools.",
       "imgKo": "울타리와 도랑을 두른 언덕 마을 가운데에 청동 거울과 방울을 지닌 우두머리가 서 있고, 돌 도구를 든 농민들이 벼 바구니를 가져온다."
     },
     "반달 돌칼": {
       "en": "half-moon stone knife",
-      "beats": ["구멍에 꿴 끈에 손가락을 걸고 돌칼을 쥐었다.", "날로 벼 이삭을 하나씩 딴다.", "이삭을 따던 반달 모양 돌칼이 반달 돌칼이다."],
+      "beats": ["구멍에 꿴 끈에 손가락을 걸고 돌칼을 쥐었습니다.", "날로 벼 이삭을 하나씩 땁니다.", "이삭을 따던 반달 모양 돌칼이 반달 돌칼입니다."],
       "explain": [
-        "생김새가 반달을 닮은 돌칼이라서 반달 돌칼이다. 돌을 갈아 만든 간석기로, 가운데쯤 구멍 두 개를 뚫었다.",
-        "구멍에 끈을 꿰어 손가락에 걸면 칼이 손에서 빠지지 않는다. 이삭을 날에 대고 엄지로 눌러 똑 따냈다.",
-        "청동기 시대에도 청동은 귀해서 농사 도구는 이렇게 돌로 만들었다. 반달 돌칼이 많이 나온다는 것은 벼농사가 널리 퍼졌다는 증거다."
+        "생김새가 반달을 닮은 돌칼이라서 반달 돌칼입니다. 돌을 갈아 만든 간석기로, 가운데쯤 구멍 두 개를 뚫었습니다.",
+        "구멍에 끈을 꿰어 손가락에 걸면 칼이 손에서 빠지지 않습니다. 이삭을 날에 대고 엄지로 눌러 똑 따냈습니다.",
+        "청동기 시대에도 청동은 귀해서 농사 도구는 이렇게 돌로 만들었습니다. 반달 돌칼이 많이 나온다는 것은 벼농사가 널리 퍼졌다는 증거입니다."
       ],
       "img": "Close-up of a farmer's hand in a golden rice field. A flat, polished half-moon-shaped stone knife with two small holes in its middle has a cord looped through the holes and around the farmer's fingers; its sharp edge snaps off a rice ear pressed by the thumb. A small basket of picked rice ears sits below.",
       "imgKo": "누런 논에서 농부의 손이 구멍 두 개에 끈을 꿴 반달 모양 돌칼을 손가락에 걸고 엄지로 눌러 벼 이삭을 딴다."
     },
     "고인돌": {
       "en": "dolmen",
-      "beats": ["두 받침돌 위에 넓적한 덮개돌을 얹었다.", "돌 아래에 청동 칼과 그릇이 묻혀 있다.", "큰 돌을 얹어 만든 청동기 무덤이 고인돌이다."],
+      "beats": ["두 받침돌 위에 넓적한 덮개돌을 얹었습니다.", "돌 아래에 청동 칼과 그릇이 묻혀 있습니다.", "큰 돌을 얹어 만든 청동기 무덤이 고인돌입니다."],
       "explain": [
-        "큰 돌을 받침돌로 '고여' 놓은 돌이라서 고인돌이다. 받침돌 위에 넓은 덮개돌을 얹은 탁자 모양도 있고, 작은 돌 위에 덮개돌을 낮게 얹은 바둑판 모양도 있다.",
-        "덮개돌은 몇십 톤이 넘는 것도 있어서 많은 사람이 함께 옮겨야 했다. 그만큼 많은 사람을 부릴 수 있는 힘센 지배자가 있었다는 뜻이다.",
-        "우리나라에는 고인돌이 아주 많다. 고창, 화순, 강화의 고인돌 유적은 세계 유산으로 정해졌다."
+        "큰 돌을 받침돌로 '고여' 놓은 돌이라서 고인돌입니다. 받침돌 위에 넓은 덮개돌을 얹은 탁자 모양도 있고, 작은 돌 위에 덮개돌을 낮게 얹은 바둑판 모양도 있습니다.",
+        "덮개돌은 몇십 톤이 넘는 것도 있어서 많은 사람이 함께 옮겨야 했습니다. 그만큼 많은 사람을 부릴 수 있는 힘센 지배자가 있었다는 뜻입니다.",
+        "우리나라에는 고인돌이 아주 많습니다. 고창, 화순, 강화의 고인돌 유적은 세계 유산으로 정해졌습니다."
       ],
       "img": "A huge table-shaped dolmen standing in a grassy field: two thick upright slabs support one enormous flat capstone laid on top like a tabletop. In a cutaway view between the supporting stones, a burial space on the ground holds a bronze dagger and a plain clay pot. A small modern Korean child stands near the dolmen to show its giant size.",
       "imgKo": "풀밭에 받침돌 둘 위로 거대한 덮개돌을 얹은 탁자 모양 고인돌이 있고, 받침돌 사이 땅속에 청동 칼과 그릇이 묻힌 모습이 보인다. 옆에 선 아이로 크기를 비교한다."
     },
     "고조선": {
       "en": "Gojoseon · the first Korean kingdom",
-      "beats": ["언덕 위 우두머리가 청동 칼과 거울을 들었다.", "하늘에는 곰과 호랑이, 큰 나무가 흐릿하다.", "단군왕검이 세웠다고 전하는 첫 나라가 고조선이다."],
+      "beats": ["언덕 위 우두머리가 청동 칼과 거울을 들었습니다.", "하늘에는 곰과 호랑이, 큰 나무가 흐릿합니다.", "단군왕검이 세웠다고 전하는 첫 나라가 고조선입니다."],
       "explain": [
-        "처음 이름은 '조선'이다. 훗날 이성계가 세운 조선과 구별하려고 '옛 고(古)'를 붙여 고조선이라고 부른다.",
-        "『삼국유사』에는 하늘에서 내려온 환웅과 곰에서 사람이 된 웅녀 사이에서 태어난 단군왕검이 고조선을 세웠다는 이야기가 전한다. 단군은 제사를 맡은 우두머리, 왕검은 나라를 다스리는 우두머리로 풀이한다.",
-        "고조선은 청동기 문화를 바탕으로 자라났고, 8조법으로 사회 질서를 지켰다. 기원전 108년 중국 한나라의 공격으로 무너졌다."
+        "처음 이름은 '조선'입니다. 훗날 이성계가 세운 조선과 구별하려고 '옛 고(古)'를 붙여 고조선이라고 부릅니다.",
+        "『삼국유사』에는 하늘에서 내려온 환웅과 곰에서 사람이 된 웅녀 사이에서 태어난 단군왕검이 고조선을 세웠다는 이야기가 전합니다. 단군은 제사를 맡은 우두머리, 왕검은 나라를 다스리는 우두머리로 풀이합니다.",
+        "고조선은 청동기 문화를 바탕으로 자라났고, 8조법으로 사회 질서를 지켰습니다. 기원전 108년 중국 한나라의 공격으로 무너졌습니다."
       ],
       "img": "A Bronze Age kingdom scene: on a hill stands a walled settlement with a wooden thatched hall, and in front a ruler in Bronze Age clothing holds a lute-shaped bronze dagger and wears a round bronze mirror, standing beside a stone altar while people bring offerings. In the sky, a faint dreamlike image of a bear and a tiger beside a great sacred tree hints at the founding legend. Wide fields and villages spread out below.",
       "imgKo": "언덕 위 울타리 마을 앞에서 청동 칼과 거울을 지닌 우두머리가 돌 제단 옆에 서고 사람들이 제물을 가져온다. 하늘에 곰과 호랑이, 큰 나무가 꿈처럼 흐릿하게 떠 있다."
     },
     "비파형 동검": {
       "en": "lute-shaped bronze dagger",
-      "beats": ["진열장에 칼날 아래가 볼록한 청동 칼이 서 있다.", "옆의 비파와 생김새가 꼭 닮았다.", "비파를 닮은 고조선의 청동 칼이 비파형 동검이다."],
+      "beats": ["진열장에 칼날 아래가 볼록한 청동 칼이 서 있습니다.", "옆의 비파와 생김새가 꼭 닮았습니다.", "비파를 닮은 고조선의 청동 칼이 비파형 동검입니다."],
       "explain": [
-        "비파는 몸통이 둥근 옛 현악기다. 칼날 아래쪽이 비파 몸통처럼 둥글게 부풀었다가 끝으로 갈수록 좁아져서 비파형 동검이라고 부른다. 동검은 구리 동(銅), 칼 검(劍)으로 청동 칼이라는 뜻이다.",
-        "비파형 동검은 한반도와 중국 랴오닝 지역에서 많이 나온다. 탁자 모양 고인돌과 함께 나오는 곳을 이어 보면 고조선 문화가 퍼진 범위를 짐작할 수 있다.",
-        "청동은 귀했기 때문에 이 칼을 가진 사람은 지배자였을 것으로 본다."
+        "비파는 몸통이 둥근 옛 현악기입니다. 칼날 아래쪽이 비파 몸통처럼 둥글게 부풀었다가 끝으로 갈수록 좁아져서 비파형 동검이라고 부릅니다. 동검은 구리 동(銅), 칼 검(劍)으로 청동 칼이라는 뜻입니다.",
+        "비파형 동검은 한반도와 중국 랴오닝 지역에서 많이 나옵니다. 탁자 모양 고인돌과 함께 나오는 곳을 이어 보면 고조선 문화가 퍼진 범위를 짐작할 수 있습니다.",
+        "청동은 귀했기 때문에 이 칼을 가진 사람은 지배자였을 것으로 봅니다."
       ],
       "img": "Center: a greenish, aged bronze dagger displayed upright in a museum glass case, its blade swelling out into rounded curves in the lower part and narrowing toward the tip. To its right, an old Asian pear-shaped lute (bipa) with a rounded body stands at the same angle, and dotted lines connect their matching outlines.",
       "imgKo": "박물관 진열장에 칼날 아래쪽이 둥글게 부푼 푸른빛 청동 칼이 서 있고, 오른쪽에 몸통이 둥근 비파가 같은 각도로 서서 점선으로 두 윤곽을 잇는다."
     },
     "8조법": {
       "en": "Eight Laws of Gojoseon",
-      "beats": ["마을 위에 둥근 표 여덟 개가 떠 있다.", "그중 셋만 또렷하고 다섯은 흐릿하다.", "세 가지만 전하는 고조선의 여덟 가지 법이 8조법이다."],
+      "beats": ["마을 위에 둥근 표 여덟 개가 떠 있습니다.", "그중 셋만 또렷하고 다섯은 흐릿합니다.", "세 가지만 전하는 고조선의 여덟 가지 법이 8조법입니다."],
       "explain": [
-        "고조선에는 여덟 가지 법이 있었다고 하지만, 지금은 중국 역사책 『한서』에 세 가지만 전한다.",
-        "사람을 죽인 사람은 사형에 처하고, 남을 다치게 한 사람은 곡식으로 갚게 했다. 남의 물건을 훔친 사람은 그 집의 노비로 삼았는데, 용서받으려면 50만 전을 내야 했다.",
-        "이 법으로 고조선 사람들이 목숨을 귀하게 여겼고, 곡식과 물건을 자기 재산으로 지켰으며, 노비라는 신분이 있었다는 것을 알 수 있다."
+        "고조선에는 여덟 가지 법이 있었다고 하지만, 지금은 중국 역사책 『한서』에 세 가지만 전합니다.",
+        "사람을 죽인 사람은 사형에 처하고, 남을 다치게 한 사람은 곡식으로 갚게 했습니다. 남의 물건을 훔친 사람은 그 집의 노비로 삼았는데, 용서받으려면 50만 전을 내야 했습니다.",
+        "이 법으로 고조선 사람들이 목숨을 귀하게 여겼고, 곡식과 물건을 자기 재산으로 지켰으며, 노비라는 신분이 있었다는 것을 알 수 있습니다."
       ],
       "img": "A symbolic picture, not a real artifact: above a Bronze Age Gojoseon village of thatched houses, eight round tokens float in a row in the sky. Five are faded, empty outlines; three are bright and filled with simple picture symbols: a red heart, two grain sacks being handed from one hand to another, and a small storehouse with a lock. Villagers below look up at them.",
       "imgKo": "상징 그림. 고조선 마을 하늘에 둥근 표 여덟 개가 떠 있는데 다섯은 흐릿한 빈 테두리이고, 셋에만 하트, 손에서 손으로 건네는 곡식 자루, 자물쇠 달린 창고가 또렷하다."
@@ -180,121 +180,121 @@
   "1-2": {
     "고대": {
       "en": "ancient times",
-      "beats": ["띠 가운데에 고인돌, 세 나라 성, 두 나라 성이 이어진다.", "앞의 돌도구와 뒤의 청자는 흐리게 보인다.", "고조선부터 통일 신라와 발해까지가 고대다."],
+      "beats": ["띠 가운데에 고인돌, 세 나라 성, 두 나라 성이 이어집니다.", "앞의 돌도구와 뒤의 청자는 흐리게 보입니다.", "고조선부터 통일 신라와 발해까지가 고대입니다."],
       "explain": [
-        "古(옛 고)와 代(시대 대)를 써서 '옛 시대'라는 뜻이다.",
-        "고대에는 나라가 세워지고 커지면서 왕이 힘을 모으고, 법과 신분 제도, 불교 같은 종교가 자리 잡았다.",
-        "헷갈리는 말: 선사 시대는 기록이 없던 더 앞의 시대이고, 고려 시대는 고대 다음에 이어지는 시대다. '고대 이집트'처럼 세계사의 아주 옛날을 말할 때도 쓴다."
+        "古(옛 고)와 代(시대 대)를 써서 '옛 시대'라는 뜻입니다.",
+        "고대에는 나라가 세워지고 커지면서 왕이 힘을 모으고, 법과 신분 제도, 불교 같은 종교가 자리 잡았습니다.",
+        "헷갈리는 말: 선사 시대는 기록이 없던 더 앞의 시대이고, 고려 시대는 고대 다음에 이어지는 시대입니다. '고대 이집트'처럼 세계사의 아주 옛날을 말할 때도 씁니다."
       ],
       "img": "A long horizontal timeline ribbon across the picture with no writing. The highlighted middle section contains small icon scenes in order: a dolmen with a bronze dagger, then three small castles in three different colors, then two castles side by side, one in the south and one in the north. The section before it (chipped stone tools) and the section after it (a blue-green celadon vase) are faded and gray.",
       "imgKo": "가로 띠 가운데만 밝게, 고인돌과 청동 칼, 색이 다른 세 성, 남북으로 나란한 두 성이 차례로 있다. 앞쪽 돌도구와 뒤쪽 청자는 흐리다."
     },
     "삼국 시대": {
       "en": "Three Kingdoms period",
-      "beats": ["지도가 세 가지 색으로 나뉘어 있다.", "세 나라의 성이 경계에서 서로 밀고 당긴다.", "고구려, 백제, 신라가 겨루던 때가 삼국 시대다."],
+      "beats": ["지도가 세 가지 색으로 나뉘어 있습니다.", "세 나라의 성이 경계에서 서로 밀고 당깁니다.", "고구려, 백제, 신라가 겨루던 때가 삼국 시대입니다."],
       "explain": [
-        "삼(三)은 셋, 국(國)은 나라다. 세 나라는 한강 유역을 차지하려고 자주 다투었는데, 한강 둘레는 땅이 기름지고 중국과 바닷길로 오가기 좋은 곳이었기 때문이다.",
-        "세 나라는 차례로 전성기를 맞았다. 4세기에는 백제, 5세기에는 고구려, 6세기에는 신라가 한강 유역을 차지하며 가장 힘이 셌다.",
-        "같은 무렵 남쪽에 가야도 있었지만, 하나의 큰 나라로 자라지 못하고 작은 나라들의 연맹으로 머물러서 '삼국'에는 넣지 않는다."
+        "삼(三)은 셋, 국(國)은 나라입니다. 세 나라는 한강 유역을 차지하려고 자주 다투었는데, 한강 둘레는 땅이 기름지고 중국과 바닷길로 오가기 좋은 곳이었기 때문입니다.",
+        "세 나라는 차례로 전성기를 맞았습니다. 4세기에는 백제, 5세기에는 고구려, 6세기에는 신라가 한강 유역을 차지하며 가장 힘이 셌습니다.",
+        "같은 무렵 남쪽에 가야도 있었지만, 하나의 큰 나라로 자라지 못하고 작은 나라들의 연맹으로 머물러서 '삼국'에는 넣지 않습니다."
       ],
       "img": "A simple map of the Korean peninsula and southern Manchuria with no writing or labels, divided into three colored territories: Goguryeo large in the north in red, Baekje in the southwest in blue, Silla in the southeast in yellow, with a small cluster of gray dots for Gaya between Baekje and Silla. Each territory has a small castle icon with a blank flag, and short arrows push against each other at the borders.",
       "imgKo": "글자 없는 한반도와 만주 지도가 북쪽 붉은 고구려, 서남쪽 파란 백제, 동남쪽 노란 신라로 나뉘고 사이에 가야 점들이 있다. 경계에서 화살표가 서로 맞선다."
     },
     "전성기": {
       "en": "golden age",
-      "beats": ["첫 지도에서 붉은 땅은 작다.", "가운데 지도에서 붉은 땅이 가장 넓게 퍼졌다.", "힘이 가장 강하고 크게 뻗어 나간 때가 전성기다."],
+      "beats": ["첫 지도에서 붉은 땅은 작습니다.", "가운데 지도에서 붉은 땅이 가장 넓게 퍼졌습니다.", "힘이 가장 강하고 크게 뻗어 나간 때가 전성기입니다."],
       "explain": [
-        "全(모두 전), 盛(번성할 성), 期(때 기)를 써서 '모든 것이 가장 번성한 때'라는 뜻이다. 나라라면 힘이 가장 세고 땅이 가장 넓을 때를 말한다.",
-        "고구려는 5세기 광개토 대왕과 장수왕 때, 백제는 4세기 근초고왕 때, 신라는 6세기 진흥왕 때 전성기를 맞았다. 세 나라 모두 전성기에 한강 유역을 차지했다.",
-        "생활 속에서도 '이 야구 선수의 전성기는 서른 살 무렵이었다'처럼 가장 잘나가던 때를 가리킬 때 쓴다."
+        "全(모두 전), 盛(번성할 성), 期(때 기)를 써서 '모든 것이 가장 번성한 때'라는 뜻입니다. 나라라면 힘이 가장 세고 땅이 가장 넓을 때를 말합니다.",
+        "고구려는 5세기 광개토 대왕과 장수왕 때, 백제는 4세기 근초고왕 때, 신라는 6세기 진흥왕 때 전성기를 맞았습니다. 세 나라 모두 전성기에 한강 유역을 차지했습니다.",
+        "생활 속에서도 '이 야구 선수의 전성기는 서른 살 무렵이었다'처럼 가장 잘나가던 때를 가리킬 때 씁니다."
       ],
       "img": "Three small maps of the Korean peninsula and Manchuria in a row from left to right, with arrows between them and no writing. In each map the red territory of one kingdom changes size: small in the first map, spread widest in the middle map with a sparkle and a flag on top, and a little smaller again in the third. The other kingdoms are pale gray.",
       "imgKo": "글자 없는 작은 지도 셋이 화살표로 이어진다. 붉은 땅이 첫 지도에서 작고, 가운데 지도에서 가장 넓게 퍼져 반짝이며 깃발이 꽂혔고, 셋째 지도에서 조금 줄었다."
     },
     "고분": {
       "en": "ancient tomb",
-      "beats": ["공원에 풀 덮인 둥근 언덕들이 솟아 있다.", "언덕 속에 금관과 그릇이 묻혀 있다.", "옛날에 만든 큰 무덤이 고분이다."],
+      "beats": ["공원에 풀 덮인 둥근 언덕들이 솟아 있습니다.", "언덕 속에 금관과 그릇이 묻혀 있습니다.", "옛날에 만든 큰 무덤이 고분입니다."],
       "explain": [
-        "古(옛 고)와 墳(무덤 분)을 써서 '옛 무덤'이다. 특히 왕이나 귀족처럼 힘 있는 사람의 크고 오래된 무덤을 말한다.",
-        "옛사람들은 죽은 뒤에도 삶이 이어진다고 믿어서 무덤에 쓰던 물건을 함께 묻었다. 그래서 고분에서 나온 금관, 그릇, 말갖춤 같은 유물로 그 시대 생활을 알 수 있다.",
-        "경주 대릉원에 가면 신라의 큰 고분들이 언덕처럼 모여 있다. 그중 천마총은 안을 들여다볼 수 있게 꾸며 두었다."
+        "古(옛 고)와 墳(무덤 분)을 써서 '옛 무덤'입니다. 특히 왕이나 귀족처럼 힘 있는 사람의 크고 오래된 무덤을 말합니다.",
+        "옛사람들은 죽은 뒤에도 삶이 이어진다고 믿어서 무덤에 쓰던 물건을 함께 묻었습니다. 그래서 고분에서 나온 금관, 그릇, 말갖춤 같은 유물로 그 시대 생활을 알 수 있습니다.",
+        "경주 대릉원에 가면 신라의 큰 고분들이 언덕처럼 모여 있습니다. 그중 천마총은 안을 들여다볼 수 있게 꾸며 두었습니다."
       ],
       "img": "Gyeongju's large grassy round burial mounds rising like small green hills in a park, with tiny modern visitors walking on the path between them for scale. One mound in the foreground is shown in cutaway: under the earth and a heap of river stones lies a wooden chamber containing a golden crown, a gold belt, pottery and a sheathed sword laid out neatly.",
       "imgKo": "경주 공원에 풀 덮인 둥근 무덤들이 언덕처럼 솟아 있고, 앞의 무덤 하나를 잘라 보니 흙과 돌무더기 아래 나무 방에 금관, 금 허리띠, 그릇이 놓여 있다."
     },
     "고분 벽화": {
       "en": "tomb mural",
-      "beats": ["어두운 돌방 벽에 그림이 가득하다.", "말 탄 사람들이 사슴과 호랑이를 쫓는다.", "옛 무덤 벽과 천장에 그린 그림이 고분 벽화다."],
+      "beats": ["어두운 돌방 벽에 그림이 가득합니다.", "말 탄 사람들이 사슴과 호랑이를 쫓습니다.", "옛 무덤 벽과 천장에 그린 그림이 고분 벽화입니다."],
       "explain": [
-        "고분(옛 무덤)과 벽화(벽에 그린 그림)를 합친 말이다. 돌벽에 바로 그리기도 하고, 벽에 흰 회를 바른 뒤 그 위에 그리기도 했다.",
-        "고구려 사람들은 무덤 벽에 사냥하는 모습, 춤추는 모습, 음식을 차리는 모습처럼 살아 있을 때의 생활을 그렸다. 그래서 글로 남지 않은 옷차림, 집, 놀이까지 알 수 있다.",
-        "무용총의 사냥 그림(수렵도)이 잘 알려져 있다. 고구려 고분군은 세계 유산으로 정해졌다."
+        "고분(옛 무덤)과 벽화(벽에 그린 그림)를 합친 말입니다. 돌벽에 바로 그리기도 하고, 벽에 흰 회를 바른 뒤 그 위에 그리기도 했습니다.",
+        "고구려 사람들은 무덤 벽에 사냥하는 모습, 춤추는 모습, 음식을 차리는 모습처럼 살아 있을 때의 생활을 그렸습니다. 그래서 글로 남지 않은 옷차림, 집, 놀이까지 알 수 있습니다.",
+        "무용총의 사냥 그림(수렵도)이 잘 알려져 있습니다. 고구려 고분군은 세계 유산으로 정해졌습니다."
       ],
       "img": "Inside a dim stone burial chamber of a Goguryeo tomb, lit by a soft lantern held by a modern researcher standing in the doorway. The plastered walls are painted in red, yellow and black in Goguryeo style: horsemen in polka-dot clothes riding after running deer and tigers among wavy mountain lines. On the ceiling are painted lotus flowers and stars.",
       "imgKo": "고구려 무덤 돌방 안을 연구자가 등불로 비추고, 벽에는 점무늬 옷을 입고 말 탄 사람들이 물결 같은 산 사이로 사슴과 호랑이를 쫓는 그림, 천장에는 연꽃과 별이 그려져 있다."
     },
     "골품제": {
       "en": "bone-rank system",
-      "beats": ["계단마다 옷 색과 집 크기가 다르다.", "줄에 막혀 위 계단으로 올라갈 수 없다.", "핏줄로 벼슬과 집 크기를 정한 신라 제도가 골품제다."],
+      "beats": ["계단마다 옷 색과 집 크기가 다릅니다.", "줄에 막혀 위 계단으로 올라갈 수 없습니다.", "핏줄로 벼슬과 집 크기를 정한 신라 제도가 골품제입니다."],
       "explain": [
-        "骨(뼈 골)과 品(등급 품)을 써서 '뼈의 등급', 곧 타고난 핏줄의 등급이라는 뜻이다. 왕족은 성골과 진골, 그 아래는 6두품부터 1두품까지로 나누었다.",
-        "골품에 따라 오를 수 있는 벼슬의 높이가 정해져 있었고, 집의 크기, 옷의 색, 수레까지 달랐다. 혼인도 대개 같은 골품끼리 했다.",
-        "6두품은 공부를 많이 하고 능력이 있어도 높은 벼슬에 오를 수 없었다. 그래서 골품제는 능력보다 태어난 집안을 따지는 제도였다."
+        "骨(뼈 골)과 品(등급 품)을 써서 '뼈의 등급', 곧 타고난 핏줄의 등급이라는 뜻입니다. 왕족은 성골과 진골, 그 아래는 6두품부터 1두품까지로 나누었습니다.",
+        "골품에 따라 오를 수 있는 벼슬의 높이가 정해져 있었고, 집의 크기, 옷의 색, 수레까지 달랐습니다. 혼인도 대개 같은 골품끼리 했습니다.",
+        "6두품은 공부를 많이 하고 능력이 있어도 높은 벼슬에 오를 수 없었습니다. 그래서 골품제는 능력보다 태어난 집안을 따지는 제도였습니다."
       ],
       "img": "A tall stone staircase with four big steps. On each step stands a Silla person in front of a house that matches the step: at the top, a noble in a purple robe beside a large tiled-roof mansion; next, a man in a red robe with a medium tiled house; below, a man in a blue robe with a smaller tiled house; at the bottom, a commoner in plain undyed clothes with a small thatched hut. A thick red rope blocks the way between each step so no one can climb up.",
       "imgKo": "네 칸 돌계단에 맨 위 자주색 옷 귀족과 큰 기와집, 그 아래 붉은 옷과 중간 기와집, 파란 옷과 작은 기와집, 맨 아래 평민과 초가집이 있고, 칸 사이를 붉은 줄이 막고 있다."
     },
     "가야 연맹": {
       "en": "Gaya Confederacy",
-      "beats": ["낙동강 가의 작은 성들이 금빛 줄로 이어졌다.", "덩이쇠를 실은 배가 바다로 나간다.", "작은 나라들이 힘을 모은 모임이 가야 연맹이다."],
+      "beats": ["낙동강 가의 작은 성들이 금빛 줄로 이어졌습니다.", "덩이쇠를 실은 배가 바다로 나갑니다.", "작은 나라들이 힘을 모은 모임이 가야 연맹입니다."],
       "explain": [
-        "연맹(聯盟)은 여러 나라나 무리가 같은 목적을 위해 손잡은 모임이다. 그래서 가야는 하나의 이름 대신 금관가야, 대가야, 아라가야처럼 여러 가야로 불린다.",
-        "처음에는 지금의 김해에 있던 금관가야가, 나중에는 고령에 있던 대가야가 연맹을 이끌었다. 가야는 질 좋은 철을 많이 만들어 덩이쇠를 돈처럼 쓰고 바다 건너 왜에도 팔았다.",
-        "가야는 끝내 하나로 힘을 모으지 못하고 6세기에 차례로 신라에 합쳐졌다. 김해와 고령 등에 가야 고분군이 남아 있다."
+        "연맹(聯盟)은 여러 나라나 무리가 같은 목적을 위해 손잡은 모임입니다. 그래서 가야는 하나의 이름 대신 금관가야, 대가야, 아라가야처럼 여러 가야로 불립니다.",
+        "처음에는 지금의 김해에 있던 금관가야가, 나중에는 고령에 있던 대가야가 연맹을 이끌었습니다. 가야는 질 좋은 철을 많이 만들어 덩이쇠를 돈처럼 쓰고 바다 건너 왜에도 팔았습니다.",
+        "가야는 끝내 하나로 힘을 모으지 못하고 6세기에 차례로 신라에 합쳐졌습니다. 김해와 고령 등에 가야 고분군이 남아 있습니다."
       ],
       "img": "A simple map of the southern Korean peninsula with no writing: the Nakdong River drawn in blue flowing south to the sea. Along its lower course and to its west, six small walled towns, shown as tiny castle icons, are linked together by a ring of golden lines. Stacks of flat iron ingots sit beside the towns, and a wooden ship sails out from the river mouth across the sea carrying iron.",
       "imgKo": "글자 없는 남부 지도에 낙동강이 흐르고, 하류와 서쪽의 작은 성 여섯이 금빛 줄로 둥글게 이어졌다. 옆에 덩이쇠가 쌓여 있고 배가 철을 싣고 바다로 나간다."
     },
     "삼국 통일": {
       "en": "unification of the Three Kingdoms",
-      "beats": ["왼쪽 지도에는 세 나라 색이 나뉘어 있다.", "오른쪽 지도에서는 남쪽이 모두 노란색이 됐다.", "신라가 세 나라를 하나로 묶은 일이 삼국 통일이다."],
+      "beats": ["왼쪽 지도에는 세 나라 색이 나뉘어 있습니다.", "오른쪽 지도에서는 남쪽이 모두 노란색이 됐습니다.", "신라가 세 나라를 하나로 묶은 일이 삼국 통일입니다."],
       "explain": [
-        "660년에 백제가, 668년에 고구려가 무너졌고, 676년에 당군을 몰아내면서 통일이 마무리되었다. 당은 백제와 고구려 땅은 물론 신라까지 차지하려는 속셈이었다.",
-        "통일 신라의 땅은 대동강에서 원산만에 이르는 선의 남쪽이었다. 고구려 땅의 많은 부분을 차지하지 못한 것은 아쉬운 점으로 꼽힌다.",
-        "그래도 한반도 대부분이 한 나라가 되어, 세 나라 사람들의 문화가 하나로 어우러지는 바탕이 되었다."
+        "660년에 백제가, 668년에 고구려가 무너졌고, 676년에 당군을 몰아내면서 통일이 마무리되었습니다. 당은 백제와 고구려 땅은 물론 신라까지 차지하려는 속셈이었습니다.",
+        "통일 신라의 땅은 대동강에서 원산만에 이르는 선의 남쪽이었습니다. 고구려 땅의 많은 부분을 차지하지 못한 것은 아쉬운 점으로 꼽힙니다.",
+        "그래도 한반도 대부분이 한 나라가 되어, 세 나라 사람들의 문화가 하나로 어우러지는 바탕이 되었습니다."
       ],
       "img": "Two maps of the Korean peninsula side by side with no writing, and a big arrow between them. Left: three colored kingdoms, Goguryeo red in the north, Baekje blue in the southwest, Silla yellow in the southeast. Right: all the land south of a line from the Daedong River to Wonsan Bay is yellow with a small blank Silla flag planted in it, while the land north of that line is pale gray.",
       "imgKo": "글자 없는 지도 두 장 사이에 큰 화살표. 왼쪽은 붉은 고구려, 파란 백제, 노란 신라로 나뉘고, 오른쪽은 대동강과 원산만을 잇는 선 남쪽이 모두 노랗고 북쪽은 회색이다."
     },
     "유민": {
-      "en": "displaced people · 망한 나라의 백성",
-      "beats": ["주인 없는 성문 앞에 깃발이 떨어져 있다.", "사람들이 보따리를 메고 산길로 떠난다.", "나라가 망한 뒤 남겨진 그 나라 백성이 유민이다."],
+      "en": "displaced people",
+      "beats": ["주인 없는 성문 앞에 깃발이 떨어져 있습니다.", "사람들이 보따리를 메고 산길로 떠납니다.", "나라가 망한 뒤 남겨진 그 나라 백성이 유민입니다."],
       "explain": [
-        "遺(남길 유)와 民(백성 민)을 써서 '남겨진 백성'이다. 나라는 없어졌지만 그 나라 사람들은 남아서 여전히 자기를 그 나라 사람이라고 여겼다.",
-        "고구려가 망한 뒤 고구려 유민 대조영이 무리를 이끌고 698년에 발해를 세웠다. 발해는 스스로 고구려를 이은 나라라고 밝혔다.",
-        "헷갈리는 말: 난민은 전쟁이나 재난을 피해 살던 곳을 떠난 사람이다. 유민은 망한 나라의 백성이라는 데 뜻이 있다."
+        "遺(남길 유)와 民(백성 민)을 써서 '남겨진 백성'입니다. 나라는 없어졌지만 그 나라 사람들은 남아서 여전히 자기를 그 나라 사람이라고 여겼습니다.",
+        "고구려가 망한 뒤 고구려 유민 대조영이 무리를 이끌고 698년에 발해를 세웠습니다. 발해는 스스로 고구려를 이은 나라라고 밝혔습니다.",
+        "헷갈리는 말: 난민은 전쟁이나 재난을 피해 살던 곳을 떠난 사람입니다. 유민은 망한 나라의 백성이라는 데 뜻이 있습니다."
       ],
       "img": "In front of a broken, empty Goguryeo-style stone fortress gate with a fallen blank flag lying on the ground, families in Goguryeo clothing (men in polka-dot jackets and wide trousers, women in long pleated skirts) carry cloth bundles on their backs and walk away along a mountain path. An older man at the front looks back at the gate. The mood is sad but determined, with no fighting.",
       "imgKo": "부서진 빈 고구려 성문 앞에 깃발이 떨어져 있고, 점무늬 저고리와 주름치마를 입은 가족들이 보따리를 메고 산길로 떠난다. 앞선 노인이 성문을 돌아본다."
     },
     "촌락 문서": {
       "en": "village census record",
-      "beats": ["관리가 마을의 사람과 소, 말을 센다.", "논밭과 뽕나무까지 점선으로 이어 센다.", "마을 살림을 세어 적은 신라 기록이 촌락 문서다."],
+      "beats": ["관리가 마을의 사람과 소, 말을 셉니다.", "논밭과 뽕나무까지 점선으로 이어 셉니다.", "마을 살림을 세어 적은 신라 기록이 촌락 문서입니다."],
       "explain": [
-        "통일 신라가 서원경(지금의 청주) 근처 네 마을을 조사해 적은 문서다. 일본 도다이사의 쇼소인이라는 창고에서 발견되었고, '신라 민정 문서'라고도 부른다.",
-        "마을마다 남녀를 나이에 따라 나눈 사람 수, 소와 말의 수, 논밭의 넓이, 뽕나무, 잣나무, 호두나무 수까지 적었다. 3년마다 조사해서 늘고 준 것도 기록했다.",
-        "나라가 이렇게 꼼꼼히 센 까닭은 세금을 거두고 일할 사람을 부르는 근거로 삼으려는 것이었다."
+        "통일 신라가 서원경(지금의 청주) 근처 네 마을을 조사해 적은 문서입니다. 일본 도다이사의 쇼소인이라는 창고에서 발견되었고, '신라 민정 문서'라고도 부릅니다.",
+        "마을마다 남녀를 나이에 따라 나눈 사람 수, 소와 말의 수, 논밭의 넓이, 뽕나무, 잣나무, 호두나무 수까지 적었습니다. 3년마다 조사해서 늘고 준 것도 기록했습니다.",
+        "나라가 이렇게 꼼꼼히 센 까닭은 세금을 거두고 일할 사람을 부르는 근거로 삼으려는 것이었습니다."
       ],
       "img": "A Unified Silla village official in a simple robe and hat sits on a mat at the edge of a village, holding an unrolled paper scroll that shows only tiny picture icons of people, cows and trees, with no letters or numbers. Around him, dotted lines connect to what he is counting: villagers by their houses, a cow, a horse, rice paddies, and rows of mulberry and pine-nut trees.",
       "imgKo": "통일 신라 관리가 마을 어귀 돗자리에 앉아 사람, 소, 나무 그림만 있는 두루마리를 펼쳤고, 점선이 집 앞 사람들, 소, 말, 논, 뽕나무와 잣나무 줄로 이어진다."
     },
     "해동성국": {
       "en": "Haedong Seongguk · flourishing land east of the sea",
-      "beats": ["당나라 관리가 바다 건너 동쪽을 바라본다.", "바다 동쪽 땅에 성과 궁궐이 반짝인다.", "당이 전성기 발해를 부른 이름이 해동성국이다."],
+      "beats": ["당나라 관리가 바다 건너 동쪽을 바라봅니다.", "바다 동쪽 땅에 성과 궁궐이 반짝입니다.", "당이 전성기 발해를 부른 이름이 해동성국입니다."],
       "explain": [
-        "海(바다 해), 東(동녘 동), 盛(번성할 성), 國(나라 국)을 써서 '바다 동쪽의 번성한 나라'라는 뜻이다. 중국 당나라에서 볼 때 발해는 바다 건너 동쪽에 있었다.",
-        "발해는 9세기 선왕 때 땅을 크게 넓히고 나라 안을 잘 다스려 가장 번성했다.",
-        "발해는 고구려 유민 대조영이 세운 나라로, 같은 무렵 남쪽에는 통일 신라가 있었다. 그래서 이 시기를 남북국 시대라고도 한다."
+        "海(바다 해), 東(동녘 동), 盛(번성할 성), 國(나라 국)을 써서 '바다 동쪽의 번성한 나라'라는 뜻입니다. 중국 당나라에서 볼 때 발해는 바다 건너 동쪽에 있었습니다.",
+        "발해는 9세기 선왕 때 땅을 크게 넓히고 나라 안을 잘 다스려 가장 번성했습니다.",
+        "발해는 고구려 유민 대조영이 세운 나라로, 같은 무렵 남쪽에는 통일 신라가 있었습니다. 그래서 이 시기를 남북국 시대라고도 합니다."
       ],
       "img": "A map-like landscape with no writing. On the left, a Tang Chinese official in a red round-collared robe and black cap stands on the western shore, shading his eyes and looking east across a blue sea. On the far northeastern side, a wide land glows with prosperity: walled cities, a grand tiled palace, fields and trading ships, under a bright rising sun, with sparkles around the land.",
       "imgKo": "왼쪽 바닷가에서 붉은 옷의 당나라 관리가 손차양을 하고 동쪽 바다 건너를 본다. 건너편 동북쪽 넓은 땅에 성, 궁궐, 들판, 배가 해 아래 반짝인다."
@@ -303,165 +303,165 @@
   "1-3": {
     "호족": {
       "en": "powerful local lords",
-      "beats": ["지방 성 위에 힘센 우두머리가 서 있다.", "뒤에는 자기 군사와 곡식 창고가 가득하다.", "재산과 군사로 지방을 다스린 세력이 호족이다."],
+      "beats": ["지방 성 위에 힘센 우두머리가 서 있습니다.", "뒤에는 자기 군사와 곡식 창고가 가득합니다.", "재산과 군사로 지방을 다스린 세력이 호족입니다."],
       "explain": [
-        "豪(호걸 호)와 族(겨레 족)을 써서 '힘센 집안'이라는 뜻이다. 신라 말에 왕실이 힘을 잃자, 지방에서 많은 땅과 군사를 가진 사람들이 스스로 성주나 장군이라 부르며 그 지역을 다스렸다.",
-        "왕건도 송악(지금의 개성)의 호족 집안 출신이다. 고려를 세운 뒤에는 각 지방 호족의 딸과 혼인하고 왕씨 성을 내려 주며 호족을 자기편으로 만들었다.",
-        "헷갈리는 말: 귀족은 수도에서 높은 벼슬을 하던 집안이고, 호족은 수도에서 먼 지방에서 스스로 힘을 키운 세력이다."
+        "豪(호걸 호)와 族(겨레 족)을 써서 '힘센 집안'이라는 뜻입니다. 신라 말에 왕실이 힘을 잃자, 지방에서 많은 땅과 군사를 가진 사람들이 스스로 성주나 장군이라 부르며 그 지역을 다스렸습니다.",
+        "왕건도 송악(지금의 개성)의 호족 집안 출신입니다. 고려를 세운 뒤에는 각 지방 호족의 딸과 혼인하고 왕씨 성을 내려 주며 호족을 자기편으로 만들었습니다.",
+        "헷갈리는 말: 귀족은 수도에서 높은 벼슬을 하던 집안이고, 호족은 수도에서 먼 지방에서 스스로 힘을 키운 세력입니다."
       ],
       "img": "Late Silla countryside: on top of an earthen and stone fortress wall above a provincial town, a powerful local lord in a rich silk robe stands with arms crossed. Behind him his own soldiers stand holding spears upright, and large storehouses full of grain sacks fill the inside of the walls. Far away on the horizon is a small, faded royal palace, with a broken dotted line between it and the town.",
       "imgKo": "지방 성벽 위에 비단옷의 우두머리가 팔짱 끼고 서 있고, 뒤에 창을 세워 든 자기 군사와 곡식 창고가 가득하다. 멀리 흐릿한 왕궁과 이 성 사이 점선이 끊겨 있다."
     },
     "후삼국 시대": {
       "en": "Later Three Kingdoms period",
-      "beats": ["지도의 남쪽 땅이 다시 세 색으로 나뉘었다.", "세 나라 성이 경계에서 맞서고 있다.", "신라 말 세 나라가 다시 맞선 때가 후삼국 시대다."],
+      "beats": ["지도의 남쪽 땅이 다시 세 색으로 나뉘었습니다.", "세 나라 성이 경계에서 맞서고 있습니다.", "신라 말 세 나라가 다시 맞선 때가 후삼국 시대입니다."],
       "explain": [
-        "'뒤 후(後)'를 붙여, 삼국 시대 뒤에 다시 세 나라가 생긴 시기라는 뜻이다. 900년 견훤이 후백제를, 901년 궁예가 후고구려를 세우면서 신라와 함께 세 나라가 되었다.",
-        "견훤은 옛 백제 땅에서, 궁예는 옛 고구려 땅에서 사람들의 마음을 모으려고 옛 나라 이름을 붙였다. 신라는 이미 힘이 약해져 경주 둘레만 겨우 다스렸다.",
-        "궁예의 신하였던 왕건이 918년 고려를 세우고, 935년 신라의 항복을 받고 936년 후백제를 무너뜨려 다시 하나로 통일했다."
+        "'뒤 후(後)'를 붙여, 삼국 시대 뒤에 다시 세 나라가 생긴 시기라는 뜻입니다. 900년 견훤이 후백제를, 901년 궁예가 후고구려를 세우면서 신라와 함께 세 나라가 되었습니다.",
+        "견훤은 옛 백제 땅에서, 궁예는 옛 고구려 땅에서 사람들의 마음을 모으려고 옛 나라 이름을 붙였습니다. 신라는 이미 힘이 약해져 경주 둘레만 겨우 다스렸습니다.",
+        "궁예의 신하였던 왕건이 918년 고려를 세우고, 935년 신라의 항복을 받고 936년 후백제를 무너뜨려 다시 하나로 통일했습니다."
       ],
       "img": "A simple map of the Korean peninsula south of the Daedong River with no writing, divided into three colored areas: Later Goguryeo across the north and center in green, Later Baekje in the southwest in blue, and a shrunken Silla in the southeast corner in yellow. Each area has its own small castle with a blank flag, and the jagged borders have small arrows facing each other.",
       "imgKo": "글자 없는 지도에서 대동강 남쪽이 북쪽과 가운데 초록 후고구려, 서남쪽 파란 후백제, 동남쪽 귀퉁이의 작아진 노란 신라로 나뉘고, 경계에서 화살표가 마주 본다."
     },
     "과거제": {
       "en": "civil service exam",
-      "beats": ["젊은이들이 줄지어 앉아 시험을 본다.", "합격한 사람이 관리 옷을 입고 관청에 들어간다.", "시험으로 실력 있는 관리를 뽑는 제도가 과거제다."],
+      "beats": ["젊은이들이 줄지어 앉아 시험을 봅니다.", "합격한 사람이 관리 옷을 입고 관청에 들어갑니다.", "시험으로 실력 있는 관리를 뽑는 제도가 과거제입니다."],
       "explain": [
-        "科(과목 과)와 擧(뽑을 거)를 써서 '과목별 시험으로 뽑는다'는 뜻이다.",
-        "고려에서는 958년 광종이 처음 실시했다. 실력 있는 신하를 왕이 직접 뽑아 호족과 공신의 힘을 누르고 왕의 힘을 키우려는 뜻도 있었다.",
-        "헷갈리는 말: 지나간 때를 뜻하는 '과거(過去)'는 한자가 다른 낱말이다. 과거제는 조선까지 이어졌다."
+        "科(과목 과)와 擧(뽑을 거)를 써서 '과목별 시험으로 뽑는다'는 뜻입니다.",
+        "고려에서는 958년 광종이 처음 실시했습니다. 실력 있는 신하를 왕이 직접 뽑아 호족과 공신의 힘을 누르고 왕의 힘을 키우려는 뜻도 있었습니다.",
+        "헷갈리는 말: 지나간 때를 뜻하는 '과거(過去)'는 한자가 다른 낱말입니다. 과거제는 조선까지 이어졌습니다."
       ],
       "img": "A Goryeo examination courtyard: rows of young men in plain robes and black caps sit on mats at low tables, writing with brushes on large sheets of paper that show only soft gray unreadable strokes. An examiner in a Goryeo official robe walks between the rows. On the right, an arrow leads to one of the young men now wearing an official's robe and hat, stepping through the gate of a government office.",
       "imgKo": "고려 시험장 마당에서 젊은이들이 줄지어 낮은 상 앞에 앉아 붓으로 쓰고, 시험관이 사이를 걷는다. 오른쪽 화살표 끝에 그중 한 사람이 관리 옷을 입고 관청 문에 들어선다."
     },
     "연등회": {
       "en": "Lantern Festival",
-      "beats": ["거리와 절 마당에 연꽃 등불이 가득하다.", "가족이 등을 들고 손 모아 빈다.", "등불을 밝혀 복을 빌던 고려 불교 행사가 연등회다."],
+      "beats": ["거리와 절 마당에 연꽃 등불이 가득합니다.", "가족이 등을 들고 손 모아 빕니다.", "등불을 밝혀 복을 빌던 고려 불교 행사가 연등회입니다."],
       "explain": [
-        "燃(불탈 연), 燈(등불 등), 會(모일 회)를 써서 '등불을 켜는 모임'이다. 등불은 어둠을 밝히는 부처의 지혜를 뜻했다.",
-        "불교를 믿은 고려에서는 나라가 연등회를 열어 왕부터 백성까지 함께했다. 태조 왕건은 뒤의 왕들에게 남긴 「훈요 10조」에서 연등회와 팔관회를 소홀히 하지 말라고 당부했다.",
-        "오늘날에도 부처님 오신 날 즈음 연등회가 열려 거리에 등불 행렬이 이어진다. 연등회는 유네스코 인류 무형 문화유산이다."
+        "燃(불탈 연), 燈(등불 등), 會(모일 회)를 써서 '등불을 켜는 모임'입니다. 등불은 어둠을 밝히는 부처의 지혜를 뜻했습니다.",
+        "불교를 믿은 고려에서는 나라가 연등회를 열어 왕부터 백성까지 함께했습니다. 태조 왕건은 뒤의 왕들에게 남긴 「훈요 10조」에서 연등회와 팔관회를 소홀히 하지 말라고 당부했습니다.",
+        "오늘날에도 부처님 오신 날 즈음 연등회가 열려 거리에 등불 행렬이 이어집니다. 연등회는 유네스코 인류 무형 문화유산입니다."
       ],
       "img": "A Goryeo night festival: the streets and a temple courtyard glow with hundreds of colorful lotus-shaped paper lanterns hanging on lines and carried by people in Goryeo clothing. In the center, a family holding lanterns stands with folded hands facing a Buddha hall. Warm golden light everywhere, with sparkles around the lanterns.",
       "imgKo": "고려의 밤, 거리와 절 마당에 연꽃 등불 수백 개가 걸리고 사람들이 등을 든다. 가운데 가족이 등을 들고 법당을 향해 손을 모은다."
     },
     "팔관회": {
       "en": "Palgwanhoe · Goryeo's great national festival",
-      "beats": ["궁궐 마당에서 산과 강, 하늘에 제물을 바친다.", "다른 나라 사람들이 선물을 들고 줄지어 있다.", "부처와 신께 나라의 평안을 빈 큰 행사가 팔관회다."],
+      "beats": ["궁궐 마당에서 산과 강, 하늘에 제물을 바칩니다.", "다른 나라 사람들이 선물을 들고 줄지어 있습니다.", "부처와 신께 나라의 평안을 빈 큰 행사가 팔관회입니다."],
       "explain": [
-        "팔관은 불교에서 하루 동안 지키는 여덟 가지 약속에서 나온 이름이다. 이름은 불교에서 왔지만, 실제로는 나라 전체가 함께 즐긴 큰 잔치였다.",
-        "해마다 11월에 수도 개경에서 크게 열렸다. 송나라 상인, 여진과 탐라의 사신도 와서 선물을 바치며 축하했다.",
-        "헷갈리는 말: 연등회는 등불을 밝혀 부처께 복을 비는 불교 행사이다. 팔관회는 외국 상인과 사신까지 맞이한 나라 잔치라는 점이 두드러진다."
+        "팔관은 불교에서 하루 동안 지키는 여덟 가지 약속에서 나온 이름입니다. 이름은 불교에서 왔지만, 실제로는 나라 전체가 함께 즐긴 큰 잔치였습니다.",
+        "해마다 11월에 수도 개경에서 크게 열렸습니다. 송나라 상인, 여진과 탐라의 사신도 와서 선물을 바치며 축하했습니다.",
+        "헷갈리는 말: 연등회는 등불을 밝혀 부처께 복을 비는 불교 행사입니다. 팔관회는 외국 상인과 사신까지 맞이한 나라 잔치라는 점이 두드러집니다."
       ],
       "img": "A grand Goryeo state festival in a palace courtyard: a king in a yellow royal robe (a generic figure) sits on a high platform. In front of him, an altar with offerings faces distant mountains, a river and the sky. Musicians and dancers perform in the middle, and foreign visitors in different clothes, Song Chinese merchants and Jurchen envoys, line up holding gifts.",
       "imgKo": "고려 궁궐 마당 높은 단에 노란 옷의 왕이 앉고, 앞의 제단이 먼 산과 강, 하늘을 향한다. 가운데서 악사와 무용수가 공연하고 송나라 상인과 여진 사신이 선물을 들고 줄 서 있다."
     },
     "벽란도": {
       "en": "Byeongnando · Goryeo's trading port",
-      "beats": ["강가 나루에 여러 나라 배가 들어왔다.", "고려, 송, 아라비아 상인이 물건을 바꾼다.", "여러 나라 상인이 드나든 고려 무역항이 벽란도다."],
+      "beats": ["강가 나루에 여러 나라 배가 들어왔습니다.", "고려, 송, 아라비아 상인이 물건을 바꿉니다.", "여러 나라 상인이 드나든 고려 무역항이 벽란도입니다."],
       "explain": [
-        "벽란도는 개경 가까이 흐르는 예성강 어귀에 있던 나루다. 바다로 들어온 배가 강을 따라 올라와 수도 가까이까지 닿을 수 있어서 무역항으로 크게 번성했다.",
-        "송나라 상인이 가장 많이 왔고, 일본과 멀리 아라비아 상인까지 드나들었다. 고려는 인삼, 종이, 나전 칠기 등을 팔고 비단, 책, 약재 등을 사들였다.",
-        "아라비아 상인을 통해 '고려'라는 이름이 서쪽 나라들에 알려져, 오늘날 영어 이름 '코리아(Korea)'가 되었다고 본다."
+        "벽란도는 개경 가까이 흐르는 예성강 어귀에 있던 나루입니다. 바다로 들어온 배가 강을 따라 올라와 수도 가까이까지 닿을 수 있어서 무역항으로 크게 번성했습니다.",
+        "송나라 상인이 가장 많이 왔고, 일본과 멀리 아라비아 상인까지 드나들었습니다. 고려는 인삼, 종이, 나전 칠기 등을 팔고 비단, 책, 약재 등을 사들였습니다.",
+        "아라비아 상인을 통해 '고려'라는 이름이 서쪽 나라들에 알려져, 오늘날 영어 이름 '코리아(Korea)'가 되었다고 봅니다."
       ],
       "img": "A busy river port near Goryeo's capital: wooden sailing ships are moored at the docks. Goryeo officials and porters, Song Chinese merchants in long robes, and bearded Arab merchants in turbans trade goods laid out on the dock: rolls of silk, celadon pottery, ginseng roots, closed books, spices and ivory. Seagulls fly overhead, and a road leads inland toward a distant walled city.",
       "imgKo": "강가 나루에 나무 돛배들이 대어 있고, 고려 관리와 짐꾼, 긴 옷의 송나라 상인, 터번 쓴 아라비아 상인이 비단, 청자, 인삼, 책, 향료를 펼쳐 놓고 거래한다."
     },
     "외교 담판": {
       "en": "diplomatic negotiation",
-      "beats": ["두 나라 사람이 지도를 사이에 두고 마주 앉았다.", "말풍선을 주고받으며 의논한다.", "마주 앉아 말로 따져 결정짓는 일이 외교 담판이다."],
+      "beats": ["두 나라 사람이 지도를 사이에 두고 마주 앉았습니다.", "말풍선을 주고받으며 의논합니다.", "마주 앉아 말로 따져 결정짓는 일이 외교 담판입니다."],
       "explain": [
-        "외교(外交)는 나라 밖과 사귄다는 뜻이고, 담판(談判)은 말(談)로 판가름(判)한다는 뜻이다.",
-        "993년 거란이 고려에 쳐들어오자 서희가 거란 장수 소손녕과 담판을 벌였다. 서희는 고려가 고구려를 이은 나라라는 것과, 여진이 가로막고 있어 거란과 오가지 못한다는 점을 들어 거란군을 물러가게 했다.",
-        "생활에서도 '담판을 짓다'는 말을 쓴다. 미루던 문제를 직접 만나 끝까지 이야기해서 매듭짓는다는 뜻이다."
+        "외교(外交)는 나라 밖과 사귄다는 뜻이고, 담판(談判)은 말(談)로 판가름(判)한다는 뜻입니다.",
+        "993년 거란이 고려에 쳐들어오자 서희가 거란 장수 소손녕과 담판을 벌였습니다. 서희는 고려가 고구려를 이은 나라라는 것과, 여진이 가로막고 있어 거란과 오가지 못한다는 점을 들어 거란군을 물러가게 했습니다.",
+        "생활에서도 '담판을 짓다'는 말을 씁니다. 미루던 문제를 직접 만나 끝까지 이야기해서 매듭짓는다는 뜻입니다."
       ],
       "img": "Inside a large tent, two officials sit face to face across a low table: on the left a Goryeo official in a Goryeo robe and black hat, on the right a Khitan general in Khitan clothing with a fur-trimmed cap. An unrolled map with simple lines and no writing lies on the table between them, and empty speech bubbles with a map icon and a handshake icon float above them. No weapons are in sight; guards stand quietly outside the tent entrance.",
       "imgKo": "천막 안 낮은 탁자에 고려 관리와 털모자 쓴 거란 장수가 마주 앉아 있고, 탁자 위에 글자 없는 지도가 펼쳐져 있으며 머리 위에 지도와 악수 그림 말풍선이 떠 있다."
     },
     "강동 6주": {
       "en": "Gangdong 6 Ju · six towns east of the Yalu River",
-      "beats": ["두 강 사이 땅이 초록색으로 새로 칠해졌다.", "그 안에 작은 성 여섯 개가 들어섰다.", "담판으로 얻은 압록강 동쪽 여섯 고을이 강동 6주다."],
+      "beats": ["두 강 사이 땅이 초록색으로 새로 칠해졌습니다.", "그 안에 작은 성 여섯 개가 들어섰습니다.", "담판으로 얻은 압록강 동쪽 여섯 고을이 강동 6주입니다."],
       "explain": [
-        "'강동'은 압록강의 동쪽이라는 뜻이고, '주'는 고을을 말한다. 흥화진, 용주, 통주, 철주, 귀주, 곽주 여섯 곳이다.",
-        "서희의 외교 담판 뒤 고려는 이 땅에 살던 여진을 몰아내고 성을 쌓았다. 이로써 고려의 땅이 압록강까지 넓어졌다.",
-        "강동 6주는 거란이 다시 쳐들어올 때 길목을 막는 중요한 곳이 되었다. 1019년 강감찬이 거란군을 크게 물리친 귀주 대첩도 이 가운데 귀주에서 있었다."
+        "'강동'은 압록강의 동쪽이라는 뜻이고, '주'는 고을을 말합니다. 흥화진, 용주, 통주, 철주, 귀주, 곽주 여섯 곳입니다.",
+        "서희의 외교 담판 뒤 고려는 이 땅에 살던 여진을 몰아내고 성을 쌓았습니다. 이로써 고려의 땅이 압록강까지 넓어졌습니다.",
+        "강동 6주는 거란이 다시 쳐들어올 때 길목을 막는 중요한 곳이 되었습니다. 1019년 강감찬이 거란군을 크게 물리친 귀주 대첩도 이 가운데 귀주에서 있었습니다."
       ],
       "img": "A simple map of the northwestern Korean peninsula with no writing: the Yalu River drawn in blue across the top, and the Cheongcheon River lower down. The land between the two rivers is newly colored Goryeo green, with six small fortress icons placed in it. A thick arrow shows Goryeo's border line moving up from the Cheongcheon River to the Yalu River.",
       "imgKo": "글자 없는 서북부 지도에 위쪽 압록강과 아래쪽 청천강이 있고, 두 강 사이 땅이 새로 초록색으로 칠해져 작은 성 여섯이 들어섰다. 굵은 화살표가 국경이 청천강에서 압록강으로 올라간 것을 보여 준다."
     },
     "삼별초": {
       "en": "Sambyeolcho · Goryeo's last-stand army",
-      "beats": ["배들이 강화도에서 진도로 내려간다.", "다시 바다를 건너 제주도 성에 깃발을 꽂았다.", "끝까지 몽골에 맞선 고려 군대가 삼별초다."],
+      "beats": ["배들이 강화도에서 진도로 내려갑니다.", "다시 바다를 건너 제주도 성에 깃발을 꽂았습니다.", "끝까지 몽골에 맞선 고려 군대가 삼별초입니다."],
       "explain": [
-        "별초는 '따로 뽑은 군사'라는 뜻이다. 좌별초, 우별초, 그리고 몽골에 잡혀갔다가 돌아온 사람들로 꾸린 신의군, 이렇게 세 부대를 합쳐 삼별초라고 했다.",
-        "고려 정부가 몽골과 화해하고 강화도에서 개경으로 돌아가자, 삼별초는 이를 따르지 않았다. 1270년 진도로 옮겨 용장성을 쌓았고, 진도가 무너지자 제주도로 가서 1273년까지 맞섰다.",
-        "삼별초가 버티던 진도 용장성과 제주 항파두리성 터가 지금도 남아 있다."
+        "별초는 '따로 뽑은 군사'라는 뜻입니다. 좌별초, 우별초, 그리고 몽골에 잡혀갔다가 돌아온 사람들로 꾸린 신의군, 이렇게 세 부대를 합쳐 삼별초라고 했습니다.",
+        "고려 정부가 몽골과 화해하고 강화도에서 개경으로 돌아가자, 삼별초는 이를 따르지 않았습니다. 1270년 진도로 옮겨 용장성을 쌓았고, 진도가 무너지자 제주도로 가서 1273년까지 맞섰습니다.",
+        "삼별초가 버티던 진도 용장성과 제주 항파두리성 터가 지금도 남아 있습니다."
       ],
       "img": "A simple map of the southwestern Korean coast and sea with no writing. A dotted route with small sailing-ship icons runs from Ganghwa Island on the west coast, south along the coast to Jindo Island, then across the sea to Jeju Island, where a small earthen fortress with a blank flag stands. A few distant ships with Mongol-style sails follow far behind, with no fighting shown.",
       "imgKo": "글자 없는 서남해안 지도에 배 그림이 있는 점선 길이 강화도에서 해안을 따라 진도로, 다시 바다 건너 제주도로 이어지고, 제주도에 깃발 꽂힌 흙성이 있다. 멀리 몽골 배들이 뒤따른다."
     },
     "몽골풍": {
       "en": "Mongol style",
-      "beats": ["왼쪽 고려 사람은 상투를 틀었다.", "오른쪽은 머리를 깎고 땋아 몽골 옷을 입었다.", "원 간섭기에 퍼진 몽골식 풍습이 몽골풍이다."],
+      "beats": ["왼쪽 고려 사람은 상투를 틀었습니다.", "오른쪽은 머리를 깎고 땋아 몽골 옷을 입었습니다.", "원 간섭기에 퍼진 몽골식 풍습이 몽골풍입니다."],
       "explain": [
-        "풍(風)은 '바람'이라는 글자로, 여기서는 바람처럼 번져 간 풍습을 뜻한다. 주로 고려 왕실과 지배층 사이에 퍼졌다.",
-        "정수리에서 이마까지 머리를 깎고 나머지를 땋아 내리는 변발, 몽골식 옷, 소주 같은 술이 대표적이다. 벼슬아치, 장사치처럼 사람을 가리키는 '-치'도 몽골 말의 영향이라고 본다.",
-        "헷갈리는 말: 반대로 고려의 옷, 음식, 물건이 원나라에 퍼진 것은 '고려양'이라고 한다."
+        "풍(風)은 '바람'이라는 글자로, 여기서는 바람처럼 번져 간 풍습을 뜻합니다. 주로 고려 왕실과 지배층 사이에 퍼졌습니다.",
+        "정수리에서 이마까지 머리를 깎고 나머지를 땋아 내리는 변발, 몽골식 옷, 소주 같은 술이 대표적입니다. 벼슬아치, 장사치처럼 사람을 가리키는 '-치'도 몽골 말의 영향이라고 봅니다.",
+        "헷갈리는 말: 반대로 고려의 옷, 음식, 물건이 원나라에 퍼진 것은 '고려양'이라고 합니다."
       ],
       "img": "A before-and-after picture of the same Goryeo nobleman with a big arrow between. Left: he wears a long Goryeo robe, with his hair tied up in a topknot. Right: the hair from his crown to his forehead is shaved, the remaining hair is braided and hangs down behind his ears, and he wears a Mongol-style robe with a belt and leather boots; a small table beside him holds a ceramic liquor bottle.",
       "imgKo": "같은 고려 귀족의 전과 후. 왼쪽은 고려 옷에 상투, 오른쪽은 정수리에서 이마까지 깎고 남은 머리를 땋아 내리고 띠 두른 몽골 옷과 가죽 장화 차림이며 옆에 술병이 있다."
     },
     "고려청자": {
       "en": "Goryeo celadon",
-      "beats": ["옥처럼 맑은 푸른빛 병이 진열장에 있다.", "뒤로 그릇을 굽던 가마가 흐릿하게 보인다.", "고려 때 만든 푸른빛 도자기가 고려청자다."],
+      "beats": ["옥처럼 맑은 푸른빛 병이 진열장에 있습니다.", "뒤로 그릇을 굽던 가마가 흐릿하게 보입니다.", "고려 때 만든 푸른빛 도자기가 고려청자입니다."],
       "explain": [
-        "청자(靑瓷)는 푸른빛이 도는 자기라는 뜻이다. 고려 사람들은 옥이나 비취를 닮은 이 빛깔을 '비색'이라 부르며 자랑으로 여겼다.",
-        "흙과 유약 속의 철분이 가마 안에서 푸른빛으로 변한다. 불의 온도와 가마 안 공기를 잘 맞춰야 해서 만들기가 매우 어려웠고, 전라도 강진과 부안에서 많이 구웠다.",
-        "송나라 사람도 고려청자의 빛깔을 천하제일이라고 칭찬했다. 12세기에는 상감 기법으로 무늬를 넣은 상감 청자가 나왔다."
+        "청자(靑瓷)는 푸른빛이 도는 자기라는 뜻입니다. 고려 사람들은 옥이나 비취를 닮은 이 빛깔을 '비색'이라 부르며 자랑으로 여겼습니다.",
+        "흙과 유약 속의 철분이 가마 안에서 푸른빛으로 변합니다. 불의 온도와 가마 안 공기를 잘 맞춰야 해서 만들기가 매우 어려웠고, 전라도 강진과 부안에서 많이 구웠습니다.",
+        "송나라 사람도 고려청자의 빛깔을 천하제일이라고 칭찬했습니다. 12세기에는 상감 기법으로 무늬를 넣은 상감 청자가 나왔습니다."
       ],
       "img": "Center: a graceful Goryeo celadon maebyeong vase with a small mouth, wide rounded shoulders and a slim waist, glazed a clear jade-like blue-green with a soft shine, displayed on a stand in a museum case. Beside it are a smaller celadon incense burner and a bowl. In the background, a long climbing kiln on a hillside with smoke rises faintly, showing where it was fired.",
       "imgKo": "박물관 진열장에 어깨가 둥글고 허리가 가는 옥빛 청자 매병이 있고, 옆에 작은 청자 향로와 대접이 있다. 뒤로 언덕의 가마에서 연기가 흐릿하게 오른다."
     },
     "상감 기법": {
       "en": "inlay technique",
-      "beats": ["그릇 겉에 학과 구름 모양을 파낸다.", "판 자리에 흰 흙과 붉은 흙을 메우고 굽는다.", "다른 색 흙을 메워 무늬를 내는 방법이 상감 기법이다."],
+      "beats": ["그릇 겉에 학과 구름 모양을 파냅니다.", "판 자리에 흰 흙과 붉은 흙을 메우고 굽습니다.", "다른 색 흙을 메워 무늬를 내는 방법이 상감 기법입니다."],
       "explain": [
-        "상감(象嵌)은 겉면에 무늬를 새기고 그 홈에 다른 재료를 박아 넣는 방법이다. 금속이나 나무 공예에서 쓰던 이 방법을 고려 사람들이 도자기에 써서 고려만의 상감 청자를 만들었다.",
-        "흰 흙은 구우면 하얗게, 붉은 흙은 구우면 검게 변한다. 그 위에 유약을 발라 구우면 푸른 바탕에 흰색과 검은색 무늬가 또렷하게 떠오른다.",
-        "학과 구름이 가득한 「청자 상감 운학문 매병」이 대표 작품이다. 붓으로 그린 무늬와 달리 무늬가 그릇 속에 박혀 있어 잘 지워지지 않는다."
+        "상감(象嵌)은 겉면에 무늬를 새기고 그 홈에 다른 재료를 박아 넣는 방법입니다. 금속이나 나무 공예에서 쓰던 이 방법을 고려 사람들이 도자기에 써서 고려만의 상감 청자를 만들었습니다.",
+        "흰 흙은 구우면 하얗게, 붉은 흙은 구우면 검게 변합니다. 그 위에 유약을 발라 구우면 푸른 바탕에 흰색과 검은색 무늬가 또렷하게 떠오릅니다.",
+        "학과 구름이 가득한 「청자 상감 운학문 매병」이 대표 작품입니다. 붓으로 그린 무늬와 달리 무늬가 그릇 속에 박혀 있어 잘 지워지지 않습니다."
       ],
       "img": "A three-step process from left to right with arrows, showing a Goryeo potter's hands. Step one: carving the outline of a flying crane and clouds into the surface of an unfired gray clay vase with a pointed tool. Step two: pressing white clay and dark reddish clay into the carved grooves, then scraping the surface smooth. Step three: the finished blue-green celadon vase after firing, with crisp white cranes and black-outlined clouds showing under the glaze.",
       "imgKo": "화살표로 이은 세 단계. 굽지 않은 회색 그릇에 학과 구름을 파내고, 홈에 흰 흙과 붉은 흙을 메워 긁어 내고, 구운 뒤 푸른 청자에 흰 학과 검은 구름이 또렷하다."
     },
     "팔만대장경": {
       "en": "Tripitaka Koreana",
-      "beats": ["긴 선반마다 나무판이 빽빽하게 꽂혀 있다.", "창살 사이로 바람과 빛이 드나든다.", "8만여 장 나무판에 새긴 불교 경전이 팔만대장경이다."],
+      "beats": ["긴 선반마다 나무판이 빽빽하게 꽂혀 있습니다.", "창살 사이로 바람과 빛이 드나듭니다.", "8만여 장 나무판에 새긴 불교 경전이 팔만대장경입니다."],
       "explain": [
-        "대장경은 부처의 가르침을 모두 모은 불교 경전이다. 판이 8만 장이 넘어서 팔만대장경이라고 부르고, 고려 때 새겼다고 '고려대장경'이라고도 한다.",
-        "고려는 1236년부터 1251년까지 16년에 걸쳐 경판을 새겼다. 글자가 고르고 틀린 곳이 거의 없어 그 정성이 놀랍다.",
-        "지금은 합천 해인사 장경판전에 보관되어 있다. 창의 크기를 달리해 바람이 잘 통하게 지은 장경판전은 세계 유산, 대장경판은 세계 기록 유산이다."
+        "대장경은 부처의 가르침을 모두 모은 불교 경전입니다. 판이 8만 장이 넘어서 팔만대장경이라고 부르고, 고려 때 새겼다고 '고려대장경'이라고도 합니다.",
+        "고려는 1236년부터 1251년까지 16년에 걸쳐 경판을 새겼습니다. 글자가 고르고 틀린 곳이 거의 없어 그 정성이 놀랍습니다.",
+        "지금은 합천 해인사 장경판전에 보관되어 있습니다. 창의 크기를 달리해 바람이 잘 통하게 지은 장경판전은 세계 유산, 대장경판은 세계 기록 유산입니다."
       ],
       "img": "Inside the long wooden storage hall at Haeinsa Temple: tall wooden shelves stretch back in rows, packed with thousands of dark wooden printing blocks standing upright on their edges. Light and a breeze come through slatted lattice windows of different sizes in the walls, shown by soft light beams and gentle wind lines. A monk in gray robes carefully checks one block; the carved faces of the blocks are seen only from the side, with no readable characters.",
       "imgKo": "해인사 장경판전 안, 긴 나무 선반에 검은 나무판 수천 장이 세워져 빽빽이 꽂혀 있고, 크기가 다른 창살 사이로 빛과 바람이 들어온다. 스님 한 분이 판을 살핀다."
     },
     "목판 인쇄술": {
       "en": "woodblock printing",
-      "beats": ["나무판 하나에 먹을 바른다.", "종이를 얹어 문지르니 한 쪽이 통째로 찍혔다.", "나무판에 새겨 찍어 내는 방법이 목판 인쇄술이다."],
+      "beats": ["나무판 하나에 먹을 바릅니다.", "종이를 얹어 문지르니 한 쪽이 통째로 찍혔습니다.", "나무판에 새겨 찍어 내는 방법이 목판 인쇄술입니다."],
       "explain": [
-        "목판은 나무 목(木)과 널빤지 판(板)을 써서 '나무판'이다. 책 한 쪽의 글자를 거꾸로 새긴 나무판에 먹을 발라 종이를 찍으면 같은 쪽을 몇 번이고 찍어 낼 수 있다.",
-        "손으로 베껴 쓰는 것보다 훨씬 빠르고, 틀린 글자 없이 똑같은 책을 많이 만들 수 있다. 팔만대장경이 바로 이렇게 찍으려고 새긴 목판이다.",
-        "헷갈리는 말: 목판은 판 하나가 한 쪽 전체라서 다른 책을 찍으려면 판을 새로 새겨야 한다. 금속 활자는 글자를 낱낱이 만들어 골라 짜 맞추므로 여러 책에 다시 쓸 수 있다."
+        "목판은 나무 목(木)과 널빤지 판(板)을 써서 '나무판'입니다. 책 한 쪽의 글자를 거꾸로 새긴 나무판에 먹을 발라 종이를 찍으면 같은 쪽을 몇 번이고 찍어 낼 수 있습니다.",
+        "손으로 베껴 쓰는 것보다 훨씬 빠르고, 틀린 글자 없이 똑같은 책을 많이 만들 수 있습니다. 팔만대장경이 바로 이렇게 찍으려고 새긴 목판입니다.",
+        "헷갈리는 말: 목판은 판 하나가 한 쪽 전체라서 다른 책을 찍으려면 판을 새로 새겨야 합니다. 금속 활자는 글자를 낱낱이 만들어 골라 짜 맞추므로 여러 책에 다시 쓸 수 있습니다."
       ],
       "img": "A Goryeo craftsman's hands at a wooden workbench, in three steps linked by arrows: a single wooden block whose whole surface is carved as one page is brushed with black ink; a sheet of paper is laid on it and rubbed with a pad; then the paper is lifted, showing a whole printed page of tiny gray marks that are not readable. A stack of identical printed pages sits beside.",
       "imgKo": "고려 장인의 손이 한 쪽 전체를 새긴 나무판에 먹을 바르고, 종이를 얹어 문지르고, 들어 올리니 한 쪽이 통째로 찍혀 있다. 옆에 똑같이 찍힌 종이가 쌓여 있다."
     },
     "금속 활자": {
       "en": "metal movable type",
-      "beats": ["쇳물을 틀에 부어 작은 글자를 만든다.", "글자를 하나씩 골라 판에 짜 맞춘다.", "쇠로 만든 낱낱의 글자가 금속 활자다."],
+      "beats": ["쇳물을 틀에 부어 작은 글자를 만듭니다.", "글자를 하나씩 골라 판에 짜 맞춥니다.", "쇠로 만든 낱낱의 글자가 금속 활자입니다."],
       "explain": [
-        "금속은 쇠붙이, 활자는 '살아 움직이는 글자'라는 뜻이다. 글자 하나하나를 따로 만들어 두었다가 필요한 글자를 골라 판을 짜기 때문에 움직이는 글자라고 부른다.",
-        "고려는 서양보다 훨씬 앞서 금속 활자로 책을 찍었다. 1377년 청주 흥덕사에서 찍은 『직지심체요절』은 지금 남아 있는 금속 활자 책 가운데 가장 오래된 것으로, 프랑스 국립 도서관에 있다.",
-        "헷갈리는 말: 목판은 한 쪽 전체를 판 하나에 새긴다. 금속 활자는 찍고 나서 풀어 다른 책에 다시 쓸 수 있어, 여러 가지 책을 조금씩 찍기에 좋았다."
+        "금속은 쇠붙이, 활자는 '살아 움직이는 글자'라는 뜻입니다. 글자 하나하나를 따로 만들어 두었다가 필요한 글자를 골라 판을 짜기 때문에 움직이는 글자라고 부릅니다.",
+        "고려는 서양보다 훨씬 앞서 금속 활자로 책을 찍었습니다. 1377년 청주 흥덕사에서 찍은 『직지심체요절』은 지금 남아 있는 금속 활자 책 가운데 가장 오래된 것으로, 프랑스 국립 도서관에 있습니다.",
+        "헷갈리는 말: 목판은 한 쪽 전체를 판 하나에 새깁니다. 금속 활자는 찍고 나서 풀어 다른 책에 다시 쓸 수 있어, 여러 가지 책을 조금씩 찍기에 좋았습니다."
       ],
       "img": "Close-up of a Goryeo printer's hands using small tweezers to pick tiny bronze-colored type pieces, each a little block about the size of a fingertip, from a wooden tray full of such pieces and set them row by row into a frame. The raised faces of the pieces appear only as tiny blurred bumps, not readable. A small inset in the corner shows glowing molten metal being poured into a mold.",
       "imgKo": "고려 인쇄공의 손이 핀셋으로 손톱만 한 청동빛 글자 조각을 나무 상자에서 집어 판에 줄줄이 끼운다. 귀퉁이 작은 칸에 쇳물을 틀에 붓는 모습이 있다."
@@ -470,176 +470,176 @@
   "2-1": {
     "신진 사대부": {
       "en": "new scholar-officials",
-      "beats": ["왼쪽 권세가들은 재물을 쌓아 두고 있다.", "오른쪽 젊은 관리들은 책을 펴고 새 나라를 의논한다.", "성리학을 익혀 나라를 바꾸려 한 관리들이 신진 사대부다."],
+      "beats": ["왼쪽 권세가들은 재물을 쌓아 두고 있습니다.", "오른쪽 젊은 관리들은 책을 펴고 새 나라를 의논합니다.", "성리학을 익혀 나라를 바꾸려 한 관리들이 신진 사대부입니다."],
       "explain": [
-        "신진(新進)은 새로 나아간 사람, 사대부(士大夫)는 학문을 닦은 선비이자 관리라는 뜻이다. 고려 말 지방의 중소 지주 집안에서 나와 과거를 거쳐 관리가 된 사람들이다.",
-        "이들은 새로운 유학인 성리학을 공부했다. 넓은 땅을 차지하고 백성을 괴롭히던 권문세족과 낡은 사회를 바로잡으려 했다.",
-        "신진 사대부 가운데 정도전 같은 사람들은 이성계 같은 새로운 무인 세력과 손잡고 1392년 조선을 세웠다. 고려를 고쳐서 지키자는 정몽주 같은 사람들도 있었다."
+        "신진(新進)은 새로 나아간 사람, 사대부(士大夫)는 학문을 닦은 선비이자 관리라는 뜻입니다. 고려 말 지방의 중소 지주 집안에서 나와 과거를 거쳐 관리가 된 사람들입니다.",
+        "이들은 새로운 유학인 성리학을 공부했습니다. 넓은 땅을 차지하고 백성을 괴롭히던 권문세족과 낡은 사회를 바로잡으려 했습니다.",
+        "신진 사대부 가운데 정도전 같은 사람들은 이성계 같은 새로운 무인 세력과 손잡고 1392년 조선을 세웠습니다. 고려를 고쳐서 지키자는 정몽주 같은 사람들도 있었습니다."
       ],
       "img": "Late Goryeo, split scene. Left, in dim light: old powerful aristocrats in luxurious silk robes lounge in a large mansion beside chests of treasure, with wide estates behind them. Right, in bright light: a group of young scholar-officials in modest official robes and black hats sit around a low table piled with books, one pointing to an unrolled plan drawing of a new palace and city with no writing, the others nodding with determined faces. An arrow points from the right group toward a rising sun.",
       "imgKo": "왼쪽 어두운 쪽에는 비단옷 권세가들이 보물 상자 옆에 늘어져 있고, 오른쪽 밝은 쪽에는 젊은 관리들이 책 쌓인 상에 둘러앉아 새 궁궐 도면을 가리키며 의논한다. 화살표가 떠오르는 해를 향한다."
     },
     "유교": {
       "en": "Confucianism",
-      "beats": ["아이가 두 손으로 할아버지께 음식을 올린다.", "관리들이 임금께 머리 숙여 절한다.", "충성과 효도를 바른 도리로 여긴 가르침이 유교다."],
+      "beats": ["아이가 두 손으로 할아버지께 음식을 올립니다.", "관리들이 임금께 머리 숙여 절합니다.", "충성과 효도를 바른 도리로 여긴 가르침이 유교입니다."],
       "explain": [
-        "儒(선비 유)와 敎(가르칠 교)를 써서 '선비의 가르침'이다. 공자는 지금으로부터 약 2,500년 전 중국에 살았던 사람이다.",
-        "충성과 효도 말고도 어른을 공경하고 벗과 믿음을 지키는 것을 바른 도리로 보았다. 조선은 이 가르침을 나라를 다스리는 바탕으로 삼았다.",
-        "지금도 어른께 두 손으로 물건을 드리고 설날에 세배하는 데에 유교 문화가 남아 있다. 헷갈리는 말: 불교는 부처의 가르침이다. 고려는 불교를, 조선은 유교를 중요하게 여겼다."
+        "儒(선비 유)와 敎(가르칠 교)를 써서 '선비의 가르침'입니다. 공자는 지금으로부터 약 2,500년 전 중국에 살았던 사람입니다.",
+        "충성과 효도 말고도 어른을 공경하고 벗과 믿음을 지키는 것을 바른 도리로 보았습니다. 조선은 이 가르침을 나라를 다스리는 바탕으로 삼았습니다.",
+        "지금도 어른께 두 손으로 물건을 드리고 설날에 세배하는 데에 유교 문화가 남아 있습니다. 헷갈리는 말: 불교는 부처의 가르침입니다. 고려는 불교를, 조선은 유교를 중요하게 여겼습니다."
       ],
       "img": "Two side-by-side scenes framed like panels of a folding screen. Left: in a Joseon family courtyard, a boy in hanbok kneels and offers a bowl of food with both hands to his grandparents while his parents watch warmly. Right: in a palace courtyard, Joseon officials in red and blue court robes bow deeply toward a king in a red royal robe (a generic figure) seated on a throne.",
       "imgKo": "병풍처럼 나란한 두 장면. 왼쪽은 한복 입은 아이가 무릎 꿇고 두 손으로 조부모께 음식을 올리고, 오른쪽은 관리들이 임금께 깊이 머리 숙여 절한다."
     },
     "성균관": {
       "en": "Seonggyungwan · Joseon's royal academy",
-      "beats": ["큰 은행나무 뒤 강당에 유생들이 앉아 있다.", "스승에게 경전을 배우며 책을 읽는다.", "한양에 둔 조선 최고의 교육 기관이 성균관이다."],
+      "beats": ["큰 은행나무 뒤 강당에 유생들이 앉아 있습니다.", "스승에게 경전을 배우며 책을 읽습니다.", "한양에 둔 조선 최고의 교육 기관이 성균관입니다."],
       "explain": [
-        "오늘날의 국립 대학과 비슷한 곳으로, 대개 소과에 합격한 생원과 진사가 들어가 공부했다.",
-        "유생들은 기숙사인 동재와 서재에서 함께 지내며 명륜당에서 유교 경전을 배우고, 큰 과거 시험인 대과를 준비했다. 공자를 모신 사당인 대성전도 함께 있다.",
-        "헷갈리는 말: 향교는 지방 고을마다 둔 교육 기관이다. 서울 종로구에 지금도 성균관 건물과 오래된 은행나무가 남아 있다."
+        "오늘날의 국립 대학과 비슷한 곳으로, 대개 소과에 합격한 생원과 진사가 들어가 공부했습니다.",
+        "유생들은 기숙사인 동재와 서재에서 함께 지내며 명륜당에서 유교 경전을 배우고, 큰 과거 시험인 대과를 준비했습니다. 공자를 모신 사당인 대성전도 함께 있습니다.",
+        "헷갈리는 말: 향교는 지방 고을마다 둔 교육 기관입니다. 서울 종로구에 지금도 성균관 건물과 오래된 은행나무가 남아 있습니다."
       ],
       "img": "The courtyard of Seonggyungwan in Hanyang: a huge old ginkgo tree with golden leaves stands in front of a wide wooden lecture hall with a tiled roof. Young Confucian students in dark blue robes and black scholar caps sit in rows on the hall's wooden floor reading books, while an older scholar teaches at the front. Other students walk between long dormitory buildings on both sides of the courtyard.",
       "imgKo": "성균관 마당에 노란 잎의 큰 은행나무가 서 있고, 뒤 기와 강당 마루에 검푸른 옷과 검은 유건 차림의 유생들이 줄지어 앉아 책을 읽으며 스승에게 배운다. 양옆에 기숙사 건물이 있다."
     },
     "향교": {
       "en": "local Confucian school",
-      "beats": ["한양에는 큰 학교가 하나 있다.", "고을마다 작은 학교가 하나씩 흩어져 있다.", "지방 고을마다 세운 나라의 학교가 향교다."],
+      "beats": ["한양에는 큰 학교가 하나 있습니다.", "고을마다 작은 학교가 하나씩 흩어져 있습니다.", "지방 고을마다 세운 나라의 학교가 향교입니다."],
       "explain": [
-        "鄕(시골 향)과 校(학교 교)를 써서 '시골의 학교'다. 지금도 전국 여러 고을에 '강릉 향교', '나주 향교'처럼 고을 이름을 붙인 향교 건물이 남아 있다.",
-        "향교에는 공부하는 건물인 명륜당과 공자를 모신 대성전이 있었다. 나라가 땅과 노비를 내주어 운영을 도왔다.",
-        "헷갈리는 말: 서원은 지방 선비들이 스스로 세운 사립 학교이고, 향교는 나라가 세운 공립 학교다. 서당은 마을 아이들이 글을 처음 배우던 곳이다."
+        "鄕(시골 향)과 校(학교 교)를 써서 '시골의 학교'입니다. 지금도 전국 여러 고을에 '강릉 향교', '나주 향교'처럼 고을 이름을 붙인 향교 건물이 남아 있습니다.",
+        "향교에는 공부하는 건물인 명륜당과 공자를 모신 대성전이 있었습니다. 나라가 땅과 노비를 내주어 운영을 도왔습니다.",
+        "헷갈리는 말: 서원은 지방 선비들이 스스로 세운 사립 학교이고, 향교는 나라가 세운 공립 학교입니다. 서당은 마을 아이들이 글을 처음 배우던 곳입니다."
       ],
       "img": "A simple map of the Joseon peninsula with no writing. At the capital Hanyang stands one large school building icon with a ginkgo tree; across the whole map, in every small town, there are many small tiled-roof school icons, each with a tiny group of students. An inset at the bottom shows one of these small country schools on a hillside, where a teacher teaches local young men in hanbok.",
       "imgKo": "글자 없는 조선 지도에 한양의 큰 학교 하나와, 온 고을마다 흩어진 작은 기와 학교들이 있다. 아래 작은 칸에 언덕 위 시골 학교에서 선생님이 젊은이들을 가르친다."
     },
     "경국대전": {
       "en": "Gyeongguk Daejeon · Joseon's code of law",
-      "beats": ["궁궐 탁자에 두꺼운 책이 놓여 있다.", "책에서 집안, 관청, 세금, 재판으로 줄이 뻗는다.", "나라를 다스리는 기본으로 만든 조선 법전이 경국대전이다."],
+      "beats": ["궁궐 탁자에 두꺼운 책이 놓여 있습니다.", "책에서 집안, 관청, 세금, 재판으로 줄이 뻗습니다.", "나라를 다스리는 기본으로 만든 조선 법전이 경국대전입니다."],
       "explain": [
-        "經(다스릴 경), 國(나라 국), 大(큰 대), 典(법 전)을 써서 '나라를 다스리는 큰 법'이라는 뜻이다.",
-        "세조 때 만들기 시작해 성종 때인 1485년에 완성하여 시행했다. 관리를 뽑고 나랏일을 나누는 일, 세금, 집안 예절과 재산 물려주기, 죄와 벌까지 담았다.",
-        "유교의 가르침을 바탕으로 사회 질서를 세우려 했고, 조선 말까지 나라 법의 기본이 되었다."
+        "經(다스릴 경), 國(나라 국), 大(큰 대), 典(법 전)을 써서 '나라를 다스리는 큰 법'이라는 뜻입니다.",
+        "세조 때 만들기 시작해 성종 때인 1485년에 완성하여 시행했습니다. 관리를 뽑고 나랏일을 나누는 일, 세금, 집안 예절과 재산 물려주기, 죄와 벌까지 담았습니다.",
+        "유교의 가르침을 바탕으로 사회 질서를 세우려 했고, 조선 말까지 나라 법의 기본이 되었습니다."
       ],
       "img": "Center: a thick bound Joseon law book with a plain blank cover, lying on a lacquered table in a palace hall and glowing softly. From it, dotted lines spread out to small icons around it: a family bowing at an ancestral rite, a government office with officials, a farmer's field with grain sacks for taxes, and a magistrate's courtyard. Officials in red and blue court robes stand around the table.",
       "imgKo": "궁궐 탁자 위에 표지에 글자 없는 두꺼운 책이 은은히 빛나고, 점선이 제사 지내는 가족, 관청, 곡식 자루가 있는 논밭, 원님의 재판 마당 그림으로 뻗는다. 관리들이 둘러서 있다."
     },
     "집현전": {
       "en": "Jiphyeonjeon · Hall of Worthies",
-      "beats": ["책이 가득한 방에서 학자들이 밤늦게 연구한다.", "임금이 잠든 학자에게 옷을 덮어 준다.", "학자들이 모여 학문과 정책을 연구한 곳이 집현전이다."],
+      "beats": ["책이 가득한 방에서 학자들이 밤늦게 연구합니다.", "임금이 잠든 학자에게 옷을 덮어 줍니다.", "학자들이 모여 학문과 정책을 연구한 곳이 집현전입니다."],
       "explain": [
-        "集(모을 집), 賢(어질 현), 殿(큰 집 전)을 써서 '어질고 똑똑한 사람을 모은 곳'이라는 뜻이다. 세종이 1420년에 크게 키워 젊고 뛰어난 학자들을 모았다.",
-        "학자들은 옛 제도와 책을 연구해 나라의 정책을 마련하고, 왕과 함께 경전을 공부했다. 훈민정음을 만들고 알리는 일을 돕고, 농사, 역사, 의학에 관한 여러 책을 펴냈다.",
-        "세종이 밤늦게까지 공부하다 잠든 학자에게 자기 옷을 덮어 주었다는 이야기도 전한다. 집현전은 세조 때 없어졌다."
+        "集(모을 집), 賢(어질 현), 殿(큰 집 전)을 써서 '어질고 똑똑한 사람을 모은 곳'이라는 뜻입니다. 세종이 1420년에 크게 키워 젊고 뛰어난 학자들을 모았습니다.",
+        "학자들은 옛 제도와 책을 연구해 나라의 정책을 마련하고, 왕과 함께 경전을 공부했습니다. 훈민정음을 만들고 알리는 일을 돕고, 농사, 역사, 의학에 관한 여러 책을 펴냈습니다.",
+        "세종이 밤늦게까지 공부하다 잠든 학자에게 자기 옷을 덮어 주었다는 이야기도 전합니다. 집현전은 세조 때 없어졌습니다."
       ],
       "img": "Inside a palace hall at night lit by oil lamps and candles: Joseon scholars in official robes and black hats sit at low desks among tall shelves full of bound books and scrolls, reading, writing with brushes, and discussing in small groups. A Joseon king in a red royal robe (a generic figure, not a portrait) gently drapes his own fur-lined robe over a young scholar who has fallen asleep over his books.",
       "imgKo": "등불 켠 밤의 궁궐 방, 책장 사이 낮은 책상에서 학자들이 읽고 쓰고 의논한다. 붉은 옷의 임금이 책상에 엎드려 잠든 젊은 학자에게 자기 옷을 덮어 준다."
     },
     "측우기": {
       "en": "rain gauge",
-      "beats": ["비 오는 마당에 둥근 통이 돌 받침 위에 있다.", "관리가 자를 넣어 고인 빗물 깊이를 잰다.", "빗물을 받아 비의 양을 재던 그릇이 측우기다."],
+      "beats": ["비 오는 마당에 둥근 통이 돌 받침 위에 있습니다.", "관리가 자를 넣어 고인 빗물 깊이를 잽니다.", "빗물을 받아 비의 양을 재던 그릇이 측우기입니다."],
       "explain": [
-        "測(잴 측), 雨(비 우), 器(그릇 기)를 써서 '비를 재는 그릇'이다. 세종 때인 1441년에 만들고, 이듬해부터 서울과 지방 고을에 두었다.",
-        "원통 그릇에 고인 빗물의 깊이를 주척이라는 자로 재어 기록했다. 흙에 빗물이 스며든 깊이로 짐작하던 예전보다 훨씬 정확하게 비의 양을 알 수 있었다.",
-        "농사에 비가 얼마나 중요한지 알았기 때문에 만든 것이다. 서양보다 200년쯤 앞서 비의 양을 꾸준히 재고 기록했다."
+        "測(잴 측), 雨(비 우), 器(그릇 기)를 써서 '비를 재는 그릇'입니다. 세종 때인 1441년에 만들고, 이듬해부터 서울과 지방 고을에 두었습니다.",
+        "원통 그릇에 고인 빗물의 깊이를 주척이라는 자로 재어 기록했습니다. 흙에 빗물이 스며든 깊이로 짐작하던 예전보다 훨씬 정확하게 비의 양을 알 수 있었습니다.",
+        "농사에 비가 얼마나 중요한지 알았기 때문에 만든 것입니다. 서양보다 200년쯤 앞서 비의 양을 꾸준히 재고 기록했습니다."
       ],
       "img": "In a Joseon palace courtyard on a rainy day, a bronze cylindrical rain gauge stands upright on a carved rectangular granite pedestal, with raindrops falling into its open top. A Joseon official in a blue robe, a black hat and a straw rain cape crouches beside it and dips a thin measuring stick into the cylinder to check how deep the water is, while another official holds a closed record book.",
       "imgKo": "비 오는 궁궐 마당, 네모난 돌 받침 위에 청동 원통이 서서 빗물을 받고, 도롱이를 걸친 관리가 가는 자를 넣어 물 깊이를 잰다. 옆 관리는 기록 책을 들었다."
     },
     "앙부일구": {
       "en": "Angbu Ilgu · bowl-shaped sundial",
-      "beats": ["길가 돌 받침 위에 솥 모양 그릇이 하늘을 본다.", "바늘 그림자를 보고 사람들이 시각을 안다.", "해 그림자로 시각을 알던 솥 모양 해시계가 앙부일구다."],
+      "beats": ["길가 돌 받침 위에 솥 모양 그릇이 하늘을 봅니다.", "바늘 그림자를 보고 사람들이 시각을 압니다.", "해 그림자로 시각을 알던 솥 모양 해시계가 앙부일구입니다."],
       "explain": [
-        "仰(우러를 앙), 釜(가마솥 부), 日(해 일), 晷(해 그림자 구)를 써서 '하늘을 우러러보는 가마솥 모양의 해시계'라는 뜻이다. 세종 때인 1434년에 만들었다.",
-        "솥 안쪽에 시각과 절기를 나타내는 금을 새기고, 뾰족한 바늘의 그림자가 어느 금에 닿는지 보고 시각을 알았다. 그림자의 길이로 계절까지 알 수 있었다.",
-        "세종은 이것을 혜정교와 종묘 앞 같은 큰길가에 두어 누구나 시각을 알게 했다. 글을 모르는 백성을 위해 시각을 띠 동물 그림으로 나타냈다고 전한다."
+        "仰(우러를 앙), 釜(가마솥 부), 日(해 일), 晷(해 그림자 구)를 써서 '하늘을 우러러보는 가마솥 모양의 해시계'라는 뜻입니다. 세종 때인 1434년에 만들었습니다.",
+        "솥 안쪽에 시각과 절기를 나타내는 금을 새기고, 뾰족한 바늘의 그림자가 어느 금에 닿는지 보고 시각을 알았습니다. 그림자의 길이로 계절까지 알 수 있었습니다.",
+        "세종은 이것을 혜정교와 종묘 앞 같은 큰길가에 두어 누구나 시각을 알게 했습니다. 글을 모르는 백성을 위해 시각을 띠 동물 그림으로 나타냈다고 전합니다."
       ],
       "img": "On a busy Hanyang street beside a stone bridge, a bronze bowl-shaped sundial sits on a stone stand, its open bowl facing up to the sky like an upturned cauldron on four little legs. A thin pointer reaches over the bowl and casts a dark shadow line onto engraved grid lines inside (lines only, no writing). Joseon commoners, a man with an A-frame carrier on his back, a woman with a bundle on her head and a child, gather around to look at the shadow.",
       "imgKo": "한양 돌다리 옆 길가에 네 발 달린 청동 솥 모양 해시계가 돌 받침 위에서 하늘을 향해 열려 있고, 바늘 그림자가 안쪽 금에 드리운다. 지게꾼, 보따리 인 여자, 아이가 모여 본다."
     },
     "훈민정음": {
       "en": "Hunminjeongeum · the Korean alphabet",
-      "beats": ["임금이 백성에게 얇은 책을 내민다.", "아이가 땅에 점과 선을 그리며 활짝 웃는다.", "백성을 위해 세종이 만든 우리 글자가 훈민정음이다."],
+      "beats": ["임금이 백성에게 얇은 책을 내밉니다.", "아이가 땅에 점과 선을 그리며 활짝 웃습니다.", "백성을 위해 세종이 만든 우리 글자가 훈민정음입니다."],
       "explain": [
-        "訓(가르칠 훈), 民(백성 민), 正(바를 정), 音(소리 음) 네 글자로 된 이름이다. 세종이 1443년에 만들고 1446년에 책으로 펴내 널리 알렸다.",
-        "그전에는 어려운 한자를 써야 해서 많은 백성이 글을 읽고 쓰지 못했다. 세종은 누구나 쉽게 익혀 하고 싶은 말을 적을 수 있게 하려고 새 글자를 만들었다.",
-        "자음은 소리 낼 때 입과 혀의 모양을, 모음은 하늘(·), 땅(ㅡ), 사람(ㅣ)을 본떠 만들었다. 오늘날 한글이라고 부르고, 『훈민정음』 해례본은 세계 기록 유산이다."
+        "訓(가르칠 훈), 民(백성 민), 正(바를 정), 音(소리 음) 네 글자로 된 이름입니다. 세종이 1443년에 만들고 1446년에 책으로 펴내 널리 알렸습니다.",
+        "그전에는 어려운 한자를 써야 해서 많은 백성이 글을 읽고 쓰지 못했습니다. 세종은 누구나 쉽게 익혀 하고 싶은 말을 적을 수 있게 하려고 새 글자를 만들었습니다.",
+        "자음은 소리 낼 때 입과 혀의 모양을, 모음은 하늘(·), 땅(ㅡ), 사람(ㅣ)을 본떠 만들었습니다. 오늘날 한글이라고 부르고, 『훈민정음』 해례본은 세계 기록 유산입니다."
       ],
       "img": "A Joseon king in a red royal robe (a generic figure, not a portrait) stands on palace steps, holding out a thin book with a plain blank cover toward a crowd of commoners: a farmer, a woman with a basket, a merchant. In the foreground, the farmer's young daughter sits on the ground drawing three simple marks in the dirt with a stick, a round dot like the sun, a flat line like the ground and a standing line like a person, and smiles with sudden understanding. No letters or words anywhere.",
       "imgKo": "붉은 옷의 임금이 궁궐 계단에서 백성들에게 표지 빈 얇은 책을 내밀고, 앞쪽에서 농부의 딸이 막대로 땅에 해 같은 점, 땅 같은 가로줄, 사람 같은 세로줄을 그리며 활짝 웃는다."
     },
     "양반": {
       "en": "yangban · Joseon's ruling class",
-      "beats": ["임금 앞마당에 관리들이 두 줄로 섰다.", "한쪽은 문반, 다른 쪽은 무반이다.", "두 반에서 나온 조선의 지배 신분이 양반이다."],
+      "beats": ["임금 앞마당에 관리들이 두 줄로 섰습니다.", "한쪽은 문반, 다른 쪽은 무반입니다.", "두 반에서 나온 조선의 지배 신분이 양반입니다."],
       "explain": [
-        "兩(두 양), 班(무리 반)을 써서 '두 무리'라는 뜻이다. 임금이 신하를 만날 때 글로 나랏일을 맡은 문반은 동쪽에, 군사 일을 맡은 무반은 서쪽에 줄지어 섰는데, 이 둘을 함께 양반이라 했다.",
-        "처음에는 관리를 가리키는 말이었지만, 점차 관리와 그 가족, 집안까지 이르는 조선의 지배 신분이 되었다. 양반은 과거를 보아 관리가 되고, 땅과 노비를 가졌다.",
-        "헷갈리는 말: 오늘날 '이 양반이', '점잖은 양반'처럼 남자를 가리키는 말로도 쓴다."
+        "兩(두 양), 班(무리 반)을 써서 '두 무리'라는 뜻입니다. 임금이 신하를 만날 때 글로 나랏일을 맡은 문반은 동쪽에, 군사 일을 맡은 무반은 서쪽에 줄지어 섰는데, 이 둘을 함께 양반이라 했습니다.",
+        "처음에는 관리를 가리키는 말이었지만, 점차 관리와 그 가족, 집안까지 이르는 조선의 지배 신분이 되었습니다. 양반은 과거를 보아 관리가 되고, 땅과 노비를 가졌습니다.",
+        "헷갈리는 말: 오늘날 '이 양반이', '점잖은 양반'처럼 남자를 가리키는 말로도 씁니다."
       ],
       "img": "A Joseon royal court audience in front of a throne hall: a king in a red royal robe (a generic figure) sits on a raised throne at the back center. In the stone courtyard below, officials in court robes and black winged hats stand in two long rows facing each other, civil officials in a row on the east side and military officials in a row on the west side, with a clear empty path down the middle.",
       "imgKo": "궁궐 정전 앞 높은 자리에 붉은 옷의 임금이 앉고, 아래 돌마당에 관복과 사모 차림의 관리들이 동쪽 한 줄, 서쪽 한 줄로 마주 서 있으며 가운데 길이 비어 있다."
     },
     "중인": {
       "en": "jungin · skilled middle class",
-      "beats": ["가운데 층 사람들이 저마다 전문 일을 한다.", "통역하고, 병을 보고, 하늘을 살핀다.", "양반과 상민 사이에서 전문 일을 맡은 신분이 중인이다."],
+      "beats": ["가운데 층 사람들이 저마다 전문 일을 합니다.", "통역하고, 병을 보고, 하늘을 살핍니다.", "양반과 상민 사이에서 전문 일을 맡은 신분이 중인입니다."],
       "explain": [
-        "中(가운데 중), 人(사람 인)을 써서 '가운데 사람'이다. 양반과 상민 사이에 있는 신분이라서 이렇게 불렀다.",
-        "외국어를 통역하는 역관, 병을 고치는 의관, 하늘과 날씨를 살피는 천문관, 그림을 그리는 화원처럼 전문 기술을 가진 사람들이 많았다. 관청의 아래 관리인 서리와 향리도 중인에 들었다.",
-        "중인은 잡과라는 시험을 보아 이런 일을 맡았다. 높은 벼슬에 오르기는 어려웠지만, 지식과 기술로 나라 살림에 꼭 필요한 일을 했다."
+        "中(가운데 중), 人(사람 인)을 써서 '가운데 사람'입니다. 양반과 상민 사이에 있는 신분이라서 이렇게 불렀습니다.",
+        "외국어를 통역하는 역관, 병을 고치는 의관, 하늘과 날씨를 살피는 천문관, 그림을 그리는 화원처럼 전문 기술을 가진 사람들이 많았습니다. 관청의 아래 관리인 서리와 향리도 중인에 들었습니다.",
+        "중인은 잡과라는 시험을 보아 이런 일을 맡았습니다. 높은 벼슬에 오르기는 어려웠지만, 지식과 기술로 나라 살림에 꼭 필요한 일을 했습니다."
       ],
       "img": "A three-level wooden platform like a ladder of Joseon social classes. The middle level is large and brightly lit, showing specialists at work: an interpreter talking with a foreign envoy, a doctor taking a patient's pulse at the wrist, an astronomer looking at the sky through a brass instrument, and a court painter painting on silk spread on the floor. Above them stand faint figures of yangban in black gat hats; below, faint farmers and craftsmen.",
       "imgKo": "세 층 나무 단의 밝은 가운데 층에서 통역관이 외국 사신과 말하고, 의원이 맥을 짚고, 천문관이 기구로 하늘을 보고, 화원이 비단에 그림을 그린다. 위층 양반, 아래층 농민은 흐리다."
     },
     "삼강행실도": {
       "en": "Samgang Haengsildo · illustrated book of good deeds",
-      "beats": ["선비가 그림이 가득한 책을 펼쳐 보인다.", "마을 사람들이 그림을 보며 고개를 끄덕인다.", "본받을 이야기를 그림으로 엮은 책이 삼강행실도다."],
+      "beats": ["선비가 그림이 가득한 책을 펼쳐 보입니다.", "마을 사람들이 그림을 보며 고개를 끄덕입니다.", "본받을 이야기를 그림으로 엮은 책이 삼강행실도입니다."],
       "explain": [
-        "삼강은 유교에서 가장 중요하게 여긴 세 가지 도리로, 임금과 신하, 부모와 자식, 남편과 아내 사이의 도리를 말한다. 행실은 실제로 한 행동이다.",
-        "세종 때인 1434년, 충신, 효자, 열녀의 이야기를 골라 이야기마다 그림을 붙여 펴냈다. 글을 잘 모르는 백성도 그림을 보고 뜻을 알게 하려는 것이었다.",
-        "나중에는 한글 풀이를 단 책도 나왔다. 조선이 유교의 가르침을 백성의 생활 속까지 퍼뜨리려 한 노력을 보여 준다."
+        "삼강은 유교에서 가장 중요하게 여긴 세 가지 도리로, 임금과 신하, 부모와 자식, 남편과 아내 사이의 도리를 말합니다. 행실은 실제로 한 행동입니다.",
+        "세종 때인 1434년, 충신, 효자, 열녀의 이야기를 골라 이야기마다 그림을 붙여 펴냈습니다. 글을 잘 모르는 백성도 그림을 보고 뜻을 알게 하려는 것이었습니다.",
+        "나중에는 한글 풀이를 단 책도 나왔습니다. 조선이 유교의 가르침을 백성의 생활 속까지 퍼뜨리려 한 노력을 보여 줍니다."
       ],
       "img": "A Joseon village gathering under a big tree: a scholar in a white robe and gat holds open a large book whose pages are filled with woodblock-style pictures, a son caring for his sick father, an official kneeling loyally before a king, a devoted wife, with plain blank margins and no visible writing. Villagers of all ages, including children, lean in to look at the pictures and nod.",
       "imgKo": "큰 나무 아래 선비가 아픈 아버지를 돌보는 아들, 임금 앞에 무릎 꿇은 신하 같은 그림이 가득한 책을 펼치고, 아이부터 어른까지 마을 사람들이 들여다보며 고개를 끄덕인다."
     },
     "관혼상제": {
       "en": "four family rites",
-      "beats": ["갓을 쓰고, 혼례를 올리고, 상복을 입는다.", "마지막에는 상을 차려 조상께 절한다.", "관례, 혼례, 상례, 제례를 합친 말이 관혼상제다."],
+      "beats": ["갓을 쓰고, 혼례를 올리고, 상복을 입습니다.", "마지막에는 상을 차려 조상께 절합니다.", "관례, 혼례, 상례, 제례를 합친 말이 관혼상제입니다."],
       "explain": [
-        "冠(갓 관), 婚(혼인할 혼), 喪(죽을 상), 祭(제사 제)의 첫 글자를 모은 말이다. 관례는 어른이 되었음을 알리는 의식, 혼례는 결혼, 상례는 장례, 제례는 제사다.",
-        "조선 사람들은 이 네 가지를 집안의 가장 큰일로 여기고 유교 예절에 따라 치렀다. 남자는 관례 때 상투를 틀고 갓을 썼고, 여자는 쪽을 찌고 비녀를 꽂는 계례를 치렀다.",
-        "오늘날 성년의 날, 결혼식, 장례식, 제사에 그 모습이 남아 있다."
+        "冠(갓 관), 婚(혼인할 혼), 喪(죽을 상), 祭(제사 제)의 첫 글자를 모은 말입니다. 관례는 어른이 되었음을 알리는 의식, 혼례는 결혼, 상례는 장례, 제례는 제사입니다.",
+        "조선 사람들은 이 네 가지를 집안의 가장 큰일로 여기고 유교 예절에 따라 치렀습니다. 남자는 관례 때 상투를 틀고 갓을 썼고, 여자는 쪽을 찌고 비녀를 꽂는 계례를 치렀습니다.",
+        "오늘날 성년의 날, 결혼식, 장례식, 제사에 그 모습이 남아 있습니다."
       ],
       "img": "Four panels in a row showing four big family ceremonies of Joseon, everyone in hanbok, with no writing or numbers. First panel: an elder places a black gat hat on a young man whose hair is newly tied in a topknot; second panel: a bride in a red ceremonial robe and a groom in an official-style robe bow to each other across a ceremony table, with a pair of wooden wild geese nearby. Third panel: family members in plain hemp mourning clothes walk slowly behind a decorated funeral bier carried by villagers. Fourth panel: the family bows before a table set with food and candles.",
       "imgKo": "네 칸 그림. 어른이 상투 튼 젊은이에게 갓을 씌우고, 붉은 옷 신부와 신랑이 혼례상을 두고 맞절하고, 삼베 상복 입은 가족이 상여 뒤를 따르고, 음식 차린 제사상 앞에서 가족이 절한다."
     },
     "임진왜란": {
       "en": "Imjin War",
-      "beats": ["붉은 화살표가 바다를 건너 부산에 닿았다.", "남쪽 바다에는 거북선, 길에는 피란 가족이 있다.", "1592년 일본이 쳐들어와 7년간 이어진 전쟁이 임진왜란이다."],
+      "beats": ["붉은 화살표가 바다를 건너 부산에 닿았습니다.", "남쪽 바다에는 거북선, 길에는 피란 가족이 있습니다.", "1592년 일본이 쳐들어와 7년간 이어진 전쟁이 임진왜란입니다."],
       "explain": [
-        "1592년이 임진년이고, 왜(일본)가 일으킨 난리라서 임진왜란이라고 부른다. 1598년 일본군이 물러가면서 끝났다.",
-        "일본군은 부산에 들어와 20일쯤 만에 한양을 차지했다. 그러나 바다에서는 이순신이 이끈 수군이 거북선과 판옥선으로 잇따라 이겼고, 땅에서는 곳곳에서 의병이 일어나고 명나라 군대가 도왔다.",
-        "전쟁 동안 많은 사람이 목숨을 잃거나 일본으로 끌려갔고, 논밭과 문화재가 크게 망가졌다. 1597년 다시 쳐들어온 정유재란까지 합쳐 이르기도 한다."
+        "1592년이 임진년이고, 왜(일본)가 일으킨 난리라서 임진왜란이라고 부릅니다. 1598년 일본군이 물러가면서 끝났습니다.",
+        "일본군은 부산에 들어와 20일쯤 만에 한양을 차지했습니다. 그러나 바다에서는 이순신이 이끈 수군이 거북선과 판옥선으로 잇따라 이겼고, 땅에서는 곳곳에서 의병이 일어나고 명나라 군대가 도왔습니다.",
+        "전쟁 동안 많은 사람이 목숨을 잃거나 일본으로 끌려갔고, 논밭과 문화재가 크게 망가졌습니다. 1597년 다시 쳐들어온 정유재란까지 합쳐 이르기도 합니다."
       ],
       "img": "A simple map of the Korean peninsula and the southwestern tip of Japan with no writing. Thick red arrows come across the sea from Japan, land at Busan and spread north up the peninsula. In the southern sea, a turtle ship with a dome-shaped spiked roof and a dragon head sails among Korean panokseon warships, and a small Korean family carrying cloth bundles walks along a road away from the arrows. No fighting, no fire, no one hurt.",
       "imgKo": "글자 없는 지도에서 붉은 화살표가 일본에서 바다를 건너 부산에 닿아 북쪽으로 퍼진다. 남해에는 용머리와 가시 지붕의 거북선이 판옥선 사이에 있고, 길에는 보따리를 멘 피란 가족이 걷는다."
     },
     "의병": {
       "en": "righteous army",
-      "beats": ["농민, 스님, 선비가 마을에 모여들었다.", "붉은 옷 대장이 깃발을 들고 앞에 섰다.", "나라가 위태로울 때 백성이 스스로 꾸린 군대가 의병이다."],
+      "beats": ["농민, 스님, 선비가 마을에 모여들었습니다.", "붉은 옷 대장이 깃발을 들고 앞에 섰습니다.", "나라가 위태로울 때 백성이 스스로 꾸린 군대가 의병입니다."],
       "explain": [
-        "義(옳을 의), 兵(병사 병)을 써서 '옳은 일을 위해 일어난 병사'라는 뜻이다. 헷갈리는 말: 관군은 나라에서 뽑아 꾸린 군대다.",
-        "임진왜란 때 양반, 농민, 승려 등이 곳곳에서 의병을 일으켰다. 곽재우는 붉은 옷을 입고 싸워 '홍의 장군'이라 불렸고, 서산 대사와 사명 대사는 승려들을 이끌었다.",
-        "의병은 자기 고장의 산과 길을 잘 알아서 숨어 있다가 적을 갑자기 치는 방법으로 큰 힘을 보탰다. 나라가 어려울 때마다 의병이 일어났고, 대한 제국 때에도 의병 활동이 이어졌다."
+        "義(옳을 의), 兵(병사 병)을 써서 '옳은 일을 위해 일어난 병사'라는 뜻입니다. 헷갈리는 말: 관군은 나라에서 뽑아 꾸린 군대입니다.",
+        "임진왜란 때 양반, 농민, 승려 등이 곳곳에서 의병을 일으켰습니다. 곽재우는 붉은 옷을 입고 싸워 '홍의 장군'이라 불렸고, 서산 대사와 사명 대사는 승려들을 이끌었습니다.",
+        "의병은 자기 고장의 산과 길을 잘 알아서 숨어 있다가 적을 갑자기 치는 방법으로 큰 힘을 보탰습니다. 나라가 어려울 때마다 의병이 일어났고, 대한 제국 때에도 의병 활동이 이어졌습니다."
       ],
       "img": "In a Joseon village square, ordinary people gather of their own will: farmers holding hoes and other farm tools upright, a Buddhist monk in gray robes, and young scholars in white robes and gat hats. A leader in a red coat sits on a horse at the front, raising a blank flag with no writing. Women hand out rice balls and straw sandals, and everyone faces the leader with determined faces; no fighting is shown.",
       "imgKo": "조선 마을 마당에 농기구를 세워 든 농민, 회색 옷의 스님, 흰 도포에 갓 쓴 선비들이 스스로 모여들고, 앞에서 붉은 옷 대장이 말 위에서 빈 깃발을 든다. 여자들이 주먹밥과 짚신을 나눈다."
     },
     "병자호란": {
       "en": "Qing invasion of 1636",
-      "beats": ["눈 덮인 산성을 수많은 군막이 둘러쌌다.", "성 안 사람들은 작은 불가에서 추위를 견딘다.", "1636년 청이 쳐들어와 조선이 항복한 전쟁이 병자호란이다."],
+      "beats": ["눈 덮인 산성을 수많은 군막이 둘러쌌습니다.", "성 안 사람들은 작은 불가에서 추위를 견딥니다.", "1636년 청이 쳐들어와 조선이 항복한 전쟁이 병자호란입니다."],
       "explain": [
-        "1636년이 병자년이고, 호(胡)는 북쪽 민족을 낮추어 부르던 말이다. 여진족이 세운 청나라가 일으킨 난리라서 병자호란이라고 부른다.",
-        "청이 자기를 임금의 나라로 섬기라고 요구하자 조선은 거절했다. 1636년 12월 청군이 쳐들어오자 인조는 남한산성으로 피해 47일 동안 버텼지만, 추위와 굶주림 속에 결국 삼전도에서 항복했다.",
-        "전쟁 뒤 왕자들과 많은 백성이 청으로 끌려갔다. 남한산성은 지금 세계 유산으로 정해져 있다."
+        "1636년이 병자년이고, 호(胡)는 북쪽 민족을 낮추어 부르던 말입니다. 여진족이 세운 청나라가 일으킨 난리라서 병자호란이라고 부릅니다.",
+        "청이 자기를 임금의 나라로 섬기라고 요구하자 조선은 거절했습니다. 1636년 12월 청군이 쳐들어오자 인조는 남한산성으로 피해 47일 동안 버텼지만, 추위와 굶주림 속에 결국 삼전도에서 항복했습니다.",
+        "전쟁 뒤 왕자들과 많은 백성이 청으로 끌려갔습니다. 남한산성은 지금 세계 유산으로 정해져 있습니다."
       ],
       "img": "A snowy winter scene of Namhansanseong, a stone fortress wall winding along mountain ridges. Outside and below the wall, a vast camp of Qing tents and plain banners fills the snowy valleys and surrounds the mountain on all sides, with a dotted circle around the fortress showing it is cut off. Inside the walls, Joseon soldiers in padded coats and townspeople huddle around small fires with little food. No fighting.",
       "imgKo": "눈 덮인 능선을 따라 남한산성 성벽이 굽이치고, 성 아래 골짜기마다 청나라 군막과 깃발이 산을 빙 둘러싸며 점선 원이 성을 가둔다. 성 안에서는 솜옷 입은 군사와 백성이 작은 불가에 모여 있다."
