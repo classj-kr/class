@@ -1,0 +1,465 @@
+{
+ "1": {
+  "힘": {
+   "en": "force",
+   "explain": [
+    "쉬운 뜻: 영어로 force, 물건을 밀거나 당길 때 우리가 주는 것입니다.",
+    "생활 속 예: 문을 밀어 열고 서랍을 당겨 여는 것 모두 힘을 주는 일입니다.",
+    "힘을 주는 쪽으로 물건이 움직입니다."
+   ]
+  },
+  "무게": {
+   "en": "weight",
+   "explain": [
+    "쉬운 뜻: 영어로 weight, 물건이 얼마나 무거운지를 말합니다.",
+    "무게는 g(그램)이나 kg(킬로그램)으로 나타냅니다.",
+    "생활 속 예: 몸무게를 잴 때 '30 kg'처럼 숫자와 단위로 말합니다."
+   ]
+  },
+  "수평": {
+   "explain": [
+    "쉬운 뜻: 그릇에 담긴 물의 겉처럼, 한쪽으로 쏠리지 않고 판판한 모습입니다.",
+    "한자 뜻: 水(물 수)와 平(평평할 평), 물처럼 평평하다는 뜻입니다.",
+    "생활 속 예: 벽에 액자를 걸 때 한쪽이 처지지 않게 수평을 맞춥니다."
+   ]
+  },
+  "받침점": {
+   "explain": [
+    "쉬운 뜻: 판이 올라갔다 내려갔다 할 때 움직이지 않고 버티는 한 점입니다.",
+    "낱말 나누기: 받침(아래에서 받쳐 주는 것) + 점(한 자리), 받쳐 주는 자리입니다.",
+    "수평이 되었을 때는 받침점에 더 가까운 쪽 물체가 더 무겁습니다."
+   ]
+  },
+  "저울": {
+   "en": "scale",
+   "explain": [
+    "쉬운 뜻: 영어로 scale, 무게가 얼마인지 숫자로 알려 주는 기구입니다.",
+    "생활 속 예: 보건실 체중계, 부엌 저울, 마트 채소 저울이 모두 저울입니다.",
+    "저울은 평평한 곳에 놓고 써야 바르게 잴 수 있습니다."
+   ]
+  },
+  "측정": {
+   "en": "measurement",
+   "explain": [
+    "쉬운 뜻: 영어로 measurement, '얼마나 될까?'를 눈대중 대신 기구로 재는 것입니다.",
+    "생활 속 예: 자로 연필 길이를, 온도계로 교실 온도를 잽니다.",
+    "잰 값은 '31 g'처럼 숫자와 단위를 함께 씁니다."
+   ],
+   "beats": [
+    "하린이가 채집해 온 잎을 자 위에 반듯하게 올려놓습니다.",
+    "잎 끝이 자의 어느 눈금에 닿는지 눈을 가까이 대고 읽습니다.",
+    "이렇게 기구로 재어 얼마인지 숫자로 알아내는 일이 측정입니다."
+   ],
+   "img": "A classroom desk with a long, flat green leaf laid straight along a wooden ruler; the ruler shows only tick marks and no numbers. HARIN (girl, yellow headband, mint cardigan) bends down with her eye close to the ruler, checking exactly where the tip of the leaf reaches, one finger holding the leaf stem at the start of the ruler.",
+   "imgKo": "책상 위 나무 자에 긴 초록 잎을 반듯하게 올려놓고, 하린이가 눈을 가까이 대어 잎 끝이 닿는 눈금을 살핀다. 자에는 숫자 없이 눈금만 있다."
+  },
+  "영점": {
+   "en": "zero",
+   "explain": [
+    "쉬운 뜻: 영어로 zero, 아무것도 올리지 않았을 때 눈금이 '0'에 오게 하는 것입니다.",
+    "낱말 나누기: 영(0, 아무것도 없음) + 점(자리), 0을 가리키는 자리입니다.",
+    "생활 속 예: 가정용 저울은 나사를 돌려 바늘을 '0'에 맞춘 뒤 씁니다."
+   ]
+  },
+  "용수철저울": {
+   "en": "spring scale",
+   "explain": [
+    "쉬운 뜻: 영어로 spring scale, 물건을 고리에 걸어 무게를 재는 저울입니다.",
+    "낱말 나누기: 용수철(꼬불꼬불 감긴 쇠줄) + 저울, 용수철로 재는 저울입니다.",
+    "눈금을 읽을 때는 표시 자와 눈높이를 맞춥니다."
+   ]
+  },
+  "지레": {
+   "en": "lever",
+   "explain": [
+    "쉬운 뜻: 영어로 lever, 막대 하나로 무거운 것을 '영차' 하고 쉽게 들어 올리는 도구입니다.",
+    "생활 속 예: 놀이터 시소와 손톱깎이도 지레를 이용한 것입니다.",
+    "의자에 막대를 걸쳐 만든 지레로 가방을 들면 손보다 힘이 덜 듭니다."
+   ]
+  },
+  "빗면": {
+   "en": "ramp",
+   "explain": [
+    "쉬운 뜻: 영어로 ramp, 계단 대신 비스듬히 걸어 오르는 미끄럼틀 같은 길입니다.",
+    "낱말 나누기: 빗(비스듬한) + 면(판판한 겉), 비스듬히 기운 판입니다.",
+    "필통을 빗면으로 끌어 올리면 바로 들 때보다 용수철저울 눈금이 작습니다."
+   ]
+  }
+ },
+ "2": {
+  "관찰": {
+   "en": "observation",
+   "explain": [
+    "쉬운 뜻: 영어로 observation, 탐정처럼 하나하나 꼼꼼히 살펴보는 것입니다.",
+    "눈뿐 아니라 귀와 코로 살펴보는 것도 관찰입니다.",
+    "생활 속 예: 무당벌레 등의 점이 몇 개인지 돋보기로 세어 봅니다."
+   ],
+   "beats": [
+    "화단의 풀잎 위에 무당벌레 한 마리가 앉아 있습니다.",
+    "도윤이가 돋보기를 대고 등에 난 점과 다리를 하나하나 들여다봅니다.",
+    "이렇게 눈이나 도구로 자세히 살펴보는 일이 관찰입니다."
+   ],
+   "img": "A school flower bed on a sunny day. A red ladybug with black spots sits on a green leaf. DOYUN (boy, round glasses, navy hoodie) crouches beside it, holding a magnifying glass over the ladybug without touching it, his eyes wide with interest; the ladybug looks bigger through the lens.",
+   "imgKo": "햇살 좋은 학교 화단, 풀잎 위 빨간 무당벌레를 도윤이가 손대지 않고 쪼그려 앉아 돋보기로 들여다본다. 렌즈 속 무당벌레가 크게 보인다."
+  },
+  "특징": {
+   "en": "feature",
+   "explain": [
+    "쉬운 뜻: 영어로 feature, '이것!' 하고 금방 알아보게 해 주는 점입니다.",
+    "생활 속 예: 코끼리는 코가 길고, 거북은 등에 딱딱한 껍데기가 있습니다."
+   ],
+   "beats": [
+    "동물원에서 도윤이가 기린을 올려다봅니다.",
+    "기린은 목이 아주 길어서 높은 나무의 잎도 쉽게 뜯어 먹습니다.",
+    "긴 목처럼 그 동물을 잘 알게 해 주는 눈에 띄는 점이 특징입니다."
+   ],
+   "img": "A zoo enclosure with a tall tree. A giraffe stretches its very long neck up to nibble leaves at the top of the tree. DOYUN (boy, round glasses, navy hoodie) stands at the fence, tilting his head far back to look up at the giraffe's neck in amazement.",
+   "imgKo": "동물원에서 기린이 긴 목을 쭉 뻗어 높은 나무 꼭대기 잎을 뜯어 먹고, 도윤이가 울타리 앞에서 고개를 한껏 젖혀 올려다본다."
+  },
+  "분류": {
+   "explain": [
+    "쉬운 뜻: 장난감 정리함에 블록은 블록끼리, 인형은 인형끼리 넣듯 나누는 것입니다.",
+    "분류할 때는 겹치거나 빠지는 것이 없어야 합니다.",
+    "생활 속 예: 분리수거 때 종이, 플라스틱, 캔을 따로따로 모읍니다."
+   ]
+  },
+  "기준": {
+   "explain": [
+    "쉬운 뜻: 나눌 때 '무엇을 보고 나눌까?'에 대한 답입니다.",
+    "기준에 따라 '그렇다'와 '그렇지 않다' 두 무리로 나눕니다.",
+    "생활 속 예: 줄을 설 때는 '키 순서'나 '번호 순서'가 기준이 됩니다."
+   ]
+  },
+  "적합": {
+   "explain": [
+    "쉬운 뜻: 열쇠가 자물쇠에 꼭 맞듯, 어떤 일에 딱 들어맞는 것입니다.",
+    "생활 속 예: 비 오는 날에는 운동화보다 장화가 걷기에 적합합니다."
+   ]
+  },
+  "환경": {
+   "en": "environment",
+   "explain": [
+    "쉬운 뜻: 영어로 environment, 내 둘레에 있는 모든 것, 곧 내가 사는 곳의 모습입니다.",
+    "생활 속 예: 붕어의 환경은 물속, 다람쥐의 환경은 나무가 우거진 숲속입니다."
+   ],
+   "beats": [
+    "연못가 바위 위에 개구리 한 마리가 앉아 있습니다.",
+    "개구리 둘레에는 물과 진흙, 풀, 따뜻한 햇빛이 있습니다.",
+    "이렇게 생물을 둘러싼 모든 것이 그 생물의 환경입니다."
+   ],
+   "img": "A small pond on a warm spring day. A green frog sits on a mossy rock at the water's edge, surrounded by clear water, soft mud, tall reeds and floating leaves, with sunlight shining down on it. No people in the scene.",
+   "imgKo": "따뜻한 봄날 작은 연못가, 이끼 낀 바위 위에 초록 개구리가 앉아 있고, 둘레에 맑은 물, 진흙, 갈대, 물에 뜬 잎, 내리쬐는 햇빛이 있다. 사람은 없다."
+  },
+  "생활 방식": {
+   "explain": [
+    "쉬운 뜻: 하루 일과표처럼, 그 동물이 날마다 살아가는 모습입니다.",
+    "낱말 나누기: 생활(살아감) + 방식(하는 방법), 살아가는 방법입니다.",
+    "생활 속 예: 부엉이는 낮에 자고 밤에 날아다니며 먹이를 잡습니다."
+   ],
+   "beats": [
+    "다람쥐가 도토리를 입에 물고 나무줄기를 쪼르르 타고 내려옵니다.",
+    "나무 밑 땅속 굴에는 모아 둔 도토리가 수북합니다.",
+    "어디에 살고, 어떻게 다니며, 무엇을 먹는지가 생활 방식입니다."
+   ],
+   "img": "A forest in autumn. A chipmunk with an acorn in its mouth scurries down the trunk of an oak tree toward a burrow between its roots. Inside the burrow, a small pile of acorns can be seen. No people in the scene.",
+   "imgKo": "가을 숲, 다람쥐가 도토리를 입에 물고 참나무 줄기를 타고 뿌리 사이 땅굴 쪽으로 내려온다. 땅굴 안에 도토리가 소복이 쌓여 있다. 사람은 없다."
+  },
+  "지느러미": {
+   "en": "fin",
+   "explain": [
+    "쉬운 뜻: 영어로 fin, 물고기가 노처럼 흔들어 헤엄치는 납작한 부분입니다.",
+    "등, 배, 꼬리에 붙어 있어 앞으로 나아가고 방향도 바꿉니다.",
+    "생활 속 예: 어항 속 금붕어 꼬리지느러미가 하늘하늘 움직입니다."
+   ]
+  },
+  "물갈퀴": {
+   "explain": [
+    "쉬운 뜻: 헤엄칠 때 물을 힘껏 밀어내는, 발에 달린 부채입니다.",
+    "낱말 나누기: 물 + 갈퀴(낙엽을 긁어모으는 도구), 물을 긁듯 밀어내는 발입니다.",
+    "생활 속 예: 오리, 개구리, 수달의 발에 물갈퀴가 있습니다."
+   ]
+  },
+  "극지방": {
+   "en": "polar region",
+   "explain": [
+    "쉬운 뜻: 영어로 polar region, 지구 맨 위 북극과 맨 아래 남극 둘레입니다.",
+    "북극에는 북극곰이, 남극에는 펭귄이 삽니다.",
+    "극지방 식물은 키가 작고 땅에 붙어 뭉쳐서 자랍니다."
+   ],
+   "beats": [
+    "끝없이 펼쳐진 하얀 얼음 위를 북극곰이 걸어갑니다.",
+    "바다도 꽁꽁 얼어 있고, 찬 바람에 눈발이 날립니다.",
+    "지구의 북쪽 끝과 남쪽 끝 둘레, 이렇게 일 년 내내 추운 곳이 극지방입니다."
+   ],
+   "img": "A vast Arctic landscape of white sea ice and snow under a pale sky. A polar bear walks across the ice, its thick white fur ruffled by a cold wind that blows snowflakes sideways. No people in the scene.",
+   "imgKo": "희뿌연 하늘 아래 끝없이 펼쳐진 하얀 바다 얼음과 눈밭을 북극곰이 걸어가고, 찬 바람에 털이 날리며 눈발이 옆으로 흩날린다. 사람은 없다."
+  },
+  "건조": {
+   "explain": [
+    "쉬운 뜻: 젖은 것과 반대로 보송보송 마른 것입니다.",
+    "생활 속 예: 겨울에 공기가 건조하면 손등이 거칠어지고 정전기가 자주 납니다.",
+    "건조한 사막의 식물은 잎이나 줄기에 물을 모아 둡니다."
+   ],
+   "beats": [
+    "사막에 해가 뜨겁게 내리쬡니다.",
+    "땅은 바싹 말라 쩍쩍 갈라졌고, 물웅덩이 하나 보이지 않습니다.",
+    "이렇게 물기 없이 메마른 것이 건조입니다."
+   ],
+   "img": "A hot desert under a blazing sun in a cloudless sky. Sand dunes stretch far away, and the ground in front is dry and cracked into many pieces, with a single tall column cactus and no water anywhere. No people or animals in the scene.",
+   "imgKo": "구름 한 점 없는 하늘에 해가 이글거리는 사막, 모래 언덕이 멀리 이어지고 앞쪽 땅은 바싹 말라 갈라졌다. 기둥선인장 하나가 서 있고 물은 어디에도 없다. 사람도 동물도 없다."
+  },
+  "설계": {
+   "en": "design",
+   "explain": [
+    "쉬운 뜻: 영어로 design, 만들기 전에 '이렇게 만들자' 하고 미리 그려 보는 것입니다.",
+    "생활 속 예: 블록으로 집을 짓기 전에 종이에 모양을 먼저 그려 봅니다.",
+    "설계할 때는 그림과 함께 쓰는 방법과 이름도 적습니다."
+   ],
+   "beats": [
+    "도윤이와 하린이가 벽에 착 달라붙은 도마뱀붙이 사진을 봅니다.",
+    "도화지에 손바닥에 작고 둥근 판을 붙인 벽 오르기 장갑을 그립니다.",
+    "이렇게 만들기 전에 모양과 쓰는 법을 미리 그려 보는 일이 설계입니다."
+   ],
+   "img": "A classroom table covered with drawing paper and colored pencils. DOYUN (boy, round glasses, navy hoodie) draws a large picture of a climbing glove with small round pads on the palm and fingers, while HARIN (girl, yellow headband, mint cardigan) points to a photo of a gecko clinging to a wall, propped up beside them. The drawing has arrows but no letters.",
+   "imgKo": "도화지와 색연필이 놓인 책상에서 도윤이가 손바닥과 손가락에 작고 둥근 판이 붙은 벽 오르기 장갑을 크게 그리고, 하린이는 옆에 세워 둔, 벽에 붙은 도마뱀붙이 사진을 가리킨다. 그림에는 화살표만 있고 글자는 없다."
+  }
+ },
+ "3": {
+  "공통점": {
+   "en": "similarity",
+   "explain": [
+    "쉬운 뜻: 영어로 similarity, 둘을 나란히 놓고 '둘 다 그렇네!' 하는 점입니다.",
+    "낱말 나누기: 공통(함께 통함) + 점(부분), 서로 함께 가진 부분입니다.",
+    "생활 속 예: 사과와 딸기는 둘 다 빨갛고 단맛이 납니다."
+   ]
+  },
+  "차이점": {
+   "en": "difference",
+   "explain": [
+    "쉬운 뜻: 영어로 difference, 둘을 견주어 '여기가 다르네!' 하는 점입니다.",
+    "낱말 나누기: 차이(서로 다름) + 점(부분), 서로 다른 부분입니다.",
+    "생활 속 예: 다른 그림 찾기는 두 그림의 차이점을 찾는 놀이입니다."
+   ]
+  },
+  "가장자리": {
+   "en": "edge",
+   "explain": [
+    "쉬운 뜻: 영어로 edge, 한가운데에서 가장 먼 바깥 테두리입니다.",
+    "생활 속 예: 피자의 빵 테두리, 운동장 둘레의 트랙이 가장자리입니다.",
+    "잎의 가장자리는 매끈하기도 하고 뾰족뾰족하기도 합니다."
+   ]
+  },
+  "톱니": {
+   "explain": [
+    "쉬운 뜻: 상어 이빨처럼 뾰족뾰족 줄지어 난 모양입니다.",
+    "낱말 나누기: 톱(나무를 써는 연장) + 니(이, 이빨), 톱의 이빨입니다.",
+    "생활 속 예: 테이프를 자르는 날과 빵칼도 톱니 모양입니다."
+   ]
+  },
+  "잎자루": {
+   "explain": [
+    "쉬운 뜻: 잎을 줄기에 매달아 주는 가느다란 손잡이입니다.",
+    "낱말 나누기: 잎 + 자루(손잡이), 잎에 달린 손잡이입니다.",
+    "생활 속 예: 고구마 줄기 나물은 사실 고구마의 잎자루를 먹는 것입니다."
+   ]
+  },
+  "채집": {
+   "explain": [
+    "쉬운 뜻: 보물찾기처럼 밖에서 잎이나 곤충을 찾아 모아 오는 것입니다.",
+    "채집은 필요한 만큼만 하고, 나뭇가지를 꺾지 않습니다.",
+    "생활 속 예: 여름 방학에 잠자리채로 잠자리를 잡아 채집통에 넣습니다."
+   ],
+   "beats": [
+    "하린이가 학교 화단에서 모양이 서로 다른 잎을 찾고 있습니다.",
+    "단풍나무 잎, 동그란 잎, 길쭉한 잎을 한 장씩 따서 바구니에 담습니다.",
+    "이렇게 공부하려고 찾아서 따거나 잡아 모으는 일이 채집입니다."
+   ],
+   "img": "A school garden in late spring with several kinds of trees and plants. HARIN (girl, yellow headband, mint cardigan), wearing a long-sleeved top and long pants, gently picks a single leaf from a low branch and holds a small basket that already contains a maple leaf, a round leaf and a long narrow leaf.",
+   "imgKo": "늦봄 학교 화단에서 긴소매와 긴바지를 입은 하린이가 낮은 가지의 잎 한 장을 살며시 따고, 손에 든 작은 바구니에는 단풍나무 잎, 동그란 잎, 길쭉한 잎이 담겨 있다."
+  },
+  "저장": {
+   "en": "storage",
+   "explain": [
+    "쉬운 뜻: 영어로 storage, 가뭄에 대비해 물통에 물을 받아 두듯 쓸 것을 미리 모아 두는 것입니다.",
+    "생활 속 예: 곰은 겨울잠을 자기 전에 많이 먹어 몸에 지방을 저장합니다.",
+    "알로에 잎을 자르면 속에 저장된 물이 나와 화장지가 젖습니다."
+   ],
+   "beats": [
+    "선생님이 두툼한 알로에 잎을 반으로 자릅니다.",
+    "도윤이가 자른 면에 화장지를 대자, 화장지가 금세 축축하게 젖습니다.",
+    "알로에는 잎 속에 물을 모아 두고 있습니다. 이렇게 모아 두는 것이 저장입니다."
+   ],
+   "img": "A science room table with a cutting board. The TEACHER (woman in her 30s, beige jacket), wearing coated gloves, has just cut a thick aloe leaf in half, showing its clear, juicy inside. DOYUN (boy, round glasses, navy hoodie) presses a piece of white tissue onto the cut surface, and a wet patch is spreading across the tissue.",
+   "imgKo": "과학실 도마 위, 코팅 장갑을 낀 선생님이 두툼한 알로에 잎을 반으로 잘라 투명하고 물기 많은 속이 보인다. 도윤이가 자른 면에 흰 화장지를 대자 화장지에 젖은 자국이 번진다."
+  },
+  "생활용품": {
+   "explain": [
+    "쉬운 뜻: 생활을 편하게 해 주는, 늘 손에 닿는 물건입니다.",
+    "낱말 나누기: 생활(살아감) + 용품(쓰는 물건), 살면서 쓰는 물건입니다.",
+    "생활 속 예: 기둥선인장을 본뜬 옷걸이는 가지마다 옷을 걸 수 있습니다."
+   ],
+   "beats": [
+    "현관에서 하린이가 가방을 메고 우산과 물병을 챙깁니다.",
+    "신발장 위에는 빗, 손수건, 휴지가 놓여 있습니다.",
+    "이렇게 날마다 살아가면서 쓰는 물건들이 생활용품입니다."
+   ],
+   "img": "A home entrance hallway in the morning. HARIN (girl, yellow headband, mint cardigan) wears her school backpack and holds a folded umbrella and a water bottle, ready to leave. On the shoe cabinet beside her lie a hairbrush, a handkerchief and a tissue box.",
+   "imgKo": "아침 현관, 책가방을 멘 하린이가 접은 우산과 물병을 들고 나갈 채비를 한다. 옆 신발장 위에 빗, 손수건, 휴지 상자가 놓여 있다."
+  }
+ },
+ "4": {
+  "생물": {
+   "en": "living thing",
+   "explain": [
+    "쉬운 뜻: 영어로 living thing, 살아 있는 것은 모두 생물입니다.",
+    "생활 속 예: 화분의 강낭콩은 생물이고, 화분과 흙 속 돌멩이는 생물이 아닙니다."
+   ],
+   "beats": [
+    "하린이가 마당에서 강아지, 나비, 해바라기를 둘러봅니다.",
+    "마당의 돌멩이와 빈 화분은 자라지도, 새끼나 씨를 남기지도 않습니다.",
+    "강아지, 나비, 해바라기처럼 살아 있는 것이 생물입니다."
+   ],
+   "img": "A sunny garden yard. A puppy plays on the grass, a butterfly flutters near a tall sunflower, and a few gray stones lie beside an empty clay pot. HARIN (girl, yellow headband, mint cardigan) crouches in the middle, smiling at the puppy and the butterfly.",
+   "imgKo": "햇살 좋은 마당 잔디에서 강아지가 놀고, 키 큰 해바라기 옆에 나비가 날며, 빈 화분 옆에 회색 돌멩이 몇 개가 놓여 있다. 하린이가 가운데 쪼그려 앉아 강아지와 나비를 보며 웃는다."
+  },
+  "한살이": {
+   "en": "life cycle",
+   "explain": [
+    "쉬운 뜻: 영어로 life cycle, 태어나 자라고 새끼나 씨를 남기는 한 바퀴입니다.",
+    "낱말 나누기: 한(하나) + 살이(살아가는 일), 한 번 살아가는 동안입니다.",
+    "생활 속 예: 닭은 알, 병아리, 큰 병아리, 닭의 차례로 한살이를 거칩니다."
+   ]
+  },
+  "자손": {
+   "explain": [
+    "쉬운 뜻: 외할머니 쪽에서 보면 엄마도, 나도, 내 동생도 모두 자손입니다.",
+    "한자 뜻: 子(아들 자)와 孫(손자 손), 아들과 손자라는 뜻입니다.",
+    "생물은 자손을 남겨서 같은 생물이 계속 이어집니다."
+   ]
+  },
+  "사육": {
+   "explain": [
+    "쉬운 뜻: 반려동물을 키우듯, 먹이와 집을 챙겨 주며 동물을 기르는 것입니다.",
+    "생활 속 예: 사슴벌레를 기를 때 통에 톱밥과 곤충 젤리를 넣어 줍니다.",
+    "배추흰나비를 사육할 때는 알이나 애벌레를 손으로 만지지 않습니다."
+   ],
+   "beats": [
+    "교실 뒤 망으로 된 상자 안에 케일 화분이 들어 있습니다.",
+    "도윤이가 애벌레는 건드리지 않고 싱싱한 케일 잎을 넣어 줍니다.",
+    "이렇게 먹이를 주고 보살피며 기르는 일이 사육입니다."
+   ],
+   "img": "The back of a classroom with a mesh rearing box on a shelf. Inside the box is a potted kale plant with small green caterpillars on its leaves. DOYUN (boy, round glasses, navy hoodie), wearing thin gloves, carefully places a fresh kale leaf inside through the open zipper of the box, taking care not to touch the caterpillars.",
+   "imgKo": "교실 뒤 선반 위 망으로 된 사육 상자 안에 케일 화분이 있고 잎에 작은 초록 애벌레들이 붙어 있다. 얇은 장갑을 낀 도윤이가 애벌레에 닿지 않게 조심하며 열린 지퍼 틈으로 싱싱한 케일 잎을 넣는다."
+  },
+  "애벌레": {
+   "en": "larva",
+   "explain": [
+    "쉬운 뜻: 영어로 larva, 곤충의 '아기' 때 모습입니다.",
+    "낱말 나누기: 애(어린) + 벌레, 어린 벌레라는 뜻입니다.",
+    "생활 속 예: 장수풍뎅이 애벌레는 하얗고 통통한 굼벵이 모양입니다."
+   ]
+  },
+  "허물": {
+   "explain": [
+    "쉬운 뜻: 몸이 커져서 작아진 옷을 벗듯, 벗어 놓은 껍질입니다.",
+    "곤충의 어린것은 허물을 벗을 때마다 몸이 커집니다.",
+    "생활 속 예: 뱀과 가재도 자라면서 허물을 벗습니다."
+   ]
+  },
+  "마디": {
+   "explain": [
+    "쉬운 뜻: 기차 칸처럼 몸이 한 칸씩 이어져 있을 때 그 한 칸입니다.",
+    "생활 속 예: 지렁이는 마디를 늘였다 줄였다 하며 기어갑니다."
+   ]
+  },
+  "번데기": {
+   "en": "pupa",
+   "explain": [
+    "쉬운 뜻: 영어로 pupa, 애벌레가 껍질을 단단하게 바꾸고 꼼짝 않고 나비가 될 준비를 하는 모습입니다.",
+    "겉은 가만히 있지만 속에서는 날개가 생기고 있습니다.",
+    "메뚜기와 매미는 번데기를 거치지 않고 어른벌레가 됩니다."
+   ]
+  },
+  "어른벌레": {
+   "en": "adult",
+   "explain": [
+    "쉬운 뜻: 영어로 adult, 곤충이 다 자라 '어른'이 된 모습입니다.",
+    "낱말 나누기: 어른 + 벌레, 다 자란 벌레라는 뜻입니다.",
+    "생활 속 예: 꽃 사이를 날아다니는 나비와 벌은 대부분 어른벌레입니다."
+   ]
+  },
+  "곤충": {
+   "en": "insect",
+   "explain": [
+    "쉬운 뜻: 영어로 insect, 다리를 세어 보면 꼭 여섯 개인 작은 동물입니다.",
+    "다리는 모두 몸의 가운데 부분인 가슴에 붙어 있습니다.",
+    "생활 속 예: 거미는 다리가 여덟 개라서 곤충이 아닙니다."
+   ]
+  },
+  "조건": {
+   "en": "condition",
+   "explain": [
+    "쉬운 뜻: 영어로 condition, '이것이 있어야 된다' 하는 것입니다.",
+    "실험에서는 알아보려는 조건 하나만 다르게 하고 나머지는 같게 합니다.",
+    "생활 속 예: 빨래가 잘 마르려면 햇볕과 바람이라는 조건이 필요합니다."
+   ]
+  },
+  "예상": {
+   "en": "prediction",
+   "explain": [
+    "쉬운 뜻: 영어로 prediction, '이렇게 될 거야' 하고 결과를 미리 짐작하는 것입니다.",
+    "한자 뜻: 豫(미리 예)와 想(생각 상), 미리 생각한다는 뜻입니다.",
+    "생활 속 예: 일기 예보를 보고 내일 소풍날 날씨를 예상해 봅니다."
+   ],
+   "beats": [
+    "창가 햇볕 아래와 그늘에 똑같은 얼음 접시를 하나씩 놓았습니다.",
+    "하린이는 '햇볕 쪽이 먼저 녹을 거야.' 하고 생각하며 햇볕 쪽 접시를 가리킵니다.",
+    "이렇게 결과를 보기 전에 어떻게 될지 미리 짐작하는 것이 예상입니다."
+   ],
+   "img": "A classroom windowsill: one plate with an ice cube sits in bright sunlight, and an identical plate with an ice cube sits in the shade just beside it; both ice cubes are still whole. HARIN (girl, yellow headband, mint cardigan) stands with one hand on her chin, pointing confidently at the plate in the sunlight. A small thought bubble above her shows a puddle of water, with no words.",
+   "imgKo": "교실 창가, 햇볕 드는 곳과 바로 옆 그늘에 똑같은 얼음 접시가 하나씩 놓여 있고 얼음은 둘 다 아직 그대로다. 하린이가 턱에 손을 대고 햇볕 쪽 접시를 자신 있게 가리킨다. 머리 위 생각 풍선에는 글자 없이 물웅덩이 그림만 있다."
+  },
+  "적당": {
+   "explain": [
+    "쉬운 뜻: 컵라면 물을 안쪽 선까지만 붓듯, 많지도 적지도 않은 딱 좋은 만큼입니다.",
+    "생활 속 예: 화분 흙이 촉촉할 만큼만 물을 주는 것이 적당한 물 주기입니다."
+   ],
+   "beats": [
+    "창가에 같은 고추 모종 화분 세 개가 놓여 있습니다.",
+    "물에 잠기도록 준 화분은 흙이 질척하고, 하나도 안 준 화분은 흙이 갈라져 모종이 처졌습니다.",
+    "흙이 촉촉할 만큼 준 가운데 화분만 싱싱합니다. 이렇게 넘치지도 모자라지도 않은 것이 적당입니다."
+   ],
+   "img": "Three identical flowerpots with pepper seedlings stand in a row on a sunny windowsill. The left pot is flooded, with water overflowing onto the sill and the seedling drooping; the right pot has dry, cracked soil and a wilted seedling; the middle pot has evenly moist dark soil and a fresh, upright green seedling. DOYUN (boy, round glasses, navy hoodie) holds a small watering can next to the middle pot, smiling.",
+   "imgKo": "햇살 드는 창가에 고추 모종 화분 셋. 왼쪽은 물이 넘쳐 창틀로 흐르고 모종이 처졌고, 오른쪽은 흙이 바싹 말라 갈라지고 모종이 시들었으며, 가운데는 흙이 고르게 촉촉하고 모종이 싱싱하게 서 있다. 도윤이가 작은 물뿌리개를 들고 가운데 화분 옆에서 웃는다."
+  },
+  "한해살이식물": {
+   "explain": [
+    "쉬운 뜻: 봄에 싹 터서 가을에 씨를 남기고 끝나는 '한 해짜리' 식물입니다.",
+    "낱말 나누기: 한해(일 년) + 살이(살아가는 일) + 식물, 한 해만 사는 식물입니다.",
+    "생활 속 예: 텃밭의 고추는 해마다 봄에 새로 모종을 심습니다."
+   ]
+  },
+  "여러해살이식물": {
+   "explain": [
+    "쉬운 뜻: 겨울이 와도 죽지 않고 해마다 다시 자라는 식물입니다.",
+    "낱말 나누기: 여러 해 + 살이(살아가는 일) + 식물, 여러 해를 사는 식물입니다.",
+    "생활 속 예: 감나무와 무궁화는 해마다 같은 자리에서 다시 꽃을 피웁니다."
+   ]
+  },
+  "새순": {
+   "en": "sprout",
+   "explain": [
+    "쉬운 뜻: 영어로 sprout, 봄에 가지나 땅에서 쏙 고개를 내미는 새 싹입니다.",
+    "낱말 나누기: 새(새로운) + 순(싹), 새로 돋은 싹입니다.",
+    "생활 속 예: 대나무의 새순인 죽순은 봄에 땅을 뚫고 쑥쑥 올라옵니다."
+   ],
+   "beats": [
+    "따뜻한 봄날, 하린이가 학교 화단의 나뭇가지를 가까이 들여다봅니다.",
+    "가지 끝에서 연둣빛 작은 싹이 껍질을 뚫고 고개를 내밀었습니다.",
+    "이렇게 봄에 처음 돋아나는 여리고 연한 싹이 새순입니다."
+   ],
+   "img": "A school garden on a warm spring day. HARIN (girl, yellow headband, mint cardigan) leans close to a bare brown tree branch, looking with delight at tiny, bright yellow-green shoots just breaking out of the buds at the branch tips.",
+   "imgKo": "따뜻한 봄날 학교 화단, 하린이가 갈색 나뭇가지에 얼굴을 가까이 대고, 가지 끝 눈에서 막 터져 나온 작은 연둣빛 싹을 반갑게 바라본다."
+  }
+ }
+}

@@ -1,0 +1,513 @@
+{
+  "1-1": {
+    "장소": {
+      "en": "place",
+      "explain": [
+        "쉬운 뜻: 영어로 place입니다. 사람들이 머물거나 무엇을 하는 '곳'을 모두 이르는 말입니다.",
+        "생활 속 예: 놀이터, 도서관, 우리 집 내 방도 모두 장소입니다."
+      ],
+      "beats": [
+        "학교 운동장에서는 아이들이 공을 찹니다.",
+        "놀이터에서는 하린이가 미끄럼틀을 타고, 시장에서는 사람들이 채소를 삽니다.",
+        "이렇게 사람들이 머물며 여러 가지 일을 하는 곳이 장소입니다."
+      ],
+      "img": "A bright, slightly high-angle illustration of a small Korean neighborhood with several distinct places side by side: a school with children kicking a ball on the dirt field, a playground where HARIN, a girl with a yellow headband and a mint cardigan, slides down a slide, a small park with a stream where an old man walks a dog, and a traditional market where people buy vegetables. No text, no signs with letters.",
+      "imgKo": "조금 높은 곳에서 본 작은 동네. 운동장에서 아이들이 공을 차고, 놀이터에서는 하린이 미끄럼틀을 타며, 냇물이 흐르는 공원에서는 할아버지가 개와 산책하고, 시장에서는 사람들이 채소를 산다. 글자 간판은 없다."
+    },
+    "경험": {
+      "en": "experience",
+      "explain": [
+        "쉬운 뜻: 영어로 experience입니다. 책으로 본 것이 아니라 내가 직접 해 보고 겪은 일입니다.",
+        "생활 속 예: 처음 바다에 들어가 짠물을 먹어 본 일도 경험입니다."
+      ],
+      "beats": [
+        "도윤이가 수영장에서 킥판을 잡고 발차기를 합니다.",
+        "수영 선생님이 옆에서 지켜보는 가운데, 도윤이가 처음으로 물 위에 떴습니다.",
+        "직접 해 보고 겪어서 알게 된 일이 경험입니다."
+      ],
+      "img": "At a bright indoor swimming pool, DOYUN, a boy who wears swim goggles instead of his usual round glasses, floats on the water by himself for the first time, arms spread, with a proud and surprised smile. A kickboard drifts beside him and a swimming coach stands in the water nearby, clapping. No text.",
+      "imgKo": "밝은 실내 수영장. 안경 대신 물안경을 쓴 도윤이 처음으로 혼자 물 위에 떠서 두 팔을 벌리고 놀라면서도 뿌듯하게 웃는다. 옆에는 킥판이 떠 있고, 수영 선생님이 물속에 서서 손뼉을 친다."
+    },
+    "표현": {
+      "en": "expression",
+      "explain": [
+        "쉬운 뜻: 영어로 expression입니다. 마음속 생각이나 느낌을 밖으로 드러내 보이는 것입니다.",
+        "말, 글, 그림뿐 아니라 몸짓이나 노래로도 표현할 수 있습니다.",
+        "생활 속 예: 기쁠 때 두 팔을 번쩍 드는 것도 표현입니다."
+      ],
+      "beats": [
+        "하린이가 책상에 앉아 우리 동네 그림을 그립니다.",
+        "좋아하는 미술 학원 옆에는 웃는 얼굴을, 큰 개가 있는 골목에는 놀란 얼굴을 그려 넣습니다.",
+        "이렇게 생각이나 느낌을 그림이나 말, 글로 드러내는 것이 표현입니다."
+      ],
+      "img": "HARIN, a girl with a yellow headband and a mint cardigan, sits at a desk drawing a colorful map of her neighborhood with crayons. On the paper, next to a small art academy building she has drawn a big smiling face, and next to a narrow alley with a big dog she has drawn a surprised face. No letters or words on the drawing.",
+      "imgKo": "하린이 책상에 앉아 크레파스로 우리 동네 그림지도를 그린다. 그림 속 작은 미술 학원 옆에는 크게 웃는 얼굴, 큰 개가 있는 좁은 골목 옆에는 놀란 얼굴이 그려져 있다. 그림에 글자는 없다."
+    },
+    "존중": {
+      "en": "respect",
+      "explain": [
+        "쉬운 뜻: 영어로 respect입니다. 나와 생각이 달라도 '그럴 수 있지.' 하고 귀하게 여기는 것입니다.",
+        "생활 속 예: 내가 싫어하는 음식을 친구가 좋아해도 '맛있겠다.' 하고 웃어 줍니다."
+      ],
+      "beats": [
+        "하린이는 놀이터를, 도윤이는 도서관을 좋아하는 곳으로 그렸습니다.",
+        "둘은 서로의 그림을 들여다보며 고개를 끄덕이고 웃습니다.",
+        "나와 달라도 남과 그 생각을 귀하게 여기는 것이 존중입니다."
+      ],
+      "img": "In a classroom, HARIN, a girl with a yellow headband and a mint cardigan, holds up her drawing of a playground, and DOYUN, a boy with round glasses and a navy hoodie, holds up his drawing of a quiet library. They look at each other's drawings, nodding and smiling warmly. No text.",
+      "imgKo": "교실에서 하린은 놀이터 그림을, 도윤은 조용한 도서관 그림을 들고 있다. 둘은 서로의 그림을 들여다보며 고개를 끄덕이고 따뜻하게 웃는다."
+    }
+  },
+  "1-2": {
+    "여가 활동": {
+      "explain": [
+        "쉬운 뜻: 공부나 일을 마치고 남는 시간에 즐거우려고 스스로 하는 일입니다.",
+        "낱말 나누기: 여가(일하고 남는 틈) + 활동(몸이나 마음을 움직여 하는 일)입니다.",
+        "생활 속 예: 주말에 배드민턴을 치거나 그림을 그리는 것이 여가 활동입니다."
+      ],
+      "beats": [
+        "햇살 좋은 공원에 사람들이 모였습니다.",
+        "하린이네 가족은 자전거를 타고, 할아버지들은 배드민턴을 칩니다.",
+        "일이나 공부를 마치고 남는 시간에 즐겁게 하는 일이 여가 활동입니다."
+      ],
+      "img": "A sunny park on a weekend afternoon. HARIN, a girl with a yellow headband and a mint cardigan, rides a bicycle along a path with her parents. Nearby, two grandfathers play badminton, a woman reads a book on a bench, and children fly a kite on the grass. Relaxed, happy mood. No text.",
+      "imgKo": "햇살 좋은 주말 오후 공원. 하린이 엄마 아빠와 함께 길을 따라 자전거를 탄다. 그 옆에서 할아버지 둘이 배드민턴을 치고, 의자에 앉은 아주머니는 책을 읽고, 아이들은 잔디밭에서 연을 날린다."
+    },
+    "대피소": {
+      "en": "shelter",
+      "explain": [
+        "쉬운 뜻: 영어로 shelter입니다. 큰 위험이 닥쳤을 때 몸을 피해 숨는 안전한 곳입니다.",
+        "낱말 나누기: 대피(위험을 잠시 피함) + 소(곳)입니다.",
+        "생활 속 예: 아파트 지하 주차장이나 지하철역이 대피소가 되기도 합니다."
+      ],
+      "beats": [
+        "훈련 날, 아이들이 선생님을 따라 줄지어 계단을 내려갑니다.",
+        "넓은 지하 공간에 들어가 벽 쪽에 차분히 모여 앉습니다.",
+        "위험할 때 몸을 안전하게 피하는 곳이 대피소입니다."
+      ],
+      "img": "During a calm school safety drill, TEACHER, a woman in her 30s in a beige jacket, leads a line of children, including HARIN, a girl with a yellow headband and a mint cardigan, and DOYUN, a boy with round glasses and a navy hoodie, down the stairs into a large, well-lit underground parking area of an apartment building. Some children already sit quietly along the wall. A green running-person exit symbol glows on the wall. No text.",
+      "imgKo": "차분한 안전 훈련 날. 베이지 재킷의 선생님이 하린과 도윤을 비롯한 아이들을 이끌고 계단을 내려가 환한 아파트 지하 주차장으로 들어간다. 먼저 온 아이들은 벽 쪽에 조용히 앉아 있고, 벽에는 달리는 사람 모양의 초록 비상구 표시가 켜져 있다. 글자는 없다."
+    },
+    "보건소": {
+      "en": "health center",
+      "explain": [
+        "쉬운 뜻: 영어로 health center입니다. 병을 미리 막아 동네 사람들의 건강을 지키는 곳입니다.",
+        "낱말 나누기: 보건(몸을 튼튼하게 지킴) + 소(곳)입니다.",
+        "생활 속 예: 초등학교에 들어가기 전에 맞는 예방 주사를 이곳에서 맞기도 합니다."
+      ],
+      "beats": [
+        "보건소 안에서 엄마가 아기를 안고 차례를 기다립니다.",
+        "간호사가 아기 팔에 예방 주사를 놓아 줍니다.",
+        "병을 미리 막아 동네 사람들의 건강을 지키는 곳이 보건소입니다."
+      ],
+      "img": "Inside a clean public health center room, a mother sits holding her baby on her lap while a nurse in a white uniform gently gives the baby a vaccine shot in the upper arm. HARIN, a girl with a yellow headband and a mint cardigan, stands beside her mother and holds the baby's hand. A few other parents with small children wait on chairs in the background. No text.",
+      "imgKo": "깨끗한 보건소 안. 엄마가 아기를 무릎에 안고 앉아 있고, 흰 옷의 간호사가 아기 팔에 예방 주사를 살며시 놓는다. 하린은 엄마 곁에 서서 아기 손을 잡고 있고, 뒤쪽 의자에는 어린아이를 데려온 다른 부모들이 기다린다."
+    },
+    "공공 기관": {
+      "explain": [
+        "쉬운 뜻: 돈을 벌려는 가게가 아니라, 동네 사람 모두를 도우려고 나라나 지역에서 세운 곳입니다.",
+        "낱말 나누기: 공공(여러 사람 모두의) + 기관(일을 맡아 하는 곳)입니다.",
+        "생활 속 예: 불이 나서 소방차가 와도 우리는 따로 돈을 내지 않습니다."
+      ]
+    },
+    "디지털 영상 지도": {
+      "explain": [
+        "쉬운 뜻: 하늘에서 찍은 사진 위에 길과 장소 이름을 얹어 화면으로 보는 지도입니다.",
+        "낱말 나누기: 디지털(컴퓨터로 다루는) + 영상(화면에 비친 모습) + 지도입니다.",
+        "생활 속 예: 휴대 전화 지도 앱을 사진 보기로 바꾸면 우리 집 지붕이 보입니다."
+      ]
+    },
+    "누리집": {
+      "en": "website",
+      "explain": [
+        "쉬운 뜻: 영어로 website입니다. 기관이나 회사가 인터넷에 차려 놓은 집 같은 곳입니다.",
+        "낱말 나누기: 누리(세상) + 집, 인터넷 세상 속의 집입니다.",
+        "생활 속 예: 도서관 누리집에서 읽고 싶은 책이 있는지 찾아봅니다."
+      ]
+    },
+    "검색": {
+      "en": "search",
+      "explain": [
+        "쉬운 뜻: 영어로 search입니다. 찾고 싶은 낱말을 넣어 인터넷에서 정보를 찾아내는 것입니다.",
+        "생활 속 예: '고양이 그리기'를 검색하면 그리는 방법이 담긴 영상이 나옵니다."
+      ]
+    },
+    "확대": {
+      "en": "zoom in",
+      "explain": [
+        "쉬운 뜻: 영어로 zoom in, 지도나 사진을 더 크게 늘려 보는 것입니다.",
+        "크게 늘리면 보이는 곳은 좁아져도 작은 것까지 또렷이 보입니다.",
+        "생활 속 예: 돋보기를 대면 작은 글씨가 크게 확대되어 보입니다."
+      ]
+    },
+    "축소": {
+      "en": "zoom out",
+      "explain": [
+        "쉬운 뜻: 영어로 zoom out, 지도나 사진을 더 작게 줄여 보는 것입니다.",
+        "작게 줄이면 하나하나는 작아져도 넓은 곳이 한눈에 보입니다.",
+        "생활 속 예: 커다란 포스터를 복사기로 공책만 하게 축소해 붙였습니다."
+      ]
+    },
+    "행정 복지 센터": {
+      "en": "community center",
+      "explain": [
+        "쉬운 뜻: 영어로 community center입니다. 동네 사람들에게 필요한 서류 일을 맡고 이웃을 돕는 곳입니다.",
+        "낱말 나누기: 행정(나라 일을 맡아 처리함) + 복지(모두 잘 사는 것) + 센터(곳)입니다.",
+        "옛날에는 동사무소, 주민 센터라고 불렀습니다."
+      ],
+      "beats": [
+        "아빠가 갓난아기를 안고 창구 앞에 앉았습니다.",
+        "직원이 아빠가 내민 종이를 받아 컴퓨터에 아기 이름을 올립니다.",
+        "동네 사람들에게 필요한 일을 처리해 주고 이웃을 돕는 곳이 행정 복지 센터입니다."
+      ],
+      "img": "Inside a bright Korean community service center, a father holding a newborn baby wrapped in a blanket sits at a service counter. A friendly clerk takes a paper form from him and types on a computer. HARIN, a girl with a yellow headband and a mint cardigan, peeks happily at her new baby brother. A queue number display and waiting chairs are in the background, without numbers or text.",
+      "imgKo": "환한 행정 복지 센터 안. 아빠가 포대기에 싼 갓난아기를 안고 창구에 앉아 있고, 친절한 직원이 아빠가 내민 종이를 받아 컴퓨터에 입력한다. 하린이 새로 태어난 동생을 신나게 들여다본다. 뒤쪽에 번호 알림판과 기다리는 의자가 있지만 숫자와 글자는 없다."
+    },
+    "답사": {
+      "en": "field trip",
+      "explain": [
+        "쉬운 뜻: 영어로 field trip, 알아보고 싶은 곳에 직접 가서 살펴보는 일입니다.",
+        "생활 속 예: 놀이터 답사 날에는 사진기, 수첩, 물병을 챙깁니다."
+      ],
+      "beats": [
+        "하린이와 도윤이가 보호자와 함께 동네 놀이터에 왔습니다.",
+        "도윤이는 놀이 기구를 사진으로 찍고, 하린이는 본 것을 수첩에 적습니다.",
+        "알아보려는 곳에 직접 가서 살펴보는 일이 답사입니다."
+      ],
+      "img": "At a neighborhood playground, DOYUN, a boy with round glasses and a navy hoodie, takes a photo of a slide with a small camera, while HARIN, a girl with a yellow headband and a mint cardigan, writes notes in a small notebook. A mother stands right behind them as their guardian. Both children wear small backpacks with water bottles. No text.",
+      "imgKo": "동네 놀이터. 도윤이 작은 사진기로 미끄럼틀을 찍고, 하린은 작은 수첩에 무언가를 적는다. 보호자인 엄마가 바로 뒤에 서 있다. 두 아이 모두 물병을 꽂은 작은 배낭을 메었다."
+    },
+    "예방": {
+      "en": "prevention",
+      "explain": [
+        "쉬운 뜻: 영어로 prevention, 나쁜 일이 생기기 '전에' 미리 막는 것입니다.",
+        "생활 속 예: 겨울이 오기 전에 독감 예방 주사를 맞습니다."
+      ],
+      "beats": [
+        "밖에서 놀고 들어온 아이들이 수돗가에 줄을 섰습니다.",
+        "하린이가 비누 거품을 내어 손가락 사이까지 꼼꼼히 씻습니다.",
+        "병이나 사고가 생기기 전에 미리 막는 것이 예방입니다."
+      ],
+      "img": "At a row of school sinks, children who just came in from the playground line up to wash their hands. HARIN, a girl with a yellow headband and a mint cardigan, rubs thick soap bubbles carefully between her fingers under running water. On the wall hangs a simple picture poster of hands and soap bubbles, without any words. No text.",
+      "imgKo": "학교 수돗가에 운동장에서 막 들어온 아이들이 손을 씻으려고 줄을 섰다. 하린이 흐르는 물 아래에서 비누 거품을 내어 손가락 사이까지 꼼꼼히 문지른다. 벽에는 글자 없이 손과 비누 거품만 그린 그림 포스터가 붙어 있다."
+    },
+    "시설": {
+      "explain": [
+        "쉬운 뜻: 사람들이 편하게 쓰도록 만들어 둔 건물이나 기구, 장치입니다.",
+        "생활 속 예: 놀이터의 미끄럼틀, 공원의 의자와 화장실도 시설입니다."
+      ],
+      "beats": [
+        "공원에 미끄럼틀과 그네, 운동 기구가 놓여 있습니다.",
+        "할아버지는 운동 기구를 돌리고, 휠체어를 탄 아이는 경사로를 따라 놀이터로 갑니다.",
+        "사람들이 편하게 쓰도록 만들어 둔 건물이나 기구가 시설입니다."
+      ],
+      "img": "A neighborhood park with many facilities: a slide and swings in a playground, outdoor exercise machines, benches, and a small public restroom building. A grandfather turns the wheel of an exercise machine, and a child in a wheelchair rolls up a gentle ramp into the playground while friends wave. No text.",
+      "imgKo": "여러 시설이 있는 동네 공원. 놀이터에는 미끄럼틀과 그네, 옆에는 운동 기구와 의자, 작은 화장실 건물이 있다. 할아버지가 운동 기구 손잡이를 돌리고, 휠체어를 탄 아이가 완만한 경사로를 따라 놀이터로 들어서자 친구들이 손을 흔든다."
+    },
+    "보고서": {
+      "en": "report",
+      "explain": [
+        "쉬운 뜻: 영어로 report입니다. '알아봤더니 이랬어요.' 하고 조사한 것을 정리해 알리는 글입니다.",
+        "낱말 나누기: 보고(알아본 것을 알림) + 서(글)입니다.",
+        "생활 속 예: 답사에서 찍은 사진을 붙이고 알게 된 점을 적으면 보고서가 됩니다."
+      ],
+      "beats": [
+        "모둠 친구들이 큰 종이에 놀이터 답사 사진을 붙입니다.",
+        "도윤이가 사진 옆에 알게 된 점을 차례대로 적습니다.",
+        "조사한 내용과 알게 된 점을 정리해 알리는 글이 보고서입니다."
+      ],
+      "img": "In a classroom, a small group of children works around a desk on a large sheet of paper. HARIN, a girl with a yellow headband and a mint cardigan, glues photos of a playground onto the sheet, and DOYUN, a boy with round glasses and a navy hoodie, writes neat lines next to the photos. The writing is shown only as illegible lines. No readable text.",
+      "imgKo": "교실 책상에 모인 모둠 친구들이 큰 종이 한 장을 함께 만든다. 하린은 놀이터 사진을 붙이고, 도윤은 사진 옆에 줄을 맞추어 글을 적는다. 글씨는 알아볼 수 없는 줄로만 그린다."
+    }
+  },
+  "2-1": {
+    "일상": {
+      "en": "daily life",
+      "explain": [
+        "쉬운 뜻: 영어로 daily life입니다. 날마다 되풀이하는 보통의 하루하루입니다.",
+        "여행이나 생일처럼 가끔 있는 특별한 날은 일상이 아닙니다.",
+        "생활 속 예: 저녁마다 강아지와 산책하고 숙제하는 것도 일상입니다."
+      ],
+      "beats": [
+        "아침에 하린이가 일어나 이를 닦습니다.",
+        "식구들과 둘러앉아 밥을 먹고, 늘 다니던 길로 학교에 갑니다.",
+        "이렇게 날마다 되풀이하는 보통의 생활이 일상입니다."
+      ],
+      "img": "Three small panels in a row showing an ordinary school-day morning of HARIN, a girl with a yellow headband and a mint cardigan: first she brushes her teeth at the bathroom sink, then she eats breakfast at the table with her family, then she walks to school along a familiar street with her backpack. Soft morning light. No text, no clock numbers.",
+      "imgKo": "세 칸으로 나눈 그림. 하린이 아침에 세면대에서 이를 닦고, 식탁에서 식구들과 아침밥을 먹고, 배낭을 메고 늘 다니던 길로 학교에 간다. 부드러운 아침 햇살. 글자와 시계 숫자는 없다."
+    },
+    "과거": {
+      "en": "past",
+      "explain": [
+        "쉬운 뜻: 영어로 past입니다. 이미 지나가 버린 때입니다.",
+        "어제도, 오늘 아침도, 1분 전도 모두 과거입니다.",
+        "생활 속 예: 앨범 속 내 아기 때 사진은 과거의 모습입니다."
+      ]
+    },
+    "현재": {
+      "en": "present",
+      "explain": [
+        "쉬운 뜻: 영어로 present입니다. 바로 지금, 이 순간입니다.",
+        "조금만 지나면 현재도 곧 과거가 됩니다.",
+        "생활 속 예: 내가 지금 3학년인 것은 현재의 일입니다."
+      ]
+    },
+    "미래": {
+      "en": "future",
+      "explain": [
+        "쉬운 뜻: 영어로 future입니다. 아직 오지 않은, 앞으로 올 때입니다.",
+        "한자 뜻: 未(아닐 미)와 來(올 래), 아직 오지 않았다는 뜻입니다.",
+        "생활 속 예: 내일, 다음 방학, 어른이 된 나는 모두 미래입니다."
+      ]
+    },
+    "시대": {
+      "explain": [
+        "쉬운 뜻: 오랜 세월을 생활 모습이 비슷한 때끼리 묶어 부르는 이름입니다.",
+        "생활 속 예: 사람들이 갓을 쓰고 한복을 입던 때를 묶어 조선 시대라고 부릅니다."
+      ]
+    },
+    "사건": {
+      "en": "event",
+      "explain": [
+        "쉬운 뜻: 영어로 event입니다. 여러 사람이 오래 기억할 만큼 중요한 일입니다.",
+        "생활 속 예: 동생이 태어난 날은 우리 가족에게 큰 사건입니다."
+      ]
+    },
+    "연표": {
+      "en": "timeline",
+      "explain": [
+        "쉬운 뜻: 영어로 timeline입니다. 일어난 일들을 해의 차례대로 줄 세워 적은 표입니다.",
+        "낱말 나누기: 연(해) + 표(시간표처럼 칸을 나눠 정리한 것)입니다.",
+        "생활 속 예: 내가 태어난 해, 입학한 해를 차례로 적으면 내 연표가 됩니다."
+      ]
+    },
+    "조부모": {
+      "en": "grandparents",
+      "explain": [
+        "쉬운 뜻: 영어로 grandparents입니다. 엄마 아빠의 부모님, 곧 할아버지와 할머니입니다.",
+        "생활 속 예: 명절에 찾아뵙는 할아버지, 할머니가 나의 조부모입니다."
+      ],
+      "beats": [
+        "하린이네 가족이 시골 할아버지 댁 대문 앞에 도착했습니다.",
+        "할아버지와 할머니가 두 팔을 벌려 하린이를 안아 줍니다.",
+        "엄마 아빠의 부모님인 할아버지와 할머니를 조부모라고 합니다."
+      ],
+      "img": "In front of the gate of a countryside house with a small vegetable garden, a grandfather and a grandmother open their arms wide and hug HARIN, a girl with a yellow headband and a mint cardigan, who runs to them. Her mother and father stand behind her smiling, carrying bags. Warm, happy reunion. No text.",
+      "imgKo": "작은 텃밭이 있는 시골집 대문 앞. 할아버지와 할머니가 두 팔을 활짝 벌려 달려오는 하린을 안아 준다. 뒤에서 엄마 아빠가 가방을 들고 웃으며 서 있다."
+    },
+    "역사": {
+      "en": "history",
+      "explain": [
+        "쉬운 뜻: 영어로 history입니다. 사람들이 지금까지 살아온 이야기와 그것을 적은 기록입니다.",
+        "생활 속 예: 우리 학교가 처음 문을 연 해부터 이어진 이야기가 우리 학교의 역사입니다."
+      ]
+    },
+    "피난": {
+      "explain": [
+        "쉬운 뜻: 전쟁 같은 큰 위험을 피해 살던 집을 떠나 안전한 곳으로 가는 일입니다.",
+        "부산에는 6·25 전쟁 때 피난 온 사람들이 산비탈에 지은 마을이 지금도 남아 있습니다."
+      ],
+      "beats": [
+        "추운 겨울, 사람들이 보따리를 이고 지고 줄지어 걷습니다.",
+        "아빠는 어린아이를 업고, 엄마는 짐 보따리를 머리에 이었습니다.",
+        "전쟁 같은 위험을 피해 살던 곳을 떠나 안전한 곳으로 가는 일이 피난입니다."
+      ],
+      "img": "Korea in the winter of the early 1950s: a long line of families in plain padded clothes walks south along a snowy country road. A father carries a small child on his back, a mother balances a large cloth bundle on her head, and an older child holds her hand. Gray sky, quiet and sad mood. No soldiers, no weapons, no injured people. No text.",
+      "imgKo": "1950년대 초 겨울. 솜옷 차림의 가족들이 눈 덮인 시골길을 따라 남쪽으로 길게 줄지어 걷는다. 아빠는 어린아이를 업고, 엄마는 큰 보따리를 머리에 이고, 큰아이는 엄마 손을 잡았다. 군인, 무기, 다친 사람은 그리지 않는다."
+    }
+  },
+  "2-2": {
+    "흔적": {
+      "en": "trace",
+      "explain": [
+        "쉬운 뜻: 영어로 trace입니다. 무엇이 있었거나 지나갔다는 것을 알려 주는 남은 자국입니다.",
+        "생활 속 예: 눈밭에 찍힌 발자국은 누군가 걸어간 흔적입니다."
+      ],
+      "beats": [
+        "할머니 댁 나무 문기둥에 짧은 줄이 여러 개 그어져 있습니다.",
+        "아빠가 웃으며 아래쪽 줄 하나를 손가락으로 짚고, 하린이가 그 옆에 서 봅니다.",
+        "무엇이 있었거나 지나간 뒤에 남은 자국이 흔적입니다."
+      ],
+      "img": "Inside a grandmother's old house, a wooden door frame has many short pencil lines marked at different heights. HARIN's father, smiling with a nostalgic look, points with one finger at a low line, while HARIN, a girl with a yellow headband and a mint cardigan, stands against the frame to compare her height. No numbers or letters next to the lines.",
+      "imgKo": "할머니 댁 낡은 나무 문기둥에 높이가 다른 연필 줄이 여러 개 그어져 있다. 아빠가 옛 생각에 웃으며 아래쪽 줄 하나를 손가락으로 짚고, 하린이 문기둥에 등을 대고 키를 견주어 본다. 줄 옆에 숫자나 글자는 없다."
+    },
+    "자료": {
+      "explain": [
+        "쉬운 뜻: 요리에 재료가 있듯, 무엇을 알아낼 때 바탕으로 쓰는 재료입니다.",
+        "생활 속 예: 할머니의 옛 앨범 사진은 그때 동네 모습을 알려 주는 자료입니다."
+      ]
+    },
+    "짐작": {
+      "en": "guess",
+      "explain": [
+        "쉬운 뜻: 영어로 guess입니다. 보이는 것을 보고 '아마 이랬을 거야.' 하고 생각하는 것입니다.",
+        "생활 속 예: 현관에 젖은 우산이 있으면 밖에 비가 온다고 짐작합니다."
+      ],
+      "beats": [
+        "하린이가 빛바랜 옛날 교실 사진을 들여다봅니다.",
+        "교실 한가운데 난로 위에 도시락이 층층이 쌓여 있는 것을 손가락으로 가리킵니다.",
+        "확실히 알지 못해도 보이는 것을 바탕으로 미루어 생각하는 것이 짐작입니다."
+      ],
+      "img": "HARIN, a girl with a yellow headband and a mint cardigan, holds an old black-and-white photograph and points at it with a thoughtful face, one finger on her chin. The photo, shown large beside her, shows a crowded 1960s classroom with wooden desks and a round iron stove in the middle, with metal lunch boxes stacked on top of the stove. No text.",
+      "imgKo": "하린이 빛바랜 흑백 사진을 들고 턱에 손가락을 댄 채 생각하는 얼굴로 사진을 가리킨다. 옆에 크게 보인 사진 속에는 나무 책상이 빽빽한 1960년대 교실 한가운데 둥근 쇠 난로가 있고, 그 위에 양은 도시락이 층층이 쌓여 있다."
+    },
+    "애장품": {
+      "explain": [
+        "쉬운 뜻: 아끼고 아껴서 버리지 않고 오래 간직하는 나만의 보물입니다.",
+        "낱말 나누기: 애장(아끼어 간직함) + 품(물건)입니다.",
+        "생활 속 예: 어릴 때부터 안고 잔 낡은 곰 인형도 애장품입니다."
+      ],
+      "beats": [
+        "가족이 거실 탁자에 저마다 아끼는 물건을 꺼내 놓았습니다.",
+        "할아버지는 옛날 돈, 아빠는 낡은 게임기, 도윤이는 태권도 메달을 들고 있습니다.",
+        "아끼고 소중하게 여겨 오래 간직하는 물건이 애장품입니다."
+      ],
+      "img": "In a cozy living room, DOYUN's family sits around a low table, each proudly showing a cherished old object: the grandfather holds an album of old coins, the father holds a worn handheld game console from his childhood, and DOYUN, a boy with round glasses and a navy hoodie, holds up a taekwondo medal on a ribbon. Everyone smiles. No text.",
+      "imgKo": "아늑한 거실. 도윤이네 가족이 낮은 탁자에 둘러앉아 저마다 아끼는 물건을 자랑스레 보여 준다. 할아버지는 옛날 동전을 모은 앨범을, 아빠는 어릴 적 쓰던 낡은 게임기를, 도윤은 리본에 달린 태권도 메달을 들고 있다."
+    },
+    "증언": {
+      "explain": [
+        "쉬운 뜻: 직접 보거나 겪은 사람이 '내가 봤는데 이랬어.' 하고 밝혀 말하는 것입니다.",
+        "생활 속 예: 할머니가 '그때는 냇가에서 빨래를 했단다.' 하고 들려주신 말도 증언입니다."
+      ],
+      "beats": [
+        "도윤이가 할아버지 앞에 수첩을 펴고 앉았습니다.",
+        "할아버지가 손짓을 섞어 가며 어릴 적 학교 이야기를 들려주십니다.",
+        "직접 보거나 겪은 사람이 그 일을 밝혀 말하는 것이 증언입니다."
+      ],
+      "img": "In a grandfather's living room, DOYUN, a boy with round glasses and a navy hoodie, sits on the floor with an open notebook and a pencil, listening carefully. His grandfather sits across from him, gesturing with both hands as if describing the size of an old classroom stove. Speech is shown only by gestures and expressions, no speech bubbles. No text.",
+      "imgKo": "할아버지 댁 거실. 도윤이 바닥에 앉아 수첩과 연필을 들고 귀 기울여 듣는다. 맞은편의 할아버지는 옛 교실 난로의 크기를 말하듯 두 손으로 손짓하며 이야기한다. 말풍선은 없다."
+    },
+    "건축물": {
+      "explain": [
+        "쉬운 뜻: 사람이 살거나 쓰려고 땅 위에 세우거나 쌓아 지은 것입니다.",
+        "낱말 나누기: 건축(집 같은 것을 지음) + 물(물건)입니다.",
+        "생활 속 예: 우리 학교 건물, 아파트, 한강 다리도 모두 건축물입니다."
+      ],
+      "beats": [
+        "한 길가에 기와집과 붉은 벽돌 건물, 높은 아파트가 서 있습니다.",
+        "사람들이 기와집 마당을 둘러보고, 벽돌 건물 앞에서 사진을 찍습니다.",
+        "사람이 쓰려고 땅 위에 세우거나 쌓아 만든 것이 건축물입니다."
+      ],
+      "img": "One Korean street showing buildings from different times side by side: a traditional tile-roofed hanok house with a courtyard, an old two-story red-brick bank building from about 100 years ago, and tall modern apartments in the background. Visitors walk around the hanok courtyard and a family takes a photo in front of the brick building. No text, no letters on buildings.",
+      "imgKo": "한 길가에 서로 다른 때 지은 건물이 나란히 있다. 마당이 있는 기와집, 100년쯤 전에 지은 2층 붉은 벽돌 은행 건물, 뒤쪽의 높은 아파트. 사람들이 기와집 마당을 둘러보고, 한 가족은 벽돌 건물 앞에서 사진을 찍는다. 건물에 글자는 없다."
+    },
+    "복원": {
+      "en": "restoration",
+      "explain": [
+        "쉬운 뜻: 영어로 restoration입니다. 부서진 것을 처음 모습 그대로 다시 살려 내는 것입니다.",
+        "옛 그림이나 기록이 남아 있어야 처음 모습을 알 수 있습니다.",
+        "생활 속 예: 불탄 숭례문을 옛 모습대로 다시 세운 것도 복원입니다."
+      ],
+      "beats": [
+        "무너진 성벽 앞에 일하는 사람들이 모였습니다.",
+        "옛 책에 그려진 성벽 그림을 보며 돌을 하나하나 처음 자리에 쌓아 올립니다.",
+        "부서진 것을 처음 모습대로 다시 만들어 놓는 것이 복원입니다."
+      ],
+      "img": "Workers in helmets rebuild a partly collapsed old Korean stone fortress wall. On a wooden table beside them lies an open old book with a detailed drawing of the same wall and gate, and one worker compares the drawing with the stones while others lift and place large stones into the gap. No readable text in the book, only drawings.",
+      "imgKo": "안전모를 쓴 사람들이 반쯤 무너진 옛 돌 성벽을 다시 쌓는다. 옆 나무 탁자에는 같은 성벽과 성문이 자세히 그려진 옛 책이 펼쳐져 있고, 한 사람은 그림과 돌을 견주어 보고 다른 사람들은 큰 돌을 들어 빈자리에 놓는다. 책에는 글씨 없이 그림만 보인다."
+    },
+    "타임캡슐": {
+      "en": "time capsule",
+      "explain": [
+        "쉬운 뜻: 영어로 time capsule입니다. 지금의 물건을 넣어 두었다가 먼 훗날 열어 보는 상자입니다.",
+        "열어 보면 그때 사람들이 어떻게 살았는지 알 수 있습니다.",
+        "생활 속 예: 졸업할 때 10년 뒤의 나에게 쓴 편지를 넣어 묻기도 합니다."
+      ],
+      "beats": [
+        "어른이 된 졸업생들이 학교 화단에 모여 땅을 팝니다.",
+        "흙 속에서 나온 금속 상자를 열자 빛바랜 편지와 사진이 나옵니다.",
+        "그때의 물건을 담아 두었다가 오랜 뒤에 꺼내 보는 상자가 타임캡슐입니다."
+      ],
+      "img": "In a school flower garden, a group of young adults, former classmates, kneel around a freshly dug hole and open a dirt-covered metal capsule box. Inside are faded letters, old photos, and a small toy. They laugh and look at the photos together with nostalgic faces. No readable text on the letters.",
+      "imgKo": "학교 화단. 어른이 된 옛 동창들이 막 파낸 구덩이에 둘러앉아 흙 묻은 금속 상자를 연다. 안에는 빛바랜 편지와 옛 사진, 작은 장난감이 들어 있고, 모두 옛 생각에 웃으며 사진을 함께 들여다본다. 편지 글씨는 알아볼 수 없게 그린다."
+    }
+  },
+  "2-3": {
+    "지역": {
+      "en": "area",
+      "explain": [
+        "쉬운 뜻: 영어로 area입니다. 넓은 땅을 나누어 '여기는 강릉, 저기는 울산' 하고 부르는 한 부분입니다.",
+        "생활 속 예: 바닷가 지역에는 고기잡이배가, 산골 지역에는 밭이 많습니다."
+      ]
+    },
+    "유래": {
+      "en": "origin",
+      "explain": [
+        "쉬운 뜻: 영어로 origin입니다. 어떤 것이 맨 처음 어떻게, 왜 생겼는지 하는 까닭입니다.",
+        "생활 속 예: '떡볶이'라는 이름은 떡을 볶아 만든 데서 유래했습니다."
+      ],
+      "beats": [
+        "옛날 큰길가 주막 앞에 먼 길을 온 나그네들이 말을 세웠습니다.",
+        "주막 사람이 커다란 솥에서 끓인 죽을 말에게 퍼 줍니다.",
+        "그래서 이곳을 말죽거리라고 불렀습니다. 이렇게 처음 생겨난 까닭이 유래입니다."
+      ],
+      "img": "Joseon era: in front of a thatched-roof roadside inn on a wide dirt road, travelers in hanbok and gat hats have stopped with their horses. An innkeeper ladles steaming porridge from a big iron cauldron into wooden troughs, and the horses eat eagerly. No text, no signboards with letters.",
+      "imgKo": "조선 시대 넓은 흙길가 초가 주막 앞. 한복에 갓을 쓴 나그네들이 말을 세워 두었고, 주막 사람이 큰 가마솥에서 김이 오르는 죽을 퍼서 나무 구유에 담아 주자 말들이 맛있게 먹는다. 글자 간판은 없다."
+    },
+    "옛이야기": {
+      "en": "folktale",
+      "explain": [
+        "쉬운 뜻: 영어로 folktale입니다. 할머니의 할머니 때부터 말로 전해 내려온 신기한 이야기입니다.",
+        "고장마다 산이나 바위, 우물에 얽힌 옛이야기가 있습니다.",
+        "생활 속 예: 해님 달님, 흥부와 놀부도 옛이야기입니다."
+      ],
+      "beats": [
+        "마을 뒷산에 커다란 바위가 우뚝 서 있습니다.",
+        "할머니가 바위 앞 나무 그늘에서 손짓하며 아이들에게 이야기를 들려주십니다.",
+        "오래전부터 입에서 입으로 전해 온 이야기가 옛이야기입니다."
+      ],
+      "img": "On a hill behind a Korean village stands a huge, oddly shaped rock. In the shade of a big tree in front of it, a grandmother sits on a mat and tells a story with lively hand gestures, while children including HARIN, a girl with a yellow headband and a mint cardigan, and DOYUN, a boy with round glasses and a navy hoodie, listen wide-eyed. No speech bubbles, no text.",
+      "imgKo": "마을 뒷산에 신기한 모양의 커다란 바위가 우뚝 서 있다. 그 앞 큰 나무 그늘 돗자리에 앉은 할머니가 손짓을 섞어 이야기를 들려주고, 하린과 도윤을 비롯한 아이들이 눈을 동그랗게 뜨고 듣는다. 말풍선은 없다."
+    },
+    "지명": {
+      "en": "place name",
+      "explain": [
+        "쉬운 뜻: 영어로 place name입니다. 마을, 산, 강처럼 땅에 붙인 이름입니다.",
+        "생활 속 예: 밤나무가 많던 마을은 '밤나무골'이라는 지명을 얻기도 했습니다."
+      ]
+    },
+    "문헌": {
+      "explain": [
+        "쉬운 뜻: 옛날 일을 알려 주는 오래된 책이나 글로 적어 둔 기록입니다.",
+        "생활 속 예: 조선 시대에 붓으로 쓴 책에는 고을마다 나는 물건이 적혀 있습니다."
+      ],
+      "beats": [
+        "박물관 유리 상자 안에 빛바랜 옛 책이 펼쳐져 있습니다.",
+        "하린이가 붓으로 쓴 글씨와 고을 그림을 가만히 들여다봅니다.",
+        "옛날 모습을 알려 주는 오래된 책이나 기록이 문헌입니다."
+      ],
+      "img": "In a quiet museum gallery, an old yellowed Korean book bound with thread lies open inside a glass case. Its pages show brush-written columns (abstract, illegible strokes) and a small hand-drawn map of a town with mountains and a river. HARIN, a girl with a yellow headband and a mint cardigan, bends close to the glass and looks carefully. No readable text.",
+      "imgKo": "조용한 박물관 전시실. 유리 상자 안에 실로 묶은 누렇게 바랜 옛 책이 펼쳐져 있고, 책장에는 붓으로 쓴 세로 글줄과 산과 강이 있는 작은 고을 그림이 보인다. 하린이 유리에 얼굴을 가까이 대고 꼼꼼히 들여다본다. 글씨는 알아볼 수 없게 그린다."
+    },
+    "특징": {
+      "en": "feature",
+      "explain": [
+        "쉬운 뜻: 영어로 feature입니다. 그것만 보면 '아, 거기구나!' 하고 알아보게 하는 눈에 띄는 점입니다.",
+        "생활 속 예: 기린의 특징은 아주 긴 목입니다."
+      ],
+      "beats": [
+        "붉은 대문을 지나자 붉은 등이 줄지어 매달린 거리가 나옵니다.",
+        "중국식 지붕의 건물과 중국 음식점이 길 양쪽에 늘어서 있습니다.",
+        "다른 곳과 견주어 남다르게 눈에 띄는 점이 특징입니다."
+      ],
+      "img": "A Chinatown street in Incheon, Korea, entered through a big red ornamental gate. Rows of red lanterns hang above the street, and both sides are lined with Chinese-style buildings with curved roofs and Chinese restaurants. Families walk and look around with interest. Signboards are left blank. No text.",
+      "imgKo": "커다란 붉은 대문을 지나 들어선 인천 차이나타운 거리. 길 위에는 붉은 등이 줄지어 매달려 있고, 양쪽에는 지붕 끝이 휜 중국식 건물과 중국 음식점이 늘어서 있다. 가족들이 신기한 듯 둘러보며 걷는다. 간판은 비워 둔다."
+    },
+    "해설사": {
+      "en": "guide",
+      "explain": [
+        "쉬운 뜻: 영어로 guide입니다. 박물관이나 옛 장소에서 그곳 이야기를 쉽게 풀어 주는 분입니다.",
+        "낱말 나누기: 해설(알기 쉽게 풀어 말함) + 사(그 일을 하는 사람)입니다.",
+        "생활 속 예: 궁궐에서는 깃발을 든 해설사를 따라다니며 설명을 듣습니다."
+      ],
+      "beats": [
+        "1960년대 교실처럼 꾸민 방에 나무 책상과 난로, 풍금이 놓여 있습니다.",
+        "해설사가 난로를 가리키며 아이들에게 이야기를 들려줍니다.",
+        "찾아온 사람들에게 그곳의 이야기를 쉽게 풀어 주는 사람이 해설사입니다."
+      ],
+      "img": "Inside a museum room decorated like a 1960s Korean classroom, with old wooden desks, a round iron stove in the middle and a small pump organ by the wall. A friendly guide in a neat vest with a name badge (no letters) points at the stove and explains, while children including DOYUN, a boy with round glasses and a navy hoodie, gather around and listen with curious faces. No text.",
+      "imgKo": "1960년대 교실처럼 꾸민 박물관 방. 낡은 나무 책상, 가운데 둥근 쇠 난로, 벽 쪽 작은 풍금이 있다. 단정한 조끼에 이름표(글자 없음)를 단 해설사가 난로를 가리키며 설명하고, 도윤을 비롯한 아이들이 둘러서서 신기한 얼굴로 듣는다."
+    }
+  }
+}
