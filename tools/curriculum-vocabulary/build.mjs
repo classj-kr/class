@@ -2,6 +2,7 @@
 // node tools/curriculum-vocabulary/build.mjs 5-2
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 
 const term = process.argv[2] || '5-2';
 const here = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'));
@@ -125,4 +126,24 @@ if (problems.length) {
 const sorted = Object.fromEntries(order.filter(name => data[name]).map(name => [name, data[name]]));
 const body = `// tools/curriculum-vocabulary/build.mjs 가 ${term} 원고에서 만든 파일이다. 직접 고치지 말 것.\n(function (root) {\n  'use strict';\n  const words = ${JSON.stringify(sorted, null, 1)};\n  root.CurriculumWords = Object.assign(root.CurriculumWords || {}, { '${term}': words });\n  if (typeof module === 'object' && module.exports) module.exports = root.CurriculumWords;\n})(typeof window !== 'undefined' ? window : globalThis);\n`;
 fs.writeFileSync(out, body);
+// 학기 목록(terms.js): 앱은 고른 학기의 낱말 파일과 도식 파일만 불러온다. 파일 내용으로 버전을 붙인다.
+const appDir = path.dirname(out);
+const ver = (file) => crypto.createHash('md5').update(fs.readFileSync(file)).digest('hex').slice(0, 8);
+const manifest = {};
+// 앱에 내보낼 학기는 terms-ready.json 에 적은 것만(만드는 중인 학기는 빼 둔다).
+const readyTerms = JSON.parse(fs.readFileSync(path.join(here, 'terms-ready.json'), 'utf8'));
+for (const name of fs.readdirSync(appDir).filter(n => /^words-\d-\d\.js$/.test(n) && readyTerms.includes(n.slice(6, 9))).sort()) {
+  const key = name.slice(6, 9);
+  const figDir = path.join(appDir, 'figures', key);
+  const figures = fs.existsSync(figDir) ? fs.readdirSync(figDir).filter(n => n.endsWith('.js')).sort().map(n => `figures/${key}/${n}?v=${ver(path.join(figDir, n))}`) : [];
+  manifest[key] = { words: `${name}?v=${ver(path.join(appDir, name))}`, figures };
+}
+const termsFile = path.join(appDir, 'terms.js');
+fs.writeFileSync(termsFile, `// tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
+window.CurriculumTerms = ${JSON.stringify(manifest, null, 1)};
+`);
+const indexFile = path.join(appDir, 'index.html');
+const html = fs.readFileSync(indexFile, 'utf8');
+const nextHtml = html.replace(/terms\.js\?v=[\w-]+/, `terms.js?v=${ver(termsFile)}`);
+if (nextHtml !== html) fs.writeFileSync(indexFile, nextHtml);
 for (const [name, book] of Object.entries(sorted)) console.log(name, book.units.map(unit => `${unit.id}:${unit.words.length}`).join(' '), '=', book.units.reduce((sum, unit) => sum + unit.words.length, 0));
