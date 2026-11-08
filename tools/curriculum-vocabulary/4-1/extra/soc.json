@@ -1,0 +1,448 @@
+{
+  "1-1": {
+    "지도": {
+      "en": "map",
+      "explain": [
+        "쉬운 뜻: 영어로 map입니다. 넓은 땅을 종이 한 장에 들어가게 작게 줄여 그린 그림입니다.",
+        "실제 땅에는 없는 길 이름, 학교 표시 같은 약속이 그려져 있습니다.",
+        "생활 속 예: 휴대 전화의 길 찾기 앱도 지도를 보여 줍니다."
+      ]
+    },
+    "항공 사진": {
+      "en": "aerial photo",
+      "explain": [
+        "쉬운 뜻: 영어로 aerial photo입니다. 새가 되어 하늘에서 우리 동네를 찍었다고 생각하면 됩니다.",
+        "낱말 나누기: 항공(비행기로 하늘을 날아다님) + 사진입니다.",
+        "지붕 색까지 실제 모습 그대로 보이지만, 건물 이름은 적혀 있지 않습니다."
+      ],
+      "beats": [
+        "비행기가 우리 동네 위를 높이 날아갑니다.",
+        "하늘에서 내려다보니 학교 운동장과 알록달록한 지붕, 나무가 실제 모습 그대로 보입니다.",
+        "이렇게 하늘에서 땅을 내려다보며 찍은 사진이 항공 사진입니다."
+      ],
+      "img": "A small airplane flies high over a Korean town on a clear day, seen from above. Below it the town looks like a real photograph taken from the sky: a school with a dirt playground, apartment blocks, houses with red, blue and green roofs, trees, roads with tiny cars, and a small river. No labels, no text.",
+      "imgKo": "맑은 날 작은 비행기가 우리 동네 위를 높이 날고, 아래로 학교 운동장, 아파트, 알록달록한 지붕, 나무, 작은 차가 다니는 길과 냇물이 하늘에서 찍은 사진처럼 보인다. 이름표는 없다."
+    },
+    "방위": {
+      "explain": [
+        "쉬운 뜻: 동, 서, 남, 북 네 쪽을 말합니다. 어디를 보고 서 있어도 북쪽은 늘 북쪽입니다.",
+        "생활 속 예: 나침반 바늘의 빨간 끝은 언제나 북쪽을 가리킵니다."
+      ]
+    },
+    "방위표": {
+      "explain": [
+        "쉬운 뜻: 지도 위에 그린 작은 나침반입니다. 흔히 화살표 끝이 북쪽을 가리킵니다.",
+        "낱말 나누기: 방위(동서남북) + 표(표시)입니다.",
+        "방위표가 없는 지도는 위쪽을 북쪽으로 보고 읽습니다."
+      ]
+    },
+    "기호": {
+      "en": "symbol",
+      "explain": [
+        "쉬운 뜻: 영어로 symbol입니다. 긴 이름 대신 지도에 그려 넣는 작은 그림 표시입니다.",
+        "기호는 장소의 생김새나 특징을 본떠 만듭니다.",
+        "생활 속 예: 목욕탕 간판의 ♨ 표시도 김이 오르는 모습을 본뜬 기호입니다."
+      ]
+    },
+    "범례": {
+      "en": "legend",
+      "explain": [
+        "쉬운 뜻: 영어로 legend입니다. 지도에 나온 기호들의 뜻을 모아 알려 주는 풀이표입니다.",
+        "범례를 먼저 읽으면 처음 보는 지도도 쉽게 읽을 수 있습니다.",
+        "생활 속 예: 놀이공원 안내도 구석에도 화장실, 식당 그림의 뜻이 적혀 있습니다."
+      ]
+    },
+    "축척": {
+      "en": "scale",
+      "explain": [
+        "쉬운 뜻: 영어로 scale입니다. 땅을 지도에 담으려고 얼마나 작게 줄였는지 알려 줍니다.",
+        "지도에서는 흔히 눈금이 그려진 막대 모양으로 나타냅니다.",
+        "생활 속 예: 휴대 전화 지도를 손가락으로 넓히면 골목까지 자세히 보입니다."
+      ]
+    },
+    "등고선": {
+      "en": "contour line",
+      "explain": [
+        "쉬운 뜻: 영어로 contour line입니다. 산을 같은 높이마다 썰어서 위에서 본 테두리 줄입니다.",
+        "등고선 하나 위에 있는 곳은 어디든 높이가 똑같습니다.",
+        "생활 속 예: 반으로 자른 양파를 위에서 보면 고리가 겹겹이 보이는 것과 닮았습니다."
+      ]
+    },
+    "높낮이": {
+      "explain": [
+        "쉬운 뜻: 오르막과 내리막처럼, 땅이 높아졌다 낮아졌다 하는 모습입니다.",
+        "낱말 나누기: 높(높다) + 낮(낮다) + 이, 높고 낮음을 함께 이르는 말입니다.",
+        "지도에서는 낮은 곳은 초록, 높은 곳은 갈색처럼 색깔로도 나타냅니다."
+      ]
+    },
+    "디지털 영상 지도": {
+      "explain": [
+        "쉬운 뜻: 하늘에서 찍은 사진과 지도를 한 화면에 겹쳐 놓은 것입니다.",
+        "낱말 나누기: 디지털(컴퓨터로 다루는) + 영상(화면에 비친 모습) + 지도입니다.",
+        "생활 속 예: 길 찾기 앱에서 사진 보기로 바꾸면 이 지도가 됩니다."
+      ],
+      "beats": [
+        "하린이가 태블릿으로 하늘에서 찍은 우리 동네 모습을 엽니다.",
+        "사진 위에 노란 길 선과 장소 표시가 얹혀 있습니다.",
+        "두 손가락을 벌리자 학교가 점점 크게 보입니다.",
+        "이렇게 화면에서 크게, 작게 볼 수 있는 사진 지도가 디지털 영상 지도입니다."
+      ],
+      "img": "HARIN sits at a classroom desk holding a tablet with both hands. The screen shows a satellite photo of her town seen from straight above, with thin yellow road lines and small round location pins laid on top. She spreads two fingers on the screen to zoom in on a school building. No readable text on the screen.",
+      "imgKo": "하린이가 교실 책상에서 태블릿을 들고 있다. 화면에는 하늘에서 찍은 동네 사진 위에 노란 길 선과 동그란 장소 표시가 얹혀 있고, 하린이가 두 손가락을 벌려 학교를 크게 본다. 화면 글자는 없다."
+    },
+    "약도": {
+      "explain": [
+        "쉬운 뜻: 지도를 아주 간단하게 줄인 그림입니다. 찾아갈 곳까지 가는 길만 보여 줍니다.",
+        "자세한 지도보다 그리기 쉽고, 한눈에 길을 알아보기 좋습니다.",
+        "생활 속 예: 식당 명함 뒤에 그려진 작은 길 그림이 약도입니다."
+      ]
+    },
+    "관광 안내도": {
+      "en": "tourist map",
+      "explain": [
+        "쉬운 뜻: 영어로 tourist map입니다. 여행 온 사람에게 볼거리가 어디 있는지 알려 주는 지도입니다.",
+        "낱말 나누기: 관광(구경하며 여행함) + 안내도(길을 알려 주는 그림)입니다.",
+        "생활 속 예: 이름난 산 입구에는 등산로와 절, 폭포를 그린 안내도가 서 있습니다."
+      ],
+      "beats": [
+        "하린이 가족이 기차역 앞 커다란 그림판 앞에 섰습니다.",
+        "그림판에는 옛 절과 탑, 연못 같은 볼거리가 길과 함께 그려져 있습니다.",
+        "하린이는 가 보고 싶은 곳을 손가락으로 짚어 봅니다.",
+        "여행 온 사람에게 볼거리의 위치를 알려 주는 이 지도가 관광 안내도입니다."
+      ],
+      "img": "In a sunny plaza in front of a train station, HARIN and her parents stand before a big outdoor tourist map board. The board shows a colorful illustrated bird's-eye map of an old Korean city with small drawings of an ancient stone observatory tower, a temple with two stone pagodas, a royal pond and green hills, linked by roads. HARIN points at the temple drawing. No readable text on the board.",
+      "imgKo": "기차역 앞 광장에서 하린이 가족이 큰 관광 안내판 앞에 서 있다. 안내판에는 옛 돌 천문대, 돌탑 둘이 있는 절, 연못과 언덕이 길로 이어진 그림 지도가 있고, 하린이가 절 그림을 손가락으로 가리킨다. 안내판 글자는 없다."
+    },
+    "노선도": {
+      "en": "route map",
+      "explain": [
+        "쉬운 뜻: 영어로 route map입니다. 버스나 지하철이 서는 곳을 줄 하나로 꿰어 그린 그림입니다.",
+        "낱말 나누기: 노선(차가 정해 놓고 다니는 길) + 도(그림)입니다.",
+        "실제 길 모양보다 정류장 차례가 잘 보이게 곧은 선으로 그립니다."
+      ]
+    }
+  },
+  "1-2": {
+    "행정구역": {
+      "explain": [
+        "쉬운 뜻: 나라 일을 돌보기 쉽게 땅을 나눈 칸입니다. 학교가 학년과 반으로 나뉘는 것과 같습니다.",
+        "낱말 나누기: 행정(나라나 지역의 살림을 돌보는 일) + 구역(나눈 땅)입니다.",
+        "도는 다시 시와 군으로, 시와 군은 더 작은 동네로 나뉩니다."
+      ]
+    },
+    "특별시": {
+      "explain": [
+        "쉬운 뜻: 서울에만 붙는 이름입니다. 나라의 수도라서 '특별'이 붙었습니다.",
+        "낱말 나누기: 특별(보통과 다름) + 시(도시)입니다.",
+        "수도인 서울에는 국회처럼 나라 일을 하는 큰 기관이 모여 있습니다."
+      ]
+    },
+    "광역시": {
+      "explain": [
+        "쉬운 뜻: 아주 커서 도와 어깨를 나란히 하는 도시입니다.",
+        "낱말 나누기: 광역(넓은 지역) + 시(도시)입니다.",
+        "부산, 대구, 인천, 광주, 대전, 울산 여섯 곳이 광역시입니다."
+      ]
+    },
+    "특별자치시": {
+      "explain": [
+        "쉬운 뜻: '스스로 다스리는 특별한 시'라는 뜻입니다. 지금은 세종 한 곳뿐입니다.",
+        "낱말 나누기: 특별(보통과 다름) + 자치(스스로 다스림) + 시입니다."
+      ]
+    },
+    "특별자치도": {
+      "explain": [
+        "쉬운 뜻: '스스로 다스리는 특별한 도'라는 뜻입니다. 지금은 제주, 강원, 전북 세 곳입니다.",
+        "낱말 나누기: 특별(보통과 다름) + 자치(스스로 다스림) + 도입니다."
+      ]
+    },
+    "지리 정보": {
+      "explain": [
+        "쉬운 뜻: 한 지역의 자기소개라고 생각하면 됩니다. 어디 있고, 얼마나 넓고, 몇 명이 사는지 알려 줍니다.",
+        "낱말 나누기: 지리(땅과 그곳에 사는 모습) + 정보(알려 주는 내용)입니다.",
+        "생활 속 예: 일기 예보의 내일 기온도 지리 정보의 한 가지입니다."
+      ]
+    },
+    "위치": {
+      "en": "location",
+      "explain": [
+        "쉬운 뜻: 영어로 location입니다. '어디에 있나요?'에 대한 대답이 위치입니다.",
+        "방위나 둘레의 큰 건물을 기준으로 말하면 위치를 정확히 알려 줄 수 있습니다."
+      ]
+    },
+    "면적": {
+      "en": "area",
+      "explain": [
+        "쉬운 뜻: 영어로 area입니다. 수학의 '넓이'를 땅에 쓸 때 면적이라고 합니다.",
+        "땅의 면적은 흔히 km²(제곱킬로미터)로 나타냅니다.",
+        "생활 속 예: 넓은 운동장은 좁은 교실보다 면적이 큽니다."
+      ]
+    },
+    "인구": {
+      "en": "population",
+      "explain": [
+        "쉬운 뜻: 영어로 population입니다. 한 지역에 사는 사람을 아기부터 어른까지 모두 센 수입니다.",
+        "한자 뜻: 人(사람 인)과 口(입 구), 밥 먹는 입 하나를 한 사람으로 센다는 뜻입니다.",
+        "생활 속 예: 우리나라 인구는 5천만 명이 조금 넘습니다."
+      ]
+    },
+    "지형": {
+      "en": "landform",
+      "explain": [
+        "쉬운 뜻: 영어로 landform입니다. 사람마다 얼굴 생김새가 다르듯, 땅의 생김새를 말합니다.",
+        "산, 평야, 강, 섬, 바다는 모두 지형의 한 가지입니다.",
+        "생활 속 예: 산골 마을과 바닷가 마을은 지형이 달라 하는 일도 다릅니다."
+      ],
+      "beats": [
+        "높은 산에서 시작한 강이 굽이굽이 흘러 내려옵니다.",
+        "강을 따라 넓고 판판한 들이 펼쳐지고, 끝에는 바다와 섬이 보입니다.",
+        "산, 강, 들, 바다, 섬처럼 땅이 생긴 모습이 지형입니다."
+      ],
+      "img": "A wide bird's-eye landscape of a Korean region: tall green mountains on the left, a river flowing out of them and winding across a broad flat plain of rice fields in the middle, and a blue sea with a few small islands on the right. A small village sits by the river. No people, no text.",
+      "imgKo": "왼쪽의 높은 산에서 강이 흘러나와 가운데 넓은 논 들판을 굽이굽이 지나고, 오른쪽에는 작은 섬들이 떠 있는 바다가 보인다. 강가에 작은 마을이 있다."
+    },
+    "기온": {
+      "en": "temperature",
+      "explain": [
+        "쉬운 뜻: 영어로 temperature입니다. 바깥 공기가 얼마나 덥고 추운지 숫자로 잰 것입니다.",
+        "기온은 햇볕이 바로 닿지 않는 그늘에서 잽니다.",
+        "생활 속 예: 일기 예보에서 '낮 최고 30도'라고 하는 것이 기온입니다."
+      ]
+    },
+    "강수량": {
+      "explain": [
+        "쉬운 뜻: 하늘에서 내린 비와 눈을 모두 물로 모아 잰 양입니다.",
+        "낱말 나누기: 강수(비나 눈이 하늘에서 내림) + 량(양)입니다.",
+        "생활 속 예: 원통 그릇에 빗물을 받아 고인 높이를 mm로 재면 강수량입니다."
+      ]
+    },
+    "평야": {
+      "en": "plain",
+      "explain": [
+        "쉬운 뜻: 영어로 plain입니다. 운동장처럼 판판한 땅이 아주 넓게 펼쳐진 곳입니다.",
+        "판판한 땅이라 큰 도시와 곧은 길이 들어서기도 쉽습니다."
+      ],
+      "beats": [
+        "도윤이가 기차 창밖을 내다봅니다.",
+        "산 하나 없이 판판한 논이 하늘 끝까지 이어집니다.",
+        "이렇게 판판한 땅이 넓게 펼쳐진 곳이 평야입니다."
+      ],
+      "img": "DOYUN sits by a train window, looking outside. Through the window, a vast flat plain of green rice paddies stretches all the way to the horizon, where the land meets the sky in one straight line. A straight farm road and an irrigation canal cross the fields. No mountains, no text.",
+      "imgKo": "도윤이가 기차 창가에 앉아 밖을 본다. 창밖으로 산 하나 없이 초록 논이 지평선까지 펼쳐지고, 곧은 농로와 물길이 들판을 가로지른다."
+    },
+    "통계": {
+      "en": "statistics",
+      "explain": [
+        "쉬운 뜻: 영어로 statistics입니다. 세고 모은 것을 숫자와 그래프로 한눈에 보이게 한 것입니다.",
+        "통계를 보면 인구가 늘었는지 줄었는지 한눈에 알 수 있습니다.",
+        "생활 속 예: 학급 회의 투표 결과를 표로 적은 것도 통계입니다."
+      ]
+    },
+    "누리집": {
+      "en": "website",
+      "explain": [
+        "쉬운 뜻: 영어로 website입니다. 인터넷에 있는 기관의 집이라는 뜻의 우리말입니다.",
+        "낱말 나누기: 누리(세상) + 집, 인터넷 세상 속의 집입니다.",
+        "생활 속 예: 박물관 누리집에서 쉬는 날과 문 여는 시간을 확인합니다."
+      ]
+    }
+  },
+  "2-1": {
+    "국가유산": {
+      "en": "national heritage",
+      "explain": [
+        "쉬운 뜻: 영어로 national heritage입니다. 조상에게 물려받아 우리도 다시 물려줄 나라의 보물입니다.",
+        "낱말 나누기: 국가(나라) + 유산(물려받은 재산)입니다.",
+        "생활 속 예: 경복궁, 판소리, 진돗개처럼 건물, 노래, 동물도 국가유산이 됩니다."
+      ],
+      "beats": [
+        "경주 불국사에 왔습니다. 돌로 쌓은 축대와 돌계단이 보입니다.",
+        "천 년도 더 전에 쌓은 돌계단과 탑이 지금까지 남아 있습니다.",
+        "이렇게 조상에게 물려받아 다음 세대에 물려줄 소중한 것이 국가유산입니다."
+      ],
+      "img": "Bulguksa Temple in Gyeongju, Korea, seen from the front in autumn: high stone terraces and the two stone stairway bridges leading up to wooden temple halls with curved tiled roofs and colorful painted eaves. Red and yellow maple trees around. HARIN and TEACHER stand in the front yard looking up at it. No text.",
+      "imgKo": "가을 경주 불국사를 앞에서 본다. 돌로 높이 쌓은 축대와 돌계단 다리 위로 기와지붕 나무 건물이 있고, 둘레에 단풍이 들었다. 하린이와 선생님이 앞마당에서 올려다본다."
+    },
+    "문화유산": {
+      "en": "cultural heritage",
+      "explain": [
+        "쉬운 뜻: 영어로 cultural heritage입니다. 눈으로 보고 손으로 가리킬 수 있는, 모양이 있는 옛것입니다.",
+        "낱말 나누기: 문화(사람이 만들고 가꾸어 온 것) + 유산(물려받은 것)입니다.",
+        "생활 속 예: 박물관 유리장 안에 놓인 옛 그릇과 그림도 문화유산입니다."
+      ],
+      "beats": [
+        "서울 창덕궁의 큰 건물 앞마당에 왔습니다.",
+        "나무 기둥과 알록달록한 처마, 기와지붕이 눈앞에 그대로 서 있습니다.",
+        "이렇게 건물, 그림, 도구처럼 모양이 있는 국가유산이 문화유산입니다."
+      ],
+      "img": "Injeongjeon Hall of Changdeokgung Palace in Seoul: a large two-story wooden throne hall with red pillars, colorful painted eaves and a curved tiled roof, standing on a stone platform behind a wide stone-paved courtyard. Green trees on the hills behind. A few visitors walk in the courtyard. No text.",
+      "imgKo": "서울 창덕궁 인정전. 붉은 기둥과 알록달록한 처마, 기와지붕을 한 커다란 이층 나무 건물이 돌 기단 위에 서 있고, 앞에 돌을 깐 넓은 마당이 있다. 관람객 몇 명이 걷는다."
+    },
+    "무형유산": {
+      "explain": [
+        "쉬운 뜻: 손에 잡히는 물건이 아니라 사람의 몸과 솜씨로 이어지는 옛것입니다.",
+        "낱말 나누기: 무형(모양이 없음) + 유산(물려받은 것)입니다.",
+        "생활 속 예: 씨름과 김장 문화도 무형유산입니다."
+      ],
+      "beats": [
+        "보름달이 뜬 밤, 한복을 입은 사람들이 손을 맞잡습니다.",
+        "노래를 부르며 크게 원을 그리고 빙빙 돕니다.",
+        "노래와 춤은 남겨 둘 물건이 없어, 사람이 배워서 이어 갑니다.",
+        "이렇게 모양 없이 사람에게서 사람으로 이어지는 국가유산이 무형유산입니다."
+      ],
+      "img": "On a bright full-moon night by the sea in southwestern Korea, women in colorful hanbok hold hands and dance in a big circle on a grassy field, singing with joyful faces. The full moon shines above the water. No text.",
+      "imgKo": "남해안 바닷가의 보름달 밤, 알록달록한 한복을 입은 여인들이 풀밭에서 손을 맞잡고 큰 원을 그리며 노래하고 춤춘다. 바다 위로 보름달이 밝다."
+    },
+    "자연유산": {
+      "en": "natural heritage",
+      "explain": [
+        "쉬운 뜻: 영어로 natural heritage입니다. 사람이 만들지 않고 자연이 만든 보물입니다.",
+        "생활 속 예: 진돗개와 제주 한라산도 나라가 지키는 자연유산입니다."
+      ],
+      "beats": [
+        "전라남도 진도 앞바다입니다.",
+        "바닷물이 빠지자 섬과 섬 사이에 모랫길이 드러납니다.",
+        "사람들이 바다 한가운데로 난 길을 걸어갑니다.",
+        "이렇게 아름답거나 보기 드문 자연을 지키기로 정한 것이 자연유산입니다."
+      ],
+      "img": "On a sunny day off Jindo Island in Korea, the sea has parted between two islands, and a long curved path of wet sand and rocks appears across the water. Many people in rain boots walk along the path, some bending down to pick up shellfish. No text.",
+      "imgKo": "맑은 날 진도 앞바다에서 바닷물이 갈라져 섬과 섬 사이에 젖은 모래와 바위로 된 긴 길이 드러나고, 장화를 신은 사람들이 그 길을 걸으며 조개를 줍는다."
+    },
+    "형태": {
+      "en": "shape",
+      "explain": [
+        "쉬운 뜻: 영어로 shape입니다. 눈으로 보고 손으로 만질 수 있는 생김새입니다.",
+        "형태가 있는 것은 문화유산, 없는 것은 무형유산입니다.",
+        "생활 속 예: 물은 컵에 따르면 컵의 형태를 따라갑니다."
+      ]
+    },
+    "세대": {
+      "en": "generation",
+      "explain": [
+        "쉬운 뜻: 영어로 generation입니다. 할머니는 할머니끼리, 우리는 우리끼리 한 묶음이 됩니다.",
+        "보통 부모와 자식 사이를 한 세대, 약 30년으로 봅니다."
+      ],
+      "beats": [
+        "할머니, 엄마, 하린이가 함께 김장을 합니다.",
+        "할머니가 엄마에게 가르친 방법을 이제 하린이가 배웁니다.",
+        "할머니, 엄마, 하린이는 서로 다른 때에 태어난 다른 세대입니다.",
+        "비슷한 때에 태어난 사람들의 무리를 세대라고 합니다."
+      ],
+      "img": "In a warm Korean home kitchen, a grandmother, a mother and HARIN sit around a big basin full of salted napa cabbage, rubbing red seasoning into the leaves together. All wear rubber gloves. The grandmother gently shows HARIN how to spread the seasoning while the mother smiles. No text.",
+      "imgKo": "따뜻한 부엌에서 할머니, 엄마, 하린이가 절인 배추가 담긴 큰 대야에 둘러앉아 고무장갑을 끼고 빨간 양념을 바른다. 할머니가 하린이에게 바르는 법을 보여 주고 엄마가 웃는다."
+    },
+    "가치": {
+      "en": "value",
+      "explain": [
+        "쉬운 뜻: 영어로 value입니다. '이것이 얼마나 소중한가'를 말합니다.",
+        "가치는 돈으로 셀 때도 있고, 쓸모나 배울 점으로 따질 때도 있습니다."
+      ]
+    },
+    "역사적 가치": {
+      "explain": [
+        "쉬운 뜻: 타임머신처럼 옛날 모습과 옛사람들의 삶을 보여 주어서 소중한 것입니다.",
+        "낱말 나누기: 역사(지나온 옛일) + 적(~에 관한) + 가치(소중함)입니다."
+      ],
+      "beats": [
+        "서울 종묘입니다. 조선의 왕들이 조상에게 제사를 지내던 곳입니다.",
+        "지금도 해마다 옛날 그대로의 옷과 음악으로 제사를 지냅니다.",
+        "수백 년 전 모습을 오늘날에도 눈으로 볼 수 있습니다.",
+        "이렇게 옛날 일과 옛사람들의 생활을 알려 주는 소중함이 역사적 가치입니다."
+      ],
+      "img": "The main hall of Jongmyo Shrine in Seoul: a very long, low wooden building with a dark tiled roof and a long row of red pillars, in front of a wide raised stone-paved courtyard. During the royal ancestral rite, musicians in red robes play traditional instruments and rows of dancers in robes perform slowly in the courtyard. No text.",
+      "imgKo": "서울 종묘 정전. 아주 길고 낮은 나무 건물에 붉은 기둥이 줄지어 서 있고 앞에 돌을 깐 넓은 마당이 있다. 제사 때 붉은 옷의 악사들이 옛 악기를 연주하고 줄지어 선 무용수들이 천천히 춤춘다."
+    },
+    "예술적 가치": {
+      "explain": [
+        "쉬운 뜻: 생김새가 아름답고 솜씨가 뛰어나서 자꾸 들여다보게 되는 소중함입니다.",
+        "낱말 나누기: 예술(아름다움을 만드는 일) + 적(~에 관한) + 가치입니다."
+      ],
+      "beats": [
+        "박물관에서 푸른빛이 도는 청자 향로를 봅니다.",
+        "뚜껑에는 구멍 뚫린 동그라미 무늬, 몸통에는 꽃잎, 받침에는 토끼 세 마리가 있습니다.",
+        "하린이는 옛사람의 솜씨와 멋에 감탄합니다.",
+        "이렇게 아름다움에서 느끼는 소중함이 예술적 가치입니다."
+      ],
+      "img": "In a softly lit museum glass case stands the Goryeo celadon incense burner with an openwork lid: a jade-green ceramic piece whose lid is a round ball of interlocking openwork circles, whose body is shaped like layers of lotus petals, and which is held up by three small crouching rabbits at the base. HARIN leans close to the glass with a look of wonder. No text.",
+      "imgKo": "은은한 조명의 박물관 유리장 안에 비취색 고려청자 향로가 있다. 뚜껑은 동그라미 무늬로 구멍이 뚫린 공 모양, 몸통은 겹겹의 연꽃잎, 받침은 웅크린 토끼 세 마리다. 하린이가 유리에 다가가 감탄하며 본다."
+    },
+    "과학적 가치": {
+      "explain": [
+        "쉬운 뜻: 옛사람들의 슬기로운 생각과 기술이 담겨 있어서 소중한 것입니다.",
+        "낱말 나누기: 과학(자연의 원리를 밝히는 공부) + 적(~에 관한) + 가치입니다."
+      ],
+      "beats": [
+        "합천 해인사 장경판전입니다. 글자를 새긴 나무판을 보관하는 건물입니다.",
+        "벽마다 크기가 다른 나무 창이 위아래로 나 있습니다.",
+        "바람이 잘 드나들어 나무판이 썩지 않고 오래 남았습니다.",
+        "이렇게 자연의 원리를 이용한 옛사람의 지혜가 지닌 소중함이 과학적 가치입니다."
+      ],
+      "img": "The Janggyeong Panjeon depositories at Haeinsa Temple in Korea: long, plain wooden buildings with grey tiled roofs on a mountainside. On the front wall, wooden slatted windows are arranged in two rows — small windows on top and large windows at the bottom — so wind can flow through. Through the slats, tall shelves stacked with wooden printing blocks can be seen. No people, no text.",
+      "imgKo": "산비탈에 선 해인사 장경판전. 기와지붕을 얹은 길고 수수한 나무 건물 벽에 위에는 작은 창, 아래에는 큰 창이 두 줄로 나 있고, 창살 사이로 나무판이 가득 꽂힌 높은 선반이 보인다."
+    },
+    "생태적 가치": {
+      "explain": [
+        "쉬운 뜻: 자연에서 얻되 다 써 버리지 않고 생물이 살 자리를 남겨 두어서 소중한 것입니다.",
+        "낱말 나누기: 생태(생물이 살아가는 모습) + 적(~에 관한) + 가치입니다."
+      ],
+      "beats": [
+        "제주 바닷속에서 해녀가 전복을 땁니다.",
+        "아직 작은 전복은 바위에 도로 붙여 놓아 줍니다.",
+        "다 자란 것만 필요한 만큼 가져가니 바다 생물이 계속 살아갑니다.",
+        "이렇게 자연을 지키며 살아가는 방식이 지닌 소중함이 생태적 가치입니다."
+      ],
+      "img": "Underwater near Jeju Island, a haenyeo woman diver in a black rubber wetsuit and a round diving mask gently places a small abalone back onto a rock covered with seaweed. Her net bag holds only a few large shells. Small fish swim around in the clear blue water. No text.",
+      "imgKo": "제주 바닷속에서 검은 고무 옷과 둥근 물안경을 쓴 해녀가 작은 전복을 미역이 붙은 바위에 살며시 도로 붙여 놓는다. 망에는 큰 조개 몇 개만 들어 있고, 둘레에 작은 물고기가 헤엄친다."
+    },
+    "지정": {
+      "explain": [
+        "쉬운 뜻: 여럿 가운데 '바로 이것!' 하고 골라 정하는 것입니다.",
+        "나라는 지켜야 할 옛것을 국가유산으로 지정해 보살핍니다.",
+        "생활 속 예: 기차에서는 표에 정해진 지정석에 앉습니다."
+      ]
+    },
+    "유네스코": {
+      "en": "UNESCO",
+      "explain": [
+        "쉬운 뜻: 영어로 UNESCO입니다. 온 세계가 함께 지킬 보물을 골라 돌보는 국제 모임입니다.",
+        "생활 속 예: 종묘, 석굴암, 김장 문화도 유네스코가 정한 세계의 유산입니다."
+      ]
+    },
+    "석빙고": {
+      "explain": [
+        "쉬운 뜻: 전기가 없던 옛날, 돌로 만든 커다란 얼음 냉장고입니다.",
+        "땅속에 반쯤 묻고 흙과 풀로 덮어 바깥 열기가 잘 들어오지 않습니다."
+      ],
+      "beats": [
+        "경주 석빙고입니다. 겉에서 보면 풀로 덮인 작은 언덕 같습니다.",
+        "땅속에 반쯤 묻힌 돌방 안에 겨울 얼음을 넣어 두었습니다.",
+        "지붕 위 굴뚝 같은 구멍으로 더운 공기가 빠져나갑니다.",
+        "이렇게 얼음을 여름까지 보관하던 돌 창고가 석빙고입니다."
+      ],
+      "img": "The Seokbinggo stone ice storage in Gyeongju, Korea, on a summer day: a long, low, rounded grassy mound like a small hill, with a stone-framed entrance on one side leading down inside and three small stone chimney vents standing on top of the mound. HARIN and DOYUN stand at the entrance, feeling cool air with surprised faces. No text.",
+      "imgKo": "여름날 경주 석빙고. 풀로 덮인 길고 낮은 둥근 언덕 한쪽에 돌로 짠 입구가 안으로 이어지고, 언덕 위에 작은 돌 굴뚝 셋이 서 있다. 하린이와 도윤이가 입구에서 서늘한 바람에 놀란다."
+    },
+    "해녀": {
+      "explain": [
+        "쉬운 뜻: 산소통 없이 숨을 한 번 참고 바닷속에 들어가 일하는 사람입니다.",
+        "제주 해녀 문화는 유네스코가 정한 세계의 무형유산입니다."
+      ],
+      "beats": [
+        "제주 바다 위에 주황색 동그란 공이 떠 있습니다.",
+        "고무 옷을 입은 할머니가 숨을 참고 바닷속에 들어갔다가 올라옵니다.",
+        "손에 든 망에는 소라가 가득합니다.",
+        "이렇게 숨을 참고 바닷속에서 해산물을 따는 사람이 해녀입니다."
+      ],
+      "img": "On the sea near Jeju Island, an elderly haenyeo woman diver in a black rubber wetsuit and a round diving mask has just come up to the surface beside her orange round float, holding up a net bag full of turban shells. Other divers bob on the water behind her, and a black volcanic rock coast lies in the distance. No text.",
+      "imgKo": "제주 바다에서 검은 고무 옷과 둥근 물안경을 쓴 할머니 해녀가 주황색 동그란 뜨개 옆으로 막 올라와 소라가 가득한 망을 들어 올린다. 뒤로 다른 해녀들이 떠 있고 멀리 검은 바위 해안이 보인다."
+    },
+    "기록물": {
+      "en": "records",
+      "explain": [
+        "쉬운 뜻: 영어로 records입니다. 잊지 않으려고 글이나 그림으로 적어 남긴 것입니다.",
+        "낱말 나누기: 기록(적어서 남김) + 물(물건)입니다.",
+        "생활 속 예: 내가 쓴 일기장과 학급 문집도 기록물입니다."
+      ]
+    }
+  }
+}
