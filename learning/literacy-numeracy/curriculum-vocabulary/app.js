@@ -349,7 +349,14 @@
   function senseQuestion(word) {
     const all = [{ mean: word.mean, use: word.use, kind: '이 단원' }, ...word.senses];
     const target = pick(all);
-    const others = shuffle(all.filter(row => row !== target)).slice(0, 3);
+    let others = shuffle(all.filter(row => row !== target)).slice(0, 3);
+    // 뜻이 둘뿐이면 반은 찍어서 맞히므로, 헷갈리는 오답 낱말들의 뜻으로 보기를 넷까지 채운다.
+    if (others.length < 3) {
+      const subjectWords = books[term][subject].units.flatMap(row => row.words);
+      const extra = shuffle((word.foils || []).map(name => subjectWords.find(row => row.w === name)).filter(Boolean))
+        .slice(0, 3 - others.length).map(row => ({ mean: row.mean, other: row.w }));
+      others = others.concat(extra);
+    }
     return { kind: 'sense', word, target, choices: shuffle([target, ...others]) };
   }
   // 반의어·유의어가 있는 낱말은 '뜻이 반대인(비슷한) 낱말은?'으로 묻는다. 보기는 관계없는 같은 단원 낱말.
@@ -406,7 +413,7 @@
       if (item.kind === 'sense') {
         return item.choices.map(row => ({
           label: row.mean, right: row === item.target,
-          wrong: row.use ? sentenceWith(row.use, word.w, '그 뜻으로는 이렇게 씁니다: ') : null
+          wrong: row.other ? element('p', `그것은 '${row.other}'의 뜻입니다.`, 'wrong-note') : row.use ? sentenceWith(row.use, word.w, '그 뜻으로는 이렇게 씁니다: ') : null
         }));
       }
       if (item.kind === 'rel') {
@@ -417,10 +424,11 @@
       }
       // 오답은 이 낱말에 골라 둔 헷갈리는 후보(같은 과목 낱말)에서 먼저 뽑고, 모자라면 단원 낱말로 채운다.
       const subjectWords = books[term][subject].units.flatMap(row => row.words);
-      const picked = shuffle((word.foils || []).map(name => subjectWords.find(row => row.w === name)).filter(row => row && row !== word)).slice(0, 3);
+      // 같은 갈래 낱말이 목록에 없을 때는 목록 밖 낱말(야크, 낙타 …)도 오답으로 쓴다. 그때는 틀린 말 풀이가 없다.
+      const picked = shuffle((word.foils || []).filter(name => name !== word.w).map(name => subjectWords.find(row => row.w === name) || { w: name })).slice(0, 3);
       const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row))).slice(0, 3 - picked.length);
       return shuffle([word, ...picked, ...rest])
-        .map(row => ({ label: row.w, right: row === word, wrong: element('p', `${row.w}: ${row.mean}`, 'wrong-note') }));
+        .map(row => ({ label: row.w, right: row === word, wrong: row.mean ? element('p', `${row.w}: ${row.mean}`, 'wrong-note') : null }));
     }
 
     function next() {
