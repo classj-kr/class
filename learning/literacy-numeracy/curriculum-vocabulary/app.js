@@ -2,7 +2,6 @@
   'use strict';
 
   const books = window.CurriculumWords || {};
-  const scenes = window.CurriculumScenes || {};
   const termSelect = document.getElementById('term');
   const subjectList = document.getElementById('subjects');
   const unitList = document.getElementById('unit-list');
@@ -79,10 +78,15 @@
   let sceneTimer = null;
   const stopScene = () => { clearTimeout(sceneTimer); sceneTimer = null; };
 
+  // 그림 한 장 위에 칸 글이 차례로 뜬다. 그림은 칸마다 천천히 다가간다.
   function sceneOf(scene) {
     const box = element('figure', '', 'scene');
     const stage = element('div', '', 'stage');
-    stage.innerHTML = scene.svg;
+    const picture = element('img');
+    picture.src = `images/${term}/${scene.pic}`;
+    picture.alt = '';
+    picture.decoding = 'async';
+    stage.append(picture);
     const caption = element('figcaption', '', 'caption');
     caption.setAttribute('aria-live', 'polite');
     const controls = element('div', '', 'beats');
@@ -122,8 +126,7 @@
     const hanja = hanjaOf(word);
     if (hanja) head.append(hanja);
     page.append(head);
-    const scene = scenes[`${term}/${subject}/${unit.id}/${word.w}`];
-    if (scene) page.append(sceneOf(scene));
+    if (word.pic && word.beats) page.append(sceneOf(word));
     const mean = element('p', '', 'word-mean');
     mean.append(element('span', '뜻', 'tag'), word.mean);
     page.append(mean, sentenceWith(word.use, word.w));

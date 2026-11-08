@@ -11,6 +11,25 @@ const order = ['국어', '수학', '사회', '과학'];
 const after = /^(의|도|만|에서|에게|에|까지|부터|처럼|보다|\(이\)라고|\(이\)라는|\(으\)로|을\/를|이\/가|은\/는|와\/과|인|이다|입니다)/;
 const problems = [];
 const data = {};
+const codes = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' };
+const picDir = path.resolve(here, '../../learning/literacy-numeracy/curriculum-vocabulary/images', term);
+// 그림 명세·영어·설명은 extra/*.json 에 따로 둔다: { 단원 id: { 낱말: { en, beats, explain, img, imgKo } } }
+const extra = {};
+const extraDir = path.join(dir, 'extra');
+if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(n => n.endsWith('.json'))) {
+  const code = name.replace(/(-[a-z])?\.json$/, '');
+  for (const [unit, words] of Object.entries(JSON.parse(fs.readFileSync(path.join(extraDir, name), 'utf8')))) {
+    for (const [w, row] of Object.entries(words)) extra[`${code}/${unit}/${w}`] = row;
+  }
+}
+// 그림 파일 이름: <과목>-<단원>-<두 자리 차례>. 파일 크기·시각으로 버전을 붙인다(서버가 그림을 오래 캐시한다).
+const picOf = (code, unit, index) => {
+  const id = `${code}-${unit}-${String(index + 1).padStart(2, '0')}`;
+  const file = path.join(picDir, id + '.webp');
+  if (!fs.existsSync(file)) return null;
+  const st = fs.statSync(file);
+  return `${id}.webp?v=${(st.size % 100000).toString(36)}${Math.floor(st.mtimeMs / 1000).toString(36)}`;
+};
 
 for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
   const book = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
@@ -36,12 +55,17 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
       }
     }
   }
+  const code = codes[book.subject];
   data[book.subject] = {
     book: book.book,
     units: book.units.map(unit => ({
       id: unit.id,
       title: unit.title,
-      words: unit.words.map(({ w, hanja, en, mean, explain, use, blanks }) => Object.fromEntries(Object.entries({ w, hanja, en, mean, explain, use, blanks }).filter(([, v]) => v)))
+      words: unit.words.map((word, index) => {
+        const more = extra[`${code}/${unit.id}/${word.w}`] || {};
+        const row = { w: word.w, hanja: word.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, pic: picOf(code, unit.id, index) };
+        return Object.fromEntries(Object.entries(row).filter(([, v]) => v));
+      })
     }))
   };
 }
