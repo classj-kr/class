@@ -1,10 +1,10 @@
 {
   "family": "ClassJ Pen M",
-  "version": "1.700",
+  "version": "1.800",
   "weight": 500,
   "hangulSyllables": 11172,
   "compatibilityJamo": 51,
-  "sourceSha256": "358bc99b32567168c77c7fe09983b93cf3f4c4ba70ab6a73ce48e643c737ca98",
-  "ttfBytes": 22697292,
-  "woff2Bytes": 575332
+  "sourceSha256": "e27f09599cff4b08dd7f171d484cc57a9c5f5c6f223d29246dcbca73f0a1f5bb",
+  "ttfBytes": 22691380,
+  "woff2Bytes": 577292
 }

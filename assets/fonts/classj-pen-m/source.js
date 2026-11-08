@@ -1185,6 +1185,7 @@
     finishPenM15(char, parts);
     refinePenM16(char, parts);
     refinePenM17(char, parts);
+    refinePenM18(char, parts);
     // A small shared deformation must not turn an uncommon syllable into
     // touching initial/final consonants. Retain the already checked draft there.
     const ii=parts.findIndex(p=>p.kind==='initial'),fi=parts.findIndex(p=>p.kind==='final');
@@ -1622,6 +1623,86 @@
       line(vowel,0,[48.45,32.7],[48.45,atX(vowel.paths[1],48.45)]);
     }
   }
+  function refinePenM18(char, parts) {
+    if('를어푸늘름거띠'.includes(char)) return;
+    const n=char.codePointAt(0)-0xac00,a=CHO[Math.floor(n/588)],b=JUNG[Math.floor(n/28)%21],c=JONG[n%28];
+    const initial=parts.find(p=>p.kind==='initial'),vowels=parts.filter(p=>p.kind==='vowel'),vowel=vowels[0],final=parts.find(p=>p.kind==='final');
+    const set=(part,i,path,pen)=>{const old=part.paths[i];part.paths[i]=sample(path,old.length);if(pen||old.pen) part.paths[i].pen=pen||old.pen;};
+    const line=(part,i,start,end)=>set(part,i,stroke(start,end));
+    const atX=(path,x)=>{
+      for(let i=1;i<path.length;i++) if(x>=path[i-1][0]&&x<=path[i][0]) {const t=(x-path[i-1][0])/(path[i][0]-path[i-1][0]||1);return path[i-1][1]+t*(path[i][1]-path[i-1][1]);}
+      return path.reduce((p,q)=>Math.abs(p[0]-x)<Math.abs(q[0]-x)?p:q)[1];
+    };
+    const bar=(part,i,level,slope,start,end)=>{const p=part.paths[i],x=start??p[0][0],z=end??p.at(-1)[0];line(part,i,[x,level+slope*x],[z,level+slope*z]);};
+    const endAt=(path,target,reach=12)=>{const end=[...path.at(-1)],d=target.map((x,i)=>x-end[i]);for(const p of path){const t=Math.max(0,1-distance(p,end)/reach),w=t*t*(3-2*t);p[0]+=d[0]*w;p[1]+=d[1]*w;}};
+    // Leave a deliberate pen lift in the compact bieup, and remove wavy bars.
+    if(c==='ㅄ'&&'ㅏㅑㅐㅒㅓㅕㅔㅖㅣ'.includes(b)) {
+      const left=final.paths[0],end=left.at(-1),offset='ㅓㅕㅔㅖ'.includes(b)?.13:0;
+      bar(final,2,74.7,0,end[0]+6.4);
+      bar(final,3,92.34+offset,-.0417,end[0]);
+    }
+    if(!c&&a==='ㄴ'&&b==='ㅗ') {
+      const x=45.95;line(vowel,0,[x,atX(initial.paths[0],x)],[x,atX(vowel.paths[1],x)]);
+    }
+    // Keep the initial gieuk clear of the horizontal vowel above a rieul-siot final.
+    if(a==='ㄱ'&&b==='ㅗ'&&c==='ㄽ') {
+      const p=initial.paths[0];endAt(p,[p.at(-1)[0]+1.5,37.5],16);
+    }
+    if(c==='ㅀ'&&b==='ㅗ') {
+      set(final,3,stroke([54.2,57.9],[58.5,59.6,63.6,60.2,68.5,60.2]));
+      bar(final,4,69.4,-.0291);
+    }
+    // Shared narrow rieul retains three levels without a bulging right turn.
+    if((b==='ㅗ'&&(c==='ㄽ'||c==='ㅀ'))||(b==='ㅜ'&&c==='ㄺ')||(b==='ㅡ'&&c==='ㄿ')||('ㅏㅑㅐㅒ'.includes(b)&&c==='ㄾ')) {
+      const p=final.paths[0],mid=final.paths[1],corner={'ㅀ':39.55,'ㄽ':41.55,'ㄺ':42.65,'ㄿ':41.05,'ㄾ':40.05}[c];
+      const level=b==='ㅗ'?75.8:b==='ㅜ'?76.73:76.25,slope=-.016;
+      const top={'ㅀ':62.37,'ㄽ':62.22,'ㄺ':64.30,'ㄿ':63.40,'ㄾ':63.40}[c];
+      set(final,0,stroke([p[0][0],top-.052*p[0][0]],[corner,top-.052*corner],[corner-.95,level+slope*(corner-.95)]));
+      bar(final,1,level,slope,mid[0][0],corner+.2);
+      const foot=final.paths[2],start=[...foot[0]],dy=atX(final.paths[1],start[0])-start[1];
+      for(const q of foot){const t=Math.max(0,1-distance(q,start)/8);q[1]+=dy*t*t*(3-2*t);}
+    }
+    if(a==='ㅂ'&&b==='ㅜ'&&c==='ㄺ') {
+      bar(initial,2,21.72,-.0224);bar(initial,3,36.71,-.0167);
+      bar(vowel,0,48.1,-.0185);
+      line(vowel,1,[46.05,atX(vowel.paths[0],46.05)],[46.05,atX(final.paths[0],46.05)]);
+    }
+    if(c==='ㄿ'&&b==='ㅡ') {
+      bar(final,3,64.28,-.0256);bar(final,6,91.03,-.0079);
+      set(final,4,stroke([53.1,69.8],[55.3,74,55.9,82.5,55.9,90.6]),{entry:false});
+      set(final,5,stroke([67.4,69.1],[69.3,71.4,69.2,79.7,67,90.5]),{entry:false});
+    }
+    if(c==='ㄾ'&&'ㅏㅑㅐㅒ'.includes(b)) {
+      const p=final.paths[5],startX=p[0][0],x=startX+.6;
+      bar(final,3,63.76,-.0213,x-3.5);bar(final,4,76.61,-.0194,x);
+      for(const q of p) q[0]+=.6*Math.max(0,1-(q[0]-startX)/10);
+    }
+    if(a==='ㅇ'&&b==='ㅕ'&&c==='ㅍ') {
+      bar(vowel,0,23.85,-.0272);bar(vowel,1,42.86,-.0273);
+      bar(final,0,64.27,-.0209);bar(final,3,91.62,-.0187);
+      set(final,1,stroke([36.1,70.7],[37.8,73.5,40,83.4,40,90.9]),{entry:false});
+      const right=final.paths[2];endAt(right,[right.at(-1)[0]+1.9,right.at(-1)[1]],12);
+    }
+    if(a==='ㅎ'&&b==='ㅕ'&&c==='ㅂ') {
+      bar(vowel,0,35.38,-.0349);bar(vowel,1,51.37,-.0347);
+      bar(final,2,76.01,-.0238);bar(final,3,91.97,-.0188);
+    }
+    if(a==='ㄱ'&&b==='ㅜ'&&c==='ㅂ') bar(final,2,73.68,-.0207);
+    if(a==='ㅍ'&&b==='ㅏ'&&c==='ㅌ') {
+      bar(initial,0,17.04,-.0211);bar(initial,3,49.85,-.0617);bar(vowel,1,36.87,-.0282);
+      for(const i of [1,2]) for(const p of initial.paths[i]) p[0]-=1.2;
+      bar(final,0,63.11,-.0103);bar(final,1,75.9,-.0106);
+    }
+    if(a==='ㅅ'&&!c&&b==='ㅗ') {
+      const p=initial.paths[0],head=[...p[0]];
+      for(const q of p){const t=Math.max(0,1-distance(q,head)/10);q[1]+=1.3*t*t*(3-2*t);}
+      endAt(p,[p.at(-1)[0]-.6,p.at(-1)[1]+.4],12);
+      set(initial,1,stroke([44.8,29.3],[55,35.8,67,42.8,77.8,49.3]));
+    }
+    if(a==='ㅊ'&&!c&&b==='ㅗ') {
+      set(initial,2,stroke([44.8,40.6],[54,44.5,65,49.1,75,53.3]));
+    }
+  }
   function polishPenStrokes(char, parts) {
     if('를어푸늘름거'.includes(char)) return;
     if(!parts.some(part=>M_STROKE_POLISH[auditGroup(char,part)])) return;
@@ -1851,7 +1932,7 @@
     CHO,
     JUNG,
     JONG,
-    VERSION: 15,
+    VERSION: 16,
     FAMILY: 'ClassJ Pen M',
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
