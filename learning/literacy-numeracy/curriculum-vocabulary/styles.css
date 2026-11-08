@@ -138,7 +138,17 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 .meaning .word-use { margin: 2px 0 0; }
 .meanings.has-others .meaning.own .word-mean::after { content: '이 단원'; margin-left: 8px; padding: 1px 7px; border-radius: 6px; background: var(--wash); color: var(--green); font-size: .78rem; font-weight: 800; font-family: var(--gothic); vertical-align: 2px; display: inline-block; white-space: nowrap; }
 .hanja-glyph.small { font-size: 1.15rem; }
-.meanings.others { counter-reset: sense 1; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.meanings.others { margin-top: 8px; }
+.sense-group { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.sense-group + .sense-group { border-top: 0; padding-top: 4px; }
+.sense-kind { display: flex; align-items: baseline; gap: 8px; margin: 0; font-family: var(--gothic) !important; }
+.sense-kind b { padding: 2px 10px; border-radius: 7px; font-size: .9rem; font-weight: 800; color: white; }
+.sense-kind span { font-size: .92rem; font-weight: 700; color: var(--muted); }
+.polysemy .sense-kind b { background: var(--green); }
+.homonym .sense-kind b { background: #9b4607; }
+.polysemy .meaning::before { background: var(--wash); color: var(--green); }
+.homonym .meaning::before { background: #fbe9da; color: #9b4607; }
+.homonym .hanja-glyph.small { color: #9b4607; }
 .word-title .say { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 4px 12px 4px 14px; border: 1px solid #f0d2b8; border-radius: 20px; background: #fff7ef; color: #9b4607; cursor: pointer; }
 .word-title .say:hover { background: #ffeedd; }
 .word-title .say svg { width: 22px; height: 22px; flex: none; }
