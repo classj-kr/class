@@ -187,7 +187,7 @@
     return chip(566, 96, '내 손으로', 0);
   };
   const plotFrame = (n) => {
-    let s = at(n, 'fin', `<path d="M30 306 H620" stroke="${C.line}" stroke-width="3"/><path d="M24 306 V68" stroke="${C.muted}" stroke-width="3"/>` + head(24, 62, -Math.PI / 2, C.muted, 3) + text(38, 72, '긴장', { size: 18, color: C.muted, anchor: 'start' }));
+    let s = at(n, 'fin', `<path d="M30 306 H620" stroke="${C.line}" stroke-width="3"/><path d="M24 306 V68" stroke="${C.muted}" stroke-width="3"/>` + head(24, 62, -Math.PI / 2, C.muted, 3) + text(38, 96, '긴장', { size: 18, color: C.muted, anchor: 'start' }));
     return s;
   };
   const dividers = (n, delay = 0) => `<g class="b${n}">` + [1, 2, 3].map((k) => g(`fin fin${n}`, `<path d="M${PLOT.X[k]} 56 V306" stroke="${C.muted}" stroke-width="2.5" stroke-dasharray="7 7"/>`, delay + k * 0.15)).join('') + '</g>';

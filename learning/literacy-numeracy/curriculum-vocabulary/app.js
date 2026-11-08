@@ -545,7 +545,7 @@
     leavePractice = null;
     lesson.setAttribute('aria-label', unit?.title || '학습 내용');
     if (!unit) {
-      lesson.replaceChildren(element('p', '이 학기의 교과 단어는 준비 중입니다.', 'empty'));
+      lesson.replaceChildren(element('p', '이 학기의 교과서 단어는 준비 중입니다.', 'empty'));
       return;
     }
     if (mode === 'practice') {

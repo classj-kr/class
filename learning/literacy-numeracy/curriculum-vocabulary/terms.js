@@ -16,7 +16,7 @@ window.CurriculumTerms = {
  "6-2": {
   "words": "words-6-2.js?v=ec4ff8fc",
   "figures": [
-   "figures/6-2/kor.js?v=d58bfd16",
+   "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
    "figures/6-2/math-2.js?v=e0bc27af",
    "figures/6-2/math-3.js?v=e9006014",
@@ -30,6 +30,17 @@ window.CurriculumTerms = {
 };
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
+ "3-2": {
+  "words": "words-3-2.js?v=b0f5b18f",
+  "figures": []
+ },
+ "4-2": {
+  "words": "words-4-2.js?v=1d7fc32f",
+  "figures": [
+   "figures/4-2/math-1.js?v=a293f916",
+   "figures/4-2/math-4.js?v=fd0993c2"
+  ]
+ },
  "5-2": {
   "words": "words-5-2.js?v=3d652a28",
   "figures": [
@@ -46,7 +57,7 @@ window.CurriculumTermsPreview = {
  "6-2": {
   "words": "words-6-2.js?v=ec4ff8fc",
   "figures": [
-   "figures/6-2/kor.js?v=d58bfd16",
+   "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
    "figures/6-2/math-2.js?v=e0bc27af",
    "figures/6-2/math-3.js?v=e9006014",
