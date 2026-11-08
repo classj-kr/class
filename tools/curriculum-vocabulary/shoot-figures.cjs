@@ -20,7 +20,7 @@ const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 't
     if (u.hostname !== 'shots.test' || !fs.existsSync(file)) return route.fulfill({ status: 404, body: '' });
     return route.fulfill({ contentType: mime[path.extname(file)] || 'application/octet-stream', body: fs.readFileSync(file) });
   });
-  await page.goto(`http://shots.test/learning/literacy-numeracy/curriculum-vocabulary/?${new URLSearchParams({ term, subject, unit })}`);
+  await page.goto(`http://shots.test/learning/literacy-numeracy/curriculum-vocabulary/?${new URLSearchParams({ term, subject, unit, preview: '1' })}`);
   await page.evaluate(() => document.fonts.ready);
   const words = await page.locator('.chips button:not(.practice-chip)').allTextContents();
   for (const word of words) {

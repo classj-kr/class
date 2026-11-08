@@ -8,7 +8,9 @@ const root = path.resolve(__dirname, '..');
 const base = '/learning/literacy-numeracy/curriculum-vocabulary/';
 // 앱에 내보낸 학기(terms.js)마다 낱말 파일을 읽는다.
 const termsSrc = fs.readFileSync(path.join(root, base, 'terms.js'), 'utf8');
-const manifest = JSON.parse(termsSrc.slice(termsSrc.indexOf('{'), termsSrc.lastIndexOf('}') + 1));
+const sandbox = { window: {} };
+require('node:vm').runInNewContext(termsSrc, sandbox);
+const manifest = sandbox.window.CurriculumTerms;
 for (const key of Object.keys(manifest)) require('..' + base + 'words-' + key + '.js');
 const books = globalThis.CurriculumWords;
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.webp': 'image/webp' };
