@@ -396,7 +396,11 @@
           return { label: name, right: name === item.answer, wrong: other ? element('p', `${other.w}: ${other.mean}`, 'wrong-note') : null };
         });
       }
-      return shuffle([word, ...shuffle(pool.filter(row => row !== word)).slice(0, 3)])
+      // 오답은 이 낱말에 골라 둔 헷갈리는 후보(같은 과목 낱말)에서 먼저 뽑고, 모자라면 단원 낱말로 채운다.
+      const subjectWords = books[term][subject].units.flatMap(row => row.words);
+      const picked = shuffle((word.foils || []).map(name => subjectWords.find(row => row.w === name)).filter(row => row && row !== word)).slice(0, 3);
+      const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row))).slice(0, 3 - picked.length);
+      return shuffle([word, ...picked, ...rest])
         .map(row => ({ label: row.w, right: row === word, wrong: element('p', `${row.w}: ${row.mean}`, 'wrong-note') }));
     }
 

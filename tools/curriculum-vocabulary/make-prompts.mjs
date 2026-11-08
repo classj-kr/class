@@ -24,7 +24,7 @@ const castOut = (text) => {
 };
 const extra = {};
 // build.mjs 와 같은 차례: kor.json 먼저, kor-g.json 같은 덧붙임 파일은 나중에 칸마다 덮어쓴다.
-for (const name of fs.readdirSync(path.join(dir, 'extra')).filter(n => n.endsWith('.json') && !n.startsWith('senses') && !n.startsWith('rel')).sort((a, b) => (/-[a-z]\.json$/.test(a) - /-[a-z]\.json$/.test(b)) || a.localeCompare(b))) {
+for (const name of fs.readdirSync(path.join(dir, 'extra')).filter(n => n.endsWith('.json') && !n.startsWith('senses') && !n.startsWith('rel') && !n.startsWith('foils')).sort((a, b) => (/-[a-z]\.json$/.test(a) - /-[a-z]\.json$/.test(b)) || a.localeCompare(b))) {
   const code = name.replace(/(-[a-z])?\.json$/, '');
   for (const [unit, words] of Object.entries(JSON.parse(fs.readFileSync(path.join(dir, 'extra', name), 'utf8')))) for (const [w, row] of Object.entries(words)) extra[`${code}/${unit}/${w}`] = { ...extra[`${code}/${unit}/${w}`], ...row };
 }

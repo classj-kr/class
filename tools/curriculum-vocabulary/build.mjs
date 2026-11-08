@@ -37,8 +37,15 @@ if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(
     }
   }
 }
+// foils-*.json: { 과목 코드: { 단원 id: { 낱말: [오답 후보 낱말…] } } } — 연습에서 읽어야 가려지는 헷갈리는 오답(같은 과목 낱말)
+const foils = {};
+if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(n => /^foils.*\.json$/.test(n))) {
+  for (const [code, units] of Object.entries(JSON.parse(fs.readFileSync(path.join(extraDir, name), 'utf8')))) {
+    for (const [unit, words] of Object.entries(units)) for (const [w, list] of Object.entries(words)) if (list?.length) foils[`${code}/${unit}/${w}`] = list;
+  }
+}
 // kor.json 을 먼저, kor-g.json(글자 도식의 칸 글처럼 덧붙이는 파일)을 나중에 읽어 칸마다 덮어쓴다.
-const extraNames = fs.existsSync(extraDir) ? fs.readdirSync(extraDir).filter(n => n.endsWith('.json') && !n.startsWith('senses') && !n.startsWith('rel'))
+const extraNames = fs.existsSync(extraDir) ? fs.readdirSync(extraDir).filter(n => n.endsWith('.json') && !n.startsWith('senses') && !n.startsWith('rel') && !n.startsWith('foils'))
   .sort((a, b) => (/-[a-z]\.json$/.test(a) - /-[a-z]\.json$/.test(b)) || a.localeCompare(b)) : [];
 for (const name of extraNames) {
   const code = name.replace(/(-[a-z])?\.json$/, '');
@@ -103,7 +110,7 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
         const readings = [...(word.hanja || more.hanja || []).map(h => h[1]), ...explainRows.flatMap(line => [...line.matchAll(/[一-鿿]\(([^)]+)\)/g)].map(m => m[1]))];
         for (const r of readings) if (oldReadings.some(o => r.startsWith(o))) problems.push(`${book.subject} ${unit.id} ${word.w}: 어려운 한자 훈 — ${r}`);
         // 한자는 원고(kor.json 등)에 없으면 덧붙임 파일(-x)의 hanja 를 쓴다.
-        const row = { w: word.w, hanja: word.hanja || more.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, senses: senses[`${code}/${unit.id}/${word.w}`], rel: rels[`${code}/${unit.id}/${word.w}`], pic: picOf(code, unit.id, index) };
+        const row = { w: word.w, hanja: word.hanja || more.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, senses: senses[`${code}/${unit.id}/${word.w}`], rel: rels[`${code}/${unit.id}/${word.w}`], foils: foils[`${code}/${unit.id}/${word.w}`], pic: picOf(code, unit.id, index) };
         return Object.fromEntries(Object.entries(row).filter(([, v]) => v).map(([k, v]) => [k, k === 'pic' || k === 'en' ? v : glue(v)]));
       })
     }))
