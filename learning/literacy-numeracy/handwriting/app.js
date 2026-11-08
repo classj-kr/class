@@ -47,8 +47,17 @@
   const Font = window.HandwritingFont,
     STYLE_FONTS = { gyeongpil: 'PracticeReference', badasseugi: 'PracticeReferenceBadasseugi' },
     STYLE_WEIGHTS = { gyeongpil: 500, badasseugi: 400 },
-    STYLE_PEN = { gyeongpil: 5.5, badasseugi: 3.5 };
+    // 화면에 보이는 본보기 획 굵기(글꼴 획 굵기 × 칸 맞춤 비율)가 '보통'이다.
+    STYLE_PEN = { gyeongpil: [2.9, 3.9, 5.2], badasseugi: [2.4, 3.3, 4.4] },
+    OLD_PEN = [3.5, 5.5, 7.5];
   let roomStyle = null;
+  // 펜 굵기는 단계(가늘게·보통·굵게)를 지키고 값은 지금 글씨체에 맞춘다.
+  function syncPen() {
+    const list = STYLE_PEN[Font.style()] || STYLE_PEN.gyeongpil,
+      level = [...Object.values(STYLE_PEN), OLD_PEN].map((l) => l.indexOf(doc.width)).find((i) => i >= 0);
+    doc.width = list[level ?? 1];
+    [...$('penWidth').options].forEach((o, i) => (o.value = String(list[i])));
+  }
   function applyStyle(name) {
     Font.setStyle(STYLE_FONTS[name] ? name : 'gyeongpil');
     $('styleSelect').value = Font.style();
@@ -56,7 +65,7 @@
   // 교과서 칸 공책처럼 글자 높이가 칸의 70%쯤 되고 칸 한가운데 오게 한다. 글꼴마다 글자의 평균 잉크 상자
   // (모형 단위: 높이 h, 가운데 cx·cy)를 재 둔 값이다. 쓴 획은 채점 전에 본보기 좌표로 되돌린다.
   const STYLE_FIT = {
-      gyeongpil: { h: 91.3, cx: 44.7, cy: 48.4 },
+      gyeongpil: { h: 90.9, cx: 44.9, cy: 48.7 },
       badasseugi: { h: 85.8, cx: 42, cy: 50 },
     },
     GLYPH_HEIGHT = 70;
@@ -98,7 +107,7 @@
       phase,
       index: 0,
       guide: true,
-      width: 5.5,
+      width: 3.9,
       cells: { trace: C.chars(text).map(() => []), solo: C.chars(text).map(() => []) },
     };
   }
@@ -323,6 +332,7 @@
     $('anotherText').hidden = inRoom || !isBank(doc.lesson);
     $('strokeCount').textContent = `‘${chars[doc.index]}’ ${model.length}획`;
     $('guideCheck').checked = doc.guide;
+    syncPen();
     $('penWidth').value = String(doc.width);
     document.querySelectorAll('[data-phase]').forEach((b) => {
       b.setAttribute('aria-pressed', String(b.dataset.phase === doc.phase));
@@ -728,7 +738,7 @@
       cancel();
       applyStyle($('styleSelect').value);
       store.set('font-style', Font.style());
-      doc.width = STYLE_PEN[Font.style()];
+      syncPen();
       save();
       render();
     };
