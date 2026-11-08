@@ -9,8 +9,6 @@ for (const groupName of ['story-books', 'writing', 'vocabulary', 'information-co
   assert.ok(groupByName.has(groupName), `Missing disclosure menu: ${groupName}`);
 }
 
-const storyBooks = groupByName.get('story-books') || '';
-assert.match(storyBooks, /data-content-paths="learning\/literacy-numeracy\/story-books\/\|/);
 assert.ok(
   html.indexOf('data-access-group="story-books"') < html.indexOf('aria-labelledby="exploration-title"'),
   'Story books must remain in the literacy and numeracy section.',
@@ -18,7 +16,7 @@ assert.ok(
 
 // 역사와 지도는 역사·지리, 실험과 모형은 과학 모형에서 바로 고른다.
 assert.ok(!groupByName.has('korea-maps'), 'The domestic-map tools are one app now, not a disclosure menu.');
-assert.match(html, /<a href="learning\/inquiry\/korea-map\/" data-requires-player="true" data-access-parent="social-studies"[^>]*>\s*<span class="worksheet-copy"><strong>국내 지도<\/strong>/);
+assert.match(html, /<a href="learning\/inquiry\/korea-map\/" data-requires-player="true"[^>]*>\s*<span class="worksheet-copy"><strong>국내 지도<\/strong>/);
 assert.doesNotMatch(html, /href="learning\/inquiry\/(?:korean-museum|korea-travel-map|korea-geography|korea-terrain)\//);
 assert.ok(
   html.indexOf('href="learning/inquiry/korea-map/"') > html.indexOf('aria-labelledby="exploration-title"'),
@@ -28,11 +26,10 @@ assert.ok(
 const socialStudies = groupByName.get('social-studies') || '';
 assert.ok(socialStudies, 'History and maps must be grouped in the social-studies menu.');
 assert.match(socialStudies, /<strong>역사·지리<\/strong><small>\(History &amp; Geography\)<\/small>/);
-assert.match(socialStudies, /href="learning\/inquiry\/korean-history\/"[^>]*data-access-parent="social-studies"[\s\S]*?<strong>한능검\(기본\) 기출<\/strong>/);
+assert.match(socialStudies, /href="learning\/inquiry\/korean-history\/"[^>]*>[\s\S]*?<strong>한능검\(기본\) 기출<\/strong>/);
 assert.ok(!groupByName.has('world-maps') && !groupByName.has('science-models'), 'Subject menus must link to apps without another map or model submenu.');
-assert.match(socialStudies, /data-content-paths="learning\/inquiry\/korean-history\/\|learning\/inquiry\/korea-map\/\|learning\/inquiry\/world-geography\/\|learning\/inquiry\/globe\/\|\/learn\/world-voyage\/"/);
-assert.match(socialStudies, /href="learning\/inquiry\/globe\/"[^>]*data-access-parent="social-studies"[\s\S]*?<strong>세계 지도<\/strong>/);
-assert.match(socialStudies, /id="cds95GameLink"[\s\S]*?href="\/learn\/world-voyage\/"[\s\S]*?data-player-handoff="query"[\s\S]*?data-access-parent="social-studies"[\s\S]*?<strong>대항해시대<\/strong>/);
+assert.match(socialStudies, /href="learning\/inquiry\/globe\/"[^>]*>[\s\S]*?<strong>세계 지도<\/strong>/);
+assert.match(socialStudies, /id="cds95GameLink"[\s\S]*?href="\/learn\/world-voyage\/"[\s\S]*?data-player-handoff="query"[\s\S]*?[\s\S]*?<strong>대항해시대<\/strong>/);
 
 const vocabulary = groupByName.get('vocabulary') || '';
 assert.ok(vocabulary, 'Vocabulary tools must be grouped in one disclosure menu.');
@@ -47,7 +44,7 @@ const orderedVocabularyItems = [
 ];
 let previousVocabularyIndex = -1;
 for (const [href, label] of orderedVocabularyItems) {
-  assert.match(vocabulary, new RegExp(`href="${href}"[^>]*data-access-parent="vocabulary"[\\s\\S]*?<strong>${label}<\\/strong>`));
+  assert.match(vocabulary, new RegExp(`href="${href}"[^>]*>[\\s\\S]*?<strong>${label}<\\/strong>`));
   const itemIndex = vocabulary.indexOf(`href="${href}"`);
   assert.ok(itemIndex > previousVocabularyIndex, `Vocabulary item ${label} must follow the requested order.`);
   previousVocabularyIndex = itemIndex;
@@ -56,16 +53,15 @@ for (const [href, label] of orderedVocabularyItems) {
 const writing = groupByName.get('writing') || '';
 assert.ok(writing, 'Writing activities must be grouped in one disclosure menu.');
 assert.match(writing, /<strong>쓰기<\/strong><small>\(Writing\)<\/small>/);
-assert.match(writing, /href="learning\/literacy-numeracy\/handwriting\/"[^>]*data-access-parent="writing"/);
-assert.match(writing, /href="learning\/literacy-numeracy\/spelling\/"[^>]*data-access-parent="writing"/);
-assert.match(writing, /href="learning\/literacy-numeracy\/sentence-building\/"[^>]*data-access-parent="writing"/);
+assert.match(writing, /href="learning\/literacy-numeracy\/handwriting\/"[^>]*/);
+assert.match(writing, /href="learning\/literacy-numeracy\/spelling\/"[^>]*/);
+assert.match(writing, /href="learning\/literacy-numeracy\/sentence-building\/"[^>]*/);
 assert.match(writing, /<strong>바른 문장 고르기<\/strong><small>\(Sentence Choice\)<\/small>/);
 assert.doesNotMatch(writing, /<strong>문장 만들기<\/strong>/);
 
 const science = groupByName.get('science') || '';
 assert.ok(science, 'Science experiments and models must share one subject menu.');
 assert.match(science, /<strong>과학 모형<\/strong><small>\(Science Models\)<\/small>/);
-assert.match(science, /data-content-paths="learning\/inquiry\/science-lab\/\|learning\/inquiry\/human-body\/\|learning\/inquiry\/space\/\|learning\/inquiry\/periodic-table\/"/);
 const orderedScienceItems = [
   ['learning/inquiry/science-lab/', '과학 실험'],
   ['learning/inquiry/human-body/', '인체 구조 모형'],
@@ -74,16 +70,14 @@ const orderedScienceItems = [
 ];
 let previousScienceIndex = -1;
 for (const [href, label] of orderedScienceItems) {
-  const itemPattern = new RegExp(`href="${href}"[^>]*data-access-parent="science"[\\s\\S]*?<strong>${label}<\\/strong>`);
+  const itemPattern = new RegExp(`href="${href}"[^>]*>[\\s\\S]*?<strong>${label}<\\/strong>`);
   assert.match(science, itemPattern);
   const itemIndex = science.indexOf(`href="${href}"`);
   assert.ok(itemIndex > previousScienceIndex, `Science item ${label} must follow the requested order.`);
   previousScienceIndex = itemIndex;
 }
 
-assert.match(html, /body\.content-access-editing \.worksheet-group-options \{[\s\S]*?display: none;/);
-assert.match(html, /Promise\.all\(paths\.map\(\(path\) => api\('\/api\/teacher\/home-content-access'/);
-assert.match(html, /하위 메뉴는 상위 설정을 함께 따릅니다/);
 assert.match(html, /@media \(max-width: 600px\)[\s\S]*?\.worksheet-group-options \{[\s\S]*?position: static;/);
 
-console.log('Grouped learning menus and inherited access contract passed.');
+assert.doesNotMatch(html, /data-content-paths=/);
+console.log('Grouped learning menus and individual access contract passed.');

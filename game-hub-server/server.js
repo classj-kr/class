@@ -29,6 +29,7 @@ const { createTypingRace } = require("./typing-race");
 const { createKoreanRace } = require("./korean-race");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
+const { GAME_PAGE_ALIASES } = require("./home-content-paths");
 const { redirectLegacyHosts } = require("./canonical-host");
 const { hideUnpublishedLessons } = require("./unpublished-lessons");
 const { createKmaWeather } = require("./kma-weather");
@@ -347,7 +348,7 @@ const staticAssetOptions = {
 // to stop them flashing. visibility (not display) keeps their size measurable.
 const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/index.html"].includes(location.pathname))document.documentElement.classList.add("site-back-pending")</script>'
   + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back,a.back-btn){visibility:hidden!important}</style>';
-const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20261019-emoji-label" defer></script>`;
+const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20261108-menu-locks" defer></script>`;
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>';
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20261029-lesson-navigation">';
 // 학교 공용 채팅 위젯: 메인 화면과 보드게임 쪽에만 끼운다. 학교 학생·교사가 아니면 위젯이 스스로 안 뜬다.
@@ -388,6 +389,9 @@ function sendSiteHtml(req, res, filepath, next) {
     ).replace(
       /(\/assets\/learning-records\.js)(?:\?[^"'<>\s]*)?/g,
       "$1?v=20261107-race-range"
+    ).replace(
+      /(\/assets\/site-back-navigation\.js)(?:\?[^"'<>\s]*)?/g,
+      "$1?v=20261108-menu-locks"
     );
 
     const htmlWithBackNavigation = htmlSource.includes("/assets/site-back-navigation.js")
@@ -546,6 +550,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   clue: "/learning/games/clue/clue",
   codenames: "/learning/games/codenames/codenames",
   dobble: "/learning/games/dobble/dobble",
+  "solar-system-ufo-flight": "/learning/inquiry/space/solar-system",
   circulation: "/learning/inquiry/human-body/circulation",
   digestion: "/learning/inquiry/human-body/digestion",
   respiration: "/learning/inquiry/human-body/respiration",
@@ -700,19 +705,8 @@ for (const file of SITE_PAGES) {
   app.get(`/${file}`, (req, res) => res.redirect(308, `${route}${req.url.slice(file.length + 1)}`));
 }
 
-for (const [friendlyPath, legacyPath, file] of [
-  ["/learning/games/shape-crossing", "/learning/games/traverse/traverse", "learning/games/traverse/traverse.html"],
-  ["/learning/games/spot-match", "/learning/games/dobble/dobble", "learning/games/dobble/dobble.html"],
-  ["/learning/games/code-words", "/learning/games/codenames/codenames", "learning/games/codenames/codenames.html"],
-  ["/learning/games/manor-mystery", "/learning/games/clue/clue", "learning/games/clue/clue.html"],
-  ["/learning/games/court-deduction", "/learning/games/loveletter/loveletter", "learning/games/loveletter/loveletter.html"],
-  ["/learning/games/quest-deduction", "/learning/games/avalon/avalon", "learning/games/avalon/avalon.html"],
-  ["/learning/games/number-tiles", "/learning/games/rummikub/rummikub", "learning/games/rummikub/rummikub.html"],
-  ["/learning/games/pattern-trio", "/learning/games/setgame/setgame", "learning/games/setgame/setgame.html"],
-  ["/learning/games/number-code", "/learning/games/davincicode/davincicode", "learning/games/davincicode/davincicode.html"],
-  ["/learning/games/corner-blocks", "/learning/games/blokus/blokus", "learning/games/blokus/blokus.html"],
-]) {
-  app.get(friendlyPath, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
+for (const [friendlyPath, legacyPath] of GAME_PAGE_ALIASES) {
+  app.get(friendlyPath, (req, res, next) => sendSiteHtml(req, res, resolveSitePath(SITE_ROOT, `${legacyPath}.html`), next));
   app.get(legacyPath, (req, res) => res.redirect(308, `${friendlyPath}${req.url.slice(legacyPath.length)}`));
 }
 
@@ -2104,7 +2098,11 @@ app.post("/api/finishers", async (req, res) => {
 
 server.on("upgrade", (request, socket, head) => {
   if (request.url.startsWith(`${WORLD_VOYAGE_PREFIX}/socket.io/`)) {
-    return proxyLearningUpgrade(WORLD_VOYAGE_PORT, WORLD_VOYAGE_PREFIX, request, socket, head);
+    void classroomPlatform.gameAccessError(request, WORLD_VOYAGE_PREFIX).then(code => {
+      if (code) socket.end("HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n");
+      else proxyLearningUpgrade(WORLD_VOYAGE_PORT, WORLD_VOYAGE_PREFIX, request, socket, head);
+    }).catch(() => socket.end("HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\n\r\n"));
+    return;
   }
   wss.handleUpgrade(request, socket, head, client => wss.emit("connection", client, request));
 });
@@ -2149,7 +2147,8 @@ wss.on("connection", (socket, request) => {
 
     const type = cleanToken(message.type, 30);
 
-    const requestedGameId = type === "CREATE_ROOM" || type === "JOIN_ROOM"
+    const enteringGame = type === "CREATE_ROOM" || type === "JOIN_ROOM";
+    const requestedGameId = enteringGame
       ? cleanToken(message.gameId, 30)
       : cleanToken(String(socket.meta.roomKey || "").split(":", 1)[0], 30);
     if (requestedGameId === "quizrace") {
@@ -2157,15 +2156,22 @@ wss.on("connection", (socket, request) => {
       return;
     }
     const requestedContentPath = MULTIPLAYER_CONTENT_PATHS[requestedGameId];
-    if (requestedContentPath && !await globalContentLockBypass) {
+    if (requestedContentPath) {
       try {
-        if (await classroomPlatform.isContentGloballyDisabled(requestedContentPath)) {
+        let code = "";
+        if (enteringGame) code = await classroomPlatform.gameAccessError(request, requestedContentPath);
+        else if (!await globalContentLockBypass && await classroomPlatform.isContentGloballyDisabled(requestedContentPath)) {
+          code = "CONTENT_GLOBALLY_DISABLED";
+        }
+        if (code) {
           safeSend(socket, {
             type: "ERROR",
-            code: "CONTENT_GLOBALLY_DISABLED",
-            message: "The administrator has disabled this game."
+            code,
+            message: code === "CONTENT_GLOBALLY_DISABLED" ? "전체관리자가 이 게임의 사용을 중지했습니다."
+              : code === "CONTENT_CLASS_LOCKED" ? "담임 선생님이 이 게임을 잠갔습니다."
+              : "로그인한 뒤 게임을 열어 주세요."
           });
-          try { socket.close(4003, "CONTENT_GLOBALLY_DISABLED"); } catch (_) {}
+          try { socket.close(4003, code); } catch (_) {}
           return;
         }
       } catch (error) {

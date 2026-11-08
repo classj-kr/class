@@ -15,31 +15,7 @@ assert.ok(raceLink, "방번호 입구 링크를 찾지 못했다.");
 assert.match(raceLink[0], /data-always-open="true"/,
   "방번호 입구은 늘 열어 두는 버튼으로 표시해야 한다.");
 
-// 2. 잠금 표시를 그리는 곳에서 먼저 걸러야 한다.
-assert.match(indexHtml, /hubLinks\.forEach\(\(link\) => \{[\s\S]{0,400}?link\.dataset\.alwaysOpen === 'true'/,
-  "잠금 표시를 그릴 때 늘 열어 두는 버튼을 먼저 걸러야 한다.");
-
-// 3. 우리 반 공개 설정과 전체 사용 중지, 두 모드 모두에서 눌러도 저장하지 않아야
-//    한다. 두 곳 다 막았는지 세어 본다.
-const guards = indexHtml.match(/selectedLink\.dataset\.alwaysOpen === 'true'/g) || [];
-assert.equal(guards.length, 2,
-  "우리 반 공개 설정과 전체 사용 중지 두 곳 모두에서 늘 열어 두는 버튼을 걸러야 한다.");
-
-// 4. 거른 자리가 저장 요청보다 앞에 있어야 한다. 뒤에 있으면 이미 보낸 뒤다.
-//    묶음 버튼(하위 메뉴를 함께 여는 상위 버튼)을 다루는 곳에도 같은 주소가 나오니,
-//    링크 하나를 다루는 두 가지 만 잘라서 본다.
-for (const [marker, api] of [
-  ['if (globalContentAccessEditing && selectedLink', '/api/admin/home-content-access'],
-  ['if (contentAccessEditing && selectedLink', '/api/teacher/home-content-access']
-]) {
-  const at = indexHtml.indexOf(marker);
-  assert.ok(at > -1, marker + ' 를 찾지 못했다.');
-  const block = indexHtml.slice(at, at + 1600);
-  const guardAt = block.indexOf("selectedLink.dataset.alwaysOpen === 'true'");
-  const apiAt = block.indexOf(api);
-  assert.ok(guardAt > -1, api + ' 를 다루는 곳에 거르는 자리가 없다.');
-  assert.ok(apiAt > -1, api + ' 를 그 자리에서 찾지 못했다.');
-  assert.ok(guardAt < apiAt, api + ' 로 저장하기 전에 늘 열어 두는 버튼을 걸러야 한다.');
-}
-
+// One shared handler protects the room link in both settings modes.
+assert.match(indexHtml, /const configurable = link\.dataset\.alwaysOpen !== 'true'/);
+assert.match(indexHtml, /if \(!selectedLink \|\| selectedLink\.dataset\.alwaysOpen === 'true'\) return;[\s\S]*?api\(global \? '\/api\/admin\/home-content-access' : '\/api\/teacher\/home-content-access'/);
 console.log("Room entry always open contract: OK");

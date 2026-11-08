@@ -202,17 +202,19 @@ async function captureWebp(page, name) {
       assert.equal(await keyboard.getAttribute('aria-expanded'), 'false');
     }
 
-    // Existing permission-edit clicks must be handled by the access gate,
-    // rather than also opening the submenu through the new motion controller.
+    // Editing still opens the accordion. Only an individual link writes a lock.
     await page.locator('#contentAccessButton').click();
     await settled(page);
     await page.locator('#category-literacy-toggle').click();
     await settled(page);
-    const story = '[data-access-group="story-books"] > summary';
-    await page.locator(story).click();
-    await page.waitForFunction(() => document.body.innerText.includes('공개했습니다'), null, { timeout: 3000 });
-    assert.equal(writes.length, 2);
-    assert.equal(await page.locator('[data-access-group="story-books"]').getAttribute('open'), null);
+    const story = page.locator('[data-access-group="story-books"]');
+    await story.locator('summary').click();
+    await settled(page);
+    assert.equal(writes.length, 0);
+    await story.locator('a[href="learning/literacy-numeracy/story-books/korea-tales/"]').click();
+    await page.waitForFunction(() => document.body.innerText.includes('이 메뉴를 잠갔습니다'), null, { timeout: 3000 });
+    assert.deepEqual(writes, [{ path: '/learning/literacy-numeracy/story-books/korea-tales', disabled: true }]);
+    assert.equal(await story.locator('summary').getAttribute('aria-expanded'), 'true');
     await page.locator('#contentAccessButton').click();
 
     await page.emulateMedia({ reducedMotion: 'reduce' });

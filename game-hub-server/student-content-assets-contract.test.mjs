@@ -30,11 +30,10 @@ test("documents and unsafe paths are never treated as static assets", () => {
   assert.equal(contentRootForStaticAsset("/learning/games/../admin/secret.js"), "");
 });
 
-test("student asset access remains tied to an enabled content path in the same folder", () => {
+test("authenticated assets do not inherit a different activity's class lock", () => {
   const gateStart = platformSource.indexOf("const requireSiteAccess = asyncRoute");
   const gateEnd = platformSource.indexOf("function signMuseumPresence", gateStart);
   const gateSource = platformSource.slice(gateStart, gateEnd);
-  assert.match(gateSource, /const assetRootPath = contentRootForStaticAsset\(requestPath\);/);
-  assert.match(gateSource, /\$3 <> '' AND \(content_path = \$3 OR content_path LIKE \$3 \|\| '\/%'\)/);
-  assert.match(gateSource, /\[classId, requestPath, assetRootPath\]/);
+  assert.match(gateSource, /await siteAccessIdentity\(req\)/);
+  assert.match(gateSource, /if \(!assetRootPath[\s\S]*?await isStudentContentLocked\(user, req\.originalUrl, requestPath\)/);
 });

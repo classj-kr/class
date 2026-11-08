@@ -177,10 +177,9 @@ test("관용구 화면과 메인 메뉴가 내용별 차시 학습에 연결된�
   // 2026-09-09 관용어·속담·한자성어는 메인 메뉴의 「어휘」 묶음으로 합쳐졌다.
   assert.match(menu, /data-access-group="vocabulary"/);
   assert.match(menu, /<strong>어휘<\/strong>/);
-  const vocabularyPaths = (menu.match(/data-access-group="vocabulary">\s*<summary[^>]*data-content-paths="([^"]+)"/) || [])[1] || "";
+  const vocabularyMenu = menu.match(/data-access-group="vocabulary">[\s\S]*?<\/details>/)?.[0] || "";
   for (const folder of ["idiomatic-expressions", "proverbs", "classical-chinese-idioms"]) {
-    assert.ok(vocabularyPaths.split("|").includes(`learning/literacy-numeracy/${folder}/`), folder);
-    assert.match(menu, new RegExp(`<a href="learning/literacy-numeracy/${folder}/"[^>]*data-access-parent="vocabulary"`), folder);
+    assert.ok(vocabularyMenu.includes(`href="learning/literacy-numeracy/${folder}/"`), folder);
   }
   // 끝난 뒤의 결과(맞힌 수)는 화면의 #score가 아니라 학습 기록 창이 보여 준다(2026-10-02).
   for (const id of [

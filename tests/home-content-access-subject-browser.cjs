@@ -1,224 +1,152 @@
-// 홈 화면의 메뉴 공개/잠금 단추를 실제 브라우저로 돌린다. 전담은 같은 단추로 가르치는 반 전부에
-// 오늘 하루 열고, 담임은 전담이 열어 둔 묶음을 보되 자기 공개만 껐다 켤 수 있다(닫히지 않는다).
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const express = require('../game-hub-server/node_modules/express');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 
 (async () => {
-  const puts = [];
-  let scenario = 'subject';
-  const access = {
-    subject: {
-      mode: 'open', enabledPaths: [], ownEnabledPaths: [], openedBySubjectTeachers: {}, globallyDisabledPaths: [],
-      hasClassAccess: false, canManage: true, manageScope: 'subject', managedClasses: ['3-1', '3-2', '4-1'], canManageGlobally: false
-    },
-    homeroom: {
-      mode: 'open', enabledPaths: ['/learning/literacy-numeracy/story-books', '/learning/literacy-numeracy/reading'], ownEnabledPaths: [],
-      openedBySubjectTeachers: { '/learning/literacy-numeracy/story-books': ['다전담'], '/learning/literacy-numeracy/reading': ['다전담'] },
-      globallyDisabledPaths: [], hasClassAccess: true, canManage: true, manageScope: 'homeroom', managedClasses: ['3-1'], canManageGlobally: false
-    },
-    student: {
-      mode: 'open', enabledPaths: ['/learning/inquiry/korean-history', '/learning/inquiry/science-lab'],
-      openedBySubjectTeachers: {}, globallyDisabledPaths: [], hasClassAccess: true, canManage: false, canManageGlobally: false
-    }
-  };
-  const me = {
-    subject: { signedIn: true, user: { id: 4, name: '다전담', email: 'music@school.test', role: 'teacher' } },
-    homeroom: { signedIn: true, user: { id: 2, name: '가교사', email: 'a@school.test', role: 'teacher' } },
-    student: { signedIn: true, user: { id: 5, name: '나학생', role: 'student' } }
-  };
-  const profiles = {
-    subject: [{ name: '다전담', schoolName: '시험학교', teacherType: '전담', grade: null, classNumber: null }],
-    homeroom: [{ name: '가교사', schoolName: '시험학교', teacherType: '담임', grade: 3, classNumber: 1 }],
-    student: []
-  };
+  const writes = [];
+  const classLocks = new Set();
+  const globalLocks = new Set();
+  let role = 'anonymous';
+  let mode = 'open';
+  const root = path.resolve(__dirname, '..');
   const app = express();
   app.use(express.json());
-  app.get('/api/site/access', (_req, res) => res.json({ mode: 'open' }));
-  app.get('/api/auth/me', (_req, res) => res.json(me[scenario]));
-  app.get('/api/teacher/profile', (_req, res) => res.json({ profiles: profiles[scenario] }));
-  app.get('/api/schools', (_req, res) => res.json({ schools: [] }));
-  app.get('/api/home-content-access', (_req, res) => res.json(access[scenario]));
-  app.put('/api/teacher/home-content-access', (req, res) => { puts.push(req.body); res.json({ ok: true, ...req.body }); });
-  app.use('/api', (_req, res) => res.status(404).json({ error: 'NOT_IN_TEST' }));
-  app.use(express.static(path.resolve(__dirname, '..', 'apps')));
-  app.use(express.static(path.resolve(__dirname, '..')));
-  const server = await new Promise((resolve) => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
-  const base = `http://127.0.0.1:${server.address().port}`;
-  const waitFor = async (page, count) => { for (let i = 0; i < 25 && puts.length < count; i += 1) await page.waitForTimeout(200); assert.equal(puts.length, count); };
-  // 서버가 요청을 받은 뒤에도 화면은 응답을 받고 나서야 바뀐다. 글과 속성은 나타날 때까지 기다린다.
-  const waitText = (page, pattern) => page.waitForFunction((source) => new RegExp(source).test(document.body.innerText), pattern.source, { timeout: 5000 });
-  const waitLocked = (page, selector, value) => page.locator(`${selector}[data-class-locked="${value}"]`).waitFor({ state: 'attached', timeout: 5000 });
-  const storyBooks = 'summary[data-content-paths="learning/literacy-numeracy/story-books/|learning/literacy-numeracy/reading/"]';
+  app.get('/api/site/access', (_req, res) => res.json({ mode }));
+  app.get('/api/auth/config', (_req, res) => res.json({ enabled: false, missing: [] }));
+  app.get('/api/auth/me', (_req, res) => res.json(role === 'anonymous'
+    ? { signedIn: false }
+    : { signedIn: true, user: { id: 1, name: '검증계정', role: ['homeroom', 'subject'].includes(role) ? 'teacher' : role } }));
+  app.get('/api/teacher/profile', (_req, res) => res.json({
+    profiles: ['homeroom', 'subject'].includes(role) ? [{ name: '검증교사', schoolName: '시험학교' }] : []
+  }));
+  app.get('/api/home-content-access', (req, res) => res.json(req.query.path ? {} : {
+    classDisabledPaths: ['homeroom', 'student'].includes(role) ? [...classLocks] : [],
+    globallyDisabledPaths: [...globalLocks], hasClassAccess: role === 'student',
+    canManage: role === 'homeroom', canManageGlobally: role === 'admin'
+  }));
+  for (const [scope, permittedRole, locks] of [['admin', 'admin', globalLocks], ['teacher', 'homeroom', classLocks]]) {
+    app.put('/api/' + scope + '/home-content-access', (req, res) => {
+      assert.equal(role, permittedRole);
+      const { path, disabled } = req.body;
+      writes.push({ scope, path, disabled });
+      if (disabled) locks.add(path);
+      else locks.delete(path);
+      res.json({ ok: true, ...req.body });
+    });
+  }
+  app.use(express.static(root));
+  const server = await new Promise(resolve => { const listener = app.listen(0, '127.0.0.1', () => resolve(listener)); });
+  const base = 'http://127.0.0.1:' + server.address().port;
   let browser;
   try {
-    browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
-    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-    const errors = []; page.on('pageerror', (e) => errors.push(e.message));
+    browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: process.env.PLAYWRIGHT_CHANNEL || 'chrome' } : {}) });
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
+    await page.route('https://**', route => route.abort());
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    const go = async () => page.goto(base + '/');
+    const visible = target => target.waitFor({ state: 'visible', timeout: 5000 });
+    const toggle = id => page.locator(id).click();
+    const locked = (target, kind) => target.and(page.locator('[data-' + kind + '-locked="true"]')).waitFor({ state: 'attached' });
+    const game = page.locator('a[href="learning/games/beantrading/beantrading"]');
+    const sibling = page.locator('a[href="learning/games/gemguild/gemguild"]');
+    const economyGroup = page.locator('[data-game-category="resource-economy"]');
+    const games = page.locator('#category-boardgame-panel');
+    const enterGameGroup = async () => { await toggle('#category-boardgame-toggle'); await economyGroup.locator('summary').click(); };
+    for (const accessMode of ['open', 'restricted']) {
+      mode = accessMode;
+      await Promise.all([page.waitForResponse(response => response.url().endsWith('/api/auth/config')), go()]);
+      assert.equal(await page.locator('#hubContent').isVisible(), false);
+      assert.equal(await page.locator('.category-toggle:visible').count(), 0);
+    }
 
-    // ── 전담: 같은 단추, 가르치는 반 전부에 오늘 하루 ──
-    await page.goto(base + '/');
-    const button = page.locator('#contentAccessButton');
-    await button.waitFor({ state: 'visible', timeout: 10000 });
-    assert.equal(await button.textContent(), '🔒 가르치는 3개 반 메뉴 오늘 공개/잠금 설정');
-    assert.equal(await button.getAttribute('title'), '3-1, 3-2, 4-1');
-    await button.click();
-    // 갈래 묶음은 접혀 있어 먼저 '기초학력' 갈래를 편다.
-    await page.locator('#category-literacy-toggle').click();
-    const control = page.locator(storyBooks);
-    assert.equal(await control.getAttribute('data-class-locked'), 'true', '전담이 아직 열지 않은 묶음은 잠겨 보인다');
-    await control.click();
-    await waitFor(page, 2);
-    assert.deepEqual(puts.map((b) => [b.path, b.enabled]).sort(), [
-      ['/learning/literacy-numeracy/reading', true], ['/learning/literacy-numeracy/story-books', true]
-    ]);
-    await waitLocked(page, storyBooks, 'false');
-    await waitText(page, /가르치는 3개 반 학생에게 오늘 하루 공개했습니다/);
-    await button.click();
-    await waitText(page, /가르치는 반 공개 설정을 저장했습니다\. 전담이 연 메뉴는 오늘 밤 자정에 닫힙니다/);
-    assert.equal(await button.textContent(), '🔒 가르치는 3개 반 메뉴 오늘 공개/잠금 설정');
+    role = 'subject';
+    await go();
+    await visible(page.locator('#hubContent'));
+    assert.equal(await page.locator('#contentAccessButton').isVisible(), false);
+    assert.equal(await page.locator('#globalContentAccessButton').isVisible(), false);
+    await enterGameGroup();
+    await visible(game);
+    assert.equal(await game.getAttribute('aria-disabled'), null);
 
-    // ── 담임: 전담이 오늘 열어 둔 묶음은 열려 보이고, 담임이 꺼도 학생에게는 열린 채다 ──
-    scenario = 'homeroom';
-    puts.length = 0;
-    await page.goto(base + '/');
-    await button.waitFor({ state: 'visible', timeout: 10000 });
-    assert.equal(await button.textContent(), '🔒 우리 반 기초학력 메뉴 공개/잠금 설정');
-    await button.click();
-    await page.locator('#category-literacy-toggle').click();
-    assert.equal(await control.getAttribute('data-class-locked'), 'false', '전담이 열어 둔 묶음은 담임에게도 열려 보인다');
-    assert.match(await control.getAttribute('title'), /전담 다전담 선생님이 오늘 열어 둠/);
-    // 담임의 칸은 비어 있으니 첫 누름은 담임 공개를 켠다.
-    await control.click();
-    await waitFor(page, 2);
-    assert.ok(puts.every((b) => b.enabled === true));
-    await waitText(page, /우리 반 학생에게 공개했습니다/);
-    assert.equal(await control.getAttribute('title'), null, '담임도 열었으면 전담 표시는 내린다');
-    // 다시 누르면 담임 공개만 꺼지고, 전담이 열어 두어 학생에게는 열린 채라는 안내가 뜬다.
-    await control.click();
-    await waitFor(page, 4);
-    assert.ok(puts.slice(2).every((b) => b.enabled === false));
-    await waitText(page, /우리 반 공개는 껐지만 전담 다전담 선생님이 오늘 열어 두어 학생에게는 오늘까지 열려 있습니다/);
-    assert.equal(await control.getAttribute('data-class-locked'), 'false', '전담이 열어 둔 묶음은 담임이 꺼도 잠기지 않는다');
-    assert.match(await control.getAttribute('title'), /전담 다전담 선생님이 오늘 열어 둠/);
+    role = 'student';
+    await go();
+    await enterGameGroup();
+    await visible(game);
+    assert.equal(await game.getAttribute('aria-disabled'), null, 'a new class can use every game');
 
-    // 과목으로 합치기 전에 역사·실험만 열었던 반도 계속 이용한다.
-    // 열지 않은 지도·모형까지 함께 공개되거나, 반대로 과목 전체가 잠기면 안 된다.
-    scenario = 'student';
-    await page.goto(base + '/');
-    const science = '[data-access-group="science"]';
-    const social = '[data-access-group="social-studies"]';
-    await waitLocked(page, science + ' > summary', 'false');
-    await page.locator('#category-exploration-toggle').click();
-    for (const [group, openPath, lockedPath] of [
-      [social, 'korean-history', 'korea-map'],
-      [science, 'science-lab', 'human-body']
+    for (const [editor, button, scope, state] of [
+      ['admin', '#globalContentAccessButton', 'admin', 'global-disabled'],
+      ['homeroom', '#contentAccessButton', 'teacher', 'class-locked']
     ]) {
-      await page.locator(group + ' > summary').click();
-      const openLink = `${group} a[href="learning/inquiry/${openPath}/"]`;
-      const lockedLink = `${group} a[href="learning/inquiry/${lockedPath}/"]`;
-      assert.equal(await page.locator(openLink).isVisible(), true);
-      await waitLocked(page, openLink, 'false');
-      await waitLocked(page, lockedLink, 'true');
-      await page.locator(lockedLink).focus();
-      await page.locator(lockedLink).press('Enter');
+      role = editor;
+      await go();
+      await toggle(button);
+      await toggle('#category-boardgame-toggle');
+      const groups = await games.locator('[data-game-category]').all();
+      assert.equal(groups.length, 7);
+      const startingWrites = writes.length;
+      for (const group of groups) {
+        await group.locator('summary').click();
+        await visible(group.locator('a').last());
+        assert.equal(writes.length, startingWrites, 'a category click does not save locks');
+      }
+      await economyGroup.locator('summary').click();
+      await game.click();
+      await game.and(page.locator('[data-' + state + '="true"]')).waitFor();
+      assert.deepEqual(writes.at(-1), { scope, path: '/learning/games/beantrading/beantrading', disabled: true });
+      assert.equal(await sibling.getAttribute('data-' + state), 'false');
+
+      role = 'student';
+      await go();
+      await enterGameGroup();
+      await locked(game, editor === 'admin' ? 'global' : 'class');
+      await game.press('Enter');
       assert.equal(page.url(), base + '/');
-      await waitText(page, /선생님이 열어 주시면 이용할 수 있습니다/);
+      assert.equal(await sibling.getAttribute('aria-disabled'), null);
+
+      role = editor;
+      await go();
+      await toggle(button);
+      await enterGameGroup();
+      await game.click();
+      await game.and(page.locator('[data-' + state + '="false"]')).waitFor();
+      assert.deepEqual(writes.at(-1), { scope, path: '/learning/games/beantrading/beantrading', disabled: false });
     }
-    // 전체관리자 잠금은 반 공개보다 우선하며, 과목 안 다른 앱의 공개에는 영향이 없다.
-    access.student.globallyDisabledPaths = ['/learning/inquiry/science-lab'];
-    await page.reload();
-    await page.locator(`${science} a[data-global-locked="true"]`).waitFor({ state: 'attached' });
-    await page.locator('#category-exploration-toggle').click();
-    await page.locator(science + ' > summary').click();
-    await page.locator(science + ' a[href="learning/inquiry/science-lab/"]').focus();
-    await page.locator(science + ' a[href="learning/inquiry/science-lab/"]').press('Enter');
-    assert.equal(page.url(), base + '/');
-    await waitText(page, /전체관리자가 준비 중인 메뉴로 사용 중지했습니다/);
 
-    // 기존에 일부 교구만 열린 반도 목록을 열며, 잠긴 교구에는 들어가지 못한다.
-    const mathCatalog = '/learning/literacy-numeracy/math-tools/';
-    const mathEntry = `a[href="${mathCatalog.slice(1)}"]`;
-    const numberModels = `${mathCatalog}number-models/`;
-    const graphStudio = `${mathCatalog}graph-studio/`;
-    access.student.enabledPaths.push(numberModels.slice(0, -1), graphStudio.slice(0, -1));
-    access.student.globallyDisabledPaths.push(graphStudio.slice(0, -1));
-    await page.goto(base + '/');
-    await waitLocked(page, mathEntry, 'false');
-    await page.locator('#category-literacy-toggle').click();
-    const numeracy = page.locator('[data-access-group="numeracy"]');
-    assert.equal(await page.locator(mathEntry).isVisible(), false);
-    await numeracy.locator('summary').click();
-    assert.equal(await numeracy.locator('.numeracy-settings').isVisible(), false);
-    assert.equal(await numeracy.locator('a[href="/arithmetic"]').getAttribute('data-class-locked'), 'true');
-    const menuFont = await numeracy.locator('summary').evaluate(control => getComputedStyle(control).fontFamily);
-    await page.locator(mathEntry).click();
-    await page.waitForURL(base + mathCatalog);
-    await page.addStyleTag({ url: base + '/assets/exam-typography.css' });
-    assert.equal(await page.locator('.tool').count(), 14);
-    const cardFonts = await page.locator('.tool :is(h2, p)').evaluateAll(nodes => nodes.map(node => getComputedStyle(node).fontFamily));
-    assert.ok(cardFonts.every(font => font.startsWith(menuFont.split(',')[0])), 'the injected textbook font must not affect menu cards');
-    const fractionCard = page.locator(`.tool[href="${mathCatalog}fraction-board/"]`);
-    const graphCard = page.locator(`.tool[href="${graphStudio}"]`);
-    const geoboardCard = page.locator(`.tool[href="${mathCatalog}geoboard/"]`);
-    await geoboardCard.and(page.locator('[aria-disabled="true"]')).waitFor();
-    for (const slug of ['number-line', 'clock', 'geometry-tools', 'pattern-blocks', 'area-lab', 'solid-nets', 'measure-lab', 'data-graphs', 'probability']) {
-      const card = page.locator(`.tool[href="${mathCatalog}${slug}/"]`);
-      await card.and(page.locator('[aria-disabled="true"]')).waitFor();
-      assert.equal(await card.locator('.tool-state').textContent(), '선생님 공개 대기');
-    }
-    assert.equal(await geoboardCard.locator('.tool-state').textContent(), '선생님 공개 대기');
-    await fractionCard.and(page.locator('[aria-disabled="true"]')).waitFor();
-    assert.equal(await fractionCard.locator('.tool-state').textContent(), '선생님 공개 대기');
-    assert.equal(await graphCard.locator('.tool-state').textContent(), '현재 사용 중지');
-    await graphCard.focus();
-    await page.keyboard.press('Enter');
-    assert.equal(page.url(), base + mathCatalog);
-    await page.locator(`.tool[href="${numberModels}"]`).click();
-    await page.waitForURL(base + numberModels);
+    role = 'homeroom';
+    await go();
+    await toggle('#contentAccessButton');
+    await toggle('#category-exploration-toggle');
+    const science = page.locator('[data-access-group="science"]');
+    await science.locator('summary').click();
+    const lab = science.locator('a[href="learning/inquiry/science-lab/"]');
+    await lab.click();
+    await locked(lab, 'class');
+    assert.deepEqual(writes.at(-1), { scope: 'teacher', path: '/learning/inquiry/science-lab', disabled: true });
+    assert.equal(await science.locator('a[href="learning/inquiry/human-body/"]').getAttribute('data-class-locked'), 'false');
 
-    // 새 과목 버튼의 공개 설정은 그 안에 합친 모든 기존 경로를 저장한다.
-    scenario = 'subject';
-    puts.length = 0;
-    await page.goto(base + '/');
-    await button.waitFor({ state: 'visible' });
-    await button.click();
-    await page.locator('#category-exploration-toggle').click();
-    await page.locator(science + ' > summary').click();
-    await waitFor(page, 4);
-    assert.deepEqual(puts.map((item) => item.path).sort(), [
-      '/learning/inquiry/human-body', '/learning/inquiry/periodic-table',
-      '/learning/inquiry/science-lab', '/learning/inquiry/space'
-    ]);
-    assert.ok(puts.every((item) => item.enabled === true));
+    await toggle('#category-literacy-toggle');
+    await page.locator('[data-access-group="numeracy"] > summary').click();
+    const math = '/learning/literacy-numeracy/math-tools/';
+    await page.locator('a[data-access-catalog]').click();
+    await page.waitForURL(base + math + '?settings=class');
+    await visible(page.locator('#tool-settings'));
+    const fractions = page.locator('a.tool[href="' + math + 'fraction-board/"]');
+    await fractions.click();
+    await visible(fractions.locator('.tool-state'));
+    assert.deepEqual(writes.at(-1), { scope: 'teacher', path: math + 'fraction-board', disabled: true });
 
-    puts.length = 0;
-    await page.locator('#category-literacy-toggle').click();
-    await numeracy.locator('summary').click();
-    assert.equal(puts.length, 0);
-    assert.equal(await numeracy.locator('a[href="/arithmetic"]').isVisible(), false);
-    await page.locator(mathEntry).click();
-    await waitFor(page, 14);
-    assert.equal(page.url(), base + '/');
-    assert.deepEqual(puts.map((item) => item.path).sort(), [
-      'area-lab', 'clock', 'data-graphs', 'fraction-board', 'geoboard', 'geometry-tools', 'graph-studio', 'measure-lab', 'number-line', 'number-models', 'pattern-blocks', 'probability', 'solid-nets', 'stacking-cubes'
-    ].map((tool) => mathCatalog + tool));
-    assert.ok(puts.every((item) => item.enabled === true));
-
-    puts.length = 0;
-    await numeracy.locator('.numeracy-settings').click();
-    await waitFor(page, 4);
-    assert.deepEqual(puts.map((item) => item.path).sort(), [
-      '/arithmetic', '/learning/literacy-numeracy/csat-math',
-      '/learning/literacy-numeracy/math-bank', '/learning/literacy-numeracy/math-ox'
-    ]);
-    assert.ok(puts.every((item) => item.enabled === true));
-
+    role = 'student';
+    await page.goto(base + math + '?settings=class');
+    await fractions.and(page.locator('[aria-disabled="true"]')).waitFor();
+    assert.equal(await page.locator('#tool-settings').isVisible(), false);
+    assert.equal(await page.locator('a.tool[href="' + math + 'number-models/"]').getAttribute('aria-disabled'), null);
     assert.deepEqual(errors, []);
-    console.log(JSON.stringify({ ok: true }));
+    console.log(JSON.stringify({ ok: true, gameGroups: 7, testedRoles: ['anonymous', 'student', 'subject', 'homeroom', 'admin'] }));
   } finally {
     if (browser) await browser.close();
-    await new Promise((resolve) => server.close(resolve));
+    await new Promise(resolve => server.close(resolve));
   }
-})().catch((error) => { console.error(error); process.exit(1); });
+})().catch(error => { console.error(error); process.exitCode = 1; });

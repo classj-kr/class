@@ -20,10 +20,8 @@ const { createExams } = require("./exams");
 const { createVoting } = require("./voting");
 const { createRoomCodes } = require("./room-codes");
 const { NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE, pendingStudentName, pendingTeacherName, fillPendingNamesFromGoogle, namesLookDifferent } = require("./roster-names");
-const {
-  SCHEMA_STATEMENTS: subjectGrantSchema, CLASS_CONTENT_OPEN_SQL, classLabel: subjectClassLabel,
-  subjectTeachingClasses, subjectGrantsForClass, subjectGrantedPathsForTeacher, setSubjectGrant
-} = require("./subject-content-grants");
+const { SCHEMA_STATEMENTS: subjectGrantSchema } = require("./subject-content-grants");
+const { GAME_PAGE_ALIASES, canonicalMenuPath, gameMenuForAssetRoot, homeMenuForRequest, individualMenuPaths, isMenuDisabled } = require("./home-content-paths");
 const { createSchoolElection } = require("./school-election");
 const { createSeating } = require("./seating");
 const { createStudentCharacterStyleResolver } = require("./student-character-style");
@@ -679,6 +677,13 @@ function createClassroomPlatform(options = {}) {
         updated_by BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL,
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
       )`,
+      `CREATE TABLE IF NOT EXISTS classroom_content_disabled (
+        class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,
+        content_path TEXT NOT NULL,
+        updated_by BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (class_id, content_path)
+      )`,
       // classroom_content_locks used to store the OPT-OUT set (menu items a
       // teacher hid). The menu default flipped to opt-in, so on first boot
       // after the flip we rename the table and drop its rows -- old "hidden"
@@ -711,7 +716,7 @@ function createClassroomPlatform(options = {}) {
        SELECT DISTINCT ON (class_id) class_id, '/learning/inquiry/korea-map', updated_by, NOW()
        FROM moved
        ON CONFLICT (class_id, content_path) DO NOTHING`,
-      // 전담이 가르치는 반에 오늘 하루 열어 두는 메뉴. 담임의 공개와 별개 칸이라 연 사람만 닫는다.
+      // 이전 공개 설정은 경로 이전 기록과 함께 보존한다. 새 정책은 명시적인 잠금만 읽는다.
       ...subjectGrantSchema,
       fs.readFileSync(path.join(__dirname, 'migrations', '026-math-tools-paths.sql'), 'utf8'),
       `CREATE TABLE IF NOT EXISTS classroom_schedules (
@@ -1422,6 +1427,22 @@ function createClassroomPlatform(options = {}) {
 
     try {
       for (const statement of statements) await pool.query(statement);
+      // Preserve earlier group-wide stops as individual stops on today's menu.
+      await pool.query(
+        `WITH previous AS (
+           DELETE FROM site_content_disabled d
+           WHERE NOT (d.content_path = ANY($1::text[]))
+             AND EXISTS (SELECT 1 FROM unnest($1::text[]) AS p WHERE starts_with(p, d.content_path || '/'))
+           RETURNING content_path, updated_by, updated_at
+         )
+         INSERT INTO site_content_disabled (content_path, updated_by, updated_at)
+         SELECT DISTINCT ON (p) p, previous.updated_by, previous.updated_at
+         FROM previous CROSS JOIN unnest($1::text[]) AS p
+         WHERE starts_with(p, previous.content_path || '/')
+         ORDER BY p, previous.updated_at DESC
+         ON CONFLICT (content_path) DO NOTHING`,
+        [[...individualMenuPaths]]
+      );
       for (const statement of attendanceEventSchema) await pool.query(statement);
       for (const statement of pushSchema) await pool.query(statement);
       await pool.query("DELETE FROM classroom_sessions WHERE expires_at <= NOW()");
@@ -1585,18 +1606,9 @@ function createClassroomPlatform(options = {}) {
     return (await teacherRegistrations(user))[0] || null;
   }
 
-  // 전담이 가르치는 반. 교직원 명단의 담당 학년(teaching_scope)에 있는 모든 반과 전담 시간표에
-  // 배정된 반을 합친다. 자기 반이 있는 담임은 여기 오지 않는다(우리 반 설정은 담임 칸을 쓴다).
-  async function subjectTeachingClassesFor(user, registration) {
-    if (!user || !registration) return [];
-    const scopeResult = await pool.query("SELECT teaching_scope FROM classroom_teachers WHERE id = $1", [registration.id]);
-    const grades = normalizePairs(scopeResult.rows[0]?.teaching_scope).map((pair) => pair.grade);
-    return subjectTeachingClasses(pool, {
-      schoolId: registration.school_id,
-      teacherUserId: user.id,
-      academicYear: Number(registration.academic_year) || new Date().getFullYear(),
-      grades
-    });
+  function canManageClassContent(registration) {
+    return Boolean(registration?.grade && registration?.class_number
+      && ["담임", "homeroom", "관리자", "교장", "교감"].includes(registration.teacher_type));
   }
 
   async function requireTeacher(req) {
@@ -1800,7 +1812,7 @@ function createClassroomPlatform(options = {}) {
     const result = await pool.query(
       "SELECT content_path FROM site_content_disabled ORDER BY content_path"
     );
-    const paths = result.rows.map((row) => row.content_path);
+    const paths = [...new Set(result.rows.map((row) => canonicalMenuPath(row.content_path)))];
     globallyDisabledContentPathsCache = {
       paths,
       expiresAt: Date.now() + SITE_ACCESS_MODE_TTL_MS
@@ -1991,8 +2003,14 @@ function createClassroomPlatform(options = {}) {
   }
 
   function normalizeContentPath(value) {
-    const clean = String(value || "").split(/[?#]/, 1)[0].trim();
-    if (!clean.startsWith("/") || clean.includes("..") || clean.length > 300) return "";
+    let clean;
+    try {
+      clean = decodeURIComponent(String(value || "").split(/[?#]/, 1)[0].trim())
+        .replace(/\/{2,}/g, "/").replace(/(?:\/\.)+(?=\/|$)/g, "");
+    } catch (_) {
+      return "";
+    }
+    if (!clean.startsWith("/") || clean.includes("..") || clean.includes("\\") || clean.length > 300) return "";
     // Old bookmarks and already-open menu tabs use the same grants as the new URLs.
     return (clean.length > 1 ? clean.replace(/\/+$/, "") : clean)
       .replace(/^\/learning\/inquiry\/math(?=\/|$)/, "/learning/literacy-numeracy/math-tools")
@@ -2001,23 +2019,18 @@ function createClassroomPlatform(options = {}) {
 
   function contentRootForStaticAsset(requestPath) {
     const clean = normalizeContentPath(requestPath);
-    if (!clean) return "";
+    if (!/\.(?:css|js|mjs|json|map|png|jpe?g|webp|gif|svg|ico|avif|mp3|ogg|wav|m4a|aac|flac|mp4|webm|woff2?|ttf|otf|wasm)$/i.test(clean)) return "";
     const assetMarkerIndex = clean.indexOf("/assets/");
     if (assetMarkerIndex > 0) return clean.slice(0, assetMarkerIndex);
-    if (!/\.(?:css|js|mjs|json|map|png|jpe?g|webp|gif|svg|ico|avif|mp3|ogg|wav|m4a|aac|flac|mp4|webm|woff2?|ttf|otf|wasm)$/i.test(clean)) return "";
     const finalSlashIndex = clean.lastIndexOf("/");
     return finalSlashIndex > 0 ? clean.slice(0, finalSlashIndex) : "";
   }
 
-  function matchesDisabledContentPath(requestPath, disabledPath) {
-    return requestPath === disabledPath || requestPath.startsWith(`${disabledPath}/`);
-  }
-
   function isGloballyDisabledContent(requestPath, assetRootPath, disabledPaths) {
-    return disabledPaths.some((disabledPath) => (
-      matchesDisabledContentPath(requestPath, disabledPath)
-      || (assetRootPath && matchesDisabledContentPath(assetRootPath, disabledPath))
-    ));
+    // The history map and the globe share the same map library.
+    if (assetRootPath && requestPath.startsWith("/learning/inquiry/globe/vendor/")) return false;
+    return isMenuDisabled(requestPath, disabledPaths)
+      || Boolean(assetRootPath && isMenuDisabled(gameMenuForAssetRoot(assetRootPath) || assetRootPath, disabledPaths));
   }
 
   async function isContentGloballyDisabled(contentPath) {
@@ -2076,93 +2089,91 @@ function createClassroomPlatform(options = {}) {
     return { name: String(user.name || user.displayName || "").trim(), kind: user.role || "user" };
   }
 
+  async function siteAccessIdentity(req) {
+    const user = await sessionUser(req);
+    const mode = await getSiteAccessMode();
+    const allowed = user
+      ? mode === "open" || user.role === "admin" || user.role === "teacher" || Boolean(await studentMembership(user.id))
+      : Boolean(guestAccess(req)) || (!pool && !isProduction && mode === "open");
+    return { user, allowed };
+  }
+
+  async function isStudentContentLocked(user, originalUrl, requestPath) {
+    if (user?.role !== "student") return false;
+    const menuPath = homeMenuForRequest(requestPath);
+    if (!menuPath) return false;
+    const isAlwaysAllowed = requestPath === "/classtools/profile.html"
+      || requestPath === "/classtools/profile"
+      || requestPath === "/classtools/ai-client.js"
+      // 방번호 입구와 그 입구가 연결하는 두 활동은 메인에서 `always-open`으로
+      // 표시한다. 서버도 같은 예외를 알아야 학생을 다시 content=locked로
+      // 돌려보내지 않는다. 하위 CSS/JS 요청도 함께 허용한다.
+      || requestPath === "/room" || requestPath.startsWith("/room/")
+      // fetch defaults to Accept: */*, which also matches req.accepts("html").
+      // The room lookup belongs to the always-open entrance, not the lesson catalog.
+      || /^\/api\/room-entry\/resolve\/\d{4}$/.test(requestPath)
+      || requestPath === "/learning/literacy-numeracy/handwriting/race"
+      || requestPath.startsWith("/learning/literacy-numeracy/handwriting/race/")
+      || requestPath === "/api/handwriting" || requestPath.startsWith("/api/handwriting/")
+      || requestPath === "/learning/literacy-numeracy/math-tools/stacking-cubes/race"
+      || requestPath.startsWith("/learning/literacy-numeracy/math-tools/stacking-cubes/race/")
+      || requestPath === "/learning/literacy-numeracy/math-tools/stacking-cubes/coop"
+      || requestPath.startsWith("/learning/literacy-numeracy/math-tools/stacking-cubes/coop/")
+      || requestPath === "/api/stacking-race" || requestPath.startsWith("/api/stacking-race/")
+      || requestPath === "/learning/inquiry/information-computing/typing/race"
+      || requestPath.startsWith("/learning/inquiry/information-computing/typing/race/")
+      || requestPath === "/api/typing-race" || requestPath.startsWith("/api/typing-race/")
+      || requestPath === "/learning/literacy-numeracy/korean-race"
+      || requestPath.startsWith("/learning/literacy-numeracy/korean-race/")
+      || requestPath === "/api/korean-race" || requestPath.startsWith("/api/korean-race/")
+      || requestPath === "/vote" || requestPath.startsWith("/vote/")
+      || requestPath === "/exams" || requestPath.startsWith("/exams/")
+      || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
+      // 순위전 입장 화면과 그 API도 방번호 입구에 속한다.
+      || requestPath === "/arithmetic/race" || requestPath.startsWith("/arithmetic/race/")
+      || requestPath === "/api/arithmetic-race" || requestPath.startsWith("/api/arithmetic-race/");
+    if (isAlwaysAllowed) return false;
+    if (requestPath.startsWith("/arithmetic/") && typeof options.isLiveRaceRequest === "function"
+        && await options.isLiveRaceRequest(originalUrl)) return false;
+    const classId = await userClassId(user);
+    if (!classId) return false;
+    const locked = await pool.query(
+      "SELECT 1 FROM classroom_content_disabled WHERE class_id = $1 AND content_path = $2",
+      [classId, menuPath]
+    );
+    return locked.rows.length > 0;
+  }
+
+  async function gameAccessError(req, contentPath) {
+    const { user, allowed } = await siteAccessIdentity(req);
+    if (!allowed) return "SITE_ACCESS_REQUIRED";
+    if (user?.role !== "admin" && await isContentGloballyDisabled(contentPath)) return "CONTENT_GLOBALLY_DISABLED";
+    const requestPath = normalizeContentPath(contentPath);
+    return await isStudentContentLocked(user, contentPath, requestPath) ? "CONTENT_CLASS_LOCKED" : "";
+  }
+
   const requireSiteAccess = asyncRoute(async (req, res, next) => {
-    // mode and user are each resolved once per request and reused below --
-    // this used to call getSiteAccessMode() and sessionUser() twice per
-    // request (once to check access, again to render the student
-    // content-lock check), doubling the DB round trips on every static
-    // asset request under the gated paths.
+    const { user, allowed } = await siteAccessIdentity(req);
+    if (!allowed) {
+      if (req.method === "GET") return res.redirect(302, "/?access=required");
+      throw new HttpError(403, "SITE_ACCESS_REQUIRED", "Complete site sign-in before opening this page.");
+    }
+
     const requestPath = normalizeContentPath(req.originalUrl);
+    if (!requestPath) throw new HttpError(400, "INVALID_CONTENT_PATH", "This content path is invalid.");
     const assetRootPath = contentRootForStaticAsset(requestPath);
     const globallyDisabledPaths = await getGloballyDisabledContentPaths();
-    let user = null;
-    if (requestPath && isGloballyDisabledContent(requestPath, assetRootPath, globallyDisabledPaths)) {
-      user = await sessionUser(req);
-      if (user?.role !== "admin") {
-        if (req.method === "GET") return res.redirect(302, "/?content=globally-disabled");
-        throw new HttpError(403, "CONTENT_GLOBALLY_DISABLED", "This content is currently unavailable.");
-      }
+    if (user?.role !== "admin" && requestPath && isGloballyDisabledContent(requestPath, assetRootPath, globallyDisabledPaths)) {
+      if (req.method === "GET") return res.redirect(302, "/?content=globally-disabled");
+      throw new HttpError(403, "CONTENT_GLOBALLY_DISABLED", "This content is currently unavailable.");
     }
 
-    const mode = await getSiteAccessMode();
-    // Open mode is intended for development and demonstrations. A display
-    // name is still useful for game hand-off, but it must not gate routes
-    // served by separate learning apps (for example /arithmetic and
-    // /hanguksa), because those requests can otherwise lose the guest cookie.
-    if (mode === "restricted" && !user) user = await sessionUser(req);
-    const allowed = mode === "open"
-      ? true
-      : user
-        ? (user.role === "admin" || user.role === "teacher" || Boolean(await studentMembership(user.id)))
-        : Boolean(guestAccess(req));
-
-    if (allowed) {
-      if (user?.role === "student" && (req.get("sec-fetch-dest") === "document" || req.accepts("html"))) {
-        const classId = await userClassId(user);
-        // req.path is relative to whatever prefix in the app.use([...], requireSiteAccess)
-        // list matched (e.g. "/arithmetic" itself resolves to req.path === "/"), so it can
-        // never equal the full paths stored by the "공개 설정" UI. req.originalUrl keeps the
-        // real, unstripped path regardless of which mount prefix matched.
-        // Personal account settings (birthday/avatar), not a curated learning
-        // menu item -- must stay reachable regardless of what the homeroom
-        // teacher has enabled for the class. The clean-URL middleware further
-        // down server.js 308-redirects "/classtools/profile.html" to
-        // "/classtools/profile" *after* this middleware runs, so the browser's
-        // follow-up request arrives here with the extension already stripped.
-        // Both forms must be recognized or that redirect defeats this bypass.
-        const isAlwaysAllowed = requestPath === "/classtools/profile.html"
-          || requestPath === "/classtools/profile"
-          || requestPath === "/classtools/ai-client.js"
-          // 방번호 입구와 그 입구가 연결하는 두 활동은 메인에서 `always-open`으로
-          // 표시한다. 서버도 같은 예외를 알아야 학생을 다시 content=locked로
-          // 돌려보내지 않는다. 하위 CSS/JS 요청도 함께 허용한다.
-          || requestPath === "/room" || requestPath.startsWith("/room/")
-          // fetch defaults to Accept: */*, which also matches req.accepts("html").
-          // The room lookup belongs to the always-open entrance, not the lesson catalog.
-          || /^\/api\/room-entry\/resolve\/\d{4}$/.test(requestPath)
-          || requestPath === "/learning/literacy-numeracy/handwriting/race"
-          || requestPath.startsWith("/learning/literacy-numeracy/handwriting/race/")
-          || requestPath === "/api/handwriting" || requestPath.startsWith("/api/handwriting/")
-          || requestPath === "/learning/literacy-numeracy/math-tools/stacking-cubes/race"
-          || requestPath.startsWith("/learning/literacy-numeracy/math-tools/stacking-cubes/race/")
-          || requestPath === "/learning/literacy-numeracy/math-tools/stacking-cubes/coop"
-          || requestPath.startsWith("/learning/literacy-numeracy/math-tools/stacking-cubes/coop/")
-          || requestPath === "/api/stacking-race" || requestPath.startsWith("/api/stacking-race/")
-          || requestPath === "/learning/inquiry/information-computing/typing/race"
-          || requestPath.startsWith("/learning/inquiry/information-computing/typing/race/")
-          || requestPath === "/api/typing-race" || requestPath.startsWith("/api/typing-race/")
-          || requestPath === "/learning/literacy-numeracy/korean-race"
-          || requestPath.startsWith("/learning/literacy-numeracy/korean-race/")
-          || requestPath === "/api/korean-race" || requestPath.startsWith("/api/korean-race/")
-          || requestPath === "/vote" || requestPath.startsWith("/vote/")
-          || requestPath === "/exams" || requestPath.startsWith("/exams/")
-          || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
-          // 순위전 입장 화면과 그 API도 방번호 입구에 속한다.
-          || requestPath === "/arithmetic/race" || requestPath.startsWith("/arithmetic/race/")
-          || requestPath === "/api/arithmetic-race" || requestPath.startsWith("/api/arithmetic-race/");
-        // 순위전 문제지는 실제 참가자 입장권이 있을 때만 메뉴 잠금 없이 연다.
-        const isLiveRaceWorksheet = !isAlwaysAllowed && requestPath.startsWith("/arithmetic/")
-          && typeof options.isLiveRaceRequest === "function" && await options.isLiveRaceRequest(req.originalUrl);
-        if (classId && requestPath && !isAlwaysAllowed && !isLiveRaceWorksheet) {
-          // 담임이 연 메뉴든 전담이 오늘 연 메뉴든 하나면 열린다.
-          const enabled = await pool.query(CLASS_CONTENT_OPEN_SQL, [classId, requestPath, assetRootPath]);
-          if (!enabled.rows[0]) return res.redirect(302, "/?content=locked");
-        }
-      }
-      return next();
+    if (!assetRootPath && (req.get("sec-fetch-dest") === "document" || req.accepts("html"))
+        && await isStudentContentLocked(user, req.originalUrl, requestPath)) {
+      if (req.method === "GET") return res.redirect(302, "/?content=locked");
+      throw new HttpError(403, "CONTENT_CLASS_LOCKED", "Your homeroom teacher has locked this menu.");
     }
-    if (req.method === "GET") return res.redirect(302, "/?access=required");
-    throw new HttpError(403, "SITE_ACCESS_REQUIRED", "Complete site sign-in before opening this page.");
+    return next();
   });
 
   function signMuseumPresence(payload) {
@@ -2986,133 +2997,72 @@ function createClassroomPlatform(options = {}) {
   }));
 
   router.get("/home-content-access", asyncRoute(async (req, res) => {
+    if (typeof req.query?.path === "string") {
+      const { user, allowed } = await siteAccessIdentity(req);
+      if (!allowed) return res.json({ accessRequired: true });
+      const requestPath = normalizeContentPath(req.query.path);
+      const globallyDisabled = user?.role !== "admin" && Boolean(requestPath)
+        && isGloballyDisabledContent(requestPath, "", await getGloballyDisabledContentPaths());
+      const classLocked = !globallyDisabled && Boolean(requestPath)
+        && await isStudentContentLocked(user, req.query.path, requestPath);
+      return res.json({ globallyDisabled, classLocked });
+    }
     const mode = await getSiteAccessMode();
     const globallyDisabledPaths = await getGloballyDisabledContentPaths();
     const user = await sessionUser(req);
-    if (!user) {
-      return res.json({
-        mode,
-        enabledPaths: [],
-        globallyDisabledPaths,
-        hasClassAccess: false,
-        canManage: false,
-        canManageGlobally: false
-      });
-    }
-    const classId = await userClassId(user);
-    // Not gated on user.role. That slot is sticky (an account marked 'teacher'
-    // once never falls back to 'student') and priority-ordered, so a student
-    // whose account had once been registered as staff would be handed the
-    // homeroom lock control on their own home screen. The registration below
-    // is what PUT /teacher/home-content-access actually enforces; asking the
-    // same question here keeps the button and the action in agreement.
-    const registration = await teacherRegistration(user);
-    if (!classId) {
-      // 자기 반이 없는 전담. 가르치는 반이 있으면 그 반 전부에 오늘 하루 메뉴를 열고 잠근다.
-      const taught = await subjectTeachingClassesFor(user, registration);
-      if (taught.length === 0) {
-        return res.json({
-          mode,
-          enabledPaths: [],
-          globallyDisabledPaths,
-          hasClassAccess: false,
-          canManage: false,
-          manageScope: "",
-          managedClasses: [],
-          canManageGlobally: user.role === "admin"
-        });
-      }
-      const ownPaths = await subjectGrantedPathsForTeacher(pool, {
-        schoolId: registration.school_id, teacherUserId: user.id, classes: taught
-      });
-      return res.json({
-        mode,
-        enabledPaths: ownPaths,
-        ownEnabledPaths: ownPaths,
-        openedBySubjectTeachers: {},
-        globallyDisabledPaths,
-        hasClassAccess: false,
-        canManage: true,
-        manageScope: "subject",
-        managedClasses: taught.map(subjectClassLabel),
-        canManageGlobally: user.role === "admin"
-      });
-    }
-    const enabled = await pool.query(
-      "SELECT content_path FROM classroom_content_enabled WHERE class_id = $1 ORDER BY content_path",
+    const canManageGlobally = user?.role === "admin";
+
+    const canManage = user ? canManageClassContent(await teacherRegistration(user)) : false;
+    const classId = user && (canManage || user.role === "student") ? await userClassId(user) : null;
+    const locks = classId ? await pool.query(
+      "SELECT content_path FROM classroom_content_disabled WHERE class_id = $1 ORDER BY content_path",
       [classId]
-    );
-    // 전담이 오늘 열어 둔 메뉴. 학생에게는 담임이 연 것과 합쳐서 열리고, 담임 화면에는 누가
-    // 열었는지 보인다. 담임은 자기가 연 것만 닫을 수 있다.
-    const classRow = (await pool.query(
-      "SELECT school_id, academic_year, grade, class_number FROM classroom_classes WHERE id = $1",
-      [classId]
-    )).rows[0];
-    const subjectOpened = classRow
-      ? await subjectGrantsForClass(pool, {
-          schoolId: classRow.school_id, academicYear: classRow.academic_year, grade: classRow.grade, classNumber: classRow.class_number
-        })
-      : new Map();
-    const ownPaths = enabled.rows.map((row) => row.content_path);
-    const effectivePaths = [...new Set([...ownPaths, ...subjectOpened.keys()])].sort();
-    const canManage = Boolean(registration && registration.grade !== null && registration.class_number !== null);
+    ) : null;
     res.json({
       mode,
-      enabledPaths: effectivePaths,
-      ownEnabledPaths: ownPaths,
-      openedBySubjectTeachers: Object.fromEntries(subjectOpened),
+      classDisabledPaths: locks?.rows.map(row => row.content_path) || [],
       globallyDisabledPaths,
-      hasClassAccess: true,
-      canManage,
-      manageScope: canManage ? "homeroom" : "",
-      managedClasses: canManage ? [`${registration.grade}-${registration.class_number}`] : [],
-      canManageGlobally: user.role === "admin"
+      hasClassAccess: Boolean(classId && user.role === "student"),
+      canManage: canManage && Boolean(classId),
+      canManageGlobally
     });
   }));
 
   router.put("/teacher/home-content-access", asyncRoute(async (req, res) => {
-    const teacher = await requireTeacher(req);
-    const contentPath = normalizeContentPath(req.body?.path);
-    const enabled = req.body?.enabled === true;
-    if (!contentPath || contentPath === "/") {
-      throw new HttpError(400, "INVALID_CONTENT_PATH", "올바른 홈 버튼을 선택해 주세요.");
+    const teacher = await requireUser(req);
+    if (!canManageClassContent(await teacherRegistration(teacher))) {
+      throw new HttpError(403, "HOMEROOM_TEACHER_REQUIRED", "담임 교사만 자기 반의 메뉴를 잠글 수 있습니다.");
     }
     const classId = await userClassId(teacher);
-    if (!classId) {
-      // 자기 반이 없는 전담은 가르치는 반 전부에 오늘 하루 연다. 담임이 잠가 둔 메뉴도 그 반에서는
-      // 열리고, 담임은 이것을 닫을 수 없다(연 사람만 닫는다). 그날 밤 자정에 저절로 닫힌다.
-      const registration = await teacherRegistration(teacher);
-      const taught = await subjectTeachingClassesFor(teacher, registration);
-      if (taught.length === 0) {
-        throw new HttpError(403, "HOMEROOM_TEACHER_REQUIRED", "담임은 자기 반, 전담은 가르치는 반의 메뉴를 열고 잠글 수 있습니다. 교직원 명단에서 담당 학년·반이나 담당 학년·과목을 지정해 주세요.");
-      }
-      const { expiresAt } = await setSubjectGrant(pool, {
-        schoolId: registration.school_id, teacherUserId: teacher.id, classes: taught, contentPath, enabled
-      });
-      return res.json({ ok: true, path: contentPath, enabled, scope: "subject", classes: taught.map(subjectClassLabel), expiresAt });
+    if (!classId) throw new HttpError(403, "HOMEROOM_TEACHER_REQUIRED", "담임 학급을 확인해 주세요.");
+    const contentPath = canonicalMenuPath(normalizeContentPath(req.body?.path));
+    const disabled = req.body?.disabled;
+    if (!individualMenuPaths.has(contentPath) || typeof disabled !== "boolean") {
+      throw new HttpError(400, "INVALID_CONTENT_PATH", "잠금을 설정할 개별 메뉴를 선택해 주세요.");
     }
-    if (enabled) {
+
+    if (disabled) {
       await pool.query(
-        `INSERT INTO classroom_content_enabled (class_id, content_path, updated_by, updated_at)
+        `INSERT INTO classroom_content_disabled (class_id, content_path, updated_by, updated_at)
          VALUES ($1, $2, $3, NOW())
          ON CONFLICT (class_id, content_path) DO UPDATE SET updated_by = EXCLUDED.updated_by, updated_at = NOW()`,
         [classId, contentPath, teacher.id]
       );
     } else {
       await pool.query(
-        "DELETE FROM classroom_content_enabled WHERE class_id = $1 AND content_path = $2",
+        "DELETE FROM classroom_content_disabled WHERE class_id = $1 AND content_path = $2",
         [classId, contentPath]
       );
     }
-    res.json({ ok: true, path: contentPath, enabled, scope: "homeroom" });
+    res.json({ ok: true, path: contentPath, disabled });
   }));
 
   router.put("/admin/home-content-access", asyncRoute(async (req, res) => {
     const admin = await requireAdmin(req);
-    const contentPath = normalizeContentPath(req.body?.path);
-    const disabled = req.body?.disabled === true;
-    if (!contentPath || contentPath === "/") {
-      throw new HttpError(400, "INVALID_CONTENT_PATH", "올바른 홈 버튼을 선택해 주세요.");
+    const contentPath = canonicalMenuPath(normalizeContentPath(req.body?.path));
+    const disabled = req.body?.disabled;
+    if (!individualMenuPaths.has(contentPath) || typeof disabled !== "boolean") {
+      throw new HttpError(400, "INVALID_CONTENT_PATH", "사용을 설정할 개별 메뉴를 선택해 주세요.");
     }
     if (disabled) {
       await pool.query(
@@ -3122,9 +3072,10 @@ function createClassroomPlatform(options = {}) {
         [contentPath, admin.id]
       );
     } else {
+      const aliases = GAME_PAGE_ALIASES.filter(([current]) => current === contentPath).map(([, legacy]) => legacy);
       await pool.query(
-        "DELETE FROM site_content_disabled WHERE content_path = $1",
-        [contentPath]
+        "DELETE FROM site_content_disabled WHERE content_path = ANY($1::text[])",
+        [[contentPath, ...aliases]]
       );
     }
     invalidateGloballyDisabledContentPathsCache();
@@ -9159,6 +9110,7 @@ function createClassroomPlatform(options = {}) {
     requireSiteAccess,
     isContentGloballyDisabled,
     canBypassGlobalContentLock,
+    gameAccessError,
     isTeacherRequest,
     readStackingRaceBank: learningBoards.readStackingRaceBank,
     getStudentCharacterStyle,
