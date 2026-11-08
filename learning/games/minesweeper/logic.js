@@ -1,7 +1,7 @@
 // 지뢰찾기 판 만들기와 풀어 보기.
 // 판은 첫 칸을 누른 뒤에 만든다. 첫 칸 둘레 3×3에는 지뢰를 두지 않고,
 // 사람이 쓰는 추론(한 단서 보기, 두 단서 겹쳐 보기, 남은 지뢰 수 보기)만으로
-// 끝까지 풀리는 판이 나올 때까지 다시 만든다. 그래서 찍어야 하는 순간이 없다.
+// 끝까지 풀리는 판만 반환한다. 시도 한도에 도달하면 검증 안 된 판 대신 null을 반환한다.
 (function (root) {
   'use strict';
 
@@ -46,6 +46,7 @@
     }
     function flag(i) {
       if (state[i]) return;
+      if (!mines[i]) throw new Error('solver flagged a safe cell');
       state[i] = 2;
       flagged += 1;
     }

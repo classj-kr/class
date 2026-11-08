@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>여섯 친구 · ClassJ 아바타 스튜디오</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%232f5144'/%3E%3Cpath d='M10 10v9q0 5 6 5t6-5V10' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="../../" aria-label="ClassJ 홈"><span class="brand-mark" aria-hidden="true">j.</span><span>CLASS J</span></a>
+      <span class="topbar-divider" aria-hidden="true"></span><span class="studio-label">아바타 스튜디오</span>
+      <span class="prototype"><span></span>여섯 친구의 첫 산책</span>
+    </header>
+    <main>
+      <div class="intro">
+        <div><p class="eyebrow">OUR LITTLE WORLD · 001 — 006</p><h1>우리, 같이 걸어볼까요<span>?</span></h1><p class="intro-copy">익숙한 얼굴 그대로. 서로 다른 여섯 친구의 작은 산책.</p></div>
+        <a class="download" href="models/animal-cat.glb" download="classj-animal-cat.glb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4"/></svg>3D 모델 저장<span>GLB</span></a>
+      </div>
+      <div class="avatar-picker" role="group" aria-label="미리볼 아바타">
+        <button data-avatar="cat" data-asset="animal-cat" data-model="models/animal-cat.glb" data-image="../classtools/assets/avatars/animal-cat.webp" aria-pressed="true"><img src="../classtools/assets/avatars/animal-cat.webp" alt="" width="44" height="44"><span>01 <b>고양이</b></span></button>
+        <button data-avatar="ramen" data-asset="food-ramen" data-model="models/food-ramen.glb" data-image="../classtools/assets/avatars/food-ramen.webp" aria-pressed="false"><img src="../classtools/assets/avatars/food-ramen.webp" alt="" width="44" height="44"><span>02 <b>라멘</b></span></button>
+        <button data-avatar="donut" data-asset="food-donut" data-model="models/food-donut.glb" data-image="../classtools/assets/avatars/food-donut.webp" aria-pressed="false"><img src="../classtools/assets/avatars/food-donut.webp" alt="" width="44" height="44"><span>03 <b>도넛</b></span></button>
+        <button data-avatar="banana" data-asset="fruit-banana" data-model="models/fruit-banana.glb" data-image="../classtools/assets/avatars/fruit-banana.webp" aria-pressed="false"><img src="../classtools/assets/avatars/fruit-banana.webp" alt="" width="44" height="44"><span>04 <b>바나나</b></span></button>
+        <button data-avatar="helicopter" data-asset="vehicle-helicopter" data-model="models/vehicle-helicopter.glb" data-image="../classtools/assets/avatars/vehicle-helicopter.webp" aria-pressed="false"><img src="../classtools/assets/avatars/vehicle-helicopter.webp" alt="" width="44" height="44"><span>05 <b>헬리콥터</b></span></button>
+        <button data-avatar="umbrella" data-asset="object-umbrella" data-model="models/object-umbrella.glb" data-image="../classtools/assets/avatars/object-umbrella.webp" aria-pressed="false"><img src="../classtools/assets/avatars/object-umbrella.webp" alt="" width="44" height="44"><span>06 <b>우산</b></span></button>
+      </div>
+      <div class="workspace">
+        <section class="viewer" aria-label="고양이 3D 모델 미리보기" aria-busy="true">
+          <div class="viewer-top"><span class="viewer-title"><i></i>3D 미리보기</span><div class="angles" role="group" aria-label="바라보는 방향"><button data-view="front" aria-pressed="true" disabled>앞</button><button data-view="left" aria-pressed="false" disabled>왼쪽</button><button data-view="side" aria-pressed="false" disabled>오른쪽</button><button data-view="back" aria-pressed="false" disabled>뒤</button><button data-view="top" aria-pressed="false" disabled>위</button></div></div>
+          <div id="stage" class="stage"><div class="loading" id="loading" role="status">고양이가 나오는 중이에요…</div></div>
+          <div class="viewer-caption"><span class="drag-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10V5a2 2 0 0 1 4 0v6-3a2 2 0 0 1 4 0v3-1a2 2 0 0 1 4 0v5c0 5-3 7-7 7-3 0-4-2-6-4l-3-4a2 2 0 0 1 3-2l1 1"/></svg>드래그해서 둘러보기 <span>· 스크롤로 확대</span></span><button id="rotate" class="rotate" aria-pressed="false" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M5.5 7a7.5 7.5 0 0 1 12-1L20 9M4 15l2.5 3a7.5 7.5 0 0 0 12-1"/></svg>자동 회전</button></div>
+          <div class="motion-bar"><span class="motion-label">움직여 볼까요?</span><div class="motions" role="group" aria-label="아바타 동작"><button data-motion="Idle" class="motion active" aria-pressed="true" disabled><span aria-hidden="true">●</span>서 있기</button><button data-motion="Walk" class="motion" aria-pressed="false" disabled><span aria-hidden="true">↗</span>걷기</button><button data-motion="Wave" class="motion" aria-pressed="false" disabled><span aria-hidden="true">✳</span>손 흔들기</button></div><button id="pause" class="pause" aria-label="동작 일시 정지" aria-pressed="false" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg></button></div>
+        </section>
+        <aside class="reference-panel">
+          <div class="reference-top"><p class="eyebrow">THE ORIGINAL</p><span>원본 아바타</span></div>
+          <div class="reference-art"><img src="../classtools/assets/avatars/animal-cat.webp" alt="회색 고양이 옷을 입고 씩 웃는 기존 아바타" width="640" height="640"><span class="reference-tag">2D</span></div>
+          <div class="character-info"><span class="character-number">AVATAR 001</span><h2>장난꾸러기 고양이</h2><p>쫑긋한 귀, 동그란 볼.<br>씩 웃는 얼굴까지 그대로.</p><div class="traits"><span>회색 줄무늬</span><span>말린 꼬리</span><span>고양이 후드</span></div></div>
+          <div class="reference-note"><span aria-hidden="true">↺</span><p>옆모습과 뒷모습도 돌려보세요.<br><span>보이지 않던 모습은 새롭게 만들었어요.</span></p></div>
+        </aside>
+      </div>
+      <section class="walk-section" aria-labelledby="walk-title">
+        <div class="walk-heading"><div><p class="eyebrow">A LITTLE WALK</p><h2 id="walk-title">여섯 친구, 각자의 발걸음.</h2><p>각자의 길을 따라 걷고 돌아요. 멈춰서 옆모습도 살펴보세요.</p></div><button id="walk-toggle" aria-pressed="false" disabled>산책 시작</button></div>
+        <div id="walk-stage" class="walk-stage"><p id="walk-loading" role="status">여섯 친구가 준비하는 중이에요…</p></div>
+        <div class="walk-legend"><span><i></i>장난꾸러기 고양이</span><span><i></i>따끈따끈 라멘</span><span><i></i>도넛</span><span><i></i>바나나</span><span><i></i>헬리콥터</span><span><i></i>우산</span><button id="walk-reset">처음 위치로</button></div>
+        <p class="museum-review-link"><a href="/learning/arts/art-appreciation/museum/?avatars=preview">빛의 복도에서 함께 걸어보기 ↗</a></p>
+      </section>
+      <footer><span><i></i>여섯 아바타의 모습과 걷기를 확인하는 시제품이에요.</span><span>CLASS J · AVATAR STUDY</span></footer>
+    </main>
+  </div>
+  <script src="../../learning/arts/art-appreciation/museum/vendor/three.min.js"></script>
+  <script src="../../learning/arts/art-appreciation/museum/vendor/GLTFLoader.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -13,6 +13,8 @@
     x: center.x + r * Math.sin((angle * Math.PI) / 180),
     y: center.y - r * Math.cos((angle * Math.PI) / 180),
   });
+  // 잡는 동그라미는 숫자 고리(반지름 176~210) 안쪽에 둬서 숫자를 가리지 않는다.
+  const KNOB = { hour: 100, minute: 158, second: 221 };
   const angle = (p) =>
     M.mod((Math.atan2(p.x - center.x, center.y - p.y) * 180) / Math.PI, 360);
   function render(s) {
@@ -85,7 +87,8 @@
       ["minute", 207, 10, "#d57c50"],
       ...(s.secondsHand ? [["second", 221, 3, "#a56ca0"]] : []),
     ]) {
-      const p = pos(a[key], r);
+      const p = pos(a[key], r),
+        k = pos(a[key], KNOB[key]);
       svg +=
         U.line(
           center.x,
@@ -94,7 +97,7 @@
           p.y,
           `stroke="${color}" stroke-width="${width}" stroke-linecap="round"`,
         ) +
-        `<circle cx="${p.x}" cy="${p.y}" r="${key === "second" ? 8 : 13}" fill="${color}" stroke="#fffefa" stroke-width="3"/>`;
+        `<circle cx="${k.x}" cy="${k.y}" r="${key === "second" ? 8 : 13}" fill="${color}" stroke="#fffefa" stroke-width="3"/>`;
     }
     svg +=
       '<circle cx="350" cy="295" r="13" fill="#fffefa" stroke="#315f50" stroke-width="6"/>';
@@ -211,11 +214,7 @@
     start(p) {
       stop();
       const a = C.angles(app.state.seconds),
-        hands = [
-          ["hour", 138],
-          ["minute", 207],
-          ...(app.state.secondsHand ? [["second", 221]] : []),
-        ];
+        hands = ["hour", "minute", ...(app.state.secondsHand ? ["second"] : [])].map((h) => [h, KNOB[h]]);
       const nearest = hands.sort(
         (x, y) =>
           M.distance(p, pos(a[x[0]], x[1])) - M.distance(p, pos(a[y[0]], y[1])),

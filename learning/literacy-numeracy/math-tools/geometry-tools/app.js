@@ -54,7 +54,7 @@
               v = M.circlePoint(0, 0, 171, a);
             if (a === 0 || a === 180) {
               t.y = -10;
-              v.y = 18;
+              v.y = -10;
             }
             svg +=
               U.text(t.x, t.y, a, 'class="number" style="font-size:15px"') +

@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="../puzzle-board-layout.css?v=20260927-chromebook-recovery">
 <link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261108-minesweeper">
 </head>
-<body data-game-navigation="single-player" data-entry-game="minesweeper">
+<body data-game-navigation="single-player" data-entry-game="minesweeper" data-sfx-feedback="none">
   <audio id="bgm" src="assets/sound/bgm.ogg?v=20261108-focusflow" loop preload="auto"></audio>
   <main class="page-shell">
     <section class="start-screen screen" id="startScreen" data-game-entry aria-labelledby="startTitle">
@@ -90,12 +90,12 @@
               <li>열린 칸의 숫자는 그 칸을 둘러싼 <strong>여덟 칸</strong>(위·아래·양옆·네 대각선)에 있는 지뢰의 개수입니다.</li>
               <li>숫자가 없는 빈 칸은 둘레에 지뢰가 하나도 없다는 뜻입니다. 그래서 둘레 칸이 저절로 함께 열립니다.</li>
               <li>처음 누르는 칸은 언제나 안전하고, 그 둘레까지 함께 열립니다.</li>
-              <li>이 판은 <strong>숫자만 보고 끝까지 풀 수 있게</strong> 만들어져 있습니다. 찍어야 할 것 같으면 아직 보지 못한 단서가 어딘가에 있습니다.</li>
+              <li>이 판은 <strong>숫자와 전체 지뢰 수를 보고 추측 없이 끝까지 풀 수 있게</strong> 검증한 판입니다. 막히면 이웃한 숫자를 함께 살펴보고, 확실하지 않은 깃발이 있는지도 확인하세요.</li>
             </ol>
             <h3>조작 방법</h3>
             <ol>
               <li><strong>⛏ 열기</strong>를 고른 채 칸을 누르면 그 칸이 열립니다.</li>
-              <li><strong>🚩 깃발</strong>을 고른 채 칸을 누르면 "여기는 지뢰"라는 깃발이 꽂힙니다. 한 번 더 누르면 깃발이 뽑힙니다. 깃발이 꽂힌 칸은 열리지 않습니다.</li>
+              <li><strong>🚩 깃발</strong>을 고른 채 칸을 누르면 "여기는 지뢰"라는 깃발이 꽂힙니다. 한 번 더 누르면 깃발이 뽑힙니다. <strong>깃발은 내가 붙인 표시이며 정답 확인이 아닙니다.</strong> 깃발이 꽂힌 칸은 열리지 않습니다.</li>
               <li>마우스 오른쪽 단추로 누르거나, 화면을 손가락으로 <strong>길게 누르면</strong> 도구를 바꾸지 않고도 깃발을 꽂고 뽑을 수 있습니다.</li>
               <li>둘레에 꽂은 깃발 수가 숫자와 같아진 숫자 칸을 누르면, 깃발이 없는 둘레 칸이 한꺼번에 열립니다. 깃발을 잘못 꽂았다면 지뢰가 열리니 조심하세요.</li>
               <li>위의 <strong>MINES</strong>는 전체 지뢰 수에서 꽂은 깃발 수를 뺀 수입니다.</li>
@@ -108,7 +108,7 @@
               <li><strong>1-1 꼴:</strong> 닫힌 칸 줄을 따라 1, 1이 나란히 있고 판 가장자리 쪽 1이 보는 닫힌 칸이 두 개뿐이면, 그 두 칸은 옆의 1도 함께 봅니다. 그 두 칸에 지뢰가 하나 있으니, 옆의 1만 보는 다음 칸은 안전합니다.</li>
               <li><strong>1-2-1 꼴:</strong> 곧게 뻗은 닫힌 칸 줄을 따라 1, 2, 1이 나란히 있으면, 두 1의 바로 앞 칸이 지뢰이고 2의 바로 앞 칸은 안전합니다.</li>
               <li>한 숫자만 봐서 모르겠으면 <strong>이웃한 두 숫자가 함께 보는 칸</strong>을 따져 보세요. 한쪽 숫자가 다른 쪽보다 몇 개 더 많은지가 단서가 됩니다.</li>
-              <li>끝 무렵에 <strong>MINES가 0</strong>이면 남은 닫힌 칸은 모두 안전합니다. MINES가 남은 닫힌 칸 수와 같으면 그 칸은 모두 지뢰입니다.</li>
+              <li><strong>깃발을 모두 정확히 꽂았다면</strong>, 끝 무렵에 MINES가 0일 때 깃발 없는 닫힌 칸은 모두 안전합니다. MINES가 깃발 없는 닫힌 칸 수와 같으면 그 칸은 모두 지뢰입니다.</li>
             </ol>
             <p class="solve-tip"><strong>팁:</strong> 확실한 칸만 여세요. 모르는 칸은 내버려 두고 다른 쪽 숫자부터 살피면 새 단서가 열립니다.</p>
           </div>
@@ -132,7 +132,7 @@
     </div>
   </div>
 
-  <script src="logic.js?v=20261108a"></script>
-  <script src="app.js?v=20261108a"></script>
+  <script src="logic.js?v=20261108-audit"></script>
+  <script src="app.js?v=20261108-sound"></script>
 </body>
 </html>
