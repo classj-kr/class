@@ -175,18 +175,20 @@
     return say;
   }
 
-  // 이 단원 뜻의 유의어·반의어·상위어·하위어. 같은 단원 낱말이면 눌러서 그 낱말로 간다.
+  // 이 단원 뜻의 유의어·반의어·관련 단어(상위어·하위어). 같은 단원 낱말이면 눌러서 그 낱말로 간다.
   const REL = [
     ['syn', '유의어'],
     ['ant', '반의어'],
-    ['up', '상위어'],
-    ['down', '하위어']
+    ['related', '관련 단어']
   ];
   function relationsOf(unit, word, select) {
     if (!word.rel) return null;
     const box = element('div', '', 'relations');
     for (const [key, name] of REL) {
-      const rows = word.rel[key];
+      // 상위어·하위어와 견주어 볼 낱말(see)은 '관련 단어' 한 줄로 묶어 보인다. 같은 낱말은 한 번만.
+      const rows = key === 'related'
+        ? [...(word.rel.see || []), ...(word.rel.up || []), ...(word.rel.down || [])].filter((row, i, all) => all.findIndex(other => other.w === row.w) === i)
+        : word.rel[key];
       if (!rows || !rows.length) continue;
       const line = element('div', '', `rel rel-${key}`);
       const label = element('p', '', 'rel-kind');
@@ -197,7 +199,8 @@
         chips.append(at >= 0 ? button(row.w + ' →', () => select(at), 'rel-word linked') : element('span', row.w, 'rel-word'));
       }
       line.append(label, chips);
-      for (const row of rows.filter(item => item.note)) line.append(element('p', `${row.w}: ${row.note}`, 'rel-note'));
+      // 설명 글에 이미 그 낱말이 들어 있으면 앞에 이름을 다시 붙이지 않는다.
+      for (const row of rows.filter(item => item.note)) line.append(element('p', row.note.includes(row.w) ? row.note : `${row.w}: ${row.note}`, 'rel-note'));
       box.append(line);
     }
     return box.childElementCount ? box : null;
@@ -336,7 +339,7 @@
     if (!keys.length) return null;
     const key = pick(keys);
     const answer = pick(word.rel[key]).w;
-    const related = new Set([word.w, ...['syn', 'ant', 'up', 'down'].flatMap(k => (word.rel[k] || []).map(row => row.w))]);
+    const related = new Set([word.w, ...['syn', 'ant', 'up', 'down', 'see'].flatMap(k => (word.rel[k] || []).map(row => row.w))]);
     const others = shuffle(pool.filter(row => !related.has(row.w))).slice(0, 3).map(row => row.w);
     if (others.length < 3) return null;
     return { kind: 'rel', key, word, answer, choices: shuffle([answer, ...others]) };

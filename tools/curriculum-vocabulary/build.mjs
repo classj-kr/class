@@ -23,13 +23,14 @@ if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(
     for (const [unit, words] of Object.entries(units)) for (const [w, row] of Object.entries(words)) if (row.senses?.length) senses[`${code}/${unit}/${w}`] = row.senses;
   }
 }
-// rel-*.json: { 과목 코드: { 단원 id: { 낱말: { syn: [{ w, note }], ant: [...], up: [...], down: [...] } } } } — 이 단원 뜻의 유의어·반의어·상위어·하위어
+// rel-*.json: { 과목 코드: { 단원 id: { 낱말: { syn: [{ w, note }], ant, up, down, see } } } } — 이 단원 뜻의 유의어·반의어·상위어·하위어, see 는 견주어 볼 관련 단어(rel-c.json)
 const rels = {};
 if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(n => /^rel.*\.json$/.test(n))) {
   for (const [code, units] of Object.entries(JSON.parse(fs.readFileSync(path.join(extraDir, name), 'utf8')))) {
     for (const [unit, words] of Object.entries(units)) for (const [w, row] of Object.entries(words)) {
-      const kept = Object.fromEntries(['syn', 'ant', 'up', 'down'].filter(k => row[k]?.length).map(k => [k, row[k]]));
-      if (Object.keys(kept).length) rels[`${code}/${unit}/${w}`] = kept;
+      const kept = Object.fromEntries(['syn', 'ant', 'up', 'down', 'see'].filter(k => row[k]?.length).map(k => [k, row[k]]));
+      // rel-a·rel-b·rel-c 가 같은 낱말을 나눠 가질 수 있어 칸마다 합친다.
+      if (Object.keys(kept).length) rels[`${code}/${unit}/${w}`] = { ...rels[`${code}/${unit}/${w}`], ...kept };
     }
   }
 }
@@ -87,12 +88,12 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
       title: unit.title,
       words: unit.words.map((word, index) => {
         const more = extra[`${code}/${unit.id}/${word.w}`] || {};
-        // 설명은 줄마다 이름표(한자 뜻·비교·생활 속 예·꼭 알기)로 시작하고, 셋 이하·이름표 뺀 글 130자 이하.
+        // 설명은 줄마다 이름표(한자 뜻·생활 속 예·꼭 알기)로 시작하고(견주는 말은 관련 단어 칸으로), 셋 이하·이름표 뺀 글 130자 이하.
         const explainRows = more.explain || word.explain || [];
         const bodyLength = explainRows.reduce((sum, line) => sum + line.replace(/^[^:]+:\s*/, '').length, 0);
         if (explainRows.length > 3) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명 줄이 셋보다 많음`);
         if (bodyLength > 140) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명이 너무 김(${bodyLength}자)`);
-        for (const line of explainRows) if (!/^(한자 뜻|비교|생활 속 예|꼭 알기): /.test(line)) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명 이름표 없음 — ${line.slice(0, 30)}`);
+        for (const line of explainRows) if (!/^(한자 뜻|생활 속 예|꼭 알기): /.test(line)) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명 이름표 없음 — ${line.slice(0, 30)}`);
         if (explainRows.some(line => line.includes('헷갈'))) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명에 '헷갈' — 아이에게 헷갈린다고 말하지 않는다`);
         const row = { w: word.w, hanja: word.hanja, en: more.en || word.en, mean: word.mean, explain: more.explain || word.explain, use: word.use, blanks: word.blanks, beats: more.beats, senses: senses[`${code}/${unit.id}/${word.w}`], rel: rels[`${code}/${unit.id}/${word.w}`], pic: picOf(code, unit.id, index) };
         return Object.fromEntries(Object.entries(row).filter(([, v]) => v).map(([k, v]) => [k, k === 'pic' || k === 'en' ? v : glue(v)]));
