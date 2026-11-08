@@ -1186,6 +1186,7 @@
     refinePenM16(char, parts);
     refinePenM17(char, parts);
     refinePenM18(char, parts);
+    refinePenM19(char, parts);
     // A small shared deformation must not turn an uncommon syllable into
     // touching initial/final consonants. Retain the already checked draft there.
     const ii=parts.findIndex(p=>p.kind==='initial'),fi=parts.findIndex(p=>p.kind==='final');
@@ -1703,6 +1704,45 @@
       set(initial,2,stroke([44.8,40.6],[54,44.5,65,49.1,75,53.3]));
     }
   }
+  // Piup stems need a lighter entry and a taper, not a uniform round tube.
+  // Final tieut keeps a steady upright before its small lower turn.
+  function refinePenM19(char, parts) {
+    if('를어푸늘름거띠'.includes(char)) return;
+    const n=char.codePointAt(0)-0xac00,a=CHO[Math.floor(n/588)],b=JUNG[Math.floor(n/28)%21],c=JONG[n%28];
+    const set=(part,i,path,pen)=>{const old=part.paths[i];part.paths[i]=sample(path,old.length);if(pen||old.pen) part.paths[i].pen=pen||old.pen;};
+    const leftPen={entry:false,vertical:[3.15,5.25,5.4,5.0],horizontal:[3.7,4.6]};
+    const rightPen={entry:false,vertical:[5.8,5.4,4.7,4.0],horizontal:[4.5,4.5]};
+    for(const part of parts) {
+      if(part.char==='ㅍ') {
+        part.paths[1].pen=leftPen;part.paths[2].pen=rightPen;
+        if(part.kind==='initial'&&c&&'ㅏㅣ'.includes(b)) {
+          const dx=b==='ㅣ'?3:0,map=path=>path.map(([x,y])=>[x+dx,y]);
+          set(part,1,map(stroke([18.1,25.8],[20.6,28.5,22.4,35.7,22.25,39.1])),leftPen);
+          set(part,2,map(stroke([42,24.2],[44.8,25,45.4,27.6,44.6,31.8],[43.8,37.3,42.3,43.6,41.5,47.3])),rightPen);
+        }
+        if(part.kind==='initial'&&!c&&b==='ㅏ') {
+          set(part,1,stroke([18.1,35.5],[20.8,39,22.8,50.2,22.4,57.2]),leftPen);
+          set(part,2,stroke([42,33.2],[44.8,34,45.4,36.6,44.6,40.8],[43.8,48.3,42.3,57.5,40.8,63.1]),rightPen);
+        }
+        if(part.kind==='initial'&&b==='ㅗ'&&c==='ㄴ') {
+          set(part,2,stroke([57.3,19.7],[59.3,20.8,60,23.3,59.1,27],[58.6,32,57.4,38,56.8,41.5]),rightPen);
+        }
+        if(part.kind==='final'&&b==='ㅏ') {
+          set(part,2,stroke([59,69.5],[61.4,70.8,62,73.2,61.1,77.4],[60.4,82,59.5,87,59,90.4]),rightPen);
+        }
+        if(part.kind==='final'&&b==='ㅜ') {
+          set(part,2,stroke([57.5,74.7],[59.8,76,59.5,78.4,58.9,81.3],[58.2,85.2,57.4,88,56.9,90.4]),rightPen);
+        }
+      }
+      if(part.kind==='final'&&(part.char==='ㅌ'||part.char==='ㄾ')) {
+        const index=part.char==='ㅌ'?2:5,p=part.paths[index],first=p[0],end=p.at(-1);
+        const bottom=Math.max(...p.map(q=>q[1])),x=first[0]+(part.char==='ㄾ'?-.1:.25);
+        const narrow=part.char==='ㄾ',kneeY=bottom-(narrow?5.5:4.6),kneeX=x+(kneeY-first[1])*(narrow?.025:.065);
+        set(part,index,stroke([x,first[1]],[kneeX,kneeY],
+          [kneeX+(narrow?.8:.1),bottom-1.1,kneeX+(narrow?2.8:1.3),bottom,kneeX+(narrow?6.8:5),bottom],end));
+      }
+    }
+  }
   function polishPenStrokes(char, parts) {
     if('를어푸늘름거'.includes(char)) return;
     if(!parts.some(part=>M_STROKE_POLISH[auditGroup(char,part)])) return;
@@ -1932,7 +1972,7 @@
     CHO,
     JUNG,
     JONG,
-    VERSION: 16,
+    VERSION: 17,
     FAMILY: 'ClassJ Pen M',
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
