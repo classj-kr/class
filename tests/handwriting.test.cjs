@@ -51,7 +51,7 @@ test('all modern Hangul syllables compose finite, ordered stroke paths', () => {
   assert.equal(C.model('A'), null);
 });
 test('the designed pen paths remain aligned with shape and order judging', () => {
-  for (const c of ['ㄹ', 'ㅂ', 'ㅓ', '한', '꽃', '과', '읽', '모', '포', '파', '환', '귤', '굴', '궤', '갗']) {
+  for (const c of ['ㄹ', 'ㅂ', 'ㅓ', '한', '꽃', '과', '읽', '모', '포', '파', '환', '귤', '굴', '궤', '갗', ...'값없노소초곬곯붉읊굽옆협팥핥']) {
     const strokes = perfect(c),
       r = C.judge(c, strokes);
     assert.equal(r.order, true, c);
@@ -67,6 +67,17 @@ test('paired ㄷ turns meet the first vowel stem without crossing into a double 
     const near = stem.reduce((a, b) => Math.abs(a[1] - end[1]) < Math.abs(b[1] - end[1]) ? a : b);
     assert.ok(Math.abs(end[0] - near[0]) < 2, char + ': connected end');
     assert.ok(initial.paths.flat().every(p => p[0] <= near[0] + 2), char + ': no stroke between the upright stems');
+  }
+});
+test('compact bieup-siot finals keep the middle pen lift and the right join', () => {
+  const PenM = require('../assets/fonts/classj-pen-m/source');
+  for (const initial of PenM.CHO) for (const vowel of 'ㅏㅑㅐㅒㅓㅕㅔㅖㅣ') {
+    const char = String.fromCodePoint(0xac00 + (PenM.CHO.indexOf(initial) * 21 + PenM.JUNG.indexOf(vowel)) * 28 + PenM.JONG.indexOf('ㅄ'));
+    const final = PenM.components(char).find(p => p.kind === 'final');
+    const middle = final.paths[2], left = final.paths[0], right = final.paths[1];
+    const near = (p, path) => Math.min(...PenM.sample(path, 100).map(q => Math.hypot(q[0] - p[0], q[1] - p[1])));
+    assert.ok(near(middle[0], left) >= 5, char + ': visible pen lift');
+    assert.ok(near(middle.at(-1), right) < 2, char + ': middle joins right stem');
   }
 });
 test('optical final proportions retain open counters and separate from upper ink', () => {

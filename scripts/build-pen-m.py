@@ -45,9 +45,9 @@ def main():
     fb.setupNameTable({
         'familyName': {'en': 'ClassJ Pen M', 'ko': '클래스제이 펜 M'},
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'ClassJ-Pen-M-1.700',
+        'uniqueFontIdentifier': 'ClassJ-Pen-M-1.800',
         'fullName': 'ClassJ Pen M', 'psName': 'ClassJPenM-Regular',
-        'version': 'Version 1.700',
+        'version': 'Version 1.800',
         'copyright': 'Original ClassJ lettering, 2026.',
         'designer': 'ClassJ',
         'description': 'Original medium pen lettering. Not the DXKOREA font. Shared Hangul stroke model; no third-party font outlines included.',
@@ -87,7 +87,7 @@ def main():
                 assert g.numberOfContours > 0
                 assert -100 <= g.xMin < g.xMax <= 1050 and -250 <= g.yMin < g.yMax <= 850, (hex(cp), g.xMin, g.yMin, g.xMax, g.yMax)
     assert hashlib.sha256(base.SOURCE.read_bytes()).hexdigest() == source_hash
-    manifest = {'family': 'ClassJ Pen M', 'version': '1.700', 'weight': 500,
+    manifest = {'family': 'ClassJ Pen M', 'version': '1.800', 'weight': 500,
                 'hangulSyllables': sum(0xac00 <= cp <= 0xd7a3 for cp in cmap),
                 'compatibilityJamo': sum(0x3131 <= cp <= 0x3163 for cp in cmap),
                 'sourceSha256': source_hash, 'ttfBytes': ttf.stat().st_size,

@@ -469,7 +469,7 @@ test('the original pen font matches the designed outlines and the editor remains
     canvas.width = canvas.height = 256;
     const ctx = canvas.getContext('2d'),
       result = {};
-    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊교책얘에예와왜외워웨위의까따빠싸짜무늘믿귤확활훤를어푸구쿠누부궈궤귀쵸죠갛갗럽립붓밟뻐뼈띠고코쿄초연영건겁굿땅때떄곰임음열쐐뿔좋랍괘괴곤모포환균굴숲괵갗갛꽃ㅏㅓㅇㅎ')) {
+    for (const char of Array.from('가나다라마바사아자차카타파하한글과괜읽읊교책얘에예와왜외워웨위의까따빠싸짜무늘믿귤확활훤를어푸구쿠누부궈궤귀쵸죠갛갗럽립붓밟뻐뼈띠고코쿄초연영건겁굿땅때떄곰임음열쐐뿔좋랍괘괴곤모포환균굴숲괵갗갛꽃값없노소초곬곯붉읊굽옆협팥핥ㅏㅓㅇㅎ')) {
       const glyph = HandwritingReference.glyph(char),
         layout = glyph.layout;
       ctx.resetTransform();
@@ -599,4 +599,11 @@ test('the original pen font matches the designed outlines and the editor remains
   await page.setViewportSize({ width: 390, height: 844 });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
   await shot('pen-m-1700-applied-mobile');
+  await page.setViewportSize({ width: 1366, height: 950 });
+  await page.fill('#customText', '값없곯붉 굽협팥노');
+  await page.locator('#customForm button').click();
+  await shot('pen-m-1800-applied-desktop');
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await shot('pen-m-1800-applied-mobile');
 });
