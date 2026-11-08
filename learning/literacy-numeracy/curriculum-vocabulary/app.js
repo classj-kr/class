@@ -177,20 +177,20 @@
 
   // 이 단원 뜻의 유의어·반의어·상위어·하위어. 같은 단원 낱말이면 눌러서 그 낱말로 간다.
   const REL = [
-    ['syn', '유의어', '뜻이 비슷한 말'],
-    ['ant', '반의어', '뜻이 반대인 말'],
-    ['up', '상위어', '더 넓게 묶는 말'],
-    ['down', '하위어', '그 안에 드는 말']
+    ['syn', '유의어'],
+    ['ant', '반의어'],
+    ['up', '상위어'],
+    ['down', '하위어']
   ];
   function relationsOf(unit, word, select) {
     if (!word.rel) return null;
     const box = element('div', '', 'relations');
-    for (const [key, name, gloss] of REL) {
+    for (const [key, name] of REL) {
       const rows = word.rel[key];
       if (!rows || !rows.length) continue;
       const line = element('div', '', `rel rel-${key}`);
       const label = element('p', '', 'rel-kind');
-      label.append(element('b', name), element('span', gloss));
+      label.append(element('b', name));
       const chips = element('div', '', 'rel-words');
       for (const row of rows) {
         const at = unit.words.findIndex(item => item.w === row.w);
@@ -201,6 +201,17 @@
       box.append(line);
     }
     return box.childElementCount ? box : null;
+  }
+
+  // 설명 한 줄: '비교: …'처럼 이름표가 앞에 있으면 색 이름표로 떼어 보인다.
+  const EXPLAIN_TAGS = { '한자 뜻': 'hanja', '비교': 'compare', '생활 속 예': 'life', '꼭 알기': 'key' };
+  function explainLine(text) {
+    const line = element('p', '', 'ex');
+    const m = text.match(/^(한자 뜻|비교|생활 속 예|꼭 알기):\s*/);
+    if (!m) { line.textContent = text; return line; }
+    line.classList.add('tagged');
+    line.append(element('b', m[1], `ex-tag ex-${EXPLAIN_TAGS[m[1]]}`), element('span', text.slice(m[0].length)));
+    return line;
   }
 
   function wordPageOf(unit, index, select) {
@@ -231,7 +242,7 @@
     if (relations) side.append(relations);
     if (word.explain) {
       const more = element('div', '', 'explain');
-      more.append(...word.explain.map(text => element('p', text)));
+      more.append(...word.explain.map(explainLine));
       side.append(more);
     }
     // 다른 뜻은 두 묶음으로 나눈다. 다의어(같은 낱말의 다른 뜻)를 먼저, 동형어(소리만 같은 다른 낱말)를 그 아래에.
@@ -239,15 +250,15 @@
     if (word.senses) {
       let number = 2;
       const groups = [
-        ['다의어', '같은 낱말의 다른 뜻', 'polysemy'],
-        ['동형어', '소리만 같은 다른 낱말', 'homonym']
+        ['다의어', 'polysemy'],
+        ['동형어', 'homonym']
       ];
-      for (const [kind, gloss, cls] of groups) {
+      for (const [kind, cls] of groups) {
         const rows = word.senses.filter(sense => (sense.kind || '다의어') === kind);
         if (!rows.length) continue;
         const group = element('section', '', `sense-group ${cls}`);
         const label = element('p', '', 'sense-kind');
-        label.append(element('b', kind), element('span', gloss));
+        label.append(element('b', kind));
         const list = element('ol', '', 'meanings others');
         list.start = number;
         list.style.counterReset = `sense ${number - 1}`;
