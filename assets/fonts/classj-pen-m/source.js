@@ -1187,6 +1187,7 @@
     refinePenM17(char, parts);
     refinePenM18(char, parts);
     refinePenM19(char, parts);
+    refinePenM20(char, parts);
     // A small shared deformation must not turn an uncommon syllable into
     // touching initial/final consonants. Retain the already checked draft there.
     const ii=parts.findIndex(p=>p.kind==='initial'),fi=parts.findIndex(p=>p.kind==='final');
@@ -1743,6 +1744,69 @@
       }
     }
   }
+  // M 2.0: local junctions and proportions measured from the M reference specimens.
+  function refinePenM20(char, parts) {
+    if('를어푸늘름거띠'.includes(char)) return;
+    const n=char.codePointAt(0)-0xac00,a=CHO[Math.floor(n/588)],b=JUNG[Math.floor(n/28)%21],c=JONG[n%28];
+    const initial=parts.find(p=>p.kind==='initial'),vowels=parts.filter(p=>p.kind==='vowel'),vowel=vowels[0],final=parts.find(p=>p.kind==='final');
+    const set=(part,i,path,pen)=>{const old=part.paths[i];part.paths[i]=sample(path,old.length);if(pen||old.pen)part.paths[i].pen=pen||old.pen;};
+    const line=(part,i,start,end)=>set(part,i,stroke(start,end));
+    const atX=(path,x)=>{for(let i=1;i<path.length;i++)if(x>=path[i-1][0]&&x<=path[i][0]){const t=(x-path[i-1][0])/(path[i][0]-path[i-1][0]||1);return path[i-1][1]+t*(path[i][1]-path[i-1][1]);}return path.reduce((p,q)=>Math.abs(p[0]-x)<Math.abs(q[0]-x)?p:q)[1];};
+    const bar=(part,i,level,slope)=>{const p=part.paths[i];line(part,i,[p[0][0],level+slope*p[0][0]],[p.at(-1)[0],level+slope*p.at(-1)[0]]);};
+    const endAt=(path,target,reach=14)=>{const end=[...path.at(-1)],d=target.map((v,i)=>v-end[i]);for(const p of path){const t=Math.max(0,1-distance(p,end)/reach),w=t*t*(3-2*t);p[0]+=d[0]*w;p[1]+=d[1]*w;}};
+    if(a==='ㅆ'&&b==='ㅙ'&&!c) {
+      endAt(initial.paths[2],[25.8,51.0],19);
+      endAt(initial.paths[0],[6.7,48.5]);endAt(initial.paths[3],[53.5,50]);
+    }
+    if(a==='ㅉ'&&b==='ㅣ'&&c==='ㅁ') {
+      const p=initial.paths[2],start=[...p[0]];
+      for(const q of p){const t=Math.max(0,1-distance(q,start)/10);q[0]+=1.5*t*t*(3-2*t);}
+      endAt(p,[30.0,54.0],18);
+      set(initial,1,stroke([26.3,30.5],[29.5,35.8,34.5,40.8,39.4,43.7]));
+    }
+    if(a==='ㅃ'&&b==='ㅜ'&&c==='ㄹ') {
+      for(const [i,x,slope] of [[0,19.15,.047],[1,39.55,0],[4,52.42,.035],[5,72.55,0]]) {
+        for(const p of initial.paths[i]) {const t=Math.min(1,Math.max(0,(p[1]-13)/6)),w=t*t*(3-2*t);p[0]+=(x+(p[1]-15)*slope-p[0])*w;}
+      }
+    }
+    if(a==='ㅎ'&&b==='ㅟ'&&c==='ㄴ') {
+      for(const p of initial.paths[2]) {p[0]=35.6+(p[0]-35.5)*1.014;p[1]=27.37+(p[1]-27.37)*.924;}
+      bar(vowel,0,57.9,-.0683);
+    }
+    if(a==='ㅎ'&&b==='ㅏ'&&c==='ㄱ') {
+      for(const p of initial.paths[2]) {p[0]=30.6+(p[0]-30.5)*1.01;p[1]+=.85;}
+      bar(initial,1,21.94,-.0033);bar(vowel,1,36.66,-.0256);
+      final.paths[0].pen={...final.paths[0].pen,tip:true};
+    }
+    if(a==='ㄹ'&&b==='ㅗ'&&!c) {
+      const start=initial.paths[0][0];set(initial,0,stroke(start,[69,16.4],[68.1,35.52]));
+      bar(initial,1,36.05,-.0078);
+      set(initial,2,stroke([22.5,35.88],[23.45,49.3],[23.5,53.5,24.8,55.8,28.5,56.03],[71.98,55.37]));
+    }
+    if(a==='ㄱ'&&b==='ㅠ'&&!c) {
+      endAt(initial.paths[0],[64.2,atX(vowel.paths[0],64.2)],18);
+      set(vowel,1,stroke([34.05,atX(vowel.paths[0],34.05)],[34,64,30.3,83.7,25.9,92]),{tip:true});
+      line(vowel,2,[61.45,atX(vowel.paths[0],61.45)],[61.45,94]);
+    }
+    if(c==='ㄻ'&&'ㅏㅑㅓㅕㅣ'.includes(b)) {
+      const dx=final.paths[3][0][0]-50.38,map=path=>path.map(([x,y])=>[x+dx,y]);
+      set(final,3,map(stroke([46.3,59],[49.5,61,50.4,62.1,50.6,66],[51,75,51.2,85,51.4,94])),{entry:false});
+      set(final,4,map(stroke([54.54,61.76],[71.3,61],[70.6,90.8])));
+      line(final,5,[51.3+dx,92.21-.0232*(51.3+dx)],[72.2+dx,92.21-.0232*(72.2+dx)]);
+    }
+    if(a==='ㅅ'&&b==='ㅏ'&&c==='ㄻ') {
+      const p=initial.paths[0],start=[...p[0]];
+      for(const q of p){const t=Math.max(0,1-distance(q,start)/10),w=t*t*(3-2*t);q[0]+=.5*w;q[1]-=2.7*w;}
+    }
+    if(a==='ㅊ'&&b==='ㅣ'&&c==='ㄴ') set(initial,2,stroke([36.4,38.4],[42.6,44,49.1,48.9,55.3,53.4]));
+    if(a==='ㅈ'&&b==='ㅗ'&&!c) set(initial,1,stroke([45.5,35.6],[54,39.6,64,45,73.9,49.7]));
+    if(a==='ㄱ'&&b==='ㅜ'&&c==='ㅈ') {
+      set(initial,0,stroke(initial.paths[0][0],[71,12.1],[65.3,atX(vowel.paths[0],65.3)]));
+      line(vowel,1,[46.05,atX(vowel.paths[0],46.05)],[46.05,atX(final.paths[0],46.05)]);
+      set(final,1,stroke([46.8,79.4],[55,82.5,65,87.1,75.5,91.5]));
+    }
+  }
+
   function polishPenStrokes(char, parts) {
     if('를어푸늘름거'.includes(char)) return;
     if(!parts.some(part=>M_STROKE_POLISH[auditGroup(char,part)])) return;
@@ -1972,7 +2036,7 @@
     CHO,
     JUNG,
     JONG,
-    VERSION: 17,
+    VERSION: 18,
     FAMILY: 'ClassJ Pen M',
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
