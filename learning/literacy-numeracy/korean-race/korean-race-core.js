@@ -116,7 +116,7 @@
     const text = String(range), upto = text.startsWith('~');
     const [first, second] = text.replace('~', '').split('-').map(Number);
     const spec = RANGE_SETS[set] || {}, units = spec.units;
-    const at = units ? `Level ${first}${second ? ` · ${second}차시` : ''}` : `${first}${spec.name || '차시'}`;
+    const at = units ? `Level ${first}${second ? ` · ${(first - 1) * spec.lessons + second}차시` : ''}` : `${first}${spec.name || '차시'}`;
     const isFirst = units ? first === 1 && second === 1 : first === 1;
     if (!upto || isFirst) return at;
     return spec.name ? `1~${at}` : `처음~${at}`;
