@@ -101,10 +101,10 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
         const more = extra[`${code}/${unit.id}/${word.w}`] || {};
         // 설명은 줄마다 이름표(한자 뜻·생활 속 예·꼭 알기)로 시작하고(견주는 말은 관련 단어 칸으로), 셋 이하·이름표 뺀 글 130자 이하.
         const explainRows = more.explain || word.explain || [];
-        const bodyLength = explainRows.reduce((sum, line) => sum + line.replace(/^(쉬운 뜻|한자 뜻|생활 속 예): /, '').length, 0);
+        const bodyLength = explainRows.reduce((sum, line) => sum + line.replace(/^(쉬운 뜻|낱말 나누기|한자 뜻|생활 속 예): /, '').length, 0);
         if (explainRows.length > 3) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명 줄이 셋보다 많음`);
         if (bodyLength > 160) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명이 너무 김(${bodyLength}자)`);
-        for (const line of explainRows) if (/^[^:]{1,6}: /.test(line) && !/^(쉬운 뜻|한자 뜻|생활 속 예): /.test(line)) problems.push(`${book.subject} ${unit.id} ${word.w}: 쓰지 않는 설명 이름표 — ${line.slice(0, 30)}`);
+        for (const line of explainRows) if (/^[^:]{1,6}: /.test(line) && !/^(쉬운 뜻|낱말 나누기|한자 뜻|생활 속 예): /.test(line)) problems.push(`${book.subject} ${unit.id} ${word.w}: 쓰지 않는 설명 이름표 — ${line.slice(0, 30)}`);
         if (explainRows.some(line => line.includes('헷갈'))) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명에 '헷갈' — 아이에게 헷갈린다고 말하지 않는다`);
         // 한자 훈은 아이가 아는 말로: '글월 문' 말고 '글 문'처럼(옛 훈 목록에 걸리면 고친다).
         const oldReadings = ['글월', '잇닿을', '요긴할', '중매', '성품 성', '간략할', '꾀 계', '본디', '대 대', '써 이', '호걸', '사기그릇', '뭍 ', '부릴', '대개 개'];
