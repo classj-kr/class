@@ -30,7 +30,10 @@ if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(
     for (const [unit, words] of Object.entries(units)) for (const [w, row] of Object.entries(words)) {
       const kept = Object.fromEntries(['syn', 'ant', 'up', 'down', 'see'].filter(k => row[k]?.length).map(k => [k, row[k]]));
       // rel-a·rel-b·rel-c 가 같은 낱말을 나눠 가질 수 있어 칸마다 합친다.
-      if (Object.keys(kept).length) rels[`${code}/${unit}/${w}`] = { ...rels[`${code}/${unit}/${w}`], ...kept };
+      if (Object.keys(kept).length) {
+        const prev = rels[`${code}/${unit}/${w}`] || {};
+        rels[`${code}/${unit}/${w}`] = { ...prev, ...Object.fromEntries(Object.entries(kept).map(([k, list]) => [k, [...(prev[k] || []), ...list.filter(row => !(prev[k] || []).some(old => old.w === row.w))]])) };
+      }
     }
   }
 }
