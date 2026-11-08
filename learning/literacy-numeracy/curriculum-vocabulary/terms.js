@@ -45,6 +45,27 @@ window.CurriculumTerms = {
    "figures/5-2/sci.js?v=3559450c"
   ]
  },
+ "6-1": {
+  "words": "words-6-1.js?v=b8ea54cf",
+  "figures": [
+   "figures/6-1/kor-2.js?v=087c0f26",
+   "figures/6-1/kor-3.js?v=b422b14a",
+   "figures/6-1/kor.js?v=9f18b508",
+   "figures/6-1/math-1.js?v=e89f61e3",
+   "figures/6-1/math-2.js?v=5e5e42a1",
+   "figures/6-1/math-3.js?v=083d30d4",
+   "figures/6-1/math-4.js?v=c286e550",
+   "figures/6-1/math-5.js?v=e7b17da5",
+   "figures/6-1/math-6.js?v=fba228de",
+   "figures/6-1/sci-2.js?v=6dc9a41b",
+   "figures/6-1/sci-3.js?v=b0ce5f8f",
+   "figures/6-1/sci.js?v=70298190",
+   "figures/6-1/soc-2.js?v=0d87f5e6",
+   "figures/6-1/soc-3.js?v=336aeb6a",
+   "figures/6-1/soc-4.js?v=8f0ee44c",
+   "figures/6-1/soc.js?v=5647ecdb"
+  ]
+ },
  "6-2": {
   "words": "words-6-2.js?v=ec4ff8fc",
   "figures": [
@@ -94,6 +115,12 @@ window.CurriculumTermsPreview = {
    "figures/4-2/soc.js?v=8ce6c6e8"
   ]
  },
+ "5-1": {
+  "words": "words-5-1.js?v=19ad4d58",
+  "figures": [
+   "figures/5-1/math-1.js?v=23f974d9"
+  ]
+ },
  "5-2": {
   "words": "words-5-2.js?v=3d652a28",
   "figures": [
@@ -108,8 +135,25 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-1": {
-  "words": "words-6-1.js?v=b4ad3032",
-  "figures": []
+  "words": "words-6-1.js?v=b8ea54cf",
+  "figures": [
+   "figures/6-1/kor-2.js?v=087c0f26",
+   "figures/6-1/kor-3.js?v=b422b14a",
+   "figures/6-1/kor.js?v=9f18b508",
+   "figures/6-1/math-1.js?v=e89f61e3",
+   "figures/6-1/math-2.js?v=5e5e42a1",
+   "figures/6-1/math-3.js?v=083d30d4",
+   "figures/6-1/math-4.js?v=c286e550",
+   "figures/6-1/math-5.js?v=e7b17da5",
+   "figures/6-1/math-6.js?v=fba228de",
+   "figures/6-1/sci-2.js?v=6dc9a41b",
+   "figures/6-1/sci-3.js?v=b0ce5f8f",
+   "figures/6-1/sci.js?v=70298190",
+   "figures/6-1/soc-2.js?v=0d87f5e6",
+   "figures/6-1/soc-3.js?v=336aeb6a",
+   "figures/6-1/soc-4.js?v=8f0ee44c",
+   "figures/6-1/soc.js?v=5647ecdb"
+  ]
  },
  "6-2": {
   "words": "words-6-2.js?v=ec4ff8fc",

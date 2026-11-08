@@ -376,7 +376,16 @@
         .filter(row => !related.has(row.w) && verbish(row.w) === verbish(answer) && !same.includes(row));
       same = same.concat(wide);
     }
-    const others = (same.length >= 3 ? same : free).slice(0, 3).map(row => row.w);
+    let rows = (same.length >= 3 ? same : free).slice(0, 3);
+    // 주관적↔객관적, 공정≈공평처럼 답이 물은 낱말과 글자를 나눠 가지면 모양만 보고 고른다.
+    // 그런 짝이면 물은 낱말과 첫 글자나 끝 글자가 같은 낱말을 보기에 하나 섞는다.
+    const shares = (name) => name !== answer && (name[0] === word.w[0] || name.slice(-1) === word.w.slice(-1));
+    if ((answer[0] === word.w[0] || answer.slice(-1) === word.w.slice(-1)) && !rows.some(row => shares(row.w))) {
+      const look = shuffle(books[term][subject].units.flatMap(row => row.words))
+        .find(row => !related.has(row.w) && row.w !== word.w && verbish(row.w) === verbish(answer) && shares(row.w) && !rows.includes(row));
+      if (look) rows = [look, ...rows.slice(0, 2)];
+    }
+    const others = rows.map(row => row.w);
     if (others.length < 3) return null;
     return { kind: 'rel', key, word, answer, choices: shuffle([answer, ...others]) };
   }
@@ -444,7 +453,16 @@
       addDown(word);
       // 같은 갈래 낱말이 목록에 없을 때는 목록 밖 낱말(야크, 낙타 …)도 오답으로 쓴다. 그때는 틀린 말 풀이가 없다.
       const picked = shuffle((word.foils || []).filter(name => name !== word.w && !banned.has(name)).map(name => subjectWords.find(row => row.w === name) || { w: name })).slice(0, 3);
-      const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row) && !banned.has(row.w))).slice(0, 3 - picked.length);
+      // 모자라서 단원 낱말로 채울 때는 위 낱말(공통분모의 분모)도 뺀다. 빈칸에 넣으면 대개 말이 되기 때문이다.
+      // 골라 둔 오답(foils)의 위 낱말은 문장이 막아 두었으므로 그대로 쓴다.
+      const above = new Set();
+      const addUp = (row) => (row?.rel?.up || []).forEach(up => {
+        if (above.has(up.w)) return;
+        above.add(up.w);
+        addUp(subjectWords.find(other => other.w === up.w));
+      });
+      addUp(word);
+      const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row) && !banned.has(row.w) && !above.has(row.w))).slice(0, 3 - picked.length);
       return shuffle([word, ...picked, ...rest])
         .map(row => ({ label: row.w, right: row === word, wrong: row.mean ? element('p', `${row.w}: ${row.mean}`, 'wrong-note') : null }));
     }
