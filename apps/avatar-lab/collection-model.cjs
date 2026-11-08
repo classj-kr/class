@@ -53,11 +53,13 @@ module.exports=function createCollectionAvatar(THREE,id){
     parts.set(part.name,{part,group,shell,solid,points});
   }
   require("./collection-specials.cjs")(THREE,k,id,parts);
+  require("./animal-appendages.cjs")(THREE,k,id,parts);
+  const characterEffects=require('./character-effects.cjs')(THREE,k,id);
   const torso=parts.get("Torso"),head=parts.get("Head");
   if(torso&&head){
     k.ellipsoid("NeckJoin",[Math.min(.22,profile.armHalf*.003),.10,.16],torso.solid,k.body,[(profile.cx-320)*.005,(580-profile.neck)*.005,-.025]);
   }
-  if(parts.has("Tail")&&torso){
+  if(parts.has("Tail")&&!parts.get('Tail').special&&torso){
     const tail=parts.get("Tail"),origin=[profile.cx+(profile.tail.side==="left"?-25:25),Math.min(530,profile.neck+65)];
     let nearest=null,best=Infinity;
     for(let i=0;i<tail.points.length;i+=4){const d=(tail.points[i]-origin[0])**2+(tail.points[i+1]-origin[1])**2;if(d<best){best=d;nearest=[tail.points[i],tail.points[i+1]];}}
@@ -123,7 +125,11 @@ module.exports=function createCollectionAvatar(THREE,id){
   if(profile.motion==="walk"){
     for(const name of ["LeftLeg","RightLeg"])if(!parts.has(name))throw new Error(id+" needs a visible "+name+" or a corrected anatomy profile");
     for(const name of ["LeftArm","RightArm"])if(!parts.has(name))k.group(name,[profile.cx+(name==="LeftArm"?-profile.armHalf:profile.armHalf),profile.neck+20]);
-    result=k.finish({holdLeft:profile.holdArms,authoring:"Individually traced closed costume parts, original unchanged artwork, anatomy-specific profile and grounded stride"});
+    result=k.finish({holdLeft:profile.holdArms,holdRight:profile.holdArms,authoring:"Authored costume and prop solids with source artwork, remaining traced limb drafts and grounded stride"});
+  }else if(profile.shape==='snake'){
+    result=require('./snake-motion.cjs')(THREE,k,id);
+  }else if(profile.motion==='hop'){
+    result=require('./hopping-motion.cjs')(THREE,k,id);
   }else{
     const clips=[],times=Array.from({length:49},(_,i)=>i/48*1.8);
     for(const name of ["Idle","Walk","Wave"]){
@@ -144,5 +150,6 @@ module.exports=function createCollectionAvatar(THREE,id){
     clip.tracks.push(new THREE.QuaternionKeyframeTrack(name+".quaternion",times,values));
   }
   Object.assign(result.root.userData,{avatarKey:id+".webp",prototype:true,revision:profile.revision,collection:true,shape:profile.shape,locomotion:profile.motion,canWave:profile.motion==="walk"&&!profile.holdArms,sourceChecksum:source.checksum});
+  if(characterEffects){result.clips.push(characterEffects);result.root.userData.effectClip=characterEffects.name;}
   return result;
 };

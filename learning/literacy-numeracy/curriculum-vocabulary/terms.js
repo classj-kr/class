@@ -35,9 +35,10 @@ window.CurriculumTermsPreview = {
   "figures": []
  },
  "4-2": {
-  "words": "words-4-2.js?v=1d7fc32f",
+  "words": "words-4-2.js?v=ab2321a6",
   "figures": [
    "figures/4-2/math-1.js?v=a293f916",
+   "figures/4-2/math-2.js?v=dcc46e2b",
    "figures/4-2/math-4.js?v=fd0993c2"
   ]
  },

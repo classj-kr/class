@@ -20,12 +20,13 @@ module.exports=function vehicle(THREE,id){
  if(id==='vehicle-hot-air-balloon'){
   const profile=[[0,.75],[.27,.75],[.39,.91],[.60,1.22],[.81,1.61],[.90,1.96],[.85,2.22],[.64,2.45],[.31,2.58],[0,2.61]];
   const curve=new THREE.CatmullRomCurve3(profile.map(([r,y])=>new THREE.Vector3(r,y,0))),smooth=curve.getPoints(72).map(p=>[Math.max(0,p.x),p.y]);
-  const balloon=lathe('BalloonEnvelope',smooth,'#ffffff'),p=balloon.geometry.attributes.position,colors=[];
-  for(let i=0;i<p.count;i++){const a=Math.atan2(p.getX(i),p.getZ(i));const band=Math.floor((a+Math.PI/8)/(Math.PI/4));const c=new THREE.Color(band%2===0?'#d83040':'#fff0d9').convertSRGBToLinear();colors.push(c.r,c.g,c.b);}
+  const balloon=lathe('BalloonEnvelope',smooth,'#ffffff');balloon.geometry=balloon.geometry.toNonIndexed();const p=balloon.geometry.attributes.position,colors=[];
+  for(let i=0;i<p.count;i+=3){const x=(p.getX(i)+p.getX(i+1)+p.getX(i+2))/3,z=(p.getZ(i)+p.getZ(i+1)+p.getZ(i+2))/3,a=Math.atan2(x,z),band=Math.floor((a+Math.PI/8)/(Math.PI/4)),c=new THREE.Color(band%2===0?'#d83040':'#fff0d9').convertSRGBToLinear();for(let j=0;j<3;j++)colors.push(c.r,c.g,c.b);}
   balloon.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));balloon.material.userData.preserveVertexColor=true;
   for(let i=0;i<8;i++){const a=(i+.5)*Math.PI/4;tube('BalloonGore'+i,smooth.slice(2,-2).map(([r,y])=>[Math.sin(a)*(r+.010),y,Math.cos(a)*(r+.010)]),.006,'#a64843');}
   face(320,300,102,79,balloon);
   const basket=lathe('Basket',[[0,.16],[.27,.16],[.36,.51],[.36,.56],[.31,.56],[.24,.21],[0,.21],[0,.16]],'#bc805b');ring('BasketRim',.345,.038,'#7a4b37',[0,.55,0],'y');
+  cylinder('BasketNeck',.28,.31,.22,'#dba452',[0,.66,0]);
   for(let i=0;i<14;i++)for(const sign of [-1,1]){const ps=[];for(let n=0;n<=16;n++){const t=n/16,y=.19+t*.32,r=.28+.075*t,a=i/14*Math.PI*2+sign*t*.65;ps.push([Math.sin(a)*r,y,Math.cos(a)*r]);}tube('BasketWeave'+i+'_'+sign,ps,.006,'#946044');}
   for(let i=0;i<4;i++){const a=Math.PI/4+i*Math.PI/2;tube('SuspensionRope'+i,[[Math.sin(a)*.33,.53,Math.cos(a)*.33],[Math.sin(a)*.27,.81,Math.cos(a)*.27]],.017,'#704c3c');}
   feet('#b98065',.18,.19);walk=true;
@@ -77,6 +78,7 @@ module.exports=function vehicle(THREE,id){
   for(let i=0;i<9;i++){const bar=box('CowcatcherBar'+i,[.055,.36,.065],red,[(i-4)*.13,.30,1.0+Math.abs(i-4)*-.02]);bar.rotation.x=-.45;bar.rotation.z=(i-4)*-.035;}
   box('CowcatcherLowerBar',[1.28,.08,.10],red,[0,.14,1.09]);
  }
+ if(id==='vehicle-hot-air-balloon'||id==='vehicle-rocket')require('./visible-front-artwork.cjs')(THREE,k,head,[320,580]);
  let result;
  if(walk)result=k.finish({holdLeft:true,authoring:'Individually built volumetric vehicle with original face projected onto its real surface'});
  else{

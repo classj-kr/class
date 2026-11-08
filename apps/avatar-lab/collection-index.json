@@ -11,9 +11,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-bear.glb",
-      "revision": "a7bb151b368a",
+      "revision": "507139bd8dca",
+      "sourceRevision": "15dfcbda1b4b",
       "original": "../classtools/assets/avatars/animal-bear.webp",
-      "bytes": 1350812
+      "bytes": 1165360
     },
     {
       "id": "animal-bee",
@@ -24,7 +25,8 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-bee.glb",
-      "revision": "48d76d2b804a",
+      "revision": "a2c4dab578e7",
+      "sourceRevision": "bf13ed878b8f",
       "original": "../classtools/assets/avatars/animal-bee.webp",
       "bytes": 1634912
     },
@@ -37,9 +39,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-butterfly.glb",
-      "revision": "1bd56bc1939e",
+      "revision": "66584bf20091",
+      "sourceRevision": "e2881d5d4aea",
       "original": "../classtools/assets/avatars/animal-butterfly.webp",
-      "bytes": 1656292
+      "bytes": 1656228
     },
     {
       "id": "animal-cat",
@@ -51,6 +54,7 @@
       "status": "prototype",
       "model": "models/animal-cat.glb",
       "revision": "2ce39270f7f7",
+      "sourceRevision": "13db2c476eb7",
       "original": "../classtools/assets/avatars/animal-cat.webp",
       "bytes": 1772512
     },
@@ -63,9 +67,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-chick.glb",
-      "revision": "6f1981affadc",
+      "revision": "4fd618e0ca50",
+      "sourceRevision": "7eafe3c34943",
       "original": "../classtools/assets/avatars/animal-chick.webp",
-      "bytes": 1399808
+      "bytes": 1545896
     },
     {
       "id": "animal-crab",
@@ -76,9 +81,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-crab.glb",
-      "revision": "efc1d283eba5",
+      "revision": "8454dc490e03",
+      "sourceRevision": "66320105d3dd",
       "original": "../classtools/assets/avatars/animal-crab.webp",
-      "bytes": 1502968
+      "bytes": 1694592
     },
     {
       "id": "animal-crested-gecko",
@@ -89,9 +95,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-crested-gecko.glb",
-      "revision": "d2adb4e3f8af",
+      "revision": "a4244a704057",
+      "sourceRevision": "6b47321e9b78",
       "original": "../classtools/assets/avatars/animal-crested-gecko.webp",
-      "bytes": 1381028
+      "bytes": 1339588
     },
     {
       "id": "animal-crocodile",
@@ -102,9 +109,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-crocodile.glb",
-      "revision": "2e171a52907c",
+      "revision": "0ba5e9c782fd",
+      "sourceRevision": "2273699b48ce",
       "original": "../classtools/assets/avatars/animal-crocodile.webp",
-      "bytes": 1430956
+      "bytes": 1151876
     },
     {
       "id": "animal-deer",
@@ -115,9 +123,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-deer.glb",
-      "revision": "86e522561a02",
+      "revision": "7799cb43aa93",
+      "sourceRevision": "3d821b8644b3",
       "original": "../classtools/assets/avatars/animal-deer.webp",
-      "bytes": 1258904
+      "bytes": 1342612
     },
     {
       "id": "animal-dog",
@@ -128,9 +137,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-dog.glb",
-      "revision": "9dae5b46408d",
+      "revision": "35b24e406352",
+      "sourceRevision": "1a364e809184",
       "original": "../classtools/assets/avatars/animal-dog.webp",
-      "bytes": 1538760
+      "bytes": 1373776
     },
     {
       "id": "animal-dolphin",
@@ -141,9 +151,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-dolphin.glb",
-      "revision": "2f1866f3193a",
+      "revision": "7a30856712a5",
+      "sourceRevision": "122b41e4488a",
       "original": "../classtools/assets/avatars/animal-dolphin.webp",
-      "bytes": 1461528
+      "bytes": 1250000
     },
     {
       "id": "animal-dragon",
@@ -154,9 +165,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-dragon.glb",
-      "revision": "4572ef1c2a62",
+      "revision": "580fa2a04139",
+      "sourceRevision": "86f21c6089cc",
       "original": "../classtools/assets/avatars/animal-dragon.webp",
-      "bytes": 1300844
+      "bytes": 1118752
     },
     {
       "id": "animal-dragonfly",
@@ -167,9 +179,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-dragonfly.glb",
-      "revision": "5e9c59bdc087",
+      "revision": "879fc76f1a1f",
+      "sourceRevision": "093797ef501a",
       "original": "../classtools/assets/avatars/animal-dragonfly.webp",
-      "bytes": 1281260
+      "bytes": 1241980
     },
     {
       "id": "animal-duck",
@@ -180,9 +193,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-duck.glb",
-      "revision": "ccd871f8c5d5",
+      "revision": "4c2c1c59d624",
+      "sourceRevision": "43f1466c3fc4",
       "original": "../classtools/assets/avatars/animal-duck.webp",
-      "bytes": 1163724
+      "bytes": 917416
     },
     {
       "id": "animal-eagle",
@@ -193,9 +207,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-eagle.glb",
-      "revision": "11340f249939",
+      "revision": "18f52b4ae819",
+      "sourceRevision": "6bd413154d09",
       "original": "../classtools/assets/avatars/animal-eagle.webp",
-      "bytes": 1342760
+      "bytes": 1120416
     },
     {
       "id": "animal-elephant",
@@ -206,9 +221,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-elephant.glb",
-      "revision": "74b3a21bc7c8",
+      "revision": "79ef1c71843d",
+      "sourceRevision": "154f23f70c9e",
       "original": "../classtools/assets/avatars/animal-elephant.webp",
-      "bytes": 1464420
+      "bytes": 1207104
     },
     {
       "id": "animal-flamingo",
@@ -219,9 +235,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-flamingo.glb",
-      "revision": "1b72367749e9",
+      "revision": "c5685d5ddd82",
+      "sourceRevision": "da3c09df6b02",
       "original": "../classtools/assets/avatars/animal-flamingo.webp",
-      "bytes": 752812
+      "bytes": 720156
     },
     {
       "id": "animal-fox",
@@ -232,9 +249,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-fox.glb",
-      "revision": "0afb4f6270a3",
+      "revision": "6ead5690419b",
+      "sourceRevision": "cbf2d5fb4077",
       "original": "../classtools/assets/avatars/animal-fox.webp",
-      "bytes": 1510932
+      "bytes": 1434340
     },
     {
       "id": "animal-frog",
@@ -245,9 +263,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-frog.glb",
-      "revision": "3f4fb811e19c",
+      "revision": "8dc431c55d0c",
+      "sourceRevision": "2d6f387ef33b",
       "original": "../classtools/assets/avatars/animal-frog.webp",
-      "bytes": 2133348
+      "bytes": 2133284
     },
     {
       "id": "animal-giraffe",
@@ -258,9 +277,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-giraffe.glb",
-      "revision": "01e4fd476f67",
+      "revision": "f9f8213d6fc4",
+      "sourceRevision": "6eb2cad9286a",
       "original": "../classtools/assets/avatars/animal-giraffe.webp",
-      "bytes": 1068948
+      "bytes": 1579812
     },
     {
       "id": "animal-hedgehog",
@@ -271,9 +291,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-hedgehog.glb",
-      "revision": "175ac8c2dad9",
+      "revision": "6f76955254e2",
+      "sourceRevision": "3906259faea5",
       "original": "../classtools/assets/avatars/animal-hedgehog.webp",
-      "bytes": 1566124
+      "bytes": 2210672
     },
     {
       "id": "animal-hippopotamus",
@@ -284,9 +305,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-hippopotamus.glb",
-      "revision": "896b5682af85",
+      "revision": "217c6ae080b9",
+      "sourceRevision": "677e53ca66f6",
       "original": "../classtools/assets/avatars/animal-hippopotamus.webp",
-      "bytes": 1326544
+      "bytes": 1032292
     },
     {
       "id": "animal-kangaroo",
@@ -297,9 +319,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-kangaroo.glb",
-      "revision": "535699296654",
+      "revision": "2293399f93a8",
+      "sourceRevision": "1e17091064e3",
       "original": "../classtools/assets/avatars/animal-kangaroo.webp",
-      "bytes": 1206328
+      "bytes": 1116180
     },
     {
       "id": "animal-koala",
@@ -310,9 +333,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-koala.glb",
-      "revision": "b621f65c527e",
+      "revision": "09ecf9597643",
+      "sourceRevision": "80df92ca5728",
       "original": "../classtools/assets/avatars/animal-koala.webp",
-      "bytes": 1514448
+      "bytes": 1162148
     },
     {
       "id": "animal-ladybug",
@@ -323,9 +347,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-ladybug.glb",
-      "revision": "208cd631d02c",
+      "revision": "e921d0e07a46",
+      "sourceRevision": "af0802b993a5",
       "original": "../classtools/assets/avatars/animal-ladybug.webp",
-      "bytes": 1493188
+      "bytes": 1144544
     },
     {
       "id": "animal-leopard-gecko",
@@ -336,9 +361,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-leopard-gecko.glb",
-      "revision": "cac1c9ea13c5",
+      "revision": "0cb7f86ac857",
+      "sourceRevision": "cda6259bfffa",
       "original": "../classtools/assets/avatars/animal-leopard-gecko.webp",
-      "bytes": 1864120
+      "bytes": 1235492
     },
     {
       "id": "animal-lion",
@@ -349,9 +375,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-lion.glb",
-      "revision": "2384c23a69fa",
+      "revision": "c7ca21bc82a3",
+      "sourceRevision": "78ca850c7a0e",
       "original": "../classtools/assets/avatars/animal-lion.webp",
-      "bytes": 1590852
+      "bytes": 1574004
     },
     {
       "id": "animal-llama",
@@ -362,9 +389,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-llama.glb",
-      "revision": "e5138e7d8edd",
+      "revision": "dbb1e368b1b5",
+      "sourceRevision": "c405be751393",
       "original": "../classtools/assets/avatars/animal-llama.webp",
-      "bytes": 1242264
+      "bytes": 2658868
     },
     {
       "id": "animal-meerkat",
@@ -375,9 +403,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-meerkat.glb",
-      "revision": "6226b1966b84",
+      "revision": "d1b98e2555e4",
+      "sourceRevision": "d8c48d3d31b3",
       "original": "../classtools/assets/avatars/animal-meerkat.webp",
-      "bytes": 1228820
+      "bytes": 954680
     },
     {
       "id": "animal-monkey",
@@ -388,9 +417,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-monkey.glb",
-      "revision": "d22da164bf41",
+      "revision": "048cc7e2826f",
+      "sourceRevision": "c6fef49b9e25",
       "original": "../classtools/assets/avatars/animal-monkey.webp",
-      "bytes": 1509496
+      "bytes": 1024212
     },
     {
       "id": "animal-mouse",
@@ -401,9 +431,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-mouse.glb",
-      "revision": "ce44d8ca0307",
+      "revision": "2ee1fd620573",
+      "sourceRevision": "8a84667334bf",
       "original": "../classtools/assets/avatars/animal-mouse.webp",
-      "bytes": 1306284
+      "bytes": 1049152
     },
     {
       "id": "animal-octopus",
@@ -414,9 +445,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-octopus.glb",
-      "revision": "75da99c8580b",
+      "revision": "e6919ad2bdaf",
+      "sourceRevision": "7b36883c42f8",
       "original": "../classtools/assets/avatars/animal-octopus.webp",
-      "bytes": 1303784
+      "bytes": 1145076
     },
     {
       "id": "animal-ostrich",
@@ -427,9 +459,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-ostrich.glb",
-      "revision": "8d0721924ef5",
+      "revision": "337ebea049b2",
+      "sourceRevision": "66684d62a897",
       "original": "../classtools/assets/avatars/animal-ostrich.webp",
-      "bytes": 963456
+      "bytes": 953876
     },
     {
       "id": "animal-owl",
@@ -440,9 +473,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-owl.glb",
-      "revision": "fa5cc4c4e698",
+      "revision": "3339c43a8ba3",
+      "sourceRevision": "343c3f94d336",
       "original": "../classtools/assets/avatars/animal-owl.webp",
-      "bytes": 1500072
+      "bytes": 1334744
     },
     {
       "id": "animal-panda",
@@ -453,9 +487,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-panda.glb",
-      "revision": "f0449eb8aac4",
+      "revision": "590dbe1d628f",
+      "sourceRevision": "25264c6f0e38",
       "original": "../classtools/assets/avatars/animal-panda.webp",
-      "bytes": 1338872
+      "bytes": 1086816
     },
     {
       "id": "animal-peacock",
@@ -466,9 +501,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-peacock.glb",
-      "revision": "0df6fb5fdf2b",
+      "revision": "79b78202a3af",
+      "sourceRevision": "f303bb351e55",
       "original": "../classtools/assets/avatars/animal-peacock.webp",
-      "bytes": 2101448
+      "bytes": 2116044
     },
     {
       "id": "animal-penguin",
@@ -479,9 +515,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-penguin.glb",
-      "revision": "d654e220f8dd",
+      "revision": "1dc41df1915d",
+      "sourceRevision": "889adfb10fa0",
       "original": "../classtools/assets/avatars/animal-penguin.webp",
-      "bytes": 1247124
+      "bytes": 900452
     },
     {
       "id": "animal-praying-mantis",
@@ -492,9 +529,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-praying-mantis.glb",
-      "revision": "c9336530ad30",
+      "revision": "cecb74951f06",
+      "sourceRevision": "6bc7e722247f",
       "original": "../classtools/assets/avatars/animal-praying-mantis.webp",
-      "bytes": 1269276
+      "bytes": 1088744
     },
     {
       "id": "animal-rabbit",
@@ -505,22 +543,24 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-rabbit.glb",
-      "revision": "a781e7ea929d",
+      "revision": "a246605ca3fe",
+      "sourceRevision": "a8a5a1f373d6",
       "original": "../classtools/assets/avatars/animal-rabbit.webp",
-      "bytes": 1044236
+      "bytes": 976088
     },
     {
       "id": "animal-ratsnake",
       "name": "구렁이",
       "category": "animal",
-      "shape": "hood",
-      "locomotion": "walk",
-      "canWave": true,
+      "shape": "snake",
+      "locomotion": "glide",
+      "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-ratsnake.glb",
-      "revision": "4d54ab2c160d",
+      "revision": "edd92c9f8a8e",
+      "sourceRevision": "bbe9e98332d8",
       "original": "../classtools/assets/avatars/animal-ratsnake.webp",
-      "bytes": 1438332
+      "bytes": 1288036
     },
     {
       "id": "animal-rhinoceros",
@@ -531,9 +571,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-rhinoceros.glb",
-      "revision": "5193041ff8c5",
+      "revision": "97f2b1b816a5",
+      "sourceRevision": "122f6e9e47c7",
       "original": "../classtools/assets/avatars/animal-rhinoceros.webp",
-      "bytes": 1158204
+      "bytes": 1062208
     },
     {
       "id": "animal-seal",
@@ -544,9 +585,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-seal.glb",
-      "revision": "eb529535f348",
+      "revision": "c97570b2a82d",
+      "sourceRevision": "90e63a9e29c1",
       "original": "../classtools/assets/avatars/animal-seal.webp",
-      "bytes": 1383420
+      "bytes": 1242736
     },
     {
       "id": "animal-shark",
@@ -557,9 +599,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-shark.glb",
-      "revision": "c9e2f5c6aab0",
+      "revision": "3cf05f193f37",
+      "sourceRevision": "b328d9a9945a",
       "original": "../classtools/assets/avatars/animal-shark.webp",
-      "bytes": 1135816
+      "bytes": 1024292
     },
     {
       "id": "animal-sloth",
@@ -570,9 +613,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-sloth.glb",
-      "revision": "fdce16dda4c7",
+      "revision": "9028990ed0cd",
+      "sourceRevision": "a30bceec08ff",
       "original": "../classtools/assets/avatars/animal-sloth.webp",
-      "bytes": 1253224
+      "bytes": 878160
     },
     {
       "id": "animal-snail",
@@ -583,9 +627,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-snail.glb",
-      "revision": "178f3d16db9d",
+      "revision": "ebea3f94e5a5",
+      "sourceRevision": "152c50700604",
       "original": "../classtools/assets/avatars/animal-snail.webp",
-      "bytes": 1802572
+      "bytes": 1482624
     },
     {
       "id": "animal-squirrel",
@@ -596,9 +641,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-squirrel.glb",
-      "revision": "bf0b301b6066",
+      "revision": "226abb4d5ede",
+      "sourceRevision": "3a0c58ef84ea",
       "original": "../classtools/assets/avatars/animal-squirrel.webp",
-      "bytes": 1763192
+      "bytes": 1385840
     },
     {
       "id": "animal-tiger",
@@ -609,9 +655,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-tiger.glb",
-      "revision": "e0523fe10b77",
+      "revision": "f36e7d547178",
+      "sourceRevision": "7cf6f5c2f676",
       "original": "../classtools/assets/avatars/animal-tiger.webp",
-      "bytes": 1608324
+      "bytes": 1534728
     },
     {
       "id": "animal-turtle",
@@ -622,9 +669,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-turtle.glb",
-      "revision": "0b78b24cfbba",
+      "revision": "0ecf24da7949",
+      "sourceRevision": "3d06908528bd",
       "original": "../classtools/assets/avatars/animal-turtle.webp",
-      "bytes": 1460668
+      "bytes": 1066400
     },
     {
       "id": "animal-unicorn",
@@ -635,22 +683,24 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-unicorn.glb",
-      "revision": "30c42cf631bf",
+      "revision": "906a20fd513c",
+      "sourceRevision": "628f5c12a10c",
       "original": "../classtools/assets/avatars/animal-unicorn.webp",
-      "bytes": 1210096
+      "bytes": 1179708
     },
     {
       "id": "animal-viper",
       "name": "살모사",
       "category": "animal",
-      "shape": "hood",
-      "locomotion": "walk",
-      "canWave": true,
+      "shape": "snake",
+      "locomotion": "glide",
+      "canWave": false,
       "status": "needs_remodeling",
       "model": "models/animal-viper.glb",
-      "revision": "ea1d802e679a",
+      "revision": "26fbb7e33bfa",
+      "sourceRevision": "e1edb0a011e9",
       "original": "../classtools/assets/avatars/animal-viper.webp",
-      "bytes": 1310524
+      "bytes": 1308840
     },
     {
       "id": "animal-whale",
@@ -661,9 +711,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-whale.glb",
-      "revision": "f33a92c2cb91",
+      "revision": "822d1aee4eb6",
+      "sourceRevision": "0e36bbe6cbf6",
       "original": "../classtools/assets/avatars/animal-whale.webp",
-      "bytes": 1216544
+      "bytes": 1579432
     },
     {
       "id": "animal-wolf",
@@ -674,9 +725,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/animal-wolf.glb",
-      "revision": "9221cbe7ef81",
+      "revision": "6110fde2965e",
+      "sourceRevision": "f40b7ae979c6",
       "original": "../classtools/assets/avatars/animal-wolf.webp",
-      "bytes": 1465936
+      "bytes": 1402776
     },
     {
       "id": "award-trophy",
@@ -687,9 +739,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/award-trophy.glb",
-      "revision": "490f4b7405af",
+      "revision": "977aa4e4349a",
+      "sourceRevision": "0cc862cebeee",
       "original": "../classtools/assets/avatars/award-trophy.webp",
-      "bytes": 1462772
+      "bytes": 1604404
     },
     {
       "id": "drink-bubble-tea",
@@ -700,9 +753,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/drink-bubble-tea.glb",
-      "revision": "955604c0af93",
+      "revision": "ae689b70742e",
+      "sourceRevision": "24cd946d9a30",
       "original": "../classtools/assets/avatars/drink-bubble-tea.webp",
-      "bytes": 1099048
+      "bytes": 921632
     },
     {
       "id": "food-bingsu",
@@ -713,9 +767,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/food-bingsu.glb",
-      "revision": "7b8e05dd5ae7",
+      "revision": "974738a8d54f",
+      "sourceRevision": "6d55ce499c9c",
       "original": "../classtools/assets/avatars/food-bingsu.webp",
-      "bytes": 804440
+      "bytes": 949716
     },
     {
       "id": "food-birthday-cake",
@@ -726,9 +781,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/food-birthday-cake.glb",
-      "revision": "037cbefff847",
+      "revision": "bacaf9ebdae2",
+      "sourceRevision": "448a6dfda24f",
       "original": "../classtools/assets/avatars/food-birthday-cake.webp",
-      "bytes": 1120884
+      "bytes": 1009976
     },
     {
       "id": "food-candy",
@@ -739,9 +795,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-candy.glb",
-      "revision": "dfc2ea9a1527",
+      "revision": "8999ec3d945a",
+      "sourceRevision": "2f5fa0ef80c0",
       "original": "../classtools/assets/avatars/food-candy.webp",
-      "bytes": 1662204
+      "bytes": 1577652
     },
     {
       "id": "food-cheese",
@@ -752,9 +809,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-cheese.glb",
-      "revision": "bcb523664d50",
+      "revision": "ac86feaf697b",
+      "sourceRevision": "53d86042e692",
       "original": "../classtools/assets/avatars/food-cheese.webp",
-      "bytes": 682172
+      "bytes": 1029396
     },
     {
       "id": "food-chocolate",
@@ -765,9 +823,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-chocolate.glb",
-      "revision": "569142556a5c",
+      "revision": "13bd507ae366",
+      "sourceRevision": "b579903cbee1",
       "original": "../classtools/assets/avatars/food-chocolate.webp",
-      "bytes": 4574244
+      "bytes": 2849576
     },
     {
       "id": "food-cookie",
@@ -778,9 +837,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-cookie.glb",
-      "revision": "59144285393d",
+      "revision": "a174da3d8480",
+      "sourceRevision": "d1c026c5ffeb",
       "original": "../classtools/assets/avatars/food-cookie.webp",
-      "bytes": 1446524
+      "bytes": 1170172
     },
     {
       "id": "food-donut",
@@ -791,7 +851,8 @@
       "canWave": true,
       "status": "prototype",
       "model": "models/food-donut.glb",
-      "revision": "c2d1f0a5543b",
+      "revision": "f67797475dca",
+      "sourceRevision": "345b74bce063",
       "original": "../classtools/assets/avatars/food-donut.webp",
       "bytes": 2670912
     },
@@ -804,9 +865,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-dumpling.glb",
-      "revision": "a3883e5fe87d",
+      "revision": "48fea4525ca2",
+      "sourceRevision": "f1afe01f9af4",
       "original": "../classtools/assets/avatars/food-dumpling.webp",
-      "bytes": 1273012
+      "bytes": 1566012
     },
     {
       "id": "food-fish-pastry",
@@ -817,9 +879,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/food-fish-pastry.glb",
-      "revision": "bdf5ad01ce2c",
+      "revision": "84f629101492",
+      "sourceRevision": "8a030d57d182",
       "original": "../classtools/assets/avatars/food-fish-pastry.webp",
-      "bytes": 1605796
+      "bytes": 2422736
     },
     {
       "id": "food-fried-egg",
@@ -830,9 +893,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-fried-egg.glb",
-      "revision": "958b11156c37",
+      "revision": "752d0f7a3a2e",
+      "sourceRevision": "2398a6a730cc",
       "original": "../classtools/assets/avatars/food-fried-egg.webp",
-      "bytes": 947736
+      "bytes": 895524
     },
     {
       "id": "food-gimbap",
@@ -843,9 +907,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-gimbap.glb",
-      "revision": "da27b9b77c7d",
+      "revision": "c9bd740394fb",
+      "sourceRevision": "f5fab8549003",
       "original": "../classtools/assets/avatars/food-gimbap.webp",
-      "bytes": 966812
+      "bytes": 1001404
     },
     {
       "id": "food-hamburger",
@@ -856,9 +921,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-hamburger.glb",
-      "revision": "25e71aa52f67",
+      "revision": "066ec01aaf9c",
+      "sourceRevision": "147c63183747",
       "original": "../classtools/assets/avatars/food-hamburger.webp",
-      "bytes": 1711396
+      "bytes": 1429584
     },
     {
       "id": "food-hot-dog",
@@ -869,9 +935,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-hot-dog.glb",
-      "revision": "04ba476d594f",
+      "revision": "dac257a8fee7",
+      "sourceRevision": "a3711c20d535",
       "original": "../classtools/assets/avatars/food-hot-dog.webp",
-      "bytes": 762880
+      "bytes": 997692
     },
     {
       "id": "food-ice-cream",
@@ -882,9 +949,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/food-ice-cream.glb",
-      "revision": "210f94e0aa6b",
+      "revision": "33d4ccde45b4",
+      "sourceRevision": "f8e318bf582c",
       "original": "../classtools/assets/avatars/food-ice-cream.webp",
-      "bytes": 1672720
+      "bytes": 1175020
     },
     {
       "id": "food-macaron",
@@ -895,9 +963,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-macaron.glb",
-      "revision": "6730dd0e88de",
+      "revision": "d274fd4eba41",
+      "sourceRevision": "81f5748a5a9d",
       "original": "../classtools/assets/avatars/food-macaron.webp",
-      "bytes": 1189092
+      "bytes": 1170464
     },
     {
       "id": "food-pizza",
@@ -908,9 +977,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/food-pizza.glb",
-      "revision": "863a79c317f5",
+      "revision": "a97691e41258",
+      "sourceRevision": "4cc6d12a4027",
       "original": "../classtools/assets/avatars/food-pizza.webp",
-      "bytes": 1302748
+      "bytes": 1149164
     },
     {
       "id": "food-popcorn",
@@ -921,9 +991,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-popcorn.glb",
-      "revision": "8ece222c0dd1",
+      "revision": "66caf7524a18",
+      "sourceRevision": "f0a4293b403b",
       "original": "../classtools/assets/avatars/food-popcorn.webp",
-      "bytes": 2329460
+      "bytes": 1700704
     },
     {
       "id": "food-pudding",
@@ -934,9 +1005,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-pudding.glb",
-      "revision": "121e8895bd45",
+      "revision": "e56fa89f400e",
+      "sourceRevision": "b0d0f7cfa709",
       "original": "../classtools/assets/avatars/food-pudding.webp",
-      "bytes": 689472
+      "bytes": 871196
     },
     {
       "id": "food-ramen",
@@ -948,6 +1020,7 @@
       "status": "prototype",
       "model": "models/food-ramen.glb",
       "revision": "750c0713a6e5",
+      "sourceRevision": "41ea42e2b8db",
       "original": "../classtools/assets/avatars/food-ramen.webp",
       "bytes": 2499076
     },
@@ -960,9 +1033,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-rice-ball.glb",
-      "revision": "0b3bd5cb81cd",
+      "revision": "32d7ef0c8d38",
+      "sourceRevision": "b0d581748837",
       "original": "../classtools/assets/avatars/food-rice-ball.webp",
-      "bytes": 1243636
+      "bytes": 1276804
     },
     {
       "id": "food-sandwich",
@@ -973,9 +1047,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-sandwich.glb",
-      "revision": "fb06e173db11",
+      "revision": "c8986eeb5b34",
+      "sourceRevision": "0bcada062a5f",
       "original": "../classtools/assets/avatars/food-sandwich.webp",
-      "bytes": 1599700
+      "bytes": 1821580
     },
     {
       "id": "food-sushi",
@@ -986,9 +1061,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-sushi.glb",
-      "revision": "9bcd9eb1bc36",
+      "revision": "ed87f18155e4",
+      "sourceRevision": "b4bded7578d3",
       "original": "../classtools/assets/avatars/food-sushi.webp",
-      "bytes": 1062484
+      "bytes": 2109500
     },
     {
       "id": "food-toast",
@@ -999,9 +1075,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/food-toast.glb",
-      "revision": "80682a8f709c",
+      "revision": "4eeeda00eb94",
+      "sourceRevision": "5d3b033689b3",
       "original": "../classtools/assets/avatars/food-toast.webp",
-      "bytes": 1304604
+      "bytes": 1356624
     },
     {
       "id": "food-tteokbokki",
@@ -1012,9 +1089,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/food-tteokbokki.glb",
-      "revision": "f84aad84c538",
+      "revision": "2a857848ba4c",
+      "sourceRevision": "7313a6b011a7",
       "original": "../classtools/assets/avatars/food-tteokbokki.webp",
-      "bytes": 2479032
+      "bytes": 1371652
     },
     {
       "id": "fruit-apple",
@@ -1025,9 +1103,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-apple.glb",
-      "revision": "0355df543cc7",
+      "revision": "584a4d0d7839",
+      "sourceRevision": "e230997d32b4",
       "original": "../classtools/assets/avatars/fruit-apple.webp",
-      "bytes": 1226244
+      "bytes": 1276548
     },
     {
       "id": "fruit-avocado",
@@ -1038,9 +1117,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/fruit-avocado.glb",
-      "revision": "bf90c13776fc",
+      "revision": "fa3ba4ab20f6",
+      "sourceRevision": "2d32dc10d7e0",
       "original": "../classtools/assets/avatars/fruit-avocado.webp",
-      "bytes": 1296940
+      "bytes": 952892
     },
     {
       "id": "fruit-banana",
@@ -1052,6 +1132,7 @@
       "status": "prototype",
       "model": "models/fruit-banana.glb",
       "revision": "fb68e02af7f7",
+      "sourceRevision": "bf141c8dd82c",
       "original": "../classtools/assets/avatars/fruit-banana.webp",
       "bytes": 1228708
     },
@@ -1064,9 +1145,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-blueberry.glb",
-      "revision": "f61c91fcb528",
+      "revision": "8500439477ac",
+      "sourceRevision": "bf34515bfdfc",
       "original": "../classtools/assets/avatars/fruit-blueberry.webp",
-      "bytes": 1252088
+      "bytes": 1169176
     },
     {
       "id": "fruit-cherry",
@@ -1077,9 +1159,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/fruit-cherry.glb",
-      "revision": "37c558eb4723",
+      "revision": "bc6b90cb0643",
+      "sourceRevision": "c1ea4f4d1e0e",
       "original": "../classtools/assets/avatars/fruit-cherry.webp",
-      "bytes": 813940
+      "bytes": 749644
     },
     {
       "id": "fruit-grape",
@@ -1090,9 +1173,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/fruit-grape.glb",
-      "revision": "6ee80c0841da",
+      "revision": "0a4542666a93",
+      "sourceRevision": "c879e12bace9",
       "original": "../classtools/assets/avatars/fruit-grape.webp",
-      "bytes": 1529096
+      "bytes": 1330092
     },
     {
       "id": "fruit-mango",
@@ -1103,9 +1187,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/fruit-mango.glb",
-      "revision": "b9922af9a457",
+      "revision": "4c5249c7e566",
+      "sourceRevision": "1420c90619e7",
       "original": "../classtools/assets/avatars/fruit-mango.webp",
-      "bytes": 1277676
+      "bytes": 1067684
     },
     {
       "id": "fruit-melon",
@@ -1116,9 +1201,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-melon.glb",
-      "revision": "497f089136be",
+      "revision": "972821d9f0c9",
+      "sourceRevision": "d7cedba32940",
       "original": "../classtools/assets/avatars/fruit-melon.webp",
-      "bytes": 1302380
+      "bytes": 2938364
     },
     {
       "id": "fruit-orange",
@@ -1129,9 +1215,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-orange.glb",
-      "revision": "de0db2d4bca8",
+      "revision": "d551bd6b20b1",
+      "sourceRevision": "a494c80b99d3",
       "original": "../classtools/assets/avatars/fruit-orange.webp",
-      "bytes": 1349584
+      "bytes": 1214176
     },
     {
       "id": "fruit-peach",
@@ -1142,9 +1229,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-peach.glb",
-      "revision": "777f02d5870a",
+      "revision": "00b3b47a0e6b",
+      "sourceRevision": "6de3d04c1d34",
       "original": "../classtools/assets/avatars/fruit-peach.webp",
-      "bytes": 1387092
+      "bytes": 1387392
     },
     {
       "id": "fruit-persimmon",
@@ -1155,9 +1243,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-persimmon.glb",
-      "revision": "8d450d6c8d95",
+      "revision": "ac2e3c756e7c",
+      "sourceRevision": "f02a59c3f7c7",
       "original": "../classtools/assets/avatars/fruit-persimmon.webp",
-      "bytes": 1410720
+      "bytes": 1353460
     },
     {
       "id": "fruit-pineapple",
@@ -1168,9 +1257,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/fruit-pineapple.glb",
-      "revision": "9620524a99e9",
+      "revision": "c13363bc1655",
+      "sourceRevision": "8c60d7a82cbe",
       "original": "../classtools/assets/avatars/fruit-pineapple.webp",
-      "bytes": 1045136
+      "bytes": 3326240
     },
     {
       "id": "fruit-strawberry",
@@ -1181,9 +1271,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-strawberry.glb",
-      "revision": "754b43427edd",
+      "revision": "7adfccdacfb3",
+      "sourceRevision": "3d3896f2d810",
       "original": "../classtools/assets/avatars/fruit-strawberry.webp",
-      "bytes": 1271976
+      "bytes": 1445992
     },
     {
       "id": "fruit-watermelon",
@@ -1194,9 +1285,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/fruit-watermelon.glb",
-      "revision": "a3a222a59f18",
+      "revision": "0f31becc32d0",
+      "sourceRevision": "797fdcc1468a",
       "original": "../classtools/assets/avatars/fruit-watermelon.webp",
-      "bytes": 1145460
+      "bytes": 1096924
     },
     {
       "id": "game-dice",
@@ -1207,9 +1299,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/game-dice.glb",
-      "revision": "5213b5495956",
+      "revision": "c33ae9afced4",
+      "sourceRevision": "2e2609fcb9c2",
       "original": "../classtools/assets/avatars/game-dice.webp",
-      "bytes": 1219612
+      "bytes": 1247736
     },
     {
       "id": "object-boot",
@@ -1220,9 +1313,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/object-boot.glb",
-      "revision": "c257442e2311",
+      "revision": "9d4de0c6df66",
+      "sourceRevision": "6569a27d3f97",
       "original": "../classtools/assets/avatars/object-boot.webp",
-      "bytes": 1734380
+      "bytes": 1577204
     },
     {
       "id": "object-camera",
@@ -1233,9 +1327,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-camera.glb",
-      "revision": "70e21df2c529",
+      "revision": "fd88442e75a9",
+      "sourceRevision": "53df46dcbd44",
       "original": "../classtools/assets/avatars/object-camera.webp",
-      "bytes": 3086348
+      "bytes": 2171512
     },
     {
       "id": "object-eraser",
@@ -1246,9 +1341,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-eraser.glb",
-      "revision": "1596cf6e8189",
+      "revision": "3f874eab7ffc",
+      "sourceRevision": "b450d9332428",
       "original": "../classtools/assets/avatars/object-eraser.webp",
-      "bytes": 1334936
+      "bytes": 1206016
     },
     {
       "id": "object-gift",
@@ -1259,9 +1355,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-gift.glb",
-      "revision": "320b03cf8017",
+      "revision": "5944b7cf2bae",
+      "sourceRevision": "0df5c78d22ae",
       "original": "../classtools/assets/avatars/object-gift.webp",
-      "bytes": 1837228
+      "bytes": 1759760
     },
     {
       "id": "object-key",
@@ -1272,9 +1369,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/object-key.glb",
-      "revision": "7b5642202a06",
+      "revision": "4d144b0cf437",
+      "sourceRevision": "8d8fe83bd488",
       "original": "../classtools/assets/avatars/object-key.webp",
-      "bytes": 773972
+      "bytes": 1285432
     },
     {
       "id": "object-lamp",
@@ -1285,9 +1383,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-lamp.glb",
-      "revision": "342bc153a4c5",
+      "revision": "63f17aae679e",
+      "sourceRevision": "d1baab65563a",
       "original": "../classtools/assets/avatars/object-lamp.webp",
-      "bytes": 904420
+      "bytes": 947740
     },
     {
       "id": "object-lock",
@@ -1298,9 +1397,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-lock.glb",
-      "revision": "37c0c9d60e5e",
+      "revision": "2fef17d71e3b",
+      "sourceRevision": "64e3a84ea366",
       "original": "../classtools/assets/avatars/object-lock.webp",
-      "bytes": 838836
+      "bytes": 957164
     },
     {
       "id": "object-mitten",
@@ -1308,12 +1408,13 @@
       "category": "object",
       "shape": "round",
       "locomotion": "walk",
-      "canWave": true,
+      "canWave": false,
       "status": "needs_remodeling",
       "model": "models/object-mitten.glb",
-      "revision": "81e7644d8c46",
+      "revision": "81da7db5228d",
+      "sourceRevision": "de8fd928a30d",
       "original": "../classtools/assets/avatars/object-mitten.webp",
-      "bytes": 1294856
+      "bytes": 2001072
     },
     {
       "id": "object-newspaper",
@@ -1324,9 +1425,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-newspaper.glb",
-      "revision": "2b3e5826c025",
+      "revision": "ea5266a2896d",
+      "sourceRevision": "b6f79061522e",
       "original": "../classtools/assets/avatars/object-newspaper.webp",
-      "bytes": 1511184
+      "bytes": 1219556
     },
     {
       "id": "object-pencil",
@@ -1337,9 +1439,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/object-pencil.glb",
-      "revision": "8c7e0d3bbbc7",
+      "revision": "4e0c2ef6184c",
+      "sourceRevision": "162f172be525",
       "original": "../classtools/assets/avatars/object-pencil.webp",
-      "bytes": 442672
+      "bytes": 767172
     },
     {
       "id": "object-radio",
@@ -1350,9 +1453,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-radio.glb",
-      "revision": "3298b6b85dee",
+      "revision": "81ff9536bdf8",
+      "sourceRevision": "d1811cfc1803",
       "original": "../classtools/assets/avatars/object-radio.webp",
-      "bytes": 4290260
+      "bytes": 2713900
     },
     {
       "id": "object-sack",
@@ -1363,9 +1467,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-sack.glb",
-      "revision": "9fbf0b43a57c",
+      "revision": "28bafd12972d",
+      "sourceRevision": "0d1cb112193c",
       "original": "../classtools/assets/avatars/object-sack.webp",
-      "bytes": 1298720
+      "bytes": 1243852
     },
     {
       "id": "object-television",
@@ -1376,9 +1481,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/object-television.glb",
-      "revision": "e6673292073b",
+      "revision": "41a3fededba9",
+      "sourceRevision": "1c27c5540d5e",
       "original": "../classtools/assets/avatars/object-television.webp",
-      "bytes": 4127048
+      "bytes": 3302164
     },
     {
       "id": "object-umbrella",
@@ -1390,6 +1496,7 @@
       "status": "prototype",
       "model": "models/object-umbrella.glb",
       "revision": "e4f20edf4973",
+      "sourceRevision": "bdad4d1f4ca1",
       "original": "../classtools/assets/avatars/object-umbrella.webp",
       "bytes": 1352140
     },
@@ -1402,9 +1509,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/object-watch.glb",
-      "revision": "8f80686c4651",
+      "revision": "1d3d4cbf423f",
+      "sourceRevision": "f31b13101739",
       "original": "../classtools/assets/avatars/object-watch.webp",
-      "bytes": 738848
+      "bytes": 767532
     },
     {
       "id": "sport-baseball",
@@ -1415,9 +1523,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/sport-baseball.glb",
-      "revision": "88aaa63d0b53",
+      "revision": "c87b124f2af6",
+      "sourceRevision": "32f9f51af797",
       "original": "../classtools/assets/avatars/sport-baseball.webp",
-      "bytes": 2001088
+      "bytes": 2455964
     },
     {
       "id": "sport-basketball",
@@ -1428,9 +1537,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/sport-basketball.glb",
-      "revision": "0ac74dc04bb4",
+      "revision": "fe9806e558ec",
+      "sourceRevision": "58b06bbe3c58",
       "original": "../classtools/assets/avatars/sport-basketball.webp",
-      "bytes": 1287908
+      "bytes": 1189824
     },
     {
       "id": "sport-bowling",
@@ -1441,7 +1551,8 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/sport-bowling.glb",
-      "revision": "a6302c2d605a",
+      "revision": "53e68f2d0488",
+      "sourceRevision": "e023e128d4e8",
       "original": "../classtools/assets/avatars/sport-bowling.webp",
       "bytes": 1648940
     },
@@ -1454,9 +1565,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/sport-soccer.glb",
-      "revision": "1dc146f104d9",
+      "revision": "5fc86aafe220",
+      "sourceRevision": "31de1c0fc395",
       "original": "../classtools/assets/avatars/sport-soccer.webp",
-      "bytes": 2848788
+      "bytes": 2848836
     },
     {
       "id": "theme-balloons",
@@ -1464,12 +1576,13 @@
       "category": "theme",
       "shape": "balloons",
       "locomotion": "walk",
-      "canWave": true,
+      "canWave": false,
       "status": "needs_remodeling",
       "model": "models/theme-balloons.glb",
-      "revision": "6b99ecb987aa",
+      "revision": "6fc06a730576",
+      "sourceRevision": "d11201d48f84",
       "original": "../classtools/assets/avatars/theme-balloons.webp",
-      "bytes": 1204776
+      "bytes": 1456740
     },
     {
       "id": "theme-cactus",
@@ -1480,9 +1593,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/theme-cactus.glb",
-      "revision": "0b7b3c2d70d0",
+      "revision": "81380c6d5b8f",
+      "sourceRevision": "18f966f3f7ea",
       "original": "../classtools/assets/avatars/theme-cactus.webp",
-      "bytes": 1332808
+      "bytes": 1418452
     },
     {
       "id": "theme-cherry-blossom",
@@ -1493,9 +1607,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-cherry-blossom.glb",
-      "revision": "cec661a7258b",
+      "revision": "b6f9afbf658a",
+      "sourceRevision": "fe7a71dc7460",
       "original": "../classtools/assets/avatars/theme-cherry-blossom.webp",
-      "bytes": 1356624
+      "bytes": 1400932
     },
     {
       "id": "theme-cloud",
@@ -1506,9 +1621,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-cloud.glb",
-      "revision": "936e98365059",
+      "revision": "749b1a97298b",
+      "sourceRevision": "8fa4e47a71d0",
       "original": "../classtools/assets/avatars/theme-cloud.webp",
-      "bytes": 1464728
+      "bytes": 1531932
     },
     {
       "id": "theme-clover",
@@ -1519,9 +1635,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/theme-clover.glb",
-      "revision": "64c37153f2a4",
+      "revision": "7c7c73529355",
+      "sourceRevision": "62537de099c0",
       "original": "../classtools/assets/avatars/theme-clover.webp",
-      "bytes": 1431464
+      "bytes": 1630476
     },
     {
       "id": "theme-crown",
@@ -1532,9 +1649,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-crown.glb",
-      "revision": "2fba44cb725d",
+      "revision": "f78084f27de5",
+      "sourceRevision": "4ed8fb0b5bdc",
       "original": "../classtools/assets/avatars/theme-crown.webp",
-      "bytes": 1115168
+      "bytes": 1183948
     },
     {
       "id": "theme-guitar",
@@ -1545,9 +1663,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/theme-guitar.glb",
-      "revision": "c97c127d6021",
+      "revision": "09fb81f5ff9a",
+      "sourceRevision": "899df3e2bb5f",
       "original": "../classtools/assets/avatars/theme-guitar.webp",
-      "bytes": 1140028
+      "bytes": 1412372
     },
     {
       "id": "theme-lightning",
@@ -1558,9 +1677,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/theme-lightning.glb",
-      "revision": "e3438b83935d",
+      "revision": "d7010be434a5",
+      "sourceRevision": "b7eca8cff0d4",
       "original": "../classtools/assets/avatars/theme-lightning.webp",
-      "bytes": 1217812
+      "bytes": 831724
     },
     {
       "id": "theme-maple-leaf",
@@ -1571,9 +1691,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-maple-leaf.glb",
-      "revision": "c0347db85471",
+      "revision": "ae6f140ac804",
+      "sourceRevision": "370de952390e",
       "original": "../classtools/assets/avatars/theme-maple-leaf.webp",
-      "bytes": 1363460
+      "bytes": 1269036
     },
     {
       "id": "theme-moon",
@@ -1584,9 +1705,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-moon.glb",
-      "revision": "2c72c10bb845",
+      "revision": "1d9450c55da4",
+      "sourceRevision": "d101de9d85ee",
       "original": "../classtools/assets/avatars/theme-moon.webp",
-      "bytes": 1120444
+      "bytes": 965180
     },
     {
       "id": "theme-music-note",
@@ -1597,9 +1719,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-music-note.glb",
-      "revision": "dac772058c28",
+      "revision": "c9b4b2107c81",
+      "sourceRevision": "1e53f434aee5",
       "original": "../classtools/assets/avatars/theme-music-note.webp",
-      "bytes": 1007296
+      "bytes": 891540
     },
     {
       "id": "theme-paper-airplane",
@@ -1610,9 +1733,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/theme-paper-airplane.glb",
-      "revision": "a471b0e24b15",
+      "revision": "b46acebfe3bc",
+      "sourceRevision": "ad5644494f53",
       "original": "../classtools/assets/avatars/theme-paper-airplane.webp",
-      "bytes": 1234480
+      "bytes": 753308
     },
     {
       "id": "theme-rainbow",
@@ -1623,9 +1747,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-rainbow.glb",
-      "revision": "a7672e200ca5",
+      "revision": "42205fb5b6fb",
+      "sourceRevision": "2ae28d5954b7",
       "original": "../classtools/assets/avatars/theme-rainbow.webp",
-      "bytes": 1626520
+      "bytes": 3065924
     },
     {
       "id": "theme-rose",
@@ -1636,9 +1761,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-rose.glb",
-      "revision": "9cbd1a60d3d1",
+      "revision": "be5f1f419624",
+      "sourceRevision": "78aae012d180",
       "original": "../classtools/assets/avatars/theme-rose.webp",
-      "bytes": 1407660
+      "bytes": 2179024
     },
     {
       "id": "theme-snowman",
@@ -1649,9 +1775,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/theme-snowman.glb",
-      "revision": "2db0132adcdf",
+      "revision": "cf96ccb5ebfb",
+      "sourceRevision": "e275c2139624",
       "original": "../classtools/assets/avatars/theme-snowman.webp",
-      "bytes": 1068400
+      "bytes": 923732
     },
     {
       "id": "theme-star",
@@ -1662,9 +1789,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-star.glb",
-      "revision": "7937479ba978",
+      "revision": "97a846099d12",
+      "sourceRevision": "9448c73d0a8f",
       "original": "../classtools/assets/avatars/theme-star.webp",
-      "bytes": 1332500
+      "bytes": 1029364
     },
     {
       "id": "theme-sun",
@@ -1675,9 +1803,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-sun.glb",
-      "revision": "65845f0d63bb",
+      "revision": "e21ef764f47d",
+      "sourceRevision": "2a589a92ce2b",
       "original": "../classtools/assets/avatars/theme-sun.webp",
-      "bytes": 1343288
+      "bytes": 1174168
     },
     {
       "id": "theme-sunflower",
@@ -1688,9 +1817,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-sunflower.glb",
-      "revision": "d1cadad4ce49",
+      "revision": "d127c8d439bc",
+      "sourceRevision": "66a83018e74b",
       "original": "../classtools/assets/avatars/theme-sunflower.webp",
-      "bytes": 1436816
+      "bytes": 2733104
     },
     {
       "id": "theme-tulip",
@@ -1701,9 +1831,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/theme-tulip.glb",
-      "revision": "fac4500f0611",
+      "revision": "5d06a6d18b3d",
+      "sourceRevision": "5a2b4b94cad1",
       "original": "../classtools/assets/avatars/theme-tulip.webp",
-      "bytes": 1307676
+      "bytes": 2148048
     },
     {
       "id": "vegetable-bell-pepper",
@@ -1714,9 +1845,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/vegetable-bell-pepper.glb",
-      "revision": "e5894f558623",
+      "revision": "80b379c2e0f2",
+      "sourceRevision": "f0e4f30c4b57",
       "original": "../classtools/assets/avatars/vegetable-bell-pepper.webp",
-      "bytes": 1122528
+      "bytes": 1094120
     },
     {
       "id": "vegetable-broccoli",
@@ -1727,9 +1859,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/vegetable-broccoli.glb",
-      "revision": "bb01ab81de3f",
+      "revision": "251db944e2ca",
+      "sourceRevision": "a7f2110da4f0",
       "original": "../classtools/assets/avatars/vegetable-broccoli.webp",
-      "bytes": 1336324
+      "bytes": 2311132
     },
     {
       "id": "vegetable-carrot",
@@ -1740,9 +1873,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vegetable-carrot.glb",
-      "revision": "6e3bede833cc",
+      "revision": "4a36573a0ac2",
+      "sourceRevision": "f4e1d1e6b34f",
       "original": "../classtools/assets/avatars/vegetable-carrot.webp",
-      "bytes": 874940
+      "bytes": 1057192
     },
     {
       "id": "vegetable-corn",
@@ -1753,9 +1887,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vegetable-corn.glb",
-      "revision": "592dd9d4802c",
+      "revision": "70be7052bfba",
+      "sourceRevision": "ee5220bad6b3",
       "original": "../classtools/assets/avatars/vegetable-corn.webp",
-      "bytes": 1256908
+      "bytes": 2681248
     },
     {
       "id": "vegetable-eggplant",
@@ -1766,9 +1901,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vegetable-eggplant.glb",
-      "revision": "30eef4dc7207",
+      "revision": "a5f3bd29cbf7",
+      "sourceRevision": "6214dae48cc6",
       "original": "../classtools/assets/avatars/vegetable-eggplant.webp",
-      "bytes": 927360
+      "bytes": 1034248
     },
     {
       "id": "vegetable-mushroom",
@@ -1779,9 +1915,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/vegetable-mushroom.glb",
-      "revision": "cb4a83708c29",
+      "revision": "7f19d4525eb3",
+      "sourceRevision": "223d3adebe3a",
       "original": "../classtools/assets/avatars/vegetable-mushroom.webp",
-      "bytes": 1088336
+      "bytes": 1064600
     },
     {
       "id": "vegetable-potato",
@@ -1792,9 +1929,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vegetable-potato.glb",
-      "revision": "6158ce72c110",
+      "revision": "ceb6d45c9b5d",
+      "sourceRevision": "ee5e029026a0",
       "original": "../classtools/assets/avatars/vegetable-potato.webp",
-      "bytes": 1292176
+      "bytes": 1165404
     },
     {
       "id": "vegetable-pumpkin",
@@ -1805,9 +1943,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/vegetable-pumpkin.glb",
-      "revision": "2d5c39212a5f",
+      "revision": "71c1753fd770",
+      "sourceRevision": "04d7023cce9c",
       "original": "../classtools/assets/avatars/vegetable-pumpkin.webp",
-      "bytes": 1360568
+      "bytes": 1137864
     },
     {
       "id": "vegetable-radish",
@@ -1818,9 +1957,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vegetable-radish.glb",
-      "revision": "5c230698f64f",
+      "revision": "78485bd674b5",
+      "sourceRevision": "19aa14978989",
       "original": "../classtools/assets/avatars/vegetable-radish.webp",
-      "bytes": 1664788
+      "bytes": 1664724
     },
     {
       "id": "vegetable-sweet-potato",
@@ -1831,9 +1971,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vegetable-sweet-potato.glb",
-      "revision": "7b2f27e5e15a",
+      "revision": "18d28faeea6d",
+      "sourceRevision": "a3981a41d488",
       "original": "../classtools/assets/avatars/vegetable-sweet-potato.webp",
-      "bytes": 993504
+      "bytes": 1026720
     },
     {
       "id": "vegetable-tomato",
@@ -1844,9 +1985,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/vegetable-tomato.glb",
-      "revision": "81ac849296cb",
+      "revision": "bd51a925a9eb",
+      "sourceRevision": "29418ca9ac3d",
       "original": "../classtools/assets/avatars/vegetable-tomato.webp",
-      "bytes": 1190236
+      "bytes": 1293160
     },
     {
       "id": "vehicle-airplane",
@@ -1857,9 +1999,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vehicle-airplane.glb",
-      "revision": "94aca4a4d94b",
+      "revision": "6b4bda87ebdb",
+      "sourceRevision": "767fb126fa44",
       "original": "../classtools/assets/avatars/vehicle-airplane.webp",
-      "bytes": 1121988
+      "bytes": 1086920
     },
     {
       "id": "vehicle-airship",
@@ -1870,9 +2013,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vehicle-airship.glb",
-      "revision": "75b8410dce75",
+      "revision": "0236dc6d5370",
+      "sourceRevision": "47d83314497c",
       "original": "../classtools/assets/avatars/vehicle-airship.webp",
-      "bytes": 1417716
+      "bytes": 1377200
     },
     {
       "id": "vehicle-ambulance",
@@ -1883,9 +2027,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vehicle-ambulance.glb",
-      "revision": "5ea5e19330a0",
+      "revision": "8df270fdc817",
+      "sourceRevision": "c4fb84f9dbb8",
       "original": "../classtools/assets/avatars/vehicle-ambulance.webp",
-      "bytes": 1775284
+      "bytes": 2261244
     },
     {
       "id": "vehicle-boat",
@@ -1896,9 +2041,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vehicle-boat.glb",
-      "revision": "a6ff1d911da7",
+      "revision": "159b288455b7",
+      "sourceRevision": "912dd220dabe",
       "original": "../classtools/assets/avatars/vehicle-boat.webp",
-      "bytes": 1388088
+      "bytes": 1483412
     },
     {
       "id": "vehicle-fire-truck",
@@ -1909,9 +2055,10 @@
       "canWave": true,
       "status": "needs_remodeling",
       "model": "models/vehicle-fire-truck.glb",
-      "revision": "4ab49a773398",
+      "revision": "9a5aa4115793",
+      "sourceRevision": "8a705b4e40e1",
       "original": "../classtools/assets/avatars/vehicle-fire-truck.webp",
-      "bytes": 1142992
+      "bytes": 1989528
     },
     {
       "id": "vehicle-helicopter",
@@ -1923,6 +2070,7 @@
       "status": "prototype",
       "model": "models/vehicle-helicopter.glb",
       "revision": "bf5dd58594cf",
+      "sourceRevision": "d5df267e7219",
       "original": "../classtools/assets/avatars/vehicle-helicopter.webp",
       "bytes": 1368012
     },
@@ -1935,9 +2083,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vehicle-hot-air-balloon.glb",
-      "revision": "8f624781a51d",
+      "revision": "ec4649ca4657",
+      "sourceRevision": "5bb4126906b3",
       "original": "../classtools/assets/avatars/vehicle-hot-air-balloon.webp",
-      "bytes": 1967664
+      "bytes": 3725232
     },
     {
       "id": "vehicle-rocket",
@@ -1948,9 +2097,10 @@
       "canWave": false,
       "status": "needs_remodeling",
       "model": "models/vehicle-rocket.glb",
-      "revision": "4214d687a69d",
+      "revision": "60683af28695",
+      "sourceRevision": "9d2445b79067",
       "original": "../classtools/assets/avatars/vehicle-rocket.webp",
-      "bytes": 913060
+      "bytes": 1249964
     },
     {
       "id": "vehicle-submarine",
@@ -1962,6 +2112,7 @@
       "status": "needs_remodeling",
       "model": "models/vehicle-submarine.glb",
       "revision": "e25fdd70c085",
+      "sourceRevision": "a389f2fcc235",
       "original": "../classtools/assets/avatars/vehicle-submarine.webp",
       "bytes": 1199280
     },
@@ -1975,6 +2126,7 @@
       "status": "needs_remodeling",
       "model": "models/vehicle-train.glb",
       "revision": "33bd3552b4f4",
+      "sourceRevision": "a9be33cce736",
       "original": "../classtools/assets/avatars/vehicle-train.webp",
       "bytes": 928328
     }

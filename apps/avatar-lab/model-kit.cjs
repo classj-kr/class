@@ -41,7 +41,7 @@ module.exports = function kit(THREE, key) {
     }
   }
   function ellipse(cx,cy,rx,ry,n=24){return Array.from({length:n},(_,i)=>{const a=i/n*Math.PI*2;return[cx+Math.cos(a)*rx,cy+Math.sin(a)*ry];});}
-  function projectArtwork(name,contour,center,pivot,parent,target){
+  function projectArtwork(name,contour,center,pivot,parent,target,options={}){
     if(name==='OriginalFace'){
       const rx=Math.max(...contour.map(p=>Math.abs(p[0]-center[0]))),ry=Math.max(...contour.map(p=>Math.abs(p[1]-center[1])));
       (parent.userData.originalFaceRegions??=[]).push({cx:center[0],cy:center[1],rx,ry});
@@ -49,14 +49,14 @@ module.exports = function kit(THREE, key) {
     // Place every facial vertex on the actual opaque head surface. This avoids
     // an oval face disk hanging in front of a curved hood when seen sideways.
     const carriers=(Array.isArray(target)?target:[target]).map(surface=>{surface.updateMatrix();const m=new THREE.Mesh(surface.geometry.clone().applyMatrix4(surface.matrix),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));m.updateMatrixWorld(true);return m;});
-    const ray=new THREE.Raycaster(),boundary=new THREE.CatmullRomCurve3(contour.map(([x,y])=>new THREE.Vector3(x,y,0)),true,"centripetal").getSpacedPoints(96).slice(0,96),P=[],UV=[],I=[];
-    for(let ring=0;ring<=14;ring++)for(const edge of boundary){
-      const px=center[0]+(edge.x-center[0])*ring/14,py=center[1]+(edge.y-center[1])*ring/14,x=(px-pivot[0])*S,y=(pivot[1]-py)*S;
+    const samples=options.samples||96,rings=options.rings||14,ray=new THREE.Raycaster(),boundary=new THREE.CatmullRomCurve3(contour.map(([x,y])=>new THREE.Vector3(x,y,0)),true,"centripetal").getSpacedPoints(samples).slice(0,samples),P=[],UV=[],I=[];
+    for(let ring=0;ring<=rings;ring++)for(const edge of boundary){
+      const px=center[0]+(edge.x-center[0])*ring/rings,py=center[1]+(edge.y-center[1])*ring/rings,x=(px-pivot[0])*S,y=(pivot[1]-py)*S;
       ray.set(new THREE.Vector3(x,y,5),new THREE.Vector3(0,0,-1));const hit=ray.intersectObjects(carriers,false)[0];
       if(!hit)throw new Error(name+" artwork lies outside its opaque head at "+px+","+py);
-      P.push(x,y,hit.point.z+.004);UV.push(px/640,py/640);
+      P.push(x,y,hit.point.z+(options.offset||.004));UV.push(px/640,py/640);
     }
-    for(let r=0;r<14;r++)for(let i=0;i<96;i++){const a=r*96+i,b=r*96+(i+1)%96,c=a+96,d=b+96;if(r)I.push(a,b,d);I.push(a,d,c);}
+    for(let r=0;r<rings;r++)for(let i=0;i<samples;i++){const a=r*samples+i,b=r*samples+(i+1)%samples,c=a+samples,d=b+samples;if(r)I.push(a,b,d);I.push(a,d,c);}
     const g=geometry(P,I,UV);if(g.attributes.normal.getZ(288)<0){for(let i=0;i<I.length;i+=3)[I[i+1],I[i+2]]=[I[i+2],I[i+1]];g.setIndex(I);g.computeVertexNormals();}
     carriers.forEach(m=>{m.geometry.dispose();m.material.dispose();});return mesh(name,g,art,parent);
   }
@@ -69,7 +69,7 @@ module.exports = function kit(THREE, key) {
       const positions=[];for(const t of times)positions.push(0,sample(t/duration*Math.PI*2).bounce||0,0);tracks.push(new THREE.VectorKeyframeTrack("Body.position",times,positions));clips.push(new THREE.AnimationClip(name,duration,tracks));
     }
     make("Idle",3,a=>({bounce:(1-Math.cos(a))*.003}));
-    make("Walk",1.1,a=>({LeftLeg:[Math.sin(a)*.36,0,0],RightLeg:[-Math.sin(a)*.36,0,0],LeftArm:options.holdLeft?[0,0,0]:[-Math.sin(a)*.25,0,0],RightArm:[Math.sin(a)*.25,0,0],Body:[.01,0,Math.sin(a)*.012],Head:[-.01,0,-Math.sin(a)*.012],Rotor:[0,a,0],bounce:.014+(1-Math.cos(a*2))*.009}));
+    make("Walk",1.1,a=>({LeftLeg:[Math.sin(a)*.36,0,0],RightLeg:[-Math.sin(a)*.36,0,0],LeftArm:options.holdLeft?[0,0,0]:[-Math.sin(a)*.25,0,0],RightArm:options.holdRight?[0,0,0]:[Math.sin(a)*.25,0,0],Body:[.01,0,Math.sin(a)*.012],Head:[-.01,0,-Math.sin(a)*.012],Rotor:[0,a,0],bounce:.014+(1-Math.cos(a*2))*.009}));
     make("Wave",2,a=>({RightArm:[.02,0,1.8+Math.sin(a*2)*.18],bounce:(1-Math.cos(a))*.003}));
     root.userData={avatarKey:key+".webp",prototype:true,revision:1,authoring:options.authoring||"Individually shaped solid prop, original face artwork, rigid animated limbs"};
     return require("./ground-avatar.cjs")(THREE,{root,clips});

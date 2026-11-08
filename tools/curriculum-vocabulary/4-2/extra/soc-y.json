@@ -1,0 +1,675 @@
+{
+  "3-1": {
+    "환경": {
+      "en": "environment",
+      "explain": [
+        "쉬운 뜻: 영어로 environment, 나를 빙 둘러싸고 있는 모든 것입니다.",
+        "생활 속 예: 교실 창밖의 나무와 하늘, 운동장과 학교 건물이 모두 환경입니다.",
+        "바닷가에 살면 고기를 잡고, 들판에 살면 농사를 짓습니다."
+      ],
+      "beats": [
+        "하린이가 언덕에 올라 동네를 내려다봅니다.",
+        "산과 하천, 논과 도로, 아파트와 학교가 한눈에 보입니다.",
+        "우리 둘레에서 삶에 영향을 주는 이 모든 것이 환경입니다."
+      ],
+      "img": "HARIN, a girl with a yellow headband and a mint cardigan, stands on a grassy hilltop looking down at her hometown. Below her spread green mountains, a winding river, rice paddies, roads, apartment buildings and a school, all visible in one wide view. No text.",
+      "imgKo": "노란 머리띠에 민트 카디건을 입은 하린이가 풀 언덕 위에서 동네를 내려다본다. 아래로 푸른 산, 굽이치는 하천, 논, 도로, 아파트, 학교가 한눈에 펼쳐진다."
+    },
+    "자연환경": {
+      "explain": [
+        "쉬운 뜻: 사람 손이 닿기 전부터 원래 있던 산, 바다, 날씨 같은 것입니다.",
+        "낱말 나누기: 자연(저절로 생겨난 것) + 환경(둘러싼 모든 것)입니다.",
+        "생활 속 예: 뒷산, 바닷가 모래밭, 여름 장마가 모두 자연환경입니다."
+      ],
+      "beats": [
+        "높은 산 사이로 하천이 구불구불 흘러 바다로 갑니다.",
+        "하늘에는 비구름이 몰려오고 바람이 풀을 눕힙니다.",
+        "사람이 만들지 않고 저절로 생겨난 것들이 자연환경입니다."
+      ],
+      "img": "A wide natural landscape with no buildings, roads or people: tall forested mountains, a river winding across a plain of wild grass down to the sea, and a sandy shore. Dark rain clouds roll in over the mountains and the wind bends the grass. No text.",
+      "imgKo": "건물도 길도 사람도 없는 넓은 자연 풍경. 숲이 우거진 높은 산, 들풀 사이로 굽이쳐 바다로 흐르는 하천, 모래 바닷가가 있고, 산 위로 비구름이 몰려오며 바람에 풀이 눕는다."
+    },
+    "인문환경": {
+      "explain": [
+        "쉬운 뜻: 사람이 땀 흘려 지어 놓은 것들을 모두 묶어 부르는 말입니다.",
+        "낱말 나누기: 인문(사람이 이루어 낸 것) + 환경(둘러싼 모든 것)입니다.",
+        "생활 속 예: 학교 앞 횡단보도, 놀이터, 우리 아파트도 인문환경입니다."
+      ],
+      "beats": [
+        "강이 흐르는 골짜기에 사람들이 논과 밭을 만들었습니다.",
+        "강에는 다리를 놓고, 바닷가에는 항구와 공장을 세웠습니다.",
+        "이렇게 사람이 만든 장소와 시설이 인문환경입니다."
+      ],
+      "img": "A river valley filled with things people have built: neat rice paddies and vegetable fields, a village of houses, a road and a bridge across the river, and a small port with a factory by the sea. A few farmers and trucks are at work. No text or signs.",
+      "imgKo": "강이 흐르는 골짜기에 사람이 만든 것들이 가득하다. 반듯한 논과 밭, 집이 모인 마을, 도로와 강 위 다리, 바닷가의 작은 항구와 공장이 있고, 농부와 트럭이 일하고 있다."
+    },
+    "기후": {
+      "en": "climate",
+      "explain": [
+        "쉬운 뜻: 영어로 climate, 한 곳에서 해마다 되풀이되는 날씨의 버릇입니다.",
+        "생활 속 예: 우리나라는 해마다 여름이면 덥고, 겨울이면 춥습니다."
+      ]
+    },
+    "갯벌": {
+      "en": "mudflat",
+      "explain": [
+        "쉬운 뜻: 영어로 mudflat, 하루 두 번 바닷물에 잠겼다 드러나는 진흙 벌판입니다.",
+        "생활 속 예: 갯벌 체험 때 호미로 진흙을 파면 조개와 게가 나옵니다.",
+        "우리나라 서해안과 남해안에 넓게 펼쳐져 있습니다."
+      ],
+      "beats": [
+        "바닷물이 저 멀리 빠져나갔습니다.",
+        "넓게 드러난 진흙에서 사람들이 조개를 캐고, 게가 기어 다닙니다.",
+        "바닷물이 들고 나며 잠겼다 드러나는 넓고 평평한 진흙 땅이 갯벌입니다."
+      ],
+      "img": "Low tide on Korea's west coast: the sea has pulled far back, leaving a vast, flat, shiny grey mudflat. People in rubber boots carrying buckets dig for clams with small hoes, little crabs crawl out of holes, and shorebirds peck at the mud. Far away, a thin line of sea water glitters. No text.",
+      "imgKo": "썰물 때 서해 바닷가. 바닷물이 멀리 빠져 넓고 평평한 회색 진흙 땅이 드러났고, 장화를 신은 사람들이 양동이를 들고 호미로 조개를 캐며, 작은 게들이 구멍에서 기어 나오고 물새가 진흙을 쪼아 먹는다."
+    },
+    "지평선": {
+      "en": "horizon",
+      "explain": [
+        "쉬운 뜻: 영어로 horizon, 넓은 들 끝에서 땅과 하늘이 한 줄로 만나는 곳입니다.",
+        "산이 가로막지 않을 만큼 들이 아주 넓어야 보입니다.",
+        "생활 속 예: 기차를 타고 넓은 들을 지날 때 창밖 멀리 보입니다."
+      ],
+      "beats": [
+        "도윤이가 넓은 들 한가운데 서 있습니다.",
+        "누렇게 익은 논이 산 하나 없이 끝없이 이어집니다.",
+        "그 끝에서 평평한 땅과 하늘이 맞닿아 보이는 줄이 지평선입니다."
+      ],
+      "img": "DOYUN, a boy with round glasses and a navy hoodie, stands on a narrow path in the middle of an enormous flat plain of golden ripe rice paddies in autumn. There are no mountains anywhere; the fields stretch on until they meet the sky in one straight, level line, and he points toward that line. No text.",
+      "imgKo": "둥근 안경에 남색 후드를 입은 도윤이가 가을의 끝없이 넓은 누런 논 한가운데 좁은 길에 서 있다. 산이 하나도 없이 들이 이어지다 하늘과 곧고 평평한 한 줄로 맞닿고, 도윤이가 그 줄을 가리킨다."
+    },
+    "저수지": {
+      "en": "reservoir",
+      "explain": [
+        "쉬운 뜻: 영어로 reservoir, 비 올 때 물을 모아 두었다 꺼내 쓰는 커다란 물 저금통입니다.",
+        "낱말 나누기: 저수(물을 모아 둠) + 지(못)입니다.",
+        "생활 속 예: 모내기 철이면 저수지 물이 물길을 따라 논으로 갑니다."
+      ],
+      "beats": [
+        "둑으로 막은 커다란 못에 빗물이 가득 모여 있습니다.",
+        "모내기 철에 둑의 문을 열자 물이 물길을 따라 논으로 흘러갑니다.",
+        "농사 등에 쓸 물을 모아 두려고 만든 큰 못이 저수지입니다."
+      ],
+      "img": "A large man-made pond held back by a long earthen embankment in the countryside, full of water and reflecting the hills. A small gate in the embankment is open, and water flows out along a concrete channel toward flooded rice paddies where farmers are planting young rice. No text.",
+      "imgKo": "시골에 긴 흙둑으로 막아 만든 커다란 못에 물이 가득 차 언덕을 비춘다. 둑의 작은 수문이 열려 물이 시멘트 물길을 따라 모내기하는 논으로 흘러간다."
+    },
+    "산비탈": {
+      "en": "hillside",
+      "explain": [
+        "쉬운 뜻: 영어로 hillside, 미끄럼틀처럼 기울어진 산의 옆면입니다.",
+        "낱말 나누기: 산 + 비탈(기울어진 땅)입니다.",
+        "생활 속 예: 등산할 때 숨이 차오르는 오르막이 산비탈입니다."
+      ],
+      "beats": [
+        "산의 옆면이 미끄럼틀처럼 기울어져 있습니다.",
+        "사람들이 기울어진 땅을 층층이 깎아 배추와 무를 심었습니다.",
+        "산의 기울어진 면이 산비탈입니다."
+      ],
+      "img": "A steep green mountainside in the Korean highlands. Farmers have cut the slope into terraced fields where rows of cabbages and radishes grow, and a farmer carefully climbs a narrow path between them carrying a basket. No text.",
+      "imgKo": "높은 산골의 가파른 산 옆면을 층층이 깎아 만든 밭에 배추와 무가 줄지어 자라고, 농부가 바구니를 메고 밭 사이 좁은 길을 조심조심 오른다."
+    },
+    "양식장": {
+      "en": "fish farm",
+      "explain": [
+        "쉬운 뜻: 영어로 fish farm, 바다나 물에 만든 물고기 농장입니다.",
+        "낱말 나누기: 양식(가두어 기름) + 장(곳)입니다.",
+        "생활 속 예: 우리가 먹는 김과 전복도 이런 곳에서 많이 자랍니다."
+      ],
+      "beats": [
+        "바다 위에 동그란 부표가 줄지어 떠 있습니다.",
+        "어민이 줄을 끌어 올리자 굴과 미역이 주렁주렁 달려 나옵니다.",
+        "물고기나 김, 굴 등을 가두어 기르는 곳이 양식장입니다."
+      ],
+      "img": "A calm southern Korean bay filled with long, neat rows of white floating buoys holding ropes and nets under the water. From a small boat, a fisher pulls up a rope heavy with clusters of oysters and ribbons of seaweed, and a floating fish pen with a net is nearby. No text.",
+      "imgKo": "잔잔한 남해 바다에 하얀 부표가 길게 줄지어 떠 있다. 작은 배에서 어민이 굴과 미역이 주렁주렁 달린 줄을 끌어 올리고, 옆에는 그물을 친 물고기 가두리가 떠 있다."
+    },
+    "염전": {
+      "explain": [
+        "쉬운 뜻: 바닷물을 햇볕에 말려 소금을 거두는 소금 밭입니다.",
+        "생활 속 예: 김장 때 배추를 절이는 굵은 소금이 염전에서 옵니다.",
+        "햇볕이 쨍쨍하고 바람이 부는 날에 소금이 잘 생깁니다."
+      ],
+      "beats": [
+        "바닷가에 논처럼 네모난 얕은 판이 줄지어 있습니다.",
+        "햇볕과 바람에 물이 마르자 하얀 소금이 생기고, 일꾼이 소금을 긁어모읍니다.",
+        "바닷물을 말려 소금을 만드는 곳이 염전입니다."
+      ],
+      "img": "A salt farm by the sea under a bright sun: shallow square pans of sea water laid out like rice paddies, some still shining with water and others covered with white salt crystals. A worker in a straw hat pushes a long wooden rake, gathering the salt into small white piles, and a wooden salt storehouse stands at the edge. No text.",
+      "imgKo": "쨍쨍한 햇볕 아래 바닷가에 논처럼 네모난 얕은 판이 줄지어 있고, 물이 반짝이는 판과 하얀 소금 알갱이가 덮인 판이 있다. 밀짚모자를 쓴 일꾼이 긴 나무 밀대로 소금을 모아 작은 더미로 쌓고, 가장자리에 나무 소금 창고가 있다."
+    },
+    "지하자원": {
+      "explain": [
+        "쉬운 뜻: 땅이 품고 있는 보물 상자 속 석탄, 철, 금 같은 것입니다.",
+        "낱말 나누기: 지하(땅 밑) + 자원(쓸모 있는 것)입니다.",
+        "생활 속 예: 연필심의 흑연도 땅속에서 캐낸 것입니다."
+      ],
+      "beats": [
+        "산을 잘라 보니 땅속이 보입니다.",
+        "땅속에 검은 석탄층과 쇠가 든 돌, 반짝이는 금속이 묻혀 있습니다.",
+        "땅속에 묻혀 있어 사람이 캐내어 쓰는 쓸모 있는 것이 지하자원입니다."
+      ],
+      "img": "A cutaway view of a mountain showing what lies underground: thick black layers of coal, reddish-brown iron ore rocks, and small shiny veins of metal in the stone. A tunnel leads from the surface down to the coal, where a small rail cart waits. On the surface above are trees and a little mining village. No text.",
+      "imgKo": "산을 잘라 땅속을 보인 그림. 두꺼운 검은 석탄층, 붉은 갈색의 철광석, 돌 사이에 반짝이는 금속 줄기가 묻혀 있고, 땅 위에서 석탄층까지 굴이 이어져 작은 수레가 서 있다. 땅 위에는 나무와 작은 광산 마을이 있다."
+    },
+    "광산": {
+      "en": "mine",
+      "explain": [
+        "쉬운 뜻: 영어로 mine, 땅속 보물을 꺼내려고 굴을 뚫어 놓은 일터입니다.",
+        "생활 속 예: 광부들은 작은 수레에 석탄을 싣고 굴 밖으로 나옵니다."
+      ],
+      "beats": [
+        "산 중턱에 굴 입구가 뚫려 있습니다.",
+        "불 달린 안전모를 쓴 광부들이 석탄을 실은 수레를 밀고 나옵니다.",
+        "땅속에 묻힌 쓸모 있는 돌이나 쇠붙이를 캐내는 곳이 광산입니다."
+      ],
+      "img": "The wooden-framed entrance of a tunnel in the side of a mountain. Miners wearing helmets with lamps and dusty work clothes push small rail carts loaded with black coal out of the dark tunnel along narrow tracks. A pile of coal and a simple shed stand nearby. No text.",
+      "imgKo": "산 중턱에 나무 기둥으로 받친 굴 입구가 있다. 불 달린 안전모를 쓰고 먼지 묻은 작업복을 입은 광부들이 석탄을 가득 실은 작은 수레를 좁은 철길을 따라 굴 밖으로 밀고 나오고, 옆에 석탄 더미와 창고가 있다."
+    },
+    "촌락": {
+      "en": "village",
+      "explain": [
+        "쉬운 뜻: 영어로 village, 논밭이나 바다 곁에서 자연을 일터 삼아 사는 마을입니다.",
+        "생활 속 예: 바닷가 마을에서는 아침마다 배가 고기를 잡으러 나갑니다.",
+        "산골 마을에서는 산나물을 뜯고 버섯을 기릅니다."
+      ],
+      "beats": [
+        "산 아래 낮은 집들이 옹기종기 모여 있습니다.",
+        "논에서는 벼를 거두고, 포구에서는 작은 배가 고기를 잡으러 나갑니다.",
+        "주로 자연환경을 이용해 농사짓고 고기 잡으며 살아가는 곳이 촌락입니다."
+      ],
+      "img": "A small Korean countryside village at the foot of green hills beside the sea. Low houses cluster together, surrounded by rice paddies and vegetable fields where farmers harvest rice, and in the little harbor fishing boats head out to sea. No tall buildings. No text.",
+      "imgKo": "푸른 언덕 아래 바닷가의 작은 시골 마을. 낮은 집들이 옹기종기 모여 있고 둘레의 논밭에서 농부들이 벼를 거두며, 작은 포구에서는 고깃배가 바다로 나간다. 높은 건물은 없다."
+    },
+    "개발": {
+      "en": "development",
+      "explain": [
+        "쉬운 뜻: 영어로 development, 들판이나 산에 길을 내고 건물을 세워 새 모습으로 바꾸는 것입니다.",
+        "생활 속 예: 숲을 깎아 넓은 찻길과 아파트 단지를 짓습니다."
+      ],
+      "beats": [
+        "왼쪽 그림의 언덕은 나무와 풀로 덮여 있습니다.",
+        "몇 해 뒤 같은 곳에 넓은 길이 나고 아파트와 학교가 들어섰습니다.",
+        "땅이나 자원을 사람에게 쓸모 있고 편리하게 바꾸는 일이 개발입니다."
+      ],
+      "img": "Two panels of the same place. Left: a quiet green hillside with trees and a small stream next to a few farm fields. Right, years later: the hill has been cut and leveled, with a wide new road, cranes finishing tall apartment buildings, a new school and a parking lot. No text.",
+      "imgKo": "같은 곳의 두 칸. 왼쪽은 나무와 작은 개울, 밭 몇 뙈기가 있는 조용한 푸른 언덕이고, 오른쪽은 몇 해 뒤 언덕을 깎아 넓은 새 길이 나고 크레인이 높은 아파트를 짓고 새 학교와 주차장이 들어선 모습이다."
+    },
+    "공업": {
+      "en": "manufacturing",
+      "explain": [
+        "쉬운 뜻: 영어로 manufacturing, 공장 기계로 자동차, 옷, 과자 같은 물건을 만드는 일입니다.",
+        "생활 속 예: 내 운동화와 휴대 전화도 공장에서 만든 물건입니다."
+      ],
+      "beats": [
+        "커다란 공장 한쪽으로 철판이 들어갑니다.",
+        "로봇 팔과 사람들이 차례로 붙이고 끼워 자동차를 만듭니다.",
+        "원료로 사람들에게 필요한 물건을 만드는 산업이 공업입니다."
+      ],
+      "img": "Inside a bright, huge car factory: sheets of steel enter at one end of a long assembly line, robotic arms weld car bodies, workers in uniforms and safety glasses fit doors and wheels, and finished shiny cars roll out at the far end. No text or logos.",
+      "imgKo": "밝고 커다란 자동차 공장 안. 긴 조립 줄 한쪽 끝으로 철판이 들어가고, 로봇 팔이 차체를 붙이며, 작업복과 보안경 차림의 일꾼들이 문과 바퀴를 끼우고, 반대쪽 끝으로 반짝이는 새 자동차가 나온다."
+    },
+    "원료": {
+      "en": "raw material",
+      "explain": [
+        "쉬운 뜻: 영어로 raw material, 물건이 되기 전 맨 처음의 바탕입니다.",
+        "생활 속 예: 우유는 치즈의, 모래는 유리의 원료입니다.",
+        "원료가 공장에 들어가면 새 물건이 되어 나옵니다."
+      ],
+      "beats": [
+        "트럭이 공장 앞에 모래를 쏟아붓습니다.",
+        "공장을 거쳐 나온 모래는 투명한 유리병이 되었습니다.",
+        "물건을 만드는 데 바탕이 되는 재료가 원료입니다."
+      ],
+      "img": "A cutaway glass factory. On the left, a truck dumps a big pile of pale sand into a hopper. In the middle, the sand melts into glowing orange liquid glass in a furnace. On the right, rows of clear glass bottles come out on a conveyor belt. No text.",
+      "imgKo": "안을 들여다본 유리 공장. 왼쪽에서 트럭이 옅은 모래 더미를 쏟아붓고, 가운데 가마에서 모래가 주황빛 유리 물로 녹으며, 오른쪽 벨트 위로 투명한 유리병이 줄지어 나온다."
+    },
+    "산업 단지": {
+      "explain": [
+        "쉬운 뜻: 공장들이 한 동네에 모여 있는 공장 마을입니다.",
+        "낱말 나누기: 산업(물건이나 서비스를 만드는 일) + 단지(한데 모아 꾸민 땅)입니다.",
+        "공장끼리 가까우니 부품을 주고받기 편합니다."
+      ],
+      "beats": [
+        "하늘에서 보니 공장 지붕들이 반듯반듯 모여 있습니다.",
+        "넓은 길로 트럭들이 부품과 물건을 싣고 공장 사이를 오갑니다.",
+        "공장과 회사가 한곳에 모이도록 계획해 만든 넓은 땅이 산업 단지입니다."
+      ],
+      "img": "An aerial view of a large industrial park: dozens of factory buildings with blue and grey roofs arranged in neat blocks along wide straight roads. Trucks carry boxes and parts between the factories, and a few chimneys and warehouses stand among them, with green hills and a town of apartments in the distance. No text or logos.",
+      "imgKo": "하늘에서 본 넓은 산업 단지. 파랗고 회색인 지붕의 공장 수십 채가 곧고 넓은 길을 따라 반듯하게 모여 있고, 트럭들이 상자와 부품을 싣고 공장 사이를 오가며, 멀리 초록 언덕과 아파트 마을이 보인다."
+    },
+    "광역시": {
+      "explain": [
+        "쉬운 뜻: 어느 도에도 속하지 않고 따로 서는 큰 도시입니다.",
+        "낱말 나누기: 광역(넓은 지역) + 시(도시)입니다.",
+        "생활 속 예: 대구는 경상북도에 둘러싸여 있지만 경상북도에 속하지 않습니다."
+      ]
+    },
+    "생태계": {
+      "en": "ecosystem",
+      "explain": [
+        "쉬운 뜻: 영어로 ecosystem, 생물과 흙, 물, 공기가 서로 이어져 사는 한 동네입니다.",
+        "생활 속 예: 연못의 개구리는 벌레를 먹고, 왜가리는 개구리를 먹습니다.",
+        "하나가 사라지면 다른 생물도 살기 어려워집니다."
+      ]
+    },
+    "훼손": {
+      "en": "damage",
+      "explain": [
+        "쉬운 뜻: 영어로 damage, 새 책을 찢고 낙서해 놓은 것처럼 상하게 하는 것입니다.",
+        "생활 속 예: 문화유산에 낙서를 하는 것도 훼손입니다."
+      ],
+      "beats": [
+        "푸르던 산의 나무를 위에서 아래까지 길게 베어 냈습니다.",
+        "나무가 사라진 자리에 그루터기와 맨흙이 드러났습니다.",
+        "이렇게 부수거나 더럽혀 망가뜨리는 것이 훼손입니다."
+      ],
+      "img": "A mountainside that used to be covered in thick forest. A wide strip of trees has been cut down from the top to the bottom for a ski slope, leaving tree stumps and bare brown soil exposed, with piles of logs and a bulldozer at the bottom. The untouched forest on either side is still green. No text.",
+      "imgKo": "울창한 숲이던 산 옆면에 스키장을 만들려고 위에서 아래까지 나무를 넓게 베어 내, 그루터기와 갈색 맨흙이 드러나 있다. 아래에는 통나무 더미와 불도저가 있고, 양옆 숲은 아직 푸르다."
+    },
+    "오염": {
+      "en": "pollution",
+      "explain": [
+        "쉬운 뜻: 영어로 pollution, 맑은 물에 먹물이 번지듯 더럽혀지는 것입니다.",
+        "생활 속 예: 바다에 버린 비닐을 바다거북이 먹이인 줄 알고 삼킵니다."
+      ],
+      "beats": [
+        "바닷가 모래밭에 비닐봉지와 플라스틱병이 널려 있습니다.",
+        "물빛은 탁하고, 바다거북이 떠다니는 비닐봉지 곁을 헤엄칩니다.",
+        "물, 공기, 땅 등이 더러워지는 것이 오염입니다."
+      ],
+      "img": "A beach whose sand is littered with plastic bottles, bags and other trash washed up by the waves. The water near the shore is cloudy and grey, and a sea turtle swims close to a floating plastic bag. Above, the sky over a distant city is hazy. No injured animals, no text.",
+      "imgKo": "파도에 밀려온 플라스틱병, 비닐봉지 같은 쓰레기가 모래밭에 널린 바닷가. 물가의 물은 탁한 잿빛이고, 바다거북이 떠다니는 비닐봉지 가까이에서 헤엄치며, 멀리 도시 하늘은 뿌옇다."
+    },
+    "폐수": {
+      "en": "wastewater",
+      "explain": [
+        "쉬운 뜻: 영어로 wastewater, 설거지나 공장 일을 마치고 하수구로 흘려보내는 물입니다.",
+        "생활 속 예: 프라이팬 기름을 싱크대에 부으면 폐수가 더 더러워집니다."
+      ],
+      "beats": [
+        "공장 뒤 굵은 관에서 거품 섞인 탁한 물이 쏟아집니다.",
+        "맑던 냇물이 관 아래쪽부터 거무스름하게 변하고 물고기가 달아납니다.",
+        "공장이나 집에서 쓰고 버리는 더러운 물이 폐수입니다."
+      ],
+      "img": "Behind a factory, a thick pipe pours foamy, dark brown water into a clear stream. Upstream of the pipe the water is clear with fish and pebbles visible; downstream it turns murky and the fish swim away. No text.",
+      "imgKo": "공장 뒤 굵은 관에서 거품 섞인 거무스름한 물이 맑은 냇물로 쏟아진다. 관 위쪽 물은 맑아 물고기와 조약돌이 보이지만, 아래쪽은 탁해지고 물고기들이 달아난다."
+    },
+    "간척": {
+      "explain": [
+        "쉬운 뜻: 욕조 물을 빼듯 바다 한쪽을 막아 마른 땅으로 바꾸는 일입니다.",
+        "생활 속 예: 바다였던 곳에 논과 공장이 들어섭니다."
+      ]
+    },
+    "친환경": {
+      "en": "eco-friendly",
+      "explain": [
+        "쉬운 뜻: 영어로 eco-friendly, 자연과 친구처럼 사이좋게 지내는 것입니다.",
+        "낱말 나누기: 친(친하다) + 환경(우리를 둘러싼 것)입니다.",
+        "생활 속 예: 텀블러를 들고 다니고 전기 자동차를 탑니다."
+      ],
+      "beats": [
+        "사람들이 장바구니와 텀블러를 들고 다닙니다.",
+        "길에는 전기 버스와 자전거가 다니고, 지붕 위 판은 햇빛으로 전기를 만듭니다.",
+        "자연을 더럽히지 않고 자연 그대로와 잘 어울리는 것이 친환경입니다."
+      ],
+      "img": "A cheerful town street. HARIN carries a cloth shopping bag and DOYUN drinks from a reusable tumbler; an electric bus and people on bicycles pass by, solar panels shine on the rooftops, and trees and flower beds line the sidewalk. No text.",
+      "imgKo": "밝은 동네 거리. 하린이는 천 장바구니를, 도윤이는 텀블러를 들었고, 전기 버스와 자전거 탄 사람들이 지나가며, 지붕마다 햇빛 전기판이 반짝이고 길가에 나무와 꽃밭이 있다."
+    },
+    "생태 하천": {
+      "explain": [
+        "쉬운 뜻: 사람만 쓰던 냇물을 물고기, 새, 풀과 함께 쓰도록 가꾼 물길입니다.",
+        "낱말 나누기: 생태(생물이 살아가는 모습) + 하천(강과 시내)입니다.",
+        "생활 속 예: 산책로 옆 냇물에서 왜가리가 물고기를 잡습니다."
+      ],
+      "beats": [
+        "예전에는 시멘트 벽 사이로 냇물이 곧게 흘렀습니다.",
+        "벽을 걷어 내고 돌과 물풀을 깔자 물고기와 왜가리가 돌아왔습니다.",
+        "여러 동식물이 어울려 살도록 자연에 가깝게 가꾼 냇물이 생태 하천입니다."
+      ],
+      "img": "Two panels of the same city stream. Left, before: a straight concrete channel with steep grey walls and almost no life. Right, after: the concrete is gone, the stream curves over stones and gravel, reeds and water plants grow along the banks, fish swim, a heron hunts, and people walk on a path beside it. No text.",
+      "imgKo": "같은 도시 냇물의 두 칸. 왼쪽은 가파른 잿빛 시멘트 벽 사이로 곧게 흐르는 생물 없는 물길이고, 오른쪽은 시멘트를 걷어 내 돌과 자갈 위로 냇물이 굽이치며 갈대와 물풀이 자라고 물고기, 왜가리, 산책하는 사람들이 보인다."
+    },
+    "습지": {
+      "en": "wetland",
+      "explain": [
+        "쉬운 뜻: 영어로 wetland, 땅과 물 사이, 발이 푹푹 빠지는 질척한 땅입니다.",
+        "생활 속 예: 순천만 습지에는 갈대가 우거지고 겨울마다 철새가 찾아옵니다.",
+        "비가 많이 오면 스펀지처럼 물을 머금었다가 천천히 내보냅니다."
+      ],
+      "beats": [
+        "얕은 물이 고인 땅에 갈대가 빽빽하게 자랍니다.",
+        "개구리가 물풀 위에 앉고, 철새들이 물가에서 먹이를 찾습니다.",
+        "물기가 많아 늘 축축한 땅이 습지입니다."
+      ],
+      "img": "A wide wetland with shallow water among dense golden reeds. A wooden boardwalk crosses it, frogs sit on lily pads, and flocks of migrating birds, cranes and ducks, wade and feed in the shallow water. No text.",
+      "imgKo": "얕은 물 사이로 누런 갈대가 빽빽한 넓은 습지. 나무 데크 길이 가로지르고, 개구리가 연잎 위에 앉아 있으며, 두루미와 오리 같은 철새 무리가 얕은 물에서 먹이를 찾는다."
+    },
+    "생태 통로": {
+      "en": "wildlife crossing",
+      "explain": [
+        "쉬운 뜻: 영어로 wildlife crossing, 동물 전용 횡단보도 같은 다리나 굴입니다.",
+        "낱말 나누기: 생태(생물이 살아가는 모습) + 통로(지나다니는 길)입니다.",
+        "생활 속 예: 도로 밑으로 뚫은 작은 굴로 개구리와 너구리가 지나갑니다."
+      ]
+    },
+    "특색": {
+      "explain": [
+        "쉬운 뜻: 다른 곳에는 없고 그곳에만 있어 '아, 거기!' 하고 떠오르는 점입니다.",
+        "한자 뜻: 特(특별할 특)과 色(빛 색), 남다른 빛깔이 난다는 뜻입니다.",
+        "생활 속 예: 전주 하면 한옥 마을과 비빔밥이 떠오릅니다."
+      ],
+      "beats": [
+        "비슷하게 생긴 회색 마을들이 줄지어 있습니다.",
+        "그 가운데 한 마을만 기와지붕과 연 날리는 축제로 눈에 확 띕니다.",
+        "다른 것과 달리 눈에 띄게 남다른 점이 특색입니다."
+      ],
+      "img": "A row of small towns seen from a hill, almost all identical: grey square apartment blocks of the same height. In the middle, one town stands out with curved tiled hanok roofs, a colorful traditional festival in its square and kites flying above it. No text.",
+      "imgKo": "언덕에서 내려다본 마을들이 거의 똑같이 같은 높이의 회색 네모 아파트로 줄지어 있다. 그 가운데 한 마을만 곡선의 기와지붕 한옥과 광장의 알록달록한 전통 축제, 하늘의 연으로 눈에 띈다."
+    }
+  },
+  "3-2": {
+    "도시": {
+      "en": "city",
+      "explain": [
+        "쉬운 뜻: 영어로 city, 많은 사람이 모여 일하고 사고팔고 노는 북적이는 곳입니다.",
+        "생활 속 예: 높은 건물, 지하철, 큰 병원과 백화점이 모여 있습니다."
+      ],
+      "beats": [
+        "높은 빌딩 사이 넓은 길에 차와 버스가 가득합니다.",
+        "지하철역과 상점, 병원 앞으로 사람들이 바쁘게 오갑니다.",
+        "많은 사람이 모여 살며 정치, 경제, 문화 활동의 중심이 되는 곳이 도시입니다."
+      ],
+      "img": "A busy Korean city center in the daytime: tall office buildings, a wide road full of cars and buses, a subway station entrance, shops, a hospital and a city hall building, and crowds of people walking on the sidewalks. No readable signs or text.",
+      "imgKo": "낮의 붐비는 도시 한가운데. 높은 사무실 건물, 차와 버스로 가득한 넓은 길, 지하철역 입구, 상점, 병원, 시청 건물이 있고 인도에는 사람들이 바쁘게 걷는다."
+    },
+    "인구": {
+      "en": "population",
+      "explain": [
+        "쉬운 뜻: 영어로 population, 그 지역에 사는 사람을 하나하나 다 센 수입니다.",
+        "생활 속 예: 우리 반 학생 수를 세듯, 우리 시에 사는 사람 수를 셉니다.",
+        "아기가 태어나거나 이사 오면 늘고, 이사 가면 줄어듭니다."
+      ]
+    },
+    "시가지": {
+      "explain": [
+        "쉬운 뜻: 도시에서 상가와 건물이 다닥다닥 붙어 이어진 동네입니다.",
+        "생활 속 예: 길을 따라 빵집, 약국, 은행, 학원이 줄줄이 붙어 있습니다."
+      ],
+      "beats": [
+        "버스 창밖으로 큰길이 길게 이어집니다.",
+        "길을 따라 빵집, 약국, 은행, 학원이 빈틈없이 붙어 있습니다.",
+        "큰 도로 주변으로 건물이 연달아 모여 있는 지역이 시가지입니다."
+      ],
+      "img": "View from a bus window of a long city street. On both sides of the wide road, buildings stand shoulder to shoulder without gaps: a bakery, a pharmacy, a bank, cafés and after-school academies stacked above stores, continuing as far as the eye can see. No readable text on signs.",
+      "imgKo": "버스 창밖으로 본 긴 도시 거리. 넓은 길 양쪽에 빵집, 약국, 은행, 카페, 학원이 든 건물들이 빈틈없이 어깨를 맞대고 눈이 닿는 데까지 이어진다."
+    },
+    "대중교통": {
+      "en": "public transportation",
+      "explain": [
+        "쉬운 뜻: 영어로 public transportation, 정해진 길과 시간에 맞춰 누구나 함께 타는 탈것입니다.",
+        "낱말 나누기: 대중(많은 사람) + 교통(사람이나 물건이 오가는 것)입니다.",
+        "생활 속 예: 교통 카드를 찍고 버스에 오릅니다."
+      ],
+      "beats": [
+        "아침 정류장에 버스가 서자 사람들이 차례로 오릅니다.",
+        "길 아래 지하철역에서도 많은 사람이 한 열차에 탑니다.",
+        "버스, 지하철처럼 여러 사람이 함께 타고 다니는 교통수단이 대중교통입니다."
+      ],
+      "img": "A morning street scene shown above and below ground. Above, people line up and board a city bus at a bus stop, tapping transit cards. Below, a cutaway shows a subway station where many commuters, students and an old man step into a long train together. No text.",
+      "imgKo": "땅 위와 땅 밑을 함께 보인 아침 거리. 위에서는 사람들이 정류장에 줄을 서서 교통 카드를 찍고 버스에 오르고, 아래 지하철역에서는 직장인, 학생, 할아버지가 함께 긴 열차에 탄다."
+    },
+    "고가 도로": {
+      "en": "overpass",
+      "explain": [
+        "쉬운 뜻: 영어로 overpass, 땅 위 길 위에 한 층 더 얹은 공중 찻길입니다.",
+        "낱말 나누기: 고가(높이 걸쳐 놓은) + 도로(찻길)입니다.",
+        "생활 속 예: 고가 도로 밑 그늘에 주차장이나 쉼터를 만들기도 합니다."
+      ],
+      "beats": [
+        "교차로 위로 굵은 기둥들이 줄지어 서 있습니다.",
+        "기둥 위에 놓인 길로 차들이 신호를 기다리지 않고 지나갑니다.",
+        "땅 위로 기둥을 세워 높이 놓은 찻길이 고가 도로입니다."
+      ],
+      "img": "A city crossroads seen from the side. Down on the ground, cars wait at traffic lights and people cross at a crosswalk. Above them, a road raised on tall concrete pillars carries a steady stream of cars straight over the crossroads. No text.",
+      "imgKo": "옆에서 본 도시 교차로. 땅 위에서는 차들이 신호를 기다리고 사람들이 횡단보도를 건너며, 그 위로 높은 시멘트 기둥에 얹힌 길에서 차들이 교차로를 곧장 넘어간다."
+    },
+    "지하 차도": {
+      "en": "underpass",
+      "explain": [
+        "쉬운 뜻: 영어로 underpass, 찻길이 땅 밑으로 쏙 들어갔다 나오는 굴입니다.",
+        "낱말 나누기: 지하(땅 밑) + 차도(자동차가 다니는 길)입니다.",
+        "생활 속 예: 지하 차도에 들어서면 천장 불빛이 줄지어 지나갑니다."
+      ],
+      "beats": [
+        "땅 위 교차로에서는 사람들이 횡단보도를 건넙니다.",
+        "그 밑으로 찻길이 비스듬히 내려가 굴을 지나 다시 올라옵니다.",
+        "땅속으로 자동차만 다닐 수 있도록 만든 길이 지하 차도입니다."
+      ],
+      "img": "A cutaway side view of a city crossroads. On the surface, pedestrians cross a crosswalk and a bus waits at the light. Beneath them, a road slopes down into a lit concrete tunnel, cars pass under the crossroads, and come back up on the other side. No text.",
+      "imgKo": "도시 교차로를 옆에서 잘라 보인 그림. 땅 위에서는 사람들이 횡단보도를 건너고 버스가 신호를 기다리며, 그 밑으로 찻길이 불 켜진 굴로 내려가 차들이 교차로 아래를 지나 반대편으로 올라온다."
+    },
+    "문화 시설": {
+      "explain": [
+        "쉬운 뜻: 마음을 즐겁고 넉넉하게 채워 주려고 지은 곳입니다.",
+        "낱말 나누기: 문화(책, 그림, 노래, 공연 같은 것) + 시설(만들어 둔 곳)입니다.",
+        "생활 속 예: 주말에 가족과 과학관에서 전시를 봅니다."
+      ],
+      "beats": [
+        "광장 둘레에 도서관, 박물관, 공연장이 모여 있습니다.",
+        "가족들이 공룡 뼈를 보고, 책을 읽고, 연극을 보러 들어갑니다.",
+        "책을 읽거나 공연과 전시를 즐기도록 만든 곳이 문화 시설입니다."
+      ],
+      "img": "A city square surrounded by a library, a museum with a dinosaur skeleton visible through big windows, and a concert hall. HARIN and her family walk toward the museum, children read on the library steps, and people line up for a play at the concert hall. No readable text.",
+      "imgKo": "도서관, 큰 창으로 공룡 뼈가 보이는 박물관, 공연장이 둘러싼 도시 광장. 하린이네 가족이 박물관으로 걸어가고, 아이들이 도서관 계단에서 책을 읽으며, 사람들이 공연장 앞에 연극을 보려고 줄을 선다."
+    },
+    "편의 시설": {
+      "explain": [
+        "쉬운 뜻: 살면서 필요한 일을 가까이에서 쉽게 하도록 돕는 곳입니다.",
+        "낱말 나누기: 편의(편하고 좋음) + 시설(만들어 둔 곳)입니다.",
+        "생활 속 예: 엘리베이터, 경사로, 공중화장실도 편의 시설입니다."
+      ],
+      "beats": [
+        "아파트 앞길에 병원, 약국, 은행, 마트가 나란히 있습니다.",
+        "휠체어를 탄 사람도 경사로로 약국에 쉽게 들어갑니다.",
+        "생활을 편리하게 해 주는 여러 곳이 편의 시설입니다."
+      ],
+      "img": "A neighborhood street in front of an apartment complex, lined with a small clinic, a pharmacy, a bank and a grocery store side by side. A person in a wheelchair rolls up a gentle ramp into the pharmacy, and a mother with a stroller comes out of the store. No readable signs or text.",
+      "imgKo": "아파트 단지 앞길에 작은 병원, 약국, 은행, 마트가 나란히 있다. 휠체어를 탄 사람이 완만한 경사로로 약국에 들어가고, 유모차를 민 엄마가 마트에서 나온다."
+    },
+    "산업": {
+      "en": "industry",
+      "explain": [
+        "쉬운 뜻: 영어로 industry, 쌀 기르기, 자동차 만들기, 물건 팔기를 한 바구니에 담은 말입니다.",
+        "생활 속 예: 영화를 만들고 게임을 만드는 일도 산업입니다."
+      ],
+      "beats": [
+        "논에서는 농부가 벼를 거둡니다.",
+        "공장에서는 자동차를 만들고, 바닷가에서는 관광객을 안내합니다.",
+        "살아가는 데 필요한 물건이나 서비스를 만들어 내는 모든 일이 산업입니다."
+      ],
+      "img": "Three panels side by side like a picture strip. Left: a farmer harvesting golden rice in a paddy. Middle: workers and robot arms building cars in a factory. Right: a tour guide leading visitors along a seaside cliff of dark volcanic rock. No text.",
+      "imgKo": "세 칸 그림. 왼쪽은 벼를 거두는 농부, 가운데는 일꾼과 로봇 팔이 자동차를 만드는 공장, 오른쪽은 검은 화산 바위 해안 절벽을 따라 관광객을 안내하는 해설사다."
+    },
+    "서비스": {
+      "en": "service",
+      "explain": [
+        "쉬운 뜻: 영어로 service, 물건 대신 손과 솜씨로 남을 돕는 일입니다.",
+        "생활 속 예: 버스 기사님이 우리를 학교 앞까지 태워다 주십니다."
+      ],
+      "beats": [
+        "식당에서 종업원이 손님에게 물과 음식을 가져다줍니다.",
+        "미용실에서는 머리를 다듬고, 병원에서는 아픈 곳을 살핍니다.",
+        "물건을 만드는 대신 다른 사람을 편하게 돕는 일이 서비스입니다."
+      ],
+      "img": "Three panels side by side. Left: a restaurant server bringing water and food to a smiling family. Middle: a hairdresser trimming a child's hair. Right: a nurse checking a patient's temperature at a clinic. No text.",
+      "imgKo": "세 칸 그림. 왼쪽은 웃는 가족에게 물과 음식을 가져다주는 식당 종업원, 가운데는 아이 머리를 다듬는 미용사, 오른쪽은 병원에서 환자의 체온을 재는 간호사다."
+    },
+    "상업": {
+      "en": "commerce",
+      "explain": [
+        "쉬운 뜻: 영어로 commerce, 물건을 사 와서 되팔아 돈을 버는 장사입니다.",
+        "생활 속 예: 문구점 사장님은 공책을 사다가 우리에게 팝니다."
+      ],
+      "beats": [
+        "장터에 과일, 생선, 옷을 파는 가게가 줄지어 있습니다.",
+        "사람들이 값을 치르고 물건을 사 가고, 상인은 돈을 받습니다.",
+        "상품을 사고팔아 이익을 얻는 일이 상업입니다."
+      ],
+      "img": "A lively traditional market street next to a modern department store. Shopkeepers sell fruit, fish and clothes from stalls, customers pay with cash and cards and carry shopping bags, and delivery boxes are stacked beside the shops. No readable signs or text.",
+      "imgKo": "현대식 백화점 옆 북적이는 전통 시장 거리. 상인들이 가판에서 과일, 생선, 옷을 팔고, 손님들이 돈과 카드로 값을 치르고 장바구니를 들며, 가게 옆에 택배 상자가 쌓여 있다."
+    },
+    "행정": {
+      "explain": [
+        "쉬운 뜻: 시청, 구청, 주민 센터에서 주민을 위해 하는 여러 가지 일입니다.",
+        "생활 속 예: 이사 오면 주민 센터에 가서 새 주소를 알립니다.",
+        "길을 고치고 쓰레기 버리는 날을 정하는 것도 행정입니다."
+      ],
+      "beats": [
+        "시청 민원 창구 앞에서 주민들이 번호표를 들고 기다립니다.",
+        "공무원이 서류를 살펴 이사 신고와 여러 부탁을 처리합니다.",
+        "나라나 지역의 살림살이를 맡아 처리하는 일이 행정입니다."
+      ],
+      "img": "Inside a bright city hall service counter. Residents of different ages wait with number tickets, and civil servants at desks check papers, stamp documents and help a young family register their new address. No readable text.",
+      "imgKo": "밝은 시청 민원 창구. 여러 나이의 주민들이 번호표를 들고 기다리고, 공무원들이 책상에서 서류를 살피고 도장을 찍으며, 젊은 가족의 새 주소 신고를 돕는다."
+    },
+    "공업 도시": {
+      "en": "industrial city",
+      "explain": [
+        "쉬운 뜻: 영어로 industrial city, 공장 굴뚝과 크레인이 도시의 얼굴인 곳입니다.",
+        "생활 속 예: 울산 사람들은 아침마다 자동차 공장과 배 만드는 공장으로 출근합니다."
+      ],
+      "beats": [
+        "바닷가 항구로 커다란 배가 원료를 싣고 들어옵니다.",
+        "항구 옆 공장들에서는 자동차와 배를 만듭니다.",
+        "물건을 만드는 공장이 많이 모여 그 일이 크게 발달한 곳이 공업 도시입니다."
+      ],
+      "img": "A coastal city seen from above: a busy port where cargo ships unload raw materials, rows of large factories and a shipyard with giant cranes building a ship, workers' apartment blocks behind them, and trucks carrying finished cars to the docks. No text or logos.",
+      "imgKo": "하늘에서 본 바닷가 도시. 붐비는 항구에서 화물선이 원료를 내리고, 커다란 공장들과 거대한 크레인이 배를 만드는 조선소가 줄지어 있으며, 뒤로 일하는 사람들의 아파트가 있고 트럭이 새 자동차를 부두로 나른다."
+    },
+    "제철소": {
+      "en": "steel mill",
+      "explain": [
+        "쉬운 뜻: 영어로 steel mill, 냄비, 철길, 다리에 쓸 철을 처음 만들어 내는 공장입니다.",
+        "낱말 나누기: 제철(철을 만듦) + 소(곳)입니다.",
+        "생활 속 예: 포항 바닷가에는 밤에도 불이 꺼지지 않는 제철소가 있습니다."
+      ],
+      "beats": [
+        "바닷가 공장 앞에 붉은 돌 더미가 산처럼 쌓여 있습니다.",
+        "커다란 가마에서 녹은 쇳물이 불꽃을 튀기며 흘러나옵니다.",
+        "철광석을 녹여 철을 만드는 공장이 제철소입니다."
+      ],
+      "img": "A huge steel mill by the sea. Piles of reddish iron ore lie by the dock, and inside, glowing orange molten iron pours from a giant furnace into a channel, throwing sparks, while workers in silver heat-proof suits and helmets watch from a safe distance. No text.",
+      "imgKo": "바닷가의 거대한 제철소. 부두에 붉은 철광석 더미가 쌓여 있고, 안에서는 커다란 가마에서 주황빛 쇳물이 불꽃을 튀기며 물길로 쏟아지며, 은빛 방열복과 안전모를 쓴 일꾼들이 멀찍이서 지켜본다."
+    },
+    "수도권": {
+      "explain": [
+        "쉬운 뜻: 수도 서울을 가운데 두고 둘러싼 지역까지 한 덩어리로 부르는 말입니다.",
+        "낱말 나누기: 수도(나라의 중심 도시) + 권(둘레의 범위)입니다.",
+        "우리나라 사람 둘 가운데 한 명꼴로 여기에 삽니다."
+      ]
+    },
+    "계획 도시": {
+      "en": "planned city",
+      "explain": [
+        "쉬운 뜻: 영어로 planned city, 설계도를 먼저 그려 놓고 그대로 지은 도시입니다.",
+        "생활 속 예: 학교, 공원, 상가가 들어설 자리를 미리 정해 놓고 짓습니다."
+      ]
+    },
+    "신도시": {
+      "en": "new town",
+      "explain": [
+        "쉬운 뜻: 영어로 new town, 큰 도시가 너무 붐벼서 그 곁에 새로 지은 도시입니다.",
+        "생활 속 예: 분당, 일산은 서울 둘레에 세운 신도시입니다.",
+        "서울로 일하러 다니는 사람이 많이 삽니다."
+      ]
+    },
+    "대도시": {
+      "en": "big city",
+      "explain": [
+        "쉬운 뜻: 영어로 big city, 도시 가운데서도 몸집이 아주 큰 도시입니다.",
+        "생활 속 예: 지하철이 여러 노선으로 다니고 큰 병원과 대학이 많습니다."
+      ],
+      "beats": [
+        "하늘에서 보니 빌딩 숲이 끝없이 펼쳐져 있습니다.",
+        "큰 강 위 여러 다리와 넓은 길로 사람과 차가 쉴 새 없이 오갑니다.",
+        "사람이 아주 많이 살고 정치, 경제, 교육, 문화의 중심 역할을 하는 큰 시가 대도시입니다."
+      ],
+      "img": "An aerial view at dusk of a huge city that stretches to the horizon: forests of skyscrapers, a wide river crossed by many bridges, highways full of car lights, elevated subway trains, big hospitals, universities and stadiums. No text.",
+      "imgKo": "해 질 녘 하늘에서 본, 땅끝까지 펼쳐진 거대한 도시. 빌딩 숲, 여러 다리가 놓인 넓은 강, 자동차 불빛으로 가득한 큰길, 지상으로 달리는 지하철 열차, 큰 병원과 대학, 경기장이 보인다."
+    },
+    "중심지": {
+      "en": "center",
+      "explain": [
+        "쉬운 뜻: 영어로 center, 사람과 일이 자석처럼 모여드는 곳입니다.",
+        "낱말 나누기: 중심(한가운데) + 지(곳)입니다.",
+        "생활 속 예: 버스 노선이 모두 모이는 터미널 둘레는 교통의 중심지입니다."
+      ],
+      "beats": [
+        "장날 아침, 여러 마을에서 사람들이 읍내 장터로 모여듭니다.",
+        "버스와 트럭도 사방의 길에서 장터로 들어옵니다.",
+        "어떤 일이나 활동을 하려고 사람들이 많이 모이는 곳이 중심지입니다."
+      ],
+      "img": "An overhead view of a small country town on market day. Roads from several villages in every direction lead to the busy market square in the middle, and people on foot, buses and small trucks all stream toward it carrying goods. No text.",
+      "imgKo": "위에서 내려다본 장날의 작은 읍내. 사방의 여러 마을에서 이어진 길이 가운데의 붐비는 장터로 모이고, 걸어오는 사람, 버스, 작은 트럭이 모두 물건을 싣고 장터로 몰려든다."
+    },
+    "주택": {
+      "en": "housing",
+      "explain": [
+        "쉬운 뜻: 영어로 housing, 가족이 먹고 자며 사는 집을 조금 어렵게 부르는 말입니다.",
+        "생활 속 예: 우리 동네에는 아파트, 빌라, 한옥이 섞여 있습니다."
+      ],
+      "beats": [
+        "한 동네에 높은 아파트와 낮은 빌라, 한옥이 섞여 있습니다.",
+        "창문마다 불이 켜지고 가족들이 저녁을 먹습니다.",
+        "사람이 들어가 살 수 있도록 지은 건물이 주택입니다."
+      ],
+      "img": "A residential neighborhood in the evening with tall apartment buildings, small low-rise villas and a traditional hanok house with a tiled roof. Warm lights glow in the windows, and families can be seen eating dinner inside. No text.",
+      "imgKo": "저녁의 주택가에 높은 아파트, 낮은 빌라, 기와지붕 한옥이 섞여 있다. 창문마다 따뜻한 불빛이 켜지고, 안에서 가족들이 저녁을 먹는 모습이 보인다."
+    },
+    "교통 혼잡": {
+      "en": "traffic jam",
+      "explain": [
+        "쉬운 뜻: 영어로 traffic jam, 깔때기에 물이 몰리듯 길에 차가 엉켜 꼼짝 못 하는 것입니다.",
+        "낱말 나누기: 교통(오가는 것) + 혼잡(뒤섞여 복잡함)입니다.",
+        "생활 속 예: 명절에 고향 가는 길이 몇 시간씩 막힙니다."
+      ],
+      "beats": [
+        "퇴근 시간, 넓은 도로가 자동차로 꽉 찼습니다.",
+        "차들이 꼼짝 못 하는 사이 버스 전용 차로의 버스만 지나갑니다.",
+        "차와 사람이 한꺼번에 몰려 길이 막히고 복잡한 것이 교통 혼잡입니다."
+      ],
+      "img": "Rush hour on a wide city road at sunset: lanes packed bumper to bumper with cars that are not moving, drivers looking tired, and crowds of people squeezing along the sidewalks, while a single bus moves freely in a dedicated bus lane painted blue. No text.",
+      "imgKo": "해 질 녘 퇴근 시간의 넓은 도로. 멈춰 선 자동차들이 줄줄이 꽉 차 운전자들이 지친 얼굴이고 인도에도 사람들이 붐비는데, 파랗게 칠한 버스 전용 차로의 버스 한 대만 막힘없이 달린다."
+    },
+    "매연": {
+      "explain": [
+        "쉬운 뜻: 기름이나 석탄을 태울 때 나오는 그을음 섞인 나쁜 연기입니다.",
+        "생활 속 예: 오래된 트럭이 지나가면 코를 막게 됩니다.",
+        "매연이 많은 날은 하늘이 뿌옇게 보입니다."
+      ],
+      "beats": [
+        "낡은 트럭 꽁무니에서 시커먼 연기가 뿜어져 나옵니다.",
+        "멀리 공장 굴뚝의 연기와 섞여 하늘이 뿌옇게 됩니다.",
+        "자동차나 공장에서 나오는 검고 더러운 연기가 매연입니다."
+      ],
+      "img": "On a city road, an old truck puffs thick black smoke from its exhaust pipe while HARIN and DOYUN on the sidewalk cover their noses and mouths. In the distance, factory chimneys release dark smoke, and the sky over the buildings looks grey and hazy. No text.",
+      "imgKo": "도시 길에서 낡은 트럭이 배기관으로 시커먼 연기를 뿜고, 인도의 하린이와 도윤이가 코와 입을 가린다. 멀리 공장 굴뚝에서도 검은 연기가 나와 건물 위 하늘이 잿빛으로 뿌옇다."
+    },
+    "여가": {
+      "en": "leisure",
+      "explain": [
+        "쉬운 뜻: 영어로 leisure, 할 일을 다 하고 남는 나만의 자유 시간입니다.",
+        "생활 속 예: 숙제를 마친 저녁에 책을 읽거나 배드민턴을 칩니다."
+      ],
+      "beats": [
+        "주말 공원에서 가족들이 자전거를 탑니다.",
+        "나무 그늘에서는 책을 읽고, 잔디밭에서는 배드민턴을 칩니다.",
+        "일이나 공부를 하지 않고 쉬거나 즐길 수 있는 남는 시간이 여가입니다."
+      ],
+      "img": "A sunny weekend afternoon in a city park. A family rides bicycles along a path, a grandfather reads a book on a bench in the shade, and HARIN and DOYUN play badminton on the grass while others have a picnic. No text.",
+      "imgKo": "햇살 좋은 주말 오후의 도시 공원. 가족이 길을 따라 자전거를 타고, 할아버지가 그늘 벤치에서 책을 읽으며, 하린이와 도윤이가 잔디밭에서 배드민턴을 치고 다른 사람들은 소풍을 즐긴다."
+    }
+  }
+}

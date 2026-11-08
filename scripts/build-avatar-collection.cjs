@@ -10,7 +10,8 @@ for(const id of keys){
 const avatars=Object.values(profiles).map(p=>{
   const file=path.join(root,"apps/avatar-lab/models",p.id+".glb");
   const bytes=fs.existsSync(file)?fs.readFileSync(file):null,gltf=bytes?JSON.parse(bytes.subarray(20,20+bytes.readUInt32LE(12))):null,meta=gltf?.nodes[0].extras||{};
-  return{id:p.id,name:p.name,category:p.id.split("-")[0],shape:p.shape,locomotion:meta.locomotion||p.motion,canWave:meta.canWave??(p.motion==="walk"&&!p.holdArms),status:p.shape==='custom'?'prototype':'needs_remodeling',model:bytes?"models/"+p.id+".glb":null,revision:bytes?crypto.createHash('sha256').update(bytes).digest('hex').slice(0,12):null,original:"../classtools/assets/avatars/"+p.id+".webp",bytes:bytes?.length||0};
+  const sourceRevision=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'apps/classtools/assets/avatars',p.id+'.webp'))).digest('hex').slice(0,12);
+  return{id:p.id,name:p.name,category:p.id.split("-")[0],shape:p.shape,locomotion:meta.locomotion||p.motion,canWave:meta.canWave??(p.motion==="walk"&&!p.holdArms),status:p.shape==='custom'?'prototype':'needs_remodeling',model:bytes?"models/"+p.id+".glb":null,revision:bytes?crypto.createHash('sha256').update(bytes).digest('hex').slice(0,12):null,sourceRevision,original:"../classtools/assets/avatars/"+p.id+".webp",bytes:bytes?.length||0};
 });
 const output=path.join(root,"apps/avatar-lab/collection-index.json");
 require('./replace-generated-file.cjs')(output,JSON.stringify({count:avatars.length,available:avatars.filter(a=>a.model).length,avatars},null,2)+"\n");

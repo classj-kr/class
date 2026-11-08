@@ -1,0 +1,39 @@
+"use strict";
+
+// A separate clip keeps accents running while the locomotion clip changes.
+// Only standard glTF transforms are used, so these travel with the GLB.
+module.exports=function characterEffects(THREE,k,id){
+ const duration=id==='animal-whale'?4.8:3.6,tracks=[],count=144;
+ const times=Array.from({length:count+1},(_,i)=>duration*i/count);
+ const material=(name,color)=>{const m=k.solid(name,color);m.userData.alreadyShaded=true;return m;};
+ function vectorTrack(name,sample){const values=[];for(const t of times)values.push(...sample(t/duration));tracks.push(new THREE.VectorKeyframeTrack(name,times,values));}
+ function rotationTrack(name,sample){const values=[];for(const t of times)values.push(...new THREE.Quaternion().setFromEuler(new THREE.Euler(...sample(t/duration))).toArray());tracks.push(new THREE.QuaternionKeyframeTrack(name+'.quaternion',times,values));}
+ if(id==='food-birthday-cake'){
+  for(let i=0;i<3;i++){
+   const old=k.root.getObjectByName('Flame'+i),parent=old.parent;
+   const flame=new THREE.Group();flame.name='CandleFlame'+i;flame.position.copy(old.position).add(new THREE.Vector3(0,-.15,0));parent.add(flame);parent.remove(old);
+   const points=[[0,0],[.055,.025],[.09,.10],[.074,.18],[.034,.27],[0,.34]].map(p=>new THREE.Vector2(...p));
+   k.mesh('OuterFlame'+i,new THREE.LatheGeometry(points,24),material('WarmFlame'+i,'#ffb34b'),flame);
+   k.ellipsoid('FlameCore'+i,[.045,.073,.028],material('FlameCoreColor'+i,'#ffeaa1'),flame,[0,.09,.063]);
+   vectorTrack(flame.name+'.scale',p=>{const a=p*Math.PI*2,dy=.06*Math.sin(a*5+i*1.7)+.025*Math.sin(a*9+i*.9);return[1-dy*.3,1+dy,1-dy*.3];});
+   rotationTrack(flame.name,p=>{const a=p*Math.PI*2;return[.025*Math.sin(a*4+i),0,.06*Math.sin(a*3+i*2.1)+.02*Math.sin(a*7+i)];});
+  }
+ }
+ if(id==='animal-whale'){
+  const head=k.root.getObjectByName('Head'),jet=new THREE.Group();jet.name='WhaleSpout';
+  jet.position.set(-head.position.x,(580-162)*.005-head.position.y,-head.position.z);head.add(jet);
+  head.updateMatrixWorld(true);
+  for(const mesh of [...head.children])if(mesh.name.startsWith('WaterSpout'))jet.attach(mesh);
+  const smooth=t=>t*t*(3-2*t);
+  vectorTrack('WhaleSpout.scale',p=>{const t=p*duration;let amount=1;if(t>.45&&t<1.1)amount=1-smooth((t-.45)/.65);else if(t>=1.1&&t<4.35)amount=0;else if(t>=4.35)amount=smooth((t-4.35)/.45);const s=Math.max(.001,amount);return[.6+.4*s,s,.6+.4*s];});
+  for(let i=0;i<6;i++){
+   const drop=new THREE.Group();drop.name='WhaleDrop'+i;drop.position.copy(jet.position);head.add(drop);
+   k.ellipsoid('WaterDrop'+i,[.026,.043,.026],material('WaterDropColor'+i,'#88d0eb'),drop);
+   const start=.25+i*.07,life=.85,side=i%2?-1:1;
+   vectorTrack(drop.name+'.position',p=>{const t=Math.max(0,Math.min(1,(p*duration-start)/life));return[jet.position.x+side*(.10+(.22+i*.015)*t),jet.position.y+.27+.42*t-.55*t*t,jet.position.z+Math.sin(i*2.4)*.09*t];});
+   vectorTrack(drop.name+'.scale',p=>{const t=(p*duration-start)/life,s=t<0||t>1?.001:Math.max(.001,Math.sin(Math.PI*t));return[s,s,s];});
+  }
+ }
+ if(!tracks.length)return null;
+ return new THREE.AnimationClip('CharacterEffects',duration,tracks);
+};

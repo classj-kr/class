@@ -69,7 +69,7 @@ for (const clip of clips) {
     const separator=track.name.lastIndexOf('.'),name=track.name.slice(0,separator),property=track.name.slice(separator+1);
     if(!nodeMap.has(name))throw new Error('Animation targets missing node: '+track.name);
     const sampler = animation.samplers.push({ input: accessor(track.times, 1), output: accessor(track.values, property === "quaternion" ? 4 : 3), interpolation: "LINEAR" }) - 1;
-    animation.channels.push({ sampler, target: { node: nodeMap.get(name), path: property === "quaternion" ? "rotation" : "translation" } });
+    animation.channels.push({ sampler, target: { node: nodeMap.get(name), path: property === "quaternion" ? "rotation" : property === "scale" ? "scale" : "translation" } });
   }
   gltf.animations.push(animation);
 }
