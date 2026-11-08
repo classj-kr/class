@@ -1,5 +1,21 @@
 // tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = {
+ "4-2": {
+  "words": "words-4-2.js?v=d5eabd73",
+  "figures": [
+   "figures/4-2/kor-2.js?v=6e0a31c4",
+   "figures/4-2/kor.js?v=07b958f9",
+   "figures/4-2/math-1.js?v=a293f916",
+   "figures/4-2/math-2.js?v=4b2caab5",
+   "figures/4-2/math-3.js?v=70a61f60",
+   "figures/4-2/math-4.js?v=f10b7156",
+   "figures/4-2/math-5.js?v=d2b4b4ed",
+   "figures/4-2/math-6.js?v=1391256c",
+   "figures/4-2/sci-2.js?v=d0e91533",
+   "figures/4-2/sci.js?v=178afec7",
+   "figures/4-2/soc.js?v=8ce6c6e8"
+  ]
+ },
  "5-2": {
   "words": "words-5-2.js?v=3d652a28",
   "figures": [
@@ -31,15 +47,35 @@ window.CurriculumTerms = {
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
  "3-2": {
-  "words": "words-3-2.js?v=b0f5b18f",
-  "figures": []
+  "words": "words-3-2.js?v=04873aea",
+  "figures": [
+   "figures/3-2/kor-2.js?v=6335ce2a",
+   "figures/3-2/kor-3.js?v=3cdf7055",
+   "figures/3-2/kor.js?v=320b5149",
+   "figures/3-2/math-1.js?v=ec10e0ac",
+   "figures/3-2/math-2.js?v=8ab6bc0c",
+   "figures/3-2/math-3.js?v=7fb26561",
+   "figures/3-2/math-4.js?v=c0570f14",
+   "figures/3-2/math-5.js?v=cf8a016b",
+   "figures/3-2/math-6.js?v=35df17c5",
+   "figures/3-2/sci.js?v=ce6f47e6",
+   "figures/3-2/soc.js?v=3840cebb"
+  ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=ab2321a6",
+  "words": "words-4-2.js?v=d5eabd73",
   "figures": [
+   "figures/4-2/kor-2.js?v=6e0a31c4",
+   "figures/4-2/kor.js?v=07b958f9",
    "figures/4-2/math-1.js?v=a293f916",
-   "figures/4-2/math-2.js?v=dcc46e2b",
-   "figures/4-2/math-4.js?v=fd0993c2"
+   "figures/4-2/math-2.js?v=4b2caab5",
+   "figures/4-2/math-3.js?v=70a61f60",
+   "figures/4-2/math-4.js?v=f10b7156",
+   "figures/4-2/math-5.js?v=d2b4b4ed",
+   "figures/4-2/math-6.js?v=1391256c",
+   "figures/4-2/sci-2.js?v=d0e91533",
+   "figures/4-2/sci.js?v=178afec7",
+   "figures/4-2/soc.js?v=8ce6c6e8"
   ]
  },
  "5-2": {

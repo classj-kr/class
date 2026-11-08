@@ -47,7 +47,7 @@ if (fs.existsSync(extraDir)) for (const name of fs.readdirSync(extraDir).filter(
 }
 // kor.json 을 먼저, kor-g.json(글자 도식의 칸 글처럼 덧붙이는 파일)을 나중에 읽어 칸마다 덮어쓴다.
 // 덧붙임 파일 차례: <과목>.json → <과목>-x.json 같은 화면 글 → <과목>-g/-h.json(도식 칸 글, 언제나 마지막에 이김)
-const rank = (name) => /-[gh]\.json$/.test(name) ? 2 : /-[a-z]\.json$/.test(name) ? 1 : 0;
+const rank = (name) => /-[g-j]\.json$/.test(name) ? 2 : /-[a-z]\.json$/.test(name) ? 1 : 0;
 const extraNames = fs.existsSync(extraDir) ? fs.readdirSync(extraDir).filter(n => n.endsWith('.json') && !n.startsWith('senses') && !n.startsWith('rel') && !n.startsWith('foils'))
   .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b)) : [];
 for (const name of extraNames) {

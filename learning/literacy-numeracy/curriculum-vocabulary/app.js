@@ -424,9 +424,17 @@
       }
       // 오답은 이 낱말에 골라 둔 헷갈리는 후보(같은 과목 낱말)에서 먼저 뽑고, 모자라면 단원 낱말로 채운다.
       const subjectWords = books[term][subject].units.flatMap(row => row.words);
+      // 아래 낱말(정사각형은 직사각형의 아래)과 유의어는 뜻에도 빈칸에도 맞아 두 번째 정답이 되므로 보기에서 뺀다.
+      const banned = new Set((word.rel?.syn || []).map(row => row.w));
+      const addDown = (row) => (row?.rel?.down || []).forEach(down => {
+        if (banned.has(down.w)) return;
+        banned.add(down.w);
+        addDown(subjectWords.find(other => other.w === down.w));
+      });
+      addDown(word);
       // 같은 갈래 낱말이 목록에 없을 때는 목록 밖 낱말(야크, 낙타 …)도 오답으로 쓴다. 그때는 틀린 말 풀이가 없다.
-      const picked = shuffle((word.foils || []).filter(name => name !== word.w).map(name => subjectWords.find(row => row.w === name) || { w: name })).slice(0, 3);
-      const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row))).slice(0, 3 - picked.length);
+      const picked = shuffle((word.foils || []).filter(name => name !== word.w && !banned.has(name)).map(name => subjectWords.find(row => row.w === name) || { w: name })).slice(0, 3);
+      const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row) && !banned.has(row.w))).slice(0, 3 - picked.length);
       return shuffle([word, ...picked, ...rest])
         .map(row => ({ label: row.w, right: row === word, wrong: row.mean ? element('p', `${row.w}: ${row.mean}`, 'wrong-note') : null }));
     }

@@ -87,7 +87,7 @@
     const y = 190, A = [230, y], B = [410, y];
     const body = `<g class="b2"><path class="grow" d="M0 ${y} H640" stroke="${C.ink}" stroke-width="5" fill="none"/>${chev([30, y], [-1, 0])}${chev([610, y], [1, 0])}</g>`
       + `<g class="b1">${drawSeg(A, B, { w: 5, cls: 'sg' })}${dot(A, { cls: 'pt' })}${dot(B, { cls: 'pt' })}`
-      + text(A[0], y + 44, 'ㄱ', { size: 26 }) + text(B[0], y + 44, 'ㄴ', { size: 26 }) + '</g>'
+      + text(A[0], y + 46, 'ㄱ', { size: 30 }) + text(B[0], y + 46, 'ㄴ', { size: 30 }) + '</g>'
       + `<g class="b1 h3">${text(320, 120, '선분 ㄱㄴ', { size: 26, color: C.muted })}</g>`
       + `<g class="b3"><g class="lab">${text(320, 120, '직선 ㄱㄴ', { size: 30, color: C.green })}</g></g>`;
     put('4-2/수학/4/직선', svg(id, body, `
@@ -156,7 +156,7 @@
     const body = `<g class="b1">${line(y1, 'gr')}${line(y2, 'gr')}${text(206, y1 - 14, '가', { size: 24, anchor: 'end' })}${text(206, y2 - 14, '나', { size: 24, anchor: 'end' })}</g>`
       + `<g class="b2">${chev([24, y1], [-1, 0])}${chev([616, y1], [1, 0])}${chev([24, y2], [-1, 0])}${chev([616, y2], [1, 0])}</g>`
       + `<g class="b3 h4"><g transform="rotate(${f(-ang)} 320 ${cy})"><path class="gr3" d="M${f(320 - L / 2)} ${cy} H${f(320 + L / 2)}" stroke="${C.blue}" stroke-width="5" fill="none"/></g>`
-      + text(206, 330, '다', { size: 24, color: C.blue, anchor: 'end' })
+      + text(236, 346, '다', { size: 24, color: C.blue, anchor: 'end' })
       + `<g class="meet"><circle cx="580" cy="${y2}" r="17" fill="none" stroke="${C.red}" stroke-width="4"/></g></g>`
       + `<g class="b4">${gap(140, 'g1')}${gap(320, 'g2')}${gap(500, 'g3')}<g class="lab">${text(568, 189, '평행', { size: 28, color: C.green })}</g></g>`;
     put('4-2/수학/4/평행', svg(id, body, `
@@ -195,7 +195,7 @@
     const body = seg([20, y1], [620, y1], { w: 5 }) + seg([20, y2], [620, y2], { w: 5 })
       + text(36, y1 - 14, '가', { size: 24 }) + text(36, y2 - 14, '나', { size: 24 })
       + `<g class="b1 h3"><g class="sl">${drawSeg([150, y1], [80, y2], { w: 4, cls: 'd1' })}${drawSeg([400, y1], [530, y2], { w: 4, cls: 'd3' })}`
-      + `<g class="l1">${text(104, 194, '4.4 cm', { size: 22, anchor: 'end' })}</g><g class="l3">${text(484, 194, '5.2 cm', { size: 22, anchor: 'start' })}</g></g></g>`
+      + `<g class="l1">${text(92, 194, '4.4 cm', { size: 22, anchor: 'end' })}</g><g class="l3">${text(484, 194, '5.2 cm', { size: 22, anchor: 'start' })}</g></g></g>`
       + `<g class="b1">${drawSeg([X, y1], [X, y2], { w: 4, cls: 'd2 s2' })}<g class="l2">${text(X + 14, 194, '4 cm', { size: 22, anchor: 'start', color: C.ink, cls: 't2' })}</g></g>`
       + `<g class="b2"><g class="mk">${rmark([X, y1], [640, y1], [X, 360], { s: 18, color: C.orange })}${rmark([X, y2], [640, y2], [X, 0], { s: 18, color: C.orange })}</g></g>`
       + `<g class="b3"><g class="cp" style="--dx:-160px">${vert(X)}</g><g class="cp" style="--dx:200px">${vert(X)}</g></g>`
@@ -320,7 +320,7 @@
       + `<g class="b1 h2">${marksOf(L0, red)}</g><g class="b1 h3">${ticksOf(R0)}</g>`
       + `<g class="b2"><g class="late">${marksOf(L1, red)}${ticksOf(L1)}</g></g>`
       + `<g class="b3"><g class="late">${marksOf(R1, red)}${ticksOf(R1)}</g></g>`
-      + `<g class="b1 h4">${text(160, 322, '직사각형', { size: 24 })}${text(492, 322, '마름모', { size: 24 })}</g>`
+      + `<g class="b1 h4">${text(160, 322, '직사각형', { size: 24 })}${text(486, 322, '마름모', { size: 24 })}</g>`
       + `<g class="b4"><g class="lab">${text(160, 322, '정사각형', { size: 26, color: C.green })}</g><g class="lab">${text(480, 322, '정사각형', { size: 26, color: C.green })}</g></g>`;
     put('4-2/수학/4/정사각형', svg(id, body, `
       ${ml.css}${mr.css}

@@ -111,19 +111,18 @@
       "imgKo": "높은 산골의 가파른 산 옆면을 층층이 깎아 만든 밭에 배추와 무가 줄지어 자라고, 농부가 바구니를 메고 밭 사이 좁은 길을 조심조심 오른다."
     },
     "양식장": {
-      "en": "fish farm",
       "explain": [
-        "쉬운 뜻: 영어로 fish farm, 바다나 물에 만든 물고기 농장입니다.",
+        "쉬운 뜻: 바다에 차린 농장처럼, 바다 생물을 키워서 거두는 곳입니다.",
         "낱말 나누기: 양식(가두어 기름) + 장(곳)입니다.",
         "생활 속 예: 우리가 먹는 김과 전복도 이런 곳에서 많이 자랍니다."
       ],
       "beats": [
         "바다 위에 동그란 부표가 줄지어 떠 있습니다.",
-        "어민이 줄을 끌어 올리자 굴과 미역이 주렁주렁 달려 나옵니다.",
+        "어민이 줄을 끌어 올리자 굴이 주렁주렁 달려 나옵니다.",
         "물고기나 김, 굴 등을 가두어 기르는 곳이 양식장입니다."
       ],
-      "img": "A calm southern Korean bay filled with long, neat rows of white floating buoys holding ropes and nets under the water. From a small boat, a fisher pulls up a rope heavy with clusters of oysters and ribbons of seaweed, and a floating fish pen with a net is nearby. No text.",
-      "imgKo": "잔잔한 남해 바다에 하얀 부표가 길게 줄지어 떠 있다. 작은 배에서 어민이 굴과 미역이 주렁주렁 달린 줄을 끌어 올리고, 옆에는 그물을 친 물고기 가두리가 떠 있다."
+      "img": "A calm southern Korean bay filled with long, neat rows of white floating buoys holding ropes and nets under the water. From a small boat, a fisher pulls up a rope heavy with clusters of oysters, and a floating fish pen with a net is nearby. No text.",
+      "imgKo": "잔잔한 남해 바다에 하얀 부표가 길게 줄지어 떠 있다. 작은 배에서 어민이 굴이 주렁주렁 달린 줄을 끌어 올리고, 옆에는 그물을 친 물고기 가두리가 떠 있다."
     },
     "염전": {
       "explain": [
@@ -243,7 +242,7 @@
       "explain": [
         "쉬운 뜻: 어느 도에도 속하지 않고 따로 서는 큰 도시입니다.",
         "낱말 나누기: 광역(넓은 지역) + 시(도시)입니다.",
-        "생활 속 예: 대구는 경상북도에 둘러싸여 있지만 경상북도에 속하지 않습니다."
+        "생활 속 예: 광주광역시는 전라남도에 둘러싸여 있지만 전라남도에 속하지 않습니다."
       ]
     },
     "생태계": {
@@ -340,11 +339,11 @@
       ],
       "beats": [
         "얕은 물이 고인 땅에 갈대가 빽빽하게 자랍니다.",
-        "개구리가 물풀 위에 앉고, 철새들이 물가에서 먹이를 찾습니다.",
+        "개구리가 물풀 위에 앉고, 백로와 왜가리가 물가에서 먹이를 찾습니다.",
         "물기가 많아 늘 축축한 땅이 습지입니다."
       ],
-      "img": "A wide wetland with shallow water among dense golden reeds. A wooden boardwalk crosses it, frogs sit on lily pads, and flocks of migrating birds, cranes and ducks, wade and feed in the shallow water. No text.",
-      "imgKo": "얕은 물 사이로 누런 갈대가 빽빽한 넓은 습지. 나무 데크 길이 가로지르고, 개구리가 연잎 위에 앉아 있으며, 두루미와 오리 같은 철새 무리가 얕은 물에서 먹이를 찾는다."
+      "img": "A wide wetland in summer with shallow water among dense green reeds. A wooden boardwalk crosses it, frogs sit on lily pads, and herons and egrets wade and feed in the shallow water. No text.",
+      "imgKo": "얕은 물 사이로 푸른 갈대가 빽빽한 여름 습지. 나무 데크 길이 가로지르고, 개구리가 연잎 위에 앉아 있으며, 백로와 왜가리가 얕은 물에서 먹이를 찾는다."
     },
     "생태 통로": {
       "en": "wildlife crossing",
@@ -481,7 +480,7 @@
     "산업": {
       "en": "industry",
       "explain": [
-        "쉬운 뜻: 영어로 industry, 쌀 기르기, 자동차 만들기, 물건 팔기를 한 바구니에 담은 말입니다.",
+        "쉬운 뜻: 영어로 industry, 벼 기르기, 자동차 만들기, 물건 팔기를 한 바구니에 담은 말입니다.",
         "생활 속 예: 영화를 만들고 게임을 만드는 일도 산업입니다."
       ],
       "beats": [
@@ -538,7 +537,7 @@
       "en": "industrial city",
       "explain": [
         "쉬운 뜻: 영어로 industrial city, 공장 굴뚝과 크레인이 도시의 얼굴인 곳입니다.",
-        "생활 속 예: 울산 사람들은 아침마다 자동차 공장과 배 만드는 공장으로 출근합니다."
+        "생활 속 예: 울산에는 아침마다 자동차 공장과 배 만드는 공장으로 출근하는 사람이 많습니다."
       ],
       "beats": [
         "바닷가 항구로 커다란 배가 원료를 싣고 들어옵니다.",
@@ -614,20 +613,6 @@
       "img": "An overhead view of a small country town on market day. Roads from several villages in every direction lead to the busy market square in the middle, and people on foot, buses and small trucks all stream toward it carrying goods. No text.",
       "imgKo": "위에서 내려다본 장날의 작은 읍내. 사방의 여러 마을에서 이어진 길이 가운데의 붐비는 장터로 모이고, 걸어오는 사람, 버스, 작은 트럭이 모두 물건을 싣고 장터로 몰려든다."
     },
-    "주택": {
-      "en": "housing",
-      "explain": [
-        "쉬운 뜻: 영어로 housing, 가족이 먹고 자며 사는 집을 조금 어렵게 부르는 말입니다.",
-        "생활 속 예: 우리 동네에는 아파트, 빌라, 한옥이 섞여 있습니다."
-      ],
-      "beats": [
-        "한 동네에 높은 아파트와 낮은 빌라, 한옥이 섞여 있습니다.",
-        "창문마다 불이 켜지고 가족들이 저녁을 먹습니다.",
-        "사람이 들어가 살 수 있도록 지은 건물이 주택입니다."
-      ],
-      "img": "A residential neighborhood in the evening with tall apartment buildings, small low-rise villas and a traditional hanok house with a tiled roof. Warm lights glow in the windows, and families can be seen eating dinner inside. No text.",
-      "imgKo": "저녁의 주택가에 높은 아파트, 낮은 빌라, 기와지붕 한옥이 섞여 있다. 창문마다 따뜻한 불빛이 켜지고, 안에서 가족들이 저녁을 먹는 모습이 보인다."
-    },
     "교통 혼잡": {
       "en": "traffic jam",
       "explain": [
@@ -638,7 +623,7 @@
       "beats": [
         "퇴근 시간, 넓은 도로가 자동차로 꽉 찼습니다.",
         "차들이 꼼짝 못 하는 사이 버스 전용 차로의 버스만 지나갑니다.",
-        "차와 사람이 한꺼번에 몰려 길이 막히고 복잡한 것이 교통 혼잡입니다."
+        "차가 한꺼번에 몰려 길이 막히고 복잡한 것이 교통 혼잡입니다."
       ],
       "img": "Rush hour on a wide city road at sunset: lanes packed bumper to bumper with cars that are not moving, drivers looking tired, and crowds of people squeezing along the sidewalks, while a single bus moves freely in a dedicated bus lane painted blue. No text.",
       "imgKo": "해 질 녘 퇴근 시간의 넓은 도로. 멈춰 선 자동차들이 줄줄이 꽉 차 운전자들이 지친 얼굴이고 인도에도 사람들이 붐비는데, 파랗게 칠한 버스 전용 차로의 버스 한 대만 막힘없이 달린다."

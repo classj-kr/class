@@ -10,7 +10,7 @@
 | --- | --- |
 | `kor.json` `math.json` `soc.json` `sci.json` | 원고: 단원과 낱말(w, hanja, mean, use, blanks, evidence) |
 | `extra/<과목>.json` | 낱말마다 en, explain, beats, img, imgKo, hanja(원고에 없을 때) |
-| `extra/<과목>-g.json` | 코드로 그린 도식이 있는 낱말의 beats, fig |
+| `extra/<과목>-g.json` (~`-j`) | 코드로 그린 도식이 있는 낱말의 beats, fig (도우미가 여럿이면 g·h·i·j 로 나눔, 늘 마지막에 읽힘) |
 | `extra/senses-<과목>.json` | 다른 뜻(다의어·동형어) |
 | `extra/rel-<과목>.json` | 유의어·반의어·상위어·하위어·관련 단어 |
 | `extra/foils-<과목>.json` | 연습 오답 후보 |
