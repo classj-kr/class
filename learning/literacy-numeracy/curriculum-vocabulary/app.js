@@ -366,8 +366,9 @@
     const key = pick(keys);
     const answer = pick(word.rel[key]).w;
     const related = new Set([word.w, ...['syn', 'ant', 'up', 'down', 'see'].flatMap(k => (word.rel[k] || []).map(row => row.w))]);
-    // 답이 '-다'로 끝나면 보기도 '-다' 낱말로, 아니면 이름 낱말로 맞춘다. 꼴만 보고 고르지 못하게.
-    const verbish = (name) => /다$/.test(name);
+    // 답이 '-다'로 끝나면 보기도 '-다' 낱말로, '-기'(더하기·빼기)면 '-기' 낱말로, 아니면 이름 낱말로 맞춘다. 꼴만 보고 고르지 못하게.
+    const form = (name) => /다$/.test(name) ? 'da' : /기$/.test(name) ? 'gi' : 'n';
+    const verbish = (name) => form(name);
     const free = shuffle(pool.filter(row => !related.has(row.w)));
     let same = free.filter(row => verbish(row.w) === verbish(answer));
     if (same.length < 3) {
@@ -376,7 +377,9 @@
         .filter(row => !related.has(row.w) && verbish(row.w) === verbish(answer) && !same.includes(row));
       same = same.concat(wide);
     }
-    let rows = (same.length >= 3 ? same : free).slice(0, 3);
+    // 같은 꼴이 셋도 없으면 꼴만 보고 고르게 되므로 관계 문제를 내지 않는다.
+    if (same.length < 3) return null;
+    let rows = same.slice(0, 3);
     // 주관적↔객관적, 공정≈공평처럼 답이 물은 낱말과 글자를 나눠 가지면 모양만 보고 고른다.
     // 그런 짝이면 물은 낱말과 첫 글자나 끝 글자가 같은 낱말을 보기에 하나 섞는다.
     // '-다' 낱말은 끝 글자가 늘 '다'이므로 '하다·롭다·스럽다·다'를 떼고 견준다(비범하다↔평범하다).
@@ -384,8 +387,23 @@
     // 신뢰↔불신처럼 자리가 달라도 같은 글자가 하나라도 있으면 닮은 짝으로 본다.
     const alike = (a, b) => { const y = new Set(core(b)); return [...core(a)].some(ch => y.has(ch)); };
     const shares = (name) => name !== answer && alike(name, word.w);
+    // 답이 목록 밖 낱말(기필코≈반드시)인데 보기가 모두 배운 목록 낱말이면 '처음 보는 말'만 골라도 맞는다.
+    // 그래서 다른 낱말의 유의어·반의어 가운데 목록 밖 낱말 둘을 보기에 섞는다.
+    const subjectWords = books[term][subject].units.flatMap(row => row.words);
+    const listNames = new Set(subjectWords.map(row => row.w));
+    const offNotes = {};
+    if (!listNames.has(answer)) {
+      const seen = new Set();
+      const offs = shuffle(subjectWords.filter(row => row !== word)
+        .flatMap(row => ['syn', 'ant'].flatMap(k => (row.rel?.[k] || []).map(rel => ({ w: rel.w, host: row.w, k })))))
+        .filter(off => !listNames.has(off.w) && !related.has(off.w) && off.w !== answer && form(off.w) === form(answer) && !seen.has(off.w) && seen.add(off.w));
+      if (offs.length >= 2) {
+        offs.slice(0, 2).forEach(off => { offNotes[off.w] = `${off.w}: '${off.host}'와(과) 뜻이 ${off.k === 'ant' ? '반대인' : '비슷한'} 말입니다.`; });
+        rows = [...offs.slice(0, 2).map(off => ({ w: off.w })), rows[0]];
+      }
+    }
     if (alike(answer, word.w) && !rows.some(row => shares(row.w))) {
-      const look = shuffle(books[term][subject].units.flatMap(row => row.words))
+      const look = shuffle(subjectWords)
         .find(row => !related.has(row.w) && row.w !== word.w && verbish(row.w) === verbish(answer) && shares(row.w) && !rows.includes(row));
       // 섞을 닮은 낱말이 목록에 없으면(흉년↔풍년) 관계 문제를 내지 않고 빈칸·뜻 문제로 돌린다.
       if (!look) return null;
@@ -393,7 +411,7 @@
     }
     const others = rows.map(row => row.w);
     if (others.length < 3) return null;
-    return { kind: 'rel', key, word, answer, choices: shuffle([answer, ...others]) };
+    return { kind: 'rel', key, word, answer, offNotes, choices: shuffle([answer, ...others]) };
   }
 
   function questionsFor(unit, pool) {
@@ -444,7 +462,7 @@
       if (item.kind === 'rel') {
         return item.choices.map(name => {
           const other = books[term][subject].units.flatMap(row => row.words).find(row => row.w === name);
-          return { label: name, right: name === item.answer, wrong: other ? element('p', `${other.w}: ${other.mean}`, 'wrong-note') : null };
+          return { label: name, right: name === item.answer, wrong: other ? element('p', `${other.w}: ${other.mean}`, 'wrong-note') : item.offNotes?.[name] ? element('p', item.offNotes[name], 'wrong-note') : null };
         });
       }
       // 오답은 이 낱말에 골라 둔 헷갈리는 후보(같은 과목 낱말)에서 먼저 뽑고, 모자라면 단원 낱말로 채운다.
