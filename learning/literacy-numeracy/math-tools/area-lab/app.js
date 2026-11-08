@@ -57,8 +57,11 @@
           a = { x: -r * Math.sin(alpha), y: r * Math.cos(alpha) },
           b = { x: r * Math.sin(alpha), y: r * Math.cos(alpha) };
         let turn = M.mod(part.endAngle - part.startAngle + 180, 360) - 180;
-        const angle = part.startAngle + turn * s.progress;
-        svg += `<path d="M0 0L${a.x} ${a.y}A${r} ${r} 0 0 0 ${b.x} ${b.y}Z" transform="translate(${part.dx * s.progress} ${part.dy * s.progress}) rotate(${angle})" fill="${i % 2 ? M.colors[1] : M.colors[0]}" fill-opacity=".8" stroke="#fffefa" stroke-width="${0.9 / scale}"/>`;
+        const angle = part.startAngle + turn * s.progress,
+          sectorColor = M.colors[i % 2];
+        // Opaque sectors meet at the center. A subpixel, matching-color edge
+        // closes antialiasing seams without white strokes erasing narrow tips.
+        svg += `<path d="M0 0L${a.x} ${a.y}A${r} ${r} 0 0 0 ${b.x} ${b.y}Z" transform="translate(${part.dx * s.progress} ${part.dy * s.progress}) rotate(${angle})" fill="${sectorColor}" stroke="${sectorColor}" stroke-width="${0.5 / scale}" stroke-linejoin="round"/>`;
       } else
         svg += `<path d="${M.path(C.transformed(part, s.progress))}" fill="${color}" fill-opacity="${part.duplicate ? 0.65 * s.progress : 0.8}" stroke="#fffefa" stroke-width="${1.8 / scale}" stroke-linejoin="round"/>`;
     });

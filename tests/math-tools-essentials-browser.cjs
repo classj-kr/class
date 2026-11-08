@@ -352,6 +352,41 @@ test("area rearrangements animate through intermediate geometry and maintain for
   await range("offset", -3);
   assert.equal(await page.locator("#formula").textContent(), "6 × 4 ÷ 2 = 12");
 });
+
+test("circle sectors fill the center and rearranged interior without white holes", async () => {
+  await open("area-lab");
+  await page.locator("#shape").selectOption("circle");
+  await page.locator("#grid").click();
+  const coverage = async (unfolded) => {
+    const rect = await page.locator("#stage > g").evaluate((g, unfolded) => {
+      const matrix = g.getScreenCTM(), box = g.getBBox();
+      if (!unfolded) {
+        const center = new DOMPoint(0, 0).matrixTransform(matrix);
+        return { x: Math.round(center.x) - 3, y: Math.round(center.y) - 3, w: 7, h: 7 };
+      }
+      const start = new DOMPoint(box.x + box.width * .1, box.y + box.height * .3).matrixTransform(matrix);
+      const end = new DOMPoint(box.x + box.width * .9, box.y + box.height * .7).matrixTransform(matrix);
+      return { x: Math.ceil(start.x), y: Math.ceil(start.y), w: Math.floor(end.x - start.x), h: Math.floor(end.y - start.y) };
+    }, unfolded);
+    const check = spawnSync("python", ["-c",
+      "import io,json,sys;from PIL import Image;im=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert('RGB');r=json.loads(sys.argv[1]);pixels=list(im.crop((r['x'],r['y'],r['x']+r['w'],r['y']+r['h'])).getdata());print(sum(min(p)<220 for p in pixels)/len(pixels))",
+      JSON.stringify(rect)], { input: await page.screenshot() });
+    assert.equal(check.status, 0, String(check.stderr));
+    return Number(check.stdout);
+  };
+  for (const width of [1366, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const count of [96, 12, 24, 48]) {
+      await page.locator("#sectors").selectOption(String(count));
+      await range("progress", 0);
+      assert.ok(await coverage(false) > .99, `${count} sectors at ${width}px leave the center blank`);
+      if (width === 1366 && count === 96) await shot(page, "area-circle-96-solid");
+      await range("progress", 100);
+      assert.ok(await coverage(true) > .98, `${count} sectors at ${width}px leave gaps in the rearranged area`);
+      if (width === 1366 && count === 96) await shot(page, "area-circle-96-unfolded");
+    }
+  }
+});
 test("solids fold continuously, all cube nets render, round shapes and orbit remain usable", async () => {
   await open("solid-nets");
   await page.locator("#unfold").click();
