@@ -366,7 +366,17 @@
     const key = pick(keys);
     const answer = pick(word.rel[key]).w;
     const related = new Set([word.w, ...['syn', 'ant', 'up', 'down', 'see'].flatMap(k => (word.rel[k] || []).map(row => row.w))]);
-    const others = shuffle(pool.filter(row => !related.has(row.w))).slice(0, 3).map(row => row.w);
+    // 답이 '-다'로 끝나면 보기도 '-다' 낱말로, 아니면 이름 낱말로 맞춘다. 꼴만 보고 고르지 못하게.
+    const verbish = (name) => /다$/.test(name);
+    const free = shuffle(pool.filter(row => !related.has(row.w)));
+    let same = free.filter(row => verbish(row.w) === verbish(answer));
+    if (same.length < 3) {
+      // 단원에 같은 꼴이 모자라면 같은 과목의 다른 단원에서 채운다.
+      const wide = shuffle(books[term][subject].units.flatMap(row => row.words))
+        .filter(row => !related.has(row.w) && verbish(row.w) === verbish(answer) && !same.includes(row));
+      same = same.concat(wide);
+    }
+    const others = (same.length >= 3 ? same : free).slice(0, 3).map(row => row.w);
     if (others.length < 3) return null;
     return { kind: 'rel', key, word, answer, choices: shuffle([answer, ...others]) };
   }
@@ -418,7 +428,7 @@
       }
       if (item.kind === 'rel') {
         return item.choices.map(name => {
-          const other = pool.find(row => row.w === name);
+          const other = books[term][subject].units.flatMap(row => row.words).find(row => row.w === name);
           return { label: name, right: name === item.answer, wrong: other ? element('p', `${other.w}: ${other.mean}`, 'wrong-note') : null };
         });
       }
