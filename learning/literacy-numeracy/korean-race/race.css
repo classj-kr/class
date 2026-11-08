@@ -1,3 +1,5 @@
+/* 영어 낱말: 무난하고 굵은 Andika(아이들 글 읽기용 글꼴, OFL). 한글은 뒤 글꼴로 넘어간다. */
+@font-face { font-family: "Andika Learning"; src: url("/assets/fonts/andika/Andika-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 /* 문해력 순위전: 한지 위에 글자 블록을 쌓는 느낌 */
 @font-face {
   font-family: KleeRaceHanja;
@@ -206,7 +208,7 @@ body.hurry #timeLeft { color: var(--red); }
 .q-ask { margin: 0; font-weight: 700; color: var(--ink-soft); }
 .q-text { margin: 0; font-size: clamp(20px, 3.4vw, 28px); font-weight: 800; line-height: 1.55; word-break: keep-all; }
 .q-text.long { font-size: clamp(17px, 2.6vw, 22px); }
-.q-text.word { font-size: clamp(38px, 9vw, 64px); text-align: center; letter-spacing: 0.02em; font-family: "Georgia", "Times New Roman", serif; }
+.q-text.word { font-size: clamp(38px, 9vw, 64px); text-align: center; letter-spacing: 0.01em; font-family: "Andika Learning", "Segoe UI", Roboto, sans-serif; font-weight: 700; }
 .blank { display: inline-block; width: 3.2em; height: 1.1em; margin: 0 0.2em; border-bottom: 4px solid var(--red); vertical-align: -0.1em; background: rgba(216, 69, 47, 0.08); border-radius: 6px 6px 0 0; }
 .choices { display: grid; gap: 10px; grid-template-columns: 1fr; }
 .choices[data-count="2"] { grid-template-columns: 1fr 1fr; }
@@ -571,3 +573,6 @@ body .q-card[data-set="hanja"] #revealText { font-family: KleeRaceHanja, KleeHan
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* 맞힌 말 카드의 영어 낱말도 같은 글꼴로 */
+.words > * { font-family: "Andika Learning", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
