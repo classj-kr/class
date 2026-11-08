@@ -266,20 +266,19 @@
     const [x, y] = PLACE[name], w = wOf(label, 26), ex = cx > x ? cx - w / 2 : cx + w / 2;
     return at(n, 'pop', `<g class="${cls}"><path d="M${x} ${y} L${f(ex)} ${cy}" stroke="${colors[1]}" stroke-width="3"/>${dot(name)}<circle class="ring ring${n}" cx="${x}" cy="${y}" r="11" fill="none" stroke="${colors[1]}" stroke-width="3"/>${tile(cx, cy, label, { size: 26, h: 50, fill: colors[0], stroke: colors[1] })}</g>`, s);
   };
-  // 부추 한 단(잎 여섯 가닥을 띠로 묶음)
-  const chive = (x, y) => [-18, -11, -4, 4, 11, 18].map((d, i) => `<path d="M${x + d * 0.35} ${y + 34} Q${x + d * 0.6} ${y} ${x + d * 1.25} ${y - 36 + (i % 2) * 6}" stroke="${C.green}" stroke-width="5" fill="none" stroke-linecap="round"/>`).join('')
-    + `<rect x="${x - 10}" y="${y + 12}" width="20" height="9" rx="3" fill="${C.orange}"/>`;
 
   // ── 3단원: 표준어 ──────────────────────────────
+  // 예는 교과서 3단원 첫머리(지역마다 다른 인사말 지도)에서 가져왔다: 경상 '어서 오이소', 제주 '혼저 옵서예'.
+  const HELLO = '어서 오세요';
   (function () {
     const id = 'k3-pyojun';
     let css = base(id);
     let body = koreaMap();
-    body += `<g class="dim dim3">${callout('대구', 530, 205, '정구지', ROLE.o, 1) + callout('제주', 110, 318, '세우리', ROLE.o, 1, 0.5)}</g>`;
-    body += at(2, 'drop', g('pulse pulse4', tile(92, 70, '부추', { size: 32, h: 60, fill: C.mint, stroke: C.green, w: 120 })) + chive(92, 150));
-    const small = [['서울', 0], ['강릉', 0.25], ['광주', 0.5], ['대구', 0.75], ['제주', 1]];
-    body += small.map(([n, s]) => { const [x, y] = PLACE[n]; return at(3, 'pop', dot(n) + tile(x, y - 26, '부추', { size: 18, h: 30, rx: 15, fill: 'white', stroke: C.green, sw: 2.5 }), s); }).join('');
-    body += at(4, 'pop', tag(92, 214, '표준어', ROLE.p, 22), 0.4);
+    body += `<g class="dim dim3">${callout('대구', 525, 205, '어서 오이소', ROLE.o, 1) + callout('제주', 112, 318, '혼저 옵서예', ROLE.o, 1, 0.5)}</g>`;
+    body += at(2, 'drop', g('pulse pulse4', tile(112, 70, HELLO, { size: 28, h: 58, fill: C.mint, stroke: C.green })));
+    const small = [['서울', 0], ['대구', 0.3], ['광주', 0.6], ['제주', 0.9]];
+    body += small.map(([n, s]) => { const [x, y] = PLACE[n]; return at(3, 'pop', dot(n) + tile(x, y - 26, HELLO, { size: 16, h: 30, rx: 15, fill: 'white', stroke: C.green, sw: 2.5 }), s); }).join('');
+    body += at(4, 'pop', tag(112, 128, '표준어', ROLE.p, 22), 0.4);
     put('5-2/국어/3/표준어', svg(id, body, css));
   })();
 
@@ -287,12 +286,12 @@
   (function () {
     const id = 'k3-bangeon';
     let css = base(id);
-    // 마지막 칸에서 표준어 '부추'와 부추 그림을 함께 흐리게 해, 아래 '방언' 꼬리표가 세우리에 붙은 것으로 보이게 한다.
+    const gs = '어서 오이소', jj = '혼저 옵서예';
     let body = koreaMap();
-    body += `<g class="dim dim4">${at(1, 'fin', chive(100, 182))}${callout('서울', 100, 90, '부추', ROLE.p, 1, 0.3)}</g>`;
-    body += callout('대구', 530, 205, '정구지', ROLE.o, 2) + callout('제주', 110, 318, '세우리', ROLE.o, 3);
-    body += glowRect(530 - wOf('정구지', 26) / 2 - 6, 174, wOf('정구지', 26) + 12, 62, 4, C.orange, 0.1) + glowRect(110 - wOf('세우리', 26) / 2 - 6, 287, wOf('세우리', 26) + 12, 62, 4, C.orange, 0.1);
-    body += at(4, 'pop', tag(530, 258, '방언', ROLE.o, 22), 0.3) + at(4, 'pop', tag(110, 266, '방언', ROLE.o, 22), 0.6);
+    body += `<g class="dim dim4">${callout('서울', 112, 90, HELLO, ROLE.p, 1, 0.3)}</g>`;
+    body += callout('대구', 525, 205, gs, ROLE.o, 2) + callout('제주', 112, 318, jj, ROLE.o, 3);
+    body += glowRect(525 - wOf(gs, 26) / 2 - 6, 174, wOf(gs, 26) + 12, 62, 4, C.orange, 0.1) + glowRect(112 - wOf(jj, 26) / 2 - 6, 287, wOf(jj, 26) + 12, 62, 4, C.orange, 0.1);
+    body += at(4, 'pop', tag(525, 258, '방언', ROLE.o, 22), 0.3) + at(4, 'pop', tag(112, 266, '방언', ROLE.o, 22), 0.6);
     put('5-2/국어/3/방언', svg(id, body, css));
   })();
 
