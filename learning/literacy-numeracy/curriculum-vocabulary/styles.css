@@ -189,15 +189,15 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 /* 유의어·반의어·상위어·하위어: 이 단원 뜻 바로 아래 */
 .relations { display: grid; gap: 8px; margin: 12px 0 0 2.2em; padding: 10px 14px; border-radius: 12px; background: #f6f8f1; }
 .rel { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
-.rel-kind { display: flex; align-items: baseline; gap: 6px; margin: 0; min-width: 4.2em; font-family: var(--gothic) !important; }
+.rel-kind { display: flex; align-items: baseline; gap: 6px; margin: 0; min-width: 5.4em; font-family: var(--gothic) !important; }
 .rel-kind b { padding: 1px 9px; border-radius: 7px; font-size: .88rem; font-weight: 800; color: white; background: #4f6f8f; }
 .rel-ant .rel-kind b { background: #a64734; }
-.rel-up .rel-kind b, .rel-down .rel-kind b { background: #6b5b95; }
+.rel-related .rel-kind b { background: #6b5b95; }
 .rel-kind span { font-size: .86rem; font-weight: 700; color: var(--muted); }
 .rel-words { display: flex; flex-wrap: wrap; gap: 6px; }
 .rel-word { display: inline-flex; align-items: center; min-height: 36px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 18px; background: white; font-weight: 800; font-size: 1.02rem; }
 button.rel-word.linked { color: var(--green); border-color: #a9cbbd; }
-.rel-note { flex-basis: 100%; margin: 0 0 0 calc(4.2em + 10px); font-size: .95rem; line-height: 1.6; color: var(--muted); font-family: var(--class-exam-font, inherit); word-break: keep-all; }
+.rel-note { flex-basis: 100%; margin: 0 0 0 calc(5.4em + 10px); font-size: .95rem; line-height: 1.6; color: var(--muted); font-family: var(--class-exam-font, inherit); word-break: keep-all; }
 
 /* 연습: '이 문장에서 뜻은?'·비슷한 말·반대말 */
 .prompt.sense mark { background: var(--mark); color: var(--ink); padding: 0 .15em; border-radius: 4px; font-weight: 800; }
