@@ -144,7 +144,7 @@
   // 정삼각형: 막대를 두 번 돌려 세 변이 모두 같다 → 이등변삼각형 무리 안의 정삼각형 무리로 들어감
   (function () {
     const id = 't42-m2-jeong', s = 210;
-    const B = [50, 310], Cc = [260, 310], A = [155, 310 - s * Math.sqrt(3) / 2];
+    const B = [215, 318], Cc = [425, 318], A = [320, 318 - s * Math.sqrt(3) / 2];
     const G = [(A[0] + B[0] + Cc[0]) / 3, (A[1] + B[1] + Cc[1]) / 3], k = .45, T = [462, 252];
     const tri = `<polygon points="${P([A, B, Cc])}" fill="${C.mint}" stroke="${C.ink}" stroke-width="4" stroke-linejoin="round"/>`
       + `<g class="s1" ${delay(.1)}>${seg(B, Cc, C.orange, 6)}</g>`
@@ -154,26 +154,27 @@
       + `<g class="b2"><g class="h3"><g class="bar2">${seg(Cc, A, C.orange, 14, 'stroke-opacity=".45"')}</g></g></g>`
       + `<g class="p2" ${delay(1.6)}>${tick(A, B, C.orange, 1, 12)}${tick(B, Cc, C.orange, 1, 12)}${tick(Cc, A, C.orange, 1, 12)}</g>`;
     const ex = (pts, d) => `<g class="p3" ${delay(d)}><polygon points="${P(pts)}" fill="${C.peach}" stroke="${C.ink}" stroke-width="2.5" stroke-linejoin="round"/>${tick(pts[0], pts[1], C.orange, 1, 7)}${tick(pts[0], pts[2], C.orange, 1, 7)}</g>`;
-    const sets = `<g class="s3" ${delay(.1)}><rect x="300" y="36" width="326" height="304" rx="22" fill="white" stroke="${C.orange}" stroke-width="3"/>${text(463, 72, '이등변삼각형', { size: 22, color: C.orange })}</g>`
-      + ex([[340, 90], [318, 148], [362, 148]], .4) + ex([[588, 110], [558, 150], [618, 150]], .6)
-      + `<g class="s3" ${delay(.8)}><ellipse cx="462" cy="240" rx="128" ry="86" fill="${C.mint}" fill-opacity=".5" stroke="${C.green}" stroke-width="3"/>${text(462, 184, '정삼각형', { size: 22, color: C.green })}</g>`;
+    const sets = `<g class="s3" ${delay(.9)}><rect x="300" y="36" width="326" height="304" rx="22" fill="white" stroke="${C.orange}" stroke-width="3"/>${text(463, 72, '이등변삼각형', { size: 22, color: C.orange })}</g>`
+      + ex([[340, 90], [318, 148], [362, 148]], 1.2) + ex([[588, 110], [558, 150], [618, 150]], 1.4)
+      + `<g class="s3" ${delay(1)}><ellipse cx="462" cy="240" rx="128" ry="86" fill="${C.mint}" fill-opacity=".5" stroke="${C.green}" stroke-width="3"/>${text(462, 184, '정삼각형', { size: 22, color: C.green })}</g>`;
     const body = sets + `<g class="mv">${tri}</g>`;
     put('4-2/수학/2/정삼각형', svg(id, body, motion(id) + `
       .sc-${id} :is(.bar1,.bar2) { transform-box: view-box; transition: transform 1.1s ease-in-out .5s; }
       .sc-${id} .bar1 { transform-origin: ${Cc[0]}px ${Cc[1]}px; }
       .sc-${id} .bar2 { transform-origin: ${f(A[0])}px ${f(A[1])}px; }
       .on1 .sc-${id} .bar1, .on2 .sc-${id} .bar2 { transform: rotate(60deg); }
-      .sc-${id} .mv { transform-box: view-box; transform-origin: 0 0; transition: transform 1.2s ease-in-out .9s; }
+      .sc-${id} .mv { transform-box: view-box; transform-origin: 0 0; transition: transform 1.1s ease-in-out .1s; }
       .on3 .sc-${id} .mv { transform: translate(${f(T[0] - G[0] * k)}px, ${f(T[1] - G[1] * k)}px) scale(${k}); }`));
   })();
 
   // 예각·둔각: 한 변이 0°에서 90°까지 열려 직각(빨강) → 직각보다 덜/더 벌어짐 → 그 범위 안에서 열렸다 닫혔다
-  function angleFig(id, key, O, R, a2, lo, hi, color, name, namePos, ninetyX, more = '') {
+  // pie: 부채꼴 색과 진하기(글자 색과 따로). 짙은 C.green 을 반투명으로 깔면 회녹색으로 흐려지므로 둔각은 밝은 초록을 진하게 깐다.
+  function angleFig(id, key, O, R, a2, lo, hi, color, name, namePos, ninetyX, more = '', pie = { color, op: 0.4 }) {
     const r = 55, len = (a) => f(r * rad(a));
     const tip = (a, d) => [O[0] + d * Math.cos(rad(a)), O[1] - d * Math.sin(rad(a))];
     const v = tip(a2 / 2, 150);
     const body = more
-      + `<g transform="translate(${O[0]} ${O[1]}) scale(1 -1)"><circle class="pie" r="${r}" fill="none" stroke-width="${2 * r}" stroke-opacity=".32"/></g>`
+      + `<g transform="translate(${O[0]} ${O[1]}) scale(1 -1)"><circle class="pie" r="${r}" fill="none" stroke-width="${2 * r}" stroke-opacity="${pie.op}"/></g>`
       + `<g class="s1" ${delay(1.5)}><path d="M${O[0]} ${O[1]} V${O[1] - R}" stroke="${C.red}" stroke-width="3" stroke-dasharray="10 8"/>`
       + `<path d="M${O[0] + 26} ${O[1]} V${O[1] - 26} H${O[0]}" fill="none" stroke="${C.red}" stroke-width="3"/>${text(ninetyX, O[1] - R + 30, '90°', { size: 22, color: C.red })}</g>`
       + `<path d="M${O[0]} ${O[1]} H${O[0] + R}" stroke="${C.ink}" stroke-width="5" stroke-linecap="round"/>`
@@ -193,14 +194,14 @@
       @keyframes ${id}-r1 { from { transform: rotate(0deg); } to { transform: rotate(-90deg); } }
       @keyframes ${id}-p1 { from { stroke-dasharray: 0 400; } to { stroke-dasharray: ${len(90)} 400; } }
       @keyframes ${id}-r2 { from { transform: rotate(-90deg); } to { transform: rotate(${-a2}deg); } }
-      @keyframes ${id}-p2 { from { stroke-dasharray: ${len(90)} 400; stroke: ${C.red}; } 30% { stroke: ${color}; } to { stroke-dasharray: ${len(a2)} 400; stroke: ${color}; } }
+      @keyframes ${id}-p2 { from { stroke-dasharray: ${len(90)} 400; stroke: ${C.red}; } 30% { stroke: ${pie.color}; } to { stroke-dasharray: ${len(a2)} 400; stroke: ${pie.color}; } }
       @keyframes ${id}-r3 { 0%, 100% { transform: rotate(${-a2}deg); } 25% { transform: rotate(${-lo}deg); } 75% { transform: rotate(${-hi}deg); } }
-      @keyframes ${id}-p3 { 0%, 100% { stroke-dasharray: ${len(a2)} 400; stroke: ${color}; } 25% { stroke-dasharray: ${len(lo)} 400; stroke: ${color}; } 75% { stroke-dasharray: ${len(hi)} 400; stroke: ${color}; } }`;
+      @keyframes ${id}-p3 { 0%, 100% { stroke-dasharray: ${len(a2)} 400; stroke: ${pie.color}; } 25% { stroke-dasharray: ${len(lo)} 400; stroke: ${pie.color}; } 75% { stroke-dasharray: ${len(hi)} 400; stroke: ${pie.color}; } }`;
     put(`4-2/수학/2/${key}`, svg(id, body, motion(id) + css));
   }
   angleFig('t42-m2-yegak', '예각', [150, 300], 260, 50, 12, 80, C.blue, '예각', [480, 130], 116);
   angleFig('t42-m2-dungak', '둔각', [320, 290], 250, 130, 100, 170, C.green, '둔각', [520, 120], 352,
-    `<g class="s3" ${delay(.2)}><path d="M320 290 H56" stroke="${C.muted}" stroke-width="3" stroke-dasharray="4 8"/>${text(86, 326, '180°', { size: 22, color: C.muted })}</g>`);
+    `<g class="s3" ${delay(.2)}><path d="M320 290 H56" stroke="${C.muted}" stroke-width="3" stroke-dasharray="4 8"/>${text(86, 326, '180°', { size: 22, color: C.muted })}</g>`, { color: '#2e9b57', op: 0.55 });
 
   // 예각·직각·둔각삼각형: 밑변을 두고 위 꼭짓점을 옆으로 끌면 각이 바뀌며 이름이 바뀐다
   // 위 꼭짓점은 높이가 같은 가로줄 위에서만 움직인다. 변은 '돌리기+늘이기', 부채꼴은 stroke-dasharray 로,
@@ -220,7 +221,7 @@
     return r;
   }
   function triFig(id, key, states, extra = { body: '', css: '' }) {
-    const g0 = triGeo(AX[states[0].at]), WR = 18, len = (a) => f(WR * rad(a));
+    const g0 = triGeo(AX[states[0].at]), WR = 34, len = (a) => f(WR / 2 * rad(a));
     const ease = (t) => t * t * (3 - 2 * t);
     let css = `
       .sc-${id} .sB { transform-box: view-box; transform-origin: ${TB[0]}px ${TB[1]}px; transform: rotate(${f(g0.thB)}deg) scaleX(1); }
@@ -239,8 +240,8 @@
     states.forEach((st, s) => {
       const g = triGeo(AX[st.at]), [ra, rb, rc] = rounded(g);
       const vals = [[g.A, TB, TC, ra, g.a], [TB, TC, g.A, rb, g.b], [TC, TB, g.A, rc, g.c]].map(([V, P1, P2, v, a], j) => {
-        const d = Math.min(118, Math.max(54, 24 / Math.sin(rad(a / 2)) + 12)), p = inside(V, P1, P2, d);
-        return `<g class="v${j}">${text(f(p[0]), f(p[1] + 7), `${v}°`, { size: 20, color: KC[kind(a)] })}</g>`;
+        const d = Math.min(118, Math.max(60, 24 / Math.sin(rad(a / 2)) + 14)), p = inside(V, P1, P2, d);
+        return `<g class="v${j}">${text(f(p[0]), f(p[1] + 7), `${v}°`, { size: 22, color: KC[kind(a)] })}</g>`;
       }).join('');
       const sq = kind(g.c) === 'right' ? square(TC, TB, g.A, 22, C.red) : '';
       labels += `<g class="st${s}">${vals}${sq}${text(108, 58, st.name, { size: 30, color: KC[kind(Math.max(g.a, g.b, g.c))] })}</g>`;
@@ -267,7 +268,7 @@
       hints += `<g class="hint hint${s}"><path d="M${f(a0)} ${f(y)} H${f(a1)} M${f(a1 + h * 11)} ${f(y - 8)} L${f(a1)} ${f(y)} L${f(a1 + h * 11)} ${f(y + 8)}" fill="none" stroke="${C.orange}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>`;
       css += `\n      .on${st.beat} .sc-${id} .hint${s} { animation: ${id}-hint 1.6s ease-in-out .2s both; }`;
     });
-    const circ = (cls, tr) => `<g transform="${tr}"><circle class="${cls}" r="${WR / 2}" fill="none" stroke-width="${WR}" stroke-opacity=".45"/></g>`;
+    const circ = (cls, tr) => `<g transform="${tr}"><circle class="${cls}" r="${WR / 2}" fill="none" stroke-width="${WR}" stroke-opacity=".5"/></g>`;
     const body = `<path d="M${TB[0] - 40} ${TB[1]} H${TC[0] + 230}" stroke="${C.line}" stroke-width="2" stroke-dasharray="4 8"/>`
       + `<path d="M${TB[0] - 40} ${f(TY)} H${TC[0] + 250}" stroke="${C.line}" stroke-width="2" stroke-dasharray="4 8"/>`
       + circ('wB', `translate(${TB[0]} ${TB[1]}) scale(1 -1)`) + circ('wC', `translate(${TC[0]} ${TC[1]}) rotate(180)`)

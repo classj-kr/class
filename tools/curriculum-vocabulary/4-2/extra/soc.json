@@ -654,9 +654,9 @@
       "imgKo": "하린이와 도윤이를 비롯한 모둠 네 명이 화이트보드 앞에 서 있다. 보드에는 다회용 컵, 분리수거함, 포스터, 수거 로봇이 그려진 알록달록한 붙임쪽지가 가득하고, 하린이가 새 쪽지를 붙인다."
     },
     "탐색": {
-      "en": "explore",
+      "en": "search",
       "explain": [
-        "쉬운 뜻: 영어로 explore입니다. 탐험가처럼 이곳저곳을 살피며 필요한 것을 찾아보는 것입니다.",
+        "쉬운 뜻: 영어로 search입니다. 이곳저곳을 살피며 필요한 것을 찾아보는 것입니다.",
         "인터넷 검색, 책 찾기, 사람에게 묻기가 모두 탐색하는 방법입니다.",
         "생활 속 예: 도서관 책꽂이를 하나하나 살피며 공룡 책을 찾아봅니다."
       ],
@@ -719,20 +719,6 @@
       "img": "At the family dinner table, DOYUN holds up a crayon drawing of a picnic in a park with a kite and smiles hopefully. His parents and grandmother lean in to think about it, and his father starts to nod. No text.",
       "imgKo": "저녁 식탁에서 도윤이가 공원에서 연을 날리며 소풍하는 크레파스 그림을 들고 기대에 찬 얼굴로 웃고, 부모님과 할머니가 몸을 기울여 생각하다 아빠가 고개를 끄덕인다."
     },
-    "일회용품": {
-      "explain": [
-        "쉬운 뜻: 쓰기는 편하지만 한 번 쓰고 나면 바로 쓰레기가 되는 물건입니다.",
-        "낱말 나누기: 일회용(한 번 씀) + 품(물건)입니다.",
-        "생활 속 예: 배달 음식에 딸려 오는 나무젓가락과 플라스틱 숟가락이 일회용품입니다."
-      ],
-      "beats": [
-        "공원 소풍이 끝나자 종이컵, 플라스틱 숟가락, 비닐봉지가 쌓였습니다.",
-        "모두 한 번 쓰고 버린 것들이라 쓰레기통이 넘칩니다.",
-        "한 번 쓰고 버리도록 만든 물건이 일회용품입니다."
-      ],
-      "img": "After a picnic in a park, an overflowing trash bin is piled with paper cups, plastic spoons, straws, takeout containers and plastic bags. HARIN and DOYUN stand looking at it in surprise, holding their own reusable water bottles. No text.",
-      "imgKo": "공원 소풍 뒤 쓰레기통이 종이컵, 플라스틱 숟가락, 빨대, 배달 용기, 비닐봉지로 넘치고, 하린이와 도윤이가 자기 물병을 든 채 놀라서 바라본다."
-    },
     "분리배출": {
       "explain": [
         "쉬운 뜻: 쓰레기를 한 통에 몽땅 넣지 않고 종류별로 나누어 내놓는 것입니다.",
@@ -746,20 +732,6 @@
       ],
       "img": "At an apartment recycling station, separate colored bins stand in a row, each marked only with a picture: paper, plastic bottle, can, glass bottle and plastic film. DOYUN peels the label off a plastic bottle before putting it in, while his father puts flattened boxes into the paper bin. No text.",
       "imgKo": "아파트 분리수거장에 종이·페트병·캔·유리병·비닐 그림만 붙은 통들이 나란히 있고, 도윤이가 페트병 비닐을 떼어 넣는 옆에서 아빠가 납작하게 접은 상자를 종이 통에 넣는다."
-    },
-    "재활용": {
-      "en": "recycling",
-      "explain": [
-        "쉬운 뜻: 영어로 recycling입니다. 다 쓴 물건이 다시 쓸모 있는 물건으로 태어나는 것입니다.",
-        "생활 속 예: 빈 깡통을 모으면 녹여서 새 깡통으로 다시 만듭니다."
-      ],
-      "beats": [
-        "다 마신 페트병을 깨끗이 씻어 모읍니다.",
-        "공장에서 페트병을 잘게 부수고 녹여 실을 뽑아 옷을 짓습니다.",
-        "쓰고 난 물건을 다시 쓰거나 다른 물건으로 만들어 쓰는 것이 재활용입니다."
-      ],
-      "img": "A three-step picture from left to right: DOYUN drops rinsed plastic bottles into a collection bin; in a factory the bottles are shredded into small flakes and spun into thread; finally DOYUN wears a new sports jacket made from that thread, smiling. Curved arrows link the steps. No text.",
-      "imgKo": "왼쪽부터 도윤이가 씻은 페트병을 모으는 통에 넣고, 공장에서 페트병이 잘게 부서져 실로 뽑히며, 마지막에 그 실로 만든 새 운동복을 도윤이가 입고 웃는다. 굽은 화살표가 잇는다."
     },
     "과대 포장": {
       "explain": [
@@ -788,20 +760,6 @@
       ],
       "img": "Left: at night, a shadowy figure sneaks a trash bag beside an empty lot fence, next to a sign that shows only a crossed-out trash bag picture. Right: the next morning, a pile of trash bags and a broken chair sit there, and residents walking by hold their noses. No text.",
       "imgKo": "왼쪽은 밤에 그림자 같은 사람이 쓰레기봉투 금지 그림 표지판 옆 공터 울타리에 몰래 봉투를 두는 모습, 오른쪽은 다음 날 아침 봉투와 부서진 의자가 쌓여 지나가는 주민들이 코를 막는 모습."
-    },
-    "소음": {
-      "en": "noise",
-      "explain": [
-        "쉬운 뜻: 영어로 noise입니다. 귀를 막고 싶을 만큼 시끄러워 괴로운 소리입니다.",
-        "생활 속 예: 위층에서 쿵쿵 뛰는 발소리가 밤늦게까지 들립니다."
-      ],
-      "beats": [
-        "아파트 옆 공사장에서 아침부터 쿵쾅 소리가 납니다.",
-        "아기는 깨서 울고, 하린이는 귀를 막고 숙제를 합니다.",
-        "듣기 싫게 시끄러운 소리가 소음입니다."
-      ],
-      "img": "Morning in an apartment beside a construction site: a pile driver and a drill pound loudly outside the window, shown by jagged sound-wave lines. Inside, a baby wakes and cries in a crib, and HARIN covers her ears at her desk while trying to do homework. No text.",
-      "imgKo": "아파트 창밖 공사장에서 기계가 쿵쾅거리며 울퉁불퉁한 소리 물결이 퍼지고, 집 안에서는 아기가 깨서 울고 하린이가 책상에서 귀를 막고 숙제를 한다."
     }
   },
   "2-2": {
@@ -881,7 +839,7 @@
       "explain": [
         "쉬운 뜻: 영어로 cultural heritage입니다. 조상이 물려준 보물로, 우리도 잘 지켜 물려주어야 합니다.",
         "낱말 나누기: 문화(사람들이 이루어 온 생활 모습) + 유산(물려받은 것)입니다.",
-        "판소리나 김장처럼 손에 잡히지 않는 것도 문화유산입니다."
+        "생활 속 예: 서울 한가운데 있는 경복궁과 숭례문도 조상이 남긴 문화유산입니다."
       ],
       "beats": [
         "하린이네 가족이 옛 성곽을 따라 걷습니다.",
@@ -904,20 +862,6 @@
       ],
       "img": "A class visits a memorial museum in their town. Glass cases display old books, brushes and a wooden invention; a large bronze statue of a historical scholar in traditional robes is seen only from behind, its face not shown. DOYUN and his classmates look up respectfully while the TEACHER explains. No text.",
       "imgKo": "도윤이네 반이 고장 기념관에 갔다. 유리 상자 안에 옛 책, 붓, 나무 발명품이 있고 도포 입은 학자의 큰 동상은 뒷모습만 보이며, 아이들이 올려다보고 선생님이 설명한다."
-    },
-    "자랑거리": {
-      "explain": [
-        "쉬운 뜻: '우리 동네에는 이런 게 있어!' 하고 남에게 뽐내고 싶은 것입니다.",
-        "낱말 나누기: 자랑 + 거리(무엇을 할 만한 것), 자랑할 만한 것입니다.",
-        "생활 속 예: 오래된 벽화 골목이나 시장의 맛있는 떡볶이도 동네 자랑거리가 됩니다."
-      ],
-      "beats": [
-        "다른 고장에서 사촌이 놀러 왔습니다.",
-        "하린이는 동네 냇가를 따라 핀 벚꽃 길로 사촌을 데려가 신나게 소개합니다.",
-        "남에게 내세워 보일 만큼 훌륭하거나 이름난 것이 자랑거리입니다."
-      ],
-      "img": "HARIN proudly leads her visiting cousin by the hand along a stream lined with blooming cherry trees in her town, spreading her arms to show off the view. The cousin gazes up in awe at the pink petals. No text.",
-      "imgKo": "하린이가 놀러 온 사촌의 손을 잡고 동네 냇가의 벚꽃 길을 걸으며 두 팔을 벌려 자랑하고, 사촌은 분홍 꽃잎을 올려다보며 감탄한다."
     },
     "문화제": {
       "explain": [

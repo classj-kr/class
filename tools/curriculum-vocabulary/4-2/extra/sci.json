@@ -1,0 +1,579 @@
+{
+ "1": {
+  "천체": {
+   "explain": [
+    "쉬운 뜻: 우주에 떠 있는 것들을 한데 묶어 부르는 이름입니다.",
+    "생활 속 예: 낮의 해도, 밤의 달과 반짝이는 별도 모두 천체입니다.",
+    "구름이나 비행기는 하늘에 떠 있어도 천체가 아닙니다."
+   ]
+  },
+  "관측": {
+   "explain": [
+    "쉬운 뜻: 눈으로만 보지 않고 기구의 힘을 빌려 자세히 보고 재는 것입니다.",
+    "생활 속 예: 기상청은 날마다 기온과 비의 양을 관측해 일기 예보를 만듭니다.",
+    "해는 맨눈으로 보면 눈을 다쳐서 특별한 망원경으로 관측합니다."
+   ],
+   "beats": ["깜깜한 밤, 천문대의 둥근 지붕이 열리고 커다란 망원경이 하늘을 향합니다.", "도윤이가 망원경에 눈을 대고 토성의 고리를 살펴봅니다.", "이렇게 기구를 써서 하늘을 살펴보고 재는 일이 관측입니다."],
+   "img": "Night inside a small observatory with its dome roof slid open to a starry sky. A large white telescope points up through the opening, and DOYUN (boy, round glasses, navy hoodie) stands on a small step with one eye at the eyepiece while TEACHER (woman in her 30s, beige jacket) points toward the sky. A small round inset in the upper corner shows what he sees: the planet Saturn with its rings.",
+   "imgKo": "천문대 둥근 지붕이 열려 있고, 도윤이가 커다란 망원경에 눈을 대고 선생님이 하늘을 가리킨다. 구석의 작은 동그라미 그림에 고리를 두른 토성이 보인다."
+  },
+  "충돌 구덩이": {
+   "en": "crater",
+   "explain": [
+    "쉬운 뜻: 영어로 crater, 모래밭에 돌을 던지면 움푹 패는 자국과 닮았습니다.",
+    "낱말 나누기: 충돌(세게 부딪침) + 구덩이(움푹 파인 곳)입니다.",
+    "달에는 바람과 비가 없어서 한번 생긴 구덩이가 아주 오래 남습니다."
+   ]
+  },
+  "달의 바다": {
+   "explain": [
+    "쉬운 뜻: 멀리서 보면 바다처럼 거무스름해서 붙은 이름입니다. 물은 없습니다.",
+    "그곳의 돌이 다른 곳보다 검은빛이라서 어둡게 보입니다.",
+    "생활 속 예: 쌍안경으로 보름달을 보면 밝은 곳과 어두운 곳이 또렷이 나뉩니다."
+   ],
+   "beats": ["추석 밤, 하린이가 할머니와 마루에 앉아 둥근 보름달을 올려다봅니다.", "달의 밝은 곳 사이사이에 거뭇거뭇한 무늬가 보입니다.", "물은 없지만 어둡게 보여서 바다라고 부르는 이 넓은 곳이 달의 바다입니다."],
+   "img": "A Chuseok night in the yard of a traditional Korean house. HARIN (girl, yellow headband, mint cardigan) and her grandmother sit side by side on the wooden porch, looking up at a huge bright full moon. The moon is drawn realistically, with its dark grey patches clearly visible against the lighter areas, the patches loosely suggesting a rabbit shape.",
+   "imgKo": "추석 밤 한옥 마루에 하린이와 할머니가 나란히 앉아 커다란 보름달을 올려다본다. 달에는 밝은 곳 사이로 어두운 회색 무늬가 또렷하다."
+  },
+  "초승달": {
+   "explain": [
+    "쉬운 뜻: 안 보이던 달이 다시 처음 얼굴을 내밀 때의 가느다란 달입니다.",
+    "낱말 나누기: 초승(음력으로 한 달의 처음 며칠) + 달입니다.",
+    "해를 따라 저녁에 금방 져서 밤늦게는 볼 수 없습니다."
+   ]
+  },
+  "상현달": {
+   "explain": [
+    "쉬운 뜻: 동그란 달을 세로로 반 잘라 오른쪽만 남긴 것 같은 반달입니다.",
+    "상현달이 뜨고 일주일쯤 지나면 둥근 보름달이 됩니다.",
+    "생활 속 예: 오후에 동쪽 하늘에서 하얀 반달로 보이기도 합니다."
+   ]
+  },
+  "하현달": {
+   "explain": [
+    "쉬운 뜻: 동그란 달을 세로로 반 잘라 왼쪽만 남긴 것 같은 반달입니다.",
+    "보름달이 지나고 일주일쯤 뒤에 볼 수 있습니다.",
+    "생활 속 예: 등굣길 아침 하늘에 하얀 반달로 남아 있기도 합니다."
+   ]
+  },
+  "그믐달": {
+   "explain": [
+    "쉬운 뜻: 한 달 동안 모양이 바뀐 달이 사라지기 직전의 가느다란 달입니다.",
+    "낱말 나누기: 그믐(음력으로 한 달의 마지막 며칠) + 달입니다.",
+    "해가 뜨기 바로 전에 잠깐 보여서 만나기 어렵습니다."
+   ]
+  },
+  "주기": {
+   "en": "cycle",
+   "explain": [
+    "쉬운 뜻: 영어로 cycle, 한 바퀴 돌아 처음으로 되돌아오기까지 걸리는 시간입니다.",
+    "생활 속 예: 신호등은 빨간불과 초록불이 정해진 주기로 바뀝니다."
+   ]
+  },
+  "음력": {
+   "en": "lunar calendar",
+   "explain": [
+    "쉬운 뜻: 영어로 lunar calendar, '달의 달력'이라는 말입니다.",
+    "생활 속 예: 설날, 정월 대보름, 추석은 음력으로 날짜를 정합니다.",
+    "달 모양만 보아도 음력으로 며칠쯤인지 어림할 수 있습니다."
+   ]
+  },
+  "태양계": {
+   "en": "solar system",
+   "explain": [
+    "쉬운 뜻: 영어로 solar system, 해를 가운데 두고 모인 커다란 한 동네입니다.",
+    "낱말 나누기: 태양(해) + 계(하나로 이어진 무리), 해의 무리입니다.",
+    "생활 속 예: 우리가 사는 지구도, 지구를 도는 달도 태양계에 속합니다."
+   ]
+  },
+  "행성": {
+   "en": "planet",
+   "explain": [
+    "쉬운 뜻: 영어로 planet, 해를 가운데 두고 제 길을 따라 빙빙 도는 큰 천체입니다.",
+    "별 사이를 떠돌아다니는 것처럼 보여서 옛사람들이 '다니는 별'이라 불렀습니다.",
+    "생활 속 예: 저녁 서쪽 하늘에서 유난히 밝게 빛나는 금성도 행성입니다."
+   ]
+  },
+  "위성": {
+   "en": "satellite",
+   "explain": [
+    "쉬운 뜻: 영어로 satellite, 행성을 졸졸 따라다니며 둘레를 도는 천체입니다.",
+    "생활 속 예: 보름달이 환한 것도 햇빛이 달에 비쳐서입니다.",
+    "수성과 금성에는 위성이 하나도 없습니다."
+   ]
+  },
+  "별": {
+   "en": "star",
+   "explain": [
+    "쉬운 뜻: 영어로 star, 전구처럼 제 몸에서 빛을 내뿜는 천체입니다.",
+    "해보다 큰 별도 많지만, 아주 멀어서 작은 점으로 보입니다.",
+    "생활 속 예: 우리와 가장 가까운 별이 바로 해입니다."
+   ]
+  },
+  "별자리": {
+   "en": "constellation",
+   "explain": [
+    "쉬운 뜻: 영어로 constellation, 밤하늘의 별로 하는 점 잇기 그림입니다.",
+    "한 별자리 안의 별들도 실제로는 서로 아주 멀리 떨어져 있습니다.",
+    "생활 속 예: 사자자리, 백조자리처럼 동물 이름이 붙은 별자리가 많습니다."
+   ]
+  },
+  "북극성": {
+   "en": "North Star",
+   "explain": [
+    "쉬운 뜻: 영어로 North Star, '북쪽 별'이라는 말입니다. 밤새 거의 제자리에 있습니다.",
+    "다른 별들은 북극성을 가운데 두고 빙 돌아가는 것처럼 보입니다.",
+    "생활 속 예: 북극성은 가장 밝은 별이 아니어서 둘레 별자리로 찾습니다."
+   ]
+  },
+  "북두칠성": {
+   "en": "Big Dipper",
+   "explain": [
+    "쉬운 뜻: 영어로 Big Dipper, '큰 국자'라는 뜻입니다. 우리처럼 국자 모양으로 본 이름입니다.",
+    "낱말 나누기: 북두(북쪽 하늘의 국자) + 칠성(일곱 별)입니다.",
+    "생활 속 예: 봄날 저녁 북쪽 하늘 높이 떠서 찾기 쉽습니다."
+   ]
+  },
+  "탐사선": {
+   "explain": [
+    "쉬운 뜻: 사람이 가기 어려운 먼 우주에 대신 가는 기계 심부름꾼입니다.",
+    "낱말 나누기: 탐사(찾아가 살핌) + 선(배), 찾아가 살피는 배입니다.",
+    "화성에는 바퀴 달린 탐사선이 내려앉아 땅을 돌아다니며 살폈습니다."
+   ],
+   "beats": ["검은 우주에서 판 두 장을 날개처럼 펼친 기계가 달 위를 날고 있습니다.", "기계 아래로 크고 작은 구덩이가 가득한 달 표면이 펼쳐집니다.", "멀리 보이는 지구로 달의 사진을 보내는 이 기계가 탐사선입니다."],
+   "img": "Deep black space: a small boxy spacecraft with two outstretched solar panels and a dish antenna flies in orbit just above the grey, crater-covered surface of the moon. The dish antenna points toward a small blue Earth hanging in the distance. No flags, logos or lettering on the spacecraft.",
+   "imgKo": "검은 우주에서 태양 전지판 두 장을 편 작은 탐사선이 구덩이 가득한 달 표면 위를 돈다. 접시 안테나는 멀리 보이는 파란 지구를 향한다."
+  }
+ },
+ "2": {
+  "생태계": {
+   "en": "ecosystem",
+   "explain": [
+    "쉬운 뜻: 영어로 ecosystem, 생물들과 햇빛·물·흙이 서로 기대어 사는 한 동네입니다.",
+    "낱말 나누기: 생태(생물이 살아가는 모습) + 계(하나로 이어진 묶음)입니다.",
+    "생활 속 예: 어항 속 물고기, 물풀, 물, 돌도 작은 생태계를 이룹니다."
+   ],
+   "beats": ["숲속 개울에 햇빛이 비치고 맑은 물이 흐릅니다.", "물속에는 작은 물고기가 헤엄치고, 이끼 낀 바위 위의 개구리는 잠자리를 노립니다.", "생물과 햇빛·물·흙이 서로 영향을 주고받으며 어우러진 것이 생태계입니다."],
+   "img": "A small clear stream in a forest on a sunny day. Sunlight falls through the leaves onto the water, small fish swim among pebbles, a frog sits on a mossy rock eyeing a dragonfly, and reeds and wildflowers grow along the muddy bank under tall trees. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) crouch on the bank, watching quietly with a magnifying glass.",
+   "imgKo": "햇빛이 드는 숲속 개울에 작은 물고기가 헤엄치고, 이끼 낀 바위 위 개구리가 잠자리를 노린다. 물가 풀과 나무 사이에서 하린이와 도윤이가 돋보기로 지켜본다."
+  },
+  "생물 요소": {
+   "explain": [
+    "쉬운 뜻: 생태계에서 숨 쉬고 자라는, 살아 있는 식구들입니다.",
+    "낱말 나누기: 생물(살아 있는 것) + 요소(무엇을 이루는 조각)입니다.",
+    "버섯과 곰팡이는 식물도 동물도 아니지만 살아 있어서 여기에 듭니다."
+   ]
+  },
+  "비생물 요소": {
+   "explain": [
+    "쉬운 뜻: 살아 있지는 않지만 생물이 사는 무대가 되어 주는 것들입니다.",
+    "낱말 나누기: 비(아님) + 생물 요소, 생물이 아닌 요소입니다.",
+    "생활 속 예: 화분에 물을 주지 않으면 식물이 시듭니다. 물도 비생물 요소입니다."
+   ]
+  },
+  "생산자": {
+   "en": "producer",
+   "explain": [
+    "쉬운 뜻: 영어로 producer, '만드는 쪽'이라는 말입니다. 먹을거리를 직접 만드는 생물입니다.",
+    "생활 속 예: 상추, 벼, 소나무처럼 초록 잎을 가진 식물이 생산자입니다.",
+    "생산자가 만든 양분은 먹고 먹히며 다른 생물에게 건너갑니다."
+   ]
+  },
+  "소비자": {
+   "en": "consumer",
+   "explain": [
+    "쉬운 뜻: 영어로 consumer, '써 버리는 쪽'이라는 말입니다. 남이 만든 양분을 먹고 삽니다.",
+    "생활 속 예: 풀을 먹는 소도, 고기를 먹는 사자도, 둘 다 먹는 우리도 소비자입니다."
+   ],
+   "beats": ["햇볕 드는 풀밭에서 메뚜기가 풀잎을 갉아 먹습니다.", "옆 줄기의 사마귀가 그 메뚜기를 노리고, 뒤쪽에서는 소가 풀을 뜯습니다.", "이렇게 다른 생물을 먹어서 양분을 얻는 생물이 소비자입니다."],
+   "img": "A sunny meadow seen up close: a grasshopper chews on a blade of grass while a green praying mantis on a nearby stem leans toward it. In the background a brown cow grazes on the grass. HARIN (girl, yellow headband, mint cardigan) kneels at the edge of the scene, watching with a notebook of blank pages.",
+   "imgKo": "햇볕 드는 풀밭에서 메뚜기가 풀잎을 갉아 먹고, 옆 줄기의 사마귀가 메뚜기를 노린다. 뒤쪽에서 소가 풀을 뜯고, 하린이가 무릎을 꿇고 지켜본다."
+  },
+  "분해자": {
+   "explain": [
+    "쉬운 뜻: 죽은 생물과 똥을 잘게 부수어 흙으로 돌려보내는 자연의 청소부입니다.",
+    "낱말 나누기: 분해(잘게 나눔) + 자(그 일을 하는 것)입니다.",
+    "생활 속 예: 오래 둔 빵에 핀 푸른 곰팡이도 분해자입니다."
+   ],
+   "beats": ["가을 숲 바닥에 쓰러진 나무와 떨어진 나뭇잎이 쌓여 있습니다.", "썩어 가는 나무에 버섯이 돋고, 나뭇잎에는 하얀 곰팡이 실이 퍼졌습니다.", "죽은 생물을 썩게 하여 양분을 얻고 흙으로 돌려보내는 생물이 분해자입니다."],
+   "img": "A damp forest floor in autumn: a fallen, rotting log lies among brown leaves. Clusters of mushrooms grow out of the soft, crumbling wood, and fine white threads of mold spread over the decaying leaves beside it. DOYUN (boy, round glasses, navy hoodie) crouches nearby, pointing at the mushrooms with a stick, his face close to see.",
+   "imgKo": "가을 숲 바닥에 쓰러진 나무가 썩어 가고, 무른 나무에 버섯이 돋았다. 옆 나뭇잎에는 하얀 곰팡이 실이 퍼져 있고, 도윤이가 막대기로 버섯을 가리킨다."
+  },
+  "양분": {
+   "en": "nutrient",
+   "explain": [
+    "쉬운 뜻: 영어로 nutrient, 생물이 살고 자라는 힘을 내는 재료입니다.",
+    "생활 속 예: 과자 봉지 뒤의 표에 그 과자에 든 양분이 적혀 있습니다."
+   ]
+  },
+  "먹이사슬": {
+   "en": "food chain",
+   "explain": [
+    "쉬운 뜻: 영어로 food chain, chain은 '사슬'입니다. 고리를 한 줄로 이은 쇠사슬 모양입니다.",
+    "화살표는 먹히는 것에서 먹는 것 쪽으로 긋습니다(풀 → 토끼).",
+    "생활 속 예: 바다에서는 작은 새우를 고등어가, 고등어를 상어가 먹습니다."
+   ]
+  },
+  "먹이그물": {
+   "en": "food web",
+   "explain": [
+    "쉬운 뜻: 영어로 food web, web은 '거미줄'입니다. 먹이사슬 여러 개가 한데 엉킨 모습입니다.",
+    "생활 속 예: 개구리는 메뚜기도 거미도 먹고, 뱀에게도 매에게도 먹힙니다."
+   ]
+  },
+  "환경오염": {
+   "en": "pollution",
+   "explain": [
+    "쉬운 뜻: 영어로 pollution, 사람이 버린 것 때문에 땅과 물과 공기가 병드는 것입니다.",
+    "낱말 나누기: 환경(우리를 둘러싼 자연) + 오염(더럽게 물듦)입니다.",
+    "생활 속 예: 강가에 버린 낚싯줄에 새의 다리가 감기기도 합니다."
+   ],
+   "beats": ["강가 마을의 공장 굴뚝이 검은 연기를 내뿜어 하늘이 뿌옇습니다.", "공장 관에서 거품 낀 물이 강으로 흘러들고, 강둑에는 쓰레기가 쌓여 풀이 말랐습니다.", "사람의 활동으로 공기와 물과 흙이 더러워지는 것이 환경오염입니다."],
+   "img": "A wide view of a riverside town: a factory chimney pours dark smoke into a hazy grey sky, a pipe from the factory spills foamy brownish water into the river, and a pile of plastic bags and bottles lies on the bare riverbank where the grass has died. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) stand on a bridge in the foreground, looking at the scene with worried faces.",
+   "imgKo": "강가 마을 공장 굴뚝에서 검은 연기가 나오고, 공장 관에서 거품 낀 물이 강으로 흘러들며, 풀이 마른 강둑에 쓰레기가 쌓여 있다. 다리 위에서 하린이와 도윤이가 걱정스럽게 본다."
+  },
+  "대기오염": {
+   "en": "air pollution",
+   "explain": [
+    "쉬운 뜻: 영어로 air pollution, 우리가 들이마시는 공기가 탁하게 병드는 것입니다.",
+    "낱말 나누기: 대기(지구를 둘러싼 공기) + 오염(더럽게 물듦)입니다.",
+    "생활 속 예: 대기오염이 심한 날은 먼 산이 뿌옇게 흐려 보이지 않습니다."
+   ],
+   "beats": ["교실 창밖으로 보이는 도시가 누런 잿빛 공기에 덮여 있습니다.", "운동장은 텅 비었고, 마스크를 쓴 아이들이 창가에서 밖을 내다봅니다.", "자동차와 공장에서 나온 것들로 공기가 더러워지는 것이 대기오염입니다."],
+   "img": "View from inside a classroom window: outside, the school playground is empty and the city beyond is covered by a thick yellowish-grey haze, with distant mountains faded almost out of sight and a busy road and a factory chimney blurred in the haze. DOYUN (boy, round glasses, navy hoodie) and HARIN (girl, yellow headband, mint cardigan) stand at the window wearing face masks, looking out.",
+   "imgKo": "교실 창밖으로 텅 빈 운동장과 누런 잿빛 공기에 덮인 도시가 보이고, 먼 산은 거의 지워졌다. 마스크를 쓴 도윤이와 하린이가 창가에서 밖을 내다본다."
+  },
+  "수질오염": {
+   "en": "water pollution",
+   "explain": [
+    "쉬운 뜻: 영어로 water pollution, 강과 바다의 물이 더러워져 생물이 살기 힘든 것입니다.",
+    "낱말 나누기: 수질(물의 깨끗한 정도) + 오염(더럽게 물듦)입니다.",
+    "생활 속 예: 설거지 전에 기름을 휴지로 닦아 내면 수질오염을 줄입니다."
+   ],
+   "beats": ["마을 옆 개천으로 하수관에서 거품 섞인 회색 물이 흘러듭니다.", "물 위에 비닐과 페트병이 떠다니고, 물이 탁해서 바닥이 보이지 않습니다.", "강이나 바다의 물이 이렇게 더러워지는 것이 수질오염입니다."],
+   "img": "A small stream running past houses: a drain pipe in the concrete bank pours grey, foamy water into the stream. Plastic bags and bottles float on the cloudy water, which is so murky the bottom cannot be seen. DOYUN (boy, round glasses, navy hoodie), wearing rubber gloves, reaches for a floating bottle with a long grabber stick.",
+   "imgKo": "집 옆 개천의 하수관에서 거품 섞인 회색 물이 흘러들고, 탁한 물 위에 비닐과 페트병이 떠다닌다. 고무장갑을 낀 도윤이가 긴 집게로 페트병을 건지려 한다."
+  },
+  "토양오염": {
+   "explain": [
+    "쉬운 뜻: 흙에 해로운 것이 스며들어 식물과 흙 속 생물이 살기 힘든 것입니다.",
+    "낱말 나누기: 토양(흙) + 오염(더럽게 물듦)입니다.",
+    "생활 속 예: 밭에 농약을 너무 많이 뿌리면 흙 속의 지렁이가 사라집니다."
+   ],
+   "beats": ["밭 한쪽 땅속에 쓰레기와 다 쓴 건전지가 묻혀 있습니다.", "그 둘레 흙에 검은 얼룩이 번지고, 바로 위의 배추가 누렇게 시들었습니다.", "해로운 물질 때문에 흙이 더러워지는 것이 토양오염입니다."],
+   "img": "A cross-section view of a vegetable field, showing both the surface and the soil underneath: below ground, a buried heap of plastic waste and old batteries leaks dark stains that spread through the brown soil. Above that spot the cabbage leaves have turned yellow and wilted, while cabbages farther away stay green. HARIN (girl, yellow headband, mint cardigan) crouches at the edge holding a small trowel, looking surprised.",
+   "imgKo": "밭의 땅속을 자른 그림: 땅에 묻힌 쓰레기와 건전지에서 검은 얼룩이 흙으로 번진다. 그 위 배추는 누렇게 시들고 먼 곳 배추는 푸르며, 하린이가 모종삽을 들고 놀란다."
+  },
+  "매연": {
+   "explain": [
+    "쉬운 뜻: 맡으면 콜록콜록 기침이 나는 시커멓고 매캐한 연기입니다.",
+    "한자 뜻: 煤(그을음 매)와 煙(연기 연), 그을음이 섞인 연기입니다.",
+    "생활 속 예: 큰길가의 흰 벽이 매연에 그을려 거뭇거뭇해지기도 합니다."
+   ],
+   "beats": ["낡은 트럭이 출발하면서 꽁무니에서 시커먼 연기를 뿜습니다.", "길을 걷던 하린이와 도윤이가 손으로 코와 입을 막습니다.", "무엇을 태울 때 나오는 검고 해로운 이 연기가 매연입니다."],
+   "img": "A city street: an old delivery truck pulls away from the curb, puffing a thick cloud of black smoke from its exhaust pipe. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie), walking on the sidewalk with school bags, cover their noses and mouths with their hands and squint.",
+   "imgKo": "낡은 트럭이 출발하며 배기관에서 시커먼 연기를 뿜고, 가방을 멘 하린이와 도윤이가 손으로 코와 입을 막는다."
+  },
+  "훼손": {
+   "explain": [
+    "쉬운 뜻: 멀쩡하던 것이 다치고 망가져 제 모습을 잃는 것입니다.",
+    "생활 속 예: 문화재에 낙서를 하면 문화재가 훼손됩니다.",
+    "책을 찢거나 구기는 것도 책을 훼손하는 일입니다."
+   ],
+   "beats": ["산길 옆으로 사람들이 밟고 다닌 샛길이 여러 갈래 나 있습니다.", "밟힌 풀은 죽고 흙이 깎여 나무뿌리가 드러났습니다.", "이렇게 망가져서 원래 모습을 잃는 것이 훼손입니다."],
+   "img": "A mountain hiking trail on a slope: next to the proper path edged with wooden logs, several bare shortcut trails cut through the grass where people have trampled it. Along these shortcuts the grass is dead, the soil is worn away, and tree roots stick out of the eroded ground. HARIN (girl, yellow headband, mint cardigan) stands on the proper path, frowning at the damage.",
+   "imgKo": "산비탈 등산로 옆으로 사람들이 밟아 낸 샛길이 여러 갈래 나 있다. 풀이 죽고 흙이 깎여 나무뿌리가 드러났고, 하린이가 제 길 위에서 얼굴을 찡그린다."
+  },
+  "서식지": {
+   "en": "habitat",
+   "explain": [
+    "쉬운 뜻: 영어로 habitat, 생물이 터를 잡고 살아가는 집 동네입니다.",
+    "생활 속 예: 반딧불이는 맑은 개울가에, 다람쥐는 도토리가 많은 숲에 삽니다.",
+    "숲을 가르는 도로 위에 동물이 건너는 다리를 놓기도 합니다."
+   ],
+   "beats": ["물이 빠진 갯벌에 작은 구멍이 수없이 뚫려 있습니다.", "구멍에서 게가 집게를 들고 나오고, 짱뚱어가 펄 위를 폴짝 뜁니다.", "생물이 자리를 잡고 사는 이런 곳이 서식지입니다."],
+   "img": "A wide mudflat at low tide, glistening grey mud dotted with countless small holes. Little crabs peek out of the holes raising their claws, and mudskippers hop across the wet mud. In the background, HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) in rubber boots watch from the sandy shore.",
+   "imgKo": "물 빠진 갯벌에 작은 구멍이 가득하고, 구멍에서 게가 집게를 들고 나오며 짱뚱어가 펄 위를 뛴다. 뒤쪽 모래 기슭에서 장화 신은 하린이와 도윤이가 지켜본다."
+  },
+  "보전": {
+   "explain": [
+    "쉬운 뜻: 지금 잘 남아 있는 자연이 망가지지 않게 지켜 주는 것입니다.",
+    "생활 속 예: 갯벌을 메우지 않고 그대로 두는 것도 갯벌 보전입니다.",
+    "국립 공원에서 정해진 길로만 다니는 것도 보전을 돕는 일입니다."
+   ],
+   "beats": ["갈대가 우거진 습지 위로 나무 길이 놓여 있습니다.", "사람들은 나무 길 위로만 걷고, 갈대밭에는 들어가지 않습니다.", "지금 남아 있는 자연이 망가지지 않게 지키는 것이 보전입니다."],
+   "img": "A green wetland with tall reeds and a still pond where white herons wade. A raised wooden boardwalk with low railings winds through the reeds, and visitors including TEACHER (woman in her 30s, beige jacket), HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) walk only on the boardwalk, looking at the birds without stepping into the marsh.",
+   "imgKo": "갈대가 우거진 습지 연못에 백로가 거닐고, 난간 낮은 나무 길이 갈대 사이로 이어진다. 선생님과 하린이, 도윤이가 나무 길 위로만 걸으며 새를 본다."
+  },
+  "멸종": {
+   "en": "extinction",
+   "explain": [
+    "쉬운 뜻: 영어로 extinction, 마지막 한 마리까지 사라져 다시는 볼 수 없게 되는 것입니다.",
+    "생활 속 예: 도도새는 사람들이 마구 잡고, 데려온 동물이 알을 먹어 멸종했습니다."
+   ],
+   "beats": ["박물관 넓은 방에 커다란 공룡 뼈가 서 있습니다.", "하린이와 도윤이가 고개를 한껏 젖혀 올려다봅니다.", "공룡처럼 한 종류의 생물이 지구에서 모두 사라지는 것이 멸종입니다."],
+   "img": "A natural history museum hall with a towering dinosaur skeleton, a long-necked sauropod, standing on a low platform. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) stand at its feet, tilting their heads far back to look up at it, tiny next to the bones. Soft light falls from high windows.",
+   "imgKo": "박물관 넓은 방에 목이 긴 공룡 뼈가 높이 서 있고, 하린이와 도윤이가 그 발치에서 고개를 한껏 젖혀 올려다본다."
+  },
+  "복원": {
+   "explain": [
+    "쉬운 뜻: 깨진 그릇 조각을 맞추어 붙이듯, 처음 모습으로 되살리는 것입니다.",
+    "생활 속 예: 불탄 숭례문을 옛 모습대로 다시 세운 것도 복원입니다."
+   ],
+   "beats": ["개울가에 걷어 낸 시멘트 조각이 쌓여 있습니다.", "시멘트가 사라진 개울에는 돌과 물풀 사이로 물고기가 헤엄치고 백로가 찾아왔습니다.", "망가진 자연을 처음 모습으로 되돌리는 것이 복원입니다."],
+   "img": "A village stream after restoration: the water flows over natural stones and pebbles between grassy, newly planted banks, small fish swim among water plants, and a white heron stands in the shallows. On one side of the bank lies a neat pile of broken grey concrete slabs that were removed, with a small excavator parked beside it. HARIN (girl, yellow headband, mint cardigan) and her grandfather stand on a footbridge, smiling down at the fish.",
+   "imgKo": "되살린 마을 개울에 돌 사이로 물이 흐르고 물풀 사이 물고기와 백로가 보인다. 둑 한쪽에 걷어 낸 시멘트 조각 더미와 작은 굴착기가 있고, 하린이와 할아버지가 다리 위에서 웃는다."
+  }
+ },
+ "3": {
+  "기체": {
+   "en": "gas",
+   "explain": [
+    "쉬운 뜻: 영어로 gas, 물질의 세 가지 모습인 고체, 액체, 기체 가운데 하나입니다.",
+    "보이지 않아도 무게가 있습니다. 공을 부풀리면 조금 무거워집니다.",
+    "생활 속 예: 물이 끓을 때 생기는 수증기도 기체입니다."
+   ]
+  },
+  "기포": {
+   "en": "bubble",
+   "explain": [
+    "쉬운 뜻: 영어로 bubble, 물속에서 뽀글뽀글 올라오는 공기 방울 같은 것입니다.",
+    "생활 속 예: 물을 끓이면 냄비 바닥에서 기포가 생겨 올라옵니다.",
+    "기포는 둘레의 물보다 가벼워서 위로 떠오릅니다."
+   ],
+   "beats": ["탁자 위 유리컵에 탄산음료가 담겨 있습니다.", "컵 벽에 붙은 작은 방울들이 줄지어 떠올라 물 위에서 톡톡 터집니다.", "액체 속에 기체가 들어가 생긴 이 둥근 방울이 기포입니다."],
+   "img": "A close-up of a clear glass of fizzy soda on a table. Countless tiny bubbles cling to the inside of the glass and stream upward in lines, popping at the surface. DOYUN (boy, round glasses, navy hoodie) leans in from the side, watching the bubbles with wide eyes.",
+   "imgKo": "탁자 위 투명한 컵 속 탄산음료에서 작은 방울이 컵 벽에 붙었다가 줄지어 떠올라 물 위에서 터진다. 도윤이가 옆에서 눈을 크게 뜨고 들여다본다."
+  },
+  "부피": {
+   "en": "volume",
+   "explain": [
+    "쉬운 뜻: 영어로 volume, 물건이 자리를 얼마나 크게 차지하는지를 말합니다.",
+    "생활 속 예: 우유갑에 적힌 200 mL는 우유의 부피입니다.",
+    "기체는 담긴 그릇을 가득 채워서 그릇 크기가 곧 부피가 됩니다."
+   ]
+  },
+  "압력": {
+   "en": "pressure",
+   "explain": [
+    "쉬운 뜻: 영어로 pressure, 꾹 누르는 힘이 얼마나 센지를 말합니다.",
+    "생활 속 예: 바늘은 끝이 좁아서 살짝 눌러도 압력이 커 천에 잘 들어갑니다."
+   ]
+  },
+  "피스톤": {
+   "en": "piston",
+   "explain": [
+    "쉬운 뜻: 영어 piston을 그대로 쓴 말로, 통 속을 앞뒤로 미끄러지는 막대입니다.",
+    "생활 속 예: 물총 손잡이를 당겼다 밀면 속에서 피스톤이 움직여 물을 쏩니다.",
+    "자동차 엔진 속에서도 피스톤이 쉼 없이 오르내립니다."
+   ],
+   "beats": ["하린이가 손가락으로 주사기 입구를 꼭 막습니다.", "다른 손으로 막대를 꾹 밀자 조금 들어가다가 더는 잘 들어가지 않습니다.", "통 안을 오가며 속에 든 공기를 누르는 이 막대 부분이 피스톤입니다."],
+   "img": "A close-up on a science classroom table: HARIN (girl, yellow headband, mint cardigan) holds a large clear plastic syringe with no needle and no scale numbers. Her fingertip firmly blocks the syringe tip, and her other thumb presses the plunger partway in, squeezing the air inside. DOYUN (boy, round glasses, navy hoodie) watches closely beside her.",
+   "imgKo": "과학실 책상에서 하린이가 바늘 없는 커다란 주사기 입구를 손가락으로 막고 엄지로 밀대를 반쯤 밀어 넣는다. 옆에서 도윤이가 지켜본다."
+  },
+  "산소": {
+   "en": "oxygen",
+   "explain": [
+    "쉬운 뜻: 영어로 oxygen, 우리가 숨 쉴 때 몸속으로 들여보내는 공기 속 기체입니다.",
+    "공기가 모두 산소는 아닙니다. 공기의 5분의 1쯤만 산소입니다.",
+    "생활 속 예: 숲의 나무와 풀은 우리가 숨 쉴 산소를 만들어 줍니다."
+   ]
+  },
+  "질소": {
+   "en": "nitrogen",
+   "explain": [
+    "쉬운 뜻: 영어로 nitrogen, 공기의 5분의 4쯤을 차지하는 기체입니다.",
+    "다른 물질과 잘 어울리지 않아서 음식이 상하는 것을 막아 줍니다.",
+    "생활 속 예: 비행기 타이어에도 질소를 채웁니다."
+   ],
+   "beats": ["식탁 위에 빵빵하게 부푼 과자 봉지가 놓여 있습니다.", "도윤이가 봉지를 뜯자 '푸쉬' 하고 봉지가 줄어들고, 속 과자는 부서지지 않았습니다.", "과자를 지키려고 봉지 속에 채워 넣는 이 기체가 질소입니다."],
+   "img": "A home kitchen table: DOYUN (boy, round glasses, navy hoodie) has just opened a puffy, plain-colored snack bag with no printing or letters, and it is deflating slightly with a soft puff. Inside, the chips are whole and unbroken. Two more unopened, fully puffed bags sit beside him.",
+   "imgKo": "식탁에서 도윤이가 글자 없는 빵빵한 과자 봉지를 막 뜯자 봉지가 살짝 줄어들고, 속 과자는 부서지지 않고 온전하다. 옆에 뜯지 않은 빵빵한 봉지 두 개가 있다."
+  },
+  "이산화 탄소": {
+   "en": "carbon dioxide",
+   "explain": [
+    "쉬운 뜻: 영어로 carbon dioxide, 우리가 숨을 내쉴 때 나오는 기체입니다.",
+    "생활 속 예: 드라이아이스는 이산화 탄소를 차갑게 얼려 만든 것입니다.",
+    "식물은 이산화 탄소를 빨아들여 양분을 만듭니다."
+   ],
+   "beats": ["식초와 베이킹 소다를 섞은 컵에서 보글보글 기체가 생깁니다.", "선생님이 컵을 촛불 위로 따르듯 기울이자, 아무것도 안 보이는데 촛불이 꺼집니다.", "공기보다 무겁고 불이 타는 것을 막는 이 기체가 이산화 탄소입니다."],
+   "img": "A science classroom table: a short lit candle stands in a shallow dish. TEACHER (woman in her 30s, beige jacket) gently tilts a clear cup, in which vinegar and baking soda are fizzing, above the candle as if pouring, though nothing visible comes out, and the candle flame is bending and going out. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) watch with surprised faces.",
+   "imgKo": "과학실 책상에서 선생님이 식초와 베이킹 소다가 보글거리는 컵을 촛불 위로 따르듯 기울이자, 아무것도 안 보이는데 촛불이 휘며 꺼진다. 하린이와 도윤이가 놀란다."
+  },
+  "헬륨": {
+   "en": "helium",
+   "explain": [
+    "쉬운 뜻: 영어 helium을 그대로 쓴 말로, 공기보다 훨씬 가벼운 기체입니다.",
+    "불이 붙지 않아서 풍선이나 비행선에 넣어도 안전합니다.",
+    "생활 속 예: 헬륨 풍선은 며칠 지나면 기체가 조금씩 새어 쭈그러듭니다."
+   ],
+   "beats": ["생일잔치를 하는 거실에 풍선이 가득합니다.", "가스 통으로 채운 풍선은 천장에 붙어 있고, 입으로 분 풍선은 바닥에 놓여 있습니다.", "공기보다 가벼워 풍선을 위로 띄우는 이 기체가 헬륨입니다."],
+   "img": "A living room decorated for a birthday party. Several balloons filled from a small gas tank float up and press against the ceiling with their strings hanging down, while other balloons that were blown up by mouth lie on the floor. HARIN (girl, yellow headband, mint cardigan) stands on tiptoe reaching for a dangling string, and DOYUN (boy, round glasses, navy hoodie) is blowing up another balloon by mouth.",
+   "imgKo": "생일잔치 거실에서 가스 통으로 채운 풍선은 천장에 붙어 줄이 늘어지고, 입으로 분 풍선은 바닥에 놓여 있다. 하린이가 까치발로 줄을 잡으려 하고 도윤이는 풍선을 입으로 분다."
+  },
+  "보존": {
+   "explain": [
+    "쉬운 뜻: 지금 모습 그대로 오래오래 간직해 두는 것입니다.",
+    "생활 속 예: 통조림은 공기를 빼고 꽉 막아서 음식을 오래 보존합니다."
+   ],
+   "beats": ["할머니가 껍질 깎은 감을 줄에 꿰어 처마 밑에 매답니다.", "감이 햇볕과 바람에 쪼글쪼글 마르면 겨우내 상하지 않습니다.", "이렇게 상하지 않게 오래 지니어 두는 것이 보존입니다."],
+   "img": "Autumn at a countryside house: rows of peeled orange persimmons hang on strings under the eaves of the roof, drying in the sun and breeze. HARIN's grandmother ties up another string of persimmons while HARIN (girl, yellow headband, mint cardigan) holds a basket of peeled fruit for her.",
+   "imgKo": "가을 시골집 처마 밑에 껍질 깎은 감이 줄줄이 매달려 햇볕과 바람에 마르고, 할머니가 감 줄을 더 매달고 하린이가 바구니를 들어 드린다."
+  },
+  "열기구": {
+   "en": "hot-air balloon",
+   "explain": [
+    "쉬운 뜻: 영어로 hot-air balloon, '뜨거운 공기 풍선'이라는 말입니다.",
+    "낱말 나누기: 열(뜨거움) + 기구(공기를 넣은 둥근 주머니)입니다.",
+    "데워진 공기는 둘레의 찬 공기보다 가벼워져 위로 떠오릅니다."
+   ],
+   "beats": ["바구니 위에서 버너가 커다란 불꽃을 위로 뿜습니다.", "불꽃에 데워진 공기로 풍선이 빵빵하게 부풀어 땅에서 떠오릅니다.", "풍선 속 공기를 데워 하늘로 떠오르는 이 탈것이 열기구입니다."],
+   "img": "Early morning over green fields: a large colorful striped hot-air balloon lifts off the ground. In its wicker basket a pilot opens the burner, which shoots a tall bright flame up into the open mouth of the balloon. Two more balloons float higher in the pale sky, and HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) wave from the field below.",
+   "imgKo": "새벽 들판에서 알록달록한 열기구가 떠오르고, 바구니 속 조종사가 켠 버너 불꽃이 풍선 입구로 솟는다. 하늘에 열기구 두 개가 더 있고, 하린이와 도윤이가 손을 흔든다."
+  },
+  "설계": {
+   "en": "design",
+   "explain": [
+    "쉬운 뜻: 영어로 design, 만들기 전에 머릿속 생각을 종이 위에 미리 그려 보는 것입니다.",
+    "생활 속 예: 블록으로 성을 쌓기 전에 모양을 그려 보는 것도 설계입니다."
+   ],
+   "beats": ["새집을 만들기 전에 도윤이가 큰 종이를 펼칩니다.", "앞모습, 옆모습, 지붕을 그리고, 만드는 차례를 화살표로 잇습니다.", "만들기 전에 모양과 재료, 차례를 미리 그려 보는 것이 설계입니다."],
+   "img": "A classroom desk: DOYUN (boy, round glasses, navy hoodie) draws a plan of a small wooden birdhouse on a large sheet of paper, with simple sketches of the front, side and roof and arrows joining the steps, with no words or numbers. Beside the paper lie a ruler, a pencil, a few small wooden boards and a glue bottle waiting to be used. HARIN (girl, yellow headband, mint cardigan) leans over, pointing at the roof sketch.",
+   "imgKo": "교실 책상에서 도윤이가 큰 종이에 작은 나무 새집의 앞·옆·지붕 그림과 차례를 잇는 화살표를 그린다(글자 없음). 옆에 자, 연필, 나무판, 풀이 있고 하린이가 지붕 그림을 가리킨다."
+  }
+ },
+ "4": {
+  "빙하": {
+   "en": "glacier",
+   "explain": [
+    "쉬운 뜻: 영어로 glacier, 한여름에도 녹지 않고 남는 거대한 얼음 덩어리입니다.",
+    "이름처럼 얼음이 강물처럼 아주 천천히 흘러내립니다.",
+    "생활 속 예: 남극 땅은 대부분 두꺼운 빙하로 덮여 있습니다."
+   ],
+   "beats": ["눈 덮인 높은 산 사이로 거대한 얼음이 강처럼 길게 뻗어 내려옵니다.", "얼음 끝이 바다에 닿아 큰 조각이 떨어져 나가고, 녹은 물이 흘러내립니다.", "눈이 오랫동안 쌓이고 다져져 생긴 이 거대한 얼음덩어리가 빙하입니다."],
+   "img": "A vast glacier flows down between snowy mountain peaks like a frozen river, its surface cracked and blue-white. At its front edge it meets the sea in a tall ice cliff, where a large chunk of ice is breaking off and splashing into the water, and streams of meltwater run down. A small tour boat floats nearby for scale.",
+   "imgKo": "눈 덮인 산 사이로 거대한 얼음이 얼어붙은 강처럼 뻗어 내려오고, 바다에 닿은 얼음 절벽에서 큰 조각이 떨어지며 녹은 물이 흘러내린다. 가까이 작은 배가 있다."
+  },
+  "기후": {
+   "en": "climate",
+   "explain": [
+    "쉬운 뜻: 영어로 climate, 한 지역 날씨의 오랜 버릇입니다.",
+    "생활 속 예: 사막은 일 년 내내 비가 아주 적은 기후입니다."
+   ]
+  },
+  "기후변화": {
+   "en": "climate change",
+   "explain": [
+    "쉬운 뜻: 영어로 climate change, 한 지역 날씨의 오랜 버릇이 바뀌는 것입니다.",
+    "하루 이틀 덥거나 추운 것은 기후변화가 아니라 그날의 날씨입니다.",
+    "생활 속 예: 남쪽에서만 기르던 귤을 이제는 더 북쪽에서도 기릅니다."
+   ],
+   "beats": ["할아버지가 어릴 적에는 겨울마다 이 언덕에 눈이 쌓여 썰매를 탔습니다.", "지금은 한겨울에도 같은 언덕에 눈이 거의 쌓이지 않습니다.", "오랜 세월에 걸쳐 그곳의 평소 날씨가 바뀌는 것이 기후변화입니다."],
+   "img": "One frame: in the foreground, HARIN's grandfather holds an old faded photograph showing children sledding down a snowy village hill decades ago. Behind the photo, the same hill today in midwinter is bare brown grass with no snow at all. HARIN (girl, yellow headband, mint cardigan) stands beside her grandfather, looking from the photo to the hill.",
+   "imgKo": "할아버지 손에 든 빛바랜 옛 사진에는 눈 덮인 마을 언덕에서 썰매 타는 아이들이 있고, 그 뒤 오늘의 같은 언덕은 한겨울인데도 눈 없이 누런 풀빛이다. 하린이가 사진과 언덕을 번갈아 본다."
+  },
+  "가뭄": {
+   "en": "drought",
+   "explain": [
+    "쉬운 뜻: 영어로 drought, 비가 너무 오래 오지 않아 땅이 목마른 것입니다.",
+    "생활 속 예: 가뭄이 들면 채소가 잘 자라지 못해 채솟값이 오릅니다."
+   ],
+   "beats": ["구름 한 점 없는 하늘 아래 논바닥이 거북 등처럼 갈라졌습니다.", "어린 벼는 누렇게 시들고, 농부가 빈 물뿌리개를 들고 하늘을 올려다봅니다.", "비가 오랫동안 오지 않아 땅이 메마르고 물이 모자란 것이 가뭄입니다."],
+   "img": "A rice paddy under a blazing, cloudless sky: the dry ground is cracked into a pattern of plates like a turtle's shell, and the young rice plants are yellow and wilting. An elderly farmer in a straw hat stands at the edge of the field holding an empty watering can, looking up at the sky.",
+   "imgKo": "구름 한 점 없는 하늘 아래 논바닥이 거북 등처럼 갈라지고 어린 벼가 누렇게 시든다. 밀짚모자 쓴 농부가 빈 물뿌리개를 들고 하늘을 올려다본다."
+  },
+  "폭염": {
+   "en": "heat wave",
+   "explain": [
+    "쉬운 뜻: 영어로 heat wave, 더위가 파도처럼 덮쳐 오는 아주 심한 더위입니다.",
+    "생활 속 예: 폭염인 날에는 차 안에 둔 초콜릿이 금세 녹아 버립니다."
+   ],
+   "beats": ["뙤약볕 아래 아스팔트 위로 뜨거운 공기가 아른아른 흔들립니다.", "사람들이 횡단보도 옆 그늘막 아래로 모여 땀을 닦으며 신호를 기다립니다.", "이처럼 견디기 힘들 만큼 심한 더위가 폭염입니다."],
+   "img": "A city crosswalk at midday under a white-hot sun: heat shimmer rises from the asphalt. A group of people, including HARIN (girl, yellow headband, mint cardigan) with a water bottle and DOYUN (boy, round glasses, navy hoodie) fanning himself with his hand, crowd under a large shade canopy beside the crosswalk, wiping sweat while waiting for the light.",
+   "imgKo": "한낮 뙤약볕 아래 아스팔트 위로 아지랑이가 오르고, 횡단보도 옆 커다란 그늘막 아래에 하린이와 도윤이를 비롯한 사람들이 땀을 닦으며 신호를 기다린다."
+  },
+  "한파": {
+   "explain": [
+    "쉬운 뜻: 찬 기운이 물결처럼 밀려와 갑자기 매섭게 추워지는 것입니다.",
+    "생활 속 예: 한파가 오면 수도꼭지를 조금 틀어 두어 물이 얼지 않게 합니다."
+   ],
+   "beats": ["버스 정류장 유리에 성에가 끼고 지붕 끝에 고드름이 달렸습니다.", "두껍게 싸맨 하린이와 도윤이가 하얀 입김을 뿜으며 발을 동동 구릅니다.", "기온이 뚝 떨어져 찾아온 이런 매서운 추위가 한파입니다."],
+   "img": "A freezing winter morning at a bus stop: frost covers the shelter's glass, icicles hang from the roof edge, and the puddles are frozen solid. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie), bundled in thick padded coats, scarves, hats and mittens, breathe out big white puffs of breath and stamp their feet to keep warm.",
+   "imgKo": "몹시 추운 아침 버스 정류장 유리에 성에가 끼고 지붕 끝에 고드름이 달렸다. 두꺼운 외투와 목도리, 장갑으로 싸맨 하린이와 도윤이가 하얀 입김을 뿜으며 발을 구른다."
+  },
+  "폭설": {
+   "explain": [
+    "쉬운 뜻: 하늘이 눈을 쏟아붓듯 한꺼번에 아주 많이 내리는 눈입니다.",
+    "생활 속 예: 폭설이 오면 이웃이 함께 나와 집 앞 눈을 치웁니다."
+   ],
+   "beats": ["밤새 쏟아진 눈이 마을을 두껍게 덮었습니다.", "자동차가 지붕까지 눈에 파묻히고, 소나무 가지가 눈 무게에 휘어 부러졌습니다.", "짧은 시간에 한꺼번에 아주 많이 내린 눈이 폭설입니다."],
+   "img": "A village street the morning after a huge snowfall: snow is piled so deep that parked cars are buried up to their roofs and only rounded white mounds show. Pine branches bend low and one has snapped under the heavy snow. DOYUN (boy, round glasses, navy hoodie), in a red knit hat, stands in a narrow dug-out path holding a snow shovel, the snow walls rising above his waist.",
+   "imgKo": "큰눈이 내린 다음 날 아침, 세워 둔 자동차가 지붕까지 눈에 파묻혀 하얀 언덕처럼 보이고 소나무 가지가 휘거나 부러졌다. 도윤이가 허리보다 높은 눈벽 사이 좁은 길에서 삽을 들고 서 있다."
+  },
+  "평년": {
+   "explain": [
+    "쉬운 뜻: 날씨가 특별하지 않은 '보통 때'를 숫자로 나타낸 것입니다.",
+    "생활 속 예: '올겨울은 평년보다 춥겠습니다'라는 일기 예보를 자주 듣습니다.",
+    "평년 값은 10년마다 새로 계산해 바꿉니다."
+   ]
+  },
+  "석탄": {
+   "en": "coal",
+   "explain": [
+    "쉬운 뜻: 영어로 coal, 아주 먼 옛날 나무가 땅속에 묻혀 변한 검은 돌입니다.",
+    "탈 때 이산화 탄소가 많이 나와 지구를 덥게 합니다.",
+    "생활 속 예: 석탄을 만지면 손에 검은 가루가 묻어납니다."
+   ],
+   "beats": ["산비탈의 광산 굴에서 레일을 따라 수레가 나옵니다.", "수레에는 반짝이는 검은 돌덩이가 가득 실려 있습니다.", "땅속에서 캐내어 태워 쓰는 이 검은 돌이 석탄입니다."],
+   "img": "The entrance of a coal mine tunnel in a hillside, lit by lamps: a small mine cart on rails rolls out, heaped with shiny black lumps of coal. A miner in a helmet with a headlamp and a dusty face pushes the cart. In the foreground, a few fallen coal lumps lie on the ground.",
+   "imgKo": "등불이 켜진 산비탈 탄광 굴 입구에서 반짝이는 검은 석탄을 가득 실은 수레가 레일을 따라 나오고, 머리 전등 단 안전모를 쓴 광부가 수레를 민다."
+  },
+  "천연가스": {
+   "en": "natural gas",
+   "explain": [
+    "쉬운 뜻: 영어로 natural gas, '자연에서 얻은 가스'라는 말입니다.",
+    "본래 냄새가 없어서, 새는 것을 알도록 일부러 냄새를 섞습니다.",
+    "생활 속 예: 시내버스 가운데에는 천연가스로 달리는 버스도 있습니다."
+   ],
+   "beats": ["부엌 벽을 따라 노란 가스관이 가스레인지까지 이어져 있습니다.", "엄마가 불을 켜자 파란 불꽃이 둥글게 피어올라 국을 끓입니다.", "땅속에서 뽑아내어 관을 따라 보내오는 이 기체가 천연가스입니다."],
+   "img": "A home kitchen: a yellow gas pipe runs along the wall, through a small valve, down to a gas stove. A ring of steady blue flames burns under a pot of soup, and HARIN's mother stirs the pot while HARIN (girl, yellow headband, mint cardigan) watches the blue flame from a safe distance.",
+   "imgKo": "부엌 벽을 따라 노란 가스관이 밸브를 지나 가스레인지로 이어지고, 냄비 아래 파란 불꽃이 둥글게 탄다. 엄마가 국을 젓고 하린이가 조금 떨어져 불꽃을 본다."
+  },
+  "해수면": {
+   "en": "sea level",
+   "explain": [
+    "쉬운 뜻: 영어로 sea level, 바닷물 높이의 겉면을 말합니다.",
+    "산의 높이는 해수면을 0 m로 삼아 잽니다. 백두산은 2744 m입니다.",
+    "생활 속 예: 바닷가에서는 밀물과 썰물로 하루에도 물 높이가 오르내립니다."
+   ]
+  },
+  "상승": {
+   "en": "rise",
+   "explain": [
+    "쉬운 뜻: 영어로 rise, 아래에서 위로 쭉 올라가는 것입니다.",
+    "생활 속 예: 온도계의 빨간 액체 기둥이 올라가면 기온이 상승한 것입니다.",
+    "'기온 상승', '물가 상승'처럼 무엇이 오르는지 앞에 붙여 씁니다."
+   ]
+  },
+  "대응": {
+   "explain": [
+    "쉬운 뜻: 비가 오면 우산을 펴듯, 일에 맞추어 알맞게 움직이는 것입니다.",
+    "생활 속 예: 불이 나면 젖은 수건으로 입을 막고 몸을 낮춰 밖으로 나갑니다."
+   ],
+   "beats": ["여름마다 더위가 심해지자 마을 사람들이 그늘 없는 길에 모였습니다.", "길가에 어린 나무를 줄지어 심고 물을 듬뿍 줍니다. 나무가 자라면 그늘이 생깁니다.", "일어난 상황에 맞추어 이렇게 알맞게 행동하는 것이 대응입니다."],
+   "img": "A hot, bare street lined with concrete buildings and no shade. Neighbors of all ages, including HARIN (girl, yellow headband, mint cardigan) with a watering can and DOYUN (boy, round glasses, navy hoodie) holding a small shovel, are planting a row of young trees along the sidewalk. One adult wipes sweat from his forehead under the strong sun.",
+   "imgKo": "그늘 없이 콘크리트 건물만 늘어선 뜨거운 길에서 마을 사람들이 보도를 따라 어린 나무를 줄지어 심고, 하린이는 물뿌리개, 도윤이는 작은 삽을 들었다."
+  },
+  "일회용품": {
+   "explain": [
+    "쉬운 뜻: 쓰고 나면 씻어서 다시 쓰지 않고 바로 쓰레기통으로 가는 물건입니다.",
+    "낱말 나누기: 일회용(한 번만 씀) + 품(물건)입니다.",
+    "생활 속 예: 배달 음식에 딸려 오는 플라스틱 숟가락도 일회용품입니다."
+   ],
+   "beats": ["축제가 끝난 공원의 쓰레기통이 넘쳐 납니다.", "빨대 꽂힌 플라스틱 컵, 포크, 종이 접시가 둘레에 수북이 쌓였습니다.", "모두 한 번 쓰고 버리게 만든 일회용품입니다."],
+   "img": "A park after a festival: a trash bin overflows, surrounded by a heap of used plastic cups with straws, plastic forks, paper plates and takeout containers. DOYUN (boy, round glasses, navy hoodie) stands nearby holding his own reusable water bottle, looking at the pile with a frown.",
+   "imgKo": "축제가 끝난 공원 쓰레기통이 넘치고 둘레에 빨대 꽂힌 플라스틱 컵, 포크, 종이 접시, 포장 용기가 수북하다. 도윤이가 제 물병을 들고 얼굴을 찡그린다."
+  }
+ }
+}
