@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1d130d">
+  <title>지뢰찾기</title>
+  <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+  <link rel="stylesheet" href="styles.css?v=20261108a">
+  <script src="../../../assets/network/game-network.js?v=20260821"></script>
+  <script src="../../../assets/network/finisher-api.js"></script>
+  <script src="../../../assets/network/finisher-board.js"></script>
+  <script src="/assets/site-storage.js?v=20261006-1"></script>
+  <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<link rel="stylesheet" href="../puzzle-board-layout.css?v=20260927-chromebook-recovery">
+<link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261108-minesweeper">
+</head>
+<body data-game-navigation="single-player" data-entry-game="minesweeper">
+  <audio id="bgm" src="../nonogram/assets/sound/bgm.ogg" loop preload="auto"></audio>
+  <main class="page-shell">
+    <section class="start-screen screen" id="startScreen" data-game-entry aria-labelledby="startTitle">
+      <h1 class="start-title" id="startTitle"><span>MINESWEEPER</span></h1>
+
+      <p class="player-line" id="playerLine"></p>
+
+      <div class="difficulty-container">
+        <p class="setting-label">난이도</p>
+        <div class="mode-switch" aria-label="판 크기 선택">
+          <button type="button" data-level="easy" aria-pressed="true"><strong>8 × 8</strong><span>지뢰 10개</span></button>
+          <button type="button" data-level="normal" aria-pressed="false"><strong>12 × 12</strong><span>지뢰 24개</span></button>
+          <button type="button" data-level="hard" aria-pressed="false"><strong>16 × 16</strong><span>지뢰 50개</span></button>
+        </div>
+      </div>
+
+      <div class="start-actions">
+        <button class="primary start-button" id="startButton" type="button">Start</button>
+      </div>
+      <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
+
+      <div class="finishers-panel">
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-list" id="today-finishers-list"></div>
+      </div>
+    </section>
+
+    <section class="game-panel screen" id="gameScreen" aria-labelledby="gameTitle" hidden>
+      <header class="game-topbar">
+        <button class="text-button" id="settingsButton" type="button" aria-label="설정 화면으로 돌아가기">← SETTINGS</button>
+        <span id="modeLabel">8 × 8</span>
+      </header>
+      <div class="game-layout">
+        <div class="play-column">
+          <h1 id="gameTitle" class="visually-hidden">MINESWEEPER</h1>
+
+          <div class="stats" aria-label="게임 기록">
+            <div><span>MINES</span><strong id="minesLeft">10</strong></div>
+            <div><span>TIME</span><strong id="timer">00:00</strong></div>
+            <div><span>BEST</span><strong id="bestScore">—</strong></div>
+          </div>
+
+          <div class="tool-switch" role="group" aria-label="도구 선택">
+            <button type="button" id="toolOpenButton" aria-pressed="true">⛏ 열기</button>
+            <button type="button" id="toolFlagButton" aria-pressed="false">🚩 깃발</button>
+          </div>
+
+          <div class="board-wrap" id="boardWrap">
+            <div class="mine-board" id="board" role="grid" aria-label="지뢰찾기 게임판"></div>
+          </div>
+
+          <p class="status" id="status" role="status" aria-live="polite">READY</p>
+
+          <div class="actions">
+            <button class="primary" id="newGameButton" type="button">NEW PUZZLE</button>
+            <button class="secondary" id="retryButton" type="button">RETRY</button>
+            <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">Rules</button>
+          </div>
+        </div>
+
+        <aside class="guide-panel" id="guidePanel" aria-labelledby="guideTitle" hidden>
+          <header class="guide-header">
+            <div>
+              <h2 id="guideTitle">HOW TO PLAY</h2>
+            </div>
+            <button class="guide-close" id="guideCloseButton" type="button" aria-label="놀이 방법 닫기">×</button>
+          </header>
+          <div class="solve-guide">
+            <h3>기본 규칙</h3>
+            <ol>
+              <li>판의 닫힌 칸 몇 곳에 지뢰가 숨어 있습니다. <strong>지뢰가 없는 칸을 모두 열면</strong> 이깁니다. 지뢰가 있는 칸을 열면 집니다.</li>
+              <li>열린 칸의 숫자는 그 칸을 둘러싼 <strong>여덟 칸</strong>(위·아래·양옆·네 대각선)에 있는 지뢰의 개수입니다.</li>
+              <li>숫자가 없는 빈 칸은 둘레에 지뢰가 하나도 없다는 뜻입니다. 그래서 둘레 칸이 저절로 함께 열립니다.</li>
+              <li>처음 누르는 칸은 언제나 안전하고, 그 둘레까지 함께 열립니다.</li>
+              <li>이 판은 <strong>숫자만 보고 끝까지 풀 수 있게</strong> 만들어져 있습니다. 찍어야 할 것 같으면 아직 보지 못한 단서가 어딘가에 있습니다.</li>
+            </ol>
+            <h3>조작 방법</h3>
+            <ol>
+              <li><strong>⛏ 열기</strong>를 고른 채 칸을 누르면 그 칸이 열립니다.</li>
+              <li><strong>🚩 깃발</strong>을 고른 채 칸을 누르면 "여기는 지뢰"라는 깃발이 꽂힙니다. 한 번 더 누르면 깃발이 뽑힙니다. 깃발이 꽂힌 칸은 열리지 않습니다.</li>
+              <li>마우스 오른쪽 단추로 누르거나, 화면을 손가락으로 <strong>길게 누르면</strong> 도구를 바꾸지 않고도 깃발을 꽂고 뽑을 수 있습니다.</li>
+              <li>둘레에 꽂은 깃발 수가 숫자와 같아진 숫자 칸을 누르면, 깃발이 없는 둘레 칸이 한꺼번에 열립니다. 깃발을 잘못 꽂았다면 지뢰가 열리니 조심하세요.</li>
+              <li>위의 <strong>MINES</strong>는 전체 지뢰 수에서 꽂은 깃발 수를 뺀 수입니다.</li>
+              <li>지뢰를 열었으면 <strong>RETRY</strong>로 같은 판을 처음부터 다시 풀 수 있습니다. <strong>NEW PUZZLE</strong>은 새 판을 만듭니다.</li>
+            </ol>
+            <h3>푸는 방법</h3>
+            <ol>
+              <li><strong>숫자 = 둘레 닫힌 칸 수</strong>이면 그 닫힌 칸은 모두 지뢰입니다. 예를 들어 1 둘레에 닫힌 칸이 하나뿐이면 그 칸이 지뢰입니다.</li>
+              <li><strong>숫자 = 둘레 깃발 수</strong>이면 나머지 둘레 칸은 모두 안전합니다.</li>
+              <li><strong>1-1 꼴:</strong> 닫힌 칸 줄을 따라 1, 1이 나란히 있고 판 가장자리 쪽 1이 보는 닫힌 칸이 두 개뿐이면, 그 두 칸은 옆의 1도 함께 봅니다. 그 두 칸에 지뢰가 하나 있으니, 옆의 1만 보는 다음 칸은 안전합니다.</li>
+              <li><strong>1-2-1 꼴:</strong> 곧게 뻗은 닫힌 칸 줄을 따라 1, 2, 1이 나란히 있으면, 두 1의 바로 앞 칸이 지뢰이고 2의 바로 앞 칸은 안전합니다.</li>
+              <li>한 숫자만 봐서 모르겠으면 <strong>이웃한 두 숫자가 함께 보는 칸</strong>을 따져 보세요. 한쪽 숫자가 다른 쪽보다 몇 개 더 많은지가 단서가 됩니다.</li>
+              <li>끝 무렵에 <strong>MINES가 0</strong>이면 남은 닫힌 칸은 모두 안전합니다. MINES가 남은 닫힌 칸 수와 같으면 그 칸은 모두 지뢰입니다.</li>
+            </ol>
+            <p class="solve-tip"><strong>팁:</strong> 확실한 칸만 여세요. 모르는 칸은 내버려 두고 다른 쪽 숫자부터 살피면 새 단서가 열립니다.</p>
+          </div>
+        </aside>
+      </div>
+      <button class="guide-backdrop" id="guideBackdrop" type="button" aria-label="놀이 방법 닫기" hidden></button>
+    </section>
+  </main>
+
+  <div class="celebration" id="celebration" hidden>
+    <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <span class="result-mark" aria-hidden="true">✓</span>
+      <p class="eyebrow">ALL CLEAR</p>
+      <h2 id="resultTitle">CONGRATULATIONS!</h2>
+      <p id="resultSummary"></p>
+      <div class="finishers-panel result-finishers">
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-list" id="result-finishers-list"></div>
+      </div>
+      <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <script src="logic.js?v=20261108a"></script>
+  <script src="app.js?v=20261108a"></script>
+</body>
+</html>

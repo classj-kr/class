@@ -32,6 +32,7 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 body[data-entry-game="hanoitower"] { --solo-entry-width: 480px; }
 body[data-entry-game="coinweighing"] { --solo-entry-width: 480px; }
 body[data-entry-game="nonogram"] { --solo-entry-width: 440px; }
+body[data-entry-game="minesweeper"] { --solo-entry-width: 480px; }
 body[data-entry-game="sliding-puzzle"] { --solo-entry-width: 420px; }
 body[data-entry-game="sphinx"] { --solo-entry-width: 500px; }
 
