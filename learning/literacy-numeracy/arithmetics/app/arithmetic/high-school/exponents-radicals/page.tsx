@@ -141,7 +141,7 @@ export default function ExponentsRadicalsPage() {
     return (
       <div className={`a4-sheet counting-sheet polynomial-sheet exponent-radical-sheet polynomial-sheet-${problems.length}`} style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header polynomial-sheet-header">
-          <div className="counting-sheet-title"><span>공통수학 1</span><strong>지수와 근호{answerSheet ? " 정답" : ""}</strong></div>
+          <div className="counting-sheet-title"><span>대수</span><strong>지수와 근호{answerSheet ? " 정답" : ""}</strong></div>
           <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
         </header>
         <div className="polynomial-instruction">
