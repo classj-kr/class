@@ -1329,30 +1329,6 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A clear glass bowl in the center holds white rice grains, dark brown beans and yellow corn kernels mixed together, each grain clearly keeping its own shape and color. To the right, three small dishes hold only rice, only beans and only corn, with dotted arrows leading from the bowl to each dish. A Korean child's hand with chopsticks is picking one bean out of the bowl.
 ```
 
-**sci-1-02** 거름 — 스탠드에 깔때기와 고깔로 접은 거름종이, 아래에 비커가 있다. 아이가 유리 막대를 따라 모래 섞인 물을 붓는다. 모래는 종이 위에 남고 맑은 물만 아래 비커로 떨어진다(아래쪽 화살표).
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A school science filtering setup on a stand: a glass funnel lined with a cone-folded white filter paper, and a glass beaker underneath. A Korean child pours sandy brown water from another beaker along a glass rod into the funnel. Brown sand stays on the filter paper while clear water drips into the beaker below, with small downward arrows showing the water passing through.
-```
-
-**sci-1-03** 증발 — 왼쪽은 햇볕 아래 젖어서 물이 떨어지는 빨래, 그 위로 옅은 물결 화살표가 올라간다. 오른쪽은 같은 빨래가 보송하게 말라 바람에 흔들린다. 두 장면 사이에 큰 화살표.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A before-and-after scene of a clothesline in a sunny yard. On the left, a wet T-shirt and towel hang heavy and dark, dripping water drops, with faint translucent wavy arrows rising from them toward the bright sun. On the right, the same T-shirt and towel are dry, light-colored and fluffy, swaying in the breeze, with a big arrow from left to right between the two scenes.
-```
-
-**sci-1-04** 용해 — 유리컵 셋이 차례로 있다. 첫 컵엔 설탕을 붓고, 둘째 컵은 숟가락으로 저어 알갱이가 작아지고(빙글 화살표), 셋째 컵은 알갱이 하나 없이 맑다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Three clear glasses of water in a row from left to right on a table. In the first, a spoonful of white sugar is being poured in and piles at the bottom; in the second, a Korean child's hand stirs with a spoon, curved arrows showing the swirl and the sugar grains getting smaller; in the third, the water is completely clear with no grains visible. Arrows connect the three glasses in order.
-```
-
 **sci-1-05** 거름종이 — 왼쪽에 둥근 종이를 반, 또 반으로 접고 고깔로 펴는 세 단계 그림. 오른쪽엔 그 고깔이 깔때기 안에 꼭 들어가 있고, 위에 모래가 걸리고 아래 비커로 맑은 물방울이 떨어진다.
 
 ```text
@@ -1375,14 +1351,6 @@ A glass beaker in the center has clear water at the bottom and a yellow layer of
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
 
 A calm blue sea with a dark, shiny patch of oil spreading on the surface. Korean workers in orange life vests lean from a small boat and lay white square pads onto the oil. The pads already on the oil are soaking it up and turning dark brown, while the water around them looks clear blue again.
-```
-
-**sci-1-08** 해수 담수화 — 섬마을 바닷가. 관이 바닷물을 네모난 건물로 끌어들이고, 건물의 잘린 창으로 물 화살표는 촘촘한 막을 지나고 하얀 소금 알갱이는 남는 모습이 보인다. 반대편 관은 집으로 이어져 아이가 수도꼭지에서 맑은 물을 컵에 받는다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A small Korean island village by the sea. A pipe draws blue seawater with waves into a boxy plant building on the shore; a cutaway window in the building shows water arrows passing through a fine screen while white salt grains are left behind. From the other side, a clean pipe leads to a house where a Korean child fills a glass with clear water from a tap.
 ```
 
 ### 2. 날씨와 우리 생활
@@ -1427,76 +1395,12 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A Korean family living room in the evening. A TV screen shows a weather presenter standing next to a simple map of the Korean peninsula with a rain-cloud icon over it, with no words or numbers anywhere. In the foreground, a Korean child slides a folded umbrella into a school backpack.
 ```
 
-**sci-2-06** 응결 — 같은 얼음 주스 컵 두 장면. 왼쪽은 막 따라서 컵 겉이 말라 있다. 오른쪽은 조금 뒤 컵 겉에 물방울이 잔뜩 맺히고 바닥에 물이 고였으며, 둘레 공기의 옅은 점들이 작은 화살표를 따라 컵 쪽으로 모인다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A before-and-after pair of the same glass of iced juice on a wooden table. On the left, just poured, the outside of the glass is dry. On the right, a few minutes later, many round water droplets cover the outside of the glass and a small puddle forms at its base, while faint tiny dots in the surrounding air drift toward the cold glass along small arrows.
-```
-
-**sci-2-07** 이슬 — 맑은 새벽 공원 풀밭을 가까이에서 본다. 풀잎·나뭇잎·거미줄에 동그란 물방울이 반짝인다. 공기에서 잎 겉면으로 옅은 점선 화살표가 향하고, 화면 끝 아이 운동화 앞코가 젖어 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A close-up of park grass and leaves at early dawn under a pale clear sky. Round sparkling water droplets cover the grass blades, the leaves and a spider web. Faint dotted arrows from the surrounding air point onto the cold leaf surfaces, and the toes of a Korean child's sneakers at the edge of the frame are wet.
-```
-
-**sci-2-08** 안개 — 새벽 강변 길. 짙은 하얀 안개가 땅과 강물 바로 위에 낮게 깔려 먼 나무와 다리 절반을 가렸고, 안개 위 하늘은 맑다. 버스가 전조등을 켜고 천천히 달린다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A riverside road at dawn. A thick white fog hangs low just above the ground and the river, hiding the far trees and half of a bridge, while the sky above the fog is clear pale blue. A city bus with its headlights on drives slowly along the road through the fog.
-```
-
 **sci-2-09** 지표면 — 옆에서 본 넓은 풍경. 왼쪽 들판과 길, 오른쪽 잔잔한 바다가 공기와 맞닿은 경계를 빛나는 노란 선으로 그었다. 들판 위 노란 선 바로 위에 얇은 안개가 깔려 있고, 구름은 하늘 높이 떠 있다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
 
 A wide side view of a landscape: green fields and a road on the left meet a calm sea on the right, and the line where the land and the sea touch the air is traced with a glowing yellow line. A thin layer of white fog hugs the glowing line over the fields, while fluffy white clouds float high in the sky above.
-```
-
-**sci-2-10** 기압 — 옆에서 본 높은 산. 산 아래 돗자리 위 과자 봉지는 사방에서 누르는 작은 파란 화살표에 둘러싸여 조금 납작하다. 산꼭대기의 같은 봉지는 빵빵하게 부풀었고 둘레 화살표가 몇 개뿐이다. 꼭대기의 아이가 놀라며 봉지를 들고 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A side view of a tall mountain. At the foot of the mountain, a snack bag sits on a picnic mat looking slightly flat, surrounded by many small light-blue arrows pressing on it from all sides. On the summit, the same snack bag is puffed up round and tight, with only a few small arrows around it. A Korean hiker child on the summit holds it up in surprise.
-```
-
-**sci-2-11** 고기압 — 넓은 풍경 한가운데 투명한 공기 기둥이 있고, 그 안에 작은 파란 점이 빽빽하며 굵은 화살표가 아래를 향한다. 땅 높이에서 기둥 밑으로부터 양옆으로 곡선 화살표가 퍼져 나간다. 기둥 위 하늘은 구름 없이 맑고 마을에 빨래가 널려 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A wide landscape with a tall, transparent column of air standing in the center, filled with many densely packed small blue dots and thick arrows pointing downward. At ground level, curved arrows flow outward from the bottom of the column to both sides. The sky above the column is clear blue with a bright sun and no clouds, and laundry hangs on lines in the sunny village below.
-```
-
-**sci-2-12** 저기압 — 넓은 풍경 한가운데 투명한 공기 기둥이 있고, 그 안에 파란 점이 드문드문하며 굵은 화살표가 위를 향한다. 땅 높이에서 양옆의 곡선 화살표가 기둥 밑으로 모여든다. 기둥 위에 짙은 회색 구름이 모여 비가 내리고, 마을 사람들이 우산을 쓴다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A wide landscape with a tall, transparent column of air in the center, holding only a few sparse blue dots and thick arrows pointing upward. At ground level, curved arrows flow inward from both sides toward the bottom of the column. Above the column, thick grey clouds gather and rain falls on the village below, where people hold umbrellas.
-```
-
-**sci-2-13** 해풍 — 옆에서 본 맑은 한낮 바닷가. 왼쪽 모래밭은 주황빛으로 뜨겁고 오른쪽 바다는 시원한 파랑. 모래 위로 따뜻한 공기 화살표가 올라가고, 땅 가까이 큰 화살표가 바다에서 육지 쪽으로 흐른다. 아이의 연과 깃발이 모두 육지 쪽으로 날린다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A bright sunny daytime beach seen from the side, with the sandy land on the left glowing warm orange-red and the sea on the right a cool blue. Wavy arrows of warm air rise from the hot sand, and a big arrow near the ground flows from over the sea toward the land. A Korean child's kite on the beach and the beach flags are all pulled toward the land.
-```
-
-**sci-2-14** 육풍 — 옆에서 본 달밤 바닷가. 왼쪽 모래밭은 차가운 파란빛, 오른쪽 바다는 조금 따뜻한 주황빛. 땅 가까이 큰 화살표가 육지에서 바다 쪽으로 흐르고, 캠핑장 모닥불 연기도 바다 쪽으로 흘러간다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A moonlit beach at night seen from the side, with the sandy land on the left tinted cool blue and the sea on the right tinted slightly warmer orange. A big arrow near the ground flows from the land toward the sea. A small campfire at a campsite on the beach sends its smoke drifting out over the sea, and a Korean family sits beside it.
 ```
 
 **sci-2-15** 기상 관측 — 학교 옥상의 작은 자동 관측 장비: 하얀 겹창 상자, 도는 컵 모양 바람개비, 화살표 풍향계, 빗물 통, 작은 태양 전지판. 조끼 입은 직원이 숫자 없는 물결선 그래프가 뜬 태블릿을 들고 있고, 각 장비에서 태블릿으로 점선 화살표가 간다. 하늘에 드론이 난다.
@@ -1555,46 +1459,6 @@ A Korean dad holds a digital probe thermometer whose long, thin, shiny metal spi
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
 
 A frying pan on a gas stove glows hot red-orange with wavy heat lines rising from it. A Korean child stands back at arm's length and aims a gun-shaped handheld infrared thermometer at the pan's surface, with a dotted cone running from the thermometer to a small red dot on the pan; the thermometer's display is lit but blank.
-```
-
-**sci-3-06** 열 — 아이의 두 손이 주황빛으로 따뜻한 코코아 컵을 감싼다. 컵에서 손바닥과 손가락으로 주황 물결 화살표가 흘러간다. 컵에서 먼 손끝은 아직 파르스름하고 컵에 닿은 부분은 따뜻한 분홍빛으로 바뀐다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A close-up of two child's hands wrapped around a mug of hot cocoa that glows warm orange-red. Wavy orange arrows flow from the mug into the palms and fingers. The fingertips farther from the mug are still tinted cool blue, while the parts touching the mug are turning warm pink.
-```
-
-**sci-3-07** 전도 — 가운데에만 작은 불이 닿은 쇠 프라이팬. 불 바로 위는 빨강, 바깥으로 갈수록 주황·노랑, 가장자리와 손잡이는 파랑으로 칠해져 있다. 주황 화살표가 가운데에서 가장자리와 손잡이 쪽으로 쇠를 따라 뻗는다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A flat metal frying pan with a long metal handle sits on a gas stove with a small blue flame under its center only. The metal is colored like a heat map: bright red right above the flame, fading to orange, then yellow, then cool blue at the rim and along the handle. Orange arrows run along the metal from the hot center out toward the rim and the handle.
-```
-
-**sci-3-08** 대류 — 투명한 유리 냄비 바닥 왼쪽에만 작은 불이 있다. 빨간 화살표는 데워진 물이 왼쪽으로 올라가 위에서 건너가고, 파란 화살표는 찬물이 오른쪽으로 내려와 바닥을 따라 불 쪽으로 돌아온다. 하나의 큰 고리가 된다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A clear glass pot of water sits over a small flame placed under the left side of its bottom. Red arrows show warm water rising from the heated bottom up the left side to the top, then curving across; blue arrows show cooler water sinking down the right side and flowing back along the bottom toward the flame, forming one big loop.
-```
-
-**sci-3-09** 복사 — 넓고 텅 빈 검은 우주 왼쪽에 밝은 태양. 곧은 노란 빛 화살표가 아무것도 없는 공간을 건너 오른쪽 지구에 닿고, 햇빛을 받은 쪽은 따뜻한 주황, 반대쪽은 파랗다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A bright yellow sun on the left side of a wide black, empty space with no dust or particles. Straight yellow ray arrows travel across the empty space to the Earth on the right, whose sunlit side glows warm orange while its night side stays cool blue.
-```
-
-**sci-3-10** 단열 — 나란히 견준 그림. 왼쪽 얇은 쇠컵은 벽을 뚫고 주황 물결 화살표가 잔뜩 빠져나가 음료가 푸르스름하게 식는다. 오른쪽 보온병은 잘라 보인 단면에 은빛 안쪽 벽·바깥쪽 벽·그 사이 빈틈이 있고, 화살표가 빈틈에서 되튕겨 음료가 따뜻한 주황으로 남는다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A side-by-side comparison. On the left, a thin metal cup of cocoa with many wavy orange arrows escaping through its walls into the air, the drink inside turning cool blue-grey. On the right, a vacuum flask shown in cutaway with a silver inner wall, an outer wall and an empty gap between them; the orange arrows inside bounce back at the gap and the drink stays glowing warm orange.
 ```
 
 **sci-3-11** 단열재 — 겨울 집 벽을 자른 그림. 왼쪽은 아이가 책 읽는 따뜻한 주황빛 방, 오른쪽은 눈 덮인 파란 바깥. 벽 속에 두꺼운 하얀 스타이로폼 판이 있고, 방의 주황 화살표가 판에 부딪혀 방으로 되돌아온다. 아래쪽에 스타이로폼·뽁뽁이·솜 조각이 놓여 있다.
