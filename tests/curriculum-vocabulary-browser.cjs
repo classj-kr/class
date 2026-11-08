@@ -7,7 +7,26 @@ const base = '/learning/literacy-numeracy/curriculum-vocabulary/';
 const lessons = require('..' + base + 'word-lessons.js');
 const books = require('..' + base + 'word-bank.js');
 const visualLessons = require('..' + base + 'visual-lessons.js');
-const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf' };
+const unitCases = require('..' + base + 'unit-cases.js');
+const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.webp': 'image/webp' };
+
+async function verifyUnitCase(page, term, subject, unit) {
+  const [title, records] = unitCases[[term, subject, unit].join('/')];
+  const section = page.locator('.unit-case');
+  assert.equal(await section.locator('h2').textContent(), title);
+  assert.equal(await page.locator('.glossary, .word-list').count(), 0);
+  const taught = new Set();
+  for (const [name, evidence] of records) {
+    const control = section.getByRole('button', { name, exact: true });
+    await control.click();
+    assert.equal(await control.getAttribute('aria-pressed'), 'true');
+    assert.equal(await section.locator('.case-evidence').textContent(), evidence);
+    for (const word of await section.locator('.case-explanation strong').allTextContents()) taught.add(word);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  }
+  const expected = books[term][subject].units.find(row => row.id === unit).words.map(([word]) => word);
+  assert.deepEqual([...taught].sort(), expected.sort());
+}
 
 (async () => {
   const browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || 'chrome' });
@@ -40,13 +59,15 @@ const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 't
     assert.ok(fonts['.hanja-glyph'].some(name => /Klee/i.test(name)), fonts['.hanja-glyph']);
     assert.equal(await page.locator('.hanja-glyph').first().evaluate(el => getComputedStyle(el).fontSynthesis), 'none');
     assert.equal(await page.locator('.filters label, #subject-label').count(), 0);
-    let checkedWords = 0, checkedUnits = 0, checkedLegacy = 0;
+    let checkedWords = 0, checkedUnits = 0, checkedLegacy = 0, checkedCases = 0;
     for (const width of [1280, 390]) {
       await page.setViewportSize({ width, height: 900 });
       for (const [term, subjects] of Object.entries(lessons)) for (const [subject, units] of Object.entries(subjects)) for (const [unit, words] of Object.entries(units)) {
         const expected = books[term][subject].units.find(row => row.id === unit).words.map(row => row[0]);
         assert.deepEqual(Object.keys(words).sort(), expected.sort(), 'New content must cover every word in its unit.');
         await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit }));
+        await verifyUnitCase(page, term, subject, unit);
+        checkedCases++;
         assert.equal(await page.locator('.word-navigation button').count(), expected.length);
         for (const [word, data] of Object.entries(words)) {
           await page.locator('.word-navigation').getByRole('button', { name: word, exact: true }).click();
@@ -70,6 +91,8 @@ const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 't
       for (const [term, subjects] of Object.entries(visualLessons)) for (const [subject, units] of Object.entries(subjects)) for (const [unit, activities] of Object.entries(units)) {
         if (lessons[term]?.[subject]?.[unit]) continue;
         await page.goto('http://curriculum.test' + base + '?' + new URLSearchParams({ term, subject, unit }));
+        await verifyUnitCase(page, term, subject, unit);
+        checkedCases++;
         for (let index = 0; index < activities.length; index++) {
           const { check } = activities[index];
           const section = page.locator('.visual-lesson').nth(index);
@@ -89,6 +112,7 @@ const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 't
     for (const phrase of ['뜻과 쓰임 자세히 보기', '물어볼 한 가지', '다른 곳에서도 찾아보기', '함께 구별하기', '같은 이야기를 무엇으로 읽을까?', '두 책의 이야기는 같아요. 무엇이 바뀌었을까요?']) assert.ok(!body.includes(phrase), phrase);
     assert.deepEqual(errors, []);
     assert.deepEqual(missing, []);
-    console.log(JSON.stringify({ wordChecks: checkedWords, unitChecks: checkedUnits, legacyChecks: checkedLegacy, fonts, errors }, null, 2));
+    assert.equal(checkedCases, Object.keys(unitCases).length * 2);
+    console.log(JSON.stringify({ caseChecks: checkedCases, wordChecks: checkedWords, unitChecks: checkedUnits, legacyChecks: checkedLegacy, fonts, errors }, null, 2));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
