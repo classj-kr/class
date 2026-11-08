@@ -204,18 +204,35 @@
       more.append(...word.explain.map(text => element('p', text)));
       side.append(more);
     }
+    // 다른 뜻은 두 묶음으로 나눈다. 다의어(같은 낱말의 다른 뜻)를 먼저, 동형어(소리만 같은 다른 낱말)를 그 아래에.
+    // 번호는 ①(이 단원 뜻)에 이어 ②, ③…으로 이어 센다.
     if (word.senses) {
-      const others = element('ol', '', 'meanings others');
-      others.start = 2;
-      for (const sense of word.senses) {
-        const item = element('li', '', 'meaning');
-        const text = element('p', '', 'word-mean');
-        if (sense.hanja) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
-        text.append(sense.mean);
-        item.append(text, sentenceWith(sense.use, word.w));
-        others.append(item);
+      let number = 2;
+      const groups = [
+        ['다의어', '같은 낱말의 다른 뜻', 'polysemy'],
+        ['동형어', '소리만 같은 다른 낱말', 'homonym']
+      ];
+      for (const [kind, gloss, cls] of groups) {
+        const rows = word.senses.filter(sense => (sense.kind || '다의어') === kind);
+        if (!rows.length) continue;
+        const group = element('section', '', `sense-group ${cls}`);
+        const label = element('p', '', 'sense-kind');
+        label.append(element('b', kind), element('span', gloss));
+        const list = element('ol', '', 'meanings others');
+        list.start = number;
+        list.style.counterReset = `sense ${number - 1}`;
+        for (const sense of rows) {
+          const item = element('li', '', 'meaning');
+          const text = element('p', '', 'word-mean');
+          if (sense.hanja) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
+          text.append(sense.mean);
+          item.append(text, sentenceWith(sense.use, word.w));
+          list.append(item);
+          number++;
+        }
+        group.append(label, list);
+        side.append(group);
       }
-      side.append(others);
     }
     const paging = element('nav', '', 'paging');
     paging.setAttribute('aria-label', '다른 낱말');

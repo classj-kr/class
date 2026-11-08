@@ -16,7 +16,7 @@
    "beats": ["모래가 섞인 물을 거름종이에 붓습니다.", "모래는 종이 위에 남고 물만 아래로 빠집니다.", "이렇게 걸러서 나누는 방법이 거름입니다."],
    "explain": [
     "거름은 '거르다'에서 나온 말입니다. 구멍이 아주 작은 종이나 천을 대면 물과 물에 녹은 것은 빠져나가고, 녹지 않은 알갱이만 위에 남습니다.",
-    "헷갈리는 말: 밭에 주는 거름과 소리가 같지만 뜻이 전혀 다릅니다. 과학 시간의 거름은 '걸러 내기'입니다. 소금과 모래를 나눌 때는 먼저 물에 녹인 뒤 거르면 모래만 종이 위에 남습니다.",
+    "과학 시간의 거름은 '걸러 내기'입니다. 소금과 모래를 나눌 때는 먼저 물에 녹인 뒤 거르면 모래만 종이 위에 남습니다.",
     "생활 속 예: 커피 여과지로 커피 찌꺼기를 거르는 것, 장을 담글 때 천으로 메주 찌꺼기를 거르는 것이 모두 거름입니다."
    ],
    "img": "A school science filtering setup on a stand: a glass funnel lined with a cone-folded white filter paper, and a glass beaker underneath. A Korean child pours sandy brown water from another beaker along a glass rod into the funnel. Brown sand stays on the filter paper while clear water drips into the beaker below, with small downward arrows showing the water passing through.",
@@ -325,7 +325,7 @@
    "beats": ["불에 닿은 가운데부터 팬이 뜨거워집니다.", "열이 쇠를 따라 가장자리와 손잡이로 퍼집니다.", "고체를 따라 열이 옮겨 가는 것이 전도입니다."],
    "explain": [
     "전도(傳導)는 '전하여 이끈다'는 뜻입니다. 고체에서는 물질은 그 자리에 가만히 있고, 열만 맞닿은 이웃 부분으로 차례차례 전해집니다.",
-    "금속은 전도가 빠르고 나무, 플라스틱, 천은 느립니다. 그래서 냄비 몸통은 금속으로, 손잡이는 나무나 플라스틱으로 만듭니다. 헷갈리는 말: 넘어진다는 뜻의 '전도'와 소리만 같습니다.",
+    "금속은 전도가 빠르고 나무, 플라스틱, 천은 느립니다. 그래서 냄비 몸통은 금속으로, 손잡이는 나무나 플라스틱으로 만듭니다.",
     "생활 속 예: 뜨거운 국에 넣어 둔 쇠숟가락의 손잡이까지 뜨거워지는 것도 전도입니다."
    ],
    "img": "A flat metal frying pan with a long metal handle sits on a gas stove with a small blue flame under its center only. The metal is colored like a heat map: bright red right above the flame, fading to orange, then yellow, then cool blue at the rim and along the handle. Orange arrows run along the metal from the hot center out toward the rim and the handle.",
@@ -345,7 +345,7 @@
    "beats": ["태양과 지구 사이는 아무것도 없는 우주입니다.", "그래도 햇빛이 곧장 건너와 지구를 데웁니다.", "빛으로 열이 바로 옮겨 가는 것이 복사입니다."],
    "explain": [
     "복사(輻射)의 輻은 수레바퀴의 살입니다. 바퀴살이 한가운데에서 사방으로 뻗듯, 열이 뜨거운 물체에서 사방으로 뻗어 나간다는 뜻입니다.",
-    "헷갈리는 말: 종이를 그대로 베끼는 '복사'와 소리만 같습니다. 전도와 대류는 열을 나를 물질이 있어야 하지만, 복사는 공기도 없는 우주를 건너 태양의 열을 지구까지 나릅니다.",
+    "전도와 대류는 열을 나를 물질이 있어야 하지만, 복사는 공기도 없는 우주를 건너 태양의 열을 지구까지 나릅니다.",
     "생활 속 예: 햇볕을 쬐면 얼굴이 따뜻해지고, 양산으로 햇빛을 가리면 시원해집니다. 난로 앞에서 손을 쬐면 따뜻한 것도 복사 때문입니다."
    ],
    "img": "A bright yellow sun on the left side of a wide black, empty space with no dust or particles. Straight yellow ray arrows travel across the empty space to the Earth on the right, whose sunlit side glows warm orange while its night side stays cool blue.",
