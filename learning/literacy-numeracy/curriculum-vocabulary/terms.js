@@ -16,6 +16,26 @@ window.CurriculumTerms = {
    "figures/3-2/soc.js?v=3840cebb"
   ]
  },
+ "4-1": {
+  "words": "words-4-1.js?v=1cd2fc62",
+  "figures": [
+   "figures/4-1/kor-2.js?v=e40a3db6",
+   "figures/4-1/kor-3.js?v=63605738",
+   "figures/4-1/kor.js?v=19146019",
+   "figures/4-1/math-1.js?v=572c7ccc",
+   "figures/4-1/math-2.js?v=a9c89023",
+   "figures/4-1/math-3.js?v=b2813c80",
+   "figures/4-1/math-4.js?v=82089c66",
+   "figures/4-1/math-5.js?v=29da48da",
+   "figures/4-1/math-6.js?v=0688a438",
+   "figures/4-1/sci-2.js?v=3214d541",
+   "figures/4-1/sci-3.js?v=e417debc",
+   "figures/4-1/sci.js?v=b408ae5c",
+   "figures/4-1/soc-2.js?v=a8e66dcd",
+   "figures/4-1/soc-3.js?v=423963f1",
+   "figures/4-1/soc.js?v=6b243ca6"
+  ]
+ },
  "4-2": {
   "words": "words-4-2.js?v=d5eabd73",
   "figures": [
@@ -104,6 +124,10 @@ window.CurriculumTerms = {
 };
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
+ "3-1": {
+  "words": "words-3-1.js?v=9f38006e",
+  "figures": []
+ },
  "3-2": {
   "words": "words-3-2.js?v=0e161532",
   "figures": [
@@ -121,10 +145,11 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=1b6677e3",
+  "words": "words-4-1.js?v=1cd2fc62",
   "figures": [
-   "figures/4-1/kor-3.js?v=215fdd81",
-   "figures/4-1/kor.js?v=7e700366",
+   "figures/4-1/kor-2.js?v=e40a3db6",
+   "figures/4-1/kor-3.js?v=63605738",
+   "figures/4-1/kor.js?v=19146019",
    "figures/4-1/math-1.js?v=572c7ccc",
    "figures/4-1/math-2.js?v=a9c89023",
    "figures/4-1/math-3.js?v=b2813c80",
