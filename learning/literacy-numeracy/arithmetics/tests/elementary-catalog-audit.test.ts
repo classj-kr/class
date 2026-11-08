@@ -9,13 +9,13 @@ test("초1 학습지는 실제 유형명을 쓰고 암산 표시를 붙이지 �
   assert.deepEqual(gradeOne.map(({ title }) => title), [
     "1부터 9까지 수 세기",
     "한 자리 수 덧셈·뺄셈",
-    "두 자리 수 덧셈·뺄셈",
     "주고받은 뒤의 수 구하기",
-    "10 모으기·가르기",
-    "10을 넘는 덧셈·뺄셈",
-    "덧셈·뺄셈 빈칸 채우기",
     "두 자리 수 읽기",
     "뛰어 세기",
+    "10 모으기·가르기",
+    "두 자리 수 덧셈·뺄셈",
+    "10을 넘는 덧셈·뺄셈",
+    "덧셈·뺄셈 빈칸 채우기",
   ]);
   assert.equal(gradeOne.some(({ badge }) => badge === "암산"), false);
 });
@@ -31,6 +31,37 @@ test("초2 학습지는 구형 순번 제목 대신 실제 훈련 유형명을 �
     assert.doesNotMatch(worksheet.name, /덧셈뺄셈[①②③]/u);
     assert.doesNotMatch(worksheet.title, /덧셈뺄셈[①②③]/u);
   }
+});
+
+test("학기가 섞인 학습지는 마지막 선수 내용을 배운 뒤에 배치한다", () => {
+  const indexOf = (name: string) => {
+    const index = arithmeticWorksheetCatalog.findIndex((worksheet) => worksheet.name === name);
+    assert.notEqual(index, -1, name);
+    return index;
+  };
+  // 특정 출판사의 단원 순서를 고정하지 않고 1학기/2학기 경계와 선수 관계를 확인한다.
+  for (const [earlier, later] of [
+    ["1수읽기", "1덧셈뺄셈②"],
+    ["1보수", "1덧셈뺄셈③"],
+    ["2묶어세기", "2구구단①"],
+    ["3시간②", "3곱셈③"],
+    ["4나눗셈", "4분수"],
+    ["프라임넘버", "자연수분해"],
+    ["5분수③", "5분수①"],
+    ["5분수③", "5분수②"],
+    ["5도형", "5분수①"],
+    ["5도형", "5소수"],
+    ["6소수②", "6직육면체"],
+    ["6직육면체", "6분수"],
+    ["6직육면체", "6소수③"],
+    ["6직육면체", "6쌓기나무"],
+    ["6소수③", "6혼합계산"],
+  ]) assert.ok(indexOf(earlier) < indexOf(later), `${earlier} → ${later}`);
+
+  const grades = arithmeticWorksheetCatalog.map(({ grade }) => Number(grade.slice(1)));
+  assert.deepEqual(grades, [...grades].sort((a, b) => a - b));
+  assert.equal(arithmeticWorksheetCatalog.length, 65);
+  assert.equal(new Set(arithmeticWorksheetCatalog.map(({ route }) => route)).size, 65);
 });
 
 test("암산과 암기 표시는 사용자가 지정한 학습지에만 붙인다", () => {

@@ -75,12 +75,30 @@ const readyRoutes: Record<string, string> = {
 };
 
 const worksheetNames = [
-  "1수세기①", "1덧셈뺄셈①", "1덧셈뺄셈②", "1주고받기", "1보수", "1덧셈뺄셈③", "1덧셈뺄셈④", "1수읽기", "1뛰어세기",
-  "2두 자리 수 세로셈", "2세로셈 빈칸", "2덧셈·뺄셈 빈칸", "2묶어세기", "2구구단①", "2구구단②", "2구구단③", "2구구단④", "2구구단⑤", "2시계",
-  "3덧셈뺄셈", "3덧셈뺄셈빈칸", "3보수뺄셈100", "3보수뺄셈1000", "3덧셈뺄셈②", "3나눗셈①", "3곱셈①", "3곱셈②", "3길이", "3시간①", "3시간②", "3곱셈③", "19단", "제곱수", "3나눗셈②", "3나눗셈③", "3분수①", "3분수②", "3무게,들이", "3분수③",
-  "4숫자읽기", "4각도어림", "4곱셈", "4큰수곱셈", "4나눗셈", "4분수", "4소수", "단위변환",
-  "5혼합계산", "자연수분해", "프라임넘버", "5약수,배수", "5분수①", "5분수②", "5분수③", "5소수", "5도형",
-  "6분수", "6소수①", "6소수②", "6소수③", "6혼합계산", "6비례식", "6원", "6직육면체", "6쌓기나무",
+  // 학년·학기 순서, 같은 학기 안에서는 기초 → 응용. 출판사별 단원 번호는 사용하지 않는다.
+  // 여러 학기 내용을 합친 학습지는 마지막 선수 내용을 배운 뒤에 배치한다.
+  // 초1 1학기: 9까지의 수와 계산, 그 범위 안의 주고받기 응용.
+  "1수세기①", "1덧셈뺄셈①", "1주고받기",
+  // 초1 2학기: 두 자리 수를 읽고 세기 → 계산 준비 → 계산과 빈칸 응용.
+  "1수읽기", "1뛰어세기", "1보수", "1덧셈뺄셈②", "1덧셈뺄셈③", "1덧셈뺄셈④",
+  // 초2 1학기 / 2학기.
+  "2두 자리 수 세로셈", "2세로셈 빈칸", "2덧셈·뺄셈 빈칸", "2묶어세기",
+  "2구구단①", "2구구단②", "2구구단③", "2구구단④", "2구구단⑤", "2시계",
+  // 초3 1학기.
+  "3덧셈뺄셈", "3덧셈뺄셈빈칸", "3보수뺄셈100", "3보수뺄셈1000", "3덧셈뺄셈②", "3나눗셈①", "3곱셈①", "3곱셈②", "3길이", "3시간①", "3시간②",
+  // 초3 2학기. 나눗셈 구구는 실제로 두 자리 수 ÷ 한 자리 수인 암산 학습지다.
+  "3곱셈③", "19단", "제곱수", "3나눗셈②", "3나눗셈③", "3분수①", "3분수②", "3무게,들이", "3분수③",
+  // 초4 1학기 / 2학기. 소수 단위 변환은 소수 학습 뒤에 둔다.
+  "4숫자읽기", "4각도어림", "4곱셈", "4큰수곱셈", "4나눗셈",
+  "4분수", "4소수", "단위변환",
+  // 초5 1학기. 소수 찾기·소수의 곱으로 분해하기는 기존 보충 학습의 선수 순서다.
+  "5혼합계산", "프라임넘버", "자연수분해", "5약수,배수", "5분수③", "5도형",
+  // 초5 2학기. 두 분수 계산 학습지는 덧셈·뺄셈뿐 아니라 곱셈도 포함한다.
+  "5분수①", "5분수②", "5소수",
+  // 초6 1학기: 자연수로 나누는 소수 계산 → 직육면체의 겉넓이·부피.
+  "6소수①", "6소수②", "6직육면체",
+  // 초6 2학기: 분수/소수로 나누기와 혼합 계산 → 입체·비례·원의 측정.
+  "6분수", "6소수③", "6혼합계산", "6쌓기나무", "6비례식", "6원",
 ] as const;
 
 const explicitGrades: Record<string, string> = {
@@ -291,11 +309,10 @@ export const highSchoolWorksheetCatalog: ArithmeticWorksheet[] = [
   { grade: "공수1", name: "고차식·대칭식 인수분해", title: "고차식·대칭식 인수분해", route: "/arithmetic/high-school/advanced-factorization" },
   { grade: "공수1", name: "분수식의 계산", title: "분수식의 계산", route: "/arithmetic/high-school/factorization-rational" },
   { grade: "공수1", name: "복소수", title: "복소수", route: "/arithmetic/high-school/complex-numbers" },
-  { grade: "공수1", name: "지수와 근호", title: "지수와 근호", route: "/arithmetic/high-school/exponents-radicals" },
   { grade: "공수1", name: "이차방정식: 판별식·근과 계수", title: "이차방정식: 판별식·근과 계수", route: "/arithmetic/high-school/quadratic-root-relations" },
   { grade: "공수1", name: "이차방정식과 이차함수", title: "이차방정식과 이차함수", route: "/arithmetic/high-school/quadratic-function-relations" },
-  { grade: "공수1", name: "연립이차방정식", title: "연립이차방정식", route: "/arithmetic/high-school/simultaneous-quadratic-equations" },
   { grade: "공수1", name: "삼차방정식과 사차방정식", title: "삼차방정식과 사차방정식", route: "/arithmetic/high-school/cubic-quartic-equations" },
+  { grade: "공수1", name: "연립이차방정식", title: "연립이차방정식", route: "/arithmetic/high-school/simultaneous-quadratic-equations" },
   { grade: "공수1", name: "유리·무리·절댓값 방정식", title: "유리·무리·절댓값 방정식", route: "/arithmetic/high-school/equation-transformations" },
   { grade: "공수1", name: "연립·절댓값·이차부등식", title: "연립·절댓값·이차부등식", route: "/arithmetic/high-school/inequality-intervals" },
   { grade: "공수1", name: "경우의 수·순열·조합", title: "경우의 수·순열·조합", route: "/arithmetic/high-school/permutations-combinations" },
@@ -305,6 +322,7 @@ export const highSchoolWorksheetCatalog: ArithmeticWorksheet[] = [
   { grade: "공수2", name: "집합의 연산과 원소 개수", title: "집합의 연산과 원소 개수", route: "/arithmetic/high-school/sets-propositions" },
   { grade: "공수2", name: "합성함수와 역함수", title: "합성함수와 역함수", route: "/arithmetic/high-school/function-transformations" },
   { grade: "공수2", name: "유리함수와 무리함수", title: "유리함수와 무리함수", route: "/arithmetic/high-school/rational-radical-functions" },
+  { grade: "대수", name: "지수와 근호", title: "지수와 근호", route: "/arithmetic/high-school/exponents-radicals" },
   { grade: "대수", name: "로그의 값과 성질", title: "로그의 값과 성질", route: "/arithmetic/high-school/logarithms" },
   { grade: "대수", name: "지수함수·로그함수 계산과 활용", title: "지수함수·로그함수 계산과 활용", route: "/arithmetic/high-school/exponential-log-functions" },
   { grade: "대수", name: "지수·로그 방정식", title: "지수·로그 방정식", route: "/arithmetic/high-school/exponential-log-equations" },
@@ -320,8 +338,8 @@ export const highSchoolWorksheetCatalog: ArithmeticWorksheet[] = [
   { grade: "대수", name: "수학적 귀납법", title: "수학적 귀납법", route: "/arithmetic/high-school/mathematical-induction" },
   { grade: "미적1", name: "함수의 극한과 연속", title: "함수의 극한과 연속", route: "/arithmetic/high-school/limits-continuity" },
   { grade: "미적1", name: "다항함수의 미분", title: "다항함수의 미분", route: "/arithmetic/high-school/derivative-practice" },
-  { grade: "미적1", name: "미분의 활용", title: "미분의 활용", route: "/arithmetic/high-school/derivative-applications" },
   { grade: "미적1", name: "평균값정리", title: "평균값정리", route: "/arithmetic/high-school/mean-value-theorem" },
+  { grade: "미적1", name: "미분의 활용", title: "미분의 활용", route: "/arithmetic/high-school/derivative-applications" },
   { grade: "미적1", name: "다항함수의 적분", title: "다항함수의 적분", route: "/arithmetic/high-school/polynomial-integrals" },
   { grade: "미적2", name: "수열의 극한과 급수", title: "수열의 극한과 급수", route: "/arithmetic/high-school/sequence-limits-series" },
   { grade: "미적2", name: "삼각함수의 덧셈정리와 합·곱 변환", title: "삼각함수의 덧셈정리와 합·곱 변환", route: "/arithmetic/high-school/trigonometric-addition" },
@@ -338,11 +356,11 @@ export const highSchoolWorksheetCatalog: ArithmeticWorksheet[] = [
   { grade: "미적2", name: "회전체의 부피", title: "회전체의 부피", route: "/arithmetic/high-school/solids-of-revolution" },
   { grade: "기하", name: "이차곡선의 방정식", title: "이차곡선의 방정식", route: "/arithmetic/high-school/conic-sections" },
   { grade: "기하", name: "이차곡선의 접선", title: "이차곡선의 접선", route: "/arithmetic/high-school/conic-transformations-tangents" },
+  { grade: "기하", name: "공간도형의 위치 관계와 정사영", title: "공간도형의 위치 관계와 정사영", route: "/arithmetic/high-school/space-geometry-projections" },
+  { grade: "기하", name: "공간좌표", title: "공간좌표", route: "/arithmetic/high-school/space-coordinates" },
   { grade: "기하", name: "평면벡터의 성분과 활용", title: "평면벡터의 성분과 활용", route: "/arithmetic/high-school/plane-vectors" },
   { grade: "기하", name: "벡터의 내적과 정사영", title: "벡터의 내적과 정사영", route: "/arithmetic/high-school/vector-projections" },
   { grade: "기하", name: "도형과 벡터", title: "도형과 벡터", route: "/arithmetic/high-school/vector-geometry" },
-  { grade: "기하", name: "공간도형의 위치 관계와 정사영", title: "공간도형의 위치 관계와 정사영", route: "/arithmetic/high-school/space-geometry-projections" },
-  { grade: "기하", name: "공간좌표", title: "공간좌표", route: "/arithmetic/high-school/space-coordinates" },
   { grade: "확통", name: "순열의 활용과 중복조합", title: "순열의 활용과 중복조합", route: "/arithmetic/high-school/combinations" },
   { grade: "확통", name: "이항정리", title: "이항정리", route: "/arithmetic/high-school/binomial-theorem" },
   { grade: "확통", name: "확률의 성질과 조건부확률", title: "확률의 성질과 조건부확률", route: "/arithmetic/high-school/probability-rules" },

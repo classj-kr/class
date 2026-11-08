@@ -59,6 +59,22 @@ test("통합된 옛 학습지 주소는 새 종합 학습지로 이동한다", (
   }
 });
 
+test("2022 개정 과목 분류와 과목 안의 선수 순서를 따른다", () => {
+  assert.match(catalogSection, /grade:\s*"대수"[^}\n]*name:\s*"지수와 근호"/);
+  assert.match(fs.readFileSync(path.join(pageRoot, "exponents-radicals", "page.tsx"), "utf8"), /<span>대수<\/span>/);
+  for (const [earlier, later] of [
+    ["exponents-radicals", "logarithms"],
+    ["derivative-practice", "mean-value-theorem"],
+    ["mean-value-theorem", "derivative-applications"],
+    ["conic-sections", "space-geometry-projections"],
+    ["space-geometry-projections", "space-coordinates"],
+    ["space-coordinates", "plane-vectors"],
+  ]) {
+    assert.ok(catalogRoutes.includes(earlier) && catalogRoutes.includes(later));
+    assert.ok(catalogRoutes.indexOf(earlier) < catalogRoutes.indexOf(later), `${earlier} → ${later}`);
+  }
+});
+
 test("고등 문제지 과목명은 같은 정식 표기를 사용한다", () => {
   const source = pageRoutes
     .map((route) => fs.readFileSync(path.join(pageRoot, route, "page.tsx"), "utf8"))
