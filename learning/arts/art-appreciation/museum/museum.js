@@ -169,6 +169,8 @@
   const remotePeople = new Map();
   const remoteLayer = new THREE.Group(); scene.add(remoteLayer);
   const selfAvatar = makeSelfAvatar(); scene.add(selfAvatar);
+  const avatarReview = new URLSearchParams(location.search).get('avatars') === 'preview'
+    ? window.createMuseumAvatarReview?.({THREE,scene,renderer}) : null;
   let presenceSocket = null, presenceTimer = 0, localPresenceId = null, presenceScope = 'class';
   const tmpDirection = new THREE.Vector3();
   const tmpRight = new THREE.Vector3();
@@ -893,10 +895,10 @@
     const forwardX=-Math.sin(yaw),forwardZ=-Math.cos(yaw);
     selfAvatar.position.set(camera.position.x+forwardX*1.05,-.12,camera.position.z+forwardZ*1.05);
     selfAvatar.rotation.y=yaw;
-    selfAvatar.visible=!nearest&&!modal.open&&!finaleModal.open;
+    selfAvatar.visible=!avatarReview&&!nearest&&!modal.open&&!finaleModal.open;
   }
 
-  function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateArtLights(dt);updateFocus();updateSelfAvatar();sendPresence();renderer.render(scene,camera);}
+  function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateArtLights(dt);updateFocus();updateSelfAvatar();avatarReview?.update(dt);sendPresence();renderer.render(scene,camera);}
 
   addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open){if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
   addEventListener('keyup',e=>{keys[e.code]=false;});
@@ -911,6 +913,6 @@
   for(const d of [modal,finaleModal])d.addEventListener('click',e=>{if(e.target===d){window.ClassGameSfx?.play('click');d.close();}});
   document.querySelectorAll('.touch-controls button').forEach(b=>{const k=b.dataset.key;b.addEventListener('pointerdown',e=>{e.preventDefault();keys[k]=true;});b.addEventListener('pointerup',()=>keys[k]=false);b.addEventListener('pointercancel',()=>keys[k]=false);});
 
-  buildTabs();setRoom(0);connectClassPresence();animate();
+  buildTabs();setRoom(0);if(!avatarReview)connectClassPresence();animate();
   setInterval(()=>{if(document.visibilityState==='visible')void loadMuseumCompletions(rooms[activeRoom]);},30000);
 })();

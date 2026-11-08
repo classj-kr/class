@@ -185,12 +185,18 @@
   }
 
   function ensureBoard(first) {
-    if (mines) return;
+    if (mines) return true;
     const result = MineLogic.generate(level.rows, level.cols, level.mines, first);
-    if (!result) throw new Error('board generation failed');
+    if (!result) {
+      setStatus('추측 없이 풀리는 판을 준비하지 못했습니다. 칸을 다시 눌러 주세요.', 'fail');
+      playSfx('error');
+      return false;
+    }
     mines = result.mines;
     counts = result.counts;
     startCell = first;
+    setStatus('READY');
+    return true;
   }
 
   // 한 칸을 연다. 빈 칸이면 둘레로 퍼지며, 멀수록 늦게 뒤집힌다.
@@ -222,7 +228,7 @@
     stopTimer();
     cells[hit].classList.add('hit');
     boardWrap.classList.add('shake');
-    playSfx('fail');
+    playSfx('explosion');
     setStatus('지뢰를 열었습니다. RETRY로 같은 판을 다시 풀 수 있습니다.', 'fail');
     const others = [];
     mines.forEach((mine, i) => { if (mine && i !== hit && !flagged[i]) others.push(i); });
@@ -279,7 +285,7 @@
   function openCell(i) {
     if (finished || flagged[i]) return;
     if (opened[i]) { chord(i); return; }
-    ensureBoard(i);
+    if (!ensureBoard(i)) return;
     startTimer();
     if (mines[i]) {
       opened[i] = true;
@@ -288,7 +294,7 @@
       return;
     }
     const newly = openFrom(i);
-    if (newly > 1) playSfx('click');
+    playSfx(newly > 1 ? 'card' : 'stone');
     if (statusElement.textContent === 'READY') setStatus('');
     afterOpen(-1);
   }
@@ -302,9 +308,11 @@
       cells[i].classList.remove('nudge');
       void cells[i].offsetWidth;
       cells[i].classList.add('nudge');
+      playSfx('tick');
       return;
     }
     let hit = -1;
+    let newly = 0;
     for (const j of around) {
       if (opened[j] || flagged[j]) continue;
       if (mines[j]) {
@@ -312,9 +320,11 @@
         paintCell(j);
         if (hit < 0) hit = j;
       } else {
-        openFrom(j);
+        newly += openFrom(j);
       }
     }
+    // 한 동작에 한 번만 재생하고, 지뢰를 열었으면 폭발음만 낸다.
+    if (hit < 0 && newly > 0) playSfx(newly > 1 ? 'card' : 'stone');
     afterOpen(hit);
   }
 
@@ -323,6 +333,7 @@
     flagged[i] = !flagged[i];
     flagCount += flagged[i] ? 1 : -1;
     paintCell(i);
+    playSfx(flagged[i] ? 'select' : 'back');
     if (flagged[i]) {
       cells[i].classList.remove('pop');
       void cells[i].offsetWidth;
@@ -408,9 +419,11 @@
   }
 
   boardElement.addEventListener('pointerdown', event => {
-    if (event.pointerType === 'mouse') return;
     const target = event.target.closest('.mb-cell');
     if (!target) return;
+    // 길게 누르기 콜백에서도 모바일 브라우저가 효과음을 재생할 수 있게 한다.
+    window.ClassGameSfx?.unlock();
+    if (event.pointerType === 'mouse') return;
     swallowClick = false;
     pressCell = Number(target.dataset.i);
     pressX = event.clientX;

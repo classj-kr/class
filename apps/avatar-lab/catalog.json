@@ -1,0 +1,2664 @@
+{
+  "schemaVersion": 1,
+  "count": 152,
+  "categoryCounts": {
+    "animal": 52,
+    "award": 1,
+    "drink": 1,
+    "food": 24,
+    "fruit": 14,
+    "game": 1,
+    "object": 15,
+    "sport": 4,
+    "theme": 19,
+    "vegetable": 11,
+    "vehicle": 10
+  },
+  "styleReferences": [
+    "animal-cat",
+    "food-ramen"
+  ],
+  "suggestedStructureSamples": [
+    "animal-cat",
+    "food-ramen",
+    "food-donut",
+    "fruit-banana",
+    "vehicle-helicopter",
+    "object-umbrella"
+  ],
+  "completionRule": "Every visual and technical check must pass, including museumRuntime; a prototype is not a production-complete avatar.",
+  "avatars": [
+    {
+      "id": "animal-bear",
+      "source": "apps/classtools/assets/avatars/animal-bear.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "cdec61c19adf082a5242f4f72c8ad921108c31eac77037fcc83ecb1989fdf1f8",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-bee",
+      "source": "apps/classtools/assets/avatars/animal-bee.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "bf13ed878b8f07296fd43f366f83d0551ab956967db3f32535e981a219793f48",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-butterfly",
+      "source": "apps/classtools/assets/avatars/animal-butterfly.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "e2881d5d4aea002d194bfb868c7ecb925a6d94a15471be34da9767aac423d205",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-cat",
+      "source": "apps/classtools/assets/avatars/animal-cat.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "13db2c476eb70ad7ca6c52ac39c143265b76779812adefac1840d3f95b760e35",
+      "modelSha256": "3b0bd5ee6d0cfc8a062b92409a218a10b0a2bea99a66f466d0e2ebdcfd9c7f83",
+      "structureNote": "animal costume with ears and attached tail",
+      "status": "prototype_reviewed",
+      "checks": {
+        "identity": "reviewed",
+        "allViews": "reviewed",
+        "connections": "pass",
+        "animation": "pass",
+        "glb": "pass",
+        "museumRuntime": "preview_pass"
+      },
+      "visualReview": {
+        "date": "2026-11-08",
+        "status": "refined_and_reviewed",
+        "reviewer": "agent",
+        "userApproved": false,
+        "evidence": "outputs/qa/avatar-lab/refined-six/cat-views.webp"
+      },
+      "evidenceDirectory": "outputs/qa/avatar-lab/refined-six/"
+    },
+    {
+      "id": "animal-chick",
+      "source": "apps/classtools/assets/avatars/animal-chick.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "7eafe3c34943d8d65eaee81e55b6330e719c271b85ade623aaf3269f662483b0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-crab",
+      "source": "apps/classtools/assets/avatars/animal-crab.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "66320105d3dd381481fa5cebdc4e60a6a336ba9bd632c6acf1c74b0ab9204848",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-crested-gecko",
+      "source": "apps/classtools/assets/avatars/animal-crested-gecko.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "6b47321e9b78dcb73ae312b47dc256e47c8b7831384a9c6aea9eef73b87ecc8c",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-crocodile",
+      "source": "apps/classtools/assets/avatars/animal-crocodile.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "2273699b48ce290e082321985bb0a30685cfc3f8c13e3939c3fbc9fd673e56a1",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-deer",
+      "source": "apps/classtools/assets/avatars/animal-deer.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "3d821b8644b37cabdcb9760ccfdaee9598df265c6c9253dc3c7fa31e62812e16",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-dog",
+      "source": "apps/classtools/assets/avatars/animal-dog.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "1a364e809184092cdf2bd734d9da3f28dea72647e54ada6b79ac3d628c1032ae",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-dolphin",
+      "source": "apps/classtools/assets/avatars/animal-dolphin.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "122b41e4488ade3620376d197b6084f0961e98fed48298f881c87430a472592d",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-dragon",
+      "source": "apps/classtools/assets/avatars/animal-dragon.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "86f21c6089cc0d9278eea28ec14986c2b191a7bd673d04d009b7d4077d8cee43",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-dragonfly",
+      "source": "apps/classtools/assets/avatars/animal-dragonfly.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "093797ef501a7f306346372a462785e47b1ceb212d43d8cdb00ea1f8111fb9ef",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-duck",
+      "source": "apps/classtools/assets/avatars/animal-duck.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "43f1466c3fc4103ebf0a6d40e0a211412e5f892c2c5e31619522dfb328b70147",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-eagle",
+      "source": "apps/classtools/assets/avatars/animal-eagle.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "6bd413154d09ae445d96cf5848b48162caf0140885e33b079991d55d0a806739",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-elephant",
+      "source": "apps/classtools/assets/avatars/animal-elephant.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "371b7fdacce5bda4b55dd24d22414bbc1d460931bf9b5096e1eabe0026c27c6f",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-flamingo",
+      "source": "apps/classtools/assets/avatars/animal-flamingo.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "7e58f14aea73d076b8549d53ec0551a63085cc61b01ec3d7b6a16d25b23b5548",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-fox",
+      "source": "apps/classtools/assets/avatars/animal-fox.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "cbf2d5fb40772894878739e582ed321cd74a79cf9643886e8e124b2472560da6",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-frog",
+      "source": "apps/classtools/assets/avatars/animal-frog.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "2d6f387ef33bd905414548c2c2209162dd3da9faa699b04c863cfe281ca381d9",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-giraffe",
+      "source": "apps/classtools/assets/avatars/animal-giraffe.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "ee24da3b23f639c8273d036cdfac6d9586087cd6a398473808bf5f8491ee8ee3",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-hedgehog",
+      "source": "apps/classtools/assets/avatars/animal-hedgehog.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "3906259faea52d84d3960e6008f3eff600b7d7f69eed6e222e7927df04089ba0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-hippopotamus",
+      "source": "apps/classtools/assets/avatars/animal-hippopotamus.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "677e53ca66f628a5f23eae202b183ad7af46285283062b594df98671f7f456e1",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-kangaroo",
+      "source": "apps/classtools/assets/avatars/animal-kangaroo.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "1e17091064e3a686c57ed2a3a9f9431b6b12dfb2ebeb0db73846535e8ca11e78",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-koala",
+      "source": "apps/classtools/assets/avatars/animal-koala.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "80df92ca5728b8cd52da65c52d0e006312d19a4521731cadd90957a8a9240abb",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-ladybug",
+      "source": "apps/classtools/assets/avatars/animal-ladybug.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "af0802b993a51991a83fdd2db03d6f01add0fefaebbde6accc3e7de4bc4cca49",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-leopard-gecko",
+      "source": "apps/classtools/assets/avatars/animal-leopard-gecko.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "cda6259bfffaae25e76c3bdc89579fb1c56f9c31060faf7f7b6d6c602835bdf0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-lion",
+      "source": "apps/classtools/assets/avatars/animal-lion.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "78ca850c7a0e0f95af00df4b7132fa6ff5d96386ce9b3b218903031babc8d962",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-llama",
+      "source": "apps/classtools/assets/avatars/animal-llama.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "c405be751393612c9e9088334c4dd76a546531ca3c2ad2b5f46c2b4ff9b9399d",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-meerkat",
+      "source": "apps/classtools/assets/avatars/animal-meerkat.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "17223e5543bc2f3fc7a0a0310100c494c062b5162564f516ea0295fb7b54d070",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-monkey",
+      "source": "apps/classtools/assets/avatars/animal-monkey.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "c6fef49b9e2595ddbaa7840d9d2a0e07002f234fc374cf0725cfef2de0eb9afe",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-mouse",
+      "source": "apps/classtools/assets/avatars/animal-mouse.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "8a84667334bfdf490eadc16615e899018f6340cd44bc86bd5a64a2df9b3708ca",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-octopus",
+      "source": "apps/classtools/assets/avatars/animal-octopus.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "7b36883c42f80d6e77d15e523f5cd3fbb97e60fce25820bb78cdf4e0a76521e2",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-ostrich",
+      "source": "apps/classtools/assets/avatars/animal-ostrich.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "66684d62a8979ddc143ea025419897350c210819e7f91b8227675493c438ecf5",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-owl",
+      "source": "apps/classtools/assets/avatars/animal-owl.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "343c3f94d3363715cc2007000a1d5e343cdc64ed700c88747b78cac59084dd50",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-panda",
+      "source": "apps/classtools/assets/avatars/animal-panda.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "25264c6f0e3804c229c41877b2ee7da7bebb229b479c6fb34ae3daed1887dcd6",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-peacock",
+      "source": "apps/classtools/assets/avatars/animal-peacock.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "f303bb351e55f652c106eb3b170d3ba728e0cc795f4956023c374e1fbc7c3280",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-penguin",
+      "source": "apps/classtools/assets/avatars/animal-penguin.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "889adfb10fa032076b97a39c3693129040db47e3ba0bbf40fac55b741e11f3ee",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-praying-mantis",
+      "source": "apps/classtools/assets/avatars/animal-praying-mantis.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "6bc7e722247f0200dbcb98082a103730ded43687aec90165df7a78a6a8e98f04",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-rabbit",
+      "source": "apps/classtools/assets/avatars/animal-rabbit.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "a8a5a1f373d6420ea10b40b02be8d0ca5e1c0bb5b00ec3f9af0a76781a79dfb1",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-ratsnake",
+      "source": "apps/classtools/assets/avatars/animal-ratsnake.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "a718a7fee20eaefa73c20c26713f604f778bba8c12143ba62916f1d302b25d55",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-rhinoceros",
+      "source": "apps/classtools/assets/avatars/animal-rhinoceros.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "7632f8e6eaaa5f3d4b6c115ec3d30af08449c458c96a410f6ac1083e938e8f79",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-seal",
+      "source": "apps/classtools/assets/avatars/animal-seal.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "90e63a9e29c164bf5d4d509ec144a96a6df18022b2adb4d2e8b047380efd954f",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-shark",
+      "source": "apps/classtools/assets/avatars/animal-shark.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "b328d9a9945a72c64fad2cb1995c8062eb4c634b1a83678350bbe23a26a97720",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-sloth",
+      "source": "apps/classtools/assets/avatars/animal-sloth.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "a30bceec08ff5bfc5adb70c0628f29ab906a68667fa5b9a2b760df0f0647681a",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-snail",
+      "source": "apps/classtools/assets/avatars/animal-snail.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "152c50700604f5f6b2c6df0dc9a2b13ef013d68827fb51cc042d6a9d836448e0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-squirrel",
+      "source": "apps/classtools/assets/avatars/animal-squirrel.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "3a0c58ef84eaa83678a82756cfe63535dc3f72ea8201b686810b5403085ee493",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-tiger",
+      "source": "apps/classtools/assets/avatars/animal-tiger.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "5367c7bdc8fb1e8e1c9d2563408c68e6d1fe65d470e3a0839e8697c714502464",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-turtle",
+      "source": "apps/classtools/assets/avatars/animal-turtle.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "3d06908528bd00bfc8405b1bb4c1f60322c53c3f3ff08b494a06567d12546596",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-unicorn",
+      "source": "apps/classtools/assets/avatars/animal-unicorn.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "628f5c12a10c1b873d55e5397f1fc983b73c024683aee32daaeb2e08bca45fa0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-viper",
+      "source": "apps/classtools/assets/avatars/animal-viper.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "10e7aaa2a27120f89c2414b0867353491cd12ce557fe893b531211305871bc97",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-whale",
+      "source": "apps/classtools/assets/avatars/animal-whale.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "0e36bbe6cbf6eff9839163bc7914e60aac04c5c206fcc03cd9e403ac0bbf2cf7",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "animal-wolf",
+      "source": "apps/classtools/assets/avatars/animal-wolf.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "f40b7ae979c611886bb607f8676642862ca52f70d744c7ed3ec65b3070fa68bc",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "award-trophy",
+      "source": "apps/classtools/assets/avatars/award-trophy.webp",
+      "sourceCategory": "award",
+      "sourceSha256": "0cc862cebeee4362bc12088028c608b6d4539184b80e8f287ae7dda9d44e48f9",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "drink-bubble-tea",
+      "source": "apps/classtools/assets/avatars/drink-bubble-tea.webp",
+      "sourceCategory": "drink",
+      "sourceSha256": "24cd946d9a30b6de40f3d5e821668d06b92aff9e8695fb23e5977a92c69bb8c5",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-bingsu",
+      "source": "apps/classtools/assets/avatars/food-bingsu.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "6d55ce499c9c0d60ca461ba2315b2f815919997ca70dce8df184cdf7353de9c2",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-birthday-cake",
+      "source": "apps/classtools/assets/avatars/food-birthday-cake.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "448a6dfda24f2d564624b0c9448788737a3a8a6338b6bdca8dc4ce5dfa079ab1",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-candy",
+      "source": "apps/classtools/assets/avatars/food-candy.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "2f5fa0ef80c09675de0f66684b74da8f71d91781ec6b7771c09476d854875062",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-cheese",
+      "source": "apps/classtools/assets/avatars/food-cheese.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "53d86042e692b62db4131f564df094b59a8e09c0517679f5e483cad551133525",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-chocolate",
+      "source": "apps/classtools/assets/avatars/food-chocolate.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "b579903cbee197231e24abdd6a0b4cf481020bd9152aa1767628e142846a6352",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-cookie",
+      "source": "apps/classtools/assets/avatars/food-cookie.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "d1c026c5ffeb38c436f8a75a3b1c33115287bebc86a94a0834c7a59dcf36d20c",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-donut",
+      "source": "apps/classtools/assets/avatars/food-donut.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "345b74bce063cebdc14a5ec90e299b7f390e29879e6ccfe3a0ede81902f3bae7",
+      "modelSha256": "e5bed6c0515c4f569a7634833f1564cf71942b40120b9e609aeeea53b7e8e8d9",
+      "structureNote": "ring-shaped hood surrounding face",
+      "status": "prototype_reviewed",
+      "checks": {
+        "identity": "reviewed",
+        "allViews": "reviewed",
+        "connections": "pass",
+        "animation": "pass",
+        "glb": "pass",
+        "museumRuntime": "preview_pass"
+      },
+      "visualReview": {
+        "date": "2026-11-08",
+        "status": "refined_and_reviewed",
+        "reviewer": "agent",
+        "userApproved": false,
+        "evidence": "outputs/qa/avatar-lab/refined-six/donut-views.webp"
+      },
+      "evidenceDirectory": "outputs/qa/avatar-lab/refined-six/"
+    },
+    {
+      "id": "food-dumpling",
+      "source": "apps/classtools/assets/avatars/food-dumpling.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "f1afe01f9af4fbf258370933767ab40f104f3798b6179f571d1a45a1f51e86fe",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-fish-pastry",
+      "source": "apps/classtools/assets/avatars/food-fish-pastry.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "8a030d57d182a01b02597417c47040d75c26966952303f09e0d63147a708470a",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-fried-egg",
+      "source": "apps/classtools/assets/avatars/food-fried-egg.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "2398a6a730cc91ba84be6c8d62339f2b8b78ea4dd6cce708ed03ca114a1a25a3",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-gimbap",
+      "source": "apps/classtools/assets/avatars/food-gimbap.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "f5fab854900301249cb3bd5eda381c082c68d50e04ac722a4b002fe52ad2c85c",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-hamburger",
+      "source": "apps/classtools/assets/avatars/food-hamburger.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "147c631837479aeadc3c267442f9e51b88edc775cdc8826831c007651c00207e",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-hot-dog",
+      "source": "apps/classtools/assets/avatars/food-hot-dog.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "a3711c20d535cf5491eea5e1645e1117409bc25467fc4052a93b3b123811d3ae",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-ice-cream",
+      "source": "apps/classtools/assets/avatars/food-ice-cream.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "f8e318bf582c9100d57f2e4fc98dc1179affe7ed11b29a7e2b21ec3fa7f45df6",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-macaron",
+      "source": "apps/classtools/assets/avatars/food-macaron.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "81f5748a5a9d57658e4f8b8a9c354b8f7657c65c480a890030f02e87a1bb32b3",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-pizza",
+      "source": "apps/classtools/assets/avatars/food-pizza.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "4cc6d12a4027fd467f84ec9e4ebd74cfaddf95c34f84b284043e35a981bc5902",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-popcorn",
+      "source": "apps/classtools/assets/avatars/food-popcorn.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "f0a4293b403b1d539720e2d3bea223d14bd219d66a4dc0e160e0e1a81cbfa670",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-pudding",
+      "source": "apps/classtools/assets/avatars/food-pudding.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "b0d0f7cfa7091166ab63187e786f456751a384b145f58114a9a1654719ac69c3",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-ramen",
+      "source": "apps/classtools/assets/avatars/food-ramen.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "41ea42e2b8dba2bf931be6fd20b812c0d5906b3d84e666ea3ecf0536e0170da1",
+      "modelSha256": "750c0713a6e522416d0a3e42277ef218644ce111dda950a9ba3b4d6e21743f94",
+      "structureNote": "open bowl with volumetric toppings",
+      "status": "prototype_reviewed",
+      "checks": {
+        "identity": "reviewed",
+        "allViews": "reviewed",
+        "connections": "pass",
+        "animation": "pass",
+        "glb": "pass",
+        "museumRuntime": "preview_pass"
+      },
+      "visualReview": {
+        "date": "2026-11-08",
+        "status": "refined_and_reviewed",
+        "reviewer": "agent",
+        "userApproved": false,
+        "evidence": "outputs/qa/avatar-lab/refined-six/ramen-views.webp"
+      },
+      "evidenceDirectory": "outputs/qa/avatar-lab/refined-six/"
+    },
+    {
+      "id": "food-rice-ball",
+      "source": "apps/classtools/assets/avatars/food-rice-ball.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "b0d581748837ec269647b160521f961e177edca5546d0ab6059616ffa6170caf",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-sandwich",
+      "source": "apps/classtools/assets/avatars/food-sandwich.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "0bcada062a5f0192a76bb5d7091971c5168f9f2a7733590c8fcbc9efa678ba6e",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-sushi",
+      "source": "apps/classtools/assets/avatars/food-sushi.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "b4bded7578d3a24139928ec2782e8af819526f0352545bd86aa00d04683d1d59",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-toast",
+      "source": "apps/classtools/assets/avatars/food-toast.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "5d3b033689b35960d9f054f76384c0641254f8beddf89e99f8cba30bde28dda4",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "food-tteokbokki",
+      "source": "apps/classtools/assets/avatars/food-tteokbokki.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "7313a6b011a789aedb602774aa9b4766fa8d94121ee78bc7ac0a0934688c502f",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-apple",
+      "source": "apps/classtools/assets/avatars/fruit-apple.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "e230997d32b46f936186da97645de4c84af4bc63d27c1681315e71a8e538e410",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-avocado",
+      "source": "apps/classtools/assets/avatars/fruit-avocado.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "2d32dc10d7e01c1c8e77f089a32c9f91333728c21a584d2ead4db611cc348289",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-banana",
+      "source": "apps/classtools/assets/avatars/fruit-banana.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "bf141c8dd82c26bfb9c09966e89b18ea55ecdb511e8e2e28400392862b4ba1a7",
+      "modelSha256": "ca2213097e1281cb46a4ae24fd4dd46a69ebb2c1ae0db5caa8cc2f01ade1963a",
+      "structureNote": "curved fruit with peeled flaps",
+      "status": "prototype_reviewed",
+      "checks": {
+        "identity": "reviewed",
+        "allViews": "reviewed",
+        "connections": "pass",
+        "animation": "pass",
+        "glb": "pass",
+        "museumRuntime": "preview_pass"
+      },
+      "visualReview": {
+        "date": "2026-11-08",
+        "status": "refined_and_reviewed",
+        "reviewer": "agent",
+        "userApproved": false,
+        "evidence": "outputs/qa/avatar-lab/refined-six/banana-views.webp"
+      },
+      "evidenceDirectory": "outputs/qa/avatar-lab/refined-six/"
+    },
+    {
+      "id": "fruit-blueberry",
+      "source": "apps/classtools/assets/avatars/fruit-blueberry.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "bf34515bfdfc178227f91e3567f878badf4742f004c5dab54a85f937b13f27a7",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-cherry",
+      "source": "apps/classtools/assets/avatars/fruit-cherry.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "c1ea4f4d1e0e1f86c2d509dbac06304dfc7e8742c2517b7b1538c1be7d4dff8f",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-grape",
+      "source": "apps/classtools/assets/avatars/fruit-grape.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "c879e12bace9e10d642cd260d3f024bab09ee4fa37ba7adf5da1cd0349d33d8a",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-mango",
+      "source": "apps/classtools/assets/avatars/fruit-mango.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "1420c90619e7dbd2cda48dbc224ac4bf7899a1274a745fc945bbac3551fd2e2c",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-melon",
+      "source": "apps/classtools/assets/avatars/fruit-melon.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "d7cedba32940ceeac0e9120c44ad4424bd01d5743a88b34d1b563f076e0c21f9",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-orange",
+      "source": "apps/classtools/assets/avatars/fruit-orange.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "a494c80b99d347ade886abe482273a3145111e6ee62fc1ae4f9ad4ed53aee42b",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-peach",
+      "source": "apps/classtools/assets/avatars/fruit-peach.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "6de3d04c1d3422bdabe90fe4cd78cfa8afc9107291ac90aa6ed1599317c4754d",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-persimmon",
+      "source": "apps/classtools/assets/avatars/fruit-persimmon.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "f02a59c3f7c700b95688a29a274656293c491ee0beef13ba793bb2162098a40f",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-pineapple",
+      "source": "apps/classtools/assets/avatars/fruit-pineapple.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "8c60d7a82cbe94e2f227531dcd9de0c68ffc883396867d02ddf932ea9f2e9a41",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-strawberry",
+      "source": "apps/classtools/assets/avatars/fruit-strawberry.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "3d3896f2d8106806c25277895375ea1d82fa3b16d021a063067d01523c180c91",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "fruit-watermelon",
+      "source": "apps/classtools/assets/avatars/fruit-watermelon.webp",
+      "sourceCategory": "fruit",
+      "sourceSha256": "797fdcc1468a79645df1ba0ef8ef5f0367efba8e9586be32b6e5091cb17ce6aa",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "game-dice",
+      "source": "apps/classtools/assets/avatars/game-dice.webp",
+      "sourceCategory": "game",
+      "sourceSha256": "2e2609fcb9c238b80532b4086d2667d852df741a5509fa58f7803790291f38d7",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-boot",
+      "source": "apps/classtools/assets/avatars/object-boot.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "ea4b08c07e8f51c0826e84fa67862bb0acde992b24c88edeca647cec08405192",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-camera",
+      "source": "apps/classtools/assets/avatars/object-camera.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "4eed5981cf7ad8b8cbf042e6b630d5fb20ffedaef8658ce0a25c739ce4c6bac0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-eraser",
+      "source": "apps/classtools/assets/avatars/object-eraser.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "1283ae4c100e9ea7199d8af169f22017dd4524ab0188175b20242b8d3727ec5d",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-gift",
+      "source": "apps/classtools/assets/avatars/object-gift.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "3047906ebcd59bd679c8f0f193e45f0841c049c356d022a81fbda403f064a2ad",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-key",
+      "source": "apps/classtools/assets/avatars/object-key.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "755705c9d297f3a7e7c4386047b15d1beeef2991d8fb105940a0081f477fbc58",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-lamp",
+      "source": "apps/classtools/assets/avatars/object-lamp.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "5d97a113168b2db9bd68a2c923f3e5915ecfb2a0326799f1eba529159b5a04a8",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-lock",
+      "source": "apps/classtools/assets/avatars/object-lock.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "2b52cb02ab5b7e1c6dc4a7411f4123001143c97c3298365aad905de09a062230",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-mitten",
+      "source": "apps/classtools/assets/avatars/object-mitten.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "de8fd928a30d7d6e5544cff694f4bfab24078147e6499bc35c073bc8cb017acb",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-newspaper",
+      "source": "apps/classtools/assets/avatars/object-newspaper.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "04655d43ed66ab7d6a9ac5c8ef33b82d07acd9057f43af5f00c69a4c8bd06395",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-pencil",
+      "source": "apps/classtools/assets/avatars/object-pencil.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "9faac14678fc6fc9325b213c3ae8fe565803a86961c65e840627e021c15eeab7",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-radio",
+      "source": "apps/classtools/assets/avatars/object-radio.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "783d9bd8429ff55ec6d9940ff2e8a75708a1ed3b1fd4d71bcc38f76490fabde8",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-sack",
+      "source": "apps/classtools/assets/avatars/object-sack.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "42b5830464a302d0afb8c7c9a0dfad35911b0d67d5dda8fc56fca96eef948491",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-television",
+      "source": "apps/classtools/assets/avatars/object-television.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "ee5b9464bf76557ca3f28e8c4cb7f34ee30ee4f3233dac7756470a3f9dd65aa6",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "object-umbrella",
+      "source": "apps/classtools/assets/avatars/object-umbrella.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "bdad4d1f4ca1a632f51d21dfe2f3fffd8de445b8980626cb5d38b878ee69e10b",
+      "modelSha256": "c230e0213adf9c5bf1bb40785230e17cd26ce7abe64d0648e122a02ec3499462",
+      "structureNote": "umbrella canopy and curved handle",
+      "status": "prototype_reviewed",
+      "checks": {
+        "identity": "reviewed",
+        "allViews": "reviewed",
+        "connections": "pass",
+        "animation": "pass",
+        "glb": "pass",
+        "museumRuntime": "preview_pass"
+      },
+      "visualReview": {
+        "date": "2026-11-08",
+        "status": "refined_and_reviewed",
+        "reviewer": "agent",
+        "userApproved": false,
+        "evidence": "outputs/qa/avatar-lab/refined-six/umbrella-views.webp"
+      },
+      "evidenceDirectory": "outputs/qa/avatar-lab/refined-six/"
+    },
+    {
+      "id": "object-watch",
+      "source": "apps/classtools/assets/avatars/object-watch.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "a7d40217d232b5c5687df98db956719f045c7ab869d965438180a6800dd50599",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "sport-baseball",
+      "source": "apps/classtools/assets/avatars/sport-baseball.webp",
+      "sourceCategory": "sport",
+      "sourceSha256": "32f9f51af797a79d9fc2e9a668ed1293fbfefda70cc76ed88873f9212abd0051",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "sport-basketball",
+      "source": "apps/classtools/assets/avatars/sport-basketball.webp",
+      "sourceCategory": "sport",
+      "sourceSha256": "58b06bbe3c5873bd38339e149ef6605494824d80a64869ffe8d4e72c31d1c309",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "sport-bowling",
+      "source": "apps/classtools/assets/avatars/sport-bowling.webp",
+      "sourceCategory": "sport",
+      "sourceSha256": "e023e128d4e82d773fa83c3f361629ce5ac5362efc52892689eed0443e345d84",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "sport-soccer",
+      "source": "apps/classtools/assets/avatars/sport-soccer.webp",
+      "sourceCategory": "sport",
+      "sourceSha256": "31de1c0fc39525ead6e7c9e0a47b7ccb5ad449e2870512d27cf9d04c628ebebb",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-balloons",
+      "source": "apps/classtools/assets/avatars/theme-balloons.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "ee0a0c5d1977d692fcbb0c8e0d84bbdb0fd7c1bb937827d6551b63572c0d5e91",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-cactus",
+      "source": "apps/classtools/assets/avatars/theme-cactus.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "18f966f3f7ea3e1c2ffb256099cb461cb68d203182e028870caa4003498eaab8",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-cherry-blossom",
+      "source": "apps/classtools/assets/avatars/theme-cherry-blossom.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "fe7a71dc7460ee53bf97fede5b5e99c799deb0a39bf9da14a39137d947ee4ca3",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-cloud",
+      "source": "apps/classtools/assets/avatars/theme-cloud.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "8fa4e47a71d06f9e8ebbf6b9ffae60678650a53c4aa582b551d6aaf9cab5aa22",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-clover",
+      "source": "apps/classtools/assets/avatars/theme-clover.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "62537de099c01bf5aa86a2e79ab39442e99d69276dd4e8397c8c63863f3cf33f",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-crown",
+      "source": "apps/classtools/assets/avatars/theme-crown.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "4ed8fb0b5bdccdcc0498a28553982e686e474b3a5592961d3e0c8f43401798d0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-guitar",
+      "source": "apps/classtools/assets/avatars/theme-guitar.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "899df3e2bb5f71c1480ed26db904509242f87d71b7ca6701706ca4818db73819",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-lightning",
+      "source": "apps/classtools/assets/avatars/theme-lightning.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "b7eca8cff0d414c6ab2e0f674d6d25fa0c08224b063769a9742aa42ba34efcca",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-maple-leaf",
+      "source": "apps/classtools/assets/avatars/theme-maple-leaf.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "370de952390e854995608324ae394aac0783a41fafdc54a4d4a20b74dcd7c6fb",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-moon",
+      "source": "apps/classtools/assets/avatars/theme-moon.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "d101de9d85ee9b45a138f632ccdff7383123602b9af549b5e690e240d5651509",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-music-note",
+      "source": "apps/classtools/assets/avatars/theme-music-note.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "1e53f434aee5319119e8b98d858c2493073a3154c02306a4fa87746c56c2b3c6",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-paper-airplane",
+      "source": "apps/classtools/assets/avatars/theme-paper-airplane.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "ad5644494f53e5f3ece81d495d50f93e7f0e7bf722f515623779e305d9461111",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-rainbow",
+      "source": "apps/classtools/assets/avatars/theme-rainbow.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "2ae28d5954b70141d0448f89c7b9aca45aa21381b8b2a4375f29acac2c6c8c7a",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-rose",
+      "source": "apps/classtools/assets/avatars/theme-rose.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "78aae012d1807d039bd5868e584a6a7dd517c985ca33dd4c7db2ab98f6b447d6",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-snowman",
+      "source": "apps/classtools/assets/avatars/theme-snowman.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "94efdade2f1cf994d2b145765d2ff354eab34e445843d6695c18d65775048bd6",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-star",
+      "source": "apps/classtools/assets/avatars/theme-star.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "9448c73d0a8f629db5d011f8e6231be6c014dbfe54b1aff8332bdeb014fc802d",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-sun",
+      "source": "apps/classtools/assets/avatars/theme-sun.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "2a589a92ce2bed9db22d6cf4d8cf98531a54ddf04fca74e61878938074af899e",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-sunflower",
+      "source": "apps/classtools/assets/avatars/theme-sunflower.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "66a83018e74b5eb5078feea287f9ba31f0c21a501e5302a4a9ad97a43ab02aac",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "theme-tulip",
+      "source": "apps/classtools/assets/avatars/theme-tulip.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "5a2b4b94cad1b0e62d81d2c87e46d1da36a7ac36e3ac21fed1a447ed5961f75c",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-bell-pepper",
+      "source": "apps/classtools/assets/avatars/vegetable-bell-pepper.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "f0e4f30c4b5794df12cbe5a9b6c3fcbb98a93f70644353465e825eef95f9f768",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-broccoli",
+      "source": "apps/classtools/assets/avatars/vegetable-broccoli.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "a7f2110da4f0667f31bf6c92515cd43098fbb0e3671d6291ba04b30899bc0f58",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-carrot",
+      "source": "apps/classtools/assets/avatars/vegetable-carrot.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "f4e1d1e6b34f4b86fa4ee40a038a6f265e8edad9f9e0048b298205fa6e3fcd8f",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-corn",
+      "source": "apps/classtools/assets/avatars/vegetable-corn.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "ee5220bad6b38eee354185a088b4d9c57f8e366b82b87e986aa486eac6c8e268",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-eggplant",
+      "source": "apps/classtools/assets/avatars/vegetable-eggplant.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "6214dae48cc6900e1aec49a5a066e14bee486a6d60ee98b0d288d638fdd77c4a",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-mushroom",
+      "source": "apps/classtools/assets/avatars/vegetable-mushroom.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "223d3adebe3a5bbae562ce326c90265731284796396cdcd92aa2bdbe6b5e8ae5",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-potato",
+      "source": "apps/classtools/assets/avatars/vegetable-potato.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "ee5e029026a0678a950d37c5b4ac7863f7e5ab31dc28c98a23881ce90310f673",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-pumpkin",
+      "source": "apps/classtools/assets/avatars/vegetable-pumpkin.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "04d7023cce9c0e819ff1e7d1bdd0cd240649c9f8899c84f3803c6255e38a178b",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-radish",
+      "source": "apps/classtools/assets/avatars/vegetable-radish.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "19aa149789890e6b8b81b23bfac592b32cafd5e7b6c4a02ecf7ef644edbb4607",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-sweet-potato",
+      "source": "apps/classtools/assets/avatars/vegetable-sweet-potato.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "a3981a41d488efeb68edf4299dafc0accce8bb464f896031135338a3ea8c0e07",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vegetable-tomato",
+      "source": "apps/classtools/assets/avatars/vegetable-tomato.webp",
+      "sourceCategory": "vegetable",
+      "sourceSha256": "29418ca9ac3dabd76f89708b202f40c9562346c9019c0e8929f4ebb1324d3ad0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-airplane",
+      "source": "apps/classtools/assets/avatars/vehicle-airplane.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "f8545975f4ca8e59960eb58a52d79c67912b5b24eabc812bda72d33b8d8589f9",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-airship",
+      "source": "apps/classtools/assets/avatars/vehicle-airship.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "13c550f612b8a40e2af6ca546253c7d6bb32e2f092a3d04f0d7795799eaa4f23",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-ambulance",
+      "source": "apps/classtools/assets/avatars/vehicle-ambulance.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "6a2c82225cb17fb20a18493b8392e58caf89b3aab0a0ecdfe59c0db966765d5d",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-boat",
+      "source": "apps/classtools/assets/avatars/vehicle-boat.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "d492be7fc243b507e9252070f00aa2ee5d1a0acbe24da9199f962e9cf457f8f1",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-fire-truck",
+      "source": "apps/classtools/assets/avatars/vehicle-fire-truck.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "99baa9a60a92bd9daa6953c1a21c5db667dd6b2dc8c841ce47a2ee4ff48997f9",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-helicopter",
+      "source": "apps/classtools/assets/avatars/vehicle-helicopter.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "d5df267e721939c1ef3992f73f52be829bd4b56fdef32fc426b6714173b507d0",
+      "modelSha256": "aa5b13bcb08e1af1940eec3cc6ce2d817eebe9b5633e0a6e15684cfe0bdf6065",
+      "structureNote": "vehicle hood with rotor and tail",
+      "status": "prototype_reviewed",
+      "checks": {
+        "identity": "reviewed",
+        "allViews": "reviewed",
+        "connections": "pass",
+        "animation": "pass",
+        "glb": "pass",
+        "museumRuntime": "preview_pass"
+      },
+      "visualReview": {
+        "date": "2026-11-08",
+        "status": "refined_and_reviewed",
+        "reviewer": "agent",
+        "userApproved": false,
+        "evidence": "outputs/qa/avatar-lab/refined-six/helicopter-views.webp"
+      },
+      "evidenceDirectory": "outputs/qa/avatar-lab/refined-six/"
+    },
+    {
+      "id": "vehicle-hot-air-balloon",
+      "source": "apps/classtools/assets/avatars/vehicle-hot-air-balloon.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "a4f7e603e38aade26f26a1cd12c17ce7475441f14bd59c8bd45c9a4781de0dc9",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-rocket",
+      "source": "apps/classtools/assets/avatars/vehicle-rocket.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "da7e7c831eee97c87045b95387a5a6546a0ffaeb3547c51c4e75b32d51cb2c5c",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-submarine",
+      "source": "apps/classtools/assets/avatars/vehicle-submarine.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "a389f2fcc235e455aa2041e20ed31291dbc17317cc8fcaf2abd09ce0af54be01",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    },
+    {
+      "id": "vehicle-train",
+      "source": "apps/classtools/assets/avatars/vehicle-train.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "a9be33cce7369b0623ddcef3ebf960fb80d1f1bcafe49049e1e8fa818d13a9d0",
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      },
+      "modelSha256": null
+    }
+  ]
+}
