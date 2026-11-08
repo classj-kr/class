@@ -32,6 +32,27 @@ window.CurriculumTerms = {
    "figures/4-2/soc.js?v=8ce6c6e8"
   ]
  },
+ "5-1": {
+  "words": "words-5-1.js?v=fe22934b",
+  "figures": [
+   "figures/5-1/kor-2.js?v=da86c805",
+   "figures/5-1/kor-3.js?v=cc328cb9",
+   "figures/5-1/kor.js?v=727affae",
+   "figures/5-1/math-1.js?v=4485c722",
+   "figures/5-1/math-2.js?v=9a9403c2",
+   "figures/5-1/math-3.js?v=995f7dcc",
+   "figures/5-1/math-4.js?v=23e0a68a",
+   "figures/5-1/math-5.js?v=f1b35bec",
+   "figures/5-1/math-6.js?v=f660192a",
+   "figures/5-1/sci-2.js?v=5fad8383",
+   "figures/5-1/sci-3.js?v=7906350a",
+   "figures/5-1/sci-4.js?v=409e8051",
+   "figures/5-1/sci.js?v=33d1dc23",
+   "figures/5-1/soc-2.js?v=af5a1f36",
+   "figures/5-1/soc-3.js?v=f9bf6a33",
+   "figures/5-1/soc.js?v=9c30513d"
+  ]
+ },
  "5-2": {
   "words": "words-5-2.js?v=3d652a28",
   "figures": [
@@ -99,6 +120,25 @@ window.CurriculumTermsPreview = {
    "figures/3-2/soc.js?v=3840cebb"
   ]
  },
+ "4-1": {
+  "words": "words-4-1.js?v=1b6677e3",
+  "figures": [
+   "figures/4-1/kor-3.js?v=215fdd81",
+   "figures/4-1/kor.js?v=7e700366",
+   "figures/4-1/math-1.js?v=572c7ccc",
+   "figures/4-1/math-2.js?v=a9c89023",
+   "figures/4-1/math-3.js?v=b2813c80",
+   "figures/4-1/math-4.js?v=82089c66",
+   "figures/4-1/math-5.js?v=29da48da",
+   "figures/4-1/math-6.js?v=0688a438",
+   "figures/4-1/sci-2.js?v=3214d541",
+   "figures/4-1/sci-3.js?v=e417debc",
+   "figures/4-1/sci.js?v=b408ae5c",
+   "figures/4-1/soc-2.js?v=a8e66dcd",
+   "figures/4-1/soc-3.js?v=423963f1",
+   "figures/4-1/soc.js?v=6b243ca6"
+  ]
+ },
  "4-2": {
   "words": "words-4-2.js?v=d5eabd73",
   "figures": [
@@ -116,9 +156,24 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-1": {
-  "words": "words-5-1.js?v=19ad4d58",
+  "words": "words-5-1.js?v=fe22934b",
   "figures": [
-   "figures/5-1/math-1.js?v=23f974d9"
+   "figures/5-1/kor-2.js?v=da86c805",
+   "figures/5-1/kor-3.js?v=cc328cb9",
+   "figures/5-1/kor.js?v=727affae",
+   "figures/5-1/math-1.js?v=4485c722",
+   "figures/5-1/math-2.js?v=9a9403c2",
+   "figures/5-1/math-3.js?v=995f7dcc",
+   "figures/5-1/math-4.js?v=23e0a68a",
+   "figures/5-1/math-5.js?v=f1b35bec",
+   "figures/5-1/math-6.js?v=f660192a",
+   "figures/5-1/sci-2.js?v=5fad8383",
+   "figures/5-1/sci-3.js?v=7906350a",
+   "figures/5-1/sci-4.js?v=409e8051",
+   "figures/5-1/sci.js?v=33d1dc23",
+   "figures/5-1/soc-2.js?v=af5a1f36",
+   "figures/5-1/soc-3.js?v=f9bf6a33",
+   "figures/5-1/soc.js?v=9c30513d"
   ]
  },
  "5-2": {

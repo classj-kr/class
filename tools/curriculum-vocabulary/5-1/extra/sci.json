@@ -1,0 +1,435 @@
+{
+ "1": {
+  "지층": {
+   "explain": [
+    "쉬운 뜻: 시루떡을 잘라 놓은 옆면처럼, 돌 속에 띠가 층층이 보이는 것입니다.",
+    "생활 속 예: 바닷가 절벽이나 길을 내려고 깎은 산비탈에서 볼 수 있습니다.",
+    "층마다 알갱이 크기와 색깔이 달라서 줄무늬로 보입니다."
+   ]
+  },
+  "수평": {
+   "en": "horizontal",
+   "explain": [
+    "쉬운 뜻: 영어로 horizontal, 책상 위에 누운 연필처럼 옆으로 반듯한 모양입니다.",
+    "생활 속 예: 시소 양쪽 무게가 같으면 시소판이 수평이 됩니다.",
+    "물은 그릇을 기울여도 겉면이 늘 수평을 이룹니다."
+   ]
+  },
+  "퇴적물": {
+   "explain": [
+    "쉬운 뜻: 흙탕물을 가만히 두면 바닥에 가라앉는 흙처럼, 실려 와 쌓인 것입니다.",
+    "낱말 나누기: 퇴적(실려 와 쌓임) + 물(물건), 쌓여 있는 것들입니다.",
+    "생활 속 예: 비 온 뒤 물웅덩이 바닥에 고운 흙이 얇게 깔립니다."
+   ]
+  },
+  "침식 작용": {
+   "explain": [
+    "쉬운 뜻: 물과 바람이 사포처럼 땅과 바위를 조금씩 갈아 없애는 일입니다.",
+    "낱말 나누기: 침식(조금씩 갉아 먹듯 깎임) + 작용(일으키는 일)입니다.",
+    "생활 속 예: 큰비가 온 뒤 운동장 흙에 물길 자국이 패어 있습니다."
+   ]
+  },
+  "암석": {
+   "en": "rock",
+   "explain": [
+    "쉬운 뜻: 영어로 rock, 산과 땅속을 이루고 있는 돌을 통틀어 부르는 말입니다.",
+    "생활 속 예: 산의 바위, 바닷가 갯바위, 화단의 큰 돌이 모두 암석입니다."
+   ],
+   "beats": ["등산로 옆에 커다란 회색 바위가 우뚝 솟아 있습니다.", "도윤이가 손바닥을 대어 보니 아주 단단하고 차갑습니다.", "이렇게 땅을 이루는 크고 단단한 돌이 암석입니다."],
+   "img": "A mountain hiking trail in autumn with an enormous gray granite rock face rising right beside the path, patches of green moss on its rough surface and no stripes or layers in it. DOYUN (boy, round glasses, navy hoodie) stops on the trail, presses his palm flat against the huge rock and looks up at it in wonder.",
+   "imgKo": "등산로 옆에 이끼 낀 커다란 회색 바위가 솟아 있고, 도윤이가 손바닥을 바위에 대고 올려다본다. 바위에는 줄무늬가 없다."
+  },
+  "퇴적암": {
+   "explain": [
+    "쉬운 뜻: 쌓인 알갱이들이 각설탕처럼 서로 엉겨 붙어 단단한 돌이 된 것입니다.",
+    "낱말 나누기: 퇴적(실려 와 쌓임) + 암(바위), 쌓여서 된 바위입니다.",
+    "생활 속 예: 바닷가 절벽에서 줄무늬가 보이는 돌은 대부분 퇴적암입니다."
+   ]
+  },
+  "이암": {
+   "en": "mudstone",
+   "explain": [
+    "쉬운 뜻: 영어로 mudstone, mud(진흙)와 stone(돌)을 합친 말로 진흙이 굳은 돌입니다.",
+    "생활 속 예: 비 온 뒤 말라붙은 웅덩이 바닥의 고운 진흙이 돌처럼 굳은 모습입니다."
+   ]
+  },
+  "사암": {
+   "en": "sandstone",
+   "explain": [
+    "쉬운 뜻: 영어로 sandstone, sand(모래)와 stone(돌), 모래가 굳어서 된 돌입니다.",
+    "생활 속 예: 모래성 모래가 단단하게 굳어 돌이 되었다고 생각하면 됩니다."
+   ]
+  },
+  "역암": {
+   "explain": [
+    "쉬운 뜻: 동글동글한 자갈을 모래와 진흙이 시멘트처럼 붙잡아 굳힌 돌입니다.",
+    "생활 속 예: 시멘트에 자갈을 섞어 굳힌 보도블록과 생김새가 닮았습니다.",
+    "세 가지 퇴적암 가운데 알갱이가 가장 큽니다."
+   ]
+  },
+  "화석": {
+   "en": "fossil",
+   "explain": [
+    "쉬운 뜻: 영어로 fossil, 옛날 생물이 돌 속에 남겨 놓은 사진 같은 것입니다.",
+    "생활 속 예: 공룡 뼈, 조개껍데기, 나뭇잎 자국, 공룡 발자국이 모두 화석입니다."
+   ]
+  },
+  "흔적": {
+   "en": "trace",
+   "explain": [
+    "쉬운 뜻: 영어로 trace, 무엇이 왔다 갔다는 것을 알려 주는 남은 자국입니다.",
+    "생활 속 예: 젖은 모래밭에 찍힌 갈매기 발자국도 흔적입니다."
+   ],
+   "beats": ["밤새 하얀 눈이 소복이 쌓인 마당입니다.", "고양이는 보이지 않는데, 작은 발자국이 마루 끝까지 이어져 있습니다.", "무엇이 지나간 뒤에 남은 이런 자국이 흔적입니다."],
+   "img": "A snowy front yard of a Korean house in the early morning. A line of small cat paw prints runs across the fresh white snow from the gate to the edge of a wooden porch, and no cat is anywhere in sight. HARIN (girl, yellow headband, mint cardigan over a winter coat) crouches beside the prints and points at them with a curious face.",
+   "imgKo": "아침 눈 덮인 마당에 고양이 발자국이 대문에서 마루 끝까지 이어져 있고 고양이는 보이지 않는다. 하린이가 쪼그려 앉아 발자국을 가리킨다."
+  },
+  "추리": {
+   "explain": [
+    "쉬운 뜻: 탐정처럼 남은 단서를 이어서, 직접 보지 못한 일을 알아내는 것입니다.",
+    "생활 속 예: 식탁 위 빵 부스러기를 보고 동생이 몰래 빵을 먹었다고 알아냅니다.",
+    "과학자는 화석과 지층을 보고 옛날 모습을 추리합니다."
+   ],
+   "beats": ["하린이가 돌에 찍힌 고사리 화석을 돋보기로 들여다봅니다.", "도윤이는 고사리가 우거진 축축한 옛 숲을 떠올립니다.", "이처럼 단서를 바탕으로 보지 못한 옛일을 생각해 알아내는 것이 추리입니다."],
+   "img": "A science classroom lab table with a gray rock slab showing a clear fern leaf fossil. HARIN (girl, yellow headband, mint cardigan) holds a magnifying glass over the fossil, while DOYUN (boy, round glasses, navy hoodie) beside her looks up thoughtfully. A soft thought bubble above his head shows a warm, damp ancient forest full of tall ferns; the bubble holds only a picture, no words.",
+   "imgKo": "실험대 위 고사리 화석을 하린이가 돋보기로 들여다보고, 도윤이 머리 위 생각 풍선에 고사리가 우거진 축축한 옛 숲이 떠오른다. 풍선에 글자는 없다."
+  }
+ },
+ "2": {
+  "현상": {
+   "explain": [
+    "쉬운 뜻: '무슨 일이 일어났네!' 하고 눈으로 보거나 느낄 수 있는 일입니다.",
+    "생활 속 예: 얼음이 녹는 것, 번개가 치는 것, 그림자가 길어지는 것이 현상입니다.",
+    "과학자는 현상을 보고 왜 그런지 까닭을 찾습니다."
+   ],
+   "beats": ["비가 그치고 운동장 곳곳에 물웅덩이가 반짝입니다.", "학교 위 하늘에 커다란 무지개가 걸렸습니다.", "이렇게 눈으로 보거나 느낄 수 있게 드러나는 일이 현상입니다."],
+   "img": "A school playground just after the rain has stopped: puddles glitter on the ground and a bright rainbow arches across the sky above the school building. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) stand at the school entrance holding closed umbrellas and point up at the rainbow in surprise.",
+   "imgKo": "비가 막 그친 운동장 위로 무지개가 걸리고, 하린이와 도윤이가 우산을 접은 채 현관 앞에서 하늘을 가리킨다."
+  },
+  "직진": {
+   "explain": [
+    "쉬운 뜻: 자동차가 핸들을 돌리지 않고 곧장 가듯, 빛이 곧게 나아가는 것입니다.",
+    "생활 속 예: 손전등 빛 앞에 손을 대면 벽에 손 모양 그림자가 생깁니다.",
+    "그래서 빛은 벽 모퉁이를 돌아 뒤쪽까지 가지 못합니다."
+   ]
+  },
+  "반사": {
+   "en": "reflection",
+   "explain": [
+    "쉬운 뜻: 영어로 reflection, 공이 벽에 맞고 튕겨 나오듯 빛이 튕겨 나오는 것입니다.",
+    "생활 속 예: 숟가락이나 잔잔한 호수에 내 모습이 비칩니다.",
+    "물체에서 반사된 빛이 눈에 들어와서 우리는 물체를 봅니다."
+   ]
+  },
+  "평면거울": {
+   "explain": [
+    "쉬운 뜻: 집에서 쓰는 보통 거울처럼 겉면이 판판한 거울입니다.",
+    "낱말 나누기: 평면(판판한 면) + 거울, 판판한 거울입니다.",
+    "생활 속 예: 엘리베이터 벽에 붙은 커다란 거울도 평면거울입니다."
+   ],
+   "beats": ["욕실 세면대 위에 판판한 거울이 붙어 있습니다.", "도윤이가 이를 닦는 모습이 크기 그대로 비칩니다.", "이렇게 휘지 않고 판판한 거울이 평면거울입니다."],
+   "img": "A bright, tidy bathroom with a large flat rectangular mirror hung above the sink. DOYUN (boy, round glasses, navy hoodie) brushes his teeth in front of it, and his reflection in the mirror is upright and exactly the same size as he is. The mirror surface is perfectly flat, not curved.",
+   "imgKo": "욕실 세면대 위 판판한 큰 거울 앞에서 도윤이가 이를 닦고, 거울 속 모습이 같은 크기로 똑바로 비친다."
+  },
+  "수직": {
+   "en": "vertical",
+   "explain": [
+    "쉬운 뜻: 영어로 vertical, 바닥에 똑바로 선 기둥처럼 위아래로 곧은 방향입니다.",
+    "생활 속 예: 실 끝에 지우개를 매달아 늘어뜨리면 실이 수직이 됩니다."
+   ]
+  },
+  "굴절": {
+   "explain": [
+    "쉬운 뜻: 빛이 공기에서 물이나 유리로 넘어가는 자리에서 길이 꺾이는 것입니다.",
+    "생활 속 예: 물이 담긴 수영장 바닥은 실제보다 얕아 보입니다."
+   ]
+  },
+  "경계": {
+   "en": "boundary",
+   "explain": [
+    "쉬운 뜻: 영어로 boundary, 땅따먹기에서 내 땅과 친구 땅을 가르는 선 같은 자리입니다.",
+    "생활 속 예: 바닷가에서 바닷물과 모래사장이 만나는 곳도 경계입니다."
+   ]
+  },
+  "렌즈": {
+   "en": "lens",
+   "explain": [
+    "쉬운 뜻: 영어 lens에서 온 말로, 빛이 지나가는 길을 바꾸는 투명한 안경알 같은 것입니다.",
+    "생활 속 예: 돋보기, 현미경, 휴대 전화 사진기에도 렌즈가 들어 있습니다."
+   ]
+  },
+  "볼록 렌즈": {
+   "explain": [
+    "쉬운 뜻: 가운데가 배불뚝이처럼 볼록한 렌즈입니다. 돋보기가 볼록 렌즈입니다.",
+    "생활 속 예: 햇빛을 돋보기로 모으면 한 점이 아주 밝고 뜨거워집니다.",
+    "가까운 물체를 보면 실제보다 크게 보입니다."
+   ]
+  },
+  "오목 렌즈": {
+   "explain": [
+    "쉬운 뜻: 가운데가 숟가락 안쪽처럼 쏙 들어간 렌즈입니다.",
+    "햇빛을 비추어도 빛이 퍼져 나가서 한 점에 모이지 않습니다.",
+    "생활 속 예: 오목 렌즈 안경을 쓴 친구의 눈은 안경 너머로 조금 작아 보입니다."
+   ]
+  }
+ },
+ "3": {
+  "용해": {
+   "en": "dissolving",
+   "explain": [
+    "쉬운 뜻: 영어로 dissolving, 설탕이 물속에서 안 보일 만큼 작게 나뉘어 퍼지는 일입니다.",
+    "생활 속 예: 레몬차에 넣은 설탕이 저을수록 사라져 보이지 않습니다.",
+    "녹아서 안 보여도 없어진 것이 아니라 무게는 그대로입니다."
+   ]
+  },
+  "용질": {
+   "explain": [
+    "쉬운 뜻: 물에 '들어가서 녹는' 쪽의 물질입니다.",
+    "생활 속 예: 레몬차를 만들 때 넣어 녹이는 설탕이 용질입니다."
+   ]
+  },
+  "용매": {
+   "explain": [
+    "쉬운 뜻: 녹는 물질을 품어 주는 쪽입니다. 대부분 물이 용매가 됩니다.",
+    "생활 속 예: 꿀물을 만들 때 꿀을 녹이는 따뜻한 물이 용매입니다."
+   ]
+  },
+  "용액": {
+   "en": "solution",
+   "explain": [
+    "쉬운 뜻: 영어로 solution, 녹은 것이 고루 섞여 어디를 떠도 맛이 같은 액체입니다.",
+    "생활 속 예: 식초와 이온 음료도 용액입니다.",
+    "흙탕물처럼 가만히 두면 가라앉는 것이 생기면 용액이 아닙니다."
+   ]
+  },
+  "조건": {
+   "en": "condition",
+   "explain": [
+    "쉬운 뜻: 영어로 condition, 공정한 시합의 규칙처럼 실험에서 미리 정해 두는 것입니다.",
+    "생활 속 예: 물 온도만 다르게 하고 물의 양과 젓는 횟수는 똑같이 맞춥니다.",
+    "다르게 하는 조건은 한 가지여야 무엇 때문인지 알 수 있습니다."
+   ],
+   "beats": ["창가에 크기와 흙이 똑같은 화분 두 개가 있습니다.", "하린이가 두 화분에 똑같은 양의 물을 붓습니다.", "다른 점은 하나뿐, 한 화분만 상자로 덮어 햇빛을 막습니다.", "이렇게 실험에서 같게 할 것과 다르게 할 것을 정한 것이 조건입니다."],
+   "img": "A sunny classroom windowsill with two identical small pots of young bean seedlings, the same pot size and the same soil. One pot is covered with an upside-down cardboard box, the other stands uncovered in the sunlight. HARIN (girl, yellow headband, mint cardigan) carefully pours the same amount of water into each pot from a measuring cup, while DOYUN (boy, round glasses, navy hoodie) holds the box beside her.",
+   "imgKo": "창가에 똑같은 콩 새싹 화분 두 개가 있고 하나만 상자로 덮여 있다. 하린이가 두 화분에 계량컵으로 같은 양의 물을 붓고 도윤이가 옆에서 상자를 잡고 있다."
+  },
+  "진하기": {
+   "explain": [
+    "쉬운 뜻: 맛이 '진하다, 연하다' 할 때의 그 정도입니다. 녹은 것이 많을수록 진합니다.",
+    "생활 속 예: 꿀물에 꿀을 더 넣을수록 단맛이 강해집니다.",
+    "진한 용액일수록 물체가 더 높이 떠오릅니다."
+   ]
+  },
+  "상대적": {
+   "en": "relative",
+   "explain": [
+    "쉬운 뜻: 영어로 relative, '누구와 견주느냐'에 따라 달라지는 것입니다.",
+    "낱말 나누기: 상대(마주 보는 짝) + 적(~인 것), 짝과 견주어 보는 것입니다.",
+    "생활 속 예: 개미 옆의 생쥐는 크지만, 코끼리 옆의 생쥐는 작습니다."
+   ],
+   "beats": ["1학년 동생들 옆에 선 도윤이는 키가 큽니다.", "6학년 형들 옆에서는 도윤이가 키가 작습니다.", "도윤이의 키는 그대로인데 누구와 견주느냐에 따라 크다, 작다가 달라집니다.", "이렇게 다른 것과 견주어 보아서 정하는 것이 상대적입니다."],
+   "img": "A school hallway with a plain wall. DOYUN (boy, round glasses, navy hoodie) stands in the middle; on his left stand two little first-grade children who reach only up to his shoulders, and on his right stand two tall sixth-grade students who are a whole head taller than him. Everyone faces forward so their heights are easy to compare.",
+   "imgKo": "복도 가운데 도윤이가 서 있고, 왼쪽에는 어깨까지 오는 1학년 동생들, 오른쪽에는 머리 하나만큼 큰 6학년 형들이 서 있다."
+  }
+ },
+ "4": {
+  "구조": {
+   "en": "structure",
+   "explain": [
+    "쉬운 뜻: 영어로 structure, 블록 집을 뜯어 보면 보이는 짜임처럼 부분들이 엮인 모양입니다.",
+    "생활 속 예: 우산은 살과 천과 손잡이가 이어진 구조입니다."
+   ]
+  },
+  "기능": {
+   "en": "function",
+   "explain": [
+    "쉬운 뜻: 영어로 function, '이 부분은 무슨 일을 하나?'의 대답입니다.",
+    "생활 속 예: 지우개의 기능은 연필 글씨를 지우는 것입니다."
+   ]
+  },
+  "지탱": {
+   "en": "support",
+   "explain": [
+    "쉬운 뜻: 영어로 support, 집의 기둥처럼 무게를 받아서 버텨 주는 것입니다.",
+    "생활 속 예: 다리를 다친 사람은 목발로 몸을 지탱합니다."
+   ],
+   "beats": ["기둥을 빼낸 텐트는 풀밭에 납작하게 주저앉았습니다.", "옆의 텐트는 가운데 기둥 하나가 천막 전체를 받치고 서 있습니다.", "이렇게 쓰러지지 않도록 받쳐서 버티는 것이 지탱입니다."],
+   "img": "Two identical canvas tents side by side on a grassy campsite. On the left, a tent without its center pole lies collapsed flat on the grass; on the right, the same kind of tent stands tall, held up by one wooden pole in its middle. DOYUN (boy, round glasses, navy hoodie) kneels beside the standing tent, holding its pole steady with both hands.",
+   "imgKo": "풀밭에 기둥 없는 텐트는 납작하게 주저앉아 있고, 옆의 똑같은 텐트는 가운데 나무 기둥 하나로 우뚝 서 있다. 도윤이가 그 기둥을 두 손으로 붙잡고 있다."
+  },
+  "기관": {
+   "en": "organ",
+   "explain": [
+    "쉬운 뜻: 영어로 organ, 몸속에서 저마다 맡은 일을 하는 일꾼 같은 부분입니다.",
+    "생활 속 예: 심장, 위, 폐, 콩팥이 모두 기관입니다.",
+    "하는 일이 비슷한 기관끼리 묶어 소화기관, 호흡기관처럼 부릅니다."
+   ]
+  },
+  "소화": {
+   "en": "digestion",
+   "explain": [
+    "쉬운 뜻: 영어로 digestion, 밥 한 숟가락이 몸속에서 눈에 안 보일 만큼 잘게 부서지는 일입니다.",
+    "생활 속 예: 밥을 오래 씹으면 단맛이 나는 것은 입에서부터 소화가 되기 때문입니다.",
+    "음식물은 입, 식도, 위, 작은창자, 큰창자 차례로 지나갑니다."
+   ]
+  },
+  "영양소": {
+   "en": "nutrient",
+   "explain": [
+    "쉬운 뜻: 영어로 nutrient, 몸을 자라게 하고 힘을 내게 하는 음식 속 알맹이입니다.",
+    "낱말 나누기: 영양(몸을 기르는 것) + 소(바탕), 몸을 기르는 바탕 물질입니다.",
+    "생활 속 예: 우유에는 뼈를 튼튼하게 하는 칼슘이라는 영양소가 있습니다."
+   ],
+   "beats": ["급식판에 밥, 국, 생선, 나물, 우유, 귤이 담겨 있습니다.", "하린이가 가리지 않고 골고루 먹습니다.", "음식마다 들어 있는, 몸이 자라고 움직이는 데 꼭 필요한 성분이 영양소입니다."],
+   "img": "A Korean school cafeteria table. A metal lunch tray seen at a slight angle holds a bowl of rice, a bowl of soup, a piece of grilled fish, a small dish of seasoned spinach, a carton of milk and a few tangerine slices. HARIN (girl, yellow headband, mint cardigan) sits at the table with chopsticks, happily eating a bit of everything on her tray.",
+   "imgKo": "급식판에 밥, 국, 생선구이, 시금치나물, 우유, 귤이 골고루 담겨 있고, 하린이가 젓가락으로 이것저것 맛있게 먹는다."
+  },
+  "흡수": {
+   "en": "absorption",
+   "explain": [
+    "쉬운 뜻: 영어로 absorption, 스펀지가 물을 머금듯 안으로 빨아들이는 것입니다.",
+    "생활 속 예: 마른 걸레로 닦으면 바닥의 물이 걸레에 흡수됩니다.",
+    "영양소는 주로 작은창자에서, 남은 물기는 큰창자에서 흡수됩니다."
+   ]
+  },
+  "식도": {
+   "explain": [
+    "쉬운 뜻: 입에서 위까지 이어진 음식의 미끄럼틀입니다.",
+    "생활 속 예: 누워서 물을 마셔도 식도가 꿈틀거려 물을 위까지 밀어 보냅니다."
+   ]
+  },
+  "분비": {
+   "explain": [
+    "쉬운 뜻: 몸속 작은 공장이 침, 땀, 눈물 같은 물을 만들어 내놓는 것입니다.",
+    "생활 속 예: 맛있는 음식 냄새를 맡으면 입안에 침이 고입니다."
+   ],
+   "beats": ["뜨거운 햇볕 아래에서 도윤이가 달리기를 마쳤습니다.", "이마와 팔에 땀방울이 송골송골 맺혔습니다.", "몸이 이렇게 땀 같은 액체를 스스로 만들어 내보내는 것이 분비입니다."],
+   "img": "A hot, sunny summer afternoon on a school field. DOYUN (boy, round glasses, wearing a navy short-sleeved T-shirt instead of his hoodie) has just finished a running race; beads of sweat glisten on his forehead and arms and his cheeks are flushed. He wipes his forehead with a small towel.",
+   "imgKo": "뙤약볕 아래 운동장에서 달리기를 마친 도윤이의 이마와 팔에 땀방울이 송골송골 맺혀 있고, 수건으로 이마를 닦는다."
+  },
+  "작은창자": {
+   "explain": [
+    "쉬운 뜻: 길이가 짧아서가 아니라 굵기가 가늘어서 '작은'이 붙은 창자입니다.",
+    "생활 속 예: 쭉 펴면 어른 키의 몇 배나 될 만큼 깁니다."
+   ]
+  },
+  "큰창자": {
+   "explain": [
+    "쉬운 뜻: 작은창자보다 굵어서 '큰'이 붙은, 음식이 마지막으로 지나는 창자입니다.",
+    "생활 속 예: 대변이 단단한 모양을 갖추는 것은 큰창자가 물기를 빨아들이기 때문입니다."
+   ]
+  },
+  "이자": {
+   "explain": [
+    "쉬운 뜻: 위 뒤에 숨은 소화 도우미입니다. 음식물이 지나가는 길은 아닙니다.",
+    "생활 속 예: 길이는 어른 손 한 뼘쯤이고 길쭉한 모양입니다."
+   ]
+  },
+  "순환": {
+   "explain": [
+    "쉬운 뜻: 회전목마처럼 한 바퀴 돌고 제자리로 와서 또 도는 것입니다.",
+    "생활 속 예: 피가 온몸을 한 바퀴 도는 데 1분쯤 걸립니다.",
+    "심장과 혈관처럼 순환을 맡은 기관을 순환기관이라고 합니다."
+   ]
+  },
+  "혈액": {
+   "en": "blood",
+   "explain": [
+    "쉬운 뜻: 영어로 blood, 몸속을 도는 택배 트럭처럼 필요한 것을 싣고 다니는 붉은 액체입니다.",
+    "생활 속 예: 손가락이 종이에 베이면 빨간 혈액이 맺힙니다."
+   ]
+  },
+  "혈관": {
+   "en": "blood vessel",
+   "explain": [
+    "쉬운 뜻: 영어로 blood vessel, 피가 다니는 도로입니다. 몸 구석구석까지 뻗어 있습니다.",
+    "굵은 것은 손가락만 하고, 가는 것은 머리카락보다 가늘습니다."
+   ]
+  },
+  "펌프 작용": {
+   "explain": [
+    "쉬운 뜻: 물총을 눌러 물을 쏘듯, 심장이 오므라들며 피를 밀어내는 일입니다.",
+    "생활 속 예: 가슴에 손을 대면 심장이 펌프 작용을 할 때마다 쿵쿵 울립니다."
+   ]
+  },
+  "노폐물": {
+   "en": "waste",
+   "explain": [
+    "쉬운 뜻: 영어로 waste, 몸이 일하고 나서 생긴 쓰레기입니다.",
+    "낱말 나누기: 노폐(낡아 쓸모없어짐) + 물(물건), 쓸모없어진 것입니다.",
+    "생활 속 예: 오줌이 노란 것은 걸러 낸 노폐물이 섞여 있기 때문입니다."
+   ]
+  },
+  "호흡": {
+   "en": "breathing",
+   "explain": [
+    "쉬운 뜻: 영어로 breathing, 우리가 '숨 쉰다'라고 하는 일을 과학에서 부르는 말입니다.",
+    "생활 속 예: 숨을 크게 들이쉬면 가슴이 부풀고, 내쉬면 다시 내려갑니다.",
+    "코, 숨관, 숨관가지, 폐처럼 호흡을 맡은 기관을 호흡기관이라고 합니다."
+   ]
+  },
+  "숨관": {
+   "en": "windpipe",
+   "explain": [
+    "쉬운 뜻: 영어로 windpipe, wind(바람)와 pipe(관), 숨이 지나는 관입니다.",
+    "생활 속 예: 사레가 들려 콜록거리는 것은 먹은 것이 숨관 쪽으로 들어가서입니다."
+   ]
+  },
+  "숨관가지": {
+   "explain": [
+    "쉬운 뜻: 숨관에서 갈라져 나온 가지로, 폐 구석구석까지 공기를 나눠 줍니다.",
+    "낱말 나누기: 숨관(공기가 지나는 관) + 가지(갈라져 나온 줄기)입니다.",
+    "생활 속 예: 브로콜리를 거꾸로 세운 모양을 떠올리면 됩니다."
+   ]
+  },
+  "배설": {
+   "explain": [
+    "쉬운 뜻: 몸속에 생긴 쓰레기를 걸러서 몸 밖으로 버리는 일입니다.",
+    "콩팥, 오줌관, 방광, 요도가 함께 배설을 맡습니다.",
+    "생활 속 예: 오줌 색이 진할 때 물을 마시면 색이 다시 옅어집니다."
+   ]
+  },
+  "콩팥": {
+   "en": "kidney",
+   "explain": [
+    "쉬운 뜻: 영어로 kidney, 피 속 노폐물을 걸러 내는 거름망 같은 기관입니다.",
+    "콩팥이 만든 오줌은 오줌관을 따라 방광으로 내려갑니다.",
+    "생활 속 예: 허리에 두 손을 얹으면 엄지가 닿는 등 쪽 안에 하나씩 있습니다."
+   ]
+  },
+  "방광": {
+   "en": "bladder",
+   "explain": [
+    "쉬운 뜻: 영어로 bladder, 오줌을 잠시 모아 두는 물풍선 같은 주머니입니다.",
+    "생활 속 예: 비면 쪼그라들고, 오줌이 차면 풍선처럼 부풀어 늘어납니다."
+   ]
+  },
+  "요도": {
+   "explain": [
+    "쉬운 뜻: 오줌이 지나는 길의 맨 끝, 몸 밖으로 나가는 문까지 이어진 관입니다.",
+    "콩팥에서 만든 오줌은 오줌관, 방광, 요도 차례로 지나갑니다."
+   ]
+  },
+  "맥박": {
+   "en": "pulse",
+   "explain": [
+    "쉬운 뜻: 영어로 pulse, 손목에서 느끼는 심장의 '톡톡' 소식입니다.",
+    "생활 속 예: 손가락을 목 옆에 살짝 대어도 맥박을 느낄 수 있습니다.",
+    "맥박 수는 심장이 뛴 횟수와 같습니다."
+   ],
+   "beats": ["줄넘기를 마친 하린이가 숨을 몰아쉬며 의자에 앉았습니다.", "손목 안쪽에 두 손가락을 대니 톡톡 뛰는 것이 느껴집니다.", "심장이 뛸 때마다 혈관에 전해지는 이 떨림이 맥박입니다."],
+   "img": "A school gym after jump-rope practice. HARIN (girl, yellow headband, mint cardigan tied around her waist) sits on a bench catching her breath, a jump rope on her lap. She presses two fingers lightly on the inside of her other wrist near the thumb and watches the second hand of a round wall clock that has only tick marks and no numbers.",
+   "imgKo": "줄넘기를 마친 하린이가 체육관 의자에 앉아 손목 안쪽에 두 손가락을 대고, 숫자 없는 벽시계의 초바늘을 본다."
+  },
+  "질병": {
+   "en": "disease",
+   "explain": [
+    "쉬운 뜻: 영어로 disease, 몸의 어딘가가 고장 나서 아픈 것, 곧 병입니다.",
+    "생활 속 예: 충치, 배탈, 눈병도 모두 질병입니다."
+   ],
+   "beats": ["감기에 걸린 도윤이가 코를 훌쩍이며 병원에 왔습니다.", "의사 선생님이 청진기로 가슴 속 소리를 들어 봅니다.", "이렇게 몸의 기관에 탈이 나서 아픈 상태가 질병입니다."],
+   "img": "A small examination room in a children's clinic. DOYUN (boy, round glasses, navy hoodie) sits on a round stool with a red nose and a tissue in his hand, looking tired, while a kind doctor in a white coat listens to his chest with a stethoscope. His mother waits beside him holding his backpack.",
+   "imgKo": "소아과 진료실에서 코가 빨개진 도윤이가 휴지를 든 채 앉아 있고, 의사 선생님이 청진기로 가슴 소리를 듣는다. 엄마가 옆에서 기다린다."
+  }
+ }
+}

@@ -1,0 +1,401 @@
+{
+ "reading": {
+  "추천사": {
+   "explain": ["쉬운 뜻: '이 책 꼭 읽어 봐!' 하고 까닭을 들어 권하는 글입니다.", "낱말 나누기: 추천(좋다고 권함) + 사(말), 권하는 말을 적은 글입니다.", "생활 속 예: 책 뒤표지에 '정말 재미있어요'라고 적힌 짧은 글입니다."]
+  },
+  "훑어 읽기": {
+   "en": "skimming",
+   "explain": ["쉬운 뜻: 영어로 skimming입니다. 책장을 쓱쓱 넘기며 눈에 띄는 곳만 보는 것입니다.", "낱말 나누기: 훑어(쭉 빠르게 살펴) + 읽기입니다.", "생활 속 예: 서점에서 표지와 작가의 말만 슬쩍 보고 살지 정합니다."]
+  },
+  "중심 문장": {
+   "en": "topic sentence",
+   "explain": ["쉬운 뜻: 영어로 topic sentence입니다. 문단의 기둥이 되는 한 문장입니다.", "낱말 나누기: 중심(가장 중요한 가운데) + 문장입니다.", "생활 속 예: '과일은 몸에 좋다.' 뒤에 사과, 귤 이야기가 이어집니다."]
+  },
+  "판서": {
+   "explain": ["쉬운 뜻: 조선에서 나랏일 한 갈래를 통째로 맡아 이끌던 아주 높은 관리입니다.", "병조 판서는 군사 일을, 호조 판서는 나라 살림을 맡았습니다."],
+   "beats": ["조선 시대 궁궐 마당에 관리들이 줄지어 서 있습니다.", "맨 앞줄, 붉은 옷을 입은 관리가 임금께 고개 숙여 말씀을 올립니다.", "나랏일 한 갈래를 맡은 아주 높은 관리가 판서입니다."],
+   "img": "In a Joseon-era palace courtyard, officials in traditional robes and black winged hats stand in neat rows. At the very front, one senior official in a deep red robe bows slightly as he speaks toward the king's throne hall. No text anywhere.",
+   "imgKo": "조선 궁궐 마당에 관복과 날개 달린 검은 모자를 쓴 관리들이 줄지어 서 있다. 맨 앞에서 붉은 관복을 입은 높은 관리가 임금이 있는 전각을 향해 고개를 숙이고 말씀을 올린다."
+  },
+  "신분": {
+   "explain": ["쉬운 뜻: 태어날 때 정해져서, 아무리 애써도 바꾸기 힘든 높고 낮은 자리입니다.", "조선 시대에는 양반, 중인, 상민, 천민으로 나뉘었습니다.", "노비의 아이는 노비가 되어, 공부를 잘해도 관리가 되기 어려웠습니다."],
+   "beats": ["조선 시대 큰 집 마당에 나이가 같은 두 아이가 있습니다.", "한 아이는 비단옷을 입고 책을 끼고 서당에 갑니다.", "다른 아이는 거친 베옷을 입고 무거운 물동이를 나르며 그 모습을 바라봅니다.", "태어난 집안에 따라 정해진 높고 낮은 자리가 신분입니다."],
+   "img": "In the courtyard of a large Joseon-era house, two boys of the same age. One wears fine silk clothes and walks toward the gate with books under his arm; the other, in plain rough hemp clothes, carries a heavy water jar and watches him go. No text.",
+   "imgKo": "조선 시대 큰 기와집 마당에 나이가 같은 두 소년이 있다. 한 아이는 비단옷을 입고 책을 끼고 대문으로 나가고, 거친 베옷을 입은 다른 아이는 무거운 물동이를 나르며 그 아이를 바라본다."
+  },
+  "벼슬": {
+   "explain": ["쉬운 뜻: 옛날 나라에서 내려 주던 나랏일 자리와 그 높낮이입니다.", "'벼슬길에 오르다'는 관리가 되었다는 말입니다.", "생활 속 예: 사극에 나오는 '정승', '판서'가 모두 벼슬 이름입니다."],
+   "beats": ["조선 궁궐 안, 임금이 높은 자리에 앉아 있습니다.", "젊은 선비가 엎드려 임금이 내린 종이를 두 손으로 받습니다.", "나라에서 내려 주는 나랏일 자리가 벼슬입니다."],
+   "img": "In a Joseon palace hall, the king sits on a raised throne. A young scholar in a blue robe kneels and bows low, receiving a rolled official paper with both hands from a royal servant. No text on the paper.",
+   "imgKo": "조선 궁궐 전각에서 임금이 높은 자리에 앉아 있다. 푸른 옷을 입은 젊은 선비가 무릎을 꿇고 엎드려, 신하가 건네는 임금의 말린 종이를 두 손으로 받는다."
+  },
+  "비범하다": {
+   "en": "extraordinary",
+   "explain": ["쉬운 뜻: 영어로 extraordinary, '보통을 훨씬 넘는'이라는 말입니다.", "길동은 별과 땅의 이치를 혼자 깨치고 분신술까지 익혔습니다.", "생활 속 예: 처음 배운 줄넘기를 하루 만에 2단 뛰기까지 해냅니다."]
+  },
+  "총명하다": {
+   "en": "smart",
+   "explain": ["쉬운 뜻: 영어로 smart입니다. 한 번 듣고도 빨리 알아듣고 잘 잊지 않는 것입니다.", "한자 뜻: 聰(귀 밝을 총)과 明(밝을 명), 귀도 눈도 밝다는 뜻입니다.", "생활 속 예: 처음 간 길도 한 번 걷고 나면 혼자 찾아옵니다."]
+  },
+  "분신술": {
+   "explain": ["쉬운 뜻: 내 몸을 복사하듯, 나와 똑같은 사람을 여럿 만들어 내는 재주입니다.", "낱말 나누기: 분신(몸을 나눔) + 술(재주)입니다.", "임금이 보낸 군사들은 어느 길동이 진짜인지 몰라 쩔쩔맸습니다."],
+   "beats": ["조선 곳곳의 고을에 똑같은 젊은이가 나타났습니다.", "산골 마을에도, 바닷가 마을에도 같은 얼굴, 같은 옷입니다.", "군사들은 누가 진짜인지 몰라 두리번거립니다.", "나와 똑같은 사람을 여럿 만들어 내는 재주가 분신술입니다."],
+   "img": "A bird's-eye view of Joseon-era Korea with mountains, rivers, farming villages, and a seaside town. In each place stands the very same young man, Hong Gildong, in an identical blue robe and black hat, eight copies in all, while puzzled soldiers in several places look around. No text.",
+   "imgKo": "산과 강, 마을, 바닷가 고을이 내려다보이는 조선 땅 곳곳에 파란 도포와 검은 갓을 쓴 똑같은 홍길동이 여덟 명 서 있다. 여러 곳의 군사들이 어리둥절해 두리번거린다."
+  },
+  "탐욕": {
+   "en": "greed",
+   "explain": ["쉬운 뜻: 영어로 greed입니다. 배가 불러도 더 먹겠다고 접시를 끌어안는 마음입니다.", "생활 속 예: 과자를 혼자 다 차지하고도 친구 몫까지 달라고 합니다."],
+   "beats": ["조선 시대 관아 창고에 쌀가마니와 엽전이 산처럼 쌓여 있습니다.", "벼슬아치는 그 위에 앉아서도 쌀자루를 또 끌어당깁니다.", "문밖에서는 마른 백성들이 빈 바가지를 들고 서 있습니다.", "가진 것으로 모자라 끝없이 더 가지려는 마음이 탐욕입니다."],
+   "img": "Inside a Joseon-era government storehouse, sacks of rice and strings of old coins are piled like a mountain. A fat official in a fine robe sits on top of the pile and still pulls another rice sack toward himself. Outside the open gate, thin villagers stand holding empty gourd bowls. No text.",
+   "imgKo": "조선 관아 창고에 쌀가마니와 엽전 꾸러미가 산처럼 쌓여 있고, 좋은 옷을 입은 벼슬아치가 그 위에 앉아 쌀자루를 또 끌어당긴다. 열린 문밖에는 마른 백성들이 빈 바가지를 들고 서 있다."
+  },
+  "팔도": {
+   "explain": ["쉬운 뜻: 조선을 여덟 도로 나누었던 데서 나와, 우리나라 전체를 뜻합니다.", "경기, 충청, 전라, 경상, 강원, 황해, 평안, 함경 여덟 도입니다.", "생활 속 예: '팔도 김치'는 전국 곳곳의 김치라는 뜻입니다."]
+  },
+  "정착": {
+   "en": "settle",
+   "explain": ["쉬운 뜻: 영어로 settle입니다. 떠돌던 짐을 풀고 한곳에 뿌리를 내리는 것입니다.", "생활 속 예: 옛사람들은 농사를 짓기 시작하면서 강가에 정착했습니다."],
+   "beats": ["조선을 떠난 배들이 푸른 섬에 닿았습니다.", "길동과 사람들이 나무를 베어 집을 짓고 밭을 일굽니다.", "떠돌지 않고 한곳에 자리 잡아 사는 것이 정착입니다."],
+   "img": "Several wooden sailing boats have landed on the beach of a green island. Hong Gildong, a young man in a blue robe and black hat, directs many followers who are cutting trees, building thatched houses, and plowing new fields. No text.",
+   "imgKo": "나무배 여러 척이 푸른 섬 바닷가에 닿아 있다. 파란 도포를 입은 홍길동이 손짓하고, 많은 사람들이 나무를 베고 초가집을 짓고 밭을 간다."
+  },
+  "사치": {
+   "en": "luxury",
+   "explain": ["쉬운 뜻: 영어로 luxury입니다. 꼭 필요하지 않은 비싸고 화려한 것에 돈을 펑펑 쓰는 것입니다.", "생활 속 예: 멀쩡한 운동화가 있는데 비싼 새 운동화를 또 삽니다."],
+   "beats": ["율도국 궁궐에서 왕이 금 그릇에 음식을 가득 담아 잔치를 엽니다.", "왕의 몸에는 보석이 주렁주렁 달려 있습니다.", "창밖 멀리 백성들의 집은 낡고 초라합니다.", "필요보다 훨씬 비싸고 화려하게 돈을 쓰는 것이 사치입니다."],
+   "img": "In a lavish palace hall of an imaginary old island kingdom, the king sits at a long table covered with golden bowls and plates piled high with food, wearing many jewels and shiny silk. Through an open window, small run-down village houses can be seen far away. No text.",
+   "imgKo": "옛 섬나라의 화려한 궁궐에서 보석과 비단으로 꾸민 왕이 금 그릇에 음식이 가득한 긴 상 앞에 앉아 있다. 열린 창밖 멀리 낡고 작은 백성들의 집이 보인다."
+  },
+  "여생": {
+   "explain": ["쉬운 뜻: 지금부터 삶이 끝나는 날까지 이어질 나날입니다.", "생활 속 예: 은퇴한 경찰견이 돌봐 주던 경찰관의 집에서 편히 지냅니다."],
+   "beats": ["흰 수염이 난 길동이 궁궐 뜰에 앉아 있습니다.", "담 너머로 백성들이 웃으며 밭을 갈고 아이들이 뛰어놉니다.", "길동은 율도국을 평화롭게 다스리며 남은 삶을 보냅니다.", "앞으로 남은 삶이 여생입니다."],
+   "img": "An old Hong Gildong with a long white beard, wearing a simple royal robe, sits peacefully on a bench in a palace garden. Beyond the low wall, villagers smile as they farm and children play in the fields of a calm island kingdom. No text.",
+   "imgKo": "흰 수염이 긴 늙은 홍길동이 소박한 왕의 옷을 입고 궁궐 뜰 의자에 편안히 앉아 있다. 낮은 담 너머로 평화로운 섬나라 백성들이 웃으며 밭을 갈고 아이들이 뛰어논다."
+  },
+  "층간 소음": {
+   "explain": ["쉬운 뜻: 위층 발소리나 옆집 소리가 바닥과 벽을 타고 이웃집으로 전해지는 것입니다.", "낱말 나누기: 층간(층과 층 사이) + 소음(시끄러운 소리)입니다.", "생활 속 예: 밤에 의자를 끌면 드르륵 소리가 아랫집까지 울립니다."],
+   "beats": ["아파트를 반으로 자른 것처럼 위층과 아래층이 보입니다.", "위층에서 아이들이 뛰자 아래층 천장의 전등이 흔들립니다.", "아래층 할머니가 잠에서 깨어 귀를 막습니다.", "이웃한 집 사이로 전해지는 생활 소리가 층간 소음입니다."],
+   "img": "A cutaway view of two apartment floors, one above the other. Upstairs, two children jump and run on the floor. Downstairs, an elderly woman sits up in bed covering her ears while the ceiling lamp swings. Small curved lines show the shaking passing through the floor. No letters or text.",
+   "imgKo": "아파트 두 층을 잘라 보인 그림. 위층에서는 아이 둘이 바닥을 뛰어다니고, 아래층에서는 할머니가 침대에 일어나 앉아 귀를 막고 천장 전등이 흔들린다. 바닥을 타고 떨림이 전해지는 작은 곡선이 보인다."
+  },
+  "공동 주택": {
+   "explain": ["쉬운 뜻: 큰 건물 하나를 여러 집이 나누어 쓰며 사는 집입니다.", "낱말 나누기: 공동(여럿이 함께) + 주택(사는 집)입니다.", "생활 속 예: 엘리베이터와 놀이터를 이웃과 함께 씁니다."],
+   "beats": ["높은 건물 하나에 창문이 줄줄이 나 있습니다.", "창마다 다른 가족이 저녁을 먹고, 책을 읽고, 빨래를 넙니다.", "한 건물에 여러 가구가 나누어 사는 집이 공동 주택입니다."],
+   "img": "A tall apartment building at dusk with many lit windows in neat rows. Through each window a different family can be seen: one eating dinner, one reading, one hanging laundry, one playing with a cat. No text.",
+   "imgKo": "저녁 무렵 불 켜진 창문이 줄지어 있는 높은 아파트. 창마다 다른 가족이 저녁을 먹고, 책을 읽고, 빨래를 널고, 고양이와 논다."
+  },
+  "당사자": {
+   "explain": ["쉬운 뜻: 일이 생긴 그 자리에 직접 얽혀 있는 바로 그 사람입니다.", "생활 속 예: 공에 맞은 친구에게 먼저 괜찮은지 물어봅니다."],
+   "beats": ["교실 뒤에서 두 아이가 다투고, 여러 아이가 둘러서서 웅성댑니다.", "선생님이 둘러선 아이들을 지나 다툰 두 아이 앞에 무릎을 굽힙니다.", "어떤 일에 직접 관계된 바로 그 사람이 당사자입니다."],
+   "img": "At the back of a classroom, two upset children stand apart after a quarrel while several classmates crowd around whispering. The TEACHER walks past the crowd and kneels down in front of the two children to listen to them first. No text.",
+   "imgKo": "교실 뒤에서 다툰 두 아이가 떨어져 서 있고 여러 아이가 둘러서서 수군댄다. 선생님이 구경하는 아이들을 지나 다툰 두 아이 앞에 무릎을 굽혀 앉는다."
+  },
+  "계기": {
+   "explain": ["쉬운 뜻: 생각이나 일이 바뀌기 시작한 출발점이 되는 일입니다.", "생활 속 예: 이가 몹시 아팠던 날 뒤로 단것을 줄이게 되었습니다."],
+   "beats": ["할머니 댁 마당에서 도윤이가 다리를 다친 강아지에게 붕대를 감아 줍니다.", "강아지가 꼬리를 흔들자 도윤이의 눈이 반짝입니다.", "이 일로 동물을 돌보는 꿈이 생겼습니다. 이런 출발점이 계기입니다."],
+   "img": "In the courtyard of a countryside house, DOYUN gently wraps a bandage around a small puppy's front leg while his grandmother watches, smiling. The puppy wags its tail, and a toy stethoscope hangs around DOYUN's neck. No text.",
+   "imgKo": "시골집 마당에서 도윤이가 다친 강아지의 앞다리에 붕대를 감아 주고 할머니가 웃으며 지켜본다. 강아지가 꼬리를 흔들고, 도윤이 목에는 장난감 청진기가 걸려 있다."
+  },
+  "그루터기": {
+   "en": "stump",
+   "explain": ["쉬운 뜻: 영어로 stump입니다. 나무를 베고 남은, 땅에 붙은 밑동입니다.", "생활 속 예: 숲 놀이터에서 그루터기를 징검다리처럼 밟고 건넙니다."],
+   "beats": ["숲에 큰 나무를 베어 낸 자리가 있습니다.", "낮고 둥근 밑동에 나이테가 동그랗게 보입니다.", "할아버지가 그 위에 앉아 쉬어 갑니다.", "나무를 베고 남은 밑동이 그루터기입니다."],
+   "img": "In a sunny forest clearing, a wide tree has been cut down, leaving a low round stump with clear growth rings on its flat top. An old man with a walking stick sits on the stump to rest. No text.",
+   "imgKo": "햇살 드는 숲속 빈터에 큰 나무를 베어 낸 낮고 둥근 밑동이 있고, 윗면에 나이테가 또렷하다. 지팡이를 든 할아버지가 그 위에 앉아 쉰다."
+  },
+  "구호": {
+   "explain": ["쉬운 뜻: 큰 홍수나 지진을 겪은 사람들에게 물, 담요, 약을 보내 돕는 일입니다.", "생활 속 예: 산불 난 마을로 생수와 담요를 실은 트럭이 달려갑니다."],
+   "beats": ["홍수가 지나간 마을에 큰 천막이 세워졌습니다.", "조끼를 입은 자원봉사자들이 담요와 생수를 나누어 줍니다.", "어려움에 빠진 사람을 돕고 보살피는 일이 구호입니다."],
+   "img": "After a flood, a big white tent stands on dry ground near a muddy village. Volunteers in matching vests hand out folded blankets and bottled water to families waiting in a line. No text, no logos.",
+   "imgKo": "홍수가 지나간 진흙투성이 마을 옆 마른 땅에 큰 흰 천막이 서 있다. 같은 조끼를 입은 자원봉사자들이 줄 선 가족들에게 담요와 생수를 나누어 준다."
+  },
+  "서고": {
+   "explain": ["쉬운 뜻: 책을 차곡차곡 넣어 보관해 두는 책 창고입니다.", "생활 속 예: 서고에 있는 책은 사서 선생님께 부탁해서 꺼내 봅니다."],
+   "beats": ["도서관 깊숙한 곳에 문이 하나 있습니다.", "문을 여니 높은 책장이 빽빽하고 오래된 책이 가득합니다.", "책을 넣어 보관해 두는 방이 서고입니다."],
+   "img": "HARIN holds a flashlight and peeks through an open door into a dim storage room deep inside a library, where tall metal shelves are packed tightly with old books and boxes. No text on the spines.",
+   "imgKo": "하린이가 손전등을 들고 도서관 깊숙한 곳의 문을 열어 어두운 방을 들여다본다. 키 큰 쇠 책장마다 오래된 책과 상자가 빽빽하다."
+  }
+ },
+ "1": {
+  "생략": {
+   "explain": ["쉬운 뜻: 다 말하지 않아도 알 만한 부분을 빼고 말하는 것입니다.", "듣는 사람이 짐작할 수 있을 때 빼야 뜻이 잘 통합니다.", "생활 속 예: '밥 먹었어?' 대신 '밥은?' 하고만 물어도 알아듣습니다."]
+  },
+  "단서": {
+   "en": "clue",
+   "explain": ["쉬운 뜻: 영어로 clue입니다. 수수께끼를 푸는 실마리가 되는 작은 흔적이나 말입니다.", "생활 속 예: 방바닥의 과자 부스러기를 보고 동생이 몰래 먹은 것을 압니다."],
+   "beats": ["아침 교실에 들어온 도윤이가 입을 크게 벌리고 하품을 합니다.", "눈 밑은 거뭇하고 머리는 부스스합니다.", "하린이는 그 모습을 보고 도윤이가 잠을 못 잤다는 것을 알아챕니다.", "무엇을 알아내는 데 도움이 되는 흔적이 단서입니다."],
+   "img": "In a morning classroom, DOYUN yawns widely with sleepy half-closed eyes, messy hair, and dark circles under his eyes. HARIN, sitting next to him, looks at him with a knowing, thoughtful face, one finger on her chin. No text.",
+   "imgKo": "아침 교실에서 도윤이가 눈을 반쯤 감고 입을 크게 벌려 하품한다. 머리는 부스스하고 눈 밑이 거뭇하다. 옆자리 하린이가 턱에 손가락을 대고 알겠다는 얼굴로 바라본다."
+  },
+  "배경지식": {
+   "en": "background knowledge",
+   "explain": ["쉬운 뜻: 영어로 background knowledge입니다. 머릿속에 미리 넣어 둔 앎입니다.", "낱말 나누기: 배경(뒤에 깔린 바탕) + 지식(아는 것)입니다.", "생활 속 예: 김치를 담가 본 아이는 '배추를 절인다'는 말을 바로 압니다."]
+  },
+  "처지": {
+   "en": "situation",
+   "explain": ["쉬운 뜻: 영어로 situation입니다. 그 사람이 지금 어떤 일을 겪고 있는지, 그 사정입니다.", "생활 속 예: 우산이 없는 친구 처지라면 비 오는 날 하굣길이 걱정됩니다."],
+   "beats": ["운동장에서 친구들이 신나게 공을 찹니다.", "다리에 붕대를 감은 아이는 벤치에 앉아 바라보기만 합니다.", "그 아이가 놓여 있는 형편이 그 아이의 처지입니다."],
+   "img": "On a sunny school field, children happily play soccer. On a bench at the side, a boy with a white bandage wrapped around his leg and crutches beside him quietly watches them. No text.",
+   "imgKo": "햇살 좋은 운동장에서 아이들이 신나게 축구를 한다. 옆 벤치에는 다리에 흰 붕대를 감고 목발을 세워 둔 남자아이가 조용히 바라보고 있다."
+  },
+  "고려": {
+   "en": "consider",
+   "explain": ["쉬운 뜻: 영어로 consider입니다. 정하기 전에 이것저것을 함께 따져 보는 것입니다.", "생활 속 예: 소풍 장소를 정할 때 날씨, 거리, 화장실까지 살핍니다."]
+  },
+  "문맥": {
+   "en": "context",
+   "explain": ["쉬운 뜻: 영어로 context입니다. 앞 문장과 뒤 문장이 실처럼 이어지는 흐름입니다.", "생활 속 예: '눈이 부시다'와 '눈이 쌓였다'의 눈은 앞뒤 말로 가려냅니다."]
+  },
+  "장단": {
+   "explain": ["쉬운 뜻: 같은 글자라도 소리를 길게 내는지 짧게 내는지의 차이입니다.", "사전에는 길게 내는 소리에 [ː] 표시를 합니다.", "생활 속 예: 타는 말은 짧게 [말], 하는 말은 길게 [말ː] 소리 냅니다."]
+  },
+  "뒤룩뒤룩": {
+   "explain": ["쉬운 뜻: 크고 둥근 눈알을 이리 굴리고 저리 굴리는 모양입니다.", "생활 속 예: 술래가 커다란 눈을 이리저리 굴리며 숨은 친구를 찾습니다."],
+   "beats": ["화장실 칸을 꽉 채운 커다란 갈색 도깨비가 나타났습니다.", "도깨비는 화가 나서 커다란 눈알을 이리 굴리고 저리 굴립니다.", "크고 둥근 눈알을 힘 있게 굴리는 모양이 뒤룩뒤룩입니다."],
+   "img": "In a narrow library restroom stall, a huge brown dokkaebi (a Korean goblin) with a red face, shaggy hair, and patched ragged clothes is squeezed in, hunched under the ceiling. His big round eyes roll angrily to one side. A small child in a yellow raincoat (JINSEO) stares up at him in surprise. No text.",
+   "imgKo": "도서관 화장실 좁은 칸에 빨간 얼굴, 덥수룩한 머리, 누더기 옷의 커다란 갈색 도깨비가 천장에 머리를 대고 구부정하게 끼어 있다. 큰 눈알을 화난 듯 한쪽으로 굴리고, 노란 비옷을 입은 진서가 놀라 올려다본다."
+  },
+  "흠칫하다": {
+   "explain": ["쉬운 뜻: 갑자기 놀라서 어깨가 움찔, 몸이 저절로 움츠러드는 것입니다.", "생활 속 예: 어두운 방문을 열었는데 큰 인형이 서 있어 몸이 움찔합니다."],
+   "beats": ["진서가 커다란 도깨비를 똑바로 쏘아봅니다.", "도깨비가 어깨를 움츠리며 깜짝 놀랍니다.", "몸을 움츠리며 갑작스럽게 놀라는 것이 흠칫하는 것입니다."],
+   "img": "JINSEO, a small child, glares straight up with hands on hips at a huge brown dokkaebi with a red face and shaggy hair. The big dokkaebi flinches backward, shoulders raised and eyes wide with surprise. Library restroom background. No text.",
+   "imgKo": "작은 진서가 허리에 손을 얹고 커다란 갈색 도깨비를 똑바로 쏘아본다. 빨간 얼굴의 도깨비가 어깨를 움츠리고 눈을 크게 뜬 채 움찔 뒤로 물러난다."
+  },
+  "굽이굽이": {
+   "en": "winding",
+   "explain": ["쉬운 뜻: 영어로 winding입니다. 길이나 물줄기가 이리 휘고 저리 휘는 곳곳입니다.", "생활 속 예: 시골 할머니 댁 가는 산길이 몇 번이나 휘어집니다."],
+   "beats": ["높은 산허리를 따라 길이 나 있습니다.", "길은 왼쪽으로 꺾였다가 오른쪽으로 꺾였다가 하며 끝없이 이어집니다.", "길이 여러 번 휘어 구부러진 곳곳이 굽이굽이입니다."],
+   "img": "A bird's-eye view of a mountain road that zigzags back and forth in many tight curves down a green mountainside, with one small car on a bend. No text, no signs.",
+   "imgKo": "푸른 산비탈을 따라 길이 이리저리 여러 번 꺾이며 내려가는 모습을 위에서 내려다본 그림. 굽은 곳 하나에 작은 차가 달린다."
+  },
+  "꿉꿉하다": {
+   "en": "damp",
+   "explain": ["쉬운 뜻: 영어로 damp입니다. 물기가 배어 살짝 축축하고 개운하지 않은 느낌입니다.", "생활 속 예: 비 온 날 덜 마른 양말을 신으면 발이 축축하고 개운하지 않습니다."],
+   "beats": ["장마철 창가에 빨래가 줄줄이 걸려 있습니다.", "창밖에는 며칠째 비가 내리고, 빨래는 아직 축축합니다.", "하린이가 티셔츠 냄새를 맡고 코를 찡그립니다.", "물기가 배어 조금 축축한 것이 꿉꿉한 것입니다."],
+   "img": "During the rainy season, laundry hangs in rows on an indoor drying rack by a window streaked with rain. HARIN holds up a still-damp T-shirt, sniffs it, and wrinkles her nose. No text.",
+   "imgKo": "장마철, 빗줄기가 흐르는 창가 빨래 건조대에 빨래가 줄줄이 걸려 있다. 하린이가 아직 축축한 티셔츠 냄새를 맡고 코를 찡그린다."
+  },
+  "대령하다": {
+   "explain": ["쉬운 뜻: 윗사람이 찾을 것을 미리 갖추어 두었다가 바로 눈앞에 갖다 놓는 것입니다.", "생활 속 예: 사극에서 사또가 '죄인을 대령하라!' 하고 외칩니다."],
+   "beats": ["화가 난 진서가 어린이 자료실에 팔짱을 끼고 서 있습니다.", "커다란 도깨비가 몸을 숙여 재미있어 보이는 책을 두 손으로 진서 눈앞에 내밉니다.", "바라는 것을 갖추어 바로 앞에 갖다 놓는 것이 대령하는 것입니다."],
+   "img": "In the children's reading room of a library, JINSEO stands with arms crossed and a pouting face. A huge brown dokkaebi with a red face and shaggy hair bends low and politely holds out a colorful book with both hands right in front of the child's eyes. No text on the book.",
+   "imgKo": "도서관 어린이 자료실에서 진서가 팔짱을 끼고 뾰로통하게 서 있다. 빨간 얼굴의 커다란 도깨비가 몸을 낮게 숙여 알록달록한 책을 두 손으로 진서 눈앞에 공손히 내민다."
+  },
+  "허름하다": {
+   "en": "shabby",
+   "explain": ["쉬운 뜻: 영어로 shabby입니다. 낡고 볼품없어 값이 덜 나가 보이는 것입니다.", "생활 속 예: 오래 신어 밑창이 닳고 색이 바랜 운동화입니다."],
+   "beats": ["좁은 골목 끝에 작은 책방이 있습니다.", "유리창은 뿌옇고 간판 칠은 벗겨졌으며 나무문은 비뚤어졌습니다.", "낡고 보잘것없어 보이는 모습이 허름한 것입니다."],
+   "img": "At the end of a narrow alley on a rainy day stands a tiny old bookshop with a cloudy glass window, a blank sign board with peeling paint, a crooked wooden door, and stacks of old books visible inside. A huge brown dokkaebi carrying a child on his shoulders under a small umbrella stops in front of it. No text.",
+   "imgKo": "비 오는 날 좁은 골목 끝의 작은 헌책방. 유리창은 뿌옇고, 글자 없는 간판은 칠이 벗겨졌고, 나무문은 비뚤다. 진서를 어깨에 태우고 작은 우산을 쓴 도깨비가 그 앞에 멈춰 선다."
+  },
+  "누더기": {
+   "en": "rags",
+   "explain": ["쉬운 뜻: 영어로 rags입니다. 해지고 구멍 나서 여기저기 덧대어 기운 낡은 옷입니다.", "생활 속 예: 무릎에 천 조각을 몇 번이나 덧대 꿰맨 바지입니다."],
+   "beats": ["커다란 도깨비가 앞장서서 걸어갑니다.", "도깨비의 옷은 군데군데 찢어지고, 다른 색 천 조각이 덧대어져 있습니다.", "진서가 그 옷자락을 꼭 붙잡고 따라갑니다.", "해지고 기운 데가 많은 낡은 옷이 누더기입니다."],
+   "img": "Seen from behind, a huge brown dokkaebi with shaggy hair walks forward. His clothes are torn in many places and covered with patches of different colored cloth sewn on. JINSEO walks behind him, tightly holding the hem of his ragged clothes. No text.",
+   "imgKo": "덥수룩한 머리의 커다란 갈색 도깨비가 앞장서 걷는 뒷모습. 옷은 군데군데 찢어지고 여러 색 천 조각이 덧대어져 있다. 진서가 뒤에서 그 옷자락을 꼭 붙잡고 따라간다."
+  },
+  "은근히": {
+   "explain": ["쉬운 뜻: 티 나지 않게 슬그머니, 속으로 몰래 하는 모양입니다.", "생활 속 예: 칭찬받고 싶어서 그린 그림을 엄마 눈에 띄는 곳에 슬쩍 둡니다."],
+   "beats": ["도서관 책장 앞에 진서와 도깨비가 나란히 서 있습니다.", "진서는 고개를 돌리지 않은 채 눈만 옆으로 굴려 도깨비를 살핍니다.", "겉으로 드러내지 않고 슬며시 하는 모양이 은근히입니다."],
+   "img": "In a library reading room, JINSEO stands beside a huge brown dokkaebi, face turned forward but eyes slyly glancing sideways at him with a small knowing smile. The dokkaebi looks away nervously. No text.",
+   "imgKo": "도서관 자료실에서 진서가 커다란 도깨비 옆에 서 있다. 얼굴은 앞을 향한 채 눈만 옆으로 돌려 슬며시 도깨비를 살피며 살짝 웃고, 도깨비는 불안한 듯 딴 곳을 본다."
+  },
+  "선뜻": {
+   "explain": ["쉬운 뜻: 머뭇거리지 않고 시원스럽게 바로 하는 모양입니다.", "생활 속 예: 무거운 짐을 든 할머니를 보자마자 짐을 들어 드립니다."],
+   "beats": ["선생님이 손을 내밀며 누가 해 볼지 묻습니다.", "모두 눈치만 보는데 하린이가 바로 손을 번쩍 듭니다.", "망설이지 않고 시원스럽게 바로 하는 모양이 선뜻입니다."],
+   "img": "In a classroom, the TEACHER stands at the front with one open hand held out as if asking a question. Most students look down or glance at each other hesitantly, but HARIN raises her hand high right away with a bright, confident face. No text.",
+   "imgKo": "교실 앞에서 선생님이 손을 내밀며 묻는다. 아이들 대부분은 고개를 숙이거나 서로 눈치를 보는데, 하린이가 밝은 얼굴로 손을 번쩍 든다."
+  },
+  "흥미진진하다": {
+   "en": "exciting",
+   "explain": ["쉬운 뜻: 영어로 exciting입니다. 재미가 넘쳐서 다음 장면이 몹시 궁금한 것입니다.", "낱말 나누기: 흥미(재미) + 진진(넘칠 만큼 많음)입니다.", "생활 속 예: 다음 이야기가 궁금해 만화책 다음 권을 바로 집어 듭니다."],
+   "beats": ["밤늦은 시간, 이불 속이 손전등 불빛으로 환합니다.", "도윤이가 탐정 소설을 넘기며 눈을 동그랗게 뜹니다.", "재미가 넘쳐 다음이 몹시 궁금한 것이 흥미진진한 것입니다."],
+   "img": "Late at night in a dark bedroom, DOYUN hides under a blanket tent lit by a flashlight, eagerly turning the pages of a thick mystery book with wide, excited eyes. No text.",
+   "imgKo": "늦은 밤 어두운 방, 도윤이가 이불을 뒤집어쓰고 손전등을 비추며 두꺼운 탐정 소설을 넘긴다. 눈을 동그랗게 뜨고 푹 빠져 있다."
+  },
+  "오그라들다": {
+   "en": "shrink",
+   "explain": ["쉬운 뜻: 영어로 shrink입니다. 겁이 나거나 기가 죽어 몸이 점점 작게 움츠러드는 것입니다.", "생활 속 예: 혼날까 봐 어깨를 웅크리고 목을 쏙 집어넣습니다."],
+   "beats": ["진서가 두 주먹을 쥐고 소리칩니다.", "커다란 도깨비는 고개를 숙이고 어깨를 웅크려 점점 작아 보입니다.", "겁이 나서 몸이 작게 움츠러지는 것이 오그라드는 것입니다."],
+   "img": "JINSEO, red-faced with anger, clenches both fists and shouts. The huge brown dokkaebi in front hunches his shoulders, lowers his head, and curls up so much that he looks smaller and smaller. Library hallway background. No text.",
+   "imgKo": "화가 나 얼굴이 빨개진 진서가 두 주먹을 쥐고 소리친다. 앞에 선 커다란 도깨비가 고개를 숙이고 어깨를 웅크려 점점 작아 보인다."
+  },
+  "부리부리하다": {
+   "explain": ["쉬운 뜻: 눈이 크고 또렷해서 눈빛에 힘이 꽉 찬 모습입니다.", "생활 속 예: 부엉이의 크고 동그란 눈이 밤에도 또렷이 빛납니다."],
+   "beats": ["진서 앞에 커다란 갈색 도깨비가 서 있습니다.", "짙은 눈썹 아래 두 눈이 크고 또렷하며 힘 있게 빛납니다.", "눈망울이 크고 또렷하며 힘 있어 보이는 것이 부리부리한 것입니다."],
+   "img": "A close-up of a huge brown dokkaebi's red face: under thick bushy eyebrows, two large, round, clear eyes shine with strong power. Shaggy hair frames his face. No text.",
+   "imgKo": "커다란 갈색 도깨비의 빨간 얼굴을 가까이 그린 그림. 짙은 눈썹 아래 크고 둥근 두 눈이 또렷하고 힘 있게 빛나고, 덥수룩한 머리가 얼굴을 감싼다."
+  },
+  "덥수룩하다": {
+   "en": "shaggy",
+   "explain": ["쉬운 뜻: 영어로 shaggy입니다. 머리카락이나 수염이 길게 자라 어수선하게 덮인 모습입니다.", "생활 속 예: 털을 오래 안 깎은 강아지는 눈이 털에 가려 안 보입니다."],
+   "beats": ["산에서 한 달을 지낸 삼촌이 집에 돌아왔습니다.", "머리카락은 귀를 덮고, 턱수염이 얼굴의 반을 가립니다.", "머리털이나 수염이 많이 자라 어수선한 모습이 덥수룩한 것입니다."],
+   "img": "At a front door, an uncle in hiking clothes with a big backpack has just come home after a month in the mountains. His hair has grown long and messy over his ears, and a thick untidy beard covers half his face. HARIN looks up at him, surprised and laughing. No text.",
+   "imgKo": "현관에 큰 배낭을 멘 등산복 차림의 삼촌이 한 달 만에 돌아왔다. 머리카락은 길게 자라 귀를 덮고, 수북한 턱수염이 얼굴의 반을 가린다. 하린이가 놀라 웃으며 올려다본다."
+  }
+ },
+ "2": {
+  "시간 표현": {
+   "explain": ["쉬운 뜻: 지난 일인지, 지금 일인지, 앞으로 일인지 때를 알려 주는 말입니다.", "낱말 나누기: 시간(때) + 표현(나타내는 말)입니다.", "생활 속 예: '어제 먹었다', '지금 먹는다', '내일 먹겠다'처럼 끝도 바뀝니다."]
+  },
+  "기행문": {
+   "explain": ["쉬운 뜻: 여행하며 다닌 곳, 본 것, 느낀 것을 차례로 적은 글입니다.", "낱말 나누기: 기행(여행하며 겪은 일을 적음) + 문(글)입니다.", "생활 속 예: 가족 여행을 다녀와서 쓴 '제주도에 다녀와서'라는 글입니다."]
+  },
+  "여정": {
+   "en": "route",
+   "explain": ["쉬운 뜻: 영어로 route, 지나가는 길이라는 말입니다. 어디서 출발해 어디를 거쳐 갔는지 그 길입니다.", "기행문에서는 '먼저', '다음으로' 같은 말 뒤에 자주 나옵니다.", "생활 속 예: 집 → 터미널 → 박물관 → 바닷가처럼 화살표로 적습니다."]
+  },
+  "견문": {
+   "explain": ["쉬운 뜻: 여행지에서 눈으로 보고 귀로 들어서 새로 알게 된 것입니다.", "한자 뜻: 見(볼 견)과 聞(들을 문), 보고 들은 것입니다.", "생활 속 예: 해설사에게 '이 탑은 천 년 전에 세웠다'고 들은 내용입니다."]
+  },
+  "감상": {
+   "explain": ["쉬운 뜻: 보거나 겪은 뒤 마음속에 일어난 생각과 느낌입니다.", "생활 속 예: '바다가 끝없이 넓어서 가슴이 탁 트였다.'가 감상입니다."]
+  },
+  "해협": {
+   "explain": ["쉬운 뜻: 두 땅 사이에 낀, 목처럼 좁고 긴 바닷길입니다.", "한자 뜻: 海(바다 해)와 峽(골짜기 협), 바다의 좁은 골짜기입니다.", "생활 속 예: 부산에서 배를 타고 대한 해협을 건너면 일본입니다."]
+  },
+  "서식지": {
+   "en": "habitat",
+   "explain": ["쉬운 뜻: 영어로 habitat입니다. 동물이나 식물이 자리 잡고 사는 집 같은 곳입니다.", "생활 속 예: 대나무 숲은 판다의 서식지입니다."],
+   "beats": ["넓은 습지에 갈대가 우거지고 물이 얕게 고여 있습니다.", "두루미가 먹이를 찾고, 개구리와 물고기가 그 속에서 지냅니다.", "생물이 자리를 잡고 사는 곳이 서식지입니다."],
+   "img": "A wide wetland with tall reeds and shallow water at sunrise. Red-crowned cranes wade looking for food, a frog sits on a lily pad, and small fish swim below the surface. No text.",
+   "imgKo": "해 뜰 무렵 갈대가 우거지고 물이 얕게 고인 넓은 습지. 두루미가 먹이를 찾고, 개구리가 연잎에 앉아 있고, 물속에 작은 물고기가 헤엄친다."
+  },
+  "이듬해": {
+   "explain": ["쉬운 뜻: 어떤 해가 지나고 바로 다음에 오는 해입니다.", "올해를 기준으로 할 때는 '내년'이라고 합니다.", "생활 속 예: 2025년에 심은 나무가 이듬해인 2026년에 꽃을 피웁니다."]
+  },
+  "그저께": {
+   "explain": ["쉬운 뜻: 어제보다 하루 더 앞선 날, 곧 이틀 전입니다.", "생활 속 예: 오늘이 금요일이면 그저께는 수요일입니다."]
+  },
+  "모레": {
+   "explain": ["쉬운 뜻: 내일의 다음 날, 곧 오늘부터 이틀 뒤입니다.", "모래사장의 '모래'와 글자가 다릅니다.", "생활 속 예: 오늘이 월요일이면 모레는 수요일입니다."]
+  },
+  "글피": {
+   "explain": ["쉬운 뜻: 모레의 다음 날, 곧 오늘부터 사흘 뒤입니다.", "생활 속 예: 오늘이 월요일이면 글피는 목요일입니다."]
+  },
+  "사흘": {
+   "explain": ["쉬운 뜻: 세 날, 곧 3일 동안입니다.", "'사'가 붙어 4일로 아는 사람이 많지만 사흘은 3일입니다.", "생활 속 예: 금, 토, 일 세 날을 쉬는 연휴가 사흘 연휴입니다."]
+  },
+  "나흘": {
+   "explain": ["쉬운 뜻: 네 날, 곧 4일 동안입니다.", "하루, 이틀, 사흘, 나흘, 닷새로 셉니다.", "생활 속 예: 수요일부터 토요일까지 다녀온 여행은 나흘입니다."]
+  },
+  "다채롭다": {
+   "en": "colorful",
+   "explain": ["쉬운 뜻: 영어로 colorful입니다. 여러 빛깔과 모양이 어우러져 볼거리가 많은 것입니다.", "생활 속 예: 색색의 풍선과 꽃, 공연이 가득한 축제 거리입니다."],
+   "beats": ["세계 여러 나라 사람들이 한 광장에 모였습니다.", "알록달록한 옷을 입고 춤추는 사람들과 여러 나라 음식이 놓인 천막이 보입니다.", "여러 빛깔과 모양이 어우러져 볼거리가 풍성한 것이 다채로운 것입니다."],
+   "img": "A sunny town square during a world culture festival. People in colorful traditional clothes from many countries dance, tents display many different foods, and strings of plain bright flags flutter overhead. No national symbols, no text.",
+   "imgKo": "세계 문화 축제가 열린 햇살 좋은 광장. 여러 나라의 알록달록한 전통 옷을 입은 사람들이 춤추고, 천막마다 여러 나라 음식이 놓여 있고, 머리 위로 색색의 깃발 줄이 펄럭인다."
+  },
+  "흐드러지다": {
+   "explain": ["쉬운 뜻: 꽃이 가지마다 빈틈없이, 한꺼번에 탐스럽게 핀 모습입니다.", "생활 속 예: 봄 유채꽃이 들판을 온통 노랗게 덮습니다."],
+   "beats": ["봄날 산비탈에 진달래가 피었습니다.", "가지마다 분홍 꽃이 빈틈없이 달려 산이 온통 분홍빛입니다.", "꽃이 한꺼번에 아주 많이 피어 탐스러운 모습이 흐드러진 것입니다."],
+   "img": "A spring hillside completely covered with pink azaleas in full bloom; every branch is packed with flowers so the whole slope looks pink. A small path winds through the flowers. No text.",
+   "imgKo": "봄 산비탈이 활짝 핀 분홍 진달래로 온통 덮여 있다. 가지마다 꽃이 빈틈없이 달려 산 전체가 분홍빛이고, 그 사이로 작은 길이 나 있다."
+  },
+  "울창하다": {
+   "explain": ["쉬운 뜻: 나무가 빽빽하게 우거져 숲이 짙푸른 모습입니다.", "생활 속 예: 여름 휴양림에서는 나무 그늘이 이어져 덥지 않습니다."],
+   "beats": ["산속에 키 큰 나무들이 빈틈없이 서 있습니다.", "잎이 겹겹이 덮여 숲 바닥까지 짙은 초록빛입니다.", "나무가 빽빽하게 우거져 푸른 것이 울창한 것입니다."],
+   "img": "A dense green forest of tall trees growing close together; thick layers of leaves overlap above, and only thin beams of sunlight reach the mossy forest floor. A hiker on a trail looks tiny. No text.",
+   "imgKo": "키 큰 나무가 빽빽하게 들어찬 짙푸른 숲. 잎이 겹겹이 하늘을 덮어 가는 햇살만 이끼 낀 바닥에 닿고, 오솔길의 등산객이 아주 작아 보인다."
+  },
+  "일주문": {
+   "explain": ["쉬운 뜻: 절에 들어갈 때 맨 처음 지나는, 기둥이 한 줄로 선 문입니다.", "낱말 나누기: 일주(기둥이 한 줄) + 문입니다.", "문짝이 없어서 늘 열려 있습니다."],
+   "beats": ["산길을 오르자 지붕을 얹은 커다란 문이 나타납니다.", "두 기둥이 한 줄로 나란히 서서 화려한 기와지붕을 받치고 있습니다.", "절에 들어선다는 것을 알려 주는 이 문이 일주문입니다."],
+   "img": "On a forest path leading up a mountain stands a traditional Korean Buddhist temple gate: just two thick wooden pillars in a single line holding up a colorful, ornate tiled roof, with no doors. A family walks toward it. No text, no signboard.",
+   "imgKo": "산으로 오르는 숲길에 굵은 나무 기둥 두 개가 한 줄로 서서 화려한 기와지붕을 받친 절 문이 있다. 문짝은 없고, 한 가족이 그쪽으로 걸어간다."
+  },
+  "경내": {
+   "explain": ["쉬운 뜻: 담장으로 둘러싸인 절이나 궁궐의 안쪽입니다.", "낱말 나누기: 경(땅의 경계) + 내(안), 경계 안이라는 뜻입니다.", "생활 속 예: 절 경내에 들어서면 목소리를 낮추어 이야기합니다."],
+   "beats": ["절을 빙 둘러 돌담이 쌓여 있습니다.", "담장 안 마당 곳곳에 알록달록한 연등이 달려 있습니다.", "담 안쪽, 곧 절이나 궁궐의 안이 경내입니다."],
+   "img": "A bird's-eye view of a Korean mountain temple surrounded by a low stone wall. Inside the wall, the courtyard and wooden halls are decorated with rows of colorful paper lanterns, while the forest outside the wall has none. No text.",
+   "imgKo": "낮은 돌담이 빙 둘러싼 산속 절을 위에서 본 그림. 담 안쪽 마당과 전각에는 알록달록한 연등이 줄지어 달려 있고, 담 바깥 숲에는 없다."
+  },
+  "창건": {
+   "explain": ["쉬운 뜻: 절이나 궁궐을 맨 처음 세우는 것입니다.", "생활 속 예: 절 안내판에 '신라 때 처음 세웠다'는 글이 적혀 있습니다."]
+  },
+  "암자": {
+   "explain": ["쉬운 뜻: 큰 절에 딸린 작은 절로, 스님 몇 분이 조용히 지내는 곳입니다.", "생활 속 예: 큰 절에서 산길로 한참 더 올라가야 닿습니다."],
+   "beats": ["깊은 산 바위 아래에 작은 절 하나가 있습니다.", "저 아래 골짜기에는 지붕이 여럿인 큰 절이 보입니다.", "큰 절에 딸린 작은 절이 암자입니다."],
+   "img": "High in rocky mountains, a tiny Korean temple building is tucked into a natural rock cave beside a huge boulder. Far below in the valley, a large temple with many roofs can be seen. A monk in gray robes sweeps the small yard. No text.",
+   "imgKo": "바위산 높은 곳, 커다란 바위 옆 바위굴에 작은 절집이 들어앉아 있다. 저 아래 골짜기에 지붕이 여럿인 큰 절이 보이고, 회색 옷의 스님이 작은 마당을 쓴다."
+  },
+  "고유": {
+   "en": "unique",
+   "explain": ["쉬운 뜻: 영어로 unique입니다. 처음부터 그것만 가지고 있는 특별한 것입니다.", "생활 속 예: 지문 무늬는 사람마다 달라서 그 사람 고유의 표시입니다."]
+  },
+  "어진": {
+   "explain": ["쉬운 뜻: 임금의 얼굴과 모습을 그린 그림입니다.", "한자 뜻: 御(임금 어)와 眞(참모습 진), 임금의 참모습입니다.", "조선 임금의 어진은 지금 몇 점만 남아 있습니다."],
+   "beats": ["박물관 벽 한 면을 커다란 그림이 꽉 채우고 있습니다.", "용무늬 옷을 입은 옛 임금이 의자에 앉아 정면을 바라봅니다.", "아이들이 그 앞에서 조용히 그림을 올려다봅니다.", "임금의 얼굴과 모습을 그린 그림이 어진입니다."],
+   "img": "In a quiet museum hall, a huge traditional Korean painting fills one wall: a seated Joseon king (not any real person) in a dragon-embroidered robe and black royal hat, painted in a formal front-facing style. HARIN and DOYUN look up at it respectfully. No text or labels.",
+   "imgKo": "조용한 박물관 벽 한 면을 큰 옛 그림이 채우고 있다. 용무늬 옷과 검은 모자를 쓴 조선 임금이 의자에 앉아 정면을 바라보는 그림이고(실제 인물 아님), 하린이와 도윤이가 공손히 올려다본다."
+  },
+  "건국": {
+   "explain": ["쉬운 뜻: 새 나라를 처음 세우는 것입니다.", "생활 속 예: 이성계는 조선을, 왕건은 고려를 건국했습니다."]
+  },
+  "경건하다": {
+   "explain": ["쉬운 뜻: 높이 받드는 마음으로 몸가짐을 조심하는, 엄숙하고 차분한 모습입니다.", "생활 속 예: 국기에 대한 경례를 할 때 떠들지 않고 바르게 섭니다."],
+   "beats": ["운동장에 학생들이 줄지어 섰습니다.", "국기를 바라보며 오른손을 가슴에 얹고 조용히 서 있습니다.", "높이 받드는 마음으로 몸가짐을 바르게 하는 모습이 경건한 것입니다."],
+   "img": "At a school assembly in the schoolyard, rows of students stand still and silent, each with the right hand placed on the chest, facing the Korean national flag on a tall pole. HARIN and DOYUN stand straight with serious faces. No text.",
+   "imgKo": "학교 운동장 조회 시간, 줄지어 선 학생들이 높은 깃대의 태극기를 바라보며 오른손을 가슴에 얹고 조용히 서 있다. 하린이와 도윤이도 진지한 얼굴로 바르게 섰다."
+  },
+  "서까래": {
+   "explain": ["쉬운 뜻: 한옥 지붕 밑에 갈비뼈처럼 나란히 걸쳐 지붕을 받치는 나무입니다.", "생활 속 예: 한옥 카페 천장에서 비스듬히 나란히 놓인 나무를 볼 수 있습니다."],
+   "beats": ["한옥의 검은 기와지붕을 아래에서 올려다봅니다.", "처마 밑으로 둥근 나무 막대가 줄줄이 나란히 뻗어 있습니다.", "지붕을 받치려고 비스듬히 걸친 이 나무가 서까래입니다."],
+   "img": "A low-angle view looking up under the eaves of a traditional Korean hanok roof with dark gray tiles. Rows of round wooden rafters stick out side by side, their painted ends forming a neat pattern against the blue sky. No text.",
+   "imgKo": "검은 기와를 얹은 한옥 처마 밑을 아래에서 올려다본 그림. 둥근 나무 서까래가 나란히 줄지어 뻗어 나와, 칠한 끝이 파란 하늘 앞에 가지런한 무늬를 이룬다."
+  },
+  "고즈넉하다": {
+   "explain": ["쉬운 뜻: 사람 소리 없이 고요하고, 마음이 포근해지는 모습입니다.", "생활 속 예: 눈 내린 아침, 아무도 없는 시골 마을 길을 걷습니다."],
+   "beats": ["눈이 소복이 쌓인 산속 절 마당에 아무도 없습니다.", "창호지 문에서 따뜻한 불빛이 새어 나오고, 처마 끝 작은 종은 조용합니다.", "고요하고 아늑한 모습이 고즈넉한 것입니다."],
+   "img": "A small mountain temple courtyard covered in soft fresh snow at dusk, with no people around. Warm light glows from a paper window, and a small bronze wind bell hangs still at the corner of the eaves. Quiet and peaceful. No text.",
+   "imgKo": "해 질 녘 눈이 소복이 쌓인 산속 작은 절 마당에 아무도 없다. 창호지 문에서 따뜻한 불빛이 새어 나오고, 처마 끝 작은 종이 조용히 매달려 있다."
+  },
+  "개화": {
+   "en": "bloom",
+   "explain": ["쉬운 뜻: 영어로 bloom입니다. 꽃봉오리가 벌어져 꽃이 피는 것입니다.", "한자 뜻: 開(열 개)와 花(꽃 화), 꽃이 열린다는 뜻입니다.", "생활 속 예: 봄 뉴스에서 벚꽃 피는 날을 남쪽부터 지도로 알려 줍니다."],
+   "beats": ["봄볕 아래 벚나무 가지에 동그란 꽃봉오리가 맺혀 있습니다.", "봉오리가 하나둘 벌어지며 분홍 꽃잎이 활짝 열립니다.", "꽃이 피는 것이 개화입니다."],
+   "img": "A close-up of a cherry tree branch in spring sunlight showing the stages of opening: tight round buds at one end, half-opened buds in the middle, and fully opened pale pink blossoms at the other end. No text.",
+   "imgKo": "봄볕 속 벚나무 가지를 가까이 그린 그림. 한쪽 끝은 동그란 봉오리, 가운데는 반쯤 벌어진 봉오리, 다른 끝은 활짝 핀 연분홍 꽃이다."
+  },
+  "성곽": {
+   "explain": ["쉬운 뜻: 적이 못 들어오게 마을이나 도시를 빙 둘러 높이 쌓은 담입니다.", "생활 속 예: 서울 한양 도성길을 걸으면 옛 성곽을 따라 산을 오릅니다."],
+   "beats": ["언덕 위로 돌을 쌓은 높은 담이 길게 이어집니다.", "담 위 군데군데에 네모난 구멍이 뚫려 있습니다.", "적을 막으려고 높이 쌓은 담과 그 둘레가 성곽입니다."],
+   "img": "A long fortress wall of large gray stones winds over green hills around an old Korean town, like Suwon Hwaseong. Along the top are battlements with small square openings, and a traditional pavilion stands at one corner. Visitors walk on a path beside it. No text.",
+   "imgKo": "수원 화성처럼 커다란 회색 돌로 쌓은 성벽이 옛 도시를 둘러 푸른 언덕 위로 길게 이어진다. 성벽 위에 네모난 구멍이 군데군데 있고, 모서리에 옛 누각이 서 있으며 관람객이 옆길을 걷는다."
+  },
+  "공존": {
+   "explain": ["쉬운 뜻: 서로 다른 것들이 한곳에서 다투지 않고 함께 있는 것입니다.", "생활 속 예: 한 어항 안에서 금붕어와 달팽이가 사이좋게 삽니다."],
+   "beats": ["밤의 전주, 오래된 한옥 기와지붕이 줄지어 있습니다.", "그 뒤로 불빛이 반짝이는 높은 건물들이 보입니다.", "옛것과 새것이 한곳에 어울려 있는 것이 공존입니다."],
+   "img": "A night view of a city: in the foreground, rows of old hanok houses with curved tile roofs lit by warm lanterns; behind them, modern tall buildings glow with colorful lights. Both sit together peacefully in one scene. No text, no signs.",
+   "imgKo": "밤의 도시. 앞쪽에는 등불 켠 한옥 기와지붕이 줄지어 있고, 그 뒤로 색색의 불빛을 단 높은 건물들이 서 있다. 옛것과 새것이 한 장면에 어울려 있다."
+  },
+  "보존": {
+   "en": "preserve",
+   "explain": ["쉬운 뜻: 영어로 preserve입니다. 소중한 것이 망가지지 않게 지금 모습 그대로 지키는 것입니다.", "생활 속 예: 상장을 구겨지지 않게 액자에 넣어 걸어 둡니다."],
+   "beats": ["박물관 유리 상자 안에 오래된 청자가 놓여 있습니다.", "흰 장갑을 낀 사람이 상자 옆 작은 기계를 살펴봅니다.", "소중한 것을 망가지지 않게 그대로 남기는 것이 보존입니다."],
+   "img": "In a dim museum hall, an ancient celadon vase sits safely inside a glass display case. A small device beside the case glows with a green light, and a museum staff member wearing white gloves checks it. No text or numbers.",
+   "imgKo": "어둑한 박물관에서 오래된 청자가 유리 상자 안에 놓여 있다. 상자 옆 작은 기계에 초록 불이 켜져 있고, 흰 장갑을 낀 직원이 그것을 살핀다."
+  },
+  "각오": {
+   "explain": ["쉬운 뜻: 힘든 일이 닥쳐도 해내겠다고 마음을 단단히 먹는 것입니다.", "생활 속 예: 달리기에서 넘어져도 끝까지 뛰겠다고 마음먹습니다."],
+   "beats": ["달리기 출발선에 도윤이가 섰습니다.", "주먹을 꽉 쥐고 저 멀리 결승선을 똑바로 바라봅니다.", "앞으로 닥칠 일을 받아들이고 마음을 단단히 먹는 것이 각오입니다."],
+   "img": "On a school running track before a race, DOYUN stands at the starting line, both fists clenched and jaw set, staring straight ahead at the distant finish line with a determined face. No text, no numbers.",
+   "imgKo": "학교 달리기 출발선에 선 도윤이가 두 주먹을 꽉 쥐고 입을 앙다문 채 멀리 결승선을 똑바로 바라본다."
+  },
+  "복원": {
+   "en": "restore",
+   "explain": ["쉬운 뜻: 영어로 restore입니다. 부서지거나 없어진 것을 처음 모습대로 다시 만드는 것입니다.", "생활 속 예: 찢어진 옛 사진을 조각조각 맞추어 다시 붙입니다."],
+   "beats": ["오래전에 무너진 성문 자리에 돌무더기만 남아 있습니다.", "일꾼들이 옛 그림을 보며 돌을 하나하나 다시 쌓습니다.", "무너진 것을 처음 모습대로 되살리는 것이 복원입니다."],
+   "img": "At a historic site, workers in hard hats carefully stack carved stones to rebuild a traditional fortress gate. One worker holds up an old drawing of the original gate to compare. Half of the gate is rebuilt with new pale stones next to older darker ones. No text.",
+   "imgKo": "옛 성터에서 안전모를 쓴 일꾼들이 다듬은 돌을 하나하나 쌓아 성문을 다시 짓는다. 한 사람은 옛 성문 그림을 들고 맞춰 보고, 성문 절반은 새 밝은 돌로, 나머지는 옛 어두운 돌로 되어 있다."
+  },
+  "장관": {
+   "explain": ["쉬운 뜻: 입이 떡 벌어질 만큼 크고 멋진 경치입니다.", "생활 속 예: 해돋이 때 바다 위로 붉은 해가 솟는 모습은 장관입니다."],
+   "beats": ["케이블카가 높은 산꼭대기에 닿았습니다.", "눈앞에 푸른 바다와 보석 같은 섬들이 끝없이 펼쳐집니다.", "크고 훌륭해서 볼만한 경치가 장관입니다."],
+   "img": "From a mountaintop viewpoint beside a cable car station, HARIN and her family gaze out at a vast deep-blue sea dotted with many small green islands glittering in the sun. Wide panoramic view. No text.",
+   "imgKo": "케이블카 정류장 옆 산꼭대기 전망대에서 하린이 가족이 햇빛에 반짝이는 쪽빛 바다와 점점이 흩어진 푸른 섬들을 넋을 잃고 바라본다."
+  }
+ }
+}

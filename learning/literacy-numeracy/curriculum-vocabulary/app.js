@@ -379,11 +379,17 @@
     let rows = (same.length >= 3 ? same : free).slice(0, 3);
     // 주관적↔객관적, 공정≈공평처럼 답이 물은 낱말과 글자를 나눠 가지면 모양만 보고 고른다.
     // 그런 짝이면 물은 낱말과 첫 글자나 끝 글자가 같은 낱말을 보기에 하나 섞는다.
-    const shares = (name) => name !== answer && (name[0] === word.w[0] || name.slice(-1) === word.w.slice(-1));
-    if ((answer[0] === word.w[0] || answer.slice(-1) === word.w.slice(-1)) && !rows.some(row => shares(row.w))) {
+    // '-다' 낱말은 끝 글자가 늘 '다'이므로 '하다·롭다·스럽다·다'를 떼고 견준다(비범하다↔평범하다).
+    const core = (name) => name.replace(/(스럽다|롭다|하다|다)$/, '') || name;
+    // 신뢰↔불신처럼 자리가 달라도 같은 글자가 하나라도 있으면 닮은 짝으로 본다.
+    const alike = (a, b) => { const y = new Set(core(b)); return [...core(a)].some(ch => y.has(ch)); };
+    const shares = (name) => name !== answer && alike(name, word.w);
+    if (alike(answer, word.w) && !rows.some(row => shares(row.w))) {
       const look = shuffle(books[term][subject].units.flatMap(row => row.words))
         .find(row => !related.has(row.w) && row.w !== word.w && verbish(row.w) === verbish(answer) && shares(row.w) && !rows.includes(row));
-      if (look) rows = [look, ...rows.slice(0, 2)];
+      // 섞을 닮은 낱말이 목록에 없으면(흉년↔풍년) 관계 문제를 내지 않고 빈칸·뜻 문제로 돌린다.
+      if (!look) return null;
+      rows = [look, ...rows.slice(0, 2)];
     }
     const others = rows.map(row => row.w);
     if (others.length < 3) return null;
