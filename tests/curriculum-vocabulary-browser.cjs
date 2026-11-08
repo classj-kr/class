@@ -9,14 +9,32 @@ const base = '/learning/literacy-numeracy/curriculum-vocabulary/';
 const books = require('..' + base + 'words-5-2.js');
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.webp': 'image/webp' };
 
-// 화면에 뜬 문제에서 정답 낱말을 원고로 찾아낸다.
+// 화면에 뜬 문제에서 정답(보기에 적힌 글)을 원고로 찾아낸다.
 async function answerOf(page, words) {
-  const meaning = await page.locator('.prompt.meaning').count();
   const text = (await page.locator('.prompt').textContent()).trim();
+  if (await page.locator('.prompt.sense').count()) {
+    // '이 문장에서 ○○의 뜻은?': 문장이 이 단원 예문이면 이 단원 뜻, 다른 뜻 예문이면 그 뜻
+    for (const word of words) for (const row of [{ mean: word.mean, use: word.use }, ...(word.senses || [])]) if (row.use === text) return row.mean;
+    assert.fail('뜻 문제의 문장을 찾지 못함: ' + text);
+  }
+  if (await page.locator('.prompt.rel').count()) {
+    const word = words.find(row => row.w === text);
+    const key = (await page.locator('.question h3').textContent()).includes('반대') ? 'ant' : 'syn';
+    const names = await page.locator('.choices button').allTextContents();
+    const hit = names.filter(name => word.rel[key].some(row => row.w === name));
+    assert.equal(hit.length, 1, '관계어 정답이 하나가 아님: ' + text);
+    return hit[0];
+  }
+  const meaning = await page.locator('.prompt.meaning').count();
   const hit = words.find(word => meaning ? text === '뜻' + word.mean : word.blanks.some(blank => blank.replace('{}', '').trim() === text));
   assert.ok(hit, '정답을 찾지 못함: ' + text);
   return hit.w;
 }
+const clickChoice = (page, label, right) => page.evaluate(([label, right]) => {
+  const all = [...document.querySelectorAll('.choices button')];
+  const target = all.find(node => right ? node.textContent === label : node.textContent !== label && !node.disabled);
+  target.click();
+}, [label, right]);
 
 (async () => {
   const browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || 'chrome' });
@@ -51,11 +69,11 @@ async function answerOf(page, words) {
           assert.ok(names.includes(answer));
           if (first) {
             // 첫 문제는 일부러 틀려서 같은 낱말이 다시 나오는지 본다.
-            await choices.filter({ hasNotText: answer }).first().click();
+            await clickChoice(page, answer, false);
             assert.equal(await page.locator('.choices button.wrong').count(), 1);
             first = false;
           }
-          await page.locator('.choices button', { hasText: new RegExp('^' + answer + '$') }).click();
+          await clickChoice(page, answer, true);
           assert.equal(await page.locator('.choices button.right').textContent(), answer);
           assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, unit.title + ' 문제 넘침 ' + width);
           await page.locator('.next').click();
