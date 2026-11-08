@@ -11,6 +11,8 @@
     thin: "가느다란 마름모",
     trapezoid: "사다리꼴",
     hexagon: "정육각형",
+    t0: "큰 삼각형 1", t1: "큰 삼각형 2", t2: "중간 삼각형",
+    t3: "작은 삼각형 1", t4: "작은 삼각형 2", t5: "정사각형", t6: "평행사변형",
   };
   let selected = "";
   const rows = () => app.state.scenes[app.state.mode],
@@ -24,8 +26,10 @@
       U.pressed(key, s[key]);
     $("palette").hidden = s.mode === "tangram";
     $("outline").hidden = s.mode !== "tangram";
-    for (const id of ["copy", "mirror", "remove"])
+    for (const id of ["copy", "mirror", "remove"]) {
       $(id).disabled = !selected || s.mode === "tangram";
+      $(id).hidden = s.mode === "tangram";
+    }
     for (const id of ["left", "right", "flip"]) $(id).disabled = !selected;
     const key = s.mode + pieces.map((p) => p.id).join(",");
     if (key !== selectionKey) {
@@ -71,6 +75,7 @@
     name: "pattern-blocks",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { s.scenes[s.mode] = M.copy(C.initial.scenes[s.mode]); },
     render,
   });
   function change(fn) {
@@ -98,7 +103,7 @@
       ),
     );
   }
-  Object.entries(names).forEach(([type, name], i) => {
+  Object.entries(names).filter(([type]) => !/^t\d$/.test(type)).forEach(([type, name], i) => {
     const b = document.createElement("button");
     b.type = "button";
     b.title = name;

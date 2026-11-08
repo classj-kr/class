@@ -56,6 +56,7 @@
     s.jumps = [];
   }
   function parse(value, d) {
+    if (!String(value).trim()) throw Error("수를 입력해 주세요.");
     const match = String(value)
       .trim()
       .match(/^(-?\d+)\s*\/\s*(\d+)$/);

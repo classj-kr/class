@@ -82,6 +82,7 @@
         svg += `<circle cx="${450 + x * 76}" cy="${254 + y * 76}" r="19" fill="#3b6150"/>`;
     } else {
       let a = 90;
+      if (!busy) rotation = d.last === null ? 0 : M.mod(-C.midAngle(d.weights, d.last), 360);
       svg = `<g transform="rotate(${rotation} 450 255)">`;
       d.weights.forEach((w, i) => {
         const end = a - (w / weightTotal) * 360,
@@ -105,7 +106,7 @@
     $("frequency").innerHTML = names
       .map(
         (label, i) =>
-          `<div><i style="background:${M.colors[i % 6]}"></i><span>${label}</span><strong>${d.counts[i]}</strong><span>${s.theory ? M.fractionText(d.weights[i], weightTotal) : total ? M.round((d.counts[i] / total) * 100, 1) + "%" : "0%"}</span></div>`,
+          `<div><i style="background:${M.colors[i % 6]}"></i><span>${label}</span><strong>${d.counts[i]}</strong><span>${s.theory ? U.mathHTML(M.fractionText(d.weights[i], weightTotal)) : total ? M.round((d.counts[i] / total) * 100, 1) + "%" : "0%"}</span></div>`,
       )
       .join("");
     $("total").textContent =
@@ -115,6 +116,7 @@
     name: "probability-lab",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { s.scenes[s.mode] = M.copy(C.initial.scenes[s.mode]); },
     render,
     locked: () => busy,
     stopped() {

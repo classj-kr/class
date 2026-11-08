@@ -186,13 +186,14 @@
     $("legend").innerHTML = legend.join("");
     $("stage").innerHTML = svg;
     $("summary").textContent = s.values
-      ? `전체 ${sum} ${d.unit}${s.mean && ["bar", "line"].includes(s.mode) ? ` · 평균 ${Number.isInteger(C.mean(rows)) ? "" : "약 "}${M.round(C.mean(rows), 2)} ${d.unit}` : ""}`
+      ? `${s.mode === "line" ? "" : `전체 ${sum} ${d.unit}`}${s.mean && ["bar", "line"].includes(s.mode) ? `${s.mode === "line" ? "" : " · "}평균 ${Number.isInteger(C.mean(rows)) ? "" : "약 "}${M.round(C.mean(rows), 2)} ${d.unit}` : ""}`
       : "";
   }
   const app = U.app({
     name: "data-graphs",
     initial: C.initial,
     validate: C.validate,
+    reset(s) { const key = s.mode === "line" ? "time" : "categories"; s[key] = M.copy(C.initial[key]); },
     render,
   });
   U.bind("mode", "change", () => app.commit((s) => (s.mode = $("mode").value)));

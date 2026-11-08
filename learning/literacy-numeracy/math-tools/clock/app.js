@@ -22,6 +22,8 @@
     U.value("minute", p.m);
     U.value("second", p.s);
     $("second").hidden = !s.secondsHand;
+    $("second-label").hidden = !s.secondsHand;
+    $("time-form").hidden = !s.digital;
     U.pressed("minutes", s.minutes);
     U.pressed("seconds-hand", s.secondsHand);
     U.pressed("digital-toggle", s.digital);

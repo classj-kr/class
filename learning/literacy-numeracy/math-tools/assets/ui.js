@@ -2,6 +2,7 @@
   "use strict";
   const M = window.ToolMath,
     $ = (id) => document.getElementById(id);
+  let protectEditing = false;
   function app(options) {
     let state = M.copy(options.initial),
       edited = false,
@@ -23,8 +24,9 @@
       clearTimeout(timer);
       timer = setTimeout(() => ($("notice").hidden = true), 3200);
     }
-    function render() {
-      options.render(state);
+    function render(preview = false) {
+      protectEditing = preview;
+      try { options.render(state); } finally { protectEditing = false; }
       $("undo").disabled = Boolean(options.locked?.()) || !past.length;
       $("redo").disabled = Boolean(options.locked?.()) || !future.length;
     }
@@ -51,7 +53,7 @@
         saving = false;
       }
     }
-    function finish(before, sound = true) {
+    function finish(before, sound = true, repaint = true) {
       try {
         state = options.validate(state);
       } catch (error) {
@@ -67,7 +69,7 @@
         save();
         if (sound) window.ClassGameSfx?.play("tick");
       }
-      render();
+      if (repaint) render();
       return true;
     }
     const api = {
@@ -78,27 +80,27 @@
       notice,
       commit(change, sound = true) {
         api.stop();
-        if (gesture) api.end(false);
+        if (gesture) api.end(false, false);
         const before = M.copy(state);
         change(state);
         return finish(before, sound);
       },
       begin() {
         api.stop();
-        if (gesture) api.end(false);
+        if (gesture) api.end(false, false);
         edited = true;
         gesture = M.copy(state);
       },
       preview(change) {
         if (!gesture) api.begin();
         change(state);
-        render();
+        render(true);
       },
-      end(sound = true) {
+      end(sound = true, repaint = true) {
         if (!gesture) return;
         const before = gesture;
         gesture = null;
-        return finish(before, sound);
+        return finish(before, sound, repaint);
       },
       abort() {
         if (gesture) {
@@ -121,7 +123,7 @@
         const step = (now) => {
           const t = reduced ? 1 : Math.min(1, (now - start) / duration);
           update(t);
-          render();
+          render(true);
           if (t < 1) frame = requestAnimationFrame(step);
           else {
             frame = null;
@@ -135,6 +137,7 @@
         $("redo").onclick = () => history(future, past);
         $("reset").onclick = () =>
           api.commit((s) => {
+            if (options.reset) { options.reset(s); return; }
             for (const key of Object.keys(s)) delete s[key];
             Object.assign(s, M.copy(options.initial));
           });
@@ -243,6 +246,7 @@
     $(id).addEventListener(event, fn);
   }
   function value(id, v) {
+    if (protectEditing && document.activeElement === $(id)) return;
     $(id).value = String(v);
   }
   function pressed(id, v) {
@@ -254,6 +258,33 @@
   function line(x1, y1, x2, y2, attrs = "") {
     return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" ${attrs}/>`;
   }
+  // Keep editable slash notation separate from the mathematical display.
+  function mathHTML(content) {
+    return String(content).split(/(-?\d+\/\d+)/g).map((part) => {
+      const m = part.match(/^(-?)(\d+)\/(\d+)$/);
+      return m ? `${m[1] ? "−" : ""}<span class="fraction" role="math" aria-label="${m[3]}분의 ${m[2]}"><span>${m[2]}</span><span>${m[3]}</span></span>` : M.esc(part);
+    }).join("");
+  }
+  function mathText(x, y, content, attrs = "", size = 20) {
+    const parts = String(content).split(/(-?\d+\/\d+)/g).filter(Boolean);
+    const measured = parts.map((part) => {
+      const f = part.match(/^(-?)(\d+)\/(\d+)$/);
+      const width = f ? Math.max(f[2].length, f[3].length) * size * .52 + size * .4 + (f[1] ? size * .6 : 0) : part.length * size * .53;
+      return { part, f, width };
+    });
+    let cursor = x - measured.reduce((sum, p) => sum + p.width, 0) / 2;
+    const children = measured.map(({part, f, width}) => {
+      const center = cursor + width / 2;
+      cursor += width;
+      if (!f) return text(center, y, part, `class="number" style="font-size:${size}px;fill:inherit"`);
+      const fx = center + (f[1] ? size * .25 : 0), half = (width - (f[1] ? size * .6 : 0)) / 2;
+      return (f[1] ? text(center - width / 2 + size * .25, y, "−", `class="number" style="font-size:${size}px;fill:inherit"`) : "") +
+        text(fx, y - size * .62, f[2], `class="number" style="font-size:${size * .88}px;fill:inherit"`) +
+        line(fx-half+2, y, fx+half-2, y, 'stroke="currentColor" stroke-width="1.2"') +
+        text(fx, y + size * .65, f[3], `class="number" style="font-size:${size * .88}px;fill:inherit"`);
+    }).join("");
+    return `<g fill="#304a41" ${attrs} role="img" aria-label="${M.esc(content)}"><g aria-hidden="true">${children}</g></g>`;
+  }
   window.ToolUI = Object.freeze({
     $,
     app,
@@ -263,5 +294,7 @@
     pressed,
     text,
     line,
+    mathHTML,
+    mathText,
   });
 })();
