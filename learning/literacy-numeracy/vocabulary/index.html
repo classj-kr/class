@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="2022 개정 교육과정 영어 단어 3,000개 학습">
     <title>교육부 지정 단어</title>
-    <link rel="stylesheet" href="styles.css?v=20261108-andika">
+    <link rel="stylesheet" href="styles.css?v=20261108-card-nav">
     <script src="vocabulary-core.js?v=20260803a" defer></script>
     <script src="/assets/learning-records.js?v=20261107-race-range"></script>
-    <script src="app.js?v=20261107-race-range" defer></script>
+    <script src="app.js?v=20261108-card-nav" defer></script>
 </head>
 <body>
     <main>
@@ -79,7 +79,7 @@
         <section id="studyScreen" class="study-screen" hidden aria-labelledby="studyTitle">
             <div class="study-toolbar">
                 <button id="backToLevels" class="text-button" type="button">← 차시 선택</button>
-                <div>
+                <div class="study-heading">
                     <p id="studyStage" class="study-stage">Beginner</p>
                     <h1 id="studyTitle">Level 1</h1>
                 </div>
@@ -126,16 +126,9 @@
                 <span class="reveal-hint">카드 누르기 · Space</span>
             </button>
 
-            <div class="utility-actions" aria-label="카드 이동과 듣기">
+            <div class="card-nav" aria-label="카드 넘기기">
                 <button id="previousButton" type="button">← 이전</button>
-                <button id="speakButton" class="speak-button" type="button">단어 듣기</button>
-                <button id="exampleSpeakButton" class="speak-button" type="button">예문 듣기</button>
                 <button id="nextButton" type="button">다음 →</button>
-            </div>
-
-            <div class="memory-actions" aria-label="Choose how well you know this word">
-                <button id="unknownButton" class="unknown-button" type="button"><span>아직 어려워요</span><small>1</small></button>
-                <button id="knownButton" class="known-button" type="button"><span>외웠어요</span><small>2</small></button>
             </div>
 
             <section id="detailPanel" class="detail-panel" hidden aria-labelledby="detailToggle">
@@ -147,7 +140,7 @@
                 <div id="detailBody" class="detail-body" hidden></div>
             </section>
 
-            <button id="reviewUnknownButton" class="review-button" type="button">‘아직 어려워요’ 단어 복습하기</button>
+            <button id="reviewUnknownButton" class="review-button" type="button">틀린 단어 다시 보기</button>
             <p id="studyMessage" class="study-message" role="status"></p>
         </section>
 

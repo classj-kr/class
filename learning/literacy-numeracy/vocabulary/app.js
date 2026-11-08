@@ -76,8 +76,7 @@
         "flashcard", "cardBadge", "wordText", "posText", "meaningText", "exampleBlock", "exampleLabel", "exampleText",
         "exampleKo", "relatedBlock", "relatedWords", "answerLayout", "wordImageBlock", "wordImage",
         "detailPanel", "detailToggle", "detailToggleWord", "detailBody",
-        "previousButton", "speakButton", "exampleSpeakButton",
-        "nextButton", "unknownButton", "knownButton", "reviewUnknownButton", "studyMessage",
+        "previousButton", "nextButton", "reviewUnknownButton", "studyMessage",
         "lessonQuizScreen", "backFromLessonQuiz", "lessonQuizStage", "lessonQuizTitle", "lessonQuizRestartButton",
         "lessonQuizStats", "lessonQuizQuestionNumber", "lessonQuizQuestionTotal", "lessonQuizScore", "lessonQuizStreak",
         "lessonQuizQuestionPanel", "lessonQuizWord", "lessonQuizSpeakButton", "lessonQuizChoices", "lessonQuizFeedback", "lessonQuizNextButton",
@@ -188,6 +187,14 @@
         elements.overallBar.style.width = `${percent}%`;
     }
 
+    // 차시 번호는 Level을 넘어 이어 센다: 단어 번호가 201번부터면 차시도 11차시부터(전체 3,000단어 = 150차시).
+    function lessonNumber(level, lessonIndex) {
+        const before = [...state.levels.keys()]
+            .filter((key) => key < Number(level))
+            .reduce((sum, key) => sum + Math.ceil(state.levels.get(key).length / LESSON_SIZE), 0);
+        return before + lessonIndex + 1;
+    }
+
     function lessonsForLevel(level) {
         const words = state.levels.get(Number(level)) || [];
         const lessons = [];
@@ -230,7 +237,7 @@
         const { level, lessonIndex } = state.recommendedLesson;
         const words = lessonsForLevel(level)[lessonIndex] || [];
         const summary = core.summarizeWords(words, state.progress);
-        elements.recommendedLessonTitle.textContent = `${levelName(level)} · ${lessonIndex + 1}차시`;
+        elements.recommendedLessonTitle.textContent = `${levelName(level)} · ${lessonNumber(level, lessonIndex)}차시`;
         elements.recommendedLessonMeta.textContent = summary.unseen > 0
             ? `${words.length}단어 · 약 10분 · 새 단어 ${summary.unseen}개`
             : `${words.length}단어 · 복습할 단어 ${summary.unknown}개`;
@@ -248,7 +255,7 @@
         button.innerHTML = `
             <span class="level-number">LEVEL ${String(level).padStart(2, "0")}</span>
             <strong class="level-name">${levelName(level)}</strong>
-            <span class="level-plan">${lessons.length}차시 · 차시당 ${LESSON_SIZE}단어</span>
+            <span class="level-plan">${lessonNumber(level, 0)}–${lessonNumber(level, lessons.length - 1)}차시 · 차시당 ${LESSON_SIZE}단어</span>
             <span class="level-progress" aria-hidden="true"><span style="width:${percent}%"></span></span>
             <span class="level-count">${completedLessons}/${lessons.length}차시 완료 · 복습 ${summary.unknown}</span>
         `;
@@ -364,9 +371,9 @@
             const studyButton = document.createElement("button");
             studyButton.type = "button";
             studyButton.className = `lesson-button ${summary.unseen === 0 ? "complete" : ""} ${isRecommended ? "recommended" : ""}`.trim();
-            studyButton.setAttribute("aria-label", `${lessonIndex + 1}차시 단어 학습, ${lessonWords.length}단어, ${touched}개 확인`);
+            studyButton.setAttribute("aria-label", `${lessonNumber(level, lessonIndex)}차시 단어 학습, ${lessonWords.length}단어, ${touched}개 확인`);
             studyButton.innerHTML = `
-                <span class="lesson-number">${lessonIndex + 1}차시 ${isRecommended ? '<b>추천</b>' : ''}</span>
+                <span class="lesson-number">${lessonNumber(level, lessonIndex)}차시 ${isRecommended ? '<b>추천</b>' : ''}</span>
                 <strong>${levelOffset + lessonIndex * LESSON_SIZE + 1}–${levelOffset + lessonIndex * LESSON_SIZE + lessonWords.length}번 단어</strong>
                 <span class="lesson-progress" aria-hidden="true"><span style="width:${percent}%"></span></span>
                 <small>${summary.unseen === 0 ? "완료" : `${touched}/${lessonWords.length} 확인`} · 복습 ${summary.unknown}</small>
@@ -376,7 +383,7 @@
             quizButton.type = "button";
             quizButton.className = "lesson-quiz-launch-button";
             quizButton.textContent = `${lessonWords.length}문제 바로 풀기`;
-            quizButton.setAttribute("aria-label", `${lessonIndex + 1}차시 ${lessonWords.length}문제 바로 풀기`);
+            quizButton.setAttribute("aria-label", `${lessonNumber(level, lessonIndex)}차시 ${lessonWords.length}문제 바로 풀기`);
             quizButton.addEventListener("click", () => openLessonQuiz(level, lessonIndex));
             card.append(studyButton, quizButton);
             return card;
@@ -399,7 +406,7 @@
         const unknownOnly = Boolean(options.unknownOnly);
         const unknownWords = baseWords.filter((word) => state.progress[String(word.id)]?.status === "unknown");
         if (unknownOnly && !unknownWords.length) {
-            showToast("이 차시에 ‘아직 어려워요’로 표시한 단어가 없습니다.");
+            showToast("이 차시에 문제에서 틀린 단어가 없습니다.");
             return;
         }
         state.unknownOnly = unknownOnly;
@@ -407,6 +414,7 @@
         state.currentWords = state.shuffleEnabled ? core.shuffleWords(lessonWords) : lessonWords;
         state.currentIndex = 0;
         state.revealed = false;
+        state.studySeen = new Set();
         elements.levelScreen.hidden = true;
         elements.lessonScreen.hidden = true;
         elements.studyScreen.hidden = false;
@@ -442,7 +450,6 @@
         elements.exampleBlock.setAttribute("aria-hidden", String(!state.revealed));
         elements.relatedBlock.setAttribute("aria-hidden", String(!state.revealed || elements.relatedBlock.hidden));
         elements.wordImageBlock.setAttribute("aria-hidden", String(!state.revealed || elements.wordImageBlock.hidden));
-        elements.exampleSpeakButton.disabled = !state.revealed || !word.example?.en;
     }
 
     function updateShuffleToggle() {
@@ -629,7 +636,7 @@
         const completion = Math.round(((state.currentIndex + 1) / state.currentWords.length) * 100);
 
         elements.studyStage.textContent = `${STAGE_CARD_LABELS[word.stageCode] || word.stage} · 2022 개정 교육과정`;
-        elements.studyTitle.textContent = `${levelName(word.globalLevel)} · ${state.currentLesson + 1}차시${state.unknownOnly ? " 복습" : ""}`;
+        elements.studyTitle.textContent = `${levelName(word.globalLevel)} · ${lessonNumber(state.currentLevel, state.currentLesson)}차시${state.unknownOnly ? " 복습" : ""}`;
         elements.cardPosition.textContent = `${state.currentIndex + 1} / ${state.currentWords.length}`;
         elements.levelStatus.textContent = `확인 ${summary.known + summary.unknown}/${baseWords.length} · 복습 ${summary.unknown}`;
         elements.sessionBar.style.width = `${completion}%`;
@@ -675,12 +682,16 @@
                 if (currentWord() === word) renderStudyCard();
             });
         }
-        elements.cardBadge.textContent = status === "known" ? "외웠어요" : status === "unknown" ? "다시 보기" : "새 단어";
+        state.studySeen?.add(String(word.id));
+        elements.cardBadge.textContent = status === "known" ? "맞힌 단어" : status === "unknown" ? "틀린 단어" : "새 단어";
         elements.cardBadge.className = `card-badge ${status === "unseen" ? "" : status}`.trim();
         updateRevealState();
         elements.previousButton.disabled = state.currentIndex === 0;
-        elements.nextButton.disabled = state.currentIndex === state.currentWords.length - 1;
-        elements.studyMessage.textContent = state.unknownOnly ? "‘아직 어려워요’로 표시한 단어를 복습하고 있어요." : "카드를 누르거나 Space를 눌러 뜻을 보세요.";
+        // 마지막 카드의 '다음'은 그 차시 문제 풀기. 외웠는지는 문제에서 맞혔는지로 정한다.
+        const last = state.currentIndex === state.currentWords.length - 1;
+        elements.nextButton.textContent = last ? `${baseWords.length}문제 풀기 →` : "다음 →";
+        elements.nextButton.classList.toggle("to-quiz", last);
+        elements.studyMessage.textContent = state.unknownOnly ? "문제에서 틀린 단어를 다시 보고 있어요." : "카드를 누르거나 Space를 눌러 뜻을 보세요.";
     }
 
     function toggleMeaning() {
@@ -694,20 +705,6 @@
         state.currentIndex = nextIndex;
         state.revealed = false;
         renderStudyCard();
-    }
-
-    function markWord(status) {
-        const word = currentWord();
-        if (!word) return;
-        state.progress[String(word.id)] = { status, updatedAt: new Date().toISOString() };
-        saveProgress();
-        renderOverallProgress();
-        if (state.currentIndex < state.currentWords.length - 1) {
-            moveCard(1);
-        } else {
-            renderStudyCard();
-            showToast("마지막 단어예요. 위의 ‘20문제 풀기’로 바로 확인할 수 있어요.");
-        }
     }
 
     function primaryMeaning(word) {
@@ -860,7 +857,7 @@
         elements.lessonQuizQuestionPanel.hidden = false;
         elements.lessonQuizResultPanel.hidden = true;
         elements.lessonQuizStage.textContent = `${state.lessonQuizPool.length}단어 확인 퀴즈`;
-        elements.lessonQuizTitle.textContent = `${levelName(state.currentLevel)} · ${state.currentLesson + 1}차시`;
+        elements.lessonQuizTitle.textContent = `${levelName(state.currentLevel)} · ${lessonNumber(state.currentLevel, state.currentLesson)}차시`;
         window.scrollTo({ top: 0, behavior: "smooth" });
         nextLessonQuizQuestion();
     }
@@ -893,14 +890,6 @@
         utterance.lang = "en-US";
         utterance.rate = rate;
         window.speechSynthesis.speak(utterance);
-    }
-
-    function speakCurrentWord() {
-        speakText(currentWord()?.word);
-    }
-
-    function speakCurrentExample() {
-        speakText(currentWord()?.example?.en, 0.78);
     }
 
     function toggleShuffle() {
@@ -1123,7 +1112,7 @@
     function setSpellingReviewMode(isReview) {
         state.spellingReviewMode = isReview;
         elements.spellingModeLabel.textContent = isReview ? "틀린 단어를 다시 풀어 봐요." : "뜻을 보고 영어 단어를 완성해요.";
-        elements.spellingTitle.textContent = `${levelName(state.currentLevel)} · ${state.currentLesson + 1}차시 · ${isReview ? "철자 오답 복습" : "철자 완성하기"}`;
+        elements.spellingTitle.textContent = `${levelName(state.currentLevel)} · ${lessonNumber(state.currentLevel, state.currentLesson)}차시 · ${isReview ? "철자 오답 복습" : "철자 완성하기"}`;
         if (isReview) {
             elements.spellingLevelSelect.disabled = true;
         }
@@ -1375,11 +1364,7 @@
         elements.flashcard.addEventListener("click", toggleMeaning);
         elements.detailToggle.addEventListener("click", toggleDetailPanel);
         elements.previousButton.addEventListener("click", () => moveCard(-1));
-        elements.nextButton.addEventListener("click", () => moveCard(1));
-        elements.unknownButton.addEventListener("click", () => markWord("unknown"));
-        elements.knownButton.addEventListener("click", () => markWord("known"));
-        elements.speakButton.addEventListener("click", speakCurrentWord);
-        elements.exampleSpeakButton.addEventListener("click", speakCurrentExample);
+        elements.nextButton.addEventListener("click", () => (state.currentIndex === state.currentWords.length - 1 ? elements.lessonQuizStartButton.click() : moveCard(1)));
         elements.lessonQuizStartButton.addEventListener("click", () => startLessonQuiz(currentLessonWords()));
         elements.shuffleButton.addEventListener("click", toggleShuffle);
         elements.wordImage.addEventListener("error", () => {
@@ -1497,8 +1482,6 @@
             if (event.code === "Space") { event.preventDefault(); toggleMeaning(); }
             else if (event.key === "ArrowLeft") moveCard(-1);
             else if (event.key === "ArrowRight") moveCard(1);
-            else if (event.key === "1") markWord("unknown");
-            else if (event.key === "2") markWord("known");
         });
     }
 
@@ -1603,7 +1586,7 @@
             spelling: { value: elements.spellingInput.value, tiles: [...elements.spellingTileRack.children].map(b => ({ text: b.textContent, index: b.dataset.tileIndex, disabled: b.disabled })) } };
     }
     function recordProgress() {
-        if (recordMode === 'study') return { current: state.currentWords.filter(w => state.progress[w.id]).length, total: state.currentWords.length };
+        if (recordMode === 'study') return { current: state.studySeen?.size || 0, total: state.currentWords.length };
         const prefix = recordMode === 'quiz' ? 'lessonQuiz' : recordMode;
         return { current: Math.max(0,state[prefix+'QuestionNumber'] - (state[prefix+'Answered'] ? 0 : 1)), total: recordMode === 'quiz' ? state.lessonQuizPool.length : state[prefix+'RoundLength'] };
     }
@@ -1625,7 +1608,7 @@
         if (recordMode === 'quiz' || recordMode === 'game') {
             const quiz=recordMode==='quiz', prefix=quiz?'lessonQuiz':'game';
             elements[prefix+'Screen'].hidden=false; elements[prefix+'QuestionPanel'].hidden=false; elements[prefix+'ResultPanel'].hidden=true;
-            if(quiz){elements.lessonQuizStats.hidden=false;elements.lessonQuizTitle.textContent=`${levelName(state.currentLevel)} · ${state.currentLesson+1}차시`;renderLessonQuizQuestion();}else renderGameQuestion();
+            if(quiz){elements.lessonQuizStats.hidden=false;elements.lessonQuizTitle.textContent=`${levelName(state.currentLevel)} · ${lessonNumber(state.currentLevel,state.currentLesson)}차시`;renderLessonQuizQuestion();}else renderGameQuestion();
             const tried=attempts[recordMode+':'+state[prefix+'Target'].id] || [];
             elements[prefix+'Choices'].querySelectorAll('button').forEach(b=>{
                 const entry=tried.find(t=>String(t.response?.id)===b.dataset.wordId);
@@ -1661,7 +1644,7 @@
                 const level=recordMode==='game'?state.gameLevel:recordMode==='spelling'?state.spellingLevel:state.currentLevel;
                 const key=recordMode+':'+level+':'+(recordMode==='study'||recordMode==='quiz'||recordMode==='spelling'?state.currentLesson+(recordMode==='spelling'&&state.spellingReviewMode?':review':''): 'all');
                 const label={study:'단어 익히기',quiz:'뜻 퀴즈',game:'그림 퀴즈',spelling:'철자 퀴즈'}[recordMode];
-                const session=await records.start({contentKey:key,title:`영단어 · ${label} · ${levelName(level)}${recordMode==='study'||recordMode==='quiz'||recordMode==='spelling'?' · '+(state.currentLesson+1)+'차시':''}`,version:'20261002',checkpoint:recordCheckpoint()});
+                const session=await records.start({contentKey:key,title:`영단어 · ${label} · ${levelName(level)}${recordMode==='study'||recordMode==='quiz'||recordMode==='spelling'?' · '+lessonNumber(level,state.currentLesson)+'차시':''}`,version:'20261002',checkpoint:recordCheckpoint()});
                 if(session.revision>0)restoreRecord(session.checkpoint);
             }
             await records.save({checkpoint:recordCheckpoint(),progress:recordProgress(),events:pendingEvents,complete:completeRequested});
@@ -1678,7 +1661,6 @@
     startGameRound=(...args)=>recordOperation(()=>originalStartGame(...args),'game');
     startSpellingRound=(...args)=>recordOperation(()=>originalStartSpelling(...args),'spelling');
     moveCard=wrapRecord(moveCard);toggleMeaning=wrapRecord(toggleMeaning);toggleDetailPanel=wrapRecord(toggleDetailPanel);toggleShuffle=wrapRecord(toggleShuffle);
-    markWord=wrapRecord(markWord,status=>recordAnswer('self-assessment',currentWord(),status,null));
     answerLessonQuiz=wrapRecord(answerLessonQuiz,b=>{if(!state.lessonQuizAnswered&&!b.disabled)recordAnswer('answer',state.lessonQuizTarget,{id:b.dataset.wordId,text:b.textContent},b.dataset.correct==='true',state.lessonQuizChoices.map(c=>c.meaning));});
     answerGame=wrapRecord(answerGame,(id,timedOut)=>{if(!state.gameAnswered&&!timedOut)recordAnswer('answer',state.gameTarget,{id:String(id),text:state.gameChoices.find(w=>String(w.id)===String(id))?.word},String(id)===String(state.gameTarget.id),state.gameChoices.map(w=>w.word));});
     checkSpellingAnswer=wrapRecord(checkSpellingAnswer,()=>{if(!state.spellingAnswered&&elements.spellingInput.value.trim())recordAnswer('answer',state.spellingTarget,elements.spellingInput.value,core.normalizeSpellingAnswer(elements.spellingInput.value)===core.normalizeSpellingAnswer(state.spellingTarget.word));});
