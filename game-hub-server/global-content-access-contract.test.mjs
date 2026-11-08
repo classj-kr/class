@@ -14,31 +14,11 @@ assert.doesNotThrow(
   "The home screen's main script must remain valid JavaScript.",
 );
 
-const matcherStart = serverSource.indexOf("function matchesDisabledContentPath(");
-const matcherEnd = serverSource.indexOf("const requireSiteAccess", matcherStart);
-assert.ok(matcherStart >= 0 && matcherEnd > matcherStart, "Global path matchers must be extractable.");
-const matcherRuntime = new Function(
-  `${serverSource.slice(matcherStart, matcherEnd)}
-   return { isGloballyDisabledContent };`,
-)();
-assert.equal(
-  matcherRuntime.isGloballyDisabledContent(
-    "/learning/games/example/play",
-    "",
-    ["/learning/games/example"],
-  ),
-  true,
-  "A disabled menu must also block its descendant routes.",
-);
-assert.equal(
-  matcherRuntime.isGloballyDisabledContent(
-    "/learning/games/example-two",
-    "",
-    ["/learning/games/example"],
-  ),
-  false,
-  "A similarly prefixed but different menu must remain available.",
-);
+const { isMenuDisabled } = await import("./home-content-paths.js").then(module => module.default);
+assert.equal(isMenuDisabled("/learning/games/example/play", ["/learning/games/example"]), true);
+assert.equal(isMenuDisabled("/learning/games/example-two", ["/learning/games/example"]), false);
+assert.equal(isMenuDisabled("/learning/games/dobble/dobble", ["/learning/games/spot-match"]), true);
+assert.equal(isMenuDisabled("/learning/inquiry/globe/history", ["/learning/inquiry/globe"]), false);
 
 assert.match(
   serverSource,
@@ -52,12 +32,12 @@ assert.match(
 );
 assert.match(
   serverSource,
-  /isGloballyDisabledContent\(requestPath, assetRootPath, globallyDisabledPaths\)[\s\S]*sessionUser\(req\)[\s\S]*user\?\.role !== "admin"[\s\S]*CONTENT_GLOBALLY_DISABLED/,
+  /user\?\.role !== "admin" && requestPath && isGloballyDisabledContent\(requestPath, assetRootPath, globallyDisabledPaths\)[\s\S]*CONTENT_GLOBALLY_DISABLED/,
   "Globally disabled content must block direct requests for non-admin users while allowing the site administrator.",
 );
 assert.match(
   serverSource,
-  /globallyDisabledPaths,[\s\S]*canManageGlobally: user\.role === "admin"/,
+  /const canManageGlobally = user\?\.role === "admin";[\s\S]*globallyDisabledPaths,[\s\S]*canManageGlobally/,
   "The home access response must expose both global state and administrator capability.",
 );
 
@@ -67,7 +47,7 @@ assert.ok(guestSubmitStart >= 0 && guestSubmitEnd > guestSubmitStart, "The guest
 const guestSubmitSource = indexSource.slice(guestSubmitStart, guestSubmitEnd);
 assert.match(
   guestSubmitSource,
-  /await loadClassContentAccess\(\);[\s\S]*setHubLocked\(false\);[\s\S]*renderClassLocks\(\);/,
+  /await loadClassContentAccess\(\);\s*hubContent\.hidden = false;/,
   "A newly authenticated guest must load and render global locks before the hub is released.",
 );
 assert.match(
@@ -112,7 +92,7 @@ assert.doesNotMatch(
 );
 assert.match(
   indexSource,
-  /canBypassGlobalContentLock = result\.canManageGlobally === true;[\s\S]*classContentAccessApplies = result\.hasClassAccess === true && !canBypassGlobalContentLock;/,
+  /canBypassGlobalContentLock = result\.canManageGlobally === true;[\s\S]*classContentAccessApplies = result\.hasClassAccess === true && !result\.canManage && !canBypassGlobalContentLock;/,
   "The home screen must recognize that the site administrator bypasses global and class menu locks.",
 );
 assert.match(
@@ -122,12 +102,12 @@ assert.match(
 );
 assert.match(
   indexSource,
-  /if \(selectedLink\?\.dataset\.globalLocked === 'true'\) \{[\s\S]*event\.preventDefault\(\);[\s\S]*event\.stopImmediatePropagation\(\);/,
+  /if \(selectedLink\.dataset\.globalLocked === 'true'\) \{\s*event\.preventDefault\(\);/,
   "A globally disabled menu click must be cancelled only when the current viewer cannot bypass it.",
 );
 assert.match(
   indexSource,
-  /api\('\/api\/admin\/home-content-access',[\s\S]*disabled: nextDisabled/,
+  /api\(global \? '\/api\/admin\/home-content-access' : '\/api\/teacher\/home-content-access',[\s\S]*disabled: nextDisabled/,
   "The administrator edit mode must persist global disabled state.",
 );
 assert.match(

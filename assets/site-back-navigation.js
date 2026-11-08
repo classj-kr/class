@@ -10,33 +10,24 @@
     location.pathname === root || location.pathname.startsWith(`${root}/`));
   let globalContentAccessCheckInFlight = false;
 
-  const normalizedContentPath = value => {
-    const path = String(value || "");
-    return path.length > 1 ? path.replace(/\/+$/, "") : path;
-  };
-
-  const isPathDisabled = (path, disabledPaths) => disabledPaths.some(disabledPath => (
-    path === disabledPath || path.startsWith(`${disabledPath}/`)
-  ));
-
   const enforceGlobalContentAccess = async () => {
     if (globalContentAccessCheckInFlight) return;
     globalContentAccessCheckInFlight = true;
     try {
-      const response = await fetch("/api/home-content-access", {
+      const params = new URLSearchParams({ path: location.pathname + location.search });
+      const response = await fetch(`/api/home-content-access?${params}`, {
         credentials: "same-origin",
         cache: "no-store",
         headers: { Accept: "application/json" }
       });
       if (!response.ok) return;
       const access = await response.json();
-      if (access.canManageGlobally === true) return;
-      const currentPath = normalizedContentPath(location.pathname);
-      const disabledPaths = Array.isArray(access.globallyDisabledPaths)
-        ? access.globallyDisabledPaths.map(normalizedContentPath).filter(Boolean)
-        : [];
-      if (isPathDisabled(currentPath, disabledPaths)) {
+      if (access.accessRequired === true) {
+        location.replace("/?access=required");
+      } else if (access.globallyDisabled === true) {
         location.replace("/?content=globally-disabled");
+      } else if (access.classLocked === true) {
+        location.replace("/?content=locked");
       }
     } catch (_) {
       // Direct navigation is still enforced by the server. Keep the current

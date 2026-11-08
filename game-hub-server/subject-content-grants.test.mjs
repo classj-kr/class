@@ -9,14 +9,13 @@ import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
 const grants = require("./subject-content-grants.js");
-const { normalizePairs } = require("./teaching-scope.js");
+const { canonicalMenuPath, individualMenuPaths, GAME_PAGE_ALIASES } = require("./home-content-paths.js");
 const {
   SCHEMA_STATEMENTS, CLASS_CONTENT_OPEN_SQL, endOfTodayInSeoul, classLabel,
   subjectTeachingClasses, subjectGrantsForClass, subjectGrantedPathsForTeacher, setSubjectGrant
 } = grants;
 
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const indexHtml = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 
 function routeBody(signature) {
@@ -24,12 +23,6 @@ function routeBody(signature) {
   assert.ok(start !== -1, `Route not found: ${signature}`);
   return source.slice(source.indexOf("=> {", start) + 4, source.indexOf("\n  }));", start));
 }
-function handlerBody(signature) {
-  const start = source.indexOf(signature);
-  assert.ok(start !== -1, `Route not found: ${signature}`);
-  return source.slice(start, source.indexOf("\n  }));", start));
-}
-
 class HttpError extends Error {
   constructor(status, code, message) { super(message); this.status = status; this.code = code; }
 }
@@ -63,6 +56,13 @@ const SCHEMA = `
   CREATE TABLE classroom_content_enabled (
     class_id BIGINT NOT NULL, content_path TEXT NOT NULL, updated_by BIGINT,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), PRIMARY KEY (class_id, content_path)
+  );
+  CREATE TABLE classroom_content_disabled (
+    class_id BIGINT NOT NULL, content_path TEXT NOT NULL, updated_by BIGINT,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), PRIMARY KEY (class_id, content_path)
+  );
+  CREATE TABLE site_content_disabled (
+    content_path TEXT PRIMARY KEY, updated_by BIGINT, updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
   );
 `;
 
@@ -204,118 +204,112 @@ test("a subject teacher's grant lapses at the Korean midnight and is swept on th
   });
 });
 
-// ─── 라우트 본문: 전담의 PUT, 담임·학생·전담의 GET ──────────────────────────
-
+// Exercise the current lock endpoints with real SQL and isolated identities.
+const canManageClassContent = new Function(
+  source.slice(source.indexOf("  function canManageClassContent("), source.indexOf("  async function requireTeacher("))
+  + "\nreturn canManageClassContent;"
+)();
 const putAccess = new AsyncFunction(
-  "req", "res", "requireTeacher", "normalizeContentPath", "HttpError", "userClassId", "teacherRegistration",
-  "subjectTeachingClassesFor", "setSubjectGrant", "subjectClassLabel", "pool",
+  "req", "res", "requireUser", "canManageClassContent", "teacherRegistration", "userClassId",
+  "HttpError", "canonicalMenuPath", "normalizeContentPath", "individualMenuPaths", "pool",
   routeBody('router.put("/teacher/home-content-access"')
 );
+const putGlobal = new AsyncFunction(
+  "req", "res", "requireAdmin", "HttpError", "canonicalMenuPath", "normalizeContentPath",
+  "individualMenuPaths", "pool", "GAME_PAGE_ALIASES", "invalidateGloballyDisabledContentPathsCache",
+  routeBody('router.put("/admin/home-content-access"')
+);
 const getAccess = new AsyncFunction(
-  "req", "res", "getSiteAccessMode", "getGloballyDisabledContentPaths", "sessionUser", "userClassId", "teacherRegistration",
-  "subjectTeachingClassesFor", "subjectGrantedPathsForTeacher", "subjectGrantsForClass", "subjectClassLabel", "pool",
-  routeBody('router.get("/home-content-access"')
+  "req", "res", "getSiteAccessMode", "getGloballyDisabledContentPaths", "sessionUser", "userClassId",
+  "teacherRegistration", "canManageClassContent", "pool", routeBody('router.get("/home-content-access"')
 );
 
 function routeHelpers(pool) {
-  const users = {
-    2: { id: 2, role: "teacher", email: "a@school.test" },
-    4: { id: 4, role: "teacher", email: "music@school.test" },
-    5: { id: 5, role: "student", email: "s3101@school.test" }
+  const user = id => ({ id, role: id === 1 ? "admin" : id === 5 ? "student" : "teacher" });
+  const teacherRegistration = async ({ id }) =>
+    (await pool.query("SELECT teacher_type, grade, class_number FROM classroom_teachers WHERE user_id = $1", [id])).rows[0];
+  const userClassId = async ({ id }) => ({ 2: 1, 3: 2, 5: 1 })[id] || null;
+  const send = () => ({ json(value) { this.body = value; } });
+  return {
+    async put(id, path, disabled) {
+      const res = send();
+      await putAccess({ body: { path, disabled } }, res, async () => user(id), canManageClassContent,
+        teacherRegistration, userClassId, HttpError, canonicalMenuPath, normalizeContentPath, individualMenuPaths, pool);
+      return res.body;
+    },
+    async global(id, path, disabled) {
+      const res = send();
+      const requireAdmin = async () => {
+        if (id !== 1) throw new HttpError(403, "ADMIN_REQUIRED", "admin only");
+        return user(id);
+      };
+      await putGlobal({ body: { path, disabled } }, res, requireAdmin, HttpError, canonicalMenuPath, normalizeContentPath,
+        individualMenuPaths, pool, GAME_PAGE_ALIASES, () => {});
+      return res.body;
+    },
+    async get(id) {
+      const res = send();
+      await getAccess({}, res, async () => "restricted", async () => [], async () => user(id), userClassId,
+        teacherRegistration, canManageClassContent, pool);
+      return res.body;
+    }
   };
-  const registrationOf = async (user) => {
-    const r = await pool.query("SELECT id, school_id, teacher_type, grade, class_number, academic_year FROM classroom_teachers WHERE user_id = $1", [user.id]);
-    return r.rows[0] || null;
-  };
-  const classIdOf = async (user) => {
-    if (user.id === 2) return 1;
-    if (user.id === 5) return 1;
-    return null;
-  };
-  const subjectTeachingClassesFor = async (user, registration) => {
-    if (!registration) return [];
-    const r = await pool.query("SELECT teaching_scope FROM classroom_teachers WHERE id = $1", [registration.id]);
-    return subjectTeachingClasses(pool, { schoolId: registration.school_id, teacherUserId: user.id, academicYear: 2026, grades: normalizePairs(r.rows[0]?.teaching_scope).map((p) => p.grade) });
-  };
-  const put = async (userId, path, enabled) => {
-    const res = { json(value) { this.body = value; } };
-    await putAccess({ body: { path, enabled } }, res, async () => users[userId], normalizeContentPath, HttpError, classIdOf, registrationOf,
-      subjectTeachingClassesFor, setSubjectGrant, classLabel, pool);
-    return res.body;
-  };
-  const get = async (userId) => {
-    const res = { json(value) { this.body = value; } };
-    await getAccess({}, res, async () => "restricted", async () => [], async () => users[userId] || null, classIdOf, registrationOf,
-      subjectTeachingClassesFor, subjectGrantedPathsForTeacher, subjectGrantsForClass, classLabel, pool);
-    return res.body;
-  };
-  return { put, get };
 }
 
-test("PUT /teacher/home-content-access: a subject teacher without a homeroom opens the menu for every class they teach, for today", async () => {
+test("students start with every menu available; only a homeroom can persist individual class locks", async () => {
   await withSchool(async ({ pool, query }) => {
-    const { put, get } = routeHelpers(pool);
-    const body = await put(4, "/learning/arts/music/", true);
-    assert.deepEqual([body.scope, body.classes, body.enabled, body.path], ["subject", ["3-1", "3-2", "4-1"], true, "/learning/arts/music"]);
-    assert.ok(body.expiresAt instanceof Date);
-    assert.equal(await isOpen(query, 1, "/learning/arts/music"), true);
-
-    const own = await get(4);
-    assert.deepEqual([own.canManage, own.manageScope, own.managedClasses, own.ownEnabledPaths, own.hasClassAccess],
-      [true, "subject", ["3-1", "3-2", "4-1"], ["/learning/arts/music"], false]);
+    const { get, put } = routeHelpers(pool);
+    const path = "/learning/games/spot-match";
+    assert.deepEqual((await get(5)).classDisabledPaths, []);
+    assert.equal((await get(5)).hasClassAccess, true);
+    assert.equal((await get(2)).canManage, true);
+    assert.equal((await get(4)).canManage, false);
+    await assert.rejects(() => put(4, path, true), { code: "HOMEROOM_TEACHER_REQUIRED" });
+    await assert.rejects(() => put(5, path, true), { code: "HOMEROOM_TEACHER_REQUIRED" });
+    await assert.rejects(() => put(1, path, true), { code: "HOMEROOM_TEACHER_REQUIRED" });
+    await assert.rejects(() => put(2, "/learning/games", true), { code: "INVALID_CONTENT_PATH" });
+    await assert.rejects(() => put(2, "/room", true), { code: "INVALID_CONTENT_PATH" });
+    await assert.rejects(() => put(2, path, undefined), { code: "INVALID_CONTENT_PATH" });
+    assert.deepEqual(await put(2, path, true), { ok: true, path, disabled: true });
+    assert.deepEqual((await get(2)).classDisabledPaths, [path]);
+    assert.deepEqual((await get(5)).classDisabledPaths, [path]);
+    assert.deepEqual((await get(3)).classDisabledPaths, []);
+    assert.deepEqual((await query("SELECT updated_by FROM classroom_content_disabled WHERE content_path = $1", [path])).rows, [{ updated_by: 2 }]);
+    await put(2, path, false);
+    assert.deepEqual((await get(5)).classDisabledPaths, []);
   });
 });
 
-test("GET /home-content-access: the homeroom sees who opened what and students see the union; the homeroom's toggle cannot close the subject teacher's grant", async () => {
+test("a site administrator can change individual global locks, including removing an older game alias", async () => {
   await withSchool(async ({ pool, query }) => {
-    const { put, get } = routeHelpers(pool);
-    await put(2, "/learning/games", true);
-    await put(4, "/learning/arts/music", true);
-
-    const homeroom = await get(2);
-    assert.deepEqual([homeroom.canManage, homeroom.manageScope, homeroom.managedClasses], [true, "homeroom", ["3-1"]]);
-    assert.deepEqual(homeroom.ownEnabledPaths, ["/learning/games"]);
-    assert.deepEqual(homeroom.enabledPaths, ["/learning/arts/music", "/learning/games"]);
-    assert.deepEqual(homeroom.openedBySubjectTeachers, { "/learning/arts/music": ["다전담"] });
-
-    const student = await get(5);
-    assert.deepEqual([student.canManage, student.hasClassAccess, student.enabledPaths], [false, true, ["/learning/arts/music", "/learning/games"]]);
-
-    // 담임이 잠가도(자기 칸을 지워도) 전담이 오늘 열어 둔 것은 그대로다.
-    const closed = await put(2, "/learning/arts/music", false);
-    assert.equal(closed.scope, "homeroom");
-    assert.equal(await isOpen(query, 1, "/learning/arts/music"), true);
-    assert.deepEqual((await get(2)).openedBySubjectTeachers, { "/learning/arts/music": ["다전담"] });
+    const { get, global } = routeHelpers(pool);
+    const path = "/learning/games/spot-match";
+    const legacy = "/learning/games/dobble/dobble";
+    assert.equal((await get(1)).canManageGlobally, true);
+    assert.equal((await get(1)).canManage, false);
+    await assert.rejects(() => global(2, path, true), { code: "ADMIN_REQUIRED" });
+    await assert.rejects(() => global(1, "/learning/games", true), { code: "INVALID_CONTENT_PATH" });
+    await query("INSERT INTO site_content_disabled (content_path) VALUES ($1)", [legacy]);
+    assert.deepEqual(await global(1, path, true), { ok: true, path, disabled: true });
+    await global(1, path, false);
+    assert.deepEqual((await query("SELECT content_path FROM site_content_disabled", [])).rows, []);
   });
 });
 
-test("a registered staff member with neither a homeroom nor taught classes still cannot manage anything", async () => {
+test("an old grouped global stop becomes individual stops and does not return after unlocking one", async () => {
+  const migration = source.match(/`(WITH previous AS \(\s+DELETE FROM site_content_disabled[\s\S]*?ON CONFLICT \(content_path\) DO NOTHING)`/)?.[1];
+  assert.ok(migration);
   await withSchool(async ({ pool, query }) => {
-    const { put, get } = routeHelpers(pool);
-    await query("UPDATE classroom_teachers SET teaching_scope = NULL WHERE user_id = 4");
-    await query("DELETE FROM school_master_timetable");
-    await assert.rejects(() => put(4, "/learning/arts/music", true), (error) => error.code === "HOMEROOM_TEACHER_REQUIRED");
-    const body = await get(4);
-    assert.deepEqual([body.canManage, body.manageScope, body.hasClassAccess], [false, "", false]);
+    const group = "/learning/literacy-numeracy/story-books";
+    const path = `${group}/korea-tales`;
+    const { global } = routeHelpers(pool);
+    await query("INSERT INTO site_content_disabled (content_path, updated_by) VALUES ($1, 1)", [group]);
+    await query(migration, [[...individualMenuPaths]]);
+    const saved = () => query("SELECT content_path FROM site_content_disabled ORDER BY content_path", []);
+    const paths = [...individualMenuPaths].filter(value => value.startsWith(`${group}/`)).sort();
+    assert.deepEqual((await saved()).rows.map(row => row.content_path), paths);
+    await global(1, path, false);
+    await query(migration, [[...individualMenuPaths]]);
+    assert.deepEqual((await saved()).rows.map(row => row.content_path), paths.filter(value => value !== path));
   });
-});
-
-// ─── 소스 계약 ──────────────────────────────────────────────────────────
-
-test("the student access check and the schema use the subject-grant module", () => {
-  assert.match(handlerBody("const requireSiteAccess = asyncRoute"), /await pool\.query\(CLASS_CONTENT_OPEN_SQL, \[classId, requestPath, assetRootPath\]\)/);
-  assert.match(source, /\.\.\.subjectGrantSchema,/);
-});
-
-test("the home page toggles only the viewer's own grants, renders a menu open when either side opened it, and names the subject teacher", () => {
-  assert.match(indexHtml, /classEnabledPaths = new Set\(result\.canManage === true\s*\? \(result\.ownEnabledPaths \|\| result\.enabledPaths \|\| \[\]\)/);
-  assert.match(indexHtml, /subjectOpenedPaths = new Map\(Object\.entries\(result\.openedBySubjectTeachers \|\| \{\}\)\)/);
-  assert.match(indexHtml, /function isClassPathOpen\(path\) \{\s*return classEnabledPaths\.has\(path\) \|\| subjectOpenedPaths\.has\(path\);/);
-  assert.match(indexHtml, /paths\.every\(isClassPathOpen\)/);
-  assert.match(indexHtml, /: !isClassPathOpen\(path\)\);/);
-  assert.match(indexHtml, /function subjectOpenedLockNote\(paths\)/);
-  assert.match(indexHtml, /가르치는 \$\{managedClassLabels\.length\}개 반 메뉴 오늘 공개\/잠금 설정/);
-  // 단추는 하나다. 전담용 단추를 따로 두지 않는다.
-  assert.equal((indexHtml.match(/id="contentAccessButton"/g) || []).length, 1);
-  assert.doesNotMatch(indexHtml, /subjectContentAccessButton/);
 });

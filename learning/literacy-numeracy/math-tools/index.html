@@ -6,13 +6,17 @@
   <meta name="theme-color" content="#0b1729">
   <title>수학 교구 · ClassJ</title>
   <link rel="icon" href="/assets/icons/favicon.webp">
-  <link rel="stylesheet" href="tools.css?v=20261108-essentials">
-  <script src="/assets/site-back-navigation.js?v=20261019-emoji-label" defer></script>
-  <script src="tools.js?v=20261108-compact" defer></script>
+  <link rel="stylesheet" href="tools.css?v=20261108-menu-locks">
+  <script src="/assets/site-back-navigation.js?v=20261108-menu-locks" defer></script>
+  <script src="tools.js?v=20261108-menu-locks" defer></script>
 </head>
 <body>
   <main class="catalog">
     <h1 class="sr-only">수학 교구</h1>
+    <div id="tool-settings" hidden>
+      <p id="tool-settings-status" role="status"></p>
+      <a href="/">설정 끝내기</a>
+    </div>
     <ul class="tools menu" aria-label="수학 교구 선택">
       <li>
         <a class="tool blocks" href="/learning/literacy-numeracy/math-tools/number-models/" aria-labelledby="blocks-title" aria-describedby="blocks-state">

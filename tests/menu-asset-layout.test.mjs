@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
+import homeContent from "../game-hub-server/home-content-paths.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -40,13 +41,13 @@ test("learning menus use the four top-level domains", () => {
   const numeracy = literacy.match(/<details[^>]*data-access-group="numeracy"[^>]*>[\s\S]*?<\/details>/)?.[0];
   const mathematics = numeracy?.match(/<a href="learning\/literacy-numeracy\/math-tools\/"[^>]*>/)?.[0];
   assert.ok(mathematics, "The math tools catalog must open from the numeracy submenu.");
-  assert.match(mathematics, /data-access-mode="individual"/);
+  assert.match(mathematics, /data-access-catalog="true"/);
   const catalog = read("learning/literacy-numeracy/math-tools/index.html");
   assert.doesNotMatch(catalog, /class="(?:intro|topic|tool-action)"|교구 열기/);
   assert.match(catalog, /<h2 id="blocks-title">자연수·소수 모형<\/h2>/);
   for (const tool of ["number-models", "fraction-board", "number-line", "clock", "geometry-tools", "measure-lab", "geoboard", "pattern-blocks", "area-lab", "stacking-cubes", "solid-nets", "data-graphs", "probability", "graph-studio"]) {
     const href = `learning/literacy-numeracy/math-tools/${tool}/`;
-    assert.ok(mathematics.includes(href), `${tool} has its own canonical access key`);
+    assert.ok(homeContent.individualMenuPaths.has(`/${href.slice(0, -1)}`), `${tool} has its own canonical access key`);
     assert.ok(catalog.includes(`href="/${href}"`), `${tool} is listed in the catalog`);
     assert.ok(!menu.includes(`href="${href}"`), `${tool} is no longer listed on the home page`);
   }

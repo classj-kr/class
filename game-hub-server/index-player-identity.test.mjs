@@ -23,7 +23,7 @@ assert.match(html, /setPlayerIdentity\(studentName, m\);/, 'Students must use th
 assert.match(html, /setPlayerIdentity\(guestName\);/, 'Guests must use the shared identity path.');
 
 const helperStart = html.indexOf('function clearPlayerIdentity()');
-const helperEnd = html.indexOf('function setHubLocked(locked)', helperStart);
+const helperEnd = html.indexOf('function updatePlayerLearningLinks(', helperStart);
 assert.ok(helperStart >= 0 && helperEnd > helperStart, 'Player identity helpers must be extractable.');
 const helperSource = html.slice(helperStart, helperEnd);
 const writes = [];
