@@ -207,10 +207,10 @@
   }
 
   // 설명 한 줄: '비교: …'처럼 이름표가 앞에 있으면 색 이름표로 떼어 보인다.
-  const EXPLAIN_TAGS = { '한자 뜻': 'hanja', '비교': 'compare', '생활 속 예': 'life', '꼭 알기': 'key' };
+  const EXPLAIN_TAGS = { '쉬운 뜻': 'easy', '한자 뜻': 'hanja', '비교': 'compare', '생활 속 예': 'life', '꼭 알기': 'key' };
   function explainLine(text) {
     const line = element('p', '', 'ex');
-    const m = text.match(/^(한자 뜻|비교|생활 속 예|꼭 알기):\s*/);
+    const m = text.match(/^(쉬운 뜻|한자 뜻|비교|생활 속 예|꼭 알기):\s*/);
     if (!m) { line.textContent = text; return line; }
     line.classList.add('tagged');
     line.append(element('b', m[1], `ex-tag ex-${EXPLAIN_TAGS[m[1]]}`), element('span', text.slice(m[0].length)));
