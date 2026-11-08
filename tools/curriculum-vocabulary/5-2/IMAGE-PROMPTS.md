@@ -55,14 +55,6 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) sits at her desk at home. A finished book lies closed on the left, and from it flow small floating icons, a red heart, a blue teardrop and a yellow lightbulb, along a curved arrow into an open notebook in front of her. She writes with a pencil; the notebook shows only plain ruled lines, no letters.
 ```
 
-**kor-reading-07** 상위어 — 아래에 사과, 배, 귤이 있고, 세 화살표가 위쪽 큰 바구니로 올라간다. 바구니에는 여러 과일이 담겨 있고 하린이가 두 팔을 벌려 바구니를 감싼다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-At the bottom of the picture sit a red apple, a round yellow Korean pear and an orange tangerine. Three curved arrows rise from them into one large woven basket in the center top, which already holds the same three fruits plus grapes and a banana. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) stands beside the basket with arms spread wide as if hugging it.
-```
-
 ### 1. 작품에 대한 의견을 나누어요
 
 **kor-1-01** 인상적 — 도윤이가 이야기책을 읽는데, 넘어가는 책장은 모두 흐릿하고 한 쪽에서만 금빛이 솟는다. 그 빛 속에 두 아이가 화해하며 안아 주는 장면이 떠 있고, 도윤이는 가슴에 손을 얹는다.
@@ -71,14 +63,6 @@ At the bottom of the picture sit a red apple, a round yellow Korean pear and an 
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
 
 A Korean boy (short black hair, round glasses, navy hoodie) sits on a beanbag reading a thick storybook. Most pages fanning past are pale grey, but from one page a warm golden glow rises, and inside the glow floats a small scene of two children hugging and making up. The boy's eyes are wide and his hand rests on his chest.
-```
-
-**kor-1-02** 연 — 펼친 시집에 시의 줄이 회색 막대로만 그려져 있고, 네 덩어리로 묶여 사이사이가 비어 있다. 덩어리마다 꽃, 해, 단풍잎, 눈송이가 붙어 있고 하린이가 빈 줄을 가리킨다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A large open poetry book fills the picture. The poem lines are drawn only as plain grey bars, no letters, grouped into four clearly separated blocks with a wide empty gap between each block. Next to each block sits a tiny seasonal icon: a pink blossom, a bright sun, a red maple leaf and a snowflake. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan)'s finger points to the gap between two blocks.
 ```
 
 **kor-1-03** 낭송 — 학예회 무대에서 하린이가 종이 없이 두 손을 모으고 시를 읊는다. 입에서 물결선과 꽃잎이 흘러나와 객석으로 가고, 친구들이 조용히 듣는다.
@@ -155,54 +139,6 @@ On the left lies a messy mixed pile of recycling: newspapers, boxes, plastic bot
 
 ### 2. 올바른 문장으로 글을 써요
 
-**kor-2-01** 문장 성분 — 세 칸짜리 장난감 기차가 지나간다. 빨간 칸에는 어린 여동생, 파란 칸에는 우유 한 잔, 초록 칸에는 컵을 기울여 마시는 모습이 실려 있고, 도윤이가 칸을 잇는다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A toy train with three colored cars runs across the picture from left to right. The red first car carries a little girl, the blue second car carries a glass of milk, and the green third car carries a cup tilting toward a smiling mouth with motion lines. A Korean boy (short black hair, round glasses, navy hoodie) kneels beside the track, linking the last car to the others.
-```
-
-**kor-2-02** 주어 — 마당에서 강아지가 꼬리를 흔들고, 강아지에게만 환한 빛이 비친다. 아래에 강아지, 꼬리, 흔드는 화살표가 그려진 블록 셋이 있고 강아지 블록이 빛난다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-In a sunny yard, a fluffy puppy wags its tail with motion lines, standing in a bright spotlight while the rest of the yard is slightly dimmer. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) stands nearby pointing at the puppy. Below the scene floats a strip of three colored blocks with icons, a puppy, a tail and a wagging motion arrow, and the first block with the puppy glows.
-```
-
-**kor-2-03** 서술어 — 위 줄에는 파란 하늘과 '하늘 그림, 빛나는 파란 물감' 블록이 있고, 아래 줄에는 운동장을 달리는 도윤이와 '아이 그림, 빛나는 달리는 다리' 블록이 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Two rows fill the picture. In the top row, a big bright blue sky with white clouds, and next to it a strip of two blocks: a sky icon and a glowing blue paint swatch. In the bottom row, a Korean boy (short black hair, round glasses, navy hoodie) sprints across a playground with motion lines, and next to him a strip of two blocks: a boy icon and a glowing running-legs icon.
-```
-
-**kor-2-04** 목적어 — 도윤이가 연필로 그림을 그리고, 종이 위 고양이 그림이 노랗게 빛나며 손에서 그림으로 화살표가 간다. 아래 블록 셋 가운데 액자 그림 블록이 빛난다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A Korean boy (short black hair, round glasses, navy hoodie) sits at a desk drawing with a pencil. On the paper, a cute cat drawing glows with a yellow highlight, and a bold arrow goes from his pencil hand to the drawing. Below the scene floats a strip of three colored blocks with icons, a boy, a picture frame and a pencil-drawing motion, and the middle picture-frame block glows.
-```
-
-**kor-2-05** 호응 — 가운데 파란 퍼즐 조각과 주황 조각이 딱 맞물려 초록 표시와 반짝이가 있다. 오른쪽에서는 하린이가 모양이 다른 조각을 끼우려 하지만 맞지 않아 빨간 가위표가 뜬다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-In the center, a big blue puzzle piece snaps perfectly into a big orange puzzle piece, with a small green check mark and sparkles where they join. To the right, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) tries to push a differently shaped orange piece into another blue piece; the edges bump and do not fit, with a small red X above them.
-```
-
-**kor-2-06** 개요 — 왼쪽 하린이는 씨앗, 새싹, 열매 맺은 나무가 그려진 세 칸에 생각 카드를 차례로 넣는다. 오른쪽 도윤이 종이에는 실타래처럼 엉킨 낙서만 가득해 얼굴을 찌푸린다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Two desks side by side. On the left, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) calmly works on a sheet divided into three stacked boxes, each with a small icon (a seed, a growing sprout, a tree with fruit), and arrows carry little idea cards from a pile into the right boxes. On the right, a Korean boy (short black hair, round glasses, navy hoodie) frowns at a page covered with a tangled ball of scribbled lines like knotted yarn. The papers show only icons and lines, no letters.
-```
-
 **kor-2-07** 매체 — 가운데 하린이가 소풍 사진을 들고, 화살표 넷이 신문, 휴대 전화, 텔레비전, 노트북으로 뻗는다. 넷 모두에 같은 사진이 실려 친구들에게 전해진다.
 
 ```text
@@ -236,22 +172,6 @@ A Korean boy (short black hair, round glasses, navy hoodie) holds a smartphone; 
 ```
 
 ### 3. 표준어와 방언을 알아봐요
-
-**kor-3-01** 표준어 — 가운데 텔레비전에서 뉴스 진행자가 말하고, 화살표가 산골 집, 바닷가 집, 제주 돌담집, 도시 아파트로 뻗는다. 집집마다 가족이 전구를 띄우며 고개를 끄덕인다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-In the center, a Korean woman news anchor in a neat suit speaks from a large TV screen. Arrows spread out from the TV to four small homes around it: a mountain village house, a seaside fishing village house, a Jeju stone-wall house and a city apartment. In each home a family nods with a small lightbulb above their heads.
-```
-
-**kor-3-02** 방언 — 우리나라 지도 위 서울, 경상도, 제주에 선 세 사람이 모두 가위를 들고 있다. 셋의 말풍선에는 가위 그림만 있지만 파랑, 주황, 초록으로 색이 다르고, 하린이가 신기한 듯 번갈아 본다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A simple green outline map of South Korea fills the background. Standing on three regions are three people, each holding up the same pair of scissors: a city office worker near Seoul, a grandmother in the southeast Gyeongsang area and a grandmother on Jeju Island. Each has an empty speech bubble containing only a scissors icon, but the bubbles are different colors: blue, orange and green. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) looks from one bubble to another, curious.
-```
 
 **kor-3-03** 의사소통 — 왼쪽 칸에서 도윤이와 외국인 친구가 물음표만 든 말풍선 속에 갸웃하고, 오른쪽 칸에서 도윤이가 축구공 그림을 보여 주며 손짓하자 친구가 엄지를 들고 둘의 머리 위 전구가 점선으로 이어진다.
 
@@ -417,14 +337,6 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 At night, two neighboring apartment windows sit side by side. In the left window, a young man happily plays a trumpet with music note symbols flying out. In the right window, a tired woman in pajamas covers her ears with a pillow. Between the two windows, a green arrowroot vine and a purple wisteria vine twist around each other in opposite directions, forming a tight tangled knot.
 ```
 
-**kor-4-08** 순화어 — 왼쪽 칸에서 도윤이가 자전거 안전모를 들고 엉킨 매듭 그림이 든 뾰족한 말풍선으로 말하자 할머니가 갸웃한다. 오른쪽 칸에서는 안전모 그림이 든 둥근 말풍선으로 말하자 할머니가 웃으며 끄덕인다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Two panels side by side. On the left, a Korean boy (short black hair, round glasses, navy hoodie) holds up his bicycle helmet and talks to his grandmother, his speech bubble spiky and filled with a tangled-knot icon, and she tilts her head with question marks. On the right, the boy points to the same helmet with a round soft speech bubble containing a simple helmet icon, and his grandmother smiles and nods with a lightbulb above her head.
-```
-
 ### 5. 추론하며 읽어요
 
 **kor-5-01** 추론 — 문이 닫힌 현관에 젖은 우산에서 물이 떨어지고 물 발자국이 복도로 이어진다. 그것을 본 하린이 머리 위에 전구와 비구름 생각 풍선이 떠 있다.
@@ -443,36 +355,12 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In a kitchen, an empty cookie tin lies open on its side on the floor. A trail of cookie crumbs and small muddy paw prints leads across the floor to the table, where a puppy hides underneath with crumbs on its nose. A Korean boy (short black hair, round glasses, navy hoodie) crouches along the trail holding a big magnifying glass, following it with a grin.
 ```
 
-**kor-5-03** 생략 — 왼쪽 휴대 전화에는 손 흔드는 그림, 해와 구름, 축구공 말풍선이 차례로 있고, 오른쪽 휴대 전화에는 축구공 말풍선만 남았다. 손 흔드는 그림과 해 말풍선은 점선을 따라 흐려지며 빠져나간다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Two phone message screens side by side. The left screen shows a long message made of three icon bubbles stacked in order: a waving hand, a sun with clouds and a soccer ball. The right screen shows a short message with only the soccer ball bubble, while the waving-hand and sun bubbles float away from it along dotted lines, fading out. A Korean boy (short black hair, round glasses, navy hoodie) holds the right phone with a quick thumbs-up.
-```
-
-**kor-5-04** 함축 — 햇살 가득한 창가에 하린이가 앉아 있고 창밖은 맑다. 그런데 하린이 가슴 앞에만 작은 먹구름이 떠서 빛나는 하트 위로 비를 뿌리고, 하린이는 슬픈 얼굴로 내려다본다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) sits by a big window on a bright sunny day; outside, the sky is clear blue with a smiling sun. Inside, a small dark rain cloud floats right in front of her chest, raining softly onto a small glowing heart. Her face is gently sad as she looks down at the little cloud.
-```
-
 **kor-5-05** 의도 — 거실로 도윤이 동생이 활짝 웃으며 심부름 봉지를 들고 들어온다. 동생 머리 위 생각 풍선에는 반짝이는 게임기가 떠 있고, 소파의 도윤이가 눈썹을 치켜올린다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
 
 In a living room, a Korean boy (short black hair, round glasses, navy hoodie)'s little brother walks in with a big sweet smile, holding up a grocery bag from an errand. Above his head, a thought bubble shows a sparkling handheld game console. The boy sits on the sofa with raised eyebrows, looking from the bag to the bubble.
-```
-
-**kor-5-06** 사전적 — 책상 위 두꺼운 사전 위로 넓은 바다와 지구본 그림이 떠오르고, 얇은 시집 위로는 바다 물결 같은 푸른 곡선에 싸여 아이를 안아 주는 엄마 그림이 떠오른다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Two books lie open side by side on a table. Above the left book, a thick dictionary drawn with only plain grey lines on its pages, rises a picture of the wide salty ocean with waves and a small globe. Above the right book, a thin poetry book, rises a picture of a mother gently hugging a child, wrapped in soft blue wave shapes like the sea.
 ```
 
 **kor-5-07** 화폐 — 박물관 진열대 위에 왼쪽부터 조개껍데기, 가운데 네모 구멍이 뚫린 조선 엽전 꾸러미, 오늘날의 동전과 지폐가 화살표를 따라 놓여 있다. 각각의 위에는 그것을 내고 시장에서 물건을 받는 손이 작게 그려져 있다.
@@ -509,14 +397,6 @@ Two rows of ten simple people figures, one row above the other. In the top row, 
 
 ### 6. 작품을 감상해요
 
-**kor-6-01** 요소 — 가운데 토끼, 쫓고 쫓기는 화살표 장면, 눈 덮인 산골 마을이 그려진 퍼즐 세 조각이 맞물려 이야기 그림이 되고, 하린이와 도윤이가 마지막 조각을 끼운다. 오른쪽 작은 퍼즐은 한 조각이 빠져 구멍이 나 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-In the center, three big jigsaw pieces snap together into one storybook picture: one piece shows a brave rabbit (the character), one shows a chase with motion arrows (the event), and one shows a snowy mountain village (the place). A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie) fit the last piece in. To the right, a smaller copy of the same puzzle is missing one piece, leaving an empty hole.
-```
-
 **kor-6-02** 인물 — 펼친 이야기책에서 배낭 멘 소년, 조끼 입은 토끼, 얼굴과 다리가 달린 찻주전자가 반짝이를 남기며 걸어 나온다.
 
 ```text
@@ -539,38 +419,6 @@ Three comic-style panels in a row with arrows between them and no text. Panel on
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
 
 Two framed pictures hang side by side, showing the very same girl in a red coat and boots. In the left frame, she walks through a snowy mountain village at night, with thatched roofs, falling snow and a crescent moon. In the right frame, the same girl stands on a bright sandy beach at noon in summer, with waves, a beach umbrella and a big sun.
-```
-
-**kor-6-05** 극본 — 책상 위 펼친 극본에서 팝업 책처럼 빨간 막이 달린 작은 무대가 솟아오른다. 무대에는 나무와 초가집, 손잡은 한복 차림 오누이, 호랑이가 서 있고 바닥에 움직임 점선 화살표가 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-On a desk lies an open script booklet whose pages show only grey lines. Rising out of it like a pop-up book is a small theater stage with red curtains: a painted tree and a thatched-roof house as the set, a brother and sister in hanbok holding hands, and a big friendly-looking tiger, with dotted movement arrows on the stage floor.
-```
-
-**kor-6-06** 해설 — 왼쪽 극본 첫 쪽에 눈송이와 초승달, 작은 시골 기차역, 인물 그림이 세로로 놓여 있다. 큰 화살표를 따라 오른쪽 무대가 눈 내리는 밤 시골 기차역으로 꾸며져 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-On the left, the first page of a script booklet is drawn as a column of three icons only: a crescent moon with snowflakes, a small country train station and a row of tiny character figures. A big arrow leads from that page to the right, where a theater stage is set as a quiet country train station on a snowy winter night, with a bench, a lamp post and falling snow.
-```
-
-**kor-6-07** 대사 — 학교 무대에서 늑대 옷을 입은 도윤이가 한 손을 들고 관객에게 큰 소리로 말한다. 다른 손의 극본에는 회색 줄 가운데 몇 줄에만 노란 형광 줄이 쳐 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-On a school stage, a Korean boy (short black hair, round glasses, navy hoodie) wears a fluffy grey wolf costume with ears and speaks boldly toward the audience with one paw raised, sound lines coming from his mouth. In his other hand he holds a script whose pages show grey lines, with only some lines highlighted in bright yellow. Classmates in costumes stand behind him on the stage.
-```
-
-**kor-6-08** 지문 — 위쪽 극본 쪽에 큰 괄호로 둘러싼 쾅 닫히는 문 그림이 있고, 아래 무대에서 하린이가 화난 얼굴로 소품 문을 쾅 닫는다. 괄호 속 그림과 하린이가 점선 화살표로 이어진다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-At the top of the picture floats a script page with grey lines, where one part is enclosed by a pair of very large round brackets around a small icon of a slamming door with motion lines. Below it, on a classroom stage, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) acts out the scene with an angry frown, slamming a prop door with a big bang burst shape. A dotted arrow links the bracketed icon to her action.
 ```
 
 **kor-6-09** 낭독 — 교실 앞에 하린이와 도윤이를 비롯한 네 아이가 극본을 펴 들고 보며 소리 내어 읽고, 소리 물결이 앉아서 듣는 친구들에게 퍼진다.
