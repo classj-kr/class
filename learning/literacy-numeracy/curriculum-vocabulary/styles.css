@@ -1,3 +1,4 @@
+@font-face { font-family: 'Andika Learning'; src: url('../../../assets/fonts/andika/Andika-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
 @font-face {
   font-family: 'KleeHanja';
   src: url('../../../assets/fonts/klee-one/KleeOne-SemiBold.ttf') format('truetype');
@@ -96,3 +97,29 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
   #unit-select:not([hidden]) { display: block; min-width: 0; }
   #unit-select:not([hidden]) + #unit-list { display: none; }
 }
+
+/* 한 낱말씩 보기 */
+.chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 16px; scroll-margin-top: 12px; }
+.chips button { min-height: 40px; padding: 6px 12px; border-radius: 20px; font-weight: 700; }
+.word-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 0 0 12px; }
+.word-title h3 { margin: 0; font-size: clamp(1.9rem, 4.5vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; color: var(--green); }
+.word-en { font-size: 1.2rem; font-weight: 700; color: #9b4607; font-family: 'Andika Learning', var(--gothic); }
+.word-title .hanja { width: 100%; }
+.scene { margin: 0 0 14px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: white; }
+.stage svg { display: block; width: 100%; height: auto; font-family: var(--gothic); }
+.stage :is(.b1, .b2, .b3, .b4, .b5) { opacity: 0; transition: opacity .45s ease; }
+.stage.on1 .b1, .stage.on2 .b2, .stage.on3 .b3, .stage.on4 .b4, .stage.on5 .b5 { opacity: 1; }
+.stage.on2 .h2, .stage.on3 .h3, .stage.on4 .h4, .stage.on5 .h5 { opacity: 0; }
+.caption { display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px 6px; min-height: 3.6em; font-size: clamp(1.1rem, 2.6vw, 1.3rem); font-weight: 700; line-height: 1.55; word-break: keep-all; border-top: 1px solid var(--line); }
+.beat-no { flex: none; display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--green); color: white; font-size: .85em; }
+.beats { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 4px 16px 12px; }
+.beats .dot { min-width: 40px; min-height: 40px; padding: 0; border-radius: 50%; font-weight: 800; }
+.beats .replay { margin-left: auto; min-height: 40px; }
+.word-page .word-mean { display: flex; gap: 10px; align-items: baseline; font-size: 1.12rem; }
+.word-page .word-use { margin: 8px 0 0; }
+.explain { margin-top: 14px; }
+.explain summary { cursor: pointer; color: var(--green); font-weight: 800; min-height: 40px; display: flex; align-items: center; }
+.explain p { margin: 6px 0; line-height: 1.85; font-family: var(--class-exam-font, inherit); word-break: keep-all; }
+.paging { display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); }
+.paging > :only-child { margin-left: auto; }
+.next-word { margin-left: auto; font-weight: 800; }

@@ -2,6 +2,7 @@
   'use strict';
 
   const books = window.CurriculumWords || {};
+  const scenes = window.CurriculumScenes || {};
   const termSelect = document.getElementById('term');
   const subjectList = document.getElementById('subjects');
   const unitList = document.getElementById('unit-list');
@@ -74,11 +75,88 @@
     return card;
   }
 
+  // 장면은 칸마다 한 줄씩 열린다. 처음에는 저절로 넘어가고, 아이가 칸을 누르면 멈춘다.
+  let sceneTimer = null;
+  const stopScene = () => { clearTimeout(sceneTimer); sceneTimer = null; };
+
+  function sceneOf(scene) {
+    const box = element('figure', '', 'scene');
+    const stage = element('div', '', 'stage');
+    stage.innerHTML = scene.svg;
+    const caption = element('figcaption', '', 'caption');
+    caption.setAttribute('aria-live', 'polite');
+    const controls = element('div', '', 'beats');
+    const dots = scene.beats.map((_, i) => button(String(i + 1), () => { stopScene(); show(i + 1); }, 'dot'));
+    dots.forEach((dot, i) => dot.setAttribute('aria-label', `${i + 1}번째 장면`));
+    const replay = button('↻ 다시 보기', () => play(), 'replay');
+    controls.append(...dots, replay);
+    box.append(stage, caption, controls);
+    let beat = 0;
+    function show(n) {
+      beat = n;
+      for (let i = 1; i <= 6; i++) stage.classList.toggle('on' + i, i <= n);
+      caption.replaceChildren(element('span', String(n), 'beat-no'), scene.beats[n - 1]);
+      dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === n - 1)));
+    }
+    function play() {
+      stopScene();
+      for (let i = 1; i <= 6; i++) stage.classList.remove('on' + i);
+      void stage.offsetWidth;
+      const step = () => {
+        show(beat + 1);
+        if (beat < scene.beats.length) sceneTimer = setTimeout(step, 3200);
+      };
+      beat = 0;
+      sceneTimer = setTimeout(step, 250);
+    }
+    play();
+    return box;
+  }
+
+  function wordPageOf(unit, index, select) {
+    const word = unit.words[index];
+    const page = element('article', '', 'word-page');
+    const head = element('header', '', 'word-title');
+    head.append(element('h3', word.w));
+    if (word.en) head.append(element('span', word.en, 'word-en'));
+    const hanja = hanjaOf(word);
+    if (hanja) head.append(hanja);
+    page.append(head);
+    const scene = scenes[`${term}/${subject}/${unit.id}/${word.w}`];
+    if (scene) page.append(sceneOf(scene));
+    const mean = element('p', '', 'word-mean');
+    mean.append(element('span', '뜻', 'tag'), word.mean);
+    page.append(mean, sentenceWith(word.use, word.w));
+    if (word.explain) {
+      const more = element('details', '', 'explain');
+      more.append(element('summary', '자세히 읽기'), ...word.explain.map(text => element('p', text)));
+      page.append(more);
+    }
+    const paging = element('nav', '', 'paging');
+    paging.setAttribute('aria-label', '다른 낱말');
+    if (index > 0) paging.append(button('← ' + unit.words[index - 1].w, () => select(index - 1)));
+    paging.append(index < unit.words.length - 1
+      ? button(unit.words[index + 1].w + ' →', () => select(index + 1), 'next-word')
+      : button('연습하기', () => { mode = 'practice'; showLesson(unit, true); }, 'start'));
+    page.append(paging);
+    return page;
+  }
+
   function wordsViewOf(unit) {
     const view = element('div', '', 'words-view');
-    const list = element('div', '', 'word-list');
-    list.append(...unit.words.map(wordCardOf));
-    view.append(list, button('연습하기', () => { mode = 'practice'; showLesson(unit, true); }, 'start'));
+    const chips = element('nav', '', 'chips');
+    chips.setAttribute('aria-label', '이 단원의 낱말');
+    const holder = element('div');
+    const controls = unit.words.map((word, i) => button(word.w, () => select(i, true)));
+    chips.append(...controls);
+    function select(i, focus) {
+      stopScene();
+      controls.forEach((control, j) => control.setAttribute('aria-pressed', String(i === j)));
+      holder.replaceChildren(wordPageOf(unit, i, (n) => { select(n); chips.scrollIntoView({ block: 'nearest' }); controls[n].focus({ preventScroll: true }); }));
+      if (focus) controls[i].focus({ preventScroll: true });
+    }
+    view.append(chips, holder);
+    select(0);
     return view;
   }
 
@@ -210,6 +288,7 @@
   }
 
   function showLesson(unit, focus) {
+    stopScene();
     leavePractice = null;
     lesson.setAttribute('aria-label', unit?.title || '학습 내용');
     if (!unit) {
