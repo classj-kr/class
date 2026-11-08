@@ -3,7 +3,8 @@
 
   // 학기마다 낱말 파일과 도식 파일을 고를 때 불러온다(terms.js 목록). 낱말 파일은 이 객체에 학기를 더한다.
   const books = window.CurriculumWords = window.CurriculumWords || {};
-  const manifest = window.CurriculumTerms || {};
+  // ?preview=1 이면 만드는 중인 학기까지 보인다(만드는 사람이 확인할 때).
+  const manifest = (new URLSearchParams(location.search).has('preview') ? window.CurriculumTermsPreview : window.CurriculumTerms) || {};
   const loading = {};
   const loadScript = (src) => new Promise((resolve, reject) => {
     const script = document.createElement('script');

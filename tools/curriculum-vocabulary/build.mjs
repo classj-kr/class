@@ -129,18 +129,21 @@ fs.writeFileSync(out, body);
 // 학기 목록(terms.js): 앱은 고른 학기의 낱말 파일과 도식 파일만 불러온다. 파일 내용으로 버전을 붙인다.
 const appDir = path.dirname(out);
 const ver = (file) => crypto.createHash('md5').update(fs.readFileSync(file)).digest('hex').slice(0, 8);
-const manifest = {};
-// 앱에 내보낼 학기는 terms-ready.json 에 적은 것만(만드는 중인 학기는 빼 둔다).
+const manifest = {}, preview = {};
+// 앱에 내보낼 학기는 terms-ready.json 에 적은 것만(만드는 중인 학기는 빼 두고, ?preview=1 에서만 보인다).
 const readyTerms = JSON.parse(fs.readFileSync(path.join(here, 'terms-ready.json'), 'utf8'));
-for (const name of fs.readdirSync(appDir).filter(n => /^words-\d-\d\.js$/.test(n) && readyTerms.includes(n.slice(6, 9))).sort()) {
+for (const name of fs.readdirSync(appDir).filter(n => /^words-\d-\d\.js$/.test(n)).sort()) {
   const key = name.slice(6, 9);
   const figDir = path.join(appDir, 'figures', key);
   const figures = fs.existsSync(figDir) ? fs.readdirSync(figDir).filter(n => n.endsWith('.js')).sort().map(n => `figures/${key}/${n}?v=${ver(path.join(figDir, n))}`) : [];
-  manifest[key] = { words: `${name}?v=${ver(path.join(appDir, name))}`, figures };
+  preview[key] = { words: `${name}?v=${ver(path.join(appDir, name))}`, figures };
+  if (readyTerms.includes(key)) manifest[key] = preview[key];
 }
 const termsFile = path.join(appDir, 'terms.js');
 fs.writeFileSync(termsFile, `// tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = ${JSON.stringify(manifest, null, 1)};
+// 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
+window.CurriculumTermsPreview = ${JSON.stringify(preview, null, 1)};
 `);
 const indexFile = path.join(appDir, 'index.html');
 const html = fs.readFileSync(indexFile, 'utf8');
