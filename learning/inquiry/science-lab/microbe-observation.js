@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded',()=>{'use strict';
   $('mbGuide').textContent=!s.mounted?'표본을 올리고 조명과 초점을 조절하세요.':!s.lamp?'조명을 켜서 표본을 밝히세요.':!ready()?'초점을 천천히 움직여 윤곽이 선명한 곳을 찾으세요.':v.detail;
   const completed=Object.keys(s.observed);$('mbComparisons').hidden=!completed.length;$('mbComparisonGrid').innerHTML=specimens.flatMap(r=>r.views.filter(v=>s.observed[v.id]).map(v=>`<figure><img src="${asset(v.id)}" alt="${r.name} ${v.title}"><figcaption><strong>${config?r.name:r.name+' · '+v.title}</strong><span>${v.magnification}배</span></figcaption></figure>`)).join('');
   $('mbComparisonNote').textContent=config?.comparisonNote||'사진마다 관찰 배율이 다릅니다. 화면에 보이는 크기만으로 생물의 실제 크기를 비교하지 마세요.';
+  window.cellPrep?.update(row,s.preparation.length,s);
  }
  function resetView(){s.mounted=false;s.preparation=[];s.focus=2;s.zoom=1;s.pan={x:0,y:0};$('mbStatus').textContent='';render();}
  host.addEventListener('click',e=>{const b=e.target.closest('[data-mb-sample]'),v=e.target.closest('[data-mb-view]');if(b){s.sample=b.dataset.mbSample;s.view=0;resetView();}if(v){s.view=+v.dataset.mbView;resetView();}});

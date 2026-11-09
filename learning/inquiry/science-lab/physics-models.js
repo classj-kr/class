@@ -23,11 +23,24 @@
  }
  // Two reflected rays: one phase reversal at the air/film boundary.
  function filmIntensity(d,wavelength){return Math.sin(TAU*1.33*d/wavelength)**2;}
- function filmThickness(y,seconds){return (130+950*clamp(y,0,1))*Math.exp(-Math.max(0,seconds)/14);}
+ // The film drains: thin at the top, thickening faster toward the bottom, so the
+ // fringes are wide near the top and crowd together lower down.
+ function filmThickness(y,seconds){return (130+950*Math.pow(clamp(y,0,1),1.6))*Math.exp(-Math.max(0,seconds)/14);}
+ // CIE 1931 colour-matching functions (multi-lobe Gaussian fit, Wyman et al. 2013).
+ const lobe=(x,m,a,b)=>{const t=(x-m)/(x<m?a:b);return Math.exp(-.5*t*t);};
+ const cmf=[];for(let w=380;w<=720;w+=5)cmf.push([w,1.056*lobe(w,599.8,37.9,31)+.362*lobe(w,442,16,26.7)-.065*lobe(w,501.1,20.4,26.2),.821*lobe(w,568.8,46.9,40.5)+.286*lobe(w,530.9,16.3,31.1),1.217*lobe(w,437,11.8,36)+.681*lobe(w,459,26,13.8)]);
+ const ySum=cmf.reduce((s,c)=>s+c[2],0),gamma=v=>{v=clamp(v,0,1);return Math.round(255*(v<=.0031308?12.92*v:1.055*Math.pow(v,1/2.4)-.055));},filmCache=new Map();
+ // White light: integrate the two-beam reflectance over the visible spectrum, so the
+ // bands follow the real interference colour sequence and fade to pastel when thick.
  function filmColor(d,light){
-  const wavelengths={red:650,green:530,blue:460};
-  if(light!=='white'){const v=Math.round(255*filmIntensity(d,wavelengths[light]));return light==='red'?`rgb(${v},0,0)`:light==='green'?`rgb(0,${v},0)`:`rgb(0,0,${v})`;}
-  return `rgb(${[650,530,460].map(w=>Math.round(255*filmIntensity(d,w))).join(',')})`;
+  const mono={red:[650,[232,74,62]],green:[530,[62,190,96]],blue:[460,[66,112,232]]}[light];
+  if(mono){const v=filmIntensity(d,mono[0]);return `rgb(${mono[1].map(c=>Math.round(c*v)).join(',')})`;}
+  const key=Math.round(d);if(filmCache.has(key))return filmCache.get(key);
+  let X=0,Y=0,Z=0;for(const [w,x,y,z] of cmf){const r=filmIntensity(key,w);X+=r*x;Y+=r*y;Z+=r*z;}
+  X*=1.15/ySum;Y*=1.15/ySum;Z*=1.15/ySum;
+  // Pull halfway toward grey of equal luminance: the reflected colours are soft, not neon.
+  const rgb=[3.2406*X-1.5372*Y-.4986*Z,-.9689*X+1.8758*Y+.0415*Z,.0557*X-.204*Y+1.057*Z].map(v=>Y+.5*(v-Y)).map(gamma),out=`rgb(${rgb.join(',')})`;
+  filmCache.set(key,out);return out;
  }
  function polarization(source,angle,filter){
   if(!filter)return 100;

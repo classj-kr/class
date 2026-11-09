@@ -124,42 +124,82 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ----------------------------------------------------------- visuals */
     const E_LO = -90, E_HI = 60, E_TOP = 40, E_BOT = 182;
     const ey = e => E_BOT - ((e - E_LO) / (E_HI - E_LO)) * (E_BOT - E_TOP);
+    const PEAK_X = 220, PLAT_END = 340, LEVEL_END = 386;
+    // 실행 상태: anim 0→1 은 '결과 보기'를 누른 뒤의 움직임, shown 은 결과를 보여 줘도 되는지
+    let anim = 0, shown = false, animId = 0;
 
-    function profilePath(peak, prod) {
+    function profileSegs(peak, prod) {
         const yR = ey(0), yPk = ey(peak), yP = ey(prod);
-        return `M60,${yR.toFixed(1)} L140,${yR.toFixed(1)} C180,${yR.toFixed(1)} 196,${yPk.toFixed(1)} 230,${yPk.toFixed(1)} ` +
-               `C264,${yPk.toFixed(1)} 280,${yP.toFixed(1)} 320,${yP.toFixed(1)} L400,${yP.toFixed(1)}`;
+        return [[60, yR, 140, yR], [[140, yR], [180, yR], [194, yPk], [PEAK_X, yPk]], [[PEAK_X, yPk], [246, yPk], [254, yP], [280, yP]], [280, yP, PLAT_END, yP]];
+    }
+    function profilePath(peak, prod) {
+        const s = profileSegs(peak, prod), f = v => v.toFixed(1);
+        return `M${s[0][0]},${f(s[0][1])} L${s[0][2]},${f(s[0][3])} C${s[1][1].map(f)} ${s[1][2].map(f)} ${s[1][3].map(f)} C${s[2][1].map(f)} ${s[2][2].map(f)} ${s[2][3].map(f)} L${s[3][2]},${f(s[3][3])}`;
+    }
+    // 곡선 위의 점: u 는 0~4 (구간 번호 + 구간 안의 비율)
+    function pointOn(peak, prod, u) {
+        const s = profileSegs(peak, prod), k = Math.max(0, Math.min(3, Math.floor(u))), t = Math.max(0, Math.min(1, u - k));
+        if (k === 0 || k === 3) { const [x1, y1, x2, y2] = s[k]; return [x1 + (x2 - x1) * t, y1 + (y2 - y1) * t]; }
+        const [p0, p1, p2, p3] = s[k], m = 1 - t;
+        return [0, 1].map(i => m * m * m * p0[i] + 3 * m * m * t * p1[i] + 3 * m * t * t * p2[i] + t * t * t * p3[i]);
+    }
+    // 분자 열 개가 언덕을 넘으려 한다. 넘는 수는 반응 속도(로그 눈금)에 따라 정해진다.
+    const crossCount = rel => Math.max(0, Math.min(10, Math.round(3 + 1.6 * Math.log10(rel))));
+    function molecules(a) {
+        const n = 10, pass = crossCount(a.rel), easeIO = t => t < .5 ? 2 * t * t : 1 - 2 * (1 - t) * (1 - t);
+        const goes = i => ((i * 7) % 10) < pass;
+        const stay = [...Array(n).keys()].filter(i => !goes(i)), made = [...Array(n).keys()].filter(goes);
+        // 자리: 아랫줄 다섯, 그 위 다섯 (u 는 곡선 위 위치, up 은 위로 쌓인 높이)
+        const restSlot = j => [0.5 + (j % 5) * 0.1, j < 5 ? 0 : 8];
+        const prodSlot = j => [3.12 + (j % 5) * 0.17, j < 5 ? 0 : 8];
+        let out = '';
+        for (let i = 0; i < n; i += 1) {
+            const g = goes(i), [u0, up0] = restSlot(i), [u1, up1] = g ? prodSlot(made.indexOf(i)) : restSlot(stay.indexOf(i));
+            const start = i * 0.068, len = 0.34, t = anim <= 0 ? 0 : Math.max(0, Math.min(1, (anim - start) / len));
+            let u = u0, up = up0, jig = 0;
+            if (t > 0 && g) { const e = easeIO(t); u = u0 + (u1 - u0) * e; up = e < .15 ? up0 * (1 - e / .15) : e > .85 ? up1 * (e - .85) / .15 : 0; }
+            else if (t > 0) { const b = Math.sin(Math.PI * t), lift = Math.min(1, b * 3); u = u0 + (u1 - u0) * t + 0.95 * b; up = (up0 + (up1 - up0) * t) * (1 - lift); }
+            if (anim > 0 && anim < 1 && (t <= 0 || t >= 1)) jig = Math.sin(anim * 60 + i * 1.7) * 1.2;
+            const [x, y] = pointOn(a.peak, a.product, u);
+            out += `<circle class="molecule${g && t >= 1 ? ' made' : ''}" cx="${(x + jig).toFixed(1)}" cy="${(y - 5 - up).toFixed(1)}" r="3.6"/>`;
+        }
+        return out;
     }
 
     function renderRate(a) {
-        const yR = ey(0), yP = ey(a.product);
+        const yR = ey(0), yP = ey(a.product), yPk = ey(EA_PLAIN / 1000), yPc = ey(EA_CAT / 1000);
         let body = '';
         body += `<line class="energy-axis" x1="46" y1="${E_TOP}" x2="46" y2="${E_BOT}"/>`;
-        body += `<line class="level-line" x1="60" y1="${yR.toFixed(1)}" x2="400" y2="${yR.toFixed(1)}"/>`;
-        body += `<line class="level-line" x1="60" y1="${yP.toFixed(1)}" x2="400" y2="${yP.toFixed(1)}"/>`;
+        body += `<line class="level-line" x1="60" y1="${yR.toFixed(1)}" x2="${LEVEL_END}" y2="${yR.toFixed(1)}"/>`;
+        body += `<line class="level-line" x1="${PLAT_END}" y1="${yP.toFixed(1)}" x2="${LEVEL_END}" y2="${yP.toFixed(1)}"/>`;
         // the uncatalysed hill is always drawn, so the catalyst's effect is visible
         body += `<path class="profile" d="${profilePath(EA_PLAIN / 1000, a.product)}"/>`;
         if (a.cat === 'on') body += `<path class="profile cat" d="${profilePath(EA_CAT / 1000, a.product)}"/>`;
 
-        // activation energy, measured from the reactant level up to the peak
-        const eaX = 176;
-        body += `<line class="ea-arrow${a.cat === 'on' ? ' cat' : ''}" x1="${eaX}" y1="${yR.toFixed(1)}" x2="${eaX}" y2="${ey(a.peak).toFixed(1)}"/>`;
-        body += `<path class="ea-arrow${a.cat === 'on' ? ' cat' : ''}" d="M${eaX - 4},${(ey(a.peak) + 6).toFixed(1)} L${eaX},${ey(a.peak).toFixed(1)} L${eaX + 4},${(ey(a.peak) + 6).toFixed(1)}"/>`;
-        body += `<text class="ea-text${a.cat === 'on' ? ' cat' : ''}" x="${eaX - 6}" y="${(ey(a.peak) - 10).toFixed(1)}" text-anchor="end">Ea ${a.peak} kJ/mol</text>`;
-        // reaction heat, from reactant level to product level
-        const dhX = 356;
+        // 활성화 에너지: 반응물 높이에서 언덕 꼭대기 높이까지. 화살표는 왼쪽에, 꼭대기까지 점선 안내선.
+        const arrow = (x, yTop, cat) => `<line class="ea-guide${cat ? ' cat' : ''}" x1="${x}" y1="${yTop.toFixed(1)}" x2="${PEAK_X}" y2="${yTop.toFixed(1)}"/>` +
+            `<line class="ea-arrow${cat ? ' cat' : ''}" x1="${x}" y1="${yR.toFixed(1)}" x2="${x}" y2="${yTop.toFixed(1)}"/>` +
+            `<path class="ea-arrow${cat ? ' cat' : ''}" d="M${x - 4},${(yTop + 6).toFixed(1)} L${x},${yTop.toFixed(1)} L${x + 4},${(yTop + 6).toFixed(1)}"/>`;
+        body += arrow(66, yPk, false);
+        body += `<text class="ea-text" x="72" y="${(yPk - 6).toFixed(1)}">Ea ${EA_PLAIN / 1000} kJ/mol</text>`;
+        if (a.cat === 'on') {
+            body += arrow(92, yPc, true);
+            body += `<text class="ea-text cat" x="98" y="${(yPc - 5).toFixed(1)}">Ea ${EA_CAT / 1000}</text>`;
+        }
+        // reaction heat, from reactant level to product level (오른쪽 끝, 곡선 밖)
+        const dhX = 380;
         body += `<line class="dh-arrow" x1="${dhX}" y1="${yR.toFixed(1)}" x2="${dhX}" y2="${yP.toFixed(1)}"/>`;
         const dir = yP > yR ? 1 : -1;
         body += `<path class="dh-arrow" d="M${dhX - 4},${(yP - dir * 6).toFixed(1)} L${dhX},${yP.toFixed(1)} L${dhX + 4},${(yP - dir * 6).toFixed(1)}"/>`;
-        body += `<text class="dh-text" x="${dhX - 8}" y="${((yR + yP) / 2).toFixed(1)}" text-anchor="end">ΔH ${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol</text>`;
+        body += `<text class="dh-text" x="${dhX - 7}" y="${((yR + yP) / 2 + 5).toFixed(1)}" text-anchor="end">ΔH ${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol</text>`;
+        body += molecules(a);
 
         let out = `<g clip-path="url(#stageClip)">${body}</g>`;
-        // left of the axis and below the title line, which runs across the top
         out += `<text class="small-label" x="42" y="${E_TOP + 6}" text-anchor="end">에너지</text>`;
-        out += `<text class="small-label" x="100" y="${(yR - 8).toFixed(1)}" text-anchor="middle">반응물</text>`;
-        out += `<text class="small-label" x="360" y="${(yP + (a.dh > 0 ? -8 : 16)).toFixed(1)}" text-anchor="middle">생성물</text>`;
-        out += `<text class="part-label" x="20" y="24">${a.heat === 'exo' ? '발열' : '흡열'} 반응 · ${a.T} ℃ · 촉매 ${a.cat === 'on' ? '있음' : '없음'}</text>`;
-        out += `<text class="read-text" x="20" y="200">${rateSentence(a.rel)}</text>`;
+        out += `<text class="small-label" x="110" y="${(yR + 18).toFixed(1)}" text-anchor="middle">반응물</text>`;
+        out += `<text class="small-label" x="310" y="${(yP + (a.dh > 0 ? -16 : 18)).toFixed(1)}" text-anchor="middle">생성물</text>`;
+        out += `<text class="part-label" x="20" y="22">${a.heat === 'exo' ? '발열' : '흡열'} 반응 · ${a.T} ℃ · 촉매 ${a.cat === 'on' ? '있음' : '없음'}</text>`;
+        if (shown) out += `<text class="read-text" x="20" y="204">${rateSentence(a.rel)} · 언덕을 넘은 분자 ${crossCount(a.rel)}개 / 10</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -168,40 +208,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderEq(a) {
         const CYL = { x0: 70, x1: 210, bottom: 186 };
-        // a smaller volume means a shorter cylinder
-        const height = 68 * a.V;
+        // 결과 보기 전에는 기준(25 ℃, 1 L) 상태, 누르면 피스톤과 색이 새 평형으로 옮겨 간다
+        const ref = a.ref, e = anim <= 0 ? 0 : anim >= 1 ? 1 : (anim < .5 ? 2 * anim * anim : 1 - 2 * (1 - anim) * (1 - anim));
+        const Vd = 1 + (a.V - 1) * Math.min(1, e * 1.6);
+        const no2d = ref.no2 + (a.no2 - ref.no2) * e, fracd = ref.fracN2O4 + (a.fracN2O4 - ref.fracN2O4) * e;
+        const height = 68 * Vd;
         const top = CYL.bottom - height;
         let body = '';
-        const brown = Math.min(0.85, (a.no2 / 0.15) * 0.85);
+        const brown = Math.min(0.85, (no2d / 0.15) * 0.85);
         body += `<rect class="gas" fill="#c8703c" opacity="${brown.toFixed(3)}" x="${CYL.x0 + 3}" y="${top.toFixed(1)}" ` +
                 `width="${CYL.x1 - CYL.x0 - 6}" height="${(height - 3).toFixed(1)}"/>`;
-        // molecules in the right proportion: singles are brown, pairs are colourless
         // A dot represents one NO2 unit. Pairing changes molecule count while
         // preserving all 24 N atoms (and the corresponding 48 O atoms).
-        const nN2O4 = Math.round(12 * a.fracN2O4), nNO2 = 24 - 2 * nN2O4;
+        const nN2O4 = Math.round(12 * fracd), nNO2 = 24 - 2 * nN2O4;
         const count = nNO2 + nN2O4, columns = 6, rows = Math.ceil(count / columns);
+        const moving = anim > 0 && anim < 1;
         for (let i = 0; i < count; i += 1) {
-            const x = CYL.x0 + 13 + (i % columns) * 22;
-            const y = top + 7 + (Math.floor(i / columns) + .5) * (height - 14) / rows;
-            if (i < nNO2) body += `<circle class="mol-no2" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"/>`;
-            else body += `<g><circle class="mol-n2o4" cx="${(x - 2.2).toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"/>` +
-                         `<circle class="mol-n2o4" cx="${(x + 2.2).toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"/></g>`;
+            const jx = moving ? Math.sin(anim * 40 + i * 2.3) * 3 : 0, jy = moving ? Math.cos(anim * 33 + i * 1.9) * 2 : 0;
+            const x = CYL.x0 + 13 + (i % columns) * 22 + jx;
+            const y = top + 7 + (Math.floor(i / columns) + .5) * (height - 14) / rows + jy;
+            if (i < nNO2) body += `<circle class="mol-no2" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/>`;
+            else body += `<g><circle class="mol-n2o4" cx="${(x - 2.4).toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/>` +
+                         `<circle class="mol-n2o4" cx="${(x + 2.4).toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/></g>`;
         }
+        body += `<rect class="piston-rod" x="${(CYL.x0 + CYL.x1) / 2 - 4}" y="14" width="8" height="${Math.max(0, top - 23).toFixed(1)}"/>`;
         body += `<rect class="piston" x="${CYL.x0 - 4}" y="${(top - 9).toFixed(1)}" width="${CYL.x1 - CYL.x0 + 8}" height="9" rx="2"/>`;
         body += `<path class="flask" d="M${CYL.x0},${(top - 9).toFixed(1)} L${CYL.x0},${CYL.bottom} L${CYL.x1},${CYL.bottom} L${CYL.x1},${(top - 9).toFixed(1)}"/>`;
 
         let out = `<g clip-path="url(#stageClip)">${body}</g>`;
-        // beside the cylinder: the closing note runs under it
-        out += `<text class="small-label" x="${CYL.x1 + 8}" y="180">${a.V.toFixed(1)} L · ${a.T} ℃</text>`;
+        out += `<text class="small-label" x="${CYL.x1 + 8}" y="180">${anim <= 0 ? '기준 1.0 L · 25 ℃' : `${a.V.toFixed(1)} L · ${a.T} ℃`}</text>`;
         out += `<text class="part-label" x="240" y="44">2NO₂ ⇌ N₂O₄ + 57 kJ</text>`;
-        out += `<text class="note-text" x="240" y="64">평형 상수 K = ${a.K.toFixed(1)}</text>`;
-        out += `<text class="note-text" x="240" y="82">[NO₂] = ${a.no2.toFixed(4)} M (갈색)</text>`;
-        out += `<text class="note-text" x="240" y="100">[N₂O₄] = ${a.n2o4.toFixed(4)} M (무색)</text>`;
-        out += `<text class="note-text" x="240" y="118">질소의 ${(a.fracN2O4 * 100).toFixed(1)}%가 N₂O₄ 로</text>`;
-        out += `<text class="note-text" x="240" y="136">기준 [NO₂] = ${a.ref.no2.toFixed(4)} M</text>`;
-        const tone = a.verdict === 'darker' ? '#c8703c' : a.verdict === 'lighter' ? '#0284c7' : '#059669';
-        out += `<text class="verdict-text" fill="${tone}" x="240" y="162">기준의 ${a.ratio.toFixed(2)}배 — ${EQ_WORD[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="206">K는 온도만이 바꿉니다. 부피를 바꾸면 K는 그대로이고 농도만 달라집니다.</text>`;
+        out += `<circle class="mol-no2" cx="246" cy="60" r="3"/><text class="small-label" x="254" y="65">NO₂ 갈색</text>`;
+        out += `<circle class="mol-n2o4" cx="331" cy="60" r="3"/><circle class="mol-n2o4" cx="337" cy="60" r="3"/><text class="small-label" x="345" y="65">N₂O₄ 무색</text>`;
+        if (shown) {
+            out += `<text class="note-text" x="240" y="86">평형 상수 K = ${a.K.toFixed(1)}</text>`;
+            out += `<text class="note-text" x="240" y="104">[NO₂] = ${a.no2.toFixed(4)} M</text>`;
+            out += `<text class="note-text" x="240" y="122">[N₂O₄] = ${a.n2o4.toFixed(4)} M</text>`;
+            out += `<text class="note-text" x="240" y="140">기준 [NO₂] = ${a.ref.no2.toFixed(4)} M</text>`;
+            const tone = a.verdict === 'darker' ? '#b45309' : a.verdict === 'lighter' ? '#0369a1' : '#047857';
+            out += `<text class="verdict-text" fill="${tone}" x="240" y="164">기준의 ${a.ratio.toFixed(2)}배 — ${EQ_WORD[a.verdict]}</text>`;
+        }
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -232,17 +278,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         [-2, 0, 2, 4].map(l => [l === 0 ? '1배' : `10${sup(l)}배`, gy(l)]),
                         '온도 (℃)', '기준 대비 반응 속도');
         out += `<line class="ref-line" x1="${GRAPH.x0}" y1="${gy(0).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(0).toFixed(1)}"/>`;
-        out += `<text class="ref-text" x="${GRAPH.x0 + 6}" y="${(gy(0) - 5).toFixed(1)}">기준 (25 ℃, 촉매 없음)</text>`;
-        [['off', 'trace', '촉매 없음'], ['on', 'trace cat', '촉매 있음']].forEach(([c, cls, tag]) => {
+        out += `<text class="ref-text" x="${GRAPH.x1 - 4}" y="${(gy(0) + 16).toFixed(1)}" text-anchor="end">기준 (25 ℃, 촉매 없음)</text>`;
+        if (!shown) { window.scienceScene.render(graphGroup, out); return; }
+        [['off', 'trace', '촉매 없음', 62], ['on', 'trace cat', '촉매 있음', 34]].forEach(([c, cls, tag, T0]) => {
             const pts = [];
             for (let T = 0; T <= 100; T += 1) {
                 const l = Math.log10(analyseRate(T, c, a.heat).rel);
                 pts.push(`${gx(T).toFixed(1)},${gy(Math.max(LO, Math.min(HI, l))).toFixed(1)}`);
             }
             out += `<path class="${cls}" d="M${pts.join('L')}"/>`;
-            const endL = Math.min(HI, Math.log10(analyseRate(100, c, a.heat).rel));
-            out += `<text class="curve-tag" fill="${c === 'on' ? '#059669' : '#d97706'}" ` +
-                   `x="${GRAPH.x1 - 4}" y="${(gy(endL) + 12).toFixed(1)}" text-anchor="end">${tag}</text>`;
+            // 이름표는 곡선 위 왼쪽(곡선이 오른쪽으로 오르니 비어 있는 쪽)에 둔다
+            const l0 = Math.min(HI, Math.log10(analyseRate(T0, c, a.heat).rel));
+            out += `<text class="curve-tag" fill="${c === 'on' ? '#047857' : '#b45309'}" ` +
+                   `x="${(gx(T0) - 6).toFixed(1)}" y="${(gy(l0) - 7).toFixed(1)}" text-anchor="end">${tag}</text>`;
         });
         const l = Math.max(LO, Math.min(HI, Math.log10(a.rel)));
         out += `<circle class="trace-dot" cx="${gx(a.T).toFixed(1)}" cy="${gy(l).toFixed(1)}" r="5" fill="#d97706"/>`;
@@ -257,6 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = frame([0, 25, 50, 75, 100].map(T => [T, gx(T)]),
                         [0, 0.25, 0.5, 0.75, 1].map(f => [`${(f * 100).toFixed(0)}%`, gy(f)]),
                         '온도 (℃)', 'N₂O₄로 있는 질소의 비율');
+        if (!shown) { window.scienceScene.render(graphGroup, out); return; }
         [[0.5, '#985914'], [1.0, '#a1431b'], [2.0, '#326c85']].forEach(([V, col]) => {
             const pts = [];
             for (let T = 0; T <= 100; T += 1) pts.push(`${gx(T).toFixed(1)},${gy(analyseEq(T, V).fracN2O4).toFixed(1)}`);
@@ -281,10 +330,17 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = state.mode === 'rate'
             ? '기준은 25 ℃, 촉매 없음입니다'
             : '기준은 25 ℃, 1 L 입니다 · 정반응은 발열';
-        stageBadge.textContent = a.kind === 'rate'
+        stageBadge.textContent = !shown ? (a.kind === 'rate' ? `${a.T} ℃ · 촉매 ${a.cat === 'on' ? '있음' : '없음'}` : `${a.V.toFixed(1)} L · ${a.T} ℃`)
+            : a.kind === 'rate'
             ? Math.abs(a.rel - 1) < 1e-9 ? '기준과 같음' : `${fmtRate(a.rel >= 1 ? a.rel : 1 / a.rel)}배 ${a.rel >= 1 ? '빠름' : '느림'}`
             : `K ${a.K.toFixed(1)} · ${EQ_WORD[a.verdict]}`;
-        window.scienceScene.render(dataNote,a.kind === 'rate'
+        window.scienceScene.render(dataNote,!shown
+            ? (a.kind === 'rate'
+                ? `<div class="data-row"><span class="data-name">활성화 에너지</span><span class="data-val">${a.peak} kJ/mol ${a.cat === 'on' ? '(촉매가 50 → 30으로 낮춤)' : ''}</span></div>` +
+                  `<div class="data-row"><span class="data-name">반응열</span><span class="data-val">ΔH = ${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol — 촉매를 넣어도 그대로</span></div>` +
+                  `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${a.T} ℃ = ${a.K.toFixed(1)} K</span></div>`
+                : `<div class="data-row"><span class="data-name">조건</span><span class="data-val">${a.T} ℃ · ${a.V.toFixed(1)} L (기준 25 ℃ · 1.0 L)</span></div>`)
+            : a.kind === 'rate'
             ? `<div class="data-row"><span class="data-name">활성화 에너지</span><span class="data-val">${a.peak} kJ/mol ${a.cat === 'on' ? '(촉매가 50 → 30으로 낮춤)' : ''}</span></div>` +
               `<div class="data-row"><span class="data-name">반응열</span><span class="data-val">ΔH = ${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol — 촉매를 넣어도 그대로</span></div>` +
               `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${a.T} ℃ = ${a.K.toFixed(1)} K</span></div>` +
@@ -301,6 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const RATE_WORD = { faster: '빠르다', similar: '비슷하다', slower: '느리다' };
 
     function check() {
+        stopAnim(); anim = 1; shown = true;
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -343,10 +400,24 @@ document.addEventListener('DOMContentLoaded', () => {
         explanation.textContent = s;
     }
 
+    function stopAnim() { if (animId) cancelAnimationFrame(animId); animId = 0; }
     function changed() {
+        stopAnim(); anim = 0; shown = false;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();
+    }
+    // '결과 보기': 분자가 언덕을 넘는 장면(또는 피스톤·색 변화)을 보여 준 뒤 결과를 채운다
+    function runCheck() {
+        stopAnim(); shown = false;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { check(); return; }
+        const dur = state.mode === 'rate' ? 3200 : 2600, t0 = performance.now();
+        const step = now => {
+            anim = Math.min(1, (now - t0) / dur);
+            if (anim >= 1) { animId = 0; check(); return; }
+            render(); animId = requestAnimationFrame(step);
+        };
+        anim = 0.0001; render(); animId = requestAnimationFrame(step);
     }
 
     modeButtons.forEach(button => button.addEventListener('click', () => {
@@ -360,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : '액화하지 않는 이상 기체의 평형을 비교합니다. 갈색은 NO₂ 농도에 따라 달라집니다.';
         changed();
     }));
-    checkBtn.addEventListener('click', check);
+    checkBtn.addEventListener('click', runCheck);
     resetBtn.addEventListener('click', () => {
         Object.assign(state, { heat: 'exo', cat: 'off', T: 25, Teq: 25, V: 1.0, prediction: null });
         modeButtons.find(b => b.dataset.mode === 'rate').click();

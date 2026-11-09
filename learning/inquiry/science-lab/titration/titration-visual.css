@@ -50,12 +50,13 @@
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
 .glass { fill: none; stroke: rgba(177, 226, 230, .8); stroke-width: 2.2; }
-.burette-fill { fill: rgba(150, 210, 235, .35); }
-.burette-tick { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; }
+.glass-dark { fill: none; stroke: #5f8394; stroke-width: 1.8; stroke-linejoin: round; }
+.burette-fill { fill: rgba(150, 205, 230, .6); }
+.burette-tick { stroke: #5f7480; stroke-width: 1; }
 .tap { fill: #4a5a63; stroke: rgba(190, 235, 242, .55); stroke-width: 1.2; }
-.drop { fill: rgba(190, 225, 245, .9); }
+.drop { fill: #b9dcef; stroke: #5f8394; stroke-width: .6; }
 .flask-liquid { stroke: none; }
-.swirl { fill: none; stroke: rgba(255, 255, 255, .35); stroke-width: 1.4; }
+.swirl { fill: none; stroke: rgba(255, 255, 255, .8); stroke-width: 1.6; }
 
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }
 .small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }

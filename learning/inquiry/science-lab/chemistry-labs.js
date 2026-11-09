@@ -8,7 +8,7 @@
  const line=(x1,y1,x2,y2,color='#527e8e',w=3)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${w}"/>`;
  const path=(d,color='#527e8e',w=3,extra='')=>`<path d="${d}" fill="none" stroke="${color}" stroke-width="${w}" ${extra}/>`;
  const metric=(label,value)=>`<div><span>${label}</span><strong>${value}</strong></div>`;
- function svg(body,label,h=340){window.scienceScene.render(scene,`<svg viewBox="0 0 640 ${h}" role="img" aria-label="${label}">${body}</svg>`);}
+ function svg(body,label,h=340,w=640){window.scienceScene.render(scene,`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${label}">${body}</svg>`);}
  function note(s){if(status.textContent!==s)status.textContent=s;}
  function stop(){cancelAnimationFrame(timer);timer=0;running=false;}
  function run(step,max,dt=100){if(running){stop();draw();return;}running=true;let last=0;function frame(now){if(!running)return;if(last)state.time=Math.min(max,state.time+Math.min(now-last,80)*step/dt);last=now;if(state.time>=max)stop();draw();if(running)timer=requestAnimationFrame(frame);}timer=requestAnimationFrame(frame);}
@@ -63,15 +63,108 @@
   const p=slug==='buffer-solution'?M.buffer(name,'BE'.includes(name)?state.acid:'CF'.includes(name)?state.base:0):M.salt(name,state.concentration);
   state.well=name;state.clean=false;state.measured[name]=p;draw();
  }
+ // pH apparatus: the model state changes at once, the picture follows over time.
+ const reduceMotion=()=>!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+ const ease=t=>t<.5?2*t*t:1-(-2*t+2)**2/2;
+ let ph=null,phRaf=0,rinses=0;
+ function phGeo(){
+  if(slug==='buffer-solution'){
+   const pos={};'ABCDEF'.split('').forEach((n,i)=>{const back=i<3,cx=(back?122:96)+(i%3)*140,cy=back?160:296;pos[n]={x:cx,cy,surface:cy+16,dip:cy+44,top:cy-13};});
+   return {pos,park:{x:585,tip:318},lift:140,beaker:{x:585,top:334,bottom:410},bottle:{x:660,y:410},meter:{x:530,y:14},stand:500,bench:410,w:700,h:470};
+  }
+  const pos={};['NH4Cl','NaCN','NaCl'].forEach((n,i)=>{const cx=95+i*150;pos[n]={x:cx,cy:220,surface:242,dip:300,top:205};});
+  return {pos,park:{x:585,tip:268},lift:160,beaker:{x:585,top:284,bottom:360},bottle:{x:660,y:360},meter:{x:530,y:14},stand:500,bench:360,w:700,h:440};
+ }
+ function phReset(){cancelAnimationFrame(phRaf);phRaf=0;const g=phGeo();ph={probe:{...g.park},display:null,queue:[],task:null,seen:{acid:state.acid||0,base:state.base||0,well:state.well,rinses}};}
+ function phTarget(){const g=phGeo();return state.well?{x:g.pos[state.well].x,tip:g.pos[state.well].dip}:{...g.park};}
+ function phFinish(task){if(!task)return;if(task.kind==='move')ph.probe={...task.to};if(task.kind==='settle')ph.display=task.to;if(task.kind==='lift')ph.display=null;}
+ function phBegin(task,now){task.start=now;if(task.kind==='lift')ph.display=null;if(task.kind==='settle')task.from=ph.display??7;return task;}
+ function phSchedule(tasks){
+  phFinish(ph.task);ph.queue.forEach(phFinish);ph.task=null;ph.queue=tasks;
+  if(reduceMotion()){ph.queue.forEach(phFinish);ph.queue=[];paintPH();return;}
+  paintPH();
+  if(!phRaf){const frame=now=>{phRaf=0;if(!ph)return;
+    if(!ph.task&&ph.queue.length)ph.task=phBegin(ph.queue.shift(),now);
+    while(ph.task&&now-ph.task.start>=ph.task.dur){phFinish(ph.task);ph.task=ph.queue.length?phBegin(ph.queue.shift(),now):null;}
+    paintPH(now);if(ph.task||ph.queue.length)phRaf=requestAnimationFrame(frame);};
+   phRaf=requestAnimationFrame(frame);}
+ }
+ function phMove(from,to){const L=phGeo().lift,d=Math.abs(from.x-to.x)+Math.abs(from.tip-L)+Math.abs(to.tip-L);return {kind:'move',from:{...from},to:{...to},dur:Math.min(1600,450+d*1.7)};}
  function drawPH(){
-  const buffer=slug==='buffer-solution',names=buffer?['A','B','C','D','E','F']:['NH4Cl','NaCN','NaCl'],labels=buffer?['A 물 · 기준','B 물 + 산','C 물 + 염기','D 완충액 · 기준','E 완충액 + 산','F 완충액 + 염기']:['NH₄Cl','NaCN','NaCl'];
-  let b=`<defs><radialGradient id="phWell"><stop stop-color="#f8fdff"/><stop offset=".78" stop-color="#c9e2eb"/><stop offset="1" stop-color="#8eb5c5"/></radialGradient><linearGradient id="phTray" x2="0" y2="1"><stop stop-color="#f7fbfd"/><stop offset="1" stop-color="#c4d5df"/></linearGradient></defs><rect x="22" y="${buffer?24:76}" width="598" height="${buffer?302:153}" rx="24" fill="url(#phTray)" stroke="#9db7c4" stroke-width="2"/>`;names.forEach((name,i)=>{const x=105+i%3*210,y=buffer?(i<3?85:235):140,p=state.measured[name];
-   b+=`<ellipse cx="${x}" cy="${y}" rx="74" ry="47" fill="#edf6f9" stroke="#a8c1cd" stroke-width="2"/><ellipse cx="${x}" cy="${y}" rx="70" ry="43" fill="url(#phWell)" stroke="${state.well===name?'#176878':'#87acbd'}" stroke-width="${state.well===name?4:1.5}"/><path d="M${x-55} ${y-18}Q${x} ${y-54} ${x+55} ${y-18}" fill="none" stroke="#fff" stroke-width="3" opacity=".8"/>`+text(x,y+7,p===undefined?'미측정':'pH '+p.toFixed(2),20)+text(x,y+68,labels[i],16);
-   if(buffer)b+=text(x,y-56,i%3===0?'첨가 없음':(i%3===1?state.acid:state.base)+'방울',14);
-  });svg(b,buffer?'물과 완충 용액의 기준·산 첨가·염기 첨가 6홈판':'세 염 수용액의 pH 비교',buffer?340:270);
+  if(!ph)phReset();const s=ph.seen,g=phGeo(),tasks=[];
+  let from={...ph.probe};for(const t of [ph.task,...ph.queue])if(t&&t.kind==='move')from={...t.to};
+  if(slug==='buffer-solution'){
+   if(state.acid>s.acid)tasks.push({kind:'drop',wells:['B','E'],acid:true,dur:1600});
+   if(state.base>s.base)tasks.push({kind:'drop',wells:['C','F'],acid:false,dur:1600});
+  }
+  if(state.well!==s.well||rinses!==s.rinses){
+   if(s.well&&state.well!==s.well)tasks.unshift({kind:'lift',dur:1});
+   const target=phTarget();
+   if(rinses!==s.rinses){if(from.x!==g.park.x||from.tip!==g.park.tip)tasks.push(phMove(from,g.park));tasks.push({kind:'squirt',dur:1600});}
+   else if(target.x!==from.x||target.tip!==from.tip)tasks.push(phMove(from,target));
+   if(state.well&&state.measured[state.well]!==undefined)tasks.push({kind:'settle',to:state.measured[state.well],dur:1100});
+  }
+  ph.seen={acid:state.acid||0,base:state.base||0,well:state.well,rinses};
+  if(tasks.length)phSchedule(tasks);else paintPH();
+ }
+ const phBusy=()=>!!(ph&&(ph.task||ph.queue.length));
+ function probeArt(x,tip,g){
+  const top=tip-112,arm=top+20,mx=g.meter.x-6,my=g.meter.y+90;
+  const cy=arm-13,cable=x>g.stand+20?`M${mx} ${my}C${mx-40} ${my} ${x} ${top-50} ${x} ${top}`:`M${mx} ${my}C${mx-40} ${my} ${g.stand+30} ${cy} ${g.stand} ${cy}H${x+14}Q${x} ${cy} ${x} ${top}`;let b=`<path d="${cable}" fill="none" stroke="#33454f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+  b+=rect(Math.min(x,g.stand),arm-4,Math.max(1,Math.abs(g.stand-x)),8,'#9aa9b1','rx="3" stroke="#66767f" stroke-width="1"')+rect(g.stand-9,arm-8,18,16,'#55666f','rx="3"')+rect(x-11,arm-8,22,16,'#55666f','rx="3"');
+  b+=rect(x-6,top,12,30,'#34464f','rx="3"')+`<path d="M${x-6} ${top+30}H${x+6}V${tip-20}L${x+4} ${tip-10}H${x-4}L${x-6} ${tip-20}Z" fill="#e4eff3" stroke="#6f8e9b" stroke-width="1.4"/><path d="M${x} ${top+34}V${tip-14}" stroke="#9fb9c3" stroke-width="1.5"/><circle cx="${x}" cy="${tip-6}" r="6" fill="#eaf5f9" stroke="#6f8e9b" stroke-width="1.4"/><path d="M${x-3} ${top+36}V${tip-24}" stroke="#fff" stroke-width="1.5" opacity=".8"/>`;
+  return b;
+ }
+ function meterArt(g,value,live){
+  const {x,y}=g.meter,shown=value===null||value===undefined?'--.--':value.toFixed(2);
+  return rect(x,y,140,116,'#f4f7f8','rx="12" stroke="#6b8794" stroke-width="2"')+rect(x+12,y+12,116,50,'#d5e6d2','rx="5" stroke="#7f9a80" stroke-width="1.5"')+`<text x="${x+120}" y="${y+50}" font-size="27" text-anchor="end" fill="#22382a" font-family="Consolas,monospace">${shown}</text><text x="${x+18}" y="${y+30}" font-size="14" fill="#3f5a45">pH</text>`+(live?`<circle cx="${x+22}" cy="${y+50}" r="4" fill="#3f8a4f"/>`:'')+`<circle cx="${x+28}" cy="${y+88}" r="9" fill="#dfe8ec" stroke="#6b8794"/><circle cx="${x+54}" cy="${y+88}" r="9" fill="#dfe8ec" stroke="#6b8794"/>`+text(x+102,y+94,'pH 측정기',14,'#3d5662')+rect(x-8,y+84,8,12,'#33454f','rx="2"');
+ }
+ function standArt(g){return rect(g.stand-4,40,8,g.bench-46,'#9aa9b1','rx="3" stroke="#66767f" stroke-width="1"')+rect(g.stand-34,g.bench-9,68,10,'#6f7f88','rx="3"');}
+ function wasteBeaker(g){const {x,top,bottom}=g.beaker;return `<path d="M${x-40} ${top}V${bottom-6}Q${x-40} ${bottom} ${x-34} ${bottom}H${x+34}Q${x+40} ${bottom} ${x+40} ${bottom-6}V${top}" fill="#f2f8fa" fill-opacity=".6" stroke="#8baebb" stroke-width="2.2"/>`+rect(x-38,bottom-22,76,20,'#d5eaf1','opacity=".85"')+`<ellipse cx="${x}" cy="${top}" rx="40" ry="4" fill="none" stroke="#8baebb" stroke-width="1.8"/>`+text(x,bottom+22,'헹군 물',14,'#3d5662');}
+ function bottleArt(g,squeeze){
+  const {x,y}=g.bottle,k=squeeze*4;
+  return `<g transform="rotate(${(-squeeze*12).toFixed(2)} ${x} ${y})"><path d="M${x-20+k} ${y}H${x+20-k}Q${x+24-k} ${y-50} ${x+16} ${y-70}H${x-16}Q${x-24+k} ${y-50} ${x-20+k} ${y}Z" fill="#eef4f7" stroke="#6f8e9b" stroke-width="2"/>`+rect(x-19+k,y-30,38-2*k,26,'#d4e9f2','opacity=".8"')+rect(x-9,y-82,18,13,'#c7563e','rx="2"')+`<path d="M${x} ${y-82}V${y-96}Q${x} ${y-104} ${x-10} ${y-106}L${x-34} ${y-112}" fill="none" stroke="#b8cfd8" stroke-width="5" stroke-linecap="round"/><path d="M${x} ${y-82}V${y-96}Q${x} ${y-104} ${x-10} ${y-106}L${x-34} ${y-112}" fill="none" stroke="#eef6f8" stroke-width="2" stroke-linecap="round"/></g>`+text(x-4,y+22,'증류수',14,'#3d5662');
+ }
+ function dropperArt(x,tipY,acid){return `<ellipse cx="${x}" cy="${tipY-92}" rx="11" ry="16" fill="${acid?'#b8483a':'#4a6fa8'}"/>`+rect(x-6,tipY-80,12,8,acid?'#943a2f':'#3d5d8f','rx="2"')+`<path d="M${x-5} ${tipY-72}H${x+5}V${tipY-26}L${x+1.5} ${tipY}H${x-1.5}L${x-5} ${tipY-26}Z" fill="#eef6f9" stroke="#7b9aa6" stroke-width="1.3"/>`+rect(x-3.5,tipY-42,7,16,acid?'#f1d9d3':'#d9e1f1')+`<text x="${x+16}" y="${tipY-88}" font-size="14" fill="#3d5662">${acid?'1 M HCl':'1 M NaOH'}</text>`;}
+ function phWellArt(name,g,label,line,active){
+  const {x,cy}=g.pos[name],rx=44,ry=13,depth=46,buf='DEF'.includes(name);
+  let b=`<path d="M${x-rx} ${cy}V${cy+depth}A${rx} ${ry} 0 0 0 ${x+rx} ${cy+depth}V${cy}" fill="#e8f2f6" fill-opacity=".55" stroke="#93b2be" stroke-width="1.6"/>`;
+  b+=`<path d="M${x-rx+1} ${cy+16}V${cy+depth}A${rx-1} ${ry} 0 0 0 ${x+rx-1} ${cy+depth}V${cy+16}A${rx-1} ${ry} 0 0 1 ${x-rx+1} ${cy+16}Z" fill="${buf?'#cfe6dc':'#c6e2ee'}" opacity=".9"/><ellipse cx="${x}" cy="${cy+16}" rx="${rx-1}" ry="${ry}" fill="${buf?'#ddefe6':'#d9edf5'}" stroke="#86adbb" stroke-width="1"/>`;
+  b+=`<ellipse cx="${x}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="${active?'#176878':'#86a9b6'}" stroke-width="${active?3:1.8}"/><path d="M${x-rx+7} ${cy+8}V${cy+depth-4}" stroke="#fff" stroke-width="3" opacity=".7"/>`;
+  return b+text(x,cy-22,label,15,'#143541')+text(x,cy+depth+30,line,14,'#2f5562');
+ }
+ function saltBeaker(x,g,active){
+  const top=g.pos.NH4Cl.top,bottom=g.bench,s=g.pos.NH4Cl.surface;
+  return `<path d="M${x-52} ${top}V${bottom-8}Q${x-52} ${bottom} ${x-44} ${bottom}H${x+44}Q${x+52} ${bottom} ${x+52} ${bottom-8}V${top}" fill="#f2f8fa" fill-opacity=".5" stroke="${active?'#176878':'#8baebb'}" stroke-width="${active?3:2.4}"/><path d="M${x-50} ${s}V${bottom-8}Q${x-50} ${bottom-2} ${x-44} ${bottom-2}H${x+44}Q${x+50} ${bottom-2} ${x+50} ${bottom-8}V${s}Z" fill="#d9edf5" opacity=".9"/><ellipse cx="${x}" cy="${s}" rx="50" ry="4" fill="#e6f3f8" stroke="#86adbb" stroke-width="1"/><ellipse cx="${x}" cy="${top}" rx="52" ry="5" fill="none" stroke="#8baebb" stroke-width="2"/><path d="M${x-58} ${top-2}Q${x-54} ${top-6} ${x-50} ${top-3}" fill="none" stroke="#8baebb" stroke-width="2"/><path d="M${x-42} ${top+12}V${bottom-12}" stroke="#fff" stroke-width="4" opacity=".65"/>`+[0,1,2,3].map(i=>line(x+30,top+30+i*24,x+44,top+30+i*24,'#6c94a3',1.2)).join('');
+ }
+ function paintPH(now=performance.now()){
+  if(!ph)phReset();const narrow=scene.clientWidth>0&&scene.clientWidth<560;const g=phGeo(),buffer=slug==='buffer-solution',names=buffer?['A','B','C','D','E','F']:['NH4Cl','NaCN','NaCl'],labels=buffer?['A 물 · 기준','B 물 + 산','C 물 + 염기','D 완충액 · 기준','E 완충액 + 산','F 완충액 + 염기']:['NH₄Cl','NaCN','NaCl'];
+  const task=ph.task,f=task?Math.min(1,Math.max(0,(now-task.start)/task.dur)):1;let probe={...ph.probe},display=ph.display,squirt=0;
+  if(task?.kind==='move'){const a=task.from,c=task.to,L=g.lift,d1=Math.abs(a.tip-L),d2=Math.abs(a.x-c.x),d3=Math.abs(c.tip-L),tot=d1+d2+d3||1,s=ease(f)*tot;
+   probe=s<d1?{x:a.x,tip:a.tip+(L-a.tip)*s/d1}:s<d1+d2?{x:a.x+(c.x-a.x)*(s-d1)/(d2||1),tip:L}:{x:c.x,tip:L+(c.tip-L)*Math.min(1,(s-d1-d2)/(d3||1))};}
+  if(task?.kind==='settle')display=task.to+(task.from-task.to)*Math.exp(-4*f)*(1-f);
+  if(task?.kind==='squirt')squirt=Math.min(1,Math.sin(f*Math.PI)*1.6);
+  const live=task?.kind==='settle';
+  let b=`<rect x="0" y="${g.bench}" width="${g.w}" height="${g.h-g.bench}" fill="#efe8dc"/><line x1="0" y1="${g.bench}" x2="${g.w}" y2="${g.bench}" stroke="#cbbda5" stroke-width="2"/>`;
+  if(buffer){const top=112,front=360;b+=`<path d="M24 ${front}H${g.stand-62}L${g.stand-34} ${top}H52Z" fill="#eef5f8" fill-opacity=".8" stroke="#9ab6c2" stroke-width="2"/>`+rect(24,front,g.stand-86,g.bench-front,'#e1ecf0','stroke="#9ab6c2" stroke-width="2"')+`<path d="M${g.stand-62} ${front}L${g.stand-34} ${top}V${g.bench-28}L${g.stand-62} ${g.bench}Z" fill="#d4e3ea" stroke="#9ab6c2" stroke-width="2"/>`;}
+  b+=standArt(g)+wasteBeaker(g)+bottleArt(g,squirt)+meterArt(g,display,live);if(narrow)b=b.replace(/<text[^>]*>(헹군 물|증류수|pH 측정기)<\/text>/g,'');
+  names.forEach((name,i)=>{const p=state.measured[name],shown=p!==undefined&&!(phBusy()&&state.well===name);
+   if(buffer){const add=i%3===0?'첨가 없음':(i%3===1?'산 '+state.acid:'염기 '+state.base)+'방울';b+=narrow?phWellArt(name,g,name,shown?p.toFixed(2):i%3===0?'':(i%3===1?state.acid:state.base)+'방울',state.well===name):phWellArt(name,g,labels[i],add+(shown?' · pH '+p.toFixed(2):''),state.well===name);}
+   else{const x=g.pos[name].x;b+=saltBeaker(x,g,state.well===name)+text(x,g.bench+24,narrow?labels[i]:labels[i]+' '+state.concentration+' M',15)+(shown?text(x,g.bench+(narrow?62:46),'pH '+p.toFixed(2),15,'#2f5562'):'');}
+  });
+  if(task?.kind==='drop'){const half=f<.5?0:1,k=(f-half*.5)/.5,w=g.pos[task.wells[half]],tipY=w.top-34,fall=(k-.3)/.4,color=task.acid?'#e9b9ae':'#b9c9e9';
+   b+=narrow?dropperArt(w.x,tipY,task.acid).replace(/<text[^>]*>[^<]*<\/text>/,''):dropperArt(w.x,tipY,task.acid);
+   if(fall<=0)b+=`<path d="M${w.x} ${tipY}c-2.5 4-2.5 ${3+4*(k/.3)} 0 ${3+4*(k/.3)}s2.5-${3+4*(k/.3)} 0-${3+4*(k/.3)}Z" fill="${color}" stroke="#7b9aa6" stroke-width=".6"/>`;
+   else if(fall<1){const yy=tipY+2+fall*fall*(w.surface-tipY-10);b+=`<path d="M${w.x} ${yy.toFixed(1)}c-4 6-4 10 0 10s4-4 0-10Z" fill="${color}" stroke="#7b9aa6" stroke-width=".8"/>`;}
+   else{const r=Math.min(1,(k-.7)/.3);b+=`<ellipse cx="${w.x}" cy="${w.surface}" rx="${(5+r*32).toFixed(1)}" ry="${(1.5+r*8).toFixed(1)}" fill="none" stroke="#4f8ea3" stroke-width="1.6" opacity="${(1-r).toFixed(2)}"/>`;}}
+  if(squirt>0){const bx=g.bottle.x,by=g.bottle.y,nx=bx-36,ny=by-110+squirt*8;b+=`<path d="M${nx} ${ny}Q${((nx+probe.x)/2).toFixed(1)} ${ny-26} ${probe.x+6} ${probe.tip-30}" fill="none" stroke="#7fbdd6" stroke-width="2.6" stroke-dasharray="8 5" stroke-dashoffset="${(-now/16%13).toFixed(1)}" opacity="${squirt.toFixed(2)}"/>`;
+   for(let k=0;k<4;k++){const q=((now/520)+k/4)%1;b+=`<ellipse cx="${probe.x+(k%2?3:-3)}" cy="${(probe.tip+q*(g.beaker.bottom-26-probe.tip)).toFixed(1)}" rx="2" ry="3" fill="#7fbdd6" opacity="${(squirt*(1-q)).toFixed(2)}"/>`;}}
+  b+=probeArt(probe.x,probe.tip,g);
+  svg(b,buffer?'6홈판에 담긴 물과 완충 용액, 스포이트, pH 전극과 측정기':'세 염 수용액 비커와 pH 전극, 측정기',g.h,g.w);
   if(!actions.children.length)names.forEach((name,i)=>{const b=document.createElement('button');b.dataset.measure=name;b.textContent=labels[i]+' 측정';b.addEventListener('click',()=>measure(name));actions.append(b);});
   actions.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.measure===state.well)));
-  window.scienceScene.render(readout,metric('전극 상태',state.clean?'헹굼 완료':'시료가 묻어 있음')+metric('현재 측정',state.well?labels[names.indexOf(state.well)]:'시료 선택')+metric('pH',state.well&&state.measured[state.well]!==undefined?state.measured[state.well].toFixed(2):'—'));
+  const pending=phBusy()&&state.well;
+  window.scienceScene.render(readout,metric('전극 상태',state.clean?'헹굼 완료':'시료가 묻어 있음')+metric('현재 측정',state.well?labels[names.indexOf(state.well)]:'시료 선택')+metric('pH',pending?'측정 중…':state.well&&state.measured[state.well]!==undefined?state.measured[state.well].toFixed(2):'—'));
   if(buffer){$('addAcid').disabled=state.acid>=20;$('addBase').disabled=state.base>=20;}
   note(state.clean?'헹군 전극으로 측정할 시료를 고르세요.':buffer?'같은 첨가량에서 물과 완충액을 비교하세요. A·D는 처음 상태를 유지합니다. 다른 홈으로 옮기기 전에 전극을 헹굽니다.':'짝산·짝염기가 물과 반응하는 정도를 비교하세요. 시료를 바꾸기 전에 전극을 헹굽니다.');
  }
@@ -100,7 +193,7 @@
  const draws={'gas-identification':drawGas,'sugar-phase':drawSugar,'hess-calorimetry':drawHess,'buffer-solution':drawPH,'salt-hydrolysis':drawPH,'bean-respiration':drawBeans};
  function draw(){draws[slug]();}
  function bind(id,fn){$(id)?.addEventListener('click',()=>{fn();draw();});}
- function reset(){stop();state=JSON.parse(JSON.stringify(defaults[slug]));actions.replaceChildren();root.querySelectorAll('select,input[type=range]').forEach(e=>e.value=String(state[e.id]));draw();}
+ function reset(){stop();if(ph)cancelAnimationFrame(phRaf);phRaf=0;ph=null;state=JSON.parse(JSON.stringify(defaults[slug]));actions.replaceChildren();root.querySelectorAll('select,input[type=range]').forEach(e=>e.value=String(state[e.id]));draw();}
  root.querySelectorAll('select,input[type=range]').forEach(e=>e.addEventListener('input',()=>{
   const value=e.id==='sample'||e.id==='mode'?e.value:Number(e.value);
   if(e.id==='head'){state.head=value;state.read=false;draw();return;}
@@ -110,7 +203,7 @@
  bind('weighBefore',()=>state.before=true);bind('collectGas',()=>state.collected=true);bind('weighAfter',()=>state.after=true);bind('equalize',()=>{state.head=0;state.read=false;$('head').value='0';});bind('readGas',()=>state.read=true);
  bind('dissolveSugar',()=>state.prepared=true);bind('startTemperature',()=>run(5,500,250));bind('stepTemperature',()=>{stop();state.time=Math.min(500,state.time+50);});
  bind('dissolveNaOH',()=>state.step=1);bind('coolSolution',()=>state.step=2);bind('neutralize',()=>state.step=3);bind('directReaction',()=>state.direct=true);
- bind('rinseProbe',()=>{state.clean=true;state.well=null;});
+ bind('rinseProbe',()=>{state.clean=true;state.well=null;rinses++;});
  bind('addAcid',()=>{state.acid++;delete state.measured.B;delete state.measured.E;state.well=null;});bind('addBase',()=>{state.base++;delete state.measured.C;delete state.measured.F;state.well=null;});
  bind('startBeans',()=>{state.started=true;run(5,500,100);});bind('stepBeans',()=>{stop();state.started=true;state.time=Math.min(500,state.time+100);});bind('resetExperiment',reset);
  document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();draw();}});window.addEventListener('pagehide',stop);

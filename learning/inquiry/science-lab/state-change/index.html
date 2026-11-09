@@ -8,10 +8,10 @@
     <meta name="description" content="온도에 따라 물이 고체·액체·기체로 바뀌는 모습을 관찰하는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
-    <link rel="stylesheet" href="state-visual.css?v=4c377a94a1d3">
+    <link rel="stylesheet" href="state-visual.css?v=4bd81bdf8584">
     <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
     <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
-    <link rel="stylesheet" href="../lab-ui.css?v=a56ae83b1a4d">
+    <link rel="stylesheet" href="../lab-ui.css?v=44fa7b6abd28">
 <link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
 </head>
 <body>
@@ -80,8 +80,8 @@
                                     <stop id="waterStopBottom" offset="100%" stop-color="#3c96c3" stop-opacity=".7"/>
                                 </linearGradient>
                                 <linearGradient id="iceGrad" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#f2fbff" stop-opacity=".92"/>
-                                    <stop offset="100%" stop-color="#bfe6f2" stop-opacity=".96"/>
+                                    <stop offset="0%" stop-color="#eef9fe" stop-opacity="1"/>
+                                    <stop offset="100%" stop-color="#b3dcef" stop-opacity="1"/>
                                 </linearGradient>
                                 <linearGradient id="glassShine" x1="0" y1="0" x2="1" y2="0">
                                     <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
@@ -89,6 +89,7 @@
                                     <stop offset="32%" stop-color="#fff" stop-opacity="0"/>
                                 </linearGradient>
                                 <clipPath id="iceClip"><rect id="iceClipRect" x="22" y="94" width="196" height="0"/></clipPath>
+                                <clipPath id="iceGrowClip"><rect id="iceGrowRect" x="22" y="300" width="196" height="0"/></clipPath>
                             </defs>
                             <g clip-path="url(#beakerClip)">
                                 <g id="liquidLayer">
@@ -96,12 +97,12 @@
                                     <ellipse id="waterSurface" class="water-surface" cx="120" cy="94" rx="98" ry="7"/>
                                     <g id="bubbleGroup"></g>
                                 </g>
-                                <g id="iceLayer" clip-path="url(#iceClip)">
+                                <g clip-path="url(#iceGrowClip)"><g id="iceLayer">
                                     <rect id="iceRect" x="22" y="94" width="196" height="206" fill="url(#iceGrad)"/>
-                                    <path class="ice-facet" d="M60,120 L96,220 M110,104 L140,260 M168,116 L150,240 M84,150 L180,180" fill="none"/>
-                                </g>
+                                    <path class="ice-facet" d="M52,128 l16,38 l-6,22 M164,118 l-12,46 M104,204 l20,30 l14,4 M58,256 l30,-12 M172,228 l14,30 M120,120 l8,16" fill="none"/>
+                                </g></g>
                             </g>
-                            <text id="phaseSampleLabel" x="120" y="52" text-anchor="middle" style="fill:#173449;font-size:14px">액체 (물)</text>
+                            <text id="phaseSampleLabel" x="168" y="56" text-anchor="middle" style="fill:#173449;font-size:14px;font-weight:800">액체 (물)</text>
                             <path class="beaker-glass" fill="none" d="M22,20 L22,268 Q22,300 54,300 L186,300 Q218,300 218,268 L218,20"/>
                             <ellipse class="beaker-rim" fill="none" cx="120" cy="20" rx="98" ry="9"/>
                             <rect class="beaker-shine" x="36" y="30" width="30" height="246" fill="url(#glassShine)"/>
@@ -123,6 +124,7 @@
                                     </linearGradient>
                                 </defs>
                                 <rect class="tube-outline" fill="none" x="20" y="12" width="10" height="192" rx="5"/>
+                                <rect class="therm-clip" x="13" y="30" width="24" height="12" rx="3"/>
                                 <g clip-path="url(#tubeClip)"><rect id="mercuryRect" x="20" width="10" fill="url(#mercuryGrad)"/></g>
                                 <circle class="bulb-outline" fill="none" cx="25" cy="198" r="13"/>
                                 <circle class="bulb-fill" cx="25" cy="198" r="9.5"/>
@@ -214,9 +216,9 @@
         </details>
     </main>
     <script src="../lab-scene.js?v=9c896dfc3668"></script><script src="phase-model.js?v=52ab3525ed4f"></script>
-<script src="app.js?v=9cc65dd7dd96"></script>
+<script src="app.js?v=b3bec39b2e5b"></script>
     <script src="../curriculum-map.js?v=27a8bf8f6a1d"></script>
     <script src="../exam-scope.js?v=048bbc840e6c"></script>
-    <script src="../lab-ui.js?v=3362d27162ac"></script>
+    <script src="../lab-ui.js?v=d569ddac8542"></script>
 </body>
 </html>

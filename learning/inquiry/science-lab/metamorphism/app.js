@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
     const ease = p => p < 0.5 ? 2 * p * p : 1 - (1 - p) * (1 - p) * 2;
     const fmtN = (n, d = 0) => (+n.toFixed(d)).toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace('-', '−');
-    const rnd = i => (((i * 7919 + 13) * 104729) % 100003) / 100003;
+    const rnd = i => { const v = Math.sin(i * 12.9898 + 78.233) * 43758.5453; return v - Math.floor(v); };
     const jong = s => { const c = s.charCodeAt(s.length - 1); return c >= 0xac00 && c <= 0xd7a3 ? (c - 0xac00) % 28 : 0; };
     const eun = s => jong(s) ? '은' : '는', iga = s => jong(s) ? '이' : '가';
 
@@ -177,9 +177,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const tColor = T => { const u = clamp(T / 1000, 0, 1); return `rgb(${Math.round(60 + 195 * u)},${Math.round(90 + 60 * Math.sin(u * Math.PI))},${Math.round(200 - 170 * u)})`; };
     // rock texture drawn inside a box: foliation grows with grade, bands appear for gneiss, grains coarsen for quartzite/marble
     function texture(x0, y0, w, h, parent, T, melt) {
-        let out = `<rect class="rock" x="${x0}" y="${y0}" width="${w}" height="${h}" rx="4"/>`;
+        // 암석 조각: 모서리가 깨진 덩어리 모양, 옆면은 조금 어둡게, 무늬는 조각 안에만
+        const CHIP = [[.04, .2], [.2, .03], [.6, 0], [.92, .07], [1, .44], [.95, .86], [.7, 1], [.26, .97], [.02, .78]];
+        const pts = (dx, dy) => CHIP.map(([u, v]) => `${(x0 + u * w + dx).toFixed(1)},${(y0 + v * h + dy).toFixed(1)}`).join(' ');
+        const cid = `chip${Math.round(x0)}_${Math.round(y0)}`;
+        const base = parent === 'shale' ? (T >= 600 ? '#b9b2a6' : T >= 450 ? '#a6a198' : T >= 300 ? '#93a19b' : T >= 150 ? '#5f6a72' : '#7d7a74') : parent === 'sandstone' ? (T >= 250 ? '#e6dccb' : '#d9c39a') : (T >= 250 ? '#eeeae2' : '#cfc8b8');
+        let out = `<defs><clipPath id="${cid}"><polygon points="${pts(0, 0)}"/></clipPath></defs>`;
+        out += `<polygon points="${pts(5, 6)}" fill="#4b4741" opacity=".55"/><polygon points="${pts(0, 0)}" fill="${base}" stroke="#4b5563" stroke-width="1.4" stroke-linejoin="round"/>`;
+        out += `<g clip-path="url(#${cid})">`;
         if (parent === 'shale') {
             const fol = clamp((T - 150) / 350, 0, 1), gneiss = clamp((T - 600) / 120, 0, 1), n = 46;
+            const bed = 1 - clamp((T - 120) / 200, 0, 1);
+            if (bed > 0) for (let b = 0; b < 9; b += 1) out += `<rect fill="${b % 2 ? '#6d6a64' : '#8a867e'}" opacity="${(bed * .8).toFixed(2)}" x="${x0}" y="${(y0 + b * h / 9).toFixed(1)}" width="${w}" height="${(h / 9 + .5).toFixed(1)}"/>`;
             if (gneiss > 0) for (let b = 0; b < 5; b += 1) out += `<rect class="${b % 2 ? 'band-dark' : 'band-light'}" opacity="${gneiss.toFixed(2)}" x="${x0 + 2}" y="${(y0 + 2 + b * (h - 4) / 5).toFixed(1)}" width="${w - 4}" height="${((h - 4) / 5).toFixed(1)}"/>`;
             for (let i = 0; i < n; i += 1) {
                 const cx = x0 + 6 + rnd(i) * (w - 12), cy = y0 + 6 + rnd(i + 100) * (h - 12), ang = (rnd(i + 200) - 0.5) * Math.PI * (1 - fol), len = 4 + 5 * clamp((T - 100) / 500, 0, 1);
@@ -195,23 +204,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         if (melt > 0) for (let i = 0; i < 6; i += 1) out += `<ellipse class="melt" opacity="${melt.toFixed(2)}" cx="${(x0 + 12 + rnd(i + 500) * (w - 24)).toFixed(1)}" cy="${(y0 + 8 + rnd(i + 600) * (h - 16)).toFixed(1)}" rx="${(6 + 8 * melt).toFixed(1)}" ry="${(3 + 3 * melt).toFixed(1)}"/>`;
+        out += `<polygon points="${CHIP.slice(0, 4).map(([u, v]) => `${(x0 + u * w).toFixed(1)},${(y0 + v * h).toFixed(1)}`).join(' ')}" fill="none" stroke="#ffffff" stroke-opacity=".45" stroke-width="1.5"/></g>`;
         return out;
     }
 
     function renderFacies(a) {
         const p = state.progress, zNow = a.z * ease(p), Tnow = 20 + a.g * zNow, Pnow = P_PER_KM * zNow, fNow = faciesOf(Tnow, Pnow);
-        const CX0 = 40, CW = 90, Y0 = 36, Y1 = 186, ZM = 35, yOf = z => Y0 + z / ZM * (Y1 - Y0);
+        const CX0 = 66, CW = 78, Y0 = 44, Y1 = 186, ZM = 35, yOf = z => Y0 + z / ZM * (Y1 - Y0);
         let out = '';
         for (let y = Y0; y < Y1; y += 3) out += `<rect fill="${tColor(20 + a.g * (y - Y0) / (Y1 - Y0) * ZM)}" opacity=".55" x="${CX0}" y="${y}" width="${CW}" height="3.5"/>`;
         out += `<rect class="crust-frame" x="${CX0}" y="${Y0}" width="${CW}" height="${Y1 - Y0}"/>`;
         [0, 10, 20, 30].forEach(z => { out += `<text class="axis-text" x="${CX0 - 4}" y="${(yOf(z) + 3.5).toFixed(1)}" text-anchor="end">${z} km</text>`; });
         [200, 400, 600, 800].forEach(T => { const z = (T - 20) / a.g; if (z < ZM) out += `<line class="isotherm" x1="${CX0}" y1="${yOf(z).toFixed(1)}" x2="${CX0 + CW}" y2="${yOf(z).toFixed(1)}"/><text class="small-label" style="fill:#dc2626" x="${CX0 + CW + 4}" y="${(yOf(z) + 3.5).toFixed(1)}">${T} ℃</text>`; });
         out += `<circle class="sample" cx="${CX0 + CW / 2}" cy="${yOf(zNow).toFixed(1)}" r="6"/>`;
-        out += `<text class="small-label" x="${CX0 + CW / 2}" y="${Y0 - 8}" text-anchor="middle">지각 · ${GRADS[state.grad].hint}</text>`;
+        out += `<text class="small-label" x="${CX0 + CW / 2}" y="${Y0 - 12}" text-anchor="middle">지각</text>`;
         // rock panel on the right
-        const RX = 214, RW = 110, RY = 44, RH = 70;
+        const RX = 222, RW = 104, RY = 40, RH = 72;
         out += texture(RX, RY, RW, RH, 'shale', Tnow, fNow.key === 'melt' ? 1 : Tnow > 700 ? clamp((Tnow - 700) / 200, 0, 0.6) : 0);
-        out += `<text class="small-label" x="${RX + RW / 2}" y="${RY - 8}" text-anchor="middle">지금의 시료 (셰일이 변한 것)</text>`;
+        out += `<text class="small-label" x="${RX + RW / 2}" y="${RY - 10}" text-anchor="middle">지금의 시료</text>`;
         const TX = 336;
         out += `<text class="trait-text" x="${TX}" y="56">깊이 ${fmtN(zNow, 1)} km</text><text class="trait-text" x="${TX}" y="74">온도 ${fmtN(Tnow)} ℃</text><text class="trait-text" x="${TX}" y="92">압력 ${fmtN(Pnow, 2)} GPa</text>`;
         out += `<text class="gen-text" style="fill:#d97706" x="${RX}" y="136">${fNow.name}</text><text class="trait-text" x="${RX}" y="154">→ ${fNow.rock}</text>`;
@@ -224,8 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function graphFacies(a) {
-        const X0 = 60, X1 = 420, Y0 = 150, Y1 = 36, TM = 1000, PM = 1.4, xOf = T => X0 + T / TM * (X1 - X0), yOf = P => Y0 - P / PM * (Y0 - Y1);
-        let out = `<text class="axis-title" x="20" y="18">온도–압력 그림과 변성상 — 점선 셋이 지온 기울기, 노란 점이 지금의 시료</text>`;
+        const X0 = 64, X1 = 392, Y0 = 150, Y1 = 36, TM = 1000, PM = 1.4, xOf = T => X0 + T / TM * (X1 - X0), yOf = P => Y0 - P / PM * (Y0 - Y1);
+        let out = `<text class="axis-title" x="20" y="18">온도–압력 그림과 변성상</text>`;
         const fields = [
             ['zeolite', '제올라이트', [[120, 0], [300, 0], [300, 0.45], [120, 0.45]], 'rgba(148, 163, 184, 0.28)'],
             ['greenschist', '녹색편암', [[300, 0.2], [450, 0.2], [450, 0.45], [300, 0.45]], 'rgba(84,230,193,.22)'],
@@ -238,8 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         fields.forEach(([key, name, poly, col]) => {
             out += `<polygon class="facies-field" fill="${col}" points="${poly.map(([T, P]) => `${xOf(T).toFixed(1)},${yOf(P).toFixed(1)}`).join(' ')}"/>`;
-            const cx = poly.reduce((s, q) => s + q[0], 0) / poly.length, cy = poly.reduce((s, q) => s + q[1], 0) / poly.length;
-            out += `<text class="facies-text" style="${state.progress >= 1 && a.f.key === key ? 'fill:#d97706' : ''}" x="${xOf(cx).toFixed(1)}" y="${(yOf(cy) + 3).toFixed(1)}" text-anchor="middle">${name}</text>`;
+        });
+        // 이름표는 지온 기울기 선이 지나지 않는 자리에 두고, 흰 테두리로 선과 떼어 놓는다
+        const LABEL_AT = { zeolite: [205, 0.36], greenschist: [338, 0.28], hornfels: [575, 0.09], amphibolite: [590, 0.98], blueschist: [250, 1.12], eclogite: [690, 1.3], granulite: [800, 0.24], melt: [950, 1.27] };
+        const SHORT = { melt: '용융' };
+        fields.forEach(([key, name]) => {
+            const [T, P] = LABEL_AT[key];
+            out += `<text class="facies-text" paint-order="stroke" stroke="#ffffff" stroke-width="3.5" stroke-linejoin="round" style="${state.progress >= 1 && a.f.key === key ? 'fill:#b45309' : ''}" x="${xOf(T).toFixed(1)}" y="${(yOf(P) + 4).toFixed(1)}" text-anchor="middle">${SHORT[key] || name}</text>`;
         });
         [0, 200, 400, 600, 800, 1000].forEach(T => { out += `<text class="axis-text" x="${xOf(T).toFixed(1)}" y="${Y0 + 14}" text-anchor="${T === 0 ? 'start' : 'middle'}">${T} ℃</text>`; });
         [0, 0.5, 1].forEach(P => { out += `<text class="axis-text" x="${X0 - 5}" y="${(yOf(P) + 3.5).toFixed(1)}" text-anchor="end">${P} GPa</text>`; });
@@ -248,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.entries(GRADS).forEach(([k, gr]) => { const zEnd = Math.min(50, (TM - 20) / gr.g), Pend = Math.min(PM, P_PER_KM * zEnd), zP = Pend / P_PER_KM; out += `<line class="geotherm${k === state.grad ? ' on' : ''}" style="stroke:${gr.col}" x1="${xOf(20).toFixed(1)}" y1="${yOf(0).toFixed(1)}" x2="${xOf(20 + gr.g * zP).toFixed(1)}" y2="${yOf(Pend).toFixed(1)}"/>`; });
         const zNow = a.z * ease(state.progress), Tn = 20 + a.g * zNow, Pn = P_PER_KM * zNow;
         out += `<circle fill="#d97706" stroke="#fff" cx="${xOf(Math.min(Tn, TM - 8)).toFixed(1)}" cy="${yOf(Pn).toFixed(1)}" r="4.5"/>`;
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">온도 — 오른쪽 눈금은 깊이. 섭입대(파랑)는 압력만, 열곡(주황)은 온도가 먼저 오릅니다</text>`;
+        out += `<text class="axis-text" x="${X1 + 4}" y="${Y1 - 8}">깊이</text>`;
         return out;
     }
 
@@ -272,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function graphGrade(a) {
         const X0 = 66, X1 = 420, TM = 900, xOf = T => X0 + T / TM * (X1 - X0);
-        let out = `<text class="axis-title" x="20" y="18">온도(℃)에 따른 암석 이름과 지시 광물 (${PARENTS[a.parent].label}) — 노란 선이 지금 온도</text>`;
+        let out = `<text class="axis-title" x="20" y="18">온도(℃)에 따른 암석 이름과 지시 광물 (${PARENTS[a.parent].label}) — 주황 선이 지금 온도</text>`;
         const zones = ROCKS[a.parent], ZY = 40;
         zones.forEach((row, i) => { const t0 = row[0], t1 = i + 1 < zones.length ? zones[i + 1][0] : TM, x = xOf(t0), w = xOf(t1) - x; out += `<rect class="zone-bar" fill="${['rgba(148, 163, 184, 0.30)', 'rgba(84,230,193,.25)', 'rgba(217, 119, 6, .25)', 'rgba(255,159,138,.28)', 'rgba(255,122,89,.32)'][i]}" x="${x.toFixed(1)}" y="${ZY}" width="${w.toFixed(1)}" height="22"/>`; if (w > 24) out += `<text class="small-label" style="fill:#08131a" x="${(x + w / 2).toFixed(1)}" y="${ZY + 15}" text-anchor="middle">${row[1]}</text>`; });
         out += `<text class="axis-text" x="${X0 - 5}" y="${ZY + 15}" text-anchor="end">암석</text>`;
@@ -352,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = a.kind === 'facies' ? '깊이가 압력을, 지온 기울기가 온도를 정합니다'
             : a.kind === 'grade' ? '온도가 오를수록 결정이 굵어지고 새 광물이 나타납니다'
                 : '마그마 곁은 압력 없이 열만 받아 엽리 없는 혼펠스가 됩니다';
-        window.scienceScene.render(dataNote,noteFor(a));
+        window.scienceScene.render(dataNote, state.progress >= 1 ? noteFor(a) : '');
         return a;
     }
 
@@ -430,8 +445,8 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'facies' ? '묻어 내리기' : state.mode === 'grade' ? '데우기' : '마그마 관입시키기';
-        stageCaption.textContent = state.mode === 'facies' ? '왼쪽 지각 기둥에서 셰일 시료가 고른 깊이까지 묻혀 내려갑니다. 점선은 등온선이고, 오른쪽은 그 깊이에서 시료가 되는 암석입니다.'
-            : state.mode === 'grade' ? '왼쪽 암석 조각을 데우며 광물과 조직이 바뀌는 모습입니다. 짧은 선은 판 모양 광물, 노란 선은 운모, 붉은 점은 석류석입니다.'
+        stageCaption.textContent = state.mode === 'facies' ? '왼쪽 지각 기둥에서 셰일 시료가 고른 깊이까지 묻혀 내려가고, 오른쪽 조각은 그 깊이에서 시료가 되는 암석입니다. 아래 그래프의 세 선은 지온 기울기(파랑 섭입대, 주황 안정한 대륙, 분홍 화산호·열곡)이고, 오른쪽 눈금은 깊이입니다.'
+            : state.mode === 'grade' ? '왼쪽 암석 조각을 데우며 광물과 조직이 바뀌는 모습입니다. 짧은 선은 판 모양 광물, 주황 선은 운모, 붉은 점은 석류석입니다.'
                 : '왼쪽 붉은 덩이가 마그마 관입체, 띠는 열이 미치는 범위입니다. 거리 눈금은 로그라 1 m와 5 km가 한 그림에 들어 있습니다.';
         settingsChanged();
     }));

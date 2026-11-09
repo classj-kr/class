@@ -91,3 +91,34 @@ body .control-panel .pick-buttons.cols4,
 body .control-panel .prediction-buttons.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 body .control-panel .pick-buttons button,
 body .control-panel .prediction-buttons button { padding: 9px 8px; word-break: keep-all; overflow-wrap: normal; line-height: 1.55; }
+
+/* Front-view body (2026-11 redraw): skin silhouette, organs drawn in place. */
+.organ-stage .body-outline { fill: #f6e3d3; stroke: #c9a68b; stroke-width: 1.4; }
+.organ-stage .body-detail { fill: none; stroke: #b48b6d; stroke-width: 1.3; stroke-linecap: round; }
+.organ-stage .organ-art { transition: opacity .25s; }
+.organ-stage .organ-art.dim { opacity: .42; }
+.organ-stage .leader { fill: none; stroke: #94a3b8; stroke-width: 1; }
+.organ-stage .leader.here { stroke: #c2410c; stroke-width: 1.6; }
+.organ-stage .leader-dot { fill: #475569; }
+.organ-stage .step-dot { fill: #fff; stroke: #94a3b8; stroke-width: 1.4; }
+.organ-stage .step-dot.here { stroke: none; }
+.organ-stage .step-num { fill: #334155; font-size: 13.5px; font-weight: 900; }
+.organ-stage .step-num.here { fill: #fff; }
+.organ-stage .step-text { font-size: 16px; }
+.organ-stage .traveller { stroke: #fff; stroke-width: 1.8; }
+.organ-stage .main-svg { max-width: 680px; }
+
+/* Arm model: drawing and explanation side by side. */
+.muscle-model .arm-buttons { display: flex; gap: 8px; margin: 12px 0 4px; }
+.muscle-model .arm-buttons button { min-width: 120px; padding: 10px 16px; border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; color: #334155; font: inherit; font-weight: 800; cursor: pointer; }
+.muscle-model .arm-buttons button[aria-pressed="true"] { border-color: #1f6b6f; background: #e6f2f1; color: #134e52; }
+.muscle-model .arm-layout { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); gap: 24px; align-items: center; }
+.muscle-model .arm-layout svg { width: 100%; height: auto; display: block; }
+.muscle-model .arm-facts { display: grid; gap: 10px; margin: 0; }
+.muscle-model .arm-facts div { padding: 10px 14px; border-radius: 8px; background: #f5f8f9; border-left: 3px solid #94a3b8; }
+.muscle-model .arm-facts dt { font-size: 13.5px; color: #526873; font-weight: 700; }
+.muscle-model .arm-facts dd { margin: 2px 0 0; font-size: 16px; font-weight: 800; color: #1e3a46; }
+.muscle-model .arm-facts .flexor { border-left-color: #c2453a; }
+.muscle-model .arm-facts .extensor { border-left-color: #2f6f9f; }
+.muscle-model .arm-label { font-size: 14px; font-weight: 800; fill: #334155; }
+@media (max-width: 760px) { .muscle-model .arm-layout { grid-template-columns: 1fr; } }

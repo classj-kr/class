@@ -103,3 +103,5 @@
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
 
 .ruler { stroke: #64748b; stroke-width: 1.5; }
+.streak { stroke: #94a3b8; stroke-width: 2; stroke-linecap: round; }
+.table { fill: #e9dcc6; stroke: #b9a27e; }

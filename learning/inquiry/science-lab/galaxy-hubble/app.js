@@ -182,13 +182,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function renderClassify(a) {
-        const p = state.progress, CX = 126, CY = 112, R = 82, rot = -p * 70 * Math.PI / 180, fade = clamp(0.25 + p, 0, 1);
-        let out = `<rect class="sky" x="18" y="24" width="216" height="176" rx="10" fill="#040814" stroke="rgba(148, 163, 184, 0.35)"/>`;
-        const dot = (x, y, r, cls, op) => `<circle class="${cls}" opacity="${op.toFixed(2)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}"/>`;
+        // Before building: a faint sketch. While building: stars appear from the
+        // centre outward as the disc turns; the result settles fully lit.
+        const p = state.progress, built = running || p > 0, CX = 126, CY = 112, R = 84;
+        const reveal = built ? clamp(p / 0.7, 0, 1) : 1, rot = -(built ? ease(p) : 0) * 110 * Math.PI / 180, fade = built ? clamp(0.45 + p * 0.8, 0, 1) : 0.35;
+        let out = `<rect class="sky" x="20" y="22" width="212" height="180" rx="18"/>`;
+        const dot = (x, y, r, cls, op) => { const d = Math.hypot(x - CX, y - CY) / R; return d > reveal + 0.02 ? '' : `<circle class="${cls}" opacity="${(op * clamp((reveal + 0.02 - d) / 0.12, 0, 1)).toFixed(2)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}"/>`; };
         const turn = (x, y) => [CX + x * Math.cos(rot) - y * Math.sin(rot), CY + x * Math.sin(rot) + y * Math.cos(rot)];
         if (a.cls === 'e') {
             const q = a.bulge === 'big' ? 0.7 : 0.3;
-            for (let i = 6; i >= 0; i -= 1) { const rx = R * (1 - i / 8); out += `<ellipse fill="#f3c98b" opacity="${(0.14 * fade).toFixed(2)}" cx="${CX}" cy="${CY}" rx="${rx.toFixed(1)}" ry="${(rx * q).toFixed(1)}"/>`; }
+            for (let i = 6; i >= 0; i -= 1) { const rx = R * (1 - i / 8) * reveal; out += `<ellipse fill="#f3c98b" opacity="${(0.14 * fade).toFixed(2)}" cx="${CX}" cy="${CY}" rx="${rx.toFixed(1)}" ry="${(rx * q).toFixed(1)}"/>`; }
             for (let i = 0; i < 90; i += 1) { const u = rnd(i) ** 1.6, ang = rnd(i + 200) * 2 * Math.PI; out += dot(CX + R * u * Math.cos(ang), CY + R * q * u * Math.sin(ang), 1.1, 'old-star', fade * 0.9); }
         } else if (a.cls === 'irr') {
             for (let i = 0; i < 110; i += 1) {
@@ -200,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += dot(px, py, i % 5 === 0 ? 2.2 : 1.3, i % 5 === 0 ? 'hii' : i % 3 === 1 ? 'old-star' : 'young-star', fade);
             }
         } else {
-            out += `<circle class="disk" cx="${CX}" cy="${CY}" r="${R}"/>`;
+            out += `<circle class="disk" cx="${CX}" cy="${CY}" r="${(R * Math.max(0.15, reveal)).toFixed(1)}"/>`;
             const rb = a.bulge === 'big' ? 22 : 9, pitch = (a.arms === 'tight' ? 12 : 28) * Math.PI / 180, k = Math.tan(pitch), r0 = a.bar === 'yes' ? 38 : rb;
             if (a.bar === 'yes') { const [bx, by] = turn(0, 0); out += `<ellipse class="bar" transform="rotate(${(rot * 180 / Math.PI).toFixed(1)} ${bx.toFixed(1)} ${by.toFixed(1)})" cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" rx="40" ry="8"/>`; }
             [0, Math.PI].forEach((phi, armIdx) => {
@@ -218,37 +221,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             for (let i = 0; i < 40; i += 1) { const u = rnd(i + 1000), ang = rnd(i + 1200) * 2 * Math.PI, [px, py] = turn(R * u * Math.cos(ang), R * u * Math.sin(ang)); out += dot(px, py, 0.9, 'old-star', fade * 0.5); }
-            for (let i = 5; i >= 0; i -= 1) out += `<circle class="bulge" opacity="${(0.18 * fade).toFixed(2)}" cx="${CX}" cy="${CY}" r="${(rb * (1 - i / 7)).toFixed(1)}"/>`;
+            for (let i = 5; i >= 0; i -= 1) out += `<circle class="bulge" opacity="${(0.18 * fade).toFixed(2)}" cx="${CX}" cy="${CY}" r="${(rb * (1 - i / 7) * Math.min(1, reveal * 3)).toFixed(1)}"/>`;
         }
         const RX = 244;
-        out += `<text class="small-label" x="${RX}" y="190">노랑 늙은 별 · 파랑 젊은 별 · 분홍 별 탄생 구름</text>`;
-        out += `<text class="trait-text" x="${RX}" y="52">나선팔: ${ARMS[a.arms].label}</text><text class="trait-text" x="${RX}" y="70">팽대부: ${BULGES[a.bulge].label}</text><text class="trait-text" x="${RX}" y="88">막대: ${a.arms === 'none' ? '(팔이 없으면 따지지 않음)' : BARS[a.bar].label}</text>`;
+        out += `<text class="trait-text" x="${RX}" y="44">나선팔: ${ARMS[a.arms].label}</text><text class="trait-text" x="${RX}" y="64">팽대부: ${BULGES[a.bulge].label}</text><text class="trait-text" x="${RX}" y="84">막대: ${a.arms === 'none' ? '따지지 않음' : BARS[a.bar].label}</text>`;
         const NAMES = { e: '타원 은하', s: '정상 나선 은하', sb: '막대 나선 은하', irr: '불규칙 은하' };
         out += `<text class="gen-text" style="fill:#0f172a" x="${RX}" y="114">${p >= 1 ? `${a.code} — ${NAMES[a.cls]}` : '분류 기호: ?'}</text>`;
-        out += `<text class="small-label" x="${RX}" y="132">${p >= 1 ? a.sub : '만들어 보면 소리굽쇠의 자리가 나옵니다'}</text>`;
-        out += `<text class="small-label" x="${RX}" y="156">${a.cls === 'e' ? '붉고 늙은 별 위주 · 가스 거의 없음' : a.cls === 'irr' ? '가스 많음 · 젊은 별이 여기저기 태어남' : '팽대부는 늙은 별 · 팔에서 젊은 별 탄생'}</text>`;
-        out += `<text class="small-label" x="${RX}" y="172">${a.cls === 'e' ? '새 별이 거의 안 태어남' : a.cls === 'irr' ? '작은 은하가 많고 모양이 흐트러짐' : '원반이 돌며 팔이 감김'}</text>`;
+        if (p >= 1) out += `<text class="small-label" x="${RX}" y="134">${a.sub}</text>`;
+        out += `<circle class="old-star" cx="${RX + 6}" cy="166" r="4.5" stroke="#64748b" stroke-width=".9"/><text class="small-label" x="${RX + 16}" y="171">늙은 별</text><circle class="young-star" cx="${RX + 86}" cy="166" r="4.5" stroke="#64748b" stroke-width=".9"/><text class="small-label" x="${RX + 96}" y="171">젊은 별</text>`;
+        out += `<circle class="hii" cx="${RX + 6}" cy="190" r="4.5" stroke="#64748b" stroke-width=".9"/><text class="small-label" x="${RX + 16}" y="195">별이 태어나는 가스 구름</text>`;
         out += `<text class="verdict-text" fill="#0f172a" x="20" y="16">${p >= 1 ? `${NAMES[a.cls]} (${a.code})` : '고른 특징으로 은하를 그리는 중'}</text>`;
         out += `<text class="note-text" x="20" y="208">소리굽쇠 표는 생김새의 정리이지 진화 순서가 아닙니다. 팔 사이 각(피치각)은 실제 은하의 값 범위</text>`;
         return out;
     }
 
     function graphClassify(a) {
-        const cells = [['E0', 52, 98], ['E3', 104, 98], ['E7', 156, 98], ['S0', 214, 98], ['Sa', 282, 58], ['Sb', 340, 58], ['Sc', 398, 58], ['SBa', 282, 138], ['SBb', 340, 138], ['SBc', 398, 138], ['Irr', 428, 98]];
-        let out = `<text class="axis-title" x="20" y="18">허블의 소리굽쇠 분류표 — 노란 테가 이 은하의 자리</text>`;
-        out += `<path class="fork-line" d="M52,98 L214,98 M214,98 L282,58 L398,58 M214,98 L282,138 L398,138"/>`;
+        const cells = [['E0', 34, 100], ['E3', 82, 100], ['E7', 130, 100], ['S0', 186, 100], ['Sa', 250, 52], ['Sb', 314, 52], ['Sc', 378, 52], ['SBa', 250, 148], ['SBb', 314, 148], ['SBc', 378, 148], ['Irr', 436, 100]];
+        let out = `<text class="axis-title" x="20" y="16">허블의 소리굽쇠 분류표 — 노란 테가 이 은하의 자리</text>`;
+        out += `<path class="fork-line" d="M34,100 L186,100 M186,100 L250,52 L378,52 M186,100 L250,148 L378,148"/>`;
         const on = state.progress >= 1 ? (a.cls === 'irr' ? 'Irr' : a.code) : null;
+        const S = 1.55;
         cells.forEach(([code, x, y]) => {
             const isOn = code === on, sb = code.startsWith('SB'), sp = /^S[abc]/.test(code), e = code.startsWith('E');
-            out += `<circle class="fork-cell${isOn ? ' on' : ''}" cx="${x}" cy="${y}" r="14"/>`;
-            if (e) { const q = 1 - Number(code[1]) / 10; out += `<ellipse fill="#f3c98b" opacity=".8" cx="${x}" cy="${y}" rx="8" ry="${(8 * q).toFixed(1)}"/>`; }
-            else if (code === 'S0') out += `<ellipse fill="#f3c98b" opacity=".8" cx="${x}" cy="${y}" rx="9" ry="3.5"/><circle fill="#f5d58a" cx="${x}" cy="${y}" r="3.5"/>`;
-            else if (sp || sb) { const rb = { a: 4.5, b: 3, c: 1.8 }[code.slice(-1)], k = Math.tan(({ a: 12, b: 20, c: 28 }[code.slice(-1)]) * Math.PI / 180); if (sb) out += `<rect class="bar" x="${x - 6}" y="${y - 1.2}" width="12" height="2.4"/>`; [0, Math.PI].forEach(phi => { let d = ''; for (let th = 0; ; th += 0.15) { const r = (sb ? 6 : rb) * Math.exp(k * th); if (r > 10) break; d += `${d ? 'L' : 'M'}${(x + r * Math.cos(th + phi)).toFixed(1)},${(y + r * Math.sin(th + phi)).toFixed(1)} `; } out += `<path fill="none" stroke="#8ec5ff" stroke-width="1.4" d="${d}"/>`; }); out += `<circle fill="#f5d58a" cx="${x}" cy="${y}" r="${rb}"/>`; }
-            else { for (let i = 0; i < 12; i += 1) out += `<circle fill="${i % 3 ? '#8ec5ff' : '#ff9fd0'}" cx="${(x + (rnd(i + 20) - 0.5) * 16).toFixed(1)}" cy="${(y + (rnd(i + 40) - 0.5) * 14).toFixed(1)}" r="1.4"/>`; }
-            out += `<text class="fork-text" x="${x}" y="${y + 26}" text-anchor="middle">${code}</text>`;
+            out += `<circle class="fork-cell${isOn ? ' on' : ''}" cx="${x}" cy="${y}" r="21"/>`;
+            if (e) { const q = 1 - Number(code[1]) / 10; out += `<ellipse fill="#e7b46a" cx="${x}" cy="${y}" rx="13" ry="${(13 * q).toFixed(1)}"/><ellipse fill="#f8dca6" cx="${x}" cy="${y}" rx="6" ry="${(6 * q).toFixed(1)}"/>`; }
+            else if (code === 'S0') out += `<ellipse fill="#e7b46a" cx="${x}" cy="${y}" rx="15" ry="5.5"/><circle fill="#f8dca6" cx="${x}" cy="${y}" r="5"/>`;
+            else if (sp || sb) {
+                const L = code.slice(-1), rb = { a: 4.5, b: 3, c: 1.8 }[L] * S, k = Math.tan(({ a: 12, b: 20, c: 28 }[L]) * Math.PI / 180);
+                if (sb) out += `<rect class="bar" x="${x - 9}" y="${y - 2}" width="18" height="4" rx="2"/>`;
+                [0, Math.PI].forEach(phi => { let d = ''; for (let th = 0; ; th += 0.12) { const r = (sb ? 9 : rb) * Math.exp(k * th); if (r > 16) break; d += `${d ? 'L' : 'M'}${(x + r * Math.cos(th + phi)).toFixed(1)},${(y + r * Math.sin(th + phi)).toFixed(1)} `; } out += `<path fill="none" stroke="#3b82c4" stroke-width="2.2" stroke-linecap="round" d="${d}"/>`; });
+                out += `<circle fill="#e7b46a" cx="${x}" cy="${y}" r="${rb.toFixed(1)}"/>`;
+            }
+            else { for (let i = 0; i < 16; i += 1) out += `<circle fill="${i % 3 ? '#3b82c4' : '#d9468f'}" cx="${(x + (rnd(i + 20) - 0.5) * 26).toFixed(1)}" cy="${(y + (rnd(i + 40) - 0.5) * 22).toFixed(1)}" r="1.9"/>`; }
+            out += `<text class="fork-text" x="${x}" y="${y + 36}" text-anchor="middle">${code}</text>`;
         });
-        out += `<text class="small-label" x="20" y="176">E 타원 · S0 렌즈형(원반은 있고 팔은 없음) · S 정상 나선 · SB 막대 나선 · Irr 불규칙</text>`;
-        out += `<text class="small-label" x="20" y="190">왼쪽일수록 붉고 늙은 별에 가스 적음, 오른쪽일수록 푸른 젊은 별에 가스 많음</text>`;
         return out;
     }
 
@@ -343,18 +349,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'classify') {
             const NAMES = { e: '타원 은하', s: '정상 나선 은하', sb: '막대 나선 은하', irr: '불규칙 은하' };
             return `<div class="data-row"><span class="data-name">특징</span><span class="data-val">나선팔 ${ARMS[a.arms].label} · 팽대부 ${BULGES[a.bulge].label}${a.arms === 'none' ? '' : ` · 막대 ${BARS[a.bar].label}`}</span></div>` +
-                `<div class="data-row"><span class="data-name">분류 기호</span><span class="data-val">${a.code} — ${a.sub}</span></div>` +
+                (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">분류 기호</span><span class="data-val">${a.code} — ${a.sub}</span></div>` +
                 `<div class="data-row"><span class="data-name">별과 가스</span><span class="data-val">${a.cls === 'e' ? '붉고 늙은 별, 가스·먼지 거의 없음, 새 별 거의 안 태어남' : a.cls === 'irr' ? '가스 많고 젊은 별이 여기저기서 태어남, 뚜렷한 대칭 없음' : '팽대부는 붉고 늙은 별, 나선팔은 가스와 푸른 젊은 별'}</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${NAMES[a.cls]}</span></div>`;
+                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${NAMES[a.cls]}</span></div>`);
         }
         if (a.kind === 'redshift') {
             const [tn,tl]=a.track;
-            return '<p>'+a.o.name+': '+tn+' '+tl+' nm → '+fmtN(tl*(1+a.z),1)+' nm, z = '+a.z+'</p><p>스펙트럼 이동을 비교합니다. 우주론적 적색편이를 특수상대론 도플러 속도로 단순 변환하지 않습니다.</p>';
+            return (state.progress < 1 ? '<p>'+a.o.name+': '+tn+' 실험실 파장 '+tl+' nm</p>' : '<p>'+a.o.name+': '+tn+' '+tl+' nm → '+fmtN(tl*(1+a.z),1)+' nm, z = '+a.z+'</p>')+'<p>스펙트럼 이동을 비교합니다. 우주론적 적색편이를 특수상대론 도플러 속도로 단순 변환하지 않습니다.</p>';
         }
         return `<div class="data-row"><span class="data-name">표본</span><span class="data-val">${a.pts.map(q => `${(q.name.match(/M\d+/) || [q.name.split(' ')[0]])[0]} ${fmtN(q.d, q.d < 10 ? 2 : q.d < 20 ? 1 : 0)} Mpc·${q.v >= 0 ? '+' : '−'}${fmtN(Math.abs(q.v))}`).join(' / ')}</span></div>` +
-            `<div class="data-row"><span class="data-name">맞춘 기울기</span><span class="data-val">Σ(거리 × 속도) ÷ Σ(거리²) = ${fmtN(a.H, 1)} km/s/Mpc ${a.f < 1 ? '(거리를 7분의 1로 잰 눈금)' : ''}</span></div>` +
+            (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">맞춘 기울기</span><span class="data-val">Σ(거리 × 속도) ÷ Σ(거리²) = ${fmtN(a.H, 1)} km/s/Mpc ${a.f < 1 ? '(거리를 7분의 1로 잰 눈금)' : ''}</span></div>` +
             `<div class="data-row"><span class="data-name">우주 나이</span><span class="data-val">1/H₀ = 9,778억 년 ÷ ${fmtN(a.H, 1)} = ${fmtN(a.age * 10, 0)}억 년 ${a.age < 4.6 ? '— 지구(46억 년)보다 젊음, 모순' : ''}</span></div>` +
-            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ ok: '60~80, 모형 비교값 근처', low: '60보다 작음', high: '80보다 큼' }[a.verdict]}</span></div>`;
+            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ ok: '60~80, 모형 비교값 근처', low: '60보다 작음', high: '80보다 큼' }[a.verdict]}</span></div>`);
     }
 
     function render() {
@@ -436,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'classify' ? '은하 만들기' : state.mode === 'redshift' ? '스펙트럼 찍기' : '은하 재기';
-        stageCaption.textContent = state.mode === 'classify' ? '왼쪽은 고른 특징으로 그린 은하이고, 아래는 허블의 소리굽쇠 분류표입니다. 노란 별은 늙은 별, 파란 별은 젊은 별, 분홍은 별이 태어나는 가스 구름입니다.'
+        stageCaption.textContent = state.mode === 'classify' ? '왼쪽은 고른 특징으로 그린 은하이고, 아래는 허블의 소리굽쇠 분류표입니다. E 타원 · S0 렌즈형(원반은 있고 팔은 없음) · S 정상 나선 · SB 막대 나선 · Irr 불규칙. 표의 왼쪽일수록 늙은 별이 많고 가스가 적습니다.'
             : state.mode === 'redshift' ? '위 띠는 실험실에서 잰 선의 자리, 아래 띠는 천체에서 온 빛의 선입니다. 노란 선이 밀린 만큼이 적색 이동입니다.'
                 : '위는 우리 은하에서 본 은하들의 거리와 속도 화살, 아래는 거리–속도 그림입니다. 원점을 지나는 직선의 기울기가 허블 상수입니다.';
         settingsChanged();

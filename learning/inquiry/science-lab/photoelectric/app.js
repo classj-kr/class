@@ -191,36 +191,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderPhoto(a) {
-        const p = state.progress, { metal, light, br } = a;
-        const TX = 90, TY = 50, TW = 310, TH = 120, MX = 104, CX = 384;
-        let out = `<rect class="tube" x="${TX}" y="${TY}" width="${TW}" height="${TH}" rx="14"/>`;
-        out += `<rect class="metal" x="${MX - 6}" y="${TY + 12}" width="7" height="${TH - 24}" rx="2"/><rect class="collector" x="${CX}" y="${TY + 12}" width="5" height="${TH - 24}" rx="2"/>`;
-        out += `<text class="small-label" x="${MX - 2}" y="${TY + TH + 12}" text-anchor="middle">${metal.label} 판</text><text class="small-label" x="${CX + 2}" y="${TY + TH + 12}" text-anchor="middle">받는 판</text>`;
-        // lamp and photons
-        out += `<rect class="lamp" x="22" y="24" width="44" height="26" rx="6"/><text class="small-label" x="44" y="40" text-anchor="middle">${light.label}</text>`;
-        const nPh = br.rate * 2, sx = 66, sy = 40, ex = MX - 8, ey = TY + TH / 2;
-        for (let k = 0; k < nPh; k += 1) {
-            const t = (p * 1.6 + k / nPh) % 1, jitter = ((k * 37) % 40) - 20;
-            const x = sx + (ex - sx) * t, y = sy + (ey + jitter - sy) * t;
-            out += squiggle(x, y, x + (ex - sx) * 0.08, y + (ey + jitter - sy) * 0.08, 6, 2.5, 'photon', `stroke:${light.color}${light.dashed ? ';stroke-dasharray:2 1.5' : ''}`);
+        const p = state.progress, { metal, light, br } = a, on = p > 0;
+        // 진공관: 아래쪽에 금속판(빛을 받는 면이 위), 위쪽에 받는 판. 램프는 왼쪽 위에서 비스듬히 비춘다.
+        const TX = 112, TY = 48, TW = 252, TH = 134, PX1 = 206, PX2 = 300, PY = 158, CY = 70;
+        let out = '';
+        // 램프 받침대
+        out += `<rect class="stand-base" x="22" y="198" width="64" height="8" rx="3"/><rect class="stand-post" x="51" y="78" width="6" height="122" rx="2"/>`;
+        // 진공관 유리
+        out += `<rect class="tube" x="${TX}" y="${TY}" width="${TW}" height="${TH}" rx="34"/>`;
+        out += `<path class="tube-shine" d="M${TX + 22},${TY + 14} Q${TX + 120},${TY + 4} ${TX + 220},${TY + 14}"/>`;
+        // 빛줄기 (램프가 켜진 뒤에만)
+        const LX = 96, LY = 74;   // 램프 렌즈 가운데
+        if (on) {
+            const fade = clamp(p / 0.08, 0, 1), alpha = (light.dashed ? 0.16 : 0.22) * (br.rate > 1 ? 1.45 : 1) * fade;
+            out += `<polygon class="beam" style="fill:${light.color};opacity:${alpha.toFixed(2)}" points="${LX},${LY - 9} ${LX + 4},${LY + 9} ${PX2 - 6},${PY - 2} ${PX1 + 4},${PY - 2}"/>`;
+            if (p < 1) {
+                const nPh = br.rate * 3;
+                for (let k = 0; k < nPh; k += 1) {
+                    const t = (p * 9 + k / nPh) % 1, s = ((k * 53) % 100) / 100;
+                    const tx = PX1 + 10 + s * (PX2 - PX1 - 20), ty = PY - 4;
+                    const x = LX + 2 + (tx - LX - 2) * t, y = LY + (ty - LY) * t;
+                    const dx = (tx - LX) * 0.1, dy = (ty - LY) * 0.1;
+                    out += squiggle(x, y, x + dx, y + dy, 6, 2.6, 'photon', `stroke:${light.ink}${light.dashed ? ';stroke-dasharray:2 1.5' : ''}`);
+                }
+            }
         }
-        // electrons
-        if (a.emit) {
-            const nE = br.rate * 2, speed = 0.5 + 0.6 * Math.sqrt(a.KE / 3);
-            for (let k = 0; k < nE; k += 1) { const t = (p * speed * 2 + k / nE) % 1, y = TY + 24 + ((k * 29) % (TH - 48)); out += `<circle class="electron" cx="${(MX + 4 + (CX - MX - 10) * t).toFixed(1)}" cy="${y}" r="3.2"/>`; }
+        // 램프 몸통과 렌즈
+        out += `<g transform="translate(${LX},${LY}) rotate(32)"><rect class="lamp-body" x="-46" y="-15" width="42" height="30" rx="7"/><rect class="lamp-neck" x="-6" y="-12" width="8" height="24" rx="2"/>` +
+            `<ellipse class="lamp-lens" style="fill:${on ? light.color : '#e2e8f0'};stroke:${on ? light.ink : '#94a3b8'}" cx="3" cy="0" rx="4" ry="13"/></g>`;
+        out += `<line class="stand-post" x1="54" y1="80" x2="62" y2="62" style="stroke:#64748b;stroke-width:6"/>`;
+        // 전극
+        out += `<rect class="metal" x="${PX1}" y="${PY}" width="${PX2 - PX1}" height="8" rx="2"/>`;
+        out += `<rect class="collector" x="${PX1}" y="${CY - 6}" width="${PX2 - PX1}" height="6" rx="2"/>`;
+        out += `<text class="small-label" x="${PX2 + 8}" y="${PY + 8}">${metal.label} 판</text><text class="small-label" x="${PX2 + 8}" y="${CY + 1}">받는 판</text>`;
+        out += `<text class="small-label" x="45" y="${LY + 52}" text-anchor="end">램프</text>`;
+        // 전자: 빛이 닿은 뒤에 금속판 윗면에서 튀어나와 받는 판으로 날아간다
+        if (a.emit && p > 0.12) {
+            const nE = br.rate * 3, speed = 0.9 + 1.1 * Math.sqrt(a.KE / 3), q = (p - 0.12) * 6;
+            for (let k = 0; k < nE; k += 1) {
+                const run = q * speed + k / nE, t = run % 1, born = q * speed - k / nE, cyc = Math.floor(run);
+                if (born < 0) continue;
+                const x = PX1 + 10 + ((k * 37 + cyc * 23) % 74), y0 = PY - 4, y1 = CY + 4, y = y0 + (y1 - y0) * t;
+                out += `<line class="e-trail" x1="${x}" y1="${Math.min(y0, y + 12).toFixed(1)}" x2="${x}" y2="${y.toFixed(1)}"/><circle class="electron" cx="${x}" cy="${y.toFixed(1)}" r="4.2"/>`;
+            }
         }
-        // circuit and meter
-        const AX = 428, AY = 110;
-        out += `<path class="wire" d="M${MX - 2},${TY + TH - 12} L${MX - 2},${TY + TH + 26} L${AX},${TY + TH + 26} L${AX},${AY + 20}"/><path class="wire" d="M${CX + 2},${TY + 12} L${CX + 2},${TY - 10} L${AX},${TY - 10} L${AX},${AY - 20}"/>`;
-        out += `<circle class="meter" cx="${AX}" cy="${AY}" r="20"/>`;
-        const ang = (-60 + (a.current === 0 ? 0 : a.current === 1 ? 45 : 110) * clamp(p * 3, 0, 1)) * Math.PI / 180;
-        out += `<line class="needle" x1="${AX}" y1="${AY}" x2="${(AX + 15 * Math.sin(ang)).toFixed(1)}" y2="${(AY - 15 * Math.cos(ang)).toFixed(1)}"/>`;
-        out += `<text class="meter-text" x="${AX}" y="${AY + 34}" text-anchor="middle">전류 ${a.current === 0 ? '0' : a.current === 1 ? '1' : '4'}</text>`;
-        // readouts
-        out += `<text class="trait-text" style="fill:${light.ink || '#0f172a'}" x="120" y="40">광자 한 개의 에너지 hf = 1240 ÷ ${light.nm} = ${fmtN(a.hf, 2)} eV</text>`;
-        out += `<text class="trait-text" x="120" y="72">일함수 ${fmtN(metal.W, 2)} eV</text>`;
-        out += `<text class="trait-text" style="fill:${a.emit ? '#059669' : '#dc2626'}" x="120" y="88">${a.emit ? `남는 에너지 ${fmtN(a.KE, 2)} eV → 전자 나옴` : `${fmtN(-a.KE, 2)} eV 모자람 → 전자 못 나옴`}</text>`;
-        if (a.emit) out += `<text class="small-label" x="120" y="102">전자 속력 ${fmtSpeed(a.v)} · 정지 전압 ${fmtN(a.KE, 2)} V</text>`;
+        // 회로와 전류계
+        const AX = 424, AY = 118;
+        out += `<path class="wire" d="M${(PX1 + PX2) / 2},${PY + 8} L${(PX1 + PX2) / 2},${TY + TH + 14} L${AX},${TY + TH + 14} L${AX},${AY + 21}"/><path class="wire" d="M${(PX1 + PX2) / 2},${CY - 6} L${(PX1 + PX2) / 2},${TY - 18} L${AX},${TY - 18} L${AX},${AY - 21}"/>`;
+        out += `<circle class="meter" cx="${AX}" cy="${AY}" r="21"/><path class="meter-scale" d="M${AX - 14},${AY - 4} A15,15 0 0 1 ${AX + 14},${AY - 4}"/><text class="meter-a" x="${AX}" y="${AY + 15}" text-anchor="middle">A</text>`;
+        const ang = (-60 + (a.current === 0 ? 0 : a.current === 1 ? 45 : 110) * clamp((p - 0.15) * 4, 0, 1)) * Math.PI / 180;
+        out += `<line class="needle" x1="${AX}" y1="${AY + 4}" x2="${(AX + 16 * Math.sin(ang)).toFixed(1)}" y2="${(AY + 4 - 16 * Math.cos(ang)).toFixed(1)}"/><circle cx="${AX}" cy="${AY + 4}" r="2" fill="#334155"/>`;
+        out += `<text class="small-label" x="${AX}" y="${AY + 40}" text-anchor="middle">전류계</text>`;
+        // 읽은 값은 그림 밖(HTML)으로. 결과는 빛을 비춘 뒤에만.
+        out += `<text class="prose" style="fill:${light.ink || '#0f172a'}">광자 한 개의 에너지 hf = 1240 ÷ ${light.nm} = ${fmtN(a.hf, 2)} eV</text>`;
+        out += `<text class="prose">${metal.label} 일함수 W = ${fmtN(metal.W, 2)} eV</text>`;
+        if (p >= 1) {
+            out += `<text class="prose" style="fill:${a.emit ? '#047857' : '#dc2626'}">${a.emit ? `남는 에너지 ${fmtN(a.KE, 2)} eV → 전자 나옴` : `${fmtN(-a.KE, 2)} eV 모자람 → 전자 못 나옴`}</text>`;
+            if (a.emit) out += `<text class="prose">전자 속력 ${fmtSpeed(a.v)} · 정지 전압 ${fmtN(a.KE, 2)} V · 전류 ${a.current}</text>`;
+        }
         const VERD = { none: '전자가 안 나옴', slow: `전자 나옴 — 최대 ${fmtN(a.KE, 2)} eV`, fast: `전자 나옴 — 최대 ${fmtN(a.KE, 2)} eV` };
         out += `<text class="verdict-text" fill="#0f172a" x="20" y="16">${state.progress >= 1 ? `${metal.label} · ${light.label} ${light.nm} nm · ${br.label}: ${VERD[a.verdict]}${a.emit ? `, 전류 ${a.current}` : ''}` : `${metal.label} · ${light.label} ${light.nm} nm · ${br.label}`}</text>`;
         out += `<text class="note-text" x="20" y="208">밝기는 광자 수(전류)만 바꾸고, 전자 한 개의 에너지 hf − W는 빛의 색(진동수)이 정합니다</text>`;
@@ -237,13 +265,18 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.entries(METALS).forEach(([k, m], i) => {
             const f0 = m.W / H_EVS, fEnd = Math.min(FMAX, (KMAX + m.W) / H_EVS);
             if (f0 < FMAX) out += `<line class="trace${k === state.metal ? '' : ' faint'}" style="stroke:${k === state.metal ? '#d97706' : '#475569'}" x1="${xOf(f0).toFixed(1)}" y1="${Y0}" x2="${xOf(fEnd).toFixed(1)}" y2="${yOf(fEnd * H_EVS - m.W).toFixed(1)}"/>`;
-            out += `<text class="small-label" style="fill:${k === state.metal ? '#d97706' : '#475569'}" x="${(xOf(Math.min(f0, FMAX * 0.93)) + (i % 2 ? 3 : -3)).toFixed(1)}" y="${Y0 - 6}" text-anchor="${i % 2 ? 'start' : 'end'}">${m.label}${f0 > FMAX ? ' (눈금 밖)' : ''}</text>`;
+            // 이름표는 선 옆(진동수가 큰 쪽)에 흰 테두리로 띄워 선과 겹치지 않게 한다
+            const kL = i === 0 ? 1.6 : i === 1 ? 1.0 : 0.45, fL = (kL + m.W) / H_EVS;
+            if (f0 < FMAX) out += `<text class="small-label halo" style="fill:${k === state.metal ? '#b45309' : '#475569'}" x="${(xOf(fL) + (i === 0 ? -7 : 7)).toFixed(1)}" y="${(yOf(kL) + 4).toFixed(1)}" text-anchor="${i === 0 ? 'end' : 'start'}">${m.label}</text>`;
+            else out += `<text class="small-label halo" style="fill:${k === state.metal ? '#b45309' : '#475569'}" x="${X0 + 8}" y="${Y1 + 14}">${m.label}: 문턱이 눈금 밖</text>`;
         });
         Object.values(LIGHTS).forEach(l => { const f = C_LIGHT / (l.nm * 1e-9); out += `<line class="ref-line" style="stroke:${l.color}" x1="${xOf(f).toFixed(1)}" y1="${Y1}" x2="${xOf(f).toFixed(1)}" y2="${Y0}"/>`; });
-        const xf = xOf(a.f);
-        out += `<circle fill="${a.emit ? a.light.color : '#dc2626'}" stroke="#fff" stroke-width="1" cx="${xf.toFixed(1)}" cy="${yOf(Math.max(0, a.KE)).toFixed(1)}" r="4.5"/>`;
-        out += `<text class="small-label" style="fill:${a.light.ink || '#0f172a'}" x="${(xf + (xf > 380 ? -6 : 6)).toFixed(1)}" y="${Y1 + 10}" text-anchor="${xf > 380 ? 'end' : 'start'}">${a.light.label} ${fmtN(a.f / 1e14, 1)}×10¹⁴ Hz${a.emit ? '' : ' — 문턱 아래'}</text>`;
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 42}" text-anchor="middle">빛의 진동수 (×10¹⁴ Hz) — 기울기 = h = 4.14×10⁻¹⁵ eV·s, 가로축 절편 = 문턱 진동수 W/h</text>`;
+        if (state.progress >= 1) {
+            const xf = xOf(a.f);
+            out += `<circle fill="${a.emit ? a.light.color : '#dc2626'}" stroke="#fff" stroke-width="1" cx="${xf.toFixed(1)}" cy="${yOf(Math.max(0, a.KE)).toFixed(1)}" r="4.5"/>`;
+            out += `<text class="small-label" style="fill:${a.light.ink || '#0f172a'}" x="${(xf + (xf > 380 ? -6 : 6)).toFixed(1)}" y="${Y1 + 10}" text-anchor="${xf > 380 ? 'end' : 'start'}">${a.light.label} ${fmtN(a.f / 1e14, 1)}×10¹⁴ Hz${a.emit ? '' : ' — 문턱 아래'}</text>`;
+        }
+        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 42}" text-anchor="middle">빛의 진동수 (×10¹⁴ Hz) · 기울기 = h</text>`;
         return out;
     }
 
@@ -274,7 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const RX = 300;
         out += `<text class="trait-text" x="${RX}" y="128">처음 준위 E${sub(ni)} = ${fmtN(a.Ei, 2)} eV</text>`;
         out += `<text class="trait-text" x="${RX}" y="144">나중 준위 E${sub(nf)} = ${fmtN(a.Ef, 2)} eV</text>`;
-        if (a.verdict === 'none') {
+        if (p < 0.55) { /* 결과 값은 전자가 내려온 뒤에 */ }
+        else if (a.verdict === 'none') {
             out += `<text class="trait-text" style="fill:#dc2626" x="${RX}" y="160">${ni === nf ? '같은 준위 — 아무 일도 없음' : `올라가려면 ${fmtN(a.dE, 2)} eV를 흡수해야 함`}</text>`;
             out += `<text class="small-label" x="${RX}" y="176">빛을 내는 것은 내려올 때뿐입니다</text>`;
         } else {
@@ -300,9 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/>`;
         const lines = [];
         for (let nf = 1; nf <= 3; nf += 1) for (let ni = nf + 1; ni <= 7; ni += 1) { const dE = 13.6 * (1 / (nf * nf) - 1 / (ni * ni)), lam = HC / dE; if (lam >= 90 && lam <= 2000) lines.push({ nf, ni, lam }); }
-        lines.forEach(l => { const now = l.nf === a.nf && l.ni === a.ni; out += `<line class="line-mark" style="stroke:${now ? '#d97706' : '#64748b'};stroke-width:${now ? 3 : 1.2}" x1="${xOf(l.lam).toFixed(1)}" y1="${Y1 + (now ? -4 : 2)}" x2="${xOf(l.lam).toFixed(1)}" y2="${Y0 + (now ? 4 : -2)}"/>`; });
-        [[1, '라이먼 (n=1로)', 121.6], [2, '발머 (n=2로)', 656], [3, '파셴 (n=3으로)', 1875]].forEach(([nf, lab, nm]) => { out += `<text class="small-label" style="fill:${a.nf === nf ? '#d97706' : '#475569'}" x="${xOf(nm).toFixed(1)}" y="${Y0 + 30}" text-anchor="middle">${lab}</text>`; });
-        if (a.lam) out += `<text class="trait-text" style="fill:#d97706" x="${clamp(xOf(a.lam), 70, 400).toFixed(1)}" y="${Y1 - 20}" text-anchor="middle">지금 ${fmtN(a.lam, a.lam < 200 ? 1 : 0)} nm</text>`;
+        lines.forEach(l => { const now = state.progress >= 1 && l.nf === a.nf && l.ni === a.ni; out += `<line class="line-mark" style="stroke:${now ? '#d97706' : '#64748b'};stroke-width:${now ? 3 : 1.2}" x1="${xOf(l.lam).toFixed(1)}" y1="${Y1 + (now ? -4 : 2)}" x2="${xOf(l.lam).toFixed(1)}" y2="${Y0 + (now ? 4 : -2)}"/>`; });
+        [[1, '라이먼 (n=1로)', 121.6], [2, '발머 (n=2로)', 656], [3, '파셴 (n=3으로)', 1875]].forEach(([nf, lab, nm]) => { out += `<text class="small-label" style="fill:${state.progress >= 1 && a.nf === nf ? '#d97706' : '#475569'}" x="${xOf(nm).toFixed(1)}" y="${Y0 + 30}" text-anchor="middle">${lab}</text>`; });
+        if (a.lam && state.progress >= 1) out += `<text class="trait-text" style="fill:#d97706" x="${clamp(xOf(a.lam), 70, 400).toFixed(1)}" y="${Y1 - 20}" text-anchor="middle">지금 ${fmtN(a.lam, a.lam < 200 ? 1 : 0)} nm</text>`;
         out += `<text class="small-label" x="${X0}" y="${Y0 + 48}">발머 계열 656·486·434·410 nm가 수소 방전관의 붉은빛과 푸른 선입니다. 흰 선은 n = 7까지의 모든 전이.</text>`;
         return out;
     }
@@ -312,20 +346,23 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = `<circle class="atom" cx="110" cy="118" r="20"/><circle class="nucleus" cx="110" cy="118" r="2.5"/>`;
         out += `<text class="small-label" x="110" y="150" text-anchor="middle">수소 원자 · 지름 0.1 nm</text>`;
         const wlPx = a.lam * 400e9;   // 400 px per nm
-        if (wlPx >= 1.5) {
+        const reach = 160 + 280 * clamp(p * 2, 0, 1);
+        if (p <= 0) { /* 아직 재지 않음 */ }
+        else if (wlPx >= 1.5) {
             let d = '';
-            for (let x = 160; x <= 440; x += 1) { const y = 118 + 22 * Math.sin(2 * Math.PI * ((x - 160) / wlPx) - p * 6.28 * 2); d += `${d ? 'L' : 'M'}${x},${y.toFixed(1)} `; }
+            for (let x = 160; x <= reach; x += 1) { const y = 118 + 22 * Math.sin(2 * Math.PI * ((x - 160) / wlPx) - p * 6.28 * 2); d += `${d ? 'L' : 'M'}${x},${y.toFixed(1)} `; }
             out += `<path class="wave" d="${d}"/>`;
-            if (wlPx <= 280) { out += `<line class="ref-line" style="stroke:#d97706" x1="160" y1="156" x2="${(160 + wlPx).toFixed(1)}" y2="156"/><text class="small-label" style="fill:#d97706" x="${Math.max(200, 160 + wlPx / 2).toFixed(1)}" y="168" text-anchor="middle">한 파장 ${fmtLam(a.lam)}</text>`; }
+            if (p < 0.5) { /* 물결이 다 뻗은 뒤에 눈금 */ }
+            else if (wlPx <= 280) { out += `<line class="ref-line" style="stroke:#d97706" x1="160" y1="156" x2="${(160 + wlPx).toFixed(1)}" y2="156"/><text class="small-label" style="fill:#d97706" x="${Math.max(200, 160 + wlPx / 2).toFixed(1)}" y="168" text-anchor="middle">한 파장 ${fmtLam(a.lam)}</text>`; }
             else out += `<text class="small-label" style="fill:#d97706" x="300" y="168" text-anchor="middle">한 파장 ${fmtLam(a.lam)} — 화면보다 김 (원자 ${fmtN(a.ratio)}개 너비)</text>`;
         } else {
-            out += `<line class="wave" x1="160" y1="118" x2="440" y2="118"/>`;
-            out += `<text class="small-label" style="fill:#d97706" x="300" y="168" text-anchor="middle">파장 ${fmtSci(a.lam)} m — 어떤 눈금으로도 물결이 보이지 않음</text>`;
+            out += `<line class="wave" x1="160" y1="118" x2="${reach.toFixed(1)}" y2="118"/>`;
+            if (p >= 0.5) out += `<text class="small-label" style="fill:#d97706" x="300" y="168" text-anchor="middle">파장 ${fmtSci(a.lam)} m — 어떤 눈금으로도 물결이 보이지 않음</text>`;
         }
         out += `<text class="trait-text" x="160" y="44">${o.name}</text>`;
-        out += `<text class="trait-text" x="160" y="60">속력 ${fmtSpeed(a.v)} · 운동량 p = mv = ${fmtSci(a.p)} kg·m/s</text>`;
-        out += `<text class="trait-text" style="fill:#0284c7" x="160" y="76">파장 λ = h/p = ${fmtLam(a.lam)}</text>`;
-        out += `<text class="small-label" x="160" y="90">원자 지름(0.1 nm)의 ${a.ratio >= 0.01 ? `${fmtN(a.ratio, a.ratio < 1 ? 2 : 1)}배` : `${fmtSci(a.ratio, 0)}배`}</text>`;
+        if (p >= 0.5) out += `<text class="trait-text" x="160" y="60">속력 ${fmtSpeed(a.v)} · 운동량 p = mv = ${fmtSci(a.p)} kg·m/s</text>`;
+        if (p >= 0.5) out += `<text class="trait-text" style="fill:#0284c7" x="160" y="76">파장 λ = h/p = ${fmtLam(a.lam)}</text>`;
+        if (p >= 0.5) out += `<text class="small-label" x="160" y="90">원자 지름(0.1 nm)의 ${a.ratio >= 0.01 ? `${fmtN(a.ratio, a.ratio < 1 ? 2 : 1)}배` : `${fmtSci(a.ratio, 0)}배`}</text>`;
         const VERD = { big: '원자보다 큼', atom: '원자만 함', tiny: '잴 수 없이 작음' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${o.name}: 파장 ${fmtLam(a.lam)} — ${VERD[a.verdict]}` : o.name}</text>`;
         out += `<text class="note-text" x="20" y="208">드브로이 파장 λ = h/p, h = 6.63×10⁻³⁴ J·s. 파장보다 작은 것은 파동으로 구별할 수 없습니다</text>`;
@@ -341,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.entries(OBJS).forEach(([k, o], i) => {
             let pp; if (o.v) pp = o.m * o.v; else { const KEj = o.KE * QE, mc2 = o.m * C_LIGHT * C_LIGHT; pp = Math.sqrt(KEj * KEj + 2 * KEj * mc2) / C_LIGHT; }
             const lam = H / pp, y = Y + i * (BH + 6), w = xOf(lam) - X0;
+            if (state.progress < 1) { out += `<text class="trait-text" x="${X0 - 6}" y="${y + BH / 2 + 4}" text-anchor="end">${o.label.replace('전자 · ', '전자 ').replace('로 가속', '')}</text><text class="trait-text" x="${X0 + 6}" y="${y + BH / 2 + 4}">?</text>`; return; }
             out += `<rect class="${k === 'ball' ? 'bar-ball' : 'bar-e'}" style="opacity:${k === state.obj ? 1 : 0.5}" x="${X0}" y="${y}" width="${w.toFixed(1)}" height="${BH}" rx="3"/>`;
             if (k === state.obj) out += `<rect class="bar-now" x="${X0}" y="${y}" width="${w.toFixed(1)}" height="${BH}" rx="3"/>`;
             out += `<text class="trait-text" x="${X0 - 6}" y="${y + BH / 2 + 4}" text-anchor="end">${o.label.replace('전자 · ', '전자 ').replace('로 가속', '')}</text>`;
@@ -350,29 +388,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
+        const done = state.progress >= 1;
         if (a.kind === 'photo') {
+            if (!done) return `<div class="data-row"><span class="data-name">빛</span><span class="data-val">${a.light.label} ${a.light.nm} nm · 진동수 ${fmtN(a.f / 1e14, 2)}×10¹⁴ Hz · 광자 에너지 hf = ${fmtN(a.hf, 2)} eV · ${a.br.label}</span></div>` +
+                `<div class="data-row"><span class="data-name">금속</span><span class="data-val">${a.metal.label} — 일함수 ${fmtN(a.metal.W, 2)} eV</span></div>`;
             return `<div class="data-row"><span class="data-name">빛</span><span class="data-val">${a.light.label} ${a.light.nm} nm · 진동수 ${fmtN(a.f / 1e14, 2)}×10¹⁴ Hz · 광자 에너지 hf = ${fmtN(a.hf, 2)} eV · ${a.br.label}</span></div>` +
                 `<div class="data-row"><span class="data-name">금속</span><span class="data-val">${a.metal.label} — 일함수 ${fmtN(a.metal.W, 2)} eV · 문턱 파장 ${fmtN(a.lam0)} nm (진동수 ${fmtN(a.f0 / 1e14, 2)}×10¹⁴ Hz)</span></div>` +
                 `<div class="data-row"><span class="data-name">전자</span><span class="data-val">${a.emit ? `최대 에너지 ${fmtN(a.KE, 2)} eV · 속력 ${fmtSpeed(a.v)} · 정지 전압 ${fmtN(a.KE, 2)} V` : `광자 에너지가 일함수보다 ${fmtN(-a.KE, 2)} eV 작아 나오지 않음`}</span></div>` +
                 `<div class="data-row match"><span class="data-name">전류</span><span class="data-val">${a.emit ? `상대값 ${a.current} (광자 수에 비례)` : '0 — 아무리 밝아도 0'}</span></div>`;
         }
         if (a.kind === 'hydrogen') {
+            if (!done) return `<div class="data-row"><span class="data-name">준위</span><span class="data-val">E${sub(a.ni)} = ${fmtN(a.Ei, 2)} eV → E${sub(a.nf)} = ${fmtN(a.Ef, 2)} eV</span></div>`;
             return `<div class="data-row"><span class="data-name">준위</span><span class="data-val">E${sub(a.ni)} = −13.6/${a.ni}² = ${fmtN(a.Ei, 2)} eV → E${sub(a.nf)} = −13.6/${a.nf}² = ${fmtN(a.Ef, 2)} eV</span></div>` +
                 (a.verdict === 'none' ? `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${a.ni === a.nf ? '같은 준위라 변화 없음' : `낮은 곳에서 높은 곳으로는 ${fmtN(a.dE, 2)} eV의 빛을 흡수해야 올라감 — 빛이 나오지 않음`}</span></div>`
                     : `<div class="data-row"><span class="data-name">광자</span><span class="data-val">ΔE = ${fmtN(a.dE, 2)} eV · λ = 1240 ÷ ${fmtN(a.dE, 2)} = ${fmtN(a.lam, a.lam < 200 ? 1 : 0)} nm · 진동수 ${fmtN(C_LIGHT / (a.lam * 1e-9) / 1e14, 2)}×10¹⁴ Hz</span></div>` +
                     `<div class="data-row match"><span class="data-name">계열</span><span class="data-val">${a.series} 계열 — ${a.region === 'visible' ? '눈에 보이는 빛' : a.region === 'uv' ? '자외선' : '적외선'}</span></div>`);
         }
+        if (!done) return `<div class="data-row"><span class="data-name">물체</span><span class="data-val">${a.o.name}</span></div>`;
         return `<div class="data-row"><span class="data-name">물체</span><span class="data-val">${a.o.name} — 질량 ${a.o.m >= 1e-3 ? `${fmtN(a.o.m * 1000)} g` : `${fmtSci(a.o.m, 2)} kg`} · 속력 ${fmtSpeed(a.v)}</span></div>` +
             `<div class="data-row"><span class="data-name">운동량</span><span class="data-val">p = ${fmtSci(a.p, 2)} kg·m/s</span></div>` +
             `<div class="data-row"><span class="data-name">파장</span><span class="data-val">λ = h/p = 6.63×10⁻³⁴ ÷ ${fmtSci(a.p, 2)} = ${fmtLam(a.lam)}</span></div>` +
             `<div class="data-row match"><span class="data-name">원자와 견주면</span><span class="data-val">${a.ratio >= 10 ? `원자 ${fmtN(a.ratio)}개 너비 — 원자를 구별 못 함` : a.ratio >= 0.01 ? `원자 지름의 ${fmtN(a.ratio, 2)}배 — 원자 배열을 볼 수 있음` : `원자의 ${fmtSci(a.ratio, 0)}배 — 파동성이 드러날 길 없음`}</span></div>`;
     }
 
+    let lastMainHtml = null, lastGraphHtml = null;
     function render() {
         const a = analyse();
-        window.scienceScene.render(mainGroup,a.kind === 'photo' ? renderPhoto(a) : a.kind === 'hydrogen' ? renderHydrogen(a) : renderMatter(a));
-        window.scienceScene.render(graphGroup,a.kind === 'photo' ? graphPhoto(a) : a.kind === 'hydrogen' ? graphHydrogen(a) : graphMatter(a));
-        liftProse();
+        const mainHtml = a.kind === 'photo' ? renderPhoto(a) : a.kind === 'hydrogen' ? renderHydrogen(a) : renderMatter(a);
+        const graphHtml = a.kind === 'photo' ? graphPhoto(a) : a.kind === 'hydrogen' ? graphHydrogen(a) : graphMatter(a);
+        // 같은 그림을 다시 그리면 장면 그리기가 건너뛰므로, 이미 빼낸 글을 다시 비우지 않게 한다
+        if (mainHtml !== lastMainHtml || graphHtml !== lastGraphHtml) {
+            window.scienceScene.render(mainGroup, mainHtml);
+            window.scienceScene.render(graphGroup, graphHtml);
+            lastMainHtml = mainHtml; lastGraphHtml = graphHtml;
+            liftProse();
+        }
         stageBadge.textContent = a.kind === 'photo' ? `${a.metal.label} · ${a.light.label} · ${a.br.label}` : a.kind === 'hydrogen' ? `n = ${a.ni} → n = ${a.nf}` : a.o.label;
         methodHint.textContent = a.kind === 'photo' ? '광자 하나의 에너지 hf가 일함수를 넘어야 전자가 나옵니다. 밝기는 개수만 바꿉니다'
             : a.kind === 'hydrogen' ? '전자가 내려올 때 두 준위의 에너지 차이가 광자 하나가 됩니다'
@@ -396,6 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function startRun() {
         stopRun();
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         state.progress = 0;
         running = true;
         lastStamp = performance.now();
@@ -449,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'photo' ? '빛 비추기' : state.mode === 'hydrogen' ? '전자 내려보내기' : '물결 재기';
-        stageCaption.textContent = state.mode === 'photo' ? '진공관 왼쪽의 금속판에 빛(물결)을 비춥니다. 파란 점이 튀어나온 전자이고 오른쪽 판에 닿으면 전류계 바늘이 움직입니다.'
+        stageCaption.textContent = state.mode === 'photo' ? '램프 빛(물결)이 진공관 아래쪽 금속판에 닿습니다. 파란 점이 튀어나온 전자이고, 위쪽 받는 판에 닿으면 전류계 바늘이 움직입니다.'
             : state.mode === 'hydrogen' ? '왼쪽 사다리가 수소 원자의 에너지 준위입니다. 파란 점이 전자이고, 내려올 때 나오는 빛이 오른쪽 위로 날아갑니다.'
                 : '왼쪽 원이 수소 원자(지름 0.1 nm)입니다. 오른쪽 물결의 파장을 같은 눈금으로 그렸습니다(1 nm = 400칸).';
         settingsChanged();

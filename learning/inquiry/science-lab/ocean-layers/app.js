@@ -180,60 +180,75 @@ document.addEventListener('DOMContentLoaded', () => {
     // temperature colour, −2 … 30 ℃
     const tColor = T => { const u = clamp((T + 2) / 32, 0, 1); const r = Math.round(40 + 215 * u), g = Math.round(90 + 90 * Math.sin(u * Math.PI)), b = Math.round(220 - 170 * u); return `rgb(${r},${g},${b})`; };
 
+    /* 바다 단면: 배에서 수온계(CTD)를 내려 깊이별 수온을 잰다. 물빛은 수온 색이고,
+       오른쪽은 재는 대로 그려지는 깊이–수온 곡선. 층 이름과 경계는 다 잰 뒤에만 나온다. */
     function renderProfile(a) {
-        const p = state.progress, CX0 = 44, CW = 60, Y0 = 38, Y1 = 156, zOf = y => (y - Y0) / (Y1 - Y0) * 1000, yOf = z => Y0 + z / 1000 * (Y1 - Y0);
+        const p = state.progress, measured = p >= 1;
+        const SX0 = 18, SX1 = 168, Y0 = 52, Y1 = 186, yOf = z => Y0 + z / 1000 * (Y1 - Y0), zOf = y => (y - Y0) / (Y1 - Y0) * 1000;
         let out = '';
-        for (let y = Y0; y < Y1; y += 4) out += `<rect fill="${tColor(a.T(zOf(y)))}" x="${CX0}" y="${y}" width="${CW}" height="${Math.min(4.5, Y1 - y).toFixed(1)}"/>`;
-        out += `<rect class="column-frame" x="${CX0}" y="${Y0}" width="${CW}" height="${Y1 - Y0}"/>`;
-        [0, 200, 400, 600, 800, 1000].forEach(z => { out += `<text class="axis-text" x="${CX0 - 4}" y="${(yOf(z) + 3.5).toFixed(1)}" text-anchor="end">${z}</text>`; });
-        out += `<text class="small-label" x="${CX0 - 4}" y="${Y0 - 14}" text-anchor="end">깊이 m</text>`;
-        // temperature axis and the profile curve, drawn down to the probe's depth
-        const TX0 = 120, TX1 = 260, xOf = T => TX0 + clamp((T + 2) / 32, 0, 1) * (TX1 - TX0);
-        [0, 10, 20, 30].forEach(T => { out += `<line class="grid-line" x1="${xOf(T).toFixed(1)}" y1="${Y0}" x2="${xOf(T).toFixed(1)}" y2="${Y1}"/><text class="axis-text" x="${xOf(T).toFixed(1)}" y="${Y0 - 9}" text-anchor="middle">${T} ℃</text>`; });
-        const zNow = 1000 * ease(p);
-        let d = '';
-        a.pts.forEach(([z, T]) => { if (z <= zNow) d += `${d ? 'L' : 'M'}${xOf(T).toFixed(1)},${yOf(z).toFixed(1)} `; });
-        out += `<path class="trace" style="stroke:#d97706" d="${d}"/>`;
-        const Tn = a.T(zNow), px = xOf(Tn), py = yOf(zNow), flip = px > 196;
-        out += `<circle class="probe" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="4"/><circle class="probe" cx="${CX0 + CW / 2}" cy="${py.toFixed(1)}" r="3"/>`;
-        out += `<text class="small-label" style="fill:#d97706" x="${(px + (flip ? -8 : 8)).toFixed(1)}" y="${(py + 3.5).toFixed(1)}" text-anchor="${flip ? 'end' : 'start'}">${fmtN(zNow)} m · ${fmtN(Tn, 1)} ℃</text>`;
-        // layer brackets on the right
-        const BX = 292;
-        const layers = a.verdict === 'none' ? [[0, 1000, '위아래 다 차가움 · 층 없음', '#475569']] : [[0, a.mld, `혼합층 0~${a.mld} m`, '#059669'], [a.mld, a.thermoEnd, `수온약층 ${a.mld}~${a.thermoEnd} m`, '#d97706'], [a.thermoEnd, 1000, `심해층 ${a.deep} ℃쯤`, '#0284c7']];
-        let lastY = Y0 - 4;
-        layers.forEach(([z0, z1, lab, col]) => {
-            const y0 = yOf(z0), y1 = yOf(z1);
-            out += `<path class="bracket" style="stroke:${col}" d="M${BX},${y0.toFixed(1)} L${BX + 6},${y0.toFixed(1)} L${BX + 6},${y1.toFixed(1)} L${BX},${y1.toFixed(1)}"/>`;
-            const ly = clamp((y0 + y1) / 2 + 3.5, Math.max(Y0 + 10, lastY + 13), Y1 - 2);
-            lastY = ly;
-            out += `<text class="layer-label" style="fill:${col}" x="${BX + 12}" y="${ly.toFixed(1)}">${lab}</text>`;
-        });
-        // season: sun above the column, wind arrows across the mixed layer
+        // sea cross-section coloured by temperature
+        for (let y = Y0; y < Y1; y += 3) out += `<rect fill="${tColor(a.T(zOf(y)))}" x="${SX0}" y="${y}" width="${SX1 - SX0}" height="${Math.min(3.5, Y1 - y).toFixed(1)}"/>`;
+        let wave = `M${SX0},${Y0}`;
+        for (let x = SX0; x <= SX1; x += 10) wave += ` Q${x + 5},${Y0 - 3} ${Math.min(SX1, x + 10)},${Y0}`;
+        out += `<path d="${wave} V${Y0 - 6} H${SX0} Z" fill="#f7f9fb"/><path class="sea-surface" d="${wave}"/>`;
+        out += `<rect class="column-frame" x="${SX0}" y="${Y0}" width="${SX1 - SX0}" height="${Y1 - Y0}"/>`;
+        [0, 200, 400, 600, 800, 1000].forEach(z => { out += `<path class="tick" d="M${SX1} ${yOf(z).toFixed(1)} h5"/><text class="axis-text" x="${SX1 + 8}" y="${(yOf(z) + 4.5).toFixed(1)}">${z}</text>`; });
+        out += `<text class="small-label" x="${SX1 + 8}" y="${Y1 + 18}">깊이 (m)</text>`;
+        // sky: sun and wind for the season
         const summer = state.season === 'summer';
-        out += `<circle class="sun" style="opacity:${summer ? 1 : 0.4}" cx="${CX0 + CW / 2}" cy="${Y0 - 10}" r="${summer ? 6 : 4}"/>`;
-        for (let k = 0; k < (summer ? 1 : 3); k += 1) out += arrow(CX0 + 6, Y0 + 8 + k * 7, CX0 + CW - 6, Y0 + 8 + k * 7, 'wind', 'wind-head', 2.5);
-        out += `<text class="small-label" x="20" y="172">${summer ? '햇볕 셈 · 바람 약함' : '햇볕 약함 · 바람 셈'} → 혼합층 ${a.mld} m까지 섞임 · 표층 ${fmtN(a.sst, 1)} ℃ · 심해 ${a.deep} ℃</text>`;
-        out += `<text class="small-label" x="20" y="186">${a.verdict === 'none' ? `위아래 차이 ${fmtN(Math.abs(a.dT), 1)} ℃뿐 — 급히 식는 층이 없음` : `수온약층 ${a.mld}~${a.thermoEnd} m에서 ${fmtN(a.dT, 1)} ℃ 떨어짐 (가장 급한 곳 ${fmtN(a.dT / a.L * 100, 1)} ℃/100 m)`}</text>`;
+        out += `<circle class="sun" cx="${SX0 + 16}" cy="20" r="${summer ? 10 : 7}" style="opacity:${summer ? 1 : 0.55}"/>`;
+        for (let k = 0; k < (summer ? 1 : 3); k += 1) out += arrow(SX0 + 36, 14 + k * 8, SX0 + 76, 14 + k * 8, 'wind', 'wind-head', 2.5);
+        // the ship and the probe lowered on its cable
+        const zNow = 1000 * ease(p), py = yOf(zNow), shipX = 128;
+        out += `<path class="ship" d="M${shipX - 22} ${Y0 - 9} h44 l-7 9 h-30 Z"/><rect class="ship-cabin" x="${shipX - 8}" y="${Y0 - 19}" width="16" height="10" rx="1.5"/><path class="crane" d="M${shipX + 4} ${Y0 - 19} l12 -8 v${8 + 4}"/>`;
+        out += `<line class="cable" x1="${shipX + 16}" y1="${Y0 - 15}" x2="${shipX + 16}" y2="${(py - 7).toFixed(1)}"/><rect class="ctd" x="${shipX + 11}" y="${(py - 7).toFixed(1)}" width="10" height="14" rx="3"/>`;
+        // temperature axis and the curve, drawn down to the probe's depth
+        const TX0 = 236, TX1 = 420, xOf = T => TX0 + clamp((T + 2) / 32, 0, 1) * (TX1 - TX0);
+        [0, 10, 20, 30].forEach(T => { out += `<line class="grid-line" x1="${xOf(T).toFixed(1)}" y1="${Y0}" x2="${xOf(T).toFixed(1)}" y2="${Y1}"/><text class="axis-text" x="${xOf(T).toFixed(1)}" y="${Y0 - 10}" text-anchor="middle">${T}</text>`; });
+        [0, 500, 1000].forEach(z => { out += `<line class="grid-line" x1="${TX0}" y1="${yOf(z).toFixed(1)}" x2="${TX1}" y2="${yOf(z).toFixed(1)}"/>`; });
+        out += `<line class="axis" x1="${TX0}" y1="${Y0}" x2="${TX1}" y2="${Y0}"/><line class="axis" x1="${TX0}" y1="${Y0}" x2="${TX0}" y2="${Y1}"/>`;
+        out += `<text class="small-label" x="${TX1}" y="${Y0 - 28}" text-anchor="end">수온 (℃)</text>`;
+        if (measured && a.verdict !== 'none') {
+            [[0, a.mld, '#059669'], [a.mld, a.thermoEnd, '#d97706'], [a.thermoEnd, 1000, '#0284c7']].forEach(([z0, z1, col]) => {
+                out += `<rect x="${TX0 + 1}" y="${yOf(z0).toFixed(1)}" width="${TX1 - TX0 - 1}" height="${(yOf(z1) - yOf(z0)).toFixed(1)}" fill="${col}" opacity=".09"/>`;
+            });
+        }
+        let d = '';
+        a.pts.forEach(([z, T]) => { if (z <= zNow + 1e-9) d += `${d ? 'L' : 'M'}${xOf(T).toFixed(1)},${yOf(z).toFixed(1)} `; });
+        out += `<path class="trace" style="stroke:#c2410c" d="${d}"/>`;
+        const Tn = a.T(zNow), px = xOf(Tn), flip = px > 340;
+        out += `<circle class="probe" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="4.5"/>`;
+        if (p > 0) out += `<text class="small-label probe-read" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${(py + (zNow < 60 ? 16 : 4.5)).toFixed(1)}" text-anchor="${flip ? 'end' : 'start'}">${fmtN(Tn, 1)} ℃</text>`;
+        // layer names: only after the whole column has been measured
+        if (measured) {
+            const layers = a.verdict === 'none' ? [[0, 1000, '층 없음', '#475569']] : [[0, a.mld, '혼합층', '#047857'], [a.mld, a.thermoEnd, '수온약층', '#b45309'], [a.thermoEnd, 1000, '심해층', '#0369a1']];
+            let lastY = Y0 - 4;
+            layers.forEach(([z0, z1, lab, col]) => {
+                const y0 = yOf(z0), y1 = yOf(z1), ly = clamp((y0 + y1) / 2 + 4.5, Math.max(Y0 + 12, lastY + 16), Y1 - 2);
+                lastY = ly;
+                out += `<path class="bracket" style="stroke:${col}" d="M${SX0 - 2},${y0.toFixed(1)} h-6 V${y1.toFixed(1)} h6"/>`;
+                out += `<text class="layer-label" style="fill:${col}" x="${(SX0 + SX1) / 2}" y="${ly.toFixed(1)}" text-anchor="middle">${lab}</text>`;
+            });
+        }
         const VERD = { shallow: `얕고 뚜렷한 수온약층 (${a.mld} m 아래)`, deep: `깊고 완만한 수온약층 (${a.mld} m 아래)`, none: '수온약층이 거의 없음' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${REGIONS[state.region].label} ${SEASONS[state.season].label}: ${VERD[a.verdict]}` : `${REGIONS[state.region].label} · ${SEASONS[state.season].label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">햇볕은 겉 몇십 m만 데우고 바람이 그 열을 섞어 혼합층을 만듭니다. 그 아래 수온이 급히 내려가는 곳이 수온약층</text>`;
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${measured ? `${REGIONS[state.region].label} ${SEASONS[state.season].label}: ${VERD[a.verdict]}` : `${REGIONS[state.region].label} · ${SEASONS[state.season].label}`}</text>`;
         return out;
     }
 
     function graphProfile(a) {
         const X0 = 60, X1 = 420, Y0 = 40, Y1 = 150, xOf = T => X0 + clamp((T + 2) / 32, 0, 1) * (X1 - X0), yOf = z => Y0 + z / 1000 * (Y1 - Y0);
-        let out = `<text class="axis-title" x="${X0}" y="18">${SEASONS[state.season].label}철 세 바다의 깊이–수온 곡선 견주기 — 굵은 선이 고른 바다</text>`;
-        [0, 10, 20, 30].forEach(T => { out += `<line class="grid-line" x1="${xOf(T).toFixed(1)}" y1="${Y0}" x2="${xOf(T).toFixed(1)}" y2="${Y1}"/><text class="axis-text" x="${xOf(T).toFixed(1)}" y="${Y1 + 14}" text-anchor="middle">${T} ℃</text>`; });
-        [0, 500, 1000].forEach(z => { out += `<text class="axis-text" x="${X0 - 5}" y="${(yOf(z) + 3.5).toFixed(1)}" text-anchor="end">${z} m</text>`; });
+        let out = `<text class="axis-title" x="${X0}" y="18">${SEASONS[state.season].label}철 세 바다의 깊이–수온 곡선</text>`;
+        [0, 10, 20, 30].forEach(T => { out += `<line class="grid-line" x1="${xOf(T).toFixed(1)}" y1="${Y0}" x2="${xOf(T).toFixed(1)}" y2="${Y1}"/><text class="axis-text" x="${xOf(T).toFixed(1)}" y="${Y1 + 16}" text-anchor="middle">${T}</text>`; });
+        [0, 500, 1000].forEach(z => { out += `<text class="axis-text" x="${X0 - 6}" y="${(yOf(z) + 4.5).toFixed(1)}" text-anchor="end">${z}</text>`; });
+        out += `<text class="small-label" x="${X0 - 6}" y="${Y0 - 8}" text-anchor="end">깊이 (m)</text><text class="small-label" x="${X1}" y="${Y1 + 34}" text-anchor="end">수온 (℃)</text>`;
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1}"/>`;
-        const cols = { low: '#dc2626', mid: '#d97706', high: '#0284c7' };
+        const cols = { low: '#dc2626', mid: '#d97706', high: '#0284c7' }, zNow = 1000 * ease(state.progress);
         Object.keys(REGIONS).forEach(k => {
-            const pr = profile(k, state.season);
-            let d = ''; pr.pts.forEach(([z, T]) => { d += `${d ? 'L' : 'M'}${xOf(T).toFixed(1)},${yOf(z).toFixed(1)} `; });
-            out += `<path class="trace${k === state.region ? '' : ' faint'}" style="stroke:${cols[k]}" d="${d}"/>`;
-            out += `<text class="small-label" style="fill:${cols[k]}" x="${(xOf(pr.sst) + (k === 'high' ? 6 : -6)).toFixed(1)}" y="${Y0 + 12 + (k === 'mid' ? 12 : 0)}" text-anchor="${k === 'high' ? 'start' : 'end'}">${REGIONS[k].label.split(' ')[0]}</text>`;
+            const pr = profile(k, state.season), mine = k === state.region;
+            let d = ''; pr.pts.forEach(([z, T]) => { if (!mine || z <= zNow + 1e-9) d += `${d ? 'L' : 'M'}${xOf(T).toFixed(1)},${yOf(z).toFixed(1)} `; });
+            out += `<path class="trace${mine ? '' : ' faint'}" style="stroke:${cols[k]}" d="${d}"/>`;
+            out += `<text class="small-label" style="fill:${cols[k]}" x="${(xOf(pr.sst) + (k === 'high' ? 6 : -6)).toFixed(1)}" y="${Y0 + 12 + (k === 'mid' ? 14 : 0)}" text-anchor="${k === 'high' ? 'start' : 'end'}">${REGIONS[k].label.split(' ')[0]}</text>`;
         });
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y1 + 30}" text-anchor="middle">수온 — 심해층은 어디서나 0~2 ℃로 만나고, 차이는 표층과 수온약층에서 납니다</text>`;
         return out;
     }
 
@@ -333,20 +348,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function noteFor(a) {
         if (a.kind === 'profile') {
             return `<div class="data-row"><span class="data-name">바다</span><span class="data-val">${REGIONS[state.region].label} ${SEASONS[state.season].label} — 표층 ${fmtN(a.sst, 1)} ℃, 심해 ${a.deep} ℃ (차이 ${fmtN(Math.abs(a.dT), 1)} ℃)</span></div>` +
-                `<div class="data-row"><span class="data-name">혼합층</span><span class="data-val">0~${a.mld} m — 바람이 섞어 수온이 고름</span></div>` +
+                (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">혼합층</span><span class="data-val">0~${a.mld} m — 바람이 섞어 수온이 고름</span></div>` +
                 `<div class="data-row"><span class="data-name">수온약층</span><span class="data-val">${a.verdict === 'none' ? '뚜렷하지 않음 (위아래 차이 3 ℃ 미만)' : `${a.mld}~${a.thermoEnd} m — 가장 급한 곳 ${fmtN((a.sst - a.deep) / a.L * 100, 1)} ℃/100 m`}</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'shallow' ? '얕고 뚜렷한 수온약층' : a.verdict === 'deep' ? '깊고 완만한 수온약층' : '수온약층이 거의 없음'}</span></div>`;
+                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'shallow' ? '얕고 뚜렷한 수온약층' : a.verdict === 'deep' ? '깊고 완만한 수온약층' : '수온약층이 거의 없음'}</span></div>`);
         }
         if (a.kind === 'salinity') {
             return `<div class="data-row"><span class="data-name">처음</span><span class="data-val">물 965 g + 염류 35 g = 1,000 g → 35 ÷ 1,000 × 1000 = 35.0 ‰</span></div>` +
                 `<div class="data-row"><span class="data-name">${a.ev.label}</span><span class="data-val">${a.ev.hint}${a.ev.ice === 'form' ? ' (얼음에는 염류가 거의 안 들어감)' : ''}</span></div>` +
-                `<div class="data-row"><span class="data-name">나중</span><span class="data-val">물 ${fmtN(a.water)} g + 염류 35 g = ${fmtN(a.water + 35)} g → 35 ÷ ${fmtN(a.water + 35)} × 1000 = ${fmtN(a.S2, 1)} ‰</span></div>` +
+                (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">나중</span><span class="data-val">물 ${fmtN(a.water)} g + 염류 35 g = ${fmtN(a.water + 35)} g → 35 ÷ ${fmtN(a.water + 35)} × 1000 = ${fmtN(a.S2, 1)} ‰</span></div>`) +
                 `<div class="data-row match"><span class="data-name">이온 비율</span><span class="data-val">그대로 (염화 55.0 · 나트륨 30.6 · 황산 7.7 · 마그네슘 3.7 %) — 염분비 일정</span></div>`;
         }
+        if (state.progress < 1) return `<div class="data-row"><span class="data-name">물덩이</span><span class="data-val">${a.T} ℃ · ${a.S} ‰</span></div><div class="data-row"><span class="data-name">둘레 바닷물</span><span class="data-val">15 ℃ · 35 ‰</span></div>`;
         return `<div class="data-row"><span class="data-name">물덩이</span><span class="data-val">${a.T} ℃ · ${a.S} ‰ → 밀도 ${fmtN(a.rA, 2)} kg/m³</span></div>` +
             `<div class="data-row"><span class="data-name">둘레 바닷물</span><span class="data-val">15 ℃ · 35 ‰ → 밀도 ${fmtN(a.rB, 2)} kg/m³</span></div>` +
-            `<div class="data-row"><span class="data-name">차이</span><span class="data-val">${a.d >= 0 ? '+' : ''}${fmtN(a.d, 2)} kg/m³ (${fmtN(Math.abs(a.d) / a.rB * 100, 2)} %)</span></div>` +
-            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'sink' ? '가라앉음' : a.verdict === 'float' ? '떠오름' : '같아서 그 자리'}</span></div>`;
+            (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">차이</span><span class="data-val">${a.d >= 0 ? '+' : ''}${fmtN(a.d, 2)} kg/m³ (${fmtN(Math.abs(a.d) / a.rB * 100, 2)} %)</span></div>` +
+            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'sink' ? '가라앉음' : a.verdict === 'float' ? '떠오름' : '같아서 그 자리'}</span></div>`);
     }
 
     function render() {
@@ -436,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'profile' ? '수온 재기' : state.mode === 'salinity' ? '일어나게 하기' : '물덩이 놓기';
-        stageCaption.textContent = state.mode === 'profile' ? '왼쪽 물기둥의 색이 수온입니다. 노란 곡선이 깊이에 따른 수온이고, 급하게 꺾이는 곳이 수온약층입니다.'
+        stageCaption.textContent = state.mode === 'profile' ? '왼쪽 물기둥의 색이 수온입니다. 주황 곡선이 깊이에 따른 수온이고, 급하게 꺾이는 곳이 수온약층입니다.'
             : state.mode === 'salinity' ? '비커 속 흰 알갱이 35개가 염류입니다. 물이 늘거나 줄면 알갱이 사이가 벌어지거나 좁아집니다.'
                 : '가운데 물덩이가 둘레 바닷물보다 무거우면 가라앉고 가벼우면 떠오릅니다. 색은 수온입니다.';
         settingsChanged();

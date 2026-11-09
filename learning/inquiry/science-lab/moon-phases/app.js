@@ -19,13 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const SYNODIC = 29.53;           // days from one new moon to the next
     const EARTH = { x: 286, y: 150 };
-    const ORBIT_R = 96;
-    const MOON_R = 15;
+    const ORBIT_R = 100;
+    const MOON_R = 22;
     const PHASE_C = { x: 90, y: 90 };
     const PHASE_R = 62;
     const SAMPLES = 90;
 
     let prediction = null;
+    // The view from Earth stays covered until the student checks. Checking
+    // sends the Moon round its orbit from new moon to the chosen day.
+    let revealed = false, anim = 0;
+    const phaseView = document.querySelector('.phase-view');
+    const phaseCover = document.getElementById('phaseCover');
+    const reduceMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
     const dayValue = () => Number(dayRange.value) / 10;
     // Elongation: the Sun-Earth-Moon angle, 0° at new moon and 180° at full.
@@ -82,21 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildRays() {
         let out = '';
-        for (const y of [66, 108, 150, 192, 234]) {
-            out += `<line class="sun-ray" x1="70" y1="${y}" x2="168" y2="${y}"/>`;
-            out += `<polygon class="sun-ray-head" points="168,${y - 4} 176,${y} 168,${y + 4}" fill="rgba(251, 191, 36, .85)"/>`;
+        for (const y of [56, 103, 150, 197, 244]) {
+            out += `<line class="sun-ray" x1="${y === 150 ? 92 : 80}" y1="${y}" x2="160" y2="${y}"/>`;
+            out += `<polygon class="sun-ray-head" points="160,${y - 4} 168,${y} 160,${y + 4}"/>`;
         }
         sunRays.innerHTML = out;
     }
 
-    function render() {
+    function render(E = elongationDeg(dayValue())) {
         const day = dayValue();
-        const E = elongationDeg(day);
         const k = litFraction(E);
 
         dayOutput.textContent = `약 ${day.toFixed(1)}일`;
-        phaseBadge.textContent = phaseName(E);
-        stageCaption.textContent = `삭 이후 약 ${day.toFixed(1)}일, ${phaseName(E)}입니다. 밝게 보이는 부분은 약 ${Math.round(k * 100)}%입니다.`;
+        phaseBadge.textContent = revealed ? phaseName(E) : '?';
+        stageCaption.textContent = revealed ? `삭 이후 약 ${day.toFixed(1)}일, ${phaseName(E)}입니다. 밝게 보이는 부분은 약 ${Math.round(k * 100)}%입니다.` : `삭 이후 약 ${day.toFixed(1)}일입니다. 위에서 본 달의 자리를 보고 지구에서 보이는 모양을 예상해 보세요.`;
+        phaseView.classList.toggle('covered', !revealed);
+        if (phaseCover) phaseCover.hidden = revealed;
 
         // Orbital position: at E=0 the Moon sits between Earth and Sun, at
         // E=180 it is on the far side. The Sun lies toward -x, so measuring
@@ -115,6 +122,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearResult() {
         resultEmpty.hidden = false;
         resultContent.hidden = true;
+        cancelAnimationFrame(anim); anim = 0;
+        if (revealed) { revealed = false; render(); }
+    }
+
+    function orbitThenCheck() {
+        cancelAnimationFrame(anim);
+        const target = elongationDeg(dayValue());
+        revealed = true;
+        if (reduceMotion()) { render(target); check(); return; }
+        resultEmpty.hidden = false; resultContent.hidden = true;
+        const start = performance.now(), dur = 700 + 1700 * target / 360;
+        const step = now => {
+            const t = Math.min(1, Math.max(0, (now - start) / dur)), e = 1 - Math.pow(1 - t, 3);
+            render(target * e);
+            if (t < 1) anim = requestAnimationFrame(step); else { anim = 0; render(target); check(); }
+        };
+        anim = requestAnimationFrame(step);
     }
 
     function check() {
@@ -153,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
-    checkButton.addEventListener('click', check);
+    checkButton.addEventListener('click', orbitThenCheck);
 
     function shuffleQuizOptions(card) {
         const optionGroup = card.querySelector('.quiz-options');

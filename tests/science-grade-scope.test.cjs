@@ -63,6 +63,8 @@ test('six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile
       if (app === 'solubility') {
         for (const [temperature, amount, dissolved, remaining] of [[20, 33, '33 g', '0 g'], [20, 39, '36 g', '3 g'], [0, 39, '35.7 g', '3.3 g'], [100, 43, '39.8 g', '3.2 g']]) {
           await range('temperatureRange', temperature); await range('amountRange', amount);
+          // 예상을 고르기 전에는 관찰 글을 가리므로(lab-ui.js) 조건을 정한 뒤 예상을 하나 고르고 읽는다.
+          await page.evaluate(() => document.querySelector('[data-prediction]')?.click());
           assert.match(await text('#dataNote'), new RegExp(`${amount} g`));
           await click('#runExperimentBtn');
           assert.equal(await text('#dissolvedValue'), dissolved); assert.equal(await text('#remainingValue'), remaining);

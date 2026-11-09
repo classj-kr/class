@@ -130,3 +130,8 @@
 .stage-note:empty { display: none; }
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+/* 비스듬히 본 전동기: 자기장 화살과 힘 화살이 보이도록 */
+.main-svg { max-width: 660px; }
+.field { stroke: #8aa2b6; stroke-width: 1.6; }
+.field-head { fill: #8aa2b6; }
+.force { stroke: #059669; stroke-width: 3.2; }

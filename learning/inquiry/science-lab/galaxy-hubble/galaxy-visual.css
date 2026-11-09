@@ -123,3 +123,9 @@
 .stage-note:empty { display: none; }
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* Night sky panel: a rounded window onto the dark sky, softly framed. */
+.burn-stage .sky { fill: #0c1631; stroke: #9fb3c8; stroke-width: 1.2; }
+.burn-stage .fork-line { stroke: #94a3b8; stroke-width: 2.5; fill: none; }
+.burn-stage .fork-cell { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1.2; }
+.burn-stage .fork-cell.on { fill: #fff4dc; stroke: #d97706; stroke-width: 3; }

@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const vb = svg.viewBox.baseVal, W = vb.width, H = vb.height;
             [...g.querySelectorAll('text')].forEach(t => {
                 const cls = t.getAttribute('class') || '';
-                const must = /verdict-text|note-text/.test(cls) || /prose/.test(cls);
+                const must = /verdict-text|note-text/.test(cls) || /\bprose\b/.test(cls);
+                if (must) { takeOut(t); return; }
                 let b; try { b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); } catch (e) { return; }
                 const out = b.x < -0.5 || b.x + b.width > W + 0.5 || b.y + b.height > H + 0.5 || b.y < -0.5;
                 if (must || out) takeOut(t);
@@ -64,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
+        // 그림 글자가 그대로면(같은 그림을 다시 그린 경우) 이미 옮긴 글을 지우지 않는다.
+        if (!rows.length && !notes.length && !verdicts.length) return;
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
         if (stageReadout) window.scienceScene.render(stageReadout,rows.map(r => `<span${r.fill ? ` style="color:${r.fill}"` : ''}>${r.txt}</span>`).join(''));
         if (stageNote) stageNote.textContent = notes.join(' ');
@@ -181,55 +184,80 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<line class="${cls}" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}"/><polygon class="${head}" points="${x2.toFixed(1)},${y2.toFixed(1)} ${(bx - uy * w).toFixed(1)},${(by + ux * w).toFixed(1)} ${(bx + uy * w).toFixed(1)},${(by - ux * w).toFixed(1)}"/>`;
     };
 
+    // 비스듬히 본 직류 전동기: 축은 화면 안쪽(오른쪽 위)에서 앞쪽(왼쪽 아래)으로 뻗고,
+    // 축에 수직인 단면은 화면과 나란하게 그린다(사투영). φ는 코일 법선과 B의 각.
     function renderMotor(a) {
         const p = state.progress, on = p > 0, idx = Math.min(a.samples.length - 1, Math.round(p * (a.samples.length - 1))), [t, phi, w, tau] = a.samples[idx];
-        const CX = 140, CY = 104, L = 34;
-        let out = `<rect class="pole-n" x="36" y="60" width="34" height="88" rx="4"/><rect class="pole-s" x="210" y="60" width="34" height="88" rx="4"/>`;
-        out += `<text class="pole-text" x="53" y="109" text-anchor="middle">N</text><text class="pole-text" x="227" y="109" text-anchor="middle">S</text>`;
-        [70, 92, 116, 138].forEach(y => { out += arrow(74, y, 206, y, 'field', 'field-head', 2.5); });
-        out += `<text class="small-label" x="140" y="54" text-anchor="middle">자기장 B = 0.5 T →</text>`;
-        // the coil edge-on: its normal makes angle φ with B; the wires sit at ± L along the in-plane direction
+        const CX = 240, CY = 104, W = 56, LZ = 44, D = [-0.46, 0.36];
+        const P = (ox, oy, z) => [CX + ox + D[0] * z, CY + oy + D[1] * z];
+        const pt = q => `${q[0].toFixed(1)},${q[1].toFixed(1)}`;
+        const poly = (pts, attrs) => `<polygon points="${pts.map(pt).join(' ')}" ${attrs}/>`;
+        const seg = (q1, q2, attrs) => `<line x1="${q1[0].toFixed(1)}" y1="${q1[1].toFixed(1)}" x2="${q2[0].toFixed(1)}" y2="${q2[1].toFixed(1)}" ${attrs}/>`;
+        let out = '';
+        // 자석 두 개: 윗면·안쪽 면은 코일 뒤, 앞면은 맨 앞
+        const block = (x0, x1, fill, top, side, label, inner) => {
+            const y0 = -62, y1 = 62, zf = LZ + 14, zb = -LZ - 14, X0 = x0 - CX, X1 = x1 - CX, XI = inner === 'right' ? X1 : X0;
+            const f = [P(X0, y0, zf), P(X1, y0, zf), P(X1, y1, zf), P(X0, y1, zf)];
+            const tp = [P(X0, y0, zb), P(X1, y0, zb), P(X1, y0, zf), P(X0, y0, zf)];
+            const sd = [P(XI, y0, zb), P(XI, y0, zf), P(XI, y1, zf), P(XI, y1, zb)];
+            const c = f.reduce((m, q) => [m[0] + q[0] / 4, m[1] + q[1] / 4], [0, 0]);
+            return { back: poly(tp, `fill="${top}" stroke="#64748b" stroke-width="1.2"`) + poly(sd, `fill="${side}" stroke="#64748b" stroke-width="1.2"`),
+                front: poly(f, `fill="${fill}" stroke="#475569" stroke-width="1.4"`) + `<text class="pole-text" x="${c[0].toFixed(1)}" y="${(c[1] + 6).toFixed(1)}" text-anchor="middle">${label}</text>` };
+        };
+        const nB = block(104, 146, '#f3a29a', '#f8c8c2', '#e8968d', 'N', 'right'), sB = block(330, 372, '#93c5ea', '#c2dff5', '#86b8df', 'S', 'right');
+        out += nB.back + sB.back;
+        // 자기장(N → S), 코일 뒤쪽
+        [-38, -13, 12, 37].forEach((dy, i) => { const z = i % 2 ? 14 : -14, a1 = P(148 - CX + D[0] * 0, dy, z), a2 = P(328 - CX, dy, z); out += arrow(a1[0], a1[1], a2[0], a2[1], 'field', 'field-head', 2.5); });
+        // 코일 꼭짓점
         const nx = Math.cos(phi), ny = -Math.sin(phi), dx = -ny, dy = nx;
-        const w1 = [CX + dx * L, CY + dy * L], w2 = [CX - dx * L, CY - dy * L];
-        out += `<line class="coil-edge" x1="${w1[0].toFixed(1)}" y1="${w1[1].toFixed(1)}" x2="${w2[0].toFixed(1)}" y2="${w2[1].toFixed(1)}"/>`;
-        // current direction in each wire: with a commutator it flips each half turn; without it stays
+        const o1 = [dx * W, dy * W], o2 = [-dx * W, -dy * W];
+        // 축 뒤쪽 토막
+        out += seg(P(0, 0, -LZ - 30), P(0, 0, 0), 'stroke="#64748b" stroke-width="5" stroke-linecap="round"');
+        // 코일 면: 법선이 화면 쪽을 향할수록 밝게
+        const shade = 0.12 + 0.2 * Math.abs(Math.cos(phi));
+        out += poly([P(o1[0], o1[1], -LZ), P(o1[0], o1[1], LZ), P(o2[0], o2[1], LZ), P(o2[0], o2[1], -LZ)], `fill="#f4b46a" fill-opacity="${shade.toFixed(2)}" stroke="none"`);
+        // 여러 번 감은 도선(두 가닥으로 나타냄)
+        [0, 1].forEach(k => { const m = 1 - k * 0.07, zz = LZ * (1 - k * 0.05); out += poly([P(o1[0] * m, o1[1] * m, -zz), P(o1[0] * m, o1[1] * m, zz), P(o2[0] * m, o2[1] * m, zz), P(o2[0] * m, o2[1] * m, -zz)], `fill="none" stroke="${k ? '#c2701f' : '#9a4a0c'}" stroke-width="${k ? 3 : 5}" stroke-linejoin="round"`); });
+        // 전류 방향: 정류자가 있으면 반 바퀴마다 뒤집힘
         const half = Math.floor((Math.PI / 2 - phi) / Math.PI + 1e-9), flip = a.comm && on ? (half % 2 === 0 ? 1 : -1) : 1;
-        const cur1 = on && a.moves ? flip : on ? 1 : 0; // +1 = out of the screen at wire 1
-        [[w1, cur1], [w2, -cur1]].forEach(([wp, c]) => {
-            out += `<circle class="wire-end" cx="${wp[0].toFixed(1)}" cy="${wp[1].toFixed(1)}" r="6"/>`;
-            if (c > 0) out += `<circle fill="#d97706" cx="${wp[0].toFixed(1)}" cy="${wp[1].toFixed(1)}" r="2"/>`;
-            else if (c < 0) out += `<line class="wire-mark" x1="${(wp[0] - 3.5).toFixed(1)}" y1="${(wp[1] - 3.5).toFixed(1)}" x2="${(wp[0] + 3.5).toFixed(1)}" y2="${(wp[1] + 3.5).toFixed(1)}"/><line class="wire-mark" x1="${(wp[0] - 3.5).toFixed(1)}" y1="${(wp[1] + 3.5).toFixed(1)}" x2="${(wp[0] + 3.5).toFixed(1)}" y2="${(wp[1] - 3.5).toFixed(1)}"/>`;
-            // force F = I L × B: current out of the screen in B along +x gives a force along screen-up (−y)
-            if (on && c !== 0) { const fl = 12 + 16 * Math.min(1, a.tauMax / 0.02); out += arrow(wp[0], wp[1], wp[0], wp[1] - c * fl, 'force', 'force-head', 3); }
-        });
-        out += `<circle class="shaft" cx="${CX}" cy="${CY}" r="3"/>`;
-        // commutator: two half rings turning with the coil, brushes fixed left and right
-        const RX = 140, RY = 168, r = 11;
+        const cur1 = on && a.moves ? flip : on ? 1 : 0; // +1 = 도선 1에서 앞쪽(+z)으로
+        const L = Math.hypot(D[0], D[1]), ux = D[0] / L, uy = D[1] / L;
+        const chevron = (o, z, dir) => { const q = P(o[0], o[1], z), vx = ux * dir, vy = uy * dir; return `<path d="M${(q[0] - vx * 6 - vy * 5).toFixed(1)},${(q[1] - vy * 6 + vx * 5).toFixed(1)} L${(q[0] + vx * 5).toFixed(1)},${(q[1] + vy * 5).toFixed(1)} L${(q[0] - vx * 6 + vy * 5).toFixed(1)},${(q[1] - vy * 6 - vx * 5).toFixed(1)}" fill="none" stroke="#7c2d12" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`; };
+        if (cur1) [[o1, cur1], [o2, -cur1]].forEach(([o, c]) => { [-26, 0, 26].forEach(z => { out += chevron(o, z, c); }); });
+        // 도선이 받는 힘 F = BIL: 화면에서 위아래
+        if (on && cur1) [[o1, cur1], [o2, -cur1]].forEach(([o, c]) => { const q = P(o[0], o[1], 0), fl = 20 + 18 * Math.min(1, a.tauMax / 0.02); out += arrow(q[0], q[1], q[0], q[1] - c * fl, 'force', 'force-head', 4.5); });
+        // 축 앞쪽 토막, 코일 끝 → 정류자 도선, 정류자
+        const RC = P(0, 0, LZ + 58), r = 13;
+        out += seg(P(0, 0, 0), P(0, 0, LZ + 80), 'stroke="#64748b" stroke-width="5" stroke-linecap="round"');
+        [o1, o2].forEach((o, i) => { const e = P(o[0], o[1], LZ), m = P(o[0] * 0.3, o[1] * 0.3, LZ + 34), end = P(o[0] * 0.2, o[1] * 0.2, LZ + 60); out += `<path d="M${pt(e)} Q${pt(m)} ${pt(end)}" fill="none" stroke="${i ? '#d97706' : '#9a4a0c'}" stroke-width="2.4"/>`; });
         if (a.comm) {
-            [0, Math.PI].forEach(off => { const s0 = -phi + off + 0.15, s1 = -phi + off + Math.PI - 0.15; out += `<path class="segment" d="M${(RX + r * Math.cos(s0)).toFixed(1)},${(RY + r * Math.sin(s0)).toFixed(1)} A${r},${r} 0 0 1 ${(RX + r * Math.cos(s1)).toFixed(1)},${(RY + r * Math.sin(s1)).toFixed(1)}"/>`; });
-            out += `<rect class="brush" x="${RX - r - 9}" y="${RY - 3}" width="7" height="6"/><rect class="brush" x="${RX + r + 2}" y="${RY - 3}" width="7" height="6"/>`;
-            out += `<text class="small-label" x="${RX}" y="${RY + 22}" text-anchor="middle">정류자 (반 토막 고리 둘) · 브러시</text>`;
+            [0, Math.PI].forEach((off, i) => { const s0a = -phi + off + 0.24, s1a = -phi + off + Math.PI - 0.24; out += `<path d="M${(RC[0] + r * Math.cos(s0a)).toFixed(1)},${(RC[1] + r * Math.sin(s0a)).toFixed(1)} A${r},${r} 0 0 1 ${(RC[0] + r * Math.cos(s1a)).toFixed(1)},${(RC[1] + r * Math.sin(s1a)).toFixed(1)}" fill="none" stroke="${i ? '#d97706' : '#9a4a0c'}" stroke-width="7"/>`; });
         } else {
-            out += `<circle class="segment" cx="${RX}" cy="${RY}" r="${r}"/><rect class="brush" x="${RX - r - 9}" y="${RY - 3}" width="7" height="6"/><rect class="brush" x="${RX + r + 2}" y="${RY - 3}" width="7" height="6"/>`;
-            out += `<text class="small-label" x="${RX}" y="${RY + 22}" text-anchor="middle">통고리 (정류자 없음) · 전류 방향 그대로</text>`;
+            out += `<circle cx="${RC[0].toFixed(1)}" cy="${RC[1].toFixed(1)}" r="${r}" fill="none" stroke="#9a4a0c" stroke-width="7"/>`;
         }
-        const TX = 262;
-        out += `<text class="trait-text" x="${TX}" y="52">코일 ${a.N}번 × ${a.I} A × 12 cm² × 0.5 T</text>`;
-        out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="72">τ 최대 = ${fmtTau(a.tauMax)}</text>`;
-        out += `<text class="trait-text" x="${TX}" y="94">${on ? `지금 각 θ = ${fmtN(((phi * 180 / Math.PI) % 360 + 360) % 360)}° → τ = ${fmtTau(tau)}` : '아직 전류 없음'}</text>`;
-        out += `<text class="trait-text" x="${TX}" y="112">${on ? `각속도 ${fmtN(Math.abs(w), 1)} rad/s (${fmtN(Math.abs(w) / (2 * Math.PI) * 60)} rpm)` : `정지 마찰 ${fmtTau(TAU_STATIC)}을 넘어야 움직임`}</text>`;
-        out += `<text class="trait-text" x="${TX}" y="130">${on ? `돈 바퀴 수 ${fmtN(Math.abs(phi - Math.PI / 2) / (2 * Math.PI), 2)} · ${fmtN(t, 1)} s` : `정류자 ${COMMS[state.comm].label}`}</text>`;
-        out += `<text class="small-label" x="${TX}" y="154">${a.comm ? '수직을 지날 때마다 전류가 뒤집혀' : '수직을 지나면 돌림힘이 거꾸로 되어'}</text><text class="small-label" x="${TX}" y="168">${a.comm ? '돌림힘이 늘 같은 방향' : '되돌아오며 흔들리다 멈춤'}</text>`;
-        out += `<text class="small-label" x="${TX}" y="190">초록 화살 = 도선이 받는 힘 F = BIL</text>`;
+        // 브러시(고정)와 전지
+        const bl = RC[0] - r - 15, br = RC[0] + r + 4, BX = RC[0], BY = 236, live = on ? '#dc2626' : '#64748b';
+        out += `<path d="M${(bl + 4).toFixed(1)},${RC[1].toFixed(1)} V${BY} H${(BX - 24).toFixed(1)}M${(br + 7).toFixed(1)},${RC[1].toFixed(1)} V${BY - 20} H${(BX + 44).toFixed(1)} V${BY} H${(BX + 29).toFixed(1)}" fill="none" stroke="${live}" stroke-width="2.2"/>`;
+        out += `<rect x="${bl.toFixed(1)}" y="${(RC[1] - 6).toFixed(1)}" width="11" height="12" rx="2" fill="#334155"/><rect x="${br.toFixed(1)}" y="${(RC[1] - 6).toFixed(1)}" width="11" height="12" rx="2" fill="#334155"/>`;
+        out += `<rect x="${(BX - 24).toFixed(1)}" y="${BY - 12}" width="48" height="24" rx="4" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/><rect x="${(BX + 24).toFixed(1)}" y="${BY - 5}" width="5" height="10" fill="#475569"/><text class="small-label" x="${(BX - 15).toFixed(1)}" y="${BY + 5}">−</text><text class="small-label" x="${(BX + 7).toFixed(1)}" y="${BY + 5}">+</text>`;
+        out += nB.front + sB.front;
+        // 짧은 이름표
+        out += `<text class="small-label" x="${(BX + 52).toFixed(1)}" y="${BY + 5}">전지</text>`;
+        out += `<text class="small-label" x="${(br + 16).toFixed(1)}" y="${(RC[1] + 26).toFixed(1)}">브러시</text>`;
+        out += `<text class="small-label" x="${(bl - 6).toFixed(1)}" y="${(RC[1] + 26).toFixed(1)}" text-anchor="end">${a.comm ? '정류자' : '통고리'}</text>`;
+        out += `<text class="small-label" x="262" y="22" text-anchor="middle">자기장 B →</text>`;
+        // 수치 읽기(그림 밖 HTML로 옮겨짐)
+        out += `<text class="trait-text prose" x="20" y="40">τ 최대 = ${fmtTau(a.tauMax)} (코일 ${a.N}번 × ${a.I} A × 12 cm² × 0.5 T)</text>`;
+        if (on) out += `<text class="trait-text prose" x="20" y="60">각 θ = ${fmtN(((phi * 180 / Math.PI) % 360 + 360) % 360)}° · τ = ${fmtTau(tau)} · ${fmtN(Math.abs(w), 1)} rad/s (${fmtN(Math.abs(w) / (2 * Math.PI) * 60)} rpm) · ${fmtN(Math.abs(phi - Math.PI / 2) / (2 * Math.PI), 2)}바퀴 · ${fmtN(t, 1)} s</text>`;
         const VERD = { spin: '계속 돎', wobble: '흔들리다 멈춤', still: '거의 안 움직임' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${a.N}번 · ${a.I} A · 정류자 ${COMMS[state.comm].label}: ${VERD[a.verdict]} (6 s 동안 ${fmtN(a.turns, 1)}바퀴)` : `${a.N}번 감은 코일 · ${a.I} A · 정류자 ${COMMS[state.comm].label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">돌림힘 τ = NIAB sinθ (θ는 코일 법선과 B의 각). 관성과 마찰은 작은 모형 전동기 값(대략)</text>`;
+        out += `<text class="note-text" x="20" y="208">돌림힘 τ = NIAB sinθ (θ는 코일 법선과 B의 각). 관성과 마찰은 작은 모형 전동기 값(대략). 초록 화살은 도선이 받는 힘 F = BIL, 갈색 꺾쇠는 전류 방향입니다.</text>`;
         return out;
     }
 
     function graphMotor(a) {
         const X0 = 76, X1 = 420, Y0 = 150, Y1 = 40, tm = Math.max(a.tauMax, 1e-4), xOf = t => X0 + t / SIM_T * (X1 - X0), yOf = tau => (Y0 + Y1) / 2 - clamp(tau / tm, -1, 1) * (Y0 - Y1) / 2;
-        let out = `<text class="axis-title" x="20" y="18">시간에 따른 돌림힘 (mN·m) — ${a.comm ? '정류자가 방향을 뒤집어 늘 한쪽' : '수직을 지날 때마다 방향이 바뀜'}</text>`;
+        let out = `<text class="axis-title" x="20" y="18">시간에 따른 돌림힘 (mN·m)</text>`;
         [0, 1, 2, 3, 4, 5, 6].forEach(t => { out += `<line class="grid-line" x1="${xOf(t).toFixed(1)}" y1="${Y1}" x2="${xOf(t).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(t).toFixed(1)}" y="${Y0 + 14}" text-anchor="${t === 0 ? 'start' : 'middle'}">${t} s</text>`; });
         [[-1, `−${fmtN(tm * 1000, tm >= 0.01 ? 0 : 1)}`], [0, '0'], [1, `+${fmtN(tm * 1000, tm >= 0.01 ? 0 : 1)}`]].forEach(([k, lab]) => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(k * tm).toFixed(1)}" x2="${X1}" y2="${yOf(k * tm).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(k * tm) + 3.5).toFixed(1)}" text-anchor="end">${lab}</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${yOf(0).toFixed(1)}" x2="${X1}" y2="${yOf(0).toFixed(1)}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
@@ -237,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let d = ''; a.samples.forEach(([t, phi, w, tau], i) => { if (i <= idx && i % 2 === 0) d += `${d ? 'L' : 'M'}${xOf(t).toFixed(1)},${yOf(-tau).toFixed(1)} `; });
         out += `<path class="trace" style="stroke:#d97706" d="${d}"/>`;
         if (state.progress > 0) { const [t, , , tau] = a.samples[idx]; out += `<circle fill="#d97706" stroke="#fff" cx="${xOf(t).toFixed(1)}" cy="${yOf(-tau).toFixed(1)}" r="4"/>`; }
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">${a.moves ? (a.comm ? '돌림힘이 0이 되는 죽은점은 관성으로 넘고, 마찰과 균형을 이루면 속도가 일정해집니다' : '되돌리는 돌림힘이 번갈아 나타나 흔들림이 점점 줄어듭니다') : '돌림힘이 정지 마찰보다 작아 코일이 꼼짝하지 않습니다'}</text>`;
+        if (state.progress >= 1) out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">${a.moves ? (a.comm ? '돌림힘이 0이 되는 죽은점은 관성으로 넘고, 마찰과 균형을 이루면 속도가 일정해집니다' : '되돌리는 돌림힘이 번갈아 나타나 흔들림이 점점 줄어듭니다') : '돌림힘이 정지 마찰보다 작아 코일이 꼼짝하지 않습니다'}</text>`;
         return out;
     }
 
@@ -263,9 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${TX}" y="48">χ = ${m.kind === 'ferro' ? '수천 (강자성)' : `${fmtN(m.chi * 1e6, m.kind === 'dia' && Math.abs(m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶`}</text>`;
         out += `<text class="trait-text" x="${TX}" y="64">${m.kind === 'ferro' ? '포화 M = 1.7 × 10⁶ A/m' : 'B = 0.5 T · dB/dx = 50 T/m'}</text>`;
         out += `<text class="trait-text" x="${TX}" y="80">${m.kind === 'ferro' ? 'F = M V (dB/dx), dB/dx = 50 T/m' : 'F = χ V B (dB/dx) / μ₀'}</text>`;
-        out += `<text class="gen-text" style="fill:${F > 0 ? '#059669' : '#dc2626'}" x="${TX}" y="104">F = ${fmtF(F)} (${F > 0 ? '끌림' : '밀림'})</text>`;
-        out += `<text class="small-label" x="${TX}" y="126">${m.kind === 'ferro' ? '자기 구역이 통째로 정렬' : m.kind === 'para' ? '원자 자석이 조금 정렬' : '자기장과 반대로 자기화'}</text>`;
-        out += `<text class="small-label" x="${TX}" y="140">${m.kind === 'ferro' ? '→ 시료 무게(7.9 g)의 천 배 넘는 힘' : `→ 시료 무게(≈ ${fmtN([7.9, 21.5, 2.7, 9.0, 9.8][Object.keys(MATERIALS).indexOf(state.material)], 1)} g)의 ${fmtN(Math.abs(F) / 9.8 * 1000 / [7.9, 21.5, 2.7, 9.0, 9.8][Object.keys(MATERIALS).indexOf(state.material)] * 100, 1)} %`}</text>`;
+        if (p > 0) out += `<text class="gen-text" style="fill:${F > 0 ? '#059669' : '#dc2626'}" x="${TX}" y="104">F = ${fmtF(F)} (${F > 0 ? '끌림' : '밀림'})</text>`;
+        if (p > 0) out += `<text class="small-label" x="${TX}" y="126">${m.kind === 'ferro' ? '자기 구역이 통째로 정렬' : m.kind === 'para' ? '원자 자석이 조금 정렬' : '자기장과 반대로 자기화'}</text>`;
+        if (p > 0) out += `<text class="small-label" x="${TX}" y="140">${m.kind === 'ferro' ? '→ 시료 무게(7.9 g)의 천 배 넘는 힘' : `→ 시료 무게(≈ ${fmtN([7.9, 21.5, 2.7, 9.0, 9.8][Object.keys(MATERIALS).indexOf(state.material)], 1)} g)의 ${fmtN(Math.abs(F) / 9.8 * 1000 / [7.9, 21.5, 2.7, 9.0, 9.8][Object.keys(MATERIALS).indexOf(state.material)] * 100, 1)} %`}</text>`;
         const VERD = { strong: '세게 끌림', weak: '아주 약하게 끌림', repel: '아주 약하게 밀림' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${m.label}: ${fmtF(F)} — ${VERD[a.verdict]}` : `${m.label} 1 cm³에 자석을 가까이 대는 중`}</text>`;
         out += `<text class="note-text" x="20" y="208">노란 화살은 원자 자석의 방향(자기 구역). 힘의 크기는 실제 자화율과 센 네오디뮴 자석 값으로 계산(대략)</text>`;
@@ -315,9 +343,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${TX}" y="52">퀴리 온도 ${fmtN(f.Tc)} ℃ (${fmtN(f.Tc + 273)} K)</text>`;
         out += `<text class="trait-text" x="${TX}" y="70">가열 온도 ${T} ℃ (${T + 273} K)</text>`;
         out += `<text class="trait-text" x="${TX}" y="88">T/Tc = ${fmtN((T + 273) / (f.Tc + 273), 2)}</text>`;
-        out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="110">자발 자기화 M/M₀ = ${fmtN(ratio, 2)}</text>`;
-        out += `<text class="small-label" x="${TX}" y="130">${T >= f.Tc ? '퀴리 온도 위 — 자기 구역 사라짐' : 'M/M₀ ≈ (1 − T/Tc)^⅓ (대략)'}</text>`;
-        out += `<text class="small-label" x="${TX}" y="144">${T >= f.Tc ? '상자성체처럼 아주 약하게만 끌림' : `자발 자기화는 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %`}</text>`;
+        if (p > 0) out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="110">자발 자기화 M/M₀ = ${fmtN(ratio, 2)}</text>`;
+        if (p > 0) out += `<text class="small-label" x="${TX}" y="130">${T >= f.Tc ? '퀴리 온도 위 — 자기 구역 사라짐' : 'M/M₀ ≈ (1 − T/Tc)^⅓ (대략)'}</text>`;
+        if (p > 0) out += `<text class="small-label" x="${TX}" y="144">${T >= f.Tc ? '상자성체처럼 아주 약하게만 끌림' : `자발 자기화는 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %`}</text>`;
         const VERD = { strong: '세게 붙음', weak: '약하게 붙음', none: '안 붙음' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${T} ℃의 ${f.label}: M/M₀ = ${fmtN(ratio, 2)} — ${VERD[a.verdict]}` : `${f.label} · ${T} ℃로 달구고 자석 대기`}</text>`;
         out += `<text class="note-text" x="20" y="208">노란 화살은 자기 구역의 방향. 자기화 곡선은 퀴리 온도 근처의 어림식이고, 식으면 다시 강자성체가 됩니다</text>`;
@@ -344,9 +372,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function noteFor(a) {
         if (a.kind === 'motor') {
             return `<div class="data-row"><span class="data-name">돌림힘</span><span class="data-val">τ = NIAB sinθ = ${a.N} × ${a.I} A × 1.2 × 10⁻³ m² × 0.5 T × sinθ → 최대 ${fmtTau(a.tauMax)}</span></div>` +
-                `<div class="data-row"><span class="data-name">정지 마찰</span><span class="data-val">${fmtTau(TAU_STATIC)} — ${a.moves ? '돌림힘이 더 커서 움직임' : '돌림힘이 이보다 작아 꼼짝 않음'}</span></div>` +
+                `<div class="data-row"><span class="data-name">정지 마찰</span><span class="data-val">${fmtTau(TAU_STATIC)}${state.progress >= 1 ? ` — ${a.moves ? '돌림힘이 더 커서 움직임' : '돌림힘이 이보다 작아 꼼짝 않음'}` : ''}</span></div>` + (state.progress < 1 ? '' :
                 `<div class="data-row"><span class="data-name">6초 뒤</span><span class="data-val">${a.moves ? `${fmtN(a.turns, 2)}바퀴 돎, 각속도 ${fmtN(Math.abs(a.wEnd), 1)} rad/s` : '제자리'}${a.comm ? ' (정류자가 반 바퀴마다 전류를 뒤집음)' : ' (전류 방향 그대로)'}</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ spin: '계속 돎', wobble: '반 바퀴 가다 흔들리며 멈춤', still: '거의 안 움직임' }[a.verdict]}</span></div>`;
+                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ spin: '계속 돎', wobble: '반 바퀴 가다 흔들리며 멈춤', still: '거의 안 움직임' }[a.verdict]}</span></div>`);
         }
         if (a.kind === 'material') {
             return `<div class="data-row"><span class="data-name">시료</span><span class="data-val">${a.m.label} 1 cm³ — ${a.m.kind === 'ferro' ? '강자성체, 포화 자기화 1.7 × 10⁶ A/m' : `${a.m.kind === 'para' ? '상자성체' : '반자성체'}, 자화율 ${fmtN(a.m.chi * 1e6, Math.abs(a.m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶`}</span></div>` +
@@ -362,6 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
+        const box = a.kind === 'motor' ? '0 0 460 256' : '0 0 460 214';
+        if (mainSvg.getAttribute('viewBox') !== box) mainSvg.setAttribute('viewBox', box);
         window.scienceScene.render(mainGroup,a.kind === 'motor' ? renderMotor(a) : a.kind === 'material' ? renderMaterial(a) : renderCurie(a));
         window.scienceScene.render(graphGroup,a.kind === 'motor' ? graphMotor(a) : a.kind === 'material' ? graphMaterial(a) : graphCurie(a));
         liftProse();
@@ -443,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'motor' ? '전류 흘리기' : state.mode === 'material' ? '자석 가까이 대기' : '달구고 자석 대기';
-        stageCaption.textContent = state.mode === 'motor' ? '축 끝에서 본 코일입니다. 양쪽 도선의 ⊙는 전류가 나오는 쪽, ⊗는 들어가는 쪽이고, 초록 화살이 도선이 받는 힘입니다.'
+        stageCaption.textContent = state.mode === 'motor' ? '비스듬히 내려다본 전동기입니다. 갈색 꺾쇠는 코일에 흐르는 전류의 방향, 초록 화살은 도선이 받는 힘입니다.'
             : state.mode === 'material' ? '저울 위의 시료 1 cm³에 자석의 N극을 가까이 댑니다. 시료 속 노란 화살은 원자 자석의 방향, 위 화살은 시료가 받는 힘입니다.'
                 : '먼저 덩이를 달구고(앞 절반), 그 다음 자석을 가까이 댑니다(뒤 절반). 노란 화살이 자기 구역의 방향입니다.';
         settingsChanged();

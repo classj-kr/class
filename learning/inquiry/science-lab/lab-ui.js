@@ -17,7 +17,11 @@
  if(predictionField){
   let ran=false;
   const chosen=()=>!!predictionField.querySelector('[data-prediction].selected,[data-prediction][aria-pressed="true"],[data-prediction][aria-checked="true"]');
-  const syncGate=()=>document.body.classList.toggle('lab-awaiting-prediction',!ran&&!chosen());
+  // 실험 결과 칸(#resultContent)이 열렸으면 이미 결과를 본 것이므로 가리지 않는다.
+  const resultShown=()=>{const c=document.getElementById('resultContent');return !!c&&!c.hidden;};
+  const syncGate=()=>document.body.classList.toggle('lab-awaiting-prediction',!ran&&!chosen()&&!resultShown());
+  const resultBox=document.getElementById('resultContent');
+  if(resultBox)new MutationObserver(syncGate).observe(resultBox,{attributes:true,attributeFilter:['hidden']});
   new MutationObserver(records=>{if(records.some(r=>r.type==='childList'))ran=false;syncGate();})
    .observe(predictionField,{subtree:true,childList:true,attributes:true,attributeFilter:['class','aria-pressed','aria-checked']});
   document.addEventListener('click',event=>{

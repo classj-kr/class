@@ -14,46 +14,83 @@ const ACTS = {
     run: { name: '달릴 때', hr: 160, sv: 110, br: 40, tv: 800 },
 };
 
+/* Front view, textbook proportions. The figure faces us, so the person's left
+   (where the heart sits) is on the viewer's right. Each organ carries its own
+   drawing and the stretch of the route the traveller walks while inside it. */
 const SYSTEMS = {
     dig: {
-        name: '소화 기관', mover: '음식', colour: '#e0b070', unit: '시간',
+        name: '소화 기관', mover: '음식', colour: '#eab676', dark: '#9a6326', unit: '시간',
         label: '음식이 다 지나가는 시간',
         organs: [
-            { n: '입', x: 150, y: 34, w: 26, h: 14, d: 'M 137 34 C 137 30 144 28 150 30 C 156 28 163 30 163 34 C 163 38 157 41 150 41 C 143 41 137 38 137 34 Z', note: '이로 잘게 부수고 침을 섞습니다', stay: '30초' },
-            { n: '식도', x: 150, y: 64, w: 12, h: 26, d: 'M 145 51 C 148 51 152 51 155 51 C 156 59 154 69 155 77 C 152 77 148 77 145 77 C 146 69 144 59 145 51 Z', note: '꿈틀 운동으로 위까지 밀어 내립니다', stay: '7초' },
-            { n: '위', x: 134, y: 100, w: 40, h: 30, d: 'M 148 85 C 138 85 124 88 118 96 C 113 103 115 112 124 115 C 134 117 146 112 153 104 C 155 101 154 96 147 96 C 138 96 130 99 126 97 C 124 94 130 90 144 89 Z', note: '위액과 섞어 죽처럼 만듭니다', stay: '3시간' },
-            { n: '작은창자', x: 150, y: 140, w: 52, h: 30, d: 'M 130 126 C 142 125 158 125 170 127 C 176 133 174 141 166 143 C 174 146 175 152 168 155 C 156 155 144 154 132 155 C 125 152 126 146 134 143 C 126 141 124 133 130 126 Z', note: '영양소를 빨아들여 피로 보냅니다', stay: '5시간' },
-            { n: '큰창자', x: 150, y: 140, w: 58, h: 16, d: 'M 121 131 C 124 131 127 131 127 139 C 133 142 167 142 173 139 C 173 131 176 131 179 131 C 179 142 176 149 166 149 C 154 149 154 145 150 145 C 146 145 146 149 134 149 C 124 149 121 142 121 131 Z', note: '물을 빨아들이고 찌꺼기를 모읍니다', stay: '16시간' },
+            { n: '입', x: 150, y: 53, note: '이로 잘게 부수고 침을 섞습니다', stay: '30초',
+              art: (c, k) => `<path d="M139 51 Q150 47 161 51 Q150 60 139 51 Z" fill="${c}" stroke="${k}" stroke-width="1.4"/><path d="M141 52 Q150 54 159 52" fill="none" stroke="${k}" stroke-width="1"/>`,
+              route: [[150, 52], [150, 60]] },
+            { n: '식도', x: 151, y: 92, note: '꿈틀 운동으로 위까지 밀어 내립니다', stay: '7초',
+              art: (c, k) => `<path d="M150 58 L150 80 C150 100 151 112 158 128" fill="none" stroke="${k}" stroke-width="8" stroke-linecap="round"/><path d="M150 58 L150 80 C150 100 151 112 158 128" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round"/>`,
+              route: [[150, 60], [150, 80], [151, 104], [158, 127]] },
+            { n: '위', x: 172, y: 138, note: '위액과 섞어 죽처럼 만듭니다', stay: '3시간',
+              art: (c, k) => `<path d="M156 126 C162 118 182 118 186 132 C190 148 178 162 160 162 C148 162 140 156 141 149 C142 145 147 146 151 148 C158 151 166 147 168 140 C170 133 164 129 158 131 Z" fill="${c}" stroke="${k}" stroke-width="1.6"/><path d="M150 149 L144 158" stroke="${c}" stroke-width="6" stroke-linecap="round"/>`,
+              route: [[158, 128], [176, 128], [180, 144], [166, 156], [148, 154], [144, 160]] },
+            { n: '작은창자', x: 150, y: 194, note: '영양소를 빨아들여 피로 보냅니다', stay: '5시간',
+              art: (c, k) => { const d = 'M144 162 C130 166 132 178 146 178 C162 178 170 180 166 186 C162 192 138 186 134 194 C130 202 166 194 168 202 C170 210 140 204 136 210 C134 214 144 216 150 216'; return `<path d="${d}" fill="none" stroke="${k}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${c}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`; },
+              route: [[144, 161], [133, 171], [148, 178], [166, 184], [140, 190], [136, 197], [166, 200], [140, 208], [150, 216]] },
+            { n: '큰창자', x: 124, y: 196, note: '물을 빨아들이고 찌꺼기를 모읍니다', stay: '16시간',
+              art: (c, k) => { const d = 'M150 216 C136 218 126 220 124 212 L124 176 C124 168 128 166 136 166 L166 166 C174 166 177 170 177 178 L177 212 C177 222 168 224 158 224 C152 224 150 228 150 238'; return `<path d="${d}" fill="none" stroke="${k}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${c}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`; },
+              route: [[150, 216], [126, 214], [124, 176], [132, 166], [168, 166], [177, 178], [177, 214], [158, 224], [150, 238]] },
         ],
     },
     resp: {
-        name: '호흡 기관', mover: '공기', colour: '#0284c7', unit: 'L/분',
+        name: '호흡 기관', mover: '공기', colour: '#8fc6e8', dark: '#2a6d97', unit: 'L/분',
         label: '1분에 들이마시는 공기',
         organs: [
-            { n: '코', x: 150, y: 32, w: 20, h: 14, d: 'M 150 25 C 154 28 158 33 160 36 C 158 39 153 39 150 37 C 147 39 142 39 140 36 C 142 33 146 28 150 25 Z', note: '먼지를 거르고 공기를 데웁니다', stay: '한순간' },
-            { n: '기관', x: 150, y: 62, w: 12, h: 28, d: 'M 144 48 C 148 48 152 48 156 48 C 156 55 154 62 156 69 C 156 76 154 76 150 76 C 146 76 144 76 144 69 C 146 62 144 55 144 48 Z', note: '목에서 가슴까지 곧게 내려갑니다', stay: '한순간' },
-            { n: '기관지', x: 150, y: 92, w: 34, h: 14, d: 'M 147 85 C 150 85 150 85 153 85 C 154 89 160 93 167 96 C 165 99 162 99 156 94 C 152 91 148 91 144 94 C 138 99 135 99 133 96 C 140 93 146 89 147 85 Z', note: '좌우 폐로 갈라집니다', stay: '한순간' },
-            { n: '폐', x: 150, y: 126, w: 62, h: 34, d: 'M 143 109 C 146 117 146 133 142 143 C 133 144 123 140 119 133 C 116 123 123 111 133 109 C 137 109 140 109 143 109 M 157 109 C 160 109 163 109 167 109 C 177 111 184 123 181 133 C 177 140 167 144 158 143 C 154 133 154 117 157 109 Z', note: '폐 속 폐포에서 산소와 이산화 탄소를 주고받습니다', stay: '숨 한 번' },
+            { n: '코', x: 150, y: 40, note: '먼지를 거르고 공기를 데웁니다', stay: '한순간',
+              art: (c, k) => `<path d="M150 30 C153 36 156 41 158 45 C155 48 145 48 142 45 C144 41 147 36 150 30 Z" fill="${c}" stroke="${k}" stroke-width="1.4"/>`,
+              route: [[150, 30], [150, 46], [150, 60]] },
+            { n: '기관', x: 150, y: 80, note: '목에서 가슴까지 곧게 내려갑니다', stay: '한순간',
+              art: (c, k) => { let s = `<rect x="145" y="60" width="10" height="38" rx="4" fill="${c}" stroke="${k}" stroke-width="1.4"/>`; for (let y = 65; y < 96; y += 6) s += `<path d="M145.5 ${y} H154.5" stroke="${k}" stroke-width="1"/>`; return s; },
+              route: [[150, 60], [150, 98]] },
+            { n: '기관지', x: 150, y: 104, note: '좌우 폐로 갈라집니다', stay: '한순간',
+              art: (c, k) => { const d = 'M150 97 L150 102 M150 102 C144 106 138 108 132 116 M150 102 C156 106 162 108 168 116 M137 110 L128 112 M134 114 L130 124 M163 110 L172 112 M166 114 L170 124'; return `<path d="${d}" fill="none" stroke="${k}" stroke-width="6" stroke-linecap="round"/><path d="${d}" fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/>`; },
+              route: [[150, 98], [150, 102], [140, 108], [132, 116]] },
+            { n: '폐', x: 186, y: 128, note: '폐 속 폐포에서 산소와 이산화 탄소를 주고받습니다', stay: '숨 한 번',
+              art: (c, k) => `<path d="M143 96 C134 88 118 96 114 118 C111 136 112 152 118 158 C126 162 138 158 144 152 C146 132 146 110 143 96 Z M157 96 C166 88 182 96 186 118 C189 136 188 152 182 158 C174 162 164 160 158 154 L160 146 C164 142 162 132 158 128 C156 116 155 106 157 96 Z" fill="${c}" fill-opacity=".85" stroke="${k}" stroke-width="1.6"/><path d="M128 116 Q124 128 126 144 M172 116 Q176 128 174 144" fill="none" stroke="${k}" stroke-width="1" opacity=".55"/>`,
+              route: [[132, 116], [124, 132], [128, 150], [140, 140], [150, 112], [160, 118], [176, 132], [172, 150]] },
         ],
     },
     circ: {
-        name: '순환 기관', mover: '피', colour: '#ff8a8a', unit: 'L/분',
+        name: '순환 기관', mover: '피', colour: '#e8838b', dark: '#9e2f3c', unit: 'L/분',
         label: '1분에 내보내는 피',
         organs: [
-            { n: '심장', x: 148, y: 104, w: 30, h: 34, d: 'M 146 87 C 153 87 163 90 163 99 C 163 110 151 117 144 121 C 139 116 133 108 133 98 C 133 90 140 87 146 87 Z', note: '펌프처럼 피를 밀어 보냅니다', stay: '한 번 뜀' },
-            { n: '동맥', x: 182, y: 140, w: 12, h: 44, d: 'M 179 118 C 183 118 186 128 187 140 C 188 152 186 162 182 162 C 178 162 176 152 177 140 C 177 128 177 118 179 118 Z', note: '굵고 튼튼한 관으로 피가 힘차게 흘러 나갑니다', stay: '몇 초' },
-            { n: '모세혈관', x: 150, y: 128, w: 44, h: 12, d: 'M 128 128 C 134.5 122 143.5 122 150 125 C 156.5 122 165.5 122 172 128 C 165.5 134 156.5 134 150 131 C 143.5 134 134.5 134 128 128 Z', note: '온몸 구석구석에서 산소를 건넵니다', stay: '1초쯤' },
-            { n: '정맥', x: 118, y: 140, w: 12, h: 44, d: 'M 121 118 C 123 128 123 140 123 152 C 122 162 118 162 115 162 C 112 152 113 140 114 128 C 115 118 118 118 121 118 Z', note: '온몸을 돈 피가 심장으로 돌아옵니다', stay: '몇 초' },
+            { n: '심장', x: 158, y: 122, note: '펌프처럼 피를 밀어 보냅니다', stay: '한 번 뜀',
+              art: (c, k) => `<path d="M157 108 C150 102 140 106 141 116 C142 126 152 134 160 140 C168 133 176 124 174 114 C172 104 162 103 157 108 Z" fill="${c}" stroke="${k}" stroke-width="1.6"/><path d="M152 106 C150 96 156 92 162 94" fill="none" stroke="${k}" stroke-width="5" stroke-linecap="round"/>`,
+              route: [[146, 122], [158, 128], [162, 112], [158, 98]] },
+            { n: '동맥', x: 166, y: 176, note: '굵고 튼튼한 관으로 피가 힘차게 흘러 나갑니다', stay: '몇 초',
+              art: () => `<path d="M158 98 C162 90 170 92 168 104 L164 230 L177 238 L177 292 M164 230 L123 238 L123 292 M166 100 C182 96 196 104 198 130 L202 222" fill="none" stroke="#c43a48" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M152 100 C130 96 104 104 102 130 L98 222" fill="none" stroke="#c43a48" stroke-width="3" stroke-linecap="round"/>`,
+              route: [[158, 98], [166, 94], [167, 110], [164, 230], [177, 238], [177, 290]] },
+            { n: '모세혈관', x: 172, y: 296, note: '온몸 구석구석에서 산소를 건넵니다', stay: '1초쯤',
+              art: () => { let s = ''; for (const [a, b] of [[177, 168], [123, 132]]) { s += `<path d="M${a} 288 C${a} 300 ${b} 300 ${b} 288" fill="none" stroke="#b2597a" stroke-width="2"/>`; for (let i = 0; i < 4; i++) { const y = 286 + i * 4; s += `<path d="M${a} ${y} Q${(a + b) / 2} ${y + 3} ${b} ${y}" fill="none" stroke="#b2597a" stroke-width="1" opacity=".8"/>`; } } return s; },
+              route: [[177, 290], [174, 298], [168, 292]] },
+            { n: '정맥', x: 140, y: 176, note: '온몸을 돈 피가 심장으로 돌아옵니다', stay: '몇 초',
+              art: () => `<path d="M168 292 L168 236 L144 228 L146 124 M132 292 L132 236 L144 228" fill="none" stroke="#3f63a8" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M144 104 C126 102 108 110 106 132 L104 222 M156 104 C174 102 192 110 194 132 L196 222" fill="none" stroke="#3f63a8" stroke-width="2.6" stroke-linecap="round"/>`,
+              route: [[168, 292], [168, 236], [144, 228], [146, 124]] },
         ],
     },
     excr: {
-        name: '배설 기관', mover: '찌꺼기', colour: '#a8d6b0', unit: 'L/일',
+        name: '배설 기관', mover: '찌꺼기', colour: '#e0a07a', dark: '#8a4a26', unit: 'L/일',
         label: '하루에 거르는 피',
         organs: [
-            { n: '콩팥', x: 150, y: 108, w: 56, h: 26, d: 'M 136 95 C 142 95 142 103 138 108 C 142 113 142 121 136 121 C 128 121 123 113 123 108 C 123 103 128 95 136 95 M 164 95 C 172 95 177 103 177 108 C 177 113 172 121 164 121 C 158 121 158 113 162 108 C 158 103 158 95 164 95 Z', note: '피 속 찌꺼기를 걸러 냅니다', stay: '늘' },
-            { n: '오줌관', x: 150, y: 132, w: 10, h: 24, d: 'M 143 117 C 145 127 146 137 147 147 C 146 147 144 147 144 147 C 143 137 142 127 140 117 Z M 157 117 C 158 127 157 137 156 147 C 154 147 153 147 153 147 C 154 137 155 127 160 117 Z', note: '콩팥에서 방광까지 내려갑니다', stay: '몇 초' },
-            { n: '방광', x: 150, y: 144, w: 26, h: 16, d: 'M 150 133 C 159 133 167 138 167 144 C 167 150 159 155 150 155 C 141 155 133 150 133 144 C 133 138 141 133 150 133 Z', note: '오줌을 모아 두었다가 내보냅니다', stay: '몇 시간' },
-            { n: '요도', x: 150, y: 169, w: 8, h: 24, d: 'M 147 154 L 153 154 L 153 181 L 147 181 Z', note: '방광에 모인 오줌을 몸 밖으로 내보냅니다', stay: '배출할 때' },
+            { n: '콩팥', x: 132, y: 172, note: '피 속 찌꺼기를 걸러 냅니다', stay: '늘',
+              art: (c, k) => `<path d="M131 160 C122 160 118 170 120 180 C122 190 132 194 137 188 C140 184 136 180 138 176 C140 172 142 168 140 164 C138 161 134 160 131 160 Z M169 156 C178 156 182 166 180 176 C178 186 168 190 163 184 C160 180 164 176 162 172 C160 168 158 164 160 160 C162 157 166 156 169 156 Z" fill="${c}" stroke="${k}" stroke-width="1.6"/><path d="M150 150 L150 214 M138 174 L150 172 M162 170 L150 168" stroke="#c43a48" stroke-width="2" opacity=".55"/>`,
+              route: [[150, 168], [138, 174], [130, 178], [136, 184]] },
+            { n: '오줌관', x: 140, y: 202, note: '콩팥에서 방광까지 내려갑니다', stay: '몇 초',
+              art: (c, k) => `<path d="M136 184 C138 196 142 206 146 218 M164 180 C162 194 158 206 154 218" fill="none" stroke="${k}" stroke-width="3" stroke-linecap="round"/>`,
+              route: [[136, 184], [140, 200], [146, 218]] },
+            { n: '방광', x: 150, y: 224, note: '오줌을 모아 두었다가 내보냅니다', stay: '몇 시간',
+              art: (c, k) => `<path d="M150 214 C162 214 168 220 166 228 C164 234 158 236 150 236 C142 236 136 234 134 228 C132 220 138 214 150 214 Z" fill="${c}" stroke="${k}" stroke-width="1.6"/>`,
+              route: [[146, 218], [150, 226], [150, 235]] },
+            { n: '요도', x: 150, y: 242, note: '방광에 모인 오줌을 몸 밖으로 내보냅니다', stay: '배출할 때',
+              art: (c, k) => `<path d="M150 236 L150 250" stroke="${k}" stroke-width="3" stroke-linecap="round"/>`,
+              route: [[150, 235], [150, 250]] },
         ],
     },
 };
@@ -105,67 +142,71 @@ function el(tag, attrs, text) {
     return n;
 }
 
+const BODY_PATH = 'M150 12 C166 12 175 25 175 41 C175 55 168 64 160 68 L160 77 C178 80 196 85 204 95 C210 106 212 140 214 190 C215 210 214 226 210 234 C206 239 200 237 199 231 C197 213 196 180 192 140 L190 134 C188 162 186 196 188 222 C190 260 187 290 185 314 L163 314 C161 286 157 262 152 240 L148 240 C143 262 139 286 137 314 L115 314 C113 290 110 260 112 222 C114 196 112 162 110 134 L108 140 C104 180 103 213 101 231 C100 237 94 239 90 234 C86 226 85 210 86 190 C88 140 90 106 96 95 C104 85 122 80 140 77 L140 68 C132 64 125 55 125 41 C125 25 134 12 150 12 Z';
+
+function svgFrag(g, markup) {
+    const tmp = document.createElementNS(svgNS, 'g');
+    tmp.innerHTML = markup;
+    while (tmp.firstChild) g.appendChild(tmp.firstChild);
+}
+function routeOf(sys) {
+    const pts = [], marks = [];
+    sys.organs.forEach(o => {
+        marks.push(pts.length ? pts.length - 1 : 0);
+        o.route.forEach((p, i) => { if (!(pts.length && i === 0)) pts.push(p); });
+    });
+    const seg = [];
+    let total = 0;
+    for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); seg.push(d); total += d; }
+    const markLen = marks.map(m => seg.slice(0, m).reduce((a, b) => a + b, 0) / total);
+    return { pts, seg, total, markLen };
+}
+function pointOn(r, t) {
+    let left = clamp(t, 0, 1) * r.total;
+    for (let i = 0; i < r.seg.length; i++) {
+        if (left <= r.seg[i] || i === r.seg.length - 1) {
+            const f = r.seg[i] ? clamp(left / r.seg[i], 0, 1) : 0, a = r.pts[i], b = r.pts[i + 1];
+            return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f];
+        }
+        left -= r.seg[i];
+    }
+    return r.pts[r.pts.length - 1];
+}
+
 function drawBody(g) {
     const a = analyse();
-    const organs = a.sys.organs;
-    const stepAt = state.running ? Math.min(organs.length - 1, Math.floor(state.t * organs.length)) : -1;
+    const sys = a.sys, organs = sys.organs, route = routeOf(sys);
+    let stepAt = -1;
+    if (state.running) route.markLen.forEach((m, i) => { if (state.t >= m) stepAt = i; });
 
-    g.appendChild(el('path', {
-        d: 'M 150 18 C 158 18 163 23 163 31 C 163 38 158 43 155 45 C 165 47 178 52 184 58 C 190 64 193 78 193 96 C 193 110 191 124 188 128 C 185 131 181 129 180 124 C 178 112 179 92 178 78 C 174 76 172 80 172 88 C 172 108 170 132 168 148 C 168 160 166 182 166 198 C 160 198 159 198 157 198 C 156 182 155 166 151 156 C 149 156 149 156 149 156 C 145 166 144 182 143 198 C 141 198 140 198 134 198 C 134 182 132 160 132 148 C 130 132 128 108 128 88 C 128 80 126 76 122 78 C 121 92 122 112 120 124 C 119 129 115 131 112 128 C 109 124 107 110 107 96 C 107 78 110 64 116 58 C 122 52 135 47 145 45 C 142 43 137 38 137 31 C 137 23 142 18 150 18 Z',
-        class: 'body-outline',
-    }));
+    g.appendChild(el('path', { d: BODY_PATH, class: 'body-outline' }));
+    svgFrag(g, '<path class="body-detail" d="M142 33 Q144 31 146 33 M154 33 Q156 31 158 33"/>');
 
-    let d = '';
-    organs.forEach((o, i) => { d += `${i ? 'L' : 'M'} ${o.x} ${o.y} `; });
-    if (state.sys === 'circ') d += `L ${organs[0].x} ${organs[0].y} `;
-    g.appendChild(el('path', { d, class: 'path-line' }));
-
+    // A beating heart: the drawing swells at the rate the numbers say.
+    const beat = state.sys === 'circ' ? Math.pow(Math.max(0, Math.sin(Math.PI * ((state.phase * a.act.hr / 60) % 1))), 3) : 0;
     organs.forEach((o, i) => {
         const here = i === stepAt;
-        if (o.d) {
-            g.appendChild(el('path', {
-                d: o.d,
-                class: `organ${here ? ' here' : ''}`, style: `fill:${a.sys.colour}${here ? '' : '99'}`,
-            }));
-        } else {
-            g.appendChild(el('ellipse', {
-                cx: o.x, cy: o.y, rx: o.w / 2, ry: o.h / 2,
-                class: `organ${here ? ' here' : ''}`, style: `fill:${a.sys.colour}${here ? '' : '99'}`,
-            }));
-        }
+        const wrap = el('g', { class: `organ-art${here ? ' here' : state.running ? ' dim' : ''}`, 'data-scene-key': `${state.sys}-${i}` });
+        if (state.sys === 'circ' && i === 0) wrap.setAttribute('transform', `translate(158 122) scale(${fmt(1 + beat * 0.08, 3)}) translate(-158 -122)`);
+        svgFrag(wrap, o.art(sys.colour, sys.dark));
+        g.appendChild(wrap);
     });
 
-    // The traveller walks the same path the organs sit on.
     if (state.running) {
-        const n = organs.length;
-        const legs = state.sys === 'circ' ? n : n - 1;
-        const p = clamp(state.t, 0, 0.999) * legs;
-        const i = Math.floor(p), f = p - i;
-        const from = organs[i % n], to = organs[(i + 1) % n];
-        g.appendChild(el('circle', {
-            cx: from.x + (to.x - from.x) * f, cy: from.y + (to.y - from.y) * f,
-            r: 6, class: 'traveller', style: `fill:${a.sys.colour}`,
-        }));
+        const [x, y] = pointOn(route, state.t);
+        g.appendChild(el('circle', { cx: fmt(x, 1), cy: fmt(y, 1), r: 5.5, class: 'traveller', style: `fill:${sys.dark}` }));
     }
 
-    // A heart that beats at the rate the numbers say.
-    if (state.sys === 'circ') {
-        const beat = (state.phase * a.act.hr / 60) % 1;
-        g.appendChild(el('ellipse', {
-            cx: organs[0].x, cy: organs[0].y, rx: 15 + beat * 6, ry: 17 + beat * 6,
-            class: 'beat-ring', style: `opacity:${fmt(0.7 - beat * 0.7, 2)}`,
-        }));
-    }
-
-    g.appendChild(el('text', { x: 20, y: 22, class: 'small-label' }, `${a.sys.name} · ${a.act.name}`));
-    // The journey, listed in order beside the body.
-    g.appendChild(el('text', { x: 244, y: 22, class: 'small-label' }, `${a.sys.mover}가 지나는 차례`));
+    // Names stand beside the body, joined to each organ by a thin line.
+    g.appendChild(el('text', { x: 236, y: 26, class: 'small-label' }, `${sys.mover}가 지나는 차례`));
+    const gap = Math.min(52, 250 / organs.length);
     organs.forEach((o, i) => {
-        const here = i === stepAt;
-        const y = 44 + i * 22;
-        g.appendChild(el('circle', { cx: 252, cy: y, r: 8, class: 'organ', style: `fill:${a.sys.colour}${here ? '' : '77'}` }));
-        g.appendChild(el('text', { x: 252, y: y + 3, 'text-anchor': 'middle', class: 'tiny-label', style: 'fill:#10202a;font-weight:900' }, String(i + 1)));
-        g.appendChild(el('text', { x: 266, y: y + 4, class: `step-text${here ? ' here' : ''}` }, o.n));
+        const here = i === stepAt, y = 56 + i * gap;
+        g.appendChild(el('path', { d: `M${o.x} ${o.y} L222 ${y} L240 ${y}`, class: `leader${here ? ' here' : ''}` }));
+        g.appendChild(el('circle', { cx: o.x, cy: o.y, r: 2.4, class: 'leader-dot' }));
+        g.appendChild(el('circle', { cx: 254, cy: y, r: 11, class: `step-dot${here ? ' here' : ''}`, style: here ? `fill:${sys.dark}` : '' }));
+        g.appendChild(el('text', { x: 254, y: y + 5, 'text-anchor': 'middle', class: `step-num${here ? ' here' : ''}` }, String(i + 1)));
+        g.appendChild(el('text', { x: 272, y: y + 5, class: `step-text${here ? ' here' : ''}` }, o.n));
     });
 }
 
@@ -210,12 +251,20 @@ function tick(dt) {
     return false;
 }
 
-let last = 0;
+let last = 0, looping = false;
+const reduceMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+// The loop only runs while something travels; it stops when the trip ends.
 function frame(now) {
-    const dt = Math.min(0.05, (now - last) / 1000 || 0);
+    const dt = Math.max(0, Math.min(0.05, (now - last) / 1000 || 0));
     last = now;
     tick(dt);
     render();
+    if (state.running) requestAnimationFrame(frame); else looping = false;
+}
+function startLoop() {
+    if (reduceMotion()) { while (state.running) tick(0.5); render(); return; }
+    if (looping) return;
+    looping = true; last = performance.now();
     requestAnimationFrame(frame);
 }
 
@@ -238,6 +287,7 @@ $('runBtn').addEventListener('click', () => {
     state.t = 0; state.running = true; state.checked = true;
     $('runBtn').textContent = '멈추기';
     render();
+    startLoop();
 });
 $('resetBtn').addEventListener('click', () => {
     state.sys = 'circ'; state.act = 'rest';
@@ -265,7 +315,6 @@ document.querySelectorAll('.quiz-card').forEach(card => {
 markSelected('[data-sys]', 'sys', state.sys);
 markSelected('[data-act]', 'act', state.act);
 render();
-requestAnimationFrame(frame);
 
 window.__organModel = {
     state, analyse, tick, render, output, ratio, verdictFor,

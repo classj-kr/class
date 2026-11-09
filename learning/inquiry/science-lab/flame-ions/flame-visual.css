@@ -58,10 +58,15 @@
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
-.flame-chamber { fill: #070d1a; stroke: rgba(148, 163, 184, 0.45); stroke-width: 1.2; }
-.glass { fill: rgba(150, 210, 235, .08); stroke: rgba(177, 226, 230, .7); stroke-width: 2.2; }
+.flame-backdrop { fill: #eef2f7; stroke: #d5dde7; stroke-width: 1; }
+.burner-base { fill: #475569; stroke: #1e293b; stroke-width: 1.2; }
+.burner-collar { fill: #334155; }
+.air-hole { fill: #0f172a; }
+.gas-hose { fill: none; stroke: #b45309; stroke-width: 4; stroke-linecap: round; }
+.spec-line { stroke: #334155; stroke-width: .6; }
+.glass { fill: none; stroke: #7c9aab; stroke-width: 2.2; }
 .stand { fill: #4a5a63; stroke: rgba(190, 235, 242, .45); stroke-width: 1.2; }
-.burner-flame { fill: #0284c7; opacity: .8; }
+.burner-flame { fill: #7cb7f0; opacity: .75; }
 
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }
 .small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
@@ -93,7 +98,7 @@
 .burner { fill: #64748b; stroke: #334155; stroke-width: 1.5; }
 .wire, .wire-loop { fill: none; stroke: #94a3b8; stroke-width: 2.5; }
 .handle { fill: #92400e; stroke: #78350f; stroke-width: 1.2; }
-.spec-bg { fill: #0f172a; stroke: #334155; stroke-width: 1; }
+.spec-bg { fill: #ffffff; stroke: #94a3b8; stroke-width: 1; }
 .ruler { stroke: #64748b; stroke-width: 1; }
 .supply { fill: #f1f5f9; stroke: #64748b; stroke-width: 1.5; }
 .lead { fill: none; stroke-width: 2.5; stroke-linejoin: round; }

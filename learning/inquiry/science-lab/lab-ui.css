@@ -227,4 +227,4 @@ svg.main-svg :is(.magnet-s,.south-pole){fill:url(#science-material-south)}
 svg.main-svg :is(.track,.floor){stroke:#7895a4;stroke-width:2.2;stroke-linecap:round}
 /* 예상을 고르기 전: 답이 될 것을 가린다(실험 기구 그림은 그대로). lab-ui.js 가 body 에 표시를 단다. */
 body.lab-awaiting-prediction :is(.meaning-panel,.figure-viewport:has(.graph-svg),svg.graph-svg){display:none}
-body.lab-awaiting-prediction :is(#stageBadge,#stageVerdict,#stageReadout,#stageNote,#stageCaption,#dataNote,.data-note,.figure-notes,svg .verdict-text,svg .note-text){visibility:hidden}
+body.lab-awaiting-prediction :is(#stageBadge,#stageVerdict,#stageReadout,#stageNote,#dataNote,.data-note,.figure-notes,svg .verdict-text,svg .note-text){visibility:hidden}

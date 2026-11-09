@@ -50,14 +50,20 @@
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
-.ground { fill: rgba(120, 110, 96, .35); stroke: rgba(177, 226, 230, .3); stroke-width: 1; }
-.cone { fill: rgba(150, 128, 108, .75); stroke: rgba(230, 210, 190, .5); stroke-width: 1.4; }
-.chamber { fill: rgba(255, 110, 60, .5); stroke: rgba(255, 180, 120, .7); stroke-width: 1.4; }
-.conduit { stroke: rgba(255, 110, 60, .6); stroke-linecap: round; }
-.bubble { fill: rgba(240, 250, 255, .8); }
-.lava { stroke: #ff8a3d; stroke-linecap: round; fill: none; }
-.ash { fill: rgba(190, 190, 195, .3); }
-.ash-dark { fill: rgba(150, 148, 152, .45); }
+.ground { fill: #d9c8ad; stroke: #a8916f; stroke-width: 1.2; }
+.strata { fill: none; stroke: #bba584; stroke-width: 1.2; }
+.cone { fill: #8a7560; stroke: #5f4e3e; stroke-width: 1.6; stroke-linejoin: round; }
+.layer { fill: none; stroke: #6f5d4b; stroke-width: 1.4; }
+.vent { fill: #5f4e3e; }
+.chamber { fill: #e3743d; stroke: #9a3412; stroke-width: 1.6; }
+.conduit { fill: #e3743d; stroke: #9a3412; stroke-width: 1; }
+.bubble { fill: #fff7ed; stroke: #c2410c; stroke-width: .8; }
+.lava { stroke: #ea580c; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.lava-crust { stroke: #7c2d12; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.lava-blob { fill: #f59e0b; }
+.ash { fill: #a8a29e; opacity: .55; }
+.ash-dark { fill: #78716c; opacity: .6; }
+.bomb { fill: #44403c; }
 .slope-arc { fill: none; stroke: rgba(217, 119, 6, .7); stroke-width: 1.3; }
 
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }

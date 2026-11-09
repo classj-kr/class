@@ -151,3 +151,38 @@
     .orbit-view { width: 100%; max-width: 100%; }
     .phase-view { width: min(190px, 60%); }
 }
+
+/* 2026-11: light page. Only the view of the Moon in the sky keeps a dark sky. */
+.moon-stage { background: #fff !important; border: 1px solid var(--lab-line, #dfe7ea) !important; box-shadow: none; color: #1e293b; }
+.moon-stage .stage-heading h2 { color: #1e293b; }
+.moon-stage #phaseBadge { background: #edf4f5; border: 1px solid #dfebee; color: #3b636e; }
+.moon-stage .orbit-view { background: #f7f9fb; border: 1px solid #e2e8f0; max-width: 640px; }
+.moon-stage .phase-view { background: #f7f9fb; border: 1px solid #e2e8f0; width: min(230px, 36%); }
+.moon-stage .view-title { color: #334155; }
+.moon-stage .phase-sky { position: relative; width: 100%; border-radius: 10px; background: #18233f; padding: 8px; }
+.moon-stage .phase-view.covered .phase-svg { visibility: hidden; }
+.moon-stage .phase-cover { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: #e2e8f0; font-size: 15px; font-weight: 700; text-align: center; line-height: 1.5; }
+.moon-stage .phase-cover[hidden] { display: none; }
+.moon-stage .phase-note { color: #526873; font-size: 14px; font-weight: 500; text-align: center; margin: 6px 0 0; }
+.moon-stage .stage-caption { color: #3b5968; }
+.moon-stage .sun { fill: #f9b233; stroke: #e58f0a; stroke-width: 2; filter: none; }
+.moon-stage .sun-label { fill: #7a4300; }
+.moon-stage .sun-ray { stroke: #e5a01a; stroke-width: 2; stroke-dasharray: 6 5; }
+.moon-stage .sun-ray-head { fill: #e5a01a; }
+.moon-stage .earth { fill: #3b8fd1; stroke: #1f5f91; stroke-width: 1.5; filter: none; }
+.moon-stage .earth-night { fill: #0f2236; opacity: .55; }
+.moon-stage .earth-land { fill: #6fae5b; opacity: .9; }
+.moon-stage .orbit-path { stroke: #94a3b8; stroke-width: 1.4; }
+.moon-stage .sight-line { stroke: #8b5cf6; filter: none; }
+.moon-stage .stage-label { fill: #1e293b; font-size: 15px; }
+.moon-stage .moon-dark { fill: #4b5563; }
+.moon-stage .moon-lit { fill: #fde68a; filter: none; }
+.moon-stage .moon-rim { stroke: #64748b; stroke-width: 1.4; }
+.moon-stage .phase-dark { fill: #2a3452; }
+.moon-stage .phase-lit { fill: #fde68a; filter: none; }
+.moon-stage .phase-rim { stroke: #5b6b8c; }
+.moon-stage .stage-views { flex-direction: column; align-items: center; }
+.moon-stage .orbit-view { width: 100%; max-width: 600px; }
+.moon-stage .phase-view { width: min(260px, 70%); }
+.moon-stage .stage-label { paint-order: stroke; stroke: #f7f9fb; stroke-width: 4px; stroke-linejoin: round; }
+.moon-stage .sun-label { stroke: #f9b233; }

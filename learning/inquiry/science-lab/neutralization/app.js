@@ -85,56 +85,100 @@ document.addEventListener('DOMContentLoaded', () => {
     const gx = v => GRAPH.x0 + (v / MAX_ML) * (GRAPH.x1 - GRAPH.x0);
     const gyPH = p => GRAPH.y0 - (p / 14) * (GRAPH.y0 - GRAPH.y1);
 
-    function renderBeaker(a) {
+    const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // 화학식은 고딕으로: 공용 읽기 글꼴(바탕체)에서 H가 II처럼 보인다
+    const CHEM_RE = /(?:[A-Z][a-z]?[₀-₉]*)+(?:[⁺⁻][₀-₉]*)?|pH/g;
+    const chem = t => String(t).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])).replace(CHEM_RE, f => `<span class="chem">${f}</span>`);
+    function chemifyTree(root) {
+        if (!root) return;
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = [];
+        while (walker.nextNode()) { const n = walker.currentNode; if (n.parentElement && !n.parentElement.closest('.chem,script,style,svg') && /[A-Z]|pH/.test(n.nodeValue)) nodes.push(n); }
+        nodes.forEach(n => { const span = document.createElement('span'); span.innerHTML = chem(n.nodeValue); n.replaceWith(...span.childNodes); });
+    }
+    chemifyTree(document.querySelector('.meaning-panel'));
+    chemifyTree(document.querySelector('.quiz-section'));
+
+    // 확대 모형의 입자 수: 처음 염산의 H⁺를 4개로 두고 넣은 OH⁻를 같은 비율로 센다
+    function particleCounts(a) {
+        const unit = a.nH / 4, b = Math.min(8, Math.round(a.nOH / unit));
+        return { h: Math.max(0, 4 - b), cl: 4, na: b, water: Math.min(4, b), oh: Math.max(0, b - 4), capped: a.nOH / unit > 8.5 };
+    }
+    const SLOTS = (() => {
+        // 확대 원 안의 자리: 겹치지 않게 미리 정한 24곳
+        const out = [], cx = 368, cy = 174, R = 84;
+        for (let r = -3; r <= 3; r += 1) for (let c = -4; c <= 4; c += 1) {
+            const x = cx + c * 27 + (r % 2 ? 13.5 : 0), y = cy + r * 24;
+            if (Math.hypot(x - cx, y - cy) < R - 12) out.push([x, y]);
+        }
+        const order = out.map((p, i) => [p, Math.sin(i * 91.7) * 1000 % 1]).sort((u, v) => u[1] - v[1]).map(u => u[0]);
+        if (order.length < 20) console.warn('slots', order.length);
+        return order;
+    })();
+
+    function renderBeaker(a, now = performance.now()) {
         const col = indicatorColor(a.pH);
-        const BX = { x0: 138, x1: 292, top: 60, bottom: 168 };
-        const level = Math.max(6, Math.min(BX.bottom - BX.top - 6, ((ACID_ML + addedML()) / 170) * (BX.bottom - BX.top)));
-        const surface = BX.bottom - level;
+        const vol = ACID_ML + addedML();
+        const BX = { x0: 98, x1: 206, top: 150, bottom: 246 };
+        const mlPx = (BX.bottom - BX.top - 6) / 200;
+        const surface = BX.bottom - vol * mlPx;
         let out = '';
-        // burette above, its remaining volume shrinking as it is delivered
-        const BU = { x0: 200, x1: 224, top: 4, bot: 50 };
-        const left = 1 - addedML() / MAX_ML;
-        out += `<rect class="burette-fill" x="${BU.x0 + 2}" y="${(BU.top + (BU.bot - BU.top) * (1 - left)).toFixed(1)}" width="${BU.x1 - BU.x0 - 4}" height="${((BU.bot - BU.top) * left).toFixed(1)}"/>`;
-        out += `<rect class="burette" x="${BU.x0}" y="${BU.top}" width="${BU.x1 - BU.x0}" height="${BU.bot - BU.top}" rx="3"/>`;
-        if (playing) {
-            out += `<circle class="drop" cx="${(BU.x0 + BU.x1) / 2}" cy="${BU.bot + 4}" r="3.4">` +
-                   `<animate attributeName="cy" from="${BU.bot + 4}" to="${surface.toFixed(1)}" dur=".55s" repeatCount="indefinite"/>` +
-                   `<animate attributeName="opacity" values="1;1;0" dur=".55s" repeatCount="indefinite"/></circle>`;
+        // 스탠드: 받침, 막대, 클램프
+        out += `<rect x="18" y="246" width="96" height="9" rx="2" fill="#7c8a93"/><rect x="34" y="14" width="6" height="234" rx="2" fill="#94a3ad"/>`;
+        out += `<rect x="38" y="44" width="110" height="5" rx="2" fill="#94a3ad"/><rect x="140" y="38" width="22" height="16" rx="3" fill="#6b7a84"/>`;
+        // 뷰렛: 눈금 있는 긴 유리관, 꼭지, 가는 끝
+        const BU = { x0: 145, x1: 157, top: 8, bot: 118 };
+        const left = 1 - addedML() / MAX_ML, liqTop = BU.top + 4 + (BU.bot - BU.top - 4) * (1 - left);
+        out += `<rect x="${BU.x0}" y="${BU.top}" width="${BU.x1 - BU.x0}" height="${BU.bot - BU.top}" rx="2" fill="#f4f9fb" stroke="#7fa9b8" stroke-width="1.6"/>`;
+        out += `<rect x="${BU.x0 + 1.5}" y="${liqTop.toFixed(1)}" width="${BU.x1 - BU.x0 - 3}" height="${(BU.bot - liqTop).toFixed(1)}" fill="#cfe8f6"/>`;
+        for (let k = 0; k <= 10; k += 1) { const y = BU.top + 6 + k * (BU.bot - BU.top - 8) / 10; out += `<line x1="${BU.x0}" y1="${y.toFixed(1)}" x2="${BU.x0 + (k % 5 ? 4 : 7)}" y2="${y.toFixed(1)}" stroke="#56707c" stroke-width="1"/>`; }
+        out += `<path d="M${BU.x0} ${BU.bot} L${BU.x0 + 4} ${BU.bot + 10} L${BU.x0 + 4} ${BU.bot + 22} L${BU.x0 + 5} ${BU.bot + 30} L${BU.x1 - 5} ${BU.bot + 30} L${BU.x1 - 4} ${BU.bot + 22} L${BU.x1 - 4} ${BU.bot + 10} L${BU.x1} ${BU.bot} Z" fill="#cfe8f6" stroke="#7fa9b8" stroke-width="1.4"/>`;
+        // 꼭지: 넣는 동안은 손잡이가 관과 나란히(열림), 멈추면 가로(닫힘)
+        const open = playing;
+        out += `<circle cx="151" cy="${BU.bot + 15}" r="5" fill="#e2e8f0" stroke="#475569" stroke-width="1.4"/>`;
+        out += open ? `<rect x="148.5" y="${BU.bot + 4}" width="5" height="22" rx="2" fill="#334155"/>` : `<rect x="138" y="${BU.bot + 12.5}" width="26" height="5" rx="2" fill="#334155"/>`;
+        out += `<text class="beaker-note" x="${BU.x1 + 10}" y="${BU.top + 24}">NaOH</text>`;
+        // 떨어지는 방울과 물결
+        const tipY = BU.bot + 30;
+        if (playing && !reduceMotion()) {
+            for (let k = 0; k < 2; k += 1) {
+                const ph = ((now / 420) + k * 0.5) % 1, y = tipY + 2 + (surface - tipY - 4) * ph * ph;
+                out += `<path d="M151 ${(y - 5).toFixed(1)} C154 ${(y - 1).toFixed(1)} 155 ${(y + 2).toFixed(1)} 151 ${(y + 3.5).toFixed(1)} C147 ${(y + 2).toFixed(1)} 148 ${(y - 1).toFixed(1)} 151 ${(y - 5).toFixed(1)} Z" fill="#9fd3ee" stroke="#5b9fc4" stroke-width=".8"/>`;
+                const rp = ((now / 420) + k * 0.5 + 0.5) % 1;
+                out += `<ellipse cx="151" cy="${surface.toFixed(1)}" rx="${(3 + rp * 16).toFixed(1)}" ry="${(1 + rp * 3).toFixed(1)}" fill="none" stroke="#ffffff" stroke-width="1.4" opacity="${(0.9 * (1 - rp)).toFixed(2)}"/>`;
+            }
         }
-        out += `<rect class="solution" x="${BX.x0 + 2}" y="${surface.toFixed(1)}" width="${BX.x1 - BX.x0 - 4}" height="${level.toFixed(1)}" fill="${col.fill}"/>`;
-        out += `<ellipse class="solution-surface" cx="${(BX.x0 + BX.x1) / 2}" cy="${surface.toFixed(1)}" rx="${(BX.x1 - BX.x0 - 4) / 2}" ry="3.5"/>`;
-        // leftover ions: only the excess species remains in solution
-        const excess = Math.abs(a.nH - a.nOH);
-        const dots = Math.min(10, Math.round(excess / (0.05 * 0.05) * 2));
-        /* Laid out on a grid rather than by modular arithmetic: the old spacing
-           wrapped onto itself in a shallow beaker and printed ions on top of
-           each other. If the liquid is too shallow for every ion to have its own
-           row, fewer are drawn rather than overlapping ones. */
-        const boxW = (BX.x1 - BX.x0) - 30;
-        const cols = 3;
-        const availH = Math.max(16, level - 22);
-        const maxRows = Math.max(1, Math.floor(availH / 15));
-        const shown = Math.min(dots, cols * maxRows);
-        const rows = Math.max(1, Math.ceil(shown / cols));
-        const stepY = Math.min(18, availH / rows);
-        for (let i = 0; i < shown; i += 1) {
-            const x = BX.x0 + 15 + (boxW * ((i % cols) + 0.5)) / cols;
-            const y = surface + 10 + stepY * (Math.floor(i / cols) + 0.5);
-            const isH = a.state === 'acid';
-            out += `<circle class="${isH ? 'ion-h' : 'ion-oh'}" cx="${x}" cy="${y}" r="6.5"/>`;
-            out += `<text class="ion-label" x="${x}" y="${y + 3}" text-anchor="middle">${isH ? 'H⁺' : 'OH⁻'}</text>`;
-        }
-        out += `<path class="beaker" d="M${BX.x0},${BX.top} L${BX.x0},${BX.bottom} L${BX.x1},${BX.bottom} L${BX.x1},${BX.top}"/>`;
-        // thermometer standing in the beaker
-        const TX = 316, tFrac = Math.max(0, Math.min(1, (a.temp - T0) / 12));
-        out += `<rect class="temp-tube" x="${TX}" y="70" width="9" height="80" rx="4.5"/>`;
-        out += `<rect class="temp-fill" x="${TX + 2}" y="${(146 - 74 * tFrac).toFixed(1)}" width="5" height="${(74 * tFrac + 4).toFixed(1)}" rx="2.5"/>`;
-        out += `<circle class="temp-bulb" cx="${TX + 4.5}" cy="154" r="7"/>`;
-        out += `<text class="temp-text" x="${TX + 16}" y="96">${a.temp.toFixed(2)} ℃</text>`;
-        out += `<text class="beaker-note" x="${TX + 16}" y="112">시작 ${T0} ℃</text>`;
-        out += `<text class="beaker-note" x="${BX.x0 - 10}" y="${surface + 4}" text-anchor="end">${(ACID_ML + addedML()).toFixed(0)} mL</text>`;
-        out += `<text class="beaker-note" x="${(BX.x0 + BX.x1) / 2}" y="186" text-anchor="middle">${col.name}</text>`;
-        beakerGroup.innerHTML = out;
+        // 비커: 입술, 눈금, 지시약 색의 용액
+        out += `<rect class="solution" x="${BX.x0 + 2}" y="${surface.toFixed(1)}" width="${BX.x1 - BX.x0 - 4}" height="${(BX.bottom - surface - 2).toFixed(1)}" fill="${col.fill}"/>`;
+        out += `<ellipse cx="${(BX.x0 + BX.x1) / 2}" cy="${surface.toFixed(1)}" rx="${(BX.x1 - BX.x0 - 4) / 2}" ry="2.5" fill="#ffffff" opacity=".45"/>`;
+        for (let ml = 50; ml <= 200; ml += 50) { const y = BX.bottom - ml * mlPx; out += `<line x1="${BX.x0 + 2}" y1="${y.toFixed(1)}" x2="${BX.x0 + 12}" y2="${y.toFixed(1)}" stroke="#7fa9b8" stroke-width="1.2"/>`; }
+        out += `<path d="M${BX.x0 - 6} ${BX.top - 4} Q${BX.x0} ${BX.top - 2} ${BX.x0} ${BX.top + 6} L${BX.x0} ${BX.bottom - 4} Q${BX.x0} ${BX.bottom} ${BX.x0 + 4} ${BX.bottom} L${BX.x1 - 4} ${BX.bottom} Q${BX.x1} ${BX.bottom} ${BX.x1} ${BX.bottom - 4} L${BX.x1} ${BX.top}" fill="none" stroke="#7fa9b8" stroke-width="3" stroke-linejoin="round"/>`;
+        // 온도계: 비커 안에 비스듬히 기대어 끝이 용액에 잠김
+        const tFrac = Math.max(0, Math.min(1, (a.temp - T0) / 12));
+        const TA = [196, 112], TB = [178, 236], tl = Math.hypot(TB[0] - TA[0], TB[1] - TA[1]), ux = (TB[0] - TA[0]) / tl, uy = (TB[1] - TA[1]) / tl;
+        const redLen = 18 + 60 * tFrac, rs = [TB[0] - ux * (8 + redLen), TB[1] - uy * (8 + redLen)];
+        out += `<line x1="${TA[0]}" y1="${TA[1]}" x2="${TB[0]}" y2="${TB[1]}" stroke="#8aa3b0" stroke-width="9" stroke-linecap="round"/>`;
+        out += `<line x1="${TA[0]}" y1="${TA[1]}" x2="${TB[0]}" y2="${TB[1]}" stroke="#f8fbfc" stroke-width="6" stroke-linecap="round"/>`;
+        out += `<line x1="${(TB[0] - ux * 6).toFixed(1)}" y1="${(TB[1] - uy * 6).toFixed(1)}" x2="${rs[0].toFixed(1)}" y2="${rs[1].toFixed(1)}" stroke="#dc2626" stroke-width="2.6" stroke-linecap="round"/><circle cx="${TB[0]}" cy="${TB[1]}" r="5" fill="#dc2626"/>`;
+        out += `<text class="temp-text" x="214" y="128">${a.temp.toFixed(2)} ℃</text>`;
+        out += `<text class="beaker-note" x="${BX.x0 - 8}" y="${(surface + 5).toFixed(1)}" text-anchor="end">${vol.toFixed(0)} mL</text>`;
+        out += `<text class="beaker-note" x="${(BX.x0 + BX.x1) / 2}" y="268" text-anchor="middle">${col.name}</text>`;
+        // 확대 모형: 비커 속 용액을 크게 본 그림
+        const pc = particleCounts(a);
+        out += `<line x1="${BX.x1 - 30}" y1="${(BX.bottom - 14).toFixed(1)}" x2="296" y2="216" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 3"/><line x1="${BX.x1 - 30}" y1="${(BX.bottom - 14).toFixed(1)}" x2="312" y2="112" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 3"/><circle cx="${BX.x1 - 30}" cy="${BX.bottom - 14}" r="5" fill="none" stroke="#64748b" stroke-width="1.4"/>`;
+        out += `<circle cx="368" cy="174" r="84" fill="${col.fill}" stroke="#64748b" stroke-width="2.4"/><circle cx="368" cy="174" r="84" fill="#ffffff" opacity=".55"/>`;
+        out += `<text class="beaker-note" x="368" y="82" text-anchor="middle">확대 모형</text>`;
+        const list = [...Array(pc.cl).fill('cl'), ...Array(pc.na).fill('na'), ...Array(pc.h).fill('h'), ...Array(pc.oh).fill('oh'), ...Array(pc.water).fill('w')];
+        const wob = playing && !reduceMotion() ? now / 380 : 0;
+        list.forEach((kind, i) => {
+            const [sx, sy] = SLOTS[i % SLOTS.length], x = sx + Math.sin(wob + i * 1.7) * 2.2, y = sy + Math.cos(wob * 0.9 + i * 2.3) * 2.2;
+            if (kind === 'w') {
+                out += `<g><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="7.5" fill="#ef6b5b" stroke="#9f2d22" stroke-width=".8"/><circle cx="${(x - 7).toFixed(1)}" cy="${(y + 5).toFixed(1)}" r="4.2" fill="#f1f5f9" stroke="#64748b" stroke-width=".8"/><circle cx="${(x + 7).toFixed(1)}" cy="${(y + 5).toFixed(1)}" r="4.2" fill="#f1f5f9" stroke="#64748b" stroke-width=".8"/></g>`;
+                return;
+            }
+            const st = { h: ['#fecaca', '#b91c1c', 'H⁺'], cl: ['#bbf7d0', '#166534', 'Cl⁻'], na: ['#e9d5ff', '#6b21a8', 'Na⁺'], oh: ['#bfdbfe', '#1d4ed8', 'OH⁻'] }[kind];
+            out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="11" fill="${st[0]}" stroke="${st[1]}" stroke-width="1.2"/><text class="ion-label" style="fill:${st[1]}" x="${x.toFixed(1)}" y="${(y + 4.5).toFixed(1)}" text-anchor="middle">${st[2]}</text>`;
+        });
+        window.scienceScene.render(beakerGroup, out);
     }
 
     function renderGraph(a) {
@@ -159,15 +203,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const tSpan = Math.max(1, tMax - T0);
         const gyT = t => GRAPH.y0 - ((t - T0) / (tSpan * 1.15)) * (GRAPH.y0 - GRAPH.y1);
 
-        const phPts = [], tPts = [];
-        for (let v = 0; v <= MAX_ML; v += 1) {
+        const phPts = [], tPts = [], upTo = addedML();
+        for (let v = 0; v <= upTo; v += 1) {
             phPts.push(`${gx(v).toFixed(1)},${gyPH(analyse(v).pH).toFixed(1)}`);
             tPts.push(`${gx(v).toFixed(1)},${gyT(tempAt(v)).toFixed(1)}`);
         }
+        phPts.push(`${gx(upTo).toFixed(1)},${gyPH(a.pH).toFixed(1)}`);
+        tPts.push(`${gx(upTo).toFixed(1)},${gyT(a.temp).toFixed(1)}`);
         out += `<path class="temp-curve" d="M${tPts.join('L')}"/>`;
         out += `<path class="ph-curve" d="M${phPts.join('L')}"/>`;
 
-        if (a.eqML <= MAX_ML) {
+        if (a.eqML <= MAX_ML && upTo >= a.eqML) {
             out += `<line class="eq-line" x1="${gx(a.eqML).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(a.eqML).toFixed(1)}" y2="${GRAPH.y0}"/>`;
             const flip = gx(a.eqML) > (GRAPH.x0 + GRAPH.x1) / 2;
             out += `<text class="eq-text" x="${(gx(a.eqML) + (flip ? -5 : 5)).toFixed(1)}" y="${GRAPH.y1 + 10}"${flip ? ' text-anchor="end"' : ''}>중화점 ${a.eqML.toFixed(1)} mL</text>`;
@@ -180,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderBeaker(a);
+        stageCaption.innerHTML = chem('오른쪽 원은 비커 속 용액을 크게 본 모형입니다. 넣은 OH⁻는 H⁺와 만나 물 분자가 되고, Na⁺와 Cl⁻는 반응하지 않고 남습니다.');
         renderGraph(a);
         acidConcOutput.textContent = `${acidC().toFixed(2)} mol/L`;
         baseConcOutput.textContent = `${baseC().toFixed(2)} mol/L`;
@@ -191,12 +238,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dataRows(a) {
-        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">H⁺ 의 몰수</span><span class="data-val">${acidC().toFixed(2)} × 0.050 L = ${a.nH.toFixed(4)} mol</span></div>` +
+        window.scienceScene.render(dataNote,chemHtml(`<div class="data-row"><span class="data-name">H⁺ 의 몰수</span><span class="data-val">${acidC().toFixed(2)} × 0.050 L = ${a.nH.toFixed(4)} mol</span></div>` +
             `<div class="data-row"><span class="data-name">OH⁻ 의 몰수</span><span class="data-val">${baseC().toFixed(2)} × ${(addedML() / 1000).toFixed(3)} L = ${a.nOH.toFixed(4)} mol</span></div>` +
             `<div class="data-row${a.state === 'neutral' ? ' match' : ''}"><span class="data-name">지금 상태</span>` +
-            `<span class="data-val">${a.state === 'neutral' ? '두 몰수가 같아 중화점' : a.state === 'acid' ? `수소 이온(H⁺)이 ${(a.nH - a.nOH).toFixed(4)} mol 남아 산성` : `수산화 이온(OH⁻)이 ${(a.nOH - a.nH).toFixed(4)} mol 남아 염기성`}</span></div>`);
+            `<span class="data-val">${a.state === 'neutral' ? '두 몰수가 같아 중화점' : a.state === 'acid' ? `수소 이온(H⁺)이 ${(a.nH - a.nOH).toFixed(4)} mol 남아 산성` : `수산화 이온(OH⁻)이 ${(a.nOH - a.nH).toFixed(4)} mol 남아 염기성`}</span></div>`));
     }
 
+    const chemHtml = html => html.replace(/>([^<]+)</g, (m, t) => '>' + chem(t) + '<');
     const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };
 
     function showResult() {
@@ -204,16 +252,23 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEmpty.hidden = true;
         resultContent.hidden = false;
         valueA.textContent = a.pH.toFixed(2);
-        valueB.textContent = `${a.eqML.toFixed(1)} mL`;
+        const passed = addedML() >= Math.min(MAX_ML, a.eqML + 4) || (!playing && addedML() >= a.eqML);
+        valueB.textContent = addedML() >= a.eqML ? `${a.eqML.toFixed(1)} mL` : '아직';
+        if (!passed) {
+            predictionResult.textContent = ''; predictionResult.hidden = true;
+            explanation.innerHTML = chem(`지금 ${addedML().toFixed(0)} mL를 넣었습니다. 온도계와 그래프의 점을 계속 지켜보세요.`);
+            return;
+        }
+        predictionResult.hidden = false;
         predictionResult.textContent = !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === 'at' ? '예상이 맞았습니다.' : '예상과 다른 결과입니다. 온도는 중화점에서 가장 높습니다.';
         const peak = analyse(a.eqML).temp;
-        explanation.textContent =
+        explanation.innerHTML = chem(
             `H⁺ ${a.nH.toFixed(4)} mol과 OH⁻ ${a.nOH.toFixed(4)} mol이 1 : 1로 만나 물이 됩니다. ` +
             `두 몰수가 같아지는 ${a.eqML.toFixed(1)} mL가 중화점이고 이때 pH가 7이 됩니다. ` +
             `중화 반응은 열을 내므로 물이 가장 많이 만들어지는 중화점에서 온도가 ${peak.toFixed(2)} ℃로 가장 높고, ` +
-            `그 뒤로는 물이 더 만들어지지 않는데 부피만 늘어나 오히려 온도가 내려갑니다.`;
+            `그 뒤로는 물이 더 만들어지지 않는데 부피만 늘어나 오히려 온도가 내려갑니다.`);
     }
 
     function frame(now) {
@@ -261,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
         playBtn.textContent = '한 방울씩 넣기';
         volRange.value = '0';
         clearResult();
-        stageCaption.textContent = '수산화나트륨을 넣으며 색과 온도 변화를 살펴보세요.';
         render();
     });
     indButtons.forEach(button => button.addEventListener('click', () => {

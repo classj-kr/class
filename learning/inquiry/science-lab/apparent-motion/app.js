@@ -94,17 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildSky() {
-        const drawGroup = (stars, name, labelIdx) => {
+        const drawGroup = (stars, name, labelIdx, dr) => {
             const pts = stars.map(s => polar(s.a, s.r));
             let out = `<path class="const-line" d="M${pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('L')}"/>`;
             pts.forEach((p, i) => {
                 out += `<circle class="star${i === 0 || i === pts.length - 1 ? ' star-bright' : ''}" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${i === 0 || i === pts.length - 1 ? 3.4 : 2.6}"/>`;
             });
-            const lp = pts[labelIdx];
-            out += `<text class="const-name" x="${(lp.x - 18).toFixed(1)}" y="${(lp.y - 10).toFixed(1)}">${name}</text>`;
+            const lp = polar(stars[labelIdx].a, stars[labelIdx].r + dr);
+            out += `<text class="const-name" x="${lp.x.toFixed(1)}" y="${(lp.y + 5).toFixed(1)}" text-anchor="middle">${name}</text>`;
             return out;
         };
-        skyGroup.innerHTML = drawGroup(BIG_DIPPER, '북두칠성', 6) + drawGroup(CASSIOPEIA, '카시오페이아', 2);
+        skyGroup.innerHTML = drawGroup(BIG_DIPPER, '북두칠성', 3, -28) + drawGroup(CASSIOPEIA, '카시오페이아', 2, 26);
 
         // the circle each group sweeps out as the sky turns
         const radii = [...new Set([
@@ -119,6 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const rot = starRotation();
         // The sky turns anticlockwise on this view, so the SVG angle is negative.
         skyGroup.setAttribute('transform', `rotate(${(-rot).toFixed(3)} ${POLARIS.x} ${POLARIS.y})`);
+        // 별자리 이름은 하늘과 함께 돌되 글자는 늘 바로 서 있게 한다.
+        skyGroup.querySelectorAll('.const-name').forEach(t => t.setAttribute('transform', `rotate(${rot.toFixed(3)} ${t.getAttribute('x')} ${t.getAttribute('y')})`));
 
         if (showMoon) {
             // The Moon rides the same daily turn but slips eastward against the

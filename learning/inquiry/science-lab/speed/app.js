@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `${o.label}${o.hint ? `<small>${o.hint}</small>` : ''}</button>`).join('') +
             `</div></fieldset>`;
     }
-    const moverOptions = () => Object.entries(MOVERS).map(([k, v]) => ({ value: k, label: `${v.icon} ${v.name}` }));
+    const moverOptions = () => Object.entries(MOVERS).map(([k, v]) => ({ value: k, label: v.name }));
 
     function buildControls() {
         controlArea.innerHTML =
@@ -104,40 +104,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ----------------------------------------------------------- visuals */
     function renderMain(a) {
-        const t = timeAt(a, state.progress);
-        const X0 = 70, X1 = 400, LANES = [72, 142];
+        const t = timeAt(a, state.progress), done = state.progress >= 1;
+        const X0 = 70, X1 = 392, LANES = [80, 154];
         const trackM = a.kind === 'distance' ? COURSE_M : a.trackM;
         const px = m => X0 + (Math.min(m, trackM) / trackM) * (X1 - X0);
         let out = '';
+        [a.A, a.B].forEach((M, i) => {
+            const y = LANES[i];
+            out += `<rect class="lane" x="${X0 - 40}" y="${y - 34}" width="${X1 - X0 + 60}" height="54" rx="6"/>`;
+            out += `<line class="lane-line" x1="${X0 - 40}" y1="${y + 13}" x2="${X1 + 20}" y2="${y + 13}"/>`;
+        });
         // distance marks
         const step = trackM <= 120 ? 20 : trackM <= 250 ? 50 : 100;
         for (let m = 0; m <= trackM + 1e-9; m += step) {
-            out += `<line class="mark" x1="${px(m).toFixed(1)}" y1="${LANES[0] - 30}" x2="${px(m).toFixed(1)}" y2="${LANES[1] + 22}"/>`;
-            out += `<text class="axis-text" x="${px(m).toFixed(1)}" y="${LANES[1] + 34}" text-anchor="middle">${m} m</text>`;
+            out += `<line class="mark" x1="${px(m).toFixed(1)}" y1="${LANES[0] - 34}" x2="${px(m).toFixed(1)}" y2="${LANES[1] + 20}"/>`;
+            out += `<text class="axis-text" x="${px(m).toFixed(1)}" y="${LANES[1] + 36}" text-anchor="middle">${m} m</text>`;
+        }
+        if (a.kind === 'distance') {
+            out += `<line class="finish-post" x1="${px(COURSE_M)}" y1="${LANES[0] - 44}" x2="${px(COURSE_M)}" y2="${LANES[1] + 20}"/>`;
+            out += `<path class="finish" d="M${px(COURSE_M)},${LANES[0] - 44} l16,6 l-16,6 z"/>`;
         }
         [a.A, a.B].forEach((M, i) => {
             const y = LANES[i];
-            out += `<rect class="lane" x="${X0 - 40}" y="${y - 26}" width="${X1 - X0 + 80}" height="44" rx="6"/>`;
-            out += `<text class="lane-name" x="${X0 - 40}" y="${y - 30}">${i + 1}번 ${M.name}</text>`;
+            out += `<text class="lane-name" x="${X0 - 36}" y="${y - 39}">${i + 1}번 ${M.name}</text>`;
             const tOwn = a.kind === 'distance' ? Math.min(t, COURSE_M / M.speed) : t;
-            const d = M.speed * tOwn;
-            out += window.scienceScene.art.traveller(i===0?state.a:state.b,px(d),y+8,tOwn*(M===MOVERS.runner?10:6));
+            const d = M.speed * tOwn, moving = state.progress > 0 && state.progress < 1 && (a.kind === 'time' || tOwn < COURSE_M / M.speed);
+            const phase = tOwn * (M === MOVERS.runner ? 10 : 6);
+            // 그림을 1.5배로 키우고, 달리는 동안 조금씩 들썩이게 한다
+            const bob = moving ? Math.abs(Math.sin(phase * 1.3)) * -2 : 0;
+            out += `<g transform="translate(${px(d).toFixed(1)} ${(y + 12 + bob).toFixed(1)}) scale(1.5)">${window.scienceScene.art.traveller(i === 0 ? state.a : state.b, 0, 0, phase)}</g>`;
+            if (moving) out += `<path class="speed-line" d="M${(px(d) - 34).toFixed(1)},${y - 8} h-14 M${(px(d) - 36).toFixed(1)},${y + 2} h-20"/>`;
             // stopwatch for this lane
-            const wx = 420, wy = y - 8;
-            out += `<rect class="watch" x="${wx - 4}" y="${wy - 12}" width="42" height="34" rx="6"/>`;
-            out += `<text class="watch-text" x="${wx + 17}" y="${wy + 2}" text-anchor="middle">${tOwn >= 60 ? `${Math.floor(tOwn / 60)}:${String(Math.floor(tOwn % 60)).padStart(2, '0')}` : tOwn.toFixed(1)}</text>`;
-            out += `<text class="axis-text" x="${wx + 17}" y="${wy + 16}" text-anchor="middle">${tOwn >= 60 ? '분:초' : '초'}</text>`;
-            // the running distance sits above the mover once it has cleared the lane name
-            if (a.kind === 'time' && px(d) > X0 + 70) out += `<text class="dist-text" x="${px(d).toFixed(1)}" y="${y - 22}" text-anchor="middle">${d.toFixed(0)} m</text>`;
-            else if (a.kind === 'distance' && tOwn >= COURSE_M / M.speed - 1e-9 && t > 0) out += `<text class="dist-text" x="${(px(COURSE_M) - 16).toFixed(1)}" y="${y - 22}" text-anchor="end">도착 ${fmtTime(COURSE_M / M.speed)}</text>`;
+            const wx = 438, wy = y - 7;
+            out += `<rect class="watch-crown" x="${wx - 4}" y="${wy - 27}" width="8" height="6" rx="1.5"/><circle class="watch" cx="${wx}" cy="${wy}" r="20"/>`;
+            out += `<text class="watch-text" x="${wx}" y="${wy + 1}" text-anchor="middle">${tOwn >= 60 ? `${Math.floor(tOwn / 60)}:${String(Math.floor(tOwn % 60)).padStart(2, '0')}` : tOwn.toFixed(1)}</text>`;
+            out += `<text class="watch-unit" x="${wx}" y="${wy + 14}" text-anchor="middle">${tOwn >= 60 ? '분:초' : '초'}</text>`;
+            if (a.kind === 'time' && state.progress > 0 && px(d) > X0 + 70) out += `<text class="dist-text" x="${px(d).toFixed(1)}" y="${y - 39}" text-anchor="middle">${d.toFixed(0)} m</text>`;
+            else if (a.kind === 'distance' && tOwn >= COURSE_M / M.speed - 1e-9 && t > 0) out += `<text class="dist-text" x="${(px(COURSE_M) - 10).toFixed(1)}" y="${y - 39}" text-anchor="end">도착 ${fmtTime(COURSE_M / M.speed)}</text>`;
         });
-        if (a.kind === 'distance') {
-            out += `<line class="finish-post" x1="${px(COURSE_M)}" y1="${LANES[0] - 34}" x2="${px(COURSE_M)}" y2="${LANES[1] + 22}"/>`;
-            out += `<path class="finish" d="M${px(COURSE_M)},${LANES[0] - 34} l16,6 l-16,6 z"/>`;
-        }
         const VERD = { a: `1번 ${iga(a.A.name)} 빠르다`, b: `2번 ${iga(a.B.name)} 빠르다`, same: '똑같이 빠르다' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${a.kind === 'distance' ? '같은 거리 100 m' : '같은 시간 10초'} → ${VERD[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="206">${a.kind === 'distance' ? '결승선에 닿으면 그 길의 초시계만 멈춥니다' : '10초가 되면 둘 다 멈추고 간 거리를 잽니다'} · 지난 시간 ${fmtTime(t)}</text>`;
+        if (done) out += `<text class="verdict-text" fill="#b45309" x="20" y="16">${a.kind === 'distance' ? '같은 거리 100 m' : '같은 시간 10초'} → ${VERD[a.verdict]}</text>`;
+        out += `<text class="note-text" x="20" y="208">${a.kind === 'distance' ? '결승선에 닿으면 그 길의 초시계만 멈춥니다' : '10초가 되면 둘 다 멈추고 간 거리를 잽니다'} · 지난 시간 ${fmtTime(t)}</text>`;
         return out;
     }
 
@@ -160,9 +167,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const rows = [a.A, a.B].map((M, i) => {
             const measured = a.kind === 'distance' ? Math.min(t, COURSE_M / M.speed) : M.speed * t;
             const full = a.kind === 'distance' ? COURSE_M / M.speed : M.speed * CLOCK_S;
-            return { M, i, measured, full };
+            const over = a.kind === 'distance' ? measured >= full - 1e-9 && state.progress > 0 : state.progress >= 1;
+            return { M, i, measured, full, over };
         });
-        const max = Math.max(...rows.map(r => r.full)) * 1.1;
+        const max = (state.progress > 0 ? Math.max(...rows.map(r => r.full)) : (a.kind === 'distance' ? 100 : 100)) * 1.1;
         const gx = v => GRAPH.x0 + (v / max) * (GRAPH.x1 - GRAPH.x0);
         const ticks = [];
         const step = max > 200 ? 100 : max > 60 ? 20 : max > 20 ? 5 : max > 8 ? 2 : 1;
@@ -171,14 +179,14 @@ document.addEventListener('DOMContentLoaded', () => {
         rows.forEach(r => {
             const y = GRAPH.y1 + 30 + r.i * 48;
             const colour = r.i === 0 ? '#0284c7' : '#ea580c';
-            out += `<text class="bar-text" fill="${colour}" x="${GRAPH.x0}" y="${y - 10}">${r.i + 1}번 ${r.M.name} — ${a.kind === 'distance' ? fmtTime(r.full) : `${r.full.toFixed(0)} m`} · 속력 ${r.M.speed} m/s (${kmh(r.M.speed)} km/h)</text>`;
-            out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 4}" width="${Math.max(0, gx(r.full) - GRAPH.x0).toFixed(1)}" height="12" rx="3" fill="${colour}" opacity=".25"/>`;
+            out += `<text class="bar-text" fill="${colour}" x="${GRAPH.x0}" y="${y - 10}">${r.i + 1}번 ${r.M.name}${r.over ? ` — ${a.kind === 'distance' ? fmtTime(r.full) : `${r.full.toFixed(0)} m`} · 속력 ${r.M.speed} m/s (${kmh(r.M.speed)} km/h)` : ''}</text>`;
             out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 4}" width="${Math.max(0, gx(r.measured) - GRAPH.x0).toFixed(1)}" height="12" rx="3" fill="${colour}" opacity=".9"/>`;
         });
         return out;
     }
 
     function noteFor(a) {
+        if (state.progress < 1) return `<div class="data-row"><span class="data-name">재는 방법</span><span class="data-val">${a.kind === 'distance' ? '같은 거리 100 m를 가게 하고 걸린 시간을 잼' : '같은 시간 10초를 가게 하고 간 거리를 잼'}</span></div>`;
         const rows = [a.A, a.B].map((M, i) => {
             const full = a.kind === 'distance' ? `100 m를 ${fmtTime(COURSE_M / M.speed)}에` : `10초에 ${(M.speed * CLOCK_S).toFixed(0)} m`;
             const calc = a.kind === 'distance' ? `100 ÷ ${(COURSE_M / M.speed).toFixed(1)} = ${M.speed} m/s` : `${(M.speed * CLOCK_S).toFixed(0)} ÷ 10 = ${M.speed} m/s`;
@@ -192,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const a = analyse();
         window.scienceScene.render(mainGroup,renderMain(a));
         window.scienceScene.render(graphGroup,graph(a));
-        stageBadge.textContent = `${a.A.icon} ${a.A.name} · ${a.B.icon} ${a.B.name}`;
+        stageBadge.textContent = `1번 ${a.A.name} · 2번 ${a.B.name}`;
         methodHint.textContent = state.mode === 'distance'
             ? '같은 거리를 가는 데 걸린 시간이 짧을수록 빠릅니다'
             : '같은 시간에 간 거리가 길수록 빠릅니다';
@@ -218,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startRun() {
         stopRun();
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         state.progress = 0;
         running = true;
         lastStamp = performance.now();

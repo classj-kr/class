@@ -89,3 +89,11 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 언덕을 넘는 분자와 활성화 에너지 안내선 */
+.molecule { fill: #2563eb; stroke: #1e3a8a; stroke-width: 1; }
+.molecule.made { fill: #7c3aed; stroke: #4c1d95; }
+.ea-guide { stroke: #d97706; stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
+.ea-guide.cat { stroke: #059669; }
+.piston-rod { fill: #64748b; }
+.read-text { fill: #047857; }

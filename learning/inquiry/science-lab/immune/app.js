@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const verdict = hits.length || rhClump ? 'clump' : state.rh === 'first' ? 'sensitize' : 'ok';
         return { kind: 'blood', d, r, hits, rhClump, verdict };
     }
-    const runSeconds = () => state.mode === 'infect' ? 7 : state.mode === 'vaccine' ? 8 : 5;
+    const runSeconds = () => state.mode === 'infect' ? 14 : state.mode === 'vaccine' ? 16 : 5;
 
     // where the clock stands for the current progress (vaccine mode skips the empty months)
     function dayOf(a) {
@@ -235,67 +235,121 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
-    const yShape = (x, y, cls, s = 4) => `<path class="${cls}" d="M${x},${y + s} L${x},${y} M${x},${y} L${x - s * 0.8},${y - s} M${x},${y} L${x + s * 0.8},${y - s}"/>`;
+    // 항체: Y 모양 (줄기 + 두 팔), 각도 ang 으로 돌린다
+    const yShape = (x, y, cls, s = 4, ang = 0) => {
+        const r = ang * Math.PI / 180, c = Math.cos(r), n = Math.sin(r);
+        const P = (dx, dy) => `${(x + dx * c - dy * n).toFixed(1)},${(y + dx * n + dy * c).toFixed(1)}`;
+        return `<path class="${cls}" d="M${P(0, s * 1.1)} L${P(0, 0)} M${P(0, 0)} L${P(-s * 0.8, -s)} M${P(0, 0)} L${P(s * 0.8, -s)}"/>`;
+    };
+    // 병원체: 보라색 막대 모양 세균
+    const germShape = (x, y, ang, cls = 'germ') => `<rect class="${cls}" x="${(x - 5).toFixed(1)}" y="${(y - 2.6).toFixed(1)}" width="10" height="5.2" rx="2.6" transform="rotate(${ang.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`;
+    const CELL_PATHS = {
+        'cell-mac': 'M 50 10 C 60 12 62 24 72 20 C 82 16 86 30 84 40 C 82 50 94 56 90 68 C 86 80 74 82 70 92 C 66 102 50 90 40 94 C 30 98 22 86 16 78 C 10 70 20 60 14 50 C 8 40 18 32 22 22 C 26 12 40 8 50 10 Z',
+        'cell-b': 'M 50 15 C 69 15 85 31 85 50 C 85 69 69 85 50 85 C 31 85 15 69 15 50 C 15 31 31 15 50 15 M 50 25 C 64 25 75 36 75 50 C 75 64 64 75 50 75 C 36 75 25 64 25 50 C 25 36 36 25 50 25 Z',
+        'cell-plasma': 'M 42 12 C 68 12 88 28 88 56 C 88 78 72 90 46 90 C 20 90 12 74 12 52 C 12 30 24 12 42 12 M 34 32 C 46 32 54 40 54 52 C 54 64 46 72 34 72 C 22 72 14 64 14 52 C 14 40 22 32 34 32 Z',
+        'cell-mem': 'M 50 12 C 71 12 88 29 88 50 C 88 71 71 88 50 88 C 29 88 12 71 12 50 C 12 29 29 12 50 12 M 50 20 C 67 20 80 33 80 50 C 80 67 67 80 50 80 C 33 80 20 67 20 50 C 20 33 33 20 50 20 M 50 30 C 61 30 70 39 70 50 C 70 61 61 70 50 70 C 39 70 30 61 30 50 C 30 39 39 30 50 30 Z',
+        'cell-t': 'M 50 18 C 53 18 53 10 50 10 C 47 10 47 18 50 18 C 66 18 78 28 82 42 C 86 40 90 44 88 47 C 82 52 82 60 76 72 C 78 76 74 80 70 78 C 62 84 54 86 50 86 C 50 92 46 92 46 86 C 36 84 28 78 24 70 C 20 72 18 68 20 64 C 18 56 20 46 26 36 C 22 32 26 28 30 32 C 36 24 44 18 50 18 Z',
+    };
+    const cellAt = (cls, x, y, r, extra = '') => { const sc = r / 40; return `<g transform="translate(${(x - 50 * sc).toFixed(1)} ${(y - 50 * sc).toFixed(1)}) scale(${sc.toFixed(3)})"${extra}><path class="cell ${cls}" d="${CELL_PATHS[cls]}"/></g>`; };
 
+    // 몸속 칸: 병원체가 늘어나고, 세포들이 깨어나 항체를 내고, 항체가 병원체에 달라붙는다
+    const FX0 = 18, FX1 = 330, FY0 = 22, FY1 = 196;
     function renderImmune(a) {
         const t = dayOf(a), { run } = a;
         const P = at(run.P, run, t), A = at(run.A, run, t), Ag = at(run.Ag, run, t), plasma = at(run.plasma, run, t), M = at(run.M, run, t), mem = at(run.memShown, run, t), act = at(run.act, run, t);
         const lymph = !(a.kind === 'infect' && state.infect === 'nolymph');
-        let out = `<rect class="blood-field" x="16" y="26" width="290" height="146" rx="10"/>`;
-        // germs: as many dots as the logarithm of the count
-        const nG = P >= 1 ? clamp(Math.round(log10(P) * 4) + 1, 1, 40) : 0;
-        for (let k = 0; k < nG; k += 1) { const x = 26 + ((k * 53 + t * 7) % 270), y = 34 + ((k * 37) % 112); out += `<circle class="germ" cx="${x}" cy="${y}" r="3.2"/>`; }
+        const memBefore = a.kind === 'infect' ? (state.infect === 'same' ? 1 : 0) : 0;
+        const W = FX1 - FX0, H = FY1 - FY0;
+        const drift = (k, ax, ay) => [Math.sin(t * 1.1 + k * 1.7) * ax, Math.cos(t * 0.9 + k * 2.3) * ay];
+        let out = `<rect class="blood-field" x="${FX0}" y="${FY0}" width="${W}" height="${H}" rx="12"/>`;
+        // 조직 속 혈관 한 줄기 (배경)
+        out += `<defs><clipPath id="immuneFieldClip"><rect x="${FX0 + 1}" y="${FY0 + 1}" width="${W - 2}" height="${H - 2}" rx="11"/></clipPath></defs>`;
+        out += `<path class="vessel" clip-path="url(#immuneFieldClip)" d="M${FX0},${FY0 + 34} C${FX0 + 90},${FY0 + 18} ${FX0 + 200},${FY0 + 52} ${FX1},${FY0 + 30}"/>`;
+        out += `<text class="small-label" x="${FX0 + 8}" y="${FY1 - 8}">몸속</text>`;
+
+        // 병원체: 수의 로그만큼 그린다 (자리는 번호마다 정해져 있어 늘면 새로 나타난다)
+        const nG = P >= 1 ? clamp(Math.round(log10(P) * 4) + 1, 1, 36) : 0;
+        const germs = [];
+        for (let k = 0; k < nG; k += 1) {
+            const [dx, dy] = drift(k, 6, 5);
+            const x = FX0 + 22 + ((k * 53) % (W - 44)) + dx, y = FY0 + 50 + ((k * 37) % (H - 80)) + dy;
+            germs.push([x, y]);
+            out += germShape(x, y, (k * 47 + t * 20) % 180);
+        }
         const nV = Ag >= 100 ? clamp(Math.round(log10(Ag) * 3), 1, 20) : 0;
-        for (let k = 0; k < nV; k += 1) { const x = 30 + ((k * 71) % 262), y = 38 + ((k * 43) % 106); out += `<circle class="germ vaccine" cx="${x}" cy="${y}" r="3.2"/>`; }
-        // antibodies
-        const nA = A >= 0.02 ? clamp(Math.round((log10(A) + 2) * 5), 1, 40) : 0;
-        for (let k = 0; k < nA; k += 1) { const x = 34 + ((k * 61 + t * 4) % 258), y = 42 + ((k * 29) % 104); out += yShape(x, y, 'ab', 3.5); }
-        out += `<text class="small-label" x="22" y="166">몸속 (혈액·조직액)${nV ? ' — 옅은 점은 백신 항원' : ''}</text>`;
-        // the cells below
-        const CELL_PATHS = {
-            'cell-mac': 'M 50 10 C 60 12 62 24 72 20 C 82 16 86 30 84 40 C 82 50 94 56 90 68 C 86 80 74 82 70 92 C 66 102 50 90 40 94 C 30 98 22 86 16 78 C 10 70 20 60 14 50 C 8 40 18 32 22 22 C 26 12 40 8 50 10 Z',
-            'cell-b': 'M 50 15 C 69 15 85 31 85 50 C 85 69 69 85 50 85 C 31 85 15 69 15 50 C 15 31 31 15 50 15 M 50 25 C 64 25 75 36 75 50 C 75 64 64 75 50 75 C 36 75 25 64 25 50 C 25 36 36 25 50 25 Z',
-            'cell-plasma': 'M 42 12 C 68 12 88 28 88 56 C 88 78 72 90 46 90 C 20 90 12 74 12 52 C 12 30 24 12 42 12 M 34 32 C 46 32 54 40 54 52 C 54 64 46 72 34 72 C 22 72 14 64 14 52 C 14 40 22 32 34 32 Z',
-            'cell-mem': 'M 50 12 C 71 12 88 29 88 50 C 88 71 71 88 50 88 C 29 88 12 71 12 50 C 12 29 29 12 50 12 M 50 20 C 67 20 80 33 80 50 C 80 67 67 80 50 80 C 33 80 20 67 20 50 C 20 33 33 20 50 20 M 50 30 C 61 30 70 39 70 50 C 70 61 61 70 50 70 C 39 70 30 61 30 50 C 30 39 39 30 50 30 Z',
-            'cell-t': 'M 50 18 C 53 18 53 10 50 10 C 47 10 47 18 50 18 C 66 18 78 28 82 42 C 86 40 90 44 88 47 C 82 52 82 60 76 72 C 78 76 74 80 70 78 C 62 84 54 86 50 86 C 50 92 46 92 46 86 C 36 84 28 78 24 70 C 20 72 18 68 20 64 C 18 56 20 46 26 36 C 22 32 26 28 30 32 C 36 24 44 18 50 18 Z',
-        };
-        const cells = [
-            { x: 44, cls: 'cell-mac', r: 8, name: '큰포식세포', sub: P >= 1 || Ag >= 100 ? '잡아먹는 중' : '대기' },
-            { x: 106, cls: 'cell-b', r: 7, name: 'B 림프구', sub: !lymph ? '없음' : act > 0.3 ? '항원 알아봄' : '대기' },
-            { x: 168, cls: 'cell-plasma', r: 7, name: '형질 세포', sub: !lymph ? '없음' : plasma >= 0.5 ? `×${Math.round(plasma)} 항체 생산` : '아직 없음' },
-            { x: 232, cls: 'cell-mem', r: 7, name: '기억 세포', sub: !lymph ? '없음' : mem > 0 ? `×${mem} 있음` : a.kind === 'infect' && state.infect === 'other' ? '다른 병원체용만' : '아직 없음' },
-            { x: 292, cls: 'cell-t', r: 7, name: 'T 림프구', sub: !lymph ? '없음' : act > 0.3 ? '도움 신호' : '대기' },
-        ];
-        cells.forEach(c => {
-            const sc = (c.r / 50 * 2.2).toFixed(3);
-            out += `<g transform="translate(${(c.x - 50 * sc).toFixed(1)}, ${(184 - 50 * sc).toFixed(1)}) scale(${sc})"` +
-                   `${!lymph && c.cls !== 'cell-mac' ? ' opacity=".3"' : ''}>` +
-                   `<path class="cell ${c.cls}" d="${CELL_PATHS[c.cls]}"/>` +
-                   `</g>`;
-            if (c.cls === 'cell-plasma' && plasma >= 0.5) out += yShape(c.x + 11, 180, 'ab', 3);
-            out += `<text class="cell-text" x="${c.x}" y="204" text-anchor="middle">${c.name}</text><text class="small-label prose" x="0" y="0">${c.name} — ${c.sub}</text>`;
+        for (let k = 0; k < nV; k += 1) { const [dx, dy] = drift(k + 50, 5, 4); out += germShape(FX0 + 30 + ((k * 71) % (W - 60)) + dx, FY0 + 46 + ((k * 43) % (H - 80)) + dy, k * 33, 'germ vaccine'); }
+
+        // 항체: 충분하면(1 넘음) 병원체마다 달라붙고, 나머지는 떠다닌다
+        const nA = A >= 0.02 ? clamp(Math.round((log10(A) + 2) * 5), 1, 34) : 0;
+        let used = 0;
+        if (A >= 1) germs.forEach(([gx, gy], k) => {
+            if (used + 2 > nA) return;
+            out += yShape(gx - 7, gy - 4, 'ab stuck', 3.4, 60) + yShape(gx + 7, gy + 3, 'ab stuck', 3.4, -120);
+            used += 2;
         });
-        // right column: day, counts, fever
+        for (let k = used; k < nA; k += 1) { const [dx, dy] = drift(k + 100, 8, 6); out += yShape(FX0 + 26 + ((k * 61) % (W - 52)) + dx, FY0 + 48 + ((k * 29) % (H - 76)) + dy, 'ab', 3.6, (k * 67) % 360); }
+
+        // 세포들 (몸속 칸 안에서 천천히 움직인다)
+        const near = germs[0] || [FX0 + 70, FY0 + 90];
+        const [mdx, mdy] = drift(7, 10, 8);
+        const macX = clamp(near[0] + 18 + mdx, FX0 + 22, FX1 - 22), macY = clamp(near[1] + 14 + mdy, FY0 + 24, FY1 - 24);
+        out += cellAt('cell-mac', macX, macY, 15);
+        if (P >= 1 || Ag >= 100) out += germShape(macX - 2, macY + 1, 30, 'germ eaten');
+        const dim = lymph ? '' : ' opacity=".28"';
+        const awake = lymph && act > 0.3;
+        const [bdx, bdy] = drift(11, 4, 3), bX = FX0 + 64 + bdx, bY = FY1 - 34 + bdy;
+        out += cellAt('cell-b', bX, bY, 11, dim + (awake ? ' class="awake"' : ''));
+        const [tdx, tdy] = drift(13, 4, 3), tX = FX0 + 108 + tdx, tY = FY1 - 30 + tdy;
+        out += cellAt('cell-t', tX, tY, 11, dim + (awake ? ' class="awake"' : ''));
+        if (awake) out += `<path class="signal" d="M${(tX - 10).toFixed(1)},${(tY - 4).toFixed(1)} Q${((tX + bX) / 2).toFixed(1)},${(bY - 18).toFixed(1)} ${(bX + 9).toFixed(1)},${(bY - 6).toFixed(1)}"/>`;
+        // 형질 세포: 수가 늘며 항체를 내뿜는다
+        const nPl = lymph ? clamp(Math.ceil(Math.log2(1 + plasma)), 0, 6) : 0;
+        for (let k = 0; k < nPl; k += 1) {
+            const [dx, dy] = drift(k + 20, 3, 3), x = FX0 + 156 + k * 26 + dx, y = FY1 - 30 - (k % 2) * 14 + dy;
+            out += cellAt('cell-plasma', x, y, 10);
+            const puff = (t * 3 + k * 0.37) % 1;
+            out += yShape(x + 10 + puff * 14, y - 8 - puff * 12, 'ab', 3, -30 + k * 20);
+        }
+        // 기억 세포
+        for (let k = 0; k < (lymph ? mem : 0); k += 1) { const [dx, dy] = drift(k + 30, 2, 2); out += cellAt('cell-mem', FX1 - 26 - k * 22 + dx, FY0 + 22 + dy, 9); }
+
+        // 오른쪽: 날짜, 수, 열 막대 (짧은 이름표만)
         const sick = P > SICK;
-        out += `<text class="gen-text" x="320" y="42">${fmtDay(t)}일째</text>`;
-        out += `<text class="trait-text" style="fill:#9333ea" x="320" y="62">병원체 ${P >= 1 ? fmtGerms(P) : '없음'}</text>`;
-        out += `<text class="trait-text" style="fill:#059669" x="320" y="78">항체 ${fmtA(A)}</text>`;
-        out += `<text class="small-label" x="320" y="90">(1을 넘으면 병원체를 막음)</text>`;
-        out += `<rect class="fever" x="320" y="102" width="120" height="14" rx="7"/><rect class="fever-fill" x="322" y="104" width="${(116 * clamp(P >= 1 ? log10(P) / 9 : 0, 0, 1)).toFixed(1)}" height="10" rx="5"/>`;
-        out += `<line class="ref-line" x1="${(322 + 116 * 4 / 9).toFixed(1)}" y1="99" x2="${(322 + 116 * 4 / 9).toFixed(1)}" y2="119"/>`;
-        out += `<text class="small-label" x="320" y="130">막대: 병원체 수 (로그 눈금)</text><text class="small-label" x="320" y="141">점선(1만 마리)을 넘으면 열이 남</text>`;
-        out += `<text class="trait-text" style="fill:${sick ? '#dc2626' : '#475569'}" x="320" y="157">${sick ? '열이 나 앓는 중' : P >= 1 ? '병원체 있지만 괜찮음' : nV ? '백신 항원만 있음 — 앓지 않음' : '병원체 없음'}</text>`;
+        out += `<text class="day-text" x="344" y="46">${fmtDay(t)}일째</text>`;
+        out += `<text class="trait-text" style="fill:#7e22ce" x="344" y="70">병원체 ${P >= 1 ? fmtGerms(P) : '없음'}</text>`;
+        out += `<text class="trait-text" style="fill:#047857" x="344" y="90">항체 ${fmtA(A)}</text>`;
+        out += `<text class="small-label" x="344" y="114">열</text>`;
+        out += `<rect class="fever" x="364" y="104" width="80" height="12" rx="6"/><rect class="fever-fill" x="366" y="106" width="${(76 * clamp(P >= 1 ? log10(P) / 9 : 0, 0, 1)).toFixed(1)}" height="8" rx="4"/>`;
+        out += `<line class="fever-mark" x1="${(366 + 76 * 4 / 9).toFixed(1)}" y1="100" x2="${(366 + 76 * 4 / 9).toFixed(1)}" y2="120"/>`;
+        out += `<text class="trait-text" style="fill:${sick ? '#dc2626' : '#475569'}" x="344" y="140">${sick ? '앓는 중' : P >= 1 ? '괜찮음' : '병원체 없음'}</text>`;
+        // 범례
+        const LY = 220, LY2 = 240;
+        out += germShape(26, LY - 5, 0) + `<text class="legend-text" x="36" y="${LY}">병원체</text>`;
+        out += yShape(96, LY - 5, 'ab', 4) + `<text class="legend-text" x="106" y="${LY}">항체</text>`;
+        out += cellAt('cell-mac', 158, LY - 5, 8) + `<text class="legend-text" x="170" y="${LY}">큰포식세포</text>`;
+        out += cellAt('cell-b', 262, LY - 5, 7) + `<text class="legend-text" x="273" y="${LY}">B 림프구</text>`;
+        out += cellAt('cell-t', 352, LY - 5, 7) + `<text class="legend-text" x="363" y="${LY}">T 림프구</text>`;
+        out += cellAt('cell-plasma', 26, LY2 - 5, 7) + `<text class="legend-text" x="37" y="${LY2}">형질 세포</text>`;
+        out += cellAt('cell-mem', 120, LY2 - 5, 7) + `<text class="legend-text" x="131" y="${LY2}">기억 세포</text>`;
+        if (nV || a.kind === 'vaccine') out += germShape(214, LY2 - 5, 0, 'germ vaccine') + `<text class="legend-text" x="224" y="${LY2}">백신 항원</text>`;
+
+        // 세포 상태와 진행 단계는 그림 밖(HTML)에 짧게
+        const memWord = !lymph ? '없음' : mem > memBefore ? (memBefore ? `${mem}배로 늘어남` : '이번에 새로 생김') : mem > 0 ? '전에 생긴 것이 있음' : a.kind === 'infect' && state.infect === 'other' ? '다른 병원체용만 있음' : '아직 없음';
+        out += `<text class="prose">B 림프구: ${!lymph ? '없음' : awake ? '항원을 알아봄' : '대기'}</text>`;
+        out += `<text class="prose">형질 세포: ${!lymph ? '없음' : nPl ? `${nPl}무리, 항체를 냄` : '아직 없음'}</text>`;
+        out += `<text class="prose">기억 세포: ${memWord}</text>`;
         let phase;
         if (!lymph) phase = P > 0 ? '림프구가 없어 항체가 안 나옴' : '';
         else if (P < 1 && Ag < 100 && A < 1) phase = M > 0 ? '기억 세포가 지키는 중' : '아직 아무 일 없음';
-        else if (act < 0.3 && A < 1) phase = M > 1 || (a.kind === 'infect' && state.infect === 'same') ? '기억 세포가 깨어남 (하루 반)' : '림프구가 깨어남 (닷새쯤)';
-        else if (P >= 1 && A >= 1) phase = '항체가 병원체를 치우는 중';
+        else if (act < 0.3 && A < 1) phase = M > 1 || (a.kind === 'infect' && state.infect === 'same') ? '기억 세포가 깨어나는 중 (하루 반쯤)' : '림프구가 깨어나는 중 (닷새쯤)';
+        else if (P >= 1 && A >= 1) phase = '항체가 병원체에 붙어 치우는 중';
         else if (act >= 0.3) phase = '형질 세포가 항체를 쏟아냄';
         else phase = A >= 1 ? '항체가 남아 지킴' : '';
-        out += `<text class="trait-text" x="320" y="171">${phase}</text>`;
+        if (phase) out += `<text class="prose" style="fill:#0f172a">지금: ${phase}</text>`;
         const title = a.kind === 'infect' ? `${INFECTS[state.infect].label} · ${DOSES[state.dose].hint}` : `${SHOTS[state.shot].label} · ${WHENS[state.when].label}`;
         const VERD = { week: `${run.sick.toFixed(1)}일 앓음`, days: `${run.sick.toFixed(1)}일 앓음`, none: run.sick > 0 ? `거의 앓지 않음 (${run.sick.toFixed(1)}일)` : '앓지 않음', unbeaten: '3주 뒤에도 병원체 그대로' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${title}: ${VERD[a.verdict]}${run.clearDay !== null ? `, ${run.clearDay - (run.infectDay || 0) < 0.5 ? '반나절 안에' : `${fmtDay(run.clearDay - (run.infectDay || 0))}일 만에`} 병원체 사라짐` : ''}` : title}</text>`;
+        out += `<text class="note-text" x="0" y="0">열 막대는 병원체 수(로그 눈금)이고, 세로 금(1만 마리)을 넘으면 열이 납니다.</text>`;
         return out;
     }
 
@@ -412,11 +466,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return '<p>수치·시간·증상 기준은 면역 기억을 설명하기 위해 정한 가상 값입니다. 실제 감염 기간이나 백신 접종 일정·효과를 예측하지 않습니다.</p><p>선천 면역과 후천 면역의 역할, 같은 항원에 재노출될 때 항체 반응의 차이를 비교하세요.</p>';
     }
 
+    let lastMainHtml = null, lastGraphHtml = null;
     function render() {
         const a = analyse();
-        window.scienceScene.render(mainGroup,a.kind === 'blood' ? renderBlood(a) : renderImmune(a));
-        window.scienceScene.render(graphGroup,a.kind === 'blood' ? graphBlood(a) : graphImmune(a));
-        liftProse();
+        const mainHtml = a.kind === 'blood' ? renderBlood(a) : renderImmune(a), graphHtml = a.kind === 'blood' ? graphBlood(a) : graphImmune(a);
+        // 같은 그림이면 장면 그리기가 건너뛰므로, 이미 그림 밖으로 옮긴 글을 다시 비우지 않는다
+        if (mainHtml !== lastMainHtml || graphHtml !== lastGraphHtml) {
+            window.scienceScene.render(mainGroup, mainHtml);
+            window.scienceScene.render(graphGroup, graphHtml);
+            lastMainHtml = mainHtml; lastGraphHtml = graphHtml;
+            liftProse();
+        }
         stageBadge.textContent = a.kind === 'infect' ? `${INFECTS[state.infect].label} · ${DOSES[state.dose].label}` : a.kind === 'vaccine' ? `${SHOTS[state.shot].label} · ${WHENS[state.when].label}` : `${a.d}형 → ${a.r}형 · ${RHS[state.rh].label}`;
         methodHint.textContent = a.kind === 'infect' ? '면역 기억에 따른 항체 반응의 차이를 관찰하는 가상 모형입니다'
             : a.kind === 'vaccine' ? '백신은 항원에 대한 면역 반응과 기억을 유도합니다'
@@ -440,6 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function startRun() {
         stopRun();
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         state.progress = 0;
         running = true;
         lastStamp = performance.now();
@@ -449,10 +510,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function finish() {
         const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
-        labelA.textContent='모형의 반응';valueA.textContent=a.kind==='vaccine'?'백신 노출 조건 비교':state.infect==='same'?'같은 항원 재노출':'처음 항원 노출 등';
-        labelB.textContent='관찰 대상';valueB.textContent='항체와 병원체 곡선';
+        const run=a.run,since=run.infectDay||0;
+        labelA.textContent='열이 난 기간';valueA.textContent=run.sick<0.05?'열 없음':`${run.sick.toFixed(1)}일`;
+        labelB.textContent='병원체가 사라진 때';valueB.textContent=run.clearDay===null?'3주 안에 못 치움':run.clearDay-since<0.5?'반나절 안':`들어온 뒤 ${fmtDay(run.clearDay-since)}일째`;
         predictionResult.textContent=!state.prediction?'다음에는 모형의 결과를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 가상 모형의 예상이 맞았습니다.':'이 가상 모형의 결과와 다릅니다.';
-        explanation.textContent='특정 항원에 대한 면역 기억은 같은 항원에 다시 노출될 때 더 빠르고 강한 반응에 기여할 수 있습니다. B 림프구가 형질 세포로 분화하면 항체를 분비합니다. 그림의 수치·기간은 가상 조건이며 실제 감염, 접종 일정, 수혈이나 치료 결정을 위한 자료가 아닙니다.';
+        const why=a.kind==='infect'?({first:'처음 만난 병원체라 B 림프구가 알아보고 형질 세포가 항체를 내기까지 닷새쯤 걸렸고, 그동안 병원체가 늘었습니다. 이번 감염으로 기억 세포가 새로 생겼습니다. ',same:'두 달 전에 생긴 기억 세포가 하루 반 만에 깨어나 항체를 빨리, 많이 만들었습니다. ',other:'기억 세포는 있지만 다른 병원체용이라 이번 병원체에는 처음처럼 닷새쯤 걸렸습니다. ',nolymph:'림프구가 없어 항체가 나오지 않았고, 큰포식세포만으로는 늘어나는 병원체를 다 치우지 못했습니다. '})[state.infect]
+            :a.n?'백신으로 생긴 기억 세포와 남은 항체 덕분에 진짜 병원체가 들어오자 곧바로 항체가 늘었습니다. ':'백신을 맞지 않아 처음 걸린 것과 같이 닷새쯤 뒤에야 항체가 나왔습니다. ';
+        explanation.textContent=why+'특정 항원에 대한 면역 기억은 같은 항원에 다시 노출될 때 더 빠르고 강한 반응에 기여할 수 있습니다. B 림프구가 형질 세포로 분화하면 항체를 분비합니다. 그림의 수치·기간은 가상 조건이며 실제 감염, 접종 일정, 수혈이나 치료 결정을 위한 자료가 아닙니다.';
     }
 
     function settingsChanged() {
@@ -470,8 +534,8 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'blood' ? '수혈하기' : '3주 흘려 보기';
-        stageCaption.textContent = state.mode === 'infect' ? '보라 점이 병원체, 초록 Y가 항체입니다. 아래 줄의 세포들이 차례로 깨어나며 병원체를 치웁니다.'
-            : state.mode === 'vaccine' ? '옅은 점은 백신 항원, 진한 보라 점은 진짜 병원체입니다. 그래프 가운데 점선에서 몇 달을 건너뜁니다.'
+        stageCaption.textContent = state.mode === 'infect' ? '보라 막대가 병원체, 초록 Y가 항체입니다. 병원체가 늘면 림프구가 깨어나고, 형질 세포가 낸 항체가 병원체에 달라붙습니다.'
+            : state.mode === 'vaccine' ? '점선 막대는 백신 항원, 진한 보라 막대는 진짜 병원체입니다. 그래프 가운데 점선에서 몇 달을 건너뜁니다.'
                 : '왼쪽 주머니의 적혈구가 관을 타고 받는 사람의 혈관으로 들어갑니다. 혈장 속 Y가 응집소입니다.';
         settingsChanged();
     }));

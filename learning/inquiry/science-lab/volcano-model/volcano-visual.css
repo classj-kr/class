@@ -50,6 +50,12 @@
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
 .tray { fill: rgba(150, 160, 168, .5); }
+.board { fill: #c9ad84; stroke: #9a7c55; stroke-width: 1; }
+.foam-stream, .foam-stream-swatch { fill: #f6a96b; stroke: #f6a96b; }
+.foam-stream { fill: none; }
+.foam-stream-swatch { stroke: rgba(20, 30, 34, .5); }
+.foam-blob { fill: #fbe3cc; stroke: #e2a477; stroke-width: 1.2; }
+.foam-bubble { fill: rgba(255, 246, 236, .9); }
 .cone { fill: rgba(150, 118, 92, .85); stroke: rgba(226, 206, 186, .45); stroke-width: 1.3; }
 .bottle { fill: rgba(180, 210, 225, .18); stroke: #334155; stroke-width: 1.8; stroke-width: 1.3; }
 .vinegar { fill: rgba(240, 214, 140, .55); }
@@ -57,14 +63,14 @@
 .foam { fill: rgba(250, 240, 225, .9); }
 .foam-flow { fill: rgba(255, 190, 120, .85); }
 .ash-bit { fill: rgba(120, 120, 128, .85); }
-.gas-bubble { fill: rgba(235, 250, 255, .75); }
+.gas-bubble { fill: rgba(225, 242, 250, .9); stroke: #8fb5c6; stroke-width: .8; }
 .swatch { stroke: rgba(20, 30, 34, .5); stroke-width: 1; }
 
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }
 .small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
 .tiny-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
 .read-text { fill: var(--mint); font-size: 14px; font-weight: 900; }
-.big-read { fill: var(--mint); font-size: 19px; font-weight: 900; }
+.big-read { fill: #0f766e; font-size: 19px; font-weight: 900; }
 .note-text { fill: #475569; font-size: 14px; font-weight: 800; }
 
 .axis { stroke: #334155; stroke-width: 1.8; stroke-width: 1.6; }

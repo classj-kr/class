@@ -94,3 +94,12 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 물질별 표: 한 줄에 한 물질 */
+.heat-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.heat-table th, .heat-table td { padding: 6px 8px; border-bottom: 1px solid #e2e8f0; text-align: left; white-space: nowrap; }
+.heat-table th { color: #475569; font-weight: 750; }
+.heat-table td { color: #0f172a; font-weight: 800; }
+.heat-table td:nth-child(n+2), .heat-table th:nth-child(n+2) { text-align: right; }
+.vessel { fill: none; stroke: #8fb3c2; stroke-width: 2.6; }
+.liquid-surface { fill: rgba(255, 255, 255, .45); }

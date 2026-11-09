@@ -82,3 +82,10 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 산: 바람받이 사면·그늘 사면·눈·나무 */
+.ridge { fill: #9aa98a; stroke: #6f7d62; stroke-width: 1.4; stroke-linejoin: round; }
+.ridge-shade { fill: #7f8d71; opacity: .55; }
+.snow { fill: #ffffff; stroke: #cbd5e1; stroke-width: .8; }
+.tree { fill: #4d7c4a; }
+.axis-text.halo { paint-order: stroke; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round; }

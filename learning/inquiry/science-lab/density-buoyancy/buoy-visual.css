@@ -73,3 +73,31 @@
 .stage-readout:empty { display: none; }
 .stage-note { margin: 8px 0 0; font-size: 13px; font-weight: 700; color: #64748b; line-height: 1.5; }
 .stage-note:empty { display: none; }
+
+/* 2026-11 redraw: glass tank on a bench, block held on a string, then dropped. */
+.buoy-stage .block { transition: none; fill: #d68a3c; stroke: #8a5216; stroke-width: 1.4; }
+.buoy-stage .block-top { fill: #eab273; stroke: #8a5216; stroke-width: 1.2; stroke-linejoin: round; }
+.buoy-stage .block-side { fill: #b06a24; stroke: #8a5216; stroke-width: 1.2; stroke-linejoin: round; }
+.buoy-stage .block-label { fill: #2b1606; font-size: 13.5px; font-weight: 900; }
+.buoy-stage .tank { stroke: #7fa3b3; stroke-width: 4; stroke-linejoin: round; }
+.buoy-stage .tank-mark { stroke: #7fa3b3; stroke-width: 1.4; }
+.buoy-stage .bench { fill: #c9b8a0; stroke: #9c8669; stroke-width: 1; }
+.buoy-stage .liquid-line { stroke: #4f97b8; stroke-width: 1.6; }
+.buoy-stage .ripple { fill: none; stroke: #4f97b8; stroke-width: 1.6; }
+.buoy-stage .droplet { fill: #7cc0dc; stroke: #4f97b8; stroke-width: .8; }
+.buoy-stage .string { stroke: #6b7280; stroke-width: 1.6; fill: none; }
+.buoy-stage .hook { stroke: #4b5563; stroke-width: 2; fill: none; stroke-linecap: round; }
+.buoy-stage .force-arrow { stroke-width: 3.4; }
+.buoy-stage .force-up { stroke: #059669; }
+.buoy-stage .force-down { stroke: #dc2626; }
+.buoy-stage .force-up-head { fill: #059669; }
+.buoy-stage .force-down-head { fill: #dc2626; }
+.buoy-stage .force-dot { fill: #1f2937; }
+.buoy-stage .zone-label { font-size: 14px; }
+.buoy-stage .force-text { paint-order: stroke; stroke: rgba(255,255,255,.85); stroke-width: 3px; }
+
+/* Melting/boiling panel drawn by phase-heating.js */
+.curriculum-supplement .ph-read { fill: #9e2a2a; font-size: 15px; font-weight: 800; }
+.curriculum-supplement .ph-tick { fill: #334155; font-size: 13.5px; font-weight: 600; }
+.curriculum-supplement .ph-axis { fill: #1e293b; font-size: 14px; font-weight: 700; }
+.curriculum-supplement .ph-state { fill: #7c2d12; font-size: 13.5px; font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 3px; }

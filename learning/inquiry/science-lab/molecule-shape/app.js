@@ -119,6 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const eunF = f => /[₃l]$/.test(f) ? '은' : '는';
     const ra = num => '013678'.includes(String(num).slice(-1)) ? '이라' : '라';
 
+    // 화학식은 고딕 글꼴로: 바탕체에서 H가 II처럼 보이고 아래 첨자 뒤가 벌어진다
+    const CHEM_RE = /(?:[A-Z][a-z]?[₀-₉]*)+(?:[⁺⁻][₀-₉]*)?(?:[=–−](?:[A-Z][a-z]?[₀-₉]*)+)*|δ[+−]/g;
+    const esc = t => t.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+    const chem = t => esc(t).replace(CHEM_RE, f => `<span class="chem">${f}</span>`);
+    function chemifyTree(root) {
+        if (!root) return;
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = [];
+        while (walker.nextNode()) { const n = walker.currentNode; if (n.parentElement && !n.parentElement.closest('.chem,script,style') && /[A-Z]|δ/.test(n.nodeValue)) nodes.push(n); }
+        nodes.forEach(n => { const span = document.createElement('span'); span.innerHTML = chem(n.nodeValue); n.replaceWith(...span.childNodes); });
+    }
+    chemifyTree(document.querySelector('.meaning-panel'));
+    chemifyTree(document.querySelector('.quiz-section'));
+
     /* ------------------------------------------------------------ models */
     function dipoles(m) {
         const bonds = m.atoms.map((a, i) => { const dEN = EN[a] - EN[m.center]; return { atom: a, dEN, v: m.dirs[i].map(c => c * dEN) }; });
@@ -161,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const PRED_S = [{ value: 'linear', label: '직선형' }, { value: 'trigonal', label: '평면 삼각형' }, { value: 'tetra', label: '정사면체형' }, { value: 'lone', label: '삼각뿔형이나 굽은형 (비공유 전자쌍이 밀어냄)' }];
+    const PRED_S = [{ value: 'linear', label: '직선형' }, { value: 'trigonal', label: '평면 삼각형' }, { value: 'tetra', label: '정사면체형' }, { value: 'lone', label: '삼각뿔형 또는 굽은형' }];
     const PRED_P = [{ value: 'polar', label: '극성 분자' }, { value: 'cancel', label: '무극성 — 결합은 극성이지만 상쇄' }, { value: 'nonbond', label: '무극성 — 결합부터 무극성' }];
     const PRED_M = [{ value: 'mix', label: '잘 녹아 섞임' }, { value: 'partly', label: '조금만 녹음' }, { value: 'no', label: '녹지 않고 따로 놂' }];
 
@@ -169,9 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
         state.prediction = null;
         window.scienceInvalidatePrediction?.();
         const list = state.mode === 'shape' ? PRED_S : state.mode === 'polar' ? PRED_P : PRED_M;
-        predictionLegend.textContent = state.mode === 'shape' ? `${MOLS[state.mol].name} ${MOLS[state.mol].formula}의 모양은?`
+        predictionLegend.innerHTML = chem(state.mode === 'shape' ? `${MOLS[state.mol].name} ${MOLS[state.mol].formula}의 모양은?`
             : state.mode === 'polar' ? `${MOLS[state.pmol].name} ${MOLS[state.pmol].formula}${eunF(MOLS[state.pmol].formula)} 극성 분자일까요?`
-                : `${SOLVENTS[state.solvent].label}에 ${SOLUTES[state.solute].label}${eul(SOLUTES[state.solute].label)} 넣으면?`;
+                : `${SOLVENTS[state.solvent].label}에 ${SOLUTES[state.solute].label}${eul(SOLUTES[state.solute].label)} 넣으면?`);
         predictionArea.className = `prediction-buttons ${list.length === 4 ? 'four' : 'three'}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
@@ -181,11 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
-    // turn about the vertical axis by th, then tip the top toward the viewer a little
+    // turn about the vertical axis by th, then look down on it a little from above
     function proj(v, th) {
         const [x, y, z] = v, c = Math.cos(th), s = Math.sin(th);
         const x1 = x * c + z * s, z1 = -x * s + z * c;
-        const ct = Math.cos(-0.35), st = Math.sin(-0.35);
+        const ct = Math.cos(0.35), st = Math.sin(0.35);
         return [x1, y * ct - z1 * st, y * st + z1 * ct];
     }
     const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
@@ -195,11 +208,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // draws a molecule centred at (CX, CY); returns markup plus the screen positions of its atoms
-    function drawMolecule(m, th, CX, CY, S, withLone, dip) {
+    function drawMolecule(m, th, CX, CY, S, withLone, dip, K = 1) {
         const items = [];
         const centerP = [0, 0, 0];
         const atomPos = m.atoms.map((a, i) => { const p = proj(m.dirs[i], th); return { a, x: CX + p[0] * S, y: CY - p[1] * S, z: p[2], i }; });
-        const lonePos = withLone ? m.lone.map(l => { const p = proj(l, th); return { x: CX + p[0] * S * 0.7, y: CY - p[1] * S * 0.7, z: p[2] }; }) : [];
+        // 비공유 전자쌍: 중심 원자에서 뻗어 나온 꽃잎 모양. 같은 회전·원근을 따라 움직인다
+        const lonePos = withLone ? m.lone.map(l => { const p = proj(l, th); const u = Math.hypot(p[0], p[1]) || 1e-6; return { x: CX, y: CY, ux: p[0] / u, uy: -p[1] / u, len: u * S * 0.62, z: p[2] * 0.62 }; }) : [];
         let out = '';
         // bonds first, lone pairs and atoms sorted back-to-front
         atomPos.forEach(ap => {
@@ -207,13 +221,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (m.order === 2) out += `<line class="bond-gap" x1="${CX}" y1="${CY}" x2="${ap.x.toFixed(1)}" y2="${ap.y.toFixed(1)}"/>`;
         });
         const drawables = [{ kind: 'atom', a: m.center, x: CX, y: CY, z: 0 }, ...atomPos.map(ap => ({ kind: 'atom', ...ap })), ...lonePos.map(lp => ({ kind: 'lone', ...lp }))].sort((p, q) => p.z - q.z);
-        const covered = d => drawables.some(o => o.kind === 'atom' && o !== d && o.z > d.z && Math.hypot(o.x - d.x, o.y - d.y) < 24);
+        let labels = '';
+        const covered = d => drawables.some(o => o.kind === 'atom' && o !== d && o.z > d.z && Math.hypot(o.x - d.x, o.y - d.y) < 20 * K);
         drawables.forEach(d => {
             const sc = 1 + 0.22 * d.z;
-            if (d.kind === 'lone') { out += `<ellipse class="lone-pair" cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" rx="${(13 * sc).toFixed(1)}" ry="${(8 * sc).toFixed(1)}"/><circle fill="#a78bfa" cx="${(d.x - 3).toFixed(1)}" cy="${d.y.toFixed(1)}" r="1.6"/><circle fill="#a78bfa" cx="${(d.x + 3).toFixed(1)}" cy="${d.y.toFixed(1)}" r="1.6"/>`; return; }
-            const at = ATOM[d.a];
-            out += `<circle class="atom" fill="${at.col}" cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="${(at.r * sc).toFixed(1)}"/>${d.a !== 'H' && !covered(d) ? `<text class="atom-text" x="${d.x.toFixed(1)}" y="${(d.y + 3.5).toFixed(1)}" text-anchor="middle">${d.a}</text>` : ''}`;
+            if (d.kind === 'lone') {
+                const L = Math.max(d.len, 14), half = L / 2 + 5, mx = d.x + d.ux * half, my = d.y + d.uy * half, ang = Math.atan2(d.uy, d.ux) * 180 / Math.PI, w = 11 * sc;
+                const ex = d.x + d.ux * (L * 0.82 + 4), ey = d.y + d.uy * (L * 0.82 + 4), px = -d.uy * 4, py = d.ux * 4;
+                out += `<ellipse class="lone-pair" cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" rx="${half.toFixed(1)}" ry="${w.toFixed(1)}" transform="rotate(${ang.toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)})"/><circle fill="#6d28d9" cx="${(ex + px).toFixed(1)}" cy="${(ey + py).toFixed(1)}" r="2.6"/><circle fill="#6d28d9" cx="${(ex - px).toFixed(1)}" cy="${(ey - py).toFixed(1)}" r="2.6"/>`;
+                return;
+            }
+            const at = ATOM[d.a], R = at.r * K * sc;
+            out += `<circle class="atom" fill="${at.col}" cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="${R.toFixed(1)}"/><circle fill="#ffffff" opacity=".45" cx="${(d.x - R * .35).toFixed(1)}" cy="${(d.y - R * .35).toFixed(1)}" r="${(R * .28).toFixed(1)}"/>`;
+            if (!covered(d) && (K > 1 || d.a !== 'H')) labels += `<text class="atom-text" x="${d.x.toFixed(1)}" y="${(d.y + 5).toFixed(1)}" text-anchor="middle">${d.a}</text>`;
         });
+        out += labels;
         if (dip) {
             dip.bonds.forEach((b, i) => {
                 if (Math.abs(b.dEN) < 0.05) return;
@@ -225,38 +247,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bl = Math.hypot(ap.x - CX, ap.y - CY), ux = (ap.x - CX) / (bl || 1), uy = (ap.y - CY) / (bl || 1), lx = ap.x + ux * (ATOM[ap.a].r + 10), ly = ap.y + uy * (ATOM[ap.a].r + 10);
                 if (bl > 14 && ly < 168 && !atomPos.some((o, j) => j !== i && Math.hypot(o.x - lx, o.y - ly) < 13)) out += `<text class="small-label" style="fill:#d97706" x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="middle">${fromC ? 'δ−' : 'δ+'}</text>`;
             });
-            if (dip.mag > 0.05) { const n = proj(dip.net, th); const L = dip.mag * 34; out += arrow(CX, CY, CX + n[0] / dip.mag * L, CY - n[1] / dip.mag * L, 'net-dipole', 'net-head', 5); }
+            if (dip.mag > 0.05 && dip.grow > 0) { const n = proj(dip.net, th); const L = dip.mag * 34 * dip.grow; out += arrow(CX, CY, CX + n[0] / dip.mag * L, CY - n[1] / dip.mag * L, 'net-dipole', 'net-head', 5); }
         }
         return { out, atomPos };
     }
 
     function renderShape(a) {
-        const p = state.progress, { m } = a, th = p * Math.PI * 2, CX = 132, CY = 112, S = 74;
-        const { out: mol, atomPos } = drawMolecule(m, th, CX, CY, S, true, null);
+        const p = state.progress, { m } = a, th = 0.6 + 0.55 * Math.sin(3 * Math.PI * p), CX = 140, CY = 112, S = 88;
+        const { out: mol, atomPos } = drawMolecule(m, th, CX, CY, S, true, null, 1.45);
         let out = mol;
-        if (m.angle !== null && atomPos.length >= 2) {
+        if (m.angle !== null && atomPos.length >= 2 && p >= 1) {
             const a1 = Math.atan2(atomPos[0].y - CY, atomPos[0].x - CX), a2 = Math.atan2(atomPos[1].y - CY, atomPos[1].x - CX);
             let d = a2 - a1; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI;
-            const r = 24, big = Math.abs(d) > Math.PI ? 1 : 0, sweep = d > 0 ? 1 : 0;
+            const r = 30, big = Math.abs(d) > Math.PI ? 1 : 0, sweep = d > 0 ? 1 : 0;
             out += `<path class="angle-arc" d="M${(CX + r * Math.cos(a1)).toFixed(1)},${(CY + r * Math.sin(a1)).toFixed(1)} A${r},${r} 0 ${big} ${sweep} ${(CX + r * Math.cos(a2)).toFixed(1)},${(CY + r * Math.sin(a2)).toFixed(1)}"/>`;
-            const am = a1 + d / 2, lx = CX + 44 * Math.cos(am), ly = CY + 44 * Math.sin(am);
-            if (!atomPos.some(ap => Math.hypot(ap.x - lx, ap.y - ly) < 16)) out += `<text class="small-label" style="fill:#d97706" x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="middle">${m.angle}°</text>`;
+            const wide = Math.abs(d) > 2.6, am = a1 + d / 2, lx = wide ? CX : CX + 54 * Math.cos(am), ly = wide ? CY - 30 : CY + 54 * Math.sin(am) + 4;
+            if (!atomPos.some(ap => Math.hypot(ap.x - lx, ap.y - ly) < 22)) out += `<text class="small-label" style="fill:#d97706" x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="middle">${m.angle}°</text>`;
         }
-        const RX = 250;
+        const RX = 270;
         out += `<text class="gen-text" x="${RX}" y="44">${m.name} ${m.formula}</text>`;
         if (m.diatomic) {
             out += `<text class="trait-text" x="${RX}" y="66">원자가 둘뿐이라 이을 점이 둘 — 언제나 직선</text>`;
             out += `<text class="trait-text" x="${RX}" y="82">${m.center} 둘레: 결합 1쌍 · 비공유 ${m.lonePairs}쌍</text>`;
         } else {
             out += `<text class="trait-text" x="${RX}" y="66">중심 원자 ${m.center} 둘레의 전자쌍</text>`;
-            out += `<text class="trait-text" style="fill:#d6f5fa" x="${RX}" y="82">결합 전자쌍 ${m.bondPairs}${m.order === 2 ? ' (이중 결합도 하나로 셈)' : ''}</text>`;
+            out += `<text class="trait-text" style="fill:#1e3a8a" x="${RX}" y="82">결합 전자쌍 ${m.bondPairs}${m.order === 2 ? ' (이중 결합 1개로 셈)' : ''}</text>`;
             out += `<text class="trait-text" style="fill:#a78bfa" x="${RX}" y="98">비공유 전자쌍 ${m.lonePairs}</text>`;
             const total = m.bondPairs + m.lonePairs;
             out += `<text class="trait-text" style="fill:#d97706" x="${RX}" y="118">모두 ${total}쌍 → ${total === 2 ? '직선 배치 180°' : total === 3 ? '평면 삼각 배치 120°' : '정사면체 배치 109.5°'}</text>`;
-            out += `<text class="trait-text" x="${RX}" y="136">${m.lonePairs ? `비공유 ${m.lonePairs}쌍이 더 밀어` : '모두 결합이라'} → ${m.shape} ${m.angle}°</text>`;
+            if (p >= 1) out += `<text class="trait-text" style="fill:#b45309" x="${RX}" y="138">→ ${m.shape} ${m.angle}°</text>`;
         }
-        out += `<text class="small-label" x="${RX}" y="158">회색 C · 붉은 O · 파란 N · 흰 H · 초록 F/Cl · 분홍 B</text>`;
-        out += `<text class="small-label" x="${RX}" y="172">보라 덩어리 = 비공유 전자쌍 (원자에는 안 보임)</text>`;
         const VERD = { linear: '직선형', trigonal: '평면 삼각형', tetra: '정사면체형', lone: `${m.shape} — 비공유 전자쌍이 밀어냄` };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${m.formula}: ${VERD[a.verdict]}${m.angle !== null ? `, 결합각 ${m.angle}°` : ''}` : `${m.name} ${m.formula}`}</text>`;
         out += `<text class="note-text" x="20" y="208">전자쌍은 서로 밀어 가장 멀리 떨어진 자리를 잡습니다. 비공유 전자쌍은 더 넓게 퍼져 결합각을 조금 좁힙니다</text>`;
@@ -281,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderPolar(a) {
         const p = state.progress, { m } = a, th = 0.6 + p * Math.PI, CX = 110, CY = 112, S = 50;
-        const { out: mol } = drawMolecule(m, th, CX, CY, S, false, a);
+        const { out: mol } = drawMolecule(m, th, CX, CY, S, false, { ...a, grow: ease(clamp((p - 0.1) / 0.4, 0, 1)) });
         let out = mol;
         out += `<text class="small-label" x="110" y="188" text-anchor="middle">노란 화살표: 결합의 쌍극자 (δ+ → δ−) · 붉은 화살표: 합</text>`;
         // the field box
@@ -348,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += state.solute === 'salt' ? `<circle class="solute s-salt" cx="${G1 + 8}" cy="112" r="7"/><text class="glyph-text" x="${G1 + 8}" y="115" text-anchor="middle">+</text><circle class="solute" fill="#4ade80" stroke="#166534" cx="${G1 + 26}" cy="112" r="8"/><text class="glyph-text" x="${G1 + 26}" y="115" text-anchor="middle">−</text>` : state.solute === 'sugar' || state.solute === 'ethanol' ? `<ellipse class="mol-glyph" cx="${G1 + 16}" cy="112" rx="15" ry="8"/><text class="glyph-text" style="fill:#dc2626" x="${G1 + 6}" y="115" text-anchor="middle">δ−</text><text class="glyph-text" style="fill:#0284c7" x="${G1 + 26}" y="115" text-anchor="middle">δ+</text>${state.solute === 'ethanol' ? `<rect class="mol-glyph nonpolar" x="${G1 + 32}" y="106" width="30" height="12" rx="6"/>` : ''}` : `<rect class="mol-glyph nonpolar" x="${G1}" y="106" width="44" height="12" rx="6"/>`;
         const words = a.reason.split(' '); const lines = []; let cur = '';
         words.forEach(w => { if ((cur + ' ' + w).length > 26) { lines.push(cur); cur = w; } else cur = cur ? `${cur} ${w}` : w; }); lines.push(cur);
-        lines.slice(0, 4).forEach((ln, i) => { out += `<text class="small-label" style="fill:#d6f5fa" x="${RX}" y="${138 + i * 13}">${ln}</text>`; });
+        lines.slice(0, 4).forEach((ln, i) => { out += `<text class="small-label" style="fill:#1e3a8a" x="${RX}" y="${138 + i * 13}">${ln}</text>`; });
         const VERD = { mix: '잘 녹아 섞임', partly: '조금만 녹음', no: '녹지 않고 따로 놂' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${sv.label} + ${su.label}: ${VERD[a.verdict]}` : `${sv.label}에 ${su.label} 넣기`}</text>`;
         out += `<text class="note-text" x="20" y="208">비슷한 것끼리 녹습니다 — 극성은 극성끼리, 무극성은 무극성끼리. 이온은 극성 용매에</text>`;
@@ -398,13 +418,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         window.scienceScene.render(mainGroup,a.kind === 'shape' ? renderShape(a) : a.kind === 'polar' ? renderPolar(a) : renderMix(a));
-        window.scienceScene.render(graphGroup,a.kind === 'shape' ? graphShape(a) : a.kind === 'polar' ? graphPolar(a) : graphMix(a));
+        const done = state.progress >= 1;
+        window.scienceScene.render(graphGroup, done ? (a.kind === 'shape' ? graphShape(a) : a.kind === 'polar' ? graphPolar(a) : graphMix(a)) : '');
+        graphSvg.style.display = done ? '' : 'none';
         liftProse();
         stageBadge.textContent = a.kind === 'mix' ? `${a.sv.label} + ${a.su.label}` : `${a.m.name} ${a.m.formula}`;
         methodHint.textContent = a.kind === 'shape' ? '중심 원자의 전자쌍들은 서로 밀어내며 가장 멀리 떨어진 자리를 잡습니다'
             : a.kind === 'polar' ? '결합의 쌍극자를 화살표로 더해 남으면 극성, 상쇄되면 무극성입니다'
                 : '비슷한 것끼리 녹습니다 — 극성은 극성끼리, 무극성은 무극성끼리';
-        window.scienceScene.render(dataNote,noteFor(a));
+        window.scienceScene.render(dataNote, done ? noteFor(a) : '');
+        if (done) chemifyTree(dataNote);
         return a;
     }
 
@@ -462,7 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent = s;
+        explanation.innerHTML = chem(s);
     }
 
     function settingsChanged() {
@@ -480,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'shape' ? '분자 돌려 보기' : state.mode === 'polar' ? '전기장 걸기' : '넣고 저어 보기';
-        stageCaption.textContent = state.mode === 'shape' ? '분자가 천천히 돌아갑니다. 보라색 덩어리가 비공유 전자쌍이고, 노란 호가 결합각입니다.'
+        stageCaption.textContent = state.mode === 'shape' ? '분자가 좌우로 천천히 돌아갑니다. 보라색 꽃잎이 비공유 전자쌍이고, 다 돌고 나면 주황 호로 결합각을 보여 줍니다. 원자 색: 회색 C, 붉은 O, 파란 N, 흰 H, 초록 F·Cl, 분홍 B.'
             : state.mode === 'polar' ? '왼쪽은 결합마다의 쌍극자 화살표와 그 합, 오른쪽은 전기장 속의 분자들입니다. 극성 분자만 줄지어 섭니다.'
                 : '비커에 넣은 것이 퍼지면 녹은 것이고, 바닥이나 위에 그대로 모여 있으면 안 녹은 것입니다.';
         settingsChanged();

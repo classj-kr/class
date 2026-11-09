@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let kind = 'ss';
     let indicator = 'pp';
     let prediction = null;
-    let sim = null, running = false, frameId = 0, lastStamp = 0;
+    let sim = null, running = false, frameId = 0, lastStamp = 0, revealed = false;
 
     const ca = () => Number(acidRange.value);
     const cb = () => Number(baseRange.value);
@@ -121,49 +121,63 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderMain(a, s) {
         const pH = pHAt(s.V, a.k, a.Ca, a.Cb);
         const total = VA + s.V;
-        const BUR = { x0: 100, x1: 122, top: 24, bot: 118 };
-        let body = '';
-        // burette, emptying as the titration goes
+        const now = performance.now() / 1000;
+        const B = { x0: 104, x1: 118, top: 8, bot: 150 };      // graduated part of the burette
+        const FB = 238, FT = 198, NECK = 182, HB = 42, HN = 9; // flask bottom, shoulder, neck top
+        let o = '';
+        // stand: base, rod, boss head and clamp holding the burette
+        o += `<rect x="18" y="238" width="150" height="11" rx="3" fill="#5d6c75"/>`;
+        o += `<rect x="38" y="6" width="7" height="233" fill="url(#science-material-steel)" stroke="#5d6c75" stroke-width="1"/>`;
+        o += `<rect x="33" y="40" width="17" height="16" rx="3" fill="#47555d"/><rect x="50" y="45" width="52" height="6" fill="url(#science-material-steel)" stroke="#5d6c75" stroke-width="1"/>`;
+        o += `<rect x="99" y="41" width="5" height="14" rx="1.5" fill="#47555d"/><rect x="118" y="41" width="5" height="14" rx="1.5" fill="#47555d"/>`;
+        // burette liquid, emptying as base is added
         const used = Math.min(1, s.V / Math.max(1e-9, a.veq * 2));
-        const liq = BUR.top + 4 + (BUR.bot - BUR.top - 8) * used;
-        body += `<rect class="burette-fill" x="${BUR.x0 + 2}" y="${liq.toFixed(1)}" width="${BUR.x1 - BUR.x0 - 4}" height="${(BUR.bot - 2 - liq).toFixed(1)}"/>`;
-        body += `<path class="glass" d="M${BUR.x0},${BUR.top} L${BUR.x0},${BUR.bot} L${BUR.x1},${BUR.bot} L${BUR.x1},${BUR.top}"/>`;
-        for (let i = 1; i < 5; i += 1) {
-            const y = BUR.top + ((BUR.bot - BUR.top) * i) / 5;
-            body += `<line class="burette-tick" x1="${BUR.x1}" y1="${y.toFixed(1)}" x2="${BUR.x1 + 5}" y2="${y.toFixed(1)}"/>`;
+        const liq = B.top + 6 + (B.bot - B.top - 12) * used;
+        o += `<rect class="burette-fill" x="${B.x0 + 1.5}" y="${liq.toFixed(1)}" width="${B.x1 - B.x0 - 3}" height="${(B.bot - liq).toFixed(1)}"/>`;
+        o += `<rect class="burette-fill" x="${B.x0 + 1.5}" y="${B.bot}" width="${B.x1 - B.x0 - 3}" height="2"/>`;
+        o += `<path class="burette-fill" d="M${B.x0 + 2},163 L${B.x1 - 2},163 L${CX + 1.2},176 L${CX - 1.2},176 Z"/>`;
+        o += `<path class="glass-dark" d="M${B.x0},${B.top} L${B.x0},162 L${CX - 2},177 L${CX + 2},177 L${B.x1},162 L${B.x1},${B.top}"/>`;
+        for (let i = 0; i <= 20; i += 1) {
+            const y = B.top + 6 + ((B.bot - B.top - 12) * i) / 20;
+            o += `<line class="burette-tick" x1="${B.x0}" y1="${y.toFixed(1)}" x2="${B.x0 + (i % 5 ? 4 : 8)}" y2="${y.toFixed(1)}"/>`;
         }
-        body += `<rect class="tap" x="${CX - 6}" y="${BUR.bot}" width="12" height="9" rx="2"/>`;
-        if (!s.done && s.V > 0) {
-            body += `<circle class="drop" cx="${CX}" cy="${BUR.bot + 14}" r="2.8">` +
-                    `<animate attributeName="cy" values="${BUR.bot + 12};146" dur="0.5s" repeatCount="indefinite"/>` +
-                    `<animate attributeName="opacity" values="1;1;0" dur="0.5s" repeatCount="indefinite"/></circle>`;
-        }
-        // conical flask
-        const FT = 152, FB = 190, HALF_T = 8, HALF_B = 35;
-        const halfAt = y => HALF_T + ((HALF_B - HALF_T) * (y - FT)) / (FB - FT);
-        const level = Math.max(FT + 2, FB - 4 - (Math.min(total, 150) / 150) * 32);
+        // stopcock: the handle turns along the tube while the base runs
+        o += `<rect x="${B.x0 - 1}" y="152" width="${B.x1 - B.x0 + 2}" height="10" rx="2" fill="#e8eef1" stroke="#4d5c65" stroke-width="1.2"/>`;
+        o += running ? `<rect x="${CX - 2.5}" y="145" width="5" height="24" rx="2" fill="#2f6f85"/>`
+                     : `<rect x="${CX - 15}" y="154.5" width="30" height="5" rx="2" fill="#2f6f85"/>`;
+        // conical flask, swirled by hand while the titration runs
+        const halfAt = y => HN + ((HB - HN) * (y - FT)) / (FB - FT);
+        // drawn so that the starting 25 mL is clearly visible; the level rises as base is added
+        const level = FB - 4 - (0.3 + 0.6 * Math.min(1, s.V / Math.max(1e-9, a.veq * 2))) * (FB - FT - 6);
         const h = halfAt(level);
-        body += `<polygon class="flask-liquid" fill="${flaskColour(pH, a.ind)}" points="${(CX - h).toFixed(1)},${level.toFixed(1)} ` +
-                `${(CX + h).toFixed(1)},${level.toFixed(1)} ${(CX + HALF_B - 2).toFixed(1)},${FB - 3} ${(CX - HALF_B + 2).toFixed(1)},${FB - 3}"/>`;
-        body += `<path class="swirl" d="M${CX - 14},${FB - 12} q14,-6 28,0"/>`;
-        body += `<path class="glass" d="M${CX - 7},134 L${CX - 7},${FT} L${CX - HALF_B},${FB} L${CX + HALF_B},${FB} L${CX + 7},${FT} L${CX + 7},134"/>`;
-
-        let out = `<g clip-path="url(#flaskClip)">${body}</g>`;
-        out += `<text class="small-label" x="${BUR.x1 + 8}" y="${BUR.top + 10}">${a.c.base} ${a.Cb.toFixed(2)} M</text>`;
-        // beside the flask, not under it, where the closing note runs
-        out += `<text class="small-label" x="${CX + 42}" y="186">${a.c.acid} ${VA.toFixed(1)} mL</text>`;
-
-        out += `<text class="part-label" x="248" y="42">${a.c.label}</text>`;
-        out += `<text class="ph-big" fill="${pH > 7 ? '#0284c7' : pH < 7 ? '#ea580c' : '#059669'}" x="248" y="72">pH ${pH.toFixed(2)}</text>`;
-        out += `<text class="note-text" x="248" y="92">떨어뜨린 염기 ${s.V.toFixed(2)} mL</text>`;
-        out += `<text class="note-text" x="248" y="110">당량점 ${a.veq.toFixed(2)} mL</text>`;
-        out += `<text class="note-text" x="248" y="128">지시약 ${INDS[a.ind].name} (${INDS[a.ind].lo}~${INDS[a.ind].hi})</text>`;
-        const shown = pH >= INDS[a.ind].hi ? '변색됨' : pH <= INDS[a.ind].lo ? '아직 그대로' : '변색 중';
-        out += `<text class="note-text" x="248" y="146">지금 상태 ${shown}</text>`;
-        out += `<text class="verdict-text" fill="${a.indOk ? '#059669' : '#ea580c'}" x="248" y="170">` +
-               `${a.indOk ? '이 적정에 알맞은 지시약입니다' : '이 적정에는 알맞지 않습니다'}</text>`;
-        out += `<text class="note-text" x="20" y="206">한두 방울(${DROP} mL) 사이에 pH가 ${a.jumpLo.toFixed(1)} → ${ro(a.jumpHi.toFixed(1))} 뜁니다</text>`;
-        window.scienceScene.render(mainGroup,out);
+        const tilt = running ? 4 * Math.sin(now * 9) : 0;
+        const pts = `${(CX - h).toFixed(1)},${level.toFixed(1)} ${(CX + h).toFixed(1)},${level.toFixed(1)} ${CX + HB - 3},${FB - 3} ${CX - HB + 3},${FB - 3}`;
+        let f = `<polygon fill="#dcecf3" points="${pts}"/><polygon class="flask-liquid" fill="${flaskColour(pH, a.ind)}" points="${pts}"/>`;
+        f += `<line x1="${(CX - h).toFixed(1)}" y1="${level.toFixed(1)}" x2="${(CX + h).toFixed(1)}" y2="${level.toFixed(1)}" stroke="#7fa6b6" stroke-width="1.2"/>`;
+        if (running) f += `<path class="swirl" d="M${CX - 20},${FB - 12} q20,${(-7 * Math.cos(now * 9)).toFixed(1)} 40,0"/>`;
+        f += `<path class="glass-dark" d="M${CX - HN},${NECK} L${CX - HN},${FT} L${CX - HB},${FB - 2} Q${CX - HB},${FB} ${CX - HB + 3},${FB} L${CX + HB - 3},${FB} Q${CX + HB},${FB} ${CX + HB},${FB - 2} L${CX + HN},${FT} L${CX + HN},${NECK}"/>`;
+        f += `<path d="M${CX - HN - 3},${NECK} h${2 * HN + 6}" stroke="#5f8394" stroke-width="2"/><path d="M${CX - HB + 10},${FB - 8} L${CX - HN - 2},${FT + 6}" stroke="#fff" stroke-width="2.5" opacity=".7"/>`;
+        o += `<g transform="rotate(${tilt.toFixed(2)} ${CX} ${FB})">${f}</g>`;
+        // falling drops between the tip and the liquid
+        if (running) {
+            for (let i = 0; i < 2; i += 1) {
+                const p = (now * 2.2 + i * 0.5) % 1;
+                o += `<ellipse class="drop" cx="${CX}" cy="${(179 + p * (level - 181)).toFixed(1)}" rx="2.2" ry="3" opacity="${(1 - p * 0.4).toFixed(2)}"/>`;
+            }
+        }
+        o += `<text class="small-label" x="128" y="22">${a.c.base} ${a.Cb.toFixed(2)} M</text>`;
+        o += `<text class="small-label" x="${CX + HB + 6}" y="226">${a.c.acid} ${VA.toFixed(1)} mL</text>`;
+        o += `<text class="part-label" x="248" y="40">${a.c.label}</text>`;
+        o += `<text class="ph-big" fill="${pH > 7 ? '#0284c7' : pH < 7 ? '#ea580c' : '#059669'}" x="248" y="72">pH ${pH.toFixed(2)}</text>`;
+        o += `<text class="small-label" x="248" y="98">넣은 염기 ${s.V.toFixed(2)} mL</text>`;
+        o += `<text class="small-label" x="248" y="120">지시약 ${INDS[a.ind].name}</text>`;
+        const shown = pH >= INDS[a.ind].hi ? '색이 변함' : pH <= INDS[a.ind].lo ? '아직 그대로' : '변하는 중';
+        o += `<text class="small-label" x="248" y="142">플라스크 색 ${shown}</text>`;
+        if (revealed) {
+            o += `<text class="verdict-text" fill="${a.indOk ? '#059669' : '#ea580c'}" x="248" y="172">` +
+                 `${a.indOk ? '이 적정에 알맞은 지시약' : '이 적정에는 알맞지 않은 지시약'}</text>`;
+        }
+        window.scienceScene.render(mainGroup, o);
     }
 
     function renderGraph(a, s) {
@@ -195,13 +209,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return `<path class="${cls}" d="M${pts.join('L')}"/>`;
         };
-        out += line(vMax, 'curve-done');
+        if (revealed) out += line(vMax, 'curve-done');
         if (s && s.V > 0) out += line(s.V, 'curve');
+        if (revealed) {
         out += `<line class="eq-line" x1="${gx(a.veq).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(a.veq).toFixed(1)}" y2="${GRAPH.y0}"/>`;
         out += `<circle class="mark-dot" cx="${gx(a.veq).toFixed(1)}" cy="${gy(a.eqPH).toFixed(1)}" r="5" fill="#059669"/>`;
         const flip = gx(a.veq) > (GRAPH.x0 + GRAPH.x1) / 2;
         out += `<text class="eq-text" x="${(gx(a.veq) + (flip ? -6 : 6)).toFixed(1)}" y="${(gy(a.eqPH) - 8).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>` +
                `당량점 ${a.veq.toFixed(1)} mL · pH ${a.eqPH.toFixed(2)}</text>`;
+        }
         if (s && s.V > 0) out += `<circle class="mark-dot" cx="${gx(s.V).toFixed(1)}" cy="${gy(pHAt(s.V, a.k, a.Ca, a.Cb)).toFixed(1)}" r="4" fill="#d97706"/>`;
         window.scienceScene.render(graphGroup,out);
     }
@@ -213,8 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGraph(a, sim);
         acidOutput.textContent = `${a.Ca.toFixed(2)} M`;
         baseOutput.textContent = `${a.Cb.toFixed(2)} M`;
-        stageBadge.textContent = `${a.veq.toFixed(1)} mL · 당량점 pH ${a.eqPH.toFixed(2)}`;
-        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">산의 몰수</span><span class="data-val">${a.Ca.toFixed(2)} M × ${VA.toFixed(1)} mL = ${a.moles.toFixed(3)} mmol</span></div>` +
+        stageBadge.textContent = revealed ? `${a.veq.toFixed(1)} mL · 당량점 pH ${a.eqPH.toFixed(2)}` : running ? '적정하는 중' : '적정 전';
+        const moleRow = `<div class="data-row"><span class="data-name">산의 몰수</span><span class="data-val">${a.Ca.toFixed(2)} M × ${VA.toFixed(1)} mL = ${a.moles.toFixed(3)} mmol</span></div>`;
+        if (!revealed) { window.scienceScene.render(dataNote, moleRow); return a; }
+        window.scienceScene.render(dataNote, moleRow +
             `<div class="data-row"><span class="data-name">당량점 부피</span><span class="data-val">${a.moles.toFixed(3)} ÷ ${a.Cb.toFixed(2)} = ${a.veq.toFixed(2)} mL</span></div>` +
             `<div class="data-row"><span class="data-name">당량점 pH</span><span class="data-val">${a.eqPH.toFixed(2)} — ${EQ_WHY[a.k]}</span></div>` +
             `<div class="data-row"><span class="data-name">급변 구간</span><span class="data-val">${DROP} mL 사이에 pH ${a.jumpLo.toFixed(1)} → ${a.jumpHi.toFixed(1)}</span></div>` +
@@ -247,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         sim = freshSim();
+        revealed = false;
         running = true;
         lastStamp = performance.now();
         render();
@@ -254,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
+        revealed = true;
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -282,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function changed() {
         stopRun();
         sim = freshSim();
+        revealed = false;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();
