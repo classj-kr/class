@@ -363,7 +363,7 @@
     $('myIdentity').textContent = me.teacher ? '선생님' : `${me.number}번 ${me.name}`;
     $('shareBoard').hidden = $('settingsBoard').hidden = !me.teacher;
     $('artQuiz').hidden = !me.teacher || b.layout === 'quiz' || !data.posts.some(p => p.image && p.number !== null && !p.hidden);
-    $('artQuiz').textContent = data.live ? '🎨 진행 중인 경주로' : '🎨 작품 퀴즈 경주';
+    $('artQuiz').textContent = data.live ? '🎨 진행 중인 순위전으로' : '🎨 작품 순위전';
     $('writePost').textContent = b.layout === 'quiz' ? '+ 문제 만들기' : '+ 글 쓰기';
     $('writePost').disabled = !me.teacher && b.closed;
     $('closedNotice').hidden = !b.closed;
