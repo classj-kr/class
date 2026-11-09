@@ -77,7 +77,7 @@
   const fromRange = C.validRange(fromSet, params.get('range'));
   // 들어온 자리(앞의 "~"를 뗀 것): "그 부분만"과 "처음부터 거기까지"를 고를 수 있게 한다.
   const baseRange = fromRange && fromRange.replace('~', '');
-  const choice = { set: fromSet, level: C.validLevel(fromSet, params.get('level')), range: fromRange, duration: 90, teamMode: false, teamCount: 2 };
+  const choice = { set: fromSet, level: C.validLevel(fromSet, params.get('level')), range: fromRange, duration: 90, teamMode: false, teamCount: 2, teamSize: C.TEAM_SIZE_DEFAULT };
   // 단계를 순위전 화면에서 바로 고르는 콘텐츠(한자 25단계): 마지막으로 고른 단계. "전체"로 바꿔도 기억해 둔다.
   let pickedStage = 1;
   const syncStage = () => { if (C.RANGE_SETS[choice.set]?.pick && choice.range) pickedStage = Number(String(choice.range).replace('~', '')) || 1; };
@@ -346,7 +346,10 @@
         optionRow('시간', C.DURATIONS.map((s) => [s, s % 60 === 0 ? `${s / 60}분` : `${s}초`]), choice.duration, (duration) => change({ duration }), true),
         optionRow('경기 방식', [[false, '개인전'], [true, '팀전']], choice.teamMode, (teamMode) => change({ teamMode })),
       );
-      if (choice.teamMode) box.append(optionRow('팀 수', C.TEAM_COUNTS.map((n) => [n, `${n}팀`]), choice.teamCount, (teamCount) => change({ teamCount }), true));
+      if (choice.teamMode) box.append(
+        optionRow('팀 수', C.TEAM_COUNTS.map((n) => [n, `${n}팀`]), choice.teamCount, (teamCount) => change({ teamCount }), true),
+        optionRow('한 팀 인원', C.TEAM_SIZES.map((n) => [n, `${n}명`]), choice.teamSize, (teamSize) => change({ teamSize }), true),
+      );
     });
   }
   // ── 교과서 단어 시험 범위: 단원을 체크해서 고른다 ─────────
@@ -528,19 +531,20 @@
     $('myLobbyHint').textContent = teamMode && s.me.team === null ? '아래에서 들어갈 팀을 눌러요!' : s.me.host ? '모두 들어오면 🏁 출발!을 눌러요.' : '선생님이 출발을 누르면 시작해요!';
     if (!teamMode) $('lobbyRacers').replaceChildren(...s.participants.map(item));
     else {
+      const cap = s.config.teamSize || C.TEAM_SIZE_DEFAULT;
       $('teamColumns').style.setProperty('--teams', s.teams.length);
       $('teamColumns').dataset.count = s.teams.length;
       $('teamColumns').replaceChildren(...s.teams.map((t) => {
         const col = document.createElement('div');
-        col.className = 'team-col' + (s.me.team === t.index ? ' mine' : '') + (t.size >= C.TEAM_MAX ? ' full' : '');
+        col.className = 'team-col' + (s.me.team === t.index ? ' mine' : '') + (t.size >= cap ? ' full' : '');
         col.style.setProperty('--team-hue', t.hue);
         const head = document.createElement('button');
         head.type = 'button';
         head.className = 'team-head';
         head.innerHTML = '<b></b><span></span>';
         head.firstChild.textContent = `${t.emoji} ${t.name}팀`;
-        head.lastChild.textContent = `${t.size}/${C.TEAM_MAX}`;
-        head.disabled = !s.me.plays || s.me.team === t.index || t.size >= C.TEAM_MAX;
+        head.lastChild.textContent = `${t.size}/${cap}`;
+        head.disabled = !s.me.plays || s.me.team === t.index || t.size >= cap;
         head.onclick = () => action(async () => { render(await api('/rooms/' + code + '/team', { team: t.index })); sfx.join(); });
         const list = document.createElement('ul');
         list.className = 'lobby-racers';
@@ -561,7 +565,7 @@
           // 다음 팀 → … → 팀 없음 순서로 돌되, 꽉 찬 팀은 건너뛴다.
           const stops = s.teams.length + 1;
           let next = p.team === null ? 0 : p.team + 1;
-          while (next < s.teams.length && s.teams[next].size >= C.TEAM_MAX) next++;
+          while (next < s.teams.length && s.teams[next].size >= (s.config.teamSize || C.TEAM_SIZE_DEFAULT)) next++;
           next %= stops;
           render(await api('/rooms/' + code + '/assign', { playerId: p.id, team: next === s.teams.length ? null : next }));
         });

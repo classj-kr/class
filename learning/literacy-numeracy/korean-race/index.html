@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f6efe1">
   <title>순위전</title>
-  <link rel="stylesheet" href="race.css?v=20261109-pod-hop">
+  <link rel="stylesheet" href="race.css?v=20261109-lobby-side">
 </head>
 <body data-screen="entry">
   <div class="paper" aria-hidden="true">
@@ -49,13 +49,15 @@
 
     <!-- 대기실 -->
     <section id="lobbyScreen" class="screen lobby" hidden>
+      <!-- 설정은 왼쪽 내용과 따로 둔다: 설정 칸이 길어도 팀 칸이 그 높이만큼 밀려 내려가지 않게 -->
+      <div class="host-only lobby-settings">
+        <div class="settings" data-settings="lobby"></div>
+        <button id="startButton" class="big-button go" type="button">🏁 출발!</button>
+      </div>
+      <div class="lobby-main">
       <div class="lobby-head">
         <div class="code-card host-only"><span>방번호</span><strong id="lobbyCode">0000</strong><em id="lobbySet"></em></div>
         <div class="me-card player-only"><span id="myRacer" class="racer-big"></span><strong id="myName"></strong><span id="myTeam" class="team-badge" hidden></span><p id="myLobbyHint">선생님이 출발을 누르면 시작해요!</p></div>
-        <div class="host-only lobby-settings">
-          <div class="settings" data-settings="lobby"></div>
-          <button id="startButton" class="big-button go" type="button">🏁 출발!</button>
-        </div>
       </div>
       <p class="lobby-count"><b id="racerCount">0</b>명 대기 중 · <span id="lobbyRule"></span> <button id="shuffleButton" class="chip-button host-only" type="button" hidden>🎲 랜덤 배정</button></p>
       <ul id="lobbyRacers" class="lobby-racers"></ul>
@@ -63,6 +65,7 @@
         <div id="teamColumns" class="team-columns"></div>
         <div id="benchZone" class="bench"><p>아직 팀 없음 · 출발할 때 자동으로 팀에 들어가요</p><ul id="benchList" class="lobby-racers"></ul></div>
         <p class="team-tip host-only">학생을 누르면 다음 팀으로 옮겨요.</p>
+      </div>
       </div>
     </section>
 

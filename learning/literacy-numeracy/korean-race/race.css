@@ -146,7 +146,17 @@ main { width: min(1180px, 100%); margin: 0 auto; padding: 0 16px 40px; }
 .big-button.ghost { background: var(--card); color: var(--ink); box-shadow: 0 6px 0 var(--line); }
 
 /* ── 대기실 ── */
+.lobby { display: grid; gap: 16px; align-items: start; }
+/* 좁은 화면·학생 화면은 예전 차례 그대로(방번호 → 설정 → 대기 인원 → 팀 칸) */
+.lobby-main { display: contents; }
+.lobby-head { order: -1; }
 .lobby-head { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: start; }
+/* 넓은 화면의 방장: 설정은 오른쪽 기둥(화면 높이 안에서 따로 스크롤), 왼쪽은 방번호·팀 칸이 위에서부터 이어진다 */
+@media (min-width: 861px) {
+  body.is-host .lobby { grid-template-columns: minmax(0, 1fr) minmax(320px, 380px); }
+  body.is-host .lobby-settings { grid-column: 2; grid-row: 1; position: sticky; top: 64px; max-height: calc(100vh - 80px); overflow-y: auto; }
+  body.is-host .lobby-main { display: grid; gap: 14px; align-content: start; min-width: 0; grid-column: 1; grid-row: 1; }
+}
 .code-card, .me-card, .lobby-settings { background: var(--card); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
 .code-card { display: grid; justify-items: center; gap: 4px; }
 .code-card span { color: var(--ink-soft); font-weight: 700; }

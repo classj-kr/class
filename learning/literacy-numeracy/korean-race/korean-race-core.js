@@ -39,7 +39,10 @@
   // 여러 번 만에 맞히면 풀이를 잠깐 보여 준다.
   const REVEAL_MS = 1500;
   // 팀전: 해·달·별… 팀마다 1~6명, 팀은 여덟까지. 모두가 모은 점수를 합쳐 겨룬다.
-  const TEAM_MAX = 6;
+  // 한 팀 인원은 방장이 고른다(기본 6명). TEAM_MAX 는 고를 수 있는 가장 큰 값.
+  const TEAM_SIZES = [2, 3, 4, 5, 6, 8, 10];
+  const TEAM_SIZE_DEFAULT = 6;
+  const TEAM_MAX = 10;
   const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];
   const TEAMS = [
     { name: '해', emoji: '☀️', hue: 30 },
@@ -154,5 +157,5 @@
     if (!upto || isFirst) return at;
     return spec.name ? `1~${at}` : `처음~${at}`;
   }
-  return { SETS, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  return { SETS, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });
