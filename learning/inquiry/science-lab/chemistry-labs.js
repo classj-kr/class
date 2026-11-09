@@ -77,7 +77,7 @@
  }
  function beanDots(x,y,germinating){let b='';for(let i=0;i<12;i++){const xx=x-40+i%4*25,yy=y+Math.floor(i/4)*17;b+=`<ellipse cx="${xx}" cy="${yy}" rx="10" ry="6" fill="#b38b58"/>`;if(germinating)b+=path(`M${xx+8} ${yy}q10 -14 13 -6`,'#67994b',2);}return b;}
  function drawBeans(){
-  const mode=state.mode,r=M.beans(mode,state.time),time=mode==='heat'?(state.time/25).toFixed(1)+'분':state.time+'초';let b='';
+  const mode=state.mode,r=M.beans(mode,state.time),time=mode==='heat'?(state.time/25).toFixed(1)+'분':Math.round(state.time)+'초';let b='';
   if(mode==='respirometer'){
    ['발아 콩 + 물','발아 콩 + KOH','마른 콩 + KOH'].forEach((label,i)=>{const y=75+i*95,f=[r.water,r.koh,r.dry][i];b+=rect(40,y-34,174,62,'#dcebef','rx="25" stroke="#698f9e"')+beanDots(102,y-17,i<2)+rect(181,y-26,11,46,i===0?'#b0d4df':'#ddb95f')+rect(211,y-33,17,60,'#54717e')+rect(228,y-5,337,10,'#d9e6eb','stroke="#698f9e"')+rect(532-165*f,y-7,10,14,'#394c90')+text(135,y+51,label,15);});
    b+=text(444,32,'잉크가 왼쪽으로 이동하면 내부 기체량 감소',15);svg(b,'세 호흡계의 물 또는 KOH와 잉크 방울 이동',355);

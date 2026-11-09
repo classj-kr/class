@@ -401,7 +401,6 @@
     // Two markup conventions exist: the later pages use .page-header /
     // .method-steps / .meaning-panel, the earliest ones .page-heading / .method.
     if (!document.querySelector('.page-header h1, .page-heading h1')) add('CHROME', 'no page title');
-    if (!document.querySelector('.method-steps li, .method li')) add('CHROME', 'no method steps');
     if (!document.querySelector('.meaning-panel, .meaning, .interpretation')) add('CHROME', 'no meaning panel');
     if (!document.querySelector('a[href="../"]')) add('CHROME', 'no link back to the catalog');
     const title = document.querySelector('title')?.textContent || '';

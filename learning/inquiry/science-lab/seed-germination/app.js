@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderData() {
         const need = ['water', 'warm'];
         const missing = need.filter(k => !conditions[k]).map(k => COND_LABELS[k].name);
-        const days = (progress * TOTAL_DAYS).toFixed(1);
+        const days = Math.round(progress * TOTAL_DAYS);
         window.scienceScene.render(dataNote,['water', 'warm'].map(k =>
                 `<div class="data-row"><span class="data-name">${COND_LABELS[k].name}</span>` +
                 `<span class="data-val">${conditions[k] ? COND_LABELS[k].on : COND_LABELS[k].off}</span></div>`).join('') +
