@@ -7,6 +7,8 @@
   try { if (window.SiteStorage) store = await window.SiteStorage.open('korean-race'); } catch { /* 게스트는 이 탭에서만 기억 */ }
 
   const params = new URLSearchParams(location.search);
+  // 「3분의 2」처럼 글자로 쓴 분수는 위아래로 쌓은 분수로 보인다(교과서 단어·수학 문제).
+  window.FractionText?.watch($('raceScreen'));
   // ── 바탕: 글자 연과 날리는 글자 ─────────────────────
   // 가운데 연은 시상대·문제 카드 뒤에 겹치지 않게 위쪽 오른편으로 비켜 띄운다.
   const KITES = [[8, 22, 4, 7, 5], [26, 12, 214, 9, 6], [60, 8, 146, 8, 5.5], [72, 22, 330, 10, 6.5], [90, 30, 40, 7.5, 5]];

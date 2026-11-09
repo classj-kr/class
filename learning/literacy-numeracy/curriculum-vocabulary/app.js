@@ -26,6 +26,8 @@
   const unitList = document.getElementById('unit-list');
   const unitSelect = document.getElementById('unit-select');
   const lesson = document.getElementById('lesson');
+  // 「3분의 2」처럼 글자로 쓴 분수를 위아래로 쌓은 분수로 보여 준다.
+  window.FractionText?.watch(lesson);
   const query = new URLSearchParams(location.search);
   const terms = Array.from({ length: 12 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
   const termName = (key) => `${key[0]}학년 ${key[2]}학기`;
