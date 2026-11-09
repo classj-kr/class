@@ -168,22 +168,45 @@ h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp
 .solve-guide strong { color: var(--ink); }
 .solve-tip { margin-top: 16px; padding: 12px 14px; border-left: 3px solid var(--gold); background: rgba(0,0,0,.22); }
 
+/* 다 풀면 완성 그림은 그대로 보이게 두고 결과 카드를 화면 아래에 띄운다.
+   판 옆에 자리가 넉넉한 넓은 화면은 오른쪽 빈자리에, 낮은 노트북 화면은 오른쪽 줄 안에 넣는다(아래 미디어 쿼리). */
 .celebration {
   position: fixed;
   inset: 0;
   z-index: 10;
   display: grid;
-  place-items: center end;
-  padding: clamp(12px, 2vw, 24px);
-  background: linear-gradient(90deg, rgba(8,5,3,.04) 0 58%, rgba(8,5,3,.64) 100%);
+  place-items: end center;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(8,5,3,0) 0 55%, rgba(8,5,3,.68) 82%);
 }
 .celebration[hidden] { display: none; }
-.result-card { width: min(248px, calc(50vw - 260px)); border: 1px solid var(--gold); border-radius: 22px; padding: 22px 20px; text-align: center; background: linear-gradient(145deg, #4e2b17, #21140d); box-shadow: 0 18px 50px rgba(0,0,0,.82); }
-.result-card h2 { margin: 4px 0 8px; font-size: 1.45rem; }
-.result-card p:not(.eyebrow) { color: var(--muted); }
-.result-card .finishers-panel { max-height: 82px; overflow: auto; }
-.result-card .primary { width: 100%; margin-top: 14px; }
-.result-mark { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 10px; border-radius: 50%; color: #2a170b; background: var(--gold-bright); font-size: 1.6rem; font-weight: 900; }
+.result-card {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+  width: min(100%, 520px);
+  border: 1px solid var(--gold);
+  border-radius: 22px;
+  padding: 16px 20px;
+  text-align: left;
+  background: linear-gradient(145deg, #4e2b17, #21140d);
+  box-shadow: 0 18px 50px rgba(0,0,0,.82);
+  animation: result-in .38s cubic-bezier(.2, .9, .3, 1.2) both;
+}
+.result-mark { grid-column: 1; grid-row: 1 / span 3; display: grid; place-items: center; width: 48px; height: 48px; margin: 0; border-radius: 50%; color: #2a170b; background: var(--gold-bright); font-size: 1.6rem; font-weight: 900; animation: mark-in .5s .15s ease-out both; }
+.result-card > .eyebrow,
+.result-card > h2,
+.result-card > p { grid-column: 2; }
+.result-card > .eyebrow { align-self: end; }
+.result-card > h2 { align-self: center; margin: 0; font-size: 1.45rem; }
+.result-card > p:not(.eyebrow) { align-self: start; margin: 0 0 8px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.result-card .finishers-panel,
+.result-card .primary { grid-column: 1 / -1; }
+.result-card .finishers-panel { width: 100%; max-height: 150px; margin-top: 8px; overflow: auto; text-align: center; }
+.result-card .primary { width: 100%; margin-top: 10px; }
+@keyframes result-in { from { opacity: 0; transform: translateY(18px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes mark-in { 0% { transform: scale(.3) rotate(-30deg); } 70% { transform: scale(1.18) rotate(6deg); } 100% { transform: none; } }
 
 button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
@@ -196,31 +219,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   .guide-panel { position: fixed; z-index: 51; inset: 0 0 0 auto; width: min(90vw, 430px); max-height: none; padding: 22px; box-shadow: -18px 0 45px rgba(0,0,0,.55); }
   .guide-header { top: -22px; margin: -22px -22px 8px; padding-inline: 22px; }
   .guide-backdrop { position: fixed; z-index: 50; inset: 0; border: 0; background: rgba(8,5,3,.6); backdrop-filter: blur(2px); }
-  .celebration {
-    place-items: end center;
-    padding: 12px;
-    background: linear-gradient(180deg, rgba(8,5,3,0) 0 55%, rgba(8,5,3,.68) 82%);
-  }
-  .result-card {
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    align-items: center;
-    column-gap: 12px;
-    width: min(100%, 520px);
-    padding: 16px 20px;
-    text-align: left;
-  }
-  .result-mark { grid-column: 1; grid-row: 1 / span 3; margin: 0; }
-  .result-card > .eyebrow,
-  .result-card > h2,
-  .result-card > p { grid-column: 2; }
-  .result-card > .eyebrow { align-self: end; }
-  .result-card > h2 { align-self: center; }
-  .result-card > p { align-self: start; margin-block: 0 8px; }
-  .result-card .finishers-panel,
-  .result-card .primary { grid-column: 1 / -1; }
-  .result-card .finishers-panel { max-height: 64px; text-align: center; }
-  .result-card .primary { margin-top: 10px; }
 }
 
 @media (max-width: 480px) {
@@ -242,3 +240,36 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
 }
 
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+
+@media (min-width: 900px) and (min-height: 701px) {
+  /* 판 오른쪽 빈자리에 세로 카드로 띄워 완성 그림을 가리지 않는다.
+     카드 너비 = 화면 반 - 판 반쪽(puzzle-board-layout.css의 판 너비 식) - 여백. */
+  .celebration { place-items: center end; padding: 24px; background: linear-gradient(90deg, rgba(8,5,3,.04) 0 58%, rgba(8,5,3,.64) 100%); }
+  .result-card { display: block; width: min(300px, calc(50vw - min(240px, max(150px, 50dvh - 210px)) - 40px)); padding: 20px 14px; text-align: center; }
+  .result-mark { margin: 0 auto 10px; }
+  .result-card > h2 { margin: 4px 0 6px; font-size: clamp(1.05rem, 1.5vw, 1.3rem); white-space: nowrap; }
+  .result-card > p:not(.eyebrow) { margin: 0; font-size: 1.1rem; }
+  .result-card .finishers-panel { max-height: min(210px, 34dvh); margin-top: 14px; padding: 10px 8px; }
+  .result-card .finisher-row { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 6px; padding-inline: 0; font-size: 12px; }
+  .result-card .finisher-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
+}
+@media (min-width: 900px) and (max-height: 700px) {
+  /* 낮은 노트북 화면(판 왼쪽, 단추 오른쪽): 결과는 오른쪽 줄의 도구·상태·단추 자리에 들어간다(PLAY AGAIN이 NEW PUZZLE 몫).
+     판을 덮지 않고 화면 끝에 밀려 잘리지도 않는다. contain: size — 결과 칸이 오른쪽 줄 높이를 늘리지 않게. */
+  body[data-entry-game="nonogram"] #gameScreen .game-topbar { gap: 8px; }
+  body[data-entry-game="nonogram"] #gameScreen .game-topbar :is(.text-button, #modeLabel) { white-space: nowrap; }
+  body[data-entry-game="nonogram"] #gameScreen .celebration { position: static; z-index: auto; grid-column: 2; grid-row: 3 / 6; display: flex; align-items: stretch; min-height: 0; padding: 0; background: none; contain: size; }
+  body[data-entry-game="nonogram"] #gameScreen .celebration[hidden],
+  body[data-entry-game="nonogram"] #gameScreen:has(.celebration:not([hidden])) :is(.tool-switch, .status, .actions),
+  body[data-entry-game="nonogram"] #gameScreen .result-card > .eyebrow,
+  body[data-entry-game="nonogram"] #gameScreen .result-mark { display: none; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 0; overflow: hidden; padding: 12px; text-align: center; box-shadow: 0 10px 26px rgba(0,0,0,.45); }
+  body[data-entry-game="nonogram"] #gameScreen .result-card > * { align-self: center; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card > h2 { margin: 2px 0; font-size: 1.1rem; white-space: nowrap; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card > p:not(.eyebrow) { margin: 0; font-size: 1.05rem; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card .finishers-panel { flex: 0 1 auto; align-self: stretch; width: auto; min-height: 0; max-height: none; margin: 10px 0 0; padding: 9px 8px; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card .finishers-title { margin-bottom: 4px; font-size: 12px; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card .finisher-row { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 6px; padding-inline: 0; font-size: 11.5px; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card .finisher-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
+  body[data-entry-game="nonogram"] #gameScreen .result-card .primary { flex: none; align-self: stretch; width: auto; margin-top: 10px; }
+}

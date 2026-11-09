@@ -182,22 +182,44 @@ h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp
 .solve-guide strong { color: var(--ink); }
 .solve-tip { margin-top: 16px; padding: 12px 14px; border-left: 3px solid var(--gold); background: rgba(0,0,0,.22); }
 
+/* 다 풀면 판은 그대로 보이게 두고 결과 카드를 화면 아래에 띄운다. 노트북 화면에서는 오른쪽 줄 안에 넣는다(아래 미디어 쿼리). */
 .celebration {
   position: fixed;
   inset: 0;
   z-index: 10;
   display: grid;
-  place-items: center end;
-  padding: clamp(12px, 2vw, 24px);
-  background: linear-gradient(90deg, rgba(8,5,3,.04) 0 58%, rgba(8,5,3,.64) 100%);
+  place-items: end center;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(8,5,3,0) 0 55%, rgba(8,5,3,.68) 82%);
 }
 .celebration[hidden] { display: none; }
-.result-card { width: min(248px, calc(50vw - 260px)); border: 1px solid var(--gold); border-radius: 22px; padding: 22px 20px; text-align: center; background: linear-gradient(145deg, #4e2b17, #21140d); box-shadow: 0 18px 50px rgba(0,0,0,.82); }
-.result-card h2 { margin: 4px 0 8px; font-size: 1.45rem; }
-.result-card p:not(.eyebrow) { color: var(--muted); }
-.result-card .finishers-panel { max-height: 82px; overflow: auto; }
-.result-card .primary { width: 100%; margin-top: 14px; }
-.result-mark { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 10px; border-radius: 50%; color: #2a170b; background: var(--gold-bright); font-size: 1.6rem; font-weight: 900; }
+.result-card {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+  width: min(100%, 520px);
+  border: 1px solid var(--gold);
+  border-radius: 22px;
+  padding: 16px 20px;
+  text-align: left;
+  background: linear-gradient(145deg, #4e2b17, #21140d);
+  box-shadow: 0 18px 50px rgba(0,0,0,.82);
+  animation: result-in .38s cubic-bezier(.2, .9, .3, 1.2) both;
+}
+.result-mark { grid-column: 1; grid-row: 1 / span 3; display: grid; place-items: center; width: 48px; height: 48px; margin: 0; border-radius: 50%; color: #2a170b; background: var(--gold-bright); font-size: 1.6rem; font-weight: 900; animation: mark-in .5s .15s ease-out both; }
+.result-card > .eyebrow,
+.result-card > h2,
+.result-card > p { grid-column: 2; }
+.result-card > .eyebrow { align-self: end; }
+.result-card > h2 { align-self: center; margin: 0; font-size: 1.45rem; }
+.result-card > p:not(.eyebrow) { align-self: start; margin: 0 0 8px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.result-card .finishers-panel,
+.result-card .primary { grid-column: 1 / -1; }
+.result-card .finishers-panel { width: 100%; max-height: 150px; margin-top: 8px; overflow: auto; text-align: center; }
+.result-card .primary { width: 100%; margin-top: 10px; }
+@keyframes result-in { from { opacity: 0; transform: translateY(18px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes mark-in { 0% { transform: scale(.3) rotate(-30deg); } 70% { transform: scale(1.18) rotate(6deg); } 100% { transform: none; } }
 
 button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
@@ -210,31 +232,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   .guide-panel { position: fixed; z-index: 51; inset: 0 0 0 auto; width: min(90vw, 430px); max-height: none; padding: 22px; box-shadow: -18px 0 45px rgba(0,0,0,.55); }
   .guide-header { top: -22px; margin: -22px -22px 8px; padding-inline: 22px; }
   .guide-backdrop { position: fixed; z-index: 50; inset: 0; border: 0; background: rgba(8,5,3,.6); backdrop-filter: blur(2px); }
-  .celebration {
-    place-items: end center;
-    padding: 12px;
-    background: linear-gradient(180deg, rgba(8,5,3,0) 0 55%, rgba(8,5,3,.68) 82%);
-  }
-  .result-card {
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    align-items: center;
-    column-gap: 12px;
-    width: min(100%, 520px);
-    padding: 16px 20px;
-    text-align: left;
-  }
-  .result-mark { grid-column: 1; grid-row: 1 / span 3; margin: 0; }
-  .result-card > .eyebrow,
-  .result-card > h2,
-  .result-card > p { grid-column: 2; }
-  .result-card > .eyebrow { align-self: end; }
-  .result-card > h2 { align-self: center; }
-  .result-card > p { align-self: start; margin-block: 0 8px; }
-  .result-card .finishers-panel,
-  .result-card .primary { grid-column: 1 / -1; }
-  .result-card .finishers-panel { max-height: 64px; text-align: center; }
-  .result-card .primary { margin-top: 10px; }
 }
 
 @media (max-width: 480px) {
@@ -276,6 +273,22 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   body[data-entry-game="minesweeper"] #gameScreen .guide-panel { position: fixed; inset: 64px 12px 12px auto; width: min(430px, 90vw); z-index: 51; max-height: none; }
   body[data-entry-game="minesweeper"] #gameScreen .board-wrap:has(.mine-board) { grid-column: 1; grid-row: 1 / 6; width: min(100%, 700px, calc(100dvh - 140px)); margin: auto; }
   body[data-entry-game="minesweeper"]:has(#gameScreen:not([hidden])) .page-shell { padding-top: 56px; padding-bottom: 16px; }
+  /* 다 풀면 결과는 오른쪽 줄의 도구·상태 자리에 들어간다. 판을 덮지 않고, 화면 끝에 밀려 잘리지도 않는다. */
+  /* contain: size — 결과 칸이 오른쪽 줄 높이를 늘리지 않게(판 높이 안에서 남는 자리만 쓴다). */
+  body[data-entry-game="minesweeper"] #gameScreen .celebration { position: static; z-index: auto; grid-column: 2; grid-row: 3 / 5; display: flex; align-items: stretch; min-height: 0; padding: 0; background: none; contain: size; }
+  body[data-entry-game="minesweeper"] #gameScreen .celebration[hidden],
+  body[data-entry-game="minesweeper"] #gameScreen:has(.celebration:not([hidden])) :is(.tool-switch, .status),
+  body[data-entry-game="minesweeper"] #gameScreen .result-card .primary,
+  body[data-entry-game="minesweeper"] #gameScreen .result-card > .eyebrow { display: none; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 0; overflow: hidden; padding: 12px; text-align: center; box-shadow: 0 10px 26px rgba(0,0,0,.45); }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card > * { align-self: center; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-mark { flex: none; width: 40px; height: 40px; margin: 0 0 8px; font-size: 1.3rem; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card > h2 { margin: 2px 0; font-size: 1.15rem; white-space: nowrap; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card > p:not(.eyebrow) { margin: 0; font-size: 1.1rem; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card .finishers-panel { flex: 0 1 auto; align-self: stretch; width: auto; min-height: 0; max-height: none; margin: 10px 0 0; padding: 9px 8px; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card .finishers-title { margin-bottom: 4px; font-size: 12px; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card .finisher-row { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 6px; padding-inline: 0; font-size: 11.5px; }
+  body[data-entry-game="minesweeper"] #gameScreen .result-card .finisher-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
 }
 @media (max-width: 480px) {
   #gameScreen .board-wrap:has(.mine-board) { padding: 6px; }
@@ -285,3 +298,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
 
 #startScreen .start-title { font-size: clamp(1.7rem, 6vw, 2.5rem); }
 #modeLabel { white-space: nowrap; }
+@media (min-width: 900px) and (max-height: 720px) {
+  /* 낮은 화면: 결과 칸이 좁으니 동그라미 표시를 빼고 명단에 자리를 준다. */
+  body[data-entry-game="minesweeper"] #gameScreen .result-mark { display: none; }
+}
