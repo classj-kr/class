@@ -37,7 +37,7 @@ test("learning menus use the four top-level domains", () => {
     assert.equal(fs.existsSync(path.join(root, href)), true, href);
   }
   assert.doesNotMatch(menu, /href="learning\/literacy-numeracy\/graph-studio\/"/);
-  const literacy = menu.slice(menu.indexOf('id="category-literacy-panel"'), menu.indexOf('id="category-exploration-panel"'));
+  const literacy = menu.slice(menu.indexOf('id="category-literacy-panel"'), menu.indexOf('id="category-boardgame-panel"'));
   const numeracy = literacy.match(/<details[^>]*data-access-group="numeracy"[^>]*>[\s\S]*?<\/details>/)?.[0];
   const mathematics = numeracy?.match(/<a href="learning\/literacy-numeracy\/math-tools\/"[^>]*>/)?.[0];
   assert.ok(mathematics, "The math tools catalog must open from the numeracy submenu.");

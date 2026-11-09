@@ -207,7 +207,7 @@ async function captureWebp(page, name) {
     await settled(page);
     await page.locator('#category-literacy-toggle').click();
     await settled(page);
-    const story = page.locator('[data-access-group="story-books"]');
+    const story = page.locator('[data-access-group="reading-writing"]');
     await story.locator('summary').click();
     await settled(page);
     assert.equal(writes.length, 0);
