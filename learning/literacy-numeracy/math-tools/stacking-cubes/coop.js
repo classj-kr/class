@@ -8,6 +8,8 @@
   let queue = Promise.resolve(), pending = 0, localDrawing = null, panelOpen = true;
   let pendingTitle = null, composingTitle = null, activeView = 'front', openingIndividual = false;
   const selected = new Set(), roleNames = { build: '출제자', front: '앞', right: '오른쪽 옆', top: '위' };
+  // 모둠 이름은 색 이름이다(빨강 모둠…). 서버가 준 색 동그라미를 이름 앞에 붙인다.
+  const teamLabel = t => (t.emoji ? t.emoji + ' ' : '') + t.name;
   const ui = document.createElement('div');
   ui.innerHTML = `<div class="coop-toolbar"><strong id="coop-label">문제은행·팀전</strong><button id="coop-bank-button" type="button">게시판</button></div>
     <p id="coop-status" class="coop-status" role="status"></p>
@@ -130,7 +132,7 @@
     $('coop-room-sign').hidden = !state.me.teacher;
     $('coop-room-code').textContent = state.board.code;
     const myTeam = state.teams.find(t => t.id === state.me.teamId);
-    $('coop-label').textContent = state.me.teacher ? `방 ${state.board.code}` : `${myTeam?.name || '모둠 선택'}${myTeam ? ' · ' + (state.race ? '함께 쌓기' : '공동 출제') : ''}`;
+    $('coop-label').textContent = state.me.teacher ? `방 ${state.board.code}` : `${myTeam ? teamLabel(myTeam) : '모둠 선택'}${myTeam ? ' · ' + (state.race ? '함께 쌓기' : '공동 출제') : ''}`;
     if (!panelOpen && !state.me.teacher) { renderDock(); panel(false); return; }
     const capacity = state.board.teamCapacity;
     $('coop-teacher-controls').hidden = !state.me.teacher;
@@ -138,7 +140,7 @@
     if (state.me.teacher) {
       if (!capacitySelect.disabled) capacitySelect.value = String(capacity ?? '');
       if (!state.race && state.teams.every(t => !t.members.length)) {
-        const label = element('label', '모둠 수 '), count = element('input'); count.type = 'number'; count.min = 1; count.max = 15; count.value = state.teams.length; count.setAttribute('aria-label', '모둠 수');
+        const label = element('label', '모둠 수 '), count = element('input'); count.type = 'number'; count.min = 1; count.max = 8; count.value = state.teams.length; count.setAttribute('aria-label', '모둠 수');
         label.append(count); controls.append(label, button('적용', () => send('team-count', { count: Number(count.value) })));
       }
       controls.append(button('내 문제은행', () => { location.href = location.pathname; }));
@@ -160,9 +162,10 @@
     const joiningRace = !state.me.teacher && !myTeam && state.race?.phase === 'playing';
     for (const t of ranked.filter(t => !teacherStage && (!state.race || joiningRace || t.score !== undefined))) {
       const card = element('div', undefined, 'coop-team'); card.classList.toggle('is-mine', t.id === state.me.teamId);
+      if (t.hue != null) { card.classList.add('has-color'); card.style.setProperty('--team-hue', t.hue); }
       const rank = t.score ? 1 + ranked.filter(other => (other.score || 0) > t.score || other.score === t.score && other.solvedAt < t.solvedAt).length : null;
       const seats = capacity == null ? `${t.members.length}명` : `${t.members.length}명 (최대 ${capacity}명)`;
-      card.append(element('strong', `${rank ? rank + '위 · ' : ''}${t.name} · ${seats}${t.score !== undefined ? ` · ${t.score}/${state.race.total}문제${t.finishedAt ? ' 완료' : ''}` : ''}`));
+      card.append(element('strong', `${rank ? rank + '위 · ' : ''}${teamLabel(t)} · ${seats}${t.score !== undefined ? ` · ${t.score}/${state.race.total}문제${t.finishedAt ? ' 완료' : ''}` : ''}`));
       // 모둠원은 각자 고른 아바타와 이름으로 보인다(아바타가 없으면 이름 첫 글자).
       if (t.members.length) {
         const roster = element('div', undefined, 'coop-members');
@@ -179,7 +182,7 @@
         join.disabled = full;
         card.append(join);
       }
-      if (state.me.teacher && !state.race && t.members.length) card.append(button('모둠 초기화', () => { if (confirm(`${t.name}의 배정과 작성 중인 문제를 초기화할까요? 등록된 문제는 보관됩니다.`)) send('reset-team', { teamId: t.id }); }, 'coop-small'));
+      if (state.me.teacher && !state.race && t.members.length) card.append(button('모둠 초기화', () => { if (confirm(`${teamLabel(t)}의 배정과 작성 중인 문제를 초기화할까요? 등록된 문제는 보관됩니다.`)) send('reset-team', { teamId: t.id }); }, 'coop-small'));
       teams.append(card);
     }
     if (!state.me.teacher && !myTeam && (!state.race || joiningRace) && capacity != null && state.teams.every(t => t.members.length >= capacity)) {

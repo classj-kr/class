@@ -30,7 +30,10 @@
 .coop-teams { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
 .coop-team { display:flex; flex-direction:column; gap:7px; padding:14px; border:1px solid #dedfd7; border-radius:12px; font-size:13px; }
 .coop-team.is-mine { border-color:#477e67; background:#eff5ed; }
-.coop-team strong { font-size:14px; }
+/* 모둠 색: 이름(빨강 모둠…)과 같은 색 띠 */
+.coop-team.has-color { border-top:5px solid hsl(var(--team-hue) 62% 50%); }
+.coop-team.has-color.is-mine { border-color:hsl(var(--team-hue) 62% 50%); background:hsl(var(--team-hue) 70% 96%); }
+.coop-team strong { font-size:14px; word-break:keep-all; }
 .coop-bank-heading { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-top:22px; flex-wrap:wrap; }
 .coop-bank-heading h3 { font-size:16px; }
 #coop-race-controls { display:flex; gap:8px; flex-wrap:wrap; }
@@ -56,13 +59,13 @@
 .relay-tools button { background:#fffefa; padding:6px 12px; font-size:13px; }
 .relay-lanes { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:12px; list-style:none; padding:0; margin:0; }
 .relay-lane:only-child { max-width:480px; }
-.relay-lane { position:relative; min-width:0; overflow:hidden; padding:17px; border:1px solid hsl(var(--lane-hue) 28% 80%); border-top:5px solid hsl(var(--lane-hue) 43% 46%); border-radius:15px; background:linear-gradient(150deg,#fff 40%,hsl(var(--lane-hue) 38% 95%)); }
+.relay-lane { position:relative; min-width:0; overflow:hidden; padding:17px; border:1px solid hsl(var(--lane-hue) 28% 80%); border-top:6px solid hsl(var(--lane-hue) var(--lane-sat,62%) 50%); border-radius:15px; background:linear-gradient(150deg,#fff 40%,hsl(var(--lane-hue) 38% 95%)); }
 .lane-top { justify-content:space-between; flex-direction:row-reverse; }
-.lane-top strong { font-size:clamp(18px,2vw,24px); }
-.lane-rank { font-size:12px; font-weight:750; border-radius:20px; padding:4px 10px; background:hsl(var(--lane-hue) 48% 91%); color:hsl(var(--lane-hue) 46% 27%); }
+.lane-top strong { min-width:0; font-size:clamp(18px,2vw,24px); word-break:keep-all; }
+.lane-rank { font-size:12px; font-weight:750; border-radius:20px; padding:4px 10px; background:hsl(var(--lane-hue) var(--lane-sat,70%) 91%); color:hsl(var(--lane-hue) var(--lane-sat,55%) 27%); }
 .lane-track { position:relative; margin:14px 0 5px; padding:0 21px 0 14px; }
 .lane-distance { position:relative; height:8px; border-radius:8px; background:repeating-linear-gradient(90deg,#dce5df 0 calc(20% - 1px),#f8faf5 calc(20% - 1px) 20%); }
-.lane-distance i { display:block; width:var(--distance); height:100%; border-radius:inherit; background:hsl(var(--lane-hue) 48% 49%); transition:width .5s; }
+.lane-distance i { display:block; width:var(--distance); height:100%; border-radius:inherit; background:hsl(var(--lane-hue) var(--lane-sat,62%) 50%); transition:width .5s; }
 .lane-cube { position:absolute; width:24px; height:26px; left:var(--distance); bottom:2px; transform:translateX(-50%); transition:left .5s; }
 .lane-flag { position:absolute; right:0; bottom:0; font-size:24px; color:#314e49; line-height:1; }
 .lane-caption { font-size:17px; color:#2c584d; }
@@ -74,18 +77,26 @@
 .stacking-member { display:inline-flex; align-items:center; gap:5px; min-width:0; color:#3f4d46; font-size:13px; }
 .lane-members .stacking-face { width:38px; height:38px; }
 .lane-members .stacking-member { font-size:14px; }
-.relay-lane.has-finished { border-color:#d2b06c; background:linear-gradient(145deg,#fff5d7,#fffdf6); }
-.relay-lane.has-finished[data-place="2"] { border-color:#acb7c2; background:linear-gradient(145deg,#eaf0f7,#fdfefe); }
-.relay-lane.has-finished[data-place="3"] { border-color:#c79879; background:linear-gradient(145deg,#f8e7dc,#fffdf9); }
+/* 완주한 모둠, 끝난 뒤 1·2·3위 모둠: 금·은·동 칸(위 띠는 모둠 색 그대로) */
+.relay-lane.has-finished,.relay-lane.is-placed { border-color:hsl(var(--lane-hue) var(--lane-sat,62%) 50%) #d2b06c #d2b06c; background:linear-gradient(145deg,#fff5d7,#fffdf6); }
+.relay-lane.has-finished[data-place="2"],.relay-lane.is-placed[data-place="2"] { border-color:hsl(var(--lane-hue) var(--lane-sat,62%) 50%) #acb7c2 #acb7c2; background:linear-gradient(145deg,#eaf0f7,#fdfefe); }
+.relay-lane.has-finished[data-place="3"],.relay-lane.is-placed[data-place="3"] { border-color:hsl(var(--lane-hue) var(--lane-sat,62%) 50%) #c79879 #c79879; background:linear-gradient(145deg,#f8e7dc,#fffdf9); }
+/* 1위 모둠: 왕관과 모둠 색 테 */
+.relay-lane.is-leader { box-shadow:0 0 0 3px hsl(var(--lane-hue) var(--lane-sat,62%) 50% / .45),0 6px 18px hsl(var(--lane-hue) 50% 40% / .18); }
+/* 문제를 푼 모둠: 칸이 한 번 튀고 +1 이 떠오른다 */
+.relay-lane.lane-hop { animation:lane-hop .5s cubic-bezier(.3,1.7,.5,1); }
+@keyframes lane-hop { 35% { transform:translateY(-10px) scale(1.02); } }
+.lane-pop { position:absolute; top:30px; left:50%; font-style:normal; font-size:26px; font-weight:800; color:hsl(var(--lane-hue) var(--lane-sat,62%) 42%); pointer-events:none; animation:lane-pop 1s ease-out forwards; }
+@keyframes lane-pop { from { opacity:0; transform:translate(-50%,8px) scale(.7); } 25% { opacity:1; transform:translate(-50%,-4px) scale(1.2); } to { opacity:0; transform:translate(-50%,-30px); } }
 .relay-lane.take-a-bow { box-shadow:0 0 0 3px #f0c362,0 6px 22px #b1832c33; }
 .has-finished .lane-caption { font-size:21px; color:#514432; }
-.has-finished .lane-rank { padding:0; background:none; font-size:26px; line-height:1; }
+.has-finished .lane-rank,.is-placed .lane-rank { padding:0; background:none; font-size:26px; line-height:1; }
 .lane-shape:empty { display:none; }
 .lane-shape svg { display:block; width:100%; height:115px; }
 .lane-shape .direction-marker { display:none; }
 .is-final .lane-track:has(~ .lane-shape svg) { display:none; }
-@media(max-width:700px) { .relay-lanes { grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr)); gap:7px; } .relay-lane { padding:11px; } }
-@media(prefers-reduced-motion:reduce) { .lane-cube,.lane-distance i { transition:none; } .is-cheering .relay-trophy { animation:none; } }
+@media(max-width:700px) { .relay-lanes { grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr)); gap:7px; } .relay-lane { padding:11px; } .lane-top strong { font-size:16px; } }
+@media(prefers-reduced-motion:reduce) { .lane-cube,.lane-distance i { transition:none; } .is-cheering .relay-trophy,.relay-lane.lane-hop { animation:none; } .lane-pop { display:none; } }
 .coop-figures { display:flex; gap:9px; align-items:start; }
 .coop-diagram { min-width:0; flex:1; text-align:center; }
 .coop-diagram strong { font-size:12px; }

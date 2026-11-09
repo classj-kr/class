@@ -224,7 +224,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.evaluate(() => { window.finishSounds = 0; const play = StackingSounds.play; StackingSounds.play = (...args) => { if (args[0] === 'success') window.finishSounds++; return play(...args); }; });
     const solve = async p => { await teamAction(p, 'edit', { cell: 4, delta: 1 }); await teamAction(p, 'check-answer'); };
     await solve(builder); await solve(front); await solve(front);
-    await teacher.waitForFunction(() => document.querySelector('.relay-headline').textContent === '2모둠 완주!');
+    await teacher.waitForFunction(() => document.querySelector('.relay-headline').textContent === '파랑 모둠 완주!');
     assert.match(await teacher.locator('.relay-detail').textContent(), /1위.*기록/);
     assert.equal(await teacher.locator('.relay-lane.has-finished').count(), 1);
     assert.equal(await teacher.locator('.lane-shape svg').count(), 0);
@@ -241,8 +241,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
     await teacher.locator('#coop-stage.is-final').waitFor();
     await teacher.waitForFunction(() => /lobby-brisk-pursuit\.ogg$/.test(document.querySelector('#stacking-bgm').getAttribute('src') || ''));
     assert.equal(await teacher.locator('#coop-stage.is-cheering').count(), 0, 'loading results does not replay celebrations');
-    assert.match(await teacher.locator('.relay-headline').textContent(), /2모둠 1위/);
-    assert.deepEqual(await teacher.locator('.relay-lane .lane-top strong').allTextContents(), ['2모둠', '3모둠', '1모둠']);
+    assert.match(await teacher.locator('.relay-headline').textContent(), /파랑 모둠 1위/);
+    assert.deepEqual(await teacher.locator('.relay-lane .lane-top strong').allTextContents(), ['🔵 파랑 모둠', '🟡 노랑 모둠', '🔴 빨강 모둠']);
     await snap(teacher, 'team-final-results');
     await teacher.setViewportSize({width:390,height:844});
     assert.equal(await roomCode.innerText(), smallCode);
