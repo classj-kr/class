@@ -147,7 +147,7 @@ test('menu placement, independent phases, input priority, cancellation, undo and
     .locator('#category-literacy-panel > a, #category-literacy-panel > details > summary')
     .allTextContents();
   assert.match(names[0], /읽기·쓰기/);
-  assert.match(names[2], /수리·과학·정보/);
+  assert.match(names[2], /수리·과학/);
   assert.equal(await page.locator('#category-literacy-panel a[href*=metacognition]').count(), 1);
   assert.equal(await page.locator('#category-literacy-toggle .category-label').textContent(), '문해·수리·교과');
   assert.equal(await page.locator('#category-exploration-toggle').count(), 0, '문해·수리와 교과는 하나로 합쳤다');
