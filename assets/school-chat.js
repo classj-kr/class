@@ -215,14 +215,16 @@
             const label = labelFor(user);
             button.title = label;
             button.setAttribute("aria-label", `${label} 채팅 열기`);
+            const face = el("span", "face");
             if (user.avatar) {
                 const img = el("img");
                 img.src = user.avatar;
                 img.alt = "";
                 img.loading = "lazy";
-                img.addEventListener("error", () => img.replaceWith(el("span", "", String(user.name || "?").slice(0, 1))));
-                button.appendChild(img);
-            } else button.appendChild(el("span", "", String(user.name || "?").slice(0, 1)));
+                img.addEventListener("error", () => img.replaceWith(el("span", "initial", String(user.name || "?").slice(0, 1))));
+                face.appendChild(img);
+            } else face.appendChild(el("span", "initial", String(user.name || "?").slice(0, 1)));
+            button.append(el("span", "name", String(user.name || "")), face);
             button.addEventListener("click", () => {
                 if (!ui.setOpen) return;
                 if (logMode) toggleLog();
