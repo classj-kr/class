@@ -20,7 +20,7 @@
     </section>
 
     <section id="boardView" hidden>
-      <div class="toolbar"><div class="toolbar-group"><div class="code-chip"><span>방번호</span><strong id="boardCode"></strong></div><span id="memberCount" class="pill"></span><span id="myIdentity" class="muted"></span><span id="syncStatus" class="sync" role="status">연결됨</span></div><div class="toolbar-group"><button id="artQuiz" hidden>🎨 작품 순위전</button><button id="shareBoard" hidden>공유</button><button id="settingsBoard" hidden>관리</button><button id="writePost" class="primary">+ 글 쓰기</button></div></div>
+      <div class="toolbar"><div class="toolbar-group"><div class="code-chip"><span>방번호</span><strong id="boardCode"></strong></div><span id="memberCount" class="pill"></span><span id="myIdentity" class="muted"></span><span id="syncStatus" class="sync" role="status">연결됨</span></div><div class="toolbar-group"><button id="artQuiz" hidden>🎨 작품 퀴즈 경주</button><button id="shareBoard" hidden>공유</button><button id="settingsBoard" hidden>관리</button><button id="writePost" class="primary">+ 글 쓰기</button></div></div>
       <p id="boardDescription" class="description"></p>
       <p id="closedNotice" class="notice" hidden>글쓰기·문제 출제 마감</p>
       <div id="quizControls" class="quiz-controls" hidden>
@@ -49,7 +49,7 @@
 
   <dialog id="buildDialog"><form id="buildForm"><div class="dialog-head"><h2>승인 문제로 세트 만들기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>문제 세트 제목<input id="setName" maxlength="80" required></label><p class="hint">승인 문항만 선택할 수 있습니다.</p><div id="approvedChoices"></div><p class="form-error error" role="alert"></p><button type="submit" class="primary full">세트 만들기</button></form></dialog>
   <script src="backdrop.js?v=20261106"></script>
-  <script src="app.js?v=20261109-avatars"></script>
+  <script src="app.js?v=20261109-art-name"></script>
 </body>
 </html>
 
