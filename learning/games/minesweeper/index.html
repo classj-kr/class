@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1d130d">
   <title>지뢰찾기</title>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="styles.css?v=20261108b">
+  <link rel="stylesheet" href="styles.css?v=20261110-result">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/finisher-api.js"></script>
   <script src="../../../assets/network/finisher-board.js"></script>
@@ -69,6 +69,20 @@
 
           <p class="status" id="status" role="status" aria-live="polite">READY</p>
 
+          <div class="celebration" id="celebration" hidden>
+            <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+              <span class="result-mark" aria-hidden="true">✓</span>
+              <p class="eyebrow">ALL CLEAR</p>
+              <h2 id="resultTitle">CONGRATULATIONS!</h2>
+              <p id="resultSummary"></p>
+              <div class="finishers-panel result-finishers">
+                <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+                <div class="finishers-list" id="result-finishers-list"></div>
+              </div>
+              <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
+            </div>
+          </div>
+
           <div class="actions">
             <button class="primary" id="newGameButton" type="button">NEW PUZZLE</button>
             <button class="secondary" id="retryButton" type="button">RETRY</button>
@@ -118,21 +132,7 @@
     </section>
   </main>
 
-  <div class="celebration" id="celebration" hidden>
-    <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
-      <span class="result-mark" aria-hidden="true">✓</span>
-      <p class="eyebrow">ALL CLEAR</p>
-      <h2 id="resultTitle">CONGRATULATIONS!</h2>
-      <p id="resultSummary"></p>
-      <div class="finishers-panel result-finishers">
-        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
-        <div class="finishers-list" id="result-finishers-list"></div>
-      </div>
-      <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
-    </div>
-  </div>
-
   <script src="logic.js?v=20261108-audit"></script>
-  <script src="app.js?v=20261108-sound"></script>
+  <script src="app.js?v=20261110-result"></script>
 </body>
 </html>

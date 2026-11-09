@@ -272,7 +272,9 @@
     revealId = window.setTimeout(() => {
       revealId = null;
       celebration.hidden = false;
-      $('playAgainButton').focus();
+      // 노트북 화면에서는 결과가 오른쪽 줄에 들어가고 PLAY AGAIN 대신 바로 아래 NEW PUZZLE을 쓴다.
+      const again = $('playAgainButton');
+      (again.offsetParent ? again : $('newGameButton')).focus();
       playSfx('success');
     }, 900 + rest.length * 40);
   }

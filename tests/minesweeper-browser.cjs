@@ -219,7 +219,23 @@ async function main() {
       passed.push(`${input}: victory plays once`);
       assert.equal(await page.locator('#minesLeft').innerText(), '0');
 
-      await click(page.locator('#playAgainButton'));
+      // 결과는 화면 안에 다 들어와야 한다(노트북 화면에서는 오른쪽 줄 안, PLAY AGAIN 대신 NEW PUZZLE).
+      const result = await page.evaluate(() => {
+        const card = document.querySelector('.result-card').getBoundingClientRect();
+        const board = document.getElementById('boardWrap').getBoundingClientRect();
+        const panel = document.querySelector('.result-card .finishers-panel');
+        const title = document.getElementById('resultTitle');
+        return {
+          inside: card.left >= 0 && card.right <= innerWidth && card.top >= 0 && card.bottom <= innerHeight,
+          coversBoard: card.left < board.right && card.right > board.left && card.top < board.bottom && card.bottom > board.top,
+          sideScroll: panel.scrollWidth > panel.clientWidth + 1,
+          titleClipped: title.scrollWidth > title.clientWidth + 1,
+          focused: document.activeElement.id,
+        };
+      });
+      assert.deepEqual({ ...result, focused: undefined }, { inside: true, coversBoard: false, sideScroll: false, titleClipped: false, focused: undefined });
+      assert.equal(result.focused, 'newGameButton');
+      await click(page.locator('#newGameButton'));
       await page.evaluate(() => { window.generateBeforeFailure = MineLogic.generate; MineLogic.generate = () => null; });
       await reset(page); await click(cell(page, 27));
       await check(page, `${input}: exhausted generator gives retryable feedback`, ['error']);

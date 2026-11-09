@@ -434,7 +434,9 @@
     completionRevealId = window.setTimeout(() => {
       completionRevealId = null;
       celebration.hidden = false;
-      document.getElementById('playAgainButton').focus();
+      // 결과 카드의 PLAY AGAIN이 감춰진 배치라면 NEW PUZZLE에 초점을 둔다.
+      const again = document.getElementById('playAgainButton');
+      (again.offsetParent ? again : document.getElementById('newGameButton')).focus();
       playSfx('success');
     }, 900);
   }
