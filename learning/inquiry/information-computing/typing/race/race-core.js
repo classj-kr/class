@@ -24,15 +24,16 @@
   const TEAM_SIZE_DEFAULT = 5;
   const TEAM_MAX = 10;
   const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];
+  // 팀 이름은 팀 색 그대로(헷갈리지 않게). 문해력 순위전과 같은 차례·색.
   const TEAMS = [
-    { name: '레드', emoji: '🔴', hue: 352 },
-    { name: '블루', emoji: '🔵', hue: 212 },
-    { name: '그린', emoji: '🟢', hue: 140 },
-    { name: '옐로', emoji: '🟡', hue: 48 },
-    { name: '퍼플', emoji: '🟣', hue: 275 },
-    { name: '오렌지', emoji: '🟠', hue: 26 },
-    { name: '핑크', emoji: '💗', hue: 322 },
-    { name: '스카이', emoji: '💠', hue: 190 },
+    { name: '빨강', emoji: '🔴', hue: 0 },
+    { name: '파랑', emoji: '🔵', hue: 220 },
+    { name: '노랑', emoji: '🟡', hue: 48 },
+    { name: '초록', emoji: '🟢', hue: 130 },
+    { name: '보라', emoji: '🟣', hue: 275 },
+    { name: '주황', emoji: '🟠', hue: 26 },
+    { name: '분홍', emoji: '🩷', hue: 330 },
+    { name: '하늘', emoji: '🩵', hue: 195 },
   ];
   function teamBoard(rows, teamCount) {
     const teams = TEAMS.slice(0, teamCount).map((t, index) => {

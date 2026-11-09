@@ -277,6 +277,8 @@ async function main() {
     assert.ok((await teacher.locator('[data-settings="lobby"] .option-row').evaluateAll((rows) => rows.map((row) => new Set([...row.children].map((b) => Math.round(b.getBoundingClientRect().top))).size))).every((n) => n === 1), 'lobby: one line per group with 8 teams');
     await shot(teacher, 'lobby-8teams-1487', true);
     await teacher.setViewportSize({ width: 390, height: 844 });
+    // 넓은 화면에서 팀 머리를 누른 마우스가 좁힌 화면의 「팀전」 단추 위에 남으면 그 단추만 2px 떠올라 두 줄로 센다.
+    await teacher.mouse.move(0, 0);
     await teacher.waitForTimeout(200);
     assert.deepEqual(await grid(), { rows: 4, columns: 2, overflow: false }, '8 teams on a phone: two by four');
     assert.ok((await teacher.locator('[data-settings="lobby"] .option-row').evaluateAll((rows) => rows.map((row) => new Set([...row.children].map((b) => Math.round(b.getBoundingClientRect().top))).size))).every((n) => n === 1), 'phone lobby: one line per group');
