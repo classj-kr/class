@@ -137,12 +137,12 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race-towers-heading > strong { font-size: 16px; }
 .math-race-towers-heading > span { color: var(--pencil-soft); font-size: 13px; font-weight: 700; }
 .math-race-towers ol {
-  position: relative; height: calc(var(--tower) + 104px); margin: 0; padding: 0; list-style: none;
-  background: linear-gradient(transparent calc(var(--tower) + 52px), #8a97b8 calc(var(--tower) + 52px), #8a97b8 calc(var(--tower) + 54px), transparent calc(var(--tower) + 54px));
+  position: relative; height: calc(var(--tower) + var(--climb, 52px) + 52px); margin: 0; padding: 0; list-style: none;
+  background: linear-gradient(transparent calc(var(--tower) + var(--climb, 52px)), #8a97b8 calc(var(--tower) + var(--climb, 52px)), #8a97b8 calc(var(--tower) + var(--climb, 52px) + 2px), transparent calc(var(--tower) + var(--climb, 52px) + 2px));
 }
 .math-race-towers li {
   position: absolute; top: 0; left: 0; width: calc(100% / var(--cols)); height: 100%;
-  display: grid; grid-template-rows: calc(var(--tower) + 52px) auto auto; justify-items: center; align-content: start; padding: 0 3px;
+  display: grid; grid-template-rows: calc(var(--tower) + var(--climb, 52px)) auto auto; justify-items: center; align-content: start; padding: 0 3px;
   transform: translateX(calc(var(--slot) * 100%)); transition: transform .6s cubic-bezier(.2, .8, .2, 1);
 }
 .math-race-towers li.is-me { background: linear-gradient(#2259d600, #2259d612); border-radius: 6px; }
@@ -151,6 +151,12 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race-climber .math-race-avatar { width: 36px; height: 36px; border-color: hsl(var(--hue) 70% 55%); font-size: 15px; }
 .math-race-climber.is-playing .math-race-avatar { animation: math-race-bob .7s ease-in-out infinite alternate; }
 .is-leader .math-race-climber { position: relative; }
+/* 팀전: 팀원 모두가 탑 꼭대기에 겹쳐 선다. 점수가 오르면 다 같이 튀고 +점수가 솟는다. */
+.math-race-towers ol.is-teams .math-race-climber { position: relative; width: 100%; display: flex; justify-content: center; }
+.math-race-crew { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; max-width: calc(100% + 6px); padding: 0 calc(var(--face) * .14); }
+.math-race-towers ol.is-teams .math-race-crew .math-race-avatar { width: var(--face); height: var(--face); margin: calc(var(--face) * -.09) calc(var(--face) * -.14); font-size: calc(var(--face) * .42); border-width: 1px; }
+.math-race-crew.is-hop { animation: math-race-hop .5s cubic-bezier(.3, 1.8, .5, 1); }
+.math-race-gain { position: absolute; left: 50%; bottom: 100%; translate: -50% 0; color: hsl(var(--hue) 70% 38%); font-size: 20px; font-style: normal; font-weight: 900; text-shadow: 0 2px 0 white, 0 0 6px white; pointer-events: none; z-index: 2; animation: math-race-gain 1s ease-out forwards; }
 .is-leader .math-race-climber::before { content: "👑"; position: absolute; left: 50%; top: -18px; translate: -50% 0; font-size: 18px; z-index: 1; animation: math-race-bob .8s ease-in-out infinite alternate; }
 .math-race-ones { display: grid; grid-template-columns: repeat(10, 1fr); gap: 1px; height: calc(var(--row) - 3px); }
 .math-race-cube { display: block; border-radius: 1px; background: hsl(var(--hue) 75% 62%); box-shadow: inset 0 -2px 0 hsl(var(--hue) 60% 42%); animation: math-race-cube .42s cubic-bezier(.3, 1.4, .5, 1) both; }
@@ -239,7 +245,8 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race-team-column { min-width: 0; border: 2px solid hsl(var(--hue) 55% 82%); border-radius: 8px; background: hsl(var(--hue) 70% 97%); overflow: hidden; transition: transform .2s, box-shadow .2s; }
 .math-race-team-column.is-mine { border-color: hsl(var(--hue) 65% 48%); box-shadow: 0 0 0 3px hsl(var(--hue) 70% 50% / .18); transform: translateY(-3px); }
 .math-race .math-race-team-head { display: grid; justify-items: center; gap: 2px; width: 100%; padding: 10px 4px 8px; border: 0; color: hsl(var(--hue) 60% 30%); background: hsl(var(--hue) 70% 92%); font: inherit; cursor: pointer; }
-.math-race-team-head i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; color: white; background: hsl(var(--hue) 65% 50%); box-shadow: 0 3px 0 hsl(var(--hue) 60% 36%); font-size: 28px; font-style: normal; font-weight: 900; line-height: 1; text-shadow: 0 2px 0 hsl(var(--hue) 60% 32%); }
+/* 팀 표시는 팀 색 동그라미 그림 문자 하나. 둘레에 상자를 두르지 않는다. */
+.math-race-team-head i { display: block; font-size: 30px; font-style: normal; line-height: 1.15; filter: drop-shadow(0 2px 2px hsl(var(--hue) 60% 30% / .35)); }
 .math-race-team-column.is-mine .math-race-team-head i { animation: math-race-bob .7s ease-in-out infinite alternate; }
 .math-race-team-head b { font-size: 15px; white-space: nowrap; }
 .math-race-team-head small { color: hsl(var(--hue) 30% 38%); font-size: 12px; font-weight: 700; }
@@ -249,7 +256,6 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race-team-column li span:not(.math-race-avatar) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .math-race-team-column li em { margin-left: auto; color: var(--blue); font-size: 11px; font-style: normal; }
 .math-race-team-waiting { margin: 0 0 18px; color: var(--pencil-soft); font-size: 13px; font-weight: 700; }
-.math-race-team-symbol { color: white; background: hsl(var(--hue) 65% 50%); border-radius: 8px; font-size: 22px; text-shadow: 0 2px 0 hsl(var(--hue) 60% 32%); }
 .math-race-teammates { display: grid; gap: 4px; margin: 12px 0 0; padding: 10px 0 0; border-top: 1px dashed #d5dceb; list-style: none; }
 .math-race-teammates li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 3px 6px; border-radius: 6px; font-size: 13px; font-weight: 800; }
 .math-race-teammates li.is-me { background: #e6edfb; color: var(--blue); }
@@ -261,14 +267,25 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race-team-results li:first-child { padding: 14px; border-color: hsl(var(--hue) 65% 50%); box-shadow: 0 6px 18px hsl(var(--hue) 60% 50% / .2); }
 .math-race-team-results li.is-mine { outline: 3px solid var(--blue); outline-offset: 2px; }
 .math-race-team-results em { font-size: 24px; font-style: normal; font-weight: 900; text-align: center; color: var(--pencil-soft); }
-.math-race-team-results i { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 8px; color: white; background: hsl(var(--hue) 65% 50%); font-size: 28px; font-style: normal; font-weight: 900; text-shadow: 0 2px 0 hsl(var(--hue) 60% 32%); }
+.math-race-team-results i { display: grid; place-items: center; width: 44px; height: 44px; font-size: 30px; font-style: normal; }
+/* 팀전 시상대: 단 색이 팀 색이고, 팀원 모두가 단 위에 선다. */
+.math-race .math-race-team-podium .step:not(.empty) { background: repeating-linear-gradient(0deg, hsl(var(--hue) 72% 84%) 0 22px, hsl(var(--hue) 60% 74%) 22px 24px); }
+.math-race .math-race-team-podium .step-1:not(.empty) { box-shadow: 0 0 0 4px #f7b500, 0 10px 26px hsl(var(--hue) 60% 40% / .3); }
+.math-race .math-race-team-podium .step.is-me { outline: 3px dashed var(--blue); outline-offset: 3px; }
+.math-race .math-race-team-podium strong { color: hsl(var(--hue) 65% 26%); }
+.math-race .math-race-team-podium i { color: hsl(var(--hue) 50% 30% / .35); }
+.math-race-podium-crew { position: relative; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; max-width: 100%; padding: 0 calc(var(--face) * .14); }
+.math-race .card-race-podium.math-race-team-podium .math-race-podium-crew .math-race-avatar { width: var(--face); height: var(--face); margin: calc(var(--face) * -.08) calc(var(--face) * -.14); font-size: calc(var(--face) * .4); border-width: 1px; animation: math-race-bob 1.6s ease-in-out infinite alternate; }
+.math-race-podium-crew .math-race-avatar:nth-child(2n) { animation-delay: -.5s; }
+.math-race-podium-crew .math-race-avatar:nth-child(3n) { animation-delay: -1s; }
+.math-race .card-race-board.is-teams li { grid-template-columns: 22px 20px 32px minmax(0, 1fr) auto; }
+.math-race-row-team { font-size: 15px; line-height: 1; text-align: center; }
 .math-race-team-results span { display: grid; font-size: 18px; font-weight: 900; color: var(--pencil); }
 .math-race-team-results small { color: var(--pencil-soft); font-size: 12px; }
 .math-race-team-results b { color: var(--pencil); font-size: 22px; font-variant-numeric: tabular-nums; }
 /* 탑이 여섯 개 넘게 서면 칸이 좁으므로 순위 아래에 짧은 이름을 놓는다. */
 .math-race-towers ol.is-crowded .math-race-tower-name { flex-direction: column; align-items: center; gap: 0; font-size: 11px; line-height: 1.2; }
 .math-race-towers ol.is-crowded .math-race-climber .math-race-avatar { width: 30px; height: 30px; font-size: 13px; }
-.math-race-towers ol.is-crowded .math-race-team-symbol { font-size: 19px; }
 @media (max-width: 940px) {
   .math-race-team-pick { grid-template-columns: repeat(var(--wrap, var(--teams)), minmax(0, 1fr)); }
 }
@@ -286,6 +303,8 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 @keyframes math-race-throb { to { transform: scale(1.12); } }
 @keyframes math-race-fly { 0% { transform: translate(0, 0) scale(1.4); } 45% { transform: translate(calc(var(--dx) * .45), calc(var(--dy) * .45 - 120px)) scale(1.2) rotate(180deg); } 100% { transform: translate(var(--dx), var(--dy)) scale(.5) rotate(360deg); opacity: .6; } }
 @keyframes math-race-bob { to { transform: translateY(-5px); } }
+@keyframes math-race-hop { 0% { transform: none; } 35% { transform: translateY(-14px) scale(1.08); } 70% { transform: translateY(2px) scale(.98); } 100% { transform: none; } }
+@keyframes math-race-gain { 0% { opacity: 0; transform: translateY(6px) scale(.7); } 20% { opacity: 1; transform: translateY(-4px) scale(1.2); } 100% { opacity: 0; transform: translateY(-34px) scale(1); } }
 @keyframes math-race-blink { to { opacity: .3; } }
 @keyframes math-race-pin { from { opacity: 0; transform: translateY(-14px) rotate(-6deg); } to { opacity: 1; transform: none; } }
 @keyframes math-race-cube { 0% { opacity: 0; transform: translateY(-46px) scale(1.4); } 60% { opacity: 1; transform: translateY(2px); } 100% { transform: none; } }

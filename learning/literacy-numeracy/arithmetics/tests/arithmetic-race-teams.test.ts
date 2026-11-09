@@ -9,7 +9,7 @@ function person(id: string, team: number | null = null, score = 0): ParticipantR
 
 test("team scores are the sum of members, ties share a rank", () => {
   const board = raceTeamBoard([person("a", 0, 3), person("b", 0, 2), person("c", 1, 5), person("d", 2, 1), person("e", null, 9)], 3);
-  assert.deepEqual(board.map((team) => [team.name, team.score, team.size, team.rank]), [["더하기팀", 5, 2, 1], ["빼기팀", 5, 1, 1], ["곱하기팀", 1, 1, 3]]);
+  assert.deepEqual(board.map((team) => [team.name, team.score, team.size, team.rank]), [["빨강팀", 5, 2, 1], ["파랑팀", 5, 1, 1], ["노랑팀", 1, 1, 3]]);
   assert.deepEqual(board[0].memberIds, ["a", "b"]);
 });
 
@@ -24,10 +24,12 @@ test("unpicked players go to the smallest team; shuffle balances everyone", () =
   assert.equal(raceTeamCount(9), null);
 });
 
-test("eight teams have their own names, symbols and colors", () => {
+test("eight teams are named by their colors, in the same order and hues as the literacy race", () => {
   assert.equal(RACE_TEAMS.length, 8);
   assert.equal(new Set(RACE_TEAMS.map((team) => team.name)).size, 8);
-  assert.equal(new Set(RACE_TEAMS.map((team) => team.symbol)).size, 8);
+  assert.equal(new Set(RACE_TEAMS.map((team) => team.emoji)).size, 8);
+  // 문해력 순위전 korean-race-core.js TEAMS 와 같은 차례·색.
+  assert.deepEqual(RACE_TEAMS.map((team) => [team.name, team.emoji, team.hue]), [["빨강팀", "🔴", 0], ["파랑팀", "🔵", 220], ["노랑팀", "🟡", 48], ["초록팀", "🟢", 130], ["보라팀", "🟣", 275], ["주황팀", "🟠", 26], ["분홍팀", "🩷", 330], ["하늘팀", "🩵", 195]]);
   const hues = RACE_TEAMS.map((team) => team.hue);
   for (const [index, hue] of hues.entries()) {
     for (const other of hues.slice(index + 1)) assert.ok(Math.min(Math.abs(hue - other), 360 - Math.abs(hue - other)) >= 18, `${hue} vs ${other}`);
@@ -35,7 +37,7 @@ test("eight teams have their own names, symbols and colors", () => {
   const rows = Array.from({ length: 17 }, (_, index) => person(`p${index}`));
   const filled = fillRaceTeams(rows, 8);
   assert.deepEqual(Array.from({ length: 8 }, (_, team) => filled.filter((row) => row.team === team).length), [3, 2, 2, 2, 2, 2, 2, 2]);
-  assert.deepEqual(raceTeamBoard([person("a", 7, 4)], 8).map((team) => team.name).slice(4), ["같다팀", "크다팀", "작다팀", "퍼센트팀"]);
+  assert.deepEqual(raceTeamBoard([person("a", 7, 4)], 8).map((team) => team.name).slice(4), ["보라팀", "주황팀", "분홍팀", "하늘팀"]);
 });
 
 test("duration changes only while waiting, only by the host, only in card races", async () => {
@@ -73,7 +75,7 @@ test("team size caps a team, skips full teams when filling, and frees late joine
   assert.equal(raceTeamSize(4), 4);
   assert.equal(raceTeamSize(7), null);
   const rows = [person("a", 0), person("b", 0), person("c"), person("d"), person("e")];
-  // 한 팀 2명: 더하기팀은 꽉 찼으니 빼기팀에 둘, 남은 하나는 팀 없음(출발 전에 막는다).
+  // 한 팀 2명: 빨강팀은 꽉 찼으니 파랑팀에 둘, 남은 하나는 팀 없음(출발 전에 막는다).
   assert.deepEqual(fillRaceTeams(rows, 2, 2), [{ id: "c", team: 1 }, { id: "d", team: 1 }]);
   const store = memoryRaceStore();
   const race = { room_code: "1234", teacher_token: "host", worksheet_name: "w", worksheet_route: "/arithmetic/add-subtract-1", seed: 1, status: "waiting", created_at: Date.now(), started_at: null, duration_seconds: 60, team_count: 2 };

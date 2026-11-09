@@ -28,6 +28,8 @@ const BURST = Array.from({ length: 18 }, (_, index) => {
   const distance = 90 + (index * 37) % 80;
   return { x: Math.round(Math.cos(angle) * distance), y: Math.round(Math.sin(angle) * distance), color: BURST_COLORS[index % BURST_COLORS.length], spin: (index * 73) % 360 };
 });
+// 팀전 시상대에 선 팀원 얼굴 크기. 팀원이 많을수록 작게 겹쳐 세운다.
+const crewFace = (count: number, winner: boolean) => count <= 2 ? (winner ? 58 : 50) : count <= 4 ? (winner ? 46 : 40) : count <= 6 ? 34 : 28;
 const RAIN = Array.from({ length: 36 }, (_, index) => ({ left: (index * 29) % 100, delay: (index * 0.17) % 2.4, color: BURST_COLORS[index % BURST_COLORS.length], spin: (index * 47) % 360 }));
 
 // 사이트 공통 효과음(assets/sound/game-sfx.js). 없거나 꺼져 있으면 조용히 넘어간다.
@@ -153,8 +155,9 @@ export default function ArithmeticRaceCardsPage() {
     lastRank.current = shownRank;
     if (!playing || previous === null || shownRank === null || shownRank >= previous) return;
     const timer = window.setTimeout(() => {
-      const who = myTeam ? `${myTeam.name}이 ` : "";
-      setToast({ text: shownRank === 1 ? `👑 ${who}선두로 올라섰어요!` : `⬆ ${who}${shownRank}위로 추월!`, kind: "up", key: Date.now() });
+      setToast({ text: myTeam
+        ? (shownRank === 1 ? `👑 ${myTeam.emoji} 우리 팀이 1위로!` : `⬆ ${myTeam.emoji} 우리 팀 ${shownRank}위로 추월!`)
+        : (shownRank === 1 ? "👑 선두로 올라섰어요!" : `⬆ ${shownRank}위로 추월!`), kind: "up", key: Date.now() });
       raceCue("rank");
     }, 0);
     return () => window.clearTimeout(timer);
@@ -335,9 +338,12 @@ export default function ArithmeticRaceCardsPage() {
     );
   }
 
+  // 팀전 결과의 개인 표에는 메달 대신 순위 숫자와 팀 색 표시만 둔다(시상대는 팀이 쓴다).
+  const teamOf = (entry: Entry) => teams && entry.team !== null && entry.team !== undefined ? teams.find((team) => team.index === entry.team) ?? null : null;
   const row = (entry: Entry) => (
     <li key={entry.id} className={entry.id === me?.id ? "is-me" : ""}>
-      <em>{entry.rank <= 3 ? MEDALS[entry.rank - 1] : entry.rank}</em>
+      <em>{teams ? entry.rank : entry.rank <= 3 ? MEDALS[entry.rank - 1] : entry.rank}</em>
+      {teams ? <small className="math-race-row-team" aria-label={teamOf(entry)?.name}>{teamOf(entry)?.emoji ?? ""}</small> : null}
       {entry.avatarUrl
         ? <img className="card-race-avatar" src={entry.avatarUrl} alt="" width={32} height={32} />
         : <i className="card-race-avatar" aria-hidden="true">{entry.name.slice(0, 1)}</i>}
@@ -349,8 +355,14 @@ export default function ArithmeticRaceCardsPage() {
   if (hasDecimal) keys.push("확인");
   const score = me?.score ?? 0;
 
+  // 팀원이 있는 팀만 탑·시상대에 세운다. 팀원 얼굴은 순위표에서 가져온다.
+  const liveTeams = teams ? teams.filter((team) => team.size > 0) : null;
+  const membersOf = (team: TeamStanding) => ranking.filter((entry) => entry.team === team.index);
+
   if (finished && race) {
     const podium = [ranking[1], ranking[0], ranking[2]];
+    const teamOrder = liveTeams ? [...liveTeams].sort((a, b) => a.rank - b.rank || a.index - b.index) : [];
+    const teamPodium = [teamOrder[1], teamOrder[0], teamOrder[2]];
     return (
       <main className="portal-page card-race-page math-race is-finished">
         <RaceBackdrop />
@@ -363,18 +375,32 @@ export default function ArithmeticRaceCardsPage() {
           <span>{teams ? (shownRank === 1 ? "우리 팀이 가장 높이 쌓았어요!" : "팀이 함께 끝까지 해냈어요!") : myRank === 1 ? "가장 높이 쌓았어요!" : "끝까지 해냈어요!"}</span>
           <h2>{shownRank ? `${shownRank <= 3 ? MEDALS[shownRank - 1] + " " : ""}${myTeam ? `${myTeam.name} ` : ""}${shownRank}위` : "결과"}</h2>
           <p><b className={score < 0 ? "is-negative" : ""}>{score}점</b> · 맞힘 {me?.correctCount ?? 0} · 틀림 {me?.wrongCount ?? 0} · 포기 {me?.skipCount ?? 0}</p>
-          {teams ? (
-            <ol className="math-race-team-results" aria-label="팀 순위">
-              {[...teams].sort((a, b) => a.rank - b.rank || a.index - b.index).map((team, index) => (
+          {teams ? <>
+            {/* 팀전 시상대: 1·2·3위 팀이 올라가고 팀원 모두가 단 위에 선다. 단 색은 팀 색. */}
+            <div className="card-race-podium math-race-team-podium" aria-label="1·2·3위 팀">
+              {teamPodium.map((team, index) => team ? (
+                <div key={team.index} className={`step step-${Math.min(3, team.rank)}${team.index === myTeam?.index ? " is-me" : ""}`} style={{ "--hue": team.hue, animationDelay: `${[0.3, 0.6, 0][index]}s` } as CSSProperties}>
+                  <span className="medal">{MEDALS[Math.min(3, team.rank) - 1]}</span>
+                  <span className={`math-race-podium-crew${team.rank === 1 ? " is-winner" : ""}`} style={{ "--face": `${crewFace(team.size, team.rank === 1)}px` } as CSSProperties}>
+                    {membersOf(team).map((entry) => <RaceAvatar key={entry.id} {...entry} />)}
+                  </span>
+                  <strong>{team.emoji} {team.name}</strong>
+                  <b>{team.score}점</b>
+                  <i>{team.rank}</i>
+                </div>
+              ) : <div key={index} className="step empty" />)}
+            </div>
+            {teamOrder.length > 3 ? <ol className="math-race-team-results" aria-label="4위부터 팀 순위">
+              {teamOrder.slice(3).map((team, index) => (
                 <li key={team.index} className={team.index === myTeam?.index ? "is-mine" : ""} style={{ "--hue": team.hue, animationDelay: `${index * .15}s` } as CSSProperties}>
-                  <em>{team.rank <= 3 ? MEDALS[team.rank - 1] : team.rank}</em>
-                  <i aria-hidden="true">{team.symbol}</i>
+                  <em>{team.rank}</em>
+                  <i aria-hidden="true">{team.emoji}</i>
                   <span>{team.name}<small>{team.size}명</small></span>
                   <b>{team.score}점</b>
                 </li>
               ))}
-            </ol>
-          ) : <div className="card-race-podium" aria-label="1·2·3위">
+            </ol> : null}
+          </> : <div className="card-race-podium" aria-label="1·2·3위">
             {podium.map((entry, index) => entry ? (
               <div key={entry.id} className={`step step-${entry.rank}${entry.id === me?.id ? " is-me" : ""}`} style={{ animationDelay: `${[0.3, 0.6, 0][index]}s` }}>
                 <span className="medal">{MEDALS[entry.rank - 1]}</span>
@@ -385,7 +411,7 @@ export default function ArithmeticRaceCardsPage() {
               </div>
             ) : <div key={index} className="step empty" />)}
           </div>}
-          <ol className="card-race-board final">
+          <ol className={`card-race-board final${teams ? " is-teams" : ""}`} aria-label={teams ? "개인 점수" : undefined}>
             {(teams ? ranking : ranking.slice(3)).map(row)}
           </ol>
           <a className="card-race-home" href="/arithmetic">기초 연산으로</a>
@@ -399,7 +425,7 @@ export default function ArithmeticRaceCardsPage() {
       <RaceBackdrop />
       <p className="math-race-context">{race?.worksheetName || "경기 준비 중"}</p>
       <header className="card-race-top">
-        <div className="math-race-stat"><span>{myTeam ? "우리 팀" : "내 순위"}</span><strong className="math-race-rank">{shownRank ? `${shownRank}위` : "—"}</strong><small>{myTeam ? myTeam.name : `방 ${credentials?.room}`}</small></div>
+        <div className="math-race-stat"><span>{myTeam ? "우리 팀" : "내 순위"}</span><strong className="math-race-rank">{shownRank ? `${shownRank}위` : "—"}</strong><small>{myTeam ? `${myTeam.emoji} ${myTeam.name}` : `방 ${credentials?.room}`}</small></div>
         <div className="math-race-stat"><span>내 점수</span><strong key={`score-${score}`} className={`card-race-score${score < 0 ? " is-negative" : ""}`}>{score}<small>점</small></strong></div>
         <div className={`math-race-stat math-race-combo${streak >= 5 ? " is-hot" : ""}`}><span>연속 정답 · 한 문제 +{comboPoints(streak + 1)}</span><strong key={streak}>{streak}<small>콤보</small></strong><div aria-hidden="true">{[1, 2, 3, 4, 5].map(value => <i key={value} className={value <= (streak ? (streak - 1) % 5 + 1 : 0) ? "on" : ""} />)}</div></div>
         <div className="math-race-stat"><span>남은 시간</span><time className={playing && remaining < 10000 ? "is-hurry" : ""}>{remaining !== null ? clock(Math.min(remaining, (race?.durationSeconds ?? 0) * 1000)) : "--:--"}</time></div>
@@ -454,10 +480,20 @@ export default function ArithmeticRaceCardsPage() {
         </section>
 
         <aside className="card-race-side" aria-label="실시간 순위">
-          {teams ? <>
-            <RaceTowers title="팀 수 모형 탑" unit="팀" playing={playing} limit={teams.length} myId={myTeam ? `team-${myTeam.index}` : undefined}
-              entries={teams.map((team) => ({ id: `team-${team.index}`, name: team.name, score: team.score, rank: team.rank, symbol: team.symbol, hue: team.hue }))} />
-            <p className="math-race-chase">{shownRank === 1 ? "👑 우리 팀 탑이 가장 높아요!" : myTeam ? `1위 팀까지 ${Math.max(0, Math.max(...teams.map((team) => team.score)) - myTeam.score)}칸!` : "맞힐 때마다 팀 탑이 한 칸씩 쌓여요!"}</p>
+          {liveTeams ? <>
+            <RaceTowers title="팀 수 모형 탑" unit="팀" playing={playing} limit={liveTeams.length} myId={myTeam ? `team-${myTeam.index}` : undefined}
+              entries={liveTeams.map((team) => ({ id: `team-${team.index}`, name: team.name, score: team.score, rank: team.rank, hue: team.hue, members: membersOf(team) }))} />
+            <p className="math-race-chase">{(() => {
+              const leader = [...liveTeams].sort((a, b) => a.rank - b.rank || b.score - a.score)[0];
+              if (!myTeam || !leader) return "맞힐 때마다 팀 탑이 한 칸씩 쌓여요!";
+              if (shownRank === 1) {
+                const others = liveTeams.filter((team) => team.index !== myTeam.index).map((team) => team.score);
+                const gap = others.length ? myTeam.score - Math.max(...others) : 0;
+                if (!others.length) return `👑 ${myTeam.emoji} 우리 팀 탑이 가장 높아요!`;
+                return gap > 0 ? `👑 ${myTeam.emoji} 우리 팀 1위! ${gap}칸 앞서는 중` : `👑 ${myTeam.emoji} 공동 1위! 한 문제만 더!`;
+              }
+              return `${leader.emoji} ${leader.name}까지 ${Math.max(0, leader.score - myTeam.score)}칸!`;
+            })()}</p>
             {myTeam ? <ol className="math-race-teammates" aria-label="우리 팀">
               {ranking.filter((entry) => entry.team === myTeam.index).map((entry) => <li key={entry.id} className={entry.id === me?.id ? "is-me" : ""}><RaceAvatar {...entry} /><span>{entry.name}</span><b>{entry.score}</b></li>)}
             </ol> : null}
