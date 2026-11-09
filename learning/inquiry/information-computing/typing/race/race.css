@@ -104,15 +104,16 @@ kbd { padding: 1px 7px; border-radius: 6px; border: 1px solid var(--line); backg
 
 /* ── 아바타 (없으면 이모지) ───────────────────────── */
 .face { display: inline-grid; place-items: center; flex: none; vertical-align: middle; }
-img.face { border-radius: 50%; background: #fff; object-fit: cover; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75), 0 4px 10px rgba(0, 0, 0, 0.4); }
+/* 아바타 그림은 바탕이 투명하다. 그림일 때는 동그라미 바탕·테두리를 깔지 않는다. */
+img.face { border-radius: 0; background: transparent; object-fit: contain; box-shadow: none; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35)); }
 .lobby-racers img.racer { width: 36px; height: 36px; }
 .team-col .lobby-racers img.racer { width: 30px; height: 30px; }
-.racer-big img.face { width: 120px; height: 120px; box-shadow: 0 0 0 5px var(--yellow), 0 0 30px rgba(255, 225, 77, 0.55); }
+.racer-big img.face { width: 120px; height: 120px; filter: drop-shadow(0 0 14px rgba(255, 225, 77, 0.8)); }
 img.mini-face { width: 28px; height: 28px; }
 img.row-face { width: 26px; height: 26px; }
 .row-face { margin-right: 6px; }
 img.pod-face { width: 78px; height: 78px; }
-.place-1 img.pod-face { width: 96px; height: 96px; box-shadow: 0 0 0 4px var(--yellow), 0 0 30px rgba(255, 225, 77, 0.7); }
+.place-1 img.pod-face { width: 96px; height: 96px; filter: drop-shadow(0 0 14px rgba(255, 225, 77, 0.85)); }
 .pod-racer.crowned { position: relative; }
 .pod-racer.crowned::before { content: "👑"; position: absolute; left: 50%; top: -0.62em; transform: translateX(-50%) rotate(-10deg); font-size: 44px; z-index: 1; }
 .team-card li { display: flex; align-items: center; justify-content: center; }

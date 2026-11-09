@@ -599,3 +599,5 @@ body .q-card[data-set="hanja"] #revealText { font-family: KleeRaceHanja, KleeHan
 
 /* 맞힌 말 카드의 영어 낱말도 같은 글꼴로 */
 .words > * { font-family: "Andika Learning", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+/* 경주로의 아바타 그림: 네모 그림자 대신 그림 모양 그대로 그림자 */
+img.t-face { box-shadow: none; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.15)); }

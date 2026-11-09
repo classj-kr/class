@@ -78,6 +78,8 @@
 .math-race .race-participant-list li > span:not(.math-race-avatar) { max-width: 100%; overflow-wrap: anywhere; }
 .math-race .race-participant-list .math-race-avatar { animation: math-race-bob 1.6s ease-in-out infinite alternate; animation-delay: inherit; }
 .math-race-avatar { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border: 2px solid white; border-radius: 50%; color: var(--pencil); background: #e3e9f6; box-shadow: 0 2px 6px #1d274233; object-fit: cover; font-size: 18px; font-weight: 900; }
+/* 아바타 그림은 바탕이 투명하다. 그림일 때는 동그라미 바탕·테두리를 깔지 않는다. */
+img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box-shadow: none; object-fit: contain; filter: drop-shadow(0 2px 3px #1d274244); }
 .math-race .race-host-badge { padding: 2px 9px; border-radius: 4px; color: var(--blue); background: #e6edfb; font-size: 12px; }
 .math-race .race-waiting-card .math-race-start { width: 100%; min-height: 58px; border: 0; border-radius: 8px; color: white; background: var(--green); box-shadow: 0 5px 0 #0f6239; font: inherit; font-size: 22px; font-weight: 900; cursor: pointer; transition: transform .1s; }
 .math-race .math-race-start:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 #0f6239; }
