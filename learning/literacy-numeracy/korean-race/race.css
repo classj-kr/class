@@ -94,15 +94,30 @@ main { width: min(1180px, 100%); margin: 0 auto; padding: 0 16px 40px; }
   --d: 0s;
   animation: block-drop 0.6s cubic-bezier(.3, 1.6, .5, 1) var(--d) both, block-hop 1.8s ease-in-out calc(0.8s + var(--d)) infinite;
 }
-.title-blocks i:nth-child(1) { background: var(--red); --d: 0s; }
-.title-blocks i:nth-child(2) { background: var(--gold); --d: 0.12s; }
-.title-blocks i:nth-child(3) { background: var(--green); --d: 0.24s; }
-.title-blocks i:nth-child(4) { background: var(--blue); --d: 0.36s; }
-.title-blocks i:nth-child(5) { background: #8d5bd6; --d: 0.48s; }
-.title-blocks i:nth-child(6) { background: #e2702d; --d: 0.6s; }
+/* 블록 색과 뛰는 차례는 race.js 가 앱 이름 글자 수에 맞춰 붙인다. */
 @keyframes block-hop { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-12px) rotate(-4deg); } }
-/* "문해력 순위전": 낱말 사이 띄어쓰기 */
-.title-blocks i:nth-child(4) { margin-left: 0.45em; }
+/* "맞춤법 순위전": 낱말 사이 띄어쓰기 */
+.title-blocks i.gap { margin-left: 0.45em; }
+/* 교과서 단어 시험 범위: 학기·과목 탭 → 단원 단추를 켜고 끈다 */
+.exam-range .range-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.exam-range select { border: 2px solid var(--line); border-radius: 12px; padding: 8px 10px; font: inherit; font-weight: 700; background: #fff; }
+.range-subjects { display: flex; flex-wrap: wrap; gap: 6px; }
+.range-count { display: inline-grid; place-items: center; min-width: 1.4em; height: 1.4em; margin-left: 6px; border-radius: 999px; background: var(--gold); color: #1f1f1f; font-size: 12px; }
+.range-units { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; max-height: 300px; overflow-y: auto; padding: 2px; }
+.range-unit {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px; text-align: left;
+  border: 2px solid var(--line); background: #fff; border-radius: 12px; padding: 10px 12px; font: inherit; font-weight: 700; cursor: pointer;
+}
+.range-unit::before { content: ''; flex: none; width: 18px; height: 18px; border: 2px solid var(--line); border-radius: 5px; }
+.range-unit span { flex: 1; }
+.range-unit small { color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+.range-unit.on { border-color: var(--green); background: #eef8f1; }
+.range-unit.on::before { border-color: var(--green); background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3 3 7-7' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
+.range-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.range-summary { margin: 0; font-weight: 700; color: var(--ink); }
+.range-summary.empty { color: var(--red); }
+.range-summary.shake { animation: range-shake 0.4s; }
+@keyframes range-shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 .panel { width: min(640px, 100%); background: var(--card); border-radius: 24px; padding: 22px; box-shadow: var(--shadow); display: grid; gap: 16px; }
 .entry-note { margin: 0; text-align: center; color: var(--ink-soft); }
 .spectate { display: flex; gap: 8px; align-items: center; font-weight: 600; color: var(--ink-soft); }

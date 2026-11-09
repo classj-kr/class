@@ -32,6 +32,31 @@
     }));
   }
   paintScene(C.SETS[params.get('set')] ? params.get('set') : 'spelling');
+  // 제목은 들어온 학습 앱의 순위전이다(「맞춤법 순위전」, 「교과서 단어 순위전」).
+  const TITLE_COLORS = ['#e2453c', '#e8a317', '#2f9e5b', '#2f74c0', '#8d5bd6', '#e2702d', '#1f9aa8', '#c2417a'];
+  let titleSet = '';
+  function paintTitle(set) {
+    if (!C.SETS[set] || titleSet === set) return;
+    titleSet = set;
+    const text = `${C.SETS[set].label} 순위전`;
+    document.title = text;
+    const h1 = document.querySelector('.title-blocks');
+    h1.setAttribute('aria-label', text);
+    let n = 0, gap = false;
+    h1.replaceChildren(...[...text].flatMap((ch) => {
+      if (ch === ' ') { gap = true; return []; }
+      const block = document.createElement('i');
+      block.setAttribute('aria-hidden', 'true');
+      block.textContent = ch;
+      block.style.background = TITLE_COLORS[n % TITLE_COLORS.length];
+      block.style.setProperty('--d', `${n * 0.12}s`);
+      if (gap) block.classList.add('gap');
+      gap = false;
+      n += 1;
+      return [block];
+    }));
+  }
+  paintTitle(C.SETS[params.get('set')] ? params.get('set') : 'spelling');
   // 맞히면 연 하나가 훌쩍 솟는다.
   function liftKite() {
     const kites = document.querySelectorAll('.kite');
@@ -244,7 +269,7 @@
     idioms: '<svg viewBox="0 0 24 24"><path fill="#f6d58b" d="M5 4h14v16H5z"/><path fill="#d49a3a" d="M5 4a3 3 0 0 0 0 6h2V4H5zm14 10h-2v6h2a3 3 0 1 0 0-6z"/><path fill="#8d6e63" d="M8 7h8v1.7H8zm0 3.5h6v1.7H8z"/><rect x="10" y="11" width="10" height="10" rx="1.5" fill="#c62828" stroke="#fff3d0" stroke-width=".8"/><text x="15" y="19" font-size="9.5" font-weight="bold" fill="#fff" text-anchor="middle" font-family="serif">四</text></svg>',
     proverbs: '📜',
     expressions: '<svg viewBox="0 0 24 24"><path fill="#42a5f5" d="M3 4.5A2.5 2.5 0 0 1 5.5 2h13A2.5 2.5 0 0 1 21 4.5v11a2.5 2.5 0 0 1-2.5 2.5H11l-5.5 4v-4A2.5 2.5 0 0 1 3 15.5v-11z"/><path fill="#fff3d0" d="M6.5 7h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8H6.5V7zm7 0h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8h-1.6V7z"/></svg>',
-    mixed: '🎲',
+    textbook: '📗',
     sentences: '🧩',
     hanja: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#d32f2f"/><rect x="5" y="5" width="14" height="14" rx="2" fill="#fff"/><text x="12" y="16" font-size="12" font-weight="bold" fill="#d32f2f" text-anchor="middle" font-family="serif">漢</text></svg>',
     vocabulary: '<svg viewBox="0 0 24 24"><rect x="5.5" y="3" width="15.5" height="18" rx="2.5" fill="#e0e7ff" stroke="#818cf8" stroke-width="0.9"/><rect x="3" y="5" width="15.5" height="18" rx="2.5" fill="#ffffff" stroke="#4f46e5" stroke-width="1.1"/><circle cx="6" cy="8.5" r="1.3" fill="#f8fafc" stroke="#64748b" stroke-width="0.8"/><path d="M4 8.5a2.5 2.5 0 0 1 4 0" fill="none" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/><rect x="8.5" y="8" width="8" height="1.8" rx="0.9" fill="#0284c7"/><text x="10.8" y="15" font-size="4.2" font-weight="900" fill="#1e293b" text-anchor="middle" font-family="\'Segoe UI\', sans-serif" letter-spacing="0.4">VOCAB</text><circle cx="14.8" cy="18.2" r="2.2" fill="#10b981"/><path d="M13.8 18.2l0.7 0.7 1.4-1.4" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -297,7 +322,8 @@
   function paintSettings() {
     document.querySelectorAll('.settings').forEach((box) => {
       box.innerHTML = '';
-      box.append(optionRow('문제', Object.entries(C.SETS).map(([k, s]) => [k, s.label, k]), choice.set, (set) => change({ set })));
+      // 문제 종류는 들어온 학습 앱이 정한다. 여러 앱을 고르거나 섞는 줄은 두지 않는다.
+      if (choice.set === 'textbook') box.append(textbookField());
       const levels = C.levelsOf(choice.set);
       // 한자처럼 단계를 여기서 고르는 콘텐츠는 단계 줄을 늘 보인다. 고른 단계가 범위 줄의 기준이 된다.
       const stages = C.RANGE_SETS[choice.set]?.pick ? C.RANGE_SETS[choice.set].lessons : 0;
@@ -309,7 +335,7 @@
         box.append(row);
       }
       // 문장 고르기처럼 한 차시의 문제가 너무 적은 콘텐츠는 "그 차시만" 없이 "처음부터 거기까지"와 "전체"만.
-      if (base)
+      if (base && choice.set !== 'textbook')
         box.append(optionRow('범위', [
           ...(C.RANGE_SETS[choice.set]?.uptoOnly ? [] : [[base, C.rangeLabel(choice.set, base) + '만']]),
           ...(C.rangeLabel(choice.set, '~' + base) === C.rangeLabel(choice.set, base) ? [] : [['~' + base, C.rangeLabel(choice.set, '~' + base)]]),
@@ -322,6 +348,113 @@
       );
       if (choice.teamMode) box.append(optionRow('팀 수', C.TEAM_COUNTS.map((n) => [n, `${n}팀`]), choice.teamCount, (teamCount) => change({ teamCount }), true));
     });
+  }
+  // ── 교과서 단어 시험 범위: 단원을 체크해서 고른다 ─────────
+  // 학기 하나를 펼치고 과목 탭마다 단원 단추를 켜고 끈다. 다른 과목·학기에서 고른 단원도 그대로 남는다.
+  let catalog = [], tbTerm = '', tbSubject = '';
+  const tbPieces = () => (choice.range ? String(choice.range).split(',') : []);
+  const tbUnits = (term, code) => catalog.find((t) => t.term === term)?.subjects.find((s) => s.code === code)?.units || [];
+  const tbKey = (unit) => `${tbTerm}.${tbSubject}.${unit.id}`;
+  // "6-2.sci"(과목 전체)는 단원 목록을 받은 뒤 단원 하나하나로 펼쳐 둔다.
+  function tbExpand() {
+    const out = [];
+    for (const piece of tbPieces()) {
+      const [term, code, unit] = piece.split('.');
+      if (unit) out.push(piece);
+      else tbUnits(term, code).forEach((u) => out.push(`${term}.${code}.${u.id}`));
+    }
+    return out;
+  }
+  const tbSet = (pieces) => change({ range: pieces.length ? [...new Set(pieces)].join(',') : null });
+  const tbWordCount = (pieces) => pieces.reduce((sum, piece) => {
+    const [term, code, unit] = piece.split('.');
+    return sum + (tbUnits(term, code).find((u) => u.id === unit)?.count || 0);
+  }, 0);
+  const tbStartReady = () => choice.set !== 'textbook' || Boolean(choice.range);
+  function tbWarn() {
+    document.querySelectorAll('.range-summary').forEach((p) => { p.classList.remove('shake'); void p.offsetWidth; p.classList.add('shake'); });
+  }
+  function smallButton(text, onclick, cls = 'option small') {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = cls;
+    b.textContent = text;
+    b.onclick = onclick;
+    return b;
+  }
+  function textbookField() {
+    const field = document.createElement('fieldset');
+    field.className = 'setting-field exam-range';
+    const legend = document.createElement('legend');
+    legend.textContent = '시험 범위';
+    const summary = document.createElement('p');
+    summary.className = 'range-summary';
+    field.append(legend);
+    if (!catalog.length) {
+      summary.textContent = choice.range ? C.rangeLabel('textbook', choice.range) : '단원 목록을 불러오는 중…';
+      field.append(summary);
+      return field;
+    }
+    const picked = new Set(tbExpand());
+    const head = document.createElement('div');
+    head.className = 'range-head';
+    const select = document.createElement('select');
+    select.setAttribute('aria-label', '학년과 학기');
+    for (const t of catalog) select.append(new Option(t.term.replace('-', '학년 ') + '학기', t.term, false, t.term === tbTerm));
+    select.onchange = () => { tbTerm = select.value; paintSettings(); };
+    const tabs = document.createElement('div');
+    tabs.className = 'range-subjects';
+    for (const sub of catalog.find((t) => t.term === tbTerm)?.subjects || []) {
+      const on = sub.code === tbSubject;
+      const b = smallButton(sub.name, () => { tbSubject = sub.code; paintSettings(); }, 'option small' + (on ? ' on' : ''));
+      b.setAttribute('aria-pressed', String(on));
+      const n = sub.units.filter((u) => picked.has(`${tbTerm}.${sub.code}.${u.id}`)).length;
+      if (n) { const badge = document.createElement('b'); badge.className = 'range-count'; badge.textContent = n; b.append(badge); }
+      tabs.append(b);
+    }
+    head.append(select, tabs);
+    const units = tbUnits(tbTerm, tbSubject);
+    const list = document.createElement('div');
+    list.className = 'range-units';
+    for (const u of units) {
+      const key = tbKey(u), on = picked.has(key);
+      const b = smallButton('', () => { if (on) picked.delete(key); else picked.add(key); tbSet([...picked]); }, 'range-unit' + (on ? ' on' : ''));
+      b.setAttribute('aria-pressed', String(on));
+      const title = document.createElement('span');
+      title.textContent = u.title || C.rangeLabel('textbook', key);
+      const count = document.createElement('small');
+      count.textContent = `${u.count}낱말`;
+      b.append(title, count);
+      list.append(b);
+    }
+    const allOn = units.length > 0 && units.every((u) => picked.has(tbKey(u)));
+    const tools = document.createElement('div');
+    tools.className = 'range-tools';
+    const all = smallButton(allOn ? '이 과목 모두 빼기' : '이 과목 모두 넣기', () => {
+      units.forEach((u) => (allOn ? picked.delete(tbKey(u)) : picked.add(tbKey(u))));
+      tbSet([...picked]);
+    });
+    const clear = smallButton('모두 지우기', () => tbSet([]));
+    clear.disabled = !picked.size;
+    tools.append(all, clear);
+    summary.classList.toggle('empty', !picked.size);
+    summary.textContent = picked.size ? `${C.rangeLabel('textbook', [...picked].join(','))} · ${tbWordCount([...picked])}낱말` : '단원을 하나 이상 골라 주세요.';
+    field.append(head, list, tools, summary);
+    return field;
+  }
+  if (fromSet === 'textbook') {
+    const [term, code] = String(fromRange || '').split('.');
+    tbTerm = term || '';
+    tbSubject = code || 'kor';
+    fetch('/api/korean-race/textbook-units', { cache: 'no-store', credentials: 'same-origin' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        catalog = data?.terms || [];
+        if (!catalog.some((t) => t.term === tbTerm)) tbTerm = catalog[0]?.term || '';
+        if (choice.range) choice.range = tbExpand().join(',') || null;
+        paintSettings();
+      })
+      .catch(() => {});
   }
   paintSettings();
   function setName(config) {
@@ -355,6 +488,7 @@
     if (s.config.set === 'hanja' && previous?.config.set !== 'hanja') {
       document.fonts.load('600 1em KleeRaceHanja', '人').catch(() => {});
     }
+    paintTitle(s.config.set);
     const host = s.me.host;
     document.body.classList.toggle('is-host', host);
     document.body.classList.toggle('spectator', !s.me.plays);
@@ -984,10 +1118,14 @@
     });
   }
   $('createButton').onclick = () => action(async () => {
+    if (!tbStartReady()) { tbWarn(); return; }
     const data = await api('/rooms', { ...choice, spectate: isTeacher && $('spectateInput').checked, avatarUrl: await myAvatar });
     enter(data, data.state.code);
   });
-  $('startButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/start', choice)));
+  $('startButton').onclick = () => action(async () => {
+    if (!tbStartReady()) { tbWarn(); return; }
+    render(await api('/rooms/' + code + '/start', choice));
+  });
   $('againButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/start', choice)));
   $('settingsButton').onclick = () => action(async () => render(await api('/rooms/' + code + '/lobby', {})));
   $('stopButton').onclick = () => action(async () => {

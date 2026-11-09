@@ -12,7 +12,7 @@ const RETRY_LOCK_MS = Core.RETRY_LOCK_MS - 150;
 
 // 타자 순위전처럼 한 수업 동안만 쓰는 방이라 서버 메모리에 둔다.
 // 정답은 서버만 안다. 화면은 지금 풀 문제(보기)만 받는다.
-function createKoreanRace({ platform, now = Date.now, random = Math.random, pools = bank.load }) {
+function createKoreanRace({ platform, now = Date.now, random = Math.random, pools = bank.load, catalog = bank.textbookCatalog }) {
   const router = express.Router(),
     rooms = new Map(),
     TTL = 2 * 60 * 60 * 1000;
@@ -44,17 +44,9 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     students(r).forEach((p) => { if (p.team !== null && p.team >= r.config.teamCount) p.team = null; });
   }
   // 학습 화면을 전체 잠금한 콘텐츠는 순위전에서도 고를 수 없다.
-  async function openParts(req, set) {
-    const parts = set === 'mixed' ? Core.MIXED_PARTS : [set];
-    if (await platform.canBypassGlobalContentLock(req)) return parts;
-    const open = [];
-    for (const part of parts) if (!(await platform.isContentGloballyDisabled(Core.SETS[part].app))) open.push(part);
-    return open;
-  }
   async function assertOpen(req, set) {
-    const parts = await openParts(req, set);
-    if (!parts.length) throw fail(403, `${Core.SETS[set].label}은(는) 지금 사용할 수 없어요.`);
-    return parts;
+    if (await platform.canBypassGlobalContentLock(req)) return;
+    if (await platform.isContentGloballyDisabled(Core.SETS[set].app)) throw fail(403, `${Core.SETS[set].label}은(는) 지금 사용할 수 없어요.`);
   }
   const teamSize = (r, team) => students(r).filter((p) => p.team === team).length;
   function validTeam(r, value) {
@@ -134,6 +126,8 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
   }
   router.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next(); });
   router.get('/session', wrap(async (req, res) => res.json({ isTeacher: await teacher(req) })));
+  // 교과서 단어 시험 범위 고르기: 학생 화면에 올린 학기의 단원 목록.
+  router.get('/textbook-units', wrap(async (_req, res) => res.json({ terms: catalog() })));
   router.post(
     '/rooms',
     wrap(async (req, res) => {
@@ -199,7 +193,8 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
       if (r.phase === 'running') throw fail(409, '이미 푸는 중이에요.');
       if (!students(r).length) throw fail(409, '학생이 한 명 이상 들어오면 출발할 수 있어요.');
       applyConfig(r, req.body);
-      const parts = await assertOpen(req, r.config.set);
+      await assertOpen(req, r.config.set);
+      if (r.config.set === 'textbook' && !r.config.range) throw fail(409, '시험 범위를 하나 이상 골라 주세요.');
       if (r.config.teamMode) {
         // 연산 순위전처럼 팀을 고르지 않은 사람은 가장 작은 팀에 넣고 출발한다.
         for (const s of students(r).filter((x) => x.team === null)) {
@@ -211,7 +206,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
           throw fail(409, '두 팀 이상에 학생이 있어야 출발할 수 있어요.');
       }
       // 빠른 학생도 끝까지 새 문제를 받을 만큼 넉넉히 뽑는다.
-      r.items = Questions.makeRound(pools(), { set: r.config.set, level: r.config.level, range: r.config.range, count: r.config.duration + 20, mixedParts: parts, random });
+      r.items = Questions.makeRound(pools(), { set: r.config.set, level: r.config.level, range: r.config.range, count: r.config.duration + 20, random });
       if (r.items.length < 10) throw fail(503, '문항 자료를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.');
       r.roundId = crypto.randomUUID();
       r.phase = 'running';

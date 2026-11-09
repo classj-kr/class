@@ -1,4 +1,4 @@
-// 국어 순위전 문항: 각 학습 화면의 자료를 그대로 받아 객관식 문항으로 바꾼다.
+// 순위전 문항: 각 학습 화면의 자료를 그대로 받아 객관식 문항으로 바꾼다.
 // 자료를 읽는 일은 서버(korean-race-bank.js)가 맡고, 여기는 받은 자료만 다룬다.
 (function (root, factory) {
   const api = factory();
@@ -286,6 +286,77 @@
   }
 
   // sources: { spelling, idioms: { data, core }, proverbs, expressions, vocabulary, hanja: [{ stage, items }], hanjaWhole: Set, sentences: SENTENCE_COURSE }
+  // 교과서 단어: 학습 화면의 연습 문제와 같은 규칙으로 빈칸·뜻 문제를 만든다.
+  // 아래 낱말·유의어(끝까지)는 둘째 정답이 되므로 보기에서 빼고, 단원 낱말로 채울 때는 위 낱말도 뺀다.
+  // 뜻 문제는 두 글자 조각을 나눠 가진 목록 낱말이 있을 때만 내고 그 낱말을 오답에 먼저 넣는다(태양 고도 측정기 ↔ 태양 고도).
+  const TEXTBOOK_SUBJECTS = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' };
+  function textbook(books) {
+    const out = [];
+    const pieces = (name) => {
+      const text = String(name).replace(/(스럽다|롭다|하다|다)$/, '').replace(/\s/g, '') || name;
+      const set = new Set();
+      for (let i = 0; i < text.length - 1; i++) set.add(text.slice(i, i + 2));
+      return set;
+    };
+    const looksLike = (a, b) => { const y = pieces(b); return [...pieces(a)].some((piece) => y.has(piece)); };
+    for (const [term, subjects] of Object.entries(books || {})) {
+      for (const [subjectName, book] of Object.entries(subjects || {})) {
+        const subject = TEXTBOOK_SUBJECTS[subjectName];
+        if (!subject || !Array.isArray(book?.units)) continue;
+        const all = book.units.flatMap((unit) => unit.words || []);
+        const byName = new Map(all.map((word) => [word.w, word]));
+        const chain = (word, key, into) => (word?.rel?.[key] || []).forEach((row) => {
+          if (into.has(row.w)) return;
+          into.add(row.w);
+          chain(byName.get(row.w), key, into);
+        });
+        for (const unit of book.units) {
+          for (const word of unit.words || []) {
+            const banned = new Set((word.rel?.syn || []).map((row) => row.w));
+            chain(word, 'down', banned);
+            const above = new Set();
+            chain(word, 'up', above);
+            const free = (name) => name !== word.w && !banned.has(name) && !above.has(name);
+            const lookalikes = all.filter((other) => free(other.w) && looksLike(other.w, word.w)).map((other) => other.w);
+            const where = { term, subject, unit: String(unit.id) };
+            const explain = `${word.w}: ${word.mean}`;
+            const wrongFor = (first, random) => {
+              const picked = [];
+              const add = (name) => { if (picked.length < 3 && name && name !== word.w && !banned.has(name) && !picked.includes(name)) picked.push(name); };
+              shuffle(first, random).forEach(add);
+              shuffle(word.foils || [], random).forEach(add);
+              // 모자라면 같은 단원, 그다음 같은 과목 낱말로 채운다(위 낱말은 빈칸에 대개 맞으므로 뺀다).
+              shuffle((unit.words || []).map((other) => other.w).filter(free), random).forEach(add);
+              shuffle(all.map((other) => other.w).filter(free), random).forEach(add);
+              return picked;
+            };
+            (word.blanks || []).forEach((blank, index) => {
+              if (!String(blank).includes('{}')) return;
+              out.push({
+                key: `textbook:${term}:${subject}:${unit.id}:${word.w}:b${index}`,
+                level: 'all', unit: where,
+                make: (random) => ({
+                  set: 'textbook', ask: '빈칸에 알맞은 낱말은?', text: String(blank).replace('{}', '(　　)'),
+                  ...choiceSet(word.w, wrongFor([], random), random), explain, block: firstChar(word.w),
+                }),
+              });
+            });
+            if (lookalikes.length && word.mean) {
+              out.push({
+                key: `textbook:${term}:${subject}:${unit.id}:${word.w}:m`,
+                level: 'all', unit: where,
+                make: (random) => ({
+                  set: 'textbook', ask: '이 뜻을 가진 낱말은?', text: word.mean,
+                  ...choiceSet(word.w, wrongFor(lookalikes, random), random), explain, block: firstChar(word.w),
+                }),
+              });
+            }
+          }
+        }
+      }
+    }
+    return out;
+  }
   function buildPools(sources = {}) {
     return {
       spelling: spelling(sources.spelling, sources.spellingLessons),
@@ -295,12 +366,17 @@
       vocabulary: vocabulary(sources.vocabulary),
       hanja: hanja(sources.hanja, sources.hanjaWhole),
       sentences: sentences(sources.sentences),
+      textbook: textbook(sources.textbook),
     };
   }
-  function poolFor(pools, set, level, mixedParts, range) {
-    const parts = set === 'mixed' ? mixedParts : [set];
-    const entries = parts.flatMap((part) => pools[part] || []);
-    if (range && set !== 'mixed') {
+  function poolFor(pools, set, level, range) {
+    const entries = pools[set] || [];
+    if (set === 'textbook') {
+      if (!range) return entries;
+      const pieces = String(range).split(',').map((piece) => piece.split('.'));
+      return entries.filter((e) => pieces.some(([term, subject, unit]) => e.unit.term === term && e.unit.subject === subject && (!unit || e.unit.unit === unit)));
+    }
+    if (range) {
       const text = String(range), upto = text.startsWith('~');
       const nums = text.replace('~', '').split('-').map(Number);
       if (set !== 'vocabulary')
@@ -314,8 +390,8 @@
     return entries.filter((e) => e.level === level);
   }
   // 모두 같은 순서의 문제를 받는다. 다 쓰면 다시 섞어 이어 붙이고, 같은 문제가 붙어 나오지 않게 한다.
-  function makeRound(pools, { set, level = 'all', range = null, count, mixedParts = [], random = Math.random }) {
-    const entries = poolFor(pools, set, level, mixedParts, range);
+  function makeRound(pools, { set, level = 'all', range = null, count, random = Math.random }) {
+    const entries = poolFor(pools, set, level, range);
     if (entries.length < 4) return [];
     // 한자성어 오답은 고른 수준 안에서 먼저 찾는다(모자라면 화면 코드가 전체에서 채운다).
     // 차시 범위로 좁힌 때에는 보기가 늘 같은 네 개가 되지 않게 전체에서 고른다.
