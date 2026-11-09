@@ -258,11 +258,7 @@
         "쉬운 뜻: 영어로 media, 소식과 정보를 이쪽에서 저쪽으로 실어 나르는 통로입니다.",
         "생활 속 예: 신문, 텔레비전, 라디오, 스마트폰 앱이 모두 미디어입니다."
       ],
-      "beats": [
-        "아침 식탁 옆 텔레비전에서 뉴스가 나옵니다.",
-        "아빠는 신문을 펼치고, 하린이는 스마트폰으로 날씨를 봅니다.",
-        "이렇게 소식과 정보를 주고받는 수단이 미디어입니다."
-      ],
+      "beats": ["아침 식탁 옆 텔레비전에서 뉴스가 나옵니다.", "아빠는 신문을 펼치고, 하린이는 스마트폰으로 날씨를 봅니다.", "이렇게 소식과 정보를 주고받는 수단이 미디어입니다."],
       "img": "At a breakfast table in the morning, the TV on the wall shows a news anchor, Dad reads a paper newspaper, and HARIN, a girl with a yellow headband and a mint cardigan, checks a sun-and-cloud weather icon on her smartphone. A small radio sits on the shelf. No text.",
       "imgKo": "아침 식탁. 벽의 텔레비전에는 뉴스 진행자가 나오고, 아빠는 종이 신문을 읽으며, 노란 머리띠에 민트 카디건을 입은 하린이는 스마트폰으로 해와 구름 날씨 그림을 본다. 선반에는 작은 라디오가 놓여 있다."
     },
@@ -312,33 +308,10 @@
       "img": "After a heavy rainstorm, DOYUN, a boy with round glasses and a navy hoodie, photographs a fallen tree blocking a sidewalk with his smartphone. Small heart and speech-bubble icons without letters float up from his phone, and in the background a city worker in a safety vest hurries toward the tree carrying a saw. No text.",
       "imgKo": "폭우가 그친 뒤, 둥근 안경에 남색 후드를 입은 도윤이가 보도를 막은 쓰러진 나무를 스마트폰으로 찍는다. 휴대 전화 위로 글자 없는 하트와 말풍선 표시가 떠오르고, 뒤쪽에서 안전 조끼를 입은 구청 직원이 톱을 들고 나무 쪽으로 서둘러 온다."
     },
-    "양방향": {
-      "en": "two-way",
-      "explain": [
-        "쉬운 뜻: 영어로 two-way, 한쪽만 말하지 않고 서로 주고받는 것입니다.",
-        "낱말 나누기: 양(두 쪽) + 방향(나아가는 쪽)입니다.",
-        "생활 속 예: 라디오에 문자를 보내면 진행자가 바로 읽어 주는 것도 양방향입니다."
-      ]
-    },
-    "탄핵": {
-      "explain": [
-        "쉬운 뜻: 큰 잘못을 한 높은 공무원을 그 자리에서 내려오게 하는 제도입니다.",
-        "대통령도 이 제도로 물러난 적이 있습니다.",
-        "대통령, 장관, 판사처럼 높은 자리의 사람이 대상입니다."
-      ]
-    },
     "왜곡": {
       "explain": [
         "쉬운 뜻: 휘어진 거울에 비친 얼굴처럼, 사실을 비뚤게 바꾸어 전하는 것입니다.",
         "생활 속 예: 사진의 한쪽만 잘라 보여 주어 전혀 다른 일처럼 꾸미는 것입니다."
-      ]
-    },
-    "미디어 리터러시": {
-      "en": "media literacy",
-      "explain": [
-        "쉬운 뜻: 영어로 media literacy, 미디어 속 내용을 그대로 믿지 않고 따져 읽는 힘입니다.",
-        "낱말 나누기: 미디어(소식을 나르는 수단) + 리터러시(읽고 쓰는 능력)입니다.",
-        "생활 속 예: 놀라운 소식은 친구에게 보내기 전에 다른 기사와 견주어 봅니다."
       ]
     }
   },
@@ -542,14 +515,6 @@
       "explain": [
         "쉬운 뜻: 영어로 coastline, 바닷가에서 땅과 바다가 만나는 곳을 이은 줄입니다.",
         "생활 속 예: 바다가 없는 충청북도에는 해안선이 한 군데도 없습니다."
-      ]
-    },
-    "내륙국": {
-      "en": "landlocked country",
-      "explain": [
-        "쉬운 뜻: 영어로 landlocked country, 사방이 땅으로 막혀 바다가 없는 나라입니다.",
-        "낱말 나누기: 내륙(바다에서 먼 땅 안쪽) + 국(나라)입니다.",
-        "남아메리카의 볼리비아, 동남아시아의 라오스도 내륙국입니다."
       ]
     },
     "재외 동포": {

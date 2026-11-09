@@ -7,11 +7,7 @@
         "산, 들, 강, 바닷가, 섬은 모두 지형의 한 가지입니다.",
         "생활 속 예: 산골 마을과 바닷가 마을은 지형이 달라 집 둘레 모습이 다릅니다."
       ],
-      "beats": [
-        "높은 산 아래로 강이 굽이굽이 흐릅니다.",
-        "강을 따라 넓은 들이 펼쳐지고, 끝에는 바다가 보입니다.",
-        "산, 강, 들, 바다처럼 땅이 생긴 모양이 지형입니다."
-      ],
+      "beats": ["높은 산 아래로 강이 굽이굽이 흐릅니다.", "강을 따라 넓은 들이 펼쳐지고, 끝에는 바다가 보입니다.", "산, 강, 들, 바다처럼 땅이 생긴 모양이 지형입니다."],
       "img": "A wide bird's-eye landscape of the Korean countryside: tall green mountains on the left, a river winding down from them through a broad flat plain of rice fields in the middle, and a blue sea with a sandy coast on the right edge. Small villages sit along the river. No people, no text.",
       "imgKo": "왼쪽의 높은 산에서 강이 흘러나와 가운데 넓은 논 들판을 굽이굽이 지나 오른쪽 바다에 닿는 모습을 하늘에서 내려다본다. 강가에 작은 마을들이 있다."
     },
@@ -21,11 +17,7 @@
         "우리나라 땅의 약 70 %가 산지입니다.",
         "생활 속 예: 비행기에서 내려다보면 초록 산이 끝없이 이어진 산지가 보입니다."
       ],
-      "beats": [
-        "높고 낮은 산봉우리가 겹겹이 이어져 있습니다.",
-        "산비탈에는 배추밭과 목장이 군데군데 보입니다.",
-        "산들이 모여 이루어진 넓은 땅이 산지입니다."
-      ],
+      "beats": ["높고 낮은 산봉우리가 겹겹이 이어져 있습니다.", "산비탈에는 배추밭과 목장이 군데군데 보입니다.", "산들이 모여 이루어진 넓은 땅이 산지입니다."],
       "img": "A wide view of layered green mountains in Gangwon, Korea, with many high and low peaks overlapping into the distance. On a gentle high slope in the foreground there is a cabbage field and a small pasture with cows. Morning mist sits in the valleys. No people, no text.",
       "imgKo": "높고 낮은 초록 산봉우리가 겹겹이 멀리까지 이어지고, 앞쪽 높은 산비탈에 배추밭과 소가 있는 작은 목장이 있다. 골짜기에 아침 안개가 깔려 있다."
     },
@@ -35,13 +27,6 @@
         "쉬운 뜻: 영어로 mountain range입니다. 산봉우리가 줄넘기 줄처럼 길게 이어진 것입니다.",
         "낱말 나누기: 산 + 맥(줄기), 산이 이어진 줄기입니다.",
         "높은 산맥은 넘기 어려워 옛날에는 지역을 나누는 경계가 되었습니다."
-      ]
-    },
-    "해발 고도": {
-      "explain": [
-        "쉬운 뜻: 키를 발바닥부터 재듯, 땅의 높이를 바닷물 높이부터 잰 것입니다.",
-        "낱말 나누기: 해발(바닷물 높이에서부터) + 고도(높이)입니다.",
-        "생활 속 예: 바닷가 모래밭은 해발 고도가 0 m에 가깝습니다."
       ]
     },
     "하천": {
@@ -94,11 +79,7 @@
         "해안에는 모래사장도 있고, 갯벌이나 바위 절벽도 있습니다.",
         "생활 속 예: 여름 방학에 해수욕장에 갔다면 해안에 다녀온 것입니다."
       ],
-      "beats": [
-        "모래사장에서는 아이들이 물놀이를 합니다.",
-        "옆쪽 갯벌에서는 사람들이 조개를 캐고, 바다에는 고깃배가 떠 있습니다.",
-        "바다와 육지가 맞닿은 곳이 해안입니다."
-      ],
+      "beats": ["모래사장에서는 아이들이 물놀이를 합니다.", "옆쪽 갯벌에서는 사람들이 조개를 캐고, 바다에는 고깃배가 떠 있습니다.", "바다와 육지가 맞닿은 곳이 해안입니다."],
       "img": "A sunny Korean seaside seen from a low hill: on the left, children play in the waves on a sandy beach; in the middle, people in boots dig for clams on a wet mudflat; on the right, rocky cliffs with a small fishing harbor where fishing boats sail out to the sea. No text.",
       "imgKo": "왼쪽 모래사장에서 아이들이 물놀이를 하고, 가운데 갯벌에서 사람들이 조개를 캐며, 오른쪽 바위 절벽 옆 작은 항구에서 고깃배가 바다로 나간다."
     },
@@ -124,11 +105,7 @@
         "남해안 바다에서는 어느 쪽을 보아도 섬이 보입니다.",
         "생활 속 예: 다도해의 섬마을 아이들은 배를 타고 학교에 가기도 합니다."
       ],
-      "beats": [
-        "높은 곳에 올라 남쪽 바다를 내려다봅니다.",
-        "크고 작은 초록 섬들이 바다 위에 셀 수 없이 흩어져 있습니다.",
-        "섬이 많이 흩어져 있는 바다가 다도해입니다."
-      ],
+      "beats": ["높은 곳에 올라 남쪽 바다를 내려다봅니다.", "크고 작은 초록 섬들이 바다 위에 셀 수 없이 흩어져 있습니다.", "섬이 많이 흩어져 있는 바다가 다도해입니다."],
       "img": "From a hilltop viewpoint on the southern coast of Korea, HARIN (a girl with a yellow headband and mint cardigan) looks out over a calm blue sea dotted with dozens of green islands of many sizes, scattered all the way to the horizon. A small white ferry sails between the islands. No text.",
       "imgKo": "남해안 언덕 전망대에서 하린이 크고 작은 초록 섬 수십 개가 수평선까지 흩어진 잔잔한 바다를 내려다보고, 섬 사이로 작은 흰 배가 지나간다."
     },
@@ -392,10 +369,7 @@
     },
     "선착장": {
       "en": "pier",
-      "explain": [
-        "쉬운 뜻: 영어로 pier입니다. 배를 위한 버스 정류장 같은 곳입니다.",
-        "생활 속 예: 섬에 가는 배표를 사고 배를 기다리는 곳도 선착장입니다."
-      ],
+      "explain": ["쉬운 뜻: 영어로 pier입니다. 배를 위한 버스 정류장 같은 곳입니다.", "생활 속 예: 섬에 가는 배표를 사고 배를 기다리는 곳도 선착장입니다."],
       "beats": [
         "바다로 길게 뻗은 콘크리트 길 끝에 여객선이 다가와 멈춥니다.",
         "밧줄로 배를 묶자 사람들이 짐을 들고 차례로 내립니다.",
@@ -452,14 +426,6 @@
         "겨울에는 대륙에서 차갑고 메마른 바람이 불어옵니다."
       ]
     },
-    "내륙": {
-      "en": "inland",
-      "explain": [
-        "쉬운 뜻: 영어로 inland입니다. 바닷가에서 땅 안쪽으로 멀리 들어간 곳입니다.",
-        "바닷물은 천천히 데워지고 천천히 식어서 바닷가는 덜 덥고 덜 춥습니다.",
-        "생활 속 예: 대구는 바다에서 먼 내륙이라 여름에 아주 덥습니다."
-      ]
-    },
     "장마": {
       "en": "rainy season",
       "explain": [
@@ -509,11 +475,7 @@
         "낱말 나누기: 꽃 + 샘(시샘) + 추위, 꽃이 피는 것을 시샘하는 추위입니다.",
         "생활 속 예: 3월에 봄옷을 입고 나갔다가 찬 바람에 덜덜 떠는 날이 있습니다."
       ],
-      "beats": [
-        "노란 개나리가 활짝 핀 봄 길입니다.",
-        "갑자기 찬 바람이 불자 사람들이 옷깃을 여미고 몸을 웅크립니다.",
-        "봄에 꽃이 필 무렵 갑자기 찾아오는 추위가 꽃샘추위입니다."
-      ],
+      "beats": ["노란 개나리가 활짝 핀 봄 길입니다.", "갑자기 찬 바람이 불자 사람들이 옷깃을 여미고 몸을 웅크립니다.", "봄에 꽃이 필 무렵 갑자기 찾아오는 추위가 꽃샘추위입니다."],
       "img": "A spring sidewalk lined with blooming yellow forsythia and white magnolia trees. A cold gust of wind blows petals sideways, and HARIN and DOYUN in light spring jackets hunch their shoulders, hold their collars tight and shiver. No text.",
       "imgKo": "노란 개나리와 하얀 목련이 핀 봄 길에 찬 바람이 꽃잎을 날리고, 얇은 봄옷 차림의 하린과 도윤이 옷깃을 여미며 몸을 웅크리고 떤다."
     },
@@ -561,11 +523,7 @@
         "가뭄이 길어지면 농작물이 말라 죽고 마실 물도 모자랍니다.",
         "생활 속 예: 가뭄 때는 양치할 때 컵을 써서 물을 아낍니다."
       ],
-      "beats": [
-        "저수지 바닥이 드러나 쩍쩍 갈라져 있습니다.",
-        "논의 벼가 누렇게 말라 가고, 농부가 하늘을 올려다봅니다.",
-        "오랫동안 비가 오지 않아 물이 모자란 것이 가뭄입니다."
-      ],
+      "beats": ["저수지 바닥이 드러나 쩍쩍 갈라져 있습니다.", "논의 벼가 누렇게 말라 가고, 농부가 하늘을 올려다봅니다.", "오랫동안 비가 오지 않아 물이 모자란 것이 가뭄입니다."],
       "img": "A dried-up reservoir in the Korean countryside: the exposed bottom is cracked into large dry plates, and a small boat lies stranded on the cracked ground. Beside it, a rice paddy with wilting yellowish seedlings; an elderly farmer in a straw hat looks up at a cloudless, scorching sky. No text.",
       "imgKo": "물이 말라 바닥이 쩍쩍 갈라진 저수지에 작은 배가 덩그러니 놓여 있고, 옆 논의 벼가 누렇게 시든다. 밀짚모자 쓴 할아버지 농부가 구름 한 점 없는 하늘을 올려다본다."
     },

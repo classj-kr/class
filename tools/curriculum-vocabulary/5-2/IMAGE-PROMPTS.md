@@ -1403,7 +1403,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A wide side view of a landscape: green fields and a road on the left meet a calm sea on the right, and the line where the land and the sea touch the air is traced with a glowing yellow line. A thin layer of white fog hugs the glowing line over the fields, while fluffy white clouds float high in the sky above.
 ```
 
-**sci-2-15** 기상 관측 — 학교 옥상의 작은 자동 관측 장비: 하얀 겹창 상자, 도는 컵 모양 바람개비, 화살표 풍향계, 빗물 통, 작은 태양 전지판. 조끼 입은 직원이 숫자 없는 물결선 그래프가 뜬 태블릿을 들고 있고, 각 장비에서 태블릿으로 점선 화살표가 간다. 하늘에 드론이 난다.
+**sci-2-14** 기상 관측 — 학교 옥상의 작은 자동 관측 장비: 하얀 겹창 상자, 도는 컵 모양 바람개비, 화살표 풍향계, 빗물 통, 작은 태양 전지판. 조끼 입은 직원이 숫자 없는 물결선 그래프가 뜬 태블릿을 들고 있고, 각 장비에서 태블릿으로 점선 화살표가 간다. 하늘에 드론이 난다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1411,7 +1411,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A small automatic weather station on a school rooftop: a white louvered instrument box, a spinning cup anemometer, an arrow-shaped wind vane, a cylinder rain gauge and a small solar panel. A Korean weather staff member in a work vest holds a tablet showing only a simple wavy line graph with no numbers. Dotted arrows lead from each instrument to the tablet, and a drone flies in the sky above.
 ```
 
-**sci-2-16** 기상 위성 — 캄캄한 우주에 태양 전지판 날개를 단 위성이 둥근 지구 위에 떠서, 한반도가 보이는 동아시아의 소용돌이 구름을 내려다본다. 위성에서 구름으로 점선 원뿔, 또 위성에서 땅 위 큰 접시 안테나로 점선이 이어진다.
+**sci-2-15** 기상 위성 — 캄캄한 우주에 태양 전지판 날개를 단 위성이 둥근 지구 위에 떠서, 한반도가 보이는 동아시아의 소용돌이 구름을 내려다본다. 위성에서 구름으로 점선 원뿔, 또 위성에서 땅 위 큰 접시 안테나로 점선이 이어진다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1567,15 +1567,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Two riverside scenes connected by an arrow. On the left, a Korean grandfather and child sit by a river with a fishing net; they keep one big fish in a bucket and gently release several small young fish back into the water. On the right, a year later at the same spot, the river is full of many grown fish swimming, and the child, a little taller, smiles at the water.
 ```
 
-**sci-4-13** 친환경 — 왼쪽에서 오른쪽으로 큰 화살표. 왼쪽 잿빛 하늘 아래 낡은 자동차가 검은 배기가스를, 공장 굴뚝이 검은 연기를 뿜는다. 오른쪽 맑은 하늘과 초록 나무 아래 전기 자동차가 충전기에 꽂혀 있고, 지붕에 태양 전지판을 얹은 공장은 연기가 없다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A side-by-side comparison with a big arrow from left to right. On the left, under a dull grey sky, an old car puffs thick dark exhaust smoke and a factory chimney pours out black smoke. On the right, under a clear blue sky with green trees, an electric car is plugged into a charging station and a factory with solar panels on its roof gives off no smoke.
-```
-
-**sci-4-14** 에너지 효율 — 두 전등이 똑같은 책상 두 개를 똑같이 밝게 비춘다. 왼쪽 옛 백열전구엔 굵은 줄로 큰 번개 그림 셋이 들어가고 빨간 열 화살표가 잔뜩 빠져나간다. 오른쪽 LED 전구엔 가는 줄로 작은 번개 하나만 들어가고 열 화살표가 거의 없다.
+**sci-4-13** 에너지 효율 — 두 전등이 똑같은 책상 두 개를 똑같이 밝게 비춘다. 왼쪽 옛 백열전구엔 굵은 줄로 큰 번개 그림 셋이 들어가고 빨간 열 화살표가 잔뜩 빠져나간다. 오른쪽 LED 전구엔 가는 줄로 작은 번개 하나만 들어가고 열 화살표가 거의 없다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1583,7 +1575,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Two ceiling lamps side by side light up two identical desks equally brightly. On the left, an old round incandescent bulb is fed by a thick cord with three big yellow lightning-bolt icons flowing in, and many wavy red heat arrows escape from the bulb. On the right, a modern LED bulb is fed by a thin cord with one small lightning-bolt icon, and almost no heat arrows come off it.
 ```
 
-**sci-4-15** 에너지 소비 효율 등급 — 가전 매장에 냉장고 두 대. 각각 위 초록부터 아래 빨강까지 색 막대 다섯 줄만 있는 딱지(숫자·글자 없음)가 붙었다. 왼쪽 냉장고는 검은 화살표가 맨 위 초록을, 오른쪽은 맨 아래 빨강을 가리킨다. 전깃줄엔 왼쪽 작은 번개 하나, 오른쪽 큰 번개 셋. 부모와 아이가 왼쪽 냉장고를 가리킨다.
+**sci-4-14** 에너지 소비 효율 등급 — 가전 매장에 냉장고 두 대. 각각 위 초록부터 아래 빨강까지 색 막대 다섯 줄만 있는 딱지(숫자·글자 없음)가 붙었다. 왼쪽 냉장고는 검은 화살표가 맨 위 초록을, 오른쪽은 맨 아래 빨강을 가리킨다. 전깃줄엔 왼쪽 작은 번개 하나, 오른쪽 큰 번개 셋. 부모와 아이가 왼쪽 냉장고를 가리킨다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1591,7 +1583,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In an appliance store, two refrigerators stand side by side, each with a rating sticker made only of five stacked colored bars from green at the top to red at the bottom, with no numbers or letters. On the left fridge, a black arrow on the sticker points to the top green bar; on the right fridge, it points to the bottom red bar. Behind each fridge, its plug cord has one small lightning-bolt icon (left) or three big ones (right), and a Korean parent and child point at the left fridge.
 ```
 
-**sci-4-16** 재사용 — 점선 화살표로 이은 두 장면. 왼쪽은 현관에서 아이가 택배 상자를 받는다. 오른쪽은 테이프 자국이 남은 같은 상자가 모양 그대로 방바닥에 있고, 아이가 장난감을 차곡차곡 담는다.
+**sci-4-15** 재사용 — 점선 화살표로 이은 두 장면. 왼쪽은 현관에서 아이가 택배 상자를 받는다. 오른쪽은 테이프 자국이 남은 같은 상자가 모양 그대로 방바닥에 있고, 아이가 장난감을 차곡차곡 담는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1599,7 +1591,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Two scenes joined by a dotted arrow. On the left, a delivery person hands a cardboard box to a Korean child at the front door. On the right, the same box, still in its original shape with old tape marks, sits on the child's bedroom floor, now filled with toys the child is neatly packing into it.
 ```
 
-**sci-4-17** 새활용 — 화살표로 이은 세 단계. 처음엔 낡은 청바지가 구겨져 있고, 다음엔 아이 손이 가위로 자르고 바늘로 꿰매며, 마지막엔 알록달록한 천 조각과 단추로 꾸민 청바지 필통에 연필이 꽂혀 있다.
+**sci-4-16** 새활용 — 화살표로 이은 세 단계. 처음엔 낡은 청바지가 구겨져 있고, 다음엔 아이 손이 가위로 자르고 바늘로 꿰매며, 마지막엔 알록달록한 천 조각과 단추로 꾸민 청바지 필통에 연필이 꽂혀 있다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.

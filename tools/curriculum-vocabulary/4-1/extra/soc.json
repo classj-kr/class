@@ -222,11 +222,7 @@
         "쉬운 뜻: 영어로 plain입니다. 운동장처럼 판판한 땅이 아주 넓게 펼쳐진 곳입니다.",
         "판판한 땅이라 큰 도시와 곧은 길이 들어서기도 쉽습니다."
       ],
-      "beats": [
-        "도윤이가 기차 창밖을 내다봅니다.",
-        "산 하나 없이 판판한 논이 하늘 끝까지 이어집니다.",
-        "이렇게 판판한 땅이 넓게 펼쳐진 곳이 평야입니다."
-      ],
+      "beats": ["도윤이가 기차 창밖을 내다봅니다.", "산 하나 없이 판판한 논이 하늘 끝까지 이어집니다.", "이렇게 판판한 땅이 넓게 펼쳐진 곳이 평야입니다."],
       "img": "DOYUN sits by a train window, looking outside. Through the window, a vast flat plain of green rice paddies stretches all the way to the horizon, where the land meets the sky in one straight line. A straight farm road and an irrigation canal cross the fields. No mountains, no text.",
       "imgKo": "도윤이가 기차 창가에 앉아 밖을 본다. 창밖으로 산 하나 없이 초록 논이 지평선까지 펼쳐지고, 곧은 농로와 물길이 들판을 가로지른다."
     },
@@ -338,20 +334,6 @@
         "가치는 돈으로 셀 때도 있고, 쓸모나 배울 점으로 따질 때도 있습니다."
       ]
     },
-    "역사적 가치": {
-      "explain": [
-        "쉬운 뜻: 타임머신처럼 옛날 모습과 옛사람들의 삶을 보여 주어서 소중한 것입니다.",
-        "낱말 나누기: 역사(지나온 옛일) + 적(~에 관한) + 가치(소중함)입니다."
-      ],
-      "beats": [
-        "서울 종묘입니다. 조선의 왕들이 조상에게 제사를 지내던 곳입니다.",
-        "지금도 해마다 옛날 그대로의 옷과 음악으로 제사를 지냅니다.",
-        "수백 년 전 모습을 오늘날에도 눈으로 볼 수 있습니다.",
-        "이렇게 옛날 일과 옛사람들의 생활을 알려 주는 소중함이 역사적 가치입니다."
-      ],
-      "img": "The main hall of Jongmyo Shrine in Seoul: a very long, low wooden building with a dark tiled roof and a long row of red pillars, in front of a wide raised stone-paved courtyard. During the royal ancestral rite, musicians in red robes play traditional instruments and rows of dancers in robes perform slowly in the courtyard. No text.",
-      "imgKo": "서울 종묘 정전. 아주 길고 낮은 나무 건물에 붉은 기둥이 줄지어 서 있고 앞에 돌을 깐 넓은 마당이 있다. 제사 때 붉은 옷의 악사들이 옛 악기를 연주하고 줄지어 선 무용수들이 천천히 춤춘다."
-    },
     "예술적 가치": {
       "explain": [
         "쉬운 뜻: 생김새가 아름답고 솜씨가 뛰어나서 자꾸 들여다보게 되는 소중함입니다.",
@@ -380,20 +362,6 @@
       "img": "The Janggyeong Panjeon depositories at Haeinsa Temple in Korea: long, plain wooden buildings with grey tiled roofs on a mountainside. On the front wall, wooden slatted windows are arranged in two rows — small windows on top and large windows at the bottom — so wind can flow through. Through the slats, tall shelves stacked with wooden printing blocks can be seen. No people, no text.",
       "imgKo": "산비탈에 선 해인사 장경판전. 기와지붕을 얹은 길고 수수한 나무 건물 벽에 위에는 작은 창, 아래에는 큰 창이 두 줄로 나 있고, 창살 사이로 나무판이 가득 꽂힌 높은 선반이 보인다."
     },
-    "생태적 가치": {
-      "explain": [
-        "쉬운 뜻: 자연에서 얻되 다 써 버리지 않고 생물이 살 자리를 남겨 두어서 소중한 것입니다.",
-        "낱말 나누기: 생태(생물이 살아가는 모습) + 적(~에 관한) + 가치입니다."
-      ],
-      "beats": [
-        "제주 바닷속에서 해녀가 전복을 땁니다.",
-        "아직 작은 전복은 바위에 도로 붙여 놓아 줍니다.",
-        "다 자란 것만 필요한 만큼 가져가니 바다 생물이 계속 살아갑니다.",
-        "이렇게 자연을 지키며 살아가는 방식이 지닌 소중함이 생태적 가치입니다."
-      ],
-      "img": "Underwater near Jeju Island, a haenyeo woman diver in a black rubber wetsuit and a round diving mask gently places a small abalone back onto a rock covered with seaweed. Her net bag holds only a few large shells. Small fish swim around in the clear blue water. No text.",
-      "imgKo": "제주 바닷속에서 검은 고무 옷과 둥근 물안경을 쓴 해녀가 작은 전복을 미역이 붙은 바위에 살며시 도로 붙여 놓는다. 망에는 큰 조개 몇 개만 들어 있고, 둘레에 작은 물고기가 헤엄친다."
-    },
     "지정": {
       "explain": [
         "쉬운 뜻: 여럿 가운데 '바로 이것!' 하고 골라 정하는 것입니다.",
@@ -409,10 +377,7 @@
       ]
     },
     "석빙고": {
-      "explain": [
-        "쉬운 뜻: 전기가 없던 옛날, 돌로 만든 커다란 얼음 냉장고입니다.",
-        "땅속에 반쯤 묻고 흙과 풀로 덮어 바깥 열기가 잘 들어오지 않습니다."
-      ],
+      "explain": ["쉬운 뜻: 전기가 없던 옛날, 돌로 만든 커다란 얼음 냉장고입니다.", "땅속에 반쯤 묻고 흙과 풀로 덮어 바깥 열기가 잘 들어오지 않습니다."],
       "beats": [
         "경주 석빙고입니다. 겉에서 보면 풀로 덮인 작은 언덕 같습니다.",
         "땅속에 반쯤 묻힌 돌방 안에 겨울 얼음을 넣어 두었습니다.",
