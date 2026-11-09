@@ -7,16 +7,16 @@ export function raceDuration(value: unknown) {
   return (RACE_DURATIONS as readonly number[]).includes(seconds) ? seconds : null;
 }
 
-// 팀 이름은 수학 기호에서 따온다. 앞의 넷은 네 연산, 뒤의 넷은 비교와 퍼센트.
+// 팀 이름은 팀 색 그대로 부른다(색으로 불러야 헷갈리지 않는다). 문해력 순위전(korean-race-core.js TEAMS)과 같은 차례·색.
 export const RACE_TEAMS = [
-  { name: "더하기팀", symbol: "+", hue: 4 },
-  { name: "빼기팀", symbol: "−", hue: 214 },
-  { name: "곱하기팀", symbol: "×", hue: 146 },
-  { name: "나누기팀", symbol: "÷", hue: 32 },
-  { name: "같다팀", symbol: "=", hue: 270 },
-  { name: "크다팀", symbol: ">", hue: 186 },
-  { name: "작다팀", symbol: "<", hue: 322 },
-  { name: "퍼센트팀", symbol: "%", hue: 52 },
+  { name: "빨강팀", emoji: "🔴", hue: 0 },
+  { name: "파랑팀", emoji: "🔵", hue: 220 },
+  { name: "노랑팀", emoji: "🟡", hue: 48 },
+  { name: "초록팀", emoji: "🟢", hue: 130 },
+  { name: "보라팀", emoji: "🟣", hue: 275 },
+  { name: "주황팀", emoji: "🟠", hue: 26 },
+  { name: "분홍팀", emoji: "🩷", hue: 330 },
+  { name: "하늘팀", emoji: "🩵", hue: 195 },
 ] as const;
 
 export const RACE_TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8] as const;
@@ -35,14 +35,14 @@ export function raceTeamSize(value: unknown) {
 }
 
 export type TeamMember = { id: string; team?: number | null; score?: number; correct_count?: number | null };
-export type TeamStanding = { index: number; name: string; symbol: string; hue: number; score: number; size: number; rank: number; memberIds: string[] };
+export type TeamStanding = { index: number; name: string; emoji: string; hue: number; score: number; size: number; rank: number; memberIds: string[] };
 
 // 팀 점수는 팀원 점수의 합. 같으면 많이 맞힌 팀이 앞선다.
 export function raceTeamBoard(rows: readonly TeamMember[], teamCount: number): TeamStanding[] {
   const teams = RACE_TEAMS.slice(0, teamCount).map((team, index) => {
     const members = rows.filter((row) => row.team === index);
     return {
-      index, name: team.name, symbol: team.symbol, hue: team.hue,
+      index, name: team.name, emoji: team.emoji, hue: team.hue,
       score: members.reduce((sum, row) => sum + (Number(row.score) || 0), 0),
       correct: members.reduce((sum, row) => sum + (Number(row.correct_count) || 0), 0),
       size: members.length, rank: 0, memberIds: members.map((row) => row.id),

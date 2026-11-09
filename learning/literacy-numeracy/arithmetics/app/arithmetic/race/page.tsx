@@ -263,7 +263,7 @@ export default function ArithmeticRaceJoinPage() {
                   const full = teamSize !== null && members.length >= teamSize;
                   return <section key={team.name} className={`math-race-team-column${mine ? " is-mine" : ""}`} style={{ "--hue": team.hue } as CSSProperties}>
                     <button type="button" className="math-race-team-head" aria-pressed={mine} disabled={full && !mine} onClick={() => void lobbyAction({ action: "team", team: index })}>
-                      <i aria-hidden="true">{team.symbol}</i><b>{team.name}</b><small>{teamSize ? `${members.length}/${teamSize}` : `${members.length}명`}</small>
+                      <i aria-hidden="true">{team.emoji}</i><b>{team.name}</b><small>{teamSize ? `${members.length}/${teamSize}` : `${members.length}명`}</small>
                     </button>
                     <ul aria-label={`${team.name} 명단`}>{members.map((participant) => <li key={participant.id}><RaceAvatar {...participant} /><span>{participant.name}</span>{participant.id === joined.participantId ? <em>나</em> : null}</li>)}</ul>
                   </section>;

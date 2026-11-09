@@ -10,7 +10,8 @@ const root = path.resolve(__dirname, '..');
 const base = process.env.ARITHMETIC_TEST_URL || 'http://127.0.0.1:8791';
 const built = path.join(root, 'learning/literacy-numeracy/arithmetics/dist/client');
 const out = process.env.ARITHMETIC_CAPTURE_DIR || path.join(root, 'outputs/arithmetic-race-teams');
-const NAMES = [['더하기팀', '+', 4], ['빼기팀', '−', 214], ['곱하기팀', '×', 146], ['나누기팀', '÷', 32], ['같다팀', '=', 270], ['크다팀', '>', 186], ['작다팀', '<', 322], ['퍼센트팀', '%', 52]];
+// 팀 이름은 팀 색 그대로(문해력 순위전과 같은 차례·색).
+const NAMES = [['빨강팀', '🔴', 0], ['파랑팀', '🔵', 220], ['노랑팀', '🟡', 48], ['초록팀', '🟢', 130], ['보라팀', '🟣', 275], ['주황팀', '🟠', 26], ['분홍팀', '🩷', 330], ['하늘팀', '🩵', 195]];
 
 async function capture(page, name) {
   fs.mkdirSync(out, { recursive: true });
@@ -79,9 +80,9 @@ async function main() {
     const race = { roomCode: '2468', worksheetName: '초1 · 덧셈과 뺄셈', worksheetRoute: '/arithmetic/add-subtract-1', seed: 20260720, status: 'waiting', startedAt: null, endsAt: null, durationSeconds: 60, mode: 'cards', teamCount: null };
     const board = () => {
       const ranking = people.slice().sort((x, y) => y.score - x.score).map((entry, index) => ({ ...entry, wrongCount: 0, skipCount: 0, rank: index + 1 }));
-      const teams = race.teamCount ? NAMES.slice(0, race.teamCount).map(([name, symbol, hue], index) => {
+      const teams = race.teamCount ? NAMES.slice(0, race.teamCount).map(([name, emoji, hue], index) => {
         const members = people.filter(p => p.team === index);
-        return { index, name, symbol, hue, score: members.reduce((sum, p) => sum + p.score, 0), size: members.length, memberIds: members.map(p => p.id), rank: 0 };
+        return { index, name, emoji, hue, score: members.reduce((sum, p) => sum + p.score, 0), size: members.length, memberIds: members.map(p => p.id), rank: 0 };
       }) : null;
       if (teams) [...teams].sort((x, y) => y.score - x.score).forEach((team, index) => { team.rank = index + 1; });
       const me = people[0];
@@ -146,7 +147,7 @@ async function main() {
     await page.waitForFunction(() => document.querySelectorAll('.math-race-team-column').length === 3);
     await page.getByRole('button', { name: '2팀' }).click();
     await page.waitForFunction(() => document.querySelectorAll('.math-race-team-column').length === 2);
-    await page.getByRole('button', { name: /빼기팀/ }).click();
+    await page.getByRole('button', { name: /파랑팀/ }).click();
     await page.locator('.math-race-team-column.is-mine').waitFor();
     assert.match(await page.locator('.math-race-team-column.is-mine').innerText(), /가람/);
     assert.match(await page.locator('.math-race-team-waiting').innerText(), /1명은 출발할 때/);
@@ -159,12 +160,27 @@ async function main() {
     await page.waitForURL(/\/race\/play/);
     await page.locator('.math-race-teammates li').first().waitFor();
     assert.equal(await page.locator('.math-race-towers li').count(), 2);
-    assert.match(await page.locator('.math-race-stat').first().innerText(), /우리 팀[\s\S]*1위[\s\S]*빼기팀/);
-    assert.equal(await page.locator('.math-race-towers .is-me .math-race-rod').count(), 1, '빼기팀 9+6+3 = 18 → one rod');
+    assert.match(await page.locator('.math-race-stat').first().innerText(), /우리 팀[\s\S]*1위[\s\S]*파랑팀/);
+    assert.equal(await page.locator('.math-race-towers .is-me .math-race-rod').count(), 1, '파랑팀 9+6+3 = 18 → one rod');
+    // 팀 탑 꼭대기에는 팀 기호가 아니라 팀원 모두의 아바타가 선다.
+    assert.equal(await page.locator('.math-race-towers .is-me .math-race-crew .math-race-avatar').count(), 4, '파랑팀 네 명이 탑 위에');
+    assert.equal(await page.locator('.math-race-towers li:not(.is-me) .math-race-crew .math-race-avatar').count(), 1);
+    assert.equal(await page.locator('.math-race-towers .is-leader').count(), 1, '1위 팀 왕관');
     await capture(page, 'playing-desktop');
+    // 팀 점수가 오르면 그 팀이 튀고 +점수가 솟는다.
+    people[1].score += 3;
+    await page.locator('.math-race-towers li:not(.is-me) .math-race-gain').waitFor({ timeout: 5000 });
+    assert.equal(await page.locator('.math-race-towers li:not(.is-me) .math-race-gain').innerText(), '+3');
+    assert.equal(await page.locator('.math-race-towers li:not(.is-me) .math-race-crew.is-hop').count(), 1);
+    people[1].score -= 3;
     race.endsAt = Date.now() - 50;
-    await page.locator('.math-race-team-results').waitFor();
-    assert.match(await page.locator('.card-race-result h2').innerText(), /빼기팀 1위/);
+    await page.locator('.math-race-team-podium').waitFor();
+    assert.match(await page.locator('.card-race-result h2').innerText(), /파랑팀 1위/);
+    // 시상대에는 팀이 오르고 팀원 모두가 단 위에 선다. 개인 순위는 표에만(메달 없이).
+    const podium = await page.evaluate(() => [...document.querySelectorAll('.math-race-team-podium .step:not(.empty)')].map(step => ({ name: step.querySelector('strong').textContent, faces: step.querySelectorAll('.math-race-podium-crew .math-race-avatar').length })));
+    assert.deepEqual(podium, [{ name: '🔴 빨강팀', faces: 1 }, { name: '🔵 파랑팀', faces: 4 }]);
+    assert.equal(await page.locator('.card-race-board.final li').count(), people.length);
+    assert.doesNotMatch(await page.locator('.card-race-board.final').innerText(), /🥇|🥈|🥉/);
     await capture(page, 'results-desktop');
 
     // 여덟 팀 경기: 탑 여덟 개가 모두 서고, 짧은 이름이 칸 안에 들어가며, 결과에 여덟 팀이 다 나온다.
@@ -188,15 +204,16 @@ async function main() {
         };
       });
       assert.equal(towers.count, 8, `${width}: all eight team towers`);
-      assert.ok(towers.names.some(name => /퍼센트$/.test(name)), `${width}: short team names`);
+      assert.ok(towers.names.some(name => /하늘$/.test(name)), `${width}: short team names`);
       assert.equal(towers.clipped, 0, `${width}: tower names fit`);
       assert.equal(towers.outside, 0, `${width}: towers stay inside the panel`);
       assert.ok(towers.pageFits, `${width}: no sideways scroll`);
       await capture(page, `playing-8-${width}`);
     }
     race.endsAt = Date.now() - 50;
-    await page.locator('.math-race-team-results').waitFor();
-    assert.equal(await page.locator('.math-race-team-results li').count(), 8);
+    await page.locator('.math-race-team-podium').waitFor();
+    assert.equal(await page.locator('.math-race-team-podium .step:not(.empty)').count(), 3);
+    assert.equal(await page.locator('.math-race-team-results li').count(), 5, 'teams 4-8 under the podium');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     await capture(page, 'results-8-mobile');
     assert.deepEqual(errors, []);

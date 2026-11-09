@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import "../arithmetic/race/race-scene.css";
 
@@ -30,14 +31,23 @@ export function RaceBackdrop() {
   </div>;
 }
 
-export type RaceRunner = { id: string; name: string; score: number; rank: number; avatarUrl?: string | null; symbol?: string; hue?: number };
+type RaceFace = { id: string; name: string; avatarUrl?: string | null };
+// 팀전이면 members 에 팀원 모두를 넣는다. 탑 꼭대기에 팀원이 함께 선다.
+export type RaceRunner = { id: string; name: string; score: number; rank: number; avatarUrl?: string | null; members?: RaceFace[]; hue?: number };
 export function RaceAvatar({ name, avatarUrl }: { name: string; avatarUrl?: string | null }) {
   return avatarUrl ? <img className="math-race-avatar" src={avatarUrl} alt="" width={44} height={44} />
     : <span className="math-race-avatar" aria-hidden="true">{name.slice(0, 1)}</span>;
 }
 
 const TOWER_HEIGHT = 150;
-const whoLabel = (runner: RaceRunner) => runner.symbol ? "우리 팀" : "나";
+const whoLabel = (runner: RaceRunner) => runner.members ? "우리 팀" : "나";
+// 팀원 얼굴 크기와 줄 수. 칸 폭(틀 안쪽 약 340px을 팀 수로 나눈 것)에 겹쳐 세운다.
+function crewLayout(count: number, columns: number) {
+  const face = columns > 5 ? 18 : count <= 3 ? 30 : count <= 6 ? 26 : 22;
+  const step = face - Math.round(face * .28);
+  const perRow = Math.max(1, Math.floor((Math.min(110, 340 / columns) - (face - step)) / step));
+  return { face, rows: Math.max(1, Math.ceil(count / perRow)) };
+}
 const ROW = 22;
 const FLAT = 60;
 const blocksOf = (score: number) => {
@@ -48,11 +58,34 @@ const blocksOf = (score: number) => {
 // 점수를 수 모형으로 쌓는다. 맞힐 때마다 일 모형이 한 칸 떨어지고, 열 개가 차면 십 모형 막대 하나로,
 // 막대 열 개가 차면 백 모형 판 하나로 합쳐진다(탑이 다시 낮아졌다가 새로 쌓인다).
 // 개인전은 앞의 다섯 명(나 포함)만, 팀전은 limit 으로 모든 팀을 세운다.
+// 팀전 탑에는 팀원 모두가 꼭대기에 함께 서고, 팀 점수가 오르면 그 팀이 통 튀며 +점수가 솟는다.
 export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", unit = "명", limit = 5 }: { entries: RaceRunner[]; myId?: string; playing: boolean; title?: string; unit?: string; limit?: number }) {
   const me = entries.find(entry => entry.id === myId);
   const visible = entries.slice(0, limit);
   const crowded = visible.length > 5;
   if (me && !visible.some(entry => entry.id === myId)) visible[visible.length - 1] = me;
+  const teamMode = entries.some(entry => entry.members);
+  const seen = useRef(new Map<string, number>());
+  const [gains, setGains] = useState<Record<string, { by: number; key: number }>>({});
+  const scoreKey = entries.map(entry => `${entry.id}:${entry.score}`).join("|");
+  useEffect(() => {
+    if (!teamMode) return;
+    const found: Record<string, { by: number; key: number }> = {};
+    for (const entry of entries) {
+      const before = seen.current.get(entry.id);
+      if (before !== undefined && entry.score > before) found[entry.id] = { by: entry.score - before, key: Date.now() };
+      seen.current.set(entry.id, entry.score);
+    }
+    if (Object.keys(found).length) window.setTimeout(() => setGains(current => ({ ...current, ...found })), 0);
+  // 점수가 바뀔 때만 본다(entries 는 그릴 때마다 새 배열이다).
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scoreKey, teamMode]);
+  const columns = Math.max(1, visible.length);
+  // 팀원이 많으면 얼굴이 여러 줄이 되므로 탑 위 자리를 그만큼 넓힌다.
+  const climb = teamMode ? Math.max(52, ...visible.map(entry => {
+    const { face, rows } = crewLayout(entry.members?.length ?? 0, columns);
+    return Math.round(rows * face * .82 + face * .18) + 26;
+  })) : null;
   // 판·막대가 많아지면 층을 얇게 해서 탑이 틀 안에 머문다.
   const tallest = Math.max(ROW, ...visible.map(entry => {
     const { hundreds, tens, ones } = blocksOf(entry.score);
@@ -62,20 +95,28 @@ export function RaceTowers({ entries, myId, playing, title = "수 모형 탑", u
   const row = Math.max(4, Math.floor(ROW * scale)), flat = Math.max(12, Math.floor(FLAT * scale));
   return <section className="math-race-towers" aria-label="실시간 수 모형 탑">
     <div className="math-race-towers-heading"><strong>{title}</strong><span>{entries.length}{unit}{me ? ` · ${whoLabel(me)} ${me.rank}위` : ""}</span></div>
-    <ol className={crowded ? "is-crowded" : undefined} style={{ "--cols": Math.max(1, visible.length), "--row": `${row}px`, "--flat": `${flat}px`, "--tower": `${TOWER_HEIGHT}px` } as CSSProperties}>
+    <ol className={[crowded ? "is-crowded" : "", teamMode ? "is-teams" : ""].filter(Boolean).join(" ") || undefined}
+      style={{ "--cols": columns, "--row": `${row}px`, "--flat": `${flat}px`, "--tower": `${TOWER_HEIGHT}px`, ...(climb ? { "--climb": `${climb}px` } : {}) } as CSSProperties}>
       {visible.map((entry, index) => {
         const hue = entry.hue ?? [...entry.id].reduce((value, letter) => (value * 31 + letter.charCodeAt(0)) % 360, 0);
         const { hundreds, tens, ones } = blocksOf(entry.score);
+        const gain = entry.members ? gains[entry.id] : undefined;
+        const crew = entry.members ? crewLayout(entry.members.length, columns) : null;
         return <li key={entry.id} className={`${entry.id === myId ? "is-me " : ""}${entry.rank === 1 && entry.score > 0 ? "is-leader" : ""}`}
           style={{ "--slot": index, "--hue": hue } as CSSProperties}>
           <div className="math-race-tower" aria-label={`${entry.name} ${entry.score}점`}>
-            <span className={`math-race-climber${playing ? " is-playing" : ""}`}>{entry.symbol ? <span className="math-race-avatar math-race-team-symbol">{entry.symbol}</span> : <RaceAvatar {...entry} />}</span>
+            <span className={`math-race-climber${playing ? " is-playing" : ""}`}>
+              {entry.members && crew ? <span key={gain?.key ?? "crew"} className={`math-race-crew${gain ? " is-hop" : ""}`} style={{ "--face": `${crew.face}px` } as CSSProperties}>
+                {entry.members.map(member => <RaceAvatar key={member.id} {...member} />)}
+              </span> : <RaceAvatar {...entry} />}
+              {gain ? <i key={`gain-${gain.key}`} className="math-race-gain" aria-hidden="true">+{gain.by}</i> : null}
+            </span>
             {ones > 0 && <div className="math-race-ones">{Array.from({ length: ones }, (_, cube) => <i key={`${tens}-${cube}`} className="math-race-cube" />)}</div>}
             {Array.from({ length: tens }, (_, rod) => <i key={`${hundreds}-${rod}`} className="math-race-rod" />).reverse()}
             {Array.from({ length: hundreds }, (_, plate) => <i key={`flat-${plate}`} className="math-race-flat" />).reverse()}
           </div>
           <strong key={entry.score} className={`math-race-tower-score${entry.score < 0 ? " is-negative" : ""}`}>{entry.score}</strong>
-          <span className="math-race-tower-name"><em>{entry.rank}</em>{crowded && entry.symbol ? entry.name.replace(/팀$/, "") : entry.name}</span>
+          <span className="math-race-tower-name"><em>{entry.rank}</em>{crowded && entry.members ? entry.name.replace(/팀$/, "") : entry.name}</span>
         </li>;
       })}
     </ol>
