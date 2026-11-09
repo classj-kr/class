@@ -342,7 +342,41 @@
     return own.concat(shuffle(others).slice(0, 4 - own.length));
   }
 
-  const kindsOf = (word) => word.blanks.map(text => ({ kind: 'blank', text })).concat({ kind: 'mean', text: word.mean });
+  // 아래 낱말·유의어(끝까지)는 뜻에도 빈칸에도 맞아 둘째 정답이 되고, 위 낱말은 빈칸에 넣으면 대개 말이 된다.
+  function relatedOut(word, subjectWords) {
+    const banned = new Set((word.rel?.syn || []).map(row => row.w));
+    const addDown = (row) => (row?.rel?.down || []).forEach(down => {
+      if (banned.has(down.w)) return;
+      banned.add(down.w);
+      addDown(subjectWords.find(other => other.w === down.w));
+    });
+    addDown(word);
+    const above = new Set();
+    const addUp = (row) => (row?.rel?.up || []).forEach(up => {
+      if (above.has(up.w)) return;
+      above.add(up.w);
+      addUp(subjectWords.find(other => other.w === up.w));
+    });
+    addUp(word);
+    return { banned, above };
+  }
+  // 두 글자 조각을 나눠 가진 낱말(태양 고도 측정기 · 태양 고도 · 남중 고도).
+  const piecesOf = (name) => {
+    const text = name.replace(/(스럽다|롭다|하다|다)$/, '').replace(/\s/g, '') || name;
+    const out = new Set();
+    for (let i = 0; i < text.length - 1; i++) out.add(text.slice(i, i + 2));
+    return out;
+  };
+  const looksLike = (a, b) => { const y = piecesOf(b); return [...piecesOf(a)].some(piece => y.has(piece)); };
+  // 뜻 문제는 뜻풀이가 낱말 조각을 우리말로 옮긴 꼴(해가 얼마나 높이 … 재는 기구 = 태양 고도 측정기)이 많아,
+  // 오답이 다른 갈래 낱말이면 글자 하나만 보고 고른다. 그래서 조각을 나눠 가진 목록 낱말이 있을 때만 뜻 문제를 낸다.
+  function lookalikesOf(word) {
+    const subjectWords = books[term][subject].units.flatMap(row => row.words);
+    const { banned, above } = relatedOut(word, subjectWords);
+    return subjectWords.filter(row => row !== word && !banned.has(row.w) && !above.has(row.w) && looksLike(row.w, word.w));
+  }
+  const kindsOf = (word) => word.blanks.map(text => ({ kind: 'blank', text }))
+    .concat(lookalikesOf(word).length ? [{ kind: 'mean', text: word.mean }] : []);
   const pick = (rows) => rows[Math.floor(Math.random() * rows.length)];
 
   // 다른 뜻이 있는 낱말은 '이 문장에서 이 낱말의 뜻은?'으로 묻는다. 다의어·동형어를 가려 보는 연습이다.
@@ -468,24 +502,12 @@
       // 오답은 이 낱말에 골라 둔 헷갈리는 후보(같은 과목 낱말)에서 먼저 뽑고, 모자라면 단원 낱말로 채운다.
       const subjectWords = books[term][subject].units.flatMap(row => row.words);
       // 아래 낱말(정사각형은 직사각형의 아래)과 유의어는 뜻에도 빈칸에도 맞아 두 번째 정답이 되므로 보기에서 뺀다.
-      const banned = new Set((word.rel?.syn || []).map(row => row.w));
-      const addDown = (row) => (row?.rel?.down || []).forEach(down => {
-        if (banned.has(down.w)) return;
-        banned.add(down.w);
-        addDown(subjectWords.find(other => other.w === down.w));
-      });
-      addDown(word);
+      // 모자라서 단원 낱말로 채울 때는 위 낱말(공통분모의 분모)도 뺀다. 골라 둔 오답(foils)의 위 낱말은 문장이 막아 두었으므로 그대로 쓴다.
+      const { banned, above } = relatedOut(word, subjectWords);
+      // 뜻 문제는 조각을 나눠 가진 낱말을 먼저 보기에 넣어, 뜻풀이를 끝까지 읽어야 가려지게 한다.
+      const alike = item.kind === 'mean' ? shuffle(lookalikesOf(word)).slice(0, 3) : [];
       // 같은 갈래 낱말이 목록에 없을 때는 목록 밖 낱말(야크, 낙타 …)도 오답으로 쓴다. 그때는 틀린 말 풀이가 없다.
-      const picked = shuffle((word.foils || []).filter(name => name !== word.w && !banned.has(name)).map(name => subjectWords.find(row => row.w === name) || { w: name })).slice(0, 3);
-      // 모자라서 단원 낱말로 채울 때는 위 낱말(공통분모의 분모)도 뺀다. 빈칸에 넣으면 대개 말이 되기 때문이다.
-      // 골라 둔 오답(foils)의 위 낱말은 문장이 막아 두었으므로 그대로 쓴다.
-      const above = new Set();
-      const addUp = (row) => (row?.rel?.up || []).forEach(up => {
-        if (above.has(up.w)) return;
-        above.add(up.w);
-        addUp(subjectWords.find(other => other.w === up.w));
-      });
-      addUp(word);
+      const picked = alike.concat(shuffle((word.foils || []).filter(name => name !== word.w && !banned.has(name) && !alike.some(row => row.w === name)).map(name => subjectWords.find(row => row.w === name) || { w: name }))).slice(0, 3);
       const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row) && !banned.has(row.w) && !above.has(row.w))).slice(0, 3 - picked.length);
       return shuffle([word, ...picked, ...rest])
         .map(row => ({ label: row.w, right: row === word, wrong: row.mean ? element('p', `${row.w}: ${row.mean}`, 'wrong-note') : null }));
