@@ -1719,7 +1719,9 @@ function createClassroomPlatform(options = {}) {
   // 학교 공용 채팅(학교마다 방 하나). 입장권은 박물관 입장권과 같은 서명을 쓰되 종류만 다르다.
   const schoolChat = createSchoolChat({
     pool, requireUser, requireTeacher, requireDatabase, studentMembership, teacherRegistration,
-    signTicket: (payload) => signMuseumPresence(payload), HttpError, asyncRoute
+    signTicket: (payload) => signMuseumPresence(payload),
+    avatarFor: async (userId) => (await classboardAvatars(pool, [userId], avatarUrl)).get(String(userId)) || "",
+    HttpError, asyncRoute
   });
   router.use("/school-chat", schoolChat.router);
 

@@ -23,7 +23,7 @@ const MAX_CALL = 6;               // 방 통화(음성) 인원
 const MAX_CAMS = 4;               // 동시에 카메라를 켤 수 있는 사람 수
 const SIGNAL_MAX = 20000;         // 연결 신호 한 개의 최대 크기(글자 수)
 
-function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, studentMembership, teacherRegistration, signTicket, HttpError, asyncRoute }) {
+function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, studentMembership, teacherRegistration, signTicket, avatarFor, HttpError, asyncRoute }) {
   const router = express.Router();
   const fail = (status, code, message) => { throw new HttpError(status, code, message); };
   const listeners = new Set();
@@ -180,6 +180,8 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
   router.get('/ticket', asyncRoute(async (req, res) => {
     requireDatabase();
     const identity = await identityFor(req);
+    // 메인 화면 접속자 줄에 띄울 아바타 그림 주소. 못 찾으면 빈 값(화면이 이름 첫 글자로 대신한다).
+    identity.avatar = avatarFor ? await avatarFor(identity.userId).catch(() => '') : '';
     const expiresAt = Date.now() + 10 * 60 * 1000;
     const ticket = signTicket({ kind: 'school-chat', exp: expiresAt, ...identity });
     res.setHeader('Cache-Control', 'no-store');
@@ -325,7 +327,7 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
   // ---- 접속자 목록(배틀넷처럼 그 채널에 지금 누가 있는지) ----
   // 같은 계정이 여러 창을 열어도 한 사람으로 센다. 들고 나는 것만 알려서(전체 목록은 새로 들어온 사람에게만)
   // 사람이 많아도 소식이 사람 수만큼만 오간다.
-  const presenceUser = (member) => ({ userId: member.userId, name: member.name, role: member.role, grade: member.grade, classNumber: member.classNumber });
+  const presenceUser = (member) => ({ userId: member.userId, name: member.name, role: member.role, grade: member.grade, classNumber: member.classNumber, avatar: member.avatar || '' });
 
   function presenceUsers(schoolKey, channel) {
     const users = new Map();
@@ -466,7 +468,8 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
       leave(socket);
       socket.meta.schoolChat = {
         userId: identity.userId, name: identity.name, role: identity.role,
-        grade: identity.grade, classNumber: identity.classNumber, schoolKey: identity.schoolKey, channels: new Set()
+        grade: identity.grade, classNumber: identity.classNumber, avatar: typeof identity.avatar === 'string' && identity.avatar.startsWith('/assets/avatars/') ? identity.avatar : '',
+        schoolKey: identity.schoolKey, channels: new Set()
       };
       const channels = await myChannels(identity.schoolKey, identity.userId).catch(() => [{ id: SCHOOL, name: '학교' }]);
       const history = {};
