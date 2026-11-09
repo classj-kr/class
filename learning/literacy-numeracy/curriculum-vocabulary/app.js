@@ -315,7 +315,11 @@
     const practice = button('연습', () => { mode = 'practice'; showLesson(unit, true); }, 'practice-chip');
     controls.forEach((control, i) => control.setAttribute('aria-pressed', String(i === current)));
     practice.setAttribute('aria-pressed', String(mode === 'practice'));
-    chips.append(...controls, practice);
+    // 순위전: 이 단원이 체크된 채로 열리고, 시험 범위는 순위전 화면에서 단원을 더 체크해 넓힌다.
+    const race = element('a', '🏁 순위전', 'race-chip');
+    const code = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' }[subject];
+    race.href = `../korean-race/?set=textbook&range=${encodeURIComponent(`${term}.${code}.${unit.id}`)}`;
+    chips.append(...controls, practice, race);
     return { chips, controls, practice };
   }
 

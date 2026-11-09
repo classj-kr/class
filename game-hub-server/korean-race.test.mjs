@@ -30,13 +30,13 @@ test('combo worth, accuracy, ranking and team ties follow the shared rules', () 
 
 test('every set builds questions from the real learning data', () => {
   const pools = bank.load();
-  const expectMin = { spelling: 300, idioms: 100, proverbs: 100, expressions: 100, vocabulary: 2000, hanja: 900, sentences: 72 };
+  const expectMin = { spelling: 300, idioms: 100, proverbs: 100, expressions: 100, vocabulary: 2000, hanja: 900, sentences: 72, textbook: 5000 };
   for (const [set, min] of Object.entries(expectMin)) assert.ok(pools[set].length >= min, `${set}: ${pools[set].length}`);
   let seed = 7;
   const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
   for (const set of Object.keys(Core.SETS)) {
     for (const [level] of Core.levelsOf(set) || [['all']]) {
-      const items = Questions.makeRound(pools, { set, level, count: 200, mixedParts: Core.MIXED_PARTS, random });
+      const items = Questions.makeRound(pools, { set, level, count: 200, random });
       assert.ok(items.length >= 190, `${set}/${level}: ${items.length}`);
       for (const q of items) {
         const want = Core.SETS[q.set].choices;
@@ -47,8 +47,7 @@ test('every set builds questions from the real learning data', () => {
         assert.ok(q.answer >= 0 && q.answer < q.choices.length, q.key);
         // 상황 글이 없는 문장 고르기 문제는 지시문을 글자리에 크게 두고 작은 지시 줄은 비운다.
         assert.ok(q.text && (q.ask || q.set === 'sentences'), q.key);
-        if (set !== 'mixed') assert.equal(q.set, set);
-        else assert.ok(Core.MIXED_PARTS.includes(q.set), 'mixed never includes English words');
+        assert.equal(q.set, set);
       }
       for (let i = 1; i < items.length; i++) assert.notEqual(items[i].key, items[i - 1].key, 'no question twice in a row');
     }
@@ -210,7 +209,7 @@ test('a race: room entry, hidden answers, combo points, wrong reveal lock, stale
 
 test('team race fills unassigned students at start and places late joiners', async (t) => {
   const { req, tick } = await serve(t);
-  const made = (await req('/rooms', { set: 'mixed', teamMode: true, teamCount: 2 }, '', 'teacher')).data;
+  const made = (await req('/rooms', { set: 'proverbs', teamMode: true, teamCount: 2 }, '', 'teacher')).data;
   const host = made.token, path = '/rooms/' + made.state.code;
   const kids = [];
   for (const name of ['가', '나', '다']) kids.push((await req(path + '/join', {}, '', '', name)).data);
@@ -256,11 +255,10 @@ test('sentence choice races use only the choice tasks and show what the app show
   assert.equal(Core.validRange('sentences', '1'), null);
   assert.equal(Core.validRange('sentences', '25'), null);
   assert.equal(Core.rangeLabel('sentences', '~5'), '처음~5차시');
-  assert.equal(Questions.poolFor(pools, 'sentences', 'all', [], '~2').length, 6);
+  assert.equal(Questions.poolFor(pools, 'sentences', 'all', '~2').length, 6);
   const round = Questions.makeRound(pools, { set: 'sentences', range: '~2', count: 110, random: Math.random });
   assert.equal(round.length, 110);
   for (let i = 1; i < round.length; i++) assert.notEqual(round[i].key, round[i - 1].key);
-  assert.ok(!Core.MIXED_PARTS.includes('sentences') && !Core.MIXED_PARTS.includes('hanja'), '국어 종합 stays the four word sets');
 });
 
 test('a class can race in up to eight teams', async (t) => {
@@ -284,12 +282,11 @@ test('a class can race in up to eight teams', async (t) => {
 test('a set whose learning page is globally closed cannot be raced', async (t) => {
   const { req } = await serve(t, { disabled: async (path) => path.endsWith('/spelling') });
   assert.equal((await req('/rooms', { set: 'spelling' }, '', 'teacher')).status, 403);
-  const mixed = (await req('/rooms', { set: 'mixed' }, '', 'teacher')).data;
-  const path = '/rooms/' + mixed.state.code;
+  const open = (await req('/rooms', { set: 'proverbs' }, '', 'teacher')).data;
+  const path = '/rooms/' + open.state.code;
   await req(path + '/join', {}, '', '', '가');
-  const started = (await req(path + '/start', {}, mixed.token, 'teacher')).data;
-  assert.equal(started.phase, 'running', 'mixed races the open parts only');
-  assert.equal((await req(path + '/settings', { set: 'spelling' }, mixed.token, 'teacher')).status, 409);
+  const started = (await req(path + '/start', {}, open.token, 'teacher')).data;
+  assert.equal(started.phase, 'running', 'an open set still races');
 });
 
 test('a race opened from a lesson asks only that lesson, or everything up to it', () => {
@@ -298,6 +295,7 @@ test('a race opened from a lesson asks only that lesson, or everything up to it'
   assert.equal(Core.validRange('spelling', '3'), '3');
   assert.equal(Core.validRange('spelling', '1-2'), null);
   assert.equal(Core.validRange('mixed', '1'), null);
+  assert.equal(Core.SETS.mixed, undefined, 'no race mixes several apps');
   assert.equal(Core.rangeLabel('vocabulary', '~1-4'), '처음~Level 1 · 4차시');
   assert.equal(Core.rangeLabel('proverbs', '~1'), '1차시');
   assert.equal(Core.validRange('hanja', '25'), '25');
@@ -307,24 +305,24 @@ test('a race opened from a lesson asks only that lesson, or everything up to it'
   assert.equal(Core.rangeLabel('hanja', '~7'), '1~7단계');
   assert.equal(Core.rangeLabel('hanja', '~1'), '1단계');
   const pools = bank.load();
-  const lessonOne = Questions.poolFor(pools, 'vocabulary', 'elementary', [], '1-1').map((e) => e.key);
+  const lessonOne = Questions.poolFor(pools, 'vocabulary', 'elementary', '1-1').map((e) => e.key);
   assert.ok(lessonOne.length >= 18 && lessonOne.length <= 20, 'Level 1 · 1차시 keeps nearly all of its 20 words');
   assert.ok(lessonOne.includes('vocabulary:he') && lessonOne.includes('vocabulary:in'));
-  assert.equal(Questions.poolFor(pools, 'vocabulary', 'elementary', [], '~1-2').length,
-    lessonOne.length + Questions.poolFor(pools, 'vocabulary', 'elementary', [], '1-2').length);
+  assert.equal(Questions.poolFor(pools, 'vocabulary', 'elementary', '~1-2').length,
+    lessonOne.length + Questions.poolFor(pools, 'vocabulary', 'elementary', '1-2').length);
   for (const set of ['spelling', 'idioms', 'proverbs', 'expressions']) {
     assert.ok(pools[set].every((e) => e.lesson >= 1), `${set}: every question belongs to a lesson`);
-    const one = Questions.poolFor(pools, set, 'all', [], '1'), two = Questions.poolFor(pools, set, 'all', [], '2');
+    const one = Questions.poolFor(pools, set, 'all', '1'), two = Questions.poolFor(pools, set, 'all', '2');
     assert.ok(one.length >= 4 && one.every((e) => e.lesson === 1));
-    assert.equal(Questions.poolFor(pools, set, 'all', [], '~2').length, one.length + two.length);
+    assert.equal(Questions.poolFor(pools, set, 'all', '~2').length, one.length + two.length);
   }
   // 한자 25단계: 단계마다 순위전 한 판을 꾸릴 만큼 문항이 있고, "~N"은 1단계부터 N단계까지다.
   let upto = 0;
   for (let stage = 1; stage <= 25; stage++) {
-    const only = Questions.poolFor(pools, 'hanja', 'all', [], String(stage));
+    const only = Questions.poolFor(pools, 'hanja', 'all', String(stage));
     assert.ok(only.length >= 20 && only.every((e) => e.lesson === stage), `${stage}단계: ${only.length}`);
     upto += only.length;
-    assert.equal(Questions.poolFor(pools, 'hanja', 'all', [], '~' + stage).length, upto);
+    assert.equal(Questions.poolFor(pools, 'hanja', 'all', '~' + stage).length, upto);
     const round = Questions.makeRound(pools, { set: 'hanja', range: String(stage), count: 110, random: Math.random });
     assert.equal(round.length, 110, `${stage}단계 한 판`);
     for (let i = 1; i < round.length; i++) assert.notEqual(round[i].key, round[i - 1].key);
@@ -333,4 +331,27 @@ test('a race opened from a lesson asks only that lesson, or everything up to it'
   const round = Questions.makeRound(pools, { set: 'idioms', range: '2', count: 40, random: Math.random });
   assert.ok(new Set(round.map((q) => q.text)).size <= 4);
   assert.ok(new Set(round.flatMap((q) => q.choices)).size > 4);
+});
+
+test('the textbook race asks only the checked units', async (t) => {
+  assert.equal(Core.validRange('textbook', '6-2.sci.1,6-2.kor.3'), '6-2.sci.1,6-2.kor.3');
+  assert.equal(Core.validRange('textbook', '6-2.sci.1,nope'), null);
+  assert.equal(Core.rangeLabel('textbook', '6-2.sci.1,6-2.sci.2,6-2.kor.3'), '6학년 2학기 과학 1·2단원, 국어 3단원');
+  const pools = bank.load();
+  const round = Questions.makeRound(pools, { set: 'textbook', range: '6-2.sci.1,6-2.kor.3', count: 120, random: Math.random });
+  assert.equal(round.length, 120);
+  for (const q of round) {
+    assert.ok(/^textbook:6-2:(sci:1|kor:3):/.test(q.key), q.key);
+    assert.equal(q.choices.length, 4);
+    assert.equal(new Set(q.choices).size, 4, q.key);
+  }
+  const catalog = bank.textbookCatalog();
+  assert.ok(catalog.some((term) => term.term === '6-2' && term.subjects.some((s) => s.code === 'sci' && s.units.length)));
+  const { req } = await serve(t, { pools: bank.load });
+  const made = (await req('/rooms', { set: 'textbook' }, '', 'teacher')).data;
+  const path = '/rooms/' + made.state.code;
+  await req(path + '/join', {}, '', '', '가');
+  assert.equal((await req(path + '/start', {}, made.token, 'teacher')).status, 409, 'a textbook race needs an exam range');
+  const started = (await req(path + '/start', { range: '6-2.sci.1' }, made.token, 'teacher')).data;
+  assert.equal(started.phase, 'running');
 });
