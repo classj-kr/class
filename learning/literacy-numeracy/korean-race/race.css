@@ -620,3 +620,24 @@ body .q-card[data-set="hanja"] #revealText { font-family: KleeRaceHanja, KleeHan
 .words > * { font-family: "Andika Learning", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
 /* 경주로의 아바타 그림: 네모 그림자 대신 그림 모양 그대로 그림자 */
 img.t-face { box-shadow: none; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.15)); }
+
+/* 아바타 그림에 네모 테두리(outline)를 두르지 않는다: 1위·내 아바타는 그림 둘레 빛으로 */
+.tower.leader img.t-face { outline: none; filter: drop-shadow(0 0 4px var(--gold)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.15)); }
+.tower.mine img.t-face { outline: none; filter: drop-shadow(0 0 3px var(--red)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.15)); }
+
+/* 팀전 경기장: 팀마다 큰 탑 하나, 꼭대기에 팀원 모두가 함께 선다 */
+.towers.team-towers { grid-template-columns: repeat(var(--cols), minmax(90px, 1fr)); gap: 14px; }
+.team-tower .pile { width: 86%; border-radius: 10px 10px 0 0; }
+.team-tower .crew { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; max-width: 100%; }
+.team-tower .crew .t-face { width: 30px; height: 30px; font-size: 20px; margin: 0 -3px; }
+body.spectator .team-tower .crew .t-face { width: 44px; height: 44px; font-size: 30px; }
+.team-tower .t-score { font-size: 18px; }
+body.spectator .team-tower .t-score { font-size: 26px; }
+.team-tower .t-name { font-size: 15px; color: hsl(var(--hue) 60% 32%); border-top: 4px solid hsl(var(--hue) 62% 50%); }
+body.spectator .team-tower .t-name { font-size: 20px; }
+.team-tower.mine .t-name { color: var(--red); }
+.team-tower.mine .pile { outline: 3px dashed var(--red); outline-offset: 2px; }
+.team-tower.hop .crew { animation: hop 0.45s cubic-bezier(.3, 1.8, .5, 1); }
+.mini-board li.team-line { grid-template-columns: 22px 28px 1fr auto; }
+.mini-board li.team-line .mini-team { text-align: center; }
+.mini-board li.team-line b { color: hsl(var(--team-hue) 60% 32%); }

@@ -621,12 +621,17 @@
     paintWords(s.me.words || [], s.me.correct, s.config.set === 'hanja');
     paintScore(localScore);
     paintCombo();
-    const rank = s.me.rank;
+    // 팀전이면 순위·알림도 우리 팀 기준이다.
+    const myTeamNow = s.teams && s.me.team !== null ? s.teams[s.me.team] : null;
+    const rank = myTeamNow ? myTeamNow.rank : s.me.rank;
+    $('rankNow').parentElement.querySelector('span').textContent = myTeamNow ? '우리 팀' : '순위';
     $('rankNow').textContent = rank ? rank + '위' : '-';
     if (lastRank && rank && rank !== lastRank) {
       retrigger($('rankNow').parentElement, rank < lastRank ? 'rank-up' : 'rank-down');
       // 앞지르면 알려 준다(연산 순위전처럼).
-      if (rank < lastRank && s.participants.length > 1 && s.me.score > 0) banner(rank === 1 ? '👑 1위로 올라섰어요!' : `⬆️ ${rank}위로 올라섰어요!`);
+      if (myTeamNow) {
+        if (rank < lastRank && myTeamNow.value > 0) banner(rank === 1 ? `👑 ${myTeamNow.emoji} 우리 팀이 1위로!` : `⬆️ 우리 팀 ${rank}위로 올라섰어요!`);
+      } else if (rank < lastRank && s.participants.length > 1 && s.me.score > 0) banner(rank === 1 ? '👑 1위로 올라섰어요!' : `⬆️ ${rank}위로 올라섰어요!`);
     }
     lastRank = rank;
     const leader = s.participants[0];
@@ -886,8 +891,61 @@
     }));
   }
   // 모두의 글자 탑: 점수만큼 블록이 쌓인다. 선생님 큰 화면에서는 모두, 학생 화면에서는 위쪽만 보인다.
-  function renderTowers(s) {
+  // 팀전: 팀마다 탑이 하나다. 팀 점수만큼 쌓이고, 팀원 모두가 탑 꼭대기에 함께 선다.
+  const prevTeams = new Map();
+  function renderTeamTowers(s) {
     const box = $('towers');
+    box.classList.add('team-towers');
+    const teams = s.teams.filter((t) => t.size);
+    const top = Math.max(6, ...teams.map((t) => t.value)) * 1.22;
+    box.style.setProperty('--cols', Math.max(teams.length, 1));
+    box.querySelectorAll('.tower:not([data-team])').forEach((col) => col.remove());
+    const alive = new Set();
+    teams.forEach((t, i) => {
+      const id = String(t.index);
+      alive.add(id);
+      let col = box.querySelector(`[data-team="${id}"]`);
+      if (!col) {
+        col = document.createElement('div');
+        col.className = 'tower team-tower';
+        col.dataset.team = id;
+        col.innerHTML = '<div class="stack"><div class="climber"><div class="crew"></div><b class="t-score"></b></div><div class="pile"></div></div><span class="t-name"></span>';
+      }
+      const members = s.participants.filter((p) => p.team === t.index);
+      const crew = col.querySelector('.crew');
+      const crewKey = members.map((p) => p.id + (p.avatarUrl || p.racer)).join('|');
+      if (crew.dataset.key !== crewKey) {
+        crew.dataset.key = crewKey;
+        crew.replaceChildren(...members.map((p) => face(p, 't-face')));
+      }
+      col.style.setProperty('--hue', t.hue + 'deg');
+      col.querySelector('.t-name').textContent = `${t.emoji} ${t.name}팀`;
+      if (box.children[i] !== col) box.insertBefore(col, box.children[i] || null);
+      col.classList.toggle('leader', t.rank === 1 && t.value > 0);
+      col.classList.toggle('top', true);
+      col.classList.toggle('mine', s.me.team === t.index);
+      col.classList.toggle('fever', members.some((p) => p.combo >= 10));
+      const room = Math.max(40, col.querySelector('.stack').clientHeight - 96);
+      col.querySelector('.pile').style.height = Math.max(4, Math.round((Math.max(0, t.value) / top) * room)) + 'px';
+      col.querySelector('.t-score').textContent = t.value;
+      const before = prevTeams.get(id) ?? t.value;
+      if (t.value > before) {
+        const pop = document.createElement('i');
+        pop.className = 't-pop';
+        pop.textContent = '+' + (t.value - before);
+        col.querySelector('.climber').append(pop);
+        setTimeout(() => pop.remove(), 900);
+        retrigger(col, 'hop');
+      }
+      prevTeams.set(id, t.value);
+    });
+    box.querySelectorAll('.tower[data-team]').forEach((col) => { if (!alive.has(col.dataset.team)) col.remove(); });
+  }
+  function renderTowers(s) {
+    if (s.teams) return renderTeamTowers(s);
+    const box = $('towers');
+    box.classList.remove('team-towers');
+    box.querySelectorAll('.tower[data-team]').forEach((col) => col.remove());
     // 1위 탑이 칸의 80%쯤 차도록 맞춘다. 처음 몇 점부터 탑이 쑥쑥 자라 보이게.
     const top = Math.max(6, ...s.participants.map((p) => p.score)) * 1.22;
     const ordered = [...s.participants].sort((a, b) => (a.team ?? 99) - (b.team ?? 99) || a.name.localeCompare(b.name, 'ko'));
@@ -930,6 +988,22 @@
     box.querySelectorAll('.tower').forEach((col) => { if (!alive.has(col.dataset.id)) col.remove(); });
   }
   function renderMini(s) {
+    // 팀전이면 작은 순위표도 팀 순위다.
+    if (s.teams) {
+      const teams = s.teams.filter((t) => t.size).sort((a, b) => a.rank - b.rank);
+      $('miniBoard').replaceChildren(...teams.map((t) => {
+        const li = document.createElement('li');
+        li.className = 'team-line' + (s.me.team === t.index ? ' mine' : '');
+        li.style.setProperty('--team-hue', t.hue);
+        li.innerHTML = '<em></em><span class="mini-team"></span><b></b><strong></strong>';
+        li.children[0].textContent = t.rank;
+        li.children[1].textContent = t.emoji;
+        li.children[2].textContent = `${t.name}팀 ${t.size}명`;
+        li.children[3].textContent = t.value;
+        return li;
+      }));
+      return;
+    }
     const top = s.participants.slice(0, 5);
     const mine = s.participants.find((p) => p.id === s.me.id);
     if (mine && !top.includes(mine)) top.push(mine);
