@@ -149,8 +149,8 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   assert.match(names[0], /읽기·쓰기/);
   assert.match(names[2], /수리·과학·정보/);
   assert.equal(await page.locator('#category-literacy-panel a[href*=metacognition]').count(), 1);
-  assert.equal(await page.locator('#category-literacy-toggle .category-label').textContent(), '학습');
-  assert.equal(await page.locator('#category-exploration-toggle').count(), 0, '문해·수리와 교과는 학습 하나로 합쳤다');
+  assert.equal(await page.locator('#category-literacy-toggle .category-label').textContent(), '문해·수리·교과');
+  assert.equal(await page.locator('#category-exploration-toggle').count(), 0, '문해·수리와 교과는 하나로 합쳤다');
   assert.equal(await page.locator('#category-boardgame-toggle .category-label').textContent(), '게임');
   await page.locator('[data-access-group="reading-writing"] > summary').click();
   await page.locator('a[href="learning/literacy-numeracy/handwriting/"]').click();
