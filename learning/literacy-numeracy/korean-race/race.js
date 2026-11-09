@@ -975,8 +975,36 @@
         return card;
       }));
     }
+    // 팀전이면 시상대에 팀이 올라간다(팀원 모두가 단 위에 선다). 개인 순위는 아래 표에만 둔다.
+    const podium = $('podium');
+    if (teams.length) {
+      $('teamResult').before(podium);
+      const teamOrder = [teams[1], teams[0], teams[2]];
+      podium.classList.add('team-podium');
+      podium.replaceChildren(...teamOrder.map((t, i) => {
+        const div = document.createElement('div');
+        const place = t ? t.rank : [2, 1, 3][i];
+        div.className = 'step place-' + [2, 1, 3][i] + (t ? '' : ' empty');
+        div.style.setProperty('--delay', [0.5, 1.1, 0.2][i] + 's');
+        if (t) {
+          div.style.setProperty('--team-hue', t.hue);
+          div.innerHTML = '<span class="pod-racer pod-team"></span><div class="block"><b class="pod-place"></b><b class="pod-name"></b><span class="pod-score"></span></div>';
+          const members = s.participants.filter((p) => p.team === t.index);
+          div.querySelector('.pod-racer').append(...members.map((p) => face(p, 'pod-face')));
+          if (place === 1) div.querySelector('.pod-racer').classList.add('crowned');
+          div.querySelector('.pod-name').textContent = `${t.emoji} ${t.name}팀`;
+          div.querySelector('.pod-score').textContent = t.value + '점';
+        } else div.innerHTML = '<div class="block"><b class="pod-place"></b></div>';
+        div.querySelector('.pod-place').textContent = place;
+        return div;
+      }));
+    } else {
+      $('soloTitle').after(podium);
+      podium.classList.remove('team-podium');
+    }
+    $('soloTitle').hidden = true;
     const order = [s.participants[1], s.participants[0], s.participants[2]];
-    $('podium').replaceChildren(...order.map((p, i) => {
+    if (!teams.length) podium.replaceChildren(...order.map((p, i) => {
       const div = document.createElement('div');
       const place = [2, 1, 3][i];
       div.className = 'step place-' + place + (p ? '' : ' empty');
