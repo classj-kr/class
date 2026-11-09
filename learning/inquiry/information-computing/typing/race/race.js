@@ -351,6 +351,7 @@
       erroring = false;
       lastRank = null;
       prevScores.clear();
+      prevTeams.clear();
       parts.length = 0;
       $('track').innerHTML = '';
       input.value = '';
@@ -373,12 +374,20 @@
     if (s.me.plays) {
       renderMini(s);
       $('scoreNow').textContent = Math.max(localScore, 0);
-      const rank = s.me.rank;
+      // 팀전이면 순위 칸과 앞지르기 알림은 우리 팀 기준이다(내 점수는 그대로).
+      const mineTeam = s.teams && s.me.team !== null ? s.teams[s.me.team] : null;
+      const rank = mineTeam ? mineTeam.rank : s.me.rank;
+      $('rankNow').parentElement.querySelector('span').textContent = mineTeam ? '우리 팀' : '순위';
       $('rankNow').textContent = rank ? rank + '위' : '-';
-      if (lastRank && rank && rank !== lastRank) retrigger($('rankNow').parentElement, rank < lastRank ? 'rank-up' : 'rank-down');
+      if (lastRank && rank && rank !== lastRank) {
+        retrigger($('rankNow').parentElement, rank < lastRank ? 'rank-up' : 'rank-down');
+        if (mineTeam && rank < lastRank && mineTeam.value > 0) {
+          const r = $('rankNow').parentElement.getBoundingClientRect();
+          floatText(rank === 1 ? `👑 ${mineTeam.emoji} 우리 팀이 1위로!` : `⬆️ 우리 팀 ${rank}위로!`, Math.max(Math.min(170, innerWidth / 2), Math.min(r.left + r.width / 2, innerWidth - 170)), r.bottom + 4, 'team-up');
+        }
+      }
       lastRank = rank;
       const leader = s.participants[0];
-      const mineTeam = s.teams && s.me.team !== null ? s.teams[s.me.team] : null;
       const topTeam = s.teams?.find((t) => t.rank === 1);
       const unit = '점';
       if (mineTeam && topTeam?.value) {
@@ -410,8 +419,68 @@
       return row;
     }));
   }
-  function renderTrack(s) {
+  // 팀전 트랙: 팀마다 큰 레인 하나. 팀 점수만큼 달리고, 팀원 아바타 모두가 한 차에 함께 탄다.
+  const prevTeams = new Map();
+  function renderTeamTrack(s) {
     const track = $('track');
+    track.classList.add('team-track');
+    track.querySelectorAll('.lane:not([data-team])').forEach((lane) => lane.remove());
+    const teams = s.teams.filter((t) => t.size);
+    track.style.setProperty('--lanes', Math.max(teams.length, 1));
+    const top = Math.max(60, ...teams.map((t) => t.value)) * 1.08;
+    const alive = new Set();
+    teams.forEach((t, i) => {
+      const id = String(t.index);
+      alive.add(id);
+      let lane = track.querySelector(`.lane[data-team="${id}"]`);
+      if (!lane) {
+        lane = document.createElement('div');
+        lane.className = 'lane team-lane';
+        lane.dataset.team = id;
+        lane.innerHTML = '<span class="lane-rank"></span><span class="lane-name"><b></b><small></small></span><div class="road"><div class="car"><div class="crew"></div><b class="car-score"></b></div><span class="flag">🏁</span></div>';
+      }
+      // 팀원 차례는 이름순으로 고정한다(점수 순위가 바뀔 때마다 얼굴이 자리를 바꾸지 않게).
+      const members = s.participants.filter((p) => p.team === t.index).sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+      const crew = lane.querySelector('.crew');
+      const crewKey = members.map((p) => p.id + (p.avatarUrl || p.racer)).join('|');
+      if (crew.dataset.key !== crewKey) {
+        crew.dataset.key = crewKey;
+        crew.replaceChildren(...members.map((p) => {
+          const f = face(p, 'car-emoji crew-face' + (p.id === s.me.id ? ' me' : ''));
+          f.title = p.name;
+          return f;
+        }));
+      }
+      crew.dataset.size = members.length > 6 ? 'many' : members.length > 4 ? 'some' : 'few';
+      lane.style.setProperty('--hue', t.hue + 'deg');
+      lane.querySelector('.lane-name b').textContent = `${t.emoji} ${t.name}팀`;
+      lane.querySelector('.lane-name small').textContent = `${t.size}명`;
+      if (track.children[i] !== lane) track.insertBefore(lane, track.children[i] || null);
+      lane.querySelector('.lane-rank').textContent = t.rank;
+      lane.classList.toggle('leader', t.rank === 1 && t.value > 0);
+      lane.classList.toggle('top3', t.rank <= 3 && t.value > 0);
+      lane.classList.toggle('mine', s.me.team === t.index);
+      lane.classList.toggle('fever', members.some((p) => p.combo >= C.COMBO_CAP));
+      lane.querySelector('.car').style.setProperty('--x', Math.min(1, t.value / top));
+      lane.querySelector('.car-score').textContent = t.value;
+      const before = prevTeams.get(id) ?? t.value;
+      if (t.value > before) {
+        const pop = document.createElement('i');
+        pop.className = 'car-pop';
+        pop.textContent = '+' + (t.value - before);
+        lane.querySelector('.car').append(pop);
+        setTimeout(() => pop.remove(), 900);
+        retrigger(crew, 'hop');
+      }
+      prevTeams.set(id, t.value);
+    });
+    track.querySelectorAll('.lane[data-team]').forEach((lane) => { if (!alive.has(lane.dataset.team)) lane.remove(); });
+  }
+  function renderTrack(s) {
+    if (s.teams) return renderTeamTrack(s);
+    const track = $('track');
+    track.classList.remove('team-track');
+    track.querySelectorAll('.lane[data-team]').forEach((lane) => lane.remove());
     track.style.setProperty('--lanes', Math.max(s.participants.length, 1));
     const top = Math.max(60, ...s.participants.map((p) => p.score)) * 1.08;
     const ordered = [...s.participants].sort((a, b) => (a.team ?? 99) - (b.team ?? 99) || a.name.localeCompare(b.name, 'ko'));
@@ -454,6 +523,22 @@
     track.querySelectorAll('.lane').forEach((lane) => { if (!alive.has(lane.dataset.id)) lane.remove(); });
   }
   function renderMini(s) {
+    // 팀전이면 작은 순위표도 팀 순위다.
+    if (s.teams) {
+      const teams = s.teams.filter((t) => t.size).sort((a, b) => a.rank - b.rank);
+      $('miniBoard').replaceChildren(...teams.map((t) => {
+        const li = document.createElement('li');
+        li.className = 'team-line' + (s.me.team === t.index ? ' mine' : '');
+        li.style.setProperty('--team-hue', t.hue);
+        li.innerHTML = '<em></em><span class="mini-team"></span><b></b><strong></strong>';
+        li.children[0].textContent = t.rank;
+        li.children[1].textContent = t.emoji;
+        li.children[2].textContent = `${t.name}팀 ${t.size}명`;
+        li.children[3].textContent = t.value;
+        return li;
+      }));
+      return;
+    }
     const top = s.participants.slice(0, 5);
     const mine = s.participants.find((p) => p.id === s.me.id);
     if (mine && !top.includes(mine)) top.push(mine);
@@ -552,7 +637,8 @@
       const r = el?.getBoundingClientRect();
       return r && r.width && r.top >= 0 && r.bottom <= innerHeight ? r : null;
     };
-    const car = $('track').querySelector('.lane.mine .car-emoji');
+    // 팀전이면 우리 팀 차에 탄 내 아바타로 날아간다.
+    const car = $('track').querySelector('.lane.mine .car-emoji.me') || $('track').querySelector('.lane.mine:not(.team-lane) .car-emoji');
     const to = visible(car) || visible($('miniBoard').querySelector('li.mine .mini-face')) || $('scoreNow').getBoundingClientRect();
     const el = document.createElement('span');
     el.className = 'fly-word' + ([...text].length > 8 ? ' long' : '');
@@ -571,8 +657,8 @@
     motion.onfinish = () => {
       el.remove();
       burst(x0 + dx, y0 + dy, 14, 4);
-      const rocket = car?.closest('.car');
-      if (rocket && visible(car)) retrigger(rocket, 'boost');
+      const rocket = car?.closest('.crew') || car?.closest('.car');
+      if (rocket && visible(car)) retrigger(rocket, rocket.classList.contains('crew') ? 'hop' : 'boost');
     };
   }
   function paintCombo() {
@@ -754,7 +840,6 @@
     if (first) setTimeout(() => confetti(), 200);
     const teams = (s.teams || []).filter((t) => t.size).sort((a, b) => a.rank - b.rank);
     $('teamResult').hidden = !teams.length;
-    $('soloTitle').hidden = !teams.length;
     if (teams.length) {
       $('teamResult').replaceChildren(...teams.map((t) => {
         const card = document.createElement('div');
@@ -774,8 +859,36 @@
         return card;
       }));
     }
+    // 팀전이면 시상대에 1·2·3위 팀이 올라간다(팀원 모두가 단 위에 서고, 단 색은 팀 색). 개인 순위는 아래 표에만.
+    const podium = $('podium');
+    $('soloTitle').hidden = true;
+    if (teams.length) {
+      $('teamResult').before(podium);
+      podium.classList.add('team-podium');
+      podium.replaceChildren(...[teams[1], teams[0], teams[2]].map((t, i) => {
+        const div = document.createElement('div');
+        div.className = 'step place-' + [2, 1, 3][i] + (t ? '' : ' empty');
+        div.style.setProperty('--delay', [0.5, 1.1, 0.2][i] + 's');
+        if (t) {
+          div.style.setProperty('--team-hue', t.hue);
+          div.innerHTML = '<span class="pod-racer pod-team"></span><div class="block"><b class="pod-place"></b><b class="pod-name"></b><span class="pod-score"></span></div>';
+          const members = s.participants.filter((p) => p.team === t.index);
+          const crew = div.querySelector('.pod-team');
+          crew.dataset.size = members.length > 6 ? 'many' : members.length > 4 ? 'some' : 'few';
+          crew.append(...members.map((p) => face(p, 'pod-face')));
+          if (t.rank === 1) crew.classList.add('crowned');
+          div.querySelector('.pod-name').textContent = `${t.emoji} ${t.name}팀`;
+          div.querySelector('.pod-score').textContent = t.value + '점';
+        } else div.innerHTML = '<div class="block"><b class="pod-place"></b></div>';
+        div.querySelector('.pod-place').textContent = t ? t.rank : [2, 1, 3][i];
+        return div;
+      }));
+    } else {
+      $('soloTitle').after(podium);
+      podium.classList.remove('team-podium');
+    }
     const order = [s.participants[1], s.participants[0], s.participants[2]];
-    $('podium').replaceChildren(...order.map((p, i) => {
+    if (!teams.length) podium.replaceChildren(...order.map((p, i) => {
       const div = document.createElement('div');
       const place = [2, 1, 3][i];
       div.className = 'step place-' + place + (p ? '' : ' empty');
