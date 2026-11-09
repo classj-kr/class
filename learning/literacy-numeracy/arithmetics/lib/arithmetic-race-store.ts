@@ -10,6 +10,8 @@ export type RaceRow = {
   duration_seconds?: number | null;
   // 팀전이면 팀 수(2~8), 개인전이면 null.
   team_count?: number | null;
+  // 한 팀 인원 상한(2~10). null 이면 제한 없음.
+  team_size?: number | null;
 };
 
 export type ParticipantRow = {
@@ -71,6 +73,8 @@ export type RaceStore = {
   closeRace(code: string, hostToken: string): Promise<void>;
   // 대기 중일 때만 바뀐다.
   setTeamCount(code: string, hostToken: string, teamCount: number | null): Promise<boolean>;
+  // 한 팀 인원. 줄이면 넘친 사람(늦게 들어온 사람부터)은 팀 없음으로 돌아간다.
+  setTeamSize(code: string, hostToken: string, teamSize: number | null): Promise<boolean>;
   // 카드 순위전의 제한 시간. 대기 중일 때 방장만 바꾼다.
   setDuration(code: string, hostToken: string, durationSeconds: number): Promise<boolean>;
   setTeams(code: string, changes: Array<{ id: string; team: number | null }>): Promise<void>;
@@ -179,6 +183,20 @@ export function d1RaceStore(db: D1Database): RaceStore {
         .run();
       return true;
     },
+    async setTeamSize(code, hostToken, teamSize) {
+      const result = await db.prepare("UPDATE arithmetic_races SET team_size = ? WHERE room_code = ? AND teacher_token = ? AND status = 'waiting'")
+        .bind(teamSize, code, hostToken)
+        .run();
+      if (!result.meta.changes || teamSize === null) return Boolean(result.meta.changes);
+      await db.prepare(`UPDATE arithmetic_race_participants SET team = NULL WHERE id IN (
+          SELECT id FROM (
+            SELECT id, ROW_NUMBER() OVER (PARTITION BY team ORDER BY joined_at, id) AS n
+            FROM arithmetic_race_participants WHERE room_code = ? AND team IS NOT NULL
+          ) WHERE n > ?)`)
+        .bind(code, teamSize)
+        .run();
+      return true;
+    },
     async setDuration(code, hostToken, durationSeconds) {
       const result = await db.prepare("UPDATE arithmetic_races SET duration_seconds = ? WHERE room_code = ? AND teacher_token = ? AND status = 'waiting' AND duration_seconds IS NOT NULL")
         .bind(durationSeconds, code, hostToken)
@@ -279,6 +297,20 @@ export function memoryRaceStore(clock: () => number = Date.now): RaceStore {
       race.team_count = teamCount;
       for (const row of roster.get(code) ?? []) {
         if (teamCount === null || (row.team ?? -1) >= teamCount) row.team = null;
+      }
+      return true;
+    },
+    async setTeamSize(code, hostToken, teamSize) {
+      const race = races.get(code);
+      if (!race || race.teacher_token !== hostToken || race.status !== "waiting") return false;
+      race.team_size = teamSize;
+      if (teamSize === null) return true;
+      const kept = new Map<number, number>();
+      for (const row of roster.get(code) ?? []) {
+        if (row.team === null || row.team === undefined) continue;
+        const count = (kept.get(row.team) ?? 0) + 1;
+        kept.set(row.team, count);
+        if (count > teamSize) row.team = null;
       }
       return true;
     },

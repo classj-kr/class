@@ -15,7 +15,7 @@
   let sendChain = Promise.resolve(), skip = 0, skipKeys = 0, composing = false, muted = false;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', lastRank = null;
   const prevScores = new Map();
-  const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2 };
+  const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2, teamSize: C.TEAM_SIZE_DEFAULT };
   const serverNow = () => Date.now() + offset;
   // 순위판에 띄울 학생 프로필 아바타(연산 순위전과 같은 곳). 없으면 동물 이모지가 대신 달린다.
   // 내 아바타: 학생은 학생 프로필, 선생님은 선생님 설정에 고른 아바타. 둘 다 없으면 동물 그림을 쓴다.
@@ -215,6 +215,7 @@
       if (choice.teamMode)
         box.append(
           optionRow('팀 수', C.TEAM_COUNTS.map((n) => [n, `${n}팀`]), choice.teamCount, (teamCount) => change({ teamCount }), true),
+          optionRow('한 팀 인원', C.TEAM_SIZES.map((n) => [n, `${n}명`]), choice.teamSize, (teamSize) => change({ teamSize }), true),
         );
     });
   }
@@ -276,22 +277,23 @@
       // 6팀까지는 한 줄, 7·8팀은 네 칸씩 두 줄.
       $('teamColumns').style.setProperty('--cols', s.teams.length <= 6 ? s.teams.length : Math.ceil(s.teams.length / 2));
       $('teamColumns').classList.toggle('many', s.teams.length > 6);
+      const cap = s.config.teamSize || C.TEAM_SIZE_DEFAULT;
       $('teamColumns').replaceChildren(...s.teams.map((t) => {
         const col = document.createElement('div');
-        col.className = 'team-col' + (s.me.team === t.index ? ' mine' : '') + (t.size >= C.TEAM_MAX ? ' full' : '');
+        col.className = 'team-col' + (s.me.team === t.index ? ' mine' : '') + (t.size >= cap ? ' full' : '');
         col.style.setProperty('--team-hue', t.hue);
         const head = document.createElement('button');
         head.type = 'button';
         head.className = 'team-head';
         head.innerHTML = '<b></b><span></span>';
         head.firstChild.textContent = `${t.emoji} ${t.name}팀`;
-        head.lastChild.textContent = `${t.size}/${C.TEAM_MAX}`;
-        head.disabled = !s.me.plays || s.me.team === t.index || t.size >= C.TEAM_MAX;
+        head.lastChild.textContent = `${t.size}/${cap}`;
+        head.disabled = !s.me.plays || s.me.team === t.index || t.size >= cap;
         head.onclick = () => action(async () => { render(await api('/rooms/' + code + '/team', { team: t.index })); sfx.join(); });
         const list = document.createElement('ul');
         list.className = 'lobby-racers';
         list.append(...s.participants.filter((p) => p.team === t.index).map(memberItem));
-        for (let i = t.size; i < C.TEAM_MAX; i++) {
+        for (let i = t.size; i < cap; i++) {
           const slot = document.createElement('li');
           slot.className = 'slot';
           slot.textContent = '빈 자리';
@@ -313,7 +315,7 @@
           // 다음 팀 → … → 팀 없음 순서로 돌되, 꽉 찬 팀은 건너뛴다.
           const stops = s.teams.length + 1;
           let next = p.team === null ? 0 : p.team + 1;
-          while (next < s.teams.length && s.teams[next].size >= C.TEAM_MAX) next++;
+          while (next < s.teams.length && s.teams[next].size >= (s.config.teamSize || C.TEAM_SIZE_DEFAULT)) next++;
           next %= stops;
           render(await api('/rooms/' + code + '/assign', { playerId: p.id, team: next === s.teams.length ? null : next }));
         });

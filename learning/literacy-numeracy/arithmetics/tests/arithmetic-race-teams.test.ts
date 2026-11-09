@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { memoryRaceStore, type ParticipantRow } from "../lib/arithmetic-race-store.ts";
-import { fillRaceTeams, RACE_TEAMS, raceDuration, raceTeamBoard, raceTeamCount, shuffleRaceTeams } from "../lib/arithmetic-race-teams.ts";
+import { fillRaceTeams, RACE_TEAMS, raceDuration, raceTeamBoard, raceTeamCount, raceTeamSize, shuffleRaceTeams } from "../lib/arithmetic-race-teams.ts";
 
 function person(id: string, team: number | null = null, score = 0): ParticipantRow {
   return { id, room_code: "1234", name: id, participant_token: `t-${id}`, joined_at: 1, submitted_at: null, correct_count: score, total_count: null, mistake_count: 0, score, team };
@@ -67,4 +67,23 @@ test("team count changes only while waiting and frees players from removed teams
   assert.deepEqual((await store.participants("1234")).map((row) => row.team), [null, 0]);
   await store.startRace("1234", "host", Date.now());
   assert.equal(await store.setTeamCount("1234", "host", 4), false);
+});
+
+test("team size caps a team, skips full teams when filling, and frees late joiners when lowered", async () => {
+  assert.equal(raceTeamSize(4), 4);
+  assert.equal(raceTeamSize(7), null);
+  const rows = [person("a", 0), person("b", 0), person("c"), person("d"), person("e")];
+  // 한 팀 2명: 더하기팀은 꽉 찼으니 빼기팀에 둘, 남은 하나는 팀 없음(출발 전에 막는다).
+  assert.deepEqual(fillRaceTeams(rows, 2, 2), [{ id: "c", team: 1 }, { id: "d", team: 1 }]);
+  const store = memoryRaceStore();
+  const race = { room_code: "1234", teacher_token: "host", worksheet_name: "w", worksheet_route: "/arithmetic/add-subtract-1", seed: 1, status: "waiting", created_at: Date.now(), started_at: null, duration_seconds: 60, team_count: 2 };
+  await store.openRace(race, person("a"));
+  for (const id of ["b", "c", "d"]) await store.joinRace(person(id));
+  await store.setTeams("1234", [{ id: "a", team: 0 }, { id: "b", team: 0 }, { id: "c", team: 0 }, { id: "d", team: 1 }]);
+  assert.equal(await store.setTeamSize("1234", "wrong", 2), false);
+  assert.equal(await store.setTeamSize("1234", "host", 2), true);
+  assert.deepEqual((await store.participants("1234")).map((row) => row.team), [0, 0, null, 1]);
+  assert.equal((await store.race("1234"))?.team_size, 2);
+  await store.startRace("1234", "host", Date.now());
+  assert.equal(await store.setTeamSize("1234", "host", 4), false);
 });

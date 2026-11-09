@@ -11,6 +11,7 @@ export const arithmeticRaces = sqliteTable("arithmetic_races", {
   startedAt: integer("started_at"),
   durationSeconds: integer("duration_seconds"),
   teamCount: integer("team_count"),
+  teamSize: integer("team_size"),
 });
 
 export const arithmeticRaceParticipants = sqliteTable("arithmetic_race_participants", {
