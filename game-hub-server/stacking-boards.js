@@ -16,7 +16,21 @@ function drawing(heights, view) {
 }
 const blankDrawings = rules => ({ front: blank(rules), right: blank(rules), top: blank(rules) });
 const draft = () => ({ id: uuid(), title: '', phase: 'building', heights: blank(), drawings: blankDrawings(BASIC), checked: {}, version: 0, history: [] });
-const team = i => ({ id: uuid(), name: `${i + 1}모둠`, members: [], draft: draft() });
+// 모둠 이름은 화면의 모둠 색 그대로 부른다(문해력 순위전 korean-race-core.js TEAMS 와 같은 차례·색).
+const TEAM_COLORS = [
+  { name: '빨강', emoji: '🔴', hue: 0 },
+  { name: '파랑', emoji: '🔵', hue: 220 },
+  { name: '노랑', emoji: '🟡', hue: 48 },
+  { name: '초록', emoji: '🟢', hue: 130 },
+  { name: '보라', emoji: '🟣', hue: 275 },
+  { name: '주황', emoji: '🟠', hue: 26 },
+  { name: '분홍', emoji: '🩷', hue: 330 },
+  { name: '하늘', emoji: '🩵', hue: 195 },
+];
+const teamName = i => (TEAM_COLORS[i] ? `${TEAM_COLORS[i].name} 모둠` : `${i + 1}모둠`);
+const team = i => ({ id: uuid(), name: teamName(i), members: [], draft: draft() });
+// 예전 게시판의 「1모둠」 같은 이름(모둠 이름·지은이·자동 문제 이름)을 색 이름으로 바꿔 읽는다.
+const recolor = (text, pattern) => String(text).replace(pattern, (_, n) => teamName(n - 1));
 const initial = () => ({ revision: 0, teams: Array.from({ length: 6 }, (_, i) => team(i)), questions: [], race: null, operations: [] });
 
 // 남에게 보내는 아바타 주소는 이 꼴만 통과시킨다.
@@ -54,6 +68,8 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, avatarUr
       row = { state: initial() };
       await db.query('INSERT INTO learning_board_stacking(board_id,state) VALUES($1,$2::jsonb)', [b.id, JSON.stringify(row.state)]);
     }
+    row.state.teams.forEach((t, i) => { t.name = teamName(i); });
+    for (const q of row.state.questions) { q.author = recolor(q.author, /^([1-8])모둠$/); q.title = recolor(q.title, /^([1-8])모둠(?= 문제 \d+$)/); }
     for (const { draft: d } of row.state.teams) {
       if (rulesForBoard(d.heights) === STANDARD && d.phase === 'building' && d.version === 0 && !d.heights.some(Boolean)) {
         d.heights = blank(); d.drawings = blankDrawings(BASIC);
@@ -71,7 +87,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, avatarUr
     const active = s.race && s.race.phase === 'playing';
     const progress = s.race?.teams[mine?.id];
     const q = s.race?.questions[progress?.index];
-    const safeTeams = s.teams.map(t => ({ id: t.id, name: t.name,
+    const safeTeams = s.teams.map((t, i) => ({ id: t.id, name: t.name, ...(TEAM_COLORS[i] ? { emoji: TEAM_COLORS[i].emoji, hue: TEAM_COLORS[i].hue } : {}),
       members: t.members.map(id => {
         const m = roster.find(m => m.id === id), hidden = b.hide_names && !who.teacher;
         // 이름을 가린 게시판에서는 학생에게 아바타도 보내지 않는다(아바타로 누구인지 드러나므로).
@@ -127,7 +143,7 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, avatarUr
       if (body.action === 'team-count') {
         teacher();
         if (active || s.teams.some(t => t.members.length)) fail(409, 'TEAMS_IN_USE', '모둠에 입장하기 전에 정해 주세요.');
-        if (!Number.isInteger(body.count) || body.count < 1 || body.count > 15) fail(400, 'INVALID_COUNT', '모둠 수는 1~15개예요.');
+        if (!Number.isInteger(body.count) || body.count < 1 || body.count > TEAM_COLORS.length) fail(400, 'INVALID_COUNT', `모둠 수는 1~${TEAM_COLORS.length}개예요.`);
         s.teams = Array.from({ length: body.count }, (_, i) => team(i));
       } else if (body.action === 'team-capacity') {
         teacher();
@@ -279,4 +295,4 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, avatarUr
     notify(req.params.id, ['edit', 'undo', 'clear', 'draw', 'check-drawing', 'freeze', 'revise', 'title'].includes(body.action) ? result.state.me.teamId : null);
   }));
 }
-module.exports = { installStackingBoards, drawing };
+module.exports = { installStackingBoards, drawing, TEAM_COLORS };

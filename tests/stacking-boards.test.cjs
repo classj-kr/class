@@ -24,8 +24,11 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     };
     await request(base, undefined, '', 401);
     await request(base, undefined, 'test_teacher=2', 401);
+    await act(teacher, 'team-count', { count: 9 }, 400);
     await act(teacher, 'team-count', { count: 2 });
     const teams = (await get(teacher)).teams;
+    // 모둠 이름은 모둠 색 그대로(문해력 순위전과 같은 차례·색).
+    assert.deepEqual(teams.map(t => [t.name, t.emoji, t.hue]), [['빨강 모둠', '🔴', 0], ['파랑 모둠', '🔵', 220]]);
     const emptyStart = await act(teacher, 'start-race', { questionIds: [] });
     assert.equal(emptyStart.state.race.total, 6);
     assert.equal(emptyStart.state.questions.length, 0, 'automatic rounds leave the teacher bank intact');
@@ -150,7 +153,15 @@ test('four authors verify a persistent bank, then teams edit atomically and judg
     const saved = (await h.pool.query('SELECT state FROM learning_board_stacking WHERE board_id=$1', [board.id])).rows[0].state;
     saved.questions.push({ id: 'old', title: '이전 문제', author: '모둠', heights: legacy,
       pictures: Object.fromEntries(['top', 'front', 'right'].map(v => [v, drawing(legacy, v)])) });
+    // 예전 게시판의 숫자 이름(1모둠·「2모둠 문제 3」)은 색 이름으로 읽힌다.
+    saved.teams[0].name = '1모둠';
+    saved.questions.push({ id: 'older', title: '2모둠 문제 3', author: '2모둠', heights: legacy, pictures: saved.questions.at(-1).pictures });
+    saved.questions.push({ id: 'named', title: '1모둠 탑', author: '1모둠', heights: legacy, pictures: saved.questions.at(-1).pictures });
     await h.pool.query('UPDATE learning_board_stacking SET state=$2::jsonb WHERE board_id=$1', [board.id, JSON.stringify(saved)]);
+    const renamed = await get(teacher);
+    assert.equal(renamed.teams[0].name, '빨강 모둠');
+    assert.deepEqual(renamed.questions.filter(q => ['old', 'older', 'named'].includes(q.id)).map(q => [q.title, q.author]),
+      [['이전 문제', '모둠'], ['파랑 모둠 문제 3', '파랑 모둠'], ['1모둠 탑', '빨강 모둠']]);
     await act(teacher, 'start-race', { questionIds: ['old', q.id] });
     for (let i = 0; i < 6; i++) await act(players[0], 'edit', { cell: 24, delta: 1 });
     const switched = await act(players[0], 'check-answer');
