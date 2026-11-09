@@ -2246,6 +2246,15 @@
             start();
         })();
     </script>
+    <div id="schoolChatPresence" class="chat-presence" aria-label="채팅 접속 중인 학생" hidden data-nosnippet></div>
+    <style>
+        .chat-presence{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;width:min(560px,calc(100% - 24px));max-height:68px;overflow-y:auto;margin:24px auto 0;padding:3px}
+        .chat-presence[hidden]{display:none}
+        .chat-presence-avatar{flex:none;width:28px;height:28px;padding:0;border-radius:50%;border:1px solid rgba(215,180,122,.75);background:rgba(var(--panel-dark-rgb),.95);overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .12s,border-color .12s}
+        .chat-presence-avatar:hover,.chat-presence-avatar:focus-visible{transform:scale(1.12);border-color:#fff0c7;outline:none}
+        .chat-presence-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+        .chat-presence-avatar span{color:#fff0c7;font:700 12px/1 Pretendard,"Noto Sans KR",sans-serif}
+    </style>
     <footer class="policy-footer" aria-label="서비스 안내" data-nosnippet>
         <a href="/school-setup">학생 로그인 허용 안내</a>
         <a href="/privacy">개인정보 처리방침</a>

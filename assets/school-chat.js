@@ -195,6 +195,42 @@
             const mine = me && user.userId === me.userId;
             return el("span", `${user.role === "teacher" ? "t" : ""}${mine ? " me" : ""}`.trim(), `${labelFor(user)}${mine ? " (나)" : ""}`);
         }));
+        renderStrip();
+    }
+
+    // 메인 화면의 접속자 줄(#schoolChatPresence 자리가 있는 쪽에서만): 채팅을 켜고 접속 중인 같은 학교 학생 아바타.
+    // 같은 계정이 탭을 여러 개 열어도 서버가 한 사람으로 보내 준다. 누르면 채팅 창이 열린다.
+    function renderStrip() {
+        const slot = document.getElementById("schoolChatPresence");
+        if (!slot) return;
+        const users = enabled && presenceBy[SCHOOL]
+            ? [...presenceBy[SCHOOL].values()].filter(user => user.role === "student" && !(me && user.userId === me.userId))
+            : [];
+        users.sort((a, b) => (a.grade || 99) - (b.grade || 99) || (a.classNumber || 99) - (b.classNumber || 99)
+            || String(a.name).localeCompare(String(b.name), "ko"));
+        slot.hidden = users.length === 0;
+        slot.replaceChildren(...users.map(user => {
+            const button = el("button", "chat-presence-avatar");
+            button.type = "button";
+            const label = labelFor(user);
+            button.title = label;
+            button.setAttribute("aria-label", `${label} 채팅 열기`);
+            if (user.avatar) {
+                const img = el("img");
+                img.src = user.avatar;
+                img.alt = "";
+                img.loading = "lazy";
+                img.addEventListener("error", () => img.replaceWith(el("span", "", String(user.name || "?").slice(0, 1))));
+                button.appendChild(img);
+            } else button.appendChild(el("span", "", String(user.name || "?").slice(0, 1)));
+            button.addEventListener("click", () => {
+                if (!ui.setOpen) return;
+                if (logMode) toggleLog();
+                if (active !== SCHOOL) switchTo(SCHOOL);
+                ui.setOpen(true);
+            });
+            return button;
+        }));
     }
 
     function render() {
@@ -372,7 +408,12 @@
                     else if (packet.type === "SCHOOLCHAT_REJECTED") setStatus(REJECT_TEXT[packet.reason] ?? "보내지 못했어요.");
                     else if (packet.type === "SCHOOLCHAT_AUTH_REQUIRED") socket.close();
                 });
-                socket.addEventListener("close", () => { if (enabled) retryTimer = setTimeout(connect, 4000); });
+                socket.addEventListener("close", () => {
+                    // 내 연결이 끊긴 동안 옛 접속자 목록이 남아 유령처럼 보이지 않게 비운다.
+                    presenceBy = {};
+                    renderPeople();
+                    if (enabled) retryTimer = setTimeout(connect, 4000);
+                });
             })
             .catch(() => { if (enabled) retryTimer = setTimeout(connect, 15000); });
     }
@@ -558,6 +599,7 @@
             panel.classList.toggle("open", open);
             if (open) { unreadBy[active] = 0; render(); ui.list.scrollTop = ui.list.scrollHeight; ui.input.focus(); }
         };
+        ui.setOpen = setOpen;
         toggle.addEventListener("click", () => setOpen(!open));
         close.addEventListener("click", () => setOpen(false));
         document.body.append(toggle, panel);
@@ -593,6 +635,8 @@
             ui.panel.classList.remove("open");
             ui.toggle.style.display = "none";
         }
+        presenceBy = {};
+        renderStrip();
     }
 
     // 스위치 모양은 채팅을 켜기 전에도 설정 창에 보여야 해서 채팅 창 스타일과 따로 넣는다.
