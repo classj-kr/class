@@ -148,9 +148,11 @@ function RecordPage({ children, path }: { children: ReactNode; path: string }) {
     return () => { disposed = true; store.active = false; store.client?.host?.remove(); };
   }, [store, path]);
   return <RecordContext.Provider value={store}>
-    <div ref={mount} />
-    {phase === "error" && <p role="alert">{error} <button onClick={() => location.reload()}>다시 연결</button></p>}
-    <div key={store.ready ? "restored" : "initial"} inert={phase === "loading" || phase === "finishing"}>{children}</div>
+    {/* Keep the restored worksheet ahead of the floating controls and their bottom spacer. */}
+    <div ref={mount}>
+      {phase === "error" && <p role="alert">{error} <button onClick={() => location.reload()}>다시 연결</button></p>}
+      <div key={store.ready ? "restored" : "initial"} inert={phase === "loading" || phase === "finishing"}>{children}</div>
+    </div>
   </RecordContext.Provider>;
 }
 export default function LearningRecordBoundary({ children }: { children: ReactNode }) {
