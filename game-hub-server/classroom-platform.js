@@ -9116,7 +9116,7 @@ function createClassroomPlatform(options = {}) {
     getStudentCharacterStyle,
     verifyMuseumPresenceTicket,
     schoolChat,
-    // 152개 정식 키만 통과시키므로 클라이언트가 보낸 값을 그대로 검증하는 데 쓴다.
+    // 원본 폴더에 등록된 정식 키만 통과시키므로 클라이언트가 보낸 값을 검증하는 데 쓴다.
     listFinisherRecords,
     saveFinisherRecord,
     saveMultiplayerRoomSnapshot,

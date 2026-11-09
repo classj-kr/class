@@ -44,9 +44,23 @@ vm.createContext(sandbox);
 vm.runInContext(serverSource, sandbox, { filename: path.join(here, "classroom-platform.js") });
 const platform = sandbox.module.exports;
 
-test("the final avatar catalog contains 152 unique WebP files", () => {
-  assert.equal(avatarFiles.length, 152);
-  assert.equal(new Set(avatarFiles).size, 152);
+test("the avatar catalog includes the original collection and new recognizable costumes", () => {
+  assert.ok(avatarFiles.length >= 169);
+  assert.equal(new Set(avatarFiles).size, avatarFiles.length);
+  for (const key of [
+    "animal-rhinoceros-beetle.webp", "animal-triceratops.webp",
+    "drink-banana-milk.webp", "vehicle-ufo.webp",
+    "theme-saturn.webp", "food-french-fries.webp",
+    "theme-robot.webp", "animal-caterpillar.webp",
+    "object-treasure-chest.webp", "sport-shuttlecock.webp",
+    "animal-stag-beetle.webp", "animal-cow.webp",
+    "food-cotton-candy.webp", "animal-stingray.webp",
+    "theme-heart.webp", "theme-gem.webp", "animal-jellyfish.webp"
+  ]) {
+    assert.ok(avatarFiles.includes(key), `Missing avatar: ${key}`);
+    assert.equal(vm.runInContext("avatarUrl", sandbox)(key), `/assets/avatars/${key}`);
+  }
+  assert.ok(!avatarFiles.includes("animal-brachiosaurus.webp"));
   assert.deepEqual([...platform.AVATAR_KEYS].sort(), avatarFiles);
   assert.match(hubServerSource, /app\.use\("\/assets\/avatars"/);
 });
@@ -58,12 +72,13 @@ test("legacy PNG avatar keys normalize to WebP", () => {
   assert.equal(platform.normalizeAvatarKey("animal-crocodile-02.webp"), "animal-crocodile.webp");
   assert.equal(platform.normalizeAvatarKey("food-sushi-roll.webp"), "food-gimbap.webp");
 });
-test("avatar capacity increases at 153 and 305 students", () => {
+test("avatar capacity increases when each complete catalog is exhausted", () => {
+  const count = avatarFiles.length;
   assert.equal(platform.avatarCapacity(1), 1);
-  assert.equal(platform.avatarCapacity(152), 1);
-  assert.equal(platform.avatarCapacity(153), 2);
-  assert.equal(platform.avatarCapacity(304), 2);
-  assert.equal(platform.avatarCapacity(305), 3);
+  assert.equal(platform.avatarCapacity(count), 1);
+  assert.equal(platform.avatarCapacity(count + 1), 2);
+  assert.equal(platform.avatarCapacity(count * 2), 2);
+  assert.equal(platform.avatarCapacity(count * 2 + 1), 3);
 });
 
 test("avatar change windows follow Korea time", () => {
