@@ -914,6 +914,8 @@ body:not(.room-only) .app {
   background: #fff;
   box-shadow: 0 3px 0 #0002;
 }
+/* 아바타 그림은 바탕이 투명하다. 그림일 때는 동그라미 바탕·테두리를 깔지 않는다. */
+img.face { border-radius: 0; overflow: visible; object-fit: contain; background: transparent; box-shadow: none; filter: drop-shadow(0 3px 0 #0002); }
 .face.seal-face {
   color: #fff7e6;
   font-family: PracticeReference, serif;
@@ -2254,3 +2256,5 @@ body:not(.room-only) .app {
     font-size: 12px;
   }
 }
+/* 내 아바타 그림은 금빛 둥근 테 대신 그림 둘레에 금빛을 두른다(바탕이 투명하므로). */
+.chip.mine img.face, .token.mine img.face { box-shadow: none; filter: drop-shadow(0 0 3px var(--gold)) drop-shadow(0 3px 0 #0002); }

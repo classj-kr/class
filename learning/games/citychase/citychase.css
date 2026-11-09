@@ -166,6 +166,8 @@ button:disabled { cursor: not-allowed; opacity: .36; box-shadow: none; }
   background: #fff;
 }
 .teamSeatAvatar { object-fit: cover; }
+/* 아바타 그림은 바탕이 투명하다. 그림일 때는 동그라미 바탕·테두리를 깔지 않는다. */
+img.teamSeatAvatar { border: 0; border-radius: 0; background: transparent; object-fit: contain; }
 .teamSeatInitial { display: grid; place-items: center; font-size: 18px; font-weight: 950; }
 .teamSeatName { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; font-weight: 950; }
 .teamSeatDuty { color: #53645b; font-size: 10px; font-weight: 800; line-height: 1.15; }
