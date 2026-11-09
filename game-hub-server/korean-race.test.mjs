@@ -263,7 +263,7 @@ test('sentence choice races use only the choice tasks and show what the app show
 
 test('a class can race in up to eight teams', async (t) => {
   const { req } = await serve(t);
-  assert.deepEqual(Core.TEAMS.map((x) => x.name), ['해', '달', '별', '구름', '꽃', '숲', '산', '바다']);
+  assert.deepEqual(Core.TEAMS.map((x) => x.name), ['빨강', '파랑', '노랑', '초록', '보라', '주황', '분홍', '하늘']);
   assert.equal(new Set(Core.TEAMS.map((x) => x.hue)).size, 8, 'every team has its own colour');
   const made = (await req('/rooms', { set: 'spelling', teamMode: true, teamCount: 8 }, '', 'teacher')).data;
   assert.equal(made.state.config.teamCount, 8);
@@ -276,7 +276,7 @@ test('a class can race in up to eight teams', async (t) => {
   const started = (await req(path + '/start', {}, host, 'teacher')).data;
   assert.equal(started.teams.length, 8);
   assert.ok(started.teams.every((team) => team.size >= 2), 'students spread over all eight teams');
-  assert.equal(started.teams[7].name, '바다');
+  assert.equal(started.teams[7].name, '하늘');
 });
 
 test('a set whose learning page is globally closed cannot be raced', async (t) => {

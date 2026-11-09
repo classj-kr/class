@@ -44,15 +44,16 @@
   const TEAM_SIZE_DEFAULT = 6;
   const TEAM_MAX = 10;
   const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];
+  // 팀 이름은 화면의 팀 색 그대로 부른다(색과 이름을 따로 외우지 않게). 두 팀이면 빨강·파랑.
   const TEAMS = [
-    { name: '해', emoji: '☀️', hue: 30 },
-    { name: '달', emoji: '🌙', hue: 225 },
-    { name: '별', emoji: '⭐', hue: 48 },
-    { name: '구름', emoji: '☁️', hue: 195 },
-    { name: '꽃', emoji: '🌸', hue: 330 },
-    { name: '숲', emoji: '🌲', hue: 140 },
-    { name: '산', emoji: '⛰️', hue: 0 },
-    { name: '바다', emoji: '🌊', hue: 265 },
+    { name: '빨강', emoji: '🔴', hue: 0 },
+    { name: '파랑', emoji: '🔵', hue: 220 },
+    { name: '노랑', emoji: '🟡', hue: 48 },
+    { name: '초록', emoji: '🟢', hue: 130 },
+    { name: '보라', emoji: '🟣', hue: 275 },
+    { name: '주황', emoji: '🟠', hue: 26 },
+    { name: '분홍', emoji: '🩷', hue: 330 },
+    { name: '하늘', emoji: '🩵', hue: 195 },
   ];
   // 블록 열 개가 한 층이 된다(연산의 십 모형처럼).
   const FLOOR = 10;
