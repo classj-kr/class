@@ -74,7 +74,7 @@
 .axis { stroke: #334155; stroke-width: 1.8; stroke-width: 1.6; }
 .grid-line { stroke: #e2e8f0; stroke-width: 1; stroke-width: 1; }
 .axis-text { fill: #334155; font-size: 14px; font-weight: 800; }
-.axis-title { fill: #0f172a; font-size: 14px; font-weight: 900; }
+.axis-title, .axis-name { fill: #0f172a; font-size: 14px; font-weight: 900; }
 .trace { fill: none; stroke-width: 2.6; stroke: #0284c7; }
 .trace-done { fill: none; stroke-width: 2.6; stroke: rgba(82, 199, 255, .28); }
 .trace-dot { stroke: #fff; stroke-width: 1.3; }

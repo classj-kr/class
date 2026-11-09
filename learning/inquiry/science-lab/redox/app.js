@@ -122,91 +122,115 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
+    // Ion colours of the solutions: Cu²⁺ is blue, Fe²⁺ pale green, the others colourless.
+    const ION_COLOUR = { mg: '#e3eef3', zn: '#e3eef3', fe: '#cde6c4', cu: '#3d97d8', ag: '#e3eef3' };
+    const BATH_COLOUR = { cu: '#2f8fd8', ag: '#e3eef3', water: '#dcecf5' };
+    let checked = false, prog = 0, raf = 0, clock = 0;
+    const reducedMotion = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    function beaker(x0, x1, top, bot, liq, fill, opacity) {
+        return `<path d="M${x0 + 3},${liq} H${x1 - 3} V${bot - 6} Q${x1 - 3},${bot - 3} ${x1 - 6},${bot - 3} H${x0 + 6} Q${x0 + 3},${bot - 3} ${x0 + 3},${bot - 6} Z" fill="${fill}" opacity="${opacity}"/>` +
+               `<line x1="${x0 + 3}" y1="${liq}" x2="${x1 - 3}" y2="${liq}" stroke="#5b9fc4" stroke-width="1.2" opacity=".7"/>` +
+               `<path d="M${x0 - 4},${top} L${x0},${top + 4} V${bot - 6} Q${x0},${bot} ${x0 + 6},${bot} H${x1 - 6} Q${x1},${bot} ${x1},${bot - 6} V${top + 4} L${x1 + 4},${top}" fill="none" stroke="#6fa7bb" stroke-width="2.2"/>`;
+    }
+
     function renderCell(a) {
         const LB = { x0: 52, x1: 158 }, RB = { x0: 262, x1: 368 };
-        const TOP = 84, BOT = 178, LIQ = 100;
+        const TOP = 84, BOT = 186, LIQ = 102;
         let body = '';
-        [[LB, a.A], [RB, a.B]].forEach(([bk, m]) => {
-            body += `<rect class="solution" fill="${m.colour}" opacity=".22" x="${bk.x0 + 3}" y="${LIQ}" width="${bk.x1 - bk.x0 - 6}" height="${BOT - LIQ - 3}"/>`;
-            body += `<path class="glass" d="M${bk.x0},${TOP} L${bk.x0},${BOT} L${bk.x1},${BOT} L${bk.x1},${TOP}"/>`;
-            const ex = (bk.x0 + bk.x1) / 2;
-            body += `<rect class="electrode" fill="${m.colour}" x="${ex - 6}" y="56" width="12" height="${BOT - 68}" rx="2"/>`;
-            body += `<text class="small-label" x="${ex}" y="${BOT + 12}" text-anchor="middle">${m.name} ${m.sym}</text>`;
-        });
-        // salt bridge over the top
-        body += `<path class="bridge" d="M${(LB.x0 + LB.x1) / 2 + 26},${LIQ + 6} L${(LB.x0 + LB.x1) / 2 + 26},${TOP - 8} L${(RB.x0 + RB.x1) / 2 - 26},${TOP - 8} L${(RB.x0 + RB.x1) / 2 - 26},${LIQ + 6}"/>`;
-        body += `<text class="small-label" x="210" y="${TOP - 14}" text-anchor="middle">염다리</text>`;
-        // wire and meter
         const lx = (LB.x0 + LB.x1) / 2, rx = (RB.x0 + RB.x1) / 2;
-        body += `<path class="wire" d="M${lx},56 L${lx},36 L${rx},36 L${rx},56"/>`;
-        body += `<rect class="meter" x="176" y="22" width="68" height="26" rx="5"/>`;
-        body += `<text class="meter-text" x="210" y="40" text-anchor="middle">${a.emf.toFixed(2)} V</text>`;
-        // electrons run out of the metal that is oxidised
-        if (!a.same) {
+        [[LB, a.A, a.ak], [RB, a.B, a.bk]].forEach(([bk, m, key]) => {
+            body += beaker(bk.x0, bk.x1, TOP, BOT, LIQ, ION_COLOUR[key], key === 'cu' ? 0.6 : 0.9);
+            const ex = (bk.x0 + bk.x1) / 2;
+            body += `<rect class="electrode" fill="${m.colour}" x="${ex - 7}" y="56" width="14" height="${BOT - 70}" rx="2"/>`;
+            body += `<text class="small-label" x="${ex}" y="${BOT + 15}" text-anchor="middle">${m.name} ${m.sym}</text>`;
+        });
+        // salt bridge: a U-tube dipping into both solutions
+        body += `<path class="bridge" d="M${lx + 28},${LIQ + 22} L${lx + 28},${TOP - 8} Q${lx + 28},${TOP - 18} ${lx + 38},${TOP - 18} L${rx - 38},${TOP - 18} Q${rx - 28},${TOP - 18} ${rx - 28},${TOP - 8} L${rx - 28},${LIQ + 22}"/>`;
+        body += `<text class="small-label" x="210" y="${TOP + 22}" text-anchor="middle">염다리</text>`;
+        body += `<path class="wire" d="M${lx},56 L${lx},34 L176,34 M244,34 L${rx},34 L${rx},56"/>`;
+        if (checked && !a.same) {
             const toRight = a.anode === a.A;
-            const path = toRight ? `M${lx},50 L${lx},36 L${rx},36 L${rx},50` : `M${rx},50 L${rx},36 L${lx},36 L${lx},50`;
+            const path = toRight ? `M${lx},50 L${lx},34 L${rx},34 L${rx},50` : `M${rx},50 L${rx},34 L${lx},34 L${lx},50`;
             for (let i = 0; i < 5; i += 1) {
-                body += `<circle class="electron" r="3"><animateMotion dur="2.4s" repeatCount="indefinite" ` +
+                body += `<circle class="electron" r="3.2"><animateMotion dur="2.4s" repeatCount="indefinite" ` +
                         `begin="${(-i * 0.48).toFixed(2)}s" path="${path}"/></circle>`;
             }
         }
+        // voltmeter with a digital display
+        body += `<rect x="176" y="16" width="68" height="36" rx="6" fill="#ffffff" stroke="#047857" stroke-width="2"/>`;
+        body += `<rect x="183" y="22" width="54" height="24" rx="3" fill="#ecfdf5" stroke="#a7d7c5"/>`;
+        body += `<text class="meter-text" x="210" y="39" text-anchor="middle">${checked ? a.emf.toFixed(2) + ' V' : '— V'}</text>`;
         let out = `<g clip-path="url(#cellClip)">${body}</g>`;
-        if (!a.same) {
+        if (checked && !a.same) {
             const anodeX = a.anode === a.A ? lx : rx, cathodeX = a.anode === a.A ? rx : lx;
-            out += `<text class="pole-text minus" x="${anodeX}" y="72" text-anchor="middle">(−) 산화</text>`;
-            out += `<text class="pole-text plus" x="${cathodeX}" y="72" text-anchor="middle">(+) 환원</text>`;
+            const side = x => x === lx ? `x="${lx - 14}" text-anchor="end"` : `x="${rx + 14}"`;
+            out += `<text class="pole-text minus" ${side(anodeX)} y="74">(−) 산화</text>`;
+            out += `<text class="pole-text plus" ${side(cathodeX)} y="74">(+) 환원</text>`;
         }
-        // nothing extra when the metals match: the reading below already says so,
-        // and a second message here lands on the salt bridge label
-        out += `<text class="part-label" x="20" y="18">${a.A.sym} (${a.A.E.toFixed(2)} V)와 ${a.B.sym} (${a.B.E.toFixed(2)} V)</text>`;
-        out += `<text class="read-text" x="20" y="209">${a.same ? '전위 차이가 0 이라 전류가 흐르지 않습니다'
-            : `${a.anode.sym}이 산화되어 (−)극 · 기전력 ${a.emf.toFixed(2)} V`}</text>`;
+        out += `<text class="part-label" x="20" y="18">${a.A.sym} (${a.A.E.toFixed(2)} V) · ${a.B.sym} (${a.B.E.toFixed(2)} V)</text>`;
+        if (checked) out += `<text class="read-text" x="20" y="222">${a.same ? '전위 차이 0 V' : `${a.anode.sym} 산화 (−)극 · 기전력 ${a.emf.toFixed(2)} V`}</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
-    function renderElec(a) {
-        const BK = { x0: 130, x1: 300 }, TOP = 62, BOT = 178, LIQ = 78;
+    function renderElec(a, f) {
+        const BK = { x0: 120, x1: 310 }, TOP = 70, BOT = 200, LIQ = 88;
         let body = '';
-        body += `<rect class="solution" fill="${a.b.colour}" opacity=".2" x="${BK.x0 + 3}" y="${LIQ}" width="${BK.x1 - BK.x0 - 6}" height="${BOT - LIQ - 3}"/>`;
-        body += `<path class="glass" d="M${BK.x0},${TOP} L${BK.x0},${BOT} L${BK.x1},${BOT} L${BK.x1},${TOP}"/>`;
-        const lx = BK.x0 + 40, rx = BK.x1 - 40;
-        [[lx, '(+) 산화'], [rx, '(−) 환원']].forEach(([x]) => {
-            body += `<rect class="electrode" fill="#8a949a" x="${x - 6}" y="40" width="12" height="${BOT - 54}" rx="2"/>`;
-        });
-        // what collects on the negative electrode
-        const grow = Math.min(1, a.mass / 4);
-        if (!a.b.gas) {
-            const w = 8 + 16 * grow;
-            body += `<rect class="deposit" fill="${a.b.colour}" x="${(rx - w / 2).toFixed(1)}" y="${(BOT - 20 - 60 * grow).toFixed(1)}" ` +
-                    `width="${w.toFixed(1)}" height="${(60 * grow + 14).toFixed(1)}" rx="3"/>`;
-        } else {
-            for (let i = 0; i < 8; i += 1) {
-                body += `<circle class="bubble" cx="${rx + (i % 2 ? 9 : -9)}" cy="${BOT - 20 - (i * 13) % 90}" r="${2.4 + (i % 3) * 0.6}">` +
-                        `<animate attributeName="cy" values="${BOT - 16};${LIQ + 6}" dur="1.7s" begin="${(i * 0.2).toFixed(1)}s" repeatCount="indefinite"/></circle>`;
-                if (i < 4) body += `<circle class="bubble" cx="${lx + (i % 2 ? 8 : -8)}" cy="${BOT - 30}" r="2.2">` +
-                        `<animate attributeName="cy" values="${BOT - 16};${LIQ + 6}" dur="1.7s" begin="${(i * 0.4).toFixed(1)}s" repeatCount="indefinite"/></circle>`;
+        const lx = BK.x0 + 48, rx = BK.x1 - 48;
+        const running = checked && f < 1;
+        // Cu²⁺ is used up as copper plates out, so the blue fades while current flows
+        const fade = a.bathKey === 'cu' ? Math.min(0.75, a.mass / 5) * f : 0;
+        body += beaker(BK.x0, BK.x1, TOP, BOT, LIQ, BATH_COLOUR[a.bathKey], a.bathKey === 'cu' ? (0.75 * (1 - fade)).toFixed(2) : 0.9);
+        // carbon electrodes
+        [lx, rx].forEach(x => { body += `<rect x="${x - 7}" y="46" width="14" height="${BOT - 62}" rx="2" fill="#4b5563" stroke="#1f2937" stroke-width="1"/>`; });
+        const grow = Math.min(1, a.mass / 4) * f;
+        if (!a.b.gas && grow > 0.002) {
+            // metal coats the (−) electrode below the liquid surface, thickening as it plates out
+            const t = 1.5 + 6 * grow;
+            const col = a.bathKey === 'cu' ? '#b8642d' : '#cfd8dc';
+            body += `<rect x="${(rx - 7 - t).toFixed(1)}" y="${LIQ + 6}" width="${(14 + 2 * t).toFixed(1)}" height="${(BOT - 16 - LIQ - 6).toFixed(1)}" rx="3" fill="${col}" stroke="rgba(0,0,0,.3)" stroke-width=".8"/>`;
+            for (let i = 0; i < 7; i += 1) body += `<circle cx="${(rx + (i % 2 ? 1 : -1) * (7 + t)).toFixed(1)}" cy="${(LIQ + 16 + i * 14).toFixed(1)}" r="${(1 + grow * 1.6).toFixed(1)}" fill="${col}"/>`;
+        }
+        if (running) {
+            // bubbles: oxygen at the (+) electrode; with water, hydrogen at (−) too (twice as many)
+            const spots = a.b.gas ? [[lx, 4], [rx, 8]] : [[lx, 4]];
+            spots.forEach(([x, n]) => {
+                for (let i = 0; i < n; i += 1) {
+                    const u = ((clock / 1500) + i / n) % 1;
+                    body += `<circle class="bubble" cx="${(x + (i % 2 ? 10 : -10) + Math.sin(u * 8 + i) * 2).toFixed(1)}" cy="${(BOT - 20 - u * (BOT - 26 - LIQ)).toFixed(1)}" r="${(2.2 + (i % 3) * 0.6).toFixed(1)}"/>`;
+                }
+            });
+            // electrons travel from the (+) electrode back to the supply and on to the (−) electrode
+            for (let i = 0; i < 6; i += 1) {
+                const u = ((clock / 1800) + i / 6) % 1, L1 = 46 - 26, L2 = 230 - lx, L3 = rx - 270, L4 = 20, tot = L1 + L2 + L3 + L4;
+                let d = u * tot, x, y;
+                if (d < L1) { x = lx; y = 46 - d; } else if ((d -= L1) < L2) { x = lx + d; y = 26; } else if ((d -= L2) < L3) { x = 270 + d; y = 26; } else { d -= L3; x = rx; y = 26 + d; }
+                body += `<circle class="electron" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`;
             }
         }
-        // battery driving it
-        body += `<path class="wire" d="M${lx},40 L${lx},26 L${rx},26 L${rx},40"/>`;
-        body += `<line class="battery-long" x1="${205}" y1="18" x2="${205}" y2="34"/>`;
-        body += `<line class="battery-short" x1="${213}" y1="22" x2="${213}" y2="30"/>`;
-        body += `<text class="small-label" x="228" y="30">${a.I} A</text>`;
-
+        // DC power supply between the two leads
+        body += `<path class="wire" d="M${lx},46 L${lx},26 L230,26 M270,26 L${rx},26 L${rx},46"/>`;
+        body += `<rect x="226" y="8" width="48" height="34" rx="5" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/>`;
+        body += `<line x1="244" y1="16" x2="244" y2="34" stroke="#b45309" stroke-width="3"/><line x1="254" y1="20" x2="254" y2="30" stroke="#b45309" stroke-width="6"/>`;
+        body += `<text class="small-label" x="282" y="22">직류 전원 ${a.I} A</text>`;
         let out = `<g clip-path="url(#cellClip)">${body}</g>`;
-        out += `<text class="pole-text plus" x="${lx}" y="${BOT + 12}" text-anchor="middle">(+)</text>`;
-        out += `<text class="pole-text minus" x="${rx}" y="${BOT + 12}" text-anchor="middle">(−)</text>`;
-        out += `<text class="part-label" x="20" y="18">${a.b.label} · ${a.I} A · ${a.mins} 분</text>`;
-        out += `<text class="note-text" x="316" y="76">전기량 ${a.charge.toFixed(0)} C</text>`;
-        out += `<text class="note-text" x="316" y="94">전자 ${a.eMol.toFixed(4)} mol</text>`;
-        if (a.b.gas) {
-            out += `<text class="note-text" x="316" y="112">수소 ${a.h2.toFixed(4)} mol</text>`;
-            out += `<text class="note-text" x="316" y="130">산소 ${a.o2.toFixed(4)} mol</text>`;
-            out += `<text class="read-text" x="20" y="209">수소 ${a.h2L.toFixed(2)} L · 산소 ${a.o2L.toFixed(2)} L — 부피비 2 : 1</text>`;
-        } else {
-            out += `<text class="note-text" x="316" y="112">${a.b.out} ${a.molOut.toFixed(4)} mol</text>`;
-            out += `<text class="note-text" x="316" y="130">${a.b.sym}${a.b.n === 1 ? '⁺' : '²⁺'} + ${a.b.n}e⁻ → ${a.b.sym}</text>`;
-            out += `<text class="read-text" x="20" y="209">${a.b.out} ${a.mass.toFixed(3)} g이 (−)극에 석출됩니다</text>`;
+        out += `<text class="pole-text plus" x="${lx}" y="${BOT + 15}" text-anchor="middle">(+)</text>`;
+        out += `<text class="pole-text minus" x="${rx}" y="${BOT + 15}" text-anchor="middle">(−)</text>`;
+        out += `<text class="part-label" x="20" y="18">${a.b.label}</text>`;
+        out += `<text class="part-label" x="20" y="36">${a.mins} 분</text>`;
+        if (checked) {
+            const e = a.eMol * f, q = a.charge * f;
+            out += `<text class="note-text" x="330" y="96">전기량 ${q.toFixed(0)} C</text>`;
+            out += `<text class="note-text" x="330" y="116">전자 ${e.toFixed(4)} mol</text>`;
+            if (a.b.gas) {
+                out += `<text class="note-text" x="330" y="136">수소 ${(a.h2 * f).toFixed(4)} mol</text>`;
+                out += `<text class="note-text" x="330" y="156">산소 ${(a.o2 * f).toFixed(4)} mol</text>`;
+                if (f >= 1) out += `<text class="read-text" x="20" y="226">수소 ${a.h2L.toFixed(2)} L · 산소 ${a.o2L.toFixed(2)} L (2 : 1)</text>`;
+            } else {
+                out += `<text class="note-text" x="330" y="136">${a.b.out} ${(a.molOut * f).toFixed(4)} mol</text>`;
+                out += `<text class="note-text" x="330" y="156">${a.b.sym}${a.b.n === 1 ? '⁺' : '²⁺'} + ${a.b.n}e⁻ → ${a.b.sym}</text>`;
+                if (f >= 1) out += `<text class="read-text" x="330" y="184">(−)극 석출</text><text class="read-text" x="330" y="203">${a.b.out} ${a.mass.toFixed(3)} g</text>`;
+            }
         }
         window.scienceScene.render(mainGroup,out);
     }
@@ -222,15 +246,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
         out += `<text class="axis-title" x="22" y="20">표준 환원 전위 (V)</text>`;
-        if (!a.same) {
+        if (checked && !a.same) {
             out += `<rect class="gap-band" x="${GRAPH.x0}" y="${gy(a.cathode.E).toFixed(1)}" width="${GRAPH.x1 - GRAPH.x0}" ` +
                    `height="${(gy(a.anode.E) - gy(a.cathode.E)).toFixed(1)}"/>`;
-            // inside the band on the left: the rung captions occupy the right
             out += `<text class="gap-text" x="${GRAPH.x0 + 6}" y="${((gy(a.cathode.E) + gy(a.anode.E)) / 2 + 3).toFixed(1)}">` +
                    `차이 ${a.emf.toFixed(2)} V = 기전력</text>`;
         }
-        // Zinc and iron sit only 11 px apart on this scale, so labels are laid
-        // out top down with a floor on the spacing and led back to their rung.
         const sorted = Object.values(METALS).slice().sort((p, q) => q.E - p.E);
         let lastY = -Infinity;
         sorted.forEach(m => {
@@ -242,39 +263,40 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.abs(ly - ry) > 0.5) {
                 out += `<line class="rung" x1="${GRAPH.x0 + 120}" y1="${ry.toFixed(1)}" x2="${GRAPH.x0 + 128}" y2="${ly.toFixed(1)}"/>`;
             }
-            out += `<text class="rung-text" fill="${on ? '#d97706' : '#7f9298'}" x="${GRAPH.x0 + 132}" y="${(ly + 3.5).toFixed(1)}">` +
+            out += `<text class="rung-text" fill="${on ? '#b45309' : '#64748b'}" x="${GRAPH.x0 + 132}" y="${(ly + 3.5).toFixed(1)}">` +
                    `${m.name} ${m.sym} ${m.E > 0 ? '+' : ''}${m.E.toFixed(2)} V` +
-                   `${!a.same && m === a.anode ? ' ← 산화 (−)' : ''}${!a.same && m === a.cathode ? ' ← 환원 (+)' : ''}</text>`;
+                   `${checked && !a.same && m === a.anode ? ' ← 산화 (−)' : ''}${checked && !a.same && m === a.cathode ? ' ← 환원 (+)' : ''}</text>`;
         });
         out += `<text class="axis-text" x="${GRAPH.x0}" y="${GRAPH.y0 + 16}">아래로 갈수록 산화되기 쉬움</text>`;
         window.scienceScene.render(graphGroup,out);
     }
 
-    function graphElec(a) {
+    function graphElec(a, f) {
         const rows = [
-            ['구리 Cu (2가)', (a.eMol / 2) * 63.5, '#c8783c'],
-            ['은 Ag (1가)', (a.eMol / 1) * 107.9, '#dfe7ea'],
+            ['구리 Cu (2가)', (a.eMol / 2) * 63.5, '#b8642d'],
+            ['은 Ag (1가)', (a.eMol / 1) * 107.9, '#94a3b8'],
             ['수소 H₂ (2가)', (a.eMol / 2) * 2.02, '#0284c7'],
             ['산소 O₂ (4가)', (a.eMol / 4) * 32.0, '#059669'],
         ];
-        const max = Math.max(...rows.map(r => r[1])) * 1.18 || 1;
-        const gx = m => GRAPH.x0 + (m / max) * (GRAPH.x1 - GRAPH.x0);
+        const L = 150, R = 420, Y0 = GRAPH.y0, Y1 = GRAPH.y1;
+        const raw = Math.max(...rows.map(r => r[1])) * 1.12 || 1;
+        const stepV = [0.5, 1, 2, 5, 10, 20, 50].find(s => raw / s <= 5) || 100, max = Math.ceil(raw / stepV) * stepV;
+        const gx = m => L + (m / max) * (R - L);
         let out = '';
-        for (let i = 0; i <= 4; i += 1) {
-            const m = (max / 4) * i;
-            out += `<line class="grid-line" x1="${gx(m).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(m).toFixed(1)}" y2="${GRAPH.y0}"/>`;
-            out += `<text class="axis-text" x="${gx(m).toFixed(1)}" y="${GRAPH.y0 + 14}" text-anchor="middle">${m.toFixed(1)}</text>`;
+        for (let m = 0; m <= max + 1e-9; m += stepV) {
+            out += `<line class="grid-line" x1="${gx(m).toFixed(1)}" y1="${Y1}" x2="${gx(m).toFixed(1)}" y2="${Y0}"/>`;
+            out += `<text class="axis-text" x="${gx(m).toFixed(1)}" y="${Y0 + 15}" text-anchor="middle">${+m.toFixed(1)}</text>`;
         }
-        out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
-        out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 32}" text-anchor="middle">같은 전기량으로 얻는 질량 (g)</text>`;
-        out += `<text class="axis-title" x="22" y="20">전자 ${a.eMol.toFixed(4)} mol이 흘렀을 때</text>`;
+        out += `<line class="axis" x1="${L}" y1="${Y0}" x2="${R}" y2="${Y0}"/><line class="axis" x1="${L}" y1="${Y0}" x2="${L}" y2="${Y1}"/>`;
+        out += `<text class="axis-name" x="${R}" y="${Y0 + 32}" text-anchor="end">같은 전기량으로 얻는 질량 (g)</text>`;
+        out += `<text class="axis-title" x="22" y="20">${checked ? `전자 ${(a.eMol * f).toFixed(4)} mol이 흘렀을 때` : '전류를 흘리면 채워집니다'}</text>`;
         rows.forEach(([name, mass, colour], i) => {
-            const y = GRAPH.y1 + 26 + i * 30;
-            out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end">${name}</text>`;
-            out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 6}" width="${Math.max(2, gx(mass) - GRAPH.x0).toFixed(1)}" height="13" rx="3" fill="${colour}" opacity=".85"/>`;
-            const flip = gx(mass) > GRAPH.x1 - 60;
-            out += `<text class="bar-text" style="fill:${flip ? '#ffffff' : colour}" x="${(gx(mass) + (flip ? -6 : 6)).toFixed(1)}" y="${(y + 4).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${mass.toFixed(3)} g</text>`;
+            const y = Y1 + 22 + i * 30;
+            out += `<text class="axis-text" x="${L - 8}" y="${(y + 5).toFixed(1)}" text-anchor="end">${name}</text>`;
+            if (!checked) return;
+            const m = mass * f;
+            out += `<rect class="bar" x="${L}" y="${y - 7}" width="${Math.max(2, gx(m) - L).toFixed(1)}" height="15" rx="3" fill="${colour}" opacity=".85"/>`;
+            out += `<text class="bar-text" style="fill:#0f172a" x="${(gx(m) + 6).toFixed(1)}" y="${(y + 5).toFixed(1)}">${m.toFixed(3)} g</text>`;
         });
         window.scienceScene.render(graphGroup,out);
     }
@@ -282,18 +304,18 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ------------------------------------------------------------ render */
     function render() {
         const a = analyse();
-        if (a.kind === 'cell') { renderCell(a); graphCell(a); } else { renderElec(a); graphElec(a); }
+        if (a.kind === 'cell') { renderCell(a); graphCell(a); } else { const f = checked ? prog : 0; renderElec(a, f); graphElec(a, f); }
         const i = document.getElementById('iRangeOut');
         if (i) i.textContent = `${state.I} A`;
         const t = document.getElementById('tRangeOut');
         if (t) t.textContent = `${state.mins} 분`;
         methodHint.textContent = state.mode === 'cell'
-            ? '표준 환원 전위가 낮은 금속이 산화됩니다'
+            ? '두 금속의 표준 환원 전위를 견주어 봅니다'
             : '전기량이 전자의 몰수를 정합니다';
-        stageBadge.textContent = a.kind === 'cell'
+        stageBadge.textContent = !checked ? (a.kind === 'cell' ? `${a.A.sym} · ${a.B.sym}` : `${a.I} A · ${a.mins} 분`) : a.kind === 'cell'
             ? (a.same ? '전위 차이 없음' : `${a.anode.sym} 산화 · ${a.emf.toFixed(2)} V`)
-            : `전자 ${a.eMol.toFixed(4)} mol`;
-        window.scienceScene.render(dataNote,a.kind === 'cell'
+            : `전자 ${(a.eMol * prog).toFixed(4)} mol`;
+        window.scienceScene.render(dataNote,!(checked && (a.kind === 'cell' || prog >= 1)) ? '' : a.kind === 'cell'
             ? `<div class="data-row"><span class="data-name">표준 환원 전위</span><span class="data-val">${a.A.sym} ${a.A.E.toFixed(2)} V · ${a.B.sym} ${a.B.E.toFixed(2)} V</span></div>` +
               `<div class="data-row"><span class="data-name">(−)극 · 산화</span><span class="data-val">${a.same ? '없음' : `${a.anode.name} → ${a.anode.sym}${a.anode.n === 1 ? '⁺' : '²⁺'} + ${a.anode.n}e⁻`}</span></div>` +
               `<div class="data-row"><span class="data-name">(+)극 · 환원</span><span class="data-val">${a.same ? '없음' : `${a.cathode.sym}${a.cathode.n === 1 ? '⁺' : '²⁺'} + ${a.cathode.n}e⁻ → ${a.cathode.name}`}</span></div>` +
@@ -314,6 +336,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const E_WORD = { more: '전자가 더 많이 흘렀습니다', near: '전자가 비슷하게 흘렀습니다', less: '전자가 적게 흘렀습니다' };
 
     function check() {
+        cancelAnimationFrame(raf);
+        checked = true;
+        if (state.mode === 'elec' && !reducedMotion()) {
+            // current flows for about 3 s: blue fades, copper grows on the (−) electrode, bubbles rise
+            const t0 = performance.now();
+            prog = 0;
+            resultEmpty.hidden = false; resultContent.hidden = true;
+            const step = now => { clock = now; prog = Math.min(1, (now - t0) / 3200); render(); if (prog < 1) raf = requestAnimationFrame(step); else { raf = 0; checkResult(); } };
+            raf = requestAnimationFrame(step);
+            return;
+        }
+        prog = 1;
+        checkResult();
+    }
+
+    function checkResult() {
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -353,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function changed() {
+        cancelAnimationFrame(raf); raf = 0; checked = false; prog = 0;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();

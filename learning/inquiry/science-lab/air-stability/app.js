@@ -13,7 +13,7 @@ const Z_TOP = 4;    // km, top of the diagram
 
 const state = {
     height: 2000, rh: 60, temp: 20, lapse: 6.5,
-    prediction: null, checked: false,
+    prediction: null, checked: false, done: false,
     running: false, progress: 0, phase: 0,
 };
 
@@ -95,37 +95,55 @@ function el(tag, attrs, text) {
 const BASE = 190, PEAK_X = 230, LEFT_X = 70, RIGHT_X = 390;
 const zToY = z => BASE - (clamp(z, 0, 3) / 3) * 120;
 
+// 공기 덩어리가 지금 어디까지 왔는지: 0~0.5 오르막, 0.5~1 내리막. 다 넘으면 1
+function journey() { return state.done ? 1 : (state.running || state.progress > 0 ? state.progress : 0); }
+
 function drawRidge(g) {
     const a = analyse();
     const peakY = zToY(a.H);
     const upX = y => LEFT_X + (BASE - y) * ((PEAK_X - LEFT_X) / (BASE - peakY));
     const downX = y => RIGHT_X - (BASE - y) * ((RIGHT_X - PEAK_X) / (BASE - peakY));
+    const J = journey();
+    const zNow = J <= 0.5 ? a.H * J * 2 : a.H;                 // 지금까지 올라간 높이
+    const passedLcl = a.cloudy && J > 0 && zNow >= a.lcl;
 
     g.appendChild(el('rect', { x: 0, y: BASE, width: 460, height: 214 - BASE, class: 'ground' }));
-    g.appendChild(el('polygon', { points: `${LEFT_X},${BASE} ${PEAK_X},${peakY} ${RIGHT_X},${BASE}`, class: 'ridge' }));
+    // 산: 바람받이 사면은 밝게, 그늘 사면은 어둡게, 높으면 꼭대기에 눈
+    const bump = (t, k) => Math.sin(t * Math.PI * k) * 4;
+    let up = `${LEFT_X - 14},${BASE}`, down = '';
+    for (let i = 1; i <= 10; i += 1) { const t = i / 10, y = BASE - (BASE - peakY) * t; up += ` ${(upX(y) + (i < 10 ? bump(t, 3) : 0)).toFixed(1)},${(y + (i < 10 ? 3 * Math.abs(bump(t, 2)) / 4 : 0)).toFixed(1)}`; }
+    for (let i = 9; i >= 0; i -= 1) { const t = i / 10, y = BASE - (BASE - peakY) * t; down += ` ${(downX(y) + bump(t, 2.5)).toFixed(1)},${(y + 2 * Math.abs(bump(t, 3)) / 4).toFixed(1)}`; }
+    g.appendChild(el('polygon', { points: `${up}${down} ${RIGHT_X + 14},${BASE}`, class: 'ridge' }));
+    g.appendChild(el('polygon', { points: `${PEAK_X},${peakY}${down} ${RIGHT_X + 14},${BASE} ${PEAK_X + 18},${BASE}`, class: 'ridge-shade' }));
+    if (a.H >= 2.5) {
+        const sy = peakY + (BASE - peakY) * 0.16;
+        g.appendChild(el('polygon', { points: `${PEAK_X},${peakY} ${upX(sy).toFixed(1)},${sy.toFixed(1)} ${(upX(sy) + 10).toFixed(1)},${(sy - 3).toFixed(1)} ${(PEAK_X + 2).toFixed(1)},${(sy + 4).toFixed(1)} ${(downX(sy) - 8).toFixed(1)},${(sy - 2).toFixed(1)} ${downX(sy).toFixed(1)},${sy.toFixed(1)}`, class: 'snow' }));
+    }
+    [LEFT_X - 4, LEFT_X + 12, RIGHT_X - 10, RIGHT_X + 6].forEach((x, i) => {
+        g.appendChild(el('polygon', { points: `${x - 6},${BASE} ${x},${BASE - 16 - (i % 2) * 4} ${x + 6},${BASE}`, class: 'tree' }));
+    });
 
-    if (a.cloudy) {
-        const yLcl = zToY(a.lcl);
+    // 응결 고도에 닿은 뒤에야 구름과 비가 생긴다: 덩어리가 지나간 높이까지만 구름이 자란다
+    if (passedLcl) {
+        const yLcl = zToY(a.lcl), yTopCloud = zToY(Math.min(zNow, a.H));
         g.appendChild(el('line', { x1: 30, y1: yLcl, x2: 430, y2: yLcl, class: 'lcl-line' }));
-        // A high condensation level puts this label into the readout column at
-        // the top left, so it is only written on the canvas when the line sits
-        // clear of it. The height is in the result box and the table regardless.
         if (yLcl > 108) {
             g.appendChild(el('text', { x: 34, y: yLcl - 5, class: 'tiny-label', style: 'fill:#0284c7' },
                 `상승 응결 고도 ${Math.round(a.lcl * 1000)} m`));
         }
-        // Cloud hugs the windward slope from the condensation level to the top.
-        const steps = 7;
+        const steps = 7, wob = state.running ? state.phase : 0;
         for (let i = 0; i <= steps; i += 1) {
             const y = yLcl - (yLcl - peakY) * (i / steps);
+            if (y < yTopCloud - 1) break;
             const x = upX(y);
-            const r = 9 + Math.sin(state.phase * 0.9 + i) * 1.6;
+            const r = 9 + Math.sin(wob * 0.9 + i) * 1.6;
             g.appendChild(el('circle', { cx: x + 6, cy: y - 9, r, class: 'cloud-puff' }));
             g.appendChild(el('circle', { cx: x + 20, cy: y - 14, r: r * 0.8, class: 'cloud-puff' }));
         }
         for (let i = 0; i < 7; i += 1) {
-            const p = ((state.phase * 0.7) + i / 7) % 1;
             const y0 = yLcl - (yLcl - peakY) * (i / 7);
+            if (y0 < yTopCloud - 1) break;
+            const p = ((wob * 0.7) + i / 7) % 1;
             const x = upX(y0) + 10;
             g.appendChild(el('line', {
                 x1: x, y1: y0 + p * 16, x2: x - 2, y2: y0 + p * 16 + 7,
@@ -140,17 +158,16 @@ function drawRidge(g) {
     g.appendChild(el('text', { x: 14, y: 90, class: 'tiny-label' }, `습도 ${Math.round(a.rh0)}%`));
 
     g.appendChild(el('text', { x: 446, y: 40, 'text-anchor': 'end', class: 'small-label' }, '산을 넘은 쪽'));
-    g.appendChild(el('text', { x: 446, y: 60, 'text-anchor': 'end', class: a.warming > 0.05 ? 'warm-text' : 'read-text' }, `${fmt(a.tLee, 1)} ℃`));
-    g.appendChild(el('text', { x: 446, y: 76, 'text-anchor': 'end', class: 'tiny-label' }, `이슬점 ${fmt(a.tdLee, 1)} ℃`));
-    g.appendChild(el('text', { x: 446, y: 90, 'text-anchor': 'end', class: 'tiny-label' }, `습도 ${Math.round(a.rhLee)}%`));
+    if (J >= 1) {
+        g.appendChild(el('text', { x: 446, y: 60, 'text-anchor': 'end', class: a.warming > 0.05 ? 'warm-text' : 'read-text' }, `${fmt(a.tLee, 1)} ℃`));
+        g.appendChild(el('text', { x: 446, y: 76, 'text-anchor': 'end', class: 'tiny-label' }, `이슬점 ${fmt(a.tdLee, 1)} ℃`));
+        g.appendChild(el('text', { x: 446, y: 90, 'text-anchor': 'end', class: 'tiny-label' }, `습도 ${Math.round(a.rhLee)}%`));
+    } else {
+        g.appendChild(el('text', { x: 446, y: 60, 'text-anchor': 'end', class: 'read-text' }, '? ℃'));
+    }
 
     g.appendChild(el('text', { x: PEAK_X, y: peakY - 26, 'text-anchor': 'middle', class: 'small-label' }, `산꼭대기 ${state.height} m`));
-    g.appendChild(el('text', { x: PEAK_X, y: peakY - 12, 'text-anchor': 'middle', class: 'read-text' }, `${fmt(a.tSummit, 1)} ℃`));
-
-    g.appendChild(el('text', { x: 230, y: 208, 'text-anchor': 'middle', class: 'note-text' },
-        a.cloudy
-            ? `비를 ${fmt(a.rain, 2)} g/kg 버리고 넘어 ${fmt(a.warming, 1)} ℃ 더 따뜻해졌습니다`
-            : '구름이 생기지 않아 기온이 그대로 돌아왔습니다'));
+    if (J >= 0.5) g.appendChild(el('text', { x: PEAK_X, y: peakY - 12, 'text-anchor': 'middle', class: 'read-text' }, `${fmt(a.tSummit, 1)} ℃`));
 
     // The parcel goes on last and takes precedence: it is the thing moving, so
     // a fixed label it happens to cross steps aside rather than the other way.
@@ -167,7 +184,6 @@ function drawRidge(g) {
     const caption = el('text', { x: 230, y: 20, 'text-anchor': 'middle', class: 'small-label' },
         st.sat ? '구름 속 · 습윤 단열' : '맑음 · 건조 단열');
     g.appendChild(caption);
-
 }
 
 // --- the T-z diagram --------------------------------------------------------
@@ -189,11 +205,12 @@ function drawGraph(g) {
         g.appendChild(el('text', { x: X(t), y: yBot + 15, 'text-anchor': 'middle', class: 'axis-text' }, String(t)));
     }
 
+    const J = journey(), full = J >= 1, zCap = full ? Z_TOP : (J <= 0.5 ? a.H * J * 2 : a.H);
     // Wherever the lifted parcel is warmer than its surroundings it is buoyant.
     let band = '', hasBand = false;
     for (let i = 0; i <= 160; i += 1) {
         const z = (i / 160) * Z_TOP;
-        if (liftedAt(z) > envAt(z)) { hasBand = true; break; }
+        if (full && liftedAt(z) > envAt(z)) { hasBand = true; break; }
     }
     if (hasBand) {
         for (let i = 0; i <= 160; i += 1) {
@@ -212,43 +229,43 @@ function drawGraph(g) {
         const z = (i / 160) * Z_TOP;
         env += `${i ? 'L' : 'M'} ${fmt(X(envAt(z)), 2)} ${fmt(Y(z), 2)} `;
     }
-    const lclZ = Math.min(a.lcl, Z_TOP);
-    for (let i = 0; i <= 80; i += 1) {
+    const lclZ = Math.min(a.lcl, Z_TOP, zCap);
+    for (let i = 0; i <= 80 && zCap > 0; i += 1) {
         const z = (i / 80) * lclZ;
         dry += `${i ? 'L' : 'M'} ${fmt(X(a.T0 - GD * z), 2)} ${fmt(Y(z), 2)} `;
         dew += `${i ? 'L' : 'M'} ${fmt(X(a.Td0 - GDEW * z), 2)} ${fmt(Y(z), 2)} `;
     }
-    if (a.lcl < Z_TOP) {
+    if (a.lcl < zCap) {
         for (let i = 0; i <= 80; i += 1) {
-            const z = a.lcl + (i / 80) * (Z_TOP - a.lcl);
+            const z = a.lcl + (i / 80) * (zCap - a.lcl);
             moist += `${i ? 'L' : 'M'} ${fmt(X(liftedAt(z)), 2)} ${fmt(Y(z), 2)} `;
         }
     }
     g.appendChild(el('path', { d: env, class: 'env-line' }));
-    g.appendChild(el('path', { d: dew, class: 'dew-line' }));
-    g.appendChild(el('path', { d: dry, class: 'dry-line' }));
+    if (dew) g.appendChild(el('path', { d: dew, class: 'dew-line' }));
+    if (dry) g.appendChild(el('path', { d: dry, class: 'dry-line' }));
     if (moist) g.appendChild(el('path', { d: moist, class: 'moist-line' }));
 
     // When the parcel is already buoyant the moment it saturates, the two
     // levels are the same level and get one label between them.
     const merged = a.lfc !== null && state.lapse < GD && Math.abs(a.lfc - a.lcl) < 0.06;
     const placed = [];
-    if (a.lcl < Z_TOP) {
+    if (a.lcl < Z_TOP && a.lcl <= zCap) {
         g.appendChild(el('circle', { cx: X(a.tLcl), cy: Y(a.lcl), r: 4.2, class: 'trace-dot', style: 'fill:#0284c7' }));
         const t = el('text', {
-            x: X(a.tLcl) - 6, y: Y(a.lcl) - 6, 'text-anchor': 'end', class: 'axis-text',
+            x: X(a.tLcl) - 8, y: Y(a.lcl) + 16, 'text-anchor': 'end', class: 'axis-text halo',
             style: `fill:${merged ? '#ff8a8a' : '#0284c7'}`,
         }, merged ? '응결 = 자유 대류' : '응결');
         g.appendChild(t); placed.push(t);
     }
     if (a.H <= Z_TOP) {
         g.appendChild(el('line', { x1: x0, y1: Y(a.H), x2: x1, y2: Y(a.H), class: 'mark-line' }));
-        const t = el('text', { x: x1 - 2, y: Y(a.H) - 5, 'text-anchor': 'end', class: 'axis-text' }, `산꼭대기 ${state.height} m`);
+        const t = el('text', { x: x1 - 2, y: Y(a.H) - 5, 'text-anchor': 'end', class: 'axis-text halo' }, `산꼭대기 ${state.height} m`);
         g.appendChild(t); placed.push(t);
     }
     // Under absolute instability the parcel is buoyant from the ground up, so
     // there is no level at which it becomes free — marking one would be wrong.
-    if (a.lfc !== null && a.lfc <= Z_TOP && state.lapse < GD && !merged) {
+    if (full && a.lfc !== null && a.lfc <= Z_TOP && state.lapse < GD && !merged) {
         const lx = X(liftedAt(a.lfc)), ly = Y(a.lfc);
         g.appendChild(el('circle', { cx: lx, cy: ly, r: 4.2, class: 'trace-dot', style: 'fill:#ff8a8a' }));
         // The dot always shows. The label is placed, measured against the
@@ -257,7 +274,7 @@ function drawGraph(g) {
         const right = lx < x1 - 90;
         const t = el('text', {
             x: lx + (right ? 6 : -6), y: ly + 4, 'text-anchor': right ? 'start' : 'end',
-            class: 'axis-text', 'data-convection-label': '', style: 'fill:#ff8a8a',
+            class: 'axis-text halo', 'data-convection-label': '', style: 'fill:#e05252',
         }, '자유 대류 고도');
         g.appendChild(t);
     }
@@ -305,7 +322,7 @@ function updateReadout() {
         ['자유 대류 고도', state.lapse > GD ? '지표부터 이미 떠오름'
             : (a.lfc === null ? '4 km 안에는 없음' : `${Math.round(a.lfc * 1000)} m`), false],
     ];
-    $('dataNote').innerHTML = rows.map(([n, v, m]) =>
+    $('dataNote').innerHTML = !state.done ? '' : rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
     if (state.checked) explain(a);
 }
@@ -319,22 +336,20 @@ function explain(a) {
         $('predictionResult').textContent = ok ? `예상이 맞았습니다 — ${WORDS[v]}.`
             : `예상은 ${WORDS[state.prediction]}였지만 결과는 ${WORDS[v]}입니다.`;
         $('predictionResult').className = `prediction-result ${ok ? 'correct' : 'wrong'}`;
+        $('predictionResult').hidden = false;
     } else {
         $('predictionResult').textContent = '';
         $('predictionResult').className = 'prediction-result';
+        $('predictionResult').hidden = true;
     }
 
-    let s = `지표 기온 ${fmt(a.T0, 1)} ℃에 습도가 ${Math.round(a.rh0)}%이므로 이슬점은 ${fmt(a.Td0, 1)} ℃이고, 둘의 차이는 ${fmt(a.T0 - a.Td0, 1)} ℃입니다. `;
-    s += `올라가는 공기는 9.8 ℃/km로 식고 이슬점은 1.8 ℃/km로 낮아지니 그 차이가 1 km마다 8 ℃씩 좁혀져, ${Math.round(a.lcl * 1000)} m에서 둘이 만나 구름이 생기기 시작합니다. `;
+    let s = `기온과 이슬점의 차이 ${fmt(a.T0 - a.Td0, 1)} ℃가 1 km마다 8 ℃씩 좁혀져 ${Math.round(a.lcl * 1000)} m에서 구름이 생기기 시작합니다. `;
 
     if (a.cloudy) {
-        s += `산이 ${state.height} m이므로 공기는 ${Math.round(a.lcl * 1000)} m까지 건조 단열로 ${fmt(a.T0 - a.tLcl, 1)} ℃ 식고, 그 위로는 응결열을 받아 습윤 단열로 ${fmt(a.tLcl - a.tSummit, 1)} ℃만 더 식어 꼭대기에서 ${fmt(a.tSummit, 1)} ℃가 됩니다. `;
-        s += `이 동안 수증기 ${fmt(a.rain, 2)} g/kg이 비가 되어 떨어졌습니다. `;
-        s += `내려올 때는 물기를 버렸으니 처음부터 끝까지 건조 단열로 데워져, ${state.height} m를 내려오며 ${fmt(GD * a.H, 1)} ℃가 올라 ${fmt(a.tLee, 1)} ℃로 도착합니다. `;
-        s += `결국 오를 때 덜 식고 내릴 때 다 데워진 만큼인 (9.8 − 5.0) × ${fmt(a.H - a.lcl, 2)} km = ${fmt(a.warming, 1)} ℃가 고스란히 남습니다. 습도는 ${Math.round(a.rh0)}%에서 ${Math.round(a.rhLee)}%로 떨어졌고, 이것이 푄 현상입니다. `;
+        s += `그 위로는 습윤 단열로 덜 식어 꼭대기에서 ${fmt(a.tSummit, 1)} ℃가 되고, 수증기 ${fmt(a.rain, 2)} g/kg이 비로 내립니다. `;
+        s += `내려올 때는 건조 단열로 데워져 ${fmt(a.tLee, 1)} ℃로 도착하므로 (9.8 − 5.0) × ${fmt(a.H - a.lcl, 2)} km = ${fmt(a.warming, 1)} ℃ 따뜻해지고, 습도는 ${Math.round(a.rh0)}%에서 ${Math.round(a.rhLee)}%로 떨어집니다. 이것이 푄 현상입니다. `;
     } else {
-        s += `그런데 산이 ${state.height} m밖에 되지 않아 공기가 응결 고도까지 올라가지 못합니다. 구름도 비도 없이 그냥 넘어갑니다. `;
-        s += `오를 때도 내릴 때도 똑같이 9.8 ℃/km이고 오른 높이와 내린 높이가 같으므로, 기온은 정확히 ${fmt(a.tLee, 1)} ℃로 제자리에 돌아옵니다. 이 모형에서는 같은 공기가 같은 높이로 돌아오고 다른 열 교환이 없어서 온도가 같습니다. 실제 푄은 강수 없이도 나타날 수 있습니다. `;
+        s += `그런데 산이 ${state.height} m라 응결 고도에 닿지 못해 구름 없이 넘어가고, 오를 때와 내릴 때 모두 9.8 ℃/km라 기온은 ${fmt(a.tLee, 1)} ℃로 돌아옵니다. 실제 푄은 강수 없이도 나타날 수 있습니다. `;
     }
 
     s += `한편 주위 공기의 기온은 1 km마다 ${fmt(state.lapse, 1)} ℃씩 낮아지고 있습니다. `;
@@ -343,10 +358,10 @@ function explain(a) {
     } else if (v === 'p4') {
         s += Math.abs(state.lapse-GM)<1e-9 ? '환경 감률이 습윤 단열 감률과 같습니다. 포화 공기는 중립이고 불포화 공기는 안정합니다. 이 경계를 조건부 불안정으로 판정하지 않습니다.' : '환경 감률이 건조 단열 감률과 같습니다. 불포화 공기는 중립이고 포화 공기는 불안정합니다. 절대 불안정의 경계와 구별합니다.';
     } else if (v === 'p2') {
-        s += `이 값은 습윤 단열 감률 5.0과 건조 단열 감률 9.8 사이에 있습니다. 마른 공기는 올라가도 주위보다 차가워져 제자리로 돌아오지만, 구름이 생긴 뒤에도 충분히 더 상승하여 주위보다 따뜻해지는 높이에 도달해야 스스로 오를 수 있습니다. 그래서 조건부 불안정이라고 합니다`;
+        s += `이 값은 습윤 단열 감률 5.0과 건조 단열 감률 9.8 사이라, 마른 공기는 제자리로 돌아오지만 포화된 공기는 주위보다 따뜻해지는 높이에 이르면 스스로 오릅니다. 그래서 조건부 불안정이라고 합니다`;
         s += a.lfc !== null ? `. 실제로 ${Math.round(a.lfc * 1000)} m를 넘어서면 공기가 주위보다 따뜻해져 스스로 솟구칩니다.` : `. 다만 지금 조건에서는 4 km 안에서 주위보다 따뜻해지는 높이가 없어 아직 스스로 오르지는 못합니다.`;
     } else {
-        s += `이 값은 건조 단열 감률 9.8보다도 큽니다. 마른 공기조차 올라가면 주위보다 따뜻해져 계속 솟구치므로 절대 불안정입니다. 이때는 지표에서부터 이미 떠오르고 있어 따로 자유 대류 고도를 따질 것이 없고, 이런 날에는 적란운이 크게 발달합니다.`;
+        s += `이 값은 건조 단열 감률 9.8보다도 커서 마른 공기조차 계속 솟구치는 절대 불안정입니다. 이런 날에는 적란운이 크게 발달합니다.`;
     }
     $('elementaryExplanation').textContent = s;
 }
@@ -358,6 +373,7 @@ function tick(dt) {
     state.progress = Math.min(1, state.progress + dt / 9);
     if (state.progress >= 1) {
         state.running = false;
+        state.done = true;
         $('runBtn').textContent = '산 너머로 보내기';
         state.checked = true;
         return true;
@@ -365,14 +381,22 @@ function tick(dt) {
     return false;
 }
 
-let last = 0;
+let last = 0, looping = false;
 function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000 || 0);
     last = now;
     tick(dt);
     render();
+    if (state.running) requestAnimationFrame(frame); else looping = false;
+}
+function startLoop() {
+    if (looping) return;
+    looping = true; last = performance.now();
     requestAnimationFrame(frame);
 }
+const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+// 조건을 바꾸면 새 공기 덩어리로 다시 시작한다
+function invalidate() { state.done = false; state.running = false; state.progress = 0; $('runBtn').textContent = '산 너머로 보내기'; }
 
 // --- wiring -----------------------------------------------------------------
 function markSelected(sel, attr, value) {
@@ -380,33 +404,36 @@ function markSelected(sel, attr, value) {
 }
 
 document.querySelectorAll('[data-height]').forEach(b => b.addEventListener('click', () => {
-    state.height = Number(b.dataset.height); markSelected('[data-height]', 'height', state.height); render();
+    state.height = Number(b.dataset.height); invalidate(); markSelected('[data-height]', 'height', state.height); render();
 }));
 document.querySelectorAll('[data-rh]').forEach(b => b.addEventListener('click', () => {
-    state.rh = Number(b.dataset.rh); markSelected('[data-rh]', 'rh', state.rh); render();
+    state.rh = Number(b.dataset.rh); invalidate(); markSelected('[data-rh]', 'rh', state.rh); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
     state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('tempRange').addEventListener('input', e => {
-    state.temp = Number(e.target.value);
+    state.temp = Number(e.target.value); invalidate();
     $('tempOutput').textContent = `${state.temp} ℃`;
     render();
 });
 $('lapseRange').addEventListener('input', e => {
-    state.lapse = Number(e.target.value);
+    state.lapse = Number(e.target.value); invalidate();
     $('lapseOutput').textContent = `${fmt(state.lapse, 1)} ℃/km`;
     render();
 });
 $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; $('runBtn').textContent = '산 너머로 보내기'; return; }
-    state.progress = 0; state.running = true; state.checked = true;
+    state.progress = 0; state.running = true; state.checked = false; state.done = false;
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
     $('runBtn').textContent = '멈추기';
+    if (reduceMotion()) { state.running = false; state.progress = 1; state.done = true; $('runBtn').textContent = '산 너머로 보내기'; render(); return; }
     render();
+    startLoop();
 });
 $('resetBtn').addEventListener('click', () => {
     state.height = 2000; state.rh = 60; state.temp = 20; state.lapse = 6.5;
-    state.prediction = null; state.checked = false; state.running = false; state.progress = 0;
+    state.prediction = null; state.checked = false; state.running = false; state.progress = 0; state.done = false;
     $('tempRange').value = '20'; $('tempOutput').textContent = '20 ℃';
     $('lapseRange').value = '6.5'; $('lapseOutput').textContent = '6.5 ℃/km';
     $('runBtn').textContent = '산 너머로 보내기';
@@ -432,7 +459,6 @@ document.querySelectorAll('.quiz-card').forEach(card => {
 markSelected('[data-height]', 'height', state.height);
 markSelected('[data-rh]', 'rh', state.rh);
 render();
-requestAnimationFrame(frame);
 
 window.__airModel = {
     state, analyse, tick, render, crossing, parcelAt, envAt, liftedAt, freeConvection,
@@ -441,7 +467,7 @@ window.__airModel = {
     setRh(v) { document.querySelector(`[data-rh="${v}"]`).click(); },
     setTemp(v) { const r = $('tempRange'); r.value = String(v); r.dispatchEvent(new Event('input')); },
     setLapse(v) { const r = $('lapseRange'); r.value = String(v); r.dispatchEvent(new Event('input')); },
-    check() { state.checked = true; explain(analyse()); },
+    check() { state.checked = true; state.done = true; render(); explain(analyse()); },
     runToEnd(dt = 1 / 30) {
         $('runBtn').click();
         let steps = 0;

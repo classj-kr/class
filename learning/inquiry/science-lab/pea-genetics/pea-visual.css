@@ -97,3 +97,5 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+.pun-cell.pun-blank { fill: #eef2f5; }
+.pun-text.pun-q { fill: #94a3b8; }

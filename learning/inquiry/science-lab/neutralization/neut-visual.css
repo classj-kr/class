@@ -80,3 +80,7 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 화학식은 고딕, 숫자와 단위는 한 줄 */
+.chem { font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif !important; letter-spacing: 0 !important; white-space: nowrap; }
+.nw { white-space: nowrap; }

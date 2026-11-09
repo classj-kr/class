@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // over 167 s to reach 100 °C while the slider stops at 60, so it is never
     // actually hit. The explanation below therefore does not promise boiling.
     const SUBS = [
-        { id: 'water', name: '물',       c: 4.18, color: '#6ec8eb', boil: 100, solid: false },
-        { id: 'oil',   name: '식용유',   c: 2.00, color: '#e8d07a', boil: null, solid: false },
-        { id: 'alum',  name: '알루미늄', c: 0.90, color: '#cfd8dd', boil: null, solid: true },
-        { id: 'iron',  name: '철',       c: 0.45, color: '#9aa4ab', boil: null, solid: true },
+        { id: 'water', name: '물',       c: 4.18, color: '#6ec8eb', lineColor: '#0284c7', boil: 100, solid: false },
+        { id: 'oil',   name: '식용유',   c: 2.00, color: '#e8d07a', lineColor: '#b45309', boil: null, solid: false },
+        { id: 'alum',  name: '알루미늄', c: 0.90, color: '#cfd8dd', lineColor: '#64748b', boil: null, solid: true },
+        { id: 'iron',  name: '철',       c: 0.45, color: '#9aa4ab', lineColor: '#7c2d12', boil: null, solid: true },
     ];
     // Real linear expansion coefficients, per °C.
     const METALS = [
@@ -53,10 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const EXAGGERATION = 100;   // real ΔL is ~2 mm, invisible at true scale
     const SIM_PER_SEC = 10;     // simulated seconds per real second
 
-    const GRAPH = { x0: 52, x1: 432, y0: 152, y1: 20 };
+    const GRAPH = { x0: 52, x1: 392, y0: 152, y1: 20 };
     const NICE = [60, 80, 100, 150, 200, 300, 400, 600];
 
     let mode = 'heat';
+    const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     let prediction = null;
     let playing = false;
     let animTime = null;        // float clock; the slider only reports it
@@ -89,43 +90,41 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderHeat() {
         const t = elapsed(), m = mass(), tMax = tempScaleMax();
         let out = '';
-        const slotW = 104, x0 = 26;
+        const slotW = 104, x0 = 26, now = performance.now(), on = playing && !reduceMotion();
+        const heatLvl = t > 0 ? 1 : 0;
         SUBS.forEach((s, i) => {
             const cx = x0 + i * slotW + slotW / 2;
             const temp = tempOf(s, t, m);
-            const frac = Math.max(0, Math.min(1, (temp - 0) / tMax));
-            // vessel
-            out += `<path class="vessel" d="M${cx - 30},58 L${cx - 30},146 Q${cx - 30},166 ${cx - 10},166 L${cx + 10},166 Q${cx + 30},166 ${cx + 30},146 L${cx + 30},58" fill="none"/>`;
+            // 가열판: 같은 200 W 가열판 위에 하나씩. 켜지면 열선이 붉어진다
+            out += `<rect x="${cx - 40}" y="152" width="80" height="22" rx="4" fill="#cbd5db" stroke="#7b8a93" stroke-width="1.4"/>`;
+            out += `<rect x="${cx - 36}" y="148" width="72" height="6" rx="2" fill="${heatLvl ? '#e2553b' : '#8d9aa2'}"/>`;
+            out += `<circle cx="${cx + 26}" cy="164" r="3.5" fill="${heatLvl ? '#ef4444' : '#94a3b8'}"/>`;
             if (s.solid) {
-                // A metal is a block resting in the container, not something
-                // that fills it to a level the way a liquid does.
-                out += `<rect class="substance solid-block" x="${cx - 21}" y="118" width="42" height="44" rx="4" fill="${s.color}" opacity="0.85"/>`;
-                out += `<line class="block-edge" x1="${cx - 21}" y1="128" x2="${cx + 21}" y2="128"/>`;
-                out += `<line class="block-edge" x1="${cx - 21}" y1="146" x2="${cx + 21}" y2="146"/>`;
+                // 금속 덩어리: 가열판 위에 바로 놓고, 윗면에 표면 온도계 탐침을 댄다
+                const glow = Math.max(0, Math.min(0.3, (temp - 40) / 400));
+                out += `<path d="M${cx - 26},106 L${cx - 14},96 L${cx + 30},96 L${cx + 18},106 Z" fill="${s.color}" stroke="#56636b" stroke-width="1.2"/>`;
+                out += `<path d="M${cx + 18},106 L${cx + 30},96 L${cx + 30},138 L${cx + 18},148 Z" fill="${s.color}" stroke="#56636b" stroke-width="1.2" style="filter:brightness(.8)"/>`;
+                out += `<rect x="${cx - 26}" y="106" width="44" height="42" fill="${s.color}" stroke="#56636b" stroke-width="1.2"/>`;
+                if (glow > 0) out += `<rect x="${cx - 26}" y="106" width="44" height="42" fill="#ef4444" opacity="${glow.toFixed(2)}"/>`;
+                out += `<path d="M${cx + 2},50 L${cx + 2},92" stroke="#334155" stroke-width="2"/><rect x="${cx - 2}" y="90" width="8" height="6" rx="1.5" fill="#334155"/>`;
             } else {
-                out += `<rect class="substance" x="${cx - 28}" y="96" width="56" height="68" rx="3" fill="${s.color}" opacity="0.55"/>`;
-                out += `<ellipse class="liquid-surface" cx="${cx}" cy="96" rx="28" ry="4"/>`;
+                // 액체: 유리 비커에 담고 탐침을 액체 속에 넣는다
+                out += `<rect class="substance" x="${cx - 26}" y="88" width="52" height="58" rx="3" fill="${s.color}" opacity="0.6"/>`;
+                out += `<ellipse class="liquid-surface" cx="${cx}" cy="88" rx="26" ry="3"/>`;
+                if (on) for (let k = 0; k < 4; k += 1) { const ph = ((now / 1100) + k / 4 + i * .13) % 1; out += `<circle cx="${(cx - 14 + k * 9 + Math.sin(now / 300 + k) * 2).toFixed(1)}" cy="${(142 - ph * 50).toFixed(1)}" r="${(1.4 + ph).toFixed(1)}" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="${(1 - ph).toFixed(2)}"/>`; }
+                out += `<path class="vessel" d="M${cx - 30},66 L${cx - 30},140 Q${cx - 30},148 ${cx - 22},148 L${cx + 22},148 Q${cx + 30},148 ${cx + 30},140 L${cx + 30},66" fill="none"/>`;
+                out += `<path d="M${cx + 2},50 L${cx + 2},132" stroke="#334155" stroke-width="2"/><circle cx="${cx + 2}" cy="133" r="3" fill="#334155"/>`;
             }
-            // thermometer standing in it
-            out += `<rect class="therm-tube" x="${cx + 12}" y="40" width="10" height="104" rx="5"/>`;
-            out += `<rect class="therm-fill" x="${cx + 14}" y="${(142 - 100 * frac).toFixed(1)}" width="6" height="${(100 * frac + 2).toFixed(1)}" rx="3"/>`;
-            out += `<text class="temp-text" fill="${temp >= 99.5 && s.boil ? '#d97706' : '#dc2626'}" x="${cx - 8}" y="${34}" text-anchor="middle">${temp.toFixed(1)} ℃</text>`;
-            out += `<text class="sub-name" x="${cx}" y="188" text-anchor="middle">${s.name}</text>`;
-            out += `<text class="sub-c" x="${cx}" y="201" text-anchor="middle">비열 ${s.c.toFixed(2)}</text>`;
-            if (s.boil && temp >= s.boil - 0.05) {
-                out += `<text class="boil-mark" x="${cx}" y="214" text-anchor="middle">끓기 시작</text>`;
-            }
+            // 디지털 온도계 화면
+            out += `<rect x="${cx - 30}" y="14" width="64" height="34" rx="6" fill="#f8fafc" stroke="#475569" stroke-width="1.4"/>`;
+            out += `<text class="temp-text" fill="${temp >= 99.5 && s.boil ? '#b45309' : '#b91c1c'}" x="${cx + 2}" y="37" text-anchor="middle">${temp.toFixed(1)} ℃</text>`;
+            out += `<text class="sub-name" x="${cx}" y="194" text-anchor="middle">${s.name}</text>`;
+            out += `<text class="sub-c" x="${cx}" y="212" text-anchor="middle">비열 ${s.c.toFixed(2)}</text>`;
+            if (s.boil && temp >= s.boil - 0.05) out += `<text class="boil-mark" x="${cx}" y="230" text-anchor="middle">끓기 시작</text>`;
+            // 가열판에서 올라오는 열기
+            if (on) for (let k = 0; k < 2; k += 1) { const ph = ((now / 900) + k / 2 + i * .21) % 1, hx = cx + (k ? 34 : -34); out += `<path d="M${hx},${(146 - ph * 30).toFixed(1)} q3,-4 0,-8 q-3,-4 0,-8" stroke="#f59e0b" stroke-width="1.6" fill="none" opacity="${(0.8 * (1 - ph)).toFixed(2)}"/>`; }
         });
-        // one burner under all four
-        out += `<rect class="burner" x="34" y="222" width="392" height="10" rx="4"/>`;
-        if (t > 0) {
-            for (let i = 0; i < 4; i += 1) {
-                const fx = x0 + i * slotW + slotW / 2;
-                out += `<g class="flame"><path class="flame-outer" d="M${fx},220 C${fx - 12},208 ${fx - 9},198 ${fx},188 C${fx + 9},198 ${fx + 12},208 ${fx},220 Z"/>` +
-                       `<path class="flame-inner" d="M${fx},216 C${fx - 6},207 ${fx - 4},200 ${fx},194 C${fx + 4},200 ${fx + 6},207 ${fx},216 Z"/></g>`;
-            }
-        }
-        out += `<text class="sub-c" x="230" y="245" text-anchor="middle">가열기 ${POWER} W · 각 ${m} g · ${t.toFixed(1)} 초</text>`;
+        out += `<text class="sub-c" x="230" y="246" text-anchor="middle">가열판 ${POWER} W · 각 ${m} g · ${t.toFixed(1)} 초</text>`;
         window.scienceScene.render(mainGroup,out);
 
         // temperature against time, one line per substance
@@ -145,24 +144,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tMax > 100) {
             g += `<line class="boil-line" x1="${GRAPH.x0}" y1="${gy(100, tMax)}" x2="${GRAPH.x1}" y2="${gy(100, tMax)}"/>`;
             // label sits inside the plot: placed past x1 it ran off the canvas
-            g += `<text class="axis-text" x="${GRAPH.x1 - 4}" y="${gy(100, tMax) - 5}" style="fill:#d97706" text-anchor="end">물의 끓는점 100℃</text>`;
+            g += `<text class="axis-text" x="${GRAPH.x0 + 6}" y="${gy(100, tMax) - 5}" style="fill:#b45309">물의 끓는점 100℃</text>`;
         }
+        const tags = [];
         SUBS.forEach(s => {
             const pts = [];
-            for (let k = 0; k <= 60; k += 1) {
+            // 가열한 시간까지만 그린다
+            for (let k = 0; k <= 60 && (MAX_TIME * k) / 60 <= t; k += 1) {
                 const tt = (MAX_TIME * k) / 60;
                 pts.push(`${gx(tt, MAX_TIME).toFixed(1)},${gy(tempOf(s, tt, m), tMax).toFixed(1)}`);
             }
-            g += `<path class="t-line" style="stroke:${s.color}" d="M${pts.join('L')}"/>`;
+            pts.push(`${gx(t, MAX_TIME).toFixed(1)},${gy(tempOf(s, t, m), tMax).toFixed(1)}`);
+            g += `<path class="t-line" style="stroke:${s.lineColor || s.color}" d="M${pts.join('L')}"/>`;
             const cxp = gx(t, MAX_TIME), cyp = gy(tempOf(s, t, m), tMax);
-            g += `<circle class="t-dot" cx="${cxp.toFixed(1)}" cy="${cyp.toFixed(1)}" r="4" fill="${s.color}"/>`;
+            g += `<circle class="t-dot" cx="${cxp.toFixed(1)}" cy="${cyp.toFixed(1)}" r="4" fill="${s.lineColor || s.color}"/>`;
+            tags.push({ s, x: cxp, y: cyp });
         });
+        // 선 끝의 이름표: 서로 14만큼은 떨어지게 위아래로 민다
+        if (t > 0) {
+            tags.sort((a, b) => b.y - a.y);
+            let last = Infinity;
+            tags.forEach(tg => { const y = Math.min(tg.y + 4, last - 14); last = y; g += `<text class="axis-text" style="fill:${tg.s.lineColor}" x="${(tg.x + 8).toFixed(1)}" y="${y.toFixed(1)}">${tg.s.name}</text>`; });
+        }
         window.scienceScene.render(graphGroup,g);
 
-        window.scienceScene.render(dataNote,`<div class="data-row head"><span>물질</span><span>온도</span><span>비열 (J/g·℃)</span></div>` +
-            SUBS.map(s => `<div class="data-row"><span class="data-name">${s.name}</span>` +
-                `<span class="data-val">${tempOf(s, t, m).toFixed(1)} ℃</span>` +
-                `<span class="data-extra">${s.c.toFixed(2)}</span></div>`).join(''));
+        window.scienceScene.render(dataNote,`<table class="heat-table"><thead><tr><th>물질</th><th>비열 (J/g·℃)</th><th>지금 온도</th></tr></thead><tbody>` +
+            SUBS.map(s => `<tr><td>${s.name}</td><td>${s.c.toFixed(2)}</td><td>${tempOf(s, t, m).toFixed(1)} ℃</td></tr>`).join('') + `</tbody></table>`);
 
         stageBadge.textContent = `${t.toFixed(1)} 초`;
         timeOutput.textContent = `${t.toFixed(t % 1 ? 1 : 0)} 초`;
@@ -210,10 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         window.scienceScene.render(graphGroup,g);
 
-        window.scienceScene.render(dataNote,`<div class="data-row head"><span>금속</span><span>늘어난 길이</span><span>팽창 계수 (1/℃)</span></div>` +
-            METALS.map(mt => `<div class="data-row"><span class="data-name">${mt.name}</span>` +
-                `<span class="data-val">${expansionMM(mt, dT).toFixed(2)} mm</span>` +
-                `<span class="data-extra">${(mt.alpha * 1e6).toFixed(0)} × 10⁻⁶</span></div>`).join(''));
+        window.scienceScene.render(dataNote,`<table class="heat-table"><thead><tr><th>금속</th><th>팽창 계수 (1/℃)</th><th>늘어난 길이</th></tr></thead><tbody>` +
+            METALS.map(mt => `<tr><td>${mt.name}</td><td>${(mt.alpha * 1e6).toFixed(0)} × 10⁻⁶</td><td>${expansionMM(mt, dT).toFixed(2)} mm</td></tr>`).join('') + `</tbody></table>`);
 
         stageBadge.textContent = `+${dT} ℃`;
         deltaOutput.textContent = `${dT} ℃`;

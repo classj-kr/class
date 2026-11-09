@@ -198,8 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionLegend.textContent = state.mode === 'one' ? '우성 : 열성 비는 어떻게 나올까요?' : '네 가지 겉모습의 비는 어떻게 나올까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+            const first = !state.prediction;
             state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+            if (first && !running && !state.progress) startFill(); else render();
         }));
     }
 
@@ -217,6 +219,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const phenoOf = (a, key) => a.phenos.find(ph => ph.key === key);
 
+    // The expected table is the answer to the ratio question, so it fills only
+    // after a prediction is chosen (or the seeds are sown), one cell at a time.
+    let fillStart = 0, fillFrame = 0;
+    const revealed = () => !!state.prediction || running || state.progress > 0;
+    function filledCells(total) {
+        if (!revealed()) return 0;
+        if (!fillStart || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return total;
+        return Math.min(total, Math.floor((performance.now() - fillStart) / Math.max(40, 700 / total)) + 1);
+    }
+    function startFill() {
+        cancelAnimationFrame(fillFrame);
+        fillStart = performance.now();
+        const step = () => { render(); if (performance.now() - fillStart < 800) fillFrame = requestAnimationFrame(step); else { fillStart = 0; render(); } };
+        fillFrame = requestAnimationFrame(step);
+    }
+
     function renderPunnett(a) {
         const n = a.gamA.length;
         const cell = a.kind === 'two' ? 44 : 36;
@@ -230,10 +248,16 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="pun-head" x="${X}" y="${Y + cell * (i + 1)}" width="${cell}" height="${cell}"/>`;
             out += `<text class="pun-gamete" x="${X + cell / 2}" y="${Y + cell * (i + 1) + cell / 2 + 4}" text-anchor="middle">${a.gamB[i]}</text>`;
         }
+        const filled = filledCells(n * n);
         for (let i = 0; i < n; i += 1) for (let j = 0; j < n; j += 1) {
-            const geno = a.cells[i][j];
-            const ph = phenoOf(a, a.classify(geno));
+            const geno = a.cells[i][j], order = j * n + i;
             const x = X + cell * (i + 1), y = Y + cell * (j + 1);
+            if (order >= filled) {
+                out += `<rect class="pun-cell pun-blank" x="${x}" y="${y}" width="${cell}" height="${cell}"/>`;
+                out += `<text class="pun-text pun-q" x="${x + cell / 2}" y="${y + cell / 2 + 4}" text-anchor="middle">?</text>`;
+                continue;
+            }
+            const ph = phenoOf(a, a.classify(geno));
             out += `<rect class="pun-cell" fill="${ph.hex}" x="${x}" y="${y}" width="${cell}" height="${cell}"/>`;
             const dark = ph.hex === '#9b5de5';
             out += `<text class="pun-text${dark ? ' light' : ''}" x="${x + cell / 2}" y="${y + cell / 2 + 3.5}" text-anchor="middle">${geno}</text>`;
@@ -296,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const head = a.kind === 'one'
             ? `${alleles(state.parentA, a.gene).join('')} × ${alleles(state.parentB, a.gene).join('')}`
             : a.cross.label;
-        out += `<text class="verdict-text figure-caption" fill="#0f172a" x="26" y="210">${head} · 기대 ${expectedText(a)}</text>`;
+        out += `<text class="verdict-text figure-caption" fill="#0f172a" x="26" y="210">${head}${revealed() ? ` · 기대 ${expectedText(a)}` : ''}</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -376,8 +400,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ? Object.entries(a.genoCounts).map(([g, c]) => `${g} ${c}`).join(' : ')
             : '표의 16칸';
         return `<div class="data-row"><span class="data-name">생식세포</span><span class="data-val">${gam}</span></div>` +
-            `<div class="data-row"><span class="data-name">유전자형 (기대)</span><span class="data-val">${genoRatio}</span></div>` +
-            `<div class="data-row"><span class="data-name">겉모습 (기대)</span><span class="data-val">${a.phenos.map(ph => `${ph.label} ${Math.round(ph.p * 100)} %`).join(' · ')}</span></div>` +
+            (!revealed() ? '' : `<div class="data-row"><span class="data-name">유전자형 (기대)</span><span class="data-val">${genoRatio}</span></div>` +
+            `<div class="data-row"><span class="data-name">겉모습 (기대)</span><span class="data-val">${a.phenos.map(ph => `${ph.label} ${Math.round(ph.p * 100)} %`).join(' · ')}</span></div>`) +
             `<div class="data-row"><span class="data-name">뿌린 씨앗</span><span class="data-val">${k} / ${state.seeds}${a.trait.unit}</span></div>` +
             `<div class="data-row match"><span class="data-name">지금까지</span><span class="data-val">${a.phenos.map(ph => `${ph.label} ${counts[ph.key]}`).join(' · ')} → ${ratioText(a, counts)}</span></div>` +
             `<div class="data-row"><span class="data-name">쓰인 법칙</span><span class="data-val">${a.laws.join(' · ')}</span></div>`;

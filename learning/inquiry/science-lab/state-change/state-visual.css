@@ -15,13 +15,13 @@
     filter: drop-shadow(0 16px 20px rgba(0, 0, 0, .22));
 }
 .beaker-svg { width: 100%; height: 100%; display: block; overflow: visible; }
-.beaker-glass { stroke: rgba(177, 226, 230, .78); stroke-width: 5; stroke-linejoin: round; }
-.beaker-rim { stroke: rgba(177, 226, 230, .82); stroke-width: 4; }
+.beaker-glass { stroke: #8fb3c4; stroke-width: 5; stroke-linejoin: round; }
+.beaker-rim { stroke: #8fb3c4; stroke-width: 4; }
 .beaker-shine { pointer-events: none; }
 .water-surface { fill: rgba(190, 238, 250, .4); transition: cy .9s ease; }
 #waterRect { transition: y .9s ease, height .9s ease; }
-.tick { stroke: rgba(220, 246, 247, .5); stroke-width: 1.5; }
-.tick-label { fill: rgba(220, 246, 247, .72); font-size: 14px; font-weight: 700; text-anchor: end; }
+.tick { stroke: #64748b; stroke-width: 1.5; }
+.tick-label { fill: #334155; font-size: 14px; font-weight: 700; text-anchor: end; }
 
 .ice-facet { stroke: rgba(255, 255, 255, .55); stroke-width: 1.2; }
 /* Ice doesn't swap in/out — it's always drawn full-size underneath, and
@@ -40,12 +40,14 @@
    boiling (state-gas). transform-box:fill-box lets a plain translateY()
    move each circle in its own local space regardless of its cx/cy. */
 #bubbleGroup circle {
-    fill: rgba(255, 255, 255, .6);
+    fill: rgba(255, 255, 255, .7);
+    stroke: rgba(40, 110, 150, .55);
+    stroke-width: 1;
     opacity: 0;
     transform-box: fill-box;
     transform-origin: center;
 }
-.beaker.state-liquid-gas #bubbleGroup circle { animation: bubbleRise 1.6s ease-in infinite; animation-delay: var(--delay); }
+.beaker.state-liquid-gas #bubbleGroup circle, .beaker.boiling #bubbleGroup circle { animation: bubbleRise 1.6s ease-in infinite; animation-delay: var(--delay); }
 
 @keyframes bubbleRise {
     0% { transform: translateY(0) scale(.4); opacity: 0; }
@@ -89,19 +91,19 @@
 
 .thermometer-wrap {
     position: absolute;
-    top: 3%;
-    bottom: 16%;
-    left: 22%;
+    top: -9%;
+    bottom: 20%;
+    left: 30%;
     width: auto;
     aspect-ratio: 50 / 240;
-    transform: rotate(-4deg);
+    transform: none;
     transform-origin: bottom center;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .25));
 }
-.therm-ticks line { stroke: rgba(255, 255, 255, .55); stroke-width: 1.5; }
+.therm-ticks line { stroke: #475569; stroke-width: 1.5; }
 .thermometer-svg { width: 100%; height: 100%; display: block; overflow: visible; }
-.tube-outline { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .5); stroke-width: 2.5; }
-.bulb-outline { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .5); stroke-width: 2.5; }
+.tube-outline { fill: rgba(255, 255, 255, .75); stroke: #7c93a3; stroke-width: 2.2; }
+.bulb-outline { fill: rgba(255, 255, 255, .75); stroke: #7c93a3; stroke-width: 2.2; }
 .bulb-fill { fill: var(--danger); }
 #mercuryRect { transition: y .25s ease, height .25s ease; }
 
@@ -136,3 +138,10 @@
 .prediction-buttons button { word-break: keep-all; }
 #phaseControls .range-scale { display: flex; justify-content: space-between; gap: 10px; }
 #phaseControls .range-scale span { flex: 0 1 auto; word-break: keep-all; }
+
+/* 비커는 관찰 칸 가운데에, 온도계는 비커 테두리에 집게로 꽂아 곧게 세운다 */
+.apparatus { display: flex; justify-content: center; padding: 18px 0 4px; }
+.beaker { filter: drop-shadow(0 10px 14px rgba(15, 23, 42, .12)); }
+.therm-clip { fill: #475569; }
+.ice-facet { stroke: rgba(98, 150, 178, .7); stroke-width: 1.4; }
+#iceRect { stroke: #7fb2cc; stroke-width: 1.5; }

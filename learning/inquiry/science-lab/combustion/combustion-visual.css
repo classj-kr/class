@@ -51,7 +51,7 @@
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
-.glass { fill: rgba(150, 210, 235, .08); stroke: rgba(177, 226, 230, .7); stroke-width: 2.2; }
+.glass { fill: rgba(150, 210, 235, .12); stroke: #6fa7bb; stroke-width: 2.4; }
 .stand { fill: #64748b; stroke: #475569; stroke-width: 1.4; }
 .steel { stroke: #64748b; stroke-width: 1.8; fill: none; }
 .steel.burnt { stroke: #78350f; }
@@ -80,6 +80,7 @@
 .axis-title { fill: #0f172a; font-size: 14px; font-weight: 900; }
 .bar { stroke: rgba(0, 0, 0, .2); stroke-width: .8; }
 .bar-text { font-size: 14px; font-weight: 900; }
+.bar-name, .axis-name { fill: #0f172a; font-size: 14px; font-weight: 850; }
 
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 

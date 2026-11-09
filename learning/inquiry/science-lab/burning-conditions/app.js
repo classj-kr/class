@@ -110,134 +110,159 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /* ----------------------------------------------------------- visuals */
-    function flame(cx, baseY, s, dim = 1) {
+    // Animation phases: idle → heat (lamp lit, plate warms) → run (model time) → tail (smoke drifts) → done.
+    const HEAT_MS = 1600, TAIL_MS = 1200, ROOM = 20;
+    let phase = 'idle', phaseStart = 0, clock = 0, finished = false, outAt = null;
+    const reducedMotion = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    function flame(cx, baseY, s, sway = 0, colors = ['#f59e0b', '#c2410c']) {
         if (s <= 0.02) return '';
-        return `<path class="flame" opacity="${dim.toFixed(2)}" d="M${cx},${baseY} C${(cx - 9 * s).toFixed(1)},${(baseY - 6 * s).toFixed(1)} ` +
-               `${(cx - 7 * s).toFixed(1)},${(baseY - 20 * s).toFixed(1)} ${cx},${(baseY - 29 * s).toFixed(1)} ` +
-               `C${(cx + 7 * s).toFixed(1)},${(baseY - 20 * s).toFixed(1)} ${(cx + 9 * s).toFixed(1)},${(baseY - 6 * s).toFixed(1)} ${cx},${baseY} Z"/>` +
-               `<path class="flame inner" opacity="${dim.toFixed(2)}" d="M${cx},${baseY} C${(cx - 4 * s).toFixed(1)},${(baseY - 4 * s).toFixed(1)} ` +
-               `${(cx - 3 * s).toFixed(1)},${(baseY - 11 * s).toFixed(1)} ${cx},${(baseY - 16 * s).toFixed(1)} ` +
-               `C${(cx + 3 * s).toFixed(1)},${(baseY - 11 * s).toFixed(1)} ${(cx + 4 * s).toFixed(1)},${(baseY - 4 * s).toFixed(1)} ${cx},${baseY} Z"/>`;
+        const tip = cx + sway;
+        const f = (w, h, fill) => `<path fill="${fill}" d="M${cx},${baseY} C${(cx - w * s).toFixed(1)},${(baseY - 0.2 * h * s).toFixed(1)} ` +
+            `${(cx - 0.8 * w * s + sway * 0.4).toFixed(1)},${(baseY - 0.7 * h * s).toFixed(1)} ${tip.toFixed(1)},${(baseY - h * s).toFixed(1)} ` +
+            `C${(cx + 0.8 * w * s + sway * 0.4).toFixed(1)},${(baseY - 0.7 * h * s).toFixed(1)} ${(cx + w * s).toFixed(1)},${(baseY - 0.2 * h * s).toFixed(1)} ${cx},${baseY} Z"/>`;
+        return f(9, 32, colors[0]) + f(4.5, 17, colors[1]);
     }
 
     const VERDICT = { burn: '계속 탄다', out: '타다가 꺼진다', none: '불이 붙지 않는다' };
-    const TONE = { burn: '#d97706', out: '#ea580c', none: '#8fa8b0' };
+    const TONE = { burn: '#b45309', out: '#c2410c', none: '#64748b' };
+
+    // Temperature the thermometer shows right now (the plate warms up during the heat phase).
+    function shownTemp() {
+        if (phase === 'idle') return ROOM;
+        if (phase === 'heat') { const u = Math.min(1, (clock - phaseStart) / HEAT_MS); return ROOM + (state.temp - ROOM) * (1 - Math.pow(1 - u, 2)); }
+        return state.temp;
+    }
 
     function renderMain(a) {
         const p = state.progress;
         const t = p * a.runFor;
         const o2 = o2At(t, a);
-        const STAND_Y = 178, CX = 200;
+        const CX = 210, PLATE = 168, BENCH = 238;
+        const temp = shownTemp(), heatFrac = Math.max(0, Math.min(1, (temp - ROOM) / 480));
+        const lampLit = phase !== 'idle';
+        const ignited = a.hasFuel && a.hotEnough && (phase === 'run' || phase === 'tail' || (phase === 'done' && a.outcome !== 'none') || (phase === 'heat' && temp >= a.fuel.ignite));
+        const sinceIgnite = phase === 'heat' ? (clock - phaseStart) - HEAT_MS * (1 - Math.sqrt(Math.max(0, 1 - (a.fuel.ignite - ROOM) / Math.max(1, state.temp - ROOM)))) : 9999;
         let out = '';
 
-        // thermometer, with the fuel's ignition point marked on it
-        const TX = 44, TOP = 56, BOT = 172;
-        out += `<rect class="therm-tube" x="${TX}" y="${TOP}" width="9" height="${BOT - TOP}" rx="4.5"/>`;
-        const tf = Math.min(1, state.temp / 500);
-        out += `<rect class="therm-fill" x="${TX + 2}" y="${(BOT - 4 - (BOT - TOP - 8) * tf).toFixed(1)}" width="5" height="${((BOT - TOP - 8) * tf + 4).toFixed(1)}" rx="2.5"/>`;
-        // below the bulb, so the ignition-point label can never land on it
-        out += `<text class="read-text" x="${TX + 4}" y="190" text-anchor="middle">${state.temp} ℃</text>`;
-        if (a.hasFuel) {
-            const iy = BOT - 4 - (BOT - TOP - 8) * (a.fuel.ignite / 500);
-            out += `<line class="ignite-line" x1="${TX - 8}" y1="${iy.toFixed(1)}" x2="${TX + 74}" y2="${iy.toFixed(1)}"/>`;
-            out += `<text class="ignite-text" x="${TX + 15}" y="${(iy - 4).toFixed(1)}">발화점 ${a.fuel.ignite} ℃</text>`;
-        }
+        // bench, tripod (back leg first), alcohol lamp, then the iron plate
+        out += `<rect x="0" y="${BENCH}" width="460" height="14" fill="#eadfcd"/><line x1="0" y1="${BENCH}" x2="460" y2="${BENCH}" stroke="#c7b79c" stroke-width="2"/>`;
+        out += `<line x1="${CX}" y1="178" x2="${CX}" y2="${BENCH}" stroke="#9aa5ad" stroke-width="4"/>`;
+        out += `<path d="M${CX - 22},${BENCH} Q${CX - 26},214 ${CX - 12},207 H${CX + 12} Q${CX + 26},214 ${CX + 22},${BENCH} Z" fill="#dcecf3" stroke="#6b8b99" stroke-width="2"/>`;
+        out += `<path d="M${CX - 20},${BENCH - 2} Q${CX - 22},224 ${CX - 16},220 H${CX + 16} Q${CX + 22},224 ${CX + 20},${BENCH - 2} Z" fill="#bfe0ea"/>`;
+        out += `<rect x="${CX - 8}" y="199" width="16" height="9" rx="2" fill="#7c8a93"/><line x1="${CX}" y1="199" x2="${CX}" y2="193" stroke="#3a2c1c" stroke-width="2.4"/>`;
+        if (lampLit) out += flame(CX, 194, 0.48, Math.sin(clock / 70) * 1.2, ['#fbbf24', '#60a5fa']);
+        out += `<text class="small-label" x="${CX - 92}" y="224" text-anchor="end">알코올램프</text><line x1="${CX - 90}" y1="220" x2="${CX - 24}" y2="220" stroke="#94a3b8" stroke-width="1"/>`;
+        out += `<line x1="${CX - 66}" y1="178" x2="${CX - 82}" y2="${BENCH}" stroke="#6b7780" stroke-width="4.5" stroke-linecap="round"/>`;
+        out += `<line x1="${CX + 66}" y1="178" x2="${CX + 82}" y2="${BENCH}" stroke="#6b7780" stroke-width="4.5" stroke-linecap="round"/>`;
+        out += `<rect x="${CX - 72}" y="174" width="144" height="5" rx="2" fill="#6b7780"/>`;
+        const plateFill = `rgb(${Math.round(138 + 70 * heatFrac)},${Math.round(150 - 40 * heatFrac)},${Math.round(160 - 70 * heatFrac)})`;
+        out += `<rect x="${CX - 80}" y="${PLATE}" width="160" height="6" rx="1.5" fill="${plateFill}" stroke="#55606a" stroke-width="1.2"/>`;
+        out += `<text class="small-label" x="${CX - 86}" y="${PLATE + 6}" text-anchor="end">철판</text>`;
 
-        // the burning thing on its stand
-        out += `<rect class="stand" x="${CX - 50}" y="${STAND_Y}" width="100" height="8" rx="2"/>`;
-        let flameBase = STAND_Y;
-        const burning = (a.outcome === 'burn') || (a.outcome === 'out' && o2 > O2_FLOOR + 0.001);
+        // the fuel on the plate
+        let flameBase = PLATE;
         if (state.fuel === 'candle') {
-            const used = a.outcome === 'none' ? 0 : 14 * p;
-            const top = 128 + used;
-            out += `<rect class="candle" x="${CX - 9}" y="${top.toFixed(1)}" width="18" height="${(STAND_Y - top).toFixed(1)}" rx="2"/>`;
-            out += `<line class="wick" x1="${CX}" y1="${top.toFixed(1)}" x2="${CX}" y2="${(top - 7).toFixed(1)}"/>`;
-            flameBase = top - 6;
+            const used = ignited ? 12 * p : 0;
+            const top = 118 + used;
+            out += `<ellipse cx="${CX}" cy="${PLATE - 2}" rx="19" ry="4" fill="#a3adb5" stroke="#6b7780" stroke-width="1.2"/>`;
+            out += `<rect x="${CX - 10}" y="${top.toFixed(1)}" width="20" height="${(PLATE - 3 - top).toFixed(1)}" rx="2" fill="#f4ead6" stroke="#c9b993" stroke-width="1.2"/>`;
+            out += `<rect x="${CX - 6}" y="${(top + 4).toFixed(1)}" width="4" height="${(PLATE - 12 - top).toFixed(1)}" rx="2" fill="#fbf6ea"/>`;
+            if (ignited) out += `<ellipse cx="${CX}" cy="${(top + 1).toFixed(1)}" rx="7" ry="2" fill="#e8d6b0"/>`;
+            out += `<line x1="${CX}" y1="${top.toFixed(1)}" x2="${CX}" y2="${(top - 7).toFixed(1)}" stroke="${ignited ? '#1f160d' : '#3a2c1c'}" stroke-width="2.2" stroke-linecap="round"/>`;
+            flameBase = top - 5;
         } else if (state.fuel === 'paper') {
-            const left = a.outcome === 'none' ? 1 : 1 - 0.75 * p;
-            out += `<rect class="paper" x="${(CX - 24 * left).toFixed(1)}" y="158" width="${(48 * left).toFixed(1)}" height="20" rx="2"/>`;
-            flameBase = 156;
+            const left = ignited ? 1 - 0.75 * p : 1;
+            const w = 26 * left;
+            out += `<path d="M${(CX - w).toFixed(1)},${PLATE} L${(CX - w + 4).toFixed(1)},${PLATE - 9} L${(CX - w / 3).toFixed(1)},${PLATE - 5} L${CX},${PLATE - 13} L${(CX + w / 2).toFixed(1)},${PLATE - 6} L${(CX + w).toFixed(1)},${PLATE - 10} L${(CX + w).toFixed(1)},${PLATE} Z" fill="#efe8d8" stroke="#b9ad92" stroke-width="1.2"/>`;
+            if (ignited && p > 0) out += `<path d="M${(CX - w).toFixed(1)},${PLATE} L${(CX + w).toFixed(1)},${PLATE}" stroke="#3b2f25" stroke-width="3"/>`;
+            flameBase = PLATE - 8;
         } else {
-            out += `<text class="small-label" x="${CX}" y="${STAND_Y - 8}" text-anchor="middle">탈 물질이 없습니다</text>`;
+            out += `<text class="small-label" x="${CX}" y="${PLATE - 10}" text-anchor="middle">빈 철판</text>`;
         }
 
-        if (burning && a.hasFuel) {
-            // the flame shrinks as the trapped oxygen runs low
-            const strength = state.oxygen === 'closed' ? 0.4 + 0.6 * ((o2 - O2_FLOOR) / (O2_START - O2_FLOOR)) : 1;
-            out += flame(CX, flameBase, strength);
-        } else if (a.outcome === 'out' && p > 0) {
-            for (let i = 0; i < 3; i += 1) {
-                out += `<path class="smoke" d="M${CX + i * 4 - 4},${flameBase - i * 9} q6,-7 0,-13"/>`;
+        // flame: catches when the plate passes the ignition point, flickers, shrinks as the trapped oxygen runs low
+        const alive = ignited && (a.outcome === 'burn' || (a.outcome === 'out' && (phase === 'heat' || o2 > O2_FLOOR + 0.001)));
+        if (alive && a.hasFuel) {
+            const grow = Math.min(1, sinceIgnite / 400);
+            const strength = (state.oxygen === 'closed' ? 0.35 + 0.65 * ((o2 - O2_FLOOR) / (O2_START - O2_FLOOR)) : 1) * grow;
+            const flick = phase === 'done' ? 1 : 1 + 0.07 * Math.sin(clock / 85) + 0.04 * Math.sin(clock / 37);
+            const sway = phase === 'done' ? 0 : Math.sin(clock / 120) * 2.2 * strength;
+            out += flame(CX, flameBase, strength * flick, sway);
+        } else if (a.outcome === 'out' && ignited && (phase === 'tail' || phase === 'done' || p >= 1)) {
+            const age = phase === 'tail' ? (clock - phaseStart) / TAIL_MS : 1;
+            for (let i = 0; i < 4; i += 1) {
+                const rise = (age * 34 + i * 9) % 40;
+                const op = phase === 'done' ? 0.45 - i * 0.08 : Math.max(0, 0.7 - rise / 50);
+                out += `<path d="M${CX + Math.sin(i * 2 + age * 6) * 3},${(flameBase - 2 - rise).toFixed(1)} q6,-6 0,-12 q-6,-6 0,-12" fill="none" stroke="#94a3b8" stroke-width="2.4" stroke-linecap="round" opacity="${op.toFixed(2)}"/>`;
             }
         }
 
-        // the jar that traps the air; its inside mists over as the water forms
+        // the jar sits on the plate and traps the air; its inside mists over as water forms
         if (state.oxygen === 'closed') {
             const half = 34 + (state.jar - 250) / 250 * 8;
-            const mist = a.outcome === 'out' ? Math.min(1, p * 1.4) : 0;
-            out += `<path class="glass" d="M${CX - half},${STAND_Y + 2} L${CX - half},${76} Q${CX - half},${64} ${CX - half + 12},${64} ` +
-                   `L${CX + half - 12},${64} Q${CX + half},${64} ${CX + half},${76} L${CX + half},${STAND_Y + 2}"/>`;
-            if (mist > 0) {
-                out += `<path class="mist" opacity="${(0.55 * mist).toFixed(2)}" d="M${CX - half + 3},${STAND_Y} L${CX - half + 3},${80} Q${CX - half + 3},${68} ${CX - half + 14},${68} ` +
-                       `L${CX + half - 14},${68} Q${CX + half - 3},${68} ${CX + half - 3},${80} L${CX + half - 3},${STAND_Y} Z"/>`;
-                out += `<text class="note-text" x="${CX}" y="${STAND_Y + 20}" text-anchor="middle">병 안쪽이 물방울로 흐려집니다</text>`;
-            }
-            out += `<text class="part-label" x="${CX}" y="56" text-anchor="middle">${state.jar} mL 유리병</text>`;
+            const mist = a.outcome === 'out' && ignited ? Math.min(1, p * 1.4) : 0;
+            const jarPath = `M${CX - half},${PLATE} L${CX - half},76 Q${CX - half},62 ${CX - half + 12},62 L${CX + half - 12},62 Q${CX + half},62 ${CX + half},76 L${CX + half},${PLATE}`;
+            out += `<path d="${jarPath} Z" fill="rgba(186,224,238,.18)"/>`;
+            if (mist > 0) out += `<path d="M${CX - half + 3},${PLATE} L${CX - half + 3},78 Q${CX - half + 3},66 ${CX - half + 14},66 L${CX + half - 14},66 Q${CX + half - 3},66 ${CX + half - 3},78 L${CX + half - 3},${PLATE} Z" fill="#cfdde3" opacity="${(0.5 * mist).toFixed(2)}"/>`;
+            out += `<path d="${jarPath}" fill="none" stroke="#6fa7bb" stroke-width="2.4"/>`;
+            out += `<path d="M${CX - half + 6},80 V${PLATE - 10}" stroke="#ffffff" stroke-width="3" opacity=".7"/>`;
+            out += `<text class="part-label" x="${CX}" y="54" text-anchor="middle">${state.jar} mL 유리병</text>`;
         }
 
-        out += `<text class="part-label" x="300" y="86">산소 농도</text>`;
-        out += `<text class="read-text" x="300" y="106">${o2.toFixed(1)} %</text>`;
-        out += `<text class="note-text" x="300" y="124">꺼지는 농도 ${O2_FLOOR} %</text>`;
-        out += `<text class="part-label" x="300" y="148">지난 시간</text>`;
-        out += `<text class="note-text" x="300" y="164">${t.toFixed(1)} 초</text>`;
+        // digital thermometer whose probe touches the plate
+        out += `<path d="M318,150 C300,150 300,172 ${CX + 78},171" fill="none" stroke="#475569" stroke-width="2"/>`;
+        out += `<rect x="318" y="128" width="96" height="42" rx="7" fill="#e2e8f0" stroke="#64748b" stroke-width="1.6"/>`;
+        out += `<rect x="325" y="134" width="82" height="30" rx="4" fill="#f8fafc" stroke="#94a3b8"/>`;
+        out += `<text class="read-text" x="366" y="155" text-anchor="middle">${Math.round(temp)} ℃</text>`;
+        out += `<text class="small-label" x="366" y="120" text-anchor="middle">온도계</text>`;
+        if (a.hasFuel) out += `<text class="ignite-text" x="366" y="190" text-anchor="middle">발화점 ${a.fuel.ignite} ℃</text>`;
 
-        const text = `${a.fuel.label} · ${state.oxygen === 'open' ? '열어 둠' : '덮음'} · ${state.temp} ℃ → ${VERDICT[a.outcome]}`;
-        out += `<text class="verdict-text" fill="${TONE[a.outcome]}" x="20" y="28">${text}</text>`;
+        out += `<text class="part-label" x="318" y="34">산소 농도</text>`;
+        out += `<text class="read-text" x="318" y="52">${o2.toFixed(1)} %</text>`;
+        out += `<text class="part-label" x="318" y="80">지난 시간</text>`;
+        out += `<text class="read-text" x="318" y="98">${t.toFixed(1)} 초</text>`;
+
+        if (finished) {
+            const text = `${a.fuel.label} · ${state.oxygen === 'open' ? '열어 둠' : '덮음'} · ${state.temp} ℃ → ${VERDICT[a.outcome]}`;
+            out += `<text class="verdict-text" fill="${TONE[a.outcome]}" x="14" y="24">${text}</text>`;
+        }
         window.scienceScene.render(mainGroup,out);
     }
 
     /* ------------------------------------------------------------- graph */
+    const AXIS_T = 14;   // fixed time axis so its length does not hint at the result
     function graphFrame(xTicks, yTicks, xTitle, yTitle) {
         let out = '';
         yTicks.forEach(([v, y]) => {
             out += `<line class="grid-line" x1="${GRAPH.x0}" y1="${y.toFixed(1)}" x2="${GRAPH.x1}" y2="${y.toFixed(1)}"/>`;
-            out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end">${v}</text>`;
+            out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end">${v}</text>`;
         });
         xTicks.forEach(([v, x]) => {
-            out += `<text class="axis-text" x="${x.toFixed(1)}" y="${GRAPH.y0 + 14}" text-anchor="middle">${v}</text>`;
+            out += `<text class="axis-text" x="${x.toFixed(1)}" y="${GRAPH.y0 + 16}" text-anchor="middle">${v}</text>`;
         });
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 30}" text-anchor="middle">${xTitle}</text>`;
-        out += `<text class="axis-title" x="${GRAPH.x0 + 4}" y="${GRAPH.y1 - 8}">${yTitle}</text>`;
+        out += `<text class="axis-name" x="${GRAPH.x1}" y="${GRAPH.y0 + 34}" text-anchor="end">${xTitle}</text>`;
+        out += `<text class="axis-name" x="${GRAPH.x0 + 4}" y="${GRAPH.y1 - 8}">${yTitle}</text>`;
         return out;
     }
 
     function graph(a) {
         const total = a.runFor, t = state.progress * total;
-        const gx = s => GRAPH.x0 + (s / total) * (GRAPH.x1 - GRAPH.x0);
+        const gx = s => GRAPH.x0 + (s / AXIS_T) * (GRAPH.x1 - GRAPH.x0);
         const gy = v => GRAPH.y0 - ((v - 14) / 8) * (GRAPH.y0 - GRAPH.y1);
         let out = graphFrame(
-            [0, 0.25, 0.5, 0.75, 1].map(f => [(f * total).toFixed(1), gx(f * total)]),
+            [0, 2, 4, 6, 8, 10, 12, 14].map(v => [v, gx(v)]),
             [16, 18, 20, 22].map(v => [v, gy(v)]),
             '시간 (초)', '산소 농도 (%)');
         out += `<line class="limit-line" x1="${GRAPH.x0}" y1="${gy(O2_FLOOR).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(O2_FLOOR).toFixed(1)}"/>`;
-        out += `<text class="limit-text" x="${GRAPH.x1 - 4}" y="${(gy(O2_FLOOR) - 5).toFixed(1)}" text-anchor="end">${O2_FLOOR} % 아래로는 탈 수 없습니다</text>`;
-        const line = (t1, cls) => {
+        out += `<text class="limit-text" x="${GRAPH.x1 - 4}" y="${(gy(O2_FLOOR) - 5).toFixed(1)}" text-anchor="end">꺼지는 농도 ${O2_FLOOR} %</text>`;
+        if (phase === 'run' || phase === 'tail' || phase === 'done') {
             const pts = [];
-            for (let i = 0; i <= 80; i += 1) {
-                const s = (t1 * i) / 80;
-                pts.push(`${gx(s).toFixed(1)},${gy(o2At(s, a)).toFixed(1)}`);
-            }
-            return `<path class="${cls}" d="M${pts.join('L')}"/>`;
-        };
-        out += line(total, 'trace-done');
-        if (t > 0) out += line(t, 'trace');
-        out += `<circle class="trace-dot" cx="${gx(t).toFixed(1)}" cy="${gy(o2At(t, a)).toFixed(1)}" r="5" fill="#0284c7"/>`;
-        if (state.oxygen === 'open') {
-            out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${(gy(O2_START) + 16).toFixed(1)}">공기가 계속 들어와 산소가 줄지 않습니다</text>`;
-        } else if (a.outcome === 'none') {
-            out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${(gy(O2_START) + 16).toFixed(1)}">타지 않으므로 산소도 줄지 않습니다</text>`;
+            for (let i = 0; i <= 80; i += 1) { const s = (t * i) / 80; pts.push(`${gx(s).toFixed(1)},${gy(o2At(s, a)).toFixed(1)}`); }
+            if (t > 0) out += `<path class="trace" d="M${pts.join('L')}"/>`;
+            out += `<circle class="trace-dot" cx="${gx(t).toFixed(1)}" cy="${gy(o2At(t, a)).toFixed(1)}" r="5" fill="#0284c7"/>`;
         }
         return out;
     }
@@ -248,11 +273,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<div class="data-row"><span class="data-name">탈 물질</span><span class="data-val">${a.fuel.label}${a.hasFuel ? ` · 발화점 ${a.fuel.ignite} ℃` : ' — 없으면 탈 수 없습니다'}</span></div>` +
             `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${state.temp} ℃ ${a.hasFuel ? (a.hotEnough ? '— 발화점 이상' : '— 발화점보다 낮음') : ''}</span></div>` +
             `<div class="data-row"><span class="data-name">산소</span><span class="data-val">${state.oxygen === 'open' ? '계속 들어옴 (21 %)' : `${state.jar} mL 안에 갇힘 · 지금 ${o2At(t, a).toFixed(1)} %`}</span></div>` +
-            (state.oxygen === 'closed'
+            (state.oxygen === 'closed' && finished && a.outcome === 'out'
                 ? `<div class="data-row"><span class="data-name">꺼지기까지</span><span class="data-val">쓸 수 있는 산소 ${(((O2_START - O2_FLOOR) / 100) * state.jar).toFixed(1)} mL ÷ 초당 ${O2_RATE} mL = ${a.outTime.toFixed(1)} 초</span></div>`
                 : '') +
             `<div class="data-row"><span class="data-name">타서 생긴 것</span><span class="data-val">${burned ? PRODUCTS : '아직 없음'}</span></div>` +
-            `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.outcome]}</span></div>`;
+            (finished ? `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.outcome]}</span></div>` : '');
     }
 
     function render() {
@@ -263,13 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tOut) tOut.textContent = `${state.temp} ℃`;
         const jOut = document.getElementById('jarRangeOut');
         if (jOut) jOut.textContent = `${state.jar} mL`;
-        stageBadge.textContent = `${a.fuel.label} · ${VERDICT[a.outcome]}`;
+        stageBadge.textContent = finished ? `${a.fuel.label} · ${VERDICT[a.outcome]}` : phase === 'idle' ? `${a.fuel.label} · 준비` : `${a.fuel.label} · 실험 중`;
         window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
 
     /* --------------------------------------------------------------- run */
     function tick(dt) {
+        if (phase === 'idle' || phase === 'heat') phase = 'run';
         state.progress = Math.min(1, state.progress + dt / runSeconds());
         render();
         return state.progress >= 1;
@@ -279,21 +305,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function frame(stamp) {
         if (!running) return;
-        const dt = Math.min(0.05, (stamp - lastStamp) / 1000 || 0);
-        lastStamp = stamp;
-        if (tick(dt)) { stopRun(); finish(); } else frameId = requestAnimationFrame(frame);
+        clock = stamp;
+        if (phase === 'heat') {
+            if (stamp - phaseStart >= HEAT_MS) { phase = 'run'; phaseStart = stamp; lastStamp = stamp; }
+            render();
+            frameId = requestAnimationFrame(frame); return;
+        }
+        if (phase === 'run') {
+            const dt = Math.min(0.05, (stamp - lastStamp) / 1000 || 0);
+            lastStamp = stamp;
+            state.progress = Math.min(1, state.progress + dt / runSeconds());
+            if (state.progress >= 1) {
+                const a = analyse();
+                if (a.outcome === 'out') { phase = 'tail'; phaseStart = stamp; }
+                else { stopRun(); phase = 'done'; finish(); return; }
+            }
+            render();
+            frameId = requestAnimationFrame(frame); return;
+        }
+        if (phase === 'tail') {
+            if (stamp - phaseStart >= TAIL_MS) { stopRun(); phase = 'done'; finish(); return; }
+            render();
+            frameId = requestAnimationFrame(frame);
+        }
     }
 
     function startRun() {
         stopRun();
         state.progress = 0;
+        finished = false;
+        hideResult();
+        if (reducedMotion()) { phase = 'run'; state.progress = 1; phase = 'done'; finish(); return; }
         running = true;
-        lastStamp = performance.now();
+        phase = 'heat';
+        clock = phaseStart = lastStamp = performance.now();
         render();
         frameId = requestAnimationFrame(frame);
     }
 
+    function hideResult() { resultEmpty.hidden = false; resultContent.hidden = true; }
+
     function finish() {
+        finished = true;
+        phase = 'done';
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -315,8 +369,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function settingsChanged() {
         stopRun();
         state.progress = 0;
-        resultEmpty.hidden = false;
-        resultContent.hidden = true;
+        phase = 'idle';
+        finished = false;
+        hideResult();
         render();
     }
 
@@ -367,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
         O2_START, O2_FLOOR, O2_RATE, FUELS, state,
         analyse, o2At, render, runSeconds,
         set(key, value) { state[key] = value; buildControls(); settingsChanged(); },
-        setProgress(p) { stopRun(); state.progress = p; render(); },
+        setProgress(p) { stopRun(); phase = p > 0 ? 'run' : 'idle'; state.progress = p; render(); },
         runToEnd(dt = 0.25, cap = 5000) {
             stopRun(); state.progress = 0;
             let steps = 0;

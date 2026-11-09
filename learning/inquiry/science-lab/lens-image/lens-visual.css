@@ -47,21 +47,28 @@
 }
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
+.main-svg { max-width: 780px; }
 
-.axis-line { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.3; }
-.lens-body { fill: rgba(140, 200, 240, .22); stroke: #8fd0ef; stroke-width: 2; }
+.axis-line { stroke: #94a3b8; stroke-width: 1.3; }
+.lens-body { fill: rgba(140, 200, 240, .3); stroke: #4ba3cf; stroke-width: 2; }
 .focus-dot { fill: #d97706; }
 .focus-text { fill: #b45309; font-size: 13.5px; font-weight: 900; }
-.object-arrow { stroke: #059669; stroke-width: 2.6; fill: none; stroke-linecap: round; }
-.image-arrow { stroke: #ea580c; stroke-width: 2.6; fill: none; stroke-linecap: round; }
+.object-arrow { stroke: #059669; stroke-width: 3.2; fill: none; stroke-linecap: round; }
+.object-arrow.head { fill: #059669; stroke-width: 1; }
+.image-arrow { stroke: #ea580c; stroke-width: 3.2; fill: none; stroke-linecap: round; }
+.image-arrow.head { fill: #ea580c; stroke-width: 1; }
+.image-arrow.virtual.head { fill: #fff; stroke-dasharray: none; stroke-width: 2; }
+.image-label { fill: #c2410c; font-size: 14px; font-weight: 900; }
+.ray-head { stroke: none; }
+.ray-head.r1 { fill: #d97706; } .ray-head.r2 { fill: #0284c7; } .ray-head.r3 { fill: #9333ea; }
 .image-arrow.virtual { stroke-dasharray: 5 4; }
-.ray { fill: none; stroke-width: 1.6; }
+.ray { fill: none; stroke-width: 2; }
 .ray.r1 { stroke: #d97706; }
 .ray.r2 { stroke: #0284c7; }
 .ray.r3 { stroke: #9333ea; }
 .ray.back { stroke-dasharray: 4 4; opacity: .75; }
 .meet-dot { fill: #fff; stroke: #ea580c; stroke-width: 2; }
-.tick { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; }
+.tick { stroke: #94a3b8; stroke-width: 1; }
 
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }
 .small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }

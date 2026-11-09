@@ -24,7 +24,7 @@ const CONDS = {
 const state = {
     sense: 'eye', cond: 'fresh',
     prediction: null, checked: false,
-    running: false, t: 0, phase: 0,
+    running: false, done: false, t: 0, phase: 0,
 };
 
 const $ = id => document.getElementById(id);
@@ -69,76 +69,113 @@ function el(tag, attrs, text) {
     return n;
 }
 
-const PX_CM = 5;                 // screen pixels per centimetre of ruler
-const HAND_Y = 176, RULER_X = 92, RULER_W = 30;
+const PX_CM = 4.4;               // screen pixels per centimetre of ruler
+const HAND_Y = 160, RULER_X = 78, RULER_W = 28;
+// Timeline of one drop, in screen seconds. The fall itself is shown four times slower.
+const WAIT = 0.6, SLOW = 4, HOLD = 0.6, MISS_T = 0.42;
+const reducedMotion = !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+function totalTime(a) { return WAIT + SLOW * (a.caught ? a.t : Math.max(a.t, MISS_T)) + HOLD; }
+// Real seconds since the ruler was let go (negative while it is still held).
+function fallClock(a) {
+    if (state.done) return a.caught ? a.t : Math.max(a.t, MISS_T);
+    if (!state.running) return -1;
+    return (state.t * totalTime(a) - WAIT) / SLOW;
+}
+
+const SKIN = '#f2c9a6', SKIN_LINE = '#b07f5e';
+function finger(g, x1, y1, x2, y2) {
+    g.appendChild(el('line', { x1, y1, x2, y2, stroke: SKIN_LINE, 'stroke-width': 10, 'stroke-linecap': 'round' }));
+    g.appendChild(el('line', { x1, y1, x2, y2, stroke: SKIN, 'stroke-width': 7.6, 'stroke-linecap': 'round' }));
+}
+// A hand seen from the side: palm, folded fingers and the pinching thumb/index pair.
+function palm(g, x, y, dir) {
+    const w = 46, h = 30, x0 = dir > 0 ? x : x - w;
+    g.appendChild(el('rect', { x: x0, y: y - h / 2, width: w, height: h, rx: 13, fill: SKIN, stroke: SKIN_LINE, 'stroke-width': 1.4 }));
+    for (let i = 0; i < 3; i++) g.appendChild(el('path', { d: `M ${x0 + (dir > 0 ? 8 + i * 9 : w - 8 - i * 9)} ${y + h / 2 - 1} q ${dir * 4} 6 ${dir * 8} 0`, fill: 'none', stroke: SKIN_LINE, 'stroke-width': 1.2 }));
+    // A sleeve so the hand belongs to an arm.
+    g.appendChild(el('rect', { x: dir > 0 ? x + w - 2 : x - w - 30, y: y - h / 2 - 2, width: 32, height: h + 4, rx: 5, fill: '#9cc3d5', stroke: '#6f97aa', 'stroke-width': 1.2 }));
+}
+
+const ORGAN_SPOT = { eye: [224, 96], ear: [268, 112], nose: [212, 112], tongue: [222, 134] };
+function head(g, sense, on) {
+    // Side view of a head looking left at the ruler.
+    g.appendChild(el('path', { d: 'M 236 54 C 270 46 300 66 302 102 C 304 132 292 152 276 162 L 276 196 L 246 196 L 246 168 C 236 166 230 158 226 150 C 220 148 216 144 218 138 C 214 134 214 130 218 128 C 212 124 210 118 214 114 L 205 108 L 214 100 C 214 76 220 60 236 54 Z', fill: SKIN, stroke: SKIN_LINE, 'stroke-width': 1.6 }));
+    g.appendChild(el('path', { d: 'M 236 54 C 262 44 296 58 302 96 C 290 80 270 72 246 74 C 236 70 232 62 236 54 Z', fill: '#5b4636' }));
+    const hot = '#d97706', base = SKIN_LINE;
+    g.appendChild(el('path', { d: 'M 262 104 C 262 94 274 94 275 106 C 276 118 268 124 264 120', fill: on && sense === 'ear' ? '#fcd34d' : SKIN, stroke: on && sense === 'ear' ? hot : base, 'stroke-width': on && sense === 'ear' ? 2.4 : 1.6 }));
+    g.appendChild(el('ellipse', { cx: 225, cy: 96, rx: 5.5, ry: 3.4, fill: '#ffffff', stroke: on && sense === 'eye' ? hot : '#6b4f3a', 'stroke-width': on && sense === 'eye' ? 2.4 : 1.2 }));
+    g.appendChild(el('circle', { cx: 222.5, cy: 96, r: 2.1, fill: '#3a2a20' }));
+    g.appendChild(el('path', { d: 'M 214 100 L 205 108 L 214 114', fill: on && sense === 'nose' ? '#fcd34d' : 'none', stroke: on && sense === 'nose' ? hot : base, 'stroke-width': on && sense === 'nose' ? 2.4 : 1.2 }));
+    g.appendChild(el('path', { d: 'M 218 128 Q 223 131 228 128', fill: 'none', stroke: '#a3554a', 'stroke-width': 1.6 }));
+    if (sense === 'tongue') g.appendChild(el('path', { d: 'M 218 129 Q 213 133 219 135 Q 223 133 222 130 Z', fill: on ? '#f87171' : '#e8a3a3', stroke: on ? hot : '#a3554a', 'stroke-width': 1.2 }));
+}
 
 function drawRuler(g) {
     const a = analyse();
-    // While running the ruler follows the same free-fall law the number uses.
-    const elapsed = state.running ? state.t * Math.max(a.t, RULER_T) * 1.35 : a.t;
-    const fallen = state.running ? Math.min(fallCm(elapsed), RULER_CM + 14) : Math.min(a.d, RULER_CM + 14);
+    const tau = fallClock(a);                       // real seconds since release
+    const caughtNow = tau >= a.t;                   // the fingers have closed
+    const fallen = tau <= 0 ? 0 : a.caught ? fallCm(Math.min(tau, a.t)) : fallCm(tau);
     const top = HAND_Y - RULER_CM * PX_CM + fallen * PX_CM;
+    const close = tau < a.t ? 0 : Math.min(1, (tau - a.t) / 0.03);
+    const released = tau >= 0;
 
-    // A ruler that is not caught keeps going past the bottom of the picture,
-    // so the whole thing is drawn inside a clip the width of the canvas.
+    // Thumbs sit behind the ruler, so they are drawn first.
+    const gapC = 12 - 9 * close;
+    finger(g, 124, HAND_Y + gapC, 72, HAND_Y + gapC);
+    finger(g, 34, 44 + (released ? 9 : 4), 110, 44 + (released ? 9 : 4));
+
     const fall = el('g', { 'clip-path': 'url(#stageClip)' });
     fall.appendChild(el('rect', { x: RULER_X, y: top, width: RULER_W, height: RULER_CM * PX_CM, rx: 3, class: 'ruler' }));
-    for (let cm = 0; cm <= RULER_CM; cm += 5) {
-        const y = top + (RULER_CM - cm) * PX_CM;
-        fall.appendChild(el('line', { x1: RULER_X, y1: y, x2: RULER_X + 9, y2: y, class: 'ruler-tick' }));
-        if (cm > 0 && y > 12 && y < 208) fall.appendChild(el('text', { x: RULER_X + 12, y: y + 3, class: 'ruler-num' }, String(cm)));
+    for (let cm = 0; cm <= RULER_CM; cm += 1) {
+        const y = top + (RULER_CM - cm) * PX_CM, major = cm % 5 === 0;
+        fall.appendChild(el('line', { x1: RULER_X, y1: y, x2: RULER_X + (major ? 10 : 5), y2: y, class: 'ruler-tick' }));
+        if (major && cm > 0 && y > 10 && y < 294) fall.appendChild(el('text', { x: RULER_X + 12, y: y + 4.5, class: 'ruler-num' }, String(cm)));
     }
     g.appendChild(fall);
 
-    g.appendChild(el('path', { d: `M ${RULER_X - 26} ${HAND_Y - 9} q 12 -5 24 0 l 0 16 q -12 5 -24 0 Z`, class: 'hand' }));
-    g.appendChild(el('path', { d: `M ${RULER_X + RULER_W + 2} ${HAND_Y - 9} q 12 -5 24 0 l 0 16 q -12 5 -24 0 Z`, class: 'hand' }));
-    g.appendChild(el('line', { x1: RULER_X - 30, y1: HAND_Y, x2: RULER_X + RULER_W + 30, y2: HAND_Y, class: 'catch-line' }));
-    g.appendChild(el('text', { x: RULER_X + RULER_W + 34, y: HAND_Y + 3, class: 'tiny-label' }, '잡는 자리'));
+    // Index fingers cross in front of the ruler.
+    finger(g, 120, HAND_Y - gapC, 70, HAND_Y - gapC);
+    finger(g, 34, 44 - (released ? 9 : 4), 112, 44 - (released ? 9 : 4));
+    // Fingernails mark which end is the fingertip.
+    g.appendChild(el('ellipse', { cx: 73, cy: HAND_Y - gapC - 1.2, rx: 3.2, ry: 2, fill: '#fbe3d3', stroke: SKIN_LINE, 'stroke-width': 0.8 }));
+    g.appendChild(el('ellipse', { cx: 109, cy: 44 - (released ? 9 : 4) - 1.2, rx: 3.2, ry: 2, fill: '#fbe3d3', stroke: SKIN_LINE, 'stroke-width': 0.8 }));
+    palm(g, 118, HAND_Y, 1);
+    palm(g, 62, 44, -1);
+    g.appendChild(el('line', { x1: 60, y1: HAND_Y, x2: 116, y2: HAND_Y, class: 'catch-line' }));
 
-    // Kept out of the ruler's column: the markings slide through that space.
-    if (!a.caught) {
-        g.appendChild(el('text', { x: 18, y: 86, class: 'missed' }, '놓쳤습니다'));
+    // The stimulus, from the moment of release until the catch.
+    const cue = released && !caughtNow && state.running;
+    head(g, state.sense, cue || (state.running && released));
+    if (cue) {
+        if (state.sense === 'eye') g.appendChild(el('line', { x1: 218, y1: 96, x2: 110, y2: 60, stroke: '#d97706', 'stroke-width': 1.8, 'stroke-dasharray': '5 4' }));
+        if (state.sense === 'ear') for (let i = 0; i < 3; i++) g.appendChild(el('path', { d: `M ${150 + i * 14} ${72 + i * 9} q 8 10 0 22`, fill: 'none', stroke: '#d97706', 'stroke-width': 2 }));
+        if (state.sense === 'nose') for (let i = 0; i < 3; i++) g.appendChild(el('path', { d: `M ${150 + i * 14} 128 q 6 -6 0 -12 q -6 -6 0 -12`, fill: 'none', stroke: '#d97706', 'stroke-width': 2 }));
+        if (state.sense === 'tongue') g.appendChild(el('circle', { cx: 212, cy: 140, r: 4, fill: '#f59e0b' }));
+        if (state.sense === 'skin') g.appendChild(el('path', { d: `M 150 ${HAND_Y - 22} l 4 8 l 8 -3 l -4 8 l 7 5 l -9 1 l 0 8 l -6 -6 l -6 6 l 0 -8 l -9 -1 l 7 -5 l -4 -8 l 8 3 z`, fill: '#fcd34d', stroke: '#d97706', 'stroke-width': 1.4 }));
     }
 
-    g.appendChild(el('text', { x: 18, y: 24, class: 'small-label' }, `${a.sense.name} · ${a.cond.name}`));
-    g.appendChild(el('text', { x: 18, y: 48, class: 'big-read' }, `${fmt(a.t, 2)}초`));
-    g.appendChild(el('text', { x: 18, y: 66, class: 'tiny-label' }, a.caught ? `자가 ${fmt(a.d, 1)} cm 떨어짐` : `${fmt(a.d, 0)} cm — 자보다 김`));
-
-    const SENSE_PATHS = {
-        '눈': 'M 10 50 C 26 26 74 26 90 50 C 74 74 26 74 10 50 Z M 50 34 C 59 34 66 41 66 50 C 66 59 59 66 50 66 C 41 66 34 59 34 50 C 34 41 41 34 50 34 Z M 50 43 C 54 43 57 46 57 50 C 57 54 54 57 50 57 C 46 57 43 54 43 50 C 43 46 46 43 50 43 Z',
-        '귀': 'M 38 14 C 58 14 74 28 74 46 C 74 62 62 70 60 78 C 58 86 50 88 42 86 C 36 84 34 76 38 72 C 44 68 54 62 54 46 C 54 34 44 26 36 26 C 30 26 28 20 38 14 Z',
-        '코': 'M 48 16 C 56 16 62 38 66 62 C 68 70 62 82 50 82 C 38 82 32 70 34 62 C 38 38 42 16 48 16 Z',
-        '혀': 'M 30 20 C 42 18 58 18 70 20 C 78 36 80 58 76 74 C 70 86 58 90 50 90 C 42 90 30 86 24 74 C 20 58 22 36 30 20 M 50 24 L 50 72',
-        '피부': 'M 10 24 L 90 24 L 90 86 L 10 86 Z M 10 40 L 90 40 M 10 60 L 90 60 M 34 24 C 34 14 42 14 42 24 M 64 24 C 64 10 74 10 74 24',
-    };
-
-    // The road a signal travels, lit up in order while the ruler falls.
-    const steps = ['자극', a.sense.organ, '신경', '뇌', '신경', '근육'];
-    const lit = state.running ? Math.min(steps.length - 1, Math.floor(state.t * steps.length)) : -1;
+    // The road a signal travels, lit in order during the reaction time.
+    const steps = ['자극', a.sense.organ, '감각 신경', '뇌', '운동 신경', '근육'];
+    const lit = state.done ? steps.length : tau < 0 ? -1 : Math.min(steps.length - 1, Math.floor(tau / a.t * steps.length));
     steps.forEach((n, i) => {
-        const y = 26 + i * 30;
-        const on = i === lit;
-        g.appendChild(el('rect', { x: 232, y: y - 12, width: 76, height: 22, rx: 6, class: `step-box${on ? ' lit' : ''}` }));
-        g.appendChild(el('text', { x: 270, y: y + 3, 'text-anchor': 'middle', class: 'step-name', style: `fill:${on ? '#d97706' : '#0f172a'}` }, n));
-        if (i === 1 && SENSE_PATHS[n]) {
-            const sc = 0.18;
-            g.appendChild(el('path', {
-                d: SENSE_PATHS[n],
-                fill: on ? '#d97706' : '#64748b',
-                stroke: on ? '#d97706' : '#64748b',
-                'stroke-width': '1.5',
-                transform: `translate(${(196).toFixed(1)}, ${(y - 12).toFixed(1)}) scale(${sc})`,
-            }));
-        }
+        const y = 32 + i * 42, on = i === lit, past = i < lit;
+        g.appendChild(el('rect', { x: 336, y: y - 13, width: 104, height: 26, rx: 7, class: `step-box${on ? ' lit' : ''}`, style: past ? 'fill:#fff7e6;stroke:#f0b45b' : '' }));
+        g.appendChild(el('text', { x: 388, y: y + 5, 'text-anchor': 'middle', class: 'step-name', style: `fill:${on ? '#b45309' : '#0f172a'}` }, n));
         if (i < steps.length - 1) {
-            g.appendChild(el('line', { x1: 270, y1: y + 10, x2: 270, y2: y + 18, class: 'arrow-line' }));
-            g.appendChild(el('path', { d: `M 270 ${y + 19} l -4 -6 l 8 0 z`, class: 'arrow-head' }));
+            g.appendChild(el('line', { x1: 388, y1: y + 14, x2: 388, y2: y + 24, class: 'arrow-line' }));
+            g.appendChild(el('path', { d: `M 388 ${y + 29} l -4 -6 l 8 0 z`, class: 'arrow-head' }));
         }
     });
-    g.appendChild(el('text', { x: 322, y: 30, class: 'tiny-label' }, a.sense.mover));
-    g.appendChild(el('text', { x: 322, y: 116, class: 'tiny-label' }, '여기서 판단합니다'));
-    g.appendChild(el('text', { x: 322, y: 176, class: 'tiny-label' }, '손가락을 오므립니다'));
-    g.appendChild(el('text', { x: 322, y: 200, class: 'note-text' }, `이 모두가 ${fmt(a.t, 2)}초 안에`));
+
+    // The reading belongs to the finished drop only.
+    if (state.done) {
+        if (a.caught) {
+            g.appendChild(el('text', { x: 12, y: 214, class: 'big-read' }, `${fmt(a.t, 2)}초`));
+            g.appendChild(el('text', { x: 12, y: 236, class: 'small-label' }, `${fmt(a.d, 1)} cm`));
+        } else {
+            g.appendChild(el('text', { x: 130, y: 214, class: 'missed' }, '놓쳤습니다'));
+        }
+    }
 }
 
 function drawGraph(g) {
@@ -168,16 +205,16 @@ function explain(a) {
 }
 
 // --- animation --------------------------------------------------------------
+// Runs only while a drop is in progress; the last frame stays on screen.
+function finish() {
+    state.running = false; state.t = 1; state.done = true; state.checked = true;
+    $('runBtn').textContent = '자 떨어뜨리기';
+}
 function tick(dt) {
     state.phase += dt;
     if (!state.running) return false;
-    state.t = Math.min(1, state.t + dt / 4);
-    if (state.t >= 1) {
-        state.running = false;
-        $('runBtn').textContent = '자 떨어뜨리기';
-        state.checked = true;
-        return true;
-    }
+    state.t = Math.min(1, state.t + dt / totalTime(analyse()));
+    if (state.t >= 1) { finish(); return true; }
     return false;
 }
 
@@ -187,7 +224,12 @@ function frame(now) {
     last = now;
     tick(dt);
     render();
-    requestAnimationFrame(frame);
+    if (state.running) requestAnimationFrame(frame); else last = 0;
+}
+function clearRun() {
+    state.running = false; state.done = false; state.checked = false; state.t = 0;
+    $('runBtn').textContent = '자 떨어뜨리기';
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
 }
 
 // --- wiring -----------------------------------------------------------------
@@ -196,24 +238,25 @@ function markSelected(sel, attr, value) {
 }
 
 document.querySelectorAll('[data-sense]').forEach(b => b.addEventListener('click', () => {
-    state.sense = b.dataset.sense; markSelected('[data-sense]', 'sense', state.sense); render();
+    state.sense = b.dataset.sense; clearRun(); markSelected('[data-sense]', 'sense', state.sense); render();
 }));
 document.querySelectorAll('[data-cond]').forEach(b => b.addEventListener('click', () => {
-    state.cond = b.dataset.cond; markSelected('[data-cond]', 'cond', state.cond); render();
+    state.cond = b.dataset.cond; clearRun(); markSelected('[data-cond]', 'cond', state.cond); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
     state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('runBtn').addEventListener('click', () => {
-    if (state.running) { state.running = false; state.t = 1; $('runBtn').textContent = '자 떨어뜨리기'; return; }
-    state.t = 0; state.running = true; state.checked = true;
+    if (state.running) { finish(); render(); return; }
+    clearRun(); state.running = true;
     $('runBtn').textContent = '멈추기';
+    if (reducedMotion) finish();
     render();
+    if (state.running) { last = 0; requestAnimationFrame(frame); }
 });
 $('resetBtn').addEventListener('click', () => {
     state.sense = 'eye'; state.cond = 'fresh';
-    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
-    $('runBtn').textContent = '자 떨어뜨리기';
+    state.prediction = null; clearRun();
     document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
     $('resultEmpty').hidden = false; $('resultContent').hidden = true;
     markSelected('[data-sense]', 'sense', 'eye'); markSelected('[data-cond]', 'cond', 'fresh');
@@ -236,7 +279,6 @@ document.querySelectorAll('.quiz-card').forEach(card => {
 markSelected('[data-sense]', 'sense', state.sense);
 markSelected('[data-cond]', 'cond', state.cond);
 render();
-requestAnimationFrame(frame);
 
 window.__senseModel = {
     state, analyse, tick, render, reaction, fallCm, timeFor, verdictFor,

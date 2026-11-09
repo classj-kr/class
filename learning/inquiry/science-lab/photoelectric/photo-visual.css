@@ -82,16 +82,26 @@
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 
 /* photoelectric tube */
-.tube { fill: rgba(148, 163, 184, 0.16); stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.2; }
-.metal { fill: rgba(148, 163, 184, 0.40); stroke: #d6f5fa; stroke-width: 1.2; }
-.collector { fill: rgba(148, 163, 184, 0.35); stroke: #97dad3; stroke-width: 1.2; }
-.lamp { fill: rgba(217, 119, 6, .25); stroke: #d97706; stroke-width: 1.2; }
-.photon { fill: none; stroke-width: 1.8; }
-.electron { fill: #0284c7; stroke: #0f5f8a; stroke-width: .8; }
-.wire { fill: none; stroke: #64748b; stroke-width: 1.4; }
-.meter { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1.1; }
-.needle { stroke: #ff7a59; stroke-width: 2; }
+.tube { fill: rgba(224, 242, 254, 0.55); stroke: #7aa7c0; stroke-width: 1.6; }
+.tube-shine { fill: none; stroke: rgba(255, 255, 255, 0.95); stroke-width: 3; stroke-linecap: round; }
+.metal { fill: #9aa5b1; stroke: #475569; stroke-width: 1.2; }
+.collector { fill: #c4cdd6; stroke: #475569; stroke-width: 1.2; }
+.lamp-body { fill: #475569; stroke: #1e293b; stroke-width: 1.2; }
+.lamp-neck { fill: #334155; }
+.lamp-lens { stroke-width: 1.4; }
+.stand-base { fill: #64748b; }
+.stand-post { fill: #64748b; }
+.beam { stroke: none; }
+.photon { fill: none; stroke-width: 2; stroke-linecap: round; }
+.electron { fill: #0284c7; stroke: #075985; stroke-width: 1; }
+.e-trail { stroke: rgba(2, 132, 199, 0.35); stroke-width: 2.4; stroke-linecap: round; }
+.wire { fill: none; stroke: #64748b; stroke-width: 1.6; }
+.meter { fill: #ffffff; stroke: #475569; stroke-width: 1.4; }
+.meter-scale { fill: none; stroke: #94a3b8; stroke-width: 1.2; }
+.meter-a { fill: #334155; font-size: 13.5px; font-weight: 900; }
+.needle { stroke: #dc2626; stroke-width: 2.2; stroke-linecap: round; }
 .meter-text { fill: #0f172a; font-size: 13.5px; font-weight: 850; }
+.halo { paint-order: stroke; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round; }
 
 /* energy levels */
 .level { stroke: #334155; stroke-width: 1.8; stroke-width: 1.4; }

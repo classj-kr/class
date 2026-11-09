@@ -47,8 +47,8 @@
 .stage-views { flex: 1; display: flex; align-items: center; justify-content: center; padding: 10px 0 4px; }
 .seed-svg { width: 100%; max-width: 520px; height: auto; display: block; }
 
-.air-zone { fill: rgba(150, 210, 235, .07); stroke: rgba(148, 163, 184, 0.28); stroke-width: 1.2; stroke-dasharray: 5 5; }
-.air-zone.no-air { fill: rgba(255, 125, 125, .07); stroke: rgba(255, 125, 125, .3); }
+.air-zone { fill: #eef7fb; }
+.air-zone.no-air { fill: #f6eeee; }
 .soil-line { stroke: rgba(220, 200, 170, .5); stroke-width: 1.6; }
 .stage-label { fill: rgba(230, 215, 190, .65); font-size: 14px; font-weight: 850; }
 
@@ -57,12 +57,14 @@
 #sunGroup.dark .sun-disc { fill: #3a4048; stroke: rgba(160, 170, 180, .4); }
 #sunGroup.dark .sun-beam { display: none; }
 
-.seed-body { fill: #d8b878; stroke: rgba(255, 240, 210, .7); stroke-width: 1.3; }
-.root { fill: none; stroke: #e6dcc4; stroke-width: 3; stroke-linecap: round; }
+.seed-body { fill: #d8b878; stroke: #7a5532; stroke-width: 1.2; }
+.root { fill: none; stroke: #f3ead6; stroke-width: 3.2; stroke-linecap: round; }
+.root.thin { stroke-width: 1.8; }
 .stem { fill: none; stroke-width: 4; stroke-linecap: round; }
-.leaf { stroke: rgba(255, 255, 255, .35); stroke-width: 1; }
-.part-label { font-size: 13px; font-weight: 850; fill: #0f172a; }
-.part-line { stroke: rgba(207, 230, 238, .45); stroke-width: 1; stroke-dasharray: 3 3; }
+.leaf { stroke-width: 1; }
+.part-label { font-size: 14px; font-weight: 850; fill: #0f172a; }
+.part-line { stroke: #475569; stroke-width: 1.2; stroke-dasharray: 3 3; }
+.part-line.root-line { stroke: #f3ead6; }
 
 @media (max-width: 600px) {
     .condition-list { grid-template-columns: repeat(2, 1fr); }
@@ -82,3 +84,18 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 투명 화분 */
+.pot-glass { fill: rgba(220, 238, 246, .18); stroke: #8fb3c2; stroke-width: 3; stroke-linejoin: round; }
+.pot-shine { stroke: #ffffff; stroke-width: 4; stroke-linecap: round; opacity: .55; }
+.pot-rim { fill: #d7e8ef; stroke: #8fb3c2; stroke-width: 2; }
+/* 관찰 기록 표 */
+.compare-table { margin-top: 10px; }
+.compare-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.compare-table th, .compare-table td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+.compare-table th { color: #475569; font-size: 14px; }
+.compare-table tr.now td { background: #fff7ed; }
+.compare-table td.yes { color: #047857; font-weight: 800; }
+.compare-table td.no { color: #b91c1c; font-weight: 800; }
+.compare-table p { margin: 8px 0 0; font-size: 14px; color: #475569; }
+.graph-svg[hidden] { display: none; }

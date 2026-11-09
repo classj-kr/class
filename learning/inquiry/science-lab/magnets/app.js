@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         place: 'nSide', dist: 3,
         progress: 0, prediction: null,
     };
-    let running = false, frameId = 0, lastStamp = 0;
+    let running = false, frameId = 0, lastStamp = 0, runSeconds = RUN_SECONDS;
 
     /* ------------------------------------------------------------ models */
     // force on the free object at a given gap (m); positive pulls it toward the fixed magnet
@@ -101,11 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const end = path[path.length - 1];
         const verdict = end.gap <= 1e-6 ? 'stick' : end.gap > gap0 + 0.002 ? 'push' : 'still';
-        return { kind: 'force', f, gap0, f0, path, end, verdict, moved: end.gap - gap0 };
+        // The real motion lasts only a fraction of a second; remember when it
+        // stops so the screen can replay it slowly enough to watch it speed up.
+        let tMove = 0;
+        for (let i = 1; i < path.length; i += 1) if (Math.abs(path[i].gap - path[i - 1].gap) > 1e-7) tMove = path[i].t;
+        return { kind: 'force', f, gap0, f0, path, end, verdict, moved: end.gap - gap0, tMove };
     }
 
     const forceAtProgress = (a, p) => {
-        const t = p * SIM_SECONDS;
+        const t = p * (a.tMove > 0 ? a.tMove + 0.02 : SIM_SECONDS);
         let lo = 0, hi = a.path.length - 1;
         while (lo < hi) { const mid = (lo + hi) >> 1; if (a.path[mid].t < t) lo = mid + 1; else hi = mid; }
         const end=a.path[lo],start=a.path[Math.max(0,lo-1)],fraction=end.t===start.t?0:(t-start.t)/(end.t-start.t);
@@ -186,12 +190,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
-    const PX_PER_CM = 14;
+    const PX_PER_CM = 18;
 
     function barMagnet(x, y, w, h, leftPole, rightPole) {
         const half = w / 2;
-        let out = `<rect class="pole-${leftPole.toLowerCase()}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${half.toFixed(1)}" height="${h.toFixed(1)}" rx="3"/>` +
-            `<rect class="pole-${rightPole.toLowerCase()}" x="${(x + half).toFixed(1)}" y="${y.toFixed(1)}" width="${half.toFixed(1)}" height="${h.toFixed(1)}" rx="3"/>`;
+        let out = `<rect x="${(x + 2).toFixed(1)}" y="${(y + h - 2).toFixed(1)}" width="${(w - 4).toFixed(1)}" height="5" rx="2.5" fill="#0f172a" opacity=".12"/>` +
+            `<rect class="pole-${leftPole.toLowerCase()}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${half.toFixed(1)}" height="${h.toFixed(1)}" rx="3"/>` +
+            `<rect class="pole-${rightPole.toLowerCase()}" x="${(x + half).toFixed(1)}" y="${y.toFixed(1)}" width="${half.toFixed(1)}" height="${h.toFixed(1)}" rx="3"/>` +
+            `<rect x="${(x + 3).toFixed(1)}" y="${(y + 3).toFixed(1)}" width="${(w - 6).toFixed(1)}" height="4" rx="2" fill="#fff" opacity=".28"/>` +
+            `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="none" stroke="#1f2937" stroke-opacity=".35"/>`;
         // too small a magnet has no room for its letters
         if (half >= 14 && h >= 14) out += `<text class="pole-text" x="${(x + half / 2).toFixed(1)}" y="${(y + h / 2 + 4).toFixed(1)}" text-anchor="middle">${leftPole}</text>` +
             `<text class="pole-text" x="${(x + half * 1.5).toFixed(1)}" y="${(y + h / 2 + 4).toFixed(1)}" text-anchor="middle">${rightPole}</text>`;
@@ -200,8 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderForce(a, p) {
         const q = forceAtProgress(a, p);
-        const TY = 150, MH = 28, MW = MAG_LEN * 100 * PX_PER_CM;   // 88 px
-        const LX = 40;                                                 // fixed magnet's left edge
+        const TY = 84, MH = 36, MW = MAG_LEN * 100 * PX_PER_CM;   // 72 px
+        const LX = 20;                                                 // fixed magnet's left edge
+        const started = running || state.progress > 0;
         let out = `<rect class="table" x="20" y="${TY + MH}" width="420" height="10" rx="3"/>`;
         // fixed magnet
         const f = a.f;
@@ -211,8 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // free object
         const FX = LX + MW + q.gap * 100 * PX_PER_CM;
         if (f.right === null) {
-            out += `<rect class="nail" x="${FX.toFixed(1)}" y="${TY + 8}" width="60" height="12" rx="2"/>`;
-            out += `<path class="nail" d="M${(FX + 60).toFixed(1)},${TY + 8} l10,6 l-10,6 z"/>`;
+            out += `<rect class="nail" x="${FX.toFixed(1)}" y="${TY + 13}" width="74" height="10" rx="1.5"/>`;
+            out += `<rect class="nail" x="${FX.toFixed(1)}" y="${TY + 7}" width="6" height="22" rx="1.5"/>`;
+            out += `<path class="nail" d="M${(FX + 74).toFixed(1)},${TY + 13} l14,5 l-14,5 z"/>`;
             out += `<text class="small-label" x="${(FX + 35).toFixed(1)}" y="${TY - 8}" text-anchor="middle">쇠못</text>`;
         } else {
             const rightFar = f.right === 'N' ? 'S' : 'N';
@@ -220,8 +229,14 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="small-label" x="${(FX + MW / 2).toFixed(1)}" y="${TY - 8}" text-anchor="middle">이동</text>`;
         }
         // the force arrow on the free object: toward the fixed magnet when positive
+        // speed streaks behind the moving object
+        if (started && Math.abs(q.v) > 0.02) {
+            const back = q.v < 0 ? 1 : -1, n = Math.min(4, 1 + Math.floor(Math.abs(q.v) / 0.15));
+            const edge = q.v < 0 ? FX + (f.right === null ? 88 : MW) + 6 : FX - 6;
+            for (let i = 0; i < n; i += 1) out += `<line class="streak" x1="${edge.toFixed(1)}" y1="${TY + 8 + i * 7}" x2="${(edge + back * (14 + Math.min(40, Math.abs(q.v) * 60))).toFixed(1)}" y2="${TY + 8 + i * 7}"/>`;
+        }
         const F = q.F, mag = Math.min(90, Math.abs(F) * 60);
-        if (mag > 2) {
+        if (started && mag > 2) {
             const dir = F > 0 ? -1 : 1;
             const ax0 = FX + (f.right === null ? 30 : MW / 2), ay = TY - 30;
             const ax1 = ax0 + dir * mag;
@@ -238,8 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="axis-text" x="${(LX + MW).toFixed(1)}" y="${TY + MH + 31}" text-anchor="middle">붙었습니다</text>`;
         }
         const VERD = { stick: '끌려가 붙는다', push: '밀려난다', still: '움직이지 않는다' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${f.label} · ${state.gap} cm → ${VERD[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="34">움직이지 않을 때에는 거리를 줄여 비교해 보세요</text>`;
+        if (p >= 1) out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${f.label} · ${state.gap} cm → ${VERD[a.verdict]}</text>`;
         return out;
     }
 
@@ -323,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderMain(a) {
         mainGroup.closest('svg').toggleAttribute('data-mobile-fit',a.kind==='compass');
-        mainGroup.closest('svg').setAttribute('viewBox', a.kind === 'force' ? '0 0 460 214' : '0 0 460 294');
+        mainGroup.closest('svg').setAttribute('viewBox', a.kind === 'force' ? '0 0 460 170' : '0 0 460 294');
         window.scienceScene.render(mainGroup,a.kind === 'force' ? renderForce(a, state.progress) : renderCompass(a, state.progress));
     }
 
@@ -366,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --------------------------------------------------------------- run */
     function tick(dt) {
-        state.progress = Math.min(1, state.progress + dt / RUN_SECONDS);
+        state.progress = Math.min(1, state.progress + dt / runSeconds);
         render();
         return state.progress >= 1;
     }
@@ -383,6 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         state.progress = 0;
+        const a0 = analyse();
+        runSeconds = a0.kind === 'force' ? (a0.tMove > 0 ? 2.2 : 1.2) : RUN_SECONDS;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         running = true;
         lastStamp = performance.now();
         render();

@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Emission lines (nm) with rough relative brightness. The flame colour is
     // what the eye sees; the lines are what a spectroscope separates it into.
     const METALS = {
-        li: { name: '리튬', symbol: 'Li', charge: 1, colour: 'red', hex: '#ff3b30', lines: [[610.4, 0.35], [670.8, 1]] },
-        na: { name: '나트륨', symbol: 'Na', charge: 1, colour: 'yellow', hex: '#ffcf33', lines: [[589.0, 1], [589.6, 0.9]] },
-        k: { name: '칼륨', symbol: 'K', charge: 1, colour: 'violet', hex: '#b57bff', lines: [[404.4, 0.5], [404.7, 0.45], [766.5, 1], [769.9, 0.85]] },
-        ca: { name: '칼슘', symbol: 'Ca', charge: 2, colour: 'orange', hex: '#ff8a3d', lines: [[422.7, 0.7], [616.2, 0.6], [618.2, 0.5], [620.3, 0.4], [643.9, 0.3]] },
-        cu: { name: '구리', symbol: 'Cu', charge: 2, colour: 'green', hex: '#2ec4b6', lines: [[510.6, 0.9], [515.3, 0.8], [521.8, 1], [578.2, 0.3]] },
-        sr: { name: '스트론튬', symbol: 'Sr', charge: 2, colour: 'red', hex: '#e0182d', lines: [[460.7, 0.6], [650.4, 0.7], [687.8, 0.9], [707.0, 0.5]] },
+        li: { name: '리튬', symbol: 'Li', charge: 1, colour: 'red', hex: '#e8132f', lines: [[610.4, 0.35], [670.8, 1]] },
+        na: { name: '나트륨', symbol: 'Na', charge: 1, colour: 'yellow', hex: '#ffb300', lines: [[589.0, 1], [589.6, 0.9]] },
+        k: { name: '칼륨', symbol: 'K', charge: 1, colour: 'violet', hex: '#b07ef0', lines: [[404.4, 0.5], [404.7, 0.45], [766.5, 1], [769.9, 0.85]] },
+        ca: { name: '칼슘', symbol: 'Ca', charge: 2, colour: 'orange', hex: '#ff5f1f', lines: [[422.7, 0.7], [616.2, 0.6], [618.2, 0.5], [620.3, 0.4], [643.9, 0.3]] },
+        cu: { name: '구리', symbol: 'Cu', charge: 2, colour: 'green', hex: '#14b88a', lines: [[510.6, 0.9], [515.3, 0.8], [521.8, 1], [578.2, 0.3]] },
+        sr: { name: '스트론튬', symbol: 'Sr', charge: 2, colour: 'red', hex: '#d4102a', lines: [[460.7, 0.6], [650.4, 0.7], [687.8, 0.9], [707.0, 0.5]] },
     };
     const ANIONS = {
         cl: { name: '염화', formula: 'Cl', charge: 1, poly: false },
@@ -204,44 +204,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderFlame(a, p) {
-        const CX = 250, BASE = 168;
-        const k = flameIntensity(p);
+        const CX = 250, TOP = 130;          // 분젠 버너 관 꼭대기
+        const k = flameIntensity(p), live = p > 0 && p < 1;
         let out = '';
+        // 버너 둘레의 옅은 배경판 (파란 겉불꽃이 흰 바탕에서도 보이게)
+        out += `<rect class="flame-backdrop" x="186" y="30" width="128" height="178" rx="10"/>`;
 
-        // dark observation chamber for flame reaction
-        out += `<rect class="flame-chamber" x="180" y="32" width="140" height="174" rx="8"/>`;
-        out += `<text class="small-label" style="fill:#94a3b8" x="250" y="48" text-anchor="middle">암실 관찰대</text>`;
-
-        // burner
-        out += `<rect class="stand" x="${CX - 40}" y="192" width="80" height="8" rx="2"/>`;
-        out += `<rect class="burner" x="${CX - 7}" y="${BASE}" width="14" height="24" rx="2"/>`;
-        out += `<path class="burner-flame" d="${flamePath(CX, BASE, 88)}"/>`;
-        out += `<path class="burner-flame inner" d="${flamePath(CX, BASE, 40, 0.5)}"/>`;
+        // 분젠 버너: 받침, 관, 공기 구멍 고리, 가스 관
+        out += `<path class="gas-hose" d="M276,198 C300,198 304,206 324,206"/>`;
+        out += `<path class="burner-base" d="M${CX - 34},204 L${CX - 26},192 L${CX + 26},192 L${CX + 34},204 Z"/>`;
+        out += `<rect class="burner" x="${CX - 7}" y="${TOP}" width="14" height="62" rx="2"/>`;
+        out += `<rect class="burner-collar" x="${CX - 10}" y="170" width="20" height="10" rx="2"/><circle class="air-hole" cx="${CX}" cy="175" r="2.4"/>`;
+        // 불꽃: 겉불꽃과 속불꽃. 타는 동안 조금씩 흔들린다.
+        const wob = live ? Math.sin(p * 90) * 0.05 + Math.sin(p * 37) * 0.04 : 0;
+        const H = 74 * (1 + wob), W = 1 + (live ? Math.sin(p * 61) * 0.06 : 0);
+        out += `<path class="burner-flame" d="${flamePath(CX, TOP, H, W)}"/>`;
         if (k > 0) {
-            out += `<path fill="${a.metal.hex}" opacity="${(0.9 * k).toFixed(2)}" d="${flamePath(CX, BASE - 4, 96, 1.15)}"/>`;
-            out += `<path fill="#fff" opacity="${(0.35 * k).toFixed(2)}" d="${flamePath(CX, BASE - 20, 46, 0.45)}"/>`;
+            out += `<path fill="${a.metal.hex}" opacity="${(0.95 * k).toFixed(2)}" d="${flamePath(CX, TOP, H * 1.12, W * 1.18)}"/>`;
+        }
+        out += `<path class="burner-flame inner" d="${flamePath(CX, TOP, 30, 0.5)}"/>`;
+        // 시료가 불꽃에서 튀는 작은 불티
+        if (k > 0.2 && live) for (let i = 0; i < 6; i += 1) {
+            const t = (p * 7 + i / 6) % 1, sx = CX - 6 + ((i * 5) % 12) + Math.sin(t * 9 + i) * 4, sy = TOP - 24 - t * 50;
+            out += `<circle fill="${a.metal.hex}" opacity="${(0.8 * (1 - t) * k).toFixed(2)}" cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="1.6"/>`;
         }
 
-        // the beaker of sample solution
+        // the beaker of sample solution (구리 화합물만 푸르고, 나머지는 색이 없는 수용액)
         const BX = 84, BY = 116;
+        const sol = a.metal.symbol === 'Cu' ? '#3b82f6' : '#93c5fd';
+        out += `<rect fill="${sol}" opacity="${a.metal.symbol === 'Cu' ? '.45' : '.25'}" x="${BX - 25}" y="${BY + 14}" width="50" height="41" rx="3"/>`;
         out += `<path class="glass" d="M${BX - 26},${BY - 10} L${BX - 26},${BY + 48} Q${BX - 26},${BY + 56} ${BX - 18},${BY + 56} L${BX + 18},${BY + 56} Q${BX + 26},${BY + 56} ${BX + 26},${BY + 48} L${BX + 26},${BY - 10}"/>`;
-        out += `<rect fill="${a.metal.hex}" opacity=".18" x="${BX - 25}" y="${BY + 14}" width="50" height="41" rx="3"/>`;
         out += `<text class="part-label" x="${BX}" y="${BY + 76}" text-anchor="middle">${a.compound.name}</text>`;
         out += `<text class="small-label" x="${BX}" y="${BY + 90}" text-anchor="middle">${a.compound.formula} 수용액</text>`;
 
-        // the wire: in the beaker until it is lifted into the flame
-        const lift = Math.min(1, Math.max(0, (p - 0.18) / 0.14));
-        const lx = BX + (CX - BX) * lift, ly = (BY + 30) + ((BASE - 62) - (BY + 30)) * lift;
+        // 백금선: 수용액에 담갔다가 들어 올려 겉불꽃 가장자리에 댄다
+        const lift = Math.min(1, Math.max(0, (p - 0.18) / 0.14)), arc = Math.sin(Math.PI * lift) * 36;
+        const lx = BX + (CX - 8 - BX) * lift, ly = (BY + 30) + ((TOP - 30) - (BY + 30)) * lift - arc;
         out += `<line class="wire" x1="${(lx - 70).toFixed(1)}" y1="${(ly - 60).toFixed(1)}" x2="${lx.toFixed(1)}" y2="${ly.toFixed(1)}"/>`;
         out += `<circle class="wire-loop" cx="${lx.toFixed(1)}" cy="${(ly + 4).toFixed(1)}" r="4.5"/>`;
         out += `<rect class="handle" x="${(lx - 84).toFixed(1)}" y="${(ly - 72).toFixed(1)}" width="18" height="16" rx="3" transform="rotate(41 ${(lx - 75).toFixed(1)} ${(ly - 64).toFixed(1)})"/>`;
 
-        // readouts
+        // readouts (불꽃에 넣은 뒤에만 색을 적는다)
         const c = COLOURS[a.colour];
-        out += `<text class="part-label" x="336" y="82">불꽃 색</text>`;
-        out += `<text class="read-text" style="fill:#0f172a" x="336" y="102">${k > 0 ? c.label : '파란 불꽃'}</text>`;
-        out += `<text class="part-label" x="336" y="128">색을 내는 원소</text>`;
-        out += `<text class="read-text" style="fill:#0f172a" x="336" y="148">${k > 0 ? `${a.metal.name} ${a.metal.symbol}` : '-'}</text>`;
+        out += `<text class="part-label" x="330" y="82">불꽃 색</text>`;
+        out += `<text class="read-text" style="fill:#0f172a" x="330" y="102">${k > 0 || p >= 0.85 ? c.label : '파란 불꽃'}</text>`;
+        out += `<text class="part-label" x="330" y="128">색을 내는 원소</text>`;
+        out += `<text class="read-text" style="fill:#0f172a" x="330" y="148">${k > 0 || p >= 0.85 ? `${a.metal.name} ${a.metal.symbol}` : '-'}</text>`;
         out += `<text class="note-text" x="336" y="170">${p < 0.18 ? '시료를 묻히는 중' : k > 0 ? '시료가 불꽃에서 빛을 냅니다' : p >= 0.85 ? '시료가 다 날아갔습니다' : '불꽃으로 옮기는 중'}</text>`;
 
         const text = k > 0 || p >= 0.85 ? `${a.compound.name} → ${c.label} 불꽃` : `${a.compound.name} — 불꽃에 넣기 전`;
@@ -279,8 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<path class="lead lead-minus" d="M414,48 L414,64 L${minusX},64 L${minusX},${Y - 2}"/>`;
         out += `<rect class="clip clip-plus" x="${plusX - 5}" y="${Y - 2}" width="10" height="${H + 4}" rx="2"/>`;
         out += `<rect class="clip clip-minus" x="${minusX - 5}" y="${Y - 2}" width="10" height="${H + 4}" rx="2"/>`;
-        out += `<text class="pole-text plus" x="${plusX}" y="${Y - 8}" text-anchor="middle">(+)극</text>`;
-        out += `<text class="pole-text minus" x="${minusX}" y="${Y - 8}" text-anchor="middle">(−)극</text>`;
+        const side = x => x === X0 ? `x="${X0 - 9}" text-anchor="end"` : `x="${X1 + 9}" text-anchor="start"`;
+        out += `<text class="pole-text plus" ${side(plusX)} y="${Y + H / 2 + 5}">(+)극</text>`;
+        out += `<text class="pole-text minus" ${side(minusX)} y="${Y + H / 2 + 5}">(−)극</text>`;
 
         // the wet strip and the colour on it
         out += `<rect class="strip" x="${X0}" y="${Y}" width="${X1 - X0}" height="${H}" rx="3"/>`;
@@ -316,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="note-text" x="316" y="190">퍼진 폭 ±${(2 * at.sigma).toFixed(1)} mm</text>`;
 
         const VERD = { plus: '(+)극 쪽으로 움직인다', minus: '(−)극 쪽으로 움직인다', none: '움직이지 않는다' };
-        out += `<text class="verdict-text" fill="#0f172a" x="20" y="28">${a.sample.name} · ${state.volts} V → ${VERD[a.verdict]}</text>`;
+        out += `<text class="verdict-text" fill="#0f172a" x="20" y="28">${a.sample.name} · ${state.volts} V${p >= 1 ? ` → ${VERD[a.verdict]}` : ''}</text>`;
         return out;
     }
 
@@ -350,32 +359,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const N = 60;
         for (let i = 0; i < N; i += 1) {
             const w = SPEC.w0 + ((i + 0.5) / N) * (SPEC.w1 - SPEC.w0);
-            out += `<rect fill="${wlToRgb(w)}" opacity=".16" x="${(specX(w) - (SPEC.x1 - SPEC.x0) / N / 2).toFixed(1)}" y="${y}" width="${((SPEC.x1 - SPEC.x0) / N + 0.4).toFixed(1)}" height="${h}"/>`;
+            out += `<rect fill="${wlToRgb(w)}" opacity=".22" x="${(specX(w) - (SPEC.x1 - SPEC.x0) / N / 2).toFixed(1)}" y="${y}" width="${((SPEC.x1 - SPEC.x0) / N + 0.4).toFixed(1)}" height="${h}"/>`;
         }
-        metal.lines.forEach(([w, b]) => {
+        if (k > 0) metal.lines.forEach(([w, b]) => {
             const x = specX(w);
-            out += `<rect fill="${wlToRgb(w)}" opacity="${(0.35 * b * k).toFixed(2)}" x="${(x - 3).toFixed(1)}" y="${y}" width="6" height="${h}"/>`;
-            out += `<rect fill="${wlToRgb(w)}" opacity="${(b * k).toFixed(2)}" x="${(x - 1.1).toFixed(1)}" y="${y}" width="2.2" height="${h}"/>`;
+            out += `<rect class="spec-line" fill="${wlToRgb(w)}" opacity="${Math.min(1, (0.35 + 0.65 * b) * k).toFixed(2)}" x="${(x - 1.8).toFixed(1)}" y="${y}" width="3.6" height="${h}"/>`;
         });
         return out;
     }
 
     function graphFlame(a) {
-        const k = Math.max(0.12, flameIntensity(state.progress));
+        // 분광기로 본 선은 시료가 불꽃에 들어간 뒤에 생기고, 기록은 끝까지 남는다
+        const p = state.progress, k = p < 0.3 ? 0 : Math.min(1, (p - 0.3) / 0.15);
         let out = `<text class="axis-title" x="${SPEC.x0}" y="20">선 스펙트럼 — ${a.metal.name} (${a.metal.symbol})</text>`;
         out += spectrumStrip(a.metal, 28, 42, k);
+        let axisY = 78;
         if (a.lookalike) {
-            out += `<text class="axis-title" x="${SPEC.x0}" y="98">비교 — ${a.lookalike.name} (${a.lookalike.symbol}) · 불꽃 색은 비슷하지만 선의 자리가 다릅니다</text>`;
+            out += `<text class="axis-title" x="${SPEC.x0}" y="98">비교 — ${a.lookalike.name} (${a.lookalike.symbol})</text>`;
             out += spectrumStrip(a.lookalike, 106, 42, 1);
-        } else {
-            out += `<text class="note-text" x="${SPEC.x0}" y="98">선이 있는 자리(파장)는 원소마다 정해져 있어 지문처럼 원소를 알아내는 데 씁니다.</text>`;
+            axisY = 156;
         }
         [400, 500, 600, 700].forEach(w => {
-            out += `<line class="ruler" x1="${specX(w).toFixed(1)}" y1="160" x2="${specX(w).toFixed(1)}" y2="166"/>`;
-            out += `<text class="axis-text" x="${specX(w).toFixed(1)}" y="178" text-anchor="middle">${w}</text>`;
+            out += `<line class="ruler" x1="${specX(w).toFixed(1)}" y1="${axisY}" x2="${specX(w).toFixed(1)}" y2="${axisY + 6}"/>`;
+            out += `<text class="axis-text" x="${specX(w).toFixed(1)}" y="${axisY + 20}" text-anchor="middle">${w}</text>`;
         });
-        out += `<line class="axis" x1="${SPEC.x0}" y1="160" x2="${SPEC.x1}" y2="160"/>`;
-        out += `<text class="axis-title" x="${SPEC.x1}" y="178" text-anchor="end">파장 (nm)</text>`;
+        out += `<line class="axis" x1="${SPEC.x0}" y1="${axisY}" x2="${SPEC.x1}" y2="${axisY}"/>`;
+        out += `<text class="axis-title" x="${SPEC.x1}" y="${axisY + 20}" text-anchor="end">파장 (nm)</text>`;
+        out += `<text class="note-text" x="${SPEC.x0}" y="${a.lookalike ? 190 : 108}">${a.lookalike ? '불꽃 색은 비슷해도 선의 자리(파장)가 다릅니다.' : '선이 있는 자리(파장)는 원소마다 정해져 있어 지문처럼 원소를 알아내는 데 씁니다.'}</text>`;
         return out;
     }
 
@@ -410,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function noteFor(a) {
         if (a.kind === 'flame') {
+            if (state.progress < 1) return `<div class="data-row"><span class="data-name">시료</span><span class="data-val">${a.compound.name} ${a.compound.formula}</span></div>`;
             return `<div class="data-row"><span class="data-name">시료</span><span class="data-val">${a.compound.name} ${a.compound.formula}</span></div>` +
                 `<div class="data-row"><span class="data-name">금속 원소</span><span class="data-val">${a.metal.name} ${a.metal.symbol}</span></div>` +
                 `<div class="data-row"><span class="data-name">음이온 부분</span><span class="data-val">${a.anion.name} — 불꽃 색과는 상관없습니다</span></div>` +
@@ -417,6 +428,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row match"><span class="data-name">불꽃 색</span><span class="data-val">${COLOURS[a.colour].label} (${COLOURS[a.colour].note})</span></div>`;
         }
         const sign = a.sample.charge < 0 ? '(−)' : '(+)';
+        if (state.progress < 1) return `<div class="data-row"><span class="data-name">시료</span><span class="data-val">${a.sample.name} ${a.sample.formula}</span></div>` +
+            `<div class="data-row"><span class="data-name">전기장</span><span class="data-val">${state.volts} V ÷ 5 cm = ${a.field.toFixed(0)} V/m</span></div>`;
         return `<div class="data-row"><span class="data-name">시료</span><span class="data-val">${a.sample.name} ${a.sample.formula}</span></div>` +
             `<div class="data-row"><span class="data-name">색을 띤 이온</span><span class="data-val">${a.sample.ion} ${a.sample.ionFormula} · ${sign}전하</span></div>` +
             `<div class="data-row"><span class="data-name">전기장</span><span class="data-val">${state.volts} V ÷ 5 cm = ${a.field.toFixed(0)} V/m</span></div>` +
@@ -428,6 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const a = analyse();
         renderMain(a);
         window.scienceScene.render(graphGroup,a.kind === 'flame' ? graphFlame(a) : graphIon(a));
+        // 비교 띠가 없으면 그래프 높이를 줄여 띠와 눈금 아래가 비지 않게 한다
+        const gsvg = graphGroup.ownerSVGElement, gh = a.kind === 'flame' && !a.lookalike ? 112 : 196;
+        if (gsvg && gsvg.getAttribute('viewBox') !== `0 0 460 ${gh}`) gsvg.setAttribute('viewBox', `0 0 460 ${gh}`);
         const vOut = document.getElementById('voltRangeOut');
         if (vOut) vOut.textContent = `${state.volts} V`;
         stageBadge.textContent = a.kind === 'flame'
@@ -458,6 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startRun() {
         stopRun();
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; render(); finish(); return; }
         state.progress = 0;
         running = true;
         lastStamp = performance.now();

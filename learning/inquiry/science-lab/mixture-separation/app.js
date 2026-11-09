@@ -37,10 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const MESH_STOPS = [0.2, 0.35, 0.45, 0.6, 1, 2, 4, 7, 9];
     const meshMm = () => MESH_STOPS[Number(meshRange.value)];
 
-    const BOWL = { x0: 44, x1: 192, yTop: 96, yBottom: 222 };
+    const BOWL = { x0: 44, x1: 192, yTop: 96, yBottom: 252 };
     const TRAY = { x: 244, w: 200, yTop: 40, h: 52, gap: 8 };
 
     let batch=0,revision=0;
+    const tried = new Set();   // tools already used: their column in the table is filled in
     let separated = [];     // [{id, method}] in the order they came out
     let grains = [];        // one entry per drawn grain
 
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const remaining = () => SUBSTANCES.filter(s => !separated.some(v => s.id === v.id));
     const isSeparated = id => separated.some(v => v.id === id);
-    const drawRadius = mm => 2.5 + 2.6 * Math.sqrt(mm);
+    const drawRadius = mm => 3.4 + 3.2 * Math.sqrt(mm);
 
     function buildGrains() {
         grains = [];
@@ -69,34 +70,71 @@ document.addEventListener('DOMContentLoaded', () => {
                 grains.push({ sub: s.id, key: `${s.id}-${i}`, i });
             }
         });
-        // Deterministic scatter so a reset reproduces the same picture.
+        // Deterministic pile on the beaker floor: each grain drops at a random x and comes to rest
+        // on whatever is already below it, so the mixture forms a heap instead of floating in the air.
         let seed = 7;
         const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
-        grains.forEach(g => {
+        const order = grains.map(g => ({ g, k: rnd() })).sort((a, b) => a.k - b.k).map(o => o.g);
+        const placed = [];
+        const mid = (BOWL.x0 + BOWL.x1) / 2, half = (BOWL.x1 - BOWL.x0) / 2;
+        order.forEach(g => {
             const s = SUBSTANCES.find(x => x.id === g.sub);
             const r = drawRadius(s.mm);
-            g.homeX = BOWL.x0 + r + rnd() * (BOWL.x1 - BOWL.x0 - 2 * r);
-            g.homeY = BOWL.yTop + r + rnd() * (BOWL.yBottom - BOWL.yTop - 2 * r);
+            const x = mid + (rnd() * 2 - 1) * (half - r - 2) * (0.55 + 0.45 * rnd());
+            let y = BOWL.yBottom - r;
+            placed.forEach(q => {
+                const dx = Math.abs(q.x - x);
+                if (dx < q.r + r) { const top = q.y - Math.sqrt((q.r + r) ** 2 - dx * dx); if (top < y) y = top; }
+            });
+            g.homeX = x; g.homeY = y; g.restX = x; g.restY = y; placed.push({ x, y, r });
         });
         mixtureGroup.innerHTML = grains.map(g => {
             const s = SUBSTANCES.find(x => x.id === g.sub);
-            return `<circle class="grain" id="g-${g.key}" cx="${g.homeX.toFixed(1)}" cy="${g.homeY.toFixed(1)}" r="${drawRadius(s.mm).toFixed(1)}" fill="${s.color}" stroke="rgba(0,0,0,.28)" stroke-width="0.8"/>`;
+            const r = drawRadius(s.mm);
+            const shape = s.id === 'bean'
+                ? `<ellipse class="grain" id="g-${g.key}" cx="${g.homeX.toFixed(1)}" cy="${g.homeY.toFixed(1)}" rx="${(r * 1.15).toFixed(1)}" ry="${(r * 0.85).toFixed(1)}" fill="${s.color}" stroke="#8a6a2a" stroke-width="1"/>`
+                : s.id === 'salt'
+                    ? `<rect class="grain" id="g-${g.key}" x="${(g.homeX - r * 0.85).toFixed(1)}" y="${(g.homeY - r * 0.85).toFixed(1)}" width="${(r * 1.7).toFixed(1)}" height="${(r * 1.7).toFixed(1)}" rx="1" fill="${s.color}" stroke="#94a3b8" stroke-width="1"/>`
+                    : `<circle class="grain" id="g-${g.key}" cx="${g.homeX.toFixed(1)}" cy="${g.homeY.toFixed(1)}" r="${r.toFixed(1)}" fill="${s.color}" stroke="${s.id === 'foam' ? '#94a3b8' : 'rgba(0,0,0,.35)'}" stroke-width="1"/>`;
+            return shape;
         }).join('');
     }
 
 
+    // Gravity: grains still in the beaker drop straight down onto whatever is left beneath them,
+    // so taking some substances out never leaves others hanging in mid-air.
+    function settle() {
+        const inBeaker = grains.filter(g => !isSeparated(g.sub)).sort((a, b) => b.homeY - a.homeY);
+        const placed = [];
+        inBeaker.forEach(g => {
+            const r = drawRadius(SUBSTANCES.find(x => x.id === g.sub).mm);
+            // a grain rolls a little sideways into the lowest nearby gap instead of balancing on a peak
+            const restAt = x => { let y = BOWL.yBottom - r; placed.forEach(q => { const dx = Math.abs(q.x - x); if (dx < q.r + r) { const top = q.y - Math.sqrt((q.r + r) ** 2 - dx * dx); if (top < y) y = top; } }); return y; };
+            let bestX = g.homeX, bestY = restAt(g.homeX);
+            for (let k = 1; k <= 14; k += 1) for (const sgn of [-1, 1]) {
+                const x = g.homeX + sgn * k * 2;
+                if (x < BOWL.x0 + r || x > BOWL.x1 - r) continue;
+                const y = restAt(x);
+                if (y > bestY + 0.5) { bestX = x; bestY = y; }
+            }
+            g.restX = bestX; g.restY = bestY; placed.push({ x: bestX, y: bestY, r });
+        });
+    }
+
     /* --------------------------------------------- 도구가 하는 일을 보여 준다 */
-    /* 세 도구가 결과만 같은 방식으로 내놓으면 무엇을 한 것인지 알 수 없다.
-       자석은 끌어당기고, 물은 차오르며 녹이거나 띄우고, 체는 흔들어 내려
-       보낸다. 각 동작이 끝난 뒤에야 물질이 그릇에서 접시로 옮겨 간다. */
+    /* 자석은 내려와 철가루만 끌어 올리고, 물은 부어지며 차올라 소금을 녹이고
+       스타이로폼을 띄우고, 체는 알갱이를 받아 흔들어 작은 것만 떨어뜨린다.
+       동작이 끝난 뒤에야 물질이 그릇에서 접시로 옮겨 간다. */
     const SLOW = !window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let acting = false;
 
     const grainEls = id => grains.filter(g => g.sub === id).map(g => document.getElementById(`g-${g.key}`));
+    const grainOf = el => grains.find(x => `g-${x.key}` === el.id);
     const setShift = (el, dx, dy, extra = '') => {
         el.setAttribute('transform', `translate(${dx.toFixed(1)} ${dy.toFixed(1)})`);
         if (extra) el.setAttribute('style', extra);
     };
+    const still = el => { el.style.transition = 'none'; };
 
     function setBusy(on) {
         [magnetBtn, waterBtn, sieveBtn].forEach(b => { b.disabled = on || remaining().length === 0; });
@@ -106,97 +144,127 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearApparatus() {
         waterGroup.innerHTML = '';
         toolGroup.innerHTML = '';
+        const hidden = new Set(storedGroups().filter(g => g.dissolved).flatMap(g => g.ids));
         grains.forEach(g => {
             const el = document.getElementById(`g-${g.key}`);
-            if (el) el.removeAttribute('style');
+            if (el) { el.removeAttribute('style'); if (hidden.has(g.sub)) el.style.opacity = '0'; }
         });
     }
 
     const MID_X = (BOWL.x0 + BOWL.x1) / 2;
-
-    function drawMagnet(y) {
-        const w = 54, arm = 22;
-        return `<g class="magnet" transform="translate(${(MID_X - w / 2).toFixed(1)} ${y.toFixed(1)})">` +
-               `<path d="M0,0 L0,${arm} A${w / 2},${w / 2} 0 0 0 ${w},${arm} L${w},0 L${w - 15},0 L${w - 15},${arm}` +
-               ` A${w / 2 - 15},${w / 2 - 15} 0 0 1 15,${arm} L15,0 Z" fill="#94a3b8" stroke="#475569" stroke-width="1.4"/>` +
-               `<rect x="0" y="0" width="15" height="10" fill="#dc2626"/>` +
-               `<rect x="${w - 15}" y="0" width="15" height="10" fill="#0284c7"/></g>`;
-    }
-
-    function drawSieve(y, mesh) {
-        // 구멍 간격은 실제 구멍 크기를 눈으로 견줄 수 있게 로그로 줄여 그린다.
-        const gap = 4 + 9 * (Math.log(mesh / 0.2) / Math.log(9 / 0.2));
-        let bars = '';
-        for (let x = BOWL.x0 + 4; x < BOWL.x1 - 4; x += gap) {
-            bars += `<line x1="${x.toFixed(1)}" y1="${y - 3}" x2="${x.toFixed(1)}" y2="${y + 3}" stroke="#64748b" stroke-width="1.6"/>`;
-        }
-        return `<g class="sieve" transform="translate(0 ${y.toFixed(1)})">` +
-               `<g transform="translate(0 ${-y.toFixed(1)})">${bars}</g>` +
-               `<line x1="${BOWL.x0 - 6}" y1="0" x2="${BOWL.x1 + 6}" y2="0" stroke="#334155" stroke-width="3" stroke-linecap="round"/>` +
-               `<line x1="${BOWL.x0 - 6}" y1="-14" x2="${BOWL.x0 - 6}" y2="0" stroke="#334155" stroke-width="3" stroke-linecap="round"/>` +
-               `<line x1="${BOWL.x1 + 6}" y1="-14" x2="${BOWL.x1 + 6}" y2="0" stroke="#334155" stroke-width="3" stroke-linecap="round"/></g>`;
-    }
+    const ease = u => u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
 
     const wait = ms => {const token=revision;return new Promise((resolve,reject)=>setTimeout(()=>token===revision?resolve():reject(new DOMException('Reset cancelled the old operation','AbortError')),SLOW?ms:0));};
+    // Frame-by-frame motion; a reset cancels it like wait().
+    const tween = (ms, fn) => { const token = revision; return new Promise((resolve, reject) => {
+        if (!SLOW) { fn(1); resolve(); return; }
+        const t0 = performance.now();
+        const step = now => { if (token !== revision) { reject(new DOMException('Reset cancelled the old operation', 'AbortError')); return; }
+            const u = Math.min(1, (now - t0) / ms); fn(u); if (u < 1) requestAnimationFrame(step); else resolve(); };
+        requestAnimationFrame(step); }); };
+
+    function drawMagnet(y) {
+        // bar magnet held by a handle: red N end at the bottom does the picking up
+        return `<g class="magnet-bar" transform="translate(${MID_X - 16} ${y.toFixed(1)})">` +
+               `<rect x="12" y="-70" width="8" height="34" rx="3" fill="#a16207"/>` +
+               `<rect x="0" y="-40" width="32" height="30" rx="3" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="1.4"/>` +
+               `<rect x="0" y="-10" width="32" height="30" rx="3" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.4"/>` +
+               `<text x="16" y="-20" text-anchor="middle" class="magnet-pole">S</text><text x="16" y="10" text-anchor="middle" class="magnet-pole">N</text></g>`;
+    }
 
     async function playMagnet(picked) {
-        const hangY = BOWL.yTop - 34;
-        toolGroup.innerHTML = drawMagnet(hangY - 40);
+        toolGroup.innerHTML = drawMagnet(-30);
         const magnet = toolGroup.firstChild;
-        await wait(20);
-        magnet.setAttribute('transform', magnet.getAttribute('transform').replace(/ [\d.-]+\)$/, ` ${hangY})`));
-        await wait(420);
-        // 붙는 알갱이만 자석 쪽으로 튀어 올라 달라붙는다
-        picked.forEach(s => grainEls(s.id).forEach((el, i) => {
-            const g = grains.find(x => `g-${x.key}` === el.id);
-            setShift(el, (MID_X - 20 + (i % 7) * 7) - g.homeX, (hangY + 26) - g.homeY);
+        const low = BOWL.yTop + 34;   // the magnet's bottom face hangs just above the heap
+        await tween(700, u => magnet.setAttribute('transform', `translate(${MID_X - 16} ${(-30 + (low - -30) * ease(u)).toFixed(1)})`));
+        // iron grains jump up one after another and cling to the N end
+        const els = picked.flatMap(s => grainEls(s.id));
+        els.forEach(still);
+        const targets = els.map((el, i) => { const g = grainOf(el); return { el, g, tx: MID_X - 13 + (i % 5) * 6.5, ty: low + 24 + Math.floor(i / 5) * 5, delay: i * 0.07 }; });
+        await tween(1100, u => targets.forEach(t => {
+            const v = Math.max(0, Math.min(1, (u - t.delay) / 0.45)), e = v * v;
+            const x = t.g.restX + (t.tx - t.g.restX) * e, y = t.g.restY + (t.ty - t.g.restY) * e - Math.sin(Math.PI * v) * 6;
+            setShift(t.el, x - t.g.homeX, y - t.g.homeY);
         }));
-        await wait(520);
-        magnet.setAttribute('transform', magnet.getAttribute('transform').replace(/ [\d.-]+\)$/, ` ${hangY - 46})`));
-        picked.forEach(s => grainEls(s.id).forEach(el => {
-            const t = el.getAttribute('transform').match(/translate\(([\d.-]+) ([\d.-]+)\)/);
-            setShift(el, Number(t[1]), Number(t[2]) - 46);
-        }));
-        await wait(420);
+        await wait(250);
+        // lift the magnet with the iron stuck to it
+        await tween(700, u => { const dy = -110 * ease(u);
+            magnet.setAttribute('transform', `translate(${MID_X - 16} ${(low + dy).toFixed(1)})`);
+            targets.forEach(t => setShift(t.el, t.tx - t.g.homeX, t.ty + dy - t.g.homeY)); });
+        await wait(200);
     }
 
     async function playWater(dissolved, floated) {
-        const top = BOWL.yTop - 6, bottom = BOWL.yBottom + 8;
-        waterGroup.innerHTML = `<rect class="water" x="${BOWL.x0 - 8}" y="${bottom}" width="${BOWL.x1 - BOWL.x0 + 16}" height="0" rx="4"/>`;
-        const water = waterGroup.firstChild;
-        await wait(20);
-        water.setAttribute('y', String(top));
-        water.setAttribute('height', String(bottom - top));
-        await wait(560);
-        // 녹는 것은 사라지고, 뜨는 것은 물 위로 올라오고, 나머지는 바닥에 가라앉는다
-        dissolved.forEach(s => grainEls(s.id).forEach(el => el.setAttribute('style', 'opacity:0;transition:opacity .6s ease')));
-        floated.forEach(s => grainEls(s.id).forEach((el, i) => {
-            const g = grains.find(x => `g-${x.key}` === el.id);
-            setShift(el, (BOWL.x0 + 22 + i * 26) - g.homeX, (top + 10) - g.homeY);
-        }));
-        remaining().filter(s => !s.soluble && s.density >= 1).forEach(s => grainEls(s.id).forEach((el, i) => {
-            const g = grains.find(x => `g-${x.key}` === el.id);
-            setShift(el, 0, (BOWL.yBottom - 6) - g.homeY);
-        }));
-        await wait(700);
+        const surface = BOWL.yTop + 10, bottom = BOWL.yBottom;
+        const L = BOWL.x0 - 4, W = BOWL.x1 - BOWL.x0 + 8;
+        // a jug tips over the rim and pours; the stream feeds a rising water level
+        waterGroup.innerHTML = `<rect class="water-body" x="${L}" y="${bottom}" width="${W}" height="0"/>` +
+            `<g class="jug"><path d="M0,0 L44,0 L40,46 Q39,52 33,52 L11,52 Q5,52 4,46 Z M44,6 Q56,8 54,22" fill="rgba(186,224,238,.55)" stroke="#5b8fa3" stroke-width="2"/><rect x="5" y="20" width="35" height="30" fill="rgba(56,189,248,.4)"/></g>` +
+            `<path class="stream" d="" fill="none" stroke="rgba(56,189,248,.65)" stroke-width="5" stroke-linecap="round"/>`;
+        const body = waterGroup.querySelector('.water-body'), jug = waterGroup.querySelector('.jug'), stream = waterGroup.querySelector('.stream');
+        const JX = BOWL.x1 + 6, JY = BOWL.yTop - 76;
+        await tween(450, u => jug.setAttribute('transform', `translate(${JX} ${JY}) rotate(${(-62 * ease(u)).toFixed(1)} 0 52)`));
+        const sinkers = remaining().filter(s => !s.soluble && s.density >= 1);
+        const foamEls = floated.flatMap(s => grainEls(s.id)), saltEls = dissolved.flatMap(s => grainEls(s.id));
+        [...foamEls, ...saltEls].forEach(still);
+        const lipX = JX - 46, lipY = JY + 28;
+        await tween(1500, u => {
+            const level = bottom - (bottom - surface) * ease(u);
+            body.setAttribute('y', level.toFixed(1)); body.setAttribute('height', (bottom - level).toFixed(1));
+            stream.setAttribute('d', u < 0.96 ? `M${lipX},${lipY} Q${lipX - 14},${lipY + 20} ${lipX - 18},${level.toFixed(1)}` : '');
+            // foam lifts off the heap as soon as the water reaches it and rides the surface
+            foamEls.forEach((el, i) => { const g = grainOf(el), r = 7;
+                const y = Math.min(g.restY, level - r * 0.4 + Math.sin(u * 9 + i) * 1.2);
+                setShift(el, g.restX - g.homeX, y - g.homeY); });
+            // salt crystals shrink and fade once they are under water
+            saltEls.forEach(el => { const g = grainOf(el); const under = g.restY > level ? Math.min(1, (u - (bottom - g.restY) / (bottom - surface)) * 2.2) : 0;
+                el.style.opacity = String(Math.max(0, 1 - Math.max(0, under)).toFixed(2)); });
+        });
+        stream.setAttribute('d', '');
+        await tween(400, u => jug.setAttribute('transform', `translate(${JX} ${JY}) rotate(${(-62 * (1 - ease(u))).toFixed(1)} 0 52)`));
+        // the water turns faintly cloudy-clear: salt is in it now, not gone
+        await tween(700, u => foamEls.forEach((el, i) => { const g = grainOf(el); setShift(el, g.restX - g.homeX + (BOWL.x0 + 30 + i * 32 - g.restX) * ease(u), surface - 3 + Math.sin(u * 6 + i) * 1.5 - g.homeY); }));
+        void sinkers;
+        await wait(500);
+    }
+
+    function drawSieve(y, mesh) {
+        // a round kitchen sieve seen from the side: rim, mesh and handle; mesh spacing follows the hole size (log scale)
+        const gap = 4 + 9 * (Math.log(mesh / 0.2) / Math.log(9 / 0.2));
+        const L = BOWL.x0 - 2, R = BOWL.x1 + 2;
+        let net = '';
+        for (let x = L + 6; x < R - 4; x += gap) net += `<line x1="${x.toFixed(1)}" y1="0" x2="${x.toFixed(1)}" y2="22" stroke="#94a3b8" stroke-width="1"/>`;
+        return `<g class="sieve-tool" transform="translate(0 ${y.toFixed(1)})">` +
+               `<path d="M${L},0 Q${MID_X},40 ${R},0" fill="rgba(148,163,184,.15)" stroke="#64748b" stroke-width="1.5"/>` +
+               `<clipPath id="sieveNetClip"><path d="M${L},0 Q${MID_X},40 ${R},0 Z"/></clipPath><g clip-path="url(#sieveNetClip)">${net}</g>` +
+               `<rect x="${L - 4}" y="-6" width="${R - L + 8}" height="7" rx="3" fill="#475569"/>` +
+               `<rect x="${R + 4}" y="-5" width="46" height="5" rx="2.5" fill="#334155"/></g>`;
     }
 
     async function playSieve(picked, mesh) {
-        const y = BOWL.yBottom - 30;
-        toolGroup.innerHTML = drawSieve(y, mesh);
+        const y = BOWL.yTop - 6;
+        toolGroup.innerHTML = drawSieve(-60, mesh);
         const sieve = toolGroup.firstChild;
-        await wait(20);
-        // 흔들기
-        for (const dx of [5, -5, 4, -4, 0]) {
-            sieve.setAttribute('transform', `translate(${dx} ${y})`);
-            await wait(110);
-        }
-        // 구멍보다 작은 알갱이가 체 아래로 떨어진다
-        picked.forEach(s => grainEls(s.id).forEach((el, i) => {
-            const g = grains.find(x => `g-${x.key}` === el.id);
-            setShift(el, (BOWL.x0 + 14 + (i % 9) * 17) - g.homeX, (y + 20) - g.homeY);
-        }));
-        await wait(560);
+        await tween(500, u => sieve.setAttribute('transform', `translate(0 ${(-60 + (y + 60) * ease(u)).toFixed(1)})`));
+        // the whole mixture is poured onto the sieve
+        const left = remaining(), all = left.flatMap(s => grainEls(s.id).map(el => ({ el, s })));
+        all.forEach(o => still(o.el));
+        const spots = all.map((o, i) => { const g = grainOf(o.el); return { ...o, g, sx: BOWL.x0 + 12 + ((i * 37) % 124), sy: y + 10 + ((i * 11) % 9) }; });
+        await tween(800, u => spots.forEach(o => { const e = ease(u); setShift(o.el, o.g.restX - o.g.homeX + (o.sx - o.g.restX) * e, o.g.restY - o.g.homeY + (o.sy - o.g.restY) * e - Math.sin(Math.PI * u) * 24); }));
+        // shake; grains smaller than the holes drop through to the beaker floor
+        const falls = new Set(picked.map(s => s.id));
+        await tween(1300, u => {
+            const dx = Math.sin(u * Math.PI * 10) * 6 * (1 - u * 0.4);
+            sieve.setAttribute('transform', `translate(${dx.toFixed(1)} ${y})`);
+            spots.forEach((o, i) => {
+                if (falls.has(o.s.id)) {
+                    const v = Math.max(0, Math.min(1, (u - 0.15 - (i % 7) * 0.05) / 0.5));
+                    const fy = o.sy + (o.g.restY - o.sy) * v * v;
+                    setShift(o.el, o.sx + dx - o.g.homeX, fy - o.g.homeY);
+                } else setShift(o.el, o.sx + dx - o.g.homeX, o.sy - o.g.homeY);
+            });
+        });
+        await wait(450);
     }
 
     function trayRect(index) {
@@ -215,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function handleCancellation(error){if(error.name!=='AbortError')throw error;}
     function render() {
-        const groups=storedGroups();
+        const groups=storedGroups();settle();
         trayGroup.innerHTML=groups.map((group,idx)=>{const r=trayRect(idx),name=group.dissolved?'소금물':group.ids.length>1?'섞인 무리 · '+group.ids.length+'가지':SUBSTANCES.find(s=>s.id===group.ids[0]).name;
             return '<rect class="tray-box" x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h+'" rx="8"/>'+
               (group.dissolved?'<rect x="'+(r.x+125)+'" y="'+(r.y+12)+'" width="62" height="32" rx="3" fill="#a7d4e8"/>':'')+
@@ -223,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
         grains.forEach(g=>{
             const el=document.getElementById('g-'+g.key),idx=groups.findIndex(b=>b.ids.includes(g.sub));el.style.opacity='';
-            if(idx===-1){el.setAttribute('transform','translate(0 0)');return;}
+            if(idx===-1){el.setAttribute('transform','translate('+(g.restX-g.homeX).toFixed(1)+' '+(g.restY-g.homeY).toFixed(1)+')');return;}
             const group=groups[idx];if(group.dissolved){el.style.opacity='0';return;}
             const r=trayRect(idx),s=SUBSTANCES.find(x=>x.id===g.sub),rad=drawRadius(s.mm);
             const ordinal=grains.filter(x=>group.ids.includes(x.sub)).sort((a,b)=>a.i-b.i||a.sub.localeCompare(b.sub)).findIndex(x=>x.key===g.key),perRow=Math.max(1,Math.floor(76/(rad*2+3)));
@@ -236,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setBusy(acting);
         document.getElementById('groupControls').innerHTML=groups.map(g=>{const names=g.ids.map(id=>SUBSTANCES.find(s=>s.id===id).name).join(' · ');return '<div class="mixture-group-row"><span>'+names+(g.dissolved?' → 소금물':g.ids.length>1?' (아직 섞여 있음)':'')+'</span>'+
              (g.dissolved?'<button type="button" data-recover-group="'+g.key+'"'+(acting?' disabled':'')+'>물 증발 · 소금 회수</button>':g.ids.length>1?'<button type="button" data-open-group="'+g.key+'"'+(acting?' disabled':'')+'>이 무리 다시 분리</button>':'<span>한 물질로 나뉨</span>')+'</div>';}).join('');
-        propertyTable.innerHTML='<div class="property-row head"><span>물질</span><span>크기</span><span>자석</span><span>물에서</span></div>'+SUBSTANCES.map(s=>'<div class="property-row"><span><i class="swatch" style="background:'+s.color+'"></i>'+s.name+'</span><span>'+s.mm+' mm</span><span>'+(s.magnetic?'붙음':'안 붙음')+'</span><span>'+(s.soluble?'녹음':s.density<1?'뜸':'가라앉음')+'</span></div>').join('');
+        propertyTable.innerHTML='<div class="property-row head"><span>물질</span><span>크기</span><span>자석</span><span>물에서</span></div>'+SUBSTANCES.map(s=>'<div class="property-row"><span><i class="swatch" style="background:'+s.color+'"></i>'+s.name+'</span><span>'+s.mm+' mm</span><span>'+(tried.has('magnet')?(s.magnetic?'붙음':'안 붙음'):'?')+'</span><span>'+(tried.has('water')?(s.soluble?'녹음':s.density<1?'뜸':'가라앉음'):'?')+'</span></div>').join('');
         renderSizes();
     }
     document.getElementById('groupControls').addEventListener('click',e=>{
@@ -258,6 +326,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const mesh = meshMm();
         let out = `<text class="size-title" x="20" y="18">알갱이 크기와 체 구멍</text>`;
 
+        const bottom = SZ.top + SUBSTANCES.length * (SZ.h + SZ.gap);
+        const mx = sxOf(mesh);
+        out += `<line class="mesh-line" x1="${mx.toFixed(1)}" y1="${SZ.top - 8}" x2="${mx.toFixed(1)}" y2="${bottom}"/>`;
         SUBSTANCES.forEach((s, i) => {
             const y = SZ.top + i * (SZ.h + SZ.gap);
             const done = isSeparated(s.id);
@@ -268,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (done) out += `<text class="size-done" x="${SZ.x1 + 6}" y="${y + 13}">옮겨짐</text>`;
         });
 
-        const bottom = SZ.top + SUBSTANCES.length * (SZ.h + SZ.gap);
         out += `<line class="size-axis" x1="${SZ.x0}" y1="${bottom}" x2="${SZ.x1}" y2="${bottom}"/>`;
         for (const mm of [0.2, 1, 4, 12]) {
             out += `<text class="size-tick" x="${sxOf(mm).toFixed(1)}" y="${bottom + 12}" text-anchor="middle">${mm}</text>`;
@@ -276,12 +346,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="size-tick" x="${SZ.x1 + 6}" y="${bottom + 12}">mm</text>`;
 
         // where the sieve cuts: anything to the left of the line falls through
-        const mx = sxOf(mesh);
-        out += `<line class="mesh-line" x1="${mx.toFixed(1)}" y1="${SZ.top - 8}" x2="${mx.toFixed(1)}" y2="${bottom}"/>`;
         const flip = mx > (SZ.x0 + SZ.x1) / 2;
         out += `<text class="mesh-text" x="${(mx + (flip ? -6 : 6)).toFixed(1)}" y="${SZ.top - 12}"${flip ? ' text-anchor="end"' : ''}>체 구멍 ${mesh} mm</text>`;
-        out += `<text class="size-note" x="20" y="${bottom + 28}">왼쪽이 구멍보다 작아 빠져나가고, 오른쪽은 체에 남습니다. 가로 눈금은 27배 차이를 담으려고 촘촘해집니다.</text>`;
-        window.scienceScene.render(graphGroup,out);
+                window.scienceScene.render(graphGroup,out);
     }
 
     function showResult(text) {
@@ -301,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setBusy(true);
         clearApparatus();
         if (play) await play(picked);
+        tried.add(name);
         if (picked.length === 0 || picked.length === left.length) {
             stageCaption.textContent = describe.none;
             showResult(describe.noneDetail);
@@ -347,6 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setBusy(true);
         clearApparatus();
         await playWater(dissolved, floated);
+        tried.add('water');
         if ([dissolved,floated,left.filter(s=>!picked.includes(s))].filter(g=>g.length).length < 2) {
             stageCaption.textContent = '물에 넣어도 남은 물질이 모두 같게 행동해 분리되지 않았습니다.';
             showResult('물로 나누려면 녹는 물질이나 뜨는 물질이 섞여 있어야 합니다.');
@@ -394,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
     meshRange.addEventListener('input', () => { meshOutput.textContent = `${meshMm()} mm`; renderSizes(); });
 
     resetBtn.addEventListener('click', () => {
-        revision++;batch=0;separated = [];
+        revision++;batch=0;separated = [];tried.clear();
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         stageCaption.textContent = '자석·물·체 가운데 알맞은 도구를 골라 보세요.';

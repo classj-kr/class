@@ -113,3 +113,18 @@
 .stage-note:empty { display: none; }
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 2026-11: sea cross-section with a ship lowering a temperature probe */
+.burn-stage .sea-surface, .sea-surface { fill: none; stroke: #2f6f9f; stroke-width: 1.6; }
+.ship { fill: #b4483c; stroke: #7f2d24; stroke-width: 1; }
+.ship-cabin { fill: #f1f5f9; stroke: #64748b; stroke-width: 1; }
+.crane { fill: none; stroke: #475569; stroke-width: 2; stroke-linejoin: round; }
+.cable { stroke: #334155; stroke-width: 1.2; }
+.ctd { fill: #fbbf24; stroke: #92400e; stroke-width: 1.2; }
+.tick { stroke: #64748b; stroke-width: 1.2; }
+.sun { fill: #f9b233; stroke: #e58f0a; stroke-width: 1.5; }
+.wind { stroke: #5b8db0; stroke-width: 2; }
+.wind-head { fill: #5b8db0; }
+.probe-read { fill: #9a3412 !important; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.layer-label { font-size: 14px; paint-order: stroke; stroke: rgba(255,255,255,.85); stroke-width: 3.5px; stroke-linejoin: round; }
+.column-frame { stroke: #7f9aab; }

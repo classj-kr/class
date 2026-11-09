@@ -46,7 +46,9 @@
 .stage-views { flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 0 2px; }
 .mixture-svg { width: 100%; max-width: 560px; height: auto; display: block; }
 
-.bowl { stroke: rgba(177, 226, 230, .78); stroke-width: 4; stroke-linejoin: round; }
+.bowl { stroke: #6fa7bb; stroke-width: 3; stroke-linejoin: round; }
+.water-body { fill: rgba(56, 189, 248, .3); stroke: #0284c7; stroke-width: 1.2; }
+.magnet-pole { fill: #ffffff; font-size: 14px; font-weight: 900; }
 .tray-title { fill: var(--muted); font-size: 14px; font-weight: 850; }
 .tray-box { fill: rgba(255, 255, 255, .03); stroke: rgba(148, 163, 184, 0.35); stroke-width: 1.2; stroke-dasharray: 4 4; }
 .tray-label { fill: #0f172a; font-size: 13px; font-weight: 850; }
@@ -60,7 +62,7 @@
 .property-table { display: grid; gap: 4px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
 .property-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 6px; align-items: center; font-size: 13px; }
 .property-row.head { color: #475569; font-weight: 850; }
-.property-row span { color: #c3d8d6; }
+.property-row span { color: #1e293b; }
 .property-row .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
 .property-row.separated { opacity: .42; }
 
@@ -77,7 +79,7 @@
 .size-track { fill: rgba(148, 163, 184, 0.18); }
 .size-bar { stroke: rgba(14, 24, 30, .45); stroke-width: 1; }
 .size-name { fill: #0f172a; font-size: 13.5px; font-weight: 850; }
-.size-mm { fill: #334155; font-size: 13.5px; font-weight: 800; }
+.size-mm { fill: #334155; font-size: 13.5px; font-weight: 800; paint-order: stroke; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round; }
 .size-done { fill: #059669; font-size: 13.5px; font-weight: 900; }
 .mesh-line { stroke: #d97706; stroke-width: 2.2; stroke-dasharray: 5 4; }
 .mesh-text { fill: #c2410c; font-size: 13.5px; font-weight: 900; }

@@ -25,44 +25,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const bubbleGroup = document.getElementById('bubbleGroup');
 
     let prediction = null;
+    // 확인하기 전에는 처음 상태(20℃ 물)만 보인다. 누르면 온도계와 물이 정한 온도로 바뀌어 간다.
+    // 0℃는 '가열하여 녹인 비율'이므로 -10℃ 얼음에서 데우기 시작하고, 나머지는 20℃ 물에서 식히거나 데운다
+    const startTemp = () => Number(temperatureRange.value) === 0 ? -10 : 20;
+    let revealed = false, animId = 0, shownTemp = 20, phaseQ = 0;
+    const iceGrowRect = document.getElementById('iceGrowRect');
+    const reduceMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
     const STATE_LABEL = window.SciencePhaseModel.labels;
     function stateAt(temp) { return window.SciencePhaseModel.sample(temp,phaseRange.value).state; }
 
     function createBubbles() {
-        const bounds = { xMin: 40, xMax: 200, yMin: 235, yMax: 292 };
-        const count = 7;
+        const bounds = { xMin: 40, xMax: 200, yMin: 240, yMax: 294 };
+        const count = 16;
         bubbleGroup.innerHTML = Array.from({ length: count }, () => {
             const cx = (bounds.xMin + Math.random() * (bounds.xMax - bounds.xMin)).toFixed(1);
             const cy = (bounds.yMin + Math.random() * (bounds.yMax - bounds.yMin)).toFixed(1);
-            const r = (2 + Math.random() * 2.5).toFixed(1);
+            const r = (3.5 + Math.random() * 3.5).toFixed(1);
             const delay = (Math.random() * 1.6).toFixed(2);
             return `<circle cx="${cx}" cy="${cy}" r="${r}" style="--delay:${delay}s"></circle>`;
         }).join('');
     }
 
-    function syncControls() {
-        const temp = Number(temperatureRange.value);
-        temperatureOutput.textContent = `${temp}℃`;
-
-        // Mercury height maps across the slider's own -10..110 range, not a
-        // fixed 0..100 assumption, so the column reflects relative position
-        // even for the below-freezing and above-boiling ends.
+    function setThermometer(temp) {
         const span = 110 - -10;
         const mercuryHeight = 4 + ((temp - -10) / span) * 164;
         mercuryRect.setAttribute('y', String(180 - mercuryHeight));
         mercuryRect.setAttribute('height', String(mercuryHeight));
-
         const warmth = Math.max(0, Math.min(1, temp / 100));
-        waterStopTop.setAttribute('stop-color', `rgb(${Math.round(110 + 70 * warmth)}, ${Math.round(200 - 15 * warmth)}, ${Math.round(235 - 25 * warmth)})`);
-        waterStopBottom.setAttribute('stop-color', `rgb(${Math.round(60 + 50 * warmth)}, ${Math.round(150 - 15 * warmth)}, ${Math.round(195 - 35 * warmth)})`);
+        waterStopTop.setAttribute('stop-color', `rgb(${Math.round(110 + 40 * warmth)}, ${Math.round(200 + 5 * warmth)}, ${Math.round(235 - 3 * warmth)})`);
+        waterStopBottom.setAttribute('stop-color', `rgb(${Math.round(60 + 35 * warmth)}, ${Math.round(150 + 10 * warmth)}, ${Math.round(195 + 5 * warmth)})`);
+    }
+
+    function syncControls() {
+        const temp = Number(temperatureRange.value);
+        temperatureOutput.textContent = `${temp}℃`;
+        if (!revealed) { stopAnim(); shownTemp = startTemp(); phaseQ = 0; }
+
+        // Mercury height maps across the slider's own -10..110 range, not a
+        // fixed 0..100 assumption, so the column reflects relative position
+        // even for the below-freezing and above-boiling ends.
+        setThermometer(shownTemp);
 
         const state = stateAt(temp);
-        beaker.classList.remove('state-solid', 'state-liquid', 'state-gas', 'state-solid-liquid', 'state-liquid-gas');
+        beaker.classList.remove('state-solid', 'state-liquid', 'state-gas', 'state-solid-liquid', 'state-liquid-gas', 'boiling');
         phaseControls.hidden = temp !== 0 && temp !== 100;
         document.getElementById('phaseLabel').textContent = temp === 0 ? '가열하여 녹인 비율' : '가열하여 기화시킨 비율';
         document.getElementById('phaseOutput').textContent = phaseRange.value + '%';
-        beaker.classList.add(`state-${state}`);
+        beaker.classList.add(revealed && phaseQ >= 1 ? `state-${state}` : 'state-liquid');
+        if (revealed && phaseQ > 0 && phaseQ < 1 && temp >= 100) beaker.classList.add('boiling');
 
         renderPhaseVisuals();
         renderHeatCurve(temp);
@@ -114,12 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // the two places where heat goes in but the temperature does not move
         out += `<line class="flat-mark" x1="${gx(T1).toFixed(1)}" y1="${gy(0).toFixed(1)}" x2="${gx(T2).toFixed(1)}" y2="${gy(0).toFixed(1)}"/>`;
         out += `<line class="flat-mark" x1="${gx(T3).toFixed(1)}" y1="${gy(100).toFixed(1)}" x2="${gx(T4).toFixed(1)}" y2="${gy(100).toFixed(1)}"/>`;
-        out += `<text class="flat-text" x="${gx(T1).toFixed(1)}" y="${(gy(0) - 30).toFixed(1)}" text-anchor="start">얼음이 녹는 동안</text>`;
+        out += `<text class="flat-text" x="${(gx(T2) + 16).toFixed(1)}" y="${(gy(0) - 2).toFixed(1)}" text-anchor="start">← 얼음이 녹는 동안</text>`;
         out += `<text class="flat-text" x="${gx((T3 + T4) / 2).toFixed(1)}" y="${(gy(100) - 8).toFixed(1)}" text-anchor="middle">물이 끓는 동안 — 온도가 그대로입니다</text>`;
 
         const px = gx(timeAt(temp)), py = gy(temp);
-        out += `<line class="op-guide" x1="${G.x0}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}"/>`;
-        out += `<circle class="op-point" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="5"/>`;
+        if (revealed) out += `<line class="op-guide" x1="${G.x0}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}"/>`;
+        if (revealed) out += `<circle class="op-point" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="5"/>`;
         // The selected temperature is already shown in the adjacent readout; no overlapping SVG label.
         window.scienceScene.render(graphGroup,out);
     }
@@ -127,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderData(temp, state) {
         const meltMin = T2 - T1, boilMin = T4 - T3;
         window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">지금 온도</span><span class="data-val">${temp}℃</span></div>` +
-            `<div class="data-row match"><span class="data-name">지금 상태</span><span class="data-val">${STATE_LABEL[state]}</span></div>` +
+            (revealed && phaseQ >= 1 ? `<div class="data-row match"><span class="data-name">지금 상태</span><span class="data-val">${STATE_LABEL[state]}</span></div>` : '') +
             `<div class="data-row"><span class="data-name">녹는점 · 어는점</span><span class="data-val">0℃ — 얼음과 물이 함께 있는 온도</span></div>` +
             `<div class="data-row"><span class="data-name">끓는점</span><span class="data-val">100℃ — 물과 수증기가 함께 있는 온도</span></div>` +
             `<div class="data-row"><span class="data-name">모형에서 녹는 시간</span><span class="data-val">${meltMin.toFixed(1)}분 (온도는 0℃ 그대로)</span></div>` +
@@ -136,22 +147,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderPhaseVisuals() {
-        const a=sample(), bottom=300, scale=2.06;
+        const a=sample(), bottom=300, scale=2.06, q=revealed?phaseQ:0, st=window.SciencePhaseModel.sample(startTemp(),0);
+        // 모형이 정한 최종 모습 (#iceClipRect 는 이 값에 고정)
         const liquidHeight=100*a.liquid*scale, iceHeight=100*a.ice/0.917*scale;
         const iceTop=bottom-liquidHeight-iceHeight;
-        waterRect.setAttribute('y',String(bottom-liquidHeight));
-        waterRect.setAttribute('height',String(liquidHeight));
-        waterSurface.setAttribute('cy',String(bottom-liquidHeight));
-        waterSurface.style.opacity=a.ice>0||a.liquid===0?'0':'1';
+        // 화면에 보이는 모습: 처음 물(q=0)에서 최종 모습(q=1)으로
+        const shownLiquid=100*(st.liquid+(a.liquid-st.liquid)*q)*scale, shownIce=100*(st.ice+(a.ice-st.ice)*q)/0.917*scale;
+        const shownIceTop=bottom-shownLiquid-shownIce;
+        waterRect.setAttribute('y',String(bottom-shownLiquid));
+        waterRect.setAttribute('height',String(shownLiquid));
+        waterSurface.setAttribute('cy',String(bottom-shownLiquid));
+        waterSurface.style.opacity=shownIce>0.5||shownLiquid<1?'0':'1';
         iceClipRect.setAttribute('y',String(iceTop));
         iceClipRect.setAttribute('height',String(iceHeight));
+        iceGrowRect.setAttribute('y',String(shownIceTop));
+        iceGrowRect.setAttribute('height',String(shownIce));
         const ice=document.getElementById('iceRect');
-        ice.setAttribute('y',String(iceTop));ice.setAttribute('height',String(iceHeight));
-        document.getElementById('phaseSampleLabel').textContent=a.vapour===1?'수증기는 보이지 않음':a.label;
-        beaker.dataset.phase=a.state;
+        ice.setAttribute('y',String(shownIceTop));ice.setAttribute('height',String(shownIce));
+        const label=document.getElementById('phaseSampleLabel');
+        label.textContent=!revealed?`처음: ${startTemp()}℃ ${startTemp()<0?'얼음':'물'}`:phaseQ<1?`${Math.round(shownTemp)}℃`:a.vapour===1?'수증기는 보이지 않음':a.label;
+        beaker.dataset.phase=revealed&&phaseQ>=1?a.state:'start';
+    }
+
+    function stopAnim() { if (animId) cancelAnimationFrame(animId); animId = 0; }
+    // 온도계 확인: 1단계 온도계 눈금이 정한 온도까지 움직이고(물 색도 바뀜), 2단계 얼음이 얼거나 끓어 물이 줄어든다
+    function playCheck(done) {
+        stopAnim(); revealed = true;
+        const target = Number(temperatureRange.value), changes = target <= 0 || target >= 100;
+        if (reduceMotion()) { shownTemp = target; phaseQ = 1; syncControls(); done(); return; }
+        const S0 = startTemp(), t1 = 1300 + Math.min(900, Math.abs(target - S0) * 12), t2 = changes ? 1700 : 0, t0 = performance.now();
+        const ease = x => x < .5 ? 2 * x * x : 1 - 2 * (1 - x) * (1 - x);
+        shownTemp = S0; phaseQ = 0;
+        const step = now => {
+            const e = now - t0;
+            const first = Math.min(1, e / t1);
+            // 0℃·100℃ 아래위로 넘어가는 동안에는 상태가 바뀌는 사이(2단계) 온도가 그 자리에 머문다
+            const hold = target < 0 ? 0 : target > 100 ? 100 : target;
+            if (e < t1) { shownTemp = S0 + (hold - S0) * ease(first); phaseQ = 0; }
+            else if (e < t1 + t2) { shownTemp = hold; phaseQ = (e - t1) / t2; }
+            else { const extra = Math.min(1, (e - t1 - t2) / 500); shownTemp = hold + (target - hold) * extra; phaseQ = 1; }
+            syncControls();
+            if (e >= t1 + t2 + (target !== hold ? 500 : 0)) { animId = 0; shownTemp = target; phaseQ = 1; syncControls(); done(); return; }
+            animId = requestAnimationFrame(step);
+        };
+        animId = requestAnimationFrame(step);
     }
 
     function clearResult() {
+        resultEmpty.textContent = '예상한 뒤 확인해 보세요.';
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         stageCaption.textContent = '각 온도에서 별도 시료를 비교합니다. 0℃·100℃에서는 가열에 따른 변화 비율도 정하세요.';
@@ -159,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkState() {
         const temp = Number(temperatureRange.value);
+        revealed = true; shownTemp = temp; phaseQ = 1; stopAnim(); syncControls();
         const state = stateAt(temp);
 
         resultTemp.textContent = `${temp}℃`;
@@ -188,13 +232,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    temperatureRange.addEventListener('input', () => { phaseRange.value='50'; syncControls(); clearResult(); });
-    phaseRange.addEventListener('input', () => { syncControls(); clearResult(); });
+    temperatureRange.addEventListener('input', () => { phaseRange.value='50'; revealed = false; syncControls(); clearResult(); });
+    phaseRange.addEventListener('input', () => { revealed = false; syncControls(); clearResult(); });
     predictionButtons.forEach(button => button.addEventListener('click', () => {
         prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
-    checkButton.addEventListener('click', checkState);
+    // 예상을 고른 직후 확인하면 결과 판정은 곧바로 내리되(바뀌는 모습은 그 뒤 그림으로), 그림은 처음 상태에서 움직여 간다
+    checkButton.addEventListener('click', () => {
+        checkState();
+        if (reduceMotion()) return;
+        // 판정 글은 바뀌는 모습을 다 본 뒤에 보여 준다
+        const caption = stageCaption.textContent;
+        resultContent.hidden = true; resultEmpty.hidden = false; resultEmpty.textContent = '온도계 눈금과 비커 속을 지켜보세요.';
+        stageCaption.textContent = '정한 온도까지 식히거나 데우는 중입니다.';
+        playCheck(() => { resultEmpty.hidden = true; resultContent.hidden = false; stageCaption.textContent = caption; });
+    });
 
     function shuffleQuizOptions(card) {
         const optionGroup = card.querySelector('.quiz-options');

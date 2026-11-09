@@ -79,13 +79,16 @@
 
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 /* track */
-.lane { fill: rgba(150, 210, 235, .06); stroke: rgba(177, 226, 230, .4); stroke-width: 1; }
+.lane { fill: #eef6ec; stroke: #b7d3b0; stroke-width: 1; }
 .lane-line { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; stroke-dasharray: 4 4; }
 .mark { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; }
 .mover { font-size: 22px; }
 .finish { fill: #c2410c; }
 .finish-post { stroke: #d97706; stroke-width: 2; }
-.watch { fill: #ffffff; stroke: #64748b; stroke-width: 2; filter: drop-shadow(0 2px 5px rgba(15, 23, 42, 0.08)); }
+.watch { fill: #ffffff; stroke: #475569; stroke-width: 2.4; }
+.watch-crown { fill: #475569; }
+.watch-unit { fill: #334155; font-size: 13.5px; font-weight: 800; }
+.speed-line { fill: none; stroke: #94a3b8; stroke-width: 2; stroke-linecap: round; }
 .watch-text { fill: #0f172a; font-size: 14px; font-weight: 900; }
 .lane-name { fill: #0f172a; font-size: 14.5px; font-weight: 900; }
 .dist-text { fill: #c2410c; font-size: 14px; font-weight: 900; }

@@ -22,7 +22,7 @@ const REF = { mat: 'wood', size: 4 };
 const state = {
     mat: 'wood', size: 2,
     prediction: null, checked: false,
-    running: false, t: 0, phase: 0,
+    running: false, t: 0, phase: 0, done: false,
 };
 
 const $ = id => document.getElementById(id);
@@ -69,7 +69,7 @@ function el(tag, attrs, text) {
 }
 
 const PX = 9;               // screen pixels per centimetre of edge
-const PIVOT = { x: 120, y: 76 }, ARM = 62, DROP = 30, PAN_W = 46;
+const PIVOT = { x: 124, y: 118 }, ARM = 70, POST = 20, PAN_W = 50;
 
 function cube(g, cx, bottomY, size, colour, dim) {
     const s = size * PX;
@@ -77,74 +77,114 @@ function cube(g, cx, bottomY, size, colour, dim) {
         x: cx - s / 2, y: bottomY - s, width: s, height: s, rx: 2,
         class: 'block', style: `fill:${colour}${dim ? ';opacity:.55' : ''}`,
     }));
+    // a light top edge so the block reads as a solid lump
+    g.appendChild(el('rect', { x: cx - s / 2 + 2, y: bottomY - s + 2, width: Math.max(1, s - 4), height: Math.max(1, s * 0.18), rx: 1, style: 'fill:#ffffff;opacity:.25' }));
 }
+
+const ease = u => u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+// phases of one run (t from 0 to 1, five seconds)
+const P_PLACE = 0.16, P_TILT = 0.5, P_DROP = 0.72;
 
 function drawScene(g) {
     const a = analyse();
-    // The balance swings during the first half of a run, then holds.
-    const settle = state.running ? clamp(state.t / 0.45, 0, 1) : 1;
+    const t = state.running ? state.t : (state.done ? 1 : 0);
+    const done = state.done && !state.running;
+    // blocks come down onto the pans first
+    const place = clamp(t / P_PLACE, 0, 1);
+    // then the beam swings to its angle with a small dying wobble
     const share = (a.weight - a.ref) / (a.weight + a.ref);
-    const ang = 15 * share * settle * Math.PI / 180;
+    const target = 14 * share;
+    const u = clamp((t - P_PLACE) / (P_TILT - P_PLACE), 0, 1);
+    const wobble = u <= 0 ? 0 : ease(u) + Math.sin(u * Math.PI * 3) * (1 - u) * 0.25;
+    const deg = target * wobble;
+    const ang = deg * Math.PI / 180;
 
-    g.appendChild(el('rect', { x: 104, y: 186, width: 32, height: 8, rx: 2, class: 'stand' }));
-    g.appendChild(el('rect', { x: 116, y: PIVOT.y, width: 8, height: 110, class: 'stand' }));
+    // base, pillar and scale
+    g.appendChild(el('path', { d: 'M 64 200 L 184 200 L 176 188 L 72 188 Z', class: 'stand' }));
+    g.appendChild(el('rect', { x: PIVOT.x - 5, y: PIVOT.y, width: 10, height: 70, class: 'stand' }));
+    g.appendChild(el('path', { d: `M ${PIVOT.x - 26} 172 A 30 30 0 0 0 ${PIVOT.x + 26} 172`, class: 'scale-arc' }));
+    g.appendChild(el('line', { x1: PIVOT.x, y1: 168, x2: PIVOT.x, y2: 178, class: 'scale-mark' }));
+    // pointer hangs from the pivot and swings with the beam
+    const pl = 52;
+    g.appendChild(el('line', { x1: PIVOT.x, y1: PIVOT.y, x2: PIVOT.x + pl * Math.sin(ang), y2: PIVOT.y + pl * Math.cos(ang), class: 'pointer' }));
+
     const lx = PIVOT.x - ARM * Math.cos(ang), ly = PIVOT.y + ARM * Math.sin(ang);
     const rx = PIVOT.x + ARM * Math.cos(ang), ry = PIVOT.y - ARM * Math.sin(ang);
     g.appendChild(el('line', { x1: lx, y1: ly, x2: rx, y2: ry, class: 'beam' }));
+    g.appendChild(el('circle', { cx: PIVOT.x, cy: PIVOT.y, r: 5, class: 'pivot' }));
 
-    [[lx, ly, state.mat, state.size], [rx, ry, REF.mat, REF.size]].forEach(([px, py, mat, size]) => {
-        g.appendChild(el('line', { x1: px, y1: py, x2: px, y2: py + DROP, class: 'hanger' }));
-        g.appendChild(el('line', { x1: px - PAN_W / 2, y1: py + DROP, x2: px + PAN_W / 2, y2: py + DROP, class: 'pan-floor' }));
-        cube(g, px, py + DROP - 1, size, MATERIALS[mat].colour, false);
+    [[lx, ly, state.mat, state.size], [rx, ry, REF.mat, REF.size]].forEach(([px, py, mat, size], k) => {
+        // posts stay upright, so the pans on top stay level while the beam tilts
+        g.appendChild(el('line', { x1: px, y1: py, x2: px, y2: py - POST, class: 'post' }));
+        const panY = py - POST;
+        g.appendChild(el('path', { d: `M ${px - PAN_W / 2} ${panY - 4} Q ${px} ${panY + 6} ${px + PAN_W / 2} ${panY - 4} Z`, class: 'pan-dish' }));
+        if (place > 0) {
+            const lift = (1 - ease(place)) * 60;
+            cube(g, px, panY - 4 - lift, size, MATERIALS[mat].colour, false);
+        }
+        void k;
     });
-    g.appendChild(el('text', { x: PIVOT.x, y: 208, 'text-anchor': 'middle', class: 'small-label' },
-        Math.abs(a.diff) < 0.005 ? '저울이 수평입니다' : (a.diff > 0 ? '왼쪽이 무겁습니다' : '오른쪽이 무겁습니다')));
-    g.appendChild(el('text', { x: 16, y: 22, class: 'small-label' }, `${a.mat.name} ${a.size} cm`));
-    g.appendChild(el('text', { x: 16, y: 40, class: 'big-read' }, `${grams(a.weight)} g`));
-    g.appendChild(el('text', { x: 224, y: 22, 'text-anchor': 'end', class: 'small-label' }, '나무 4 cm'));
-    g.appendChild(el('text', { x: 224, y: 38, 'text-anchor': 'end', class: 'read-text' }, `${grams(a.ref)} g`));
+    if (place >= 1) {
+        g.appendChild(el('text', { x: 16, y: 22, class: 'small-label' }, `${a.mat.name} ${a.size} cm`));
+        g.appendChild(el('text', { x: 16, y: 40, class: 'big-read' }, `${grams(a.weight)} g`));
+        g.appendChild(el('text', { x: 236, y: 22, 'text-anchor': 'end', class: 'small-label' }, '나무 4 cm'));
+        g.appendChild(el('text', { x: 236, y: 40, 'text-anchor': 'end', class: 'read-text' }, `${grams(a.ref)} g`));
+    } else {
+        g.appendChild(el('text', { x: 16, y: 22, class: 'small-label' }, `${a.mat.name} ${a.size} cm`));
+        g.appendChild(el('text', { x: 236, y: 22, 'text-anchor': 'end', class: 'small-label' }, '나무 4 cm'));
+    }
+    if (done) g.appendChild(el('text', { x: PIVOT.x, y: 216, 'text-anchor': 'middle', class: 'small-label verdict-text' },
+        Math.abs(a.diff) < 0.005 ? '수평' : (a.diff > 0 ? '왼쪽이 무거움' : '오른쪽이 무거움')));
 
-    // The tank. During a run the block drops in and then settles.
-    const TANK = { x: 268, y: 72, w: 168, h: 120 }, TOP = 100;
-    g.appendChild(el('rect', { x: TANK.x, y: TOP, width: TANK.w, height: TANK.y + TANK.h - TOP, class: 'water' }));
-    g.appendChild(el('line', { x1: TANK.x, y1: TOP, x2: TANK.x + TANK.w, y2: TOP, class: 'water-top' }));
-    g.appendChild(el('path', { d: `M ${TANK.x} ${TANK.y} L ${TANK.x} ${TANK.y + TANK.h} L ${TANK.x + TANK.w} ${TANK.y + TANK.h} L ${TANK.x + TANK.w} ${TANK.y}`, class: 'tank' }));
+    // the tank: a twin block is lowered in after weighing, then bobs to rest
+    const TANK = { x: 272, y: 78, w: 164, h: 118 }, TOP = 104;
+    g.appendChild(el('rect', { x: TANK.x + 2, y: TOP, width: TANK.w - 4, height: TANK.y + TANK.h - TOP - 2, class: 'water' }));
+    g.appendChild(el('line', { x1: TANK.x + 2, y1: TOP, x2: TANK.x + TANK.w - 2, y2: TOP, class: 'water-top' }));
 
     const s = a.size * PX;
     const cx = TANK.x + TANK.w / 2;
-    const restBottom = a.floats ? TOP + s * a.sunk : TANK.y + TANK.h - 2;
-    const drop = state.running ? clamp((state.t - 0.5) / 0.45, 0, 1) : 1;
-    const startBottom = TANK.y - 6;
-    const bottomY = startBottom + (restBottom - startBottom) * drop;
-    cube(g, cx, bottomY, a.size, a.mat.colour, false);
-    if (drop > 0.75 && a.floats) {
-        for (let i = 0; i < 3; i += 1) {
-            const w = 8 + i * 7 + Math.sin(state.phase * 3 + i) * 2;
-            g.appendChild(el('path', { d: `M ${cx - s / 2 - w} ${TOP - 4 - i * 3} q ${w / 2} -4 ${w} 0`, class: 'splash' }));
-            g.appendChild(el('path', { d: `M ${cx + s / 2} ${TOP - 4 - i * 3} q ${w / 2} -4 ${w} 0`, class: 'splash' }));
+    const restBottom = a.floats ? TOP + s * a.sunk : TANK.y + TANK.h - 3;
+    const dv = clamp((t - P_TILT) / (P_DROP - P_TILT), 0, 1);
+    if (dv > 0) {
+        const startBottom = TANK.y - 30;
+        const fall = dv * dv;
+        let bottomY = startBottom + (restBottom - startBottom) * fall;
+        // after it lands a floating block overshoots and bobs, a sinking one slows in the water
+        const after = clamp((t - P_DROP) / (1 - P_DROP), 0, 1);
+        if (dv >= 1 && a.floats) bottomY = restBottom + Math.sin(after * Math.PI * 4) * (1 - after) * Math.min(14, s * 0.4);
+        if (!a.floats && dv < 1 && bottomY > TOP) bottomY = TOP + (bottomY - TOP) * 0.8;
+        cube(g, cx, bottomY, a.size, a.mat.colour, false);
+        const ring = clamp((t - P_DROP) / 0.2, 0, 1);
+        if (ring > 0 && ring < 1) {
+            for (let i = 0; i < 2; i += 1) {
+                const w = s / 2 + 8 + ring * 30 + i * 10;
+                g.appendChild(el('path', { d: `M ${cx - w} ${TOP - 2} q 6 -6 12 0 M ${cx + w - 12} ${TOP - 2} q 6 -6 12 0`, class: 'splash', style: `opacity:${(1 - ring).toFixed(2)}` }));
+            }
         }
     }
-    g.appendChild(el('text', { x: TANK.x + TANK.w / 2, y: 208, 'text-anchor': 'middle', class: 'small-label' },
-        a.floats ? '물 위에 뜹니다' : '바닥까지 가라앉습니다'));
-    g.appendChild(el('text', { x: 444, y: 22, 'text-anchor': 'end', class: 'small-label' }, '물에 넣어 보면'));
-    g.appendChild(el('text', { x: 444, y: 40, 'text-anchor': 'end', class: 'read-text', style: a.floats ? '' : 'fill:#ea580c' },
-        a.floats ? '뜬다' : '가라앉는다'));
+    g.appendChild(el('path', { d: `M ${TANK.x - 4} ${TANK.y} L ${TANK.x} ${TANK.y + 4} L ${TANK.x} ${TANK.y + TANK.h} L ${TANK.x + TANK.w} ${TANK.y + TANK.h} L ${TANK.x + TANK.w} ${TANK.y + 4} L ${TANK.x + TANK.w + 4} ${TANK.y}`, class: 'tank' }));
+    g.appendChild(el('text', { x: 444, y: 22, 'text-anchor': 'end', class: 'small-label' }, '물이 든 수조'));
+    if (done) g.appendChild(el('text', { x: TANK.x + TANK.w / 2, y: 216, 'text-anchor': 'middle', class: 'small-label verdict-text', style: a.floats ? '' : 'fill:#c2410c' },
+        a.floats ? '뜸' : '가라앉음'));
 }
+
+function niceStep(max) { for (const s of [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000]) if (max / s <= 5) return s; return 1000; }
 
 function drawGraph(g) {
     const a = analyse();
     const x0 = 54, x1 = 440, yTop = 30, yBot = 146;
-    const top = Math.max(weightOf(state.mat, 4), weightOf('wood', 4)) * 1.18;
+    const raw = Math.max(weightOf(state.mat, 4), weightOf('wood', 4)) * 1.12;
+    const step = niceStep(raw), top = Math.ceil(raw / step) * step;
     const Y = w => yBot - (w / top) * (yBot - yTop);
     const slot = (x1 - x0) / 4;
 
-    for (let i = 0; i <= 4; i += 1) {
-        const w = top * i / 4;
+    for (let w = 0; w <= top + 1e-9; w += step) {
         g.appendChild(el('line', { x1: x0, y1: Y(w), x2: x1, y2: Y(w), class: 'grid-line' }));
-        if (i > 0) g.appendChild(el('text', { x: x0 - 6, y: Y(w) + 3.5, 'text-anchor': 'end', class: 'axis-text' }, grams(w)));
+        if (w > 0) g.appendChild(el('text', { x: x0 - 6, y: Y(w) + 4, 'text-anchor': 'end', class: 'axis-text' }, String(w)));
     }
     g.appendChild(el('line', { x1: x0, y1: yBot, x2: x1, y2: yBot, class: 'axis' }));
     g.appendChild(el('line', { x1: x0, y1: yTop, x2: x0, y2: yBot, class: 'axis' }));
+    g.appendChild(el('text', { x: x0 + 4, y: yTop - 10, class: 'axis-title' }, '무게 (g)'));
 
     const sameAsWood = state.mat === 'wood';
     SIZES.forEach((sz, i) => {
@@ -161,20 +201,18 @@ function drawGraph(g) {
         }
         g.appendChild(el('text', {
             x: cx - gap, y: Y(w) - 5, 'text-anchor': 'middle', class: 'bar-text',
-            style: `fill:${sz === state.size ? '#059669' : '#475569'}`,
+            style: `fill:${sz === state.size ? '#047857' : '#475569'}`,
         }, grams(w)));
-        g.appendChild(el('text', { x: cx, y: yBot + 15, 'text-anchor': 'middle', class: 'axis-text' }, `${sz} cm`));
+        g.appendChild(el('text', { x: cx, y: yBot + 16, 'text-anchor': 'middle', class: 'axis-text' }, `${sz} cm`));
     });
 
-    g.appendChild(el('rect', { x: x0 + 4, y: 168, width: 12, height: 8, rx: 2, class: 'bar', style: `fill:${a.mat.colour}` }));
-    g.appendChild(el('text', { x: x0 + 22, y: 175.5, class: 'legend-text', style: `fill:${a.mat.colour}` }, a.mat.name));
+    g.appendChild(el('rect', { x: x0 + 4, y: 170, width: 12, height: 9, rx: 2, class: 'bar', style: `fill:${a.mat.colour}` }));
+    g.appendChild(el('text', { x: x0 + 22, y: 178.5, class: 'legend-text', style: 'fill:#1e293b' }, a.mat.name));
     if (!sameAsWood) {
-        g.appendChild(el('rect', { x: x0 + 92, y: 168, width: 12, height: 8, rx: 2, class: 'bar-ghost' }));
-        g.appendChild(el('text', { x: x0 + 110, y: 175.5, class: 'legend-text', style: 'fill:#bed2e1' }, '같은 크기의 나무'));
+        g.appendChild(el('rect', { x: x0 + 92, y: 170, width: 12, height: 9, rx: 2, class: 'bar-ghost' }));
+        g.appendChild(el('text', { x: x0 + 110, y: 178.5, class: 'legend-text', style: 'fill:#475569' }, '같은 크기의 나무'));
     }
-    g.appendChild(el('text', { x: x1 - 2, y: 175.5, 'text-anchor': 'end', class: 'legend-text', style: 'fill:#475569' },
-        '같은 재료의 크기와 무게 비교'));
-    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, '덩어리 한 변의 길이 — 세로는 무게 (g)'));
+    g.appendChild(el('text', { x: x1, y: 178.5, 'text-anchor': 'end', class: 'legend-text', style: 'fill:#475569' }, '가로: 한 변의 길이'));
 }
 
 function render() {
@@ -188,19 +226,21 @@ const WORDS = { p1: '뜬다', p2: '아슬아슬하게 뜬다', p3: '가라앉는
 
 function updateReadout() {
     const a = analyse();
+    const done = state.done && !state.running;
     $('stageBadge').textContent = `${a.mat.name} ${a.size} cm 덩어리`;
     $('valueA').textContent = `${grams(a.weight)} g`;
     $('valueB').textContent = `${grams(a.ref)} g`;
     const rows = [
         ['재료', a.mat.name, false],
-        ['덩어리의 무게', grams(a.weight) + ' g', false],
+        ['덩어리의 무게', done ? grams(a.weight) + ' g' : '저울에 올리면 잽니다', false],
         ['비교할 나무의 무게', grams(a.ref) + ' g', false],
-        ['무게 비교', Math.abs(a.diff) < 0.005 ? '같음' : a.diff > 0 ? '나무보다 무거움' : '나무보다 가벼움', true],
-        ['물에 넣은 결과', a.floats ? '뜸' : '가라앉음', false],
     ];
+    if (done) rows.push(
+        ['무게 비교', Math.abs(a.diff) < 0.005 ? '같음' : a.diff > 0 ? '나무보다 무거움' : '나무보다 가벼움', true],
+        ['물에 넣은 결과', a.floats ? '뜸' : '가라앉음', false]);
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
-    if (state.checked) explain(a);
+    if (state.checked && done) explain(a);
 }
 
 function explain(a) {
@@ -233,6 +273,7 @@ function tick(dt) {
     state.t = Math.min(1, state.t + dt / 5);
     if (state.t >= 1) {
         state.running = false;
+        state.done = true;
         $('runBtn').textContent = '저울에 올리고 물에 넣기';
         state.checked = true;
         return true;
@@ -240,14 +281,17 @@ function tick(dt) {
     return false;
 }
 
-let last = 0;
+let last = 0, looping = false;
 function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000 || 0);
     last = now;
     tick(dt);
     render();
-    requestAnimationFrame(frame);
+    if (state.running) requestAnimationFrame(frame); else looping = false;
 }
+function startLoop() { if (looping) return; looping = true; last = performance.now(); requestAnimationFrame(frame); }
+const reducedMotion = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+function clearRun() { state.running = false; state.done = false; state.t = 0; state.checked = false; $('runBtn').textContent = '저울에 올리고 물에 넣기'; $('resultEmpty').hidden = false; $('resultContent').hidden = true; }
 
 // --- wiring -----------------------------------------------------------------
 function markSelected(sel, attr, value) {
@@ -255,23 +299,27 @@ function markSelected(sel, attr, value) {
 }
 
 document.querySelectorAll('[data-mat]').forEach(b => b.addEventListener('click', () => {
-    state.mat = b.dataset.mat; markSelected('[data-mat]', 'mat', state.mat); render();
+    state.mat = b.dataset.mat; clearRun(); markSelected('[data-mat]', 'mat', state.mat); render();
 }));
 document.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click', () => {
-    state.size = Number(b.dataset.size); markSelected('[data-size]', 'size', state.size); render();
+    state.size = Number(b.dataset.size); clearRun(); markSelected('[data-size]', 'size', state.size); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
     state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('runBtn').addEventListener('click', () => {
-    if (state.running) { state.running = false; $('runBtn').textContent = '저울에 올리고 물에 넣기'; return; }
-    state.t = 0; state.running = true; state.checked = true;
+    if (state.running) { clearRun(); render(); return; }
+    state.t = 0; state.done = false; state.checked = true;
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+    if (reducedMotion()) { state.t = 1; state.done = true; render(); return; }
+    state.running = true;
     $('runBtn').textContent = '멈추기';
     render();
+    startLoop();
 });
 $('resetBtn').addEventListener('click', () => {
     state.mat = 'wood'; state.size = 2;
-    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
+    state.prediction = null; state.checked = false; state.running = false; state.t = 0; state.done = false;
     $('runBtn').textContent = '저울에 올리고 물에 넣기';
     document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
     $('resultEmpty').hidden = false; $('resultContent').hidden = true;
@@ -295,7 +343,6 @@ document.querySelectorAll('.quiz-card').forEach(card => {
 markSelected('[data-mat]', 'mat', state.mat);
 markSelected('[data-size]', 'size', state.size);
 render();
-requestAnimationFrame(frame);
 
 window.__weightModel = {
     state, analyse, tick, render, weightOf, refWeight, sunkFraction, floats,

@@ -23,15 +23,15 @@ const KINDS = {
 // Typical measured slopes, and how wide each edifice gets. The drawing is
 // built from these numbers so its shape cannot disagree with its label.
 const SHAPES = {
-    shield: { name: '순상 화산', slope: 6, halfWidth: 190 },
-    strato: { name: '성층 화산', slope: 28, halfWidth: 150 },
-    dome: { name: '종상 화산', slope: 38, halfWidth: 80 },
+    shield: { name: '순상 화산', slope: 6, halfWidth: 212 },
+    strato: { name: '성층 화산', slope: 28, halfWidth: 118 },
+    dome: { name: '종상 화산', slope: 38, halfWidth: 64 },
 };
 
 const state = {
     kind: 'basalt', water: 0.5, temp: 1200,
     prediction: null, checked: false,
-    running: false, phase: 0, blast: 0,
+    running: false, phase: 0, blast: 0, done: false,
 };
 
 const $ = id => document.getElementById(id);
@@ -109,82 +109,128 @@ function el(tag, attrs, text) {
     return n;
 }
 
-const BASE = 180, APEX_X = 230;
+const BASE = 168, APEX_X = 230, VEX = 2;   // heights are drawn twice as tall as true, and the page says so
+const CH_Y = 230;                           // magma chamber
+const ease = u => u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+const rnd = i => { const x = Math.sin(i * 91.7 + 13.1) * 43758.5453; return x - Math.floor(x); };
 
 function drawVolcano(g) {
     const a = analyse();
     const S = a.shape;
-    const h = S.halfWidth * Math.tan(S.slope * Math.PI / 180);
-    const apexY = BASE - h;
     const style = a.verdict;
+    const b = state.running ? Math.min(1, state.blast) : (state.done ? 1 : 0);
+    const done = state.done && !state.running;
+    const active = state.running;
+    // the edifice is built by the eruption itself: lava that runs far piles low and wide,
+    // sticky lava and ash pile steep and close to the vent
+    const grow = ease(clamp(b / 0.85, 0, 1));
+    const W = S.halfWidth * (0.12 + 0.88 * grow);
+    const h = W * Math.tan(S.slope * Math.PI / 180) * VEX;
+    const crater = S.slope > 30 ? 6 : 12;
+    const apexY = b > 0 ? BASE - h : BASE;
 
-    g.appendChild(el('rect', { x: 0, y: BASE, width: 460, height: 214 - BASE, class: 'ground' }));
+    // sky stays the page colour; ground in section: soil band and rock below
+    g.appendChild(el('rect', { x: 0, y: BASE, width: 460, height: 260 - BASE, class: 'ground' }));
+    g.appendChild(el('path', { d: `M 0 ${BASE + 14} Q 120 ${BASE + 10} 230 ${BASE + 15} T 460 ${BASE + 13}`, class: 'strata' }));
+    g.appendChild(el('path', { d: `M 0 ${BASE + 36} Q 140 ${BASE + 30} 260 ${BASE + 37} T 460 ${BASE + 34}`, class: 'strata' }));
+    g.appendChild(el('ellipse', { cx: APEX_X, cy: CH_Y, rx: 70, ry: 15, class: 'chamber' }));
+    g.appendChild(el('path', { d: `M ${APEX_X - 5} ${CH_Y - 12} L ${APEX_X - 4} ${apexY + 2} L ${APEX_X + 4} ${apexY + 2} L ${APEX_X + 5} ${CH_Y - 12} Z`, class: 'conduit' }));
 
-    // An explosive column, drawn before the cone so the cone sits in front.
-    if (style !== 'p1') {
-        const power = style === 'p3' ? 1 : 0.45;
-        const grow = state.running ? Math.min(1, state.blast) : 1;
-        for (let i = 0; i < 14; i += 1) {
-            const t = i / 13;
-            const y = apexY - t * (apexY - 34) * grow;
-            const spread = (8 + t * 42 * power) * grow;
-            const wob = Math.sin(state.phase * 1.4 + i * 0.8) * 4 * power;
-            g.appendChild(el('circle', {
-                cx: APEX_X + wob, cy: y, r: Math.max(3, spread * 0.55),
-                class: i % 3 ? 'ash' : 'ash-dark',
-            }));
+    // ash column and flying bombs, drawn behind the cone
+    if (style !== 'p1' && b > 0.05) {
+        const power = style === 'p3' ? 1 : 0.5;
+        const rise = clamp((b - 0.05) / 0.5, 0, 1);
+        const top = apexY - Math.max(0, style === 'p3' ? apexY - 58 : Math.min(70, apexY - 58)) * ease(rise);
+        const n = 18;
+        for (let i = 0; i < n; i += 1) {
+            const t = i / (n - 1);
+            const y = apexY - t * (apexY - top);
+            const spread = Math.min(80, (6 + t * 30 * power + (t > 0.8 && style === 'p3' ? (t - 0.8) * 220 : 0)) * (0.4 + 0.6 * rise));
+            const wob = Math.sin(state.phase * 2.2 + i * 0.9) * 5 * power;
+            for (const side of [-0.45, 0.45]) {
+                { const r = Math.min(Math.max(4, spread * 0.6), y - 4); if (r > 2) g.appendChild(el('circle', { cx: APEX_X + wob + side * spread, cy: y, r, class: i % 3 ? 'ash' : 'ash-dark' })); }
+            }
+        }
+        if (active) {
+            const nb = style === 'p3' ? 14 : 6;
+            for (let k = 0; k < nb; k += 1) {
+                const u = ((state.phase * 0.9) + rnd(k)) % 1;
+                const vx = (rnd(k + 5) - 0.5) * 240 * power, vy = (160 + rnd(k + 9) * 140) * power;
+                const x = APEX_X + vx * u, y = apexY - vy * u + 260 * u * u;
+                if (y < BASE + 2 && y > 6) g.appendChild(el('circle', { cx: x, cy: y, r: 2 + rnd(k + 2) * 2.4, class: 'bomb' }));
+            }
         }
     }
 
-    g.appendChild(el('polygon', {
-        points: `${APEX_X - S.halfWidth},${BASE} ${APEX_X - 12},${apexY} ${APEX_X + 12},${apexY} ${APEX_X + S.halfWidth},${BASE}`,
-        class: 'cone',
-    }));
-
-    // Lava running down the flanks, faster when the melt is thinner.
-    if (style !== 'p3') {
-        const speed = clamp(0.08 + Math.log10(Math.max(a.flow, 1e-9)) * 0.12 + 1.1, 0.05, 0.9);
-        for (let i = 0; i < 5; i += 1) {
-            const p = ((state.phase * speed) + i / 5) % 1;
-            [-1, 1].forEach(sgn => {
-                const x = APEX_X + sgn * (12 + p * (S.halfWidth - 12));
-                const y = apexY + p * h;
-                g.appendChild(el('line', {
-                    x1: x, y1: y, x2: x + sgn * 9, y2: y + 9 * h / (S.halfWidth - 12),
-                    class: 'lava', style: `stroke-width:${fmt(3.4 - p * 1.4, 2)};opacity:${fmt(1 - p * 0.55, 2)}`,
-                }));
-            });
-        }
-    }
-
-    g.appendChild(el('ellipse', { cx: APEX_X, cy: 202, rx: 58, ry: 11, class: 'chamber' }));
-    g.appendChild(el('line', { x1: APEX_X, y1: 200, x2: APEX_X, y2: apexY, class: 'conduit', style: 'stroke-width:9' }));
-
-    // Bubbles climbing the conduit. Drawn far faster than reality, which the
-    // caption says outright; the true time is in the table.
-    const bs = clamp(0.05 + (10 - a.logEta) * 0.055, 0.03, 0.6);
-    for (let i = 0; i < 6; i += 1) {
-        const p = ((state.phase * bs) + i / 6) % 1;
-        g.appendChild(el('circle', {
-            cx: APEX_X + Math.sin(p * 7 + i) * 2.2, cy: 200 - p * (200 - apexY),
-            r: 2.6, class: 'bubble', style: `opacity:${fmt(0.35 + 0.65 * (1 - p), 2)}`,
+    // the cone
+    if (b > 0) {
+        g.appendChild(el('polygon', {
+            points: `${APEX_X - W},${BASE} ${APEX_X - crater},${apexY} ${APEX_X + crater},${apexY} ${APEX_X + W},${BASE}`,
+            class: 'cone',
         }));
+        if (S === SHAPES.strato) {
+            // alternating lava and ash layers of a stratovolcano
+            for (let k = 1; k <= 3; k += 1) {
+                const f = k / 4, yy = apexY + h * f, xx = crater + (W - crater) * f;
+                g.appendChild(el('path', { d: `M ${APEX_X - xx} ${yy} L ${APEX_X - crater * 0.6} ${yy - 6} L ${APEX_X + crater * 0.6} ${yy - 6} L ${APEX_X + xx} ${yy}`, class: 'layer' }));
+            }
+        }
+        g.appendChild(el('path', { d: `M ${APEX_X - 4} ${apexY + 1} L ${APEX_X - 4} ${BASE} L ${APEX_X + 4} ${BASE} L ${APEX_X + 4} ${apexY + 1} Z`, class: 'conduit' }));
+    } else {
+        // before the eruption: only a vent in flat ground
+        g.appendChild(el('path', { d: `M ${APEX_X - 14} ${BASE} Q ${APEX_X} ${BASE + 6} ${APEX_X + 14} ${BASE}`, class: 'vent' }));
     }
 
-    // The slope angle, drawn as the arc it actually is.
-    const ax = APEX_X + S.halfWidth;
-    g.appendChild(el('path', {
-        d: `M ${ax - 34} ${BASE} A 34 34 0 0 0 ${fmt(ax - 34 * Math.cos(S.slope * Math.PI / 180), 1)} ${fmt(BASE - 34 * Math.sin(S.slope * Math.PI / 180), 1)}`,
-        class: 'slope-arc',
-    }));
-    g.appendChild(el('text', { x: ax - 40, y: BASE - 6, 'text-anchor': 'end', class: 'tiny-label' }, `${S.slope}°`));
+    // lava running down both flanks (thin magma runs far, sticky magma barely moves)
+    if (style !== 'p3' && b > 0.05) {
+        const reach = clamp((b - 0.05) / 0.8, 0, 1) * (style === 'p1' ? 1 : 0.55);
+        [-1, 1].forEach(sgn => {
+            const x0 = APEX_X + sgn * crater, y0 = apexY;
+            const x1 = APEX_X + sgn * (crater + (W - crater) * reach), y1 = apexY + h * reach;
+            const run = style === 'p1' ? 60 * reach : 0;   // on the flat it keeps spreading
+            const pts = `M ${x0} ${y0} L ${x1} ${y1 - 1.5}` + (run > 0 && reach > 0.98 ? ` L ${x1 + sgn * run} ${BASE - 1.5}` : '');
+            g.appendChild(el('path', { d: pts, class: 'lava-crust' }));
+            g.appendChild(el('path', { d: pts, class: 'lava', style: active ? '' : 'stroke:#9a3412' }));
+            if (active) {
+                // glowing blobs travelling down the flow
+                for (let i = 0; i < 4; i += 1) {
+                    const p = ((state.phase * 0.5) + i / 4) % 1 * reach;
+                    g.appendChild(el('circle', { cx: APEX_X + sgn * (crater + (W - crater) * p), cy: apexY + h * p - 2, r: 2.6, class: 'lava-blob' }));
+                }
+            }
+        });
+        if (active) {
+            // a low lava fountain at the vent
+            for (let k = 0; k < 8; k += 1) {
+                const u = ((state.phase * 1.6) + rnd(k)) % 1;
+                const vx = (rnd(k + 3) - 0.5) * 50, vy = 40 + rnd(k + 7) * 30;
+                const x = APEX_X + vx * u, y = apexY - vy * u + 80 * u * u;
+                if (y <= apexY + 2) g.appendChild(el('circle', { cx: x, cy: y, r: 2.2, class: 'lava-blob' }));
+            }
+        }
+    }
 
-    g.appendChild(el('text', { x: 22, y: 26, class: 'read-text' }, `점성 ${koEta(a.logEta)}`));
-    g.appendChild(el('text', { x: 22, y: 42, class: 'small-label' }, `${a.kind.name} · ${state.temp} ℃ · 물 ${state.water}%`));
-    g.appendChild(el('text', { x: 438, y: 26, 'text-anchor': 'end', class: 'hot-text' }, S.name));
-    g.appendChild(el('text', { x: 438, y: 42, 'text-anchor': 'end', class: 'small-label' },
-        style === 'p1' ? '조용히 흘러넘침' : (style === 'p2' ? '중간쯤 분출' : '크게 폭발')));
-    g.appendChild(el('text', { x: 22, y: 206, class: 'small-label' }, '마그마 방'));
+    // gas bubbles in the conduit: quick in thin magma, nearly stuck in sticky magma
+    if (active) {
+        const bs = clamp(0.05 + (10 - a.logEta) * 0.055, 0.03, 0.6);
+        for (let i = 0; i < 7; i += 1) {
+            const p = ((state.phase * bs) + i / 7) % 1;
+            g.appendChild(el('circle', { cx: APEX_X + Math.sin(p * 7 + i) * 1.6, cy: CH_Y - 12 - p * (CH_Y - 12 - apexY), r: 2.2, class: 'bubble' }));
+        }
+    }
+
+    if (done) {
+        const ax = APEX_X + W, th = Math.atan(Math.tan(S.slope * Math.PI / 180) * VEX);
+        g.appendChild(el('path', { d: `M ${ax - 34} ${BASE} A 34 34 0 0 0 ${fmt(ax - 34 * Math.cos(th), 1)} ${fmt(BASE - 34 * Math.sin(th), 1)}`, class: 'slope-arc' }));
+        g.appendChild(el('text', { x: Math.min(452, ax - 40), y: BASE - 6, 'text-anchor': 'end', class: 'tiny-label' }, `실제 ${S.slope}°`));
+        g.appendChild(el('text', { x: 438, y: 26, 'text-anchor': 'end', class: 'hot-text verdict-text' }, S.name));
+        g.appendChild(el('text', { x: 438, y: 44, 'text-anchor': 'end', class: 'small-label verdict-text' },
+            style === 'p1' ? '조용히 흘러넘침' : (style === 'p2' ? '중간쯤 분출' : '크게 폭발')));
+    }
+    g.appendChild(el('text', { x: 14, y: 204, class: 'read-text' }, `점성 ${koEta(a.logEta)}`));
+    g.appendChild(el('text', { x: 14, y: 222, class: 'small-label' }, `${a.kind.name} · ${state.temp} ℃ · 물 ${state.water}%`));
+    g.appendChild(el('text', { x: APEX_X + 80, y: CH_Y + 5, class: 'small-label' }, '마그마 방'));
+    g.appendChild(el('text', { x: 452, y: 252, 'text-anchor': 'end', class: 'tiny-label' }, '높이 2배로 그림'));
 }
 
 function drawGraph(g) {
@@ -245,17 +291,19 @@ function updateReadout() {
     $('stageBadge').textContent = `${a.kind.name} · ${state.temp} ℃ · 물 ${state.water}%`;
     $('valueA').textContent = koEta(a.logEta);
     $('valueB').textContent = koSpeed(a.flow);
+    const done = state.done && !state.running;
     const rows = [
         ['SiO₂ 함량', `${a.kind.si}%`, false],
         ['기포가 1 m 오르는 시간', koTime(a.riseTime), a.riseTime < 600],
+    ];
+    if (done) rows.push(
         ['갇히는 가스의 몫', `${Math.round(a.retention * 100)}%`, a.retention < 0.2],
         ['폭발력 지수', `물 ${state.water}% × ${fmt(a.retention, 2)} = ${fmt(a.explosivity, 2)}`, false],
         ['화산의 모양', `${a.shape.name} · 비탈 ${a.shape.slope}°`, false],
-        ['같은 마그마가 굳으면', `${a.kind.rock} · ${a.kind.where}`, false],
-    ];
+        ['같은 마그마가 굳으면', `${a.kind.rock} · ${a.kind.where}`, false]);
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
-    if (state.checked) explain(a);
+    if (state.checked && done) explain(a);
 }
 
 const WORDS = { p1: '조용히 흘러넘친다', p2: '중간쯤', p3: '크게 폭발한다' };
@@ -296,6 +344,7 @@ function tick(dt) {
     state.blast = Math.min(1.35, state.blast + dt / 3.5);
     if (state.blast >= 1.35) {
         state.running = false;
+        state.done = true;
         $('runBtn').textContent = '분출시키기';
         state.checked = true;
         return true;
@@ -303,14 +352,17 @@ function tick(dt) {
     return false;
 }
 
-let last = 0;
+let last = 0, looping = false;
 function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000 || 0);
     last = now;
     tick(dt);
     render();
-    requestAnimationFrame(frame);
+    if (state.running) requestAnimationFrame(frame); else looping = false;
 }
+function startLoop() { if (looping) return; looping = true; last = performance.now(); requestAnimationFrame(frame); }
+const reducedMotion = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+function clearRun() { state.running = false; state.done = false; state.blast = 0; state.checked = false; $('runBtn').textContent = '분출시키기'; $('resultEmpty').hidden = false; $('resultContent').hidden = true; }
 
 // --- wiring -----------------------------------------------------------------
 function markSelected(sel, attr, value) {
@@ -331,10 +383,10 @@ function applyTempRange() {
 
 document.querySelectorAll('[data-kind]').forEach(b => b.addEventListener('click', () => {
     state.kind = b.dataset.kind; markSelected('[data-kind]', 'kind', state.kind);
-    applyTempRange(); render();
+    clearRun(); applyTempRange(); render();
 }));
 document.querySelectorAll('[data-water]').forEach(b => b.addEventListener('click', () => {
-    state.water = Number(b.dataset.water); markSelected('[data-water]', 'water', state.water); render();
+    state.water = Number(b.dataset.water); clearRun(); markSelected('[data-water]', 'water', state.water); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
     state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
@@ -342,17 +394,22 @@ document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('
 $('tempRange').addEventListener('input', e => {
     state.temp = Number(e.target.value);
     $('tempOutput').textContent = `${state.temp} ℃`;
+    clearRun();
     render();
 });
 $('runBtn').addEventListener('click', () => {
-    if (state.running) { state.running = false; $('runBtn').textContent = '분출시키기'; return; }
-    state.blast = 0; state.running = true; state.checked = true;
+    if (state.running) { clearRun(); render(); return; }
+    state.blast = 0; state.done = false; state.checked = true;
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+    if (reducedMotion()) { state.blast = 1.35; state.done = true; render(); return; }
+    state.running = true;
     $('runBtn').textContent = '멈추기';
     render();
+    startLoop();
 });
 $('resetBtn').addEventListener('click', () => {
     state.kind = 'basalt'; state.water = 0.5; state.temp = 1200;
-    state.prediction = null; state.checked = false; state.running = false; state.blast = 0;
+    state.prediction = null; state.checked = false; state.running = false; state.blast = 0; state.done = false;
     $('runBtn').textContent = '분출시키기';
     document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
     $('resultEmpty').hidden = false; $('resultContent').hidden = true;
@@ -378,7 +435,6 @@ markSelected('[data-kind]', 'kind', state.kind);
 markSelected('[data-water]', 'water', state.water);
 applyTempRange();
 render();
-requestAnimationFrame(frame);
 
 window.__magmaModel = {
     state, analyse, tick, render, logEta, eta, flowSpeed, bubbleSpeed, retention, explosivity, shapeOf,

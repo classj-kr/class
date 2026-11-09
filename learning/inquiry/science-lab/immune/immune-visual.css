@@ -81,10 +81,18 @@
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 
 /* immune response */
-.blood-field { fill: rgba(255, 122, 89, .1); stroke: #dc2626; stroke-width: 1.2; }
-.germ { fill: #c084fc; stroke: #7c3aed; stroke-width: .8; }
+.blood-field { fill: #fff4f0; stroke: #e7a08f; stroke-width: 1.4; }
+.vessel { fill: none; stroke: rgba(220, 38, 38, .14); stroke-width: 18; stroke-linecap: round; }
+.germ { fill: #a855f7; stroke: #6b21a8; stroke-width: 1; }
+.germ.eaten { opacity: .55; }
 .germ.vaccine { fill: rgba(192, 132, 252, .35); stroke: #a78bfa; stroke-dasharray: 2 1.5; }
-.ab { stroke: #059669; stroke-width: 1.6; fill: none; }
+.ab { stroke: #059669; stroke-width: 1.8; fill: none; stroke-linecap: round; }
+.ab.stuck { stroke: #047857; stroke-width: 2; }
+.awake .cell { stroke-width: 6; }
+.signal { fill: none; stroke: #dc2626; stroke-width: 1.4; stroke-dasharray: 3 3; }
+.day-text { fill: #0f172a; font-size: 18px; font-weight: 900; }
+.legend-text { fill: #334155; font-size: 13.5px; font-weight: 800; }
+.fever-mark { stroke: #b91c1c; stroke-width: 1.6; }
 .cell { stroke-width: 1.2; }
 .cell-mac { fill: rgba(217, 119, 6, .3); stroke: #d97706; }
 .cell-b { fill: rgba(82, 199, 255, .3); stroke: #0284c7; }

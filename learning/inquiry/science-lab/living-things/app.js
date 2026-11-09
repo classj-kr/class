@@ -185,46 +185,61 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         return `<g data-specimen="${key}" transform="translate(${x} ${y}) scale(${scale})">${drawings[key]}</g>`;
     }
+    // 카드마다 생물의 제 빛깔로 칠한다(검은 덩어리 금지).
+    const CARD_COLORS = {
+        '참새': ['#a87447', '#5e3d22'], '개구리': ['#5cae4f', '#2e6b2a'], '붕어': ['#b9a66a', '#6b5e33'],
+        '고양이': ['#f0a654', '#9a5c1c'], '뱀': ['#7fa23a', '#46601a'], '나비': ['#f4a63a', '#4a3520'],
+        '지렁이': ['#d58a83', '#8f4f4a'], '오리': ['#f2d34f', '#8a7420'], '소나무': ['#3f8f45', '#1f5a26'],
+        '연꽃': ['#ef97bb', '#a8456f'], '선인장': ['#62a35e', '#2f6a35'], '민들레': ['#f6c531', '#9a7a10'],
+    };
+    const CARD_W = 64, CARD_H = 58;
     function card(x, y, c, hit) {
-        const d = CARD_PATHS[c.name];
+        const d = CARD_PATHS[c.name], [fill, stroke] = CARD_COLORS[c.name] || ['#64748b', '#334155'];
         const iconSvg = d
-            ? `<g transform="translate(${x + 12}, ${y + 4}) scale(0.22)"><path d="${d}" fill="#0f172a" stroke="#0f172a" stroke-width="2"/></g>`
-            : `<text class="card-icon" x="${x + 23}" y="${y + 22}" text-anchor="middle">${c.icon}</text>`;
-        return `<rect class="card${hit ? ' hit' : ''}" x="${x}" y="${y}" width="46" height="40" rx="5"/>` +
+            ? `<g transform="translate(${x + CARD_W / 2 - 19}, ${y + 2}) scale(0.38)"><path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="3" stroke-linejoin="round"/></g>`
+            : `<text class="card-icon" x="${x + CARD_W / 2}" y="${y + 26}" text-anchor="middle">${c.icon}</text>`;
+        return `<rect class="card${hit ? ' hit' : ''}" x="${x}" y="${y}" width="${CARD_W}" height="${CARD_H}" rx="6"/>` +
             iconSvg +
-            `<text class="card-name" x="${x + 23}" y="${y + 35}" text-anchor="middle">${c.name}</text>`;
+            `<text class="card-name" x="${x + CARD_W / 2}" y="${y + CARD_H - 6}" text-anchor="middle">${c.name}</text>`;
     }
 
+    const BOX_Y = 92, BOX_W = 218;
+    const boxH = a => 14 + Math.max(2, Math.ceil(Math.max(a.yes.length, a.no.length) / 3)) * (CARD_H + 5);
+    const slot = (box, k) => [box.x + 7 + (k % 3) * (CARD_W + 5), BOX_Y + 8 + Math.floor(k / 3) * (CARD_H + 5)];
+    const easeIO = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
     function renderSort(a, p) {
         const n = sortedCount(p);
         let out = '';
-        // the two boxes
-        const BOXES = [{ x: 20, title: a.rule.yes, list: a.yes }, { x: 240, title: a.rule.no, list: a.no }];
+        const BOXES = [{ x: 8, title: a.rule.yes, list: a.yes }, { x: 234, title: a.rule.no, list: a.no }];
         BOXES.forEach(b => {
-            out += `<rect class="box${n > 0 ? ' filled' : ''}" x="${b.x}" y="46" width="200" height="150" rx="8"/>`;
-            out += `<text class="box-title" x="${b.x + 8}" y="40">${b.title}</text>`;
+            out += `<rect class="box${n > 0 ? ' filled' : ''}" x="${b.x}" y="${BOX_Y}" width="${BOX_W}" height="${boxH(a)}" rx="8"/>`;
+            out += `<text class="box-title" x="${b.x + 8}" y="${BOX_Y - 8}">${b.title}</text>`;
         });
-        // cards fall into their box one by one, in deck order
+        // 남은 카드 더미(가운데 위)
+        const DECK = [230 - CARD_W / 2, 6];
+        const left = CARDS.length - n - (n < CARDS.length && p > 0 ? 1 : 0);
+        for (let i = Math.min(left, 3) - 1; i >= 0; i--) out += `<rect class="card deck" x="${DECK[0] + i * 3}" y="${DECK[1] + i * 3}" width="${CARD_W}" height="${CARD_H}" rx="6"/>`;
+        if (left > 0) out += `<text class="card-name" x="${DECK[0] + CARD_W / 2 + 3}" y="${DECK[1] + CARD_H / 2 + 8}" text-anchor="middle">${left}장</text>`;
         const placed = { yes: 0, no: 0 };
         CARDS.slice(0, n).forEach(c => {
-            const isYes = !!c[a.rule.key];
-            const box = BOXES[isYes ? 0 : 1];
-            const k = placed[isYes ? 'yes' : 'no'];
-            const col = k % 4, row = Math.floor(k / 4);
-            out += card(box.x + 6 + col * 48, 54 + row * 46, c, false);
-            placed[isYes ? 'yes' : 'no'] += 1;
+            const isYes = !!c[a.rule.key], key = isYes ? 'yes' : 'no';
+            const [x, y] = slot(BOXES[isYes ? 0 : 1], placed[key]);
+            out += card(x, y, c, false);
+            placed[key] += 1;
         });
-        // the card on its way, shown above the boxes
+        // 날아가는 카드: 더미에서 제 상자 칸까지
         if (n < CARDS.length && p > 0) {
-            const c = CARDS[n];
-            out += card(300, 2, c, true);
+            const c = CARDS[n], isYes = !!c[a.rule.key];
+            const [tx, ty] = slot(BOXES[isYes ? 0 : 1], placed[isYes ? 'yes' : 'no']);
+            const f = easeIO(Math.min(1, (p * CARDS.length - n) * 1.15));
+            const x = DECK[0] + (tx - DECK[0]) * f, y = DECK[1] + (ty - DECK[1]) * f - Math.sin(f * Math.PI) * 24;
+            out += card(x, y, c, true);
         }
         BOXES.forEach((b, i) => {
             const count = i === 0 ? placed.yes : placed.no;
-            out += `<text class="count-text" x="${b.x + 192}" y="40" text-anchor="end">${count}장${n >= CARDS.length ? '' : ` / ${b.list.length}`}</text>`;
+            out += `<text class="count-text" x="${b.x + BOX_W - 6}" y="${BOX_Y - 8}" text-anchor="end">${count}장</text>`;
         });
-        out += `<text class="rule-text" x="20" y="16">기준: ${a.rule.label}</text>`;
-        out += `<text class="note-text" x="20" y="210">${n === 0 ? '카드 12장을 기준에 따라 두 상자에 나눕니다' : n < CARDS.length ? `${n}장 나눔 · 다음 카드: ${CARDS[n].name}` : '12장을 모두 나누었습니다'}</text>`;
+        out += `<text class="rule-text" x="8" y="20">기준: ${a.rule.label.replace(' (깃털 제외)', '')}</text>`;
         return out;
     }
 
@@ -237,19 +252,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // the body's features, listed one by one, marked for this place
         out += `<text class="box-title" x="226" y="48">${a.being.name}의 몸</text>`;
         a.being.traits.slice(0, shown).forEach((t, i) => {
-            out += `<text class="trait-text" x="226" y="${68 + i * 20}">${a.fit ? '✓' : '·'} ${t}</text>`;
+            out += `<text class="trait-text" x="226" y="${68 + i * 20}">${p >= 1 && a.fit ? '✓' : '·'} ${t}</text>`;
         });
         if (p >= 1) {
             const y = 68 + a.being.traits.length * 20 + 6;
             out += `<text class="trait-text ${a.fit ? 'trait-good' : 'trait-bad'}" x="226" y="${y}">${a.fit ? `→ ${a.habitat.label}에 딱 맞는 몸입니다` : `✗ ${a.trouble}`.slice(0, 26)}</text>`;
             if (!a.fit && a.trouble.length > 24) out += `<text class="trait-text trait-bad" x="226" y="${y + 14}">${a.trouble.slice(24)}</text>`;
         }
-        out += `<text class="rule-text" x="20" y="16">${a.being.name} · ${a.habitat.label} → ${a.fit ? '대표 서식지' : '다른 환경'} (원래 사는 곳: ${HABITATS[a.being.home].label})</text>`;
+        out += `<text class="rule-text" x="20" y="16">${a.being.name} · ${a.habitat.label}${p >= 1 ? ` → ${a.fit ? '대표 서식지' : '다른 환경'} (원래 사는 곳: ${HABITATS[a.being.home].label})` : ''}</text>`;
         out += `<text class="note-text" x="20" y="210">${shown < a.being.traits.length ? '몸의 특징을 하나씩 살피는 중' : '몸의 특징을 모두 살폈습니다'}</text>`;
         return out;
     }
 
+    const mainSvg = mainGroup.ownerSVGElement, graphSvg = graphGroup.ownerSVGElement;
     function renderMain(a) {
+        const box = a.kind === 'sort' ? `0 0 460 ${BOX_Y + boxH(a) + 8}` : '0 0 460 214';
+        if (mainSvg.getAttribute('viewBox') !== box) mainSvg.setAttribute('viewBox', box);
         window.scienceScene.render(mainGroup,a.kind === 'sort' ? renderSort(a, state.progress) : renderHabitat(a, state.progress));
     }
 
@@ -310,6 +328,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ? '같은 카드라도 나누는 기준이 달라지면 무리가 달라집니다'
             : '몸의 특징이 사는 곳에 맞는 생물만 그곳에서 잘 살 수 있습니다';
         window.scienceScene.render(dataNote,noteFor(a));
+        // 그래프와 결과 표는 다 나눈 뒤에만 보인다(먼저 보이면 답이 된다).
+        const done = state.progress >= 1;
+        graphSvg.style.display = done ? '' : 'none';
+        dataNote.hidden = !done;
         return a;
     }
 

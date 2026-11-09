@@ -125,77 +125,102 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
+    let finished = false;
+    const seen = new Set();          // results the student has actually produced, shown in the table
+    const VERD_MAKE = { flare: '불꽃이 활활 커진다', out: '불이 꺼진다', cloudy: '석회수가 뿌옇게 된다', none: '석회수는 그대로' };
+
     function renderMake(a, p) {
         const ml = collectedAt(p), tp = testAt(p);
+        const making = running && p > 0.005 && p < COLLECT_PART;
         let out = '';
-        // flask with liquid and powder
-        const FX = 90, FY = 150;
-        out += `<path class="glass" d="M${FX - 14},${FY - 70} L${FX - 14},${FY - 40} L${FX - 40},${FY + 6} Q${FX - 42},${FY + 14} ${FX - 34},${FY + 14} L${FX + 34},${FY + 14} Q${FX + 42},${FY + 14} ${FX + 40},${FY + 6} L${FX + 14},${FY - 40} L${FX + 14},${FY - 70}"/>`;
-        out += `<path class="${a.gas.liquidClass}" d="M${FX - 30},${FY - 12} L${FX - 37},${FY + 4} Q${FX - 38},${FY + 10} ${FX - 33},${FY + 10} L${FX + 33},${FY + 10} Q${FX + 38},${FY + 10} ${FX + 37},${FY + 4} L${FX + 30},${FY - 12} Z"/>`;
-        out += `<ellipse class="${a.gas.solidClass}" cx="${FX}" cy="${FY + 6}" rx="16" ry="3.5"/>`;
-        // bubbles rising in the flask while gas is being made
-        if (p > 0.01 && p < COLLECT_PART) {
-            for (let i = 0; i < 6; i += 1) {
-                const ph = (p * 9 + i * 0.37) % 1;
-                out += `<circle class="bubble" cx="${(FX - 14 + ((i * 29) % 28)).toFixed(1)}" cy="${(FY + 4 - ph * 16).toFixed(1)}" r="${(1.5 + (i % 3) * 0.6).toFixed(1)}"/>`;
-            }
-        }
-        // the delivery tube from the flask neck over to the trough
-        out += `<path class="tube" d="M${FX},${FY - 66} L${FX},${FY - 84} Q${FX},${FY - 96} ${FX + 12},${FY - 96} L${FX + 118},${FY - 96} Q${FX + 130},${FY - 96} ${FX + 130},${FY - 84} L${FX + 130},${FY - 20}"/>`;
-        out += `<text class="label-text" x="${FX}" y="${FY + 34}" text-anchor="middle">${a.gas.liquid}</text>`;
-        out += `<text class="label-text" x="${FX}" y="${FY + 47}" text-anchor="middle">+ ${a.gas.solid}</text>`;
-        // water trough with the upturned bottle
-        const TX = 170, TW = 130, TY = 176;
-        out += `<rect class="glass" x="${TX}" y="${TY - 60}" width="${TW}" height="60" rx="3"/>`;
-        out += `<rect class="water" x="${TX + 2}" y="${TY - 44}" width="${TW - 4}" height="42"/>`;
-        const BX = FX + 130 - 28, BW = 56, BT = TY - 122, BH = 112;   // bottle: mouth sits in the water
-        out += `<path class="glass" d="M${BX},${TY - 14} L${BX},${BT + 8} Q${BX},${BT} ${BX + 8},${BT} L${BX + BW - 8},${BT} Q${BX + BW},${BT} ${BX + BW},${BT + 8} L${BX + BW},${TY - 14}"/>`;
-        // gas pushes the water down inside the bottle
-        const fullH = (TY - 44) - (BT + 2);                       // down to the trough's water surface
-        const gasH = fullH * (ml / BOTTLE_ML);
-        const waterH = Math.max(0, fullH - gasH);
-        if (waterH > 0) out += `<rect class="water" x="${BX + 2}" y="${(BT + 2 + gasH).toFixed(1)}" width="${BW - 4}" height="${waterH.toFixed(1)}"/>`;
-        if (gasH > 0) out += `<rect class="gas-fill" x="${BX + 2}" y="${BT + 2}" width="${BW - 4}" height="${gasH.toFixed(1)}"/>`;
-        if (p > 0.01 && p < COLLECT_PART) {
-            for (let i = 0; i < 4; i += 1) {
-                const ph = (p * 11 + i * 0.25) % 1;
-                const by = TY - 20 - ph * (TY - 20 - (BT + 2 + gasH));
-                if (by > BT + 2 + gasH + 3) out += `<circle class="bubble" cx="${(BX + 12 + i * 10).toFixed(1)}" cy="${by.toFixed(1)}" r="2.2"/>`;
-            }
-        }
-        out += `<text class="read-text" x="${BX + BW / 2}" y="${TY + 14}" text-anchor="middle">${Math.round(ml)} mL</text>`;
-        out += `<text class="label-text" x="${TX + TW / 2}" y="${TY + 30}" text-anchor="middle">물속에 뒤집어 둔 집기병</text>`;
+        const BENCH = 222;
+        out += `<rect x="0" y="${BENCH}" width="460" height="18" fill="#eadfcd"/><line x1="0" y1="${BENCH}" x2="460" y2="${BENCH}" stroke="#c7b79c" stroke-width="2"/>`;
 
-        // the test on the right, once the bottle is full
-        const RX = 380;
-        if (tp > 0) {
-            out += `<path class="glass" d="M${RX - 28},${70} L${RX - 28},${168} Q${RX - 28},${176} ${RX - 20},${176} L${RX + 20},${176} Q${RX + 28},${176} ${RX + 28},${168} L${RX + 28},${70}"/>`;
-            out += `<text class="label-text" x="${RX}" y="${60}" text-anchor="middle">모은 ${a.gas.name}</text>`;
+        // conical flask closed with a rubber stopper; the delivery tube passes through the stopper
+        const FX = 70, NECK = 104, BASE = BENCH - 2;
+        out += `<path d="M${FX - 34},${BASE - 34} L${FX - 37},${BASE - 6} Q${FX - 38},${BASE - 2} ${FX - 33},${BASE - 2} L${FX + 33},${BASE - 2} Q${FX + 38},${BASE - 2} ${FX + 37},${BASE - 6} L${FX + 34},${BASE - 34} Z" class="${a.gas.liquidClass}"/>`;
+        out += `<ellipse class="${a.gas.solidClass}" cx="${FX}" cy="${BASE - 6}" rx="20" ry="3.5"/>`;
+        if (making) {
+            for (let i = 0; i < 10; i += 1) {
+                const ph = (p * 14 + i * 0.29) % 1;
+                out += `<circle cx="${(FX - 22 + ((i * 29) % 44)).toFixed(1)}" cy="${(BASE - 8 - ph * 26).toFixed(1)}" r="${(1.6 + (i % 3) * 0.7).toFixed(1)}" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>`;
+            }
+            // froth on the surface
+            out += `<path d="M${FX - 32},${BASE - 34} q8,-6 16,0 q8,-6 16,0 q8,-6 16,0 q8,-6 16,0" fill="none" stroke="#94a3b8" stroke-width="1.5"/>`;
+        }
+        out += `<path class="glass" d="M${FX - 11},${NECK} L${FX - 11},${NECK + 30} L${FX - 42},${BASE - 6} Q${FX - 44},${BASE} ${FX - 36},${BASE} L${FX + 36},${BASE} Q${FX + 44},${BASE} ${FX + 42},${BASE - 6} L${FX + 11},${NECK + 30} L${FX + 11},${NECK}"/>`;
+        out += `<path d="M${FX - 14},${NECK - 12} H${FX + 14} L${FX + 12},${NECK + 8} H${FX - 12} Z" fill="#9a3f32" stroke="#6b2a20" stroke-width="1.4"/>`;
+
+        // water trough with a shelf; the inverted bottle's mouth stays under water on the shelf
+        const TX = 156, TW = 180, TTOP = 128, WATER = 146, TBOT = BENCH;
+        const BX = 214, BW = 64, BT = 30, MOUTH = 192;
+        out += `<rect x="${TX + 2}" y="${WATER}" width="${TW - 4}" height="${TBOT - WATER - 2}" fill="rgba(82,160,220,.28)"/>`;
+        out += `<line x1="${TX + 2}" y1="${WATER}" x2="${TX + TW - 2}" y2="${WATER}" stroke="#4f97c4" stroke-width="1.5"/>`;
+        // shelf (bottle stand) with a hole the tube points into
+        out += `<path d="M${BX - 12},${MOUTH} H${BX + 18} M${BX + 46},${MOUTH} H${BX + BW + 12}" stroke="#7c8a93" stroke-width="5" stroke-linecap="round"/>`;
+        out += `<path d="M${BX - 8},${MOUTH} V${TBOT - 2} M${BX + BW + 8},${MOUTH} V${TBOT - 2}" stroke="#7c8a93" stroke-width="3"/>`;
+
+        const inTrough = tp <= 0;
+        // delivery tube: up from the stopper, over the rim, down into the water and up under the bottle mouth
+        const TUBE_END_X = BX + BW / 2, TUBE_END_Y = MOUTH + 4;
+        out += `<path class="tube" d="M${FX},${NECK - 10} V${NECK - 40} Q${FX},${NECK - 52} ${FX + 12},${NECK - 52} H${TX - 4} Q${TX + 12},${NECK - 52} ${TX + 12},${NECK - 36} V${MOUTH + 14} Q${TX + 12},${MOUTH + 22} ${TX + 22},${MOUTH + 22} H${TUBE_END_X - 8} Q${TUBE_END_X},${MOUTH + 22} ${TUBE_END_X},${MOUTH + 14} V${TUBE_END_Y}"/>`;
+
+        if (inTrough) {
+            const neckL = BX + 14, neckR = BX + BW - 14;
+            const bottlePath = `M${neckL},${MOUTH} L${neckL},${MOUTH - 10} Q${BX},${MOUTH - 18} ${BX},${MOUTH - 30} L${BX},${BT + 8} Q${BX},${BT} ${BX + 8},${BT} L${BX + BW - 8},${BT} Q${BX + BW},${BT} ${BX + BW},${BT + 8} L${BX + BW},${MOUTH - 30} Q${BX + BW},${MOUTH - 18} ${neckR},${MOUTH - 10} L${neckR},${MOUTH}`;
+            // inside: gas on top, water below; the gas pushes the water down
+            const fullH = (WATER - 2) - (BT + 2);
+            const gasH = fullH * (ml / BOTTLE_ML);
+            out += `<clipPath id="gasBottleClip"><path d="${bottlePath} Z"/></clipPath>`;
+            out += `<g clip-path="url(#gasBottleClip)"><rect x="${BX}" y="${(BT + gasH).toFixed(1)}" width="${BW}" height="${(MOUTH - BT - gasH + 2).toFixed(1)}" fill="rgba(82,160,220,.36)"/>`;
+            if (gasH > 0.5) out += `<line x1="${BX}" y1="${(BT + gasH).toFixed(1)}" x2="${BX + BW}" y2="${(BT + gasH).toFixed(1)}" stroke="#4f97c4" stroke-width="1.5"/>`;
+            out += `</g>`;
+            out += `<path class="glass" d="${bottlePath}" style="stroke:#6fa7bb;stroke-width:2.4"/>`;
+            if (making) {
+                for (let i = 0; i < 6; i += 1) {
+                    const ph = (p * 16 + i * 0.17) % 1;
+                    const top = BT + gasH + 4;
+                    const by = TUBE_END_Y - 2 - ph * (TUBE_END_Y - 2 - top);
+                    out += `<circle cx="${(TUBE_END_X - 6 + ((i * 7) % 13) + Math.sin(ph * 9 + i) * 3).toFixed(1)}" cy="${by.toFixed(1)}" r="${(2 + (i % 3) * 0.8).toFixed(1)}" fill="#f8fafc" stroke="#4f97c4" stroke-width="1"/>`;
+                }
+            }
+            out += `<text class="read-text" x="${BX + BW + 10}" y="${BT + 18}">${Math.round(ml)} mL</text>`;
+            out += `<text class="label-text" x="${BX + BW + 10}" y="${BT + 38}">집기병</text>`;
+        }
+        out += `<path class="glass" d="M${TX},${TTOP} V${TBOT} H${TX + TW} V${TTOP}" style="stroke:#6fa7bb;stroke-width:2.4"/>`;
+        out += `<text class="label-text" x="${TX + TW - 6}" y="${TTOP - 6}" text-anchor="end">수조</text>`;
+        out += `<text class="label-text" x="${FX}" y="${NECK - 60}" text-anchor="middle">고무관</text>`;
+
+        // the test: the full bottle is lifted out, stood upright and tested
+        const RX = 404;
+        if (!inTrough) {
+            out += `<path d="M${RX - 26},${BENCH - 2} V96 Q${RX - 26},88 ${RX - 18},88 H${RX + 18} Q${RX + 26},88 ${RX + 26},96 V${BENCH - 2} Z" fill="rgba(186,224,238,.25)" stroke="#6fa7bb" stroke-width="2.4"/>`;
+            out += `<text class="label-text" x="${RX}" y="${BENCH + 16}" text-anchor="middle">모은 ${a.gas.name}</text>`;
             if (state.test === 'incense') {
                 const dip = Math.min(1, tp * 2);
-                const y0 = 40 + dip * 50;
-                out += `<line class="incense" x1="${RX}" y1="${y0 - 4}" x2="${RX}" y2="${y0 + 46}"/>`;
+                const y0 = 50 + dip * 70;
+                out += `<line class="incense" x1="${RX}" y1="${y0}" x2="${RX + 4}" y2="${y0 - 52}"/>`;
                 const k = a.verdict === 'flare' ? Math.min(1, Math.max(0, (tp - 0.45) / 0.35)) : 0;
                 const dying = a.verdict === 'out' ? Math.max(0, 1 - Math.max(0, (tp - 0.45) / 0.3)) : 1;
-                out += `<circle class="ember" opacity="${dying.toFixed(2)}" cx="${RX}" cy="${y0 - 6}" r="${(3 + 4 * k).toFixed(1)}"/>`;
-                if (k > 0.05) out += `<path class="flame" opacity="${k.toFixed(2)}" d="M${RX},${y0 - 6} C${RX - 10 * k},${y0 - 14 * k} ${RX - 8 * k},${y0 - 28 * k} ${RX},${y0 - 6 - 34 * k} C${RX + 8 * k},${y0 - 28 * k} ${RX + 10 * k},${y0 - 14 * k} ${RX},${y0 - 6} Z"/>`;
-                if (a.verdict === 'out' && dying < 0.3) for (let i = 0; i < 3; i += 1) out += `<path class="bubble" d="M${RX + i * 4 - 4},${y0 - 12 - i * 8} q5,-6 0,-11"/>`;
-                out += `<text class="note-text" x="${RX}" y="${196}" text-anchor="middle">${tp < 0.5 ? '향불을 넣는 중' : a.verdict === 'flare' ? '불꽃이 활활 커집니다' : '불이 꺼집니다'}</text>`;
+                out += `<circle class="ember" opacity="${dying.toFixed(2)}" cx="${RX}" cy="${y0 + 2}" r="${(3 + 3 * k).toFixed(1)}"/>`;
+                if (k > 0.05) { const fl = 1 + 0.08 * Math.sin(p * 120); out += `<path class="flame" opacity="${k.toFixed(2)}" d="M${RX},${y0 + 2} C${RX - 10 * k},${y0 - 6 * k} ${RX - 8 * k},${y0 - 22 * k * fl} ${RX},${y0 - 30 * k * fl} C${RX + 8 * k},${y0 - 22 * k * fl} ${RX + 10 * k},${y0 - 6 * k} ${RX},${y0 + 2} Z"/>`; }
+                if (a.verdict === 'out' && dying < 0.5) for (let i = 0; i < 3; i += 1) out += `<path d="M${RX + i * 4 - 4},${y0 - 6 - i * 9 - (1 - dying) * 8} q5,-6 0,-11" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>`;
+                out += `<text class="label-text" x="${RX - 30}" y="${y0 - 34}" text-anchor="end">향불</text>`;
             } else {
+                out += `<rect x="${RX - 22}" y="80" width="44" height="7" rx="2" fill="#94a3b8"/>`;
                 const fill = Math.min(1, tp * 2.5);
-                const h = 34 * fill;
-                out += `<rect class="limewater" x="${RX - 26}" y="${(174 - h).toFixed(1)}" width="52" height="${h.toFixed(1)}"/>`;
+                const h = 40 * fill;
+                const shake = tp > 0.35 && tp < 0.8 ? Math.sin(p * 160) * 3 : 0;
+                out += `<g transform="rotate(${shake.toFixed(1)} ${RX} ${BENCH})">`;
+                out += `<rect x="${RX - 24}" y="${(BENCH - 4 - h).toFixed(1)}" width="48" height="${h.toFixed(1)}" fill="rgba(200,228,240,.7)"/>`;
                 const cloud = a.verdict === 'cloudy' ? Math.min(1, Math.max(0, (tp - 0.45) / 0.4)) : 0;
-                if (cloud > 0) out += `<rect class="cloudy" opacity="${(0.85 * cloud).toFixed(2)}" x="${RX - 26}" y="${(174 - h).toFixed(1)}" width="52" height="${h.toFixed(1)}"/>`;
-                out += `<text class="note-text" x="${RX}" y="${196}" text-anchor="middle">${tp < 0.45 ? '석회수를 넣고 흔드는 중' : a.verdict === 'cloudy' ? '뿌옇게 흐려집니다' : '그대로 맑습니다'}</text>`;
+                if (cloud > 0) out += `<rect x="${RX - 24}" y="${(BENCH - 4 - h).toFixed(1)}" width="48" height="${h.toFixed(1)}" fill="#e7ecef" opacity="${(0.92 * cloud).toFixed(2)}"/>`;
+                out += `</g>`;
+                out += `<text class="label-text" x="${RX - 30}" y="${BENCH - 20}" text-anchor="end">석회수</text>`;
             }
-        } else {
-            out += `<text class="note-text" x="${RX}" y="${120}" text-anchor="middle">기체가 다 모이면</text>`;
-            out += `<text class="note-text" x="${RX}" y="${134}" text-anchor="middle">${a.test.name}</text>`;
         }
-        const VERD = { flare: '불꽃이 활활 커진다', out: '불이 꺼진다', cloudy: '석회수가 뿌옇게 된다', none: '석회수는 그대로' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${a.gas.name} · ${a.test.name} → ${VERD[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="34">${p < COLLECT_PART ? `기체 모으는 중 · ${Math.round(p / COLLECT_PART * COLLECT_SECONDS)}초` : '집기병이 가득 찼습니다'}</text>`;
+        if (finished) out += `<text class="verdict-text" fill="#b45309" x="16" y="18">${a.gas.name} · ${a.test.name} → ${VERD_MAKE[a.verdict]}</text>`;
+        else if (p > 0) out += `<text class="label-text" x="16" y="18">${p < COLLECT_PART ? `기체 모으는 중 · ${Math.round(p / COLLECT_PART * COLLECT_SECONDS)}초` : `${a.test.name}`}</text>`;
         return out;
     }
 
@@ -240,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="330" y="156">온도</text>`;
         out += `<text class="note-text" x="330" y="172">${state.temp} ℃ ${state.temp > 20 ? '(데움)' : state.temp < 20 ? '(식힘)' : '(실온)'}</text>`;
         const VERD = { smaller: '부피가 줄어든다', bigger: '부피가 늘어난다', same: '부피가 그대로다' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="208">${state.weight ? `추 ${state.weight} kg` : '추 없음'} · ${state.temp} ℃ → ${VERD[a.verdict]}</text>`;
+        if (finished) out += `<text class="verdict-text" fill="#b45309" x="20" y="208">${state.weight ? `추 ${state.weight} kg` : '추 없음'} · ${state.temp} ℃ → ${VERD[a.verdict]}</text>`;
         return out;
     }
 
@@ -265,9 +290,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return out;
     }
 
-    // how the two gases answer the two tests, side by side
+    // the table fills in only with results the student has produced
     function graphMake(a) {
-        const p = state.progress;
         const rows = [
             { gas: 'oxygen', test: 'incense', text: '향불 → 불꽃이 활활 커짐' },
             { gas: 'oxygen', test: 'lime', text: '석회수 → 그대로 맑음' },
@@ -275,16 +299,15 @@ document.addEventListener('DOMContentLoaded', () => {
             { gas: 'co2', test: 'lime', text: '석회수 → 뿌옇게 흐려짐' },
         ];
         let out = `<text class="axis-title" x="${GRAPH.x0}" y="20">두 기체를 가려내는 표</text>`;
-        out += `<text class="axis-text" x="${GRAPH.x0}" y="44">산소</text>`;
-        out += `<text class="axis-text" x="${GRAPH.x0}" y="112">이산화 탄소</text>`;
+        out += `<text class="axis-text" x="${GRAPH.x0}" y="48">산소</text>`;
+        out += `<text class="axis-text" x="${GRAPH.x0}" y="120">이산화 탄소</text>`;
         rows.forEach((r, i) => {
-            const y = 44 + (i < 2 ? 0 : 68) + (i % 2) * 22 + 14;
+            const y = 44 + (i < 2 ? 0 : 72) + (i % 2) * 26 + 18;
+            const key = `${r.gas}|${r.test}`, known = seen.has(key);
             const mine = r.gas === state.gas && r.test === state.test;
-            const done = mine && testAt(p) > 0.45;
-            out += `<rect class="bar" x="${GRAPH.x0 + 90}" y="${y - 12}" width="270" height="18" rx="4" fill="${mine ? (done ? '#d97706' : 'rgba(217, 119, 6, .25)') : 'rgba(150,210,235,.08)'}" opacity=".9"/>`;
-            out += `<text class="bar-text" fill="${mine && done ? '#10202a' : '#0f172a'}" x="${GRAPH.x0 + 98}" y="${y + 1}">${mine && !done ? `${TESTS[r.test].name} — 실험이 끝나면 알 수 있습니다` : r.text}</text>`;
+            out += `<rect class="bar" x="${GRAPH.x0 + 96}" y="${y - 14}" width="268" height="21" rx="4" fill="${known ? (mine ? '#fcd9a8' : '#e8eef1') : '#f8fafc'}" stroke="${mine ? '#d97706' : '#cbd5e1'}"/>`;
+            out += `<text class="bar-text" fill="#0f172a" x="${GRAPH.x0 + 104}" y="${y + 2}">${known ? r.text : `${TESTS[r.test].name} → ?`}</text>`;
         });
-        out += `<text class="note-text" x="${GRAPH.x0}" y="${GRAPH.y0 + 30}">두 기체 모두 색과 냄새가 없어, 향불과 석회수로 가려냅니다.</text>`;
         return out;
     }
 
@@ -299,6 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         rows.forEach((r, i) => {
             const y = GRAPH.y1 + 14 + i * 19 + (i >= 3 ? 8 : 0);
+            const w = i < 3 ? WEIGHTS[i] : state.weight, t = i < 3 ? state.temp : TEMPS[i - 3];
+            if (!seen.has(`press|${w}|${t}`)) { out += `<text class="bar-text" fill="#64748b" x="${GRAPH.x0 + 6}" y="${y + 4}">${r.label} → ?</text>`; return; }
             out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 5}" width="${(gx(r.v) - GRAPH.x0).toFixed(1)}" height="11" rx="3" fill="${r.colour}" opacity="${r.mine ? '.95' : '.35'}"/>`;
             const inside = gx(r.v) > 300;
             out += `<text class="bar-text" fill="${inside ? '#10202a' : r.mine ? '#0f172a' : '#334155'}" font-weight="${r.mine ? '900' : '750'}" x="${(gx(r.v) + (inside ? -6 : 6)).toFixed(1)}" y="${y + 4}" text-anchor="${inside ? 'end' : 'start'}">${r.label} → ${r.v.toFixed(1)} mL</text>`;
@@ -315,15 +340,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row"><span class="data-name">모으는 법</span><span class="data-val">물이 가득 든 집기병을 뒤집어 물속에 두고 기체로 물을 밀어냄</span></div>` +
                 `<div class="data-row"><span class="data-name">모인 기체</span><span class="data-val">${Math.round(collectedAt(p))} mL / ${BOTTLE_ML} mL</span></div>` +
                 `<div class="data-row"><span class="data-name">색 · 냄새</span><span class="data-val">없음 · 없음 (두 기체 모두)</span></div>` +
-                `<div class="data-row match"><span class="data-name">${a.test.name}</span><span class="data-val">${testAt(p) > 0.45 ? ({ flare: '불꽃이 활활 커짐', out: '불이 꺼짐', cloudy: '뿌옇게 흐려짐', none: '변화 없음' })[a.verdict] : '아직 확인 전'}</span></div>` +
+                `<div class="data-row match"><span class="data-name">${a.test.name}</span><span class="data-val">${finished ? ({ flare: '불꽃이 활활 커짐', out: '불이 꺼짐', cloudy: '뿌옇게 흐려짐', none: '변화 없음' })[a.verdict] : '아직 확인 전'}</span></div>` +
                 `<div class="data-row"><span class="data-name">쓰이는 곳</span><span class="data-val">${a.gas.uses}</span></div>`;
         }
         const V = volumeAt(a, state.progress);
         return `<div class="data-row"><span class="data-name">처음</span><span class="data-val">공기 ${V0} mL · 추 없음 · 20 ℃</span></div>` +
-            `<div class="data-row"><span class="data-name">누르기만 하면</span><span class="data-val">${state.weight ? `추 ${state.weight} kg → ${a.byPress.toFixed(1)} mL` : '추가 없어 그대로 40 mL'}</span></div>` +
-            `<div class="data-row"><span class="data-name">온도만 바꾸면</span><span class="data-val">${state.temp === 20 ? '실온 그대로 40 mL' : `${state.temp} ℃ → ${a.byHeat.toFixed(1)} mL`}</span></div>` +
             `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${V.toFixed(1)} mL</span></div>` +
-            `<div class="data-row match"><span class="data-name">둘 다 하면</span><span class="data-val">${a.V.toFixed(1)} mL (${a.V < V0 ? `${(V0 - a.V).toFixed(1)} mL 줄어듦` : a.V > V0 ? `${(a.V - V0).toFixed(1)} mL 늘어남` : '그대로'})</span></div>`;
+            (finished ? `<div class="data-row"><span class="data-name">누르기만 하면</span><span class="data-val">${state.weight ? `추 ${state.weight} kg → ${a.byPress.toFixed(1)} mL` : '추가 없어 그대로 40 mL'}</span></div>` +
+            `<div class="data-row"><span class="data-name">온도만 바꾸면</span><span class="data-val">${state.temp === 20 ? '실온 그대로 40 mL' : `${state.temp} ℃ → ${a.byHeat.toFixed(1)} mL`}</span></div>` +
+            `<div class="data-row match"><span class="data-name">둘 다 하면</span><span class="data-val">${a.V.toFixed(1)} mL (${a.V < V0 ? `${(V0 - a.V).toFixed(1)} mL 줄어듦` : a.V > V0 ? `${(a.V - V0).toFixed(1)} mL 늘어남` : '그대로'})</span></div>` : '');
     }
 
     function render() {
@@ -332,8 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scienceScene.render(graphGroup,a.kind === 'make' ? graphMake(a) : graphPress(a));
         stageBadge.textContent = a.kind === 'make' ? `${a.gas.name} · ${a.test.name}` : `${state.weight ? `추 ${state.weight} kg` : '추 없음'} · ${state.temp} ℃`;
         methodHint.textContent = state.mode === 'make'
-            ? '산소는 다른 물질이 타는 것을 돕고, 이산화 탄소는 불을 끄고 석회수를 뿌옇게 합니다'
-            : '기체는 누르면 부피가 줄고, 데우면 부피가 늘어납니다';
+            ? '만든 기체를 물속 집기병에 모은 뒤 향불이나 석회수로 성질을 알아봅니다'
+            : '추로 누르거나 물 온도를 바꾸며 공기의 부피를 재 봅니다';
         window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
@@ -357,6 +382,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         state.progress = 0;
+        finished = false;
+        resultEmpty.hidden = false;
+        resultContent.hidden = true;
+        if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         running = true;
         lastStamp = performance.now();
         render();
@@ -364,6 +393,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
+        finished = true;
+        { const a0 = analyse(); seen.add(a0.kind === 'make' ? `${state.gas}|${state.test}` : `press|${state.weight}|${state.temp}`); }
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -405,6 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function settingsChanged() {
         stopRun();
         state.progress = 0;
+        finished = false;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();

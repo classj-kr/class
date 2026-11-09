@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
        1.00은 '영'으로 끝나 받침이 있어 '과', 0.92는 '이'로 끝나 '와'입니다. */
     const DIGIT_JONG = { '0': 21, '1': 8, '2': 0, '3': 16, '4': 0, '5': 0, '6': 1, '7': 8, '8': 8, '9': 0 };
     const wa = n => `${n}${DIGIT_JONG[String(n).replace(/[^0-9]/g, '').slice(-1)] > 0 ? '과' : '와'}`;
-    const TANK = { x0: 110, x1: 330, surface: 88, bottom: 228 };
+    const TANK = { x0: 60, x1: 380, surface: 118, bottom: 222 };
     const GRAPH = { x0: 54, x1: 428, y0: 142, y1: 20 };
 
     let mode = 'buoy';
@@ -87,50 +87,111 @@ document.addEventListener('DOMContentLoaded', () => {
     const gx = (v, lo, hi) => GRAPH.x0 + ((v - lo) / (hi - lo)) * (GRAPH.x1 - GRAPH.x0);
     const gy = (v, max) => GRAPH.y0 - (v / max) * (GRAPH.y0 - GRAPH.y1);
 
-    function renderBuoy() {
+    /* 처음에는 물체를 실에 매달아 수면 위에 들고 있다. '결과 확인하기'를 누르면 실을 놓아
+       물체가 떨어지고, 물에 닿으면 출렁이며 뜨거나 바닥까지 가라앉는다. 힘 화살표와 결과
+       딱지는 물체가 자리를 잡은 뒤에만 나타난다. */
+    let dropped = false, dropStart = 0, dropDone = false, dropFrame = 0, nowY = null;
+    const reduceMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const sideOf = () => 12 * Math.cbrt(vol());
+    const heldTop = side => TANK.surface - 18 - side;
+    function finalTop(b, side) {
+        return b.state === 'float' ? TANK.surface - side * (1 - b.frac)
+            : b.state === 'neutral' ? (TANK.surface + TANK.bottom) / 2 - side / 2
+            : TANK.bottom - side;
+    }
+    // Position of the block's top edge t seconds after release.
+    function dropPath(t, b, side) {
+        const y0 = heldTop(side), yc = TANK.surface - side, yf = finalTop(b, side);
+        const tc = Math.sqrt(2 * (yc - y0) / 900);           // free fall in air, 900 px/s²
+        if (t < tc) return { y: y0 + 450 * t * t, done: false, splash: -1 };
+        const u = t - tc, v0 = 900 * tc;
+        if (b.state === 'sink') {
+            // Water slows it; it drifts down at a steady speed and lands.
+            const vt = 40 + 220 * Math.min(1, (b.rhoObj - b.rhoFl) / 1.2);
+            const k = 4, y = yc + vt * u + (v0 - vt) * (1 - Math.exp(-k * u)) / k;
+            return y >= yf ? { y: yf, done: u > 0.25 + (yf - yc) / vt, splash: u } : { y, done: false, splash: u };
+        }
+        // Floating or hovering: overshoots, then bobs to rest.
+        const w = 7, z = 2.6, A = yc - yf, B = (v0 + z * A) / w;
+        const y = yf + Math.exp(-z * u) * (A * Math.cos(w * u) + B * Math.sin(w * u));
+        return { y: Math.min(y, TANK.bottom - side), done: u > 2.2, splash: u };
+    }
+    function stopDrop() { cancelAnimationFrame(dropFrame); dropFrame = 0; }
+    function resetDrop() { stopDrop(); dropped = false; dropDone = false; nowY = null; }
+    function startDrop() {
+        stopDrop(); dropped = true; dropDone = false;
+        if (reduceMotion()) { dropDone = true; nowY = null; renderBuoy(); check(); return; }
+        dropStart = performance.now();
+        const step = now => {
+            const t = Math.max(0, (now - dropStart) / 1000), b = buoyancy(), side = sideOf(), p = dropPath(t, b, side);
+            nowY = p.y; renderBuoy(p.splash);
+            if (p.done) { dropDone = true; nowY = null; dropFrame = 0; renderBuoy(); check(); return; }
+            dropFrame = requestAnimationFrame(step);
+        };
+        dropFrame = requestAnimationFrame(step);
+    }
+
+    function renderBuoy(splash = -1) {
         const b = buoyancy();
         const f = FLUIDS[fluid];
-        const side = 12 * Math.cbrt(vol());
+        const side = sideOf();
         const cx = (TANK.x0 + TANK.x1) / 2;
-        // floating: broken by the surface; neutral: hovering mid-liquid;
-        // sinking: resting on the floor
-        const topY = b.state === 'float' ? TANK.surface - side * (1 - b.frac)
-                   : b.state === 'neutral' ? (TANK.surface + TANK.bottom) / 2 - side / 2
-                   : TANK.bottom - side;
+        const topY = !dropped ? heldTop(side) : nowY !== null ? nowY : finalTop(b, side);
+        const settled = dropped && dropDone;
+        const W = TANK.x1 - TANK.x0;
 
         let out = '';
-        out += `<rect class="liquid" x="${TANK.x0 + 2}" y="${TANK.surface}" width="${TANK.x1 - TANK.x0 - 4}" height="${TANK.bottom - TANK.surface}" fill="${f.fill}"/>`;
-        out += `<ellipse class="liquid-surface" cx="${cx}" cy="${TANK.surface}" rx="${(TANK.x1 - TANK.x0 - 4) / 2}" ry="4"/>`;
-        out += `<path class="tank" fill="none" d="M${TANK.x0},52 L${TANK.x0},${TANK.bottom} L${TANK.x1},${TANK.bottom} L${TANK.x1},52"/>`;
-        out += `<rect class="block" x="${(cx - side / 2).toFixed(1)}" y="${topY.toFixed(1)}" width="${side.toFixed(1)}" height="${side.toFixed(1)}" rx="3" fill="#d97706"/>`;
-        out += `<text class="block-label" x="${cx}" y="${(topY + side / 2 + 4).toFixed(1)}" text-anchor="middle">${b.rhoObj.toFixed(2)}</text>`;
-        out += `<text class="zone-label" x="${TANK.x0}" y="44">${f.name} (밀도 ${f.rho.toFixed(2)})</text>`;
-        out += `<text class="zone-label" x="${TANK.x1 + 6}" y="${TANK.surface + 4}">수면</text>`;
+        // 받침대 위 수조: 유리 벽과 바닥, 액체는 그 안에만
+        out += `<rect class="bench" x="${TANK.x0 - 30}" y="${TANK.bottom + 8}" width="${W + 60}" height="8" rx="2"/>`;
+        out += `<rect class="liquid" x="${TANK.x0 + 3}" y="${TANK.surface}" width="${W - 6}" height="${TANK.bottom - TANK.surface + 2}" fill="${f.fill}"/>`;
+        out += `<path class="liquid-line" d="M${TANK.x0 + 3} ${TANK.surface} H${TANK.x1 - 3}"/>`;
+        // ripples where the block went in
+        if (splash >= 0 && splash < 0.9) {
+            const r = 10 + splash * 120, o = (1 - splash / 0.9).toFixed(2);
+            out += `<ellipse class="ripple" cx="${cx}" cy="${TANK.surface}" rx="${(side / 2 + r).toFixed(1)}" ry="${(3 + splash * 6).toFixed(1)}" style="opacity:${o}"/>`;
+            out += `<ellipse class="ripple" cx="${cx}" cy="${TANK.surface}" rx="${(side / 2 + r * .55).toFixed(1)}" ry="${(2 + splash * 4).toFixed(1)}" style="opacity:${o}"/>`;
+            if (splash < 0.45) for (const [dx, h] of [[-1, 1], [1, .8], [-.55, .6], [.6, 1.1]]) {
+                const px = cx + dx * (side / 2 + 6 + splash * 60), py = TANK.surface - h * (34 * splash - 70 * splash * splash) * 3;
+                out += `<circle class="droplet" cx="${px.toFixed(1)}" cy="${Math.min(TANK.surface, py).toFixed(1)}" r="2.6"/>`;
+            }
+        }
+        out += `<path class="tank" fill="none" d="M${TANK.x0},${TANK.surface - 46} L${TANK.x0},${TANK.bottom + 4} Q${TANK.x0},${TANK.bottom + 8} ${TANK.x0 + 4},${TANK.bottom + 8} L${TANK.x1 - 4},${TANK.bottom + 8} Q${TANK.x1},${TANK.bottom + 8} ${TANK.x1},${TANK.bottom + 4} L${TANK.x1},${TANK.surface - 46}"/>`;
+        for (let i = 1; i <= 4; i++) { const y = TANK.bottom - i * (TANK.bottom - TANK.surface) / 4.6; out += `<path class="tank-mark" d="M${TANK.x1 - 14} ${y.toFixed(1)} H${TANK.x1 - 3}"/>`; }
+        // 실에 매단 물체 (놓기 전)
+        if (!dropped) {
+            out += `<path class="string" d="M${cx} 0 V${(topY - 6).toFixed(1)}"/><path class="hook" d="M${cx - 6} ${(topY - 6).toFixed(1)} H${cx + 6} M${cx - 4} ${(topY - 6).toFixed(1)} L${cx - 4} ${topY.toFixed(1)} M${cx + 4} ${(topY - 6).toFixed(1)} L${cx + 4} ${topY.toFixed(1)}"/>`;
+        }
+        const x = cx - side / 2, d = Math.min(9, side * .18);
+        out += `<path class="block-top" d="M${x.toFixed(1)} ${topY.toFixed(1)} l${d} ${-d} h${side.toFixed(1)} l${-d} ${d} Z"/>`;
+        out += `<path class="block-side" d="M${(x + side).toFixed(1)} ${topY.toFixed(1)} l${d} ${-d} v${side.toFixed(1)} l${-d} ${d} Z"/>`;
+        out += `<rect class="block" x="${x.toFixed(1)}" y="${topY.toFixed(1)}" width="${side.toFixed(1)}" height="${side.toFixed(1)}" rx="1.5"/>`;
+        out += settled ? `<text class="block-label" x="${(x - 8).toFixed(1)}" y="${(topY + side / 2 + 5).toFixed(1)}" text-anchor="end">${mass()} g</text>`
+            : `<text class="block-label" x="${cx}" y="${(topY + side / 2 + 5).toFixed(1)}" text-anchor="middle">${mass()} g</text>`;
+        out += `<text class="zone-label" x="${TANK.x0}" y="${TANK.bottom + 34}">${f.name} (밀도 ${f.rho.toFixed(2)} g/cm³)</text>`;
+        out += `<text class="zone-label" x="${TANK.x1 + 8}" y="${TANK.surface + 5}">수면</text>`;
 
-        // force arrows, drawn to scale against the largest weight in range
-        const scale = 62 / (240 * G * 1e-3);
-        const ax = 392, base = 150;
-        const upLen = b.buoyN * scale, dnLen = b.weightN * scale;
-        out += `<line class="force-arrow force-up" x1="${ax}" y1="${base}" x2="${ax}" y2="${(base - upLen).toFixed(1)}"/>`;
-        out += `<path class="force-arrow force-up" d="M${ax - 5},${(base - upLen + 7).toFixed(1)} L${ax},${(base - upLen).toFixed(1)} L${ax + 5},${(base - upLen + 7).toFixed(1)}" fill="none"/>`;
-        // With small forces both arrows are short and the two labels land on top
-        // of each other, so each is held clear of the mid-line.
-        const upTextY = Math.min(base - upLen + 4, base - 6);
-        const dnTextY = Math.max(base + dnLen + 4, base + 18);
-        out += `<text class="force-text" fill="#059669" x="${ax + 9}" y="${upTextY.toFixed(1)}">부력 ${b.buoyN.toFixed(2)} N</text>`;
-        out += `<line class="force-arrow force-down" x1="${ax}" y1="${base}" x2="${ax}" y2="${(base + dnLen).toFixed(1)}"/>`;
-        out += `<path class="force-arrow force-down" d="M${ax - 5},${(base + dnLen - 7).toFixed(1)} L${ax},${(base + dnLen).toFixed(1)} L${ax + 5},${(base + dnLen - 7).toFixed(1)}" fill="none"/>`;
-        out += `<text class="force-text" fill="#ff8a8a" x="${ax + 9}" y="${dnTextY.toFixed(1)}">무게 ${b.weightN.toFixed(2)} N</text>`;
-        if (b.state === 'sink' && b.normalN > 0) {
-            out += `<text class="force-text" fill="#c79bff" x="${ax - 84}" y="${base + 34}">바닥이 ${b.normalN.toFixed(2)} N 받침</text>`;
-        } else if (b.state === 'neutral') {
-            out += `<text class="force-text" fill="#059669" x="${ax - 84}" y="${base + 34}">부력 = 무게 (중성 부력)</text>`;
+        // 힘 화살표: 물체 한가운데에서 위(부력)·아래(무게)로, 자리를 잡은 뒤에만
+        if (settled) {
+            const ax = cx, base = topY + side / 2;
+            const scale = Math.min(60, 100 / Math.max(b.buoyN, b.weightN), (250 - base) / b.weightN, (base - 6) / Math.max(b.buoyN, 1e-6));
+            const upLen = Math.max(10, b.buoyN * scale), dnLen = Math.max(10, b.weightN * scale);
+            const tipUp = base - upLen, tipDn = base + dnLen;
+            out += `<circle class="force-dot" cx="${ax}" cy="${base.toFixed(1)}" r="3.2"/>`;
+            out += `<line class="force-arrow force-up" x1="${ax - 5}" y1="${base}" x2="${ax - 5}" y2="${(tipUp + 6).toFixed(1)}"/><path class="force-head force-up-head" d="M${ax - 11},${(tipUp + 8).toFixed(1)} L${ax - 5},${tipUp.toFixed(1)} L${ax + 1},${(tipUp + 8).toFixed(1)} Z"/>`;
+            out += `<line class="force-arrow force-down" x1="${ax + 5}" y1="${base}" x2="${ax + 5}" y2="${(tipDn - 6).toFixed(1)}"/><path class="force-head force-down-head" d="M${ax - 1},${(tipDn - 8).toFixed(1)} L${ax + 5},${tipDn.toFixed(1)} L${ax + 11},${(tipDn - 8).toFixed(1)} Z"/>`;
+            const lx = cx + side / 2 + d + 10;
+            const upTextY = Math.min(tipUp + 10, base - 10), dnTextY = Math.max(tipDn, base + 24);
+            out += `<text class="force-text" fill="#047857" x="${lx}" y="${upTextY.toFixed(1)}">부력 ${b.buoyN.toFixed(2)} N</text>`;
+            out += `<text class="force-text" fill="#b91c1c" x="${lx}" y="${dnTextY.toFixed(1)}">무게 ${b.weightN.toFixed(2)} N</text>`;
+            if (b.state === 'sink' && b.normalN > 0) {
+                out += `<text class="force-text" fill="#6d28d9" x="${TANK.x1}" y="${TANK.bottom + 34}" text-anchor="end">바닥이 ${b.normalN.toFixed(2)} N 받침</text>`;
+            }
         }
         window.scienceScene.render(mainGroup,out);
 
         window.scienceScene.render(graphGroup,'<text x="20" y="50" fill="#334155" font-size="16">물체와 액체의 밀도를 비교하세요.</text><text x="20" y="90" fill="#334155" font-size="16">물체의 밀도가 더 작으면 뜹니다.</text>');
         window.scienceScene.render(dataNote,'<p>질량 ' + mass() + ' g ÷ 부피 ' + vol() + ' cm³ = 밀도 ' + b.rhoObj.toFixed(3) + ' g/cm³</p><p>액체의 밀도: ' + b.rhoFl.toFixed(2) + ' g/cm³</p>');
-        stageBadge.textContent = `${f.name} · ${b.state === 'float' ? '뜸' : b.state === 'neutral' ? '중성 부력' : '가라앉음'}`;
+        stageBadge.textContent = settled ? `${f.name} · ${b.state === 'float' ? '뜸' : b.state === 'neutral' ? '중성 부력' : '가라앉음'}` : f.name;
         massOutput.textContent = `${mass()} g`;
         volOutput.textContent = `${vol()} cm³`;
     }
@@ -164,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const render = () => (mode === 'buoy' ? renderBuoy() : renderGas());
-    const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };
+    const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; if (dropped) { resetDrop(); if (mode === 'buoy') renderBuoy(); } };
 
     function check() {
         resultEmpty.hidden = true;
@@ -216,7 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
         prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
-    checkBtn.addEventListener('click', check);
+    checkBtn.addEventListener('click', () => {
+        if (mode !== 'buoy') { check(); return; }
+        resultEmpty.hidden = false; resultContent.hidden = true;
+        resetDrop(); renderBuoy(); startDrop();
+    });
 
     function shuffleQuizOptions(card) {
         const optionGroup = card.querySelector('.quiz-options');
