@@ -1,7 +1,7 @@
 // tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = {
  "3-1": {
-  "words": "words-3-1.js?v=aacf3e86",
+  "words": "words-3-1.js?v=237f2338",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -36,7 +36,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=1cd2fc62",
+  "words": "words-4-1.js?v=3dcf0f49",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -56,7 +56,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=d5eabd73",
+  "words": "words-4-2.js?v=d52b70ab",
   "figures": [
    "figures/4-2/kor-2.js?v=6e0a31c4",
    "figures/4-2/kor.js?v=07b958f9",
@@ -72,7 +72,7 @@ window.CurriculumTerms = {
   ]
  },
  "5-1": {
-  "words": "words-5-1.js?v=fe22934b",
+  "words": "words-5-1.js?v=6538baa3",
   "figures": [
    "figures/5-1/kor-2.js?v=da86c805",
    "figures/5-1/kor-3.js?v=cc328cb9",
@@ -93,7 +93,7 @@ window.CurriculumTerms = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=3d652a28",
+  "words": "words-5-2.js?v=ea6d10e7",
   "figures": [
    "figures/5-2/kor.js?v=beaf6e0d",
    "figures/5-2/math-1.js?v=30cd38eb",
@@ -106,7 +106,7 @@ window.CurriculumTerms = {
   ]
  },
  "6-1": {
-  "words": "words-6-1.js?v=b8ea54cf",
+  "words": "words-6-1.js?v=3df24187",
   "figures": [
    "figures/6-1/kor-2.js?v=087c0f26",
    "figures/6-1/kor-3.js?v=b422b14a",
@@ -127,7 +127,7 @@ window.CurriculumTerms = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=7ccb5fb2",
+  "words": "words-6-2.js?v=2c1cbc52",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
@@ -144,7 +144,7 @@ window.CurriculumTerms = {
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
  "3-1": {
-  "words": "words-3-1.js?v=aacf3e86",
+  "words": "words-3-1.js?v=237f2338",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -179,7 +179,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=1cd2fc62",
+  "words": "words-4-1.js?v=3dcf0f49",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -199,7 +199,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=d5eabd73",
+  "words": "words-4-2.js?v=d52b70ab",
   "figures": [
    "figures/4-2/kor-2.js?v=6e0a31c4",
    "figures/4-2/kor.js?v=07b958f9",
@@ -215,7 +215,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-1": {
-  "words": "words-5-1.js?v=fe22934b",
+  "words": "words-5-1.js?v=6538baa3",
   "figures": [
    "figures/5-1/kor-2.js?v=da86c805",
    "figures/5-1/kor-3.js?v=cc328cb9",
@@ -236,7 +236,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=3d652a28",
+  "words": "words-5-2.js?v=ea6d10e7",
   "figures": [
    "figures/5-2/kor.js?v=beaf6e0d",
    "figures/5-2/math-1.js?v=30cd38eb",
@@ -249,7 +249,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-1": {
-  "words": "words-6-1.js?v=b8ea54cf",
+  "words": "words-6-1.js?v=3df24187",
   "figures": [
    "figures/6-1/kor-2.js?v=087c0f26",
    "figures/6-1/kor-3.js?v=b422b14a",
@@ -270,7 +270,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=7ccb5fb2",
+  "words": "words-6-2.js?v=2c1cbc52",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
