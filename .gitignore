@@ -63,3 +63,11 @@ __pycache__/
 !/references/moe/2022-revised-curriculum/
 !/references/moe/2022-revised-curriculum/**
 /learning/literacy-numeracy/story-books/금성애니메이션스캔본/
+
+# 과학 실험 검사 시험이 돌 때마다 새로 찍는 화면과 결과 보고서. 원본 자료(교과서 쪽 사진·출처 기록)는 저장소에 남아 있다.
+docs/science-lab-audit-*/**/*.webp
+docs/science-lab-audit-2026-09-20/six-redesign/regression-chromium.json
+docs/science-lab-audit-2026-10-11/apparatus-visual-review/screenshots.json
+docs/science-lab-audit-2026-10-17/device-check/*.json
+docs/science-lab-audit-2026-10-18/core-results-full/*.json
+docs/science-lab-audit-2026-10-18/motion-controls/*.json
