@@ -1,5 +1,24 @@
 (function () {
   'use strict';
+  // 사람 얼굴: 고른 아바타 그림을 그대로(뒤에 동그라미·바탕 없이), 없으면 이름 첫 글자.
+  // 모둠전(team-stage.js·coop.js)도 이 함수를 같이 쓴다.
+  window.stackingFace = function (person, cls = '') {
+    const url = String(person?.avatarUrl || '');
+    const initial = () => {
+      const span = document.createElement('span');
+      span.className = 'stacking-face is-initial' + (cls ? ' ' + cls : '');
+      span.textContent = [...String(person?.name || '').trim()][0] || '?';
+      span.setAttribute('aria-hidden', 'true');
+      return span;
+    };
+    if (!/^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i.test(url)) return initial();
+    const img = document.createElement('img');
+    img.className = 'stacking-face' + (cls ? ' ' + cls : '');
+    img.src = url; img.alt = ''; img.decoding = 'async'; img.draggable = false;
+    img.onerror = () => img.replaceWith(initial());
+    return img;
+  };
+  const face = window.stackingFace;
   const $ = id => document.getElementById(id);
   const initialCode = new URLSearchParams(location.search).get('room') || '';
   const App = window.StackingApp;
@@ -90,14 +109,15 @@
         const li = label('li', '', 'race-tower-card'); li.dataset.player = p.id;
         const hue = [...p.id].reduce((n, ch) => n + ch.charCodeAt(0), 0) * 37 % 360;
         li.style.setProperty('--tower-hue', hue);
-        const rank = label('span', '', 'tower-rank'), name = label('strong', p.name, 'tower-name'); name.title = p.name;
+        const rank = label('span', '', 'tower-rank'), name = label('strong', '', 'tower-name'); name.title = p.name;
+        name.append(face(p, 'tower-face'), label('span', p.name, 'tower-name-text'));
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', `0 0 100 ${towerHeight * 18 + 42}`); svg.setAttribute('aria-hidden', 'true');
         for (let i = 0; i < towerHeight; i++) svg.append(towerBlock(i, towerHeight, false, false));
         const progress = label('div', '', 'tower-progress'); progress.setAttribute('role', 'progressbar'); progress.setAttribute('aria-label', p.name + ' 해결한 문제'); progress.setAttribute('aria-valuemin', '0'); progress.setAttribute('aria-valuemax', next.total);
         progress.append(label('i', '')); const detail = label('span', '', 'tower-detail');
         li.append(rank, name, svg, progress, detail); card = { li, rank, name, svg, progress, detail, layers: 0 }; towerCards.set(p.id, card);
       }
-      card.name.textContent = p.name;
+      card.name.lastChild.textContent = p.name;
       card.rank.textContent = p.rank ? `${p.rank === 1 ? '♛ ' : ''}${p.rank}위` : next.phase === 'lobby' ? '준비' : '도전 중';
       card.li.dataset.rank = p.rank || '';
       card.li.classList.toggle('is-complete', p.solved >= next.total);
@@ -181,7 +201,7 @@
       const li = document.createElement('li');
       li.classList.toggle('mine', p.id === next.me.id);
       const name = document.createElement('strong');
-      name.textContent = (p.rank && next.phase !== 'lobby' ? `${p.rank}위 · ` : '') + p.name;
+      name.append(face(p, 'rank-face'), (p.rank && next.phase !== 'lobby' ? `${p.rank}위 · ` : '') + p.name);
       const detail = document.createElement('span');
       detail.textContent = next.phase === 'lobby' ? '입장' : `${p.solved}/${next.total}` + (p.time != null ? ` · ${clock(p.time)}` : '');
       li.append(name, detail);
@@ -241,7 +261,13 @@
         store.remove('ticket-' + value);
       }
     }
-    enter(await api(`/rooms/${value}/join`, {}), value);
+    enter(await api(`/rooms/${value}/join`, { avatarUrl: await myAvatar() }), value);
+  }
+  // 내 아바타: 학생은 학생 프로필, 선생님 계정은 선생님 설정에 고른 그림. 없으면 이름 첫 글자로 보인다.
+  function myAvatar() {
+    const avatarOf = path => fetch(path, { cache: 'no-store', credentials: 'same-origin' })
+      .then(r => (r.ok ? r.json() : null)).then(data => data?.profile?.avatar?.url || null).catch(() => null);
+    return avatarOf('/api/student/profile').then(url => url || avatarOf('/api/teacher/settings'));
   }
 
   async function openEntry() {

@@ -163,7 +163,16 @@
       const rank = t.score ? 1 + ranked.filter(other => (other.score || 0) > t.score || other.score === t.score && other.solvedAt < t.solvedAt).length : null;
       const seats = capacity == null ? `${t.members.length}명` : `${t.members.length}명 (최대 ${capacity}명)`;
       card.append(element('strong', `${rank ? rank + '위 · ' : ''}${t.name} · ${seats}${t.score !== undefined ? ` · ${t.score}/${state.race.total}문제${t.finishedAt ? ' 완료' : ''}` : ''}`));
-      for (const m of t.members) card.append(element('span', m.name));
+      // 모둠원은 각자 고른 아바타와 이름으로 보인다(아바타가 없으면 이름 첫 글자).
+      if (t.members.length) {
+        const roster = element('div', undefined, 'coop-members');
+        for (const m of t.members) {
+          const chip = element('span', undefined, 'stacking-member');
+          chip.append(window.stackingFace(m), element('span', m.name));
+          roster.append(chip);
+        }
+        card.append(roster);
+      }
       if (!state.me.teacher && (!state.race || joiningRace) && t.id !== state.me.teamId) {
         const full = capacity != null && t.members.length >= capacity;
         const join = button(full ? '정원 마감' : '이 모둠 참여', () => send('join-team', { teamId: t.id }));

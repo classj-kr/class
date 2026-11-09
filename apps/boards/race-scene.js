@@ -7,6 +7,32 @@ window.createRaceScene = function(canvas) {
  const POINTS_TO_FINISH=140;
  let racers=[],W=0,H=0,phase='idle',stage='lobby',progress=0,playTime=0,raf=0,idle=0,start=0,version='',total=1,code='',count=0,lastIdle=0;
  const displayName = r => racers.some(other=>other.id!==r.id&&other.name===r.name)?r.name+' '+r.number+'번':r.name;
+ // 학생이 고른 아바타 그림. 다 받은 뒤에만 그려서 깜박이지 않게 하고, 없거나 못 받으면 우주선을 그린다.
+ const AVATAR_URL=/^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i;
+ const avatars=new Map();
+ function avatarImage(url) {
+   if(typeof url!=='string'||!AVATAR_URL.test(url))return null;
+   let entry=avatars.get(url);
+   if(!entry){
+     const img=new Image();entry={img,ready:false};avatars.set(url,entry);
+     img.decoding='async';
+     img.onload=()=>{if(!img.naturalWidth)return;entry.crop=opaqueBox(img);entry.ready=true;if(phase!=='racing')paint();};
+     img.src=url;
+   }
+   return entry.ready?entry:null;
+ }
+ // 그림 둘레의 투명한 여백을 잘라 내야 작게 그려질 때도 캐릭터가 칸을 꽉 채운다.
+ function opaqueBox(img) {
+   const full={x:0,y:0,w:img.naturalWidth,h:img.naturalHeight};
+   try{
+     const n=96,k=n/Math.max(full.w,full.h),cw=Math.max(1,Math.round(full.w*k)),ch=Math.max(1,Math.round(full.h*k));
+     const c=document.createElement('canvas');c.width=cw;c.height=ch;const g=c.getContext('2d');g.drawImage(img,0,0,cw,ch);
+     const d=g.getImageData(0,0,cw,ch).data;let x0=cw,y0=ch,x1=-1,y1=-1;
+     for(let y=0;y<ch;y++)for(let x=0;x<cw;x++)if(d[(y*cw+x)*4+3]>24){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;}
+     if(x1<0)return full;
+     return {x:Math.max(0,(x0-1)/k),y:Math.max(0,(y0-1)/k),w:Math.min(full.w,(x1-x0+3)/k),h:Math.min(full.h,(y1-y0+3)/k)};
+   }catch(_){return full;}
+ }
  function rounded(x,y,w,h,r,fill,stroke) {ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.stroke();}}
  function glow(x,y,r,inner,outer='#0000') {const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,inner);g.addColorStop(1,outer);ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);}
  function planet(x,y,r) {
@@ -51,6 +77,20 @@ window.createRaceScene = function(canvas) {
    rounded(-9,17,18,7,2,'#112b40');rounded(-7,22,5,4,1,'#b9ffff');rounded(2,22,5,4,1,'#b9ffff');
    ctx.strokeStyle='#f2ffffbb';ctx.lineWidth=.9;ctx.beginPath();ctx.moveTo(0,-41);ctx.lineTo(-10,-6);ctx.stroke();
    ctx.restore();
+ }
+ // 아바타가 우주선 대신 탄다: 그림은 그대로(바탕 없이), 발밑에 그림자와 엔진 불꽃만 둔다.
+ function rider(face,x,cy,box,color,angle,boost,seed,t) {
+   const foot=cy+box*.42;
+   ctx.save();ctx.fillStyle='#0206176b';ctx.beginPath();ctx.ellipse(x,foot+box*.1,box*.4,box*.13,0,0,Math.PI*2);ctx.fill();ctx.restore();
+   const flicker=reduce?.9:phase==='racing'?(Math.sin(t*.035+seed)*.1+1):(Math.sin(t*.012+seed)*.06+.9);
+   const half=box*.13,length=box*(boost?1.05:.45)*flicker;
+   ctx.save();
+   const g=ctx.createLinearGradient(0,foot-box*.05,0,foot+length+box*.2);g.addColorStop(0,'#eaffff');g.addColorStop(.17,color);g.addColorStop(.6,color+'66');g.addColorStop(1,color+'00');
+   ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(x-half,foot-box*.05);ctx.bezierCurveTo(x-half*1.3,foot+length*.4,x-half*.5,foot+length,x,foot+length+box*.2);ctx.bezierCurveTo(x+half*.5,foot+length,x+half*1.3,foot+length*.4,x+half,foot-box*.05);ctx.fill();
+   glow(x,foot,boost?box*.55:box*.3,color+'55');
+   ctx.restore();
+   const c=face.crop,k=Math.min(box/c.w,box/c.h),w=c.w*k,h=c.h*k;
+   ctx.save();ctx.translate(x,cy);ctx.rotate(angle*.5);ctx.drawImage(face.img,c.x,c.y,c.w,c.h,-w/2,-h/2,w,h);ctx.restore();
  }
  function drawStars(t) {
    const vp=project(0,1);
@@ -120,12 +160,16 @@ window.createRaceScene = function(canvas) {
      const entering=r.enterAt&&!reduce?Math.min(1,(t-r.enterAt)/900):1;
      const rise=(1-entering*entering*(3-2*entering))*H*.45;
      const x=p.x,y=p.y+bob+rise;
-     if(p.boosted){ctx.save();ctx.strokeStyle='#ffe1a076';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(x,y+3,34*size,50*size,angle,0,Math.PI*2);ctx.stroke();ctx.restore();}
+     const img=avatarImage(r.avatar);
+     // 아바타는 사람이 많아 우주선이 작아져도 알아볼 수 있게 크기의 아래·위 한계를 둔다.
+     const box=img?Math.max(W<500?34:44,Math.min(120,104*size)):0,cy=y-8*size,foot=img?cy+box*.45:y+18*size;
+     const ring=img?{rx:box*.48,ry:box*.62,cy}:{rx:34*size,ry:50*size,cy:y+3};
+     if(p.boosted){ctx.save();ctx.strokeStyle='#ffe1a076';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(x,ring.cy,ring.rx,ring.ry,angle,0,Math.PI*2);ctx.stroke();ctx.restore();}
      const judged=stage==='reveal'&&typeof r.correct==='boolean';
-     if(judged){ctx.save();ctx.strokeStyle=r.correct?'#7dffb5cc':'#ff9a9a88';ctx.lineWidth=2.5;ctx.beginPath();ctx.ellipse(x,y+18*size,40*size,14*size,0,0,Math.PI*2);ctx.stroke();ctx.restore();}
-     ship(x,y,size,r.color,angle,p.boosted,r.lane,t);
+     if(judged){const rx=img?box*.46:40*size,ry=img?box*.15:14*size;ctx.save();ctx.strokeStyle=r.correct?'#7dffb5cc':'#ff9a9a88';ctx.lineWidth=2.5;ctx.beginPath();ctx.ellipse(x,foot,rx,ry,0,0,Math.PI*2);ctx.stroke();ctx.restore();}
+     if(img)rider(img,x,cy,box,r.color,angle,p.boosted,r.lane,t);else ship(x,y,size,r.color,angle,p.boosted,r.lane,t);
      const label=displayName(r);ctx.font='700 '+(front?(W<500?12:15):12)+'px system-ui,"Malgun Gothic"';const tw=ctx.measureText(label).width;
-     const lx=x-tw/2-8,ly=y-60*size-14;
+     const lx=x-tw/2-8,ly=img?cy-box/2-28:y-60*size-14;
      rounded(lx,ly,tw+16,24,6,'#07132dec',r.color+'88');ctx.fillStyle='#f3f9ff';ctx.textAlign='center';ctx.fillText(label,x,ly+17);
      if(judged){
        // "+120 ✓" floats up as the ship surges; "✗" stays put.
@@ -133,7 +177,7 @@ window.createRaceScene = function(canvas) {
        ctx.font='900 '+(front?20:15)+'px system-ui';ctx.fillStyle=r.correct?'#8dffbf':'#ffb0b0';
        ctx.fillText(r.correct?`+${r.delta} ✓`:'✗',x,ly-6-lift*.4);
      }
-     if(p.boosted){ctx.font='800 12px system-ui';ctx.fillStyle='#ffe09c';ctx.fillText('BOOST',x,y+85*size);}
+     if(p.boosted){ctx.font='800 12px system-ui';ctx.fillStyle='#ffe09c';ctx.fillText('BOOST',x,img?Math.max(y+85*size,foot+box*.75):y+85*size);}
    });
    const shade=ctx.createLinearGradient(0,H-125,0,H);shade.addColorStop(0,'#040b1c00');shade.addColorStop(1,'#040b1cf2');ctx.fillStyle=shade;ctx.fillRect(0,H-125,W,125);
  }
@@ -169,6 +213,7 @@ window.createRaceScene = function(canvas) {
    const laneOf=new Map(ranked.map((x,lane)=>[x.r.id,lane]));
    racers=(state.racers||[]).map((r,i)=>{
      const old=previous.get(r.id),lane=laneOf.get(r.id);
+     avatarImage(r.avatar);
      return {...r,color:colors[i%colors.length],lane,row:Math.floor(lane/6),column:[0,-.3,.3,-.6,.6,-.85][lane%6]+(Math.floor(lane/6)%2?.15:0),
        from:old?old.score:r.score,to:r.score,score:animate&&old?old.score:r.score,enterAt:old?old.enterAt:(firstPaint?0:now)};
    });

@@ -21,6 +21,11 @@ function createStackingCubes({ platform, now = Date.now }) {
   const token = () => crypto.randomBytes(24).toString('hex');
   const students = (r) => r.players.filter((p) => !p.host);
   const mode = (body) => (MODES.includes(body?.mode) ? body.mode : 'views');
+  // 학생이 보낸 자기 아바타 주소는 사이트 아바타 그림 꼴일 때만 다른 학생에게 보인다.
+  const avatar = (value) => {
+    const url = String(value || '');
+    return /^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i.test(url) ? url : null;
+  };
   function roundSize(value, maximum) {
     if (!Number.isInteger(value) || value < 1 || value > maximum) throw fail(400, `문제 수는 1~${maximum}개로 정해 주세요.`);
     return value;
@@ -52,7 +57,7 @@ function createStackingCubes({ platform, now = Date.now }) {
     const total = r.count;
     // More solved first, then whoever reached that count sooner.
     const participants = students(r)
-      .map((x) => ({ id: x.id, name: x.name, solved: x.solved, time: x.solved ? x.time : null }))
+      .map((x) => ({ id: x.id, name: x.name, avatarUrl: x.avatarUrl || null, solved: x.solved, time: x.solved ? x.time : null }))
       .sort((a, b) => b.solved - a.solved || (a.time ?? Infinity) - (b.time ?? Infinity) || a.name.localeCompare(b.name, 'ko'));
     participants.forEach((x, i) => {
       const prev = participants[i - 1];
@@ -123,7 +128,7 @@ function createStackingCubes({ platform, now = Date.now }) {
       if (!name || name.length > 40) throw fail(403, '메인 화면에서 이름을 확인하고 입장해 주세요.');
       if (students(r).some((p) => p.name === name))
         throw fail(409, '이미 같은 이름이 입장했어요. 원래 입장한 탭을 확인해 주세요.');
-      const p = { id: crypto.randomUUID(), token: token(), name, host: false, solved: 0, time: null };
+      const p = { id: crypto.randomUUID(), token: token(), name, avatarUrl: avatar(req.body?.avatarUrl), host: false, solved: 0, time: null };
       r.players.push(p);
       r.updated = now();
       res.json({ token: p.token, state: state(r, p) });

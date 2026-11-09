@@ -6,6 +6,9 @@
   let state = null, busy = false, fetching = false, signature = '', offset = 0, lastContact = 0, scene = null, timer;
   $('backLink').href = boardId ? `/boards/?id=${encodeURIComponent(boardId)}` : '/boards/';
   function node(tag, text, className) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (className) n.className = className; return n; }
+  // 서버가 확인해 보낸 아바타 주소만 쓴다(그림만, 흰 바탕 없이).
+  const avatarSrc = url => typeof url === 'string' && /^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i.test(url) ? url : '';
+  function avatar(url, className) { const src = avatarSrc(url); if (!src) return null; const img = node('img', undefined, className); img.alt = ''; img.decoding = 'async'; img.src = src; return img; }
   function error(message) { $('error').hidden = !message; $('error').textContent = message; }
   async function api(suffix = '', body) {
     const start = Date.now();
@@ -24,7 +27,7 @@
     if (state?.phase === 'countdown') $('studentStatus').textContent = remaining() ? remaining() + '초 뒤 시작' : '문제 불러오는 중';
     if (state?.me.teacher && state.phase === 'reveal') {
       const seconds = Math.max(0, Math.ceil((state.nextAt - Date.now() - offset) / 1000));
-      $('phaseLabel').textContent = state.autoAdvance ? `경주 · ${seconds}초 뒤 ${state.index + 1 === state.total ? '최종 결과' : '다음 문제'}` : '경주 · 자동 진행 꺼짐';
+      $('phaseLabel').textContent = state.autoAdvance ? `순위 발표 · ${seconds}초 뒤 ${state.index + 1 === state.total ? '최종 결과' : '다음 문제'}` : '순위 발표 · 자동 진행 꺼짐';
     }
     if (state && Date.now() - lastContact > 4000) $('connection').textContent = '연결 확인 중…';
     if (state?.phase === 'question' && (remaining() === 0 || Date.now() - lastContact > 4000)) $('choices').querySelectorAll('button').forEach(b => { b.disabled = true; });
@@ -39,9 +42,12 @@
   function renderStudent() {
     const s = state, q = s.question, revealed = ['reveal', 'finished'].includes(s.phase);
     $('studentName').textContent = s.me.name;
+    const mine = avatarSrc(s.me.avatar);
+    if (mine && $('studentAvatar').getAttribute('src') !== mine) $('studentAvatar').src = mine;
+    $('studentAvatar').hidden = !mine;
     $('studentScore').textContent = s.me.joined ? `${s.me.rank}위 · ${s.me.score}m` : '';
-    $('studentStatus').textContent = !s.me.joined ? '이미 시작한 경주예요. 다음 경주에서 참여해 주세요.' :
-      s.phase === 'lobby' ? '입장 완료 · 선생님이 시작하면 문제가 나와요.' : s.phase === 'finished' ? `경주 종료 · ${s.me.rank}위` :
+    $('studentStatus').textContent = !s.me.joined ? '이미 시작한 순위전이에요. 다음 순위전에서 참여해 주세요.' :
+      s.phase === 'lobby' ? '입장 완료 · 선생님이 시작하면 문제가 나와요.' : s.phase === 'finished' ? `순위전 종료 · ${s.me.rank}위` :
         s.phase === 'reveal' ? '전자칠판을 보세요' : s.me.choice !== undefined ? '제출 완료 · 전자칠판을 보세요' : '답을 선택하세요';
     $('question').textContent = q?.content || '';
     showArt($('studentArt'), q);
@@ -63,8 +69,8 @@
     if (!scene) scene = window.createRaceScene($('raceCanvas'));
     scene.update(s);
     $('participation').textContent = s.phase === 'lobby' ? `입장 ${s.participantCount}명` : `답변 ${s.answered} / ${s.eligible}명`;
-    $('phaseLabel').textContent = ({ lobby: '입장 대기', countdown: '시작 준비', question: '문제 풀이 중', reveal: '경주', finished: '경주 종료' })[s.phase];
-    $('advance').textContent = ({ lobby: '경주 시작', countdown: '시작 준비', question: '답안 마감 · 경주', reveal: s.index + 1 === s.total ? '최종 결과' : '다음 문제', finished: '게시판으로' })[s.phase];
+    $('phaseLabel').textContent = ({ lobby: '입장 대기', countdown: '시작 준비', question: '문제 풀이 중', reveal: '순위 발표', finished: '순위전 종료' })[s.phase];
+    $('advance').textContent = ({ lobby: '순위전 시작', countdown: '시작 준비', question: '답안 마감 · 순위 발표', reveal: s.index + 1 === s.total ? '최종 결과' : '다음 문제', finished: '게시판으로' })[s.phase];
     $('advance').disabled = busy || s.phase === 'countdown' || (s.phase === 'lobby' && s.participantCount === 0);
     $('advance').hidden = s.autoAdvance && !['lobby', 'finished'].includes(s.phase);
     $('automatic').hidden = s.phase === 'finished'; $('automatic').disabled = busy;
@@ -75,7 +81,7 @@
     $('ranking').replaceChildren(...sorted.slice(0, 3).map(p => {
       const card = node('div', undefined, 'rank-card');
       const name = sorted.some(other => other.id !== p.id && other.name === p.name) ? `${p.name} ${p.number}번` : p.name;
-      card.append(node('b', 1 + sorted.filter(r => r.score > p.score).length), node('strong', name), node('span', p.score + 'm')); return card;
+      card.append(...[node('b', 1 + sorted.filter(r => r.score > p.score).length), avatar(p.avatar, 'rank-avatar'), node('strong', name), node('span', p.score + 'm')].filter(Boolean)); return card;
     }));
     // The picture fills the board screen while students answer; the race shows on reveal.
     const art = s.phase === 'question' && s.question ? s.question : null;
@@ -132,13 +138,13 @@
     const action = { lobby: 'start', question: 'reveal', reveal: 'next' }[state?.phase];
     if (action) void control(action);
   });
-  $('finish').addEventListener('click', () => { if (confirm('경주를 종료하고 현재 결과를 저장할까요?')) void control('finish'); });
+  $('finish').addEventListener('click', () => { if (confirm('순위전을 종료하고 현재 결과를 저장할까요?')) void control('finish'); });
   $('automatic').addEventListener('click', () => void control('automatic', { enabled: !state?.autoAdvance }));
   $('fullscreen').addEventListener('click', async () => { try { if (document.fullscreenElement) await document.exitFullscreen(); else await $('liveApp').requestFullscreen(); } catch (_) { error('브라우저 전체 화면(F11)을 사용할 수 있어요.'); } });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) void refresh(true); });
   setInterval(clock, 200);
   async function init() {
-    if (!boardId || !gameId) { $('loading').hidden = true; error('게시판의 문제 세트에서 경주를 시작해 주세요.'); return; }
+    if (!boardId || !gameId) { $('loading').hidden = true; error('게시판의 문제 세트에서 순위전을 시작해 주세요.'); return; }
     try { apply(await api('/join', {})); }
     catch (e) { if (e.status === 409) await refresh(true); else { error(e.message); $('loading').hidden = true; } }
     timer = setInterval(() => void refresh(), 1000);

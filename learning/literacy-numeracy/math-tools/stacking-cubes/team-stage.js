@@ -75,7 +75,7 @@ window.createStackingTeamStage = function (root) {
         <div class="lane-track" role="progressbar"><div class="lane-distance"><i></i>
           <svg viewBox="0 0 32 35" class="lane-cube" aria-hidden="true"><path fill="#ffda84" d="m16 2 14 7-14 7L2 9Z"/><path fill="#dd9450" d="m2 9 14 7v16L2 25Z"/><path fill="#bc713e" d="m16 16 14-7v16l-14 7Z"/></svg>
         </div><span class="lane-flag" aria-hidden="true">⚑</span></div>
-        <b class="lane-caption"></b><span class="lane-score"></span><div class="lane-shape"></div><small class="lane-members"></small>`;
+        <b class="lane-caption"></b><span class="lane-score"></span><div class="lane-shape"></div><div class="lane-members"></div>`;
       cards.set(t.id, card);
     }
     card.classList.toggle('has-finished', !!t.finishedAt);
@@ -86,7 +86,19 @@ window.createStackingTeamStage = function (root) {
     card.querySelector('.lane-caption').textContent = t.finishedAt ? `⚑ ${rankText} 완주!` : ended ? '경기 종료' : `${t.score + 1}번째 문제 도전 중`;
     const record = t.finishedAt ? ' · ' + duration(t.finishedAt - race.startedAt) : '';
     card.querySelector('.lane-score').textContent = `${t.score}/${race.total}문제${record}`;
-    card.querySelector('.lane-members').textContent = t.members.map(m => m.name).join(' · ');
+    // 모둠원마다 자기가 고른 아바타와 이름. 같은 명단이면 그림을 다시 만들지 않는다.
+    const roster = card.querySelector('.lane-members'), rosterKey = JSON.stringify(t.members.map(m => [m.id, m.name, m.avatarUrl || '']));
+    if (roster.dataset.key !== rosterKey) {
+      roster.dataset.key = rosterKey;
+      roster.replaceChildren(...t.members.map(m => {
+        const chip = document.createElement('span');
+        chip.className = 'stacking-member';
+        const name = document.createElement('span');
+        name.textContent = m.name;
+        chip.append(window.stackingFace(m), name);
+        return chip;
+      }));
+    }
     const track = card.querySelector('.lane-track');
     track.setAttribute('aria-label', t.name + ' 해결한 문제');
     track.setAttribute('aria-valuemin', 0);
@@ -110,7 +122,7 @@ window.createStackingTeamStage = function (root) {
       return (tied ? '공동 ' : '') + t.rank + '위';
     };
     root.classList.toggle('is-final', ended);
-    find('.relay-kicker').textContent = ended ? '모둠 쌓기 레이스 · 최종 결과' : '모둠 쌓기 레이스 · LIVE';
+    find('.relay-kicker').textContent = ended ? '쌓기나무 순위전 · 최종 결과' : '쌓기나무 순위전 · 진행 중';
     find('.relay-heading').textContent = ended ? '모둠별 최종 기록' : '모둠별 진행 상황';
     resultTitle = ended ? '팀전 종료!' : '완주를 향해!';
     if (ended && leaders.length) resultTitle = leaders.map(t => t.name).join(' · ') + ' ' + rankLabel(leaders[0]) + '!';

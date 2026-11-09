@@ -363,7 +363,7 @@
     $('myIdentity').textContent = me.teacher ? '선생님' : `${me.number}번 ${me.name}`;
     $('shareBoard').hidden = $('settingsBoard').hidden = !me.teacher;
     $('artQuiz').hidden = !me.teacher || b.layout === 'quiz' || !data.posts.some(p => p.image && p.number !== null && !p.hidden);
-    $('artQuiz').textContent = data.live ? '🎨 진행 중인 경주로' : '🎨 작품 퀴즈 경주';
+    $('artQuiz').textContent = data.live ? '🎨 진행 중인 순위전으로' : '🎨 작품 순위전';
     $('writePost').textContent = b.layout === 'quiz' ? '+ 문제 만들기' : '+ 글 쓰기';
     $('writePost').disabled = !me.teacher && b.closed;
     $('closedNotice').hidden = !b.closed;
@@ -377,7 +377,7 @@
     data.sets.forEach(s => {
       const row = element('div', undefined, 'set-row'); const title = element('div');
       title.append(element('strong', s.title), element('small', `${s.count}문항 · ${statuses[s.status]}`));
-      row.append(title, button('문제 확인', () => openSet(s.id)), button('경주 시작', () => startRace(s.id), 'primary')); $('setList').append(row);
+      row.append(title, button('문제 확인', () => openSet(s.id)), button('순위전 시작', () => startRace(s.id), 'primary')); $('setList').append(row);
     });
     if (!data.sets.length) $('setList').append(element('p', '문제 세트 없음', 'hint'));
     renderPosts();
@@ -575,7 +575,7 @@
     if (data.me.teacher) {
       const duration = element('select'); duration.setAttribute('aria-label', '문제당 제한 시간');
       [20, 30, 45, 60, 90, 120].forEach(seconds => { const option = element('option', seconds + '초'); option.value = seconds; duration.append(option); });
-      $('setControls').append(duration, button('경주 시작', () => startRace(setId, Number(duration.value)), 'primary'));
+      $('setControls').append(duration, button('순위전 시작', () => startRace(setId, Number(duration.value)), 'primary'));
     }
     const answered = s.questions.filter(q => q.myChoice !== undefined).length;
     const correct = s.questions.filter(q => q.myChoice !== undefined && q.myChoice === q.answer).length;

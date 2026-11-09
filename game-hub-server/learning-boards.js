@@ -15,7 +15,7 @@ const THEMES = ['default', 'space', 'ocean', 'forest', 'snow', 'sunset', 'petals
 // Student numbers follow each school's own scheme (e.g. boys 1~, girls 51~), so only the PostgreSQL INTEGER bound applies.
 const MAX_NUMBER = 2147483647;
 
-function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode, joinIdentity = async () => null, now = Date.now }) {
+function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode, joinIdentity = async () => null, avatarUrl = null, now = Date.now }) {
   const router = express.Router();
   const fail = (status, code, message) => { throw new HttpError(status, code, message); };
   function text(value, max, required = false) {
@@ -520,13 +520,13 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     res.json({ ok: true });
   }));
   router.post('/:id/sets/:setId/answer', asyncRoute(async (req, res) => {
-    fail(410, 'USE_LIVE_RACE', '실시간 경주에서 현재 문제에 답해 주세요.');
+    fail(410, 'USE_LIVE_RACE', '순위전에서 현재 문제에 답해 주세요.');
 
   }));
-  installBoardRaces({ router, asyncRoute, transaction, fail, integer, now });
+  installBoardRaces({ router, asyncRoute, transaction, fail, integer, avatarUrl, now });
   installBoardComments({ router, asyncRoute, transaction, fail, text, integer });
   installBoardImages({ router, asyncRoute, transaction, fail, pool, board, actor });
-  installStackingBoards({ router, asyncRoute, transaction, fail, now });
+  installStackingBoards({ router, asyncRoute, transaction, fail, avatarUrl, now });
   return { router, initialize, readStackingRaceBank };
 }
 

@@ -1,6 +1,7 @@
 const crypto = require('node:crypto');
 const { BASIC, WIDE, STANDARD, validBoard, project, rulesForBoard, countCubes, resizeBoard } = require('../learning/literacy-numeracy/math-tools/stacking-cubes/model');
 const { DEFAULT_ROUND, generateRound } = require('./stacking-race-questions');
+const { classboardAvatars } = require('./classboard-avatars');
 const roles = ['build', 'front', 'right', 'top'];
 const blank = (rules = BASIC) => Array(rules.size ** 2).fill(0);
 const raceTeam = question => ({ index: 0, heights: blank(rulesForBoard(question.heights)), version: 0, history: [], finishedAt: null });
@@ -18,8 +19,34 @@ const draft = () => ({ id: uuid(), title: '', phase: 'building', heights: blank(
 const team = i => ({ id: uuid(), name: `${i + 1}모둠`, members: [], draft: draft() });
 const initial = () => ({ revision: 0, teams: Array.from({ length: 6 }, (_, i) => team(i)), questions: [], race: null, operations: [] });
 
-function installStackingBoards({ router, asyncRoute, transaction, fail, now = Date.now }) {
+// 남에게 보내는 아바타 주소는 이 꼴만 통과시킨다.
+const AVATAR_PATH = /^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i;
+const AVATAR_TTL = 60 * 1000;
+
+function installStackingBoards({ router, asyncRoute, transaction, fail, avatarUrl = null, now = Date.now }) {
   const watchers = new Map();
+  // 모둠 화면은 바뀔 때마다 모두가 다시 읽으므로, 계정별 아바타를 1분 동안 기억해 같은 조회를 되풀이하지 않는다.
+  const avatarCache = new Map();
+  async function avatarsFor(db, userIds) {
+    const found = new Map(), missing = [];
+    for (const id of new Set(userIds.filter(Boolean).map(String))) {
+      const hit = avatarCache.get(id);
+      if (hit && now() - hit.at < AVATAR_TTL) found.set(id, hit.url);
+      else missing.push(id);
+    }
+    if (missing.length && avatarUrl) {
+      try {
+        const fresh = await classboardAvatars(db, missing, avatarUrl);
+        for (const id of missing) {
+          const url = AVATAR_PATH.test(fresh.get(id) || '') ? fresh.get(id) : '';
+          avatarCache.set(id, { url, at: now() });
+          found.set(id, url);
+        }
+        if (avatarCache.size > 2000) for (const [id, hit] of avatarCache) if (now() - hit.at >= AVATAR_TTL) avatarCache.delete(id);
+      } catch { /* 아바타를 못 읽어도 모둠 활동은 이름으로 이어 간다. */ }
+    }
+    return found;
+  }
   async function load(db, b) {
     if (b.layout !== 'stacking') fail(400, 'STACKING_REQUIRED', '쌓기나무 게시판을 열어 주세요.');
     let row = (await db.query('SELECT state FROM learning_board_stacking WHERE board_id=$1', [b.id])).rows[0];
@@ -35,7 +62,9 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
     return row.state;
   }
   async function members(db, b) {
-    return (await db.query('SELECT id,name,number FROM learning_board_members WHERE board_id=$1 ORDER BY number', [b.id])).rows;
+    const rows = (await db.query('SELECT id,name,number,user_id FROM learning_board_members WHERE board_id=$1 ORDER BY number', [b.id])).rows;
+    const faces = await avatarsFor(db, rows.map(m => m.user_id));
+    return rows.map(({ user_id: userId, ...m }) => ({ ...m, avatarUrl: (userId != null && faces.get(String(userId))) || '' }));
   }
   function snapshot(s, b, who, roster, knownBankRevision) {
     const mine = s.teams.find(t => t.members.includes(who.id));
@@ -43,7 +72,11 @@ function installStackingBoards({ router, asyncRoute, transaction, fail, now = Da
     const progress = s.race?.teams[mine?.id];
     const q = s.race?.questions[progress?.index];
     const safeTeams = s.teams.map(t => ({ id: t.id, name: t.name,
-      members: t.members.map(id => { const m = roster.find(m => m.id === id); return { id, name: m ? (b.hide_names && !who.teacher ? `${m.number}번` : m.name) : '퇴장', role: 'build', roles }; }),
+      members: t.members.map(id => {
+        const m = roster.find(m => m.id === id), hidden = b.hide_names && !who.teacher;
+        // 이름을 가린 게시판에서는 학생에게 아바타도 보내지 않는다(아바타로 누구인지 드러나므로).
+        return { id, name: m ? (hidden ? `${m.number}번` : m.name) : '퇴장', ...(m?.avatarUrl && !hidden ? { avatarUrl: m.avatarUrl } : {}), role: 'build', roles };
+      }),
       phase: t.draft.phase, checked: t.draft.checked,
       ...(s.race?.teams[t.id] ? { score: s.race.teams[t.id].index, finishedAt: s.race.teams[t.id].finishedAt, solvedAt: s.race.teams[t.id].solvedAt || null } : {}),
       ...(who.teacher && s.race?.phase === 'finished' && s.race.teams[t.id]?.finishShape
