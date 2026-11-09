@@ -9,6 +9,11 @@ function createRhythmTraining({ platform, now = Date.now }) {
     const fail = (status, message) => Object.assign(new Error(message), { status });
     const wrap = fn => (req, res, next) => Promise.resolve(fn(req, res)).catch(next);
     const token = () => crypto.randomBytes(24).toString('hex');
+    // 학생이 보낸 아바타 주소는 사이트 아바타 폴더의 그림만 통과시킨다(다른 학생 화면에 그대로 뜨므로).
+    const avatar = value => {
+        const url = String(value || '');
+        return /^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i.test(url) ? url : null;
+    };
     async function isTeacher(req) {
         if (platform.configuration && !platform.configuration().enabled) return false;
         return platform.isTeacherRequest(req);
@@ -30,7 +35,7 @@ function createRhythmTraining({ platform, now = Date.now }) {
     }
     function publicState(room, player) {
         const participants = room.players.filter(p => !p.host).map(p => ({
-            id: p.id, name: p.name, ready: p.ready, status: p.status, result: p.result
+            id: p.id, name: p.name, avatarUrl: p.avatarUrl || null, ready: p.ready, status: p.status, result: p.result
         })).sort((a, b) => (b.result?.accuracy ?? -1) - (a.result?.accuracy ?? -1)
             || (a.result?.errorMs ?? Infinity) - (b.result?.errorMs ?? Infinity));
         let rank = 0;
@@ -71,7 +76,7 @@ function createRhythmTraining({ platform, now = Date.now }) {
         const name = String(req.body?.name || '').trim();
         if (!name || name.length > 16 || /[\u0000-\u001f]/.test(name)) throw fail(400, '이름을 1~16자로 입력해 주세요.');
         if (room.players.some(p => p.name === name)) throw fail(409, '같은 이름이 있어요. 이름 뒤에 번호를 붙여 주세요.');
-        const player = { id: crypto.randomUUID(), token: token(), name, host: false, ready: false, status: 'waiting', result: null };
+        const player = { id: crypto.randomUUID(), token: token(), name, avatarUrl: avatar(req.body?.avatarUrl), host: false, ready: false, status: 'waiting', result: null };
         room.players.push(player); room.updated = now();
         res.json({ token: player.token, state: publicState(room, player) });
     }));
