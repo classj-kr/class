@@ -79,6 +79,22 @@
         if (!response.ok) throw Object.assign(new Error(data.message || '요청을 처리하지 못했어요.'), { status: response.status });
         return data;
     }
+    // 내 아바타: 학생은 학생 프로필, 선생님은 선생님 설정에 고른 그림. 없으면 이름 첫 글자를 보인다.
+    const avatarOf = path => fetch(path, { cache: 'no-store', credentials: 'same-origin' })
+        .then(r => (r.ok ? r.json() : null)).then(data => data?.profile?.avatar?.url || null).catch(() => null);
+    let avatarPromise = null;
+    const myAvatar = () => avatarPromise || (avatarPromise = avatarOf('/api/student/profile').then(url => url || avatarOf('/api/teacher/settings')));
+    function face(p) {
+        const box = document.createElement('span'); box.className = 'face'; box.setAttribute('aria-hidden', 'true');
+        const initial = () => { box.classList.add('initial'); box.replaceChildren([...String(p.name || '').trim()][0] || '?'); };
+        if (!p.avatarUrl) { initial(); return box; }
+        // 그림은 배경 없이 그대로 그린다. 그림을 못 불러오면 이름 첫 글자로 바꾼다.
+        const img = document.createElement('img'); img.src = p.avatarUrl; img.alt = ''; img.decoding = 'async';
+        img.addEventListener('error', initial, { once: true });
+        box.append(img);
+        return box;
+    }
+    const faces = new Map();
     const roomApi = (action = '', body) => api('/rooms/' + credentials.code + action, body);
     function action(id, fn) {
         $(id).addEventListener('click', async () => {
@@ -598,7 +614,11 @@
             status.textContent = p.result ? `${p.result.accuracy}% · ${p.result.errorMs === null ? '—' : p.result.errorMs + 'ms'}`
                 : state.phase === 'running' ? (p.status === 'interrupted' ? '중단' : p.status === 'playing' ? '연주 중' : '시작 대기')
                 : p.ready ? '준비 완료' : p.status === 'interrupted' ? '중단 · 다음 판 준비' : '준비 중';
-            row.append(rank, name, status); $('players').append(row);
+            name.className = 'player-name';
+            // 1.2초마다 목록을 다시 그리므로 같은 사람의 그림 요소는 다시 쓴다(깜박임 방지).
+            const faceKey = p.id + '|' + (p.avatarUrl || p.name);
+            if (!faces.has(faceKey)) faces.set(faceKey, face(p));
+            row.append(rank, faces.get(faceKey), name, status); $('players').append(row);
         }
         if (!state.me.host) { $('level').value = state.config.level; $('bpm').value = state.config.bpm; $('bpmValue').value = state.config.bpm; }
         if (state.phase === 'running' && !state.me.host && state.me.status === 'pending' && lastRound !== state.roundId && !starting && !run) {
@@ -697,7 +717,7 @@
     document.addEventListener('visibilitychange', () => { if (document.hidden && run) { void finish(true); notice('다른 화면으로 이동해 연주를 멈췄어요.'); } });
     $('joinForm').addEventListener('submit', async event => {
         event.preventDefault(); if (loading) return; loading = true; $('join').disabled = true;
-        try { notice(''); await unlock(); acceptRoom(await api('/rooms/' + $('code').value.trim() + '/join', { name: $('name').value.trim() })); }
+        try { notice(''); await unlock(); acceptRoom(await api('/rooms/' + $('code').value.trim() + '/join', { name: $('name').value.trim(), avatarUrl: await myAvatar() })); }
         catch (error) { notice(error.message); } finally { loading = false; $('join').disabled = false; }
     });
     action('create', async () => acceptRoom(await api('/rooms', config())));
@@ -732,7 +752,7 @@
     const entryName = String(new URLSearchParams(location.search).get('name') || '').trim().slice(0, 20);
     if (code && /^\d{4}$/.test(code) && entryName && !credentials) {
         $('name').value = entryName; $('join').disabled = true;
-        void api('/rooms/' + code + '/join', { name: entryName }).then(acceptRoom)
+        void myAvatar().then(avatarUrl => api('/rooms/' + code + '/join', { name: entryName, avatarUrl })).then(acceptRoom)
             .catch(error => notice(error.message)).finally(() => { $('join').disabled = false; });
     }
     void api('/session').then(data => { $('create').hidden = !data.isTeacher; $('teacherHint').hidden = data.isTeacher; }).catch(() => {});
